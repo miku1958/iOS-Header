@@ -25,10 +25,14 @@
 @property (weak, nonatomic) id<HFOverrideCharacteristicValueProvider> overrideValueProvider; // @synthesize overrideValueProvider=_overrideValueProvider;
 @property (readonly) Class superclass;
 
++ (id)na_identity;
 - (void).cxx_destruct;
+- (void)beginTransactionWithReason:(id)arg1 readPolicy:(id)arg2 logger:(id)arg3;
 - (id)cachedErrorForWriteToCharacteristic:(id)arg1;
 - (id)cachedValueForCharacteristic:(id)arg1;
+- (void)commitTransactionWithReason:(id)arg1;
 - (id)initWithOriginalValueSource:(id)arg1 overrideValueProvider:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 - (id)readValuesForCharacteristicTypes:(id)arg1 inServices:(id)arg2;
 - (id)readValuesForCharacteristics:(id)arg1;
 - (id)writeValuesForCharacteristics:(id)arg1;

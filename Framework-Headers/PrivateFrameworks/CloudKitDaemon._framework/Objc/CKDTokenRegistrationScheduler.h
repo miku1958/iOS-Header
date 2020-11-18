@@ -9,7 +9,7 @@
 #import <CloudKitDaemon/CKDSystemAvailabilityWatcher-Protocol.h>
 
 @class NSMutableDictionary, NSMutableSet, NSString;
-@protocol OS_dispatch_queue;
+@protocol CKDAccountInfoProvider, OS_dispatch_queue;
 
 @interface CKDTokenRegistrationScheduler : NSObject <CKDSystemAvailabilityWatcher>
 {
@@ -17,7 +17,9 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_callbackBlocks;
     NSMutableDictionary *_callbackTimers;
-    NSMutableSet *_requests;
+    NSMutableSet *_operations;
+    id<CKDAccountInfoProvider> _unitTestingAccountInfoProvider;
+    NSMutableDictionary *_unitTestingPushTokens;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *callbackBlocks; // @synthesize callbackBlocks=_callbackBlocks;
@@ -25,22 +27,26 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSMutableSet *operations; // @synthesize operations=_operations;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (strong, nonatomic) NSMutableSet *requests; // @synthesize requests=_requests;
 @property (nonatomic) BOOL schedulerIsAvailable; // @synthesize schedulerIsAvailable=_schedulerIsAvailable;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) id<CKDAccountInfoProvider> unitTestingAccountInfoProvider; // @synthesize unitTestingAccountInfoProvider=_unitTestingAccountInfoProvider;
+@property (strong, nonatomic) NSMutableDictionary *unitTestingPushTokens; // @synthesize unitTestingPushTokens=_unitTestingPushTokens;
 
 + (id)sharedScheduler;
++ (id)sharedSchedulerWithUnitTestingAccountInfoProvider:(id)arg1;
 - (void).cxx_destruct;
-- (void)_refreshToken:(id)arg1 appContainerTuple:(id)arg2 apsEnvironmentString:(id)arg3 usesAPSPublicToken:(long long)arg4 darkWakeEnabled:(BOOL)arg5 isCKSystemService:(BOOL)arg6 completionBlock:(CDUnknownBlockType)arg7;
-- (void)_removeToken:(id)arg1 appContainerTuple:(id)arg2 apsEnvironmentString:(id)arg3 usesAPSPublicToken:(long long)arg4 darkWakeEnabled:(BOOL)arg5 isCKSystemService:(BOOL)arg6 completionBlock:(CDUnknownBlockType)arg7;
+- (void)_refreshApsToken:(id)arg1 appContainerTuple:(id)arg2 apsEnvironmentString:(id)arg3 darkWakeEnabled:(BOOL)arg4 isCKSystemService:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
+- (void)_removeApsToken:(id)arg1 appContainerTuple:(id)arg2 apsEnvironmentString:(id)arg3 darkWakeEnabled:(BOOL)arg4 isCKSystemService:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (BOOL)canRunGivenAvailabilityState:(unsigned long long)arg1;
 - (void)dealloc;
-- (void)ensureTokenRefreshForAppContainerTuple:(id)arg1 apsEnvironmentString:(id)arg2 useAPSPublicToken:(BOOL)arg3 darkWakeEnabled:(BOOL)arg4 isCKSystemService:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
+- (void)ensureTokenRefreshForAppContainerTuple:(id)arg1 apsEnvironmentString:(id)arg2 darkWakeEnabled:(BOOL)arg3 isCKSystemService:(BOOL)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)forceTokenRefreshForAllClients;
 - (void)handlePublicPushTokenDidUpdate:(id)arg1;
 - (void)handlePushTokenDidUpdate:(id)arg1;
 - (id)init;
+- (id)initWithAccountInfoProvider:(id)arg1;
 - (void)refreshAllClientsNow;
 - (void)registerTokenRefreshActivity;
 - (void)setSchedulerAvailable:(BOOL)arg1;

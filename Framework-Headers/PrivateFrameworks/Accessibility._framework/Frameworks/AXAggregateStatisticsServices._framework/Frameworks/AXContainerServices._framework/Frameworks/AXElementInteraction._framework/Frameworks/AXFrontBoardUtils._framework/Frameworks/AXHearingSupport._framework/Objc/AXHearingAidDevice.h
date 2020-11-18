@@ -190,6 +190,7 @@
 - (id)initWithPersistentRepresentation:(id)arg1;
 - (BOOL)isBluetoothPaired;
 - (BOOL)isConnected;
+- (BOOL)isPartiallyBluetoothPaired;
 - (BOOL)leftAvailable;
 - (void)loadBasicProperties;
 - (void)loadFailedProperties;
@@ -227,10 +228,12 @@
 - (BOOL)signedValueForProperty:(unsigned long long)arg1 andPeripheral:(id)arg2;
 - (void)updateBatteryServiceForPeripheral:(id)arg1;
 - (void)updateName;
+- (void)updateNameWithAdvertisingData:(id)arg1;
 - (id)valueForProperty:(unsigned long long)arg1;
 - (unsigned char)volumeValueForProperty:(unsigned long long)arg1 andPeripheral:(id)arg2;
 - (void)writeInt:(unsigned char)arg1 toEar:(int)arg2 forProperty:(unsigned long long)arg3;
 - (void)writeSignedInt:(BOOL)arg1 toEar:(int)arg2 forProperty:(unsigned long long)arg3;
+- (void)writeValueForProperty:(unsigned long long)arg1;
 
 @end
 

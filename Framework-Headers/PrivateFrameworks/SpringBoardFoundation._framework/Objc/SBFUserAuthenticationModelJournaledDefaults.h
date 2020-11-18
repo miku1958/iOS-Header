@@ -8,11 +8,12 @@
 
 #import <SpringBoardFoundation/SBFUserAuthenticationModel-Protocol.h>
 
-@class NSDictionary, NSString, SBSecurityDefaults;
+@class MCProfileConnection, NSDictionary, NSString, SBSecurityDefaults;
 @protocol OS_dispatch_queue, SBFUserAuthenticationModelDelegate;
 
 @interface SBFUserAuthenticationModelJournaledDefaults : NSObject <SBFUserAuthenticationModel>
 {
+    MCProfileConnection *_profileConnection;
     SBSecurityDefaults *_securityDefaults;
     NSString *_journalPath;
     NSObject<OS_dispatch_queue> *_persistentStateQueue;
@@ -37,6 +38,7 @@
 - (void).cxx_destruct;
 - (id)_copyLockControllerDefaults;
 - (void)_evaluatePendingWipe;
+- (id)_initWithJournalPath:(id)arg1 securityDefaults:(id)arg2 profileConnection:(id)arg3;
 - (BOOL)_isDeviceWipePreferenceEnabled;
 - (void)_loadLockControllerDefaults:(id)arg1;
 - (void)_loadLockControllerDefaultsJournalIfNecessary;
@@ -50,13 +52,13 @@
 - (void)_updateLockControllerDefaultsJournal;
 - (void)clearBlockedState;
 - (id)init;
-- (id)initWithJournalPath:(id)arg1;
 - (void)notePasscodeEntryBegan;
 - (void)notePasscodeEntryCancelled;
 - (void)notePasscodeUnlockFailedWithError:(id)arg1;
 - (void)notePasscodeUnlockSucceeded;
 - (void)performPasswordTest:(CDUnknownBlockType)arg1;
 - (void)synchronize;
+- (void)test_reloadState;
 - (id)updateLockControllerDefaultsWithBlock:(CDUnknownBlockType)arg1 journaled:(BOOL)arg2;
 
 @end

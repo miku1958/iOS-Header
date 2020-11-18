@@ -9,14 +9,14 @@
 #import <SearchUI/CNAvatarViewDelegate-Protocol.h>
 #import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
 
-@class CNAvatarView, NSMutableDictionary, NSString, NUIContainerStackView, SFSearchResult, SearchUIAccessoryViewController, SearchUIForceTouchGestureRecognizer, SearchUITextAreaView, SearchUIThumbnailView;
+@class CNAvatarView, NSMutableDictionary, NSString, NUIContainerStackView, SFSearchResult, SearchUIAccessoryViewController, SearchUIForceTouchGestureRecognizer, SearchUIThumbnailView, TLKDetailsView;
 
 @interface SearchUISingleResultTableViewCell : SearchUITableViewCell <NUIContainerStackViewDelegate, CNAvatarViewDelegate>
 {
     SFSearchResult *_result;
-    NUIContainerStackView *_container;
+    NUIContainerStackView *_innerContainer;
     SearchUIThumbnailView *_thumbnailView;
-    SearchUITextAreaView *_textAreaView;
+    TLKDetailsView *_detailsView;
     NSMutableDictionary *_accessoryViewControllers;
     SearchUIAccessoryViewController *_accessoryViewControllerForResult;
     CNAvatarView *_contactView;
@@ -26,33 +26,35 @@
 @property (strong) SearchUIAccessoryViewController *accessoryViewControllerForResult; // @synthesize accessoryViewControllerForResult=_accessoryViewControllerForResult;
 @property (strong) NSMutableDictionary *accessoryViewControllers; // @synthesize accessoryViewControllers=_accessoryViewControllers;
 @property (strong) CNAvatarView *contactView; // @synthesize contactView=_contactView;
-@property (strong) NUIContainerStackView *container; // @synthesize container=_container;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong) TLKDetailsView *detailsView; // @synthesize detailsView=_detailsView;
 @property (strong) SearchUIForceTouchGestureRecognizer *forceTouchRecognizer; // @synthesize forceTouchRecognizer=_forceTouchRecognizer;
 @property (readonly) unsigned long long hash;
+@property (strong) NUIContainerStackView *innerContainer; // @synthesize innerContainer=_innerContainer;
 @property (strong) SFSearchResult *result; // @synthesize result=_result;
+@property (strong) NUIContainerStackView *sizingContainer; // @dynamic sizingContainer;
 @property (readonly) Class superclass;
-@property (strong) SearchUITextAreaView *textAreaView; // @synthesize textAreaView=_textAreaView;
 @property (strong) SearchUIThumbnailView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
 
++ (void)addViewIfNecessary:(id)arg1 toStackView:(id)arg2 removeFromStackView:(id)arg3;
++ (id)textForTitleText:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)arrangedViewMustCenter:(id)arg1;
-- (struct UIEdgeInsets)computeLayoutMargins;
 - (id)contactInlineActionViewController;
-- (struct UIEdgeInsets)containerStackView:(id)arg1 minimumSpacingAdjecentToArrangedSubview:(id)arg2;
+- (long long)containerStackView:(id)arg1 alignmentForArrangedSubview:(id)arg2;
 - (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
-- (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
 - (void)containerViewDidInvalidateIntrinsicContentSize:(id)arg1;
-- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
-- (struct CGSize)intrinsicContentSize;
-- (void)layoutSubviews;
+- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
+- (void)setSectionLocation:(int)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateForceTouchRecognizerWithResult:(id)arg1;
+- (void)updateLayoutMargins;
 - (void)updateThumbnailWithResult:(id)arg1;
-- (void)updateWithResult:(id)arg1;
+- (void)updateWithRowModel:(id)arg1;
+- (void)willBeginPreviewInteractionForAvatarView:(id)arg1;
 
 @end
 

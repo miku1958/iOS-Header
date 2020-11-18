@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PXChangeObserver-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSHashTable, NSString, PUAssetViewModel, PUBrowsingSession, PUChangeDirectionValueFilter, PXNumberAnimator, UIPanGestureRecognizer;
+@class NSString, PUAssetViewModel, PUBrowsingSession, PUChangeDirectionValueFilter, PXNumberAnimator, PXVerticalSwipeGestureRecognizerHelper, UIPanGestureRecognizer;
 @protocol PUAccessoryVisibilityInteractionControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUAccessoryVisibilityInteractionController : NSObject <PXChangeObserver, UIGestureRecognizerDelegate>
+@interface PUAccessoryVisibilityInteractionController : NSObject <PXChangeObserver, UIGestureRecognizerDelegate, PUBrowsingViewModelChangeObserver>
 {
     BOOL _isPerformingChanges;
     BOOL _isPerformingUpdates;
@@ -35,13 +36,12 @@ __attribute__((visibility("hidden")))
     PXNumberAnimator *__contentOffsetOverrideFactor;
     PUChangeDirectionValueFilter *__verticalDirectionValueFilter;
     PUChangeDirectionValueFilter *__swipeDirectionValueFilter;
-    NSHashTable *__dependentScrollViews;
+    PXVerticalSwipeGestureRecognizerHelper *_verticalSwipeGestureRecognizerHelper;
     struct CGPoint __initialContentOffset;
 }
 
 @property (strong, nonatomic, setter=_setAssetViewModel:) PUAssetViewModel *_assetViewModel; // @synthesize _assetViewModel=__assetViewModel;
 @property (strong, nonatomic, setter=_setContentOffsetOverrideFactor:) PXNumberAnimator *_contentOffsetOverrideFactor; // @synthesize _contentOffsetOverrideFactor=__contentOffsetOverrideFactor;
-@property (readonly, nonatomic) NSHashTable *_dependentScrollViews; // @synthesize _dependentScrollViews=__dependentScrollViews;
 @property (nonatomic, setter=_setInitialContentOffset:) struct CGPoint _initialContentOffset; // @synthesize _initialContentOffset=__initialContentOffset;
 @property (strong, nonatomic, setter=_setOverridingContentOffsetY:) PXNumberAnimator *_overridingContentOffsetY; // @synthesize _overridingContentOffsetY=__overridingContentOffsetY;
 @property (strong, nonatomic, setter=_setSwipeDirectionValueFilter:) PUChangeDirectionValueFilter *_swipeDirectionValueFilter; // @synthesize _swipeDirectionValueFilter=__swipeDirectionValueFilter;
@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) PXVerticalSwipeGestureRecognizerHelper *verticalSwipeGestureRecognizerHelper; // @synthesize verticalSwipeGestureRecognizerHelper=_verticalSwipeGestureRecognizerHelper;
 
 - (void).cxx_destruct;
 - (id)_currentAssetViewModel;
@@ -71,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)invalidateViewHostingGestureRecognizers;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)viewModel:(id)arg1 didChange:(id)arg2;
 
 @end
 

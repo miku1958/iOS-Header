@@ -27,6 +27,7 @@
 @property BOOL canSign; // @synthesize canSign=_canSign;
 @property long long keySizeInBits; // @synthesize keySizeInBits=_keySizeInBits;
 @property (copy) NSString *keyType; // @synthesize keyType=_keyType;
+@property (readonly) unsigned long long keyUsage;
 @property (copy) NSData *publicKeyData; // @synthesize publicKeyData=_publicKeyData;
 @property (copy) NSData *publicKeyHash; // @synthesize publicKeyHash=_publicKeyHash;
 @property (getter=isSuitableForLogin) BOOL suitableForLogin; // @synthesize suitableForLogin=_suitableForLogin;

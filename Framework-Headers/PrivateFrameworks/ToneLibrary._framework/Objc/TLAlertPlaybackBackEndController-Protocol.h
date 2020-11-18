@@ -6,11 +6,11 @@
 
 #import <ToneLibrary/NSObject-Protocol.h>
 
-@class NSArray, TLAlert;
+@class NSArray, TLAlert, TLAlertStoppingOptions;
 
 @protocol TLAlertPlaybackBackEndController <NSObject>
 - (void)playAlert:(TLAlert *)arg1 withCompletionHandler:(void (^)(long long, NSError *))arg2;
-- (void)stopPlayingAlerts:(NSArray *)arg1 withOptions:(CDStruct_2418a849)arg2 playbackCompletionType:(long long)arg3 completionHandler:(void (^)(BOOL))arg4;
+- (void)stopPlayingAlerts:(NSArray *)arg1 withOptions:(TLAlertStoppingOptions *)arg2 playbackCompletionType:(long long)arg3 completionHandler:(void (^)(BOOL))arg4;
 
 @optional
 - (void)handleActivationAssertionStatusChangeForAlert:(TLAlert *)arg1 updatedStatus:(BOOL)arg2;

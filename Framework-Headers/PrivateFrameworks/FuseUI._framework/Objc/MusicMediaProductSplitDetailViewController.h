@@ -58,7 +58,6 @@
 - (id)initWithContainerEntityProvider:(id)arg1 clientContext:(id)arg2;
 - (void)music_viewInheritedLayoutInsetsDidChange;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)verticalLockupView:(id)arg1 didSelectPlayButtonAction:(unsigned long long)arg2;
 - (void)verticalScrollingContainerViewController:(id)arg1 willEndDraggingWithVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)verticalScrollingContainerViewControllerContentSizeDidChange:(id)arg1;
 - (void)verticalScrollingContainerViewControllerDidScroll:(id)arg1;

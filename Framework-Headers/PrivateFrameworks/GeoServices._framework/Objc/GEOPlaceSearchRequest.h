@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAdditionalEnabledMarkets, GEOAddress, GEOBusinessOptions, GEOClientCapabilities, GEOIndexQueryNode, GEOLatLng, GEOLocation, GEOMapRegion, GEOSearchSubstring, GEOSuggestionsOptions, NSData, NSMutableArray, NSString;
+@class GEOAdditionalEnabledMarkets, GEOAddress, GEOBusinessOptions, GEOClientCapabilities, GEOIndexQueryNode, GEOLatLng, GEOLocation, GEOMapRegion, GEOSearchSubstring, GEOSuggestionsOptions, NSData, NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPlaceSearchRequest : PBRequest <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     struct GEOSessionID _sessionGUID;
     CDStruct_95bda58d _additionalPlaceTypes;
     CDStruct_62a50c50 _businessIDs;
@@ -260,6 +261,7 @@
 @property (nonatomic) double timeSinceMapViewportChanged; // @synthesize timeSinceMapViewportChanged=_timeSinceMapViewportChanged;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) int transportTypeForTravelTimes; // @synthesize transportTypeForTravelTimes=_transportTypeForTravelTimes;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) NSString *viewportCenterCountryCode; // @synthesize viewportCenterCountryCode=_viewportCenterCountryCode;
 @property (strong, nonatomic) NSData *zilchPoints; // @synthesize zilchPoints=_zilchPoints;
 
@@ -267,6 +269,7 @@
 + (Class)limitToCountryCodeIso2Type;
 + (Class)searchSubstringType;
 + (Class)serviceTagType;
+- (void).cxx_destruct;
 - (int)StringAsAdditionalPlaceTypes:(id)arg1;
 - (int)StringAsBusinessSortOrder:(id)arg1;
 - (int)StringAsKnownAccuracy:(id)arg1;

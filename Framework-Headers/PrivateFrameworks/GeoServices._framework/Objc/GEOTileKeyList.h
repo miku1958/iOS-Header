@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/NSCopying-Protocol.h>
 #import <GeoServices/NSFastEnumeration-Protocol.h>
+#import <GeoServices/OSLogCoding-Protocol.h>
 
 @class GEOTileKeyMap;
 
-@interface GEOTileKeyList : NSObject <NSFastEnumeration, NSCopying>
+@interface GEOTileKeyList : NSObject <OSLogCoding, NSFastEnumeration, NSCopying>
 {
     void *_head;
     void *_tail;
@@ -21,7 +22,9 @@
     unsigned long long _mutationsCount;
 }
 
++ (id)formatOSLogData:(id)arg1;
 + (id)listFromXPCData:(id)arg1;
+- (void).cxx_destruct;
 - (void)_addKeyToBack:(const struct _GEOTileKey *)arg1;
 - (void)addKey:(const struct _GEOTileKey *)arg1;
 - (BOOL)addKey:(const struct _GEOTileKey *)arg1 lostKey:(struct _GEOTileKey *)arg2;
@@ -33,6 +36,7 @@
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (id)description;
+- (void)encodeWithOSLogCoder:(id)arg1 options:(unsigned long long)arg2 maxLength:(unsigned long long)arg3;
 - (struct _GEOTileKey *)firstKey;
 - (id)init;
 - (id)initWithCapacity:(unsigned long long)arg1;

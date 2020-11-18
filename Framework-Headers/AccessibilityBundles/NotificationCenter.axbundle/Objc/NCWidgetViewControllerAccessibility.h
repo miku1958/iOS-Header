@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_setActiveDisplayMode:(long long)arg1 requestIdentifier:(id)arg2 force:(BOOL)arg3;
+- (void)_setActiveDisplayMode:(long long)arg1 unconditionallyNotifyingContentProvidingViewController:(BOOL)arg2;
 
 @end
 

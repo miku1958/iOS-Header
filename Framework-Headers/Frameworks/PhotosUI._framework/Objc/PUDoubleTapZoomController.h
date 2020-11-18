@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
         BOOL respondsToTilingView;
         BOOL respondsToDelegateForGestureRecognizer;
         BOOL respondsToCanDoubleTapBeginAtLocationFromProvider;
+        BOOL respondsToDragController;
     } _delegateFlags;
     BOOL __needsUpdateGestureRecognizers;
     id<PUDoubleTapZoomControllerDelegate> _delegate;

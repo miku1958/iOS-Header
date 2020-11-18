@@ -18,12 +18,13 @@
 #import <PhotosUICore/PXTilingControllerTransitionDelegate-Protocol.h>
 #import <PhotosUICore/PXUIPlayButtonTileDelegate-Protocol.h>
 #import <PhotosUICore/PXUIWidget-Protocol.h>
+#import <PhotosUICore/UIDragInteractionDelegate-Protocol.h>
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSDate, NSMutableSet, NSSet, NSString, PXAssetReference, PXBasicUIViewTileAnimator, PXLayoutGenerator, PXOneUpPresentation, PXPhotoKitAssetsDataSourceManager, PXPhotoKitUIMediaProvider, PXPhotosDataSource, PXPhotosDataSourceStressTest, PXPhotosDetailsAssetsSpecManager, PXPhotosDetailsContext, PXPhotosDetailsLoadCoordinationToken, PXSectionedLayoutEngine, PXSectionedSelectionManager, PXSwipeSelectionManager, PXTilingController, PXTouchingUIGestureRecognizer, PXUIAssetsScene, PXUITapGestureRecognizer, PXWidgetSpec, UIPinchGestureRecognizer;
-@protocol PXAnonymousView, PXWidgetDelegate;
+@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate, UIDragSession;
 
-@interface PXPhotosDetailsAssetsWidget : NSObject <PXAssetsSceneDelegate, PXTileSource, PXTilingControllerTransitionDelegate, PXScrollViewControllerObserver, PXTilingControllerScrollDelegate, PXChangeObserver, PXEngineDrivenAssetsTilingLayoutDelegate, PXSwipeSelectionManagerDelegate, PXUIPlayButtonTileDelegate, UIGestureRecognizerDelegate, PXActionPerformerDelegate, PXUIWidget, PXOneUpPresentationDelegate>
+@interface PXPhotosDetailsAssetsWidget : NSObject <PXAssetsSceneDelegate, PXTileSource, PXTilingControllerTransitionDelegate, PXScrollViewControllerObserver, PXTilingControllerScrollDelegate, PXChangeObserver, PXEngineDrivenAssetsTilingLayoutDelegate, PXSwipeSelectionManagerDelegate, PXUIPlayButtonTileDelegate, UIGestureRecognizerDelegate, PXActionPerformerDelegate, UIDragInteractionDelegate, PXUIWidget, PXOneUpPresentationDelegate>
 {
     NSMutableSet *_tilesInUse;
     NSDate *_loadStartDate;
@@ -53,6 +54,7 @@
     PXSectionedLayoutEngine *__layoutEngine;
     PXAssetReference *__navigatedAssetReference;
     NSSet *__hiddenAssetReferences;
+    NSSet *__draggingAssetReferences;
     PXSwipeSelectionManager *__swipeSelectionManager;
     PXUITapGestureRecognizer *__tapGesture;
     UIPinchGestureRecognizer *__pinchGesture;
@@ -61,6 +63,7 @@
     PXAssetReference *__focusedAssetReference;
     PXPhotosDetailsLoadCoordinationToken *__loadCoordinationToken;
     PXPhotosDataSourceStressTest *__currentDataSourceStressTest;
+    id<UIDragSession> _dragSession;
     struct CGPoint __visibleOriginScrollTarget;
 }
 
@@ -69,6 +72,7 @@
 @property (nonatomic, setter=_setCurate:) BOOL _curate; // @synthesize _curate=__curate;
 @property (strong, nonatomic, setter=_setCurrentDataSourceStressTest:) PXPhotosDataSourceStressTest *_currentDataSourceStressTest; // @synthesize _currentDataSourceStressTest=__currentDataSourceStressTest;
 @property (readonly, nonatomic) PXPhotoKitAssetsDataSourceManager *_dataSourceManager; // @synthesize _dataSourceManager;
+@property (strong, nonatomic, setter=_setDraggingAssetReferences:) NSSet *_draggingAssetReferences; // @synthesize _draggingAssetReferences=__draggingAssetReferences;
 @property (strong, nonatomic, setter=_setFocusedAssetReference:) PXAssetReference *_focusedAssetReference; // @synthesize _focusedAssetReference=__focusedAssetReference;
 @property (strong, nonatomic, setter=_setHiddenAssetReferences:) NSSet *_hiddenAssetReferences; // @synthesize _hiddenAssetReferences=__hiddenAssetReferences;
 @property (strong, nonatomic, setter=_setHighlightedAssetReference:) PXAssetReference *_highlightedAssetReference; // @synthesize _highlightedAssetReference=__highlightedAssetReference;
@@ -99,6 +103,7 @@
 @property (strong, nonatomic) PXPhotosDetailsContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) id<UIDragSession> dragSession; // @synthesize dragSession=_dragSession;
 @property (nonatomic, getter=isFaceModeEnabled) BOOL faceModeEnabled; // @synthesize faceModeEnabled=_faceModeEnabled;
 @property (readonly, nonatomic) BOOL hasContentForCurrentInput;
 @property (nonatomic, setter=_setHasLoadedContentData:) BOOL hasLoadedContentData; // @synthesize hasLoadedContentData=_hasLoadedContentData;
@@ -116,25 +121,35 @@
 @property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
 @property (weak, nonatomic) id<PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
+@property (weak, nonatomic) id<PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
 - (void).cxx_destruct;
+- (BOOL)_addAssetReferencesToDrag:(id)arg1;
+- (id)_api_dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
+- (void)_api_dragInteraction:(id)arg1 session:(id)arg2 didEndWithOperation:(unsigned long long)arg3;
 - (struct PXSimpleIndexPath)_assetIndexPathAtLocation:(struct CGPoint)arg1 padding:(struct UIEdgeInsets)arg2;
 - (id)_assetReferenceAtPoint:(struct CGPoint)arg1 padding:(struct UIEdgeInsets)arg2;
+- (BOOL)_canDragAssetReferences:(id)arg1;
+- (BOOL)_canDragOut;
 - (void)_configureLayout:(id)arg1;
 - (id)_createNewLayout;
+- (id)_dragItemForSimpleIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)_extendedTraitCollection;
 - (void)_fallBackByTogglingCurationIfNeeded;
 - (void)_handleTapOnAssetReference:(id)arg1 autoPlayVideo:(BOOL)arg2;
+- (id)_imageTileForDragItem:(id)arg1;
 - (void)_invalidateLayoutGenerator;
 - (BOOL)_isLocationWithinCurrentLayoutBounds:(struct CGPoint)arg1;
 - (void)_loadTilingController;
 - (void)_logAggdCounterForAssetCountsIfNecessary;
 - (void)_performTilingChangeWithoutAnimationTransition:(CDUnknownBlockType)arg1;
+- (void)_presentConfidentialityWarning;
 - (id)_regionOfInterestForAssetReference:(id)arg1 inCoordinateSpace:(id)arg2;
 - (void)_setNavigatedAssetReference:(id)arg1 autoPlayVideo:(BOOL)arg2;
 - (id)_subtitle;
 - (id)_title;
 - (void)_updateDebugBadgeManager;
+- (void)_updateDraggingAssetReferencesWithDataSource:(id)arg1;
 - (void)_updateHasLoadedContentData;
 - (void)_updateLayoutEngineIfNeeded;
 - (void)_updateShowDisclosureButton;
@@ -152,6 +167,12 @@
 - (id)dataSourceManager;
 - (void)dealloc;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
+- (id)dragInteraction:(id)arg1 itemsForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
+- (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
+- (id)dragInteraction:(id)arg1 previewForCancellingItem:(id)arg2 withDefault:(id)arg3;
+- (id)dragInteraction:(id)arg1 sessionForAddingItems:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
+- (void)dragInteraction:(id)arg1 sessionWillBegin:(id)arg2;
+- (unsigned long long)dragInteraction:(id)arg1 sourceOperationMaskForDraggingContext:(long long)arg2 session:(id)arg3;
 - (double)engineDrivenLayout:(id)arg1 aspectRatioForItemAtIndexPath:(struct PXSimpleIndexPath)arg2;
 - (struct CGRect)engineDrivenLayout:(id)arg1 contentsRectForItemAtIndexPath:(struct PXSimpleIndexPath)arg2 forAspectRatio:(double)arg3;
 - (double)engineDrivenLayout:(id)arg1 zPositionForItemAtIndexPath:(struct PXSimpleIndexPath)arg2;

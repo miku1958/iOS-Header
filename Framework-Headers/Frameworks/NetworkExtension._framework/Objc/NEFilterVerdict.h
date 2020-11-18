@@ -13,6 +13,7 @@
 
 @interface NEFilterVerdict : NSObject <NSSecureCoding, NSCopying>
 {
+    BOOL _shouldReport;
     BOOL _needRules;
     BOOL _drop;
     BOOL _remediate;
@@ -27,6 +28,7 @@
 @property BOOL remediate; // @synthesize remediate=_remediate;
 @property (strong) NSString *remediationButtonTextMapKey; // @synthesize remediationButtonTextMapKey=_remediationButtonTextMapKey;
 @property (strong) NSString *remediationURLMapKey; // @synthesize remediationURLMapKey=_remediationURLMapKey;
+@property BOOL shouldReport; // @synthesize shouldReport=_shouldReport;
 @property BOOL urlAppendString; // @synthesize urlAppendString=_urlAppendString;
 @property (strong) NSString *urlAppendStringMapKey; // @synthesize urlAppendStringMapKey=_urlAppendStringMapKey;
 

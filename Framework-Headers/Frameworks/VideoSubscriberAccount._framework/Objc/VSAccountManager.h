@@ -8,7 +8,7 @@
 
 #import <VideoSubscriberAccount/VSViewServiceRequestOperationDelegate-Protocol.h>
 
-@class NSString, VSPrivacyInfoCenter, VSSecurityTask, VSViewServiceRequestCenter;
+@class NSString, VSLinkedOnOrAfterChecker, VSPrivacyInfoCenter, VSSecurityTask, VSViewServiceRequestCenter;
 @protocol VSAccountManagerDelegate;
 
 @interface VSAccountManager : NSObject <VSViewServiceRequestOperationDelegate>
@@ -17,25 +17,27 @@
     VSSecurityTask *_securityTask;
     VSPrivacyInfoCenter *_privacyInfoCenter;
     VSViewServiceRequestCenter *_requestCenter;
+    VSLinkedOnOrAfterChecker *_linkedOnOrAfterChecker;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VSAccountManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) VSLinkedOnOrAfterChecker *linkedOnOrAfterChecker; // @synthesize linkedOnOrAfterChecker=_linkedOnOrAfterChecker;
 @property (strong, nonatomic) VSPrivacyInfoCenter *privacyInfoCenter; // @synthesize privacyInfoCenter=_privacyInfoCenter;
 @property (strong, nonatomic) VSViewServiceRequestCenter *requestCenter; // @synthesize requestCenter=_requestCenter;
 @property (strong, nonatomic) VSSecurityTask *securityTask; // @synthesize securityTask=_securityTask;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_checkEntitlement;
 - (id)_enqueueViewServiceRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)checkAccessStatusWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)enqueueAccountMetadataRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)viewServiceRequestOperation:(id)arg1 dismissViewController:(id)arg2;
 - (void)viewServiceRequestOperation:(id)arg1 presentViewController:(id)arg2;
+- (BOOL)viewServiceRequestOperation:(id)arg1 shouldAuthenticateAccountProviderWithIdentifier:(id)arg2;
 
 @end
 

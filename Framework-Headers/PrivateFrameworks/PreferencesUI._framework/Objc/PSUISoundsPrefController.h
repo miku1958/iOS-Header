@@ -14,12 +14,12 @@
 {
     float _volume;
     float _rateLimitedVolume;
-    int _lastPlayedSound;
     BOOL _hasTelephony;
-    BOOL _volumeHUDSupressed;
+    BOOL _volumeHUDsuppressed;
     double _lastTime;
     PSSpecifier *_voiceMailSpecifier;
     long long _voiceMailSpecifierIndex;
+    BOOL _sliderActive;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -41,13 +41,16 @@
 - (void)setCanChangeRingtoneWithButtons:(id)arg1 specifier:(id)arg2;
 - (void)setPlayKeyboardSound:(id)arg1 specifier:(id)arg2;
 - (void)setSoundEffects:(id)arg1 specifier:(id)arg2;
+- (void)setSystemHapticsEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setVolume:(id)arg1 specifier:(id)arg2;
 - (void)setVolumeAfterRateLimiting;
-- (void)setVolumeHUDSupression:(BOOL)arg1;
+- (void)setVolumeHUDsuppression:(BOOL)arg1;
 - (id)shouldPlayCalendarSound:(id)arg1;
 - (void)showController:(id)arg1 animate:(BOOL)arg2;
 - (id)soundEffects:(id)arg1;
 - (id)specifiers;
+- (void)startRingtonePreview;
+- (id)systemHapticsEnabled:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)updateVoiceMailVisibility;
@@ -58,7 +61,9 @@
 - (void)volumeChangedExternally:(id)arg1;
 - (void)willBecomeActive;
 - (void)willForeground;
+- (void)willHideSlider;
 - (void)willResignActive;
+- (void)willShowSlider;
 
 @end
 

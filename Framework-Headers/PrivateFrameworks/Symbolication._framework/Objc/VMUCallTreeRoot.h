@@ -6,14 +6,16 @@
 
 #import <Symbolication/VMUCallTreeNode.h>
 
-@class NSArray, NSHashTable, NSMapTable, NSString, VMUSampler;
+@class NSArray, NSMapTable, NSMutableSet, NSString, VMUSampler;
+@protocol VMUStackLogReader;
 
 @interface VMUCallTreeRoot : VMUCallTreeNode
 {
     struct _CSTypeRef _symbolicator;
+    id<VMUStackLogReader> _stackLogReader;
     VMUSampler *_sampler;
     unsigned long long _options;
-    NSHashTable *_uniqueNodeNames;
+    NSMutableSet *_uniqueNodeNames;
     NSMapTable *_addressToSymbolNameMap;
     NSMapTable *_addressToLeafSymbolNameMap;
     NSMapTable *_threadPortToNameMap;
@@ -21,6 +23,7 @@
     NSArray *_binaryImages;
 }
 
+- (void).cxx_destruct;
 - (id)addBacktrace:(id)arg1;
 - (id)addBacktrace:(id)arg1 count:(unsigned int)arg2 numBytes:(unsigned long long)arg3;
 - (id)addChildWithName:(id)arg1 address:(unsigned long long)arg2 count:(unsigned int)arg3 numBytes:(unsigned long long)arg4 toNode:(id)arg5;
@@ -31,6 +34,7 @@
 - (id)descriptionStringForAddress:(unsigned long long)arg1 atTime:(unsigned long long)arg2 leafFrame:(BOOL)arg3 startOfRecursion:(BOOL)arg4;
 - (id)initWithCallGraphFile:(id)arg1 fileHeader:(id *)arg2 topFunctionsList:(id *)arg3 binaryImagesList:(id *)arg4;
 - (id)initWithSymbolicator:(struct _CSTypeRef)arg1 sampler:(id)arg2 options:(unsigned long long)arg3;
+- (void)setStackLogReader:(id)arg1;
 
 @end
 

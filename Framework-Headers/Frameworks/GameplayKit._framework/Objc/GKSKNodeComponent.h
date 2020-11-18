@@ -7,13 +7,14 @@
 #import <GameplayKit/GKComponent.h>
 
 #import <GameplayKit/GKAgentDelegate-Protocol.h>
+#import <GameplayKit/GKSerializedNodeContaining-Protocol.h>
 
 @class NSIndexPath, NSString, SKNode;
 
-@interface GKSKNodeComponent : GKComponent <GKAgentDelegate>
+@interface GKSKNodeComponent : GKComponent <GKSerializedNodeContaining, GKAgentDelegate>
 {
-    SKNode *_node;
     NSIndexPath *_serializableNodeIndexPath;
+    SKNode *_node;
 }
 
 @property (readonly, copy) NSString *debugDescription;

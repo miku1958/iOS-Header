@@ -7,15 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <PhotosGraph/NSCoding-Protocol.h>
+#import <PhotosGraph/PGMemoryProtocol-Protocol.h>
 
-@class CLLocation, NSDate, NSDictionary, NSSet, NSString, PGManager, PGMemoryDebug, PHAsset, PHAssetCollection;
+@class CLLocation, NSArray, NSDate, NSDictionary, NSMutableSet, NSSet, NSString, PGMemoryDebug, PHAsset, PHAssetCollection;
 
-@interface PGMemory : NSObject <NSCoding>
+@interface PGMemory : NSObject <PGMemoryProtocol, NSCoding>
 {
-    PGManager *_manager;
     NSDate *_creationDate;
     PHAssetCollection *_assetCollection;
     PHAssetCollection *_curatedAssetCollection;
+    PHAssetCollection *_extendedCuratedAssetCollection;
     PHAsset *_curatedKeyAsset;
     NSDate *_localStartDate;
     NSDate *_localEndDate;
@@ -27,33 +28,44 @@
     double _score;
     long long _sourceType;
     unsigned long long _duration;
-    unsigned long long _category;
+    long long _category;
     long long _subcategory;
+    long long _originalSubcategory;
     unsigned long long _matchedTypes;
     NSDate *_matchedLocalDate;
     CLLocation *_matchedLocation;
     NSSet *_matchedPeople;
     NSString *_matchedEventName;
+    NSSet *_features;
+    NSMutableSet *_persistedFeatures;
     unsigned long long _aggregatedVersions;
     NSString *_meUUID;
     PGMemoryDebug *_debug;
+    long long _notificationQuality;
     NSSet *_momentIDs;
     NSDictionary *_numberOfAssetsByMomentIDs;
+    NSArray *_blacklistableFeatures;
+    NSString *_rejectionCause;
 }
 
 @property (readonly, nonatomic) unsigned long long aggregatedVersions; // @synthesize aggregatedVersions=_aggregatedVersions;
 @property (readonly, nonatomic) PHAssetCollection *assetCollection; // @synthesize assetCollection=_assetCollection;
-@property (nonatomic) unsigned long long category; // @synthesize category=_category;
+@property (strong, nonatomic) NSArray *blacklistableFeatures; // @synthesize blacklistableFeatures=_blacklistableFeatures;
+@property (nonatomic) long long category; // @synthesize category=_category;
 @property (strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (strong, nonatomic) PHAssetCollection *curatedAssetCollection; // @synthesize curatedAssetCollection=_curatedAssetCollection;
 @property (strong, nonatomic) PHAsset *curatedKeyAsset; // @synthesize curatedKeyAsset=_curatedKeyAsset;
 @property (nonatomic) unsigned short curationAlgorithmsVersion;
 @property (strong, nonatomic) PGMemoryDebug *debug; // @synthesize debug=_debug;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long duration; // @synthesize duration=_duration;
+@property (strong, nonatomic) PHAssetCollection *extendedCuratedAssetCollection; // @synthesize extendedCuratedAssetCollection=_extendedCuratedAssetCollection;
+@property (strong, nonatomic) NSSet *features; // @synthesize features=_features;
 @property (nonatomic) unsigned short graphSchemaVersion;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDate *localEndDate; // @synthesize localEndDate=_localEndDate;
 @property (strong, nonatomic) NSDate *localStartDate; // @synthesize localStartDate=_localStartDate;
-@property (weak, nonatomic) PGManager *manager; // @synthesize manager=_manager;
 @property (strong, nonatomic) NSString *matchedEventName; // @synthesize matchedEventName=_matchedEventName;
 @property (strong, nonatomic) NSDate *matchedLocalDate; // @synthesize matchedLocalDate=_matchedLocalDate;
 @property (strong, nonatomic) CLLocation *matchedLocation; // @synthesize matchedLocation=_matchedLocation;
@@ -62,29 +74,38 @@
 @property (strong, nonatomic) NSString *meUUID; // @synthesize meUUID=_meUUID;
 @property (nonatomic) unsigned short memoriesAlgorithmsVersion;
 @property (strong, nonatomic) NSSet *momentIDs; // @synthesize momentIDs=_momentIDs;
+@property (nonatomic) long long notificationQuality; // @synthesize notificationQuality=_notificationQuality;
 @property (strong, nonatomic) NSDictionary *numberOfAssetsByMomentIDs; // @synthesize numberOfAssetsByMomentIDs=_numberOfAssetsByMomentIDs;
+@property (nonatomic) long long originalSubcategory; // @synthesize originalSubcategory=_originalSubcategory;
+@property (strong, nonatomic) NSMutableSet *persistedFeatures; // @synthesize persistedFeatures=_persistedFeatures;
+@property (nonatomic) NSString *rejectionCause; // @synthesize rejectionCause=_rejectionCause;
 @property (nonatomic) unsigned short relatedAlgorithmsVersion;
 @property (nonatomic) double score; // @synthesize score=_score;
 @property (nonatomic) long long sourceType; // @synthesize sourceType=_sourceType;
 @property (nonatomic) long long subcategory; // @synthesize subcategory=_subcategory;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) long long titleCategory; // @synthesize titleCategory=_titleCategory;
 @property (strong, nonatomic) NSDate *universalEndDate; // @synthesize universalEndDate=_universalEndDate;
 @property (strong, nonatomic) NSDate *universalStartDate; // @synthesize universalStartDate=_universalStartDate;
 
-+ (unsigned long long)pgCategoryFromPHCategory:(long long)arg1;
-+ (long long)pgSubcategoryFromPHSubcategory:(long long)arg1;
-+ (long long)phCategoryFromPGCategory:(unsigned long long)arg1;
-+ (id)stringForCategory:(unsigned long long)arg1;
++ (id)greatMemoryCriteria;
++ (id)mustSeeMemoryCriteria;
++ (id)otherMemoryCriteria;
++ (id)stellarMemoryCriteria;
 + (id)stringForSourceType:(long long)arg1;
-+ (id)stringForSubcategory:(long long)arg1;
 - (void).cxx_destruct;
 - (id)_localIdentifiersInAssetCollection:(id)arg1;
-- (id)description;
+- (double)_scoreForMemoryCriteria:(id)arg1;
+- (void)addPersistedFeature:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAssetCollection:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isGreat;
+- (BOOL)isMustSee;
+- (BOOL)isStellar;
+- (double)phMemoryScore;
 
 @end
 

@@ -12,7 +12,7 @@
 #import <iTunesStoreUI/UITableViewDataSource-Protocol.h>
 #import <iTunesStoreUI/UITableViewDelegate-Protocol.h>
 
-@class ISStoreURLOperation, NSArray, NSString, SUClientInterface, SUScriptTextFieldDelegate, SUSearchDisplayController, SUSearchFieldConfiguration, UIControl, UISearchBar;
+@class ISStoreURLOperation, NSArray, NSNumber, NSString, SUClientInterface, SUScriptTextFieldDelegate, SUSearchDisplayController, SUSearchFieldConfiguration, UIControl, UISearchBar;
 
 @interface SUSearchFieldController : NSObject <ISStoreURLOperationDelegate, SUScriptTextFieldDelegate, UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
 {
@@ -31,6 +31,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentage;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSessionDuration;
 @property (readonly, nonatomic) UISearchBar *searchBar;
 @property (copy, nonatomic) SUSearchFieldConfiguration *searchFieldConfiguration; // @synthesize searchFieldConfiguration=_configuration;
 @property (nonatomic) long long searchFieldStyle; // @synthesize searchFieldStyle=_searchFieldStyle;

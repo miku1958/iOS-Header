@@ -16,8 +16,10 @@
 + (void)_accessibilityInitializeSubclassRuntimeOverrides;
 + (void)_accessibilityLoadExtendedBundles;
 + (void)_accessibilityLoadSubbundles:(id)arg1;
++ (long long)_accessibilityLoadingPriorityForBundle:(id)arg1;
 + (void)_accessibilityReenabled;
 + (BOOL)_accessibilityServerStarted;
++ (BOOL)_accessibilityShouldSortBundlesBeforeLoading;
 + (void)_accessibilityStartMiniServer;
 + (void)_accessibilityStartServer;
 + (void)_accessibilityStopServer;
@@ -29,7 +31,7 @@
 + (void)_stringLocalizationStarted:(id)arg1;
 + (void)initialize;
 + (void)loadAccessibilityBundle:(id)arg1 didLoadCallback:(CDUnknownBlockType)arg2;
-+ (void)loadAccessibilityBundle:(id)arg1 didLoadCallback:(CDUnknownBlockType)arg2 force:(BOOL)arg3;
++ (void)loadAccessibilityBundle:(id)arg1 didLoadCallback:(CDUnknownBlockType)arg2 force:(BOOL)arg3 loadAllAccessibilityInfo:(BOOL)arg4;
 + (void)loadActualAccessibilityBundle:(id)arg1 didLoadCallback:(CDUnknownBlockType)arg2 loadSubbundles:(BOOL)arg3;
 
 @end

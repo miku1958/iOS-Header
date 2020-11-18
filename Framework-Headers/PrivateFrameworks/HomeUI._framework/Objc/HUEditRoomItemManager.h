@@ -6,7 +6,7 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFRoomBuilder, HFStaticItem, HFStaticItemProvider;
+@class HFRoomBuilder, HFStaticItem, HFZoneModule;
 
 @interface HUEditRoomItemManager : HFItemManager
 {
@@ -15,7 +15,7 @@
     HFStaticItem *_chooseWallpaperItem;
     HFStaticItem *_wallpaperThumbnailItem;
     HFStaticItem *_removeItem;
-    HFStaticItemProvider *_staticItemProvider;
+    HFZoneModule *_zoneModule;
     HFRoomBuilder *_roomBuilder;
 }
 
@@ -24,18 +24,13 @@
 @property (strong, nonatomic) HFStaticItem *nameItem; // @synthesize nameItem=_nameItem;
 @property (strong, nonatomic) HFStaticItem *removeItem; // @synthesize removeItem=_removeItem;
 @property (strong, nonatomic) HFRoomBuilder *roomBuilder; // @synthesize roomBuilder=_roomBuilder;
-@property (strong, nonatomic) HFStaticItemProvider *staticItemProvider; // @synthesize staticItemProvider=_staticItemProvider;
 @property (strong, nonatomic) HFStaticItem *wallpaperThumbnailItem; // @synthesize wallpaperThumbnailItem=_wallpaperThumbnailItem;
+@property (strong, nonatomic) HFZoneModule *zoneModule; // @synthesize zoneModule=_zoneModule;
 
 - (void).cxx_destruct;
-- (CDUnknownBlockType)_comparatorForSectionIdentifier:(id)arg1;
-- (void)_createItemProvidersWithHome:(id)arg1;
-- (id)_identifierForSection:(unsigned long long)arg1;
-- (id)_itemProviders;
-- (unsigned long long)_numberOfSections;
-- (id)_sectionIdentifierForItem:(id)arg1;
-- (id)_styleForItem:(id)arg1;
-- (id)_titleForSectionWithIdentifier:(id)arg1;
+- (id)_buildItemProvidersForHome:(id)arg1;
+- (id)_buildSectionsWithDisplayedItems:(id)arg1;
+- (BOOL)_canDeleteRoom;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
 - (id)initWithRoomBuilder:(id)arg1 delegate:(id)arg2;
 

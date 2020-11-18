@@ -8,13 +8,12 @@
 
 @interface VKPointFeatureAccessibilityElement : VKFeatureAccessibilityElement
 {
-    struct VKPoint _location;
+    CDStruct_31142d93 _location;
 }
 
-@property (nonatomic) struct VKPoint location; // @synthesize location=_location;
+@property (nonatomic) CDStruct_31142d93 location; // @synthesize location=_location;
 
-- (id).cxx_construct;
-- (int)_accessibilityMapFeatureType;
+- (long long)_accessibilityMapFeatureType;
 - (BOOL)_accessibilitySupportsActivateAction;
 - (id)_distanceAwayString;
 - (id)_poiTypeSuffix;

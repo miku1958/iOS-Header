@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)skinToneBaseKeyPreferences;
 - (void)updateEmojiKeyManagerWithKey:(id)arg1 withKeyView:(id)arg2;
 - (void)updateSkinToneBaseKey:(id)arg1 variantUsed:(id)arg2;
+- (BOOL)userHasSelectedSkinToneEmoji;
 
 @end
 

@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSFileAccessClientLocalArbiterInterface-Protocol.h>
-#import <extension/NSXPCListenerDelegate-Protocol.h>
+#import <Foundation/NSFileAccessClientLocalArbiterInterface-Protocol.h>
+#import <Foundation/NSXPCListenerDelegate-Protocol.h>
 
 @class NSFileAccessArbiter, NSString;
 @protocol OS_dispatch_queue;
@@ -35,6 +35,8 @@ __attribute__((visibility("hidden")))
 - (void)stopArbitrating;
 - (oneway void)tiePresenterForID:(id)arg1 toItemAtURL:(id)arg2;
 - (oneway void)writerWithPurposeID:(id)arg1 didChangeItemAtURL:(id)arg2;
+- (oneway void)writerWithPurposeID:(id)arg1 didChangeSharingOfItemAtURL:(id)arg2;
+- (oneway void)writerWithPurposeID:(id)arg1 didChangeUbiquityAttributes:(id)arg2 ofItemAtURL:(id)arg3;
 - (oneway void)writerWithPurposeID:(id)arg1 didChangeUbiquityOfItemAtURL:(id)arg2;
 - (oneway void)writerWithPurposeID:(id)arg1 didDisconnectItemAtURL:(id)arg2;
 - (oneway void)writerWithPurposeID:(id)arg1 didMakeItemDisappearAtURL:(id)arg2;

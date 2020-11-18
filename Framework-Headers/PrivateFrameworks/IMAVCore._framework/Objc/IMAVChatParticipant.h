@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class IMAVChat, IMHandle, NSArray, NSData, NSDictionary, NSMutableArray, NSString, NSTimer;
 
@@ -97,7 +97,7 @@
 - (id)_callInfoWithState:(long long)arg1;
 - (id)_callInfosWaitingForAcceptAction;
 - (id)_callInfosWaitingForResponse;
-- (void)_cancelInvitationWithReason:(id)arg1;
+- (void)_cancelInvitationWithReason:(unsigned int)arg1 response:(id)arg2;
 - (void)_cleanupOrphanedCallInfos;
 - (void)_connectTimeout:(id)arg1;
 - (BOOL)_generateCallInfo:(id)arg1;
@@ -120,6 +120,7 @@
 - (long long)bestCallID;
 - (id)callInfoBeingHandedOff;
 - (void)cancelInvitation;
+- (void)cancelInvitationWithReason:(unsigned int)arg1;
 - (void)cancelInvitationWithResponse:(unsigned int)arg1;
 - (struct CGRect)contentRectForCameraOrientation:(unsigned int)arg1 cameraType:(unsigned int)arg2;
 - (void)dealloc;

@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 
 + (id)assertionWithType:(id)arg1 identifier:(id)arg2;
+- (void).cxx_destruct;
 - (BOOL)_hasValidAssertionType;
 - (void)_notifyServerAssertionWasAcquired;
 - (void)_notifyServerAssertionWasRelinquished;

@@ -13,12 +13,14 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (long long)_accessibilityCountAccessibleChildren:(id)arg1;
+- (id)_accessibilityGetValue;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (id)_accessibilityInternalFakeTextField;
 - (id)_accessibilityInternalFakeTextField:(BOOL)arg1;
 - (id)_accessibilityLeftButtons;
 - (id)_accessibilityNativeFocusPreferredElement;
+- (BOOL)_accessibilityOverridesLabelValueHintSelector:(SEL)arg1;
 - (id)_accessibilityPlaceholderValue:(BOOL)arg1;
 - (id)_accessibilityResponderElement;
 - (id)_accessibilityRightButtons;
@@ -27,9 +29,13 @@
 - (void)_accessibilitySetValue:(id)arg1;
 - (void)_accessibilitySwitchOrderedChildrenFrom:(id)arg1;
 - (id)_accessibilityTextFieldText;
+- (id)_accessibilityTextSelectionRectWithLargestVisualRangeFromCandidates:(id)arg1;
 - (BOOL)_axTextFieldIsHidden;
 - (void)_clearButtonClicked:(id)arg1;
 - (struct CGPoint)accessibilityActivationPoint;
+- (id)accessibilityAttributedValue;
+- (id)accessibilityDragSourceDescriptors;
+- (id)accessibilityDropPointDescriptors;
 - (BOOL)accessibilityElementIsFocused;
 - (id)accessibilityElements;
 - (id)accessibilityLabel;

@@ -26,7 +26,6 @@
 - (id)init;
 - (Class)operationInfoClass;
 - (void)performCKOperation;
-- (void)setLongLived:(BOOL)arg1;
 
 @end
 

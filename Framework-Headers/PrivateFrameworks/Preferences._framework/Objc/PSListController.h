@@ -97,6 +97,7 @@
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (nonatomic) BOOL usesDarkTheme; // @synthesize usesDarkTheme=_usesDarkTheme;
 
++ (id)aggregateReportingDomainOverride;
 + (id)appearance;
 + (id)appearanceForTraitCollection:(id)arg1;
 + (id)appearanceForTraitCollection:(id)arg1 whenContainedIn:(Class)arg2;
@@ -104,6 +105,7 @@
 + (id)appearanceWhenContainedIn:(Class)arg1;
 + (id)appearanceWhenContainedInInstancesOfClasses:(id)arg1;
 + (BOOL)displaysButtonBar;
++ (void)setAggregateReportingDomainOverride:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addIdentifierForSpecifier:(id)arg1;
 - (id)_createGroupIndices:(id)arg1;
@@ -111,6 +113,7 @@
 - (BOOL)_getGroup:(long long *)arg1 row:(long long *)arg2 ofSpecifierAtIndex:(long long)arg3 groups:(id)arg4;
 - (double)_getKeyboardIntersectionHeightFromUserInfo:(id)arg1;
 - (void)_insertContiguousSpecifiers:(id)arg1 atIndex:(long long)arg2 animated:(BOOL)arg3;
+- (BOOL)_isEmptyGroup:(unsigned long long)arg1;
 - (BOOL)_isRegularWidth;
 - (void)_keyboardDidHide:(id)arg1;
 - (void)_keyboardWillHide:(id)arg1;
@@ -273,6 +276,7 @@
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 titleAlignmentForFooterInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 titleAlignmentForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;

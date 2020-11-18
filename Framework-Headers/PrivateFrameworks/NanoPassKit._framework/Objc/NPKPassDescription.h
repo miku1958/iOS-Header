@@ -18,8 +18,13 @@
     BOOL _cobranded;
     BOOL _deletePending;
     BOOL _hasUserSelectableContactlessPaymentApplications;
+    BOOL _hasAssociatedPeerPaymentAccount;
+    BOOL _lazyLoadEncodedImages;
     PKImage *_logoImage;
     PKImage *_backgroundImage;
+    unsigned long long _expressPassTypesMask;
+    NSData *_backgroundImageEncoded;
+    NSData *_logoImageEncoded;
     NSString *_uniqueID;
     NSNumber *_groupID;
     NSString *_passTypeIdentifier;
@@ -41,6 +46,7 @@
     PKPaymentApplication *_devicePrimaryInAppPaymentApplication;
     PKPaymentApplication *_preferredPaymentApplication;
     long long _effectivePaymentApplicationState;
+    NSString *_issuerCountryCode;
     NSArray *_availableActions;
     NSString *_organizationName;
     PKFelicaTransitAppletState *_felicaTransitAppletState;
@@ -48,8 +54,6 @@
     NSArray *_backFieldBuckets;
     NSDecimalNumber *_lastAddValueAmount;
     NSDate *_pendingAddValueDate;
-    NSData *_logoImageEncoded;
-    NSData *_backgroundImageEncoded;
 }
 
 @property (strong, nonatomic) NSArray *availableActions; // @synthesize availableActions=_availableActions;
@@ -66,15 +70,19 @@
 @property (strong, nonatomic) PKPaymentApplication *devicePrimaryPaymentApplication; // @synthesize devicePrimaryPaymentApplication=_devicePrimaryPaymentApplication;
 @property (readonly, nonatomic) long long effectiveContactlessPaymentApplicationState;
 @property (nonatomic) long long effectivePaymentApplicationState; // @synthesize effectivePaymentApplicationState=_effectivePaymentApplicationState;
+@property (nonatomic) unsigned long long expressPassTypesMask; // @synthesize expressPassTypesMask=_expressPassTypesMask;
 @property (strong, nonatomic) PKFelicaTransitAppletState *felicaTransitAppletState; // @synthesize felicaTransitAppletState=_felicaTransitAppletState;
 @property (strong, nonatomic) PKColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property (strong, nonatomic) NSArray *frontFieldBuckets; // @synthesize frontFieldBuckets=_frontFieldBuckets;
 @property (strong, nonatomic) NSNumber *groupID; // @synthesize groupID=_groupID;
+@property (nonatomic) BOOL hasAssociatedPeerPaymentAccount; // @synthesize hasAssociatedPeerPaymentAccount=_hasAssociatedPeerPaymentAccount;
 @property (nonatomic) BOOL hasStoredValue; // @synthesize hasStoredValue=_hasStoredValue;
 @property (nonatomic) BOOL hasUserSelectableContactlessPaymentApplications; // @synthesize hasUserSelectableContactlessPaymentApplications=_hasUserSelectableContactlessPaymentApplications;
 @property (strong, nonatomic) NSDate *ingestionDate; // @synthesize ingestionDate=_ingestionDate;
+@property (strong, nonatomic) NSString *issuerCountryCode; // @synthesize issuerCountryCode=_issuerCountryCode;
 @property (strong, nonatomic) PKColor *labelColor; // @synthesize labelColor=_labelColor;
 @property (strong, nonatomic) NSDecimalNumber *lastAddValueAmount; // @synthesize lastAddValueAmount=_lastAddValueAmount;
+@property (nonatomic) BOOL lazyLoadEncodedImages; // @synthesize lazyLoadEncodedImages=_lazyLoadEncodedImages;
 @property (strong, nonatomic) NSString *localizedDescription; // @synthesize localizedDescription=_localizedDescription;
 @property (strong, nonatomic) PKImage *logoImage; // @synthesize logoImage=_logoImage;
 @property (strong, nonatomic) NSData *logoImageEncoded; // @synthesize logoImageEncoded=_logoImageEncoded;
@@ -95,7 +103,6 @@
 + (void)setCachingEnabled:(BOOL)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_personalizedInAppPaymentApplicationsForNetworks:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)encodeAsData:(id)arg1;
@@ -103,15 +110,17 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)felicaProperties;
 - (id)fieldForKey:(id)arg1;
+- (BOOL)hasValidNFCPayload;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPass:(id)arg1;
+- (id)initWithPass:(id)arg1 lazyLoadEncodedImages:(BOOL)arg2;
 - (BOOL)isAddValuePending;
 - (BOOL)isEnroute;
 - (BOOL)isEqual:(id)arg1;
-- (id)safeUnarchiveObjectOfClass:(Class)arg1 withData:(id)arg2;
-- (BOOL)supportsInAppPaymentOnNetworks:(id)arg1;
-- (BOOL)supportsInAppPaymentOnNetworks:(id)arg1 capabilities:(unsigned long long)arg2;
+- (BOOL)supportsExpressPassType:(long long)arg1;
+- (BOOL)supportsInAppPaymentOnNetworks:(id)arg1 capabilities:(unsigned long long)arg2 issuerCountryCodes:(id)arg3 paymentApplicationStates:(id)arg4;
+- (BOOL)supportsInAppPaymentOnNetworks:(id)arg1 issuerCountryCodes:(id)arg2;
 
 @end
 

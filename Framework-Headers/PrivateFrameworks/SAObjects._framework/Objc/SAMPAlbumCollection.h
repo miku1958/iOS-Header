@@ -13,6 +13,7 @@
 }
 
 @property (copy, nonatomic) NSString *artist;
+@property (copy, nonatomic) NSString *description;
 @property (copy, nonatomic) NSString *sortArtist;
 
 + (id)albumCollection;

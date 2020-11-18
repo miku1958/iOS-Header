@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSString;
 
@@ -12,19 +12,17 @@ __attribute__((visibility("hidden")))
 @interface _GEOSearchAttributionListener : NSObject
 {
     NSString *_identifier;
-    unsigned int _version;
     NSMutableArray *_completionHandlers;
     NSMutableArray *_errorHandlers;
 }
 
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) unsigned int version; // @synthesize version=_version;
 
+- (void).cxx_destruct;
 - (void)addCompletionHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (void)handleError:(id)arg1;
-- (void)handleInfo:(id)arg1 updatedManifest:(BOOL)arg2;
-- (id)initWithIdentifier:(id)arg1 version:(unsigned int)arg2;
+- (void)handleInfo:(id)arg1;
+- (id)initWithIdentifier:(id)arg1;
 
 @end
 

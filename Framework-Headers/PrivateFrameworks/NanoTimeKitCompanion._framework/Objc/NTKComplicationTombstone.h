@@ -16,6 +16,7 @@
 + (BOOL)supportsSecureCoding;
 + (id)tombstoneWithComplication:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addKeysToJSONDictionary:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

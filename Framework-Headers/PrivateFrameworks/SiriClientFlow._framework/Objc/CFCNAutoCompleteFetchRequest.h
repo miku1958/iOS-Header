@@ -6,29 +6,39 @@
 
 #import <SAObjects/SADomainCommand.h>
 
+#import <SiriClientFlow/CFLocalAceHandling-Protocol.h>
 #import <SiriClientFlow/SAAceSerializable-Protocol.h>
 
 @class CFCNAutoCompleteFetchContext, NSArray, NSString;
 
-@interface CFCNAutoCompleteFetchRequest : SADomainCommand <SAAceSerializable>
+@interface CFCNAutoCompleteFetchRequest : SADomainCommand <CFLocalAceHandling, SAAceSerializable>
 {
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) CFCNAutoCompleteFetchContext *fetchContext;
 @property (copy, nonatomic) NSArray *fetchRequestOptions;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *priorityDomainForSorting;
 @property (copy, nonatomic) NSString *searchString;
 @property (copy, nonatomic) NSString *searchType;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 
++ (id)aceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)autoCompleteFetchRequest;
 + (id)autoCompleteFetchRequestWithDictionary:(id)arg1 context:(id)arg2;
-+ (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
+- (id)autoCompeleteFetchContext;
+- (unsigned long long)autoCompleteSearchTypeWithError:(id *)arg1;
+- (id)commandFailedWithError:(id)arg1;
 - (id)encodedClassName;
+- (id)errorWithReason:(id)arg1 code:(long long)arg2;
 - (id)groupIdentifier;
+- (void)handleWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)requiresResponse;
 
 @end

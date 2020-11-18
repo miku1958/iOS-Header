@@ -6,26 +6,37 @@
 
 #import <objc/NSObject.h>
 
+#import <SearchFoundation/NSCopying-Protocol.h>
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFText-Protocol.h>
 
-@class NSString;
+@class NSData, NSDictionary, NSString;
 
-@interface SFText : NSObject <NSSecureCoding>
+@interface SFText : NSObject <SFText, NSSecureCoding, NSCopying>
 {
+    CDStruct_6afdaceb _has;
     NSString *_text;
     unsigned long long _maxLines;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned long long maxLines; // @synthesize maxLines=_maxLines;
-@property (copy, nonatomic) NSString *text; // @synthesize text=_text;
+@property (readonly) Class superclass;
+@property (copy) NSString *text; // @synthesize text=_text;
 
 + (BOOL)supportsSecureCoding;
 + (id)textWithString:(id)arg1;
 - (void).cxx_destruct;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
-- (id)description;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasMaxLines;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 - (unsigned long long)length;
 
 @end

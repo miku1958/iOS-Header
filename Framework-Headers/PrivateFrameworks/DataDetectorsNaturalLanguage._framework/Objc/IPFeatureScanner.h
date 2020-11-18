@@ -6,41 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class IPEventClassificationType, IPFeatureData, NSArray, NSMutableArray, NSMutableSet;
+@class NSArray, NSMutableArray, NSMutableSet;
 
 @interface IPFeatureScanner : NSObject
 {
-    BOOL _subjectContainsDate;
-    BOOL _hasCheckedEventType;
-    NSArray *_messageUnits;
+    NSArray *_bodyMessageUnits;
+    NSMutableArray *_bodyAllFeatures;
+    NSMutableArray *_bodyDataDetectorsFeatures;
+    NSMutableArray *_bodyKeywordFeatures;
+    NSMutableArray *_bodySentenceFeatures;
     NSMutableArray *_detectedEvents;
     NSArray *_stitchedEvents;
     NSArray *_filteredDetectedEvents;
     unsigned long long _resultType;
-    NSArray *_subjectDataDetectorsFeatures;
-    IPFeatureData *_dateInSubjectFeatureData;
-    NSMutableArray *_allMessageUnitsFeatures;
-    IPEventClassificationType *_eventType;
     NSMutableSet *_extractedNotesStrings;
 }
 
-@property (strong) NSMutableArray *allMessageUnitsFeatures; // @synthesize allMessageUnitsFeatures=_allMessageUnitsFeatures;
-@property (strong) IPFeatureData *dateInSubjectFeatureData; // @synthesize dateInSubjectFeatureData=_dateInSubjectFeatureData;
+@property (strong) NSMutableArray *bodyAllFeatures; // @synthesize bodyAllFeatures=_bodyAllFeatures;
+@property (strong) NSMutableArray *bodyDataDetectorsFeatures; // @synthesize bodyDataDetectorsFeatures=_bodyDataDetectorsFeatures;
+@property (strong) NSMutableArray *bodyKeywordFeatures; // @synthesize bodyKeywordFeatures=_bodyKeywordFeatures;
+@property (strong) NSArray *bodyMessageUnits; // @synthesize bodyMessageUnits=_bodyMessageUnits;
+@property (strong) NSMutableArray *bodySentenceFeatures; // @synthesize bodySentenceFeatures=_bodySentenceFeatures;
 @property (strong) NSMutableArray *detectedEvents; // @synthesize detectedEvents=_detectedEvents;
-@property (strong) IPEventClassificationType *eventType; // @synthesize eventType=_eventType;
 @property (strong) NSMutableSet *extractedNotesStrings; // @synthesize extractedNotesStrings=_extractedNotesStrings;
 @property (strong) NSArray *filteredDetectedEvents; // @synthesize filteredDetectedEvents=_filteredDetectedEvents;
-@property BOOL hasCheckedEventType; // @synthesize hasCheckedEventType=_hasCheckedEventType;
-@property (strong) NSArray *messageUnits; // @synthesize messageUnits=_messageUnits;
 @property unsigned long long resultType; // @synthesize resultType=_resultType;
 @property (strong) NSArray *stitchedEvents; // @synthesize stitchedEvents=_stitchedEvents;
-@property BOOL subjectContainsDate; // @synthesize subjectContainsDate=_subjectContainsDate;
-@property (strong) NSArray *subjectDataDetectorsFeatures; // @synthesize subjectDataDetectorsFeatures=_subjectDataDetectorsFeatures;
 
 + (id)dataDetectorsFeatureExtractor;
 + (id)descriptionForScanResultType:(unsigned long long)arg1;
-+ (id)featureExtractorsExceptDataDetectorsExtractor;
 + (BOOL)isNaturalLanguageEventDetectionEnabled;
++ (id)keywordFeatureExtractor;
++ (id)sentenceFeatureExtractor;
 + (void)setEventStoreForTesting:(id)arg1;
 - (void).cxx_destruct;
 - (unsigned long long)_distanceBetweenFeature:(id)arg1 andFeature:(id)arg2;
@@ -53,35 +50,41 @@
 - (id)_sortedFeaturesByDistance:(id)arg1 aroundRange:(struct _NSRange)arg2;
 - (id)_sortedFeaturesByRange:(id)arg1;
 - (id)_stitchedEventsFromEvents:(id)arg1;
-- (id)artisNamesFromFeatures:(id)arg1;
-- (id)bestEventFromEvents:(id)arg1;
+- (void)adjustTimeForEvent:(id)arg1;
+- (void)adjustTimeForEvents:(id)arg1;
+- (id)analyzeFeatures:(id)arg1 messageUnit:(id)arg2;
+- (id)analyzeFeatures:(id)arg1 messageUnit:(id)arg2 checkPolarity:(BOOL)arg3 polarity:(unsigned long long)arg4;
+- (id)artisNamesFromDataFeatures:(id)arg1;
+- (void)augmentDetectedDatesWithEndDates:(id)arg1;
+- (id)bestEventsFromEvents:(id)arg1;
 - (id)cleanedStringForFeatureData:(id)arg1;
+- (double)confidenceForEvent:(id)arg1 baseConfidence:(double)arg2;
+- (void)confidenceForEvents:(id)arg1;
 - (unsigned long long)countOfFeaturesContainDateInTheFuture:(id)arg1 messageUnitSentDate:(id)arg2;
+- (BOOL)dataFeatures:(id)arg1 containDateOlderThan:(id)arg2 preciseTimeOnly:(BOOL)arg3;
+- (id)dataFeaturesInTheFutureFromDataFeatures:(id)arg1 messageUnitSentDate:(id)arg2;
 - (id)decoratedTitle:(id)arg1 withSubtitles:(id)arg2;
-- (void)doSynchronousScanWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)emailParticipantNames;
-- (void)enrichEvents:(id)arg1 messageUnits:(id)arg2 dateInSubject:(BOOL)arg3 features:(id)arg4;
-- (id)entertainmentPOINamesFromFeatures:(id)arg1;
+- (id)decoratedTitleFromEventType:(id)arg1 title:(id)arg2 sender:(id)arg3 recipients:(id)arg4 isSent:(BOOL)arg5;
+- (void)enrichEvents:(id)arg1 messageUnits:(id)arg2 dateInSubject:(id)arg3 dataFeatures:(id)arg4;
+- (id)entertainmentPOINamesFromDataFeatures:(id)arg1;
+- (unsigned long long)eventStatusFromPolarity:(unsigned long long)arg1;
 - (unsigned long long)featureSentencePolarityForFeatureAtIndex:(unsigned long long)arg1 inFeatures:(id)arg2;
-- (BOOL)features:(id)arg1 containDateOlderThan:(id)arg2 preciseTimeOnly:(BOOL)arg3;
-- (id)featuresForTextString:(id)arg1 inMessageUnit:(id)arg2;
 - (id)featuresForTextString:(id)arg1 inMessageUnit:(id)arg2 extractors:(id)arg3 context:(id)arg4;
 - (id)filteredEventsForDetectedEvents:(id)arg1 referenceDate:(id)arg2;
-- (BOOL)isBlacklistedSender:(id)arg1;
 - (BOOL)isDateAroundNoon:(id)arg1;
 - (BOOL)isDateRoundedTo5Minutes:(id)arg1;
-- (BOOL)isEventProposalFromFeatures:(id)arg1 fromFeatureAtIndex:(unsigned long long)arg2 messageUnit:(id)arg3 eventIsTenseDependent:(BOOL)arg4 extractedFromSubject:(BOOL)arg5 clusterType:(unsigned long long *)arg6;
+- (BOOL)isEventProposalOrConfirmationFromFeatures:(id)arg1 fromFeatureAtIndex:(unsigned long long)arg2 messageUnit:(id)arg3 eventIsTenseDependent:(BOOL)arg4 extractedFromSubject:(BOOL)arg5 extractedPolarity:(unsigned long long *)arg6 polarityInfluencedByIpsosPlistRef:(BOOL *)arg7;
 - (id)messageSenderName;
-- (id)movieTitlesFromFeatures:(id)arg1;
+- (id)movieTitlesFromDataFeatures:(id)arg1;
 - (id)normalizedAllDayDateFromDate:(id)arg1;
 - (void)normalizedEvents:(id)arg1;
-- (id)notesStringsFromFeatures:(id)arg1;
-- (void)processScanOfMessageUnit:(id)arg1;
+- (id)notesStringsFromDataFeatures:(id)arg1;
 - (void)resetScanState;
-- (id)restaurantAndBarPOINamesFromFeatures:(id)arg1;
+- (id)restaurantAndBarPOINamesFromDataFeatures:(id)arg1;
 - (void)scanEventsInMessageUnits:(id)arg1 synchronously:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)shortNameForPerson:(id)arg1;
 - (BOOL)shouldReplaceSendDateWithCurrentDate;
-- (id)sportTeamNamesFromFeatures:(id)arg1;
+- (id)sportTeamNamesFromDataFeatures:(id)arg1;
 - (id)stitchedEventsFromEvents:(id)arg1;
 - (id)stringsFromDataFeatures:(id)arg1 matchingTypes:(id)arg2;
 - (id)subjectEventVocabularyIgnoreDateKeyword:(id)arg1;

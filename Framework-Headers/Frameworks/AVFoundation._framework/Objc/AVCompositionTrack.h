@@ -20,6 +20,7 @@
 - (void)dealloc;
 - (id)description;
 - (void)finalize;
+- (id)segmentForTrackTime:(CDStruct_1b6d18a9)arg1;
 
 @end
 

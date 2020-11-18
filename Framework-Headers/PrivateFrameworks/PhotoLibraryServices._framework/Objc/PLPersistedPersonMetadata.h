@@ -4,58 +4,81 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSDictionary, NSString, NSURL, PLPerson;
 
 @interface PLPersistedPersonMetadata : NSObject
 {
-    int _manualOrder;
+    short _keyFacePickSource;
+    unsigned int _manualOrder;
     int _type;
+    int _verifiedType;
+    int _cloudVerifiedType;
     NSString *_personUUID;
+    NSString *_mergeTargetPersonUUID;
     NSString *_fullName;
     NSString *_displayName;
     NSString *_personUri;
     NSArray *_detectedFaces;
     NSArray *_rejectedFaces;
     NSDictionary *_contactMatchingDictionary;
+    long long _fromVersion;
     PLPerson *_person;
     NSURL *_metadataURL;
 }
 
+@property (nonatomic) int cloudVerifiedType; // @synthesize cloudVerifiedType=_cloudVerifiedType;
 @property (copy, nonatomic) NSDictionary *contactMatchingDictionary; // @synthesize contactMatchingDictionary=_contactMatchingDictionary;
 @property (strong, nonatomic) NSArray *detectedFaces; // @synthesize detectedFaces=_detectedFaces;
 @property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (nonatomic) long long fromVersion; // @synthesize fromVersion=_fromVersion;
 @property (strong, nonatomic) NSString *fullName; // @synthesize fullName=_fullName;
-@property (nonatomic) int manualOrder; // @synthesize manualOrder=_manualOrder;
+@property (nonatomic) short keyFacePickSource; // @synthesize keyFacePickSource=_keyFacePickSource;
+@property (nonatomic) unsigned int manualOrder; // @synthesize manualOrder=_manualOrder;
+@property (strong, nonatomic) NSString *mergeTargetPersonUUID; // @synthesize mergeTargetPersonUUID=_mergeTargetPersonUUID;
 @property (strong, nonatomic) NSURL *metadataURL; // @synthesize metadataURL=_metadataURL;
 @property (strong, nonatomic) PLPerson *person; // @synthesize person=_person;
 @property (strong, nonatomic) NSString *personUUID; // @synthesize personUUID=_personUUID;
 @property (strong, nonatomic) NSString *personUri; // @synthesize personUri=_personUri;
 @property (strong, nonatomic) NSArray *rejectedFaces; // @synthesize rejectedFaces=_rejectedFaces;
 @property (nonatomic) int type; // @synthesize type=_type;
+@property (nonatomic) int verifiedType; // @synthesize verifiedType=_verifiedType;
 
-+ (id)_persistedFaceMetadataWithFaces:(id)arg1 keyFace:(id)arg2;
-+ (id)detectedFacesToArchiveWithPerson:(id)arg1;
-+ (BOOL)isFacePersistable:(id)arg1;
++ (id)_clusterRejectedFaceIDsWithPerson:(id)arg1;
++ (id)_detectedFacesToArchiveWithPerson:(id)arg1;
++ (id)_fetchFacesWithPredicate:(id)arg1 resultType:(unsigned long long)arg2 managedObjectContext:(id)arg3 error:(id *)arg4;
++ (id)_persistedFaceMetadataWithFaces:(id)arg1 keyFace:(id)arg2 clusterRejectedFaceIDs:(id)arg3;
++ (id)_rejectedFacesToArchiveWithPerson:(id)arg1;
++ (BOOL)deleteMetadataFileForPersonUUID:(id)arg1;
 + (BOOL)isValidPath:(id)arg1;
-+ (id)rejectedFacesToArchiveWithPerson:(id)arg1;
-+ (unsigned long long)writeMetadataForVerifiedPeopleOnAssetObjectIDs:(id)arg1 inManagedObjectContext:(id)arg2;
++ (BOOL)isValidPath:(id)arg1 outPersonUUID:(id *)arg2;
++ (id)metadataFileURLForPersonUUID:(id)arg1;
++ (void)performPostImportMigrationFromVersion:(unsigned long long)arg1 fromDataInManagedObjectContext:(id)arg2;
++ (id)personUUIDsToDedupeWithMetadataURLs:(id)arg1;
++ (void)updateMergeTargetPersonWithPersonUUIDMapping:(id)arg1 fromDataInManagedObjectContext:(id)arg2;
++ (id)urlForLegacyHiddenFacesFile;
++ (id)urlsForPersistedPersonsInLibraryMetadataDirectory;
 - (void).cxx_destruct;
 - (void)_addAssetUUIDsFromFaces:(id)arg1 toMutableSet:(id)arg2;
 - (BOOL)_insertDetectedFacesOnPerson:(id)arg1 fromDataInManagedObjectContext:(id)arg2 deferUnmatched:(BOOL)arg3;
 - (BOOL)_insertRejectedFacesOnPerson:(id)arg1 fromDataInManagedObjectContext:(id)arg2 deferUnmatched:(BOOL)arg3;
 - (id)_metadataData;
-- (BOOL)_readMetadata;
+- (BOOL)_readUUID;
 - (void)_saveMetadata;
 - (id)description;
+- (id)detectedFaceIdentifiers;
 - (BOOL)hasAllAssetsAvailableInManagedObjectContext:(id)arg1 includePendingAssetChanges:(BOOL)arg2;
 - (id)init;
 - (id)initWithPLPerson:(id)arg1;
 - (id)initWithPLPerson:(id)arg1 metadataURL:(id)arg2;
 - (id)initWithPersistedDataAtURL:(id)arg1;
+- (id)initWithPersistedDataAtURL:(id)arg1 deferUnarchiving:(BOOL)arg2;
 - (id)insertPersonFromDataInManagedObjectContext:(id)arg1;
-- (void)removePersistedData;
+- (id)jsonDictionary;
+- (BOOL)matchesEntityInLibraryBackedByManagedObjectContext:(id)arg1 diff:(id *)arg2;
+- (BOOL)readDetectedFaces;
+- (BOOL)readMetadata;
 - (BOOL)updateFacesInPerson:(id)arg1 fromDataInManagedObjectContext:(id)arg2 deferUnmatched:(BOOL)arg3;
 - (void)writePersistedData;
 

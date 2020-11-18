@@ -20,11 +20,13 @@
     NSURL *_uri;
     NSString *_name;
     NSString *_bundlePath;
+    CDStruct_8caa76fc _imageSize;
 }
 
 @property (copy, nonatomic, setter=_setBundlePath:) NSString *_bundlePath; // @synthesize _bundlePath;
 @property (readonly, copy, nonatomic) NSString *_identifier; // @synthesize _identifier;
 @property (copy, nonatomic, setter=_setImageData:) NSData *_imageData; // @synthesize _imageData;
+@property (nonatomic, setter=_setImageSize:) CDStruct_8caa76fc _imageSize; // @synthesize _imageSize;
 @property (copy, nonatomic, setter=_setName:) NSString *_name; // @synthesize _name;
 @property (copy, nonatomic, setter=_setUri:) NSURL *_uri; // @synthesize _uri;
 @property (readonly, copy, nonatomic) NSString *cacheIdentifier;
@@ -41,15 +43,21 @@
 + (id)imageNamed:(id)arg1;
 + (id)imageWithImageData:(id)arg1;
 + (id)imageWithURL:(id)arg1;
++ (id)imageWithURL:(id)arg1 width:(double)arg2 height:(double)arg3;
++ (void)initialize;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_init;
+- (id)_description;
+- (id)_descriptionAtIndent:(unsigned long long)arg1;
+- (id)_dictionaryRepresentation;
+- (id)_initWithData:(id)arg1;
 - (id)_initWithIdentifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)generateCachePayloadWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

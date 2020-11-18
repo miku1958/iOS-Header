@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 @protocol VKLabelNavFeature;
@@ -19,17 +19,22 @@ __attribute__((visibility("hidden")))
     unsigned char _alignment;
     float _desiredOffsetDistance;
     unsigned int _displayID;
+    BOOL _isPicked;
 }
 
 @property (nonatomic) unsigned char alignment; // @synthesize alignment=_alignment;
 @property (nonatomic) float desiredOffsetDistance; // @synthesize desiredOffsetDistance=_desiredOffsetDistance;
 @property (nonatomic) unsigned int displayID; // @synthesize displayID=_displayID;
+@property (readonly, nonatomic) BOOL isEtaLabel;
 @property (readonly, nonatomic) BOOL isJunctionLabel;
 @property (readonly, nonatomic) BOOL isManeuverLabel;
 @property (readonly, nonatomic) BOOL isRoadLabel;
 @property (readonly, nonatomic) BOOL isShieldLabel;
+@property (readonly, nonatomic) BOOL isTrafficCameraLabel;
 @property (readonly, nonatomic) const shared_ptr_93ff9d4a *label; // @synthesize label=_label;
+@property (nonatomic) Mercator2_57ec32b6 mercatorPoint;
 @property (nonatomic) id<VKLabelNavFeature> navFeature; // @synthesize navFeature=_navFeature;
+@property (nonatomic) unsigned short renderOrder;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

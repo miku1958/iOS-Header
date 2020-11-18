@@ -6,7 +6,6 @@
 
 #import <SceneKit/SCNTextureLayerSource.h>
 
-__attribute__((visibility("hidden")))
 @interface SCNTextureUIKitSource : SCNTextureLayerSource
 {
     BOOL _setup;
@@ -26,9 +25,12 @@ __attribute__((visibility("hidden")))
 
 - (void)_layerTreeDidUpdate;
 - (void)cleanup:(struct __C3DRendererContext *)arg1;
+- (float)clearValue;
 - (void)dealloc;
 - (id)layer;
+- (double)layerContentsScaleFactor;
 - (struct CGSize)layerSizeInPixels;
+- (id)layerToFocusForRenderedLayer:(id)arg1;
 - (void)setup;
 - (struct __C3DTexture *)textureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 

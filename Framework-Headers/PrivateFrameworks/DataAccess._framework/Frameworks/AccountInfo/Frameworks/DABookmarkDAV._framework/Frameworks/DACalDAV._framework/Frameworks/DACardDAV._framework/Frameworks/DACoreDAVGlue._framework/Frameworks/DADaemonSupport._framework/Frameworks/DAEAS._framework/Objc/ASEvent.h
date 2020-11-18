@@ -40,6 +40,7 @@
     NSDate *_startTime;
     NSArray *_from;
     NSNumber *_disallowNewTimeProposal;
+    NSString *_onlineMeetingExternalLink;
     NSDate *_tombstoneEndTime;
     ASEventUID *_eventUID;
     NSArray *_attendees;
@@ -91,6 +92,7 @@
 @property (nonatomic) int meetingResponseForEmail;
 @property (nonatomic) int meetingResponseToEmailAbout; // @synthesize meetingResponseToEmailAbout=_meetingResponseToEmailAbout;
 @property (strong, nonatomic) NSNumber *meetingStatus; // @synthesize meetingStatus=_meetingStatus;
+@property (strong, nonatomic) NSString *onlineMeetingExternalLink; // @synthesize onlineMeetingExternalLink=_onlineMeetingExternalLink;
 @property (strong, nonatomic) NSString *organizerEmail; // @synthesize organizerEmail=_organizerEmail;
 @property (strong, nonatomic) NSString *organizerName; // @synthesize organizerName=_organizerName;
 @property (strong, nonatomic) NSDate *proposedEndTime; // @synthesize proposedEndTime=_proposedEndTime;

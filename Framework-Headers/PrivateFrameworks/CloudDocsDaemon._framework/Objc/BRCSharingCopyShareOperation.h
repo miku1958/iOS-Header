@@ -8,24 +8,29 @@
 
 #import <CloudDocsDaemon/BRCOperationSubclass-Protocol.h>
 
-@class CKRecordID, NSString;
+@class BRCClientZone, BRCItemID, CKRecordID, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRCSharingCopyShareOperation : _BRCFrameworkOperation <BRCOperationSubclass>
 {
     CKRecordID *_shareID;
     CKRecordID *_recordIDNeedingFetch;
+    BRCItemID *_rootItemIDToLookup;
+    BRCClientZone *_clientZone;
 }
 
+@property (strong, nonatomic) BRCClientZone *clientZone; // @synthesize clientZone=_clientZone;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CKRecordID *recordIDNeedingFetch; // @synthesize recordIDNeedingFetch=_recordIDNeedingFetch;
+@property (strong, nonatomic) BRCItemID *rootItemIDToLookup; // @synthesize rootItemIDToLookup=_rootItemIDToLookup;
 @property (strong, nonatomic) CKRecordID *shareID; // @synthesize shareID=_shareID;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)createActivity;
+- (void)fetchRootURLIfNecessaryAndFinishWithShare:(id)arg1;
 - (id)initWithItem:(id)arg1;
 - (void)main;
 - (BOOL)shouldRetryForError:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_queue;
 
@@ -13,7 +13,7 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)queue;
 - (void)setQueue:(id)arg1;
 

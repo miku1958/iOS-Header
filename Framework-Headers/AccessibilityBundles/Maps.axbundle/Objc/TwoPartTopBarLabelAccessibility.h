@@ -12,7 +12,7 @@
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (void)getPrimaryText:(out id *)arg1 secondaryText:(id *)arg2 forRemainingDistance:(double)arg3 detail:(long long)arg4;
-+ (void)getPrimaryText:(out id *)arg1 secondaryText:(id *)arg2 forRemainingTimeInterval:(double)arg3;
++ (void)getPrimaryText:(out id *)arg1 secondaryText:(id *)arg2 forRemainingMinutes:(unsigned long long)arg3;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFAudio/NSSecureCoding-Protocol.h>
 
@@ -29,6 +29,7 @@
 @property (readonly, nonatomic, getter=isStandard) BOOL standard;
 @property (readonly, nonatomic) const struct AudioStreamBasicDescription *streamDescription;
 
++ (id)formatWithInvalidSampleRateAndChannelCount;
 + (id)settingsFromASBD:(const struct AudioStreamBasicDescription *)arg1 channelLayout:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;

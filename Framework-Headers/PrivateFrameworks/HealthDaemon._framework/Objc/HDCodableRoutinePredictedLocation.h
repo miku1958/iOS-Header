@@ -40,15 +40,18 @@
 @property (nonatomic) int sourceType; // @synthesize sourceType=_sourceType;
 
 - (void).cxx_destruct;
+- (int)StringAsModeOfTransportation:(id)arg1;
+- (int)StringAsSourceType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
-- (id)initWithPredictedLocationOfInterest:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)modeOfTransportationAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)sourceTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

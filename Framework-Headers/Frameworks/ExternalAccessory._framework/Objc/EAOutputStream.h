@@ -16,6 +16,7 @@
     EASession *_session;
     NSRecursiveLock *_statusLock;
     NSRecursiveLock *_runloopLock;
+    BOOL _useSocket;
     struct __CFSocket *_cfSocket;
     BOOL _isOpenCompletedEventSent;
     BOOL _hasSpaceAvailableEventSent;
@@ -38,6 +39,7 @@
 - (void)endStream;
 - (BOOL)hasSpaceAvailable;
 - (id)initWithAccessory:(id)arg1 forSession:(id)arg2 socket:(int)arg3;
+- (id)initWithAccessoryWithoutSocket:(id)arg1 forSession:(id)arg2;
 - (void)open;
 - (void)openCompleted;
 - (id)propertyForKey:(id)arg1;

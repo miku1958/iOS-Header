@@ -72,6 +72,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (long long)_adjustScrollDirectionForLayout:(long long)arg1;
+- (id)_newTempURLForPreviewing;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (void)addAllPages:(id)arg1;
 - (void)addPage:(id)arg1 forPageIndex:(long long)arg2;
@@ -94,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didReceiveMemoryWarning;
 - (void)documentInteractionController:(id)arg1 didEndSendingToApplication:(id)arg2;
+- (id)documentInteractionControllerByPreparedForPreviewing;
 - (void)documentInteractionControllerDidEndPreview:(id)arg1;
 - (id)documentInteractionControllerViewControllerForPreview:(id)arg1;
 - (id)excludedActivityTypesForDocumentInteractionController:(id)arg1;
@@ -128,8 +130,10 @@ __attribute__((visibility("hidden")))
 - (void)setEndPage:(id)arg1 forPageIndex:(long long)arg2;
 - (void)setStartPage:(id)arg1 forPageIndex:(long long)arg2;
 - (void)trackCenterCell;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateLayout;
 - (void)updatePageBadgeImage;
+- (void)updatePageLabel;
 - (void)updatePageNumberBadgeLocation;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class NSMutableOrderedSet, NSNumber;
+@class NSMutableOrderedSet, NSNumber, NSObject;
 @protocol HAPFragmentationStreamDelegate, OS_dispatch_queue;
 
-@interface HAPFragmentationStream : NSObject
+@interface HAPFragmentationStream : HMFObject
 {
     id<HAPFragmentationStreamDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_clientQueue;

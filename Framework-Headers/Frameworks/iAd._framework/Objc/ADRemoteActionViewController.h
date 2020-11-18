@@ -20,6 +20,7 @@
 @property (copy, nonatomic) NSString *vendedClass; // @synthesize vendedClass=_vendedClass;
 
 + (id)serviceViewControllerInterface;
+- (void)dealloc;
 - (void)updateInterfaceOrientationIfNeeded;
 
 @end

@@ -18,23 +18,28 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_databaseQueue;
 }
 
-@property (nonatomic) NSObject<OS_dispatch_queue> *databaseQueue; // @synthesize databaseQueue=_databaseQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *databaseQueue; // @synthesize databaseQueue=_databaseQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+@property (weak, nonatomic) NSXPCConnection *xpcConnection;
 
+- (void)_doinstallApplication:(id)arg1 atURL:(id)arg2 withOptions:(id)arg3 installType:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)_douninstallApplication:(id)arg1 withOptions:(id)arg2 uninstallType:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)_postProcessingForApp:(id)arg1 notification:(int)arg2;
+- (void)_preflightAppDeletion:(id)arg1;
+- (void)dealloc;
 - (BOOL)dispatchRegistration:(id)arg1;
-- (void)installApplication:(id)arg1 atURL:(id)arg2 withOptions:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (id)installPackage:(id)arg1 withIdentifier:(id)arg2 withOptions:(id)arg3 error:(id *)arg4;
-- (void)postNotification:(id)arg1 forApp:(id)arg2 placeholder:(BOOL)arg3;
+- (int)getNotificationTypeForOperation:(unsigned long long)arg1;
+- (void)installApplication:(id)arg1 atURL:(id)arg2 withOptions:(id)arg3 installType:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
+- (id)installPackage:(id)arg1 withIdentifier:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (BOOL)registerBundle:(id)arg1 withOptions:(id)arg2;
-- (void)removeSystemApplicationWithBundleIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)restoreSystemApplicationWithBundleIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)sendCallbackDeliveryComplete;
 - (void)sendCallbackWithDictionary:(id)arg1;
-- (void)uninstallApplication:(id)arg1 withOptions:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)uninstallApplication:(id)arg1 withOptions:(id)arg2 uninstallType:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
+- (id)uninstallBundle:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;
+- (BOOL)unregisterBundle:(id)arg1 placeholderOnly:(BOOL)arg2 notification:(int *)arg3;
 - (BOOL)validateEntitlementsForInstall:(BOOL)arg1 options:(id)arg2 error:(id *)arg3;
 
 @end

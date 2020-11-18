@@ -9,6 +9,13 @@
 @interface UIFont (UIKit_SiriUIFrameworkAdditions)
 + (id)siriui_dynamicBodyFont;
 + (id)siriui_dynamicHeaderFont;
++ (id)siriui_dynamicLightWeightBodySizeFont;
++ (id)siriui_dynamicLightWeightBodySubtextSizeFont;
++ (id)siriui_dynamicMediumWeightBodySizeFont;
++ (id)siriui_dynamicMediumWeightBodySubtextSizeFont;
++ (id)siriui_dynamicThinWeightBodySizeFont;
++ (id)siriui_dynamicThinWeightBodySubtextSizeFont;
++ (id)siriui_dynamicTitle0Font;
 + (id)siriui_headerFont;
 + (id)siriui_largeHeaderFontWithSize:(double)arg1;
 + (id)siriui_lightWeightBodySizeFont;
@@ -18,11 +25,15 @@
 + (id)siriui_mediumWeightBodySubtextSizeFont;
 + (id)siriui_mediumWeightFontWithSize:(double)arg1;
 + (id)siriui_ratingFont;
++ (id)siriui_serverTipFont;
++ (id)siriui_serverTipPrefixFont;
++ (id)siriui_serverUtteranceCorrectionPromptFont;
 + (id)siriui_serverUtteranceFont;
 + (id)siriui_subtitleFont;
 + (id)siriui_thinWeightBodySizeFont;
 + (id)siriui_thinWeightBodySubtextSizeFont;
 + (id)siriui_thinWeightFontWithSize:(double)arg1;
++ (id)siriui_typedTextInputFont;
 + (id)siriui_userUtteranceFont;
 @end
 

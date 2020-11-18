@@ -7,10 +7,13 @@
 @protocol UICollectionViewTableAutoRowAttributes
 
 @property (nonatomic) struct UIEdgeInsets backgroundInset;
-@property (nonatomic) double defaultMarginWidth;
+@property (nonatomic) double defaultLeadingCellMarginWidth;
+@property (nonatomic) double defaultTrailingCellMarginWidth;
 @property (nonatomic) BOOL drawsSeparatorAtBottomOfSection;
 @property (nonatomic) BOOL drawsSeparatorAtTopOfSection;
 @property (nonatomic) long long indentationLevel;
+@property (nonatomic) double indexBarExtentFromEdge;
+@property (nonatomic) BOOL insetsContentViewsToSafeArea;
 @property (nonatomic) BOOL layoutMarginsFollowReadableWidth;
 @property (nonatomic) double sectionBorderWidth;
 @property (nonatomic) int sectionLocation;

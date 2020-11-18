@@ -4,38 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <FrontBoardServices/FBSDisplayMonitor.h>
 
-@class CADisplay, FBSDisplay, NSHashTable, NSMapTable, NSMutableSet;
+@class FBSDisplayConfiguration;
 
-@interface FBDisplayManager : NSObject
+@interface FBDisplayManager : FBSDisplayMonitor
 {
-    NSHashTable *_observers;
-    NSMapTable *_displayIDToFBSDisplayMap;
-    NSMutableSet *_displaysDebouncing;
-    CADisplay *_mainCADisplay;
-    FBSDisplay *_mainDisplay;
+    BOOL _mainConnected;
 }
 
-@property (strong, nonatomic) FBSDisplay *mainDisplay; // @synthesize mainDisplay=_mainDisplay;
+@property (readonly, copy, nonatomic) FBSDisplayConfiguration *mainDisplay;
 
++ (id)mainConfiguration;
 + (id)mainDisplay;
++ (id)mainIdentity;
 + (id)sharedInstance;
-- (void)_broadcastFBSDisplayDidConnect:(id)arg1;
-- (void)_caDisplayDidConnect:(id)arg1 debounce:(BOOL)arg2 broadcast:(BOOL)arg3;
-- (void)_caDisplayDidDisconnect:(id)arg1;
-- (void)_debounceDisplay:(id)arg1 broadcast:(BOOL)arg2;
-- (void)_displayDidDebounce:(id)arg1 broadcast:(BOOL)arg2;
-- (id)_fbsDisplayForCADisplay:(id)arg1;
-- (void)_initializeDisplays;
-- (void)addObserver:(id)arg1;
+- (id)_init;
 - (void)dealloc;
-- (id)description;
-- (id)displays;
 - (id)init;
-- (BOOL)isConnectedToDisplay:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)removeObserver:(id)arg1;
+- (void)invalidate;
+- (void)postMainDisplayConnection;
 
 @end
 

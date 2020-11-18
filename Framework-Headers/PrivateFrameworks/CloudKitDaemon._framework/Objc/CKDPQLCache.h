@@ -35,13 +35,13 @@ __attribute__((visibility("hidden")))
 - (BOOL)_truncateAndReconnectToDatabaseWithError:(id *)arg1;
 - (BOOL)closeWithError:(id *)arg1;
 - (BOOL)forceCloseWithError:(id *)arg1;
+- (id)infoToUpgradeFromVersion:(unsigned long long)arg1;
 - (id)initWithClientContext:(id)arg1;
 - (BOOL)openWithError:(id *)arg1;
 - (void)performOnDBQueue:(CDUnknownBlockType)arg1;
 - (BOOL)removeCorruptDatabaseWithError:(id *)arg1;
 - (BOOL)removeDatabaseFilesWithError:(id *)arg1;
 - (BOOL)resetWithError:(id *)arg1;
-- (id)upgradeInfoForVersion:(unsigned long long)arg1;
 
 @end
 

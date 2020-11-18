@@ -14,6 +14,7 @@
 
 @property (readonly) CNContact *backingContact;
 @property (readonly) NSString *backingContactId;
+@property (readonly) NSString *backingContactIdentifier;
 @property (readonly) NSString *callerId;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -23,7 +24,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) NSString *idsCanonicalDestination;
 @property (readonly) NSArray *idsCanonicalDestinations;
-@property (readonly) NSString *idsUniqueId;
 @property (readonly) NSString *isoCountryCode;
 @property (readonly) long long mostRecentCallType;
 @property (readonly) BOOL mostRecentCallWasMissed;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSString;
 
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int provider; // @synthesize provider=_provider;
 @property (readonly, nonatomic) unsigned int set; // @synthesize set=_set;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithKey:(struct _GEOTileKey)arg1 data:(id)arg2 edition:(unsigned int)arg3 set:(unsigned int)arg4 provider:(unsigned int)arg5 etag:(id)arg6;
 
 @end

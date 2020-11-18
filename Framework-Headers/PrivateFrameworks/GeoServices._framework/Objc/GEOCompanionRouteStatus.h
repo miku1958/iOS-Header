@@ -18,6 +18,7 @@
     unsigned int _distanceToManeuver;
     unsigned int _distanceToRoute;
     int _feedbackType;
+    int _hapticsType;
     GEOLocation *_location;
     unsigned int _remainingTime;
     NSData *_routeID;
@@ -26,17 +27,20 @@
     GEOLatLng *_routeMatchCoordinate;
     unsigned int _stepID;
     BOOL _guidancePromptsEnabled;
+    BOOL _lowGuidanceNavigation;
     struct {
         unsigned int timestamp:1;
         unsigned int distanceRemainingOnRoute:1;
         unsigned int distanceToManeuver:1;
         unsigned int distanceToRoute:1;
         unsigned int feedbackType:1;
+        unsigned int hapticsType:1;
         unsigned int remainingTime:1;
         unsigned int routeLocationIndex:1;
         unsigned int routeLocationOffset:1;
         unsigned int stepID:1;
         unsigned int guidancePromptsEnabled:1;
+        unsigned int lowGuidanceNavigation:1;
     } _has;
 }
 
@@ -47,6 +51,7 @@
 @property (readonly, nonatomic) unsigned int effectiveStepID;
 @property (nonatomic) int feedbackType; // @synthesize feedbackType=_feedbackType;
 @property (nonatomic) BOOL guidancePromptsEnabled; // @synthesize guidancePromptsEnabled=_guidancePromptsEnabled;
+@property (nonatomic) int hapticsType; // @synthesize hapticsType=_hapticsType;
 @property (nonatomic) BOOL hasDistanceRemainingOnRoute;
 @property (nonatomic) BOOL hasDistanceToManeuver;
 @property (nonatomic) BOOL hasDistanceToRoute;
@@ -54,7 +59,9 @@
 @property (readonly, nonatomic) BOOL hasEffectiveStepID;
 @property (nonatomic) BOOL hasFeedbackType;
 @property (nonatomic) BOOL hasGuidancePromptsEnabled;
+@property (nonatomic) BOOL hasHapticsType;
 @property (readonly, nonatomic) BOOL hasLocation;
+@property (nonatomic) BOOL hasLowGuidanceNavigation;
 @property (nonatomic) BOOL hasRemainingTime;
 @property (readonly, nonatomic) BOOL hasRouteID;
 @property (nonatomic) BOOL hasRouteLocationIndex;
@@ -63,8 +70,9 @@
 @property (nonatomic) BOOL hasStepID;
 @property (nonatomic) BOOL hasTimestamp;
 @property (readonly, nonatomic) BOOL isNavigating;
-@property (readonly, nonatomic) BOOL isPreviewingNavigation;
+@property (readonly, nonatomic) BOOL isRecalculating;
 @property (strong, nonatomic) GEOLocation *location; // @synthesize location=_location;
+@property (nonatomic) BOOL lowGuidanceNavigation; // @synthesize lowGuidanceNavigation=_lowGuidanceNavigation;
 @property (nonatomic) unsigned int remainingTime; // @synthesize remainingTime=_remainingTime;
 @property (strong, nonatomic) NSData *routeID; // @synthesize routeID=_routeID;
 @property (nonatomic) unsigned int routeLocationIndex; // @synthesize routeLocationIndex=_routeLocationIndex;
@@ -76,7 +84,9 @@
 @property (nonatomic) unsigned int stepID; // @synthesize stepID=_stepID;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
+- (void).cxx_destruct;
 - (int)StringAsFeedbackType:(id)arg1;
+- (int)StringAsHapticsType:(id)arg1;
 - (void)_updateClusteredSectionSelectedRideIndicesFromRoute:(id)arg1;
 - (void)addSelectedRideIndex:(unsigned int)arg1;
 - (void)clearSelectedRideIndexs;
@@ -85,7 +95,9 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (unsigned int)effectiveStepIDInRoute:(id)arg1;
 - (id)feedbackTypeAsString:(int)arg1;
+- (id)hapticsTypeAsString:(int)arg1;
 - (unsigned long long)hash;
 - (id)initWithRoute:(id)arg1 routeID:(id)arg2;
 - (id)initWithRouteID:(id)arg1;

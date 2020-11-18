@@ -25,13 +25,13 @@
     GEOTransitOptions *_transitOptions;
     unsigned int _walkingLimitMeters;
     GEOWalkingOptions *_walkingOptions;
+    BOOL _enableExperimentalMode;
     BOOL _includeContingencyRoutes;
     BOOL _includeCrossLanguagePhonetics;
     BOOL _includeHistoricTravelTime;
     BOOL _includeLaneGuidance;
     BOOL _includeManeuverIcons;
     BOOL _includePhonetics;
-    BOOL _includeSubsteps;
     BOOL _includeTrafficAlongRoute;
     BOOL _includeTrafficIncidents;
     BOOL _includeZilchPoints;
@@ -43,13 +43,13 @@
         unsigned int mainTransportType:1;
         unsigned int trafficType:1;
         unsigned int walkingLimitMeters:1;
+        unsigned int enableExperimentalMode:1;
         unsigned int includeContingencyRoutes:1;
         unsigned int includeCrossLanguagePhonetics:1;
         unsigned int includeHistoricTravelTime:1;
         unsigned int includeLaneGuidance:1;
         unsigned int includeManeuverIcons:1;
         unsigned int includePhonetics:1;
-        unsigned int includeSubsteps:1;
         unsigned int includeTrafficAlongRoute:1;
         unsigned int includeTrafficIncidents:1;
         unsigned int includeZilchPoints:1;
@@ -63,17 +63,18 @@
 @property (nonatomic) int basicPointsToBeIncluded; // @synthesize basicPointsToBeIncluded=_basicPointsToBeIncluded;
 @property (strong, nonatomic) GEODestinationInfo *destinationInfo; // @synthesize destinationInfo=_destinationInfo;
 @property (nonatomic) int destinationType; // @synthesize destinationType=_destinationType;
+@property (nonatomic) BOOL enableExperimentalMode; // @synthesize enableExperimentalMode=_enableExperimentalMode;
 @property (readonly, nonatomic) BOOL hasAutomobileOptions;
 @property (nonatomic) BOOL hasBasicPointsToBeIncluded;
 @property (readonly, nonatomic) BOOL hasDestinationInfo;
 @property (nonatomic) BOOL hasDestinationType;
+@property (nonatomic) BOOL hasEnableExperimentalMode;
 @property (nonatomic) BOOL hasIncludeContingencyRoutes;
 @property (nonatomic) BOOL hasIncludeCrossLanguagePhonetics;
 @property (nonatomic) BOOL hasIncludeHistoricTravelTime;
 @property (nonatomic) BOOL hasIncludeLaneGuidance;
 @property (nonatomic) BOOL hasIncludeManeuverIcons;
 @property (nonatomic) BOOL hasIncludePhonetics;
-@property (nonatomic) BOOL hasIncludeSubsteps;
 @property (nonatomic) BOOL hasIncludeTrafficAlongRoute;
 @property (nonatomic) BOOL hasIncludeTrafficIncidents;
 @property (nonatomic) BOOL hasIncludeZilchPoints;
@@ -91,7 +92,6 @@
 @property (nonatomic) BOOL includeLaneGuidance; // @synthesize includeLaneGuidance=_includeLaneGuidance;
 @property (nonatomic) BOOL includeManeuverIcons; // @synthesize includeManeuverIcons=_includeManeuverIcons;
 @property (nonatomic) BOOL includePhonetics; // @synthesize includePhonetics=_includePhonetics;
-@property (nonatomic) BOOL includeSubsteps; // @synthesize includeSubsteps=_includeSubsteps;
 @property (nonatomic) BOOL includeTrafficAlongRoute; // @synthesize includeTrafficAlongRoute=_includeTrafficAlongRoute;
 @property (nonatomic) BOOL includeTrafficIncidents; // @synthesize includeTrafficIncidents=_includeTrafficIncidents;
 @property (nonatomic) BOOL includeZilchPoints; // @synthesize includeZilchPoints=_includeZilchPoints;
@@ -107,6 +107,7 @@
 @property (strong, nonatomic) GEOWalkingOptions *walkingOptions; // @synthesize walkingOptions=_walkingOptions;
 
 + (id)defaultRouteAttributes;
+- (void).cxx_destruct;
 - (int)StringAsAdditionalTransportTypes:(id)arg1;
 - (int)StringAsBasicPointsToBeIncluded:(id)arg1;
 - (int)StringAsDestinationType:(id)arg1;

@@ -35,20 +35,17 @@
 @property (copy, nonatomic) NSString *validationTargetName; // @synthesize validationTargetName=_validationTargetName;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (BOOL)_client:(id)arg1 validateClass:(id)arg2 hasClassMethod:(id)arg3 withFullSignature:(const char *)arg4 argList:(struct __va_list_tag [1])arg5;
 - (BOOL)_client:(id)arg1 validateClass:(id)arg2 hasMethod:(id)arg3 methodType:(int)arg4;
 - (BOOL)_client:(id)arg1 validateClass:(id)arg2 hasMethod:(id)arg3 methodType:(int)arg4 returnType:(id)arg5 arguments:(id)arg6;
 - (void)_printConsoleReport:(BOOL)arg1 isDelayed:(BOOL)arg2;
 - (BOOL)client:(id)arg1 validateClass:(id)arg2;
 - (BOOL)client:(id)arg1 validateClass:(id)arg2 conformsToProtocol:(id)arg3;
-- (BOOL)client:(id)arg1 validateClass:(id)arg2 hasClassMethod:(id)arg3;
 - (BOOL)client:(id)arg1 validateClass:(id)arg2 hasClassMethod:(id)arg3 withFullSignature:(const char *)arg4;
-- (BOOL)client:(id)arg1 validateClass:(id)arg2 hasInstanceMethod:(id)arg3;
 - (BOOL)client:(id)arg1 validateClass:(id)arg2 hasInstanceMethod:(id)arg3 withFullSignature:(const char *)arg4;
 - (BOOL)client:(id)arg1 validateClass:(id)arg2 hasInstanceMethod:(id)arg3 withFullSignature:(const char *)arg4 argList:(struct __va_list_tag [1])arg5;
-- (BOOL)client:(id)arg1 validateClass:(id)arg2 hasInstanceVariable:(id)arg3;
 - (BOOL)client:(id)arg1 validateClass:(id)arg2 hasInstanceVariable:(id)arg3 withType:(const char *)arg4;
-- (BOOL)client:(id)arg1 validateClass:(id)arg2 hasProperty:(id)arg3;
 - (BOOL)client:(id)arg1 validateClass:(id)arg2 hasProperty:(id)arg3 withType:(const char *)arg4;
 - (BOOL)client:(id)arg1 validateClass:(id)arg2 isKindOfClass:(id)arg3;
 - (BOOL)client:(id)arg1 validateProtocol:(id)arg2 conformsToProtocol:(id)arg3;
@@ -58,7 +55,6 @@
 - (BOOL)client:(id)arg1 validateProtocol:(id)arg2 hasProperty:(id)arg3;
 - (BOOL)client:(id)arg1 validateProtocol:(id)arg2 hasRequiredClassMethod:(id)arg3;
 - (BOOL)client:(id)arg1 validateProtocol:(id)arg2 hasRequiredInstanceMethod:(id)arg3;
-- (void)dealloc;
 - (id)init;
 - (void)installSafeCategories:(CDUnknownBlockType)arg1 afterDelay:(double)arg2 validationTargetName:(id)arg3 overrideProcessName:(id)arg4;
 - (void)installSafeCategories:(CDUnknownBlockType)arg1 afterDelay:(double)arg2 validationTargetName:(id)arg3 overrideProcessName:(id)arg4 forceDoNotReport:(BOOL)arg5;
@@ -86,13 +82,9 @@
 - (void)sendValidationSuccessForProcessName:(id)arg1;
 - (BOOL)validateClass:(id)arg1;
 - (BOOL)validateClass:(id)arg1 conformsToProtocol:(id)arg2;
-- (BOOL)validateClass:(id)arg1 hasClassMethod:(id)arg2;
 - (BOOL)validateClass:(id)arg1 hasClassMethod:(id)arg2 withFullSignature:(const char *)arg3;
-- (BOOL)validateClass:(id)arg1 hasInstanceMethod:(id)arg2;
 - (BOOL)validateClass:(id)arg1 hasInstanceMethod:(id)arg2 withFullSignature:(const char *)arg3;
-- (BOOL)validateClass:(id)arg1 hasInstanceVariable:(id)arg2;
 - (BOOL)validateClass:(id)arg1 hasInstanceVariable:(id)arg2 withType:(const char *)arg3;
-- (BOOL)validateClass:(id)arg1 hasProperty:(id)arg2;
 - (BOOL)validateClass:(id)arg1 hasProperty:(id)arg2 withType:(const char *)arg3;
 - (BOOL)validateClass:(id)arg1 isKindOfClass:(id)arg2;
 - (BOOL)validateProtocol:(id)arg1 conformsToProtocol:(id)arg2;

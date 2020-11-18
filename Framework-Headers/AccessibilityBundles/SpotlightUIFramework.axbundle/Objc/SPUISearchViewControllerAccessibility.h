@@ -15,7 +15,6 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)accessibilityPerformEscape;
 - (void)activateViewController:(id)arg1 animate:(BOOL)arg2;
-- (void)searchAgentUpdatedResults:(id)arg1;
 
 @end
 

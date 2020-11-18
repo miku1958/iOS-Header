@@ -23,6 +23,7 @@
     double fAvgPace;
     unsigned long long fLapCount;
     long long fStrokeType;
+    unsigned long long fSegment;
 }
 
 @property (readonly, nonatomic) double avgPace;
@@ -30,6 +31,7 @@
 @property (readonly, nonatomic) NSDate *endDate;
 @property (readonly, nonatomic) unsigned long long lapCount;
 @property (readonly, nonatomic) unsigned long long recordId;
+@property (readonly, nonatomic) unsigned long long segment;
 @property (readonly, nonatomic) NSUUID *sessionId;
 @property (readonly, nonatomic) NSUUID *sourceId;
 @property (readonly, nonatomic) NSDate *startDate;
@@ -45,7 +47,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRecordId:(unsigned long long)arg1 sourceId:(id)arg2 sessionId:(id)arg3 startDate:(id)arg4 endDate:(id)arg5 strokeCount:(unsigned long long)arg6 distance:(double)arg7 avgPace:(double)arg8 lapCount:(unsigned long long)arg9 strokeType:(long long)arg10;
+- (id)initWithRecordId:(unsigned long long)arg1 sourceId:(id)arg2 sessionId:(id)arg3 startDate:(id)arg4 endDate:(id)arg5 strokeCount:(unsigned long long)arg6 distance:(double)arg7 avgPace:(double)arg8 lapCount:(unsigned long long)arg9 strokeType:(long long)arg10 segment:(unsigned long long)arg11;
 - (id)initWithSessionId:(id)arg1;
 - (id)initWithSwimEntry:(const struct CLSwimEntry *)arg1;
 

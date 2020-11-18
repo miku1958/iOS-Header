@@ -11,20 +11,32 @@
 @interface AWDMailUserEngagement : PBCodable <NSCopying>
 {
     long long _messageAgeInWeeks;
+    long long _topHitIndexInSpotlightList;
+    long long _topHitIndexInTopHitsList;
     int _mailboxType;
     int _type;
+    BOOL _isTopHitMessage;
     struct {
         unsigned int messageAgeInWeeks:1;
+        unsigned int topHitIndexInSpotlightList:1;
+        unsigned int topHitIndexInTopHitsList:1;
         unsigned int mailboxType:1;
         unsigned int type:1;
+        unsigned int isTopHitMessage:1;
     } _has;
 }
 
+@property (nonatomic) BOOL hasIsTopHitMessage;
 @property (nonatomic) BOOL hasMailboxType;
 @property (nonatomic) BOOL hasMessageAgeInWeeks;
+@property (nonatomic) BOOL hasTopHitIndexInSpotlightList;
+@property (nonatomic) BOOL hasTopHitIndexInTopHitsList;
 @property (nonatomic) BOOL hasType;
+@property (nonatomic) BOOL isTopHitMessage; // @synthesize isTopHitMessage=_isTopHitMessage;
 @property (nonatomic) int mailboxType; // @synthesize mailboxType=_mailboxType;
 @property (nonatomic) long long messageAgeInWeeks; // @synthesize messageAgeInWeeks=_messageAgeInWeeks;
+@property (nonatomic) long long topHitIndexInSpotlightList; // @synthesize topHitIndexInSpotlightList=_topHitIndexInSpotlightList;
+@property (nonatomic) long long topHitIndexInTopHitsList; // @synthesize topHitIndexInTopHitsList=_topHitIndexInTopHitsList;
 @property (nonatomic) int type; // @synthesize type=_type;
 
 - (int)StringAsMailboxType:(id)arg1;
@@ -35,8 +47,9 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)initWithEngagmentType:(int)arg1;
-- (id)initWithEngagmentType:(int)arg1 message:(id)arg2;
-- (id)initWithEngagmentType:(int)arg1 receivedDate:(id)arg2 mailboxType:(int)arg3;
+- (id)initWithEngagmentType:(int)arg1 isTopHit:(BOOL)arg2;
+- (id)initWithEngagmentType:(int)arg1 message:(id)arg2 isTopHit:(BOOL)arg3 messageListIndex:(long long)arg4 spotlightListIndex:(long long)arg5;
+- (id)initWithEngagmentType:(int)arg1 receivedDate:(id)arg2 mailboxType:(int)arg3 isTopHit:(BOOL)arg4 messageListIndex:(long long)arg5 spotlightListIndex:(long long)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (id)mailboxTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;

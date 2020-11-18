@@ -12,6 +12,7 @@
 {
 }
 
+@property (nonatomic) BOOL autoDisambiguationDisabled;
 @property (copy, nonatomic) NSString *disambiguationKey;
 @property (strong, nonatomic) SAUIDomainObjectPicker *domainObjectPicker;
 @property (copy, nonatomic) NSArray *fallbackCommands;

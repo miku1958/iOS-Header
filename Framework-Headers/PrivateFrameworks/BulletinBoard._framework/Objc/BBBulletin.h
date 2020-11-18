@@ -9,7 +9,7 @@
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
-@class BBAccessoryIcon, BBAction, BBAttachmentMetadata, BBColor, BBContent, BBSectionIcon, BBSound, NSArray, NSDate, NSDictionary, NSHashTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, NSTimeZone;
+@class BBAccessoryIcon, BBAction, BBAttachmentMetadata, BBColor, BBContent, BBSectionIcon, BBSound, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSSet, NSString, NSTimeZone;
 
 @interface BBBulletin : NSObject <NSCopying, NSSecureCoding>
 {
@@ -59,8 +59,6 @@
     NSDate *_lastInterruptDate;
     NSDate *_publicationDate;
     NSString *_bulletinVersionID;
-    NSMutableArray *_lifeAssertions;
-    NSHashTable *_observers;
     NSString *_parentSectionID;
     NSString *_universalSectionID;
     long long _contentPreviewSetting;
@@ -70,7 +68,7 @@
 
 @property (strong, nonatomic) BBAccessoryIcon *accessoryIconMask; // @synthesize accessoryIconMask=_accessoryIconMask;
 @property (copy, nonatomic) BBAction *acknowledgeAction;
-@property (copy, nonatomic) NSMutableDictionary *actions; // @synthesize actions=_actions;
+@property (strong, nonatomic) NSMutableDictionary *actions; // @synthesize actions=_actions;
 @property (copy, nonatomic) NSArray *additionalAttachments; // @synthesize additionalAttachments=_additionalAttachments;
 @property (nonatomic) long long addressBookRecordID; // @synthesize addressBookRecordID=_addressBookRecordID;
 @property (readonly, nonatomic) NSSet *alertSuppressionAppIDs;
@@ -107,19 +105,18 @@
 @property (readonly, nonatomic) NSString *fullUnlockActionLabel;
 @property (nonatomic) BOOL hasEventDate; // @synthesize hasEventDate=_hasEventDate;
 @property (nonatomic) BOOL hasPrivateContent; // @dynamic hasPrivateContent;
+@property (readonly, nonatomic) NSString *hiddenPreviewsBodyPlaceholder;
 @property (readonly, nonatomic) long long iPodOutAlertType;
 @property (strong, nonatomic) BBSectionIcon *icon; // @synthesize icon=_icon;
 @property (nonatomic) BOOL ignoresQuietMode; // @synthesize ignoresQuietMode=_ignoresQuietMode;
 @property (readonly, nonatomic) BOOL inertWhenLocked;
 @property (copy, nonatomic) NSArray *intentIDs; // @synthesize intentIDs=_intentIDs;
 @property (strong, nonatomic) NSDate *lastInterruptDate; // @synthesize lastInterruptDate=_lastInterruptDate;
-@property (strong, nonatomic) NSMutableArray *lifeAssertions; // @synthesize lifeAssertions=_lifeAssertions;
 @property (nonatomic, getter=isLoading) BOOL loading; // @synthesize loading=_loading;
 @property (copy, nonatomic) NSString *message;
 @property (readonly, nonatomic) unsigned long long messageNumberOfLines;
 @property (readonly, nonatomic) NSString *missedBannerDescriptionFormat;
 @property (strong, nonatomic) BBContent *modalAlertContent; // @synthesize modalAlertContent=_modalAlertContent;
-@property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (readonly, nonatomic) BOOL orderSectionUsingRecencyDate;
 @property (copy, nonatomic) NSString *parentSectionID; // @synthesize parentSectionID=_parentSectionID;
 @property (copy, nonatomic) NSArray *peopleIDs; // @synthesize peopleIDs=_peopleIDs;
@@ -175,6 +172,8 @@
 @property (readonly, nonatomic) BOOL visuallyIndicatesWhenDateIsInFuture;
 @property (nonatomic) BOOL wantsFullscreenPresentation; // @synthesize wantsFullscreenPresentation=_wantsFullscreenPresentation;
 
++ (id)_lifeAssertionAssociationSet;
++ (id)_observerAssociationSet;
 + (id)bulletinReferenceDateFromDate:(id)arg1;
 + (id)bulletinWithBulletin:(id)arg1;
 + (BOOL)supportsSecureCoding;
@@ -194,9 +193,9 @@
 - (id)actionWithIdentifier:(id)arg1;
 - (void)addLifeAssertion:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (id)awakeAfterUsingCoder:(id)arg1;
 - (struct CGSize)composedAttachmentImageSizeWithObserver:(id)arg1;
 - (id)composedAttachmentImageWithObserver:(id)arg1;
+- (void)copyAssociationsForBulletin:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
@@ -207,10 +206,10 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)lifeAssertions;
 - (unsigned long long)numberOfAdditionalAttachments;
 - (unsigned long long)numberOfAdditionalAttachmentsOfType:(long long)arg1;
 - (long long)primaryAttachmentType;
-- (id)replacementObjectForCoder:(id)arg1;
 - (id)responseForAcknowledgeAction;
 - (id)responseForAction:(id)arg1;
 - (id)responseForButtonActionAtIndex:(unsigned long long)arg1;

@@ -31,7 +31,6 @@
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 @property (readonly, nonatomic) long long versionIdentifier;
 
-+ (BOOL)_allowUnsignedBags;
 + (void)_loadItemKindURLBagKeyMap;
 + (id)_sharedBagBackend;
 + (id)copyExtraHeadersForURL:(id)arg1 inBagContext:(id)arg2;

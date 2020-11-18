@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameCenterUI/GKServiceViewControllerDelegate-Protocol.h>
+#import <GameCenterUI/GKExtensionHostProtocol-Protocol.h>
 
 @class GKChallengeInternal, GKTurnBasedMatchInternal, NSNumber, NSString;
 
-@protocol GKGameCenterDashboardHostProtocol <GKServiceViewControllerDelegate>
+@protocol GKGameCenterDashboardHostProtocol <GKExtensionHostProtocol>
+
+@optional
 - (void)finishWithMatch:(GKTurnBasedMatchInternal *)arg1;
 - (void)getMethodsImplementedByChallengeEventHandlerDelegate:(void (^)(NSArray *, NSError *))arg1;
 - (void)playPressedForChallenge:(GKChallengeInternal *)arg1;

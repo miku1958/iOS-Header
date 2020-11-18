@@ -26,16 +26,17 @@
 @property (nonatomic) struct CGAffineTransform flippedViewToMaskTransform; // @synthesize flippedViewToMaskTransform=_flippedViewToMaskTransform;
 @property (readonly, nonatomic) struct CGAffineTransform inverseFlippedViewToMaskTransform; // @synthesize inverseFlippedViewToMaskTransform=_inverseFlippedViewToMaskTransform;
 @property (readonly, nonatomic) struct CGAffineTransform inverseViewToMaskTransform; // @synthesize inverseViewToMaskTransform=_inverseViewToMaskTransform;
-@property (readonly, strong, nonatomic) NSMutableArray *layers; // @synthesize layers=_layers;
+@property (readonly, nonatomic) NSMutableArray *layers; // @synthesize layers=_layers;
 @property (nonatomic) int maskLongEdgeSize; // @synthesize maskLongEdgeSize=_maskLongEdgeSize;
 @property (nonatomic) struct CGSize maskSize; // @synthesize maskSize=_maskSize;
 @property (nonatomic) BOOL shouldNotify; // @synthesize shouldNotify=_shouldNotify;
-@property (nonatomic) NSDictionary *strokesDataDictionary;
+@property (weak, nonatomic) NSDictionary *strokesDataDictionary;
 @property (nonatomic) struct CGAffineTransform viewToMaskTransform; // @synthesize viewToMaskTransform=_viewToMaskTransform;
 @property (strong, nonatomic) UIImage *workingImage;
 @property (strong, nonatomic) BLPixelImageBuffer *workingImageBuffer;
 @property (nonatomic) double workingImageScaleFactor;
 
+- (void).cxx_destruct;
 - (struct CGImage *)brushImageRefWithSize:(float)arg1 softness:(float)arg2;
 - (void)dealloc;
 - (BOOL)haveLayerMask;

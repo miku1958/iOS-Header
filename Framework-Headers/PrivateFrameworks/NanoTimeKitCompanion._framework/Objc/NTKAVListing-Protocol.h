@@ -6,13 +6,13 @@
 
 #import <NanoTimeKitCompanion/NSObject-Protocol.h>
 
-@class NTKVideo, UIImage;
+@class CLKVideo, UIImage;
 @protocol NTKAVListing;
 
 @protocol NTKAVListing <NSObject>
 
 @property (readonly, nonatomic) UIImage *image;
-@property (readonly, nonatomic) NTKVideo *video;
+@property (readonly, nonatomic) CLKVideo *video;
 
 - (void)discardAssets;
 - (BOOL)snapshotDiffers:(id<NTKAVListing>)arg1;

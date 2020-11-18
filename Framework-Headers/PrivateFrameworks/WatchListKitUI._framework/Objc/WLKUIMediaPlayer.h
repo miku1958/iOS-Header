@@ -16,6 +16,7 @@
 {
     NSOperationQueue *_artworkLoadingQueue;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_workQueue;
     MPUQueryDataSource *_queryDataSource;
     WLKUIOrderedItemsMap *_orderedItemsMap;
 }
@@ -40,8 +41,10 @@
 - (void)_mediaLibraryChanged:(id)arg1;
 - (id)_numberForString:(id)arg1;
 - (void)_onIsUpdateInProgressChangedNotification:(id)arg1;
+- (void)_onSyncGenerationChangedNotification:(id)arg1;
 - (id)_stringForNumber:(id)arg1;
 - (void)dealloc;
+- (id)findItemByPersistentIdentifier:(id)arg1:(id)arg2;
 - (id)findItemByStoreIdentifier:(id)arg1:(id)arg2;
 - (void)getImageForItem:(id)arg1:(id)arg2:(id)arg3;
 - (BOOL)getIsInitialImport;
@@ -50,12 +53,14 @@
 - (unsigned long long)getItemCount;
 - (id)getItemWithChildren:(id)arg1:(id)arg2;
 - (id)getItems;
+- (id)getShowIdentifierForStoreIdentifier:(id)arg1;
 - (void)getUpdateProgress:(id)arg1;
 - (id)initWithAppContext:(id)arg1;
 - (void)itemsMapAddedKeys:(id)arg1 andRemovedKeys:(id)arg2;
 - (BOOL)libraryHasMedia;
 - (long long)queryHasItemCount:(id)arg1;
 - (BOOL)setFilter:(id)arg1;
+- (void)setFilterAsync:(id)arg1:(id)arg2;
 
 @end
 

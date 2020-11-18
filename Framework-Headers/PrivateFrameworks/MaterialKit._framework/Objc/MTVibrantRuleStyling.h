@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MaterialKit/MTVibrantLightStyling.h>
+#import <MaterialKit/MTCompoundVibrantStyling.h>
 
-@interface MTVibrantRuleStyling : MTVibrantLightStyling
+@interface MTVibrantRuleStyling : MTCompoundVibrantStyling
 {
 }
 
@@ -14,6 +14,7 @@
 - (id)_darkenColor;
 - (BOOL)_inputReversed;
 - (double)alpha;
+- (id)blendMode;
 - (id)color;
 - (long long)style;
 

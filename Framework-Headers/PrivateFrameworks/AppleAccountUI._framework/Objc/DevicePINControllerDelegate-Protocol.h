@@ -6,7 +6,7 @@
 
 #import <AppleAccountUI/NSObject-Protocol.h>
 
-@class DevicePINController, NSError, NSString;
+@class DevicePINController, NSError, NSString, UIViewController;
 
 @protocol DevicePINControllerDelegate <NSObject>
 
@@ -23,6 +23,7 @@
 - (void)didAcceptRemovePIN;
 - (void)didAcceptSetPIN;
 - (void)didCancelEnteringPIN;
+- (void)showWeakWarningAlertForController:(UIViewController *)arg1 offerUseAnyway:(BOOL)arg2 withCompletion:(void (^)(BOOL))arg3;
 - (void)willAcceptEnteredPIN;
 - (void)willCancelEnteringPIN;
 @end

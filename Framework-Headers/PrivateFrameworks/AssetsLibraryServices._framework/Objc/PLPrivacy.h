@@ -12,11 +12,16 @@
 {
     NSObject<OS_dispatch_queue> *_isolationQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
-    int _authStatus;
+    int _authStatusFullAccess;
+    int _authStatusSaveOnly;
 }
 
 + (id)sharedInstance;
+- (struct __CFString *)_TCCForScope:(long long)arg1;
+- (int)_authStatusForScope:(long long)arg1;
 - (BOOL)_isPhotosAccessAllowedWithScope:(long long)arg1 forceHandler:(BOOL)arg2 accessAllowedHandler:(CDUnknownBlockType)arg3;
+- (void)_setAuthStatus:(int)arg1 scope:(long long)arg2;
+- (void)_setPreflightStatusForScope:(long long)arg1;
 - (void)dealloc;
 - (id)init;
 - (BOOL)isPhotoLibraryReadAccessAllowed;

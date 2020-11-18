@@ -6,19 +6,85 @@
 
 #import <SearchUI/SearchUIKeyboardableTableViewController.h>
 
-@interface SearchUITableViewController : SearchUIKeyboardableTableViewController
+#import <SearchUI/SearchUIFeedbackDelegateInternal-Protocol.h>
+
+@class NSString, SearchUIPeekDelegate, SearchUITableModel, SearchUITableView;
+@protocol SFFeedbackListener, SearchUIResultViewDelegate, UIViewControllerPreviewing;
+
+@interface SearchUITableViewController : SearchUIKeyboardableTableViewController <SearchUIFeedbackDelegateInternal>
 {
-    BOOL _insetSectionsOverride;
-    BOOL _hasCheckedInsetSectionsOverride;
-    unsigned long long _style;
+    BOOL _shouldUseInsetRoundedSections;
+    id<SFFeedbackListener> _feedbackListener;
+    id<SearchUIResultViewDelegate> _resultViewDelegate;
+    SearchUITableModel *_tableModel;
+    SearchUIPeekDelegate *_peekDelegate;
+    id<UIViewControllerPreviewing> _previewingContext;
+    long long _preferredPunchoutIndex;
 }
 
-@property BOOL hasCheckedInsetSectionsOverride; // @synthesize hasCheckedInsetSectionsOverride=_hasCheckedInsetSectionsOverride;
-@property BOOL insetSectionsOverride; // @synthesize insetSectionsOverride=_insetSectionsOverride;
-@property unsigned long long style; // @synthesize style=_style;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (weak, nonatomic) id<SFFeedbackListener> feedbackListener; // @synthesize feedbackListener=_feedbackListener;
+@property (readonly) unsigned long long hash;
+@property (strong) SearchUIPeekDelegate *peekDelegate; // @synthesize peekDelegate=_peekDelegate;
+@property long long preferredPunchoutIndex; // @synthesize preferredPunchoutIndex=_preferredPunchoutIndex;
+@property (strong) id<UIViewControllerPreviewing> previewingContext; // @synthesize previewingContext=_previewingContext;
+@property (weak) id<SearchUIResultViewDelegate> resultViewDelegate; // @synthesize resultViewDelegate=_resultViewDelegate;
+@property (nonatomic) BOOL shouldUseInsetRoundedSections; // @synthesize shouldUseInsetRoundedSections=_shouldUseInsetRoundedSections;
+@property (nonatomic) unsigned long long style;
+@property (readonly) Class superclass;
+@property (strong) SearchUITableModel *tableModel; // @synthesize tableModel=_tableModel;
+@property (strong) SearchUITableView *tableView; // @dynamic tableView;
 
-- (id)initWithUIStyle:(unsigned long long)arg1;
-- (void)setAllowsHeaderViewsToFloat:(BOOL)arg1;
++ (void)applySeparatorStyleToCell:(id)arg1 forCurrentRowModel:(id)arg2 nextRowModel:(id)arg3;
++ (double)layoutMarginWidthForOrientation:(long long)arg1;
+- (void).cxx_destruct;
+- (id)cardSectionForIndexPath:(id)arg1;
+- (void)cardSectionViewDidInvalidateSize:(id)arg1 animate:(BOOL)arg2;
+- (void)cardSectionViewDidSelectPreferredPunchoutIndex:(long long)arg1;
+- (id)cellForIndexPath:(id)arg1 reuseIfPossible:(BOOL)arg2;
+- (void)deselectRowsForIndexPath:(id)arg1 animated:(BOOL)arg2;
+- (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (struct _NSRange)enumerateSelectableCellsForIndexPath:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (id)fallbackPeekViewControllerForIndexPath:(id)arg1;
+- (BOOL)forwardFeedbackForSelector:(SEL)arg1;
+- (id)forwardingTargetForSelector:(SEL)arg1;
+- (unsigned long long)handleSelectionAtIndexPath:(id)arg1 wasPop:(BOOL)arg2;
+- (id)init;
+- (id)nextCardForIndexPath:(id)arg1;
+- (long long)numberOfSectionsInTableView:(id)arg1;
+- (double)offScreenContentScrollDistance;
+- (id)preferredViewControllerForIndexPath:(id)arg1 isPreview:(BOOL)arg2;
+- (void)presentViewController:(id)arg1;
+- (void)presentViewController:(id)arg1 animated:(BOOL)arg2;
+- (id)punchoutPickerDismissText:(id)arg1;
+- (id)punchoutPickerTitleForIndexPath:(id)arg1;
+- (id)punchoutsForIndexPath:(id)arg1;
+- (void)requestAuthIfNecessaryAndPresentViewController:(id)arg1 animated:(BOOL)arg2;
+- (void)resignTextField;
+- (BOOL)respondsToSelector:(SEL)arg1;
+- (id)resultForIndexPath:(id)arg1;
+- (void)roundNecessaryCornersForTableCellSelectedBackground:(id)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
+- (void)showViewController:(id)arg1;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didUnhighlightRowAtIndexPath:(id)arg2;
+- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateContentScrolledOffScreenStatus;
+- (void)updateLayoutMarginsForOrientation:(long long)arg1;
+- (void)updateTableForNewCellHeightAnimated:(BOOL)arg1;
+- (void)updateViewControllerTitle:(id)arg1;
+- (void)updateWithTableModel:(id)arg1;
+- (id)viewControllerForIndexPath:(id)arg1 isPeek:(BOOL)arg2;
+- (void)viewSafeAreaInsetsDidChange;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

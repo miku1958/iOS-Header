@@ -37,6 +37,7 @@
 - (void)addPoint: /* Error: Ran out of types for this method. */;
 - (void)clear;
 - (void)dealloc;
+- (void)enumerateInterpolationFromPoint:(CDUnknownBlockType)arg1 toPoint:controlPoint:usingBlock: /* Error: Ran out of types for this method. */;
 - (void)flush;
 - (id)initWithFIFO:(id)arg1;
 - (id)initWithFIFO:(id)arg1 strokeView:(id)arg2;

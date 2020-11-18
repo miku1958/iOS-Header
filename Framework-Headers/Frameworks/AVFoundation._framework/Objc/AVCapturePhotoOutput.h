@@ -13,9 +13,15 @@
     AVCapturePhotoOutputInternal *_internal;
 }
 
+@property (readonly, nonatomic) NSArray *availableLivePhotoVideoCodecTypes;
 @property (readonly, nonatomic) NSArray *availablePhotoCodecTypes;
+@property (readonly, nonatomic) NSArray *availablePhotoFileTypes;
 @property (readonly, nonatomic) NSArray *availablePhotoPixelFormatTypes;
+@property (readonly, nonatomic) NSArray *availableRawPhotoFileTypes;
 @property (readonly, nonatomic) NSArray *availableRawPhotoPixelFormatTypes;
+@property (readonly, nonatomic, getter=isCameraCalibrationDataDeliverySupported) BOOL cameraCalibrationDataDeliverySupported;
+@property (nonatomic, getter=isDualCameraDualPhotoDeliveryEnabled) BOOL dualCameraDualPhotoDeliveryEnabled;
+@property (readonly, nonatomic, getter=isDualCameraDualPhotoDeliverySupported) BOOL dualCameraDualPhotoDeliverySupported;
 @property (readonly, nonatomic, getter=isDualCameraFusionSupported) BOOL dualCameraFusionSupported;
 @property (nonatomic, getter=isHighResolutionCaptureEnabled) BOOL highResolutionCaptureEnabled;
 @property (readonly, nonatomic) BOOL isFlashScene;
@@ -33,11 +39,13 @@
 
 + (id)DNGPhotoDataRepresentationForRawSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 previewPhotoSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
 + (id)JPEGPhotoDataRepresentationForJPEGSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 previewPhotoSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
-+ (id)JPEGPhotoDataRepresentationForJPEGSurface:(void *)arg1 size:(unsigned long long)arg2 previewPhotoSurface:(const void *)arg3 metadata:(id)arg4;
 + (struct __CFDictionary *)_copyAttachmentsAndPropagateFaceRegionsToExifAuxDictionaryForSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 + (void)initialize;
 + (unsigned long long)maxLivePhotoDataSize;
 + (CDStruct_79c71658)maxLivePhotoMovieDimensions;
++ (id)new;
++ (id)validMetadataTopLevelCGImagePropertiesKeys;
+- (BOOL)_HEVCAndHEIFAreAvailableForSourceDevice:(id)arg1;
 - (id)_avErrorUserInfoDictionaryForError:(int)arg1 request:(id)arg2 payload:(id)arg3 isOriginalMovie:(BOOL)arg4;
 - (void)_decrementObserverCountForKeyPath:(id)arg1;
 - (void)_dispatchFailureCallbacks:(unsigned int)arg1 forRequest:(id)arg2 withError:(id)arg3 cleanupRequest:(BOOL)arg4;
@@ -51,7 +59,6 @@
 - (void)_handleDidRecordIrisMovieNotificationWithPayload:(id)arg1 forRequest:(id)arg2;
 - (void)_handleNotification:(id)arg1 payload:(id)arg2;
 - (void)_handlePreparationCompleteNotificationWithPayload:(id)arg1 settingsID:(long long)arg2;
-- (void)_handleRawStillImageCompleteNotificationWithPayload:(id)arg1 forRequest:(id)arg2;
 - (void)_handleStillImageCompleteNotificationWithPayload:(id)arg1 forRequest:(id)arg2;
 - (void)_handleWillBeginCaptureNotificationWithPayload:(id)arg1 forRequest:(id)arg2;
 - (void)_handleWillCaptureStillImageNotificationWithPayload:(id)arg1 forRequest:(id)arg2;
@@ -63,12 +70,14 @@
 - (void)_setIsFlashScene:(BOOL)arg1 firingKVO:(BOOL)arg2;
 - (void)_setIsHDRScene:(BOOL)arg1 firingKVO:(BOOL)arg2;
 - (void)_setIsStillImageStabilizationScene:(BOOL)arg1 firingKVO:(BOOL)arg2;
-- (void)_toggleFlashSceneDetectionBasedOnObserverCountForSourceDevice:(id)arg1;
-- (void)_toggleHDRSceneDetectionBasedOnObserverCountOnSourceDevice:(id)arg1;
-- (void)_toggleStillImageStabilizationSceneDetectionBasedOnObserverCountOnSourceDevice:(id)arg1;
+- (void)_updateAvailableLivePhotoVideoCodecTypesForSourceDevice:(id)arg1;
 - (void)_updateAvailablePhotoCodecTypesForSourceDevice:(id)arg1;
+- (void)_updateAvailablePhotoFileTypesForSourceDevice:(id)arg1;
 - (void)_updateAvailablePhotoPixelFormatTypesForSourceDevice:(id)arg1;
+- (void)_updateAvailableRawPhotoFileTypesForSourceDevice:(id)arg1;
 - (void)_updateAvailableRawPhotoPixelFormatTypesForSourceDevice:(id)arg1;
+- (void)_updateDepthDataDeliverySupportedForSourceDevice:(id)arg1;
+- (void)_updateDualCameraDualPhotoDeliverySupportedForSourceDevice:(id)arg1;
 - (void)_updateDualCameraFusionSupportedForSourceDevice:(id)arg1;
 - (void)_updateLensStabilizationDuringBracketedCaptureSupportedForSourceDevice:(id)arg1;
 - (void)_updateLivePhotoCaptureSupportedForSourceDevice:(id)arg1;
@@ -90,7 +99,9 @@
 - (void)detachSafelyFromFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (id)figCaptureIrisPreparedSettings;
 - (id)init;
-- (BOOL)isBravoImageFusionSupported;
+- (BOOL)isDepthDataDeliveryEnabled;
+- (BOOL)isDepthDataDeliverySupported;
+- (BOOL)isFilterRenderingEnabled;
 - (BOOL)isHDRScene;
 - (BOOL)isImageOptimizationForOfflineVideoStabilizationSupported;
 - (BOOL)isLivePhotoMovieProcessingSuspended;
@@ -102,11 +113,17 @@
 - (void)removeConnection:(id)arg1;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)safelyHandleServerConnectionDeathForFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
+- (void)setDepthDataDeliveryEnabled:(BOOL)arg1;
 - (void)setFigCaptureSessionSectionProperty:(struct __CFString *)arg1 withHostTime:(CDStruct_1b6d18a9)arg2 settingStateVaribleToNoOnFailure:(BOOL *)arg3;
+- (void)setFilterRenderingEnabled:(BOOL)arg1;
 - (void)setLivePhotoMovieProcessingSuspended:(BOOL)arg1;
 - (void)setOptimizesImagesForOfflineVideoStabilization:(BOOL)arg1;
 - (void)setPreparedPhotoSettingsArray:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)supportedHDRModes;
+- (id)supportedPhotoCodecTypesForFileType:(id)arg1;
+- (id)supportedPhotoPixelFormatTypesForFileType:(id)arg1;
+- (id)supportedRawPhotoPixelFormatTypesForFileType:(id)arg1;
+- (void)userInitiatedCaptureRequestAtTime:(unsigned long long)arg1;
 
 @end
 

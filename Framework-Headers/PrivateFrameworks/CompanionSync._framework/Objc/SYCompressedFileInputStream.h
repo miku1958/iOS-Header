@@ -56,10 +56,12 @@
 - (id)initWithFileAtPath:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (void)open;
+- (id)propertyForKey:(id)arg1;
 - (long long)read:(char *)arg1 maxLength:(unsigned long long)arg2;
 - (void)removeFromRunLoop:(id)arg1 forMode:(id)arg2;
 - (void)scheduleInRunLoop:(id)arg1 forMode:(id)arg2;
 - (void)setDelegate:(id)arg1;
+- (BOOL)setProperty:(id)arg1 forKey:(id)arg2;
 - (void)stream:(id)arg1 handleEvent:(unsigned long long)arg2;
 - (id)streamError;
 - (unsigned long long)streamStatus;

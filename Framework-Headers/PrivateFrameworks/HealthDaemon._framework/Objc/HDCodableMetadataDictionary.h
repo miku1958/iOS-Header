@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *keyValuePairs; // @synthesize keyValuePairs=_keyValuePairs;
 
++ (Class)keyValuePairsType;
 - (void).cxx_destruct;
 - (void)addKeyValuePairs:(id)arg1;
 - (void)clearKeyValuePairs;

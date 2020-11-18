@@ -4,30 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUIStackView.h>
+#import <TemplateKit/TLKStackView.h>
 
-@class SFMediaPlayerCardSection, SFPunchout, SKUIPlayButton, SearchUICardViewController, UILabel, UIView;
+@class SFPunchout, SKUIPlayButton, SearchUITrailersCardSectionView, UILabel, UIView;
 
-@interface SearchUITrailerView : SearchUIStackView
+@interface SearchUITrailerView : TLKStackView
 {
+    SearchUITrailersCardSectionView *_cardSectionView;
     UILabel *_titleLabel;
     SKUIPlayButton *_playButton;
     SFPunchout *_punchout;
-    SearchUICardViewController *_controller;
-    SFMediaPlayerCardSection *_section;
     UIView *_centeredBoxView;
 }
 
+@property (weak) SearchUITrailersCardSectionView *cardSectionView; // @synthesize cardSectionView=_cardSectionView;
 @property (strong) UIView *centeredBoxView; // @synthesize centeredBoxView=_centeredBoxView;
-@property (weak) SearchUICardViewController *controller; // @synthesize controller=_controller;
 @property (strong) SKUIPlayButton *playButton; // @synthesize playButton=_playButton;
 @property (strong) SFPunchout *punchout; // @synthesize punchout=_punchout;
-@property (strong) SFMediaPlayerCardSection *section; // @synthesize section=_section;
 @property (strong) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)initWithMediaItem:(id)arg1 controller:(id)arg2 section:(id)arg3;
+- (id)initWithMediaItem:(id)arg1 cardSectionView:(id)arg2;
 - (void)playTrailer;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -13,7 +13,7 @@
     NSMutableDictionary *_results;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)enumerateResolutionsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)init;

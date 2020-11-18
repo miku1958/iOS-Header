@@ -19,7 +19,8 @@
         unsigned int isAlphaCropped:1;
         unsigned int isFlippable:1;
         unsigned int isTintable:1;
-        unsigned int _reserved:17;
+        unsigned int preservedVectorRepresentation:1;
+        unsigned int _reserved:16;
     } _imageProperties;
 }
 
@@ -40,6 +41,7 @@
 @property (readonly, nonatomic) BOOL isVectorBased;
 @property (readonly, nonatomic) long long layoutDirection;
 @property (readonly, nonatomic) double opacity;
+@property (readonly, nonatomic) BOOL preservedVectorRepresentation;
 @property (readonly, nonatomic) long long resizingMode;
 @property (readonly, nonatomic) double scale; // @synthesize scale=_scale;
 @property (readonly, nonatomic) struct CGSize size;

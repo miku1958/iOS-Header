@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) _INPBUserActivity *userActivity; // @synthesize userActivity=_userActivity;
 
++ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

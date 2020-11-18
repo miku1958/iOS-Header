@@ -19,12 +19,14 @@
     NSMutableSet *_pendingMessageIDs;
     BOOL _rejectedNewSessionFromSamePeer;
     BOOL _sessionStarted;
+    struct NSMutableDictionary *_stateResponders;
     BOOL _isSending;
     long long _priority;
     id<SYSessionDelegate> _delegate;
     id<SYChangeSerializer> _serializer;
     NSString *_identifier;
     SYService *_service;
+    NSString *_reason;
     double _perMessageTimeout;
     double _fullSessionTimeout;
     NSDictionary *_options;
@@ -57,6 +59,7 @@
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly, nonatomic) unsigned long long protocolVersion;
 @property (readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (readonly, nonatomic) double remainingSessionTime;
 @property (strong, nonatomic) id<SYChangeSerializer> serializer; // @synthesize serializer=_serializer;
 @property (readonly, weak, nonatomic) SYService *service; // @synthesize service=_service;
@@ -72,7 +75,7 @@
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 - (void).cxx_destruct;
-- (id)CPObfuscatedDescription;
+- (id)CPSafeDescription;
 - (BOOL)_beginTransaction;
 - (id)_cancelPendingMessagesReturningFailures;
 - (void)_clearOutgoingMessageUUID:(id)arg1;
@@ -86,6 +89,7 @@
 - (BOOL)_handleStartSessionResponse:(id)arg1 error:(id *)arg2;
 - (void)_handleSyncBatch:(id)arg1 response:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_handleSyncBatchResponse:(id)arg1 error:(id *)arg2;
+- (void)_onSessionStateChangedTo:(long long)arg1 do:(CDUnknownBlockType)arg2;
 - (void)_pause;
 - (void)_peerProcessedMessageWithIdentifier:(id)arg1 userInfo:(id)arg2;
 - (BOOL)_readyToProcessIncomingMessages;
@@ -110,6 +114,7 @@
 - (id)initWithService:(id)arg1;
 - (void)setHasRejectedPeerSession:(BOOL)arg1;
 - (void)start:(CDUnknownBlockType)arg1;
+- (id)stateResponders;
 
 @end
 

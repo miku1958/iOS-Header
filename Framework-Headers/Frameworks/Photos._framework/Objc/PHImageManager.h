@@ -26,13 +26,14 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *memoryEventSource; // @synthesize memoryEventSource=_memoryEventSource;
 @property (readonly) Class superclass;
 
++ (BOOL)_allowVideoAccessForAsset:(id)arg1 options:(id)arg2;
 + (id)defaultManager;
 + (struct CGSize)fullScreenSizeForScreen:(id)arg1 contentMode:(long long *)arg2;
 + (void)initialize;
 + (struct CGSize)sizeOfBestNonFullscreenThumbnailAndContentMode:(long long *)arg1;
 + (BOOL)useNewImageManager;
 - (void).cxx_destruct;
-- (void)_asyncFetchCloudSharedVideoComplement:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
+- (id)_asyncFetchCloudSharedVideoForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (id)_domain;
 - (int)_requestAVAssetForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (id)_requestAsynchronousVideoURLForAsset:(id)arg1 chainedToMasterRequest:(id)arg2 options:(id)arg3 resultHandler:(CDUnknownBlockType)arg4;
@@ -46,6 +47,7 @@
 - (void)photoLibraryDidChange:(id)arg1;
 - (void)registerRequest:(id)arg1;
 - (int)requestAVAssetForVideo:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
+- (int)requestAnimatedImageForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (id)requestAsynchronousImageForAsset:(id)arg1 chainedToMasterRequest:(id)arg2 targetSize:(struct CGSize)arg3 contentMode:(long long)arg4 options:(id)arg5 resultHandler:(CDUnknownBlockType)arg6;
 - (id)requestAsynchronousImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (id)requestAsynchronousImageForImageLoadingAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;

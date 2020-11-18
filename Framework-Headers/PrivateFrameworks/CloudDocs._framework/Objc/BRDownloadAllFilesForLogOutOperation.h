@@ -4,33 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CloudDocs/BROperation.h>
+#import <CloudDocs/BRDownloadAndUploadAllFilesForLogOutOperation.h>
 
-#import <CloudDocs/NSProgressReporting-Protocol.h>
-
-@class BRGlobalProgressProxy, BRUploadAllFilesForLogOutOperation, NSMutableArray, NSOperationQueue, NSString;
-
-@interface BRDownloadAllFilesForLogOutOperation : BROperation <NSProgressReporting>
+@interface BRDownloadAllFilesForLogOutOperation : BRDownloadAndUploadAllFilesForLogOutOperation
 {
-    BRGlobalProgressProxy *_progress;
-    NSMutableArray *_fileCoordinators;
-    CDUnknownBlockType _downloadAllFilesCompletionBlock;
-    NSOperationQueue *_internalQueue;
-    BRUploadAllFilesForLogOutOperation *_uploadOp;
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (copy) CDUnknownBlockType downloadAllFilesCompletionBlock; // @synthesize downloadAllFilesCompletionBlock=_downloadAllFilesCompletionBlock;
-@property (readonly) unsigned long long hash;
-@property (strong) BRGlobalProgressProxy *progress; // @synthesize progress=_progress;
-@property (readonly) Class superclass;
-
-- (void).cxx_destruct;
-- (void)cancel;
-- (void)finishWithResult:(id)arg1 error:(id)arg2;
-- (id)init;
-- (void)main;
 
 @end
 

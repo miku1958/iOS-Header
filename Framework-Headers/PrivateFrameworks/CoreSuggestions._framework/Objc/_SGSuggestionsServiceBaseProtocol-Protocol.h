@@ -10,5 +10,7 @@
 + (BOOL)isHarvestingSupported;
 - (BOOL)isEnabledWithError:(id *)arg1;
 - (void)keepDirty:(BOOL)arg1;
+- (BOOL)queuesRequestsIfBusy;
+- (void)setQueuesRequestsIfBusy:(BOOL)arg1;
 @end
 

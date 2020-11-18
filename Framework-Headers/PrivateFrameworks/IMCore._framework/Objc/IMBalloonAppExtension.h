@@ -6,27 +6,34 @@
 
 #import <IMCore/IMBalloonPlugin.h>
 
-@class LSPlugInKitProxy, NSExtension, NSUUID;
+@class LSPlugInKitProxy, NSExtension, NSNumber, NSUUID;
+@protocol PKPlugIn;
 
 @interface IMBalloonAppExtension : IMBalloonPlugin
 {
+    BOOL _canSendDataPayloads;
+    BOOL _shouldBalloonHideAppIcon;
     NSExtension *_extension;
     LSPlugInKitProxy *_proxy;
     NSUUID *_requestIdentifier;
 }
 
+@property (nonatomic) BOOL canSendDataPayloads; // @synthesize canSendDataPayloads=_canSendDataPayloads;
 @property (readonly, strong, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
+@property (readonly, nonatomic) BOOL isLaunchProhibited;
+@property (readonly, strong, nonatomic) NSNumber *itemID;
+@property (readonly, strong, nonatomic) id<PKPlugIn> plugin;
 @property (strong, nonatomic) LSPlugInKitProxy *proxy; // @synthesize proxy=_proxy;
 @property NSUUID *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
+@property (nonatomic) BOOL shouldBalloonHideAppIcon; // @synthesize shouldBalloonHideAppIcon=_shouldBalloonHideAppIcon;
 
 - (void).cxx_destruct;
 - (id)_initWithPluginBundle:(id)arg1 extension:(id)arg2 pluginKitProxyClass:(Class)arg3;
 - (id)extensionConnection;
+- (id)initWithPluginBundle:(id)arg1 appBundle:(id)arg2;
 - (id)initWithPluginBundle:(id)arg1 extension:(id)arg2;
-- (id)initWithPluginBundle:(id)arg1 pluginKitProxy:(id)arg2;
+- (id)initWithPluginBundle:(id)arg1 pluginKitProxy:(id)arg2 extension:(id)arg3;
 - (BOOL)isBetaPlugin;
-- (BOOL)isEnabled;
-- (BOOL)isStickerPackOnly;
 - (id)proxyWithErrorHandle:(CDUnknownBlockType)arg1;
 - (id)version;
 

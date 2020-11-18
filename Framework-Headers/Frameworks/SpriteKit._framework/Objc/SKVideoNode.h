@@ -11,6 +11,7 @@
 @interface SKVideoNode : SKNode
 {
     struct SKCVideoNode *_skcVideoNode;
+    BOOL _isUsingKVO;
     NSString *_videoFileName;
     NSURL *_videoFileURL;
     AVPlayer *_player;
@@ -28,6 +29,9 @@
 - (void).cxx_destruct;
 - (void)_didMakeBackingNode;
 - (struct SKCNode *)_makeBackingNode;
+- (void)dealloc;
+- (id)debugHierarchyPropertyDescriptions;
+- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
@@ -38,6 +42,7 @@
 - (id)initWithVideoFileNamed:(id)arg1;
 - (id)initWithVideoURL:(id)arg1;
 - (BOOL)isEqualToNode:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pause;
 - (void)play;
 - (void)setPaused:(BOOL)arg1;

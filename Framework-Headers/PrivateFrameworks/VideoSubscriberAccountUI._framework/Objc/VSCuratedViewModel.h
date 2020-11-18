@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface VSCuratedViewModel : VSViewModel <VSLogoImageViewModel>
 {
     BOOL _beginValidationButtonEnabled;
-    BOOL _showDeleteAccountButton;
     BOOL _showFooter;
     NSItemProvider *_logoProvider;
     UIImage *_logo;
@@ -38,11 +37,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSItemProvider *logoProvider; // @synthesize logoProvider=_logoProvider;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (copy, nonatomic) NSString *notice; // @synthesize notice=_notice;
-@property (nonatomic) BOOL showDeleteAccountButton; // @synthesize showDeleteAccountButton=_showDeleteAccountButton;
 @property (nonatomic) BOOL showFooter; // @synthesize showFooter=_showFooter;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)configureWithRequest:(id)arg1;
 - (id)init;
 
 @end

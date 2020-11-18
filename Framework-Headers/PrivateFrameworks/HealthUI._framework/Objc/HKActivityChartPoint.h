@@ -33,12 +33,12 @@
 - (void)_populateWorkoutTimes;
 - (id)allYValues;
 - (id)initWithActivityCache:(id)arg1 workouts:(id)arg2 unit:(id)arg3;
-- (id)maxXValue;
+- (id)maxXValueAsGenericType;
 - (id)maxYValue;
-- (id)minXValue;
+- (id)minXValueAsGenericType;
 - (id)minYValue;
 - (id)userInfo;
-- (id)xValue;
+- (id)xValueAsGenericType;
 - (id)yValue;
 - (id)yValueForKey:(id)arg1;
 

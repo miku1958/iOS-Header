@@ -20,7 +20,11 @@
     int _searchType;
     int _sortOrder;
     GEOPDViewportInfo *_viewportInfo;
-    CDStruct_aa0bba6c _has;
+    struct {
+        unsigned int maxResults:1;
+        unsigned int searchType:1;
+        unsigned int sortOrder:1;
+    } _has;
 }
 
 @property (nonatomic) BOOL hasMaxResults;
@@ -39,11 +43,11 @@
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
 
+- (void).cxx_destruct;
 - (int)StringAsSearchType:(id)arg1;
 - (int)StringAsSortOrder:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

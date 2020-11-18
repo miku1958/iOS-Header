@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *pcsKeyID; // @synthesize pcsKeyID=_pcsKeyID;
 @property (readonly) Class superclass;
 
-+ (id)newFromSqliteValue:(struct Mem *)arg1;
++ (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPCSData:(id)arg1;
+- (BOOL)shouldEncodePCSData;
 - (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
 
 @end

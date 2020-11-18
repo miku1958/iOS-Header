@@ -100,7 +100,6 @@
 @property (readonly, nonatomic) NSString *transientSubtitle; // @synthesize transientSubtitle=_transientSubtitle;
 
 + (id)_composePropertiesToFetchWithHint:(unsigned long long)arg1;
-+ (id)_transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 + (id)corePropertiesToFetch;
 + (id)defaultTitleFontNames;
 + (id)descriptionOfTitleCategory:(long long)arg1;
@@ -116,7 +115,6 @@
 + (id)fetchMomentsBackingMemory:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsInMomentList:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsWithOptions:(id)arg1;
-+ (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
 + (id)fetchType;
 + (id)fetchUserLibraryAlbumWithOptions:(id)arg1;
 + (id)graphOptionsForTransientAssetCollection:(id)arg1 needsCompleteMomentsInfo:(BOOL)arg2;
@@ -132,6 +130,7 @@
 + (unsigned long long)titleFontNameHashFromDate:(id)arg1;
 + (unsigned long long)titleFontNameHashFromHash:(unsigned long long)arg1 andHash:(unsigned long long)arg2;
 + (unsigned long long)titleFontNameHashFromString:(id)arg1;
++ (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 + (id)transientAssetCollectionWithAssetFetchResult:(id)arg1 subtype:(long long)arg2;
 + (id)transientAssetCollectionWithAssetFetchResult:(id)arg1 title:(id)arg2;
 + (id)transientAssetCollectionWithAssetFetchResult:(id)arg1 title:(id)arg2 identifier:(id)arg3;
@@ -147,6 +146,7 @@
 - (id)description;
 - (unsigned long long)estimatedPhotosCount;
 - (unsigned long long)estimatedVideosCount;
+- (BOOL)hasLocationInfo;
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 identifier:(id)arg4;
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 identifier:(id)arg4 albumKind:(int)arg5;
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 identifier:(id)arg4 albumKind:(int)arg5 subtype:(long long)arg6;

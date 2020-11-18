@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     _UIButtonBar *_buttonBar;
     UIScrollView *_scrollView;
     NSArray *_barButtonItemGroups;
+    BOOL _overLightKeyboard;
 }
 
 @property (readonly, copy) NSString *debugDescription;

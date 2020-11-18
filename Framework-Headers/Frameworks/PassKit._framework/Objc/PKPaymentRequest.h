@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSString, NSURL, PKContact, PKPaymentMerchantSession;
+@class AKAppleIDAuthenticationContext, NSArray, NSData, NSSet, NSString, NSURL, PKContact, PKPaymentMerchantSession;
 
 @interface PKPaymentRequest : NSObject <NSSecureCoding>
 {
     BOOL _expectsMerchantSession;
+    BOOL _suppressTotal;
     BOOL _shippingEditable;
     BOOL _requiresAddressPrecision;
     NSString *_merchantIdentifier;
@@ -21,13 +22,14 @@
     unsigned long long _merchantCapabilities;
     NSArray *_paymentSummaryItems;
     NSString *_currencyCode;
-    unsigned long long _requiredBillingAddressFields;
+    NSSet *_requiredBillingContactFields;
     PKContact *_billingContact;
-    unsigned long long _requiredShippingAddressFields;
+    NSSet *_requiredShippingContactFields;
     PKContact *_shippingContact;
     NSArray *_shippingMethods;
     unsigned long long _shippingType;
     NSData *_applicationData;
+    NSSet *_supportedCountries;
     const void *_shippingAddress;
     const void *_billingAddress;
     NSArray *_thumbnailURLs;
@@ -35,24 +37,46 @@
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_sourceApplicationSecondaryIdentifier;
     NSString *_CTDataConnectionServiceType;
+    unsigned long long _requestType;
+    unsigned long long _requestor;
+    NSArray *_paymentContentItems;
+    NSData *_externalizedContext;
+    struct __SecAccessControl *_accesssControlRef;
+    AKAppleIDAuthenticationContext *_appleIDAuthenticationContext;
+    NSString *_localizedNavigationTitle;
+    unsigned long long _confirmationStyle;
+    NSString *_localizedConfirmationTitle;
     NSString *_shippingEditableMessage;
     PKPaymentMerchantSession *_merchantSession;
+    double _clientCallbackTimeout;
 }
 
 @property (strong, nonatomic) NSString *CTDataConnectionServiceType; // @synthesize CTDataConnectionServiceType=_CTDataConnectionServiceType;
+@property (nonatomic) struct __SecAccessControl *accesssControlRef; // @synthesize accesssControlRef=_accesssControlRef;
+@property (strong, nonatomic) AKAppleIDAuthenticationContext *appleIDAuthenticationContext; // @synthesize appleIDAuthenticationContext=_appleIDAuthenticationContext;
 @property (copy, nonatomic) NSData *applicationData; // @synthesize applicationData=_applicationData;
 @property (nonatomic) const void *billingAddress; // @synthesize billingAddress=_billingAddress;
 @property (strong, nonatomic) PKContact *billingContact; // @synthesize billingContact=_billingContact;
+@property (nonatomic) double clientCallbackTimeout; // @synthesize clientCallbackTimeout=_clientCallbackTimeout;
+@property (nonatomic) unsigned long long confirmationStyle; // @synthesize confirmationStyle=_confirmationStyle;
 @property (copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
 @property (nonatomic) BOOL expectsMerchantSession; // @synthesize expectsMerchantSession=_expectsMerchantSession;
+@property (copy, nonatomic) NSData *externalizedContext; // @synthesize externalizedContext=_externalizedContext;
+@property (copy, nonatomic) NSString *localizedConfirmationTitle; // @synthesize localizedConfirmationTitle=_localizedConfirmationTitle;
+@property (copy, nonatomic) NSString *localizedNavigationTitle; // @synthesize localizedNavigationTitle=_localizedNavigationTitle;
 @property (nonatomic) unsigned long long merchantCapabilities; // @synthesize merchantCapabilities=_merchantCapabilities;
 @property (copy, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
 @property (strong, nonatomic) PKPaymentMerchantSession *merchantSession; // @synthesize merchantSession=_merchantSession;
 @property (strong, nonatomic) NSURL *originatingURL; // @synthesize originatingURL=_originatingURL;
+@property (copy, nonatomic) NSArray *paymentContentItems; // @synthesize paymentContentItems=_paymentContentItems;
 @property (copy, nonatomic) NSArray *paymentSummaryItems; // @synthesize paymentSummaryItems=_paymentSummaryItems;
-@property (nonatomic) unsigned long long requiredBillingAddressFields; // @synthesize requiredBillingAddressFields=_requiredBillingAddressFields;
-@property (nonatomic) unsigned long long requiredShippingAddressFields; // @synthesize requiredShippingAddressFields=_requiredShippingAddressFields;
+@property (nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
+@property (nonatomic) unsigned long long requestor; // @synthesize requestor=_requestor;
+@property (nonatomic) unsigned long long requiredBillingAddressFields;
+@property (strong, nonatomic) NSSet *requiredBillingContactFields; // @synthesize requiredBillingContactFields=_requiredBillingContactFields;
+@property (nonatomic) unsigned long long requiredShippingAddressFields;
+@property (strong, nonatomic) NSSet *requiredShippingContactFields; // @synthesize requiredShippingContactFields=_requiredShippingContactFields;
 @property (nonatomic) BOOL requiresAddressPrecision; // @synthesize requiresAddressPrecision=_requiresAddressPrecision;
 @property (nonatomic) const void *shippingAddress; // @synthesize shippingAddress=_shippingAddress;
 @property (strong, nonatomic) PKContact *shippingContact; // @synthesize shippingContact=_shippingContact;
@@ -62,15 +86,22 @@
 @property (nonatomic) unsigned long long shippingType; // @synthesize shippingType=_shippingType;
 @property (strong, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
 @property (strong, nonatomic) NSString *sourceApplicationSecondaryIdentifier; // @synthesize sourceApplicationSecondaryIdentifier=_sourceApplicationSecondaryIdentifier;
+@property (copy, nonatomic) NSSet *supportedCountries; // @synthesize supportedCountries=_supportedCountries;
 @property (copy, nonatomic) NSArray *supportedNetworks; // @synthesize supportedNetworks=_supportedNetworks;
+@property (nonatomic) BOOL suppressTotal; // @synthesize suppressTotal=_suppressTotal;
 @property (strong, nonatomic) NSArray *thumbnailURLs; // @synthesize thumbnailURLs=_thumbnailURLs;
 
 + (id)availableNetworks;
++ (id)paymentBillingAddressInvalidErrorWithKey:(id)arg1 localizedDescription:(id)arg2;
++ (id)paymentContactInvalidErrorWithContactField:(id)arg1 localizedDescription:(id)arg2;
++ (id)paymentShippingAddressInvalidErrorWithKey:(id)arg1 localizedDescription:(id)arg2;
++ (id)paymentShippingAddressUnserviceableErrorWithLocalizedDescription:(id)arg1;
 + (id)requestWithProtobuf:(id)arg1;
 + (BOOL)supportsSecureCoding;
 + (long long)version;
 - (void).cxx_destruct;
-- (id)_shippingTypeToString;
+- (id)_addressFieldsToContactFields:(unsigned long long)arg1;
+- (unsigned long long)_contactFieldsToAddressFields:(id)arg1;
 - (id)_transactionAmount;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
@@ -78,7 +109,9 @@
 - (id)initWithDictionary:(id)arg1 error:(id *)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPaymentRequest:(id)arg1;
+- (BOOL)isPeerPaymentRequest;
 - (BOOL)isServiceProviderPaymentRequest;
+- (id)peerPaymentRequest;
 - (id)protobuf;
 - (id)serviceProviderPaymentRequest;
 

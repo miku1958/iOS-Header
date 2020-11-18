@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class IMConnectionMonitor, IMRemoteURLConnection, NSData, NSDate, NSDictionary, NSMutableURLRequest, NSNumber, NSString, NSURL;
+@class IMConnectionMonitor, IMRemoteURLConnection, NSArray, NSData, NSDate, NSDictionary, NSMutableURLRequest, NSNumber, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface IDSServerBag : NSObject
@@ -29,10 +29,13 @@
     NSDate *_loadDate;
     NSNumber *_cacheTime;
     unsigned long long _hasPairedDeviceState;
+    NSData *_serverSignature;
+    NSArray *_serverCerts;
+    NSData *_serverGivenBag;
 }
 
 @property (strong, setter=_setBag:) NSDictionary *_bag; // @synthesize _bag;
-@property NSObject<OS_dispatch_queue> *_bagQueue; // @synthesize _bagQueue;
+@property (strong) NSObject<OS_dispatch_queue> *_bagQueue; // @synthesize _bagQueue;
 @property (strong) NSNumber *_cacheTime; // @synthesize _cacheTime;
 @property (strong, setter=_setCachedBag:) NSDictionary *_cachedBag; // @synthesize _cachedBag;
 @property (strong, setter=_setCachedHash:) NSString *_cachedHash; // @synthesize _cachedHash;
@@ -52,6 +55,9 @@
 @property (readonly) BOOL isLoaded;
 @property (readonly) BOOL isLoading;
 @property (readonly) BOOL isServerAvailable;
+@property (strong) NSArray *serverCerts; // @synthesize serverCerts=_serverCerts;
+@property (strong) NSData *serverGivenBag; // @synthesize serverGivenBag=_serverGivenBag;
+@property (strong) NSData *serverSignature; // @synthesize serverSignature=_serverSignature;
 @property int token; // @synthesize token=_token;
 
 + (id)_bagCreationLock;
@@ -60,6 +66,7 @@
 + (id)defaultBag;
 + (id)sharedInstance;
 + (id)sharedInstanceForBagType:(long long)arg1;
+- (void).cxx_destruct;
 - (void)__saveCacheToPrefs;
 - (BOOL)_allowInvalid;
 - (id)_bagDefaultsDomain;
@@ -80,7 +87,9 @@
 - (void)dealloc;
 - (void)forceBagLoad;
 - (id)objectForKey:(id)arg1;
+- (BOOL)shouldForceDevicesToCarry;
 - (void)startBagLoad;
+- (BOOL)trustRefFromCertificates:(id)arg1 trustRef:(struct __SecTrust **)arg2;
 - (id)urlWithKey:(id)arg1;
 
 @end

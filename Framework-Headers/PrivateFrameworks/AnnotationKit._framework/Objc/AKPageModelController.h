@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AKCropAnnotation, NSArray, NSMutableOrderedSet, NSMutableSet, NSSet;
+@class AKCropAnnotation, AKInkAnnotation, AKStatistics, NSArray, NSMutableOrderedSet, NSMutableSet, NSSet;
 
 @interface AKPageModelController : NSObject
 {
@@ -14,16 +14,24 @@
     NSMutableSet *_mutableSelectedAnnotations;
     id _representedObject;
     AKCropAnnotation *_cropAnnotation;
+    AKInkAnnotation *_inkCanvasAnnotation;
+    AKStatistics *_statisticsLogger;
 }
 
 @property (readonly) NSArray *annotations;
 @property (strong) AKCropAnnotation *cropAnnotation; // @synthesize cropAnnotation=_cropAnnotation;
+@property (strong) AKInkAnnotation *inkCanvasAnnotation; // @synthesize inkCanvasAnnotation=_inkCanvasAnnotation;
 @property (weak) id representedObject; // @synthesize representedObject=_representedObject;
 @property (readonly) NSSet *selectedAnnotations;
+@property (weak, nonatomic) AKStatistics *statisticsLogger; // @synthesize statisticsLogger=_statisticsLogger;
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (void).cxx_destruct;
+- (void)_coalescedEnsureInkAnnotationIsInFront:(id)arg1;
 - (void)_enableEditObservationForAnnotationIfNew:(id)arg1;
+- (void)_ensureInkAnnotationIsInFrontWhenEditsAreDone;
+- (void)_logAnnotationAdded:(id)arg1;
+- (void)_postSelectedAnnotationsChangedNotification;
 - (void)addCropToolAnnotation;
 - (void)addSelectedAnnotations:(id)arg1;
 - (void)addSelectedAnnotationsObject:(id)arg1;
@@ -31,7 +39,6 @@
 - (void)bringSelectedAnnotationsForward;
 - (void)bringSelectedAnnotationsToFront;
 - (BOOL)containsAnnotation:(id)arg1;
-- (void)establishAnnotationParentChildRelationships;
 - (BOOL)hasMaskBorderAnnotation;
 - (id)init;
 - (id)initWithArchivableRepresentation:(id)arg1;
@@ -53,6 +60,7 @@
 - (id)selectionStateForUndo;
 - (void)sendSelectedAnnotationsBackward;
 - (void)sendSelectedAnnotationsToBack;
+- (void)setInkCanvasAnnotationOneTime:(id)arg1;
 - (void)setSelectedAnnotations:(id)arg1;
 
 @end

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     SYLogErrorInfo *_error;
     NSString *_identifier;
     NSMutableArray *_peers;
+    NSString *_reason;
     int _state;
     NSMutableArray *_transportOptions;
     BOOL _canRestart;
@@ -49,12 +50,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasFullSessionTimeout;
 @property (nonatomic) BOOL hasIsReset;
 @property (nonatomic) BOOL hasPerMessageTimeout;
+@property (readonly, nonatomic) BOOL hasReason;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL isReset; // @synthesize isReset=_isReset;
 @property (nonatomic) BOOL isSending; // @synthesize isSending=_isSending;
 @property (nonatomic) unsigned long long maxConcurrentMessages; // @synthesize maxConcurrentMessages=_maxConcurrentMessages;
 @property (strong, nonatomic) NSMutableArray *peers; // @synthesize peers=_peers;
 @property (nonatomic) double perMessageTimeout; // @synthesize perMessageTimeout=_perMessageTimeout;
+@property (strong, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (nonatomic) int state; // @synthesize state=_state;
 @property (strong, nonatomic) NSMutableArray *transportOptions; // @synthesize transportOptions=_transportOptions;
 

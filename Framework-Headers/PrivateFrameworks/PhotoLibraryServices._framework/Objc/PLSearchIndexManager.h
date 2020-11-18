@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSCountedSet, NSDictionary, NSString, PLClientServerTransaction, PLKeywordManager, PLPhotoLibrary, PLSearchIndexDateFormatter, PLThrottleTimer, PSIDatabase;
 @protocol OS_dispatch_queue;
@@ -85,6 +85,7 @@
 - (void)_throttleTimerFire:(id)arg1;
 - (id)_updatesAfterConvertingDetectedFacesToAssetsInUpdates:(id)arg1;
 - (id)_updatesAfterConvertingPersonsToAssetsInUpdates:(id)arg1;
+- (id)_updatesEnsuringMutableArraysFromUpdates:(id)arg1;
 - (id)_uuidsToRemoveFromUUIDsToProcess:(id)arg1;
 - (void)applyUpdates:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)closeSearchIndexWithCompletion:(CDUnknownBlockType)arg1;

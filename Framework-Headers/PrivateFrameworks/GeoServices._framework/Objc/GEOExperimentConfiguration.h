@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOExperimentServerProxyDelegate-Protocol.h>
 
@@ -27,8 +27,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (void)setServerProxyClass:(Class)arg1;
 + (id)sharedConfiguration;
++ (void)useProxy:(Class)arg1;
+- (void).cxx_destruct;
 - (id)_debugClientConfig;
 - (id)_debug_bucketId;
 - (id)_debug_configurationDate;
@@ -47,6 +48,7 @@
 - (id)_reportAProblemClientMetadata;
 - (void)_setActiveExperimentBranchDictionaryRepresentation:(id)arg1;
 - (id)_siriClientMetadata;
+- (void)abAssignUUIDWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)addExperimentObserver:(id)arg1 queue:(id)arg2;
 - (id)clientConfig;
 - (id)clientConfigurationValueForKey:(id)arg1;
@@ -60,6 +62,7 @@
 - (void)refreshDatasetABStatus:(id)arg1;
 - (void)removeExperimentObserver:(id)arg1;
 - (void)serverProxy:(id)arg1 didChangeExperimentsInfo:(id)arg2;
+- (void)updateURLComponents:(id)arg1 forExperimentType:(long long)arg2 dispatcherRequestType:(int)arg3;
 
 @end
 

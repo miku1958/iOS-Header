@@ -11,5 +11,6 @@
 - (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
 - (id)CKPropertiesDescription;
 - (id)CKPropertiesDescriptionStringFromProperties:(id)arg1;
+- (id)hashedDescription;
 @end
 

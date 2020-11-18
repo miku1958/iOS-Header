@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 + (void)presentIfNecessaryFromViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)resetLastPresentationInfo;
 - (void).cxx_destruct;
+- (void)_addSection:(id)arg1 containerView:(id)arg2 iconName:(id)arg3 lastLabel:(id *)arg4 lastSectionView:(id *)arg5 subheadlineFontScale:(double)arg6 text:(id)arg7 title:(id)arg8 titleLabel:(id)arg9;
 - (void)_handleContinueButton:(id)arg1;
 - (id)_initWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

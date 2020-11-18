@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) BOOL hf_hasSetFavorite;
 @property (readonly, nonatomic) BOOL hf_isFavorite;
+@property (readonly, nonatomic) BOOL hf_shouldShowInFavorites;
 
 - (NAFuture *)hf_updateIsFavorite:(BOOL)arg1;
 @end

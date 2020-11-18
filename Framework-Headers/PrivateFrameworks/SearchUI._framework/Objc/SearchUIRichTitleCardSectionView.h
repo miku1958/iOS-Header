@@ -4,14 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUILayoutFreeSectionView.h>
+#import <SearchUI/SearchUICardSectionView.h>
 
-@interface SearchUIRichTitleCardSectionView : SearchUILayoutFreeSectionView
+@class TLKHeaderView;
+
+@interface SearchUIRichTitleCardSectionView : SearchUICardSectionView
 {
 }
 
-- (id)initWithCardSection:(id)arg1 controller:(id)arg2 style:(unsigned long long)arg3;
-- (id)textContainerViewForSection:(id)arg1;
+@property (strong) TLKHeaderView *contentView; // @dynamic contentView;
+
++ (id)dragSubtitleForCardSection:(id)arg1;
++ (id)dragTitleForCardSection:(id)arg1;
++ (int)separatorStyleForCardSection:(id)arg1;
++ (BOOL)supportsRecyclingForCardSection:(id)arg1;
+- (id)setupContentView;
+- (void)updateWithCardSection:(id)arg1;
 
 @end
 

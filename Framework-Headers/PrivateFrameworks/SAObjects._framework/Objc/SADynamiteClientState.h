@@ -15,6 +15,7 @@
 @property (strong, nonatomic) SACalendar *expirationDate;
 @property (copy, nonatomic) NSString *status;
 @property (copy, nonatomic) NSString *userToken;
+@property (copy, nonatomic) NSString *xpAbCookie;
 
 + (id)deliveryDeadline;
 + (id)dynamiteClientState;

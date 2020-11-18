@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOABSecondPartyPlaceRequestClientMetaData, GEOPDAnalyticMetadata, GEORPClientCapabilities, GEORPUserCredentials, NSMutableArray, NSString;
+@class GEOABSecondPartyPlaceRequestClientMetaData, GEOPDAnalyticMetadata, GEORPClientCapabilities, GEORPUserCredentials, GEOServicesState, NSMutableArray, NSString;
 
 @interface GEORPProblemStatusRequest : PBRequest <NSCopying>
 {
@@ -16,6 +16,7 @@
     GEOPDAnalyticMetadata *_analyticMetadata;
     GEORPClientCapabilities *_clientCapabilities;
     NSMutableArray *_problemIds;
+    GEOServicesState *_servicesState;
     NSString *_statusNotificationId;
     GEORPUserCredentials *_userCredentials;
 }
@@ -26,18 +27,20 @@
 @property (readonly, nonatomic) BOOL hasAbAssignmentMetadata;
 @property (readonly, nonatomic) BOOL hasAnalyticMetadata;
 @property (readonly, nonatomic) BOOL hasClientCapabilities;
+@property (readonly, nonatomic) BOOL hasServicesState;
 @property (readonly, nonatomic) BOOL hasStatusNotificationId;
 @property (readonly, nonatomic) BOOL hasUserCredentials;
 @property (strong, nonatomic) NSMutableArray *problemIds; // @synthesize problemIds=_problemIds;
+@property (strong, nonatomic) GEOServicesState *servicesState; // @synthesize servicesState=_servicesState;
 @property (strong, nonatomic) NSString *statusNotificationId; // @synthesize statusNotificationId=_statusNotificationId;
 @property (strong, nonatomic) GEORPUserCredentials *userCredentials; // @synthesize userCredentials=_userCredentials;
 
 + (Class)problemIdType;
+- (void).cxx_destruct;
 - (void)addProblemId:(id)arg1;
 - (void)clearProblemIds;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

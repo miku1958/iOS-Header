@@ -12,7 +12,7 @@
 - (id)uns_nonEmptyCopy;
 - (id)uns_nonNilArrayForKey:(id)arg1;
 - (id)uns_nonNilDictionaryForKey:(id)arg1;
-- (id)uns_nonNilStringForKey:(id)arg1;
+- (id)uns_safeCastNonNilStringForKey:(id)arg1;
 - (id)uns_safeCastObjectForKey:(id)arg1 class:(Class)arg2;
 - (id)uns_safeCastObjectForKey:(id)arg1 classes:(id)arg2;
 @end

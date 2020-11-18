@@ -4,31 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIBackdropView.h>
+#import <UIKit/UIView.h>
 
-@class UIImageView;
+@class UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface UICalloutBarBackground : _UIBackdropView
+@interface UICalloutBarBackground : UIView
 {
     double m_dividerOffsets[24];
-    UIImageView *_blurMaskView;
-    UIImageView *_tintMaskView;
-    _UIBackdropView *_separatorView;
+    BOOL m_isDisplayingVertically;
+    UIVisualEffectView *_separatorView;
+    UIVisualEffectView *_blurView;
+    UIVisualEffectView *_tintView;
     struct CGRect _highlightRect;
 }
 
-@property (strong, nonatomic) UIImageView *blurMaskView; // @synthesize blurMaskView=_blurMaskView;
 @property (nonatomic) struct CGRect highlightRect; // @synthesize highlightRect=_highlightRect;
-@property (strong, nonatomic) _UIBackdropView *separatorView; // @synthesize separatorView=_separatorView;
-@property (strong, nonatomic) UIImageView *tintMaskView; // @synthesize tintMaskView=_tintMaskView;
 
 - (void).cxx_destruct;
 - (id)init;
 - (void)layoutSubviews;
-- (void)setBlurDisabled:(BOOL)arg1;
 - (void)setDividerOffsets:(double *)arg1;
-- (void)setHighlighted:(BOOL)arg1 forFrame:(struct CGRect)arg2;
+- (void)setHighlighted:(BOOL)arg1 forFrame:(struct CGRect)arg2 isDisplayingVertically:(BOOL)arg3;
 
 @end
 

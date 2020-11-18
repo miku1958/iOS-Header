@@ -24,6 +24,7 @@
 
 @property (weak, nonatomic) id<WBSURLCompletionDataSource> dataSource; // @synthesize dataSource=_dataSource;
 
++ (BOOL)_matchIsNotURLMatchAndTitleLooksLikeURLForBookmarkAndHistoryCompletionMatch:(const struct BookmarkAndHistoryCompletionMatch *)arg1;
 + (void)initializeURLCompletionOnMainThread;
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -32,6 +33,7 @@
 - (void)_getSortedPrefixMatchesForTypedString:(id)arg1 topHits:(Vector_c2be5503 *)arg2 historyMatches:(Vector_c2be5503 *)arg3 historyLimit:(unsigned long long)arg4 bookmarkMatches:(Vector_c2be5503 *)arg5 bookmarkLimit:(unsigned long long)arg6;
 - (void)_getUnsortedFullTextMatchesForTypedString:(id)arg1 historyMatches:(Vector_c2be5503 *)arg2 bookmarkMatches:(Vector_c2be5503 *)arg3 dataTypes:(unsigned int)arg4;
 - (void)_getUnsortedPrefixMatchesForTypedString:(id)arg1 historyMatches:(Vector_c2be5503 *)arg2 bookmarkMatches:(Vector_c2be5503 *)arg3;
+- (void)_removeMatchesWithTitlesThatLookLikeURLsRemovedFromMatches:(Vector_c2be5503 *)arg1;
 - (void)clearBookmarkMatchesCaches;
 - (void)clearBookmarkMatchesCachesKeepingEmptyValues:(BOOL)arg1;
 - (void)clearHistoryMatchesCache;

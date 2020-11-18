@@ -8,12 +8,13 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class _MRTransactionPacketsProtobuf;
+@class _MRNowPlayingPlayerPathProtobuf, _MRTransactionPacketsProtobuf;
 
 @interface _MRTransactionMessageProtobuf : PBCodable <NSCopying>
 {
     unsigned long long _name;
     _MRTransactionPacketsProtobuf *_packets;
+    _MRNowPlayingPlayerPathProtobuf *_playerPath;
     struct {
         unsigned int name:1;
     } _has;
@@ -21,8 +22,10 @@
 
 @property (nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasPackets;
+@property (readonly, nonatomic) BOOL hasPlayerPath;
 @property (nonatomic) unsigned long long name; // @synthesize name=_name;
 @property (strong, nonatomic) _MRTransactionPacketsProtobuf *packets; // @synthesize packets=_packets;
+@property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

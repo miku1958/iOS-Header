@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class MPCJinglePlayActivityReportingController, MPCMediaPlayerLegacyPlayer, MPCReportingPlaybackObserver, MPRTCReportingController;
+#import <MediaPlaybackCore/ICEnvironmentMonitorObserver-Protocol.h>
 
-@interface MPCMediaPlayerLegacyReportingController : NSObject
+@class MPCJinglePlayActivityReportingController, MPCMediaPlayerLegacyPlayer, MPCReportingPlaybackObserver, MPRTCReportingController, NSString;
+
+@interface MPCMediaPlayerLegacyReportingController : NSObject <ICEnvironmentMonitorObserver>
 {
     MPRTCReportingController *_rtcReportingController;
     MPCMediaPlayerLegacyPlayer *_player;
@@ -16,17 +18,17 @@
     MPCJinglePlayActivityReportingController *_jinglePlayActivityReportingController;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MPCJinglePlayActivityReportingController *jinglePlayActivityReportingController; // @synthesize jinglePlayActivityReportingController=_jinglePlayActivityReportingController;
 @property (weak, nonatomic) MPCMediaPlayerLegacyPlayer *player; // @synthesize player=_player;
 @property (strong, nonatomic) MPCReportingPlaybackObserver *reportingPlaybackObserver; // @synthesize reportingPlaybackObserver=_reportingPlaybackObserver;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_accountStoreDidChangeNotification:(id)arg1;
-- (void)_cloudServiceControllerCloudLibraryEnabledDidChangeNotification:(id)arg1;
-- (void)_cloudServiceControllerSubscriptionStatusDidChangeNotification:(id)arg1;
-- (void)_networkTypeDidChangeNotification:(id)arg1;
-- (void)_storefrontDidChangeNotification:(id)arg1;
 - (void)dealloc;
+- (void)environmentMonitorDidChangeNetworkType:(id)arg1;
 - (id)initWithController:(id)arg1;
 - (id)initWithPlayer:(id)arg1;
 

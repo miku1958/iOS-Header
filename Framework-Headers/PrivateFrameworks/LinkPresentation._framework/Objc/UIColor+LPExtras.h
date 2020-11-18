@@ -7,9 +7,11 @@
 #import <UIKit/UIColor.h>
 
 #import <LinkPresentation/LPCSSText-Protocol.h>
+#import <LinkPresentation/LPHTMLAttributeText-Protocol.h>
 
-@interface UIColor (LPExtras) <LPCSSText>
+@interface UIColor (LPExtras) <LPCSSText, LPHTMLAttributeText>
 - (id)_lp_CSSText;
 - (id)_lp_CSSTextHexFormat;
+- (id)_lp_HTMLAttributeText;
 @end
 

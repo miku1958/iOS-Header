@@ -22,6 +22,7 @@
 @property (nonatomic) unsigned int gid; // @dynamic gid;
 @property (copy, nonatomic) NSString *givenName; // @dynamic givenName;
 @property (nonatomic) BOOL hasDataToSync; // @dynamic hasDataToSync;
+@property (nonatomic) BOOL hasManagedCredentials; // @dynamic hasManagedCredentials;
 @property (copy, nonatomic) NSURL *homeDirectoryURL; // @dynamic homeDirectoryURL;
 @property (nonatomic) BOOL isAuditor; // @dynamic isAuditor;
 @property (nonatomic) BOOL isDisabled; // @dynamic isDisabled;

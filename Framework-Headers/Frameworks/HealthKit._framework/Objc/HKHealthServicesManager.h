@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)getEnabledStatusForPeripheral:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getHealthServiceProperty:(id)arg1 forSession:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)getHealthServicePropertyNamesWithHandler:(CDUnknownBlockType)arg1;
+- (void)healthPeripheralsWithFilter:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)healthServicePairingsWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithHealthStore:(id)arg1;
 - (void)performHealthServiceOperation:(id)arg1 onSession:(id)arg2 withParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;

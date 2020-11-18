@@ -13,6 +13,7 @@
 + (double)animationDuration;
 + (id)animationTimingFunction;
 + (void)begin;
++ (void)checkUncommittedTransactions;
 + (void)commit;
 + (void)commitImmediate;
 + (CDUnknownBlockType)completionBlock;
@@ -21,8 +22,9 @@
 + (void)flush;
 + (BOOL)immediateMode;
 + (void)lock;
-+ (void)postCommandWithContext:(void *)arg1 object:(id)arg2 applyBlock:(CDUnknownBlockType)arg3;
-+ (void)postCommandWithContext:(void *)arg1 object:(id)arg2 keyPath:(id)arg3 applyBlock:(CDUnknownBlockType)arg4;
++ (void)postCommandWithContext:(struct __C3DScene *)arg1 object:(id)arg2 applyBlock:(CDUnknownBlockType)arg3;
++ (void)postCommandWithContext:(struct __C3DScene *)arg1 object:(id)arg2 key:(id)arg3 applyBlock:(CDUnknownBlockType)arg4;
++ (void)postCommandWithContext:(struct __C3DScene *)arg1 object:(id)arg2 keyPath:(id)arg3 applyBlock:(CDUnknownBlockType)arg4;
 + (void)setAnimationDuration:(double)arg1;
 + (void)setAnimationTimingFunction:(id)arg1;
 + (void)setCompletionBlock:(CDUnknownBlockType)arg1;

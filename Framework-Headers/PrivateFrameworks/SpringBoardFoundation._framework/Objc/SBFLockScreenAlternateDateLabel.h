@@ -8,19 +8,22 @@
 
 #import <SpringBoardFoundation/SBUILegibility-Protocol.h>
 
-@class NSDate, NSString, SBUILegibilityLabel, _UILegibilitySettings;
+@class NSDate, NSString, SBUILegibilityLabel, UIFont, _UILegibilitySettings;
 
 @interface SBFLockScreenAlternateDateLabel : UIView <SBUILegibility>
 {
+    UIFont *_font;
     _UILegibilitySettings *_legibilitySettings;
     double _strength;
     NSDate *_date;
     SBUILegibilityLabel *_label;
 }
 
+@property (readonly, nonatomic) struct UIEdgeInsets characterOverflowInsets;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SBUILegibilityLabel *label; // @synthesize label=_label;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings;

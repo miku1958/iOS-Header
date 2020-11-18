@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSSet, NSUUID;
+@class NSData, NSSet, NSUUID;
 
 @protocol NRPairedDeviceRegistryXPCDaemonDelegate
 - (void)xpcClientInfo:(void (^)(NSArray *))arg1;
@@ -12,7 +12,9 @@
 - (void)xpcGetChangeHistoryWithBlock:(void (^)(NRDeviceCollectionHistory *))arg1;
 - (void)xpcGetDeviceCollectionWithBlock:(void (^)(NRMutableDeviceCollection *, unsigned long long, BOOL, NRSecureDevicePropertyStore *))arg1;
 - (void)xpcGetDiffSinceIndex:(unsigned long long)arg1 withBlock:(void (^)(NRDeviceCollectionDiff *, BOOL, unsigned long long, BOOL, BOOL))arg2;
+- (void)xpcGetMigrationPairingCharacteristicReadDataWithCompletion:(void (^)(NSData *))arg1;
 - (void)xpcPairWithSimulator:(NSUUID *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)xpcPutMigrationChallengeCharacteristicWriteData:(NSData *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)xpcRetrieveSecureProperties:(NSSet *)arg1 block:(void (^)(NSDictionary *))arg2;
 - (void)xpcSwitchIndex:(void (^)(unsigned int))arg1;
 - (void)xpcSwitchToSimulator:(NSUUID *)arg1 withCompletion:(void (^)(NSError *))arg2;

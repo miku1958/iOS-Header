@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, SPSearchAgent;
+@class SPUISearchModel;
 
 @protocol SPSearchAgentDelegate
-- (void)searchAgentClearedResults:(SPSearchAgent *)arg1;
-- (void)searchAgentReceivedSuggestions:(NSArray *)arg1;
-- (void)searchAgentUpdatedResults:(SPSearchAgent *)arg1;
+- (void)searchAgentClearedResults:(SPUISearchModel *)arg1;
+- (void)searchAgentUpdatedResults:(SPUISearchModel *)arg1;
 @end
 

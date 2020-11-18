@@ -6,7 +6,7 @@
 
 #import <SpringBoardUIServices/NSObject-Protocol.h>
 
-@class UIGestureRecognizer;
+@class NSURL, UIGestureRecognizer;
 @protocol SBFIrisWallpaperViewDelegate;
 
 @protocol SBFIrisWallpaperView <NSObject>
@@ -14,6 +14,8 @@
 @property (weak, nonatomic) id<SBFIrisWallpaperViewDelegate> irisDelegate;
 @property (readonly, nonatomic) long long irisPlaybackState;
 @property (readonly, nonatomic) BOOL isIrisInteracting;
+@property (readonly, nonatomic) double stillTimeInVideo;
+@property (readonly, copy, nonatomic) NSURL *videoFileURL;
 
 - (UIGestureRecognizer *)irisGestureRecognizer;
 @end

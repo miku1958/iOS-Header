@@ -34,7 +34,6 @@ __attribute__((visibility("hidden")))
     NSString *__timeDescription;
     NSString *__playClockDescription;
     UITapGestureRecognizer *__tapGestureRecognizer;
-    struct PXAssetBadgeInfo _badgeInfo;
     CDStruct_1b6d18a9 _currentPlaybackTime;
     CDStruct_1b6d18a9 _playbackDuration;
 }
@@ -52,7 +51,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setTapGestureRecognizer:) UITapGestureRecognizer *_tapGestureRecognizer; // @synthesize _tapGestureRecognizer=__tapGestureRecognizer;
 @property (strong, nonatomic, setter=_setTimeDescription:) NSString *_timeDescription; // @synthesize _timeDescription=__timeDescription;
 @property (readonly, nonatomic) PLDateRangeFormatter *_timeFormatter; // @synthesize _timeFormatter=__timeFormatter;
-@property (nonatomic) struct PXAssetBadgeInfo badgeInfo; // @synthesize badgeInfo=_badgeInfo;
 @property (strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (nonatomic) CDStruct_1b6d18a9 currentPlaybackTime; // @synthesize currentPlaybackTime=_currentPlaybackTime;
 @property (weak, nonatomic) id<PUPhotoBrowserTitleViewControllerDelegate> delegate; // @synthesize delegate=_delegate;

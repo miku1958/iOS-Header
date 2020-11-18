@@ -6,9 +6,11 @@
 
 #import <CameraUI/CAMExpandableMenuButton.h>
 
-@class UIImageView;
+#import <CameraUI/CAMAccessibilityHUDImageProvider-Protocol.h>
 
-@interface CAMFlashButton : CAMExpandableMenuButton
+@class NSString, UIImageView;
+
+@interface CAMFlashButton : CAMExpandableMenuButton <CAMAccessibilityHUDImageProvider>
 {
     BOOL _allowsAutomaticFlash;
     BOOL _unavailable;
@@ -19,17 +21,22 @@
 @property (readonly, nonatomic) UIImageView *_glyphView; // @synthesize _glyphView=__glyphView;
 @property (readonly, nonatomic) UIImageView *_warningIndicatorView; // @synthesize _warningIndicatorView=__warningIndicatorView;
 @property (nonatomic) BOOL allowsAutomaticFlash; // @synthesize allowsAutomaticFlash=_allowsAutomaticFlash;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) long long flashMode;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (nonatomic, getter=isUnavailable) BOOL unavailable; // @synthesize unavailable=_unavailable;
 
 + (long long)flashModeForTorchMode:(long long)arg1;
 + (long long)torchModeForFlashMode:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_commonCAMFlashButtonInitialization;
-- (id)_currentGlyphImage;
+- (id)_currentGlyphImageForAccessibilityHUD:(BOOL)arg1;
 - (void)_updateCurrentGlyphImage;
 - (double)collapsedSelectedLabelHorizontalMargin;
 - (id)headerView;
+- (id)imageForAccessibilityHUD;
 - (long long)indexForMode:(long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithLayoutStyle:(long long)arg1;

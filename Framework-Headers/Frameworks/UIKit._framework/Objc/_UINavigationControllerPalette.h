@@ -11,6 +11,7 @@
 @interface _UINavigationControllerPalette : UIView
 {
     _UIBarBackground *_backgroundView;
+    double _backgroundUnderlapHeight;
     struct {
         unsigned int isAttached:1;
         unsigned int attachmentIsChanging:1;
@@ -18,6 +19,8 @@
         unsigned int pinned:1;
         unsigned int pinningBarShadowIsHidden:1;
         unsigned int paletteShadowIsHidden:1;
+        unsigned int shouldHideWhenScrolling:1;
+        unsigned int pinningBarShadowWasHidden:1;
     } _paletteFlags;
     BOOL __paletteOverridesPinningBar;
     BOOL _visibleWhenPinningBarIsHidden;
@@ -28,6 +31,8 @@
     id __pinningBar;
     NSArray *__constraints;
     NSArray *__backgroundConstraints;
+    double __heightWhenUnscrolled;
+    long long __visibilityState;
     struct CGSize __size;
     struct UIEdgeInsets _preferredContentInsets;
 }
@@ -36,20 +41,25 @@
 @property (strong, nonatomic, setter=_setBackgroundConstraints:) NSArray *_backgroundConstraints; // @synthesize _backgroundConstraints=__backgroundConstraints;
 @property (strong, nonatomic, setter=_setBackgroundView:) UIView *_backgroundView;
 @property (strong, nonatomic, setter=_setConstraints:) NSArray *_constraints; // @synthesize _constraints=__constraints;
+@property (nonatomic, setter=_setHeightWhenUnscrolled:) double _heightWhenUnscrolled; // @synthesize _heightWhenUnscrolled=__heightWhenUnscrolled;
 @property (nonatomic, setter=_setPaletteOverridesPinningBar:) BOOL _paletteOverridesPinningBar; // @synthesize _paletteOverridesPinningBar=__paletteOverridesPinningBar;
 @property (nonatomic, getter=_isPalettePinningBarHidden, setter=_setPalettePinningBarHidden:) BOOL _palettePinningBarHidden; // @synthesize _palettePinningBarHidden=__palettePinningBarHidden;
 @property (nonatomic, setter=_setPinningBar:) id _pinningBar; // @synthesize _pinningBar=__pinningBar;
 @property (nonatomic, setter=_setRestartPaletteTransitionIfNecessary:) BOOL _restartPaletteTransitionIfNecessary;
+@property (nonatomic, setter=_setShouldHideWhenScrolling:) BOOL _shouldHideWhenScrolling;
 @property (nonatomic, setter=_setSize:) struct CGSize _size; // @synthesize _size=__size;
 @property (nonatomic) UIViewController *_unpinnedController; // @synthesize _unpinnedController=__unpinnedController;
+@property (nonatomic, setter=_setVisibilityState:) long long _visibilityState; // @synthesize _visibilityState=__visibilityState;
 @property (readonly, nonatomic) unsigned long long boundaryEdge; // @synthesize boundaryEdge=_boundaryEdge;
 @property (readonly, nonatomic) UINavigationController *navController; // @synthesize navController=_navController;
 @property (nonatomic) BOOL paletteShadowIsHidden;
 @property (nonatomic, getter=isPinned) BOOL pinned;
 @property (nonatomic) BOOL pinningBarShadowIsHidden;
+@property (nonatomic) BOOL pinningBarShadowWasHidden;
 @property (nonatomic) struct UIEdgeInsets preferredContentInsets; // @synthesize preferredContentInsets=_preferredContentInsets;
 @property (nonatomic, getter=isVisibleWhenPinningBarIsHidden) BOOL visibleWhenPinningBarIsHidden; // @synthesize visibleWhenPinningBarIsHidden=_visibleWhenPinningBarIsHidden;
 
+- (id)_attachedPinningTopBar;
 - (void)_configureConstraintsForBackground:(id)arg1;
 - (void)_configurePaletteConstraintsForBoundary;
 - (void)_disableConstraints;
@@ -57,6 +67,7 @@
 - (id)_initWithNavigationController:(id)arg1 forEdge:(unsigned long long)arg2;
 - (void)_resetConstraintConstants:(double)arg1;
 - (void)_resetHeightConstraintConstant;
+- (void)_resetVisibilityStateIfNecessary;
 - (void)_setAttached:(BOOL)arg1 didComplete:(BOOL)arg2;
 - (void)_setAttachmentIsChanging:(BOOL)arg1;
 - (void)_setLeftConstraintConstant:(double)arg1;
@@ -64,7 +75,10 @@
 - (void)_setVisualAltitude:(double)arg1;
 - (void)_setVisualAltitudeBias:(struct CGSize)arg1;
 - (void)_setupBackgroundViewIfNecessary;
+- (BOOL)_supportsSpecialSearchBarTransitions;
+- (void)_updateBackgroundConstraintsIfNecessary;
 - (void)_updateBackgroundView;
+- (void)_updateLayoutForCurrentConfiguration;
 - (void)dealloc;
 - (void)didMoveToSuperview;
 - (BOOL)isAttached;

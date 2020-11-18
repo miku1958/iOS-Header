@@ -6,7 +6,7 @@
 
 #import <CloudDocsUI/UICollectionViewDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, UICollectionView, UICollectionViewTableLayout;
+@class NSArray, NSIndexPath, UICollectionView, UICollectionViewTableLayout, UISwipeActionsConfiguration;
 
 @protocol UICollectionViewDelegateTableLayout <UICollectionViewDelegate>
 
@@ -21,8 +21,10 @@
 - (double)collectionView:(UICollectionView *)arg1 tableLayout:(UICollectionViewTableLayout *)arg2 heightForHeaderInSection:(long long)arg3;
 - (double)collectionView:(UICollectionView *)arg1 tableLayout:(UICollectionViewTableLayout *)arg2 heightForRowAtIndexPath:(NSIndexPath *)arg3;
 - (long long)collectionView:(UICollectionView *)arg1 tableLayout:(UICollectionViewTableLayout *)arg2 indentationLevelForRowAtIndexPath:(NSIndexPath *)arg3;
+- (UISwipeActionsConfiguration *)collectionView:(UICollectionView *)arg1 tableLayout:(UICollectionViewTableLayout *)arg2 leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)arg3;
 - (NSArray *)collectionView:(UICollectionView *)arg1 tableLayout:(UICollectionViewTableLayout *)arg2 leadingSwipeActionsForRowAtIndexPath:(NSIndexPath *)arg3;
 - (BOOL)collectionView:(UICollectionView *)arg1 tableLayout:(UICollectionViewTableLayout *)arg2 shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)arg3;
+- (UISwipeActionsConfiguration *)collectionView:(UICollectionView *)arg1 tableLayout:(UICollectionViewTableLayout *)arg2 trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)arg3;
 - (NSArray *)collectionView:(UICollectionView *)arg1 tableLayout:(UICollectionViewTableLayout *)arg2 trailingSwipeActionsForRowAtIndexPath:(NSIndexPath *)arg3;
 - (void)collectionView:(UICollectionView *)arg1 tableLayout:(UICollectionViewTableLayout *)arg2 willBeginEditingRowAtIndexPath:(NSIndexPath *)arg3;
 @end

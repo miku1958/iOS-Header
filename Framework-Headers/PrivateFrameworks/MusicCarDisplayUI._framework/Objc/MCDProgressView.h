@@ -6,28 +6,29 @@
 
 #import <UIKit/UIView.h>
 
-@class MCDProgressBarView, NSLayoutConstraint, UILabel;
+@class CADisplayLink, MCDProgressBarView, UILabel;
 
 @interface MCDProgressView : UIView
 {
-    BOOL _progressActive;
     UILabel *_timeLabel;
     UILabel *_timeRemainingLabel;
     UILabel *_liveLabel;
     MCDProgressBarView *_progressBarView;
-    NSLayoutConstraint *_leftConstant;
-    NSLayoutConstraint *_rightConstant;
-    float _progress;
-    BOOL _isLiveStream;
+    CADisplayLink *_displayLink;
+    double _lastTargetTimestamp;
+    CDStruct_fce57115 _durationSnapshot;
 }
 
-@property (nonatomic) BOOL isLiveStream; // @synthesize isLiveStream=_isLiveStream;
+@property (nonatomic) CDStruct_fce57115 durationSnapshot; // @synthesize durationSnapshot=_durationSnapshot;
 
 - (void).cxx_destruct;
 - (void)_addConstraints;
+- (void)_displayLinkTick:(id)arg1;
+- (void)_updateLabelsForElapsedTime:(double)arg1 duration:(double)arg2;
+- (void)_updateProgressForElapsedTime:(double)arg1 duration:(double)arg2;
+- (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)setPlaybackTime:(double)arg1 duration:(double)arg2;
 
 @end
 

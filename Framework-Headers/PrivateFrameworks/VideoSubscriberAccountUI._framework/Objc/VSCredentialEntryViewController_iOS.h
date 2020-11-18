@@ -8,7 +8,7 @@
 
 #import <VideoSubscriberAccountUI/VSCredentialEntryViewController-Protocol.h>
 
-@class NSArray, NSString, UIButton, UIProgressHUD, VSCredentialEntryViewModel, VSIdentityProviderLogoView, VSViewModel;
+@class NSArray, NSString, UIButton, VSCredentialEntryViewModel, VSIdentityProviderLogoView, VSViewModel;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,19 +19,18 @@ __attribute__((visibility("hidden")))
     id<VSAuthenticationViewControllerDelegate> _delegate;
     VSIdentityProviderLogoView *_logoView;
     UIButton *_linkButton;
-    UIProgressHUD *_deletingAccountHUD;
     NSArray *_credentialEntryFieldSpecifiers;
     double _keyboardHeight;
     id _textFieldTextDidChangeObserver;
     id _keyboardWillShowObserver;
     id _keyboardWillHideObserver;
+    id _weakTarget;
 }
 
 @property (nonatomic, getter=isCancellationAllowed) BOOL cancellationAllowed; // @synthesize cancellationAllowed=_cancellationAllowed;
 @property (strong, nonatomic) NSArray *credentialEntryFieldSpecifiers; // @synthesize credentialEntryFieldSpecifiers=_credentialEntryFieldSpecifiers;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VSAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) UIProgressHUD *deletingAccountHUD; // @synthesize deletingAccountHUD=_deletingAccountHUD;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double keyboardHeight; // @synthesize keyboardHeight=_keyboardHeight;
@@ -43,22 +42,18 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id textFieldTextDidChangeObserver; // @synthesize textFieldTextDidChangeObserver=_textFieldTextDidChangeObserver;
 @property (readonly, nonatomic) VSViewModel *viewModel;
+@property (strong, nonatomic) id weakTarget; // @synthesize weakTarget=_weakTarget;
 
 - (void).cxx_destruct;
 - (id)_credentialEntryFieldForSpecifier:(id)arg1;
-- (void)_deleteAccountButtonTapped:(id)arg1;
-- (void)_hideDeletingAccountHUD;
 - (void)_linkButtonTapped:(id)arg1;
 - (id)_linkURL;
 - (void)_presentError:(id)arg1;
 - (void)_setText:(id)arg1 forSpecifier:(id)arg2;
-- (void)_showDeletingAccountHUD;
-- (void)_showNavigationBarButtons;
 - (id)_specifierForTextField:(id)arg1;
 - (void)_startObservingViewModel:(id)arg1;
 - (void)_startValidation;
 - (void)_stopObservingViewModel:(id)arg1;
-- (void)_stopValidationAndShowButtons:(BOOL)arg1;
 - (id)_textFieldForSpecifier:(id)arg1;
 - (id)_textForSpecifier:(id)arg1;
 - (void)_updateLinkButtonLayout;

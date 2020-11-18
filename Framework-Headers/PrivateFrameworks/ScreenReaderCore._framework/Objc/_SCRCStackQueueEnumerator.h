@@ -6,13 +6,16 @@
 
 #import <Foundation/NSEnumerator.h>
 
+@class _SCRCStackNode;
+
 __attribute__((visibility("hidden")))
 @interface _SCRCStackQueueEnumerator : NSEnumerator
 {
-    struct _SCRCStackNode *_currentListMemeber;
+    _SCRCStackNode *_currentListMemeber;
 }
 
-- (id)initWithListMember:(struct _SCRCStackNode *)arg1;
+- (void).cxx_destruct;
+- (id)initWithListMember:(id)arg1;
 - (id)nextObject;
 
 @end

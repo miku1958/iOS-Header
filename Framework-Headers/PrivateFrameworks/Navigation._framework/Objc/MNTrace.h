@@ -32,11 +32,22 @@
     NSData *_startWaypointData;
     NSData *_endWaypointData;
     NSArray *_routeSelections;
+    NSArray *_annotatedUserBehavior;
+    NSArray *_annotatedUserEnvironments;
+    NSArray *_commuteDestinations;
+    NSArray *_commuteDirectionsRequests;
+    BOOL _copyToCrashReporter;
     NSString *_tracePath;
+    NSArray *_significantEvents;
 }
 
+@property (strong, nonatomic) NSArray *annotatedUserBehavior; // @synthesize annotatedUserBehavior=_annotatedUserBehavior;
+@property (strong, nonatomic) NSArray *annotatedUserEnvironments; // @synthesize annotatedUserEnvironments=_annotatedUserEnvironments;
 @property (strong, nonatomic) NSArray *bookmarkImages; // @synthesize bookmarkImages=_bookmarkImages;
 @property (strong, nonatomic) NSArray *bookmarks; // @synthesize bookmarks=_bookmarks;
+@property (strong, nonatomic) NSArray *commuteDestinations; // @synthesize commuteDestinations=_commuteDestinations;
+@property (strong, nonatomic) NSArray *commuteDirectionsRequests; // @synthesize commuteDirectionsRequests=_commuteDirectionsRequests;
+@property (nonatomic) BOOL copyToCrashReporter; // @synthesize copyToCrashReporter=_copyToCrashReporter;
 @property (readonly, nonatomic) struct sqlite3 *db; // @synthesize db=_db;
 @property (strong, nonatomic) NSArray *directions; // @synthesize directions=_directions;
 @property (strong, nonatomic) NSData *endWaypointData; // @synthesize endWaypointData=_endWaypointData;
@@ -49,6 +60,7 @@
 @property (strong, nonatomic) NSArray *motionData; // @synthesize motionData=_motionData;
 @property (nonatomic) unsigned long long originalVersion; // @synthesize originalVersion=_originalVersion;
 @property (strong, nonatomic) NSArray *routeSelections; // @synthesize routeSelections=_routeSelections;
+@property (strong, nonatomic) NSArray *significantEvents; // @synthesize significantEvents=_significantEvents;
 @property (strong, nonatomic) NSData *startWaypointData; // @synthesize startWaypointData=_startWaypointData;
 @property (readonly, nonatomic) NSString *tracePath; // @synthesize tracePath=_tracePath;
 @property (nonatomic) BOOL usesCLMapCorrection; // @synthesize usesCLMapCorrection=_usesCLMapCorrection;
@@ -58,12 +70,17 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_group> *writeGroup; // @synthesize writeGroup=_writeGroup;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *writeQueue; // @synthesize writeQueue=_writeQueue;
 
++ (id)routeSetsFromTraceAtPath:(id)arg1;
 - (void).cxx_destruct;
+- (id)_handleOpenErrorWithPath:(id)arg1;
+- (id)_routeSetFromDirectionsRow:(id)arg1;
 - (BOOL)closeTrace;
+- (void)copyTraceToCrashReporter;
 - (BOOL)createTempTraceForRecording;
 - (void)dealloc;
 - (id)init;
-- (BOOL)openTrace:(id)arg1;
+- (BOOL)openTrace:(id)arg1 outError:(id *)arg2;
+- (id)routeSetsFromResponse;
 - (id)serializableBookmarks;
 - (BOOL)startWritingTraceToFile:(id)arg1;
 

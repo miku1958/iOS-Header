@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class NSHashTable;
 
 @interface PLBatterySaverWatcher : NSObject
 {
     int _notifyBatterySaverModeToken;
-    NSMutableArray *_delegates;
+    NSHashTable *_delegates;
 }
+
+@property (readonly, nonatomic) BOOL batterySaverModeEnabled;
 
 + (id)sharedBatterySaverWatcher;
 - (void)addDelegate:(id)arg1;
-- (BOOL)batterySaverModeEnabled;
 - (void)dealloc;
 - (unsigned int)registerToBatterySaverModeNotification;
 - (void)removeDelegate:(id)arg1;

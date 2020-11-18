@@ -28,7 +28,8 @@
 - (void)_insertItem:(id)arg1 withSessionKey:(id)arg2;
 - (void)_loadSessionCache;
 - (id)_orderedSessionKeys;
-- (void)_removeItemFromSessionCache:(id)arg1;
+- (void)_removeItemsFromSessionCache:(id)arg1;
+- (void)_requestSessionKeyForDate:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)_timeZoneDidChange:(id)arg1;
 - (void)dealloc;
 - (void)enumerateOrderedItemsLastVisitedInSession:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;

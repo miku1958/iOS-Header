@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 
 - (void).cxx_destruct;
-- (id)assetContentWithError:(id *)arg1;
+- (id)assetContentWithError:(id *)arg1 expectedSignature:(id)arg2;
 - (id)init;
 - (BOOL)isContiguous;
 - (void)writeData:(id)arg1 atOffset:(id)arg2;

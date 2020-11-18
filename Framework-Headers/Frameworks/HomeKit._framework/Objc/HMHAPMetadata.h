@@ -6,41 +6,33 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/NSSecureCoding-Protocol.h>
+#import <HomeKit/HMProtoBufMerge-Protocol.h>
 
-@class NSArray, NSDictionary, NSNumber;
+@class NSDictionary, NSNumber, NSString;
 
-@interface HMHAPMetadata : NSObject <NSSecureCoding>
+@interface HMHAPMetadata : NSObject <HMProtoBufMerge>
 {
     NSNumber *_version;
-    NSArray *_hapValueUnits;
-    NSArray *_hapCharacteristics;
-    NSArray *_hapServices;
-    NSDictionary *_assistantServices;
-    NSArray *_assistantCharacteristics;
-    NSDictionary *_assistantUnits;
-    NSArray *_accessoryCategories;
+    NSDictionary *_hapChrMap;
+    NSDictionary *_hapSvcMap;
+    NSDictionary *_hapCategoryMap;
 }
 
-@property (strong, nonatomic) NSArray *accessoryCategories; // @synthesize accessoryCategories=_accessoryCategories;
-@property (strong, nonatomic) NSArray *assistantCharacteristics; // @synthesize assistantCharacteristics=_assistantCharacteristics;
-@property (strong, nonatomic) NSDictionary *assistantServices; // @synthesize assistantServices=_assistantServices;
-@property (strong, nonatomic) NSDictionary *assistantUnits; // @synthesize assistantUnits=_assistantUnits;
-@property (strong, nonatomic) NSArray *hapCharacteristics; // @synthesize hapCharacteristics=_hapCharacteristics;
-@property (strong, nonatomic) NSArray *hapServices; // @synthesize hapServices=_hapServices;
-@property (strong, nonatomic) NSArray *hapValueUnits; // @synthesize hapValueUnits=_hapValueUnits;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSDictionary *hapCategoryMap; // @synthesize hapCategoryMap=_hapCategoryMap;
+@property (strong, nonatomic) NSDictionary *hapChrMap; // @synthesize hapChrMap=_hapChrMap;
+@property (strong, nonatomic) NSDictionary *hapSvcMap; // @synthesize hapSvcMap=_hapSvcMap;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSNumber *version; // @synthesize version=_version;
 
 + (id)getSharedInstance;
-+ (void)setSharedInstance:(id)arg1;
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)applyProtoBufData:(id)arg1 callbackOperations:(id)arg2;
+- (id)categoryForNumber:(id)arg1;
 - (id)characteristicTypeDescription:(id)arg1;
-- (id)characteristicTypeLocalizedDescription:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)serviceTypeDescription:(id)arg1;
-- (id)serviceTypeLocalizedDescription:(id)arg1;
 - (BOOL)shouldNotCacheCharacteristicOfType:(id)arg1;
 
 @end

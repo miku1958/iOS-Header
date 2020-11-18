@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@protocol AFAnalyticsService, OS_dispatch_queue;
+@protocol AFAnalyticsService, OS_dispatch_group, OS_dispatch_queue;
 
 @interface AFAnalytics : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_group> *_group;
     id<AFAnalyticsService> _service;
 }
 
@@ -20,7 +21,9 @@
 - (id)_service:(BOOL)arg1;
 - (void)_stageEvent:(id)arg1;
 - (void)_stageEvents:(id)arg1;
+- (void)barrier:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)logClientFeedbackPresented:(id)arg1;
 - (void)logEvent:(id)arg1;
 - (void)logEventWithType:(long long)arg1 context:(id)arg2;
 - (void)logEventWithType:(long long)arg1 context:(id)arg2 contextNoCopy:(BOOL)arg3;

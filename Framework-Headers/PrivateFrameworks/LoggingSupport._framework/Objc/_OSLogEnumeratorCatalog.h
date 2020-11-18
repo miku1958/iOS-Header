@@ -6,14 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class _OSLogChunkStore, _OSLogIndex;
+#import <LoggingSupport/_OSLogIndexTimeRangable-Protocol.h>
+
+@class NSString, _OSLogChunkStore, _OSLogIndex;
 
 __attribute__((visibility("hidden")))
-@interface _OSLogEnumeratorCatalog : NSObject
+@interface _OSLogEnumeratorCatalog : NSObject <_OSLogIndexTimeRangable>
 {
     struct _NSRange _chunkRange;
     _OSLogIndex *_index;
     struct catalog_s *_catalog;
+    struct tracev3_chunk_s *_chunk;
     struct tracev3_chunk_s *_fileHeader;
     _OSLogChunkStore *_store;
     unsigned long long _ot;
@@ -22,17 +25,21 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) const char *bootUUID;
 @property (readonly, nonatomic) struct catalog_s *catalog; // @synthesize catalog=_catalog;
+@property (readonly, nonatomic) struct tracev3_chunk_s *chunk; // @synthesize chunk=_chunk;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long endTime; // @synthesize endTime=_et;
 @property (readonly, nonatomic) struct tracev3_chunk_s *fileHeader; // @synthesize fileHeader=_fileHeader;
+@property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) _OSLogIndex *index; // @synthesize index=_index;
 @property (readonly, nonatomic) unsigned long long oldestTime; // @synthesize oldestTime=_ot;
 @property (readonly, nonatomic) _OSLogChunkStore *store; // @synthesize store=_store;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)enumerateSubchunksUsingBlock:(CDUnknownBlockType)arg1;
 - (id)initWithStore:(id)arg1 index:(id)arg2 fileHeader:(struct tracev3_chunk_s *)arg3 range:(struct _NSRange)arg4 chunk:(struct tracev3_chunk_s *)arg5;
-- (long long)oldestTimeCompare:(id)arg1;
 - (void)unionWithRange:(struct _NSRange)arg1;
 
 @end

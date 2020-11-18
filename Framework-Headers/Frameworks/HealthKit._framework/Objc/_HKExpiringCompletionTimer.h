@@ -13,7 +13,8 @@
 {
     NSObject<OS_dispatch_source> *_timerSource;
     double _expirationTime;
-    double _timeoutInterval;
+    double _timeout;
+    CDUnknownBlockType _timeoutHandler;
     BOOL _invalidated;
     CDUnknownBlockType _completion;
     NSDate *_startDate;
@@ -25,10 +26,12 @@
 - (void).cxx_destruct;
 - (void)_cancelTimer;
 - (void)_invalidateAndInvokeCompletion:(BOOL)arg1 error:(id)arg2;
+- (void)_start;
 - (void)dealloc;
 - (id)initWithCompletion:(CDUnknownBlockType)arg1;
 - (void)invalidate;
 - (void)invalidateAndInvokeCompletionWithError:(id)arg1;
+- (void)restart;
 - (void)startWithTimeoutInterval:(double)arg1 handler:(CDUnknownBlockType)arg2;
 
 @end

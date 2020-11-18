@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/PLBBPendingBulletinsBatchDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSString;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface PLBBBulletinsManager : NSObject <PLBBPendingBulletinsBatchDelegate>
@@ -18,6 +18,7 @@
     NSObject<OS_dispatch_source> *_pendingChangesTimerSource;
     NSMutableDictionary *_dirtyPlist;
     NSMutableArray *_pendingBulletins;
+    NSDictionary *_timeDelayedBulletinInfo;
     NSMutableArray *_pendingBatches;
     NSMutableIndexSet *_pendingDeleteRecordIDs;
     BOOL _badgeCountIsInvalid;
@@ -32,7 +33,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_bestDateForDeliveringNotificationWithError:(id *)arg1;
++ (id)_notificationDeliveryDate;
 + (id)sharedManager;
+- (void)_addBulletinForDelayedScheduling:(id)arg1;
 - (void)_addPendingBulletins:(id)arg1;
 - (id)_albumCloudGUIDForRecordID:(unsigned long long)arg1;
 - (BOOL)_alertFiltrationEnabled;
@@ -41,10 +45,15 @@
 - (id)_currentPlistContents;
 - (void)_deleteBulletinsForAlbumWithUUID:(id)arg1 bulletinTypes:(id)arg2;
 - (void)_deleteBulletinsForAssetWithUUID:(id)arg1 shouldDeleteCommentsOrLikeBulletins:(BOOL)arg2 shouldDeletePhotosAddedToAlbumBulletins:(BOOL)arg3;
+- (void)_deleteBulletinsForMemoriesWithUUID:(id)arg1 bulletinTypes:(id)arg2;
+- (void)_deleteBulletinsForObjectWithUUID:(id)arg1 bulletinDictionaryKey:(id)arg2 bulletinTypes:(id)arg3;
 - (id)_editablePlistContents;
+- (id)_generateMemoryBulletinRepresentationWithMemoryUUID:(id)arg1 keyAssetUUID:(id)arg2 notificationTitle:(id)arg3 notificationSubtitle:(id)arg4 notificationDeliveryDate:(id)arg5;
 - (unsigned long long)_generateUniqueRecordID;
+- (id)_indexesOfOutdatedMemoryBulletinsInDescriptions:(id)arg1;
 - (id)_initSharedInstance;
 - (BOOL)_invitationBulletinExistsForAlbum:(id)arg1;
+- (id)_memoryBulletinFromDictionaryRepresentation:(id)arg1;
 - (id)_plistFilePath;
 - (void)_processPendingChanges;
 - (void)_resetAlertFiltration;
@@ -62,6 +71,7 @@
 - (void)discardAllBulletins;
 - (BOOL)enableTemporaryDebugMode;
 - (void)forceWriteUnsavedChanges;
+- (id)getInterestingMemoryBulletinInfoToBeScheduled;
 - (void)getThumbnailImageDataForBulletinWithRecordID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)noteDidChangePlaceholderKindForAsset:(id)arg1 fromOldKind:(short)arg2 forSharedAlbum:(id)arg3 mstreamdInfo:(id)arg4;
@@ -82,6 +92,9 @@
 - (void)noteUserDidNavigateIntoSharedAlbum:(id)arg1;
 - (void)noteUserDidReadCommentOnSharedAsset:(id)arg1;
 - (void)noteUserDidViewCloudFeedContent:(long long)arg1;
+- (void)postInterestingMemoryBulletinInfosImmediately:(id)arg1;
+- (void)postNotificationForInterestingMemoryWithUUID:(id)arg1 keyAssetUUID:(id)arg2 notificationTitle:(id)arg3 notificationSubtitle:(id)arg4 notificationDeliveryDate:(id)arg5;
+- (void)removeNotificationForInterestingMemoryWithUUID:(id)arg1;
 - (void)reportAsJunkPhotoStreamInvitationForAlbumWithCloudGUID:(id)arg1;
 - (void)sendResponse:(BOOL)arg1 toPhotoStreamInvitationForAlbumWithCloudGUID:(id)arg2;
 - (void)setEnableTemporaryDebugMode:(BOOL)arg1;

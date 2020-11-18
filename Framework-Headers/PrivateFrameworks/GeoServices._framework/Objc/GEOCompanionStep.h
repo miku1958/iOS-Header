@@ -17,6 +17,7 @@
     unsigned int _endCoordinateIndex;
     GEOCompanionFerryStep *_ferryStep;
     NSMutableArray *_instructionWithAlternatives;
+    NSString *_listInstruction;
     unsigned int _maneuverStartCoordinateIndex;
     NSString *_roadName;
     unsigned int _startCoordinateIndex;
@@ -41,6 +42,7 @@
 @property (readonly, nonatomic) BOOL hasDriveStep;
 @property (nonatomic) BOOL hasEndCoordinateIndex;
 @property (readonly, nonatomic) BOOL hasFerryStep;
+@property (readonly, nonatomic) BOOL hasListInstruction;
 @property (nonatomic) BOOL hasManeuverStartCoordinateIndex;
 @property (readonly, nonatomic) BOOL hasRoadName;
 @property (nonatomic) BOOL hasStartCoordinateIndex;
@@ -48,6 +50,7 @@
 @property (nonatomic) BOOL hasTime;
 @property (readonly, nonatomic) BOOL hasWalkStep;
 @property (strong, nonatomic) NSMutableArray *instructionWithAlternatives; // @synthesize instructionWithAlternatives=_instructionWithAlternatives;
+@property (strong, nonatomic) NSString *listInstruction; // @synthesize listInstruction=_listInstruction;
 @property (nonatomic) unsigned int maneuverStartCoordinateIndex; // @synthesize maneuverStartCoordinateIndex=_maneuverStartCoordinateIndex;
 @property (strong, nonatomic) NSString *roadName; // @synthesize roadName=_roadName;
 @property (nonatomic) unsigned int startCoordinateIndex; // @synthesize startCoordinateIndex=_startCoordinateIndex;
@@ -56,11 +59,11 @@
 @property (strong, nonatomic) GEOCompanionWalkStep *walkStep; // @synthesize walkStep=_walkStep;
 
 + (Class)instructionWithAlternativesType;
+- (void).cxx_destruct;
 - (void)addInstructionWithAlternatives:(id)arg1;
 - (void)clearInstructionWithAlternatives;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)geoStep;

@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
+@class NSObject;
 @protocol HMFMemoryMonitorDelegate, OS_dispatch_queue, OS_dispatch_source;
 
-@interface HMFMemoryMonitor : NSObject
+@interface HMFMemoryMonitor : HMFObject
 {
     BOOL _monitoring;
     long long _memoryState;

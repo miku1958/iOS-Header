@@ -25,6 +25,7 @@
 - (void)_didMakeBackingNode;
 - (struct SKCNode *)_makeBackingNode;
 - (void)_renderForTime:(double)arg1;
+- (void)_scnSceneDidUpdate:(id)arg1;
 - (void)commonInit;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

@@ -14,10 +14,10 @@
     BOOL _isInTransaction;
     struct sqlite3 *_db;
     NSObject<OS_dispatch_queue> *_dbQueue;
-    NSMutableDictionary *_cachedPreparedStatementsKeyedBySQLPattern;
+    NSMutableDictionary *_cachedPreparedStatementsBySQLPattern;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *cachedPreparedStatementsKeyedBySQLPattern; // @synthesize cachedPreparedStatementsKeyedBySQLPattern=_cachedPreparedStatementsKeyedBySQLPattern;
+@property (strong, nonatomic) NSMutableDictionary *cachedPreparedStatementsBySQLPattern; // @synthesize cachedPreparedStatementsBySQLPattern=_cachedPreparedStatementsBySQLPattern;
 @property (nonatomic) struct sqlite3 *db; // @synthesize db=_db;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dbQueue; // @synthesize dbQueue=_dbQueue;
 @property (nonatomic) BOOL isInTransaction; // @synthesize isInTransaction=_isInTransaction;

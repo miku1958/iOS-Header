@@ -10,16 +10,20 @@
 #import <CameraUI/AVCaptureVideoDataOutputSampleBufferDelegate-Protocol.h>
 
 @class NSString;
+@protocol AVCaptureMetadataOutputObjectsDelegate;
 
 @interface AXCameraMetadataDelegate_CAMERA_UI : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureMetadataOutputObjectsDelegate>
 {
+    id<AVCaptureMetadataOutputObjectsDelegate> _otherMetadataOutputDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<AVCaptureMetadataOutputObjectsDelegate> otherMetadataOutputDelegate; // @synthesize otherMetadataOutputDelegate=_otherMetadataOutputDelegate;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_accessibilityHandleMetadataOutput:(id)arg1;
 - (void)_handleFaceOutput:(id)arg1;
 - (void)captureOutput:(id)arg1 didOutputMetadataObjects:(id)arg2 fromConnection:(id)arg3;

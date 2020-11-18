@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDVideoResolution, NSNumber;
 
-@interface HMDCameraVideoTier : NSObject <NSSecureCoding>
+@interface HMDCameraVideoTier : HMFObject <NSSecureCoding>
 {
     HMDVideoResolution *_videoResolution;
     NSNumber *_maxBitRate;

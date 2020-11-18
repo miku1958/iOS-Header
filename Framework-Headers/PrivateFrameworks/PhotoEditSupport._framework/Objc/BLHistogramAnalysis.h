@@ -34,7 +34,6 @@
 @property (nonatomic) double whitePointRed; // @synthesize whitePointRed=_whitePointRed;
 
 - (id)analysisDictionary;
-- (void)dealloc;
 - (id)description;
 - (id)initWithAnalysisDictionary:(id)arg1;
 - (id)initWithBLImage:(id)arg1;

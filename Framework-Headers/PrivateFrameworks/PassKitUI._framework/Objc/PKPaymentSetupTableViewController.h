@@ -9,7 +9,7 @@
 #import <PassKitUI/UITableViewDataSource-Protocol.h>
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 
-@class NSIndexPath, NSString, UILabel, UITableView, UITableViewController, UIView;
+@class NSIndexPath, NSString, PKPaymentSetupDockView, UILabel, UITableView, UITableViewController, UIView, _UIBackdropView;
 
 @interface PKPaymentSetupTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
@@ -18,20 +18,29 @@
     UITableViewController *_tableViewController;
     UIView *_containerView;
     long long _style;
+    PKPaymentSetupDockView *_dockView;
+    _UIBackdropView *_backdropView;
+    long long _backdropStyle;
+    double _backdropWeight;
+    BOOL _updatingBackdropSettings;
+    BOOL _clearsSelectionOnViewWillAppear;
     long long _context;
     NSIndexPath *_selectedIndexPath;
 }
 
+@property (nonatomic) BOOL clearsSelectionOnViewWillAppear; // @synthesize clearsSelectionOnViewWillAppear=_clearsSelectionOnViewWillAppear;
 @property (nonatomic) long long context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, strong, nonatomic) UILabel *footerLabel;
+@property (readonly, nonatomic) PKPaymentSetupDockView *dockView;
+@property (readonly, nonatomic) UILabel *footerLabel;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
+@property (readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
+- (void)_accessibilitySettingsDidChange:(id)arg1;
 - (void)dealloc;
 - (unsigned long long)edgesForExtendedLayout;
 - (BOOL)extendedLayoutIncludesOpaqueBars;
@@ -43,10 +52,9 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidLayoutSubviews;
-- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

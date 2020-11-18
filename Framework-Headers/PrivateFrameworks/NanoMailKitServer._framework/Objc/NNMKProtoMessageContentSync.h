@@ -46,6 +46,7 @@
 @property (strong, nonatomic) NSData *preview; // @synthesize preview=_preview;
 @property (strong, nonatomic) NSData *text; // @synthesize text=_text;
 
++ (Class)attachmentType;
 - (void).cxx_destruct;
 - (void)addAttachment:(id)arg1;
 - (id)attachmentAtIndex:(unsigned long long)arg1;

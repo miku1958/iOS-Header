@@ -18,12 +18,11 @@
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *decoderQueue; // @synthesize decoderQueue=_decoderQueue;
-@property (nonatomic) id<GEOMapAccessRestrictions> mapAccessRestrictions; // @synthesize mapAccessRestrictions=_mapAccessRestrictions;
+@property (weak, nonatomic) id<GEOMapAccessRestrictions> mapAccessRestrictions; // @synthesize mapAccessRestrictions=_mapAccessRestrictions;
 
 + (BOOL)decodingSupported;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)dealloc;
 - (id)decodeZilchMessage:(shared_ptr_27244a92)arg1 pathHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)requestComplete:(id)arg1;

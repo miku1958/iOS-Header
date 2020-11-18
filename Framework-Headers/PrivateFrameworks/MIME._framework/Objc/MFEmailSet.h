@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSMutableSet.h>
+#import <EmailAddressing/EAEmailAddressSet.h>
 
-@interface MFEmailSet : NSMutableSet
+@interface MFEmailSet : EAEmailAddressSet
 {
     struct __CFSet *_set;
 }
@@ -23,6 +23,7 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithCapacity:(unsigned long long)arg1;
+- (id)initWithSet:(id)arg1;
 - (void)intersectSet:(id)arg1;
 - (BOOL)intersectsSet:(id)arg1;
 - (BOOL)isEqualToSet:(id)arg1;

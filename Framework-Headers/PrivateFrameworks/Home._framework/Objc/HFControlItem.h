@@ -6,12 +6,13 @@
 
 #import <Home/HFItem.h>
 
+#import <Home/NAIdentifiable-Protocol.h>
 #import <Home/NSCopying-Protocol.h>
 
-@class NSDictionary, NSSet;
+@class NSDictionary, NSSet, NSString;
 @protocol HFAggregatedCharacteristicValueSource;
 
-@interface HFControlItem : HFItem <NSCopying>
+@interface HFControlItem : HFItem <NAIdentifiable, NSCopying>
 {
     id<HFAggregatedCharacteristicValueSource> _valueSource;
     NSSet *_characteristicTypes;
@@ -20,9 +21,14 @@
 
 @property (readonly, nonatomic) NSSet *allCharacteristicTypes;
 @property (readonly, nonatomic) NSSet *characteristicTypes; // @synthesize characteristicTypes=_characteristicTypes;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *displayResults; // @synthesize displayResults=_displayResults;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) id<HFAggregatedCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
++ (id)na_identity;
 + (Class)valueClass;
 - (void).cxx_destruct;
 - (id)_standardResultsForResultValue:(id)arg1 characteristicValuesByType:(id)arg2;
@@ -34,6 +40,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithValueSource:(id)arg1 characteristicTypes:(id)arg2 displayResults:(id)arg3;
+- (BOOL)isEqual:(id)arg1;
 - (id)metadataForCharacteristicType:(id)arg1;
 - (id)normalizedCharacteristicValuesForValues:(id)arg1;
 - (id)normalizedValueForCharacteristicValue:(id)arg1 ofType:(id)arg2;
@@ -41,6 +48,8 @@
 - (id)readOnlyCharacteristicTypes;
 - (id)readValueAndPopulateStandardResults;
 - (long long)sortPriority;
+- (BOOL)supportsItemRepresentingServices:(id)arg1;
+- (id)valueForCharacteristicType:(id)arg1 inBatchReadResponse:(id)arg2;
 - (id)valueForCharacteristicValues:(id)arg1;
 - (id)writeValue:(id)arg1;
 

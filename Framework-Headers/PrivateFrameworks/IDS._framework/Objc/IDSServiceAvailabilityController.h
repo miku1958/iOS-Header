@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -14,6 +14,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_handleServiceMonitorNotification:(id)arg1;
 - (BOOL)_isValidServiceType:(id)arg1;
 - (void)_postNotificationForService:(id)arg1 availability:(long long)arg2;

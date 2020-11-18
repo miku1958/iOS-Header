@@ -15,10 +15,14 @@
 {
     HKSource *_source;
     NSString *_version;
+    NSString *_productType;
+    CDStruct_f6aba300 _operatingSystemVersion;
 }
 
-@property (readonly) HKSource *source;
-@property (readonly) NSString *version;
+@property (readonly) CDStruct_f6aba300 operatingSystemVersion; // @synthesize operatingSystemVersion=_operatingSystemVersion;
+@property (readonly, copy) NSString *productType; // @synthesize productType=_productType;
+@property (readonly) HKSource *source; // @synthesize source=_source;
+@property (readonly) NSString *version; // @synthesize version=_version;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -33,6 +37,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSource:(id)arg1 version:(id)arg2;
+- (id)initWithSource:(id)arg1 version:(id)arg2 productType:(id)arg3 operatingSystemVersion:(CDStruct_f6aba300)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

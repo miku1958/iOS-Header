@@ -19,6 +19,7 @@
 @property (nonatomic) double maxAnisotropy;
 @property (nonatomic) long long minificationFilter;
 @property (nonatomic) long long mipFilter;
+@property (nonatomic) long long textureComponents;
 @property (nonatomic) long long wrapS;
 @property (nonatomic) long long wrapT;
 

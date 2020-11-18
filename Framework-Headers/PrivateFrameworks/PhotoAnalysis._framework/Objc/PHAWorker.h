@@ -34,11 +34,12 @@
 @property (readonly) PHPhotoLibrary *photoLibrary;
 @property (readonly, getter=isQuiescent) BOOL quiescent;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *userInitiatedRequestQueue; // @synthesize userInitiatedRequestQueue=_userInitiatedRequestQueue;
+@property (strong) NSObject<OS_dispatch_queue> *userInitiatedRequestQueue; // @synthesize userInitiatedRequestQueue=_userInitiatedRequestQueue;
 @property (nonatomic, getter=isWarmedUp) BOOL warmedUp; // @synthesize warmedUp=_warmedUp;
 
 + (long long)applicationDataFolderIdentifier;
 + (void)configureXPCConnection:(id)arg1;
++ (BOOL)persistsState;
 + (BOOL)runsExclusively;
 + (BOOL)wantsToReceiveXPCRequestsOnUserInitiatedRequestQueue;
 + (short)workerType;
@@ -47,14 +48,14 @@
 - (void)assertUserInitiatedRequestQueue;
 - (void)cooldown;
 - (void)dispatchAsyncToExecutiveStateQueue:(CDUnknownBlockType)arg1;
-- (void)dispatchAsyncToUserInitiatedRequestQueue:(CDUnknownBlockType)arg1;
-- (void)dispatchSyncToUserInitiatedRequestQueue:(CDUnknownBlockType)arg1;
-- (BOOL)hasAdditionalJobsForScenario:(unsigned long long)arg1;
+- (BOOL)dispatchAsyncToUserInitiatedRequestQueue:(CDUnknownBlockType)arg1;
+- (BOOL)dispatchSyncToUserInitiatedRequestQueue:(CDUnknownBlockType)arg1;
+- (BOOL)hasAdditionalJobsForScenario:(unsigned long long)arg1 requestReason:(unsigned long long)arg2;
 - (id)init;
 - (id)initWithPhotoAnalysisManager:(id)arg1 dataLoader:(id)arg2;
 - (id)libraryScopedWorkerPreferences;
 - (id)libraryScopedWorkerPreferencesURL;
-- (id)nextAdditionalJobWithScenario:(unsigned long long)arg1;
+- (id)nextAdditionalJobWithScenario:(unsigned long long)arg1 requestReason:(unsigned long long)arg2;
 - (void)setLibraryScopedWorkerPreferencesValue:(id)arg1 forKey:(id)arg2;
 - (BOOL)shouldCooldownForConstraintChange:(id)arg1;
 - (BOOL)shouldWarmupForConstraintChange:(id)arg1;

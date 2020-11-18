@@ -4,50 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <GeoServices/GEOAbstractMapServiceTicket.h>
 
-#import <GeoServices/GEOMapServiceTicket-Protocol.h>
-
-@class GEOMapRegion, GEOMapServiceTraits, GEORelatedSearchSuggestion, NSArray, NSDictionary, NSString;
+@class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface _GEOPhoneNumbersTicket : NSObject <GEOMapServiceTicket>
+@interface _GEOPhoneNumbersTicket : GEOAbstractMapServiceTicket
 {
     NSArray *_phoneNumbers;
-    GEOMapServiceTraits *_traits;
-    BOOL _canceled;
     BOOL _allowCellularDataForLookup;
 }
 
-@property (readonly, nonatomic, getter=isCanceled) BOOL canceled; // @synthesize canceled=_canceled;
-@property (readonly, nonatomic, getter=isChainResultSet) BOOL chainResultSet;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSArray *relatedSearchSuggestions;
-@property (readonly, nonatomic) NSDictionary *responseUserInfo;
-@property (readonly, nonatomic) GEOMapRegion *resultBoundingRegion;
-@property (readonly, nonatomic) NSString *resultDisplayHeader;
-@property (readonly, nonatomic) NSString *resultSectionHeader;
-@property (readonly, nonatomic) int searchResultType;
-@property (readonly, nonatomic) BOOL shouldEnableRedoSearch;
-@property (readonly) Class superclass;
-@property (readonly, nonatomic) GEOMapServiceTraits *traits; // @synthesize traits=_traits;
-
-- (void)applyToCorrectedSearch:(id)arg1;
-- (void)applyToPlaceInfo:(id)arg1;
-- (void)cancel;
-- (void)dealloc;
+- (void).cxx_destruct;
+- (id)description;
 - (id)initWithPhoneNumbers:(id)arg1 allowCellularDataForLookup:(BOOL)arg2 traits:(id)arg3;
-- (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
-- (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2 queue:(id)arg3;
-- (void)submitWithHandler:(CDUnknownBlockType)arg1 timeout:(long long)arg2 networkActivity:(CDUnknownBlockType)arg3;
-- (void)submitWithHandler:(CDUnknownBlockType)arg1 timeout:(long long)arg2 networkActivity:(CDUnknownBlockType)arg3 queue:(id)arg4;
-- (void)submitWithRefinedHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
-- (void)submitWithRefinedHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2 queue:(id)arg3;
-- (void)submitWithRefinedHandler:(CDUnknownBlockType)arg1 timeout:(long long)arg2 networkActivity:(CDUnknownBlockType)arg3;
-- (void)submitWithRefinedHandler:(CDUnknownBlockType)arg1 timeout:(long long)arg2 networkActivity:(CDUnknownBlockType)arg3 queue:(id)arg4;
+- (void)submitWithHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 timeout:(long long)arg3 networkActivity:(CDUnknownBlockType)arg4;
 
 @end
 

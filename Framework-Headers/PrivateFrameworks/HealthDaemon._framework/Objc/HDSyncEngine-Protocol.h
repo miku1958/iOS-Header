@@ -7,12 +7,14 @@
 #import <HealthDaemon/NSObject-Protocol.h>
 
 @class HDSyncSession, NSArray;
-@protocol HDSyncAnchorMap, HDSyncChange, HDSyncObjectCollection, HDSyncStore;
+@protocol HDSyncAnchorMap, HDSyncChange, HDSyncStore;
 
 @protocol HDSyncEngine <NSObject>
+
+@property (copy, nonatomic) CDUnknownBlockType unitTest_didCompleteReadTransaction;
+
 - (BOOL)applyAcknowledgedAnchorMap:(id<HDSyncAnchorMap>)arg1 forStore:(id<HDSyncStore>)arg2 resetNext:(BOOL)arg3 resetInvalid:(BOOL)arg4 error:(id *)arg5;
 - (BOOL)applySyncChange:(id<HDSyncChange>)arg1 forStore:(id<HDSyncStore>)arg2 error:(id *)arg3;
-- (BOOL)applySyncObjectCollection:(id<HDSyncObjectCollection>)arg1 forStore:(id<HDSyncStore>)arg2 error:(id *)arg3;
 - (BOOL)getReceivedAnchorMap:(id<HDSyncAnchorMap>)arg1 forStore:(id<HDSyncStore>)arg2 error:(id *)arg3;
 - (BOOL)performSyncSession:(HDSyncSession *)arg1 error:(id *)arg2;
 - (void)resetAnchorsWithFailedChanges:(NSArray *)arg1 store:(id<HDSyncStore>)arg2;

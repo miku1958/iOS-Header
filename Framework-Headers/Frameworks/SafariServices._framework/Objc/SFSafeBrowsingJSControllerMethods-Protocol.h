@@ -13,7 +13,6 @@
 - (void)closePageSelected;
 - (void)goBackSelected;
 - (void)ignoreWarningSelected;
-- (BOOL)isRTL;
 - (NSString *)learnMoreAboutPhishingURL:(NSString *)arg1;
 - (void)loaded;
 - (NSString *)malwareDetailsURL:(NSString *)arg1;

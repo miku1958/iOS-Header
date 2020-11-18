@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *startGeometries; // @synthesize startGeometries=_startGeometries;
 @property (nonatomic) BOOL useInteractiveOpacity; // @synthesize useInteractiveOpacity=_useInteractiveOpacity;
 
+- (BOOL)_allowFacesToAdjoinToAdjacentFaces;
 - (id)_animationsForEnd;
 - (id)_animationsForStart;
 - (void)_updateTransition;

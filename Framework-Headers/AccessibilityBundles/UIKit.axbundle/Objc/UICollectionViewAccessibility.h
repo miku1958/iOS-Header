@@ -13,7 +13,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityAwayAlertElements;
 - (struct CGRect)_accessibilityBoundsOfCellsToLoad;
 - (BOOL)_accessibilityDescendantElementAtIndexPathIsValid:(id)arg1;
 - (void)_accessibilityEnsureViewsAroundAreLoaded;
@@ -28,7 +27,7 @@
 - (id)_accessibilityReusableViewForOpaqueElement:(id)arg1;
 - (id)_accessibilityScannerGroupElements;
 - (id)_accessibilityScannerGroupElementsGroupedByRow;
-- (int)_accessibilityScanningBehaviorTraits;
+- (unsigned long long)_accessibilityScanningBehaviorTraits;
 - (BOOL)_accessibilityShouldAvoidScrollingCollectionViewCells;
 - (BOOL)_accessibilityShouldDisableCellReuse;
 - (BOOL)_accessibilityShouldUseCollectionViewCellAccessibilityElements;
@@ -42,7 +41,7 @@
 - (id)_axIndexPathForGlobalRow:(long long)arg1;
 - (id)_dequeueReusableViewOfKind:(id)arg1 withIdentifier:(id)arg2 forIndexPath:(id)arg3 viewCategory:(unsigned long long)arg4;
 - (void)_resetAXData;
-- (void)_reuseCell:(id)arg1 notifyDidEndDisplaying:(BOOL)arg2;
+- (BOOL)_reuseCell:(id)arg1 notifyDidEndDisplaying:(BOOL)arg2;
 - (void)_reuseSupplementaryView:(id)arg1;
 - (struct CGRect)_visibleBounds;
 - (id)accessibilityCellForRowAtIndexPath:(id)arg1;

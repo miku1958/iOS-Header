@@ -25,7 +25,8 @@
 - (void)cancelAllDialogsBlockingSlot:(CDStruct_497cfc99)arg1;
 - (void)cancelAllDialogsBlockingWebProcessID:(int)arg1;
 - (void)cancelAllDialogsForTabID:(unsigned long long)arg1;
-- (void)cancelAllDialogsForTabID:(unsigned long long)arg1 reason:(long long)arg2;
+- (void)cancelAllDialogsForTabID:(unsigned long long)arg1 context:(id)arg2;
+- (void)cancelAllDialogsForTabID:(unsigned long long)arg1 reason:(id)arg2;
 - (id)description;
 - (void)dismissCurrentDialogForTabID:(unsigned long long)arg1 withResponse:(id)arg2;
 - (void)enqueueOrPresentDialog:(id)arg1 inSlot:(CDStruct_497cfc99)arg2;

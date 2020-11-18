@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURL, VSAccountStore;
+@class NSString, NSURL, NSUndoManager, VSAccountStore;
 @protocol OS_dispatch_queue;
 
 @interface VSAccountChannelsCenter : NSObject
@@ -25,6 +25,7 @@
 @property (copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property (copy, nonatomic) CDUnknownBlockType identityProviderFetchOperationBlock; // @synthesize identityProviderFetchOperationBlock=_identityProviderFetchOperationBlock;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
+@property (strong, nonatomic) NSUndoManager *undoManager;
 
 + (id)_accountChannelsWithProviderID:(id)arg1;
 + (id)_defaultDirectoryURL;
@@ -32,16 +33,19 @@
 + (void)_startOperationAndWaitForCompletion:(id)arg1;
 + (id)sharedCenter;
 - (void).cxx_destruct;
-- (id)_init;
+- (void)_enqueueRemoveSavedAccountChannelsAndWait;
+- (void)_enqueueSaveAccountChannelsAndWait:(id)arg1;
 - (id)_removeSavedAccountChannels;
 - (void)_removeSavedAccountChannelsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_saveAccountChannels:(id)arg1;
 - (void)_saveAccountChannels:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)_savedAccountChannels;
 - (id)_savedAccountChannelsForIdentityProviderID:(id)arg1 storeIdentityProvider:(id)arg2;
+- (void)_snapshotPreviousChannels;
 - (id)_storeIdentityProviderForAccount:(id)arg1;
 - (void)fetchAccountChannelsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)initWithAccountStore:(id)arg1;
 
 @end
 

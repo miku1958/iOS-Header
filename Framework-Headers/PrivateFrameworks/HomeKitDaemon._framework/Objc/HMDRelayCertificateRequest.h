@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSData, NSString;
 
-@interface HMDRelayCertificateRequest : NSObject
+@interface HMDRelayCertificateRequest : HMFObject
 {
     NSData *_publicKey;
     NSString *_challengeIdentifier;

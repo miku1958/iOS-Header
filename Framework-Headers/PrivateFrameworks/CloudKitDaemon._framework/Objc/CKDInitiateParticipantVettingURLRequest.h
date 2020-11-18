@@ -25,12 +25,12 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType vettingInitiationRequestCompletionBlock; // @synthesize vettingInitiationRequestCompletionBlock=_vettingInitiationRequestCompletionBlock;
 
 - (void).cxx_destruct;
+- (id)generateRequestOperations;
 - (id)initWithShareRecordID:(id)arg1 encryptedKey:(id)arg2 participantID:(id)arg3 baseToken:(id)arg4;
 - (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 
 @end
 

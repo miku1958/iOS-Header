@@ -8,7 +8,7 @@
 
 #import <StoreBookkeeper/ISStoreURLOperationDelegate-Protocol.h>
 
-@class NSMutableArray, NSOperationQueue, NSString, NSURL, SBKStoreAuthenticationController, SBKTaskAssertion, SBKTransaction, SSAccount;
+@class NSMutableArray, NSNumber, NSOperationQueue, NSString, NSURL, SBKStoreAuthenticationController, SBKTaskAssertion, SBKTransaction, SSAccount;
 @protocol OS_dispatch_queue, SBKTransactionControllerDelegate;
 
 @interface SBKTransactionController : NSObject <ISStoreURLOperationDelegate>
@@ -43,6 +43,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, getter=isIdle) BOOL idle;
 @property BOOL isResolvingError; // @synthesize isResolvingError=_isResolvingError;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentage;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSessionDuration;
 @property (weak) id networkTypeObserver; // @synthesize networkTypeObserver=_networkTypeObserver;
 @property (strong) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property (strong) NSMutableArray *pendingTransactions; // @synthesize pendingTransactions=_pendingTransactions;

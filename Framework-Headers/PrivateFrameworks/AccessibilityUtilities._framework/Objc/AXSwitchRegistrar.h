@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AXSwitch;
+@class AXMIDIManager, AXSwitch;
 @protocol AXSwitchRegistrarDelegate;
 
 @interface AXSwitchRegistrar : NSObject
@@ -17,15 +17,18 @@
     struct __IOHIDDevice *_device;
     struct __IOHIDEventSystemClient *_eventSystemClient;
     struct __IOHIDManager *_manager;
+    AXMIDIManager *_midiManager;
 }
 
 @property (strong, nonatomic) AXSwitch *aSwitch; // @synthesize aSwitch=_aSwitch;
 @property (nonatomic) BOOL addLongPressSwitch; // @synthesize addLongPressSwitch=_addLongPressSwitch;
-@property (nonatomic) id<AXSwitchRegistrarDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<AXSwitchRegistrarDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) struct __IOHIDDevice *device; // @synthesize device=_device;
 @property (strong, nonatomic) struct __IOHIDEventSystemClient *eventSystemClient; // @synthesize eventSystemClient=_eventSystemClient;
 @property (strong, nonatomic) struct __IOHIDManager *manager; // @synthesize manager=_manager;
+@property (strong, nonatomic) AXMIDIManager *midiManager; // @synthesize midiManager=_midiManager;
 
+- (void).cxx_destruct;
 - (id)_atvRemoteMatching;
 - (void)_filterEvents:(BOOL)arg1;
 - (void)_handleATVRemoteButtonDownEvent:(struct __IOHIDEvent *)arg1;
@@ -33,10 +36,12 @@
 - (void)_handleApplicationWillResignActive:(id)arg1;
 - (void)_handleKeyboardKeyDownEvent:(struct __IOHIDEvent *)arg1;
 - (void)_handleMFIButtonDownValue:(struct __IOHIDValue *)arg1;
+- (void)_handleMIDIEvent:(id)arg1 device:(id)arg2 entity:(id)arg3 source:(id)arg4;
 - (BOOL)_isATVRemoteButtonSwitchWithUsage:(long long)arg1 longPress:(BOOL)arg2;
 - (BOOL)_isKeyboardSwitchWithKeyCode:(unsigned short)arg1 longPress:(BOOL)arg2;
 - (BOOL)_isMFISwitchWithButtonNumber:(unsigned int)arg1 longPress:(BOOL)arg2;
-- (BOOL)_isSwitchWithSource:(struct NSString *)arg1 keyCode:(unsigned short)arg2 buttonNumber:(unsigned int)arg3 ATVRemoteButtonUsage:(long long)arg4;
+- (BOOL)_isMIDISwitchWithMidiEvent:(id)arg1;
+- (BOOL)_isSwitchWithSource:(struct NSString *)arg1 keyCode:(unsigned short)arg2 buttonNumber:(unsigned int)arg3 ATVRemoteButtonUsage:(long long)arg4 midiEvent:(id)arg5;
 - (id)_keyboardMatching;
 - (id)_mfiMatching;
 - (void)beginFilteringEvents;

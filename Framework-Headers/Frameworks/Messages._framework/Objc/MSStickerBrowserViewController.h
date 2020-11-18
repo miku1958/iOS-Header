@@ -29,15 +29,13 @@
 
 - (void).cxx_destruct;
 - (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;
-- (void)didReceiveMemoryWarning;
+- (void)didTransitionToPresentationStyle:(unsigned long long)arg1;
 - (void)disableUserInteraction;
 - (void)enableUserInteraction;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithLayout:(long long)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithStickerSize:(long long)arg1;
-- (id)initWithStickerSizeClass:(long long)arg1;
 - (void)loadView;
 - (long long)numberOfStickersInStickerBrowserView:(id)arg1;
 - (id)stickerBrowserView:(id)arg1 stickerAtIndex:(long long)arg2;
@@ -46,6 +44,7 @@
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;
+- (void)willTransitionToPresentationStyle:(unsigned long long)arg1;
 
 @end
 

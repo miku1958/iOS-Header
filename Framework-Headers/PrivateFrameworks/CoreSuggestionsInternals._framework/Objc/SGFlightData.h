@@ -6,24 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, SGAsset, SGOffsetDictionary;
+@class NSDictionary, SGOffsetDictionary, _PASNotificationToken;
 @protocol SGSeekable;
 
 @interface SGFlightData : NSObject
 {
     id<SGSeekable> _flightsFh;
     SGOffsetDictionary *_flightDataOffsets;
-    SGAsset *_flightsUpdateAsset;
     id<SGSeekable> _flightsUpdateFh;
     SGOffsetDictionary *_flightUpdateDataOffsets;
     id<SGSeekable> _airportsFh;
     SGOffsetDictionary *_airportDataOffsets;
-    SGAsset *_airportsUpdateAsset;
     id<SGSeekable> _airportsUpdateFh;
     SGOffsetDictionary *_airportUpdateDataOffsets;
+    _PASNotificationToken *_assetUpdateToken;
     NSDictionary *_carrierNames;
     NSDictionary *_carrierCodesByName;
-    SGAsset *_carrierUpdateAsset;
     NSDictionary *_carrierUpdateNames;
     NSDictionary *_carrierUpdateCodesByName;
 }
@@ -40,6 +38,7 @@
 - (id)bestLocalizedNameForAirport:(id)arg1;
 - (id)carrierIataCodeForCarrierName:(id)arg1;
 - (id)carrierIataCodes;
+- (void)dealloc;
 - (id)init;
 - (id)latitudeAndLongitudeForAirport:(id)arg1;
 - (id)latitudeAndLongitudeForAirport:(id)arg1 withDataOffset:(id)arg2 andFileHandle:(id)arg3;

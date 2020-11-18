@@ -27,7 +27,7 @@
 - (id)indexes;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithObjects:(id *)arg1 andIndexes:(unsigned long long *)arg2 count:(unsigned long long)arg3;
+- (id)initWithObjects:(const id *)arg1 andIndexes:(unsigned long long *)arg2 count:(unsigned long long)arg3;
 - (id)objectForIndex:(unsigned long long)arg1;
 - (void)removeAllObjects;
 - (void)removeObjectForIndex:(unsigned long long)arg1;

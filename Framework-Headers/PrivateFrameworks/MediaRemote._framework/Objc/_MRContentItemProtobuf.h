@@ -50,7 +50,10 @@
 
 + (Class)availableLanguageOptionsType;
 + (Class)currentLanguageOptionsType;
++ (void)initialize;
 + (Class)sectionsType;
+- (id)_init;
+- (id)_initWithData:(id)arg1;
 - (void)addAvailableLanguageOptions:(id)arg1;
 - (void)addCurrentLanguageOptions:(id)arg1;
 - (void)addSections:(id)arg1;
@@ -65,10 +68,7 @@
 - (unsigned long long)currentLanguageOptionsCount;
 - (void)dealloc;
 - (id)description;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (BOOL)hasAvailableLanguageOptions;
-- (BOOL)hasCurrentLanguageOptions;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

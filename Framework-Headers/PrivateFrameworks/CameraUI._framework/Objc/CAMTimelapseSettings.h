@@ -21,12 +21,13 @@
 @property (readonly, nonatomic) double maxOutputLength; // @synthesize maxOutputLength=_maxOutputLength;
 
 + (id)sharedInstance;
-- (long long)averageMovieBitrateForWidth:(long long)arg1 height:(long long)arg2;
+- (long long)_averageMovieBitrateForWidth:(long long)arg1 height:(long long)arg2 useHEVC:(BOOL)arg3;
+- (id)_outputSettingsPresetForWidth:(long long)arg1 height:(long long)arg2;
 - (id)init;
-- (long long)maxMovieFileLengthForWidth:(long long)arg1 height:(long long)arg2;
-- (long long)minAvailableBytesNeededForCaptureForWidth:(long long)arg1 height:(long long)arg2;
+- (long long)maxMovieFileLengthForWidth:(long long)arg1 height:(long long)arg2 useHEVC:(BOOL)arg3;
+- (long long)minAvailableBytesNeededForCaptureForWidth:(long long)arg1 height:(long long)arg2 useHEVC:(BOOL)arg3;
 - (double)outputFPSForFrameCount:(long long)arg1;
-- (id)outputSettingsPresetForWidth:(long long)arg1 height:(long long)arg2;
+- (id)outputSettingsForWidth:(long long)arg1 height:(long long)arg2 videoFormatDescription:(struct opaqueCMFormatDescription *)arg3 framesPerSecond:(long long)arg4 frameCount:(long long)arg5 useHEVC:(BOOL)arg6;
 - (double)waitTimeBeforeNextWriteForNumberOfPreviousAttempts:(long long)arg1;
 
 @end

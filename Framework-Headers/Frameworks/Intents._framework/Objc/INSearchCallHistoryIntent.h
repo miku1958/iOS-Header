@@ -8,7 +8,7 @@
 
 #import <Intents/INSearchCallHistoryIntentExport-Protocol.h>
 
-@class INDateComponentsRange, INPerson, NSString;
+@class INDateComponentsRange, INPerson, NSNumber, NSString;
 
 @interface INSearchCallHistoryIntent : INIntent <INSearchCallHistoryIntentExport>
 {
@@ -16,26 +16,32 @@
 
 @property (readonly, nonatomic) unsigned long long callCapabilities;
 @property (readonly, nonatomic) long long callType;
+@property (readonly, nonatomic) unsigned long long callTypes;
 @property (readonly, copy, nonatomic) INDateComponentsRange *dateCreated;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) long long preferredCallProvider;
 @property (readonly, copy, nonatomic) INPerson *recipient;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSNumber *unseen;
 
 - (id)_dictionaryRepresentation;
 - (id)_metadata;
-- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
+- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_typedBackingStore;
 - (id)domain;
 - (id)initWithCallType:(long long)arg1 dateCreated:(id)arg2 recipient:(id)arg3 callCapabilities:(unsigned long long)arg4;
+- (id)initWithDateCreated:(id)arg1 recipient:(id)arg2 callCapabilities:(unsigned long long)arg3 callTypes:(unsigned long long)arg4;
+- (id)initWithDateCreated:(id)arg1 recipient:(id)arg2 callCapabilities:(unsigned long long)arg3 callTypes:(unsigned long long)arg4 unseen:(id)arg5;
 - (id)parametersByName;
 - (void)setCallCapabilities:(unsigned long long)arg1;
-- (void)setCallType:(long long)arg1;
+- (void)setCallTypes:(unsigned long long)arg1;
 - (void)setDateCreated:(id)arg1;
 - (void)setDomain:(id)arg1;
 - (void)setParametersByName:(id)arg1;
 - (void)setRecipient:(id)arg1;
+- (void)setUnseen:(id)arg1;
 - (void)setVerb:(id)arg1;
 - (id)verb;
 

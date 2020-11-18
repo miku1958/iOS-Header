@@ -8,30 +8,33 @@
 
 #import <Intents/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields, _INPBContact, _INPBIntentMetadata, _INPBString;
+@class NSMutableArray, NSString, PBUnknownFields, _INPBContact, _INPBDataString, _INPBIntentMetadata, _INPBString;
 
 @interface _INPBSendMessageIntent : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
     _INPBString *_content;
-    _INPBString *_groupName;
+    NSString *_conversationIdentifier;
     _INPBIntentMetadata *_intentMetadata;
     NSMutableArray *_recipients;
     _INPBContact *_sender;
     NSString *_serviceName;
+    _INPBDataString *_speakableGroupName;
 }
 
 @property (strong, nonatomic) _INPBString *content; // @synthesize content=_content;
-@property (strong, nonatomic) _INPBString *groupName; // @synthesize groupName=_groupName;
+@property (strong, nonatomic) NSString *conversationIdentifier; // @synthesize conversationIdentifier=_conversationIdentifier;
 @property (readonly, nonatomic) BOOL hasContent;
-@property (readonly, nonatomic) BOOL hasGroupName;
+@property (readonly, nonatomic) BOOL hasConversationIdentifier;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (readonly, nonatomic) BOOL hasSender;
 @property (readonly, nonatomic) BOOL hasServiceName;
+@property (readonly, nonatomic) BOOL hasSpeakableGroupName;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (strong, nonatomic) NSMutableArray *recipients; // @synthesize recipients=_recipients;
-@property (strong, nonatomic) _INPBContact *sender;
-@property (strong, nonatomic) NSString *serviceName;
+@property (strong, nonatomic) _INPBContact *sender; // @synthesize sender=_sender;
+@property (strong, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
+@property (strong, nonatomic) _INPBDataString *speakableGroupName; // @synthesize speakableGroupName=_speakableGroupName;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)options;

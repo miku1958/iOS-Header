@@ -14,8 +14,12 @@ __attribute__((visibility("hidden")))
 - (double)barHeight;
 - (struct UIEdgeInsets)buttonContentEdgeInsets;
 - (id)buttonFontForStyle:(long long)arg1;
+- (double)buttonFontSize;
 - (double)buttonHeight;
 - (double)buttonImagePadding;
+- (id)defaultTitleColorForUserInterfaceStyle:(long long)arg1 barStyle:(long long)arg2;
+- (id)defaultTitleFont;
+- (double)headingFontSize;
 - (double)interItemSpace;
 - (double)leftTitleMargin;
 - (double)navigationItemBaselineOffset;

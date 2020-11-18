@@ -53,6 +53,7 @@
 @property (strong, nonatomic) MPMediaLibrary *mediaLibrary;
 @property (copy, nonatomic, getter=_orderingDirectionMappings, setter=_setOrderingDirectionMappings:) NSDictionary *orderingDirectionMappings;
 @property (copy, nonatomic, getter=_orderingProperties, setter=_setOrderingProperties:) NSArray *orderingProperties;
+@property (readonly, nonatomic, getter=isPlaylistItemsQuery) BOOL playlistItemsQuery;
 @property (nonatomic) BOOL shouldIncludeNonLibraryEntities;
 @property (nonatomic) BOOL sortItems;
 @property (readonly, nonatomic) BOOL specifiesPlaylistItems;
@@ -111,6 +112,7 @@
 - (void)_enumerateUnorderedItemsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_getRepresentativeCollectionGrouping:(long long *)arg1 propertyPredicate:(id *)arg2;
 - (BOOL)_isFilteringDisabled;
+- (unsigned long long)_playlistItemPersistentIDForItemPersistentID:(unsigned long long)arg1;
 - (BOOL)_updatePredicateForProperty:(id)arg1 withPropertyPredicate:(id)arg2;
 - (id)_valueForAggregateFunction:(id)arg1 onProperty:(id)arg2 entityType:(long long)arg3;
 - (void)addFilterPredicate:(id)arg1;

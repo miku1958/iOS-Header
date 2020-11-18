@@ -16,6 +16,7 @@
     double _centerY;
     double _size;
     unsigned int _faceState;
+    unsigned int _nameSource;
     NSString *_personIdentifier;
     NSMutableArray *_rejectedPersonIdentifiers;
     struct {
@@ -23,6 +24,7 @@
         unsigned int centerY:1;
         unsigned int size:1;
         unsigned int faceState:1;
+        unsigned int nameSource:1;
     } _has;
 }
 
@@ -32,10 +34,12 @@
 @property (nonatomic) BOOL hasCenterX;
 @property (nonatomic) BOOL hasCenterY;
 @property (nonatomic) BOOL hasFaceState;
+@property (nonatomic) BOOL hasNameSource;
 @property (readonly, nonatomic) BOOL hasPersonIdentifier;
 @property (nonatomic) BOOL hasSize;
 @property (nonatomic, getter=isKeyFace) BOOL keyFace;
 @property (nonatomic, getter=isManual) BOOL manual;
+@property (nonatomic) unsigned int nameSource; // @synthesize nameSource=_nameSource;
 @property (readonly, nonatomic, getter=isNoneState) BOOL noneState;
 @property (strong, nonatomic) NSString *personIdentifier; // @synthesize personIdentifier=_personIdentifier;
 @property (strong, nonatomic) NSMutableArray *rejectedPersonIdentifiers; // @synthesize rejectedPersonIdentifiers=_rejectedPersonIdentifiers;
@@ -56,6 +60,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)pointerDescription;
 - (BOOL)readFrom:(id)arg1;
 - (id)rejectedPersonIdentifiersAtIndex:(unsigned long long)arg1;
 - (unsigned long long)rejectedPersonIdentifiersCount;

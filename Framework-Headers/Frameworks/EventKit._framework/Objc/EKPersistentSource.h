@@ -10,31 +10,33 @@
 
 @interface EKPersistentSource : EKPersistentObject
 {
-    CDBSourceConstraints *_constraints;
 }
 
+@property (readonly, nonatomic) NSString *UUID; // @dynamic UUID;
 @property (strong, nonatomic) NSString *UUID;
-@property (readonly, nonatomic) CDBSourceConstraints *constraints; // @synthesize constraints=_constraints;
-@property (copy, nonatomic) NSNumber *defaultAlarmOffset;
-@property (nonatomic, getter=isEnabled) BOOL enabled;
-@property (copy, nonatomic) NSString *externalID;
-@property (copy, nonatomic) NSString *externalModificationTag;
-@property (nonatomic) BOOL onlyCreatorCanModify;
-@property (nonatomic) long long preferredEventPrivateValue;
-@property (nonatomic) long long sourceType;
-@property (nonatomic) long long strictestEventPrivateValue;
-@property (copy, nonatomic) NSString *title;
+@property (readonly, nonatomic) CDBSourceConstraints *constraints;
+@property (copy, nonatomic) NSNumber *defaultAlarmOffset; // @dynamic defaultAlarmOffset;
+@property (nonatomic) BOOL disabled; // @dynamic disabled;
+@property (copy, nonatomic) NSString *externalID; // @dynamic externalID;
+@property (copy, nonatomic) NSString *externalModificationTag; // @dynamic externalModificationTag;
+@property (nonatomic) BOOL onlyCreatorCanModify; // @dynamic onlyCreatorCanModify;
+@property (nonatomic) int preferredEventPrivateValue; // @dynamic preferredEventPrivateValue;
+@property (nonatomic) long long sourceType; // @dynamic sourceType;
+@property (nonatomic) int strictestEventPrivateValue; // @dynamic strictestEventPrivateValue;
+@property (copy, nonatomic) NSString *title; // @dynamic title;
 
-+ (long long)_calEventPrivacyLevelToEKPrivacyLevel:(int)arg1;
-+ (int)_ekPrivacyLevelToCalEventPrivacyLevel:(long long)arg1;
 + (id)defaultPropertiesToLoad;
 + (id)relations;
-- (void).cxx_destruct;
 - (id)description;
 - (int)entityType;
-- (id)init;
-- (BOOL)refresh;
-- (void)reset;
+- (int)flags;
+- (id)lastSyncEndDate;
+- (unsigned long long)lastSyncError;
+- (id)lastSyncStartDate;
+- (void)setFlags:(int)arg1;
+- (void)setLastSyncEndDate:(id)arg1;
+- (void)setLastSyncError:(unsigned long long)arg1;
+- (void)setLastSyncStartDate:(id)arg1;
 
 @end
 

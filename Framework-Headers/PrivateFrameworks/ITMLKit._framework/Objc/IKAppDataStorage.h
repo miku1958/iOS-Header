@@ -20,15 +20,20 @@
     NSObject<OS_dispatch_queue> *_storageQueue;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, strong, nonatomic) NSString *filePath; // @synthesize filePath=_filePath;
+@property (readonly) unsigned long long hash;
 @property (readonly, strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSMutableDictionary *storageDict; // @synthesize storageDict=_storageDict;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *storageQueue; // @synthesize storageQueue=_storageQueue;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_saveDict:(id)arg1;
 - (void)clear;
 - (unsigned long long)count;
+- (id)dictionaryRepresentation;
 - (id)getDataForKey:(id)arg1;
 - (id)initWithFilePath:(id)arg1 identifier:(id)arg2;
 - (id)keyAtIndex:(unsigned long long)arg1;

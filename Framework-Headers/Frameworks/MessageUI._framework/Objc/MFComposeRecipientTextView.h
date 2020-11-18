@@ -7,26 +7,25 @@
 #import <MessageUI/MFComposeHeaderView.h>
 
 #import <MessageUI/MFComposeRecipientAtomDelegate-Protocol.h>
-#import <MessageUI/MFMultiDragDestination-Protocol.h>
-#import <MessageUI/MFMultiDragSource-Protocol.h>
+#import <MessageUI/MFRecipientDraggingDelegate-Protocol.h>
 #import <MessageUI/NSLayoutManagerDelegate-Protocol.h>
 #import <MessageUI/UITextViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSString, NSTimer, NSUndoManager, UIButton, UIColor, UIFont, UITextView, UIView, _MFAtomTextAttachment, _MFAtomTextView;
-@protocol MFComposeRecipientTextViewDelegate, MFDraggableItem;
+@class MFDragSource, MFDropTarget, NSArray, NSMutableArray, NSMutableDictionary, NSString, NSTimer, NSUndoManager, UIButton, UIColor, UIFont, UITextView, UIView, _MFAtomTextAttachment, _MFAtomTextView;
+@protocol MFComposeRecipientTextViewDelegate;
 
-@interface MFComposeRecipientTextView : MFComposeHeaderView <UITextViewDelegate, NSLayoutManagerDelegate, MFMultiDragSource, MFMultiDragDestination, MFComposeRecipientAtomDelegate>
+@interface MFComposeRecipientTextView : MFComposeHeaderView <UITextViewDelegate, NSLayoutManagerDelegate, MFComposeRecipientAtomDelegate, MFRecipientDraggingDelegate>
 {
     _MFAtomTextView *_textView;
     UITextView *_inactiveTextView;
     UIColor *_inactiveTextColor;
-    UIView *_atomContainerView;
     NSMutableArray *_atomViews;
     NSMutableDictionary *_atomPresentationOptionsByRecipient;
     NSMutableDictionary *_atomLayoutOptionsByRecipient;
+    MFDragSource *_dragSource;
+    MFDropTarget *_dropTarget;
+    struct CGRect _currentTextRect;
     long long _atomViewAnimationDepth;
-    struct _NSRange _dragSourceRange;
-    id<MFDraggableItem> _pivotItem;
     BOOL _parentIsClosing;
     BOOL _textViewExclusionPathsAreValid;
     BOOL _isTextFieldCollapsed;
@@ -38,7 +37,6 @@
     NSMutableArray *_recipientsBeingRemoved;
     NSUndoManager *_undoManager;
     BOOL _editable;
-    BOOL _allowsDragAndDrop;
     BOOL _separatorHidden;
     BOOL _expanded;
     BOOL _didIgnoreFirstResponderResign;
@@ -47,11 +45,11 @@
     long long _maxRecipients;
     UIButton *_addButton;
     _MFAtomTextAttachment *_placeholderAttachment;
+    UIView *_atomContainerView;
 }
 
 @property (readonly, nonatomic) UIButton *addButton; // @synthesize addButton=_addButton;
 @property (copy, nonatomic) NSArray *addresses;
-@property (nonatomic) BOOL allowsDragAndDrop; // @synthesize allowsDragAndDrop=_allowsDragAndDrop;
 @property (readonly, nonatomic) UIView *atomContainerView; // @synthesize atomContainerView=_atomContainerView;
 @property (strong, nonatomic) UIFont *baseFont; // @synthesize baseFont=_baseFont;
 @property (readonly, copy) NSString *debugDescription;
@@ -76,6 +74,7 @@
 @property (readonly, copy, nonatomic) NSArray *uncommentedAddresses;
 
 + (id)defaultFont;
+- (id)_accessibilityToString;
 - (void)_addAddressAtomSubview:(id)arg1;
 - (void)_addButtonTapped:(id)arg1;
 - (void)_addRecord:(void *)arg1 identifier:(int)arg2;
@@ -86,6 +85,7 @@
 - (BOOL)_canAddAdditionalAtoms;
 - (BOOL)_delegateRespondsToSizeChange;
 - (void)_didRemoveRecipient:(id)arg1;
+- (void)_ensureAddButton;
 - (BOOL)_hasUnsafeRecipients;
 - (void)_insertAtomAttachment:(id)arg1 andReplaceCharactersInRange:(struct _NSRange)arg2;
 - (void)_insertAtomAttachment:(id)arg1 atCharacterIndex:(unsigned long long)arg2;
@@ -96,8 +96,8 @@
 - (void)_longPressGestureRecognized:(id)arg1;
 - (void)_notifyDelegateOfNewSize:(struct CGSize)arg1;
 - (void)_notifyDelegateOfSizeChange;
-- (id)_placeholderAttachmentForRecipient:(id)arg1;
 - (struct _NSRange)_placeholderAttachmentRange;
+- (id)_placeholderAttachmentWithStaticWidth;
 - (struct _NSRange)_rangeForComposeRecipientAtom:(id)arg1;
 - (void)_recomputeTextContainerExclusionPaths;
 - (void)_removeAddressAtomSubview:(id)arg1;
@@ -107,6 +107,7 @@
 - (void)_setTextViewIsCollapsed:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setValue:(id)arg1 forAtomLayoutOption:(id)arg2 withRecipient:(id)arg3;
 - (BOOL)_shouldAnimateAtomViewChanges;
+- (BOOL)_shouldEmbedLabelInTextView;
 - (void)_tapGestureRecognized:(id)arg1;
 - (id)_textContainerExclusionPathsWithAddButton:(BOOL)arg1;
 - (BOOL)_textViewContainsAtomizedRecipients;
@@ -118,8 +119,6 @@
 - (void)addRecipient:(id)arg1;
 - (void)addRecipient:(id)arg1 index:(unsigned long long)arg2 animate:(BOOL)arg3;
 - (void)addRecord:(void *)arg1 property:(int)arg2 identifier:(int)arg3;
-- (BOOL)allowsDrag;
-- (void)animatePlaceholderForDragFailureWithItems:(id)arg1;
 - (void)atomTextView:(id)arg1 didChangeWritingDirection:(long long)arg2;
 - (void)atomTextViewDidBecomeFirstResponder:(id)arg1;
 - (void)atomTextViewDidResignFirstResponder:(id)arg1;
@@ -133,22 +132,19 @@
 - (BOOL)containsAddress:(id)arg1;
 - (void)dealloc;
 - (void)deselectComposeRecipientAtom:(id)arg1;
-- (id)destinationViewForDrop;
-- (void)dragCompletedWithItems:(id)arg1 success:(BOOL)arg2;
-- (void)dragEnteredAtPoint:(struct CGPoint)arg1 withItems:(id)arg2;
-- (void)dragExitedWithItems:(id)arg1;
-- (void)dragMovedToPoint:(struct CGPoint)arg1 withItems:(id)arg2;
-- (void)dragStartedWithItems:(id)arg1;
+- (void)dragEnteredAtPoint:(struct CGPoint)arg1;
+- (void)dragExited;
+- (void)dragMovedToPoint:(struct CGPoint)arg1;
+- (id)dragPreviewForDraggedItem:(id)arg1;
 - (void)dropItems:(id)arg1;
 - (BOOL)finishEnteringRecipient;
-- (struct CGRect)frameForDraggedItem:(id)arg1 isPivotView:(out BOOL *)arg2;
-- (struct CGRect)frameForDroppedItem:(id)arg1;
 - (BOOL)hasContent;
+- (unsigned long long)indexOfRecipientForInsertionAtPoint:(struct CGPoint)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 dragDropDelegate:(id)arg2;
 - (void)invalidateAtomPresentationOptions;
 - (void)invalidateAtomPresentationOptionsForRecipient:(id)arg1;
 - (BOOL)isFirstResponder;
-- (id)itemsForDragAtPoint:(struct CGPoint)arg1;
 - (void)layoutManager:(id)arg1 didCompleteLayoutForTextContainer:(id)arg2 atEnd:(BOOL)arg3;
 - (void)layoutSubviews;
 - (void)parentDidClose;
@@ -157,24 +153,19 @@
 - (void)refreshPreferredContentSize;
 - (void)removeRecipient:(id)arg1;
 - (void)selectComposeRecipientAtom:(id)arg1;
+- (id)selectedAtoms;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setEditable:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setLabel:(id)arg1;
 - (void)setProperties:(id)arg1;
 - (void)setProperty:(int)arg1;
-- (BOOL)shouldCollapseMultipleItems;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (id)supportedDropTypes:(id)arg1;
 - (double)textFieldOffsetForNumberOfRowsToScroll:(unsigned long long)arg1 numberOfRowsAboveField:(long long)arg2;
 - (BOOL)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
 - (void)textViewDidChange:(id)arg1;
 - (void)textViewDidChangeSelection:(id)arg1;
 - (id)undoManager;
-- (id)viewForDragSource;
-- (id)viewForDraggedItem:(id)arg1 atScale:(double)arg2;
-- (void)willDropItems:(id)arg1;
-- (void)willMoveToSuperview:(id)arg1;
 
 @end
 

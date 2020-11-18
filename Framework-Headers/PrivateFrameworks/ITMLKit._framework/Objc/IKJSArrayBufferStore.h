@@ -14,7 +14,7 @@
     IKAppContext *_appContext;
 }
 
-@property (readonly, nonatomic) IKAppContext *appContext; // @synthesize appContext=_appContext;
+@property (readonly, weak, nonatomic) IKAppContext *appContext; // @synthesize appContext=_appContext;
 @property (readonly, nonatomic) NSMutableDictionary *bufferStorage; // @synthesize bufferStorage=_bufferStorage;
 
 - (void).cxx_destruct;

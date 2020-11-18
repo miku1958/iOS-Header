@@ -8,8 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 @interface GEOTraitsPhotoSize : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     unsigned int _height;
     unsigned int _width;
     CDStruct_db93fd0f _has;
@@ -18,8 +21,10 @@
 @property (nonatomic) BOOL hasHeight;
 @property (nonatomic) BOOL hasWidth;
 @property (nonatomic) unsigned int height; // @synthesize height=_height;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (nonatomic) unsigned int width; // @synthesize width=_width;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

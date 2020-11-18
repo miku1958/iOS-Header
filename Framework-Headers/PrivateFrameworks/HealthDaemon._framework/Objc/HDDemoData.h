@@ -15,6 +15,8 @@
 }
 
 + (id)demoDataDirectory;
++ (BOOL)shouldUseDemoDataDirectory;
++ (BOOL)willBeGeneratingDemoData;
 - (void).cxx_destruct;
 - (id)_directoryPath;
 - (BOOL)_resetDemoDataDB;

@@ -21,12 +21,14 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSNumber *needsConfirmation;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
+@property (copy, nonatomic) NSString *resolutionType;
 @property (readonly) Class superclass;
 
 + (id)resolveAppForIntentResponse;
 + (id)resolveAppForIntentResponseWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)requiresResponse;
 
 @end
 

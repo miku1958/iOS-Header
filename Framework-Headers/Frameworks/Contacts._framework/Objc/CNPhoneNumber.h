@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Contacts/CNObjectValidation-Protocol.h>
 #import <Contacts/NSCopying-Protocol.h>
@@ -14,6 +14,7 @@
 
 @interface CNPhoneNumber : NSObject <CNObjectValidation, NSCopying, NSSecureCoding>
 {
+    NSString *_initialCountryCode;
     NSString *_stringValue;
     struct __CFPhoneNumber *_phoneNumberRef;
 }
@@ -25,29 +26,34 @@
 @property (readonly, copy, nonatomic) NSString *formattedInternationalStringValue;
 @property (readonly, copy, nonatomic) NSString *formattedStringValue;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) struct __CFPhoneNumber *phoneNumberRef;
-@property (readonly, copy, nonatomic) NSString *stringValue;
+@property (readonly, copy, nonatomic) NSString *initialCountryCode; // @synthesize initialCountryCode=_initialCountryCode;
+@property (readonly, copy, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *unformattedInternationalStringValue;
 
++ (struct __CFPhoneNumber *)createCFPhoneNumberForStringValue:(id)arg1 countryCode:(id)arg2;
 + (id)defaultCountryCode;
-+ (id)phoneNumberWithCFPhoneNumberRef:(struct __CFPhoneNumber *)arg1;
++ (id)new;
 + (id)phoneNumberWithDigits:(id)arg1 countryCode:(id)arg2;
 + (id)phoneNumberWithStringValue:(id)arg1;
++ (unsigned long long)samePersonPhoneNumberComparisonMatchCount;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
-- (id)initWithCFPhoneNumberRef:(struct __CFPhoneNumber *)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDigits:(id)arg1 countryCode:(id)arg2;
 - (id)initWithStringValue:(id)arg1;
 - (id)initWithStringValue:(id)arg1 countryCode:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isLikePhoneNumber:(id)arg1;
+- (BOOL)isLikePhoneNumberForSamePerson:(id)arg1;
 - (BOOL)isValid:(id *)arg1;
 - (id)lastFourDigits;
+- (struct __CFPhoneNumber *)nts_lazyPhoneNumberRef;
+- (struct __CFPhoneNumber *)phoneNumberRef;
+- (id)stringValueWithCFPhoneNumberOptions:(unsigned long long)arg1;
 
 @end
 

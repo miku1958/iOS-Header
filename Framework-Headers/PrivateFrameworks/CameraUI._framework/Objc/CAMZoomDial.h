@@ -10,47 +10,55 @@
 
 @interface CAMZoomDial : UIView
 {
-    BOOL _shouldShowLabelAt2x;
-    BOOL _shouldDisableValuesBelow2x;
+    BOOL _shouldShowLabelAtDualCameraSwitchOver;
+    BOOL _shouldDisableValuesBelowDualCameraSwitchOver;
+    BOOL _expanded;
     BOOL __backgroundViewUpdateNeeded;
     BOOL __labelAndDotUpdateNeeded;
     double _minimumZoomFactor;
     double _maximumZoomFactor;
+    double _dualCameraSwitchOverZoomFactor;
     double _zoomFactor;
+    double _contractionDistance;
     long long _orientation;
     UIImageView *__backgroundView;
     UIView *__dotAndLabelContainerView;
     NSArray *__labels;
     CAMZoomDialDotsView *__dotsFromMinimumZoomFactor;
-    CAMZoomDialDotsView *__dotsFrom2x;
+    CAMZoomDialDotsView *__dotsFromDualCameraSwitchOver;
     double __spacingMultiplier;
-    double __radiusDelta;
 }
 
 @property (readonly, nonatomic) UIImageView *_backgroundView; // @synthesize _backgroundView=__backgroundView;
 @property (nonatomic, getter=_isBackgroundViewUpdateNeeded, setter=_setBackgroundViewUpdateNeeded:) BOOL _backgroundViewUpdateNeeded; // @synthesize _backgroundViewUpdateNeeded=__backgroundViewUpdateNeeded;
 @property (readonly, nonatomic) UIView *_dotAndLabelContainerView; // @synthesize _dotAndLabelContainerView=__dotAndLabelContainerView;
-@property (readonly, nonatomic) CAMZoomDialDotsView *_dotsFrom2x; // @synthesize _dotsFrom2x=__dotsFrom2x;
+@property (readonly, nonatomic) CAMZoomDialDotsView *_dotsFromDualCameraSwitchOver; // @synthesize _dotsFromDualCameraSwitchOver=__dotsFromDualCameraSwitchOver;
 @property (readonly, nonatomic) CAMZoomDialDotsView *_dotsFromMinimumZoomFactor; // @synthesize _dotsFromMinimumZoomFactor=__dotsFromMinimumZoomFactor;
 @property (nonatomic, getter=_isLabelAndDotUpdateNeeded, setter=_setLabelAndDotUpdateNeeded:) BOOL _labelAndDotUpdateNeeded; // @synthesize _labelAndDotUpdateNeeded=__labelAndDotUpdateNeeded;
 @property (strong, nonatomic, setter=_setLabels:) NSArray *_labels; // @synthesize _labels=__labels;
-@property (nonatomic, setter=_setRadiusDelta:) double _radiusDelta; // @synthesize _radiusDelta=__radiusDelta;
+@property (readonly, nonatomic) double _radiusDelta;
 @property (nonatomic, setter=_setSpacingMultiplier:) double _spacingMultiplier; // @synthesize _spacingMultiplier=__spacingMultiplier;
+@property (nonatomic) double contractionDistance; // @synthesize contractionDistance=_contractionDistance;
+@property (readonly, nonatomic) double dialBorderWidth;
 @property (readonly, nonatomic) struct CGPoint dialCenter;
-@property (nonatomic, getter=isExpanded) BOOL expanded;
+@property (readonly, nonatomic) double dotCenterInset;
+@property (nonatomic) double dualCameraSwitchOverZoomFactor; // @synthesize dualCameraSwitchOverZoomFactor=_dualCameraSwitchOverZoomFactor;
+@property (nonatomic, getter=isExpanded) BOOL expanded; // @synthesize expanded=_expanded;
 @property (nonatomic) double maximumZoomFactor; // @synthesize maximumZoomFactor=_maximumZoomFactor;
 @property (nonatomic) double minimumZoomFactor; // @synthesize minimumZoomFactor=_minimumZoomFactor;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
-@property (nonatomic) BOOL shouldDisableValuesBelow2x; // @synthesize shouldDisableValuesBelow2x=_shouldDisableValuesBelow2x;
-@property (nonatomic) BOOL shouldShowLabelAt2x; // @synthesize shouldShowLabelAt2x=_shouldShowLabelAt2x;
+@property (nonatomic) BOOL shouldDisableValuesBelowDualCameraSwitchOver; // @synthesize shouldDisableValuesBelowDualCameraSwitchOver=_shouldDisableValuesBelowDualCameraSwitchOver;
+@property (nonatomic) BOOL shouldShowLabelAtDualCameraSwitchOver; // @synthesize shouldShowLabelAtDualCameraSwitchOver=_shouldShowLabelAtDualCameraSwitchOver;
 @property (nonatomic) double zoomFactor; // @synthesize zoomFactor=_zoomFactor;
 
 - (void).cxx_destruct;
+- (double)_borderStrokeWidth;
 - (id)_createBackgroundImage;
 - (id)_createDotImage;
 - (struct CGPoint)_dotCenterForOffsetAngle:(double)arg1 assumeExpanded:(BOOL)arg2;
 - (struct CGPoint)_dotCenterForZoomFactor:(double)arg1 assumeExpanded:(BOOL)arg2 relativeToCurrentZoomFactor:(BOOL)arg3;
 - (double)_fullRadius;
+- (double)_fullRadiusInset;
 - (double)_labelRotationAngleForOrientation;
 - (double)_offsetAngleForZoomFactor:(double)arg1 relativeToCurrentZoomFactor:(BOOL)arg2;
 - (double)_signedAngleDeltaForZoomRange;

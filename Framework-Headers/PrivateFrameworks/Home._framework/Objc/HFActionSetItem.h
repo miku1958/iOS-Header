@@ -9,13 +9,12 @@
 #import <Home/HFHomeKitItemProtocol-Protocol.h>
 #import <Home/NSCopying-Protocol.h>
 
-@class HMActionSet, HMHome, NSString;
+@class HMActionSet, NSString;
 @protocol HFCharacteristicValueSource, HFHomeKitObject;
 
 @interface HFActionSetItem : HFItem <HFHomeKitItemProtocol, NSCopying>
 {
     HMActionSet *_actionSet;
-    HMHome *_home;
     unsigned long long _actionSetItemStyle;
     id<HFCharacteristicValueSource> _valueSource;
 }
@@ -25,12 +24,12 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
-+ (id)_primaryStateForActionSet:(id)arg1 valueSource:(id)arg2;
++ (id)_primaryStateForActionSet:(id)arg1 valueSource:(id)arg2 logger:(id)arg3;
++ (BOOL)_value:(id)arg1 isApproximatelyEqualToValue:(id)arg2 characteristicMetadata:(id)arg3;
 - (void).cxx_destruct;
 - (unsigned long long)_effectiveLoadingStateForSuggestedLoadingState:(unsigned long long)arg1;
 - (id)_mostCommonRoomForActionSet:(id)arg1;
@@ -39,7 +38,6 @@
 - (id)executeActionSet;
 - (id)init;
 - (id)initWithActionSet:(id)arg1 actionSetItemStyle:(unsigned long long)arg2 valueSource:(id)arg3;
-- (id)initWithHome:(id)arg1 actionSet:(id)arg2;
 - (id)rooms;
 - (id)turnOffActionSet;
 

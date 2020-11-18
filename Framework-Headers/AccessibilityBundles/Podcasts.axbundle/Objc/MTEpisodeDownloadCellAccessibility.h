@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySupplementaryFooterViews;
 - (id)_privateAccessibilityCustomActions;
-- (void)accessibilityDeleteAction:(id)arg1;
+- (BOOL)accessibilityDeleteAction:(id)arg1;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
 

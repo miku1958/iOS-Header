@@ -11,6 +11,7 @@
 @interface MFFileArchiveEntry : NSObject
 {
     BOOL _isDeflated;
+    BOOL _isDirectory;
     NSString *_path;
     long long _uncompressedSize;
     NSData *_contents;
@@ -20,6 +21,7 @@
 @property struct _NSRange compressedRange; // @synthesize compressedRange=_compressedRange;
 @property (strong) NSData *contents; // @synthesize contents=_contents;
 @property BOOL isDeflated; // @synthesize isDeflated=_isDeflated;
+@property BOOL isDirectory; // @synthesize isDirectory=_isDirectory;
 @property (strong) NSString *path; // @synthesize path=_path;
 @property long long uncompressedSize; // @synthesize uncompressedSize=_uncompressedSize;
 
@@ -33,6 +35,7 @@
 - (id)inflate;
 - (void)inflateWithWriter:(CDUnknownBlockType)arg1;
 - (id)initWithContents:(id)arg1 path:(id)arg2;
+- (id)initWithDirectoryPath:(id)arg1;
 - (void)merge:(id)arg1;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class MPAVBatteryLevel, NSArray, NSDictionary, NSString;
+@class MPAVBatteryLevel, MPAVRouteConnection, NSArray, NSDictionary, NSString;
 
 @interface MPAVRoute : NSObject
 {
@@ -15,55 +15,60 @@
     NSDictionary *_avRouteDescription;
     MPAVRoute *_wirelessDisplayRoute;
     long long _displayRouteType;
-    id _notificationToken;
+    MPAVBatteryLevel *_batteryLevel;
+    BOOL _canAccessRemoteAssets;
     BOOL _pickedOnPairedDevice;
     BOOL _playingOnPairedDevice;
     BOOL _requiresPassword;
     BOOL _carplayRoute;
+    BOOL _b238Route;
     NSString *_routeUID;
+    NSString *_productIdentifier;
     long long _routeType;
     long long _pickableRouteType;
     long long _routeSubtype;
-    MPAVBatteryLevel *_batteryLevel;
     NSArray *_auxiliaryDevices;
+    void *_externalDevice;
+    MPAVRouteConnection *_connection;
 }
 
 @property (readonly, nonatomic, getter=isAirpodsRoute) BOOL airpodsRoute;
+@property (readonly, nonatomic, getter=isAppleTVRoute) BOOL appleTVRoute;
 @property (readonly, nonatomic) NSArray *auxiliaryDevices; // @synthesize auxiliaryDevices=_auxiliaryDevices;
+@property (readonly, nonatomic) NSDictionary *avRouteDescription;
+@property (readonly, nonatomic, getter=isB238Route) BOOL b238Route; // @synthesize b238Route=_b238Route;
 @property (readonly, nonatomic) MPAVBatteryLevel *batteryLevel; // @synthesize batteryLevel=_batteryLevel;
 @property (readonly, nonatomic, getter=isBeatsSoloRoute) BOOL beatsSoloRoute;
+@property (readonly, nonatomic, getter=isBeatsStudioRoute) BOOL beatsStudioRoute;
 @property (readonly, nonatomic, getter=isBeatsXRoute) BOOL beatsXRoute;
+@property (readonly, nonatomic) BOOL canAccessRemoteAssets; // @synthesize canAccessRemoteAssets=_canAccessRemoteAssets;
 @property (readonly, nonatomic, getter=isCarplayRoute) BOOL carplayRoute; // @synthesize carplayRoute=_carplayRoute;
+@property (readonly, nonatomic) MPAVRouteConnection *connection; // @synthesize connection=_connection;
 @property (readonly, nonatomic) BOOL displayIsPicked;
-@property (readonly, nonatomic) long long displayRouteType;
+@property (nonatomic) long long displayRouteType;
+@property (readonly, nonatomic, getter=_externalDevice) void *externalDevice; // @synthesize externalDevice=_externalDevice;
 @property (readonly, nonatomic) BOOL isDeviceRoute;
 @property (readonly, nonatomic) long long passwordType;
 @property (readonly, nonatomic) long long pickableRouteType; // @synthesize pickableRouteType=_pickableRouteType;
-@property (readonly, nonatomic, getter=isPicked) BOOL picked;
+@property (nonatomic, getter=isPicked) BOOL picked;
 @property (readonly, nonatomic, getter=isPickedOnPairedDevice) BOOL pickedOnPairedDevice; // @synthesize pickedOnPairedDevice=_pickedOnPairedDevice;
 @property (readonly, nonatomic, getter=isPlayingOnPairedDevice) BOOL playingOnPairedDevice; // @synthesize playingOnPairedDevice=_playingOnPairedDevice;
 @property (readonly, nonatomic, getter=isPowerbeatsRoute) BOOL powerbeatsRoute;
+@property (readonly, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property (readonly, nonatomic) BOOL requiresPassword; // @synthesize requiresPassword=_requiresPassword;
-@property (readonly, nonatomic) NSString *routeName;
+@property (copy, nonatomic) NSString *routeName;
 @property (readonly, nonatomic) long long routeSubtype; // @synthesize routeSubtype=_routeSubtype;
 @property (readonly, nonatomic) long long routeType; // @synthesize routeType=_routeType;
 @property (readonly, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
-@property (readonly, nonatomic) MPAVRoute *wirelessDisplayRoute;
+@property (readonly, nonatomic) BOOL supportsWirelessDisplay;
+@property (strong, nonatomic) MPAVRoute *wirelessDisplayRoute;
 
 - (void).cxx_destruct;
-- (id)_initWithAVRouteDescription:(id)arg1;
-- (id)_productIdentifier;
-- (void)_routingControllerPickedRouteNotification:(id)arg1;
-- (id)avRouteDescription;
-- (void)dealloc;
+- (id)debugDescription;
 - (id)description;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)setAVRouteDescription:(id)arg1;
-- (void)setDisplayRouteType:(long long)arg1;
-- (void)setPicked:(BOOL)arg1;
-- (void)setRouteName:(id)arg1;
-- (void)setWirelessDisplayRoute:(id)arg1;
 
 @end
 

@@ -14,6 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface CXCallObserverXPCClient : NSObject <CXCallObserverDataSource>
 {
+    BOOL _hasCallHostLaunched;
     int _notifyToken;
     NSObject<OS_dispatch_queue> *_concurrentQueue;
     NSMutableDictionary *_mutableCallUUIDToCallMap;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSHashTable *delegates; // @synthesize delegates=_delegates;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasCallHostLaunched; // @synthesize hasCallHostLaunched=_hasCallHostLaunched;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableDictionary *mutableCallUUIDToCallMap; // @synthesize mutableCallUUIDToCallMap=_mutableCallUUIDToCallMap;
 @property (nonatomic) int notifyToken; // @synthesize notifyToken=_notifyToken;

@@ -7,11 +7,12 @@
 #import <UIKit/NSTextContainerView-Protocol.h>
 #import <UIKit/NSTextLayoutOrientationProvider-Protocol.h>
 
-@class NSTextContainer;
+@class NSDictionary, NSTextContainer;
 
 @protocol NSUITextViewCommonMethods <NSTextLayoutOrientationProvider, NSTextContainerView>
 
 @property (nonatomic) struct _NSRange markedRange;
+@property (readonly, nonatomic) NSDictionary *markedTextStyle;
 @property (weak, nonatomic) NSTextContainer *textContainer;
 
 - (void)invalidateTextContainerOrigin;

@@ -25,7 +25,7 @@
 - (void)deleteComment:(id)arg1 activityID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)deletePost:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)reportsForType:(long long)arg1 contentId:(id)arg2 aucType:(id)arg3;
+- (id)reportsForType:(long long)arg1 contentID:(id)arg2 aucType:(id)arg3 commentText:(id)arg4;
 - (void)submitReport:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

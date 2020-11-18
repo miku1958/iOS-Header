@@ -23,14 +23,12 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL importedFromLegacy; // @dynamic importedFromLegacy;
 @property (readonly, nonatomic) BOOL isDefaultFolderForAccount; // @dynamic isDefaultFolderForAccount;
-@property (strong, nonatomic) NSSet *noteChanges; // @dynamic noteChanges;
 @property (strong, nonatomic) NSSet *notes; // @dynamic notes;
 @property (strong, nonatomic) ICFolder *parent; // @dynamic parent;
 @property (strong, nonatomic) NSDate *parentModificationDate; // @dynamic parentModificationDate;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title; // @dynamic title;
 
-+ (id)allCloudObjectsInContext:(id)arg1;
 + (id)allFoldersInContext:(id)arg1;
 + (unsigned long long)countOfFoldersMatchingPredicate:(id)arg1 context:(id)arg2;
 + (id)deduplicatingTitle:(id)arg1 forFolder:(id)arg2 ofAccount:(id)arg3;
@@ -44,6 +42,7 @@
 + (id)keyPathsForValuesAffectingCanBeSharedViaICloud;
 + (id)keyPathsForValuesAffectingIsDefaultFolderForAccount;
 + (id)keyPathsForValuesAffectingIsLeaf;
++ (id)keyPathsForValuesAffectingIsRecentlyDeletedFolder;
 + (id)keyPathsForValuesAffectingParentCloudObject;
 + (id)keyPathsForValuesAffectingTitleForTableViewCell;
 + (id)keyPathsForValuesAffectingVisibleNoteContainerChildren;
@@ -62,6 +61,7 @@
 + (id)visibleFoldersInContext:(id)arg1;
 - (id)accountName;
 - (void)awakeFromFetch;
+- (BOOL)canBeRootShareObject;
 - (BOOL)canBeSharedViaICloud;
 - (id)childCloudObjects;
 - (long long)compare:(id)arg1;
@@ -91,16 +91,18 @@
 - (id)objectsToBeDeletedBeforeThisObject;
 - (id)parentCloudObject;
 - (id)parentFolder;
+- (id)pinnedNotesInFolder;
 - (id)predicateForAttachmentsInFolder;
 - (id)predicateForFoldersInFolder;
 - (id)predicateForNotesInFolder;
+- (id)predicateForPinnedNotes;
+- (id)predicateForPinnedNotesInFolder;
 - (id)predicateForSearchableAttachments;
 - (id)predicateForSearchableNotes;
 - (id)predicateForVisibleAttachments;
 - (id)predicateForVisibleAttachmentsInFolder;
 - (id)predicateForVisibleNotes;
 - (id)predicateForVisibleNotesInFolder;
-- (void)prepareForDeletion;
 - (id)recordType;
 - (id)recordZoneName;
 - (void)regenerateNestedTitleForSorting;
@@ -109,7 +111,6 @@
 - (void)setNeedsInitialFetchFromCloud:(BOOL)arg1;
 - (id)shareTitle;
 - (id)shareType;
-- (BOOL)shouldTrackChanges;
 - (BOOL)supportsEditingNotes;
 - (id)titleForNavigationBar;
 - (id)titleForTableViewCell;

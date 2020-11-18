@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOComposedRouteStep;
 
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int startPointIndex; // @synthesize startPointIndex=_startPointIndex;
 @property (strong, nonatomic) GEOComposedRouteStep *step; // @synthesize step=_step;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (double)distanceFromCoordinate:(CDStruct_c3b9c2ee)arg1 outCoordinateOnSegment:(CDStruct_c3b9c2ee *)arg2 outRouteCoordinate:(struct PolylineCoordinate *)arg3;
 

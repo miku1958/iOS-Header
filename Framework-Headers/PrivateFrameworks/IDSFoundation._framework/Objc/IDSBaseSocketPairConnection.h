@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class IMWeakReference, NSMutableArray;
 @protocol OS_dispatch_queue, OS_dispatch_source;
@@ -26,6 +26,7 @@
 
 @property (readonly, nonatomic) int socket; // @synthesize socket=_connectedSocket;
 
+- (void).cxx_destruct;
 - (void)_callDelegatesWithBlock:(CDUnknownBlockType)arg1;
 - (void)_processBytesAvailable;
 - (void)_sendToConnectedSocket;

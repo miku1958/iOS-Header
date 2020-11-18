@@ -19,7 +19,7 @@
 + (id)insertDataObject:(id)arg1 withProvenance:(id)arg2 inDatabase:(id)arg3 persistentID:(id)arg4 error:(id *)arg5;
 + (BOOL)insertLocationData:(id)arg1 seriesIdentifier:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (BOOL)isBackedByTable;
-+ (id)mergeDataObject:(id)arg1 provenance:(id)arg2 database:(id)arg3 error:(id *)arg4 insertHandler:(CDUnknownBlockType)arg5;
++ (id)mergeDataObject:(id)arg1 provenance:(id)arg2 profile:(id)arg3 database:(id)arg4 error:(id *)arg5 insertHandler:(CDUnknownBlockType)arg6;
 + (BOOL)participatesInInsertion;
 + (BOOL)performPostJournalMergeCleanupForDatabase:(id)arg1 error:(id *)arg2;
 + (BOOL)supportsObjectMerging;

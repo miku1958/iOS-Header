@@ -16,12 +16,12 @@
 @property (strong, nonatomic) NSDate *date; // @dynamic date;
 @property (nonatomic, getter=isDateAllDay) BOOL dateAllDay; // @dynamic dateAllDay;
 @property (copy, nonatomic) NSString *header; // @dynamic header;
+@property (copy, nonatomic) NSString *hiddenPreviewsBodyPlaceholder; // @dynamic hiddenPreviewsBodyPlaceholder;
 @property (strong, nonatomic) UIImage *icon; // @dynamic icon;
 @property (copy, nonatomic) NSString *message; // @dynamic message;
 @property (copy, nonatomic) NSString *subtitle; // @dynamic subtitle;
 @property (strong, nonatomic) NSTimeZone *timeZone; // @dynamic timeZone;
 @property (copy, nonatomic) NSString *title; // @dynamic title;
-@property (copy, nonatomic) NSString *topic; // @dynamic topic;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

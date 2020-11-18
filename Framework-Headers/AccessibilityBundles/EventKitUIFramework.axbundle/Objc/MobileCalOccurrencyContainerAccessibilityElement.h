@@ -16,7 +16,7 @@
 @property (strong, nonatomic) NSMutableArray *children; // @synthesize children=_children;
 
 - (void).cxx_destruct;
-- (id)accessibilityContainerElements;
+- (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
 - (void)dealloc;
 - (BOOL)isAccessibilityElement;

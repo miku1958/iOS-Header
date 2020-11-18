@@ -27,7 +27,7 @@
 - (void)_enableCaching;
 - (void)_initializeRemoteElement:(id)arg1;
 - (void)_initializeRootIfNecessary;
-- (id)accessibilityContainerElements;
+- (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
 - (id)accessibilityRemoteSubstituteChildren:(id)arg1;

@@ -28,6 +28,7 @@
 - (id)_collectionAtSimpleIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)_collectionListAtSimpleIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)collectionAtIndexPath:(id)arg1;
+- (BOOL)collectionIsCameraRoll:(id)arg1;
 - (BOOL)collectionIsCloudShared:(id)arg1;
 - (BOOL)collectionIsCloudSharedAndOwned:(id)arg1;
 - (BOOL)collectionIsEvents:(id)arg1;
@@ -36,6 +37,7 @@
 - (BOOL)collectionIsFolder:(id)arg1;
 - (BOOL)collectionIsHiddenAlbum:(id)arg1;
 - (BOOL)collectionIsImports:(id)arg1;
+- (BOOL)collectionIsMemories:(id)arg1;
 - (BOOL)collectionIsPeople:(id)arg1;
 - (BOOL)collectionIsPlaceholderCollection:(id)arg1;
 - (BOOL)collectionIsPlaces:(id)arg1;

@@ -6,29 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-
 @interface SGAsset : NSObject
 {
-    NSString *_fileName;
-    NSString *_resourcePath;
-    CDUnknownBlockType _onUpdate;
 }
 
-+ (int)assetVersion;
-+ (void)asyncUpdateAssetMetadata;
-+ (int)bestNotYetInstalledVersion;
-+ (id)getBundledAssetsBundle;
-+ (void)initialize;
-+ (void)loadBundledAssetsIfNecessary;
-+ (id)registerOnUpdate:(CDUnknownBlockType)arg1;
-+ (void)setBundledAssetsBundle:(id)arg1;
-+ (void)triggerAssetUpdated;
-+ (void)updateAssetMetadata;
-- (void).cxx_destruct;
-- (id)init;
-- (id)initWithFileName:(id)arg1 fileExtension:(id)arg2 onUpdate:(CDUnknownBlockType)arg3;
-- (id)path;
++ (id)asset;
++ (id)notificationQueue;
 
 @end
 

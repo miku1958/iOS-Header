@@ -18,6 +18,7 @@
     long long _sandboxHandle;
 }
 
+- (void).cxx_destruct;
 - (void)_connectionWithDaemonWasLost;
 - (void)_invalidate:(BOOL)arg1;
 - (BOOL)_refreshWithError:(id *)arg1;

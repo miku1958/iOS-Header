@@ -20,7 +20,8 @@
 @property (readonly, nonatomic) CPLPlatformObject *platformObject;
 @property (readonly) Class superclass;
 
-- (id)_sessionLogDomain;
++ (id)shortDescription;
+- (void)commitChangeBatch:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)commitChangeBatch:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)commitChangeBatch:(id)arg1 withUnderlyingCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithLibraryManager:(id)arg1;

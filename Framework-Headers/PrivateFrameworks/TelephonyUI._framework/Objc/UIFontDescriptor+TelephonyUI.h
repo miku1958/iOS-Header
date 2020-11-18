@@ -7,7 +7,11 @@
 #import <UIKit/UIFontDescriptor.h>
 
 @interface UIFontDescriptor (TelephonyUI)
++ (id)telephonyUIBodyShortEmphasizedFontDescriptor;
 + (id)telephonyUIBodyShortFontDescriptor;
++ (id)telephonyUIBodyShortItalicFontDescriptor;
++ (id)telephonyUIFootnoteShortFontDescriptor;
++ (id)telephonyUIPreferredFontDescriptorWithTextStyle:(id)arg1 addingSymbolicTraits:(unsigned int)arg2;
 + (id)telephonyUISubheadlineShortFontDescriptor;
 @end
 

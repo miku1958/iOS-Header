@@ -19,7 +19,7 @@
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

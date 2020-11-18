@@ -10,7 +10,6 @@
 
 @interface CNFRegAliasTableCell : PSTableCell
 {
-    BOOL _hidesDisclosureButton;
     BOOL _hasSpinner;
     UIActivityIndicatorView *_spinner;
 }
@@ -25,7 +24,6 @@
 - (void)layoutSubviews;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
 - (void)setChecked:(BOOL)arg1;
-- (void)setHidesDisclosureButton:(BOOL)arg1;
 - (BOOL)usesStandardBackgroundImage;
 
 @end

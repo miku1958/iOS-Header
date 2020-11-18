@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
     NSHashTable *_observers;
 }
 
+@property (readonly) BOOL hasObservers;
+
 - (void).cxx_destruct;
 - (void)addObserver:(id)arg1;
 - (id)description;

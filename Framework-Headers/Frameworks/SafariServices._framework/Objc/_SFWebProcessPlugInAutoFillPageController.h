@@ -9,7 +9,8 @@
 #import <SafariServices/SFFormAutoFiller-Protocol.h>
 #import <SafariServices/SFInjectedJavaScriptWebProcessController-Protocol.h>
 
-@class NSString, WKWebProcessPlugInScriptWorld, _SFFormMetadataController, _WKRemoteObjectInterface;
+@class NSString, NSTimer, WKWebProcessPlugInScriptWorld, _SFFormMetadataController, _WKRemoteObjectInterface;
+@protocol _SFAutomaticBugCaptureObserver;
 
 __attribute__((visibility("hidden")))
 @interface _SFWebProcessPlugInAutoFillPageController : _SFWebProcessPlugInPageController <SFFormAutoFiller, SFInjectedJavaScriptWebProcessController>
@@ -17,6 +18,8 @@ __attribute__((visibility("hidden")))
     _WKRemoteObjectInterface *_activityControllerInterface;
     _WKRemoteObjectInterface *_autoFillerInterface;
     WKWebProcessPlugInScriptWorld *_isolatedWorld;
+    id<_SFAutomaticBugCaptureObserver> _automaticBugCaptureObserver;
+    NSTimer *_deferredLoadingWatchdogTimer;
     _SFFormMetadataController *_formMetadataController;
     unsigned long long _loadDeferringReasons;
 }
@@ -29,6 +32,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_automaticBugCaptureObserver;
+- (void)_invalidateDeferredLoadingWatchdogTimer;
 - (void)addLoadDeferringReasons:(unsigned long long)arg1;
 - (void)annotateForm:(long long)arg1 inFrame:(id)arg2 withValues:(id)arg3;
 - (void)autoFillForm:(long long)arg1 inFrame:(id)arg2 withGeneratedPassword:(id)arg3;

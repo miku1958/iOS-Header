@@ -161,6 +161,7 @@
 - (int)supportsEmailFlagging;
 - (int)supportsMailboxSearch;
 - (int)supportsSmartForwardReply;
+- (int)supportsUniqueServerId;
 - (BOOL)syncDefaultFoldersOnly;
 - (id)toDosFolders;
 - (BOOL)upgradeAccount;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSString;
 
-@interface HMUIndent : NSObject
+@interface HMUIndent : HMFObject
 {
     NSString *_level;
     NSString *_step;

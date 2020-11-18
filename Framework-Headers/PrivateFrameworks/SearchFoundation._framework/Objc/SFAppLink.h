@@ -6,27 +6,39 @@
 
 #import <objc/NSObject.h>
 
+#import <SearchFoundation/NSCopying-Protocol.h>
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFAppLink-Protocol.h>
 
-@class NSString, SFImage, SFPunchout;
+@class NSData, NSDictionary, NSString, SFImage, SFPunchout;
 
-@interface SFAppLink : NSObject <NSSecureCoding>
+@interface SFAppLink : NSObject <SFAppLink, NSSecureCoding, NSCopying>
 {
+    CDStruct_9f571ec0 _has;
+    int _imageAlign;
     NSString *_title;
     SFPunchout *_appPunchout;
     SFImage *_image;
-    unsigned long long _imageAlign;
 }
 
 @property (strong, nonatomic) SFPunchout *appPunchout; // @synthesize appPunchout=_appPunchout;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SFImage *image; // @synthesize image=_image;
-@property (nonatomic) unsigned long long imageAlign; // @synthesize imageAlign=_imageAlign;
+@property (nonatomic) int imageAlign; // @synthesize imageAlign=_imageAlign;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasImageAlign;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 
 @end
 

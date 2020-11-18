@@ -22,7 +22,6 @@
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSMutableSet *_tokens;
     NSMutableDictionary *_requestsToRequestInfos;
-    BOOL _providerCachesDisabled;
     NSURL *_injectedBundleURL;
 }
 
@@ -30,7 +29,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSURL *injectedBundleURL; // @synthesize injectedBundleURL=_injectedBundleURL;
-@property (nonatomic, getter=areProviderCachesDisabled) BOOL providerCachesDisabled; // @synthesize providerCachesDisabled=_providerCachesDisabled;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isSuspended) BOOL suspended;
 

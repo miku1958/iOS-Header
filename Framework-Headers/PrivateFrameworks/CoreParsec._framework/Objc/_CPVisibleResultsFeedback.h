@@ -6,39 +6,50 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreParsec/NSCopying-Protocol.h>
+#import <CoreParsec/NSSecureCoding-Protocol.h>
+#import <CoreParsec/_CPProcessableFeedback-Protocol.h>
+#import <CoreParsec/_CPVisibleResultsFeedback-Protocol.h>
 
-@class NSMutableArray;
+@class NSArray, NSData, NSDictionary, NSString;
 
-@interface _CPVisibleResultsFeedback : PBCodable <NSCopying>
+@interface _CPVisibleResultsFeedback : PBCodable <_CPProcessableFeedback, _CPVisibleResultsFeedback, NSSecureCoding>
 {
-    unsigned long long _timestamp;
-    NSMutableArray *_results;
+    CDStruct_c6e3878d _has;
     int _triggerEvent;
-    CDStruct_ce7c5ddc _has;
+    unsigned long long _timestamp;
+    NSArray *_results;
 }
 
-@property (nonatomic) BOOL hasTriggerEvent;
-@property (strong, nonatomic) NSMutableArray *results; // @synthesize results=_results;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly, nonatomic) id feedbackJSON;
+@property (readonly, nonatomic) BOOL hasTimestamp;
+@property (readonly, nonatomic) BOOL hasTriggerEvent;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (readonly, nonatomic) BOOL requiresQueryId;
+@property (copy, nonatomic) NSArray *results; // @synthesize results=_results;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 
-+ (Class)resultsType;
 - (void).cxx_destruct;
-- (int)StringAsTriggerEvent:(id)arg1;
 - (void)addResults:(id)arg1;
 - (void)clearResults;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)init;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithFacade:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)resultsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)resultsCount;
-- (id)triggerEventAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -54,6 +54,8 @@
 - (void)_receivedDataMessage:(id)arg1 connection:(id)arg2;
 - (void)_receivedListingMessage:(id)arg1 connection:(id)arg2;
 - (void)_receivedProxyApplicationSetupResponseMessage:(id)arg1 connection:(id)arg2;
+- (void)_rpc_debuggerDidWake:(id)arg1;
+- (void)_rpc_debuggerWillSleep:(id)arg1;
 - (void)_rpc_forwardAutomaticInspectionConfiguration:(id)arg1;
 - (void)_rpc_forwardAutomaticInspectionRejection:(id)arg1;
 - (void)_rpc_forwardAutomationSessionRequest:(id)arg1;
@@ -69,6 +71,7 @@
 - (void)_rpc_reportDriverDisconnected:(id)arg1;
 - (void)_rpc_reportDriverUpdated:(id)arg1;
 - (void)_rpc_reportIdentifier:(id)arg1;
+- (void)_rpc_requestApplicationLaunch:(id)arg1;
 - (void)_setAutomaticInspectionGlobalState:(BOOL)arg1;
 - (void)addPendingClientConnection:(id)arg1;
 - (void)clientConnectionDidClose:(id)arg1;

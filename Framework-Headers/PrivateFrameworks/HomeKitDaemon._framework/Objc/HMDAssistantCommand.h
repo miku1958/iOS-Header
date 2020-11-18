@@ -9,12 +9,13 @@
 #import <HomeKitDaemon/AFServiceCommand-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAssistantCommandHelper, HMDAssistantGather, NSArray, NSObject, NSString, NSUUID;
+@class HMDAssistantCommandHelper, HMDAssistantGather, HMDHome, HMDHomeManager, NSArray, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDAssistantCommand : SAHACommand <AFServiceCommand, HMFLogging>
 {
     BOOL _completionHandlerCalled;
+    HMDHomeManager *_homeManager;
     HMDAssistantGather *_gather;
     NSObject<OS_dispatch_queue> *_queue;
     NSArray *_homeKitObjects;
@@ -24,6 +25,8 @@
     NSString *_currentHomeName;
     NSUUID *_currentHomeUUID;
     HMDAssistantCommandHelper *_assistantCommandHelper;
+    HMDHome *_home;
+    unsigned long long _startTime;
 }
 
 @property (strong, nonatomic) HMDAssistantCommandHelper *assistantCommandHelper; // @synthesize assistantCommandHelper=_assistantCommandHelper;
@@ -34,25 +37,29 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) HMDAssistantGather *gather; // @synthesize gather=_gather;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSArray *homeKitObjects; // @synthesize homeKitObjects=_homeKitObjects;
+@property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (nonatomic) long long numberOfHomes; // @synthesize numberOfHomes=_numberOfHomes;
 @property (strong, nonatomic) NSString *primaryHomeName; // @synthesize primaryHomeName=_primaryHomeName;
 @property (strong, nonatomic) NSUUID *primaryHomeUUID; // @synthesize primaryHomeUUID=_primaryHomeUUID;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (nonatomic) unsigned long long startTime; // @synthesize startTime=_startTime;
 @property (readonly) Class superclass;
 
 + (void)initialize;
 + (id)logCategory;
 - (void).cxx_destruct;
+- (void)_logEvent:(id)arg1;
 - (id)actionSetFromObject:(id)arg1;
 - (void)addActivationCharacteristicsIfNeeded:(id)arg1 forCharacteristic:(id)arg2;
+- (id)addStatusCharacteristicsIfNeeded:(id)arg1;
 - (id)adjustGetValue:(id)arg1 type:(id)arg2 units:(id)arg3 attribute:(id)arg4;
 - (id)adjustSetValue:(id)arg1 type:(id)arg2 units:(id)arg3 attribute:(id)arg4;
 - (id)compareCurrentValue:(id)arg1 newValue:(id)arg2 withMetadata:(id)arg3;
 - (id)compareForBoundary:(id)arg1 withMetadata:(id)arg2;
 - (id)convertValue:(id)arg1 fromUnits:(id)arg2 toUnits:(id)arg3;
 - (id)entityFromActionSet:(id)arg1;
-- (id)entityFromService:(id)arg1 serviceType:(id)arg2;
 - (void)executeActionSet:(id)arg1 action:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)filterObjects:(id)arg1 byAttribute:(id)arg2 forActionType:(id)arg3;
 - (id)filterObjects:(id)arg1 byCharacteristicType:(id)arg2;

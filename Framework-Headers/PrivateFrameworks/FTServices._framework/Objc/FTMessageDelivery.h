@@ -13,7 +13,6 @@
 @interface FTMessageDelivery : NSObject <FTMessageQueueDelegate>
 {
     unsigned int _retries;
-    NSNumber *_protocolVersion;
     FTMessageQueue *_queue;
     NSString *_userAgent;
     unsigned long long _maxConcurrentMessages;
@@ -30,7 +29,7 @@
 @property unsigned long long maxConcurrentMessages; // @synthesize maxConcurrentMessages=_maxConcurrentMessages;
 @property (readonly) long long maxLargeMessageSize;
 @property (readonly) long long maxMessageSize;
-@property (copy) NSNumber *protocolVersion; // @synthesize protocolVersion=_protocolVersion;
+@property (copy) NSNumber *protocolVersion;
 @property (readonly) NSArray *queuedMessages;
 @property BOOL retryInAirplaneMode; // @synthesize retryInAirplaneMode=_retryInAirplaneMode;
 @property (copy) NSString *userAgent; // @synthesize userAgent=_userAgent;
@@ -39,6 +38,7 @@
 + (Class)HTTPMessageDeliveryClass;
 + (id)_errorForTDMessageDeliveryStatus:(long long)arg1 userInfo:(id)arg2;
 + (id)alloc;
+- (void).cxx_destruct;
 - (void)_clearRetryTimer;
 - (void)_informDelegateAboutMessage:(id)arg1 error:(id)arg2 result:(id)arg3 resultCode:(long long)arg4;
 - (id)_queue;

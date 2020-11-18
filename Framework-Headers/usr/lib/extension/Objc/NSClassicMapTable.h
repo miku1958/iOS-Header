@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSMapTable.h>
+#import <Foundation/NSMapTable.h>
 
 __attribute__((visibility("hidden")))
 @interface NSClassicMapTable : NSMapTable

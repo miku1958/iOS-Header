@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TUMetadataCache;
 
@@ -27,7 +27,6 @@
 - (id)suggestionForSearchItem:(id)arg1;
 - (void)updateMetadataForDestinationID:(id)arg1;
 - (void)updateMetadataForRecentCalls:(id)arg1;
-- (void)updateMetadataForTUCall:(id)arg1;
 
 @end
 

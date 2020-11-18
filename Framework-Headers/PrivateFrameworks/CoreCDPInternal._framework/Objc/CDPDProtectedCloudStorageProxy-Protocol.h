@@ -12,6 +12,7 @@
 - (struct _PCSIdentitySetData *)pcsIdentityCreateWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
 - (BOOL)pcsIdentityMigrateToStingrayWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
 - (BOOL)pcsIdentityMigrateToiCDPWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
+- (BOOL)pcsIdentitySetCompanionInCircle:(struct _PCSIdentitySetData *)arg1 error:(id *)arg2;
 - (BOOL)pcsIdentitySetIsInICDPLocal:(struct _PCSIdentitySetData *)arg1 error:(id *)arg2;
 - (BOOL)pcsIdentitySetIsInICDPNetwork:(struct _PCSIdentitySetData *)arg1 options:(NSDictionary *)arg2 error:(id *)arg3;
 - (struct _PCSIdentitySetData *)pcsIdentitySetupWithInfo:(NSDictionary *)arg1 error:(id *)arg2;

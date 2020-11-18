@@ -15,8 +15,10 @@
 {
     EKDayViewContent *_dayViewContent;
     struct CGRect _frame;
+    struct CGRect _bounds;
 }
 
+@property (nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property (weak, nonatomic) EKDayViewContent *dayViewContent; // @synthesize dayViewContent=_dayViewContent;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOPlaceDataProxy-Protocol.h>
 
@@ -28,17 +28,18 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_cachePlaceData:(id)arg1 forKey:(struct _GEOTileKey)arg2 shouldOptimizeWritesToDisk:(BOOL)arg3;
 - (void)_cachePlaceData:(id)arg1 forKey:(struct _GEOTileKey)arg2 shouldOptimizeWritesToDisk:(BOOL)arg3 shouldUseDefaultProviderId:(BOOL)arg4;
 - (id)_cachedPlacedForRequest:(id)arg1;
 - (void)_callHistoryRecentsClearedObserver:(id)arg1;
-- (long long)_invalidationStateForPlace:(id)arg1;
+- (long long)_invalidationStateForPlace:(id)arg1 fromRequest:(id)arg2;
+- (id)_placeResponseFromPlaces:(id)arg1;
 - (BOOL)_populateKey:(struct _GEOTileKey *)arg1 request:(id)arg2;
 - (void)_privacyAndLocationSettingsResetObserver:(id)arg1;
-- (void)_requestMUIDsFromNetwork:(id)arg1 resultProviderID:(int)arg2 includeETA:(BOOL)arg3 traits:(id)arg4 auditToken:(id)arg5 finished:(CDUnknownBlockType)arg6 error:(CDUnknownBlockType)arg7;
+- (void)_requestIdentifiersFromNetwork:(id)arg1 resultProviderID:(int)arg2 traits:(id)arg3 auditToken:(id)arg4 finished:(CDUnknownBlockType)arg5 error:(CDUnknownBlockType)arg6;
 - (void)_resetPhoneNumberMapper;
 - (void)_trackPlaceData:(id)arg1 forRequest:(id)arg2;
-- (void)applyRAPUpdatedMapItems:(id)arg1;
 - (id)cacheRegister;
 - (void)calculateFreeableSpaceWithHandler:(CDUnknownBlockType)arg1;
 - (void)cancelRequest:(id)arg1;
@@ -46,9 +47,9 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)fetchAllCacheEntriesWithRequesterHandler:(CDUnknownBlockType)arg1;
 - (id)init;
-- (void)performPlaceDataRequest:(id)arg1 traits:(id)arg2 timeout:(double)arg3 auditToken:(id)arg4 networkActivity:(CDUnknownBlockType)arg5 requesterHandler:(CDUnknownBlockType)arg6;
-- (void)requestComponentsFromNetwork:(id)arg1 muid:(unsigned long long)arg2 resultProviderID:(int)arg3 traits:(id)arg4 auditToken:(id)arg5 requesterHandler:(CDUnknownBlockType)arg6;
-- (void)requestMUIDs:(id)arg1 resultProviderID:(int)arg2 includeETA:(BOOL)arg3 traits:(id)arg4 options:(unsigned long long)arg5 auditToken:(id)arg6 requesterHandler:(CDUnknownBlockType)arg7;
+- (void)performPlaceDataRequest:(id)arg1 traits:(id)arg2 cachePolicy:(unsigned long long)arg3 timeout:(double)arg4 auditToken:(id)arg5 networkActivity:(CDUnknownBlockType)arg6 requesterHandler:(CDUnknownBlockType)arg7;
+- (void)requestComponentsFromNetwork:(id)arg1 identifier:(id)arg2 resultProviderID:(int)arg3 traits:(id)arg4 auditToken:(id)arg5 requesterHandler:(CDUnknownBlockType)arg6;
+- (void)requestIdentifiers:(id)arg1 resultProviderID:(int)arg2 traits:(id)arg3 options:(unsigned long long)arg4 auditToken:(id)arg5 requesterHandler:(CDUnknownBlockType)arg6;
 - (void)requestPhoneNumbers:(id)arg1 allowCellularDataForLookup:(BOOL)arg2 traits:(id)arg3 auditToken:(id)arg4 requesterHandler:(CDUnknownBlockType)arg5;
 - (void)shrinkBySize:(unsigned long long)arg1 finished:(CDUnknownBlockType)arg2;
 - (void)startRequest:(id)arg1 traits:(id)arg2 timeout:(double)arg3 auditToken:(id)arg4 finished:(CDUnknownBlockType)arg5 networkActivity:(CDUnknownBlockType)arg6 error:(CDUnknownBlockType)arg7;

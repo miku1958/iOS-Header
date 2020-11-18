@@ -10,24 +10,24 @@
 
 @interface NTKEditOptionCollection : NSObject
 {
-    BOOL _isColor;
-    BOOL _isPosition;
-    BOOL _isShowSeconds;
     long long _mode;
     NSString *_localizedName;
     NSArray *_options;
+    unsigned long long _collectionType;
 }
 
-@property (nonatomic) BOOL isColor; // @synthesize isColor=_isColor;
-@property (nonatomic) BOOL isPosition; // @synthesize isPosition=_isPosition;
-@property (nonatomic) BOOL isShowSeconds; // @synthesize isShowSeconds=_isShowSeconds;
+@property (nonatomic) unsigned long long collectionType; // @synthesize collectionType=_collectionType;
 @property (copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 @property (copy, nonatomic) NSArray *options; // @synthesize options=_options;
+@property (readonly, nonatomic) NSString *optionsDescription;
+@property (readonly, nonatomic) long long swatchStyle;
 
-+ (id)editOptionCollectionWithEditMode:(long long)arg1 localizedName:(id)arg2 options:(id)arg3;
++ (id)editOptionCollectionWithEditMode:(long long)arg1 localizedName:(id)arg2 options:(id)arg3 collectionType:(unsigned long long)arg4;
 - (void).cxx_destruct;
-- (id)initWithEditMode:(long long)arg1 localizedName:(id)arg2 options:(id)arg3;
+- (id)filteredCollectionForOSVersion:(unsigned int)arg1;
+- (id)filteredCollectionWithObjectsPassingTest:(CDUnknownBlockType)arg1;
+- (id)initWithEditMode:(long long)arg1 localizedName:(id)arg2 options:(id)arg3 collectionType:(unsigned long long)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

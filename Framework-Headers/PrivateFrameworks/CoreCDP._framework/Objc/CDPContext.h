@@ -9,7 +9,7 @@
 #import <CoreCDP/NSCopying-Protocol.h>
 #import <CoreCDP/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSNumber, NSString;
+@class AKCircleRequestContext, CUMessageSession, KCAESGCMDuplexSession, NSDictionary, NSNumber, NSString;
 @protocol CDPAuthProviderInternal;
 
 @interface CDPContext : NSObject <NSSecureCoding, NSCopying>
@@ -21,16 +21,21 @@
     BOOL __useSecureBackupCachedPassphrase;
     BOOL __alwaysCreateEscrowRecord;
     BOOL _idmsRecovery;
+    BOOL _idmsMasterKeyRecovery;
     NSDictionary *_authenticationResults;
     NSString *_appleID;
     NSString *_password;
     NSString *_passwordEquivToken;
     NSNumber *_dsid;
+    NSString *_altDSID;
     long long _type;
     NSString *_cachedLocalSecret;
     unsigned long long _cachedLocalSecretType;
     NSString *_findMyiPhoneUUID;
     id<CDPAuthProviderInternal> __authProvider;
+    KCAESGCMDuplexSession *_duplexSession;
+    AKCircleRequestContext *_resumeContext;
+    CUMessageSession *_sharingChannel;
     NSString *__recoveryToken;
 }
 
@@ -38,23 +43,29 @@
 @property (strong, nonatomic) id<CDPAuthProviderInternal> _authProvider; // @synthesize _authProvider=__authProvider;
 @property (copy, nonatomic) NSString *_recoveryToken; // @synthesize _recoveryToken=__recoveryToken;
 @property (nonatomic) BOOL _useSecureBackupCachedPassphrase; // @synthesize _useSecureBackupCachedPassphrase=__useSecureBackupCachedPassphrase;
+@property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (copy, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
 @property (copy, nonatomic) NSDictionary *authenticationResults; // @synthesize authenticationResults=_authenticationResults;
 @property (copy, nonatomic) NSString *cachedLocalSecret; // @synthesize cachedLocalSecret=_cachedLocalSecret;
 @property (nonatomic) unsigned long long cachedLocalSecretType; // @synthesize cachedLocalSecretType=_cachedLocalSecretType;
 @property (nonatomic) BOOL didUseSMSVerification; // @synthesize didUseSMSVerification=_didUseSMSVerification;
 @property (copy, nonatomic) NSNumber *dsid; // @synthesize dsid=_dsid;
+@property (strong, nonatomic) KCAESGCMDuplexSession *duplexSession; // @synthesize duplexSession=_duplexSession;
 @property (copy) NSString *findMyiPhoneUUID; // @synthesize findMyiPhoneUUID=_findMyiPhoneUUID;
 @property (nonatomic) BOOL guestMode; // @synthesize guestMode=_guestMode;
+@property (nonatomic) BOOL idmsMasterKeyRecovery; // @synthesize idmsMasterKeyRecovery=_idmsMasterKeyRecovery;
 @property (nonatomic) BOOL idmsRecovery; // @synthesize idmsRecovery=_idmsRecovery;
 @property (nonatomic) BOOL isHSA2Account; // @synthesize isHSA2Account=_isHSA2Account;
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (copy, nonatomic) NSString *passwordEquivToken; // @synthesize passwordEquivToken=_passwordEquivToken;
+@property (strong, nonatomic) AKCircleRequestContext *resumeContext; // @synthesize resumeContext=_resumeContext;
+@property (strong, nonatomic) CUMessageSession *sharingChannel; // @synthesize sharingChannel=_sharingChannel;
 @property BOOL supportsSkipSignIn; // @synthesize supportsSkipSignIn=_supportsSkipSignIn;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)augmentWithCredentialsFromContext:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)desiresAllRecords;
 - (void)encodeWithCoder:(id)arg1;

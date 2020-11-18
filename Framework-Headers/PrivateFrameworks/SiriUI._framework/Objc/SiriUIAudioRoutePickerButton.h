@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIButton.h>
+#import <SiriUI/SiriUIContentButton.h>
 
-@interface SiriUIAudioRoutePickerButton : UIButton
+@interface SiriUIAudioRoutePickerButton : SiriUIContentButton
 {
 }
 

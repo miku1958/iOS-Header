@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUControllableCollectionViewLayout-Protocol.h>
 
-@class HFWallpaperSlice, HUGridLayoutOptions, HUWallpaperView, NSMutableDictionary, NSString;
+@class HFWallpaperSlice, HUGridLayoutOptions, HUWallpaperView, NSHashTable, NSMutableDictionary, NSString;
 
 @interface HUGridFlowLayout : UICollectionViewFlowLayout <HUControllableCollectionViewLayout>
 {
@@ -16,21 +16,25 @@
     HUWallpaperView *_wallpaperView;
     HFWallpaperSlice *_blurredWallpaperSlice;
     NSMutableDictionary *_overrideAttributesByIndexPath;
+    NSHashTable *_childGridLayouts;
+    HUGridFlowLayout *_parentGridLayout;
 }
 
 @property (strong, nonatomic) HFWallpaperSlice *blurredWallpaperSlice; // @synthesize blurredWallpaperSlice=_blurredWallpaperSlice;
+@property (strong, nonatomic) NSHashTable *childGridLayouts; // @synthesize childGridLayouts=_childGridLayouts;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HUGridLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property (readonly, nonatomic) NSMutableDictionary *overrideAttributesByIndexPath; // @synthesize overrideAttributesByIndexPath=_overrideAttributesByIndexPath;
+@property (weak, nonatomic) HUGridFlowLayout *parentGridLayout; // @synthesize parentGridLayout=_parentGridLayout;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) HUWallpaperView *wallpaperView; // @synthesize wallpaperView=_wallpaperView;
 
 + (Class)layoutAttributesClass;
 - (void).cxx_destruct;
-- (void)_invalidateCollectionViewLayoutsForSubviewsOfView:(id)arg1;
 - (id)_modifiedLayoutAttributesForAttributes:(id)arg1;
+- (void)_updateContainingGridLayout;
 - (void)applyOverrideAttributes:(id)arg1 toItemAtIndexPath:(id)arg2;
 - (void)clearAllOverrideAttributes;
 - (void)clearOverrideAttributesForItemAtIndexPath:(id)arg1;
@@ -38,7 +42,10 @@
 - (void)invalidateLayout;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
+- (void)prepareLayout;
+- (void)registerChildGridLayout:(id)arg1;
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
+- (void)unregisterChildGridLayout:(id)arg1;
 
 @end
 

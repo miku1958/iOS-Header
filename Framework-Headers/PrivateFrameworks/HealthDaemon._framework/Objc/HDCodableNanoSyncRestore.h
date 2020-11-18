@@ -6,13 +6,11 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <HealthDaemon/HDNanoSyncDescription-Protocol.h>
-#import <HealthDaemon/HDSyncObjectCollection-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray;
 
-@interface HDCodableNanoSyncRestore : PBCodable <HDSyncObjectCollection, HDNanoSyncDescription, NSCopying>
+@interface HDCodableNanoSyncRestore : PBCodable <NSCopying>
 {
     NSMutableArray *_objectDatas;
     int _objectType;
@@ -21,29 +19,26 @@
     } _has;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasObjectType;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableArray *objectDatas; // @synthesize objectDatas=_objectDatas;
 @property (nonatomic) int objectType; // @synthesize objectType=_objectType;
-@property (readonly) Class superclass;
 
++ (Class)objectDataType;
 - (void).cxx_destruct;
+- (int)StringAsObjectType:(id)arg1;
 - (void)addObjectData:(id)arg1;
 - (void)clearObjectDatas;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)decodedObjects;
+- (id)description;
 - (id)dictionaryRepresentation;
+- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
-- (id)nanoSyncDescription;
 - (id)objectDataAtIndex:(unsigned long long)arg1;
 - (unsigned long long)objectDatasCount;
+- (id)objectTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (void)setObjects:(id)arg1;
-- (Class)syncEntityClass;
 - (void)writeTo:(id)arg1;
 
 @end

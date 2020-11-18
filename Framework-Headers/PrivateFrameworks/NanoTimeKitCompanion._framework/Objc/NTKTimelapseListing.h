@@ -9,11 +9,11 @@
 #import <NanoTimeKitCompanion/NSCopying-Protocol.h>
 #import <NanoTimeKitCompanion/NTKAVListing-Protocol.h>
 
-@class NSString, NTKPhotoAnalysis, NTKVideo, UIImage;
+@class CLKVideo, NSString, NTKPhotoAnalysis, UIImage;
 
 @interface NTKTimelapseListing : NSObject <NSCopying, NTKAVListing>
 {
-    NTKVideo *_video;
+    CLKVideo *_video;
     UIImage *_image;
     NSString *_videoName;
     NSString *_imageName;
@@ -29,7 +29,7 @@
 @property (readonly, nonatomic) NTKPhotoAnalysis *photoAnalysis; // @synthesize photoAnalysis=_photoAnalysis;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long theme; // @synthesize theme=_theme;
-@property (readonly, nonatomic) NTKVideo *video;
+@property (readonly, nonatomic) CLKVideo *video;
 @property (readonly, nonatomic) long long videoIndex; // @synthesize videoIndex=_videoIndex;
 
 - (void).cxx_destruct;
@@ -38,6 +38,7 @@
 - (void)discardAssets;
 - (id)initWithTheme:(unsigned long long)arg1 videoIndex:(long long)arg2 photoAnalysis:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isSimilarTo:(id)arg1;
 - (BOOL)snapshotDiffers:(id)arg1;
 
 @end

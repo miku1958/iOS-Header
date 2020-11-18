@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, PLRevGeoCompoundNameInfo;
 @protocol GEOMapItemPrivate;
@@ -24,6 +24,7 @@
 @property (strong, nonatomic) PLRevGeoCompoundNameInfo *compoundSecondaryNameInfo; // @synthesize compoundSecondaryNameInfo=_compoundSecondaryNameInfo;
 @property (readonly, copy, nonatomic) NSString *countryCode;
 @property (strong, nonatomic) id<GEOMapItemPrivate> geoMapItem; // @synthesize geoMapItem=_geoMapItem;
+@property (readonly, nonatomic) BOOL hasLocation;
 @property (nonatomic) BOOL isHome; // @synthesize isHome=_isHome;
 @property (readonly, nonatomic) BOOL isValid; // @synthesize isValid=_isValid;
 @property (strong, nonatomic) NSString *providerId; // @synthesize providerId=_providerId;

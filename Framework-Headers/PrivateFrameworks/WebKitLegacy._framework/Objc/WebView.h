@@ -6,7 +6,7 @@
 
 #import <WebCore/WAKView.h>
 
-@class DOMCSSStyleDeclaration, DOMDocument, DOMRange, NSData, NSString, NSUndoManager, WAKWindow, WebBackForwardList, WebFrame, WebPreferences, WebScriptObject, WebViewPrivate;
+@class DOMCSSStyleDeclaration, DOMDocument, DOMRange, NSData, NSString, NSURL, NSUndoManager, WAKWindow, WebBackForwardList, WebFrame, WebPreferences, WebScriptObject, WebUITextIndicatorData, WebViewPrivate;
 @protocol WebDownloadDelegate, WebEditingDelegate, WebFrameLoadDelegate, WebPolicyDelegate, WebResourceLoadDelegate, WebUIDelegate;
 
 @interface WebView : WAKView
@@ -15,6 +15,11 @@
 }
 
 @property (nonatomic) id<WebUIDelegate> UIDelegate;
+@property (readonly, nonatomic) unsigned long long _dragSourceAction;
+@property (readonly, nonatomic) struct CGRect _draggedElementBounds;
+@property (readonly, nonatomic) NSString *_draggedLinkTitle;
+@property (readonly, nonatomic) NSURL *_draggedLinkURL;
+@property (nonatomic, setter=_setUnobscuredSafeAreaInsets:) struct WebEdgeInsets _unobscuredSafeAreaInsets;
 @property (copy, nonatomic) NSString *applicationNameForUserAgent;
 @property (readonly, nonatomic) WebBackForwardList *backForwardList;
 @property (readonly, nonatomic) BOOL canGoBack;
@@ -25,6 +30,8 @@
 @property (nonatomic, getter=isContinuousSpellCheckingEnabled) BOOL continuousSpellCheckingEnabled;
 @property (copy, nonatomic) NSString *customTextEncodingName;
 @property (copy, nonatomic) NSString *customUserAgent;
+@property (readonly, nonatomic, getter=_dataInteractionCaretRect) struct CGRect dataInteractionCaretRect;
+@property (readonly, nonatomic, getter=_dataOperationTextIndicator) WebUITextIndicatorData *dataOperationTextIndicator;
 @property (nonatomic) id<WebDownloadDelegate> downloadDelegate;
 @property (nonatomic) BOOL drawsBackground;
 @property (nonatomic, getter=isEditable) BOOL editable;
@@ -71,7 +78,6 @@
 + (BOOL)_canHandleRequest:(id)arg1;
 + (BOOL)_canHandleRequest:(id)arg1 forMainFrame:(BOOL)arg2;
 + (BOOL)_canShowMIMEType:(id)arg1 allowingPlugins:(BOOL)arg2;
-+ (void)_clearMemoryPressure;
 + (id)_decodeData:(id)arg1;
 + (BOOL)_didSetCacheModel;
 + (void)_disableAutoStartRemoteInspector;
@@ -81,8 +87,8 @@
 + (id)_generatedMIMETypeForURLScheme:(id)arg1;
 + (Class)_getPDFRepresentationClass;
 + (Class)_getPDFViewClass;
-+ (void)_handleMemoryWarning;
 + (BOOL)_hasRemoteInspectorSession;
++ (BOOL)_isIconLoadingEnabled;
 + (BOOL)_isRemoteInspectorEnabled;
 + (BOOL)_isUnderMemoryPressure;
 + (void)_makeAllWebViewsPerformSelector:(SEL)arg1;
@@ -112,13 +118,13 @@
 + (void)_setDomainRelaxationForbidden:(BOOL)arg1 forURLScheme:(id)arg2;
 + (void)_setFontWhitelist:(id)arg1;
 + (void)_setHTTPPipeliningEnabled:(BOOL)arg1;
++ (void)_setIconLoadingEnabled:(BOOL)arg1;
 + (void)_setLoadResourcesSerially:(BOOL)arg1;
 + (void)_setPDFRepresentationClass:(Class)arg1;
 + (void)_setPDFViewClass:(Class)arg1;
 + (void)_setShouldUseFontSmoothing:(BOOL)arg1;
 + (void)_setTileCacheLayerPoolCapacity:(unsigned int)arg1;
 + (BOOL)_shouldUseFontSmoothing;
-+ (BOOL)_shouldWaitForMemoryClearMessage;
 + (id)_standardUserAgentWithApplicationName:(id)arg1;
 + (id)_supportedMIMETypes;
 + (void)_unregisterPluginMIMEType:(id)arg1;
@@ -129,17 +135,11 @@
 + (BOOL)canShowMIMEType:(id)arg1;
 + (BOOL)canShowMIMETypeAsHTML:(id)arg1;
 + (void)closeAllWebViews;
-+ (void)discardAllCompiledCode;
-+ (void)drainLayerPool;
 + (void)enableWebThread;
-+ (void)garbageCollectNow;
 + (void)initialize;
 + (BOOL)isCharacterSmartReplaceExempt:(unsigned short)arg1 isPreviousCharacter:(BOOL)arg2;
-+ (void)purgeInactiveFontData;
-+ (void)registerForMemoryNotifications;
 + (void)registerURLSchemeAsLocal:(id)arg1;
 + (void)registerViewClass:(Class)arg1 representationClass:(Class)arg2 forMIMEType:(id)arg3;
-+ (void)releaseFastMallocMemoryOnCurrentThread;
 + (void)setMIMETypesShownAsHTML:(id)arg1;
 + (BOOL)shouldIncludeInWebKitStatistics;
 + (void)willEnterBackgroundWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -170,15 +170,16 @@
 - (void)_closeWithFastTeardown;
 - (void)_commonInitializationWithFrameName:(id)arg1 groupName:(id)arg2;
 - (id)_contentsOfUserInterfaceItem:(id)arg1;
-- (struct CGSize)_contentsSizeRespectingOverflow;
 - (BOOL)_continuousCheckingAllowed;
 - (struct CGPoint)_convertPointFromRootView:(struct CGPoint)arg1;
 - (struct CGRect)_convertRectFromRootView:(struct CGRect)arg1;
 - (BOOL)_cookieEnabled;
 - (void)_destroyAllPlugIns;
 - (void)_detachScriptDebuggerFromAllFrames;
+- (unsigned long long)_deviceOrientation;
 - (id)_deviceOrientationProvider;
 - (void)_didCommitLoadForFrame:(id)arg1;
+- (void)_didConcludeEditDataInteraction;
 - (void)_didFinishScrollingOrZooming;
 - (void)_didScrollDocumentInFrameView:(id)arg1;
 - (void)_dispatchPendingLoadRequests;
@@ -189,9 +190,12 @@
 - (id)_downloadURL:(id)arg1;
 - (id)_editingDelegateForwarder;
 - (id)_elementAtWindowPoint:(struct CGPoint)arg1;
+- (void)_endedDataInteraction:(struct CGPoint)arg1 global:(struct CGPoint)arg2;
 - (void)_enterVideoFullscreenForVideoElement:(struct HTMLVideoElement *)arg1 mode:(unsigned int)arg2;
+- (unsigned long long)_enteredDataInteraction:(id)arg1 client:(struct CGPoint)arg2 global:(struct CGPoint)arg3 operation:(unsigned long long)arg4;
 - (void)_executeCoreCommandByName:(id)arg1 value:(id)arg2;
 - (void)_exitVideoFullscreen;
+- (void)_exitedDataInteraction:(id)arg1 client:(struct CGPoint)arg2 global:(struct CGPoint)arg3 operation:(unsigned long long)arg4;
 - (BOOL)_fetchCustomFixedPositionLayoutRect:(struct CGRect *)arg1;
 - (struct CGSize)_fixedLayoutSize;
 - (id)_fixedPositionContent;
@@ -206,9 +210,9 @@
 - (void)_geolocationDidChangePosition:(id)arg1;
 - (void)_geolocationDidFailWithMessage:(id)arg1;
 - (id)_geolocationProvider;
+- (id)_getDataInteractionData;
 - (id)_globalHistoryItem;
 - (BOOL)_inFastImageScalingMode;
-- (BOOL)_includesFlattenedCompositingLayersWhenDrawingToBitmap;
 - (id)_initWithArguments:(id)arg1;
 - (id)_initWithFrame:(struct CGRect)arg1 frameName:(id)arg2 groupName:(id)arg3;
 - (void)_insertNewlineInQuotedContent;
@@ -246,6 +250,7 @@
 - (BOOL)_paginationBehavesLikeColumns;
 - (BOOL)_paginationLineGridEnabled;
 - (int)_paginationMode;
+- (void)_performDataInteraction:(id)arg1 client:(struct CGPoint)arg2 global:(struct CGPoint)arg3 operation:(unsigned long long)arg4;
 - (void)_performResponderOperation:(SEL)arg1 with:(id)arg2;
 - (id)_pluginForExtension:(id)arg1;
 - (id)_pluginForMIMEType:(id)arg1;
@@ -263,6 +268,7 @@
 - (unsigned long long)_renderTreeSize;
 - (void)_replaceCurrentHistoryItem:(id)arg1;
 - (void)_replaceSelectionWithNode:(id)arg1 matchStyle:(BOOL)arg2;
+- (BOOL)_requestStartDataInteraction:(struct CGPoint)arg1 globalPosition:(struct CGPoint)arg2;
 - (void)_resetAllGeolocationPermission;
 - (void)_resetZoom:(id)arg1 isTextOnly:(BOOL)arg2;
 - (id)_resourceLoadDelegateForwarder;
@@ -281,6 +287,7 @@
 - (void)_setCookieEnabled:(BOOL)arg1;
 - (void)_setCustomFixedPositionLayoutRect:(struct CGRect)arg1;
 - (void)_setCustomFixedPositionLayoutRectInWebThread:(struct CGRect)arg1 synchronize:(BOOL)arg2;
+- (void)_setDeviceOrientation:(unsigned long long)arg1;
 - (void)_setDeviceOrientationProvider:(id)arg1;
 - (void)_setFixedLayoutSize:(struct CGSize)arg1;
 - (void)_setFontFallbackPrefersPictographs:(BOOL)arg1;
@@ -289,7 +296,6 @@
 - (void)_setGeolocationProvider:(id)arg1;
 - (void)_setGlobalHistoryItem:(struct HistoryItem *)arg1;
 - (void)_setHostApplicationProcessIdentifier:(int)arg1 auditToken:(CDStruct_6ad76789)arg2;
-- (void)_setIncludesFlattenedCompositingLayersWhenDrawingToBitmap:(BOOL)arg1;
 - (void)_setIsVisible:(BOOL)arg1;
 - (void)_setMaintainsInactiveSelection:(BOOL)arg1;
 - (BOOL)_setMediaLayer:(id)arg1 forPluginView:(id)arg2;
@@ -306,6 +312,7 @@
 - (void)_setUIWebViewUserAgentWithBuildVersion:(id)arg1;
 - (void)_setUseFastImageScalingMode:(BOOL)arg1;
 - (void)_setUseFixedLayout:(BOOL)arg1;
+- (void)_setUserMediaClient:(id)arg1;
 - (void)_setVisibilityState:(int)arg1 isInitialState:(BOOL)arg2;
 - (void)_setWantsTelephoneNumberParsing:(BOOL)arg1;
 - (void)_setWebGLEnabled:(BOOL)arg1;
@@ -313,15 +320,19 @@
 - (BOOL)_shouldChangeSelectedDOMRange:(id)arg1 toDOMRange:(id)arg2 affinity:(int)arg3 stillSelecting:(BOOL)arg4;
 - (void)_simplifyMarkup:(id)arg1 endNode:(id)arg2;
 - (void)_startAllPlugIns;
+- (void)_startDrag:(const struct DragItem *)arg1;
 - (void)_stopAllPlugIns;
 - (void)_stopAllPlugInsForPageCache;
 - (void)_synchronizeCustomFixedPositionLayoutRect;
 - (id)_touchEventRegions;
+- (BOOL)_tryToPerformDataInteraction:(id)arg1 client:(struct CGPoint)arg2 global:(struct CGPoint)arg3 operation:(unsigned long long)arg4;
 - (void)_updateActiveState;
 - (void)_updateScreenScaleFromWindow;
 - (void)_updateVisibilityState;
+- (unsigned long long)_updatedDataInteraction:(id)arg1 client:(struct CGPoint)arg2 global:(struct CGPoint)arg3 operation:(unsigned long long)arg4;
 - (BOOL)_useFixedLayout;
 - (struct String)_userAgentString;
+- (id)_userMediaClient;
 - (BOOL)_viewClass:(Class *)arg1 andRepresentationClass:(Class *)arg2 forMIMEType:(id)arg3;
 - (void)_viewGeometryDidChange;
 - (float)_viewScaleFactor;
@@ -397,6 +408,8 @@
 - (void)deleteWordBackward:(id)arg1;
 - (void)deleteWordForward:(id)arg1;
 - (id)documentViewAtWindowPoint:(struct CGPoint)arg1;
+- (struct DragData)dragDataForSession:(id)arg1 client:(struct CGPoint)arg2 global:(struct CGPoint)arg3 operation:(unsigned long long)arg4;
+- (unsigned long long)dragDestinationActionMaskForSession:(id)arg1;
 - (id)editableDOMRangeForPoint:(struct CGPoint)arg1;
 - (id)elementAtPoint:(struct CGPoint)arg1;
 - (BOOL)findString:(id)arg1 options:(unsigned long long)arg2;

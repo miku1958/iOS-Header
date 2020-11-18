@@ -30,9 +30,11 @@
 - (void)_dismissViewController:(id)arg1;
 - (void)_installBackButtonOnNavigationItem:(id)arg1 withTitle:(id)arg2;
 - (void)_installDoneButtonOnNavigationItem:(id)arg1;
+- (void)_popViewControllerFromBackButton;
 - (void)_presentDialogTemplate:(id)arg1;
 - (id)_viewControllerForDocument:(id)arg1 index:(long long *)arg2;
 - (void)applyMainTemplateOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;
+- (id)childViewControllerForHomeIndicatorAutoHidden;
 - (id)documents;
 - (void)finalizeMainTemplateOffset:(BOOL)arg1;
 - (id)initWithContext:(id)arg1;

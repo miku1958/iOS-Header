@@ -22,7 +22,6 @@
 - (void).cxx_destruct;
 - (id)initWithStep:(id)arg1 overrides:(struct NSDictionary *)arg2 context:(long long)arg3;
 - (id)instructionSet;
-- (id)timeZoneForFormattedString;
 
 @end
 

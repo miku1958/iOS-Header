@@ -6,21 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableSet, NSString, SGContactDetailsHolder, SGRecordId;
+@class NSMutableSet, NSString, SGContactDetailsHolder, SGRecordId;
 
 @interface SGStorageContact : NSObject
 {
     NSMutableSet *_profiles;
-    NSArray *_internalDetectedPhones;
-    NSArray *_internalDetectedAddresses;
-    NSArray *_internalDetectedEmailAddresses;
-    NSArray *_internalDetectedIMAddresses;
-    SGContactDetailsHolder *_internalDetectedDetails;
-    struct _opaque_pthread_mutex_t _detectedDetailsLock;
     long long _masterEntityId;
     SGRecordId *_recordId;
+    SGContactDetailsHolder *_internalDetectedDetails;
 }
 
+@property (strong) SGContactDetailsHolder *internalDetectedDetails; // @synthesize internalDetectedDetails=_internalDetectedDetails;
 @property (readonly, nonatomic) long long masterEntityId; // @synthesize masterEntityId=_masterEntityId;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) SGRecordId *recordId; // @synthesize recordId=_recordId;
@@ -36,7 +32,6 @@
 - (BOOL)canMerge:(id)arg1;
 - (id)convertToContact:(id)arg1;
 - (id)convertToContact:(id)arg1 sourceEntity:(id)arg2 enrichments:(id)arg3;
-- (void)dealloc;
 - (id)description;
 - (BOOL)hasProfileFromInteraction;
 - (BOOL)hasProfileFromTextMessage;

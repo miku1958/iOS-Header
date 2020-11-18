@@ -13,9 +13,13 @@
 + (void)_registerDefaults;
 + (void)initialize;
 + (BOOL)isAlwaysShowingHolidayCalendarEvents;
++ (BOOL)isMemoriesLivingOnFeedbackEnabled;
++ (BOOL)isMemoriesNotificationDisabled;
 + (BOOL)isShowingHolidayCalendarEvents;
++ (unsigned long long)maximumNumberOfFacesPerAssetForSingleFocusedPersonFacedAssetsWithDefaultValue:(unsigned long long)arg1;
 + (unsigned long long)minimumNumberOfCuratedAssetsForInterestingMoments;
 + (unsigned long long)minimumNumberOfCuratedAssetsForMemories;
++ (double)minimumRatioOfFocusedPersonFacesPerAssetForMultipleFocusedPersonsFacedAssetsWithDefaultValue:(double)arg1;
 
 @end
 

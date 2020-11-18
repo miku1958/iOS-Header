@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class CUTWeakReference, NSMutableArray;
+@class NSHashTable;
 
 @interface CUTPowerMonitor : NSObject
 {
-    CUTWeakReference *_iokitDelegate;
     struct __CFRunLoopSource *_batteryRunLoopSource;
     struct IONotificationPort *_batteryIONotifyPort;
     unsigned int _batteryNotificationRef;
     unsigned int _pmConnection;
     struct IONotificationPort *_pmPort;
     unsigned int _pmNotifier;
-    NSMutableArray *_delegates;
+    NSHashTable *_delegates;
     double _currentLevel;
     BOOL _isExternalPowerConnected;
 }
@@ -27,11 +26,13 @@
 @property (nonatomic, setter=setExternalPowerConnected:) BOOL isExternalPowerConnected; // @synthesize isExternalPowerConnected=_isExternalPowerConnected;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_handlePowerChangedNotificationWithMessageType:(unsigned int)arg1 notificationID:(void *)arg2;
+- (id)_init;
+- (BOOL)_initIOService;
 - (BOOL)_updateBatteryConnectedStateWithBatteryEntry:(unsigned int)arg1;
 - (void)addDelegate:(id)arg1;
 - (void)dealloc;
-- (id)init;
 - (void)removeDelegate:(id)arg1;
 - (void)updateBatteryConnectedStateWithBatteryEntry:(unsigned int)arg1;
 - (void)updateBatteryLevelWithBatteryEntry:(unsigned int)arg1;

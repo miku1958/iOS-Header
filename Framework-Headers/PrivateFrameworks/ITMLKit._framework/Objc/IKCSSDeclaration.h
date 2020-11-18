@@ -14,13 +14,19 @@
     unsigned long long _type;
     NSString *_name;
     NSString *_aliasedName;
+    struct _NSRange _range;
+    struct _NSRange _nameRange;
+    struct _NSRange _valueRange;
 }
 
 @property (strong, nonatomic) NSString *aliasedName; // @synthesize aliasedName=_aliasedName;
 @property BOOL important; // @synthesize important=_important;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (nonatomic) struct _NSRange nameRange; // @synthesize nameRange=_nameRange;
+@property (nonatomic) struct _NSRange range; // @synthesize range=_range;
 @property (readonly, nonatomic) NSString *stringValue;
 @property unsigned long long type; // @synthesize type=_type;
+@property (nonatomic) struct _NSRange valueRange; // @synthesize valueRange=_valueRange;
 
 + (id)typeString:(unsigned long long)arg1;
 - (void).cxx_destruct;

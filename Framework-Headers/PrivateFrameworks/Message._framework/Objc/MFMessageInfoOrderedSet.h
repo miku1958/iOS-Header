@@ -30,7 +30,9 @@
 - (id)_duplicateMessageInfosForMessageInfo:(id)arg1;
 - (void)_invalidate;
 - (void)_removeDuplicatesForMessageInfo:(id)arg1;
+- (unsigned long long)_scanForMessageInfoSimilarTo:(id)arg1;
 - (unsigned long long)addMessageInfo:(id)arg1;
+- (id)allDuplicatesOfMessageInfo:(id)arg1;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)duplicatesOfMessageInfo:(id)arg1;
@@ -44,6 +46,7 @@
 - (unsigned long long)removeMessageInfo:(id)arg1;
 - (unsigned long long)removeMessageInfoAtIndex:(unsigned long long)arg1;
 - (void)removeMessageInfosAtIndexes:(id)arg1;
+- (void)replaceMessageInfo:(id)arg1 withReplacement:(id)arg2 inPlace:(BOOL)arg3;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class IMPowerAssertion, NSArray, NSDate, NSMutableArray, NSMutableDictionary;
 
@@ -21,18 +21,15 @@
     int _acToken;
     unsigned int _avCallState;
     unsigned int _acCallState;
-    unsigned int _telephonyCallState;
     unsigned int _globalCallState;
 }
 
 @property (readonly, strong, nonatomic) NSArray *_FTCalls;
-@property (nonatomic, setter=_setTelephonyCallState:) unsigned int _telephonyCallState; // @synthesize _telephonyCallState;
 @property (readonly, nonatomic) unsigned int callState;
 @property (readonly, strong, nonatomic) NSArray *calls;
 @property (readonly, nonatomic) BOOL hasActiveCall;
 
 + (id)sharedInstance;
-- (void)__setTelephonyCallState:(unsigned int)arg1;
 - (id)_activeAudioCall;
 - (id)_activeFaceTimeCall;
 - (void)_addACChatProxy:(id)arg1;
@@ -44,7 +41,6 @@
 - (id)_copyMutableFTCalls;
 - (BOOL)_hasActiveAudioCall;
 - (BOOL)_hasActiveFaceTimeCall;
-- (BOOL)_hasActiveTelephonyCall;
 - (id)_mutableFTCalls;
 - (id)_nonRetainingChatList;
 - (void)_postStateChangeIfNecessary;

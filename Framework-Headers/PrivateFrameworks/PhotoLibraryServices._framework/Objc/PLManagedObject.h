@@ -14,11 +14,12 @@
 
 @property (readonly, nonatomic) BOOL isRegisteredWithUserInterfaceContext;
 @property (readonly, strong, nonatomic) PLPhotoLibrary *photoLibrary;
-@property (readonly, copy, nonatomic) NSString *pl_shortDescription;
 @property (readonly, copy, nonatomic) NSString *shortObjectIDURI;
 
 - (BOOL)isSyncableChange;
+- (id)pointerDescription;
 - (BOOL)supportsCloudUpload;
+- (id)truncatedDescriptionWithPropertyKeys:(id)arg1;
 - (void)willSave;
 
 @end

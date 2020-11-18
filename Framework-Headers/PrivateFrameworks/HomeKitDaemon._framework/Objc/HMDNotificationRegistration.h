@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class NSMutableSet, NSString;
 @protocol HMFLogging;
 
-@interface HMDNotificationRegistration : NSObject <HMFLogging>
+@interface HMDNotificationRegistration : HMFObject <HMFLogging>
 {
     NSMutableSet *_registeredNotifications;
     id<HMFLogging> _registerer;

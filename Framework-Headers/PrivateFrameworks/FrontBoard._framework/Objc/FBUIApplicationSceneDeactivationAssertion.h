@@ -8,11 +8,11 @@
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
-@class FBSDisplay, NSString;
+@class FBSDisplayIdentity, NSString;
 
 @interface FBUIApplicationSceneDeactivationAssertion : NSObject <BSDescriptionProviding>
 {
-    FBSDisplay *_display;
+    FBSDisplayIdentity *_displayIdentity;
     double _sceneLevel;
     long long _reason;
     CDUnknownBlockType _predicate;
@@ -22,14 +22,14 @@
 @property (readonly, nonatomic, getter=isAcquired) BOOL acquired; // @synthesize acquired=_acquired;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, strong, nonatomic) FBSDisplay *display; // @synthesize display=_display;
+@property (readonly, nonatomic) FBSDisplayIdentity *displayIdentity; // @synthesize displayIdentity=_displayIdentity;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) CDUnknownBlockType predicate; // @synthesize predicate=_predicate;
 @property (readonly, nonatomic) long long reason; // @synthesize reason=_reason;
 @property (readonly, nonatomic) double sceneLevel; // @synthesize sceneLevel=_sceneLevel;
 @property (readonly) Class superclass;
 
-- (id)_initWithReason:(long long)arg1 sceneLevel:(double)arg2 forDisplay:(id)arg3;
+- (id)_initWithReason:(long long)arg1 sceneLevel:(double)arg2 forDisplayWithIdentity:(id)arg3;
 - (void)acquire;
 - (void)acquireWithPredicate:(CDUnknownBlockType)arg1;
 - (void)acquireWithPredicate:(CDUnknownBlockType)arg1 transitionContext:(id)arg2;

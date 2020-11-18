@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
 + (id)immutablePlaceholder;
 + (void)initialize;
 + (id)mutablePlaceholder;
+- (id)_initByAdoptingBuffer:(id *)arg1 count:(unsigned long long)arg2 size:(unsigned long long)arg3;
 - (unsigned long long)count;
 - (void)dealloc;
 - (id)init;
+- (id)initWithArray:(id)arg1 copyItems:(BOOL)arg2;
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (id)initWithContentsOfFile:(id)arg1;
 - (id)initWithContentsOfURL:(id)arg1;

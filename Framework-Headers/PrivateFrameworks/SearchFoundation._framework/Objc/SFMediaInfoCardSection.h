@@ -6,11 +6,25 @@
 
 #import <SearchFoundation/SFCardSection.h>
 
-@class NSArray, NSString, SFActionItem, SFMediaItem;
+#import <SearchFoundation/NSCopying-Protocol.h>
+#import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFMediaInfoCardSection-Protocol.h>
 
-@interface SFMediaInfoCardSection : SFCardSection
+@class NSArray, NSData, NSDictionary, NSString, SFActionItem, SFCard, SFColor, SFMediaItem, SFRichText;
+
+@interface SFMediaInfoCardSection : SFCardSection <SFMediaInfoCardSection, NSSecureCoding, NSCopying>
 {
+    CDStruct_23c427ad _has;
+    BOOL _canBeHidden;
+    BOOL _hasTopPadding;
+    BOOL _hasBottomPadding;
     BOOL _isMediaContainer;
+    int _separatorStyle;
+    NSArray *_punchoutOptions;
+    NSString *_punchoutPickerTitle;
+    NSString *_punchoutPickerDismissText;
+    NSString *_type;
+    SFColor *_backgroundColor;
     SFMediaItem *_mediaItem;
     NSArray *_details;
     SFActionItem *_playAction;
@@ -19,13 +33,36 @@
     NSString *_watchListButtonLabel;
     NSString *_watchListContinuationText;
     NSString *_watchListConfirmationText;
+    SFRichText *_specialOfferButtonLabel;
 }
 
+@property (strong, nonatomic) SFColor *backgroundColor;
+@property (nonatomic) BOOL canBeHidden;
+@property (copy, nonatomic) NSString *cardSectionId;
+@property (copy, nonatomic) NSArray *commands;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *details; // @synthesize details=_details;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (nonatomic) BOOL hasBottomPadding;
+@property (nonatomic) BOOL hasTopPadding;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hideDivider;
 @property (nonatomic) BOOL isMediaContainer; // @synthesize isMediaContainer=_isMediaContainer;
+@property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SFMediaItem *mediaItem; // @synthesize mediaItem=_mediaItem;
+@property (strong, nonatomic) SFCard *nextCard;
 @property (copy, nonatomic) NSArray *offers; // @synthesize offers=_offers;
+@property (copy, nonatomic) NSArray *parameterKeyPaths;
 @property (strong, nonatomic) SFActionItem *playAction; // @synthesize playAction=_playAction;
+@property (copy, nonatomic) NSArray *punchoutOptions;
+@property (copy, nonatomic) NSString *punchoutPickerDismissText;
+@property (copy, nonatomic) NSString *punchoutPickerTitle;
+@property (copy, nonatomic) NSString *resultIdentifier;
+@property (nonatomic) int separatorStyle;
+@property (strong, nonatomic) SFRichText *specialOfferButtonLabel; // @synthesize specialOfferButtonLabel=_specialOfferButtonLabel;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *type;
 @property (copy, nonatomic) NSString *watchListButtonLabel; // @synthesize watchListButtonLabel=_watchListButtonLabel;
 @property (copy, nonatomic) NSString *watchListConfirmationText; // @synthesize watchListConfirmationText=_watchListConfirmationText;
 @property (copy, nonatomic) NSString *watchListContinuationText; // @synthesize watchListContinuationText=_watchListContinuationText;
@@ -33,8 +70,15 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasCanBeHidden;
+- (BOOL)hasHasBottomPadding;
+- (BOOL)hasHasTopPadding;
+- (BOOL)hasIsMediaContainer;
+- (BOOL)hasSeparatorStyle;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 
 @end
 

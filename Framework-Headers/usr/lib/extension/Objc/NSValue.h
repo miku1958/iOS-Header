@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSCopying-Protocol.h>
-#import <extension/NSSecureCoding-Protocol.h>
+#import <Foundation/NSCopying-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
 @interface NSValue : NSObject <NSCopying, NSSecureCoding>
 {
@@ -35,6 +35,7 @@
 - (struct NSEdgeInsets)edgeInsetsValue;
 - (void)encodeWithCoder:(id)arg1;
 - (void)getValue:(void *)arg1;
+- (void)getValue:(void *)arg1 size:(unsigned long long)arg2;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithBytes:(const void *)arg1 objCType:(const char *)arg2;

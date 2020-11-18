@@ -6,25 +6,37 @@
 
 #import <UIKit/UIButton.h>
 
-@interface CAMFilterButton : UIButton
+#import <CameraUI/CAMAccessibilityHUDImageProvider-Protocol.h>
+
+@class NSString;
+
+@interface CAMFilterButton : UIButton <CAMAccessibilityHUDImageProvider>
 {
+    long long _layoutStyle;
     long long _orientation;
     struct UIEdgeInsets _tappableEdgeInsets;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (nonatomic, getter=isOn) BOOL on;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
+@property (readonly) Class superclass;
 @property (nonatomic) struct UIEdgeInsets tappableEdgeInsets; // @synthesize tappableEdgeInsets=_tappableEdgeInsets;
 
-+ (id)filterButton;
-- (void)_commonCAMFilterButtonInitialization;
++ (id)filterButtonWithLayoutStyle:(long long)arg1;
+- (void)_commonCAMFilterButtonInitializationWithStyle:(long long)arg1;
 - (id)_filterImage;
 - (id)_filterOnImage;
-- (double)_selectedIndicatorAlpha;
 - (struct UIEdgeInsets)alignmentRectInsets;
+- (id)imageForAccessibilityHUD;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)layoutSubviews;
+- (void)setHighlighted:(BOOL)arg1;
 - (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
 
 @end

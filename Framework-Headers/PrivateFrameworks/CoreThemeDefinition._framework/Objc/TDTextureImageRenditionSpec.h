@@ -26,7 +26,7 @@
 - (id)createCSIRepresentationWithCompression:(BOOL)arg1 colorSpaceID:(unsigned long long)arg2 document:(id)arg3;
 - (BOOL)isCubeMap;
 - (id)textureFacesWithDocument:(id)arg1;
-- (void)updatePackingPropertiesWithDocument:(id)arg1;
+- (BOOL)updatePackingPropertiesWithDocument:(id)arg1;
 
 @end
 

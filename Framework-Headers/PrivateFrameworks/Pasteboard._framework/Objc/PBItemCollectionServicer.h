@@ -8,11 +8,12 @@
 
 #import <Pasteboard/PBDataProviderProtocol-Protocol.h>
 
-@class NSString, PBItemCollection;
+@class NSMutableDictionary, NSString, PBItemCollection;
 
 __attribute__((visibility("hidden")))
 @interface PBItemCollectionServicer : NSObject <PBDataProviderProtocol>
 {
+    NSMutableDictionary *_cleanupQueue_cleanupHandlerByUUID;
     PBItemCollection *_itemCollection;
 }
 
@@ -24,9 +25,11 @@ __attribute__((visibility("hidden")))
 
 + (id)newServicerForConnection:(id)arg1 itemCollection:(id)arg2;
 - (void).cxx_destruct;
+- (void)callCleanupBlockWithUUID:(id)arg1;
 - (void)helloCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)initWithConnection:(id)arg1 itemCollection:(id)arg2;
 - (void)loadRepresentationForItemAtIndex:(unsigned long long)arg1 type:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)waitForItemRequestsDeliveryCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

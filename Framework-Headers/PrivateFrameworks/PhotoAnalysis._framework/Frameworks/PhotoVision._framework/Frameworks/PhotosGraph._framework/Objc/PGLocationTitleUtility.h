@@ -10,36 +10,24 @@
 {
 }
 
-+ (void)_aoiTitleWithLocationNodes:(id)arg1 momentNodes:(id)arg2 result:(CDUnknownBlockType)arg3;
-+ (id)_beautifiedLocationStringWithTitleComponents:(id)arg1 momentNodes:(id)arg2 keyAssetAddressNode:(id)arg3 curationAddressNodes:(id)arg4 isMatchingKeyAsset:(BOOL *)arg5;
-+ (id)_bestAddressNodeForCityNodes:(id)arg1 inMomentNodes:(id)arg2 incompleteLocationResolver:(id)arg3;
-+ (id)_cityNodesFromMomentNodes:(id)arg1 incompleteLocationResolver:(id)arg2;
-+ (id)_cityNodesToAddressNodesMapTableFromMomentNodes:(id)arg1 addressNodes:(id)arg2 ignoredAddressNodes:(id)arg3;
-+ (void)_cityStateAndCountryNodesForLocationNodes:(id)arg1 result:(CDUnknownBlockType)arg2;
-+ (void)_cityTitleWithCityNode:(id)arg1 countryNode:(id)arg2 visitedCountryOnlyOnce:(BOOL)arg3 momentNodes:(id)arg4 incompleteLocationResolver:(id)arg5 result:(CDUnknownBlockType)arg6;
-+ (id)_commonAOIComponentsForAddressNodes:(id)arg1;
-+ (id)_commonCityTitleComponentsFromMomentNodes:(id)arg1 addressNodes:(id)arg2 ignoredAddressNodes:(id)arg3;
-+ (void)_filterMomentNodesDependingOnSupersetsForMomentNodes:(id)arg1 incompleteLocationResolver:(id)arg2 result:(CDUnknownBlockType)arg3;
++ (id)_beautifiedLocationStringWithTitleComponents:(id)arg1 momentNodes:(id)arg2 insertLineBreak:(BOOL)arg3 keyAssetAddressNode:(id)arg4 curationAddressNodes:(id)arg5 isMatchingKeyAsset:(BOOL *)arg6;
++ (id)_commonAOIComponentsForAddressNodes:(id)arg1 aoiDisplayType:(unsigned long long)arg2 containsEntertainmentPOI:(BOOL)arg3;
++ (id)_commonCityTitleComponentsFromMomentNodes:(id)arg1 remainingAddressNodes:(id)arg2 ignoredAddressNodes:(id)arg3 incompleteLocationResolver:(id)arg4;
 + (id)_filteredAOINodesForAddressNodes:(id)arg1;
-+ (id)_filteredCityNodesByNameForCityNodes:(id)arg1;
-+ (id)_filteredSignificantLocationNodes:(id)arg1 forMomentNodes:(id)arg2 incompleteLocationResolver:(id)arg3;
++ (id)_filteredAddressNodesWithAddressNodes:(id)arg1 momentNodes:(id)arg2 incompleteLocationResolver:(id)arg3 filterSignificantLocationsOption:(unsigned long long)arg4;
 + (id)_firstComponentInTimeFromComponents:(id)arg1 momentNodes:(id)arg2 curationAddressNodes:(id)arg3;
-+ (void)_generateLocationTitleForTripWithMomentNodes:(id)arg1 filterMomentsAndCities:(BOOL)arg2 result:(CDUnknownBlockType)arg3;
-+ (id)_locationTitleWithLocationNode:(id)arg1 addressNode:(id)arg2 countryNode:(id)arg3 allowSecondPart:(BOOL)arg4;
 + (id)_peopleLocationFromAddressNode:(id)arg1;
 + (id)_recursiveValidAOINodesForCombination:(id)arg1 validCombinationLengths:(struct _NSRange)arg2 validationBlock:(CDUnknownBlockType)arg3 currentCombination:(id)arg4 visitedNodes:(id)arg5;
 + (id)_removeParenthesesInLocationName:(id)arg1;
-+ (void)_resolveLocationNodesForMomentNodes:(id)arg1 ignoredAddressNodes:(id)arg2 ignoredLocationNodes:(id)arg3 incompleteLocationResolver:(id)arg4 locationNodesToAddressNodesMapTable:(id *)arg5 maximumMissingLocationsThreshold:(float)arg6 result:(CDUnknownBlockType)arg7;
 + (id)_sortedAOINodesCombinationsForCombinations:(id)arg1 aoiNodesToAddressNodesMapTable:(id)arg2;
 + (id)_sortedComponentsFromComponents:(id)arg1;
 + (id)_twoPartLocationTitleWithFirstPartTitle:(id)arg1 withDimension:(unsigned long long)arg2 usedFirstPartLocationNode:(id)arg3 addressNode:(id)arg4;
 + (id)_validAOINodesCombinationsForCombinations:(id)arg1 aoiNodesToAddressNodesMapTable:(id)arg2 numberOfAddressNodesWithoutAOI:(unsigned long long)arg3 maximumNumberOfNonMatchingAddressNodes:(unsigned long long)arg4;
 + (id)_validAOINodesForCombination:(id)arg1 validCombinationLengths:(struct _NSRange)arg2 validationBlock:(CDUnknownBlockType)arg3;
-+ (BOOL)_visitedLocationNodeMoreThanOnce:(id)arg1 withReferenceMomentNodes:(id)arg2;
 + (float)_weightForAOINode:(id)arg1 withAddressNodes:(id)arg2;
 + (id)beautifiedLocationNodeStringWithLocationNode:(id)arg1;
 + (void)generateLocationTitleForTripWithMomentNodes:(id)arg1 result:(CDUnknownBlockType)arg2;
-+ (void)generateLocationTitleWithMomentNodes:(id)arg1 displayOptions:(unsigned long long)arg2 keyAssetAddressNode:(id)arg3 curationAddressNodes:(id)arg4 result:(CDUnknownBlockType)arg5;
++ (void)generateLocationTitleWithOptions:(id)arg1 result:(CDUnknownBlockType)arg2;
 
 @end
 

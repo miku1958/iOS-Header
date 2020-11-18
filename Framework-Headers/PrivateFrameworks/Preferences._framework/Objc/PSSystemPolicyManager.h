@@ -13,6 +13,7 @@
 + (BOOL)_backgroundAppRefreshSettingsNeededForProxy:(id)arg1;
 + (BOOL)_cellularDataSettingsNeededForBundleID:(id)arg1;
 + (id)_dataUsageWorkspaceInfo;
++ (BOOL)_documentSettingsNeededForBundleID:(id)arg1;
 + (BOOL)_locationSettingsNeededForBundleID:(id)arg1;
 + (BOOL)_notificationSettingsNeededForBundleID:(id)arg1;
 + (void)_populateBBSectionIDs;

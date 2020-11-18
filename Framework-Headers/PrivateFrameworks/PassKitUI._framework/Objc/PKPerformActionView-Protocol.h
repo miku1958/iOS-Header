@@ -6,11 +6,12 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSDecimalNumber, NSDictionary, NSString, PKPass, PKPaymentPassAction;
+@class NSDecimalNumber, NSDictionary, NSString, PKPass, PKPaymentPassAction, UITextField;
 @protocol PKPaymentDataProvider, PKPerformActionViewDelegate;
 
 @protocol PKPerformActionView <NSObject>
 
+@property (readonly, nonatomic) UITextField *amountTextField;
 @property (weak, nonatomic) id<PKPerformActionViewDelegate> delegate;
 
 - (id)initWithPass:(PKPass *)arg1 action:(PKPaymentPassAction *)arg2 paymentDataProvider:(id<PKPaymentDataProvider>)arg3;

@@ -22,9 +22,11 @@
 @property (readonly, nonatomic) WKWebProcessPlugInFrame *frame;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *text;
 
 + (id)rangeHandleWithJSValue:(id)arg1 inContext:(id)arg2;
 - (void)dealloc;
+- (id)detectDataWithTypes:(unsigned long long)arg1 context:(id)arg2;
 
 @end
 

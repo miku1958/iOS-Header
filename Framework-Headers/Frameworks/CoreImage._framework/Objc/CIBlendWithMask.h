@@ -22,8 +22,7 @@ __attribute__((visibility("hidden")))
 
 + (id)customAttributes;
 - (id)_kernel;
-- (id)_kernelNoB;
-- (id)_kernelNoF;
+- (float)_maskFillColorValue;
 - (id)outputImage;
 
 @end

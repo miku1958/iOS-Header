@@ -17,6 +17,8 @@
     BOOL _allowsPickingMultipleItems;
     BOOL _showsCloudItems;
     BOOL _showsItemsWithProtectedAssets;
+    BOOL _picksSingleCollectionEntity;
+    unsigned int _watchCompatibilityVersion;
     unsigned long long _mediaTypes;
     id<MPMediaPickerControllerDelegate> _delegate;
     NSString *_prompt;
@@ -44,11 +46,15 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMediaTypes:(unsigned long long)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (BOOL)picksSingleCollectionEntity;
 - (void)remoteMediaPickerDidCancel;
 - (void)remoteMediaPickerDidPickMediaItems:(id)arg1;
+- (void)setPicksSingleCollectionEntity:(BOOL)arg1;
+- (void)setWatchCompatibilityVersion:(unsigned int)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (unsigned int)watchCompatibilityVersion;
 - (void)willMoveToParentViewController:(id)arg1;
 
 @end

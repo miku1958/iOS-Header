@@ -35,6 +35,7 @@
 - (BOOL)_queueSetValue:(id)arg1 forProperty:(id)arg2;
 - (BOOL)_setValue:(id)arg1 forProperty:(id)arg2;
 - (void)addPropertyObserver:(id)arg1 forPropertyChanges:(id)arg2;
+- (BOOL)archived;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -43,6 +44,9 @@
 - (id)initWithDevice:(id)arg1 queue:(id)arg2 withSecureProperties:(BOOL)arg3;
 - (id)initWithQueue:(id)arg1;
 - (void)mergeWithDevice:(id)arg1;
+- (BOOL)migrationConfirmed;
+- (id)migrationError;
+- (id)objectForKeyedSubscript:(id)arg1;
 - (id)propertyNames;
 - (void)queueAddPropertyObserver:(id)arg1 forPropertyChanges:(id)arg2;
 - (id)queueDescription;

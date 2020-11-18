@@ -4,25 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUSettings.h>
-
-#import <PhotosUI/UIAlertViewDelegate-Protocol.h>
-
-@class NSString;
+#import <PhotosUICore/PXSettings.h>
 
 __attribute__((visibility("hidden")))
-@interface PUMomentsSettings : PUSettings <UIAlertViewDelegate>
+@interface PUMomentsSettings : PXSettings
 {
     BOOL _allowCollectionInfluence;
     unsigned long long _order;
 }
 
 @property (nonatomic) BOOL allowCollectionInfluence; // @synthesize allowCollectionInfluence=_allowCollectionInfluence;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long order; // @synthesize order=_order;
-@property (readonly) Class superclass;
 
 + (void)_clearSelection;
 + (id)_currentlySelectedAssets;
@@ -34,7 +26,7 @@ __attribute__((visibility("hidden")))
 + (void)_tagSelectionForCollections;
 + (id)settingsControllerModule;
 + (id)sharedInstance;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
+- (id)parentSettings;
 - (void)performPostSaveActions;
 - (void)setDefaultValues;
 

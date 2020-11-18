@@ -48,7 +48,7 @@
 @property (strong, nonatomic) NSString *nickname; // @synthesize nickname=_nickname;
 @property (nonatomic) unsigned long long relationship; // @synthesize relationship=_relationship;
 @property (strong, nonatomic) NSMutableDictionary *socialProfiles; // @synthesize socialProfiles=_socialProfiles;
-@property (readonly) NSArray *sourceURLs; // @synthesize sourceURLs=_sourceURLs;
+@property (readonly, nonatomic) NSArray *sourceURLs; // @synthesize sourceURLs=_sourceURLs;
 
 + (id)person;
 + (id)personWithCNIdentifier:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEORouteSet;
 
@@ -14,6 +14,7 @@
     unsigned long long _contingencyRouteIndex;
 }
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithRouteSet:(id)arg1;
 - (id)nextLazyRoute;

@@ -15,6 +15,7 @@
 - (long long)activeLayoutModeForWidget:(WGWidgetHostingViewController *)arg1;
 - (void)brokenViewDidAppearForWidget:(WGWidgetHostingViewController *)arg1;
 - (void)contentAvailabilityDidChangeForWidget:(WGWidgetHostingViewController *)arg1;
+- (BOOL)managingContainerIsVisibleForWidget:(WGWidgetHostingViewController *)arg1;
 - (struct UIEdgeInsets)marginInsetsForWidget:(WGWidgetHostingViewController *)arg1;
 - (void)remoteViewControllerDidConnectForWidget:(WGWidgetHostingViewController *)arg1;
 - (void)remoteViewControllerDidDisconnectForWidget:(WGWidgetHostingViewController *)arg1;

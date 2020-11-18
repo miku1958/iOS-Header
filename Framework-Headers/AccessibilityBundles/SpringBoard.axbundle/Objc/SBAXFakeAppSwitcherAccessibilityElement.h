@@ -9,11 +9,11 @@
 @interface SBAXFakeAppSwitcherAccessibilityElement : UIAccessibilityElement
 {
     id _deckSwitcherDelegate;
-    id _displayItem;
+    id _appLayout;
 }
 
+@property (strong, nonatomic) id appLayout; // @synthesize appLayout=_appLayout;
 @property (weak, nonatomic) id deckSwitcherDelegate; // @synthesize deckSwitcherDelegate=_deckSwitcherDelegate;
-@property (strong, nonatomic) id displayItem; // @synthesize displayItem=_displayItem;
 
 - (void).cxx_destruct;
 - (BOOL)_accessibilityScrollToVisible;

@@ -13,6 +13,7 @@
 }
 
 @property (copy, nonatomic) NSString *desiredOptionId;
+@property (copy, nonatomic) NSString *languageOptionChangeUserSetting;
 
 + (id)setAudioTrack;
 + (id)setAudioTrackWithDictionary:(id)arg1 context:(id)arg2;

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *messageTitle; // @synthesize messageTitle=_messageTitle;
 
 - (void).cxx_destruct;
+- (void)configureWithRequest:(id)arg1;
 - (void)didSelectManualSignInButton;
 - (id)init;
 

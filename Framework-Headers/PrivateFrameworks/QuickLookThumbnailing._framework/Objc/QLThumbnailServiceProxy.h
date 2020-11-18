@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSXPCConnection;
 @protocol QLThumbnailAdditionIndexInterface, QLThumbnailsInterface;
@@ -18,6 +18,7 @@
 
 + (id)interface;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)askThumbnailAdditionIndex:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)forwardingTargetForSelector:(SEL)arg1;

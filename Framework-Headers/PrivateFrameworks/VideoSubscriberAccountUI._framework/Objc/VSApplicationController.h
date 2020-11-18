@@ -10,7 +10,7 @@
 #import <VideoSubscriberAccountUI/VSApplicationDelegate-Protocol.h>
 #import <VideoSubscriberAccountUI/VSStateMachineDelegate-Protocol.h>
 
-@class JSValue, NSError, NSOperationQueue, NSString, VSAppDocumentController, VSApplication, VSApplicationControllerResponseHandler, VSIdentityProvider, VSPreferences, VSStateMachine;
+@class JSValue, NSError, NSOperationQueue, NSString, VSAppDocumentController, VSApplication, VSApplicationControllerResponseHandler, VSAuditToken, VSIdentityProvider, VSPreferences, VSStateMachine;
 @protocol VSApplicationControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     BOOL _allowUI;
     id<VSApplicationControllerDelegate> _delegate;
     VSIdentityProvider *_identityProvider;
+    VSAuditToken *_auditToken;
     VSStateMachine *_stateMachine;
     NSError *_delegateError;
     NSError *_onLaunchError;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VSAppDocumentController *appDocumentController; // @synthesize appDocumentController=_appDocumentController;
 @property (strong) VSApplication *application; // @synthesize application=_application;
 @property (strong, nonatomic) JSValue *applicationReadyCallback; // @synthesize applicationReadyCallback=_applicationReadyCallback;
+@property (copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VSApplicationControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong) NSError *delegateError; // @synthesize delegateError=_delegateError;
@@ -47,7 +49,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VSStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (readonly) Class superclass;
 
-+ (void)initialize;
 - (void).cxx_destruct;
 - (id)_applicationLaunchParams;
 - (void)_applicationReadyWithSuccess:(BOOL)arg1 javascriptErrorValue:(id)arg2;
@@ -57,7 +58,6 @@ __attribute__((visibility("hidden")))
 - (void)_completeRequest:(id)arg1 withResult:(id)arg2;
 - (id)_errorForJavascriptErrorValueValue:(id)arg1 withRequest:(id)arg2;
 - (id)_javascriptRequestForRequest:(id)arg1 withVerificationData:(id)arg2;
-- (id)_javascriptShowUserInterfacePurposeForAuthenticationUserInterfacePurpose:(long long)arg1;
 - (id)_makeJavaScriptRequest;
 - (void)_makeJavascriptRequestForRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_notifyDelegateWithBlock:(CDUnknownBlockType)arg1;
@@ -75,10 +75,11 @@ __attribute__((visibility("hidden")))
 - (void)application:(id)arg1 evaluateAppJavascriptInContext:(id)arg2;
 - (void)application:(id)arg1 startDidFailWithError:(id)arg2;
 - (void)applicationDidStart:(id)arg1;
+- (void)dealloc;
 - (id)init;
 - (id)initWithIdentityProvider:(id)arg1;
 - (id)launchParamsForApplication:(id)arg1;
-- (void)showAuthenticationUserInterfaceWithAuthenticationToken:(id)arg1 purpose:(long long)arg2;
+- (void)showAuthenticationUserInterfaceWithAuthenticationToken:(id)arg1;
 - (void)start;
 - (void)stop;
 - (void)submitRequest:(id)arg1;

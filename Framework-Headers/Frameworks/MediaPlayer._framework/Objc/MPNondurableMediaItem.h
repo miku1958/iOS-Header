@@ -17,6 +17,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateValuesForProperties:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (BOOL)existsInLibrary;
+- (void)incrementPlayCount;
 - (void)incrementPlayCountForPlayingToEnd;
 - (BOOL)incrementPlayCountForStopTime:(double)arg1;
 - (void)incrementSkipCount;

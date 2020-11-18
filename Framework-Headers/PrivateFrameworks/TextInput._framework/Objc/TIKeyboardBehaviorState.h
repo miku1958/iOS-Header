@@ -17,6 +17,7 @@
     BOOL spaceConfirmation;
     BOOL hardwareKeyboardMode;
     BOOL _hasAutocorrection;
+    BOOL _userSelectedCurrentCandidate;
     BOOL _showsCandidatesInLayout;
 }
 
@@ -30,6 +31,7 @@
 @property (nonatomic) BOOL showsCandidatesInLayout; // @synthesize showsCandidatesInLayout=_showsCandidatesInLayout;
 @property (nonatomic) BOOL showsExtendedList; // @synthesize showsExtendedList;
 @property (nonatomic) BOOL spaceConfirmation; // @synthesize spaceConfirmation;
+@property (nonatomic) BOOL userSelectedCurrentCandidate; // @synthesize userSelectedCurrentCandidate=_userSelectedCurrentCandidate;
 
 
 @end

@@ -13,40 +13,60 @@
 @interface GEOPDBrowseCategory : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    int _displayMode;
     NSString *_displayString;
     NSString *_popularDisplayToken;
     NSString *_shortDisplayString;
+    int _sortOrder;
     GEOStyleAttributes *_styleAttributes;
+    int _subCategoryType;
     NSMutableArray *_subCategorys;
     NSData *_suggestionEntryMetadata;
+    struct {
+        unsigned int displayMode:1;
+        unsigned int sortOrder:1;
+        unsigned int subCategoryType:1;
+    } _has;
 }
 
+@property (nonatomic) int displayMode; // @synthesize displayMode=_displayMode;
 @property (strong, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
+@property (nonatomic) BOOL hasDisplayMode;
 @property (readonly, nonatomic) BOOL hasDisplayString;
 @property (readonly, nonatomic) BOOL hasPopularDisplayToken;
 @property (readonly, nonatomic) BOOL hasShortDisplayString;
+@property (nonatomic) BOOL hasSortOrder;
 @property (readonly, nonatomic) BOOL hasStyleAttributes;
+@property (nonatomic) BOOL hasSubCategoryType;
 @property (readonly, nonatomic) BOOL hasSuggestionEntryMetadata;
 @property (strong, nonatomic) NSString *popularDisplayToken; // @synthesize popularDisplayToken=_popularDisplayToken;
 @property (strong, nonatomic) NSString *shortDisplayString; // @synthesize shortDisplayString=_shortDisplayString;
+@property (nonatomic) int sortOrder; // @synthesize sortOrder=_sortOrder;
 @property (strong, nonatomic) GEOStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
+@property (nonatomic) int subCategoryType; // @synthesize subCategoryType=_subCategoryType;
 @property (strong, nonatomic) NSMutableArray *subCategorys; // @synthesize subCategorys=_subCategorys;
 @property (strong, nonatomic) NSData *suggestionEntryMetadata; // @synthesize suggestionEntryMetadata=_suggestionEntryMetadata;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)subCategoryType;
+- (void).cxx_destruct;
+- (int)StringAsDisplayMode:(id)arg1;
+- (int)StringAsSortOrder:(id)arg1;
+- (int)StringAsSubCategoryType:(id)arg1;
 - (void)addSubCategory:(id)arg1;
 - (void)clearSubCategorys;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)displayModeAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)sortOrderAsString:(int)arg1;
 - (id)subCategoryAtIndex:(unsigned long long)arg1;
+- (id)subCategoryTypeAsString:(int)arg1;
 - (unsigned long long)subCategorysCount;
 - (void)writeTo:(id)arg1;
 

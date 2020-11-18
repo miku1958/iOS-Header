@@ -14,5 +14,6 @@
 - (void)queueFeederDidInvalidateAssets:(MPQueueFeeder *)arg1;
 - (void)queueFeederDidInvalidateRealRepeatType:(MPQueueFeeder *)arg1;
 - (void)queueFeederDidInvalidateRealShuffleType:(MPQueueFeeder *)arg1;
+- (void)queueFeederDidReplaceItem:(MPQueueFeeder *)arg1;
 @end
 

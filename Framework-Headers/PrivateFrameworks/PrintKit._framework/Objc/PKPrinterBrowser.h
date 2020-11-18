@@ -32,6 +32,7 @@
 @property (readonly) Class superclass;
 
 + (id)browserWithDelegate:(id)arg1;
+- (void)aggdDiscoveredPrinterStatistics;
 - (void)btlePrinterFound:(id)arg1;
 - (void)btleRssiUpdated:(id)arg1 rssi:(id)arg2;
 - (void)dealloc;

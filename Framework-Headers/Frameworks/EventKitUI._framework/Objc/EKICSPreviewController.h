@@ -65,6 +65,8 @@
 - (void)eventViewControllerDidRequestAddToCalendar:(id)arg1;
 - (BOOL)eventViewControllerShouldAlwaysShowNavBar:(id)arg1;
 - (BOOL)eventViewControllerShouldDismissSelf:(id)arg1;
+- (void)handleDidImportEvent:(id)arg1 fromController:(id)arg2 intoCalendar:(id)arg3;
+- (void)handleImportEventError;
 - (void)icsPreviewListController:(id)arg1 didSelectEvent:(id)arg2;
 - (void)icsPreviewListControllerDidRequestImportAll:(id)arg1;
 - (void)importAllIntoCalendar:(id)arg1;
@@ -79,6 +81,7 @@
 - (void)presentCalendarChooserForController:(id)arg1;
 - (void)removeCancelButton;
 - (void)setCancelButtonWithTarget:(id)arg1 action:(SEL)arg2;
+- (id)singleExistingEventUniqueID;
 - (id)viewController;
 
 @end

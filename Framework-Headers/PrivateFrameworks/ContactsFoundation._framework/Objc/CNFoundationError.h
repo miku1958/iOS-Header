@@ -25,6 +25,7 @@
 + (BOOL)isFileNotFoundError:(id)arg1;
 + (BOOL)isTimeoutError:(id)arg1;
 + (id)timeoutError;
++ (id)userCanceledError;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSMutableArray, NSMutableString, NSString, PSITokenizer;
 @protocol OS_dispatch_queue;
@@ -60,6 +60,7 @@
 - (unsigned long long)_inqUpdateGroupAndPrefixTreeForString:(id)arg1 category:(short)arg2 owningGroupId:(unsigned long long)arg3;
 - (unsigned long long)_inqUpdateGroupAndPrefixTreeForString:(id)arg1 category:(short)arg2 owningGroupId:(unsigned long long)arg3 shouldUpdateOwningGroupId:(BOOL)arg4;
 - (void)_inqUpdatePrefixTreeWithGroupId:(unsigned long long)arg1 text:(id)arg2;
+- (void)_prepareTokenOutput:(struct tokenOutput_t *)arg1 forIndexing:(BOOL)arg2;
 - (void)_query:(id)arg1 recursiveAddToGroupResults:(id)arg2 aggregate:(id)arg3 atIndex:(unsigned long long)arg4 outOf:(unsigned long long)arg5 inGroupArrays:(id)arg6;
 - (void)_safeGetTokensForSearchFromString:(id)arg1 useWildcard:(BOOL)arg2 tokens:(id *)arg3 wildcardTokens:(id *)arg4;
 - (void)addAsset:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

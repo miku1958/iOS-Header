@@ -24,7 +24,7 @@
 - (void)_clearPathIfNecessary;
 - (void)_generatePath;
 - (void)dealloc;
-- (id)initWithCGImage:(struct CGImage *)arg1 flipped:(BOOL)arg2;
+- (id)initWithCGImage:(struct CGImage *)arg1 flipped:(BOOL)arg2 whiteIsInside:(BOOL)arg3;
 
 @end
 

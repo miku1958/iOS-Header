@@ -12,6 +12,7 @@
 
 @interface FTiMessageRequestMMCSUploadToken : IDSMessage <NSCopying>
 {
+    NSData *pushToken;
     NSString *_responseAuthToken;
     NSNumber *_length;
     NSData *_signature;
@@ -23,18 +24,27 @@
     NSString *_responseContentHeaders;
     NSData *_responseContentBody;
     long long _responseContentVersion;
+    NSData *_sessionToken;
+    NSString *_senderID;
+    NSString *_destinationID;
+    NSString *_anonymousSenderID;
 }
 
+@property (copy, nonatomic) NSString *anonymousSenderID; // @synthesize anonymousSenderID=_anonymousSenderID;
 @property (copy) NSData *contentBody; // @synthesize contentBody=_contentBody;
 @property (copy) NSString *contentHeaders; // @synthesize contentHeaders=_contentHeaders;
 @property long long contentVersion; // @synthesize contentVersion=_contentVersion;
+@property (copy, nonatomic) NSString *destinationID; // @synthesize destinationID=_destinationID;
 @property (copy) NSNumber *length; // @synthesize length=_length;
+@property (copy, nonatomic) NSData *pushToken; // @synthesize pushToken;
 @property (copy) NSString *responseAuthToken; // @synthesize responseAuthToken=_responseAuthToken;
 @property (copy) NSData *responseContentBody; // @synthesize responseContentBody=_responseContentBody;
 @property (copy) NSString *responseContentHeaders; // @synthesize responseContentHeaders=_responseContentHeaders;
 @property long long responseContentVersion; // @synthesize responseContentVersion=_responseContentVersion;
 @property (copy) NSString *responseRequestURL; // @synthesize responseRequestURL=_responseRequestURL;
 @property (copy) NSString *responseRequestorID; // @synthesize responseRequestorID=_responseRequestorID;
+@property (copy, nonatomic) NSString *senderID; // @synthesize senderID=_senderID;
+@property (copy, nonatomic) NSData *sessionToken; // @synthesize sessionToken=_sessionToken;
 @property (copy) NSData *signature; // @synthesize signature=_signature;
 
 - (long long)command;

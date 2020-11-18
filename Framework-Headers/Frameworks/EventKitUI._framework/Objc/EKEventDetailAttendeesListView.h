@@ -6,46 +6,51 @@
 
 #import <UIKit/UIView.h>
 
-#import <EventKitUI/EKEventDetailAttendeesList-Protocol.h>
-
-@class NSArray, NSString, UIColor, UIViewController;
+@class NSArray, NSMutableArray, UIColor, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface EKEventDetailAttendeesListView : UIView <EKEventDetailAttendeesList>
+@interface EKEventDetailAttendeesListView : UIView
 {
+    long long _statusCounts[4];
+    long long _columnAItems;
+    long long _columnBItems;
+    int _firstColumnBType;
+    double _maxHeight;
+    double _actualHeight;
+    NSMutableArray *_inviteeNames;
+    BOOL _shouldEvenOutBlocks;
+    NSArray *_finalizedNames;
     BOOL _highlighted;
     BOOL _groupsNames;
-    NSArray *_accepted;
-    NSArray *_maybe;
-    NSArray *_declined;
-    NSArray *_noReply;
     NSArray *_ungrouped;
     UIColor *_textColor;
     UIColor *_highlightedTextColor;
     UIViewController *_viewController;
 }
 
-@property (strong, nonatomic) NSArray *accepted; // @synthesize accepted=_accepted;
-@property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) NSArray *declined; // @synthesize declined=_declined;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL groupsNames; // @synthesize groupsNames=_groupsNames;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (strong, nonatomic) UIColor *highlightedTextColor; // @synthesize highlightedTextColor=_highlightedTextColor;
-@property (strong, nonatomic) NSArray *maybe; // @synthesize maybe=_maybe;
-@property (strong, nonatomic) NSArray *noReply; // @synthesize noReply=_noReply;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (strong, nonatomic) NSArray *ungrouped; // @synthesize ungrouped=_ungrouped;
 @property (weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
++ (id)statusGlyphs;
 - (void).cxx_destruct;
-- (void)_drawColumnOfStrings:(id)arg1 inRange:(struct _NSRange)arg2 startingAtPoint:(struct CGPoint)arg3 givenWidth:(double)arg4;
-- (double)_heightForGroupOfAttendeeNames:(id)arg1;
-- (double)_offsetFromOffsetToBaseline:(double)arg1 withFont:(id)arg2;
-- (void)drawInvitees:(id)arg1 withStatus:(id)arg2 startingAtPoint:(struct CGPoint)arg3 givenWidth:(double)arg4;
+- (BOOL)_shouldAlwaysDrawSingleColumn;
+- (double)calculateHeightForItemCounts:(long long [4])arg1;
+- (double)calculatedHeight;
+- (void)contentSizeCategoryChanged;
+- (void)dealloc;
+- (void)drawNames:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
+- (void)finalizeInviteNames;
+- (id)generateAttributedStringsFromNames:(id)arg1 glyph:(id)arg2 displayCount:(long long)arg3;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
+- (double)maxColumnHeight;
+- (double)maxHeight;
+- (void)setInvitees:(id)arg1 forStatus:(int)arg2;
 - (void)setup;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

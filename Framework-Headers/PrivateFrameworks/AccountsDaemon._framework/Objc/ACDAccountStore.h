@@ -48,6 +48,7 @@
 - (void).cxx_destruct;
 - (id)_accountTypeWithIdentifier:(id)arg1;
 - (id)_accountWithIdentifier:(id)arg1;
+- (id)_accountsWithAccountType:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (id)_accountsWithAcountType:(id)arg1 error:(id *)arg2;
 - (id)_addAccountNoSave:(id)arg1 withDataclassActions:(id)arg2 error:(id *)arg3;
 - (id)_allAccounts_sync;
@@ -61,18 +62,19 @@
 - (id)_dataclassWithName:(id)arg1 createIfNecessary:(BOOL)arg2;
 - (void)_deleteAccountNoSave:(id)arg1 withDataclassActions:(id)arg2 error:(id *)arg3;
 - (id)_displayAccountForAccount:(id)arg1;
-- (id)_handleAccountAdd:(id)arg1 withDataclassActions:(id)arg2;
-- (id)_handleAccountMod:(id)arg1 withDataclassActions:(id)arg2;
+- (BOOL)_handleAccountAdd:(id)arg1 withDataclassActions:(id)arg2 error:(id *)arg3;
+- (BOOL)_handleAccountMod:(id)arg1 withDataclassActions:(id)arg2 withError:(id *)arg3;
 - (BOOL)_isManagedAccount:(id)arg1 enabledForManagedDataclass:(id)arg2;
 - (id)_legacyCredentialForAccount:(id)arg1 client:(id)arg2 error:(id *)arg3;
 - (id)_lockForAccountType:(id)arg1;
 - (void)_noteAccountStoreDidSaveAccountsWithAccountTypeIdentifiers:(id)arg1 accountIdentifiers:(id)arg2;
-- (id)_removeAccountNoSave:(id)arg1 withDataclassActions:(id)arg2;
+- (id)_predicateForFetchingAccountsWithManagedAccountTypeID:(id)arg1 options:(unsigned long long)arg2;
+- (BOOL)_removeAccountNoSave:(id)arg1 withDataclassActions:(id)arg2 withError:(id *)arg3;
 - (void)_removeClientTokenForAccountIdentifer:(id)arg1;
 - (void)_requestAccessForAccountTypeWithIdentifier:(id)arg1 options:(id)arg2 allowUserInteraction:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
-- (id)_save;
+- (BOOL)_saveWithError:(id *)arg1;
 - (void)_setAccountManagedObjectRelationships:(id)arg1 withAccount:(id)arg2 oldAccount:(id)arg3 error:(id *)arg4;
-- (void)_updateAccountNoSave:(id)arg1 withDataclassActions:(id)arg2 error:(id *)arg3;
+- (BOOL)_updateAccountNoSave:(id)arg1 withDataclassActions:(id)arg2 error:(id *)arg3;
 - (void)_updateExistenceCacheOfAccountWithTypeIdentifier:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)accessKeysForAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)accountExistsWithDescription:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -86,6 +88,7 @@
 - (BOOL)accountsExistWithAccountTypeIdentifier:(id)arg1;
 - (void)accountsOnPairedDeviceWithAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)accountsWithAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)accountsWithAccountType:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)accountsWithAccountTypeIdentifier:(id)arg1;
 - (void)accountsWithAccountTypeIdentifiers:(id)arg1 preloadedProperties:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)accountsWithHandler:(CDUnknownBlockType)arg1;
@@ -144,6 +147,7 @@
 - (void)setClientBundleID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)setCredential:(id)arg1 forAccount:(id)arg2 serviceID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setPermissionGranted:(id)arg1 forBundleID:(id)arg2 onAccountType:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (BOOL)shouldPreventAccountCreationWithObsoleteAccountType;
 - (void)supportedDataclassesForAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)syncableDataclassesForAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)tetheredSyncSourceTypeForDataclass:(id)arg1 completion:(CDUnknownBlockType)arg2;

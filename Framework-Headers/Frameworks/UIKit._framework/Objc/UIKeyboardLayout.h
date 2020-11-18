@@ -92,6 +92,7 @@
 - (void)_notifyLayoutOfGesturePosition:(struct CGPoint)arg1 relativeToEdge:(unsigned long long)arg2;
 - (void)_removeTouchesFromProcessing:(id)arg1;
 - (void)_resetFingerDetectionFromLayout;
+- (void)_setRequiresExclusiveTouch:(BOOL)arg1;
 - (BOOL)_shouldAllowKeyboardHandlingForTouchesBegan:(id)arg1 withEvent:(id)arg2;
 - (BOOL)_shouldAllowKeyboardHandlingForTouchesEndedOrCancelled:(id)arg1 withEvent:(id)arg2;
 - (BOOL)_shouldAllowKeyboardHandlingForTouchesMoved:(id)arg1 withEvent:(id)arg2;
@@ -107,6 +108,7 @@
 - (void)addWipeRecognizer;
 - (void)assertSavedLocation:(struct CGPoint)arg1 onTouch:(id)arg2 inWindow:(id)arg3 resetPrevious:(BOOL)arg4;
 - (id)baseKeyForString:(id)arg1;
+- (double)biasedKeyboardWidthRatio;
 - (BOOL)canForceTouchUUIDCommit:(id)arg1 inWindow:(id)arg2;
 - (BOOL)canHandleEvent:(id)arg1;
 - (BOOL)canMultitap;
@@ -119,6 +121,7 @@
 - (void)clearUnusedObjects:(BOOL)arg1;
 - (void)commitTouchUUIDs:(id)arg1;
 - (void)commitTouches:(id)arg1 executionContext:(id)arg2;
+- (long long)currentHandBias;
 - (id)currentKeyplane;
 - (void)deactivateActiveKeys;
 - (void)deactivateActiveKeysClearingTouchInfo:(BOOL)arg1 clearingDimming:(BOOL)arg2;
@@ -139,6 +142,7 @@
 - (struct CGPoint)getCenterForKeyUnderRightIndexFinger;
 - (unsigned char)getHandRestRecognizerState;
 - (id)getHorizontalOffsetFromHomeRowForRowRelativeToHomeRow:(long long)arg1;
+- (BOOL)globeKeyDisplaysAsEmojiKey;
 - (void)handRestRecognizerNotifyRestForBegin:(BOOL)arg1 location:(struct CGPoint)arg2 timestamp:(double)arg3 pathIndex:(int)arg4 touchUUID:(id)arg5 context:(id)arg6;
 - (BOOL)handRestRecognizerShouldNeverIgnoreTouchState:(id)arg1 fromPoint:(struct CGPoint)arg2 toPoint:(struct CGPoint)arg3 forRestingState:(unsigned long long)arg4 otherRestedTouchLocations:(id)arg5;
 - (CDUnknownBlockType)handRestRecognizerSilenceNextTouchDown;
@@ -149,6 +153,7 @@
 - (double)hitBuffer;
 - (BOOL)ignoresShiftState;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)internationalKeyDisplayStringOnEmojiKeyboard;
 - (BOOL)isAlphabeticPlane;
 - (BOOL)isEmojiKeyplane;
 - (BOOL)isReachableDevice;
@@ -181,6 +186,7 @@
 - (void)setAction:(SEL)arg1 forKey:(id)arg2;
 - (void)setAutoshift:(BOOL)arg1;
 - (void)setDisableTouchInput:(BOOL)arg1;
+- (void)setKeyboardBias:(long long)arg1;
 - (void)setLabel:(id)arg1 forKey:(id)arg2;
 - (void)setLongPressAction:(SEL)arg1 forKey:(id)arg2;
 - (void)setNeedsVirtualDriftUpdate;
@@ -195,6 +201,7 @@
 - (BOOL)shouldAllowSelectionGestures:(BOOL)arg1 atPoint:(struct CGPoint)arg2 toBegin:(BOOL)arg3;
 - (BOOL)shouldFadeFromLayout;
 - (BOOL)shouldFadeToLayout;
+- (BOOL)shouldMergeAssistantBarWithKeyboardLayout;
 - (BOOL)shouldShowIndicator;
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;
 - (id)simulateTouch:(struct CGPoint)arg1;
@@ -228,9 +235,11 @@
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)triggerSpaceKeyplaneSwitchIfNecessary;
 - (void)updateBackgroundCorners;
+- (void)updateGlobeKeyAndLayoutOriginBeforeSnapshotForInputView:(id)arg1;
 - (void)updateLocalizedKeys:(BOOL)arg1;
 - (void)updateTouchProcessingForKeyboardChange;
 - (void)updateTouchProcessingForKeyplaneChange;
+- (void)updateUndoKeyState;
 - (BOOL)usesAutoShift;
 - (void)willBeginIndirectSelectionGesture;
 - (void)willMoveToWindow:(id)arg1;

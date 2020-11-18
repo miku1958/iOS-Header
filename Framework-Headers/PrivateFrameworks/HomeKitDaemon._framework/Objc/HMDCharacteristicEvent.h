@@ -4,37 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeKitDaemon/HMDEvent.h>
+#import <HomeKitDaemon/HMDCharacteristicEventBase.h>
 
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDCharacteristic, NSNumber, NSUUID;
-
-@interface HMDCharacteristicEvent : HMDEvent <NSSecureCoding>
+@interface HMDCharacteristicEvent : HMDCharacteristicEventBase <NSSecureCoding>
 {
-    HMDCharacteristic *_characteristic;
     id _eventValue;
-    id _previousValue;
-    NSUUID *_accessoryUUID;
-    NSNumber *_serviceID;
-    NSNumber *_characteristicInstanceID;
 }
 
-@property (readonly, nonatomic) NSUUID *accessoryUUID; // @synthesize accessoryUUID=_accessoryUUID;
-@property (readonly, nonatomic) HMDCharacteristic *characteristic; // @synthesize characteristic=_characteristic;
-@property (readonly, nonatomic) NSNumber *characteristicInstanceID; // @synthesize characteristicInstanceID=_characteristicInstanceID;
 @property (strong, nonatomic) id eventValue; // @synthesize eventValue=_eventValue;
-@property (strong, nonatomic) id previousValue; // @synthesize previousValue=_previousValue;
-@property (readonly, nonatomic) NSNumber *serviceID; // @synthesize serviceID=_serviceID;
 
-+ (id)characteristicEventWithDictionary:(id)arg1 home:(id)arg2 error:(id *)arg3;
++ (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)_compareEventValue:(id)arg1;
+- (BOOL)_evaluateNewValue:(id)arg1;
+- (void)_handleUpdateRequest:(id)arg1;
+- (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
+- (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (id)createPayload;
+- (id)description;
 - (id)dumpState;
+- (id)emptyModelObject;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithCharacteristic:(id)arg1 eventValue:(id)arg2;
 - (id)initWithCoder:(id)arg1;
-- (void)replaceCharacteristic:(id)arg1;
+- (id)initWithModel:(id)arg1 home:(id)arg2;
+- (id)metricData;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1;
 
 @end
 

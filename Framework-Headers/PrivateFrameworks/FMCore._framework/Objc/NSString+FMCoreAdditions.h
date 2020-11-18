@@ -14,6 +14,7 @@
 - (id)fm_decodeHexString;
 - (id)fm_encodeToPercentEscape;
 - (BOOL)fm_isNumeric;
+- (id)fm_stringByReplacingNonBreakingSpaces;
 - (id)fm_wifiToWLAN;
 - (BOOL)isNumeric;
 - (id)legacyAllowedCharacterSet;

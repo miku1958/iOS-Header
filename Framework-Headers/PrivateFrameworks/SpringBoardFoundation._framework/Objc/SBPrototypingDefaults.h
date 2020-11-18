@@ -10,7 +10,7 @@
 {
 }
 
-@property (readonly, nonatomic) BOOL allowPrototypeSettings; // @dynamic allowPrototypeSettings;
+@property (nonatomic) BOOL allowPrototypeSettings; // @dynamic allowPrototypeSettings;
 @property (nonatomic) BOOL prototypeSettingsNeedsMigration; // @dynamic prototypeSettingsNeedsMigration;
 
 - (void)_bindAndRegisterDefaults;

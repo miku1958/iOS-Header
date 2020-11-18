@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (CDUnion_f9025cb3 *)shmem;
 - (void)synchronousWithSourceCache:(CDUnknownBlockType)arg1;
 - (unsigned int)userID;
-- (void)withSourceForDomain:(struct __CFString *)arg1 inContainer:(struct __CFString *)arg2 user:(struct __CFString *)arg3 byHost:(BOOL)arg4 managed:(BOOL)arg5 cloudStoreEntitlement:(id)arg6 cloudConfigurationPath:(struct __CFString *)arg7 perform:(CDUnknownBlockType)arg8;
+- (void)withSourceForDomain:(struct __CFString *)arg1 inContainer:(struct __CFString *)arg2 user:(struct __CFString *)arg3 byHost:(BOOL)arg4 managed:(BOOL)arg5 managedUsesContainer:(BOOL)arg6 cloudStoreEntitlement:(id)arg7 cloudConfigurationPath:(struct __CFString *)arg8 perform:(CDUnknownBlockType)arg9;
 - (void)withSources:(CDUnknownBlockType)arg1;
 
 @end

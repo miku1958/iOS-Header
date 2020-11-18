@@ -8,7 +8,7 @@
 
 #import <UIKit/NSCopying-Protocol.h>
 
-@class UIView;
+@class UIFocusSystem, UIView;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusRegionMapSnapshotRequest : NSObject <NSCopying>
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     BOOL _includeFocusContainerGuides;
     BOOL _clipToSnapshotRect;
     UIView *_rootView;
+    UIFocusSystem *_focusSystem;
     unsigned long long _focusHeading;
     UIView *_focusableRegionAncestorView;
     struct CGRect _snapshotRect;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL clipToSnapshotRect; // @synthesize clipToSnapshotRect=_clipToSnapshotRect;
 @property (nonatomic) unsigned long long focusHeading; // @synthesize focusHeading=_focusHeading;
+@property (strong, nonatomic) UIFocusSystem *focusSystem; // @synthesize focusSystem=_focusSystem;
 @property (weak, nonatomic) UIView *focusableRegionAncestorView; // @synthesize focusableRegionAncestorView=_focusableRegionAncestorView;
 @property (nonatomic) struct CGRect focusedRect; // @synthesize focusedRect=_focusedRect;
 @property (nonatomic) BOOL includeFocusContainerGuides; // @synthesize includeFocusContainerGuides=_includeFocusContainerGuides;
@@ -36,10 +38,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGRect viewSearchRect; // @synthesize viewSearchRect=_viewSearchRect;
 @property (nonatomic) struct CGRect visualRepresentationMinimumArea; // @synthesize visualRepresentationMinimumArea=_visualRepresentationMinimumArea;
 
-+ (id)requestWithRootView:(id)arg1;
++ (id)requestWithRootView:(id)arg1 focusSystem:(id)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithRootView:(id)arg1;
+- (id)initWithRootView:(id)arg1 focusSystem:(id)arg2;
 - (id)takeSnapshot;
 
 @end

@@ -6,15 +6,17 @@
 
 #import <SafariServices/_SFDialog.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SFBasicDialog : _SFDialog
 {
-    BOOL _canceledOnNavigation;
+    BOOL _canceledOnProvisionalNavigation;
+    BOOL _canceledOnCommittedNavigation;
     BOOL _completionHandlerBlocksWebProcess;
+    BOOL _alertControllerPresentsAsActionSheet;
     BOOL _shouldHideWebContent;
-    BOOL _showMessageAsTitle;
+    NSArray *_additionalCancellationExemptions;
     long long _presentationStyle;
     NSString *_title;
     NSString *_message;
@@ -22,12 +24,15 @@ __attribute__((visibility("hidden")))
     NSString *_textPlaceholder;
     NSString *_defaultPassword;
     NSString *_passwordPlaceholder;
-    NSString *_primaryActionTitle;
-    NSString *_secondaryActionTitle;
+    NSArray *_actions;
     CDUnknownBlockType _completionHandler;
 }
 
-@property (nonatomic) BOOL canceledOnNavigation; // @synthesize canceledOnNavigation=_canceledOnNavigation;
+@property (copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
+@property (copy, nonatomic) NSArray *additionalCancellationExemptions; // @synthesize additionalCancellationExemptions=_additionalCancellationExemptions;
+@property (nonatomic) BOOL alertControllerPresentsAsActionSheet; // @synthesize alertControllerPresentsAsActionSheet=_alertControllerPresentsAsActionSheet;
+@property (nonatomic) BOOL canceledOnCommittedNavigation; // @synthesize canceledOnCommittedNavigation=_canceledOnCommittedNavigation;
+@property (nonatomic) BOOL canceledOnProvisionalNavigation; // @synthesize canceledOnProvisionalNavigation=_canceledOnProvisionalNavigation;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (nonatomic) BOOL completionHandlerBlocksWebProcess; // @synthesize completionHandlerBlocksWebProcess=_completionHandlerBlocksWebProcess;
 @property (copy, nonatomic) NSString *defaultPassword; // @synthesize defaultPassword=_defaultPassword;
@@ -35,10 +40,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (copy, nonatomic) NSString *passwordPlaceholder; // @synthesize passwordPlaceholder=_passwordPlaceholder;
 @property (nonatomic) long long presentationStyle; // @synthesize presentationStyle=_presentationStyle;
-@property (copy, nonatomic) NSString *primaryActionTitle; // @synthesize primaryActionTitle=_primaryActionTitle;
-@property (copy, nonatomic) NSString *secondaryActionTitle; // @synthesize secondaryActionTitle=_secondaryActionTitle;
 @property (nonatomic) BOOL shouldHideWebContent; // @synthesize shouldHideWebContent=_shouldHideWebContent;
-@property (nonatomic) BOOL showMessageAsTitle; // @synthesize showMessageAsTitle=_showMessageAsTitle;
 @property (copy, nonatomic) NSString *textPlaceholder; // @synthesize textPlaceholder=_textPlaceholder;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 

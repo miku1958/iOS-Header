@@ -7,12 +7,11 @@
 #import <CacheDelete/CacheDeleteListener.h>
 
 #import <CacheDelete/CacheDeleteServiceProtocol-Protocol.h>
-#import <CacheDelete/NSXPCListenerDelegate-Protocol.h>
 
-@class CacheDeleteServiceInfo, NSObject, NSString, NSXPCListenerEndpoint;
+@class CacheDeleteServiceInfo, NSObject, NSXPCListenerEndpoint;
 @protocol OS_dispatch_queue;
 
-@interface CacheDeleteServiceListener : CacheDeleteListener <NSXPCListenerDelegate, CacheDeleteServiceProtocol>
+@interface CacheDeleteServiceListener : CacheDeleteListener <CacheDeleteServiceProtocol>
 {
     BOOL _legacyCallbacks;
     BOOL _anonymous;
@@ -30,10 +29,7 @@
 @property (readonly) BOOL anonymous; // @synthesize anonymous=_anonymous;
 @property (copy, nonatomic) CDUnknownBlockType callback; // @synthesize callback=_callback;
 @property (copy, nonatomic) CDUnknownBlockType cancel; // @synthesize cancel=_cancel;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly) NSXPCListenerEndpoint *endpoint; // @synthesize endpoint=_endpoint;
-@property (readonly) unsigned long long hash;
 @property (readonly) BOOL legacyCallbacks; // @synthesize legacyCallbacks=_legacyCallbacks;
 @property (copy, nonatomic) CDUnknownBlockType notify; // @synthesize notify=_notify;
 @property (copy, nonatomic) CDUnknownBlockType periodic; // @synthesize periodic=_periodic;
@@ -41,7 +37,6 @@
 @property (copy, nonatomic) CDUnknownBlockType purgeable; // @synthesize purgeable=_purgeable;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly, nonatomic) CacheDeleteServiceInfo *serviceInfo; // @synthesize serviceInfo=_serviceInfo;
-@property (readonly) Class superclass;
 
 + (id)cacheDeleteServiceListener:(id)arg1 options:(id)arg2;
 - (void).cxx_destruct;
@@ -54,6 +49,7 @@
 - (void)servicePurge:(int)arg1 info:(id)arg2 replyBlock:(CDUnknownBlockType)arg3;
 - (void)servicePurgeable:(int)arg1 info:(id)arg2 replyBlock:(CDUnknownBlockType)arg3;
 - (void)setNotifyCallback:(CDUnknownBlockType)arg1;
+- (void)setPurgeable:(CDUnknownBlockType)arg1 purge:(CDUnknownBlockType)arg2 cancel:(CDUnknownBlockType)arg3 periodic:(CDUnknownBlockType)arg4 notify:(CDUnknownBlockType)arg5 callback:(CDUnknownBlockType)arg6 entitlements:(id)arg7;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/NSSecureCoding-Protocol.h>
 
@@ -19,8 +19,10 @@
     NSString *_advertisingSection;
     NSString *_authenticationUserName;
     NSSet *_context;
+    NSString *_adSpaceContextJSON;
 }
 
+@property (copy, nonatomic) NSString *adSpaceContextJSON; // @synthesize adSpaceContextJSON=_adSpaceContextJSON;
 @property (copy, nonatomic) NSString *advertisingSection; // @synthesize advertisingSection=_advertisingSection;
 @property (copy, nonatomic) NSString *authenticationUserName; // @synthesize authenticationUserName=_authenticationUserName;
 @property (copy, nonatomic) NSSet *context; // @synthesize context=_context;

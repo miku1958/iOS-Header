@@ -6,25 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class HDDaemon, HDDeviceManager, HDSourceManager, HDUserCharacteristicsManager;
-@protocol HDHealthDaemon, HDHealthDataCollectionManager, HDHealthDataManager, HDHealthDatabase;
+@class HDDaemon, HDDataCollectionManager, HDDeviceManager, HDSourceManager, HDUserCharacteristicsManager;
+@protocol HDHealthDaemon, HDHealthDatabase;
 
 @interface HDMockProfile : NSObject
 {
     id<HDHealthDatabase> healthDatabase;
-    id<HDHealthDataManager> healthDataManager;
     HDSourceManager *healthSourceManager;
     HDDeviceManager *healthDeviceManager;
-    id<HDHealthDataCollectionManager> healthDataCollectionManager;
     HDDaemon *daemon;
     id<HDHealthDaemon> _healthDaemon;
+    HDDataCollectionManager *_dataCollectionManager;
     HDUserCharacteristicsManager *_userCharacteristicsManager;
 }
 
 @property (weak, nonatomic) HDDaemon *daemon; // @synthesize daemon;
+@property (strong, nonatomic) HDDataCollectionManager *dataCollectionManager; // @synthesize dataCollectionManager=_dataCollectionManager;
 @property (weak, nonatomic) id<HDHealthDaemon> healthDaemon; // @synthesize healthDaemon=_healthDaemon;
-@property (strong, nonatomic) id<HDHealthDataCollectionManager> healthDataCollectionManager; // @synthesize healthDataCollectionManager;
-@property (strong, nonatomic) id<HDHealthDataManager> healthDataManager; // @synthesize healthDataManager;
 @property (strong, nonatomic) id<HDHealthDatabase> healthDatabase; // @synthesize healthDatabase;
 @property (strong, nonatomic) HDDeviceManager *healthDeviceManager; // @synthesize healthDeviceManager;
 @property (strong, nonatomic) HDSourceManager *healthSourceManager; // @synthesize healthSourceManager;

@@ -6,24 +6,22 @@
 
 #import <Home/HFItemProvider.h>
 
-@class HFTriggerBuilder, NSMutableSet;
+@class HMHome, NSMutableSet, NSSet;
 
 @interface HFConditionItemProvider : HFItemProvider
 {
-    BOOL _includeSuggestions;
-    HFTriggerBuilder *_triggerBuilder;
+    NSSet *_conditions;
+    HMHome *_home;
     NSMutableSet *_conditionItems;
 }
 
-@property (strong, nonatomic) NSMutableSet *conditionItems; // @synthesize conditionItems=_conditionItems;
-@property (readonly, nonatomic) BOOL includeSuggestions; // @synthesize includeSuggestions=_includeSuggestions;
-@property (readonly, nonatomic) HFTriggerBuilder *triggerBuilder; // @synthesize triggerBuilder=_triggerBuilder;
+@property (readonly, nonatomic) NSMutableSet *conditionItems; // @synthesize conditionItems=_conditionItems;
+@property (strong, nonatomic) NSSet *conditions; // @synthesize conditions=_conditions;
+@property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 
 - (void).cxx_destruct;
-- (id)_suggestedConditionBuilders;
-- (id)initWithHome:(id)arg1;
-- (id)initWithTriggerBuilder:(id)arg1 includeSuggestions:(BOOL)arg2;
-- (id)invalidationReasons;
+- (id)init;
+- (id)initWithConditions:(id)arg1 home:(id)arg2;
 - (id)items;
 - (id)reloadItems;
 

@@ -13,14 +13,15 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityCurrentPageDidChange;
+- (long long)_accessibilityCurrentPageIndex;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityScrollAncestor;
 - (BOOL)_accessibilityServesAsContainingParentForOrdering;
 - (BOOL)_accessibilitySupportsActivateAction;
 - (BOOL)_accessibilityViewIsVisible;
+- (BOOL)_axHasOpenFolder;
 - (BOOL)_axIsLastPage;
-- (void)_setNewPage:(long long)arg1;
+- (void)_axSetNewPage:(long long)arg1;
 - (BOOL)accessibilityActivate;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;

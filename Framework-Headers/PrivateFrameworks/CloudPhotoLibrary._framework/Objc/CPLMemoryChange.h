@@ -24,25 +24,36 @@
     long long _graphVersion;
     NSData *_movieData;
     double _score;
+    long long _notificationState;
+    NSData *_blacklistedFeature;
+    long long _playCount;
+    long long _shareCount;
+    long long _viewCount;
 }
 
 @property (copy, nonatomic) CPLMemoryAssetList *assetList; // @synthesize assetList=_assetList;
 @property (copy, nonatomic) NSData *assetListPredicate; // @synthesize assetListPredicate=_assetListPredicate;
+@property (copy, nonatomic) NSData *blacklistedFeature; // @synthesize blacklistedFeature=_blacklistedFeature;
 @property (nonatomic) long long category; // @synthesize category=_category;
 @property (copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (nonatomic, getter=isFavorite) BOOL favorite; // @synthesize favorite=_favorite;
 @property (copy, nonatomic) NSData *graphData; // @synthesize graphData=_graphData;
 @property (nonatomic) long long graphVersion; // @synthesize graphVersion=_graphVersion;
 @property (copy, nonatomic) NSData *movieData; // @synthesize movieData=_movieData;
+@property (nonatomic) long long notificationState; // @synthesize notificationState=_notificationState;
+@property (nonatomic) long long playCount; // @synthesize playCount=_playCount;
 @property (nonatomic, getter=isRejected) BOOL rejected; // @synthesize rejected=_rejected;
 @property (nonatomic) double score; // @synthesize score=_score;
+@property (nonatomic) long long shareCount; // @synthesize shareCount=_shareCount;
 @property (nonatomic) long long subcategory; // @synthesize subcategory=_subcategory;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic, getter=isUserCreated) BOOL userCreated; // @synthesize userCreated=_userCreated;
+@property (nonatomic) long long viewCount; // @synthesize viewCount=_viewCount;
 
 + (id)_createTestMemoryWithAssets:(id)arg1;
 - (void).cxx_destruct;
+- (CDUnknownBlockType)checkDefaultValueBlockForPropertyWithSelector:(SEL)arg1;
 - (id)identifiersForMapping;
 - (id)propertiesDescription;
 - (BOOL)supportsDeletion;

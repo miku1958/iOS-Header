@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long shortPromptType; // @synthesize shortPromptType=_shortPromptType;
 @property (readonly, copy, nonatomic) NSString *textToSpeak; // @synthesize textToSpeak=_textToSpeak;
 
-+ (id)eventWithPrompt:(unsigned long long)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)eventWithText:(id)arg1 fallbackPrompt:(unsigned long long)arg2 options:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 + (BOOL)isValidShortPromptType:(unsigned long long)arg1;
 - (void).cxx_destruct;

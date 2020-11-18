@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSData, NSDate, NSDictionary, NSString, NSURL;
+@class NSArray, NSData, NSDate, NSDictionary, NSString, NSURL;
 
 @interface IMFileTransfer : NSObject
 {
@@ -24,8 +24,6 @@
     unsigned short _hfsFlags;
     unsigned int _hfsType;
     unsigned int _hfsCreator;
-    NSURL *_localURL;
-    NSData *_localBookmark;
     double _lastUpdatedInterval;
     double _lastAveragedInterval;
     unsigned long long _lastAveragedBytes;
@@ -50,7 +48,14 @@
     NSDictionary *_transcoderUserInfo;
     NSDictionary *_AuxTranscoderUserInfo;
     NSDictionary *_stickerUserInfo;
+    NSArray *_attachmentSendContexts;
+    long long _cloudKitSyncState;
+    NSData *_cloudKitServerChangeTokenBlob;
+    NSString *_cloudKitRecordID;
+    NSURL *_localURL;
+    NSURL *_temporaryHighQualityLocalURL;
     NSDictionary *_attributionInfo;
+    NSString *_originalGUID;
 }
 
 @property (strong, nonatomic) NSDictionary *AuxTranscoderUserInfo; // @synthesize AuxTranscoderUserInfo=_AuxTranscoderUserInfo;
@@ -60,9 +65,13 @@
 @property (nonatomic, setter=_setNeedsWrapper:) BOOL _needsWrapper; // @synthesize _needsWrapper;
 @property (strong, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
 @property (nonatomic) BOOL appMessageFallbackImage; // @synthesize appMessageFallbackImage=_appMessageFallbackImage;
+@property (strong, nonatomic) NSArray *attachmentSendContexts; // @synthesize attachmentSendContexts=_attachmentSendContexts;
 @property (strong, nonatomic) NSDictionary *attributionInfo; // @synthesize attributionInfo=_attributionInfo;
 @property (nonatomic) unsigned long long averageTransferRate; // @synthesize averageTransferRate=_averageTransferRate;
 @property (readonly, nonatomic) BOOL canBeAccepted;
+@property (strong, nonatomic) NSString *cloudKitRecordID; // @synthesize cloudKitRecordID=_cloudKitRecordID;
+@property (strong, nonatomic) NSData *cloudKitServerChangeTokenBlob; // @synthesize cloudKitServerChangeTokenBlob=_cloudKitServerChangeTokenBlob;
+@property (nonatomic) long long cloudKitSyncState; // @synthesize cloudKitSyncState=_cloudKitSyncState;
 @property (strong, nonatomic) NSDate *createdDate; // @synthesize createdDate=_createdDate;
 @property (nonatomic) unsigned long long currentBytes; // @synthesize currentBytes=_currentBytes;
 @property (readonly, strong, nonatomic) NSString *displayName;
@@ -75,6 +84,7 @@
 @property (nonatomic) unsigned short hfsFlags; // @synthesize hfsFlags=_hfsFlags;
 @property (nonatomic) unsigned int hfsType; // @synthesize hfsType=_hfsType;
 @property (nonatomic) BOOL hideAttachment; // @synthesize hideAttachment=_hideAttachment;
+@property (readonly, nonatomic) BOOL isAutoloopVideo;
 @property (nonatomic) BOOL isAuxImage; // @synthesize isAuxImage=_isAuxImage;
 @property (nonatomic) BOOL isAuxVideo; // @synthesize isAuxVideo=_isAuxVideo;
 @property (nonatomic) BOOL isDirectory; // @synthesize isDirectory=_isDirectory;
@@ -82,17 +92,19 @@
 @property (nonatomic) BOOL isIncoming; // @synthesize isIncoming=_isIncoming;
 @property (readonly, nonatomic) BOOL isRecipeBasedSticker;
 @property (nonatomic) BOOL isSticker; // @synthesize isSticker=_isSticker;
-@property (strong, nonatomic) NSData *localBookmark; // @synthesize localBookmark=_localBookmark;
 @property (strong, nonatomic, setter=_setLocalPath:) NSString *localPath;
-@property (strong, nonatomic, setter=_setLocalURL:) NSURL *localURL;
-@property (readonly, strong, nonatomic) NSURL *localURLWithoutBookmarkResolution; // @synthesize localURLWithoutBookmarkResolution=_localURL;
+@property (strong, nonatomic, setter=_setLocalURL:) NSURL *localURL; // @synthesize localURL=_localURL;
 @property (strong, nonatomic) NSString *messageGUID; // @synthesize messageGUID=_messageGUID;
 @property (readonly, strong, nonatomic) NSString *mimeType; // @synthesize mimeType=_mimeType;
+@property (strong, nonatomic) NSString *originalGUID; // @synthesize originalGUID=_originalGUID;
 @property (strong, nonatomic) NSString *otherPerson; // @synthesize otherPerson=_otherPerson;
+@property (readonly, strong, nonatomic) NSString *permanentHighQualityLocalPath;
 @property (nonatomic) BOOL shouldAttemptToResume; // @synthesize shouldAttemptToResume=_shouldAttemptToResume;
 @property (nonatomic, setter=_setForceArchive:) BOOL shouldForceArchive; // @synthesize shouldForceArchive=_shouldForceArchive;
 @property (strong, nonatomic, setter=_setStartDate:) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (strong, nonatomic) NSDictionary *stickerUserInfo; // @synthesize stickerUserInfo=_stickerUserInfo;
+@property (readonly, strong, nonatomic) NSString *temporaryHighQualityLocalPath;
+@property (strong, nonatomic) NSURL *temporaryHighQualityLocalURL; // @synthesize temporaryHighQualityLocalURL=_temporaryHighQualityLocalURL;
 @property (nonatomic) unsigned long long totalBytes; // @synthesize totalBytes=_totalBytes;
 @property (strong, nonatomic) NSDictionary *transcoderUserInfo; // @synthesize transcoderUserInfo=_transcoderUserInfo;
 @property (strong, nonatomic, setter=_setTransferDataURL:) NSURL *transferDataURL; // @synthesize transferDataURL=_transferDataURL;
@@ -105,6 +117,7 @@
 + (id)AuxGUIDFromFileTransferGUID:(id)arg1;
 + (BOOL)_doesLocalURLRequireArchiving:(id)arg1;
 + (id)guidByStrippingAuxPrefix:(id)arg1;
+- (id)_auxVideoPathIfItExists;
 - (void)_calculateTypeInformation;
 - (void)_clear;
 - (id)_dictionaryRepresentation;

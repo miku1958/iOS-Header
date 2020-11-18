@@ -8,15 +8,21 @@
 
 #import <NanoMailKitServer/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface NNMKProtoOldMessagesAvailableNotification : PBCodable <NSCopying>
 {
     unsigned int _fullSyncVersion;
+    NSString *_mailboxId;
     CDStruct_a125a100 _has;
 }
 
 @property (nonatomic) unsigned int fullSyncVersion; // @synthesize fullSyncVersion=_fullSyncVersion;
 @property (nonatomic) BOOL hasFullSyncVersion;
+@property (readonly, nonatomic) BOOL hasMailboxId;
+@property (strong, nonatomic) NSString *mailboxId; // @synthesize mailboxId=_mailboxId;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

@@ -10,12 +10,13 @@
 #import <ClassroomKit/CRKClassSessionBeaconBrowserDelegate-Protocol.h>
 #import <ClassroomKit/CRKSessionDelegate-Protocol.h>
 
-@class CATNetworkReachability, CRKClassSessionBeaconBrowser, NSMutableDictionary, NSSet, NSString;
+@class CATNetworkReachability, CRKClassSessionBeaconBrowser, NSMutableArray, NSMutableDictionary, NSSet, NSString;
 @protocol CRKClassSessionBrowserDelegate, CRKInvitationSessionBrowserDelegate;
 
 @interface CRKClassSessionBrowser : NSObject <CRKSessionDelegate, CRKClassSessionBeaconBrowserDelegate, CATNetworkReachabilityDelegate>
 {
     NSMutableDictionary *mClassSessionsByIdentifier;
+    NSMutableArray *mInRangeClassSessions;
     NSMutableDictionary *mInvitationSessionsByIPAddress;
     CRKClassSessionBeaconBrowser *mBeaconBrowser;
     CATNetworkReachability *mNetworkReachability;
@@ -44,6 +45,7 @@
 - (void).cxx_destruct;
 - (void)acquireConnectWithoutBeaconAssertionForInvitationSessionWithIPAddress:(id)arg1;
 - (void)acquireConnectWithoutBeaconAssertionForSessionIdentifier:(id)arg1;
+- (void)addInRangeClassSession:(id)arg1;
 - (void)beaconBrowser:(id)arg1 didFailWithError:(id)arg2;
 - (void)beaconBrowser:(id)arg1 didFindBeaconForClassSession:(id)arg2 flags:(unsigned short)arg3;
 - (void)beaconBrowser:(id)arg1 didFindBeaconForInvitationSessionWithIPAddress:(id)arg2;
@@ -59,6 +61,7 @@
 - (void)delegateDidFindInvitationSession:(id)arg1 transport:(id)arg2;
 - (void)delegateDidRemoveClassSession:(id)arg1;
 - (void)delegateDidRemoveInvitationSession:(id)arg1;
+- (void)delegateInRangeClassSessionsDidChange;
 - (void)delegateLostConnectionToClassSession:(id)arg1;
 - (void)delegateLostConnectionToInvitationSession:(id)arg1;
 - (id)delegateNeedsClientIdentityForGroup:(id)arg1;
@@ -71,6 +74,7 @@
 - (void)reachabilityDidChange:(id)arg1;
 - (void)releaseConnectWithoutBeaconAssertionForInvitationSessionWithIPAddress:(id)arg1;
 - (void)releaseConnectWithoutBeaconAssertionForSessionIdentifier:(id)arg1;
+- (void)removeInRangeClassSession:(id)arg1;
 - (void)session:(id)arg1 didConnectWithTransport:(id)arg2;
 - (void)session:(id)arg1 willLoseBeaconAfterTimeInterval:(double)arg2;
 - (void)sessionDidBecomeConnectable:(id)arg1;

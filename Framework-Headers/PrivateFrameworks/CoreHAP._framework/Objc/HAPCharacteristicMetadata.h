@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <CoreHAP/NSCopying-Protocol.h>
+#import <CoreHAP/NSSecureCoding-Protocol.h>
 
 @class HAPMetadataConstraints, NSString;
 
-@interface HAPCharacteristicMetadata : NSObject <NSCopying>
+@interface HAPCharacteristicMetadata : HMFObject <NSCopying, NSSecureCoding>
 {
     HAPMetadataConstraints *_constraints;
     NSString *_manufacturerDescription;
@@ -23,10 +24,13 @@
 @property (copy, nonatomic) NSString *manufacturerDescription; // @synthesize manufacturerDescription=_manufacturerDescription;
 @property (strong, nonatomic) NSString *units; // @synthesize units=_units;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_generateValidConstraints:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithConstraints:(id)arg1 description:(id)arg2 format:(id)arg3 units:(id)arg4;
 - (BOOL)isEqualToCharacteristicMetadata:(id)arg1;
 

@@ -6,30 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class BRCDeadlineScheduler;
-@protocol OS_dispatch_source;
+@class BRCDeadlineScheduler, NSString;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface BRCDeadlineSource : NSObject
 {
     long long _deadline;
-    NSObject<OS_dispatch_source> *_latch;
     BRCDeadlineScheduler *_scheduler;
-    _Atomic int _suspendCount;
+    int _suspendCount;
+    BOOL _cancelled;
+    BOOL _signaled;
+    NSString *_name;
+    CDUnknownBlockType _eventHandler;
+    NSObject<OS_dispatch_queue> *_queue;
 }
+
+@property (copy, nonatomic) CDUnknownBlockType eventHandler; // @synthesize eventHandler=_eventHandler;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 - (void).cxx_destruct;
 - (void)cancel;
-- (void)dealloc;
 - (id)description;
-- (id)initWithScheduler:(id)arg1;
+- (id)initWithScheduler:(id)arg1 name:(id)arg2;
 - (void)resume;
-- (void)setBottomQueue:(id)arg1;
-- (void)setEventHandler:(CDUnknownBlockType)arg1;
-- (void)setTargetQueue:(id)arg1;
+- (void)runEventHandler;
 - (void)signal;
 - (void)signalWithDeadline:(long long)arg1;
 - (void)suspend;
+- (BOOL)willRunEvenHandler;
 
 @end
 

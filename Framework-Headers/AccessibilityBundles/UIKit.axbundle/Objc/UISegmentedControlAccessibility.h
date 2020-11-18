@@ -12,6 +12,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilitySupportsContentSizeCategory:(id)arg1;
 - (id)accessibilityElements;
 - (BOOL)accessibilityElementsHidden;
 - (BOOL)isAccessibilityElement;

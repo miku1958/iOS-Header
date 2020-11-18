@@ -19,7 +19,7 @@
 @property (strong, nonatomic) NSString *matchTypeAttribute; // @synthesize matchTypeAttribute=_matchTypeAttribute;
 @property (strong, nonatomic) CoreDAVLeafItem *prop; // @synthesize prop=_prop;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 - (id)initWithSearchPropertyNameSpace:(id)arg1 andName:(id)arg2;

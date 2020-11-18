@@ -6,27 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class UIFont;
+#import <HomeUI/NSCopying-Protocol.h>
 
-@interface HUNavigationBarLayoutOptions : NSObject
+@class HUNavigationButtonLayoutOptions;
+
+@interface HUNavigationBarLayoutOptions : NSObject <NSCopying>
 {
     double _topMargin;
     double _bottomMargin;
     double _height;
-    UIFont *_buttonFont;
-    double _minTextButtonWidth;
+    HUNavigationButtonLayoutOptions *_buttonLayoutOptions;
     long long _viewSizeSubclass;
     double _containerLeadingMargin;
     double _containerTrailingMargin;
 }
 
 @property (nonatomic) double bottomMargin; // @synthesize bottomMargin=_bottomMargin;
-@property (strong, nonatomic) UIFont *buttonFont; // @synthesize buttonFont=_buttonFont;
+@property (copy, nonatomic) HUNavigationButtonLayoutOptions *buttonLayoutOptions; // @synthesize buttonLayoutOptions=_buttonLayoutOptions;
 @property (nonatomic) double containerLeadingMargin; // @synthesize containerLeadingMargin=_containerLeadingMargin;
 @property (nonatomic) double containerTrailingMargin; // @synthesize containerTrailingMargin=_containerTrailingMargin;
 @property (nonatomic) double height; // @synthesize height=_height;
 @property (readonly, nonatomic) double leadingMargin;
-@property (nonatomic) double minTextButtonWidth; // @synthesize minTextButtonWidth=_minTextButtonWidth;
 @property (nonatomic) double topMargin; // @synthesize topMargin=_topMargin;
 @property (readonly, nonatomic) double trailingMargin;
 @property (readonly, nonatomic) long long viewSizeSubclass; // @synthesize viewSizeSubclass=_viewSizeSubclass;

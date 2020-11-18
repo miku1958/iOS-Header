@@ -28,12 +28,12 @@
 @property (strong, nonatomic) NSMutableArray *surchargeUnits; // @synthesize surchargeUnits=_surchargeUnits;
 
 + (Class)surchargeUnitType;
+- (void).cxx_destruct;
 - (int)StringAsPaymentType:(id)arg1;
 - (void)addSurchargeUnit:(id)arg1;
 - (void)clearSurchargeUnits;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

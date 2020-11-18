@@ -29,6 +29,7 @@
 @property (readonly, copy, nonatomic) NSString *videoPath;
 @property (readonly, copy, nonatomic) NSString *videoPath; // @synthesize videoPath=_videoPath;
 
++ (id)currentFormatVersion;
 - (void).cxx_destruct;
 - (void)_readMetadataIfNeeded;
 - (id)init;

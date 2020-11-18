@@ -6,31 +6,39 @@
 
 #import <HealthKit/HKQuery.h>
 
-@class NSDateInterval;
+#import <HealthKit/HKStatisticsQueryClientInterface-Protocol.h>
 
-@interface HKStatisticsQuery : HKQuery
+@class NSDateInterval, NSString;
+
+@interface HKStatisticsQuery : HKQuery <HKStatisticsQueryClientInterface>
 {
-    unsigned long long _mergeStrategy;
-    NSDateInterval *_dateInterval;
     CDUnknownBlockType _completionHandler;
     unsigned long long _options;
+    unsigned long long _mergeStrategy;
+    NSDateInterval *_dateInterval;
 }
 
 @property (readonly, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (strong, nonatomic, getter=_dateInterval, setter=_setDateInterval:) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long mergeStrategy; // @synthesize mergeStrategy=_mergeStrategy;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
+@property (readonly) Class superclass;
 
-+ (Class)_queryServerDataObjectClass;
++ (id)clientInterfaceProtocol;
++ (void)configureClientInterface:(id)arg1;
 - (void).cxx_destruct;
 - (id)_filter;
 - (id)_filterForDateInterval:(id)arg1;
-- (void)_queue_cleanupAfterDeactivation;
-- (void)_queue_configureQueryServerDataObject:(id)arg1;
-- (CDUnknownBlockType)_queue_errorHandler;
-- (void)_queue_validate;
-- (void)deliverStatistics:(id)arg1 forQuery:(id)arg2;
+- (void)client_deliverStatistics:(id)arg1 forQuery:(id)arg2;
 - (id)initWithQuantityType:(id)arg1 quantitySamplePredicate:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)queue_connectToQueryServerWithHealthStore:(id)arg1 activationUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)queue_deliverError:(id)arg1;
+- (void)queue_populateConfiguration:(id)arg1;
+- (void)queue_queryDidDeactivate:(id)arg1;
+- (void)queue_validate;
 
 @end
 

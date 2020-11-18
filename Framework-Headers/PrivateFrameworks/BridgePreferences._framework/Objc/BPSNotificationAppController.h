@@ -6,19 +6,14 @@
 
 #import <Preferences/PSListController.h>
 
-#import <BridgePreferences/BPSInternalGlanceObserverDelegate-Protocol.h>
+@class BBSectionInfo, NPSDomainAccessor, NSMutableArray, NSMutableDictionary, NSString, PSSpecifier;
 
-@class BBSectionInfo, BPSInternalGlanceManager, NGSGlance, NPSDomainAccessor, NSMutableArray, NSMutableDictionary, NSString, PSSpecifier;
-
-@interface BPSNotificationAppController : PSListController <BPSInternalGlanceObserverDelegate>
+@interface BPSNotificationAppController : PSListController
 {
     BOOL _mirrorSettings;
     NSString *_bundleIdentifier;
     BBSectionInfo *_bbSectionInfo;
     NSMutableArray *_notificationApplicationSpecifiers;
-    NGSGlance *_glance;
-    BPSInternalGlanceManager *_manager;
-    BPSInternalGlanceManager *_oldManager;
     NPSDomainAccessor *_bbAppsSettings;
     NSMutableArray *_notificationSpecifiers;
     NSMutableDictionary *_sectionInfo;
@@ -28,21 +23,14 @@
 @property (strong, nonatomic) NPSDomainAccessor *bbAppsSettings; // @synthesize bbAppsSettings=_bbAppsSettings;
 @property (strong, nonatomic) BBSectionInfo *bbSectionInfo; // @synthesize bbSectionInfo=_bbSectionInfo;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NGSGlance *glance; // @synthesize glance=_glance;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) BPSInternalGlanceManager *manager; // @synthesize manager=_manager;
 @property (readonly, nonatomic) BOOL mirrorSettings; // @synthesize mirrorSettings=_mirrorSettings;
 @property (strong, nonatomic) NSMutableArray *notificationApplicationSpecifiers; // @synthesize notificationApplicationSpecifiers=_notificationApplicationSpecifiers;
 @property (readonly, nonatomic) NSMutableArray *notificationSpecifiers; // @synthesize notificationSpecifiers=_notificationSpecifiers;
-@property (strong, nonatomic) BPSInternalGlanceManager *oldManager; // @synthesize oldManager=_oldManager;
 @property (readonly, nonatomic) PSSpecifier *previewSwitchSpecifier;
 @property (readonly, nonatomic) NSMutableDictionary *sectionInfo; // @synthesize sectionInfo=_sectionInfo;
 @property (nonatomic) unsigned long long settingsMode; // @synthesize settingsMode=_settingsMode;
 @property (readonly, nonatomic) BOOL showAlerts;
 @property (readonly, nonatomic) BOOL showPreview;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_showSettingsNotifications;
@@ -53,7 +41,6 @@
 - (id)bundle;
 - (BOOL)caresAboutSubsections;
 - (id)customGroupSpecifierForDescription:(id)arg1;
-- (void)dealloc;
 - (id)glanceSpecifierForIdentifier:(id)arg1;
 - (id)init;
 - (id)localizedMirroringDetailFooter;
@@ -69,14 +56,11 @@
 - (void)setMirrorSettings:(BOOL)arg1;
 - (void)setShowAlertsValue:(id)arg1 forSpecifier:(id)arg2;
 - (void)setShowPreviewValue:(id)arg1 forSpecifier:(id)arg2;
-- (void)setShowsGlance:(id)arg1 forSpecifier:(id)arg2;
 - (void)setSoundsValue:(id)arg1 forSpecifier:(id)arg2;
 - (void)setVibrationValue:(id)arg1 forSpecifier:(id)arg2;
-- (void)settingsManagerReloadedGlances:(id)arg1;
 - (BOOL)shouldReloadSpecifiersOnResume;
 - (id)showAlertsValue:(id)arg1;
 - (id)showPreviewValue:(id)arg1;
-- (id)showsGlance:(id)arg1;
 - (id)soundsValue:(id)arg1;
 - (id)specifiers;
 - (BOOL)suppressAlertSpecifiers;
@@ -85,8 +69,6 @@
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)updateSubsections;
 - (id)vibrationValue:(id)arg1;
-- (void)viewWillAppear:(BOOL)arg1;
-- (BOOL)wantsGlanceRowIfApplicable;
 - (BOOL)wantsPreviewChoice;
 - (void)writeSectionState;
 

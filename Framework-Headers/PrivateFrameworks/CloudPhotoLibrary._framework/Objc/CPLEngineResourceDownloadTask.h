@@ -6,27 +6,27 @@
 
 #import <CloudPhotoLibrary/CPLResourceTransferTask.h>
 
-@class CPLResource, NSString;
-@protocol CPLEngineTransportTask;
+@class CPLResource, NSMutableArray, NSString;
+@protocol CPLEngineTransportResourcesDownloadTask;
 
 @interface CPLEngineResourceDownloadTask : CPLResourceTransferTask
 {
-    BOOL _backgroundTask;
+    NSMutableArray *_stateProgressDates;
+    NSString *_activeQueuesStatusAtEnqueingTime;
+    unsigned long long _preemptingCount;
     BOOL _cancelledByEngine;
-    BOOL _wantsTransportTask;
-    BOOL _transportOwnsTask;
     CPLResource *_cloudResource;
     unsigned long long _taskIdentifierForQueue;
     NSString *_clientBundleID;
-    id<CPLEngineTransportTask> _transportTask;
+    id<CPLEngineTransportResourcesDownloadTask> _transportTask;
     CDUnknownBlockType _launchHandler;
     CDUnknownBlockType _cancelHandler;
     CDUnknownBlockType _didStartHandler;
     CDUnknownBlockType _progressHandler;
     CDUnknownBlockType _completionHandler;
+    NSString *_transportIdentifier;
 }
 
-@property (nonatomic, getter=isBackgroundTask) BOOL backgroundTask; // @synthesize backgroundTask=_backgroundTask;
 @property (readonly, nonatomic) CDUnknownBlockType cancelHandler; // @synthesize cancelHandler=_cancelHandler;
 @property (nonatomic, getter=isCancelledByEngine) BOOL cancelledByEngine; // @synthesize cancelledByEngine=_cancelledByEngine;
 @property (strong, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
@@ -36,14 +36,19 @@
 @property (readonly, nonatomic) CDUnknownBlockType launchHandler; // @synthesize launchHandler=_launchHandler;
 @property (readonly, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (nonatomic) unsigned long long taskIdentifierForQueue; // @synthesize taskIdentifierForQueue=_taskIdentifierForQueue;
-@property (nonatomic) BOOL transportOwnsTask; // @synthesize transportOwnsTask=_transportOwnsTask;
-@property (strong, nonatomic) id<CPLEngineTransportTask> transportTask; // @synthesize transportTask=_transportTask;
-@property (nonatomic) BOOL wantsTransportTask; // @synthesize wantsTransportTask=_wantsTransportTask;
+@property (copy, nonatomic) NSString *transportIdentifier; // @synthesize transportIdentifier=_transportIdentifier;
+@property (weak, nonatomic) id<CPLEngineTransportResourcesDownloadTask> transportTask; // @synthesize transportTask=_transportTask;
+@property (readonly, nonatomic) BOOL willGenerateReport;
 
++ (void)initialize;
++ (unsigned long long)maximumResourceDownloadSizeForResourceType:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)cancelTask;
 - (id)initWithLaunchHandler:(CDUnknownBlockType)arg1 cancelHandler:(CDUnknownBlockType)arg2 didStartHandler:(CDUnknownBlockType)arg3 progressHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)launch;
+- (void)noteActiveQueuesStatusAtEnqueingTime:(id)arg1;
+- (void)noteStateDidProgress:(unsigned long long)arg1;
+- (void)noteTaskHasBeenPreempted;
 
 @end
 

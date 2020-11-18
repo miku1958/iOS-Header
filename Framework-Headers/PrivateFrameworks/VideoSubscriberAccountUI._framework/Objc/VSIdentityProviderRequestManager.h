@@ -8,24 +8,25 @@
 
 #import <VideoSubscriberAccountUI/VSApplicationControllerDelegate-Protocol.h>
 
-@class NSMutableArray, NSOperationQueue, NSString, VSApplicationController, VSIdentityProvider, VSOptional, VSPreferences, VSViewModel;
+@class NSMutableArray, NSOperationQueue, NSString, VSApplicationController, VSApplicationControllerRequestFactory, VSAuditToken, VSIdentityProvider, VSOptional, VSPreferences, VSViewModel;
 @protocol OS_dispatch_source, VSIdentityProviderRequestManagerDelegate;
 
-__attribute__((visibility("hidden")))
 @interface VSIdentityProviderRequestManager : NSObject <VSApplicationControllerDelegate>
 {
-    BOOL _showingUserInterface;
+    BOOL _canIssuePrivacyVouchers;
     BOOL _didCreateAccount;
     BOOL _allowsApplicationControllerTimer;
     VSIdentityProvider *_identityProvider;
     id<VSIdentityProviderRequestManagerDelegate> _delegate;
+    VSAuditToken *_auditToken;
+    VSViewModel *_viewModel;
     NSOperationQueue *_privateQueue;
     NSMutableArray *_requestContexts;
     VSApplicationController *_applicationController;
     VSOptional *_currentApplicationControllerRequest;
-    VSViewModel *_viewModel;
     VSOptional *_account;
-    VSOptional *_accountStore;
+    VSOptional *_storage;
+    VSApplicationControllerRequestFactory *_requestFactory;
     VSPreferences *_preferences;
     NSObject<OS_dispatch_source> *_applicationControllerTimerSource;
     double _applicationControllerTimerLeeway;
@@ -34,12 +35,13 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) VSOptional *account; // @synthesize account=_account;
-@property (strong, nonatomic) VSOptional *accountStore; // @synthesize accountStore=_accountStore;
 @property (nonatomic) BOOL allowsApplicationControllerTimer; // @synthesize allowsApplicationControllerTimer=_allowsApplicationControllerTimer;
 @property (strong, nonatomic) VSApplicationController *applicationController; // @synthesize applicationController=_applicationController;
 @property (nonatomic) double applicationControllerTimerDelay; // @synthesize applicationControllerTimerDelay=_applicationControllerTimerDelay;
 @property (nonatomic) double applicationControllerTimerLeeway; // @synthesize applicationControllerTimerLeeway=_applicationControllerTimerLeeway;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *applicationControllerTimerSource; // @synthesize applicationControllerTimerSource=_applicationControllerTimerSource;
+@property (copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
+@property (nonatomic) BOOL canIssuePrivacyVouchers; // @synthesize canIssuePrivacyVouchers=_canIssuePrivacyVouchers;
 @property (strong, nonatomic) VSOptional *currentApplicationControllerRequest; // @synthesize currentApplicationControllerRequest=_currentApplicationControllerRequest;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VSIdentityProviderRequestManagerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -51,7 +53,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property (nonatomic) double requestCompletionDelayAfterShowingUserInterface; // @synthesize requestCompletionDelayAfterShowingUserInterface=_requestCompletionDelayAfterShowingUserInterface;
 @property (strong, nonatomic) NSMutableArray *requestContexts; // @synthesize requestContexts=_requestContexts;
-@property (nonatomic) BOOL showingUserInterface; // @synthesize showingUserInterface=_showingUserInterface;
+@property (strong, nonatomic) VSApplicationControllerRequestFactory *requestFactory; // @synthesize requestFactory=_requestFactory;
+@property (strong, nonatomic) VSOptional *storage; // @synthesize storage=_storage;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) VSViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
@@ -75,14 +78,13 @@ __attribute__((visibility("hidden")))
 - (BOOL)_handleAuthenticationRequest:(id)arg1 didCompleteWithResponse:(id)arg2;
 - (BOOL)_handleLogoutRequestDidComplete:(id)arg1;
 - (BOOL)_handleSilentAuthenticationRequest:(id)arg1 didCompleteWithResponse:(id)arg2;
-- (void)_hideUserInterfaceIfNecessary;
-- (void)_notifyDidAuthenticateAccount:(id)arg1;
+- (void)_notifyDidAuthenticateAccount:(id)arg1 supportingApps:(id)arg2;
 - (void)_processRequestContext:(id)arg1;
 - (double)_requestCompletionDelay;
 - (BOOL)_requestRequiresApplicationController:(id)arg1;
 - (BOOL)_requestRequiresApplicationControllerIgnoringAuthentication:(id)arg1;
 - (void)_resetVerificationStateWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_showAuthenticationUIWithPurpose:(long long)arg1;
+- (void)_showAuthenticationUI;
 - (void)_startApplicationControllerTimer;
 - (void)_startDeletingAccount;
 - (void)_startObservingViewModel:(id)arg1;
@@ -98,7 +100,7 @@ __attribute__((visibility("hidden")))
 - (void)applicationController:(id)arg1 startDidFailWithError:(id)arg2;
 - (void)applicationControllerDidStart:(id)arg1;
 - (void)dealloc;
-- (void)enqueueRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)enqueueRequest:(id)arg1;
 - (id)init;
 - (id)initWithIdentityProvider:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

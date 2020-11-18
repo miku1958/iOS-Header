@@ -4,16 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HealthUI/HKSimpleDataEntryItem.h>
 
-#import <HealthUI/HKSimpleDataEntryItemType-Protocol.h>
 #import <HealthUI/UIPickerViewDataSource-Protocol.h>
 #import <HealthUI/UIPickerViewDelegate-Protocol.h>
 
 @class HKSimpleDataEntryPlainTextCell, NSNumber, NSString, UIPickerView;
-@protocol HKSimpleDataEntryItemDelegate;
 
-@interface HKSimpleDataEntryHeightItem : NSObject <UIPickerViewDelegate, UIPickerViewDataSource, HKSimpleDataEntryItemType>
+@interface HKSimpleDataEntryHeightItem : HKSimpleDataEntryItem <UIPickerViewDelegate, UIPickerViewDataSource>
 {
     HKSimpleDataEntryPlainTextCell *_cell;
     NSString *_title;
@@ -22,15 +20,11 @@
     BOOL _usesImperialUnits;
     NSNumber *_defaultValue;
     NSNumber *_centimeterValue;
-    id<HKSimpleDataEntryItemDelegate> _delegate;
-    unsigned long long _placeholderType;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<HKSimpleDataEntryItemDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) unsigned long long placeholderType; // @synthesize placeholderType=_placeholderType;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

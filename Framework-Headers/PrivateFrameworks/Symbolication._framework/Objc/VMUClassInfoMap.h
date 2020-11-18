@@ -25,10 +25,9 @@
 
 + (void)_claimUnarchivingOfClass:(id)arg1;
 + (void)_destroyRetainedLinearArray:(id *)arg1 withCount:(unsigned int)arg2;
-+ (void)disableTestingVersion;
-+ (void)enableTestingVersion;
 + (void)initialize;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_applyTypeOverlay:(id)arg1;
 - (id *)_retainedLinearArrayWithReturnedCount:(unsigned int *)arg1;
 - (unsigned int)addClassInfo:(id)arg1 forAddress:(unsigned long long)arg2;

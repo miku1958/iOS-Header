@@ -19,14 +19,18 @@
 @property (readonly, nonatomic) NSData *adjustmentData;
 @property (readonly, copy, nonatomic) NSString *adjustmentFormatIdentifier;
 @property (readonly, copy, nonatomic) NSString *adjustmentFormatVersion;
+@property (readonly, nonatomic) unsigned int adjustmentRenderTypes;
 @property (readonly, copy, nonatomic) NSString *editorBundleID;
 @property (strong, nonatomic) NSDictionary *propertyListDictionary; // @synthesize propertyListDictionary=_propertyListDictionary;
 
++ (id)fingerPrintForData:(id)arg1 error:(id *)arg2;
++ (id)fingerprintWithAssetAdjustmentFingerprintData:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithFormatIdentifier:(id)arg1 formatVersion:(id)arg2 data:(id)arg3 baseVersion:(long long)arg4;
 - (id)initWithFormatIdentifier:(id)arg1 formatVersion:(id)arg2 data:(id)arg3 baseVersion:(long long)arg4 editorBundleID:(id)arg5;
+- (id)initWithFormatIdentifier:(id)arg1 formatVersion:(id)arg2 data:(id)arg3 baseVersion:(long long)arg4 editorBundleID:(id)arg5 renderTypes:(unsigned int)arg6;
 - (id)initWithPropertyListDictionary:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (BOOL)writeToURL:(id)arg1 atomically:(BOOL)arg2;

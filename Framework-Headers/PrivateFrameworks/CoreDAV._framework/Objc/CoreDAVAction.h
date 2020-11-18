@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CoreDAVAction : NSObject
 {
@@ -17,7 +17,7 @@
 @property (strong, nonatomic) id changeContext; // @synthesize changeContext=_changeContext;
 @property (readonly, nonatomic) id context; // @synthesize context=_context;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithAction:(int)arg1 context:(id)arg2;
 

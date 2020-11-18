@@ -6,16 +6,17 @@
 
 #import <HealthDaemon/HDSQLiteQueryDescriptor.h>
 
-@class HDProfile, HKObjectType, NSArray, NSMutableDictionary, NSNumber, _HKFilter;
+@class HDProfile, HKObjectType, NSArray, NSMutableDictionary, NSNumber, NSSet, _HKFilter;
 
 @interface HDDataEntityEnumerator : HDSQLiteQueryDescriptor
 {
     HDProfile *_profile;
     NSMutableDictionary *_encodingOptions;
     BOOL _useLeftJoin;
+    BOOL _improveJoinOrderingForStartDateIndexSelection;
     HKObjectType *_objectType;
     _HKFilter *_filter;
-    NSNumber *_sourceIdentifier;
+    NSSet *_restrictedSourceEntities;
     CDUnknownBlockType _authorizationFilter;
     NSNumber *_anchor;
     NSNumber *_deletedObjectsAnchor;
@@ -26,9 +27,10 @@
 @property (copy, nonatomic) CDUnknownBlockType authorizationFilter; // @synthesize authorizationFilter=_authorizationFilter;
 @property (strong, nonatomic) NSNumber *deletedObjectsAnchor; // @synthesize deletedObjectsAnchor=_deletedObjectsAnchor;
 @property (strong, nonatomic) _HKFilter *filter; // @synthesize filter=_filter;
+@property (nonatomic) BOOL improveJoinOrderingForStartDateIndexSelection; // @synthesize improveJoinOrderingForStartDateIndexSelection=_improveJoinOrderingForStartDateIndexSelection;
 @property (readonly, nonatomic) HKObjectType *objectType; // @synthesize objectType=_objectType;
+@property (strong, nonatomic) NSSet *restrictedSourceEntities; // @synthesize restrictedSourceEntities=_restrictedSourceEntities;
 @property (copy, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
-@property (strong, nonatomic) NSNumber *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 
 - (void).cxx_destruct;
 - (BOOL)_enumerateObjectsOnDatabase:(id)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;

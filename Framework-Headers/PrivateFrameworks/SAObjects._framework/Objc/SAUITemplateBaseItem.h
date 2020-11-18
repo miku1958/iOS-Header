@@ -14,15 +14,15 @@
 {
 }
 
-@property (copy, nonatomic) NSArray *communicationOptions; // @dynamic communicationOptions;
+@property (copy, nonatomic) NSArray *communicationOptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) SAUITemplateEdgeInsets *fullScreenPaddingDelta; // @dynamic fullScreenPaddingDelta;
-@property (nonatomic) BOOL hasPriorityLayout; // @dynamic hasPriorityLayout;
+@property (strong, nonatomic) SAUITemplateEdgeInsets *fullScreenPaddingDelta;
+@property (nonatomic) BOOL hasPriorityLayout;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) SAUITemplateEdgeInsets *padding; // @dynamic padding;
-@property (copy, nonatomic) NSArray *presentationOptions; // @dynamic presentationOptions;
-@property (nonatomic) BOOL shouldBeOffscreenInPartial; // @dynamic shouldBeOffscreenInPartial;
+@property (strong, nonatomic) SAUITemplateEdgeInsets *padding;
+@property (copy, nonatomic) NSArray *presentationOptions;
+@property (nonatomic) BOOL shouldBeOffscreenInPartial;
 @property (readonly) Class superclass;
 
 + (id)baseItem;

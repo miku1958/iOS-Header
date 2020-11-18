@@ -24,6 +24,7 @@
 @property (readonly) Class superclass;
 
 - (void)_setLayoutForTime:(double)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)setStoppedWithTime:(double)arg1;
 - (void)setTime:(double)arg1;
 

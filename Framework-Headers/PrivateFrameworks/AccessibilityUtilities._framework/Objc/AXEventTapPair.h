@@ -25,6 +25,7 @@
 @property (strong, nonatomic) struct __IOHIDEventSystemClient *systemClient; // @synthesize systemClient=_systemClient;
 @property (nonatomic) int type; // @synthesize type=_type;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 

@@ -8,7 +8,7 @@
 
 #import <SafariShared/WBSCompletionListItem-Protocol.h>
 
-@class MKMapItem, NSArray, NSDictionary, NSNumber, NSString, NSURL, SFResultSection, SFSearchResult, WBSParsecActionButton, WBSParsecImageRepresentation;
+@class MKMapItem, NSArray, NSDictionary, NSNumber, NSString, NSURL, SFResultSection, SFSearchResult, WBSParsecActionButton, WBSParsecImageRepresentation, WBSQuerySuggestion;
 
 @interface WBSParsecSearchResult : WBSParsecModel <WBSCompletionListItem>
 {
@@ -78,6 +78,7 @@
 @property (readonly, nonatomic) NSString *sectionHeader; // @synthesize sectionHeader=_sectionHeader;
 @property (strong, nonatomic) SFResultSection *sfResultSection; // @synthesize sfResultSection=_sfResultSection;
 @property (strong, nonatomic) SFSearchResult *sfSearchResultValue; // @synthesize sfSearchResultValue=_sfSearchResultValue;
+@property (strong, nonatomic) WBSQuerySuggestion *siriSuggestion;
 @property (readonly, nonatomic) NSDictionary *styleOverrides; // @synthesize styleOverrides=_styleOverrides;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *supportedStyleOverrides; // @synthesize supportedStyleOverrides=_supportedStyleOverrides;
@@ -86,6 +87,7 @@
 @property (readonly, copy, nonatomic) NSString *typeString; // @synthesize typeString=_typeString;
 @property (readonly, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 
++ (Class)_resultClassForDictionary:(id)arg1;
 + (id)_specializedSchema;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (Class)replacementClass;
@@ -94,7 +96,6 @@
 + (id)searchResultSchemaForCardDetailRequest;
 + (void)setReplacementClass:(Class)arg1;
 - (void).cxx_destruct;
-- (unsigned long long)_constructTypeMaskForTypeString:(id)arg1;
 - (id)_glyphRepresentationsFromGlyphDictionaries:(id)arg1;
 - (id)_glyphsFromGlyphRepresentations:(id)arg1 withSession:(id)arg2;
 - (void)_setStyleOverridesWithDictionary:(id)arg1;

@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)performTap:(id)arg1;
 - (void)setAssociatedLabel:(id)arg1;
 - (void)setAttributedText:(id)arg1;
+- (void)setStyleProvider:(id)arg1 primaryStyle:(BOOL)arg2;
 - (void)setText:(id)arg1;
 - (void)setUppercase:(BOOL)arg1 usingCurrentLocale:(BOOL)arg2;
 

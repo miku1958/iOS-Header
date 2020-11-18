@@ -8,9 +8,10 @@
 
 @protocol StreamingUnzipProtocol
 - (void)finishStreamWithReply:(void (^)(NSError *))arg1;
-- (void)setActiveCallbacks:(int)arg1;
+- (void)setActiveDelegateMethods:(int)arg1;
 - (void)setupUnzipperWithOutputPath:(NSString *)arg1 sandboxExtensionToken:(char *)arg2 options:(NSDictionary *)arg3 withReply:(void (^)(NSError *, unsigned long long))arg4;
 - (void)supplyBytes:(NSData *)arg1 withReply:(void (^)(NSError *, BOOL))arg2;
 - (void)suspendStreamWithReply:(void (^)(unsigned long long, NSError *))arg1;
+- (void)terminateStreamWithReply:(void (^)(NSError *))arg1;
 @end
 

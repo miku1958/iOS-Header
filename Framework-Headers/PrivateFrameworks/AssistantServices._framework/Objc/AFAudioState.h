@@ -11,13 +11,14 @@
 
 @interface AFAudioState : NSObject <NSCopying, NSSecureCoding>
 {
-    unsigned int _opaqueSessionID;
+    unsigned int _audioSessionID;
 }
 
-@property (nonatomic) unsigned int opaqueSessionID; // @synthesize opaqueSessionID=_opaqueSessionID;
+@property (nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

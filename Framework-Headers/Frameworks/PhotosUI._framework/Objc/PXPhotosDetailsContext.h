@@ -49,6 +49,7 @@
 @property (readonly, copy, nonatomic) NSString *titleFontName; // @synthesize titleFontName=_titleFontName;
 @property (readonly, nonatomic) unsigned long long viewSourceOrigin; // @synthesize viewSourceOrigin=_viewSourceOrigin;
 
++ (id)photosDetailsContextForMemory:(id)arg1;
 - (void).cxx_destruct;
 - (void)_updatePropertiesDerivedFromDisplayTitleInfo;
 - (void)_updatePropertiesDerivedFromPhotosDataSource;

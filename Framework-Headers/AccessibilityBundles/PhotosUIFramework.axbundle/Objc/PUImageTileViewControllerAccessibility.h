@@ -6,7 +6,9 @@
 
 #import <PhotosUIFramework/__PUImageTileViewControllerAccessibility_super.h>
 
-@interface PUImageTileViewControllerAccessibility : __PUImageTileViewControllerAccessibility_super
+#import <PhotosUIFramework/AXFullScreenTileControllerDelegate-Protocol.h>
+
+@interface PUImageTileViewControllerAccessibility : __PUImageTileViewControllerAccessibility_super <AXFullScreenTileControllerDelegate>
 {
 }
 
@@ -15,8 +17,22 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axApplyAssetToView;
+- (void)_axApplyCustomAction:(id)arg1;
+- (void)_axApplyLandmarkCustomAction;
+- (id)_axGetFaces;
+- (id)_axImageView;
+- (id)_axMainImageView;
+- (void)_axResetLandmarks;
+- (void)_setAXFaces:(id)arg1;
+- (void)addLandmarksForFace:(id)arg1 withName:(id)arg2 toArray:(id)arg3;
 - (void)assetDidChange;
 - (void)dealloc;
+- (id)elementForLandmark:(unsigned long long)arg1 fromLandmarks:(id)arg2 inFaceFrame:(struct CGRect)arg3 cancelAction:(id)arg4 container:(id)arg5;
+- (BOOL)findFaceLandmarks;
+- (struct CGPoint)modifiedPointForValue:(id)arg1 inFrame:(struct CGRect)arg2;
+- (struct CGRect)modifyRectToDisplayedScale:(struct CGRect)arg1;
+- (struct CGRect)rectForValuePoints:(id)arg1 inFrame:(struct CGRect)arg2;
+- (BOOL)removeLandmarks;
 
 @end
 

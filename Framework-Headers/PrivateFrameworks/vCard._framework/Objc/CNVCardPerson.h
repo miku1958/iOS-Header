@@ -109,7 +109,6 @@
 @property (strong) NSArray *urls; // @synthesize urls=_urls;
 
 - (void).cxx_destruct;
-- (id)jpegImageDataOfAllowableKinds:(id)arg1 maximumLength:(unsigned long long)arg2 cropRects:(id *)arg3;
 - (id)largeImageHashOfType:(id)arg1;
 
 @end

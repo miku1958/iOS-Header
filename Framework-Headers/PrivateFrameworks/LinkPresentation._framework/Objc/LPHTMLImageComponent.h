@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)additionalRulesForStyle:(id)arg1;
++ (id)baseRules;
 + (id)ruleDictionaryForStyle:(id)arg1;
 + (id)styleSet;
 - (id)initWithImage:(id)arg1 style:(id)arg2 themePath:(id)arg3 generator:(id)arg4;

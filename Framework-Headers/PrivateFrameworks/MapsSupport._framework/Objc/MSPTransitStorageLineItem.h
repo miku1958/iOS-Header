@@ -9,17 +9,19 @@
 #import <MapsSupport/GEOTransitLineItem-Protocol.h>
 #import <MapsSupport/NSCopying-Protocol.h>
 
-@class GEOMapRegion, MSPTransitStorageAttribution, MSPTransitStorageLine, NSArray, NSString, PBUnknownFields;
+@class GEOMapItemIdentifier, GEOMapRegion, MSPTransitStorageAttribution, MSPTransitStorageLine, NSArray, NSMutableArray, NSString, PBUnknownFields;
 @protocol GEOEncyclopedicInfo, GEOTransitArtworkDataSource, GEOTransitAttribution, GEOTransitSystem;
 
 @interface MSPTransitStorageLineItem : PBCodable <GEOTransitLineItem, NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    NSMutableArray *_incidents;
     MSPTransitStorageLine *_line;
     GEOMapRegion *_storedMapRegion;
     MSPTransitStorageAttribution *_transitAttribution;
 }
 
+@property (readonly, nonatomic) id<GEOTransitArtworkDataSource> alternateArtwork;
 @property (readonly, nonatomic) id<GEOTransitArtworkDataSource> artwork;
 @property (readonly, nonatomic) id<GEOTransitAttribution> attribution;
 @property (readonly, copy) NSString *debugDescription;
@@ -34,7 +36,9 @@
 @property (readonly, nonatomic) BOOL hasStoredMapRegion;
 @property (readonly, nonatomic) BOOL hasTransitAttribution;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) GEOMapItemIdentifier *identifier;
 @property (readonly, nonatomic) NSArray *incidents;
+@property (strong, nonatomic) NSMutableArray *incidents; // @synthesize incidents=_incidents;
 @property (readonly, nonatomic) BOOL isIncidentsTTLExpired;
 @property (readonly, nonatomic) NSArray *labelItems;
 @property (strong, nonatomic) MSPTransitStorageLine *line; // @synthesize line=_line;
@@ -51,10 +55,15 @@
 @property (strong, nonatomic) MSPTransitStorageAttribution *transitAttribution; // @synthesize transitAttribution=_transitAttribution;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)incidentsType;
 - (void).cxx_destruct;
+- (void)addIncidents:(id)arg1;
+- (void)clearIncidents;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (id)incidentsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)incidentsCount;
 - (id)initWithLineItem:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

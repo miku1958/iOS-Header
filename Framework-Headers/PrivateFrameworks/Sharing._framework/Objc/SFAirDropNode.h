@@ -15,8 +15,8 @@
     BOOL _unknown;
     BOOL _monogram;
     BOOL _classroom;
-    BOOL _classroomCourse;
     BOOL _classroomGroup;
+    BOOL _classroomCourse;
     BOOL _supportsFMF;
     BOOL _supportsPasses;
     BOOL _supportsMixedTypes;
@@ -53,7 +53,7 @@
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
 - (void)simulateFakeTransferWithSessionID:(id)arg1;
-- (void)startSendWithSessionID:(id)arg1 items:(id)arg2 description:(id)arg3 previewImage:(id)arg4;
+- (void)startSendForBundleID:(id)arg1 sessionID:(id)arg2 items:(id)arg3 description:(id)arg4 previewImage:(id)arg5;
 - (void)updateWithSFNode:(struct __SFNode *)arg1;
 
 @end

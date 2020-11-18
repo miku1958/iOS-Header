@@ -10,6 +10,7 @@
 
 @interface SBFLockScreenDateSubtitleDateView : SBFLockScreenDateSubtitleView
 {
+    BOOL _useCompactDateFormat;
     NSDate *_date;
     SBFLockScreenAlternateDateLabel *_alternateDateLabel;
     double _alignmentPercent;
@@ -18,11 +19,16 @@
 @property (nonatomic) double alignmentPercent; // @synthesize alignmentPercent=_alignmentPercent;
 @property (strong, nonatomic) SBFLockScreenAlternateDateLabel *alternateDateLabel; // @synthesize alternateDateLabel=_alternateDateLabel;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (nonatomic) BOOL useCompactDateFormat; // @synthesize useCompactDateFormat=_useCompactDateFormat;
 
++ (id)dateTimeLunarDateFont;
++ (double)scaledFontSize:(double)arg1 withMaximumFontSizeCategory:(id)arg2;
++ (double)subtitleLabelToLunarDateLabelBaselineDifferenceY;
 - (void).cxx_destruct;
 - (id)_createReplicateView;
 - (double)_lunarDateLabelYOffsetFromDateLabel;
 - (void)_setupAlternateDateLabel;
+- (void)_updateDateLabelForCompact;
 - (struct CGRect)alternateDateLabelFrame;
 - (void)dealloc;
 - (id)initWithDate:(id)arg1;
@@ -32,6 +38,7 @@
 - (void)setStrength:(double)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGRect)subtitleLabelFrame;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

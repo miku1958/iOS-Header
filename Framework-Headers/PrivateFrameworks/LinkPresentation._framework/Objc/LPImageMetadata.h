@@ -16,10 +16,12 @@
     unsigned int _version;
     NSURL *_URL;
     NSString *_type;
+    NSString *_accessibilityText;
     struct CGSize _size;
 }
 
 @property (copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property (copy, nonatomic) NSString *accessibilityText; // @synthesize accessibilityText=_accessibilityText;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

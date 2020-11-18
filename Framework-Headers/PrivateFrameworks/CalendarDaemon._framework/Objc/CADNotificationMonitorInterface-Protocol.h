@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class CADObjectID;
+
 @protocol CADNotificationMonitorInterface
-- (void)CADCalendar:(CDStruct_1ef3fb1f)arg1 setAlertedWithError:(void (^)(int))arg2;
-- (void)CADCalendarSetClearedFromNotificationCenter:(CDStruct_1ef3fb1f)arg1 error:(void (^)(int))arg2;
+- (void)CADCalendar:(CADObjectID *)arg1 setAlertedWithError:(void (^)(int))arg2;
+- (void)CADCalendarSetClearedFromNotificationCenter:(CADObjectID *)arg1 error:(void (^)(int))arg2;
 - (void)CADDatabaseGetEventNotificationItems:(void (^)(int, NSArray *, NSArray *, NSArray *))arg1;
 - (void)CADDatabaseGetInboxRepliedSectionItems:(void (^)(int, NSArray *, NSArray *))arg1;
 - (void)CADDatabaseGetInviteReplyNotifications:(void (^)(int, NSArray *))arg1;
 - (void)CADDatabaseGetReminderNotificationItems:(void (^)(int, NSArray *, NSArray *, NSArray *))arg1;
 - (void)CADDatabaseGetResourceChanges:(void (^)(int, NSArray *))arg1;
 - (void)CADDatabaseGetSharedCalendarInvitationsWithReply:(void (^)(int, NSArray *))arg1;
-- (void)CADEvent:(CDStruct_1ef3fb1f)arg1 setAlertedWithError:(void (^)(int))arg2;
-- (void)CADEventSetInvitationStatus:(int)arg1 forEvent:(CDStruct_1ef3fb1f)arg2 error:(void (^)(int))arg3;
-- (void)CADInviteReplyNotification:(CDStruct_1ef3fb1f)arg1 setAlertedWithError:(void (^)(int))arg2;
-- (void)CADResourceChange:(CDStruct_1ef3fb1f)arg1 setAlertedWithError:(void (^)(int))arg2;
+- (void)CADEvent:(CADObjectID *)arg1 setAlertedWithError:(void (^)(int))arg2;
+- (void)CADEventSetInvitationStatus:(int)arg1 forEvent:(CADObjectID *)arg2 error:(void (^)(int))arg3;
+- (void)CADInviteReplyNotification:(CADObjectID *)arg1 setAlertedWithError:(void (^)(int))arg2;
+- (void)CADResourceChange:(CADObjectID *)arg1 setAlertedWithError:(void (^)(int))arg2;
 @end
 

@@ -6,15 +6,13 @@
 
 #import <MarkupUI/MUContentViewController.h>
 
-#import <MarkupUI/MUContentViewControllerAKControllerSubdelegate-Protocol.h>
 #import <MarkupUI/MUContentViewControllerProtocol-Protocol.h>
-#import <MarkupUI/PDFPageVisibilityDelegate-Protocol.h>
+#import <MarkupUI/PDFAKControllerDelegateProtocol-Protocol.h>
 #import <MarkupUI/PDFViewDelegatePrivate-Protocol.h>
 
-@class MUCGPDFReader, MUPDFPageLabelView, NSArray, NSLayoutConstraint, NSString, PDFDocument, PDFPage, PDFThumbnailView, PDFView, UIVisualEffectView;
-@protocol MUPDFContentViewControllerDelegate;
+@class MUPDFPageLabelView, NSArray, NSLayoutConstraint, NSString, PDFDocument, PDFPage, PDFThumbnailView, PDFView, UIScrollView, UIView;
 
-@interface MUPDFContentViewController : MUContentViewController <PDFViewDelegatePrivate, PDFPageVisibilityDelegate, MUContentViewControllerProtocol, MUContentViewControllerAKControllerSubdelegate>
+@interface MUPDFContentViewController : MUContentViewController <PDFAKControllerDelegateProtocol, PDFViewDelegatePrivate, MUContentViewControllerProtocol>
 {
     PDFDocument *_pdfDocument;
     BOOL _showsThumbnailView;
@@ -24,12 +22,11 @@
     BOOL _viewIsTransitioningBetweenSizes;
     BOOL _viewTransitionPreviousAutoscalingState;
     BOOL _didSetup;
-    id<MUPDFContentViewControllerDelegate> _delegate;
     NSArray *_sourceContentReplacedAnnotationMaps;
     PDFView *_pdfView;
     PDFThumbnailView *_thumbnailView;
-    MUCGPDFReader *_pdfReader;
-    UIVisualEffectView *_thumbnailViewHolder;
+    unsigned long long _inkStyle;
+    UIView *_thumbnailViewHolder;
     NSArray *_thumbnailViewHolderConstraints;
     NSLayoutConstraint *_thumbnailViewHolderRevealConstraint;
     MUPDFPageLabelView *_pageLabelView;
@@ -41,25 +38,26 @@
 
 @property (nonatomic) BOOL centersIgnoringContentInsets;
 @property BOOL constraintsAreHorizontal; // @synthesize constraintsAreHorizontal=_constraintsAreHorizontal;
+@property (readonly, nonatomic) UIScrollView *contentViewScrollView;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<MUPDFContentViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) long long defaultToolTag;
 @property (readonly, copy) NSString *description;
 @property BOOL didSetup; // @synthesize didSetup=_didSetup;
 @property (readonly, nonatomic) NSString *documentUnlockedWithPassword;
 @property (nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
 @property (nonatomic) BOOL forcesPDFViewTopAlignment; // @synthesize forcesPDFViewTopAlignment=_forcesPDFViewTopAlignment;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long inkStyle; // @synthesize inkStyle=_inkStyle;
 @property (nonatomic) BOOL navigationModeHorizontal; // @synthesize navigationModeHorizontal=_navigationModeHorizontal;
 @property (readonly) unsigned long long pageCount;
 @property (strong) MUPDFPageLabelView *pageLabelView; // @synthesize pageLabelView=_pageLabelView;
 @property (readonly) PDFDocument *pdfDocument; // @synthesize pdfDocument=_pdfDocument;
-@property (strong) MUCGPDFReader *pdfReader; // @synthesize pdfReader=_pdfReader;
 @property (strong) PDFView *pdfView; // @synthesize pdfView=_pdfView;
 @property (nonatomic) BOOL showsThumbnailView; // @synthesize showsThumbnailView=_showsThumbnailView;
 @property (strong) NSArray *sourceContentReplacedAnnotationMaps; // @synthesize sourceContentReplacedAnnotationMaps=_sourceContentReplacedAnnotationMaps;
 @property (readonly) Class superclass;
 @property (strong) PDFThumbnailView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
-@property (strong) UIVisualEffectView *thumbnailViewHolder; // @synthesize thumbnailViewHolder=_thumbnailViewHolder;
+@property (strong) UIView *thumbnailViewHolder; // @synthesize thumbnailViewHolder=_thumbnailViewHolder;
 @property (strong) NSArray *thumbnailViewHolderConstraints; // @synthesize thumbnailViewHolderConstraints=_thumbnailViewHolderConstraints;
 @property (strong) NSLayoutConstraint *thumbnailViewHolderRevealConstraint; // @synthesize thumbnailViewHolderRevealConstraint=_thumbnailViewHolderRevealConstraint;
 @property BOOL viewIsTransitioningBetweenSizes; // @synthesize viewIsTransitioningBetweenSizes=_viewIsTransitioningBetweenSizes;
@@ -72,15 +70,12 @@
 - (BOOL)PDFView:(id)arg1 shouldHandleLink:(id)arg2;
 - (struct CGAffineTransform)_compensatingAffineTransformForPage:(id)arg1;
 - (void)_createPDFView;
-- (void)_installOverlayForPageView:(id)arg1 ofPage:(id)arg2 atIndex:(unsigned long long)arg3;
-- (void)_loadContentForAnnotationController:(id)arg1;
 - (struct CGPoint)_maximumContentOffset;
 - (struct CGSize)_medianSizeForCurrentDocumentInPDFViewWithGetter:(CDUnknownBlockType)arg1;
 - (struct CGPoint)_minimumContentOffset;
 - (void)_prepareToRotate;
 - (void)_recoverFromRotation;
 - (void)_teardownPDFViewIfNecessary;
-- (void)_uninstallOverlayAtIndex:(unsigned long long)arg1;
 - (void)_updateMinMaxZoomFactor;
 - (void)_updatePDFViewDisplayMode;
 - (void)_updatePageNumberOverlayToPage:(unsigned long long)arg1 animate:(BOOL)arg2;
@@ -88,36 +83,27 @@
 - (void)_updateThumbnailViewHolderConstraints;
 - (void)_userChangedScrollViewMagnificationNotification:(id)arg1;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
-- (id)characterIndexesForQuadPoints:(id)arg1 onPageAtIndex:(unsigned long long)arg2;
-- (void)clearHighlightableSelection;
 - (struct CGSize)contentSize;
 - (id)contentSnapshot;
-- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromModelToOverlayWithPageIndex:(unsigned long long)arg2;
-- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromOverlayToModelWithPageIndex:(unsigned long long)arg2;
+- (id)controller:(id)arg1 willSetToolbarItems:(id)arg2;
+- (void)controllerWillDismissSignatureCaptureView:(id)arg1;
+- (void)controllerWillDismissSignatureManagerView:(id)arg1;
+- (void)controllerWillShowSignatureCaptureView:(id)arg1;
+- (void)controllerWillShowSignatureManagerView:(id)arg1;
 - (void)dealloc;
-- (void)didEnterToolMode;
-- (void)didExitToolMode;
-- (BOOL)hasHighlightableSelection;
+- (void)editCheckpointReachedForAnnotationController:(id)arg1;
+- (void)editDetectedForAnnotationController:(id)arg1;
 - (void)highlight:(id)arg1;
-- (id)highlightableSelectionCharacterIndexesOnPageAtIndex:(unsigned long long)arg1;
 - (struct CGSize)idealContentSizeForScreenSize:(struct CGSize)arg1 windowDecorationSize:(struct CGSize)arg2;
-- (id)initWithPDFDocument:(id)arg1 andPDFReader:(id)arg2 annotationController:(id)arg3;
-- (id)layerContainingQuickBackgroundForLoupeOnOverlayAtPageIndex:(unsigned long long)arg1;
-- (void)loadDocumentWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (struct CGRect)maxPageRectWithPageIndex:(unsigned long long)arg1;
+- (id)initWithPDFDocument:(id)arg1 delegate:(id)arg2;
+- (void)loadContentWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)menuItems:(id)arg1 forPage:(id)arg2;
-- (id)newContentSnapshotPDFDataIncludingAdornments:(BOOL)arg1 atScale:(double)arg2 inRect:(struct CGRect)arg3 onOverlayAtPageIndex:(unsigned long long)arg4;
 - (void)pdfDocumentDidUnlock:(id)arg1;
-- (void)pdfView:(id)arg1 didAddView:(id)arg2 forPage:(id)arg3 atIndex:(unsigned long long)arg4;
-- (void)pdfView:(id)arg1 willRemoveView:(id)arg2 forPage:(id)arg3 atIndex:(unsigned long long)arg4;
 - (void)pdfViewDidChangeCurrentPage:(id)arg1;
-- (void)pdfViewDidChangeCurrentSelection:(id)arg1;
-- (BOOL)pdfViewShouldPopulateMenu:(id)arg1;
-- (id)quadPointsForCharacterIndexes:(id)arg1 onPageAtIndex:(unsigned long long)arg2;
+- (void)penStrokeCompletedForAnnotationController:(id)arg1;
+- (id)popoverPresentingViewControllerForAnnotationController:(id)arg1;
+- (void)positionSketchOverlay:(id)arg1 forAnnotationController:(id)arg2;
 - (void)setup;
-- (BOOL)shouldDetectFormElements;
-- (BOOL)shouldPlaceFormElementAtPoint:(struct CGPoint)arg1 onOverlayAtPageIndex:(unsigned long long)arg2;
-- (BOOL)shouldPlaceProposedFormElementAtRect:(struct CGRect)arg1 onOverlayAtPageIndex:(unsigned long long)arg2;
 - (BOOL)shouldShowAnnotationsOfType:(id)arg1;
 - (void)teardown;
 - (void)uninstallAllAnnotationControllerOverlays;
@@ -126,7 +112,6 @@
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (struct CGRect)visibleContentRect;
 - (struct CGRect)visibleContentRectInCoordinateSpace:(id)arg1;
-- (void)willPlaceSingleShotAnnotation:(id)arg1 onProposedPageModelController:(id *)arg2;
 
 @end
 

@@ -27,6 +27,7 @@
     GEOTransitSuggestedRoute *_originalSuggestedRoute;
     GEODirectionsRequest *_request;
     GEODirectionsResponse *_response;
+    NSMutableArray *_routeDescriptions;
     NSData *_routeID;
     NSMutableArray *_steps;
     NSString *_trafficDescription;
@@ -75,6 +76,7 @@
 @property (strong, nonatomic) GEOTransitSuggestedRoute *originalSuggestedRoute; // @synthesize originalSuggestedRoute=_originalSuggestedRoute;
 @property (strong, nonatomic) GEODirectionsRequest *request; // @synthesize request=_request;
 @property (strong, nonatomic) GEODirectionsResponse *response; // @synthesize response=_response;
+@property (strong, nonatomic) NSMutableArray *routeDescriptions; // @synthesize routeDescriptions=_routeDescriptions;
 @property (strong, nonatomic) NSData *routeID; // @synthesize routeID=_routeID;
 @property (nonatomic) BOOL showTransitSchedules; // @synthesize showTransitSchedules=_showTransitSchedules;
 @property (strong, nonatomic) NSMutableArray *steps; // @synthesize steps=_steps;
@@ -85,13 +87,18 @@
 @property (strong, nonatomic) NSString *trafficDescription; // @synthesize trafficDescription=_trafficDescription;
 @property (nonatomic) int transportType; // @synthesize transportType=_transportType;
 
++ (Class)routeDescriptionsType;
 + (Class)stepType;
++ (id)syntheticRouteDetailsWithOrigin:(id)arg1 destination:(id)arg2 transportType:(int)arg3 destinationName:(id)arg4;
+- (void).cxx_destruct;
 - (int)StringAsTransportType:(id)arg1;
 - (void)addCoordinates:(double)arg1;
+- (void)addRouteDescriptions:(id)arg1;
 - (void)addStep:(id)arg1;
 - (void)addTrafficColor:(unsigned int)arg1;
 - (void)addTrafficColorOffset:(unsigned int)arg1;
 - (void)clearCoordinates;
+- (void)clearRouteDescriptions;
 - (void)clearSteps;
 - (void)clearTrafficColorOffsets;
 - (void)clearTrafficColors;
@@ -103,14 +110,19 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)initWithRoute:(id)arg1 destinationName:(id)arg2 stringFormatter:(id)arg3;
+- (id)initWithRoute:(id)arg1 fallbackDestinationName:(id)arg2 stringFormatter:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isSyntheticRoute;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)routeDescriptionsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)routeDescriptionsCount;
 - (void)setCoordinates:(double *)arg1 count:(unsigned long long)arg2;
 - (void)setTrafficColorOffsets:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (void)setTrafficColors:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (id)stepAtIndex:(unsigned long long)arg1;
+- (unsigned long long)stepIndexWithID:(unsigned long long)arg1;
+- (id)stepWithID:(unsigned long long)arg1;
 - (unsigned long long)stepsCount;
 - (unsigned int)trafficColorAtIndex:(unsigned long long)arg1;
 - (unsigned int)trafficColorOffsetAtIndex:(unsigned long long)arg1;

@@ -35,13 +35,14 @@
 + (id)localEntryFromCloudEntry:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)attributesDict;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)encryptedFields;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEquivalentTo:(id)arg1;
+- (id)unEncryptedFields;
 - (id)uniqueID;
 - (id)uniqueRecordName;
 - (id)uniqueRecordNameVer0;

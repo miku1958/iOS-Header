@@ -6,10 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSData, NSError, NSMutableData, NSString, NSURL, NSURLConnection;
+#import <ManagedConfiguration/NSURLSessionDataDelegate-Protocol.h>
+
+@class NSData, NSError, NSMutableData, NSString, NSURL, NSURLSession;
 @protocol OS_dispatch_semaphore;
 
-@interface MCHTTPTransaction : NSObject
+@interface MCHTTPTransaction : NSObject <NSURLSessionDataDelegate>
 {
     NSURL *_requestURL;
     NSString *_method;
@@ -25,35 +27,35 @@
     NSMutableData *_responseData;
     long long _statusCode;
     NSError *_error;
-    NSURLConnection *_connection;
+    NSURLSession *_session;
     NSObject<OS_dispatch_semaphore> *_doneSema;
 }
 
 @property (strong, nonatomic) NSString *CMSSignatureHeaderName; // @synthesize CMSSignatureHeaderName=_CMSSignatureHeaderName;
 @property (strong, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *method; // @synthesize method=_method;
 @property (readonly, strong, nonatomic) NSURL *permanentlyRedirectedURL; // @synthesize permanentlyRedirectedURL=_permanentlyRedirectedURL;
 @property (readonly, strong, nonatomic) NSData *responseData; // @synthesize responseData=_responseData;
 @property (readonly, nonatomic) long long statusCode; // @synthesize statusCode=_statusCode;
+@property (readonly) Class superclass;
 @property (nonatomic) double timeout; // @synthesize timeout=_timeout;
 @property (strong, nonatomic) NSURL *url; // @synthesize url=_requestURL;
 @property (strong, nonatomic) NSString *userAgent; // @synthesize userAgent=_userAgent;
 
-+ (id)performRequestURL:(id)arg1 method:(id)arg2 timeout:(double)arg3 userAgent:(id)arg4 contentType:(id)arg5 data:(id)arg6 identity:(struct __SecIdentity *)arg7 outPermanentlyRedirectedURL:(id *)arg8 outError:(id *)arg9;
 + (id)transactionWithURL:(id)arg1 method:(id)arg2;
 - (void).cxx_destruct;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_beginTransaction;
 - (BOOL)_shouldAllowTrust:(struct __SecTrust *)arg1 forHost:(id)arg2;
-- (BOOL)connection:(id)arg1 canAuthenticateAgainstProtectionSpace:(id)arg2;
-- (void)connection:(id)arg1 didFailWithError:(id)arg2;
-- (void)connection:(id)arg1 didReceiveAuthenticationChallenge:(id)arg2;
-- (void)connection:(id)arg1 didReceiveData:(id)arg2;
-- (void)connection:(id)arg1 didReceiveResponse:(id)arg2;
-- (id)connection:(id)arg1 willSendRequest:(id)arg2 redirectResponse:(id)arg3;
-- (void)connectionDidFinishLoading:(id)arg1;
-- (BOOL)connectionShouldUseCredentialStorage:(id)arg1;
 - (struct __SecIdentity *)copyIdentity;
 - (void)dealloc;
 - (id)initWithURL:(id)arg1 method:(id)arg2;

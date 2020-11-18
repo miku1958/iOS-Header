@@ -8,7 +8,7 @@
 
 #import <FitnessUI/NSCoding-Protocol.h>
 
-@class NSDictionary;
+@class HKQuantity, NSDictionary, NSString;
 
 @interface FIUIWorkoutActivityType : NSObject <NSCoding>
 {
@@ -23,7 +23,10 @@
 @property (readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isCategorizedOtherWorkout;
 @property (readonly, nonatomic) BOOL isIndoor;
+@property (readonly, nonatomic) HKQuantity *lapLength;
 @property (readonly, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
+@property (readonly, nonatomic) long long swimmingLocationType;
+@property (readonly, nonatomic) NSString *uniqueIdentifier;
 
 + (id)activityTypeWithHKWorkoutActivityTypeIdentifier:(unsigned long long)arg1 isIndoor:(BOOL)arg2;
 + (id)activityTypeWithHKWorkoutActivityTypeIdentifier:(unsigned long long)arg1 isIndoor:(BOOL)arg2 metadata:(id)arg3;
@@ -34,9 +37,12 @@
 - (void).cxx_destruct;
 - (id)_defaultEnabledMetricsForActivityType:(unsigned long long)arg1;
 - (id)_indoorDefaultEnabledMetricsForActivityType:(unsigned long long)arg1;
+- (id)_machineProvidedMetrics;
 - (id)_metricsForSwimmingWithLocationType:(long long)arg1;
 - (id)activityTypeByAddingLapLength:(double)arg1;
 - (id)allAvailableMetrics;
+- (id)allAvailableMetricsWithIsMachineWorkout:(BOOL)arg1;
+- (id)appendMachineMetricsIfPossibleToMetrics:(id)arg1 maxNumMetrics:(long long)arg2;
 - (id)defaultEnabledMetrics;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -46,6 +52,7 @@
 - (id)initWithActivityTypeIdentifier:(unsigned long long)arg1 isIndoor:(BOOL)arg2 metadata:(id)arg3;
 - (id)initWithActivityTypeIdentifier:(unsigned long long)arg1 isIndoor:(BOOL)arg2 metadata:(id)arg3 auxiliaryTypeIdentifier:(unsigned long long)arg4;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isAvailableMetricType:(unsigned long long)arg1 withIsMachineWorkout:(BOOL)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)localizedName;
 - (id)localizedNameComponents;

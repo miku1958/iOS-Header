@@ -20,8 +20,9 @@
 @property (strong, nonatomic) NSMutableDictionary *transformedItems; // @synthesize transformedItems=_transformedItems;
 
 - (void).cxx_destruct;
-- (id)initWithHome:(id)arg1;
-- (id)initWithHome:(id)arg1 sourceProvider:(id)arg2 transformationBlock:(CDUnknownBlockType)arg3;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
+- (id)initWithSourceProvider:(id)arg1 transformationBlock:(CDUnknownBlockType)arg2;
 - (id)invalidationReasons;
 - (id)items;
 - (id)reloadItems;

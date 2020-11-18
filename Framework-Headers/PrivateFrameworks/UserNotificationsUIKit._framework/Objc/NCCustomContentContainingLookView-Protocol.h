@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UserNotificationsUIKit/NCLookView-Protocol.h>
+#import <UserNotificationsUIKit/MTPlatter-Protocol.h>
+#import <UserNotificationsUIKit/MTTitled-Protocol.h>
 
 @class UIScrollView, UITapGestureRecognizer;
 
-@protocol NCCustomContentContainingLookView <NCLookView>
+@protocol NCCustomContentContainingLookView <MTPlatter, MTTitled>
 
 @property (nonatomic, getter=isActionsHidden) BOOL actionsHidden;
 @property (readonly, nonatomic) struct CGSize contentSizeExcludingActions;

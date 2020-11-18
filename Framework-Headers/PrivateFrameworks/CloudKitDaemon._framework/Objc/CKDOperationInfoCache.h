@@ -24,6 +24,8 @@
 + (id)sharedCache;
 - (void).cxx_destruct;
 - (id)_lockedResultForOperationWithID:(id)arg1;
+- (void)_lockedSetOperationInfo:(id)arg1 forOperationID:(id)arg2 appContainerTuple:(id)arg3;
+- (void)_lockedSetOperationResult:(id)arg1 forOperationID:(id)arg2;
 - (void)_locked_enumerateCallbackArgumentsForOperationWithID:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)_locked_operationInfoForID:(id)arg1;
 - (id)allOutstandingOperationIDsForAppContainerTuple:(id)arg1;
@@ -36,6 +38,7 @@
 - (void)registerAttemptForOperationWithID:(id)arg1;
 - (void)registerCacheEvictionActivity;
 - (void)registerDelegate:(id)arg1 forOperationWithID:(id)arg2;
+- (void)registerOperationAndSetResult:(id)arg1 forOperationInfo:(id)arg2 appContainerTuple:(id)arg3;
 - (id)resultForOperationWithID:(id)arg1;
 - (id)resumableOperationInfosByAppContainerTuplesWithProgressPurged:(BOOL)arg1;
 - (void)setOperationInfo:(id)arg1 forOperationID:(id)arg2 appContainerTuple:(id)arg3;

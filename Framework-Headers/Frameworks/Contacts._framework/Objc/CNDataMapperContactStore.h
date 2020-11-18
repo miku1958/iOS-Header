@@ -7,17 +7,22 @@
 #import <Contacts/CNContactStore.h>
 
 @class NSObject;
-@protocol CNDataMapper;
+@protocol CNContactsLogger, CNDataMapper, CNRegulatoryLogger;
 
-__attribute__((visibility("hidden")))
 @interface CNDataMapperContactStore : CNContactStore
 {
     id<CNDataMapper> _mapper;
+    id<CNContactsLogger> _logger;
+    id<CNRegulatoryLogger> _regulatoryLogger;
 }
 
+@property (readonly, nonatomic) id<CNContactsLogger> logger; // @synthesize logger=_logger;
 @property (readonly, strong, nonatomic) NSObject<CNDataMapper> *mapper; // @synthesize mapper=_mapper;
+@property (readonly, nonatomic) id<CNRegulatoryLogger> regulatoryLogger; // @synthesize regulatoryLogger=_regulatoryLogger;
 
 + (Class)dataMapperClass;
++ (BOOL)enableContactsOutOfProcess;
+- (void).cxx_destruct;
 - (id)_allCustomProperties;
 - (id)_createInfo;
 - (id)_customPropertyValuesForRecordWithIdentifier:(id)arg1 error:(id *)arg2;
@@ -29,16 +34,15 @@ __attribute__((visibility("hidden")))
 - (id)_smartGroupsForAccountsWithIdentifiers:(id)arg1;
 - (id)_smartGroupsMatchingPredicate:(id)arg1;
 - (id)accountsMatchingPredicate:(id)arg1 error:(id *)arg2;
-- (id)batchEnumeratorForFetchRequest:(id)arg1;
 - (id)changeHistoryWithFetchRequest:(id)arg1 error:(id *)arg2;
-- (BOOL)clearChangeHistoryForClient:(id)arg1 toSequenceNumber:(long long)arg2 error:(id *)arg3;
+- (BOOL)clearChangeHistoryForClientIdentifier:(id)arg1 toChangeAnchor:(id)arg2 error:(id *)arg3;
 - (id)contactIdentifierWithMatchingDictionary:(id)arg1;
-- (id)contactIdentifiersForFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)contactWithUserActivityUserInfo:(id)arg1 keysToFetch:(id)arg2;
+- (id)contactsForFetchRequest:(id)arg1 matchInfos:(id *)arg2 error:(id *)arg3;
 - (id)contactsInContainerWithIdentifier:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
 - (id)containersMatchingPredicate:(id)arg1 error:(id *)arg2;
-- (void)dealloc;
 - (id)defaultContainerIdentifier;
+- (id)description;
 - (id)descriptorForRequiredKeysForMatchingDictionary;
 - (BOOL)enumerateContactsAndMatchInfoWithFetchRequest:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)executeFetchRequest:(id)arg1 progressiveResults:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
@@ -49,14 +53,14 @@ __attribute__((visibility("hidden")))
 - (id)iOSMapper;
 - (id)identifierWithError:(id *)arg1;
 - (id)init;
-- (id)initWithDataMapper:(id)arg1;
+- (id)initWithDataMapper:(id)arg1 environment:(id)arg2;
 - (id)initWithEnvironment:(id)arg1;
 - (BOOL)isValidSaveRequest:(id)arg1 error:(id *)arg2;
 - (id)matchingDictionaryForContact:(id)arg1;
-- (id)meContactIdentifierWithError:(id *)arg1;
+- (id)meContactIdentifiers:(id *)arg1;
 - (id)membersOfGroupWithIdentifier:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
 - (id)policyForContainerWithIdentifier:(id)arg1 error:(id *)arg2;
-- (BOOL)registerClientForChangeHistory:(id)arg1 error:(id *)arg2;
+- (BOOL)registerChangeHistoryClientIdentifier:(id)arg1 error:(id *)arg2;
 - (id)requestAccessForEntityType:(long long)arg1;
 - (id)serverSearchContainersMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (BOOL)setBestMeIfNeededForGivenName:(id)arg1 familyName:(id)arg2 email:(id)arg3 error:(id *)arg4;
@@ -65,7 +69,7 @@ __attribute__((visibility("hidden")))
 - (id)subgroupsOfGroupWithIdentifier:(id)arg1 error:(id *)arg2;
 - (id)unifiedContactCountWithError:(id *)arg1;
 - (id)unifiedContactsMatchingPredicate:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
-- (BOOL)unregisterClientForChangeHistory:(id)arg1 error:(id *)arg2;
+- (BOOL)unregisterChangeHistoryClientIdentifier:(id)arg1 error:(id *)arg2;
 - (id)usedLabelsForPropertyWithKey:(id)arg1 error:(id *)arg2;
 - (id)userActivityUserInfoForContact:(id)arg1;
 

@@ -6,9 +6,21 @@
 
 #import <UIKit/NSLayoutItem-Protocol.h>
 
-@class NSISEngine, NSISVariable, NSMutableSet, NSObservation;
+@class NSISEngine, NSISVariable, NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSMutableSet, NSObservation;
 
 @protocol _UILayoutItem <NSLayoutItem>
+
+@property (readonly, nonatomic) NSLayoutYAxisAnchor *bottomAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *centerXAnchor;
+@property (readonly, nonatomic) NSLayoutYAxisAnchor *centerYAnchor;
+@property (readonly, nonatomic) NSLayoutDimension *heightAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *leadingAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *leftAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *rightAnchor;
+@property (readonly, nonatomic) NSLayoutYAxisAnchor *topAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *trailingAnchor;
+@property (readonly, nonatomic) NSLayoutDimension *widthAnchor;
+
 - (NSISVariable *)_boundsHeightVariable;
 - (NSISVariable *)_boundsWidthVariable;
 - (NSISVariable *)_minXVariable;
@@ -16,6 +28,7 @@
 - (void *)_referenceView;
 - (NSMutableSet *)_uili_existingBaseFrameVariables;
 - (NSMutableSet *)_uili_existingLayoutVariables;
+- (BOOL)_uili_isFocusGuide;
 - (NSISEngine *)_uili_observableLayoutEngineForBaseFrameVariables:(BOOL)arg1;
 - (void)_uili_removeLayoutVariableObservationsOnlyToSupportTAMICChange:(BOOL)arg1;
 - (BOOL)_uili_requiresObservationForVariable:(NSISVariable *)arg1;

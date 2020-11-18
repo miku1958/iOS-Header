@@ -11,8 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)disableLegacyStoreLookups;
 + (void)initialize;
-+ (BOOL)showLayerBorders;
++ (BOOL)showDebugIndicators;
 
 @end
 

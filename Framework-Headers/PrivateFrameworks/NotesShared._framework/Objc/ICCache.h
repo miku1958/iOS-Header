@@ -6,13 +6,24 @@
 
 #import <Foundation/NSCache.h>
 
+@class NSObject;
+@protocol OS_dispatch_source;
+
 @interface ICCache : NSCache
 {
+    NSObject<OS_dispatch_source> *_memoryWarningEventSource;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_source> *memoryWarningEventSource; // @synthesize memoryWarningEventSource=_memoryWarningEventSource;
+
++ (id)cacheCollection;
++ (void)purgeAllCaches;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
-- (void)receivedMemoryWarning:(id)arg1;
+- (void)receivedMemoryWarning;
+- (void)registerForMemoryWarnings;
+- (void)unregisterForMemoryWarnings;
 
 @end
 

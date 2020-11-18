@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 - (struct CGRect)bounds;
 - (id)initWithArtworkCatalog:(id)arg1;
+- (id)initWithArtworkCatalog:(id)arg1 allowsNetworking:(BOOL)arg2;
 
 @end
 

@@ -13,7 +13,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)accessibilityPerformEscape;
-- (BOOL)accessibilityViewIsModal;
 
 @end
 

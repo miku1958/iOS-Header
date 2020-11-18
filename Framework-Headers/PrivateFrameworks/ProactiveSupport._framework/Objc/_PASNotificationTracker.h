@@ -22,6 +22,7 @@
 - (BOOL)deregisterHandlerWithToken:(id)arg1;
 - (id)init;
 - (void)issueNotificationAsyncWithContext:(id)arg1;
+- (void)issueNotificationAsyncWithContext:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (id)registerWithQueue:(id)arg1 handler:(CDUnknownBlockType)arg2;
 
 @end

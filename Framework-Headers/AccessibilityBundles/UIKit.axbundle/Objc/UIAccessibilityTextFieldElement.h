@@ -16,16 +16,21 @@
 @property (weak, nonatomic) UITextField *textField; // @synthesize textField=_textField;
 
 - (void).cxx_destruct;
+- (id)_accessibilityAXAttributedHint;
+- (id)_accessibilityAXAttributedLabel;
+- (id)_accessibilityAXAttributedValue;
 - (void)_accessibilityCopy;
 - (void)_accessibilityCut;
 - (void)_accessibilityDelete;
 - (id)_accessibilityHandwritingAttributes;
 - (BOOL)_accessibilityHasTextOperations;
+- (void)_accessibilityInsertText:(id)arg1 atPosition:(long long)arg2;
 - (BOOL)_accessibilityIsScannerElement;
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (BOOL)_accessibilityOverridesInstructionsHint;
 - (void)_accessibilityPaste;
 - (void)_accessibilityReplace;
+- (void)_accessibilityReplaceCharactersAtCursor:(unsigned long long)arg1 withString:(id)arg2;
 - (void)_accessibilitySelect;
 - (void)_accessibilitySelectAll;
 - (struct _NSRange)_accessibilitySelectedTextRange;
@@ -39,6 +44,8 @@
 - (id)_accessibilityUserTestingParent;
 - (BOOL)_accessibilityViewIsVisible;
 - (struct CGPoint)accessibilityActivationPoint;
+- (id)accessibilityDragSourceDescriptors;
+- (id)accessibilityDropPointDescriptors;
 - (void)accessibilityElementDidBecomeFocused;
 - (void)accessibilityElementDidLoseFocus;
 - (BOOL)accessibilityElementsHidden;

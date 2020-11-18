@@ -46,7 +46,7 @@
 @property (strong, nonatomic) NSString *bulkChangeCheckCTag; // @synthesize bulkChangeCheckCTag=_bulkChangeCheckCTag;
 @property (strong, nonatomic) NSDictionary *bulkRequests; // @synthesize bulkRequests=_bulkRequests;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<CoreDAVLocalDBInfoProvider> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<CoreDAVLocalDBInfoProvider> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL ensureUpdatedCTag; // @synthesize ensureUpdatedCTag=_ensureUpdatedCTag;
 @property (readonly, nonatomic) NSURL *folderURL; // @synthesize folderURL=_folderURL;
@@ -61,6 +61,7 @@
 @property (nonatomic) BOOL useMultiGet; // @synthesize useMultiGet=_useMultiGet;
 @property (nonatomic) BOOL useSyncCollection; // @synthesize useSyncCollection=_useSyncCollection;
 
+- (void).cxx_destruct;
 - (void)_bulkChange;
 - (void)_bulkChangeTask:(id)arg1 didFinishWithError:(id)arg2;
 - (void)_configureMultiGet:(id)arg1;
@@ -87,7 +88,6 @@
 - (id)copyPostTaskWithPayloadItem:(id)arg1 forAction:(id)arg2;
 - (id)copyPutTaskWithPayloadItem:(id)arg1 forAction:(id)arg2;
 - (id)dataContentType;
-- (void)dealloc;
 - (void)deleteResourceURLs:(id)arg1;
 - (void)deleteTask:(id)arg1 completedWithError:(id)arg2;
 - (void)getTask:(id)arg1 data:(id)arg2 error:(id)arg3;

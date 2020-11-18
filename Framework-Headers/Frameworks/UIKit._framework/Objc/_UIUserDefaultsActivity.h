@@ -6,21 +6,19 @@
 
 #import <UIKit/UIActivity.h>
 
-@class NSArray, UINavigationController, UIViewController, _UIActivityUserDefaults;
+@class NSArray, UIViewController, _UIActivityUserDefaults;
 
 __attribute__((visibility("hidden")))
 @interface _UIUserDefaultsActivity : UIActivity
 {
     NSArray *_availableActivities;
     _UIActivityUserDefaults *_userDefaults;
-    UINavigationController *_navigationController;
-    UIViewController *_userDefaultsViewController;
+    UIViewController *_presentableActivityViewController;
 }
 
 @property (copy, nonatomic) NSArray *availableActivities; // @synthesize availableActivities=_availableActivities;
-@property (strong, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
+@property (strong, nonatomic) UIViewController *presentableActivityViewController; // @synthesize presentableActivityViewController=_presentableActivityViewController;
 @property (strong, nonatomic) _UIActivityUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
-@property (strong, nonatomic) UIViewController *userDefaultsViewController; // @synthesize userDefaultsViewController=_userDefaultsViewController;
 
 - (void).cxx_destruct;
 - (id)_activityImage;

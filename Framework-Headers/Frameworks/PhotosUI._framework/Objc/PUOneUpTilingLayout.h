@@ -17,12 +17,14 @@
     double _transitionProgress;
     struct {
         BOOL respondsToAspectRatioForItemAtIndexPath;
+        BOOL respondsToShouldScaleToFitSafeInsetsForItemAtIndexPath;
         BOOL respondsToBadgeSizeForItemAtIndexPath;
+        BOOL respondsToActionBadgeSizeForItemAtIndexPath;
         BOOL respondsToAssetExplorerReviewScreenBadgeSizeForItemAtIndexPath;
         BOOL respondsToShouldShowPlayButtonForItemAtIndexPath;
         BOOL respondsToShouldShowProgressIndicatorForItemAtIndexPath;
         BOOL respondsToShouldShowBufferingIndicatorForItemAtIndexPath;
-        BOOL respondsToShouldShowLoadingIndicatorForItemAtIndexPath;
+        BOOL respondsToLoadingIndicatorSizeForItemAtIndexPath;
         BOOL respondsToModelTileTransformForItemAtIndexPath;
         BOOL respondsToContentOffsetForItemAtIndexPath;
         BOOL respondsToShouldShowAccessoryForItemAtIndexPath;
@@ -36,6 +38,7 @@
     BOOL _useBadgeTiles;
     BOOL _useAssetExplorerReviewScreenBadgeTiles;
     BOOL _useAssetExplorerReviewScreenSelectionIndicatorTiles;
+    BOOL _canDisplayLoadingIndicators;
     BOOL _useUserTransformTiles;
     BOOL _shouldPinContentToTop;
     id<PUOneUpTilingLayoutDelegate> _delegate;
@@ -47,19 +50,20 @@
     struct CGSize _progressIndicatorSize;
     struct CGSize _assetExplorerReviewScreenProgressIndicatorSize;
     struct CGSize _bufferingIndicatorSize;
-    struct CGSize _loadingIndicatorSize;
     struct CGSize _displaySizeForInsetMatching;
     struct UIEdgeInsets _contentGuideInsets;
+    struct UIEdgeInsets _contentSafeInsets;
 }
 
 @property (nonatomic) struct CGSize assetExplorerReviewScreenProgressIndicatorSize; // @synthesize assetExplorerReviewScreenProgressIndicatorSize=_assetExplorerReviewScreenProgressIndicatorSize;
 @property (nonatomic) struct CGSize bufferingIndicatorSize; // @synthesize bufferingIndicatorSize=_bufferingIndicatorSize;
+@property (nonatomic) BOOL canDisplayLoadingIndicators; // @synthesize canDisplayLoadingIndicators=_canDisplayLoadingIndicators;
 @property (nonatomic) struct UIEdgeInsets contentGuideInsets; // @synthesize contentGuideInsets=_contentGuideInsets;
+@property (nonatomic) struct UIEdgeInsets contentSafeInsets; // @synthesize contentSafeInsets=_contentSafeInsets;
 @property (weak, nonatomic) id<PUOneUpTilingLayoutDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) struct CGSize displaySizeForInsetMatching; // @synthesize displaySizeForInsetMatching=_displaySizeForInsetMatching;
 @property (readonly, nonatomic) NSIndexPath *indexPathOfCurrentItem;
 @property (nonatomic) struct CGSize interpageSpacing; // @synthesize interpageSpacing=_interpageSpacing;
-@property (nonatomic) struct CGSize loadingIndicatorSize; // @synthesize loadingIndicatorSize=_loadingIndicatorSize;
 @property (strong, nonatomic) PUParallaxComputer *parallaxComputer; // @synthesize parallaxComputer=_parallaxComputer;
 @property (nonatomic) struct CGSize playButtonSize; // @synthesize playButtonSize=_playButtonSize;
 @property (nonatomic) struct CGSize progressIndicatorSize; // @synthesize progressIndicatorSize=_progressIndicatorSize;
@@ -75,12 +79,14 @@
 
 + (id)centerTileKinds;
 + (void)initialize;
++ (struct CGRect)untransformedRectForItemWithAspectRatio:(double)arg1 pageRect:(struct CGRect)arg2 safeInsets:(struct UIEdgeInsets)arg3;
 - (void).cxx_destruct;
 - (BOOL)_accessoryViewVisibilityForItemAtIndexPath:(id)arg1;
 - (struct CGPoint)_contentOffsetForItemAtIndexPath:(id)arg1;
 - (id)_createLayoutInfoForTileWithIndexPath:(id)arg1 kind:(id)arg2;
 - (id)_displayTileTransformForItemAtIndexPath:(id)arg1 options:(unsigned long long)arg2;
 - (id)_displayTileTransformForItemAtIndexPath:(id)arg1 pageSize:(struct CGSize)arg2 secondaryDisplayTransform:(id)arg3 options:(unsigned long long)arg4;
+- (struct CGRect)_frameForTileWithSize:(struct CGSize)arg1 centeredOnItemAtIndexPath:(id)arg2;
 - (void)_getLayoutRect:(out struct CGRect *)arg1 transform:(out struct CGAffineTransform *)arg2 parallaxOffset:(out struct CGPoint *)arg3 forContentOfItemAtIndexPath:(id)arg4 options:(unsigned long long)arg5;
 - (id)_indexPathOfItemClosestToAbscissa:(double)arg1;
 - (void)_invalidateContentRelatedTilesWithIndexPath:(id)arg1 inContext:(id)arg2;
@@ -98,6 +104,7 @@
 - (void)invalidateBadgeSizeForItemAtIndexPath:(id)arg1;
 - (void)invalidateContentOffsetForItemAtIndexPath:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)invalidateLayoutWithContext:(id)arg1;
+- (void)invalidateLoadingIndicatorForItemAtIndexPath:(id)arg1;
 - (void)invalidateModelTileTransformForItemAtIndexPath:(id)arg1;
 - (void)invalidateVideoPlaceholderForItemAtIndexPath:(id)arg1;
 - (id)layoutInfoForTileWithIndexPath:(id)arg1 kind:(id)arg2;

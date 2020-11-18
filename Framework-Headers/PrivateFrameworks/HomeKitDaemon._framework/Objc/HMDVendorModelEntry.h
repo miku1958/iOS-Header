@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HMDAccessoryVersion, NSString;
 
-@interface HMDVendorModelEntry : NSObject
+@interface HMDVendorModelEntry : HMFObject
 {
     NSString *_modelName;
     NSString *_manufacturer;

@@ -14,9 +14,11 @@
 
 @interface TIKeyboardCandidate : NSObject <NSCopying, NSSecureCoding, TIKeyboardCandidateCoding>
 {
+    BOOL _isSendCurrentLocation;
     unsigned int _slotID;
     NSString *_alternativeText;
     NSString *_annotationText;
+    unsigned long long _customInfoType;
     unsigned long long _indexForMetrics;
 }
 
@@ -26,6 +28,7 @@
 @property (readonly, nonatomic) NSString *candidate;
 @property (readonly, nonatomic, getter=isCompletionCandidate) BOOL completionCandidate;
 @property (readonly, nonatomic) long long cursorMovement;
+@property (nonatomic) unsigned long long customInfoType; // @synthesize customInfoType=_customInfoType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) unsigned long long deleteCount;
 @property (readonly, copy) NSString *description;
@@ -40,9 +43,10 @@
 @property (readonly, nonatomic) BOOL isAddress;
 @property (readonly, nonatomic) BOOL isAutocorrection;
 @property (readonly, nonatomic) BOOL isForShortcutConversion;
-@property (readonly, nonatomic) BOOL isSendCurrentLocation;
+@property (nonatomic) BOOL isSendCurrentLocation; // @synthesize isSendCurrentLocation=_isSendCurrentLocation;
 @property (readonly, nonatomic) NSString *label;
 @property (readonly, strong, nonatomic) TIProactiveTrigger *proactiveTrigger;
+@property (readonly, nonatomic, getter=isRegionalCandidate) BOOL regionalCandidate;
 @property (readonly, nonatomic, getter=isSecureContentCandidate) BOOL secureContentCandidate;
 @property (nonatomic) unsigned int slotID; // @synthesize slotID=_slotID;
 @property (readonly) Class superclass;

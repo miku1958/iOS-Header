@@ -39,14 +39,16 @@ __attribute__((visibility("hidden")))
 - (id)accessoryView;
 - (void)addScrubberWithDeferral;
 - (BOOL)canEnterFullScreen;
+- (BOOL)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (void)dealloc;
 - (void)didChangePlayingStatus;
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
-- (void)loadPreviewControllerWithPreviewItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)performFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (void)previewDidAppear:(BOOL)arg1;
 - (void)previewDidDisappear:(BOOL)arg1;
-- (void)setPlayControlsHidden:(BOOL)arg1;
+- (void)setPlayControlsHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (id)timeLabelScrollView;
 - (void)transitionDidFinish:(BOOL)arg1 didComplete:(BOOL)arg2;
 - (void)transitionDidStart:(BOOL)arg1;

@@ -6,15 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/NSXPCListenerDelegate-Protocol.h>
-
-@class NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString, NSXPCListener;
+@class NSMutableArray, NSMutableDictionary, NSOperationQueue, NSXPCListener;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface CKDCloudDatabaseServer : NSObject <NSXPCListenerDelegate>
+@interface CKDCloudDatabaseServer : NSObject
 {
     int _tccToken;
-    NSXPCListener *_anonymousListener;
     NSXPCListener *_xpcListener;
     NSMutableArray *_connectedClients;
     NSMutableDictionary *_recentClientsByProcessName;
@@ -27,12 +24,8 @@
     NSMutableArray *_statusReportCallbacks;
 }
 
-@property (strong, nonatomic) NSXPCListener *anonymousListener; // @synthesize anonymousListener=_anonymousListener;
 @property (strong, nonatomic) NSOperationQueue *clientTeardownQueue; // @synthesize clientTeardownQueue=_clientTeardownQueue;
 @property (strong, nonatomic) NSMutableArray *connectedClients; // @synthesize connectedClients=_connectedClients;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableDictionary *recentClientsByProcessName; // @synthesize recentClientsByProcessName=_recentClientsByProcessName;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *sighandlerSource; // @synthesize sighandlerSource=_sighandlerSource;
 @property (nonatomic) unsigned long long stateHandle; // @synthesize stateHandle=_stateHandle;
@@ -40,7 +33,6 @@
 @property (strong, nonatomic) NSMutableArray *statusReportCallbacks; // @synthesize statusReportCallbacks=_statusReportCallbacks;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *statusReportQueue; // @synthesize statusReportQueue=_statusReportQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *statusReportRequestSource; // @synthesize statusReportRequestSource=_statusReportRequestSource;
-@property (readonly) Class superclass;
 @property (nonatomic) int tccToken; // @synthesize tccToken=_tccToken;
 @property (strong, nonatomic) NSXPCListener *xpcListener; // @synthesize xpcListener=_xpcListener;
 

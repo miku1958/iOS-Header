@@ -7,25 +7,24 @@
 #import <PhotosUI/PUViewModel.h>
 
 #import <PhotosUI/PUAssetSharedViewModelChangeObserver-Protocol.h>
+#import <PhotosUI/PUBrowsingAnimatedImagePlayerChangeObserver-Protocol.h>
 #import <PhotosUI/PUBrowsingIrisPlayerChangeObserver-Protocol.h>
 #import <PhotosUI/PUBrowsingVideoPlayerChangeObserver-Protocol.h>
-#import <PhotosUI/PUIrisBadgeVisibilityControllerDelegate-Protocol.h>
 
-@class NSNumber, NSString, PUAssetReference, PUAssetSharedViewModel, PUAssetViewModelChange, PUBadgeInfoPromise, PUBrowsingIrisPlayer, PUBrowsingVideoPlayer, PUIrisBadgeVisibilityController, PUMediaProvider, PUModelTileTransform, PUOperationStatus;
-@protocol PUDisplayAsset;
+@class NSNumber, NSObject, NSProgress, NSString, PUAssetReference, PUAssetSharedViewModel, PUAssetViewModelChange, PUBadgeInfoPromise, PUBrowsingAnimatedImagePlayer, PUBrowsingIrisPlayer, PUBrowsingVideoPlayer, PUMediaProvider, PUModelTileTransform, PUOperationStatus, PXAutoloopScheduler;
+@protocol OS_dispatch_group, PUDisplayAsset;
 
-@interface PUAssetViewModel : PUViewModel <PUBrowsingIrisPlayerChangeObserver, PUIrisBadgeVisibilityControllerDelegate, PUAssetSharedViewModelChangeObserver, PUBrowsingVideoPlayerChangeObserver>
+@interface PUAssetViewModel : PUViewModel <PUBrowsingIrisPlayerChangeObserver, PUAssetSharedViewModelChangeObserver, PUBrowsingVideoPlayerChangeObserver, PUBrowsingAnimatedImagePlayerChangeObserver>
 {
     PUBrowsingVideoPlayer *_videoPlayer;
     PUBrowsingIrisPlayer *_irisPlayer;
-    PUIrisBadgeVisibilityController *_irisBadgeVisibilityController;
+    PUBrowsingAnimatedImagePlayer *_animatedImagePlayer;
     struct {
         BOOL videoPlayersLoadingAllowed;
     } _isValid;
     BOOL _isUserTransformingTile;
-    BOOL _isInFocus;
     BOOL _forceBadgesVisible;
-    BOOL _wantsIrisBadgeVisible;
+    BOOL _isUpdatingDisplayedContent;
     BOOL _isFavorite;
     BOOL _accessoryViewVisible;
     BOOL _isInEditMode;
@@ -34,12 +33,17 @@
     PUModelTileTransform *_modelTileTransform;
     double _focusValue;
     PUOperationStatus *_loadingStatus;
+    NSProgress *_saveProgress;
+    long long _saveState;
+    NSObject<OS_dispatch_group> *_displayedContentUpdateGroup;
     PUBadgeInfoPromise *_badgeInfoPromise;
     long long _lastAccessoryViewVisibilityChangeReason;
     long long _lastContentOffsetChangeReason;
     double _contentOffsetOverrideFactor;
     long long __currentFavoriteOverrideRequest;
+    long long _displayedContentUpdateCount;
     PUMediaProvider *_mediaProvider;
+    PXAutoloopScheduler *_autoloopScheduler;
     NSNumber *_isFavoriteOverride;
     PUAssetReference *_assetReference;
     PUAssetSharedViewModel *_assetSharedViewModel;
@@ -50,15 +54,20 @@
 @property (nonatomic, setter=_setCurrentFavoriteOverrideRequest:) long long _currentFavoriteOverrideRequest; // @synthesize _currentFavoriteOverrideRequest=__currentFavoriteOverrideRequest;
 @property (nonatomic, setter=_setNeedsUpdateVideoPlayers:) BOOL _needsUpdateVideoPlayers; // @synthesize _needsUpdateVideoPlayers=__needsUpdateVideoPlayers;
 @property (nonatomic, getter=isAccessoryViewVisible) BOOL accessoryViewVisible; // @synthesize accessoryViewVisible=_accessoryViewVisible;
+@property (readonly, nonatomic) PUBrowsingAnimatedImagePlayer *animatedImagePlayer;
 @property (strong, nonatomic) id<PUDisplayAsset> asset; // @synthesize asset=_asset;
 @property (strong, nonatomic) PUAssetReference *assetReference; // @synthesize assetReference=_assetReference;
 @property (strong, nonatomic) PUAssetSharedViewModel *assetSharedViewModel; // @synthesize assetSharedViewModel=_assetSharedViewModel;
+@property (strong, nonatomic) PXAutoloopScheduler *autoloopScheduler; // @synthesize autoloopScheduler=_autoloopScheduler;
 @property (copy, nonatomic) PUBadgeInfoPromise *badgeInfoPromise; // @synthesize badgeInfoPromise=_badgeInfoPromise;
 @property (readonly, nonatomic) struct CGPoint contentOffset;
 @property (nonatomic) double contentOffsetOverrideFactor; // @synthesize contentOffsetOverrideFactor=_contentOffsetOverrideFactor;
 @property (readonly, nonatomic) PUAssetViewModelChange *currentChange;
+@property (readonly, nonatomic) PUAssetViewModelChange *currentChangeIfExists;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) long long displayedContentUpdateCount; // @synthesize displayedContentUpdateCount=_displayedContentUpdateCount;
+@property (strong, nonatomic) NSObject<OS_dispatch_group> *displayedContentUpdateGroup; // @synthesize displayedContentUpdateGroup=_displayedContentUpdateGroup;
 @property (nonatomic) double focusValue; // @synthesize focusValue=_focusValue;
 @property (nonatomic) BOOL forceBadgesVisible; // @synthesize forceBadgesVisible=_forceBadgesVisible;
 @property (readonly) unsigned long long hash;
@@ -66,43 +75,46 @@
 @property (nonatomic, setter=_setFavorite:) BOOL isFavorite; // @synthesize isFavorite=_isFavorite;
 @property (copy, nonatomic) NSNumber *isFavoriteOverride; // @synthesize isFavoriteOverride=_isFavoriteOverride;
 @property (nonatomic) BOOL isInEditMode; // @synthesize isInEditMode=_isInEditMode;
-@property (nonatomic, setter=setInFocus:) BOOL isInFocus; // @synthesize isInFocus=_isInFocus;
+@property (nonatomic) BOOL isUpdatingDisplayedContent; // @synthesize isUpdatingDisplayedContent=_isUpdatingDisplayedContent;
 @property (nonatomic, setter=setUserTransformingTile:) BOOL isUserTransformingTile; // @synthesize isUserTransformingTile=_isUserTransformingTile;
 @property (nonatomic, setter=_setLastAccessoryViewVisibilityChangeReason:) long long lastAccessoryViewVisibilityChangeReason; // @synthesize lastAccessoryViewVisibilityChangeReason=_lastAccessoryViewVisibilityChangeReason;
 @property (nonatomic, setter=_setLastContentOffsetChangeReason:) long long lastContentOffsetChangeReason; // @synthesize lastContentOffsetChangeReason=_lastContentOffsetChangeReason;
-@property (readonly, copy, nonatomic) PUOperationStatus *loadingStatus; // @synthesize loadingStatus=_loadingStatus;
+@property (copy, nonatomic) PUOperationStatus *loadingStatus; // @synthesize loadingStatus=_loadingStatus;
 @property (strong, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (copy, nonatomic) PUModelTileTransform *modelTileTransform; // @synthesize modelTileTransform=_modelTileTransform;
 @property (nonatomic) struct CGPoint overridingContentOffset; // @synthesize overridingContentOffset=_overridingContentOffset;
 @property (nonatomic) struct CGPoint preferredContentOffset; // @synthesize preferredContentOffset=_preferredContentOffset;
+@property (strong, nonatomic) NSProgress *saveProgress; // @synthesize saveProgress=_saveProgress;
+@property (readonly, nonatomic) long long saveState; // @synthesize saveState=_saveState;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PUBrowsingVideoPlayer *videoPlayer;
-@property (nonatomic, setter=_setWantsIrisBadgeVisible:) BOOL wantsIrisBadgeVisible; // @synthesize wantsIrisBadgeVisible=_wantsIrisBadgeVisible;
 
 - (void).cxx_destruct;
 - (void)_handleAssetSharedViewModel:(id)arg1 didChange:(id)arg2;
+- (void)_handleBrowsingAnimatedImage:(id)arg1 didChange:(id)arg2;
 - (void)_handleBrowsingIrisPlayer:(id)arg1 didChange:(id)arg2;
 - (void)_handleBrowsingVideoPlayer:(id)arg1 didChange:(id)arg2;
 - (void)_invalidateVideoPlayers;
 - (void)_pauseAndRewindVideoIfNeeded;
-- (void)_setLoadingStatus:(id)arg1;
 - (BOOL)_shouldPauseAndRewindVideo;
 - (void)_updateFavoriteState;
+- (void)_updatePropertiesFromAssetSharedViewModel;
 - (void)_updateVideoPlayersIfNeeded;
 - (void)_updateVideoPlayersLoadingAllowedIfNeeded;
-- (void)_updateWantsIrisBadgeVisible;
 - (void)dealloc;
 - (id)debugDetailedDescription;
 - (void)didPerformChanges;
+- (void)didUpdateDisplayedContent;
 - (id)init;
-- (void)irisBadgeTileInfo:(id)arg1 didTransitionToAppearanceState:(unsigned long long)arg2;
 - (id)newViewModelChange;
 - (void)registerChangeObserver:(id)arg1;
 - (void)resetContentOffset;
 - (void)setAccessoryViewVisible:(BOOL)arg1 changeReason:(long long)arg2;
 - (void)setPreferredContentOffset:(struct CGPoint)arg1 changeReason:(long long)arg2;
+- (void)setSaveState:(long long)arg1;
 - (void)unregisterChangeObserver:(id)arg1;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
+- (void)willUpdateDisplayedContent;
 
 @end
 

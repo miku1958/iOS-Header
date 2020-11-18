@@ -26,7 +26,7 @@
 - (struct CGRect)editControlStartingRectForCell:(id)arg1 forNewEditingState:(BOOL)arg2;
 - (struct CGRect)editingAccessoryEndingRectForCell:(id)arg1 forNewEditingState:(BOOL)arg2 showingDeleteConfirmation:(BOOL)arg3;
 - (struct CGRect)editingAccessoryStartingRectForCell:(id)arg1 forNewEditingState:(BOOL)arg2 showingDeleteConfirmation:(BOOL)arg3;
-- (struct CGRect)textRectForCell:(id)arg1 rowWidth:(double)arg2;
+- (struct CGRect)textRectForCell:(id)arg1 rowWidth:(double)arg2 forSizing:(BOOL)arg3;
 
 @end
 

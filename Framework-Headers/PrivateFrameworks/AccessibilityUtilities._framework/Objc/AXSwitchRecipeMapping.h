@@ -30,7 +30,7 @@
 @property (copy, nonatomic) NSUUID *switchUUID; // @synthesize switchUUID=_switchUUID;
 
 + (id)recipeMappingWithDictionaryRepresentation:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)init;

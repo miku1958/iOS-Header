@@ -27,13 +27,15 @@
 - (void).cxx_destruct;
 - (void)_keyboardDismissGesture:(id)arg1;
 - (BOOL)becomeFirstResponder;
+- (void)didAppear;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setDialogActions:(id)arg1;
 - (void)setInputText:(id)arg1 placeholder:(id)arg2;
 - (void)setMessageText:(id)arg1;
 - (void)setObscuredInsets:(struct UIEdgeInsets)arg1;
 - (void)setPasswordText:(id)arg1 placeholder:(id)arg2;
-- (void)setPrimaryActionTitle:(id)arg1 secondaryActionTitle:(id)arg2;
+- (void)setTitleText:(id)arg1;
 - (void)setUsesOpaqueAppearance:(BOOL)arg1;
 
 @end

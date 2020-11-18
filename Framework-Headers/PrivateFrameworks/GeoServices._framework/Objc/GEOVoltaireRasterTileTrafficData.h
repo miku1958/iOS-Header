@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray;
 
@@ -23,6 +23,7 @@
 
 + (id)createWithData:(id)arg1 tileKey:(const struct _GEOTileKey *)arg2;
 + (double)expirationTimeInterval;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithData:(id)arg1 tileKey:(const struct _GEOTileKey *)arg2;
 

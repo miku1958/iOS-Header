@@ -8,61 +8,18 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAutocompleteEntry, NSData, NSMutableArray, NSString;
-
 @interface GEOSuggestionsUsageLogMessage : PBCodable <NSCopying>
 {
-    NSMutableArray *_displayedResults;
-    NSString *_prefix;
-    int _searchFieldType;
-    int _selectedIndex;
-    GEOPDAutocompleteEntry *_suggestionEntry;
-    int _suggestionEntryIndex;
-    int _suggestionEntryListIndex;
-    NSData *_suggestionEntryMetadata;
-    NSData *_suggestionMetadata;
-    struct {
-        unsigned int searchFieldType:1;
-        unsigned int selectedIndex:1;
-        unsigned int suggestionEntryIndex:1;
-        unsigned int suggestionEntryListIndex:1;
-    } _has;
 }
 
-@property (strong, nonatomic) NSMutableArray *displayedResults; // @synthesize displayedResults=_displayedResults;
-@property (readonly, nonatomic) BOOL hasPrefix;
-@property (nonatomic) BOOL hasSearchFieldType;
-@property (nonatomic) BOOL hasSelectedIndex;
-@property (readonly, nonatomic) BOOL hasSuggestionEntry;
-@property (nonatomic) BOOL hasSuggestionEntryIndex;
-@property (nonatomic) BOOL hasSuggestionEntryListIndex;
-@property (readonly, nonatomic) BOOL hasSuggestionEntryMetadata;
-@property (readonly, nonatomic) BOOL hasSuggestionMetadata;
-@property (strong, nonatomic) NSString *prefix; // @synthesize prefix=_prefix;
-@property (nonatomic) int searchFieldType; // @synthesize searchFieldType=_searchFieldType;
-@property (nonatomic) int selectedIndex; // @synthesize selectedIndex=_selectedIndex;
-@property (strong, nonatomic) GEOPDAutocompleteEntry *suggestionEntry; // @synthesize suggestionEntry=_suggestionEntry;
-@property (nonatomic) int suggestionEntryIndex; // @synthesize suggestionEntryIndex=_suggestionEntryIndex;
-@property (nonatomic) int suggestionEntryListIndex; // @synthesize suggestionEntryListIndex=_suggestionEntryListIndex;
-@property (strong, nonatomic) NSData *suggestionEntryMetadata; // @synthesize suggestionEntryMetadata=_suggestionEntryMetadata;
-@property (strong, nonatomic) NSData *suggestionMetadata; // @synthesize suggestionMetadata=_suggestionMetadata;
-
-+ (Class)displayedResultType;
-- (int)StringAsSearchFieldType:(id)arg1;
-- (void)addDisplayedResult:(id)arg1;
-- (void)clearDisplayedResults;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (id)displayedResultAtIndex:(unsigned long long)arg1;
-- (unsigned long long)displayedResultsCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)searchFieldTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

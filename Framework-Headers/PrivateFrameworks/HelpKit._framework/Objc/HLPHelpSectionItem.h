@@ -18,7 +18,7 @@
 @property (nonatomic, getter=isOpen) BOOL open; // @synthesize open=_open;
 
 - (void).cxx_destruct;
-- (id)description;
+- (id)debugDescription;
 
 @end
 

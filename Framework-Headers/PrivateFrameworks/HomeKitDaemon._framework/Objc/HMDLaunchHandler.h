@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class NSMutableSet;
+@class NSMutableSet, NSObject;
 @protocol OS_dispatch_queue;
 
-@interface HMDLaunchHandler : NSObject
+@interface HMDLaunchHandler : HMFObject
 {
     int _beingConfigured;
     NSObject<OS_dispatch_queue> *_handlerQueue;

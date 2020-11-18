@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEORegionalResourceTileData, GEOResourceLoader, GEOResourceManifestConfiguration, NSLock;
 
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSLock *_lock;
 }
 
+- (void).cxx_destruct;
 - (void)cancel;
 - (void)dealloc;
 - (id)init;

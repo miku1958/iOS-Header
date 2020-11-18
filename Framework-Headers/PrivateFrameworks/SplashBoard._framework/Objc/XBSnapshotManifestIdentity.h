@@ -21,8 +21,8 @@
 @property (readonly, copy, nonatomic) id<XBSnapshotManifestStore> store; // @synthesize store=_store;
 
 + (id)identityWithBundleIdentifier:(id)arg1 store:(id)arg2;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;

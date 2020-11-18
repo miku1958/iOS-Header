@@ -4,40 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <UIKit/UISwipeAction.h>
 
-#import <UIKit/NSCopying-Protocol.h>
-
-@class NSString, UIColor, UIImage, UIVisualEffect;
-
-@interface UICollectionViewTableLayoutSwipeAction : NSObject <NSCopying>
+@interface UICollectionViewTableLayoutSwipeAction : UISwipeAction
 {
-    BOOL _resetsSwipedRow;
-    long long _style;
-    NSString *_title;
-    UIColor *_backgroundColor;
-    UIVisualEffect *_backgroundEffect;
-    UIImage *_icon;
-    CDUnknownBlockType _preHandler;
-    CDUnknownBlockType _handler;
 }
 
-@property (copy, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
-@property (copy, nonatomic) UIVisualEffect *backgroundEffect; // @synthesize backgroundEffect=_backgroundEffect;
-@property (copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
-@property (copy, nonatomic) UIImage *icon; // @synthesize icon=_icon;
-@property (copy, nonatomic) CDUnknownBlockType preHandler; // @synthesize preHandler=_preHandler;
-@property (nonatomic) BOOL resetsSwipedRow; // @synthesize resetsSwipedRow=_resetsSwipedRow;
-@property (nonatomic) long long style; // @synthesize style=_style;
-@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
-
 + (id)actionWithStyle:(long long)arg1 title:(id)arg2 handler:(CDUnknownBlockType)arg3;
-+ (id)swipeActionWithStyle:(long long)arg1 title:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (void)executeHandlerWithView:(id)arg1;
-- (void)executePreHandler;
 
 @end
 

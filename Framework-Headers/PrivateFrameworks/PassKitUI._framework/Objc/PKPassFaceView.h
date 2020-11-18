@@ -6,7 +6,7 @@
 
 #import <PassKitUI/WLEasyToHitCustomView.h>
 
-@class CAFilter, NSArray, NSMutableArray, NSMutableSet, PKPass, PKPassColorProfile, PKPassFaceTemplate, UIImage, UIImageView, UIView;
+@class CAFilter, NSArray, NSMutableArray, NSMutableSet, PKLiveRenderedCardFaceView, PKPass, PKPassColorProfile, PKPassFaceTemplate, UIImage, UIImageView, UIView;
 @protocol PKPassFaceDelegate;
 
 @interface PKPassFaceView : WLEasyToHitCustomView
@@ -28,8 +28,10 @@
     double _dimmer;
     NSMutableArray *_headerBucketViews;
     NSMutableArray *_bodyBucketViews;
+    PKLiveRenderedCardFaceView *_liveBackgroundView;
     unsigned long long _contentViewCreatedRegions;
     unsigned long long _invariantViewCreatedRegions;
+    BOOL _showsLiveRendering;
     BOOL _clipsContent;
     BOOL _allowBackgroundPlaceHolders;
     id<PKPassFaceDelegate> _delegate;
@@ -54,14 +56,13 @@
 @property (nonatomic) id<PKPassFaceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) PKPassFaceTemplate *faceTemplate; // @synthesize faceTemplate=_faceTemplate;
 @property (strong, nonatomic) NSMutableArray *headerBucketViews; // @synthesize headerBucketViews=_headerBucketViews;
-@property (readonly, nonatomic) BOOL isFrontFace;
 @property (readonly, nonatomic) PKPass *pass;
 @property (readonly, nonatomic) struct UIEdgeInsets shadowInsets;
+@property (nonatomic) BOOL showsLiveRendering;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (nonatomic) unsigned long long visibleRegions; // @synthesize visibleRegions=_visibleRegions;
 
-+ (Class)_faceClassForStyle:(long long)arg1 front:(BOOL)arg2;
-+ (id)newBackFaceViewForStyle:(long long)arg1 tall:(BOOL)arg2;
++ (Class)_faceClassForStyle:(long long)arg1;
 + (id)newFrontFaceViewForStyle:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_createContentViewsForRegions:(unsigned long long)arg1;
@@ -88,10 +89,10 @@
 - (void)insertContentView:(id)arg1 ofType:(long long)arg2;
 - (void)layoutSubviews;
 - (id)passFaceTemplate;
-- (void)prepareForFlip;
 - (void)presentDiff:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeContentView:(id)arg1 ofType:(long long)arg2;
 - (void)setDimmer:(double)arg1 animated:(BOOL)arg2;
+- (void)setLiveMotionEnabled:(BOOL)arg1;
 - (void)setPass:(id)arg1 colorProfile:(id)arg2;
 
 @end

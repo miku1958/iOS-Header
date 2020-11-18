@@ -6,30 +6,26 @@
 
 #import <EventKit/EKPersistentCalendarItem.h>
 
-@class EKObjectID, NSDate, NSTimeZone;
-
 @interface EKPersistentReminder : EKPersistentCalendarItem
 {
-    EKObjectID *_parentID;
 }
 
-@property (nonatomic, getter=isCompleted) BOOL completed;
-@property (copy, nonatomic) NSDate *completionDate;
-@property (nonatomic) unsigned long long displayOrder;
-@property (copy, nonatomic) NSDate *dueDate;
-@property (nonatomic) BOOL dueDateAllDay;
-@property (copy, nonatomic) NSTimeZone *dueDateTimeZone;
-@property (copy, nonatomic) NSDate *firstAlertDate;
-@property (copy, nonatomic) EKObjectID *parentID; // @synthesize parentID=_parentID;
-
-+ (id)generateUniqueIDWithReminder:(id)arg1 calendar:(id)arg2;
-- (void).cxx_destruct;
-- (void)_sendModifiedNote;
++ (id)reminderWithRandomUUID;
+- (id)completionDate;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (unsigned long long)displayOrder;
+- (id)dueDate;
+- (BOOL)dueDateAllDay;
+- (id)dueDateTimeZone;
 - (int)entityType;
-- (id)externalURI;
-- (BOOL)validate:(id *)arg1;
+- (id)firstAlertDate;
+- (void)setCompletionDate:(id)arg1;
+- (void)setDisplayOrder:(unsigned long long)arg1;
+- (void)setDueDate:(id)arg1;
+- (void)setDueDateAllDay:(BOOL)arg1;
+- (void)setDueDateTimeZone:(id)arg1;
+- (void)setFirstAlertDate:(id)arg1;
 
 @end
 

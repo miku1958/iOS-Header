@@ -25,13 +25,11 @@
 
 + (BOOL)dismissAutomaticallyAfterExtensionCompletion;
 + (id)turnBasedMatchmakerExtension;
-- (id)contextForRequestIdentifier;
 - (void)dealloc;
-- (void)finishWithError:(id)arg1;
-- (void)finishWithMatch:(id)arg1;
-- (void)playerQuitMatch:(id)arg1;
+- (void)extensionIsCanceling;
+- (id)extensionObjectProxy;
+- (void)messageFromExtension:(id)arg1;
 - (void)refreshMatches;
-- (void)remoteViewControllerIsCanceling;
 - (void)setMatchRequestInternal:(id)arg1;
 - (void)setShowExistingMatches:(BOOL)arg1;
 - (void)setShowPlay:(BOOL)arg1;

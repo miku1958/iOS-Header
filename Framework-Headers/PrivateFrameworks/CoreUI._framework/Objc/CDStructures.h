@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#pragma mark Blocks
+#pragma mark Function Pointers and Blocks
+
+typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
@@ -270,6 +272,15 @@ struct _csibitmap {
     unsigned int _field3;
     unsigned int _field4;
     unsigned char _field5[0];
+};
+
+struct _csicolor {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int :8;
+    unsigned int :24;
+    unsigned int _field3;
+    double _field4[0];
 };
 
 struct _csigradientdatanode {

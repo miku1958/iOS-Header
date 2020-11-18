@@ -4,25 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUILayoutFreeSectionView.h>
+#import <SearchUI/SearchUICardSectionView.h>
 
-@class UIButton, UITextView;
+#import <SearchUI/TLKDescriptionViewDelegate-Protocol.h>
 
-@interface SearchUIDescriptionCardSectionView : SearchUILayoutFreeSectionView
+@class NSString, TLKDescriptionView;
+
+@interface SearchUIDescriptionCardSectionView : SearchUICardSectionView <TLKDescriptionViewDelegate>
 {
-    UIButton *_moreButton;
-    UITextView *_detailsTextView;
+    BOOL _expanded;
 }
 
-@property (strong) UITextView *detailsTextView; // @synthesize detailsTextView=_detailsTextView;
-@property (strong) UIButton *moreButton; // @synthesize moreButton=_moreButton;
+@property (strong) TLKDescriptionView *contentView; // @dynamic contentView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property BOOL expanded; // @synthesize expanded=_expanded;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
-- (void).cxx_destruct;
-- (id)initWithCardSection:(id)arg1 controller:(id)arg2 style:(unsigned long long)arg3;
-- (void)layoutSubviews;
-- (void)moreButtonPressed;
-- (void)setMoreButtonFrameWithTextView:(id)arg1 inset:(double)arg2 lastLineYOrigin:(double)arg3;
-- (BOOL)shouldHideMoreButtonForTextView:(id)arg1;
++ (id)dragSubtitleForCardSection:(id)arg1;
++ (id)dragTitleForCardSection:(id)arg1;
++ (BOOL)supportsRecyclingForCardSection:(id)arg1;
+- (void)didPressMoreButton;
+- (id)setupContentView;
+- (void)updateWithCardSection:(id)arg1;
 
 @end
 

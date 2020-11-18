@@ -17,7 +17,6 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
-- (long long)likedState;
 
 @end
 

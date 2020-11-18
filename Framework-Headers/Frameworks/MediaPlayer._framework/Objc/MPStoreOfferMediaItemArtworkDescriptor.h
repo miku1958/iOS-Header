@@ -6,11 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
-#import <MediaPlayer/NSCopying-Protocol.h>
+#import <MediaPlayer/MPArtworkDataSourceVisualIdenticality-Protocol.h>
 
 @class NSArray, NSDictionary, NSString;
 
-@interface MPStoreOfferMediaItemArtworkDescriptor : NSObject <NSCopying>
+@interface MPStoreOfferMediaItemArtworkDescriptor : NSObject <MPArtworkDataSourceVisualIdenticality>
 {
     long long _itemPersistentID;
     NSDictionary *_screenshotURLs;
@@ -24,6 +24,10 @@
 }
 
 @property (readonly, nonatomic) NSString *cacheID; // @synthesize cacheID=_cacheID;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_availableSizesForArtworkURLs:(id)arg1;
@@ -32,9 +36,9 @@
 - (id)artworkURLForSize:(struct CGSize)arg1 type:(long long)arg2;
 - (id)availableSizesForArtworkOfType:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
 - (id)initWithItemPersistentID:(long long)arg1 screenshotDictionaries:(id)arg2 itemArtworkDictionaries:(id)arg3 containerArtworkDictionaries:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
+- (id)stringRepresentation;
 
 @end
 

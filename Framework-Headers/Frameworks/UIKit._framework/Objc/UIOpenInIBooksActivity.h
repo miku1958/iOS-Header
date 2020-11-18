@@ -7,13 +7,15 @@
 #import <UIKit/UIActivity.h>
 
 #import <UIKit/LSOpenResourceOperationDelegate-Protocol.h>
+#import <UIKit/UIManagedConfigurationRestrictableActivity-Protocol.h>
 
 @class LSApplicationProxy, NSOperation, NSString, NSURL;
 
-@interface UIOpenInIBooksActivity : UIActivity <LSOpenResourceOperationDelegate>
+@interface UIOpenInIBooksActivity : UIActivity <LSOpenResourceOperationDelegate, UIManagedConfigurationRestrictableActivity>
 {
     BOOL _sourceIsManaged;
     BOOL _shouldUnlinkFile;
+    NSString *_sourceApplicationBundleID;
     NSURL *_url;
     NSString *_applicationIdentifier;
     LSApplicationProxy *_applicationProxy;
@@ -27,23 +29,27 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSOperation *operation; // @synthesize operation=_operation;
 @property (nonatomic) BOOL shouldUnlinkFile; // @synthesize shouldUnlinkFile=_shouldUnlinkFile;
+@property (copy, nonatomic) NSString *sourceApplicationBundleID; // @synthesize sourceApplicationBundleID=_sourceApplicationBundleID;
 @property (nonatomic) BOOL sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
 
++ (unsigned long long)_xpcAttributes;
 + (long long)activityCategory;
 + (id)bestJobNameForActivityItems:(id)arg1;
 + (id)defaultJobName;
 + (id)jobNameFormatForFile;
 - (void).cxx_destruct;
-- (id)_activityImage;
-- (id)_activitySettingsImage;
+- (id)_bundleIdentifierForActivityImageCreation;
 - (void)_cleanup;
+- (long long)_defaultSortGroup;
 - (void)_finishedCopyingResource;
+- (id)_loadedApplicationProxy;
 - (void)_openDocumentWithApplication;
 - (id)activityTitle;
 - (id)activityType;
 - (BOOL)canPerformWithActivityItems:(id)arg1;
+- (id)init;
 - (void)openResourceOperation:(id)arg1 didFinishCopyingResource:(id)arg2;
 - (void)performActivity;
 - (void)prepareWithActivityItems:(id)arg1;

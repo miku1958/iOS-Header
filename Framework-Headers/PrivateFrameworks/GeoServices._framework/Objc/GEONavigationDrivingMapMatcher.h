@@ -10,7 +10,7 @@
 {
 }
 
-- (double)_approximateMaxSpeedForRoad:(CDStruct_2244da21 *)arg1;
+- (double)_approximateMaxSpeedForRoad:(CDStruct_a2ef2718 *)arg1;
 - (BOOL)_isParkingLotFormOfWay:(int)arg1;
 - (BOOL)_locationMeetsSpeedThresholdForRoadMatch:(id)arg1 distanceFromRoute:(double)arg2;
 - (id)_routeMatcherForRoute:(id)arg1;

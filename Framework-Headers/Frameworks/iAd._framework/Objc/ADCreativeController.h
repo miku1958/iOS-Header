@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/ADWebProcessDelegate-Protocol.h>
 #import <iAd/WKNavigationDelegate-Protocol.h>
+#import <iAd/_WKInputDelegate-Protocol.h>
 
 @class ADAdImpressionPublicAttributes, ADTapGestureTimer, ADWebView, NSString, _WKRemoteObjectInterface;
 @protocol ADCreativeControllerDelegate, ADWebProcessProxy;
 
-@interface ADCreativeController : NSObject <WKNavigationDelegate, ADWebProcessDelegate>
+@interface ADCreativeController : NSObject <WKNavigationDelegate, ADWebProcessDelegate, _WKInputDelegate>
 {
     id<ADWebProcessProxy> _webProcessProxy;
     id<ADCreativeControllerDelegate> _delegate;
@@ -48,13 +49,16 @@
 - (void)_requestOpenURL:(id)arg1;
 - (void)_updateWebProcessProxyVisibility;
 - (id)_userAgentForUserAgentString:(id)arg1;
+- (BOOL)_webView:(id)arg1 focusShouldStartInputSession:(id)arg2;
 - (void)adSpaceActionViewControllerWillDismiss:(id)arg1;
 - (void)adSpaceActionViewControllerWillPresent:(id)arg1;
 - (BOOL)contentVisible;
 - (void)dealloc;
+- (struct CGRect)frameForCreativeView;
 - (void)loadAdImpression:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)unregisterExportedObjectInterface;
 - (void)webProcessMRAIDJSODidCallClose;
+- (void)webProcessMRAIDJSODidCallCreateCalendarEvent:(id)arg1;
 - (void)webProcessMRAIDJSODidCallExpand:(id)arg1 withMaximumSize:(id)arg2;
 - (void)webProcessMRAIDJSODidCallOpen:(id)arg1;
 - (void)webProcessPlugInBrowserContextControllerGlobalObjectIsAvailableForFrame;

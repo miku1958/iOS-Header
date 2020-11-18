@@ -21,15 +21,16 @@
 
 - (void *)ABMultiValueValueFromCNLabeledValueValue:(id)arg1;
 - (id)CNLabeledValueValueFromABMultiValueValue:(void *)arg1;
+- (id)CNLabeledValueValueFromABMultiValueValueBytes:(char *)arg1 length:(unsigned long long)arg2;
 - (id)CNValueForContact:(id)arg1;
-- (int)abPropertyID:(int *)arg1;
+- (BOOL)abPropertyID:(int *)arg1;
+- (BOOL)canUnifyValue:(id)arg1 withValue:(id)arg2;
 - (void)decodeUsingCoder:(id)arg1 contact:(id)arg2;
 - (void)encodeUsingCoder:(id)arg1 contact:(id)arg2;
 - (CDUnknownBlockType)fromPlistTransform;
 - (id)init;
 - (BOOL)isEqualForContact:(id)arg1 other:(id)arg2;
 - (BOOL)isNonnull;
-- (BOOL)isValue:(id)arg1 equivalentToValue:(id)arg2;
 - (Class)labeledValueClass;
 - (CDUnknownBlockType)plistTransform;
 - (void)setCNValue:(id)arg1 onContact:(id)arg2;

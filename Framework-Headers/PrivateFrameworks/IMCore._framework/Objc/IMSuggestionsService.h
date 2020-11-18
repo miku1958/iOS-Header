@@ -25,10 +25,12 @@
 - (void).cxx_destruct;
 - (BOOL)_maybeEmailAddress:(id)arg1;
 - (BOOL)_maybePhoneNumber:(id)arg1;
-- (void)_startRequestForDisplayName:(id)arg1 queue:(id)arg2;
+- (void)_startRequestForDisplayName:(id)arg1 messageUID:(id)arg2 queue:(id)arg3;
+- (void)_startRequestForDisplayNameCallbackWithSuggestedName:(id)arg1 displayName:(id)arg2 queue:(id)arg3;
 - (void)dealloc;
-- (void)fetchSuggestedRealNameForDisplayName:(id)arg1 queue:(id)arg2 block:(CDUnknownBlockType)arg3;
+- (void)fetchSuggestedRealNameForDisplayName:(id)arg1 messageUID:(id)arg2 queue:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (id)init;
+- (BOOL)isBusiness:(id)arg1;
 - (void)scheduleFetchIfNecessaryForHandle:(id)arg1;
 - (void)startUsingLocalLookupsWithTable:(id)arg1;
 - (void)stopUsingLocalLookups;

@@ -8,21 +8,23 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBUnknownFields;
 
 @interface GEOSentinelTile : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSString *_resourceName;
     int _type;
 }
 
 @property (strong, nonatomic) NSString *resourceName; // @synthesize resourceName=_resourceName;
 @property (nonatomic) int type; // @synthesize type=_type;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

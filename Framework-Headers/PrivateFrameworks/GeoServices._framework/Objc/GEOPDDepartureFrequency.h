@@ -9,10 +9,11 @@
 #import <GeoServices/GEOTransitDepartureFrequency-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSDate, NSString;
+@class NSDate, NSString, PBUnknownFields;
 
 @interface GEOPDDepartureFrequency : PBCodable <GEOTransitDepartureFrequency, NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     unsigned int _displayDepartureFrequency;
     unsigned int _earliestDepartureTime;
     unsigned int _latestDepartureTime;
@@ -53,7 +54,9 @@
 @property (nonatomic) unsigned int minDepartureFrequency; // @synthesize minDepartureFrequency=_minDepartureFrequency;
 @property (readonly, nonatomic) long long minFrequency;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;

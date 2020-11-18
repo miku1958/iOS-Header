@@ -15,7 +15,6 @@
 @property (readonly, nonatomic, getter=isHighFramerateVideo) BOOL highFramerateVideo;
 @property (readonly, nonatomic) NSDictionary *imageProperties;
 @property (readonly, nonatomic, getter=isInPlaceVideoTrimAllowed) BOOL inPlaceVideoTrimAllowed;
-@property (readonly, nonatomic, getter=isLivePhoto) BOOL livePhoto;
 @property (readonly, nonatomic, getter=isLivePhotoVisibilityAdjustmentAllowed) BOOL livePhotoVisibilityAdjustmentAllowed;
 @property (readonly, nonatomic) unsigned long long livePhotoVisibilityState;
 @property (readonly, nonatomic) unsigned long long mediaSubtypes;

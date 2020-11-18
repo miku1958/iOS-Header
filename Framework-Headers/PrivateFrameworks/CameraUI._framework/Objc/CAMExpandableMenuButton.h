@@ -6,12 +6,15 @@
 
 #import <UIKit/UIControl.h>
 
-@class NSIndexSet, NSMutableArray, NSMutableIndexSet, UIImageView, UIView;
+#import <CameraUI/CAMAccessibilityHUDItemProvider-Protocol.h>
+
+@class CAMTouchingGestureRecognizer, NSIndexSet, NSMutableArray, NSMutableIndexSet, NSString, UIImageView, UIView;
 @protocol CAMExpandableMenuButtonDelegate;
 
-@interface CAMExpandableMenuButton : UIControl
+@interface CAMExpandableMenuButton : UIControl <CAMAccessibilityHUDItemProvider>
 {
     BOOL _expanded;
+    BOOL __trackingViewHighlighted;
     long long _layoutStyle;
     long long _selectedIndex;
     long long _orientation;
@@ -20,7 +23,9 @@
     NSIndexSet *__shownIndexesWhileCollapsed;
     NSMutableIndexSet *__highlightedIndexesWhileCollapsed;
     UIImageView *__padBackgroundView;
+    UIView *__trackingView;
     id<CAMExpandableMenuButtonDelegate> _expandableMenuDelegate;
+    CAMTouchingGestureRecognizer *_touchingGestureRecognizer;
     struct UIEdgeInsets _tappableEdgeInsets;
 }
 
@@ -29,12 +34,19 @@
 @property (readonly, nonatomic) NSMutableArray *_menuItems; // @synthesize _menuItems=__menuItems;
 @property (readonly, nonatomic) UIImageView *_padBackgroundView; // @synthesize _padBackgroundView=__padBackgroundView;
 @property (readonly, copy, nonatomic) NSIndexSet *_shownIndexesWhileCollapsed; // @synthesize _shownIndexesWhileCollapsed=__shownIndexesWhileCollapsed;
+@property (strong, nonatomic, setter=_setTrackingView:) UIView *_trackingView; // @synthesize _trackingView=__trackingView;
+@property (nonatomic, getter=_isTrackingViewHighlighted, setter=_setTrackingViewHighlighted:) BOOL _trackingViewHighlighted; // @synthesize _trackingViewHighlighted=__trackingViewHighlighted;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<CAMExpandableMenuButtonDelegate> expandableMenuDelegate; // @synthesize expandableMenuDelegate=_expandableMenuDelegate;
 @property (readonly, nonatomic, getter=isExpanded) BOOL expanded; // @synthesize expanded=_expanded;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (nonatomic) long long selectedIndex; // @synthesize selectedIndex=_selectedIndex;
+@property (readonly) Class superclass;
 @property (nonatomic) struct UIEdgeInsets tappableEdgeInsets; // @synthesize tappableEdgeInsets=_tappableEdgeInsets;
+@property (readonly, nonatomic) CAMTouchingGestureRecognizer *touchingGestureRecognizer; // @synthesize touchingGestureRecognizer=_touchingGestureRecognizer;
 
 + (double)expansionDuration;
 - (void).cxx_destruct;
@@ -44,7 +56,7 @@
 - (void)_applyMenuItemTextAlignmentAndShadowForCurrentOrientation;
 - (void)_convertAllSubviewsToProposedFrame:(struct CGRect)arg1;
 - (void)_createPadBackgroundView;
-- (void)_handleTapGestureRecognizer:(id)arg1;
+- (void)_handleTouchGesture:(id)arg1;
 - (struct CGSize)_layoutForPadCollapsedPortraitButton:(BOOL)arg1;
 - (struct CGSize)_layoutForPadExpandedPortraitButton:(BOOL)arg1;
 - (struct CGSize)_layoutForPadStyle:(BOOL)arg1 expanded:(BOOL)arg2;
@@ -58,6 +70,7 @@
 - (void)_updateFromExpansionChangeAnimated:(BOOL)arg1;
 - (void)_updateFromOrientationChangeAnimated:(BOOL)arg1;
 - (void)_updateFromSelectedIndexChange;
+- (id)_viewToTrackForTouchAtLocation:(struct CGPoint)arg1;
 - (BOOL)_wantsHeaderViewToBeVisible;
 - (struct CGRect)alignmentRectForFrame:(struct CGRect)arg1 expanded:(BOOL)arg2;
 - (struct UIEdgeInsets)alignmentRectInsets;
@@ -69,6 +82,7 @@
 - (void)finishExpansionAnimated:(BOOL)arg1;
 - (struct CGRect)frameForAlignmentRect:(struct CGRect)arg1 expanded:(BOOL)arg2;
 - (id)headerView;
+- (id)hudItemForAccessibilityHUDManager:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithLayoutStyle:(long long)arg1;
@@ -79,6 +93,7 @@
 - (double)padHeaderViewContentInsetLeft;
 - (void)prepareHeaderViewForExpanding:(BOOL)arg1;
 - (void)reloadData;
+- (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (void)setHighlighted:(BOOL)arg1 forIndex:(long long)arg2;
 - (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldAllowExpansion;

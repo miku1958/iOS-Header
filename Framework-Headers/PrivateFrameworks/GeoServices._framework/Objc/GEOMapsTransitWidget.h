@@ -36,12 +36,12 @@
 @property (nonatomic) int transitMessageType; // @synthesize transitMessageType=_transitMessageType;
 
 + (Class)transitIncidentItemType;
+- (void).cxx_destruct;
 - (int)StringAsTransitMessageType:(id)arg1;
 - (void)addTransitIncidentItem:(id)arg1;
 - (void)clearTransitIncidentItems;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

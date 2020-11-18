@@ -20,15 +20,18 @@
     NSString *_fullName;
     _INPBImageValue *_image;
     NSString *_lastName;
+    NSString *_nickName;
     NSString *_relationship;
     int _suggestionType;
     _INPBValueMetadata *_valueMetadata;
+    BOOL _isMe;
     struct {
         unsigned int suggestionType:1;
+        unsigned int isMe:1;
     } _has;
 }
 
-@property (strong, nonatomic) NSMutableArray *aliases;
+@property (strong, nonatomic) NSMutableArray *aliases; // @synthesize aliases=_aliases;
 @property (strong, nonatomic) _INPBContactHandle *contactHandle; // @synthesize contactHandle=_contactHandle;
 @property (strong, nonatomic) NSString *customIdentifier; // @synthesize customIdentifier=_customIdentifier;
 @property (strong, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
@@ -38,14 +41,18 @@
 @property (readonly, nonatomic) BOOL hasFirstName;
 @property (readonly, nonatomic) BOOL hasFullName;
 @property (readonly, nonatomic) BOOL hasImage;
+@property (nonatomic) BOOL hasIsMe;
 @property (readonly, nonatomic) BOOL hasLastName;
+@property (readonly, nonatomic) BOOL hasNickName;
 @property (readonly, nonatomic) BOOL hasRelationship;
 @property (nonatomic) BOOL hasSuggestionType;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
 @property (strong, nonatomic) _INPBImageValue *image; // @synthesize image=_image;
+@property (nonatomic) BOOL isMe; // @synthesize isMe=_isMe;
 @property (strong, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
+@property (strong, nonatomic) NSString *nickName; // @synthesize nickName=_nickName;
 @property (strong, nonatomic) NSString *relationship; // @synthesize relationship=_relationship;
-@property (nonatomic) int suggestionType;
+@property (nonatomic) int suggestionType; // @synthesize suggestionType=_suggestionType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 

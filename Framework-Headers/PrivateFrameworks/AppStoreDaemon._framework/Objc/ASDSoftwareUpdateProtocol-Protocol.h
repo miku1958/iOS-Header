@@ -6,6 +6,8 @@
 
 #import <AppStoreDaemon/NSObject-Protocol.h>
 
+@class NSArray;
+
 @protocol ASDSoftwareUpdateProtocol <NSObject>
 - (void)clearExpiredUpdateHistoryWithCompletionBlock:(void (^)(BOOL, NSError *))arg1;
 - (void)getUpdateableFirstPartyAppMetadataWithCompletion:(void (^)(NSArray *, NSError *))arg1;
@@ -18,6 +20,7 @@
 - (void)removeUpdateBulletins;
 - (void)showApplicationBadgeForPendingUpdates;
 - (void)showApplicationUpdatesBulletin;
-- (void)updateAll:(void (^)(BOOL, NSError *))arg1;
+- (void)updateAllWithJobResults:(void (^)(BOOL, NSArray *, NSError *))arg1;
+- (void)updateAllWithOrder:(NSArray *)arg1 completionBlock:(void (^)(BOOL, NSArray *, NSError *))arg2;
 @end
 

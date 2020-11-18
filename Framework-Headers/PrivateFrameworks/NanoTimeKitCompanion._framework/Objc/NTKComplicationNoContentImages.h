@@ -15,9 +15,11 @@
     UIImage *_modularSmallImage;
     UIImage *_utilitarianSmallImage;
     UIImage *_circularSmallImage;
+    UIImage *_extraLargeImage;
 }
 
 @property (strong, nonatomic) UIImage *circularSmallImage; // @synthesize circularSmallImage=_circularSmallImage;
+@property (strong, nonatomic) UIImage *extraLargeImage; // @synthesize extraLargeImage=_extraLargeImage;
 @property (strong, nonatomic) UIImage *modularSmallImage; // @synthesize modularSmallImage=_modularSmallImage;
 @property (strong, nonatomic) UIImage *utilitarianSmallImage; // @synthesize utilitarianSmallImage=_utilitarianSmallImage;
 

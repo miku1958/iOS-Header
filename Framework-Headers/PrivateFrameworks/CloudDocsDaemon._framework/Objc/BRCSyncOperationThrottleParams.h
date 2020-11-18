@@ -28,7 +28,10 @@ __attribute__((visibility("hidden")))
 
 - (BOOL)check;
 - (double)doubleForKey:(id)arg1 inParams:(id)arg2 defaults:(id)arg3;
+- (unsigned long long)hash;
 - (id)initWithParams:(id)arg1 defaults:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (id)paramsToDictionary;
 - (void)setupWithParams:(id)arg1 defaults:(id)arg2;
 
 @end

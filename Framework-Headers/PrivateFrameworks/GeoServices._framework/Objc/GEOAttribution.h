@@ -8,11 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOAttribution : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     struct GEOTileSetRegion *_regions;
     unsigned long long _regionsCount;
     unsigned long long _regionsSpace;
@@ -43,9 +44,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct GEOTileSetRegion *regions;
 @property (readonly, nonatomic) unsigned long long regionsCount;
 @property (strong, nonatomic) NSMutableArray *resources; // @synthesize resources=_resources;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) NSString *url; // @synthesize url=_url;
 
 + (Class)resourceType;
+- (void).cxx_destruct;
 - (void)addRegion:(struct GEOTileSetRegion)arg1;
 - (void)addResource:(id)arg1;
 - (void)clearRegions;

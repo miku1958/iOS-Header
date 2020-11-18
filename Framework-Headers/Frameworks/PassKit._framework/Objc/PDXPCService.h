@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
@@ -19,14 +19,13 @@
     NSObject<OS_dispatch_queue> *_readWriteQueue;
     int _remoteProcessIdentifier;
     NSString *_remoteProcessApplicationIdentifier;
-    NSString *_remoteProcessBundleIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *remoteProcessApplicationIdentifier; // @synthesize remoteProcessApplicationIdentifier=_remoteProcessApplicationIdentifier;
-@property (readonly, nonatomic) NSString *remoteProcessBundleIdentifier; // @synthesize remoteProcessBundleIdentifier=_remoteProcessBundleIdentifier;
+@property (readonly, nonatomic) NSString *remoteProcessBundleIdentifier;
 @property (readonly, nonatomic) int remoteProcessIdentifier; // @synthesize remoteProcessIdentifier=_remoteProcessIdentifier;
 @property (readonly) Class superclass;
 

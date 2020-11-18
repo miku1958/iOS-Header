@@ -13,7 +13,7 @@
     NSDictionary *_lastLoginDatesByAppleID;
 }
 
-@property (copy, nonatomic) NSDictionary *lastLoginDatesByAppleID; // @synthesize lastLoginDatesByAppleID=_lastLoginDatesByAppleID;
+@property (readonly, copy, nonatomic) NSDictionary *lastLoginDatesByAppleID; // @synthesize lastLoginDatesByAppleID=_lastLoginDatesByAppleID;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

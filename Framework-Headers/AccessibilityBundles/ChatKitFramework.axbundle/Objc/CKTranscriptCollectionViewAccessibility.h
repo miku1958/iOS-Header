@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityEnsureViewsAroundAreLoaded;
 - (BOOL)_accessibilityOpaqueElementScrollsContentIntoView;
-- (void)_accessibilityScrollOpaqueElementIntoView:(int)arg1 previousScroller:(id)arg2;
+- (void)_accessibilityScrollOpaqueElementIntoView:(long long)arg1 previousScroller:(id)arg2;
 - (BOOL)accessibilityElementsHidden;
 - (BOOL)isAccessibilityOpaqueElementProvider;
 

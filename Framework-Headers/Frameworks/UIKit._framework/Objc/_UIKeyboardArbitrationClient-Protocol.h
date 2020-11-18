@@ -13,5 +13,6 @@
 - (void)queue_keyboardChangedWithCompletion:(void (^)(void))arg1;
 - (void)queue_keyboardSuppressed:(BOOL)arg1 withCompletion:(void (^)(void))arg2;
 - (void)queue_keyboardTransition:(NSString *)arg1 event:(unsigned long long)arg2 withInfo:(NSDictionary *)arg3 onComplete:(void (^)(void))arg4;
+- (void)queue_setKeyboardDisabled:(BOOL)arg1 withCompletion:(void (^)(void))arg2;
 @end
 

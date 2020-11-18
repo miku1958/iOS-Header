@@ -6,28 +6,19 @@
 
 #import <VectorKit/NSObject-Protocol.h>
 
-@class GEOResourceManifestConfiguration, NSArray, NSDictionary, NSSet, NSString, VKAnchorWrapper, VKAnimation, VKAnnotationMarker, VKObjectBoundsContext, VKRasterOverlay, VKTransitLineMarker;
-@protocol VKCustomFeatureAnnotation, VKCustomFeatureDataSource, VKInteractiveMapDelegate, VKOverlay, VKRouteMatchedAnnotationPresentation;
+@class GEOResourceManifestConfiguration, NSArray, NSDictionary, NSSet, NSString, VKAnchorWrapper, VKAnimation, VKCameraController, VKObjectBoundsContext, VKRasterOverlay, VKTransitLineMarker;
+@protocol VKInteractiveMapDelegate, VKNavigationCameraController, VKOverlay, VKRouteMatchedAnnotationPresentation;
 
 @protocol VKInteractiveMap <NSObject>
 
-@property (strong, nonatomic) NSArray *customFeatureDataSources;
 @property (nonatomic) id<VKInteractiveMapDelegate> delegate;
 @property (readonly, nonatomic) VKAnchorWrapper *externalAnchors;
-@property (strong, nonatomic) NSArray *externalTrafficIncidents;
 @property (readonly, nonatomic, getter=isFullyDrawn) BOOL fullyDrawn;
-@property (nonatomic) BOOL labelMarkerSelectionEnabled;
-@property (nonatomic) unsigned char labelScaleFactor;
-@property (nonatomic) BOOL localizeLabels;
 @property (nonatomic) long long mapType;
-@property (nonatomic) long long navigationShieldSize;
 @property (readonly, nonatomic) NSArray *rasterOverlays;
 @property (nonatomic) id<VKRouteMatchedAnnotationPresentation> routeLineSplitAnnotation;
-@property (nonatomic) struct PolylineCoordinate routeUserOffset;
-@property (nonatomic) long long shieldIdiom;
-@property (nonatomic) long long shieldSize;
 @property (nonatomic) BOOL showsBuildings;
-@property (nonatomic) BOOL showsPointsOfInterest;
+@property (nonatomic) BOOL showsVenues;
 @property (nonatomic) BOOL trafficEnabled;
 @property (nonatomic) BOOL trafficIncidentsEnabled;
 @property (readonly, nonatomic) NSArray *visibleTileSets;
@@ -35,29 +26,25 @@
 + (BOOL)supportsMapType:(long long)arg1 scale:(int)arg2 manifestConfiguration:(GEOResourceManifestConfiguration *)arg3;
 - (void)_setStyleTransitionProgress:(double)arg1 targetStyle:(struct DisplayStyle)arg2 step:(long long)arg3;
 - (double)_styleTransitionProgress;
-- (void)addAnnotationMarker:(VKAnnotationMarker *)arg1;
-- (void)addCustomFeatureDataSource:(id<VKCustomFeatureDataSource>)arg1;
 - (void)addExternalAnchor:(VKAnchorWrapper *)arg1;
 - (void)addOverlay:(id<VKOverlay>)arg1;
 - (void)addPersistentOverlay:(id<VKOverlay>)arg1;
 - (void)addRasterOverlay:(VKRasterOverlay *)arg1;
 - (BOOL (^)(struct))annotationCoordinateTest;
-- (NSArray *)annotationMarkers;
 - (long long (^)(double, double, double, double))annotationRectTest;
 - (NSArray *)attributionsForCurrentRegion;
 - (void)beginStyleAnimationGroup;
 - (VKObjectBoundsContext *)boundsForSelectedTransitLines;
-- (shared_ptr_27db7edb)closestRoadMarkerForSelectionAtPoint:(struct CGPoint)arg1;
 - (NSString *)consoleString:(BOOL)arg1;
 - (struct CGPoint)convertCoordinateToCameraModelPoint:(CDStruct_c3b9c2ee)arg1;
 - (struct CGPoint)convertCoordinateToPoint:(CDStruct_c3b9c2ee)arg1;
 - (struct CGPoint)convertMapPointToPoint:(CDStruct_c3b9c2ee)arg1;
 - (CDStruct_c3b9c2ee)convertPointToCoordinate:(struct CGPoint)arg1;
 - (CDStruct_c3b9c2ee)convertPointToMapPoint:(struct CGPoint)arg1;
+- (float)currentRoadSignOffset;
 - (void)debugHighlightFeatureMarker:(const shared_ptr_430519ce *)arg1;
 - (void)debugHighlightObjectAtPoint:(struct CGPoint)arg1 highlightTarget:(unsigned char)arg2;
 - (NSString *)debugLabelString:(BOOL)arg1;
-- (void)deselectLabelMarker;
 - (void)deselectTransitLineMarker;
 - (NSString *)detailedDescription;
 - (NSDictionary *)detailedDescriptionDictionaryRepresentation;
@@ -67,23 +54,18 @@
 - (void)insertRasterOverlay:(VKRasterOverlay *)arg1 belowOverlay:(VKRasterOverlay *)arg2;
 - (BOOL)isPointValidForGesturing:(struct CGPoint)arg1;
 - (BOOL)isShowingNoDataPlaceholders;
-- (shared_ptr_2d33c5e4)labelMarkerForCustomFeatureAnnotation:(id<VKCustomFeatureAnnotation>)arg1 dataSource:(id<VKCustomFeatureDataSource>)arg2;
-- (shared_ptr_2d33c5e4)labelMarkerForSelectionAtPoint:(struct CGPoint)arg1 selectableLabelsOnly:(BOOL)arg2;
-- (vector_af4a736d)labelMarkers;
+- (struct LabelSettings *)labelSettings;
 - (NSArray *)overlays;
 - (NSSet *)persistentOverlays;
-- (void)removeAnnotationMarker:(VKAnnotationMarker *)arg1;
-- (void)removeCustomFeatureDataSource:(id<VKCustomFeatureDataSource>)arg1;
 - (void)removeExternalAnchor:(VKAnchorWrapper *)arg1;
 - (void)removeOverlay:(id<VKOverlay>)arg1;
 - (void)removePersistentOverlay:(id<VKOverlay>)arg1;
 - (void)removeRasterOverlay:(VKRasterOverlay *)arg1;
 - (void)requestStylesheetAnimation:(VKAnimation *)arg1 targetMapDisplayStyle:(struct DisplayStyle)arg2 setupHandler:(void (^)(void))arg3;
-- (void)selectLabelMarker:(const shared_ptr_2d33c5e4 *)arg1;
 - (void)selectTransitLineMarker:(VKTransitLineMarker *)arg1;
-- (shared_ptr_2d33c5e4)selectedLabelMarker;
 - (NSArray *)selectedTransitLineIDs;
 - (void)setMapType:(long long)arg1 animated:(BOOL)arg2;
+- (void)setNavCameraIsDetached:(BOOL)arg1;
 - (void)setStylesheetMapDisplayStyle:(struct DisplayStyle)arg1;
 - (BOOL)shouldHideOffscreenSelectedAnnotation;
 - (struct DisplayStyle)sourceMapDisplayStyle;
@@ -93,5 +75,6 @@
 - (BOOL)supportsMapDisplayStyle:(struct DisplayStyle)arg1;
 - (NSArray *)transitLineMarkersForSelectionAtPoint:(struct CGPoint)arg1;
 - (NSArray *)transitLineMarkersInCurrentViewport;
+- (void)transitionToTracking:(BOOL)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 startCourse:(double)arg4 cameraController:(VKCameraController<VKNavigationCameraController> *)arg5 pounceCompletionHandler:(void (^)(BOOL))arg6;
 @end
 

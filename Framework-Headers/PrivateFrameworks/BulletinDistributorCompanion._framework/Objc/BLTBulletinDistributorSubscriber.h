@@ -9,13 +9,14 @@
 #import <BulletinDistributorCompanion/BLTPingService-Protocol.h>
 
 @class NSMutableDictionary, NSSet, NSString, NSXPCConnection;
-@protocol BLTBulletinDistributorSubscriberDelegate, BLTPingSubscribing, OS_dispatch_queue;
+@protocol BLTBulletinDistributorSubscriberDelegate, BLTBulletinDistributorSubscriberDeviceDelegate, BLTPingSubscribing, OS_dispatch_queue;
 
 @interface BLTBulletinDistributorSubscriber : NSObject <BLTPingService>
 {
     NSMutableDictionary *_subscriptions;
     NSObject<OS_dispatch_queue> *_queue;
     id<BLTBulletinDistributorSubscriberDelegate> _delegate;
+    id<BLTBulletinDistributorSubscriberDeviceDelegate> _deviceDelegate;
     NSString *_machServiceName;
     id<BLTPingSubscribing> _client;
     NSXPCConnection *_connection;
@@ -26,6 +27,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<BLTBulletinDistributorSubscriberDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (weak) id<BLTBulletinDistributorSubscriberDeviceDelegate> deviceDelegate; // @synthesize deviceDelegate=_deviceDelegate;
 @property (readonly) unsigned long long hash;
 @property (copy) NSString *machServiceName; // @synthesize machServiceName=_machServiceName;
 @property (readonly, nonatomic) NSSet *sectionIDs;
@@ -38,6 +40,7 @@
 - (id)init;
 - (id)initWithClient:(id)arg1;
 - (void)pingWithBulletin:(id)arg1 ack:(CDUnknownBlockType)arg2;
+- (void)pingWithRecordID:(id)arg1 forSectionID:(id)arg2;
 - (void)sendBulletinSummary:(id)arg1;
 - (void)subscribeToSectionID:(id)arg1 forFullBulletins:(BOOL)arg2 withAck:(BOOL)arg3;
 - (void)subscribeWithMachServiceName:(id)arg1;

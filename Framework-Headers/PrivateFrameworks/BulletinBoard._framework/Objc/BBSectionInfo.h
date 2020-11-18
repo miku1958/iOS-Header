@@ -84,11 +84,12 @@
 - (void)_replaceSubsection:(id)arg1;
 - (id)_subsectionForID:(id)arg1;
 - (id)awakeAfterUsingCoder:(id)arg1;
+- (id)copyFromManagedSettings;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (long long)disabledSettingForSetting:(long long)arg1;
-- (id)effectiveSectionInfo;
-- (id)effectiveSectionInfoWithFactoryInfo:(id)arg1;
+- (id)effectiveSectionInfoWithDefaultContentPreviewSetting:(long long)arg1;
+- (id)effectiveSectionInfoWithFactoryInfo:(id)arg1 defaultContentPreviewSetting:(long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;

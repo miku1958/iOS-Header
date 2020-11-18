@@ -13,12 +13,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityIsNotFirstElement;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (long long)_accessibilityReinterpretVoiceOverCommand:(long long)arg1;
 - (id)_axStringForElapsedAndRemainingTime;
 - (void)_updateRemainingTimeText;
 - (id)accessibilityLabel;
 - (id)accessibilityValue;
-- (void)createViews;
 - (BOOL)isAccessibilityElement;
 
 @end

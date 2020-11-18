@@ -10,11 +10,10 @@
 #import <HealthUI/HKMedicalIDEditorCellEditDelegate-Protocol.h>
 #import <HealthUI/_HKEmergencyContactRelationshipPickerDelegate-Protocol.h>
 
-@class HKCoreTelephonyUtilities, NSMutableArray, NSString, UITableViewCell, _HKEmergencyContact;
+@class HKCoreTelephonyUtilities, NSString, UITableViewCell, _HKEmergencyContact;
 
 @interface HKEmergencyCardContactsTableItem : HKEmergencyCardTableItem <HKMedicalIDEditorCellEditDelegate, _HKEmergencyContactRelationshipPickerDelegate, CNContactPickerDelegate>
 {
-    NSMutableArray *_cells;
     UITableViewCell *_lastDequeuedAddContactCell;
     _HKEmergencyContact *_selectedContact;
     BOOL _selectedContactIsBeingAdded;
@@ -29,21 +28,23 @@
 
 - (void).cxx_destruct;
 - (void)_addEmergencyContactToData:(id)arg1;
-- (void)_configureAddContactCellLayoutForRowIndex:(long long)arg1;
 - (id)_dequeueAndConfigureContactEditCellForIndex:(long long)arg1 inTableView:(id)arg2;
-- (id)_dequeueAndConfigureContactViewCellForIndex:(long long)arg1;
+- (id)_dequeueAndConfigureContactViewCellForIndex:(long long)arg1 inTableView:(id)arg2;
 - (void)_didSelectContact:(id)arg1 property:(id)arg2;
 - (id)_emergencyContactWithContact:(id)arg1 property:(id)arg2;
 - (void)_presentEmergencyContactDeletionAlertIfNecessary;
 - (void)_presentEmergencyContactPicker;
+- (void)callEmergencyContact:(id)arg1;
 - (BOOL)canEditRowAtIndex:(long long)arg1;
 - (long long)commitEditingStyle:(long long)arg1 forRowAtIndex:(long long)arg2;
+- (long long)contactIndexForRowIndex:(long long)arg1;
 - (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
 - (void)contactPicker:(id)arg1 didSelectContactProperty:(id)arg2;
 - (long long)editingStyleForRowAtIndex:(long long)arg1;
 - (void)emergencyContactRelationshipPicker:(id)arg1 didChooseRelationshipNamed:(id)arg2;
 - (void)emergencyContactRelationshipPickerDidCancel:(id)arg1;
 - (BOOL)hasPresentableData;
+- (long long)itemTypeForRowIndex:(long long)arg1;
 - (id)meContactIdentifier;
 - (void)medicalIDEditorCellDidChangeValue:(id)arg1;
 - (void)medicalIDEditorCellDidTapLabel:(id)arg1;
@@ -56,6 +57,7 @@
 - (id)title;
 - (id)titleForFooter;
 - (id)titleForHeader;
+- (id)viewOnlyTitle;
 
 @end
 

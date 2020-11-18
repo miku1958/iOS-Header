@@ -8,7 +8,7 @@
 
 #import <Foundation/NSISConstraint-Protocol.h>
 
-@class NSLayoutAnchor, NSSet, NSString, _NSConstraintDescriptionLayoutRelationshipNode;
+@class NSLayoutAnchor, NSSet, NSString, _NSConstraintDescriptionLayoutRuleNode;
 
 @interface NSLayoutConstraint : NSObject <NSISConstraint>
 {
@@ -24,7 +24,7 @@
     float _priority;
 }
 
-@property (setter=_setAssociatedRelationshipNode:) _NSConstraintDescriptionLayoutRelationshipNode *_associatedRelationshipNode;
+@property (setter=_setAssociatedRuleNode:) _NSConstraintDescriptionLayoutRuleNode *_associatedRuleNode;
 @property (setter=_setContainerDeclaredConstraint:) BOOL _containerDeclaredConstraint;
 @property (readonly, copy) NSSet *_referencedLayoutItems;
 @property (getter=isActive) BOOL active;
@@ -71,7 +71,7 @@
 - (id)_allocationDescription;
 - (double)_allowedMagnitudeForIntegralizationAdjustment;
 - (double)_allowedMagnitudeForIntegralizationAdjustmentOfConstraintWithMarkerScaling:(double *)arg1;
-- (id)_ancestorRelationshipNodes;
+- (id)_ancestorRuleNodes;
 - (void)_clearWeakContainerReference;
 - (id)_constantDescriptionForDTrace;
 - (id)_constraintByReplacingItem:(id)arg1 withItem:(id)arg2;
@@ -88,7 +88,7 @@
 - (struct CGSize)_engineToContainerScalingCoefficients;
 - (void)_ensureValueMaintainsArbitraryLimit:(double *)arg1;
 - (BOOL)_existsInEngine:(id)arg1;
-- (void)_explainUnsatisfaction;
+- (id)_explainUnsatisfaction;
 - (void)_forceSatisfactionMeasuringUnsatisfactionChanges:(id *)arg1 andMutuallyExclusiveConstraints:(id *)arg2;
 - (double)_fudgeIncrement;
 - (id)_identifier;
@@ -139,7 +139,7 @@
 - (double)priorityForVariable:(id)arg1;
 - (void)setAnimations:(id)arg1;
 - (void)setHasBeenLowered:(BOOL)arg1;
-- (id)sourceRelationshipHierarchy;
+- (id)sourceRuleHierarchy;
 
 @end
 

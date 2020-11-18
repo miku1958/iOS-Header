@@ -4,21 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaToolbox/FigBaseCALayer.h>
+#import <MediaToolbox/FigSubtitleBackdropCALayer.h>
 
-@interface FigSubtitleWebVTTCueCALayer : FigBaseCALayer
+#import <MediaToolbox/CALayerDelegate-Protocol.h>
+
+@class NSString;
+
+@interface FigSubtitleWebVTTCueCALayer : FigSubtitleBackdropCALayer <CALayerDelegate>
 {
     struct OpaqueFigSubtitleWebVTTCueCALayerInternal *layerInternal;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 - (void)dealloc;
-- (void)drawInContext:(struct CGContext *)arg1;
+- (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
 - (void)finalize;
 - (struct __CFString *)getContentID;
 - (struct CGRect)getSuggestedBounds:(unsigned char)arg1;
 - (id)init;
 - (unsigned char)isDirty;
-- (void)layoutSublayers;
+- (void)layoutSublayersOfLayer:(id)arg1;
 - (void)setContent:(struct __CFAttributedString *)arg1;
 - (void)setCuePosition:(struct CGPoint)arg1;
 - (void)setDefaultFontSize:(double)arg1;

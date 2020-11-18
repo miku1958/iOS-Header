@@ -8,7 +8,7 @@
 
 #import <VectorKit/MDSnapshotMap-Protocol.h>
 
-@class NSArray, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface VKGlobeImageCanvas : VKImageCanvas <MDSnapshotMap>
@@ -18,17 +18,13 @@ __attribute__((visibility("hidden")))
     struct shared_ptr<md::VKGlobeStylesheet> _globeStyleSheet;
     BOOL _notifyFullyLoaded;
     BOOL _notifyFullyDrawn;
-    struct _MDRenderTargetRef _renderTargetRef;
 }
 
-@property (strong, nonatomic) NSArray *customFeatureDataSources;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) unsigned char labelScaleFactor;
-@property (nonatomic) BOOL localizeLabels;
 @property (nonatomic) BOOL showsBuildings;
-@property (nonatomic) BOOL showsPointsOfInterest;
+@property (nonatomic) BOOL showsVenues;
 @property (readonly) Class superclass;
 
 - (id).cxx_construct;
@@ -36,16 +32,14 @@ __attribute__((visibility("hidden")))
 - (void)_updateCameraFromGlobe;
 - (void)_updateViewTransform;
 - (void)_updateViewport;
-- (void)addCustomFeatureDataSource:(id)arg1;
 - (void)cancelTileRequests;
 - (void)dealloc;
 - (void)didLayout;
 - (void)globeDidBecomeFullyDrawn;
 - (void)globeWillBecomeFullyDrawn;
-- (id)initWithTarget:(id)arg1 device:(struct Device *)arg2 homeQueue:(id)arg3 renderer:(struct Renderer *)arg4 manifestConfiguration:(id)arg5;
+- (id)initWithMapEngine:(struct MapEngine *)arg1 manifestConfiguration:(id)arg2;
 - (BOOL)isShowingNoDataPlaceholders;
-- (void)removeCustomFeatureDataSource:(id)arg1;
-- (void)removeRenderer;
+- (struct LabelSettings *)labelSettings;
 - (void)setMapDisplayStyle:(struct DisplayStyle)arg1;
 - (void)setMapType:(long long)arg1;
 - (void)update;

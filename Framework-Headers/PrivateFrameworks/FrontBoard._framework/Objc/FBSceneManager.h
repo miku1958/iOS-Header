@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-#import <FrontBoard/FBDisplayManagerObserver-Protocol.h>
+#import <FrontBoard/FBSDisplayObserving-Protocol.h>
 #import <FrontBoard/FBSceneDelegate-Protocol.h>
 #import <FrontBoard/FBSceneLayerManagerObserver-Protocol.h>
 #import <FrontBoard/FBUISceneManager-Protocol.h>
@@ -14,12 +14,12 @@
 @class FBSSceneClientSettingsDiffInspector, FBSceneEventQueue, FBSceneManagerObserver, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSString;
 @protocol FBSceneManagerDelegate;
 
-@interface FBSceneManager : NSObject <FBSceneDelegate, FBSceneLayerManagerObserver, FBUISceneManager, FBDisplayManagerObserver>
+@interface FBSceneManager : NSObject <FBSceneDelegate, FBSceneLayerManagerObserver, FBUISceneManager, FBSDisplayObserving>
 {
     FBSceneManagerObserver *_delegate;
     NSMutableOrderedSet *_observers;
-    NSMutableDictionary *_displayToRootWindow;
-    NSMutableDictionary *_displayToOcclusionsStack;
+    NSMutableDictionary *_displayIdentityToRootWindow;
+    NSMutableDictionary *_displayIdentityToOcclusionsStack;
     unsigned long long _synchronizationBlockDepth;
     NSMutableDictionary *_scenesByID;
     NSMutableDictionary *_workspacesByID;
@@ -55,29 +55,32 @@
 - (void)_noteSceneChangedLevel:(id)arg1;
 - (void)_noteSceneMovedToBackground:(id)arg1;
 - (void)_noteSceneMovedToForeground:(id)arg1;
-- (id)_occlusionStackForDisplay:(id)arg1 creatingIfNecessary:(BOOL)arg2;
+- (id)_occlusionStackForDisplayIdentity:(id)arg1 creatingIfNecessary:(BOOL)arg2;
 - (void)_positionWrapperViewInRootViewOrderedCorrectly:(id)arg1 rootWindow:(id)arg2;
-- (void)_reEvaluateNeedForRootWindowOnDisplay:(id)arg1;
-- (id)_rootWindowForDisplay:(id)arg1 createIfNecessary:(BOOL)arg2;
+- (void)_reEvaluateNeedForRootWindowOnDisplayWithIdentity:(id)arg1;
+- (id)_rootWindowForDisplayConfiguration:(id)arg1 createIfNecessary:(BOOL)arg2;
+- (id)_rootWindowForRootDisplayIdentity:(id)arg1 createIfNecessary:(BOOL)arg2;
 - (void)_sendOutstandingOcclusionChangesForStack:(id)arg1 withTransitionContext:(id)arg2;
-- (void)_startContextHostingForScene:(id)arg1;
-- (void)_stopContextHostingForScene:(id)arg1;
+- (void)_startLayerHostingForScene:(id)arg1;
+- (void)_stopLayerHostingForScene:(id)arg1;
 - (void)_updateScene:(id)arg1 withSettings:(id)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)addObserver:(id)arg1;
 - (void)attachDefaultTransform:(id)arg1 forDisplay:(id)arg2;
+- (void)attachDefaultTransform:(id)arg1 forDisplayWithRootIdentity:(id)arg2;
 - (id)createSceneWithDefinition:(id)arg1 initialParameters:(id)arg2;
 - (id)createSceneWithIdentifier:(id)arg1 display:(id)arg2 settings:(id)arg3 initialClientSettings:(id)arg4 clientProvider:(id)arg5 transitionContext:(id)arg6;
 - (id)createSceneWithIdentifier:(id)arg1 settings:(id)arg2 initialClientSettings:(id)arg3 clientProvider:(id)arg4 transitionContext:(id)arg5;
 - (void)dealloc;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)destroyScene:(id)arg1 withTransitionContext:(id)arg2;
-- (void)displayManager:(id)arg1 didConnectDisplay:(id)arg2;
-- (void)displayManager:(id)arg1 didDisconnectDisplay:(id)arg2;
+- (void)displayMonitor:(id)arg1 didConnectIdentity:(id)arg2 withConfiguration:(id)arg3;
+- (void)displayMonitor:(id)arg1 willDisconnectIdentity:(id)arg2;
 - (void)enumerateScenesWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)invalidateSceneWorkspace:(id)arg1;
 - (void)registerSceneWorkspace:(id)arg1;
 - (void)removeDefaultTransform:(id)arg1 forDisplay:(id)arg2;
+- (void)removeDefaultTransform:(id)arg1 forDisplayWithRootIdentity:(id)arg2;
 - (void)removeObserver:(id)arg1;
 - (void)scene:(id)arg1 didReceiveActions:(id)arg2;
 - (void)scene:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 oldClientSettings:(id)arg3 transitionContext:(id)arg4;
@@ -89,8 +92,8 @@
 - (id)scenesPassingTest:(CDUnknownBlockType)arg1;
 - (void)shutdown:(BOOL)arg1;
 - (void)workspace:(id)arg1 createSceneWithName:(id)arg2 specification:(id)arg3;
-- (void)workspace:(id)arg1 destroySceneWithIdentity:(id)arg2;
-- (id)workspace:(id)arg1 identityForSceneWithName:(id)arg2 specification:(id)arg3;
+- (void)workspace:(id)arg1 destroySceneWithIdentifier:(id)arg2;
+- (id)workspace:(id)arg1 sceneIdentifierForName:(id)arg2;
 
 @end
 

@@ -39,8 +39,8 @@
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) int type; // @synthesize type=_type;
 
+- (void).cxx_destruct;
 - (void)addPoint:(struct CGPoint)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)keysToEncode;
 - (int)numberOfPoints;

@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) BOOL hasObjectUUID;
 @property (strong, nonatomic) NSData *objectUUID; // @synthesize objectUUID=_objectUUID;
 
++ (Class)authorizationsType;
 - (void).cxx_destruct;
 - (void)addAuthorizations:(id)arg1;
 - (id)authorizationsAtIndex:(unsigned long long)arg1;

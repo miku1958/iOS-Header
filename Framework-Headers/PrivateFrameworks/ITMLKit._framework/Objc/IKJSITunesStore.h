@@ -11,24 +11,24 @@
 #import <ITMLKit/_IKJSITunesStore-Protocol.h>
 #import <ITMLKit/_IKJSITunesStoreProxy-Protocol.h>
 
-@class ISLoadURLBagOperation, NSDictionary, NSNumber, NSString, SSMetricsController;
+@class IKURLBagCache, NSDictionary, NSNumber, NSString, SSMetricsController;
 
 @interface IKJSITunesStore : IKJSObject <NSObject, IKJSITunesStore, _IKJSITunesStoreProxy, _IKJSITunesStore>
 {
     NSNumber *_lastAccountDSID;
     NSDictionary *_lastKnownStatusDictionary;
     SSMetricsController *_metricsController;
-    struct os_unfair_lock_s _bagOperationLock;
     NSString *_storeFrontSuffix;
     id _ssAccountStoreChangedToken;
-    id _isURLBagDidLoadToken;
     id _subscriptionStatusDidChangeToken;
+    id _urlBagCacheUpdateToken;
     NSString *_cookieURL;
-    ISLoadURLBagOperation *_pendingBagOperation;
+    IKURLBagCache *_bagCache;
 }
 
 @property (readonly, nonatomic) NSString *DSID;
 @property (readonly, nonatomic) NSDictionary *accountInfo;
+@property (strong, nonatomic) IKURLBagCache *bagCache; // @synthesize bagCache=_bagCache;
 @property (strong, nonatomic) id cookie;
 @property (strong, nonatomic) NSString *cookieURL; // @synthesize cookieURL=_cookieURL;
 @property (readonly, copy) NSString *debugDescription;
@@ -36,20 +36,16 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isManagedAppleID) BOOL managedAppleID;
 @property (readonly, nonatomic) NSString *networkConnectionType;
-@property (weak, nonatomic) ISLoadURLBagOperation *pendingBagOperation; // @synthesize pendingBagOperation=_pendingBagOperation;
 @property (strong, nonatomic) NSString *storefront;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *userAgent;
 
-+ (id)_URLBagContext;
 + (void)setHeadersForURL:(id)arg1 inRequestProperties:(id)arg2;
 + (void)setITunesStoreHeaders:(id)arg1;
 - (void).cxx_destruct;
 - (void)_accountStoreChanged;
-- (void)_bagDidLoadNotification:(id)arg1;
 - (void)_subscriptionStatusChanged;
 - (id)_subscriptionStatusDictionaryWithStatus:(id)arg1 isFinal:(BOOL)arg2;
-- (void)_updateBag:(BOOL)arg1;
 - (void)_updateWithBag:(id)arg1;
 - (id)asPrivateIKJSITunesStore;
 - (void)authenticate:(id)arg1:(id)arg2;
@@ -61,6 +57,7 @@
 - (id)getBag;
 - (void)getServiceEligibility:(id)arg1:(id)arg2;
 - (id)initWithAppContext:(id)arg1;
+- (id)initWithAppContext:(id)arg1 urlBagCache:(id)arg2;
 - (void)invalidateBag;
 - (void)loadStoreContent:(id)arg1:(id)arg2;
 - (id)makeStoreXMLHttpRequest;

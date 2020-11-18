@@ -10,5 +10,6 @@
 
 @protocol SubCalDATaskTrustDelegate <NSObject>
 - (void)handleTrustChallenge:(NSURLAuthenticationChallenge *)arg1 forTask:(SubCalDATask *)arg2;
+- (void)handleTrustChallenge:(NSURLAuthenticationChallenge *)arg1 forTask:(SubCalDATask *)arg2 completionHandler:(void (^)(long long, NSURLCredential *))arg3;
 @end
 

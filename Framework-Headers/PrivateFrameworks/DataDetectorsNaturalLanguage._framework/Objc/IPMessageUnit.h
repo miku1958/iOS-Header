@@ -13,29 +13,45 @@
     NSMutableArray *_followups;
     NSArray *_flatMessageThread;
     NSArray *_features;
+    NSArray *_sentenceFeatures;
+    NSArray *_dataFeatures;
+    NSArray *_keywordFeatures;
     NSIndexSet *_rejectionRanges;
+    NSIndexSet *_proposalAndAcceptationRanges;
+    NSIndexSet *_neutralRanges;
     NSString *_bestLanguage;
     NSString *_lowercaseText;
     NSString *_text;
     IPMessageUnit *_previous;
     IPMessage *_originalMessage;
     long long _indexInOriginalMessage;
+    struct _NSRange _interactedDateRange;
 }
 
+@property (readonly) NSArray *dataFeatures; // @synthesize dataFeatures=_dataFeatures;
 @property (readonly) NSArray *features; // @synthesize features=_features;
 @property (readonly) NSArray *followups;
 @property (readonly) long long indexInOriginalMessage; // @synthesize indexInOriginalMessage=_indexInOriginalMessage;
+@property struct _NSRange interactedDateRange; // @synthesize interactedDateRange=_interactedDateRange;
+@property (readonly) NSArray *keywordFeatures; // @synthesize keywordFeatures=_keywordFeatures;
 @property (readonly, copy) NSString *lowercaseText;
 @property (readonly, weak) IPMessage *originalMessage; // @synthesize originalMessage=_originalMessage;
 @property (readonly, weak) IPMessageUnit *previous; // @synthesize previous=_previous;
+@property (readonly) NSArray *sentenceFeatures; // @synthesize sentenceFeatures=_sentenceFeatures;
 @property (readonly, copy) NSString *text; // @synthesize text=_text;
 
 - (void).cxx_destruct;
 - (void)addFollowup:(id)arg1;
 - (id)bestLanguageID;
+- (id)description;
 - (id)initWithText:(id)arg1 originalMessage:(id)arg2 index:(long long)arg3;
+- (id)neutralRanges;
+- (id)proposalAndAcceptationRanges;
 - (id)rejectionRanges;
+- (void)setDataFeatures:(id)arg1;
 - (void)setFeatures:(id)arg1;
+- (void)setKeywordFeatures:(id)arg1;
+- (void)setSentenceFeatures:(id)arg1;
 
 @end
 

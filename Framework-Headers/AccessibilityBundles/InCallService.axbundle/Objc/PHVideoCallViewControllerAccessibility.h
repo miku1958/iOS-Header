@@ -17,10 +17,11 @@
 - (void)_accessibilityMakeSureWindowIsVisibleToElementFetcher;
 - (void)_accessibilityPIPVideoInfoWithDisplayName:(id)arg1;
 - (void)_accessibilityRemoteVideoInfoWithDisplayName:(id)arg1;
-- (void)_accessibilityUpdateInfoOnLocalVideoView:(id)arg1 cameraType:(unsigned int)arg2;
-- (void)_accessibilityUpdateInfoOnLocalVideoViewsForCameraType:(unsigned int)arg1;
-- (id)_accessibilityValueStringForLocalVideoAndCameraType:(unsigned int)arg1;
+- (void)_accessibilityUpdateInfoOnLocalVideoView:(id)arg1 devicePosition:(long long)arg2;
+- (void)_accessibilityUpdateInfoOnLocalVideoViewsForDevicePosition:(long long)arg1;
+- (id)_accessibilityValueStringForLocalVideoAndDevicePosition:(long long)arg1;
 - (void)_refreshStatusBarAndPIPAnimated:(BOOL)arg1;
+- (void)_setUpCameraFlipButtonIfNecessary;
 - (void)toggleLocalCameraType;
 - (void)updateTopBar:(BOOL)arg1 bottomBar:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)viewDidAppear:(BOOL)arg1;

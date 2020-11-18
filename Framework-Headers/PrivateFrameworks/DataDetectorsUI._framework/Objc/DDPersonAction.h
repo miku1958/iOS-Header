@@ -8,19 +8,17 @@
 
 #import <DataDetectorsUI/CNAvatarCardControllerDelegate-Protocol.h>
 
-@class CNAvatarCardController, CNContact, CNContactStore, NSString, UIViewController;
+@class CNAvatarCardController, CNContactStore, NSString, UIViewController;
 
 __attribute__((visibility("hidden")))
 @interface DDPersonAction : DDPreviewAction <CNAvatarCardControllerDelegate>
 {
-    CNContact *_contact;
     CNContactStore *_store;
     CNAvatarCardController *_avatar;
     UIViewController *_presentingViewController;
 }
 
 @property (strong) CNAvatarCardController *avatar; // @synthesize avatar=_avatar;
-@property (strong) CNContact *contact; // @synthesize contact=_contact;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

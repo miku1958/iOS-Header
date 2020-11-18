@@ -25,8 +25,8 @@
 @property (readonly, nonatomic) BOOL forRead; // @synthesize forRead=_forRead;
 @property (nonatomic) BOOL isUpdateForReconnecting; // @synthesize isUpdateForReconnecting=_isUpdateForReconnecting;
 
-+ (void)itemAtPath:(id)arg1 didBounceToName:(id)arg2;
 + (void)itemAtPath:(id)arg1 logicalFilename:(id)arg2 didMoveToPath:(id)arg3 logicalFilename:(id)arg4 hasContentUpdate:(BOOL)arg5;
++ (void)itemAtPath:(id)arg1 origLogicalName:(id)arg2 didBounceToNewLogicalName:(id)arg3;
 + (void)itemDidAppearAtPath:(id)arg1 logicalFilename:(id)arg2;
 + (void)itemDidChangeAtPath:(id)arg1 logicalFilename:(id)arg2;
 + (void)itemDidDisappearAtPath:(id)arg1 logicalFilename:(id)arg2;

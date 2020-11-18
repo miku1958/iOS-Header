@@ -8,10 +8,12 @@
 
 #import <Pasteboard/NSSecureCoding-Protocol.h>
 #import <Pasteboard/NSXPCListenerDelegate-Protocol.h>
+#import <Pasteboard/PBItemDataTransferDelegate-Protocol.h>
 
 @class NSArray, NSDate, NSDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListener, NSXPCListenerEndpoint;
+@protocol PBItemCollectionDataTransferDelegate;
 
-@interface PBItemCollection : NSObject <NSXPCListenerDelegate, NSSecureCoding>
+@interface PBItemCollection : NSObject <NSXPCListenerDelegate, PBItemDataTransferDelegate, NSSecureCoding>
 {
     BOOL _itemQueue_isDataProvider;
     BOOL _itemQueue_deviceLockedPasteboard;
@@ -25,13 +27,16 @@
     NSUUID *_itemQueue_UUID;
     NSString *_itemQueue_originatorBundleID;
     NSString *_itemQueue_originatorTeamID;
+    long long _itemQueue_originatorDataOwner;
     long long _itemQueue_remotePasteboardState;
+    id<PBItemCollectionDataTransferDelegate> _itemQueue_dataTransferDelegate;
 }
 
 @property (readonly, nonatomic) NSUUID *UUID; // @dynamic UUID;
 @property (nonatomic) long long changeCount;
 @property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, nonatomic) NSXPCListenerEndpoint *dataConsumersEndpoint; // @dynamic dataConsumersEndpoint;
+@property (weak, nonatomic) id<PBItemCollectionDataTransferDelegate> dataTransferDelegate; // @dynamic dataTransferDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDeviceLockedPasteboard) BOOL deviceLockedPasteboard; // @dynamic deviceLockedPasteboard;
@@ -42,11 +47,13 @@
 @property (nonatomic) BOOL isRemote;
 @property (strong, nonatomic) NSUUID *itemQueue_UUID; // @synthesize itemQueue_UUID=_itemQueue_UUID;
 @property (strong, nonatomic) NSXPCListener *itemQueue_dataConsumersListener; // @synthesize itemQueue_dataConsumersListener=_itemQueue_dataConsumersListener;
+@property (weak, nonatomic) id<PBItemCollectionDataTransferDelegate> itemQueue_dataTransferDelegate; // @synthesize itemQueue_dataTransferDelegate=_itemQueue_dataTransferDelegate;
 @property (nonatomic, getter=itemQueue_isDeviceLockedPasteboard) BOOL itemQueue_deviceLockedPasteboard; // @synthesize itemQueue_deviceLockedPasteboard=_itemQueue_deviceLockedPasteboard;
 @property (nonatomic) BOOL itemQueue_isDataProvider; // @synthesize itemQueue_isDataProvider=_itemQueue_isDataProvider;
 @property (copy, nonatomic) NSArray *itemQueue_items; // @synthesize itemQueue_items=_itemQueue_items;
 @property (copy, nonatomic) NSDictionary *itemQueue_metadata; // @synthesize itemQueue_metadata=_itemQueue_metadata;
 @property (copy, nonatomic) NSString *itemQueue_originatorBundleID; // @synthesize itemQueue_originatorBundleID=_itemQueue_originatorBundleID;
+@property (nonatomic) long long itemQueue_originatorDataOwner; // @synthesize itemQueue_originatorDataOwner=_itemQueue_originatorDataOwner;
 @property (copy, nonatomic) NSString *itemQueue_originatorTeamID; // @synthesize itemQueue_originatorTeamID=_itemQueue_originatorTeamID;
 @property (strong, nonatomic) NSDictionary *itemQueue_privateMetadata; // @synthesize itemQueue_privateMetadata=_itemQueue_privateMetadata;
 @property (strong, nonatomic) NSXPCConnection *itemQueue_remoteDataProviderConnection; // @synthesize itemQueue_remoteDataProviderConnection=_itemQueue_remoteDataProviderConnection;
@@ -57,6 +64,7 @@
 @property (copy, nonatomic) NSDictionary *metadata; // @dynamic metadata;
 @property (copy, nonatomic) NSString *name;
 @property (readonly, copy, nonatomic) NSString *originatorBundleID; // @dynamic originatorBundleID;
+@property (nonatomic) long long originatorDataOwner; // @dynamic originatorDataOwner;
 @property (readonly, copy, nonatomic) NSString *originatorTeamID; // @dynamic originatorTeamID;
 @property (readonly, copy, nonatomic) NSString *persistenceName; // @dynamic persistenceName;
 @property (nonatomic, getter=isPersistent) BOOL persistent;
@@ -71,18 +79,22 @@
 - (void).cxx_destruct;
 - (id)_remoteDataProviderConnection;
 - (void)_setMetadataValue:(id)arg1 forKey:(id)arg2;
+- (void)addItems:(id)arg1;
 - (id)availableRepresentationTypes;
 - (BOOL)canInstantiateObjectOfClass:(Class)arg1;
+- (id)copyWithDoNothingLoaders;
 - (id)copyWithItems:(id)arg1;
 - (id)dataConsumersListener;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
-- (void)establishConnectionToDataProviderCompletionBlock:(CDUnknownBlockType)arg1;
+- (CDStruct_6ad76789)establishConnectionToDataProviderCompletionBlock:(CDUnknownBlockType)arg1;
 - (BOOL)hasItemWithRepresentationConformingToType:(id)arg1;
 - (BOOL)hasItemWithRepresentationOfType:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithItems:(id)arg1;
+- (void)item:(id)arg1 representation:(id)arg2 beganDataTransferWithProgress:(id)arg3;
+- (void)item:(id)arg1 representationFinishedDataTransfer:(id)arg2;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)setDataProviderEndpoint:(id)arg1;
 - (void)setItems:(id)arg1;
@@ -93,6 +105,7 @@
 - (void)setUUID:(id)arg1;
 - (void)setUsesServerConnectionToLoadData;
 - (void)shutdown;
+- (void)waitForItemRequestsDeliveryCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOTimezone;
+@class GEOLatLng, GEOTimezone, PBUnknownFields;
 
 @interface GEOPDPlaceInfo : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     double _area;
     GEOLatLng *_center;
     int _knownAccuracy;
@@ -34,12 +35,13 @@
 @property (nonatomic) BOOL isApproximateCenter; // @synthesize isApproximateCenter=_isApproximateCenter;
 @property (nonatomic) int knownAccuracy; // @synthesize knownAccuracy=_knownAccuracy;
 @property (strong, nonatomic) GEOTimezone *timezone; // @synthesize timezone=_timezone;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)placeInfoForPlaceData:(id)arg1;
+- (void).cxx_destruct;
 - (int)StringAsKnownAccuracy:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

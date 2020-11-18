@@ -9,7 +9,6 @@
 @class CNCancelationToken;
 @protocol CNScheduler;
 
-__attribute__((visibility("hidden")))
 @interface _CNGeneratorObservable : CNObservable
 {
     id _state;
@@ -26,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isFinished;
 - (void)scheduleNextResultForObserver:(id)arg1;
 - (void)sendCurrentStateToObserver:(id)arg1;
+- (void)sendResultsToObserver:(id)arg1;
 - (id)subscribe:(id)arg1;
 - (void)updateState;
 

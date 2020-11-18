@@ -9,26 +9,27 @@
 #import <SpotlightDaemon/CSSearchableIndexInterface-Protocol.h>
 #import <SpotlightDaemon/CSSearchableIndexServiceInterface-Protocol.h>
 
-@class CSIndexingQueue, MDIndexAgent, NSSet, NSString;
-@protocol CSSearchableIndexServiceInterface><NSXPCProxyCreating, MDIndexer;
+@class CSIndexingQueue, NSString;
+@protocol MDIndexer, OS_dispatch_queue, OS_xpc_object;
 
 @interface MDSearchableIndexService : NSObject <CSSearchableIndexInterface, CSSearchableIndexServiceInterface>
 {
     CSIndexingQueue *_activityQueue;
     BOOL _isInternal;
+    BOOL _searchInternal;
     BOOL _quotaDisabled;
     unsigned int _clientUID;
-    MDIndexAgent *_agent;
     NSObject<MDIndexer> *_indexer;
+    NSObject<OS_xpc_object> *_clientConnection;
+    NSObject<OS_dispatch_queue> *_clientQueue;
     NSString *_clientBundleID;
     NSString *_protectionClass;
-    NSSet *_tccAllowances;
 }
 
 @property (readonly, nonatomic) CSIndexingQueue *activityQueue;
-@property (weak, nonatomic) MDIndexAgent *agent; // @synthesize agent=_agent;
 @property (copy, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
-@property (readonly, nonatomic) NSObject<CSSearchableIndexServiceInterface><NSXPCProxyCreating> *clientLink;
+@property (strong, nonatomic) NSObject<OS_xpc_object> *clientConnection; // @synthesize clientConnection=_clientConnection;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (nonatomic) unsigned int clientUID; // @synthesize clientUID=_clientUID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -38,37 +39,58 @@
 @property (readonly, nonatomic) NSString *processDescription;
 @property (copy, nonatomic) NSString *protectionClass; // @synthesize protectionClass=_protectionClass;
 @property (nonatomic) BOOL quotaDisabled; // @synthesize quotaDisabled=_quotaDisabled;
+@property (nonatomic) BOOL searchInternal; // @synthesize searchInternal=_searchInternal;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSSet *tccAllowances; // @synthesize tccAllowances=_tccAllowances;
 
 - (void).cxx_destruct;
-- (BOOL)_bundleIsInTCCWhiteList:(id)arg1;
+- (BOOL)_canProcessIndexDataForBundle:(id)arg1 itemsDecoder:(id)arg2 deletesDecoder:(id)arg3 clientState:(id)arg4 clientStateName:(id)arg5 outError:(id *)arg6;
 - (id)_checkBundleIDHelper:(id)arg1;
 - (id)_checkItems:(id)arg1 identifiers:(id)arg2 protectionClass:(id)arg3 bundleID:(id)arg4 allowedOnH4:(BOOL)arg5;
+- (void)_deleteAllSearchableItemsWithBundleID:(id)arg1 protectionClass:(id)arg2 shouldGC:(BOOL)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (BOOL)_deleteInteractions:(id)arg1 forGroup:(BOOL)arg2;
 - (void)_dispatchActivities:(id)arg1 flush:(BOOL)arg2;
 - (void)_dispatchToReceiversWithBundleID:(id)arg1 protectionClass:(id)arg2 options:(long long)arg3 items:(id)arg4 itemsText:(id)arg5 itemsHTML:(id)arg6 deletes:(id)arg7;
 - (void)_forceAppWithBundleID:(id)arg1 toPerformJob:(id)arg2;
 - (void)_issueCommand:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_jobForIndex:(long long)arg1;
 - (void)_makeActivityQueueIfNecessary;
-- (void)addInteraction:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_performIndexJob:(id)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
+- (void)_processIndexDataForBundle:(id)arg1 protectionClass:(id)arg2 options:(long long)arg3 items:(id)arg4 itemsText:(id)arg5 clientState:(id)arg6 clientStateName:(id)arg7 deletes:(id)arg8 completionHandler:(CDUnknownBlockType)arg9;
+- (BOOL)addInteraction:(id)arg1;
+- (void)addInteraction:(id)arg1 intentClassName:(id)arg2 bundleID:(id)arg3 protectionClass:(id)arg4 options:(long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (BOOL)changeState:(id)arg1;
 - (void)changeStateOfSearchableItemsWithUIDs:(id)arg1 toState:(long long)arg2 protectionClass:(id)arg3 forBundleID:(id)arg4 forUTIType:(id)arg5 options:(long long)arg6;
+- (BOOL)checkIn:(id)arg1;
 - (void)checkInWithProtectionClass:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)dataMigration:(id)arg1;
+- (BOOL)deleteAllInteractions:(id)arg1;
 - (void)deleteAllInteractionsWithBundleID:(id)arg1 protectionClass:(id)arg2 options:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)deleteAllSearchableItemsWithBundleID:(id)arg1 protectionClass:(id)arg2 shouldGC:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)deleteAllSearchableItemsWithProtectionClass:(id)arg1 forBundleID:(id)arg2 options:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (BOOL)deleteBundle:(id)arg1;
+- (BOOL)deleteDomains:(id)arg1;
 - (void)deleteInteractionsWithGroupIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)deleteInteractionsWithIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)deleteSearchableItemsSinceDate:(id)arg1 protectionClass:(id)arg2 forBundleID:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)deleteSearchableItemsWithDomainIdentifiers:(id)arg1 protectionClass:(id)arg2 forBundleID:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (BOOL)deleteSinceDate:(id)arg1;
+- (BOOL)fetchClientState:(id)arg1;
 - (void)fetchLastClientStateWithProtectionClass:(id)arg1 forBundleID:(id)arg2 clientStateName:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)flushUserActivities;
+- (BOOL)handleCommand:(const char *)arg1 info:(id)arg2;
 - (void)indexFromBundle:(id)arg1 protectionClass:(id)arg2 options:(long long)arg3 items:(id)arg4 itemsText:(id)arg5 itemsHTML:(id)arg6 clientState:(id)arg7 clientStateName:(id)arg8 deletes:(id)arg9 completionHandler:(CDUnknownBlockType)arg10;
 - (void)indexSearchableItems:(id)arg1 deleteSearchableItemsWithIdentifiers:(id)arg2 clientState:(id)arg3 clientStateName:(id)arg4 protectionClass:(id)arg5 forBundleID:(id)arg6 options:(long long)arg7 completionHandler:(CDUnknownBlockType)arg8;
 - (void)indexSearchableItems:(id)arg1 deleteSearchableItemsWithIdentifiers:(id)arg2 clientState:(id)arg3 protectionClass:(id)arg4 forBundleID:(id)arg5 options:(long long)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (BOOL)issueCommand:(id)arg1;
 - (void)performDataMigrationWithTimeout:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performIndexJob:(id)arg1;
 - (void)performIndexJob:(id)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
+- (BOOL)processActivities:(id)arg1;
+- (BOOL)processIndexData:(id)arg1;
+- (void)provideDataForBundle:(id)arg1 identifier:(id)arg2 type:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)provideFileURLForBundle:(id)arg1 identifier:(id)arg2 type:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)userPerformedAction:(id)arg1 withItem:(id)arg2 protectionClass:(id)arg3;
+- (BOOL)willModify:(id)arg1;
 - (void)willModifySearchableItemsWithIdentifiers:(id)arg1 protectionClass:(id)arg2 forBundleID:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 
 @end

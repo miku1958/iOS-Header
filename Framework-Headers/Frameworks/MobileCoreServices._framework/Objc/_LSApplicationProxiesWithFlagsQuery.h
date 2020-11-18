@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileCoreServices/_LSQuery.h>
+#import <MobileCoreServices/_LSBundleQuery.h>
 
 __attribute__((visibility("hidden")))
-@interface _LSApplicationProxiesWithFlagsQuery : _LSQuery
+@interface _LSApplicationProxiesWithFlagsQuery : _LSBundleQuery
 {
     unsigned int _plistFlags;
     unsigned long long _bundleFlags;
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 + (id)queryWithPlistFlags:(unsigned int)arg1 bundleFlags:(unsigned long long)arg2;
 + (BOOL)supportsSecureCoding;
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (BOOL)_requiresDatabaseMappingEntitlement;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

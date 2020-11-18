@@ -25,21 +25,22 @@
 @property (weak) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 + (id)_createAvatarView;
++ (id)contactForAddress:(id)arg1 fullName:(id)arg2 firstName:(id)arg3 lastName:(id)arg4;
 + (id)contactForEmailAddress:(id)arg1 fullName:(id)arg2 firstName:(id)arg3 lastName:(id)arg4;
-+ (id)sharedContactStore;
++ (id)contactForPhoneNumber:(id)arg1 fullName:(id)arg2 firstName:(id)arg3 lastName:(id)arg4;
 + (id)sortedAvatarListFromParticipants:(id)arg1;
 - (void).cxx_destruct;
 - (void)didTap;
 - (id)init;
 - (id)initWithContact:(id)arg1 placement:(unsigned long long)arg2 options:(unsigned long long)arg3;
 - (id)initWithEmail:(id)arg1 fullName:(id)arg2 firstName:(id)arg3 lastName:(id)arg4 placement:(unsigned long long)arg5 options:(unsigned long long)arg6;
-- (id)initWithParticipant:(id)arg1 placement:(unsigned long long)arg2 options:(unsigned long long)arg3;
+- (id)initWithIdentity:(id)arg1 placement:(unsigned long long)arg2 options:(unsigned long long)arg3;
 - (id)initWithPlacement:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (void)setUpTap;
 - (void)setup;
 - (void)updateLabel;
+- (void)updateWithAddress:(id)arg1 fullName:(id)arg2 firstName:(id)arg3 lastName:(id)arg4;
 - (void)updateWithContacts:(id)arg1;
-- (void)updateWithEmail:(id)arg1 fullName:(id)arg2 firstName:(id)arg3 lastName:(id)arg4;
 - (void)updateWithParticpant:(id)arg1;
 
 @end

@@ -61,6 +61,7 @@
 - (id)initForChangePINWithMinLength:(unsigned int)arg1 maxLength:(unsigned int)arg2 confirmPIN:(BOOL)arg3;
 - (id)initForNewPINWithMinLength:(unsigned int)arg1 maxLength:(unsigned int)arg2 confirmPIN:(BOOL)arg3;
 - (void)loadView;
+- (double)numberPadTopConstraintConstant;
 - (void)resetWithErrorPrompt:(id)arg1;
 - (void)resetWithErrorPrompt:(id)arg1 title:(id)arg2;
 - (void)simpleNumberPad:(id)arg1 buttonPressedWithCharacter:(id)arg2;

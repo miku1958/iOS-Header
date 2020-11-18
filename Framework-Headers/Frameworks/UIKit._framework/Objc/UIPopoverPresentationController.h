@@ -24,6 +24,7 @@
     unsigned long long _currentArrowDirection;
     long long _popoverBackgroundStyle;
     UIColor *_backgroundColor;
+    UIColor *_arrowBackgroundColor;
     _UIPopoverLayoutInfo *_preferredLayoutInfo;
     Class _popoverBackgroundViewClass;
     struct CGSize _popoverContentSize;
@@ -80,6 +81,7 @@
 @property (nonatomic, setter=_setDimmingViewTopEdgeInset:) double _dimmingViewTopEdgeInset; // @synthesize _dimmingViewTopEdgeInset=__dimmingViewTopEdgeInset;
 @property (nonatomic, setter=_setIgnoreBarButtonItemSiblings:) BOOL _ignoreBarButtonItemSiblings; // @synthesize _ignoreBarButtonItemSiblings=__ignoreBarButtonItemSiblings;
 @property (nonatomic, setter=_setIgnoresKeyboardNotifications:) BOOL _ignoresKeyboardNotifications; // @dynamic _ignoresKeyboardNotifications;
+@property (nonatomic, setter=_setPopoverBackgroundStyle:) long long _popoverBackgroundStyle;
 @property (nonatomic, getter=_shouldHideArrow, setter=_setShouldHideArrow:) BOOL _shouldHideArrow; // @synthesize _shouldHideArrow=__shouldHideArrow;
 @property (readonly, nonatomic) unsigned long long arrowDirection;
 @property (copy, nonatomic) UIColor *backgroundColor;
@@ -120,9 +122,10 @@
 - (BOOL)_alwaysAdaptToFullscreenForTraitCollection:(id)arg1;
 - (BOOL)_attemptsToAvoidKeyboard;
 - (id)_backgroundView;
-- (struct UIEdgeInsets)_baseContentInsets;
+- (struct UIEdgeInsets)_baseContentInsetsWithLeftMargin:(double *)arg1 rightMargin:(double *)arg2;
 - (struct CGRect)_calculateContainingFrame;
 - (struct CGPoint)_centerPointForScale:(double)arg1 frame:(struct CGRect)arg2 anchor:(struct CGPoint)arg3;
+- (void)_clearCachedPopoverContentSize;
 - (void)_commonPresentPopoverFromRect:(struct CGRect)arg1 inView:(id)arg2 permittedArrowDirections:(unsigned long long)arg3 animated:(BOOL)arg4;
 - (CDUnknownBlockType)_completionBlockForDismissalWhenNotifyingDelegate:(BOOL)arg1;
 - (void)_containedViewControllerModalStateChanged;
@@ -151,7 +154,6 @@
 - (void)_newViewControllerWillBePushed:(id)arg1;
 - (id)_passthroughViews;
 - (void)_performHierarchyCheckOnViewController:(id)arg1;
-- (long long)_popoverBackgroundStyle;
 - (BOOL)_popoverBackgroundViewWantsDefaultContentAppearance;
 - (long long)_popoverControllerStyle;
 - (id)_popoverHostingWindow;
@@ -171,7 +173,6 @@
 - (void)_setContentViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)_setContentViewController:(id)arg1 backgroundStyle:(long long)arg2 animated:(BOOL)arg3;
 - (void)_setGesturesEnabled:(BOOL)arg1;
-- (void)_setPopoverBackgroundStyle:(long long)arg1;
 - (void)_setPopoverFrame:(struct CGRect)arg1 animated:(BOOL)arg2 coordinator:(id)arg3;
 - (void)_setPopoverView:(id)arg1;
 - (void)_setPresentationState:(int)arg1;
@@ -195,6 +196,7 @@
 - (void)_transitionToDidEnd;
 - (void)_transitionToWillBegin;
 - (void)_updateShadowFrame;
+- (id)arrowBackgroundColor;
 - (void)containerViewWillLayoutSubviews;
 - (void)dealloc;
 - (void)dimmingViewWasTapped:(id)arg1;
@@ -213,6 +215,7 @@
 - (void)presentationTransitionDidEnd:(BOOL)arg1;
 - (void)presentationTransitionWillBegin;
 - (id)presentedView;
+- (void)setArrowBackgroundColor:(id)arg1;
 - (void)setPopoverContentSize:(struct CGSize)arg1;
 - (void)setPopoverContentSize:(struct CGSize)arg1 animated:(BOOL)arg2;
 - (void)setPopoverFrame:(struct CGRect)arg1 animated:(BOOL)arg2;

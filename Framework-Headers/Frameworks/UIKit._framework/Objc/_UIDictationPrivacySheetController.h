@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)controllerWithDismissHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)dismiss;
+- (void)dismissAnimated:(BOOL)arg1;
 - (id)initWithHandler:(CDUnknownBlockType)arg1;
 
 @end

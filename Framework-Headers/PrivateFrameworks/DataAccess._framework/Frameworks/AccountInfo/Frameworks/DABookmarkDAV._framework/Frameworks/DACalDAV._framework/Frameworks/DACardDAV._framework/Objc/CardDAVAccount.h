@@ -32,6 +32,7 @@
 + (id)addressBookConstraintsPlistPath;
 - (void).cxx_destruct;
 - (void)_massageAddedOrModifiedVCard:(id)arg1;
+- (void)addToCoreDAVLoggingDelegates;
 - (id)copyImageContentsAtURL:(id)arg1 outError:(id *)arg2;
 - (void)coreDAVLogDiagnosticMessage:(id)arg1 atLevel:(long long)arg2;
 - (long long)coreDAVLogLevel;
@@ -50,6 +51,7 @@
 - (unsigned long long)oauthVariant;
 - (id)onBehalfOfBundleIdentifier;
 - (void)promptUserForNewCoreDAVPasswordWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)removeFromCoreDAVLoggingDelegates;
 - (id)serverComplianceClasses;
 - (id)serverRoot;
 - (void)setServerComplianceClasses:(id)arg1;

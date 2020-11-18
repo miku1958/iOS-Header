@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -44,13 +44,14 @@
 
 + (id)configurationWithPairedDevice:(id)arg1;
 + (id)defaultConfiguration;
+- (void).cxx_destruct;
 - (id)conciseDictionaryRepresentation;
-- (void)dealloc;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithConciseDictionaryRepresentation:(id)arg1;
 - (BOOL)isDefaultConfiguration;
 - (BOOL)isEqual:(id)arg1;
+- (id)manifestDictionaryRepresentation;
 
 @end
 

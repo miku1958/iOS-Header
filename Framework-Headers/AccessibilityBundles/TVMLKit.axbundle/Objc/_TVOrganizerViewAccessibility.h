@@ -16,6 +16,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilitySupplementaryFooterViews;
 - (id)accessibilityLabel;
+- (BOOL)isAccessibilityElement;
 - (void)layoutSubviews;
 
 @end

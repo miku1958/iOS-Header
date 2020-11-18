@@ -7,15 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <PushKit/PKComplicationXPCClient-Protocol.h>
+#import <PushKit/PKFileProviderXPCClient-Protocol.h>
 #import <PushKit/PKVoIPXPCClient-Protocol.h>
 
 @class NSMutableDictionary, NSSet;
 @protocol OS_dispatch_queue, PKPushRegistryDelegate;
 
-@interface PKPushRegistry : NSObject <PKVoIPXPCClient, PKComplicationXPCClient>
+@interface PKPushRegistry : NSObject <PKVoIPXPCClient, PKComplicationXPCClient, PKFileProviderXPCClient>
 {
     int _voipToken;
     int _complicationToken;
+    int _fileProviderToken;
     NSSet *_desiredPushTypes;
     id<PKPushRegistryDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
@@ -28,6 +30,7 @@
 @property (weak) id<PKPushRegistryDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (copy) NSSet *desiredPushTypes; // @synthesize desiredPushTypes=_desiredPushTypes;
+@property (nonatomic) int fileProviderToken; // @synthesize fileProviderToken=_fileProviderToken;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *ivarQueue; // @synthesize ivarQueue=_ivarQueue;
 @property (strong, nonatomic) NSMutableDictionary *pushTypeToConnection; // @synthesize pushTypeToConnection=_pushTypeToConnection;
 @property (strong, nonatomic) NSMutableDictionary *pushTypeToToken; // @synthesize pushTypeToToken=_pushTypeToToken;
@@ -43,9 +46,12 @@
 - (void)complicationRegistrationFailed;
 - (void)complicationRegistrationSucceededWithDeviceToken:(id)arg1;
 - (void)dealloc;
+- (void)fileProviderPayloadReceived:(id)arg1;
+- (void)fileProviderRegistrationFailed;
+- (void)fileProviderRegistrationSucceededWithDeviceToken:(id)arg1;
 - (id)initWithQueue:(id)arg1;
 - (id)pushTokenForType:(id)arg1;
-- (void)voipPayloadReceived:(id)arg1;
+- (void)voipPayloadReceived:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)voipRegistrationFailed;
 - (void)voipRegistrationSucceededWithDeviceToken:(id)arg1;
 

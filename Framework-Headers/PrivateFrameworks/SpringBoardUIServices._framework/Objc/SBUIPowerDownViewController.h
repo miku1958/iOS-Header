@@ -29,6 +29,8 @@
 - (void)powerDownViewAnimateOutCompleted:(id)arg1;
 - (void)powerDownViewRequestCancel:(id)arg1;
 - (void)powerDownViewRequestPowerDown:(id)arg1;
+- (void)powerDownViewWillAnimateIn:(id)arg1;
+- (void)powerDownViewWillAnimateOut:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

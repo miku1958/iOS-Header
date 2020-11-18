@@ -15,10 +15,10 @@
 @property (readonly, nonatomic) NSArray *countryCodesShowingEmergencyOnlyStatus; // @dynamic countryCodesShowingEmergencyOnlyStatus;
 @property (readonly, nonatomic) BOOL showBatteryLevel; // @dynamic showBatteryLevel;
 @property (readonly, nonatomic) BOOL showBatteryPercentage; // @dynamic showBatteryPercentage;
-@property (readonly, nonatomic) BOOL showGSMRSSI; // @dynamic showGSMRSSI;
 @property (readonly, nonatomic) BOOL showOptimalCellDataForCarPlay; // @dynamic showOptimalCellDataForCarPlay;
 @property (readonly, nonatomic) BOOL showRSSI; // @dynamic showRSSI;
 @property (readonly, nonatomic) BOOL showTapToRadarForCarPlay; // @dynamic showTapToRadarForCarPlay;
+@property (readonly, nonatomic) BOOL showThermalWarning; // @dynamic showThermalWarning;
 @property (readonly, nonatomic) unsigned long long statusBarLogLevel; // @dynamic statusBarLogLevel;
 @property (readonly, nonatomic) BOOL suppressStatusBarOverrideForScreenSharing; // @dynamic suppressStatusBarOverrideForScreenSharing;
 

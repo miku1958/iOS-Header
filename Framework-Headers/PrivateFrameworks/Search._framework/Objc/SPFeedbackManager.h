@@ -20,6 +20,7 @@
 @property (readonly) Class superclass;
 
 + (id)sharedManager;
+- (void)cardViewDidAppear:(id)arg1;
 - (void)cardViewDidDisappear:(id)arg1;
 - (void)didAppendLateSections:(id)arg1;
 - (void)didClearInput:(id)arg1;

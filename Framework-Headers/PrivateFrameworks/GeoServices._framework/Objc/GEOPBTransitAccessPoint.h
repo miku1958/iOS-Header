@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, NSMutableArray, NSString;
+@class GEOLatLng, NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPBTransitAccessPoint : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     unsigned long long _muid;
     unsigned int _accessPointIndex;
     NSString *_entranceNameDisplayString;
@@ -41,9 +42,11 @@
 @property (strong, nonatomic) GEOLatLng *location; // @synthesize location=_location;
 @property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
 @property (nonatomic) unsigned int stationIndex; // @synthesize stationIndex=_stationIndex;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)entranceZoomNameType;
 + (Class)exitZoomNameType;
+- (void).cxx_destruct;
 - (void)addEntranceZoomName:(id)arg1;
 - (void)addExitZoomName:(id)arg1;
 - (id)bestEntranceName;
@@ -54,7 +57,6 @@
 - (void)clearExitZoomNames;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)entranceZoomNameAtIndex:(unsigned long long)arg1;
@@ -62,6 +64,7 @@
 - (id)exitZoomNameAtIndex:(unsigned long long)arg1;
 - (unsigned long long)exitZoomNamesCount;
 - (unsigned long long)hash;
+- (id)identifier;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

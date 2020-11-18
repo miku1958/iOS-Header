@@ -13,6 +13,7 @@
 @interface NEVPNManager : NSObject <NEPrettyDescription>
 {
     BOOL _hasLoaded;
+    BOOL _notificationSent;
     NEVPNConnection *_connection;
     NEConfiguration *_configuration;
 }
@@ -22,6 +23,7 @@
 @property (getter=isEnabled) BOOL enabled;
 @property BOOL hasLoaded; // @synthesize hasLoaded=_hasLoaded;
 @property (copy) NSString *localizedDescription;
+@property BOOL notificationSent; // @synthesize notificationSent=_notificationSent;
 @property (getter=isOnDemandEnabled) BOOL onDemandEnabled;
 @property (copy) NSArray *onDemandRules;
 @property (strong) NEVPNProtocol *protocol;

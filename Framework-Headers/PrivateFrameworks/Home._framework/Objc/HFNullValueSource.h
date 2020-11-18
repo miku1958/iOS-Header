@@ -21,7 +21,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)na_identity;
+- (void)beginTransactionWithReason:(id)arg1 readPolicy:(id)arg2 logger:(id)arg3;
 - (id)cachedValueForCharacteristic:(id)arg1;
+- (void)commitTransactionWithReason:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)readValuesForCharacteristicTypes:(id)arg1 inServices:(id)arg2;
 - (id)readValuesForCharacteristics:(id)arg1;
 - (id)writeValuesForCharacteristics:(id)arg1;

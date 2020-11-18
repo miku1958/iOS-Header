@@ -27,6 +27,7 @@
 @property (copy, nonatomic) CDUnknownBlockType queueCallback; // @synthesize queueCallback=_queueCallback;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)_atomToLegacyVibePattern:(id)arg1;
 - (void)_clearQueue;
 - (id)_convertSoundToStringName:(unsigned int)arg1;

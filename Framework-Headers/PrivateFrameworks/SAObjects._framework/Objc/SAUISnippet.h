@@ -6,7 +6,7 @@
 
 #import <SAObjects/SAAceView.h>
 
-@class NSString, SAUIConfirmationOptions;
+@class NSString, SAUIConfirmationOptions, SAUISash;
 
 @interface SAUISnippet : SAAceView
 {
@@ -14,6 +14,7 @@
 
 @property (nonatomic) long long category;
 @property (strong, nonatomic) SAUIConfirmationOptions *confirmationOptions;
+@property (strong, nonatomic) SAUISash *sash;
 @property (copy, nonatomic) NSString *subtitle;
 @property (copy, nonatomic) NSString *summaryTitle;
 @property (copy, nonatomic) NSString *title;

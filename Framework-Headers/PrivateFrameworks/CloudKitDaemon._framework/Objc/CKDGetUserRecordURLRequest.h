@@ -19,10 +19,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKRecord *userRecord; // @synthesize userRecord=_userRecord;
 
 - (void).cxx_destruct;
+- (id)generateRequestOperations;
 - (int)operationType;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 
 @end
 

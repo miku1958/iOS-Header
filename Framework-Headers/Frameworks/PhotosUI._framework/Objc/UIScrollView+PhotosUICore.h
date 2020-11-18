@@ -12,6 +12,7 @@
 
 - (BOOL)_px_isScrolledAtEdge:(unsigned int)arg1 tolerance:(double)arg2;
 - (struct CGPoint)px_constrainedContentOffset:(struct CGPoint)arg1;
+- (struct CGPoint)px_contentOffsetForEdge:(unsigned int)arg1;
 - (BOOL)px_isScrolledAtEdge:(unsigned int)arg1;
 - (BOOL)px_isScrolledAtEdge:(unsigned int)arg1 tolerance:(double)arg2;
 - (void)px_scrollToContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;

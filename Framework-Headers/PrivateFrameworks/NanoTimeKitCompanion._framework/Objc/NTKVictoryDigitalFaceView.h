@@ -12,6 +12,7 @@
 {
     NTKUtilityComplicationFactory *_utilityComplicationFactory;
     UIColor *_complicationForegroundColor;
+    UIColor *_complicationPlatterColor;
     NTKComplicationDisplayWrapperView *_logoWrapperView;
     struct CGPoint _logoPlatterCenter;
     double _currentLogoPlatterXOffset;
@@ -19,9 +20,10 @@
 
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1;
 + (id)_swatchImageForColorOption:(id)arg1;
-+ (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void).cxx_destruct;
-- (void)_applyColor:(id)arg1 toComplicationView:(id)arg2;
+- (id)_additionalPrelaunchApplicationIdentifiers;
+- (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
+- (void)_applyColor:(id)arg1 platterColor:(id)arg2 toComplicationView:(id)arg3;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
@@ -52,6 +54,7 @@
 - (void)_scrubToDate:(id)arg1 animated:(BOOL)arg2;
 - (void)_setupLogoViews;
 - (BOOL)_supportsTimeScrubbing;
+- (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (double)_timeAlphaForEditMode:(long long)arg1;
 - (double)_timeTravelStatusModuleCaptionConstraintPadding;
 - (void)_unloadSnapshotContentViews;

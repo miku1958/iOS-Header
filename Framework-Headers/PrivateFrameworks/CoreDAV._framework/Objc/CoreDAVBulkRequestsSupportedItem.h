@@ -14,7 +14,7 @@
 @property (strong, nonatomic) CoreDAVItem *supported; // @synthesize supported=_supported;
 
 + (id)copyParseRules;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 

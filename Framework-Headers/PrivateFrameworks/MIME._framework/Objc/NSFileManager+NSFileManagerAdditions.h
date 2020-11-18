@@ -15,6 +15,8 @@
 - (id)mf_pathsAtDirectory:(id)arg1 beginningWithString:(id)arg2;
 - (BOOL)mf_protectFileAtPath:(id)arg1 withClass:(int)arg2 error:(id *)arg3;
 - (BOOL)mf_setValue:(id)arg1 forExtendedAttribute:(id)arg2 ofItemAtPath:(id)arg3 error:(id *)arg4;
+- (long long)mf_sizeForDirectoryAtPath:(id)arg1 error:(id *)arg2;
+- (long long)mf_sizeForDirectoryAtURL:(id)arg1 error:(id *)arg2;
 - (id)mf_valueForExtendedAttribute:(id)arg1 ofItemAtPath:(id)arg2 error:(id *)arg3;
 @end
 

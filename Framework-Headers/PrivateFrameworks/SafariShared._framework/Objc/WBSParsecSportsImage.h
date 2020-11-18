@@ -13,11 +13,13 @@
     long long _alignment;
     WBSParsecImageRepresentation *_imageRepresentation;
     NSString *_label;
+    NSString *_name;
 }
 
 @property (readonly, nonatomic) long long alignment; // @synthesize alignment=_alignment;
 @property (readonly, nonatomic) WBSParsecImageRepresentation *imageRepresentation; // @synthesize imageRepresentation=_imageRepresentation;
 @property (readonly, copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 
 + (id)schema;
 - (void).cxx_destruct;

@@ -6,36 +6,34 @@
 
 #import <Foundation/NSProxy.h>
 
-@class CLIntersiloInterface, CLIntersiloInterfaceSelectorInfo, CLSilo;
+@class CLIntersiloInterface, CLSilo;
 @protocol CLIntersiloProxyDelegateProtocol;
 
 @interface CLIntersiloProxy : NSProxy
 {
-    CLIntersiloProxy *_peer;
-    CLIntersiloProxy *_asymStrongPeer;
-    CLIntersiloInterfaceSelectorInfo *_last;
-    unsigned long long _opaqueTag;
     id<CLIntersiloProxyDelegateProtocol> _delegate;
     CLSilo *_delegateSilo;
-    CLIntersiloInterface *_delegateInterface;
     CLIntersiloInterface *_proxiedInterface;
 }
 
 @property (readonly, weak, nonatomic) id<CLIntersiloProxyDelegateProtocol> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy, nonatomic) CLIntersiloInterface *delegateInterface; // @synthesize delegateInterface=_delegateInterface;
 @property (readonly, weak, nonatomic) CLSilo *delegateSilo; // @synthesize delegateSilo=_delegateSilo;
 @property (readonly, copy, nonatomic) CLIntersiloInterface *proxiedInterface; // @synthesize proxiedInterface=_proxiedInterface;
 
-+ (id)proxyForRecipientObject:(id)arg1 inSilo:(id)arg2 withInboundInterface:(id)arg3 andOutboundInterface:(id)arg4;
++ (Class)initiatorRepresentingClass;
++ (id)proxyForRecipientObject:(id)arg1 inSilo:(id)arg2 recipientName:(id)arg3 withInboundInterface:(id)arg4 andOutboundInterface:(id)arg5;
++ (Class)recipientRepresentingClass;
 - (void).cxx_destruct;
 - (BOOL)conformsToProtocol:(id)arg1;
 - (id)description;
 - (void)forwardInvocation:(id)arg1;
-- (id)initWithDelegateInterface:(id)arg1 proxiedInterface:(id)arg2 andUninitializedPeer:(id)arg3;
-- (id)initWithDelegateInterface:(id)arg1 proxiedInterface:(id)arg2 delegateObject:(id)arg3 delegateSilo:(id)arg4 andUninitializedPeer:(id)arg5;
+- (id)initWithProxiedInterface:(id)arg1;
+- (id)initWithProxiedInterface:(id)arg1 delegateObject:(id)arg2 delegateSilo:(id)arg3;
 - (id)methodSignatureForSelector:(SEL)arg1;
+- (BOOL)offsiloHandleInvocation:(id)arg1 selectorInfo:(id)arg2 peer:(id)arg3;
+- (id)peer;
 - (void)registerDelegate:(id)arg1 inSilo:(id)arg2;
-- (void)setOpaqueTag:(void *)arg1;
+- (void)setDelegateEntityName:(const char *)arg1;
 
 @end
 

@@ -7,6 +7,8 @@
 @class HKGraphSeries;
 
 @protocol HKSeriesDelegate
-- (void)seriesDidInvalidatePaths:(HKGraphSeries *)arg1;
+- (void)seriesDidInvalidatePaths:(HKGraphSeries *)arg1 newDataArrived:(BOOL)arg2;
+- (BOOL)seriesDrawingDuringScrolling;
+- (struct UIEdgeInsets)virtualMarginInsets;
 @end
 

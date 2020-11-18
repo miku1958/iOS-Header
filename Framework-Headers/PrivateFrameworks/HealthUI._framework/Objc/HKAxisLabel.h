@@ -10,17 +10,19 @@
 
 @interface HKAxisLabel : NSObject
 {
-    BOOL _isMajorTick;
     NSString *_text;
     id _location;
+    long long _labelType;
 }
 
-@property (nonatomic) BOOL isMajorTick; // @synthesize isMajorTick=_isMajorTick;
+@property (nonatomic) long long labelType; // @synthesize labelType=_labelType;
 @property (strong, nonatomic) id location; // @synthesize location=_location;
 @property (strong, nonatomic) NSString *text; // @synthesize text=_text;
 
 - (void).cxx_destruct;
 - (id)description;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

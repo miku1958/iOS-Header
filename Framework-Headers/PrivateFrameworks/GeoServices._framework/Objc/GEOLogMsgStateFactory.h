@@ -4,13 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+@class NSString;
+@protocol OS_dispatch_queue;
 
 @interface GEOLogMsgStateFactory : NSObject
 {
+    NSString *_carrierOperatorName;
+    BOOL _cellularDataUsageAllowedForMaps;
+    BOOL _hasCellularDataUsageAllowedForMaps;
+    NSObject<OS_dispatch_queue> *_coreTelephonyIsolationQueue;
+    NSObject<OS_dispatch_queue> *_subscriptionIsolation;
+    unsigned long long _numberOfExplicitSubscriptions;
 }
 
+@property (readonly, nonatomic) NSString *carrierOperatorName;
+@property (readonly, nonatomic, getter=isCellularDataUsageAllowedForDevice) BOOL cellularDataUsageAllowedForDevice;
+@property (readonly, nonatomic, getter=isCellularDataUsageAllowedForMaps) BOOL cellularDataUsageAllowedForMaps;
+
++ (BOOL)deviceHasRadio;
 + (id)sharedInstance;
+- (void).cxx_destruct;
+- (void)_connectToCoreTelephonyServer;
+- (void)_retrieveCarrierOperatorName;
+- (void)_retrieveCellularDataUsagePolicyForMaps;
+- (void)_updateCarrierOperatorName;
+- (void)_updateCellularDataAllowedForMapsSetting;
+- (int)cellularDataState;
 - (void)dealloc;
 - (id)init;
 - (id)logMsgStateForCarPlayWithIsConnected:(BOOL)arg1 carInfo:(id)arg2;
@@ -23,6 +44,7 @@
 - (id)logMsgStateForMapSettingsWithStateOrigin:(id)arg1 prefferedTransportMode:(int)arg2 avoidTolls:(BOOL)arg3 avoidHighways:(BOOL)arg4 headingEnabled:(BOOL)arg5 speedLimitEnabled:(BOOL)arg6 navVoiceVolume:(int)arg7 pauseSpokenAudioEnabled:(BOOL)arg8 findMyCarEnabled:(BOOL)arg9 trafficEnabled:(BOOL)arg10 labelEnabled:(BOOL)arg11;
 - (id)logMsgStateForMapViewLocationWithLocationBucket:(int)arg1 currentLocationInViewport:(BOOL)arg2;
 - (id)logMsgStateForMapViewLocationWithStateOrigin:(id)arg1 locationBucket:(int)arg2 currentLocationInViewport:(BOOL)arg3;
+- (id)logMsgStateForMapViewLocationWithTouristInfo:(BOOL)arg1;
 - (id)logMsgStateForMapViewWithMapRegion:(id)arg1 zoomLevel:(double)arg2 mapType:(int)arg3;
 - (id)logMsgStateForMapViewWithStateOrigin:(id)arg1 mapRegion:(id)arg2 zoomLevel:(double)arg3 mapType:(int)arg4;
 - (id)logMsgStateForMapsServerWithMapsResultsDisplayed:(id)arg1;
@@ -44,6 +66,7 @@
 - (id)logMsgStateForPlaceCardWithStateOrigin:(id)arg1 placeActionDetails:(id)arg2 placeCardType:(int)arg3 mapItemCategory:(id)arg4 actionableActions:(id)arg5 unactionableUIElements:(id)arg6;
 - (id)logMsgStateForPlaceRequestWithRequestType:(int)arg1 request:(id)arg2;
 - (id)logMsgStateForPlaceRequestWithStateOrigin:(id)arg1 requestType:(int)arg2 request:(id)arg3;
+- (id)logMsgStateForRealtimeTrafficProbeCollectionWithTripId:(id)arg1 probeCount:(unsigned long long)arg2 recvTime:(id)arg3;
 - (id)logMsgStateForReportAnIssueWithSelectedIndex:(unsigned int)arg1;
 - (id)logMsgStateForRidesharingWithNumberOfAppsInstalled:(unsigned long long)arg1 enabled:(unsigned long long)arg2;
 - (id)logMsgStateForRouteWithRouteDetails:(id)arg1;
@@ -55,7 +78,7 @@
 - (id)logMsgStateForTileSetWithTileSetInfoArray:(id)arg1;
 - (id)logMsgStateForTransitWithStateOrigin:(id)arg1 transitNotAvailableAdvisoryShowing:(BOOL)arg2;
 - (id)logMsgStateForTransitWithTransitNotAvailableAdvisoryShowing:(BOOL)arg1;
-- (id)logMsgStateForUserSessionWithSessionType:(unsigned long long)arg1 isNavSessionAllowed:(BOOL)arg2;
+- (id)logMsgStateForUserSessionWithSessionType:(unsigned long long)arg1 isNavSessionAllowed:(BOOL)arg2 userSessionSnapshot:(id)arg3;
 
 @end
 

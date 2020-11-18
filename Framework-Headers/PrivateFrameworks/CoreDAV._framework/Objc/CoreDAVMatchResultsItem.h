@@ -22,7 +22,7 @@
 @property (strong, nonatomic) CoreDAVLeafItem *region; // @synthesize region=_region;
 
 + (id)copyParseRules;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 
 @end

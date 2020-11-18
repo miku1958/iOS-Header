@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 sharedResources:(id)arg4 labelExternalObjectsModerator:(struct LabelExternalObjectsModerator *)arg5 transitLineSharedResources:(const shared_ptr_f4e206f4 *)arg6;
-- (unsigned long long)mapLayerForZoomLevelRange;
+- (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 sharedResources:(id)arg4 taskContext:(shared_ptr_e963992e)arg5 labelExternalObjectsModerator:(struct LabelExternalObjectsModerator *)arg6 transitLineSharedResources:(const shared_ptr_f4e206f4 *)arg7;
+- (unsigned char)mapLayerForZoomLevelRange;
 - (id)tileForData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3;
 
 @end

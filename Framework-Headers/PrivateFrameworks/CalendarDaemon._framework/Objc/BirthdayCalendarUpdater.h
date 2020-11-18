@@ -8,7 +8,6 @@
 
 @class ACAccountStore, NSMutableDictionary, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BirthdayCalendarUpdater : NSOperation
 {
     struct CalDatabase *_database;
@@ -21,6 +20,7 @@ __attribute__((visibility("hidden")))
     long long _defaultAlarmOffset;
 }
 
++ (id)_dateFromBirthdayComponents:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_areNormalizedBirthdaysTheSame:(id)arg1 birthday2:(id)arg2;
 - (id)_birthdayCalendarForCalendarScale:(id)arg1;
@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)main;
 - (void *)newBirthdayEventForBirthday:(id)arg1 andPerson:(void *)arg2;
-- (void)setBirthday:(id)arg1 forEvent:(void *)arg2;
+- (BOOL)setBirthday:(id)arg1 forEvent:(void *)arg2;
 
 @end
 

@@ -19,7 +19,10 @@
 @property (readonly, nonatomic) BOOL requiresBillingAddress;
 
 + (long long)dataType;
+- (id)errors;
+- (BOOL)hasAssociatedPeerPaymentAccount;
 - (BOOL)isValidWithError:(id *)arg1;
+- (id)peerPaymentAccountBalance;
 
 @end
 

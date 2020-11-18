@@ -18,11 +18,11 @@
 @property (strong, nonatomic) NSMutableArray *targetLayouts; // @synthesize targetLayouts=_targetLayouts;
 
 + (Class)targetLayoutType;
+- (void).cxx_destruct;
 - (void)addTargetLayout:(id)arg1;
 - (void)clearTargetLayouts;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

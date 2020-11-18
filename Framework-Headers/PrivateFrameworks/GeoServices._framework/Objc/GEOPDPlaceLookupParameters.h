@@ -8,23 +8,32 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEOPDPlaceLookupParameters : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
     CDStruct_62a50c50 _muids;
+    NSMutableArray *_identifiers;
     int _resultProviderId;
-    CDStruct_08086d5c _has;
+    BOOL _enablePartialClientization;
+    CDStruct_2527025c _has;
 }
 
+@property (nonatomic) BOOL enablePartialClientization; // @synthesize enablePartialClientization=_enablePartialClientization;
+@property (nonatomic) BOOL hasEnablePartialClientization;
 @property (nonatomic) BOOL hasResultProviderId;
+@property (strong, nonatomic) NSMutableArray *identifiers;
 @property (readonly, nonatomic) unsigned long long *muids;
 @property (readonly, nonatomic) unsigned long long muidsCount;
 @property (nonatomic) int resultProviderId; // @synthesize resultProviderId=_resultProviderId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)identifierType;
+- (void).cxx_destruct;
+- (void)addIdentifier:(id)arg1;
 - (void)addMuid:(unsigned long long)arg1;
+- (void)clearIdentifiers;
 - (void)clearMuids;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -32,7 +41,9 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
-- (id)initWithMUIDs:(id)arg1 resultProviderID:(int)arg2;
+- (id)identifierAtIndex:(unsigned long long)arg1;
+- (unsigned long long)identifiersCount;
+- (id)initWithIdentifiers:(id)arg1 resultProviderID:(int)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)muidAtIndex:(unsigned long long)arg1;

@@ -6,11 +6,12 @@
 
 #import <SAObjects/AceObject.h>
 
+#import <SiriClientFlow/CFLocalAceHandling-Protocol.h>
 #import <SiriClientFlow/SAAceSerializable-Protocol.h>
 
 @class NSNumber, NSString;
 
-@interface CFDDDataDetectorResult : AceObject <SAAceSerializable>
+@interface CFDDDataDetectorResult : AceObject <SAAceSerializable, CFLocalAceHandling>
 {
 }
 
@@ -23,9 +24,9 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *value;
 
++ (id)aceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)dataDetectorResult;
 + (id)dataDetectorResultWithDictionary:(id)arg1 context:(id)arg2;
-+ (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

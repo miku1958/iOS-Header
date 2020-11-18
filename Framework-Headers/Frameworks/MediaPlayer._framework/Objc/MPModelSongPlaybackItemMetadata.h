@@ -38,7 +38,6 @@
 - (id)localFileAsset;
 - (id)mediaItem;
 - (id)modelGenericObject;
-- (id)mqf_playbackItemMetadataModelObject;
 - (id)playbackPosition;
 - (BOOL)showComposer;
 - (long long)storeAdamID;

@@ -9,7 +9,7 @@
 #import <SAObjects/SABackgroundContextObject-Protocol.h>
 #import <SAObjects/SAServerBoundCommand-Protocol.h>
 
-@class NSString, SALocalSearchAceNavigationEta, SALocalSearchRoute;
+@class NSString, SALocalSearchAceNavigationEta, SALocalSearchMapItem, SALocalSearchMapItemList, SALocalSearchRoute;
 
 @interface SALocalSearchGetNavigationStatusCompleted : SABaseCommand <SAServerBoundCommand, SABackgroundContextObject>
 {
@@ -18,9 +18,11 @@
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) SALocalSearchMapItem *destination;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SALocalSearchAceNavigationEta *nextManeuverEta;
 @property (strong, nonatomic) SALocalSearchAceNavigationEta *overallEta;
+@property (strong, nonatomic) SALocalSearchMapItemList *predictedDestinations;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (strong, nonatomic) SALocalSearchRoute *route;
 @property (readonly) Class superclass;
@@ -31,6 +33,7 @@
 + (id)getNavigationStatusCompletedWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)requiresResponse;
 
 @end
 

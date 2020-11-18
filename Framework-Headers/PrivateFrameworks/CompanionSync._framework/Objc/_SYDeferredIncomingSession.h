@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, NSURL;
+@class IDSMessageContext, NSDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface _SYDeferredIncomingSession : NSObject
@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
     NSURL *_resourceURL;
     NSString *_identifier;
     NSDictionary *_metadata;
+    IDSMessageContext *_idsContext;
 }
 
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) IDSMessageContext *idsContext; // @synthesize idsContext=_idsContext;
 @property (strong, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (copy, nonatomic) NSURL *resourceURL; // @synthesize resourceURL=_resourceURL;
 

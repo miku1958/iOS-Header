@@ -6,19 +6,26 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class NSNumber;
 
-@interface CKAssetTransferOptions : NSObject <NSSecureCoding>
+@interface CKAssetTransferOptions : NSObject <NSCopying, NSSecureCoding>
 {
     NSNumber *_sparseAware;
+    NSNumber *_shouldFetchAssetContent;
+    NSNumber *_shouldFetchAssetContentInMemory;
 }
 
-@property (nonatomic) NSNumber *sparseAware; // @synthesize sparseAware=_sparseAware;
+@property (copy, nonatomic) NSNumber *shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
+@property (copy, nonatomic) NSNumber *shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
+@property (copy, nonatomic) NSNumber *sparseAware; // @synthesize sparseAware=_sparseAware;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)CKPropertiesDescription;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

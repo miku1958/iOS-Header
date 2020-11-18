@@ -11,16 +11,17 @@ __attribute__((visibility("hidden")))
 {
     unsigned int _used:58;
     unsigned int _szidx:6;
+    id _list[0];
 }
 
-+ (id)__new:(const id *)arg1:(unsigned long long)arg2:(BOOL)arg3;
++ (id)__new:(const id *)arg1:(struct __va_list_tag [1])arg2:(unsigned long long)arg3:(BOOL)arg4;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (double)clumpingFactor;
 - (double)clumpingInterestingThreshold;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_58648341 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)getObjects:(id *)arg1 count:(unsigned long long)arg2;

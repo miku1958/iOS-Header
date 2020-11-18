@@ -30,17 +30,24 @@
 + (void)__itemAtURL:(id)arg1 didMoveToURL:(id)arg2 purposeID:(id)arg3;
 + (void)__itemAtURL:(id)arg1 didReconnectWithPurposeID:(id)arg2;
 + (void)__itemAtURL:(id)arg1 didResolveConflictVersionWithClientID:(id)arg2 name:(id)arg3 purposeID:(id)arg4;
-+ (void)_accessProcessIdentifiersUsingBlock:(CDUnknownBlockType)arg1;
++ (void)_accessPresenterInfoUsingBlock:(CDUnknownBlockType)arg1;
 + (void)_addFileProvider:(id)arg1;
 + (void)_addFileProvider:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-+ (void)_addProcessIdentifier:(int)arg1 forID:(id)arg2;
++ (void)_addProcessIdentifier:(int)arg1 observedUbiquityAttributes:(id)arg2 forID:(id)arg3;
 + (id)_canonicalURLForURL:(id)arg1;
 + (id)_createConnectionToFileAccessArbiterForQueue:(id)arg1;
 + (id)_createConnectionToProgressRegistrar;
++ (id)_createIdentifierForNewClaim;
++ (id)_currentClaimPurposeIdentifier;
 + (id)_currentFileCoordinator;
 + (id)_fileAccessArbiterInterface;
++ (id)_filePresenterInterface;
++ (id)_fileProviderInterface;
 + (id)_fileProviders;
 + (void)_getDebugInfoWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (BOOL)_itemHasPresentersAtURL:(id)arg1;
++ (id)_nextClaimIdentifier;
++ (id)_observedUbiquityAttributesForPresenterWithID:(id)arg1;
 + (void)_performBarrier;
 + (void)_performBarrierAsync:(CDUnknownBlockType)arg1;
 + (void)_printDebugInfo;
@@ -48,8 +55,10 @@
 + (BOOL)_provideRecursively;
 + (unsigned long long)_readingOptions;
 + (void)_removeFileProvider:(id)arg1;
-+ (void)_removeProcessIdentifierForID:(id)arg1;
++ (void)_removeInfoForID:(id)arg1;
 + (unsigned long long)_responsesForPresenter:(id)arg1;
++ (void)_setCurrentClaimPurposeIdentifier:(id)arg1;
++ (void)_setNextClaimIdentifier:(id)arg1;
 + (void)_setReadingOptions:(unsigned long long)arg1;
 + (BOOL)_skipCoordinationWork;
 + (void)_startInProcessFileCoordinationAndProgressServers;
@@ -63,6 +72,7 @@
 - (void)__coordinateWritingItemAtURL:(id)arg1 options:(unsigned long long)arg2 writingItemAtURL:(id)arg3 options:(unsigned long long)arg4 purposeID:(id)arg5 byAccessor:(CDUnknownBlockType)arg6;
 - (void)__prepareForReadingItemsAtURLs:(id)arg1 options:(unsigned long long)arg2 writingItemsAtURLs:(id)arg3 options:(unsigned long long)arg4 byAccessor:(CDUnknownBlockType)arg5;
 - (void)_blockOnAccessClaim:(id)arg1 withAccessArbiter:(id)arg2;
+- (void)_cancelClaimWithIdentifier:(id)arg1;
 - (void)_coordinateAccessWithIntents:(id)arg1 queue:(id)arg2 byAccessor:(CDUnknownBlockType)arg3;
 - (void)_coordinateReadingItemAtURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3 byAccessor:(CDUnknownBlockType)arg4;
 - (void)_coordinateReadingItemAtURL:(id)arg1 options:(unsigned long long)arg2 writingItemAtURL:(id)arg3 options:(unsigned long long)arg4 error:(id *)arg5 byAccessor:(CDUnknownBlockType)arg6;
@@ -71,6 +81,7 @@
 - (void)_didEndWrite:(id)arg1;
 - (void)_forgetAccessClaimForID:(id)arg1;
 - (void)_invokeAccessor:(CDUnknownBlockType)arg1 thenCompletionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)_isValidUbiquityAttribute:(id)arg1;
 - (void)_itemAtURL:(id)arg1 didMoveToURL:(id)arg2;
 - (void)_itemAtURL:(id)arg1 willMoveToURL:(id)arg2;
 - (void)_itemDidChangeAtURL:(id)arg1;
@@ -92,11 +103,13 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithFilePresenter:(id)arg1;
+- (void)itemAtURL:(id)arg1 didChangeUbiquityAttributes:(id)arg2;
 - (void)itemAtURL:(id)arg1 didMoveToURL:(id)arg2;
 - (void)itemAtURL:(id)arg1 willMoveToURL:(id)arg2;
 - (void)prepareForReadingItemsAtURLs:(id)arg1 options:(unsigned long long)arg2 writingItemsAtURLs:(id)arg3 options:(unsigned long long)arg4 error:(id *)arg5 byAccessor:(CDUnknownBlockType)arg6;
 - (void)releaseAccess:(id)arg1;
 - (id)retainAccess;
+- (void)sharingDidChangeForItemAtURL:(id)arg1;
 
 @end
 

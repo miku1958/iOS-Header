@@ -32,7 +32,7 @@
 
 + (Class)_accountClassForAddress:(id)arg1;
 + (id)_domainFromAddress:(id)arg1;
-+ (BOOL)_isRemovedSystemApplication:(id)arg1;
++ (BOOL)_isInstalledSystemApplication:(id)arg1;
 + (id)_usernameFromAddress:(id)arg1;
 + (BOOL)canAutoSetupMailAccount:(id)arg1;
 + (BOOL)needSetupForMailAccount:(id)arg1;

@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CLGeocoder, NSArray, NSMutableDictionary, NSSet, PLMomentNodeCache;
 
 @interface PLMomentClustering : NSObject
 {
+    BOOL _hasLocationsOfInterestInformation;
     BOOL _dirty;
     BOOL _shouldApplyUserInfluenceBeforeClustering;
+    BOOL _shouldRunUserInfluence;
     BOOL _accumulatesSmallClusters;
     BOOL _spatialJoinsAdjacentClusters;
+    NSArray *_locationsOfInterest;
     CDUnknownBlockType _progressBlock;
     NSArray *_clusters;
     NSSet *_insertedClusters;
@@ -55,10 +58,13 @@
 @property (copy, nonatomic, setter=_setClusters:) NSArray *clusters; // @synthesize clusters=_clusters;
 @property (copy, nonatomic, setter=_setDeletedClusters:) NSSet *deletedClusters; // @synthesize deletedClusters=_deletedClusters;
 @property (nonatomic, getter=isDirty, setter=_setDirty:) BOOL dirty; // @synthesize dirty=_dirty;
+@property (nonatomic) BOOL hasLocationsOfInterestInformation; // @synthesize hasLocationsOfInterestInformation=_hasLocationsOfInterestInformation;
 @property (readonly, nonatomic) BOOL hasMarkedNodes;
 @property (copy, nonatomic, setter=_setInsertedClusters:) NSSet *insertedClusters; // @synthesize insertedClusters=_insertedClusters;
+@property (strong, nonatomic) NSArray *locationsOfInterest; // @synthesize locationsOfInterest=_locationsOfInterest;
 @property (copy, nonatomic) CDUnknownBlockType progressBlock; // @synthesize progressBlock=_progressBlock;
 @property (nonatomic) BOOL shouldApplyUserInfluenceBeforeClustering; // @synthesize shouldApplyUserInfluenceBeforeClustering=_shouldApplyUserInfluenceBeforeClustering;
+@property (nonatomic) BOOL shouldRunUserInfluence; // @synthesize shouldRunUserInfluence=_shouldRunUserInfluence;
 @property (nonatomic) double sigma; // @synthesize sigma=_sigma;
 @property (nonatomic) double spatialJoinThreshold; // @synthesize spatialJoinThreshold=_spatialJoinThreshold;
 @property (nonatomic) double spatialJoinTimeInterval; // @synthesize spatialJoinTimeInterval=_spatialJoinTimeInterval;
@@ -69,6 +75,7 @@
 + (double)maximumClusterTime;
 - (id)_clustersByMergingUserInfluencedClusters:(id)arg1;
 - (id)_clustersBySplittingUserInfluencedClusters:(id)arg1;
+- (id)_clustersSplitByLocationsOfInterest:(id)arg1;
 - (void)_commonPLMomentClusteringManagerInitialization;
 - (id)accumulateSmallClustersFromClusters:(id)arg1;
 - (id)clustersByApplyingUserInfluenceToClusters:(id)arg1;
@@ -81,6 +88,8 @@
 - (void)markNodeForDiagnosis:(id)arg1;
 - (id)neighborsOfNode:(id)arg1;
 - (id)neighborsOfTaggedNode:(id)arg1;
+- (double)smallestDistanceBetweenMomentNode:(id)arg1 andCluster:(id)arg2;
+- (double)smallestDurationBetweenMomentNode:(id)arg1 andCluster:(id)arg2;
 - (id)spatialJoinClustersFromClusters:(id)arg1;
 - (id)temporalSnapshotOfNode:(id)arg1 withRange:(double)arg2;
 

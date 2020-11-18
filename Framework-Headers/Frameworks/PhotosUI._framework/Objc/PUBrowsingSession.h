@@ -9,10 +9,12 @@
 #import <PhotosUI/PUAssetActionManagerDelegate-Protocol.h>
 #import <PhotosUI/PUAssetsDataSourceManagerDelegate-Protocol.h>
 #import <PhotosUI/PULoadingStatusManagerDelegate-Protocol.h>
+#import <PhotosUI/PXAssetEditOperationManagerObserver-Protocol.h>
+#import <PhotosUI/PXAutoloopSchedulerDelegate-Protocol.h>
 
-@class NSString, PUAssetActionManager, PUAssetsDataSourceManager, PUBrowsingViewModel, PUContentTileProvider, PULoadingStatusManager, PUMediaProvider, PUTileAnimator, PXPhotosDetailsContext;
+@class NSString, PUAssetActionManager, PUAssetsDataSourceManager, PUBrowsingViewModel, PUContentTileProvider, PULoadingStatusManager, PUMediaProvider, PUTileAnimator, PXAssetEditOperationManager, PXPhotosDetailsContext;
 
-@interface PUBrowsingSession : NSObject <PUAssetsDataSourceManagerDelegate, PUAssetActionManagerDelegate, PULoadingStatusManagerDelegate>
+@interface PUBrowsingSession : NSObject <PUAssetsDataSourceManagerDelegate, PUAssetActionManagerDelegate, PULoadingStatusManagerDelegate, PXAssetEditOperationManagerObserver, PXAutoloopSchedulerDelegate>
 {
     BOOL _active;
     PUAssetsDataSourceManager *_dataSourceManager;
@@ -22,6 +24,7 @@
     PUContentTileProvider *_contentTileProvider;
     PULoadingStatusManager *_loadingStatusManager;
     PXPhotosDetailsContext *_photosDetailsContext;
+    PXAssetEditOperationManager *_editOperationManager;
     PUTileAnimator *_tileAnimator;
 }
 
@@ -31,6 +34,7 @@
 @property (readonly, nonatomic) PUAssetsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) PXAssetEditOperationManager *editOperationManager; // @synthesize editOperationManager=_editOperationManager;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PULoadingStatusManager *loadingStatusManager; // @synthesize loadingStatusManager=_loadingStatusManager;
 @property (strong, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
@@ -41,6 +45,9 @@
 
 - (void).cxx_destruct;
 - (id)assetActionManagerCurrentAssetsDataSource:(id)arg1;
+- (void)assetEditOperationManager:(id)arg1 didChangeEditOperationStatusForAsset:(id)arg2 context:(void *)arg3;
+- (void)assetEditOperationManager:(id)arg1 didChangeEditOperationsPerformedOnAsset:(id)arg2 context:(void *)arg3;
+- (id)assetUUIDToFavorizeForAutoloopScheduler:(id)arg1;
 - (void)assetsDataSourceManager:(id)arg1 didChangeAssetsDataSource:(id)arg2;
 - (id)assetsDataSourceManagerInterestingAssetReferences:(id)arg1;
 - (void)configureTilingView:(id)arg1;

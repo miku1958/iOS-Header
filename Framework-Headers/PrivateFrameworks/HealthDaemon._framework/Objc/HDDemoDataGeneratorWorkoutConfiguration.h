@@ -23,20 +23,30 @@
     double _distanceWalkingRateInMiles;
     double _distanceCyclingRateInMiles;
     double _distanceSwimmingRateInYards;
-    double _lapSwimmingTime;
+    double _distanceSwimmingSegmentInYards;
+    long long _numSwimmingSegments;
+    long long _swimmingNumLapsPerSegment;
+    double _swimmingSwimSegmentTime;
+    double _swimmingRestSegmentTime;
+    long long _swimmingStrokeStyle;
 }
 
 @property (nonatomic) unsigned long long activityType; // @synthesize activityType=_activityType;
 @property (nonatomic) double distanceCyclingRateInMiles; // @synthesize distanceCyclingRateInMiles=_distanceCyclingRateInMiles;
 @property (nonatomic) double distanceSwimmingRateInYards; // @synthesize distanceSwimmingRateInYards=_distanceSwimmingRateInYards;
+@property (nonatomic) double distanceSwimmingSegmentInYards; // @synthesize distanceSwimmingSegmentInYards=_distanceSwimmingSegmentInYards;
 @property (nonatomic) double distanceWalkingRateInMiles; // @synthesize distanceWalkingRateInMiles=_distanceWalkingRateInMiles;
 @property (nonatomic) double endTime; // @synthesize endTime=_endTime;
 @property (strong, nonatomic) HKQuantity *goal; // @synthesize goal=_goal;
 @property (nonatomic) unsigned long long goalType; // @synthesize goalType=_goalType;
 @property (nonatomic) BOOL indoor; // @synthesize indoor=_indoor;
 @property (nonatomic) double kcalRate; // @synthesize kcalRate=_kcalRate;
-@property (nonatomic) double lapSwimmingTime; // @synthesize lapSwimmingTime=_lapSwimmingTime;
+@property (nonatomic) long long numSwimmingSegments; // @synthesize numSwimmingSegments=_numSwimmingSegments;
 @property (nonatomic) double startTime; // @synthesize startTime=_startTime;
+@property (nonatomic) long long swimmingNumLapsPerSegment; // @synthesize swimmingNumLapsPerSegment=_swimmingNumLapsPerSegment;
+@property (nonatomic) double swimmingRestSegmentTime; // @synthesize swimmingRestSegmentTime=_swimmingRestSegmentTime;
+@property (nonatomic) long long swimmingStrokeStyle; // @synthesize swimmingStrokeStyle=_swimmingStrokeStyle;
+@property (nonatomic) double swimmingSwimSegmentTime; // @synthesize swimmingSwimSegmentTime=_swimmingSwimSegmentTime;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

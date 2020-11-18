@@ -7,7 +7,7 @@
 #import <Foundation/NSObject.h>
 
 @class NSCache, NSString;
-@protocol MPArtworkDataSource, NSCopying;
+@protocol MPArtworkDataSource, MPArtworkDataSourceVisualIdenticality;
 
 @interface MPArtworkCatalog : NSObject
 {
@@ -38,7 +38,7 @@
 @property (weak, nonatomic) id requestingContext; // @synthesize requestingContext=_requestingContext;
 @property (readonly, nonatomic) struct CGSize scaledFittingSize;
 @property (strong, nonatomic) id token; // @synthesize token=_token;
-@property (readonly, nonatomic) id<NSCopying> visualIdenticalityIdentifier;
+@property (readonly, nonatomic) id<MPArtworkDataSourceVisualIdenticality> visualIdenticalityIdentifier;
 
 + (id)_artworkCacheForIdentifier:(id)arg1 requestingContext:(id)arg2;
 + (id)_artworkLoadQueue;
@@ -58,6 +58,7 @@
 - (BOOL)isArtworkVisuallyIdenticalToCatalog:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)requestColorAnalysisWithAlgorithm:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)requestExportableArtworkURLWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestFocusRegionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestImageWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestRadiosityImageWithCompletionHandler:(CDUnknownBlockType)arg1;

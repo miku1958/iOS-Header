@@ -8,7 +8,7 @@
 
 #import <UIKit/UIApplicationSceneClientSettings-Protocol.h>
 
-@class NSString;
+@class FBSDisplayMode, NSString;
 
 @interface UIApplicationSceneClientSettings : FBSSceneClientSettings <UIApplicationSceneClientSettings>
 {
@@ -16,6 +16,7 @@
 
 @property (readonly, nonatomic) long long backgroundStyle;
 @property (readonly, nonatomic) long long compatibilityMode;
+@property (readonly, nonatomic) double controlCenterAmbiguousActivationMargin;
 @property (readonly, nonatomic) long long controlCenterRevealMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) double defaultPNGExpirationTime;
@@ -25,19 +26,26 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL deviceOrientationEventsEnabled;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL homeIndicatorAutoHidden;
 @property (readonly, nonatomic) BOOL idleModeVisualEffectsEnabled;
 @property (readonly, nonatomic) BOOL idleTimerDisabled;
 @property (readonly, nonatomic) long long interfaceOrientation;
 @property (readonly, nonatomic) BOOL interfaceOrientationChangesDisabled;
 @property (readonly, nonatomic) long long notificationCenterRevealMode;
+@property (readonly, nonatomic) long long overscanCompensation;
 @property (readonly, nonatomic) struct UIEdgeInsets primaryWindowOverlayInsets;
 @property (readonly, nonatomic) unsigned long long proximityDetectionModes;
+@property (readonly, nonatomic, getter=isReachabilitySupported) BOOL reachabilitySupported;
+@property (readonly, nonatomic) FBSDisplayMode *requestedDisplayMode;
+@property (readonly, nonatomic) unsigned long long screenEdgesDeferringSystemGestures;
 @property (readonly, nonatomic) unsigned int statusBarContextID;
 @property (readonly, nonatomic, getter=isStatusBarForegroundTransparent) BOOL statusBarForegroundTransparent;
 @property (readonly, nonatomic) BOOL statusBarHidden;
 @property (readonly, nonatomic) long long statusBarStyle;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long supportedInterfaceOrientations;
+@property (readonly, nonatomic) long long userInterfaceStyle;
+@property (readonly, nonatomic) BOOL wantsExclusiveForeground;
 @property (readonly, nonatomic) long long whitePointAdaptivityStyle;
 
 - (BOOL)isUISubclass;

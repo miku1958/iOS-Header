@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class MISSING_TYPE;
+
 #pragma mark Function Pointers and Blocks
 
 typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
@@ -85,11 +87,24 @@ struct CGSize {
     double height;
 };
 
-struct OpaqueFigPlaylist;
-
-struct OpaqueFigPlaylistItem;
+struct OpaqueFigSimpleMutex;
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
+
+typedef struct {
+    MISSING_TYPE *columns[3];
+} CDStruct_8e0628e6;
+
+typedef struct {
+    MISSING_TYPE *columns[4];
+} CDStruct_14d5dc5e;
 
 typedef struct {
     double left;
@@ -130,14 +145,6 @@ typedef struct {
     CDStruct_1b6d18a9 start;
     CDStruct_1b6d18a9 duration;
 } CDStruct_e83c9415;
-
-typedef struct {
-    int _field1;
-    union {
-        struct OpaqueFigPlaylist *_field1;
-        struct OpaqueFigPlaylistItem *_field2;
-    } _field2;
-} CDStruct_2bd8379f;
 
 typedef struct {
     CDStruct_e83c9415 source;

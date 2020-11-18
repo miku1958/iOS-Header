@@ -31,20 +31,26 @@
     unsigned long long _flags;
     BOOL _isInvitationMessage;
     long long _messageID;
+    NSDictionary *_bizIntent;
+    NSString *_locale;
+    BOOL _isSOS;
     NSString *_associatedMessageGUID;
     long long _associatedMessageType;
     NSDictionary *_messageSummaryInfo;
+    NSString *_associatedBalloonBundleID;
     NSData *_customTypingIndicatorIcon;
     struct _NSRange _associatedMessageRange;
 }
 
 @property (readonly, nonatomic) IMMessageItem *_imMessageItem;
+@property (strong, nonatomic) NSString *associatedBalloonBundleID; // @synthesize associatedBalloonBundleID=_associatedBalloonBundleID;
 @property (readonly, copy, nonatomic) NSString *associatedMessageGUID;
 @property (copy, nonatomic, setter=_associatedMessageGUID:) NSString *associatedMessageGUID; // @synthesize associatedMessageGUID=_associatedMessageGUID;
 @property (nonatomic, setter=_associatedMessageRange:) struct _NSRange associatedMessageRange; // @synthesize associatedMessageRange=_associatedMessageRange;
 @property (readonly, nonatomic) long long associatedMessageType;
 @property (nonatomic, setter=_associatedMessageType:) long long associatedMessageType; // @synthesize associatedMessageType=_associatedMessageType;
 @property (strong, nonatomic) NSString *balloonBundleID; // @synthesize balloonBundleID=_balloonBundleID;
+@property (strong, nonatomic, setter=_updateBizIntent:) NSDictionary *bizIntent; // @synthesize bizIntent=_bizIntent;
 @property (strong, nonatomic) NSData *customTypingIndicatorIcon; // @synthesize customTypingIndicatorIcon=_customTypingIndicatorIcon;
 @property (strong, nonatomic, setter=_updateError:) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSString *expressiveSendStyleID; // @synthesize expressiveSendStyleID=_expressiveSendStyleID;
@@ -69,9 +75,11 @@
 @property (readonly, nonatomic) BOOL isLocatingMessage;
 @property (readonly, nonatomic) BOOL isPlayed;
 @property (readonly, nonatomic) BOOL isRead;
+@property (nonatomic) BOOL isSOS; // @synthesize isSOS=_isSOS;
 @property (readonly, nonatomic) BOOL isSent;
 @property (readonly, nonatomic) BOOL isSystemMessage;
 @property (readonly, nonatomic) BOOL isTypingMessage;
+@property (strong, nonatomic, setter=_updateLocale:) NSString *locale; // @synthesize locale=_locale;
 @property (nonatomic, setter=_updateMessageID:) long long messageID; // @synthesize messageID=_messageID;
 @property (readonly, nonatomic) NSAttributedString *messageSubject; // @synthesize messageSubject=_messageSubject;
 @property (readonly, copy, nonatomic) NSDictionary *messageSummaryInfo;
@@ -102,6 +110,7 @@
 + (id)instantMessageWithText:(id)arg1 messageSubject:(id)arg2 fileTransferGUIDs:(id)arg3 flags:(unsigned long long)arg4;
 + (id)instantMessageWithText:(id)arg1 messageSubject:(id)arg2 fileTransferGUIDs:(id)arg3 flags:(unsigned long long)arg4 balloonBundleID:(id)arg5 payloadData:(id)arg6 expressiveSendStyleID:(id)arg7;
 + (id)instantMessageWithText:(id)arg1 messageSubject:(id)arg2 flags:(unsigned long long)arg3;
++ (id)instantMessageWithText:(id)arg1 messageSubject:(id)arg2 flags:(unsigned long long)arg3 expressiveSendStyleID:(id)arg4;
 + (id)locatingMessageWithGuid:(id)arg1 error:(id)arg2;
 + (id)messageFromIMMessageItem:(id)arg1 sender:(id)arg2 subject:(id)arg3;
 + (id)messageFromIMMessageItemDictionary:(id)arg1 body:(id)arg2 sender:(id)arg3 subject:(id)arg4;

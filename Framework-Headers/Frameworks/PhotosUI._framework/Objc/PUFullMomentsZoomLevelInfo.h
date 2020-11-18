@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (struct UIEdgeInsets)_fillerViewInsetsForItemAtIndexPath:(id)arg1;
+- (void)_getDataForVisualSection:(long long)arg1 hasActionButton:(BOOL *)arg2 locations:(id *)arg3 title:(id *)arg4 startDate:(id *)arg5 endDate:(id *)arg6;
 - (void)_prepareTransitionImageContentForCell:(id)arg1 atIndexPath:(id)arg2 appearingZoomLevelInfo:(id)arg3;
 - (void)_prepareTransitionSubviewsForCell:(id)arg1 atIndexPath:(id)arg2 isAppearing:(BOOL)arg3;
 - (struct __CFString *)aggregateLevelKey;
@@ -41,11 +42,13 @@ __attribute__((visibility("hidden")))
 - (void)prepareForTransitionFromZoomLevelInfo:(id)arg1 animated:(BOOL)arg2 interactive:(BOOL)arg3;
 - (void)prepareForTransitionToZoomLevelInfo:(id)arg1 animated:(BOOL)arg2 interactive:(BOOL)arg3;
 - (id)sectionHeaderElementKind;
+- (double)sectionedGridLayout:(id)arg1 accessibilitySectionHeaderHeightForVisualSection:(long long)arg2;
 - (void)sectionedGridLayout:(id)arg1 didFinalizePrepareTransitionIsAppearing:(BOOL)arg2;
+- (double)sectionedGridLayout:(id)arg1 sectionHeaderHeightForVisualSection:(long long)arg2;
 - (BOOL)supportsEditMode;
 - (BOOL)supportsIncrementalChangeNotifications;
 - (struct CGSize)thumbnailImageSize;
-- (void)updateLayoutMetricsForWidth:(double)arg1;
+- (void)updateLayoutMetricsForWidth:(double)arg1 safeAreaInsets:(struct UIEdgeInsets)arg2;
 - (BOOL)wantsAssetCountsVisible;
 - (BOOL)wantsAutomaticContentOffsetAdjustment;
 - (BOOL)wantsCloudStatusVisible;

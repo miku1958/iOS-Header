@@ -36,7 +36,6 @@
     NSMutableSet *_filteringOids;
     NSMutableSet *_filteringObjectKeyPaths;
     NSMutableDictionary *_filteringRelationshipsIndexValueByBaseEntityName;
-    BOOL __includesTrashedObjects;
     BOOL __includesCameraRoll;
     PHFetchOptions *_fetchOptions;
     NSString *_fetchType;
@@ -45,7 +44,6 @@
 }
 
 @property (nonatomic, setter=_setIncludesCameraRoll:) BOOL _includesCameraRoll; // @synthesize _includesCameraRoll=__includesCameraRoll;
-@property (nonatomic, setter=_setIncludesTrashedObjects:) BOOL _includesTrashedObjects; // @synthesize _includesTrashedObjects=__includesTrashedObjects;
 @property (readonly) NSPredicate *basePredicate; // @synthesize basePredicate=_basePredicate;
 @property (readonly) id combinedQueryGroupKey;
 @property (readonly) NSString *combinedQueryKeyPath;
@@ -60,6 +58,7 @@
 @property (readonly) NSArray *seedOIDs; // @synthesize seedOIDs=_seedOIDs;
 
 + (id)_containerIdentifierForFetchType:(id)arg1 predicate:(id)arg2 outRelationship:(id *)arg3;
++ (id)_defaultFetchOptionsForIdentifiedAssetsQuery;
 + (id)_fetchOptionsForFetchingAssetsFromAssetCollection:(id)arg1 options:(id)arg2;
 + (id)_fetchTypeForLocalIdentifiers:(id)arg1;
 + (id)_filterPredicateFromFetchOptionsPredicate:(id)arg1 options:(id)arg2 phClass:(Class)arg3;
@@ -98,6 +97,8 @@
 + (id)queryForCollectionsInCollectionList:(id)arg1 options:(id)arg2;
 + (id)queryForCuratedAssetsInMemory:(id)arg1 options:(id)arg2;
 + (id)queryForCustomKeyAssetsInAssetCollection:(id)arg1 options:(id)arg2;
++ (id)queryForEmptyFaceGroupsWithOptions:(id)arg1;
++ (id)queryForExtendedCuratedAssetsInMemory:(id)arg1 options:(id)arg2;
 + (id)queryForFaceCropsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)queryForFaceCropsWithOptions:(id)arg1;
 + (id)queryForFaceGroupsForPerson:(id)arg1 options:(id)arg2;
@@ -105,16 +106,19 @@
 + (id)queryForFaceGroupsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)queryForFaceGroupsWithOptions:(id)arg1;
 + (id)queryForFacesForPerson:(id)arg1 options:(id)arg2;
++ (id)queryForFacesForPersonsAssociatedWithFaceGroupsContainingFacesWithClusterSequenceNumbers:(id)arg1 options:(id)arg2;
 + (id)queryForFacesInAsset:(id)arg1 options:(id)arg2;
 + (id)queryForFacesInFaceGroup:(id)arg1 options:(id)arg2;
 + (id)queryForFacesOnAssetWithFace:(id)arg1 options:(id)arg2;
 + (id)queryForFacesOnFaceCrop:(id)arg1 options:(id)arg2;
 + (id)queryForFacesWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)queryForFacesWithOptions:(id)arg1;
++ (id)queryForInvalidMergeCandidatePersonsForPerson:(id)arg1 options:(id)arg2;
 + (id)queryForKeyAssetInMemory:(id)arg1 options:(id)arg2;
 + (id)queryForKeyAssetsInAssetCollection:(id)arg1 options:(id)arg2;
 + (id)queryForKeyFaceForFaceGroup:(id)arg1 options:(id)arg2;
 + (id)queryForKeyFaceOnPerson:(id)arg1 options:(id)arg2;
++ (id)queryForMergeCandidatePersonsForPerson:(id)arg1 options:(id)arg2;
 + (id)queryForMomentListsWithSubType:(long long)arg1 containingMoment:(id)arg2;
 + (id)queryForMomentListsWithSubType:(long long)arg1 options:(id)arg2;
 + (id)queryForMomentsBackingMemory:(id)arg1;

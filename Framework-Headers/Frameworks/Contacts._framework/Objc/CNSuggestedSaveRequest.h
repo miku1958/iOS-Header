@@ -19,8 +19,8 @@
 @property (strong, nonatomic) NSMutableSet *mutableRejectedSuggestions; // @synthesize mutableRejectedSuggestions=_mutableRejectedSuggestions;
 @property (readonly, copy, nonatomic) NSSet *rejectedSuggestions;
 
+- (void).cxx_destruct;
 - (void)confirmSuggestion:(id)arg1;
-- (void)dealloc;
 - (void)rejectSuggestion:(id)arg1;
 - (id)storeIdentifier;
 

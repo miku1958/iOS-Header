@@ -10,14 +10,14 @@
 {
 }
 
-+ (id)_complicationSlotDescriptors;
-+ (id)_customEditModes;
 + (id)_dateComplicationSlot;
 + (unsigned long long)_dateComplicationSlotSupportedStyles;
-+ (id)_defaultOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;
 + (id)_defaultSelectedComplicationSlot;
 + (id)_localizedNameOverrideForCustomEditMode:(long long)arg1;
 - (id)_complicationMigrationPaths;
+- (id)_complicationSlotDescriptors;
+- (id)_customEditModes;
+- (id)_defaultOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (long long)_editModeForOldEncodingIndex:(long long)arg1;
 - (id)_faceDescriptionKey;
 - (unsigned long long)_indexOfOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;

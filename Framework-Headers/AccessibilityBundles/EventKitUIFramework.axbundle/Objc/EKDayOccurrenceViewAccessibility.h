@@ -12,6 +12,7 @@
 {
 }
 
+@property (strong, nonatomic, getter=_axDropPointDescriptorsProvider, setter=_axSetDropPointDescriptorsProvider:) id axDropPointDescriptorsProvider;
 @property (weak, nonatomic, getter=_axRealFrameInSuperview, setter=_axSetRealFrameInSuperview:) NSValue *axRealFrameInSuperview;
 
 + (void)_accessibilityPerformValidations:(id)arg1;
@@ -24,8 +25,9 @@
 - (id)_axDraggingView;
 - (BOOL)_axIsInPreview;
 - (id)_axWidgetContainerView;
-- (id)accessibilityCustomRotorItemsAtIndex:(long long)arg1;
-- (id)accessibilityCustomRotorTitles;
+- (id)accessibilityCustomRotors;
+- (id)accessibilityDragSourceDescriptors;
+- (id)accessibilityDropPointDescriptors;
 - (struct CGRect)accessibilityFrameForScrolling;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;

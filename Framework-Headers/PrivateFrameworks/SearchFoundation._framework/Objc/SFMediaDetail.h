@@ -6,23 +6,33 @@
 
 #import <objc/NSObject.h>
 
+#import <SearchFoundation/NSCopying-Protocol.h>
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFMediaDetail-Protocol.h>
 
-@class NSString, SFText;
+@class NSData, NSDictionary, NSString, SFText;
 
-@interface SFMediaDetail : NSObject <NSSecureCoding>
+@interface SFMediaDetail : NSObject <SFMediaDetail, NSSecureCoding, NSCopying>
 {
     NSString *_title;
     SFText *_content;
 }
 
 @property (strong, nonatomic) SFText *content; // @synthesize content=_content;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 
 @end
 

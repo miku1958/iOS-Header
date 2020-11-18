@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface TUCallCapabilities : NSObject
 {
@@ -63,6 +63,8 @@
 + (void)setVoLTECallingEnabled:(BOOL)arg1;
 + (void)setWiFiCallingEnabled:(BOOL)arg1;
 + (void)setWiFiCallingRoamingEnabled:(BOOL)arg1;
++ (BOOL)supportsBasebandCalling;
++ (BOOL)supportsCarrierServices;
 + (BOOL)supportsDisplayingFaceTimeAudioCalls;
 + (BOOL)supportsDisplayingFaceTimeVideoCalls;
 + (BOOL)supportsDisplayingTelephonyCalls;

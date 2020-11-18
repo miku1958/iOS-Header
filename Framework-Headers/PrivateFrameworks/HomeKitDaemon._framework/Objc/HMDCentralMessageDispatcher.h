@@ -41,11 +41,13 @@
 - (void)dealloc;
 - (void)deregisterForMessage:(id)arg1 receiver:(id)arg2;
 - (void)deregisterReceiver:(id)arg1;
-- (void)disableRemoteSessionForAddresses:(id)arg1;
+- (void)disableMessageServer;
 - (void)dispatchMessage:(id)arg1;
 - (void)electDeviceForUser:(id)arg1 destination:(id)arg2 deviceCapabilities:(id)arg3 responseTimeout:(double)arg4 responseQueue:(id)arg5 responseHandler:(CDUnknownBlockType)arg6;
+- (void)enableMessageServer;
 - (void)handleSecureSessionError:(id)arg1;
-- (id)initWithSecureRemoteTransport:(id)arg1 messageFilterChain:(id)arg2 notificationRelayDispatcher:(id)arg3;
+- (id)httpMessageTransport;
+- (id)initWithSecureRemoteTransport:(id)arg1 messageFilterChain:(id)arg2;
 - (id)prepareAnswerForRequestedCapabilities:(id)arg1;
 - (void)redispatchMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3 toResidentForHomeWithUUID:(id)arg4;
 - (void)registerForMessage:(id)arg1 receiver:(id)arg2 messageHandler:(CDUnknownBlockType)arg3;
@@ -55,6 +57,7 @@
 - (void)removeHome:(id)arg1;
 - (void)reset;
 - (void)sendSecureMessage:(id)arg1 target:(id)arg2 userID:(id)arg3 destination:(id)arg4 responseQueue:(id)arg5 responseHandler:(CDUnknownBlockType)arg6;
+- (void)setCompanionDevice:(id)arg1 forHome:(id)arg2;
 - (void)setRemoteAccessDevice:(id)arg1 forHome:(id)arg2;
 - (void)updateHome:(id)arg1 configurationVersion:(long long)arg2;
 - (void)updateLocalAdministratorName;

@@ -10,7 +10,7 @@
 #import <UIKit/UISwitchControl-Protocol.h>
 #import <UIKit/UISwitchVisualElementProvider-Protocol.h>
 
-@class NSString, UIColor, UIImage, UISwitchVisualElement, _UIFeedbackImpactBehavior;
+@class NSString, UIColor, UIImage, UIImpactFeedbackGenerator, UISwitchVisualElement;
 
 @interface UISwitch : UIControl <UISwitchControl, UISwitchVisualElementProvider, NSCoding>
 {
@@ -28,7 +28,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic, getter=_impactFeedbackBehavior, setter=_setImpactFeedbackBehavior:) _UIFeedbackImpactBehavior *impactFeedbackBehavior;
+@property (strong, nonatomic, getter=_impactFeedbackGenerator, setter=_setImpactFeedbackGenerator:) UIImpactFeedbackGenerator *impactFeedbackGenerator;
 @property (strong, nonatomic) UIImage *offImage; // @synthesize offImage=_offImage;
 @property (nonatomic, getter=isOn) BOOL on; // @synthesize on=_on;
 @property (strong, nonatomic) UIImage *onImage; // @synthesize onImage=_onImage;

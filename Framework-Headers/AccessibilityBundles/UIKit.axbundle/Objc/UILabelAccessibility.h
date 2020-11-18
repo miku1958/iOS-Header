@@ -12,14 +12,22 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (double)_accessibilityFontSize;
 - (BOOL)_accessibilityIsScannerElement;
 - (id)_accessibilityLabel:(BOOL)arg1;
+- (BOOL)_accessibilityOverridesLabelValueHintSelector:(SEL)arg1;
 - (id)_axCleanupNewlines:(id)arg1;
 - (id)_axOriginalLabelText:(BOOL)arg1;
+- (id)accessibilityAttributedLabel;
 - (id)accessibilityCustomRotors;
 - (id)accessibilityLabel;
+- (id)accessibilityLocalizationBundleID;
+- (id)accessibilityLocalizationBundlePath;
+- (id)accessibilityLocalizedStringKey;
+- (id)accessibilityLocalizedStringTableName;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
+- (id)copyAttributedText:(id)arg1 withAttributes:(id)arg2;
 - (BOOL)isAccessibilityElement;
 
 @end

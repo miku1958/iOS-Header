@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isDeleteCandidate:(id)arg1;
 - (BOOL)isExtendedList;
+- (BOOL)isFloatingList;
 - (id)keyboardBehaviors;
 - (void)layoutSubviews;
 - (unsigned long long)selectedSortIndex;
@@ -57,12 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)setUIKeyboardCandidateListDelegate:(id)arg1;
 - (BOOL)showCandidate:(id)arg1;
 - (void)showCandidateAtIndex:(unsigned long long)arg1;
-- (void)showNextCandidate;
-- (void)showNextPage;
-- (void)showNextRow;
-- (void)showPreviousCandidate;
-- (void)showPreviousPage;
-- (void)showPreviousRow;
+- (void)showCandidateInForwardDirection:(BOOL)arg1 granularity:(int)arg2;
 - (id)statisticsIdentifier;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;

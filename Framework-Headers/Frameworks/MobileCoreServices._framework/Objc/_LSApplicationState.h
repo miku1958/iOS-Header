@@ -18,14 +18,14 @@
     int _ratingRank;
 }
 
+@property (readonly, nonatomic, getter=isAlwaysAvailable) BOOL alwaysAvailable;
+@property (readonly, nonatomic, getter=isBlocked) BOOL blocked;
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (readonly, nonatomic) BOOL isAlwaysAvailable;
-@property (readonly, nonatomic) BOOL isBlocked;
-@property (readonly, nonatomic) BOOL isInstalled;
-@property (readonly, nonatomic) BOOL isPlaceholder;
-@property (readonly, nonatomic) BOOL isRemovedSystemApp;
-@property (readonly, nonatomic) BOOL isRestricted;
-@property (readonly, nonatomic) BOOL isValid;
+@property (readonly, nonatomic, getter=isInstalled) BOOL installed;
+@property (readonly, nonatomic, getter=isPlaceholder) BOOL placeholder;
+@property (readonly, nonatomic, getter=isRemovedSystemApp) BOOL removedSystemApp;
+@property (readonly, nonatomic, getter=isRestricted) BOOL restricted;
+@property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 + (BOOL)supportsSecureCoding;
 - (void)addStateFlag:(unsigned long long)arg1;

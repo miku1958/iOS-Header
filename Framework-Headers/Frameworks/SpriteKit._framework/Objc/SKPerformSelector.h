@@ -6,16 +6,20 @@
 
 #import <SpriteKit/SKAction.h>
 
+@protocol NSObject;
+
 __attribute__((visibility("hidden")))
 @interface SKPerformSelector : SKAction
 {
     SEL _selector;
-    id _target;
+    id<NSObject> _weakTarget;
+    id<NSObject> _strongTarget;
 }
 
 + (id)perfromSelector:(SEL)arg1 onTarget:(id)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

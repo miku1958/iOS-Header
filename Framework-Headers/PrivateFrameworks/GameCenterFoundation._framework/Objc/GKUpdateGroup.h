@@ -19,12 +19,10 @@
     NSString *_name;
 }
 
-@property (nonatomic) NSObject<OS_dispatch_group> *dispatchGroup; // @synthesize dispatchGroup=_dispatchGroup;
 @property (strong) NSError *error; // @synthesize error=_error;
 @property (strong) NSLock *lock; // @synthesize lock=_lock;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSMutableArray *notifiers; // @synthesize notifiers=_notifiers;
-@property (nonatomic) NSObject<OS_dispatch_queue> *targetQueue; // @synthesize targetQueue=_targetQueue;
 @property (readonly, nonatomic) long long updateCount;
 
 + (id)updateGroup;

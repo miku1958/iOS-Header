@@ -4,35 +4,47 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class NSArray, NSMutableArray, NSNumber, NSString;
+@class NSArray, NSDictionary, NSMutableArray, NSNumber, NSSet, NSString;
 
-@interface HAPMetadata : NSObject
+@interface HAPMetadata : HMFObject
 {
     NSNumber *_version;
     NSNumber *_schemaVersion;
     NSString *_hapBaseUUIDSuffix;
-    NSArray *_hapValueUnits;
-    NSArray *_hapProperties;
-    NSArray *_hapCharacteristics;
-    NSArray *_hapServices;
-    NSArray *_hapSupportsAuthDataTuples;
+    NSDictionary *_rawPlist;
     NSMutableArray *_parsedUUIDs;
+    NSDictionary *_hapUnitMap;
+    NSDictionary *_hapPropertyMap;
+    NSDictionary *_hapCharacteristicMap;
+    NSDictionary *_hapServiceMap;
+    NSSet *_hapSupportsAuthDataSet;
+    NSDictionary *_hapCharacteristicNameTypeMap;
+    NSDictionary *_hapServiceNameTypeMap;
 }
 
 @property (strong, nonatomic) NSString *hapBaseUUIDSuffix; // @synthesize hapBaseUUIDSuffix=_hapBaseUUIDSuffix;
-@property (strong, nonatomic) NSArray *hapCharacteristics; // @synthesize hapCharacteristics=_hapCharacteristics;
-@property (strong, nonatomic) NSArray *hapProperties; // @synthesize hapProperties=_hapProperties;
-@property (strong, nonatomic) NSArray *hapServices; // @synthesize hapServices=_hapServices;
-@property (strong, nonatomic) NSArray *hapSupportsAuthDataTuples; // @synthesize hapSupportsAuthDataTuples=_hapSupportsAuthDataTuples;
-@property (strong, nonatomic) NSArray *hapValueUnits; // @synthesize hapValueUnits=_hapValueUnits;
+@property (strong, nonatomic) NSDictionary *hapCharacteristicMap; // @synthesize hapCharacteristicMap=_hapCharacteristicMap;
+@property (strong, nonatomic) NSDictionary *hapCharacteristicNameTypeMap; // @synthesize hapCharacteristicNameTypeMap=_hapCharacteristicNameTypeMap;
+@property (readonly, nonatomic) NSArray *hapCharacteristics;
+@property (readonly, nonatomic) NSArray *hapProperties;
+@property (strong, nonatomic) NSDictionary *hapPropertyMap; // @synthesize hapPropertyMap=_hapPropertyMap;
+@property (strong, nonatomic) NSDictionary *hapServiceMap; // @synthesize hapServiceMap=_hapServiceMap;
+@property (strong, nonatomic) NSDictionary *hapServiceNameTypeMap; // @synthesize hapServiceNameTypeMap=_hapServiceNameTypeMap;
+@property (readonly, nonatomic) NSArray *hapServices;
+@property (strong, nonatomic) NSSet *hapSupportsAuthDataSet; // @synthesize hapSupportsAuthDataSet=_hapSupportsAuthDataSet;
+@property (readonly, nonatomic) NSArray *hapSupportsAuthDataTuples;
+@property (strong, nonatomic) NSDictionary *hapUnitMap; // @synthesize hapUnitMap=_hapUnitMap;
+@property (readonly, nonatomic) NSArray *hapValueUnits;
 @property (strong, nonatomic) NSMutableArray *parsedUUIDs; // @synthesize parsedUUIDs=_parsedUUIDs;
+@property (readonly, nonatomic) NSDictionary *rawPlist; // @synthesize rawPlist=_rawPlist;
 @property (strong, nonatomic) NSNumber *schemaVersion; // @synthesize schemaVersion=_schemaVersion;
 @property (strong, nonatomic) NSNumber *version; // @synthesize version=_version;
 
 + (id)getBuiltinInstance;
 + (id)getSharedInstance;
++ (void)setBuiltinInstanceWithDictionary:(id)arg1;
 + (BOOL)setSharedInstance:(id)arg1 version:(id)arg2 schemaVersion:(id)arg3;
 + (id)shortenHAPType:(id)arg1 baseUUIDSuffix:(id)arg2;
 - (void).cxx_destruct;
@@ -40,6 +52,7 @@
 - (id)btleToServiceType:(id)arg1;
 - (id)characteristicTypeFromUTI:(id)arg1;
 - (id)characteristicUTIFromType:(id)arg1;
+- (id)characteristicValueUnitOfType:(id)arg1;
 - (id)descriptionFromCharacteristicType:(id)arg1;
 - (id)descriptionFromServiceType:(id)arg1;
 - (id)generateDictionary;
@@ -47,6 +60,11 @@
 - (id)getDefaultCharacteristicMetadata:(id)arg1;
 - (id)getDefaultCharacteristicProperties:(id)arg1;
 - (id)getDefaultServiceProperties:(id)arg1;
+- (id)hapCharacteristicFromName:(id)arg1;
+- (id)hapCharacteristicFromType:(id)arg1;
+- (id)hapServiceFromName:(id)arg1;
+- (id)hapServiceFromType:(id)arg1;
+- (id)hapUnitFromName:(id)arg1;
 - (id)initWithDictionary:(id)arg1 error:(id *)arg2;
 - (id)initWithServices:(id)arg1 characteristics:(id)arg2 units:(id)arg3 properties:(id)arg4 addAuthDataTuples:(id)arg5 hapBaseUUIDSuffix:(id)arg6;
 - (BOOL)isMandatoryCharacteristic:(id)arg1 forService:(id)arg2;
@@ -64,10 +82,12 @@
 - (id)parseServices:(id)arg1;
 - (id)parseUnits:(id)arg1;
 - (BOOL)parseVersion:(id)arg1;
+- (id)serviceTypeFromUTI:(id)arg1;
 - (id)serviceTypeToBTLE:(id)arg1;
 - (id)serviceUTIFromType:(id)arg1;
 - (id)shouldFilterServiceOfType:(id)arg1;
 - (BOOL)supportsAdditionalAuthorizationData:(id)arg1 forService:(id)arg2;
+- (BOOL)updateRawPlist;
 - (BOOL)validateMandatoryCharacteristics:(id)arg1 forService:(id)arg2;
 
 @end

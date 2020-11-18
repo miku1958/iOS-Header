@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)_resumeProgressForAnotherOperationIfNeeded;
 - (void)_startObservingProgress:(id)arg1;
 - (void)_stopObservingProgress:(id)arg1;
+- (id)_t_globalProgressInfo;
 - (void)_updateAppLibraryID:(id)arg1;
 - (void)_updateDocument:(id)arg1;
 - (void)_updateGlobalProgress;
@@ -61,14 +62,15 @@ __attribute__((visibility("hidden")))
 - (void)didDeleteDocument:(id)arg1;
 - (void)didUpdateClientZone:(id)arg1;
 - (void)didUpdateDocument:(id)arg1;
+- (void)dumpDictionary:(id)arg1 withMaxCount:(unsigned long long)arg2 toContext:(id)arg3;
 - (void)dumpToContext:(id)arg1;
 - (id)initWithSession:(id)arg1;
 - (void)networkReachabilityChanged:(BOOL)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)resumeProgressForZones:(id)arg1;
 - (void)stopPublishingProgress;
 - (void)updateDownloadThrottleForDocument:(id)arg1 toState:(int)arg2;
 - (void)updateUploadThrottleForDocument:(id)arg1 toState:(int)arg2;
-- (void)willResumeDocumentUpload:(id)arg1;
 - (void)willScheduleDocumentForDownload:(id)arg1;
 
 @end

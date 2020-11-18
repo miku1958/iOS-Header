@@ -16,6 +16,7 @@
     AVPixelBufferAttributeMediator *pixelBufferAttributeMediator;
     NSObject<OS_dispatch_queue> *stateDispatchQueue;
     NSObject<OS_dispatch_queue> *figConfigurationQueue;
+    NSObject<OS_dispatch_queue> *layerInteractionQueue;
     NSObject<OS_dispatch_queue> *ivarAccessQueue;
     NSObject<OS_dispatch_queue> *currentItemPropertyUpdateQueue;
     NSObject<OS_dispatch_queue> *layersQ;
@@ -25,6 +26,8 @@
     void *IAPDCallbackToken;
     struct OpaqueFigSimpleMutex *prerollIDMutex;
     NSObject<OS_dispatch_queue> *configurationQueue;
+    long long status;
+    NSError *error;
     AVPlayerItem *currentItem;
     AVPlayerItem *lastItem;
     NSMutableSet *items;
@@ -33,6 +36,7 @@
     AVAudioSession *audioSession;
     AVOutputContext *outputContext;
     BOOL IOwnTheFigPlayer;
+    NSMutableArray *handlersToCallWhenReadyToPlay;
     struct __CFDictionary *videoLayers;
     NSMutableArray *subtitleLayers;
     NSMutableArray *closedCaptionLayers;
@@ -43,8 +47,6 @@
     id<AVCallbackCancellation><AVKVOIntrospection> currentItemSuppressesVideoLayersCallbackInvoker;
     id<AVCallbackCancellation><AVKVOIntrospection> currentItemPreferredPixelBufferAttributesCallbackInvoker;
     struct OpaqueFigPlayer *figPlayer;
-    long long status;
-    NSError *error;
     struct OpaqueFigPlaybackItem *figPlaybackItemToIdentifyNextCurrentItem;
     BOOL needsToCreateFigPlayer;
     NSString *externalPlaybackVideoGravity;
@@ -60,9 +62,13 @@
     BOOL preparesItemsForPlaybackAsynchronously;
     BOOL allowsOutOfBandTextTrackRendering;
     BOOL shouldReduceResourceUsage;
+    NSString *playerRole;
     NSString *multichannelAudioStrategy;
+    NSString *captionPipelineStrategy;
+    NSString *captionRenderingStrategy;
     BOOL automaticallyWaitsToMinimizeStalling;
     BOOL usesLegacyAutomaticWaitingBehavior;
+    BOOL layerDestinationIsTVOut;
     NSArray *displaysUsedForPlayback;
     NSString *ancillaryPerformanceInformationForDisplay;
 }

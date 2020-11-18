@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 
 + (Class)trafficIncidentType;
 + (Class)trafficSegmentType;
+- (void).cxx_destruct;
 - (void)addTrafficIncident:(id)arg1;
 - (void)addTrafficSegment:(id)arg1;
 - (void)clearTrafficIncidents;
@@ -32,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (CDStruct_912cb5d2 *)createUnpackedVerticesWithGutterSize:(long long)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

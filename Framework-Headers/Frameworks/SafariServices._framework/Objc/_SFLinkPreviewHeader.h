@@ -14,6 +14,7 @@
 {
     UILabel *_domainLabel;
     UIView *_hairline;
+    BOOL _isMinimumPreviewUI;
     NSString *_domain;
     _SFFluidProgressView *_progressView;
 }
@@ -21,12 +22,12 @@
 @property (copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
 @property (strong, nonatomic) _SFFluidProgressView *progressView; // @synthesize progressView=_progressView;
 
-+ (double)defaultHeight;
 - (void).cxx_destruct;
 - (void)_initializeLayoutContraints;
+- (double)defaultHeight;
 - (void)fluidProgressViewDidShowProgress:(id)arg1;
 - (void)fluidProgressViewWillShowProgress:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithMinimumPreviewUI:(BOOL)arg1;
 - (void)layoutSubviews;
 
 @end

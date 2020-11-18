@@ -10,30 +10,40 @@
 #import <PhotosUI/PUTilingViewTileTransitionDelegate-Protocol.h>
 #import <PhotosUI/UIScrollViewDelegate-Protocol.h>
 
-@class AVAsset, NSString, PUFilmstripDataSource, PUFilmstripMediaProvider, PUTilingView, UIImage;
+@class AVAsset, AVVideoComposition, NSArray, NSString, PUFilmstripDataSource, PUFilmstripMediaProvider, PUTileViewAnimator, PUTilingView, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface PUFilmstripView : UIView <PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, UIScrollViewDelegate>
 {
+    BOOL _needsUpdateThumbnailAspectRatio;
     BOOL _needsUpdateDataSource;
     BOOL _needsUpdateLayout;
+    PUTileViewAnimator *_animator;
+    BOOL _useContentAspectRatio;
     AVAsset *_asset;
+    AVVideoComposition *_videoComposition;
     UIImage *_placeholderImage;
+    NSArray *_indicatorInfos;
     PUTilingView *__tilingView;
     PUFilmstripMediaProvider *__mediaProvider;
     PUFilmstripDataSource *__dataSource;
+    double __thumbnailAspectRatio;
     struct CGRect _visibleRect;
 }
 
 @property (strong, nonatomic, setter=_setDataSource:) PUFilmstripDataSource *_dataSource; // @synthesize _dataSource=__dataSource;
 @property (strong, nonatomic, setter=_setMediaProvider:) PUFilmstripMediaProvider *_mediaProvider; // @synthesize _mediaProvider=__mediaProvider;
+@property (nonatomic, setter=_setThumbnailAspectRatio:) double _thumbnailAspectRatio; // @synthesize _thumbnailAspectRatio=__thumbnailAspectRatio;
 @property (readonly, nonatomic) PUTilingView *_tilingView; // @synthesize _tilingView=__tilingView;
-@property (strong, nonatomic) AVAsset *asset; // @synthesize asset=_asset;
+@property (copy, nonatomic) AVAsset *asset; // @synthesize asset=_asset;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *indicatorInfos; // @synthesize indicatorInfos=_indicatorInfos;
 @property (strong, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL useContentAspectRatio; // @synthesize useContentAspectRatio=_useContentAspectRatio;
+@property (copy, nonatomic) AVVideoComposition *videoComposition; // @synthesize videoComposition=_videoComposition;
 @property (nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
 
 - (void).cxx_destruct;
@@ -41,12 +51,17 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateDataSource;
 - (void)_invalidateLayout;
 - (void)_invalidateMediaProvider;
+- (void)_invalidateThumbnailAspectRatio;
+- (BOOL)_isMediaProviderValid;
 - (void)_setNeedsUpdate;
 - (void)_updateDataSourceIfNeeded;
 - (void)_updateIfNeeded;
 - (void)_updateLayoutIfNeeded;
+- (void)_updateThumbnailAspectRatioIfNeeded;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)reloadThumbnails;
+- (id)tilingView:(id)arg1 dataSourceConverterForTransitionFromLayout:(id)arg2 toLayout:(id)arg3;
 - (id)tilingView:(id)arg1 tileControllerWithIndexPath:(id)arg2 kind:(id)arg3 dataSource:(id)arg4;
 - (id)tilingView:(id)arg1 tileTransitionCoordinatorForChangeFromFrame:(struct CGRect)arg2 toFrame:(struct CGRect)arg3 duration:(double)arg4;
 - (id)tilingView:(id)arg1 tileTransitionCoordinatorForTransitionFromLayout:(id)arg2 toLayout:(id)arg3 withContext:(id)arg4;

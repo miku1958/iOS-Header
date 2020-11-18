@@ -31,13 +31,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)presentInternetOfflineError;
 - (void).cxx_destruct;
 - (void)_commonInitializationWithAccount:(id)arg1 accountStore:(id)arg2 username:(id)arg3 accountDescription:(id)arg4 presentationBlock:(CDUnknownBlockType)arg5;
 - (void)_didInstantiateRemoteViewController;
 - (void)_dismissAndCompleteWithIdentity:(id)arg1 error:(id)arg2 extensionCompletion:(CDUnknownBlockType)arg3;
 - (void)_extensionRequestDidCancelWithError:(id)arg1;
 - (void)_extensionRequestDidCompleteWithTokens:(id)arg1 extensionCompletion:(CDUnknownBlockType)arg2;
-- (void)_presentInternetOfflineError;
 - (void)_presentUsernameMismatchAlert;
 - (id)initWithAccount:(id)arg1 accountStore:(id)arg2 authURI:(id)arg3 accountType:(unsigned long long)arg4 userName:(id)arg5 accountDescription:(id)arg6 isFirstTimeSetup:(BOOL)arg7 presentationBlock:(CDUnknownBlockType)arg8;
 - (id)initWithAccount:(id)arg1 accountStore:(id)arg2 presentationBlock:(CDUnknownBlockType)arg3;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableString, NSString, _PLDescriptionStyle;
 
@@ -13,6 +13,7 @@
     NSObject *_object;
     NSMutableString *_description;
     NSString *_separator;
+    NSString *_indentString;
     _PLDescriptionStyle *_style;
 }
 
@@ -21,12 +22,18 @@
 + (id)descriptionBuilderWithObject:(id)arg1;
 + (id)plainDescriptionBuilder;
 + (id)plainMultiLineDescriptionBuilder;
++ (id)prettyMultiLineDescriptionBuilderWithObject:(id)arg1 indent:(long long)arg2;
 - (void)appendName:(id)arg1 boolValue:(BOOL)arg2;
+- (void)appendName:(id)arg1 cgSize:(struct CGSize)arg2;
+- (void)appendName:(id)arg1 doubleValue:(double)arg2;
+- (void)appendName:(id)arg1 floatValue:(float)arg2;
 - (void)appendName:(id)arg1 integerValue:(long long)arg2;
 - (void)appendName:(id)arg1 object:(id)arg2;
+- (void)appendName:(id)arg1 typeCode:(const char *)arg2 value:(const void *)arg3;
+- (void)appendName:(id)arg1 unsignedIntegerValue:(unsigned long long)arg2;
 - (id)build;
 - (void)dealloc;
-- (id)initWithObject:(id)arg1 style:(long long)arg2;
+- (id)initWithObject:(id)arg1 style:(long long)arg2 indent:(long long)arg3;
 
 @end
 

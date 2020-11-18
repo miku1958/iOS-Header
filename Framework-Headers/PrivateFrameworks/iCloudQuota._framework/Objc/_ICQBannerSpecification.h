@@ -11,17 +11,13 @@
 @interface _ICQBannerSpecification : NSObject
 {
     NSDictionary *_serverDict;
-    BOOL _hasDismissButtonDefault;
-    NSString *_title;
     NSString *_messageFormat;
     NSArray *_messageLinks;
 }
 
-@property (nonatomic) BOOL hasDismissButtonDefault; // @synthesize hasDismissButtonDefault=_hasDismissButtonDefault;
 @property (strong, nonatomic) NSString *messageFormat; // @synthesize messageFormat=_messageFormat;
 @property (strong, nonatomic) NSArray *messageLinks; // @synthesize messageLinks=_messageLinks;
 @property (strong, nonatomic) NSDictionary *serverDict;
-@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)bannerSpecificationSampleForLevel:(long long)arg1;
 - (void).cxx_destruct;

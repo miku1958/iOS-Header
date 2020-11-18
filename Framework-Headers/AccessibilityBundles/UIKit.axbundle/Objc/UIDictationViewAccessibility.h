@@ -15,7 +15,6 @@
 + (id)safeCategoryTargetClassName;
 - (void)endpointButtonPressed;
 - (void)finishReturnToKeyboard;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (void)setState:(int)arg1;
 
 @end

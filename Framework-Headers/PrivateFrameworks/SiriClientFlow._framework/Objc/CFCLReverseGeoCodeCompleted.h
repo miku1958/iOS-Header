@@ -28,7 +28,7 @@
 @property (copy, nonatomic) NSString *region;
 @property (readonly) Class superclass;
 
-+ (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
++ (id)aceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)reverseGeoCodeCompleted;
 + (id)reverseGeoCodeCompletedWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;

@@ -39,13 +39,14 @@
     BOOL _supportsFastRemoteBodySearch;
 }
 
+@property (readonly, copy, nonatomic) NSString *mailboxPathExtension;
+@property (readonly, nonatomic) BOOL needsRemoteSearchResultsVerification;
 @property (readonly) BOOL shouldArchiveByDefault;
 @property (readonly) BOOL sourceIsManaged;
 @property (readonly, nonatomic) BOOL supportsFastRemoteBodySearch; // @synthesize supportsFastRemoteBodySearch=_supportsFastRemoteBodySearch;
 
 + (id)URLForInfo:(id)arg1;
 + (id)_accountContainingEmailAddress:(id)arg1 matchingAddress:(id *)arg2 fullUserName:(id *)arg3 includingInactive:(BOOL)arg4;
-+ (id)_accountForURL:(id)arg1;
 + (id)_accountWithPath:(id)arg1;
 + (void)_addAccountToSortedPaths:(id)arg1;
 + (id)_defaultMailAccountForDeliveryIncludingRestricted:(BOOL)arg1;
@@ -63,6 +64,7 @@
 + (id)accountThatMessageIsFrom:(id)arg1 includingInactive:(BOOL)arg2;
 + (id)accountUsingHeadersFromMessage:(id)arg1;
 + (id)accountWithPath:(id)arg1;
++ (id)accountWithURL:(id)arg1;
 + (id)accountWithURLString:(id)arg1;
 + (id)accountWithUniqueId:(id)arg1;
 + (id)activeAccounts;
@@ -163,7 +165,6 @@
 - (void)_synchronizeMailboxListWithFileSystem;
 - (void)_synchronouslyLoadListingForParent:(id)arg1;
 - (id)_uidNameForPathComponent:(id)arg1;
-- (BOOL)_usesMailboxCache;
 - (void)_writeCustomInfoToMailboxCache:(id)arg1;
 - (void)_writeMailboxCacheWithPrejudice:(BOOL)arg1;
 - (void)accountDidLoad;
@@ -190,12 +191,14 @@
 - (id)customSignature;
 - (void)dealloc;
 - (id)defaultEmailAddress;
+- (void)deleteDeliveryAccountIfNeeded;
 - (BOOL)deleteInPlaceForAllMailboxes;
 - (BOOL)deleteInPlaceForMailbox:(id)arg1;
 - (BOOL)deleteMailbox:(id)arg1;
 - (void)deleteMessagesFromMailboxUid:(id)arg1 olderThanNumberOfDays:(unsigned int)arg2;
 - (id)deliveryAccount;
 - (id)deliveryAccountAlternates;
+- (BOOL)deliveryAccountInUseByOtherAccounts:(id)arg1;
 - (void)deliveryAccountWillBeRemoved:(id)arg1;
 - (BOOL)derivesDeliveryAccountInfoFromMailAccount;
 - (id)description;
@@ -214,6 +217,7 @@
 - (id)fetchLimits;
 - (void)fetchMailboxList;
 - (id)firstEmailAddress;
+- (void)forceFetchMailboxList;
 - (id)fromEmailAddresses;
 - (id)fromEmailAddressesIncludingDisabled;
 - (id)fullUserName;
@@ -239,7 +243,6 @@
 - (long long)libraryID;
 - (id)loggingIdentifier;
 - (id)mailboxCachePath;
-- (id)mailboxPathExtension;
 - (id)mailboxUidForInfo:(id)arg1;
 - (id)mailboxUidForRelativePath:(id)arg1 create:(BOOL)arg2;
 - (id)mailboxUidForRelativePath:(id)arg1 create:(BOOL)arg2 withOption:(int)arg3;
@@ -252,9 +255,11 @@
 - (BOOL)newMailboxNameIsAcceptable:(id)arg1 reasonForFailure:(id *)arg2;
 - (id)newMailboxWithParent:(id)arg1 name:(id)arg2;
 - (void)nowWouldBeAGoodTimeToStartBackgroundSynchronization;
+- (BOOL)ownsMailboxUidWithURL:(id)arg1;
 - (id)path;
 - (BOOL)perMessageEncryptionEnabled;
 - (void)persistentAccountDidChange:(id)arg1 previousAccount:(id)arg2;
+- (id)persistentNameForMailbox:(id)arg1;
 - (id)powerAssertionIdentifierWithPrefix:(id)arg1;
 - (BOOL)preventArchiveForMailbox:(id)arg1;
 - (id)primaryMailboxUid;
@@ -339,6 +344,7 @@
 - (void)transferNotificationSessionToAccount:(id)arg1;
 - (id)unactionableInvitationICSRepresentationInMessage:(id)arg1 summary:(id *)arg2;
 - (id)uniqueIdForPersistentConnection;
+- (id)uniqueServerIdForMessage:(id)arg1;
 - (id)unsupportedContinuationTypes;
 - (BOOL)updateEmailAliases;
 - (id)valueInAccountLookAsidePropertiesForKey:(id)arg1;

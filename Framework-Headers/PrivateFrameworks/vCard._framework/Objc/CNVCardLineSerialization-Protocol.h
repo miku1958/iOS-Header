@@ -18,7 +18,7 @@
 - (void)serializeArray:(NSArray *)arg1 withItemSeparator:(NSString *)arg2;
 - (void)serializeData:(NSData *)arg1;
 - (void)serializeLine:(CNVCardLine *)arg1;
-- (void)serializeOpaqueValue:(NSString *)arg1;
+- (void)serializeOpaqueValue:(NSData *)arg1;
 - (void)serializeString:(NSString *)arg1;
 - (void)serializeVersionPlaceholder;
 @end

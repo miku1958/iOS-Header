@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     UIImageView *_timeDot;
     UIView *_highlightedDayBackground;
     UIView *_fadingHighlightedDayBackground;
+    UIView *_gridContainerView;
     NSMutableDictionary *_gridParentViews;
     BOOL _rightBorderInsetsOccurrences;
     BOOL _showsTimeLine;
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
     double _hoursToPadBottom;
     long long _highlightedDayIndex;
     UIVisualEffect *_gridVisualEffect;
+    UIView *_occurrenceContainerView;
     double _gridHeightScale;
 }
 
@@ -62,6 +64,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double hoursToPadBottom; // @synthesize hoursToPadBottom=_hoursToPadBottom;
 @property (nonatomic) double hoursToPadTop; // @synthesize hoursToPadTop=_hoursToPadTop;
 @property (strong, nonatomic) UIColor *lineColor; // @synthesize lineColor=_lineColor;
+@property (strong, nonatomic) UIView *occurrenceContainerView; // @synthesize occurrenceContainerView=_occurrenceContainerView;
 @property (nonatomic) BOOL rightBorderInsetsOccurrences; // @synthesize rightBorderInsetsOccurrences=_rightBorderInsetsOccurrences;
 @property (nonatomic, getter=isSelected) BOOL selected;
 @property (nonatomic) BOOL showsLeftBorder;
@@ -84,7 +87,6 @@ __attribute__((visibility("hidden")))
 - (id)_generateGridImage;
 - (void)_layoutHighlight;
 - (void)_updateTimeMarker;
-- (void)addSubview:(id)arg1;
 - (double)bottomPadding;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 backgroundColor:(id)arg2 opaque:(BOOL)arg3 numberOfDaysToDisplay:(unsigned long long)arg4;

@@ -8,7 +8,7 @@
 
 #import <Symbolication/VMUCommonGraphInterface-Protocol.h>
 
-@class NSString, VMUClassInfoMap, VMUDebugTimer, VMUObjectIdentifier, VMUProcessObjectGraph, VMURangeArray, VMUVMRegionIdentifier;
+@class NSMutableArray, NSString, VMUClassInfoMap, VMUDebugTimer, VMUObjectIdentifier, VMUProcessObjectGraph, VMURangeArray, VMUVMRegionIdentifier;
 
 @interface VMUTaskMemoryScanner : NSObject <VMUCommonGraphInterface>
 {
@@ -25,6 +25,7 @@
     unsigned int _regionsCount;
     struct _VMURegionMap *_regionMap;
     VMURangeArray *_stackRanges;
+    NSMutableArray *_zoneNames;
     struct _VMUZoneNode *_zones;
     unsigned int _zonesCount;
     unsigned int _zonesSize;
@@ -36,10 +37,14 @@
     id *_classInfos;
     unsigned int _classInfosCount;
     VMUClassInfoMap *_classInfoIndexer;
+    struct _VMUScanLocationCache **_scanCaches;
     BOOL _exactScanningEnabled;
     unsigned long long _maxInteriorOffset;
     unsigned int _scanningMask;
     VMUDebugTimer *_debugTimer;
+    NSString *_processName;
+    NSString *_processDescriptionString;
+    NSString *_binaryImagesDescription;
     CDUnknownBlockType _referenceLogger;
     CDUnknownBlockType _nodeLogger;
     BOOL _abandonedMarkingEnabled;
@@ -50,6 +55,7 @@
 }
 
 @property (nonatomic) BOOL abandonedMarkingEnabled; // @synthesize abandonedMarkingEnabled=_abandonedMarkingEnabled;
+@property (readonly, nonatomic) NSString *binaryImagesDescription; // @synthesize binaryImagesDescription=_binaryImagesDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) VMUDebugTimer *debugTimer; // @synthesize debugTimer=_debugTimer;
 @property (readonly, copy) NSString *description;
@@ -61,6 +67,8 @@
 @property (readonly, nonatomic) unsigned int nodeNamespaceSize;
 @property (readonly, nonatomic) VMUObjectIdentifier *objectIdentifier; // @synthesize objectIdentifier=_objectIdentifier;
 @property (readonly, nonatomic) int pid; // @synthesize pid=_pid;
+@property (readonly, nonatomic) NSString *processDescriptionString; // @synthesize processDescriptionString=_processDescriptionString;
+@property (readonly, nonatomic) NSString *processName; // @synthesize processName=_processName;
 @property (readonly, nonatomic) VMUClassInfoMap *realizedClasses;
 @property (readonly, nonatomic) unsigned int regionCount; // @synthesize regionCount=_regionsCount;
 @property (nonatomic) BOOL saveNodeLabelsInGraph; // @synthesize saveNodeLabelsInGraph=_saveNodeLabelsInGraph;
@@ -73,8 +81,10 @@
 + (void)initialize;
 + (id)nodeDescription:(CDStruct_599faf0f)arg1 withNodeOffset:(unsigned long long)arg2 sortedVMRegions:(id)arg3;
 + (id)referenceDescription:(CDStruct_8b65991f)arg1 withSourceNode:(CDStruct_599faf0f)arg2 destinationNode:(CDStruct_599faf0f)arg3 sortedVMRegions:(id)arg4 symbolicator:(struct _CSTypeRef)arg5 alignmentSpacing:(unsigned int)arg6;
+- (void).cxx_destruct;
 - (void)_buildRegionPageBlockMaps;
 - (void)_callRemoteMallocEnumerators:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_destroyLinearClassInfos;
 - (void)_findMarkedAbandonedBlocks;
 - (void)_fixupBlockIsas;
 - (id)_initWithTask:(unsigned int)arg1 options:(unsigned long long)arg2;
@@ -83,6 +93,7 @@
 - (void)_sortAndClassifyBlocks;
 - (void)_sortBlocks;
 - (BOOL)_suspend;
+- (void)_updateLinearClassInfos;
 - (void)_withMemoryReaderBlock:(CDUnknownBlockType)arg1;
 - (void)_withOrderedNodeMapper:(CDUnknownBlockType)arg1;
 - (void)_withScanningContext:(CDUnknownBlockType)arg1;
@@ -99,6 +110,7 @@
 - (unsigned int)enumerateObjectsWithBlock:(CDUnknownBlockType)arg1;
 - (unsigned int)enumerateReferencesWithBlock:(CDUnknownBlockType)arg1;
 - (unsigned int)enumerateRegionsWithBlock:(CDUnknownBlockType)arg1;
+- (BOOL)hasLabelsForNodes;
 - (id)initWithSelfTaskAndOptions:(unsigned long long)arg1;
 - (id)initWithTask:(unsigned int)arg1;
 - (id)initWithTask:(unsigned int)arg1 options:(unsigned long long)arg2;
@@ -109,12 +121,15 @@
 - (CDStruct_599faf0f)nodeDetails:(unsigned int)arg1;
 - (void)orderedNodeTraversal:(int)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)processSnapshotGraph;
+- (id)processSnapshotGraphWithMallocStackLogs:(BOOL)arg1;
 - (id)referenceDescription:(CDStruct_8b65991f)arg1 withSourceNode:(unsigned int)arg2 destinationNode:(unsigned int)arg3 symbolicator:(struct _CSTypeRef)arg4 alignmentSpacing:(unsigned int)arg5;
 - (void)refineTypesWithOverlay:(id)arg1;
 - (void)removeRootReachableNodes;
 - (void)scanNodesForReferences:(CDUnknownBlockType)arg1;
 - (void)setNodeScanningLogger:(CDUnknownBlockType)arg1;
 - (void)setReferenceScanningLogger:(CDUnknownBlockType)arg1;
+- (BOOL)validateAddressRange:(struct _VMURange)arg1;
+- (id)vmuVMRegionForAddress:(unsigned long long)arg1;
 - (id)vmuVMRegionForNode:(unsigned int)arg1;
 - (id)zoneNameForIndex:(unsigned int)arg1;
 - (id)zoneNameForNode:(unsigned int)arg1;

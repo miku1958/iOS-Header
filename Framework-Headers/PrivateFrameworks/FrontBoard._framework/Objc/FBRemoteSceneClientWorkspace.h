@@ -19,8 +19,8 @@
     FBUISceneClientIdentity *_clientIdentity;
     FBWorkspace *_processWorkspace;
     NSMutableDictionary *_hostsByIdentifer;
-    NSMutableDictionary *_clientsByIdentity;
-    NSMutableDictionary *_handlerByIdentity;
+    NSMutableDictionary *_clientsByIdentifier;
+    NSMutableDictionary *_handlerByIdentifier;
     FBApplicationProcessLaunchTransaction *_launchTransaction;
     FBSceneClientProviderInvalidationAction *_invalidationAction;
     BOOL _invalidated;
@@ -34,13 +34,12 @@
 @property (strong, nonatomic) FBWorkspace *processWorkspace; // @synthesize processWorkspace=_processWorkspace;
 @property (readonly) Class superclass;
 
-- (id)_createSceneClientForIdentity:(id)arg1;
+- (id)_createSceneClientForIdentifier:(id)arg1 withSpecification:(id)arg2;
 - (void)_processLaunched:(id)arg1;
 - (id)_processWorkspace;
-- (id)_sceneClientForIdentity:(id)arg1;
 - (void)beginTransaction;
-- (id)clientForSceneIdentity:(id)arg1;
-- (id)createHostForSceneWithIdentity:(id)arg1 initialParameters:(id)arg2;
+- (id)clientForSceneIdentifier:(id)arg1;
+- (id)createHostForSceneWithIdentifier:(id)arg1 initialParameters:(id)arg2;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
@@ -51,7 +50,7 @@
 - (void)invalidate;
 - (id)registerHost:(id)arg1;
 - (void)registerInvalidationAction:(id)arg1;
-- (void)registerSceneWithIdentity:(id)arg1 acquisitionHandler:(CDUnknownBlockType)arg2;
+- (void)registerSceneWithIdentifier:(id)arg1 specification:(id)arg2 acquisitionHandler:(CDUnknownBlockType)arg3;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (void)transaction:(id)arg1 willLaunchProcess:(id)arg2;

@@ -18,6 +18,7 @@
 + (id)stringWithLongestStyleDate:(id)arg1 font:(id)arg2 maxWidth:(double)arg3;
 + (id)stringWithShortStyleDate:(id)arg1;
 + (id)timeFormatter;
++ (id)timeRangeStringFromDateInterval:(id)arg1;
 + (id)timeStringWithSpaceRemoved:(id)arg1 date:(id)arg2;
 
 @end

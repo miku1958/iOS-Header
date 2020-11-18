@@ -37,6 +37,7 @@
 - (void)_presentWithPromptSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentWithRequestRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_requestAndConfigureHostViewController:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)cancelPresentation;
 - (void)dealloc;
 - (void)healthPrivacyHostViewController:(id)arg1 didFinishWithError:(id)arg2;
 - (void)presentWithRequestRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;

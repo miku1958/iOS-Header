@@ -4,19 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFFetchProfilesRequest.h>
 
-@interface DMFFetchInstalledProfilesRequest : CATTaskRequest
+@interface DMFFetchInstalledProfilesRequest : DMFFetchProfilesRequest
 {
-    unsigned long long _filterFlags;
 }
-
-@property (nonatomic) unsigned long long filterFlags; // @synthesize filterFlags=_filterFlags;
-
-+ (BOOL)supportsSecureCoding;
-+ (Class)whitelistedClassForResultObject;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 
 @end
 

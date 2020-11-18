@@ -11,14 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface _CFPrefsClientContext : NSObject
 {
-    struct os_unfair_lock_s _lock;
+    _Atomic id _cfprefsd;
     struct __CFDictionary *_readPermissionsCache;
     struct __CFDictionary *_writePermissionsCache;
     struct __CFDictionary *_suiteCache;
     struct __CFArray *_ownedSources;
-    NSObject<OS_xpc_object> *_observationConnection;
     NSObject<OS_xpc_object> *_entitlements;
     struct __CFBoolean *_sandboxed;
+    struct os_unfair_lock_s _lock;
+    unsigned long long _token;
+    BOOL _isPlatformBinary;
 }
 
 @end

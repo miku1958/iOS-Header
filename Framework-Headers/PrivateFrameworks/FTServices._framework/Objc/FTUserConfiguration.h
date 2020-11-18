@@ -19,6 +19,7 @@
 - (BOOL)cellularDataEnabledForBundleId:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (BOOL)nonBluetoothAllowedForBundleId:(id)arg1;
 - (BOOL)wifiAllowedForBundleId:(id)arg1;
 
 @end

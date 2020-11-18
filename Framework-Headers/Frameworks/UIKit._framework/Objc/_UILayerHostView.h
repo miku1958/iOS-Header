@@ -18,10 +18,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, strong, nonatomic) CALayerHost *layerHost;
 
 + (Class)layerClass;
-- (void)_compensateForGlobalMediaTimeAdjustmentsIfNecessary;
-- (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
-- (void)_snapshotAdjustedMediaTiming:(id)arg1;
 - (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

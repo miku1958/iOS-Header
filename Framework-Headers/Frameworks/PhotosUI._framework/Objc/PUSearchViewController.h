@@ -9,15 +9,16 @@
 #import <PhotosUI/PUSearchResultsDataSourceChangeObserver-Protocol.h>
 #import <PhotosUI/PUSuggestedSearchResultsDelegate-Protocol.h>
 #import <PhotosUI/UISearchBarDelegate-Protocol.h>
+#import <PhotosUI/UISearchBarDelegate_Private-Protocol.h>
 #import <PhotosUI/UITableViewDataSource-Protocol.h>
 #import <PhotosUI/UITableViewDataSourcePrefetching-Protocol.h>
 #import <PhotosUI/UITableViewDelegate-Protocol.h>
 
-@class NSObject, NSString, PHCachingImageManager, PSIDatabase, PUPingTimer, PUSearchResultsDataSource, PUSuggestedSearchResultsDataSource, UIBarButtonItem, UISearchBar, UITableView, UIView;
+@class NSObject, NSString, PHCachingImageManager, PSIDatabase, PUPingTimer, PUSearchResultsDataSource, PUSuggestedSearchResultsDataSource, UIBarButtonItem, UILabel, UISearchBar, UITableView, UITableViewCell, UIView;
 @protocol OS_dispatch_semaphore, UITableViewDataSource><UITableViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUSearchViewController : UIViewController <UITableViewDataSource, UITableViewDataSourcePrefetching, UITableViewDelegate, UISearchBarDelegate, PUSearchResultsDataSourceChangeObserver, PUSuggestedSearchResultsDelegate>
+@interface PUSearchViewController : UIViewController <UITableViewDataSource, UITableViewDataSourcePrefetching, UITableViewDelegate, UISearchBarDelegate, UISearchBarDelegate_Private, PUSearchResultsDataSourceChangeObserver, PUSuggestedSearchResultsDelegate>
 {
     UISearchBar *_searchBar;
     UITableView *_searchResultsTableView;
@@ -34,7 +35,11 @@ __attribute__((visibility("hidden")))
     BOOL _shouldShowKeyboard;
     NSObject<OS_dispatch_semaphore> *_searchIndexReadySemaphore;
     BOOL _debug_showMatchScores;
+    UILabel *_axDummyTitleLabel;
+    UILabel *_axDummySubtitleLabel;
+    UITableViewCell *_axDummyCell;
     BOOL _inCustomTransition;
+    BOOL _noResultsFound;
     NSString *_searchText;
     NSString *_selectedDisplayTitle;
     CDUnknownBlockType __runImmediatelyAfterViewDidAppear;
@@ -47,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isInCustomTransition) BOOL inCustomTransition; // @synthesize inCustomTransition=_inCustomTransition;
+@property (nonatomic) BOOL noResultsFound; // @synthesize noResultsFound=_noResultsFound;
 @property (readonly, nonatomic) UISearchBar *searchBar;
 @property (copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
 @property (strong, nonatomic, setter=_setSelectedDisplayTitle:) NSString *selectedDisplayTitle; // @synthesize selectedDisplayTitle=_selectedDisplayTitle;
@@ -55,11 +61,12 @@ __attribute__((visibility("hidden")))
 + (id)gridViewControllerSpec;
 + (id)newSearchBar;
 + (id)newSearchViewControllerWithLastYearPhotos;
-+ (id)pushTransition;
 - (void).cxx_destruct;
 - (void)_DEBUG_rebuildSearchIndex:(id)arg1;
+- (id)_axDummyCell;
 - (void)_configureCell:(id)arg1 inTableView:(id)arg2 atIndexAPath:(id)arg3;
 - (void)_configureTableView:(id)arg1;
+- (void)_getInfoForCellInTableView:(id)arg1 atIndexPath:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_isSuggestionsSection:(unsigned long long)arg1;
 - (void)_mergeSearchResults;
 - (void)_mergeSuggestedSearchResultsAnimated:(BOOL)arg1;
@@ -73,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)_resetPreheating;
 - (double)_rowHeightForCurrentFont;
 - (void)_scheduleUpdateTableFooterView;
+- (struct CGRect)_searchBar:(id)arg1 proposedSearchFieldFrame:(struct CGRect)arg2;
 - (void)_searchFieldTextDidChange:(id)arg1;
 - (id)_searchResultsTableView;
 - (void)_selectSearchResultAtIndexPath:(id)arg1;
@@ -94,7 +102,9 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)ppt_prepareForScrollingTestWithSearchText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)pu_debugRows;
+- (BOOL)px_canPerformCrossfadeTransitionWithMasterViewController:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)searchBarCancelButtonClicked:(id)arg1;
 - (void)searchBarSearchButtonClicked:(id)arg1;
 - (void)searchResultsDataSource:(id)arg1 didFetchAssetsForSearchResultsValue:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)searchResultsDataSourceHasPendingChanges:(id)arg1;
@@ -102,11 +112,14 @@ __attribute__((visibility("hidden")))
 - (void)tableView:(id)arg1 cancelPrefetchingForRowsAtIndexPaths:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
+- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)tableView:(id)arg1 prefetchRowsAtIndexPaths:(id)arg2;
+- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
-- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
 - (id)thumbnailAssetsForIndexPaths:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

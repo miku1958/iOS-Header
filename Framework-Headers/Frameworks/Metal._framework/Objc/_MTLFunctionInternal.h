@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id).cxx_construct;
+- (id)arguments;
 - (unsigned long long)bitCodeFileSize;
 - (const CDStruct_41a22ec7 *)bitCodeHash;
 - (unsigned long long)bitCodeOffset;
@@ -35,14 +36,17 @@ __attribute__((visibility("hidden")))
 - (void)initializePublicMetadata;
 - (long long)lineNumber;
 - (BOOL)needsFunctionConstantValues;
-- (void)newSpecializedFunctionWithConstants:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)newSpecializedFunctionWithConstants:(id)arg1 error:(id *)arg2;
+- (void)newSpecializedFunctionWithConstants:(id)arg1 functionCache:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)newSpecializedFunctionWithConstants:(id)arg1 functionCache:(id)arg2 error:(id *)arg3;
 - (long long)patchControlPointCount;
 - (unsigned long long)patchType;
 - (struct MTLProgramObject *)programObject;
+- (id)returnType;
+- (void)setArguments:(id)arg1;
 - (void)setFilePath:(id)arg1;
 - (void)setFunctionConstants:(id)arg1;
 - (void)setLineNumber:(long long)arg1;
+- (void)setReturnType:(id)arg1;
 - (void)setStageInputAttributes:(id)arg1;
 - (void)setVertexAttributes:(id)arg1;
 - (id)stageInputAttributes;

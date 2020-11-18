@@ -24,6 +24,7 @@
 - (id)initWithReuseIdentifier:(id)arg1;
 - (void)layoutSubviews;
 - (id)pk_childrenForAppearance;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

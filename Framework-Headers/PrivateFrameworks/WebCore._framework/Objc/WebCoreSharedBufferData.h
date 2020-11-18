@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface WebCoreSharedBufferData : NSData
 {
-    struct RefPtr<WebCore::SharedBuffer::DataBuffer> sharedBufferDataBuffer;
+    struct RefPtr<const WebCore::SharedBuffer::DataSegment> sharedBufferDataSegment;
 }
 
 + (void)initialize;
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (const void *)bytes;
 - (void)dealloc;
-- (id)initWithSharedBufferDataBuffer:(struct DataBuffer *)arg1;
+- (id)initWithSharedBufferDataSegment:(const struct DataSegment *)arg1;
 - (unsigned long long)length;
 
 @end

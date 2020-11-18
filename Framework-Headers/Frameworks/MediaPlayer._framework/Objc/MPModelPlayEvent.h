@@ -34,6 +34,7 @@
 + (id)__playlist__KEY;
 + (id)__radioStation__KEY;
 - (void).cxx_destruct;
+- (id)contentItemCollectionInfo;
 - (long long)itemType;
 
 @end

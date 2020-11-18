@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVPlayer, AVPlayerItem, NSString, PLMoviePlayerView, PLTVOutWindow, UIAlertView;
+@class AVPlayer, AVPlayerItem, NSString, PLMoviePlayerView, PLTVOutWindow;
 @protocol PLMoviePlayerControllerDelegate;
 
 @interface PLMoviePlayerController : NSObject
@@ -14,7 +14,6 @@
     AVPlayerItem *_playerItem;
     AVPlayer *_player;
     PLMoviePlayerView *_view;
-    UIAlertView *_alertView;
     PLTVOutWindow *_tvOutWindow;
     BOOL _hasPendingTime;
     double _pendingTime;
@@ -94,7 +93,6 @@
 - (void)_willEnterForegroundNotification:(id)arg1;
 - (void)_willResignNotification:(id)arg1;
 - (void)_willSuspendNotification:(id)arg1;
-- (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
 - (void)dealloc;
 - (void)didBecomeActiveController;
 - (long long)externalPlaybackType;

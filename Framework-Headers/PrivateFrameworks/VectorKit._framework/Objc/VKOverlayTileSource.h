@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)maximumDownloadZoomLevel;
 - (long long)maximumZoomLevel;
 - (BOOL)maximumZoomLevelBoundsCamera;
+- (long long)maximumZoomLevelWithoutOverride;
 - (unsigned int)minimumDownloadZoomLevel;
 - (long long)minimumZoomLevel;
 - (BOOL)minimumZoomLevelBoundsCamera;

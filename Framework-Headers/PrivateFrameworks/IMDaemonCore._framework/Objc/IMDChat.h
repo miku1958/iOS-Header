@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class IMDAccount, IMDService, IMDServiceSession, IMMessageItem, NSArray, NSDictionary, NSMutableDictionary, NSRecursiveLock, NSString;
+@class IMDAccount, IMDService, IMDServiceSession, IMMessageItem, NSArray, NSData, NSDate, NSDictionary, NSMutableDictionary, NSRecursiveLock, NSString;
 
 @interface IMDChat : NSObject
 {
@@ -17,6 +17,7 @@
     NSString *_chatIdentifier;
     NSString *_guid;
     NSString *_groupID;
+    NSString *_engramID;
     NSString *_roomName;
     NSString *_displayName;
     NSString *_lastAddressedLocalHandle;
@@ -30,14 +31,27 @@
     BOOL _isArchived;
     BOOL _isFiltered;
     BOOL _hasHadSuccessfulQuery;
+    long long _cloudKitSyncState;
+    NSString *_originalGroupID;
+    NSString *_serverChangeToken;
+    long long _lastReadMessageTimeStamp;
+    BOOL _createEngramGroupOnMessageSend;
+    BOOL _pendingENGroupParticipantUpdate;
+    NSData *_CKRecordSystemPropertiesBlob;
+    NSDate *_lastSentMessageDate;
+    long long _lastMessageTimeStampOnLoad;
 }
 
+@property (copy, nonatomic) NSData *CKRecordSystemPropertiesBlob;
 @property (readonly, strong) IMDAccount *account;
 @property (copy) NSString *accountID;
 @property (copy) NSString *chatIdentifier;
 @property (readonly, strong) NSDictionary *chatProperties;
+@property long long cloudKitSyncState;
+@property BOOL createEngramGroupOnMessageSend; // @synthesize createEngramGroupOnMessageSend=_createEngramGroupOnMessageSend;
 @property (readonly, strong) NSDictionary *dictionaryRepresentation;
 @property (copy) NSString *displayName;
+@property (copy, setter=setEngramID:) NSString *engramID;
 @property (copy, setter=setGroupID:) NSString *groupID;
 @property (copy) NSString *guid;
 @property BOOL hasHadSuccessfulQuery;
@@ -46,10 +60,17 @@
 @property (readonly, nonatomic) BOOL isUnnamedChat;
 @property (copy) NSString *lastAddressedLocalHandle;
 @property (strong) IMMessageItem *lastMessage;
+@property (readonly) long long lastMessageTimeStampOnLoad;
+@property (nonatomic) long long lastReadMessageTimeStamp;
+@property (readonly, strong) NSDate *lastSentMessageDate;
+@property (readonly, copy) NSString *originalGroupID;
 @property (copy) NSArray *participants;
+@property BOOL pendingENGroupParticipantUpdate; // @synthesize pendingENGroupParticipantUpdate=_pendingENGroupParticipantUpdate;
+@property (readonly, nonatomic) NSString *personCentricID;
 @property (strong) NSDictionary *properties;
 @property (copy) NSString *roomName;
 @property (setter=_setRowID:) long long rowID;
+@property (copy, nonatomic) NSString *serverChangeToken;
 @property (readonly, strong) IMDService *service;
 @property (copy) NSString *serviceName;
 @property (readonly, strong) IMDServiceSession *serviceSession;
@@ -57,25 +78,57 @@
 @property unsigned char style;
 @property (setter=_setUnreadCount:) unsigned long long unreadCount;
 
++ (id)_recordType;
+- (id)_ckUniqueID;
+- (id)_copyCKRecordFromExistingCKMetadata;
+- (id)_personIdentity;
+- (id)_recordIDUsingSalt:(id)arg1 zoneID:(id)arg2;
 - (void)_updateCachedParticipants;
 - (void)_updateLastMessage:(id)arg1;
 - (void)addParticipant:(id)arg1;
 - (void)addParticipants:(id)arg1;
+- (BOOL)applyChangesUsingCKRecord:(id)arg1;
+- (id)cloudKitChatID;
+- (id)cloudKitDebugDescription;
+- (long long)compareBySequenceNumberAndDateDescending:(id)arg1;
+- (id)copyCKRecordRepresentationWithZoneID:(id)arg1 salt:(id)arg2;
 - (id)copyDictionaryRepresentation:(BOOL)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentationIncludingLastMessage;
+- (long long)engroupCreationDate;
 - (id)generateNewGroupID;
-- (id)initWithAccountID:(id)arg1 service:(id)arg2 guid:(id)arg3 groupID:(id)arg4 chatIdentifier:(id)arg5 participants:(id)arg6 roomName:(id)arg7 displayName:(id)arg8 lastAddressedLocalHandle:(id)arg9 properties:(id)arg10 state:(long long)arg11 style:(unsigned char)arg12 isFiltered:(BOOL)arg13 hasHadSuccessfulQuery:(BOOL)arg14;
+- (int)getNumberOfTimesRespondedToThread;
+- (id)initWithAccountID:(id)arg1 service:(id)arg2 guid:(id)arg3 groupID:(id)arg4 chatIdentifier:(id)arg5 participants:(id)arg6 roomName:(id)arg7 displayName:(id)arg8 lastAddressedLocalHandle:(id)arg9 properties:(id)arg10 state:(long long)arg11 style:(unsigned char)arg12 isFiltered:(BOOL)arg13 hasHadSuccessfulQuery:(BOOL)arg14 engramID:(id)arg15 serverChangeToken:(id)arg16 cloudKitSyncState:(long long)arg17 originalGroupID:(id)arg18 lastReadMessageTimeStamp:(long long)arg19 CKRecordSystemPropertiesBlob:(id)arg20 lastMessageTimeStampOnLoad:(long long)arg21;
+- (id)initWithCKRecord:(id)arg1;
+- (BOOL)isBusinessChat;
+- (BOOL)isNewerThan:(id)arg1;
+- (BOOL)isOlderThan:(id)arg1;
+- (BOOL)isSMSSpam;
+- (id)recordName;
 - (void)removeParticipant:(id)arg1;
 - (void)removeParticipants:(id)arg1;
+- (void)resetCKSyncState;
+- (void)setLastMessageTimeStampOnLoad:(long long)arg1;
+- (void)setLastSentMessageDate:(id)arg1;
+- (void)setOriginalGroupID:(id)arg1;
 - (void)storeAndBroadcastChatChanges;
+- (void)updateCKRecordSystemPropertiesBlob:(id)arg1;
+- (void)updateCloudKitSyncState:(long long)arg1;
 - (void)updateDisplayName:(id)arg1;
+- (void)updateEngramID:(id)arg1;
+- (void)updateEngroupCreationDate:(long long)arg1;
 - (void)updateGroupID:(id)arg1;
 - (void)updateHasHadSuccessfulQuery:(BOOL)arg1;
 - (void)updateIsFiltered:(BOOL)arg1;
+- (void)updateIsSMSSpamChatProperty:(BOOL)arg1;
 - (void)updateLastAddressedHandle:(id)arg1;
+- (void)updateLastReadMessageTimeStampIfNeeded:(long long)arg1;
+- (void)updateNumberOfTimesRespondedToThread;
+- (void)updateOriginalGroupID:(id)arg1;
 - (void)updateProperties:(id)arg1;
+- (void)updateSMSSpamExtensionNameChatProperty:(id)arg1;
+- (void)updateServerChangeToken:(id)arg1;
 
 @end
 

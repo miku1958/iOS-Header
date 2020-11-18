@@ -55,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)_setAsset:(id)arg1 forUUID:(id)arg2;
 - (id)assetLocalIdentifiersForPreview;
 - (long long)compare:(id)arg1;
-- (id)displayTitleWithDefaultAttributes:(id)arg1 highlightedAttributes:(id)arg2 selectedDisplayTitle:(id *)arg3;
+- (id)displayTitleWithDefaultAttributes:(id)arg1 dimmedAttributes:(id)arg2 selectedDisplayTitle:(id *)arg3;
 - (void)fetchAdditionalUUIDs:(CDUnknownBlockType)arg1;
 - (void)fetchAllUUIDs:(CDUnknownBlockType)arg1;
 - (void)fetchRemainingUUIDs:(CDUnknownBlockType)arg1;

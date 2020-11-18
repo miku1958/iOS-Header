@@ -9,11 +9,13 @@
 #import <PassKitUI/PKPaymentDataProviderDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentPassTableCellDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
+#import <PassKitUI/PKPeerPaymentAccountResolutionControllerDelegate-Protocol.h>
+#import <PassKitUI/PKSwitchSpinnerTableCellDelegate-Protocol.h>
 
-@class NSArray, NSString, PKPaymentPreference, PKPaymentPreferencesViewController, PKPaymentSetupAboutViewController, PSSpecifier;
-@protocol PKPassLibraryDataProvider, PKPassbookSettingsDataSource, PKPassbookSettingsDelegate, PKPaymentDataProvider, PKPaymentOptionsProtocol;
+@class NSArray, NSMutableDictionary, NSString, PKPaymentPreference, PKPaymentPreferenceCard, PKPaymentPreferencesViewController, PKPaymentSetupAboutViewController, PKPeerPaymentAccount, PKPeerPaymentAccountResolutionController, PKPeerPaymentWebService, PSSpecifier;
+@protocol PKPassLibraryDataProvider, PKPassbookPeerPaymentSettingsDelegate, PKPassbookSettingsDataSource, PKPassbookSettingsDelegate, PKPaymentDataProvider, PKPaymentOptionsProtocol;
 
-@interface PKPassbookSettingsController : NSObject <PKPaymentServiceDelegate, PKPaymentDataProviderDelegate, PKPaymentPassTableCellDelegate>
+@interface PKPassbookSettingsController : NSObject <PKPaymentServiceDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKPaymentDataProviderDelegate, PKSwitchSpinnerTableCellDelegate, PKPaymentPassTableCellDelegate>
 {
     id<PKPassbookSettingsDataSource> _dataSource;
     id<PKPassLibraryDataProvider> _passLibraryDataProvider;
@@ -23,7 +25,7 @@
     PKPaymentSetupAboutViewController *_privacyController;
     PKPaymentPreferencesViewController *_defaultCardsController;
     PKPaymentPreference *_availableCards;
-    PKPaymentPreference *_unavailableCards;
+    PKPaymentPreferenceCard *_unavailableCards;
     NSString *_defaultCardIdentifier;
     NSString *_provisioningPassIdentifier;
     NSArray *_passes;
@@ -39,9 +41,16 @@
     PSSpecifier *_defaultShippingAddressSpecifier;
     PSSpecifier *_defaultContactEmailSpecifier;
     PSSpecifier *_defaultContactPhoneSpecifier;
+    id<PKPassbookPeerPaymentSettingsDelegate> _peerPaymentDelegate;
+    PKPeerPaymentWebService *_peerPaymentWebService;
+    PSSpecifier *_peerPaymentSwitchSpecifier;
+    PKPeerPaymentAccountResolutionController *_peerPaymentAccountResolutionController;
+    PKPeerPaymentAccount *_peerPaymentAccount;
+    BOOL _registeringForPeerPayment;
     NSArray *_expressFelicaTransitPasses;
     NSString *_defaultExpressFelicaTransitPassIdentifier;
     PSSpecifier *_defaultExpressFelicaTransitSpecifier;
+    NSMutableDictionary *_latestFelicaPassProperties;
     id<PKPassbookSettingsDelegate> _delegate;
 }
 
@@ -52,9 +61,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_addPaymentCard;
 - (id)_bridgeSpecifiers;
-- (void)_canTransferForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)_companionPassSpecifiers;
 - (id)_currentDefaultPaymentPass;
 - (id)_defaultContactEmailSpecifier;
@@ -64,7 +71,9 @@
 - (id)_defaultPaymentSpecifier;
 - (id)_defaultShippingAddressSpecifier;
 - (id)_defaultsGroupSpecifiers;
+- (void)_displayAlertForError:(id)arg1;
 - (id)_displayableStringForLabeledValue:(id)arg1;
+- (void)_felicaPropertiesForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_finishDefaultExpressFelicaTransitUpdateWithContainer:(id)arg1 preference:(id)arg2;
 - (id)_getDefaultContactEmail;
 - (id)_getDefaultContactPhone;
@@ -75,19 +84,27 @@
 - (void)_handleProvisioningError:(id)arg1 viewController:(id)arg2;
 - (id)_handoffSwitchGroupSpecifiers;
 - (id)_handoffSwitchSettingForSpecifier:(id)arg1;
+- (BOOL)_isPeerPaymentRegistered;
+- (id)_latestFelicaProperties:(id)arg1;
 - (id)_lockscreenSwitchGroupSpecifiers;
 - (id)_lockscreenSwitchSettingForSpecifier:(id)arg1;
 - (void)_openPrivacyLink;
 - (id)_passSpecifiers;
-- (int)_paymentPreferencesStyle;
+- (long long)_paymentPreferencesStyle;
 - (long long)_paymentSetupContextForSettingsContext:(long long)arg1;
-- (void)_performPhoneToWatchProvisioningForPaymentPass:(id)arg1;
-- (void)_presentCannotTransferAlert;
+- (void)_peerPaymentAccountDidChangeNotification:(id)arg1;
+- (id)_peerPaymentGroupSpecifiers;
+- (id)_peerPaymentSwitchSpecifier;
+- (void)_performPhoneToWatchProvisioningForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_presentPeerPaymentSetupFlowForSpecifier:(id)arg1;
+- (void)_presentPeerPaymentSetupFlowForSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentProvisioningPaymentPassNavController:(id)arg1 paymentPass:(id)arg2;
 - (void)_regionConfigurationDidChangeNotification;
+- (void)_registerForPeerPaymentWithSpecifier:(id)arg1;
 - (void)_reloadPassData;
 - (void)_requestDelegatePresentViewController:(id)arg1;
 - (id)_restrictedModeSpecifier;
+- (void)_saveLatestFelicaProperties:(id)arg1 forPass:(id)arg2;
 - (void)_setCardAddProvisioningButtonEnabled:(BOOL)arg1 forPaymentPass:(id)arg2;
 - (void)_setHandoffSwitchSetting:(id)arg1 forSpecifier:(id)arg2;
 - (void)_setLockscreenSwitchSetting:(id)arg1 forSpecifier:(id)arg2;
@@ -100,22 +117,31 @@
 - (void)_showExpressFelicaTransitOptions:(id)arg1;
 - (id)_specifierForPassUniqueID:(id)arg1;
 - (id)_transitDefaultsGroupSpecifiers;
+- (void)_unregisterForPeerPaymentWithSpecifier:(id)arg1;
 - (void)_updateAddButtonSpecifier;
 - (void)_updateCardsGroupSpecifier;
 - (void)_updateCompanionGroupSpecifier;
 - (void)_updateCompanionPassesAddButton;
 - (void)_updateDefaultCardsPreferences;
+- (void)_updateExpressPassIdentifiersWithReload:(BOOL)arg1;
 - (void)addButtonPressedForPaymentPass:(id)arg1;
 - (void)addCardTapped;
 - (void)addCardTappedForPaymentPassWithUniqueID:(id)arg1;
+- (void)addCardTappedForPaymentPassWithUniqueID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1 dataSource:(id)arg2 context:(long long)arg3;
+- (void)openPaymentSetupWithMode:(long long)arg1 referrerIdentifier:(id)arg2;
+- (id)passWithUniqueIdentifier:(id)arg1;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithFelicaPassProperties:(id)arg2;
+- (void)peerPaymentAccountResolutionController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(BOOL)arg2;
+- (void)peerPaymentAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)refreshDefaultCard;
 - (void)refreshExpressFelicaTransitCard;
 - (void)refreshPasses;
+- (void)refreshPeerPaymentStatus;
 - (void)removeFooterForSpecifier:(id)arg1;
 - (id)specifiers;
+- (void)switchSpinnerCell:(id)arg1 hasToggledSwitch:(BOOL)arg2;
 
 @end
 

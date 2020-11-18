@@ -8,21 +8,24 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPProtectionInfo, CKDPRecordZoneIdentifier, NSString;
+@class CKDPProtectionInfo, CKDPRecordZoneIdentifier, NSData;
 
 __attribute__((visibility("hidden")))
 @interface CKDPZone : PBCodable <NSCopying>
 {
-    NSString *_etag;
+    NSData *_encryptedLastZoneishPCSRollDate;
     CKDPProtectionInfo *_protectionInfo;
+    CKDPProtectionInfo *_recordProtectionInfo;
     CKDPRecordZoneIdentifier *_zoneIdentifier;
 }
 
-@property (strong, nonatomic) NSString *etag; // @synthesize etag=_etag;
-@property (readonly, nonatomic) BOOL hasEtag;
+@property (strong, nonatomic) NSData *encryptedLastZoneishPCSRollDate; // @synthesize encryptedLastZoneishPCSRollDate=_encryptedLastZoneishPCSRollDate;
+@property (readonly, nonatomic) BOOL hasEncryptedLastZoneishPCSRollDate;
 @property (readonly, nonatomic) BOOL hasProtectionInfo;
+@property (readonly, nonatomic) BOOL hasRecordProtectionInfo;
 @property (readonly, nonatomic) BOOL hasZoneIdentifier;
 @property (strong, nonatomic) CKDPProtectionInfo *protectionInfo; // @synthesize protectionInfo=_protectionInfo;
+@property (strong, nonatomic) CKDPProtectionInfo *recordProtectionInfo; // @synthesize recordProtectionInfo=_recordProtectionInfo;
 @property (strong, nonatomic) CKDPRecordZoneIdentifier *zoneIdentifier; // @synthesize zoneIdentifier=_zoneIdentifier;
 
 - (void).cxx_destruct;

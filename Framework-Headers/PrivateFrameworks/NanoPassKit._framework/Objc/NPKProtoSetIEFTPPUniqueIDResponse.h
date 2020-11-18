@@ -8,11 +8,12 @@
 
 #import <NanoPassKit/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 
 @interface NPKProtoSetIEFTPPUniqueIDResponse : PBCodable <NSCopying>
 {
     NSString *_actualUniqueID;
+    NSMutableArray *_currentUniqueIDs;
     BOOL _cancelled;
     BOOL _needsUnlock;
     BOOL _pending;
@@ -27,6 +28,7 @@
 
 @property (strong, nonatomic) NSString *actualUniqueID; // @synthesize actualUniqueID=_actualUniqueID;
 @property (nonatomic) BOOL cancelled; // @synthesize cancelled=_cancelled;
+@property (strong, nonatomic) NSMutableArray *currentUniqueIDs; // @synthesize currentUniqueIDs=_currentUniqueIDs;
 @property (readonly, nonatomic) BOOL hasActualUniqueID;
 @property (nonatomic) BOOL hasCancelled;
 @property (nonatomic) BOOL hasNeedsUnlock;
@@ -36,9 +38,14 @@
 @property (nonatomic) BOOL pending; // @synthesize pending=_pending;
 @property (nonatomic) BOOL success; // @synthesize success=_success;
 
++ (Class)currentUniqueIDsType;
 - (void).cxx_destruct;
+- (void)addCurrentUniqueIDs:(id)arg1;
+- (void)clearCurrentUniqueIDs;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)currentUniqueIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)currentUniqueIDsCount;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

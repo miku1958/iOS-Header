@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_LOCKED_hasSchemaVersionForClient:(id)arg1;
 - (void)_LOCKED_runSchemaUpdate:(CDUnknownBlockType)arg1 forClientNamed:(id)arg2;
 - (void)_LOCKED_setVersion:(long long)arg1 forClient:(id)arg2;
+- (BOOL)_addSkipBackupAttributeToItemAtPath:(id)arg1 error:(id *)arg2;
 - (BOOL)_ensureParentExists:(id)arg1 error:(id *)arg2;
 - (void)_ensureSchemaVersionsTable;
 - (BOOL)_runTransactionBlock:(CDUnknownBlockType)arg1 exclusive:(BOOL)arg2;

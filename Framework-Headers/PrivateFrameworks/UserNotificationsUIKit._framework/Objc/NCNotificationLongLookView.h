@@ -4,19 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UserNotificationsUIKit/NCAnimatableBlurringView.h>
+#import <UIKit/UIView.h>
 
-#import <UserNotificationsUIKit/NCContentSizeCategoryAdjusting-Protocol.h>
+#import <UserNotificationsUIKit/MTContentSizeCategoryAdjusting-Protocol.h>
 #import <UserNotificationsUIKit/NCCustomContentContainingLookView-Protocol.h>
+#import <UserNotificationsUIKit/NCNotificationContentViewDelegate-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationStaticContentAccepting-Protocol.h>
 #import <UserNotificationsUIKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <UserNotificationsUIKit/UIScrollViewDelegate-Protocol.h>
 
-@class NCKeyLineView, NCLookHeaderContentView, NCNotificationContentView, NSArray, NSDate, NSString, NSTimeZone, UIButton, UIImage, UIInterfaceActionGroupView, UIScrollView, UITapGestureRecognizer, UIView;
+@class MTMaterialView, MTPlatterHeaderContentView, NCKeyLineView, NCNotificationContentView, NSArray, NSDate, NSString, NSTimeZone, UIButton, UIImage, UIInterfaceActionGroupView, UIScrollView, UITapGestureRecognizer;
+@protocol NCNotificationLongLookViewDelegate;
 
-@interface NCNotificationLongLookView : NCAnimatableBlurringView <UIGestureRecognizerDelegate, UIScrollViewDelegate, NCNotificationStaticContentAccepting, NCCustomContentContainingLookView, NCContentSizeCategoryAdjusting>
+@interface NCNotificationLongLookView : UIView <UIGestureRecognizerDelegate, UIScrollViewDelegate, NCNotificationContentViewDelegate, NCNotificationStaticContentAccepting, NCCustomContentContainingLookView, MTContentSizeCategoryAdjusting>
 {
-    NCLookHeaderContentView *_headerContentView;
+    MTPlatterHeaderContentView *_headerContentView;
     UIView *_headerDivider;
     UIView *_contentView;
     UIView *_mainContentView;
@@ -24,13 +26,14 @@
     UIView *_customContentView;
     NCNotificationContentView *_notificationContentView;
     NCKeyLineView *_actionsKeyLineView;
-    UIView *_actionsBackgroundView;
+    MTMaterialView *_actionsBackgroundView;
     UIInterfaceActionGroupView *_actionsView;
     UITapGestureRecognizer *_lookViewTapGestureRecognizer;
     BOOL _actionsHidden;
     BOOL _hidesNotificationContent;
     unsigned long long _customContentLocation;
     UIScrollView *_scrollView;
+    id<NCNotificationLongLookViewDelegate> _delegate;
     struct CGSize _customContentSize;
 }
 
@@ -38,7 +41,6 @@
 @property (nonatomic, getter=isActionsHidden) BOOL actionsHidden;
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory;
 @property (nonatomic, getter=isBackgroundBlurred) BOOL backgroundBlurred;
-@property (nonatomic, getter=isBanner) BOOL banner;
 @property (readonly, nonatomic) struct CGSize contentSizeExcludingActions;
 @property (nonatomic) unsigned long long customContentLocation; // @synthesize customContentLocation=_customContentLocation;
 @property (nonatomic) struct CGSize customContentSize; // @synthesize customContentSize=_customContentSize;
@@ -47,10 +49,11 @@
 @property (readonly, nonatomic, getter=isDateAllDay) BOOL dateAllDay;
 @property (nonatomic) long long dateFormatStyle;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<NCNotificationLongLookViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasShadow;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hidesNotificationContent; // @synthesize hidesNotificationContent=_hidesNotificationContent;
-@property (copy, nonatomic) NSString *hintText;
 @property (strong, nonatomic) UIImage *icon;
 @property (readonly, nonatomic) UIButton *iconButton;
 @property (strong, nonatomic) NSArray *interfaceActions;
@@ -96,8 +99,10 @@
 - (BOOL)adjustForContentSizeCategoryChange;
 - (struct CGSize)contentSizeForSize:(struct CGSize)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)layoutSubviews;
 - (long long)lookStyle;
+- (void)notificationContentView:(id)arg1 willInteractWithURL:(id)arg2;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
 - (struct CGRect)scrollViewFrame;

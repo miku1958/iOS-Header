@@ -9,19 +9,18 @@
 #import <AXSpeechManager/TTSSpeechSynthesizerDelegate-Protocol.h>
 
 @class AXSpeechThread, NSArray, NSMutableArray, NSNumber, NSString, TTSSpeechSynthesizer;
-@protocol OS_dispatch_semaphore;
 
 @interface AXSpeechManager : NSObject <TTSSpeechSynthesizerDelegate>
 {
     NSMutableArray *_speechQueue;
     TTSSpeechSynthesizer *_synthesizer;
     AXSpeechThread *_runThread;
-    NSObject<OS_dispatch_semaphore> *_runThreadSemaphore;
     unsigned int _audioQueueFlags;
     BOOL _isSpeaking;
     BOOL _speechEnabled;
     BOOL isPaused;
     BOOL _showControlCenterControls;
+    CDUnknownBlockType _requestWillStart;
     NSNumber *_originalSpeechRateForJobOverride;
 }
 
@@ -33,10 +32,12 @@
 @property (readonly, nonatomic) BOOL isSpeaking; // @dynamic isSpeaking;
 @property (strong, nonatomic) NSNumber *originalSpeechRateForJobOverride; // @synthesize originalSpeechRateForJobOverride=_originalSpeechRateForJobOverride;
 @property (strong, nonatomic) NSArray *outputChannels;
+@property (copy, nonatomic) CDUnknownBlockType requestWillStart; // @synthesize requestWillStart=_requestWillStart;
 @property (readonly, nonatomic) BOOL showControlCenterControls; // @synthesize showControlCenterControls=_showControlCenterControls;
 @property (nonatomic) BOOL speechEnabled; // @synthesize speechEnabled=_speechEnabled;
 @property (readonly) Class superclass;
 
++ (id)_resetAvailableVoices;
 + (id)availableLanguageCodes;
 + (id)availableVoices;
 + (struct URegularExpression *)createRegularExpressionFromString:(id)arg1;
@@ -48,6 +49,7 @@
 + (void)test_actionStartTap:(CDUnknownBlockType)arg1;
 + (void)test_setAvailableVoices:(id)arg1;
 + (void)test_setUnitTestMode:(BOOL)arg1;
+- (void).cxx_destruct;
 - (void)__speechJobFinished:(id)arg1;
 - (void)_clearSpeechQueue;
 - (void)_continueSpeaking;

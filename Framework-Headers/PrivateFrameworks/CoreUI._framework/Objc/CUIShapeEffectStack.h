@@ -80,6 +80,7 @@
 - (void)adjustEffectColorsToTemperature:(int)arg1 onlyTintableColors:(BOOL)arg2;
 - (void)applyCustomForegroundColor:(struct CGColor *)arg1;
 - (void)applyCustomForegroundColor:(struct CGColor *)arg1 tintEffectColors:(BOOL)arg2;
+- (id)cacheKey;
 - (int)cgBlendModeForOutputBlending;
 - (float)colorOverlayOpacity;
 - (id)compositeEffectStackWithShapeImage:(id)arg1 withScale:(double)arg2;
@@ -112,10 +113,12 @@
 - (float)innerGradientOpacity;
 - (struct CGImage *)newFlattenedImageFromShapeCGImage:(struct CGImage *)arg1;
 - (struct CGImage *)newFlattenedImageFromShapeCGImage:(struct CGImage *)arg1 withScale:(double)arg2;
+- (struct CGImage *)newFlattenedImageFromShapeCGImage:(struct CGImage *)arg1 withScale:(double)arg2 cache:(BOOL)arg3;
 - (struct CGImage *)newFlattenedImageFromShapeCGImage:(struct CGImage *)arg1 withScale:(double)arg2 ciContext:(id)arg3;
 - (id)optimizedSingleBlurEffectCompositeWithShapeImage:(id)arg1;
 - (id)processedImageFromShapeImage:(id)arg1;
 - (id)processedImageFromShapeImage:(id)arg1 withScale:(double)arg2;
+- (id)processedImageFromShapeImage:(id)arg1 withScale:(double)arg2 invertShadows:(BOOL)arg3;
 - (id)processedImageFromShapePath:(struct CGPath *)arg1 inRect:(struct CGRect)arg2;
 - (void)scaleBrightnessOfEffectColorsByAmount:(double)arg1 onlyTintableColors:(BOOL)arg2;
 - (void)scaleEffectParametersBy:(double)arg1;

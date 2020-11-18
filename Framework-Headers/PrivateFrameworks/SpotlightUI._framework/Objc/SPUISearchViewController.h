@@ -6,61 +6,61 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <SpotlightUI/SPSearchAgentDelegate-Protocol.h>
+#import <SpotlightUI/SFFeedbackListener-Protocol.h>
+#import <SpotlightUI/SPUIResultViewDelegate-Protocol.h>
 #import <SpotlightUI/SPUISearchHeaderDelegate-Protocol.h>
-#import <SpotlightUI/SPUISearchResultHandlerDelegate-Protocol.h>
-#import <SpotlightUI/SPUITableViewDelegate-Protocol.h>
 #import <SpotlightUI/SearchUIFirstTimeExperienceDelegate-Protocol.h>
+#import <SpotlightUI/SearchUIResultViewTestingDelegate-Protocol.h>
+#import <SpotlightUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, NSTimer, SPUILockScreenFooterView, SPUISearchFirstTimeViewController, SPUISearchHeader, SPUISearchResultHandler, SPUITableViewController, UIView, _UILegibilitySettings;
+@class NSArray, NSMutableSet, NSString, NSTimer, SPUILockScreenFooterView, SPUIResultViewController, SPUISearchFirstTimeViewController, SPUISearchHeader, UITableView, UIView, _UILegibilitySettings;
 @protocol SPUISearchViewControllerDelegate;
 
-@interface SPUISearchViewController : UIViewController <SPUISearchHeaderDelegate, SearchUIFirstTimeExperienceDelegate, SPUITableViewDelegate, SPSearchAgentDelegate, SPUISearchResultHandlerDelegate>
+@interface SPUISearchViewController : UIViewController <SPUISearchHeaderDelegate, SearchUIFirstTimeExperienceDelegate, SPUIResultViewDelegate, UIGestureRecognizerDelegate, SFFeedbackListener, SearchUIResultViewTestingDelegate>
 {
     unsigned long long _queryStartTime;
     NSTimer *_queryUpdateTimer;
     BOOL _internetOverrideForPPT;
-    BOOL _isBeingPresented;
-    BOOL _wasVisibleWhenPresented;
-    BOOL _clearSearchFieldAfterDismissal;
     id<SPUISearchViewControllerDelegate> _delegate;
     _UILegibilitySettings *_legibilitySettings;
-    UIView *_replicatorView;
     SPUISearchHeader *_searchHeader;
+    NSMutableSet *_allHeaderViews;
     SPUISearchFirstTimeViewController *_firstTimeExperienceViewController;
-    SPUITableViewController *_searchTableViewController;
-    SPUITableViewController *_zeroKeywordTableViewController;
-    SPUISearchResultHandler *_resultHandler;
-    SPUILockScreenFooterView *_footerView;
+    SPUIResultViewController *_searchResultViewController;
+    SPUIResultViewController *_proactiveResultViewController;
+    SPUILockScreenFooterView *_lockScreenFooterView;
     unsigned long long _presentationMode;
-    NSMutableArray *_searchRatingSessionFeedback;
     double _statusBarDismissTime;
     NSTimer *_clearResultsTimer;
+    UITableView *_testingTableView;
+    NSArray *_testingSections;
 }
 
+@property (strong) NSMutableSet *allHeaderViews; // @synthesize allHeaderViews=_allHeaderViews;
 @property (strong) NSTimer *clearResultsTimer; // @synthesize clearResultsTimer=_clearResultsTimer;
-@property BOOL clearSearchFieldAfterDismissal; // @synthesize clearSearchFieldAfterDismissal=_clearSearchFieldAfterDismissal;
+@property (readonly) NSString *currentQuery;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SPUISearchViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double distanceToTopOfAppIcons;
 @property (strong) SPUISearchFirstTimeViewController *firstTimeExperienceViewController; // @synthesize firstTimeExperienceViewController=_firstTimeExperienceViewController;
-@property (strong) SPUILockScreenFooterView *footerView; // @synthesize footerView=_footerView;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UIView *headerView;
 @property BOOL internetOverrideForPPT; // @synthesize internetOverrideForPPT=_internetOverrideForPPT;
-@property BOOL isBeingPresented; // @synthesize isBeingPresented=_isBeingPresented;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
+@property (strong) SPUILockScreenFooterView *lockScreenFooterView; // @synthesize lockScreenFooterView=_lockScreenFooterView;
 @property unsigned long long presentationMode; // @synthesize presentationMode=_presentationMode;
-@property (strong) UIView *replicatorView; // @synthesize replicatorView=_replicatorView;
-@property (strong) SPUISearchResultHandler *resultHandler; // @synthesize resultHandler=_resultHandler;
+@property (strong) SPUIResultViewController *proactiveResultViewController; // @synthesize proactiveResultViewController=_proactiveResultViewController;
 @property (strong) SPUISearchHeader *searchHeader; // @synthesize searchHeader=_searchHeader;
-@property (strong) NSMutableArray *searchRatingSessionFeedback; // @synthesize searchRatingSessionFeedback=_searchRatingSessionFeedback;
-@property (strong) SPUITableViewController *searchTableViewController; // @synthesize searchTableViewController=_searchTableViewController;
+@property (strong) SPUIResultViewController *searchResultViewController; // @synthesize searchResultViewController=_searchResultViewController;
 @property double statusBarDismissTime; // @synthesize statusBarDismissTime=_statusBarDismissTime;
 @property (readonly) Class superclass;
-@property BOOL wasVisibleWhenPresented; // @synthesize wasVisibleWhenPresented=_wasVisibleWhenPresented;
-@property (strong) SPUITableViewController *zeroKeywordTableViewController; // @synthesize zeroKeywordTableViewController=_zeroKeywordTableViewController;
+@property (strong) NSArray *testingSections; // @synthesize testingSections=_testingSections;
+@property (strong) UITableView *testingTableView; // @synthesize testingTableView=_testingTableView;
 
++ (BOOL)_isSuggestionResult:(id)arg1;
++ (BOOL)isFeedbackSelector:(SEL)arg1;
++ (BOOL)shouldShowAsTypedSuggestion;
 - (void).cxx_destruct;
 - (void)activateFirstTimeExperienceViewAnimate:(BOOL)arg1;
 - (void)activateFirstTimeExperienceViewIfNecessary;
@@ -68,52 +68,53 @@
 - (id)activeViewController;
 - (BOOL)allowInternet;
 - (void)cancelButtonPressed;
+- (void)clearResultsFromSection:(id)arg1;
 - (void)clearSearchResults;
-- (void)clearSearchResultsPrefsChanged;
 - (void)clearTimerExpired;
 - (id)contentScrollView;
-- (id)currentQuery;
+- (id)createAdditionalHeaderView;
+- (void)dealloc;
+- (void)dictationButtonPressed;
 - (void)didBeginEditing;
-- (void)didBeginScrollingInTableView;
-- (void)didPullDownTableView;
-- (void)didSelectResult:(id)arg1 withFeedback:(id)arg2 wasPop:(BOOL)arg3;
+- (void)didBeginScrollingResults;
+- (void)didChangeExpansionStateForSection:(id)arg1 expanded:(BOOL)arg2;
+- (void)didEngageResult:(id)arg1;
 - (void)didSwipeUpOnTableView;
-- (void)didTapInEmptyAreaOfTableView;
-- (void)enableUpdates:(id)arg1;
+- (void)didTapInEmptyRegion;
+- (void)didUpdateContentScrolledOffScreenStatus:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)didUpdateFromResults;
 - (void)firstTimeExperienceContinueButtonPressed;
-- (id)headerNextResponder;
+- (id)forwardingTargetForSelector:(SEL)arg1;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)hideKeyboard;
-- (void)hideSeparator;
 - (id)init;
-- (BOOL)isVisible;
-- (void)numberOfRowsDidChange:(id)arg1;
 - (void)performSearchWithQuery:(id)arg1;
+- (void)performSearchWithQuery:(id)arg1 forSuggestions:(BOOL)arg2;
+- (void)performSearchWithSuggestion:(id)arg1;
 - (void)performTestBlock:(CDUnknownBlockType)arg1 waitingForNotificationNamed:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)performTestSearchWithQuery:(id)arg1 event:(unsigned long long)arg2 sourcePreference:(long long)arg3;
 - (void)popToSpotlight;
-- (void)queryContextDidChange:(id)arg1 allowZKW:(BOOL)arg2;
+- (void)queryContextDidChange:(id)arg1 fromSearchHeader:(id)arg2 allowZKW:(BOOL)arg3;
 - (BOOL)queryIsPresent;
+- (BOOL)respondsToSelector:(SEL)arg1;
+- (void)resultViewController:(id)arg1 updatedTableViewController:(id)arg2 withSections:(id)arg3;
 - (void)runSpotlightScrollSearchResultsTest:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)runSpotlightShowAndScrollCardsTest:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)runTest:(id)arg1 options:(id)arg2 unlockSpringBoard:(CDUnknownBlockType)arg3 enterSpotlight:(CDUnknownBlockType)arg4 exitSpotlight:(CDUnknownBlockType)arg5;
 - (double)scrollDeltaForScrollView:(id)arg1;
 - (void)scrollScrollView:(id)arg1 iterations:(unsigned long long)arg2 initiation:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)scrollSearchTable:(id)arg1 iterations:(unsigned long long)arg2 delta:(unsigned long long)arg3;
-- (void)searchAgentClearedResults:(id)arg1;
-- (void)searchAgentReceivedSuggestions:(id)arg1;
-- (void)searchAgentUpdatedResults:(id)arg1;
-- (void)searchForSuggestedQuery:(id)arg1;
+- (void)scrollSearchTableWithTestName:(id)arg1 iterations:(unsigned long long)arg2;
 - (void)searchViewDidDismissWithReason:(unsigned long long)arg1;
 - (void)searchViewDidPresentFromSource:(unsigned long long)arg1;
 - (void)searchViewWillDismissWithReason:(unsigned long long)arg1;
 - (void)searchViewWillPresentFromSource:(unsigned long long)arg1;
+- (BOOL)sectionIsClearable:(id)arg1;
+- (BOOL)sectionShouldBeExpanded:(id)arg1;
 - (BOOL)selectCategoryNamed:(id)arg1 testName:(id)arg2;
-- (void)sendRatingFeedback;
 - (void)setInternetOverrideToDisable:(BOOL)arg1;
-- (void)settingsChanged;
-- (id)tableViewControllerWithSearchModel:(id)arg1;
-- (void)tableViewDidFinishReload:(id)arg1;
-- (void)update:(id)arg1;
+- (void)updateHeaderViewsWithBlock:(CDUnknownBlockType)arg1;
 - (id)viewControllerForPresenting;
+- (void)viewDidLayoutSubviews;
 
 @end
 

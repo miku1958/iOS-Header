@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) UISelectionGrabber *grabber; // @synthesize grabber=m_grabber;
 
 - (void).cxx_destruct;
+- (struct CGRect)_extendedHitTestingRectIncludingCalloutBarAdjustments:(BOOL)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 container:(id)arg2;

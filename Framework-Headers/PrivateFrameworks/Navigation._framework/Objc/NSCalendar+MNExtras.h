@@ -12,6 +12,6 @@
 - (BOOL)_navigation_isDateInTomorrow:(id)arg1 inTimeZone:(id)arg2;
 - (id)_navigation_offsetDate:(id)arg1 toTimeZone:(id)arg2;
 - (id)_navigation_relativeDateStringForDate:(id)arg1 context:(long long)arg2 inTimeZone:(id)arg3;
-- (id)_navigation_transitRelativeDateStringForDate:(id)arg1 context:(long long)arg2 inTimeZone:(id)arg3;
+- (id)_navigation_transitRelativeDateStringForDate:(id)arg1 context:(long long)arg2 inTimeZone:(id)arg3 outUsedFormat:(out unsigned long long *)arg4;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSArray, PGPlaybackProgress, PGPlaybackProgressIndicator, PGTimer, UIButton;
+@class NSArray, NSTimer, PGPlaybackProgress, PGPlaybackProgressIndicator, UIButton;
 @protocol PGPictureInPictureControlsViewControllerDelegate;
 
 @interface PGPictureInPictureControlsViewController : UIViewController
@@ -21,7 +21,7 @@
     long long _controlsSize;
     BOOL _controlsVisibilityNeedsUpdate;
     long long _controlsVisibilityCounter;
-    PGTimer *_controlsVisibilityTimer;
+    NSTimer *_controlsVisibilityTimer;
     BOOL _shouldShowControlsIfNeeded;
     BOOL _shouldShowControlsForUserInteraction;
     BOOL _shouldShowControlsAfterUserInteraction;
@@ -54,9 +54,9 @@
 - (id)_cancelButtonBackgroundImage;
 - (id)_cancelButtonImage;
 - (void)_cancelButtonTapped:(id)arg1;
-- (void)_handleDoubleDoubleTapGesture:(id)arg1;
-- (void)_handleDoubleTapGesture:(id)arg1;
-- (void)_handleSingleTapGesture:(id)arg1;
+- (void)_handleDoubleDoubleTapGestureRecognizer:(id)arg1;
+- (void)_handleDoubleTapGestureRecognizer:(id)arg1;
+- (void)_handleSingleTapGestureRecognizer:(id)arg1;
 - (void)_hideControlsForTouchUp;
 - (void)_hideControlsIfPossible;
 - (void)_hideControlsIfPossibleAfterDelayIfPlaying;
@@ -71,6 +71,7 @@
 - (id)_stopButtonBackgroundImage;
 - (id)_stopButtonImage;
 - (void)_stopButtonTapped:(id)arg1;
+- (void)_toggleControlsVisibilityForUserInteraction;
 - (void)_updateControlsVisibility;
 - (void)_updateControlsVisibilityIfNeeded;
 - (void)_userInteractionObservationControlTouchDown:(id)arg1;

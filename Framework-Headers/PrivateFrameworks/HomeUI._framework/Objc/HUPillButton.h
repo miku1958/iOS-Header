@@ -6,29 +6,45 @@
 
 #import <UIKit/UIButton.h>
 
-@class NSString, UILabel, UIView;
+@class NAUILayoutConstraintSet, NSString, UIFont, UILabel, UIView;
 
 @interface HUPillButton : UIButton
 {
     unsigned long long _style;
+    NAUILayoutConstraintSet *_constraintSet;
     UIView *_backgroundView;
     UILabel *_buttonLabel;
+    struct {
+        double topToLabelBaselineDistance;
+        double labelBaselineToBottomDistance;
+        double minHorizontalPadding;
+        double minWidth;
+    } _metrics;
 }
 
 @property (nonatomic) BOOL adjustsFontSizeToFitWidth; // @dynamic adjustsFontSizeToFitWidth;
 @property (readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property (strong, nonatomic) UIFont *buttonFont;
 @property (readonly, nonatomic) UILabel *buttonLabel; // @synthesize buttonLabel=_buttonLabel;
 @property (copy, nonatomic) NSString *buttonText; // @dynamic buttonText;
+@property (readonly, nonatomic) NAUILayoutConstraintSet *constraintSet; // @synthesize constraintSet=_constraintSet;
+@property (nonatomic) CDStruct_d2b197d1 metrics; // @synthesize metrics=_metrics;
 @property (readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 
++ (CDStruct_d2b197d1)defaultMetrics;
++ (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
-- (void)_setupConstraints;
+- (void)_setupConstraintSet;
 - (void)didMoveToSuperview;
 - (id)initWithBackgroundStyle:(unsigned long long)arg1;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)tintColorDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateConstraints;
+- (id)viewForFirstBaselineLayout;
+- (id)viewForLastBaselineLayout;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <CalendarDaemon/EKDefaultPropertiesLoading-Protocol.h>
 
-@class NSDate, NSSet, NSString;
+@class NSArray, NSDate, NSString;
 
 @interface EKReminderPredicate : EKPredicate <EKDefaultPropertiesLoading>
 {
@@ -23,12 +23,12 @@
     NSDate *_dueBefore;
     NSString *_searchTerm;
     unsigned long long _maxResults;
-    NSSet *_defaultPropertiesToLoad;
+    NSArray *_defaultPropertiesToLoad;
 }
 
 @property (nonatomic) BOOL completed; // @synthesize completed=_completed;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) NSSet *defaultPropertiesToLoad; // @synthesize defaultPropertiesToLoad=_defaultPropertiesToLoad;
+@property (strong, nonatomic) NSArray *defaultPropertiesToLoad; // @synthesize defaultPropertiesToLoad=_defaultPropertiesToLoad;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSDate *dueAfter; // @synthesize dueAfter=_dueAfter;
 @property (strong, nonatomic) NSDate *dueBefore; // @synthesize dueBefore=_dueBefore;

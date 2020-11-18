@@ -6,16 +6,20 @@
 
 #import <Home/HFItemProvider.h>
 
-@class NSMutableSet;
+@class HMHome, NSMutableSet;
 
 @interface HFResidentDeviceStatusDetailsItemProvider : HFItemProvider
 {
+    HMHome *_home;
     NSMutableSet *_residentDeviceItems;
 }
 
+@property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSMutableSet *residentDeviceItems; // @synthesize residentDeviceItems=_residentDeviceItems;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 - (id)initWithHome:(id)arg1;
 - (id)invalidationReasons;
 - (id)items;

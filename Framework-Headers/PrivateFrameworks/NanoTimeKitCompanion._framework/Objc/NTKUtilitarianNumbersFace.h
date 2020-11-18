@@ -10,10 +10,10 @@
 {
 }
 
-+ (id)_complicationSlotDescriptors;
 + (id)_dateComplicationSlot;
 + (unsigned long long)_dateComplicationSlotSupportedStyles;
 + (id)_defaultSelectedComplicationSlot;
+- (id)_complicationSlotDescriptors;
 - (id)_orderedComplicationSlots;
 
 @end

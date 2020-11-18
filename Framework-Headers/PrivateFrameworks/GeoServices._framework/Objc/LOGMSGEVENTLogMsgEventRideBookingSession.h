@@ -10,7 +10,6 @@
 
 @class GEOLatLng, NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface LOGMSGEVENTLogMsgEventRideBookingSession : PBCodable <NSCopying>
 {
     double _distanceToPickupInMeters;
@@ -20,6 +19,7 @@ __attribute__((visibility("hidden")))
     int _endState;
     int _endView;
     NSMutableArray *_errorMessages;
+    NSMutableArray *_intentResponseFailures;
     unsigned int _numberOfAvailableExtensions;
     GEOLatLng *_originBlurred;
     NSString *_rideAppId;
@@ -84,6 +84,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) BOOL hasUnavailable;
 @property (nonatomic) BOOL installedApp; // @synthesize installedApp=_installedApp;
+@property (strong, nonatomic) NSMutableArray *intentResponseFailures; // @synthesize intentResponseFailures=_intentResponseFailures;
 @property (nonatomic) BOOL movedPickupLocation; // @synthesize movedPickupLocation=_movedPickupLocation;
 @property (nonatomic) unsigned int numberOfAvailableExtensions; // @synthesize numberOfAvailableExtensions=_numberOfAvailableExtensions;
 @property (strong, nonatomic) GEOLatLng *originBlurred; // @synthesize originBlurred=_originBlurred;
@@ -99,14 +100,17 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL unavailable; // @synthesize unavailable=_unavailable;
 
 + (Class)errorMessageType;
++ (Class)intentResponseFailureType;
+- (void).cxx_destruct;
 - (int)StringAsEndState:(id)arg1;
 - (int)StringAsEndView:(id)arg1;
 - (int)StringAsStatusIssue:(id)arg1;
 - (void)addErrorMessage:(id)arg1;
+- (void)addIntentResponseFailure:(id)arg1;
 - (void)clearErrorMessages;
+- (void)clearIntentResponseFailures;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)endStateAsString:(int)arg1;
@@ -114,6 +118,8 @@ __attribute__((visibility("hidden")))
 - (id)errorMessageAtIndex:(unsigned long long)arg1;
 - (unsigned long long)errorMessagesCount;
 - (unsigned long long)hash;
+- (id)intentResponseFailureAtIndex:(unsigned long long)arg1;
+- (unsigned long long)intentResponseFailuresCount;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

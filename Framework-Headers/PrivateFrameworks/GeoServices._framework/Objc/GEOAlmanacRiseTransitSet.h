@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDate;
 
@@ -25,8 +25,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSDate *transit;
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)_dateFromOffset:(double)arg1 ofJulianDay:(double)arg2;
-- (void)dealloc;
 - (id)initWithJulianDay:(double)arg1 riseTransitSet:(struct CAARiseTransitSetDetails)arg2;
 
 @end

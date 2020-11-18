@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, NSMutableArray, NSMutableDictionary;
+@class NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet;
 
 @interface PUReviewDataSource : NSObject
 {
@@ -17,7 +17,7 @@
     NSMutableDictionary *__enqueuedBurstAssetIdentifiersByBurstIdentifier;
     NSMutableDictionary *__enqueuedBurstAssetsByAssetIdentifier;
     long long __nestedPerformChanges;
-    long long __pendingChangeNotifications;
+    NSMutableSet *__updatedAssetIdentifiers;
 }
 
 @property (readonly, nonatomic) NSMutableArray *_assetIdentifiers; // @synthesize _assetIdentifiers=__assetIdentifiers;
@@ -26,14 +26,10 @@
 @property (readonly, nonatomic) NSMutableDictionary *_enqueuedBurstAssetsByAssetIdentifier; // @synthesize _enqueuedBurstAssetsByAssetIdentifier=__enqueuedBurstAssetsByAssetIdentifier;
 @property (nonatomic, setter=_setNestedPerformChanges:) long long _nestedPerformChanges; // @synthesize _nestedPerformChanges=__nestedPerformChanges;
 @property (readonly, nonatomic) NSHashTable *_observers; // @synthesize _observers=__observers;
-@property (nonatomic, setter=_setPendingChangeNotifications:) long long _pendingChangeNotifications; // @synthesize _pendingChangeNotifications=__pendingChangeNotifications;
 @property (readonly, nonatomic) NSMutableDictionary *_representativeAssetsByBurstIdentifier; // @synthesize _representativeAssetsByBurstIdentifier=__representativeAssetsByBurstIdentifier;
+@property (readonly, nonatomic) NSMutableSet *_updatedAssetIdentifiers; // @synthesize _updatedAssetIdentifiers=__updatedAssetIdentifiers;
 
 - (void).cxx_destruct;
-- (id)_initWithAssetIdentifiers:(id)arg1 assetsByIdentifier:(id)arg2 representativeAssetsByBurstIdentifier:(id)arg3;
-- (void)_insertAssetWithoutNotifying:(id)arg1;
-- (void)_notifyObserversOfDataSourceChange;
-- (BOOL)_removeAssetWithIdentifier:(id)arg1;
 - (id)assetsByIdentifier;
 - (id)description;
 - (void)enqueuePendingBurstAsset:(id)arg1;

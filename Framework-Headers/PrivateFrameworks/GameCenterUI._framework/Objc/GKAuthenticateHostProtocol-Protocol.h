@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameCenterUI/GKServiceViewControllerDelegate-Protocol.h>
+#import <GameCenterUI/GKExtensionHostProtocol-Protocol.h>
 
-@protocol GKAuthenticateHostProtocol <GKServiceViewControllerDelegate>
+@protocol GKAuthenticateHostProtocol <GKExtensionHostProtocol>
+
+@optional
 - (void)unlockRotation;
 @end
 

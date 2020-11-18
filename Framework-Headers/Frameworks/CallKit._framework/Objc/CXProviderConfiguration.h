@@ -14,17 +14,19 @@
 
 @interface CXProviderConfiguration : NSObject <NSSecureCoding, CXCopying, NSCopying>
 {
+    BOOL _includesCallsInRecents;
     BOOL _supportsVideo;
     BOOL _supportsAudioOnly;
     BOOL _supportsEmergency;
     BOOL _supportsVoicemail;
+    BOOL _supportsCurrentPlatform;
     unsigned int _audioSessionID;
     NSString *_localizedName;
     NSData *_iconTemplateImageData;
     unsigned long long _maximumCallGroups;
     unsigned long long _maximumCallsPerCallGroup;
     NSSet *_supportedHandleTypes;
-    NSArray *_emergencyNumbers;
+    NSArray *_emergencyHandles;
     NSArray *_emergencyLabeledHandles;
     NSArray *_handoffIdentifiers;
     NSURL *_ringtoneSoundURL;
@@ -33,11 +35,12 @@
 @property (nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSArray *emergencyHandles; // @synthesize emergencyHandles=_emergencyHandles;
 @property (copy, nonatomic) NSArray *emergencyLabeledHandles; // @synthesize emergencyLabeledHandles=_emergencyLabeledHandles;
-@property (copy, nonatomic) NSArray *emergencyNumbers; // @synthesize emergencyNumbers=_emergencyNumbers;
 @property (copy, nonatomic) NSArray *handoffIdentifiers; // @synthesize handoffIdentifiers=_handoffIdentifiers;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSData *iconTemplateImageData; // @synthesize iconTemplateImageData=_iconTemplateImageData;
+@property (nonatomic) BOOL includesCallsInRecents; // @synthesize includesCallsInRecents=_includesCallsInRecents;
 @property (copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (nonatomic) unsigned long long maximumCallGroups; // @synthesize maximumCallGroups=_maximumCallGroups;
 @property (nonatomic) unsigned long long maximumCallsPerCallGroup; // @synthesize maximumCallsPerCallGroup=_maximumCallsPerCallGroup;
@@ -46,6 +49,7 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSSet *supportedHandleTypes; // @synthesize supportedHandleTypes=_supportedHandleTypes;
 @property (nonatomic) BOOL supportsAudioOnly; // @synthesize supportsAudioOnly=_supportsAudioOnly;
+@property (nonatomic) BOOL supportsCurrentPlatform; // @synthesize supportsCurrentPlatform=_supportsCurrentPlatform;
 @property (nonatomic) BOOL supportsEmergency; // @synthesize supportsEmergency=_supportsEmergency;
 @property (nonatomic) BOOL supportsVideo; // @synthesize supportsVideo=_supportsVideo;
 @property (nonatomic) BOOL supportsVoicemail; // @synthesize supportsVoicemail=_supportsVoicemail;

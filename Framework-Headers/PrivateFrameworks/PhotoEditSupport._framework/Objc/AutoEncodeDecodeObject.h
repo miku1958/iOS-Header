@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSArray *keysToEncode; // @synthesize keysToEncode=_keysToEncode;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

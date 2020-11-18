@@ -29,6 +29,7 @@
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)webView:(id)arg1 didFailLoadWithError:(id)arg2;
+- (void)webViewDidFinishLoad:(id)arg1;
 
 @end
 

@@ -6,14 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber, NSURLSession;
+@class FLFollowUpController, NSNumber, NSURLSession;
 
 @interface ICQDaemonOfferManager : NSObject
 {
     NSURLSession *_sharedURLSession;
+    FLFollowUpController *_followUpController;
 }
 
 @property (nonatomic, getter=isBuddyOfferEnabled) BOOL buddyOfferEnabled;
+@property (nonatomic, getter=isLegacyDeviceStorageLevelNotificationEnabled) BOOL legacyDeviceStorageLevelNotificationEnabled;
+@property (nonatomic) BOOL shouldDirectToStorageManagement;
 @property (nonatomic, getter=isSimulatedDeviceStorageAlmostFull) BOOL simulatedDeviceStorageAlmostFull;
 @property (strong, nonatomic) NSNumber *simulatedPhotosLibrarySize;
 @property (nonatomic) BOOL useHysteresisForDeviceStorageAlmostFull;
@@ -25,19 +28,25 @@
 - (void)_addCommonHeadersToRequest:(id)arg1 account:(id)arg2;
 - (void)_addEntriesToPostDictionary:(id)arg1 forStub:(id)arg2;
 - (BOOL)_attemptSetRequest:(id)arg1 toPostWithJSONDict:(id)arg2;
-- (void)_daemonOfferStubsDictionaryForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_clearStorageManagementFollowup;
+- (void)_daemonOfferStubsDictionaryForAccount:(id)arg1 isForBuddy:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fetchDaemonOfferForAccount:(id)arg1 stub:(id)arg2 notificationID:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_fetchDaemonOfferStubsForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_fetchDaemonOfferStubsForAccount:(id)arg1 isForBuddy:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fetchDictionaryForAccount:(id)arg1 quotaKey:(id)arg2 stub:(id)arg3 notificationID:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (BOOL)_isBackupEnabledForAccount:(id)arg1;
 - (id)_placeholderOfferForAccount:(id)arg1 isForBuddy:(BOOL)arg2 error:(id)arg3;
 - (void)_postDaemonOfferChangedDueToPushDarwinNotification;
 - (void)_postFollowupForDaemonOffer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_postOfferType:(id)arg1 isForBuddy:(BOOL)arg2;
+- (void)_postStorageManagementFollowup;
 - (void)_processPushNotificationDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_pushNotificationDictionary;
 - (void)_reconsiderOffersForAccount:(id)arg1 isForBuddy:(BOOL)arg2 choiceHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_sanitizedNotificationDictionary:(id)arg1 account:(id)arg2;
 - (void)_showDaemonAlertForOffer:(id)arg1 notificationDictionary:(id)arg2 store:(id)arg3 account:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)_storageManagementFollowupActions;
+- (id)_storageManagementFollowupItem;
+- (id)_storageManagementFollowupNotification;
 - (void)_teardownCachedBuddyOffer;
 - (void)_teardownCachedOffer;
 - (void)_teardownCachedOffers;
@@ -54,6 +63,8 @@
 - (void)processPushNotificationDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)reconsiderOffersWithCompletion:(CDUnknownBlockType)arg1;
 - (id)soonestOfferOrStubExpirationDate;
+- (void)startDirectingToStorageManagement;
+- (void)stopDirectingToStorageManagement;
 - (void)teardownCachedBuddyOffer;
 - (void)teardownCachedOffer;
 - (void)teardownCachedOffers;

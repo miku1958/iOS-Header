@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TelephonyUtilities/TUSearchResult-Protocol.h>
 
@@ -18,6 +18,7 @@
 
 @property (readonly) CNContact *backingContact;
 @property (readonly) NSString *backingContactId;
+@property (readonly) NSString *backingContactIdentifier;
 @property (readonly) NSString *callerId; // @dynamic callerId;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -27,7 +28,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) NSString *idsCanonicalDestination;
 @property (readonly) NSArray *idsCanonicalDestinations;
-@property (readonly) NSString *idsUniqueId;
 @property (readonly) NSString *isoCountryCode; // @dynamic isoCountryCode;
 @property (readonly) NSString *mostRecentCallInfo;
 @property (readonly) long long mostRecentCallType;

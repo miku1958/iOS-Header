@@ -41,6 +41,7 @@
 - (int)_initializeAndStartBonjourBrowser;
 - (void)_invalidateAccessoryServers:(BOOL)arg1;
 - (void)_invalidateAndRemoveAccessoryServer:(id)arg1;
+- (void)_matchAccessoryServerWithSetupID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_pendBonjourEvent:(id)arg1;
 - (void)_pendBonjourRemoveEvent:(id)arg1;
 - (void)_processPendingBonjourEvent:(id)arg1;
@@ -51,6 +52,7 @@
 - (void)discoverAccessoryServerWithIdentifier:(id)arg1;
 - (id)initWithQueue:(id)arg1;
 - (long long)linkType;
+- (void)matchAccessoryServerWithSetupID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)mergeScanResults:(id)arg1;
 - (void)processPendingBonjourRemoveEvents:(id)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;

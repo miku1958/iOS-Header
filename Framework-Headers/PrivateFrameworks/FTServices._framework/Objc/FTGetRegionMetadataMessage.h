@@ -19,10 +19,10 @@
 @property (copy) NSString *language; // @synthesize language=_language;
 @property (copy) NSDictionary *responseRegionInformation; // @synthesize responseRegionInformation=_responseRegionInformation;
 
+- (void).cxx_destruct;
 - (id)bagKey;
 - (long long)command;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)handleResponseDictionary:(id)arg1;
 - (id)init;
 - (id)messageBody;

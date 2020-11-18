@@ -22,6 +22,7 @@
 - (void)_processAuthFailure:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_setKeychainSyncState:(BOOL)arg1;
 - (BOOL)isUserVisibleKeychainSyncEnabled;
+- (BOOL)matchKeychainViewState:(BOOL)arg1;
 - (void)removeNonViewAwarePeersFromCircleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setUserVisibleKeychainSyncEnabled:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)synchronizeKeychainViewSetWithOtherPeers:(id *)arg1;

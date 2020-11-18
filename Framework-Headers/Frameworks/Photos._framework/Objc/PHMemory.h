@@ -6,52 +6,73 @@
 
 #import <Photos/PHAssetCollection.h>
 
-@class NSData, NSDate, NSDictionary, NSSet, NSString;
+@class NSArray, NSData, NSDate, NSDictionary, NSSet, NSString, PHMemoryFeature;
 
 @interface PHMemory : PHAssetCollection
 {
+    NSString *_title;
     NSString *_localizedSubtitle;
+    NSData *_photosGraphData;
+    long long _photosGraphVersion;
+    NSDictionary *_transientMemoryProperties;
     NSDate *_creationDate;
     long long _category;
     long long _subcategory;
+    unsigned long long _notificationState;
     BOOL _rejected;
     BOOL _favorite;
     BOOL _pending;
     BOOL _userCreated;
     NSDictionary *_movieAssetState;
     NSData *_movieData;
-    NSData *_photosGraphData;
-    long long _photosGraphVersion;
     double _score;
     NSDate *_lastViewedDate;
     NSDate *_lastMoviePlayedDate;
     NSString *_titleFontName;
     NSData *_assetListPredicate;
+    PHMemoryFeature *_blacklistedFeature;
+    long long _syncedPlayCount;
+    long long _syncedShareCount;
+    long long _syncedViewCount;
+    long long _pendingPlayCount;
+    long long _pendingShareCount;
+    long long _pendingViewCount;
     BOOL _didLoadTitleCategory;
     long long _titleCategory;
+    NSDictionary *_photosGraphProperties;
 }
 
 @property (readonly, nonatomic) NSData *assetListPredicate; // @synthesize assetListPredicate=_assetListPredicate;
+@property (readonly, nonatomic) NSArray *blacklistableFeatures;
+@property (readonly, nonatomic) PHMemoryFeature *blacklistedFeature; // @synthesize blacklistedFeature=_blacklistedFeature;
 @property (readonly, nonatomic) long long category; // @synthesize category=_category;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite; // @synthesize favorite=_favorite;
 @property (readonly, nonatomic) NSSet *featuredPeopleIdentifiers;
 @property (readonly, nonatomic) BOOL isContiguous;
+@property (readonly, nonatomic) BOOL isGreat;
+@property (readonly, nonatomic) BOOL isMustSee;
+@property (readonly, nonatomic) BOOL isStellar;
 @property (readonly, nonatomic) NSDate *lastMoviePlayedDate; // @synthesize lastMoviePlayedDate=_lastMoviePlayedDate;
 @property (readonly, nonatomic) NSDate *lastViewedDate; // @synthesize lastViewedDate=_lastViewedDate;
 @property (readonly, nonatomic) NSData *movieData; // @synthesize movieData=_movieData;
+@property (readonly, nonatomic) unsigned long long notificationState; // @synthesize notificationState=_notificationState;
 @property (readonly, nonatomic, getter=isPending) BOOL pending; // @synthesize pending=_pending;
 @property (readonly, nonatomic) NSData *photosGraphData; // @synthesize photosGraphData=_photosGraphData;
 @property (readonly, nonatomic) long long photosGraphVersion; // @synthesize photosGraphVersion=_photosGraphVersion;
+@property (readonly, nonatomic) long long playCount;
 @property (readonly, nonatomic, getter=isRejected) BOOL rejected; // @synthesize rejected=_rejected;
 @property (readonly, nonatomic) double score; // @synthesize score=_score;
+@property (readonly, nonatomic) long long shareCount;
 @property (readonly, nonatomic) long long subcategory; // @synthesize subcategory=_subcategory;
 @property (readonly, nonatomic) NSString *subtitle;
 @property (readonly, nonatomic, getter=isUserCreated) BOOL userCreated; // @synthesize userCreated=_userCreated;
+@property (readonly, nonatomic) long long viewCount;
 
-+ (id)_transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
++ (id)_fetchOptionsForTransientMemoryAssetsWithOptions:(id)arg1;
 + (id)assetListPredicateFromQueryHintObjects:(id)arg1;
 + (id)entityKeyForPropertyKey:(id)arg1;
-+ (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
++ (id)fetchBestRecentMemoryWithOptions:(id)arg1;
++ (id)fetchTransientMemoriesWithOptions:(id)arg1;
 + (id)fetchType;
 + (void)generateMemoriesWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)identifierCode;
@@ -59,12 +80,18 @@
 + (BOOL)managedObjectSupportsPendingState;
 + (BOOL)managedObjectSupportsRejectedState;
 + (BOOL)managedObjectSupportsTrashedState;
++ (id)memoryTreeLevelWithOptions:(id)arg1;
 + (id)movieDataWithTitleFontName:(id)arg1;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
 + (id)stringForCategory:(long long)arg1;
 + (id)stringForSubcategory:(long long)arg1;
 + (id)titleFontNameFromMovieData:(id)arg1;
++ (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
++ (id)transientMemoryWithDictionary:(id)arg1;
 - (void).cxx_destruct;
+- (id)_curatedAssetIDs;
+- (id)_extendedCuratedAssetIDs;
+- (id)_photosGraphProperties;
 - (id)_representativeAndCuratedAssetIDs;
 - (BOOL)canContainAssets;
 - (BOOL)canPerformEditOperation:(long long)arg1;
@@ -73,14 +100,26 @@
 - (BOOL)collectionHasFixedOrder;
 - (id)creationDate;
 - (id)description;
+- (BOOL)hasBlacklistableFeature;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
+- (BOOL)isTransient;
 - (id)localizedSubtitle;
+- (id)moodKeywords;
 - (id)movieStateDataForAsset:(id)arg1;
 - (id)predicateForAllAssets;
 - (id)predicateForAllMomentsFromRepresentativeAssets;
+- (id)query;
+- (id)queryForCuratedAssetsWithOptions:(id)arg1;
+- (id)queryForExtendedCuratedAssetsWithOptions:(id)arg1;
+- (id)queryForKeyAssetWithOptions:(id)arg1;
+- (id)rejectionCause;
+- (void)setupTransientMemory;
+- (unsigned long long)suggestedMood;
 - (long long)titleCategory;
 - (id)titleFontName;
 - (unsigned long long)titleFontNameHash;
+- (id)transientMemoryStartDate;
+- (id)transientRepresentativeAndCuratedAssetIDs;
 
 @end
 

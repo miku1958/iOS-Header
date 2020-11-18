@@ -16,8 +16,9 @@
 - (id)_accessibilityBarButtonItemLabelFromActionSelector:(SEL)arg1;
 - (BOOL)_accessibilityIsScannerGroup;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (Class)_accessibilityPredictionClass;
 - (id)_accessibilityScannerGroupElements;
-- (int)_accessibilityScannerGroupTraits;
+- (unsigned long long)_accessibilityScannerGroupTraits;
 - (void)_axAddCurrentGroup:(id)arg1 toElements:(id)arg2;
 - (id)accessibilityLabel;
 - (id)barButtonItem:(unsigned long long)arg1;

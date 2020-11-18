@@ -8,18 +8,21 @@
 
 #import <UIKit/NSCoding-Protocol.h>
 #import <UIKit/NSISVariableDelegate-Protocol.h>
+#import <UIKit/UILayoutItem_Internal-Protocol.h>
 #import <UIKit/_UILayoutItem-Protocol.h>
 
-@class NSArray, NSISVariable, NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSMapTable, NSString, UIView;
+@class NSArray, NSISVariable, NSLayoutDimension, NSLayoutRect, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSMapTable, NSString, UITraitCollection, UIView;
 
-@interface UILayoutGuide : NSObject <_UILayoutItem, NSISVariableDelegate, NSCoding>
+@interface UILayoutGuide : NSObject <UILayoutItem_Internal, _UILayoutItem, NSISVariableDelegate, NSCoding>
 {
+    NSLayoutRect *_layoutRect;
     struct CGRect _layoutFrame;
     BOOL _isLayoutFrameValid;
     UIView *_unsafeUnretainedOwningView;
     BOOL _allowOwningViewSetting;
     BOOL _isLockedToOwningView;
     BOOL _useManualLayoutFrame;
+    BOOL __allowsNegativeDimensions;
     BOOL __shouldBeArchived;
     UIView *_owningView;
     NSString *_identifier;
@@ -42,6 +45,7 @@
 }
 
 @property (nonatomic, setter=_setAllowOwningViewSetting:) BOOL _allowOwningViewSetting; // @synthesize _allowOwningViewSetting;
+@property (nonatomic, setter=_setAllowsNegativeDimensions:) BOOL _allowsNegativeDimensions; // @synthesize _allowsNegativeDimensions=__allowsNegativeDimensions;
 @property (readonly, strong, nonatomic) NSISVariable *_boundsHeightVariable; // @synthesize _boundsHeightVariable;
 @property (readonly, strong, nonatomic) NSISVariable *_boundsWidthVariable; // @synthesize _boundsWidthVariable;
 @property (nonatomic, getter=_isLockedToOwningView, setter=_setLockedToOwningView:) BOOL _lockedToOwningView; // @synthesize _lockedToOwningView=_isLockedToOwningView;
@@ -50,40 +54,70 @@
 @property (nonatomic, setter=_setShouldBeArchived:) BOOL _shouldBeArchived; // @synthesize _shouldBeArchived=__shouldBeArchived;
 @property (readonly, strong, nonatomic) NSMapTable *_stashedLayoutVariableObservations; // @synthesize _stashedLayoutVariableObservations;
 @property (strong, nonatomic, setter=_setSystemConstraints:) NSArray *_systemConstraints; // @synthesize _systemConstraints;
+@property (readonly, nonatomic) struct CGRect _ui_bounds;
+@property (readonly, nonatomic) struct CGRect _ui_frame;
+@property (readonly, nonatomic) UIView *_ui_superview;
+@property (readonly, nonatomic) UIView *_ui_view;
 @property (readonly, nonatomic) BOOL _useManualLayoutFrame; // @synthesize _useManualLayoutFrame;
-@property (readonly) NSLayoutYAxisAnchor *bottomAnchor; // @synthesize bottomAnchor=_bottomAnchor;
-@property (readonly) NSLayoutXAxisAnchor *centerXAnchor; // @synthesize centerXAnchor=_centerXAnchor;
-@property (readonly) NSLayoutYAxisAnchor *centerYAnchor; // @synthesize centerYAnchor=_centerYAnchor;
+@property (readonly, nonatomic) NSLayoutYAxisAnchor *bottomAnchor;
+@property (readonly, nonatomic) NSLayoutYAxisAnchor *bottomAnchor; // @synthesize bottomAnchor=_bottomAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *centerXAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *centerXAnchor; // @synthesize centerXAnchor=_centerXAnchor;
+@property (readonly, nonatomic) NSLayoutYAxisAnchor *centerYAnchor;
+@property (readonly, nonatomic) NSLayoutYAxisAnchor *centerYAnchor; // @synthesize centerYAnchor=_centerYAnchor;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasAmbiguousLayout;
 @property (readonly) unsigned long long hash;
-@property (readonly) NSLayoutDimension *heightAnchor; // @synthesize heightAnchor=_heightAnchor;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSLayoutDimension *heightAnchor;
+@property (readonly, nonatomic) NSLayoutDimension *heightAnchor; // @synthesize heightAnchor=_heightAnchor;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) struct CGRect layoutFrame;
-@property (readonly) NSLayoutXAxisAnchor *leadingAnchor; // @synthesize leadingAnchor=_leadingAnchor;
-@property (readonly) NSLayoutXAxisAnchor *leftAnchor; // @synthesize leftAnchor=_leftAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *leadingAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *leadingAnchor; // @synthesize leadingAnchor=_leadingAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *leftAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *leftAnchor; // @synthesize leftAnchor=_leftAnchor;
+@property (setter=nsli_setPiercingToken:) unsigned long long nsli_piercingToken;
 @property (weak, nonatomic) UIView *owningView; // @synthesize owningView=_owningView;
-@property (readonly) NSLayoutXAxisAnchor *rightAnchor; // @synthesize rightAnchor=_rightAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *rightAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *rightAnchor; // @synthesize rightAnchor=_rightAnchor;
 @property (readonly) Class superclass;
-@property (readonly) NSLayoutYAxisAnchor *topAnchor; // @synthesize topAnchor=_topAnchor;
-@property (readonly) NSLayoutXAxisAnchor *trailingAnchor; // @synthesize trailingAnchor=_trailingAnchor;
-@property (readonly) NSLayoutDimension *widthAnchor; // @synthesize widthAnchor=_widthAnchor;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSLayoutYAxisAnchor *topAnchor;
+@property (readonly, nonatomic) NSLayoutYAxisAnchor *topAnchor; // @synthesize topAnchor=_topAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *trailingAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *trailingAnchor; // @synthesize trailingAnchor=_trailingAnchor;
+@property (readonly, nonatomic) UITraitCollection *traitCollection;
+@property (readonly, nonatomic) NSLayoutDimension *widthAnchor;
+@property (readonly, nonatomic) NSLayoutDimension *widthAnchor; // @synthesize widthAnchor=_widthAnchor;
 
 + (double)_defaultSpacingBetweenGuidesForResolvingSymbolicConstant;
 - (void).cxx_destruct;
+- (id)_autolayoutTraceAtLevel:(long long)arg1 recursively:(BOOL)arg2;
 - (id)_createAnchorWithClass:(Class)arg1 attribute:(long long)arg2;
+- (id)_descriptionForLayoutTrace;
+- (void)_invalidateLayoutFrame;
+- (id)_layoutRect;
 - (void)_owningViewIsDeallocating;
 - (void *)_referenceView;
 - (void)_setManualLayoutFrame:(struct CGRect)arg1;
 - (void)_setOwningView:(id)arg1;
 - (void)_snipReferencingConstraints;
+- (void)_ui_addSubLayoutItem:(id)arg1;
+- (void)_ui_addToView:(id)arg1 atIndex:(long long)arg2;
+- (void)_ui_insertSubLayoutItem:(id)arg1 atIndex:(long long)arg2;
+- (void)_ui_removeFromParentLayoutItem;
 - (id)_uili_existingBaseFrameVariables;
 - (id)_uili_existingLayoutVariables;
+- (BOOL)_uili_isFocusGuide;
 - (id)_uili_observableLayoutEngineForBaseFrameVariables:(BOOL)arg1;
 - (void)_uili_removeLayoutVariableObservationsOnlyToSupportTAMICChange:(BOOL)arg1;
 - (BOOL)_uili_requiresObservationForVariable:(id)arg1;
 - (void)_uili_stashLayoutVariableObservation:(id)arg1 forVariable:(id)arg2;
+- (void)_updateLayoutFrameInOwningView:(id)arg1 fromEngine:(id)arg2;
 - (id)constraintsAffectingLayoutForAxis:(long long)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
@@ -112,6 +146,7 @@
 - (BOOL)nsli_isLegalConstraintItem;
 - (BOOL)nsli_isRTL;
 - (id)nsli_layoutEngine;
+- (id)nsli_layoutMarginsItem;
 - (BOOL)nsli_lowerAttribute:(int)arg1 intoExpression:(id)arg2 withCoefficient:(double)arg3 container:(id)arg4;
 - (BOOL)nsli_lowerAttribute:(int)arg1 intoExpression:(id)arg2 withCoefficient:(double)arg3 forConstraint:(id)arg4;
 - (double)nsli_marginOffsetForAttribute:(long long)arg1;
@@ -121,6 +156,7 @@
 - (BOOL)nsli_resolvedValue:(double *)arg1 forSymbolicConstant:(id)arg2 inConstraint:(id)arg3 error:(id *)arg4;
 - (id)nsli_superitem;
 - (id)nsli_widthVariable;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

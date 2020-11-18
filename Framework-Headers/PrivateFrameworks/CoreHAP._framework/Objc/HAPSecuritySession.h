@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class NSData, NSMutableData;
+@class NSData, NSMutableData, NSObject;
 @protocol HAPSecuritySessionDelegate, OS_dispatch_queue;
 
-@interface HAPSecuritySession : NSObject
+@interface HAPSecuritySession : HMFObject
 {
     unsigned long long _state;
+    NSData *_broadcastKey;
     id<HAPSecuritySessionDelegate> _delegate;
     unsigned long long _role;
     unsigned long long _resumeSessionID;
@@ -24,6 +25,7 @@
     NSMutableData *_outputNonce;
 }
 
+@property (strong, nonatomic) NSData *broadcastKey; // @synthesize broadcastKey=_broadcastKey;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, weak) id<HAPSecuritySessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSData *inputKey; // @synthesize inputKey=_inputKey;
@@ -39,6 +41,7 @@
 @property unsigned long long state; // @synthesize state=_state;
 
 - (void).cxx_destruct;
+- (id)_broadcastInfo;
 - (void)_closeWithError:(id)arg1;
 - (id)_handleLocalPairingIdentityRequestWithStatus:(int *)arg1;
 - (id)_handlePeerPairingIdentityRequestWithIdentifier:(id)arg1 status:(int *)arg2;
@@ -58,6 +61,7 @@
 - (id)decryptData:(id)arg1 additionalAuthenticatedData:(id)arg2 error:(id *)arg3;
 - (id)description;
 - (id)encryptData:(id)arg1 additionalAuthenticatedData:(id)arg2 error:(id *)arg3;
+- (id)getBroadcastEncryptionKey;
 - (id)initWithRole:(unsigned long long)arg1 resumeSessionID:(unsigned long long)arg2 delegate:(id)arg3;
 - (void)open;
 - (void)reallyOpen;

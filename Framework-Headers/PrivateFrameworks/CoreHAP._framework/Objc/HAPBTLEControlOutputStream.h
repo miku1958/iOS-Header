@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class HAPBTLETransactionIdentifier, NSData, NSOperationQueue;
+@class HAPBTLETransactionIdentifier, NSData, NSObject, NSOperationQueue;
 @protocol HAPBTLEControlOutputStreamDelegate, OS_dispatch_queue;
 
-@interface HAPBTLEControlOutputStream : NSObject
+@interface HAPBTLEControlOutputStream : HMFObject
 {
     unsigned char _type;
     BOOL _complete;

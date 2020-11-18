@@ -4,42 +4,57 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <Contacts/CSSearchableIndexDelegate-Protocol.h>
+@class CNContactStore, CNIndexClientState;
+@protocol CNCSSearchableIndex, CNSpotlightIndexingLogger;
 
-@class CNContactStore, CSSearchableIndex, NSString;
-@protocol OS_dispatch_queue;
-
-@interface CNIndexRequestHandler : NSObject <CSSearchableIndexDelegate>
+@interface CNIndexRequestHandler : NSObject
 {
-    void *_ab;
-    CNContactStore *_store;
-    NSObject<OS_dispatch_queue> *_asyncQueue;
-    CSSearchableIndex *_index;
+    BOOL _isFullSyncNeeded;
+    CNContactStore *_contactStore;
+    id<CNCSSearchableIndex> _index;
+    id<CNSpotlightIndexingLogger> _logger;
+    unsigned long long _batchSize;
+    CNIndexClientState *_clientState;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) CSSearchableIndex *index; // @synthesize index=_index;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long batchSize; // @synthesize batchSize=_batchSize;
+@property (strong, nonatomic) CNIndexClientState *clientState; // @synthesize clientState=_clientState;
+@property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
+@property (strong, nonatomic) id<CNCSSearchableIndex> index; // @synthesize index=_index;
+@property (nonatomic) BOOL isFullSyncNeeded; // @synthesize isFullSyncNeeded=_isFullSyncNeeded;
+@property (readonly, nonatomic) id<CNSpotlightIndexingLogger> logger; // @synthesize logger=_logger;
 
-+ (id)defaultSearchableItemsDomain;
-+ (id)descriptorForRequiredKeysForSearchableItem;
-+ (void)initialize;
-+ (id)searchableItemsDomain;
-+ (void)setSearchableItemsDomain:(id)arg1;
 - (void).cxx_destruct;
-- (id)contactIdentifierFromPerson:(void *)arg1;
-- (void)dealloc;
-- (void)finishIndexingAllSearchableItemsIfNecessary;
+- (BOOL)_batchIndexUpdatingItems:(id)arg1 deletingItemsWithIdentifiers:(id)arg2 fullSyncOffset:(id)arg3 fullSyncDone:(id)arg4;
+- (id)_futureForDeleteAllSearchableItems;
+- (id)_futureForDeleteSearchableItemsWithIdentifiers:(id)arg1;
+- (id)_futureForEndIndexBatchWithClientState:(id)arg1;
+- (id)_futureForFetchLastClientState;
+- (id)_futureForIndexSearchableItems:(id)arg1;
+- (void)_performIndexingWithForcedReindexing:(BOOL)arg1;
+- (BOOL)batchIndexUpdatingItems:(id)arg1 deletingItemsWithIdentifiers:(id)arg2;
+- (BOOL)batchIndexUpdatingItems:(id)arg1 fullSyncOffset:(long long)arg2 fullSyncDone:(BOOL)arg3;
+- (BOOL)beginIndexBatch;
+- (void)consumeChangeHistory:(id)arg1;
+- (BOOL)deleteAllSearchableItems;
+- (BOOL)deleteSearchableItemsWithIdentifiers:(id)arg1;
+- (BOOL)deltaSyncContacts:(id)arg1;
+- (BOOL)endIndexBatchWithClientState;
+- (void)fetchAndCheckLastClientState;
+- (id)fetchChangeHistory;
+- (BOOL)fetchLastClientState;
+- (BOOL)fullSyncContacts;
+- (BOOL)indexSearchableItems:(id)arg1;
 - (id)init;
-- (id)initWithAddressBook:(void *)arg1;
-- (void)searchableIndex:(id)arg1 reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg2;
-- (void)searchableIndex:(id)arg1 reindexSearchableItemsWithIdentifiers:(id)arg2 acknowledgementHandler:(CDUnknownBlockType)arg3;
-- (id)searchableItemForContactIdentifier:(id)arg1;
-- (id)searchableItemForPerson:(void *)arg1;
+- (id)initWithContactStore:(id)arg1 searchableIndex:(id)arg2 logger:(id)arg3 batchSize:(unsigned long long)arg4;
+- (void)performIndexing;
+- (BOOL)prepareForFullSync:(id)arg1;
+- (void)registerForChangeHistory;
+- (void)reindexAllSearchableItems;
+- (void)reindexSearchableItemsWithIdentifiers:(id)arg1;
+- (id)searchableItemsForContactIdentifiers:(id)arg1;
 
 @end
 

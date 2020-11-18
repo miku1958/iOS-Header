@@ -6,15 +6,17 @@
 
 #import <HomeUI/HUQuickControlController.h>
 
-@class HFPrimaryStateControlItem;
+@class HFControlItem;
+@protocol HFPrimaryStateWriter;
 
 @interface HUQuickControlPrimaryStateController : HUQuickControlController
 {
 }
 
-@property (readonly, nonatomic) HFPrimaryStateControlItem *controlItem; // @dynamic controlItem;
+@property (readonly, nonatomic) HFControlItem<HFPrimaryStateWriter> *controlItem; // @dynamic controlItem;
 
 + (Class)controlItemClass;
++ (BOOL)matchesControlItem:(id)arg1;
 - (id)controlToViewValueTransformer;
 - (id)createInteractionCoordinator;
 - (id)viewProfile;

@@ -15,9 +15,10 @@ __attribute__((visibility("hidden")))
 {
     BOOL _opaque;
     BOOL _selected;
-    struct CGSize _size;
+    int _sectionLocation;
     UIColor *_backgroundColor;
     UIColor *_sectionBorderColor;
+    double _sectionCornerRadius;
     double _sectionBorderWidth;
     UIColor *_separatorColor;
     UIColor *_topShadowColor;
@@ -26,9 +27,9 @@ __attribute__((visibility("hidden")))
     UIColor *_selectionColor;
     double _leftPhase;
     double _rightPhase;
-    int _sectionLocation;
     long long _selectionStyle;
-    struct UIEdgeInsets _separatorInset;
+    double _screenScale;
+    struct CGSize _size;
 }
 
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
@@ -37,19 +38,20 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double leftPhase; // @synthesize leftPhase=_leftPhase;
 @property (nonatomic) BOOL opaque; // @synthesize opaque=_opaque;
 @property (nonatomic) double rightPhase; // @synthesize rightPhase=_rightPhase;
+@property (nonatomic) double screenScale; // @synthesize screenScale=_screenScale;
 @property (strong, nonatomic) UIColor *sectionBorderColor; // @synthesize sectionBorderColor=_sectionBorderColor;
 @property (nonatomic) double sectionBorderWidth; // @synthesize sectionBorderWidth=_sectionBorderWidth;
+@property (nonatomic) double sectionCornerRadius; // @synthesize sectionCornerRadius=_sectionCornerRadius;
 @property (nonatomic) int sectionLocation; // @synthesize sectionLocation=_sectionLocation;
 @property (nonatomic) BOOL selected; // @synthesize selected=_selected;
 @property (strong, nonatomic) UIColor *selectionColor; // @synthesize selectionColor=_selectionColor;
 @property (nonatomic) long long selectionStyle; // @synthesize selectionStyle=_selectionStyle;
 @property (strong, nonatomic) UIColor *separatorColor; // @synthesize separatorColor=_separatorColor;
-@property (nonatomic) struct UIEdgeInsets separatorInset; // @synthesize separatorInset=_separatorInset;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (strong, nonatomic) UIColor *topShadowColor; // @synthesize topShadowColor=_topShadowColor;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

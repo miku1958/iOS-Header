@@ -8,25 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLongSessionUsageLogMessage, GEOSessionlessUsageLogMessage, GEOShortSessionUsageLogMessage;
-
 @interface GEOUsageLogMessage : PBCodable <NSCopying>
 {
-    GEOLongSessionUsageLogMessage *_longSessionUsageLogMessage;
-    GEOSessionlessUsageLogMessage *_sessionlessUsageLogMessage;
-    GEOShortSessionUsageLogMessage *_shortSessionUsageLogMessage;
 }
-
-@property (readonly, nonatomic) BOOL hasLongSessionUsageLogMessage;
-@property (readonly, nonatomic) BOOL hasSessionlessUsageLogMessage;
-@property (readonly, nonatomic) BOOL hasShortSessionUsageLogMessage;
-@property (strong, nonatomic) GEOLongSessionUsageLogMessage *longSessionUsageLogMessage; // @synthesize longSessionUsageLogMessage=_longSessionUsageLogMessage;
-@property (strong, nonatomic) GEOSessionlessUsageLogMessage *sessionlessUsageLogMessage; // @synthesize sessionlessUsageLogMessage=_sessionlessUsageLogMessage;
-@property (strong, nonatomic) GEOShortSessionUsageLogMessage *shortSessionUsageLogMessage; // @synthesize shortSessionUsageLogMessage=_shortSessionUsageLogMessage;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

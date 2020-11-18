@@ -10,11 +10,11 @@ __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateGridSecondaryCandidatesLayout : UICollectionViewFlowLayout
 {
     int _candidatesVisualStyle;
-    CDStruct_961fb75c _visualStyling;
+    CDStruct_227bb23d _visualStyling;
 }
 
 @property (nonatomic) int candidatesVisualStyle; // @synthesize candidatesVisualStyle=_candidatesVisualStyle;
-@property (nonatomic) CDStruct_961fb75c visualStyling; // @synthesize visualStyling=_visualStyling;
+@property (nonatomic) CDStruct_227bb23d visualStyling; // @synthesize visualStyling=_visualStyling;
 
 + (Class)layoutAttributesClass;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;

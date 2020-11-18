@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSObject;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
-@interface HMDUIDialogPresenter : NSObject
+@interface HMDUIDialogPresenter : HMFObject
 {
     BOOL _selectedByPeerDevice;
     BOOL _peerDeviceAcceptedSelection;
@@ -43,7 +43,7 @@
 - (BOOL)_presentDialogWithInfo:(id)arg1 options:(unsigned long long)arg2 targetResponse:(unsigned long long)arg3 textField:(id *)arg4 withContext:(id)arg5 selectedByPeerDevice:(BOOL *)arg6 timeout:(double)arg7;
 - (BOOL)_presentDialogWithInfo:(id)arg1 options:(unsigned long long)arg2 textField:(id *)arg3 withContext:(id)arg4;
 - (BOOL)_removeCurrentNotification:(struct __CFUserNotification *)arg1 currentSelection:(BOOL)arg2 selectedByPeerDevice:(BOOL *)arg3 andContext:(id)arg4;
-- (void)_requestPairingPasswordForAccessory:(id)arg1 home:(id)arg2 bridge:(id)arg3 withContext:(id)arg4 queue:(id)arg5 numeric:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)_requestPairingPasswordForAccessory:(id)arg1 home:(id)arg2 withContext:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_requestUserPermissionForLegacyWACAccessory:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_requestUserPermissionForUnauthenticatedAccessory:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)confirmAddUser:(id)arg1 toHome:(id)arg2 withContext:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -57,7 +57,7 @@
 - (void)displayUpgradeNeededWithContext:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)displayiCloudSwitchWithContext:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
-- (void)requestPairingPasswordForAccessory:(id)arg1 home:(id)arg2 bridge:(id)arg3 withContext:(id)arg4 queue:(id)arg5 numeric:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)requestPairingPasswordForAccessory:(id)arg1 home:(id)arg2 withContext:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)requestUserPermissionForLegacyWACAccessory:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)requestUserPermissionForUnauthenticatedAccessory:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 

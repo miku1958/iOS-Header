@@ -27,7 +27,7 @@
 + (id)sharedTestServer;
 - (void).cxx_destruct;
 - (void)_removeClientConnection:(id)arg1;
-- (void)addBulletin:(id)arg1 forFeed:(unsigned long long)arg2 playLightsAndSirens:(BOOL)arg3 attachment:(id)arg4 attachmentType:(long long)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)addBulletin:(id)arg1 forFeed:(unsigned long long)arg2 playLightsAndSirens:(BOOL)arg3 attachment:(id)arg4 attachmentType:(long long)arg5 alwaysSend:(BOOL)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)clearSectionInfoSentCacheWithCompletion:(CDUnknownBlockType)arg1;
 - (void)disableStandaloneTestModeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enableStandaloneTestModeWithMinimumSendDelay:(unsigned long long)arg1 maximumSendDelay:(unsigned long long)arg2 minimumResponseDelay:(unsigned long long)arg3 maximumResponseDelay:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
@@ -36,6 +36,7 @@
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)originalSettingsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)overriddenSettingsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)removeSectionID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resume;
 - (void)sendAllSectionInfoWithSpool:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendSectionInfoWithSectionID:(id)arg1 completion:(CDUnknownBlockType)arg2;

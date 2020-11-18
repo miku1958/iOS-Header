@@ -11,6 +11,7 @@
 @property (readonly, nonatomic) BOOL areTelephonyCallsSupported;
 @property (readonly, nonatomic) BOOL isFaceTimeAudioSupported;
 @property (readonly, nonatomic) BOOL isFaceTimeVideoSupported;
+@property (readonly, nonatomic) BOOL isPaySupported;
 @property (readonly, nonatomic) BOOL isiMessageSupported;
 
 @end

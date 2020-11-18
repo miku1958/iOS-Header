@@ -25,6 +25,7 @@
 + (BOOL)completelyIgnoreNotes;
 + (BOOL)compressRequests;
 + (BOOL)cookiesEnabled;
++ (BOOL)customAutoDV2UserAgentEnabled;
 + (double)defaultDAVProbeTimeout;
 + (double)defaultEASTaskTimeoutOutWasFound:(BOOL *)arg1;
 + (BOOL)earlyPingEnabled;

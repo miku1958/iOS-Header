@@ -35,12 +35,12 @@
 @property (nonatomic) int selectedIndex; // @synthesize selectedIndex=_selectedIndex;
 
 + (Class)displayedResultType;
+- (void).cxx_destruct;
 - (int)StringAsSearchFieldType:(id)arg1;
 - (void)addDisplayedResult:(id)arg1;
 - (void)clearDisplayedResults;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)displayedResultAtIndex:(unsigned long long)arg1;

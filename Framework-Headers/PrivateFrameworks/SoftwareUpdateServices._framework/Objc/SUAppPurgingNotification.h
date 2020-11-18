@@ -19,7 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (void)postAppPurgingNotificationWithAppsToPurge:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)postAppPurgingNotificationWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

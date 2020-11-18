@@ -32,9 +32,11 @@
 
 + (id)descriptionForSubtype:(long long)arg1;
 + (id)descriptionForType:(long long)arg1;
++ (id)interfaceWithProtocolBufferData:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)createProtocolBufferObject;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
 - (void)encodeWithCoder:(id)arg1;

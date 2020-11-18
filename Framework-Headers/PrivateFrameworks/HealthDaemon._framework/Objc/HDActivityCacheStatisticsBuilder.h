@@ -16,7 +16,7 @@
     vector_6dc0ebed _activationLogSamples;
     HKQuantity *_lastActiveEnergyValue;
     HKQuantity *_lastDistanceWalkingValue;
-    HKQuantity *_lastFlightsClimbedValue;
+    NSNumber *_lastFlightsClimbedValue;
     NSNumber *_lastStepCountValue;
     NSNumber *_lastPushCountValue;
     NSNumber *_lastStandHourValue;
@@ -49,9 +49,9 @@
 - (double)_minTimestampInSourceTotals:(const map_c63dce6d *)arg1;
 - (void)_resetAllCachedValues;
 - (BOOL)_sourceMapIsEmpty:(const map_c63dce6d *)arg1;
-- (vector_d87a6415)_sourceOrderForTypeCode:(long long)arg1;
-- (double)_sumSourceTotals:(map_c63dce6d *)arg1 orderedSources:(vector_d87a6415)arg2;
-- (double)_sumSourceTotals:(map_c63dce6d *)arg1 orderedSources:(vector_d87a6415)arg2 strictStartTime:(double)arg3 strictEndTime:(double)arg4;
+- (vector_c1c297d2)_sourceOrderForTypeCode:(long long)arg1;
+- (double)_sumSourceTotals:(map_c63dce6d *)arg1 orderedSources:(vector_c1c297d2)arg2;
+- (double)_sumSourceTotals:(map_c63dce6d *)arg1 orderedSources:(vector_c1c297d2)arg2 strictStartTime:(double)arg3 strictEndTime:(double)arg4;
 - (id)_workoutIdentifiersStringForActiveSource:(struct HDActivityCacheActiveSource *)arg1;
 - (id)activeEnergyValue;
 - (void)addActivationLogSamples:(const vector_e4bf223f *)arg1;
@@ -68,9 +68,9 @@
 - (double)deepBreathingDurationValue;
 - (id)distanceWalkingValue;
 - (long long)exerciseMinuteValue;
-- (id)flightsClimbedValue;
+- (long long)flightsClimbedValue;
 - (id)init;
-- (id)initWithTimePeriod:(id)arg1 loggingName:(id)arg2;
+- (id)initWithDateInterval:(id)arg1 loggingName:(id)arg2;
 - (long long)pushCountValue;
 - (long long)standHourValue;
 - (long long)stepCountValue;

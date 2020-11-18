@@ -17,6 +17,7 @@
     XBSnapshotManifestIdentity *_identity;
     NSMutableDictionary *_snapshotGroupsByID;
     NSFileManager *_imageAccessFileManger;
+    _Atomic unsigned long long _bytesWaitingToWriteOut;
     BSTimer *_reapingTimer;
     BSAtomicSignal *_invalidatedSignal;
     unsigned long long _clientCount;
@@ -35,18 +36,19 @@
 
 + (void)_configureSnapshot:(id)arg1 withCompatibilityInfo:(id)arg2 forLaunchRequest:(id)arg3;
 + (long long)_defaultOutputFormat;
++ (void)_flushManifestQueue;
 + (void)_queue_noteManifestInvalidated:(id)arg1;
 + (id)_snapshotPredicateForRequest:(id)arg1;
 + (id)acquireManifestForContainerIdentity:(id)arg1 store:(id)arg2 creatingIfNecessary:(BOOL)arg3;
 + (void)relinquishManifest:(id)arg1;
+- (void).cxx_destruct;
 - (id)_allSnapshotGroups;
-- (id)_commonInit;
+- (void)_commonInit;
 - (id)_createSnapshotWithGroupID:(id)arg1 generationContext:(id)arg2;
 - (id)_createSnapshotWithGroupID:(id)arg1 newSnapshotCreator:(CDUnknownBlockType)arg2;
 - (id)_generatableSnapshotForGroupID:(id)arg1 generationContext:(id)arg2;
-- (BOOL)_imageAccessQueue_saveData:(id)arg1 withContentType:(long long)arg2 toPath:(id)arg3;
+- (BOOL)_imageAccessQueue_saveData:(id)arg1 forSnapshot:(id)arg2;
 - (id)_initWithContainerIdentity:(id)arg1;
-- (id)_ktxDataForImage:(id)arg1;
 - (void)_noteDirtied;
 - (void)_queue_accessSnapshotsWithBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_checkClientCount;

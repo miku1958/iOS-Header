@@ -6,18 +6,20 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSArray, NSDictionary, WLKSpinnerView, WLKUIAccessView_iOS;
+@class NSArray, NSDictionary, WLKUIAccessView_iOS, WLKUISpinnerView;
 
 @interface _WLKUIAccessViewController : UIViewController
 {
     WLKUIAccessView_iOS *_accessView;
-    WLKSpinnerView *_loadingView;
+    WLKUISpinnerView *_loadingView;
     NSArray *_bundleIDs;
     NSDictionary *_options;
     BOOL _hasCalledCompletion;
     NSArray *_appInfos;
     NSArray *_appChannels;
     BOOL _hasOptedIn;
+    BOOL _shouldDenyOnCancel;
+    BOOL _suppressWelcomeVideoAddOnOptIn;
     CDUnknownBlockType _completionHandler;
 }
 
@@ -35,14 +37,13 @@
 - (id)_imageForBundleID:(id)arg1;
 - (void)_init;
 - (void)_presentGenericErrorWithCompletion:(CDUnknownBlockType)arg1;
-- (BOOL)_runOnboarding;
 - (void)_setupAccessViews;
-- (BOOL)_synchronizeSettingsFromCloudIfNeeded;
 - (void)_toggleLoadingScreen;
 - (id)_watchListAppIcon;
 - (void)dealloc;
 - (id)init;
 - (id)initWithBundleIDs:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 
 @end

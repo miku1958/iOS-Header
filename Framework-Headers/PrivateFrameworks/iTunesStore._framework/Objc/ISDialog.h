@@ -8,7 +8,7 @@
 
 #import <iTunesStore/SSXPCCoding-Protocol.h>
 
-@class NSArray, NSLock, NSMutableDictionary, NSString, SSAuthenticationContext;
+@class NSArray, NSLock, NSMutableDictionary, NSString, SSAuthenticationContext, SSPaymentSheet;
 
 @interface ISDialog : NSObject <SSXPCCoding>
 {
@@ -38,6 +38,8 @@
     NSMutableDictionary *_userInfo;
     struct __CFDictionary *_userNotificationValues;
     BOOL _displaysOnLockscreen;
+    SSPaymentSheet *_paymentSheet;
+    NSString *_touchIDContinueToken;
 }
 
 @property BOOL allowDuplicates; // @synthesize allowDuplicates=_allowDuplicates;
@@ -61,17 +63,20 @@
 @property (strong) NSString *message; // @synthesize message=_message;
 @property BOOL noDefaultButton; // @synthesize noDefaultButton=_noDefaultButton;
 @property BOOL oneButtonPerLine; // @synthesize oneButtonPerLine=_oneButtonPerLine;
+@property (readonly) SSPaymentSheet *paymentSheet; // @synthesize paymentSheet=_paymentSheet;
 @property BOOL shouldDismissAfterUnlock; // @synthesize shouldDismissAfterUnlock=_shouldDismissAfterUnlock;
 @property BOOL shouldDisplayAsTopMost; // @synthesize shouldDisplayAsTopMost=_shouldDisplayAsTopMost;
 @property BOOL shouldPendInSetupIfNotAllowed; // @synthesize shouldPendInSetupIfNotAllowed=_shouldPendInSetupIfNotAllowed;
 @property (readonly) Class superclass;
 @property (strong) NSArray *textFields; // @synthesize textFields=_textFields;
 @property (strong) NSString *title; // @synthesize title=_title;
+@property (copy) NSString *touchIDContinueToken; // @synthesize touchIDContinueToken=_touchIDContinueToken;
 @property long long unlockActionButtonIndex; // @synthesize unlockActionButtonIndex=_unlockActionButtonIndex;
 
 + (long long)displayCountForKey:(id)arg1;
 - (void).cxx_destruct;
 - (long long)_kindForString:(id)arg1;
+- (id)buyParams;
 - (id)copyUserNotification;
 - (void *)copyValueForCFUserNotificationKey:(struct __CFString *)arg1;
 - (id)copyXPCEncoding;

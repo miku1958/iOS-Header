@@ -6,16 +6,12 @@
 
 #import <UIKit/_UIFocusRegionContainer-Protocol.h>
 
-@class UIScreen;
-@protocol _UIFocusRegionContainerInternal;
+@class _UIFocusRegionContentAttributes;
+@protocol UICoordinateSpace;
 
 @protocol _UIFocusRegionContainerInternal <_UIFocusRegionContainer>
 
-@property (readonly, nonatomic, getter=_parentFocusRegionContainer) id<_UIFocusRegionContainerInternal> parentFocusRegionContainer;
-
-
 @optional
-- (struct CGRect)_focusRegionContainerFrameInScreen:(UIScreen *)arg1;
-- (BOOL)_requiresIntersectionWithFocusMapSearchArea;
+- (_UIFocusRegionContentAttributes *)_attributesForFocusRegionContentInCoordinateSpace:(id<UICoordinateSpace>)arg1;
 @end
 

@@ -19,6 +19,7 @@
 @property (copy, nonatomic) CDUnknownBlockType resultsBlock; // @synthesize resultsBlock=_resultsBlock;
 @property (strong, nonatomic) NSDictionary *staticResults; // @synthesize staticResults=_staticResults;
 
++ (id)emptyItem;
 - (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

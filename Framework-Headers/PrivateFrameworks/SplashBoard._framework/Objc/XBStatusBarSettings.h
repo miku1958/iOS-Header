@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) long long style;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_initWithBSSettings:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

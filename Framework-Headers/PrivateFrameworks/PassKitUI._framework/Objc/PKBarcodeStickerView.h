@@ -31,7 +31,6 @@
 - (id)_resizedBarcode:(id)arg1 desiredSize:(struct CGSize)arg2;
 - (void)_updateValidity;
 - (struct CGSize)_varianceForBarcode:(id)arg1;
-- (void)dealloc;
 - (id)initWithBarcode:(id)arg1 validityState:(long long)arg2 layoutMode:(long long)arg3;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

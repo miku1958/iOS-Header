@@ -12,15 +12,13 @@
 
 @interface GEOStep : PBCodable <NSCopying>
 {
-    struct GEOLaneGuidance *_laneGuidances;
-    unsigned long long _laneGuidancesCount;
-    unsigned long long _laneGuidancesSpace;
     struct GEOJunctionElement *_junctionElements;
     unsigned long long _junctionElementsCount;
     unsigned long long _junctionElementsSpace;
     unsigned int _distance;
     GEONameInfo *_exitNumber;
     unsigned int _expectedTime;
+    NSMutableArray *_guidanceEvents;
     int _hintFirstAnnouncementZilchIndex;
     GEOInstructionSet *_instructionSet;
     NSString *_instructions;
@@ -35,10 +33,11 @@
     int _overrideTransportType;
     NSMutableArray *_signposts;
     unsigned int _stepID;
-    NSMutableArray *_substeps;
     GEOTimeCheckpoints *_timeCheckpoints;
     BOOL _endsOnFwy;
+    BOOL _maneuverLaneGuidanceSuppressed;
     BOOL _shouldChainManeuver;
+    BOOL _stayOn;
     BOOL _toFreeway;
     BOOL _tollAhead;
     BOOL _tollPrior;
@@ -55,7 +54,9 @@
         unsigned int overrideTransportType:1;
         unsigned int stepID:1;
         unsigned int endsOnFwy:1;
+        unsigned int maneuverLaneGuidanceSuppressed:1;
         unsigned int shouldChainManeuver:1;
+        unsigned int stayOn:1;
         unsigned int toFreeway:1;
         unsigned int tollAhead:1;
         unsigned int tollPrior:1;
@@ -66,6 +67,7 @@
 @property (nonatomic) BOOL endsOnFwy; // @synthesize endsOnFwy=_endsOnFwy;
 @property (strong, nonatomic) GEONameInfo *exitNumber; // @synthesize exitNumber=_exitNumber;
 @property (nonatomic) unsigned int expectedTime; // @synthesize expectedTime=_expectedTime;
+@property (strong, nonatomic) NSMutableArray *guidanceEvents; // @synthesize guidanceEvents=_guidanceEvents;
 @property (nonatomic) BOOL hasDistance;
 @property (nonatomic) BOOL hasEndsOnFwy;
 @property (readonly, nonatomic) BOOL hasExitNumber;
@@ -77,12 +79,14 @@
 @property (nonatomic) BOOL hasJunctionType;
 @property (nonatomic) BOOL hasManeuverEndBasicIndex;
 @property (nonatomic) BOOL hasManeuverEndZilchIndex;
+@property (nonatomic) BOOL hasManeuverLaneGuidanceSuppressed;
 @property (nonatomic) BOOL hasManeuverStartZilchIndex;
 @property (nonatomic) BOOL hasManeuverType;
 @property (readonly, nonatomic) BOOL hasNotice;
 @property (nonatomic) BOOL hasOverrideDrivingSide;
 @property (nonatomic) BOOL hasOverrideTransportType;
 @property (nonatomic) BOOL hasShouldChainManeuver;
+@property (nonatomic) BOOL hasStayOn;
 @property (nonatomic) BOOL hasStepID;
 @property (readonly, nonatomic) BOOL hasTimeCheckpoints;
 @property (nonatomic) BOOL hasToFreeway;
@@ -95,11 +99,10 @@
 @property (readonly, nonatomic) struct GEOJunctionElement *junctionElements;
 @property (readonly, nonatomic) unsigned long long junctionElementsCount;
 @property (nonatomic) int junctionType; // @synthesize junctionType=_junctionType;
-@property (readonly, nonatomic) struct GEOLaneGuidance *laneGuidances;
-@property (readonly, nonatomic) unsigned long long laneGuidancesCount;
 @property (nonatomic) int maneuverEndBasicIndex; // @synthesize maneuverEndBasicIndex=_maneuverEndBasicIndex;
 @property (readonly, nonatomic) unsigned int maneuverEndIndex;
 @property (nonatomic) int maneuverEndZilchIndex; // @synthesize maneuverEndZilchIndex=_maneuverEndZilchIndex;
+@property (nonatomic) BOOL maneuverLaneGuidanceSuppressed; // @synthesize maneuverLaneGuidanceSuppressed=_maneuverLaneGuidanceSuppressed;
 @property (strong, nonatomic) NSMutableArray *maneuverNames; // @synthesize maneuverNames=_maneuverNames;
 @property (readonly, nonatomic) unsigned int maneuverStartIndex;
 @property (nonatomic) int maneuverStartZilchIndex; // @synthesize maneuverStartZilchIndex=_maneuverStartZilchIndex;
@@ -109,30 +112,29 @@
 @property (nonatomic) int overrideTransportType; // @synthesize overrideTransportType=_overrideTransportType;
 @property (nonatomic) BOOL shouldChainManeuver; // @synthesize shouldChainManeuver=_shouldChainManeuver;
 @property (strong, nonatomic) NSMutableArray *signposts; // @synthesize signposts=_signposts;
+@property (nonatomic) BOOL stayOn; // @synthesize stayOn=_stayOn;
 @property (nonatomic) unsigned int stepID; // @synthesize stepID=_stepID;
-@property (strong, nonatomic) NSMutableArray *substeps; // @synthesize substeps=_substeps;
 @property (strong, nonatomic) GEOTimeCheckpoints *timeCheckpoints; // @synthesize timeCheckpoints=_timeCheckpoints;
 @property (nonatomic) BOOL toFreeway; // @synthesize toFreeway=_toFreeway;
 @property (nonatomic) BOOL tollAhead; // @synthesize tollAhead=_tollAhead;
 @property (nonatomic) BOOL tollPrior; // @synthesize tollPrior=_tollPrior;
 
++ (Class)guidanceEventType;
 + (Class)maneuverNameType;
 + (Class)signpostType;
-+ (Class)substepsType;
+- (void).cxx_destruct;
 - (int)StringAsJunctionType:(id)arg1;
 - (int)StringAsManeuverType:(id)arg1;
 - (int)StringAsOverrideDrivingSide:(id)arg1;
 - (int)StringAsOverrideTransportType:(id)arg1;
+- (void)addGuidanceEvent:(id)arg1;
 - (void)addJunctionElement:(struct GEOJunctionElement)arg1;
-- (void)addLaneGuidance:(struct GEOLaneGuidance)arg1;
 - (void)addManeuverName:(id)arg1;
 - (void)addSignpost:(id)arg1;
-- (void)addSubsteps:(id)arg1;
+- (void)clearGuidanceEvents;
 - (void)clearJunctionElements;
-- (void)clearLaneGuidances;
 - (void)clearManeuverNames;
 - (void)clearSignposts;
-- (void)clearSubsteps;
 - (id)continueInstructionForSpoken;
 - (id)continueInstructionsForSignView;
 - (void)copyTo:(id)arg1;
@@ -144,14 +146,15 @@
 - (id)distanceForSignView;
 - (id)executionInstructionsForSpoken;
 - (id)firstNameInfo;
+- (id)guidanceEventAtIndex:(unsigned long long)arg1;
+- (unsigned long long)guidanceEventsCount;
 - (unsigned long long)hash;
 - (id)initialInstructionForSpoken;
-- (id)instructionForListView;
+- (id)instructionsForListView;
 - (id)intersectionNameInfo;
 - (BOOL)isEqual:(id)arg1;
 - (struct GEOJunctionElement)junctionElementAtIndex:(unsigned long long)arg1;
 - (id)junctionTypeAsString:(int)arg1;
-- (struct GEOLaneGuidance)laneGuidanceAtIndex:(unsigned long long)arg1;
 - (id)maneuverDescription;
 - (BOOL)maneuverIsHighwayExit;
 - (id)maneuverNameAtIndex:(unsigned long long)arg1;
@@ -167,12 +170,9 @@
 - (BOOL)readFrom:(id)arg1;
 - (id)roadName;
 - (void)setJunctionElements:(struct GEOJunctionElement *)arg1 count:(unsigned long long)arg2;
-- (void)setLaneGuidances:(struct GEOLaneGuidance *)arg1 count:(unsigned long long)arg2;
 - (void)shieldInfo:(CDUnknownBlockType)arg1;
 - (id)signpostAtIndex:(unsigned long long)arg1;
 - (unsigned long long)signpostsCount;
-- (id)substepsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)substepsCount;
 - (void)writeTo:(id)arg1;
 
 @end

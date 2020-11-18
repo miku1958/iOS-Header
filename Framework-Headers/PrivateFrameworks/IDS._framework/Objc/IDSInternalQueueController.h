@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_queue;
 
@@ -15,9 +15,9 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)assertQueueIsCurrent;
 - (void)assertQueueIsNotCurrent;
-- (void)dealloc;
 - (id)init;
 - (id)initWithName:(char *)arg1 contextKey:(void *)arg2;
 - (BOOL)isQueueCurrent;

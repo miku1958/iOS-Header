@@ -6,59 +6,68 @@
 
 #import <objc/NSObject.h>
 
-@class NSBundle, NSMutableArray, NSMutableDictionary, NSString;
+@class IMBalloonApp, NSBundle, NSMutableArray, NSMutableDictionary, NSString;
+@protocol PKPlugIn;
 
 @interface IMBalloonPlugin : NSObject
 {
-    BOOL _showInBrowser;
     BOOL _pluginLoaded;
-    NSString *_identifier;
-    NSString *_browserDisplayName;
     NSString *_browserImageName;
     NSString *_browserImagePath;
-    NSBundle *_bundle;
     long long _browserGroup;
-    Class _bubbleClass;
-    Class _browserClass;
-    Class _datasourceClass;
-    Class _customTypingIndicatorLayerClass;
-    Class _entryClass;
+    NSBundle *_bundle;
+    id<PKPlugIn> _plugin;
+    IMBalloonApp *_app;
     NSMutableDictionary *_messageToDatasourceMap;
     NSMutableDictionary *_messageToBalloonControllerMap;
+    Class _bubbleClass;
+    Class _browserClass;
+    Class _dataSourceClass;
+    Class _customTypingIndicatorLayerClass;
+    Class _entryClass;
     NSMutableArray *_balloonControllerPool;
 }
 
+@property (strong, nonatomic) IMBalloonApp *app; // @synthesize app=_app;
+@property (readonly, strong, nonatomic) NSBundle *appBundle;
 @property (strong, nonatomic) NSMutableArray *balloonControllerPool; // @synthesize balloonControllerPool=_balloonControllerPool;
 @property (readonly, nonatomic, getter=isBetaPlugin) BOOL betaPlugin;
 @property (strong, nonatomic) Class browserClass; // @synthesize browserClass=_browserClass;
-@property (strong, nonatomic) NSString *browserDisplayName; // @synthesize browserDisplayName=_browserDisplayName;
+@property (readonly, strong, nonatomic) NSString *browserDisplayName;
 @property (nonatomic) long long browserGroup; // @synthesize browserGroup=_browserGroup;
 @property (strong, nonatomic) NSString *browserImageName; // @synthesize browserImageName=_browserImageName;
 @property (strong, nonatomic) NSString *browserImagePath; // @synthesize browserImagePath=_browserImagePath;
 @property (strong, nonatomic) Class bubbleClass; // @synthesize bubbleClass=_bubbleClass;
 @property (strong, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
 @property (strong, nonatomic) Class customTypingIndicatorLayerClass; // @synthesize customTypingIndicatorLayerClass=_customTypingIndicatorLayerClass;
-@property (strong, nonatomic) Class datasourceClass; // @synthesize datasourceClass=_datasourceClass;
+@property (strong, nonatomic) Class dataSourceClass; // @synthesize dataSourceClass=_dataSourceClass;
 @property (strong, nonatomic) Class entryClass; // @synthesize entryClass=_entryClass;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, strong, nonatomic) NSString *identifier;
+@property (readonly, nonatomic) BOOL isEnabled;
 @property (strong, nonatomic) NSMutableDictionary *messageToBalloonControllerMap; // @synthesize messageToBalloonControllerMap=_messageToBalloonControllerMap;
 @property (strong, nonatomic) NSMutableDictionary *messageToDatasourceMap; // @synthesize messageToDatasourceMap=_messageToDatasourceMap;
+@property (strong, nonatomic) id<PKPlugIn> plugin; // @synthesize plugin=_plugin;
+@property (readonly, strong, nonatomic) NSBundle *pluginBundle;
 @property (nonatomic) BOOL pluginLoaded; // @synthesize pluginLoaded=_pluginLoaded;
-@property (nonatomic) BOOL showInBrowser; // @synthesize showInBrowser=_showInBrowser;
+@property (readonly, nonatomic) BOOL shouldHideAppSwitcher;
+@property (readonly, nonatomic) BOOL showInBrowser;
 @property (readonly, nonatomic) NSString *version;
 
 - (void).cxx_destruct;
 - (id)_getControllerFromReusePoolForChatItem:(id)arg1;
-- (void)_loadBundle;
 - (id)balloonControllerForChatItem:(id)arg1;
 - (id)dataSourceForPluginPayload:(id)arg1;
 - (void)dealloc;
 - (id)existingBalloonControllerWithMessageGUID:(id)arg1;
 - (id)existingDataSourceForMessageGUID:(id)arg1;
+- (id)init;
 - (id)initWithBundle:(id)arg1;
+- (id)initWithBundle:(id)arg1 app:(id)arg2;
 - (void)insertDataSource:(id)arg1 forGUID:(id)arg2;
+- (BOOL)isStickerPackOnly;
 - (void)moveController:(id)arg1 toReusePoolFromChatItem:(id)arg2;
 - (void)removeController:(id)arg1 forChatItem:(id)arg2;
+- (void)setIdentifier:(id)arg1;
 - (BOOL)supportsControllerReuse;
 - (void)unloadBundle;
 

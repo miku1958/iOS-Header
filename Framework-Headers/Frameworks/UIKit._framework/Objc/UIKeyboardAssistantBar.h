@@ -6,7 +6,7 @@
 
 #import <UIKit/_UIGroupedBar.h>
 
-@class NSLayoutConstraint, UIBarButtonItem, UIBarButtonItemGroup, UIKeyboardBIUImageGenerator, UITextInputAssistantItem;
+@class NSLayoutConstraint, UIBarButtonItem, UIBarButtonItemGroup, UIKeyboardBIUImageGenerator, UIKeyboardCandidatePocketShadow, UITextInputAssistantItem;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardAssistantBar : _UIGroupedBar
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *m_predictionWidthConstraint;
     UITextInputAssistantItem *m_defaultAssistantItem;
     UITextInputAssistantItem *m_currentAssistantItem;
+    UIKeyboardCandidatePocketShadow *m_rightBorder;
     int m_validateGuard;
     BOOL m_useLargeButton;
     BOOL m_isLandscape;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
     BOOL m_show;
     struct CGRect m_splitGap;
     BOOL m_suppressAXSHairlineThickening;
+    BOOL m_setShowsCandidateInline;
     BOOL _hideAssistantBar;
     BOOL _shouldShow;
 }
@@ -60,14 +62,18 @@ __attribute__((visibility("hidden")))
 - (id)currentAssistantItem;
 - (void)dealloc;
 - (id)defaultAssistantItem;
+- (id)deleteButtonItem;
+- (double)deleteKeyWidth;
 - (void)didMoveToWindow;
 - (void)dimKeys:(id)arg1;
 - (BOOL)disabledByPrediction;
 - (BOOL)enableInputClicksWhenVisible;
 - (BOOL)enabled;
 - (void)executeAction:(int)arg1;
+- (struct CGRect)handwritingCandidateSelectionFrame;
 - (BOOL)hasCustomButtons;
 - (BOOL)hasItems;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)newAssistantItemWithDefaultItems;
 - (BOOL)pointInside:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;

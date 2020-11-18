@@ -16,8 +16,8 @@
 @property (strong, nonatomic) NSDate *localDate; // @synthesize localDate=_localDate;
 
 - (void).cxx_destruct;
-- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (id)_potentialMemories:(unsigned long long)arg1;
+- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
+- (id)_potentialMemoriesForDryTesting;
 
 @end
 

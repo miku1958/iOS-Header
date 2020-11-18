@@ -9,10 +9,11 @@
 #import <GeoServices/GEOTransitIconDataSource-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBUnknownFields;
 
 @interface GEOPBTransitIcon : PBCodable <GEOTransitIconDataSource, NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     unsigned int _cartoId;
     unsigned int _transitTypeEnumValue;
     struct {
@@ -34,7 +35,9 @@
 @property (readonly, nonatomic) long long iconType;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned int transitTypeEnumValue; // @synthesize transitTypeEnumValue=_transitTypeEnumValue;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;

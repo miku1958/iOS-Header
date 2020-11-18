@@ -6,9 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
+#import <MediaPlayer/ICEnvironmentMonitorObserver-Protocol.h>
+
 @class MPAVController, MPAVItem, MPQueueFeeder, MPRTCReportingSessionSummaryEvent, NSMutableDictionary, NSNumber, NSString;
 
-@interface MPRTCReportingController : NSObject
+@interface MPRTCReportingController : NSObject <ICEnvironmentMonitorObserver>
 {
     long long _currentInterfaceType;
     MPAVItem *_currentItem;
@@ -27,7 +29,11 @@
 @property (readonly, copy, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property (readonly, nonatomic) int clientType; // @synthesize clientType=_clientType;
 @property (readonly, nonatomic) long long clientVersion; // @synthesize clientVersion=_clientVersion;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) MPAVController *player; // @synthesize player=_player;
+@property (readonly) Class superclass;
 
 + (long long)defaultClientVersion;
 + (id)newHierarchyTokenFromParentToken:(id)arg1;

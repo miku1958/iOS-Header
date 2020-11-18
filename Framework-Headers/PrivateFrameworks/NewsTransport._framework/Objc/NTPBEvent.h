@@ -8,10 +8,11 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSString, NTPBEventObject;
+@class NSData, NSMutableArray, NSString, NTPBEventObject;
 
 @interface NTPBEvent : PBCodable <NSCopying>
 {
+    long long _appConfigTreatmentId;
     long long _duration;
     long long _personalizationTreatmentId;
     long long _personalizedTreatmentId;
@@ -26,14 +27,19 @@
     NSString *_referringSource;
     NSString *_referringType;
     NSData *_sessionId;
+    NSData *_sessionIdWatch;
     NSString *_userId;
+    NSMutableArray *_userPaidSubscriptionStatus;
     NSString *_userStorefrontId;
+    NSData *_widgetSessionId;
+    NSString *_widgetUserId;
     NSString *_windowFrameInScreen;
     BOOL _isPaidSubscriberDuringEvent;
     BOOL _isPaidSubscriberFromAppStoreDuringEvent;
     BOOL _isPaidSubscriberFromNewsDuringEvent;
     BOOL _isPaidSubscriberFromThirdPartyDuringEvent;
     struct {
+        unsigned int appConfigTreatmentId:1;
         unsigned int duration:1;
         unsigned int personalizationTreatmentId:1;
         unsigned int personalizedTreatmentId:1;
@@ -50,11 +56,13 @@
     } _has;
 }
 
+@property (nonatomic) long long appConfigTreatmentId; // @synthesize appConfigTreatmentId=_appConfigTreatmentId;
 @property (nonatomic) int cellularRadioAccessTechnology; // @synthesize cellularRadioAccessTechnology=_cellularRadioAccessTechnology;
 @property (nonatomic) int deviceOrientation; // @synthesize deviceOrientation=_deviceOrientation;
 @property (nonatomic) long long duration; // @synthesize duration=_duration;
 @property (strong, nonatomic) NTPBEventObject *eventObject; // @synthesize eventObject=_eventObject;
 @property (nonatomic) int gestureType; // @synthesize gestureType=_gestureType;
+@property (nonatomic) BOOL hasAppConfigTreatmentId;
 @property (nonatomic) BOOL hasCellularRadioAccessTechnology;
 @property (nonatomic) BOOL hasDeviceOrientation;
 @property (nonatomic) BOOL hasDuration;
@@ -72,9 +80,12 @@
 @property (readonly, nonatomic) BOOL hasReferringSource;
 @property (readonly, nonatomic) BOOL hasReferringType;
 @property (readonly, nonatomic) BOOL hasSessionId;
+@property (readonly, nonatomic) BOOL hasSessionIdWatch;
 @property (nonatomic) BOOL hasStartTimestamp;
 @property (readonly, nonatomic) BOOL hasUserId;
 @property (readonly, nonatomic) BOOL hasUserStorefrontId;
+@property (readonly, nonatomic) BOOL hasWidgetSessionId;
+@property (readonly, nonatomic) BOOL hasWidgetUserId;
 @property (readonly, nonatomic) BOOL hasWindowFrameInScreen;
 @property (nonatomic) int interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property (nonatomic) BOOL isPaidSubscriberDuringEvent; // @synthesize isPaidSubscriberDuringEvent=_isPaidSubscriberDuringEvent;
@@ -88,15 +99,22 @@
 @property (strong, nonatomic) NSString *referringSource; // @synthesize referringSource=_referringSource;
 @property (strong, nonatomic) NSString *referringType; // @synthesize referringType=_referringType;
 @property (strong, nonatomic) NSData *sessionId; // @synthesize sessionId=_sessionId;
+@property (strong, nonatomic) NSData *sessionIdWatch; // @synthesize sessionIdWatch=_sessionIdWatch;
 @property (nonatomic) long long startTimestamp; // @synthesize startTimestamp=_startTimestamp;
 @property (strong, nonatomic) NSString *userId; // @synthesize userId=_userId;
+@property (strong, nonatomic) NSMutableArray *userPaidSubscriptionStatus; // @synthesize userPaidSubscriptionStatus=_userPaidSubscriptionStatus;
 @property (strong, nonatomic) NSString *userStorefrontId; // @synthesize userStorefrontId=_userStorefrontId;
+@property (strong, nonatomic) NSData *widgetSessionId; // @synthesize widgetSessionId=_widgetSessionId;
+@property (strong, nonatomic) NSString *widgetUserId; // @synthesize widgetUserId=_widgetUserId;
 @property (strong, nonatomic) NSString *windowFrameInScreen; // @synthesize windowFrameInScreen=_windowFrameInScreen;
 
++ (Class)userPaidSubscriptionStatusType;
 - (void).cxx_destruct;
 - (int)StringAsCellularRadioAccessTechnology:(id)arg1;
 - (int)StringAsReachabilityStatus:(id)arg1;
+- (void)addUserPaidSubscriptionStatus:(id)arg1;
 - (id)cellularRadioAccessTechnologyAsString:(int)arg1;
+- (void)clearUserPaidSubscriptionStatus;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -105,6 +123,8 @@
 - (void)mergeFrom:(id)arg1;
 - (id)reachabilityStatusAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)userPaidSubscriptionStatusAtIndex:(unsigned long long)arg1;
+- (unsigned long long)userPaidSubscriptionStatusCount;
 - (void)writeTo:(id)arg1;
 
 @end

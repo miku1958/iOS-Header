@@ -6,11 +6,15 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class HKAdjustableTapTargetButton;
+@class HKAdjustableTapTargetButton, NSArray, UILabel, UIStackView, _HKDocumentImageView;
 @protocol HKCDADocumentTableViewCellDelegate;
 
 @interface HKCDADocumentTableViewCell : UITableViewCell
 {
+    _HKDocumentImageView *_documentImageView;
+    UILabel *_titleLabel;
+    NSArray *_cellLabels;
+    UIStackView *_imageLabelStack;
     BOOL _showsCheckbox;
     id<HKCDADocumentTableViewCellDelegate> _delegate;
     HKAdjustableTapTargetButton *_checkboxButton;
@@ -26,8 +30,11 @@
 - (void)_selectedCheckbox:(id)arg1;
 - (void)_setDocumentLabelWithTag:(long long)arg1 text:(id)arg2 view:(id)arg3;
 - (void)_setupCellStructure;
+- (void)_updateForCurrentSizeCategory;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)layoutSubviews;
 - (void)setCellValuesForDocumentSample:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

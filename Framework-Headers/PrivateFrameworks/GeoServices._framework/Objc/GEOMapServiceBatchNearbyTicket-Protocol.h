@@ -6,7 +6,7 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOMapServiceTraits, GEOSearchCategory, NSString;
+@class GEOApplicationAuditToken, GEOMapServiceTraits, GEOSearchCategory, NSString;
 
 @protocol GEOMapServiceBatchNearbyTicket <NSObject>
 
@@ -14,6 +14,7 @@
 
 - (void)cancel;
 - (NSString *)resultSectionHeaderForCategory:(GEOSearchCategory *)arg1;
+- (void)submitWithHandler:(void (^)(NSMapTable *, NSError *))arg1 auditToken:(GEOApplicationAuditToken *)arg2 networkActivity:(void (^)(BOOL))arg3;
 - (void)submitWithHandler:(void (^)(NSMapTable *, NSError *))arg1 networkActivity:(void (^)(BOOL))arg2;
 @end
 

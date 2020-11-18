@@ -9,18 +9,22 @@
 #import <UserActivity/NSCopying-Protocol.h>
 #import <UserActivity/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSFileHandle;
+@class NSArray, NSDictionary, NSFileHandle, NSString;
 
 @interface UASharedPasteboardInfo : NSObject <NSSecureCoding, NSCopying>
 {
     NSFileHandle *_dataFile;
     long long _dataSize;
     NSArray *_items;
+    NSString *_sharedDataPath;
+    NSDictionary *_sandboxExtensions;
 }
 
 @property (strong) NSFileHandle *dataFile; // @synthesize dataFile=_dataFile;
 @property long long dataSize; // @synthesize dataSize=_dataSize;
 @property (copy) NSArray *items; // @synthesize items=_items;
+@property (copy) NSDictionary *sandboxExtensions; // @synthesize sandboxExtensions=_sandboxExtensions;
+@property (copy) NSString *sharedDataPath; // @synthesize sharedDataPath=_sharedDataPath;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

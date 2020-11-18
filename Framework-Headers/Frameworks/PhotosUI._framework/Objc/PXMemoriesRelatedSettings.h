@@ -11,6 +11,8 @@
     BOOL _enableUI;
     BOOL _enableFeedbackUI;
     BOOL _enableFeedbackComboUI;
+    BOOL _enableMemoriesLivingOnFeedback;
+    BOOL _enableManualRefreshUI;
     BOOL _enableMemoryBlurryHeader;
     double _refreshPhotoKitTimeout;
     double _widgetRefreshTimeInterval;
@@ -23,6 +25,8 @@
 @property (nonatomic) unsigned long long deleteBehavior; // @synthesize deleteBehavior=_deleteBehavior;
 @property (nonatomic) BOOL enableFeedbackComboUI; // @synthesize enableFeedbackComboUI=_enableFeedbackComboUI;
 @property (nonatomic) BOOL enableFeedbackUI; // @synthesize enableFeedbackUI=_enableFeedbackUI;
+@property (nonatomic) BOOL enableManualRefreshUI; // @synthesize enableManualRefreshUI=_enableManualRefreshUI;
+@property (nonatomic) BOOL enableMemoriesLivingOnFeedback; // @synthesize enableMemoriesLivingOnFeedback=_enableMemoriesLivingOnFeedback;
 @property (nonatomic) BOOL enableMemoryBlurryHeader; // @synthesize enableMemoryBlurryHeader=_enableMemoryBlurryHeader;
 @property (nonatomic) BOOL enableUI; // @synthesize enableUI=_enableUI;
 @property (nonatomic) long long minimumNumberOfCuratedAssetsForInterestingMoments; // @synthesize minimumNumberOfCuratedAssetsForInterestingMoments=_minimumNumberOfCuratedAssetsForInterestingMoments;
@@ -31,9 +35,11 @@
 @property (nonatomic) double refreshPhotoKitTimeout; // @synthesize refreshPhotoKitTimeout=_refreshPhotoKitTimeout;
 @property (nonatomic) double widgetRefreshTimeInterval; // @synthesize widgetRefreshTimeInterval=_widgetRefreshTimeInterval;
 
++ (void)_presentAlertForMemoriesGenerationResult:(id)arg1 error:(id)arg2 inModuleController:(id)arg3;
 + (void)_presentAlertWithTitle:(id)arg1 andMessage:(id)arg2 inModuleController:(id)arg3;
 + (id)settingsControllerModule;
 + (id)sharedInstance;
+- (id)parentSettings;
 - (void)performPostSaveActions;
 - (void)setDefaultValues;
 

@@ -14,18 +14,14 @@
 }
 
 @property (readonly, nonatomic) NSDictionary *bagDictionary; // @synthesize bagDictionary=_bagDictionary;
-@property (readonly, nonatomic) NSURL *browseURL;
-@property (readonly, nonatomic) NSURL *forYouURL;
 @property (readonly, nonatomic) NSArray *iOSVersionsForFormerFreeTrialUpsell;
 @property (readonly, nonatomic) NSArray *iOSVersionsForNoThanksUpsell;
 @property (readonly, nonatomic) NSArray *iOSVersionsForNotNowUpsell;
 @property (readonly, nonatomic) BOOL isIgnoringAddToPlaylistUserSetting;
-@property (readonly, nonatomic) NSURL *legacyForYouURL;
 @property (readonly, nonatomic) unsigned long long librarySharedPlaylistTrackCountLimit;
 @property (readonly, nonatomic) long long minimumNumberOfDaysBetweenPresentingWelcomeScreen;
 @property (readonly, nonatomic) float popularityStarThreshold;
 @property (readonly, nonatomic) NSURL *prominentRadioStationInfoURL;
-@property (readonly, nonatomic) NSURL *radioGroupingURL;
 @property (readonly, nonatomic) NSString *storeFrontSuffix;
 @property (readonly, nonatomic) BOOL supportsConnect;
 @property (readonly, nonatomic) BOOL supportsSubscription;

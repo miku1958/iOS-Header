@@ -4,43 +4,48 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSDate, NSMutableDictionary, NSNumber, NSString;
-@protocol OS_dispatch_queue;
+@class NSData, NSDate, NSError, NSMutableDictionary, NSNumber, NSString;
 
 @interface IDSMessageContext : NSObject
 {
     NSMutableDictionary *_dict;
     id _boostContext;
-    NSObject<OS_dispatch_queue> *_ivarQueue;
+    struct os_unfair_lock_s _lock;
 }
 
+@property (readonly, nonatomic) double averageLocalRTT;
 @property (strong, nonatomic) id boostContext;
 @property (nonatomic) long long broadcastID;
-@property (nonatomic) NSNumber *broadcastTime;
+@property (strong, nonatomic) NSNumber *broadcastTime;
 @property (nonatomic) long long connectionType;
+@property (readonly, nonatomic) BOOL deviceBlackedOut;
+@property (copy, nonatomic) NSData *engramGroupID;
 @property (nonatomic) BOOL expectsPeerResponse;
 @property (copy, nonatomic) NSString *fromID;
 @property (nonatomic) BOOL fromServerStorage;
 @property (copy, nonatomic) NSString *incomingResponseIdentifier;
-@property (nonatomic) NSNumber *originalCommand;
+@property (readonly, nonatomic) long long localMessageState;
+@property (copy, nonatomic) NSNumber *originalCommand;
 @property (copy, nonatomic) NSString *originalDestinationDevice;
 @property (copy, nonatomic) NSString *outgoingResponseIdentifier;
-@property (nonatomic) NSNumber *priority;
+@property (strong, nonatomic) NSNumber *priority;
 @property (readonly, nonatomic) NSDate *serverReceivedTime;
+@property (copy, nonatomic) NSNumber *serverTimestamp;
 @property (copy, nonatomic) NSString *serviceIdentifier;
 @property (copy, nonatomic) NSString *storageGuid;
 @property (copy, nonatomic) NSString *toID;
+@property (nonatomic) BOOL usedEngram;
 @property (nonatomic) BOOL wantsAppAck;
 @property (nonatomic) BOOL wantsManualAck;
+@property (readonly, nonatomic) NSError *wpConnectionError;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithDictionary:(id)arg1 boostContext:(id)arg2;
 - (id)objectForKey:(id)arg1;
-- (id)serverTimestamp;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
-- (void)setServerTimestamp:(id)arg1;
 
 @end
 

@@ -10,6 +10,10 @@
 {
 }
 
++ (id)donatedBySiri;
++ (id)intentClass;
++ (id)intentHandlingStatus;
++ (id)intentVerb;
 + (id)serializedInteraction;
 
 @end

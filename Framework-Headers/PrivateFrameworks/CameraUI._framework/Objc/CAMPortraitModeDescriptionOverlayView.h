@@ -13,29 +13,40 @@
 {
     id<CAMPortraitModeDescriptionOverlayViewDelegate> _delegate;
     long long _orientation;
+    double _contentTopInset;
     UIVisualEffectView *__blurEffectView;
     CAMPortraitModeDescriptionOverlayPrimaryVibrancyEffectView *__primaryVibrancyEffectView;
     UILabel *__titleLabel;
-    UILabel *__subtitleLabel;
     UILabel *__descriptionLabel;
+    UILabel *__infoLabel;
     UIButton *__acknowledgmentButton;
+    double __descriptionFontSizeMultiplier;
+    double __infoFontSizeMultiplier;
+    UIView *__topBlackoutView;
 }
 
 @property (readonly, nonatomic) UIButton *_acknowledgmentButton; // @synthesize _acknowledgmentButton=__acknowledgmentButton;
 @property (readonly, nonatomic) UIVisualEffectView *_blurEffectView; // @synthesize _blurEffectView=__blurEffectView;
+@property (nonatomic, setter=_setDescriptionFontSizeMultiplier:) double _descriptionFontSizeMultiplier; // @synthesize _descriptionFontSizeMultiplier=__descriptionFontSizeMultiplier;
 @property (readonly, nonatomic) UILabel *_descriptionLabel; // @synthesize _descriptionLabel=__descriptionLabel;
+@property (nonatomic, setter=_setInfoFontSizeMultiplier:) double _infoFontSizeMultiplier; // @synthesize _infoFontSizeMultiplier=__infoFontSizeMultiplier;
+@property (readonly, nonatomic) UILabel *_infoLabel; // @synthesize _infoLabel=__infoLabel;
 @property (readonly, nonatomic) CAMPortraitModeDescriptionOverlayPrimaryVibrancyEffectView *_primaryVibrancyEffectView; // @synthesize _primaryVibrancyEffectView=__primaryVibrancyEffectView;
-@property (readonly, nonatomic) UILabel *_subtitleLabel; // @synthesize _subtitleLabel=__subtitleLabel;
 @property (readonly, nonatomic) UILabel *_titleLabel; // @synthesize _titleLabel=__titleLabel;
+@property (strong, nonatomic) UIView *_topBlackoutView; // @synthesize _topBlackoutView=__topBlackoutView;
 @property (nonatomic, getter=isAcknowledgmentButtonHighlighted) BOOL acknowledgmentButtonHighlighted;
+@property (nonatomic) double contentTopInset; // @synthesize contentTopInset=_contentTopInset;
 @property (weak, nonatomic) id<CAMPortraitModeDescriptionOverlayViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 
 - (void).cxx_destruct;
-- (double)_additionalFontSizeForContentSize:(id)arg1;
+- (double)_additionalSpacingForContentSize:(id)arg1;
 - (id)_currentContentSize;
 - (void)_handleAcknowledgmentButtonTapped:(id)arg1;
-- (void)_updateFontsForCurrentContentSize;
+- (BOOL)_isVisible;
+- (void)_updateFontsUsingNarrowWidth:(BOOL)arg1;
+- (void)_updateTextUsingNarrowWidth:(BOOL)arg1;
+- (void)_updateTopBlackoutViewForVisible:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;

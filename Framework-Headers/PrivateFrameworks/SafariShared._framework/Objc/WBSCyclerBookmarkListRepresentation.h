@@ -36,6 +36,8 @@
 - (id)initWithTitle:(id)arg1 uniqueIdentifier:(id)arg2;
 - (void)insertChild:(id)arg1 atIndex:(unsigned long long)arg2;
 - (BOOL)isEquivalent:(id)arg1;
+- (id)pairsOfBookmarksWithDifferingExtraAttributesComparedTo:(id)arg1;
+- (id)randomDescendant;
 - (id)randomDescendantPassingTest:(CDUnknownBlockType)arg1;
 - (id)randomListDescendant;
 

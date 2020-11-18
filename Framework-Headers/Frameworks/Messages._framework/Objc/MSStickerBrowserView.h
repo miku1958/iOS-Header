@@ -53,7 +53,6 @@
 @property (strong, nonatomic) NSMutableDictionary *stickerCache; // @synthesize stickerCache=_stickerCache;
 @property (strong, nonatomic) CKDispatchQueue *stickerCacheQueue; // @synthesize stickerCacheQueue=_stickerCacheQueue;
 @property (readonly, nonatomic) long long stickerSize; // @synthesize stickerSize=_stickerSize;
-@property (readonly, nonatomic) long long stickerSizeClass;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -72,9 +71,7 @@
 - (void)didMoveToWindow;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 layout:(long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 stickerSize:(long long)arg2;
-- (id)initWithFrame:(struct CGRect)arg1 stickerSizeClass:(long long)arg2;
 - (void)invalidateFlowLayout;
 - (void)layoutSubviews;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;

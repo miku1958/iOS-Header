@@ -48,6 +48,8 @@
 @property (nonatomic) BOOL isVIP;
 @property (readonly, nonatomic, getter=isKnownToHaveAttachments) BOOL knownToHaveAttachments;
 @property (nonatomic, getter=isKnownToHaveAttachments) BOOL knownToHaveAttachments;
+@property (readonly, nonatomic) unsigned int libraryID;
+@property (readonly, nonatomic, getter=isLibraryMessage) BOOL libraryMessage;
 @property (readonly, nonatomic) unsigned int mailboxID;
 @property (nonatomic) unsigned int mailboxID; // @synthesize mailboxID=_mailboxID;
 @property (readonly, nonatomic) long long messageIDHash;
@@ -63,6 +65,8 @@
 @property (nonatomic) BOOL uidIsLibraryID;
 
 + (long long)newGenerationNumber;
+- (id)_flagDescription;
+- (id)copyMessageInfo;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)generationCompare:(id)arg1;
 - (id)init;

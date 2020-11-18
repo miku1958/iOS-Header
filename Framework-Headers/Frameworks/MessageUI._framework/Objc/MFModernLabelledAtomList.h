@@ -61,6 +61,7 @@
 - (void)addressBookDidChange:(id)arg1;
 - (id)atomDisplayStrings;
 - (struct CGPoint)baselinePointForRow:(unsigned long long)arg1;
+- (void)contentSizeCategoryDidChangeNotification:(id)arg1;
 - (void)crossFadeLabelVisibility:(BOOL)arg1 atomSeparatorStyle:(int)arg2 withAnimationCoordinator:(id)arg3;
 - (void)dealloc;
 - (void)enumerateAddressAtomsUsingBlock:(CDUnknownBlockType)arg1;

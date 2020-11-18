@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 + (id)diskCachePath;
 + (void)setDiskCachePath:(id)arg1;
+- (void).cxx_destruct;
 - (id)_allExistingProviderIDs;
 - (id)_cacheKeysPerSize;
 - (void)_loadAllCachesIfNecessary;
@@ -25,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (id)allCaches;
 - (id)cacheForProviderID:(int)arg1;
 - (void)calculateFreeableSpaceWithHandler:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (void)deletePhoneNumberMapping;
 - (void)evictAllEntries;
 - (id)init;

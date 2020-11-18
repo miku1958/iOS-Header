@@ -10,7 +10,7 @@
 #import <Preferences/UIKeyInput-Protocol.h>
 #import <Preferences/UITextInputTraits-Protocol.h>
 
-@class NSString, UIKeyboard, UITransitionView, UIView;
+@class DevicePINKeypadContainerView, NSString, UIKeyboard, UITransitionView, UIView;
 @protocol PINEntryView;
 
 @interface DevicePINPane : PSEditingPane <UIKeyInput, UITextInputTraits, PSPINEntryViewDelegate>
@@ -28,6 +28,7 @@
     BOOL _isBlocked;
     BOOL _simplePIN;
     BOOL _numericKeyboard;
+    DevicePINKeypadContainerView *_keypadContainerView;
     unsigned int _PINLength;
     CDUnknownBlockType _passcodeOptionsHandler;
 }
@@ -46,6 +47,9 @@
 @property (strong, nonatomic) UIView<PINEntryView> *pinView; // @synthesize pinView=_pinView;
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
+@property (nonatomic) long long smartDashesType;
+@property (nonatomic) long long smartInsertDeleteType;
+@property (nonatomic) long long smartQuotesType;
 @property (nonatomic) long long spellCheckingType;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *textContentType;
@@ -66,6 +70,7 @@
 - (void)hideFailedAttempts;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)insertText:(id)arg1;
+- (void)keyboardWillChangeFrame:(id)arg1;
 - (void)layoutSubviews;
 - (void)okButtonPressed;
 - (id)password;

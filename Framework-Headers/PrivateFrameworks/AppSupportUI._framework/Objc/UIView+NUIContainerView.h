@@ -13,7 +13,10 @@
 @property (nonatomic) struct UIEdgeInsets customAlignmentRectInsets;
 @property (nonatomic) double customBaselineOffsetFromBottom;
 @property (nonatomic) double customFirstBaselineOffsetFromContentTop;
+@property (nonatomic) BOOL invalidatingIntrinsicContentSizeAlsoInvalidatesSuperview;
 
 - (id)containerViewInfoCreateIfNeeded:(BOOL)arg1;
+- (BOOL)isLayoutSizeDependentOnPerpendicularAxis;
+- (BOOL)supportsAsynchronousMeasurement;
 @end
 

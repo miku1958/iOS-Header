@@ -6,13 +6,14 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOComposedRoute, GEOMapServiceTraits, GEORouteMatch, NSString;
-@protocol GEORoutePreloadSessionDelegate;
+@class GEOComposedRoute, GEOMapServiceTraits, GEORouteMatch, NSObject;
+@protocol GEORoutePreloadSessionDelegate, OS_os_log;
 
 @protocol GEORoutePreloadSession <NSObject>
 
 @property (weak) id<GEORoutePreloadSessionDelegate> delegate;
 @property (nonatomic) unsigned long long networkQuality;
+@property (readonly, nonatomic) NSObject<OS_os_log> *preloaderLog;
 @property (readonly, nonatomic) GEOComposedRoute *route;
 
 - (void)addTileSetStyle:(int)arg1 betweenZoom:(unsigned int)arg2 andZoom:(unsigned int)arg3;
@@ -23,7 +24,6 @@
 - (BOOL)loggingEnabled;
 - (BOOL)minimalDebuggingEnabled;
 - (int)preloadStateForTile:(const struct _GEOTileKey *)arg1;
-- (void)preloaderLog:(NSString *)arg1;
 - (void)setTraits:(GEOMapServiceTraits *)arg1;
 - (void)start;
 - (void)stop;

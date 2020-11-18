@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSURL *webPageURL; // @synthesize webPageURL=_webPageURL;
 
 - (void).cxx_destruct;
+- (void)configureWithRequest:(id)arg1;
 - (id)init;
 
 @end

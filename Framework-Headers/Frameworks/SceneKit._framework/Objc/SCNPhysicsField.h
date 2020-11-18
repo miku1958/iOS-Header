@@ -69,6 +69,7 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (struct SCNVector3)evalAtLocation:(struct SCNVector3)arg1;
+- (BOOL)exclusive;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)supportsDirection;

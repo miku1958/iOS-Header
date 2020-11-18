@@ -17,6 +17,7 @@
     _Atomic int _fadeInRequestID;
     struct {
         BOOL scale;
+        BOOL apertureMode;
     } _isValid;
     double _lastAppliedScale;
     BOOL _playingVitality;
@@ -30,12 +31,13 @@
     ISLivePhotoVitalityFilter *_vitalityFilter;
     long long _currentPlaybackStyle;
     long long _targetReadiness;
-    long long __playbackIdentifier;
     long long __styleToPlayWhenReady;
     NSDate *__vitalityTimeoutDate;
+    CDStruct_1b6d18a9 _seekTime;
+    CDStruct_e83c9415 _trimTimeRange;
 }
 
-@property (nonatomic, setter=_setPlaybackIdentifier:) long long _playbackIdentifier; // @synthesize _playbackIdentifier=__playbackIdentifier;
+@property (readonly, nonatomic) BOOL _canPlayVitality;
 @property (nonatomic, setter=_setSettleAutomaticallyWhenReady:) BOOL _settleAutomaticallyWhenReady; // @synthesize _settleAutomaticallyWhenReady=__settleAutomaticallyWhenReady;
 @property (nonatomic, setter=_setShouldPlayVitalityWhenReady:) BOOL _shouldPlayVitalityWhenReady; // @synthesize _shouldPlayVitalityWhenReady=__shouldPlayVitalityWhenReady;
 @property (nonatomic, setter=_setShouldPrepareForHintWhenReady:) BOOL _shouldPrepareForHintWhenReady; // @synthesize _shouldPrepareForHintWhenReady=__shouldPrepareForHintWhenReady;
@@ -51,8 +53,10 @@
 @property (nonatomic, getter=isPlaybackAllowed) BOOL playbackAllowed; // @synthesize playbackAllowed=_playbackAllowed;
 @property (readonly, nonatomic) NSSet *playbackFilters;
 @property (nonatomic, getter=isPlayingVitality, setter=_setPlayingVitality:) BOOL playingVitality; // @synthesize playingVitality=_playingVitality;
+@property (readonly, nonatomic) CDStruct_1b6d18a9 seekTime; // @synthesize seekTime=_seekTime;
 @property (readonly) Class superclass;
 @property (nonatomic) long long targetReadiness; // @synthesize targetReadiness=_targetReadiness;
+@property (nonatomic) CDStruct_e83c9415 trimTimeRange; // @synthesize trimTimeRange=_trimTimeRange;
 @property (strong, nonatomic) ISLivePhotoVitalityFilter *vitalityFilter; // @synthesize vitalityFilter=_vitalityFilter;
 
 - (void).cxx_destruct;
@@ -60,15 +64,17 @@
 - (long long)_coalescedPlaybackFilterState;
 - (void)_configurePlaybackFilter:(id)arg1;
 - (void)_configurePlaybackFilters;
+- (id)_createVitalityBehavior;
 - (void)_fadeInAudio;
 - (void)_handlePlaybackFilterDidChange;
 - (void)_handleVitalityFilterDidChange:(id)arg1;
-- (long long)_incrementedPlaybackIdentifier;
+- (void)_invalidateApertureMode;
 - (void)_invalidateScale;
 - (double)_photoTransitionDuration;
 - (void)_playIfNeeded;
 - (void)_prepareForVitalityIfNeeded;
 - (void)_resetPlaybackFilters;
+- (void)_updateApertureModeIfNeeded;
 - (void)_updateHintingAndVitality;
 - (void)_updatePlayerItemLoadingTarget;
 - (void)_updateScaleIfNeeded;
@@ -84,11 +90,11 @@
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)playHintWhenReady;
 - (void)playVitality;
-- (void)playbackStyleIdentifierDidChange;
 - (void)playerItemDidChange;
 - (void)prepareForHintWhenReady;
 - (void)prepareForVitality;
 - (void)removePlaybackFilter:(id)arg1;
+- (void)setSeekTime:(CDStruct_1b6d18a9)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startPlaybackWithStyle:(long long)arg1;
 - (void)startPlaybackWithStyle:(long long)arg1 settleAutomatically:(BOOL)arg2;
 - (void)startPlaybackWithStyleWhenReady:(long long)arg1;
@@ -96,7 +102,7 @@
 - (void)statusDidChange;
 - (void)stopPlayback;
 - (void)stopPlaybackAnimated:(BOOL)arg1;
-- (double)videoWillPlayToEndInterval;
+- (double)videoWillPlayToPhotoInterval;
 - (void)vitalityBehaviorDidBeginPlaying:(id)arg1;
 - (void)vitalityBehaviorDidEndPlaying:(id)arg1;
 - (BOOL)vitalityBehaviorShouldEndPlayingAtPhoto:(id)arg1;

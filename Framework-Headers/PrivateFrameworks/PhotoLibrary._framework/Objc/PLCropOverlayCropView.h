@@ -9,10 +9,17 @@
 @interface PLCropOverlayCropView : UIView
 {
     struct CGRect _cropRect;
+    UIView *_aboveCropView;
+    UIView *_cropRectView;
+    UIView *_belowCropView;
 }
 
+- (void)_removeCropViews;
+- (void)_updateCropRectIfNeeded;
 - (struct CGRect)cropRect;
-- (void)drawRect:(struct CGRect)arg1;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)setAlpha:(double)arg1;
 - (void)setCropRect:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 

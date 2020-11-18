@@ -8,18 +8,20 @@
 
 #import <PhotosUI/PLDismissableViewController-Protocol.h>
 
-@class NSArray, NSString, PLProgressView, PUActivityItemSourceController, PUProgressIndicatorView;
+@class NSArray, NSString, PLProgressView, PUActivityItemSourceController, PUProgressIndicatorView, UIView;
 @protocol PUActivityViewControllerDelegate;
 
 @interface PUActivityViewController : UIActivityViewController <PLDismissableViewController>
 {
     struct __CFString *_aggregateKey;
     PLProgressView *_remakerProgressView;
+    UIView *_topBorderView;
     PUActivityItemSourceController *_itemSourceController;
     long long _numberOfAssetsToPrepare;
     long long _numberOfAssetPreparationsCompleted;
     double _currentAssetPreparationProgress;
     PUProgressIndicatorView *_preparationProgressView;
+    BOOL _isDismissed;
     NSArray *_photosActivities;
     id<PUActivityViewControllerDelegate> _delegate;
 }
@@ -33,22 +35,25 @@
 
 + (BOOL)_isOutboundShareActivity:(id)arg1;
 + (id)defaultActivityTypeOrder;
++ (BOOL)needsConfidentialityCheckForActivityType:(id)arg1;
 + (id)photosApplicationActivities;
 - (void).cxx_destruct;
+- (void)_activity:(id)arg1 didComplete:(BOOL)arg2;
 - (void)_cancel;
 - (void)_cleanUpActivityState;
 - (void)_handleUserCancelWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performActivity:(id)arg1;
 - (void)_prepareActivity:(id)arg1;
 - (void)_prepareAssetProgressForActivity:(id)arg1;
-- (void)_puActivity:(id)arg1 didComplete:(BOOL)arg2;
+- (void)_presentConfidentialityWarningWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_removePreparationProgressView;
 - (void)_removeRemakerProgressView;
 - (void)_sharingManagerDidBeginPublishing:(id)arg1;
-- (BOOL)_shouldShowSystemActivity:(id)arg1;
+- (BOOL)_shouldShowSystemActivityType:(id)arg1;
 - (void)_showPreparationProgressView:(id)arg1 withCancelationHandler:(CDUnknownBlockType)arg2;
 - (void)_showRemakerProgressView:(id)arg1 forMail:(BOOL)arg2 withCancelationHandler:(CDUnknownBlockType)arg3;
-- (void)_showSharingWasInterruptedWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_showSharingWasInterruptedForError:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_updateTopBorderView;
 - (void)addAssetItem:(id)arg1;
 - (void)dealloc;
 - (id)initWithAssetItems:(id)arg1 photosApplicationActivities:(id)arg2;
@@ -61,6 +66,7 @@
 - (void)setAssetItems:(id)arg1;
 - (void)setCompletionWithItemsHandler:(CDUnknownBlockType)arg1;
 - (void)updateVisibleShareActions;
+- (void)viewDidLayoutSubviews;
 
 @end
 

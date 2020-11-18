@@ -13,13 +13,15 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axSetWeatherTime;
 - (id)accessibilityLabel;
 - (void)clearCellContent;
 - (BOOL)isAccessibilityElement;
 - (void)setDetail:(id)arg1 bold:(BOOL)arg2;
 - (void)setImage:(id)arg1;
 - (void)setPrecipitation:(double)arg1;
-- (void)setTime:(id)arg1;
+- (void)setTime:(id)arg1 hourlyEventType:(unsigned long long)arg2;
 
 @end
 

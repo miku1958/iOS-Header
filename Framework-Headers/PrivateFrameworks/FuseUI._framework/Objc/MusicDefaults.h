@@ -11,6 +11,7 @@
 @interface MusicDefaults : MPUApplicationDefaults
 {
     BOOL _internalInstall;
+    long long _playbackSpeed;
 }
 
 @property (readonly, nonatomic, getter=isActivityContinuationEnabled) BOOL activityContinuationEnabled;
@@ -29,7 +30,7 @@
 @property (nonatomic) unsigned long long lastModifiedPlaylistID;
 @property (strong, nonatomic) NSDate *lastMyMusicSearchDate;
 @property (readonly, nonatomic, getter=isPinningEnabled) BOOL pinningEnabled;
-@property (nonatomic) long long playbackSpeed;
+@property (nonatomic) long long playbackSpeed; // @synthesize playbackSpeed=_playbackSpeed;
 @property (nonatomic) BOOL playlistsOverviewShowsOnlyOfflinePlaylists;
 @property (nonatomic) float popularityIndicatorThreshold;
 @property (nonatomic) long long repeatType;

@@ -8,9 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 __attribute__((visibility("hidden")))
 @interface GEOResourceFilter : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _scales;
     CDStruct_95bda58d _scenarios;
 }
@@ -19,7 +22,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long scalesCount;
 @property (readonly, nonatomic) int *scenarios;
 @property (readonly, nonatomic) unsigned long long scenariosCount;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (int)StringAsScales:(id)arg1;
 - (int)StringAsScenarios:(id)arg1;
 - (void)addScale:(int)arg1;

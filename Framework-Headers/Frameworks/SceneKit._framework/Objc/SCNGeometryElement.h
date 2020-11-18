@@ -16,30 +16,47 @@
     NSData *_elementData;
     long long _primitiveType;
     long long _primitiveCount;
+    struct _NSRange _primitiveRange;
+    long long _indicesChannelCount;
+    BOOL _interleavedIndicesChannels;
     long long _bytesPerIndex;
+    float _pointSize;
+    float _minimumPointScreenSpaceRadius;
+    float _maximumPointScreenSpaceRadius;
 }
 
 @property (readonly, nonatomic) long long bytesPerIndex;
 @property (readonly, nonatomic) NSData *data;
+@property (nonatomic) double maximumPointScreenSpaceRadius;
+@property (nonatomic) double minimumPointScreenSpaceRadius;
+@property (nonatomic) double pointSize;
 @property (readonly, nonatomic) long long primitiveCount;
+@property (nonatomic) struct _NSRange primitiveRange;
 @property (readonly, nonatomic) long long primitiveType;
 
 + (id)_optimizedGeometryElementWithData:(id)arg1 primitiveType:(long long)arg2 primitiveCount:(long long)arg3 bytesPerIndex:(long long)arg4;
 + (id)geometryElementWithData:(id)arg1 primitiveType:(long long)arg2 primitiveCount:(long long)arg3 bytesPerIndex:(long long)arg4;
++ (id)geometryElementWithData:(id)arg1 primitiveType:(long long)arg2 primitiveCount:(long long)arg3 indicesChannelCount:(long long)arg4 interleavedIndicesChannels:(BOOL)arg5 bytesPerIndex:(long long)arg6;
 + (id)geometryElementWithMDLSubmesh:(id)arg1;
 + (id)geometryElementWithMeshElementRef:(struct __C3DMeshElement *)arg1;
 + (BOOL)supportsSecureCoding;
+- (const void *)__CFObject;
 - (double)_computeACMR;
 - (void)_optimizeTriangleIndices;
-- (id)_renderableElementCopy;
+- (void)_printData;
 - (void)dealloc;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasInterleavedIndicesChannels;
 - (unsigned long long)indexCount;
+- (long long)indicesChannelCount;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithData:(id)arg1 primitiveType:(long long)arg2 primitiveCount:(long long)arg3 bytesPerIndex:(long long)arg4;
+- (id)initWithData:(id)arg1 primitiveType:(long long)arg2 primitiveCount:(long long)arg3 indicesChannelCount:(long long)arg4 interleavedIndicesChannels:(BOOL)arg5 bytesPerIndex:(long long)arg6;
 - (id)initWithMeshElement:(struct __C3DMeshElement *)arg1;
 - (struct __C3DMeshElement *)meshElement;
+- (id)scene;
+- (struct __C3DScene *)sceneRef;
 
 @end
 

@@ -13,8 +13,6 @@
 @property (readonly, nonatomic) BOOL hasArtworkData;
 @property (readonly, nonatomic) unsigned int type;
 
-+ (id)createNowPlayingArtworkFromXPCDictionary:(id)arg1;
-- (void)bindToXPCDictionary:(id)arg1;
 - (id)copyImageData;
 
 @end

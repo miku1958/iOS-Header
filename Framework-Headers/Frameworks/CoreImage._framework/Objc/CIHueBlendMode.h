@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreImage/CIBlendModeFilter.h>
+#import <CoreImage/CIPDFNonSeparableBlendMode.h>
 
 __attribute__((visibility("hidden")))
-@interface CIHueBlendMode : CIBlendModeFilter
+@interface CIHueBlendMode : CIPDFNonSeparableBlendMode
 {
 }
 
-+ (id)_kernel;
-- (id)outputImage;
+- (id)_kernel_v0;
+- (id)_kernel_v1;
 
 @end
 

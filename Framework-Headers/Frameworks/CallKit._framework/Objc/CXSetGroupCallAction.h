@@ -13,7 +13,7 @@
     NSUUID *_callUUIDToGroupWith;
 }
 
-@property (strong, nonatomic) NSUUID *callUUIDToGroupWith; // @synthesize callUUIDToGroupWith=_callUUIDToGroupWith;
+@property (copy, nonatomic) NSUUID *callUUIDToGroupWith; // @synthesize callUUIDToGroupWith=_callUUIDToGroupWith;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

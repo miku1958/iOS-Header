@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, NSMutableSet, NSSet, WBSHistorySQLiteStore;
+@class NSMapTable, NSMutableSet, NSSet;
+@protocol WBSHistoryStore;
 
 @interface WBSHistoryDeletionPlan : NSObject
 {
-    WBSHistorySQLiteStore *_store;
+    id<WBSHistoryStore> _store;
     NSSet *_excludedItems;
     NSSet *_excludedVisits;
     NSMutableSet *_discoveredItemsToDelete;
+    BOOL _wasPrepared;
     NSSet *_triggeringItems;
     NSSet *_triggeringVisits;
     NSSet *_discoveredVisitsToDelete;
@@ -28,12 +30,12 @@
 @property (readonly, nonatomic) NSSet *triggeringItems; // @synthesize triggeringItems=_triggeringItems;
 @property (readonly, nonatomic) NSSet *triggeringVisits; // @synthesize triggeringVisits=_triggeringVisits;
 @property (readonly, nonatomic) NSMapTable *updatedLastVisitsByItem; // @synthesize updatedLastVisitsByItem=_updatedLastVisitsByItem;
+@property (readonly, nonatomic) BOOL wasPrepared; // @synthesize wasPrepared=_wasPrepared;
 
 - (void).cxx_destruct;
 - (id)_extraVisitsToDeleteWhenDeletingItems:(id)arg1 visits:(id)arg2;
 - (id)_extraVisitsToDeleteWhenDeletingItems:(id)arg1 visits:(id)arg2 relatedVisitKey:(id)arg3 relatedVisitsQueryFactory:(CDUnknownBlockType)arg4;
 - (void)_prepareWithTriggeringItems:(id)arg1 triggeringVisits:(id)arg2;
-- (id)_visitsForItems:(id)arg1;
 - (void)execute;
 - (id)initWithSQLiteStore:(id)arg1 triggeringItems:(id)arg2 excludingItems:(id)arg3 visits:(id)arg4 reason:(long long)arg5;
 - (id)initWithSQLiteStore:(id)arg1 triggeringVisits:(id)arg2 excludingItems:(id)arg3 visits:(id)arg4;

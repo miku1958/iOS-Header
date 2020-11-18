@@ -12,11 +12,14 @@
 
 @property (readonly, nonatomic) NSString *administrativeAreaCode;
 @property (readonly, nonatomic) NSString *fullAdministrativeArea;
+@property (readonly, nonatomic) BOOL isIsland;
+@property (readonly, nonatomic) BOOL isOcean;
 
 + (id)commonPresentationStringWithPlacemarks:(id)arg1 options:(unsigned long long *)arg2;
 + (id)placemarkFromLitePlacemark:(id)arg1;
 + (unsigned long long)presentationOptionsForPlacemarks:(id)arg1;
 + (id)presentationStringForPlacemarks:(id)arg1 options:(unsigned long long)arg2;
+- (int)cls_precisePlaceType;
 - (BOOL)isEqualToPlacemark:(id)arg1;
 - (id)presentationString:(unsigned long long *)arg1;
 @end

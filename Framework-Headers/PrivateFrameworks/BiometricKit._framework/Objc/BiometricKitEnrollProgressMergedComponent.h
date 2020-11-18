@@ -17,6 +17,7 @@
 @property (nonatomic) long long componentID; // @synthesize componentID=_componentID;
 @property (strong, nonatomic) BiometricKitEnrollProgressCoordinates *transformationCoordinates; // @synthesize transformationCoordinates=_transformationCoordinates;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 

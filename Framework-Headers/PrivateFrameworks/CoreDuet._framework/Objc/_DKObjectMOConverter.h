@@ -6,15 +6,20 @@
 
 #import <objc/NSObject.h>
 
+@class NSCache;
+
 @interface _DKObjectMOConverter : NSObject
 {
     BOOL _readMetadata;
     BOOL _deduplicateValues;
+    NSCache *_cache;
 }
 
+@property (strong) NSCache *cache; // @synthesize cache=_cache;
 @property BOOL deduplicateValues; // @synthesize deduplicateValues=_deduplicateValues;
 @property BOOL readMetadata; // @synthesize readMetadata=_readMetadata;
 
+- (void).cxx_destruct;
 - (BOOL)copyObject:(id)arg1 intoManagedObject:(id)arg2;
 - (id)dataIntervalsFromManagedObjects:(id)arg1;
 - (id)init;

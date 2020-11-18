@@ -18,5 +18,6 @@
 - (void)updateFaceForUUID:(NSUUID *)arg1 withResourceDirectory:(NSString *)arg2 seqId:(NSNumber *)arg3 completion:(void (^)(void))arg4;
 - (void)updateOrderedFaceUUIDs:(NSArray *)arg1 seqId:(NSNumber *)arg2;
 - (void)updateSelectedFaceUUID:(NSUUID *)arg1 seqId:(NSNumber *)arg2;
+- (void)upgradeFace:(NTKFace *)arg1 forUUID:(NSUUID *)arg2 seqID:(NSNumber *)arg3;
 @end
 

@@ -27,16 +27,17 @@
 
 @property (strong, nonatomic) NSNetServiceBrowser *browser; // @synthesize browser=_browser;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<AXIDCControllerBrowserDelegateProtocol> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<AXIDCControllerBrowserDelegateProtocol> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableArray *remoteControllers; // @synthesize remoteControllers=_remoteControllers;
-@property (nonatomic) id<AXIDCManagerSecurityDelegate> securityDelegate; // @synthesize securityDelegate=_securityDelegate;
+@property (weak, nonatomic) id<AXIDCManagerSecurityDelegate> securityDelegate; // @synthesize securityDelegate=_securityDelegate;
 @property (strong, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property (strong, nonatomic) AXIDCSlaveController *slaveController; // @synthesize slaveController=_slaveController;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)availableControllers;
 - (id)availableRemoteControllers;
 - (void)becomeMaster;
@@ -45,7 +46,6 @@
 - (void)controller:(id)arg1 didFinishSendingData:(id)arg2;
 - (void)controller:(id)arg1 didReceiveData:(id)arg2;
 - (void)controllerDidFinishConnecting:(id)arg1;
-- (void)dealloc;
 - (id)initWithServiceType:(id)arg1;
 - (id)initWithServiceType:(id)arg1 remoteClass:(Class)arg2 andSlaveClass:(Class)arg3;
 - (void)netServiceBrowser:(id)arg1 didFindService:(id)arg2 moreComing:(BOOL)arg3;

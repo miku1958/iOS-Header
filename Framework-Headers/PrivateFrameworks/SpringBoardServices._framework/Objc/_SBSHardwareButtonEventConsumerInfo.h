@@ -16,10 +16,12 @@
     BOOL _valid;
     SBSHardwareButtonService *_service;
     id<SBSHardwareButtonEventConsuming> _consumer;
+    long long _buttonKind;
     unsigned long long _eventMask;
     long long _eventPriority;
 }
 
+@property (nonatomic) long long buttonKind; // @synthesize buttonKind=_buttonKind;
 @property (strong, nonatomic) id<SBSHardwareButtonEventConsuming> consumer; // @synthesize consumer=_consumer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

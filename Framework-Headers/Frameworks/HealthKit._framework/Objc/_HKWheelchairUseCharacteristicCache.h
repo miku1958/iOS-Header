@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthStore, NSHashTable;
+@class HKHealthStore, HKWheelchairUseObject, NSHashTable;
 @protocol OS_dispatch_queue;
 
 @interface _HKWheelchairUseCharacteristicCache : NSObject
@@ -14,7 +14,7 @@
     HKHealthStore *_healthStore;
     NSHashTable *_observers;
     long long _state;
-    long long _wheelchairUse;
+    HKWheelchairUseObject *_wheelchairUseObject;
     NSObject<OS_dispatch_queue> *_queue;
     int _characteristicUpdateToken;
     long long _queryRetries;
@@ -29,6 +29,7 @@
 - (BOOL)_needsFetch;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
+- (BOOL)hasFetchedWheelchairUse;
 - (id)initWithHealthStore:(id)arg1;
 - (BOOL)isWheelchairUser;
 - (void)removeObserver:(id)arg1;

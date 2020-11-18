@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface GEONavdDefaults : NSObject
 {
@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) unsigned long long accessValueThresholdToUpdateCacheEntries;
 @property (readonly, nonatomic) double ageForRefresh;
+@property (readonly, nonatomic) double automaticTrafficIncidentRerouteDelay;
 @property (readonly, nonatomic) double averageWalkingSpeed;
 @property (readonly, nonatomic) double defaultExpirationOffset;
 @property (readonly, nonatomic) double exitRegionSize;
@@ -29,13 +30,16 @@
 @property (readonly, nonatomic) double locationUpdatesDesiredAccuracyForWalking;
 @property (readonly, nonatomic) double locationUpdatesDesiredAccuracyWhileStationaryForDriving;
 @property (readonly, nonatomic) double locationUpdatesDesiredAccuracyWhileStationaryForWalking;
+@property (readonly, nonatomic) unsigned long long maxRandomJitterForHypothesisWakeup;
 @property (readonly, nonatomic) long long maximumNumberOfDestinationsToMonitor;
 @property (readonly, nonatomic) unsigned long long maximumNumberOfEntriesInTheCacheUnderMemoryPressure;
 @property (readonly, nonatomic) unsigned long long maximumNumberOfLeechedLocations;
 @property (readonly, nonatomic) unsigned long long maximumNumberOfProcessingLoopRepeats;
 @property (readonly, nonatomic) double maximumRefreshIntervalLeeway;
 @property (readonly, nonatomic) double maximumTimeBetweenConsecutiveHypothesisUpdatesInSeconds;
+@property (readonly, nonatomic) unsigned long long maximumTraceFileCount;
 @property (readonly, nonatomic) double maximumUserRoutingPreferencesAge;
+@property (readonly, nonatomic) unsigned long long minRandomJitterForHypothesisWakeup;
 @property (readonly, nonatomic) double minimumDistanceToCompareAgainstLocationAccuracy;
 @property (readonly, nonatomic) double minimumDistanceToGetLocationUpdatesInMeters;
 @property (readonly, nonatomic) double minimumExpirationOffset;
@@ -49,9 +53,14 @@
 @property (readonly, nonatomic) double refreshTimeIntervalBackoffBase;
 @property (readonly, nonatomic) double refreshTimeIntervalBackoffMax;
 @property (readonly, nonatomic) double refreshTimeIntervalToUseIfError;
+@property (readonly, nonatomic) BOOL shouldAutomaticallyRerouteTrafficIncidents;
 @property (readonly, nonatomic) BOOL shouldLazyLoadRoutes;
-@property (readonly, nonatomic) BOOL shouldRunLegacyNavigation;
+@property (readonly, nonatomic) BOOL shouldPreloadSubscriptions;
+@property (readonly, nonatomic) BOOL shouldRequestInlineShields;
+@property (readonly, nonatomic) BOOL shouldRequestLaneGuidance;
 @property (readonly, nonatomic) BOOL shouldRunNavigationInDaemon;
+@property (readonly, nonatomic) BOOL shouldShowServiceErrorAlert;
+@property (readonly, nonatomic) BOOL shouldUseGuidanceEventManager;
 @property (readonly, nonatomic) BOOL shouldUseServerSideETAs;
 @property (readonly, nonatomic) double slowWalkingSpeed;
 @property (readonly, nonatomic) double staleLocationUseTimerInterval;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuickLookThumbnailing/NSSecureCoding-Protocol.h>
 #import <QuickLookThumbnailing/PQLResultSetInitializer-Protocol.h>
@@ -32,7 +32,7 @@
 @property (strong) NSData *vol_uuid; // @synthesize vol_uuid=_vol_uuid;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initFromPQLResultSet:(id)arg1 error:(id *)arg2;
 - (id)initWithCoder:(id)arg1;

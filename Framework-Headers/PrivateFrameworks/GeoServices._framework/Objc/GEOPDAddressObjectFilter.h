@@ -8,21 +8,23 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEOPDAddressObjectFilter : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_libraryVersions;
 }
 
 @property (strong, nonatomic) NSMutableArray *libraryVersions; // @synthesize libraryVersions=_libraryVersions;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)libraryVersionType;
+- (void).cxx_destruct;
 - (void)addLibraryVersion:(id)arg1;
 - (void)clearLibraryVersions;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

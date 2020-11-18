@@ -18,7 +18,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)_dataNetworkImage;
+- (id)_dataNetworkImageName;
 - (id)_stringForRSSI;
+- (id)accessibilityHUDRepresentation;
 - (id)contentsImage;
 - (double)extraLeftPadding;
 - (double)extraRightPadding;

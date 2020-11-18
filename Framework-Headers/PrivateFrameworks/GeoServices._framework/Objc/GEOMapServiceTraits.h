@@ -8,17 +8,20 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAutomobileOptions, GEOLocation, GEOMapRegion, GEOTraitsTransitScheduleFilter, GEOTransitOptions, GEOWalkingOptions, NSMutableArray, NSString;
+@class GEOAutomobileOptions, GEOLocation, GEOMapRegion, GEOPDVenueIdentifier, GEOTraitsTransitScheduleFilter, GEOTransitOptions, GEOWalkingOptions, NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOMapServiceTraits : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     struct GEOSessionID _sessionId;
     CDStruct_95bda58d _engineTypes;
+    CDStruct_95bda58d _knownClientResolvedTypes;
     CDStruct_95bda58d _transportTypes;
     double _carHeadunitPixelHeight;
     double _carHeadunitPixelWidth;
     double _mapZoomLevel;
     int _action;
+    NSString *_analyticsAppIdentifier;
     NSString *_appIdentifier;
     NSString *_appMajorVersion;
     NSString *_appMinorVersion;
@@ -35,11 +38,13 @@
     NSString *_deviceSpokenLocale;
     NSString *_displayRegion;
     NSMutableArray *_historicalLocations;
+    unsigned int _httpRequestPriority;
     GEOMapRegion *_mapRegion;
     int _mode;
     NSMutableArray *_photoSizes;
     unsigned int _photosCount;
     NSString *_providerID;
+    int _requestMode;
     NSMutableArray *_reviewUserPhotoSizes;
     unsigned int _reviewUserPhotosCount;
     unsigned int _sequenceNumber;
@@ -48,10 +53,16 @@
     unsigned int _timeSinceMapViewportChanged;
     GEOTransitOptions *_transitOptions;
     GEOTraitsTransitScheduleFilter *_transitScheduleFilter;
+    GEOPDVenueIdentifier *_venueIdentifier;
     GEOWalkingOptions *_walkingOptions;
+    BOOL _deviceInVehicle;
     BOOL _isAPICall;
     BOOL _isRedoSearch;
     BOOL _navigating;
+    BOOL _supportDirectionIntentSearch;
+    BOOL _supportDymSuggestion;
+    BOOL _useBackgroundUrl;
+    BOOL _wantsBrandIcon;
     struct {
         unsigned int sessionId:1;
         unsigned int carHeadunitPixelHeight:1;
@@ -62,20 +73,28 @@
         unsigned int carHeadunitInteractionModel:1;
         unsigned int deviceBatteryState:1;
         unsigned int deviceInterfaceOrientation:1;
+        unsigned int httpRequestPriority:1;
         unsigned int mode:1;
         unsigned int photosCount:1;
+        unsigned int requestMode:1;
         unsigned int reviewUserPhotosCount:1;
         unsigned int sequenceNumber:1;
         unsigned int source:1;
         unsigned int timeSinceMapEnteredForeground:1;
         unsigned int timeSinceMapViewportChanged:1;
+        unsigned int deviceInVehicle:1;
         unsigned int isAPICall:1;
         unsigned int isRedoSearch:1;
         unsigned int navigating:1;
+        unsigned int supportDirectionIntentSearch:1;
+        unsigned int supportDymSuggestion:1;
+        unsigned int useBackgroundUrl:1;
+        unsigned int wantsBrandIcon:1;
     } _has;
 }
 
 @property (nonatomic) int action; // @synthesize action=_action;
+@property (strong, nonatomic) NSString *analyticsAppIdentifier; // @synthesize analyticsAppIdentifier=_analyticsAppIdentifier;
 @property (strong, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 @property (strong, nonatomic) NSString *appMajorVersion; // @synthesize appMajorVersion=_appMajorVersion;
 @property (strong, nonatomic) NSString *appMinorVersion; // @synthesize appMinorVersion=_appMinorVersion;
@@ -88,6 +107,7 @@
 @property (nonatomic) double carHeadunitPixelWidth; // @synthesize carHeadunitPixelWidth=_carHeadunitPixelWidth;
 @property (nonatomic) int deviceBatteryState; // @synthesize deviceBatteryState=_deviceBatteryState;
 @property (strong, nonatomic) NSMutableArray *deviceDisplayLanguages; // @synthesize deviceDisplayLanguages=_deviceDisplayLanguages;
+@property (nonatomic) BOOL deviceInVehicle; // @synthesize deviceInVehicle=_deviceInVehicle;
 @property (nonatomic) int deviceInterfaceOrientation; // @synthesize deviceInterfaceOrientation=_deviceInterfaceOrientation;
 @property (strong, nonatomic) NSString *deviceKeyboardLocale; // @synthesize deviceKeyboardLocale=_deviceKeyboardLocale;
 @property (strong, nonatomic) GEOLocation *deviceLocation; // @synthesize deviceLocation=_deviceLocation;
@@ -96,6 +116,7 @@
 @property (readonly, nonatomic) int *engineTypes;
 @property (readonly, nonatomic) unsigned long long engineTypesCount;
 @property (nonatomic) BOOL hasAction;
+@property (readonly, nonatomic) BOOL hasAnalyticsAppIdentifier;
 @property (readonly, nonatomic) BOOL hasAppIdentifier;
 @property (readonly, nonatomic) BOOL hasAppMajorVersion;
 @property (readonly, nonatomic) BOOL hasAppMinorVersion;
@@ -107,11 +128,13 @@
 @property (nonatomic) BOOL hasCarHeadunitPixelHeight;
 @property (nonatomic) BOOL hasCarHeadunitPixelWidth;
 @property (nonatomic) BOOL hasDeviceBatteryState;
+@property (nonatomic) BOOL hasDeviceInVehicle;
 @property (nonatomic) BOOL hasDeviceInterfaceOrientation;
 @property (readonly, nonatomic) BOOL hasDeviceKeyboardLocale;
 @property (readonly, nonatomic) BOOL hasDeviceLocation;
 @property (readonly, nonatomic) BOOL hasDeviceSpokenLocale;
 @property (readonly, nonatomic) BOOL hasDisplayRegion;
+@property (nonatomic) BOOL hasHttpRequestPriority;
 @property (nonatomic) BOOL hasIsAPICall;
 @property (nonatomic) BOOL hasIsRedoSearch;
 @property (readonly, nonatomic) BOOL hasMapRegion;
@@ -120,18 +143,27 @@
 @property (nonatomic) BOOL hasNavigating;
 @property (nonatomic) BOOL hasPhotosCount;
 @property (readonly, nonatomic) BOOL hasProviderID;
+@property (nonatomic) BOOL hasRequestMode;
 @property (nonatomic) BOOL hasReviewUserPhotosCount;
 @property (nonatomic) BOOL hasSequenceNumber;
 @property (nonatomic) BOOL hasSessionId;
 @property (nonatomic) BOOL hasSource;
+@property (nonatomic) BOOL hasSupportDirectionIntentSearch;
+@property (nonatomic) BOOL hasSupportDymSuggestion;
 @property (nonatomic) BOOL hasTimeSinceMapEnteredForeground;
 @property (nonatomic) BOOL hasTimeSinceMapViewportChanged;
 @property (readonly, nonatomic) BOOL hasTransitOptions;
 @property (readonly, nonatomic) BOOL hasTransitScheduleFilter;
+@property (nonatomic) BOOL hasUseBackgroundUrl;
+@property (readonly, nonatomic) BOOL hasVenueIdentifier;
 @property (readonly, nonatomic) BOOL hasWalkingOptions;
+@property (nonatomic) BOOL hasWantsBrandIcon;
 @property (strong, nonatomic) NSMutableArray *historicalLocations; // @synthesize historicalLocations=_historicalLocations;
+@property (nonatomic) unsigned int httpRequestPriority; // @synthesize httpRequestPriority=_httpRequestPriority;
 @property (nonatomic) BOOL isAPICall; // @synthesize isAPICall=_isAPICall;
 @property (nonatomic) BOOL isRedoSearch; // @synthesize isRedoSearch=_isRedoSearch;
+@property (readonly, nonatomic) int *knownClientResolvedTypes;
+@property (readonly, nonatomic) unsigned long long knownClientResolvedTypesCount;
 @property (strong, nonatomic) GEOMapRegion *mapRegion; // @synthesize mapRegion=_mapRegion;
 @property (nonatomic) double mapZoomLevel; // @synthesize mapZoomLevel=_mapZoomLevel;
 @property (nonatomic) int mode; // @synthesize mode=_mode;
@@ -139,36 +171,47 @@
 @property (strong, nonatomic) NSMutableArray *photoSizes; // @synthesize photoSizes=_photoSizes;
 @property (nonatomic) unsigned int photosCount; // @synthesize photosCount=_photosCount;
 @property (strong, nonatomic) NSString *providerID; // @synthesize providerID=_providerID;
+@property (nonatomic) int requestMode; // @synthesize requestMode=_requestMode;
 @property (strong, nonatomic) NSMutableArray *reviewUserPhotoSizes; // @synthesize reviewUserPhotoSizes=_reviewUserPhotoSizes;
 @property (nonatomic) unsigned int reviewUserPhotosCount; // @synthesize reviewUserPhotosCount=_reviewUserPhotosCount;
 @property (nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property (nonatomic) struct GEOSessionID sessionId; // @synthesize sessionId=_sessionId;
 @property (nonatomic) int source; // @synthesize source=_source;
+@property (nonatomic) BOOL supportDirectionIntentSearch; // @synthesize supportDirectionIntentSearch=_supportDirectionIntentSearch;
+@property (nonatomic) BOOL supportDymSuggestion; // @synthesize supportDymSuggestion=_supportDymSuggestion;
 @property (nonatomic) unsigned int timeSinceMapEnteredForeground; // @synthesize timeSinceMapEnteredForeground=_timeSinceMapEnteredForeground;
 @property (nonatomic) unsigned int timeSinceMapViewportChanged; // @synthesize timeSinceMapViewportChanged=_timeSinceMapViewportChanged;
 @property (strong, nonatomic) GEOTransitOptions *transitOptions; // @synthesize transitOptions=_transitOptions;
 @property (strong, nonatomic) GEOTraitsTransitScheduleFilter *transitScheduleFilter; // @synthesize transitScheduleFilter=_transitScheduleFilter;
 @property (readonly, nonatomic) int *transportTypes;
 @property (readonly, nonatomic) unsigned long long transportTypesCount;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (nonatomic) BOOL useBackgroundUrl; // @synthesize useBackgroundUrl=_useBackgroundUrl;
+@property (strong, nonatomic) GEOPDVenueIdentifier *venueIdentifier; // @synthesize venueIdentifier=_venueIdentifier;
 @property (strong, nonatomic) GEOWalkingOptions *walkingOptions; // @synthesize walkingOptions=_walkingOptions;
+@property (nonatomic) BOOL wantsBrandIcon; // @synthesize wantsBrandIcon=_wantsBrandIcon;
 
 + (Class)deviceDisplayLanguageType;
 + (Class)historicalLocationsType;
 + (Class)photoSizesType;
 + (Class)reviewUserPhotoSizesType;
+- (void).cxx_destruct;
 - (int)StringAsAction:(id)arg1;
 - (int)StringAsCarHeadunitConnectionType:(id)arg1;
 - (int)StringAsCarHeadunitInteractionModel:(id)arg1;
 - (int)StringAsDeviceBatteryState:(id)arg1;
 - (int)StringAsDeviceInterfaceOrientation:(id)arg1;
 - (int)StringAsEngineTypes:(id)arg1;
+- (int)StringAsKnownClientResolvedTypes:(id)arg1;
 - (int)StringAsMode:(id)arg1;
+- (int)StringAsRequestMode:(id)arg1;
 - (int)StringAsSource:(id)arg1;
 - (int)StringAsTransportTypes:(id)arg1;
 - (id)actionAsString:(int)arg1;
 - (void)addDeviceDisplayLanguage:(id)arg1;
 - (void)addEngineType:(int)arg1;
 - (void)addHistoricalLocations:(id)arg1;
+- (void)addKnownClientResolvedType:(int)arg1;
 - (void)addPhotoSizes:(id)arg1;
 - (void)addReviewUserPhotoSizes:(id)arg1;
 - (void)addTransportType:(int)arg1;
@@ -177,6 +220,7 @@
 - (void)clearDeviceDisplayLanguages;
 - (void)clearEngineTypes;
 - (void)clearHistoricalLocations;
+- (void)clearKnownClientResolvedTypes;
 - (void)clearPhotoSizes;
 - (void)clearReviewUserPhotoSizes;
 - (void)clearTransportTypes;
@@ -195,14 +239,18 @@
 - (id)historicalLocationsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)historicalLocationsCount;
 - (BOOL)isEqual:(id)arg1;
+- (int)knownClientResolvedTypeAtIndex:(unsigned long long)arg1;
+- (id)knownClientResolvedTypesAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)modeAsString:(int)arg1;
 - (id)photoSizesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)photoSizesCount;
 - (BOOL)readFrom:(id)arg1;
+- (id)requestModeAsString:(int)arg1;
 - (id)reviewUserPhotoSizesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)reviewUserPhotoSizesCount;
 - (void)setEngineTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (void)setKnownClientResolvedTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setTransportTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (id)sourceAsString:(int)arg1;
 - (int)transportTypeAtIndex:(unsigned long long)arg1;

@@ -11,7 +11,7 @@
 
 @interface NTKAVListingFaceBaseView : NTKAVFaceBaseView
 {
-    CDUnknownBlockType _unpauseFromSwitcherBlock;
+    BOOL _updateWhenUnpausing;
     NTKTaskScheduler *_taskScheduler;
     BOOL _preLoadingVideoOnSleep;
     BOOL _preLoadedVideoOnSleep;
@@ -37,10 +37,10 @@
 
 - (void).cxx_destruct;
 - (void)_activatePauseLockout;
-- (void)_addSubviewInOrder:(id)arg1;
 - (void)_applyDataMode;
 - (void)_applyFrozen;
 - (void)_applySlow;
+- (void)_backlightWillTurnOff;
 - (void)_cancelDelayedPlayback;
 - (void)_cancelPauseLockout;
 - (BOOL)_changeCurrentListing;

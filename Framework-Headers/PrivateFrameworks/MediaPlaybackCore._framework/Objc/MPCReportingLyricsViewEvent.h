@@ -15,12 +15,14 @@
     double _visibleDuration;
     NSString *_featureName;
     NSData *_recommendationData;
+    long long _sourceType;
 }
 
 @property (copy, nonatomic) NSString *featureName; // @synthesize featureName=_featureName;
 @property (strong, nonatomic) MPModelPlayEvent *modelPlayEvent; // @synthesize modelPlayEvent=_modelPlayEvent;
 @property (strong, nonatomic) MPModelSong *modelSong; // @synthesize modelSong=_modelSong;
 @property (copy, nonatomic) NSData *recommendationData; // @synthesize recommendationData=_recommendationData;
+@property (nonatomic) long long sourceType; // @synthesize sourceType=_sourceType;
 @property (nonatomic) double visibleDuration; // @synthesize visibleDuration=_visibleDuration;
 
 - (void).cxx_destruct;

@@ -9,7 +9,7 @@
 #import <HealthDaemon/HDHealthServicesServerInterface-Protocol.h>
 
 @class HDHealthServiceManager, HDIdentifierTable, NSMutableDictionary, NSMutableSet, NSString, NSUUID;
-@protocol HKClientInterface;
+@protocol HKHealthStoreClientInterface;
 
 @interface HDHealthServicesServer : HDSubserver <HDHealthServicesServerInterface>
 {
@@ -21,10 +21,10 @@
     NSMutableSet *_healthServiceClosedSessionServerIDs;
     NSMutableSet *_healthServiceClosedSessionClientIDs;
     NSUUID *_subserverUUID;
-    id<HKClientInterface> _clientRemoteObjectProxy;
+    id<HKHealthStoreClientInterface> _clientRemoteObjectProxy;
 }
 
-@property (strong, nonatomic) id<HKClientInterface> clientRemoteObjectProxy; // @synthesize clientRemoteObjectProxy=_clientRemoteObjectProxy;
+@property (strong, nonatomic) id<HKHealthStoreClientInterface> clientRemoteObjectProxy; // @synthesize clientRemoteObjectProxy=_clientRemoteObjectProxy;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -42,6 +42,7 @@
 - (void)_closeDiscoveryBetweenServer:(unsigned long long)arg1 andClient:(unsigned long long)arg2;
 - (void)_closeSessionBetweenServer:(unsigned long long)arg1 andClient:(unsigned long long)arg2;
 - (unsigned long long)_discoveryServerIdentifierForClientIdentifier:(unsigned long long)arg1;
+- (id)_filterOnlyUserManageablePeripheralsFromServices:(id)arg1;
 - (unsigned long long)_healthDeviceClientDiscoveryIdentifier:(unsigned long long)arg1;
 - (unsigned long long)_healthDeviceClientSessionIdentifier:(unsigned long long)arg1;
 - (BOOL)_isClientSessionValid:(unsigned long long)arg1;
@@ -58,7 +59,7 @@
 - (void)remote_endHealthServiceSession:(unsigned long long)arg1;
 - (void)remote_fetchSupportedServiceIDsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_getEnabledStatusForPeripheral:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)remote_getHealthServicePairingsWithHandler:(CDUnknownBlockType)arg1;
+- (void)remote_getHealthPeripheralsWithFilter:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)remote_getHealthServiceProperty:(id)arg1 forSession:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)remote_getSupportedPropertyNamesWithHandler:(CDUnknownBlockType)arg1;
 - (void)remote_performHealthServiceOperation:(id)arg1 onSession:(unsigned long long)arg2 withParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;

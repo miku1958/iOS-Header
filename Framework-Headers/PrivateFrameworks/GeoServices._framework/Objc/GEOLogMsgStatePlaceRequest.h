@@ -24,10 +24,10 @@
 @property (strong, nonatomic) GEOPDPlaceRequest *placeDataRequest; // @synthesize placeDataRequest=_placeDataRequest;
 @property (nonatomic) int placeRequestType; // @synthesize placeRequestType=_placeRequestType;
 
+- (void).cxx_destruct;
 - (int)StringAsPlaceRequestType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

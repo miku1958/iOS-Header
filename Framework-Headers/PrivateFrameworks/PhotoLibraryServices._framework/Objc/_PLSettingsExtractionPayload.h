@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class PFAdjustment, PLPhotoEditMutableModel;
 
@@ -23,7 +23,7 @@
 @property (nonatomic) long long baseOrientation; // @synthesize baseOrientation=_baseOrientation;
 @property (strong, nonatomic) PLPhotoEditMutableModel *model; // @synthesize model=_model;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

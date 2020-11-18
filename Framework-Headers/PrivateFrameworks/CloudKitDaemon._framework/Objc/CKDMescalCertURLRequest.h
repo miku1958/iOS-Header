@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (long long)partitionType;
 - (void)requestDidParse509CertObject:(id)arg1;
 - (void)requestDidParsePlaintextObject:(id)arg1;
+- (id)requestOptions;
 - (BOOL)requiresDeviceID;
 - (BOOL)requiresSignature;
 - (long long)serverType;

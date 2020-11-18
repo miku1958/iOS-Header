@@ -6,9 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class PKFelicaPassProperties, PKPaymentPass, PKPaymentTransaction, PKStackedTextItemGroup, PKStackedTextItemGroupView, UIImageView;
+#import <PassKitUI/PKPeerPaymentContactResolverDelegate-Protocol.h>
 
-@interface PKFooterTransactionView : UIView
+@class NSString, PKFelicaPassProperties, PKPaymentPass, PKPaymentTransaction, PKPeerPaymentContactResolver, PKStackedTextItemGroup, PKStackedTextItemGroupView, UIImageView;
+
+@interface PKFooterTransactionView : UIView <PKPeerPaymentContactResolverDelegate>
 {
     PKStackedTextItemGroup *_displayItem;
     PKStackedTextItemGroupView *_headerView;
@@ -16,14 +18,22 @@
     PKStackedTextItemGroupView *_contentView;
     UIImageView *_imageView;
     BOOL _animated;
+    unsigned long long _deferUpdateCounter;
+    BOOL _needsContentUpdate;
     PKPaymentPass *_pass;
     PKPaymentTransaction *_transaction;
     PKFelicaPassProperties *_felicaProperties;
+    PKPeerPaymentContactResolver *_peerPaymentContactResolver;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) PKFelicaPassProperties *felicaProperties; // @synthesize felicaProperties=_felicaProperties;
 @property (readonly, nonatomic) BOOL hasContent;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+@property (readonly, nonatomic) PKPeerPaymentContactResolver *peerPaymentContactResolver; // @synthesize peerPaymentContactResolver=_peerPaymentContactResolver;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
 
 - (void).cxx_destruct;
@@ -31,10 +41,14 @@
 - (id)_image;
 - (id)_locationText;
 - (id)_merchantText;
+- (id)_peerPaymentCounterpart;
 - (id)_relativeDateText;
 - (id)_statusText;
 - (void)_updateContentAnimated:(BOOL)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (void)beginUpdates;
+- (void)contactsDidChangeForContactResolver:(id)arg1;
+- (void)endUpdates:(BOOL)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 peerPaymentContactResolver:(id)arg2;
 - (void)layoutIfNeededAnimated:(BOOL)arg1;
 - (void)layoutSubviews;
 - (void)setFelicaProperties:(id)arg1 animated:(BOOL)arg2;

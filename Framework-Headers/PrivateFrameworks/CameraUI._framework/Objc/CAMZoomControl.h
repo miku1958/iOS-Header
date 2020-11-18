@@ -15,9 +15,12 @@
 {
     BOOL _zoomDialEnabled;
     BOOL __eligibleForTapInEmptySpace;
+    BOOL __eligibleForSwipeDownToDismiss;
     BOOL __shouldShowZoomDial;
     id<CAMZoomControlDelegate> _delegate;
     long long _layoutStyle;
+    double _zoomButtonMaxYWhenContracted;
+    double _zoomDialRadius;
     long long _orientation;
     CAMZoomButton *__zoomButton;
     CAMZoomDial *__zoomDial;
@@ -33,6 +36,7 @@
 
 @property (readonly, nonatomic) CAMZoomControlButtonMaskView *_buttonMaskView; // @synthesize _buttonMaskView=__buttonMaskView;
 @property (readonly, nonatomic) UIView *_dialClippingView; // @synthesize _dialClippingView=__dialClippingView;
+@property (nonatomic, getter=_isEligibleForSwipeDownToDismiss, setter=_setEligibleForSwipeDownToDismiss:) BOOL _eligibleForSwipeDownToDismiss; // @synthesize _eligibleForSwipeDownToDismiss=__eligibleForSwipeDownToDismiss;
 @property (nonatomic, getter=_isEligibleForTapInEmptySpace, setter=_setEligibleForTapInEmptySpace:) BOOL _eligibleForTapInEmptySpace; // @synthesize _eligibleForTapInEmptySpace=__eligibleForTapInEmptySpace;
 @property (nonatomic, setter=_setPreviousTouchLocation:) struct CGPoint _previousTouchLocation; // @synthesize _previousTouchLocation=__previousTouchLocation;
 @property (nonatomic, setter=_setPreviousTouchTime:) double _previousTouchTime; // @synthesize _previousTouchTime=__previousTouchTime;
@@ -46,21 +50,26 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CAMZoomControlDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) double dualCameraSwitchOverZoomFactor;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (nonatomic) double maximumZoomFactor;
 @property (nonatomic) double minimumZoomFactor;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
-@property (nonatomic) BOOL shouldDisableValuesBelow2x;
-@property (nonatomic) BOOL shouldShowLabelAt2x;
+@property (nonatomic) BOOL shouldDisableValuesBelowDualCameraSwitchOver;
+@property (nonatomic) BOOL shouldShowLabelAtDualCameraSwitchOver;
 @property (readonly) Class superclass;
+@property (nonatomic) double zoomButtonMaxYWhenContracted; // @synthesize zoomButtonMaxYWhenContracted=_zoomButtonMaxYWhenContracted;
+@property (readonly, nonatomic) double zoomDialBorderWidth;
 @property (nonatomic, getter=isZoomDialEnabled) BOOL zoomDialEnabled; // @synthesize zoomDialEnabled=_zoomDialEnabled;
+@property (nonatomic) double zoomDialRadius; // @synthesize zoomDialRadius=_zoomDialRadius;
 @property (nonatomic) double zoomFactor;
 
 - (void).cxx_destruct;
 - (double)_accelerationForMovementFromPointFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2 elapsedTime:(double)arg3;
 - (double)_additionalAccelerationForMovementFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2 deltaX:(double)arg3;
 - (void)_cancelDelayedZoomDialVisibilityChange;
+- (void)_cleanupForCancelTracking;
 - (double)_dampingFactorForDistanceFromDialForPoint:(struct CGPoint)arg1;
 - (double)_dampingFactorForMovementFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2;
 - (double)_dampingFactorForPerpendicularityFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2;
@@ -84,6 +93,7 @@
 - (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
 - (void)setShouldShowZoomDial:(BOOL)arg1 animationSpeed:(double)arg2 afterDelay:(double)arg3;
 - (void)setZoomDialEnabled:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)updateToContentSize:(id)arg1;
 - (void)zoomButtonDidLayout;
 
 @end

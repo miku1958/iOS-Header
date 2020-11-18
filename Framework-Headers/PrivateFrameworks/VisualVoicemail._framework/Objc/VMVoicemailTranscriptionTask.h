@@ -32,7 +32,6 @@
 - (BOOL)confidenceModelExistsOnDevice;
 - (void)dealloc;
 - (BOOL)deviceHasSpeechAssets;
-- (void)endRetranscribingTask;
 - (id)init;
 - (id)lastTaskExecutionDate;
 - (void)processTranscriptForVoicemail:(id)arg1;
@@ -43,7 +42,6 @@
 - (BOOL)speechAssetHasConfidenceModel:(id)arg1;
 - (id)speechAssetsOnDevice;
 - (id)speechAssetsWithConfidenceModelsOnDevice;
-- (void)startRetranscribingVoicemailsIfNecessary;
 - (BOOL)voicemailWasTranscribedWithoutConfidence:(id)arg1;
 - (id)voicemailsMatchingFlags:(unsigned int)arg1 withoutFlags:(unsigned int)arg2;
 

@@ -20,6 +20,7 @@
 
 @property (strong, nonatomic) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
 @property (nonatomic) unsigned long long numberOfRetries; // @synthesize numberOfRetries=_numberOfRetries;
+@property (readonly, nonatomic) NSArray *queryPerformers; // @synthesize queryPerformers=_queryPerformers;
 @property (nonatomic, getter=isSimulatingTimeout) BOOL simulatesTimeout; // @synthesize simulatesTimeout=_simulatesTimeout;
 @property (nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
 

@@ -31,16 +31,16 @@
 @property (nonatomic) double interval; // @synthesize interval=_interval;
 @property (nonatomic) long long maxAttempts; // @synthesize maxAttempts=_maxAttempts;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (weak, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (copy, nonatomic) CDUnknownBlockType replayBlock; // @synthesize replayBlock=_replayBlock;
 @property (strong, nonatomic) NSError *underlyingError; // @synthesize underlyingError=_underlyingError;
 @property (strong, nonatomic) id underlyingResult; // @synthesize underlyingResult=_underlyingResult;
 
 + (id)replayBlock:(CDUnknownBlockType)arg1 name:(id)arg2 attempts:(long long)arg3 interval:(double)arg4 async:(BOOL)arg5 queue:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (void).cxx_destruct;
 - (void)_dispatchAsynchronously;
 - (void)_dispatchSynchronously;
 - (id)_genericFailError;
-- (void)dealloc;
 - (void)dispatch;
 
 @end

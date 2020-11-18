@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOComposedRouteLeg, GEOComposedRouteStep;
 
@@ -12,7 +12,7 @@
 {
     unsigned int _startPointIndex;
     unsigned int _pointCount;
-    CDStruct_b2fbf00d *_points;
+    CDStruct_6e3f967a *_points;
     int _transportType;
     GEOComposedRouteLeg *_composedRouteLeg;
     GEOComposedRouteStep *_composedRouteStep;
@@ -25,18 +25,20 @@
 }
 
 @property (readonly, nonatomic) CDStruct_90e2a262 bounds; // @synthesize bounds=_bounds;
-@property (readonly, nonatomic) GEOComposedRouteLeg *composedRouteLeg; // @synthesize composedRouteLeg=_composedRouteLeg;
+@property (readonly, weak, nonatomic) GEOComposedRouteLeg *composedRouteLeg; // @synthesize composedRouteLeg=_composedRouteLeg;
 @property (readonly, nonatomic) unsigned long long composedRouteLegIndex; // @synthesize composedRouteLegIndex=_composedRouteLegIndex;
-@property (readonly, nonatomic) GEOComposedRouteStep *composedRouteStep; // @synthesize composedRouteStep=_composedRouteStep;
+@property (readonly, weak, nonatomic) GEOComposedRouteStep *composedRouteStep; // @synthesize composedRouteStep=_composedRouteStep;
 @property (readonly, nonatomic) unsigned int endPointIndex;
 @property (readonly, nonatomic) unsigned long long finalStepIndex; // @synthesize finalStepIndex=_finalStepIndex;
 @property (nonatomic) double lengthScaleFactor; // @synthesize lengthScaleFactor=_lengthScaleFactor;
 @property (readonly, nonatomic) unsigned int pointCount; // @synthesize pointCount=_pointCount;
-@property (readonly, nonatomic) CDStruct_b2fbf00d *points; // @synthesize points=_points;
+@property (readonly, nonatomic) CDStruct_6e3f967a *points; // @synthesize points=_points;
 @property (readonly, nonatomic) double startDistance; // @synthesize startDistance=_startDistance;
 @property (readonly, nonatomic) unsigned int startPointIndex; // @synthesize startPointIndex=_startPointIndex;
 @property (readonly, nonatomic) int transportType; // @synthesize transportType=_transportType;
 
+- (void).cxx_destruct;
+- (BOOL)_MapsCarPlay_isEqual:(id)arg1;
 - (void)_initStepForRoute:(id)arg1;
 - (void)dealloc;
 - (id)description;

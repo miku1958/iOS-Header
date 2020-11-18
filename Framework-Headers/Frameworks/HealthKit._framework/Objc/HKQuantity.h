@@ -19,9 +19,11 @@
 
 @property (readonly, nonatomic, getter=_unit) HKUnit *unit; // @synthesize unit=_unit;
 
++ (id)_quantityWithBeatsPerMinute:(double)arg1;
 + (id)quantityWithUnit:(id)arg1 doubleValue:(double)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (double)_beatsPerMinute;
 - (id)_foundationMeasurement;
 - (id)_initWithUnit:(id)arg1 doubleValue:(double)arg2;
 - (BOOL)_isZero;
@@ -32,6 +34,8 @@
 - (double)doubleValueForUnit:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (BOOL)hk_isGreaterThanQuantity:(id)arg1;
+- (BOOL)hk_isLessThanQuantity:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isCompatibleWithUnit:(id)arg1;

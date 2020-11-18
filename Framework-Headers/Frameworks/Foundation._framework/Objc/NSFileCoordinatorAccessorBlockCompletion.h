@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 @interface NSFileCoordinatorAccessorBlockCompletion : NSObject
 {
     CDUnknownBlockType block;
-    int count;
+    _Atomic int count;
 }
 
 + (id)completionWithBlock:(CDUnknownBlockType)arg1;

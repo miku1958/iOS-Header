@@ -7,7 +7,10 @@
 #import <Photos/PHFace.h>
 
 @interface PHFace (PhotosUICore)
++ (id)px_fetchKeyFaceForPerson:(id)arg1 options:(id)arg2;
+- (BOOL)px_cropRectForPortraitImage:(struct CGRect *)arg1;
 - (struct CGRect)px_cropRectWithCropFactor:(double)arg1;
 - (struct CGRect)px_cropRectWithCropFactor:(double)arg1 bounded:(BOOL)arg2;
+- (struct CGSize)px_faceTileSizeAdjustingForImageAspectRatio:(struct CGSize)arg1;
 @end
 

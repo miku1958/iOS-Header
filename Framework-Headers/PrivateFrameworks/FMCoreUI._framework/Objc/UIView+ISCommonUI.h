@@ -18,6 +18,7 @@
 - (void)centerHorizontallyInSuperview;
 - (void)centerVerticallyInSuperview;
 - (id)generateImage;
+- (void)performOnAllSubviews:(CDUnknownBlockType)arg1;
 - (void)setRandomDebugHighlight;
 @end
 

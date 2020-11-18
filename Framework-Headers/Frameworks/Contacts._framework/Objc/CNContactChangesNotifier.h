@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CNContactStore, CNMutableMultiDictionary;
 @protocol CNScheduler;
@@ -36,9 +36,11 @@
 - (id)initWithContactStore:(id)arg1 downstreamScheduler:(id)arg2 schedulerProvider:(id)arg3;
 - (void)registerObserver:(id)arg1 forContact:(id)arg2;
 - (void)registerObserver:(id)arg1 forContact:(id)arg2 keysToFetch:(id)arg3;
+- (void)registerObserver:(id)arg1 forContact:(id)arg2 keysToFetch:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)registerProxy:(id)arg1 identifier:(id)arg2;
 - (BOOL)resourceLock_removeProxiesPassingTest:(CDUnknownBlockType)arg1 forIdentifier:(id)arg2;
 - (void)unregisterObserver:(id)arg1 forContact:(id)arg2;
+- (void)unregisterObserver:(id)arg1 forContact:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)workQueue_updateObservers;
 - (void)workQueue_updateObserving;
 

@@ -11,7 +11,7 @@
 }
 
 + (void)initAddressBook;
-+ (void)initCoreLocation;
++ (void)initAssertionServices;
 + (void)initCoreText;
 + (void)initDAEAS;
 + (void)initDataAccess;

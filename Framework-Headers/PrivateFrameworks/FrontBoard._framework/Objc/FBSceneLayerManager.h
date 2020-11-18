@@ -30,7 +30,6 @@
 - (void)_observer_willStartTrackingLayers;
 - (void)addLayer:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (id)contexts;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

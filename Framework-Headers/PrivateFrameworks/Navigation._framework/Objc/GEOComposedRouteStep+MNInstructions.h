@@ -8,6 +8,5 @@
 
 @interface GEOComposedRouteStep (MNInstructions)
 - (id)contentsForContext:(long long)arg1;
-- (id)instructionForSpokenManeuverWithNextStep:(BOOL)arg1 withOptions:(CDStruct_61a83fd4 *)arg2;
 @end
 

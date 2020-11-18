@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class NSMutableDictionary;
 
-@interface HMDCharacteristicNotificationRegistry : NSObject <NSSecureCoding>
+@interface HMDCharacteristicNotificationRegistry : HMFObject <NSSecureCoding>
 {
     NSMutableDictionary *_notificationRegistry;
 }

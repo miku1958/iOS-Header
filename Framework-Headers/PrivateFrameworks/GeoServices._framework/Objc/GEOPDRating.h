@@ -8,8 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 @interface GEOPDRating : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     double _maxScore;
     double _score;
     int _numRatingsUsedForScore;
@@ -30,8 +33,10 @@
 @property (nonatomic) int numRatingsUsedForScore; // @synthesize numRatingsUsedForScore=_numRatingsUsedForScore;
 @property (nonatomic) int ratingType; // @synthesize ratingType=_ratingType;
 @property (nonatomic) double score; // @synthesize score=_score;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)ratingForPlaceData:(id)arg1 type:(int)arg2;
+- (void).cxx_destruct;
 - (int)StringAsRatingType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

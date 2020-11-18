@@ -44,11 +44,13 @@ __attribute__((visibility("hidden")))
     UIView *__leadingBorderView;
     UIView *__trailingBorderView;
     UIView *__sourceSnapshotView;
+    UIView *__destinationSnapshotView;
     struct CGSize __lastViewSize;
 }
 
 @property (nonatomic, setter=_setChangingViewControllerParentage:) BOOL _changingViewControllerParentage; // @synthesize _changingViewControllerParentage=__changingViewControllerParentage;
 @property (strong, nonatomic, setter=_setConstraints:) NSArray *_constraints; // @synthesize _constraints=__constraints;
+@property (strong, nonatomic, setter=_setDestinationSnapshotView:) UIView *_destinationSnapshotView; // @synthesize _destinationSnapshotView=__destinationSnapshotView;
 @property (strong, nonatomic, setter=_setGestureRecognizer:) UILongPressGestureRecognizer *_gestureRecognizer; // @synthesize _gestureRecognizer=__gestureRecognizer;
 @property (nonatomic, setter=_setHasUpdatedForTraitCollection:) BOOL _hasUpdatedForTraitCollection; // @synthesize _hasUpdatedForTraitCollection=__hasUpdatedForTraitCollection;
 @property (strong, nonatomic, setter=_setInternalState:) _UIPanelInternalState *_internalState; // @synthesize _internalState=__internalState;
@@ -59,7 +61,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setLeadingBorderView:) UIView *_leadingBorderView; // @synthesize _leadingBorderView=__leadingBorderView;
 @property (nonatomic, setter=_setNeedsFirstTimeUpdateForTraitCollection:) BOOL _needsFirstTimeUpdateForTraitCollection; // @synthesize _needsFirstTimeUpdateForTraitCollection=__needsFirstTimeUpdateForTraitCollection;
 @property (strong, nonatomic, setter=_setPreviousInternalState:) _UIPanelInternalState *_previousInternalState; // @synthesize _previousInternalState=__previousInternalState;
-@property (strong, nonatomic, setter=_setSnapshotView:) UIView *_sourceSnapshotView; // @synthesize _sourceSnapshotView=__sourceSnapshotView;
+@property (strong, nonatomic, setter=_setSourceSnapshotView:) UIView *_sourceSnapshotView; // @synthesize _sourceSnapshotView=__sourceSnapshotView;
 @property (strong, nonatomic, setter=_setTrailingBorderView:) UIView *_trailingBorderView; // @synthesize _trailingBorderView=__trailingBorderView;
 @property (readonly, nonatomic, getter=isCollapsed) BOOL collapsed;
 @property (readonly, nonatomic) long long collapsedState;

@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 
 + (id)_dateRangeToScanForConflictsForEvent:(id)arg1 dateForNow:(id)arg2;
 + (double)_maxRangeLengthForRule:(id)arg1;
-+ (id)calendarsToScanForConflictsForEvent:(id)arg1;
++ (id)calendarIdentifiersToScanForConflictsForEvent:(id)arg1;
 + (id)dateRangeToScanForConflictsForEvent:(id)arg1;
 + (id)infoWithConflicts:(long long)arg1 needsAction:(long long)arg2 event:(id)arg3;
 + (id)infoWithConflictsInSeries:(long long)arg1 outOf:(long long)arg2 withPeriod:(id)arg3;

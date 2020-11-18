@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSError;
+@class NSError, NSString;
 
 @protocol LAContextCallbackXPC
 - (void)invalidatedWithError:(NSError *)arg1;
+- (void)tccPreflightWithService:(NSString *)arg1 reply:(void (^)(NSNumber *))arg2;
 @end
 

@@ -19,6 +19,7 @@
     long long _lockScreenSetting;
     long long _carPlaySetting;
     long long _alertStyle;
+    long long _showPreviewsSetting;
 }
 
 @property (readonly, nonatomic) long long alertSetting; // @synthesize alertSetting=_alertSetting;
@@ -28,16 +29,17 @@
 @property (readonly, nonatomic) long long carPlaySetting; // @synthesize carPlaySetting=_carPlaySetting;
 @property (readonly, nonatomic) long long lockScreenSetting; // @synthesize lockScreenSetting=_lockScreenSetting;
 @property (readonly, nonatomic) long long notificationCenterSetting; // @synthesize notificationCenterSetting=_notificationCenterSetting;
+@property (readonly, nonatomic) long long showPreviewsSetting; // @synthesize showPreviewsSetting=_showPreviewsSetting;
 @property (readonly, nonatomic) long long soundSetting; // @synthesize soundSetting=_soundSetting;
 
 + (id)emptySettings;
-+ (id)settingsWithAuthorizationStatus:(long long)arg1 soundSetting:(long long)arg2 badgeSetting:(long long)arg3 alertSetting:(long long)arg4 notificationCenterSetting:(long long)arg5 lockScreenSetting:(long long)arg6 carPlaySetting:(long long)arg7 alertStyle:(long long)arg8;
++ (id)settingsWithAuthorizationStatus:(long long)arg1 soundSetting:(long long)arg2 badgeSetting:(long long)arg3 alertSetting:(long long)arg4 notificationCenterSetting:(long long)arg5 lockScreenSetting:(long long)arg6 carPlaySetting:(long long)arg7 alertStyle:(long long)arg8 showPreviewsSetting:(long long)arg9;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithAuthorizationStatus:(long long)arg1 soundSetting:(long long)arg2 badgeSetting:(long long)arg3 alertSetting:(long long)arg4 notificationCenterSetting:(long long)arg5 lockScreenSetting:(long long)arg6 carPlaySetting:(long long)arg7 alertStyle:(long long)arg8;
+- (id)initWithAuthorizationStatus:(long long)arg1 soundSetting:(long long)arg2 badgeSetting:(long long)arg3 alertSetting:(long long)arg4 notificationCenterSetting:(long long)arg5 lockScreenSetting:(long long)arg6 carPlaySetting:(long long)arg7 alertStyle:(long long)arg8 showPreviewsSetting:(long long)arg9;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

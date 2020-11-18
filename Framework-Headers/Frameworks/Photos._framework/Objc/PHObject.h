@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <Photos/NSCopying-Protocol.h>
+#import <Photos/PLLocalUUIDConverter-Protocol.h>
 
 @class NSManagedObjectID, NSString, PHPhotoLibrary;
 
-@interface PHObject : NSObject <NSCopying>
+@interface PHObject : NSObject <PLLocalUUIDConverter, NSCopying>
 {
     BOOL _deleted;
     NSString *_uuid;
@@ -19,12 +20,16 @@
     unsigned long long _propertyHint;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, getter=isDeleted) BOOL deleted; // @synthesize deleted=_deleted;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) id identifier;
 @property (readonly, copy, nonatomic) NSString *localIdentifier;
 @property (readonly) NSManagedObjectID *objectID; // @synthesize objectID=_objectID;
 @property (readonly) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property unsigned long long propertyHint; // @synthesize propertyHint=_propertyHint;
+@property (readonly) Class superclass;
 @property (readonly, getter=isTransient) BOOL transient;
 @property (readonly) NSString *uuid; // @synthesize uuid=_uuid;
 
@@ -37,12 +42,13 @@
 + (id)identifierCode;
 + (id)identifierCodeFromLocalIdentifier:(id)arg1;
 + (id)identifierPropertiesToFetch;
++ (id)localIdentifierExpressionForFetchRequests;
 + (id)localIdentifierWithUUID:(id)arg1;
 + (id)managedEntityName;
 + (BOOL)managedObjectSupportsBursts;
-+ (BOOL)managedObjectSupportsFaceCropGeneration;
-+ (BOOL)managedObjectSupportsFaceVisibility;
++ (BOOL)managedObjectSupportsFaceState;
 + (BOOL)managedObjectSupportsHiddenState;
++ (BOOL)managedObjectSupportsKeyFaces;
 + (BOOL)managedObjectSupportsMontage;
 + (BOOL)managedObjectSupportsPendingState;
 + (BOOL)managedObjectSupportsPersonFilters;
@@ -55,14 +61,13 @@
 + (id)propertySetAccessorsByPropertySet;
 + (Class)propertySetClassForPropertySet:(id)arg1;
 + (id)propertySetsForPropertyFetchHints:(unsigned long long)arg1;
++ (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 + (id)uuidFromLocalIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (id)_shortObjectIDURI;
 - (Class)changeRequestClass;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (BOOL)hasLoadedPropertySet:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 

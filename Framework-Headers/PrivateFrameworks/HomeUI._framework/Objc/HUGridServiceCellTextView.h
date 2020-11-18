@@ -31,6 +31,7 @@
 @property (nonatomic) BOOL textColorFollowsTintColor; // @synthesize textColorFollowsTintColor=_textColorFollowsTintColor;
 @property (readonly, nonatomic) double topToFirstBaselineDistance;
 
++ (double)minimumDescriptionScaleFactor;
 - (void).cxx_destruct;
 - (id)_commonTextAttributesWithLineBreakMode:(long long)arg1;
 - (void)_drawCombinedLabel;

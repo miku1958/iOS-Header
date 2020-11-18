@@ -15,6 +15,7 @@
 {
     BOOL _retryOnErrors;
     BOOL _observingChanges;
+    unsigned long long _maxBytesPerIndexingBatch;
     NSObject<OS_dispatch_queue> *_indexingQueue;
     NSOperationQueue *_operationQueue;
     NSDictionary *_dataSourcesByIdentifier;
@@ -30,6 +31,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *indexingQueue; // @synthesize indexingQueue=_indexingQueue;
+@property (nonatomic) unsigned long long maxBytesPerIndexingBatch; // @synthesize maxBytesPerIndexingBatch=_maxBytesPerIndexingBatch;
 @property (nonatomic, getter=isObservingChanges) BOOL observingChanges; // @synthesize observingChanges=_observingChanges;
 @property (strong, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property (nonatomic) BOOL retryOnErrors; // @synthesize retryOnErrors=_retryOnErrors;
@@ -47,6 +49,10 @@
 - (void)deleteAllSearchableItemsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)finishRemainingOperationsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)newContextsForAllDataSources;
+- (id)objectForSearchableItem:(id)arg1 context:(id)arg2;
+- (id)objectForSearchableItemIdentifier:(id)arg1 inContexts:(id)arg2;
+- (id)objectsDictionaryForSearchableItems:(id)arg1 inContexts:(id)arg2;
 - (id)objectsForSearchableItems:(id)arg1 inContexts:(id)arg2;
 - (void)processChanges;
 - (void)reindexAllSearchableItemsInIndex;

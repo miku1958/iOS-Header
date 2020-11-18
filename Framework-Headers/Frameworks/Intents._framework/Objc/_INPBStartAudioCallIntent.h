@@ -37,7 +37,7 @@
 @property (nonatomic) BOOL hasTtyType;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (nonatomic) int preferredCallProvider; // @synthesize preferredCallProvider=_preferredCallProvider;
-@property (nonatomic) int ttyType;
+@property (nonatomic) int ttyType; // @synthesize ttyType=_ttyType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)contactType;

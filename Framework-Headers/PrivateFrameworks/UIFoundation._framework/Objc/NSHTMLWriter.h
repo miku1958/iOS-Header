@@ -75,6 +75,7 @@
 - (void)_writeDocumentProperty:(id)arg1 value:(id)arg2 toString:(id)arg3;
 - (void)dealloc;
 - (id)documentFragmentForDocument:(id)arg1;
+- (id)documentFragmentString;
 - (id)initWithAttributedString:(id)arg1;
 - (void)readDocumentFragment:(id)arg1;
 - (void)setDocumentAttributes:(id)arg1;

@@ -8,7 +8,7 @@
 
 #import <AccessibilityUtilities/NSSecureCoding-Protocol.h>
 
-@class NSString, NSUUID;
+@class AXMIDIEvent, NSString, NSUUID;
 
 @interface AXSwitch : NSObject <NSSecureCoding>
 {
@@ -20,9 +20,10 @@
     struct NSString *_type;
     NSString *_productName;
     NSString *_manufacturerName;
+    NSUUID *_uuid;
     long long _buttonNumber;
     long long _headSwitch;
-    NSUUID *_uuid;
+    AXMIDIEvent *_midiEvent;
     NSString *_remoteSwitchIdentifier;
     NSString *_remoteDeviceName;
     NSString *_remoteDeviceIdentifier;
@@ -33,8 +34,10 @@
 @property (readonly, nonatomic) BOOL hasLongPressAction;
 @property (nonatomic) long long headSwitch; // @synthesize headSwitch=_headSwitch;
 @property (nonatomic) unsigned short keyCode; // @synthesize keyCode=_keyCode;
+@property (readonly, nonatomic) NSString *localizedSourceDescription;
 @property (nonatomic) long long longPressAction; // @synthesize longPressAction=_longPressAction;
 @property (copy, nonatomic) NSString *manufacturerName; // @synthesize manufacturerName=_manufacturerName;
+@property (strong, nonatomic) AXMIDIEvent *midiEvent; // @synthesize midiEvent=_midiEvent;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *productName; // @synthesize productName=_productName;
 @property (copy, nonatomic) NSString *remoteDeviceIdentifier; // @synthesize remoteDeviceIdentifier=_remoteDeviceIdentifier;
@@ -47,7 +50,7 @@
 
 + (BOOL)supportsSecureCoding;
 + (id)switchWithAction:(long long)arg1 name:(id)arg2 source:(struct NSString *)arg3 type:(struct NSString *)arg4;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

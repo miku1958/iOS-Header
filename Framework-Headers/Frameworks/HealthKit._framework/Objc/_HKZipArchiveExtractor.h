@@ -11,11 +11,14 @@
 @interface _HKZipArchiveExtractor : NSObject
 {
     NSString *_pathname;
+    NSData *_archiveData;
     struct archive *_archive;
     struct archive_entry *_entry;
     BOOL _dataRead;
     NSData *_data;
     NSError *_lastError;
+    BOOL _hasCalculatedNumberOfEntries;
+    unsigned long long _numberOfEntries;
 }
 
 - (void).cxx_destruct;
@@ -26,9 +29,11 @@
 - (void)enumerateEntriesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)getDataForCurrentEntry;
 - (id)getDataForCurrentEntryWithMaxSizeBytes:(unsigned long long)arg1;
+- (id)initWithData:(id)arg1;
 - (id)initWithPathname:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (id)lastError;
+- (unsigned long long)numberOfEntries;
 
 @end
 

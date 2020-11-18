@@ -81,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 - (id)layerForRenderFlags:(long long)arg1;
 - (void)prepareForDisplay;
+- (void)removeFromSuperview;
 - (id)renderFlagsForTraits:(id)arg1;
 - (BOOL)requiresSublayers;
 - (id)subTreeHitTest:(struct CGPoint)arg1;

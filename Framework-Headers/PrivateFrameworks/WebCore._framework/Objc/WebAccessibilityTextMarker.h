@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (id)startOrEndTextMarkerForRange:(RefPtr_59db400e)arg1 isStart:(BOOL)arg2 cache:(struct AXObjectCache *)arg3;
 + (id)textMarkerWithCharacterOffset:(struct CharacterOffset *)arg1 cache:(struct AXObjectCache *)arg2;
 + (id)textMarkerWithVisiblePosition:(struct VisiblePosition *)arg1 cache:(struct AXObjectCache *)arg2;
+- (id).cxx_construct;
 - (struct AccessibilityObject *)accessibilityObject;
 - (struct CharacterOffset)characterOffset;
 - (id)dataRepresentation;

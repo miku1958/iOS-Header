@@ -6,16 +6,18 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <HomeUI/HUItemPresentationContainer-Protocol.h>
 #import <HomeUI/HUPresentationDelegate-Protocol.h>
 #import <HomeUI/HUPresentationDelegateHost-Protocol.h>
 #import <HomeUI/HUQuickControlContainerViewDelegate-Protocol.h>
 #import <HomeUI/HUQuickControlControllerCoordinatorDelegate-Protocol.h>
 #import <HomeUI/HUQuickControlInteractionHost-Protocol.h>
+#import <HomeUI/HUViewControllerCustomDissmissing-Protocol.h>
 
 @class HFItem, HMHome, HUAnimationApplier, HUQuickControlContainerView, HUQuickControlController, HUQuickControlControllerCoordinator, HUQuickControlInteractionCoordinator, NSString, UITapGestureRecognizer, UIView;
 @protocol HUPresentationDelegate, HUQuickControlPresentableView, HUQuickControlViewControllerDelegate, NSCopying;
 
-@interface HUQuickControlViewController : UIViewController <HUPresentationDelegate, HUQuickControlContainerViewDelegate, HUQuickControlControllerCoordinatorDelegate, HUQuickControlInteractionHost, HUPresentationDelegateHost>
+@interface HUQuickControlViewController : UIViewController <HUPresentationDelegate, HUQuickControlContainerViewDelegate, HUQuickControlControllerCoordinatorDelegate, HUQuickControlInteractionHost, HUItemPresentationContainer, HUPresentationDelegateHost, HUViewControllerCustomDissmissing>
 {
     BOOL _presentedDetailView;
     id<HUPresentationDelegate> presentationDelegate;
@@ -42,6 +44,7 @@
 @property (strong, nonatomic) UITapGestureRecognizer *dismissGestureRecognizer; // @synthesize dismissGestureRecognizer=_dismissGestureRecognizer;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
+@property (readonly, nonatomic) HFItem *hu_presentedItem;
 @property (readonly, nonatomic) HFItem<NSCopying> *item; // @synthesize item=_item;
 @property (strong, nonatomic) HUAnimationApplier *presentationApplier; // @synthesize presentationApplier=_presentationApplier;
 @property (weak, nonatomic) id<HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate;
@@ -61,14 +64,17 @@
 - (id)_controlControllerOfType:(unsigned long long)arg1;
 - (void)_controlDidDismiss;
 - (void)_createControlContainerViewWithSourceRect:(struct CGRect)arg1;
-- (void)_dismissControlAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_dismissDetailViewControllerAnimated:(BOOL)arg1 dismissControl:(BOOL)arg2;
+- (void)_displayMobileTimerUI;
 - (void)_handleDismissGesture:(id)arg1;
 - (void)_performTransitionToPresentationState:(unsigned long long)arg1 animated:(BOOL)arg2 initialProgress:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_prepareDetailViewController;
 - (void)_presentDetailViewController;
+- (BOOL)_shouldDisplayMobileTimerUIForControlType:(unsigned long long)arg1;
+- (void)_tearDownMobileTimerUI:(id)arg1;
 - (void)_updateControlReachability;
 - (void)_updateControlStatusText;
-- (void)_updateIconDescriptor;
+- (void)_updateIconDescriptorAnimated:(BOOL)arg1;
 - (void)_updateUserInteractionEnabledForActiveInteractionCoordinator;
 - (void)beginReceivingTouchesWithGestureRecognizer:(id)arg1;
 - (id)containerView:(id)arg1 createControlViewForControlType:(unsigned long long)arg2;
@@ -79,10 +85,11 @@
 - (void)controllerCoordinator:(id)arg1 didUpdateReachability:(BOOL)arg2;
 - (void)controllerCoordinator:(id)arg1 didUpdateStatusWithPrimaryText:(id)arg2 secondaryText:(id)arg3;
 - (void)detailsButtonPressedInContainerView:(id)arg1;
-- (void)dismissControlAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)finishPresentation:(id)arg1 animated:(BOOL)arg2;
+- (id)dismissControlAnimated:(BOOL)arg1;
+- (id)finishPresentation:(id)arg1 animated:(BOOL)arg2;
 - (void)hideAuxiliaryViewForInteractionCoordinator:(id)arg1;
-- (id)initWithItem:(id)arg1 home:(id)arg2;
+- (id)hu_prepareForDismissalAnimated:(BOOL)arg1;
+- (id)initWithItem:(id)arg1 controlItems:(id)arg2 home:(id)arg3;
 - (void)interactionCoordinator:(id)arg1 showAuxiliaryView:(id)arg2;
 - (void)interactionCoordinator:(id)arg1 updateControlHorizontalCompressionFactor:(double)arg2;
 - (void)interactionCoordinator:(id)arg1 updateControlVerticalStretchFactor:(double)arg2;

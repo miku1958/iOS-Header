@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAServerBoundCommand-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @interface SASFinishSpeech : SABaseCommand <SAServerBoundCommand>
 {
@@ -18,16 +18,20 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *endpoint;
+@property (copy, nonatomic) NSArray *featuresAtEndpoint;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *orderedContext;
 @property (nonatomic) long long packetCount;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
+@property (copy, nonatomic) NSDictionary *serverFeatureLatencyDistribution;
 @property (readonly) Class superclass;
+@property (nonatomic) double totalAudioRecorded;
 
 + (id)finishSpeech;
 + (id)finishSpeechWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)requiresResponse;
 
 @end
 

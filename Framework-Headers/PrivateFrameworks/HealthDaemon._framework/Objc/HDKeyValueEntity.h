@@ -16,9 +16,11 @@
 + (BOOL)_enumerateKeyValueEntitiesInCategory:(long long)arg1 predicate:(id)arg2 healthDatabase:(id)arg3 error:(id *)arg4 usingBlock:(CDUnknownBlockType)arg5;
 + (BOOL)_insertCodableCategoryDomainDictionary:(id)arg1 provenance:(long long)arg2 profile:(id)arg3 error:(id *)arg4;
 + (BOOL)_insertCodableTimestampedKeyValuePairs:(id)arg1 domain:(id)arg2 category:(long long)arg3 provenance:(long long)arg4 profile:(id)arg5 error:(id *)arg6;
++ (BOOL)_insertCodableTimestampedKeyValuePairs:(id)arg1 domain:(id)arg2 category:(long long)arg3 provenance:(long long)arg4 updatePolicy:(long long)arg5 profile:(id)arg6 error:(id *)arg7;
 + (BOOL)_insertKeysAndValues:(id)arg1 modificationDate:(id)arg2 domain:(id)arg3 category:(long long)arg4 provenance:(long long)arg5 updatePolicy:(long long)arg6 database:(id)arg7 error:(id *)arg8;
 + (BOOL)_insertKeysAndValues:(id)arg1 modificationDate:(id)arg2 domain:(id)arg3 category:(long long)arg4 provenance:(long long)arg5 updatePolicy:(long long)arg6 profile:(id)arg7 error:(id *)arg8;
 + (BOOL)_insertValues:(id)arg1 forKeys:(id)arg2 modificationDates:(id)arg3 domain:(id)arg4 category:(long long)arg5 provenance:(long long)arg6 updatePolicy:(long long)arg7 profile:(id)arg8 error:(id *)arg9;
++ (id)_modDateForKey:(id)arg1 domain:(id)arg2 category:(long long)arg3 profile:(id)arg4 entity:(id *)arg5 error:(id *)arg6;
 + (id)_predicateForCategory:(long long)arg1;
 + (id)_predicateForDomain:(id)arg1;
 + (id)_predicateForKey:(id)arg1;
@@ -59,6 +61,7 @@
 + (id)propertyForSyncProvenance;
 + (id)quantityForKey:(id)arg1 unit:(id)arg2 domain:(id)arg3 category:(long long)arg4 profile:(id)arg5 entity:(id *)arg6 error:(id *)arg7;
 + (BOOL)removeValuesForDomain:(id)arg1 category:(long long)arg2 keys:(id)arg3 profile:(id)arg4 error:(id *)arg5;
++ (id)retrieveDatabaseIdentifierCreationDateFromProfile:(id)arg1 error:(id *)arg2;
 + (id)retrieveDatabaseIdentifierFromDatabase:(id)arg1 error:(id *)arg2;
 + (id)retrieveDatabaseIdentifierFromProfile:(id)arg1 error:(id *)arg2;
 + (BOOL)setData:(id)arg1 forKey:(id)arg2 domain:(id)arg3 category:(long long)arg4 profile:(id)arg5 error:(id *)arg6;

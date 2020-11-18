@@ -11,7 +11,6 @@
 @interface _MFSocket : NSObject
 {
     NSCondition *_condition;
-    MFStream *_stream;
     NSString *_protocol;
     NSString *_host;
     NSString *_service;
@@ -27,6 +26,7 @@
     BOOL _disableEphemeralDiffieHellmanCiphers;
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_accountIdentifier;
+    MFStream *_stream;
 }
 
 @property (copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
@@ -42,6 +42,7 @@
 @property (readonly, nonatomic) NSArray *serverCertificates;
 @property (copy, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
 @property (readonly, nonatomic) NSData *sourceIPAddress;
+@property (strong) MFStream *stream; // @synthesize stream=_stream;
 @property (nonatomic) int timeout; // @synthesize timeout=_numTimeoutSecs;
 @property (nonatomic) BOOL usesOpportunisticSockets; // @synthesize usesOpportunisticSockets=_usesOpportunisticSockets;
 

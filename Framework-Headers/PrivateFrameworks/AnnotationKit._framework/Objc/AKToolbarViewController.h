@@ -14,6 +14,7 @@
 }
 
 @property (weak) AKController *controller; // @synthesize controller=_controller;
+@property (readonly) BOOL isPresentingPopover;
 
 + (id)_imageNameForToolbarButtonItemOfType:(unsigned long long)arg1;
 + (id)alternateImageForToolbarButtonItemOfType:(unsigned long long)arg1;

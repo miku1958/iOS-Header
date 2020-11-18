@@ -6,21 +6,32 @@
 
 #import <SAObjects/SABaseClientBoundCommand.h>
 
+#import <SiriClientFlow/CFLocalAceHandling-Protocol.h>
+
 @class NSString;
 
-@interface CFVSGetVoiceAssetsRequest : SABaseClientBoundCommand
+@interface CFVSGetVoiceAssetsRequest : SABaseClientBoundCommand <CFLocalAceHandling>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *gender;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *language;
 @property (copy, nonatomic) NSString *quality;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
 
++ (id)aceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)getVoiceAssetsRequest;
 + (id)getVoiceAssetsRequestWithDictionary:(id)arg1 context:(id)arg2;
-+ (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (void)handleWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)requiresResponse;
 
 @end

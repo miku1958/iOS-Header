@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)accessibilityHUDRepresentation;
 - (BOOL)animatesDataChange;
 - (id)contentsImage;
 - (double)extraRightPadding;

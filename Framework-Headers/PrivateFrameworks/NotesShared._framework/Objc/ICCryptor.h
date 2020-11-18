@@ -37,7 +37,7 @@
 + (BOOL)key:(id)arg1 decryptsObject:(id)arg2;
 + (id)masterKeysByAccountIdentifier;
 + (id)newWrappedKeyForObject:(id)arg1;
-+ (void)removeItemFromTouchID:(id)arg1;
++ (void)removeItemFromBiometricID:(id)arg1;
 + (void)removePassphraseForAccount:(id)arg1;
 + (void)removePassphraseForNotesInAccount:(id)arg1;
 + (void)rewrapKeyForObject:(id)arg1 newMasterKey:(id)arg2 salt:(id)arg3 iterationCount:(unsigned int)arg4 hint:(id)arg5;
@@ -48,6 +48,7 @@
 + (BOOL)setPassphrase:(id)arg1 forAllAccountsAndNotesWithHint:(id)arg2 oldPassphrase:(id)arg3;
 + (BOOL)setPassphrase:(id)arg1 hint:(id)arg2 forAccount:(id)arg3;
 + (void)startOrExtendCachedKeyClearingTimer;
++ (void)startOrExtendCachedKeyClearingTimerForModes:(id)arg1;
 + (double)timeIntervalBeforeClearingCachedKeys;
 + (void)transferSharedPassphraseFromAccount:(id)arg1 toAccount:(id)arg2;
 + (id)unwrappedKeyForObject:(id)arg1;

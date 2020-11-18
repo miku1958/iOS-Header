@@ -15,7 +15,9 @@
 {
     BOOL _hasCustomizableInstanceAppearanceModifications;
     BOOL _shouldArchiveUIAppearanceTags;
+    UIImage *_largeContentSizeImage;
     long long _tag;
+    struct UIEdgeInsets _largeContentSizeImageInsets;
 }
 
 @property (nonatomic, setter=_setHasCustomizableInstanceAppearanceModifications:) BOOL _hasCustomizableInstanceAppearanceModifications; // @synthesize _hasCustomizableInstanceAppearanceModifications;
@@ -30,6 +32,8 @@
 @property (nonatomic) struct UIEdgeInsets imageInsets; // @dynamic imageInsets;
 @property (strong, nonatomic) UIImage *landscapeImagePhone; // @dynamic landscapeImagePhone;
 @property (nonatomic) struct UIEdgeInsets landscapeImagePhoneInsets; // @dynamic landscapeImagePhoneInsets;
+@property (strong, nonatomic) UIImage *largeContentSizeImage; // @synthesize largeContentSizeImage=_largeContentSizeImage;
+@property (nonatomic) struct UIEdgeInsets largeContentSizeImageInsets; // @synthesize largeContentSizeImageInsets=_largeContentSizeImageInsets;
 @property (readonly, copy, nonatomic) NSString *resolvedTitle;
 @property (readonly, nonatomic) BOOL selected;
 @property (readonly) Class superclass;
@@ -44,6 +48,7 @@
 + (id)appearanceForTraitCollection:(id)arg1 whenContainedInInstancesOfClasses:(id)arg2;
 + (id)appearanceWhenContainedIn:(Class)arg1;
 + (id)appearanceWhenContainedInInstancesOfClasses:(id)arg1;
+- (void).cxx_destruct;
 - (id)_attributedTitleForState:(unsigned long long)arg1 withDefaultAttributes:(id)arg2;
 - (id)_imageForState:(unsigned long long)arg1 metrics:(long long)arg2 position:(long long)arg3 type:(long long)arg4;
 - (void)encodeWithCoder:(id)arg1;

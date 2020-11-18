@@ -6,24 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class AAUICDPStingrayController, ACAccount, NSNumber, RemoteUIController, UIViewController;
+@class AAUIServerUIHookHandler, ACAccount;
 
 @interface AAUICDPStingrayRemoteUIController : NSObject
 {
-    RemoteUIController *_remoteUIController;
-    UIViewController *_overridePresentingController;
-    AAUICDPStingrayController *_stingrayController;
-    ACAccount *_appleAccount;
-    NSNumber *_eligibilityOverride;
+    AAUIServerUIHookHandler *_serverHookHandler;
+    ACAccount *_account;
 }
 
 - (void).cxx_destruct;
-- (id)_currentPresenter;
-- (void)_generateRecoveryKeyWithServerAttributes:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_reauthenticateWithServerAttributes:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_reloadSecurityUIWithInfo:(id)arg1 attributes:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_responseDataForResult:(BOOL)arg1 withError:(id)arg2;
-- (void)_validatePasscodeWithServerAttributes:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)attachAllHandlers;
 - (void)attachAuthHandler:(CDUnknownBlockType)arg1;
 - (void)attachPasscodeHandler:(CDUnknownBlockType)arg1;
@@ -31,7 +22,6 @@
 - (void)attachRepairHandler:(CDUnknownBlockType)arg1;
 - (id)initWithRemoteUIController:(id)arg1;
 - (id)initWithRemoteUIController:(id)arg1 appleAccount:(id)arg2;
-- (void)performCDPRepairWithInline:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)processObjectModel:(id)arg1 isModal:(BOOL)arg2;
 - (void)processObjectModel:(id)arg1 isModal:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setPresentingController:(id)arg1;

@@ -32,7 +32,7 @@
 @property (strong, nonatomic) EKEventStore *eventStore; // @synthesize eventStore=_eventStore;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isNewCalendar; // @synthesize isNewCalendar=_isNewCalendar;
-@property (strong, nonatomic) id<EKStyleProvider> styleProvider; // @synthesize styleProvider=_styleProvider;
+@property (weak, nonatomic) id<EKStyleProvider> styleProvider; // @synthesize styleProvider=_styleProvider;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -62,6 +62,7 @@
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)viewDidAppear:(BOOL)arg1;

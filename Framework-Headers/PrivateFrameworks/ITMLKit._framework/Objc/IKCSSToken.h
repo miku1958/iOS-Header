@@ -15,11 +15,13 @@
     double _doubleValue;
     NSString *_stringValue;
     NSDictionary *_properties;
+    struct _NSRange _range;
 }
 
 @property (nonatomic) unsigned short charValue; // @synthesize charValue=_charValue;
 @property (nonatomic) double doubleValue; // @synthesize doubleValue=_doubleValue;
 @property (strong, nonatomic) NSDictionary *properties; // @synthesize properties=_properties;
+@property (nonatomic) struct _NSRange range; // @synthesize range=_range;
 @property (strong, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
 @property (nonatomic) long long type; // @synthesize type=_type;
 

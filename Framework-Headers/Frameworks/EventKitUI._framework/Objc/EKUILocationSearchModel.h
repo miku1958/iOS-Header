@@ -6,23 +6,22 @@
 
 #import <Foundation/NSObject.h>
 
-#import <EventKitUI/ABSearchOperationDelegate-Protocol.h>
 #import <EventKitUI/CLLocationManagerDelegate-Protocol.h>
 #import <EventKitUI/MKSearchCompleterDelegate-Protocol.h>
 
-@class ABSearchOperation, CLGeocoder, CLInUseAssertion, CLLocationManager, EKEventStore, EKOccurrenceCacheLocationSearch, EKStructuredLocation, EKUILocationSearchABSearchMatchProcessor, MKLocalSearch, MKLocalSearchCompleter, NSArray, NSCharacterSet, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString;
-@protocol EKUILocationSearchModelDelegate, GEOMapServiceCompletionTicket, OS_dispatch_queue;
+@class CLGeocoder, CLInUseAssertion, CLLocationManager, CNContactStore, EKEventStore, EKOccurrenceCacheLocationSearch, EKStructuredLocation, MKLocalSearch, MKLocalSearchCompleter, NSArray, NSCharacterSet, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString;
+@protocol CNCancelable, EKUILocationSearchModelDelegate, GEOMapServiceCompletionTicket, OS_dispatch_queue;
 
-@interface EKUILocationSearchModel : NSObject <CLLocationManagerDelegate, MKSearchCompleterDelegate, ABSearchOperationDelegate>
+@interface EKUILocationSearchModel : NSObject <CLLocationManagerDelegate, MKSearchCompleterDelegate>
 {
     CLLocationManager *_locationManager;
     CLInUseAssertion *_locationAssertion;
     MKLocalSearchCompleter *_completer;
     EKStructuredLocation *_currentLocation;
-    NSOperationQueue *_abSearchQueue;
-    ABSearchOperation *_abSearchOperation;
     CLGeocoder *_geocoder;
     MKLocalSearch *_localSearch;
+    CNContactStore *_contactStore;
+    id<CNCancelable> _contactsSearchToken;
     NSObject<OS_dispatch_queue> *_recentsQueue;
     NSObject<OS_dispatch_queue> *_eventsQueue;
     EKEventStore *_eventStore;
@@ -36,7 +35,6 @@
     NSMutableArray *_frequentsSearchResults;
     NSMutableArray *_eventsSearchResults;
     NSMutableArray *_contactsSearchResults;
-    EKUILocationSearchABSearchMatchProcessor *_abSearchMatchProcessor;
     NSArray *_mapCompletionSearchResults;
     id<EKUILocationSearchModelDelegate> _delegate;
 }
@@ -76,11 +74,11 @@
 - (void)resetSearchResults:(BOOL)arg1;
 - (void)searchConferenceRooms:(id)arg1;
 - (void)searchFrequentLocations:(id)arg1;
-- (void)searchOperation:(id)arg1 didFindMatches:(id)arg2 moreComing:(BOOL)arg3;
 - (void)selectCurrentLocation;
 - (void)selectLocation:(id)arg1;
 - (void)selectMapSearchCompletion:(id)arg1;
 - (void)stopUpdatingLocation;
+- (void)updateContacts:(id)arg1;
 - (void)updateEventLocations:(id)arg1;
 - (void)updateRecents:(id)arg1;
 

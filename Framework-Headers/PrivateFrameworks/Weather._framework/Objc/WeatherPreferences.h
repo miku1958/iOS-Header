@@ -37,7 +37,6 @@
 @property (nonatomic) BOOL userGroupPrefsLockedWhenInit; // @synthesize userGroupPrefsLockedWhenInit=_userGroupPrefsLockedWhenInit;
 @property (readonly) int userTemperatureUnit;
 
-+ (id)_getGroupDefaultsFromURLInApp:(id)arg1;
 + (BOOL)performUpgradeOfPersistence:(id)arg1 fileManager:(id)arg2 error:(id *)arg3;
 + (id)preferencesWithPersistence:(id)arg1;
 + (id)readInternalDefaultValueForKey:(id)arg1;
@@ -57,6 +56,7 @@
 - (id)citiesByConsolidatingDuplicatesInBucket:(id)arg1;
 - (id)cityFromPreferencesDictionary:(id)arg1;
 - (BOOL)ensureValidSelectedCityID;
+- (void)forceSyncCloudPreferences;
 - (id)init;
 - (id)initWithPersistence:(id)arg1;
 - (BOOL)isCelsius;

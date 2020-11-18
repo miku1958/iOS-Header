@@ -26,6 +26,7 @@
 - (void)enumerateCloudItemIDsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (void)insertCloudItemID:(unsigned long long)arg1 idType:(long long)arg2 atIndex:(unsigned long long)arg3;
 
 @end
 

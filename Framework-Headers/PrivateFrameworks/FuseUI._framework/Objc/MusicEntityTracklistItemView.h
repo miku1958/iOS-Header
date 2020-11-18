@@ -9,12 +9,11 @@
 #import <FuseUI/MPUTextDrawingCacheInvalidationObserver-Protocol.h>
 #import <FuseUI/MusicEntityContentDescriptorViewConfiguring-Protocol.h>
 
-@class MPUNowPlayingIndicatorView, MusicDownloadProgressButton, MusicEntityViewContentDescriptor, MusicPopularityIndicatorView, NSMapTable, NSMutableArray, NSString, UIButton, UIImageView;
+@class MPUNowPlayingIndicatorView, MusicDownloadProgressButton, MusicEntityViewContentDescriptor, MusicPopularityIndicatorView, NSMapTable, NSMutableArray, NSString, UIImageView;
 @protocol MusicEntityTracklistItemViewDelegate, MusicEntityValueProviding;
 
 @interface MusicEntityTracklistItemView : MusicEntityAbstractLockupView <MPUTextDrawingCacheInvalidationObserver, MusicEntityContentDescriptorViewConfiguring>
 {
-    UIButton *_contextualActionsButton;
     MusicDownloadProgressButton *_downloadProgressButton;
     MPUNowPlayingIndicatorView *_indicatorView;
     UIImageView *_mediaTypeImageView;
@@ -24,7 +23,6 @@
     NSMutableArray *_textDrawingViewReusePool;
     UIImageView *_trailingAccessoryImageView;
     struct {
-        unsigned int didSelectContextualActionsButton:1;
         unsigned int didSelectPlayButton:1;
         unsigned int shouldLayoutAsEditing:1;
     } _delegateRespondsToSelector;
@@ -36,7 +34,6 @@
 
 @property (nonatomic) BOOL alwaysApplyLeadingTextColumnWidth; // @synthesize alwaysApplyLeadingTextColumnWidth=_alwaysApplyLeadingTextColumnWidth;
 @property (strong, nonatomic) MusicEntityViewContentDescriptor *contentDescriptor;
-@property (readonly, nonatomic) UIButton *contextualActionsButton; // @synthesize contextualActionsButton=_contextualActionsButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MusicEntityTracklistItemViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -52,7 +49,6 @@
 - (id)_backgroundColorForTracklistItemSubviews;
 - (void)_contentDescriptorDidChange:(id)arg1;
 - (void)_contentDescriptorDidInvalidateNotification:(id)arg1;
-- (void)_contextualActionsButtonTapped:(id)arg1;
 - (void)_entityDisabledDidChange;
 - (void)_recycleTextDrawingViewForTextDescriptor:(id)arg1;
 - (void)_recycleTextViewsForTextDescriptors:(id)arg1;

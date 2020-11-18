@@ -6,28 +6,33 @@
 
 #import <UIKit/UIView.h>
 
-@class SFSearchResult, SearchUIImageView;
+@class SFDetailedRowCardSection, SFSearchResult, SearchUIImageView;
 
 @interface SearchUIThumbnailView : UIView
 {
     SFSearchResult *_result;
+    SFDetailedRowCardSection *_detailedCardSection;
     SearchUIImageView *_imageView;
     UIView *_overlayPlayButton;
 }
 
+@property (strong) SFDetailedRowCardSection *detailedCardSection; // @synthesize detailedCardSection=_detailedCardSection;
 @property (strong) SearchUIImageView *imageView; // @synthesize imageView=_imageView;
 @property (strong) UIView *overlayPlayButton; // @synthesize overlayPlayButton=_overlayPlayButton;
 @property (strong) SFSearchResult *result; // @synthesize result=_result;
 
-+ (id)suggestedQueryIcon;
++ (id)thumbnailForResult:(id)arg1;
 - (void).cxx_destruct;
 - (void)appIconImageDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithStyle:(unsigned long long)arg1;
+- (void)invalidateIntrinsicContentSizeIfNecessary;
 - (void)layoutSubviews;
+- (BOOL)preventThumbnailScaling;
 - (BOOL)shouldVerticallyCenter;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)updateOverlayPlayButtonForResult:(id)arg1;
+- (void)updateOverlayPlayButtonForThumbnail:(id)arg1 overlayButton:(BOOL)arg2;
+- (void)updateWithCardSection:(id)arg1;
 - (void)updateWithResult:(id)arg1;
 
 @end

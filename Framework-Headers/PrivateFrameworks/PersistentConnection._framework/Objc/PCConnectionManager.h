@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <PersistentConnection/PCInterfaceMonitorDelegate-Protocol.h>
-#import <PersistentConnection/PCLoggingDelegate-Protocol.h>
 
-@class NSRunLoop, NSString, PCPersistentTimer;
-@protocol OS_dispatch_queue, PCConnectionManagerDelegate, PCGrowthAlgorithm;
+@class CUTWeakReference, NSRunLoop, NSString, PCPersistentTimer;
+@protocol OS_dispatch_queue, OS_os_log, PCConnectionManagerDelegate, PCGrowthAlgorithm;
 
-@interface PCConnectionManager : NSObject <PCLoggingDelegate, PCInterfaceMonitorDelegate>
+@interface PCConnectionManager : NSObject <PCInterfaceMonitorDelegate>
 {
     int _connectionClass;
     id<PCConnectionManagerDelegate> _delegate;
@@ -25,6 +24,7 @@
     unsigned long long _guidancePriority;
     NSRunLoop *_delegateRunLoop;
     NSObject<OS_dispatch_queue> *_delegateQueue;
+    NSObject<OS_os_log> *_logObject;
     id<PCGrowthAlgorithm> _wwanGrowthAlgorithm;
     id<PCGrowthAlgorithm> _wifiGrowthAlgorithm;
     id<PCGrowthAlgorithm> _lastScheduledGrowthAlgorithm;
@@ -35,11 +35,15 @@
     double _onTimeKeepAliveTime;
     double _lastResumeTime;
     double _lastStopTime;
+    double _lastStartTime;
     double _lastReachableTime;
     double _lastReconnectTime;
     double _lastScheduledIntervalTime;
     double _timerGuidance;
     double _keepAliveGracePeriod;
+    double _lastElapsedInterval;
+    BOOL _minimumIntervalFallbackEnabled;
+    BOOL _operatorMinimumIntervalFallbackAllowed;
     unsigned int _reconnectIteration;
     int _timerGuidanceToken;
     int _pushIsConnectedToken;
@@ -56,46 +60,67 @@
     BOOL _enableNonCellularConnections;
     BOOL _isReachable;
     BOOL _disableEarlyFire;
+    BOOL _alwaysWantsInterfaceChangeCallbacks;
+    int _lastProcessedAction;
+    BOOL _deviceUnderGoodCondition;
+    int _currentGrowthStage;
+    id _duetContextRegistration;
+    BOOL _powerOptimizationsForExpensiveNetworkingDisabled;
+    CUTWeakReference *_weakConnectionManager;
 }
 
+@property (nonatomic) BOOL alwaysWantsInterfaceChangeCallbacks; // @synthesize alwaysWantsInterfaceChangeCallbacks=_alwaysWantsInterfaceChangeCallbacks;
 @property (readonly, nonatomic) unsigned long long countOfGrowthActions;
+@property (readonly, nonatomic) int currentGrowthStage;
 @property (readonly, nonatomic) double currentKeepAliveInterval;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PCConnectionManagerDelegate> delegate;
+@property (weak, nonatomic) id<PCConnectionManagerDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disableEarlyFire;
 @property (copy, nonatomic) NSString *duetIdentifier;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) long long interfaceIdentifier; // @synthesize interfaceIdentifier=_interfaceIdentifier;
 @property (readonly, nonatomic) BOOL isRunning;
 @property (nonatomic) double keepAliveGracePeriod; // @synthesize keepAliveGracePeriod=_keepAliveGracePeriod;
-@property (readonly, nonatomic) NSString *loggingIdentifier; // @synthesize loggingIdentifier=_serviceIdentifier;
+@property (readonly, nonatomic) int lastProcessedAction; // @synthesize lastProcessedAction=_lastProcessedAction;
 @property double maximumKeepAliveInterval;
+@property (nonatomic) BOOL minimumIntervalFallbackEnabled; // @synthesize minimumIntervalFallbackEnabled=_minimumIntervalFallbackEnabled;
 @property (nonatomic) double minimumKeepAliveInterval;
 @property (readonly, nonatomic) double pollingInterval;
+@property (nonatomic) BOOL powerOptimizationsForExpensiveNetworkingDisabled; // @synthesize powerOptimizationsForExpensiveNetworkingDisabled=_powerOptimizationsForExpensiveNetworkingDisabled;
 @property (readonly) Class superclass;
 
 + (BOOL)_isCachedKeepAliveIntervalStillValid:(double)arg1 date:(id)arg2;
 + (id)_keepAliveCachePath;
 + (Class)growthAlgorithmClass;
 + (id)intervalCacheDictionaries;
+- (void).cxx_destruct;
 - (void)_adjustInterfaceAssertions;
+- (void)_adjustMinimumIntervalFallback;
 - (void)_adjustPollTimerIfNecessary;
 - (void)_callDelegateWithEventAndContext:(id)arg1;
-- (void)_calloutWithEvent:(id)arg1 context:(id)arg2;
+- (void)_calloutWithEvent:(int)arg1 context:(id)arg2;
 - (void)_clearTimers;
 - (void)_clearTimersReleasingPowerAssertion:(BOOL)arg1;
 - (id)_currentGrowthAlgorithm;
 - (void)_delayTimerFired;
+- (void)_deregisterForDeviceConditionsNotifications;
 - (id)_getCachedWWANKeepAliveInterval;
+- (id)_growthAlgorithmOnInterface:(long long)arg1;
+- (void)_handleDeviceConditionChangeCallback;
 - (BOOL)_hasBudgetRemaining;
 - (id)_initWithConnectionClass:(int)arg1 interfaceIdentifier:(long long)arg2 guidancePriority:(unsigned long long)arg3 delegate:(id)arg4 delegateQueue:(id)arg5 serviceIdentifier:(id)arg6;
 - (void)_intervalTimerFired;
 - (BOOL)_isPushConnected;
 - (void)_loadPreferencesGeneratingEvent:(BOOL)arg1;
+- (void)_pauseTimers;
 - (void)_preferencesChanged;
+- (void)_processDeviceConditionChanges;
+- (void)_registerForDeviceConditionsNotifications;
 - (void)_releasePowerAssertion;
 - (void)_resolveStateWithAction:(int)arg1;
 - (void)_saveWWANKeepAliveInterval;
+- (void)_setMaximumKeepAliveInterval:(double)arg1 onInterface:(long long)arg2;
 - (void)_setTimerGuidance:(double)arg1;
 - (void)_setupKeepAliveForReconnect;
 - (void)_setupTimerForPollForAdjustment:(BOOL)arg1;
@@ -115,13 +140,13 @@
 - (void)interfaceManagerInHomeCountryStatusChanged:(id)arg1;
 - (void)interfaceManagerInternetReachabilityChanged:(id)arg1;
 - (void)interfaceManagerWWANInterfaceStatusChanged:(id)arg1;
-- (void)log:(id)arg1;
-- (void)logAtLevel:(int)arg1 format:(id)arg2;
-- (void)logAtLevel:(int)arg1 format:(id)arg2 arguments:(struct __va_list_tag [1])arg3;
+- (BOOL)operatorMinimumIntervalFallbackAllowed;
+- (id)persistentInterfaceManager;
 - (void)resumeManagerWithAction:(int)arg1;
 - (void)resumeManagerWithAction:(int)arg1 forceGrow:(BOOL)arg2;
 - (void)setEnableNonCellularConnections:(BOOL)arg1;
 - (void)setOnlyAllowedStyle:(int)arg1;
+- (void)setOperatorMinimumIntervalFallbackAllowed:(BOOL)arg1;
 - (void)setPollingIntervalOverride:(double)arg1;
 - (BOOL)shouldClientScheduleReconnectDueToFailure;
 - (void)startManager;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFAudio/NSCopying-Protocol.h>
 #import <AVFAudio/NSSecureCoding-Protocol.h>
@@ -36,8 +36,8 @@
 + (id)speechUtteranceWithAttributedString:(id)arg1;
 + (id)speechUtteranceWithString:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAttributedString:(id)arg1;
 - (id)initWithCoder:(id)arg1;

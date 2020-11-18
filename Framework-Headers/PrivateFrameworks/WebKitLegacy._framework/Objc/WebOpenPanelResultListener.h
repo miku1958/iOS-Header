@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface WebOpenPanelResultListener : NSObject <WebOpenPanelResultListener>
 {
-    struct FileChooser *_chooser;
+    struct RefPtr<WebCore::FileChooser> _chooser;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -21,12 +21,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)cancel;
 - (void)chooseFilename:(id)arg1;
 - (void)chooseFilename:(id)arg1 displayString:(id)arg2 iconImage:(struct CGImage *)arg3;
 - (void)chooseFilenames:(id)arg1;
 - (void)chooseFilenames:(id)arg1 displayString:(id)arg2 iconImage:(struct CGImage *)arg3;
-- (id)initWithChooser:(PassRefPtr_2f7011b9)arg1;
+- (id)initWithChooser:(struct FileChooser *)arg1;
 
 @end
 

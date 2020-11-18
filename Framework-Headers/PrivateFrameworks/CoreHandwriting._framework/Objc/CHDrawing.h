@@ -15,16 +15,26 @@
 
 @property (nonatomic) struct CJKChar drawing; // @synthesize drawing=_drawing;
 
++ (double)_computeXProjectionBoundsOverlapFromReferenceBounds:(struct CGRect)arg1 toSubjectBounds:(struct CGRect)arg2;
++ (id)sortedArrayForPointIndices:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)addPoint:(struct CGPoint)arg1;
+- (void)appendSegment:(id)arg1 fromDrawing:(id)arg2;
 - (Matrix_273a43f8)bitmapRepresentationForSize:(struct CGSize)arg1;
 - (Matrix_273a43f8)bitmapRepresentationForSize:(struct CGSize)arg1 drawingAlgorithm:(int)arg2;
+- (struct CGRect)boundingBoxForDrawingSegmentFromIndexPath:(id)arg1 toIndexPath:(id)arg2;
 - (struct CGRect)bounds;
 - (void)clear;
+- (set_6c38b8e1)computeDelayedStrokesUsingMinimumDrawingSize:(struct CGSize)arg1;
+- (BOOL)containsStrokeLessThanSize:(struct CGSize)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)endStroke;
+- (id)filterPointsWithProximity:(double)arg1 fixedPoints:(id)arg2 points:(id)arg3;
+- (id)findLocalYMaximaWithWindowSize:(unsigned long long)arg1 excludingStrokes:(set_6c38b8e1)arg2;
+- (id)findSubStrokeSegmentationPointsExcludingStrokes:(set_6c38b8e1)arg1;
 - (id)initWithContentsOfFile:(id)arg1;
+- (id)initialSegmentationPointIndicesForDrawing;
 - (BOOL)isPrefixForDrawing:(id)arg1;
 - (struct _NSRange)matchingStrokePrefixRangeForDrawing:(id)arg1;
 - (Matrix_273a43f8)orientationRepresentationForSampling:(unsigned long long)arg1 convolutionWidth:(unsigned long long)arg2;
@@ -32,7 +42,9 @@
 - (unsigned long long)pointCountForStrokeIndex:(unsigned long long)arg1;
 - (struct CGPoint)pointForStrokeIndex:(unsigned long long)arg1 pointIndex:(unsigned long long)arg2;
 - (void)setLineHeight:(double)arg1;
-- (id)sortedDrawing;
+- (id)sortedDrawingUsingMinXCoordinate;
+- (id)spatiallyResampledWithDistance:(double)arg1;
+- (struct CGRect)strokeBoundsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)strokeCount;
 - (vector_eb9481f9)strokeIndicesSortedByMinXCoordinate;
 - (id)xyRepresentation;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
@@ -35,7 +35,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPaymentPass:(id)arg1 obfuscateNetworks:(BOOL)arg2;
+- (id)initWithPaymentPass:(id)arg1 paymentApplication:(id)arg2 obfuscateNetworks:(BOOL)arg3;
 - (id)initWithRemotePaymentInstrument:(id)arg1;
+- (id)initWithRemotePaymentInstrument:(id)arg1 paymentApplication:(id)arg2;
 - (id)protobuf;
 
 @end

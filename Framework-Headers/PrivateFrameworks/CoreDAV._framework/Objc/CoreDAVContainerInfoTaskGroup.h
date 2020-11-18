@@ -24,17 +24,17 @@
 @property (nonatomic) int containerInfoDepth; // @synthesize containerInfoDepth=_containerInfoDepth;
 @property (readonly, nonatomic) NSSet *containerURLs; // @synthesize containerURLs=_containerURLs;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<CoreDAVContainerInfoTaskGroupDelegate> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<CoreDAVContainerInfoTaskGroupDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_copyContainerParserMappings;
 - (id)_copyContainerWithURL:(id)arg1 andProperties:(id)arg2;
 - (void)_getContainerHomeSet;
 - (void)_getContainerTopLevelInfo;
 - (int)containerInfoDepthForURL:(id)arg1;
-- (void)dealloc;
 - (id)initWithAccountInfoProvider:(id)arg1 containerURLs:(id)arg2 taskManager:(id)arg3;
 - (void)propFindTask:(id)arg1 parsedResponses:(id)arg2 error:(id)arg3;
 - (void)startTaskGroup;

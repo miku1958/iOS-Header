@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     BOOL _isDelete;
     BOOL _saveCompletionBlockCalled;
     BOOL _needsRefetch;
+    BOOL _didRollRecordPCSMasterKey;
     int _saveAttempts;
     CKDModifyRecordsOperation *_operation;
     CKRecord *_record;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) long long batchRank; // @synthesize batchRank=_batchRank;
+@property (nonatomic) BOOL didRollRecordPCSMasterKey; // @synthesize didRollRecordPCSMasterKey=_didRollRecordPCSMasterKey;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSString *etag; // @synthesize etag=_etag;
 @property (nonatomic) BOOL isDelete; // @synthesize isDelete=_isDelete;
@@ -57,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (id)_addParentPCS:(id)arg1 toRecordPCS:(id)arg2;
 - (void)_addShareToPCSData:(id)arg1 withError:(id)arg2;
 - (BOOL)_canSetPreviousProtectionEtag;
+- (void)_clearRecordProtectionDataForRecord;
 - (void)_continueCreateAndSavePCSWithZonePCS:(id)arg1 sharePCS:(id)arg2;
 - (void)_createAndSavePCS;
 - (BOOL)_createPublicSharingKeyWithError:(id *)arg1;
@@ -71,12 +74,13 @@ __attribute__((visibility("hidden")))
 - (id)_initWithRecord:(id)arg1 operation:(id)arg2;
 - (void)_loadPCSData;
 - (BOOL)_prepareAsset:(id)arg1 recordKey:(id)arg2 record:(id)arg3 error:(id *)arg4;
+- (void)_pretendToWrapEncryptedDataForRecordValueStore:(id)arg1;
 - (void)_reallyFetchPCSDataWithOptions:(unsigned long long)arg1;
 - (void)_unwrapRecordPCSForParent;
 - (void)_unwrapRecordPCSForZone;
 - (void)_unwrapRecordPCSWithShareID:(id)arg1;
-- (id)_wrapAssetKey:(id)arg1 forRecord:(id)arg2 withError:(id *)arg3;
-- (BOOL)_wrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 forField:(id)arg3;
+- (BOOL)_wrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 forField:(id)arg3 recordID:(id)arg4;
+- (BOOL)_wrapEncryptedDataForRecordValueStore:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2;
 - (BOOL)_wrapEncryptedDataOnRecord:(id)arg1;
 - (void)clearProtectionDataForRecord;
 - (id)description;

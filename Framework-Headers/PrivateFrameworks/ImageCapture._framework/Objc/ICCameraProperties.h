@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSNumber, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface ICCameraProperties : NSObject
@@ -37,12 +37,15 @@
     NSObject<OS_dispatch_semaphore> *_deviceQSemaphore;
     BOOL _accessRestrictedAppleDevice;
     BOOL _applePTPCapable;
-    NSMutableArray *_requestedFiles;
+    NSMutableArray *_applePTPFiles;
+    NSNumber *_applePTPObjectLimit;
 }
 
 @property BOOL accessRestrictedAppleDevice; // @synthesize accessRestrictedAppleDevice=_accessRestrictedAppleDevice;
 @property BOOL allowsSyncingClock; // @synthesize allowsSyncingClock=_allowsSyncingClock;
-@property BOOL applePTPCapable; // @synthesize applePTPCapable=_applePTPCapable;
+@property (nonatomic) BOOL applePTPCapable; // @synthesize applePTPCapable=_applePTPCapable;
+@property (strong) NSMutableArray *applePTPFiles; // @synthesize applePTPFiles=_applePTPFiles;
+@property (strong) NSNumber *applePTPObjectLimit; // @synthesize applePTPObjectLimit=_applePTPObjectLimit;
 @property unsigned long long batteryLevel; // @synthesize batteryLevel=_batteryLevel;
 @property BOOL batteryLevelAvailable; // @synthesize batteryLevelAvailable=_batteryLevelAvailable;
 @property BOOL beingEjected; // @synthesize beingEjected=_beingEjected;
@@ -62,7 +65,6 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *metadataFetchQ; // @synthesize metadataFetchQ=_metadataFetchQ;
 @property (strong) NSMutableArray *notifyArray; // @synthesize notifyArray=_notifyArray;
 @property unsigned long long numberOfDownloadableItems; // @synthesize numberOfDownloadableItems=_numberOfDownloadableItems;
-@property (strong) NSMutableArray *requestedFiles; // @synthesize requestedFiles=_requestedFiles;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *thumbnailFetchQ; // @synthesize thumbnailFetchQ=_thumbnailFetchQ;
 @property double timeOffset; // @synthesize timeOffset=_timeOffset;
 @property (strong) NSMutableArray *toBeNotifiedAddedItems; // @synthesize toBeNotifiedAddedItems=_toBeNotifiedAddedItems;

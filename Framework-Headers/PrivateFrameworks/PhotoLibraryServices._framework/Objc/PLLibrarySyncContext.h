@@ -4,29 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/PLSyncContext-Protocol.h>
 
-@class NSString, PLPhotoLibrary;
+@class NSArray, NSMutableDictionary, NSString, PLCloudRecordOrganizer, PLPhotoLibrary;
 
 @interface PLLibrarySyncContext : NSObject <PLSyncContext>
 {
+    NSMutableDictionary *_assetAdjustmentStatesByCloudIdentifier;
+    NSArray *_personUUIDsToDedupe;
     PLPhotoLibrary *_photoLibrary;
+    PLCloudRecordOrganizer *_recordOrganizer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *personUUIDsToDedupe; // @synthesize personUUIDsToDedupe=_personUUIDsToDedupe;
 @property (readonly) PLPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+@property (readonly) PLCloudRecordOrganizer *recordOrganizer; // @synthesize recordOrganizer=_recordOrganizer;
+@property (readonly, nonatomic) BOOL serverSupportsGraphHome;
 @property (readonly, nonatomic) BOOL serverSupportsVision;
 @property (readonly) Class superclass;
 
+- (id)assetAdjustmentStateForCloudIdentifier:(id)arg1;
 - (void)dealloc;
 - (void)deleteFaces:(id)arg1;
 - (id)initWithPhotoLibrary:(id)arg1;
 - (id)makeFace;
 - (id)personForUUID:(id)arg1;
+- (BOOL)personUUIDIsDeleted:(id)arg1;
+- (void)setAssetAdjustmentState:(id)arg1 forCloudIdentifer:(id)arg2;
 
 @end
 

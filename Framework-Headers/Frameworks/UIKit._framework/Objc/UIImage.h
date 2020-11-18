@@ -6,11 +6,16 @@
 
 #import <Foundation/NSObject.h>
 
+#import <UIKit/NSItemProviderReading-Protocol.h>
+#import <UIKit/NSItemProviderWriting-Protocol.h>
 #import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKit/UIItemProviderPresentationSizeProviding-Protocol.h>
+#import <UIKit/UIItemProviderReading-Protocol.h>
+#import <UIKit/UIItemProviderWriting-Protocol.h>
 
-@class CIImage, NSArray, UIGraphicsImageRendererFormat, UIImageAsset, UITraitCollection;
+@class CIImage, NSArray, NSString, UIGraphicsImageRendererFormat, UIImageAsset, UITraitCollection, _UIImageVectorImageSupport;
 
-@interface UIImage : NSObject <NSSecureCoding>
+@interface UIImage : NSObject <NSItemProviderReading, NSItemProviderWriting, UIItemProviderPresentationSizeProviding, UIItemProviderReading, UIItemProviderWriting, NSSecureCoding>
 {
     void *_imageRef;
     double _scale;
@@ -26,27 +31,41 @@
     } _imageFlags;
     BOOL _flipsForRightToLeftLayoutDirection;
     UITraitCollection *_traitCollection;
+    _UIImageVectorImageSupport *_vectorImageSupport;
     UIImageAsset *_imageAsset;
     struct UIEdgeInsets _alignmentRectInsets;
 }
 
 @property (readonly, nonatomic) struct CGImage *CGImage;
+@property (readonly, nonatomic, getter=_CGPDFPage) struct CGPDFPage *CGPDFPage;
 @property (readonly, nonatomic) CIImage *CIImage;
 @property (readonly, nonatomic) struct UIEdgeInsets alignmentRectInsets; // @synthesize alignmentRectInsets=_alignmentRectInsets;
 @property (readonly, nonatomic) struct UIEdgeInsets capInsets;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic) BOOL flipsForRightToLeftLayoutDirection; // @synthesize flipsForRightToLeftLayoutDirection=_flipsForRightToLeftLayoutDirection;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImageAsset *imageAsset; // @synthesize imageAsset=_imageAsset;
 @property (readonly, nonatomic) long long imageOrientation;
 @property (readonly, nonatomic) UIGraphicsImageRendererFormat *imageRendererFormat;
 @property (readonly, nonatomic) NSArray *images;
 @property (readonly, nonatomic) long long leftCapWidth;
+@property (readonly, nonatomic) struct CGSize preferredPresentationSizeForItemProvider;
 @property (readonly, nonatomic) long long renderingMode;
 @property (readonly, nonatomic) long long resizingMode;
 @property (readonly, nonatomic) double scale;
 @property (readonly, nonatomic) struct CGSize size;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) long long topCapHeight;
 @property (copy, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
+@property (strong, nonatomic) _UIImageVectorImageSupport *vectorImageSupport; // @synthesize vectorImageSupport=_vectorImageSupport;
+@property (readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
+@property (readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
 
 + (id)_animatedImageNamed:(id)arg1 inBundle:(id)arg2 compatibleWithTraitCollection:(id)arg3 duration:(double)arg4;
 + (id)_animatedResizableImageNamed:(id)arg1 inBundle:(id)arg2 compatibleWithTraitCollection:(id)arg3 capInsets:(struct UIEdgeInsets)arg4 resizingMode:(long long)arg5 duration:(double)arg6;
@@ -63,11 +82,16 @@
 + (void)_flushCache:(id)arg1;
 + (void)_flushSharedImageCache;
 + (id)_iconForResourceProxy:(id)arg1 format:(int)arg2;
++ (id)_iconForResourceProxy:(id)arg1 format:(int)arg2 options:(unsigned long long)arg3;
++ (id)_iconForResourceProxy:(id)arg1 variant:(int)arg2 options:(int)arg3 variantsScale:(double)arg4;
 + (id)_iconForResourceProxy:(id)arg1 variant:(int)arg2 variantsScale:(double)arg3;
 + (int)_iconVariantForUIApplicationIconFormat:(int)arg1 idiom:(long long)arg2 scale:(double *)arg3;
 + (int)_iconVariantForUIApplicationIconFormat:(int)arg1 scale:(double *)arg2;
 + (long long)_idiomDefinedByPath:(id)arg1;
 + (id)_imageNamed:(id)arg1 withTrait:(id)arg2;
++ (id)_imageWithCGPDFPage:(struct CGPDFPage *)arg1;
++ (id)_imageWithCGPDFPage:(struct CGPDFPage *)arg1 scale:(double)arg2 orientation:(long long)arg3;
++ (BOOL)_isCGImageAlphaMask:(struct CGImage *)arg1;
 + (id)_kitImageNamed:(id)arg1 withTrait:(id)arg2;
 + (struct CGSize)_legibilityImageSizeForSize:(struct CGSize)arg1 style:(long long)arg2;
 + (long long)_mirroredImageOrientationForOrientation:(long long)arg1;
@@ -95,8 +119,13 @@
 + (id)imageWithData:(id)arg1 scale:(double)arg2;
 + (void)initialize;
 + (id)kitImageNamed:(id)arg1;
++ (id)newObjectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 options:(id)arg3 error:(id *)arg4;
++ (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
++ (id)readableTypeIdentifiersForItemProvider;
 + (BOOL)supportsSecureCoding;
++ (id)writableTypeIdentifiersForItemProvider;
 - (void).cxx_destruct;
+- (struct CGSize)_CGPDFPageSize;
 - (id)_applicationIconImageForFormat:(int)arg1 precomposed:(BOOL)arg2;
 - (id)_applicationIconImageForFormat:(int)arg1 precomposed:(BOOL)arg2 idiom:(long long)arg3 scale:(double)arg4;
 - (id)_applicationIconImageForFormat:(int)arg1 precomposed:(BOOL)arg2 scale:(double)arg3;
@@ -108,10 +137,12 @@
 - (id)_applyBackdropViewStyle:(long long)arg1 includeTints:(BOOL)arg2 includeBlur:(BOOL)arg3 graphicsQuality:(long long)arg4;
 - (id)_applyBackdropViewStyle:(long long)arg1 includeTints:(BOOL)arg2 includeBlur:(BOOL)arg3 graphicsQuality:(long long)arg4 allowImageResizing:(BOOL)arg5;
 - (id)_bezeledImageWithShadowRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4 fillRed:(double)arg5 green:(double)arg6 blue:(double)arg7 alpha:(double)arg8 drawShadow:(BOOL)arg9;
+- (void)_cacheStyledImage:(id)arg1 forPresets:(id)arg2 tintColor:(id)arg3;
 - (id)_cachedImageStyledWithPresets:(id)arg1 forTintColor:(id)arg2;
-- (CDStruct_afa449f9)_calculateStatistics;
+- (CDStruct_e79446ac)_calculateStatistics;
 - (BOOL)_canEncodeWithName:(id)arg1 coder:(id)arg2;
 - (void)_configureImage:(id)arg1;
+- (void)_configureVectorImagePropertiesForImage:(id)arg1;
 - (struct CGRect)_contentRectInPixels;
 - (struct CGRect)_contentStretchInPixels;
 - (void)_decompressionComplete;
@@ -124,21 +155,26 @@
 - (void)_encodePropertiesWithCoder:(id)arg1;
 - (id)_flatImageWithColor:(id)arg1;
 - (id)_flatImageWithWhite:(double)arg1 alpha:(double)arg2;
+- (void)_flipImageOrientationHorizontally;
 - (BOOL)_hasDecompressionInfo;
 - (id)_imageForLegibilitySettings:(id)arg1 strength:(double)arg2;
 - (id)_imageForLegibilityStyle:(long long)arg1;
 - (long long)_imageOrientationConsideringRTL;
 - (long long)_imageOrientationConsideringRTLForUserInterfaceLayoutDirection:(long long)arg1;
+- (id)_imagePaddedByInsets:(struct UIEdgeInsets)arg1;
 - (id)_imageScaledToProportion:(double)arg1 interpolationQuality:(int)arg2;
 - (id)_imageThatSuppressesAccessibilityHairlineThickening;
 - (id)_imageWithBrightnessModifiedForLegibilityStyle:(long long)arg1;
 - (id)_imageWithStylePresets:(id)arg1 withTintColor:(id)arg2;
+- (id)_initWithCGPDFPage:(struct CGPDFPage *)arg1;
+- (id)_initWithCGPDFPage:(struct CGPDFPage *)arg1 scale:(double)arg2 orientation:(long long)arg3;
 - (id)_initWithContentsOfLCRFile:(id)arg1;
 - (id)_initWithData:(id)arg1 immediateLoadWithMaxSize:(struct CGSize)arg2 scale:(double)arg3 renderingIntent:(int)arg4;
 - (id)_initWithData:(id)arg1 preserveScale:(BOOL)arg2;
 - (id)_initWithData:(id)arg1 preserveScale:(BOOL)arg2 cache:(BOOL)arg3;
 - (id)_initWithData:(id)arg1 scale:(double)arg2;
 - (id)_initWithOtherImage:(id)arg1;
+- (BOOL)_isAlphaMask;
 - (BOOL)_isCached;
 - (BOOL)_isDecompressing;
 - (BOOL)_isInvisibleAndGetIsTranslucent:(BOOL *)arg1;
@@ -153,6 +189,7 @@
 - (id)_resizableImageWithCapMask:(int)arg1;
 - (id)_resizableImageWithSubimageInsets:(struct UIEdgeInsets)arg1 resizeInsets:(struct UIEdgeInsets)arg2;
 - (void)_saveDecompressedImage:(struct CGImage *)arg1;
+- (double)_scaleFromPDF;
 - (id)_selectedTabBarItemImageWithTintColor:(id)arg1 metrics:(long long)arg2 style:(long long)arg3 forScreenScale:(double)arg4;
 - (id)_serializedData;
 - (void)_setAlignmentRectInsets:(struct UIEdgeInsets)arg1;
@@ -162,7 +199,12 @@
 - (void)_setIsFlippedInRightToLeft;
 - (void)_setNamed:(BOOL)arg1;
 - (void)_setSuppressesAccessibilityHairlineThickening:(BOOL)arg1;
+- (void)_setVectorImageCGPDFPage:(struct CGPDFPage *)arg1;
+- (void)_setVectorImageFlatColor:(id)arg1;
+- (void)_setVectorImagePaddingInsets:(struct UIEdgeInsets)arg1;
+- (void)_setVectorImageScale:(double)arg1;
 - (struct CGSize)_sizeInPixels;
+- (struct CGSize)_sizeInPixelsFromPDF;
 - (struct CGSize)_sizeWithHairlineThickening:(BOOL)arg1 renderingEffects:(unsigned long long)arg2 forTraitCollection:(id)arg3;
 - (void)_startEagerDecompression;
 - (id)_stretchableImageWithCapInsets:(struct UIEdgeInsets)arg1;
@@ -171,29 +213,31 @@
 - (id)_tabBarItemImageWithTintColor:(id)arg1 selected:(BOOL)arg2 metrics:(long long)arg3 style:(long long)arg4 forScreenScale:(double)arg5;
 - (struct CGColor *)_tiledPatternColor;
 - (id)_unselectedTabBarItemImageWithTintColor:(id)arg1 metrics:(long long)arg2 style:(long long)arg3 forScreenScale:(double)arg4;
+- (struct CGPDFPage *)_vectorImageCGPDFPage;
+- (id)_vectorImageFlatColor;
+- (struct UIEdgeInsets)_vectorImagePaddingInsets;
+- (double)_vectorImageScale;
 - (void)compositeToPoint:(struct CGPoint)arg1 fromRect:(struct CGRect)arg2 operation:(int)arg3 fraction:(double)arg4;
 - (void)compositeToPoint:(struct CGPoint)arg1 operation:(int)arg2;
 - (void)compositeToPoint:(struct CGPoint)arg1 operation:(int)arg2 fraction:(double)arg3;
 - (void)compositeToRect:(struct CGRect)arg1 fromRect:(struct CGRect)arg2 operation:(int)arg3 fraction:(double)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)description;
 - (void)draw1PartImageInRect:(struct CGRect)arg1;
 - (void)draw1PartImageInRect:(struct CGRect)arg1 fraction:(double)arg2;
 - (void)draw1PartImageInRect:(struct CGRect)arg1 fraction:(double)arg2 operation:(int)arg3;
-- (void)draw3PartImageWithSliceRects:(CDStruct_24b02699)arg1 inRect:(struct CGRect)arg2;
-- (void)draw3PartImageWithSliceRects:(CDStruct_24b02699)arg1 inRect:(struct CGRect)arg2 fraction:(double)arg3;
-- (void)draw3PartImageWithSliceRects:(CDStruct_24b02699)arg1 inRect:(struct CGRect)arg2 operation:(int)arg3 fraction:(double)arg4;
-- (void)draw9PartImageWithSliceRects:(CDStruct_f8849c67)arg1 inRect:(struct CGRect)arg2;
-- (void)draw9PartImageWithSliceRects:(CDStruct_f8849c67)arg1 inRect:(struct CGRect)arg2 fraction:(double)arg3;
-- (void)draw9PartImageWithSliceRects:(CDStruct_f8849c67)arg1 inRect:(struct CGRect)arg2 operation:(int)arg3 fraction:(double)arg4;
+- (void)draw3PartImageWithSliceRects:(CDStruct_6b60c6e5)arg1 inRect:(struct CGRect)arg2;
+- (void)draw3PartImageWithSliceRects:(CDStruct_6b60c6e5)arg1 inRect:(struct CGRect)arg2 fraction:(double)arg3;
+- (void)draw3PartImageWithSliceRects:(CDStruct_6b60c6e5)arg1 inRect:(struct CGRect)arg2 operation:(int)arg3 fraction:(double)arg4;
+- (void)draw9PartImageWithSliceRects:(CDStruct_c7d8fe75)arg1 inRect:(struct CGRect)arg2;
+- (void)draw9PartImageWithSliceRects:(CDStruct_c7d8fe75)arg1 inRect:(struct CGRect)arg2 fraction:(double)arg3;
+- (void)draw9PartImageWithSliceRects:(CDStruct_c7d8fe75)arg1 inRect:(struct CGRect)arg2 operation:(int)arg3 fraction:(double)arg4;
 - (void)drawAsPatternInRect:(struct CGRect)arg1;
 - (void)drawAtPoint:(struct CGPoint)arg1;
 - (void)drawAtPoint:(struct CGPoint)arg1 blendMode:(int)arg2 alpha:(double)arg3;
 - (void)drawInRect:(struct CGRect)arg1;
 - (void)drawInRect:(struct CGRect)arg1 blendMode:(int)arg2 alpha:(double)arg3;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)imageFlippedForRightToLeftLayoutDirection;
 - (struct CGImage *)imageRef;
 - (id)imageWithAlignmentRectInsets:(struct UIEdgeInsets)arg1;
@@ -210,8 +254,11 @@
 - (id)initWithData:(id)arg1;
 - (id)initWithData:(id)arg1 cache:(BOOL)arg2;
 - (id)initWithData:(id)arg1 scale:(double)arg2;
+- (id)initWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)patternColor;
+- (void)registerLoadHandlersToItemProvider:(id)arg1;
 - (id)resizableImageWithCapInsets:(struct UIEdgeInsets)arg1;
 - (id)resizableImageWithCapInsets:(struct UIEdgeInsets)arg1 resizingMode:(long long)arg2;
 - (id)stretchableImageWithLeftCapWidth:(long long)arg1 topCapHeight:(long long)arg2;

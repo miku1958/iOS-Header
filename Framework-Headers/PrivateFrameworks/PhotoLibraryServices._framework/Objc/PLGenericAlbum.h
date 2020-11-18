@@ -9,11 +9,12 @@
 #import <PhotoLibraryServices/PLAlbumProtocol-Protocol.h>
 #import <PhotoLibraryServices/PLDerivedAlbumOrigin-Protocol.h>
 #import <PhotoLibraryServices/PLIndexMappersDataOrigin-Protocol.h>
+#import <PhotoLibraryServices/PLSyncableObject-Protocol.h>
 
 @class NSArray, NSDate, NSDictionary, NSMutableOrderedSet, NSNumber, NSObject, NSOrderedSet, NSString, NSURL, PLManagedAsset, PLPhotoLibrary, UIImage;
 @protocol PLIndexMappingCache;
 
-@interface PLGenericAlbum : _PLGenericAlbum <PLAlbumProtocol, PLDerivedAlbumOrigin, PLIndexMappersDataOrigin>
+@interface PLGenericAlbum : _PLGenericAlbum <PLSyncableObject, PLAlbumProtocol, PLDerivedAlbumOrigin, PLIndexMappersDataOrigin>
 {
     NSObject<PLIndexMappingCache> *_derivededAlbums[5];
     BOOL isRegisteredForChanges;
@@ -28,13 +29,17 @@
 @property (readonly, nonatomic) BOOL canShowAvalancheStacks;
 @property (readonly, nonatomic) BOOL canShowComments;
 @property (strong, nonatomic) NSString *cloudGUID; // @dynamic cloudGUID;
+@property (nonatomic) short cloudLocalState;
 @property (nonatomic) short cloudLocalState; // @dynamic cloudLocalState;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didRegisteredWithUserInterfaceContext; // @synthesize didRegisteredWithUserInterfaceContext;
 @property (strong, nonatomic) NSDate *endDate; // @dynamic endDate;
 @property (readonly, strong, nonatomic) NSURL *groupURL;
 @property (nonatomic) BOOL hasUnseenContentBoolValue;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *importSessionID; // @dynamic importSessionID;
 @property (readonly, nonatomic) BOOL isCameraAlbum;
@@ -61,6 +66,7 @@
 @property (strong, nonatomic) PLManagedAsset *keyAsset; // @dynamic keyAsset;
 @property (readonly, strong, nonatomic) NSNumber *kind;
 @property (nonatomic) int kindValue;
+@property (readonly, strong, nonatomic) id localID;
 @property (readonly, copy, nonatomic) NSArray *localizedLocationNames;
 @property (readonly, copy, nonatomic) NSString *localizedTitle;
 @property (readonly, strong, nonatomic) NSMutableOrderedSet *mutableAssets; // @dynamic mutableAssets;
@@ -76,6 +82,7 @@
 @property (readonly, copy, nonatomic) CDUnknownBlockType sortingComparator;
 @property (strong, nonatomic) NSDate *startDate; // @dynamic startDate;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) PLManagedAsset *tertiaryKeyAsset; // @dynamic tertiaryKeyAsset;
 @property (strong, nonatomic) NSString *title; // @dynamic title;
 @property (strong, nonatomic) NSDate *trashedDate; // @dynamic trashedDate;
@@ -85,6 +92,7 @@
 
 + (id)_insertNewAlbumWithKind:(int)arg1 title:(id)arg2 lastInterestingDate:(id)arg3 intoLibrary:(id)arg4;
 + (id)_predicateForSupportedAlbumTypes;
++ (void)_removeAlbumsAndFolders:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)_singletonFetchingAlbumWithKind:(int)arg1 library:(id)arg2;
 + (id)_singletonManagedAlbumWithKind:(int)arg1 library:(id)arg2;
 + (id)_unpushedParentsOfAlbums:(id)arg1;
@@ -139,9 +147,10 @@
 + (id)localizedTitleForAlbumKind:(int)arg1;
 + (id)otaRestoreProgressAlbumInLibrary:(id)arg1;
 + (void)removeAllUserAlbumsAndFoldersInLibrary:(id)arg1;
-+ (void)removeEmptyAlbumsForCloudResetInLibrary:(id)arg1;
-+ (void)removeTrashedAlbumsAndFoldersForCloudResetInLibrary:(id)arg1;
-+ (void)resetAlbumStateForCloudInLibrary:(id)arg1;
++ (void)removeEmptyAlbumsAndFoldersForCloudResetInManagedObjectContext:(id)arg1;
++ (void)removeInvalidAlbumsAndFoldersInManagedObjectContext:(id)arg1;
++ (void)removeTrashedAlbumsAndFoldersForCloudResetInManagedObjectContext:(id)arg1;
++ (void)resetAlbumStateForCloudInLibrary:(id)arg1 hardReset:(BOOL)arg2;
 + (id)rootFolderInLibrary:(id)arg1;
 + (id)syncProgressAlbumInLibrary:(id)arg1;
 + (id)trashBinAlbumInLibrary:(id)arg1;
@@ -167,6 +176,7 @@
 - (unsigned long long)count;
 - (unsigned long long)countForAssetsOfKind:(short)arg1;
 - (id)cplAlbumChangeInPhotoLibrary:(id)arg1;
+- (id)cplFullRecord;
 - (void)dealloc;
 - (void)delete;
 - (void)enumerateDerivedAlbums:(CDUnknownBlockType)arg1;

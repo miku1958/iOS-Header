@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @protocol OS_dispatch_queue;
 
@@ -19,6 +19,8 @@
 + (id)startContactlessInterfaceSessionWithCompletion:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
 + (id)startInAppSessionWithCompletion:(CDUnknownBlockType)arg1;
 + (id)startInAppSessionWithCompletion:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
++ (id)startPeerPaymentSessionWithCompletion:(CDUnknownBlockType)arg1;
++ (id)startPeerPaymentSessionWithCompletion:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
 + (id)startReaderSessionWithCompletion:(CDUnknownBlockType)arg1;
 + (id)startReaderSessionWithCompletion:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
 - (void).cxx_destruct;

@@ -14,12 +14,13 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (double)_accessibilityAllowedGeometryOverlap;
+- (id)_accessibilityEmptyListDropString;
+- (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
-- (id)accessibilityCustomActions;
+- (id)_accessibilityScannerGroupElements;
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
-- (BOOL)isAccessibilityElement;
 - (BOOL)shouldGroupAccessibilityChildren;
 
 @end

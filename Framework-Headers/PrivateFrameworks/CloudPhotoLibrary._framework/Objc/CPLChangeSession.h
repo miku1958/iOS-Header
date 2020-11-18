@@ -30,10 +30,11 @@
 @property (readonly) Class superclass;
 
 + (id)platformImplementationProtocol;
++ (id)shortDescription;
 + (id)stateDescriptionForState:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (id)_sessionLogDomain;
-- (void)beginSessionWithKnownLibraryVersion:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)beginSessionWithKnownLibraryVersion:(id)arg1 resetTracker:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)createSessionContext;
 - (void)dealloc;
 - (void)finalizeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;

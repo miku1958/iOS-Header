@@ -25,6 +25,7 @@
     NSDate *_timeTravelDate;
     BOOL _didChangeLayoutOverride;
     BOOL _isAnimating;
+    BOOL _hasTemplateDisplay;
     BOOL _paused;
     BOOL _editing;
     BOOL _tapEnabled;
@@ -34,7 +35,8 @@
     NSString *_complicationSlotIdentifier;
     UIView<NTKComplicationDisplay> *_display;
     CDUnknownBlockType _displayConfigurationHandler;
-    CDUnknownBlockType _tapHandler;
+    CDUnknownBlockType _touchDownHandler;
+    CDUnknownBlockType _touchUpInsideHandler;
     CDUnknownBlockType _needsResizeHandler;
     CLKComplicationTemplate *_complicationTemplate;
     double _alphaForDimmedState;
@@ -61,12 +63,14 @@
 @property (readonly, nonatomic) struct CGSize preferredSize;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL tapEnabled; // @synthesize tapEnabled=_tapEnabled;
-@property (copy, nonatomic) CDUnknownBlockType tapHandler; // @synthesize tapHandler=_tapHandler;
+@property (copy, nonatomic) CDUnknownBlockType touchDownHandler; // @synthesize touchDownHandler=_touchDownHandler;
+@property (copy, nonatomic) CDUnknownBlockType touchUpInsideHandler; // @synthesize touchUpInsideHandler=_touchUpInsideHandler;
 
 - (void).cxx_destruct;
 - (void)_didSetDisplayFromDisplay:(id)arg1 withComplicationAnimation:(unsigned long long)arg2;
 - (void)_invokeNeedsResizeHandler;
-- (void)_invokeTapHandler;
+- (void)_invokeTouchDownHandler;
+- (void)_invokeTouchUpInsideHandler;
 - (void)_prepareToSetDisplay:(id)arg1 withComplicationAnimation:(inout unsigned long long *)arg2;
 - (void)_removeDisplay:(id)arg1;
 - (void)_resetComplicationViews;
@@ -78,6 +82,7 @@
 - (void)complicationDisplayNeedsResize:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)initWithDetachedTemplateDisplay:(id)arg1;
 - (id)initWithFamily:(long long)arg1;
 - (id)initWithLegacyDisplay:(id)arg1;
 - (id)initWithLegacyDisplay:(id)arg1 layoutOverride:(long long)arg2;

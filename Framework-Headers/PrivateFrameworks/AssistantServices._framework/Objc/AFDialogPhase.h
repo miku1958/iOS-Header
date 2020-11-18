@@ -50,6 +50,7 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToDialogPhase:(id)arg1;
+- (BOOL)isPossiblyPartOfMultiTurnRequest;
 - (BOOL)replacesPreviousSnippetContents;
 
 @end

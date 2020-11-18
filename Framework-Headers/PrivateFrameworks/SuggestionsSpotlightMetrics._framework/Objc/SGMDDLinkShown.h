@@ -17,7 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)trackEventWithScalar:(unsigned long long)arg1 app:(struct SGMBannerDisplayApp_)arg2;
+- (void)trackEventWithScalar:(unsigned long long)arg1 interface:(struct SGMNLEventInterface_)arg2;
 
 @end
 

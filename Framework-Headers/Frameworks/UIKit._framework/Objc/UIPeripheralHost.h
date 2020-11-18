@@ -10,7 +10,7 @@
 #import <UIKit/UIKeyboardKeyplaneTransitionDelegate-Protocol.h>
 #import <UIKit/UIScrollViewIntersectionDelegate-Protocol.h>
 
-@class CADisplayLink, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, UIInputViewPostPinningReloadState, UIInputViewSet, UIInputViewTransition, UIKeyboard, UIKeyboardAutomatic, UIKeyboardRotationState, UIPanGestureRecognizer, UIPeripheralHostState, UIPeripheralHostView, UIResponder, UIScrollView, UITextEffectsWindow, UITextInputMode, UIView;
+@class CADisplayLink, NSDate, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, UIInputViewPostPinningReloadState, UIInputViewSet, UIInputViewTransition, UIKeyboard, UIKeyboardAutomatic, UIKeyboardRotationState, UIPanGestureRecognizer, UIPeripheralHostState, UIPeripheralHostView, UIResponder, UIScrollView, UITextEffectsWindow, UITextInputMode, UIView;
 
 @interface UIPeripheralHost : NSObject <UIScrollViewIntersectionDelegate, UIKeyboardKeyplaneTransitionDelegate, UIGestureRecognizerDelegate>
 {
@@ -22,6 +22,7 @@
     BOOL _automaticKeyboardAnimatingOut;
     int _automaticKeyboardState;
     int _ignoringReloadInputViews;
+    int _ignoredReloads;
     BOOL _suppresingNotifications;
     BOOL _useHideNotificationsWhenNotVisible;
     BOOL _reloadInputViewsForcedIsAllowed;
@@ -39,7 +40,7 @@
     struct CGAffineTransform _initialTransform;
     struct CGPoint _velocity;
     NSMutableArray *_dropShadowViews;
-    double __transitionStartTime;
+    NSDate *__transitionStartTime;
     int _shadowStyle;
     BOOL _wasBackgroundSplit;
     struct CGRect _previousShadowFrameLeft;
@@ -89,13 +90,14 @@
     int _deactivationCount;
     BOOL _dontNeedAssistantBar;
     CDUnknownBlockType _deferredTransitionTask;
+    double _lastKeyplaneResize;
     UIInputViewSet *_transientInputViewSet;
     UITextInputMode *_documentInputMode;
 }
 
 @property (strong, nonatomic) UIInputViewSet *_inputViews; // @synthesize _inputViews=_inputViewSet;
 @property (strong, nonatomic) UIInputViewSet *_transientInputViews; // @synthesize _transientInputViews=_transientInputViewSet;
-@property (nonatomic) double _transitionStartTime;
+@property (strong, nonatomic) NSDate *_transitionStartTime;
 @property (nonatomic) double ambiguousControlCenterActivationMargin;
 @property (nonatomic) BOOL animationFencingEnabled; // @dynamic animationFencingEnabled;
 @property (nonatomic) BOOL animationFencingEnabled; // @synthesize animationFencingEnabled=_animationFencingEnabled;
@@ -116,6 +118,7 @@
 @property (readonly, nonatomic, getter=_isIgnoringReloadInputViews) BOOL ignoringReloadInputViews;
 @property (strong, nonatomic) UIInputViewSet *inputViews;
 @property (readonly, nonatomic) BOOL keyClicksEnabled;
+@property (nonatomic) double lastKeyplaneResize; // @synthesize lastKeyplaneResize=_lastKeyplaneResize;
 @property (readonly, nonatomic) UIInputViewSet *loadAwareInputViews;
 @property (strong, nonatomic) UIInputViewPostPinningReloadState *postPinningReloadState; // @synthesize postPinningReloadState=_postPinningReloadState;
 @property (readonly, strong, nonatomic) UIResponder *responder; // @dynamic responder;
@@ -134,8 +137,8 @@
 + (Class)hostViewClass;
 + (BOOL)inputViewSetContainsView:(id)arg1;
 + (id)passthroughViews;
++ (BOOL)pointIsWithinKeyboardContent:(struct CGPoint)arg1;
 + (struct CGRect)screenBoundsInAppOrientation;
-+ (void)setFloating:(BOOL)arg1 onCompletion:(CDUnknownBlockType)arg2;
 + (id)sharedInstance;
 + (struct CGRect)visibleInputViewFrame;
 + (struct CGRect)visiblePeripheralFrame;
@@ -151,7 +154,7 @@
 - (id)_currentInputView;
 - (void)_dismissOverlayedUI;
 - (void)_endDisablingAnimations;
-- (void)_endIgnoringReloadInputViews;
+- (int)_endIgnoringReloadInputViews;
 - (void)_endPersistingInputAccessoryViewWithId:(id)arg1;
 - (BOOL)_hasPostPinningReloadState;
 - (BOOL)_hostFirstResponder:(id)arg1 onBehalfOfResponder:(id)arg2;
@@ -162,6 +165,7 @@
 - (id)_inputViewsForResponder:(id)arg1 withAutomaticKeyboard:(BOOL)arg2;
 - (BOOL)_isAccessoryViewChangedOnly;
 - (BOOL)_isCoordinatingWithSystemGestures;
+- (int)_isKeyboardDeactivated;
 - (BOOL)_isPinningInputViewsOnBehalfOfResponder:(id)arg1;
 - (BOOL)_isSelfHosting;
 - (BOOL)_isSuppressedByManualKeyboard;
@@ -306,9 +310,11 @@
 - (void)prepareForRotationToOrientation:(long long)arg1;
 - (void)prepareForTransition;
 - (void)prepareToAnimateClippedKeyboardWithOffsets:(struct CGRect)arg1 orderingIn:(BOOL)arg2 onSnapshot:(BOOL)arg3;
+- (void)prepareToMoveKeyboardForInputViewSet:(id)arg1;
 - (void)pushAnimationStyle:(id)arg1;
 - (void)queueDelayedTask:(CDUnknownBlockType)arg1;
 - (void)refreshCorners;
+- (void)removePreservedInputViewSetForInputView:(id)arg1;
 - (void)resetCurrentOrderOutAnimationDuration:(double)arg1;
 - (void)resetNextAutomaticOrderInDirectionAndDuration;
 - (id)retain;
@@ -322,6 +328,7 @@
 - (void)setInputViews:(id)arg1 animated:(BOOL)arg2;
 - (void)setInputViews:(id)arg1 animationStyle:(id)arg2;
 - (void)setInputViewsHidden:(BOOL)arg1;
+- (void)setKeyboardFencingEnabled:(BOOL)arg1;
 - (void)setKeyboardOnScreenNotifyKey:(BOOL)arg1;
 - (void)setListeningToSpringBoardKeyboardNotifications:(BOOL)arg1;
 - (void)setNextAutomaticOrderInDirection:(int)arg1 duration:(double)arg2;

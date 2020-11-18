@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isInterfaceUsable;
 @property (readonly, nonatomic) BOOL isInternetReachable;
 @property (readonly, nonatomic) BOOL isLTEWithCDRX;
+@property (readonly, nonatomic) BOOL isNetworkingPowerExpensiveToUse;
 @property (readonly, nonatomic) BOOL isPoorLinkQuality;
 @property (readonly, nonatomic) BOOL isRadioHot;
 @property (readonly, nonatomic) int linkQuality;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)isBadLinkQuality:(int)arg1;
 + (BOOL)isPoorLinkQuality:(int)arg1;
 + (id)stringForLinkQuality:(int)arg1;
+- (void).cxx_destruct;
 - (void)_callDelegateOnIvarQueueWithBlock:(CDUnknownBlockType)arg1;
 - (void)_createLinkQualityMonitor;
 - (void)_createLinkQualityMonitorOnIvarQueue;

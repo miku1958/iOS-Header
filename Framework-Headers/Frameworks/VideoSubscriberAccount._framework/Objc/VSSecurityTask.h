@@ -33,6 +33,7 @@
 - (id)initWithAuditToken:(CDStruct_4c969caf)arg1 createWithAuditTokenProc:(CDUnknownFunctionPointerType)arg2 copyValueForEntitlementProc:(CDUnknownFunctionPointerType)arg3;
 - (id)initWithCreateFromSelfProc:(CDUnknownFunctionPointerType)arg1 copyValueForEntitlementProc:(CDUnknownFunctionPointerType)arg2;
 - (BOOL)shouldAllowAccessForBooleanEntitlement:(id)arg1;
+- (BOOL)shouldAllowAccessToSubscriberIdentifierHashModifier:(id)arg1;
 
 @end
 

@@ -8,25 +8,20 @@
 
 #import <SpringBoardUIServices/SBUIPasscodeEntryFieldDelegate-Protocol.h>
 
-@class NSString, SBPasscodeKeyboard, SBUIAlphanumericPasscodeEntryField, SBUIRingViewLabelButton, UILabel, UIView;
+@class NSString, SBPasscodeKeyboardAnimator, SBUIAlphanumericPasscodeEntryField, UIControl, UILabel, UIView;
 
 @interface SBUIPasscodeLockViewWithKeyboard : SBUIPasscodeLockViewBase <SBUIPasscodeEntryFieldDelegate>
 {
-    SBPasscodeKeyboard *_keyboard;
+    SBPasscodeKeyboardAnimator *_keyboardAnimator;
     SBUIAlphanumericPasscodeEntryField *_alphaEntryField;
     UIView *_statusFieldBackground;
-    SBUIRingViewLabelButton *_emergencyCallButton;
-    UIView *_emergencyCallToTopFiller;
-    UIView *_emergencyCallLeftFiller;
-    UIView *_emergencyCallRightFiller;
-    UIView *_statusFieldToTopOrEmergencyCallBottomFiller;
-    UIView *_entryFieldToBottomFiller;
-    BOOL _wasMinimizedWhenAnimationStarted;
-    BOOL _previousKeyboardShowedInlineCandidates;
-    BOOL _disableAnimationsDuringMinMax;
-    BOOL _triedToMinMaxWhileRotating;
-    BOOL _isAnimating;
+    UIControl *_emergencyCallButton;
     BOOL _usesLightStyle;
+    BOOL _isResigningResponderStatus;
+    BOOL _keyboardVisible;
+    double _keyboardHeightOffset;
+    BOOL _keyboardTracksLockView;
+    UIView *_keyboardTrackingView;
     UILabel *_statusField;
     UILabel *_statusSubtitleView;
 }
@@ -41,33 +36,33 @@
 - (void).cxx_destruct;
 - (void)_acceptOrCancelReturnKeyPress;
 - (id)_alphanumericPasscodeEntryField;
-- (BOOL)_canMinMaxKeyboard;
-- (void)_geometryChanged:(id)arg1;
-- (void)_handleDidRotateNotification:(id)arg1;
-- (void)_handleWillAnimateNotification:(id)arg1;
-- (void)_handleWillRotateNotification:(id)arg1;
 - (void)_hardwareReturnKeyPressed:(id)arg1;
-- (BOOL)_isMinimized;
+- (void)_keyboardDidHideNotification:(id)arg1;
+- (void)_keyboardDidRequestDismissalNotification:(id)arg1;
 - (struct CGRect)_keyboardFrameForInterfaceOrientation:(long long)arg1;
 - (double)_keyboardToEntryFieldOffset;
+- (void)_keyboardWillChangeFrameNotification:(id)arg1;
+- (void)_keyboardWillShowNotification:(id)arg1;
+- (double)_largeTextEmergencyButtonMaxWidth;
 - (void)_layoutForMinimizationState:(BOOL)arg1;
 - (void)_layoutStatusView;
 - (void)_luminanceBoostDidChange;
-- (void)_maximize;
-- (void)_minimize;
 - (id)_newStatusField;
 - (id)_newStatusSubtitleView;
 - (void)_notifyDelegatePasscodeCancelled;
 - (void)_notifyDelegatePasscodeEntered;
 - (void)_notifyDelegateThatEmergencyCallButtonWasPressed;
-- (void)_setMinimized:(BOOL)arg1;
-- (double)_statusFieldHeight;
+- (void)_setKeyboardTracksLockView:(BOOL)arg1;
+- (double)_statusFieldHeightWithWidth:(double)arg1;
 - (id)_statusSubtitleView;
 - (id)_statusTitleView;
 - (double)_statusTitleWidth;
 - (void)_toggleForEmergencyCall;
 - (void)_toggleForStatusField;
-- (double)backgroundAlpha;
+- (void)_updateFont;
+- (void)_updateKeyboardHeightOffsetForKeyboardNotification:(id)arg1;
+- (id)_viewForKeyboardTracking;
+- (void)becomeActiveWithAnimationSettings:(id)arg1;
 - (BOOL)becomeFirstResponder;
 - (void)dealloc;
 - (id)initWithLightStyle:(BOOL)arg1;
@@ -76,12 +71,12 @@
 - (BOOL)passcodeEntryField:(id)arg1 shouldInsertText:(id)arg2;
 - (void)passcodeEntryFieldDidAcceptEntry:(id)arg1;
 - (void)passcodeEntryFieldDidCancelEntry:(id)arg1;
+- (BOOL)passcodeEntryFieldShouldShowSystemKeyboard:(id)arg1;
 - (void)passcodeEntryFieldTextDidChange:(id)arg1;
 - (BOOL)resignFirstResponder;
-- (void)setBackgroundAlpha:(double)arg1;
-- (void)setCustomBackgroundColor:(id)arg1;
 - (void)setShowsEmergencyCallButton:(BOOL)arg1;
 - (void)setShowsStatusField:(BOOL)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateStatusText:(id)arg1 subtitle:(id)arg2 animated:(BOOL)arg3;
 
 @end

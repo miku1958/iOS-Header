@@ -34,7 +34,6 @@
 - (long long)handleSelectionOfEntityValueContext:(id)arg1 fromViewController:(id)arg2;
 - (id)init;
 - (id)loadEntityViewDescriptor;
-- (id)newContextualActionsEntityValueContext;
 - (id)previewViewControllerForEntityValueContext:(id)arg1 fromViewController:(id)arg2;
 - (BOOL)wantsToDisplayDetailViewControllerUponEntityValueProviderSelection;
 

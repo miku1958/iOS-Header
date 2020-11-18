@@ -14,7 +14,6 @@
 @property (nonatomic) float saturation; // @synthesize saturation=_saturation;
 
 + (id)layerWithSaturation:(float)arg1;
-- (void)dealloc;
 - (struct CGContext *)newContextWithEffect:(struct CGContext *)arg1;
 
 @end

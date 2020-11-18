@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *sectionHeaderElementKind;
 @property (nonatomic) BOOL summarizeSections; // @synthesize summarizeSections=_summarizeSections;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsCollectionViewDragSource;
 @property (readonly, nonatomic) struct CGSize thumbnailImageSize;
 @property (readonly, nonatomic) struct CGSize thumbnailImageSize; // @synthesize thumbnailImageSize=_thumbnailImageSize;
 @property (nonatomic) BOOL useFloatingHeaderGroupName;
@@ -94,10 +95,11 @@ __attribute__((visibility("hidden")))
 - (id)sectionedGridLayoutAnchorItemForAdjustingContentOffset:(id)arg1;
 - (id)sectionedGridLayoutName:(id)arg1;
 - (BOOL)sectionedGridLayoutTransitionAutoAdjustContentOffsetEnabled:(id)arg1;
+- (BOOL)shouldUseDynamicLayout;
 - (BOOL)supportsEditMode;
 - (BOOL)supportsIncrementalChangeNotifications;
 - (void)updateForSizeChangeIfNecessary;
-- (void)updateLayoutMetricsForWidth:(double)arg1;
+- (void)updateLayoutMetricsForWidth:(double)arg1 safeAreaInsets:(struct UIEdgeInsets)arg2;
 - (BOOL)wantsAssetCountsVisible;
 - (BOOL)wantsAutomaticContentOffsetAdjustment;
 - (BOOL)wantsCloudStatusVisible;

@@ -8,19 +8,17 @@
 
 #import <HealthUI/HKMedicalIDEditorCellEditDelegate-Protocol.h>
 
-@class HKMedicalIDEditorPickerCell, _HKCustomInsetCellLayoutManager, _HKMedicalIDMultilineStringCell;
+@class HKMedicalIDEditorPickerCell, _HKMedicalIDMultilineStringCell;
 
 @interface HKEmergencyCardBloodTypeTableItem : HKEmergencyCardTableItem <HKMedicalIDEditorCellEditDelegate>
 {
     HKMedicalIDEditorPickerCell *_editableCell;
     _HKMedicalIDMultilineStringCell *_displayCell;
-    _HKCustomInsetCellLayoutManager *_layoutManager;
     BOOL _isEditing;
 }
 
 - (void).cxx_destruct;
 - (id)_createEditableCell;
-- (id)_displayCell;
 - (BOOL)canEditRowAtIndex:(long long)arg1;
 - (long long)commitEditingStyle:(long long)arg1 forRowAtIndex:(long long)arg2;
 - (void)didCommitEditingStyle:(long long)arg1 forRowAtIndex:(long long)arg2;

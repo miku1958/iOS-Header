@@ -13,7 +13,7 @@
     NSArray *_groupIdentifiers;
 }
 
-@property (copy, nonatomic) NSArray *groupIdentifiers; // @synthesize groupIdentifiers=_groupIdentifiers;
+@property (readonly, copy, nonatomic) NSArray *groupIdentifiers; // @synthesize groupIdentifiers=_groupIdentifiers;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

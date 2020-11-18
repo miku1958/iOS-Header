@@ -32,13 +32,13 @@
 
 + (void)_releaseCurrentDisplayLinkManager;
 + (id)currentDisplayLinkManager;
+- (void).cxx_destruct;
 - (void)_didAddFirstTargetAction;
 - (void)_didRemoveLastTargetAction;
 - (void)_displayDidRefresh:(id)arg1;
 - (id)_prepareUpdatedTargetActionsForModification;
 - (void)addTarget:(id)arg1 selector:(SEL)arg2;
 - (void)beginRequiringWarmUpMode;
-- (void)dealloc;
 - (void)endRequiringWarmUpMode;
 - (id)init;
 - (void)removeTarget:(id)arg1 selector:(SEL)arg2;

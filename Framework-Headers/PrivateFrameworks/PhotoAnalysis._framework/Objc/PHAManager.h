@@ -34,6 +34,7 @@
 + (id)allWorkerClasses;
 + (void)enumerateWorkerClassesUsingBlock:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+- (id)autoloopServiceWorker;
 - (void)backgroundActivityDidBegin;
 - (void)checkForQuiescence;
 - (id)description;
@@ -44,7 +45,6 @@
 - (id)init;
 - (id)initWithPhotoLibraryURL:(id)arg1 executiveStateQueue:(id)arg2 delegate:(id)arg3;
 - (id)monitoring;
-- (void)notifyPhotoLibraryOpenedWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)sceneClassificationServiceWorker;
 - (void)shutdown;
 - (id)statusAsDictionary;

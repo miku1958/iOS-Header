@@ -13,9 +13,11 @@ __attribute__((visibility("hidden")))
 {
     CIImage *inputImage;
     NSNumber *inputSharpness;
+    NSNumber *inputRadius;
 }
 
 @property (strong, nonatomic) CIImage *inputImage; // @synthesize inputImage;
+@property (strong, nonatomic) NSNumber *inputRadius; // @synthesize inputRadius;
 @property (strong, nonatomic) NSNumber *inputSharpness; // @synthesize inputSharpness;
 
 + (id)customAttributes;

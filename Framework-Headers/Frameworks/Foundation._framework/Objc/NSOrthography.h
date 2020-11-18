@@ -18,8 +18,10 @@
 @property (readonly, copy) NSString *dominantScript;
 @property (readonly, copy) NSDictionary *languageMap;
 
++ (id)_orthographyWithDominantScript:(id)arg1 languageMap:(id)arg2;
 + (id)_scriptNameForScriptIndex:(unsigned long long)arg1;
 + (id)allocWithZone:(struct _NSZone *)arg1;
++ (id)defaultOrthographyForLanguage:(id)arg1;
 + (void)initialize;
 + (id)orthographyWithDominantScript:(id)arg1 languageMap:(id)arg2;
 + (BOOL)supportsSecureCoding;

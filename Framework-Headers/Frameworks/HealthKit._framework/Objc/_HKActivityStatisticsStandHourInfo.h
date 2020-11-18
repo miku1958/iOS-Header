@@ -22,6 +22,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTimeStamp:(double)arg1 state:(long long)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

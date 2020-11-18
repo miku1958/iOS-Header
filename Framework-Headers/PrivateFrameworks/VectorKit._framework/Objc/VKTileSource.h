@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOResourceManifestConfiguration, NSError, NSLocale, NSString, VKSharedResources, VKTileKeyList, VKTileKeyMap, VKTilePool;
-@protocol OS_dispatch_queue, VKTileSourceClient;
+@protocol VKTileSourceClient;
 
 __attribute__((visibility("hidden")))
 @interface VKTileSource : NSObject
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
     BOOL _requireWiFi;
     long long _mapType;
     unsigned char _targetDisplay;
-    NSObject<OS_dispatch_queue> *_homeQueue;
+    shared_ptr_e963992e _taskContext;
 }
 
 @property (nonatomic) id<VKTileSourceClient> client; // @synthesize client=_client;
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int maximumDownloadZoomLevel;
 @property (readonly, nonatomic) long long maximumZoomLevel;
 @property (readonly, nonatomic) BOOL maximumZoomLevelBoundsCamera;
+@property (readonly, nonatomic) long long maximumZoomLevelWithoutOverride;
 @property (readonly, nonatomic) unsigned int minimumDownloadZoomLevel;
 @property (readonly, nonatomic) long long minimumZoomLevel;
 @property (readonly, nonatomic) BOOL minimumZoomLevelBoundsCamera;
@@ -58,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldDecodeTile:(const struct VKTileKey *)arg1;
 - (BOOL)_shouldUseDecodedTile:(id)arg1 extraInfo:(id)arg2;
 - (BOOL)canFetchTileForKey:(const struct VKTileKey *)arg1;
+- (void)cancelAllDownloads;
 - (void)cancelDownload:(const struct _GEOTileKey *)arg1;
 - (BOOL)cancelFetchForKey:(const struct VKTileKey *)arg1;
 - (BOOL)cancelFetchForKey:(const struct VKTileKey *)arg1 sourceKey:(const struct VKTileKey *)arg2;
@@ -78,8 +80,8 @@ __attribute__((visibility("hidden")))
 - (void)fetchedTile:(id)arg1 forKey:(const struct VKTileKey *)arg2;
 - (void)forceDownload;
 - (void)foreachTileInPool:(CDUnknownBlockType)arg1;
-- (id)init;
-- (id)initWithResourceManifestConfiguration:(id)arg1 locale:(id)arg2 sharedResources:(id)arg3;
+- (id)initWithResourceManifestConfiguration:(id)arg1 locale:(id)arg2 sharedResources:(id)arg3 taskContext:(shared_ptr_e963992e)arg4;
+- (id)initWithTaskContext:(shared_ptr_e963992e)arg1;
 - (struct VKTileKey)nativeKeyForRenderKey:(const struct VKTileKey *)arg1;
 - (void)performDownload:(const struct _GEOTileKey *)arg1;
 - (void)populateVisibleTileSets:(id)arg1 withTiles:(id)arg2;

@@ -17,6 +17,8 @@
 @property (readonly, nonatomic) NSDate *endDate;
 @property (readonly, nonatomic) NSDate *startDate;
 
++ (CDStruct_c3b9c2ee)CLMotionTimeRangeFromCMMotionTimeRange:(id)arg1;
++ (id)CMMotionTimeRangeFromCLMotionTimeRange:(CDStruct_c3b9c2ee)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

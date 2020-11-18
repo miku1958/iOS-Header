@@ -9,6 +9,7 @@
 #import <CommunicationsSetupUI/IMSystemMonitorListener-Protocol.h>
 
 @class IMAccount, IMServiceImpl, NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString, NSTimer;
+@protocol OS_dispatch_queue;
 
 @interface CNFRegController : NSObject <IMSystemMonitorListener>
 {
@@ -28,6 +29,7 @@
     CDUnknownBlockType _accountAuthorizationChangedBlock;
     CDUnknownBlockType _accountActivationChangedBlock;
     CDUnknownBlockType _willLaunchURLBlock;
+    NSObject<OS_dispatch_queue> *_springboardNetworkFlagQueue;
     CDUnknownBlockType _resetBlock;
     CDUnknownBlockType _serviceDidBecomeUnsupportedBlock;
     long long _serviceType;
@@ -129,7 +131,7 @@
 - (void)_purgeExcessAccounts;
 - (BOOL)_shouldFilterOutAlias:(id)arg1 onAccount:(id)arg2;
 - (void)_showNetworkAlertWithMessage:(id)arg1 andViewController:(id)arg2;
-- (void)_signOutAccount:(id)arg1 delete:(BOOL)arg2;
+- (void)_signOutAccount:(id)arg1;
 - (void)_startListeningForCallerIDChanges;
 - (void)_startWiFiAlertWatchTimer;
 - (void)_stopListeningForCallerIDChanges;

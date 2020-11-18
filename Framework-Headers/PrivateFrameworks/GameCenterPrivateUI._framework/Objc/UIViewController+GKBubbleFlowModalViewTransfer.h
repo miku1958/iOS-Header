@@ -7,6 +7,9 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (GKBubbleFlowModalViewTransfer)
+
+@property (nonatomic) long long gkFocusBubbleType;
+
 - (void)_gkAddPositionConstraintsForOverlayBubble:(id)arg1 center:(struct CGPoint)arg2 movingFromView:(id)arg3 toView:(id)arg4;
 - (id)_gkBorrowBubbleViewFromOverlayWithBubbleType:(long long)arg1 andMoveTo:(id)arg2;
 - (id)_gkBorrowBubbleViewFromOverlayWithBubbleType:(long long)arg1 expectedFrame:(struct CGRect)arg2 andMoveTo:(id)arg3;

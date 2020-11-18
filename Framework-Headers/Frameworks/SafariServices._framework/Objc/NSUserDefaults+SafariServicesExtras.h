@@ -12,6 +12,8 @@
 - (BOOL)_sf_javaScriptCanOpenWindowsAutomatically;
 - (BOOL)_sf_javaScriptEnabled;
 - (void)_sf_registerSafariDefaults;
+- (void)_sf_setShouldAutomaticallyDownloadReadingListItems:(BOOL)arg1;
+- (BOOL)_sf_shouldAutomaticallyDownloadReadingListItems;
 - (id)_sf_stringForKey:(id)arg1 defaultValue:(id)arg2;
 - (BOOL)_sf_warnAboutFraudulentWebsites;
 @end

@@ -6,9 +6,10 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSString, PKPayment, PKPaymentClientUpdate, PKPaymentHostUpdate, PKRemoteDevice, PKRemotePaymentInstrument, PKRemotePaymentRequest;
+@class NSString, PKPayment, PKPaymentAuthorizationResult, PKPaymentClientUpdate, PKPaymentHostUpdate, PKRemoteDevice, PKRemotePaymentInstrument, PKRemotePaymentRequest;
 
 @protocol PDContinuityPaymentServiceExportedInterface <PDXPCServiceExportedInterface>
+- (void)canMakePaymentsWithRemoteDevicesWithHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)cancelRemotePaymentRequest:(PKRemotePaymentRequest *)arg1 handler:(void (^)(NSError *))arg2;
 - (void)fetchRemoteDevicesWithHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)hasRemoteDevicesWithHandler:(void (^)(BOOL, NSError *))arg1;
@@ -17,12 +18,13 @@
 - (void)sendPayment:(PKPayment *)arg1 forRemotePaymentRequest:(PKRemotePaymentRequest *)arg2 handler:(void (^)(NSError *))arg3;
 - (void)sendPaymentClientUpdate:(PKPaymentClientUpdate *)arg1 forRemotePaymentRequest:(PKRemotePaymentRequest *)arg2 handler:(void (^)(NSError *))arg3;
 - (void)sendPaymentHostUpdate:(PKPaymentHostUpdate *)arg1 forRemotePaymentRequest:(PKRemotePaymentRequest *)arg2 handler:(void (^)(NSError *))arg3;
+- (void)sendPaymentResult:(PKPaymentAuthorizationResult *)arg1 forRemotePaymentRequest:(PKRemotePaymentRequest *)arg2 handler:(void (^)(NSError *))arg3;
 - (void)sendPaymentSetupRequest:(PKRemoteDevice *)arg1 appDisplayName:(NSString *)arg2 handler:(void (^)(NSError *))arg3;
-- (void)sendPaymentStatus:(long long)arg1 forRemotePaymentRequest:(PKRemotePaymentRequest *)arg2 handler:(void (^)(NSError *))arg3;
 - (void)sendRemotePaymentRequest:(PKRemotePaymentRequest *)arg1 handler:(void (^)(NSError *))arg2;
 - (void)updatePaymentDevicesWithHandler:(void (^)(NSError *))arg1;
 
 @optional
 - (void)noteAccountDeletedWithHandler:(void (^)(NSError *))arg1;
+- (void)sendPaymentStatus:(long long)arg1 forRemotePaymentRequest:(PKRemotePaymentRequest *)arg2 handler:(void (^)(NSError *))arg3;
 @end
 

@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface CKDRecordFetchInfo : NSObject
 {
+    BOOL _ignoreErrors;
     double _startDate;
     unsigned long long _fetchOrder;
     CKRecordID *_recordID;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSString *etag; // @synthesize etag=_etag;
 @property (nonatomic) unsigned long long fetchOrder; // @synthesize fetchOrder=_fetchOrder;
+@property (nonatomic) BOOL ignoreErrors; // @synthesize ignoreErrors=_ignoreErrors;
 @property (strong, nonatomic) CKRecord *record; // @synthesize record=_record;
 @property (strong, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *recordReadySource; // @synthesize recordReadySource=_recordReadySource;

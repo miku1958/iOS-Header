@@ -30,7 +30,7 @@
 @property (nonatomic) unsigned long long maxCount; // @synthesize maxCount=_maxCount;
 @property (strong, nonatomic) NSMutableDictionary *missingEntryQueues; // @synthesize missingEntryQueues=_missingEntryQueues;
 @property (readonly) Class superclass;
-@property (nonatomic) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
 
 - (void)dealloc;
 - (id)initWithName:(id)arg1 maxCount:(unsigned long long)arg2;

@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableSet;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CNiOSAddressBook : NSObject
 {
+    BOOL _addressBookIsShared;
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSMutableSet *_addressBookPool;
     CDUnknownBlockType _addressBookProvider;
@@ -18,13 +19,15 @@
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
+@property (readonly, nonatomic) BOOL addressBookIsShared; // @synthesize addressBookIsShared=_addressBookIsShared;
 @property (readonly, nonatomic) NSMutableSet *addressBookPool; // @synthesize addressBookPool=_addressBookPool;
 @property (readonly, copy, nonatomic) CDUnknownBlockType addressBookProvider; // @synthesize addressBookProvider=_addressBookProvider;
 @property (readonly, nonatomic) NSObject<OS_dispatch_source> *memoryMonitoringSource; // @synthesize memoryMonitoringSource=_memoryMonitoringSource;
 
 + (void)initialize;
-+ (void *)newAddressBookWithEnvironment:(id)arg1;
-- (void)dealloc;
++ (void *)newAddressBookWithURL:(id)arg1;
++ (void *)newInMemoryAddressBook;
+- (void).cxx_destruct;
 - (void)flushPool;
 - (id)init;
 - (id)initWithAddressBookProvider:(CDUnknownBlockType)arg1;

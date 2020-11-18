@@ -16,7 +16,7 @@
 
 - (void).cxx_destruct;
 - (id)_coordinatesInChartableRange:(id)arg1;
-- (void)_enumerateCoordinatesWithTransform:(struct CGAffineTransform)arg1 chartableDateRange:(id)arg2 roundToViewScale:(BOOL)arg3 block:(CDUnknownBlockType)arg4;
+- (void)_enumerateCoordinatesWithTransform:(struct CGAffineTransform)arg1 chartableValueRange:(id)arg2 roundToViewScale:(BOOL)arg3 block:(CDUnknownBlockType)arg4;
 - (long long)_numCoordinatesInChartableRange:(id)arg1;
 - (CDStruct_6ca94699)blockPathEnd;
 - (CDStruct_6ca94699)blockPathStart;

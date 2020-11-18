@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class CKDMMCS, CKSQLitePool, NSMutableDictionary, NSMutableSet, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@class CKDMMCS, CKSQLitePool, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString;
+@protocol NSObject, OS_dispatch_queue;
 
 @interface CKDAssetCache : NSObject
 {
     BOOL _isUnitTestingAccount;
     BOOL _hasMigrated;
     BOOL _isEvictionScheduled;
+    BOOL _didDrop;
     int _fileDownloadPathFd;
     CKDMMCS *_MMCS;
     CKSQLitePool *_dbPool;
@@ -22,7 +23,9 @@
     NSString *_dbPath;
     NSString *_fileStagingPath;
     NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_source> *_expiryTimer;
+    NSOperationQueue *_opQueue;
+    long long _checkoutCount;
+    id<NSObject> _assetHandleExpirationNotificationObserver;
     NSMutableDictionary *_volumeUUIDByVolumeIndex;
     NSMutableDictionary *_volumeIndexByVolumeUUID;
     NSMutableSet *_deferredDeletedAssetHandles;
@@ -31,17 +34,20 @@
 
 @property (weak, nonatomic) CKDMMCS *MMCS; // @synthesize MMCS=_MMCS;
 @property (strong, nonatomic) NSString *applicationBundleID; // @synthesize applicationBundleID=_applicationBundleID;
+@property (strong, nonatomic) id<NSObject> assetHandleExpirationNotificationObserver; // @synthesize assetHandleExpirationNotificationObserver=_assetHandleExpirationNotificationObserver;
+@property (nonatomic) long long checkoutCount; // @synthesize checkoutCount=_checkoutCount;
 @property (strong, nonatomic) NSString *dbPath; // @synthesize dbPath=_dbPath;
 @property (readonly, nonatomic) CKSQLitePool *dbPool; // @synthesize dbPool=_dbPool;
 @property (strong, nonatomic) NSMutableSet *deferredDeletedAssetHandles; // @synthesize deferredDeletedAssetHandles=_deferredDeletedAssetHandles;
 @property (strong, nonatomic) NSMutableDictionary *deferredLastUsedTimeByTrackingUUID; // @synthesize deferredLastUsedTimeByTrackingUUID=_deferredLastUsedTimeByTrackingUUID;
-@property (strong, nonatomic) NSObject<OS_dispatch_source> *expiryTimer; // @synthesize expiryTimer=_expiryTimer;
+@property (nonatomic) BOOL didDrop; // @synthesize didDrop=_didDrop;
 @property (strong, nonatomic) NSString *fileDownloadPath; // @synthesize fileDownloadPath=_fileDownloadPath;
 @property (nonatomic) int fileDownloadPathFd; // @synthesize fileDownloadPathFd=_fileDownloadPathFd;
 @property (strong, nonatomic) NSString *fileStagingPath; // @synthesize fileStagingPath=_fileStagingPath;
 @property (nonatomic) BOOL hasMigrated; // @synthesize hasMigrated=_hasMigrated;
 @property BOOL isEvictionScheduled; // @synthesize isEvictionScheduled=_isEvictionScheduled;
 @property (nonatomic) BOOL isUnitTestingAccount; // @synthesize isUnitTestingAccount=_isUnitTestingAccount;
+@property (strong, nonatomic) NSOperationQueue *opQueue; // @synthesize opQueue=_opQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSMutableDictionary *volumeIndexByVolumeUUID; // @synthesize volumeIndexByVolumeUUID=_volumeIndexByVolumeUUID;
 @property (strong, nonatomic) NSMutableDictionary *volumeUUIDByVolumeIndex; // @synthesize volumeUUIDByVolumeIndex=_volumeUUIDByVolumeIndex;
@@ -60,6 +66,7 @@
 - (void)_expireAssetHandlesWithGroup:(id)arg1;
 - (id)_getAssetHandlesForCachedButNotRegisteredMMCSItems:(id)arg1 error:(id *)arg2;
 - (id)_getAssetHandlesForDownloadedMMCSItems:(id)arg1 error:(id *)arg2;
+- (id)_initWithApplicationBundleID:(id)arg1 assetDirectoryContext:(id)arg2 error:(id *)arg3;
 - (void)_resetAssetInflightUsingDB:(id)arg1;
 - (id)_saveData:(id)arg1 error:(id *)arg2;
 - (void)_scheduleEvictionForDownloadedFiles;
@@ -68,12 +75,14 @@
 - (id)assetHandleWithCachedPath:(id)arg1;
 - (void)cancelExpiryTimer;
 - (void)checkAssetHandlesForRegisteredMMCSItems:(id)arg1;
+- (void)cleanup;
 - (void)clearAssetCache;
 - (unsigned long long)clearForced:(BOOL)arg1;
 - (void)dealloc;
 - (void)deferredStopTrackingAssetHandlesByItemIDs:(id)arg1;
 - (void)deferredUpdateLastTimeUsedForUUID:(id)arg1;
 - (id)deviceIDForVolumeIndex:(id)arg1;
+- (void)drop;
 - (unsigned long long)evictAllFilesForced:(BOOL)arg1;
 - (id)existingOrNewVolumeIndexForDeviceID:(id)arg1;
 - (id)existingOrNewVolumeIndexForDeviceID:(id)arg1 usingDB:(id)arg2;
@@ -83,7 +92,6 @@
 - (id)findAssetHandleForItemID:(unsigned long long)arg1 error:(id *)arg2;
 - (void)forgetVolumeUUID:(id)arg1;
 - (BOOL)initDatabaseWithError:(id *)arg1;
-- (id)initWithApplicationBundleID:(id)arg1 assetDirectoryContext:(id)arg2;
 - (BOOL)parseCachedPath:(id)arg1 assetHandleUUID:(id *)arg2 assetSignature:(id *)arg3;
 - (BOOL)parseCachedPath:(id)arg1 assetHandleUUIDString:(id *)arg2 assetSignatureString:(id *)arg3;
 - (unsigned long long)predictedEvictedSizeForAllFilesForced:(BOOL)arg1;

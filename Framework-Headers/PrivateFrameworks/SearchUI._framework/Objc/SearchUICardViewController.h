@@ -6,56 +6,35 @@
 
 #import <SearchUI/SearchUITableViewController.h>
 
-#import <SearchUI/UIViewControllerPreviewingDelegate-Protocol.h>
+@class SFCard, UIActivityIndicatorView, UILabel, UIView;
 
-@class NSArray, NSIndexPath, NSMutableDictionary, NSString, SFSearchResult, UIColor;
-@protocol SearchUIFeedbackDelegate, UIViewControllerPreviewing;
-
-@interface SearchUICardViewController : SearchUITableViewController <UIViewControllerPreviewingDelegate>
+@interface SearchUICardViewController : SearchUITableViewController
 {
-    SFSearchResult *_result;
-    unsigned long long _style;
-    NSArray *_cardSectionViews;
-    id<UIViewControllerPreviewing> _previewingContext;
-    NSIndexPath *_forceTouchIndexPath;
-    id<SearchUIFeedbackDelegate> _feedbackDelegate;
-    NSMutableDictionary *_cellCache;
+    unsigned long long _level;
+    SFCard *_card;
+    UIView *_loadingView;
+    UIActivityIndicatorView *_loadingSpinner;
+    UILabel *_loadingLabel;
 }
 
-@property (strong) NSArray *cardSectionViews; // @synthesize cardSectionViews=_cardSectionViews;
-@property (strong) NSMutableDictionary *cellCache; // @synthesize cellCache=_cellCache;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (weak, nonatomic) id<SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
-@property (strong) NSIndexPath *forceTouchIndexPath; // @synthesize forceTouchIndexPath=_forceTouchIndexPath;
-@property (readonly) unsigned long long hash;
-@property (strong) id<UIViewControllerPreviewing> previewingContext; // @synthesize previewingContext=_previewingContext;
-@property (strong, nonatomic) SFSearchResult *result; // @synthesize result=_result;
-@property unsigned long long style; // @synthesize style=_style;
-@property (readonly) Class superclass;
-@property (readonly) UIColor *textColor;
+@property (strong) SFCard *card; // @synthesize card=_card;
+@property unsigned long long level; // @synthesize level=_level;
+@property (strong) UILabel *loadingLabel; // @synthesize loadingLabel=_loadingLabel;
+@property (strong) UIActivityIndicatorView *loadingSpinner; // @synthesize loadingSpinner=_loadingSpinner;
+@property (strong) UIView *loadingView; // @synthesize loadingView=_loadingView;
 
-+ (id)cardViewControllerForResult:(id)arg1 style:(unsigned long long)arg2;
-+ (id)cardViewControllerForResult:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
-+ (double)separatorHeight;
 - (void).cxx_destruct;
-- (BOOL)didHandlePunchout:(id)arg1 fromSection:(id)arg2;
-- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2;
-- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
-- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2 inline:(BOOL)arg3;
-- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2 inline:(BOOL)arg3 feedbackDelegate:(id)arg4;
-- (void)openPunchout:(id)arg1 fromSection:(id)arg2;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
-- (id)punchoutsForIndexPath:(id)arg1;
-- (void)sendFeedbackForPunchout:(id)arg1 fromSection:(id)arg2;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
+- (void)cardViewDidAppear;
+- (void)displayLoadingView;
+- (id)initWithCard:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (double)offScreenContentScrollDistance;
+- (void)setShouldUseInsetRoundedSections:(BOOL)arg1;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateWithCardSections:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

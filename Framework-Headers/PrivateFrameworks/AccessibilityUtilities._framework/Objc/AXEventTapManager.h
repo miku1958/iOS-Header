@@ -27,11 +27,13 @@
 @property (copy, nonatomic) CDUnknownBlockType installationHIDCallback; // @synthesize installationHIDCallback=_installationHIDCallback;
 
 + (id)sharedManager;
+- (void).cxx_destruct;
 - (id)_copyCurrentEventTapPairs;
 - (void)_enumerateEventTapPairsUsingBlock:(CDUnknownBlockType)arg1;
-- (id)_installEventTap:(CDUnknownBlockType)arg1 identifier:(id)arg2 type:(int)arg3 skipDeviceMatching:(BOOL)arg4 wantsDigitizerEvents:(BOOL)arg5 wantsKeyboardEvents:(BOOL)arg6 wantsATVRemoteEvents:(BOOL)arg7 wantsLisaEvents:(BOOL)arg8 matchingServiceHandler:(CDUnknownBlockType)arg9;
-- (void)_installEventTap:(id)arg1 skipDeviceMatching:(BOOL)arg2 wantsDigitizerEvents:(BOOL)arg3 wantsKeyboardEvents:(BOOL)arg4 wantsATVRemoteEvents:(BOOL)arg5 wantsLisaEvents:(BOOL)arg6;
-- (void)_installHIDFilter:(id)arg1 skipDeviceMatching:(BOOL)arg2 wantsDigitizerEvents:(BOOL)arg3 wantsKeyboardEvents:(BOOL)arg4 wantsATVRemoteEvents:(BOOL)arg5 wantsLisaEvents:(BOOL)arg6;
+- (void)_handleTestIOHIDEvent:(struct __IOHIDEvent *)arg1;
+- (id)_installEventTap:(CDUnknownBlockType)arg1 identifier:(id)arg2 type:(int)arg3 skipDeviceMatching:(BOOL)arg4 wantsDigitizerEvents:(BOOL)arg5 wantsKeyboardEvents:(BOOL)arg6 wantsATVRemoteEvents:(BOOL)arg7 wantsLisaEvents:(BOOL)arg8 wantsMouseEvents:(BOOL)arg9 matchingServiceHandler:(CDUnknownBlockType)arg10;
+- (void)_installEventTap:(id)arg1 skipDeviceMatching:(BOOL)arg2 wantsDigitizerEvents:(BOOL)arg3 wantsKeyboardEvents:(BOOL)arg4 wantsATVRemoteEvents:(BOOL)arg5 wantsLisaEvents:(BOOL)arg6 wantsMouseEvents:(BOOL)arg7;
+- (void)_installHIDFilter:(id)arg1 skipDeviceMatching:(BOOL)arg2 wantsDigitizerEvents:(BOOL)arg3 wantsKeyboardEvents:(BOOL)arg4 wantsATVRemoteEvents:(BOOL)arg5 wantsLisaEvents:(BOOL)arg6 wantsMouseEvents:(BOOL)arg7;
 - (void)_installSystemEventTap:(id)arg1;
 - (void)_passivelyPeakAtHIDEventWithTarget:(void *)arg1 tapPair:(id)arg2 sender:(void *)arg3 event:(struct __IOHIDEvent *)arg4 axEventRep:(id)arg5 didHandle:(BOOL)arg6;
 - (BOOL)_processGSEvent:(CDStruct_7f3c0925 *)arg1;
@@ -46,7 +48,7 @@
 - (id)description;
 - (id)init;
 - (id)installEventTap:(CDUnknownBlockType)arg1 identifier:(id)arg2 type:(int)arg3;
-- (id)installEventTap:(CDUnknownBlockType)arg1 identifier:(id)arg2 type:(int)arg3 skipDeviceMatching:(BOOL)arg4 wantsDigitizerEvents:(BOOL)arg5 wantsKeyboardEvents:(BOOL)arg6 wantsATVRemoteEvents:(BOOL)arg7 wantsLisaEvents:(BOOL)arg8;
+- (id)installEventTap:(CDUnknownBlockType)arg1 identifier:(id)arg2 type:(int)arg3 skipDeviceMatching:(BOOL)arg4 wantsDigitizerEvents:(BOOL)arg5 wantsKeyboardEvents:(BOOL)arg6 wantsATVRemoteEvents:(BOOL)arg7 wantsLisaEvents:(BOOL)arg8 wantsMouseEvents:(BOOL)arg9;
 - (id)installKeyboardEventTap:(CDUnknownBlockType)arg1 identifier:(id)arg2 matchingServiceHandler:(CDUnknownBlockType)arg3;
 - (void)removeEventTap:(id)arg1;
 - (void)runMatchingServiceHandlerForEventTap:(id)arg1;

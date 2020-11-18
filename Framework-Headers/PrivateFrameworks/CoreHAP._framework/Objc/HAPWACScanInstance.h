@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <CoreHAP/HMFTimerDelegate-Protocol.h>
 
-@class HAPWACScanFilter, HMFTimer, NSString;
+@class HAPWACScanFilter, HMFTimer, NSObject, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
-@interface HAPWACScanInstance : NSObject <HMFTimerDelegate>
+@interface HAPWACScanInstance : HMFObject <HMFTimerDelegate>
 {
     BOOL _shouldContinueScan;
+    BOOL _waitingForScanResults;
     HAPWACScanFilter *_scanFilter;
     HMFTimer *_scanRepeatTimer;
     double _scanInterval;
@@ -37,6 +38,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *scanStopSemaphore; // @synthesize scanStopSemaphore=_scanStopSemaphore;
 @property (nonatomic) BOOL shouldContinueScan; // @synthesize shouldContinueScan=_shouldContinueScan;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL waitingForScanResults; // @synthesize waitingForScanResults=_waitingForScanResults;
 
 - (void).cxx_destruct;
 - (void)_addScanRequest;

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)_customizeSymbolStyle:(id)arg1 secondaryStyle:(id)arg2 forKey:(id)arg3 contents:(id)arg4;
 - (struct CGPoint)centerColumnLetterOffset;
 - (struct CGPoint)centerColumnNumberOffset;
 - (struct CGPoint)deleteGlyphOffset;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (double)numberFontSize;
 - (struct CGPoint)rightColumnLetterOffset;
 - (struct CGPoint)rightColumnNumberOffset;
+- (struct CGPoint)specialSymbolOffset;
 
 @end
 

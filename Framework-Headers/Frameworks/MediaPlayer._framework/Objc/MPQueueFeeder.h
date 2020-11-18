@@ -9,7 +9,7 @@
 #import <MediaPlayer/MPQueueBehaviorManaging-Protocol.h>
 #import <MediaPlayer/NSCoding-Protocol.h>
 
-@class MPModelPlayEvent, NSData, NSMutableDictionary, NSString;
+@class MPModelPlayEvent, MPMutableBidirectionalDictionary, NSData, NSMutableDictionary, NSString;
 @protocol MPQueueFeederDelegate;
 
 @interface MPQueueFeeder : NSObject <MPQueueBehaviorManaging, NSCoding>
@@ -17,6 +17,7 @@
     long long _repeatType;
     long long _shuffleType;
     NSMutableDictionary *_nextStartTimes;
+    MPMutableBidirectionalDictionary *_exportableItemIDs;
     BOOL _requiresQueueChangeVerification;
     id<MPQueueFeederDelegate> _delegate;
     unsigned long long _state;
@@ -25,6 +26,7 @@
     NSString *_siriReferenceIdentifier;
     NSString *_playbackContextUniqueIdentifier;
     long long _activeShuffleType;
+    NSString *_uniqueIdentifier;
     MPModelPlayEvent *_modelPlayEvent;
     CDStruct_dcf4dde6 _skipLimit;
 }
@@ -55,33 +57,43 @@
 @property (nonatomic) CDStruct_dcf4dde6 skipLimit; // @synthesize skipLimit=_skipLimit;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL trackChangesCanEndPlayback;
+@property (readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) BOOL userCanChangeShuffleAndRepeatType;
 
 + (BOOL)supportsStateRestoration;
 - (void).cxx_destruct;
 - (BOOL)_canPurgeNextStartTimes;
+- (id)_itemForIndex:(long long)arg1 queueIdentifier:(id)arg2;
 - (void)applyVolumeNormalizationForItem:(id)arg1;
 - (id)audioSessionModeForItemAtIndex:(unsigned long long)arg1;
 - (BOOL)canSkipItem:(id)arg1;
+- (BOOL)canSkipToPreviousItemForItem:(id)arg1;
+- (id)contentItemIDAtIndex:(long long)arg1;
+- (id)contentItemIDForQueueItemID:(id)arg1;
 - (void)contentsDidChangeWithPreferredStartIndex:(unsigned long long)arg1;
 - (void)contentsDidChangeWithPreferredStartIndex:(unsigned long long)arg1 error:(id)arg2;
 - (void)contentsDidChangeWithReplacementPlaybackContext:(id)arg1;
 - (id)copyRawItemAtIndex:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)errorResolverForItem:(id)arg1;
+- (void)generateContentIDForItem:(id)arg1;
 - (BOOL)hasItemForIndex:(unsigned long long)arg1;
 - (BOOL)hasValidItemAtIndex:(unsigned long long)arg1;
 - (id)identifierAtIndex:(unsigned long long)arg1;
+- (long long)indexForItemID:(id)arg1;
 - (unsigned long long)indexOfItemWithIdentifier:(id)arg1;
 - (unsigned long long)indexOfMediaItem:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)initialPlaybackQueueDepthForStartingIndex:(unsigned long long)arg1;
 - (void)invalidateAssets;
 - (void)invalidateRealRepeatType;
 - (void)invalidateRealShuffleType;
+- (BOOL)isPlaceholderItemForQueueIdentifier:(id)arg1;
 - (id)itemForIdentifier:(id)arg1;
 - (id)itemForIndex:(unsigned long long)arg1;
+- (id)itemForItemID:(id)arg1;
+- (id)itemIDAtIndex:(long long)arg1;
 - (long long)itemTypeForIndex:(unsigned long long)arg1;
 - (id)localizedAttributedPositionInPlaylistStringForItem:(id)arg1 withRegularTextAttributes:(id)arg2 emphasizedTextAttributes:(id)arg3;
 - (id)localizedPositionInPlaylistString:(id)arg1;
@@ -94,6 +106,7 @@
 - (void)player:(id)arg1 currentItemWillChangeFromItem:(id)arg2;
 - (BOOL)player:(id)arg1 shouldContinuePlaybackForNetworkType:(long long)arg2 returningError:(id *)arg3;
 - (id)preferredLanguages;
+- (id)queueIdentifierForItemID:(id)arg1;
 - (void)reloadWithPlaybackContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)reloadWithPlaybackContext:(id)arg1 requireFinalTracklist:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)restoreState:(CDUnknownBlockType)arg1;

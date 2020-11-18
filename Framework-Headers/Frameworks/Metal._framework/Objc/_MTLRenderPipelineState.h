@@ -8,24 +8,34 @@
 
 #import <Metal/MTLRenderPipelineState-Protocol.h>
 
-@class NSString;
+@class MTLIndirectArgumentBufferEmulationData, NSString;
 @protocol MTLDevice;
 
 @interface _MTLRenderPipelineState : NSObject <MTLRenderPipelineState>
 {
     NSString *_label;
     id<MTLDevice> _device;
+    BOOL _threadgroupSizeMatchesTileSize;
+    MTLIndirectArgumentBufferEmulationData *_vertexIABEmulationData;
+    MTLIndirectArgumentBufferEmulationData *_fragmentIABEmulationData;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device; // @synthesize device=_device;
+@property (strong, nonatomic) MTLIndirectArgumentBufferEmulationData *fragmentIABEmulationData; // @synthesize fragmentIABEmulationData=_fragmentIABEmulationData;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long imageblockSampleLength; // @dynamic imageblockSampleLength;
 @property (readonly) NSString *label; // @synthesize label=_label;
+@property (readonly) unsigned long long maxTotalThreadsPerThreadgroup; // @dynamic maxTotalThreadsPerThreadgroup;
 @property (readonly) Class superclass;
+@property (readonly) BOOL threadgroupSizeMatchesTileSize; // @synthesize threadgroupSizeMatchesTileSize=_threadgroupSizeMatchesTileSize;
+@property (strong, nonatomic) MTLIndirectArgumentBufferEmulationData *vertexIABEmulationData; // @synthesize vertexIABEmulationData=_vertexIABEmulationData;
 
 - (void)dealloc;
+- (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_14f26992)arg1;
 - (id)initWithDevice:(id)arg1 pipelineStateDescriptor:(id)arg2;
+- (id)initWithDeviceAndTileDesc:(id)arg1 tilePipelineStateDescriptor:(id)arg2;
 
 @end
 

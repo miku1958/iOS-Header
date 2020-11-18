@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSString *pathForVideoFile; // @synthesize pathForVideoFile=_pathForVideoFile;
 
 + (BOOL)isValidPublishingMedia:(id)arg1;
+- (void)dealloc;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithAVURLAsset:(id)arg1;

@@ -12,23 +12,24 @@
 {
     NSMutableArray *_featureArray;
     NSMutableArray *_paths;
+    BOOL _isPOI;
+    BOOL _isRouteEta;
     int _style;
     float _strokeWidth;
     int _sortKey;
     unsigned long long _featureId;
     unsigned long long _shieldType;
     NSMutableArray *_hitTestPaths;
-    NSString *_iconName;
     NSString *_shieldText;
 }
 
 @property (readonly, nonatomic) NSMutableArray *featureArray; // @synthesize featureArray=_featureArray;
 @property (nonatomic) unsigned long long featureId; // @synthesize featureId=_featureId;
 @property (strong, nonatomic) NSMutableArray *hitTestPaths; // @synthesize hitTestPaths=_hitTestPaths;
-@property (strong, nonatomic) NSString *iconName; // @synthesize iconName=_iconName;
-@property (readonly, nonatomic) BOOL isPOI;
+@property (nonatomic) BOOL isPOI; // @synthesize isPOI=_isPOI;
 @property (readonly, nonatomic) BOOL isRoad;
-@property (readonly, nonatomic) int mapFeatureType;
+@property (nonatomic) BOOL isRouteEta; // @synthesize isRouteEta=_isRouteEta;
+@property (readonly, nonatomic) long long mapFeatureType;
 @property (strong, nonatomic) NSMutableArray *paths; // @synthesize paths=_paths;
 @property (strong, nonatomic) NSString *shieldText; // @synthesize shieldText=_shieldText;
 @property (nonatomic) unsigned long long shieldType; // @synthesize shieldType=_shieldType;
@@ -39,12 +40,12 @@
 
 - (void).cxx_destruct;
 - (id)_accessibilityMapDetailedInfoAtPoint:(struct CGPoint)arg1;
-- (int)_accessibilityMapFeatureType;
+- (long long)_accessibilityMapFeatureType;
 - (id)_accessibilityShortAddress:(id)arg1;
 - (id)_accessibilityShortAddress:(id)arg1 alwaysIncludeLocality:(BOOL)arg2;
 - (BOOL)_allowCustomActionHintSpeakOverride;
 - (id)_distanceAwayString;
-- (id)_distanceStringForPoint:(struct VKPoint)arg1;
+- (id)_distanceStringForPoint:(CDStruct_31142d93)arg1;
 - (void)_mergePaths;
 - (void)_updateElementStatus;
 - (void)_updatePath;

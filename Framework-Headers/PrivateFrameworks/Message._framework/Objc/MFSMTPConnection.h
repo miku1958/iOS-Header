@@ -50,7 +50,7 @@
 - (id)lastResponse;
 - (id)lastResponseLine;
 - (int)mailFrom:(id)arg1;
-- (long long)mailFrom:(id)arg1 recipients:(id)arg2 withData:(id)arg3 host:(id)arg4 errorTitle:(id *)arg5 errorMessage:(id *)arg6 serverResponse:(id *)arg7 displayError:(BOOL *)arg8 errorCode:(int *)arg9;
+- (long long)mailFrom:(id)arg1 recipients:(id)arg2 withData:(id)arg3 host:(id)arg4 errorTitle:(id *)arg5 errorMessage:(id *)arg6 serverResponse:(id *)arg7 displayError:(BOOL *)arg8 errorCode:(int *)arg9 errorUserInfo:(id *)arg10;
 - (unsigned long long)maximumMessageBytes;
 - (int)noop;
 - (int)quit;

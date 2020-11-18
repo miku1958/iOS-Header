@@ -8,32 +8,30 @@
 
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HDHealthPlugin-Protocol.h>
-#import <HealthDaemon/NSXPCListenerDelegate-Protocol.h>
+#import <HealthDaemon/HDXPCListenerDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, NSXPCListener;
+@class HDXPCListener, NSString;
 @protocol HDHealthDaemon;
 
-@interface HDHealthExtensionsPlugin : NSObject <NSXPCListenerDelegate, HDHealthPlugin, HDDiagnosticObject>
+@interface HDHealthExtensionsPlugin : NSObject <HDXPCListenerDelegate, HDHealthPlugin, HDDiagnosticObject>
 {
+    HDXPCListener *_listener;
     id<HDHealthDaemon> _healthDaemon;
-    NSXPCListener *_listener;
-    NSMutableArray *_servers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) id<HDHealthDaemon> healthDaemon; // @synthesize healthDaemon=_healthDaemon;
-@property (strong, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
-@property (strong, nonatomic) NSMutableArray *servers; // @synthesize servers=_servers;
+@property (readonly, copy, nonatomic) NSString *pluginIdentifier;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)activate;
 - (void)dealloc;
 - (id)diagnosticDescription;
+- (id)exportObjectForListener:(id)arg1 client:(id)arg2 error:(id *)arg3;
 - (id)initWithHealthDaemon:(id)arg1;
-- (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (id)serverWithClient:(id)arg1 error:(id *)arg2;
 
 @end

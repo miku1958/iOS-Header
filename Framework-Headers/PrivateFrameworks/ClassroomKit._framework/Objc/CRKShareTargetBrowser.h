@@ -24,6 +24,7 @@
     NSSet *mInstructorTargets;
     NSSet *mStudentTargets;
     BOOL mBrowsing;
+    BOOL mIsValid;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_collectionsFetchResult;
+- (void)_getDataForVisualSection:(long long)arg1 title:(id *)arg2 locations:(id *)arg3 startDate:(id *)arg4 endDate:(id *)arg5;
 - (struct __CFString *)aggregateLevelKey;
 - (id)assetsToDisplayInMapForVisualSection:(long long)arg1;
 - (double)cellAspectRatioHint;
@@ -42,10 +43,12 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfVisualSectionsForSectionedGridLayout:(id)arg1;
 - (id)renderedStripsElementKind;
 - (id)sectionHeaderElementKind;
+- (double)sectionedGridLayout:(id)arg1 accessibilitySectionHeaderHeightForVisualSection:(long long)arg2;
+- (double)sectionedGridLayout:(id)arg1 sectionHeaderHeightForVisualSection:(long long)arg2;
 - (id)sectionedGridLayout:(id)arg1 sectionsForVisualSection:(long long)arg2;
 - (BOOL)supportsIncrementalChangeNotifications;
 - (struct CGSize)thumbnailImageSize;
-- (void)updateLayoutMetricsForWidth:(double)arg1;
+- (void)updateLayoutMetricsForWidth:(double)arg1 safeAreaInsets:(struct UIEdgeInsets)arg2;
 
 @end
 

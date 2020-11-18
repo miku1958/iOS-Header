@@ -20,15 +20,15 @@
 }
 
 @property (nonatomic) int absoluteOrder; // @synthesize absoluteOrder=_absoluteOrder;
-@property (nonatomic) id<CoreDAVPropPatchTaskDelegate> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<CoreDAVPropPatchTaskDelegate> delegate; // @dynamic delegate;
 @property (strong, nonatomic) NSURL *priorOrderedURL; // @synthesize priorOrderedURL=_priorOrderedURL;
 @property (strong, nonatomic) NSSet *propPatchRemoveElements; // @synthesize propPatchRemoveElements=_propPatchRemoveElements;
 @property (strong, nonatomic) NSSet *propPatchSetElements; // @synthesize propPatchSetElements=_propPatchSetElements;
 @property (strong, nonatomic) CoreDAVResponseItem *responseItem; // @synthesize responseItem=_responseItem;
 
+- (void).cxx_destruct;
 - (id)additionalHeaderValues;
 - (id)copyDefaultParserForContentType:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)finishCoreDAVTaskWithError:(id)arg1;
 - (id)httpMethod;

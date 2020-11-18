@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_HUDPopTimerFired:(id)arg1;
 - (void)_applicationWillResignActive;
+- (void)_didTakeScreenshot;
 - (void)_dismissHUD;
 - (id)_performableKeyCommandsWithResponder:(id)arg1;
 - (void)_presentHUDWithKeyCommands:(id)arg1;

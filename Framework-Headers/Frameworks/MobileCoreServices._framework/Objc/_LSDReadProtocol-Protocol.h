@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class LSDocumentProxy, NSArray, NSSet, NSString, NSURL, NSUUID, _LSDiskUsage;
+@class LSDocumentProxy, NSArray, NSSet, NSString, NSURL, _LSBundleIDValidationToken, _LSDiskUsage;
 
 @protocol _LSDReadProtocol
 - (void)bindDocumentProxy:(LSDocumentProxy *)arg1 completionHandler:(void (^)(LSDocumentProxy *, NSError *))arg2;
@@ -12,14 +12,14 @@
 - (void)getDiskUsage:(_LSDiskUsage *)arg1 completionHandler:(void (^)(_LSDiskUsage *, NSError *))arg2;
 - (void)getKernelPackageExtensionsWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)getKnowledgeUUIDAndSequenceNumberWithCompletionHandler:(void (^)(NSUUID *, NSNumber *))arg1;
-- (void)getLocalizationDictionaryForTypeWithIdentifier:(NSString *)arg1 UUID:(NSUUID *)arg2 preferredLocalizations:(NSArray *)arg3 completionHandler:(void (^)(NSDictionary *))arg4;
-- (void)getLocalizedNameWithBundleType:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 bundleUUID:(NSString *)arg3 context:(NSString *)arg4 shortNameOnly:(BOOL)arg5 preferredLocalizations:(NSArray *)arg6 completionHandler:(void (^)(NSString *, NSError *))arg7;
+- (void)getLocalizationDictionaryForTypeWithIdentifier:(NSString *)arg1 unit:(unsigned int)arg2 preferredLocalizations:(NSArray *)arg3 completionHandler:(void (^)(NSDictionary *))arg4;
+- (void)getLocalizedNameWithBundleType:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 bundleUUID:(NSString *)arg3 context:(NSString *)arg4 shortNameOnly:(BOOL)arg5 preferredLocalizations:(NSArray *)arg6 validationToken:(_LSBundleIDValidationToken *)arg7 completionHandler:(void (^)(NSString *, NSError *))arg8;
 - (void)getResourceValuesForKeys:(NSSet *)arg1 URL:(NSURL *)arg2 preferredLocalizations:(NSArray *)arg3 completionHandler:(void (^)(NSDictionary *, NSSet *, NSError *))arg4;
 - (void)getServerStatusWithCompletionHandler:(void (^)(unsigned int))arg1;
-- (void)getServerStoreWithCompletionHandler:(void (^)(_CSStoreXPCRepresentation *, NSURL *, NSError *))arg1;
+- (void)getServerStoreWithCompletionHandler:(void (^)(id, id, NSError *))arg1;
 - (void)getURLOverrideForURL:(NSURL *)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
 - (void)mapBundleIdentifiers:(NSSet *)arg1 orMachOUUIDs:(NSSet *)arg2 completionHandler:(void (^)(NSArray *, NSArray *, NSError *))arg3;
 - (void)mapPlugInBundleIdentifiersToContainingBundleIdentifiers:(NSSet *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
-- (void)resolveQueries:(NSSet *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)resolveQueries:(NSSet *)arg1 legacySPI:(BOOL)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
 @end
 

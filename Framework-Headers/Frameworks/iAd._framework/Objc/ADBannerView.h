@@ -17,6 +17,7 @@
     id<ADBannerViewDelegate> _weakDelegate;
     id<ADBannerViewInternalDelegate> _weakInternalDelegate;
     BOOL _displayed;
+    BOOL _reUsed;
     BOOL _bannerLoaded;
     BOOL _bannerViewActionInProgress;
     BOOL _createdForIBInternal;
@@ -26,7 +27,10 @@
     BOOL _scrolling;
     BOOL _imageUpdateEnabled;
     BOOL _debugHighlightEnabled;
+    BOOL _internalAdTypeCanChange;
+    BOOL _requestCalledbackError;
     int _screenfuls;
+    int _slotPosition;
     int _internalAdType;
     NSString *_adResponseId;
     long long _lastErrorCode;
@@ -46,12 +50,15 @@
     NSString *_originID;
     NSDate *_adDisplayDate;
     NSDate *_loadStartTime;
+    NSDate *_webLoadStartTime;
     NSDate *_loadEndTime;
+    double _adDataLoadTime;
     double _bannerLoadTime;
     struct CGSize _portraitSize;
     struct CGSize _landscapeSize;
 }
 
+@property (nonatomic) double adDataLoadTime; // @synthesize adDataLoadTime=_adDataLoadTime;
 @property (copy, nonatomic) NSDate *adDisplayDate; // @synthesize adDisplayDate=_adDisplayDate;
 @property (copy, nonatomic) NSString *adResponseId; // @synthesize adResponseId=_adResponseId;
 @property (strong, nonatomic) ADAdSpace *adSpace; // @synthesize adSpace=_adSpace;
@@ -80,6 +87,7 @@
 @property (nonatomic) BOOL imageUpdateEnabled; // @synthesize imageUpdateEnabled=_imageUpdateEnabled;
 @property (nonatomic) BOOL inSecondConstraintsPass; // @synthesize inSecondConstraintsPass=_inSecondConstraintsPass;
 @property (readonly, nonatomic) int internalAdType; // @synthesize internalAdType=_internalAdType;
+@property (nonatomic) BOOL internalAdTypeCanChange; // @synthesize internalAdTypeCanChange=_internalAdTypeCanChange;
 @property (nonatomic) struct CGSize landscapeSize; // @synthesize landscapeSize=_landscapeSize;
 @property (nonatomic) long long lastErrorCode; // @synthesize lastErrorCode=_lastErrorCode;
 @property (copy, nonatomic) NSDate *loadEndTime; // @synthesize loadEndTime=_loadEndTime;
@@ -89,10 +97,14 @@
 @property (nonatomic) struct CGSize portraitSize; // @synthesize portraitSize=_portraitSize;
 @property (readonly, nonatomic) UIViewController *presentingViewController;
 @property (strong, nonatomic) ADPrivacyButton *privacyButton; // @synthesize privacyButton=_privacyButton;
+@property (nonatomic) BOOL reUsed; // @synthesize reUsed=_reUsed;
+@property (nonatomic) BOOL requestCalledbackError; // @synthesize requestCalledbackError=_requestCalledbackError;
 @property (nonatomic) int screenfuls; // @synthesize screenfuls=_screenfuls;
 @property (nonatomic) BOOL scrolling; // @synthesize scrolling=_scrolling;
 @property (copy, nonatomic) NSURL *serverURL; // @synthesize serverURL=_serverURL;
+@property (nonatomic) int slotPosition; // @synthesize slotPosition=_slotPosition;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSDate *webLoadStartTime; // @synthesize webLoadStartTime=_webLoadStartTime;
 
 + (struct CGRect)_adWindowBounds;
 + (struct CGRect)_frameThatFits:(struct CGRect)arg1 adType:(int)arg2 statusBarOrientationIsPortrait:(BOOL)arg3;
@@ -111,6 +123,7 @@
 - (void)_prepareForSecondIntrinsicContentSizeCalculationWithLayoutEngineBounds:(struct CGRect)arg1;
 - (void)_resetHighlightTimer;
 - (void)_resetToBeginningOfDoublePass;
+- (void)_setAdPrivacyMarkPosition;
 - (void)_setInSecondConstraintsPass:(BOOL)arg1;
 - (void)_updateHighlight:(id)arg1;
 - (int)action;
@@ -120,6 +133,7 @@
 - (void)bannerTappedAtPoint:(struct CGPoint)arg1;
 - (void)bannerTappedAtPoint:(struct CGPoint)arg1 withMRAIDAction:(id)arg2;
 - (void)beginAction;
+- (BOOL)canReuseForContext:(id)arg1;
 - (void)cancelBannerViewAction;
 - (void)cancelScheduledAd;
 - (id)context;
@@ -134,6 +148,7 @@
 - (BOOL)enableDimmerView:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasAction;
+- (BOOL)hasImpressed;
 - (BOOL)hasTransparencyDetails;
 - (id)identifier;
 - (id)initFromIBWithFrame:(struct CGRect)arg1;
@@ -145,6 +160,7 @@
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (id)nativeMetadata;
+- (void)nextContentVideoStartedPlaying;
 - (void)pauseBannerMedia;
 - (void)playbackFailed:(id)arg1;
 - (void)playbackFinished:(id)arg1;
@@ -177,6 +193,7 @@
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHidden:(BOOL)arg1;
 - (void)setIdentifier:(id)arg1;
+- (void)setInternalAdType:(int)arg1;
 - (void)setInternalDelegate:(id)arg1;
 - (void)setRequiredContentSizeIdentifiers:(id)arg1;
 - (void)setTransform:(struct CGAffineTransform)arg1;

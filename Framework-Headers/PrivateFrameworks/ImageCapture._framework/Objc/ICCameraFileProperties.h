@@ -30,16 +30,27 @@
     BOOL _burstPicked;
     BOOL _highFramerate;
     BOOL _timeLapse;
+    NSString *_groupUUID;
+    NSString *_relatedUUID;
+    NSString *_originatingAssetID;
+    NSString *_originalFilename;
+    NSString *_createdFilename;
+    BOOL _retrievedThumbnail;
+    BOOL _retrievedMetadata;
+    BOOL _firstPicked;
     NSMutableArray *_sidecarFiles;
 }
 
 @property BOOL burstFavorite; // @synthesize burstFavorite=_burstFavorite;
 @property BOOL burstPicked; // @synthesize burstPicked=_burstPicked;
 @property (strong) NSString *burstUUID; // @synthesize burstUUID=_burstUUID;
+@property (strong) NSString *createdFilename; // @synthesize createdFilename=_createdFilename;
 @property double duration; // @synthesize duration=_duration;
 @property BOOL fetchingMetadata;
 @property BOOL fetchingThumbnail;
 @property long long fileSize; // @synthesize fileSize=_fileSize;
+@property BOOL firstPicked; // @synthesize firstPicked=_firstPicked;
+@property (strong) NSString *groupUUID; // @synthesize groupUUID=_groupUUID;
 @property BOOL hasMetadata; // @synthesize hasMetadata=_hasMetadata;
 @property BOOL hasOverriddenOrientation; // @synthesize hasOverriddenOrientation=_hasOverriddenOrientation;
 @property BOOL hasThumbnail; // @synthesize hasThumbnail=_hasThumbnail;
@@ -47,8 +58,13 @@
 @property (strong) NSMutableDictionary *metadata; // @synthesize metadata=_metadata;
 @property (strong) NSMutableDictionary *metadata_hidden; // @synthesize metadata_hidden=_metadata_hidden;
 @property unsigned long long orientation; // @synthesize orientation=_orientation;
+@property (strong) NSString *originalFilename; // @synthesize originalFilename=_originalFilename;
 @property struct CGImage *originalThumbnail; // @dynamic originalThumbnail;
+@property (strong) NSString *originatingAssetID; // @synthesize originatingAssetID=_originatingAssetID;
 @property (getter=isRaw) BOOL raw; // @synthesize raw=_raw;
+@property (strong) NSString *relatedUUID; // @synthesize relatedUUID=_relatedUUID;
+@property BOOL retrievedMetadata; // @synthesize retrievedMetadata=_retrievedMetadata;
+@property BOOL retrievedThumbnail; // @synthesize retrievedThumbnail=_retrievedThumbnail;
 @property (strong) NSMutableArray *sidecarFiles; // @synthesize sidecarFiles=_sidecarFiles;
 @property struct CGImage *thumbnail; // @dynamic thumbnail;
 @property BOOL timeLapse; // @synthesize timeLapse=_timeLapse;

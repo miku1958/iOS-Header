@@ -39,15 +39,17 @@
 
 - (void).cxx_destruct;
 - (void)_loadDefaults;
+- (id)_localDataProvenanceWithSourceID:(id)arg1 sourceVersion:(id)arg2 deviceID:(id)arg3;
 - (id)_localTimeZoneName;
-- (id)_lookupOrInsertProvenance:(id)arg1 error:(id *)arg2;
+- (id)_lookupOrInsertProvenance:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (void)checkDefaultsLoaded;
-- (id)dataProvenanceDefaultsWithSyncProvenance:(long long)arg1 productType:(id)arg2 systemBuild:(id)arg3 sourceVersion:(id)arg4 timeZoneName:(id)arg5 sourceID:(id)arg6 deviceID:(id)arg7;
 - (id)defaultLocalDataProvenance;
+- (id)defaultLocalDataProvenanceWithDeviceEntity:(id)arg1;
 - (id)diagnosticDescription;
 - (id)initWithProfile:(id)arg1;
 - (id)localDataProvenanceForSourceEntity:(id)arg1 version:(id)arg2 deviceEntity:(id)arg3;
 - (id)originProvenanceForPersistentID:(long long)arg1 database:(id)arg2 error:(id *)arg3;
+- (id)provenanceEntityForProvenance:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (id)provenanceEntityForProvenance:(id)arg1 error:(id *)arg2;
 - (void)setDeviceNoneID:(id)arg1;
 - (void)setLocalDeviceID:(id)arg1;

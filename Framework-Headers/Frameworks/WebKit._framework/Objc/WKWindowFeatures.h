@@ -16,6 +16,10 @@
 }
 
 @property (readonly) struct Object *_apiObject;
+@property (readonly, nonatomic) NSNumber *_dialogDisplay;
+@property (readonly, nonatomic) NSNumber *_fullscreenDisplay;
+@property (readonly, nonatomic) NSNumber *_locationBarVisibility;
+@property (readonly, nonatomic) NSNumber *_scrollbarsVisibility;
 @property (readonly, nonatomic) NSNumber *allowsResizing;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

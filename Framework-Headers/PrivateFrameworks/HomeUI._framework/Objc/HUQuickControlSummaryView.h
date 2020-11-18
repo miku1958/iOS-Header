@@ -36,10 +36,15 @@
 - (void).cxx_destruct;
 - (double)_iconHeight;
 - (void)_invalidateContentAndConstraints;
+- (id)_primaryFont;
+- (id)_primaryFontMetrics;
+- (id)_secondaryFont;
+- (id)_secondaryFontMetrics;
 - (id)_statusParagraphStyleWithLineHeight:(double)arg1;
 - (void)_updatePrimaryStatusContent;
 - (void)_updateSecondaryStatusContent;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;

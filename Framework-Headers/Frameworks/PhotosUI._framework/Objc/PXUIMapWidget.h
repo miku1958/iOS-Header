@@ -7,15 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <PhotosUICore/PXPhotosDataSourceChangeObserver-Protocol.h>
-#import <PhotosUICore/PXWidget-Protocol.h>
+#import <PhotosUICore/PXUIWidget-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, PXPhotosDetailsContext, PXPlacesMapFetchResultViewController, PXPlacesMapViewPort, PXPlacesSnapshotFactory, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec, UIView;
-@protocol PXAnonymousView, PXWidgetDelegate;
+@class NSMutableArray, NSMutableDictionary, NSString, PHAsset, PXOneUpPresentation, PXPhotosDetailsContext, PXPlacesMapFetchResultViewController, PXPlacesMapViewPort, PXPlacesSnapshotFactory, PXSectionedSelectionManager, PXTilingController, PXUIImageView, PXWidgetSpec, UIButton, UIFont, UIView;
+@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate;
 
-@interface PXUIMapWidget : NSObject <PXPhotosDataSourceChangeObserver, PXWidget>
+@interface PXUIMapWidget : NSObject <PXPhotosDataSourceChangeObserver, PXUIWidget>
 {
-    double _height;
-    struct CGSize _minimumInitialSize;
     struct CGSize _contentSize;
     PXPlacesMapViewPort *_viewPort;
     BOOL _didDisplayContentView;
@@ -23,28 +21,38 @@
     NSMutableDictionary *_fetchedImages;
     long long _lastFetchedBoundingRectAssetCount;
     BOOL _showAddressLink;
+    BOOL _hasLoadedContentData;
+    UIFont *_footerFont;
     id<PXWidgetDelegate> _widgetDelegate;
+    id<PXWidgetUnlockDelegate> _widgetUnlockDelegate;
     PXPhotosDetailsContext *_context;
     PXWidgetSpec *_spec;
     UIView *__containerView;
     UIView *__contentView;
+    PXUIImageView *__imageView;
     PXPlacesMapFetchResultViewController *__mapViewController;
     NSString *__cachedLocalizedTitle;
-    NSString *__cachedLocalizedSubtitle;
     NSString *__cachedDisclosureTitle;
+    UIButton *_footerButton;
+    PHAsset *_assetUsedForFooterTitle;
+    NSString *_cachedFooterTitle;
+    double _footerHeight;
+    double _height;
     NSMutableArray *__nearbyCountCompletionBlocks;
     PXPlacesSnapshotFactory *__factory;
 }
 
 @property (strong, nonatomic) NSString *_cachedDisclosureTitle; // @synthesize _cachedDisclosureTitle=__cachedDisclosureTitle;
-@property (strong, nonatomic) NSString *_cachedLocalizedSubtitle; // @synthesize _cachedLocalizedSubtitle=__cachedLocalizedSubtitle;
 @property (strong, nonatomic) NSString *_cachedLocalizedTitle; // @synthesize _cachedLocalizedTitle=__cachedLocalizedTitle;
 @property (readonly, nonatomic) UIView *_containerView; // @synthesize _containerView=__containerView;
 @property (readonly, nonatomic) UIView *_contentView; // @synthesize _contentView=__contentView;
 @property (strong, nonatomic) PXPlacesSnapshotFactory *_factory; // @synthesize _factory=__factory;
+@property (readonly, nonatomic) PXUIImageView *_imageView; // @synthesize _imageView=__imageView;
 @property (readonly, nonatomic) PXPlacesMapFetchResultViewController *_mapViewController; // @synthesize _mapViewController=__mapViewController;
 @property (strong, nonatomic) NSMutableArray *_nearbyCountCompletionBlocks; // @synthesize _nearbyCountCompletionBlocks=__nearbyCountCompletionBlocks;
 @property (readonly, nonatomic) BOOL allowUserInteractionWithSubtitle;
+@property (strong, nonatomic) PHAsset *assetUsedForFooterTitle; // @synthesize assetUsedForFooterTitle=_assetUsedForFooterTitle;
+@property (strong, nonatomic) NSString *cachedFooterTitle; // @synthesize cachedFooterTitle=_cachedFooterTitle;
 @property (readonly, nonatomic) long long contentLayoutStyle;
 @property (readonly, nonatomic) PXTilingController *contentTilingController;
 @property (readonly, nonatomic) NSObject<PXAnonymousView> *contentView;
@@ -53,13 +61,18 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isFaceModeEnabled) BOOL faceModeEnabled;
+@property (readonly, nonatomic) UIButton *footerButton; // @synthesize footerButton=_footerButton;
+@property (readonly, nonatomic) UIFont *footerFont; // @synthesize footerFont=_footerFont;
+@property (nonatomic) double footerHeight; // @synthesize footerHeight=_footerHeight;
 @property (readonly, nonatomic) BOOL hasContentForCurrentInput;
-@property (readonly, nonatomic) BOOL hasLoadedContentData;
+@property (nonatomic, setter=_setHasLoadedContentData:) BOOL hasLoadedContentData; // @synthesize hasLoadedContentData=_hasLoadedContentData;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double height; // @synthesize height=_height;
 @property (readonly, nonatomic) NSString *localizedCaption;
 @property (readonly, nonatomic) NSString *localizedDisclosureTitle;
 @property (readonly, nonatomic) NSString *localizedSubtitle;
 @property (readonly, nonatomic) NSString *localizedTitle;
+@property (strong, nonatomic) PXOneUpPresentation *oneUpPresentation;
 @property (nonatomic, getter=isSelecting) BOOL selecting;
 @property (readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
 @property (nonatomic) BOOL showAddressLink; // @synthesize showAddressLink=_showAddressLink;
@@ -69,6 +82,7 @@
 @property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled;
 @property (weak, nonatomic) id<PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
+@property (weak, nonatomic) id<PXWidgetUnlockDelegate> widgetUnlockDelegate; // @synthesize widgetUnlockDelegate=_widgetUnlockDelegate;
 
 - (void).cxx_destruct;
 - (id)_createSnapshotOptions;
@@ -76,20 +90,23 @@
 - (void)_fetchPlacesSnapshotUsingMapType:(unsigned long long)arg1 fetchResults:(id)arg2 shouldFetchNearbyAssetCount:(BOOL)arg3;
 - (id)_fetchResultsForSections;
 - (id)_firstAsset;
+- (void)_handleContentSizeCategoryDidChange:(id)arg1;
+- (void)_handleFooterTitleUpdateCompleteForAsset:(id)arg1 footerTitle:(id)arg2;
 - (void)_handleSnapshotResponse:(id)arg1 viewPort:(id)arg2 snapshotMapType:(unsigned long long)arg3 shouldFetchNearbyAssetCount:(BOOL)arg4 fetchedImageKey:(id)arg5 error:(id)arg6;
 - (void)_handleTapGestureRecognizer:(id)arg1;
 - (BOOL)_hasCachedSnapshotImageForKey:(id)arg1;
-- (id)_imageView;
-- (void)_loadAndUpdateLabelsUsingAsset:(id)arg1;
+- (void)_layoutSubviews;
 - (void)_loadContainerView;
 - (id)_localizedGeoDescriptionForAsset:(id)arg1;
 - (id)_mapViewControllerWithContentMode:(unsigned long long)arg1;
-- (void)_refreshLabelsUsingAsset:(id)arg1;
 - (void)_setImage:(id)arg1 animated:(BOOL)arg2;
 - (void)_showPlaceholder;
 - (void)_showPlacesWithContentMode:(unsigned long long)arg1;
 - (void)_updateContentViewFrame;
-- (void)_updateTitle:(id)arg1 subtitle:(id)arg2;
+- (void)_updateFooterButton;
+- (void)_updateFooterHeight;
+- (void)_updateFooterTitle;
+- (void)_updateHeight;
 - (void)dealloc;
 - (id)init;
 - (void)loadContentData;
@@ -99,7 +116,7 @@
 - (id)standaloneMapViewController;
 - (void)unloadContentData;
 - (void)userDidSelectDisclosureControl;
-- (void)userDidSelectSubtitle;
+- (void)userDidSelectFooter:(id)arg1;
 
 @end
 

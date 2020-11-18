@@ -14,7 +14,14 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_createViewForTabBar:(id)arg1 asProxyView:(BOOL)arg2;
+- (id)accessibilityLocalizationBundleID;
+- (id)accessibilityLocalizationBundlePath;
+- (id)accessibilityLocalizedStringKey;
+- (id)accessibilityLocalizedStringTableName;
 - (id)selectedImage;
+- (void)setAccessibilityAttributedHint:(id)arg1;
+- (void)setAccessibilityAttributedLabel:(id)arg1;
+- (void)setAccessibilityAttributedValue:(id)arg1;
 - (void)setAccessibilityHint:(id)arg1;
 - (void)setAccessibilityLabel:(id)arg1;
 - (void)setAccessibilityValue:(id)arg1;

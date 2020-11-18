@@ -11,7 +11,7 @@
 #import <UIKit/_UIBarButtonItemViewOwner-Protocol.h>
 
 @class NSArray, NSLayoutConstraint, NSMapTable, NSMutableArray, NSString, UIBarButtonItem, UILayoutGuide, UIView, _UIButtonBarButtonVisualProvider, _UIButtonBarLayoutMetrics, _UIButtonBarStackView;
-@protocol _UIButtonBarDelegate;
+@protocol _UIButtonBarAppearanceDelegate, _UIButtonBarDelegate;
 
 @interface _UIButtonBar : NSObject <_UIBarButtonItemViewOwner, _UIBarButtonItemGroupOwner, NSCoding>
 {
@@ -21,6 +21,8 @@
     NSLayoutConstraint *_minimumInterItemSpaceConstraint;
     UILayoutGuide *_minimumInterGroupSpaceLayoutGuide;
     NSLayoutConstraint *_minimumInterGroupSpaceConstraint;
+    UIView *_centeredView;
+    NSLayoutConstraint *_centeringConstraint;
     _UIButtonBarLayoutMetrics *_layoutMetrics;
     NSMutableArray *_groupLayouts;
     NSMutableArray *_effectiveLayout;
@@ -37,10 +39,14 @@
     _UIButtonBarButtonVisualProvider *_visualProvider;
     double _minimumInterGroupSpace;
     CDUnknownBlockType _defaultActionFilter;
+    id<_UIButtonBarAppearanceDelegate> __appearanceDelegate;
 }
 
+@property (weak, nonatomic) id<_UIButtonBarAppearanceDelegate> _appearanceDelegate; // @synthesize _appearanceDelegate=__appearanceDelegate;
+@property (nonatomic) BOOL allowsViewWrappers;
 @property (copy, nonatomic) NSArray *barButtonGroups; // @synthesize barButtonGroups=_barButtonGroups;
 @property (nonatomic, getter=_compact, setter=_setCompact:) BOOL compact; // @synthesize compact=_compact;
+@property (nonatomic) BOOL createsPopoverLayoutGuides;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) CDUnknownBlockType defaultActionFilter; // @synthesize defaultActionFilter=_defaultActionFilter;
 @property (weak, nonatomic) id<_UIButtonBarDelegate> delegate; // @synthesize delegate=_delegate;
@@ -57,6 +63,7 @@
 
 + (float)optionalConstraintsPriority;
 - (void).cxx_destruct;
+- (void)_appearanceChanged;
 - (id)_debug;
 - (double)_estimatedWidth;
 - (void)_groupDidChangeGeometry:(id)arg1;

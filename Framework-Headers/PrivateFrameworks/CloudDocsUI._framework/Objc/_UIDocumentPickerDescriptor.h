@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 + (id)allPickers;
 + (id)allPickersForMode:(unsigned long long)arg1 documentTypes:(id)arg2;
 + (BOOL)cloudEnabledStatus;
++ (BOOL)cloudMigrationStatus;
 + (id)defaultPickerIdentifierForMode:(unsigned long long)arg1 documentTypes:(id)arg2;
 + (id)descriptorWithIdentifier:(id)arg1;
 + (id)enabledPickersForMode:(unsigned long long)arg1 documentTypes:(id)arg2;

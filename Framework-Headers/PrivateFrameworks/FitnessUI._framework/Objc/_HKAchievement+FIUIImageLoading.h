@@ -16,11 +16,13 @@
 - (id)_fiui_imagePathForUncompletedAchievementOfSizeClass:(long long)arg1;
 - (id)_fiui_pathForAssetNamed:(id)arg1 ofType:(id)arg2;
 - (id)fiui_badgeModelFilename;
+- (id)fiui_badgePathIdentifier;
 - (id)fiui_badgePlistPath;
 - (id)fiui_badgeTexturePath;
 - (id)fiui_compressedBadgeModelPath;
 - (BOOL)fiui_hasImageForSizeClass:(long long)arg1;
 - (id)fiui_imageForSizeClass:(long long)arg1;
 - (id)fiui_uniqueBadgeModelIdentifier;
+- (BOOL)fiui_usesMonthlyChallengeBadge;
 @end
 

@@ -8,23 +8,24 @@
 
 #import <iTunesStore/SSAuthenticateRequestDelegate-Protocol.h>
 
-@class NSNumber, NSString, SSAuthenticationContext, SSMutableAuthenticationContext;
+@class NSString, SSAuthenticateResponse, SSAuthenticationContext, SSMutableAuthenticationContext;
 
 @interface ISStoreAuthenticateOperation : ISOperation <SSAuthenticateRequestDelegate>
 {
-    NSNumber *_authenticatedDSID;
     SSMutableAuthenticationContext *_authenticationContext;
+    SSAuthenticateResponse *_authenticateResponse;
+    id parentViewController;
 }
 
+@property (readonly) SSAuthenticateResponse *authenticateResponse;
 @property (readonly) SSAuthenticationContext *authenticationContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong) id parentViewController; // @synthesize parentViewController;
 @property (readonly) Class superclass;
 
-- (id)_authenticatedDSID;
 - (void)_handleAuthenticateResponse:(id)arg1;
-- (void)_setAuthenticatedDSID:(id)arg1;
 - (id)authenticatedAccountDSID;
 - (void)dealloc;
 - (id)initWithAuthenticationContext:(id)arg1;

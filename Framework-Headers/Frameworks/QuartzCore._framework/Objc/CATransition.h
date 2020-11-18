@@ -13,7 +13,6 @@
 }
 
 @property float endProgress;
-@property (strong) id filter;
 @property (copy) NSDictionary *options;
 @property float startProgress;
 @property (copy) NSString *subtype;
@@ -23,6 +22,8 @@
 - (struct Animation *)_copyRenderAnimationForLayer:(id)arg1;
 - (unsigned int)_propertyFlagsForLayer:(id)arg1;
 - (BOOL)_setCARenderAnimation:(struct Animation *)arg1 layer:(id)arg2;
+- (id)filter;
+- (void)setFilter:(id)arg1;
 
 @end
 

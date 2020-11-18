@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UserNotificationsUIKit/NCShortLookView.h>
+#import <MaterialKit/MTTitledPlatterView.h>
 
 #import <UserNotificationsUIKit/NCNotificationStaticContentAccepting-Protocol.h>
 
-@class NCLookViewFontProvider, NCNotificationContentView, NCNotificationGrabberView, NSArray, NSDate, NSString, NSTimeZone, UIImage, UIView;
+@class MTFontProvider, NCNotificationContentView, NCNotificationGrabberView, NSArray, NSDate, NSString, NSTimeZone, UIImage, UIView;
 
-@interface NCNotificationShortLookView : NCShortLookView <NCNotificationStaticContentAccepting>
+@interface NCNotificationShortLookView : MTTitledPlatterView <NCNotificationStaticContentAccepting>
 {
-    NCLookViewFontProvider *_fontProvider;
+    MTFontProvider *_fontProvider;
     NCNotificationContentView *_notificationContentView;
     NCNotificationGrabberView *_grabberView;
 }
@@ -23,7 +23,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSString *hintText;
 @property (strong, nonatomic) UIImage *icon;
 @property (strong, nonatomic) NSArray *interfaceActions;
 @property (nonatomic) unsigned long long messageNumberOfLines;
@@ -36,7 +35,7 @@
 @property (copy, nonatomic) NSString *title;
 
 - (void).cxx_destruct;
-- (BOOL)_configureHeaderContentViewIfNecessary;
+- (void)_configureHeaderContentView;
 - (void)_configureNotificationContentViewIfNecessary;
 - (id)_fontProvider;
 - (id)_grabberView;
@@ -48,8 +47,11 @@
 - (BOOL)adjustForContentSizeCategoryChange;
 - (BOOL)adjustsFontForContentSizeCategory;
 - (struct CGSize)contentSizeForSize:(struct CGSize)arg1;
+- (id)init;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setAdjustsFontForContentSizeCategory:(BOOL)arg1;
+- (void)setBackgroundView:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFitsContentWithSize:(struct CGSize)arg1;
 

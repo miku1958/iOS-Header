@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AddressBook/ABVCardRecord.h>
+#import <AddressBookLegacy/ABVCardRecord.h>
 
 @interface ABVCardCardDAVRecord : ABVCardRecord
 {

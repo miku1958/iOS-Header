@@ -4,25 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface VKRoadSignArtwork : NSObject
 {
     struct __CTLine *_line;
+    struct __CTFrame *_frame;
+    struct __CTFramesetter *_framesetter;
     struct RoadSignMetrics _signMetrics;
     struct RoadSignTextMetrics _textMetrics;
     struct RoadSignGeneratedMetrics _generatedMetrics;
     struct RoadSignColoring _signColoring;
+    struct CGImage *_glyph;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)image;
-- (id)initWithString:(id)arg1 signMetrics:(struct RoadSignMetrics)arg2 textMetrics:(struct RoadSignTextMetrics)arg3 signColoring:(struct RoadSignColoring)arg4;
+- (id)initWithString:(id)arg1 signMetrics:(struct RoadSignMetrics)arg2 textMetrics:(struct RoadSignTextMetrics)arg3 signColoring:(struct RoadSignColoring)arg4 glyph:(struct CGImage *)arg5;
 - (Box_3fb92e00)localCollisionBounds;
 - (Box_3fb92e00)localRenderBounds;
+- (Box_3fb92e00)localSignBounds;
 - (Matrix_8746f91e)offsetPixelForPixel:(Matrix_8746f91e)arg1;
 
 @end

@@ -8,20 +8,25 @@
 
 #import <Home/HMAccessoryBrowserDelegate-Protocol.h>
 
-@class HMAccessoryBrowser, NSArray, NSHashTable, NSString;
+@class HMAccessoryBrowser, NSArray, NSHashTable, NSMutableSet, NSString, SFDeviceDiscovery;
 
 @interface HFAccessoryBrowsingManager : NSObject <HMAccessoryBrowserDelegate>
 {
-    HMAccessoryBrowser *_browser;
+    HMAccessoryBrowser *_accessoryBrowser;
+    SFDeviceDiscovery *_sharingDeviceBrowser;
     NSHashTable *_observers;
+    NSMutableSet *_mutableDiscoveredSharingDevices;
 }
 
-@property (strong, nonatomic) HMAccessoryBrowser *browser; // @synthesize browser=_browser;
+@property (strong, nonatomic) HMAccessoryBrowser *accessoryBrowser; // @synthesize accessoryBrowser=_accessoryBrowser;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *discoveredHMAccessories;
+@property (readonly, nonatomic) NSArray *discoveredSharingDevices;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSMutableSet *mutableDiscoveredSharingDevices; // @synthesize mutableDiscoveredSharingDevices=_mutableDiscoveredSharingDevices;
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property (strong, nonatomic) SFDeviceDiscovery *sharingDeviceBrowser; // @synthesize sharingDeviceBrowser=_sharingDeviceBrowser;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

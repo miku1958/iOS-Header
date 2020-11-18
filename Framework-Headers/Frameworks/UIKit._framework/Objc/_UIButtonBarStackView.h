@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithButtonBar:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
 

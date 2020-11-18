@@ -8,7 +8,7 @@
 
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class AKPushMessage, NSData, NSDictionary, NSString;
 
 @interface AKCircleRequestPayload : NSObject <NSSecureCoding>
 {
@@ -17,6 +17,7 @@
     long long _clientErrorCode;
     NSString *_altDSID;
     NSString *_transactionId;
+    AKPushMessage *_responseMessage;
     NSDictionary *_responseInfo;
     unsigned long long _circleStep;
 }
@@ -26,11 +27,12 @@
 @property (nonatomic) long long clientErrorCode; // @synthesize clientErrorCode=_clientErrorCode;
 @property (strong, nonatomic) NSData *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property (strong, nonatomic) NSDictionary *responseInfo; // @synthesize responseInfo=_responseInfo;
+@property (strong, nonatomic) AKPushMessage *responseMessage; // @synthesize responseMessage=_responseMessage;
 @property (strong, nonatomic) NSString *serverInfo; // @synthesize serverInfo=_serverInfo;
 @property (readonly, nonatomic) NSString *serverMachineId;
 @property (strong, nonatomic) NSString *transactionId; // @synthesize transactionId=_transactionId;
 
-+ (id)payloadWithInfo:(id)arg1;
++ (id)payloadWithMessage:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;

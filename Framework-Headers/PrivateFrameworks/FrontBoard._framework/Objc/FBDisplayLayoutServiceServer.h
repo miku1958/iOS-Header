@@ -20,9 +20,9 @@
 @property (nonatomic) id<FBDisplayLayoutServiceServerDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (id)_calloutQueueForQOS:(unsigned long long)arg1;
-- (id)_defaultQOSClientsForDisplayType:(unsigned long long)arg1;
+- (id)_defaultQOSClientsForDisplayType:(long long)arg1;
 - (void)_sendDisplayLayout:(id)arg1 toClients:(id)arg2 withQualityOfService:(unsigned long long)arg3;
-- (id)_utilityQOSClientsForDisplayType:(unsigned long long)arg1;
+- (id)_utilityQOSClientsForDisplayType:(long long)arg1;
 - (void)dealloc;
 - (id)initWithQueue:(id)arg1;
 - (void)noteClientDidConnect:(id)arg1 withMessage:(id)arg2;

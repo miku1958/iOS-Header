@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSObject-Protocol.h>
+#import <Foundation/NSObject-Protocol.h>
 
-@class NSFileVersion, NSOperationQueue, NSURL;
+@class NSFileVersion, NSOperationQueue, NSSet, NSURL;
 
 @protocol NSFilePresenter <NSObject>
 
+@property (readonly) NSSet *observedPresentedItemUbiquityAttributes;
 @property (readonly, strong) NSOperationQueue *presentedItemOperationQueue;
 @property (readonly, copy) NSURL *presentedItemURL;
 @property (readonly, copy) NSURL *primaryPresentedItemURL;
@@ -19,6 +20,7 @@
 - (void)accommodatePresentedItemDeletionWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)accommodatePresentedSubitemDeletionAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)presentedItemDidChange;
+- (void)presentedItemDidChangeUbiquityAttributes:(NSSet *)arg1;
 - (void)presentedItemDidGainVersion:(NSFileVersion *)arg1;
 - (void)presentedItemDidLoseVersion:(NSFileVersion *)arg1;
 - (void)presentedItemDidMoveToURL:(NSURL *)arg1;

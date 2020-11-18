@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBUnknownFields;
 
 @interface GEOPDBusinessClaim : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSString *_buttonLabel;
     NSString *_descriptionText;
     NSString *_titleText;
@@ -29,11 +30,12 @@
 @property (readonly, nonatomic) BOOL hasDescriptionText;
 @property (readonly, nonatomic) BOOL hasTitleText;
 @property (strong, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)businessClaimForPlaceData:(id)arg1;
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

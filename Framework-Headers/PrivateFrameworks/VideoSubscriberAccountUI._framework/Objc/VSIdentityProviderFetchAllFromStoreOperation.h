@@ -6,26 +6,21 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-#import <VideoSubscriberAccountUI/VSIdentityProviderFetchAllResult-Protocol.h>
-
-@class NSString, VSOptional, VSStoreRequestOperation;
+@class NSOperationQueue, VSAuditToken, VSOptional;
 
 __attribute__((visibility("hidden")))
-@interface VSIdentityProviderFetchAllFromStoreOperation : VSAsyncOperation <VSIdentityProviderFetchAllResult>
+@interface VSIdentityProviderFetchAllFromStoreOperation : VSAsyncOperation
 {
-    VSStoreRequestOperation *_requestOperation;
+    VSAuditToken *_auditToken;
     VSOptional *_result;
+    NSOperationQueue *_privateQueue;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) VSStoreRequestOperation *requestOperation; // @synthesize requestOperation=_requestOperation;
+@property (copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
+@property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_handleResult:(id)arg1;
 - (void)cancel;
 - (void)executionDidBegin;
 - (id)init;

@@ -13,9 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityCameraView;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)loadView;
-- (void)sendDidFindTarget:(id)arg1;
+- (void)sendDidFindTarget:(id)arg1 frameTime:(CDStruct_198678f7)arg2;
 - (void)sendDidRecognizeNewObjects:(id)arg1;
 - (void)startSession;
 

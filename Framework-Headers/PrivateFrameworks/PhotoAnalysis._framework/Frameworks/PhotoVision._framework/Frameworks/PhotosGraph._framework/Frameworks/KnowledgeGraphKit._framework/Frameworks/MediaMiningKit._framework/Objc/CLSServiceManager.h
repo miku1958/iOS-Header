@@ -6,38 +6,64 @@
 
 #import <objc/NSObject.h>
 
-@class CLSLRUMemoryCache, CLSPerson, CLSSocialServiceCalendar, CLSSocialServiceContacts;
+#import <MediaMiningKit/CLSSocialServiceContactsDelegate-Protocol.h>
 
-@interface CLSServiceManager : NSObject
+@class CLSLRUMemoryCache, CLSPerson, CLSRoutineService, CLSSocialServiceCalendar, CLSSocialServiceContacts, NSDateInterval, NSString;
+
+@interface CLSServiceManager : NSObject <CLSSocialServiceContactsDelegate>
 {
     CLSLRUMemoryCache *_cache;
     CLSSocialServiceContacts *_contactsService;
     CLSSocialServiceCalendar *_calendarService;
+    CLSRoutineService *_routineService;
     CLSPerson *_mePerson;
+    NSObject *_routineServiceLockObject;
+    NSDateInterval *_validDateInterval;
 }
 
-@property (readonly) CLSSocialServiceCalendar *calendarService; // @synthesize calendarService=_calendarService;
-@property (readonly) CLSSocialServiceContacts *contactsService; // @synthesize contactsService=_contactsService;
+@property (readonly, nonatomic) CLSSocialServiceCalendar *calendarService; // @synthesize calendarService=_calendarService;
+@property (readonly, nonatomic) CLSSocialServiceContacts *contactsService; // @synthesize contactsService=_contactsService;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CLSPerson *mePerson; // @synthesize mePerson=_mePerson;
+@property (readonly, nonatomic) CLSRoutineService *routineService; // @synthesize routineService=_routineService;
+@property (readonly, nonatomic) NSObject *routineServiceLockObject; // @synthesize routineServiceLockObject=_routineServiceLockObject;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) NSDateInterval *validDateInterval; // @synthesize validDateInterval=_validDateInterval;
 
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (id)_traceStringForType:(unsigned long long)arg1;
 - (void)addTraceFromObject:(id)arg1 feature:(id)arg2 type:(unsigned long long)arg3 context:(id)arg4 withDescriptionFormat:(id)arg5;
-- (id)description;
 - (void)enumeratePersonsForIdentifiers:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumeratePersonsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)eventsOperationForClueCollection:(id)arg1;
 - (id)eventsOperationForDates:(id)arg1;
+- (BOOL)hasAddressesForMePerson;
 - (id)init;
-- (void)invalidateMemoryCaches;
+- (void)invalidateMomentaryMemoryCaches;
+- (void)invalidatePermanentMemoryCaches;
+- (BOOL)isRemoteLocation:(id)arg1 inDateInterval:(id)arg2;
+- (id)locationOfInterestPlacemarkCloseToLocation:(id)arg1 inDateInterval:(id)arg2;
+- (id)mePersonAddressesOfType:(unsigned long long)arg1;
 - (id)mePersonName;
 - (id)mePersonOperation;
+- (unsigned long long)numberOfCloseByLocationMatches;
+- (unsigned long long)numberOfLocationsOfInterest;
+- (unsigned long long)numberOfMatchRequests;
+- (unsigned long long)numberOfRemoteLocationMatches;
+- (unsigned long long)numberOfTimeMatches;
+- (unsigned long long)numberOfVisits;
 - (id)personOperationForName:(id)arg1 inPhotoLibrary:(id)arg2;
 - (id)personResultOperationForName:(id)arg1 inPhotoLibrary:(id)arg2;
 - (id)personResultsOperationForName:(id)arg1 inPhotoLibrary:(id)arg2;
 - (id)personsOperationNearLocations:(id)arg1;
+- (double)pinningVisitsRatio;
+- (void)postProcessLocationsOfInterest;
 - (void)prefetchEventsFromUniversalDate:(id)arg1 toUniversalDate:(id)arg2 forAssetCollectionsSortedByStartDate:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (BOOL)routineIsAvailable;
+- (BOOL)shouldFetchPointsOfInterestAtLocation:(id)arg1;
 - (id)tracesDescription;
 
 @end

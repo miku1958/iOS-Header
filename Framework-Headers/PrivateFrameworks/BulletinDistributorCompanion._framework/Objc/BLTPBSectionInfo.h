@@ -30,6 +30,7 @@
     BOOL _allowsNotifications;
     BOOL _displaysCriticalBulletins;
     BOOL _iconsStripped;
+    BOOL _phoneAllowsNotifications;
     BOOL _showsInLockScreen;
     BOOL _showsInNotificationCenter;
     BOOL _showsMessagePreview;
@@ -47,6 +48,7 @@
         unsigned int allowsNotifications:1;
         unsigned int displaysCriticalBulletins:1;
         unsigned int iconsStripped:1;
+        unsigned int phoneAllowsNotifications:1;
         unsigned int showsInLockScreen:1;
         unsigned int showsInNotificationCenter:1;
         unsigned int showsMessagePreview:1;
@@ -68,6 +70,7 @@
 @property (readonly, nonatomic) BOOL hasIcon;
 @property (nonatomic) BOOL hasIconsStripped;
 @property (nonatomic) BOOL hasNotificationCenterLimit;
+@property (nonatomic) BOOL hasPhoneAllowsNotifications;
 @property (nonatomic) BOOL hasPushSettings;
 @property (nonatomic) BOOL hasSectionCategory;
 @property (readonly, nonatomic) BOOL hasSectionID;
@@ -85,6 +88,7 @@
 @property (strong, nonatomic) BLTPBSectionIcon *icon; // @synthesize icon=_icon;
 @property (nonatomic) BOOL iconsStripped; // @synthesize iconsStripped=_iconsStripped;
 @property (nonatomic) unsigned int notificationCenterLimit; // @synthesize notificationCenterLimit=_notificationCenterLimit;
+@property (nonatomic) BOOL phoneAllowsNotifications; // @synthesize phoneAllowsNotifications=_phoneAllowsNotifications;
 @property (nonatomic) unsigned int pushSettings; // @synthesize pushSettings=_pushSettings;
 @property (nonatomic) int sectionCategory; // @synthesize sectionCategory=_sectionCategory;
 @property (strong, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
@@ -101,6 +105,7 @@
 @property (strong, nonatomic) NSString *universalSectionID; // @synthesize universalSectionID=_universalSectionID;
 @property (nonatomic) unsigned int version; // @synthesize version=_version;
 
++ (Class)subsectionsType;
 - (void).cxx_destruct;
 - (void)addSubsections:(id)arg1;
 - (void)clearSubsections;

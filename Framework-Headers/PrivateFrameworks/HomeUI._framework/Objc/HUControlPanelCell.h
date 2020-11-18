@@ -9,6 +9,7 @@
 #import <HomeUI/HUCellProtocol-Protocol.h>
 
 @class HFItem, NSSet, NSString;
+@protocol HUResizableCellDelegate;
 
 @interface HUControlPanelCell : UITableViewCell <HUCellProtocol>
 {
@@ -20,6 +21,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
+@property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

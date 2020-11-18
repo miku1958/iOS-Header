@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <PhotoLibrary/ABPeoplePickerNavigationControllerDelegate-Protocol.h>
+#import <PhotoLibrary/CNContactPickerDelegate-Protocol.h>
 #import <PhotoLibrary/MFContactsSearchConsumer-Protocol.h>
 #import <PhotoLibrary/UIPopoverControllerDelegate-Protocol.h>
 #import <PhotoLibrary/UITableViewDataSource-Protocol.h>
@@ -15,7 +15,7 @@
 @class MFContactsSearchManager, MFContactsSearchResultsModel, MFSearchShadowView, NSArray, NSNumber, NSString, PLComposeRecipientView, UIPopoverController, UIScrollView, UITableView;
 @protocol PLComposeRecipientViewControllerDelegate;
 
-@interface PLComposeRecipientViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, MFContactsSearchConsumer, UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate>
+@interface PLComposeRecipientViewController : UIViewController <CNContactPickerDelegate, MFContactsSearchConsumer, UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate>
 {
     PLComposeRecipientView *_recipientView;
     UIScrollView *_recipientContainerView;
@@ -36,7 +36,6 @@
         unsigned int offsettingForResultsTable:1;
         unsigned int wasFirstResponder:1;
     } _flags;
-    NSArray *_properties;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -48,8 +47,9 @@
 @property (readonly) Class superclass;
 
 + (void)recordRecentInvitationRecipient:(id)arg1 displayName:(id)arg2 date:(id)arg3;
+- (void)_addRecipientFromSelectedContactProperty:(id)arg1;
 - (void *)_addressBook;
-- (void)_dismissPeoplePicker:(id)arg1;
+- (void)_dismissContactPicker:(id)arg1;
 - (void)_forceDismissPeoplePickerPopover;
 - (void)_keyboardSizeDidChange:(id)arg1;
 - (id)_newSearchResultsTable;
@@ -75,6 +75,9 @@
 - (void)composeRecipientViewRequestAddRecipient:(id)arg1;
 - (void)composeRecipientViewReturnPressed:(id)arg1;
 - (void)consumeSearchResults:(id)arg1 type:(unsigned long long)arg2 taskID:(id)arg3;
+- (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
+- (void)contactPicker:(id)arg1 didSelectContactProperty:(id)arg2;
+- (void)contactPickerDidCancel:(id)arg1;
 - (void)dealloc;
 - (void)didReceiveMemoryWarning;
 - (void)didRotateFromInterfaceOrientation:(long long)arg1;
@@ -86,13 +89,9 @@
 - (void)loadView;
 - (void)makeRecipientViewFirstResponder;
 - (void)makeRecipientViewResignFirstResponder;
-- (BOOL)peoplePickerNavigationController:(id)arg1 shouldContinueAfterSelectingPerson:(void *)arg2;
-- (BOOL)peoplePickerNavigationController:(id)arg1 shouldContinueAfterSelectingPerson:(void *)arg2 property:(int)arg3 identifier:(int)arg4;
-- (void)peoplePickerNavigationControllerDidCancel:(id)arg1;
 - (void)popoverControllerDidDismissPopover:(id)arg1;
 - (id)recipients;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
-- (BOOL)shouldShowCardForPerson:(void *)arg1 peoplePicker:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

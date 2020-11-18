@@ -60,11 +60,29 @@ struct NSMutableSet {
     Class _field1;
 };
 
+struct NSSet {
+    Class _field1;
+};
+
 struct UIEdgeInsets {
     double top;
     double left;
     double bottom;
     double right;
+};
+
+struct _NSRange {
+    unsigned long long location;
+    unsigned long long length;
+};
+
+struct __SecKey {
+    struct __CFRuntimeBase {
+        unsigned long long _field1;
+        _Atomic unsigned long long _field2;
+    } _field1;
+    struct __SecKeyDescriptor *_field2;
+    void *_field3;
 };
 
 struct __sbuf {
@@ -90,16 +108,7 @@ typedef struct {
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
 
-// Ambiguous groups
 typedef struct {
-    unsigned int timestamp:1;
-    unsigned int count:1;
-    unsigned int errorCode:1;
-    unsigned int found:1;
-} CDStruct_ff718a68;
-
-typedef struct {
-    unsigned int timestamp:1;
-    unsigned int errorCode:1;
-} CDStruct_64772c88;
+    unsigned int val[8];
+} CDStruct_4c969caf;
 

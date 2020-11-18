@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <CoreHAP/NSSecureCoding-Protocol.h>
 
 @class NSData;
 
-@interface HAPPairingKey : NSObject <NSSecureCoding>
+@interface HAPPairingKey : HMFObject <NSSecureCoding>
 {
     NSData *_data;
 }

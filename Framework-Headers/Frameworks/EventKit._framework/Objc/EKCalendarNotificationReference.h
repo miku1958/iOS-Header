@@ -6,12 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
-@class EKCalendarNotification, EKEventStore, NSDate;
+@class EKCalendarNotification, EKEventStore, EKObjectID, NSDate;
 
-__attribute__((visibility("hidden")))
 @interface EKCalendarNotificationReference : NSObject
 {
-    CDStruct_f683c4ba _objectID;
+    EKObjectID *_objectID;
     NSDate *_date;
     EKEventStore *_eventStore;
     EKCalendarNotification *_notification;
@@ -24,8 +23,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (long long)_notificationTypeForResourceChange:(id)arg1 notificationType:(int)arg2;
 - (id)description;
-- (id)initWithType:(int)arg1 objectID:(CDStruct_f683c4ba)arg2 date:(id)arg3 eventStore:(id)arg4;
-- (id)initWithType:(int)arg1 objectID:(CDStruct_f683c4ba)arg2 eventStore:(id)arg3;
+- (id)initWithType:(int)arg1 objectID:(id)arg2 date:(id)arg3 eventStore:(id)arg4;
+- (id)initWithType:(int)arg1 objectID:(id)arg2 eventStore:(id)arg3;
 
 @end
 

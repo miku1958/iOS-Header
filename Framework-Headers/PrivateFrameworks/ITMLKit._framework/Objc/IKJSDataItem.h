@@ -11,13 +11,15 @@
 #import <ITMLKit/_IKJSDataItem-Protocol.h>
 #import <ITMLKit/_IKJSDataItemProxy-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString;
+@class JSManagedValue, NSArray, NSMutableArray, NSString;
 
 @interface IKJSDataItem : IKJSObject <NSObject, IKJSDataItem, _IKJSDataItemProxy, _IKJSDataItem>
 {
     NSMutableArray *_observerRecords;
     NSString *_type;
     NSString *_identifier;
+    JSManagedValue *_managedObject;
+    BOOL _observersEnabled;
     IKJSDataItem *_parent;
     NSArray *_parentAccessorSequence;
 }
@@ -26,12 +28,16 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier;
+@property (nonatomic) BOOL observersEnabled; // @synthesize observersEnabled=_observersEnabled;
 @property (readonly, weak, nonatomic) IKJSDataItem *parent; // @synthesize parent=_parent;
 @property (readonly, copy, nonatomic) NSArray *parentAccessorSequence; // @synthesize parentAccessorSequence=_parentAccessorSequence;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *type;
 
++ (id)boxObject:(id)arg1;
 - (void).cxx_destruct;
+- (id)_clonedObserverRecords;
+- (BOOL)_isBoxed;
 - (void)_notifyObserversForPathString:(id)arg1;
 - (void)_notifyObserversForSubpathString:(id)arg1 inDataItem:(id)arg2;
 - (void)_setParent:(id)arg1 accessorSequence:(id)arg2;
@@ -40,12 +46,14 @@
 - (void)addObserver:(id)arg1 forSubscriptsOfPropertyPathWithString:(id)arg2;
 - (id)asPrivateIKJSDataItem;
 - (id)getPropertyPath:(id)arg1;
+- (id)initWithObject:(id)arg1;
 - (id)initWithType:(id)arg1:(id)arg2;
 - (void)removeObserver:(id)arg1;
 - (void)resetValueForPropertyPath:(id)arg1;
 - (void)setPropertyPath:(id)arg1:(id)arg2;
 - (void)setValue:(id)arg1 forPropertyPath:(id)arg2;
 - (void)touchPropertyPath:(id)arg1;
+- (id)unbox;
 - (id)valueForPropertyPath:(id)arg1;
 - (id)valuesForPropertyPath:(id)arg1 subscriptRange:(struct _NSRange)arg2;
 

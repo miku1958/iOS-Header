@@ -4,15 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUILayoutFreeSectionView.h>
+#import <SearchUI/SearchUICardSectionView.h>
 
-@interface SearchUIKeyValueDataCardSectionView : SearchUILayoutFreeSectionView
+@class TLKKeyValueView;
+
+@interface SearchUIKeyValueDataCardSectionView : SearchUICardSectionView
 {
 }
 
-- (id)gridOfViewsForSection:(id)arg1;
-- (id)initWithCardSection:(id)arg1 controller:(id)arg2 style:(unsigned long long)arg3;
-- (id)labelForString:(id)arg1 vibrant:(BOOL)arg2;
+@property (strong) TLKKeyValueView *contentView; // @dynamic contentView;
+
++ (int)separatorStyleForCardSection:(id)arg1;
++ (BOOL)supportsRecyclingForCardSection:(id)arg1;
+- (id)convertSFKeyValueData:(id)arg1;
+- (id)setupContentView;
+- (void)updateWithCardSection:(id)arg1;
 
 @end
 

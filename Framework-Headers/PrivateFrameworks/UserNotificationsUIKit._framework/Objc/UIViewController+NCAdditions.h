@@ -10,6 +10,7 @@
 
 @property (nonatomic, setter=setNCTransitionAnimationState:) long long ncTransitionAnimationState; // @dynamic ncTransitionAnimationState;
 
+- (id)nc_presentationContextDefiningViewController;
 - (id)nc_presentationControllerIfPresented;
 @end
 

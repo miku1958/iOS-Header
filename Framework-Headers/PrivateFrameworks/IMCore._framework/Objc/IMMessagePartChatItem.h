@@ -17,12 +17,14 @@
     struct _NSRange _messagePartRange;
     NSArray *_visibleAssociatedMessageChatItems;
     NSArray *_messageEditChatItems;
+    BOOL _isBusiness;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long index; // @synthesize index=_index;
+@property (nonatomic) BOOL isBusiness; // @synthesize isBusiness=_isBusiness;
 @property (readonly, nonatomic) NSArray *messageEditChatItems; // @synthesize messageEditChatItems=_messageEditChatItems;
 @property (nonatomic) struct _NSRange messagePartRange; // @synthesize messagePartRange=_messagePartRange;
 @property (readonly) Class superclass;
@@ -34,7 +36,7 @@
 + (BOOL)_isWhiteListedURL:(id)arg1;
 + (id)_messageItemWithPartsDeleted:(id)arg1 fromMessageItem:(id)arg2;
 + (id)_newMessagePartsForMessageItem:(id)arg1;
-+ (id)_newMessagePartsForMessageItem:(id)arg1 shouldDisplayLink:(BOOL)arg2;
++ (id)_newMessagePartsForMessageItem:(id)arg1 shouldDisplayLink:(BOOL)arg2 isBusiness:(BOOL)arg3;
 + (BOOL)_testingSupportsURL:(id)arg1;
 - (void).cxx_destruct;
 - (id)_initWithItem:(id)arg1 messagePartRange:(struct _NSRange)arg2;

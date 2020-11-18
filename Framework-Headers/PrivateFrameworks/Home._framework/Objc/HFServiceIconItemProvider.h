@@ -6,20 +6,23 @@
 
 #import <Home/HFItemProvider.h>
 
-@class NSSet, NSString;
+@class HMHome, NSSet, NSString;
 
 @interface HFServiceIconItemProvider : HFItemProvider
 {
     NSString *_serviceType;
+    HMHome *_home;
     NSSet *_iconItems;
 }
 
+@property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (copy, nonatomic) NSSet *iconItems; // @synthesize iconItems=_iconItems;
 @property (copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 - (id)initWithServiceType:(id)arg1 home:(id)arg2;
-- (id)invalidationReasons;
 - (id)items;
 - (id)reloadItems;
 

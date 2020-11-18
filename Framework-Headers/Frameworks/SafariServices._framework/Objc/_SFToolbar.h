@@ -14,7 +14,6 @@
     _UIBackdropViewSettings *_customBackdropSettings;
     UIView *_separator;
     BOOL _usesDarkTheme;
-    BOOL _usesContainedAppearance;
     long long _placement;
     unsigned long long _tintStyle;
 }
@@ -25,7 +24,6 @@
 @property (readonly, nonatomic) long long placement; // @synthesize placement=_placement;
 @property (nonatomic) unsigned long long tintStyle; // @synthesize tintStyle=_tintStyle;
 @property (readonly, nonatomic) long long toolbarSize;
-@property (nonatomic) BOOL usesContainedAppearance; // @synthesize usesContainedAppearance=_usesContainedAppearance;
 
 + (double)defaultHeight;
 - (void).cxx_destruct;

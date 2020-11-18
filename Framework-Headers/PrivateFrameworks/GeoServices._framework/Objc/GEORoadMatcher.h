@@ -4,27 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <GeoServices/GEOMapAccessRestrictions-Protocol.h>
+@class GEOMapFeatureAccess;
 
-@class GEOMapAccess, NSString;
-
-@interface GEORoadMatcher : NSObject <GEOMapAccessRestrictions>
+@interface GEORoadMatcher : NSObject
 {
-    GEOMapAccess *_map;
+    GEOMapFeatureAccess *_mapFeatureAccess;
     BOOL _useRawLocations;
 }
 
-@property (readonly, nonatomic) BOOL allowsNetworkTileLoad;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 @property (nonatomic) BOOL useRawLocations; // @synthesize useRawLocations=_useRawLocations;
 
-- (id)_bestSegmentForTile:(id)arg1 location:(id)arg2 transportType:(int)arg3;
-- (id)_tilesAround:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2;
+- (void).cxx_destruct;
+- (id)_bestCandidateSegmentForLocation:(id)arg1 transportType:(int)arg2;
 - (void)dealloc;
 - (id)init;
 - (id)matchLocation:(id)arg1 forTransportType:(int)arg2;

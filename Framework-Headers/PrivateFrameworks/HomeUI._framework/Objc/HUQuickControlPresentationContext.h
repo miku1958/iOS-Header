@@ -8,19 +8,21 @@
 
 #import <HomeUI/NSCopying-Protocol.h>
 
-@class HFItem, HMHome, UIViewController;
+@class HFItem, HMHome, NSSet, UIViewController;
 @protocol NSCopying;
 
 @interface HUQuickControlPresentationContext : NSObject <NSCopying>
 {
     unsigned long long _colorStyle;
     HFItem<NSCopying> *_item;
+    NSSet *_controlItems;
     HMHome *_home;
     UIViewController *_sourceViewController;
     struct CGRect _sourceRect;
 }
 
 @property (nonatomic) unsigned long long colorStyle; // @synthesize colorStyle=_colorStyle;
+@property (copy, nonatomic) NSSet *controlItems; // @synthesize controlItems=_controlItems;
 @property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) HFItem<NSCopying> *item; // @synthesize item=_item;
 @property (nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;

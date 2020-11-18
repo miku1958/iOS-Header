@@ -8,41 +8,45 @@
 
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
-#import <HealthDaemon/HDHealthDataCollectionManager-Protocol.h>
 
-@class HDDemoManager, HDPrimaryProfile, NSDate, NSMutableDictionary, NSString;
-@protocol HDDataCollectionManagerDelegate, OS_dispatch_queue;
+@class HDBTLEHeartRateDataCollector, HDDemoManager, HDProfile, NSDate, NSMutableArray, NSMutableDictionary, NSString;
+@protocol OS_dispatch_queue;
 
-@interface HDDataCollectionManager : NSObject <HDDiagnosticObject, HDHealthDaemonReadyObserver, HDHealthDataCollectionManager>
+@interface HDDataCollectionManager : NSObject <HDDiagnosticObject, HDHealthDaemonReadyObserver>
 {
     NSDate *_lastLaunchUpdate;
-    HDPrimaryProfile *_primaryProfile;
-    id<HDDataCollectionManagerDelegate> _delegate;
+    NSMutableDictionary *_dataAggregatorsByType;
+    NSMutableArray *_builtinCollectors;
+    HDProfile *_profile;
     NSMutableDictionary *_dataCollectorsByType;
     NSMutableDictionary *_observersByType;
+    HDBTLEHeartRateDataCollector *_blteHeartRateDataCollector;
     NSObject<OS_dispatch_queue> *_queue;
     HDDemoManager *_demoManager;
 }
 
+@property (strong, nonatomic) HDBTLEHeartRateDataCollector *blteHeartRateDataCollector; // @synthesize blteHeartRateDataCollector=_blteHeartRateDataCollector;
 @property (strong, nonatomic) NSMutableDictionary *dataCollectorsByType; // @synthesize dataCollectorsByType=_dataCollectorsByType;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<HDDataCollectionManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) HDDemoManager *demoManager; // @synthesize demoManager=_demoManager;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableDictionary *observersByType; // @synthesize observersByType=_observersByType;
-@property (weak, nonatomic) HDPrimaryProfile *primaryProfile; // @synthesize primaryProfile=_primaryProfile;
+@property (readonly, weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (Class)_aggregatorClassForObjectType:(id)arg1;
 - (id)_dataCollectorsDiagnosticDescription;
 - (void)_demoObjectsReceived:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_observersDescription;
 - (void)_queue_addDataCollector:(id)arg1;
 - (void)_queue_adjustDataCollectionForType:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)_queue_aggregatorForType:(id)arg1;
 - (void)_queue_alertCollectorsOfTypesWithObservers;
-- (CDStruct_fd1107da)_queue_collectionStateForType:(id)arg1;
+- (CDStruct_0714bc26)_queue_collectionStateForType:(id)arg1;
+- (void)_queue_createBuiltinCollectors;
 - (BOOL)_queue_dataReceived:(id)arg1 provenance:(id)arg2 isDemoData:(BOOL)arg3 error:(id *)arg4;
 - (double)_queue_defaultCollectionIntervalForType:(id)arg1;
 - (id)_queue_demoManagerCreatingIfNecessary;
@@ -51,6 +55,8 @@
 - (void)_updateDataCollectorsWithPrivacySettings;
 - (void)addDataCollectionObserver:(id)arg1 type:(id)arg2 collectionInterval:(double)arg3 state:(id)arg4;
 - (void)addDataCollector:(id)arg1;
+- (id)aggregatorForType:(id)arg1;
+- (id)btleHeartRateDataCollector;
 - (void)daemonReady:(id)arg1;
 - (void)dataCollectionObserver:(id)arg1 didChangeState:(id)arg2;
 - (void)dealloc;
@@ -58,8 +64,9 @@
 - (id)diagnosticDescription;
 - (void)generateFakeDataForActivityType:(long long)arg1 minutes:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)immediateUpdateForType:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithPrimaryProfile:(id)arg1 delegate:(id)arg2;
+- (id)initWithProfile:(id)arg1;
 - (void)periodicUpdate;
+- (id)pluginDataCollectors;
 - (void)removeDataCollectionObserver:(id)arg1;
 - (void)removeDataCollectionObserver:(id)arg1 type:(id)arg2;
 - (void)sensorDataArrayReceived:(id)arg1 deviceEntity:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;

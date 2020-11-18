@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) BOOL canShowAlerts;
 @property (readonly, nonatomic) unsigned long long deactivationReasons;
+@property (readonly, nonatomic) long long deviceOrientation;
 @property (readonly, nonatomic) BOOL deviceOrientationEventsEnabled;
 @property (readonly, nonatomic) BOOL forcedStatusBarForegroundTransparent;
 @property (readonly, strong, nonatomic) NSNumber *forcedStatusBarHidden;

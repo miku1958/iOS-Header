@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreDAV/CoreDAVSubmittable-Protocol.h>
 
@@ -59,12 +59,12 @@
     NSString *_uniqueID;
 }
 
-@property (nonatomic) id<CoreDAVAccountInfoProvider> accountInfoProvider; // @synthesize accountInfoProvider=_accountInfoProvider;
+@property (weak, nonatomic) id<CoreDAVAccountInfoProvider> accountInfoProvider; // @synthesize accountInfoProvider=_accountInfoProvider;
 @property (nonatomic) BOOL allowAutomaticRedirects; // @synthesize allowAutomaticRedirects=_allowAutomaticRedirects;
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (strong, nonatomic) id context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<CoreDAVTaskDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<CoreDAVTaskDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) int depth; // @synthesize depth=_depth;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
@@ -77,13 +77,14 @@
 @property (copy, nonatomic) CDUnknownBlockType responseProgressBlock; // @synthesize responseProgressBlock=_responseProgressBlock;
 @property (nonatomic) long long responseStatusCode; // @synthesize responseStatusCode=_responseStatusCode;
 @property (readonly) Class superclass;
-@property (nonatomic) id<CoreDAVTaskManager> taskManager; // @synthesize taskManager=_taskManager;
+@property (weak, nonatomic) id<CoreDAVTaskManager> taskManager; // @synthesize taskManager=_taskManager;
 @property (nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
 @property (nonatomic) unsigned long long totalBytesReceived; // @synthesize totalBytesReceived=_totalBytesReceived;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 
 + (id)stringFromDepth:(int)arg1;
 + (unsigned int)uniqueQueryID;
+- (void).cxx_destruct;
 - (id)_applyAuthenticationChain:(struct __CFArray *)arg1 toRequest:(id)arg2;
 - (id)_applyStorageSession:(struct __CFURLStorageSession *)arg1 toRequest:(id)arg2;
 - (id)_compressBodyData:(id)arg1;

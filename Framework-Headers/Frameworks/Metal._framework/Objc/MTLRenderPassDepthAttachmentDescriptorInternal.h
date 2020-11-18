@@ -41,10 +41,12 @@ __attribute__((visibility("hidden")))
 - (void)setResolveTexture:(id)arg1;
 - (void)setSlice:(unsigned long long)arg1;
 - (void)setStoreAction:(unsigned long long)arg1;
+- (void)setStoreActionOptions:(unsigned long long)arg1;
 - (void)setTexture:(id)arg1;
 - (void)setYInvert:(BOOL)arg1;
 - (unsigned long long)slice;
 - (unsigned long long)storeAction;
+- (unsigned long long)storeActionOptions;
 - (id)texture;
 - (BOOL)yInvert;
 

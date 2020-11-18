@@ -36,14 +36,14 @@
 - (void)_updaterDidCancelOrFinish:(id)arg1;
 - (void)addUpdateObserver:(id)arg1;
 - (id)availableStockUpdater;
-- (void)backgroundUpdateAllStocksBasic:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 finishEventsHandler:(CDUnknownBlockType)arg3;
+- (void)backgroundUpdateAllStocksBasic:(id)arg1 earliestBeginDate:(id)arg2;
 - (void)cancel;
 - (void)dealloc;
 - (void)failWithError:(id)arg1;
 - (BOOL)hadError;
 - (id)init;
 - (BOOL)isLoading;
-- (void)reestablishBackgroundSession;
+- (void)reestablishBackgroundSessionForManager:(id)arg1 stocks:(id)arg2 withFinishEventsHandler:(CDUnknownBlockType)arg3;
 - (void)removeUpdateObserver:(id)arg1;
 - (void)reset;
 - (void)resetUpdaters;

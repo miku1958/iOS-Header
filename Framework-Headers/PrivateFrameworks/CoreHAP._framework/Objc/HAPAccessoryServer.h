@@ -4,45 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class HAPAccessory, NSArray, NSHashTable, NSNumber, NSString;
-@protocol HAPAccessoryServerDelegate, HAPAccessoryServerForBridgeDelegate, HAPKeyStore, OS_dispatch_queue;
+@class HAPAccessory, HAPDeviceID, HMFVersion, NSArray, NSData, NSHashTable, NSNumber, NSObject, NSString;
+@protocol HAPAccessoryServerDelegate, HAPKeyStore, OS_dispatch_queue;
 
-@interface HAPAccessoryServer : NSObject
+@interface HAPAccessoryServer : HMFObject
 {
     NSString *_name;
     NSString *_identifier;
     BOOL _hasPairings;
     BOOL _reachable;
     BOOL _securitySessionOpen;
+    BOOL _supportsTimedWrite;
     BOOL _incompatibleUpdate;
     NSNumber *_category;
     unsigned long long _configNumber;
     id<HAPAccessoryServerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
+    NSData *_setupHash;
     HAPAccessory *_primaryAccessory;
     NSArray *_accessories;
-    NSArray *_associatedAccessories;
-    NSArray *_discoveredAccessories;
     long long _linkType;
+    HMFVersion *_version;
     NSHashTable *_internalDelegates;
     NSObject<OS_dispatch_queue> *_internalDelegateQueue;
-    id<HAPAccessoryServerForBridgeDelegate> _bridgeDelegate;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     id<HAPKeyStore> _keyStore;
 }
 
 @property (copy, nonatomic) NSArray *accessories; // @synthesize accessories=_accessories;
-@property (copy, nonatomic) NSArray *associatedAccessories; // @synthesize associatedAccessories=_associatedAccessories;
-@property (weak) id<HAPAccessoryServerForBridgeDelegate> bridgeDelegate; // @synthesize bridgeDelegate=_bridgeDelegate;
 @property (copy, nonatomic) NSNumber *category; // @synthesize category=_category;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (nonatomic) unsigned long long configNumber; // @synthesize configNumber=_configNumber;
 @property (readonly, weak) id<HAPAccessoryServerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
-@property (copy, nonatomic) NSArray *discoveredAccessories; // @synthesize discoveredAccessories=_discoveredAccessories;
+@property (readonly, copy) HAPDeviceID *deviceID;
 @property (nonatomic) BOOL hasPairings; // @synthesize hasPairings=_hasPairings;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic, getter=isIncompatibleUpdate) BOOL incompatibleUpdate; // @synthesize incompatibleUpdate=_incompatibleUpdate;
@@ -56,30 +54,34 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (nonatomic, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
 @property (getter=isSecuritySessionOpen) BOOL securitySessionOpen; // @synthesize securitySessionOpen=_securitySessionOpen;
+@property (copy, nonatomic) NSData *setupHash; // @synthesize setupHash=_setupHash;
+@property (nonatomic) BOOL supportsTimedWrite; // @synthesize supportsTimedWrite=_supportsTimedWrite;
+@property (copy) HMFVersion *version; // @synthesize version=_version;
 
 + (BOOL)isAccessoryServerWithIdentifierPaired:(id)arg1 keyStore:(id)arg2;
 - (void).cxx_destruct;
 - (void)addInternalDelegate:(id)arg1;
-- (BOOL)addPairingWithIdentifier:(id)arg1 publicKey:(id)arg2 admin:(BOOL)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)addPairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)continuePairingAfterAuthPrompt;
 - (void)discoverAccessories;
 - (void)enableEvents:(BOOL)arg1 forCharacteristics:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3 queue:(id)arg4;
 - (void)enumerateInternalDelegatesUsingBlock:(CDUnknownBlockType)arg1;
-- (void)handleUpdatesForCharacteristics:(id)arg1;
+- (void)handleUpdatesForCharacteristics:(id)arg1 stateNumber:(id)arg2;
 - (void)identifyWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithKeystore:(id)arg1;
 - (void)listPairingsWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)matchesSetupID:(id)arg1;
 - (void)notifyDelegateUpdatedCategory:(id)arg1;
 - (void)notifyDelegateUpdatedHasPairings:(BOOL)arg1;
 - (void)notifyDelegateUpdatedName:(id)arg1;
 - (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)reconfirm;
 - (void)removeInternalDelegate:(id)arg1;
+- (void)removePairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)removePairingForCurrentControllerOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (BOOL)removePairingWithIdentifier:(id)arg1 publicKey:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)requiresTimedWrite:(id)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
-- (void)setTheBridgeDelegate:(id)arg1;
 - (void)startPairing;
 - (BOOL)stopPairingWithError:(id *)arg1;
 - (BOOL)tryPairingPassword:(id)arg1 error:(id *)arg2;

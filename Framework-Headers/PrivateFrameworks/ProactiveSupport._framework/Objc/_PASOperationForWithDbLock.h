@@ -4,26 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSOperation.h>
+#import <Foundation/NSBlockOperation.h>
 
 @class NSObject;
-@protocol OS_dispatch_group;
+@protocol OS_dispatch_semaphore;
 
-@interface _PASOperationForWithDbLock : NSOperation
+@interface _PASOperationForWithDbLock : NSBlockOperation
 {
-    NSObject<OS_dispatch_group> *_group;
-    BOOL _started;
-    BOOL _completed;
+    NSObject<OS_dispatch_semaphore> *_semaphoreStart;
+    NSObject<OS_dispatch_semaphore> *_semaphoreFinish;
 }
 
-+ (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (void).cxx_destruct;
+- (void)block;
 - (void)complete;
 - (id)init;
-- (BOOL)isAsynchronous;
-- (BOOL)isExecuting;
-- (BOOL)isFinished;
-- (void)start;
 - (void)waitForStart;
 
 @end

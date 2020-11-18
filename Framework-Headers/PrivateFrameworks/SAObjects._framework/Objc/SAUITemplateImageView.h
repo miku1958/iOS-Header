@@ -19,9 +19,12 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SAUIImageResource *image;
-@property (copy, nonatomic) NSArray *monogramName; // @dynamic monogramName;
+@property (nonatomic) double imagePointHeight;
+@property (nonatomic) double imagePointWidth;
+@property (copy, nonatomic) NSArray *monogramName;
 @property (copy, nonatomic) NSString *style;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSArray *themeImages;
 
 + (id)imageView;
 + (id)imageViewWithDictionary:(id)arg1 context:(id)arg2;

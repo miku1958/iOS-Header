@@ -6,15 +6,15 @@
 
 #import <Foundation/NSObject.h>
 
-@class MPContext;
+@class CVMLMPContext;
 
 __attribute__((visibility("hidden")))
 @interface MomentProcessor : NSObject
 {
-    MPContext *_context;
+    CVMLMPContext *_context;
 }
 
-@property (strong, nonatomic) MPContext *context; // @synthesize context=_context;
+@property (strong, nonatomic) CVMLMPContext *context; // @synthesize context=_context;
 
 + (id)sortImageDescriptorsChronologically:(id)arg1;
 - (void).cxx_destruct;

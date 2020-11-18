@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class NSDate;
 
-@interface CKMetric : NSObject <NSSecureCoding>
+@interface CKMetric : NSObject <NSCopying, NSSecureCoding>
 {
     NSDate *_startDate;
     double _duration;
@@ -34,9 +35,11 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)unionMetric:(id)arg1;
 
 @end
 

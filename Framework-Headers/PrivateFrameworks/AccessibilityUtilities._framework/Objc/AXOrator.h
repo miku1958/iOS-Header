@@ -46,7 +46,7 @@
 @property (nonatomic) double audioInterruptionStartedTime; // @synthesize audioInterruptionStartedTime=_audioInterruptionStartedTime;
 @property (copy, nonatomic) NSString *content;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<AXOratorDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<AXOratorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didRequestPauseSpeakingDuringAudioInterruption; // @synthesize didRequestPauseSpeakingDuringAudioInterruption=_didRequestPauseSpeakingDuringAudioInterruption;
 @property (nonatomic) BOOL didRequestResumeSpeakingDuringAudioInterruption; // @synthesize didRequestResumeSpeakingDuringAudioInterruption=_didRequestResumeSpeakingDuringAudioInterruption;
@@ -74,6 +74,7 @@
 @property (strong, nonatomic) NSString *voiceIdentifier; // @synthesize voiceIdentifier=_voiceIdentifier;
 @property (nonatomic) BOOL wasSpeakingBeforeAudioInterruption; // @synthesize wasSpeakingBeforeAudioInterruption=_wasSpeakingBeforeAudioInterruption;
 
+- (void).cxx_destruct;
 - (BOOL)_canSpeakTaggedContent:(id)arg1;
 - (BOOL)_changeSpeakingSpeed:(BOOL)arg1;
 - (void)_clearAllContentState;

@@ -65,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)_performChanges:(CDUnknownBlockType)arg1;
 - (void)_performChanges:(CDUnknownBlockType)arg1 withAnimatorBlock:(CDUnknownBlockType)arg2;
 - (void)_setNeedsUpdate;
+- (BOOL)_shouldStretchDuringCrossfadeTransition;
 - (void)_updateAccessoryTopOutsetViewIfNeeded;
 - (void)_updateAccessoryViewIfNeeded;
 - (void)_updateIfNeededWithAnimatorBlock:(CDUnknownBlockType)arg1;
@@ -73,7 +74,6 @@ __attribute__((visibility("hidden")))
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)pu_animateBarTransitionWithContext:(id)arg1;
 - (void)setBarStyle:(long long)arg1;
 - (void)setTintColor:(id)arg1;
 - (void)setToolbarViewModel:(id)arg1 withAnimatorBlock:(CDUnknownBlockType)arg2;

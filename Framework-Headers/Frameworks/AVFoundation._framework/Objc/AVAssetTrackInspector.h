@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) long long alternateGroupID;
 @property (readonly, nonatomic) NSArray *availableMetadataFormats;
 @property (readonly, nonatomic) NSArray *commonMetadata;
+@property (readonly, nonatomic, getter=isDecodable) BOOL decodable;
 @property (readonly, nonatomic) long long defaultAlternateGroupID;
 @property (readonly, nonatomic) struct CGSize dimensions;
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled;

@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKit/NSObject-Protocol.h>
+#import <PassKitCore/NSObject-Protocol.h>
 
-@class NSError, PKPaymentAuthorizationCoordinator, PKServiceProviderPurchase;
+@class NSError, PKAuthorizedPeerPaymentQuote, PKPaymentAuthorizationCoordinator, PKServiceProviderPurchase;
 
 @protocol PKPaymentAuthorizationCoordinatorPrivateDelegate <NSObject>
 
 @optional
+- (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didAuthorizePeerPaymentQuote:(PKAuthorizedPeerPaymentQuote *)arg2 handler:(void (^)(PKPaymentAuthorizationResult *))arg3;
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didAuthorizePurchase:(PKServiceProviderPurchase *)arg2 completion:(void (^)(long long))arg3;
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didRequestMerchantSession:(void (^)(PKPaymentMerchantSession *, NSError *))arg2;
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 willFinishWithError:(NSError *)arg2;

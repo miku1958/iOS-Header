@@ -19,7 +19,7 @@
 
 @property (readonly, copy, nonatomic) NSString *homeName; // @synthesize homeName=_homeName;
 @property (readonly, copy, nonatomic) NSUUID *homeUUID; // @synthesize homeUUID=_homeUUID;
-@property (readonly, copy, nonatomic) NSString *inviterName; // @synthesize inviterName=_inviterName;
+@property (copy, nonatomic) NSString *inviterName; // @synthesize inviterName=_inviterName;
 @property (readonly, copy, nonatomic) NSUUID *inviterUUID; // @synthesize inviterUUID=_inviterUUID;
 @property (readonly, nonatomic) NSString *inviterUserID; // @synthesize inviterUserID=_inviterUserID;
 

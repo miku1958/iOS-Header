@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -25,6 +25,7 @@
 + (id)_safelyGetObserverForIdentifier:(unsigned long long)arg1;
 + (unsigned long long)_safelyRegisterObserver:(id)arg1;
 + (void)_safelyRemoveObserverForIdentifier:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (void)_handleNotificationWithName:(id)arg1 object:(const void *)arg2 userInfo:(id)arg3;
 - (id)_notificationTypeDescription;
 - (void)_startObserving;

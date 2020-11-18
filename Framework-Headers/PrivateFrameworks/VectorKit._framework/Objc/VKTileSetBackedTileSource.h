@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOActiveTileSet *tileSet; // @synthesize tileSet=_tileSet;
 
 - (double)_expirationInterval;
-- (void)_expireTiles;
+- (void)_expireTilesList:(id)arg1;
 - (double)_nextTileExpirationDate;
 - (void)_scheduleTileExpirationTimer:(double)arg1 forceUpdate:(BOOL)arg2;
 - (BOOL)canFetchTileForKey:(const struct VKTileKey *)arg1;
@@ -33,12 +33,16 @@ __attribute__((visibility("hidden")))
 - (long long)defaultMaximumZoomLevel;
 - (long long)defaultMinimumZoomLevel;
 - (struct _GEOTileKey)downloadKeyAtX:(unsigned int)arg1 y:(unsigned int)arg2 z:(unsigned int)arg3;
+- (void)expireTiles;
 - (BOOL)expires;
 - (void)fetchedTile:(id)arg1 forKey:(const struct VKTileKey *)arg2;
-- (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 sharedResources:(id)arg4;
-- (unsigned long long)mapLayerForZoomLevelRange;
+- (void)forceExpireTile:(const struct VKTileKey *)arg1;
+- (void)forceExpireTiles;
+- (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 sharedResources:(id)arg4 taskContext:(shared_ptr_e963992e)arg5;
+- (unsigned char)mapLayerForZoomLevelRange;
 - (unsigned int)maximumDownloadZoomLevel;
 - (long long)maximumZoomLevel;
+- (long long)maximumZoomLevelWithoutOverride;
 - (unsigned int)minimumDownloadZoomLevel;
 - (long long)minimumZoomLevel;
 - (void)populateVisibleTileSets:(id)arg1 withTiles:(id)arg2;

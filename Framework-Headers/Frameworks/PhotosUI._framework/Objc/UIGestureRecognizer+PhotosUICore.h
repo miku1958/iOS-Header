@@ -8,6 +8,7 @@
 
 @interface UIGestureRecognizer (PhotosUICore)
 - (void)px_cancel;
+- (BOOL)px_isPanGestureRecognizerOfScrollView:(id *)arg1;
 - (struct CGPoint)px_locationInCoordinateSpace:(id)arg1;
 @end
 

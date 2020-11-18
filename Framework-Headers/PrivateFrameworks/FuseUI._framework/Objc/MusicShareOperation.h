@@ -38,7 +38,6 @@
 - (void).cxx_destruct;
 - (void)_dispatchEvent;
 - (void)_dispatchEventForPlaylist;
-- (void)_presentHUD:(id)arg1;
 - (void)dispatchEvent;
 - (id)initWithMusicEntityValueContext:(id)arg1 forContainer:(BOOL)arg2;
 

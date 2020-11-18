@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSKeyValueProperty.h>
+#import <Foundation/NSKeyValueProperty.h>
 
 @class NSArray;
 

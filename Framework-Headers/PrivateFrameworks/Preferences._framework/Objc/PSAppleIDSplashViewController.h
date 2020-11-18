@@ -8,7 +8,7 @@
 
 #import <Preferences/RemoteUIControllerDelegate-Protocol.h>
 
-@class ABMonogrammer, AKAppleIDAuthenticationController, NSString, NSTimer, PSSpecifier, RemoteUIController, UIActivityIndicatorView, UIBarButtonItem, UIImageView;
+@class AKAppleIDAuthenticationController, CNMonogrammer, NSString, NSTimer, PSSpecifier, RemoteUIController, UIActivityIndicatorView, UIBarButtonItem, UIImageView;
 
 @interface PSAppleIDSplashViewController : PSListController <RemoteUIControllerDelegate>
 {
@@ -18,8 +18,9 @@
     UIBarButtonItem *_spinnerBarItem;
     UIBarButtonItem *_nextButtonBarItem;
     UIBarButtonItem *_cancelButtonBarItem;
-    ABMonogrammer *_monogrammer;
+    CNMonogrammer *_monogrammer;
     PSSpecifier *_createNewAccountButtonSpecifier;
+    PSSpecifier *_createNewAccountGroupSpecifier;
     PSSpecifier *_signInButtonSpecifier;
     NSString *_username;
     NSString *_password;
@@ -48,6 +49,7 @@
 - (void)_cancelButtonWasTapped:(id)arg1;
 - (void)_createNewAppleIDButtonWasTapped:(id)arg1;
 - (double)_heightForCreateNewAccountFooterWithWidth:(double)arg1;
+- (double)_heightForCreateNewAccountSpecifierWithWidth:(double)arg1;
 - (void)_iForgotButtonWasTapped:(id)arg1;
 - (void)_idleTimerFired;
 - (id)_monogrammer;
@@ -60,6 +62,7 @@
 - (void)_setInteractionEnabled:(BOOL)arg1;
 - (void)_setPassword:(id)arg1 withSpecifier:(id)arg2;
 - (void)_setUsername:(id)arg1 withSpecifier:(id)arg2;
+- (BOOL)_shouldAnchorCreateAccountButton;
 - (BOOL)_shouldShowCancelDone;
 - (void)_signInButtonWasTapped:(id)arg1;
 - (void)_signInWithUsername:(id)arg1 password:(id)arg2;
@@ -80,11 +83,14 @@
 - (id)serviceDescription;
 - (id)serviceIcon;
 - (id)serviceName;
+- (void)setUsername:(id)arg1;
+- (void)setUsernameEnabled:(BOOL)arg1;
 - (void)showBusyUI;
 - (id)specifiers;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (id)title;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

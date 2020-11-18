@@ -32,10 +32,10 @@
 @property (nonatomic) int trafficType; // @synthesize trafficType=_trafficType;
 @property (strong, nonatomic) GEOUserPreferences *userPreferences; // @synthesize userPreferences=_userPreferences;
 
+- (void).cxx_destruct;
 - (int)StringAsTrafficType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

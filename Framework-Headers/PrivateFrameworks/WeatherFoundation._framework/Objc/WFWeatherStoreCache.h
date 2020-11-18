@@ -47,6 +47,7 @@
 - (void)executeTransaction:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithURL:(id)arg1;
+- (void)removeAllObjects;
 - (void)removeObjectWithinDomain:(id)arg1 forKey:(id)arg2;
 - (void)writeCacheDictionaryToFile;
 

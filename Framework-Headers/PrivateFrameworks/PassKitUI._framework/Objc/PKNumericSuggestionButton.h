@@ -6,14 +6,16 @@
 
 #import <PassKitUI/PKNumericBorderButton.h>
 
-@class PKNumericSuggestion;
+@class PKNumericSuggestion, UIColor;
 
 @interface PKNumericSuggestionButton : PKNumericBorderButton
 {
+    UIColor *_textColor;
     PKNumericSuggestion *_suggestion;
 }
 
 @property (strong, nonatomic) PKNumericSuggestion *suggestion; // @synthesize suggestion=_suggestion;
+@property (copy, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 
 + (id)buttonWithSuggestion:(id)arg1;
 - (void).cxx_destruct;

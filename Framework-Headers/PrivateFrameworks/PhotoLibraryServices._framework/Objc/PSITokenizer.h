@@ -4,19 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSCharacterSet;
 
 @interface PSITokenizer : NSObject
 {
     NSCharacterSet *_excludedSingleCharacterSet;
+    void *_tokenizer;
+    struct __CFStringTokenizer *_nameTokenizer;
 }
 
 - (void)dealloc;
 - (id)init;
 - (id)newTokensFromString:(id)arg1 withOptions:(long long)arg2 outCopyRanges:(id *)arg3;
 - (id)normalizeString:(id)arg1 includeWildcard:(BOOL)arg2;
+- (void)tokenizePersonName:(id)arg1 tokenOutput:(struct tokenOutput_t *)arg2;
 - (void)tokenizeString:(id)arg1 withOptions:(long long)arg2 tokenOutput:(struct tokenOutput_t *)arg3;
 
 @end

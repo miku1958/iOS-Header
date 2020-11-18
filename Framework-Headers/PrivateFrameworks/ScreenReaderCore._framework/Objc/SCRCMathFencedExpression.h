@@ -18,10 +18,10 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *closeString; // @synthesize closeString=_closeString;
 @property (copy, nonatomic) NSString *openString; // @synthesize openString=_openString;
 
+- (void).cxx_destruct;
 - (id)_binomialCoefficientContent;
 - (BOOL)_isBinomialCoefficient;
 - (id)_treePositionForBinomialCoefficientContentWithOuterTreePosition:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dollarCodeDescriptionWithNumberOfOuterRadicals:(unsigned long long)arg1 treePosition:(id)arg2;
 - (unsigned long long)fractionLevel;

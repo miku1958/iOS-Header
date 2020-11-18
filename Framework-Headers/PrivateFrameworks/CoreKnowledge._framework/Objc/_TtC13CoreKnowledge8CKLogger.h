@@ -4,32 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <swiftCore/SwiftObject.h>
 
-@class MISSING_TYPE, NSString;
+@class MISSING_TYPE;
 
-@interface _TtC13CoreKnowledge8CKLogger : NSObject
+@interface _TtC13CoreKnowledge8CKLogger : SwiftObject
 {
-    MISSING_TYPE *name;
-    MISSING_TYPE *level;
-    MISSING_TYPE *settings;
-    MISSING_TYPE *enabled;
+    MISSING_TYPE *category;
 }
-
-@property (nonatomic) BOOL enabled; // @synthesize enabled;
-@property (nonatomic, readonly) NSString *name; // @synthesize name;
-
-+ (id)getLogger:(id)arg1;
-+ (BOOL)logToFileWithPath:(id)arg1;
-- (CDUnknownBlockType).cxx_destruct;
-- (void)debugMessage:(id)arg1;
-- (void)errorMessage:(id)arg1;
-- (void)infoMessage:(id)arg1;
-- (id)init;
-- (void)setFormatWithName:(BOOL)arg1 file:(BOOL)arg2 method:(BOOL)arg3;
-- (void)severeMessage:(id)arg1;
-- (void)traceMessage:(id)arg1;
-- (void)warnMessage:(id)arg1;
 
 @end
 

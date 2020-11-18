@@ -37,7 +37,7 @@
 - (void)bindString:(id)arg1 toStatement:(struct CPSqliteStatement *)arg2 withBindingOffset:(int *)arg3;
 - (id)callbackContext;
 - (void)dealloc;
-- (void)evaluateCallbackWithSqliteContext:(struct sqlite3_context *)arg1 predicateContext:(id)arg2 values:(struct Mem **)arg3 count:(int)arg4;
+- (void)evaluateCallbackWithSqliteContext:(struct sqlite3_context *)arg1 predicateContext:(id)arg2 values:(struct sqlite3_value **)arg3 count:(int)arg4;
 - (BOOL)hasCallback;
 - (id)init;
 - (BOOL)isValid;

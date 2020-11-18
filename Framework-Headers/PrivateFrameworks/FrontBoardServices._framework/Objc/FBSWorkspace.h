@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/FBSWorkspaceClientDelegate-Protocol.h>
 
-@class FBSSerialQueue, FBSWorkspaceClient, NSArray, NSHashTable, NSMutableDictionary, NSString;
+@class FBSSerialQueue, FBSWorkspaceClient, NSArray, NSMapTable, NSMutableDictionary, NSString;
 @protocol FBSWorkspaceDelegate, OS_dispatch_queue;
 
 @interface FBSWorkspace : NSObject <FBSWorkspaceClientDelegate>
@@ -19,8 +19,9 @@
     FBSSerialQueue *_callOutQueue;
     NSObject<OS_dispatch_queue> *_scenesQueue;
     NSMutableDictionary *_scenesByIdentifier;
-    NSHashTable *_preFenceTriggers;
+    NSMapTable *_triggerToFenceNameMap;
     BOOL _synchronizingFence;
+    unsigned long long _signpostName;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -12,19 +12,24 @@
 #import <PhotosUICore/PXScrollViewControllerObserver-Protocol.h>
 #import <PhotosUICore/PXUIViewControllerZoomTransitionEndPoint-Protocol.h>
 #import <PhotosUICore/PXWidgetCompositionDelegate-Protocol.h>
+#import <PhotosUICore/PXWidgetUnlockDelegate-Protocol.h>
 #import <PhotosUICore/UIViewControllerPreviewingDelegate-Protocol.h>
 #import <PhotosUICore/UIViewControllerPreviewingDelegate_Private-Protocol.h>
 
 @class NSArray, NSMapTable, NSMutableArray, NSString, PXAssetCollectionActionController, PXBarsController, PXPhotosDetailsContext, PXPhotosDetailsHeaderTileWidget, PXPhotosDetailsSpecManager, PXPhotosDetailsViewModel, PXScrollViewController, PXSwipeSelectionManager, PXTilingController, PXUIScrollViewController, PXWidgetComposition, PXWidgetSpec, UIScrollView, UIView, _PXPhotosDetailsPreviewOrbContext;
-@protocol PXActionPerformerDelegate, PXUIWidget, UIViewControllerPreviewing;
+@protocol PXActionPerformerDelegate, PXPhotosDetailsUIViewControllerDelegate, PXUIWidget, UIViewControllerPreviewing;
 
-@interface PXPhotosDetailsUIViewController : UIViewController <PXWidgetCompositionDelegate, PXChangeObserver, PXUIViewControllerZoomTransitionEndPoint, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, PXActionPerformerDelegate, PXScrollViewControllerObserver, PXPurgeableController>
+@interface PXPhotosDetailsUIViewController : UIViewController <PXWidgetCompositionDelegate, PXChangeObserver, PXUIViewControllerZoomTransitionEndPoint, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, PXActionPerformerDelegate, PXWidgetUnlockDelegate, PXScrollViewControllerObserver, PXPurgeableController>
 {
+    struct {
+        BOOL requestDismissal;
+    } _delegateRespondsTo;
     BOOL __hasAppeared;
     BOOL __shouldFocusHeader;
     BOOL _empty;
     PXPhotosDetailsContext *_context;
     unsigned long long _options;
+    id<PXPhotosDetailsUIViewControllerDelegate> _delegate;
     PXPhotosDetailsViewModel *__viewModel;
     PXUIScrollViewController *__scrollViewController;
     NSArray *__widgets;
@@ -39,9 +44,12 @@
     PXAssetCollectionActionController *__previewActionController;
     _PXPhotosDetailsPreviewOrbContext *__previewOrbContext;
     Class __barsControllerClass;
+    CDUnknownBlockType __unlockStatus;
+    CDUnknownBlockType __unlockHandler;
     id<PXUIWidget> __previewWidget;
     UIView *__headerTileView;
     CDUnknownBlockType __ppt_allWidgetLoadingCompleteHandler;
+    CDUnknownBlockType __ppt_variationsWidgetLoadingCompleteHandler;
     id<UIViewControllerPreviewing> __previewingContext;
     PXBarsController *_barsController;
     id<PXActionPerformerDelegate> _actionPerformerDelegate;
@@ -56,6 +64,7 @@
 @property (strong, nonatomic, setter=_setHeaderTileView:) UIView *_headerTileView; // @synthesize _headerTileView=__headerTileView;
 @property (readonly, nonatomic) PXPhotosDetailsHeaderTileWidget *_headerWidget; // @synthesize _headerWidget=__headerWidget;
 @property (copy, nonatomic, setter=_ppt_setAllWidgetLoadingCompleteHandler:) CDUnknownBlockType _ppt_allWidgetLoadingCompleteHandler; // @synthesize _ppt_allWidgetLoadingCompleteHandler=__ppt_allWidgetLoadingCompleteHandler;
+@property (copy, nonatomic, setter=_ppt_setVariationsWidgetLoadingCompleteHandler:) CDUnknownBlockType _ppt_variationsWidgetLoadingCompleteHandler; // @synthesize _ppt_variationsWidgetLoadingCompleteHandler=__ppt_variationsWidgetLoadingCompleteHandler;
 @property (strong, nonatomic, setter=_setPreviewActionController:) PXAssetCollectionActionController *_previewActionController; // @synthesize _previewActionController=__previewActionController;
 @property (strong, nonatomic, setter=_setPreviewOrbContext:) _PXPhotosDetailsPreviewOrbContext *_previewOrbContext; // @synthesize _previewOrbContext=__previewOrbContext;
 @property (readonly, nonatomic) id<PXUIWidget> _previewWidget; // @synthesize _previewWidget=__previewWidget;
@@ -64,6 +73,8 @@
 @property (nonatomic, setter=_setShouldFocusHeader:) BOOL _shouldFocusHeader; // @synthesize _shouldFocusHeader=__shouldFocusHeader;
 @property (readonly, nonatomic) PXPhotosDetailsSpecManager *_specManager; // @synthesize _specManager=__specManager;
 @property (strong, nonatomic, setter=_setSwipeSelectionManager:) PXSwipeSelectionManager *_swipeSelectionManager; // @synthesize _swipeSelectionManager=__swipeSelectionManager;
+@property (readonly, copy, nonatomic) CDUnknownBlockType _unlockHandler; // @synthesize _unlockHandler=__unlockHandler;
+@property (readonly, copy, nonatomic) CDUnknownBlockType _unlockStatus; // @synthesize _unlockStatus=__unlockStatus;
 @property (readonly, nonatomic) PXPhotosDetailsViewModel *_viewModel; // @synthesize _viewModel=__viewModel;
 @property (readonly, nonatomic) NSMutableArray *_widgetDisablingDimmingViews; // @synthesize _widgetDisablingDimmingViews=__widgetDisablingDimmingViews;
 @property (readonly, nonatomic) NSMapTable *_widgetOptions; // @synthesize _widgetOptions=__widgetOptions;
@@ -74,6 +85,7 @@
 @property (nonatomic) struct UIEdgeInsets contentEdgeInsets; // @synthesize contentEdgeInsets=_contentEdgeInsets;
 @property (readonly, nonatomic) PXPhotosDetailsContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<PXPhotosDetailsUIViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEmpty) BOOL empty; // @synthesize empty=_empty;
 @property (readonly) unsigned long long hash;
@@ -85,10 +97,12 @@
 @property (readonly, nonatomic) BOOL shouldUpdateStatusBarTitle;
 @property (readonly) Class superclass;
 
++ (void)preloadResources;
 - (void).cxx_destruct;
 - (BOOL)_dismissSelfIfSafeAnimated:(BOOL)arg1;
 - (void)_ensureComposition;
 - (void)_ensureScrollViewController;
+- (void)_handleDeviceDidUnlock;
 - (void)_handleWidgetsLoadingDelay;
 - (void)_invalidateBarSpec;
 - (void)_invalidateCompositionSpec;
@@ -99,7 +113,7 @@
 - (void)_performAddToMemoriesAnimation;
 - (id)_photosDetailsContextForTransition:(id)arg1;
 - (id)_photosDetailsContextForTransitionWithViewController:(id)arg1;
-- (void)_ppt_informAllWidgetsLoadedHandlerIfNeeded;
+- (void)_ppt_informWidgetsLoadedHandlerIfNeeded;
 - (id)_regionOfInterestForContext:(id)arg1;
 - (BOOL)_shouldShowMovieHeader;
 - (void)_updateAllWidgetsFaceModeState;
@@ -114,6 +128,7 @@
 - (void)_updateWidgetDisablingWithAnimationOptions:(id)arg1;
 - (void)_updateWidgetSpec;
 - (unsigned long long)_userEventSourceForDetailView:(id)arg1;
+- (void)_viewWillLayoutBeforeAppearing;
 - (id)_widgetAtLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;
 - (id)contentScrollView;
@@ -125,17 +140,21 @@
 - (id)initWithContext:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)playMiroMovieWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)ppt_navigateToMovieWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)ppt_performBlockAfterAllWidgetLoadingCompletes:(CDUnknownBlockType)arg1;
+- (void)ppt_performBlockAfterVariationsWidgetLoadingCompletes:(CDUnknownBlockType)arg1;
 - (void)ppt_toggleDiscloseWidgets;
 - (struct CGSize)preferredContentSize;
 - (id)preferredFocusEnvironments;
 - (void)preloadWithSourceRegionOfInterest:(id)arg1 forTransition:(id)arg2;
+- (void)prepareForInteractiveTransition:(id)arg1;
 - (id)previewActionItems;
 - (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
 - (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (void)purgeIfPossible;
 - (BOOL)px_canPerformPinchTransitionWithMasterViewController:(id)arg1;
+- (BOOL)px_canPerformSwipeDownTransitionWithMasterViewController:(id)arg1;
 - (BOOL)px_canPerformZoomTransitionWithDetailViewController:(id)arg1;
 - (BOOL)px_canPerformZoomTransitionWithMasterViewController:(id)arg1;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
@@ -147,6 +166,7 @@
 - (void)scrollRegionOfInterestToVisible:(id)arg1 forTransition:(id)arg2;
 - (void)scrollViewControllerDidScroll:(id)arg1;
 - (void)scrollViewControllerWillBeginScrolling:(id)arg1;
+- (void)scrollViewControllerWillLayoutSubviews:(id)arg1;
 - (id)standaloneMapViewController;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
@@ -154,6 +174,7 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
+- (void)widget:(id)arg1 performAfterUnlockingDeviceIfNecessary:(CDUnknownBlockType)arg2 failurehandler:(CDUnknownBlockType)arg3;
 - (void)widgetComposition:(id)arg1 didUpdateCompositionWithDefaultAnimationOptions:(id)arg2;
 - (long long)widgetComposition:(id)arg1 loadingPriorityForWidget:(id)arg2;
 - (BOOL)widgetComposition:(id)arg1 requestViewControllerDismissalAnimated:(BOOL)arg2;
@@ -161,6 +182,8 @@
 - (struct NSObject *)widgetComposition:(id)arg1 viewControllerHostingWidget:(id)arg2;
 - (BOOL)widgetComposition:(id)arg1 widget:(id)arg2 transitionToViewController:(id)arg3 withTransitionType:(long long)arg4;
 - (void)widgetComposition:(id)arg1 widgetHasLoadedContentDataDidChange:(id)arg2;
+- (BOOL)widgetCompositionHasContentAbove:(id)arg1;
+- (BOOL)widgetDeviceIsUnlocked:(id)arg1;
 - (id)zoomAnimationCoordinatorForZoomTransition:(id)arg1;
 
 @end

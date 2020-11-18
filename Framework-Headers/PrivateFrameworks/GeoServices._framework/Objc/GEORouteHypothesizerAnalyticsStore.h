@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL etaUpdatesWereReported; // @synthesize etaUpdatesWereReported=_etaUpdatesWereReported;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)didArriveWithExpectedArrivalTime:(id)arg1;
 - (void)didGenerateHypothesis;

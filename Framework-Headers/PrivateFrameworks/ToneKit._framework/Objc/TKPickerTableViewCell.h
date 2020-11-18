@@ -6,11 +6,21 @@
 
 #import <UIKit/UITableViewCell.h>
 
+@class UIColor;
+
 @interface TKPickerTableViewCell : UITableViewCell
 {
+    BOOL _shouldTintTextLabel;
+    UIColor *_textLabelColor;
 }
 
+@property (nonatomic) BOOL shouldTintTextLabel; // @synthesize shouldTintTextLabel=_shouldTintTextLabel;
+@property (strong, nonatomic) UIColor *textLabelColor; // @synthesize textLabelColor=_textLabelColor;
+
+- (void).cxx_destruct;
+- (void)_updateTextLabelColor;
 - (void)setSectionLocation:(int)arg1 animated:(BOOL)arg2;
+- (void)tintColorDidChange;
 
 @end
 

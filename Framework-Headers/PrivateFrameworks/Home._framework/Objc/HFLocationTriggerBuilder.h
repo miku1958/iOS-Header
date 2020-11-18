@@ -6,26 +6,33 @@
 
 #import <Home/HFTriggerBuilder.h>
 
-@class CLCircularRegion;
+@class HFEventBuilder, NSSet;
+@protocol HFLocationEventBuilder;
 
 @interface HFLocationTriggerBuilder : HFTriggerBuilder
 {
-    CLCircularRegion *_region;
+    HFEventBuilder<HFLocationEventBuilder> *_eventBuilder;
+    NSSet *_stagedEvents;
 }
 
-@property (copy, nonatomic) CLCircularRegion *region; // @synthesize region=_region;
+@property (strong, nonatomic) HFEventBuilder<HFLocationEventBuilder> *eventBuilder; // @synthesize eventBuilder=_eventBuilder;
+@property (strong, nonatomic) NSSet *stagedEvents; // @synthesize stagedEvents=_stagedEvents;
 
-+ (BOOL)supportsConditions;
++ (Class)homeKitRepresentationClass;
 - (void).cxx_destruct;
 - (id)_allActionSets;
 - (id)_performValidation;
-- (id)_updateRegion;
+- (id)_updateEvents;
 - (id)commitCreateTrigger;
 - (id)commitEditTrigger;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2 context:(id)arg3;
 - (id)naturalLanguageNameOfType:(unsigned long long)arg1;
 - (BOOL)requiresConfirmationToRun;
+- (BOOL)requiresFMFDeviceToRun;
+- (BOOL)requiresLocationServicesAuthorization;
 - (BOOL)secureActionsRequireConfirmationToRun;
+- (BOOL)supportsConditions;
+- (BOOL)supportsEndEvents;
 
 @end
 

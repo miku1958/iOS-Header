@@ -21,7 +21,7 @@
 @property double emitterDepth;
 @property float emitterDuration;
 @property (copy) NSString *emitterMode;
-@property struct CGPath *emitterPath;
+@property const struct CGPath *emitterPath;
 @property struct CGPoint emitterPosition;
 @property (copy) NSArray *emitterRects;
 @property (copy) NSString *emitterShape;

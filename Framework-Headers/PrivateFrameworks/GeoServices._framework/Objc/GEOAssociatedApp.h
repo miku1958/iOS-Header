@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOPDAssociatedApp, NSArray, NSString;
 
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasPreferredAppAdamId;
 @property (readonly, nonatomic) NSString *preferredAppAdamId;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithGEOPDAssociatedApp:(id)arg1;
 
 @end

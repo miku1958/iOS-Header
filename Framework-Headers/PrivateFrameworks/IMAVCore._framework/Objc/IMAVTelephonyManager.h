@@ -4,40 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface IMAVTelephonyManager : NSObject
 {
-    BOOL _isDesignatedAudioServiceProvider;
-    BOOL _isDesignatedVideoServiceProvider;
-    struct __CFMachPort *_ctServerMachPort;
-    struct __CFUUID *_ctAudioToken;
-    struct __CFUUID *_ctVideoToken;
 }
 
-@property (readonly, nonatomic) unsigned int callState;
-
-+ (id)numberToDialForNumber:(id)arg1 dialAssist:(BOOL *)arg2;
 + (id)sharedInstance;
 - (void)_chatStateChanged:(id)arg1;
-- (void)_cleanupMachInfo;
-- (void)_disconnectCSCallWithID:(id)arg1;
-- (BOOL)_disconnectCTServerConnection;
-- (BOOL)_isOnCallToID:(id)arg1;
-- (void)_notifyMissedCallForInviteFromID:(id)arg1 isVideo:(BOOL)arg2;
-- (BOOL)_reconnectCTServerConnectionIfNecessary;
-- (BOOL)_registerCTRequestService;
-- (BOOL)_setupCTServerConnection;
-- (BOOL)_unregisterCTRequestService;
 - (void)dealloc;
 - (id)init;
-- (void)notifyCallConnectedForChat:(id)arg1;
-- (void)notifyCallConnectingForChat:(id)arg1;
-- (void)notifyCallEndedForChat:(id)arg1;
-- (void)notifyCallStartedForChat:(id)arg1;
-- (void)notifyMissedCallForChat:(id)arg1;
-- (void)startWatchingForCTRequests;
-- (void)stopWatchingForCTRequests;
 
 @end
 

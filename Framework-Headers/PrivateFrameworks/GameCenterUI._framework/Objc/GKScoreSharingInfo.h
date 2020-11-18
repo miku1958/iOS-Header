@@ -9,7 +9,7 @@
 #import <GameCenterUI/NSCoding-Protocol.h>
 #import <GameCenterUI/NSSecureCoding-Protocol.h>
 
-@class GKGame, GKLeaderboard, GKPlayer, UIImage;
+@class GKGame, GKLeaderboard, GKPlayer, GKScore, UIImage;
 
 @interface GKScoreSharingInfo : NSObject <NSCoding, NSSecureCoding>
 {
@@ -19,6 +19,7 @@
     GKGame *_game;
     UIImage *_badgeImage;
     UIImage *_iconImage;
+    GKScore *_score;
 }
 
 @property (strong, nonatomic) UIImage *badgeImage; // @synthesize badgeImage=_badgeImage;
@@ -27,6 +28,7 @@
 @property (strong, nonatomic) UIImage *iconImage; // @synthesize iconImage=_iconImage;
 @property (strong, nonatomic) GKLeaderboard *leaderboardCategory; // @synthesize leaderboardCategory=_leaderboardCategory;
 @property (strong, nonatomic) GKPlayer *player; // @synthesize player=_player;
+@property (strong, nonatomic) GKScore *score; // @synthesize score=_score;
 
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;

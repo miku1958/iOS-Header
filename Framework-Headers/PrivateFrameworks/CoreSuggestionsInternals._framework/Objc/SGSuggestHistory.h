@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSUbiquitousKeyValueStore, SGNoCloudNSUbiquitousKeyValueStore;
+@class NSUbiquitousKeyValueStore, SGNoCloudNSUbiquitousKeyValueStore;
 
 @interface SGSuggestHistory : NSObject
 {
     struct SGHistorySharedData *_privateShared;
     struct SGMutexSynchronizedObject<SGHistorySharedData> *_shared;
-    NSData *_deviceSalt;
     NSUbiquitousKeyValueStore *_backingKVStore;
     SGNoCloudNSUbiquitousKeyValueStore *_noCloudFakeBackingKVStore;
 }
@@ -33,9 +32,10 @@
 - (void)confirmEvent:(id)arg1;
 - (void)confirmEventFromExternalDevice:(id)arg1;
 - (void)confirmFieldValues:(id)arg1 forStorageEvent:(id)arg2;
+- (id)confirmHashesForOpaqueKey:(id)arg1 withCreationTime:(struct SGUnixTimestamp_)arg2;
+- (void)confirmOrRejectCuratedDetail:(id)arg1 forContact:(id)arg2;
 - (void)confirmOrRejectDetail:(id)arg1 forContact:(id)arg2;
 - (void)confirmOrRejectDetailHashes:(id)arg1;
-- (void)confirmOrRejectDetailWithForeignRecordId:(id)arg1;
 - (void)confirmOrRejectRecordForContact:(id)arg1;
 - (void)confirmStorageEvent:(id)arg1;
 - (void)dealloc;
@@ -47,16 +47,14 @@
 - (BOOL)hasStorageContact:(id)arg1;
 - (id)hashesForContact:(id)arg1;
 - (id)hashesForContactDetail:(id)arg1 fromContact:(id)arg2;
-- (id)hashesForContactForeignRecordId:(id)arg1;
-- (id)hashesForEvent:(id)arg1;
+- (id)hashesForCuratedContactDetail:(id)arg1 fromContact:(id)arg2;
 - (id)hashesForOpaqueKey:(id)arg1;
-- (id)hashesForOpaqueKey:(id)arg1 withCreationTime:(struct SGUnixTimestamp_)arg2;
 - (id)hashesForPseudoEventByKey:(id)arg1;
 - (id)hashesForStorageContact:(id)arg1;
 - (id)identityBasedHashesForPseudoEvent:(id)arg1 withCreationTime:(struct SGUnixTimestamp_)arg2;
 - (id)identitySalt;
-- (id)initWithDeviceSalt:(id)arg1;
-- (id)initWithDeviceSalt:(id)arg1 andKVS:(id)arg2;
+- (id)init;
+- (id)initWithKVS:(id)arg1;
 - (BOOL)isConfirmedEvent:(id)arg1;
 - (BOOL)isConfirmedEvent:(id)arg1 withScopeLock:(const SGMutexSynchronizedPtr_22985514 *)arg2;
 - (BOOL)isRejectedEvent:(id)arg1;
@@ -66,6 +64,7 @@
 - (BOOL)isValidSuggestion:(id)arg1;
 - (id)keysForContact:(id)arg1;
 - (id)keysForContactDetail:(id)arg1 ofContact:(id)arg2;
+- (id)keysForCuratedContactDetail:(id)arg1 ofContact:(id)arg2;
 - (id)keysForStorageContact:(id)arg1;
 - (id)loadResetInfo;
 - (id)mutableSetForKey:(id)arg1;
@@ -81,6 +80,7 @@
 - (void)rejectContact:(id)arg1;
 - (void)rejectEvent:(id)arg1;
 - (void)rejectEventFromExternalDevice:(id)arg1;
+- (id)rejectHashesForOpaqueKey:(id)arg1;
 - (void)rejectStorageEvent:(id)arg1;
 - (void)reset;
 - (void)resetNoFlush;

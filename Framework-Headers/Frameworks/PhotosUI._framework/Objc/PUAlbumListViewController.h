@@ -13,28 +13,33 @@
 #import <PhotosUI/PUAlbumStreamActivityDelegate-Protocol.h>
 #import <PhotosUI/PUCollectionViewReorderDelegate-Protocol.h>
 #import <PhotosUI/PUFeedRecentsManagerDelegate-Protocol.h>
+#import <PhotosUI/PUPhotoStreamComposeServiceDelegate-Protocol.h>
 #import <PhotosUI/PUSectionedGridLayoutDelegate-Protocol.h>
 #import <PhotosUI/PUStackedAlbumControllerTransition-Protocol.h>
 #import <PhotosUI/PUStackedAlbumTransitionDelegate-Protocol.h>
+#import <PhotosUI/PUVideoTrimQueueControllerDelegate-Protocol.h>
 #import <PhotosUI/PXCollectionsDataSourceManagerObserver-Protocol.h>
+#import <PhotosUI/PXEditableNavigationTitleViewDelegate-Protocol.h>
 #import <PhotosUI/PXPhotoLibraryUIChangeObserver-Protocol.h>
+#import <PhotosUI/PXPlacesMapControllerLoadingStateDelegate-Protocol.h>
 #import <PhotosUI/PXPlacesSnapshotFactoryDelegate-Protocol.h>
+#import <PhotosUI/PXSettingsKeyObserver-Protocol.h>
 #import <PhotosUI/UICollectionViewDataSource-Protocol.h>
 #import <PhotosUI/UICollectionViewDelegate-Protocol.h>
+#import <PhotosUI/UICollectionViewDragDestination-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <PhotosUI/UITableViewDataSource-Protocol.h>
 #import <PhotosUI/UITableViewDelegate-Protocol.h>
-#import <PhotosUI/_UISettingsKeyObserver-Protocol.h>
 
-@class NSArray, NSMutableSet, NSString, PHCachingImageManager, PHCollection, PHImageRequestOptions, PUAlbumListSectionHeaderView, PUAlbumListTransitionContext, PUAlbumListViewControllerSpec, PUAlbumStreamActivity, PUCollageView, PUCollectionView, PUFeedRecentsManager, PUFeedViewController, PUFontManager, PULongPressableBarButtonItem, PUPhotoPinchGestureRecognizer, PUPhotosGlobalFooterView, PUSearchButtonItem, PUSectionedGridLayout, PUSessionInfo, PXAssetBadgeManager, PXCollectionTileLayoutTemplate, PXFeatureSpec, PXFeatureSpecManager, PXPeopleAlbumProvider, PXPhotoKitCollectionsDataSource, PXPhotoKitCollectionsDataSourceManager, PXPhotoKitCollectionsDataSourceManagerConfiguration, PXPlacesAlbumCoverProvider, UIAlertAction, UIAlertController, UIBarButtonItem, UICollectionViewLayout, UITableView, UIView, _UIContentUnavailableView;
+@class NSArray, NSMutableSet, NSString, PHCachingImageManager, PHCollection, PHImageRequestOptions, PUAlbumListSectionHeaderView, PUAlbumListTransitionContext, PUAlbumListViewControllerSpec, PUAlbumStreamActivity, PUCollageView, PUCollectionView, PUFeedRecentsManager, PUFeedViewController, PUFontManager, PUPhotoPinchGestureRecognizer, PUPhotoStreamComposeServiceViewController, PUPhotosGlobalFooterView, PUSearchButtonItem, PUSectionedGridLayout, PUSessionInfo, PUVideoTrimQueueController, PXAssetBadgeManager, PXCollectionTileLayoutTemplate, PXEditableNavigationTitleView, PXFeatureSpec, PXFeatureSpecManager, PXPeopleAlbumProvider, PXPhotoKitCollectionsDataSource, PXPhotoKitCollectionsDataSourceManager, PXPhotoKitCollectionsDataSourceManagerConfiguration, PXPlacesAlbumCoverProvider, UIAlertAction, UIAlertController, UIBarButtonItem, UICollectionViewLayout, UITableView, UIView, _UIContentUnavailableView;
 
-@interface PUAlbumListViewController : UIViewController <UIGestureRecognizerDelegate, PUStackedAlbumTransitionDelegate, PUAlbumStreamActivityDelegate, PUFeedRecentsManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, PUCollectionViewReorderDelegate, PUSectionedGridLayoutDelegate, UITableViewDataSource, UITableViewDelegate, PUAlbumListTableViewCellDelegate, UIPopoverPresentationControllerDelegate, PXPhotoLibraryUIChangeObserver, _UISettingsKeyObserver, PXCollectionsDataSourceManagerObserver, PXPlacesSnapshotFactoryDelegate, PLNavigableAssetContainerListViewController, PLCloudFeedNavigating, PLNavigablePhotoStreamViewController, PUStackedAlbumControllerTransition>
+@interface PUAlbumListViewController : UIViewController <UIGestureRecognizerDelegate, PUStackedAlbumTransitionDelegate, PUAlbumStreamActivityDelegate, PUFeedRecentsManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, PUCollectionViewReorderDelegate, PUSectionedGridLayoutDelegate, UITableViewDataSource, UITableViewDelegate, PUAlbumListTableViewCellDelegate, UIPopoverPresentationControllerDelegate, PXPhotoLibraryUIChangeObserver, PXSettingsKeyObserver, PXCollectionsDataSourceManagerObserver, PXPlacesSnapshotFactoryDelegate, UICollectionViewDragDestination, PUPhotoStreamComposeServiceDelegate, PUVideoTrimQueueControllerDelegate, PXPlacesMapControllerLoadingStateDelegate, PXEditableNavigationTitleViewDelegate, PLNavigableAssetContainerListViewController, PLCloudFeedNavigating, PLNavigablePhotoStreamViewController, PUStackedAlbumControllerTransition>
 {
     PUAlbumListViewControllerSpec *_spec;
     UIBarButtonItem *_doneButtonItem;
     UIBarButtonItem *_cancelButtonItem;
-    PULongPressableBarButtonItem *_albumCreationButtonItem;
+    UIBarButtonItem *_albumCreationButtonItem;
     PUSearchButtonItem *_searchButtonItem;
     PUAlbumStreamActivity *_albumStreamActivity;
     NSString *_albumSubtitleFormat;
@@ -45,6 +50,8 @@
     BOOL _didInitialRequestForPeopleCount;
     BOOL _didInitializeMemoriesTitleSupport;
     PUAlbumListSectionHeaderView *_sectionHeaderView;
+    PUVideoTrimQueueController *_trimController;
+    PUPhotoStreamComposeServiceViewController *_composeServiceController;
     struct {
         BOOL preparedCellsConfiguration;
     } _needsUpdateFlags;
@@ -60,6 +67,7 @@
     PXPlacesAlbumCoverProvider *__placesAlbumCoverProvider;
     PUSessionInfo *_sessionInfo;
     PXPhotoKitCollectionsDataSourceManagerConfiguration *_dataSourceManagerConfiguration;
+    PHCollection *_collection;
     PHCollection *_retitlingCollection;
     PHCachingImageManager *__cachingImageManager;
     PUFeedRecentsManager *__feedRecentsManager;
@@ -91,8 +99,11 @@
     PXCollectionTileLayoutTemplate *__collectionTileLayoutTemplate;
     PXFeatureSpecManager *__featureSpecManager;
     PXFeatureSpec *__featureSpec;
+    UIViewController *__placesContainerController;
+    PXEditableNavigationTitleView *_editableTitleView;
     struct CGSize __layoutReferenceSize;
     struct CGRect __previousPreheatRect;
+    struct UIEdgeInsets __layoutSafeAreaInsets;
 }
 
 @property (nonatomic, setter=_setAboutToCreateAlbum:) BOOL _aboutToCreateAlbum; // @synthesize _aboutToCreateAlbum=__aboutToCreateAlbum;
@@ -116,6 +127,7 @@
 @property (copy, nonatomic, setter=_setJustCreatedCollectionAnimationCompletionHandler:) CDUnknownBlockType _justCreatedCollectionAnimationCompletionHandler; // @synthesize _justCreatedCollectionAnimationCompletionHandler=__justCreatedCollectionAnimationCompletionHandler;
 @property (strong, nonatomic, setter=_setJustCreatedCollectionIdentifier:) NSString *_justCreatedCollectionIdentifier; // @synthesize _justCreatedCollectionIdentifier=__justCreatedCollectionIdentifier;
 @property (nonatomic, setter=_setLayoutReferenceSize:) struct CGSize _layoutReferenceSize; // @synthesize _layoutReferenceSize=__layoutReferenceSize;
+@property (nonatomic, setter=_setLayoutSafeAreaInsets:) struct UIEdgeInsets _layoutSafeAreaInsets; // @synthesize _layoutSafeAreaInsets=__layoutSafeAreaInsets;
 @property (strong, nonatomic, setter=_setMainCollectionView:) PUCollectionView *_mainCollectionView; // @synthesize _mainCollectionView=__mainCollectionView;
 @property (strong, nonatomic, setter=_setMainCollectionViewLayout:) PUSectionedGridLayout *_mainCollectionViewLayout; // @synthesize _mainCollectionViewLayout=__mainCollectionViewLayout;
 @property (strong, nonatomic, setter=_setMainTableView:) UITableView *_mainTableView; // @synthesize _mainTableView=__mainTableView;
@@ -124,18 +136,21 @@
 @property (strong, nonatomic, setter=_setPeopleAlbumProvider:) PXPeopleAlbumProvider *_peopleAlbumProvider; // @synthesize _peopleAlbumProvider=__peopleAlbumProvider;
 @property (strong, nonatomic, setter=_setPhotoPinchGestureRecognizer:) PUPhotoPinchGestureRecognizer *_photoPinchGestureRecognizer; // @synthesize _photoPinchGestureRecognizer=__photoPinchGestureRecognizer;
 @property (readonly, nonatomic) PXPlacesAlbumCoverProvider *_placesAlbumCoverProvider; // @synthesize _placesAlbumCoverProvider=__placesAlbumCoverProvider;
+@property (readonly, nonatomic) UIViewController *_placesContainerController; // @synthesize _placesContainerController=__placesContainerController;
 @property (strong, nonatomic, setter=_setPreheatedCollections:) NSMutableSet *_preheatedCollections; // @synthesize _preheatedCollections=__preheatedCollections;
 @property (nonatomic, setter=_setPreviousPreheatRect:) struct CGRect _previousPreheatRect; // @synthesize _previousPreheatRect=__previousPreheatRect;
 @property (readonly, nonatomic) NSArray *_syncProgressAlbums; // @synthesize _syncProgressAlbums=__syncProgressAlbums;
 @property (strong, nonatomic) PUAlbumListTransitionContext *albumListTransitionContext; // @synthesize albumListTransitionContext=_albumListTransitionContext;
 @property (readonly, nonatomic) long long albumsSection;
 @property (readonly, nonatomic) struct _NSRange albumsSections;
+@property (strong, nonatomic) PHCollection *collection; // @synthesize collection=_collection;
 @property (strong, nonatomic) PXPhotoKitCollectionsDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (strong, nonatomic) PXPhotoKitCollectionsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property (strong, nonatomic) PXPhotoKitCollectionsDataSourceManagerConfiguration *dataSourceManagerConfiguration; // @synthesize dataSourceManagerConfiguration=_dataSourceManagerConfiguration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disallowsSearch; // @synthesize disallowsSearch=_disallowsSearch;
+@property (readonly, nonatomic) PXEditableNavigationTitleView *editableTitleView; // @synthesize editableTitleView=_editableTitleView;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isRootSharedAlbumList; // @synthesize isRootSharedAlbumList=_isRootSharedAlbumList;
 @property (nonatomic) BOOL progressViewVisible; // @synthesize progressViewVisible=_progressViewVisible;
@@ -156,31 +171,42 @@
 - (id)_assetsFetchOptions;
 - (void)_beginInteractiveNavigationForItemAtPoint:(struct CGPoint)arg1;
 - (void)_beginInteractiveZoomOut:(id)arg1;
+- (BOOL)_canAddAssetsToCollection:(id)arg1;
+- (BOOL)_canHandleDropSession:(id)arg1;
 - (BOOL)_canTransitionInteractivelyToCollection:(id)arg1;
 - (BOOL)_canUseStackTransitionFromCollection:(id)arg1;
 - (id)_cancelButtonItem;
+- (BOOL)_collectionView:(id)arg1 canHandleDropSesson:(id)arg2;
+- (id)_collectionView:(id)arg1 dropSessionDidUpdate:(id)arg2 withDestinationIndexPath:(id)arg3;
+- (void)_collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;
+- (BOOL)_collectionView:(id)arg1 shouldSpringLoadItemAtIndexPath:(id)arg2 withContext:(id)arg3;
 - (id)_createControllerForFolder:(id)arg1;
 - (id)_createControllerForStandInCollection:(id)arg1;
 - (void)_didSelectPlaceholderAtIndexPath:(id)arg1;
 - (id)_doneButtonItem;
 - (unsigned long long)_editCapabilitiesForAlbum:(id)arg1;
+- (void)_ensureEditableTitleView;
 - (void)_getDisplayableAssets:(id *)arg1 indexes:(id *)arg2 forCollection:(id)arg3 maximumCount:(long long)arg4 useCache:(BOOL)arg5;
 - (id)_getDisplayableAssetsForStandInCollectionList:(id)arg1 maximumCount:(long long)arg2 useCache:(BOOL)arg3 correspondingCollections:(out id *)arg4;
 - (id)_getDisplayableFacesForCollectionList:(id)arg1 maximumCount:(long long)arg2;
 - (void)_handleAlbumCreation:(id)arg1;
+- (void)_handleAlbumCreationLongPressGesture:(id)arg1;
 - (void)_handleAlbumOrFolderCreation:(id)arg1;
 - (void)_handleCancelButton:(id)arg1;
 - (void)_handleCreateAlbumOrFolder:(BOOL)arg1;
 - (void)_handleDoneButton:(id)arg1;
+- (void)_handleDrop:(id)arg1 forItemAtIndexPath:(id)arg2;
 - (void)_handlePendingScrollingAnimationEndBlock;
 - (void)_handlePhotoPinchGestureRecognizer:(id)arg1;
 - (void)_initializeMemoriesTitleSupportIfNeeded;
 - (void)_invalidatePreparedCellsConfiguration;
 - (void)_invalidateSyncProgressAlbums;
+- (void)_invalidateTitle;
 - (BOOL)_isPlaceholderEnabled:(long long)arg1;
 - (id)_keyAssetsForMoments;
 - (void)_keyboardWillChangeFrame:(id)arg1;
-- (void)_navigateToPeople;
+- (void)_navigateToMemories;
+- (id)_navigateToPeople;
 - (void)_navigateToPlacesFromCollection:(id)arg1;
 - (void)_navigateToScenes;
 - (BOOL)_needsUpdate;
@@ -223,6 +249,7 @@
 - (void)_updateStackView:(id)arg1 forAssets:(id)arg2 memoriesCollection:(id)arg3 memories:(id)arg4 withCustomEmptyPlaceholderImage:(id)arg5;
 - (void)_updateStackView:(id)arg1 forFaces:(id)arg2 inCollection:(id)arg3 withCustomEmptyPlaceholderImage:(id)arg4;
 - (void)_updateStackView:(id)arg1 forPeopleImages:(id)arg2 inCollection:(id)arg3 withCustomEmptyPlaceholderImage:(id)arg4;
+- (void)_updateTitle;
 - (id)_validateNewCollectionTitle:(id)arg1;
 - (id)_visibleAssetsForCollection:(id)arg1;
 - (id)_visibleAssetsForCollection:(id)arg1 correspondingCollections:(out id *)arg2;
@@ -237,6 +264,7 @@
 - (id)assetsFilterPredicate;
 - (id)backgroundColorForTableView;
 - (id)bestReferenceItemIndexPath;
+- (BOOL)canDragIn;
 - (BOOL)canShowSyncProgress;
 - (BOOL)cloudFeedAssetIsAvailableForNavigation:(id)arg1;
 - (BOOL)cloudFeedCommentIsAvailableForNavigation:(id)arg1;
@@ -254,13 +282,18 @@
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)configureDataSourceManagerConfiguration:(id)arg1;
 - (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3 animated:(BOOL)arg4;
+- (void)controller:(id)arg1 didCancelTrimmingVideoSources:(id)arg2;
+- (void)controller:(id)arg1 didFinishTrimmingVideoSources:(id)arg2;
 - (void)dealloc;
 - (void)deselectSelectedItemAnimated:(BOOL)arg1;
 - (void)didSelectItemAtIndexPath:(id)arg1;
+- (id)editableNavigationTitleView:(id)arg1 validateNewText:(id)arg2;
+- (void)editableNavigationTitleViewDidEndEditing:(id)arg1;
 - (void)feedRecentsManagerRecentAssetsDidChange:(id)arg1;
 - (long long)filteringAssetTypes;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)gridLayout;
+- (void)handleAddToCloudSharedAlbum:(id)arg1 pickedAssets:(id)arg2;
 - (void)handleCreateAlbum;
 - (void)handleCreateFolder;
 - (void)handleCreateSharedAlbum;
@@ -283,6 +316,9 @@
 - (BOOL)isPlaceholderAtIndexPath:(id)arg1;
 - (BOOL)isRootFolder;
 - (id)mainScrollView;
+- (void)mapController:(id)arg1 didFinishExecutingPipelines:(id)arg2;
+- (void)mapController:(id)arg1 didStartExecutingPipelines:(id)arg2;
+- (void)mapViewDidFinishRendering:(id)arg1;
 - (void)navigateToAllPhotosAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)navigateToCollection:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)navigateToPhotoStreamMode:(long long)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
@@ -298,15 +334,19 @@
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (long long)numberOfVisualSectionsForSectionedGridLayout:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)photoLibraryDidChangeOnMainQueue:(id)arg1 withPreparedInfo:(id)arg2;
+- (void)photoStreamComposeService:(id)arg1 didPostComment:(id)arg2;
+- (void)photoStreamComposeServiceDidCancel:(id)arg1;
 - (long long)placeholderKindAtIndexPath:(id)arg1;
 - (void)placesSnapshotCountDidChange;
 - (void)placesSnapshotDidChange;
 - (BOOL)popoverPresentationControllerShouldDismissPopover:(id)arg1;
-- (void)ppt_navigateToPeople;
+- (id)ppt_navigateToPeople;
 - (void)ppt_navigateToPlacesAndRunPreparationBlock:(CDUnknownBlockType)arg1 thenPerformTest:(CDUnknownBlockType)arg2;
 - (void)ppt_performPlacesScrollTest:(id)arg1 preparationHandler:(CDUnknownBlockType)arg2 iterations:(long long)arg3 screenDelta:(long long)arg4 delay:(double)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)ppt_performPlacesZoomTest:(id)arg1 preparationHandler:(CDUnknownBlockType)arg2 iterations:(long long)arg3 delay:(double)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)ppt_prepareForSearchScrollingTestWithString:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)prepareForPhotoLibraryChange:(id)arg1;
 - (void)prepareForPopoverPresentation:(id)arg1;
 - (BOOL)pu_handleSecondTabTap;
 - (void)reloadContentView;
@@ -334,6 +374,7 @@
 - (BOOL)shouldShowActivityItem;
 - (BOOL)shouldShowAllPhotosItem;
 - (BOOL)showAddNewAlbumPlaceholder;
+- (BOOL)showMemories;
 - (BOOL)showPeople;
 - (BOOL)showPlaces;
 - (void)showPlacesCount:(long long)arg1;
@@ -356,6 +397,7 @@
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
+- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 moveRowAtIndexPath:(id)arg2 toIndexPath:(id)arg3;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
@@ -376,6 +418,7 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 

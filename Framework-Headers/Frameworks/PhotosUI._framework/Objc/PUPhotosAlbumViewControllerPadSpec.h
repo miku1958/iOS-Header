@@ -11,9 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)configureCollectionViewGridLayout:(id)arg1;
 - (double)contentCornerRadius;
-- (struct UIEdgeInsets)fullMomentsLevelSectionHeaderContentInset;
 - (unsigned long long)fullMomentsSectionHeaderBackgroundStyle;
 - (long long)fullMomentsSectionHeaderStyle;
 - (id)gridSpec;

@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) PXPhotosDataSourceChange *change; // @synthesize change=_change;
 @property (readonly, nonatomic) PXPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
 
++ (id)dataSourceWithAsset:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)containsAnyItems;
 - (BOOL)containsMultipleItems;

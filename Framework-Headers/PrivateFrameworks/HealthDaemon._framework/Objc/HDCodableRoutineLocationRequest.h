@@ -19,12 +19,14 @@
 @property (nonatomic) BOOL hasLocationType;
 @property (nonatomic) int locationType; // @synthesize locationType=_locationType;
 
+- (int)StringAsLocationType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)locationTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

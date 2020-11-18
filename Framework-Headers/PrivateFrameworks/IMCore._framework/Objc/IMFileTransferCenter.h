@@ -17,6 +17,8 @@
     NSMutableArray *_preauthorizedGUIDs;
     NSMutableSet *_activeTransfers;
     NSMutableSet *_pendingTransfers;
+    BOOL _disconnectionListenerSetUp;
+    NSMutableDictionary *_fetchHighQualityVariantCompletionHandlers;
 }
 
 @property (readonly, nonatomic) NSArray *activeTransferGUIDs;
@@ -38,12 +40,17 @@
 - (void)_addTransfer:(id)arg1;
 - (void)_addTransfer:(id)arg1 toAccount:(id)arg2;
 - (void)_clearTransfers;
+- (void)_daemonRestarted:(id)arg1;
+- (void)_fetchHighQualityVariantForTransferGUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleAllFileTransfers:(id)arg1;
 - (void)_handleFileTransfer:(id)arg1 createdWithProperties:(id)arg2;
+- (void)_handleFileTransfer:(id)arg1 highQualityDownloadSucceededWithPath:(id)arg2;
 - (void)_handleFileTransfer:(id)arg1 updatedWithCurrentBytes:(unsigned long long)arg2 totalBytes:(unsigned long long)arg3 averageTransferRate:(unsigned long long)arg4;
 - (void)_handleFileTransfer:(id)arg1 updatedWithProperties:(id)arg2;
+- (void)_handleFileTransferHighQualityDownloadFailed:(id)arg1;
 - (void)_handleFileTransfers:(id)arg1 createdWithLocalPaths:(id)arg2;
 - (void)_handleStandaloneFileTransferRegistered:(id)arg1;
+- (void)_initiateHighQualityVariantDownloadWithDaemonForGUID:(id)arg1;
 - (void)_removeActiveTransfer:(id)arg1;
 - (void)_removeAllActiveTransfers;
 - (void)_removePendingTransfer:(id)arg1;
@@ -56,8 +63,10 @@
 - (void)assignTransfer:(id)arg1 toMessage:(id)arg2 account:(id)arg3;
 - (id)chatForTransfer:(id)arg1;
 - (void)clearFinishedTransfers;
+- (void)dealloc;
 - (void)deleteTransfer:(id)arg1;
 - (BOOL)doesLocalURLRequireArchiving:(id)arg1 toHandle:(id)arg2;
+- (void)fetchHighQualityVariantForTransfer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)guidForNewOutgoingTransferWithLocalURL:(id)arg1;
 - (id)guidsForStoredAttachmentPayloadData:(id)arg1 messageGUID:(id)arg2;
 - (BOOL)isFileTransfer:(id)arg1 preauthorizedWithDictionary:(id)arg2;

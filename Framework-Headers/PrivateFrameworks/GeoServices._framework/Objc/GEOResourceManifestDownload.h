@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEODownloadMetadata, GEOResources;
+@class GEODownloadMetadata, GEOResources, PBUnknownFields;
 
 @interface GEOResourceManifestDownload : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     GEODownloadMetadata *_metadata;
     GEOResources *_resources;
 }
@@ -19,10 +20,11 @@
 @property (readonly, nonatomic) BOOL hasResources;
 @property (strong, nonatomic) GEODownloadMetadata *metadata; // @synthesize metadata=_metadata;
 @property (strong, nonatomic) GEOResources *resources; // @synthesize resources=_resources;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

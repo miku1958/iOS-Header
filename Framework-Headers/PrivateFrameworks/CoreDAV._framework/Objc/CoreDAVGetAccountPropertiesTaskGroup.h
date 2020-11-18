@@ -30,7 +30,7 @@
 
 @property (readonly, nonatomic) NSSet *collections; // @synthesize collections=_collections;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<CoreDAVGetAccountPropertiesTaskGroupDelegate> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<CoreDAVGetAccountPropertiesTaskGroupDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, nonatomic) NSSet *emailAddresses; // @synthesize emailAddresses=_emailAddresses;
@@ -43,11 +43,11 @@
 @property (nonatomic) BOOL shouldIgnoreHomeSetOnDifferentHost; // @synthesize shouldIgnoreHomeSetOnDifferentHost=_shouldIgnoreHomeSetOnDifferentHost;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_copyAccountPropertiesPropFindElements;
 - (void)_setPropertiesFromParsedResponses:(id)arg1;
 - (void)_taskCompleted:(id)arg1 withError:(id)arg2;
 - (void)coaxServerForPrincipalHeaders;
-- (void)dealloc;
 - (BOOL)forceOptionsRequest;
 - (id)homeSet;
 - (id)initWithAccountInfoProvider:(id)arg1 taskManager:(id)arg2;

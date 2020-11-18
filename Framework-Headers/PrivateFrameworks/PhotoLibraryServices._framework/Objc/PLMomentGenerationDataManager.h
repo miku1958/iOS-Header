@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/PLMomentGenerationDataManagement_Private-Protocol.h>
 
-@class NSDictionary, NSManagedObjectContext, NSString, PLMomentAnalyzer, PLMomentGeneration, PLPhotoLibrary, PLXPCTransaction;
+@class NSArray, NSDictionary, NSManagedObjectContext, NSString, PLMomentAnalyzer, PLMomentGeneration, PLPhotoLibrary, PLXPCTransaction;
 
 @interface PLMomentGenerationDataManager : NSObject <PLMomentGenerationDataManagement_Private>
 {
@@ -17,6 +17,7 @@
     void *_addressBook;
     PLMomentGeneration *_generator;
     PLMomentAnalyzer *_analyzer;
+    NSArray *_locationsOfInterest;
     NSDictionary *_generationOptions;
     BOOL _observingReachability;
     BOOL _isLightweightMigrationManager;
@@ -40,6 +41,7 @@
 - (id)_addressDictionaryForABRecord:(void *)arg1 identifier:(int)arg2;
 - (id)_currentHomeAddressDictionary;
 - (void)_finalizeInit;
+- (id)_locationsOfInterest;
 - (id)_metadataPath;
 - (void)_networkReachabilityDidChange:(id)arg1;
 - (void)_removeKeepAlive;
@@ -66,6 +68,7 @@
 - (id)generator;
 - (unsigned long long)hardGenerationBatchSizeLimit;
 - (BOOL)hasChanges;
+- (BOOL)hasLocationsOfInterestInformation;
 - (id)homeAddressDictionary;
 - (id)initWithManagedObjectContextForLightweightMigration:(id)arg1;
 - (void)insertMomentIntoAllMoments:(id)arg1 atIndex:(unsigned long long)arg2;
@@ -73,11 +76,13 @@
 - (id)insertNewMomentListForGranularityLevel:(short)arg1;
 - (id)insertedObjects;
 - (void)invalidateLocationDataForAssetsInMoment:(id)arg1;
+- (void)invalidateLocationsOfInterest;
 - (void)invalidateShiftedLocationForAllAssetsInMoments;
 - (BOOL)isMomentAnalysisNeeded;
 - (BOOL)isMomentsSupportedOnPlatform;
 - (BOOL)isNetworkReachable;
 - (id)locationCoordinatesForAssetIDs:(id)arg1;
+- (id)locationsOfInterest;
 - (id)momentAnalysisTransactionWithName:(const char *)arg1;
 - (Class)momentAssetDataClass;
 - (Class)momentDataClass;
@@ -88,6 +93,7 @@
 - (id)momentsBetweenDate:(id)arg1 andDate:(id)arg2 sorted:(BOOL)arg3;
 - (id)momentsBetweenDateRanges:(id)arg1;
 - (id)momentsSinceDate:(id)arg1;
+- (BOOL)needsLocationsOfInterestProcessing;
 - (id)orphanedAssetIDsWithError:(id *)arg1;
 - (void)pendingChangesUpdated:(unsigned long long)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1 synchronously:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;

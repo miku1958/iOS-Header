@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableDictionary, NSString;
 
@@ -28,14 +28,16 @@
     BOOL _labelCollisionEnabled;
     BOOL _labelFlipAlternatePositionsEnable;
     BOOL _labelTileDecodeEnabled;
+    BOOL _disableBackgroundLabelLayout;
     BOOL _labelAllowDefaultStyle;
     BOOL _labelUpdateMapTilesContinuously;
     BOOL _labelAutoOffsetRoadText;
     BOOL _paintRouteDebugMarkers;
     BOOL _dontMatchRouteLine;
     BOOL _dontMapMatchToSnappedRouteLine;
-    BOOL _highlightUnmatchedRouteLine;
+    BOOL _highlightRouteLineSnappingStatus;
     BOOL _dontVerifyRouteToTransitSnapping;
+    BOOL _showManeuverPoints;
     BOOL _paintRoadSigns;
     BOOL _paintLabelBounds;
     BOOL _paintLabelRoadFeatures;
@@ -52,6 +54,7 @@
     BOOL _paintTrafficSkeleton;
     BOOL _loadGreenTraffic;
     BOOL _showTrafficCasing;
+    BOOL _texturedTrafficCasing;
     BOOL _prioritizeTrafficSkeleton;
     BOOL _paintRoadsStitchedByName;
     BOOL _realisticWireframeEnabled;
@@ -91,7 +94,6 @@
     BOOL _isInstalledInLockScreen;
     BOOL _enableLoggingInLockScreen;
     BOOL _useBuildingShadowTexture;
-    BOOL _drawContinuously;
     BOOL _layoutContinuously;
     BOOL _enableSignPostEvents;
     BOOL _useTransactionManager;
@@ -104,6 +106,7 @@
     BOOL _immediateRasterTextureLoading;
     BOOL _holdOntoStyleAttributes;
     NSMutableArray *_footprintsToSuppress;
+    BOOL _suppressFootprints;
     NSMutableDictionary *_customTiles;
     BOOL _drawDebugTransit;
     BOOL _labelTransitLineCollisionEnabled;
@@ -112,8 +115,27 @@
     BOOL _constantlyChangeTileGroup;
     BOOL _disableRoadSignLimit;
     BOOL _enableShieldsOnRouteLine;
-    struct unordered_map<std::__1::basic_string<char>, std::__1::shared_ptr<md::ObjectGroup>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<md::ObjectGroup>>>> _customLandmarks;
+    BOOL _overrideVenueCameraSettings;
+    float _venueBoundsPaddingForCamera;
+    float _venueZoomOutFalloff;
+    BOOL _enableTrafficCameraLabelDebugging;
+    BOOL _enableEtaLabelDebugging;
+    BOOL _etaLabelsAvoidScreenEdges;
+    BOOL _enableRouteIntersectionTesting;
+    BOOL _forceEtaLabelPlacement;
+    BOOL _trafficCameraLabelSelfCollide;
+    BOOL _trafficCameraLabelCollideOutExternal;
+    BOOL _trafficCameraLabelCollideWithExternal;
+    BOOL _arOverrideDefaults;
+    float _arVirtualPlaneHeight;
+    float _arDefaultHeight;
+    unsigned long long _arSwipeGesture;
+    unsigned long long _arPinchGesture;
+    BOOL _arRenderAtNativeRate;
+    struct unordered_map<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>>> _customLandmarks;
     BOOL _paintPoiTiles;
+    BOOL _paintLandcoverTiles;
+    BOOL _paintVenues;
     BOOL _labelCollideContinuously;
     BOOL _useStaticTrafficFeed;
     BOOL _newRouteTraffic;
@@ -121,8 +143,8 @@
     BOOL _showNavCameraDebugOverlay;
     BOOL _disableStylesheetAnimations;
     BOOL _trackingCameraZoomFurther;
-    float _routeRefineThreshold;
-    float _routeCoarsenThreshold;
+    BOOL _enableARDebugConsole;
+    BOOL _enableAROmniTileLoader;
     CDStruct_7a997382 _landmark2DStrokeSettings;
     shared_ptr_a3c46825 _debugStyleManager;
 }
@@ -149,9 +171,16 @@
 @property (nonatomic) float altitudeTileQualityThreshold; // @synthesize altitudeTileQualityThreshold=_altitudeTileQualityThreshold;
 @property (nonatomic) BOOL altitudeTourSpeedup; // @synthesize altitudeTourSpeedup=_altitudeTourSpeedup;
 @property (nonatomic) float altitudeTourSpeedupFactor; // @synthesize altitudeTourSpeedupFactor=_altitudeTourSpeedupFactor;
+@property (nonatomic) float arDefaultHeight; // @synthesize arDefaultHeight=_arDefaultHeight;
+@property (nonatomic) BOOL arOverrideDefaults; // @synthesize arOverrideDefaults=_arOverrideDefaults;
+@property (nonatomic) unsigned long long arPinchGesture; // @synthesize arPinchGesture=_arPinchGesture;
+@property (nonatomic) BOOL arRenderAtNativeRate; // @synthesize arRenderAtNativeRate=_arRenderAtNativeRate;
+@property (nonatomic) unsigned long long arSwipeGesture; // @synthesize arSwipeGesture=_arSwipeGesture;
+@property (nonatomic) float arVirtualPlaneHeight; // @synthesize arVirtualPlaneHeight=_arVirtualPlaneHeight;
 @property (nonatomic) BOOL constantlyChangeTileGroup; // @synthesize constantlyChangeTileGroup=_constantlyChangeTileGroup;
 @property (nonatomic) BOOL debugStyleAnimations; // @synthesize debugStyleAnimations=_debugStyleAnimations;
 @property (nonatomic) shared_ptr_a3c46825 debugStyleManager; // @synthesize debugStyleManager=_debugStyleManager;
+@property (nonatomic) BOOL disableBackgroundLabelLayout; // @synthesize disableBackgroundLabelLayout=_disableBackgroundLabelLayout;
 @property (nonatomic) BOOL disableIntraLinkTransitLineCrossings; // @synthesize disableIntraLinkTransitLineCrossings=_disableIntraLinkTransitLineCrossings;
 @property (nonatomic) BOOL disableRoadSignLimit; // @synthesize disableRoadSignLimit=_disableRoadSignLimit;
 @property (nonatomic) BOOL disableRoute; // @synthesize disableRoute=_disableRoute;
@@ -162,23 +191,29 @@
 @property (nonatomic) BOOL dontMapMatchToSnappedRouteLine; // @synthesize dontMapMatchToSnappedRouteLine=_dontMapMatchToSnappedRouteLine;
 @property (nonatomic) BOOL dontMatchRouteLine; // @synthesize dontMatchRouteLine=_dontMatchRouteLine;
 @property (nonatomic) BOOL dontVerifyRouteToTransitSnapping; // @synthesize dontVerifyRouteToTransitSnapping=_dontVerifyRouteToTransitSnapping;
-@property (nonatomic) BOOL drawContinuously; // @synthesize drawContinuously=_drawContinuously;
 @property (nonatomic) BOOL drawDebugTransit; // @synthesize drawDebugTransit=_drawDebugTransit;
 @property (nonatomic) BOOL drawPerformanceHUD; // @synthesize drawPerformanceHUD=_drawPerformanceHUD;
 @property (nonatomic) BOOL dumpRouteAndPath; // @synthesize dumpRouteAndPath=_dumpRouteAndPath;
 @property (nonatomic) BOOL dumpTransitTileContents; // @synthesize dumpTransitTileContents=_dumpTransitTileContents;
+@property (nonatomic) BOOL enableARDebugConsole; // @synthesize enableARDebugConsole=_enableARDebugConsole;
+@property (nonatomic) BOOL enableAROmniTileLoader; // @synthesize enableAROmniTileLoader=_enableAROmniTileLoader;
+@property (nonatomic) BOOL enableEtaLabelDebugging; // @synthesize enableEtaLabelDebugging=_enableEtaLabelDebugging;
 @property (nonatomic) BOOL enableLoggingInLockScreen; // @synthesize enableLoggingInLockScreen=_enableLoggingInLockScreen;
+@property (nonatomic) BOOL enableRouteIntersectionTesting; // @synthesize enableRouteIntersectionTesting=_enableRouteIntersectionTesting;
 @property (nonatomic) BOOL enableShieldsOnRouteLine; // @synthesize enableShieldsOnRouteLine=_enableShieldsOnRouteLine;
 @property (nonatomic) BOOL enableSignPostEvents; // @synthesize enableSignPostEvents=_enableSignPostEvents;
+@property (nonatomic) BOOL enableTrafficCameraLabelDebugging; // @synthesize enableTrafficCameraLabelDebugging=_enableTrafficCameraLabelDebugging;
+@property (nonatomic) BOOL etaLabelsAvoidScreenEdges; // @synthesize etaLabelsAvoidScreenEdges=_etaLabelsAvoidScreenEdges;
 @property (nonatomic) BOOL expandedPerformanceHUD; // @synthesize expandedPerformanceHUD=_expandedPerformanceHUD;
 @property (strong, nonatomic) NSMutableArray *footprintsToSuppress; // @synthesize footprintsToSuppress=_footprintsToSuppress;
+@property (nonatomic) BOOL forceEtaLabelPlacement; // @synthesize forceEtaLabelPlacement=_forceEtaLabelPlacement;
 @property (nonatomic) BOOL forceHiResBuildings; // @synthesize forceHiResBuildings=_forceHiResBuildings;
 @property (nonatomic) BOOL hideClientPositionedFeatures; // @synthesize hideClientPositionedFeatures=_hideClientPositionedFeatures;
 @property (nonatomic) BOOL hideDirectionalArrows; // @synthesize hideDirectionalArrows=_hideDirectionalArrows;
 @property (nonatomic) BOOL hideServerPositionedRoadFeatures; // @synthesize hideServerPositionedRoadFeatures=_hideServerPositionedRoadFeatures;
 @property (nonatomic) BOOL hideServerPositionedTransitFeatures; // @synthesize hideServerPositionedTransitFeatures=_hideServerPositionedTransitFeatures;
 @property (nonatomic) BOOL highlightFeaturesOnly; // @synthesize highlightFeaturesOnly=_highlightFeaturesOnly;
-@property (nonatomic) BOOL highlightUnmatchedRouteLine; // @synthesize highlightUnmatchedRouteLine=_highlightUnmatchedRouteLine;
+@property (nonatomic) BOOL highlightRouteLineSnappingStatus; // @synthesize highlightRouteLineSnappingStatus=_highlightRouteLineSnappingStatus;
 @property (nonatomic) BOOL holdOntoStyleAttributes; // @synthesize holdOntoStyleAttributes=_holdOntoStyleAttributes;
 @property (nonatomic) BOOL immediateRasterTextureLoading; // @synthesize immediateRasterTextureLoading=_immediateRasterTextureLoading;
 @property (nonatomic) BOOL isInstalledInLockScreen; // @synthesize isInstalledInLockScreen=_isInstalledInLockScreen;
@@ -199,6 +234,7 @@
 @property (nonatomic) BOOL layoutContinuously; // @synthesize layoutContinuously=_layoutContinuously;
 @property (nonatomic) BOOL loadGreenTraffic; // @synthesize loadGreenTraffic=_loadGreenTraffic;
 @property (nonatomic) BOOL newRouteTraffic; // @synthesize newRouteTraffic=_newRouteTraffic;
+@property (nonatomic) BOOL overrideVenueCameraSettings; // @synthesize overrideVenueCameraSettings=_overrideVenueCameraSettings;
 @property (nonatomic) BOOL paintBuildingNormals; // @synthesize paintBuildingNormals=_paintBuildingNormals;
 @property (nonatomic) BOOL paintCoastlines; // @synthesize paintCoastlines=_paintCoastlines;
 @property (nonatomic) BOOL paintJunctions; // @synthesize paintJunctions=_paintJunctions;
@@ -206,6 +242,7 @@
 @property (nonatomic) BOOL paintLabelCollisionLines; // @synthesize paintLabelCollisionLines=_paintLabelCollisionLines;
 @property (nonatomic) BOOL paintLabelCounts; // @synthesize paintLabelCounts=_paintLabelCounts;
 @property (nonatomic) BOOL paintLabelRoadFeatures; // @synthesize paintLabelRoadFeatures=_paintLabelRoadFeatures;
+@property (nonatomic) BOOL paintLandcoverTiles; // @synthesize paintLandcoverTiles=_paintLandcoverTiles;
 @property (nonatomic) BOOL paintMapTiles; // @synthesize paintMapTiles=_paintMapTiles;
 @property (nonatomic) BOOL paintPoiTiles; // @synthesize paintPoiTiles=_paintPoiTiles;
 @property (nonatomic) BOOL paintPointTiles; // @synthesize paintPointTiles=_paintPointTiles;
@@ -219,34 +256,41 @@
 @property (nonatomic) BOOL paintTiles; // @synthesize paintTiles=_paintTiles;
 @property (nonatomic) BOOL paintTrafficSkeleton; // @synthesize paintTrafficSkeleton=_paintTrafficSkeleton;
 @property (nonatomic) BOOL paintTransitCounts; // @synthesize paintTransitCounts=_paintTransitCounts;
+@property (nonatomic) BOOL paintVenues; // @synthesize paintVenues=_paintVenues;
 @property (nonatomic) BOOL paintVertices; // @synthesize paintVertices=_paintVertices;
 @property (nonatomic) BOOL prioritizeTrafficSkeleton; // @synthesize prioritizeTrafficSkeleton=_prioritizeTrafficSkeleton;
 @property (nonatomic) BOOL readLandmarksFromDisk; // @synthesize readLandmarksFromDisk=_readLandmarksFromDisk;
 @property (nonatomic) BOOL realisticWireframeEnabled; // @synthesize realisticWireframeEnabled=_realisticWireframeEnabled;
 @property (nonatomic) BOOL renderInSeparateThread; // @synthesize renderInSeparateThread=_renderInSeparateThread;
 @property (nonatomic) float ribbonCrispness; // @synthesize ribbonCrispness=_ribbonCrispness;
-@property (nonatomic) float routeCoarsenThreshold; // @synthesize routeCoarsenThreshold=_routeCoarsenThreshold;
-@property (nonatomic) float routeRefineThreshold; // @synthesize routeRefineThreshold=_routeRefineThreshold;
 @property (nonatomic) BOOL shouldUseTestTileLoader; // @synthesize shouldUseTestTileLoader=_shouldUseTestTileLoader;
+@property (nonatomic) BOOL showManeuverPoints; // @synthesize showManeuverPoints=_showManeuverPoints;
 @property (nonatomic) BOOL showNavCameraDebugConsole; // @synthesize showNavCameraDebugConsole=_showNavCameraDebugConsole;
 @property (nonatomic) BOOL showNavCameraDebugConsoleAttributes; // @synthesize showNavCameraDebugConsoleAttributes=_showNavCameraDebugConsoleAttributes;
 @property (nonatomic) BOOL showNavCameraDebugConsoleProperties; // @synthesize showNavCameraDebugConsoleProperties=_showNavCameraDebugConsoleProperties;
 @property (nonatomic) BOOL showNavCameraDebugLegend; // @synthesize showNavCameraDebugLegend=_showNavCameraDebugLegend;
 @property (nonatomic) BOOL showNavCameraDebugOverlay; // @synthesize showNavCameraDebugOverlay=_showNavCameraDebugOverlay;
 @property (nonatomic) BOOL showTrafficCasing; // @synthesize showTrafficCasing=_showTrafficCasing;
+@property (nonatomic) BOOL suppressFootprints; // @synthesize suppressFootprints=_suppressFootprints;
+@property (nonatomic) BOOL texturedTrafficCasing; // @synthesize texturedTrafficCasing=_texturedTrafficCasing;
 @property (nonatomic) BOOL trackingCameraZoomFurther; // @synthesize trackingCameraZoomFurther=_trackingCameraZoomFurther;
+@property (nonatomic) BOOL trafficCameraLabelCollideOutExternal; // @synthesize trafficCameraLabelCollideOutExternal=_trafficCameraLabelCollideOutExternal;
+@property (nonatomic) BOOL trafficCameraLabelCollideWithExternal; // @synthesize trafficCameraLabelCollideWithExternal=_trafficCameraLabelCollideWithExternal;
+@property (nonatomic) BOOL trafficCameraLabelSelfCollide; // @synthesize trafficCameraLabelSelfCollide=_trafficCameraLabelSelfCollide;
 @property (nonatomic) BOOL transitHighlighting; // @synthesize transitHighlighting=_transitHighlighting;
 @property (nonatomic) BOOL useBuildingShadowTexture; // @synthesize useBuildingShadowTexture=_useBuildingShadowTexture;
 @property (nonatomic) BOOL useMetalRenderer; // @synthesize useMetalRenderer=_useMetalRenderer;
 @property (nonatomic) BOOL useStaticTrafficFeed; // @synthesize useStaticTrafficFeed=_useStaticTrafficFeed;
 @property (nonatomic) BOOL useTransactionManager; // @synthesize useTransactionManager=_useTransactionManager;
+@property (nonatomic) float venueBoundsPaddingForCamera; // @synthesize venueBoundsPaddingForCamera=_venueBoundsPaddingForCamera;
+@property (nonatomic) float venueZoomOutFalloff; // @synthesize venueZoomOutFalloff=_venueZoomOutFalloff;
 
 + (id)sharedSettings;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)addFootprintToSuppress:(id)arg1;
 - (void)clearFootprintsToSuppress;
-- (shared_ptr_9d00bcb9 *)customLandmarkObjectGroupForKey:(const struct _GEOTileKey *)arg1;
+- (const vector_fbcf581f *)customLandmarkObjectGroupsForKey:(const struct _GEOTileKey *)arg1;
 - (void)dealloc;
 - (void)hidePerformanceGroup:(unsigned int)arg1;
 - (id)init;
@@ -254,7 +298,7 @@
 - (id)nameForPerformanceGroup:(unsigned int)arg1;
 - (unsigned int)numPerformanceGroups;
 - (BOOL)overlaysShouldDrawDebug;
-- (void)setCustomLandmarkFromData:(id)arg1 tileKey:(const struct _GEOTileKey *)arg2;
+- (void)setCustomLandmarkFromData:(id)arg1 tileKey:(const struct _GEOTileKey *)arg2 texturePath:(id)arg3;
 - (void)setCustomLandmarkFromDisk:(id)arg1 tileKey:(const struct _GEOTileKey *)arg2;
 - (void)setCustomLandmarkFromDisk:(id)arg1 tileKey:(const struct _GEOTileKey *)arg2 styleKey:(unsigned int)arg3 styleValue:(int)arg4;
 - (BOOL)shouldDrawDebug;

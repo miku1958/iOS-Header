@@ -6,39 +6,52 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreParsec/NSCopying-Protocol.h>
+#import <CoreParsec/NSSecureCoding-Protocol.h>
+#import <CoreParsec/_CPProcessableFeedback-Protocol.h>
+#import <CoreParsec/_CPResultGradingFeedback-Protocol.h>
 
-@class NSString, _CPSearchResultForFeedback;
+@class NSData, NSDictionary, NSString, _CPSearchResultForFeedback;
 
-@interface _CPResultGradingFeedback : PBCodable <NSCopying>
+@interface _CPResultGradingFeedback : PBCodable <_CPProcessableFeedback, _CPResultGradingFeedback, NSSecureCoding>
 {
-    unsigned long long _timestamp;
-    int _grade;
-    _CPSearchResultForFeedback *_result;
-    NSString *_textFeedback;
     struct {
+        unsigned int timestamp:1;
         unsigned int grade:1;
     } _has;
+    int _grade;
+    unsigned long long _timestamp;
+    _CPSearchResultForFeedback *_result;
+    NSString *_textFeedback;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly, nonatomic) id feedbackJSON;
 @property (nonatomic) int grade; // @synthesize grade=_grade;
-@property (nonatomic) BOOL hasGrade;
+@property (readonly, nonatomic) BOOL hasGrade;
 @property (readonly, nonatomic) BOOL hasResult;
 @property (readonly, nonatomic) BOOL hasTextFeedback;
+@property (readonly, nonatomic) BOOL hasTimestamp;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (readonly, nonatomic) BOOL requiresQueryId;
 @property (strong, nonatomic) _CPSearchResultForFeedback *result; // @synthesize result=_result;
-@property (strong, nonatomic) NSString *textFeedback; // @synthesize textFeedback=_textFeedback;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *textFeedback; // @synthesize textFeedback=_textFeedback;
+@property (readonly, nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 
 - (void).cxx_destruct;
-- (int)StringAsGrade:(id)arg1;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (id)dictionaryRepresentation;
-- (id)gradeAsString:(int)arg1;
-- (unsigned long long)hash;
+- (id)init;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithFacade:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

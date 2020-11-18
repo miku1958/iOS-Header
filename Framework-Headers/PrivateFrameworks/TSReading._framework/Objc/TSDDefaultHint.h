@@ -6,12 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-#import <TSReading/NSCoding-Protocol.h>
+#import <TSReading/NSSecureCoding-Protocol.h>
 #import <TSReading/TSDHint-Protocol.h>
 
 @class NSString;
 
-@interface TSDDefaultHint : NSObject <TSDHint, NSCoding>
+@interface TSDDefaultHint : NSObject <TSDHint, NSSecureCoding>
 {
     struct CGRect mBounds;
     unsigned long long mEdges;
@@ -25,6 +25,7 @@
 @property (readonly) Class superclass;
 
 + (Class)archivedHintClass;
++ (BOOL)supportsSecureCoding;
 - (id)copyForArchiving;
 - (void)encodeWithCoder:(id)arg1;
 - (id)firstChildHint;

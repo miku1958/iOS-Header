@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TelephonyUtilities/TUCallCapabilitiesXPCClient-Protocol.h>
 #import <TelephonyUtilities/TUCallCapabilitiesXPCServerActions-Protocol.h>
@@ -36,25 +36,25 @@
 - (void).cxx_destruct;
 - (void)_retrieveStateForInitialUpdate:(BOOL)arg1;
 - (void)_updateState:(id)arg1;
-- (void)cancelPinRequestFromPrimaryDevice;
-- (void)capabilityStateUpdated:(id)arg1;
+- (oneway void)cancelPinRequestFromPrimaryDevice;
+- (oneway void)capabilityStateUpdated:(id)arg1;
 - (void)dealloc;
-- (void)endEmergencyCallbackMode;
+- (oneway void)endEmergencyCallbackMode;
 - (id)init;
 - (id)initWithServer:(id)arg1;
-- (void)invalidateAndRefreshThumperCallingProvisioningURL;
-- (void)invalidateAndRefreshWiFiCallingProvisioningURL;
+- (oneway void)invalidateAndRefreshThumperCallingProvisioningURL;
+- (oneway void)invalidateAndRefreshWiFiCallingProvisioningURL;
 - (void)invalidateXPCConnection;
-- (void)requestPinFromPrimaryDevice;
+- (oneway void)requestPinFromPrimaryDevice;
 - (id)serverWithErrorHandler:(CDUnknownBlockType)arg1;
-- (void)setRelayCallingEnabled:(BOOL)arg1;
-- (void)setRelayCallingEnabled:(BOOL)arg1 forDeviceWithID:(id)arg2;
-- (void)setThumperCallingAllowed:(BOOL)arg1 onSecondaryDeviceWithID:(id)arg2;
-- (void)setThumperCallingAllowedOnDefaultPairedDevice:(BOOL)arg1;
-- (void)setThumperCallingEnabled:(BOOL)arg1;
-- (void)setVoLTECallingEnabled:(BOOL)arg1;
-- (void)setWiFiCallingEnabled:(BOOL)arg1;
-- (void)setWiFiCallingRoamingEnabled:(BOOL)arg1;
+- (oneway void)setRelayCallingEnabled:(BOOL)arg1;
+- (oneway void)setRelayCallingEnabled:(BOOL)arg1 forDeviceWithID:(id)arg2;
+- (oneway void)setThumperCallingAllowed:(BOOL)arg1 onSecondaryDeviceWithID:(id)arg2;
+- (oneway void)setThumperCallingAllowedOnDefaultPairedDevice:(BOOL)arg1;
+- (oneway void)setThumperCallingEnabled:(BOOL)arg1;
+- (oneway void)setVoLTECallingEnabled:(BOOL)arg1;
+- (oneway void)setWiFiCallingEnabled:(BOOL)arg1;
+- (oneway void)setWiFiCallingRoamingEnabled:(BOOL)arg1;
 
 @end
 

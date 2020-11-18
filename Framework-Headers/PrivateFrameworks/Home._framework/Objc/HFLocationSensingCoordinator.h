@@ -6,33 +6,30 @@
 
 #import <objc/NSObject.h>
 
-#import <Home/CLLocationManagerDelegate-Protocol.h>
+#import <Home/HFLocationManagerObserver-Protocol.h>
 
-@class CLLocationManager, NAFuture, NSString, NSUserDefaults;
+@class HFLocationManagerDispatcher, NAFuture, NSString, NSUserDefaults;
 @protocol HFLocationSensingCoordinatorDelegate;
 
-@interface HFLocationSensingCoordinator : NSObject <CLLocationManagerDelegate>
+@interface HFLocationSensingCoordinator : NSObject <HFLocationManagerObserver>
 {
-    int _authorizationStatus;
     id<HFLocationSensingCoordinatorDelegate> _delegate;
     NSUserDefaults *_defaults;
-    CLLocationManager *_locationManager;
-    NAFuture *_authStatusInitializedFuture;
+    HFLocationManagerDispatcher *_locationDispatcher;
 }
 
-@property (strong, nonatomic) NAFuture *authStatusInitializedFuture; // @synthesize authStatusInitializedFuture=_authStatusInitializedFuture;
-@property (nonatomic) int authorizationStatus; // @synthesize authorizationStatus=_authorizationStatus;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSUserDefaults *defaults; // @synthesize defaults=_defaults;
 @property (weak, nonatomic) id<HFLocationSensingCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL homeSensingEnabled;
-@property (strong, nonatomic) CLLocationManager *locationManager; // @synthesize locationManager=_locationManager;
+@property (strong, nonatomic) HFLocationManagerDispatcher *locationDispatcher; // @synthesize locationDispatcher=_locationDispatcher;
 @property (readonly, nonatomic) NAFuture *locationSensingAvailableFuture;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;

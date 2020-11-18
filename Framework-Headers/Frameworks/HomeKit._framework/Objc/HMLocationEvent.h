@@ -6,12 +6,14 @@
 
 #import <HomeKit/HMEvent.h>
 
+#import <HomeKit/NSCopying-Protocol.h>
+#import <HomeKit/NSMutableCopying-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 #import <HomeKit/_HMLocationHandlerDelegate-Protocol.h>
 
 @class CLRegion;
 
-@interface HMLocationEvent : HMEvent <_HMLocationHandlerDelegate, NSSecureCoding>
+@interface HMLocationEvent : HMEvent <_HMLocationHandlerDelegate, NSSecureCoding, NSCopying, NSMutableCopying>
 {
     int _locationAuthorization;
     CLRegion *_region;
@@ -23,14 +25,19 @@
 + (id)createWithDictionary:(id)arg1 home:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_configure:(id)arg1 eventTrigger:(id)arg2 clientQueue:(id)arg3 delegateCaller:(id)arg4;
+- (void)_configure:(id)arg1 clientQueue:(id)arg2 delegateCaller:(id)arg3 msgDispatcher:(id)arg4;
+- (void)_handleEventUpdatedNotification:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+- (void)_retrieveLocationEvent;
 - (id)_serializeForAdd;
 - (void)_updateRegion:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)didUpdateAuthorization:(int)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDict:(id)arg1 region:(id)arg2;
 - (id)initWithRegion:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (void)updateRegion:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

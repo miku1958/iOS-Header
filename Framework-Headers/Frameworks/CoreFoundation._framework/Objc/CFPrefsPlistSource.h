@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (void *)alreadylocked_copyValueForKey:(struct __CFString *)arg1;
 - (long long)alreadylocked_generationCount;
 - (BOOL)alreadylocked_requestNewData;
-- (void)alreadylocked_setValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3;
+- (void)alreadylocked_setValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 from:(id)arg4;
 - (void)alreadylocked_updateObservingRemoteChanges;
 - (BOOL)attachAccessTokenToMessage:(id)arg1 accessType:(int)arg2;
 - (struct __CFString *)container;
@@ -57,7 +57,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithDomain:(struct __CFString *)arg1 user:(struct __CFString *)arg2 byHost:(BOOL)arg3 containerPath:(struct __CFString *)arg4 containingPreferences:(id)arg5;
 - (BOOL)isByHost;
 - (BOOL)isVolatile;
-- (void)mergeIntoDictionary:(struct __CFDictionary *)arg1;
+- (void)requestPlistValidation;
 - (void)sendFullyPreparedMessage:(id)arg1 toConnection:(id)arg2 settingValue:(void *)arg3 forKey:(struct __CFString *)arg4 retryCount:(int)arg5;
 - (long long)sendMessageSettingValue:(void *)arg1 forKey:(struct __CFString *)arg2;
 - (void)sendRequestNewDataMessage:(id)arg1 toConnection:(id)arg2 retryCount:(int)arg3 error:(BOOL *)arg4;

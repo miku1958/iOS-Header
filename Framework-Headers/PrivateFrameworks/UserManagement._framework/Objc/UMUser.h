@@ -18,6 +18,7 @@
     BOOL _isLoginUser;
     BOOL _isAuditor;
     BOOL _isDisabled;
+    BOOL _hasManagedCredentials;
     BOOL _hasDataToSync;
     unsigned int _uid;
     unsigned int _gid;
@@ -58,6 +59,7 @@
 @property (nonatomic) unsigned int gid; // @synthesize gid=_gid;
 @property (copy, nonatomic) NSString *givenName; // @synthesize givenName=_givenName;
 @property (nonatomic) BOOL hasDataToSync; // @synthesize hasDataToSync=_hasDataToSync;
+@property (nonatomic) BOOL hasManagedCredentials; // @synthesize hasManagedCredentials=_hasManagedCredentials;
 @property (copy, nonatomic) NSURL *homeDirectoryURL; // @synthesize homeDirectoryURL=_homeDirectoryURL;
 @property (nonatomic) BOOL isAuditor; // @synthesize isAuditor=_isAuditor;
 @property (nonatomic) BOOL isDisabled; // @synthesize isDisabled=_isDisabled;

@@ -33,13 +33,13 @@
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)entriesType;
+- (void).cxx_destruct;
 - (int)StringAsSuggestionType:(id)arg1;
 - (int)StringAsType:(id)arg1;
 - (void)addEntries:(id)arg1;
 - (void)clearEntries;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)entriesAtIndex:(unsigned long long)arg1;

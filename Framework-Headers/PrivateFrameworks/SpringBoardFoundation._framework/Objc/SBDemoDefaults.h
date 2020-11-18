@@ -11,6 +11,7 @@
 }
 
 @property (readonly, nonatomic, getter=isStoreDemoApplicationLockEnabled) BOOL storeDemoApplicationLockEnabled; // @dynamic storeDemoApplicationLockEnabled;
+@property (readonly, nonatomic) BOOL usesStoreDemoPlugin; // @dynamic usesStoreDemoPlugin;
 
 - (void)_bindAndRegisterDefaults;
 

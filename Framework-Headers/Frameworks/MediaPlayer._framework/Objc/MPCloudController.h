@@ -87,8 +87,11 @@
 - (void)setItemProperties:(id)arg1 forPurchaseHistoryID:(unsigned long long)arg2;
 - (void)setItemProperties:(id)arg1 forSagaID:(unsigned long long)arg2;
 - (void)setLikedState:(long long)arg1 forAlbumWithStoreID:(long long)arg2;
+- (void)setLikedState:(long long)arg1 forAlbumWithStoreID:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setLikedState:(long long)arg1 forEntityWithStoreID:(long long)arg2 withMediaType:(unsigned long long)arg3;
+- (void)setLikedState:(long long)arg1 forEntityWithStoreID:(long long)arg2 withMediaType:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setLikedState:(long long)arg1 forPlaylistWithGlobalID:(id)arg2;
+- (void)setLikedState:(long long)arg1 forPlaylistWithGlobalID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setPlaylistProperties:(id)arg1 trackList:(id)arg2 forPlaylistWithPersistentID:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)shouldProhibitActionsForCurrentNetworkConditions;
 - (BOOL)shouldProhibitMusicActionForCurrentNetworkConditions;

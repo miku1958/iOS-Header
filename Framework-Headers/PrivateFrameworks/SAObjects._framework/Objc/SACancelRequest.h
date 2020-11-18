@@ -15,6 +15,7 @@
 }
 
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
+@property (nonatomic) long long clientCancellationCode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -25,6 +26,7 @@
 + (id)cancelRequestWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)requiresResponse;
 
 @end
 

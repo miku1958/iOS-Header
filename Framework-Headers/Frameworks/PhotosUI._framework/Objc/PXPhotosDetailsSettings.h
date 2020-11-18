@@ -11,13 +11,14 @@
     BOOL _showHeaderWidget;
     BOOL _showAssetsWidget;
     BOOL _showDemoTilingViewWidget;
+    BOOL _showVariationsWidget;
     BOOL _showDemoViewWidget;
     BOOL _showDemoDynamicWidget;
     BOOL _showPlacesWidget;
     BOOL _showRelatedPeopleWidget;
     BOOL _showRelatedWidget;
-    BOOL _showSuggestedFacesWidget;
     BOOL _showActionsWidget;
+    BOOL _showPeopleInlineCandidateWidget;
     BOOL _showFacesAreaRect;
     BOOL _allowWidgetsContentLoading;
     BOOL _loadAllWidgetsContentAfterDelay;
@@ -90,13 +91,15 @@
 @property (nonatomic) BOOL showDemoViewWidget; // @synthesize showDemoViewWidget=_showDemoViewWidget;
 @property (nonatomic) BOOL showFacesAreaRect; // @synthesize showFacesAreaRect=_showFacesAreaRect;
 @property (nonatomic) BOOL showHeaderWidget; // @synthesize showHeaderWidget=_showHeaderWidget;
+@property (nonatomic) BOOL showPeopleInlineCandidateWidget; // @synthesize showPeopleInlineCandidateWidget=_showPeopleInlineCandidateWidget;
 @property (nonatomic) BOOL showPlacesWidget; // @synthesize showPlacesWidget=_showPlacesWidget;
 @property (nonatomic) BOOL showRelatedPeopleWidget; // @synthesize showRelatedPeopleWidget=_showRelatedPeopleWidget;
 @property (nonatomic) BOOL showRelatedWidget; // @synthesize showRelatedWidget=_showRelatedWidget;
-@property (nonatomic) BOOL showSuggestedFacesWidget; // @synthesize showSuggestedFacesWidget=_showSuggestedFacesWidget;
+@property (nonatomic) BOOL showVariationsWidget; // @synthesize showVariationsWidget=_showVariationsWidget;
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
+- (id)parentSettings;
 - (void)setDefaultValues;
 
 @end

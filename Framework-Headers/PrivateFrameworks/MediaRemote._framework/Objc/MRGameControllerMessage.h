@@ -8,17 +8,14 @@
 
 @interface MRGameControllerMessage : MRProtocolMessage
 {
-    BOOL _eventInitialized;
-    BOOL _hasEvent;
-    CDStruct_06eb3966 _gcEvent;
+    void *_event;
     unsigned long long _priority;
 }
 
 @property (readonly, nonatomic) unsigned long long controllerID;
-@property (readonly, nonatomic) CDStruct_06eb3966 *event;
+@property (readonly, nonatomic) void *event;
 
-- (id)initWithButtons:(CDStruct_af4f530f *)arg1 controllerID:(unsigned long long)arg2;
-- (id)initWithGameControllerEvent:(const CDStruct_06eb3966 *)arg1 controllerID:(unsigned long long)arg2;
+- (id)initWithGameControllerEvent:(void *)arg1 controllerID:(unsigned long long)arg2;
 - (unsigned long long)priority;
 - (BOOL)shouldLog;
 - (unsigned long long)type;

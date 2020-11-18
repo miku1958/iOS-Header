@@ -21,7 +21,7 @@
 
 + (id)sharedInstance;
 - (BOOL)returnsUnitWithValueForDisplay;
-- (id)stringFromNumber:(id)arg1 dataUnit:(id)arg2 unitController:(id)arg3;
+- (id)stringFromNumber:(id)arg1 displayType:(id)arg2 unitController:(id)arg3;
 
 @end
 

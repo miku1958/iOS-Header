@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HMDCameraProfile, NSMutableSet;
 
-@interface HMDBulletinBoardCameraNotificationAssociation : NSObject
+@interface HMDBulletinBoardCameraNotificationAssociation : HMFObject
 {
     HMDCameraProfile *_cameraProfile;
     NSMutableSet *_notificationGeneratingServicesWithCamera;

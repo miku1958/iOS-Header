@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <IMCore/NSCoding-Protocol.h>
+#import <IMCore/NSSecureCoding-Protocol.h>
 
-@class IMAccount, IMPerson, IMServiceImpl, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSMutableArray, NSSet, NSString, NSURL;
+@class IMAccount, IMPerson, IMServiceImpl, MKMapItem, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSMutableArray, NSNumber, NSSet, NSString;
 
-@interface IMHandle : NSObject <NSCoding>
+@interface IMHandle : NSObject <NSSecureCoding>
 {
-    NSString *_guid;
     IMAccount *_account;
     NSString *_id;
     NSString *_uncanonicalID;
@@ -47,7 +46,6 @@
     NSString *_prevStatusMsg;
     NSMutableArray *_notificationNameQueue;
     NSMutableArray *_notificationQueue;
-    NSURL *_statusURL;
     struct __CFPhoneNumber *_phoneNumberRef;
     NSString *_formattedNumber;
     BOOL _hasCheckedPhoneNumber;
@@ -57,7 +55,6 @@
     unsigned int _authRequestStatus;
     unsigned long long _resourceIndex;
     long long _IDStatus;
-    BOOL _isRetainingAccount;
     BOOL _blockNotifications;
     BOOL _hasTemporaryWatch;
     BOOL _isMobile;
@@ -65,39 +62,37 @@
     BOOL _isAnonymous;
     BOOL _beingTornDown;
     BOOL _hasCheckedCardMap;
-    BOOL _isRegistered;
     long long _priority;
     int _addressBookIdentifier;
     int _notificationQueueCount;
-    NSURL *_statusMessageURL;
+    NSNumber *_isBusiness;
+    NSNumber *_isMako;
+    NSNumber *_isApple;
+    NSString *_guid;
+    MKMapItem *_mapItem;
+    NSData *_mapItemImageData;
     NSString *_suggestedName;
 }
 
 @property (readonly, strong, nonatomic) NSString *ID; // @synthesize ID=_id;
 @property (nonatomic) long long IDStatus; // @synthesize IDStatus=_IDStatus;
 @property (readonly, strong, nonatomic) NSString *IDWithoutResource;
-@property (readonly, strong, nonatomic) IMPerson *_cachedPerson;
 @property (readonly, strong, nonatomic) NSString *_displayNameWithAbbreviation;
-@property (setter=_setIsRegisteredWithRegistrar:) BOOL _isRegisteredWithRegistrar; // @synthesize _isRegisteredWithRegistrar=_isRegistered;
 @property (readonly, strong, nonatomic) IMAccount *account; // @synthesize account=_account;
 @property (readonly, strong, nonatomic) NSArray *accountSiblingsArray;
 @property (readonly, strong, nonatomic) NSString *accountTypeName;
 @property (readonly, nonatomic) int addressBookIdentifier; // @synthesize addressBookIdentifier=_addressBookIdentifier;
-@property (readonly, nonatomic) BOOL areABPropertiesRecent;
 @property (readonly, nonatomic) unsigned int authRequestStatus; // @synthesize authRequestStatus=_authRequestStatus;
 @property (readonly, strong, nonatomic) id bestAccountSibling;
 @property (readonly, nonatomic) id bestSibling;
 @property (readonly, nonatomic) BOOL canBeAdded;
 @property (readonly, nonatomic) BOOL canBeDeleted;
 @property (readonly, nonatomic) unsigned long long capabilities;
-@property (strong, nonatomic, setter=_setCountryCode:) NSString *countryCode; // @synthesize countryCode=_countryCode;
-@property (strong, nonatomic) NSData *customPictureData;
-@property (readonly, nonatomic) NSArray *dependentIMHandles;
+@property (readonly, strong, nonatomic) NSString *countryCode;
 @property (readonly, strong, nonatomic) NSString *displayID;
 @property (readonly, strong, nonatomic) NSString *email;
 @property (readonly, strong, nonatomic) NSArray *emails;
 @property (readonly, strong, nonatomic) NSArray *existingAccountSiblingsArray;
-@property (readonly, nonatomic) id existingIMHandleWithoutResource;
 @property (readonly, strong, nonatomic) NSDictionary *extraProperties; // @synthesize extraProperties=_extraProps;
 @property (readonly, strong, nonatomic) NSDate *feedUpdatedDate; // @synthesize feedUpdatedDate=_feedUpdatedDate;
 @property (readonly, strong, nonatomic) NSString *firstName;
@@ -112,12 +107,9 @@
 @property (readonly, nonatomic) BOOL hasMultiwayVideo;
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasOtherSiblings;
-@property (readonly, nonatomic) BOOL hasResource;
-@property (readonly, nonatomic) BOOL hasServer;
 @property (readonly, nonatomic) BOOL hasVideo;
 @property (readonly, strong, nonatomic) NSString *idleString;
 @property (readonly, nonatomic) double idleTime;
-@property (readonly, nonatomic) id imHandleWithoutResource;
 @property (readonly, nonatomic) BOOL isAnonymous;
 @property (nonatomic, setter=setBlocked:) BOOL isBlocked;
 @property (readonly, nonatomic) BOOL isBot; // @synthesize isBot=_isBot;
@@ -129,6 +121,8 @@
 @property (readonly, nonatomic) BOOL isSystemUser;
 @property (readonly, nonatomic) BOOL isVisiblyBlocked;
 @property (readonly, strong, nonatomic) NSString *lastName;
+@property (strong, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
+@property (strong, nonatomic) NSData *mapItemImageData; // @synthesize mapItemImageData=_mapItemImageData;
 @property (readonly, strong, nonatomic) NSString *mobileDeviceName;
 @property (readonly, strong, nonatomic) NSString *name;
 @property (readonly, strong, nonatomic) NSString *nameAndEmail;
@@ -137,9 +131,9 @@
 @property (readonly, strong, nonatomic) NSString *nickname;
 @property (readonly, strong, nonatomic) NSString *normalizedID;
 @property (readonly, strong, nonatomic) NSString *offlineString;
-@property (strong, nonatomic, setter=_setOriginalID:) NSString *originalID; // @synthesize originalID=_uncanonicalID;
+@property (readonly, strong, nonatomic) NSString *originalID; // @synthesize originalID=_uncanonicalID;
 @property (strong, nonatomic) NSDictionary *otherServiceIDs; // @synthesize otherServiceIDs=_otherServiceIDs;
-@property (strong, nonatomic, setter=setIMPerson:) IMPerson *person; // @synthesize person=_person;
+@property (strong, nonatomic, setter=setIMPerson:) IMPerson *person;
 @property (readonly, strong, nonatomic) NSData *pictureData; // @synthesize pictureData=_pictureData;
 @property (readonly, nonatomic) unsigned long long previousStatus; // @synthesize previousStatus=_prevStatus;
 @property (readonly, strong, nonatomic) NSString *previousStatusMessage; // @synthesize previousStatusMessage=_prevStatusMsg;
@@ -152,9 +146,7 @@
 @property (readonly, strong, nonatomic) NSArray *siblingsArray;
 @property (readonly, nonatomic) unsigned long long status;
 @property (readonly, strong, nonatomic) NSString *statusMessage;
-@property (strong, nonatomic) NSURL *statusMessageAsURL; // @synthesize statusMessageAsURL=_statusMessageURL;
-@property (readonly, strong, nonatomic) NSURL *statusURL; // @synthesize statusURL=_statusURL;
-@property (strong, nonatomic) NSString *suggestedName; // @synthesize suggestedName=_suggestedName;
+@property (copy, nonatomic) NSString *suggestedName; // @synthesize suggestedName=_suggestedName;
 @property (readonly, nonatomic) double timeSinceStatusChanged;
 @property (readonly, nonatomic) double timeSinceWentOffline;
 @property (readonly, strong, nonatomic) NSString *uniqueName; // @synthesize uniqueName=_uniqueName;
@@ -171,17 +163,21 @@
 + (id)nameOfStatus:(unsigned long long)arg1;
 + (BOOL)notificationsEnabled;
 + (void)setNotificationsEnabled:(BOOL)arg1;
++ (BOOL)supportsSecureCoding;
 + (void)validHandlesForPersons:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)validHandlesForPersons:(id)arg1 useExtendedAsyncLookup:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
 - (id)_IDWithTrimmedServer;
 - (id)_abPersonCreateIfNeeded;
 - (id)_bestChatSibling;
+- (id)_cachedPerson;
 - (id)_chatSiblings;
 - (id)_chatSiblingsArray;
 - (void)_clearABPersonLookup;
 - (void)_clearABProperties;
 - (void)_clearStatusMessageURLCache;
 - (void)_createPhoneNumberRefIfNeeded;
+- (void)_fetchBusinessInfo;
 - (void)_filterStatusMessage;
 - (id)_formattedPhoneNumber;
 - (id)_handleInfo;
@@ -191,12 +187,9 @@
 - (BOOL)_isChatSiblingOf:(id)arg1;
 - (BOOL)_isMyIDInList:(id)arg1;
 - (id)_nameForComparisonPreferFirst:(BOOL)arg1;
-- (id)_nameWithoutSuggestedName;
 - (void)_postNotification:(id)arg1;
 - (void)_postNotificationName:(id)arg1 userInfo:(id)arg2;
-- (void)_registerForIMPersonPictureChanges;
 - (void)_registerForNotifications;
-- (void)_removeAccountReference:(id)arg1;
 - (void)_sendAutomationData:(id)arg1 properties:(id)arg2;
 - (void)_sendCommand:(id)arg1 properties:(id)arg2;
 - (void)_sendRemoteLogDumpRequest;
@@ -204,14 +197,16 @@
 - (void)_setABPersonFirstName:(id)arg1 lastName:(id)arg2;
 - (void)_setBaseFirstName:(id)arg1 lastName:(id)arg2 fullName:(id)arg3;
 - (BOOL)_setCapabilities:(unsigned long long)arg1;
+- (void)_setCountryCode:(id)arg1 updateSiblings:(BOOL)arg2;
 - (void)_setExtraProperties:(id)arg1;
 - (void)_setIDStatus:(long long)arg1;
+- (void)_setOriginalID:(id)arg1;
 - (void)_setOriginalID:(id)arg1 countryCode:(id)arg2 updateSiblings:(BOOL)arg3;
 - (void)_setOriginalID:(id)arg1 updateSiblings:(BOOL)arg2;
 - (void)_stopRetainingAccount:(id)arg1;
-- (void)_unregisterFromIMPersonPictureChanges;
 - (void)_updateOriginalID:(id)arg1;
 - (void)_updateStatusBasedOnAuthRequestStatus;
+- (BOOL)areABPropertiesRecent;
 - (void)beginNotificationQueue;
 - (id)bestIMHandleForAccount:(id)arg1;
 - (id)bestIMHandleForAccount:(id)arg1 onService:(id)arg2 inGroup:(id)arg3 otherThan:(id)arg4;
@@ -225,33 +220,40 @@
 - (long long)compareNormalizedIDs:(id)arg1;
 - (long long)compareStatus:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)customPictureData;
 - (void)customPictureDataChanged:(id)arg1 key:(id)arg2;
 - (void)dealloc;
+- (id)dependentIMHandles;
 - (id)description;
 - (id)displayNameForChat:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)existingChatSiblingsArray;
-- (void)finalize;
+- (id)existingIMHandleWithoutResource;
 - (id)fmfHandle;
 - (id)fmfSiblingHandles;
 - (BOOL)hasCapability:(unsigned long long)arg1;
+- (BOOL)hasResource;
+- (BOOL)hasServer;
 - (unsigned long long)hash;
 - (id)imHandleForOtherAccount:(id)arg1;
-- (id)imHandleRegistrarGUID;
+- (id)imHandleWithoutResource;
 - (id)immediateNameWithNeedsSuggestedNameFetch:(BOOL *)arg1 useSuggestedName:(BOOL)arg2;
 - (id)init;
 - (id)initWithAccount:(id)arg1 ID:(id)arg2;
 - (id)initWithAccount:(id)arg1 ID:(id)arg2 alreadyCanonical:(BOOL)arg3;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isAccountSiblingOf:(id)arg1;
+- (BOOL)isApple;
 - (BOOL)isBetterThanIMHandle:(id)arg1;
+- (BOOL)isBusiness;
+- (BOOL)isContact;
+- (BOOL)isMako;
 - (BOOL)isSiblingOf:(id)arg1;
 - (BOOL)matchesIMHandle:(id)arg1;
 - (struct __CFPhoneNumber *)phoneNumberRef;
 - (void)postNotificationName:(id)arg1;
 - (void)propertiesChanged:(id)arg1;
 - (id)publicAPIPropertiesDictionary;
-- (oneway void)release;
 - (void)releaseNotificationQueue;
 - (void)requestValueOfProperty:(id)arg1;
 - (BOOL)resetABPerson;
@@ -261,6 +263,7 @@
 - (void)setAnonymous:(BOOL)arg1;
 - (void)setAuthRequestStatus:(unsigned int)arg1;
 - (void)setCapabilities:(unsigned long long)arg1;
+- (void)setCustomPictureData:(id)arg1;
 - (void)setCustomPictureData:(id)arg1 key:(id)arg2;
 - (void)setEmail:(id)arg1;
 - (void)setEmail:(id)arg1 andUpdateABPerson:(BOOL)arg2;
@@ -277,7 +280,6 @@
 - (void)setLocalNickname:(id)arg1;
 - (void)setPersonStatus:(unsigned long long)arg1;
 - (void)setStatus:(unsigned long long)arg1 message:(id)arg2 richMessage:(id)arg3;
-- (void)setStatusURLFromString:(id)arg1;
 - (void)setUniqueName:(id)arg1;
 - (void)setValue:(id)arg1 ofExtraProperty:(id)arg2;
 - (BOOL)shouldQueueNotifications;

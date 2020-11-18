@@ -18,14 +18,10 @@
     NSMutableArray *_createdConfigurations;
     NSMutableArray *_currentConfigurations;
     NSMutableArray *_identities;
-    NSString *_configFile;
-    NSString *_configFileLast;
     NEConfiguration *_currentConfiguration;
 }
 
 @property (readonly) NSString *clientName; // @synthesize clientName=_clientName;
-@property (copy) NSString *configFile; // @synthesize configFile=_configFile;
-@property (copy) NSString *configFileLast; // @synthesize configFileLast=_configFileLast;
 @property (strong) NSMutableArray *createdConfigurations; // @synthesize createdConfigurations=_createdConfigurations;
 @property (strong) NEConfiguration *currentConfiguration; // @synthesize currentConfiguration=_currentConfiguration;
 @property (strong) NSMutableArray *currentConfigurations; // @synthesize currentConfigurations=_currentConfigurations;
@@ -50,13 +46,16 @@
 - (BOOL)addPathRuleWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (BOOL)createConfigurationWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (void)dealloc;
+- (id)decodeConfigurationWithIdentifier:(id)arg1 andDecoder:(id)arg2;
 - (void)handleCommand:(int)arg1 forConfigWithName:(id)arg2 withParameters:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)initInternalWithClientName:(id)arg1;
 - (id)initWithClientName:(id)arg1;
 - (BOOL)isIsAlwaysOn;
 - (void)loadConfigurationWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadConfigurationsForceRefresh:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)loadFromDiskForGivenPath:(id)arg1 configName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)protocolForParameters:(id)arg1;
+- (id)readIndexFromDiskForGivenPatahWithError:(id)arg1 returnError:(id *)arg2 fileDecoder:(id *)arg3;
 - (void)reloadIdentityListWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)removeAppRuleWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (BOOL)removeOnDemandRuleWithParameters:(id)arg1 errorStr:(id *)arg2;

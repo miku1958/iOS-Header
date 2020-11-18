@@ -9,51 +9,54 @@
 #import <MobileCoreServices/NSCopying-Protocol.h>
 #import <MobileCoreServices/NSSecureCoding-Protocol.h>
 
-@class LSApplicationProxy, NSArray, NSDictionary, NSString, NSURL, _LSLazyPropertyList;
+@class LSBundleProxy, NSArray, NSDictionary, NSString, NSURL, _LSLazyPropertyList;
 
 @interface LSResourceProxy : _LSQueryResult <NSCopying, NSSecureCoding>
 {
     BOOL _boundIconIsBadge;
-    BOOL _privateDocumentIconAllowOverride;
-    BOOL _boundIconIsPrerendered;
+    BOOL __privateDocumentIconAllowOverride;
+    BOOL __boundIconIsPrerendered;
     NSString *_localizedName;
-    unsigned long long _propertyListCachingStrategy;
-    NSString *_boundApplicationIdentifier;
-    NSURL *_boundContainerURL;
-    NSURL *_boundDataContainerURL;
-    NSURL *_boundResourcesDirectoryURL;
+    NSString *__boundApplicationIdentifier;
+    NSURL *__boundContainerURL;
+    NSURL *__boundDataContainerURL;
+    NSURL *__boundResourcesDirectoryURL;
     _LSLazyPropertyList *__boundIconsDictionary;
-    NSString *_boundIconCacheKey;
-    NSArray *_boundIconFileNames;
-    LSApplicationProxy *_typeOwner;
+    NSString *__boundIconCacheKey;
+    NSArray *__boundIconFileNames;
+    LSBundleProxy *__typeIconOwner;
+    NSArray *__privateDocumentIconNames;
+    LSBundleProxy *__privateDocumentTypeIconOwner;
 }
 
+@property (copy, nonatomic, setter=_setBoundApplicationIdentifier:) NSString *_boundApplicationIdentifier; // @synthesize _boundApplicationIdentifier=__boundApplicationIdentifier;
+@property (copy, nonatomic, setter=_setBoundContainerURL:) NSURL *_boundContainerURL; // @synthesize _boundContainerURL=__boundContainerURL;
+@property (copy, nonatomic, setter=_setBoundDataContainerURL:) NSURL *_boundDataContainerURL; // @synthesize _boundDataContainerURL=__boundDataContainerURL;
+@property (copy, nonatomic, setter=_setBoundIconCacheKey:) NSString *_boundIconCacheKey; // @synthesize _boundIconCacheKey=__boundIconCacheKey;
+@property (copy, nonatomic, setter=_setBoundIconFileNames:) NSArray *_boundIconFileNames; // @synthesize _boundIconFileNames=__boundIconFileNames;
+@property (nonatomic, setter=_setBoundIconIsPrerendered:) BOOL _boundIconIsPrerendered; // @synthesize _boundIconIsPrerendered=__boundIconIsPrerendered;
 @property (copy, nonatomic, setter=_setBoundIconsDictionary:) _LSLazyPropertyList *_boundIconsDictionary; // @synthesize _boundIconsDictionary=__boundIconsDictionary;
-@property (copy, nonatomic) NSString *boundApplicationIdentifier; // @synthesize boundApplicationIdentifier=_boundApplicationIdentifier;
-@property (copy, nonatomic) NSURL *boundContainerURL; // @synthesize boundContainerURL=_boundContainerURL;
-@property (copy, nonatomic) NSURL *boundDataContainerURL; // @synthesize boundDataContainerURL=_boundDataContainerURL;
-@property (copy, nonatomic) NSString *boundIconCacheKey; // @synthesize boundIconCacheKey=_boundIconCacheKey;
-@property (copy, nonatomic) NSArray *boundIconFileNames; // @synthesize boundIconFileNames=_boundIconFileNames;
-@property (nonatomic) BOOL boundIconIsBadge; // @synthesize boundIconIsBadge=_boundIconIsBadge;
-@property (nonatomic) BOOL boundIconIsPrerendered; // @synthesize boundIconIsPrerendered=_boundIconIsPrerendered;
-@property (readonly, nonatomic) NSDictionary *boundIconsDictionary; // @dynamic boundIconsDictionary;
-@property (copy, nonatomic) NSURL *boundResourcesDirectoryURL; // @synthesize boundResourcesDirectoryURL=_boundResourcesDirectoryURL;
+@property (copy, nonatomic, setter=_setBoundResourcesDirectoryURL:) NSURL *_boundResourcesDirectoryURL; // @synthesize _boundResourcesDirectoryURL=__boundResourcesDirectoryURL;
+@property (nonatomic, setter=_setPrivateDocumentIconAllowOverride:) BOOL _privateDocumentIconAllowOverride; // @synthesize _privateDocumentIconAllowOverride=__privateDocumentIconAllowOverride;
+@property (copy, nonatomic, setter=_setPrivateDocumentIconNames:) NSArray *_privateDocumentIconNames; // @synthesize _privateDocumentIconNames=__privateDocumentIconNames;
+@property (copy, nonatomic, setter=_setPrivateDocumentTypeIconOwner:) LSBundleProxy *_privateDocumentTypeIconOwner; // @synthesize _privateDocumentTypeIconOwner=__privateDocumentTypeIconOwner;
+@property (copy, nonatomic, setter=_setTypeIconOwner:) LSBundleProxy *_typeIconOwner; // @synthesize _typeIconOwner=__typeIconOwner;
+@property (nonatomic, setter=_setBoundIconIsBadge:) BOOL boundIconIsBadge; // @synthesize boundIconIsBadge=_boundIconIsBadge;
 @property (readonly, nonatomic) NSDictionary *iconsDictionary;
-@property (copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
-@property (nonatomic) BOOL privateDocumentIconAllowOverride; // @synthesize privateDocumentIconAllowOverride=_privateDocumentIconAllowOverride;
-@property (nonatomic) unsigned long long propertyListCachingStrategy; // @synthesize propertyListCachingStrategy=_propertyListCachingStrategy;
-@property (copy, nonatomic) LSApplicationProxy *typeOwner; // @synthesize typeOwner=_typeOwner;
+@property (copy, nonatomic, setter=_setLocalizedName:) NSString *localizedName; // @synthesize localizedName=_localizedName;
+@property (readonly, nonatomic) NSString *primaryIconName;
+@property (nonatomic) unsigned long long propertyListCachingStrategy;
 
 + (BOOL)supportsSecureCoding;
 - (id)_initWithLocalizedName:(id)arg1;
-- (id)_initWithLocalizedName:(id)arg1 boundApplicationIdentifier:(id)arg2 boundContainerURL:(id)arg3 dataContainerURL:(id)arg4 boundResourcesDirectoryURL:(id)arg5 boundIconsDictionary:(id)arg6 boundIconCacheKey:(id)arg7 boundIconFileNames:(id)arg8 typeOwner:(id)arg9 boundIconIsPrerendered:(BOOL)arg10 boundIconIsBadge:(BOOL)arg11;
+- (id)_initWithLocalizedName:(id)arg1 boundApplicationIdentifier:(id)arg2 boundContainerURL:(id)arg3 dataContainerURL:(id)arg4 boundResourcesDirectoryURL:(id)arg5 boundIconsDictionary:(id)arg6 boundIconCacheKey:(id)arg7 boundIconFileNames:(id)arg8 typeIconOwner:(id)arg9 boundIconIsPrerendered:(BOOL)arg10 boundIconIsBadge:(BOOL)arg11;
+- (id)_privateDocumentIconNamesAsCacheKey;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)iconDataForStyle:(id)arg1 width:(long long)arg2 height:(long long)arg3 options:(unsigned long long)arg4;
 - (id)iconDataForVariant:(int)arg1;
 - (id)iconDataForVariant:(int)arg1 withOptions:(int)arg2;
-- (id)iconStyleDomain;
 - (id)initWithCoder:(id)arg1;
 - (id)uniqueIdentifier;
 

@@ -18,7 +18,7 @@
     NSString *_uri;
 }
 
-@property (strong, nonatomic) NSData *data;
+@property (strong, nonatomic) NSData *data; // @synthesize data=_data;
 @property (readonly, nonatomic) BOOL hasData;
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly, nonatomic) BOOL hasUri;

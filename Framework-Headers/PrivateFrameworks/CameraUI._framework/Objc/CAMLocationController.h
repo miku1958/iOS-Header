@@ -38,6 +38,7 @@
 
 + (id)_sharedGPSDatestampFormatter;
 + (id)_sharedGPSTimestampFormatter;
++ (id)locationMetadataForLocation:(id)arg1 heading:(id)arg2 device:(long long)arg3;
 - (void).cxx_destruct;
 - (void)_authorizeOrStartLocationManager;
 - (void)_startMonitoringLocationUpdates;
@@ -46,11 +47,11 @@
 - (void)_updateLocationMonitoring;
 - (void)dealloc;
 - (void)enqueueAssetForLocationUpdates:(id)arg1;
+- (id)headingForOrientation:(long long)arg1;
 - (id)init;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didUpdateHeading:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
-- (id)locationMetadataForLocation:(id)arg1 captureOrientation:(long long)arg2 device:(long long)arg3;
 
 @end
 

@@ -17,6 +17,7 @@
     long long _feedScrollDirection;
     unsigned long long _feedMemoriesPerRow;
     double _feedEntryHeaderHeight;
+    double _firstFeedEntryHeaderHeight;
     double _distanceBetweenHeaderBaselineAndImageTop;
     double _feedInteritemSpacing;
     long long _idiom;
@@ -58,6 +59,7 @@
 @property (readonly, nonatomic) double feedSecondaryImagePaddingBottom;
 @property (readonly, nonatomic) long long feedSectionLayoutAxis;
 @property (readonly, nonatomic) Class feedTransitionAnimationCoordinatorClass;
+@property (readonly, nonatomic) double firstFeedEntryHeaderHeight; // @synthesize firstFeedEntryHeaderHeight=_firstFeedEntryHeaderHeight;
 @property (readonly, nonatomic) struct CGPoint highlightedSectionHeaderOffset; // @synthesize highlightedSectionHeaderOffset=_highlightedSectionHeaderOffset;
 @property (readonly, nonatomic) long long idiom; // @synthesize idiom=_idiom;
 @property (readonly, nonatomic) struct UIEdgeInsets layoutInsets;

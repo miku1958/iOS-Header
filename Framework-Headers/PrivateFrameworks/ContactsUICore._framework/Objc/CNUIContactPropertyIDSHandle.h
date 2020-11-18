@@ -26,6 +26,7 @@
 
 + (id)idsIDForEmail:(id)arg1;
 + (id)idsIDForPhoneNumber:(id)arg1;
++ (id)supportedContactPropertyKeys;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithContactProperty:(id)arg1;

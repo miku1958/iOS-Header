@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOPDBounds;
+@class GEOLatLng, GEOPDBounds, PBUnknownFields;
 
 @interface GEOPDSpatialLookupResult : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _mappedCategorys;
     GEOPDBounds *_bounds;
     GEOLatLng *_center;
@@ -23,8 +24,10 @@
 @property (readonly, nonatomic) BOOL hasCenter;
 @property (readonly, nonatomic) int *mappedCategorys;
 @property (readonly, nonatomic) unsigned long long mappedCategorysCount;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)spatialLookupResultForPlaceData:(id)arg1;
+- (void).cxx_destruct;
 - (int)StringAsMappedCategorys:(id)arg1;
 - (void)addMappedCategory:(int)arg1;
 - (void)clearMappedCategorys;

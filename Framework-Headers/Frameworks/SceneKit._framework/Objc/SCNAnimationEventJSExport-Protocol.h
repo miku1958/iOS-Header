@@ -7,6 +7,6 @@
 #import <SceneKit/JSExport-Protocol.h>
 
 @protocol SCNAnimationEventJSExport <JSExport>
-+ (id)animationEventWithKeyTime:(double)arg1 block:(void (^)(CAAnimation *, id, BOOL))arg2;
++ (id)animationEventWithKeyTime:(double)arg1 block:(void (^)(id<SCNAnimation>, id, BOOL))arg2;
 @end
 

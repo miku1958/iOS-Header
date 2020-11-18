@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/VKOverlay-Protocol.h>
 
@@ -17,6 +17,7 @@
     struct __CFSet *_observers;
     VKPolylineOverlay *_selectedPolyline;
     BOOL _containsTransit;
+    BOOL _showTraffic;
 }
 
 @property (readonly, nonatomic) GEOMapRegion *boundingMapRegion; // @synthesize boundingMapRegion=_boundingMapRegion;
@@ -27,6 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSSet *polylines; // @synthesize polylines=_polylines;
 @property (strong, nonatomic) VKPolylineOverlay *selectedPolyline; // @synthesize selectedPolyline=_selectedPolyline;
+@property (nonatomic) BOOL showTraffic; // @synthesize showTraffic=_showTraffic;
 @property (readonly) Class superclass;
 
 - (void)_updateBoundingMapRegion;

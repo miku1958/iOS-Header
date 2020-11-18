@@ -24,7 +24,6 @@
     BOOL _needToSendInitialMessage;
     NSUUID *_activeUserActivityUUID;
     NSMapTable *_activeUserActivitiesByUUID;
-    unsigned long long _osStateHandle;
 }
 
 @property (strong) NSMapTable *activeUserActivitiesByUUID; // @synthesize activeUserActivitiesByUUID=_activeUserActivitiesByUUID;
@@ -35,7 +34,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property BOOL needToSendInitialMessage; // @synthesize needToSendInitialMessage=_needToSendInitialMessage;
-@property unsigned long long osStateHandle; // @synthesize osStateHandle=_osStateHandle;
 @property BOOL registeredForAppResignationMessages; // @synthesize registeredForAppResignationMessages=_registeredForAppResignationMessages;
 @property (readonly) NSObject<OS_dispatch_queue> *serverQ; // @synthesize serverQ=_serverQ;
 @property (readonly) Class superclass;

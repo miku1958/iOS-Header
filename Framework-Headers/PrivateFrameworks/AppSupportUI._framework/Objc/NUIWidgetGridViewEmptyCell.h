@@ -21,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (CDStruct_a157df34)donatableSpace;
+- (CDStruct_a157df34)donatableSpaceAllowRemeasure:(BOOL)arg1;
 - (id)initWithWidgetGridView:(id)arg1 item:(id)arg2 index:(unsigned long long)arg3;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 

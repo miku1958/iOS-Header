@@ -4,23 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString;
+@class BSAnimationSettings, NSString, SBUIRemoteAlertMaterialDescriptor;
 
 @protocol SBUIRemoteAlertHostInterface
 - (void)dismiss;
+- (void)setAllowsAlertItems:(BOOL)arg1;
 - (void)setAllowsAlertStacking:(BOOL)arg1;
 - (void)setAllowsBanners:(BOOL)arg1;
 - (void)setAllowsMenuButtonDismissal:(BOOL)arg1;
+- (void)setBackgroundMaterialDescriptor:(SBUIRemoteAlertMaterialDescriptor *)arg1;
 - (void)setBackgroundStyle:(long long)arg1 withDuration:(double)arg2;
+- (void)setBackgroundWeighting:(double)arg1 animationsSettings:(BSAnimationSettings *)arg2;
 - (void)setDesiredAutoLockDuration:(double)arg1;
-- (void)setDesiredHardwareButtonEvents:(long long)arg1;
+- (void)setDesiredHardwareButtonEvents:(unsigned long long)arg1;
 - (void)setDesiredStatusBarStyleOverrides:(int)arg1;
 - (void)setDismissalAnimationStyle:(long long)arg1;
 - (void)setIdleTimerDisabled:(BOOL)arg1 forReason:(NSString *)arg2;
+- (void)setLaunchingInterfaceOrientation:(long long)arg1;
+- (void)setOrientationChangedEventsEnabled:(BOOL)arg1;
 - (void)setShouldDisableFadeInAnimation:(BOOL)arg1;
 - (void)setShouldDismissOnUILock:(BOOL)arg1;
 - (void)setStatusBarHidden:(BOOL)arg1 withDuration:(double)arg2;
+- (void)setStyleOverridesToCancel:(int)arg1 animationSettings:(BSAnimationSettings *)arg2;
 - (void)setSupportedInterfaceOrientationOverride:(unsigned long long)arg1;
+- (void)setSwipeDismissalStyle:(long long)arg1;
+- (void)setWallpaperStyle:(long long)arg1 withDuration:(double)arg2;
 - (void)setWallpaperTunnelActive:(BOOL)arg1;
 - (void)setWhitePointAdaptivityStyle:(long long)arg1;
 @end

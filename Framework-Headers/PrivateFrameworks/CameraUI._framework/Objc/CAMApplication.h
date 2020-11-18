@@ -26,6 +26,9 @@
 - (BOOL)runPresentTestWithName:(id)arg1 options:(id)arg2;
 - (BOOL)runSwitchCamerasTestWithName:(id)arg1 options:(id)arg2;
 - (BOOL)runSwitchModesTestWithName:(id)arg1 options:(id)arg2;
+- (BOOL)runSwitchToPortraitFrontWithTestWithName:(id)arg1 options:(id)arg2;
+- (BOOL)runTakePictureFrontPortraitTest:(id)arg1 options:(id)arg2 prototype:(id)arg3;
+- (BOOL)runTakePicturePortraitTest:(id)arg1 options:(id)arg2 prototype:(id)arg3;
 - (BOOL)runTakePictureTestWithFrontCamera:(id)arg1 options:(id)arg2 prototype:(id)arg3;
 - (BOOL)runTakePictureTestWithTestName:(id)arg1 options:(id)arg2 prototype:(id)arg3;
 - (BOOL)runTest:(id)arg1 options:(id)arg2;

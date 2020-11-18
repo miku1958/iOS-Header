@@ -21,10 +21,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL initialized; // @synthesize initialized=_initialized;
 
 + (id)UUIDStringForString:(id)arg1;
++ (id)cacheContainerURL;
++ (id)cacheFolderURL;
++ (long long)currentDisplayGamut;
++ (id)iconCacheSystemVersionFileURL;
+- (void).cxx_destruct;
 - (id)bundleCacheKeyForBundleIdentifier:(id)arg1 cacheKey:(id)arg2 variant:(int)arg3 options:(int)arg4;
-- (id)bundleCacheKeyForBundleIdentifier:(id)arg1 roleIdentifier:(id)arg2 iconFiles:(id)arg3 variant:(int)arg4 options:(int)arg5;
 - (id)bundleCacheKeyPrefixForBundleIdentifier:(id)arg1;
-- (void)dealloc;
 - (id)iconDataForKey:(id)arg1 generatorBlock:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithCacheURL:(id)arg1 salt:(id)arg2;

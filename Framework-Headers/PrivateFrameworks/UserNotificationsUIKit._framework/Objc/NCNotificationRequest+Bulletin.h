@@ -13,6 +13,8 @@
 @property (readonly, nonatomic) BBBulletin *bulletin;
 @property (readonly, nonatomic) BBObserver *observer;
 
++ (id)_notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4 playLightsAndSirens:(BOOL)arg5 hasPlayLightsAndSirens:(BOOL)arg6;
++ (id)notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4;
 + (id)notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4 playLightsAndSirens:(BOOL)arg5;
 - (BOOL)hasSameContactAsNotificationRequest:(id)arg1;
 @end

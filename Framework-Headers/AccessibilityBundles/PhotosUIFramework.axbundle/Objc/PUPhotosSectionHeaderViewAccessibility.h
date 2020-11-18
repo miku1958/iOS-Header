@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilitySupplementaryFooterViews;
+- (BOOL)_accessibilitySupportsContentSizeCategory:(id)arg1;
 - (id)_accessibilityUserTestingChildren;
 - (void)_axUpdateActionLabel;
 - (void)_axUpdateDateLabel;

@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class GEOPowerAssertion, NSArray, NSData, NSMapTable, NSMutableArray, NSString;
+#import <GeoServices/NSProgressReporting-Protocol.h>
+
+@class GEOApplicationAuditToken, GEOPowerAssertion, GEOReportedProgress, NSArray, NSMapTable, NSMutableArray, NSProgress, NSString;
 @protocol OS_dispatch_queue;
 
-@interface GEOResourceLoader : NSObject
+@interface GEOResourceLoader : NSObject <NSProgressReporting>
 {
     NSString *_directory;
     NSString *_additionalDirectoryToConsider;
@@ -23,18 +25,25 @@
     unsigned long long _maxConcurrentLoads;
     NSArray *_resourceInfos;
     NSMutableArray *_loadedResources;
-    NSData *_auditToken;
+    GEOApplicationAuditToken *_auditToken;
     BOOL _allowResumingPartialDownloads;
     NSMapTable *_inProgressResourceDownloads;
     GEOPowerAssertion *_powerAssertion;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
+    GEOReportedProgress *_progress;
 }
 
-@property (strong, nonatomic) NSData *auditToken; // @synthesize auditToken=_auditToken;
+@property (strong, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) NSProgress *progress;
 @property (nonatomic) BOOL requiresWiFi; // @synthesize requiresWiFi=_requiresWiFi;
+@property (readonly) Class superclass;
 
 + (Class)resourceLoadOperationClass;
+- (void).cxx_destruct;
 - (void)_cleanup;
 - (BOOL)_copyResource:(id)arg1 fromPath:(id)arg2 allowCreatingHardLink:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)_establishHardLinkIfPossibleForResource:(id)arg1 toResource:(id)arg2 error:(id *)arg3;
@@ -42,7 +51,6 @@
 - (void)_loadResourcesFromDisk;
 - (void)_writeResourceToDisk:(id)arg1 withData:(id)arg2 checksum:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 callbackQueue:(id)arg5;
 - (void)cancel;
-- (void)dealloc;
 - (id)initWithTargetDirectory:(id)arg1 baseURLString:(id)arg2 resources:(id)arg3 maximumConcurrentLoads:(unsigned long long)arg4 additionalDirectoryToConsider:(id)arg5;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1 callbackQueue:(id)arg2;
 

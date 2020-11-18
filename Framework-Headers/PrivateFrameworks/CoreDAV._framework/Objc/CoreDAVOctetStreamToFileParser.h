@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) NSFileHandle *fileHandle; // @synthesize fileHandle=_fileHandle;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithFileHandle:(id)arg1;
 - (BOOL)processData:(id)arg1 forTask:(id)arg2;
 

@@ -8,15 +8,17 @@
 
 #import <NotesShared/ICLoggable-Protocol.h>
 
-@class CKRecordZoneID, CKServerChangeToken, ICAccount, NSString;
+@class CKRecordZoneID, CKServerChangeToken, ICAccount, NSData, NSString;
 
 @interface ICServerChangeToken : NSManagedObject <ICLoggable>
 {
     CKRecordZoneID *_zoneID;
+    CKServerChangeToken *_ckServerChangeToken;
 }
 
 @property (strong, nonatomic) ICAccount *account; // @dynamic account;
-@property (strong, nonatomic) CKServerChangeToken *ckServerChangeToken; // @dynamic ckServerChangeToken;
+@property (strong, nonatomic) CKServerChangeToken *ckServerChangeToken; // @synthesize ckServerChangeToken=_ckServerChangeToken;
+@property (strong, nonatomic) NSData *ckServerChangeTokenData; // @dynamic ckServerChangeTokenData;
 @property (nonatomic) long long databaseScope; // @dynamic databaseScope;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -30,8 +32,8 @@
 + (id)serverChangeTokenForAccount:(id)arg1 zoneID:(id)arg2 databaseScope:(long long)arg3 context:(id)arg4;
 + (id)serverChangeTokensMatchingPredicate:(id)arg1 inContext:(id)arg2;
 - (void).cxx_destruct;
+- (void)didTurnIntoFault;
 - (id)ic_loggingValues;
-- (void)willTurnIntoFault;
 
 @end
 

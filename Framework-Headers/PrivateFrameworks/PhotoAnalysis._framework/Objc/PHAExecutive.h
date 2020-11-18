@@ -44,11 +44,13 @@
 + (void)registerEmptyBackgroundActivity;
 - (void).cxx_destruct;
 - (void)_backgroundActivityDidBegin;
+- (void)_cleanupAfterBackgroundActivityFinishedForDefer:(BOOL)arg1 skipActivityStateCheck:(BOOL)arg2 message:(id)arg3;
+- (void)_dispatchAsyncToQueue:(id)arg1 withTransactionBlock:(CDUnknownBlockType)arg2;
 - (void)_installBackgroundAnalysisMonitor;
 - (void)_localeDidChangeNotification:(id)arg1;
 - (BOOL)_photoAnalysisEnabled;
 - (void)_registerBackgroundActivity;
-- (void)_stopBackgroundActivity;
+- (void)_stopAllBackgroundAnalysisWithCompletion:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (id)_urlForSystemPhotoLibrary;
 - (void)checkQuiescenceForManager:(id)arg1;
 - (id)clientInfoForManager:(id)arg1;
@@ -65,7 +67,7 @@
 - (void)shutdown;
 - (void)startup;
 - (id)statusAsDictionary;
-- (void)stopBackgroundActivity;
+- (void)stopBackgroundActivityForManager:(id)arg1;
 - (void)terminateManagerForPhotoLibraryURL:(id)arg1;
 - (void)terminateManagerIfQuiescentAndNoConnectedClients:(id)arg1;
 - (void)triggerBackgroundActivity;

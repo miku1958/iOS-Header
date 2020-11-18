@@ -4,21 +4,66 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchFoundation/SFTitleCardSection.h>
+#import <SearchFoundation/SFCardSection.h>
 
-@class NSArray;
+#import <SearchFoundation/NSCopying-Protocol.h>
+#import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFMediaPlayerCardSection-Protocol.h>
 
-@interface SFMediaPlayerCardSection : SFTitleCardSection
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor;
+
+@interface SFMediaPlayerCardSection : SFCardSection <SFMediaPlayerCardSection, NSSecureCoding, NSCopying>
 {
+    CDStruct_5ff9a38c _has;
+    BOOL _canBeHidden;
+    BOOL _hasTopPadding;
+    BOOL _hasBottomPadding;
+    int _separatorStyle;
+    NSArray *_punchoutOptions;
+    NSString *_punchoutPickerTitle;
+    NSString *_punchoutPickerDismissText;
+    NSString *_type;
+    SFColor *_backgroundColor;
+    NSString *_title;
+    NSString *_subtitle;
     NSArray *_mediaItems;
 }
 
+@property (strong, nonatomic) SFColor *backgroundColor;
+@property (nonatomic) BOOL canBeHidden;
+@property (copy, nonatomic) NSString *cardSectionId;
+@property (copy, nonatomic) NSArray *commands;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (nonatomic) BOOL hasBottomPadding;
+@property (nonatomic) BOOL hasTopPadding;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hideDivider;
+@property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *mediaItems; // @synthesize mediaItems=_mediaItems;
+@property (strong, nonatomic) SFCard *nextCard;
+@property (copy, nonatomic) NSArray *parameterKeyPaths;
+@property (copy, nonatomic) NSArray *punchoutOptions;
+@property (copy, nonatomic) NSString *punchoutPickerDismissText;
+@property (copy, nonatomic) NSString *punchoutPickerTitle;
+@property (copy, nonatomic) NSString *resultIdentifier;
+@property (nonatomic) int separatorStyle;
+@property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (copy, nonatomic) NSString *type;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasCanBeHidden;
+- (BOOL)hasHasBottomPadding;
+- (BOOL)hasHasTopPadding;
+- (BOOL)hasSeparatorStyle;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 
 @end
 

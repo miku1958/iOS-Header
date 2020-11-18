@@ -9,6 +9,7 @@
 @interface NSURL (FaceTime)
 + (id)_applyFaceTimeScheme:(id)arg1 toFaceTimeURL:(id)arg2;
 + (id)_faceTimeURLWithDestinationID:(id)arg1 addressBookUID:(int)arg2 audioOnly:(BOOL)arg3;
++ (id)_faceTimeURLWithHandle:(id)arg1 addressBookUID:(int)arg2 audioOnly:(BOOL)arg3;
 + (id)faceTimeLaunchForIncomingCallURL;
 + (id)faceTimePromptURLWithURL:(id)arg1;
 + (id)faceTimeShowInCallUIURL;

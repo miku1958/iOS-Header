@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/PKPaymentOptionsProtocol-Protocol.h>
 
@@ -58,6 +58,8 @@
 - (id)init;
 - (void)migrateToSyncable;
 - (void)setDefaultBillingAddress:(id)arg1 forPaymentPass:(id)arg2;
+- (void)setDefaultBillingAddress:(id)arg1 forPrimaryAccountIdentifier:(id)arg2;
+- (void)setDefaultBillingAddress:(id)arg1 forRemotePaymentInstrument:(id)arg2;
 
 @end
 

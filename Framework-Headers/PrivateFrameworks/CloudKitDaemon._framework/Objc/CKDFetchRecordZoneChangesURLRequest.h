@@ -8,7 +8,7 @@
 
 #import <CloudKitDaemon/CKDURLRequestPipelining-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSString;
+@class NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchRecordZoneChangesURLRequest : CKDURLRequest <CKDURLRequestPipelining>
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSArray *_recordZoneIDs;
     NSDictionary *_optionsByRecordZoneID;
     long long _changeTypes;
+    NSSet *_desiredAssetKeys;
     CDUnknownBlockType _recordChangedBlock;
     CDUnknownBlockType _recordDeletedBlock;
     NSMutableDictionary *_zoneIDsByRequestOperationUUID;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long changeTypes; // @synthesize changeTypes=_changeTypes;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSSet *desiredAssetKeys; // @synthesize desiredAssetKeys=_desiredAssetKeys;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableDictionary *nodeErrorsByZoneID; // @synthesize nodeErrorsByZoneID=_nodeErrorsByZoneID;
 @property (strong, nonatomic) NSDictionary *optionsByRecordZoneID; // @synthesize optionsByRecordZoneID=_optionsByRecordZoneID;
@@ -42,12 +44,12 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_handleRecordChanges:(id)arg1;
+- (id)generateRequestOperations;
 - (id)initWithRecordZoneIDs:(id)arg1 optionsByRecordZoneID:(id)arg2;
 - (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 - (id)zoneIDsToLock;
 
 @end

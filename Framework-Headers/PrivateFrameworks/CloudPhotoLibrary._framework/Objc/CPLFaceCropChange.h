@@ -13,10 +13,12 @@
     NSString *_personIdentifier;
     NSData *_resourceData;
     long long _faceCropType;
+    NSString *_rejectedPersonIdentifier;
 }
 
 @property (nonatomic) long long faceCropType; // @synthesize faceCropType=_faceCropType;
 @property (copy, nonatomic) NSString *personIdentifier; // @synthesize personIdentifier=_personIdentifier;
+@property (copy, nonatomic) NSString *rejectedPersonIdentifier; // @synthesize rejectedPersonIdentifier=_rejectedPersonIdentifier;
 @property (copy, nonatomic) NSData *resourceData; // @synthesize resourceData=_resourceData;
 
 - (void).cxx_destruct;
@@ -25,6 +27,7 @@
 - (void)setRelatedIdentifier:(id)arg1;
 - (BOOL)supportsDeletion;
 - (BOOL)supportsDirectDeletion;
+- (BOOL)validateChangeWithError:(id *)arg1;
 - (BOOL)validateFullRecord;
 
 @end

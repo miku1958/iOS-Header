@@ -10,7 +10,7 @@
 #import <PairedSync/PSYActivity-Protocol.h>
 #import <PairedSync/PSYServiceSyncSessionDelegate-Protocol.h>
 
-@class NSString, NSXPCConnection, NSXPCListener, PSYServiceSyncSession;
+@class NSMutableDictionary, NSString, NSXPCConnection, NSXPCListener, PSYServiceSyncSession;
 @protocol OS_dispatch_queue, PSYSyncCoordinatorDelegate;
 
 @interface PSYSyncCoordinator : NSObject <NSXPCListenerDelegate, PSYActivity, PSYServiceSyncSessionDelegate>
@@ -29,6 +29,7 @@
     unsigned long long _syncRestriction;
     unsigned long long _syncIDOfStartedSync;
     BOOL _hasStartedListening;
+    NSMutableDictionary *_nrDevices;
     NSString *_serviceName;
     NSXPCConnection *_connection;
 }
@@ -47,11 +48,17 @@
 + (id)syncCoordinatorWithServiceName:(id)arg1;
 - (void).cxx_destruct;
 - (void)_cleanup;
+- (BOOL)_pairedSyncFinishedMigrationSyncWithPairingID:(id)arg1;
+- (BOOL)_pairedSyncFinishedReunionSync;
+- (void)_registerMonitorAllNRDevicesForMigrationChanges:(CDUnknownBlockType)arg1;
+- (void)_registerMonitorNRDevice:(id)arg1 forMigrationChanges:(CDUnknownBlockType)arg2;
 - (unsigned long long)_syncRestriction;
 - (void)_syncRestrictionDidUpdate:(id)arg1 forServiceName:(id)arg2;
+- (void)_unregisterNRDeviceMonitors;
 - (oneway void)abortSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beginDryRunSyncWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)beginSyncWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dealloc;
 - (void)deviceChanged:(id)arg1;
 - (void)exitForTestInput:(id)arg1;
 - (id)initWithServiceName:(id)arg1;
@@ -74,7 +81,7 @@
 - (void)syncSession:(id)arg1 reportProgress:(double)arg2;
 - (void)syncSessionDidComplete:(id)arg1;
 - (void)syncSessionDidCompleteSending:(id)arg1;
-- (id)syncSessionForOptions:(id)arg1;
+- (id)syncSessionForOptions:(id)arg1 supportsMigrationSync:(BOOL)arg2;
 - (void)unregisterForDeviceChangeNotifications;
 
 @end

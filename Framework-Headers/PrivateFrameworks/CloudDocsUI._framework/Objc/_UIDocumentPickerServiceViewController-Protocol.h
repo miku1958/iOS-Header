@@ -12,9 +12,13 @@
 - (void)didSelectItem:(_UIDocumentPickerContainerItem *)arg1;
 
 @optional
+- (void)didHighlightItem:(_UIDocumentPickerContainerItem *)arg1;
+- (void)didUnhighlightItem:(_UIDocumentPickerContainerItem *)arg1;
 - (void)itemsOrSelectionDidChange:(BOOL)arg1;
 - (void)performAction:(long long)arg1 item:(_UIDocumentPickerContainerItem *)arg2 view:(UIView *)arg3 completion:(void (^)(void))arg4;
 - (UIViewController *)previewViewControllerForItem:(_UIDocumentPickerContainerItem *)arg1;
+- (BOOL)shouldHighlightItem:(_UIDocumentPickerContainerItem *)arg1;
+- (BOOL)shouldSelectItem:(_UIDocumentPickerContainerItem *)arg1;
 - (BOOL)shouldShowAction:(long long)arg1;
 @end
 

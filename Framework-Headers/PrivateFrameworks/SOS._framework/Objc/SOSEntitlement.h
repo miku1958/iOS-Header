@@ -10,7 +10,6 @@
 {
 }
 
-+ (BOOL)auditToken:(CDStruct_6ad76789 *)arg1 hasEntitlement:(id)arg2;
 + (BOOL)currentProcessHasEntitlement:(id)arg1;
 
 @end

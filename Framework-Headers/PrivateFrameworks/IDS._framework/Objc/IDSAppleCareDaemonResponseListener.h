@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 
@@ -21,9 +21,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)applecareResponseForRequestID:(id)arg1 withError:(id)arg2;
 - (void)daemonDisconnected;
-- (void)dealloc;
 - (id)initWithDisconnectedBlockAndNoTimeout:(CDUnknownBlockType)arg1;
 - (id)initWithRequestTimer:(id)arg1;
 

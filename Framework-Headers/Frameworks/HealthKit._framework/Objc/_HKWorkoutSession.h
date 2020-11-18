@@ -14,6 +14,7 @@
 @interface _HKWorkoutSession : NSObject <NSSecureCoding>
 {
     NSObject<OS_dispatch_queue> *_queue;
+    BOOL _connectedToFitnessMachine;
     HKWorkoutConfiguration *_workoutConfiguration;
     id<_HKWorkoutSessionDelegate> _delegate;
     long long _state;
@@ -23,6 +24,7 @@
 }
 
 @property (strong, nonatomic, setter=_setUUID:) NSUUID *UUID; // @synthesize UUID=_UUID;
+@property (nonatomic) BOOL connectedToFitnessMachine; // @synthesize connectedToFitnessMachine=_connectedToFitnessMachine;
 @property (weak, nonatomic) id<_HKWorkoutSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (readonly) NSDate *startDate; // @synthesize startDate=_startDate;

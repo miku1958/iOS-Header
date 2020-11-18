@@ -14,11 +14,11 @@
 {
 }
 
-@property (readonly) const void *bytes;
+@property (readonly, nonatomic) const void *bytes;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) unsigned long long length;
+@property (readonly, nonatomic) unsigned long long length;
 @property (readonly) Class superclass;
 
 + (id)allocWithZone:(struct _NSZone *)arg1;

@@ -20,8 +20,12 @@
 - (void).cxx_destruct;
 - (void)_animateWithCoordinator:(id)arg1 isPresenting:(BOOL)arg2;
 - (void)_configureSubviews;
+- (BOOL)_forcesPreferredAnimationControllers;
+- (id)_preferredAnimationControllerForDismissal;
+- (id)_preferredAnimationControllerForPresentation;
 - (void)dismissalTransitionWillBegin;
 - (id)initWithPresentedViewController:(id)arg1 presentingViewController:(id)arg2;
+- (long long)presentationStyle;
 - (void)presentationTransitionWillBegin;
 
 @end

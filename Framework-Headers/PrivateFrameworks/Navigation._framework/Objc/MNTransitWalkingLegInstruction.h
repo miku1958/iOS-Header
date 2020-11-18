@@ -20,7 +20,6 @@
 - (id)initWithWalkingLeg:(id)arg1 context:(long long)arg2;
 - (id)instructionSet;
 - (struct NSDictionary *)overridenInstructionsMapping;
-- (id)timeZoneForFormattedString;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CoreDAVResourceTypeItem, CoreDAVSupportedReportSetItem, NSDictionary, NSSet, NSString, NSURL;
 
@@ -57,9 +57,9 @@
 
 + (id)convertPushTransportsForNSServerNotificationCenter:(id)arg1;
 + (id)copyPropertyMappingsForParser;
+- (void).cxx_destruct;
 - (BOOL)_anyPrivilegesMatches:(CDUnknownBlockType)arg1;
 - (void)applyParsedProperties:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithURL:(id)arg1 andProperties:(id)arg2;
 - (void)postProcessWithResponseHeaders:(id)arg1;

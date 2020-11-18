@@ -30,6 +30,7 @@
 
 - (void).cxx_destruct;
 - (id)_validationErrorFromRawError:(id)arg1;
+- (void)addToCoreDAVLoggingDelegates;
 - (void)coreDAVLogDiagnosticMessage:(id)arg1 atLevel:(long long)arg2;
 - (long long)coreDAVLogLevel;
 - (void)coreDAVLogTransmittedDataPartial:(id)arg1;
@@ -46,6 +47,7 @@
 - (void)noteHomeSetOnDifferentHost:(id)arg1;
 - (id)onBehalfOfBundleIdentifier;
 - (void)promptUserForNewCoreDAVPasswordWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)removeFromCoreDAVLoggingDelegates;
 - (id)serverComplianceClasses;
 - (id)serverRoot;
 - (void)setServerComplianceClasses:(id)arg1;

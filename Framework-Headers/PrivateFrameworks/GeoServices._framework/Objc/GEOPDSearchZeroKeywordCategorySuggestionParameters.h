@@ -34,10 +34,10 @@
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (nonatomic) int userPreferredTransportType; // @synthesize userPreferredTransportType=_userPreferredTransportType;
 
+- (void).cxx_destruct;
 - (int)StringAsUserPreferredTransportType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

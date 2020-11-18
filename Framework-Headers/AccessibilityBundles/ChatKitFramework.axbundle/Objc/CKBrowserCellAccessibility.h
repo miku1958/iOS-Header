@@ -13,12 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_axRemoveApp;
 - (id)_axShinyStatusLabel;
-- (id)accessibilityCustomActions;
 - (struct CGRect)accessibilityFrame;
-- (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 
 @end

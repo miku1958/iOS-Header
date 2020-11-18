@@ -39,6 +39,7 @@
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_didEnterBackground;
 - (void)_endScrubbing;
+- (void)_layoutRenderer;
 - (void)_render;
 - (void)_renderOneFrame;
 - (void)_startAnimation;

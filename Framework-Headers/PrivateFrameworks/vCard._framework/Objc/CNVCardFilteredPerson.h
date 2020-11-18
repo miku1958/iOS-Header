@@ -71,7 +71,6 @@
 - (void).cxx_destruct;
 - (id)filterItems:(id)arg1 property:(id)arg2;
 - (id)initWithPerson:(id)arg1 scope:(id)arg2;
-- (id)jpegImageDataOfAllowableKinds:(id)arg1 maximumLength:(unsigned long long)arg2 cropRects:(id *)arg3;
 - (id)largeImageHashOfType:(id)arg1;
 
 @end

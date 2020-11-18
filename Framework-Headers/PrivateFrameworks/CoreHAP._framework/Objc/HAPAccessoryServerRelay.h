@@ -11,7 +11,7 @@
 #import <CoreHAP/HAPStreamDelegate-Protocol.h>
 #import <CoreHAP/HMFTimerDelegate-Protocol.h>
 
-@class HAPFragmentationStream, HAPRelayStream, HAPSecuritySession, HMFExponentialBackoffTimer, NSMapTable, NSMutableArray, NSOperationQueue, NSString;
+@class HAPCharacteristic, HAPFragmentationStream, HAPRelayStream, HAPSecuritySession, HMFExponentialBackoffTimer, NSMapTable, NSMutableArray, NSOperationQueue, NSString;
 
 @interface HAPAccessoryServerRelay : HAPAccessoryServer <HAPSecuritySessionDelegate, HAPFragmentationStreamDelegate, HMFTimerDelegate, HAPStreamDelegate>
 {
@@ -22,14 +22,17 @@
     NSMutableArray *_pendingRequests;
     NSMapTable *_pendingResponses;
     NSOperationQueue *_requestOperationQueue;
+    NSOperationQueue *_clientOperationQueue;
     HAPFragmentationStream *_fragmentationStream;
     HAPSecuritySession *_securitySession;
     NSOperationQueue *_pairVerifyOperationQueue;
     HMFExponentialBackoffTimer *_reachabilityProbeTimer;
     unsigned long long _configurationNumber;
+    HAPCharacteristic *_pairingsCharacteristic;
     HAPRelayStream *_stream;
 }
 
+@property (readonly, nonatomic) NSOperationQueue *clientOperationQueue; // @synthesize clientOperationQueue=_clientOperationQueue;
 @property (nonatomic) unsigned long long configurationNumber; // @synthesize configurationNumber=_configurationNumber;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -38,6 +41,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned short nextRequestTransactionIdentifier; // @synthesize nextRequestTransactionIdentifier=_nextRequestTransactionIdentifier;
 @property (readonly, nonatomic) NSOperationQueue *pairVerifyOperationQueue; // @synthesize pairVerifyOperationQueue=_pairVerifyOperationQueue;
+@property (weak, nonatomic) HAPCharacteristic *pairingsCharacteristic; // @synthesize pairingsCharacteristic=_pairingsCharacteristic;
 @property (readonly, nonatomic) NSMutableArray *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
 @property (readonly, nonatomic) NSMapTable *pendingResponses; // @synthesize pendingResponses=_pendingResponses;
 @property (strong, nonatomic) HMFExponentialBackoffTimer *reachabilityProbeTimer; // @synthesize reachabilityProbeTimer=_reachabilityProbeTimer;
@@ -55,6 +59,7 @@
 - (void)_endReachabilityProbe;
 - (void)_enqueueRequest:(id)arg1;
 - (void)_establishSecuritySession;
+- (void)_handleCharacteristicPrepareWriteResponse:(id)arg1 characteristicWriteRequestTuples:(id)arg2 prepareIdentifier:(id)arg3 error:(id)arg4 timeout:(double)arg5 completionQueue:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)_handleCharacteristicReadResponse:(id)arg1 characteristics:(id)arg2 error:(id)arg3 completionQueue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_handleCharacteristicWriteResponse:(id)arg1 characteristicWriteRequestTuples:(id)arg2 error:(id)arg3 completionQueue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_handleFragmentedResponse:(id)arg1 transactionIdentifier:(unsigned short)arg2 error:(id)arg3;
@@ -62,14 +67,23 @@
 - (void)_handleReachabilityProbeFire;
 - (void)_handleReceivedMessageData:(id)arg1 withIdentifier:(id)arg2 error:(id)arg3;
 - (void)_handleSecuritySessionSetupExchangeData:(id)arg1;
+- (void)_listPairingWithCompletionQueue:(id)arg1 pairingsCharacteristic:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned short)_nextTransactionIdentifier;
 - (void)_parseAttributeDatabase:(id)arg1 configurationNumber:(id)arg2;
+- (void)_parseServicesFromPrimaryAccessory:(id)arg1;
+- (void)_performExecuteWriteValues:(id)arg1 prepareIdentifier:(id)arg2 timeout:(double)arg3 completionQueue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_performTimedWriteValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_performWriteValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_removePairingWithIdentifier:(id)arg1 publicKey:(id)arg2 pairingsCharacteristic:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_resumeAllOperations;
 - (void)_sendRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_startAddPairingWithIdentifier:(id)arg1 publicKey:(id)arg2 admin:(BOOL)arg3 pairingsCharacteristic:(id)arg4 queue:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_startReachabilityProbe;
 - (void)_suspendAllOperations;
 - (void)_tearDownSessionWithError:(id)arg1;
-- (BOOL)addPairingWithIdentifier:(id)arg1 publicKey:(id)arg2 admin:(BOOL)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)addPairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)continuePairingAfterAuthPrompt;
 - (void)dealloc;
 - (void)discoverAccessories;
@@ -84,8 +98,8 @@
 - (long long)linkType;
 - (void)listPairingsWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)removePairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)removePairingForCurrentControllerOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (BOOL)removePairingWithIdentifier:(id)arg1 publicKey:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)securitySession:(id)arg1 didCloseWithError:(id)arg2;
 - (id)securitySession:(id)arg1 didReceiveLocalPairingIdentityRequestWithError:(id *)arg2;
 - (id)securitySession:(id)arg1 didReceiveRequestForPeerPairingIdentityWithIdentifier:(id)arg2 error:(id *)arg3;

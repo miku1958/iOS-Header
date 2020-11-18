@@ -4,15 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TelephonyUI/TPRevealingRingView.h>
+#import <UIKit/UIView.h>
 
-@interface SBSimplePasscodeEntryFieldButton : TPRevealingRingView
+@class UIColor;
+
+@interface SBSimplePasscodeEntryFieldButton : UIView
 {
     BOOL _useLightStyle;
+    BOOL _revealed;
+    struct UIEdgeInsets _paddingOutsideRing;
+    UIColor *_color;
+    UIView *_ringView;
 }
 
+- (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1 paddingOutsideRing:(struct UIEdgeInsets)arg2 useLightStyle:(BOOL)arg3;
-- (void)setCustomBackgroundColor:(id)arg1;
+- (void)layoutSubviews;
+- (void)setRevealed:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setRevealed:(BOOL)arg1 animated:(BOOL)arg2 delay:(double)arg3;
 
 @end
 

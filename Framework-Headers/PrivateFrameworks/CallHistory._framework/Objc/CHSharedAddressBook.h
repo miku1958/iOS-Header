@@ -10,24 +10,21 @@
 
 @interface CHSharedAddressBook : CHSynchronizedLoggable
 {
-    void *_addressBook;
     NSMutableDictionary *_addressBookCache;
 }
 
-@property void *addressBook; // @synthesize addressBook=_addressBook;
 @property (strong) NSMutableDictionary *addressBookCache; // @synthesize addressBookCache=_addressBookCache;
 
 + (id)get;
 - (void).cxx_destruct;
 - (void)cleanUpAddressBookCache_sync;
-- (void)createAddressBook;
 - (void)dealloc;
 - (id)description;
 - (id)fetchAddressBookInfoFromCacheForKey:(id)arg1;
 - (id)init;
 - (void)insertAddressBookInfoIntoCache:(id)arg1 forKey:(id)arg2;
-- (void)performQuery_sync:(CDUnknownBlockType)arg1;
-- (void)revertAddressBook:(BOOL)arg1;
+- (void)registerForContactsNotifications;
+- (void)revertAddressBook:(id)arg1;
 - (void)sendABChangedNotificationSyncWithUserInfo:(id)arg1;
 
 @end

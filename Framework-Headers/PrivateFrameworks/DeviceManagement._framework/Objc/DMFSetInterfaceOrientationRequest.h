@@ -9,14 +9,15 @@
 @interface DMFSetInterfaceOrientationRequest : CATTaskRequest
 {
     BOOL _lockOrientation;
-    long long _interfaceOrientation;
+    unsigned long long _interfaceOrientation;
 }
 
-@property (nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
+@property (nonatomic) unsigned long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property (nonatomic) BOOL lockOrientation; // @synthesize lockOrientation=_lockOrientation;
 
 + (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 
 @end

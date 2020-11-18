@@ -6,24 +6,25 @@
 
 #import <Preferences/PSRootController.h>
 
-@class NSMutableArray, NSMutableDictionary;
+@class NSMutableArray, NSMutableDictionary, UIColor;
 
 @interface BFFNavigationController : PSRootController
 {
     NSMutableArray *_observers;
     NSMutableDictionary *_appearanceHandlers;
-    long long _pendingWillShowOperation;
+    long long _pendingShowOperation;
+    UIColor *_backgroundColor;
     BOOL _animating;
 }
 
 @property (readonly, nonatomic, getter=isAnimating) BOOL animating; // @synthesize animating=_animating;
+@property (strong, nonatomic) UIColor *backgroundColor;
 
 - (void).cxx_destruct;
 - (BOOL)_canShowTextServices;
 - (void)_reapObservers;
 - (BOOL)_usesTransitionController;
 - (void)addDelegateObserver:(id)arg1;
-- (id)backgroundColor;
 - (id)init;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;

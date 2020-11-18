@@ -30,11 +30,13 @@ __attribute__((visibility("hidden")))
 
 + (id)searchWithEntityClass:(Class)arg1 predicate:(id)arg2 store:(id)arg3;
 - (void).cxx_destruct;
-- (void)_startActualWithCompletion:(CDUnknownBlockType)arg1;
-- (id)_startOSActivity;
+- (id)_createOSActivity;
+- (void)_startActivityWithCompletion:(CDUnknownBlockType)arg1 synchronous:(BOOL)arg2;
+- (void)_startActualWithCompletion:(CDUnknownBlockType)arg1 synchronous:(BOOL)arg2;
 - (void)cancel;
 - (void)disconnect;
 - (id)initWithEntityClass:(Class)arg1 predicate:(id)arg2 store:(id)arg3;
+- (id)runSynchronously;
 - (id)startWithCompletion:(CDUnknownBlockType)arg1;
 - (void)terminate;
 

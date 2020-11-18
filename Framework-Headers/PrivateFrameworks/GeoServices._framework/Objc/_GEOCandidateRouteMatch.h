@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface _GEOCandidateRouteMatch : NSObject
@@ -39,7 +39,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long stepIndex; // @synthesize stepIndex=_stepIndex;
 
 - (id).cxx_construct;
-- (void)dealloc;
 - (id)description;
 - (id)initWithRoute:(id)arg1;
 

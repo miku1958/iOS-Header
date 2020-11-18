@@ -25,26 +25,33 @@
 }
 
 @property (nonatomic) BOOL accessoryViewsDisabled; // @synthesize accessoryViewsDisabled=_accessoryViewsDisabled;
-@property (readonly, strong, nonatomic) UIButton *actionButton;
-@property (readonly, strong, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
+@property (readonly, nonatomic) UIButton *actionButton;
+@property (readonly, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property (nonatomic) double bottomPadding; // @synthesize bottomPadding=_bottomPadding;
-@property (readonly, strong, nonatomic) UIImageView *checkmarkView; // @synthesize checkmarkView=_checkmarkView;
+@property (readonly, nonatomic) UIImageView *checkmarkView; // @synthesize checkmarkView=_checkmarkView;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) BOOL shouldResizeImageToFit; // @synthesize shouldResizeImageToFit=_shouldResizeImageToFit;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
-@property (readonly, strong, nonatomic) UILabel *subtitleLabel;
-@property (readonly, strong, nonatomic) UILabel *titleLabel;
+@property (readonly, nonatomic) UILabel *subtitleLabel;
+@property (readonly, nonatomic) UILabel *titleLabel;
 @property (nonatomic) double topPadding; // @synthesize topPadding=_topPadding;
 
 - (void).cxx_destruct;
+- (BOOL)_hasAccessibilityLargeText;
 - (struct CGSize)_sizeThatFitsExcludingImage:(struct CGSize)arg1;
 - (id)_subtitleFont;
 - (id)_titleFont;
 - (void)_updateAccessoryViews;
+- (void)_updateFonts;
+- (void)_updateImageView;
 - (void)dealloc;
 - (void)layoutSubviews;
+- (void)setImageViewImage:(id)arg1 withSize:(struct CGSize)arg2 animated:(BOOL)arg3;
+- (void)setPassSnapshotUsingDefaultSize:(id)arg1;
+- (void)setPassSnapshotUsingDefaultSize:(id)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

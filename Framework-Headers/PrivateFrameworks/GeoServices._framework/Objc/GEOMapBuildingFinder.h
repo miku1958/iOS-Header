@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
     double _radius;
 }
 
+- (void).cxx_destruct;
 - (void)cancel;
-- (void)dealloc;
 - (void)findBuildingsWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithMap:(id)arg1 centerCoordinate:(CDStruct_c3b9c2ee)arg2 radius:(double)arg3;
 

@@ -12,10 +12,13 @@
 }
 
 + (id)builder;
-- (void)_append:(unsigned long long)arg1;
 - (id)appendArray:(id)arg1;
 - (id)appendBool:(BOOL)arg1;
 - (id)appendCGFloat:(double)arg1;
+- (id)appendCGPoint:(struct CGPoint)arg1;
+- (id)appendCGRect:(struct CGRect)arg1;
+- (id)appendCGSize:(struct CGSize)arg1;
+- (id)appendClass:(Class)arg1;
 - (id)appendDouble:(double)arg1;
 - (id)appendFloat:(float)arg1;
 - (id)appendHashingBlocks:(CDUnknownBlockType)arg1;
@@ -25,9 +28,10 @@
 - (id)appendPointer:(void *)arg1;
 - (id)appendRect:(struct CGRect)arg1;
 - (id)appendSize:(struct CGSize)arg1;
+- (id)appendSizeT:(unsigned long long)arg1;
+- (id)appendString:(id)arg1;
 - (id)appendUnsignedInteger:(unsigned long long)arg1;
 - (unsigned long long)hash;
-- (id)init;
 
 @end
 

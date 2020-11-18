@@ -11,7 +11,7 @@
 @interface _TtC13CoreKnowledge20CKAbstractWriteBatch : SwiftObject
 {
     MISSING_TYPE *buffer;
-    MISSING_TYPE *storage;
+    MISSING_TYPE *backingStore;
 }
 
 - (void)setObject:(id)arg1 forKey:(id)arg2;

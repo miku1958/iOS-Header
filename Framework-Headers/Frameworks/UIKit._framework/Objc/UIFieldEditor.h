@@ -14,19 +14,21 @@
 #import <UIKit/UITextAutoscrolling-Protocol.h>
 #import <UIKit/UITextInput-Protocol.h>
 #import <UIKit/UITextInputControllerDelegate-Protocol.h>
+#import <UIKit/_UITextFieldContentViewContext-Protocol.h>
 
-@class NSDictionary, NSString, NSTextContainer, NSTimer, UIAutoscroll, UITextField, UITextInputController, UITextPosition, UITextRange, UIView, _UICascadingTextStorage, _UIFieldEditorContentView, _UIFieldEditorLayoutManager;
+@class NSAttributedString, NSDictionary, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, NSTimer, UIAutoscroll, UITextField, UITextInputController, UITextPosition, UITextRange, UIView, _UICascadingTextStorage, _UIFieldEditorLayoutManager, _UITextFieldContentView;
 @protocol UITextInputDelegate, UITextInputTokenizer;
 
-@interface UIFieldEditor : UIScrollView <UITextInputControllerDelegate, NSLayoutManagerDelegate, NSUITextViewCommonMethods, UIKeyInputPrivate, UIAutoscrollContainer, UITextInput, UITextAutoscrolling, UIKeyboardInput>
+@interface UIFieldEditor : UIScrollView <UITextInputControllerDelegate, NSLayoutManagerDelegate, NSUITextViewCommonMethods, UIKeyInputPrivate, _UITextFieldContentViewContext, UIAutoscrollContainer, UITextInput, UITextAutoscrolling, UIKeyboardInput>
 {
     UITextInputController *_inputController;
-    UITextField *_proxiedView;
-    UITextField *_incomingProxiedView;
+    UITextField *_textField;
+    BOOL _active;
     UIAutoscroll *_autoscroll;
     NSTextContainer *_textContainer;
     _UIFieldEditorLayoutManager *_layoutManager;
     _UICascadingTextStorage *_textStorage;
+    NSAttributedString *_originalAttributedString;
     struct {
         unsigned int delegateRespondsToFieldEditorDidChange:1;
         unsigned int delegateRespondsToShouldInsertText:1;
@@ -35,19 +37,20 @@
         unsigned int clearOnNextEdit:1;
     } _feFlags;
     struct UIEdgeInsets _padding;
-    _UIFieldEditorContentView *_contentView;
     struct UIEdgeInsets _contentViewFontInsets;
     struct _NSRange _unobscuredSecureRange;
     unsigned long long _obscuredSecureLength;
     NSTimer *_obscureAllTextTimer;
-    struct CGPoint _textContainerOrigin;
     double _contentWidth;
-    _UIFieldEditorContentView *_passcodeStyleCutoutView;
+    _UITextFieldContentView *_contentView;
+    _UITextFieldContentView *_passcodeStyleCutoutView;
+    BOOL _allowsAttachments;
     BOOL __shouldObscureNextInput;
     struct CGPoint _autoscrollContentOffset;
 }
 
 @property (nonatomic) BOOL _shouldObscureNextInput; // @synthesize _shouldObscureNextInput=__shouldObscureNextInput;
+@property (nonatomic) BOOL allowsAttachments; // @synthesize allowsAttachments=_allowsAttachments;
 @property (nonatomic) long long autocapitalizationType; // @dynamic autocapitalizationType;
 @property (nonatomic) long long autocorrectionType; // @dynamic autocorrectionType;
 @property (nonatomic) struct CGPoint autoscrollContentOffset; // @synthesize autoscrollContentOffset=_autoscrollContentOffset;
@@ -62,40 +65,52 @@
 @property (readonly, nonatomic) id insertDictationResultPlaceholder;
 @property (nonatomic) long long keyboardAppearance; // @dynamic keyboardAppearance;
 @property (nonatomic) long long keyboardType; // @dynamic keyboardType;
+@property (readonly, nonatomic) NSLayoutManager *layoutManager;
 @property (readonly, nonatomic) long long layoutOrientation;
 @property (nonatomic) struct _NSRange markedRange;
 @property (readonly, nonatomic) UITextRange *markedTextRange;
-@property (copy, nonatomic) NSDictionary *markedTextStyle;
+@property (readonly, nonatomic) NSDictionary *markedTextStyle;
+@property (nonatomic) long long nonEditingLinebreakMode;
 @property (nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property (nonatomic) long long returnKeyType; // @dynamic returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry; // @dynamic secureTextEntry;
 @property (copy) UITextRange *selectedTextRange;
 @property (nonatomic) long long selectionAffinity;
 @property (nonatomic) BOOL shouldAutoscroll;
+@property (nonatomic) long long smartDashesType; // @dynamic smartDashesType;
+@property (nonatomic) long long smartInsertDeleteType; // @dynamic smartInsertDeleteType;
+@property (nonatomic) long long smartQuotesType; // @dynamic smartQuotesType;
 @property (nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) NSTextContainer *textContainer;
-@property (copy, nonatomic) NSString *textContentType;
+@property (copy, nonatomic) NSString *textContentType; // @dynamic textContentType;
 @property (readonly, nonatomic) UIView *textInputView;
+@property (readonly, nonatomic) NSTextStorage *textStorage;
 @property (readonly, nonatomic) id<UITextInputTokenizer> tokenizer;
 @property (copy, nonatomic) NSDictionary *typingAttributes;
 
 + (id)activeFieldEditor;
 + (id)excludedElementsForHTML;
-+ (void)releaseSharedInstance;
 + (id)sharedFieldEditor;
 - (void).cxx_destruct;
+- (void)_adaptToPasscodeStyleIfNeeded;
+- (void)_applyCorrectTextContainerSize;
 - (void)_cancelObscureAllTextTimer;
 - (BOOL)_clearOnEditIfNeeded;
 - (struct UIEdgeInsets)_contentInsetsFromFonts;
+- (void)_deactivateSelectionView;
 - (void)_deleteBackwardAndNotify:(BOOL)arg1;
+- (void)_handleObscuredTextAfterActivationChange;
 - (BOOL)_hasDictationPlaceholder;
 - (id)_inputController;
 - (void)_invalidateAfterObscuredRangeChange;
 - (BOOL)_isPasscodeStyle;
 - (id)_layoutManager;
 - (void)_obscureAllText;
+- (double)_passcodeStyleAlpha;
+- (void)_performPasteOfAttributedString:(id)arg1 toRange:(id)arg2 animator:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_performWhileSuppressingDelegateNotifications:(CDUnknownBlockType)arg1;
+- (void)_resetTypingAttributes;
 - (struct CGRect)_responderExternalTouchRectForWindow:(id)arg1;
 - (id)_responderForBecomeFirstResponder;
 - (void)_scrollRangeToVisible:(struct _NSRange)arg1 animated:(BOOL)arg2;
@@ -103,20 +118,18 @@
 - (void)_setValue:(id)arg1 forTextAttribute:(id)arg2;
 - (BOOL)_shouldObscureInput;
 - (id)_textContainer;
-- (struct CGPoint)_textContainerOrigin;
 - (id)_textInputTraits;
 - (id)_textSelectingContainer;
 - (id)_textStorage;
 - (void)_textStorageDidProcessEditing:(id)arg1;
 - (void)_tvUpdateTextColor;
-- (id)_uiktest_proxiedViewTextColor;
 - (void)_unobscureAllText;
 - (struct _NSRange)_unobscuredSecureRange;
+- (void)activateEditor;
 - (void)addTextAlternativesDisplayStyleToRange:(struct _NSRange)arg1;
 - (int)atomStyle;
 - (id)attributedText;
 - (long long)baseWritingDirectionForPosition:(id)arg1 inDirection:(long long)arg2;
-- (void)becomeFieldEditorForView:(id)arg1;
 - (void)beginSelectionChange;
 - (void)cancelAutoscroll;
 - (struct CGRect)caretRectForPosition:(id)arg1;
@@ -128,9 +141,10 @@
 - (id)closestPositionToPoint:(struct CGPoint)arg1 withinRange:(id)arg2;
 - (long long)comparePosition:(id)arg1 toPosition:(id)arg2;
 - (struct CGRect)contentFrameForView:(id)arg1;
+- (void)deactivateEditorDiscardingEdits:(BOOL)arg1;
 - (void)dealloc;
 - (void)deleteBackward;
-- (void)drawTextInRect:(struct CGRect)arg1 forContentView:(id)arg2;
+- (void)drawRect:(struct CGRect)arg1;
 - (BOOL)drawsAsAtom;
 - (void)endSelectionChange;
 - (struct CGRect)firstRectForRange:(id)arg1;
@@ -139,6 +153,7 @@
 - (struct CGRect)frameForDictationResultPlaceholder:(id)arg1;
 - (BOOL)hasMarkedText;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithTextField:(id)arg1 textStorage:(id)arg2;
 - (void)insertDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
 - (struct _NSRange)insertFilteredText:(id)arg1;
 - (void)insertText:(id)arg1;
@@ -166,7 +181,6 @@
 - (id)positionFromPosition:(id)arg1 inDirection:(long long)arg2 offset:(long long)arg3;
 - (id)positionFromPosition:(id)arg1 offset:(long long)arg2;
 - (id)positionWithinRange:(id)arg1 farthestInDirection:(long long)arg2;
-- (id)proxiedView;
 - (id)rangeWithTextAlternatives:(id *)arg1 atPosition:(id)arg2;
 - (void)removeDictationResultPlaceholder:(id)arg1 willInsertResult:(BOOL)arg2;
 - (void)replaceRange:(id)arg1 withText:(id)arg2;
@@ -182,11 +196,13 @@
 - (void)setAttributedText:(id)arg1 andSetCaretSelectionAfterText:(BOOL)arg2;
 - (void)setBaseWritingDirection:(long long)arg1 forRange:(id)arg2;
 - (void)setConstrainedFrameSize:(struct CGSize)arg1;
+- (void)setContentOffset:(struct CGPoint)arg1;
+- (void)setContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;
 - (void)setDisplaySecureEditsUsingPlainText:(BOOL)arg1;
 - (void)setFont:(id)arg1;
-- (void)setFrame:(struct CGRect)arg1;
 - (void)setLayoutOrientation:(long long)arg1;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
+- (void)setMarkedTextStyle:(id)arg1;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1 avoidAdditionalLayout:(BOOL)arg2;
 - (void)setScrollXOffset:(int)arg1 scrollYOffset:(int)arg2;
 - (void)setScrollXOffset:(int)arg1 scrollYOffset:(int)arg2 adjustForPurpleCaret:(BOOL)arg3;
@@ -202,6 +218,7 @@
 - (id)textColorForCaretSelection;
 - (struct UIEdgeInsets)textContainerInset;
 - (struct CGPoint)textContainerOrigin;
+- (id)textField;
 - (id)textInRange:(id)arg1;
 - (void)textInput:(id)arg1 prepareAttributedTextForInsertion:(id)arg2;
 - (BOOL)textInput:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementText:(id)arg3;

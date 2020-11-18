@@ -8,7 +8,7 @@
 
 #import <RemoteUI/UIWebViewDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSString, RUIBarButtonItem, RUIElement, RUIObjectModel, RUIPasscodeView, RUISpinnerView, RUIStyle, RUITableView, RUIWebView, UIBarButtonItem, UILabel, UIToolbar, UIView;
+@class NSArray, NSDictionary, NSMutableArray, NSString, RUIBarButtonItem, RUIElement, RUIObjectModel, RUIPageElement, RUIPasscodeView, RUISpinnerView, RUIStyle, RUITableView, RUIWebView, UIBarButtonItem, UILabel, UIToolbar, UIView;
 @protocol RUITopLevelPageElement;
 
 @interface RUIPage : UIViewController <UIWebViewDelegate>
@@ -33,6 +33,7 @@
     BOOL _showsTitlesAsHeaderViews;
     BOOL _loading;
     NSDictionary *_attributes;
+    RUIPageElement *_pageElement;
     RUIElement<RUITopLevelPageElement> *_primaryElement;
     RUIStyle *_style;
     NSString *_backButtonTitle;
@@ -73,6 +74,7 @@
 @property (strong, nonatomic) UIBarButtonItem *middleToolbarItem; // @synthesize middleToolbarItem=_middleToolbarItem;
 @property (copy, nonatomic) NSString *navTitle; // @synthesize navTitle=_navTitle;
 @property (weak, nonatomic) RUIObjectModel *objectModel; // @synthesize objectModel=_objectModel;
+@property (strong, nonatomic) RUIPageElement *pageElement; // @synthesize pageElement=_pageElement;
 @property (copy, nonatomic) NSString *pageID; // @synthesize pageID=_pageID;
 @property (readonly, weak, nonatomic) RUIPage *parentPage; // @synthesize parentPage=_parentPage;
 @property (readonly, nonatomic) RUIPasscodeView *passcodeViewOM;

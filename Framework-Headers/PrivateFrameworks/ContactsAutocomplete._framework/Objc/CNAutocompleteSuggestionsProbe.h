@@ -30,6 +30,7 @@
 
 + (id)contactIdentifierForAutocompleteResult:(id)arg1;
 + (id)suggestionIdentifierForAutocompleteResult:(id)arg1;
++ (int)suggestionSourcesForAutocompleteResult:(id)arg1;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithSuggestionsService:(id)arg1 schedulerProvider:(id)arg2 bundleIdentifier:(id)arg3;

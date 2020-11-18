@@ -10,6 +10,7 @@
 
 @protocol EKCalendarEditItemDelegate <NSObject>
 - (void)calendarItemStartedEditing:(EKCalendarEditItem *)arg1;
+- (BOOL)isNewCalendar;
 - (UINavigationController *)owningNavigationController;
 - (int)sectionForCalendarEditItem:(EKCalendarEditItem *)arg1;
 - (UITableView *)tableView;

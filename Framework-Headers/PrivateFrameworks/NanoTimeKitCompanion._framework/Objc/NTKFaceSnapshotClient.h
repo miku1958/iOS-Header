@@ -26,6 +26,7 @@
 - (void)dealloc;
 - (void)faceSnapshotChangedForKey:(id)arg1;
 - (id)init;
+- (void)performAfterCompletingCurrentlyPendingSnapshots:(CDUnknownBlockType)arg1;
 - (void)requestSnapshotOfFace:(id)arg1;
 - (void)synchronouslyUpdateAllSnapshots;
 

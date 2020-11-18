@@ -6,13 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
-#import <QuartzCore/NSCoding-Protocol.h>
 #import <QuartzCore/NSCopying-Protocol.h>
 #import <QuartzCore/NSMutableCopying-Protocol.h>
+#import <QuartzCore/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface CAFilter : NSObject <NSCopying, NSMutableCopying, NSCoding>
+@interface CAFilter : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
     unsigned int _type;
     NSString *_name;
@@ -21,6 +21,7 @@
     void *_cache;
 }
 
+@property (getter=isAccessibility) BOOL accessibility;
 @property BOOL cachesInputImage;
 @property (getter=isEnabled) BOOL enabled;
 @property (copy) NSString *name;
@@ -31,11 +32,13 @@
 + (id)filterTypes;
 + (id)filterWithName:(id)arg1;
 + (id)filterWithType:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void)CAMLParser:(id)arg1 setValue:(id)arg2 forKey:(id)arg3;
 - (id)CAMLTypeForKey:(id)arg1;
 - (struct Object *)CA_copyRenderValue;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)description;
 - (BOOL)enabled;
 - (void)encodeWithCAMLWriter:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

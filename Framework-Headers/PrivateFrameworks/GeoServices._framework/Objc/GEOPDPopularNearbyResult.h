@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSString *sectionHeader; // @synthesize sectionHeader=_sectionHeader;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)addLitePlaceResult:(struct GEOPDLitePlaceResult)arg1;
 - (void)clearLitePlaceResults;
 - (void)copyTo:(id)arg1;

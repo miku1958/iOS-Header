@@ -7,7 +7,7 @@
 #import <CoreUI/CUINamedImage.h>
 
 @interface CUINamedImage (UIKitAdditions)
-- (id)UIImage;
+- (id)UIImageWithVectorImage:(id)arg1;
 - (id)traitCollection;
 @end
 

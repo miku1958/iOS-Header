@@ -12,10 +12,10 @@
 @interface MPArtworkResizeOperation : NSOperation
 {
     BOOL _usesExactFittingSizeAsDestinationSize;
+    UIImage *_resizedImage;
+    NSError *_error;
     NSURL *_destinationURL;
     NSObject<OS_dispatch_group> *_operationGroup;
-    NSError *_error;
-    UIImage *_resizedImage;
     UIImage *_image;
     struct CGSize _scaledFittingSize;
 }
@@ -30,7 +30,6 @@
 
 - (void).cxx_destruct;
 - (struct CGSize)_resizedScaledSizeForScaledImageSize:(struct CGSize)arg1 scaledFittingSize:(struct CGSize)arg2;
-- (id)init;
 - (id)initWithImage:(id)arg1 scaledFittingSize:(struct CGSize)arg2;
 - (id)initWithImage:(id)arg1 scaledFittingSize:(struct CGSize)arg2 destinationURL:(id)arg3;
 - (id)initWithImage:(id)arg1 scaledFittingSize:(struct CGSize)arg2 useExactFittingSizeAsDestinationSize:(BOOL)arg3 destinationURL:(id)arg4;

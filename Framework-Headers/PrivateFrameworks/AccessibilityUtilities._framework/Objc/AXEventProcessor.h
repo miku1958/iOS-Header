@@ -40,10 +40,11 @@
 @property (nonatomic) BOOL shouldNotifyUserEventOccurred; // @synthesize shouldNotifyUserEventOccurred=_shouldNotifyUserEventOccurred;
 @property (strong, nonatomic) NSMutableArray *systemActualEventTapEnabledReasons; // @synthesize systemActualEventTapEnabledReasons=_systemActualEventTapEnabledReasons;
 @property (copy, nonatomic) CDUnknownBlockType systemEventHandler; // @synthesize systemEventHandler=_systemEventHandler;
-@property (readonly, nonatomic) NSArray *systemEventTapEnabledReasons;
+@property (readonly, weak, nonatomic) NSArray *systemEventTapEnabledReasons;
 @property (strong, nonatomic) NSString *systemEventTapIdentifier; // @synthesize systemEventTapIdentifier=_systemEventTapIdentifier;
 @property (nonatomic) int systemEventTapPriority; // @synthesize systemEventTapPriority=_systemEventTapPriority;
 
+- (void).cxx_destruct;
 - (void)_installHIDEventFilter;
 - (void)_installSystemEventFilter;
 - (void)_runHIDEventReceiveThread;
@@ -51,7 +52,6 @@
 - (void)_uninstallSystemEventFilter;
 - (void)beginHandlingHIDEventsForReason:(id)arg1;
 - (void)beginHandlingSystemEventsForReason:(id)arg1;
-- (void)dealloc;
 - (void)endHandlingHIDEventsForReason:(id)arg1;
 - (void)endHandlingSystemEventsForReason:(id)arg1;
 - (id)init;

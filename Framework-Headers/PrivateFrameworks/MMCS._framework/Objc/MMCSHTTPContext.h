@@ -6,6 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
+#import <MMCS/C2RequestDelegate-Protocol.h>
 #import <MMCS/NSStreamDelegate-Protocol.h>
 #import <MMCS/NSURLSessionDataDelegate-Protocol.h>
 #import <MMCS/NSURLSessionDataDelegatePrivate-Protocol.h>
@@ -16,7 +17,7 @@
 @class MMCSBoundedQueue, NSDictionary, NSInputStream, NSOutputStream, NSString, NSURLSession, NSURLSessionDataTask;
 
 __attribute__((visibility("hidden")))
-@interface MMCSHTTPContext : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate, NSURLSessionTaskDelegatePrivate, NSURLSessionDataDelegatePrivate, NSStreamDelegate>
+@interface MMCSHTTPContext : NSObject <C2RequestDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate, NSURLSessionTaskDelegatePrivate, NSURLSessionDataDelegatePrivate, NSStreamDelegate>
 {
     BOOL _didOpen;
     BOOL _isValid;
@@ -31,12 +32,10 @@ __attribute__((visibility("hidden")))
     MMCSBoundedQueue *_boundedQueue;
     NSDictionary *_timingData;
     struct os_activity_s *_activityMarker;
-    struct __CFError *_customCertificatePinningError;
 }
 
 @property (nonatomic) struct os_activity_s *activityMarker; // @synthesize activityMarker=_activityMarker;
 @property (strong, nonatomic) MMCSBoundedQueue *boundedQueue; // @synthesize boundedQueue=_boundedQueue;
-@property (nonatomic) struct __CFError *customCertificatePinningError; // @synthesize customCertificatePinningError=_customCertificatePinningError;
 @property (strong, nonatomic) NSURLSessionDataTask *dataTask; // @synthesize dataTask=_dataTask;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -53,17 +52,17 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSDictionary *timingData; // @synthesize timingData=_timingData;
 @property (strong, nonatomic) NSURLSession *urlSession; // @synthesize urlSession=_urlSession;
 
-+ (unsigned char)handleTrustPolicy:(struct __SecTrust *)arg1 policy:(struct __SecPolicy *)arg2 requestType:(struct __CFString *)arg3 host:(struct __CFString *)arg4 error:(struct __CFError **)arg5;
-+ (id)sharedMMCSHTTPSession;
 - (void).cxx_destruct;
+- (void)URLSession:(id)arg1 _taskIsWaitingForConnection:(id)arg2;
 - (void)URLSession:(id)arg1 _willRetryBackgroundDataTask:(id)arg2 withError:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 _conditionalRequirementsChanged:(BOOL)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 _willSendRequestForEstablishedConnection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
-- (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 needNewBodyStream:(CDUnknownBlockType)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)cleanupRequest;
 - (void)cleanupResponse;
 - (long long)countOfRequestBodyBytesSent;

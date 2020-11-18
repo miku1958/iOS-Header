@@ -6,48 +6,52 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreParsec/NSCopying-Protocol.h>
+#import <CoreParsec/NSSecureCoding-Protocol.h>
+#import <CoreParsec/_CPSearchResultForFeedback-Protocol.h>
 
-@class NSMutableArray, NSString, _CPActionItemForFeedback, _CPPunchoutForFeedback;
+@class NSData, NSString, _CPActionItemForFeedback, _CPPunchoutForFeedback, _CPStruct;
 
-@interface _CPSearchResultForFeedback : PBCodable <NSCopying>
+@interface _CPSearchResultForFeedback : PBCodable <_CPSearchResultForFeedback, NSSecureCoding>
 {
-    unsigned long long _queryId;
-    double _rankingScore;
-    _CPActionItemForFeedback *_action;
-    NSString *_applicationBundleIdentifier;
-    NSString *_completedQuery;
-    NSString *_correctedQuery;
-    NSString *_fbr;
-    NSString *_identifier;
-    NSString *_intendedQuery;
-    NSMutableArray *_localFeatures;
-    _CPPunchoutForFeedback *_punchout;
-    NSString *_resultBundleId;
-    NSString *_resultType;
-    NSString *_sectionBundleIdentifier;
-    NSString *_srf;
-    int _topHit;
-    int _type;
-    BOOL _isLocalApplicationResult;
-    BOOL _isStaticCorrection;
-    BOOL _publiclyIndexable;
     struct {
-        unsigned int queryId:1;
-        unsigned int rankingScore:1;
         unsigned int topHit:1;
         unsigned int type:1;
-        unsigned int isLocalApplicationResult:1;
+        unsigned int rankingScore:1;
         unsigned int isStaticCorrection:1;
+        unsigned int queryId:1;
+        unsigned int isLocalApplicationResult:1;
         unsigned int publiclyIndexable:1;
     } _has;
+    BOOL _isStaticCorrection;
+    BOOL _isLocalApplicationResult;
+    BOOL _publiclyIndexable;
+    int _topHit;
+    int _type;
+    NSString *_identifier;
+    _CPActionItemForFeedback *_action;
+    _CPPunchoutForFeedback *_punchout;
+    NSString *_srf;
+    _CPStruct *_localFeatures;
+    NSString *_resultBundleId;
+    NSString *_applicationBundleIdentifier;
+    NSString *_sectionBundleIdentifier;
+    NSString *_resultType;
+    double _rankingScore;
+    unsigned long long _queryId;
+    NSString *_intendedQuery;
+    NSString *_correctedQuery;
+    NSString *_completedQuery;
+    NSString *_fbr;
+    NSString *_userInput;
 }
 
 @property (strong, nonatomic) _CPActionItemForFeedback *action; // @synthesize action=_action;
-@property (strong, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
-@property (strong, nonatomic) NSString *completedQuery; // @synthesize completedQuery=_completedQuery;
-@property (strong, nonatomic) NSString *correctedQuery; // @synthesize correctedQuery=_correctedQuery;
-@property (strong, nonatomic) NSString *fbr; // @synthesize fbr=_fbr;
+@property (copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
+@property (copy, nonatomic) NSString *completedQuery; // @synthesize completedQuery=_completedQuery;
+@property (copy, nonatomic) NSString *correctedQuery; // @synthesize correctedQuery=_correctedQuery;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *fbr; // @synthesize fbr=_fbr;
 @property (readonly, nonatomic) BOOL hasAction;
 @property (readonly, nonatomic) BOOL hasApplicationBundleIdentifier;
 @property (readonly, nonatomic) BOOL hasCompletedQuery;
@@ -55,52 +59,48 @@
 @property (readonly, nonatomic) BOOL hasFbr;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasIntendedQuery;
-@property (nonatomic) BOOL hasIsLocalApplicationResult;
-@property (nonatomic) BOOL hasIsStaticCorrection;
-@property (nonatomic) BOOL hasPubliclyIndexable;
+@property (readonly, nonatomic) BOOL hasIsLocalApplicationResult;
+@property (readonly, nonatomic) BOOL hasIsStaticCorrection;
+@property (readonly, nonatomic) BOOL hasLocalFeatures;
+@property (readonly, nonatomic) BOOL hasPubliclyIndexable;
 @property (readonly, nonatomic) BOOL hasPunchout;
-@property (nonatomic) BOOL hasQueryId;
-@property (nonatomic) BOOL hasRankingScore;
+@property (readonly, nonatomic) BOOL hasQueryId;
+@property (readonly, nonatomic) BOOL hasRankingScore;
 @property (readonly, nonatomic) BOOL hasResultBundleId;
 @property (readonly, nonatomic) BOOL hasResultType;
 @property (readonly, nonatomic) BOOL hasSectionBundleIdentifier;
 @property (readonly, nonatomic) BOOL hasSrf;
-@property (nonatomic) BOOL hasTopHit;
-@property (nonatomic) BOOL hasType;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) NSString *intendedQuery; // @synthesize intendedQuery=_intendedQuery;
+@property (readonly, nonatomic) BOOL hasTopHit;
+@property (readonly, nonatomic) BOOL hasType;
+@property (readonly, nonatomic) BOOL hasUserInput;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSString *intendedQuery; // @synthesize intendedQuery=_intendedQuery;
 @property (nonatomic) BOOL isLocalApplicationResult; // @synthesize isLocalApplicationResult=_isLocalApplicationResult;
 @property (nonatomic) BOOL isStaticCorrection; // @synthesize isStaticCorrection=_isStaticCorrection;
-@property (strong, nonatomic) NSMutableArray *localFeatures; // @synthesize localFeatures=_localFeatures;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (strong, nonatomic) _CPStruct *localFeatures; // @synthesize localFeatures=_localFeatures;
 @property (nonatomic) BOOL publiclyIndexable; // @synthesize publiclyIndexable=_publiclyIndexable;
 @property (strong, nonatomic) _CPPunchoutForFeedback *punchout; // @synthesize punchout=_punchout;
 @property (nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
 @property (nonatomic) double rankingScore; // @synthesize rankingScore=_rankingScore;
-@property (strong, nonatomic) NSString *resultBundleId; // @synthesize resultBundleId=_resultBundleId;
-@property (strong, nonatomic) NSString *resultType; // @synthesize resultType=_resultType;
-@property (strong, nonatomic) NSString *sectionBundleIdentifier; // @synthesize sectionBundleIdentifier=_sectionBundleIdentifier;
-@property (strong, nonatomic) NSString *srf; // @synthesize srf=_srf;
+@property (copy, nonatomic) NSString *resultBundleId; // @synthesize resultBundleId=_resultBundleId;
+@property (copy, nonatomic) NSString *resultType; // @synthesize resultType=_resultType;
+@property (copy, nonatomic) NSString *sectionBundleIdentifier; // @synthesize sectionBundleIdentifier=_sectionBundleIdentifier;
+@property (copy, nonatomic) NSString *srf; // @synthesize srf=_srf;
+@property (readonly) Class superclass;
 @property (nonatomic) int topHit; // @synthesize topHit=_topHit;
 @property (nonatomic) int type; // @synthesize type=_type;
+@property (copy, nonatomic) NSString *userInput; // @synthesize userInput=_userInput;
 
-+ (Class)localFeaturesType;
 - (void).cxx_destruct;
-- (int)StringAsTopHit:(id)arg1;
-- (int)StringAsType:(id)arg1;
-- (void)addLocalFeatures:(id)arg1;
-- (void)clearLocalFeatures;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)feedbackJSON;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithFacade:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)localFeaturesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)localFeaturesCount;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)topHitAsString:(int)arg1;
-- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

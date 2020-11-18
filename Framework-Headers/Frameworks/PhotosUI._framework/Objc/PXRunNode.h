@@ -34,8 +34,9 @@
 @property (readonly) Class superclass;
 @property (readonly, getter=isWaiting) BOOL waiting;
 
-+ (id)_defaultNodeRunner;
++ (id)_defaultNodeRunnerWithQualityOfService:(long long)arg1;
 + (void)processGraphForRunNode:(id)arg1;
++ (void)processGraphForRunNode:(id)arg1 withQualityOfService:(long long)arg2;
 - (void).cxx_destruct;
 - (void)_performChangesToOperation:(CDUnknownBlockType)arg1;
 - (void)cancel;

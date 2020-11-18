@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateBounceAnimation:(id)arg1;
 - (void)_updatedController;
 - (void)bounceAnimationDidFinish;
+- (void)cancelBounceAnimation;
 - (BOOL)completedPlacementFrom:(id)arg1 to:(id)arg2 forController:(id)arg3;
 - (void)dealloc;
 - (void)dock;

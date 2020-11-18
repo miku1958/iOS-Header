@@ -21,12 +21,14 @@
     NSString *_firstName;
     NSString *_lastName;
     NSString *_emailAddress;
-    NSURL *_url;
+    NSString *_phoneNumber;
+    NSURL *_URL;
     long long _participantStatus;
     NSString *_comment;
     NSDate *_proposedStartDate;
 }
 
+@property (readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (readonly, nonatomic) NSString *comment; // @synthesize comment=_comment;
 @property (readonly, nonatomic) BOOL commentChanged; // @synthesize commentChanged=_commentChanged;
 @property (readonly, copy) NSString *debugDescription;
@@ -38,12 +40,12 @@
 @property (readonly, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) long long participantStatus; // @synthesize participantStatus=_participantStatus;
+@property (readonly, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property (readonly, nonatomic) NSDate *proposedStartDate; // @synthesize proposedStartDate=_proposedStartDate;
 @property (readonly, nonatomic) BOOL proposedStartDateChanged; // @synthesize proposedStartDateChanged=_proposedStartDateChanged;
 @property (readonly, nonatomic) BOOL proposedStartDateDeclined; // @synthesize proposedStartDateDeclined=_proposedStartDateDeclined;
 @property (readonly, nonatomic) BOOL statusChanged; // @synthesize statusChanged=_statusChanged;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 
 - (void).cxx_destruct;
 - (id)initWithParticipant:(id)arg1 forEvent:(id)arg2;

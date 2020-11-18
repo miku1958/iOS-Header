@@ -29,7 +29,6 @@
 + (id)_swatchColorForColorOption:(id)arg1;
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1;
 + (id)_swatchImageFaceName;
-+ (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void).cxx_destruct;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyForegroundAlphaForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
@@ -65,6 +64,7 @@
 - (double)_secondHandAlphaForEditMode:(long long)arg1;
 - (BOOL)_shouldFreezeSceneForEditMode:(long long)arg1;
 - (BOOL)_supportsUnadornedSnapshot;
+- (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void)_updateDateComplicationPositionIfNecessary;
 - (Class)_utilitarianSceneClass;
 - (id)_utilityComplicationSlots;

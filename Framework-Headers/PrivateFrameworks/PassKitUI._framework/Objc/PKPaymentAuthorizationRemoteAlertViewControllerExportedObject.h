@@ -13,7 +13,7 @@
 
 @interface PKPaymentAuthorizationRemoteAlertViewControllerExportedObject : NSObject <PKPaymentAuthorizationServiceProtocol>
 {
-    BOOL _didForceDismiss;
+    BOOL _dismissed;
     NSMutableSet *_completionHandlers;
     id<PKPaymentAuthorizationServiceProtocol> _delegate;
     PKPaymentAuthorizationRemoteAlertViewController *_controller;
@@ -28,14 +28,16 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)authorizationDidAuthorizePaymentCompleteWithStatus:(long long)arg1;
+- (void)authorizationDidAuthorizePaymentCompleteWithResult:(id)arg1;
+- (void)authorizationDidAuthorizePeerPaymentQuoteCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePurchaseCompleteWithStatus:(long long)arg1;
 - (void)authorizationDidRequestMerchantSessionCompleteWithSession:(id)arg1 error:(id)arg2;
 - (void)authorizationDidSelectPaymentMethodCompleteWithPaymentSummaryItems:(id)arg1;
-- (void)authorizationDidSelectShippingAddressCompleteWithStatus:(long long)arg1 shippingMethods:(id)arg2 paymentSummaryItems:(id)arg3;
-- (void)authorizationDidSelectShippingMethodCompleteWithStatus:(long long)arg1 paymentSummaryItems:(id)arg2;
+- (void)authorizationDidSelectPaymentMethodCompleteWithUpdate:(id)arg1;
+- (void)authorizationDidSelectShippingAddressCompleteWithUpdate:(id)arg1;
+- (void)authorizationDidSelectShippingMethodCompleteWithUpdate:(id)arg1;
 - (void)dealloc;
-- (void)forceDismissDidComplete;
+- (void)dismissed;
 - (void)handleDismissWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleHostApplicationDidBecomeActive;
 - (void)handleHostApplicationDidCancel;

@@ -23,6 +23,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_reduceMotionDidChange:(id)arg1;
+- (BOOL)canPerformVitality;
+- (id)init;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;

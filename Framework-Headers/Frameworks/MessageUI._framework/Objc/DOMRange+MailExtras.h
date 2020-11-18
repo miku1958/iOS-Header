@@ -7,7 +7,7 @@
 #import <WebKit/DOMRange.h>
 
 @interface DOMRange (MailExtras)
-- (id)mf_attachmentURLs;
+- (id)mf_fileAttachments;
 - (id)mf_firstNode;
 - (void)mf_getBlockBoundaryParent:(id *)arg1 nextSibling:(id *)arg2 atStart:(BOOL)arg3;
 - (void)mf_hoistRange;

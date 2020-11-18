@@ -76,6 +76,7 @@
 - (void)sortRange:(struct _NSRange)arg1 options:(unsigned long long)arg2 usingComparator:(CDUnknownBlockType)arg3;
 - (void)sortUsingComparator:(CDUnknownBlockType)arg1;
 - (void)sortWithOptions:(unsigned long long)arg1 usingComparator:(CDUnknownBlockType)arg2;
+- (id)sortedArrayFromRange:(struct _NSRange)arg1 options:(unsigned long long)arg2 usingComparator:(CDUnknownBlockType)arg3;
 - (void)unionOrderedSet:(id)arg1;
 - (void)unionSet:(id)arg1;
 

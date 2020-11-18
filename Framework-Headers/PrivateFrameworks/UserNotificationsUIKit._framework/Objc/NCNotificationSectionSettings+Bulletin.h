@@ -8,11 +8,15 @@
 
 @interface NCNotificationSectionSettings (Bulletin)
 
+@property (readonly, nonatomic) unsigned long long contentPreviewSetting;
 @property (readonly, nonatomic) BOOL notificationsEnabled;
 @property (readonly, nonatomic) BOOL showsInLockScreen;
 @property (readonly, nonatomic) BOOL showsInNotificationCenter;
-@property (readonly, nonatomic) BOOL showsMessagePreview;
+@property (readonly, nonatomic) long long subSectionPriority;
 
 + (id)notificationSectionSettingsForBBSectionInfo:(id)arg1;
+- (unsigned long long)_contentPreviewSettingFromBBContentPreviewSetting:(long long)arg1;
+- (id)_notificationSectionSettingsForSubSectionWithIdentifier:(id)arg1;
+- (unsigned long long)contentPreviewSettingForRequestWithSubSectionIdentifiers:(id)arg1;
 @end
 

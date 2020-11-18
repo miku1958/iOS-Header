@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_imageFromStreamShareSource:(id)arg1;
 - (void)_pushTitleController;
 - (id)albumListAction;
 - (void)albumStreamingCreateViewController:(id)arg1 didSucceed:(BOOL)arg2;
@@ -58,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)send;
 - (id)serviceIconImage;
 - (void)setAssetsToShare:(id)arg1;
+- (void)setSourcesToShare:(id)arg1;
 - (id)sheetActions;
 - (void)sheetDidSendWithSucess:(id)arg1 error:(id)arg2;
 - (void)sheetFailedWithError:(id)arg1;

@@ -8,8 +8,8 @@
 
 #import <CoreSpotlight/MDSearchQueryResultProcessor-Protocol.h>
 
-@class CSSearchQueryContext, NSArray, NSString, NSXPCConnection;
-@protocol MDSearchQueryService, OS_dispatch_queue;
+@class CSSearchQueryContext, NSArray, NSMapTable, NSString;
+@protocol OS_dispatch_queue;
 
 @interface CSSearchQuery : NSObject <MDSearchQueryResultProcessor>
 {
@@ -17,51 +17,82 @@
     BOOL _finished;
     BOOL _cancelled;
     BOOL _fetchesURLs;
+    BOOL _gatherEnded;
     unsigned long long _foundItemCount;
     CDUnknownBlockType _foundItemsHandler;
     CDUnknownBlockType _completionHandler;
     NSArray *_resolvedFetchAttributes;
-    id<MDSearchQueryService> _serviceProxy;
-    NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_queue;
     NSString *_queryString;
     CSSearchQueryContext *_queryContext;
+    NSMapTable *_liveIndexBundleIDToIndexItemIDMap;
+    NSMapTable *_liveIndexBundleIDToBundleString;
+    CDUnknownBlockType _gatherEndedHandler;
+    CDUnknownBlockType _changedItemsHandler;
+    CDUnknownBlockType _removedItemsHandler;
+    CDUnknownBlockType _foundAttributesHandler;
+    CDUnknownBlockType _changedAttributesHandler;
+    CDUnknownBlockType _countChangedHandler;
+    CDUnknownBlockType _resolvedAttributeNamesHandler;
 }
 
 @property (readonly, getter=isCancelled) BOOL cancelled;
+@property (copy) CDUnknownBlockType changedAttributesHandler; // @synthesize changedAttributesHandler=_changedAttributesHandler;
+@property (copy) CDUnknownBlockType changedItemsHandler; // @synthesize changedItemsHandler=_changedItemsHandler;
 @property (copy) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (copy) CDUnknownBlockType countChangedHandler; // @synthesize countChangedHandler=_countChangedHandler;
 @property (readonly, nonatomic) NSArray *fetchAttributes;
+@property (copy) CDUnknownBlockType foundAttributesHandler; // @synthesize foundAttributesHandler=_foundAttributesHandler;
 @property (readonly) unsigned long long foundItemCount;
 @property (copy) CDUnknownBlockType foundItemsHandler; // @synthesize foundItemsHandler=_foundItemsHandler;
+@property (copy) CDUnknownBlockType gatherEndedHandler; // @synthesize gatherEndedHandler=_gatherEndedHandler;
+@property (strong, nonatomic) NSMapTable *liveIndexBundleIDToBundleString; // @synthesize liveIndexBundleIDToBundleString=_liveIndexBundleIDToBundleString;
+@property (strong, nonatomic) NSMapTable *liveIndexBundleIDToIndexItemIDMap; // @synthesize liveIndexBundleIDToIndexItemIDMap=_liveIndexBundleIDToIndexItemIDMap;
 @property (copy) NSArray *protectionClasses;
 @property (strong, nonatomic) CSSearchQueryContext *queryContext; // @synthesize queryContext=_queryContext;
 @property (copy, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (copy) CDUnknownBlockType removedItemsHandler; // @synthesize removedItemsHandler=_removedItemsHandler;
+@property (copy) CDUnknownBlockType resolvedAttributeNamesHandler; // @synthesize resolvedAttributeNamesHandler=_resolvedAttributeNamesHandler;
 @property (strong, nonatomic) NSArray *resolvedFetchAttributes; // @synthesize resolvedFetchAttributes=_resolvedFetchAttributes;
-@property (strong) id<MDSearchQueryService> serviceProxy; // @synthesize serviceProxy=_serviceProxy;
 
 + (id)_attributesForURLs;
 + (id)_makeQueryErrorWithErrorCode:(long long)arg1 description:(id)arg2 underlyingError:(id)arg3;
 + (id)_makeUniqueFetchAttributesWithAttributes:(id)arg1;
 + (id)_requiredAttributeSet;
 + (id)_requiredAttributes;
++ (void)userEngagedWithUniqueIdentifier:(id)arg1 bundleId:(id)arg2 forUserQuery:(id)arg3 interactionType:(int)arg4;
 - (void).cxx_destruct;
 - (void)_finishWithError:(id)arg1;
-- (id)_makeConnectionIfNecessary;
+- (BOOL)attribute;
 - (id)bundleIDs;
 - (void)cancel;
+- (BOOL)counting;
+- (id)createCSSearchableItemWithOID:(long long)arg1 values:(id *)arg2 valueCount:(unsigned long long)arg3 protectionClass:(id)arg4 isTopHitQuery:(BOOL)arg5;
+- (id)debugDescription;
 - (id)description;
 - (void)didFinishWithError:(id)arg1;
 - (void)didResolveFriendlyAttributeNames:(id)arg1;
-- (void)didReturnResultsData:(id)arg1 protectionClass:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)didReturnResults:(long long)arg1 resultsData:(id)arg2 oidData:(id)arg3 protectionClass:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (BOOL)grouped;
 - (id)init;
 - (id)initWithQueryString:(id)arg1 attributes:(id)arg2;
 - (id)initWithQueryString:(id)arg1 context:(id)arg2;
 - (id)initWithQueryString:(id)arg1 options:(id)arg2;
+- (BOOL)internal;
+- (BOOL)live;
 - (id)options;
+- (void)processAttributesData:(id)arg1 update:(BOOL)arg2 protectionClass:(id)arg3;
+- (void)processLiveResultsData:(id)arg1 oidData:(id)arg2 protectionClass:(id)arg3 isTopHitQuery:(BOOL)arg4;
+- (void)processRemoveResultsData:(id)arg1 protectionClass:(id)arg2;
+- (void)processResultFromPlist:(id)arg1 atIndex:(unsigned long long)arg2 protectionClass:(id)arg3 oids:(long long *)arg4 oidCount:(unsigned int)arg5 items:(id)arg6 isTopHitQuery:(BOOL)arg7;
+- (id)processResultFromPlist:(id)arg1 protectionClass:(id)arg2 isTopHitQuery:(BOOL)arg3;
+- (void)processResultsData:(id)arg1 protectionClass:(id)arg2 isTopHitQuery:(BOOL)arg3;
+- (BOOL)removeLiveOID:(long long)arg1 outBundleID:(id *)arg2 outIdentifier:(id *)arg3;
 - (void)setBundleIDs:(id)arg1;
 - (void)start;
+- (void)updateLiveOID:(long long)arg1 bundleID:(id)arg2 identifier:(id)arg3;
+- (void)userEngagedWithResult:(id)arg1 interactionType:(int)arg2;
 
 @end
 

@@ -16,8 +16,10 @@
 @property (strong, nonatomic) NSArray *weekendNodes; // @synthesize weekendNodes=_weekendNodes;
 
 - (void).cxx_destruct;
+- (id)_collectionNodeForPotentialMemory:(id)arg1;
+- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (id)_potentialMemories:(unsigned long long)arg1;
+- (id)_potentialMemoriesForDryTesting;
 
 @end
 

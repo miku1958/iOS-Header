@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, NSMutableArray, NSString;
+@class GEOLatLng, NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOBusiness : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     unsigned long long _uID;
     NSMutableArray *_attributeKeyValues;
     NSMutableArray *_attributions;
@@ -62,6 +63,7 @@
 @property (strong, nonatomic) NSString *telephone; // @synthesize telephone=_telephone;
 @property (nonatomic) unsigned long long uID; // @synthesize uID=_uID;
 @property (strong, nonatomic) NSString *uRL; // @synthesize uRL=_uRL;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)attributeKeyValueType;
 + (Class)attributionType;
@@ -73,8 +75,7 @@
 + (Class)ratingType;
 + (Class)sourceType;
 + (Class)starRatingType;
-- (id)_firstPhotoOfSize:(int)arg1;
-- (id)_photosOfSize:(int)arg1;
+- (void).cxx_destruct;
 - (void)addAttributeKeyValue:(id)arg1;
 - (void)addAttribution:(id)arg1;
 - (void)addCategory:(id)arg1;
@@ -103,7 +104,6 @@
 - (void)clearStarRatings;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

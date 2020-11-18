@@ -26,12 +26,12 @@
     double _originalXBeforeOffset;
     unsigned int _touchKeptInsideOccurrence:1;
     unsigned int _offsetContentForLandscape:1;
-    BOOL _visibleHeightLocked;
     struct UIEdgeInsets _padding;
     unsigned long long _bottomPinningState;
     struct CGRect _unpinnedEventBackgroundFrame;
     struct CGRect _unpinnedTravelBackgroundFrame;
     UIView *_pinFadeView;
+    BOOL _visibleHeightLocked;
     BOOL _selected;
     BOOL _dimmed;
     BOOL _allDayDrawingStyle;
@@ -73,7 +73,6 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL dimmed; // @synthesize dimmed=_dimmed;
 @property (nonatomic) BOOL drawsResizeHandles; // @synthesize drawsResizeHandles=_drawsResizeHandles;
-@property (nonatomic, getter=isFacebook) BOOL facebook;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideBackgroundImage; // @synthesize hideBackgroundImage=_hideBackgroundImage;
 @property (nonatomic) BOOL hideText; // @synthesize hideText=_hideText;
@@ -103,14 +102,17 @@
 @property (nonatomic) double travelTime; // @synthesize travelTime=_travelTime;
 @property (nonatomic) double travelTimeSubviewHeightInPoints; // @synthesize travelTimeSubviewHeightInPoints=_travelTimeSubviewHeightInPoints;
 @property (nonatomic) BOOL usesSmallText;
-@property (readonly, nonatomic) BOOL visibleHeightLocked;
+@property (readonly, nonatomic) BOOL visibleHeightLocked; // @synthesize visibleHeightLocked=_visibleHeightLocked;
 
-+ (id)_cachedImageForCalendarColor:(id)arg1 selected:(BOOL)arg2 declined:(BOOL)arg3 cancelled:(BOOL)arg4 tentative:(BOOL)arg5 needsReply:(BOOL)arg6 colorBarStyle:(long long)arg7 dayViewBackgroundStyle:(int)arg8;
++ (void)_cacheLocation:(id)arg1 forEventID:(id)arg2;
++ (id)_cachedImageForCalendarColor:(id)arg1 selected:(BOOL)arg2 declined:(BOOL)arg3 cancelled:(BOOL)arg4 tentative:(BOOL)arg5 needsReply:(BOOL)arg6 colorBarStyle:(long long)arg7 dayViewBackgroundStyle:(int)arg8 usesLargeTextLayout:(BOOL)arg9;
++ (id)_cachedLocationForEventID:(id)arg1;
 + (void)_clearViewCache;
 + (id)_color:(id)arg1 lightenedToPercentage:(double)arg2 withFinalAlpha:(double)arg3;
 + (id)_imageForBarColor:(id)arg1 backgroundColor:(id)arg2 colorBarStyle:(long long)arg3;
 + (id)_imageForBarColor:(id)arg1 backgroundColor:(id)arg2 stripeColor:(id)arg3 stripedImageAlpha:(double)arg4 colorBarStyle:(long long)arg5;
 + (id)_lightStripeColorForColor:(id)arg1;
++ (id)_recentlyDisplayedLocations;
 + (id)_viewCache;
 + (double)barToBarGapWidth;
 + (double)barToBarHorizontalDistanceIncludingBarWidth;
@@ -120,6 +122,10 @@
 + (struct CGRect)contentStretchRectForFrame:(struct CGRect)arg1;
 + (struct UIEdgeInsets)defaultMargin;
 + (struct UIEdgeInsets)defaultPadding;
++ (double)enoughHeightForOneLineForEvent:(id)arg1 usingSmallText:(BOOL)arg2;
++ (id)framePathForExternalDragOperationWithSize:(struct CGSize)arg1;
++ (id)imageForExternalDragOperationFromEvent:(id)arg1;
++ (double)minNaturalTextHeightForEvent:(id)arg1 usingSmallText:(BOOL)arg2;
 + (double)minimumHeightForOrientation:(long long)arg1;
 + (double)minimumHeightForOrientation:(long long)arg1 isAllDay:(BOOL)arg2;
 + (double)minimumHeightForOrientation:(long long)arg1 isAllDay:(BOOL)arg2 usesSmallText:(BOOL)arg3;
@@ -143,13 +149,13 @@
 - (id)_newResizeHandleView;
 - (void)_removeTravelTimeSubviews;
 - (void)_resetContentViewPosition;
-- (BOOL)_shouldShowTimeString;
 - (void)_updateColors;
 - (void)_updateResizeHandleLocations;
 - (double)_verticalContentInset;
 - (void)animateToFrame:(struct CGRect)arg1 isAllDay:(BOOL)arg2 beginFromCurrentState:(BOOL)arg3 whenFinished:(CDUnknownBlockType)arg4;
 - (id)arrayOfResizeHandles;
 - (void)bringResizeHandlesToFront;
+- (id)combineLocationStringWithProposeNewTimeString:(id)arg1;
 - (long long)compareOccurrenceViewForTabOrdering:(id)arg1;
 - (struct CGRect)contentRectForPreview;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -158,6 +164,7 @@
 - (int)dragTypeFromPoint:(struct CGPoint)arg1;
 - (double)enoughHeightForOneLine;
 - (void)fadeInContentViewAt:(double)arg1 minWidth:(double)arg2 animated:(BOOL)arg3;
+- (struct CGRect)frameOfOpaqueContent;
 - (BOOL)hasIcon;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
@@ -165,7 +172,6 @@
 - (void)prepareForReuse;
 - (void)removeFromSuperview;
 - (BOOL)resetContentViewToOriginalState:(BOOL)arg1;
-- (void)resetVisibleHeight;
 - (void)setAllDayDrawingStyle:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHidden:(BOOL)arg1;

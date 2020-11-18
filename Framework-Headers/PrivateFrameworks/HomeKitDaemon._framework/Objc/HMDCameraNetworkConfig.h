@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
 @class NSNumber, NSString;
 
-@interface HMDCameraNetworkConfig : NSObject <NSCopying>
+@interface HMDCameraNetworkConfig : HMFObject <NSCopying>
 {
     CDUnion_fab80606 _ipv4SockAddress;
     CDUnion_fab80606 _ipv6SockAddress;

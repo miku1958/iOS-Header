@@ -27,6 +27,7 @@
     NSURL *_externalToneFileURL;
     unsigned long long _externalToneMediaLibraryItemIdentifier;
     NSDictionary *_externalVibrationPattern;
+    NSURL *_externalVibrationPatternFileURL;
     NSString *_audioCategory;
     double _maximumDuration;
 }
@@ -37,6 +38,7 @@
 @property (copy, nonatomic) NSURL *externalToneFileURL; // @synthesize externalToneFileURL=_externalToneFileURL;
 @property (nonatomic) unsigned long long externalToneMediaLibraryItemIdentifier; // @synthesize externalToneMediaLibraryItemIdentifier=_externalToneMediaLibraryItemIdentifier;
 @property (copy, nonatomic) NSDictionary *externalVibrationPattern; // @synthesize externalVibrationPattern=_externalVibrationPattern;
+@property (copy, nonatomic) NSURL *externalVibrationPatternFileURL; // @synthesize externalVibrationPatternFileURL=_externalVibrationPatternFileURL;
 @property (nonatomic, getter=isForPreview) BOOL forPreview; // @synthesize forPreview=_forPreview;
 @property (nonatomic) double maximumDuration; // @synthesize maximumDuration=_maximumDuration;
 @property (nonatomic) BOOL shouldIgnoreRingerSwitch; // @synthesize shouldIgnoreRingerSwitch=_shouldIgnoreRingerSwitch;
@@ -49,7 +51,6 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_freeze;
-- (void)_performBlockIgnoringFrozenFlag:(CDUnknownBlockType)arg1;
 - (void)_throwForFrozenInstance;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

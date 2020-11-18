@@ -9,7 +9,7 @@
 #import <SceneKit/NSSecureCoding-Protocol.h>
 #import <SceneKit/SCNAnimatable-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, SCNOrderedDictionary;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, SCNOrderedDictionary;
 
 @interface SCNMorpher : NSObject <SCNAnimatable, NSSecureCoding>
 {
@@ -17,10 +17,14 @@
     unsigned int _isPresentationInstance:1;
     long long _calculationMode;
     SCNOrderedDictionary *_animations;
+    NSMutableDictionary *_bindings;
     NSArray *_targets;
     NSMutableArray *_weights;
+    NSArray *_channelTargetCounts;
+    NSArray *_channelTargetWeights;
+    NSDictionary *_targetNameToIndexes;
     NSString *_name;
-    BOOL _shouldMorphNormals;
+    BOOL _unifyNormal;
     BOOL _useSparseTargets;
 }
 
@@ -31,29 +35,41 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSArray *targets;
+@property BOOL unifiesNormals;
+@property (strong, nonatomic) NSArray *weights;
 
++ (Class)SCNUID_classForElementOfArray:(id)arg1;
 + (id)morpher;
 + (id)morpherWithMorphRef:(struct __C3DMorph *)arg1;
 + (BOOL)supportsSecureCoding;
++ (id)weightIndexStringForIndex:(long long)arg1;
 - (const void *)__CFObject;
 - (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
+- (void)_copyAnimationsFrom:(id)arg1;
 - (void)_customDecodingOfSCNMorpher:(id)arg1;
 - (void)_customEncodingOfSCNMorpher:(id)arg1;
 - (void)_didDecodeSCNMorpher:(id)arg1;
 - (BOOL)_isUsingSparseTargets;
-- (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2;
+- (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2 pausedByNode:(BOOL)arg3;
+- (id)_scnAnimationForKey:(id)arg1;
+- (id)_scnBindings;
 - (void)_syncEntityObjCModel;
 - (void)_syncObjCAnimations;
 - (void)_syncObjCModel;
+- (long long)_weightIndexForTargetNamed:(id)arg1;
 - (void)addAnimation:(id)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
+- (void)addAnimationPlayer:(id)arg1 forKey:(id)arg2;
 - (id)animationForKey:(id)arg1;
 - (struct __C3DAnimationManager *)animationManager;
+- (id)animationPlayerForKey:(id)arg1;
 - (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
+- (id)channelTargetCounts;
+- (id)channelTargetWeights;
 - (void)convertToAdditiveWithBaseGeometry:(id)arg1;
 - (void)convertToSparseWithBaseGeometry:(id)arg1;
 - (id)copy;
-- (struct __C3DAnimationChannel *)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
+- (id)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
@@ -71,21 +87,25 @@
 - (id)presentationMorpher;
 - (void)removeAllAnimations;
 - (void)removeAnimationForKey:(id)arg1;
+- (void)removeAnimationForKey:(id)arg1 blendOutDuration:(double)arg2;
 - (void)removeAnimationForKey:(id)arg1 fadeOutDuration:(double)arg2;
 - (void)resumeAnimationForKey:(id)arg1;
 - (id)scene;
 - (struct __C3DScene *)sceneRef;
+- (void)setChannelTargetCounts:(id)arg1;
+- (void)setChannelTargetWeights:(id)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setShouldMorphNormals:(BOOL)arg1;
 - (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
 - (void)setWantsCPUMorphing:(BOOL)arg1;
 - (void)setWeight:(double)arg1 forTargetAtIndex:(unsigned long long)arg2;
-- (void)setWeights:(id)arg1;
+- (void)setWeight:(double)arg1 forTargetNamed:(id)arg2;
 - (BOOL)shouldMorphNormals;
 - (void)unbindAnimatablePath:(id)arg1;
 - (BOOL)wantsCPUMorphing;
 - (double)weightForTargetAtIndex:(unsigned long long)arg1;
+- (double)weightForTargetNamed:(id)arg1;
 
 @end
 

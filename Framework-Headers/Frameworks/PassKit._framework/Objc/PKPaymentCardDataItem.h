@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) BOOL requiresBillingAddress;
 
 + (long long)dataType;
+- (id)errors;
 - (BOOL)isValidWithError:(id *)arg1;
 - (long long)status;
 

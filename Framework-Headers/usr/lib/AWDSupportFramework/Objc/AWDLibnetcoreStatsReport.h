@@ -8,13 +8,15 @@
 
 #import <AWDSupportFramework/NSCopying-Protocol.h>
 
-@class AWDLibnetcoreMbufStatsReport, AWDLibnetcoreNetworkdStatsReport, AWDLibnetcoreTCPECNStatsReport, AWDLibnetcoreTCPStatsReport, AWDLibnetcoreTCPTFOStatsReport, NSMutableArray;
+@class AWDLibnetcoreMPTCPStatsReport, AWDLibnetcoreMbufStatsReport, AWDLibnetcoreNetworkdStatsReport, AWDLibnetcoreTCPECNStatsReport, AWDLibnetcoreTCPStatsReport, AWDLibnetcoreTCPTFOStatsReport, AWDNWAPIUsage, NSMutableArray;
 
 @interface AWDLibnetcoreStatsReport : PBCodable <NSCopying>
 {
     unsigned long long _timestamp;
     AWDLibnetcoreMbufStatsReport *_mbufStatisticsReport;
+    AWDLibnetcoreMPTCPStatsReport *_mptcpStatisticsReport;
     AWDLibnetcoreNetworkdStatsReport *_networkdStatisticsReport;
+    AWDNWAPIUsage *_nwAPIUsageReport;
     unsigned int _reportReason;
     NSMutableArray *_tcpECNInterfaceReports;
     AWDLibnetcoreTCPECNStatsReport *_tcpECNStatisticsReport;
@@ -27,14 +29,18 @@
 }
 
 @property (readonly, nonatomic) BOOL hasMbufStatisticsReport;
+@property (readonly, nonatomic) BOOL hasMptcpStatisticsReport;
 @property (readonly, nonatomic) BOOL hasNetworkdStatisticsReport;
+@property (readonly, nonatomic) BOOL hasNwAPIUsageReport;
 @property (nonatomic) BOOL hasReportReason;
 @property (readonly, nonatomic) BOOL hasTcpECNStatisticsReport;
 @property (readonly, nonatomic) BOOL hasTcpStatisticsReport;
 @property (readonly, nonatomic) BOOL hasTcpTFOStatisticsReport;
 @property (nonatomic) BOOL hasTimestamp;
 @property (strong, nonatomic) AWDLibnetcoreMbufStatsReport *mbufStatisticsReport; // @synthesize mbufStatisticsReport=_mbufStatisticsReport;
+@property (strong, nonatomic) AWDLibnetcoreMPTCPStatsReport *mptcpStatisticsReport; // @synthesize mptcpStatisticsReport=_mptcpStatisticsReport;
 @property (strong, nonatomic) AWDLibnetcoreNetworkdStatsReport *networkdStatisticsReport; // @synthesize networkdStatisticsReport=_networkdStatisticsReport;
+@property (strong, nonatomic) AWDNWAPIUsage *nwAPIUsageReport; // @synthesize nwAPIUsageReport=_nwAPIUsageReport;
 @property (nonatomic) unsigned int reportReason; // @synthesize reportReason=_reportReason;
 @property (strong, nonatomic) NSMutableArray *tcpECNInterfaceReports; // @synthesize tcpECNInterfaceReports=_tcpECNInterfaceReports;
 @property (strong, nonatomic) AWDLibnetcoreTCPECNStatsReport *tcpECNStatisticsReport; // @synthesize tcpECNStatisticsReport=_tcpECNStatisticsReport;

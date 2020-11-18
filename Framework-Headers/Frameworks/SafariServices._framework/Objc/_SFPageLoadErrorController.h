@@ -6,37 +6,54 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSTimer, NSURLRequest, WKWebView, _SFDialog;
-@protocol _SFPageLoadErrorControllerDelegate;
+#import <SafariServices/WBSCertificateWarningPageHandler-Protocol.h>
 
-@interface _SFPageLoadErrorController : NSObject
+@class NSString, NSTimer, NSURL, NSURLRequest, UINavigationController, WKWebView, _WKRemoteObjectInterface;
+@protocol WBSCertificateWarningPagePresenter, _SFDialogPresenting, _SFPageLoadErrorControllerDelegate;
+
+@interface _SFPageLoadErrorController : NSObject <WBSCertificateWarningPageHandler>
 {
-    NSMutableArray *_dialogs;
     BOOL _reloadAfterResume;
     WKWebView *_webView;
     NSTimer *_crashCountResetTimer;
+    id<WBSCertificateWarningPagePresenter> _certificateWarningPagePresenterProxy;
+    _WKRemoteObjectInterface *_certificateWarningPageHandlerInterface;
+    struct __SecTrust *_certificateTrust;
+    CDUnknownBlockType _certificateRecoveryAttempter;
+    NSURL *_certificateFailingURL;
+    UINavigationController *_certificateNavigationViewController;
     BOOL _reloadingFailedRequest;
     id<_SFPageLoadErrorControllerDelegate> _delegate;
     NSURLRequest *_failedRequest;
     unsigned long long _crashesSinceLastSuccessfulLoad;
+    id<_SFDialogPresenting> _dialogPresenter;
 }
 
 @property (readonly, nonatomic) unsigned long long crashesSinceLastSuccessfulLoad; // @synthesize crashesSinceLastSuccessfulLoad=_crashesSinceLastSuccessfulLoad;
-@property (readonly, nonatomic) _SFDialog *currentDialog;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_SFPageLoadErrorControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (weak, nonatomic) id<_SFDialogPresenting> dialogPresenter; // @synthesize dialogPresenter=_dialogPresenter;
 @property (readonly, nonatomic) NSURLRequest *failedRequest; // @synthesize failedRequest=_failedRequest;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL reloadingFailedRequest; // @synthesize reloadingFailedRequest=_reloadingFailedRequest;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_certificateWarningPagePresenterProxy;
+- (void)_clearCertificateWarningPageHandlerInterface;
 - (void)_continueAfterCertificateAlertWithURL:(id)arg1 trust:(struct __SecTrust *)arg2 recoveryAttempter:(CDUnknownBlockType)arg3;
 - (void)_continueWithoutCredentialsUsingAlertContext:(id)arg1;
+- (void)_dismissCertificateViewButtonTapped;
 - (id)_genericMessageForError:(id)arg1;
-- (BOOL)_handleCertificateError:(id)arg1 forURL:(id)arg2 recoveryAttempter:(CDUnknownBlockType)arg3;
+- (BOOL)_handleCertificateError:(id)arg1 forURL:(id)arg2 isMainFrame:(BOOL)arg3 recoveryAttempter:(CDUnknownBlockType)arg4;
 - (void)_handleFrameLoadError:(id)arg1 forURL:(id)arg2 recoveryAttempter:(CDUnknownBlockType)arg3;
+- (void)_loadCertificateWarningPageForContext:(id)arg1;
 - (void)_reachabilityChanged:(id)arg1;
 - (void)_resetCrashCount:(id)arg1;
 - (void)_resetCrashCountSoon;
 - (void)_setFailedRequest:(id)arg1;
+- (void)_setUpCertificateWarningPageHandlerInterface;
 - (void)_showRepeatedWebProcessCrashError:(id)arg1 URLString:(id)arg2;
 - (id)_specializedMessageForError:(id)arg1 URL:(id)arg2;
 - (id)_titleForError:(id)arg1;
@@ -45,23 +62,28 @@
 - (void)addDialog:(id)arg1;
 - (void)addDisallowedFileURLAlert;
 - (void)addDisallowedUseOfJavaScriptAlert;
+- (void)addDownloadFailedAlertWithDescription:(id)arg1;
 - (void)addFormAlertWithTitle:(id)arg1 decisionHandler:(CDUnknownBlockType)arg2;
+- (void)addInvalidProfileAlert;
 - (void)addInvalidURLAlert;
-- (void)cancelAllDialogsIfNeeded;
 - (void)clearCrashCountResetTimer;
 - (void)clearFailedRequest;
 - (void)dealloc;
-- (void)didDismissDialog:(id)arg1;
+- (void)goBackButtonClicked;
 - (void)handleClientCertificateAuthenticationChallenge:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleFrameLoadError:(id)arg1;
 - (void)handleSubframeCertificateError:(id)arg1;
 - (id)initWithWebView:(id)arg1;
+- (void)openClockSettings;
 - (void)performAction:(int)arg1 forAlert:(id)arg2;
 - (void)reloadAfterError;
 - (void)scheduleResetCrashCount;
+- (void)showCertificateInformation;
 - (void)showErrorPageWithTitle:(id)arg1 bodyText:(id)arg2 forError:(id)arg3;
 - (void)showErrorPageWithTitle:(id)arg1 bodyText:(id)arg2 learnMoreLink:(id)arg3 forError:(id)arg4;
 - (BOOL)updateCrashesAndShowCrashError:(id)arg1 URLString:(id)arg2;
+- (void)visitInsecureWebsite;
+- (void)visitInsecureWebsiteWithTemporaryBypass;
 
 @end
 

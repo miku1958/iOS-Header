@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property (nonatomic) int writeStyle; // @synthesize writeStyle=_writeStyle;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 - (id)initWithURL:(id)arg1;

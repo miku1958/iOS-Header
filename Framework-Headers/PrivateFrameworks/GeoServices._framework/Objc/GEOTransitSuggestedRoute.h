@@ -62,6 +62,7 @@
 + (Class)sectionOptionType;
 + (Class)sectionType;
 + (Class)stepsType;
+- (void).cxx_destruct;
 - (int)StringAsRouteBadges:(id)arg1;
 - (void)addRouteBadge:(int)arg1;
 - (void)addRoutePlanningArtwork:(id)arg1;

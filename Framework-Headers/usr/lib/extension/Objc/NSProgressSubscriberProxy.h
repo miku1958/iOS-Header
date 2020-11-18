@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSProgressSubscriber-Protocol.h>
+#import <Foundation/NSProgressSubscriber-Protocol.h>
 
 @class NSFileAccessNode, NSString, NSXPCConnection;
 @protocol NSProgressSubscriber;

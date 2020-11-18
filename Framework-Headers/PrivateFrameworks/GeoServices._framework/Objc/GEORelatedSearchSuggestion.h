@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOPDRelatedSearchSuggestion, NSString;
 
@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOPDRelatedSearchSuggestion *relatedSearchSuggestion; // @synthesize relatedSearchSuggestion=_relatedSearchSuggestion;
 @property (readonly, nonatomic) NSString *searchBarDisplayToken;
 
+- (void).cxx_destruct;
 - (id)_suggestionEntryMetadata;
-- (void)dealloc;
 - (id)initWithPDRelatedSearchSuggestion:(id)arg1;
 
 @end

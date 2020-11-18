@@ -9,10 +9,11 @@
 #import <GeoServices/GEOTransitDeparture-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSDate, NSString;
+@class NSDate, NSString, PBUnknownFields;
 
 @interface GEOPDDeparture : PBCodable <GEOTransitDeparture, NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     double _absDepartureTime;
     NSString *_vehicleNumber;
     struct {
@@ -28,12 +29,13 @@
 @property (readonly, nonatomic) BOOL hasVehicleNumber;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (readonly, nonatomic) NSString *vehicleIdentifier;
 @property (strong, nonatomic) NSString *vehicleNumber; // @synthesize vehicleNumber=_vehicleNumber;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)dictionaryRepresentation;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

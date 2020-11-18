@@ -16,6 +16,7 @@
 - (id)_accessibilityFuzzyHitTestElements;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (id)_accessibilitySubviews;
+- (BOOL)_accessibilitySupportsContentSizeCategory:(id)arg1;
 - (id)_imageForSearchBarIcon:(long long)arg1 state:(unsigned long long)arg2 customImage:(BOOL *)arg3;
 - (void)_searchFieldBeginEditing;
 - (void)_searchFieldEndEditing;

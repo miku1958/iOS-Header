@@ -27,7 +27,7 @@
 @property (nonatomic) BOOL hasType;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
 @property (strong, nonatomic) _INPBImageValue *icon; // @synthesize icon=_icon;
-@property (strong, nonatomic) NSString *identificationHint;
+@property (strong, nonatomic) NSString *identificationHint; // @synthesize identificationHint=_identificationHint;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;

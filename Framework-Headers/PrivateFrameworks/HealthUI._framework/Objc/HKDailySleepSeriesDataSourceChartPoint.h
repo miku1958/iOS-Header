@@ -9,12 +9,13 @@
 #import <HealthUI/HKChartPoint-Protocol.h>
 
 @class NSArray, NSDate, NSString;
+@protocol HKGraphSeriesBlockCoordinateInfo;
 
 @interface HKDailySleepSeriesDataSourceChartPoint : NSObject <HKChartPoint>
 {
     NSArray *_timeIntervalOffsets;
     NSDate *_xValue;
-    id _userInfo;
+    id<HKGraphSeriesBlockCoordinateInfo> _userInfo;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,15 +23,16 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *timeIntervalOffsets; // @synthesize timeIntervalOffsets=_timeIntervalOffsets;
-@property (strong, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
+@property (strong, nonatomic) id<HKGraphSeriesBlockCoordinateInfo> userInfo; // @synthesize userInfo=_userInfo;
 @property (strong, nonatomic) NSDate *xValue; // @synthesize xValue=_xValue;
 
 - (void).cxx_destruct;
 - (id)allYValues;
-- (id)maxXValue;
+- (id)maxXValueAsGenericType;
 - (id)maxYValue;
-- (id)minXValue;
+- (id)minXValueAsGenericType;
 - (id)minYValue;
+- (id)xValueAsGenericType;
 - (id)yValue;
 - (id)yValueForKey:(id)arg1;
 

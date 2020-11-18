@@ -7,13 +7,15 @@
 #import <ITMLKit/IKJSEventListenerObject.h>
 
 #import <ITMLKit/IKJSXMLHTTPRequest-Protocol.h>
+#import <ITMLKit/IKNetworkRequestLoader-Protocol.h>
 #import <ITMLKit/ISStoreURLOperationDelegate-Protocol.h>
 #import <ITMLKit/NSURLSessionDataDelegate-Protocol.h>
 #import <ITMLKit/NSURLSessionTaskDelegate-Protocol.h>
 
-@class IKDOMDocument, ISURLOperation, JSManagedValue, NSData, NSDictionary, NSError, NSHTTPURLResponse, NSMutableArray, NSMutableURLRequest, NSString, NSURLConnection, NSURLSession, NSURLSessionConfiguration;
+@class IKDOMDocument, ISURLOperation, JSManagedValue, NSData, NSDictionary, NSError, NSHTTPURLResponse, NSMutableArray, NSMutableURLRequest, NSNumber, NSString, NSURL, NSURLConnection, NSURLSession, NSURLSessionConfiguration;
+@protocol IKNetworkRequestRecord;
 
-@interface IKJSXMLHTTPRequest : IKJSEventListenerObject <ISStoreURLOperationDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate, IKJSXMLHTTPRequest>
+@interface IKJSXMLHTTPRequest : IKJSEventListenerObject <ISStoreURLOperationDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate, IKNetworkRequestLoader, IKJSXMLHTTPRequest>
 {
     BOOL _shouldSquashOnReadyStateEvents;
     struct os_unfair_lock_s _onReadyStateChangeMessageQueueLock;
@@ -25,6 +27,9 @@
     unsigned int _readyState;
     unsigned int _status;
     unsigned long long timeout;
+    NSURL *_requestURL;
+    NSString *_requestId;
+    id<IKNetworkRequestRecord> _networkRequestRecord;
     NSString *_dataToSend;
     ISURLOperation *_jingleOperation;
     NSMutableArray *_onReadyStateChangeMessageQueue;
@@ -44,9 +49,11 @@
     NSError *_requestError;
     NSString *_statusText;
     NSDictionary *_performanceMetrics;
+    NSHTTPURLResponse *_cachedURLResponse;
     JSManagedValue *_managedSelf;
 }
 
+@property (strong) NSHTTPURLResponse *cachedURLResponse; // @synthesize cachedURLResponse=_cachedURLResponse;
 @property (copy, nonatomic) NSString *dataToSend; // @synthesize dataToSend=_dataToSend;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -55,6 +62,10 @@
 @property (nonatomic) BOOL jingleRequest; // @synthesize jingleRequest=_jingleRequest;
 @property (strong, nonatomic) JSManagedValue *managedSelf; // @synthesize managedSelf=_managedSelf;
 @property (readonly) NSDictionary *metrics;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentage;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSessionDuration;
+@property (readonly, nonatomic) id<IKNetworkRequestRecord> networkRequestRecord; // @synthesize networkRequestRecord=_networkRequestRecord;
 @property (strong, nonatomic) NSMutableArray *onReadyStateChangeMessageQueue; // @synthesize onReadyStateChangeMessageQueue=_onReadyStateChangeMessageQueue;
 @property (strong, nonatomic) NSString *password; // @synthesize password=_password;
 @property (strong) NSDictionary *performanceMetrics; // @synthesize performanceMetrics=_performanceMetrics;
@@ -64,10 +75,12 @@
 @property (strong) NSData *receivedData; // @synthesize receivedData=_receivedData;
 @property (readonly, nonatomic) long long reprimingResponseStatus; // @synthesize reprimingResponseStatus=_reprimingResponseStatus;
 @property (strong, nonatomic) NSError *requestError; // @synthesize requestError=_requestError;
+@property (strong, nonatomic) NSString *requestId; // @synthesize requestId=_requestId;
 @property (nonatomic) long long requestReadyState; // @synthesize requestReadyState=_requestReadyState;
 @property (nonatomic) long long requestResponseType; // @synthesize requestResponseType=_requestResponseType;
 @property (nonatomic) unsigned int requestStatusCode; // @synthesize requestStatusCode=_requestStatusCode;
 @property (strong, nonatomic) NSString *requestStatusText; // @synthesize requestStatusText=_requestStatusText;
+@property (strong, nonatomic) NSURL *requestURL; // @synthesize requestURL=_requestURL;
 @property (readonly) id response;
 @property (readonly) NSString *responseText;
 @property (strong) NSString *responseType;
@@ -98,7 +111,7 @@
 - (void)_loadingDidFailWithError:(id)arg1;
 - (void)_loadingDidFinish;
 - (void)_loadingDidReceiveData:(id)arg1;
-- (void)_loadingDidReceiveResponse:(id)arg1;
+- (void)_loadingDidReceiveResponse:(id)arg1 timingData:(id)arg2;
 - (id)_loadingWillSendRequest:(id)arg1 redirectResponse:(id)arg2;
 - (void)_openWithMethod:(id)arg1 url:(id)arg2 async:(BOOL)arg3 user:(id)arg4 password:(id)arg5;
 - (void)_operationFinished:(id)arg1;
@@ -125,6 +138,7 @@
 - (void)operation:(id)arg1 willSendRequest:(id)arg2;
 - (id)responseArrayBuffer;
 - (id)responseBlob;
+- (id)responseJSON;
 - (void)send:(id)arg1;
 - (void)setRequestHeader:(id)arg1:(id)arg2;
 

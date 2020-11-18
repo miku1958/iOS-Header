@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAddress, GEOPlace, GEOPlaceSearchRequest, NSMutableArray, NSString;
+@class GEOAddress, GEOPlace, GEOPlaceSearchRequest, NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPlaceResult : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     unsigned long long _flyoverTourMuid;
     NSMutableArray *_additionalPlaces;
     int _cacheControl;
@@ -55,6 +56,7 @@
 @property (strong, nonatomic) GEOAddress *tokenEntity; // @synthesize tokenEntity=_tokenEntity;
 @property (nonatomic) unsigned int travelDistance; // @synthesize travelDistance=_travelDistance;
 @property (nonatomic) unsigned int travelTime; // @synthesize travelTime=_travelTime;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) NSMutableArray *unmatchedStrings; // @synthesize unmatchedStrings=_unmatchedStrings;
 
 + (Class)additionalPlaceType;
@@ -62,6 +64,7 @@
 + (Class)matchedTokenType;
 + (Class)namedFeatureType;
 + (Class)unmatchedStringType;
+- (void).cxx_destruct;
 - (int)StringAsCacheControl:(id)arg1;
 - (void)addAdditionalPlace:(id)arg1;
 - (void)addDisambiguationLabel:(id)arg1;
@@ -78,7 +81,6 @@
 - (void)clearUnmatchedStrings;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)disambiguationLabelAtIndex:(unsigned long long)arg1;

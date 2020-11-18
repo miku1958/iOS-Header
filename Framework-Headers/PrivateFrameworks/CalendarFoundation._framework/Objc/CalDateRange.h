@@ -26,12 +26,18 @@
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly) Class superclass;
 
++ (BOOL)range:(id)arg1 intersectsRange:(id)arg2;
++ (BOOL)range:(id)arg1 intersectsRange:(id)arg2 allowSinglePointIntersection:(BOOL)arg3;
++ (BOOL)range:(id)arg1 intersectsRangeWithStartDate:(id)arg2 endDate:(id)arg3;
++ (BOOL)range:(id)arg1 intersectsRangeWithStartDate:(id)arg2 endDate:(id)arg3 allowSinglePointIntersection:(BOOL)arg4;
 + (id)rangeByExpandingRange:(id)arg1 direction:(long long)arg2 components:(id)arg3 calendar:(id)arg4;
 + (id)rangeByExpandingRange:(id)arg1 direction:(long long)arg2 duration:(double)arg3;
 + (id)rangeByExpandingRange:(id)arg1 direction:(long long)arg2 multiplier:(unsigned long long)arg3;
 + (id)rangeWithRange:(id)arg1;
 + (id)rangeWithStartDate:(id)arg1 duration:(double)arg2;
 + (id)rangeWithStartDate:(id)arg1 endDate:(id)arg2;
++ (BOOL)rangesIntersectWithStartDate1:(id)arg1 endDate1:(id)arg2 startDate2:(id)arg3 endDate2:(id)arg4;
++ (BOOL)rangesIntersectWithStartDate1:(id)arg1 endDate1:(id)arg2 startDate2:(id)arg3 endDate2:(id)arg4 allowSinglePointIntersection:(BOOL)arg5;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_calculateMidnightsInCalendar:(id)arg1;
@@ -46,6 +52,7 @@
 - (id)intersectionWithRange:(id)arg1;
 - (BOOL)intersectsRange:(id)arg1;
 - (BOOL)intersectsRange:(id)arg1 allowSinglePointIntersection:(BOOL)arg2;
+- (BOOL)intersectsRangeWithStartDate:(id)arg1 endDate:(id)arg2;
 - (BOOL)intersectsRangeWithStartDate:(id)arg1 endDate:(id)arg2 allowSinglePointIntersection:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValid;

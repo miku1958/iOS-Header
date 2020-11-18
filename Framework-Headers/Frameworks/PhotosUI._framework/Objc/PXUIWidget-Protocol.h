@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXWidget-Protocol.h>
 
-@class NSObject, PXOneUpPresentation, PXPhotosDetailsContext, PXRegionOfInterest, PXZoomAnimationCoordinator, UIFocusUpdateContext, UITraitCollection, UIViewController;
+@class NSObject, PXOneUpPresentation, PXPhotosDetailsContext, PXRegionOfInterest, PXUIViewControllerTransition, PXZoomAnimationCoordinator, UIFocusUpdateContext, UITraitCollection, UIViewController;
 @protocol UICoordinateSpace;
 
 @protocol PXUIWidget <PXWidget>
@@ -21,6 +21,7 @@
 - (void)didDismissPreviewViewController:(UIViewController *)arg1 committing:(BOOL)arg2;
 - (void)environmentDidUpdateFocusInContext:(UIFocusUpdateContext *)arg1;
 - (void)preloadWithSourceRegionOfInterest:(PXRegionOfInterest *)arg1 forContext:(PXPhotosDetailsContext *)arg2;
+- (void)prepareForInteractiveTransition:(PXUIViewControllerTransition *)arg1;
 - (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2 outSourceRect:(out struct CGRect *)arg3;
 - (PXRegionOfInterest *)regionOfInterestForContext:(PXPhotosDetailsContext *)arg1;
 - (PXZoomAnimationCoordinator *)zoomAnimationCoordinatorForContext:(PXPhotosDetailsContext *)arg1;

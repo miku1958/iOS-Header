@@ -9,7 +9,7 @@
 #import <NanoRegistry/NRMutableStateProtocol-Protocol.h>
 
 @class NSMutableSet, NSString;
-@protocol NRMutableStateParentDelegate, OS_dispatch_queue;
+@protocol NRMutableStateParentDelegate;
 
 @interface NRMutableStateBase : NSObject <NRMutableStateProtocol>
 {
@@ -21,7 +21,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<NRMutableStateParentDelegate> parentDelegate; // @synthesize parentDelegate=_parentDelegate;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 @property (readonly) Class superclass;
 
 + (id)classTypes;

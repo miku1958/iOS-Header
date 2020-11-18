@@ -6,13 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-@class NSLayoutConstraint, UIButton, UIImageView, UILabel;
+@class NSArray, NSLayoutConstraint, UIButton, UIImageView, UILabel, UIScrollView;
 @protocol PUCloudPhotoWelcomeViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PUCloudPhotoWelcomeView : UIView
 {
     NSLayoutConstraint *_goButtonWidthConstraint;
+    NSArray *_layoutConstraints;
+    UIScrollView *_scrollView;
+    UIView *_containerView;
     struct {
         BOOL goButtonTapped;
         BOOL learnMoreTapped;
@@ -41,13 +44,17 @@ __attribute__((visibility("hidden")))
 
 + (void)initialize;
 - (void).cxx_destruct;
+- (id)_constrainedFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2;
 - (id)_goButtonBackgroundImageWithColor:(id)arg1;
 - (void)_goButtonTapped:(id)arg1;
 - (void)_handleNotNowTapped:(id)arg1;
 - (void)_learnMoreTapped:(id)arg1;
+- (void)_setupConstraints;
 - (void)_setupSubviews;
+- (void)_updateFontAndStyle;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

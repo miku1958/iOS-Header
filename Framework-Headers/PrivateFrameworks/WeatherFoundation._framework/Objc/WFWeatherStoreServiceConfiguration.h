@@ -38,6 +38,7 @@
 @property (strong, nonatomic) NSURLSession *session; // @synthesize session=_session;
 
 + (id)defaultConfiguration;
++ (id)defaultConfigurationWithSourceBundleIdentifier:(id)arg1;
 + (id)generateUserAgent;
 - (void).cxx_destruct;
 - (id)airQualityRequestForLocation:(id)arg1 locale:(id)arg2 error:(id *)arg3;

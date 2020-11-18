@@ -13,6 +13,7 @@
 + (BOOL)supportsResult:(id)arg1;
 - (id)chevronImageWithColor:(id)arg1;
 - (id)setupViewWithStyle:(unsigned long long)arg1;
+- (BOOL)shouldTopAlignForAccessibilityContentSizes;
 
 @end
 

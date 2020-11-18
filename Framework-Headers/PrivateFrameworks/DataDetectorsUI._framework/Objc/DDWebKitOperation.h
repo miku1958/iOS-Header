@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) DOMNode *startNode; // @synthesize startNode=_startNode;
 @property int startOffset; // @synthesize startOffset=_startOffset;
 
+- (void).cxx_destruct;
 - (void)_applyContainerRestrictionsToTypes;
 - (BOOL)_containerReadyForDetection;
 - (struct __DDScanQuery *)_createScanQueryForBackend;
@@ -30,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateGenerationNumber;
 - (void)cleanup;
 - (BOOL)containerIsReady;
-- (void)dealloc;
 - (void)dispatchContainerModificationBlock:(CDUnknownBlockType)arg1;
 - (BOOL)doURLificationOnDocument;
 - (BOOL)needsToStartOver;

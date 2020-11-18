@@ -22,10 +22,10 @@
 @property (strong, nonatomic) GEOPlaceResult *placeResult; // @synthesize placeResult=_placeResult;
 @property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
 
+- (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

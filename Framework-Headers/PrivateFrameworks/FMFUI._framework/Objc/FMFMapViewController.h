@@ -6,16 +6,16 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <FMFUI/FMF3HiddenMapTrackingHandlerDelegate-Protocol.h>
 #import <FMFUI/FMFMapOptionsViewControllerDelegate-Protocol.h>
 #import <FMFUI/FMFMapViewDelegateInternalDelegate-Protocol.h>
 #import <FMFUI/FMFNoLocationViewDelegate-Protocol.h>
 #import <FMFUI/FMFSessionDelegateInternal-Protocol.h>
+#import <FMFUI/MKUserTrackingView-Protocol.h>
 
-@class FMF3HiddenMapTrackingHandler, FMFMapOptionsViewController, FMFMapViewDelegateInternal, FMFNoLocationView, FMFRefreshBarButtonItem, FMFSession, FMFTitleView, MKMapView, MKUserTrackingBarButtonItem, NSSet, NSString, UIBarButtonItem, UIColor, UIImageView, UIToolbar, UIView;
+@class FMFMapOptionsViewController, FMFMapViewDelegateInternal, FMFNoLocationView, FMFRefreshBarButtonItem, FMFSession, FMFTitleView, MKMapView, NSSet, NSString, UIBarButtonItem, UIColor, UIImageView, UIToolbar, UIView, _MKUserTrackingButton;
 @protocol FMFMapViewControllerDelegate;
 
-@interface FMFMapViewController : UIViewController <FMFSessionDelegateInternal, FMFMapViewDelegateInternalDelegate, FMF3HiddenMapTrackingHandlerDelegate, FMFNoLocationViewDelegate, FMFMapOptionsViewControllerDelegate>
+@interface FMFMapViewController : UIViewController <FMFSessionDelegateInternal, FMFMapViewDelegateInternalDelegate, MKUserTrackingView, FMFNoLocationViewDelegate, FMFMapOptionsViewControllerDelegate>
 {
     BOOL _shouldZoomToFitNewLocations;
     BOOL _shouldZoomToFitMeAndLocations;
@@ -28,6 +28,7 @@
     BOOL __isRenderingInitialMap;
     BOOL _viewWillAppearCalled;
     BOOL _alwaysShowAccuracy;
+    BOOL _wasToolbarPreviouslyHidden;
     BOOL _mapTypeLoaded;
     id<FMFMapViewControllerDelegate> _delegate;
     MKMapView *_mapView;
@@ -41,15 +42,16 @@
     FMFTitleView *_titleView;
     void *_addressBook;
     UIToolbar *_toolbar;
-    MKUserTrackingBarButtonItem *_userLocationButton;
+    UIBarButtonItem *_userTrackingButtonItem;
     UIBarButtonItem *_directionsBarButtonItem;
     UIBarButtonItem *_infoBarButtonItem;
-    FMF3HiddenMapTrackingHandler *_hiddenMap;
     UIToolbar *_floatingLocationToolbar;
     UIView *_floatingToolbarView;
     FMFRefreshBarButtonItem *_refreshButton;
     UIImageView *_cachedMapView;
     unsigned long long _defaultMapType;
+    _MKUserTrackingButton *_userTrackingButton;
+    long long _currentTrackingMode;
     struct UIEdgeInsets _edgeInsets;
 }
 
@@ -63,6 +65,7 @@
 @property (copy, nonatomic) UIColor *annotationTintColor; // @synthesize annotationTintColor=_annotationTintColor;
 @property (strong, nonatomic) UIImageView *cachedMapView; // @synthesize cachedMapView=_cachedMapView;
 @property (nonatomic) BOOL canShowNoLocation; // @synthesize canShowNoLocation=_canShowNoLocation;
+@property (nonatomic) long long currentTrackingMode; // @synthesize currentTrackingMode=_currentTrackingMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned long long defaultMapType; // @synthesize defaultMapType=_defaultMapType;
 @property (weak, nonatomic) id<FMFMapViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -74,7 +77,6 @@
 @property (strong, nonatomic) FMFSession *fmfSession; // @synthesize fmfSession=_fmfSession;
 @property (copy, nonatomic) NSSet *handlesShowingLocations;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) FMF3HiddenMapTrackingHandler *hiddenMap; // @synthesize hiddenMap=_hiddenMap;
 @property (strong, nonatomic) UIBarButtonItem *infoBarButtonItem; // @synthesize infoBarButtonItem=_infoBarButtonItem;
 @property (nonatomic) BOOL isMapCenteringDisabled; // @synthesize isMapCenteringDisabled=_isMapCenteringDisabled;
 @property (nonatomic) BOOL isSimpleMap; // @synthesize isSimpleMap=_isSimpleMap;
@@ -90,15 +92,19 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) FMFTitleView *titleView; // @synthesize titleView=_titleView;
 @property (strong, nonatomic) UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
-@property (strong, nonatomic) MKUserTrackingBarButtonItem *userLocationButton; // @synthesize userLocationButton=_userLocationButton;
+@property (strong, nonatomic) _MKUserTrackingButton *userTrackingButton; // @synthesize userTrackingButton=_userTrackingButton;
+@property (strong, nonatomic) UIBarButtonItem *userTrackingButtonItem; // @synthesize userTrackingButtonItem=_userTrackingButtonItem;
 @property (nonatomic) BOOL viewWillAppearCalled; // @synthesize viewWillAppearCalled=_viewWillAppearCalled;
+@property (nonatomic) BOOL wasToolbarPreviouslyHidden; // @synthesize wasToolbarPreviouslyHidden=_wasToolbarPreviouslyHidden;
 
 + (struct CGSize)annotationImageSize;
++ (BOOL)hasUserLocation;
 - (void).cxx_destruct;
 - (void)_authorizeMonitoringLocation;
 - (void)_dismiss:(id)arg1;
 - (id)_internalAnnotationTintColor;
 - (id)_selectedHandleAnnotation;
+- (void)_setUserTrackingMode:(long long)arg1 animated:(BOOL)arg2 fromTrackingButton:(BOOL)arg3;
 - (void)_updateDirectionsButtonEnabled;
 - (void)_updateLocationButtonEnabled;
 - (void)_updateTitleViewLocation:(id)arg1;
@@ -107,6 +113,7 @@
 - (id)annotationImageForAnnotation:(id)arg1 andHandle:(id)arg2;
 - (id)annotationImageForHandle:(id)arg1;
 - (void)applicationDidBecomeActive:(id)arg1;
+- (BOOL)canRotateForHeading;
 - (BOOL)canSelectAnnotation:(id)arg1;
 - (void)dealloc;
 - (void)deselectAllAnnotations;
@@ -121,7 +128,7 @@
 - (void)didUpdateUserLocation:(id)arg1;
 - (void)enablePreloadedHandles;
 - (void)getDirections;
-- (void)hiddenMapTrackerDidUpdateMapToTrackingType:(long long)arg1;
+- (BOOL)hasUserLocation;
 - (void)hideCachedMap;
 - (void)infoButtonTapped:(id)arg1;
 - (id)init;
@@ -129,6 +136,7 @@
 - (id)initWithDelegate:(id)arg1 handles:(id)arg2;
 - (void)initializeDefaults;
 - (BOOL)isCompact;
+- (BOOL)isCurrentlyRotated;
 - (BOOL)isLocationAlreadyOnMap:(id)arg1;
 - (void)loadCachedLocationsForHandles;
 - (void)loadDelegate;
@@ -152,6 +160,7 @@
 - (void)selectAnnotationIfSingleForMac;
 - (void)selectAnnotationIfSingleFriend:(id)arg1;
 - (BOOL)sessionContainsHandle:(id)arg1;
+- (void)setupToolbarItems;
 - (BOOL)singleAnnotationOnMap;
 - (void)startShowingLocationsForHandles:(id)arg1;
 - (void)stopRefreshingLocations;
@@ -161,6 +170,8 @@
 - (void)updateMapWithNewLocation:(id)arg1 animated:(BOOL)arg2;
 - (void)updateNoLocationView:(BOOL)arg1;
 - (void)updateRefreshForLocation:(id)arg1;
+- (void)updateUserTrackingButtonState;
+- (long long)userTrackingMode;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

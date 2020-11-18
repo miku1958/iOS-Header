@@ -10,14 +10,14 @@
 
 @interface AWDHomeKitCameraStreamMessaging : PBCodable <NSCopying>
 {
-    unsigned long long _receivedConnSetup;
-    unsigned long long _receivedNegotiationRequest;
-    unsigned long long _receivedStartRequest;
-    unsigned long long _sentConnSetup;
-    unsigned long long _sentNegotiationRequest;
-    unsigned long long _sentNegotiationResponse;
-    unsigned long long _sentStartRequest;
-    unsigned long long _sentStartResponse;
+    unsigned int _receivedConnSetup;
+    unsigned int _receivedNegotiationRequest;
+    unsigned int _receivedStartRequest;
+    unsigned int _sentConnSetup;
+    unsigned int _sentNegotiationRequest;
+    unsigned int _sentNegotiationResponse;
+    unsigned int _sentStartRequest;
+    unsigned int _sentStartResponse;
     struct {
         unsigned int receivedConnSetup:1;
         unsigned int receivedNegotiationRequest:1;
@@ -38,14 +38,14 @@
 @property (nonatomic) BOOL hasSentNegotiationResponse;
 @property (nonatomic) BOOL hasSentStartRequest;
 @property (nonatomic) BOOL hasSentStartResponse;
-@property (nonatomic) unsigned long long receivedConnSetup; // @synthesize receivedConnSetup=_receivedConnSetup;
-@property (nonatomic) unsigned long long receivedNegotiationRequest; // @synthesize receivedNegotiationRequest=_receivedNegotiationRequest;
-@property (nonatomic) unsigned long long receivedStartRequest; // @synthesize receivedStartRequest=_receivedStartRequest;
-@property (nonatomic) unsigned long long sentConnSetup; // @synthesize sentConnSetup=_sentConnSetup;
-@property (nonatomic) unsigned long long sentNegotiationRequest; // @synthesize sentNegotiationRequest=_sentNegotiationRequest;
-@property (nonatomic) unsigned long long sentNegotiationResponse; // @synthesize sentNegotiationResponse=_sentNegotiationResponse;
-@property (nonatomic) unsigned long long sentStartRequest; // @synthesize sentStartRequest=_sentStartRequest;
-@property (nonatomic) unsigned long long sentStartResponse; // @synthesize sentStartResponse=_sentStartResponse;
+@property (nonatomic) unsigned int receivedConnSetup; // @synthesize receivedConnSetup=_receivedConnSetup;
+@property (nonatomic) unsigned int receivedNegotiationRequest; // @synthesize receivedNegotiationRequest=_receivedNegotiationRequest;
+@property (nonatomic) unsigned int receivedStartRequest; // @synthesize receivedStartRequest=_receivedStartRequest;
+@property (nonatomic) unsigned int sentConnSetup; // @synthesize sentConnSetup=_sentConnSetup;
+@property (nonatomic) unsigned int sentNegotiationRequest; // @synthesize sentNegotiationRequest=_sentNegotiationRequest;
+@property (nonatomic) unsigned int sentNegotiationResponse; // @synthesize sentNegotiationResponse=_sentNegotiationResponse;
+@property (nonatomic) unsigned int sentStartRequest; // @synthesize sentStartRequest=_sentStartRequest;
+@property (nonatomic) unsigned int sentStartResponse; // @synthesize sentStartResponse=_sentStartResponse;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

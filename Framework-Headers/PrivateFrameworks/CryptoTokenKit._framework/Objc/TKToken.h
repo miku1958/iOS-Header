@@ -21,6 +21,7 @@
 @property (strong) TKTokenKeychainContents *keychainContents; // @synthesize keychainContents=_keychainContents;
 @property (readonly) TKTokenDriver *tokenDriver; // @synthesize tokenDriver=_tokenDriver;
 @property (readonly) NSString *tokenID; // @synthesize tokenID=_tokenID;
+@property (readonly) BOOL valid;
 
 + (id)encodedObjectID:(id)arg1;
 - (void).cxx_destruct;

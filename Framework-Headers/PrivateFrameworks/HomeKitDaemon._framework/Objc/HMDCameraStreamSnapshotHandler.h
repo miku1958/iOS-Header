@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDCameraGetSnapshotProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDCameraStreamSnapshotCaptureDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class NSMapTable, NSMutableDictionary, NSMutableSet, NSString;
+@class NSMapTable, NSMutableDictionary, NSMutableSet, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDCameraStreamSnapshotHandler : NSObject <HMFLogging, HMDCameraStreamSnapshotCaptureDelegate, HMDCameraGetSnapshotProtocol>
+@interface HMDCameraStreamSnapshotHandler : HMFObject <HMFLogging, HMDCameraStreamSnapshotCaptureDelegate, HMDCameraGetSnapshotProtocol>
 {
     BOOL _streamAvailable;
     BOOL _streamSetupInProgress;

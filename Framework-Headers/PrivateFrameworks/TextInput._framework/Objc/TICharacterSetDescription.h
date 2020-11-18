@@ -38,6 +38,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)invertedSetDescription;
 - (BOOL)isEqual:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)newCharacterSetFromDescription;
 
 @end

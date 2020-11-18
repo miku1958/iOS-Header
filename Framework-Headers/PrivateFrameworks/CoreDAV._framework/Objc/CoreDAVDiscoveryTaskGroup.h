@@ -28,7 +28,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<CoreDAVDiscoveryTaskGroupDelegate> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<CoreDAVDiscoveryTaskGroupDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didReceiveAuthenticationError; // @synthesize didReceiveAuthenticationError=_didReceiveAuthenticationError;
 @property (strong, nonatomic) id<CoreDAVAccountInfoProvider> discoveredAccountInfo; // @synthesize discoveredAccountInfo=_discoveredAccountInfo;
@@ -38,6 +38,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *wellKnownPath; // @synthesize wellKnownPath=_wellKnownPath;
 
+- (void).cxx_destruct;
 - (void)addToDiscoveryArray:(id *)arg1 discovery:(id)arg2;
 - (id)allDiscoveryPaths:(id)arg1;
 - (id)allDiscoveryPorts:(id)arg1 withScheme:(id)arg2;
@@ -45,7 +46,6 @@
 - (id)cleanedStringsFromResponseHeaders:(id)arg1 forHeader:(id)arg2;
 - (void)completeDiscovery:(id)arg1 error:(id)arg2;
 - (void)completeOptionsTask:(id)arg1 error:(id)arg2;
-- (void)dealloc;
 - (id)extractPrincipalURLFromPropFindTask:(id)arg1 error:(id *)arg2;
 - (void)getDiscoveryStatus:(id)arg1 priorFailed:(id *)arg2 subsequentFailed:(id *)arg3 priorIncomplete:(id *)arg4 subsequentIncomplete:(id *)arg5 priorSuccess:(id *)arg6 subsequentSuccess:(id *)arg7;
 - (id)initWithAccountInfoProvider:(id)arg1 taskManager:(id)arg2;

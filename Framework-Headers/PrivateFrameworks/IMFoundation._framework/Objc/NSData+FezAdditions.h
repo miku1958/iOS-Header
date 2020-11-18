@@ -9,6 +9,8 @@
 @interface NSData (FezAdditions)
 + (id)__imDataWithHexString:(id)arg1;
 + (id)__imDataWithRandomBytes:(unsigned long long)arg1;
+- (id)_FTDecompressData;
+- (id)_FTOptionallyDecompressData;
 - (id)__imHexString;
 - (id)__imHexStringOfBytes:(char *)arg1 withLength:(unsigned long long)arg2;
 @end

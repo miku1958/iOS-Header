@@ -49,6 +49,7 @@
 - (void)_hideSecondColumn:(id)arg1;
 - (id)_hideSecondColumnBarButtonItem;
 - (id)_liveVCs;
+- (void)_marginInfoForChild:(id)arg1 leftMargin:(double *)arg2 rightMargin:(double *)arg3;
 - (void)_moveViewControllersForColumnCount:(unsigned long long)arg1;
 - (id)_navigationBarForDragAffordance;
 - (void)_navigationControllerChangedViewControllers:(id)arg1;

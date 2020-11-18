@@ -16,6 +16,8 @@
 }
 
 @property (readonly) struct Object *_apiObject;
+@property (nonatomic) unsigned long long allowedAutoplayQuirks;
+@property (nonatomic) long long autoplayPolicy;
 @property (nonatomic) BOOL contentBlockersEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

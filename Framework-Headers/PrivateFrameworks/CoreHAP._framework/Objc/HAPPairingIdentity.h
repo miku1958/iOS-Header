@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
+#import <CoreHAP/NSCopying-Protocol.h>
 #import <CoreHAP/NSSecureCoding-Protocol.h>
 
 @class HAPPairingKey, NSString;
 
-@interface HAPPairingIdentity : NSObject <NSSecureCoding>
+@interface HAPPairingIdentity : HMFObject <NSSecureCoding, NSCopying>
 {
     NSString *_identifier;
     HAPPairingKey *_publicKey;
@@ -23,11 +24,14 @@
 @property (readonly, nonatomic) HAPPairingKey *privateKey; // @synthesize privateKey=_privateKey;
 @property (readonly, nonatomic) HAPPairingKey *publicKey; // @synthesize publicKey=_publicKey;
 
++ (id)pairingIdentityWithDictionary:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (id)description;
 - (id)descriptionWithPointer:(BOOL)arg1;
+- (id)dictionaryEncoding;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
@@ -35,6 +39,7 @@
 - (id)initWithIdentifier:(id)arg1 publicKey:(id)arg2 privateKey:(id)arg3 permissions:(unsigned long long)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (id)shortDescription;
+- (void)updateWithDictionary:(id)arg1;
 
 @end
 

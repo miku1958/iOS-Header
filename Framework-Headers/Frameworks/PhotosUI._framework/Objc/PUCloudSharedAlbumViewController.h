@@ -49,6 +49,7 @@
 - (void).cxx_destruct;
 - (BOOL)_appAllowsSupressionOfAlerts;
 - (BOOL)_canDisplayOptions;
+- (void)_collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;
 - (void)_dismissOptionsPopoverAnimated:(BOOL)arg1;
 - (void)_handleSwitcherSegmentedControl:(id)arg1;
 - (id)_newOptionsViewController;
@@ -61,11 +62,11 @@
 - (void)albumStreamingOptionsViewController:(id)arg1 didCompleteWithReason:(int)arg2;
 - (BOOL)canAddToOtherAlbumContent;
 - (BOOL)canDeleteContent;
-- (void)configureGlobalFooterView:(id)arg1;
 - (void)controller:(id)arg1 didCancelTrimmingVideoSources:(id)arg2;
 - (void)controller:(id)arg1 didFinishTrimmingVideoSources:(id)arg2;
 - (void)didSelectAddPlaceholderInSection:(long long)arg1;
 - (void)getTitle:(out id *)arg1 prompt:(out id *)arg2 shouldHideBackButton:(out BOOL *)arg3 leftBarButtonItems:(out id *)arg4 rightBarButtonItems:(out id *)arg5;
+- (id)globalFooterSubtitle;
 - (void)handleAddToAlbum:(id)arg1 pickedAssets:(id)arg2;
 - (id)newToolbarItems;
 - (void)photoStreamComposeService:(id)arg1 didPostComment:(id)arg2;

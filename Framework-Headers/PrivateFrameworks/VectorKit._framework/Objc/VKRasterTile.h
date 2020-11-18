@@ -31,14 +31,14 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (shared_ptr_8bee8aae)buildTextureDataFromCGImage:(struct CGImage *)arg1;
 - (void)dealloc;
-- (void)gglBuildTexture:(Device_f0710f89 *)arg1;
-- (void)immediateLoad:(Device_f0710f89 *)arg1;
+- (void)gglBuildTexture:(Device_9226c869 *)arg1;
+- (void)immediateLoad:(Device_9226c869 *)arg1;
 - (id)initWithKey:(const struct VKTileKey *)arg1 imageData:(id)arg2 styleManager:(shared_ptr_a3c46825)arg3;
 - (id)initWithKey:(const struct VKTileKey *)arg1 imageData:(id)arg2 styleManager:(shared_ptr_a3c46825)arg3 genericTileType:(int)arg4;
 - (struct CGImage *)newCGImageFromData:(id)arg1;
-- (void)setupClutShaderWithRenderState:(struct RenderState *)arg1 pipelineState:(const shared_ptr_ec7954e2 *)arg2 mesh:(struct Mesh *)arg3 clutTexture:(struct Texture2D *)arg4 clutBlend:(float)arg5;
-- (void)setupNormalShaderWithRenderState:(struct RenderState *)arg1 pipelineState:(const shared_ptr_8d835d6a *)arg2 mesh:(struct Mesh *)arg3;
-- (void)setupReverseAlphaShaderWithRenderState:(struct RenderState *)arg1 pipelineState:(const shared_ptr_0854a852 *)arg2 mesh:(struct Mesh *)arg3 roadAlpha:(float)arg4;
+- (void)setupClutShaderWithRenderState:(struct RenderState *)arg1 pipelineState:(const shared_ptr_caa7afd8 *)arg2 mesh:(struct Mesh *)arg3 clutTexture:(struct Texture2D *)arg4 clutBlend:(float)arg5;
+- (void)setupNormalShaderWithRenderState:(struct RenderState *)arg1 pipelineState:(const shared_ptr_74b38e53 *)arg2 mesh:(struct Mesh *)arg3;
+- (void)setupReverseAlphaShaderWithRenderState:(struct RenderState *)arg1 pipelineState:(const shared_ptr_726d1291 *)arg2 mesh:(struct Mesh *)arg3 roadAlpha:(float)arg4;
 
 @end
 

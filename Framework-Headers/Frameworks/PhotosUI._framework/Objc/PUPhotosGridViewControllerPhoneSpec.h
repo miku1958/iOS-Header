@@ -17,11 +17,10 @@
 - (BOOL)canDisplaySearchActionInNavigationBar;
 - (BOOL)canDisplaySlideshowButton;
 - (long long)cellFillMode;
-- (void)configureCollectionViewGridLayout:(id)arg1 forWidth:(double)arg2;
+- (void)configureCollectionViewGridLayout:(id)arg1 forWidth:(double)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
 - (long long)forceLoadInitialSectionCount;
-- (double)globalFooterHeight;
+- (struct UIEdgeInsets)gridContentInsets;
 - (id)photosPickerViewControllerSpec;
-- (double)sectionHeaderHeight;
 - (BOOL)shouldPlaceSelectAllButtonInRightNavigationBar;
 - (unsigned long long)supportedInterfaceOrientations;
 - (int)thumbnailImageFormat;

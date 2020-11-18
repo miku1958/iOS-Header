@@ -14,9 +14,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityMoveToActiveControl;
+- (void)_controlDidDismiss;
 - (id)accessibilityControlServiceName;
 - (void)containerView:(id)arg1 didSelectControlType:(unsigned long long)arg2;
-- (void)finishPresentation:(id)arg1 animated:(BOOL)arg2;
 - (void)hideAuxiliaryViewForInteractionCoordinator:(id)arg1;
 - (void)interactionCoordinator:(id)arg1 showAuxiliaryView:(id)arg2;
 - (void)presentControlAnimatedFromSourceRect:(struct CGRect)arg1;

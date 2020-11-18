@@ -14,6 +14,8 @@
 + (id)imageAtPath:(id)arg1;
 + (id)imageNamed:(id)arg1;
 + (id)imageNamed:(id)arg1 inBundle:(id)arg2;
++ (id)imageNamed:(id)arg1 inBundle:(id)arg2 compatibleWithTraitCollection:(id)arg3;
++ (id)imageWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 orientation:(long long)arg3;
 + (id)imageWithContentsOfFile:(id)arg1;
 + (id)kitImageNamed:(id)arg1;
 + (Class)safeCategoryBaseClass;

@@ -16,9 +16,11 @@
 @property (strong, nonatomic) UIView *innerContentView; // @synthesize innerContentView=_innerContentView;
 
 - (void).cxx_destruct;
+- (id)initWithInnerContentView:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 
 @end
 

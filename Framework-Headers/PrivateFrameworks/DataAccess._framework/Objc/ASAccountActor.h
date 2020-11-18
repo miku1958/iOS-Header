@@ -65,6 +65,7 @@
 - (int)supportsEmailFlagging;
 - (int)supportsMailboxSearch;
 - (int)supportsSmartForwardReply;
+- (int)supportsUniqueServerId;
 - (id)unactionableICSRepresentationForMetaData:(id)arg1 inFolderWithId:(id)arg2 outSummary:(id *)arg3;
 
 @end

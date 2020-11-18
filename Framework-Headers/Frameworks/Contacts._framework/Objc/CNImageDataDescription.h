@@ -21,6 +21,7 @@
 
 - (void *)ABValueForABPerson:(void *)arg1;
 - (id)CNValueForContact:(id)arg1;
+- (BOOL)abPropertyID:(int *)arg1;
 - (void)decodeUsingCoder:(id)arg1 contact:(id)arg2;
 - (void)encodeUsingCoder:(id)arg1 contact:(id)arg2;
 - (id)init;

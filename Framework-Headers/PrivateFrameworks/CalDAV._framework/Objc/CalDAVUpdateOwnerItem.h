@@ -16,6 +16,7 @@
     NSString *_lastName;
     NSURL *_address;
     NSString *_emailAddress;
+    NSString *_phoneNumber;
 }
 
 @property (strong, nonatomic) NSURL *address; // @synthesize address=_address;
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 @property (strong, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
 @property (strong, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
+@property (strong, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 
 - (void).cxx_destruct;
 - (id)copyParseRules;
@@ -34,6 +36,7 @@
 - (void)setEmailAddressItem:(id)arg1;
 - (void)setFirstNameItem:(id)arg1;
 - (void)setLastNameItem:(id)arg1;
+- (void)setPhoneNumberItem:(id)arg1;
 
 @end
 

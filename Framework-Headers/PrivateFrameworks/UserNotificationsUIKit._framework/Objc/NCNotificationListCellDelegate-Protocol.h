@@ -6,17 +6,16 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NCNotificationAction, NCNotificationListCell, NCNotificationRequest, UIView;
+@class NCNotificationListCell, UITouch;
 
 @protocol NCNotificationListCellDelegate <NSObject>
-- (UIView *)customBackgroundViewForNotificationListCell:(NCNotificationListCell *)arg1;
-- (void)notificationListCell:(NCNotificationListCell *)arg1 requestsClearingNotificationRequest:(NCNotificationRequest *)arg2;
-- (void)notificationListCell:(NCNotificationListCell *)arg1 requestsPerformAction:(NCNotificationAction *)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 completion:(void (^)(BOOL))arg4;
-- (void)notificationListCell:(NCNotificationListCell *)arg1 requestsPresentingLongLookForNotificationRequest:(NCNotificationRequest *)arg2 completion:(void (^)(BOOL))arg3;
+- (BOOL)notificationListCell:(NCNotificationListCell *)arg1 shouldPanHorizontallyWithTouch:(UITouch *)arg2;
+- (void)notificationListCellDidHideCellActions:(NCNotificationListCell *)arg1 resetCellScrollPosition:(BOOL)arg2 animated:(BOOL)arg3;
+- (void)notificationListCellDidRevealCellActions:(NCNotificationListCell *)arg1;
 - (void)notificationListCellDidSignificantUserInteraction:(NCNotificationListCell *)arg1;
-- (void)notificationListCellHideCellActions:(NCNotificationListCell *)arg1 resetCellScrollPosition:(BOOL)arg2 animated:(BOOL)arg3;
-- (void)notificationListCellRevealCellActions:(NCNotificationListCell *)arg1;
-- (BOOL)notificationListCellShouldShowActionsForNotificationRequest:(NCNotificationRequest *)arg1;
+- (void)notificationListCellRequestsDefaultAction:(NCNotificationListCell *)arg1 completion:(void (^)(BOOL))arg2;
+- (void)notificationListCellRequestsDismissAction:(NCNotificationListCell *)arg1 completion:(void (^)(BOOL))arg2;
+- (void)notificationListCellRequestsPresentingLongLook:(NCNotificationListCell *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)willTearDownNotificationListCell:(NCNotificationListCell *)arg1;
 @end
 

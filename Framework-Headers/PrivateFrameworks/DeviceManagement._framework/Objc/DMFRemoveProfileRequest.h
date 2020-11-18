@@ -10,10 +10,12 @@
 
 @interface DMFRemoveProfileRequest : CATTaskRequest
 {
+    unsigned long long _type;
     NSString *_profileIdentifier;
 }
 
 @property (copy, nonatomic) NSString *profileIdentifier; // @synthesize profileIdentifier=_profileIdentifier;
+@property (nonatomic) unsigned long long type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

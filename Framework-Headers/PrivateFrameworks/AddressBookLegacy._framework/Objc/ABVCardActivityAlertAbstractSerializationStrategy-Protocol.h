@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AddressBook/NSObject-Protocol.h>
+#import <AddressBookLegacy/NSObject-Protocol.h>
 
 @class NSString;
 

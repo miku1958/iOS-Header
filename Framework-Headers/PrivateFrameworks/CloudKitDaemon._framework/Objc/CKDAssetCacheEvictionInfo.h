@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableOrderedSet;
+@class CKDClientContext, NSMutableOrderedSet;
 
 __attribute__((visibility("hidden")))
 @interface CKDAssetCacheEvictionInfo : NSObject
@@ -14,18 +14,20 @@ __attribute__((visibility("hidden")))
     BOOL _forced;
     BOOL _evictNow;
     BOOL _clearRegisteredItems;
+    CKDClientContext *_clientContext;
     NSMutableOrderedSet *_itemIDsToUnregister;
     NSMutableOrderedSet *_assetHandleItemIDsToDelete;
 }
 
 @property (strong, nonatomic) NSMutableOrderedSet *assetHandleItemIDsToDelete; // @synthesize assetHandleItemIDsToDelete=_assetHandleItemIDsToDelete;
 @property BOOL clearRegisteredItems; // @synthesize clearRegisteredItems=_clearRegisteredItems;
+@property (strong, nonatomic) CKDClientContext *clientContext; // @synthesize clientContext=_clientContext;
 @property BOOL evictNow; // @synthesize evictNow=_evictNow;
 @property BOOL forced; // @synthesize forced=_forced;
 @property (strong, nonatomic) NSMutableOrderedSet *itemIDsToUnregister; // @synthesize itemIDsToUnregister=_itemIDsToUnregister;
 
 - (void).cxx_destruct;
-- (id)initForced:(BOOL)arg1 evictNow:(BOOL)arg2;
+- (id)initWithClientContext:(id)arg1 forced:(BOOL)arg2 evictNow:(BOOL)arg3;
 
 @end
 

@@ -8,22 +8,24 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOVersionManifest : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_serviceVersions;
 }
 
 @property (strong, nonatomic) NSMutableArray *serviceVersions; // @synthesize serviceVersions=_serviceVersions;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)serviceVersionType;
+- (void).cxx_destruct;
 - (void)addServiceVersion:(id)arg1;
 - (void)clearServiceVersions;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

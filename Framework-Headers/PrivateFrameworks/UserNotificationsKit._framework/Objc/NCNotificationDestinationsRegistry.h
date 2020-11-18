@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <UserNotificationsKit/NCDebugInfoProvider-Protocol.h>
+@class NSArray, NSMutableDictionary;
 
-@class NSArray, NSMutableDictionary, NSString;
-
-@interface NCNotificationDestinationsRegistry : NSObject <NCDebugInfoProvider>
+@interface NCNotificationDestinationsRegistry : NSObject
 {
     struct NSMutableDictionary *_destinations;
     struct NSMutableDictionary *_activeDestinations;
@@ -19,19 +17,12 @@
 
 @property (copy, nonatomic) NSMutableDictionary *activeDestinations; // @synthesize activeDestinations=_activeDestinations;
 @property (readonly, nonatomic) unsigned long long count;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSMutableDictionary *destinations; // @synthesize destinations=_destinations;
-@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSMutableDictionary *readyDestinations; // @synthesize readyDestinations=_readyDestinations;
 @property (readonly, nonatomic) NSArray *registeredDestinations;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_activeDestinationsDebugInfo;
 - (id)_destinationsForRequestDestinations:(id)arg1 inDestinationDict:(struct NSMutableDictionary *)arg2;
-- (id)_registeredDestinationsDebugInfo;
-- (id)debugInfoPlist;
 - (id)destinationIdentifiersForRequestDestinations:(id)arg1;
 - (id)destinationsForRequestDestinations:(id)arg1;
 - (BOOL)hasActiveDestinationsForRequest:(id)arg1;

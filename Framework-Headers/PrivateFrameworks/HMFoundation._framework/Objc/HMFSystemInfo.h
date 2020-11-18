@@ -4,29 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class NSString;
+@class NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMFSystemInfo : NSObject
+@interface HMFSystemInfo : HMFObject
 {
     NSString *_name;
+    NSString *_model;
+    NSString *_serialNumber;
+    NSString *_regionInfo;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     struct MGNotificationTokenStruct *_notificationToken;
 }
 
+@property (readonly, copy) NSString *model; // @synthesize model=_model;
 @property (copy) NSString *name; // @synthesize name=_name;
 @property (readonly) struct MGNotificationTokenStruct *notificationToken; // @synthesize notificationToken=_notificationToken;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property (readonly, copy) NSString *regionInfo; // @synthesize regionInfo=_regionInfo;
+@property (readonly, copy) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)systemInfo;
 - (void).cxx_destruct;
+- (void)__initialize;
 - (void)dealloc;
 - (id)init;
 - (void)notifyNameUpdated:(id)arg1;
+- (void)setModel:(id)arg1;
+- (void)setRegionInfo:(id)arg1;
+- (void)setSerialNumber:(id)arg1;
 - (void)startMonitoringSystemChanges;
 - (void)updateName;
 

@@ -18,7 +18,6 @@
 @property (readonly, nonatomic, getter=isDateAllDay) BOOL dateAllDay;
 @property (readonly, copy, nonatomic) CDUnknownBlockType defaultAction;
 @property (weak, nonatomic) id<NCNotificationStaticContentProvidingDelegate> delegate;
-@property (readonly, copy, nonatomic) NSString *hintText;
 @property (readonly, nonatomic) UIImage *icon;
 @property (readonly, nonatomic) NSArray *interfaceActions;
 @property (readonly, nonatomic) unsigned long long messageNumberOfLines;

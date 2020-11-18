@@ -17,7 +17,7 @@
 @property (nonatomic) unsigned long long displayDidRefreshCount; // @synthesize displayDidRefreshCount=_displayDidRefreshCount;
 @property (strong, nonatomic) id target; // @synthesize target=_target;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)displayDidRefresh:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithTarget:(id)arg1 actionSelector:(SEL)arg2;

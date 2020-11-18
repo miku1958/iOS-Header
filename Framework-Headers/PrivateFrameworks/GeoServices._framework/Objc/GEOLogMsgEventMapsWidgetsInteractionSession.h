@@ -50,11 +50,11 @@
 @property (strong, nonatomic) GEOMapsTransitWidget *mapsTransitWidget; // @synthesize mapsTransitWidget=_mapsTransitWidget;
 @property (nonatomic) int mapsWidgetType; // @synthesize mapsWidgetType=_mapsWidgetType;
 
+- (void).cxx_destruct;
 - (int)StringAsEndState:(id)arg1;
 - (int)StringAsMapsWidgetType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)endStateAsString:(int)arg1;

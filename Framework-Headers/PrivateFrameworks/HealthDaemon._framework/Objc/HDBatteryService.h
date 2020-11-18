@@ -6,25 +6,22 @@
 
 #import <HealthDaemon/HDHealthService.h>
 
-@class CBCharacteristic, HDHealthServicePropertyManager;
+@class CBCharacteristic;
 
 @interface HDBatteryService : HDHealthService
 {
-    HDHealthServicePropertyManager *_propertyManager;
     CBCharacteristic *_batteryCharacteristic;
 }
 
 @property (strong, nonatomic) CBCharacteristic *batteryCharacteristic; // @synthesize batteryCharacteristic=_batteryCharacteristic;
-@property (weak, nonatomic) HDHealthServicePropertyManager *propertyManager; // @synthesize propertyManager=_propertyManager;
 
 + (id)implementedProperties;
 + (long long)serviceType;
 + (id)serviceUUID;
 - (void).cxx_destruct;
 - (id)handleBatteryLevel:(id)arg1;
-- (id)initWithDevicePropertyManager:(id)arg1 healthDaemon:(id)arg2 peripheral:(id)arg3;
 - (void)peripheral:(id)arg1 didDiscoverCharacteristic:(id)arg2;
-- (void)peripheral:(id)arg1 didUpdateValueForCharacteristic:(id)arg2 error:(id)arg3;
+- (void)peripheral:(id)arg1 didUpdateValueForCharacteristic:(id)arg2 updateTime:(id)arg3 error:(id)arg4;
 - (void)readProperty:(id)arg1;
 
 @end

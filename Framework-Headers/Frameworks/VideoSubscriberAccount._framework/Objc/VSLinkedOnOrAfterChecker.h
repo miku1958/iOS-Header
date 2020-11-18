@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (unsigned int)_minimumVersionForBehavior:(long long)arg1;
 - (BOOL)shouldPerformBehavior:(long long)arg1;
 
 @end

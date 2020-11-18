@@ -10,6 +10,7 @@
 {
 }
 
+- (id)init;
 - (BOOL)isMinimized;
 - (void)setMinimized:(BOOL)arg1;
 

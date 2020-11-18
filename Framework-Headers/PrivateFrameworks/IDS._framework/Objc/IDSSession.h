@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, _IDSSession;
 
@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) NSString *sessionID;
 @property (readonly, nonatomic) int socket;
 
+- (void).cxx_destruct;
 - (unsigned long long)MTUForAddressFamily:(unsigned long long)arg1;
 - (id)_initWithAccount:(id)arg1 destinations:(id)arg2 transportType:(long long)arg3 uniqueID:(id)arg4;
 - (id)_internal;
@@ -38,6 +39,8 @@
 - (void)endSessionWithData:(id)arg1;
 - (id)initWithAccount:(id)arg1 destinations:(id)arg2 options:(id)arg3;
 - (id)initWithAccount:(id)arg1 destinations:(id)arg2 transportType:(long long)arg3;
+- (unsigned long long)initialLinkType;
+- (void)sendAllocationRequest:(id)arg1;
 - (BOOL)sendData:(id)arg1 error:(id *)arg2;
 - (void)sendInvitation;
 - (void)sendInvitationWithData:(id)arg1;

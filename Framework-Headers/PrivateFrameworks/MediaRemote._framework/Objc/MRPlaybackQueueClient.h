@@ -6,32 +6,21 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableDictionary, NSMutableSet;
+@class NSArray, NSMutableArray;
 @protocol OS_dispatch_queue;
 
 @interface MRPlaybackQueueClient : NSObject
 {
-    NSMutableDictionary *_cache;
-    NSMutableDictionary *_lookup;
-    NSMutableSet *_requests;
-    void *_context;
+    NSMutableArray *_clients;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (nonatomic) void *context;
+@property (readonly, nonatomic) NSArray *playbackQueueClients;
 
-- (void)_OnQueue_setContext:(void *)arg1;
-- (void)_invalidate;
-- (void)addPlaybackQueue:(void *)arg1 forRequest:(void *)arg2;
-- (void)addRequest:(void *)arg1;
 - (void)dealloc;
 - (id)description;
-- (id)getSubscribedContentItems:(id)arg1;
-- (id)getSubscribedContentItemsIdentifiers:(id)arg1 forRequest:(void *)arg2;
 - (id)initWithQueue:(id)arg1;
-- (void)readData:(id)arg1;
-- (void)removeRequest:(void *)arg1;
-- (id)writeData;
+- (id)playbackQueueClientForPlayerPath:(void *)arg1;
 
 @end
 

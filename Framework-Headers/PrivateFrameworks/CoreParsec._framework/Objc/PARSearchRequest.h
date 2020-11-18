@@ -8,16 +8,26 @@
 
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString, SFSearchSuggestion;
 
 @interface PARSearchRequest : PARRequest <NSSecureCoding>
 {
     NSString *_queryString;
     unsigned long long _bingWebResultsType;
     NSDictionary *_topics;
+    NSString *_l2version;
+    NSString *_l3version;
+    NSArray *_localContextualSuggestions;
+    SFSearchSuggestion *_engagedSuggestion;
+    NSArray *_completionCacheSuggestions;
 }
 
 @property (nonatomic) unsigned long long bingWebResultsType; // @synthesize bingWebResultsType=_bingWebResultsType;
+@property (strong, nonatomic) NSArray *completionCacheSuggestions; // @synthesize completionCacheSuggestions=_completionCacheSuggestions;
+@property (strong, nonatomic) SFSearchSuggestion *engagedSuggestion; // @synthesize engagedSuggestion=_engagedSuggestion;
+@property (copy, nonatomic) NSString *l2version; // @synthesize l2version=_l2version;
+@property (copy, nonatomic) NSString *l3version; // @synthesize l3version=_l3version;
+@property (copy, nonatomic) NSArray *localContextualSuggestions; // @synthesize localContextualSuggestions=_localContextualSuggestions;
 @property (copy, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
 @property (strong, nonatomic) NSDictionary *topics; // @synthesize topics=_topics;
 

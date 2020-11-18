@@ -6,20 +6,24 @@
 
 #import <PhotosUICore/PXSettings.h>
 
-@class PXViewControllerPinchTransitionSettings, PXViewControllerZoomTransitionSettings;
+@class PXViewControllerPinchTransitionSettings, PXViewControllerSwipeDownTransitionSettings, PXViewControllerZoomTransitionSettings;
 
 @interface PXViewControllerTransitionSettings : PXSettings
 {
     PXViewControllerZoomTransitionSettings *_zoomTransitionSettings;
     PXViewControllerPinchTransitionSettings *_pinchTransitionSettings;
+    PXViewControllerSwipeDownTransitionSettings *_swipeDownTransitionSettings;
 }
 
 @property (strong, nonatomic) PXViewControllerPinchTransitionSettings *pinchTransitionSettings; // @synthesize pinchTransitionSettings=_pinchTransitionSettings;
+@property (strong, nonatomic) PXViewControllerSwipeDownTransitionSettings *swipeDownTransitionSettings; // @synthesize swipeDownTransitionSettings=_swipeDownTransitionSettings;
 @property (strong, nonatomic) PXViewControllerZoomTransitionSettings *zoomTransitionSettings; // @synthesize zoomTransitionSettings=_zoomTransitionSettings;
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)parentSettings;
+- (void)setDefaultValues;
 
 @end
 

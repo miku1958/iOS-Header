@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOTransitConnectionInfo-Protocol.h>
 
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSURL *urlToOpen;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithConnection:(id)arg1 providerID:(int)arg2;
 
 @end

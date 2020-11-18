@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOMapItemStorage;
 @protocol GEOMapItem, NSObject;
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     id<NSObject> _notificationToken;
 }
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithMapItem:(id)arg1 mapItemStorage:(id)arg2;
 

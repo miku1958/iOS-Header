@@ -6,50 +6,75 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSExtension, NSString, UIImage, UIViewController;
+#import <UIKit/UIActivityExtensionItemDataProviding-Protocol.h>
+#import <UIKit/UIActivityExtensionItemDataReceiving-Protocol.h>
 
-@interface UIActivity : NSObject
+@class NSExtension, NSString, NSUUID, UIImage, UIViewController;
+
+@interface UIActivity : NSObject <UIActivityExtensionItemDataProviding, UIActivityExtensionItemDataReceiving>
 {
     long long _defaultPriority;
     CDUnknownBlockType _activityCompletionWithItemsHandler;
+    CDUnknownBlockType _didFinishPerformingActivityHandler;
+    unsigned long long _indexInApplicationDefinedActivities;
+    NSUUID *_activityUUID;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType activityCompletionWithItemsHandler; // @synthesize activityCompletionWithItemsHandler=_activityCompletionWithItemsHandler;
 @property (readonly, nonatomic) UIImage *activityImage;
 @property (readonly, nonatomic) NSString *activityTitle;
 @property (readonly, nonatomic) NSString *activityType;
+@property (readonly, nonatomic) NSUUID *activityUUID; // @synthesize activityUUID=_activityUUID;
 @property (readonly, nonatomic) UIViewController *activityViewController;
 @property (readonly, nonatomic) NSExtension *applicationExtension;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) CDUnknownBlockType didFinishPerformingActivityHandler; // @synthesize didFinishPerformingActivityHandler=_didFinishPerformingActivityHandler;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long indexInApplicationDefinedActivities; // @synthesize indexInApplicationDefinedActivities=_indexInApplicationDefinedActivities;
+@property (readonly) Class superclass;
 
-+ (id)_activityFunctionImage:(id)arg1;
-+ (id)_activityImageForApplication:(id)arg1;
++ (id)_activityExtensionItemsForActivityItemValues:(id)arg1 extensionItemDataRequest:(id)arg2;
++ (id)_activityImageForActionRepresentationImage:(id)arg1;
++ (id)_activityImageForApplicationBundleIdentifier:(id)arg1;
 + (id)_activitySettingsImageForApplication:(id)arg1;
++ (id)_defaultFallbackActivityType;
++ (unsigned long long)_xpcAttributes;
 + (long long)activityCategory;
++ (Class)classForPreparingExtensionItemData;
++ (id)preparedActivityExtensionItemDataForActivityItemValues:(id)arg1 extensionItemDataRequest:(id)arg2;
 - (void).cxx_destruct;
 - (id)_activityImage;
 - (id)_activitySettingsImage;
 - (BOOL)_activitySupportsPromiseURLs;
+- (id)_activityTypeUsingFallbackActivityTypeIfNecessary;
 - (id)_attachmentNameForActivityItem:(id)arg1;
 - (id)_beforeActivity;
-- (BOOL)_canBeExcludedByActivityViewController:(id)arg1;
-- (BOOL)_canPerformWithSuppliedActivityItems:(id)arg1;
+- (id)_bundleIdentifierForActivityImageCreation;
+- (BOOL)_canBeExcludeWhenMatchingWithContext:(id)arg1;
 - (void)_cleanup;
 - (id)_dataTypeIdentifierForActivityItem:(id)arg1;
+- (long long)_defaultSortGroup;
 - (BOOL)_dismissActivityFromViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_embeddedActivityViewController;
+- (id)_encodableActivityImageConfiguration;
+- (id)_encodableActivitySettingsImageConfiguration;
 - (void)_injectedJavaScriptResult:(id)arg1;
+- (BOOL)_isExecutedInProcess;
 - (BOOL)_presentActivityOnViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setActivityCompletionWithItemsHandler:(CDUnknownBlockType)arg1;
-- (void)_setSubject:(id)arg1;
 - (id)_subjectForActivityItem:(id)arg1;
 - (id)_thumbnailImageForActivityItem:(id)arg1;
 - (struct CGSize)_thumbnailSize;
+- (BOOL)_wantsAttachmentURLItemData;
+- (BOOL)_wantsThumbnailItemData;
 - (void)_willPresentAsFormSheet;
 - (void)activityDidFinish:(BOOL)arg1;
 - (void)activityDidFinish:(BOOL)arg1 items:(id)arg2 error:(id)arg3;
-- (id)activitySettingsImage;
 - (BOOL)canPerformWithActivityItems:(id)arg1;
+- (id)init;
 - (void)performActivity;
+- (void)prepareWithActivityExtensionItemData:(id)arg1;
 - (void)prepareWithActivityItems:(id)arg1;
 
 @end

@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng;
+@class GEOLatLng, PBUnknownFields;
 
 @interface GEOLocation : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     double _course;
     double _courseAccuracy;
     double _heading;
@@ -25,6 +26,7 @@
     int _altitude;
     int _formOfWay;
     GEOLatLng *_latLng;
+    int _levelOrdinal;
     int _matchQuality;
     GEOLatLng *_rawCoordinate;
     int _referenceFrame;
@@ -46,6 +48,7 @@
         unsigned int verticalAccuracy:1;
         unsigned int altitude:1;
         unsigned int formOfWay:1;
+        unsigned int levelOrdinal:1;
         unsigned int matchQuality:1;
         unsigned int referenceFrame:1;
         unsigned int roadClass:1;
@@ -70,6 +73,7 @@
 @property (nonatomic) BOOL hasHorizontalAccuracy;
 @property (nonatomic) BOOL hasIsMatchedLocation;
 @property (nonatomic) BOOL hasIsShifted;
+@property (nonatomic) BOOL hasLevelOrdinal;
 @property (nonatomic) BOOL hasMatchQuality;
 @property (readonly, nonatomic) BOOL hasRawCoordinate;
 @property (nonatomic) BOOL hasRawCourse;
@@ -87,6 +91,7 @@
 @property (nonatomic) BOOL isMatchedLocation;
 @property (nonatomic) BOOL isShifted;
 @property (strong, nonatomic) GEOLatLng *latLng; // @synthesize latLng=_latLng;
+@property (nonatomic) int levelOrdinal; // @synthesize levelOrdinal=_levelOrdinal;
 @property (nonatomic) int matchQuality;
 @property (strong, nonatomic) GEOLatLng *rawCoordinate;
 @property (nonatomic) double rawCourse;
@@ -98,8 +103,10 @@
 @property (nonatomic) unsigned long long transitID;
 @property (nonatomic) int transportType;
 @property (nonatomic) int type; // @synthesize type=_type;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (nonatomic) double verticalAccuracy; // @synthesize verticalAccuracy=_verticalAccuracy;
 
+- (void).cxx_destruct;
 - (int)StringAsFormOfWay:(id)arg1;
 - (int)StringAsMatchQuality:(id)arg1;
 - (int)StringAsReferenceFrame:(id)arg1;
@@ -108,14 +115,20 @@
 - (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)formOfWayAsString:(int)arg1;
 - (unsigned long long)hash;
 - (id)initWithGEOCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (id)initWithGEOCoordinate:(CDStruct_c3b9c2ee)arg1 floorOrdinal:(int)arg2;
+- (id)initWithGEOCoordinate:(CDStruct_c3b9c2ee)arg1 isUserLocation:(BOOL)arg2;
+- (id)initWithGEOCoordinate:(CDStruct_c3b9c2ee)arg1 isUserLocation:(BOOL)arg2 floorOrdinal:(int)arg3;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2;
+- (id)initWithLatitude:(double)arg1 longitude:(double)arg2 floorOrdinal:(int)arg3;
+- (id)initWithLatitude:(double)arg1 longitude:(double)arg2 isUserLocation:(BOOL)arg3 floorOrdinal:(int)arg4;
 - (id)initWithLocation:(id)arg1;
+- (id)initWithLocation:(id)arg1 floorOrdinal:(int)arg2;
+- (id)initWithLocation:(id)arg1 isUserLocation:(BOOL)arg2 floorOrdinal:(int)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)matchQualityAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;

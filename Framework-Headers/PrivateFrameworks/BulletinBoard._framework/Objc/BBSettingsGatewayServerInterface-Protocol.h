@@ -13,6 +13,9 @@
 - (void)getBehaviorOverridesEnabledAndEffectiveDateWithHandler:(void (^)(long long, NSDate *))arg1;
 - (void)getBehaviorOverridesEnabledWithHandler:(void (^)(NSNumber *, NSError *))arg1;
 - (void)getBehaviorOverridesWithHandler:(void (^)(NSArray *, NSError *))arg1;
+- (void)getEffectiveGlobalContentPreviewsSettingWithHandler:(void (^)(long long, NSError *))arg1;
+- (void)getEffectiveSectionInfoForSectionID:(NSString *)arg1 withHandler:(void (^)(BBSectionInfo *))arg2;
+- (void)getEffectiveSectionInfoForSectionIDs:(NSSet *)arg1 withHandler:(void (^)(NSArray *))arg2;
 - (void)getPrivilegedSenderAddressBookGroupRecordIDAndNameWithHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)getPrivilegedSenderTypesWithHandler:(void (^)(NSNumber *, NSError *))arg1;
 - (void)getSectionInfoForActiveSectionsWithHandler:(void (^)(NSArray *, NSError *))arg1;
@@ -29,6 +32,7 @@
 - (void)setBehaviorOverridesChangeUpdatesEnabled:(BOOL)arg1;
 - (void)setBehaviorOverridesEffectiveWhileUnlocked:(BOOL)arg1 source:(unsigned long long)arg2;
 - (void)setBehaviorOverridesEffectiveWhileUnlockedChangeUpdatesEnabled:(BOOL)arg1;
+- (void)setEffectiveGlobalContentPreviewsSetting:(long long)arg1;
 - (void)setOrderedSectionIDs:(NSArray *)arg1;
 - (void)setPrivilegedSenderAddressBookGroupRecordID:(int)arg1 name:(NSString *)arg2 source:(unsigned long long)arg3;
 - (void)setPrivilegedSenderAddressBookGroupRecordIDChangeUpdatesEnabled:(BOOL)arg1;

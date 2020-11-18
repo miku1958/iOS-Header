@@ -13,6 +13,7 @@
 @interface SiriUIAceObjectControllerCell : SiriUIClearBackgroundCell <CAAnimationDelegate>
 {
     UIView *_animationView;
+    double _topPadding;
     SiriUIAceObjectViewController *_aceViewController;
     long long _insertionAnimationType;
     long long _replacementAnimationType;
@@ -42,6 +43,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (void)setTopPadding:(double)arg1;
 
 @end
 

@@ -32,7 +32,7 @@
 - (void)_customEncodingOfSCNShape:(id)arg1;
 - (void)_syncObjCModel:(struct __C3DShapeGeometry *)arg1;
 - (id)copy;
-- (struct __C3DAnimationChannel *)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
+- (id)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

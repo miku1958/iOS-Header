@@ -10,19 +10,19 @@
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
-@class HDDaemon, NSMutableDictionary, NSString;
+@class HDHealthServiceManager, HDProfile, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDServiceConnectionManager : NSObject <HDDatabaseProtectedDataObserver, HDDiagnosticObject, HDHealthDaemonReadyObserver>
 {
+    HDProfile *_profile;
+    HDHealthServiceManager *_serviceManager;
     BOOL _connecting;
     BOOL _BTLEEnabled;
     NSMutableDictionary *_activeServices;
     NSObject<OS_dispatch_queue> *_deviceQueue;
-    HDDaemon *_daemon;
 }
 
-@property (weak, nonatomic) HDDaemon *daemon; // @synthesize daemon=_daemon;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -44,7 +44,7 @@
 - (void)disconnectFromService:(id)arg1;
 - (void)disconnectFromServices;
 - (id)init;
-- (id)initWithDaemon:(id)arg1;
+- (id)initWithProfile:(id)arg1;
 - (void)reconnectToServices;
 
 @end

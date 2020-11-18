@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSData, NSDictionary;
 
-@interface _HMFCFHTTPMessage : NSObject
+@interface _HMFCFHTTPMessage : HMFObject
 {
     struct __CFHTTPMessage *_message;
 }

@@ -13,15 +13,17 @@
 @interface NTPBForYouConfigRecord : PBCodable <NSCopying>
 {
     NTPBRecordBase *_base;
+    NSMutableArray *_breakingNewsArticleIDs;
     NSString *_configuration;
     NSString *_coverArticlesArticleListID;
     NSMutableArray *_editorialArticleListIDs;
     NSMutableArray *_editorialSectionTagIDs;
-    NSString *_topStoriesArticleListID;
+    NSMutableArray *_topStoriesCombinedArticleIDs;
     NSString *_trendingArticleListID;
 }
 
 @property (strong, nonatomic) NTPBRecordBase *base; // @synthesize base=_base;
+@property (strong, nonatomic) NSMutableArray *breakingNewsArticleIDs; // @synthesize breakingNewsArticleIDs=_breakingNewsArticleIDs;
 @property (strong, nonatomic) NSString *configuration; // @synthesize configuration=_configuration;
 @property (strong, nonatomic) NSString *coverArticlesArticleListID; // @synthesize coverArticlesArticleListID=_coverArticlesArticleListID;
 @property (strong, nonatomic) NSMutableArray *editorialArticleListIDs; // @synthesize editorialArticleListIDs=_editorialArticleListIDs;
@@ -29,17 +31,24 @@
 @property (readonly, nonatomic) BOOL hasBase;
 @property (readonly, nonatomic) BOOL hasConfiguration;
 @property (readonly, nonatomic) BOOL hasCoverArticlesArticleListID;
-@property (readonly, nonatomic) BOOL hasTopStoriesArticleListID;
 @property (readonly, nonatomic) BOOL hasTrendingArticleListID;
-@property (strong, nonatomic) NSString *topStoriesArticleListID; // @synthesize topStoriesArticleListID=_topStoriesArticleListID;
+@property (strong, nonatomic) NSMutableArray *topStoriesCombinedArticleIDs; // @synthesize topStoriesCombinedArticleIDs=_topStoriesCombinedArticleIDs;
 @property (strong, nonatomic) NSString *trendingArticleListID; // @synthesize trendingArticleListID=_trendingArticleListID;
 
++ (Class)breakingNewsArticleIDsType;
 + (Class)editorialArticleListIDsType;
 + (Class)editorialSectionTagIDsType;
++ (Class)topStoriesCombinedArticleIDsType;
+- (void)addBreakingNewsArticleIDs:(id)arg1;
 - (void)addEditorialArticleListIDs:(id)arg1;
 - (void)addEditorialSectionTagIDs:(id)arg1;
+- (void)addTopStoriesCombinedArticleIDs:(id)arg1;
+- (id)breakingNewsArticleIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)breakingNewsArticleIDsCount;
+- (void)clearBreakingNewsArticleIDs;
 - (void)clearEditorialArticleListIDs;
 - (void)clearEditorialSectionTagIDs;
+- (void)clearTopStoriesCombinedArticleIDs;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
@@ -52,6 +61,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)topStoriesCombinedArticleIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)topStoriesCombinedArticleIDsCount;
 - (void)writeTo:(id)arg1;
 
 @end

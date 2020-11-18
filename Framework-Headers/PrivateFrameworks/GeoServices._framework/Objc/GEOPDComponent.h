@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAttribution, GEOPDSource, NSMutableArray;
+@class GEOPDAttribution, GEOPDSource, NSMutableArray, PBUnknownFields;
 
 @interface GEOPDComponent : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     double _timestampFirstSeen;
     GEOPDAttribution *_attribution;
     int _cacheControl;
@@ -54,6 +55,7 @@
 @property (nonatomic) double timestampFirstSeen;
 @property (nonatomic) unsigned int ttl; // @synthesize ttl=_ttl;
 @property (nonatomic) int type; // @synthesize type=_type;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) NSMutableArray *values; // @synthesize values=_values;
 @property (nonatomic) int valuesAvailable; // @synthesize valuesAvailable=_valuesAvailable;
 @property (nonatomic) unsigned int version; // @synthesize version=_version;
@@ -61,6 +63,7 @@
 
 + (Class)valueType;
 + (Class)versionDomainType;
+- (void).cxx_destruct;
 - (int)StringAsCacheControl:(id)arg1;
 - (int)StringAsStatus:(id)arg1;
 - (int)StringAsType:(id)arg1;
@@ -71,7 +74,6 @@
 - (void)clearVersionDomains;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
@@ -79,6 +81,7 @@
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)statusAsString:(int)arg1;
+- (BOOL)statusCodeIsValid;
 - (id)typeAsString:(int)arg1;
 - (id)valueAtIndex:(unsigned long long)arg1;
 - (unsigned long long)valuesCount;

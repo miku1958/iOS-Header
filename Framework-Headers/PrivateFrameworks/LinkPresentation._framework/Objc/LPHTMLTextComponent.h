@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)baseRules;
 + (id)ruleDictionaryForStyle:(id)arg1;
 + (id)secondToLastComponentOfStyle:(id)arg1;
 + (id)styleSet;

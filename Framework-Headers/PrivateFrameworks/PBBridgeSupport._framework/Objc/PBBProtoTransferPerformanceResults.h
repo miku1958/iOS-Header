@@ -21,6 +21,9 @@
 @property (strong, nonatomic) NSMutableArray *measures; // @synthesize measures=_measures;
 @property (strong, nonatomic) NSMutableArray *milestones; // @synthesize milestones=_milestones;
 
++ (Class)macroActivitesType;
++ (Class)measuresType;
++ (Class)milestonesType;
 - (void).cxx_destruct;
 - (void)addMacroActivites:(id)arg1;
 - (void)addMeasures:(id)arg1;

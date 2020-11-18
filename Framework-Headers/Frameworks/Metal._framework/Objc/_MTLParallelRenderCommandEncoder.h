@@ -45,13 +45,17 @@
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)initWithCommandBuffer:(id)arg1 renderPassDescriptor:(id)arg2;
 - (void)insertDebugSignpost:(id)arg1;
+- (BOOL)isMemorylessRender;
 - (void)popDebugGroup;
 - (void)pushDebugGroup:(id)arg1;
 - (id)renderCommandEncoder;
 - (id)sampledRenderCommandEncoderWithProgramInfoBuffer:(CDStruct_4af8c268 *)arg1 capacity:(unsigned long long)arg2;
 - (void)setColorStoreAction:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
+- (void)setColorStoreActionOptions:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setDepthStoreAction:(unsigned long long)arg1;
+- (void)setDepthStoreActionOptions:(unsigned long long)arg1;
 - (void)setStencilStoreAction:(unsigned long long)arg1;
+- (void)setStencilStoreActionOptions:(unsigned long long)arg1;
 
 @end
 

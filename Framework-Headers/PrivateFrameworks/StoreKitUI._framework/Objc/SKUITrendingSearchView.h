@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UIScrollView.h>
 
-@class NSArray, UIStackView;
+@class NSArray, UIStackView, UIView;
 
-@interface SKUITrendingSearchView : UIView
+@interface SKUITrendingSearchView : UIScrollView
 {
     UIView *_trendingTitleView;
     NSArray *_trendingSearchViews;
@@ -28,6 +28,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutMarginsDidChange;
+- (void)layoutSubviews;
 - (void)updateConstraints;
 
 @end

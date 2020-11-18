@@ -9,16 +9,16 @@
 #import <SafariServices/SFRemoteViewControllerProtocol-Protocol.h>
 
 @class NSString;
-@protocol SFBrowserRemoveViewControllerDelegate;
+@protocol SFBrowserRemoteViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SFBrowserRemoteViewController : _UIRemoteViewController <SFRemoteViewControllerProtocol>
 {
-    id<SFBrowserRemoveViewControllerDelegate> _delegate;
+    id<SFBrowserRemoteViewControllerDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<SFBrowserRemoveViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SFBrowserRemoteViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -27,15 +27,16 @@ __attribute__((visibility("hidden")))
 + (id)requestViewControllerWithConnectionHandler:(CDUnknownBlockType)arg1;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
+- (void)didDecideCookieSharingForURL:(id)arg1 shouldCancel:(BOOL)arg2;
 - (void)didFinishInitialLoad:(BOOL)arg1;
 - (void)didLoadWebView;
 - (void)executeCustomActivityProxyID:(id)arg1;
-- (void)fetchHostAppCustomActivitiesForURL:(id)arg1 title:(id)arg2;
+- (void)fetchActivityViewControllerInfoForURL:(id)arg1 title:(id)arg2;
+- (void)initialLoadDidRedirectToURL:(id)arg1;
 - (void)setRemoteSwipeGestureEnabled:(BOOL)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 - (void)willDismissServiceViewController;
 - (void)willOpenURLInHostApplication:(id)arg1;
-- (void)willUpdateStatusBarStyle:(id)arg1;
 
 @end
 

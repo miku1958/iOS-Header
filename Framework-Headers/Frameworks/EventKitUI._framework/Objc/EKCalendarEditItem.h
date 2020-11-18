@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)applyStyleProviderToCell:(id)arg1;
 - (BOOL)becomeFirstResponder;
 - (void)calendarEditor:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
+- (BOOL)calendarEditor:(id)arg1 shouldSelectSubitem:(unsigned long long)arg2;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (BOOL)configureWithCalendar:(id)arg1;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;

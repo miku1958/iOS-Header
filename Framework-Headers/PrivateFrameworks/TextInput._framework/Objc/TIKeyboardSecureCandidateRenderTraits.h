@@ -9,7 +9,7 @@
 #import <TextInput/NSCopying-Protocol.h>
 #import <TextInput/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, TIKeyboardSecureCandidateLayoutTraits, TIKeyboardSecureCandidateRGBColor, TIKeyboardSecureCandidateTextTraits;
+@class NSArray, NSDictionary, NSString, TIKeyboardSecureCandidateLayoutTraits, TIKeyboardSecureCandidateRGBColor, TIKeyboardSecureCandidateTextTraits;
 
 @interface TIKeyboardSecureCandidateRenderTraits : NSObject <NSCopying, NSSecureCoding>
 {
@@ -20,16 +20,21 @@
     NSString *_prefixText;
     NSString *_suffixText;
     NSArray *_resultCountToSingleCellWidth;
+    NSDictionary *_cellWidthOptions;
     double _singleCellHeight;
     double _singleCellVerticalPadding;
     double _dividerLineWidth;
     long long _maxCellCount;
+    long long _sharedCellCount;
     double _screenScale;
+    long long _cellRenderingStyle;
     NSString *_fontName;
     double _fontSize;
     TIKeyboardSecureCandidateRGBColor *_textColor;
 }
 
+@property (nonatomic) long long cellRenderingStyle; // @synthesize cellRenderingStyle=_cellRenderingStyle;
+@property (copy, nonatomic) NSDictionary *cellWidthOptions; // @synthesize cellWidthOptions=_cellWidthOptions;
 @property (nonatomic) double dividerLineWidth; // @synthesize dividerLineWidth=_dividerLineWidth;
 @property (copy, nonatomic) NSString *fontName; // @synthesize fontName=_fontName;
 @property (nonatomic) double fontSize; // @synthesize fontSize=_fontSize;
@@ -41,6 +46,7 @@
 @property (copy, nonatomic) NSString *prefixText; // @synthesize prefixText=_prefixText;
 @property (copy, nonatomic) NSArray *resultCountToSingleCellWidth; // @synthesize resultCountToSingleCellWidth=_resultCountToSingleCellWidth;
 @property (nonatomic) double screenScale; // @synthesize screenScale=_screenScale;
+@property (nonatomic) long long sharedCellCount; // @synthesize sharedCellCount=_sharedCellCount;
 @property (nonatomic) double singleCellHeight; // @synthesize singleCellHeight=_singleCellHeight;
 @property (nonatomic) double singleCellVerticalPadding; // @synthesize singleCellVerticalPadding=_singleCellVerticalPadding;
 @property (nonatomic) double singleCellWidth;
@@ -52,6 +58,7 @@
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

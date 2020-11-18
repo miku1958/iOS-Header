@@ -6,15 +6,20 @@
 
 #import <MobileCoreServices/_LSLazyPropertyList.h>
 
+@class NSDictionary;
+
 __attribute__((visibility("hidden")))
 @interface _LSLazyPlugInPropertyList : _LSLazyPropertyList
 {
     _LSLazyPropertyList *_infoPlist;
     _LSLazyPropertyList *_sdkPlist;
+    NSDictionary *_mergedPlist;
+    struct os_unfair_lock_s _mergeLock;
 }
 
 + (BOOL)supportsSecureCoding;
-- (id)_loadPropertyListPeeking:(BOOL)arg1;
+- (BOOL)_getPropertyList:(id *)arg1;
+- (BOOL)_getValue:(id *)arg1 forPropertyListKey:(id)arg2;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -6,16 +6,15 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NCLongLookPresentationController, UIView;
+@class BSAnimationSettings, UIPresentationController, UIView;
+@protocol NCLongLookPresentationController;
 
 @protocol NCLongLookPresentationControllerDelegate <NSObject>
-- (struct CGRect)longLookPresentationController:(NCLongLookPresentationController *)arg1 frameForTransitionViewInPresentationSuperview:(UIView *)arg2;
-- (BOOL)longLookPresentationControllerPreviewShouldIncludeShadow:(NCLongLookPresentationController *)arg1;
-- (BOOL)longLookPresentationControllerShouldRestoreSourceView:(NCLongLookPresentationController *)arg1;
+- (struct CGRect)longLookPresentationController:(UIPresentationController<NCLongLookPresentationController> *)arg1 frameForTransitionViewInPresentationSuperview:(UIView *)arg2;
 
 @optional
-- (unsigned long long)longLookPresentationControllerDismissalEdge:(NCLongLookPresentationController *)arg1;
-- (BOOL)longLookPresentationControllerShouldAllowKeyboardOnAppearance:(NCLongLookPresentationController *)arg1;
-- (BOOL)longLookPresentationControllerShouldIncludePreview:(NCLongLookPresentationController *)arg1;
+- (BSAnimationSettings *)hideHomeAffordanceAnimationSettingsForLongLookPresentationController:(UIPresentationController<NCLongLookPresentationController> *)arg1;
+- (BOOL)longLookPresentationControllerShouldAllowKeyboardOnAppearance:(UIPresentationController<NCLongLookPresentationController> *)arg1;
+- (BSAnimationSettings *)unhideHomeAffordanceAnimationSettingsForLongLookPresentationController:(UIPresentationController<NCLongLookPresentationController> *)arg1;
 @end
 

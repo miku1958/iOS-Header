@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/VKAnchorDelegate-Protocol.h>
 
-@class MDDisplayLayer, NSString;
+@class NSString;
+@protocol MDRenderTarget;
 
 @interface VKAnchorWrapper : NSObject <VKAnchorDelegate>
 {
@@ -19,13 +20,13 @@
     struct Coordinate2D<Degrees, double> _lastCoordinate;
     BOOL _isUpdating;
     double _pointsPerMeter;
-    MDDisplayLayer *_displayLayer;
+    id<MDRenderTarget> _displayLayer;
 }
 
 @property (readonly, nonatomic) CDStruct_c3b9c2ee coordinate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) MDDisplayLayer *displayLayer; // @synthesize displayLayer=_displayLayer;
+@property (nonatomic) id<MDRenderTarget> displayLayer; // @synthesize displayLayer=_displayLayer;
 @property (nonatomic) BOOL followsTerrain; // @synthesize followsTerrain=_followsTerrain;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;

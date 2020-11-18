@@ -9,19 +9,33 @@
 @interface AVHapticEvent : NSObject
 {
     double _time;
+    double _duration;
     BOOL _isParameter;
-    unsigned long long _eventType;
-    unsigned long long _paramType;
+    union {
+        unsigned long long _eventType;
+        unsigned long long _paramType;
+    } _u;
+    struct AVHapticPlayerFixedParameter _fixedParams[5];
+    long long _fixedParamCount;
     float _value;
 }
 
-@property (readonly) unsigned long long eventType; // @synthesize eventType=_eventType;
+@property (readonly) double duration; // @synthesize duration=_duration;
+@property (readonly) unsigned long long eventType; // @dynamic eventType;
+@property (readonly) long long fixedParamCount; // @synthesize fixedParamCount=_fixedParamCount;
+@property (readonly) struct AVHapticPlayerFixedParameter *fixedParams; // @dynamic fixedParams;
 @property (readonly) BOOL isParameter; // @synthesize isParameter=_isParameter;
-@property (readonly) unsigned long long paramType; // @synthesize paramType=_paramType;
+@property (readonly) unsigned long long paramType; // @dynamic paramType;
 @property (readonly) double time; // @synthesize time=_time;
 @property (readonly) float value; // @synthesize value=_value;
 
-- (id)initWithEventType:(unsigned long long)arg1 time:(double)arg2;
++ (id)eventWithEventType:(unsigned long long)arg1 time:(double)arg2;
++ (id)eventWithEventType:(unsigned long long)arg1 time:(double)arg2 duration:(double)arg3;
++ (id)eventWithEventType:(unsigned long long)arg1 time:(double)arg2 parameters:(const struct AVHapticPlayerFixedParameter *)arg3 count:(long long)arg4;
++ (id)eventWithEventType:(unsigned long long)arg1 time:(double)arg2 parameters:(const struct AVHapticPlayerFixedParameter *)arg3 count:(long long)arg4 duration:(double)arg5;
++ (id)eventWithParameter:(unsigned long long)arg1 value:(float)arg2 time:(double)arg3;
+- (id)initWithEventType:(unsigned long long)arg1 time:(double)arg2 duration:(double)arg3;
+- (id)initWithEventType:(unsigned long long)arg1 time:(double)arg2 parameters:(const struct AVHapticPlayerFixedParameter *)arg3 count:(long long)arg4 duration:(double)arg5;
 - (id)initWithParameter:(unsigned long long)arg1 value:(float)arg2 time:(double)arg3;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CNiOSAddressBook, CNiOSAddressBookDataMapper;
 
@@ -16,8 +16,10 @@
 @property (readonly, nonatomic) BOOL hasMultipleGroupsOrAccounts;
 @property (readonly, nonatomic) CNiOSAddressBookDataMapper *iOSMapper;
 
++ (id)_contactStoreForPublicAddressBook:(void *)arg1;
 + (long long)authorizationStatusForEntityType:(long long)arg1;
 + (id)contactIdentifierFromInternalIdentifier:(id)arg1;
++ (id)contactStoreForPublicAddressBook:(void *)arg1;
 + (BOOL)eraseAllDataAtLocationWithName:(id)arg1 error:(id *)arg2;
 + (BOOL)eraseAllDataAtURL:(id)arg1 error:(id *)arg2;
 + (void)initialize;
@@ -30,23 +32,28 @@
 + (id)storeWithEnvironment:(id)arg1 options:(unsigned long long)arg2;
 + (id)storeWithOptions:(unsigned long long)arg1;
 - (id)_contactFromPersonID:(int)arg1 keysToFetch:(id)arg2;
+- (id)_contactFromPublicABPerson:(void *)arg1 keysToFetch:(id)arg2;
 - (id)_crossPlatformUnifiedMeContactWithKeysToFetch:(id)arg1 error:(id *)arg2;
 - (id)_executeFetchRequestsWithInfos:(id)arg1 unifyResults:(BOOL)arg2 keysToFetch:(id)arg3 error:(id *)arg4;
 - (id)_fetchRequestInfosForEmailOrPhoneForContact:(id)arg1;
 - (id)_ios_meContactIdentifierWithError:(id *)arg1;
 - (id)_ios_meContactWithKeysToFetch:(id)arg1 error:(id *)arg2;
+- (id)_labeledValueFromPublicMultiValueIdentifier:(int)arg1 contact:(id)arg2 key:(id)arg3;
+- (void *)_publicABPersonFromContact:(id)arg1 publicAddressBook:(const void **)arg2;
+- (int)_publicMultiValueIdentifierFromLabeledValue:(id)arg1;
+- (id)_unifiedMeContactWithKeysToFetch:(id)arg1 error:(id *)arg2;
 - (id)accountsMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)changeHistoryWithFetchRequest:(id)arg1 error:(id *)arg2;
-- (BOOL)clearChangeHistoryForClient:(id)arg1 toSequenceNumber:(long long)arg2 error:(id *)arg3;
+- (BOOL)clearChangeHistoryForClientIdentifier:(id)arg1 toChangeAnchor:(id)arg2 error:(id *)arg3;
 - (id)contactFromPerson:(void *)arg1;
 - (id)contactFromPerson:(void *)arg1 keysToFetch:(id)arg2;
 - (id)contactFromPerson:(void *)arg1 keysToFetch:(id)arg2 mutable:(BOOL)arg3;
 - (id)contactFromPerson:(void *)arg1 mutable:(BOOL)arg2;
 - (id)contactFromPersonID:(int)arg1;
 - (id)contactFromPersonID:(int)arg1 keysToFetch:(id)arg2;
+- (id)contactFromPublicABPerson:(void *)arg1 keysToFetch:(id)arg2;
 - (id)contactIdentifierFromPersonID:(int)arg1;
 - (id)contactIdentifierWithMatchingDictionary:(id)arg1;
-- (id)contactIdentifiersForFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)contactWithMatchingDictionary:(id)arg1 keysToFetch:(id)arg2;
 - (id)contactWithUserActivityUserInfo:(id)arg1 keysToFetch:(id)arg2;
 - (id)contactsMatchingPropertiesOfContact:(id)arg1 unifyResults:(BOOL)arg2 keysToFetch:(id)arg3 error:(id *)arg4;
@@ -55,6 +62,7 @@
 - (id)descriptorForRequiredKeysForMatchingDictionary;
 - (BOOL)enumerateContactsAndMatchInfoWithFetchRequest:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (BOOL)enumerateContactsWithFetchRequest:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (BOOL)enumerateNonUnifiedContactsWithFetchRequest:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)executeFetchRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)executeFetchRequest:(id)arg1 progressiveResults:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)executeSaveRequest:(id)arg1 error:(id *)arg2;
@@ -63,17 +71,21 @@
 - (id)groupsMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)identifierWithError:(id *)arg1;
 - (id)init;
-- (id)initWithAddressBook:(void *)arg1;
-- (id)initWithDataLocationName:(id)arg1;
 - (id)initWithEnvironment:(id)arg1;
 - (id)initWithEnvironment:(id)arg1 options:(unsigned long long)arg2;
+- (id)labeledValueFromMultiValueIdentifier:(int)arg1 contact:(id)arg2 key:(id)arg3;
+- (id)labeledValueFromPublicMultiValueIdentifier:(int)arg1 contact:(id)arg2 key:(id)arg3;
 - (id)matchingDictionaryForContact:(id)arg1;
-- (id)meContactIdentifierWithError:(id *)arg1;
+- (id)meContactIdentifiers:(id *)arg1;
 - (id)membersOfGroupWithIdentifier:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
+- (int)multiValueIdentifierFromLabeledValue:(id)arg1;
 - (id)originForSuggestion:(id)arg1 error:(id *)arg2;
 - (void *)personFromContact:(id)arg1;
 - (id)policyForContainerWithIdentifier:(id)arg1 error:(id *)arg2;
-- (BOOL)registerClientForChangeHistory:(id)arg1 error:(id *)arg2;
+- (void *)publicABPersonFromContact:(id)arg1 publicAddressBook:(const void **)arg2;
+- (int)publicMultiValueIdentifierFromLabeledValue:(id)arg1;
+- (BOOL)registerChangeHistoryClientIdentifier:(id)arg1 error:(id *)arg2;
+- (void)reindexSearchableItemsWithIdentifiers:(id)arg1;
 - (id)requestAccessForEntityType:(long long)arg1;
 - (void)requestAccessForEntityType:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)serverSearchContainersMatchingPredicate:(id)arg1 error:(id *)arg2;
@@ -83,13 +95,14 @@
 - (BOOL)setMeContact:(id)arg1 forContainer:(id)arg2 error:(id *)arg3;
 - (id)subgroupsOfGroupWithIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)supportsSaveRequest:(id)arg1;
+- (id)synchronousRemoteObjectProxyForContactsXPCService;
 - (id)unifiedContactCountWithError:(id *)arg1;
 - (id)unifiedContactWithIdentifier:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
 - (id)unifiedContactsMatchingPredicate:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
 - (id)unifiedMeContactMatchingEmailAddress:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
 - (id)unifiedMeContactMatchingEmailAddresses:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
 - (id)unifiedMeContactWithKeysToFetch:(id)arg1 error:(id *)arg2;
-- (BOOL)unregisterClientForChangeHistory:(id)arg1 error:(id *)arg2;
+- (BOOL)unregisterChangeHistoryClientIdentifier:(id)arg1 error:(id *)arg2;
 - (id)usedLabelsForPropertyWithKey:(id)arg1 error:(id *)arg2;
 - (id)userActivityUserInfoForContact:(id)arg1;
 

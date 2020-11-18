@@ -8,36 +8,37 @@
 
 #import <CoreSuggestions/NSCopying-Protocol.h>
 #import <CoreSuggestions/NSSecureCoding-Protocol.h>
+#import <CoreSuggestions/SGRealtimeSuggestion-Protocol.h>
 
 @class NSString, SGContact;
 
-@interface SGRealtimeContact : NSObject <NSSecureCoding, NSCopying>
+@interface SGRealtimeContact : NSObject <NSSecureCoding, NSCopying, SGRealtimeSuggestion>
 {
     BOOL _isHarvested;
     int _state;
-    int _abPersonId;
     SGContact *_contact;
     NSString *_cnContactIdentifier;
     unsigned long long _extractionType;
 }
 
-@property (readonly, nonatomic) int abPersonId; // @synthesize abPersonId=_abPersonId;
 @property (readonly, nonatomic) NSString *cnContactIdentifier; // @synthesize cnContactIdentifier=_cnContactIdentifier;
 @property (readonly, nonatomic) SGContact *contact; // @synthesize contact=_contact;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long extractionType; // @synthesize extractionType=_extractionType;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isHarvested; // @synthesize isHarvested=_isHarvested;
 @property (readonly, nonatomic) int state; // @synthesize state=_state;
+@property (readonly) Class superclass;
 
-+ (id)realtimeContactForFields:(id)arg1 addedToCuratedContact:(int)arg2;
++ (id)realtimeContactForFields:(id)arg1 addedToCuratedContact:(id)arg2;
 + (id)realtimeContactForNewContact:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithState:(int)arg1 contact:(id)arg2 abPersonId:(int)arg3;
+- (id)initWithState:(int)arg1 contact:(id)arg2 identifier:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToRealtimeContact:(id)arg1;
 - (id)markedAsHarvested;

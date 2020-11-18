@@ -14,6 +14,7 @@
 @interface NWConcrete_nw_endpoint_proxy : NSObject <OS_nw_endpoint_proxy>
 {
     NSObject<OS_nw_array> *child_endpoint_handlers;
+    NSObject<OS_nw_array> *failed_child_endpoint_handlers;
     unsigned int next_child_endpoint_index;
     NWConcrete_nw_endpoint_handler *connected_child;
     NSObject<OS_xpc_object> *proxy_settings;

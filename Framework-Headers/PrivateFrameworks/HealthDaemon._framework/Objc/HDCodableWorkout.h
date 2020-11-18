@@ -19,7 +19,8 @@
     double _totalBasalEnergyBurnedInCanonicalUnit;
     double _totalDistanceInCanonicalUnit;
     double _totalEnergyBurnedInCanonicalUnit;
-    double _totalWStepsInCanonicalUnit;
+    double _totalFlightsClimbedInCanonicalUnit;
+    double _totalSwimmingStrokeCountInCanonicalUnit;
     long long _type;
     NSMutableArray *_events;
     HDCodableSample *_sample;
@@ -30,7 +31,8 @@
         unsigned int totalBasalEnergyBurnedInCanonicalUnit:1;
         unsigned int totalDistanceInCanonicalUnit:1;
         unsigned int totalEnergyBurnedInCanonicalUnit:1;
-        unsigned int totalWStepsInCanonicalUnit:1;
+        unsigned int totalFlightsClimbedInCanonicalUnit:1;
+        unsigned int totalSwimmingStrokeCountInCanonicalUnit:1;
         unsigned int type:1;
     } _has;
 }
@@ -48,7 +50,8 @@
 @property (nonatomic) BOOL hasTotalBasalEnergyBurnedInCanonicalUnit;
 @property (nonatomic) BOOL hasTotalDistanceInCanonicalUnit;
 @property (nonatomic) BOOL hasTotalEnergyBurnedInCanonicalUnit;
-@property (nonatomic) BOOL hasTotalWStepsInCanonicalUnit;
+@property (nonatomic) BOOL hasTotalFlightsClimbedInCanonicalUnit;
+@property (nonatomic) BOOL hasTotalSwimmingStrokeCountInCanonicalUnit;
 @property (nonatomic) BOOL hasType;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HDCodableSample *sample; // @synthesize sample=_sample;
@@ -56,9 +59,11 @@
 @property (nonatomic) double totalBasalEnergyBurnedInCanonicalUnit; // @synthesize totalBasalEnergyBurnedInCanonicalUnit=_totalBasalEnergyBurnedInCanonicalUnit;
 @property (nonatomic) double totalDistanceInCanonicalUnit; // @synthesize totalDistanceInCanonicalUnit=_totalDistanceInCanonicalUnit;
 @property (nonatomic) double totalEnergyBurnedInCanonicalUnit; // @synthesize totalEnergyBurnedInCanonicalUnit=_totalEnergyBurnedInCanonicalUnit;
-@property (nonatomic) double totalWStepsInCanonicalUnit; // @synthesize totalWStepsInCanonicalUnit=_totalWStepsInCanonicalUnit;
+@property (nonatomic) double totalFlightsClimbedInCanonicalUnit; // @synthesize totalFlightsClimbedInCanonicalUnit=_totalFlightsClimbedInCanonicalUnit;
+@property (nonatomic) double totalSwimmingStrokeCountInCanonicalUnit; // @synthesize totalSwimmingStrokeCountInCanonicalUnit=_totalSwimmingStrokeCountInCanonicalUnit;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
++ (Class)eventsType;
 - (void).cxx_destruct;
 - (void)addEvents:(id)arg1;
 - (BOOL)applyToObject:(id)arg1;
@@ -70,6 +75,7 @@
 - (id)decodedTotalBasalEnergyBurned;
 - (id)decodedTotalDistance;
 - (id)decodedTotalEnergyBurned;
+- (id)decodedTotalFlightsClimbed;
 - (id)decodedTotalSwimmingStrokeCount;
 - (id)decodedWorkoutEvents;
 - (id)dictionaryRepresentation;

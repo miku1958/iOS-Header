@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSManagedObjectContext, NSSet, NSString, PLPhotoLibrary;
+@class NSArray, NSManagedObjectContext, NSOrderedSet, NSString, PLPhotoLibrary;
 
 @interface PHChangeValidationController : NSObject
 {
     BOOL _didPrepare;
     BOOL _confirmationRequired;
-    NSSet *_insertRequests;
-    NSSet *_updateRequests;
-    NSSet *_deleteRequests;
+    NSOrderedSet *_insertRequests;
+    NSOrderedSet *_updateRequests;
+    NSOrderedSet *_deleteRequests;
     NSManagedObjectContext *_managedObjectContext;
     PLPhotoLibrary *_photoLibrary;
     NSArray *_renderedContentURLs;
@@ -34,13 +34,13 @@
 @property (readonly, nonatomic) NSArray *assetsToRevert; // @synthesize assetsToRevert=_assetsToRevert;
 @property (readonly, copy, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property (readonly, nonatomic) BOOL confirmationRequired; // @synthesize confirmationRequired=_confirmationRequired;
-@property (readonly, nonatomic) NSSet *deleteRequests; // @synthesize deleteRequests=_deleteRequests;
+@property (readonly, nonatomic) NSOrderedSet *deleteRequests; // @synthesize deleteRequests=_deleteRequests;
 @property (readonly, nonatomic) NSArray *foldersToDelete; // @synthesize foldersToDelete=_foldersToDelete;
-@property (readonly, nonatomic) NSSet *insertRequests; // @synthesize insertRequests=_insertRequests;
+@property (readonly, nonatomic) NSOrderedSet *insertRequests; // @synthesize insertRequests=_insertRequests;
 @property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
 @property (readonly, nonatomic) PLPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (readonly, nonatomic) NSArray *renderedContentURLs; // @synthesize renderedContentURLs=_renderedContentURLs;
-@property (readonly, nonatomic) NSSet *updateRequests; // @synthesize updateRequests=_updateRequests;
+@property (readonly, nonatomic) NSOrderedSet *updateRequests; // @synthesize updateRequests=_updateRequests;
 
 - (void).cxx_destruct;
 - (BOOL)_prepareWithError:(id *)arg1;

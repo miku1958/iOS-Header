@@ -8,7 +8,7 @@
 
 #import <PhotosUI/PUPhotoSelectionManagerChangeObserver-Protocol.h>
 
-@class NSOrderedSet, NSPointerArray, NSString, PUPhotoSelectionManager;
+@class NSOrderedSet, NSPointerArray, NSString, PHAssetCollection, PUPhotoSelectionManager;
 @protocol PLAlbumProtocol;
 
 @interface PUSessionInfo : NSObject <PUPhotoSelectionManagerChangeObserver>
@@ -19,13 +19,14 @@
     BOOL _targetAlbumIsNewLocalAlbum;
     long long _status;
     PUPhotoSelectionManager *_photoSelectionManager;
-    struct NSObject *_sourceAlbum;
+    PHAssetCollection *_sourceAlbum;
     NSOrderedSet *_transferredAssets;
     struct NSObject *_targetAlbum;
     NSString *_targetAlbumName;
     NSString *_localizedPrompt;
     long long _promptLocation;
     CDUnknownBlockType _bannerGenerator;
+    unsigned long long _selectionLimit;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType bannerGenerator; // @synthesize bannerGenerator=_bannerGenerator;
@@ -37,7 +38,8 @@
 @property (nonatomic) long long promptLocation; // @synthesize promptLocation=_promptLocation;
 @property (readonly, nonatomic, getter=isSelectingAssets) BOOL selectingAssets; // @synthesize selectingAssets=_selectingAssets;
 @property (readonly, nonatomic, getter=isSelectingTargetAlbum) BOOL selectingTargetAlbum; // @synthesize selectingTargetAlbum=_selectingTargetAlbum;
-@property (strong, nonatomic) NSObject<PLAlbumProtocol> *sourceAlbum; // @synthesize sourceAlbum=_sourceAlbum;
+@property (nonatomic) unsigned long long selectionLimit; // @synthesize selectionLimit=_selectionLimit;
+@property (strong, nonatomic) PHAssetCollection *sourceAlbum; // @synthesize sourceAlbum=_sourceAlbum;
 @property (nonatomic) long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<PLAlbumProtocol> *targetAlbum; // @synthesize targetAlbum=_targetAlbum;

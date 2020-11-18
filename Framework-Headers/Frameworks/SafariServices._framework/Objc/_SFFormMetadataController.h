@@ -30,6 +30,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_formContainsAutoFilledElements:(id)arg1;
 - (id)_observer;
 - (void)_webProcessPlugInBrowserContextController:(id)arg1 didAssociateFormControls:(id)arg2;
 - (void)_webProcessPlugInBrowserContextController:(id)arg1 textDidChangeInTextField:(id)arg2 inFrame:(id)arg3 initiatedByUserTyping:(BOOL)arg4;
@@ -57,7 +58,7 @@
 - (void)invalidate;
 - (void)passwordFieldFocused:(id)arg1 inFrame:(id)arg2;
 - (BOOL)shouldAttemptToClassifyFormsWithoutAPasswordFieldAsLoginForms;
-- (BOOL)shouldIncludeUnannotatedControls;
+- (BOOL)shouldIncludeNonEmptyFields;
 - (void)usernameFieldFocused:(id)arg1 inForm:(id)arg2 inFrame:(id)arg3;
 
 @end

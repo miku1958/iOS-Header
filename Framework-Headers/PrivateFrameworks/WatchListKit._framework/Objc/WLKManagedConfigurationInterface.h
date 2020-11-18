@@ -10,7 +10,11 @@
 {
 }
 
++ (void)_promptAndWait:(id)arg1;
++ (BOOL)_restoreAppWithBundleIdentifier:(id)arg1;
 + (void)setTVAppAllowed:(BOOL)arg1;
++ (void)setTVAppAllowed:(BOOL)arg1 silent:(BOOL)arg2;
++ (void)setTVAppVisible:(BOOL)arg1 force:(BOOL)arg2 silent:(BOOL)arg3;
 
 @end
 

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HAPCharacteristicMetadata, NSNumber, NSUUID;
 
-@interface HAPBTLECharacteristicSignature : NSObject
+@interface HAPBTLECharacteristicSignature : HMFObject
 {
     BOOL _authenticated;
     NSUUID *_characteristicType;

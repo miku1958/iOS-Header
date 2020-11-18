@@ -4,11 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Home/HFStaticItem.h>
+#import <Home/HFItem.h>
 
-@interface HULinkedApplicationItem : HFStaticItem
+@class NSString;
+
+@interface HULinkedApplicationItem : HFItem
 {
 }
+
+@property (readonly, nonatomic) NSString *bundleIdentifier;
+
+- (id)_failedUpdateOutcome;
+- (int)_iconVariantForScale:(double)arg1;
 
 @end
 

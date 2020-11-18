@@ -6,15 +6,17 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSDictionary, NSOperationQueue, NSString, NSURLSessionConfiguration;
+@class NSDictionary, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, NSURLSessionConfiguration;
 @protocol NSURLSessionDelegate, OS_dispatch_queue;
 
 @interface NSURLSession : NSObject
 {
 }
 
+@property (strong) NSMutableDictionary *_altSvc; // @dynamic _altSvc;
 @property (copy) NSDictionary *_atsState; // @dynamic _atsState;
 @property (copy) CDUnknownBlockType _connBlock; // @dynamic _connBlock;
+@property (strong) NSMutableSet *_h2BlacklistedHosts; // @dynamic _h2BlacklistedHosts;
 @property BOOL _isSharedSession; // @dynamic _isSharedSession;
 @property (copy) NSURLSessionConfiguration *_local_immutable_configuration; // @dynamic _local_immutable_configuration;
 @property (copy) NSString *_uuid; // @dynamic _uuid;
@@ -38,13 +40,18 @@
 - (id)_copyConfiguration;
 - (id)_downloadTaskWithRequest:(id)arg1 downloadFilePath:(id)arg2;
 - (void)addDelegateBlock:(CDUnknownBlockType)arg1;
+- (id)aggregateAssetDownloadTaskWithURLAsset:(id)arg1 mediaSelections:(id)arg2 assetTitle:(id)arg3 assetArtworkData:(id)arg4 options:(id)arg5;
 - (id)assetDownloadTaskWithURLAsset:(id)arg1 assetTitle:(id)arg2 assetArtworkData:(id)arg3 options:(id)arg4;
 - (id)assetDownloadTaskWithURLAsset:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
+- (BOOL)can_delegate_AVAggregateAssetDownloadTask_didCompleteForMediaSelection;
+- (BOOL)can_delegate_AVAggregateAssetDownloadTask_didLoadTimeRange;
+- (BOOL)can_delegate_AVAggregateAssetDownloadTask_willDownloadToURL;
 - (BOOL)can_delegate_AVAssetDownloadTask_didFinishDownloadingToURL;
 - (BOOL)can_delegate_AVAssetDownloadTask_didLoadTimeRange;
 - (BOOL)can_delegate_AVAssetDownloadTask_didReceiveDownloadToken;
 - (BOOL)can_delegate_AVAssetDownloadTask_didResolveMediaSelection;
 - (BOOL)can_delegate_AVAssetDownloadTask_didWriteData;
+- (BOOL)can_delegate_AVAssetDownloadTask_willDownloadToURL;
 - (BOOL)can_delegate_betterRouteDiscoveredForStreamTask;
 - (BOOL)can_delegate_companionAvailabilityChanged;
 - (BOOL)can_delegate_connectionEstablishedForStreamTask;
@@ -64,6 +71,7 @@
 - (BOOL)can_delegate_openFileAtPath;
 - (BOOL)can_delegate_readClosedForStreamTask;
 - (BOOL)can_delegate_streamTask_didBecomeInputStream_outputStream;
+- (BOOL)can_delegate_taskIsWaitingForConnectivity;
 - (BOOL)can_delegate_task__schemeUpgraded;
 - (BOOL)can_delegate_task_actually_didCompleteWithError;
 - (BOOL)can_delegate_task_conditionalRequirementsChanged;
@@ -75,6 +83,7 @@
 - (BOOL)can_delegate_task_isWaitingForConnectionWithError;
 - (BOOL)can_delegate_task_isWaitingForConnectionWithReason;
 - (BOOL)can_delegate_task_needNewBodyStream;
+- (BOOL)can_delegate_task_willBeginDelayedRequest;
 - (BOOL)can_delegate_task_willPerformHTTPRedirection;
 - (BOOL)can_delegate_task_willSendRequestForEstablishedConnection;
 - (BOOL)can_delegate_willRetryBackgroundDataTask;
@@ -86,11 +95,15 @@
 - (id)dataTaskWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)dataTaskWithURL:(id)arg1;
 - (id)dataTaskWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)delegate_AVAggregateAssetDownloadTask:(id)arg1 didCompleteForMediaSelection:(id)arg2;
+- (void)delegate_AVAggregateAssetDownloadTask:(id)arg1 didLoadTimeRange:(CDStruct_3c1748cc)arg2 totalTimeRangesLoaded:(id)arg3 timeRangeExpectedToLoad:(CDStruct_3c1748cc)arg4 forMediaSelection:(id)arg5;
+- (void)delegate_AVAggregateAssetDownloadTask:(id)arg1 willDownloadToURL:(id)arg2;
 - (void)delegate_AVAssetDownloadTask:(id)arg1 didFinishDownloadingToURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)delegate_AVAssetDownloadTask:(id)arg1 didLoadTimeRange:(CDStruct_3c1748cc)arg2 totalTimeRangesLoaded:(id)arg3 timeRangeExpectedToLoad:(CDStruct_3c1748cc)arg4;
 - (void)delegate_AVAssetDownloadTask:(id)arg1 didReceiveDownloadToken:(unsigned long long)arg2;
 - (void)delegate_AVAssetDownloadTask:(id)arg1 didResolveMediaSelection:(id)arg2;
 - (void)delegate_AVAssetDownloadTask:(id)arg1 didWriteData:(long long)arg2 totalBytesWritten:(long long)arg3 totalBytesExpectedToWrite:(long long)arg4;
+- (void)delegate_AVAssetDownloadTask:(id)arg1 willDownloadToURL:(id)arg2;
 - (void)delegate_betterRouteDiscoveredForStreamTask:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)delegate_companionAvailabilityChanged:(BOOL)arg1;
 - (void)delegate_connectionEstablishedForStreamTask:(id)arg1;
@@ -120,7 +133,9 @@
 - (void)delegate_task:(id)arg1 isWaitingForConnectionWithError:(id)arg2;
 - (void)delegate_task:(id)arg1 isWaitingForConnectionWithReason:(long long)arg2;
 - (void)delegate_task:(id)arg1 needNewBodyStream:(CDUnknownBlockType)arg2;
+- (void)delegate_task:(id)arg1 willBeginDelayedRequest:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)delegate_task:(id)arg1 willPerformHTTPRedirection:(id)arg2 newRequest:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)delegate_taskIsWaitingForConnectivity:(id)arg1;
 - (void)delegate_task_isWaitingForConnection:(id)arg1;
 - (void)delegate_willRetryBackgroundDataTask:(id)arg1 withError:(id)arg2;
 - (void)delegate_writeClosedForStreamTask:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -140,7 +155,6 @@
 - (BOOL)isBackgroundSession;
 - (void)remote_externalAuthenticator_task:(id)arg1 getAuthHeadersForResponse:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)resetWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (BOOL)shouldUseStreamTask;
 - (id)streamTaskWithHostName:(id)arg1 port:(long long)arg2;
 - (id)streamTaskWithNetService:(id)arg1;
 - (id)uploadTaskWithRequest:(id)arg1 fromData:(id)arg2;

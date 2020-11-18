@@ -31,13 +31,11 @@
     id<MusicProfileDetailViewDelegate> _delegate;
     NSString *_followingText;
     NSString *_followText;
-    UIButton *_contextualActionsButton;
     MusicMediaDetailTintInformation *_detailTintInformation;
     long long _tintStyle;
 }
 
 @property (nonatomic, getter=isAdminEnabled) BOOL adminEnabled; // @synthesize adminEnabled=_adminEnabled;
-@property (readonly, nonatomic) UIButton *contextualActionsButton; // @synthesize contextualActionsButton=_contextualActionsButton;
 @property (weak, nonatomic) id<MusicProfileDetailViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) MusicMediaDetailTintInformation *detailTintInformation; // @synthesize detailTintInformation=_detailTintInformation;
 @property (readonly, nonatomic) UIControl *editButton; // @synthesize editButton=_editButton;
@@ -56,7 +54,6 @@
 
 - (void).cxx_destruct;
 - (void)_applyDetailTintInformation;
-- (void)_contextualActionsButtonTapped:(id)arg1;
 - (void)_editButtonTouchUpInsideAction:(id)arg1;
 - (void)_followButtonTouchUpInsideAction:(id)arg1;
 - (void)_layoutAvailableItems;

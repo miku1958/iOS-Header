@@ -11,6 +11,7 @@
 }
 
 + (id)errorWithCode:(long long)arg1;
++ (id)errorWithCode:(long long)arg1 additionalDescription:(id)arg2;
 + (BOOL)isValidationErrorCode:(long long)arg1;
 
 @end

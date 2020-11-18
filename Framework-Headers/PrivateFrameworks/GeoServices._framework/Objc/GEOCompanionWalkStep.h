@@ -47,6 +47,7 @@
 
 + (Class)maneuverNameType;
 + (Class)signpostType;
+- (void).cxx_destruct;
 - (int)StringAsJunctionType:(id)arg1;
 - (int)StringAsManeuverType:(id)arg1;
 - (void)addJunctionElement:(struct GEOJunctionElement)arg1;

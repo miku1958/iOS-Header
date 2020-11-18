@@ -18,8 +18,8 @@
 @property (strong, nonatomic) CoreDAVItemWithNoChildren *unauthenticated; // @synthesize unauthenticated=_unauthenticated;
 
 + (id)copyParseRules;
+- (void).cxx_destruct;
 - (void)addHref:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)hrefsAsFullURLs;
 - (id)hrefsAsOriginalURLs;

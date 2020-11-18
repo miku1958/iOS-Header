@@ -23,15 +23,16 @@
 }
 
 @property void *_BOMCopier; // @synthesize _BOMCopier;
-@property id<CUTFileCopierDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak) id<CUTFileCopierDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL didErrorOccur; // @synthesize didErrorOccur=_didErrorOccur;
 @property (readonly) id identifier; // @synthesize identifier=_identifier;
 @property BOOL inProgress; // @synthesize inProgress=_inProgress;
-@property (readonly) NSURL *inputURL; // @synthesize inputURL=_inputURL;
+@property (readonly, copy) NSURL *inputURL; // @synthesize inputURL=_inputURL;
 @property unsigned int operation; // @synthesize operation=_operation;
-@property (readonly) NSURL *outputURL; // @synthesize outputURL=_outputURL;
+@property (readonly, copy) NSURL *outputURL; // @synthesize outputURL=_outputURL;
 @property (readonly, nonatomic) BOOL wasCancelled; // @synthesize wasCancelled=_shouldCancel;
 
+- (void).cxx_destruct;
 - (void)_fillOutputURLFromInputURL;
 - (void)_main_copierFinishedWithResult:(id)arg1;
 - (id)_temporaryCopierPath;

@@ -6,30 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class NSOperation;
+@class NSOperation, NSPointerArray, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface __NSOperationQueueInternal : NSObject
 {
-    struct _opaque_pthread_mutex_t __queueLock;
+    struct os_unfair_lock_s __queueLock;
     NSOperation *__firstOperation;
     NSOperation *__lastOperation;
     NSOperation *__pendingFirstOperation;
     NSOperation *__pendingLastOperation;
     NSOperation *__firstPriOperation[5];
     NSOperation *__lastPriOperation[5];
-    NSObject<OS_dispatch_queue> *__pending_barrier;
+    _Atomic unsigned long long __operationCount;
+    NSPointerArray *__activeThreads;
     long long __maxNumOps;
     int __actualMaxNumOps;
     int __numExecOps;
-    unsigned int __unused2;
     unsigned char __mainQ;
-    unsigned char __suspended;
-    unsigned char __overcommit;
-    BOOL __propertyQOS;
+    _Atomic BOOL __suspended;
+    _Atomic BOOL __overcommit;
+    _Atomic unsigned char __propertyQoS;
     NSObject<OS_dispatch_queue> *__dispatch_queue;
-    char __nameBuffer[160];
+    NSObject<OS_dispatch_queue> *__backingQueue;
+    NSString *__name;
+    char __nameBuffer[320];
+    _Atomic unsigned char __operationsObserverCount;
+    _Atomic unsigned char __operationCountObserverCount;
+    _Atomic unsigned char __suspendedObserverCount;
 }
 
 - (void)dealloc;

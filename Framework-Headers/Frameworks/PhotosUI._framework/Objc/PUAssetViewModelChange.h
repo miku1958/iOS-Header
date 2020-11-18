@@ -6,44 +6,46 @@
 
 #import <PhotosUI/PUViewModelChange.h>
 
-@class PUBrowsingIrisPlayerChange, PUBrowsingVideoPlayerChange;
+@class PUBrowsingAnimatedImagePlayerChange, PUBrowsingIrisPlayerChange, PUBrowsingVideoPlayerChange;
 
 @interface PUAssetViewModelChange : PUViewModelChange
 {
     BOOL _assetChanged;
     BOOL _modelTileTransformChanged;
     BOOL _isUserTransformingTileDidChange;
-    BOOL _isInFocusChanged;
     BOOL _focusValueChanged;
     BOOL _loadingStatusChanged;
+    BOOL _saveProgressChanged;
+    BOOL _saveStateChanged;
     BOOL _forceBadgesVisibleChanged;
     BOOL _badgeInfoChanged;
-    BOOL _wantsIrisBadgeVisibleChanged;
+    BOOL _isUpdatingDisplayedContentChanged;
     BOOL _isFavoriteChanged;
     BOOL _accessoryViewVisibilityChanged;
     BOOL _contentOffsetChanged;
     BOOL _isInEditModeChanged;
-    BOOL _badgeInfoPromiseChanged;
     PUBrowsingVideoPlayerChange *_videoPlayerChange;
     PUBrowsingIrisPlayerChange *_irisPlayerChange;
+    PUBrowsingAnimatedImagePlayerChange *_animatedImageChange;
 }
 
 @property (nonatomic, setter=_setAccessoryViewVisibilityChanged:) BOOL accessoryViewVisibilityChanged; // @synthesize accessoryViewVisibilityChanged=_accessoryViewVisibilityChanged;
+@property (strong, nonatomic, setter=_setAnimatedImageChange:) PUBrowsingAnimatedImagePlayerChange *animatedImageChange; // @synthesize animatedImageChange=_animatedImageChange;
 @property (nonatomic, setter=_setAssetChanged:) BOOL assetChanged; // @synthesize assetChanged=_assetChanged;
-@property (readonly, nonatomic) BOOL badgeInfoChanged; // @synthesize badgeInfoChanged=_badgeInfoChanged;
-@property (nonatomic, setter=_setBadgeInfoPromiseChanged:) BOOL badgeInfoPromiseChanged; // @synthesize badgeInfoPromiseChanged=_badgeInfoPromiseChanged;
+@property (nonatomic, setter=_setBadgeInfoChanged:) BOOL badgeInfoChanged; // @synthesize badgeInfoChanged=_badgeInfoChanged;
 @property (nonatomic, setter=_setContentOffsetChanged:) BOOL contentOffsetChanged; // @synthesize contentOffsetChanged=_contentOffsetChanged;
 @property (nonatomic, setter=_setFocusValueChanged:) BOOL focusValueChanged; // @synthesize focusValueChanged=_focusValueChanged;
 @property (nonatomic, setter=_setForceBadgesVisibleChanged:) BOOL forceBadgesVisibleChanged; // @synthesize forceBadgesVisibleChanged=_forceBadgesVisibleChanged;
 @property (strong, nonatomic, setter=_setIrisPlayerChange:) PUBrowsingIrisPlayerChange *irisPlayerChange; // @synthesize irisPlayerChange=_irisPlayerChange;
 @property (nonatomic, setter=_setIsFavoriteChanged:) BOOL isFavoriteChanged; // @synthesize isFavoriteChanged=_isFavoriteChanged;
 @property (nonatomic, setter=_setIsInEditModeChanged:) BOOL isInEditModeChanged; // @synthesize isInEditModeChanged=_isInEditModeChanged;
-@property (nonatomic, setter=_setInFocusChanged:) BOOL isInFocusChanged; // @synthesize isInFocusChanged=_isInFocusChanged;
+@property (nonatomic, setter=_setIsUpdatingDisplayedContentChanged:) BOOL isUpdatingDisplayedContentChanged; // @synthesize isUpdatingDisplayedContentChanged=_isUpdatingDisplayedContentChanged;
 @property (nonatomic, setter=_setUserTransformingTileDidChange:) BOOL isUserTransformingTileDidChange; // @synthesize isUserTransformingTileDidChange=_isUserTransformingTileDidChange;
 @property (nonatomic, setter=_setLoadingStatusChanged:) BOOL loadingStatusChanged; // @synthesize loadingStatusChanged=_loadingStatusChanged;
 @property (nonatomic, setter=_setModelTileTransformChanged:) BOOL modelTileTransformChanged; // @synthesize modelTileTransformChanged=_modelTileTransformChanged;
+@property (nonatomic, setter=_setSaveProgressChanged:) BOOL saveProgressChanged; // @synthesize saveProgressChanged=_saveProgressChanged;
+@property (nonatomic, setter=_setSaveStateChanged:) BOOL saveStateChanged; // @synthesize saveStateChanged=_saveStateChanged;
 @property (strong, nonatomic, setter=_setVideoPlayerChange:) PUBrowsingVideoPlayerChange *videoPlayerChange; // @synthesize videoPlayerChange=_videoPlayerChange;
-@property (nonatomic, setter=_setWantsIrisBadgeVisibleChanged:) BOOL wantsIrisBadgeVisibleChanged; // @synthesize wantsIrisBadgeVisibleChanged=_wantsIrisBadgeVisibleChanged;
 
 - (void).cxx_destruct;
 - (BOOL)hasChanges;

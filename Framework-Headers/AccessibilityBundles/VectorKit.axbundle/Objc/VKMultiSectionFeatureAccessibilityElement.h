@@ -10,8 +10,8 @@
 {
 }
 
-- (int)_accessibilityMapFeatureType;
-- (void)_startUpdatingDescriptionForBuilding:(CDStruct_6ac9d495 *)arg1;
+- (long long)_accessibilityMapFeatureType;
+- (void)_startUpdatingDescriptionForBuilding:(CDStruct_c707fdd0 *)arg1;
 - (void)_updatePath;
 - (id)initWithAccessibilityContainer:(id)arg1 feature:(CDStruct_58d0ca89 *)arg2 featureTypeContext:(void *)arg3 ignoreMissingName:(BOOL)arg4 useLocalizedLabels:(BOOL)arg5;
 

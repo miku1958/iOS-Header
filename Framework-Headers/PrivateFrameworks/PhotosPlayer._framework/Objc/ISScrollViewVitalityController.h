@@ -24,6 +24,7 @@
 @property (nonatomic, setter=_setPerformingChanges:) BOOL _isPerformingChanges; // @synthesize _isPerformingChanges=__isPerformingChanges;
 @property (readonly, nonatomic) NSHashTable *_playerViews; // @synthesize _playerViews=__playerViews;
 @property (weak, nonatomic, setter=_setScrollView:) UIScrollView *_scrollView; // @synthesize _scrollView=__scrollView;
+@property (readonly, nonatomic) BOOL canPerformVitality;
 @property (nonatomic, getter=isDecelerating) BOOL decelerating; // @synthesize decelerating=_decelerating;
 @property (strong, nonatomic) NSDate *estimatedScrollEndDate; // @synthesize estimatedScrollEndDate=_estimatedScrollEndDate;
 @property (nonatomic) BOOL hasTargetContentOffset; // @synthesize hasTargetContentOffset=_hasTargetContentOffset;
@@ -35,6 +36,7 @@
 - (id)_newVitalityFilter;
 - (void)_updateVitalityFilters;
 - (void)addPlayerView:(id)arg1;
+- (void)canPerformVitalityDidChange;
 - (void)didLayoutPlayerViews;
 - (id)init;
 - (void)performChanges:(CDUnknownBlockType)arg1;

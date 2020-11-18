@@ -23,6 +23,7 @@
     NSArray *_changedIndexPaths;
     NSArray *_contentChangedIndexPaths;
     NSArray *_favoriteChangedIndexPaths;
+    BOOL _changesAreNoOp;
     PXSectionedDataSourceChangeDetails *_sectionedDataSourceChangeDetails;
     NSIndexSet *_sectionsWithKeyAssetChanges;
     PHChange *_originatingPhotoLibraryChange;
@@ -30,6 +31,7 @@
 
 @property (readonly, copy) NSArray *changedIndexPaths;
 @property (readonly, copy) NSIndexSet *changedSections;
+@property (readonly) BOOL changesAreNoOp;
 @property (readonly, copy) NSArray *contentChangedIndexPaths;
 @property (readonly, copy) NSArray *deletedIndexPaths;
 @property (readonly, copy) NSIndexSet *deletedSections;

@@ -8,7 +8,6 @@
 
 @class EKEvent, EKEventAttendeePicker, NSArray;
 
-__attribute__((visibility("hidden")))
 @interface EKEventAttendeesEditViewController : EKEditItemViewController
 {
     EKEventAttendeePicker *_picker;
@@ -26,6 +25,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_attendeeFromRecipient:(id)arg1;
 - (void)_cancelTapped:(id)arg1;
+- (id)_createAttendeeFromRecipient:(id)arg1;
+- (id)_createRecipientFromAttendee:(id)arg1;
 - (void)_doneTapped:(id)arg1;
 - (id)_firstInvalidRecipientAddress;
 - (id)_recipientFromAttendee:(id)arg1;

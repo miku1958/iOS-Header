@@ -8,27 +8,35 @@
 
 #import <CloudDocs/NSCopying-Protocol.h>
 #import <CloudDocs/NSSecureCoding-Protocol.h>
+#import <CloudDocs/PQLValuable-Protocol.h>
 
-@class NSNumber;
+@class NSNumber, NSString;
 
-@interface BRFileObjectID : NSObject <NSSecureCoding, NSCopying>
+@interface BRFileObjectID : NSObject <NSSecureCoding, NSCopying, PQLValuable>
 {
 }
 
+@property (readonly, nonatomic) NSString *asString;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSNumber *documentID;
 @property (readonly, nonatomic) NSNumber *folderID;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isDocumentID;
 @property (readonly, nonatomic) BOOL isFolderOrAliasID;
 @property (readonly, nonatomic) unsigned long long rawID;
+@property (readonly) Class superclass;
 
 + (id)fileObjectIDForURL:(id)arg1 allocateDocID:(BOOL)arg2 error:(id *)arg3;
++ (id)fileObjectIDWithString:(id)arg1;
++ (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToFileObjectID:(id)arg1;
+- (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
 
 @end
 

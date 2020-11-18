@@ -14,18 +14,26 @@
     long long _status;
     long long _request;
     long long _objectAnchor;
+    long long _modificationEpoch;
+    double _modificationDate;
 }
 
-@property (readonly) long long objectAnchor; // @synthesize objectAnchor=_objectAnchor;
-@property (readonly) long long request;
-@property (readonly) long long status;
+@property (readonly, nonatomic) double modificationDate; // @synthesize modificationDate=_modificationDate;
+@property (readonly, nonatomic) long long modificationEpoch; // @synthesize modificationEpoch=_modificationEpoch;
+@property (readonly, nonatomic) long long objectAnchor; // @synthesize objectAnchor=_objectAnchor;
+@property (readonly, nonatomic) long long request; // @synthesize request=_request;
+@property (readonly, nonatomic) long long status; // @synthesize status=_status;
 
++ (id)recordWithReadingDisabledFromRecord:(id)arg1;
++ (id)recordWithSharingDisabledFromRecord:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)deniedReading;
+- (BOOL)deniedSharing;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithAuthorizationStatus:(long long)arg1 authorizationRequest:(long long)arg2 objectAnchor:(long long)arg3;
+- (id)initWithAuthorizationStatus:(long long)arg1 authorizationRequest:(long long)arg2 objectAnchor:(long long)arg3 modificationEpoch:(long long)arg4 modificationDate:(double)arg5;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isCompatibleStatus:(long long)arg1;
 - (BOOL)isEqual:(id)arg1;

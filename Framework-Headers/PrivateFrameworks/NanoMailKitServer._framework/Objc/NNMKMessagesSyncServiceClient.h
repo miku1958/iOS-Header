@@ -24,6 +24,7 @@
 - (void)requestCompactMessages:(id)arg1;
 - (id)sendMessage:(id)arg1;
 - (void)successfullySentProtobufWithIDSIdentifier:(id)arg1;
+- (id)updateMailboxSelection:(id)arg1;
 - (id)updateMessagesStatus:(id)arg1;
 - (void)warnMessagesFilteredOut:(id)arg1;
 

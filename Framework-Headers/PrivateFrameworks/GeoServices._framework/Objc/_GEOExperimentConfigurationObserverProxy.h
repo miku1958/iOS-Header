@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSHashTable, NSLock;
 @protocol OS_dispatch_queue;
@@ -17,10 +17,10 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
+- (void).cxx_destruct;
 - (void)addObserver:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)forEachObserver:(CDUnknownBlockType)arg1;
 - (id)init;

@@ -11,6 +11,7 @@
 @interface PXAssetsDataSourceChangeTransitionCoordinator : PXAssetsTileTransitionCoordinator
 {
     PXBasicTileAnimationOptions *_deleteAnimationOptions;
+    PXBasicTileAnimationOptions *_insertAnimationOptions;
     NSMutableDictionary *_overrideInitialGeometryByTileIdentifier;
     NSMutableDictionary *_overrideFinalGeometryByTileIdentifier;
 }
@@ -21,6 +22,7 @@
 - (BOOL)getInitialGeometry:(out struct PXTileGeometry *)arg1 initialUserData:(out id *)arg2 forAppearingTileWithIdentifier:(struct PXTileIdentifier)arg3 toGeometry:(struct PXTileGeometry)arg4 toUserData:(id)arg5;
 - (id)initWithTilingChange:(id)arg1 changeHistory:(id)arg2;
 - (id)optionsForAnimatingTileWithIdentifier:(struct PXTileIdentifier)arg1 animationType:(long long)arg2 fromGeometry:(struct PXTileGeometry)arg3 fromUserData:(id)arg4 toGeometry:(struct PXTileGeometry)arg5 toUserData:(id)arg6;
+- (void)setDelayInsertions:(BOOL)arg1;
 - (void)setTreatRemovalsAsDeletes:(BOOL)arg1;
 - (BOOL)useDoubleSidedAnimationForUpdatedTileWithIdentifier:(struct PXTileIdentifier)arg1 fromGeometry:(struct PXTileGeometry)arg2 fromUserData:(id)arg3 toGeometry:(struct PXTileGeometry)arg4 toUserData:(id)arg5;
 

@@ -11,6 +11,7 @@
     unsigned long long _value;
 }
 
++ (id)_localizedNameForActionForValue:(unsigned long long)arg1;
 + (id)_localizedNameForValue:(unsigned long long)arg1;
 + (id)_nameLocalizationKeyForValue:(unsigned long long)arg1;
 + (id)_optionWithValue:(unsigned long long)arg1;
@@ -29,6 +30,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValidOption;
 - (id)localizedName;
+- (id)localizedNameForAction;
 
 @end
 

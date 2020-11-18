@@ -15,6 +15,8 @@
 
 @optional
 - (void)previewInteractionController:(_UIPreviewInteractionController *)arg1 didDismissViewController:(UIViewController *)arg2 committing:(BOOL)arg3;
+- (void)previewInteractionController:(_UIPreviewInteractionController *)arg1 willDismissViewController:(UIViewController *)arg2;
+- (void)previewInteractionController:(_UIPreviewInteractionController *)arg1 willPresentViewController:(UIViewController *)arg2;
 - (void)previewInteractionController:(_UIPreviewInteractionController *)arg1 willPresentViewController:(UIViewController *)arg2 forLocation:(struct CGPoint)arg3 inSourceView:(UIView *)arg4;
 @end
 

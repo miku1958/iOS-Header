@@ -13,6 +13,7 @@
     NSData *_approximateLocationData;
     NSData *_reverseLocationData;
     BOOL _reverseLocationDataIsValid;
+    BOOL _reverseLocationDataContainsLocation;
     short _generationType;
     NSDate *_representativeDate;
     NSDate *_modificationDate;
@@ -22,14 +23,13 @@
 @property (readonly, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (readonly, nonatomic) NSDate *representativeDate; // @synthesize representativeDate=_representativeDate;
 
-+ (id)_transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 + (id)entityKeyForPropertyKey:(id)arg1;
-+ (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
 + (id)fetchType;
 + (id)identifierCode;
 + (id)managedEntityName;
 + (BOOL)managedObjectSupportsTrashedState;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
++ (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 - (void).cxx_destruct;
 - (void)_decodeTitlesIfNeeded;
 - (id)approximateLocation;
@@ -38,6 +38,8 @@
 - (Class)changeRequestClass;
 - (BOOL)collectionHasFixedOrder;
 - (id)description;
+- (BOOL)hasLocalizedTitle;
+- (BOOL)hasLocationInfo;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (BOOL)isMeaningful;
 - (id)localizedLocationNames;

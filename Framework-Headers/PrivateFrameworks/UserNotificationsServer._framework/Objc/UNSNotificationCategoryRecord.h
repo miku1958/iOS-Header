@@ -12,10 +12,13 @@
 {
     BOOL _hasCustomDismissAction;
     BOOL _shouldAllowInCarPlay;
+    BOOL _privacyOptionShowTitle;
+    BOOL _privacyOptionShowSubtitle;
     NSArray *_actions;
     NSString *_identifier;
     NSArray *_intentIdentifiers;
     NSArray *_minimalActions;
+    NSString *_privateBody;
 }
 
 @property (copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
@@ -23,6 +26,9 @@
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSArray *intentIdentifiers; // @synthesize intentIdentifiers=_intentIdentifiers;
 @property (copy, nonatomic) NSArray *minimalActions; // @synthesize minimalActions=_minimalActions;
+@property (nonatomic) BOOL privacyOptionShowSubtitle; // @synthesize privacyOptionShowSubtitle=_privacyOptionShowSubtitle;
+@property (nonatomic) BOOL privacyOptionShowTitle; // @synthesize privacyOptionShowTitle=_privacyOptionShowTitle;
+@property (copy, nonatomic) NSString *privateBody; // @synthesize privateBody=_privateBody;
 @property (nonatomic) BOOL shouldAllowInCarPlay; // @synthesize shouldAllowInCarPlay=_shouldAllowInCarPlay;
 
 - (void).cxx_destruct;

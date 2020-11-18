@@ -8,24 +8,26 @@
 
 #import <PhotosUICore/UITableViewDataSource-Protocol.h>
 #import <PhotosUICore/UITableViewDelegate-Protocol.h>
+#import <PhotosUICore/UITextViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, UITableViewController;
+@class NSArray, NSMutableDictionary, NSString, UITableViewController, UITextView;
+@protocol PXFeedbackFormDelegate;
 
-@interface PXFeedbackFormUIViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface PXFeedbackFormUIViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 {
-    unsigned long long _feedbackCollectionType;
-    NSArray *_feedbackKeys;
-    NSMutableDictionary *_feedbackValues;
     BOOL _userLikedIt;
-    BOOL __singleFeedbackList;
+    BOOL _wantsCustomFeedbackSection;
     NSArray *_positiveFeedbackKeys;
     NSMutableDictionary *_positiveFeedbackValues;
     NSArray *_negativeFeedbackKeys;
     NSMutableDictionary *_negativeFeedbackValues;
+    UITextView *_customFeedbackTextView;
     UITableViewController *_tableViewController;
+    id<PXFeedbackFormDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) id<PXFeedbackFormDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -33,11 +35,11 @@
 
 - (void).cxx_destruct;
 - (id)_feedbackKeyForIndexPath:(id)arg1;
+- (void)_handleDoneButtonWasPressedOnCustomFeedbackView;
 - (BOOL)_isSelectedRow:(id)arg1 inSection:(long long)arg2;
 - (void)_markCell:(id)arg1 asSelected:(BOOL)arg2;
 - (void)_setSelectionStateForKey:(id)arg1 inSection:(long long)arg2 to:(BOOL)arg3;
-- (id)initWithCollectionType:(unsigned long long)arg1 keys:(id)arg2 userLikedIt:(BOOL)arg3;
-- (id)initWithCollectionType:(unsigned long long)arg1 positiveKeys:(id)arg2 negativeKeys:(id)arg3;
+- (id)initWithDelegate:(id)arg1 positiveKeys:(id)arg2 negativeKeys:(id)arg3 wantsCustomFeedbackSection:(BOOL)arg4;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)sendFeedback:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -45,6 +47,7 @@
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (void)viewDidLoad;
 
 @end

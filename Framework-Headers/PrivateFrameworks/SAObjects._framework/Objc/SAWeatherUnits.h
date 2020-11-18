@@ -18,6 +18,7 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *distanceUnits;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *precipitationUnits;
 @property (copy, nonatomic) NSString *pressureUnits;
 @property (copy, nonatomic) NSString *speedUnits;
 @property (readonly) Class superclass;

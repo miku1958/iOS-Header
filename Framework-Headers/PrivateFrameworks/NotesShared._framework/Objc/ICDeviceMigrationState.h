@@ -17,7 +17,6 @@
 @property (nonatomic) short state; // @dynamic state;
 @property (strong, nonatomic) NSDate *stateModificationDate; // @dynamic stateModificationDate;
 
-+ (id)allCloudObjectsInContext:(id)arg1;
 + (id)allDeviceMigrationStatesInContext:(id)arg1;
 + (id)allKnownDeviceMigrationStates;
 + (id)currentDeviceMigrationState;

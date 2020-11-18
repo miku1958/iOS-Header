@@ -24,6 +24,7 @@
 + (id)_stringForGatekeeperType:(unsigned long long)arg1;
 + (BOOL)_timestamp:(id)arg1 isAfter:(id)arg2;
 + (void)logAssistantEnabledSetTo:(BOOL)arg1 by:(id)arg2;
++ (void)logCDMAssetEvictedForAssetType:(id)arg1 language:(id)arg2;
 + (void)logCreateAssistant;
 + (void)logDESEvaluationForLanguage:(id)arg1 error:(id)arg2;
 + (void)logDESRecordingForLanguage:(id)arg1 error:(id)arg2;

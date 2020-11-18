@@ -20,13 +20,13 @@
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)categoryType;
+- (void).cxx_destruct;
 - (void)addCategory:(id)arg1;
 - (id)categoryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)categorysCount;
 - (void)clearCategorys;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

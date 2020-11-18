@@ -10,7 +10,7 @@
 
 @protocol _GEOCountryConfigurationServerProxy <NSObject>
 
-@property (nonatomic) id<_GEOCountryConfigurationServerProxyDelegate> delegate;
+@property (weak, nonatomic) id<_GEOCountryConfigurationServerProxyDelegate> delegate;
 
 - (void)updateCountryCode:(void (^)(NSError *))arg1;
 @end

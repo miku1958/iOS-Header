@@ -17,6 +17,7 @@
     NSArray *_sections;
     NSArray *_results;
     NSDictionary *_rawSqf;
+    NSDictionary *_serverFeatures;
     NSArray *_suggestions;
     NSArray *_corrections;
     GEOUserSessionEntity *_geoUserSessionEntity;
@@ -31,11 +32,13 @@
 @property (readonly, nonatomic) PARReply *reply; // @synthesize reply=_reply;
 @property (strong, nonatomic) NSArray *results; // @synthesize results=_results;
 @property (readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
+@property (readonly, nonatomic) NSDictionary *serverFeatures; // @synthesize serverFeatures=_serverFeatures;
 @property (readonly, nonatomic) NSArray *suggestions; // @synthesize suggestions=_suggestions;
 
 + (id)responseFromJSON:(id)arg1 session:(id)arg2;
 + (id)responseFromReply:(id)arg1;
 - (void).cxx_destruct;
+- (id)initWithReply:(id)arg1;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSLock, NSMutableDictionary;
+@class MFFileCompressionQueue, NSLock, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface MFAttachmentManager : NSObject
@@ -17,6 +17,7 @@
     NSMutableDictionary *_metadata;
     NSLock *_metaDataLock;
     NSObject<OS_dispatch_queue> *_imageScalingQueue;
+    MFFileCompressionQueue *_compressionQueue;
 }
 
 + (id)allManagers;
@@ -40,9 +41,9 @@
 - (id)attachmentsForURLs:(id)arg1 error:(id *)arg2;
 - (void)cancelFetchForAttachment:(id)arg1;
 - (void)clearMetadataForAttachment:(id)arg1;
+- (id)compressionQueue;
 - (void)dealloc;
 - (void)fetchDataForAttachment:(id)arg1;
-- (void)fetchDataForAttachment:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchDataSynchronouslyForAttachment:(id)arg1;
 - (id)imageScalingQueue;
 - (id)init;

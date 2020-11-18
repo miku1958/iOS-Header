@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSPort.h>
+#import <Foundation/NSPort.h>
 
 @interface NSMessagePort : NSPort
 {

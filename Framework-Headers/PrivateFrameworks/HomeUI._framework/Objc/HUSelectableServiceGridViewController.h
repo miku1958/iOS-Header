@@ -48,7 +48,7 @@
 - (void)didSelectItem:(id)arg1;
 - (id)initWithItemManager:(id)arg1;
 - (id)initWithServiceGridItemManager:(id)arg1;
-- (BOOL)itemManager:(id)arg1 performBatchUpdateBlock:(CDUnknownBlockType)arg2;
+- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (BOOL)presentationCoordinator:(id)arg1 shouldBeginInteractivePresentationWithTouchLocation:(struct CGPoint)arg2;
 
 @end

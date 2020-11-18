@@ -17,7 +17,9 @@
     BOOL _contentSynced;
     BOOL _contentRequestedByUser;
     BOOL _resendRequested;
+    BOOL _isThreadSpecific;
     NSString *_messageId;
+    NSString *_sanitizedMessageId;
     unsigned long long _status;
     unsigned long long _statusVersion;
     NSDate *_dateReceived;
@@ -25,6 +27,8 @@
     NSString *_conversationId;
     unsigned long long _resendInterval;
     unsigned long long _contentResendInterval;
+    NSString *_mailboxId;
+    unsigned long long _isSpecialMailboxSpecific;
 }
 
 @property (strong, nonatomic) NSMutableSet *attachmentsContentIdsNotYetSynced; // @synthesize attachmentsContentIdsNotYetSynced=_attachmentsContentIdsNotYetSynced;
@@ -35,9 +39,13 @@
 @property (nonatomic) BOOL contentSyncedUsingNotificationPriority; // @synthesize contentSyncedUsingNotificationPriority=_contentSyncedUsingNotificationPriority;
 @property (strong, nonatomic) NSString *conversationId; // @synthesize conversationId=_conversationId;
 @property (strong, nonatomic) NSDate *dateReceived; // @synthesize dateReceived=_dateReceived;
+@property (nonatomic) unsigned long long isSpecialMailboxSpecific; // @synthesize isSpecialMailboxSpecific=_isSpecialMailboxSpecific;
+@property (nonatomic) BOOL isThreadSpecific; // @synthesize isThreadSpecific=_isThreadSpecific;
+@property (strong, nonatomic) NSString *mailboxId; // @synthesize mailboxId=_mailboxId;
 @property (strong, nonatomic) NSString *messageId; // @synthesize messageId=_messageId;
 @property (nonatomic) unsigned long long resendInterval; // @synthesize resendInterval=_resendInterval;
 @property (nonatomic) BOOL resendRequested; // @synthesize resendRequested=_resendRequested;
+@property (strong, nonatomic) NSString *sanitizedMessageId; // @synthesize sanitizedMessageId=_sanitizedMessageId;
 @property (nonatomic) unsigned long long status; // @synthesize status=_status;
 @property (nonatomic) unsigned long long statusVersion; // @synthesize statusVersion=_statusVersion;
 @property (nonatomic) BOOL usedNotificationPriorityForMessageSync; // @synthesize usedNotificationPriorityForMessageSync=_usedNotificationPriorityForMessageSync;
@@ -46,6 +54,8 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithMessage:(id)arg1;
+- (id)initWithMessage:(id)arg1 useDefaultMailbox:(BOOL)arg2;
+- (BOOL)isContentCompletelySynced;
 
 @end
 

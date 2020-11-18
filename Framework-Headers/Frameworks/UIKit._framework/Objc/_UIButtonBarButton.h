@@ -6,36 +6,57 @@
 
 #import <UIKit/UIControl.h>
 
-@class _UIButtonBarButtonVisualProvider;
+#import <UIKit/UISpringLoadedInteractionSupporting-Protocol.h>
+
+@class NSLayoutConstraint, NSString, _UIButtonBarButtonVisualProvider;
 
 __attribute__((visibility("hidden")))
-@interface _UIButtonBarButton : UIControl
+@interface _UIButtonBarButton : UIControl <UISpringLoadedInteractionSupporting>
 {
     _UIButtonBarButtonVisualProvider *_visualProvider;
+    NSLayoutConstraint *_widthMinimizingConstraint;
+    NSLayoutConstraint *_heightMinimizingConstraint;
+    struct CGRect _hitRect;
     BOOL _backButton;
 }
 
 @property (readonly, nonatomic, getter=isBackButton) BOOL backButton; // @synthesize backButton=_backButton;
+@property (nonatomic, getter=_buttonBarHitRect, setter=_setButtonBarHitRect:) struct CGRect buttonBarHitRect;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSLayoutConstraint *heightMinimizingConstraint;
+@property (nonatomic, getter=isSpringLoaded) BOOL springLoaded;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) _UIButtonBarButtonVisualProvider *visualProvider; // @synthesize visualProvider=_visualProvider;
+@property (readonly, nonatomic) NSLayoutConstraint *widthMinimizingConstraint;
 
 - (void).cxx_destruct;
 - (void)_accessibilitySettingsChanged:(id)arg1;
-- (void)_configureFromBarItem:(id)arg1 isBackButton:(BOOL)arg2;
+- (BOOL)_accessibilityShouldActivateOnHUDLift;
+- (void)_configureFromBarItem:(id)arg1 appearanceDelegate:(id)arg2 isBackButton:(BOOL)arg3;
+- (unsigned long long)_controlEventsForActionTriggered;
 - (struct UIEdgeInsets)alignmentRectInsets;
-- (void)configureBackButtonFromBarItem:(id)arg1;
-- (void)configureFromBarItem:(id)arg1;
+- (void)configureBackButtonFromBarItem:(id)arg1 withAppearanceDelegate:(id)arg2;
+- (void)configureFromBarItem:(id)arg1 withAppearanceDelegate:(id)arg2;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithVisualProvider:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)layoutSubviews;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (BOOL)pointMostlyInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)reset;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)willMoveToSuperview:(id)arg1;
+- (void)willMoveToWindow:(id)arg1;
 
 @end
 

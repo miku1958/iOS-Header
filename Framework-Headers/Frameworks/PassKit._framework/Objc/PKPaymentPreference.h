@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSMutableDictionary, NSString;
 
 @interface PKPaymentPreference : NSObject
 {
+    NSMutableDictionary *_errors;
     BOOL _isReadOnly;
     BOOL _supportsDeletion;
     NSString *_title;
@@ -18,6 +19,7 @@
     unsigned long long _selectedIndex;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *errors; // @synthesize errors=_errors;
 @property (copy, nonatomic) NSString *footer; // @synthesize footer=_footer;
 @property (nonatomic) BOOL isReadOnly; // @synthesize isReadOnly=_isReadOnly;
 @property (copy, nonatomic) NSArray *preferences; // @synthesize preferences=_preferences;
@@ -26,7 +28,10 @@
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
+- (void)clearAllErrors;
+- (id)errorsForPreference:(id)arg1;
 - (id)initWithTitle:(id)arg1 preferences:(id)arg2 selectedIndex:(unsigned long long)arg3 readOnly:(BOOL)arg4;
+- (void)setErrors:(id)arg1 forPreference:(id)arg2;
 
 @end
 

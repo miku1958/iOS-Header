@@ -4,26 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHome, HMFMessageDispatcher, NSMutableArray, NSString, NSUUID;
+@class HMDHome, HMFMessageDispatcher, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDZone : NSObject <HMFMessageReceiver, HMFDumpState, NSSecureCoding>
+@interface HMDZone : HMFObject <HMFMessageReceiver, HMFDumpState, NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
     NSString *_name;
     NSUUID *_uuid;
+    NSMutableDictionary *_currentRooms;
+    NSMutableArray *_roomUUIDs;
     NSObject<OS_dispatch_queue> *_workQueue;
-    NSMutableArray *_currentRooms;
     HMDHome *_home;
     HMFMessageDispatcher *_msgDispatcher;
 }
 
-@property (strong, nonatomic) NSMutableArray *currentRooms; // @synthesize currentRooms=_currentRooms;
+@property (strong, nonatomic) NSMutableDictionary *currentRooms; // @synthesize currentRooms=_currentRooms;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -32,27 +34,36 @@
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (strong, nonatomic) NSMutableArray *roomUUIDs; // @synthesize roomUUIDs=_roomUUIDs;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_checkForAddValidity:(id)arg1 room:(id *)arg2;
 - (void)_handleAddRoom:(id)arg1;
 - (void)_handleRemoveRoom:(id)arg1;
 - (void)_handleRename:(id)arg1;
+- (id)_handleRenameZoneTransaction:(id)arg1 error:(id *)arg2;
+- (id)_handleSetRoomsZoneTransaction:(id)arg1 error:(id *)arg2;
 - (void)_registerForMessages;
 - (id)assistantObject;
+- (id)backingStoreObjects:(long long)arg1;
 - (void)configure:(id)arg1 queue:(id)arg2;
 - (void)dealloc;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 uuid:(id)arg2 home:(id)arg3 queue:(id)arg4;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (void)removeRoom:(id)arg1;
 - (id)roomWithName:(id)arg1;
 - (id)roomWithUUID:(id)arg1;
 - (id)rooms;
+- (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
+- (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (id)updateZoneWithModel:(id)arg1 message:(id)arg2;
 - (id)url;
 
 @end

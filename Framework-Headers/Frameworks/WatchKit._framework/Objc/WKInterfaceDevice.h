@@ -10,7 +10,10 @@
 
 @interface WKInterfaceDevice : NSObject
 {
+    BOOL _batteryMonitoringEnabled;
+    float _batteryLevel;
     double _screenScale;
+    long long _batteryState;
     NSString *_preferredContentSizeCategory;
     long long _layoutDirection;
     long long _wristLocation;
@@ -23,6 +26,9 @@
     struct CGRect _screenBounds;
 }
 
+@property (readonly, nonatomic) float batteryLevel; // @synthesize batteryLevel=_batteryLevel;
+@property (nonatomic, getter=isBatteryMonitoringEnabled) BOOL batteryMonitoringEnabled; // @synthesize batteryMonitoringEnabled=_batteryMonitoringEnabled;
+@property (readonly, nonatomic) long long batteryState; // @synthesize batteryState=_batteryState;
 @property (readonly, nonatomic) NSDictionary *cachedImages;
 @property (readonly, nonatomic) long long crownOrientation; // @synthesize crownOrientation=_crownOrientation;
 @property (copy, nonatomic) NSString *deviceLocalizedModel; // @synthesize deviceLocalizedModel=_deviceLocalizedModel;

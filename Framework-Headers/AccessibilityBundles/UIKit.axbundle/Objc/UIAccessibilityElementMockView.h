@@ -22,6 +22,7 @@
 
 - (void).cxx_destruct;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
+- (BOOL)_accessibilityCanPerformEscapeAction;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (BOOL)_accessibilityIsScannerElement;
@@ -35,7 +36,7 @@
 - (long long)_accessibilityPageIndex;
 - (struct _NSRange)_accessibilityRangeForLineNumberAndColumn:(id)arg1;
 - (id)_accessibilityScannerGroupElements;
-- (int)_accessibilityScannerGroupTraits;
+- (unsigned long long)_accessibilityScannerGroupTraits;
 - (id)_accessibilityScrollAncestor;
 - (BOOL)_accessibilityScrollToVisible;
 - (struct _NSRange)_accessibilitySelectedTextRange;
@@ -49,7 +50,6 @@
 - (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint;
 - (long long)accessibilityCompareGeometry:(id)arg1;
-- (id)accessibilityContainerElements;
 - (id)accessibilityCustomActions;
 - (id)accessibilityCustomRotors;
 - (void)accessibilityDecrement;
@@ -57,6 +57,7 @@
 - (long long)accessibilityElementCount;
 - (void)accessibilityElementDidBecomeFocused;
 - (void)accessibilityElementDidLoseFocus;
+- (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityHint;
 - (id)accessibilityIdentification;

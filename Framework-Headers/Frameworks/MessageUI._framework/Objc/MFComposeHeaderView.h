@@ -16,11 +16,9 @@
     UIView *_highlightBackgroundView;
     BOOL _showsHighlightWhenTouched;
     NSString *_navTitle;
-    double _labelIndentation;
 }
 
 @property (copy, nonatomic) NSString *label; // @dynamic label;
-@property (nonatomic) double labelIndentation; // @synthesize labelIndentation=_labelIndentation;
 @property (readonly, nonatomic) MFHeaderLabelView *labelView; // @synthesize labelView=_labelView;
 @property (copy, nonatomic) NSString *navTitle; // @synthesize navTitle=_navTitle;
 @property (nonatomic) BOOL showsHighlightWhenTouched; // @synthesize showsHighlightWhenTouched=_showsHighlightWhenTouched;
@@ -33,17 +31,20 @@
 - (id)_automationID;
 - (id)_baseAttributes;
 - (BOOL)_canBecomeFirstResponder;
+- (struct CGRect)_contentRect;
+- (struct CGRect)_exclusionRectForView:(id)arg1 alongEdge:(unsigned long long)arg2;
 - (id)_highlightedBackgroundView;
 - (struct UIEdgeInsets)_recipientViewEdgeInsets;
+- (BOOL)_shouldEmbedLabelInTextView;
 - (void)dealloc;
 - (void)handleTouchesEnded;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)labelColor;
 - (double)labelTopPadding;
+- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (void)refreshPreferredContentSize;
 - (void)setDelegate:(id)arg1;
-- (void)setFrame:(struct CGRect)arg1;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (struct CGRect)titleLabelBaselineAlignmentRectForLabel:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;

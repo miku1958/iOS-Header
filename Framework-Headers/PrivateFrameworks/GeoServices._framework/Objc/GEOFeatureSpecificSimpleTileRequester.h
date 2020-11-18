@@ -8,13 +8,17 @@
 
 @interface GEOFeatureSpecificSimpleTileRequester : GEOVoltaireSimpleTileRequester
 {
-    unsigned long long _featureID;
-    BOOL _shouldLocalize;
 }
 
-- (id)_localizationURLForTileKey:(struct _GEOTileKey *)arg1;
-- (id)initWithKeyList:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3 shouldLocalize:(BOOL)arg4 featureID:(unsigned long long)arg5;
-- (id)urlForTileKey:(struct _GEOTileKey *)arg1;
++ (unsigned char)tileProviderIdentifier;
+- (unsigned char)_authTypeForTileKey:(const struct _GEOTileKey *)arg1;
+- (id)_localizationURLForTileKey:(const struct _GEOTileKey *)arg1;
+- (struct _GEOTileKey)_regularTileKeyForTransitLineSelectionTileKey:(const struct _GEOTileKey *)arg1 muid:(unsigned long long *)arg2;
+- (int)checksumMethodForIncomingTileDataWithKey:(const struct _GEOTileKey *)arg1;
+- (id)newXPCDataRequestForTileKey:(const struct _GEOTileKey *)arg1;
+- (BOOL)tileDataIsCacheableForTileKey:(const struct _GEOTileKey *)arg1;
+- (unsigned int)tileEditionForKey:(const struct _GEOTileKey *)arg1;
+- (id)urlForTileKey:(const struct _GEOTileKey *)arg1;
 
 @end
 

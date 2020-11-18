@@ -12,8 +12,10 @@
 
 @interface NNMKAttachment : NSTextAttachment <NSSecureCoding>
 {
+    NSString *_url;
     NSString *_contentId;
     NSString *_fileName;
+    NSString *_mimePartNumber;
     unsigned long long _fileSize;
     unsigned long long _type;
 }
@@ -21,7 +23,9 @@
 @property (strong, nonatomic) NSString *contentId; // @synthesize contentId=_contentId;
 @property (strong, nonatomic) NSString *fileName; // @synthesize fileName=_fileName;
 @property (nonatomic) unsigned long long fileSize; // @synthesize fileSize=_fileSize;
+@property (strong, nonatomic) NSString *mimePartNumber; // @synthesize mimePartNumber=_mimePartNumber;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
+@property (strong, nonatomic) NSString *url; // @synthesize url=_url;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

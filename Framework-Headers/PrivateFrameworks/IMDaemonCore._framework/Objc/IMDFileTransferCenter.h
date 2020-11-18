@@ -27,27 +27,30 @@
 + (id)sharedInstance;
 - (void)_addActiveTransfer:(id)arg1;
 - (void)_addGatekeeperProperties:(id)arg1 toDirectory:(id)arg2;
-- (int)_addGatekeeperProperties:(id)arg1 toFileAtPath:(id)arg2;
+- (void)_addGatekeeperProperties:(id)arg1 toFileAtPath:(id)arg2;
 - (void)_addSpotlightPropertiesFromFileTransfer:(id)arg1 toDirectory:(id)arg2;
 - (void)_addTransferringTransfer:(id)arg1;
 - (id)_allFileTransfers;
 - (void)_archiveFileTransfer:(id)arg1;
+- (id)_attachmentStoreSharedInstance;
 - (void)_clearProgressForTransferGUID:(id)arg1;
 - (void)_completeProgressForTransferGUID:(id)arg1;
 - (id)_createWrapperForTransfer:(id)arg1;
 - (id)_dictionaryRepresentationsForFileTransfers:(id)arg1 toSave:(BOOL)arg2;
+- (id)_getNewFileTransferForStoredAttachmentPayloadDataWithTransferGUID:(id)arg1 messageGUID:(id)arg2;
 - (void)_handleFileTransfer:(id)arg1 acceptedWithPath:(id)arg2 autoRename:(BOOL)arg3 overwrite:(BOOL)arg4 postNotification:(BOOL)arg5;
 - (void)_handleFileTransfer:(id)arg1 createdWithProperties:(id)arg2 fromPid:(int)arg3;
 - (void)_handleFileTransfer:(id)arg1 updatedWithProperties:(id)arg2;
 - (void)_handleFileTransferRemoved:(id)arg1;
 - (void)_handleFileTransferStopped:(id)arg1;
 - (void)_handleSendFileTransfer:(id)arg1;
-- (id)_newFileTransferForStoredAttachmentPayloadDataWithTransferGUID:(id)arg1 messageGUID:(id)arg2;
+- (id)_messageStoreSharedInstance;
 - (void)_postUpdated:(id)arg1;
 - (id)_progressForTransferGUID:(id)arg1 allowCreate:(BOOL)arg2 path:(id)arg3;
 - (void)_removeActiveTransfer:(id)arg1;
 - (void)_removeTransferringTransfer:(id)arg1;
 - (id)_removeWrapperForTransfer:(id)arg1;
+- (BOOL)_shouldDownloadAssetForTransfer:(id)arg1 forMessageItem:(id)arg2;
 - (id)_temporaryPathForGUID:(id)arg1 filename:(id)arg2;
 - (void)_transferTimerTick:(id)arg1;
 - (void)_updateContextStamp;
@@ -59,6 +62,7 @@
 - (void)broadcastTransfersWithGUIDs:(id)arg1 atLocalPaths:(id)arg2;
 - (void)dealloc;
 - (void)endTransfer:(id)arg1;
+- (void)endTransfer:(id)arg1 overrideFinalFileName:(id)arg2;
 - (void)failTransfer:(id)arg1 error:(id)arg2;
 - (void)failTransfer:(id)arg1 reason:(long long)arg2;
 - (void)fileCopierDidFinish:(id)arg1;
@@ -68,12 +72,17 @@
 - (id)guidForNewOutgoingTransferWithLocalURL:(id)arg1;
 - (id)guidsForStoredAttachmentPayloadData:(id)arg1 messageGUID:(id)arg2;
 - (id)init;
+- (BOOL)initiateHighQualityDownload:(id)arg1;
+- (BOOL)isSafeToDeleteTransferAttachmentPath:(id)arg1;
 - (void)makeNewIncomingTransferWithGUID:(id)arg1 filename:(id)arg2 isDirectory:(BOOL)arg3 totalBytes:(unsigned long long)arg4 hfsType:(unsigned int)arg5 hfsCreator:(unsigned int)arg6 hfsFlags:(unsigned short)arg7;
 - (void)makeNewOutgoingTransferWithGUID:(id)arg1 filename:(id)arg2 isDirectory:(BOOL)arg3 totalBytes:(unsigned long long)arg4 hfsType:(unsigned int)arg5 hfsCreator:(unsigned int)arg6 hfsFlags:(unsigned short)arg7;
 - (BOOL)markAttachment:(id)arg1 sender:(id)arg2 recipients:(id)arg3 isIncoming:(BOOL)arg4;
+- (void)markTransferAsNotSyncSuccessFullyUsingCKRecord:(id)arg1;
+- (BOOL)populateLocalURLsForTransfer:(id)arg1 fromCKRecord:(id)arg2;
 - (void)registerStandaloneTransfer:(id)arg1;
 - (void)removeTransferForGUID:(id)arg1;
 - (void)removeUnassignedTransfers;
+- (void)resetSyncStateForRecord:(id)arg1 toState:(long long)arg2;
 - (void)resetTransfer:(id)arg1 andPostReason:(long long)arg2;
 - (void)resetTransferAndPostError:(id)arg1 error:(id)arg2;
 - (void)startFinalizingTransfer:(id)arg1;
@@ -81,6 +90,8 @@
 - (id)transferForGUID:(id)arg1;
 - (void)updateTransfer:(id)arg1;
 - (void)updateTransfer:(id)arg1 currentBytes:(unsigned long long)arg2 totalBytes:(unsigned long long)arg3;
+- (void)updateTransferAsWaitingForAccept:(id)arg1;
+- (id)updateTransfersWithCKRecord:(id)arg1 recordWasFetched:(BOOL)arg2 downloadAsset:(BOOL *)arg3;
 
 @end
 

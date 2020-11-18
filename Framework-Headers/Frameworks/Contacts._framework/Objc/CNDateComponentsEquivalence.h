@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface CNDateComponentsEquivalence : NSObject
 {
 }
 
-+ (BOOL)areComponents:(id)arg1 equivalentToComponents:(id)arg2;
++ (BOOL)canUnifyComponents:(id)arg1 withComponents:(id)arg2;
 + (BOOL)isCalendar:(id)arg1 equivalentToCalendar:(id)arg2;
 + (BOOL)isComponent:(long long)arg1 equivalentToComponent:(long long)arg2;
 

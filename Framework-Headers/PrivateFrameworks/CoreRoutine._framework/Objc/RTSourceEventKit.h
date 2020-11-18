@@ -6,7 +6,7 @@
 
 #import <CoreRoutine/RTSource.h>
 
-@class NSDate, NSString;
+@class NSDate, NSDictionary, NSString;
 
 @interface RTSourceEventKit : RTSource
 {
@@ -17,23 +17,31 @@
     NSString *_title;
     NSString *_location;
     NSString *_suggestionInfo_opaqueKey;
+    NSDictionary *_suggestionsSchemaOrg;
+    unsigned long long _sharingStatus;
 }
 
 @property (readonly, nonatomic, getter=isAllDay) BOOL allDay; // @synthesize allDay=_allDay;
-@property (readonly, strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
-@property (readonly, strong, nonatomic) NSString *eventIdentifier; // @synthesize eventIdentifier=_eventIdentifier;
-@property (readonly, strong, nonatomic) NSString *location; // @synthesize location=_location;
-@property (readonly, strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
-@property (readonly, strong, nonatomic) NSString *suggestionInfo_opaqueKey; // @synthesize suggestionInfo_opaqueKey=_suggestionInfo_opaqueKey;
-@property (readonly, strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (readonly, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (readonly, nonatomic) NSString *eventIdentifier; // @synthesize eventIdentifier=_eventIdentifier;
+@property (readonly, nonatomic) NSString *location; // @synthesize location=_location;
+@property (readonly, nonatomic) unsigned long long sharingStatus; // @synthesize sharingStatus=_sharingStatus;
+@property (readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (readonly, nonatomic) NSString *suggestionInfo_opaqueKey; // @synthesize suggestionInfo_opaqueKey=_suggestionInfo_opaqueKey;
+@property (readonly, nonatomic) NSDictionary *suggestionsSchemaOrg; // @synthesize suggestionsSchemaOrg=_suggestionsSchemaOrg;
+@property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 
++ (id)sharingStatusToString:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithEventIdentifier:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 title:(id)arg4 location:(id)arg5 allDay:(BOOL)arg6 suggestionInfo_opaqueKey:(id)arg7;
+- (id)initWithEventIdentifier:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 title:(id)arg4 location:(id)arg5 allDay:(BOOL)arg6 sharingStatus:(unsigned long long)arg7;
+- (id)initWithEventIdentifier:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 title:(id)arg4 location:(id)arg5 allDay:(BOOL)arg6 sharingStatus:(unsigned long long)arg7 suggestionInfo_opaqueKey:(id)arg8;
+- (id)initWithEventIdentifier:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 title:(id)arg4 location:(id)arg5 allDay:(BOOL)arg6 sharingStatus:(unsigned long long)arg7 suggestionInfo_opaqueKey:(id)arg8 suggestionsSchemaOrg:(id)arg9;
 - (BOOL)isEqual:(id)arg1;
 
 @end

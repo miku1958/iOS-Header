@@ -10,7 +10,9 @@
 {
 }
 
-- (id)initWithIOUnit:(struct AVAudioIOUnit *)arg1;
+- (id)manualRenderingFormat;
+- (unsigned int)manualRenderingMaximumFrameCount;
+- (BOOL)setManualRenderingPCMFormat:(id)arg1 maximumFrameCount:(unsigned int)arg2;
 
 @end
 

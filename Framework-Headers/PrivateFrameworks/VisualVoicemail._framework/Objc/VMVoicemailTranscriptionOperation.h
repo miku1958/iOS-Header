@@ -6,40 +6,27 @@
 
 #import <Foundation/NSOperation.h>
 
-@class SFSpeechRecognitionTask, SFSpeechRecognizer, SFSpeechURLRecognitionRequest;
+@class NSObject, SFSpeechRecognizer, SFSpeechURLRecognitionRequest;
+@protocol OS_dispatch_queue;
 
 @interface VMVoicemailTranscriptionOperation : NSOperation
 {
-    BOOL _finished;
-    BOOL _executing;
+    NSObject<OS_dispatch_queue> *_completionQueue;
     SFSpeechRecognizer *_recognizer;
     SFSpeechURLRecognitionRequest *_request;
-    SFSpeechRecognitionTask *_task;
     CDUnknownBlockType _resultBlock;
-    CDUnknownBlockType _timeoutBlock;
     double _timeout;
-    double _timeSinceLastReceivedResult;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 @property (weak, nonatomic) SFSpeechRecognizer *recognizer; // @synthesize recognizer=_recognizer;
 @property (strong, nonatomic) SFSpeechURLRecognitionRequest *request; // @synthesize request=_request;
 @property (copy, nonatomic) CDUnknownBlockType resultBlock; // @synthesize resultBlock=_resultBlock;
-@property (strong, nonatomic) SFSpeechRecognitionTask *task; // @synthesize task=_task;
-@property (nonatomic) double timeSinceLastReceivedResult; // @synthesize timeSinceLastReceivedResult=_timeSinceLastReceivedResult;
 @property (nonatomic) double timeout; // @synthesize timeout=_timeout;
-@property (copy, nonatomic) CDUnknownBlockType timeoutBlock; // @synthesize timeoutBlock=_timeoutBlock;
 
 - (void).cxx_destruct;
-- (void)_completeOperation;
-- (void)cancel;
-- (void)cancelTimeout;
-- (void)dealloc;
 - (id)initWithRecognizer:(id)arg1 URL:(id)arg2 forceOfflineRecognition:(BOOL)arg3 resultBlock:(CDUnknownBlockType)arg4;
-- (BOOL)isAsynchronous;
-- (BOOL)isExecuting;
-- (BOOL)isFinished;
-- (void)registerForTimeoutCancellingPreviousIfNecessary;
-- (void)start;
+- (void)main;
 
 @end
 

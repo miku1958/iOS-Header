@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOMapItemPhoto-Protocol.h>
 
-@class GEOPDPhoto, GEOPhoto, NSString, NSURL;
+@class GEOPDCaptionedPhoto, GEOPDPhoto, NSArray, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface _GEOPlaceDataPhoto : NSObject <GEOMapItemPhoto>
 {
     GEOPDPhoto *_photo;
-    GEOPhoto *_geoPhoto;
+    GEOPDCaptionedPhoto *_captionedPhoto;
+    NSArray *_sortedPhotoInfos;
 }
 
 @property (readonly, nonatomic) NSString *author;
@@ -22,14 +23,19 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL displayFullPhotoInline;
-@property (readonly, nonatomic) GEOPhoto *geoPhoto; // @synthesize geoPhoto=_geoPhoto;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *licenseDescription;
 @property (readonly, nonatomic) NSURL *licenseURL;
+@property (readonly, nonatomic) double sizeRatio;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *uid;
+@property (readonly, nonatomic) BOOL useGallery;
 
-- (void)dealloc;
+- (void).cxx_destruct;
+- (id)bestPhotoForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
+- (id)initWithCaptionedPhoto:(id)arg1;
 - (id)initWithPhoto:(id)arg1;
+- (id)largestPhoto;
 
 @end
 

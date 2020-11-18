@@ -8,11 +8,13 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 
 @interface _MRCommandInfoProtobuf : PBCodable <NSCopying>
 {
     CDStruct_82f37d05 _preferredIntervals;
+    CDStruct_95bda58d _supportedInsertionPositions;
+    CDStruct_95bda58d _supportedPlaybackQueueTypes;
     struct {
         float *list;
         unsigned long long count;
@@ -30,8 +32,10 @@
     int _shuffleMode;
     int _skipFrequency;
     int _skipInterval;
+    NSMutableArray *_supportedCustomQueueIdentifiers;
     BOOL _active;
     BOOL _enabled;
+    BOOL _supportsSharedQueue;
     struct {
         unsigned int canScrub:1;
         unsigned int command:1;
@@ -45,6 +49,7 @@
         unsigned int skipInterval:1;
         unsigned int active:1;
         unsigned int enabled:1;
+        unsigned int supportsSharedQueue:1;
     } _has;
 }
 
@@ -66,6 +71,7 @@
 @property (nonatomic) BOOL hasShuffleMode;
 @property (nonatomic) BOOL hasSkipFrequency;
 @property (nonatomic) BOOL hasSkipInterval;
+@property (nonatomic) BOOL hasSupportsSharedQueue;
 @property (strong, nonatomic) NSString *localizedShortTitle; // @synthesize localizedShortTitle=_localizedShortTitle;
 @property (strong, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property (nonatomic) float maximumRating; // @synthesize maximumRating=_maximumRating;
@@ -78,15 +84,28 @@
 @property (nonatomic) int shuffleMode; // @synthesize shuffleMode=_shuffleMode;
 @property (nonatomic) int skipFrequency; // @synthesize skipFrequency=_skipFrequency;
 @property (nonatomic) int skipInterval; // @synthesize skipInterval=_skipInterval;
+@property (strong, nonatomic) NSMutableArray *supportedCustomQueueIdentifiers; // @synthesize supportedCustomQueueIdentifiers=_supportedCustomQueueIdentifiers;
+@property (readonly, nonatomic) int *supportedInsertionPositions;
+@property (readonly, nonatomic) unsigned long long supportedInsertionPositionsCount;
+@property (readonly, nonatomic) int *supportedPlaybackQueueTypes;
+@property (readonly, nonatomic) unsigned long long supportedPlaybackQueueTypesCount;
 @property (readonly, nonatomic) float *supportedRates;
 @property (readonly, nonatomic) unsigned long long supportedRatesCount;
+@property (nonatomic) BOOL supportsSharedQueue; // @synthesize supportsSharedQueue=_supportsSharedQueue;
 
++ (Class)supportedCustomQueueIdentifierType;
 - (int)StringAsCommand:(id)arg1;
 - (int)StringAsRepeatMode:(id)arg1;
 - (int)StringAsShuffleMode:(id)arg1;
 - (void)addPreferredInterval:(double)arg1;
+- (void)addSupportedCustomQueueIdentifier:(id)arg1;
+- (void)addSupportedInsertionPositions:(int)arg1;
+- (void)addSupportedPlaybackQueueType:(int)arg1;
 - (void)addSupportedRate:(float)arg1;
 - (void)clearPreferredIntervals;
+- (void)clearSupportedCustomQueueIdentifiers;
+- (void)clearSupportedInsertionPositions;
+- (void)clearSupportedPlaybackQueueTypes;
 - (void)clearSupportedRates;
 - (id)commandAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
@@ -101,8 +120,14 @@
 - (BOOL)readFrom:(id)arg1;
 - (id)repeatModeAsString:(int)arg1;
 - (void)setPreferredIntervals:(double *)arg1 count:(unsigned long long)arg2;
+- (void)setSupportedInsertionPositions:(int *)arg1 count:(unsigned long long)arg2;
+- (void)setSupportedPlaybackQueueTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setSupportedRates:(float *)arg1 count:(unsigned long long)arg2;
 - (id)shuffleModeAsString:(int)arg1;
+- (id)supportedCustomQueueIdentifierAtIndex:(unsigned long long)arg1;
+- (unsigned long long)supportedCustomQueueIdentifiersCount;
+- (int)supportedInsertionPositionsAtIndex:(unsigned long long)arg1;
+- (int)supportedPlaybackQueueTypeAtIndex:(unsigned long long)arg1;
 - (float)supportedRateAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 

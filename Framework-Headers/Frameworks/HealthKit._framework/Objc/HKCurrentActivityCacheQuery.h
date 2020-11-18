@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthKit/HKQuery.h>
+#import <HealthKit/HKLegacyQuery.h>
 
 @class NSDateComponents;
 
-@interface HKCurrentActivityCacheQuery : HKQuery
+@interface HKCurrentActivityCacheQuery : HKLegacyQuery
 {
     NSDateComponents *_statisticsIntervalComponents;
     CDUnknownBlockType _updateHandler;
@@ -20,7 +20,6 @@
 - (void).cxx_destruct;
 - (void)_queue_cleanupAfterDeactivation;
 - (void)_queue_configureQueryServerDataObject:(id)arg1;
-- (void)_queue_deliverError:(id)arg1;
 - (CDUnknownBlockType)_queue_errorHandler;
 - (BOOL)_queue_shouldStayAliveAfterInitialResults;
 - (void)_queue_validate;

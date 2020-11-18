@@ -10,13 +10,14 @@
 #import <UIKit/_UIRemoteKeyboardControllerDelegate-Protocol.h>
 #import <UIKit/_UIRemoteKeyboardDistributedViewSource-Protocol.h>
 
-@class NSArray, NSHashTable, NSMutableArray, NSMutableSet, NSString, NSXPCConnection, UIView, UIWindow, _UIKeyboardChangedInformation;
+@class FBSScene, NSArray, NSHashTable, NSMutableArray, NSMutableSet, NSString, NSXPCConnection, UIScreen, UIView, UIWindow, _UIKeyboardChangedInformation;
 @protocol _UIKeyboardArbitration;
 
 @interface _UIRemoteKeyboards : NSObject <_UIRemoteKeyboardDistributedViewSource, _UIKeyboardArbitrationClient, _UIRemoteKeyboardControllerDelegate>
 {
     NSHashTable *_windowControllers;
     int _ignoreLayoutSubviews;
+    FBSScene *_requiredScene;
     double _requiredLevel;
     NSMutableArray *_activePIDs;
     UIView *_keyboardSnapshot;
@@ -30,9 +31,13 @@
     NSMutableSet *_pendingKeyboardGrabs;
     BOOL _takingSnapshot;
     BOOL _windowEnabled;
+    UIScreen *_lastScreen;
+    BOOL _disablingKeyboard;
+    BOOL _enableMultiscreenHack;
     BOOL _currentKeyboard;
     BOOL _updatingHeight;
     BOOL _handlingRemoteEvent;
+    BOOL _shouldFence;
     NSXPCConnection *_connection;
     _UIKeyboardChangedInformation *_currentState;
 }
@@ -45,6 +50,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property BOOL disableBecomeFirstResponder;
+@property (nonatomic) BOOL enableMultiscreenHack; // @synthesize enableMultiscreenHack=_enableMultiscreenHack;
 @property (readonly) BOOL handlingRemoteEvent; // @synthesize handlingRemoteEvent=_handlingRemoteEvent;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
@@ -57,6 +64,8 @@
 @property (readonly) BOOL oldPathForSnapshot;
 @property (readonly) id<_UIKeyboardArbitration> proxy;
 @property (readonly) BOOL remoteKeyboardUndocked;
+@property (readonly, strong) FBSScene *requiredScene;
+@property (nonatomic) BOOL shouldFence; // @synthesize shouldFence=_shouldFence;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) BOOL updatingHeight; // @synthesize updatingHeight=_updatingHeight;
@@ -66,6 +75,8 @@
 + (id)serviceName;
 + (id)sharedRemoteKeyboards;
 + (BOOL)useSystemService;
+- (id)_activeScreen;
+- (void)_lostWindow:(id)arg1;
 - (void)_performOnDistributedControllersExceptSelf:(CDUnknownBlockType)arg1;
 - (void)addHostedWindowView:(id)arg1 fromPID:(int)arg2;
 - (BOOL)allowedToShowKeyboard;
@@ -100,6 +111,7 @@
 - (void)queue_keyboardChangedWithCompletion:(CDUnknownBlockType)arg1;
 - (void)queue_keyboardSuppressed:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)queue_keyboardTransition:(id)arg1 event:(unsigned long long)arg2 withInfo:(id)arg3 onComplete:(CDUnknownBlockType)arg4;
+- (void)queue_setKeyboardDisabled:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)registerController:(id)arg1;
 - (void)reloadForSnapshotting;
 - (void)resetSnapshotWithWindowCheck:(BOOL)arg1;
@@ -108,7 +120,7 @@
 - (void)setPlacement:(id)arg1 quietly:(BOOL)arg2 animated:(BOOL)arg3 generateSplitNotification:(BOOL)arg4;
 - (void)setSuppressingKeyboard:(BOOL)arg1;
 - (void)setWindowEnabled:(BOOL)arg1;
-- (void)setWindowLevel:(double)arg1 sceneLevel:(double)arg2 forScreen:(id)arg3;
+- (void)setWindowLevel:(double)arg1 sceneLevel:(double)arg2 forResponder:(id)arg3;
 - (BOOL)shouldAllowInputViewsRestoredForId:(id)arg1;
 - (void)startConnection;
 - (void)startTransition:(id)arg1 withInfo:(id)arg2;

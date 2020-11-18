@@ -4,9 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class CADObjectID;
+
 @protocol CADSourceInterface
+- (void)CADCountCalendarItemsOfType:(int)arg1 inSource:(CADObjectID *)arg2 reply:(void (^)(int, unsigned long long))arg3;
+- (void)CADDatabaseGetLocalSource:(void (^)(int, CADObjectID *))arg1;
 - (void)CADDatabaseGetSources:(void (^)(int, NSArray *))arg1;
-- (void)CADSourceGetConstraints:(CDStruct_1ef3fb1f)arg1 reply:(void (^)(int, int, int, unsigned long long))arg2;
-- (void)CADSourceRefresh:(CDStruct_1ef3fb1f)arg1 isUserRequested:(BOOL)arg2 reply:(void (^)(int))arg3;
+- (void)CADSourceGetConstraints:(CADObjectID *)arg1 reply:(void (^)(int, int, int, unsigned long long))arg2;
+- (void)CADSourceRefresh:(CADObjectID *)arg1 isUserRequested:(BOOL)arg2 reply:(void (^)(int, BOOL))arg3;
 @end
 

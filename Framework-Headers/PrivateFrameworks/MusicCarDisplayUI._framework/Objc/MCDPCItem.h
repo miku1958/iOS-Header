@@ -10,14 +10,14 @@
 
 @interface MCDPCItem : NSObject
 {
-    struct _MRContentItem *_contentItem;
+    void *_contentItem;
     BOOL _currentlyPlaying;
     MCDPCModel *_model;
 }
 
 @property (readonly, nonatomic) NSData *artworkData;
 @property (readonly, nonatomic) UIImage *artworkImage;
-@property (nonatomic) struct _MRContentItem *contentItem; // @synthesize contentItem=_contentItem;
+@property (nonatomic) void *contentItem; // @synthesize contentItem=_contentItem;
 @property (nonatomic) BOOL currentlyPlaying; // @synthesize currentlyPlaying=_currentlyPlaying;
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) BOOL isCloudItem;
@@ -30,7 +30,7 @@
 @property (readonly, nonatomic) NSString *title;
 
 - (void).cxx_destruct;
-- (id)_initWithModel:(id)arg1 MRContentItem:(struct _MRContentItem *)arg2;
+- (id)_initWithModel:(id)arg1 MRContentItem:(void *)arg2;
 - (void)dealloc;
 - (id)description;
 

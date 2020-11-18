@@ -6,27 +6,43 @@
 
 #import <SearchFoundation/SFText.h>
 
+#import <SearchFoundation/NSCopying-Protocol.h>
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFFormattedText-Protocol.h>
 
-@class SFImage;
+@class NSData, NSDictionary, NSString, SFImage;
 
-@interface SFFormattedText : SFText <NSSecureCoding>
+@interface SFFormattedText : SFText <SFFormattedText, NSSecureCoding, NSCopying>
 {
+    CDStruct_87e10b33 _has;
     BOOL _isEmphasized;
     BOOL _isBold;
+    int _textColor;
     SFImage *_glyph;
-    unsigned long long _textColor;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (strong, nonatomic) SFImage *glyph; // @synthesize glyph=_glyph;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isBold; // @synthesize isBold=_isBold;
 @property (nonatomic) BOOL isEmphasized; // @synthesize isEmphasized=_isEmphasized;
-@property (nonatomic) unsigned long long textColor; // @synthesize textColor=_textColor;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (nonatomic) unsigned long long maxLines;
+@property (readonly) Class superclass;
+@property (copy) NSString *text;
+@property (nonatomic) int textColor; // @synthesize textColor=_textColor;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasIsBold;
+- (BOOL)hasIsEmphasized;
+- (BOOL)hasTextColor;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 
 @end
 

@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct UIOffset selectionBadgeOffset;
 @property (readonly, nonatomic) struct CGSize selectionBadgeSize;
 
-- (struct UIEdgeInsets)collectionViewLayoutContentInsetForBounds:(struct CGRect)arg1;
 - (BOOL)embedsActivityViewForBounds:(struct CGRect)arg1 horizontalSizeClass:(long long)arg2 verticalSizeClass:(long long)arg3;
 - (BOOL)maximizeImageHeightForBounds:(struct CGRect)arg1;
 

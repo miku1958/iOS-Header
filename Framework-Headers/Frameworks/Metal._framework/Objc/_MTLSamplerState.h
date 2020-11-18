@@ -23,6 +23,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) NSString *label; // @synthesize label=_label;
 @property (readonly) Class superclass;
+@property (readonly) unsigned long long uniqueIdentifier;
 
 - (void)dealloc;
 - (id)formattedDescription:(unsigned long long)arg1;

@@ -40,6 +40,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *value3s; // @synthesize value3s=_value3s;
 
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

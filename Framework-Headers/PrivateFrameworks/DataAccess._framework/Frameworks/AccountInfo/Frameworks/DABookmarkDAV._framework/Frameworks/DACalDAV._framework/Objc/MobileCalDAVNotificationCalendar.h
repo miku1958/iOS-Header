@@ -28,6 +28,7 @@
 - (BOOL)_handleInviteReply:(id)arg1 withResource:(id)arg2 owningNotification:(id)arg3 uid:(id)arg4;
 - (BOOL)_handleResourceChanged:(id)arg1 withResource:(id)arg2 uid:(id)arg3;
 - (BOOL)_removeCalendarItemWithURL:(id)arg1;
+- (void)_setInviteReplyCalendarForReplyItem:(id)arg1 onNotification:(void *)arg2;
 - (id)allItemURLs;
 - (Class)appSpecificCalendarItemClass;
 - (void)clearEventChanges;

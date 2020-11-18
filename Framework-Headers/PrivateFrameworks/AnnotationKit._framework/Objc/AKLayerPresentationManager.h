@@ -11,6 +11,7 @@
 @interface AKLayerPresentationManager : NSObject
 {
     BOOL _shouldPixelate;
+    BOOL _adornmentsHidden;
     BOOL _isObservingModel;
     AKPageController *_pageController;
     CALayer *_rootLayer;
@@ -26,6 +27,7 @@
     double _currentScaleFactor;
 }
 
+@property (nonatomic) BOOL adornmentsHidden; // @synthesize adornmentsHidden=_adornmentsHidden;
 @property (nonatomic) double alignmentGuidePositionX; // @synthesize alignmentGuidePositionX=_alignmentGuidePositionX;
 @property (nonatomic) double alignmentGuidePositionY; // @synthesize alignmentGuidePositionY=_alignmentGuidePositionY;
 @property (strong) CAShapeLayer *alignmentGuideXLayer; // @synthesize alignmentGuideXLayer=_alignmentGuideXLayer;
@@ -54,6 +56,7 @@
 - (void)_updateLoupeAnnotationsContributedToByAnnotation:(id)arg1;
 - (void)_updateLoupeAnnotationsIntersectingRemovedAnnotation:(id)arg1;
 - (void)dealloc;
+- (void)forceUpdateAnnotationLayer:(id)arg1;
 - (id)initWithPageController:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setup;

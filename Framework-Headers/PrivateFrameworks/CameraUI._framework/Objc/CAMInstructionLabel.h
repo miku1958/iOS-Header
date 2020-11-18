@@ -7,21 +7,27 @@
 #import <UIKit/UIView.h>
 
 @class NSString, UILabel;
+@protocol CAMInstructionLabelDelegate;
 
 @interface CAMInstructionLabel : UIView
 {
     NSString *_text;
+    id<CAMInstructionLabelDelegate> _delegate;
+    long long _style;
     UILabel *__label;
 }
 
 @property (readonly, nonatomic) double _backgroundAlpha;
 @property (readonly, nonatomic) UILabel *_label; // @synthesize _label=__label;
 @property (readonly, nonatomic) struct UIEdgeInsets _textInsets;
+@property (weak, nonatomic) id<CAMInstructionLabelDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) long long style; // @synthesize style=_style;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 
 - (void).cxx_destruct;
 - (id)_textAttributes;
 - (void)_updateLabel;
+- (void)_updateLayer;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;

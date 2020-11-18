@@ -8,12 +8,12 @@
 
 #import <QuartzCore/CAMediaTiming-Protocol.h>
 #import <QuartzCore/CAPropertyInfo-Protocol.h>
-#import <QuartzCore/NSCoding-Protocol.h>
+#import <QuartzCore/NSSecureCoding-Protocol.h>
 
 @class CAMeshTransform, NSArray, NSDictionary, NSString;
 @protocol CALayerDelegate;
 
-@interface CALayer : NSObject <CAPropertyInfo, NSCoding, CAMediaTiming>
+@interface CALayer : NSObject <CAPropertyInfo, NSSecureCoding, CAMediaTiming>
 {
     struct _CALayerIvars _attr;
 }
@@ -53,6 +53,7 @@
 @property double contentsScale;
 @property (copy) NSString *contentsScaling;
 @property struct CGAffineTransform contentsTransform;
+@property BOOL continuousCorners;
 @property (strong) id cornerContents;
 @property struct CGRect cornerContentsCenter;
 @property BOOL cornerContentsMasksEdges;
@@ -64,16 +65,18 @@
 @property unsigned int edgeAntialiasingMask;
 @property (copy) NSString *fillMode;
 @property (copy) NSArray *filters;
+@property BOOL flipsHorizontalAxis;
 @property struct CGRect frame;
 @property (getter=isFrozen) BOOL frozen;
 @property (getter=isGeometryFlipped) BOOL geometryFlipped;
 @property (getter=isHidden) BOOL hidden;
 @property BOOL hitTestsAsOpaque;
+@property BOOL inheritsTiming;
 @property BOOL invertsShadow;
 @property BOOL literalContentsCenter;
 @property (copy) NSString *magnificationFilter;
 @property (strong) CALayer *mask;
-@property unsigned int maskedCorners;
+@property unsigned long long maskedCorners;
 @property BOOL masksToBounds;
 @property double mass;
 @property (copy) CAMeshTransform *meshTransform;
@@ -88,6 +91,7 @@
 @property (getter=isOpaque) BOOL opaque;
 @property struct CGPoint position;
 @property BOOL preloadsCache;
+@property (copy) NSArray *presentationModifiers;
 @property BOOL rasterizationPrefersDisplayCompositing;
 @property double rasterizationScale;
 @property float repeatCount;
@@ -129,6 +133,7 @@
 + (BOOL)needsLayoutForKey:(id)arg1;
 + (id)properties;
 + (BOOL)resolveInstanceMethod:(SEL)arg1;
++ (BOOL)supportsSecureCoding;
 - (void)CAMLParser:(id)arg1 setValue:(id)arg2 forKey:(id)arg3;
 - (id)CAMLTypeForKey:(id)arg1;
 - (BOOL)_canDisplayConcurrently;
@@ -157,6 +162,7 @@
 - (struct CGRect)_visibleRectOfLayer:(id)arg1;
 - (id)actionForKey:(id)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
+- (void)addPresentationModifier:(id)arg1;
 - (void)addState:(id)arg1;
 - (void)addSublayer:(id)arg1;
 - (struct CGAffineTransform)affineTransform;
@@ -220,6 +226,7 @@
 - (void)removeAllAnimations;
 - (void)removeAnimationForKey:(id)arg1;
 - (void)removeFromSuperlayer;
+- (void)removePresentationModifier:(id)arg1;
 - (void)removeState:(id)arg1;
 - (void)renderInContext:(struct CGContext *)arg1;
 - (void)replaceSublayer:(id)arg1 with:(id)arg2;

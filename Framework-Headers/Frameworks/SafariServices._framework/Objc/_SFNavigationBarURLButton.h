@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     double _backgroundAlphaFactor;
     long long _backgroundStyle;
     id<_SFNavigationBarURLButtonDelegate> _delegate;
+    double _urlOutlineCornerRadius;
 }
 
 @property (nonatomic) double backgroundAlphaFactor; // @synthesize backgroundAlphaFactor=_backgroundAlphaFactor;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic, setter=setURLOutlineCornerRadius:) double urlOutlineCornerRadius; // @synthesize urlOutlineCornerRadius=_urlOutlineCornerRadius;
 @property (nonatomic) BOOL usesLightOverlayAndTintAlpha; // @synthesize usesLightOverlayAndTintAlpha=_usesLightOverlayAndTintAlpha;
 
 - (void).cxx_destruct;

@@ -6,11 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class NPHMMClassifier;
+@class NPHMMClassifier, NPNameComponentsData;
 
 @interface NPNameParser : NSObject
 {
     double _confidenceThreshold;
+    NPNameComponentsData *_nameComponentsData;
     NPHMMClassifier *_classifier;
 }
 
@@ -36,8 +37,6 @@
 - (id)personNameCompomentsFromPrefix:(id)arg1 suffix:(id)arg2 givenNames:(id)arg3 middleNames:(id)arg4 familyNames:(id)arg5;
 - (id)personNameComponentsFromString:(id)arg1;
 - (struct _CFBurstTrie *)sharedNameFrequencyTrieRef;
-- (id)sharedPrefixSet;
-- (id)sharedSuffixSet;
 
 @end
 

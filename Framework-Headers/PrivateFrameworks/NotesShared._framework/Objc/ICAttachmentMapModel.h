@@ -11,14 +11,11 @@
 }
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
-- (BOOL)generateAsynchronousPreviews;
-- (void)generatePreviewsInOperation:(id)arg1;
-- (CDUnknownBlockType)genericBrickThumbnailCreator;
-- (CDUnknownBlockType)genericListThumbnailCreator;
+- (id)MKMapItem;
+- (void)addLocation;
+- (id)attributesForSharingHTMLWithTagName:(id *)arg1 textContent:(id *)arg2;
+- (BOOL)canConvertToHTMLForSharing;
 - (BOOL)hasPreviews;
-- (BOOL)needToGeneratePreviews;
-- (BOOL)requiresNetworkToGeneratePreview;
-- (BOOL)shouldSyncPreviewImageToCloud:(id)arg1;
 
 @end
 

@@ -6,14 +6,17 @@
 
 #import <EventKitUI/EKEventEditItem.h>
 
+#import <EventKitUI/EKCalendarItemInlineEditItem-Protocol.h>
 #import <EventKitUI/UITextFieldDelegate-Protocol.h>
 
 @class NSString, UITableViewCell;
 
 __attribute__((visibility("hidden")))
-@interface EKEventURLInlineEditItem : EKEventEditItem <UITextFieldDelegate>
+@interface EKEventURLInlineEditItem : EKEventEditItem <UITextFieldDelegate, EKCalendarItemInlineEditItem>
 {
     UITableViewCell *_cell;
+    BOOL _tokenized;
+    BOOL _hasChanges;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,14 +25,20 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_setTokenized:(BOOL)arg1;
 - (BOOL)canBeConfiguredForCalendarConstraints:(id)arg1;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (BOOL)isInline;
+- (BOOL)isSaveable;
+- (void)refreshFromCalendarItemAndStore;
 - (void)reset;
 - (BOOL)saveAndDismissWithForce:(BOOL)arg1;
+- (id)searchStringForEventAutocomplete;
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (void)textFieldDidBeginEditing:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1;
+- (BOOL)textFieldShouldClear:(id)arg1;
+- (BOOL)textFieldShouldStartEditing:(id)arg1;
 
 @end
 

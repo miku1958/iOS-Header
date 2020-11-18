@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOMapItemReview-Protocol.h>
 
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=_identifier) NSString *identifier;
 @property (readonly, nonatomic, getter=_localizedSnippet) NSString *localizedSnippet;
+@property (readonly, nonatomic, getter=_localizedSnippetLocale) NSString *localizedSnippetLocale;
 @property (readonly, nonatomic, getter=_maxScore) double maxScore;
 @property (readonly, nonatomic, getter=_normalizedScore) double normalizedScore;
 @property (readonly, nonatomic, getter=_reviewerImageURLString) NSString *reviewerImageURLString;
@@ -30,7 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=_score) double score;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithPlaceData:(id)arg1 review:(id)arg2;
 
 @end

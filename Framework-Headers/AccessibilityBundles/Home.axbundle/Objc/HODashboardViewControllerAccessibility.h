@@ -16,6 +16,8 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityRecentString;
 - (void)_accessibilitySetRecentString:(id)arg1;
+- (void)_finishEditing:(id)arg1;
+- (void)_startEditing:(id)arg1;
 - (id)collectionView:(id)arg1 targetIndexPathForMoveFromItemAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (void)viewDidLoad;

@@ -22,7 +22,7 @@
 + (id)readSortedStatesFromDiskMergeSecondaryState:(BOOL)arg1;
 + (id)readStateForTimelapseUUID:(id)arg1 mergeSecondaryState:(BOOL)arg2;
 + (BOOL)removeDummyFileForTimelapseUUID:(id)arg1;
-+ (BOOL)reserveDummyFileForTimelapseUUID:(id)arg1 width:(long long)arg2 height:(long long)arg3;
++ (BOOL)reserveDummyFileForTimelapseUUID:(id)arg1 width:(long long)arg2 height:(long long)arg3 useHEVC:(BOOL)arg4;
 + (id)secondaryStateFileName;
 + (id)secondaryStateFilePathForTimelapseUUID:(id)arg1;
 + (id)sortedArrayFromFilePathDictionary:(id)arg1 reverse:(BOOL)arg2;

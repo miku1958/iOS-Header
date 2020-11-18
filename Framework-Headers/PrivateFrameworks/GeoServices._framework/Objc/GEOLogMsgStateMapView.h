@@ -28,10 +28,10 @@
 @property (nonatomic) int mapType; // @synthesize mapType=_mapType;
 @property (nonatomic) double zoomLevel; // @synthesize zoomLevel=_zoomLevel;
 
+- (void).cxx_destruct;
 - (int)StringAsMapType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

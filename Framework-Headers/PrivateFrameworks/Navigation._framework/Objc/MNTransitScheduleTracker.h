@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isStepScheduleBasedBoardingStep:(id)arg1;
 - (id)_latLonDictionaryFromLocation:(id)arg1;
 - (void)_lostLocationSignal;
+- (int)_maneuverForStep:(id)arg1;
 - (void)_markNextStepAsApproaching;
 - (void)_markNextStepAsReached;
 - (id)_projectedArrivalDateForNextStep;
@@ -55,6 +56,8 @@ __attribute__((visibility("hidden")))
 - (void)_setarrivalState:(unsigned long long)arg1 forStep:(id)arg2;
 - (void)_startScheduleTracking;
 - (void)_stopScheduleTracking;
+- (id)_traceRecorder;
+- (long long)_transitTypeForStep:(id)arg1;
 - (void)_unsetStepTimers;
 - (void)_updateLastLocation:(id)arg1 onFeedbackForStep:(id)arg2 updateTriggerLocation:(BOOL)arg3;
 - (void)beginNavigation;

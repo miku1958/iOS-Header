@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isTextEffectsWindowHosting;
 - (long long)_orientationForRootTransform;
 - (long long)_orientationForViewTransform;
+- (struct UIEdgeInsets)safeAreaInsets;
 
 @end
 

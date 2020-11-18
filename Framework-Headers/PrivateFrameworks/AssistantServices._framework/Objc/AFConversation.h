@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AFTreeNode, NSMutableDictionary, NSString, NSUUID;
-@protocol AFConversationDelegate;
+@protocol AFConversationDelegate, AFConversationStorable;
 
 @interface AFConversation : NSObject
 {
@@ -18,11 +18,13 @@
     NSString *_languageCode;
     id<AFConversationDelegate> _delegate;
     AFTreeNode *_rootNode;
+    id<AFConversationStorable> _lastRestoredItem;
 }
 
 @property (weak, nonatomic) id<AFConversationDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
+@property (strong, nonatomic, setter=_setLastRestoredItem:) id<AFConversationStorable> lastRestoredItem; // @synthesize lastRestoredItem=_lastRestoredItem;
 @property (strong, nonatomic, getter=_rootNode, setter=_setRootNode:) AFTreeNode *rootNode; // @synthesize rootNode=_rootNode;
 @property (nonatomic, getter=isSynchronizedWithServer) BOOL synchronizedWithServer; // @synthesize synchronizedWithServer=_synchronizedWithServer;
 

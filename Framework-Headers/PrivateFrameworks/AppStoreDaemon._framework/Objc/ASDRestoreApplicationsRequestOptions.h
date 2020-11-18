@@ -11,11 +11,13 @@
 @interface ASDRestoreApplicationsRequestOptions : ASDRequestOptions
 {
     BOOL _createsPlaceholders;
+    BOOL _restoreApplicationData;
     NSArray *_items;
 }
 
 @property (nonatomic) BOOL createsPlaceholders; // @synthesize createsPlaceholders=_createsPlaceholders;
 @property (readonly, nonatomic) NSArray *items; // @synthesize items=_items;
+@property (nonatomic) BOOL restoreApplicationData; // @synthesize restoreApplicationData=_restoreApplicationData;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

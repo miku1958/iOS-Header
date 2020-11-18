@@ -30,13 +30,12 @@
 + (id)aggregateValuesForProperty:(id)arg1 functions:(id)arg2 queryDescriptor:(id)arg3 database:(id)arg4 error:(id *)arg5;
 + (id)allDatabaseColumnNames;
 + (id)anyInDatabase:(id)arg1 predicate:(id)arg2 error:(id *)arg3;
-+ (id)associationPropertyForEntityClass:(Class)arg1;
 + (id)columnsDefinition;
 + (id)countDistinctForProperty:(id)arg1 predicate:(id)arg2 database:(id)arg3 error:(id *)arg4;
 + (id)countValueForProperty:(id)arg1 predicate:(id)arg2 database:(id)arg3 error:(id *)arg4;
 + (id)databaseName;
 + (id)databaseTable;
-+ (BOOL)deleteEntitiesInDatabase:(id)arg1 predicate:(id)arg2;
++ (BOOL)deleteEntitiesInDatabase:(id)arg1 predicate:(id)arg2 error:(id *)arg3;
 + (id)deleteStatementWithProperty:(id)arg1 database:(id)arg2;
 + (id)disambiguatedDatabaseTable;
 + (id)disambiguatedSQLForProperty:(id)arg1;
@@ -45,6 +44,7 @@
 + (id)entityWithPersistentID:(id)arg1;
 + (BOOL)enumerateEntitiesInDatabase:(id)arg1 predicate:(id)arg2 error:(id *)arg3 enumerationHandler:(CDUnknownBlockType)arg4;
 + (BOOL)enumerateQueryResultsFromColumns:(id)arg1 properties:(id)arg2 predicate:(id)arg3 groupBy:(id)arg4 orderingProperties:(id)arg5 limit:(long long)arg6 database:(id)arg7 error:(id *)arg8 enumerationHandler:(CDUnknownBlockType)arg9;
++ (id)firstInDatabase:(id)arg1 predicate:(id)arg2 orderingProperties:(id)arg3 orderingDirections:(id)arg4 error:(id *)arg5;
 + (id)indices;
 + (id)insertOrReplaceEntity:(BOOL)arg1 database:(id)arg2 properties:(id)arg3 error:(id *)arg4 bindingHandler:(CDUnknownBlockType)arg5;
 + (id)insertSQLForProperties:(id)arg1 shouldReplace:(BOOL)arg2;
@@ -67,8 +67,9 @@
 - (BOOL)deleteFromDatabase:(id)arg1 error:(id *)arg2;
 - (BOOL)existsInDatabase:(id)arg1;
 - (BOOL)getValuesForProperties:(id)arg1 database:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (BOOL)getValuesForProperties:(id)arg1 withDatabase:(id)arg2 applier:(CDUnknownBlockType)arg3;
 - (id)initWithPersistentID:(long long)arg1;
+- (id)numberForProperty:(id)arg1 database:(id)arg2;
+- (id)stringForProperty:(id)arg1 database:(id)arg2;
 - (BOOL)updateProperties:(id)arg1 database:(id)arg2 error:(id *)arg3 bindingHandler:(CDUnknownBlockType)arg4;
 - (id)valueForProperty:(id)arg1 database:(id)arg2;
 

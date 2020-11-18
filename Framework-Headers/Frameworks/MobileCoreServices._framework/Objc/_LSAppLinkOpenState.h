@@ -8,7 +8,7 @@
 
 #import <MobileCoreServices/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDictionary, NSString, NSURL;
+@class NSDictionary, NSString, NSURL, _LSOpenConfiguration;
 
 __attribute__((visibility("hidden")))
 @interface _LSAppLinkOpenState : NSObject <NSSecureCoding>
@@ -16,13 +16,14 @@ __attribute__((visibility("hidden")))
     BOOL _openStrategyChanged;
     NSURL *_URL;
     NSString *_bundleIdentifier;
+    _LSOpenConfiguration *_openConfiguration;
     NSDictionary *_browserState;
 }
 
 @property (copy) NSURL *URL; // @synthesize URL=_URL;
 @property (copy) NSDictionary *browserState; // @synthesize browserState=_browserState;
 @property (copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (readonly) NSData *dataRepresentation; // @dynamic dataRepresentation;
+@property (strong) _LSOpenConfiguration *openConfiguration; // @synthesize openConfiguration=_openConfiguration;
 @property BOOL openStrategyChanged; // @synthesize openStrategyChanged=_openStrategyChanged;
 
 + (BOOL)supportsSecureCoding;
@@ -30,8 +31,6 @@ __attribute__((visibility("hidden")))
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDataRepresentation:(id)arg1;
-- (BOOL)validate;
 
 @end
 

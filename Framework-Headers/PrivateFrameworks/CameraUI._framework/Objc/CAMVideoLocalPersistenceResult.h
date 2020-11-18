@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
+#import <CameraUI/NSSecureCoding-Protocol.h>
+
 @class NSDate, NSError, NSString, NSURL;
 
-@interface CAMVideoLocalPersistenceResult : NSObject
+@interface CAMVideoLocalPersistenceResult : NSObject <NSSecureCoding>
 {
     NSURL *_localDestinationURL;
     NSURL *_filteredLocalDestinationURL;
     NSURL *_linkedDestinationURL;
+    NSURL *_filteredLinkedDestinationURL;
     NSString *_localPersistenceUUID;
     NSString *_stillPersistenceUUID;
     NSDate *_creationDate;
@@ -24,6 +27,7 @@
 @property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
+@property (readonly, copy, nonatomic) NSURL *filteredLinkedDestinationURL; // @synthesize filteredLinkedDestinationURL=_filteredLinkedDestinationURL;
 @property (readonly, copy, nonatomic) NSURL *filteredLocalDestinationURL; // @synthesize filteredLocalDestinationURL=_filteredLocalDestinationURL;
 @property (readonly, copy, nonatomic) NSURL *linkedDestinationURL; // @synthesize linkedDestinationURL=_linkedDestinationURL;
 @property (readonly, copy, nonatomic) NSURL *localDestinationURL; // @synthesize localDestinationURL=_localDestinationURL;
@@ -31,9 +35,11 @@
 @property (readonly, nonatomic) CDStruct_1b6d18a9 stillDisplayTime; // @synthesize stillDisplayTime=_stillDisplayTime;
 @property (readonly, copy, nonatomic) NSString *stillPersistenceUUID; // @synthesize stillPersistenceUUID=_stillPersistenceUUID;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)init;
-- (id)initWithURL:(id)arg1 filteredLocalDestinationURL:(id)arg2 linkedURL:(id)arg3 UUID:(id)arg4 duration:(CDStruct_1b6d18a9)arg5 stillPersistenceUUID:(id)arg6 stillDisplayTime:(CDStruct_1b6d18a9)arg7 creationDate:(id)arg8 error:(id)arg9;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithURL:(id)arg1 filteredLocalDestinationURL:(id)arg2 linkedURL:(id)arg3 filteredLinkedURL:(id)arg4 UUID:(id)arg5 duration:(CDStruct_1b6d18a9)arg6 stillPersistenceUUID:(id)arg7 stillDisplayTime:(CDStruct_1b6d18a9)arg8 creationDate:(id)arg9 error:(id)arg10;
 
 @end
 

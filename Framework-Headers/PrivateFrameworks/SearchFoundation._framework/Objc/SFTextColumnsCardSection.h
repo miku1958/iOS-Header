@@ -6,23 +6,65 @@
 
 #import <SearchFoundation/SFCardSection.h>
 
-@class NSArray, NSString;
+#import <SearchFoundation/NSCopying-Protocol.h>
+#import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFTextColumnsCardSection-Protocol.h>
 
-@interface SFTextColumnsCardSection : SFCardSection
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor;
+
+@interface SFTextColumnsCardSection : SFCardSection <SFTextColumnsCardSection, NSSecureCoding, NSCopying>
 {
+    CDStruct_9787ad25 _has;
+    BOOL _canBeHidden;
+    BOOL _hasTopPadding;
+    BOOL _hasBottomPadding;
+    int _separatorStyle;
+    NSArray *_punchoutOptions;
+    NSString *_punchoutPickerTitle;
+    NSString *_punchoutPickerDismissText;
+    NSString *_type;
+    SFColor *_backgroundColor;
     NSString *_title;
-    long long _titleWeight;
+    unsigned long long _titleWeight;
     NSArray *_columns;
 }
 
+@property (strong, nonatomic) SFColor *backgroundColor;
+@property (nonatomic) BOOL canBeHidden;
+@property (copy, nonatomic) NSString *cardSectionId;
 @property (copy, nonatomic) NSArray *columns; // @synthesize columns=_columns;
+@property (copy, nonatomic) NSArray *commands;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (nonatomic) BOOL hasBottomPadding;
+@property (nonatomic) BOOL hasTopPadding;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hideDivider;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (strong, nonatomic) SFCard *nextCard;
+@property (copy, nonatomic) NSArray *parameterKeyPaths;
+@property (copy, nonatomic) NSArray *punchoutOptions;
+@property (copy, nonatomic) NSString *punchoutPickerDismissText;
+@property (copy, nonatomic) NSString *punchoutPickerTitle;
+@property (copy, nonatomic) NSString *resultIdentifier;
+@property (nonatomic) int separatorStyle;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
-@property (nonatomic) long long titleWeight; // @synthesize titleWeight=_titleWeight;
+@property (nonatomic) unsigned long long titleWeight; // @synthesize titleWeight=_titleWeight;
+@property (copy, nonatomic) NSString *type;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasCanBeHidden;
+- (BOOL)hasHasBottomPadding;
+- (BOOL)hasHasTopPadding;
+- (BOOL)hasSeparatorStyle;
+- (BOOL)hasTitleWeight;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 
 @end
 

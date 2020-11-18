@@ -10,7 +10,7 @@
 #import <CameraUI/CAMCaptureService-Protocol.h>
 
 @class AVCaptureVideoPreviewLayer, CAMBurstController, CAMCaptureEngine, CAMCaptureRequestIntervalometer, CAMKeyValueCoalescer, CAMLocationController, CAMMotionController, CAMPanoramaCaptureRequest, CAMPanoramaPreviewView, CAMPowerController, CAMProtectionController, CAMRemoteShutterController, CAMThumbnailGenerator, CAMVideoCaptureRequest, NSCountedSet, NSMutableSet, NSString;
-@protocol CAMAvailabilityDelegate, CAMBurstDelegate, CAMCaptureInterruptionDelegate, CAMCaptureRecoveryDelegate, CAMCaptureResultDelegate, CAMCaptureRunningDelegate, CAMConfigurationDelegate, CAMExposureDelegate, CAMFacesDelegate, CAMFocusDelegate, CAMPanoramaConfigurationDelegate, CAMShallowDepthOfFieldStatusDelegate, CAMStillImageCapturingVideoDelegate, CAMSuggestionDelegate, CAMZoomDelegate, OS_dispatch_queue;
+@protocol CAMAvailabilityDelegate, CAMBurstDelegate, CAMCaptureInterruptionDelegate, CAMCaptureRecoveryDelegate, CAMCaptureResultDelegate, CAMCaptureRunningDelegate, CAMConfigurationDelegate, CAMExposureDelegate, CAMFacesDelegate, CAMFocusDelegate, CAMMachineReadableCodeDelegate, CAMPanoramaChangeDelegate, CAMShallowDepthOfFieldStatusDelegate, CAMStillImageCapturingVideoDelegate, CAMSuggestionDelegate, CAMZoomDelegate, OS_dispatch_queue;
 
 @interface CUCaptureController : NSObject <CAMCaptureService, CAMCaptureRequestIntervalometerDelegate>
 {
@@ -31,7 +31,7 @@
     BOOL __isVideoCaptureAvailable;
     BOOL __shouldResetFocusAndExposureAfterIrisVideoCapture;
     id<CAMStillImageCapturingVideoDelegate> _stillImageCapturingVideoDelegate;
-    id<CAMPanoramaConfigurationDelegate> _panoramaConfigurationDelegate;
+    id<CAMPanoramaChangeDelegate> _panoramaChangeDelegate;
     id<CAMBurstDelegate> _burstDelegate;
     id<CAMConfigurationDelegate> _configurationDelegate;
     id<CAMSuggestionDelegate> _suggestionDelegate;
@@ -40,6 +40,7 @@
     id<CAMExposureDelegate> _exposureDelegate;
     id<CAMShallowDepthOfFieldStatusDelegate> _shallowDepthOfFieldStatusDelegate;
     id<CAMFacesDelegate> _facesDelgate;
+    id<CAMMachineReadableCodeDelegate> _machineReadableCodeDelegate;
     id<CAMCaptureResultDelegate> _resultDelegate;
     id<CAMZoomDelegate> _zoomDelegate;
     id<CAMCaptureRecoveryDelegate> _recoveryDelegate;
@@ -112,7 +113,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInterrupted) BOOL interrupted;
 @property (weak, nonatomic) id<CAMCaptureInterruptionDelegate> interruptionDelegate; // @synthesize interruptionDelegate=_interruptionDelegate;
-@property (weak, nonatomic) id<CAMPanoramaConfigurationDelegate> panoramaConfigurationDelegate; // @synthesize panoramaConfigurationDelegate=_panoramaConfigurationDelegate;
+@property (weak, nonatomic) id<CAMMachineReadableCodeDelegate> machineReadableCodeDelegate; // @synthesize machineReadableCodeDelegate=_machineReadableCodeDelegate;
+@property (weak, nonatomic) id<CAMPanoramaChangeDelegate> panoramaChangeDelegate; // @synthesize panoramaChangeDelegate=_panoramaChangeDelegate;
 @property (readonly, nonatomic) CAMPanoramaPreviewView *panoramaPreviewView;
 @property (readonly, nonatomic, getter=isPreviewDisabled) BOOL previewDisabled; // @synthesize previewDisabled=_previewDisabled;
 @property (weak, nonatomic) id<CAMCaptureRecoveryDelegate> recoveryDelegate; // @synthesize recoveryDelegate=_recoveryDelegate;
@@ -138,15 +140,15 @@
 - (BOOL)_captureStillImageWithRequest:(id)arg1;
 - (id)_commandForChangeToGraphConfiguration:(id)arg1 resetZoom:(BOOL)arg2 minimumExecutionTime:(double)arg3 outRequestID:(int *)arg4;
 - (id)_commandForConfiguration:(id)arg1 outRequestID:(int *)arg2;
+- (id)_commandForResetFocus:(BOOL)arg1 resetExposure:(BOOL)arg2 resetExposureTargetBias:(BOOL)arg3;
 - (void)_didPlayBeginVideoRecordingSound;
 - (void)_endTrackingVideoRecordingForStillImageRequest:(id)arg1;
 - (id)_exposureKVOKeyPaths;
 - (void)_exposureResultChangedForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3;
-- (id)_faceDetectionCommandForMode:(long long)arg1 capturing:(BOOL)arg2;
 - (id)_focusKVOKeyPaths;
 - (void)_focusResultChangedForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3;
-- (void)_handleApplicationWillEnterForeground:(id)arg1;
 - (void)_handleCaptureEngineExecutionNotification:(id)arg1;
+- (void)_handleSystemPressureStateChanged;
 - (id)_identifierForPendingVideoForStillImageRequest:(id)arg1;
 - (BOOL)_kvoDidEndForChange:(id)arg1;
 - (BOOL)_kvoDidStartForChange:(id)arg1;
@@ -155,10 +157,9 @@
 - (void)_notifyDelegateOfConfigurationAvailabilityChanged:(BOOL)arg1;
 - (void)_processCapturedBurstRequest:(id)arg1 withResult:(id)arg2;
 - (void)_processPendingVideoCaptureRequest:(id)arg1;
-- (id)_resetFocus:(BOOL)arg1 resetExposure:(BOOL)arg2 resetExposureTargetBias:(BOOL)arg3;
+- (id)_realtimeMetadataCommandsForMode:(long long)arg1 capturing:(BOOL)arg2 wantsMachineReadableCodes:(BOOL)arg3;
 - (void)_resetFocusAndExposureAfterCapture;
 - (void)_resetFocusAndExposureIfAppropriateForReason:(long long)arg1;
-- (id)_sanitizeLegacyStillImageRequest:(id)arg1;
 - (id)_sanitizePanoramaRequest:(id)arg1;
 - (id)_sanitizeStillImageRequest:(id)arg1;
 - (id)_sanitizeVideoRequest:(id)arg1;
@@ -169,18 +170,23 @@
 - (void)_setupFocusMonitoring;
 - (void)_setupShallowDepthOfFieldMonitoring;
 - (void)_setupSuggestionMonitoring;
+- (void)_setupSystemPressureStateMonitoring;
 - (void)_setupZoomMonitoring;
 - (void)_shallowDepthOfFieldMonitoringChangedForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3;
 - (id)_shallowDepthOfFieldMonitoringKeyPaths;
+- (BOOL)_shouldMonitorSystemPressureState;
 - (void)_startShowingLivePhotoIndicatorForStillImageRequest:(id)arg1;
 - (void)_stopShowingLivePhotoIndicatorForStillImageRequest:(id)arg1;
 - (void)_subjectAreaDidChange:(id)arg1;
 - (id)_suggestionKeyPaths;
 - (void)_suggestionResultChangedForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3;
+- (void)_systemPressureStateMonitoringChangedForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3;
+- (id)_systemPressureStateMonitoringKeyPaths;
 - (void)_teardownAvailabilityMonitoring;
 - (void)_teardownFocusAndExposureMonitoring;
 - (void)_teardownShallowDepthOfFieldMonitoring;
 - (void)_teardownSuggestionMonitoring;
+- (void)_teardownSystemPressureStateMonitoring;
 - (void)_teardownZoomMonitoring;
 - (id)_thumbnailImageFromStillImageCaptureResult:(id)arg1 imageOrientation:(long long)arg2;
 - (int)_uniqueRequestIDForChangeToModeAndDevice;
@@ -195,22 +201,23 @@
 - (void)_updateMaximumNumberOfStillImageRequestsAfterCapturedRequestIfNecessary:(id)arg1;
 - (void)_updateMaximumNumberOfStillImageRequestsAfterEnqueuingRequestWithFlashMode:(long long)arg1 HDRMode:(long long)arg2 burstIdentifier:(id)arg3 wantsPortraitEffect:(BOOL)arg4;
 - (BOOL)_useSmoothFocus;
+- (BOOL)_wantsMachineReadableCodesForGraphConfiguration:(id)arg1;
 - (id)_zoomMonitoringKeyPaths;
 - (void)_zoomResultChangedForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3;
 - (int)applyCaptureConfiguration:(id)arg1;
 - (void)attemptToEndInterruptions;
 - (void)cancelDelayedFocusAndExposureReset;
-- (BOOL)captureLegacyStillImageWithRequest:(id)arg1 error:(id *)arg2;
 - (BOOL)captureStillImageWithRequest:(id)arg1 error:(id *)arg2;
 - (void)changeExposureTargetBias:(float)arg1;
-- (void)changeToEffectsPreviewVideoDataOutputEnabled:(BOOL)arg1;
 - (void)changeToFlashMode:(long long)arg1;
 - (int)changeToGraphConfiguration:(id)arg1 resetZoom:(BOOL)arg2 minimumExecutionTime:(double)arg3;
 - (void)changeToLockedExposure;
 - (void)changeToPanoramaDirection:(long long)arg1;
+- (void)changeToPanoramaEncodingBehavior:(long long)arg1;
+- (void)changeToPreviewConfiguration:(unsigned long long)arg1;
 - (void)changeToPreviewDisabled;
-- (void)changeToPreviewEnabledWithConfiguration:(long long)arg1;
-- (void)changeToPreviewLayerEnabled:(BOOL)arg1;
+- (void)changeToPreviewEnabledWithConfiguration:(unsigned long long)arg1;
+- (void)changeToPreviewFilters:(id)arg1;
 - (void)changeToTorchLevel:(float)arg1;
 - (void)changeToTorchMode:(long long)arg1;
 - (void)changeToVideoRecordingCaptureOrientation:(long long)arg1;
@@ -228,23 +235,22 @@
 - (BOOL)intervalometer:(id)arg1 didGenerateCaptureRequest:(id)arg2;
 - (void)intervalometerDidReachMaximumCount:(id)arg1;
 - (void)invalidateController;
-- (void)legacyStillImageRequest:(id)arg1 didCompleteCaptureWithResult:(id)arg2;
-- (void)legacyStillImageRequestDidStartCapturing:(id)arg1;
-- (void)legacyStillImageRequestDidStopCapturing:(id)arg1;
 - (void)lockFocusAtLensPosition:(float)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)metadataWasRecognized:(id)arg1;
 - (void)notifyTimelapseControllerFinishedUpdatingWithLocation;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)panoramaConfigurationDidChangeWithDirection:(long long)arg1;
+- (void)panoramaConfigurationDidChangeWithImageQueue:(struct _CAImageQueue *)arg1 direction:(long long)arg2;
 - (void)panoramaRequest:(id)arg1 didCompleteCaptureWithResult:(id)arg2;
 - (void)panoramaRequest:(id)arg1 didReceiveNotification:(long long)arg2;
 - (void)panoramaRequestDidStartCapturing:(id)arg1;
 - (void)panoramaRequestDidStopCapturing:(id)arg1;
 - (void)pauseCapturingStillImagePairedVideo;
+- (void)prepareToCaptureStillImageAtSystemTime:(long long)arg1;
 - (void)queryTimelapseDimensionsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)queryVideoDimensionsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)registerCaptureService:(id)arg1;
 - (void)registerEffectsPreviewSampleBufferDelegate:(id)arg1;
+- (void)registerVideoThumbnailContentsDelegate:(id)arg1;
 - (void)resumeCapturingStillImagePairedVideo;
 - (void)startCaptureSession;
 - (BOOL)startCapturingBurstWithRequest:(id)arg1 error:(id *)arg2;
@@ -268,7 +274,8 @@
 - (void)stopRampToVideoZoomFactor;
 - (void)unregisterCaptureService:(id)arg1;
 - (void)unregisterEffectsPreviewSampleBufferDelegate:(id)arg1;
-- (void)updateImageQueueForPanoramaPreviewView:(id)arg1;
+- (void)unregisterVideoThumbnailContentsDelegate:(id)arg1;
+- (void)updateRealtimeMetadataConfigurationForGraphConfiguration:(id)arg1 isCapturing:(BOOL)arg2;
 - (void)videoRequest:(id)arg1 didCompleteCaptureWithResult:(id)arg2;
 - (void)videoRequestDidStartCapturing:(id)arg1;
 - (void)videoRequestDidStopCapturing:(id)arg1;

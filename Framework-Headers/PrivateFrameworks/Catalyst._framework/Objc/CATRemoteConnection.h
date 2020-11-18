@@ -69,6 +69,8 @@
 - (void)delegateDidSecure;
 - (void)delegateDidSendData:(id)arg1 userInfo:(id)arg2;
 - (void)delegateDidSendDataWithStream:(id)arg1 userInfo:(id)arg2;
+- (void)delegateDidWriteDataForContextIfNeeded:(id)arg1;
+- (void)delegateDidWriteDataFromStream:(id)arg1 totalBytesWritten:(unsigned long long)arg2 totalBytesExpectedToWrite:(unsigned long long)arg3 userInfo:(id)arg4;
 - (void)delegateWillSecure;
 - (void)enqueueSendContext:(id)arg1;
 - (id)initWithInputStream:(id)arg1 outputStream:(id)arg2;

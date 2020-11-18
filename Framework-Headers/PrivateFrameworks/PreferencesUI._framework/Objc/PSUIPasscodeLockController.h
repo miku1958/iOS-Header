@@ -34,7 +34,6 @@
 - (id)_makeWipeDeviceGroupFooter;
 - (void)_setWipeEnabled:(BOOL)arg1;
 - (void)_showDeleteSavedFingerprintsAlert;
-- (void)_showWeakWarningAlertForController:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_updateGracePeriodForSpecifier:(id)arg1;
 - (id)assistantUnderLockEnabled:(id)arg1;
 - (BOOL)canBeShownFromSuspendedState;
@@ -67,6 +66,7 @@
 - (void)showKeychainAlert;
 - (void)showPINSheet:(id)arg1;
 - (BOOL)showReplyWithMessage;
+- (void)showWeakWarningAlertForController:(id)arg1 offerUseAnyway:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)specifiers;
 - (void)suspend;
 - (void)togglePasscode:(id)arg1;

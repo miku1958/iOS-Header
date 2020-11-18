@@ -10,6 +10,8 @@
 + (id)combinedDateWithYMDFrom:(id)arg1 HMSFrom:(id)arg2 componentDatesTimezone:(id)arg3;
 - (void)getGregorianDate:(CDStruct_79f9e052 *)arg1;
 - (id)gmtDateToDateInTimeZone:(id)arg1;
+- (id)gmtMidnight;
+- (BOOL)isGMTMidnight;
 - (id)nearestMidnight;
 - (id)tzDateToDateInGMT:(id)arg1;
 @end

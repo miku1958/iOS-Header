@@ -13,16 +13,21 @@
 
 + (id)builder;
 + (id)builderWithObject:(id)arg1 ofExpectedClass:(Class)arg2;
+- (id)_initWithInitialState:(BOOL)arg1;
 - (id)appendArray:(id)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendBool:(BOOL)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendCGFloat:(double)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendCGPoint:(struct CGPoint)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendCGRect:(struct CGRect)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendCGSize:(struct CGSize)arg1 counterpart:(CDUnknownBlockType)arg2;
+- (id)appendClass:(Class)arg1 counterpart:(CDUnknownBlockType)arg2;
+- (id)appendDouble:(double)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendEqualsBlocks:(CDUnknownBlockType)arg1;
+- (id)appendFloat:(float)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendInteger:(long long)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendObject:(id)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendPointer:(void *)arg1 counterpart:(CDUnknownBlockType)arg2;
+- (id)appendSizeT:(unsigned long long)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendString:(id)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendUnsignedInteger:(unsigned long long)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)init;

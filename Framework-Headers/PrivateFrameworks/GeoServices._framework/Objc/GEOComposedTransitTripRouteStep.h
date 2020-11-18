@@ -41,7 +41,7 @@
 @property (readonly, nonatomic) GEOTransitVehicleInfo *transitVehicle; // @synthesize transitVehicle=_transitVehicle;
 @property (readonly, nonatomic) GEOComposedTransitTripRouteLeg *tripLeg;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (unsigned int)duration;
 - (BOOL)hasDuration;

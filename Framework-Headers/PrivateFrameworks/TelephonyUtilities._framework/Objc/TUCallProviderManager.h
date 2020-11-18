@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TelephonyUtilities/TUCallProviderManagerDataSourceDelegate-Protocol.h>
 
@@ -13,9 +13,9 @@
 
 @interface TUCallProviderManager : NSObject <TUCallProviderManagerDataSourceDelegate>
 {
-    NSMapTable *_delegateToQueue;
     NSObject<OS_dispatch_queue> *_queue;
     id<TUCallProviderManagerDataSource> _dataSource;
+    NSMapTable *_delegateToQueue;
 }
 
 @property (readonly, nonatomic) id<TUCallProviderManagerDataSource> dataSource; // @synthesize dataSource=_dataSource;
@@ -37,9 +37,11 @@
 + (int)serviceForProvider:(id)arg1 video:(BOOL)arg2;
 - (void).cxx_destruct;
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
+- (void)blockUntilInitialStateReceivedIfNecessary;
 - (void)dealloc;
 - (id)init;
 - (id)initWithDataSource:(id)arg1 queue:(id)arg2;
+- (void)launchAppForDialRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)providerForFavoritesEntry:(id)arg1;
 - (id)providerForFavoritesEntryActionBundleIdentifier:(id)arg1;
 - (id)providerForRecentCall:(id)arg1;

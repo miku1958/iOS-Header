@@ -8,18 +8,22 @@
 
 @class _WKFrameHandle;
 
-__attribute__((visibility("hidden")))
 @interface _WKWebViewPrintFormatter : UIViewPrintFormatter
 {
     struct RetainPtr<_WKFrameHandle> _frameToPrint;
     struct RetainPtr<CGPDFDocument *> _printedDocument;
+    BOOL _suppressPageCountRecalc;
+    BOOL _snapshotFirstPage;
 }
 
 @property (strong, nonatomic) _WKFrameHandle *frameToPrint;
+@property (nonatomic) BOOL snapshotFirstPage; // @synthesize snapshotFirstPage=_snapshotFirstPage;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (long long)_recalcPageCount;
+- (void)_setNeedsRecalc;
+- (void)_setSnapshotPaperRect:(struct CGRect)arg1;
 - (id)_webView;
 - (void)drawInRect:(struct CGRect)arg1 forPageAtIndex:(long long)arg2;
 - (struct CGRect)rectForPageAtIndex:(long long)arg1;

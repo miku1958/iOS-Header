@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSRegularExpression.h>
+#import <Foundation/NSRegularExpression.h>
 
 @interface NSDataDetector : NSRegularExpression
 {

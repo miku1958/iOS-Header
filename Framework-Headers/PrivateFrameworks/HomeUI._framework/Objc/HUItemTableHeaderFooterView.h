@@ -14,8 +14,8 @@
 @interface HUItemTableHeaderFooterView : UITableViewHeaderFooterView <UITextViewDelegate>
 {
     BOOL _includeBottomSpacing;
-    id<HUTextInteractionHandling> _textInteractionHandler;
     UITextView *_messageTextView;
+    id<HUTextInteractionHandling> _textInteractionHandler;
     NSArray *_constraints;
     NSLayoutConstraint *_bottomSpacingConstraint;
 }

@@ -4,46 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <VectorKit/VKAnimationRunner-Protocol.h>
 #import <VectorKit/VKCameraControllerDelegate-Protocol.h>
-#import <VectorKit/VKCameraDelegate-Protocol.h>
-#import <VectorKit/VKWorldDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, VKCamera, VKCameraController, VKDispatch, VKScene, VKWorld;
+@class ARSession, NSString, VKCamera, VKCameraController;
 @protocol MDMapControllerDelegate, MDRenderTarget;
 
 __attribute__((visibility("hidden")))
-@interface VKScreenCanvas : NSObject <VKWorldDelegate, VKAnimationRunner, VKCameraControllerDelegate, VKCameraDelegate>
+@interface VKScreenCanvas : NSObject <VKCameraControllerDelegate>
 {
-    VKDispatch *_dispatch;
-    VKWorld *_world;
+    struct MapEngine *_mapEngine;
+    struct RunLoopController *_runLoopController;
+    struct AnimationRunner *_animationRunner;
+    shared_ptr_e963992e _taskContext;
     VKCamera *_camera;
-    VKScene *_scene;
     id<MDRenderTarget> _displayTarget;
-    BOOL _needsLayout;
-    unsigned int _wantsLayout;
-    unsigned int _needsRepaint;
     BOOL _userIsGesturing;
-    BOOL _iconsShouldAlignToPixels;
     VKCameraController *_cameraController;
     float _debugFramesPerSecond;
-    BOOL _rendersInBackground;
-    NSMutableArray *_animations[2];
-    BOOL _isInBackground;
-    BOOL _isHidden;
     struct VKEdgeInsets _edgeInsets;
     struct VKEdgeInsets _fullyOccludedEdgeInsets;
     struct VKEdgeInsets _labelEdgeInsets;
     BOOL _deallocing;
-    BOOL _needsInitialization;
     struct unique_ptr<md::RenderQueue, std::__1::default_delete<md::RenderQueue>> _renderQueue;
-    struct RenderTree *_mapScene;
+    Renderer_e10ca448 *_mapRenderer;
     struct LayoutContext *_layoutContext;
     Matrix_5173352a _bgColor;
     id<MDMapControllerDelegate> _mapDelegate;
     struct PerspectiveView<double> _view;
+    ARSession *_arSession;
 }
 
 @property (nonatomic) unsigned char applicationUILayout;
@@ -53,26 +43,19 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) float debugFramesPerSecond; // @synthesize debugFramesPerSecond=_debugFramesPerSecond;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) struct VKEdgeInsets edgeInsets;
+@property (nonatomic) unsigned char emphasis;
 @property (nonatomic) struct VKEdgeInsets fullyOccludedEdgeInsets; // @synthesize fullyOccludedEdgeInsets=_fullyOccludedEdgeInsets;
 @property (nonatomic, getter=isGesturing) BOOL gesturing;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL iconsShouldAlignToPixels; // @synthesize iconsShouldAlignToPixels=_iconsShouldAlignToPixels;
 @property (nonatomic) struct VKEdgeInsets labelEdgeInsets;
 @property (nonatomic) id<MDMapControllerDelegate> mapDelegate; // @synthesize mapDelegate=_mapDelegate;
-@property (readonly, nonatomic) BOOL needsInitialization; // @synthesize needsInitialization=_needsInitialization;
-@property (nonatomic) BOOL rendersInBackground;
+@property (readonly, nonatomic) struct MapEngine *mapEngine; // @synthesize mapEngine=_mapEngine;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned char targetDisplay;
 @property (nonatomic) struct VehicleState vehicleState;
-@property (readonly, nonatomic) VKWorld *world; // @synthesize world=_world;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_queueUpdateDisplayLinkStatus;
-- (void)adoptAnimation:(id)arg1;
-- (void)animateWithTimestamp:(double)arg1;
-- (void)animationDidResume:(id)arg1;
-- (void)animationDidStop:(id)arg1;
 - (shared_ptr_430519ce)buildingMarkerAtScreenPoint:(struct CGPoint)arg1;
 - (id)cameraController;
 - (void)cameraController:(id)arg1 canEnter3DModeDidChange:(BOOL)arg2;
@@ -87,49 +70,36 @@ __attribute__((visibility("hidden")))
 - (void)cameraController:(id)arg1 willChangeRegionAnimated:(BOOL)arg2;
 - (void)cameraControllerDidChangeCameraState:(id)arg1;
 - (void)cameraControllerDidFinishInitialTrackingAnimation:(id)arg1;
+- (void)cameraControllerDidLeaveDefaultZoom:(id)arg1;
+- (void)cameraControllerDidReturnToDefaultZoom:(id)arg1;
+- (void)cameraControllerHasStartedPanning:(id)arg1;
+- (void)cameraControllerHasStoppedPanning:(id)arg1;
 - (void)cameraControllerRequestsLayout:(id)arg1;
 - (void)cameraControllerRequestsUpdateDisplayLinkStatus:(id)arg1;
-- (void)cameraDidChange:(id)arg1;
-- (BOOL)canRender;
-- (void)clearSceneIsEffectivelyHidden:(BOOL)arg1;
 - (BOOL)currentSceneRequiresMSAA;
 - (void)dealloc;
-- (void)didEnterBackground;
 - (void)didPresent;
 - (void)didReceiveMemoryWarning:(BOOL)arg1 beAggressive:(BOOL)arg2;
 - (shared_ptr_430519ce)featureMarkerAtScreenPoint:(struct CGPoint)arg1;
-- (void)forceLayout;
 - (void)gglWillDrawWithTimestamp;
-- (id)initWithTarget:(id)arg1 inBackground:(BOOL)arg2;
-- (void)initializeWithRenderer:(struct Renderer *)arg1;
-- (BOOL)isHidden;
-- (void)layoutRenderQueue:(shared_ptr_06328420)arg1;
-- (void)puckAnimator:(id)arg1 updatedPosition:(const Mercator3_d8bb135c *)arg2 course:(double)arg3;
-- (void)resetRenderQueue:(shared_ptr_06328420)arg1;
+- (id)initWithMapEngine:(struct MapEngine *)arg1 inBackground:(BOOL)arg2;
+- (void)puckAnimator:(id)arg1 updatedPosition:(const Coordinate3D_bc242218 *)arg2 course:(const Unit_3d259e8a *)arg3;
 - (BOOL)restoreViewportFromInfo:(id)arg1;
 - (vector_8bf6b0e5)roadMarkersForSelectionAtScreenPoint:(struct CGPoint)arg1;
 - (void)runAnimation:(id)arg1;
-- (void)runOrAdoptAnimation:(id)arg1 run:(BOOL)arg2;
 - (void)setCameraController:(id)arg1;
 - (void)setContentsScale:(double)arg1;
-- (void)setHidden:(BOOL)arg1;
-- (void)setNeedsDisplay;
 - (void)setNeedsLayout;
-- (void)stopNonTransferableAnimations;
+- (void)setWantsLayout;
 - (shared_ptr_144c31f6)styleForFeature:(const shared_ptr_430519ce *)arg1;
 - (shared_ptr_a3c46825)styleManager;
 - (shared_ptr_664b6d77)stylesheet;
-- (void)transferAnimationsTo:(id)arg1;
+- (long long)tileSize;
 - (void)transferStateFromCanvas:(id)arg1;
 - (void)updateCameraForFrameResize;
-- (BOOL)updateDisplayLinkStatus;
 - (void)updateWithTimestamp:(double)arg1;
 - (id)viewportInfo;
-- (BOOL)wantsRender;
 - (BOOL)wantsTimerTick;
-- (void)willEnterForeground;
-- (void)worldDisplayDidChange:(id)arg1;
-- (void)worldLayoutDidChange:(id)arg1;
 
 @end
 

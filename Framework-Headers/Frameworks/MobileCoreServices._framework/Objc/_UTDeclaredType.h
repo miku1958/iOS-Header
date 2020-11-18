@@ -6,7 +6,7 @@
 
 #import <MobileCoreServices/_UTConcreteType.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSObject, NSString, NSURL, NSUUID;
+@class NSArray, NSData, NSDictionary, NSNumber, NSObject, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_dispatch_queue> *_additionalInfoQueue;
     unsigned int _flags;
-    NSUUID *_uuid;
+    unsigned int _unit;
     NSNumber *_version;
     NSString *_unlocalizedDescription;
     NSString *_localizedDescription;
@@ -31,20 +31,22 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_iconURL;
+- (id)_iconURLCheckingParents:(BOOL)arg1;
 - (BOOL)_isActive;
 - (BOOL)_isAppleInternal;
 - (BOOL)_isPublic;
+- (BOOL)_isWildcard;
 - (id)_kernelExtensionName;
 - (id)_localizedDescriptionDictionary;
-- (id)_localizedDescriptionWithPreferredLocalizations:(id)arg1;
+- (id)_localizedDescriptionWithPreferredLocalizations:(id)arg1 checkingParents:(BOOL)arg2;
 - (id)_unlocalizedDescription;
-- (void)dealloc;
 - (id)declaration;
 - (id)declaringBundleURL;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithContext:(struct LSContext *)arg1 UTTypeID:(unsigned int)arg2 UTTypeData:(const CDStruct_b227e4e8 *)arg3;
+- (id)initWithContext:(struct LSContext *)arg1 UTTypeID:(unsigned int)arg2 UTTypeData:(const CDStruct_b8194125 *)arg3;
 - (BOOL)isDeclared;
 - (BOOL)needsWorkaroundFor22092605;
 - (id)parentIdentifiers;

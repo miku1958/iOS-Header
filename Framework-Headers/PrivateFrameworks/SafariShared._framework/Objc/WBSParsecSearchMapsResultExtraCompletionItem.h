@@ -8,7 +8,7 @@
 
 #import <SafariShared/WBSCompletionListItem-Protocol.h>
 
-@class NSString, NSURL, SFSearchResult, WBSParsecImageRepresentation, WBSParsecSearchMapsResult;
+@class NSString, NSURL, SFSearchResult, WBSParsecImageRepresentation, WBSParsecSearchMapsResult, WBSQuerySuggestion;
 
 @interface WBSParsecSearchMapsResultExtraCompletionItem : NSObject <WBSCompletionListItem>
 {
@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) NSString *lastSearchQuery;
 @property (readonly, nonatomic) NSString *parsecDomainIdentifier;
 @property (readonly, nonatomic) SFSearchResult *sfSearchResultValue;
+@property (strong, nonatomic) WBSQuerySuggestion *siriSuggestion;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;

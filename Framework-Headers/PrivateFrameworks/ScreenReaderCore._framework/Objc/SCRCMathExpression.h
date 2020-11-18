@@ -39,13 +39,14 @@
 @property (readonly, nonatomic) BOOL isWordOrAbbreviation;
 @property (readonly, nonatomic) NSString *latexFormatStringAsOver;
 @property (readonly, nonatomic) NSString *latexFormatStringAsUnder;
-@property (nonatomic) SCRCMathExpression *parent; // @synthesize parent=_parent;
+@property (weak, nonatomic) SCRCMathExpression *parent; // @synthesize parent=_parent;
 @property (readonly, nonatomic) NSArray *siblings;
 @property (readonly, nonatomic) NSArray *subExpressions;
 
 + (Class)_classForExpressionType:(id)arg1;
 + (id)mathExpressionWithDictionary:(id)arg1;
 + (void)setPathToSegmentOrderingPlist:(id)arg1;
+- (void).cxx_destruct;
 - (void)_applyTreePositionOfOriginalSegment:(id)arg1 toPrefixedOrSuffixedSegment:(id)arg2;
 - (id)_scrcBundle;
 - (id)arrayWithoutNilsFromFirstChild:(id)arg1 secondChild:(id)arg2 thirdChild:(id)arg3;

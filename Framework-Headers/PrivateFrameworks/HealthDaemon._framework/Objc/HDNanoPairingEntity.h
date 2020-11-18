@@ -34,9 +34,9 @@
 + (id)columnsDefinition;
 + (id)databaseTable;
 + (BOOL)enumeratePairingsForStoreIdentifier:(long long)arg1 database:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
-+ (id)nanoPairingEntityWithRegistryUUID:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;
++ (id)nanoPairingEntityWithRegistryUUID:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (long long)protectionClass;
-+ (id)sourceEntityForRegistryUUID:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;
++ (id)sourceEntityForRegistryUUID:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (id)_initWithNanoRegistryUUID:(id)arg1 persistentUUID:(id)arg2 healthUUID:(id)arg3 sourceBundleIdentifier:(id)arg4 deviceIdentifier:(id)arg5 syncStoreEntity:(id)arg6 restoreComplete:(BOOL)arg7 database:(id)arg8 error:(id *)arg9;
 - (id)description;

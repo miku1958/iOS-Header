@@ -8,6 +8,7 @@
 
 @class CKSQLite, NSMutableArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface CKSQLiteStatement : NSObject
 {
     BOOL _reset;

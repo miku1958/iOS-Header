@@ -6,15 +6,16 @@
 
 #import <Foundation/NSObject.h>
 
-#import <QuartzCore/NSCoding-Protocol.h>
+#import <QuartzCore/NSSecureCoding-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface CACGPathCodingSegment : NSObject <NSCoding>
+@interface CACGPathCodingSegment : NSObject <NSSecureCoding>
 {
     int _type;
     struct CGPoint _points[3];
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)addToCGPath:(struct CGPath *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCGPathElement:(const struct CGPathElement *)arg1;

@@ -22,6 +22,7 @@
 - (void)dealloc;
 - (void)expel;
 - (id)initWithExtension:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

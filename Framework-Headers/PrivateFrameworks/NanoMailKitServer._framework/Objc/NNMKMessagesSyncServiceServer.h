@@ -23,11 +23,14 @@
 - (id)initWithQueue:(id)arg1;
 - (void)readProtobufData:(id)arg1 type:(unsigned long long)arg2;
 - (id)sendBatchedFetchResult:(id)arg1;
+- (id)sendBatchedInitialMessagesSync:(id)arg1;
+- (id)sendCoalescedBatchedFetchResult:(id)arg1;
 - (id)sendInitialMessagesSync:(id)arg1;
 - (id)sendMoreMessages:(id)arg1;
 - (id)sendMoreMessagesForConversation:(id)arg1;
 - (void)spaceBecameAvailable;
 - (void)successfullySentProtobufWithIDSIdentifier:(id)arg1;
+- (id)updateMailboxSelection:(id)arg1;
 - (id)updateMessagesStatus:(id)arg1 notificationPriority:(BOOL)arg2;
 
 @end

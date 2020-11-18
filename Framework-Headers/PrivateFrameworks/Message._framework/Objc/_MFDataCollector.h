@@ -8,13 +8,14 @@
 
 #import <Message/MFGuaranteedCollectingDataConsumer-Protocol.h>
 
-@class MFBufferedDataConsumer, MFLibraryMessage, MFMailMessageLibrary, NSString;
+@class MFBufferedDataConsumer, MFFileCompressionQueue, MFLibraryMessage, MFMailMessageLibrary, NSString;
 
 @interface _MFDataCollector : NSObject <MFGuaranteedCollectingDataConsumer>
 {
     MFMailMessageLibrary *_library;
     MFLibraryMessage *_message;
     MFBufferedDataConsumer *_consumer;
+    MFFileCompressionQueue *_compressionQueue;
     NSString *_part;
     BOOL _partial;
     BOOL _incomplete;
@@ -29,7 +30,7 @@
 - (id)data;
 - (void)dealloc;
 - (void)done;
-- (id)initWithLibrary:(id)arg1 message:(id)arg2 part:(id)arg3 partial:(BOOL)arg4 incomplete:(BOOL)arg5;
+- (id)initWithLibrary:(id)arg1 message:(id)arg2 part:(id)arg3 partial:(BOOL)arg4 incomplete:(BOOL)arg5 compressionQueue:(id)arg6;
 - (id)pathForStorage;
 
 @end

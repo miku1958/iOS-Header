@@ -6,10 +6,11 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, PKPass, PKPaymentPass, PKPaymentWebService;
+@class NSArray, NSData, NSDictionary, NSString, PKPass, PKPaymentPass, PKPaymentWebService, PKTrustedDeviceEnrollmentInfo, PKVerificationChannel;
 
 @protocol PKPaymentWebServiceTargetDeviceProtocol <NSObject>
 - (NSString *)bridgedClientInfo;
+- (BOOL)claimSecureElementForCurrentUser;
 - (NSString *)deviceDescriptionForPaymentWebService:(PKPaymentWebService *)arg1;
 - (NSString *)deviceName;
 - (NSString *)deviceRegion;
@@ -32,15 +33,23 @@
 - (void)paymentWebService:(PKPaymentWebService *)arg1 setNewAuthRandomIfNecessaryReturningPairingState:(void (^)(BOOL, NSData *, NSData *))arg2;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 signData:(NSData *)arg2 signatureEntanglementMode:(unsigned long long)arg3 withCompletionHandler:(void (^)(NSData *, PKSecureElementSignatureInfo *, NSError *))arg4;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 validateAddPreconditionsWithCompletion:(void (^)(BOOL, NSError *))arg2;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 validateTransferPreconditionsWithCompletion:(void (^)(BOOL, NSError *))arg2;
 - (void)paymentWebServiceDidUpdateConfiguration:(PKPaymentWebService *)arg1;
 - (NSArray *)secureElementIdentifiers;
+- (unsigned long long)secureElementOwnershipStateForCurrentUser;
 - (BOOL)supportsAutomaticPassPresentation;
 
 @optional
 - (BOOL)felicaSecureElementIsAvailable;
+- (unsigned long long)maximumPaymentCards;
+- (void)noteForegroundVerificationObserverActive:(BOOL)arg1;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 addPaymentPass:(PKPaymentPass *)arg2 withCompletionHandlerV2:(void (^)(PKPaymentPass *))arg3;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 handlePotentialExpressPass:(PKPaymentPass *)arg2 withCompletionHandler:(void (^)(NSSet *))arg3;
+- (NSArray *)paymentWebService:(PKPaymentWebService *)arg1 passesOfType:(unsigned long long)arg2;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 removePass:(PKPass *)arg2 withCompletionHandler:(void (^)(BOOL, NSError *))arg3;
-- (void)paymentWebService:(PKPaymentWebService *)arg1 validateTransferPreconditionsWithCompletion:(void (^)(BOOL, NSError *))arg2;
+- (void)setMaximumPaymentCards:(unsigned long long)arg1;
+- (void)startBackgroundVerificationObserverForPass:(PKPaymentPass *)arg1 verificationMethod:(PKVerificationChannel *)arg2;
+- (BOOL)supportsExpressModeForExpressPassType:(long long)arg1;
+- (PKTrustedDeviceEnrollmentInfo *)trustedDeviceEnrollmentInfoForWebService:(PKPaymentWebService *)arg1;
 @end
 

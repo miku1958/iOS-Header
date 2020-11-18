@@ -15,6 +15,7 @@
     double _sessionTimeout;
     SYMessageHeader *_header;
     NSData *_metadata;
+    NSString *_reason;
     NSString *_sessionID;
     BOOL _expectsRestartSupport;
     BOOL _expectsRollbackSupport;
@@ -24,9 +25,11 @@
 @property (nonatomic) BOOL expectsRestartSupport; // @synthesize expectsRestartSupport=_expectsRestartSupport;
 @property (nonatomic) BOOL expectsRollbackSupport; // @synthesize expectsRollbackSupport=_expectsRollbackSupport;
 @property (readonly, nonatomic) BOOL hasMetadata;
+@property (readonly, nonatomic) BOOL hasReason;
 @property (strong, nonatomic) SYMessageHeader *header; // @synthesize header=_header;
 @property (nonatomic) BOOL isResetSync; // @synthesize isResetSync=_isResetSync;
 @property (strong, nonatomic) NSData *metadata; // @synthesize metadata=_metadata;
+@property (strong, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (strong, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property (nonatomic) double sessionTimeout; // @synthesize sessionTimeout=_sessionTimeout;
 

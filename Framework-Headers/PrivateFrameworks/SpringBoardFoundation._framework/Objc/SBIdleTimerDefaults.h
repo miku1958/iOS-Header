@@ -11,10 +11,12 @@
 }
 
 @property (readonly, nonatomic, getter=isBacklightLoggingEnabled) BOOL backlightLoggingEnabled; // @dynamic backlightLoggingEnabled;
+@property (readonly, nonatomic) BOOL disableAttentionAwareness; // @dynamic disableAttentionAwareness;
 @property (readonly, nonatomic) BOOL disableAutoDim; // @dynamic disableAutoDim;
 @property (readonly, nonatomic) BOOL dontDimOrLockWhileConnectedToPower; // @dynamic dontDimOrLockWhileConnectedToPower;
 @property (readonly, nonatomic) double minimumLockscreenIdleTime; // @dynamic minimumLockscreenIdleTime;
 @property (readonly, nonatomic) BOOL supportLiftToWake; // @dynamic supportLiftToWake;
+@property (readonly, nonatomic) BOOL supportTapToWake; // @dynamic supportTapToWake;
 
 - (void)_bindAndRegisterDefaults;
 - (BOOL)disableAutoDimExists;

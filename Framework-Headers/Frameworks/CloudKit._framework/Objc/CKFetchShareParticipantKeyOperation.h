@@ -11,6 +11,7 @@
 @interface CKFetchShareParticipantKeyOperation : CKDatabaseOperation
 {
     NSDictionary *_baseTokensByShareID;
+    NSDictionary *_childRecordIDsByShareID;
     CDUnknownBlockType _shareParticipantKeyFetchedBlock;
     CDUnknownBlockType _shareParticipantKeyCompletionBlock;
     NSArray *_shareIDs;
@@ -18,6 +19,7 @@
 }
 
 @property (strong, nonatomic) NSDictionary *baseTokensByShareID; // @synthesize baseTokensByShareID=_baseTokensByShareID;
+@property (strong, nonatomic) NSDictionary *childRecordIDsByShareID; // @synthesize childRecordIDsByShareID=_childRecordIDsByShareID;
 @property (strong, nonatomic) NSMutableDictionary *errorsByShareID; // @synthesize errorsByShareID=_errorsByShareID;
 @property (strong, nonatomic) NSArray *shareIDs; // @synthesize shareIDs=_shareIDs;
 @property (copy, nonatomic) CDUnknownBlockType shareParticipantKeyCompletionBlock; // @synthesize shareParticipantKeyCompletionBlock=_shareParticipantKeyCompletionBlock;

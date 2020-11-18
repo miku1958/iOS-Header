@@ -7,16 +7,18 @@
 #import <UIKit/UIViewController.h>
 
 @class UIActivityIndicatorView;
+@protocol PXFeedbackFormDelegate;
 
 @interface PXFeedbackLikeItOrNotComboUIViewController : UIViewController
 {
-    unsigned long long _feedbackCollectionType;
     BOOL __showsActivityIndicator;
+    id<PXFeedbackFormDelegate> _delegate;
     UIActivityIndicatorView *__activityIndicatorView;
 }
 
 @property (readonly, nonatomic) UIActivityIndicatorView *_activityIndicatorView; // @synthesize _activityIndicatorView=__activityIndicatorView;
 @property (nonatomic) BOOL _showsActivityIndicator; // @synthesize _showsActivityIndicator=__showsActivityIndicator;
+@property (strong, nonatomic) id<PXFeedbackFormDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
 - (void)_dislikedIt:(id)arg1;
@@ -24,8 +26,10 @@
 - (void)_fileRadar:(id)arg1;
 - (void)_likedIt:(id)arg1;
 - (void)_provideFeedback:(id)arg1;
-- (id)initWithCollectionType:(unsigned long long)arg1;
+- (void)cancelFeedback:(id)arg1;
+- (id)initWithDelegate:(id)arg1;
 - (void)setShowsActivityIndicator:(BOOL)arg1;
+- (void)showMoreFeedbackForm;
 - (void)viewDidLoad;
 
 @end

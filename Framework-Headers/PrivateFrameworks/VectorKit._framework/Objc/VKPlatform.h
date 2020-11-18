@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface VKPlatform : NSObject
 {
     unsigned long long _memSize;
     int _numCPUs;
+    BOOL _isMac;
     BOOL _proceduralRoadAlpha;
     BOOL _useCheapTrafficShader;
     BOOL _supportsBuildingStrokes;
@@ -17,16 +18,15 @@
     BOOL _lowPerformanceDevice;
     BOOL _supportsCoastlineGlows;
     BOOL _supportsPerFragmentLighting;
+    BOOL _supportsARMode;
 }
 
 @property (readonly, nonatomic) BOOL canMakeSharingThumbnails;
 @property (readonly, nonatomic) BOOL isPad;
 @property (readonly, nonatomic) BOOL lowPerformanceDevice;
-@property (readonly, nonatomic) double mainScreenPPI;
-@property (readonly, nonatomic) double mainScreenScale;
-@property (readonly, nonatomic) double maxContentScaleForRendering;
 @property (readonly, nonatomic) unsigned long long memorySize; // @synthesize memorySize=_memSize;
 @property (readonly, nonatomic) BOOL proceduralRoadAlpha; // @synthesize proceduralRoadAlpha=_proceduralRoadAlpha;
+@property (readonly, nonatomic) unsigned char processingQueueWidth;
 @property (readonly, nonatomic) BOOL roadsWithSimpleLineMeshesAvailable;
 @property (readonly, nonatomic) double routeLineSimplificationEpsilon;
 @property (readonly, nonatomic) BOOL shouldDrawWhenReady;
@@ -35,6 +35,7 @@
 @property (readonly, nonatomic) BOOL shouldStyleLabelsInParallel;
 @property (readonly, nonatomic) BOOL supports3DBuildingStrokes; // @synthesize supports3DBuildingStrokes=_supports3DBuildingStrokes;
 @property (readonly, nonatomic) BOOL supports3DBuildings;
+@property (readonly, nonatomic) BOOL supportsARMode; // @synthesize supportsARMode=_supportsARMode;
 @property (readonly, nonatomic) BOOL supportsBuildingShadows;
 @property (readonly, nonatomic) BOOL supportsBuildingStrokes; // @synthesize supportsBuildingStrokes=_supportsBuildingStrokes;
 @property (readonly, nonatomic) BOOL supportsCoastlineGlows; // @synthesize supportsCoastlineGlows=_supportsCoastlineGlows;
@@ -42,7 +43,6 @@
 @property (readonly, nonatomic) BOOL supportsHiResRTT;
 @property (readonly, nonatomic) BOOL supportsPerFragmentLighting; // @synthesize supportsPerFragmentLighting=_supportsPerFragmentLighting;
 @property (readonly, nonatomic) unsigned char tileDecodeQueueWidth;
-@property (readonly, nonatomic) unsigned long long tileMaximumLimit;
 @property (readonly, nonatomic) unsigned int tilePrefetchNumberOfScreens;
 @property (readonly, nonatomic) BOOL useCheapTrafficShader; // @synthesize useCheapTrafficShader=_useCheapTrafficShader;
 
@@ -51,6 +51,7 @@
 - (void)_determineHardware;
 - (void)dealloc;
 - (id)init;
+- (unsigned long long)tileMaximumLimit:(unsigned long long)arg1;
 
 @end
 

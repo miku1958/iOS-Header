@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSHashTable.h>
+#import <Foundation/NSHashTable.h>
 
 __attribute__((visibility("hidden")))
 @interface NSConcreteHashTable : NSHashTable

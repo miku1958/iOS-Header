@@ -6,7 +6,7 @@
 
 #import <IDS/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSObject, NSSet, NSString, NSURL;
+@class ENGroupID, NSArray, NSData, NSDictionary, NSNumber, NSObject, NSSet, NSString, NSURL;
 @protocol OS_xpc_object;
 
 @protocol IDSDaemonProtocol <NSObject>
@@ -21,6 +21,7 @@
 - (void)acknowledgeMessageWithStorageGUID:(NSString *)arg1 realGUID:(NSString *)arg2 forAccountWithUniqueID:(NSString *)arg3 broadcastTime:(NSNumber *)arg4 messageSize:(NSNumber *)arg5 priority:(NSNumber *)arg6 broadcastID:(long long)arg7 connectionType:(long long)arg8;
 - (void)acknowledgeOutgoingMessageWithGUID:(NSString *)arg1 alternateCallbackID:(NSString *)arg2 forAccountWithUniqueID:(NSString *)arg3;
 - (void)acknowledgeSessionID:(NSString *)arg1 clientID:(NSString *)arg2;
+- (void)activateAlias:(NSString *)arg1 onAccount:(NSString *)arg2;
 - (void)addAccountWithLoginID:(NSString *)arg1 serviceName:(NSString *)arg2 uniqueID:(NSString *)arg3 accountType:(int)arg4 accountInfo:(NSDictionary *)arg5;
 - (void)addAliases:(NSArray *)arg1 toAccount:(NSString *)arg2;
 - (void)addPairedDevice:(NSString *)arg1;
@@ -34,6 +35,7 @@
 - (void)cancelInvitation:(NSString *)arg1 withData:(NSData *)arg2;
 - (void)cancelInvitation:(NSString *)arg1 withRemoteEndedReasonOverride:(unsigned int)arg2;
 - (void)cancelItemWithIdentifier:(NSString *)arg1 service:(NSString *)arg2;
+- (void)cleanupGroupStatusNotifier:(NSString *)arg1;
 - (void)cleanupSession:(NSString *)arg1;
 - (void)closeSocketWithOptions:(NSDictionary *)arg1;
 - (void)connectPairedDevice:(NSString *)arg1;
@@ -50,6 +52,7 @@
 - (void)continuityStopAdvertisingOfType:(long long)arg1;
 - (void)continuityStopScanningForType:(long long)arg1;
 - (void)continuityStopTrackingPeer:(NSString *)arg1 forType:(long long)arg2;
+- (void)deactivateAlias:(NSString *)arg1 onAccount:(NSString *)arg2;
 - (void)deactivateAndPurgeIdentifyForAccount:(NSString *)arg1;
 - (void)declineInvitation:(NSString *)arg1;
 - (void)declineInvitation:(NSString *)arg1 withData:(NSData *)arg2;
@@ -61,17 +64,21 @@
 - (void)enableAccount:(NSString *)arg1;
 - (void)endSession:(NSString *)arg1;
 - (void)endSession:(NSString *)arg1 withData:(NSData *)arg2;
+- (void)failedDecryptingMessage:(NSDictionary *)arg1 reason:(long long)arg2 forGroupID:(ENGroupID *)arg3 onService:(NSString *)arg4;
+- (void)forgetDeviceWithID:(NSString *)arg1 requestID:(NSString *)arg2;
 - (void)getDeliveryStats;
 - (void)getLocalDeviceInfo;
 - (void)getPairedDeviceInfo;
 - (void)getPairedDevicesWithRequestID:(NSString *)arg1;
 - (void)getPairingDevicesWithRequestID:(NSString *)arg1;
+- (void)getRegisteredIdentities;
 - (void)hardDeregister;
 - (void)homeKitGetAdminAccessTokensWithServiceUserID:(NSString *)arg1 accessoryID:(NSString *)arg2 pairingToken:(NSData *)arg3;
 - (void)homeKitGetConsentTokensWithServiceUserID:(NSString *)arg1 accessoryIDs:(NSArray *)arg2 adminID:(NSString *)arg3;
 - (void)homeKitGetServiceUserIDs;
 - (void)homeKitGetUserAccessTokensWithServiceUserID:(NSString *)arg1 userID:(NSString *)arg2 userHandle:(NSString *)arg3 accessoryRequests:(NSArray *)arg4;
 - (void)homeKitRefreshUserAccessTokensWithServiceUserID:(NSString *)arg1 userID:(NSString *)arg2 accessoryRequests:(NSArray *)arg3;
+- (void)iCloudModifyForUserName:(NSString *)arg1;
 - (void)iCloudSignInHackWithUserName:(NSString *)arg1 password:(NSString *)arg2;
 - (void)iCloudSignInWithUserName:(NSString *)arg1 authToken:(NSString *)arg2 password:(NSString *)arg3 accountInfo:(NSDictionary *)arg4 accountStatus:(NSNumber *)arg5 handles:(NSArray *)arg6;
 - (void)iCloudSignOut;
@@ -81,25 +88,31 @@
 - (void)incomingAccountSyncMessage:(NSDictionary *)arg1;
 - (void)initialLocalSyncCompletedForServices:(NSArray *)arg1;
 - (void)initialLocalSyncStartedForServices:(NSArray *)arg1;
+- (void)joinGroupSession:(NSString *)arg1 participantInfo:(NSDictionary *)arg2;
 - (void)kickGetDependentForAccount:(NSString *)arg1;
+- (void)leaveGroupSession:(NSString *)arg1 participantInfo:(NSDictionary *)arg2;
 - (void)localSetupCompleted;
 - (void)localSetupUnpair;
 - (void)localSetupUnpairStart;
 - (void)openSocketWithOptions:(NSDictionary *)arg1;
+- (NSArray *)participantsForGroupID:(NSString *)arg1 forNotifierWithUniqueID:(NSString *)arg2;
 - (void)passwordChanged:(NSString *)arg1 forAccount:(NSString *)arg2;
 - (void)passwordUpdatedForAccount:(NSString *)arg1;
 - (void)reRegisterWithUserID:(NSString *)arg1 action:(NSNumber *)arg2 service:(NSString *)arg3;
+- (void)redeliverMessagesForDevice:(NSString *)arg1 requestID:(NSString *)arg2;
 - (void)registerAccount:(NSString *)arg1;
 - (void)registerForNotificationsOnServices:(NSSet *)arg1;
 - (void)registrationControlGetRegistrationStateForRegistrationType:(long long)arg1 requestID:(NSString *)arg2;
 - (void)registrationControlSetRegistrationStateForRegistrationType:(long long)arg1 toState:(long long)arg2 requestID:(NSString *)arg3;
 - (void)removeAliases:(NSArray *)arg1 fromAccount:(NSString *)arg2;
+- (void)repairAccounts;
 - (void)reportiMessageSpam:(NSArray *)arg1 toURI:(NSString *)arg2;
 - (void)reportiMessageSpamCheckUnknown:(NSString *)arg1 count:(NSNumber *)arg2 requestID:(NSString *)arg3;
 - (void)reportiMessageUnknownSender:(NSString *)arg1 messageID:(NSString *)arg2 messageServerTimestamp:(NSNumber *)arg3 toURI:(NSString *)arg4;
 - (void)reunionSyncCompletedForServices:(NSArray *)arg1 requestID:(NSString *)arg2;
 - (void)reunionSyncStartedForServices:(NSArray *)arg1 requestID:(NSString *)arg2;
 - (void)rollKeys;
+- (void)sendAllocationRequest:(NSString *)arg1 options:(NSDictionary *)arg2;
 - (void)sendAppAckWithGUID:(NSString *)arg1 toDestination:(NSString *)arg2 forAccountWithUniqueID:(NSString *)arg3 connectionType:(long long)arg4;
 - (void)sendInvitation:(NSString *)arg1 withData:(NSData *)arg2 declineOnError:(BOOL)arg3;
 - (void)sendInvitation:(NSString *)arg1 withOptions:(NSDictionary *)arg2;
@@ -122,6 +135,7 @@
 - (void)setupAccountWithLoginID:(NSString *)arg1 serviceName:(NSString *)arg2 accountType:(int)arg3 accountConfig:(NSDictionary *)arg4 authToken:(NSString *)arg5 password:(NSString *)arg6 transactionID:(NSString *)arg7;
 - (void)setupCompletedForPairedDeviceWithID:(NSString *)arg1 requestID:(NSString *)arg2;
 - (void)setupNewSessionWithConfiguration:(NSDictionary *)arg1;
+- (void)setupNewStatusNotifierWithConfiguration:(NSDictionary *)arg1;
 - (void)startLocalSetup;
 - (void)startOTRTest:(NSString *)arg1 priority:(long long)arg2;
 - (void)stopLocalPairingForDeviceWithID:(NSString *)arg1 requestID:(NSString *)arg2;
@@ -135,6 +149,7 @@
 - (void)unvalidateAliases:(NSArray *)arg1 forAccount:(NSString *)arg2;
 - (void)updateAccount:(NSString *)arg1 withAccountInfo:(NSDictionary *)arg2;
 - (void)updateAuthorizationCredentials:(NSString *)arg1 token:(NSString *)arg2 forAccount:(NSString *)arg3;
+- (void)updateMembers:(NSArray *)arg1 forGroupID:(NSString *)arg2 isTriggeredLocally:(BOOL)arg3 forSessionWithUniqueID:(NSString *)arg4;
 - (void)updateSubServices:(NSArray *)arg1 forService:(NSString *)arg2 deviceUniqueID:(NSString *)arg3;
 - (void)validateAliases:(NSArray *)arg1 forAccount:(NSString *)arg2;
 - (void)validateProfileForAccount:(NSString *)arg1;

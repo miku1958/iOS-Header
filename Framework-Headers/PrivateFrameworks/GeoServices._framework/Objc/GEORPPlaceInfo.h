@@ -27,10 +27,10 @@
 @property (strong, nonatomic) NSString *sourceApplication; // @synthesize sourceApplication=_sourceApplication;
 @property (strong, nonatomic) NSString *sourceUrl; // @synthesize sourceUrl=_sourceUrl;
 
+- (void).cxx_destruct;
 - (void)clearSessionIdFromPlaceRequest;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

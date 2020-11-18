@@ -18,6 +18,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)description;
 - (id)initWithImage:(id)arg1;
+- (BOOL)isAccessibilityElement;
 
 @end
 

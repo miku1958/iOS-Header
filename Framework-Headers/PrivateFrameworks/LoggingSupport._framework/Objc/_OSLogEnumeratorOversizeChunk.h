@@ -15,8 +15,12 @@ __attribute__((visibility("hidden")))
     struct tracev3_chunk_s *_chunk;
 }
 
+@property (readonly, nonatomic) unsigned long long timestamp;
+
 - (void).cxx_destruct;
+- (long long)compare:(id)arg1;
 - (void)fillMessage:(struct os_log_message_s *)arg1;
+- (void)fillProxy:(id)arg1;
 - (id)initWithSubchunk:(id)arg1 chunk:(struct tracev3_chunk_s *)arg2;
 - (BOOL)matches:(unsigned int)arg1 procinfo:(struct catalog_procinfo_s *)arg2;
 

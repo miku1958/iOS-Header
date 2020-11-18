@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSURL;
 
@@ -17,6 +17,7 @@
 
 + (id)sharedInstance;
 - (void)contentProxyURLDidChange:(id)arg1;
+- (void)dealloc;
 
 @end
 

@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <Navigation/NSCoding-Protocol.h>
 #import <Navigation/NSObject-Protocol.h>
 
 @class NSArray, NSString;
 @protocol GEOServerFormatTokenPriceValue, GEOTransitArtworkDataSource;
 
-@protocol GEOServerFormatToken <NSObject>
+@protocol GEOServerFormatToken <NSObject, NSCoding>
 
 @property (readonly, nonatomic) id<GEOTransitArtworkDataSource> artworkValue;
 @property (readonly, nonatomic) id<GEOServerFormatTokenPriceValue> priceValue;

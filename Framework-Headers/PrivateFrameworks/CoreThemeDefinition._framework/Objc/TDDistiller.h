@@ -16,6 +16,7 @@
     NSArray *_changedProductions;
     NSArray *_mainThreadPerformRunLoopModes;
     int _fileCompression;
+    BOOL _dontPackRenditionsBeforeDistilling;
     BOOL _incremental;
     BOOL _cancelled;
     BOOL _successful;
@@ -25,7 +26,6 @@
     TDLogger *_logger;
     NSString *_accumulatedErrorDescription;
     NSThread *_callbackThread;
-    CDUnknownBlockType _oldCompletionHandler;
     CDUnknownBlockType _completionHandler;
 }
 
@@ -35,11 +35,11 @@
 @property (strong) NSThread *callbackThread; // @synthesize callbackThread=_callbackThread;
 @property (getter=isCancelled) BOOL cancelled; // @synthesize cancelled=_cancelled;
 @property (copy) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (nonatomic) BOOL dontPackRenditionsBeforeDistilling; // @synthesize dontPackRenditionsBeforeDistilling=_dontPackRenditionsBeforeDistilling;
 @property int fileCompression;
 @property (getter=isFinished) BOOL finished; // @synthesize finished=_finished;
 @property (getter=isIncremental) BOOL incremental; // @synthesize incremental=_incremental;
 @property (strong) TDLogger *logger; // @synthesize logger=_logger;
-@property (copy) CDUnknownBlockType oldCompletionHandler; // @synthesize oldCompletionHandler=_oldCompletionHandler;
 @property (getter=isSuccessful) BOOL successful; // @synthesize successful=_successful;
 @property (readonly, nonatomic) NSUUID *uuid;
 
@@ -70,8 +70,8 @@
 - (void)_storeRenditions;
 - (id)_textureFaceExclusionPredicate;
 - (BOOL)assetStoreWriteToDisk;
-- (void)beginDistillWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)cancelDistill;
+- (id)dateOfLastDistill;
 - (void)dealloc;
 - (BOOL)distillCatalogGlobals;
 - (BOOL)distillCursorFacetDefinitions;
@@ -80,10 +80,6 @@
 - (BOOL)distillCustomFonts;
 - (BOOL)distillNamedElements;
 - (BOOL)distillRenditions;
-- (void)distillWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (BOOL)distillZeroCodeArtworkElementAndPartIdentifiers;
-- (BOOL)distillZeroCodeArtworkInfo:(id)arg1 ofType:(long long)arg2;
-- (BOOL)distillZeroCodeArtworkInfoOfType:(long long)arg1;
 - (id)documentPath;
 - (void)finishDistillationWithSuccess:(BOOL)arg1;
 - (id)initWithDocument:(id)arg1 outputPath:(id)arg2;
@@ -108,7 +104,6 @@
 - (BOOL)sortAndStoreRenditions;
 - (void)waitTimerDidFire:(id)arg1;
 - (void)waitUntilFinished;
-- (id)zeroCodeArtworkInfoOfType:(long long)arg1 error:(id *)arg2;
 
 @end
 

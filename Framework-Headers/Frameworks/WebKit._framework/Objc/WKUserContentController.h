@@ -36,13 +36,16 @@
 - (void)_removeUserContentFilter:(id)arg1;
 - (void)_removeUserScript:(id)arg1;
 - (void)_removeUserStyleSheet:(id)arg1;
+- (void)addContentRuleList:(id)arg1;
 - (void)addScriptMessageHandler:(id)arg1 name:(id)arg2;
 - (void)addUserScript:(id)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (void)removeAllContentRuleLists;
 - (void)removeAllUserScripts;
+- (void)removeContentRuleList:(id)arg1;
 - (void)removeScriptMessageHandlerForName:(id)arg1;
 
 @end

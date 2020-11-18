@@ -8,10 +8,11 @@
 
 #import <SearchFoundation/NSCopying-Protocol.h>
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFJSONSerializable-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSData, NSDictionary, NSString;
 
-@interface SFResultSection : NSObject <NSSecureCoding, NSCopying>
+@interface SFResultSection : NSObject <SFJSONSerializable, NSSecureCoding, NSCopying>
 {
     NSArray *_results;
     unsigned long long _maxInitiallyVisibleResults;
@@ -23,11 +24,17 @@
 }
 
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned long long maxInitiallyVisibleResults; // @synthesize maxInitiallyVisibleResults=_maxInitiallyVisibleResults;
 @property (copy, nonatomic) NSString *moreText; // @synthesize moreText=_moreText;
 @property (nonatomic) double rankingScore; // @synthesize rankingScore=_rankingScore;
 @property (strong, nonatomic) NSArray *results; // @synthesize results=_results;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (BOOL)supportsSecureCoding;

@@ -6,17 +6,14 @@
 
 #import <HealthDaemon/HDStatisticsBuilder.h>
 
-@class NSCalendar, NSDate, NSMutableArray, NSMutableDictionary, NSNumber;
+@class NSCalendar, NSDateInterval, NSMutableArray, NSMutableDictionary, NSNumber;
 
 @interface HDListByTypeStatisticsBuilder : HDStatisticsBuilder
 {
-    NSDate *_bucketStartDate;
-    NSDate *_bucketEndDate;
-    NSDate *_sleepStartDate;
-    NSDate *_sleepEndDate;
+    NSDateInterval *_baseInterval;
+    NSDateInterval *_sleepInterval;
     NSMutableArray *_lastUpdatedDataTypes;
     NSMutableDictionary *_calculatorByTypes;
-    NSMutableDictionary *_lastIntervalInfoByTypes;
     NSMutableDictionary *_statisticsByTypes;
     NSMutableDictionary *_summariesByTypes;
     NSMutableDictionary *_quantitiesByDataType;
@@ -34,6 +31,8 @@
 - (BOOL)_addWorkoutSample:(id)arg1;
 - (id)_calculatedSummariesForDayWithDatabase:(id)arg1 error:(id *)arg2;
 - (id)_calculatedValuesForDatabase:(id)arg1 error:(id *)arg2;
+- (id)_dateIntervalForType:(long long)arg1;
+- (BOOL)_enumerateSamplesOfType:(long long)arg1 interval:(id)arg2 database:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (BOOL)_enumerateSamplesWithDatabase:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)_latestAnchorFromDatabase:(id)arg1 withError:(id *)arg2;
 - (id)_predicateForAllTypes;
@@ -56,7 +55,9 @@
 - (BOOL)addQuantitySamplesForType:(long long)arg1 value:(double)arg2 bucketStartTime:(double)arg3 bucketEndTime:(double)arg4 startTime:(double)arg5 endTime:(double)arg6 sourceId:(long long)arg7 enforceLatest:(BOOL)arg8;
 - (id)calculatedQuantitiesByDataType;
 - (id)collectionCalculatorForType:(id)arg1 from:(double)arg2 to:(double)arg3;
-- (id)initWithProfile:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 sleepStartDate:(id)arg4 sleepEndDate:(id)arg5 calendar:(id)arg6;
+- (id)discreteCollectionCalculatorForType:(id)arg1;
+- (id)initWithProfile:(id)arg1 baseInterval:(id)arg2 sleepInterval:(id)arg3 calendar:(id)arg4;
+- (unsigned long long)mergeStrategyForType:(id)arg1;
 - (id)summariesForDayWithError:(id *)arg1;
 - (id)timeIntervalCalculatorForType:(id)arg1;
 - (void)updateValuesWithAddedSample:(id)arg1 anchor:(id)arg2;

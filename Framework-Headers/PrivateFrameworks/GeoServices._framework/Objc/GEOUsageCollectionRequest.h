@@ -27,6 +27,7 @@
 + (Class)abExperimentAssignmentType;
 + (Class)timeToLeaveHypothesisFeedbackCollectionType;
 + (Class)timeToLeaveInitialTravelTimeFeedbackCollectionType;
+- (void).cxx_destruct;
 - (id)abExperimentAssignmentAtIndex:(unsigned long long)arg1;
 - (unsigned long long)abExperimentAssignmentsCount;
 - (void)addAbExperimentAssignment:(id)arg1;
@@ -37,7 +38,6 @@
 - (void)clearTimeToLeaveInitialTravelTimeFeedbackCollections;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -16,7 +16,9 @@
     HKQuantity *_totalEnergyBurned;
     HKQuantity *_totalBasalEnergyBurned;
     HKQuantity *_totalDistance;
+    HKQuantity *_totalElevation;
     HKQuantity *_totalSwimmingStrokeCount;
+    HKQuantity *_totalFlightsClimbed;
     unsigned long long _goalType;
     HKQuantity *_goal;
     BOOL _isWatchWorkout;
@@ -29,6 +31,7 @@
 @property (strong, nonatomic, getter=_totalBasalEnergyBurned, setter=_setTotalBasalEnergyBurned:) HKQuantity *totalBasalEnergyBurned;
 @property (readonly) HKQuantity *totalDistance;
 @property (readonly) HKQuantity *totalEnergyBurned;
+@property (readonly) HKQuantity *totalFlightsClimbed; // @synthesize totalFlightsClimbed=_totalFlightsClimbed;
 @property (readonly) HKQuantity *totalSwimmingStrokeCount;
 @property (readonly) unsigned long long workoutActivityType;
 @property (readonly, copy) NSArray *workoutEvents;
@@ -40,13 +43,14 @@
 + (id)_stringFromWorkoutActivityType:(unsigned long long)arg1;
 + (unsigned long long)_workoutActivityTypeFromString:(id)arg1;
 + (id)_workoutWithActivityType:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 workoutEvents:(id)arg4 duration:(double)arg5 totalActiveEnergyBurned:(id)arg6 totalBasalEnergyBurned:(id)arg7 totalDistance:(id)arg8 goalType:(unsigned long long)arg9 goal:(id)arg10 device:(id)arg11 metadata:(id)arg12;
-+ (id)_workoutWithActivityType:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 workoutEvents:(id)arg4 duration:(double)arg5 totalActiveEnergyBurned:(id)arg6 totalBasalEnergyBurned:(id)arg7 totalDistance:(id)arg8 totalSwimmingStrokeCount:(id)arg9 goalType:(unsigned long long)arg10 goal:(id)arg11 device:(id)arg12 metadata:(id)arg13 config:(CDUnknownBlockType)arg14;
++ (id)_workoutWithActivityType:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 workoutEvents:(id)arg4 duration:(double)arg5 totalActiveEnergyBurned:(id)arg6 totalBasalEnergyBurned:(id)arg7 totalDistance:(id)arg8 totalSwimmingStrokeCount:(id)arg9 totalFlightsClimbed:(id)arg10 goalType:(unsigned long long)arg11 goal:(id)arg12 device:(id)arg13 metadata:(id)arg14 config:(CDUnknownBlockType)arg15;
 + (BOOL)supportsSecureCoding;
 + (id)workoutWithActivityType:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3;
 + (id)workoutWithActivityType:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 duration:(double)arg4 totalEnergyBurned:(id)arg5 totalDistance:(id)arg6 device:(id)arg7 metadata:(id)arg8;
 + (id)workoutWithActivityType:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 duration:(double)arg4 totalEnergyBurned:(id)arg5 totalDistance:(id)arg6 metadata:(id)arg7;
 + (id)workoutWithActivityType:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 workoutEvents:(id)arg4 totalEnergyBurned:(id)arg5 totalDistance:(id)arg6 device:(id)arg7 metadata:(id)arg8;
 + (id)workoutWithActivityType:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 workoutEvents:(id)arg4 totalEnergyBurned:(id)arg5 totalDistance:(id)arg6 metadata:(id)arg7;
++ (id)workoutWithActivityType:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 workoutEvents:(id)arg4 totalEnergyBurned:(id)arg5 totalDistance:(id)arg6 totalFlightsClimbed:(id)arg7 device:(id)arg8 metadata:(id)arg9;
 + (id)workoutWithActivityType:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 workoutEvents:(id)arg4 totalEnergyBurned:(id)arg5 totalDistance:(id)arg6 totalSwimmingStrokeCount:(id)arg7 device:(id)arg8 metadata:(id)arg9;
 - (void).cxx_destruct;
 - (id)_deepCopy;
@@ -56,12 +60,14 @@
 - (void)_setDuration:(double)arg1;
 - (void)_setTotalDistance:(id)arg1;
 - (void)_setTotalEnergyBurned:(id)arg1;
+- (void)_setTotalFlightsClimbed:(id)arg1;
 - (void)_setTotalSwimmingStrokeCount:(id)arg1;
 - (void)_setWorkoutActivityType:(unsigned long long)arg1;
 - (void)_setWorkoutEvents:(id)arg1;
 - (double)_totalBasalEnergyBurnedInCanonicalUnit;
 - (double)_totalDistanceInCanonicalUnit;
 - (double)_totalEnergyBurnedInCanonicalUnit;
+- (double)_totalFlightsClimbedInCanonicalUnit;
 - (double)_totalSwimmingStrokeCountInCanonicalUnit;
 - (id)_validateConfiguration;
 - (id)_validateWorkoutEvents:(id)arg1;

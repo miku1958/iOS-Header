@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSFileReactorProxy.h>
+#import <Foundation/NSFileReactorProxy.h>
 
-@class NSFileAccessProcessManager, NSFilePresenterXPCMessenger, NSFileWatcher, NSMutableArray, NSObject;
+@class NSFileAccessProcessManager, NSFilePresenterXPCMessenger, NSFileWatcher, NSMutableArray, NSObject, NSSet;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     id _currentWriterPurposeID;
     NSMutableArray *_previousWriterPurposeIDs;
     NSFileAccessProcessManager *_processManager;
+    NSSet *_observedUbiquityAttributes;
     unsigned long long _filePresenterResponses;
     BOOL _didObserveMovingByWriter;
     BOOL _didObserveVersionChangingByWriter;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL disconnected;
 @property (nonatomic) unsigned long long filePresenterResponses; // @synthesize filePresenterResponses=_filePresenterResponses;
 @property BOOL inSubarbiter; // @synthesize inSubarbiter=_inSubarbiter;
+@property (copy) NSSet *observedUbiquityAttributes; // @synthesize observedUbiquityAttributes=_observedUbiquityAttributes;
 @property BOOL usesMainThreadDuringReliquishing; // @synthesize usesMainThreadDuringReliquishing=_usesMainThreadDuringRelinquishing;
 
 + (id)urlWithItemURL:(id)arg1 subitemPath:(id)arg2;
@@ -47,11 +49,15 @@ __attribute__((visibility("hidden")))
 - (void)invalidate;
 - (void)localFileWasEvicted;
 - (void)observeChangeAtSubitemPath:(id)arg1;
+- (void)observeChangeOfUbiquityAttributes:(id)arg1;
 - (void)observeDisappearanceAtSubitemPath:(id)arg1;
 - (void)observeDisconnectionByWriterWithPurposeID:(id)arg1;
 - (void)observeMoveByWriterWithPurposeID:(id)arg1 withPhysicalDestinationURL:(id)arg2;
 - (void)observeMoveOfSubitemAtURL:(id)arg1 toURL:(id)arg2 byWriterWithPurposeID:(id)arg3;
+- (void)observeNewProvider:(id)arg1;
+- (void)observePresenterChange:(BOOL)arg1 atSubitemURL:(id)arg2;
 - (void)observeReconnectionByWriterWithPurposeID:(id)arg1;
+- (void)observeSharingChangeAtSubitemPath:(id)arg1 withPhysicalURL:(id)arg2;
 - (void)observeUbiquityChangeAtSubitemPath:(id)arg1 withPhysicalURL:(id)arg2;
 - (void)observeVersionChangeOfKind:(id)arg1 withClientID:(id)arg2 name:(id)arg3 subitemPath:(id)arg4;
 - (void)promisedFileWasFulfilled;

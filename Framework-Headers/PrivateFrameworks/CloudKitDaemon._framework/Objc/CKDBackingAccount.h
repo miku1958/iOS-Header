@@ -14,8 +14,6 @@
 }
 
 @property (readonly, nonatomic) BOOL canAuthWithCloudKit; // @synthesize canAuthWithCloudKit=_canAuthWithCloudKit;
-@property (readonly, nonatomic) BOOL cloudKitIsEnabled;
-@property (readonly, nonatomic) BOOL cloudPhotosIsEnabled;
 @property (readonly, nonatomic) NSString *dsid;
 @property (readonly, nonatomic) NSPersonNameComponents *fullName;
 @property (readonly, nonatomic) BOOL iCloudDriveAllowsCellularAccess;
@@ -33,7 +31,7 @@
 + (Class)_platformBackingAccountClass;
 + (id)accountQueue;
 + (id)accountWithIdentifier:(id)arg1 inStore:(id)arg2;
-+ (BOOL)ensureCloudKitChildAccountOnParentAccount:(id)arg1 inStore:(id)arg2;
++ (void)ensureCloudKitChildAccountOnParentAccount:(id)arg1 inStore:(id)arg2;
 + (id)fakeAccountWithEmail:(id)arg1 password:(id)arg2;
 + (id)primaryAccountInStore:(id)arg1;
 - (id)_init;
@@ -46,8 +44,8 @@
 - (BOOL)isDataclassEnabled:(id)arg1;
 - (id)parentAppleAccount;
 - (void)renewAuthTokenInStore:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)saveVerifiedAccountInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)updateAccountProperiesInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateAccountPropertiesAndSaveAccountInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)urlForDataclass:(id)arg1;
 - (void)validateVettingToken:(id)arg1 vettingEmail:(id)arg2 vettingPhone:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end

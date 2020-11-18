@@ -6,18 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, NSValue;
+@class NSArray, NSMutableDictionary, NSString, NSValue;
 
 @interface RKSentenceClassifier : NSObject
 {
-    BOOL _lexicalClassAvailable;
-    BOOL _lemmaAvailable;
     BOOL _sentenceIsTerminated;
     BOOL _sentenceIsAllSymbols;
     BOOL _sentenceHasQuestionTerminator;
     BOOL _sentenceHasAlternativeConjunction;
     NSArray *_sentenceEntities;
+    NSArray *_matchedRanges;
     NSString *_languageIdentifier;
+    NSMutableDictionary *_partofSpeechAvailabilityByLanguage;
+    NSMutableDictionary *_lemmaAvailabilityByLanguage;
     NSString *_sentenceStringOriginal;
     NSString *_sentenceString;
     NSValue *_sentenceTag;
@@ -39,8 +40,9 @@
 @property (strong) NSArray *interrogatives; // @synthesize interrogatives=_interrogatives;
 @property (strong) NSArray *inversions; // @synthesize inversions=_inversions;
 @property (readonly) NSString *languageIdentifier; // @synthesize languageIdentifier=_languageIdentifier;
-@property (readonly) BOOL lemmaAvailable; // @synthesize lemmaAvailable=_lemmaAvailable;
-@property (readonly) BOOL lexicalClassAvailable; // @synthesize lexicalClassAvailable=_lexicalClassAvailable;
+@property (strong) NSMutableDictionary *lemmaAvailabilityByLanguage; // @synthesize lemmaAvailabilityByLanguage=_lemmaAvailabilityByLanguage;
+@property (strong) NSArray *matchedRanges; // @synthesize matchedRanges=_matchedRanges;
+@property (strong) NSMutableDictionary *partofSpeechAvailabilityByLanguage; // @synthesize partofSpeechAvailabilityByLanguage=_partofSpeechAvailabilityByLanguage;
 @property (strong) NSArray *sentenceEntities; // @synthesize sentenceEntities=_sentenceEntities;
 @property BOOL sentenceHasAlternativeConjunction; // @synthesize sentenceHasAlternativeConjunction=_sentenceHasAlternativeConjunction;
 @property BOOL sentenceHasQuestionTerminator; // @synthesize sentenceHasQuestionTerminator=_sentenceHasQuestionTerminator;

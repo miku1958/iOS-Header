@@ -23,12 +23,13 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL wantsProtectionInfo; // @synthesize wantsProtectionInfo=_wantsProtectionInfo;
 
 - (void).cxx_destruct;
+- (long long)databaseScope;
+- (id)generateRequestOperations;
 - (id)initWithLookupInfos:(id)arg1;
 - (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 
 @end
 

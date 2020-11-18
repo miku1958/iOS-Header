@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <CoreHAP/HMFTimerDelegate-Protocol.h>
 
-@class HMFTimer, NSString;
+@class HMFTimer, NSObject, NSString;
 @protocol HAPPairSetupSessionDelegate, OS_dispatch_queue;
 
-@interface HAPPairSetupSession : NSObject <HMFTimerDelegate>
+@interface HAPPairSetupSession : HMFObject <HMFTimerDelegate>
 {
     id<HAPPairSetupSessionDelegate> _delegate;
     long long _role;

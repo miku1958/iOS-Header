@@ -16,8 +16,8 @@
 @property (strong, nonatomic) NSMutableSet *privileges; // @synthesize privileges=_privileges;
 
 + (id)copyParseRules;
+- (void).cxx_destruct;
 - (void)addPrivilege:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (void)write:(id)arg1;

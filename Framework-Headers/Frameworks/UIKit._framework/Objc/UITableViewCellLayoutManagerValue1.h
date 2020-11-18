@@ -15,8 +15,9 @@
 - (id)defaultTextLabelFontForCell:(id)arg1;
 - (double)defaultTextLabelFontSizeForCell:(id)arg1;
 - (id)detailTextLabelForCell:(id)arg1;
-- (void)getTextLabelRect:(struct CGRect *)arg1 detailTextLabelRect:(struct CGRect *)arg2 forCell:(id)arg3 rowWidth:(double)arg4;
+- (void)getTextLabelRect:(struct CGRect *)arg1 detailTextLabelRect:(struct CGRect *)arg2 forCell:(id)arg3 rowWidth:(double)arg4 forSizing:(BOOL)arg5;
 - (id)imageViewForCell:(id)arg1;
+- (struct CGSize)intrinsicContentSizeForCell:(id)arg1 rowWidth:(double)arg2;
 - (void)layoutSubviewsOfCell:(id)arg1;
 - (id)textLabelForCell:(id)arg1;
 

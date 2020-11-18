@@ -8,13 +8,14 @@
 
 #import <PassKitUI/PKPassbookSettingsDataSource-Protocol.h>
 
-@class NSString, PKPassLibraryDefaultDataProvider, PKPaymentDefaultDataProvider, PKPaymentOptionsDefaults;
+@class NSString, PKPassLibraryDefaultDataProvider, PKPassbookPeerPaymentSettingsDefaultBehavior, PKPaymentDefaultDataProvider, PKPaymentOptionsDefaults;
 
 @interface PKPassbookSettingsDefaultBehavior : NSObject <PKPassbookSettingsDataSource>
 {
     PKPassLibraryDefaultDataProvider *_passLibraryDataProvider;
     PKPaymentDefaultDataProvider *_paymentDataProvider;
     PKPaymentOptionsDefaults *_options;
+    PKPassbookPeerPaymentSettingsDefaultBehavior *_peerPaymentDefaultBehavior;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,6 +24,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)canRegisterForPeerPayment;
 - (void)dealloc;
 - (BOOL)deviceInRestrictedMode;
 - (id)deviceName;
@@ -32,6 +34,8 @@
 - (id)optionsDelegate;
 - (id)passLibraryDataProvider;
 - (id)paymentDataProvider;
+- (id)peerPaymentDataSource;
+- (id)peerPaymentDelegate;
 - (id)secureElementID;
 - (BOOL)secureElementIsProductionSigned;
 - (id)setupDelegate;

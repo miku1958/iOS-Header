@@ -20,7 +20,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)customDescription;
 - (void)encodeWithCoder:(id)arg1;
-- (void)fulfillWithResponse:(id)arg1;
 - (id)init;
 - (id)initWithCallUUID:(id)arg1;
 - (id)initWithCoder:(id)arg1;

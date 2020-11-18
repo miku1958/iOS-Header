@@ -16,6 +16,7 @@
     int _numOutstandingBlockingClientCalls;
     int _numOutstandingRefreshPriorityClientCalls;
     NSString *_clientBundleID;
+    NSString *_clientUniqueID;
     NSObject<OS_xpc_object> *_conn;
     NSMutableDictionary *_watchedIDs;
     NSMutableDictionary *_busyIDs;
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) NSMutableDictionary *busyIDs; // @synthesize busyIDs=_busyIDs;
 @property (strong, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
 @property (strong, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
+@property (strong, nonatomic) NSString *clientUniqueID; // @synthesize clientUniqueID=_clientUniqueID;
 @property (strong, nonatomic) NSObject<OS_xpc_object> *conn; // @synthesize conn=_conn;
 @property (nonatomic) int numOutstandingAgentDisables; // @synthesize numOutstandingAgentDisables=_numOutstandingAgentDisables;
 @property (nonatomic) int numOutstandingBlockingClientCalls; // @synthesize numOutstandingBlockingClientCalls=_numOutstandingBlockingClientCalls;
@@ -42,6 +44,7 @@
 - (void).cxx_destruct;
 - (void)_agentsStopped:(id)arg1;
 - (void)_asPolicyKeyChanged:(id)arg1;
+- (void)_asyncProcessMeetingRequests:(id)arg1;
 - (void)_beginDownloadingAttachmentEvent:(id)arg1 eventDict:(id)arg2;
 - (void)_beginMonitoringFolders:(id)arg1;
 - (void)_cancelCalendarAvailabilityRequest:(id)arg1 eventDict:(id)arg2;
@@ -96,6 +99,7 @@
 - (void)disable;
 - (id)initWithClientID:(id)arg1;
 - (id)initWithConnection:(id)arg1 clientID:(id)arg2;
+- (BOOL)isMonitoringAccountID:(id)arg1 folderID:(id)arg2;
 - (void)noteBlockedClientCallChange:(int)arg1;
 - (void)noteRefreshClientCallChange:(int)arg1;
 - (void)persistentClientCleanup;

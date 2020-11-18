@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSData;
+@class NSData, NSMutableArray, NSMutableDictionary;
 
 @interface CoreDAVXMLData : NSObject
 {
@@ -14,15 +14,16 @@
     struct _xmlTextWriter *_writer;
     struct _xmlDoc *_doc;
     BOOL _docHasEnded;
-    struct __CFDictionary *_seenURIsToPrefixes;
-    struct __CFDictionary *_seenURIsToDepth;
-    struct __CFArray *_elementStack;
+    NSMutableDictionary *_seenURIsToPrefixes;
+    NSMutableDictionary *_seenURIsToDepth;
+    NSMutableArray *_elementStack;
 }
 
 @property (readonly, nonatomic) NSData *data;
 @property (nonatomic) BOOL shouldAddFormattingSpaces; // @synthesize shouldAddFormattingSpaces=_shouldAddFormattingSpaces;
 
 + (BOOL)string:(id)arg1 isEqualToXmlCharString:(const char *)arg2;
+- (void).cxx_destruct;
 - (const char *)_prefixForNameSpace:(const char *)arg1;
 - (void)_startElement:(id)arg1 inNamespace:(id)arg2;
 - (void)_startElement:(id)arg1 inNamespace:(id)arg2 withAttributeNamesAndValues:(id)arg3 attributes:(struct __va_list_tag [1])arg4;

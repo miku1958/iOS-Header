@@ -10,18 +10,21 @@
 #import <UIKit/UIInterfaceActionGroupDisplayPropertyObserver-Protocol.h>
 #import <UIKit/UIInterfaceActionGroupDisplaying-Protocol.h>
 #import <UIKit/UIScrollViewDelegate-Protocol.h>
+#import <UIKit/UISpringLoadedInteractionSupporting-Protocol.h>
 #import <UIKit/_UIInterfaceActionPresenting-Protocol.h>
 
 @class NSArray, NSLayoutConstraint, NSMutableArray, NSPointerArray, NSString, UIFont, UIInterfaceActionGroup, UIInterfaceActionRepresentationView, UIInterfaceActionSelectionTrackingController, UIInterfaceActionSeparatorAttributes, UIInterfaceActionVisualStyle, UILongPressGestureRecognizer, _UIContentConstraintsLayoutGuide, _UIInterfaceActionRepresentationsSequenceView;
 @protocol UIInterfaceActionHandlerInvocationDelegate, UIInterfaceActionVisualStyleProviding, UISeparatorDisplaying;
 
-@interface UIInterfaceActionGroupView : UIView <UIScrollViewDelegate, UIGestureRecognizerDelegatePrivate, _UIInterfaceActionPresenting, UIInterfaceActionGroupDisplayPropertyObserver, UIInterfaceActionGroupDisplaying>
+@interface UIInterfaceActionGroupView : UIView <UIScrollViewDelegate, UIGestureRecognizerDelegatePrivate, _UIInterfaceActionPresenting, UIInterfaceActionGroupDisplayPropertyObserver, UIInterfaceActionGroupDisplaying, UISpringLoadedInteractionSupporting>
 {
     BOOL _needsUpdateTopLevelViewsArrangement;
     BOOL _needsUpdateActionSequenceViewArrangement;
     BOOL _needsInitialViewLoading;
     BOOL _isSettingVisualStyle;
     UIInterfaceActionVisualStyle *_activeTestingVisualStyle;
+    NSString *_cachedSizeCategory;
+    BOOL _springLoaded;
     BOOL _showsSeparatorAboveActions;
     BOOL _drawsBackground;
     id<UIInterfaceActionVisualStyleProviding> _visualStyleProvider;
@@ -75,6 +78,7 @@
 @property (nonatomic) double requiredActionRepresentationWidth; // @synthesize requiredActionRepresentationWidth=_requiredActionRepresentationWidth;
 @property (nonatomic, getter=_selectionHighlightContinuousCornerRadius, setter=_setSelectionHighlightContinuousCornerRadius:) double selectionHighlightContinuousCornerRadius; // @synthesize selectionHighlightContinuousCornerRadius=_selectionHighlightContinuousCornerRadius;
 @property (nonatomic) BOOL showsSeparatorAboveActions; // @synthesize showsSeparatorAboveActions=_showsSeparatorAboveActions;
+@property (nonatomic, getter=isSpringLoaded) BOOL springLoaded; // @synthesize springLoaded=_springLoaded;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIView *topLevelItemsView; // @synthesize topLevelItemsView=_topLevelItemsView;
 @property (readonly, nonatomic) NSArray *topLevelViewArrangementConstraints; // @synthesize topLevelViewArrangementConstraints=_topLevelViewArrangementConstraints;
@@ -101,6 +105,7 @@
 - (void)_arrangeActionViewsInActionSequenceView;
 - (void)_arrangeTopLevelViews;
 - (void)_associateWeakSimultaneouslyPresentedGroupViews:(id)arg1 bidirectional:(BOOL)arg2;
+- (struct UIEdgeInsets)_buttonEdgeInsetsFromGroupViewEdge;
 - (void)_commonInitWithActionGroup:(id)arg1 visualStyleProvider:(id)arg2 actionHandlerInvocationDelegate:(id)arg3;
 - (id)_constraintsToPinView:(id)arg1 layoutGuide:(id)arg2 identifier:(id)arg3;
 - (struct CGRect)_contentEdgeFrame;
@@ -109,6 +114,7 @@
 - (void)_determineActualLayoutAxis;
 - (BOOL)_hasLoadedStackViewContents;
 - (id)_initWithActionGroup:(id)arg1 visualStyleProvider:(id)arg2 actionHandlerInvocationDelegate:(id)arg3;
+- (void)_installContentGuideConstraints;
 - (id)_interfaceActionGroupViewState;
 - (id)_interfaceActionOfFocusedRepresentationView;
 - (BOOL)_isCornerRadiusDisplayEnabled;
@@ -131,6 +137,7 @@
 - (void)_setNeedsUpdateTopLevelViewsArrangement;
 - (void)_setUsAsThePresentingViewControllerForAllActions;
 - (BOOL)_shouldAllowPassthroughToLayersBehindUsForTouches:(id)arg1;
+- (BOOL)_shouldInstallContentGuideConstraints;
 - (BOOL)_shouldShowSeparatorAboveActionsSequenceView;
 - (void)_updateActionSequenceScrollability;
 - (void)_updateActionSequenceViewActionLayoutAxis;

@@ -6,10 +6,10 @@
 
 #import <CloudPhotoLibrary/CPLPlatformImplementation-Protocol.h>
 
-@class NSString;
+@class CPLChangeSessionContext, NSString;
 
 @protocol CPLChangeSessionImplementation <CPLPlatformImplementation>
-- (void)beginSessionWithKnownLibraryVersion:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)beginSessionWithKnownLibraryVersion:(NSString *)arg1 context:(CPLChangeSessionContext *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)finalizeWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)tearDownWithCompletionHandler:(void (^)(void))arg1;
 @end

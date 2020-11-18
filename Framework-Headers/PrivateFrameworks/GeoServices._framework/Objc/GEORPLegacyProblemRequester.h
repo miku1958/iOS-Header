@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSLock, NSMapTable;
 
@@ -15,6 +15,7 @@
 }
 
 + (id)sharedRequester;
+- (void).cxx_destruct;
 - (void)cancelRequest:(id)arg1;
 - (void)dealloc;
 - (id)init;

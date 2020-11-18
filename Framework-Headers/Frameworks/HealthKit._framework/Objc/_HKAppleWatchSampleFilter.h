@@ -13,8 +13,8 @@
 
 @property (readonly, nonatomic) BOOL matchAppleWatchSamples; // @synthesize matchAppleWatchSamples=_matchAppleWatchSamples;
 
-+ (id)_filterMatchingAppleWatchSamples:(BOOL)arg1;
 + (id)filterForKeyPath:(id)arg1 predicateOperatorType:(unsigned long long)arg2 value:(id)arg3 dataTypes:(id)arg4;
++ (id)filterMatchingAppleWatchSamples:(BOOL)arg1;
 + (BOOL)supportsSecureCoding;
 - (BOOL)acceptsDataObject:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -17,7 +17,6 @@
 @property (strong, nonatomic) NSString *calendarHomePushKey;
 @property (strong, nonatomic) NSString *calendarHomeSyncToken;
 @property (strong, nonatomic) NSURL *calendarHomeURL;
-@property (strong, nonatomic) NSSet *calendarUserAddresses;
 @property (readonly, nonatomic) NSSet *calendars;
 @property (nonatomic) BOOL canCreateCalendars;
 @property (strong, nonatomic) NSURL *defaultCalendarURL;
@@ -40,6 +39,7 @@
 @property (strong, nonatomic) NSURL *notificationCollectionURL;
 @property (strong, nonatomic) NSString *notificationURLString;
 @property (strong, nonatomic) NSURL *outboxURL;
+@property (strong, nonatomic) NSSet *preferredCalendarUserAddresses;
 @property (strong, nonatomic) NSURL *principalURL;
 @property (strong, nonatomic) NSDictionary *pushTransports;
 @property (strong, nonatomic) NSNumber *quotaFreeBytes;

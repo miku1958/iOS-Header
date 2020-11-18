@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDViewportInfo, PBUnknownFields;
+@class GEOPDVenueIdentifier, GEOPDViewportInfo, PBUnknownFields;
 
 @interface GEOPDSearchBrowseCategorySuggestionParameters : PBCodable <NSCopying>
 {
@@ -17,6 +17,7 @@
     double _requestLocalTimestamp;
     int _minimumNumberOfCategories;
     int _suggestionType;
+    GEOPDVenueIdentifier *_venueFilter;
     GEOPDViewportInfo *_viewportInfo;
     BOOL _isCarplayRequest;
     struct {
@@ -33,14 +34,17 @@
 @property (nonatomic) BOOL hasMinimumNumberOfCategories;
 @property (nonatomic) BOOL hasRequestLocalTimestamp;
 @property (nonatomic) BOOL hasSuggestionType;
+@property (readonly, nonatomic) BOOL hasVenueFilter;
 @property (readonly, nonatomic) BOOL hasViewportInfo;
 @property (nonatomic) BOOL isCarplayRequest; // @synthesize isCarplayRequest=_isCarplayRequest;
 @property (nonatomic) int minimumNumberOfCategories; // @synthesize minimumNumberOfCategories=_minimumNumberOfCategories;
 @property (nonatomic) double requestLocalTimestamp; // @synthesize requestLocalTimestamp=_requestLocalTimestamp;
 @property (nonatomic) int suggestionType; // @synthesize suggestionType=_suggestionType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (strong, nonatomic) GEOPDVenueIdentifier *venueFilter; // @synthesize venueFilter=_venueFilter;
 @property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
 
+- (void).cxx_destruct;
 - (int)StringAsEngineTypes:(id)arg1;
 - (int)StringAsSuggestionType:(id)arg1;
 - (void)addEngineType:(int)arg1;

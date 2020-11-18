@@ -9,7 +9,7 @@
 #import <SafariServices/RequestDesktopSiteWebProcessPlugInListener-Protocol.h>
 #import <SafariServices/SFReaderWebProcessControllerProtocol-Protocol.h>
 
-@class NSDictionary, NSMutableSet, NSString, SFWebProcessPlugInPageExtensionController, _SFReaderWebProcessPlugInPageController, _SFWebProcessPlugInPageSafeBrowsingController, _WKRemoteObjectInterface;
+@class NSDictionary, NSMutableSet, NSString, SFWebProcessPlugInCertificateWarningController, SFWebProcessPlugInPageExtensionController, _SFReaderWebProcessPlugInPageController, _SFWebProcessPlugInPageSafeBrowsingController, _SFWebProcessSharingLinkExtractor, _WKRemoteObjectInterface;
 @protocol RequestDesktopSiteUIProcessListener, SFReaderEventsListener;
 
 @interface _SFWebProcessPlugInReaderEnabledPageController : _SFWebProcessPlugInAutoFillPageController <RequestDesktopSiteWebProcessPlugInListener, SFReaderWebProcessControllerProtocol>
@@ -22,6 +22,8 @@
     NSDictionary *_initialScrollPositionAsDictionary;
     _SFWebProcessPlugInPageSafeBrowsingController *_safeBrowsingController;
     SFWebProcessPlugInPageExtensionController *_extensionController;
+    _SFWebProcessSharingLinkExtractor *_sharingLinkExtractor;
+    SFWebProcessPlugInCertificateWarningController *_certificateWarningController;
     id<RequestDesktopSiteUIProcessListener> _requestDesktopSiteUIProcessListener;
     _WKRemoteObjectInterface *_requestDesktopSiteWebProcessPlugInListenerInterface;
     BOOL _viewingReadingListArchive;
@@ -53,7 +55,7 @@
 - (void)collectReadingListItemInfoWithBookmarkID:(id)arg1;
 - (void)decreaseReaderTextSize;
 - (void)didCreateReaderPageContextHandle:(id)arg1;
-- (void)didDetermineReaderAvailability:(BOOL)arg1;
+- (void)didDetermineReaderAvailability:(BOOL)arg1 dueToSameDocumentNavigation:(BOOL)arg2;
 - (void)didSetReaderConfiguration:(id)arg1;
 - (void)increaseReaderTextSize;
 - (id)initWithPlugIn:(id)arg1 contextController:(id)arg2;
@@ -63,6 +65,7 @@
 - (void)prepareReaderContentForPrinting;
 - (void)prepareToTransitionToReader;
 - (void)readerContentIsReadyForDisplay:(id)arg1;
+- (void)readerTextWasExtracted:(id)arg1;
 - (void)setReaderFont:(id)arg1;
 - (void)setReaderInitialTopScrollOffset:(long long)arg1 configuration:(id)arg2 isViewingArchive:(BOOL)arg3;
 - (void)setReaderTheme:(id)arg1;

@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGPoint animationPoint; // @synthesize animationPoint=_animationPoint;
 @property (readonly, nonatomic) BOOL isHorizontal;
 @property (nonatomic) struct CGPoint magnificationPoint; // @synthesize magnificationPoint=_magnificationPoint;
+@property (readonly, nonatomic) double offsetFromMagnificationPoint;
 @property (strong, nonatomic) UIView *target; // @synthesize target=_target;
 @property (readonly, nonatomic) struct CGPoint terminalPoint; // @synthesize terminalPoint=_terminalPoint;
 @property (readonly, nonatomic) BOOL terminalPointPlacedCarefully; // @synthesize terminalPointPlacedCarefully=_terminalPointPlacedCarefully;

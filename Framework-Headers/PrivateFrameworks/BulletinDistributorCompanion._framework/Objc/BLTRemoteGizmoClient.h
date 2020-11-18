@@ -9,28 +9,25 @@
 #import <BulletinDistributorCompanion/BLTBulletinSendQueueDelegate-Protocol.h>
 #import <BulletinDistributorCompanion/BLTGizmoClient-Protocol.h>
 
-@class BLTBulletinSendQueuePassthrough, BLTSendDebugMetricsRatioOnInterval, NSString;
+@class BLTBulletinSendQueuePassthrough, NSString;
 @protocol BLTCompanionServer;
 
 @interface BLTRemoteGizmoClient : BLTRemoteObject <BLTBulletinSendQueueDelegate, BLTGizmoClient>
 {
     BLTBulletinSendQueuePassthrough *_bulletinSendQueue;
-    BOOL _pairedDeviceReady;
     id<BLTCompanionServer> _server;
-    BLTSendDebugMetricsRatioOnInterval *_sendFailureDebugMetric;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (getter=isPairedDeviceReady) BOOL pairedDeviceReady; // @synthesize pairedDeviceReady=_pairedDeviceReady;
-@property (strong, nonatomic) BLTSendDebugMetricsRatioOnInterval *sendFailureDebugMetric; // @synthesize sendFailureDebugMetric=_sendFailureDebugMetric;
 @property (weak, nonatomic) id<BLTCompanionServer> server; // @synthesize server=_server;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_handleSyncStateChanged:(id)arg1;
 - (void)_pingPairedDevice;
+- (void)_pingPairedDeviceWithRetry:(unsigned long long)arg1;
 - (void)addBulletin:(id)arg1 playLightsAndSirens:(BOOL)arg2;
 - (void)addBulletin:(id)arg1 playLightsAndSirens:(BOOL)arg2 updateType:(unsigned long long)arg3 transmissionDate:(id)arg4 receptionDate:(id)arg5;
 - (void)addBulletin:(id)arg1 playLightsAndSirens:(BOOL)arg2 updateType:(unsigned long long)arg3 withTimeout:(id)arg4 completion:(CDUnknownBlockType)arg5;

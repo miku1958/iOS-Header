@@ -33,7 +33,7 @@
 - (id)_allowedRecipientsForMessage:(id)arg1;
 - (id)_conversationIDCountsForMessage:(id)arg1;
 - (id)_countsForField:(id)arg1 message:(id)arg2;
-- (BOOL)_isAllowedAddress:(id)arg1;
+- (BOOL)_isAllowedRecipient:(id)arg1;
 - (BOOL)_limitToRecents;
 - (id)_listIDCountsForMessage:(id)arg1;
 - (id)_mergeDefaultParameters:(id)arg1 withParameters:(id)arg2;

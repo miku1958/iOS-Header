@@ -8,7 +8,7 @@
 
 #import <WatchKit/SPRemoteInterfaceProtocol-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@class NSBundle, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue, SPRemoteInterfaceDataDelegateProtocol;
 
 @interface SPRemoteInterface : NSObject <SPRemoteInterfaceProtocol>
@@ -28,6 +28,7 @@
     CDUnknownBlockType _mediaPlayerControllerCompletion;
     CDUnknownBlockType _audioRecorderControllerCompletion;
     NSMutableArray *_openParentRequests;
+    NSBundle *_extensionBundle;
     CDUnknownBlockType _addPassesCompletion;
 }
 
@@ -38,6 +39,7 @@
 @property (strong, nonatomic) id<SPRemoteInterfaceDataDelegateProtocol> dataDelegate; // @synthesize dataDelegate=_dataDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSBundle *extensionBundle; // @synthesize extensionBundle=_extensionBundle;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableDictionary *interfaceControllers; // @synthesize interfaceControllers=_interfaceControllers;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *interfaceControllersAccessQueue; // @synthesize interfaceControllersAccessQueue=_interfaceControllersAccessQueue;
@@ -57,8 +59,6 @@
 + (id)_remoteIdentifier;
 + (void)_setupStorageForController:(id)arg1;
 + (void)_updateAccessibility;
-+ (BOOL)allowUIUpdate:(id)arg1;
-+ (BOOL)allowUIUpdate:(id)arg1 isSetValue:(BOOL)arg2;
 + (id)cacheIdentifier;
 + (void)clearStorageForController:(id)arg1;
 + (void)controller:(id)arg1 presentAddPassesControllerWithPasses:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -82,6 +82,7 @@
 + (BOOL)openParentApplication:(id)arg1 reply:(CDUnknownBlockType)arg2;
 + (void)openSystemURL:(id)arg1;
 + (void)reloadRootControllersWithNames:(id)arg1 contexts:(id)arg2;
++ (void)reloadRootPageControllersWithNames:(id)arg1 contexts:(id)arg2 orientation:(long long)arg3 pageIndex:(long long)arg4;
 + (void)removePageControllerAtIndexes:(id)arg1;
 + (void)sendCacheRequest:(id)arg1;
 + (void)sendCacheRequestMessage:(id)arg1;
@@ -90,22 +91,25 @@
 + (void)setController:(id)arg1 key:(id)arg2 property:(id)arg3 value:(id)arg4;
 + (void)setControllerActive:(id)arg1;
 + (void)setControllerInactive:(id)arg1;
++ (id)sharedRemoteInterface;
 + (id)startRemoteInterface;
++ (id)startRemoteInterfaceWithBundle:(id)arg1;
 + (void)updateUserActivity:(id)arg1 userInfo:(id)arg2 webpageURL:(id)arg3 interfaceController:(id)arg4;
 - (void).cxx_destruct;
 - (void)_activateViewController:(id)arg1 clientIdentifier:(id)arg2;
 - (id)_allInterfaceControllers;
-- (void)_callDidDeactivate;
 - (void)_deregisterInterfaceControllerID:(id)arg1;
 - (void)_dumpInterfaceDictionary;
 - (void)_fillDataWithRandom:(id)arg1 length:(long long)arg2;
 - (BOOL)_handleAction:(id)arg1 forNotification:(id)arg2 remoteNotificationContext:(id)arg3 localNotification:(id)arg4 unNotification:(id)arg5 handler:(id)arg6 controller:(id)arg7;
+- (id)_host;
 - (void)_inQueue_recoverFromMissingIntefaceControllerWithID:(id)arg1;
 - (id)_interfaceControllerClientIDForControllerID:(id)arg1;
 - (id)_interfaceControllerID:(id)arg1;
 - (id)_interfaceControllerIDsForClientID:(id)arg1;
 - (id)_interfaceControllerWithID:(id)arg1;
 - (void)_interfaceControllerWithID:(id)arg1 performBlock:(CDUnknownBlockType)arg2;
+- (void)_performAfterSendSetViewControllers:(CDUnknownBlockType)arg1;
 - (void)_registerInterfaceController:(id)arg1 interfaceControllerID:(id)arg2 interfaceControllerClientID:(id)arg3 applicationRootController:(BOOL)arg4;
 - (void)_requestTimingData:(id)arg1;
 - (void)_saveReceiveTime;
@@ -121,7 +125,7 @@
 - (void)applicationDidFinishConnecting:(id)arg1;
 - (void)applicationDidReceiveNotification:(id)arg1 clientIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)applicationDidTerminate:(id)arg1;
-- (void)applicationHandleWatchTaskKeys:(id)arg1 returnToPrimaryUI:(BOOL)arg2 visibleVCID:(id)arg3 clientIdentifier:(id)arg4;
+- (void)applicationHandleWatchTaskKeys:(id)arg1 reasonForSnapshot:(unsigned long long)arg2 visibleVCID:(id)arg3 barTaskUUID:(id)arg4 clientIdentifier:(id)arg5;
 - (void)applicationIsStillActive;
 - (void)applicationWillResignActive:(id)arg1;
 - (void)controller:(id)arg1 presentInterfaceController:(id)arg2 initializationContextID:(id)arg3;
@@ -149,7 +153,7 @@
 - (void)getComplicationData:(id)arg1;
 - (void)handlePlistDictionary:(id)arg1 fromIdentifier:(id)arg2;
 - (void)handleProtoPlist:(id)arg1 fromIdentifier:(id)arg2;
-- (id)init;
+- (id)initWithBundle:(id)arg1;
 - (void)insertPageControllerAtIndexes:(id)arg1 withNames:(id)arg2 initializationContextIDs:(id)arg3;
 - (id)interfaceCreationContextForID:(id)arg1;
 - (void)layoutDirection:(long long)arg1;
@@ -157,6 +161,7 @@
 - (void)notificationController:(id)arg1 showNotificationInterfaceType:(long long)arg2;
 - (BOOL)openParentApplication:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)openSystemURL:(id)arg1;
+- (id)pageInterfaceCreationContextForID:(id)arg1;
 - (void)performAfterApplicationDidFinishLaunching:(CDUnknownBlockType)arg1;
 - (void)preferredContentSizeCategory:(id)arg1;
 - (void)receiveData:(id)arg1 fromIdentifier:(id)arg2;
@@ -165,9 +170,10 @@
 - (void)receiveProtoData:(id)arg1 fromIdentifier:(id)arg2;
 - (void)recoverFromMissingIntefaceControllerWithID:(id)arg1;
 - (void)releaseViewController:(id)arg1 clientIdentifier:(id)arg2;
-- (void)reloadRootControllersWithNames:(id)arg1 initializationContextIDs:(id)arg2;
+- (void)reloadRootControllersWithNames:(id)arg1 initializationContextIDs:(id)arg2 pageIndex:(long long)arg3 verticalPaging:(BOOL)arg4;
 - (void)removeInterfaceControllersForClient:(id)arg1;
 - (void)removePageControllerAtIndexes:(id)arg1;
+- (void)removePageInterfaceCreationContextsForIDs:(id)arg1;
 - (void)replyTimingData:(id)arg1;
 - (void)replyWithExtensionTimingData:(id)arg1;
 - (void)rootInterfaceController:(id)arg1 performActionWithItemID:(id)arg2 forNotificationID:(id)arg3 userInfo:(id)arg4 clientIdentifier:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
@@ -180,6 +186,7 @@
 - (void)sendSetViewController:(id)arg1 values:(id)arg2 clientIdentifiers:(id)arg3;
 - (void)sendWillActivateReplyForController:(id)arg1;
 - (id)storeInterfaceCreationContext:(id)arg1;
+- (id)storePageInterfaceCreationContext:(id)arg1;
 - (void)updateUserActivity:(id)arg1 userInfo:(id)arg2 webpageURL:(id)arg3 controller:(id)arg4;
 
 @end

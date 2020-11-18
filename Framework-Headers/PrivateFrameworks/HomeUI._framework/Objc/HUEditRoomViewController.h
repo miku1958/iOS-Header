@@ -12,7 +12,7 @@
 #import <HomeUI/UINavigationControllerDelegate-Protocol.h>
 #import <HomeUI/UITextFieldDelegate-Protocol.h>
 
-@class HFRoomBuilder, HUEditRoomItemManager, HUEditableTextCell, NSString, UIBarButtonItem;
+@class HFRoomBuilder, HUEditRoomItemManager, HUEditableTextCell, HUZoneModuleController, NSString, UIBarButtonItem;
 @protocol HUEditRoomViewControllerAddRoomDelegate, HUEditRoomViewControllerPresentationDelegate;
 
 @interface HUEditRoomViewController : HUItemTableViewController <UITextFieldDelegate, HUWallpaperPickerViewControllerDelegate, HUWallpaperEditingViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -20,6 +20,7 @@
     HFRoomBuilder *_roomBuilder;
     id<HUEditRoomViewControllerPresentationDelegate> _presentationDelegate;
     id<HUEditRoomViewControllerAddRoomDelegate> _addRoomDelegate;
+    HUZoneModuleController *_zoneModuleController;
     HUEditRoomItemManager *_roomItemManager;
     HUEditableTextCell *_nameCell;
     UIBarButtonItem *_savedButtonBarItem;
@@ -35,19 +36,25 @@
 @property (weak, nonatomic) HUEditRoomItemManager *roomItemManager; // @synthesize roomItemManager=_roomItemManager;
 @property (strong, nonatomic) UIBarButtonItem *savedButtonBarItem; // @synthesize savedButtonBarItem=_savedButtonBarItem;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) HUZoneModuleController *zoneModuleController; // @synthesize zoneModuleController=_zoneModuleController;
 
 - (void).cxx_destruct;
+- (id)_allTextFields;
+- (void)_resignTextFieldFirstResponder;
 - (void)addButtonPressed:(id)arg1;
-- (id)allCellClasses;
 - (unsigned long long)automaticDisablingReasonsForItem:(id)arg1;
 - (void)cancelButtonPressed:(id)arg1;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (void)doneButtonPressed:(id)arg1;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (id)initWithRoomBuilder:(id)arg1 presentationDelegate:(id)arg2 addRoomDelegate:(id)arg3;
+- (id)itemModuleControllers;
 - (void)nameFieldTextChanged:(id)arg1;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
+- (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 editActionsForRowAtIndexPath:(id)arg2;
+- (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;

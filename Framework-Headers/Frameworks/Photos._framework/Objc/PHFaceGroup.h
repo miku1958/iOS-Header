@@ -17,9 +17,10 @@
 @property (readonly, nonatomic) long long personModelId; // @synthesize personModelId=_personModelId;
 @property (readonly, nonatomic) long long unnamedFaceCount; // @synthesize unnamedFaceCount=_unnamedFaceCount;
 
-+ (id)_transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 + (id)entityKeyForPropertyKey:(id)arg1;
++ (id)fetchEmptyFaceGroupsWithOptions:(id)arg1;
 + (id)fetchFaceGroupsForPerson:(id)arg1 options:(id)arg2;
++ (id)fetchFaceGroupsGroupedByFaceLocalIdentifierForFaces:(id)arg1 options:(id)arg2;
 + (id)fetchFaceGroupsWithFace:(id)arg1 options:(id)arg2;
 + (id)fetchFaceGroupsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchFaceGroupsWithOptions:(id)arg1;
@@ -28,6 +29,7 @@
 + (id)identifierCode;
 + (id)managedEntityName;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
++ (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 - (Class)changeRequestClass;
 - (long long)getPersonModelId;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;

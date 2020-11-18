@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PKPaymentAuthorizationStateParam.h>
 
-@class NSString, PKPayment, PKPaymentToken, PKServiceProviderPurchase;
+@class NSString, PKAuthorizedPeerPaymentQuote, PKPayment, PKPaymentToken, PKServiceProviderPurchase;
 
 @interface PKPaymentAuthorizationAuthorizedStateParam : PKPaymentAuthorizationStateParam
 {
@@ -14,13 +14,16 @@
     PKPayment *_payment;
     PKServiceProviderPurchase *_purchase;
     NSString *_purchaseTransactionIdentifier;
+    PKAuthorizedPeerPaymentQuote *_authorizedPeerPaymentQuote;
 }
 
+@property (readonly, nonatomic) PKAuthorizedPeerPaymentQuote *authorizedPeerPaymentQuote; // @synthesize authorizedPeerPaymentQuote=_authorizedPeerPaymentQuote;
 @property (strong, nonatomic) PKPayment *payment; // @synthesize payment=_payment;
 @property (strong, nonatomic) PKPaymentToken *paymentToken; // @synthesize paymentToken=_paymentToken;
 @property (strong, nonatomic) PKServiceProviderPurchase *purchase; // @synthesize purchase=_purchase;
 @property (copy, nonatomic) NSString *purchaseTransactionIdentifier; // @synthesize purchaseTransactionIdentifier=_purchaseTransactionIdentifier;
 
++ (id)paramWithAuthorizedPeerPaymentQuote:(id)arg1;
 + (id)paramWithPayment:(id)arg1;
 + (id)paramWithPaymentToken:(id)arg1;
 + (id)paramWithPurchase:(id)arg1 purchaseTransactionIdentifier:(id)arg2;

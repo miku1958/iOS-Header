@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <Accounts/ACProtobufCoding-Protocol.h>
 #import <Accounts/NSCoding-Protocol.h>
 #import <Accounts/NSCopying-Protocol.h>
 #import <Accounts/NSSecureCoding-Protocol.h>
 
 @class ACAccountCredential, ACAccountStore, ACAccountType, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSURL;
 
-@interface ACAccount : NSObject <NSCoding, NSCopying, NSSecureCoding>
+@interface ACAccount : NSObject <ACProtobufCoding, NSCoding, NSCopying, NSSecureCoding>
 {
     ACAccountStore *_store;
     NSString *_identifier;
@@ -64,12 +65,15 @@
 @property (strong, nonatomic) ACAccountCredential *credential;
 @property (readonly, nonatomic) NSString *credentialType;
 @property (readonly, weak, nonatomic) NSDictionary *dataclassProperties;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isDirty) BOOL dirty;
 @property (readonly, nonatomic) NSSet *dirtyAccountProperties; // @synthesize dirtyAccountProperties=_dirtyAccountProperties;
 @property (readonly, nonatomic) NSSet *dirtyDataclassProperties; // @synthesize dirtyDataclassProperties=_dirtyDataclassProperties;
 @property (readonly, nonatomic) NSSet *dirtyProperties; // @synthesize dirtyProperties=_dirtyProperties;
 @property (readonly, weak, nonatomic) ACAccount *displayAccount;
 @property (strong, nonatomic) NSMutableSet *enabledDataclasses;
+@property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) NSString *identifier;
 @property (strong, nonatomic) NSDate *lastCredentialRenewalRejectionDate;
 @property (readonly, nonatomic) NSURL *objectID;
@@ -77,6 +81,7 @@
 @property (readonly, nonatomic) NSString *parentAccountIdentifier;
 @property (strong, nonatomic) NSMutableSet *provisionedDataclasses;
 @property (readonly, nonatomic) NSString *shortDebugName;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsAuthentication;
 @property (readonly, nonatomic) BOOL supportsPush;
 @property (readonly, nonatomic) NSString *userFullName;
@@ -89,7 +94,11 @@
 - (void)_clearCachedChildAccounts;
 - (void)_clearCachedCredentials;
 - (void)_clearDirtyProperties;
+- (id)_encodeProtobuf;
+- (id)_encodeProtobufData;
 - (id)_initWithManagedAccount:(id)arg1 accountStore:(id)arg2 withDirtyStateFromAccount:(id)arg3;
+- (id)_initWithProtobuf:(id)arg1;
+- (id)_initWithProtobufData:(id)arg1;
 - (void)_installCredentialsChangedObserver;
 - (void)_loadAllCachedProperties;
 - (void)_loadCachedPropertiesWithoutCredentials;
@@ -111,7 +120,6 @@
 - (void)credentialsChanged:(id)arg1;
 - (void)dealloc;
 - (id)defaultAutodiscoverDomainForChildType:(id)arg1;
-- (id)description;
 - (id)diffAccount:(id)arg1;
 - (id)enabledAndSyncableDataclasses;
 - (void)encodeWithCoder:(id)arg1;
@@ -128,6 +136,7 @@
 - (void)markAllPropertiesDirty;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)owningBundleID;
+- (id)portableCopy;
 - (id)propertiesForDataclass:(id)arg1;
 - (id)propertyForKey:(id)arg1;
 - (id)qualifiedUsername;

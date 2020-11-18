@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BSUIMappedImageCache;
+@class BSUIMappedImageCache, NSArray;
 @protocol HFProcessedWallpaperSource;
 
 @interface HFWallpaperImageCache : NSObject
@@ -17,8 +17,10 @@
 
 @property (strong, nonatomic) BSUIMappedImageCache *imageCache; // @synthesize imageCache=_imageCache;
 @property (strong, nonatomic) id<HFProcessedWallpaperSource> processedWallpaperSource; // @synthesize processedWallpaperSource=_processedWallpaperSource;
+@property (readonly, nonatomic) NSArray *supportedProcessedVariants;
 
 - (void).cxx_destruct;
+- (id)_cacheKeyForWallpaper:(id)arg1 withVariant:(long long)arg2;
 - (id)imageForVariant:(long long)arg1 wallpaper:(id)arg2 withOriginalImageGenerator:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)pruneUnusedWallpaperVariants:(id)arg1;

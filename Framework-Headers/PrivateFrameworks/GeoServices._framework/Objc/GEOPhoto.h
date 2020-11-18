@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPhoto : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_photoInfos;
     int _photoType;
     NSString *_uid;
@@ -23,16 +24,15 @@
 @property (strong, nonatomic) NSMutableArray *photoInfos; // @synthesize photoInfos=_photoInfos;
 @property (nonatomic) int photoType; // @synthesize photoType=_photoType;
 @property (strong, nonatomic) NSString *uid; // @synthesize uid=_uid;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)photoInfoType;
+- (void).cxx_destruct;
 - (int)StringAsPhotoType:(id)arg1;
-- (id)_bestURLForSize:(int)arg1;
-- (id)_photoInfoForSize:(int)arg1 includeSmallerSizes:(BOOL)arg2;
 - (void)addPhotoInfo:(id)arg1;
 - (void)clearPhotoInfos;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

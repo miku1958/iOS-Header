@@ -31,8 +31,10 @@
 - (double)duration;
 - (id)init;
 - (double)interpolatedProgressForProgress:(double)arg1;
+- (float)repeatCount;
 - (void)setDelay:(double)arg1;
 - (void)setDuration:(double)arg1;
+- (void)setRepeatCount:(float)arg1;
 - (void)setSpeed:(double)arg1;
 - (void)setTimingFunction:(id)arg1;
 - (double)speed;

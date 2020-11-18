@@ -12,9 +12,11 @@
 {
     NSArray *_cssValue;
     long long _type;
+    struct _NSRange _range;
 }
 
 @property (strong, nonatomic) NSArray *cssValue; // @synthesize cssValue=_cssValue;
+@property (nonatomic) struct _NSRange range; // @synthesize range=_range;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
 + (id)stringifyList:(id)arg1;

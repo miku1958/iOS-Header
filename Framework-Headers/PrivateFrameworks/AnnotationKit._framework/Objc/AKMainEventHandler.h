@@ -24,6 +24,10 @@
     unsigned long long _currentModifierFlags;
     AKPageController *_dragPageController;
     AKAlignmentGuideController *_dragAlignmentGuideController;
+    double _draggedAnnotationsMaxLeftEdge;
+    double _draggedAnnotationsMinRightEdge;
+    double _draggedAnnotationsMaxBottomEdge;
+    double _draggedAnnotationsMinTopEdge;
     UIEvent *_lastEventWithValidLocationForAutoscroll;
     UIEvent *_lastLeftMouseDownEvent;
     AKAnnotation *_annotationToBeginEditingOnDragEnd;
@@ -46,6 +50,10 @@
 @property (strong) AKAlignmentGuideController *dragAlignmentGuideController; // @synthesize dragAlignmentGuideController=_dragAlignmentGuideController;
 @property BOOL dragDidCopySelectedAnnotations; // @synthesize dragDidCopySelectedAnnotations=_dragDidCopySelectedAnnotations;
 @property (strong) AKPageController *dragPageController; // @synthesize dragPageController=_dragPageController;
+@property double draggedAnnotationsMaxBottomEdge; // @synthesize draggedAnnotationsMaxBottomEdge=_draggedAnnotationsMaxBottomEdge;
+@property double draggedAnnotationsMaxLeftEdge; // @synthesize draggedAnnotationsMaxLeftEdge=_draggedAnnotationsMaxLeftEdge;
+@property double draggedAnnotationsMinRightEdge; // @synthesize draggedAnnotationsMinRightEdge=_draggedAnnotationsMinRightEdge;
+@property double draggedAnnotationsMinTopEdge; // @synthesize draggedAnnotationsMinTopEdge=_draggedAnnotationsMinTopEdge;
 @property struct CGPoint firstDragPoint; // @synthesize firstDragPoint=_firstDragPoint;
 @property (readonly) unsigned long long hash;
 @property (strong) AKHighlightColorEditorController *highlightColorEditor; // @synthesize highlightColorEditor=_highlightColorEditor;
@@ -71,6 +79,7 @@
 - (BOOL)_detectFormElementInCurrentPageControllerUnderPointInWindow:(struct CGPoint)arg1;
 - (BOOL)_detectFormElementInCurrentPageControllerUnderPointInWindow:(struct CGPoint)arg1 withStartingPoint:(struct CGPoint)arg2;
 - (BOOL)_didNotHandleEventSoDeselect;
+- (struct CGPoint)_modelPointFromPointInWindow:(struct CGPoint)arg1 usingPageController:(id)arg2;
 - (void)_setCurrentPageBasedOnPageController:(id)arg1;
 - (void)_updateSelectionWithAnnotation:(id)arg1 onPageController:(id)arg2;
 - (id)annotationsPassingBoundingBoxHitTestsWithPoint:(struct CGPoint)arg1 onPageController:(id)arg2;
@@ -86,6 +95,7 @@
 - (BOOL)handleKeyboardEvent:(id)arg1;
 - (BOOL)handleRightDownEvent:(id)arg1;
 - (BOOL)handleRotateEvent:(id)arg1 orRecognizer:(id)arg2;
+- (BOOL)hitTestAnnotationsIncludingPOI:(BOOL)arg1 ignoreIfDeselected:(BOOL)arg2 atPointInWindow:(struct CGPoint)arg3 outAnnotation:(id *)arg4;
 - (BOOL)hitTestPointsOfInterestsAtPoint:(struct CGPoint)arg1 onPageController:(id)arg2 inAnnotations:(id)arg3 event:(id)arg4 recognizer:(id)arg5 cursorUpdateOnly:(BOOL)arg6;
 - (id)initWithController:(id)arg1;
 - (BOOL)mainHandleEvent:(id)arg1 orRecognizer:(id)arg2;

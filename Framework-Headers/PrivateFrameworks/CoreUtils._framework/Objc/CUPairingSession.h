@@ -6,39 +6,63 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSDictionary, NSString;
+@class CUAppleIDClient, CUPairedPeer, NSData, NSDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CUPairingSession : NSObject
 {
     struct PairingSessionPrivate *_pairingSession;
+    struct NSMutableDictionary *_pairingStreams;
     struct LogCategory *_ucat;
     unsigned int _flags;
     unsigned int _pinType;
     unsigned int _sessionType;
     NSDictionary *_acl;
+    NSDictionary *_additionalPeerInfo;
+    NSDictionary *_additionalSelfInfo;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSString *_fixedPIN;
     NSString *_label;
+    NSDictionary *_peerInfo;
+    NSData *_mfiCertificateData;
+    NSString *_mfiProductType;
+    NSString *_mfiSerialNumber;
+    NSData *_mfiToken;
+    NSString *_myAppleID;
+    CUAppleIDClient *_myAppleIDInfoClient;
+    NSString *_peerAppleID;
     CDUnknownBlockType _completionHandler;
     CDUnknownBlockType _promptForPINHandler;
+    CDUnknownBlockType _showPINHandlerEx;
     CDUnknownBlockType _showPINHandler;
     CDUnknownBlockType _hidePINHandler;
     CDUnknownBlockType _sendDataHandler;
 }
 
 @property (copy, nonatomic) NSDictionary *acl; // @synthesize acl=_acl;
+@property (copy, nonatomic) NSDictionary *additionalPeerInfo; // @synthesize additionalPeerInfo=_additionalPeerInfo;
+@property (copy, nonatomic) NSDictionary *additionalSelfInfo; // @synthesize additionalSelfInfo=_additionalSelfInfo;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) NSString *fixedPIN; // @synthesize fixedPIN=_fixedPIN;
 @property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (copy, nonatomic) CDUnknownBlockType hidePINHandler; // @synthesize hidePINHandler=_hidePINHandler;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (copy, nonatomic) NSData *mfiCertificateData; // @synthesize mfiCertificateData=_mfiCertificateData;
+@property (copy, nonatomic) NSString *mfiProductType; // @synthesize mfiProductType=_mfiProductType;
+@property (copy, nonatomic) NSString *mfiSerialNumber; // @synthesize mfiSerialNumber=_mfiSerialNumber;
+@property (copy, nonatomic) NSData *mfiToken; // @synthesize mfiToken=_mfiToken;
+@property (copy, nonatomic) NSString *myAppleID; // @synthesize myAppleID=_myAppleID;
+@property (strong, nonatomic) CUAppleIDClient *myAppleIDInfoClient; // @synthesize myAppleIDInfoClient=_myAppleIDInfoClient;
+@property (readonly, nonatomic) CUPairedPeer *pairedPeer;
+@property (copy, nonatomic) NSString *peerAppleID; // @synthesize peerAppleID=_peerAppleID;
+@property (readonly, copy, nonatomic) NSDictionary *peerInfo; // @synthesize peerInfo=_peerInfo;
 @property (nonatomic) unsigned int pinType; // @synthesize pinType=_pinType;
 @property (copy, nonatomic) CDUnknownBlockType promptForPINHandler; // @synthesize promptForPINHandler=_promptForPINHandler;
 @property (copy, nonatomic) CDUnknownBlockType sendDataHandler; // @synthesize sendDataHandler=_sendDataHandler;
 @property (nonatomic) unsigned int sessionType; // @synthesize sessionType=_sessionType;
 @property (copy, nonatomic) CDUnknownBlockType showPINHandler; // @synthesize showPINHandler=_showPINHandler;
+@property (copy, nonatomic) CDUnknownBlockType showPINHandlerEx; // @synthesize showPINHandlerEx=_showPINHandlerEx;
 
 - (void).cxx_destruct;
 - (void)_activate;
@@ -47,10 +71,12 @@
 - (void)_receivedData:(id)arg1 flags:(unsigned int)arg2;
 - (void)_tryPIN:(id)arg1;
 - (void)activate;
+- (void)closeStream:(id)arg1;
 - (void)dealloc;
 - (int)deriveKeyWithSaltPtr:(const void *)arg1 saltLen:(unsigned long long)arg2 infoPtr:(const void *)arg3 infoLen:(unsigned long long)arg4 keyLen:(unsigned long long)arg5 outputKeyPtr:(void *)arg6;
 - (id)init;
 - (void)invalidate;
+- (id)openStreamWithName:(id)arg1 error:(id *)arg2;
 - (void)receivedData:(id)arg1;
 - (void)tryPIN:(id)arg1;
 

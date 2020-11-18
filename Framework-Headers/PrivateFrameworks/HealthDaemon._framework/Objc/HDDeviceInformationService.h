@@ -6,13 +6,12 @@
 
 #import <HealthDaemon/HDHealthService.h>
 
-@class HDHealthServicePropertyManager, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDDeviceInformationService : HDHealthService
 {
     BOOL _deviceInformationHasBeenLoaded;
-    HDHealthServicePropertyManager *_propertyManager;
     NSMutableDictionary *_characteristics;
     NSMutableDictionary *_propertyValues;
     NSMutableSet *_propertiesLeftToFetch;
@@ -28,7 +27,6 @@
 @property (readonly) NSString *modelNumber;
 @property (strong, nonatomic) NSMutableArray *pendingDeviceInformationLoadedBlocks; // @synthesize pendingDeviceInformationLoadedBlocks=_pendingDeviceInformationLoadedBlocks;
 @property (strong, nonatomic) NSMutableSet *propertiesLeftToFetch; // @synthesize propertiesLeftToFetch=_propertiesLeftToFetch;
-@property (weak, nonatomic) HDHealthServicePropertyManager *propertyManager; // @synthesize propertyManager=_propertyManager;
 @property (strong, nonatomic) NSMutableDictionary *propertyValues; // @synthesize propertyValues=_propertyValues;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) NSString *serialNumber;
@@ -45,10 +43,10 @@
 - (void)_queue_readProperty:(id)arg1;
 - (void)_queue_setDeviceInformationHasBeenLoaded;
 - (void)_startDeviceInformationLoadingTimeoutTimer;
-- (id)initWithDevicePropertyManager:(id)arg1 healthDaemon:(id)arg2 peripheral:(id)arg3;
+- (id)initWithServiceManager:(id)arg1 peripheral:(id)arg2 advertisementData:(id)arg3 profile:(id)arg4;
 - (void)performWhenDeviceInformationHasBeenLoaded:(CDUnknownBlockType)arg1;
 - (void)peripheral:(id)arg1 didDiscoverCharacteristic:(id)arg2;
-- (void)peripheral:(id)arg1 didUpdateValueForCharacteristic:(id)arg2 error:(id)arg3;
+- (void)peripheral:(id)arg1 didUpdateValueForCharacteristic:(id)arg2 updateTime:(id)arg3 error:(id)arg4;
 - (void)readProperty:(id)arg1;
 
 @end

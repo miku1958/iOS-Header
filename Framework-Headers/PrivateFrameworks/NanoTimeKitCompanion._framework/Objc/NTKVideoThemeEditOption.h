@@ -17,6 +17,7 @@
 + (id)_snapshotKeyForValue:(unsigned long long)arg1;
 + (id)optionWithVideoTheme:(unsigned long long)arg1;
 - (id)_valueToFaceBundleStringDict;
+- (long long)swatchStyle;
 
 @end
 

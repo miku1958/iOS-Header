@@ -67,8 +67,8 @@ __attribute__((visibility("hidden")))
 
 + (id)_addLocalizedString;
 + (id)_doneLocalizedString;
++ (id)defaultTitleForCalendarItem;
 - (void).cxx_destruct;
-- (BOOL)_canDetachSingleOccurrence;
 - (BOOL)_canEnableDoneButton;
 - (void)_completeWithAction:(long long)arg1 animated:(BOOL)arg2 notify:(BOOL)arg3;
 - (void)_configureVisibleItems;
@@ -92,12 +92,11 @@ __attribute__((visibility("hidden")))
 - (void)_setShowingAccessDeniedView:(BOOL)arg1 showSettingsInstructions:(BOOL)arg2;
 - (void)_setUpKeyCommands;
 - (void)_setWantsToEnableDoneButton:(BOOL)arg1;
-- (void)_setWantsToEnableDoneButtonAfterTextChanged;
 - (void)_tableViewDidUpdateHeights;
 - (void)_tableViewWillUpdateHeights;
 - (void)_updateCurrentEditItemsFromVisibility:(int)arg1 toVisibility:(int)arg2 animated:(BOOL)arg3;
+- (void)_updateDoneButtonState;
 - (id)_viewForSheet;
-- (BOOL)allowsDeletingFutureOccurrences;
 - (void)applicationDidResume;
 - (BOOL)canBecomeFirstResponder;
 - (void)cancel:(id)arg1;
@@ -109,7 +108,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)defaultAlertTitle;
 - (id)defaultAlertTitleForEditItem:(id)arg1;
-- (id)defaultTitleForCalendarItem;
 - (void)deleteClicked:(id)arg1;
 - (void)done:(id)arg1;
 - (void)editItem:(id)arg1 didSaveFromDetailViewController:(BOOL)arg2;
@@ -168,6 +166,7 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (void)tableViewDidFinishReload:(id)arg1;
 - (void)tableViewDidStartReload:(id)arg1;
+- (void)updateNavButtonsWithSpacing;
 - (id)viewControllerForEditItem:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

@@ -7,7 +7,7 @@
 #import <FuseUI/NSObject-Protocol.h>
 
 @class MPArtworkCatalog, MPArtworkRepresentation, NSDictionary;
-@protocol NSCopying;
+@protocol MPArtworkDataSourceVisualIdenticality;
 
 @protocol MPArtworkDataSource <NSObject>
 - (BOOL)areRepresentationsAvailableForCatalog:(MPArtworkCatalog *)arg1;
@@ -15,10 +15,11 @@
 - (MPArtworkRepresentation *)existingRepresentationForArtworkCatalog:(MPArtworkCatalog *)arg1;
 - (BOOL)isRepresentation:(MPArtworkRepresentation *)arg1 bestRepresentationForArtworkCatalog:(MPArtworkCatalog *)arg2;
 - (void)loadRepresentationForArtworkCatalog:(MPArtworkCatalog *)arg1 completionHandler:(void (^)(MPArtworkRepresentation *, NSError *))arg2;
-- (id<NSCopying>)visualIdenticalityIdentifierForCatalog:(MPArtworkCatalog *)arg1;
+- (id<MPArtworkDataSourceVisualIdenticality>)visualIdenticalityIdentifierForCatalog:(MPArtworkCatalog *)arg1;
 
 @optional
 - (id)existingArtworkEffectResultForEffectType:(long long)arg1 catalog:(MPArtworkCatalog *)arg2 options:(NSDictionary *)arg3;
+- (void)getExportableArtworkURLForCatalog:(MPArtworkCatalog *)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
 - (BOOL)hasExistingRepresentationOnDiskForArtworkCatalog:(MPArtworkCatalog *)arg1;
 - (void)loadArtworkEffectResultForEffectType:(long long)arg1 catalog:(MPArtworkCatalog *)arg2 options:(NSDictionary *)arg3 systemEffectHandler:(void (^)(void (^)(id, NSError *)))arg4 completionHandler:(void (^)(id, NSError *))arg5;
 @end

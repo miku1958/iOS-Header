@@ -18,11 +18,12 @@ __attribute__((visibility("hidden")))
     BRCDeadlineSource *_schedulerSource;
     NSObject<OS_dispatch_queue> *_schedulerQueue;
     NSString *_name;
-    PQLNameInjection *_tableName;
+    BOOL _firstSchedulingAfterStartupDone;
     BOOL _hasActiveWork;
     BOOL _hasWork;
     BOOL _isCancelled;
     NSObject<OS_dispatch_group> *_hasWorkGroup;
+    PQLNameInjection *_tableName;
 }
 
 @property (readonly) BOOL closed;
@@ -33,32 +34,39 @@ __attribute__((visibility("hidden")))
 @property (strong) NSObject<OS_dispatch_group> *hasWorkGroup; // @synthesize hasWorkGroup=_hasWorkGroup;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
+@property (readonly) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
+@property (readonly) PQLNameInjection *tableName; // @synthesize tableName=_tableName;
 
 - (void).cxx_destruct;
-- (BOOL)_canRetryThrottleID:(long long)arg1 zone:(id)arg2;
 - (void)_close;
-- (void)_computeStamps:(struct throttle_stamps *)arg1 throttleID:(long long)arg2 zone:(id)arg3 throttle:(id)arg4 hasBeenTried:(BOOL)arg5;
-- (void)_deleteThrottleID:(long long)arg1;
-- (void)_describe:(id)arg1 zone:(id)arg2 now:(long long)arg3 context:(id)arg4;
-- (id)_initWithSession:(id)arg1 name:(id)arg2 tableName:(id)arg3;
-- (long long)_updateStamps:(struct throttle_stamps *)arg1 throttle:(id)arg2 now:(long long)arg3;
+- (id)aggregateDescriptionForJobsMatching:(id)arg1 context:(id)arg2;
+- (BOOL)canRetryJobWithID:(id)arg1;
+- (BOOL)canScheduleMoreJobs;
 - (void)cancel;
 - (void)close;
-- (void)deleteExpiredThrottles;
-- (void)deleteThrottlesForZone:(id)arg1;
-- (id)descriptionForThrottleID:(long long)arg1 zone:(id)arg2 now:(long long)arg3 context:(id)arg4;
-- (id)descriptionForZone:(id)arg1 now:(long long)arg2 context:(id)arg3;
-- (BOOL)isZoneIdle:(id)arg1;
-- (void)moveAppLibraryTransfers:(id)arg1 toAppLibrary:(id)arg2;
-- (void)resetBackoffForThrottleID:(long long)arg1 zone:(id)arg2;
+- (void)computeStamps:(struct throttle_stamps *)arg1 forJobID:(id)arg2 throttle:(id)arg3 shouldBackoff:(BOOL)arg4;
+- (void)deleteExpiredJobs;
+- (void)deleteJobsMatching:(id)arg1;
+- (void)describeInBuffer:(id)arg1 aggregateOfJobsMatching:(id)arg2 context:(id)arg3;
+- (id)descriptionForJobsMatching:(id)arg1 context:(id)arg2;
+- (id)descriptionForJobsMatching:(id)arg1 ordering:(id)arg2 additionalColumns:(id)arg3 additionalValuesHandler:(CDUnknownBlockType)arg4 context:(id)arg5;
+- (BOOL)haveIdleJobsMatching:(id)arg1;
+- (id)initWithSession:(id)arg1 name:(id)arg2 tableName:(id)arg3;
+- (struct brc_job_update)insertOrUpdateJobID:(id)arg1 throttle:(id)arg2 withState:(int)arg3 insertedSQLColumn:(id)arg4 insertedSQLValues:(id)arg5 updatedSQLValues:(id)arg6;
+- (void)performFirstSchedulingAfterStartupInDB:(id)arg1;
+- (void)postponeJobID:(id)arg1 withThrottle:(id)arg2;
+- (void)rescheduleSuspendedJobsMatching:(id)arg1 inState:(int)arg2;
+- (void)resetBackoffForJobWithID:(id)arg1;
 - (void)resume;
 - (void)schedule;
-- (void)scheduleDidFinishWithTimestamp:(long long)arg1 nextScheduleTimestamp:(long long)arg2;
+- (void)scheduleWithBatchSize:(int)arg1 whereSQLClause:(struct NSObject *)arg2 columns:(id)arg3 actionHandler:(CDUnknownBlockType)arg4;
+- (BOOL)setState:(int)arg1 forJobID:(id)arg2;
+- (BOOL)setState:(int)arg1 forJobsMatching:(id)arg2;
 - (void)signal;
 - (void)signalWithDeadline:(long long)arg1;
 - (void)suspend;
-- (void)updateThrottleID:(long long)arg1 zone:(id)arg2 state:(int)arg3;
+- (long long)updateStamps:(struct throttle_stamps *)arg1 throttle:(id)arg2 now:(long long)arg3;
 
 @end
 

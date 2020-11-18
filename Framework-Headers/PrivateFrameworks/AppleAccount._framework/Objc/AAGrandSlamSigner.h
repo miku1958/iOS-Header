@@ -14,10 +14,12 @@
     ACAccount *_grandSlamAccount;
     NSString *_appTokenID;
     BOOL _useAltDSID;
+    NSString *_headerFieldKey;
 }
 
 @property (readonly, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (readonly, nonatomic) ACAccount *grandSlamAccount; // @synthesize grandSlamAccount=_grandSlamAccount;
+@property (strong, nonatomic) NSString *headerFieldKey; // @synthesize headerFieldKey=_headerFieldKey;
 @property (nonatomic) BOOL useAltDSID; // @synthesize useAltDSID=_useAltDSID;
 
 - (void).cxx_destruct;

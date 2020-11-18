@@ -23,14 +23,22 @@
 @property (readonly, nonatomic) NSString *fontName;
 @property (readonly, nonatomic) double leading;
 @property (readonly, nonatomic) double lineHeight;
+@property (readonly, nonatomic) double maximumPointSizeAfterScaling;
 @property (readonly, nonatomic) double pointSize;
+@property (readonly, nonatomic) double pointSizeForScaling;
+@property (readonly, nonatomic) NSString *textStyleForScaling;
 @property (readonly, nonatomic) double xHeight;
 
 + (void)_evictAllItemsFromFontAndFontDescriptorCaches;
++ (id)_fontWithDescriptor:(id)arg1 size:(double)arg2 textStyleForScaling:(id)arg3 pointSizeForScaling:(double)arg4 maximumPointSizeAfterScaling:(double)arg5 forIB:(BOOL)arg6;
 + (BOOL)_isSupportedDynamicFontTextStyle:(id)arg1;
 + (id)_lightSystemFontOfSize:(double)arg1;
 + (id)_opticalBoldSystemFontOfSize:(double)arg1;
 + (id)_opticalSystemFontOfSize:(double)arg1;
++ (double)_pointSize:(double)arg1 scaledLikeTextStyle:(id)arg2 maximumPointSize:(double)arg3 compatibleWithTraitCollection:(id)arg4;
++ (id)_preferredFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2;
++ (id)_preferredFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2 compatibleWithTraitCollection:(id)arg3;
++ (id)_preferredFontForTextStyle:(id)arg1 maximumPointSize:(double)arg2 compatibleWithTraitCollection:(id)arg3;
 + (double)_readableWidth;
 + (id)_sharedFontCache;
 + (id)_sharedZeroPointFont;
@@ -78,7 +86,8 @@
 - (id)_fontAdjustedForContentSizeCategoryCompatibleWithTraitCollection:(id)arg1;
 - (id)_fontAdjustedForCurrentContentSizeCategory;
 - (id)_fontScaledByScaleFactor:(double)arg1;
-- (BOOL)_getLatin1GlyphMapping:(const unsigned short **)arg1 andAdvanceMapping:(const struct CGSize **)arg2;
+- (id)_fontScaledLikeTextStyle:(id)arg1 maximumPointSize:(double)arg2 compatibleWithTraitCollection:(id)arg3 forIB:(BOOL)arg4;
+- (BOOL)_getLatin1Glyphs:(const unsigned short **)arg1 advanceWidths:(const double **)arg2;
 - (BOOL)_hasColorGlyphs;
 - (BOOL)_isDefaultFace;
 - (BOOL)_isHiraginoFont;
@@ -108,6 +117,7 @@
 - (id)initWithMarkupDescription:(id)arg1;
 - (id)initWithName:(id)arg1 size:(double)arg2;
 - (BOOL)isFixedPitch;
+- (BOOL)isIBFontMetricsScaledFont;
 - (BOOL)isIBTextStyleFont;
 - (BOOL)isSystemFont;
 - (BOOL)isVertical;

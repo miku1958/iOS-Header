@@ -12,7 +12,6 @@
 {
     BOOL _deliveredPlaceholder;
     BOOL _canDownloadFromCloud;
-    BOOL _isOptimizedForSharing;
     long long _deliveredFormat;
     NSURL *_URL;
     NSString *_sandboxExtensionToken;
@@ -26,7 +25,6 @@
 @property BOOL canDownloadFromCloud; // @synthesize canDownloadFromCloud=_canDownloadFromCloud;
 @property long long deliveredFormat; // @synthesize deliveredFormat=_deliveredFormat;
 @property BOOL deliveredPlaceholder; // @synthesize deliveredPlaceholder=_deliveredPlaceholder;
-@property BOOL isOptimizedForSharing; // @synthesize isOptimizedForSharing=_isOptimizedForSharing;
 @property (strong) NSString *sandboxExtensionToken; // @synthesize sandboxExtensionToken=_sandboxExtensionToken;
 
 - (void)dealloc;

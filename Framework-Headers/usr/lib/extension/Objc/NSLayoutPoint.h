@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSCoding-Protocol.h>
-#import <extension/NSCopying-Protocol.h>
+#import <Foundation/NSCoding-Protocol.h>
+#import <Foundation/NSCopying-Protocol.h>
 
 @class NSLayoutXAxisAnchor, NSLayoutYAxisAnchor;
 
@@ -34,7 +34,7 @@
 - (id)layoutPointByOffsettingWithXOffsetDimension:(id)arg1 yOffsetDimension:(id)arg2;
 - (id)pointByOffsettingWithXOffset:(double)arg1 yOffset:(double)arg2;
 - (id)pointByOffsettingWithXOffsetDimension:(id)arg1 yOffsetDimension:(id)arg2;
-- (id)relationshipEqualToLayoutPoint:(id)arg1;
+- (id)ruleEqualToLayoutPoint:(id)arg1;
 - (struct CGPoint)valueInItem:(id)arg1;
 
 @end

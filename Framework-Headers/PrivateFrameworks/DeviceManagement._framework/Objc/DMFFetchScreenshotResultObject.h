@@ -13,7 +13,7 @@
     NSData *_screenshotData;
 }
 
-@property (strong, nonatomic) NSData *screenshotData; // @synthesize screenshotData=_screenshotData;
+@property (readonly, nonatomic) NSData *screenshotData; // @synthesize screenshotData=_screenshotData;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

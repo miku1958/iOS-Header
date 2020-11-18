@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IDS/IDSBaseSocketPairConnectionDelegate-Protocol.h>
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
@@ -24,6 +24,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     unsigned int _state;
     long long _transportType;
+    unsigned long long _initialLinkType;
     int _socket;
     BOOL _isAudioEnabled;
     BOOL _isMuted;
@@ -49,6 +50,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long initialLinkType; // @synthesize initialLinkType=_initialLinkType;
 @property (nonatomic) long long inviteTimeout;
 @property (readonly, nonatomic) unsigned int sessionEndedReason;
 @property (readonly, nonatomic) int socket;
@@ -56,6 +58,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueID;
 
+- (void).cxx_destruct;
 - (unsigned long long)MTUForAddressFamily:(unsigned long long)arg1;
 - (void)_broadcastNewSessionToDaemon;
 - (void)_callDelegateWithBlock:(CDUnknownBlockType)arg1;
@@ -66,11 +69,14 @@
 - (void)_setupUnreliableSocketPairConnection;
 - (void)acceptInvitation;
 - (void)acceptInvitationWithData:(id)arg1;
+- (void)allocationDone:(id)arg1 sessionInfo:(id)arg2;
 - (void)cancelInvitation;
 - (void)cancelInvitationWithData:(id)arg1;
 - (void)cancelInvitationWithRemoteEndedReasonOverride:(unsigned int)arg1;
 - (void)connection:(id)arg1 didReceiveData:(id)arg2;
+- (id)daemonController;
 - (void)daemonDisconnected;
+- (id)daemonListener;
 - (void)dealloc;
 - (void)declineInvitation;
 - (void)declineInvitationWithData:(id)arg1;
@@ -82,6 +88,7 @@
 - (id)initWithAccount:(id)arg1 destinations:(id)arg2 options:(id)arg3 delegateContext:(id)arg4;
 - (id)initWithAccount:(id)arg1 destinations:(id)arg2 transportType:(long long)arg3 delegateContext:(id)arg4;
 - (id)initWithAccount:(id)arg1 destinations:(id)arg2 transportType:(long long)arg3 uniqueID:(id)arg4 delegateContext:(id)arg5;
+- (void)sendAllocationRequest:(id)arg1;
 - (BOOL)sendData:(id)arg1 error:(id *)arg2;
 - (void)sendInvitationWithData:(id)arg1 declineOnError:(BOOL)arg2;
 - (void)sendInvitationWithOptions:(id)arg1;

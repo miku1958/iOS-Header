@@ -9,7 +9,7 @@
 #import <ClassroomKit/CATTaskOperationNotificationDelegate-Protocol.h>
 #import <ClassroomKit/CRKStudentDaemonProxyObserver-Protocol.h>
 
-@class CATRemoteTaskOperation, CRKStudentDaemonProxy, NSArray, NSString;
+@class CATRemoteTaskOperation, CRKStudentDaemonProxy, NSArray, NSSet, NSString;
 @protocol CRKCourseEnrollmentControllerDelegate;
 
 @interface CRKCourseEnrollmentController : NSObject <CRKStudentDaemonProxyObserver, CATTaskOperationNotificationDelegate>
@@ -22,12 +22,14 @@
     NSArray *_courseInvitations;
     NSArray *_activeCourseIdentifiers;
     NSArray *_activeInstructorIdentifiers;
+    NSSet *_currentScreenObservers;
 }
 
 @property (copy, nonatomic) NSArray *activeCourseIdentifiers; // @synthesize activeCourseIdentifiers=_activeCourseIdentifiers;
 @property (copy, nonatomic) NSArray *activeInstructorIdentifiers; // @synthesize activeInstructorIdentifiers=_activeInstructorIdentifiers;
 @property (copy, nonatomic) NSArray *courseInvitations; // @synthesize courseInvitations=_courseInvitations;
 @property (copy, nonatomic) NSArray *courses; // @synthesize courses=_courses;
+@property (strong, nonatomic) NSSet *currentScreenObservers; // @synthesize currentScreenObservers=_currentScreenObservers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -48,10 +50,13 @@
 - (void)fetchCourseInvitationsOperationDidFinish:(id)arg1;
 - (void)fetchCourses;
 - (void)fetchCoursesOperationDidFinish:(id)arg1;
+- (void)fetchScreenObservers;
+- (void)fetchScreenObserversDidFinish:(id)arg1;
 - (void)fetchStoredCourses;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithStudentDaemonProxy:(id)arg1 delegate:(id)arg2;
 - (id)invitationWithCourseIdentifier:(id)arg1;
+- (void)screenObserversHaveChanged:(id)arg1;
 - (void)startLongRunningOperations;
 - (void)stopLongRunningOperations;
 - (void)storeCourses;

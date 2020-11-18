@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class EKReminderPredicate, NSArray;
+@class CADObjectID, EKReminderPredicate, NSArray;
 
 @protocol CADReminderInterface
 - (void)CADDatabaseGetCountOfRemindersWithPredicate:(EKReminderPredicate *)arg1 reply:(void (^)(int, int))arg2;
-- (void)CADDatabaseGetDefaultCalendarForNewRemindersWithReply:(void (^)(int, struct))arg1;
+- (void)CADDatabaseGetDefaultCalendarForNewRemindersWithReply:(void (^)(int, CADObjectID *))arg1;
 - (void)CADDatabaseGetProperties:(NSArray *)arg1 forReminders:(NSArray *)arg2 reply:(void (^)(int, NSArray *))arg3;
-- (void)CADDatabaseSetDefaultCalendarForNewReminders:(CDStruct_f683c4ba)arg1;
+- (void)CADDatabaseSetDefaultCalendarForNewReminders:(CADObjectID *)arg1;
 - (void)CADScheduledTaskCacheGetDaysAndTaskCounts:(void (^)(int, NSArray *))arg1;
 @end
 

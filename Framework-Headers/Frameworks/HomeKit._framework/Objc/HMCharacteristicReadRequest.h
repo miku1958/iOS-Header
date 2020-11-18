@@ -11,6 +11,7 @@
 }
 
 + (id)readRequestWithCharacteristic:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCharacteristic:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

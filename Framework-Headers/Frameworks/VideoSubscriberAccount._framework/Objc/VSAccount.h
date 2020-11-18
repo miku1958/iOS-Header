@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <VideoSubscriberAccount/NSSecureCoding-Protocol.h>
+
 @class NSString, VSAccountStore, VSOptional;
 
-@interface VSAccount : NSObject
+@interface VSAccount : NSObject <NSSecureCoding>
 {
     VSAccountStore *_accountStore;
     NSString *_accountTypeDescription;
@@ -29,9 +31,14 @@
 @property (strong, nonatomic) VSOptional *optionalIdentityProviderDisplayName; // @synthesize optionalIdentityProviderDisplayName=_optionalIdentityProviderDisplayName;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <SafariServices/UISearchBarDelegate-Protocol.h>
 
-@class NSArray, NSString, NSTimer, UIBarButtonItem, UILabel, UISearchBar, UITextField, UIToolbar;
+@class NSArray, NSLayoutConstraint, NSString, NSTimer, UIBarButtonItem, UILabel, UITextField, UIToolbar, _SFFindOnPageInputBarContainer;
 @protocol _SFFindOnPageToolbarDelegate;
 
 @interface _SFFindOnPageToolbar : UIInputView <UISearchBarDelegate>
@@ -16,15 +16,14 @@
     UIToolbar *_toolbar;
     UIBarButtonItem *_previousButtonItem;
     UIBarButtonItem *_nextButtonItem;
-    UISearchBar *_inputBar;
-    UIBarButtonItem *_inputFieldBarButtonItem;
+    _SFFindOnPageInputBarContainer *_inputBarContainer;
     UIBarButtonItem *_doneBarButtonItem;
-    NSArray *_narrowToolbarItems;
-    NSArray *_standardToolbarItems;
+    NSArray *_toolbarItems;
     id<_SFFindOnPageToolbarDelegate> _findDelegate;
     NSTimer *_textChangedUpdateTimer;
     UILabel *_inFieldMatchLabel;
     UILabel *_matchLabel;
+    NSLayoutConstraint *_matchLabelZeroWidthConstraint;
     BOOL _editing;
     BOOL _usesNarrowLayout;
     NSString *_searchText;
@@ -42,9 +41,9 @@
 - (void)_doUpdateSearchText;
 - (void)_done;
 - (void)_initializeToolbarItems;
+- (BOOL)_keyboardIsSplit;
 - (void)_orientationDidChange:(id)arg1;
 - (BOOL)_updateEditing:(BOOL)arg1;
-- (double)_widthOfAllToolbarItemsExceptInputField;
 - (void)dealloc;
 - (void)dismiss:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
@@ -54,6 +53,7 @@
 - (void)next:(id)arg1;
 - (void)previous:(id)arg1;
 - (struct CGSize)rightContentViewSize;
+- (void)safeAreaInsetsDidChange;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (void)searchBarSearchButtonClicked:(id)arg1;
 - (BOOL)searchBarShouldBeginEditing:(id)arg1;

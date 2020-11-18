@@ -93,7 +93,6 @@
 + (id)unrestrictedAllItemsQueryWithlibrary:(id)arg1 predicate:(id)arg2 orderingTerms:(id)arg3;
 + (id)unrestrictedQueryWithLibrary:(id)arg1 predicate:(id)arg2 orderingTerms:(id)arg3;
 + (id)unsettableProperties;
-+ (id)widthLimitedSetValuesQueue;
 - (void).cxx_destruct;
 - (id)URL;
 - (id)copyInLibrary:(id)arg1;

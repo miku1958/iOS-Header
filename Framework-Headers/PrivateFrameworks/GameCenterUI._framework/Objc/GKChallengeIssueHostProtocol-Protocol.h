@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameCenterUI/GKServiceViewControllerDelegate-Protocol.h>
+#import <GameCenterUI/GKExtensionHostProtocol-Protocol.h>
 
 @class NSArray, NSString;
 
-@protocol GKChallengeIssueHostProtocol <GKServiceViewControllerDelegate>
+@protocol GKChallengeIssueHostProtocol <GKExtensionHostProtocol>
+
+@optional
 - (void)didFinishWithPlayerIDs:(NSArray *)arg1 message:(NSString *)arg2;
 @end
 

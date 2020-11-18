@@ -16,13 +16,15 @@
     NSObject<OS_nw_resolver> *resolver;
     int last_resolver_status;
     unsigned int next_child_endpoint_index;
-    BOOL failed_to_start_next_child;
+    unsigned int failed_to_start_next_child:1;
+    unsigned int started_desperate_ivan:1;
     NWConcrete_nw_endpoint_handler *connected_child;
     NSObject<OS_nw_array> *child_endpoint_handlers;
     NSObject<OS_nw_array> *ready_child_endpoint_handlers;
     NSObject<OS_nw_array> *failed_child_endpoint_handlers;
     void *child_timer;
     void *trigger_agent_timer;
+    void *desperate_ivan_timer;
 }
 
 @property (readonly, copy) NSString *debugDescription;

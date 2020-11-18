@@ -16,15 +16,16 @@
 }
 
 @property (strong, nonatomic) NSXPCConnection *clientConnection; // @synthesize clientConnection=_clientConnection;
-@property (nonatomic) id<VMClientXPCProtocol> manager; // @synthesize manager=_manager;
+@property (weak, nonatomic) id<VMClientXPCProtocol> manager; // @synthesize manager=_manager;
 
++ (BOOL)isVMXPCAvailable;
 + (id)voicemailClientXPCInterface;
 + (id)voicemailServerXPCInterface;
 - (void).cxx_destruct;
 - (void)_handleXPCConnectionEstablished:(id)arg1;
 - (void)_handleXPCDisconnectNotification:(id)arg1;
 - (void)dealloc;
-- (id)initWithManager:(id)arg1;
+- (id)init;
 
 @end
 

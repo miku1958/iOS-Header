@@ -17,6 +17,7 @@
 - (void)_accessibilityLongPressActionView:(id)arg1;
 - (id)_axActionItem;
 - (id)accessibilityLabel;
+- (id)accessibilityPath;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 

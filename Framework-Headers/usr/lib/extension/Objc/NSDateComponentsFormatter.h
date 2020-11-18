@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSFormatter.h>
+#import <Foundation/NSFormatter.h>
 
 @class NSCalendar, NSDate, NSNumberFormatter, NSString;
 
@@ -45,12 +45,11 @@
 - (void)_NSDateComponentsFormatter_commonInit;
 - (id)_calendarFromDateComponents:(id)arg1;
 - (id)_calendarOrCanonicalCalendar;
-- (id)_canonicalizedDateComponents:(id)arg1 withCalendar:(id)arg2 usedUnits:(unsigned long long *)arg3;
+- (id)_canonicalizedDateComponents:(id)arg1 withCalendar:(id)arg2 usedUnits:(unsigned long long *)arg3 withReferenceDate:(id)arg4;
 - (void)_ensureUnitFormatterWithLocale:(id)arg1;
+- (void)_ensureUnitFormatterWithLocale_alreadyLocked:(id)arg1;
 - (void)_flushFormatterCache;
 - (BOOL)_mayDecorateAttributedStringForObjectValue:(id)arg1;
-- (id)_stringFromDateComponents:(id)arg1;
-- (id)_stringFromTimeInterval:(double)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
@@ -59,6 +58,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)stringForObjectValue:(id)arg1;
+- (id)stringForObjectValue:(id)arg1 withReferenceDate:(id)arg2;
 - (id)stringFromDate:(id)arg1 toDate:(id)arg2;
 - (id)stringFromDateComponents:(id)arg1;
 - (id)stringFromTimeInterval:(double)arg1;

@@ -16,7 +16,6 @@
 {
     HMThreadSafeMutableArrayCollection *_pendingAccessoryInvitations;
     BOOL _currentUser;
-    BOOL _administrator;
     NSUUID *_uniqueIdentifier;
     NSString *_name;
     HMHomeAccessControl *_homeAccessControl;
@@ -28,7 +27,6 @@
     HMDelegateCaller *_delegateCaller;
 }
 
-@property (nonatomic) BOOL administrator; // @synthesize administrator=_administrator;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (nonatomic, getter=isCurrentUser) BOOL currentUser; // @synthesize currentUser=_currentUser;
 @property (readonly, copy) NSString *debugDescription;
@@ -51,15 +49,17 @@
 - (BOOL)_mergeWithNewAccessoryInvitations:(id)arg1 operations:(id)arg2;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_unconfigure;
+- (void)_updatePresenceAuthorizationStatus:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUserID:(id)arg1 name:(id)arg2 uuid:(id)arg3 home:(id)arg4;
-- (id)initWithUserID:(id)arg1 name:(id)arg2 uuid:(id)arg3 home:(id)arg4 isAdministrator:(BOOL)arg5;
+- (id)initWithUserID:(id)arg1 name:(id)arg2 uuid:(id)arg3 home:(id)arg4 owner:(BOOL)arg5 administrator:(BOOL)arg6;
 - (BOOL)mergePendingAccessoryInvitationsWithOutgoingInvitation:(id)arg1 operations:(id)arg2;
 - (id)pendingAccessoryInvitations;
 - (void)setPendingAccessoryInvitationsWithOutgoingInvitation:(id)arg1;
 - (void)updateHomeAccessControl:(BOOL)arg1 remoteAccess:(BOOL)arg2;
+- (void)updatePresenceAuthorizationStatus:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

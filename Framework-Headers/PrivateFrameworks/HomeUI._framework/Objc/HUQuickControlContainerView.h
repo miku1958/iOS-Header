@@ -22,6 +22,7 @@
     double _verticalDirectionalControlStretchFactor;
     double _horizontalControlCompressionFactor;
     double _initialSourceViewScale;
+    unsigned long long _edgesForExtendedLayout;
     unsigned long long _activeControlType;
     HUQuickControlSummaryView *_summaryView;
     id<HUQuickControlContainerViewDelegate> _delegate;
@@ -59,6 +60,7 @@
 @property (strong, nonatomic) UILayoutGuide *controlViewLayoutGuide; // @synthesize controlViewLayoutGuide=_controlViewLayoutGuide;
 @property (readonly, weak, nonatomic) id<HUQuickControlContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) HUPillButton *detailsButton; // @synthesize detailsButton=_detailsButton;
+@property (nonatomic) unsigned long long edgesForExtendedLayout; // @synthesize edgesForExtendedLayout=_edgesForExtendedLayout;
 @property (nonatomic) double horizontalControlCompressionFactor; // @synthesize horizontalControlCompressionFactor=_horizontalControlCompressionFactor;
 @property (nonatomic) double initialSourceViewScale; // @synthesize initialSourceViewScale=_initialSourceViewScale;
 @property (readonly, nonatomic) struct CGRect presentedControlFrame;
@@ -94,6 +96,7 @@
 - (void)_updateCompactControlBottomConstraint;
 - (void)_updateContentAlignment;
 - (void)_updateControlHostLayout;
+- (void)_updateLayoutMargins;
 - (BOOL)_useCompactHeightLayout;
 - (void)hideAuxiliaryView;
 - (id)initWithFrame:(struct CGRect)arg1 delegate:(id)arg2 sourceRect:(struct CGRect)arg3;

@@ -15,6 +15,11 @@
 
 - (void)didAttachToEngine:(id)arg1;
 - (void)didDetachFromEngine:(id)arg1;
+- (BOOL)enableManualRenderingMode:(long long)arg1 isInput:(BOOL)arg2;
+- (BOOL)enableRealtimeRenderingModeWithIOUnit:(struct AVAudioIOUnit *)arg1 isInput:(BOOL)arg2;
+- (id)initWithIOUnit:(struct AVAudioIOUnit *)arg1 isInput:(BOOL)arg2;
+- (BOOL)isInManualRenderingMode;
+- (long long)manualRenderingMode;
 
 @end
 

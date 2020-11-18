@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <ITMLKit/IKJSTabBarItem-Protocol.h>
 #import <ITMLKit/JSExport-Protocol.h>
 
 @class IKJSNavigationDocument, NSString;
 
-@protocol _IKJSTabBarItem <JSExport>
+@protocol _IKJSTabBarItem <IKJSTabBarItem, JSExport>
 
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) IKJSNavigationDocument *navigationDocument;

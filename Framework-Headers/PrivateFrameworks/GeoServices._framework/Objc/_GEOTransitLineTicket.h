@@ -4,31 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <GeoServices/GEOAbstractRequestResponseTicket.h>
 
 #import <GeoServices/GEOMapServiceTransitLineTicket-Protocol.h>
 
-@class GEOMapServiceTraits, GEOPDPlaceRequest, GEOPDPlaceResponse, NSString;
+@class GEOMapServiceTraits, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTransitLineTicket : NSObject <GEOMapServiceTransitLineTicket>
+@interface _GEOTransitLineTicket : GEOAbstractRequestResponseTicket <GEOMapServiceTransitLineTicket>
 {
-    GEOPDPlaceRequest *_request;
-    GEOPDPlaceResponse *_response;
-    GEOMapServiceTraits *_traits;
-    BOOL _canceled;
 }
 
-@property (readonly, nonatomic, getter=isCanceled) BOOL canceled; // @synthesize canceled=_canceled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) GEOMapServiceTraits *traits; // @synthesize traits=_traits;
+@property (readonly, nonatomic) GEOMapServiceTraits *traits;
 
-- (void)cancel;
-- (void)dealloc;
-- (id)initWithRequest:(id)arg1 traits:(id)arg2;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
 
 @end

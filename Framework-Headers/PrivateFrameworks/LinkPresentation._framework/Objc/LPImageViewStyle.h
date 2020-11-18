@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long filter; // @synthesize filter=_filter;
 @property (nonatomic) double foregroundOpacity; // @synthesize foregroundOpacity=_foregroundOpacity;
 @property (readonly, strong, nonatomic) LPPadding *margin; // @synthesize margin=_margin;
-@property (nonatomic) UIColor *maskColor; // @synthesize maskColor=_maskColor;
+@property (strong, nonatomic) UIColor *maskColor; // @synthesize maskColor=_maskColor;
 @property (readonly, strong, nonatomic) LPPadding *padding; // @synthesize padding=_padding;
 @property (strong, nonatomic) LPSize *size; // @synthesize size=_size;
 

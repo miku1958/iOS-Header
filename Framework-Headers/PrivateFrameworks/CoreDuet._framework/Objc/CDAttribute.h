@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CDSession, NSDate, NSMutableArray, NSMutableDictionary, NSString;
+@class CDSession, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CDAttribute : NSObject
@@ -27,7 +27,6 @@
     int revocationToken;
     unsigned short _admissionMask;
     NSMutableDictionary *costCache;
-    NSDate *lastUpdate;
     BOOL delayedUpdatePending;
     NSMutableDictionary *tokenCache;
     NSMutableDictionary *dateCache;
@@ -49,6 +48,7 @@
 
 - (void).cxx_destruct;
 - (id)_initWithSession:(id)arg1 name:(id)arg2 type:(long long)arg3 integerId:(unsigned long long)arg4 weak:(BOOL)arg5 error:(id *)arg6;
+- (BOOL)accumulateCostDictionary:(id)arg1 meteringToken:(unsigned long long)arg2 date:(id)arg3;
 - (BOOL)activityStartedWithValue:(id)arg1 cost:(long long)arg2 error:(id *)arg3;
 - (BOOL)activityStartedWithValue:(id)arg1 cost:(long long)arg2 onDate:(id)arg3 error:(id *)arg4;
 - (BOOL)activityStoppedWithValue:(id)arg1 cost:(long long)arg2 error:(id *)arg3;
@@ -94,6 +94,7 @@
 - (id)repeatedStatistic:(long long)arg1 forHistoryWindow:(id)arg2 deviceDescription:(id)arg3 error:(id *)arg4;
 - (id)repeatedStatistic:(long long)arg1 forHistoryWindow:(id)arg2 error:(id *)arg3;
 - (id)repeatedStatisticXPCObjectToArray:(id)arg1 error:(id *)arg2;
+- (void)reportAccumulatedCost;
 - (BOOL)requestPeerForecastFromDevice:(id)arg1 withValue:(id)arg2 forHistoryWindow:(id)arg3 forecastType:(long long)arg4 error:(id *)arg5 handler:(CDUnknownBlockType)arg6;
 - (BOOL)requestStatisticFromDevice:(id)arg1 statistic:(long long)arg2 forHistoryWindow:(id)arg3 error:(id *)arg4 handler:(CDUnknownBlockType)arg5;
 - (BOOL)requestTemporalForecastFromDevice:(id)arg1 withValue:(id)arg2 forHistoryWindow:(id)arg3 forecastType:(long long)arg4 error:(id *)arg5 handler:(CDUnknownBlockType)arg6;
@@ -115,8 +116,6 @@
 - (id)temporalForecastOfValue:(id)arg1 forHistoryWindow:(id)arg2 deviceDescription:(id)arg3 forecastType:(long long)arg4 temporalLeeway:(double)arg5 maximumElements:(unsigned long long)arg6 error:(id *)arg7;
 - (id)temporalForecastOfValue:(id)arg1 forHistoryWindow:(id)arg2 forecastType:(long long)arg3 maximumElements:(unsigned long long)arg4 error:(id *)arg5;
 - (id)temporalForecastXPCObjectToArray:(id)arg1 attributeValue:(id)arg2 forecastType:(long long)arg3 error:(id *)arg4;
-- (id)updateCostOnDownload:(id)arg1 meteringToken:(unsigned long long)arg2 date:(id)arg3;
-- (void)updateDuetWithCost;
 
 @end
 

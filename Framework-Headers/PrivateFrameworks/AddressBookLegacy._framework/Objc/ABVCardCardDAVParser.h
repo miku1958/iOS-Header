@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AddressBook/ABVCardParser.h>
+#import <AddressBookLegacy/ABVCardParser.h>
 
 @class NSData, NSMutableDictionary;
 
@@ -37,7 +37,7 @@
 - (id)genericLabel;
 - (BOOL)importToGroup:(void *)arg1 removeExistingProperties:(BOOL)arg2;
 - (BOOL)importToPerson:(void *)arg1 removeExistingProperties:(BOOL)arg2;
-- (id)initWithData:(id)arg1;
+- (id)initWithData:(id)arg1 watchdogTimer:(id)arg2;
 - (void)noteLackOfValueForImageData;
 - (void)noteLackOfValueForProperty:(unsigned int)arg1;
 - (BOOL)parseUID;

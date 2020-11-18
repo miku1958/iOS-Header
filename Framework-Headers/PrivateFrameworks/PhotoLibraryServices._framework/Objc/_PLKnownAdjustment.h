@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSIndexSet, NSString;
 
@@ -21,7 +21,7 @@
 @property (nonatomic) long long supportLevel; // @synthesize supportLevel=_supportLevel;
 @property (copy, nonatomic) NSIndexSet *supportedVersions; // @synthesize supportedVersions=_supportedVersions;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 
 @end

@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     long long _startOrientation;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithWindow:(id)arg1 interactionDelegate:(id)arg2;
 - (void)loadView;

@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class HAPAccessoryServer, NSArray, NSNumber, NSString;
+#import <CoreHAP/HMFMerging-Protocol.h>
+
+@class HAPAccessoryServer, NSArray, NSNumber, NSObject, NSString;
 @protocol HAPAccessoryDelegate, OS_dispatch_queue;
 
-@interface HAPAccessory : NSObject
+@interface HAPAccessory : HMFObject <HMFMerging>
 {
     BOOL _reachable;
-    BOOL _supportsBridgeConfiguration;
     BOOL _primary;
     BOOL _supportsRelay;
-    NSNumber *_category;
     id<HAPAccessoryDelegate> _delegate;
     HAPAccessoryServer *_server;
     NSString *_identifier;
@@ -32,9 +32,12 @@
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
-@property (copy, nonatomic) NSNumber *category; // @synthesize category=_category;
+@property (readonly, copy, nonatomic) NSNumber *category;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HAPAccessoryDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *firmwareVersion; // @synthesize firmwareVersion=_firmwareVersion;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
 @property (readonly, nonatomic) long long linkType; // @synthesize linkType=_linkType;
@@ -48,7 +51,7 @@
 @property (weak, nonatomic) HAPAccessoryServer *server; // @synthesize server=_server;
 @property (copy, nonatomic) NSString *serverIdentifier; // @synthesize serverIdentifier=_serverIdentifier;
 @property (strong, nonatomic) NSArray *services; // @synthesize services=_services;
-@property (nonatomic) BOOL supportsBridgeConfiguration; // @synthesize supportsBridgeConfiguration=_supportsBridgeConfiguration;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsRelay; // @synthesize supportsRelay=_supportsRelay;
 @property (copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (strong) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
@@ -59,23 +62,22 @@
 + (id)serverIdentifierWithUniqueIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_isReachable;
-- (void)_setCategory:(id)arg1;
 - (void)_setReachable:(BOOL)arg1;
-- (void)_setSupportsBridgeConfiguration:(BOOL)arg1;
-- (BOOL)_supportsBridgeConfiguration;
 - (BOOL)_updateAndValidateServices;
 - (BOOL)_updateForAccessoryInformationService;
 - (BOOL)_updateService:(id)arg1;
 - (id)characteristicOfType:(id)arg1 serviceType:(id)arg2;
 - (id)characteristicsOfType:(id)arg1;
-- (id)description;
 - (id)init;
 - (id)initWithServer:(id)arg1 instanceID:(id)arg2;
 - (id)initWithServer:(id)arg1 instanceID:(id)arg2 parsedServices:(id)arg3;
 - (void)invalidate;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)mergeObject:(id)arg1;
 - (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)readValueForCharacteristic:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)servicesOfType:(id)arg1;
+- (BOOL)shouldMergeObject:(id)arg1;
 - (BOOL)validateCharacteristicValues:(id *)arg1;
 - (void)writeCharacteristicValue:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

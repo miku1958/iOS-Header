@@ -6,22 +6,33 @@
 
 #import <Foundation/NSObject.h>
 
+#import <ContactsFoundation/NSSecureCoding-Protocol.h>
+
 @class CNPair;
 
-@interface CNEither : NSObject
+@interface CNEither : NSObject <NSSecureCoding>
 {
     CNPair *_pair;
 }
 
+@property (readonly, nonatomic) BOOL isLeft;
+@property (readonly, nonatomic) BOOL isRight;
 @property (readonly, nonatomic) id left;
 @property (strong, nonatomic) CNPair *pair; // @synthesize pair=_pair;
 @property (readonly, nonatomic) id right;
 
++ (id)eitherWithBlock:(CDUnknownBlockType)arg1;
 + (id)eitherWithBool:(BOOL)arg1 error:(id)arg2;
++ (id)eitherWithLeft:(id)arg1;
 + (id)eitherWithLeft:(id)arg1 right:(id)arg2;
++ (id)eitherWithRight:(id)arg1;
++ (id)firstLeftInLazyChain:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithLeft:(id)arg1 right:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 

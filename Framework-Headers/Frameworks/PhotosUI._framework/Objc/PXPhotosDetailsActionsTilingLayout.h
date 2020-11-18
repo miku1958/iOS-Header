@@ -13,14 +13,14 @@
     BOOL _shouldInsetAllSeparators;
     long long _numberOfItems;
     double _rowHeight;
-    double __separatorHeight;
+    double _separatorHeight;
     long long __numberOfSeparators;
 }
 
 @property (readonly, nonatomic) long long _numberOfSeparators; // @synthesize _numberOfSeparators=__numberOfSeparators;
-@property (readonly, nonatomic) double _separatorHeight; // @synthesize _separatorHeight=__separatorHeight;
 @property (readonly, nonatomic) long long numberOfItems; // @synthesize numberOfItems=_numberOfItems;
 @property (nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
+@property (nonatomic) double separatorHeight; // @synthesize separatorHeight=_separatorHeight;
 @property (nonatomic) BOOL shouldInsetAllSeparators; // @synthesize shouldInsetAllSeparators=_shouldInsetAllSeparators;
 @property (nonatomic) BOOL shouldShowSeparators; // @synthesize shouldShowSeparators=_shouldShowSeparators;
 

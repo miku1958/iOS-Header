@@ -4,19 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class GEOURLExtraStorage, NSMutableDictionary;
 
 @interface _GEOMapURLBuilder : NSObject
 {
     NSMutableDictionary *_dict;
+    GEOURLExtraStorage *_extraStorage;
 }
+
+@property (strong, nonatomic) GEOURLExtraStorage *extraStorage; // @synthesize extraStorage=_extraStorage;
 
 + (id)URLForAddress:(id)arg1;
 + (id)URLForAddress:(id)arg1 label:(id)arg2;
 + (id)URLForCoordinate:(CDStruct_c3b9c2ee)arg1;
 + (id)URLForCoordinate:(CDStruct_c3b9c2ee)arg1 address:(id)arg2 label:(id)arg3;
++ (id)URLForCoordinate:(CDStruct_c3b9c2ee)arg1 address:(id)arg2 label:(id)arg3 extraStorage:(id)arg4;
++ (id)URLForCoordinate:(CDStruct_c3b9c2ee)arg1 address:(id)arg2 label:(id)arg3 extraStorage:(id)arg4 useWebPlaceCard:(BOOL)arg5;
 + (id)URLForCoordinate:(CDStruct_c3b9c2ee)arg1 label:(id)arg2;
 + (id)URLForDirectionsFrom:(id)arg1 to:(id)arg2;
 + (id)URLForDirectionsFrom:(id)arg1 to:(id)arg2 transport:(int)arg3;
@@ -25,18 +30,21 @@
 + (id)URLForExternalBusiness:(id)arg1 id:(id)arg2 ofContentProvider:(id)arg3;
 + (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3;
 + (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3 coordinate:(CDStruct_c3b9c2ee)arg4 address:(id)arg5;
++ (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3 coordinate:(CDStruct_c3b9c2ee)arg4 address:(id)arg5 extraStorage:(id)arg6;
++ (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3 coordinate:(CDStruct_c3b9c2ee)arg4 address:(id)arg5 extraStorage:(id)arg6 useWebPlaceCard:(BOOL)arg7;
 + (id)URLForSearch:(id)arg1;
 + (id)URLForSearch:(id)arg1 at:(CDStruct_c3b9c2ee)arg2 span:(CDStruct_c3b9c2ee)arg3;
 + (id)URLForSearch:(id)arg1 at:(CDStruct_c3b9c2ee)arg2 zoomLevel:(double)arg3;
 + (id)URLForSearch:(id)arg1 near:(CDStruct_c3b9c2ee)arg2;
 + (id)URLForShowFavoritesType:(long long)arg1;
 + (id)URLForTransitLine:(unsigned long long)arg1 withName:(id)arg2 mapRegion:(id)arg3;
+- (void).cxx_destruct;
 - (void)_removeParametersAllBut:(id)arg1;
 - (id)_stringForCoordinate2DPointer:(CDStruct_c3b9c2ee *)arg1;
 - (id)_stringForCoordinateSpanPointer:(CDStruct_c3b9c2ee *)arg1;
 - (id)build;
 - (id)buildForWeb;
-- (void)dealloc;
+- (id)buildForWebPlaceCard;
 - (id)initForAddress:(id)arg1 label:(id)arg2;
 - (id)initForCoordinate:(CDStruct_c3b9c2ee)arg1 address:(id)arg2 label:(id)arg3;
 - (id)initForCoordinate:(CDStruct_c3b9c2ee)arg1 label:(id)arg2;

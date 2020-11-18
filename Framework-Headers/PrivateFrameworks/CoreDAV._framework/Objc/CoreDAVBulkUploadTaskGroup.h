@@ -43,8 +43,8 @@
 @property (readonly, nonatomic) NSDictionary *uuidToStatus; // @synthesize uuidToStatus=_uuidToStatus;
 @property (readonly, nonatomic) BOOL validCTag; // @synthesize validCTag=_validCTag;
 
+- (void).cxx_destruct;
 - (void)_sendNextBatch;
-- (void)dealloc;
 - (id)initWithFolderURL:(id)arg1 checkCTag:(id)arg2 uuidsToAddActions:(id)arg3 hrefsToModDeleteActions:(id)arg4 context:(id)arg5 accountInfoProvider:(id)arg6 taskManager:(id)arg7;
 - (Class)multiPutTaskClass;
 - (void)startTaskGroup;

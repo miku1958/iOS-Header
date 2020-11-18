@@ -22,7 +22,7 @@
 - (struct CGSize)imageSize;
 - (double)sectionFooterHeight;
 - (double)sectionHeaderHeight;
-- (struct UIEdgeInsets)sectionInsetsForLayoutReferenceSize:(struct CGSize)arg1;
+- (struct UIEdgeInsets)sectionInsetsForLayoutReferenceSize:(struct CGSize)arg1 safeAreaInsets:(struct UIEdgeInsets)arg2;
 - (BOOL)shouldUseCollageForCloudFeedPlaceholder;
 - (BOOL)shouldUseTableView;
 - (BOOL)showsDeleteButtonOnCellContentView;

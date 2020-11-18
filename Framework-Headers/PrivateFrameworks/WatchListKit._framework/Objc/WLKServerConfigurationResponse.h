@@ -6,28 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary;
+#import <WatchListKit/NSSecureCoding-Protocol.h>
 
-@interface WLKServerConfigurationResponse : NSObject
+@class NSArray, NSDate, NSDictionary;
+
+@interface WLKServerConfigurationResponse : NSObject <NSSecureCoding>
 {
-    NSDictionary *_dictionary;
-    NSDictionary *_endpointsDictionary;
-    NSDictionary *_serverRoutesDictionary;
-    NSDictionary *_requiredRequestKeyValuePairsDictionary;
-    unsigned long long _expirationInSeconds;
-    NSArray *_orderedChannels;
+    NSDictionary *_responseDictionary;
+    NSDate *_expirationDate;
+    unsigned long long _environmentHash;
 }
 
-@property (readonly, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
-@property (readonly, nonatomic) NSDictionary *endpointsDictionary; // @synthesize endpointsDictionary=_endpointsDictionary;
-@property (readonly, nonatomic) unsigned long long expirationInSeconds; // @synthesize expirationInSeconds=_expirationInSeconds;
-@property (readonly, copy, nonatomic) NSArray *orderedChannels; // @synthesize orderedChannels=_orderedChannels;
-@property (readonly, nonatomic) NSDictionary *requiredRequestKeyValuePairsDictionary; // @synthesize requiredRequestKeyValuePairsDictionary=_requiredRequestKeyValuePairsDictionary;
-@property (readonly, nonatomic) NSDictionary *serverRoutesDictionary; // @synthesize serverRoutesDictionary=_serverRoutesDictionary;
+@property (readonly, nonatomic) NSDictionary *endpointsDictionary;
+@property (readonly, nonatomic) unsigned long long environmentHash; // @synthesize environmentHash=_environmentHash;
+@property (readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property (readonly, nonatomic) NSArray *orderedChannels;
+@property (readonly, nonatomic) NSDictionary *requiredRequestKeyValuePairsDictionary;
+@property (readonly, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
+@property (readonly, nonatomic) NSDictionary *serverRoutesDictionary;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)init;
+- (id)description;
+- (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (id)initWithServerResponseDictionary:(id)arg1 expirationDate:(id)arg2 environmentHash:(unsigned long long)arg3;
+- (BOOL)isValid;
 
 @end
 

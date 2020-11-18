@@ -34,6 +34,7 @@
 + (void)convertXMP:(id)arg1 toAdjustments:(id)arg2 andAnalysis:(id)arg3 size:(struct CGSize)arg4 image:(id)arg5 needsHistogram:(BOOL *)arg6;
 + (id)imageWithImage:(id)arg1;
 + (struct CGSize)maximumSizeForFlattening;
+- (void).cxx_destruct;
 - (struct CGImage *)CGImage;
 - (id)CIImage;
 - (id)UIImage;

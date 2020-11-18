@@ -14,7 +14,7 @@
     PGGraphNode *_momentNode;
     NSSet *_momentNodes;
     long long _sourceType;
-    unsigned long long _category;
+    long long _category;
     long long _subcategory;
     double _score;
     NSDate *_localDate;
@@ -24,6 +24,7 @@
     double _contentScore;
     NSDate *_universalStartDate;
     NSDate *_universalEndDate;
+    NSSet *_features;
     NSSet *_momentIDs;
     NSDictionary *_numberOfAssetsByMomentIDs;
     PGPotentialMemory *_upgradedPotentialMemory;
@@ -31,9 +32,10 @@
 }
 
 @property (strong) PHAssetCollection *assetCollection; // @synthesize assetCollection=_assetCollection;
-@property unsigned long long category; // @synthesize category=_category;
+@property long long category; // @synthesize category=_category;
 @property double contentScore; // @synthesize contentScore=_contentScore;
 @property (strong) NSString *eventName; // @synthesize eventName=_eventName;
+@property (strong) NSSet *features; // @synthesize features=_features;
 @property (strong) NSDate *localDate; // @synthesize localDate=_localDate;
 @property (readonly) NSDate *localEndDate;
 @property (readonly) NSDate *localStartDate;
@@ -56,8 +58,9 @@
 - (void)_resetOverlapCheck;
 - (id)buildAssetCollectionUsingMemoryController:(id)arg1 withMinimumNumberOfAssets:(unsigned long long)arg2;
 - (double)computeContentScoreUsingMemoryController:(id)arg1;
-- (id)initWithCategory:(unsigned long long)arg1 subcategory:(long long)arg2 momentNode:(id)arg3;
-- (id)initWithCategory:(unsigned long long)arg1 subcategory:(long long)arg2 momentNodes:(id)arg3 sourceType:(long long)arg4;
+- (id)initWithCategory:(long long)arg1 subcategory:(long long)arg2;
+- (id)initWithCategory:(long long)arg1 subcategory:(long long)arg2 momentNode:(id)arg3;
+- (id)initWithCategory:(long long)arg1 subcategory:(long long)arg2 momentNodes:(id)arg3 sourceType:(long long)arg4;
 
 @end
 

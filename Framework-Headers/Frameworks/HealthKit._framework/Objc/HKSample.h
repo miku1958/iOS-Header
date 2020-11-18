@@ -28,6 +28,9 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_enumerateTimePeriodsWithBlock:(CDUnknownBlockType)arg1;
+- (long long)_externalSyncObjectCode;
+- (id)_init;
+- (BOOL)_requiresPrivateEntitlementForQueries;
 - (void)_setSampleType:(id)arg1;
 - (id)_validateConfiguration;
 - (id)description;

@@ -56,8 +56,6 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
-+ (id)__test_mtaLineRArtwork;
-+ (id)__test_mtaSystemArtwork;
 - (void).cxx_destruct;
 - (long long)StringAsArtworkSourceType:(id)arg1;
 - (long long)StringAsArtworkUseType:(id)arg1;

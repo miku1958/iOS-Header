@@ -13,30 +13,33 @@
 @interface NTPBAppConfigurationResource : PBCodable <NSCopying>
 {
     long long _maxAge;
-    NSData *_configurationData;
     NSString *_etag;
+    NSData *_gzippedConfigurationData;
     NTPBDate *_lastFetchedDate;
     NTPBDate *_lastModifiedDate;
     NSString *_lastModifiedString;
+    NSString *_resourceID;
     NSString *_sourceURL;
     struct {
         unsigned int maxAge:1;
     } _has;
 }
 
-@property (strong, nonatomic) NSData *configurationData; // @synthesize configurationData=_configurationData;
 @property (strong, nonatomic) NSString *etag; // @synthesize etag=_etag;
-@property (readonly, nonatomic) BOOL hasConfigurationData;
+@property (strong, nonatomic) NSData *gzippedConfigurationData; // @synthesize gzippedConfigurationData=_gzippedConfigurationData;
 @property (readonly, nonatomic) BOOL hasEtag;
+@property (readonly, nonatomic) BOOL hasGzippedConfigurationData;
 @property (readonly, nonatomic) BOOL hasLastFetchedDate;
 @property (readonly, nonatomic) BOOL hasLastModifiedDate;
 @property (readonly, nonatomic) BOOL hasLastModifiedString;
 @property (nonatomic) BOOL hasMaxAge;
+@property (readonly, nonatomic) BOOL hasResourceID;
 @property (readonly, nonatomic) BOOL hasSourceURL;
 @property (strong, nonatomic) NTPBDate *lastFetchedDate; // @synthesize lastFetchedDate=_lastFetchedDate;
 @property (strong, nonatomic) NTPBDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property (strong, nonatomic) NSString *lastModifiedString; // @synthesize lastModifiedString=_lastModifiedString;
 @property (nonatomic) long long maxAge; // @synthesize maxAge=_maxAge;
+@property (strong, nonatomic) NSString *resourceID; // @synthesize resourceID=_resourceID;
 @property (strong, nonatomic) NSString *sourceURL; // @synthesize sourceURL=_sourceURL;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

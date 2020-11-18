@@ -12,23 +12,17 @@
 
 @interface SGNameMappingTransformer : NSObject <PMLTransformerProtocol>
 {
-    struct _CFBurstTrie *_firstnames;
-    struct _CFBurstTrie *_lastnames;
-    NSString *_fullNameMapping;
-    NSString *_firstNameMapping;
-    NSString *_lastNameMapping;
-    NSString *_possessiveMapping;
+    NSString *_nameMappings[6];
+    int _minimumConfidence;
+    CDUnknownBlockType _confidenceMapper;
 }
 
-@property (strong) NSString *firstNameMapping; // @synthesize firstNameMapping=_firstNameMapping;
-@property (strong) NSString *fullNameMapping; // @synthesize fullNameMapping=_fullNameMapping;
-@property (strong) NSString *lastNameMapping; // @synthesize lastNameMapping=_lastNameMapping;
-@property (strong) NSString *possessiveMapping; // @synthesize possessiveMapping=_possessiveMapping;
-
 + (id)withFullNameMapping:(id)arg1 firstNameMapping:(id)arg2 lastNameMapping:(id)arg3 andPossessive:(id)arg4;
++ (id)withFullNameMapping:(id)arg1 firstNameMapping:(id)arg2 lastNameMapping:(id)arg3 minimumConfidence:(int)arg4 confidenceMapper:(CDUnknownBlockType)arg5 andPossessive:(id)arg6;
 - (void).cxx_destruct;
-- (void)dealloc;
-- (id)initWithFullNameMapping:(id)arg1 firstNameMapping:(id)arg2 lastNameMapping:(id)arg3 andPossessive:(id)arg4;
+- (id)initWithFullNameMapping:(id)arg1 firstNameMapping:(id)arg2 lastNameMapping:(id)arg3 minimumConfidence:(int)arg4 confidenceMapper:(CDUnknownBlockType)arg5 andPossessive:(id)arg6;
+- (BOOL)isPossessive:(id)arg1;
+- (long long)nameMappingForToken:(id)arg1 withConfidence:(int *)arg2;
 - (id)transform:(id)arg1;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <SiriUI/SiriUIClearBackgroundCell.h>
 
-@class NSLayoutConstraint, NSMutableArray, SiriUIKeyline, UIImageView, UILabel, UIView;
+@class NSLayoutConstraint, NSMutableArray, SiriUIKeyline, UIColor, UIImageView, UILabel, UIView;
 
 @interface SiriUIContentCollectionViewCell : SiriUIClearBackgroundCell
 {
@@ -21,25 +21,32 @@
     long long _verticalAlignment;
     UIView *_accessoryView;
     UILabel *_textLabel;
+    UIView *_customView;
     long long _keylineType;
     struct UIOffset _textOffset;
     struct UIOffset _accessoryOffset;
     struct UIOffset _chevronOffset;
     struct UIEdgeInsets _textAndAccessoryInsets;
+    struct UIEdgeInsets _customViewEdgeInsets;
 }
 
 @property (nonatomic) struct UIOffset accessoryOffset; // @synthesize accessoryOffset=_accessoryOffset;
 @property (strong, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
 @property (nonatomic) struct UIOffset chevronOffset; // @synthesize chevronOffset=_chevronOffset;
 @property (readonly, nonatomic) double chevronTrailingMargin;
+@property (strong, nonatomic) UIView *customView; // @synthesize customView=_customView;
+@property (nonatomic) struct UIEdgeInsets customViewEdgeInsets; // @synthesize customViewEdgeInsets=_customViewEdgeInsets;
 @property (nonatomic) BOOL hasChevron; // @synthesize hasChevron=_hasChevron;
 @property (readonly, nonatomic) SiriUIKeyline *keyline; // @synthesize keyline=_keyline;
+@property (strong, nonatomic) UIColor *keylineCustomBackgroundColor;
 @property (nonatomic) long long keylineType; // @synthesize keylineType=_keylineType;
 @property (nonatomic) struct UIEdgeInsets textAndAccessoryInsets; // @synthesize textAndAccessoryInsets=_textAndAccessoryInsets;
 @property (strong, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property (nonatomic) struct UIOffset textOffset; // @synthesize textOffset=_textOffset;
 @property (nonatomic) long long verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
 
++ (BOOL)chevronBlendEffectEnabled;
++ (double)chevronTrailingMargin;
 + (struct UIEdgeInsets)defaultInsets;
 + (id)reuseIdentifier;
 - (void).cxx_destruct;

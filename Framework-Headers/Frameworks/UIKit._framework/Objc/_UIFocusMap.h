@@ -6,8 +6,8 @@
 
 #import <Foundation/NSObject.h>
 
-@class UIScreen, _UIFocusMapSearchInfo, _UIFocusedItemRegion;
-@protocol _UIFocusMapDelegate, _UIFocusRegionContainer;
+@class UIFocusSystem, _UIFocusMapSearchInfo;
+@protocol UICoordinateSpace, _UIFocusRegionContainer;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusMap : NSObject
@@ -15,27 +15,22 @@ __attribute__((visibility("hidden")))
     BOOL _minimumSearchAreaIsEmpty;
     BOOL _trackingSearchInfo;
     BOOL _needsSearchInfo;
-    _UIFocusedItemRegion *_focusedRegion;
-    UIScreen *_screen;
+    UIFocusSystem *_focusSystem;
     id<_UIFocusRegionContainer> _rootContainer;
-    long long _focusMovementStyle;
-    id<_UIFocusMapDelegate> _delegate;
+    id<UICoordinateSpace> _coordinateSpace;
     _UIFocusMapSearchInfo *_defaultItemSearchInfo;
     _UIFocusMapSearchInfo *_focusMovementSearchInfo;
     struct CGRect _minimumSearchArea;
 }
 
+@property (readonly, weak, nonatomic) id<UICoordinateSpace> coordinateSpace; // @synthesize coordinateSpace=_coordinateSpace;
 @property (readonly, nonatomic, getter=_defaultItemSearchContext) _UIFocusMapSearchInfo *defaultItemSearchInfo; // @synthesize defaultItemSearchInfo=_defaultItemSearchInfo;
-@property (weak, nonatomic, getter=_delegate, setter=_setDelegate:) id<_UIFocusMapDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic, getter=_focusMovementSearchContext) _UIFocusMapSearchInfo *focusMovementSearchInfo; // @synthesize focusMovementSearchInfo=_focusMovementSearchInfo;
-@property (nonatomic) long long focusMovementStyle; // @synthesize focusMovementStyle=_focusMovementStyle;
-@property (readonly, copy, nonatomic) _UIFocusedItemRegion *focusedRegion; // @synthesize focusedRegion=_focusedRegion;
-@property (nonatomic, getter=_minimumSearchArea, setter=_setMinimumSearchArea:) struct CGRect minimumSearchArea; // @synthesize minimumSearchArea=_minimumSearchArea;
-@property (weak, nonatomic, getter=_rootContainer, setter=_setRootContainer:) id<_UIFocusRegionContainer> rootContainer; // @synthesize rootContainer=_rootContainer;
-@property (readonly, weak, nonatomic, getter=_screen) UIScreen *screen; // @synthesize screen=_screen;
+@property (readonly, weak, nonatomic) UIFocusSystem *focusSystem; // @synthesize focusSystem=_focusSystem;
+@property (nonatomic) struct CGRect minimumSearchArea; // @synthesize minimumSearchArea=_minimumSearchArea;
+@property (readonly, weak, nonatomic) id<_UIFocusRegionContainer> rootContainer; // @synthesize rootContainer=_rootContainer;
 
 - (void).cxx_destruct;
-- (id)_allDefaultFocusableRegionsInContainer:(id)arg1;
 - (id)_allDefaultFocusableRegionsInContainer:(id)arg1 intersectingRegion:(id)arg2;
 - (id)_allFocusableItemsInEnvironment:(id)arg1;
 - (void)_beginTrackingDefaultItemSearchInfoIfNecessary;
@@ -44,18 +39,18 @@ __attribute__((visibility("hidden")))
 - (id)_closestFocusableItemToPoint:(struct CGPoint)arg1 inRect:(struct CGRect)arg2 excludingItems:(id)arg3;
 - (id)_defaultFocusItemInEnvironment:(id)arg1;
 - (id)_defaultFocusItemInEnvironment:(id)arg1 limitScopeUsingFocusPreferences:(BOOL)arg2;
-- (id)_defaultMapSnapshotOptions;
-- (id)_destinationItemForFocusMovement:(id)arg1;
-- (id)_destinationItemForFocusMovement:(id)arg1 startingFromRegion:(id)arg2;
-- (id)_destinationItemForFocusMovement:(id)arg1 startingFromRegion:(id)arg2 inRegions:(id)arg3;
-- (id)_findAllDefaultFocusableRegionsWithOptions:(id)arg1;
-- (id)_initWithScreen:(id)arg1;
-- (id)_initWithScreen:(id)arg1 focusedItem:(id)arg2;
-- (id)_initWithScreen:(id)arg1 focusedRegion:(id)arg2;
-- (BOOL)_isValidFocusMap;
+- (id)_defaultMapSnapshotter;
+- (id)_findAllDefaultFocusableRegionsWithSnapshotter:(id)arg1;
+- (id)_nextFocusedItemForFocusMovementRequest:(id)arg1;
+- (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 focusedRegion:(id)arg2;
+- (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inRegions:(id)arg2;
+- (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 startingFromRegion:(id)arg2 inRegions:(id)arg3;
 - (id)_stopTrackingSearches;
 - (void)_trackExternalSnapshot:(id)arg1;
+- (void)diagnoseFocusabilityForItem:(id)arg1 report:(id)arg2;
 - (id)init;
+- (id)initWithFocusSystem:(id)arg1 rootContainer:(id)arg2;
+- (id)initWithFocusSystem:(id)arg1 rootContainer:(id)arg2 coordinateSpace:(id)arg3;
 
 @end
 

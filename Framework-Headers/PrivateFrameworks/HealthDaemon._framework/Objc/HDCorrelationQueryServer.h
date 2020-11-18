@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthDaemon/HDQueryServer.h>
+#import <HealthDaemon/HDBatchedQueryServer.h>
 
 @class NSDictionary;
 
-@interface HDCorrelationQueryServer : HDQueryServer
+@interface HDCorrelationQueryServer : HDBatchedQueryServer
 {
-    long long _behaviorVersion;
+    BOOL _permitPartiallyFilteredCorrelations;
     BOOL _suspended;
     NSDictionary *_dataFilters;
 }
@@ -20,7 +20,8 @@
 - (void).cxx_destruct;
 - (void)_queue_start;
 - (BOOL)_queue_validateConfiguration:(id *)arg1;
-- (id)initWithQueryUUID:(id)arg1 dataObject:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 profile:(id)arg6;
+- (id)initWithQueryUUID:(id)arg1 configuration:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 profile:(id)arg6;
+- (id)requiredEntitlements;
 
 @end
 

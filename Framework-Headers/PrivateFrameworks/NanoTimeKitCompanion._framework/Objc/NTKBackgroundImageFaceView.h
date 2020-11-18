@@ -44,8 +44,6 @@
 @property (strong, nonatomic) UIView *zoomMaskView; // @synthesize zoomMaskView=_zoomMaskView;
 @property (strong, nonatomic) UIImageView *zoomVignette; // @synthesize zoomVignette=_zoomVignette;
 
-+ (void)animateFadeInLayers:(id)arg1;
-+ (void)animateScaleInLayers:(id)arg1;
 - (void).cxx_destruct;
 - (id)_animationImageView;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
@@ -56,7 +54,7 @@
 - (double)_backgroundImageAlphaForEditMode:(long long)arg1;
 - (void)_beginTransitionToOption;
 - (void)_bringForegroundViewsToFront;
-- (void)_cleanupAfterOptionTransitionForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (void)_cleanupAfterTransitionToOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_cleanupAfterZoom;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
@@ -82,11 +80,13 @@
 - (id)_selectedContentView;
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
 - (BOOL)_shouldAdjustLayoutForTimeTravel;
+- (BOOL)_shouldFadeToTransitionView;
 - (void)_startScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_startScrubbingAnimationFromUIViewAnimateWithDuration;
 - (BOOL)_supportsTimeScrubbing;
 - (double)_timeLabelAlphaForEditMode:(long long)arg1;
 - (BOOL)_timeLabelUsesLegibility;
+- (double)_timeTravelCaptionLabelMaxWidth;
 - (double)_timeTravelStatusModuleCaptionConstraintPadding;
 - (double)_timeTravelYAdjustment;
 - (void)_unloadSnapshotContentViews;

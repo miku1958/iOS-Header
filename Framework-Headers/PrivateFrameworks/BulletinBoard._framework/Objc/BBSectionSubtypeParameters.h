@@ -13,6 +13,7 @@
 @interface BBSectionSubtypeParameters : NSObject <NSSecureCoding>
 {
     BBSectionSubtypeParameters *_fallbackParameters;
+    NSString *_hiddenPreviewsBodyPlaceholder;
     NSString *_topic;
     NSString *_missedBannerDescriptionFormat;
     NSString *_fullUnlockActionLabel;
@@ -80,6 +81,7 @@
 @property (weak, nonatomic) BBSectionSubtypeParameters *fallbackParameters; // @synthesize fallbackParameters=_fallbackParameters;
 @property (copy, nonatomic) NSString *fullAlternateActionLabel; // @synthesize fullAlternateActionLabel=_fullAlternateActionLabel;
 @property (copy, nonatomic) NSString *fullUnlockActionLabel; // @synthesize fullUnlockActionLabel=_fullUnlockActionLabel;
+@property (copy, nonatomic) NSString *hiddenPreviewsBodyPlaceholder; // @synthesize hiddenPreviewsBodyPlaceholder=_hiddenPreviewsBodyPlaceholder;
 @property (nonatomic) long long iPodOutAlertType;
 @property (nonatomic) BOOL ignoresQuietMode;
 @property (nonatomic) BOOL inertWhenLocked;

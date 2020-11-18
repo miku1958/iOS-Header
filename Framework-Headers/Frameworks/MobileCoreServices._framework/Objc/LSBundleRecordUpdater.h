@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <MobileCoreServices/LSRecordBuilder.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface LSBundleRecordUpdater : NSObject
+@interface LSBundleRecordUpdater : LSRecordBuilder
 {
     struct LSContext _context;
     BOOL _hasContext;
@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
 
 - (void)dealloc;
 - (id)initWithBundleIdentifier:(id)arg1;
+- (id)initWithBundleIdentifier:(id)arg1 preferPlaceholder:(BOOL)arg2;
+- (void)parsePlaceholderMetadata:(id)arg1;
 - (void)parseSINFDictionary:(id)arg1;
 - (void)parseiTunesMetadata:(id)arg1;
 - (int)updateBundleRecord;

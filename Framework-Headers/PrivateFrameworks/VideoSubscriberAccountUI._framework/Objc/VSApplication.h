@@ -10,7 +10,7 @@
 #import <VideoSubscriberAccountUI/IKApplication-Protocol.h>
 #import <VideoSubscriberAccountUI/VSStateMachineDelegate-Protocol.h>
 
-@class IKAppContext, NSError, NSHTTPCookieStorage, NSString, NSURL, VSAppDeviceConfig, VSStateMachine;
+@class IKAppContext, NSError, NSHTTPCookieStorage, NSString, NSURL, VSAppDeviceConfig, VSAuditToken, VSStateMachine;
 @protocol VSApplicationDelegate;
 
 __attribute__((visibility("hidden")))
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSURL *_bootURL;
     IKAppContext *_appContext;
     id<VSApplicationDelegate> _delegate;
+    VSAuditToken *_auditToken;
     VSStateMachine *_stateMachine;
     VSAppDeviceConfig *_appDeviceConfig;
     NSHTTPCookieStorage *_cookieStorage;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) IKAppContext *appContext; // @synthesize appContext=_appContext;
 @property (strong, nonatomic) VSAppDeviceConfig *appDeviceConfig; // @synthesize appDeviceConfig=_appDeviceConfig;
+@property (copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (readonly, copy, nonatomic) NSURL *bootURL; // @synthesize bootURL=_bootURL;
 @property (strong, nonatomic) NSHTTPCookieStorage *cookieStorage; // @synthesize cookieStorage=_cookieStorage;
 @property (readonly, copy) NSString *debugDescription;
@@ -48,8 +50,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)appContext:(id)arg1 validateDOMDocument:(id)arg2 inContext:(id)arg3 error:(id *)arg4;
 - (void)appDocumentForDocument:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)appIdentifier;
+- (BOOL)appIsTrusted;
 - (id)appJSURL;
 - (id)appLaunchParams;
+- (void)dealloc;
 - (id)deviceConfigForContext:(id)arg1;
 - (void)evaluate:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
@@ -60,6 +64,8 @@ __attribute__((visibility("hidden")))
 - (id)objectForPlaylist:(id)arg1;
 - (void)sendErrorWithMessage:(id)arg1;
 - (BOOL)shouldIgnoreJSValidation;
+- (id)sourceApplicationAuditTokenDataForContext:(id)arg1;
+- (id)sourceApplicationBundleIdentifierForContext:(id)arg1;
 - (void)start;
 - (void)stop;
 - (void)transitionToInvalidState;
@@ -70,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (id)userDefaultsStorage;
 - (id)vendorIdentifier;
 - (id)vendorStorage;
+- (id)viewElementRegistry;
 - (id)xhrSessionConfigurationForContext:(id)arg1;
 
 @end

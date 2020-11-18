@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     BOOL paginateScreenContent;
     WAKView *layerHostingView;
     BOOL drawingIntoLayer;
+    BOOL drawingIntoAcceleratedLayer;
     WebEvent *mouseDownEvent;
     BOOL handlingMouseDownEvent;
     WebEvent *keyDownEvent;

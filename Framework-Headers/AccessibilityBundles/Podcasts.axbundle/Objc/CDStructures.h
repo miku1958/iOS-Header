@@ -21,6 +21,11 @@ struct CGSize {
     double _field2;
 };
 
+struct MusicLibraryAddKeepLocalControlStatus {
+    long long _field1;
+    double _field2;
+};
+
 struct UIEdgeInsets {
     double _field1;
     double _field2;

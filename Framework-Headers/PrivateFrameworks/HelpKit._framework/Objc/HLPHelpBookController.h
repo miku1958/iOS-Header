@@ -6,22 +6,28 @@
 
 #import <HelpKit/HLPRemoteDataController.h>
 
-@class HLPHelpSectionItem, HLPURLImageCacheController, NSMutableDictionary, NSString, NSURL;
+@class HLPHelpLocale, HLPHelpSectionItem, HLPURLImageCacheController, NSMutableDictionary, NSString, NSURL;
 
 @interface HLPHelpBookController : HLPRemoteDataController
 {
     BOOL _hasSectionIcon;
     long long _contentFormatVersion;
+    long long _serverType;
     NSMutableDictionary *_helpItemMap;
     NSString *_contentVersion;
     NSString *_copyrightText;
-    NSString *_welcomeTopicIdentifier;
     NSString *_copyrightTopicIdentifier;
+    NSString *_bookId;
+    NSString *_topicPathFormat;
+    NSString *_remoteSearchPath;
+    HLPHelpLocale *_locale;
+    NSString *_welcomeTopicIdentifier;
     NSURL *_helpBookURL;
     HLPHelpSectionItem *_rootSectionItem;
     HLPURLImageCacheController *_imageCacheController;
 }
 
+@property (strong, nonatomic) NSString *bookId; // @synthesize bookId=_bookId;
 @property (nonatomic) long long contentFormatVersion; // @synthesize contentFormatVersion=_contentFormatVersion;
 @property (strong, nonatomic) NSString *contentVersion; // @synthesize contentVersion=_contentVersion;
 @property (strong, nonatomic) NSString *copyrightText; // @synthesize copyrightText=_copyrightText;
@@ -30,13 +36,19 @@
 @property (strong, nonatomic) NSURL *helpBookURL; // @synthesize helpBookURL=_helpBookURL;
 @property (strong, nonatomic) NSMutableDictionary *helpItemMap; // @synthesize helpItemMap=_helpItemMap;
 @property (strong, nonatomic) HLPURLImageCacheController *imageCacheController; // @synthesize imageCacheController=_imageCacheController;
+@property (strong, nonatomic) HLPHelpLocale *locale; // @synthesize locale=_locale;
+@property (strong, nonatomic) NSString *remoteSearchPath; // @synthesize remoteSearchPath=_remoteSearchPath;
 @property (strong, nonatomic) HLPHelpSectionItem *rootSectionItem; // @synthesize rootSectionItem=_rootSectionItem;
 @property (readonly, nonatomic, getter=isSemanticHTML) BOOL semanticHTML; // @dynamic semanticHTML;
+@property (nonatomic) long long serverType; // @synthesize serverType=_serverType;
+@property (strong, nonatomic) NSString *topicPathFormat; // @synthesize topicPathFormat=_topicPathFormat;
 @property (strong, nonatomic) NSString *welcomeTopicIdentifier; // @synthesize welcomeTopicIdentifier=_welcomeTopicIdentifier;
 
 - (void).cxx_destruct;
+- (void)addAsideTopic:(id)arg1;
 - (id)copyrightTopicItem;
 - (void)dealloc;
+- (id)dynamicServerSectionsForIdentifiers:(id)arg1 level:(long long)arg2 parent:(id)arg3 tocMap:(id)arg4;
 - (id)helpItemForID:(id)arg1;
 - (id)helpTopicItemForID:(id)arg1;
 - (id)helpTopicItemForName:(id)arg1;

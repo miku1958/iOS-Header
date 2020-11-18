@@ -8,7 +8,7 @@
 
 #import <SAObjects/SABackgroundContextObject-Protocol.h>
 
-@class NSNumber, NSString, SAMPMediaItem, SAMPNowPlayingQueuePosition, SANPCommandInfo, SANPVideoAudioAndSubtitleLanguageOptions;
+@class NSDictionary, NSNumber, NSString, SAMPMediaItem, SAMPNowPlayingQueuePosition, SANPCommandInfo, SANPVideoAudioAndSubtitleLanguageOptions;
 
 @interface SAMPQueueState : AceObject <SABackgroundContextObject>
 {
@@ -16,13 +16,18 @@
 
 @property (copy, nonatomic) NSString *applicationIdentifier;
 @property (strong, nonatomic) SANPVideoAudioAndSubtitleLanguageOptions *audioAndSubtitleLanguageOptions;
+@property (nonatomic) BOOL currentItemSteerable;
+@property (copy, nonatomic) NSDictionary *currentListeningToContainer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SAMPMediaItem *listeningToItem;
+@property (strong, nonatomic) SAMPMediaItem *nextListeningToItem;
 @property (strong, nonatomic) SANPCommandInfo *nowPlayingCommandInfo;
 @property (strong, nonatomic) SAMPNowPlayingQueuePosition *playbackQueuePosition;
 @property (copy, nonatomic) NSNumber *playbackRate;
+@property (strong, nonatomic) SAMPMediaItem *previousListenedToItem;
+@property (copy, nonatomic) NSNumber *shuffleEnabled;
 @property (copy, nonatomic) NSString *source;
 @property (nonatomic) int state;
 @property (readonly) Class superclass;

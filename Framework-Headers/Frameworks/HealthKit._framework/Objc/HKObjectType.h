@@ -16,11 +16,13 @@
     NSString *_identifier;
     long long _code;
     Class _dataObjectClass;
+    HKObjectType *_parentType;
 }
 
 @property (readonly, nonatomic) long long code;
 @property (readonly, nonatomic) Class dataObjectClass;
 @property (readonly) NSString *identifier;
+@property (strong, nonatomic) HKObjectType *parentType; // @synthesize parentType=_parentType;
 
 + (id)_allCategoryTypes;
 + (id)_allCorrelationTypes;
@@ -33,6 +35,7 @@
 + (BOOL)_allowAuthorizationForSharingWithTypes:(id)arg1 entitlements:(id)arg2 disallowedTypes:(id)arg3;
 + (id)_objectTypeWithIdentifier:(id)arg1 class:(Class)arg2 lookupTable:(id)arg3;
 + (id)_typeWithIdentifier:(id)arg1;
++ (id)_typesIncludingParentTypes:(id)arg1;
 + (id)activityCacheType;
 + (id)activitySummaryType;
 + (id)briskMinuteDataType;
@@ -47,14 +50,18 @@
 + (id)fitnessFriendAchievementType;
 + (id)fitnessFriendActivitySnapshotType;
 + (id)fitnessFriendWorkoutType;
++ (id)irregularlyIrregularPulseType;
++ (id)objectTypeForWorkoutMetric:(unsigned long long)arg1;
 + (id)quantityTypeForIdentifier:(id)arg1;
 + (id)seriesTypeForIdentifier:(id)arg1;
++ (id)stationaryDiscordanceType;
 + (BOOL)supportsSecureCoding;
 + (id)watchActivationType;
 + (id)workoutType;
 - (void).cxx_destruct;
 - (BOOL)_allowAuthorizationForReadingWithEntitlements:(id)arg1;
 - (BOOL)_allowAuthorizationForSharingWithEntitlements:(id)arg1;
+- (id)_hk_localizedNameKey;
 - (id)_initWithDefinition:(CDStruct_6b208136 *)arg1;
 - (id)_predicateForSDKVersion:(unsigned int)arg1;
 - (BOOL)_requiresAuthorization;
@@ -62,6 +69,9 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)hk_localizedName;
+- (id)hk_localizedNameForAuthSheet;
+- (id)hk_localizedNameForLocale:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

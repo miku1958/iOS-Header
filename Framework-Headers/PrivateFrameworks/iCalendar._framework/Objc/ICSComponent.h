@@ -62,7 +62,7 @@
 @property unsigned long long x_apple_suggestionInfoChangedFields;
 @property BOOL x_apple_suggestionInfoChangesAcknowledged;
 @property (strong) NSString *x_apple_suggestionInfoOpaqueKey;
-@property ICSDate *x_apple_suggestionInfoTimestamp;
+@property (strong) ICSDate *x_apple_suggestionInfoTimestamp;
 @property (strong) NSString *x_apple_suggestionInfoUniqueKey;
 @property (strong) NSString *x_apple_universalID;
 @property int x_calendarserver_access;

@@ -13,17 +13,17 @@
 @interface AKAppleIDServerResourceLoadDelegate : NSObject <NSSecureCoding>
 {
     NSString *_altDSID;
-    NSString *_identityToken;
     BOOL _shouldSendEphemeralAuthHeader;
-    BOOL _shouldSendAbsintheHeader;
     BOOL _shouldSendICSCIntentHeader;
     BOOL _shouldSendLocalUserHasAppleIDLoginHeader;
+    BOOL _shouldSendAbsintheHeader;
     NSString *_serviceToken;
     long long _serviceType;
     NSArray *_loggedInServices;
     NSString *_passwordResetToken;
     NSString *_continuationToken;
     NSString *_heartbeatToken;
+    NSString *_identityToken;
     AKDevice *_proxiedDevice;
     NSString *_proxyAppName;
     NSString *_clientAppName;
@@ -36,6 +36,7 @@
 @property (copy, nonatomic) NSString *continuationToken; // @synthesize continuationToken=_continuationToken;
 @property (strong, nonatomic) NSNumber *hasEmptyPasswordOverride; // @synthesize hasEmptyPasswordOverride=_hasEmptyPasswordOverride;
 @property (copy, nonatomic) NSString *heartbeatToken; // @synthesize heartbeatToken=_heartbeatToken;
+@property (copy, nonatomic) NSString *identityToken; // @synthesize identityToken=_identityToken;
 @property (copy, nonatomic) NSArray *loggedInServices; // @synthesize loggedInServices=_loggedInServices;
 @property (copy, nonatomic) NSString *passwordResetToken; // @synthesize passwordResetToken=_passwordResetToken;
 @property (strong, nonatomic) AKDevice *proxiedDevice; // @synthesize proxiedDevice=_proxiedDevice;
@@ -52,6 +53,7 @@
 + (unsigned long long)signalFromServerResponse:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_signWithFeatureOptInHeaders:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAltDSID:(id)arg1 identityToken:(id)arg2;
 - (id)initWithCoder:(id)arg1;
@@ -60,6 +62,7 @@
 - (BOOL)isResponseFinal:(id)arg1;
 - (BOOL)isResponseFinalForHSA2ServerFlow:(id)arg1;
 - (void)signRequest:(id)arg1;
+- (void)signRequestWithCommonHeaders:(id)arg1;
 
 @end
 

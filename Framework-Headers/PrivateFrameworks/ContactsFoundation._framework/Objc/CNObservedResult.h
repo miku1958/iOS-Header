@@ -9,22 +9,40 @@
 @interface CNObservedResult : NSObject
 {
     unsigned long long _time;
+    unsigned long long _tolerance;
     id _value;
+    unsigned long long _logTime;
 }
 
 @property (readonly) BOOL isResultEvent;
-@property (readonly) int logTime;
+@property (readonly) unsigned long long logTime; // @synthesize logTime=_logTime;
 @property (readonly) id logValue;
 @property (readonly) unsigned long long time; // @synthesize time=_time;
+@property (readonly) unsigned long long tolerance; // @synthesize tolerance=_tolerance;
 @property (readonly) id value; // @synthesize value=_value;
 
 + (id)completionResultWithTime:(unsigned long long)arg1;
++ (id)completionResultWithTime:(unsigned long long)arg1 tolerance:(unsigned long long)arg2;
++ (id)completionResultWithTimeInterval:(double)arg1 tolerance:(double)arg2;
 + (id)failureWithError:(id)arg1 time:(unsigned long long)arg2;
++ (id)failureWithError:(id)arg1 time:(unsigned long long)arg2 tolerance:(unsigned long long)arg3;
++ (id)failureWithError:(id)arg1 timeInterval:(double)arg2 tolerance:(double)arg3;
++ (struct _NSRange)overflowSafeRangeWithTime:(unsigned long long)arg1 tolerance:(unsigned long long)arg2;
++ (struct _NSRange)rangeWithExactTime:(unsigned long long)arg1;
++ (struct _NSRange)rangeWithTime:(unsigned long long)arg1 tolerance:(unsigned long long)arg2;
++ (BOOL)rangeWouldOverflowWithTime:(unsigned long long)arg1 tolerance:(unsigned long long)arg2;
++ (BOOL)rangeWouldUnderflowWithTime:(unsigned long long)arg1 tolerance:(unsigned long long)arg2;
++ (id)resultWithTime:(unsigned long long)arg1 tolerance:(unsigned long long)arg2 value:(id)arg3;
 + (id)resultWithTime:(unsigned long long)arg1 value:(id)arg2;
++ (id)resultWithTimeInterval:(double)arg1 tolerance:(double)arg2 value:(id)arg3;
++ (struct _NSRange)underflowSafeRangeWithTime:(unsigned long long)arg1 tolerance:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithValue:(id)arg1 time:(unsigned long long)arg2;
+- (id)formattedTimeString;
+- (unsigned long long)hash;
+- (id)initWithValue:(id)arg1 time:(unsigned long long)arg2 tolerance:(unsigned long long)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (struct _NSRange)timeRange;
 
 @end
 

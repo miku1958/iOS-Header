@@ -16,6 +16,7 @@
 @interface PXWidgetComposition : PXTilingControllerComposition <PXWidgetCompositionElementObserver, PXWidgetCompositionElementDelegate, PXScrollViewControllerObserver>
 {
     struct {
+        BOOL respondsToHasContentAbove;
         BOOL respondsToShouldUseEdgeToEdgeLayoutForWidget;
         BOOL respondsToLoadingPriorityForWidget;
         BOOL respondsToWidgetTransitionToViewControllerWithTransitionType;

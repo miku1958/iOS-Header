@@ -6,11 +6,12 @@
 
 #import <SAObjects/SADomainCommand.h>
 
+#import <SiriClientFlow/CFLocalAceHandling-Protocol.h>
 #import <SiriClientFlow/SAAceSerializable-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface CFSFAddToSafariReadingList : SADomainCommand <SAAceSerializable>
+@interface CFSFAddToSafariReadingList : SADomainCommand <SAAceSerializable, CFLocalAceHandling>
 {
 }
 
@@ -20,9 +21,9 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSArray *urls;
 
++ (id)aceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)addToSafariReadingList;
 + (id)addToSafariReadingListWithDictionary:(id)arg1 context:(id)arg2;
-+ (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 - (BOOL)requiresResponse;

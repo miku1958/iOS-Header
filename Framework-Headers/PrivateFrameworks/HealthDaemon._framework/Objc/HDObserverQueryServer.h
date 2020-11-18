@@ -24,6 +24,7 @@
 - (BOOL)_shouldExecuteWhenProtectedDataIsUnavailable;
 - (BOOL)_shouldListenForUpdates;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
+- (id)requiredEntitlements;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 

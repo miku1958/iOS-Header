@@ -45,6 +45,8 @@
 @property (nonatomic) long long titleCategory; // @synthesize titleCategory=_titleCategory;
 
 - (void).cxx_destruct;
+- (void)_addKeywords:(id)arg1 forRelatedType:(unsigned long long)arg2;
+- (void)_addKeywordsFromKeywords:(id)arg1;
 - (void)_generateTitleWithMomentNodes:(id)arg1 keyAsset:(id)arg2 curatedAssetCollection:(id)arg3 referenceDateInterval:(id)arg4;
 - (id)_initWithGraphMatchingResult:(id)arg1 moments:(id)arg2 needsDebugInfo:(BOOL)arg3;
 - (id)initWithGraphMatchingResult:(id)arg1 moment:(id)arg2 needsDebugInfo:(BOOL)arg3;

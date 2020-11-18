@@ -77,12 +77,12 @@
 @property (strong, nonatomic) GEOLocation *userLocation; // @synthesize userLocation=_userLocation;
 @property (nonatomic) int zoomlevel; // @synthesize zoomlevel=_zoomlevel;
 
+- (void).cxx_destruct;
 - (int)StringAsClientImgFmt:(id)arg1;
 - (int)StringAsRequestType:(id)arg1;
 - (id)clientImgFmtAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

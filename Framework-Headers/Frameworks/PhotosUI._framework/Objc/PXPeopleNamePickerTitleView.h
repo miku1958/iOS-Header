@@ -7,27 +7,22 @@
 #import <UIKit/UIView.h>
 
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
-#import <PhotosUICore/UITextFieldDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, UIFont, UITextField;
+@class NSMutableArray, NSString, PHPerson, UIFont, UIImageView, UITextField;
 
-@interface PXPeopleNamePickerTitleView : UIView <UITextFieldDelegate, PXPhotoLibraryUIChangeObserver>
+@interface PXPeopleNamePickerTitleView : UIView <PXPhotoLibraryUIChangeObserver>
 {
     UITextField *_nameField;
-    NSArray *_people;
     NSString *_name;
     UIFont *_nameFont;
     NSString *_placeholder;
     UIFont *_placeholderFont;
-    UIView *_containerView;
-    NSArray *_containerStretchingConstraints;
     NSMutableArray *_fetchResults;
-    NSMutableArray *_avatarViews;
+    UIImageView *_avatarView;
+    PHPerson *_person;
 }
 
-@property (strong, nonatomic) NSMutableArray *avatarViews; // @synthesize avatarViews=_avatarViews;
-@property (strong, nonatomic) NSArray *containerStretchingConstraints; // @synthesize containerStretchingConstraints=_containerStretchingConstraints;
-@property (strong, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
+@property (strong, nonatomic) UIImageView *avatarView; // @synthesize avatarView=_avatarView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableArray *fetchResults; // @synthesize fetchResults=_fetchResults;
@@ -35,22 +30,20 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) UITextField *nameField; // @synthesize nameField=_nameField;
 @property (strong, nonatomic) UIFont *nameFont; // @synthesize nameFont=_nameFont;
-@property (strong, nonatomic) NSArray *people; // @synthesize people=_people;
+@property (strong, nonatomic) PHPerson *person; // @synthesize person=_person;
 @property (copy, nonatomic) NSString *placeholder; // @synthesize placeholder=_placeholder;
 @property (strong, nonatomic) UIFont *placeholderFont; // @synthesize placeholderFont=_placeholderFont;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (double)_contentWidth;
 - (void)_updateFieldPlaceholder;
 - (void)_updateFieldText;
-- (void)adjustLayoutForEditing:(BOOL)arg1 maxWidth:(double)arg2 animated:(BOOL)arg3;
 - (void)dealloc;
 - (void)finishEditing;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 people:(id)arg2;
-- (struct CGRect)popoverSourceRectForSourceView:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 person:(id)arg2;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)prepareForPhotoLibraryChange:(id)arg1;
 - (void)resetImages;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/FBSDisplayLayoutMonitorClientDelegate-Protocol.h>
 
@@ -15,7 +15,7 @@
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_calloutQueue;
-    unsigned long long _displayType;
+    long long _displayType;
     BOOL _queue_invalidated;
     NSHashTable *_queue_observers;
     FBSDisplayLayout *_queue_currentLayout;
@@ -28,25 +28,25 @@
 @property (readonly, strong, nonatomic) FBSDisplayLayout *currentLayout;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) unsigned long long displayType; // @synthesize displayType=_displayType;
+@property (readonly, nonatomic) long long displayType; // @synthesize displayType=_displayType;
 @property (copy, nonatomic) CDUnknownBlockType handler;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property (readonly) Class superclass;
 
-+ (id)sharedMonitorForDisplayType:(unsigned long long)arg1;
++ (id)sharedMonitorForDisplayType:(long long)arg1;
 - (void)_calloutQueue_postLayout:(id)arg1 withContext:(id)arg2 toObserver:(id)arg3;
 - (id)_observers;
 - (void)_queue_updateClient;
 - (void)_queue_updateLayout:(id)arg1 withContext:(id)arg2;
 - (void)addObserver:(id)arg1;
 - (void)client:(id)arg1 handleNewDisplayLayout:(id)arg2 withContext:(id)arg3;
-- (unsigned long long)clientDisplayType:(id)arg1;
+- (long long)clientDisplayType:(id)arg1;
 - (unsigned long long)clientQualityOfService:(id)arg1;
 - (void)dealloc;
-- (id)initWithDisplayType:(unsigned long long)arg1;
-- (id)initWithDisplayType:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
-- (id)initWithDisplayType:(unsigned long long)arg1 qualityOfService:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
+- (id)initWithDisplayType:(long long)arg1;
+- (id)initWithDisplayType:(long long)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)initWithDisplayType:(long long)arg1 qualityOfService:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)invalidate;
 - (void)removeObserver:(id)arg1;
 

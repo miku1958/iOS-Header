@@ -14,10 +14,10 @@
     BSAction *_sentinelAction;
     CDUnknownBlockType _handler;
     unsigned long long _count;
+    NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_queue> *_explicitQueue;
 }
 
-+ (id)queue;
 + (id)sentinelWithExceptionReason:(id)arg1;
 + (id)sentinelWithQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)sentinelWithQueue:(id)arg1 signalCount:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;

@@ -40,7 +40,9 @@
 @property (copy, nonatomic) NSData *pushToken; // @synthesize pushToken=_pushToken;
 @property (copy, nonatomic) NSString *selfURI; // @synthesize selfURI=_selfURI;
 @property (copy, nonatomic) NSMutableArray *userIDArray; // @synthesize userIDArray=_userIDArray;
+@property (readonly) BOOL wantsIDSProtocolVersion;
 
+- (void).cxx_destruct;
 - (void)addAuthUserID:(id)arg1 certificate:(id)arg2 privateKey:(struct __SecKey *)arg3 publicKey:(struct __SecKey *)arg4;
 - (id)additionalMessageHeaders;
 - (id)additionalMessageHeadersForOutgoingPush;
@@ -49,6 +51,7 @@
 - (void)dealloc;
 - (id)init;
 - (long long)responseCommand;
+- (id)retryCountKey;
 - (id)serverTimestamp;
 - (id)serverTimestampReceivedDate;
 - (void)setServerTimestamp:(id)arg1;

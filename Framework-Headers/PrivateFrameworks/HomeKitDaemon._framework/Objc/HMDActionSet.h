@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDApplicationData, HMDHome, HMFMessageDispatcher, NSArray, NSDate, NSMutableArray, NSString, NSUUID;
+@class HMDApplicationData, HMDHome, HMFMessageDispatcher, NSArray, NSDate, NSMutableArray, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDActionSet : NSObject <HMFMessageReceiver, NSSecureCoding, HMFDumpState>
+@interface HMDActionSet : HMFObject <HMFMessageReceiver, NSSecureCoding, HMFDumpState, HMDBackingStoreObjectProtocol>
 {
     BOOL _executionInProgress;
     NSString *_name;
@@ -46,36 +47,52 @@
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (BOOL)isBuiltinActionSetType:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_execute:(id)arg1 writeRequestTuples:(id)arg2;
+- (void)_execute:(id)arg1 captureCurrentState:(BOOL)arg2 writeRequestTuples:(id)arg3;
+- (void)_executeWriteAction:(id)arg1 captureCurrentState:(BOOL)arg2 writeRequestTuples:(id)arg3;
 - (BOOL)_fixupActions;
 - (id)_generateOverallError:(id)arg1;
 - (void)_handleAddActionRequest:(id)arg1;
+- (void)_handleAddActionTransaction:(id)arg1 message:(id)arg2;
+- (void)_handleRemoveAction:(id)arg1 message:(id)arg2;
 - (void)_handleRemoveActionRequest:(id)arg1;
+- (void)_handleRemoveActionTransaction:(id)arg1 message:(id)arg2;
+- (void)_handleRemoveAppDataModel:(id)arg1 message:(id)arg2;
+- (void)_handleRenameActionSetTransaction:(id)arg1 message:(id)arg2;
 - (void)_handleRenameRequest:(id)arg1;
 - (void)_handleReplaceActionValueRequest:(id)arg1;
+- (void)_handleUpdateAppDataModel:(id)arg1 message:(id)arg2;
+- (void)_issueReadRequests:(id)arg1;
+- (void)_issueWriteRequests:(id)arg1 readResponse:(id)arg2 message:(id)arg3;
 - (void)_logDuetEvent:(id)arg1 endDate:(id)arg2 message:(id)arg3;
 - (void)_logDuetRoomEvent;
+- (id)_logExecuteAction:(id)arg1;
+- (void)_processActionSetModelUpdated:(id)arg1 message:(id)arg2;
 - (void)_registerForMessages;
 - (void)_removeAction:(id)arg1 message:(id)arg2;
 - (id)actionWithUUID:(id)arg1;
 - (id)allCharacteristicsInActionsForServices:(id)arg1;
 - (id)assistantObject;
+- (id)backingStoreObjects:(long long)arg1;
 - (BOOL)configure:(id)arg1 messageDispatcher:(id)arg2 queue:(id)arg3;
 - (BOOL)containsSecureCharacteristic;
 - (void)dealloc;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (void)execute:(id)arg1;
-- (void)executeWithTriggerSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fixupActionsForReplacementAccessory:(id)arg1;
-- (void)handleExecutionCompleted:(id)arg1 startDate:(id)arg2 error:(id)arg3 response:(id)arg4;
+- (void)executeWithTriggerSource:(id)arg1 captureCurrentState:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)handleExecutionCompleted:(id)arg1 startDate:(id)arg2 error:(id)arg3 readResponse:(id)arg4 response:(id)arg5;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 uuid:(id)arg2 type:(id)arg3 home:(id)arg4 queue:(id)arg5;
+- (id)messageDestination;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (void)removeAccessory:(id)arg1;
 - (void)removeActionForCharacteristic:(id)arg1;
 - (void)removeService:(id)arg1;
+- (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
+- (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)url;
 
 @end

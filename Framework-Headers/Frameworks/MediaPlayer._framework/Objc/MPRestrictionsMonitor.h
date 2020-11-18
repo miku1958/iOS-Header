@@ -45,6 +45,7 @@
 - (id)effectiveValueForSetting:(id)arg1;
 - (id)init;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
+- (void)synchronizeWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

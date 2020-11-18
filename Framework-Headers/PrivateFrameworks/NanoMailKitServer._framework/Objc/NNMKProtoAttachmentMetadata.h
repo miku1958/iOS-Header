@@ -17,6 +17,7 @@
     unsigned int _fileSize;
     float _imageHeight;
     float _imageWidth;
+    NSString *_mimePartNumber;
     unsigned int _type;
     BOOL _renderOnClient;
     struct {
@@ -36,10 +37,12 @@
 @property (nonatomic) BOOL hasFileSize;
 @property (nonatomic) BOOL hasImageHeight;
 @property (nonatomic) BOOL hasImageWidth;
+@property (readonly, nonatomic) BOOL hasMimePartNumber;
 @property (nonatomic) BOOL hasRenderOnClient;
 @property (nonatomic) BOOL hasType;
 @property (nonatomic) float imageHeight; // @synthesize imageHeight=_imageHeight;
 @property (nonatomic) float imageWidth; // @synthesize imageWidth=_imageWidth;
+@property (strong, nonatomic) NSString *mimePartNumber; // @synthesize mimePartNumber=_mimePartNumber;
 @property (nonatomic) BOOL renderOnClient; // @synthesize renderOnClient=_renderOnClient;
 @property (nonatomic) unsigned int type; // @synthesize type=_type;
 

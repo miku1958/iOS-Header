@@ -6,24 +6,20 @@
 
 #import <UIKit/_UICAPackageView.h>
 
-@class NSString, NSURL, UILabel;
+@class NSString, NSURL;
 
 @interface _WGCAPackageView : _UICAPackageView
 {
     NSURL *_archiveURL;
-    UILabel *_debugLabel;
 }
 
 @property (copy, nonatomic) NSURL *archiveURL; // @synthesize archiveURL=_archiveURL;
-@property (weak, nonatomic, getter=_debugLabel, setter=_setDebugLabel:) UILabel *debugLabel; // @synthesize debugLabel=_debugLabel;
-@property (nonatomic) BOOL showsDebugLabel;
 @property (readonly, copy, nonatomic) NSString *snapshotIdentifier;
 
 + (void)loadPackageViewWithContentsOfURL:(id)arg1 publishedObjectViewClassMap:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (BOOL)_supportsPushingBottomCornerRadiusToSubviews:(double)arg1;
-- (id)debugLabel;
 - (id)description;
 
 @end

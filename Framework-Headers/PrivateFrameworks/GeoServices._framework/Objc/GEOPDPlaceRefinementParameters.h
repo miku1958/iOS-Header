@@ -45,6 +45,7 @@
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)formattedAddressLineHintType;
+- (void).cxx_destruct;
 - (int)StringAsAddressGeocodeAccuracyHint:(id)arg1;
 - (int)StringAsPlaceTypeHint:(id)arg1;
 - (BOOL)_hasRequiredFields;
@@ -55,7 +56,6 @@
 - (void)clearFormattedAddressLineHints;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)formattedAddressLineHintAtIndex:(unsigned long long)arg1;

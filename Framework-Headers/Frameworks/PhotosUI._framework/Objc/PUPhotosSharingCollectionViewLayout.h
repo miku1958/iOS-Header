@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_didFinishLayoutTransitionAnimations:(BOOL)arg1;
 - (struct CGRect)_floatingBadgeContainerFrameForBadgeContainerFrame:(struct CGRect)arg1 itemFrame:(struct CGRect)arg2 visibleItemFrame:(struct CGRect)arg3;
+- (struct UIOffset)_floatingBadgeOffsetForBadgesContainerFrame:(struct CGRect)arg1 ItemFrame:(struct CGRect)arg2 visibleItemFrame:(struct CGRect)arg3;
 - (id)_sublayoutForItemLayoutAttributes:(id)arg1;
 - (BOOL)_supportsAdvancedTransitionAnimations;
 - (void)invalidateCachedLayout;

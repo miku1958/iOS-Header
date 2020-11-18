@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HDActivitySummaryQueryHelper, HDProfile, HKActivitySummary, NSArray, NSDate, NSHashTable;
+@class HDActivitySummaryQueryHelper, HDProfile, HKActivitySummary, NSArray, NSDate, NSHashTable, NSTimeZone;
 @protocol OS_dispatch_queue;
 
 @interface HDCurrentActivitySummaryHelper : NSObject
@@ -23,6 +23,7 @@
     NSArray *_typesForDataCollection;
     NSHashTable *_observers;
     NSDate *_dateOverride;
+    NSTimeZone *_timezoneOverride;
 }
 
 @property (readonly) BOOL hasLoadedActivitySummaries;
@@ -37,6 +38,7 @@
 - (void)_queue_alertObserversTodaySummaryUpdated:(id)arg1 changedFields:(unsigned long long)arg2;
 - (void)_queue_alertObserversYesterdaySummaryUpdated:(id)arg1 changedFields:(unsigned long long)arg2;
 - (BOOL)_queue_dateHasChanged;
+- (id)_queue_gregorianCalendar;
 - (void)_queue_resetQueryHelper;
 - (void)_queue_setUpActivityQueryHelper;
 - (void)_queue_updateActivitySummaries:(id)arg1;
@@ -49,6 +51,8 @@
 - (id)initWithProfile:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)setDateOverride:(id)arg1;
+- (void)setTimezoneOverride:(id)arg1;
+- (id)timezoneOverride;
 
 @end
 

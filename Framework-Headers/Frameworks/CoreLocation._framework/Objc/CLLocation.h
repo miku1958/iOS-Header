@@ -51,6 +51,7 @@
 - (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1 altitude:(double)arg2 horizontalAccuracy:(double)arg3 verticalAccuracy:(double)arg4 course:(double)arg5 speed:(double)arg6 timestamp:(id)arg7;
 - (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1 altitude:(double)arg2 horizontalAccuracy:(double)arg3 verticalAccuracy:(double)arg4 timestamp:(id)arg5;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2;
+- (id)jsonObject;
 - (id)propagateLocationToTime:(double)arg1;
 - (void)setHorizontalAccuracy:(double)arg1;
 - (id)shortDescription;

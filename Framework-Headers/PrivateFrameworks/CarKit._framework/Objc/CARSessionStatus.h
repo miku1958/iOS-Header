@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class CARSession;
+@class CARSession, CARSessionChangedNotificationConverter;
 @protocol CARSessionObserving, OS_dispatch_queue, OS_dispatch_source;
 
 @interface CARSessionStatus : NSObject
 {
     id<CARSessionObserving> _sessionObserver;
     CARSession *_session;
+    CARSessionChangedNotificationConverter *_notificationConverter;
     NSObject<OS_dispatch_queue> *_sessionUpdatesQueue;
     NSObject<OS_dispatch_source> *_connectingTimer;
     unsigned long long _timeoutInterval;
@@ -20,6 +21,7 @@
 
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *connectingTimer; // @synthesize connectingTimer=_connectingTimer;
 @property (readonly, nonatomic) CARSession *currentSession;
+@property (strong, nonatomic) CARSessionChangedNotificationConverter *notificationConverter; // @synthesize notificationConverter=_notificationConverter;
 @property (strong, nonatomic) CARSession *session; // @synthesize session=_session;
 @property (weak, nonatomic) id<CARSessionObserving> sessionObserver; // @synthesize sessionObserver=_sessionObserver;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *sessionUpdatesQueue; // @synthesize sessionUpdatesQueue=_sessionUpdatesQueue;
@@ -29,6 +31,7 @@
 - (void)_handleAuthenticationSucceeded:(id)arg1;
 - (void)_handleConnectingTimeout;
 - (void)_handleInCarNotification;
+- (void)_handleSessionChanged;
 - (void)_notifyCancelledConnectionAttemptOnTransport:(unsigned long long)arg1;
 - (void)_notifyDidConnectSession:(id)arg1;
 - (void)_notifyDidDisconnectSession:(id)arg1;

@@ -23,6 +23,8 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)navigationController;
+- (void)pushController:(id)arg1 animated:(BOOL)arg2;
 - (id)viewController;
 
 @end

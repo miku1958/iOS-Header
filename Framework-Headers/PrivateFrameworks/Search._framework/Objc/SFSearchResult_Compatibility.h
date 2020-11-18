@@ -13,12 +13,9 @@
 @interface SFSearchResult_Compatibility : SFSearchResult_SpotlightExtras <NSCopying>
 {
     BOOL _hasSearchResultDomain;
-    BOOL _userActivityEligibleForPublicIndexing;
-    BOOL _hasAssociatedUserActivity;
     BOOL _thumbnail_align_right;
     int _searchResultDomain;
     unsigned long long _resultScore;
-    double _sectionScore;
     NSString *_sourceDomain;
     NSString *_subtitle;
     NSString *_templateName;
@@ -32,26 +29,24 @@
 @property (strong, nonatomic) NSString *compatibilityTitle;
 @property (strong, nonatomic) NSArray *contactIdentifiers; // @synthesize contactIdentifiers=_contactIdentifiers;
 @property (strong, nonatomic) NSString *externalIdentifier;
-@property (nonatomic) BOOL hasAssociatedUserActivity; // @synthesize hasAssociatedUserActivity=_hasAssociatedUserActivity;
 @property (readonly) BOOL hasSearchResultDomain; // @synthesize hasSearchResultDomain=_hasSearchResultDomain;
 @property (strong, nonatomic) NSString *resultIdentifier;
 @property (nonatomic) unsigned long long resultScore; // @synthesize resultScore=_resultScore;
 @property int searchResultDomain; // @synthesize searchResultDomain=_searchResultDomain;
 @property (readonly, nonatomic) NSString *secondary_title; // @synthesize secondary_title=_secondary_title;
-@property (nonatomic) double sectionScore; // @synthesize sectionScore=_sectionScore;
 @property (strong, nonatomic) NSString *section_header; // @synthesize section_header=_section_header;
 @property (strong, nonatomic) NSString *sourceDomain; // @synthesize sourceDomain=_sourceDomain;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (strong, nonatomic) NSString *templateName; // @synthesize templateName=_templateName;
 @property (nonatomic) BOOL thumbnail_align_right; // @synthesize thumbnail_align_right=_thumbnail_align_right;
 @property int title_maxlines;
-@property BOOL userActivityEligibleForPublicIndexing; // @synthesize userActivityEligibleForPublicIndexing=_userActivityEligibleForPublicIndexing;
 
 - (void).cxx_destruct;
 - (Class)classForCoder;
 - (Class)classForKeyedArchiver;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)debugDescription;
 - (BOOL)isQuickGlance;
 - (void)setSimpleTitle:(id)arg1;
 - (void)setUniqueIdentifier:(id)arg1;

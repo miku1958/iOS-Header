@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) unsigned int maxTransitZoomLevel;
 @property (readonly, nonatomic) unsigned int maxZoomLevel;
 @property (readonly, nonatomic) unsigned int minZoomLevel;
-@property (nonatomic) id<GEOMapAccessRestrictions> restrictions; // @synthesize restrictions=_restrictions;
+@property (weak, nonatomic) id<GEOMapAccessRestrictions> restrictions; // @synthesize restrictions=_restrictions;
 @property (readonly, nonatomic) unsigned long long roadsZoomLevel;
 @property (copy, nonatomic) CDUnknownBlockType tileErrorHandler; // @synthesize tileErrorHandler=_tileErrorHandler;
 @property (readonly, nonatomic) unsigned long long transitZoomLevel;
@@ -37,13 +37,13 @@
 + (BOOL)supportsTransitMap;
 + (BOOL)supportsTransitMapAccess;
 + (id)transitMap;
+- (void).cxx_destruct;
 - (id)_findTransitPointWithID:(unsigned long long)arg1 near:(CDStruct_c3b9c2ee)arg2 type:(unsigned long long)arg3 pointHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_findTransitPointsWithin:(double)arg1 of:(CDStruct_c3b9c2ee)arg2 type:(unsigned long long)arg3 pointHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (BOOL)_hasLoadedTilesNearCoordinate:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 zoomLevel:(unsigned long long)arg3 tileStyle:(int)arg4 tileSize:(int)arg5 tileScale:(int)arg6;
 - (id)_transitPointForTransitMapNode:(shared_ptr_52e51bdf)arg1;
 - (id)buildMapEdgeTransitFrom:(const struct TransitEdgePiece *)arg1 edgeHandler:(CDUnknownBlockType)arg2;
 - (id)callbackQueue;
-- (void)dealloc;
 - (id)findBuildingsWithin:(double)arg1 of:(CDStruct_c3b9c2ee)arg2 buildingHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)findClosestNamedFeaturesAtCoordinate:(CDStruct_c3b9c2ee)arg1 roadHandler:(CDUnknownBlockType)arg2 pointHandler:(CDUnknownBlockType)arg3 polygonHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)findClosestRoadAtCoordinate:(CDStruct_c3b9c2ee)arg1 roadHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;

@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDCameraGetSnapshotProtocol-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAccessory, HMDCameraSessionID, HMDSnapshotFile, NSDictionary, NSString;
+@class HMDAccessory, HMDCameraSessionID, HMDSnapshotFile, NSDictionary, NSObject, NSString;
 @protocol HMDCameraSnapshotLocalDelegate, HMDSnapshotRequestHandlerProtocol, OS_dispatch_queue;
 
-@interface HMDCameraSnapshotLocal : NSObject <HMDCameraGetSnapshotProtocol, HMFLogging>
+@interface HMDCameraSnapshotLocal : HMFObject <HMDCameraGetSnapshotProtocol, HMFLogging>
 {
     HMDCameraSessionID *_sessionID;
     NSObject<OS_dispatch_queue> *_workQueue;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol GEONavdAnalyticsReporter;
 
@@ -16,7 +16,7 @@
 @property (strong, nonatomic) id<GEONavdAnalyticsReporter> analyticsReporter; // @synthesize analyticsReporter=_analyticsReporter;
 
 + (id)sharedManager;
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

@@ -38,6 +38,7 @@
     BOOL __needsUpdateContentState;
     BOOL __needsUpdateAnimatingZoomEnd;
     BOOL __needsUpdateZoomAndScroll;
+    BOOL __needsUpdateScrollView;
     id<PUUserTransformViewDelegate> _delegate;
     unsigned long long _enabledInteractions;
     UIScrollView *__scrollView;
@@ -74,6 +75,7 @@
 @property (nonatomic, setter=_setUserZoomingOrBouncing:) BOOL _isUserZoomingOrBouncing; // @synthesize _isUserZoomingOrBouncing=__isUserZoomingOrBouncing;
 @property (nonatomic, setter=_setNeedsUpdateAnimatingZoomEnd:) BOOL _needsUpdateAnimatingZoomEnd; // @synthesize _needsUpdateAnimatingZoomEnd=__needsUpdateAnimatingZoomEnd;
 @property (nonatomic, setter=_setNeedsUpdateContentState:) BOOL _needsUpdateContentState; // @synthesize _needsUpdateContentState=__needsUpdateContentState;
+@property (nonatomic, setter=_setNeedsUpdateScrollView:) BOOL _needsUpdateScrollView; // @synthesize _needsUpdateScrollView=__needsUpdateScrollView;
 @property (nonatomic, setter=_setNeedsUpdateShouldTrackContentAnimation:) BOOL _needsUpdateShouldTrackContentAnimation; // @synthesize _needsUpdateShouldTrackContentAnimation=__needsUpdateShouldTrackContentAnimation;
 @property (nonatomic, setter=_setNeedsUpdateUserAffineTransform:) BOOL _needsUpdateUserAffineTransform; // @synthesize _needsUpdateUserAffineTransform=__needsUpdateUserAffineTransform;
 @property (nonatomic, setter=_setNeedsUpdateUserInteracting:) BOOL _needsUpdateUserInteracting; // @synthesize _needsUpdateUserInteracting=__needsUpdateUserInteracting;
@@ -128,7 +130,7 @@
 - (void)_updateAnimatingZoomEndIfNeeded;
 - (void)_updateContentStateIfNeeded;
 - (void)_updateDisplayLink;
-- (void)_updateScrollView;
+- (void)_updateScrollViewIfNeeded;
 - (void)_updateShouldTrackContentAnimationIfNeeded;
 - (void)_updateStateIfNeeded;
 - (void)_updateUserAffineTransformIfNeeded;

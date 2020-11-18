@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSOperation.h>
+#import <Foundation/NSOperation.h>
 
 __attribute__((visibility("hidden")))
 @interface NSFilePresenterAsynchronousOperation : NSOperation

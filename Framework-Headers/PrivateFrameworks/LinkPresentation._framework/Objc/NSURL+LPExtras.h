@@ -7,6 +7,8 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (LPExtras)
++ (id)_lp_URLWithUserTypedString:(id)arg1 relativeToURL:(id)arg2;
+- (id)_lp_highLevelDomain;
 - (id)_lp_simplifiedDisplayString;
 - (id)_lp_userVisibleString;
 @end

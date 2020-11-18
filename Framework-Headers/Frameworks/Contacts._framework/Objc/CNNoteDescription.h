@@ -20,7 +20,7 @@
 @property (readonly) Class superclass;
 
 - (id)CNValueForContact:(id)arg1;
-- (int)abPropertyID:(int *)arg1;
+- (BOOL)abPropertyID:(int *)arg1;
 - (void)decodeUsingCoder:(id)arg1 contact:(id)arg2;
 - (void)encodeUsingCoder:(id)arg1 contact:(id)arg2;
 - (id)init;

@@ -25,18 +25,19 @@
 @property (readonly, nonatomic) int customSortKey; // @synthesize customSortKey=_customSortKey;
 @property (readonly, nonatomic) unsigned long long estimatedPhotosCount; // @synthesize estimatedPhotosCount=_estimatedPhotosCount;
 @property (readonly, nonatomic) unsigned long long estimatedVideosCount; // @synthesize estimatedVideosCount=_estimatedVideosCount;
+@property (readonly, nonatomic) BOOL hasLocalizedTitle;
+@property (readonly, nonatomic) BOOL hasLocationInfo;
 @property (readonly, nonatomic) NSString *localizedSubtitle; // @synthesize localizedSubtitle=_localizedSubtitle;
 @property (readonly, nonatomic) NSString *localizedTitle;
 
-+ (id)_transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 + (id)entityKeyForPropertyKey:(id)arg1;
 + (id)fetchCollectionsInCollectionList:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsForAssetsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
-+ (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
 + (id)fetchTopLevelUserCollectionsWithOptions:(id)arg1;
 + (id)fetchType;
 + (id)managedEntityName;
 + (BOOL)managedObjectSupportsTrashedState;
++ (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)canPerformEditOperation:(long long)arg1;
 - (unsigned long long)collectionFixedOrderPriority;

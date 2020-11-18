@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEOMapRegion : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     double _eastLng;
     double _northLat;
     double _southLat;
@@ -36,18 +37,19 @@
 @property (nonatomic) double southLat; // @synthesize southLat=_southLat;
 @property (readonly, nonatomic) double spanLat;
 @property (readonly, nonatomic) double spanLng;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) NSMutableArray *vertexs; // @synthesize vertexs=_vertexs;
 @property (nonatomic) double westLng; // @synthesize westLng=_westLng;
 
 + (id)_geo_mapRegionForGEOCoordinateRegion:(CDStruct_90e2a262)arg1;
 + (Class)vertexType;
+- (void).cxx_destruct;
 - (void)addVertex:(id)arg1;
 - (void)clearVertexs;
 - (BOOL)containsCoordinate:(CDStruct_c3b9c2ee)arg1;
 - (BOOL)containsMapRect:(CDStruct_90e2a262)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

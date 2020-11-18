@@ -14,7 +14,6 @@
 + (id)emailFrom:(id)arg1 entity:(id)arg2;
 + (void)enumeratePreviousMessages:(id)arg1 inEntity:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 + (void)enumeratePreviousMessages:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-+ (void)initialize;
 + (id)ipsosMessageWithSearchableItem:(id)arg1;
 + (id)nextMessage:(id)arg1;
 + (id)nextMessage:(id)arg1 entity:(id)arg2;

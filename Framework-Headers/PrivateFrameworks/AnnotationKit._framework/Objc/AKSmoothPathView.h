@@ -43,7 +43,7 @@
 @property double cachedModelToViewScale; // @synthesize cachedModelToViewScale=_cachedModelToViewScale;
 @property (weak) AKController *controller; // @synthesize controller=_controller;
 @property double currentWeight; // @synthesize currentWeight=_currentWeight;
-@property id<AKSmoothPathViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong) id<AKSmoothPathViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property BOOL disableSingleDotSpecialCase; // @synthesize disableSingleDotSpecialCase=_disableSingleDotSpecialCase;
 @property (nonatomic) BOOL hasShadow; // @synthesize hasShadow=_hasShadow;
 @property (strong, nonatomic) CHQuadCurvePointFIFO *interpolatingFIFO; // @synthesize interpolatingFIFO=_interpolatingFIFO;

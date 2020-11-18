@@ -6,20 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <Symbolication/VMULibraryLoadDelegate-Protocol.h>
+@class NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
 
-@class NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, _VMULibraryLoadObserver;
-
-@interface VMUProcessDescription : NSObject <VMULibraryLoadDelegate>
+@interface VMUProcessDescription : NSObject
 {
     unsigned int _task;
     int _pid;
     BOOL _taskIsCorpse;
-    NSString *_hardwareModel;
     NSString *_processName;
     BOOL _processNameNeedsCorrection;
     NSString *_executablePath;
-    _VMULibraryLoadObserver *_loadUnloadObserver;
+    struct _CSTypeRef _symbolicator;
     BOOL _executablePathNeedsCorrection;
     unsigned long long _executableLoadAddress;
     int _cpuType;
@@ -41,26 +38,19 @@
     NSMutableDictionary *_environment;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
 + (id)parseBinaryImagesDescription:(id)arg1;
 + (struct _CSTypeRef)symbolicatorFromBinaryImagesDescription:(id)arg1;
+- (void).cxx_destruct;
 - (id)_binaryImagesDescriptionForRanges:(id)arg1;
 - (id)_buildInfoDescription;
 - (id)_buildVersionDictionary;
 - (id)_bundleLock;
 - (id)_cpuTypeDescription;
-- (void)_extractCrashReporterBinaryImageHintsFromSymbolOwner:(struct _CSTypeRef)arg1 withMemory:(struct mapped_memory_t *)arg2;
-- (double)_extractDyldInfoFromSymbolOwner:(struct _CSTypeRef)arg1 withMemory:(struct mapped_memory_t *)arg2;
 - (id)_extractInfoPlistFromSymbolOwner:(struct _CSTypeRef)arg1 withMemory:(struct mapped_memory_t *)arg2;
 - (void)_libraryLoaded:(struct _CSTypeRef)arg1;
 - (id)_osVersionDictionary;
 - (id)_rangesOfBinaryImages:(id)arg1 forBacktraces:(id)arg2;
 - (id)_readDataFromMemory:(struct mapped_memory_t *)arg1 atAddress:(unsigned long long)arg2 size:(unsigned long long)arg3;
-- (id)_readStringFromMemory:(struct mapped_memory_t *)arg1 atAddress:(unsigned long long)arg2;
 - (id)_sanitizeVersion:(id)arg1;
 - (id)_systemVersionDescription;
 - (id)analysisToolDescription;
@@ -74,12 +64,12 @@
 - (id)date;
 - (id)dateAndVersionDescription;
 - (void)dealloc;
+- (id)description;
 - (id)displayName;
 - (id)executablePath;
 - (BOOL)initFromCorpse;
 - (void)initFromLiveProcess;
-- (id)initWithPid:(int)arg1 orTask:(unsigned int)arg2;
-- (id)initWithPid:(int)arg1 orTask:(unsigned int)arg2 getBinariesList:(BOOL)arg3;
+- (id)initWithTask:(unsigned int)arg1 getBinariesList:(BOOL)arg2;
 - (BOOL)is64Bit;
 - (BOOL)isAppleApplication;
 - (id)parentProcessName;

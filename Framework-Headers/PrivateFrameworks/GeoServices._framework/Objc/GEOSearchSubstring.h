@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEOSearchSubstring : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     int _beginIndex;
     int _endIndex;
     NSMutableArray *_spanDatas;
@@ -22,14 +23,15 @@
 @property (nonatomic) int endIndex; // @synthesize endIndex=_endIndex;
 @property (strong, nonatomic) NSMutableArray *spanDatas; // @synthesize spanDatas=_spanDatas;
 @property (nonatomic) int stringType; // @synthesize stringType=_stringType;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)spanDataType;
+- (void).cxx_destruct;
 - (int)StringAsStringType:(id)arg1;
 - (void)addSpanData:(id)arg1;
 - (void)clearSpanDatas;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

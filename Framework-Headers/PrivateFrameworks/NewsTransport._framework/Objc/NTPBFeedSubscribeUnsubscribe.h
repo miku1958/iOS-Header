@@ -12,6 +12,8 @@
 
 @interface NTPBFeedSubscribeUnsubscribe : PBCodable <NSCopying>
 {
+    long long _previousArticlePublisherArticleVersion;
+    NSString *_articleId;
     NSString *_campaignId;
     NSString *_campaignType;
     NSString *_creativeId;
@@ -19,33 +21,41 @@
     int _feedCellHostType;
     int _feedCellSection;
     NSString *_feedId;
+    int _feedSubscriptionOrigin;
     int _feedType;
     NSData *_feedViewExposureId;
     int _feedViewPresentationReason;
     NSString *_groupFeedId;
     int _groupType;
+    NSString *_previousArticleId;
+    NSString *_previousArticleVersion;
     int _recommendationBrickType;
     NSString *_searchString;
     int _subscribeUnsubscribeLocation;
+    int _subscribeUnsubscribeSurfaceReason;
     NSMutableArray *_subscribedFeedIds;
     int _userAction;
     BOOL _cameFromGroup;
     BOOL _isPaidSubscriberToFeed;
     struct {
+        unsigned int previousArticlePublisherArticleVersion:1;
         unsigned int displayRank:1;
         unsigned int feedCellHostType:1;
         unsigned int feedCellSection:1;
+        unsigned int feedSubscriptionOrigin:1;
         unsigned int feedType:1;
         unsigned int feedViewPresentationReason:1;
         unsigned int groupType:1;
         unsigned int recommendationBrickType:1;
         unsigned int subscribeUnsubscribeLocation:1;
+        unsigned int subscribeUnsubscribeSurfaceReason:1;
         unsigned int userAction:1;
         unsigned int cameFromGroup:1;
         unsigned int isPaidSubscriberToFeed:1;
     } _has;
 }
 
+@property (strong, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
 @property (nonatomic) BOOL cameFromGroup; // @synthesize cameFromGroup=_cameFromGroup;
 @property (strong, nonatomic) NSString *campaignId; // @synthesize campaignId=_campaignId;
 @property (strong, nonatomic) NSString *campaignType; // @synthesize campaignType=_campaignType;
@@ -54,11 +64,13 @@
 @property (nonatomic) int feedCellHostType; // @synthesize feedCellHostType=_feedCellHostType;
 @property (nonatomic) int feedCellSection; // @synthesize feedCellSection=_feedCellSection;
 @property (strong, nonatomic) NSString *feedId; // @synthesize feedId=_feedId;
+@property (nonatomic) int feedSubscriptionOrigin; // @synthesize feedSubscriptionOrigin=_feedSubscriptionOrigin;
 @property (nonatomic) int feedType; // @synthesize feedType=_feedType;
 @property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
 @property (nonatomic) int feedViewPresentationReason; // @synthesize feedViewPresentationReason=_feedViewPresentationReason;
 @property (strong, nonatomic) NSString *groupFeedId; // @synthesize groupFeedId=_groupFeedId;
 @property (nonatomic) int groupType; // @synthesize groupType=_groupType;
+@property (readonly, nonatomic) BOOL hasArticleId;
 @property (nonatomic) BOOL hasCameFromGroup;
 @property (readonly, nonatomic) BOOL hasCampaignId;
 @property (readonly, nonatomic) BOOL hasCampaignType;
@@ -67,20 +79,29 @@
 @property (nonatomic) BOOL hasFeedCellHostType;
 @property (nonatomic) BOOL hasFeedCellSection;
 @property (readonly, nonatomic) BOOL hasFeedId;
+@property (nonatomic) BOOL hasFeedSubscriptionOrigin;
 @property (nonatomic) BOOL hasFeedType;
 @property (readonly, nonatomic) BOOL hasFeedViewExposureId;
 @property (nonatomic) BOOL hasFeedViewPresentationReason;
 @property (readonly, nonatomic) BOOL hasGroupFeedId;
 @property (nonatomic) BOOL hasGroupType;
 @property (nonatomic) BOOL hasIsPaidSubscriberToFeed;
+@property (readonly, nonatomic) BOOL hasPreviousArticleId;
+@property (nonatomic) BOOL hasPreviousArticlePublisherArticleVersion;
+@property (readonly, nonatomic) BOOL hasPreviousArticleVersion;
 @property (nonatomic) BOOL hasRecommendationBrickType;
 @property (readonly, nonatomic) BOOL hasSearchString;
 @property (nonatomic) BOOL hasSubscribeUnsubscribeLocation;
+@property (nonatomic) BOOL hasSubscribeUnsubscribeSurfaceReason;
 @property (nonatomic) BOOL hasUserAction;
 @property (nonatomic) BOOL isPaidSubscriberToFeed; // @synthesize isPaidSubscriberToFeed=_isPaidSubscriberToFeed;
+@property (strong, nonatomic) NSString *previousArticleId; // @synthesize previousArticleId=_previousArticleId;
+@property (nonatomic) long long previousArticlePublisherArticleVersion; // @synthesize previousArticlePublisherArticleVersion=_previousArticlePublisherArticleVersion;
+@property (strong, nonatomic) NSString *previousArticleVersion; // @synthesize previousArticleVersion=_previousArticleVersion;
 @property (nonatomic) int recommendationBrickType; // @synthesize recommendationBrickType=_recommendationBrickType;
 @property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 @property (nonatomic) int subscribeUnsubscribeLocation; // @synthesize subscribeUnsubscribeLocation=_subscribeUnsubscribeLocation;
+@property (nonatomic) int subscribeUnsubscribeSurfaceReason; // @synthesize subscribeUnsubscribeSurfaceReason=_subscribeUnsubscribeSurfaceReason;
 @property (strong, nonatomic) NSMutableArray *subscribedFeedIds; // @synthesize subscribedFeedIds=_subscribedFeedIds;
 @property (nonatomic) int userAction; // @synthesize userAction=_userAction;
 
@@ -88,6 +109,7 @@
 - (void).cxx_destruct;
 - (int)StringAsFeedCellHostType:(id)arg1;
 - (int)StringAsFeedCellSection:(id)arg1;
+- (int)StringAsFeedSubscriptionOrigin:(id)arg1;
 - (int)StringAsFeedType:(id)arg1;
 - (int)StringAsFeedViewPresentationReason:(id)arg1;
 - (int)StringAsGroupType:(id)arg1;
@@ -99,6 +121,7 @@
 - (id)dictionaryRepresentation;
 - (id)feedCellHostTypeAsString:(int)arg1;
 - (id)feedCellSectionAsString:(int)arg1;
+- (id)feedSubscriptionOriginAsString:(int)arg1;
 - (id)feedTypeAsString:(int)arg1;
 - (id)feedViewPresentationReasonAsString:(int)arg1;
 - (id)groupTypeAsString:(int)arg1;

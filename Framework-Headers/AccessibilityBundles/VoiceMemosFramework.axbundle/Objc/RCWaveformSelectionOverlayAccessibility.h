@@ -16,7 +16,7 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_axIsShowingSelectionBars;
 - (CDStruct_73a5d3ca)_axSelectedTimeRange;
-- (id)accessibilityContainerElements;
+- (id)accessibilityElements;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
 - (void)setEditingEnabled:(BOOL)arg1;

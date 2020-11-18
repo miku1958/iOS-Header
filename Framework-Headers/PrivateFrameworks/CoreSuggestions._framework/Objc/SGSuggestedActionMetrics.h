@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class SGMContactConfirmed, SGMContactDetailConfirmed, SGMContactDetailRejected, SGMContactDetailUsed, SGMContactInBanner, SGMContactRejected, SGMEventBannerConfirmed, SGMEventBannerRejected, SGMEventInBanner, SGMMaybeInformationShown, SGMNLEventBannerConfirmed, SGMNLEventBannerRejected, SGMNLEventInBanner, SGMUnknownContactInformationShown;
+@class SGMContactConfirmed, SGMContactDetailConfirmed, SGMContactDetailRejected, SGMContactDetailUsed, SGMContactInBanner, SGMContactRejected, SGMEventBannerConfirmed, SGMEventBannerRejected, SGMEventInBanner, SGMMaybeInformationShown, SGMUnknownContactInformationShown;
 
 @interface SGSuggestedActionMetrics : NSObject
 {
@@ -19,9 +19,6 @@
     SGMEventInBanner *_eventInBanner;
     SGMEventBannerConfirmed *_eventBannerConfirmed;
     SGMEventBannerRejected *_eventBannerRejected;
-    SGMNLEventInBanner *_nlEventInBanner;
-    SGMNLEventBannerConfirmed *_nlEventBannerConfirmed;
-    SGMNLEventBannerRejected *_nlEventBannerRejected;
     SGMMaybeInformationShown *_maybeInformationShown;
     SGMUnknownContactInformationShown *_unknownContactInformationShown;
 }
@@ -36,9 +33,6 @@
 @property (strong, nonatomic) SGMEventBannerRejected *eventBannerRejected; // @synthesize eventBannerRejected=_eventBannerRejected;
 @property (strong, nonatomic) SGMEventInBanner *eventInBanner; // @synthesize eventInBanner=_eventInBanner;
 @property (strong, nonatomic) SGMMaybeInformationShown *maybeInformationShown; // @synthesize maybeInformationShown=_maybeInformationShown;
-@property (strong, nonatomic) SGMNLEventBannerConfirmed *nlEventBannerConfirmed; // @synthesize nlEventBannerConfirmed=_nlEventBannerConfirmed;
-@property (strong, nonatomic) SGMNLEventBannerRejected *nlEventBannerRejected; // @synthesize nlEventBannerRejected=_nlEventBannerRejected;
-@property (strong, nonatomic) SGMNLEventInBanner *nlEventInBanner; // @synthesize nlEventInBanner=_nlEventInBanner;
 @property (strong, nonatomic) SGMUnknownContactInformationShown *unknownContactInformationShown; // @synthesize unknownContactInformationShown=_unknownContactInformationShown;
 
 + (id)instance;
@@ -50,7 +44,6 @@
 + (void)recordContactDetailEngagementWithResolution:(long long)arg1 detailType:(struct SGMContactDetailType_)arg2 extractionType:(unsigned long long)arg3;
 + (void)recordContactDetailUsage:(id)arg1 withApp:(id)arg2;
 + (void)recordMaybeContactFrom:(unsigned long long)arg1;
-+ (void)recordMaybeContactRequested;
 - (void).cxx_destruct;
 - (id)init;
 

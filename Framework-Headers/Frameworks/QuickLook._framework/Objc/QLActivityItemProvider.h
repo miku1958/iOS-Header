@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)activityViewController:(id)arg1 subjectForActivityType:(id)arg2;
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (id)activityViewControllerPlaceholderItems:(id)arg1;
-- (id)itemURL;
+- (id)mainItem;
 - (id)printInfo;
 
 @end

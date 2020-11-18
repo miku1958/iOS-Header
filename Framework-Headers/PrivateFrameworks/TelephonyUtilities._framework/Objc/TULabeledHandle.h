@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TelephonyUtilities/NSCopying-Protocol.h>
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
@@ -14,11 +14,11 @@
 @interface TULabeledHandle : NSObject <NSCopying, NSSecureCoding>
 {
     TUHandle *_handle;
-    NSString *_localizedLabel;
+    NSString *_label;
 }
 
 @property (readonly, nonatomic) TUHandle *handle; // @synthesize handle=_handle;
-@property (readonly, copy, nonatomic) NSString *localizedLabel; // @synthesize localizedLabel=_localizedLabel;
+@property (readonly, copy, nonatomic) NSString *label; // @synthesize label=_label;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -28,7 +28,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithHandle:(id)arg1 localizedLabel:(id)arg2;
+- (id)initWithHandle:(id)arg1 label:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToLabeledHandle:(id)arg1;
 

@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) NSArray *dataIconImageKeys;
 @property (readonly, nonatomic) NSArray *iconImageKeys;
 @property (readonly, nonatomic) NSArray *imageKeys;
+@property (nonatomic) BOOL isDragged;
 @property (readonly, nonatomic) NSArray *relatedSubTexts;
 @property (readonly, nonatomic) NSArray *relatedTexts;
 @property (readonly, nonatomic) NSArray *shields;
@@ -25,7 +26,6 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (Box_3d7e3c2c)_bounds;
-- (const shared_ptr_2d33c5e4 *)actualLabelMarker;
 - (unsigned long long)animationID;
 - (unsigned long long)businessID;
 - (struct CGPoint)calloutAnchorPointWithCanvasSize:(struct CGSize)arg1 canvasScale:(double)arg2 snapToPixels:(BOOL)arg3;
@@ -43,7 +43,6 @@
 - (id)featureTile;
 - (int)featureType;
 - (BOOL)hasBusinessID;
-- (id)iconNameAsNSString;
 - (id)incident;
 - (id)initWithFeatureMarkerPtr:(const shared_ptr_430519ce *)arg1;
 - (id)initWithLabelMarkerPtr:(const shared_ptr_2d33c5e4 *)arg1;
@@ -55,22 +54,35 @@
 - (BOOL)isLeafCluster;
 - (BOOL)isOnRoute;
 - (BOOL)isOneWayArrow;
+- (BOOL)isRouteEta;
 - (BOOL)isSelectable;
 - (BOOL)isTextVisible;
+- (BOOL)isTrafficCamera;
 - (BOOL)isTrafficIncident;
 - (BOOL)isTransit;
 - (BOOL)isTransitLine;
+- (BOOL)isVenueButton;
 - (BOOL)isVisible;
+- (const shared_ptr_2d33c5e4 *)labelMarkerImpl;
 - (id)mapRegion;
 - (id)parentClusterLabelMarker;
+- (unsigned char)pickedLabelBalloonBehavior;
+- (BOOL)positionOfInterest:(CDStruct_c3b9c2ee *)arg1 zoom:(float *)arg2;
+- (id)routeInfo;
 - (struct CGRect)screenCollisionBounds;
 - (struct CGPoint)screenPointToScrollRelativeToWithCanvasSize:(struct CGSize)arg1 canvasScale:(double)arg2;
 - (int)selectionType;
 - (void)setLabelPressed:(BOOL)arg1;
-- (BOOL)shouldActivateFeatureSelectionMode;
 - (int)sortKey;
 - (id)subtext;
 - (id)text;
+- (id)trafficCamera;
+- (unsigned long long)venueBuildingID;
+- (unsigned long long)venueComponentID;
+- (unsigned char)venueComponentType;
+- (short)venueFloorOrdinal;
+- (unsigned long long)venueID;
+- (unsigned long long)venueLevelID;
 
 @end
 

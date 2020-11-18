@@ -16,6 +16,7 @@
 - (BOOL)mf_containsSubstring:(id)arg1;
 - (BOOL)mf_containsSubstring:(id)arg1 options:(unsigned long long)arg2;
 - (id)mf_fileSystemString;
+- (id)mf_prefixToString:(id)arg1;
 - (id)mf_stringByAddingPercentEscapesUsingEncoding:(unsigned long long)arg1;
 - (id)mf_stringByEscapingForXML;
 - (id)mf_stringByEscapingHTMLCodes;

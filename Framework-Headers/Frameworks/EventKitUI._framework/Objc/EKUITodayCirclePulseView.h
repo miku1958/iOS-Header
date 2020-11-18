@@ -18,6 +18,7 @@
     UILabel *_overlayLabel;
     NSDictionary *_attributes;
     NSDictionary *_overlayAttributes;
+    BOOL _usesTextYOffsetWithoutAdjustmentForOverlay;
     BOOL _circleShouldFillFrame;
     BOOL _dontApplyCenteringOffset;
     double _circleDiameter;
@@ -37,11 +38,14 @@
 @property (strong, nonatomic) NSDictionary *overlayAttributes;
 @property (strong, nonatomic) UIFont *overlayFont;
 @property (copy, nonatomic) NSString *overlayString;
+@property (nonatomic) double roundedRectCornerRadius;
 @property (copy, nonatomic) NSString *string;
 @property (readonly) Class superclass;
 @property (nonatomic) double textFrameWidthAdjustment; // @synthesize textFrameWidthAdjustment=_textFrameWidthAdjustment;
 @property (nonatomic) struct CGPoint textOffsetFromCircle; // @synthesize textOffsetFromCircle=_textOffsetFromCircle;
 @property (nonatomic) double textYOffset; // @synthesize textYOffset=_textYOffset;
+@property (nonatomic) BOOL usesRoundedRectInsteadOfCircle;
+@property (nonatomic) BOOL usesTextYOffsetWithoutAdjustmentForOverlay; // @synthesize usesTextYOffsetWithoutAdjustmentForOverlay=_usesTextYOffsetWithoutAdjustmentForOverlay;
 
 - (void).cxx_destruct;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;

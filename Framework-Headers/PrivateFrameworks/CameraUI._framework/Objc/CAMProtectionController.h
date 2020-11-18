@@ -30,7 +30,7 @@
 + (id)pathForProtectNebulaDaemonWritesIndicator;
 - (void).cxx_destruct;
 - (void)_addBurstProcessingProtectionIndicatorForIdentifier:(id)arg1;
-- (void)_addPersistenceProtectionIndicatorForType:(long long)arg1;
+- (void)_addPersistenceProtectionIndicatorForType:(long long)arg1 logIdentifier:(id)arg2;
 - (int)_burstProcessingProtectionFileDescriptorForIdentifier:(id)arg1;
 - (id)_burstProcessingProtectionPathForIdentifier:(id)arg1;
 - (int)_persistenceProtectionFileDescriptorForType:(long long)arg1;
@@ -40,11 +40,11 @@
 - (void)_protectionQueueAbortProtectionForNebulaDaemonWrites;
 - (void)_protectionQueueAbortProtectionForProtectionTypes;
 - (void)_protectionQueueRemoveBurstProcessingProtectionIndicatorForIdentifier:(id)arg1;
-- (void)_protectionQueueRemovePersistenceProtectionIndicatorForType:(long long)arg1 unlinkFile:(BOOL)arg2;
+- (void)_protectionQueueRemovePersistenceProtectionIndicatorForType:(long long)arg1 unlinkFile:(BOOL)arg2 logIdentifier:(id)arg3;
 - (void)_protectionQueueStartProtectingNebulaDaemonWritesForIdentifier:(id)arg1;
-- (void)_protectionQueueStartProtectingPersistenceForType:(long long)arg1;
+- (void)_protectionQueueStartProtectingPersistenceForType:(long long)arg1 logIdentifier:(id)arg2;
 - (void)_protectionQueueStopProtectingNebulaDaemonWritesForIdentifier:(id)arg1 closeFile:(BOOL)arg2;
-- (void)_protectionQueueStopProtectingPersistenceForType:(long long)arg1;
+- (void)_protectionQueueStopProtectingPersistenceForType:(long long)arg1 logIdentifier:(id)arg2;
 - (void)dealloc;
 - (id)init;
 - (void)startProtectingBurstProcessingForIdentifier:(id)arg1;

@@ -6,36 +6,64 @@
 
 #import <objc/NSObject.h>
 
+#import <SearchFoundation/NSCopying-Protocol.h>
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFImage-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSDictionary, NSString;
 
-@interface SFImage : NSObject <NSSecureCoding>
+@interface SFImage : NSObject <SFImage, NSSecureCoding, NSCopying>
 {
+    struct {
+        unsigned int isTemplate:1;
+        unsigned int shouldCropToCircle:1;
+        unsigned int cornerRadius:1;
+        unsigned int scale:1;
+        unsigned int size:1;
+        unsigned int source:1;
+    } _has;
     BOOL _isTemplate;
     BOOL _shouldCropToCircle;
+    int _source;
     NSData *_imageData;
     double _cornerRadius;
     double _scale;
     NSString *_contentType;
     NSString *_keyColor;
+    NSString *_identifier;
     struct CGSize _size;
 }
 
-@property (strong, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
+@property (copy, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
-@property (strong) NSData *imageData; // @synthesize imageData=_imageData;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy) NSData *imageData; // @synthesize imageData=_imageData;
 @property (nonatomic) BOOL isTemplate; // @synthesize isTemplate=_isTemplate;
-@property (strong, nonatomic) NSString *keyColor; // @synthesize keyColor=_keyColor;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSString *keyColor; // @synthesize keyColor=_keyColor;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 @property (nonatomic) BOOL shouldCropToCircle; // @synthesize shouldCropToCircle=_shouldCropToCircle;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
+@property (nonatomic) int source; // @synthesize source=_source;
+@property (readonly) Class superclass;
 
 + (id)imageWithData:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasCornerRadius;
+- (BOOL)hasIsTemplate;
+- (BOOL)hasScale;
+- (BOOL)hasShouldCropToCircle;
+- (BOOL)hasSize;
+- (BOOL)hasSource;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 - (void)loadImageDataWithCompletionAndErrorHandler:(CDUnknownBlockType)arg1;
 - (void)loadImageDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 

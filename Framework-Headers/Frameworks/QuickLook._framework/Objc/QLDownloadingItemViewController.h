@@ -6,7 +6,7 @@
 
 #import <QuickLook/QLDetailItemViewController.h>
 
-@class QLDetailItemViewControllerState, QLRoundProgressView, UIImage, UIImageView, _QLDownloadOperation;
+@class QLDetailItemViewControllerState, QLItem, QLRoundProgressView, UIImage, UIImageView;
 @protocol QLDownloadingItemViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -22,9 +22,9 @@ __attribute__((visibility("hidden")))
     QLDetailItemViewControllerState *_nonCancelableDownloadingState;
     QLDetailItemViewControllerState *_completedDownloadState;
     QLDetailItemViewControllerState *_previewLoadingState;
-    _QLDownloadOperation *_downloadOperation;
     UIImageView *_downloadImageView;
     UIImage *_cloudImage;
+    QLItem *_previewItem;
     BOOL _showsLoadingPreviewSpinner;
     id<QLDownloadingItemViewControllerDelegate> _downloadingDelegate;
 }
@@ -35,19 +35,19 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL showsLoadingPreviewSpinner; // @synthesize showsLoadingPreviewSpinner=_showsLoadingPreviewSpinner;
 
 - (void).cxx_destruct;
-- (id)_newDownloadOperation;
 - (void)_presentConnectivityAlert;
-- (void)_resetDownloadOperationBlocks;
 - (void)_setDownloading:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_startDownload:(BOOL)arg1;
+- (void)_startDownloadOperation;
 - (void)_stopDownload:(BOOL)arg1;
 - (void)_toggleDownload:(BOOL)arg1;
 - (void)_updateFileSizeWithProgress:(double)arg1 animated:(BOOL)arg2;
-- (void)loadPreviewControllerWithPreviewItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)performAction;
 - (void)previewDidAppear:(BOOL)arg1;
 - (void)previewDidDisappear:(BOOL)arg1;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldAutoDownloadInNetworkState:(unsigned long long)arg1 downloadSize:(id)arg2;
 - (void)viewDidLoad;
 
 @end

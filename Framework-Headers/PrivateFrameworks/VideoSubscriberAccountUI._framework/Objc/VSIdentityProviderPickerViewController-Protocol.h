@@ -18,8 +18,6 @@
 @property (copy, nonatomic) NSString *requestingAppDisplayName;
 @property (copy, nonatomic) NSString *resourceTitle;
 
-
-@optional
 - (void)deselectSelectedProviderAnimated:(BOOL)arg1;
 @end
 

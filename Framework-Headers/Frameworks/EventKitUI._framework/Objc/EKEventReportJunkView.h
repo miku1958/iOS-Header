@@ -12,7 +12,10 @@
 {
     EKEventDetailsHighlightControl *_control;
     EKEventViewController *_controller;
+    BOOL _isLargeDayView;
 }
+
+@property BOOL isLargeDayView; // @synthesize isLargeDayView=_isLargeDayView;
 
 - (void).cxx_destruct;
 - (id)initWithViewController:(id)arg1;

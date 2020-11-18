@@ -4,22 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class BKSApplicationStateMonitor, HMDApplicationRegistry, HMFTimer, NSMutableSet, NSSet, NSString;
+@class BKSApplicationStateMonitor, HMDApplicationRegistry, HMFTimer, NSMutableSet, NSObject, NSSet, NSString;
 @protocol HMDApplicationMonitorDelegate, OS_dispatch_queue;
 
-@interface HMDApplicationMonitor : NSObject <HMFTimerDelegate>
+@interface HMDApplicationMonitor : HMFObject <HMFTimerDelegate>
 {
-    BOOL _sendHomeUIServiceTerminatedNotification;
     id<HMDApplicationMonitorDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSMutableSet *_processes;
     BKSApplicationStateMonitor *_monitor;
     HMDApplicationRegistry *_appRegistry;
-    HMFTimer *_homeUIServiceTerminationDelayTimer;
+    HMFTimer *_spiClientTerminationDelayTimer;
+    NSMutableSet *_pendingTerminatedApplications;
 }
 
 @property (readonly, nonatomic) BOOL activeHomeKitApps;
@@ -30,10 +30,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSSet *foregroundApps;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) HMFTimer *homeUIServiceTerminationDelayTimer; // @synthesize homeUIServiceTerminationDelayTimer=_homeUIServiceTerminationDelayTimer;
 @property (readonly, nonatomic) BKSApplicationStateMonitor *monitor; // @synthesize monitor=_monitor;
+@property (readonly, nonatomic) NSMutableSet *pendingTerminatedApplications; // @synthesize pendingTerminatedApplications=_pendingTerminatedApplications;
 @property (readonly, nonatomic) NSMutableSet *processes; // @synthesize processes=_processes;
-@property (nonatomic) BOOL sendHomeUIServiceTerminatedNotification; // @synthesize sendHomeUIServiceTerminatedNotification=_sendHomeUIServiceTerminatedNotification;
+@property (strong, nonatomic) HMFTimer *spiClientTerminationDelayTimer; // @synthesize spiClientTerminationDelayTimer=_spiClientTerminationDelayTimer;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 

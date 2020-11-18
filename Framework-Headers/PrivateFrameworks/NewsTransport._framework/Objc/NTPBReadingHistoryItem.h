@@ -12,8 +12,8 @@
 
 @interface NTPBReadingHistoryItem : PBCodable <NSCopying>
 {
-    unsigned long long _maxVersionRead;
-    unsigned long long _maxVersionSeen;
+    long long _maxVersionRead;
+    long long _maxVersionSeen;
     NSString *_articleID;
     NTPBDate *_firstSeenDate;
     NTPBDate *_firstSeenDateOfMaxVersionSeen;
@@ -38,8 +38,8 @@
 @property (nonatomic) BOOL hasMaxVersionRead;
 @property (nonatomic) BOOL hasMaxVersionSeen;
 @property (strong, nonatomic) NTPBDate *lastVisitedDate; // @synthesize lastVisitedDate=_lastVisitedDate;
-@property (nonatomic) unsigned long long maxVersionRead; // @synthesize maxVersionRead=_maxVersionRead;
-@property (nonatomic) unsigned long long maxVersionSeen; // @synthesize maxVersionSeen=_maxVersionSeen;
+@property (nonatomic) long long maxVersionRead; // @synthesize maxVersionRead=_maxVersionRead;
+@property (nonatomic) long long maxVersionSeen; // @synthesize maxVersionSeen=_maxVersionSeen;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

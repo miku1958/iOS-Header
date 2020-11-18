@@ -4,19 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <GeoServices/GEOAbstractRequestResponseTicket.h>
 
 #import <GeoServices/GEOMapServiceBatchNearbyTicket-Protocol.h>
 
-@class GEOMapServiceTraits, GEOPDPlaceRequest, GEOPDPlaceResponse, NSArray, NSString;
+@class GEOMapServiceTraits, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOBatchPopularNearbyTicket : NSObject <GEOMapServiceBatchNearbyTicket>
+@interface _GEOBatchPopularNearbyTicket : GEOAbstractRequestResponseTicket <GEOMapServiceBatchNearbyTicket>
 {
-    GEOPDPlaceRequest *_request;
-    GEOPDPlaceResponse *_response;
-    GEOMapServiceTraits *_traits;
-    BOOL _canceled;
     NSArray *_categories;
 }
 
@@ -24,12 +20,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) GEOMapServiceTraits *traits; // @synthesize traits=_traits;
+@property (readonly, nonatomic) GEOMapServiceTraits *traits;
 
-- (void)cancel;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithRequest:(id)arg1 traits:(id)arg2 categories:(id)arg3;
 - (id)resultSectionHeaderForCategory:(id)arg1;
+- (void)submitWithHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 networkActivity:(CDUnknownBlockType)arg3;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
 
 @end

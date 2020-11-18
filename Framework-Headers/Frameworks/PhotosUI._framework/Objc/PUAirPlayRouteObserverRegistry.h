@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class AVOutputDeviceDiscoverySession, NSHashTable;
+#import <PhotosUI/PXSettingsKeyObserver-Protocol.h>
+
+@class AVOutputDeviceDiscoverySession, NSDate, NSHashTable, NSString;
 @protocol OS_dispatch_queue, PUAirPlayRouteObserverRegistryDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUAirPlayRouteObserverRegistry : NSObject
+@interface PUAirPlayRouteObserverRegistry : NSObject <PXSettingsKeyObserver>
 {
     BOOL __discoveryAllowed;
     AVOutputDeviceDiscoverySession *__discoverySession;
@@ -18,19 +20,28 @@ __attribute__((visibility("hidden")))
     unsigned long long _routeAvailability;
     NSHashTable *__routeObservers;
     NSObject<OS_dispatch_queue> *__discoverySessionIsolationQueue;
+    unsigned long long _lastKnownRouteAvailability;
+    NSDate *_lastKnownRouteAvailabilityDate;
 }
 
 @property (nonatomic, getter=_isDiscoveryAllowed, setter=_setDiscoveryAllowed:) BOOL _discoveryAllowed; // @synthesize _discoveryAllowed=__discoveryAllowed;
 @property (strong, nonatomic, setter=_setDiscoverySession:) AVOutputDeviceDiscoverySession *_discoverySession; // @synthesize _discoverySession=__discoverySession;
 @property (strong, nonatomic, setter=_setDiscoverySessionIsolationQueue:) NSObject<OS_dispatch_queue> *_discoverySessionIsolationQueue; // @synthesize _discoverySessionIsolationQueue=__discoverySessionIsolationQueue;
 @property (strong, nonatomic, setter=_setRouteObservers:) NSHashTable *_routeObservers; // @synthesize _routeObservers=__routeObservers;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUAirPlayRouteObserverRegistryDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long lastKnownRouteAvailability; // @synthesize lastKnownRouteAvailability=_lastKnownRouteAvailability;
+@property (strong, nonatomic) NSDate *lastKnownRouteAvailabilityDate; // @synthesize lastKnownRouteAvailabilityDate=_lastKnownRouteAvailabilityDate;
 @property (nonatomic, setter=_setRouteAvailability:) unsigned long long routeAvailability; // @synthesize routeAvailability=_routeAvailability;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_appEnteredBackground:(id)arg1;
 - (void)_appEnteringForeground:(id)arg1;
 - (void)_availableOutputDevicesDidChange:(id)arg1;
+- (void)_discoverySessionIsolationQueue_updateRouteAvailability;
 - (void)_updateAllObservers;
 - (void)_updateDiscoverySession;
 - (void)_updateObserver:(id)arg1;
@@ -38,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)init;
 - (void)removeRouteObserver:(id)arg1;
+- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 
 @end
 

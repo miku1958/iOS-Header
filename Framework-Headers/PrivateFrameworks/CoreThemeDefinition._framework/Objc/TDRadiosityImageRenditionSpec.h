@@ -15,7 +15,7 @@
 @property (strong, nonatomic) TDFlattenedImageRenditionSpec *flattenedImage; // @dynamic flattenedImage;
 
 - (id)createCSIRepresentationWithCompression:(BOOL)arg1 colorSpaceID:(unsigned long long)arg2 document:(id)arg3;
-- (void)updatePackingPropertiesWithDocument:(id)arg1;
+- (BOOL)updatePackingPropertiesWithDocument:(id)arg1;
 
 @end
 

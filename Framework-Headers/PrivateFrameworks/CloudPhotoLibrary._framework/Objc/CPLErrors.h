@@ -29,6 +29,7 @@
 + (id)transportErrorFromTransportError:(id)arg1;
 + (id)underlyingErrorWithReason:(id)arg1;
 + (id)unknownError;
++ (id)unsafeResources:(id)arg1 withError:(id)arg2 resourceStorage:(id)arg3;
 + (id)versionMismatchError;
 
 @end

@@ -8,55 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOCarInfo, NSString;
-
 @interface GEODeviceState : PBCodable <NSCopying>
 {
-    GEOCarInfo *_carInfo;
-    int _deviceBatteryState;
-    NSString *_deviceCarrierName;
-    int _deviceConnectivity;
-    NSString *_deviceCountryCode;
-    NSString *_deviceInputLocale;
-    int _deviceInterfaceOrientation;
-    NSString *_deviceLocale;
-    NSString *_deviceOutputLocale;
-    struct {
-        unsigned int deviceBatteryState:1;
-        unsigned int deviceConnectivity:1;
-        unsigned int deviceInterfaceOrientation:1;
-    } _has;
 }
 
-@property (strong, nonatomic) GEOCarInfo *carInfo; // @synthesize carInfo=_carInfo;
-@property (nonatomic) int deviceBatteryState; // @synthesize deviceBatteryState=_deviceBatteryState;
-@property (strong, nonatomic) NSString *deviceCarrierName; // @synthesize deviceCarrierName=_deviceCarrierName;
-@property (nonatomic) int deviceConnectivity; // @synthesize deviceConnectivity=_deviceConnectivity;
-@property (strong, nonatomic) NSString *deviceCountryCode; // @synthesize deviceCountryCode=_deviceCountryCode;
-@property (strong, nonatomic) NSString *deviceInputLocale; // @synthesize deviceInputLocale=_deviceInputLocale;
-@property (nonatomic) int deviceInterfaceOrientation; // @synthesize deviceInterfaceOrientation=_deviceInterfaceOrientation;
-@property (strong, nonatomic) NSString *deviceLocale; // @synthesize deviceLocale=_deviceLocale;
-@property (strong, nonatomic) NSString *deviceOutputLocale; // @synthesize deviceOutputLocale=_deviceOutputLocale;
-@property (readonly, nonatomic) BOOL hasCarInfo;
-@property (nonatomic) BOOL hasDeviceBatteryState;
-@property (readonly, nonatomic) BOOL hasDeviceCarrierName;
-@property (nonatomic) BOOL hasDeviceConnectivity;
-@property (readonly, nonatomic) BOOL hasDeviceCountryCode;
-@property (readonly, nonatomic) BOOL hasDeviceInputLocale;
-@property (nonatomic) BOOL hasDeviceInterfaceOrientation;
-@property (readonly, nonatomic) BOOL hasDeviceLocale;
-@property (readonly, nonatomic) BOOL hasDeviceOutputLocale;
-
-- (int)StringAsDeviceBatteryState:(id)arg1;
-- (int)StringAsDeviceConnectivity:(id)arg1;
-- (int)StringAsDeviceInterfaceOrientation:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
-- (id)deviceBatteryStateAsString:(int)arg1;
-- (id)deviceConnectivityAsString:(int)arg1;
-- (id)deviceInterfaceOrientationAsString:(int)arg1;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

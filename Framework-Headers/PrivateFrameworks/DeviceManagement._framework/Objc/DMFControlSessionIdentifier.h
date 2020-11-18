@@ -12,7 +12,7 @@
 }
 
 @property (readonly, nonatomic) DMFControlGroupIdentifier *groupIdentifier;
-@property (nonatomic) unsigned int leaderIP; // @synthesize leaderIP=_leaderIP;
+@property (readonly, nonatomic) unsigned int leaderIP; // @synthesize leaderIP=_leaderIP;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -17,7 +17,7 @@
 }
 
 @property (strong) NSArray *facedAssets; // @synthesize facedAssets=_facedAssets;
-@property (readonly) PGGraphNode *peopleNode; // @synthesize peopleNode=_peopleNode;
+@property (strong) PGGraphNode *peopleNode; // @synthesize peopleNode=_peopleNode;
 @property (readonly) long long year; // @synthesize year=_year;
 
 - (void).cxx_destruct;

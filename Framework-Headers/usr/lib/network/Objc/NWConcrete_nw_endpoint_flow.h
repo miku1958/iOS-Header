@@ -9,40 +9,57 @@
 #import <network/OS_nw_endpoint_flow-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_data, OS_nw_array, OS_nw_channel, OS_nw_endpoint, OS_nw_path, OS_nw_path_evaluator, OS_nw_read_request, OS_nw_write_request, OS_xpc_object;
+@protocol OS_dispatch_data, OS_dispatch_queue, OS_nw_channel, OS_nw_endpoint, OS_nw_fd_wrapper, OS_nw_path, OS_nw_read_request, OS_nw_write_request, OS_xpc_object;
 
 @interface NWConcrete_nw_endpoint_flow : NSObject <OS_nw_endpoint_flow>
 {
-    NSObject<OS_nw_path_evaluator> *connected_path_evaluator;
     NSObject<OS_nw_path> *connected_path;
     void *internally_retained_object;
+    unsigned int initialized_protocol:1;
+    unsigned int setup_protocols:1;
+    unsigned int started_protocols:1;
     unsigned int is_viable:1;
     unsigned int has_connected:1;
     unsigned int initial_payload_sent:1;
+    unsigned int assigned_initial_writes:1;
     unsigned int is_channel:1;
-    unsigned int is_rawip:1;
-    unsigned int is_custom_protocols_only:1;
     unsigned int is_multipath:1;
     unsigned int multipath_nat64_query_outstanding:1;
     unsigned int servicing_reads:1;
     unsigned int input_finished:1;
+    unsigned int custom_protocols_only:1;
+    unsigned int is_flow_divert:1;
+    NWConcrete_nw_endpoint_flow *clone_from_flow;
     struct nw_protocol_identifier protocol_identifier;
     struct nw_protocol_callbacks protocol_callbacks;
     struct nw_protocol protocol_handler;
     struct nw_protocol *transport_protocol;
     struct nw_protocol *tls_protocol;
+    struct tcp_info *tcp_info;
+    struct tcp_connection_info *tcp_connection_info;
     NSObject<OS_nw_write_request> *write_requests;
     NSObject<OS_nw_read_request> *read_requests;
+    NSObject<OS_dispatch_queue> *client_queue;
+    CDUnknownBlockType read_close_handler;
+    CDUnknownBlockType write_close_handler;
     struct __CFError *last_error;
+    struct os_unfair_lock_s lock;
+    NSObject<OS_nw_fd_wrapper> *connected_fd_wrapper;
+    unsigned int pending_write_bytes;
     int pre_connected_fd;
     NSObject<OS_nw_channel> *channel;
     struct nw_protocol *socket_protocol;
     struct _DNSServiceRef_t *sleep_proxy_ref;
     NSObject<OS_xpc_object> *flow_divert_token;
     NSObject<OS_nw_endpoint> *flow_divert_endpoint;
-    NSObject<OS_nw_array> *multipath_watcher_array;
-    NSObject<OS_nw_endpoint> *multipath_effective_subflow_endpoint;
-    struct nw_protocol *wrapper_protocol;
+    unsigned int keepalive_event_enabled:1;
+    unsigned long long first_keepalive_time;
+    unsigned int keepalive_count;
+    unsigned int configured_keepalive_count;
+    unsigned int configured_keepalive_interval;
+    CDUnknownBlockType adaptive_read_event_handler;
+    CDUnknownBlockType adaptive_write_event_handler;
+    CDUnknownBlockType keepalive_event_handler;
     NSObject<OS_dispatch_data> *final_data;
     int final_error;
 }

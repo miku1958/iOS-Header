@@ -13,11 +13,6 @@ __attribute__((visibility("hidden")))
     double _smoothedForce;
     double _maximumForce;
     double _previousEffectiveTouchForce;
-    double _smoothedDistance;
-    double _lowpassDistanceAlpha;
-    double _distanceThreshold;
-    struct CGPoint _previousSceneReferenceLocation;
-    BOOL _isFirstForceEvaluation;
     double _timeMark;
     double _currentTime;
     double _previousTime;
@@ -39,19 +34,22 @@ __attribute__((visibility("hidden")))
     double _strongThreshold;
     double _hintAndPeekInterval;
     double _hintReductionForce;
-    double _transitionInterval;
     double _actualHintForce;
     double _actualPeekForce;
     double _actualPopForce;
     double _actualHintTime;
     double _actualPeekTime;
     double _actualPopTime;
+    BOOL _shouldDelayReveal;
     long long _currentState;
+    double _minimumPreviewDuration;
     double _currentTouchForce;
 }
 
 @property (nonatomic) long long currentState; // @synthesize currentState=_currentState;
 @property (nonatomic) double currentTouchForce; // @synthesize currentTouchForce=_currentTouchForce;
+@property (nonatomic) double minimumPreviewDuration; // @synthesize minimumPreviewDuration=_minimumPreviewDuration;
+@property (nonatomic) BOOL shouldDelayReveal; // @synthesize shouldDelayReveal=_shouldDelayReveal;
 @property (readonly, nonatomic) double velocity; // @dynamic velocity;
 
 - (void)_accessibilityForceSensitivityChanged:(id)arg1;

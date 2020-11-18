@@ -11,34 +11,32 @@
 
 @interface CAMCallStatusMonitor : NSObject
 {
-    BOOL __mutexQueue_callActive;
-    BOOL __mutexQueue_mustQueryInitialValueForCallActive;
-    NSMutableSet *__mutexQueue_disabledReasons;
-    NSObject<OS_dispatch_queue> *__mutexQueue;
+    BOOL _callActive;
+    NSMutableSet *__disabledReasons;
+    NSObject<OS_dispatch_queue> *__avscAccessQueue;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_mutexQueue; // @synthesize _mutexQueue=__mutexQueue;
-@property (nonatomic, getter=_mutexQueue_isCallActive, setter=_mutexQueue_setCallActive:) BOOL _mutexQueue_callActive; // @synthesize _mutexQueue_callActive=__mutexQueue_callActive;
-@property (readonly, nonatomic) NSMutableSet *_mutexQueue_disabledReasons; // @synthesize _mutexQueue_disabledReasons=__mutexQueue_disabledReasons;
-@property (nonatomic, setter=_mutexQueue_setMustQueryInitialValueForCallActive:) BOOL _mutexQueue_mustQueryInitialValueForCallActive; // @synthesize _mutexQueue_mustQueryInitialValueForCallActive=__mutexQueue_mustQueryInitialValueForCallActive;
-@property (readonly, nonatomic, getter=isCallActive) BOOL callActive;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_avscAccessQueue; // @synthesize _avscAccessQueue=__avscAccessQueue;
+@property (readonly, nonatomic) NSMutableSet *_disabledReasons; // @synthesize _disabledReasons=__disabledReasons;
+@property (nonatomic, getter=isCallActive) BOOL callActive; // @synthesize callActive=_callActive;
 
-+ (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_accessQueue_queryCallActiveStatusForReason:(id)arg1;
 - (id)_descriptionForReasons:(id)arg1;
 - (id)_descriptionStringForReason:(long long)arg1;
+- (void)_enableCallStatusMonitor;
 - (void)_handleApplicationDidEnterBackground:(id)arg1;
 - (void)_handleApplicationWillEnterForeground:(id)arg1;
 - (void)_handleCallIsActiveDidChangeNotification:(id)arg1;
 - (void)_handleServerConnectionDiedNotification:(id)arg1;
-- (void)_queryCallActiveStatusForReason:(id)arg1;
-- (void)_queryInitialValueForCallActiveIfNecessary;
 - (void)_registerForAVSystemControllerNotifications;
 - (void)_setCallActive:(BOOL)arg1;
 - (void)_unregisterForAVSystemControllerNotifications;
 - (void)addDisabledReason:(long long)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)initDisabledForLaunch;
+- (id)initWithInitialDisabledReasons:(id)arg1;
 - (void)removeDisabledReason:(long long)arg1;
 
 @end

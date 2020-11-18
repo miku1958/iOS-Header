@@ -10,15 +10,11 @@
 {
 }
 
-+ (id)avalanchePathExtension;
 + (id)defaultFileExtensionForAssetType:(short)arg1;
-+ (id)diagnosticPathExtension;
 + (id)filteredVideoPathForRecordedLivePhotoVideoPath:(id)arg1;
-+ (id)incomingAssetFilenameDelimiter;
 + (id)incomingDirectoryPath;
 + (id)incomingDirectoryPathForPhotoStream;
 + (BOOL)isLivePhotoFilteredVideoPath:(id)arg1;
-+ (id)largeThumbnailInflightPathExtension;
 + (id)preferredFileExtensionForType:(id)arg1;
 + (id)recordedVideoPathForFilteredLivePhotoVideoPath:(id)arg1;
 + (id)sharedDCIMWriter;
@@ -27,6 +23,7 @@
 + (void)writeableDataForImageData:(id)arg1 imageUTIType:(struct __CFString *)arg2 thumbnailDataOut:(id *)arg3 imageUTITypeOut:(id *)arg4 exifPropertiesOut:(id *)arg5 isJPEGOut:(BOOL *)arg6 imageDataOut:(id *)arg7;
 - (id)_cameraAssetExtensionForType:(short)arg1;
 - (BOOL)_writeJPEGToURL:(id)arg1 withData:(id)arg2 thumbnail:(id)arg3 properties:(id)arg4 duringBurst:(BOOL)arg5;
+- (int)copyPrimaryFormatImageData:(id)arg1 toURL:(id)arg2 properties:(id)arg3;
 - (BOOL)saveImageJobToDisk:(id)arg1;
 - (BOOL)writeJPEGToURL:(id)arg1 withData:(id)arg2 thumbnail:(id)arg3 properties:(id)arg4;
 

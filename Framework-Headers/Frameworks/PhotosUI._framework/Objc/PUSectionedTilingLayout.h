@@ -13,7 +13,6 @@
     struct _NSRange _computedSections;
     long long _seedSection;
     struct CGPoint _seedSectionOrigin;
-    struct _PUSectionedTilingLayoutSectionInfo *_zeroedSectionInfo;
     BOOL _leftToRight;
     struct CGSize _interSectionSpacing;
 }

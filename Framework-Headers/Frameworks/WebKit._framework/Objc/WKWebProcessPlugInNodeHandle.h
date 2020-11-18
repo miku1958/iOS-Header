@@ -33,6 +33,7 @@
 - (id)htmlIFrameElementContentFrame;
 - (BOOL)isTextField;
 - (id)renderedImageWithOptions:(unsigned int)arg1;
+- (id)renderedImageWithOptions:(unsigned int)arg1 width:(id)arg2;
 
 @end
 

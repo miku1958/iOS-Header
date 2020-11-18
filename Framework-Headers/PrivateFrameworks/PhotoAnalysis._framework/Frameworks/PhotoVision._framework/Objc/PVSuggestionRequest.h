@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface PVSuggestionRequest : NSObject
 {
+    long long _type;
     NSString *_requestId;
     NSArray *_csns;
     NSArray *_cflags;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSArray *csns; // @synthesize csns=_csns;
 @property (strong) CVMLRequest *cvmlRequest; // @synthesize cvmlRequest=_cvmlRequest;
 @property (readonly) NSString *requestId; // @synthesize requestId=_requestId;
+@property (readonly) long long type; // @synthesize type=_type;
 @property (copy) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
 
 + (id)requestWithFaceCSNs:(id)arg1 withFlags:(id)arg2 updateHandler:(CDUnknownBlockType)arg3;

@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <ITMLKit/IKJSITunesStore-Protocol.h>
 #import <ITMLKit/JSExport-Protocol.h>
 
 @class JSValue, NSArray, NSDictionary, NSString;
 
-@protocol _IKJSITunesStore <JSExport>
+@protocol _IKJSITunesStore <IKJSITunesStore, JSExport>
 
 @property (readonly, nonatomic) NSString *DSID;
 @property (readonly, nonatomic) NSDictionary *accountInfo;

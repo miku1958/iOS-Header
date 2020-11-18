@@ -14,8 +14,8 @@
     NSString *_name;
 }
 
-@property (readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (readonly) NSString *name; // @synthesize name=_name;
 
 + (id)defaultSystemApplication;
 - (void).cxx_destruct;

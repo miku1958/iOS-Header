@@ -20,9 +20,7 @@
     _INPBContact *_payer;
     _INPBPaymentMethodValue *_paymentMethod;
     int _status;
-    struct {
-        unsigned int status:1;
-    } _has;
+    CDStruct_47fe53f2 _has;
 }
 
 @property (strong, nonatomic) _INPBCurrencyAmount *currencyAmount; // @synthesize currencyAmount=_currencyAmount;

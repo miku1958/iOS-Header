@@ -75,8 +75,10 @@
 - (id)onlyObjectOfClass:(Class)arg1 initializer:(SEL)arg2;
 - (id)plistAtIndex:(int)arg1;
 - (short)shortAtIndex:(int)arg1;
-- (struct Mem *)sqliteValueAtIndex:(int)arg1;
+- (struct sqlite3_value *)sqliteValueAtIndex:(int)arg1;
 - (id)stringAtIndex:(int)arg1;
+- (id)unarchivedObjectOfClass:(Class)arg1 atIndex:(int)arg2;
+- (id)unarchivedObjectOfClasses:(id)arg1 atIndex:(int)arg2;
 - (unsigned char)unsignedCharAtIndex:(int)arg1;
 - (unsigned int)unsignedIntAtIndex:(int)arg1;
 - (unsigned long long)unsignedIntegerAtIndex:(int)arg1;

@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSDictionary, NSTimer;
-@protocol IMSendProgressDelegate;
+@protocol IMSendProgressDelegate, IMSendProgressTimeDataSource;
 
 @interface IMSendProgress : NSObject
 {
@@ -18,13 +18,16 @@
     float _cachedSendProgress;
     BOOL _wasShowing;
     BOOL _startSendProgressImmediately;
+    id<IMSendProgressTimeDataSource> _timeDataSource;
 }
 
 @property (weak, nonatomic) id context; // @synthesize context=_context;
 @property (weak, nonatomic) id<IMSendProgressDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSDictionary *sendingItems; // @synthesize sendingItems=_sendingItems;
 @property (nonatomic) BOOL startSendProgressImmediately; // @synthesize startSendProgressImmediately=_startSendProgressImmediately;
+@property (strong, nonatomic) id<IMSendProgressTimeDataSource> timeDataSource; // @synthesize timeDataSource=_timeDataSource;
 
++ (Class)_timeDataSourceClass;
 - (void).cxx_destruct;
 - (BOOL)_hasSendingMessages;
 - (void)_resetSendProgress;

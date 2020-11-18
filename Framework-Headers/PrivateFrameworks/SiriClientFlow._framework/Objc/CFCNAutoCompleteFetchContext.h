@@ -28,9 +28,9 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title;
 
++ (id)aceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)autoCompleteFetchContext;
 + (id)autoCompleteFetchContextWithDictionary:(id)arg1 context:(id)arg2;
-+ (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

@@ -15,7 +15,7 @@
 @property double fadeOutDuration;
 @property BOOL usesSceneTimeBase;
 
-+ (id)scnAnimationNamed:(id)arg1;
++ (id)animationWithSCNAnimation:(id)arg1;
 - (BOOL)commitsOnCompletion;
 - (void)setCommitsOnCompletion:(BOOL)arg1;
 @end

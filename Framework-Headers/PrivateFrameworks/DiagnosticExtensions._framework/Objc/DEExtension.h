@@ -32,9 +32,7 @@
 - (void)attachmentsForParameters:(id)arg1 andHandler:(CDUnknownBlockType)arg2;
 - (id)description;
 - (void)endUsingExtension;
-- (void)getAttachmentsWithParameters:(id)arg1 andHandler:(CDUnknownBlockType)arg2;
 - (id)initWithNSExtension:(id)arg1;
-- (void)loadExtendedInfo;
 - (void)performWithHostContext:(CDUnknownBlockType)arg1;
 
 @end

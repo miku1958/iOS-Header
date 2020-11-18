@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) NSURL *libraryURL; // @synthesize libraryURL=_libraryURL;
 @property (readonly, nonatomic) id<NSCopying><NSSecureCoding> persistentIdentifier;
 
+- (void).cxx_destruct;
 - (id)URLforReplacingItemWithError:(id *)arg1;
 - (id)_URLForNameSpace:(id)arg1 createIfNeeded:(BOOL)arg2 allowMissing:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)__lockWithFlags:(int)arg1 error:(id *)arg2;

@@ -12,10 +12,12 @@
 
 @optional
 - (long long)numberOfVisualSectionsForSectionedGridLayout:(PUSectionedGridLayout *)arg1;
+- (double)sectionedGridLayout:(PUSectionedGridLayout *)arg1 accessibilitySectionHeaderHeightForVisualSection:(long long)arg2;
 - (double)sectionedGridLayout:(PUSectionedGridLayout *)arg1 aspectRatioForItemAtIndexPath:(NSIndexPath *)arg2;
 - (void)sectionedGridLayout:(PUSectionedGridLayout *)arg1 didFinalizePrepareTransitionIsAppearing:(BOOL)arg2;
 - (void)sectionedGridLayout:(PUSectionedGridLayout *)arg1 didInvalidateWithContext:(PUSectionedGridLayoutInvalidationContext *)arg2;
 - (void)sectionedGridLayout:(PUSectionedGridLayout *)arg1 didPrepareTransitionIsAppearing:(BOOL)arg2;
+- (struct UIEdgeInsets)sectionedGridLayout:(PUSectionedGridLayout *)arg1 finalContentInsetForCurrentContentInset:(struct UIEdgeInsets)arg2;
 - (long long)sectionedGridLayout:(PUSectionedGridLayout *)arg1 maximumRowsForVisualSection:(long long)arg2;
 - (double)sectionedGridLayout:(PUSectionedGridLayout *)arg1 sectionHeaderHeightForVisualSection:(long long)arg2;
 - (NSIndexSet *)sectionedGridLayout:(PUSectionedGridLayout *)arg1 sectionsForVisualSection:(long long)arg2;

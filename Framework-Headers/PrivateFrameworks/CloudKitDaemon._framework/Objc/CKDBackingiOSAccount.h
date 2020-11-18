@@ -28,8 +28,6 @@ __attribute__((visibility("hidden")))
 - (id)accountPropertiesForDataclass:(id)arg1;
 - (BOOL)canAuthWithCloudKit;
 - (id)cloudKitAuthTokenWithError:(id *)arg1;
-- (BOOL)cloudKitIsEnabled;
-- (BOOL)cloudPhotosIsEnabled;
 - (id)dsid;
 - (id)fullName;
 - (id)iCloudAuthTokenWithError:(id *)arg1;
@@ -37,8 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)identifier;
 - (BOOL)isDataclassEnabled:(id)arg1;
 - (id)primaryEmail;
-- (void)saveVerifiedAccountInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)updateAccountProperiesInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateAccountPropertiesAndSaveAccountInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)username;
 
 @end

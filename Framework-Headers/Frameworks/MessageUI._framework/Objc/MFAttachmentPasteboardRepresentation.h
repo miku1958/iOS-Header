@@ -7,11 +7,11 @@
 #import <Foundation/NSObject.h>
 
 #import <MessageUI/MFAttachmentPasteboardRepresentation-Protocol.h>
-#import <MessageUI/NSCoding-Protocol.h>
+#import <MessageUI/NSSecureCoding-Protocol.h>
 
 @class NSData, NSString;
 
-@interface MFAttachmentPasteboardRepresentation : NSObject <NSCoding, MFAttachmentPasteboardRepresentation>
+@interface MFAttachmentPasteboardRepresentation : NSObject <NSSecureCoding, MFAttachmentPasteboardRepresentation>
 {
     NSData *_data;
     NSString *_name;
@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAttachment:(id)arg1;

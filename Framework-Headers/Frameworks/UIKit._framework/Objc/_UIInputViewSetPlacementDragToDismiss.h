@@ -11,12 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface _UIInputViewSetPlacementDragToDismiss : UIInputViewSetPlacementOnScreen <NSSecureCoding>
 {
+    BOOL _dismissKeyboardOnly;
     double _offset;
 }
 
+@property (nonatomic) BOOL dismissKeyboardOnly; // @synthesize dismissKeyboardOnly=_dismissKeyboardOnly;
 @property (nonatomic) double offset; // @synthesize offset=_offset;
 
-+ (id)placementWithOffset:(double)arg1;
++ (id)placementWithOffset:(double)arg1 dismissKeyboardOnly:(BOOL)arg2;
 + (BOOL)supportsSecureCoding;
 - (Class)applicatorClassForKeyboard:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;

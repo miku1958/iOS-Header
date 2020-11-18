@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)endTransitionForKeyView:(id)arg1;
 - (Class)keyViewClassForKey:(id)arg1 traits:(id)arg2;
 - (id)keycapAlternateDualStringTransform:(id)arg1;
-- (id)keycapAlternateTransform;
+- (id)keycapAlternateTransform:(id)arg1;
 - (id)keycapLeftSelectLeftTransform;
 - (id)keycapLeftSelectPrimaryTransform;
 - (id)keycapLeftSelectRightTransform;

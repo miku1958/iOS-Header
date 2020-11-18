@@ -15,6 +15,7 @@
 - (BOOL)uns_requiresLocalNotifications;
 - (BOOL)uns_sdkVersionOnOrLaterThan:(id)arg1;
 - (BOOL)uns_shouldUseDefaultDataProvider;
+- (id)uns_universalApplicationIdentifier;
 - (BOOL)uns_usesCloudKit;
 - (BOOL)uns_usesLocalNotifications;
 @end

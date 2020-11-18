@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSDecimalNumber, NSString;
 
@@ -17,7 +17,7 @@
 
 @property (copy, nonatomic) NSString *displayValue; // @synthesize displayValue=_displayValue;
 @property (nonatomic) BOOL usedMaximumSuggestion; // @synthesize usedMaximumSuggestion=_usedMaximumSuggestion;
-@property (copy, nonatomic) NSDecimalNumber *value; // @synthesize value=_value;
+@property (readonly, copy, nonatomic) NSDecimalNumber *value; // @synthesize value=_value;
 
 + (id)suggestionWithValue:(id)arg1 currencyCode:(id)arg2;
 - (void).cxx_destruct;

@@ -16,8 +16,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_allowCustomActionHintSpeakOverride;
 - (id)_locationView;
-- (id)accessibilityCustomRotorItemsAtIndex:(long long)arg1;
-- (id)accessibilityCustomRotorTitles;
+- (id)accessibilityCustomRotors;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
 

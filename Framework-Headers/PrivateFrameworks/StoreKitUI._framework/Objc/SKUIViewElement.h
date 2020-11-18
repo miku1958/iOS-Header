@@ -16,6 +16,7 @@
     NSMutableArray *_flattenedChildren;
     BOOL _hasValidEntityProvider;
     long long _pinStyle;
+    long long _pinGroup;
     id<IKEntityValueProviding> _explicitEntityValueProvider;
 }
 
@@ -31,6 +32,7 @@
 @property (readonly, strong, nonatomic) NSString *itmlID; // @dynamic itmlID;
 @property (readonly, nonatomic) long long pageComponentType;
 @property (readonly, nonatomic) NSSet *personalizationLibraryItems;
+@property (readonly, nonatomic) long long pinGroup; // @synthesize pinGroup=_pinGroup;
 @property (readonly, nonatomic) long long pinStyle; // @synthesize pinStyle=_pinStyle;
 @property (readonly, nonatomic) BOOL rendersWithParallax;
 @property (readonly, nonatomic) BOOL rendersWithPerspective;

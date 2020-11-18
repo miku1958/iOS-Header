@@ -59,6 +59,7 @@
 - (void)_configureTopRightAboveLayout:(id)arg1 withBounds:(struct CGRect)arg2;
 - (void)_configureTopRightBelowLayout:(id)arg1 withBounds:(struct CGRect)arg2;
 - (void)_configureTopRightLayout:(id)arg1 withBounds:(struct CGRect)arg2;
+- (void)_configureUpNextTopRightLayout:(id)arg1 withBounds:(struct CGRect)arg2;
 - (double)_maxBottomCenterWidthLeavingRoomForKeylines:(struct CGRect)arg1;
 - (double)_maxBottomCornerWidthLeavingRoomForKeylines:(struct CGRect)arg1;
 - (double)_maxDateWidthLeavingRoomForKeylines;

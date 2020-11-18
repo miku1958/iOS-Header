@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *variants; // @synthesize variants=_variants;
 
++ (Class)variantType;
 - (void).cxx_destruct;
 - (void)addVariant:(id)arg1;
 - (void)clearVariants;

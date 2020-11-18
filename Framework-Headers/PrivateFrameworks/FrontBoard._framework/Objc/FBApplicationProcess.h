@@ -29,15 +29,12 @@
     FBProcessWatchdog *_watchdog;
     FBSProcessWatchdogPolicy *_sceneCreateWatchdogPolicy;
     long long _terminationReason;
-    int _defaultSceneSuspendType;
     FBProcessCPUStatistics *_cpuStatistics;
     double _execTime;
     unsigned long long _htAppIdentifier;
     BKSProcess *_bksProcess;
     BKSProcessAssertion *_launchProcessAssertion;
     BKSProcessAssertion *_continuousProcessAssertion;
-    BOOL _supportsBackgroundTaskAssertions;
-    BOOL _supportsSuspendOnLock;
     BOOL _recordingAudio;
     BOOL _nowPlayingWithAudio;
     BOOL _connectedToExternalAccessory;
@@ -48,7 +45,6 @@
 @property (nonatomic, getter=isConnectedToExternalAccessory) BOOL connectedToExternalAccessory; // @synthesize connectedToExternalAccessory=_connectedToExternalAccessory;
 @property (readonly, strong, nonatomic, getter=_queue_cpuStatistics) FBProcessCPUStatistics *cpuStatistics; // @synthesize cpuStatistics=_cpuStatistics;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic, getter=_queue_defaultSuspendType) int defaultSuspendType;
 @property (weak, nonatomic) id<FBApplicationProcessDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double elapsedCPUTime;
@@ -61,8 +57,6 @@
 @property (readonly, nonatomic, getter=isPendingExit) BOOL pendingExit; // @synthesize pendingExit=_pendingExit;
 @property (nonatomic, getter=isRecordingAudio) BOOL recordingAudio; // @synthesize recordingAudio=_recordingAudio;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic, getter=_queue_supportsBackgroundTaskAssertions) BOOL supportsBackgroundTaskAssertions; // @synthesize supportsBackgroundTaskAssertions=_supportsBackgroundTaskAssertions;
-@property (readonly, nonatomic, getter=_queue_supportsSuspendOnLock) BOOL supportsSuspendOnLock; // @synthesize supportsSuspendOnLock=_supportsSuspendOnLock;
 @property (readonly, nonatomic, getter=_queue_terminationReason) long long terminationReason;
 
 - (id)GSEventPort;
@@ -72,16 +66,11 @@
 - (void)_queue_addAllowedLockedFilePath:(id)arg1;
 - (long long)_queue_bksVisibilityForVisibility:(int)arg1;
 - (BOOL)_queue_bootstrapAndExecWithContext:(id)arg1;
-- (int)_queue_calculateDefaultSceneSuspendType;
 - (void)_queue_callExitObservers;
 - (void)_queue_cancelWatchdogTimer;
-- (BOOL)_queue_consideredUnderLock;
 - (void)_queue_doGracefulKillWithDeliveryConfirmation:(CDUnknownBlockType)arg1;
 - (void)_queue_dropContinuousProcessAssertion;
 - (void)_queue_dropLaunchProcessAssertion;
-- (int)_queue_effectiveVisibilityForSceneSettings:(id)arg1;
-- (int)_queue_effectiveVisibilityForVisibility:(int)arg1;
-- (int)_queue_effectiveVisibilityForVisibility:(int)arg1 underLock:(BOOL)arg2;
 - (void)_queue_enumerateApplicationObserversWithBlock:(CDUnknownBlockType)arg1;
 - (void)_queue_executeBlockAfterLaunchCompletes:(CDUnknownBlockType)arg1;
 - (void)_queue_executeKillForRequest:(id)arg1;
@@ -91,7 +80,6 @@
 - (id)_queue_internalDebugEnvironmentVariables;
 - (void)_queue_invalidateBKSProcess;
 - (BOOL)_queue_isAllowedLockedFilePath:(id)arg1 standardizedPath:(out id *)arg2;
-- (BOOL)_queue_isSystemApplication;
 - (void)_queue_killForReason:(long long)arg1 andReport:(BOOL)arg2 withDescription:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_queue_killWithSignal:(int)arg1;
 - (void)_queue_launchIfNecessary;
@@ -102,15 +90,11 @@
 - (int)_queue_ourTaskStateForBKSTaskState:(long long)arg1;
 - (void)_queue_processDidExit;
 - (void)_queue_processReallyDidExit;
-- (void)_queue_sceneLifecycleStateChanged:(id)arg1;
 - (void)_queue_sceneNeedsGracefulExit:(id)arg1 withDeliveryConfirmation:(CDUnknownBlockType)arg2;
-- (void)_queue_setSupportsBackgroundTaskAssertions:(BOOL)arg1;
-- (void)_queue_setSupportsSuspendOnLock:(BOOL)arg1;
 - (void)_queue_setTaskState:(int)arg1;
 - (void)_queue_setVisibility:(int)arg1;
 - (BOOL)_queue_shouldWatchdogWithDeclineReason:(id *)arg1;
 - (void)_queue_startWatchdogTimerForContext:(id)arg1;
-- (BOOL)_queue_supportsContinuousBackgroundMode;
 - (void)_queue_takeLaunchProcessAssertion;
 - (void)_queue_terminateWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_terminateWithRequest:(id)arg1 forWatchdog:(id)arg2;

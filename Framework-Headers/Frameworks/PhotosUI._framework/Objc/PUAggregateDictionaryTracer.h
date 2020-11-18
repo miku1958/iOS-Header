@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)userStartedViewingCurrentAssetOfBrowsingViewModel:(id)arg1 inContext:(id)arg2;
 - (void)userStoppedViewingCurrentAssetOfBrowsingViewModel:(id)arg1 inContext:(id)arg2;
 - (void)userViewedAssetInOneUp:(id)arg1;
+- (void)userViewedHDRPhotoInOneUpFor:(double)arg1;
 - (void)userViewedPhotoInOneUpFor:(double)arg1;
 - (void)userWillPlayAssetInOneUp:(id)arg1;
 - (void)vitalityPlayedForAssetInOneUp:(id)arg1;

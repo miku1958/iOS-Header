@@ -36,9 +36,6 @@
 + (id)nameForContact:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_migrateToAddressBook:(void *)arg1;
-- (void)_migrateToContactsWithAddressBook:(void *)arg1;
-- (void)_migrateToSchemaVersion:(long long)arg1 withAddressBook:(void *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

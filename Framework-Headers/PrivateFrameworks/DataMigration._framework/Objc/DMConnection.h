@@ -4,25 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <DataMigration/DMXPCConnection.h>
+#import <objc/NSObject.h>
 
-#import <DataMigration/DMMigratorServiceProtocol-Protocol.h>
+@class DMXPCConnection;
 
-@class NSString;
-
-@interface DMConnection : DMXPCConnection <DMMigratorServiceProtocol>
+@interface DMConnection : NSObject
 {
+    DMXPCConnection *_connection;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
++ (id)connection;
+- (void).cxx_destruct;
 - (void)changeVisibility:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dealloc;
 - (void)forceMigrationOnNextRebootWithCompletion:(CDUnknownBlockType)arg1;
+- (id)init;
 - (void)isMigrationNeeded:(CDUnknownBlockType)arg1;
 - (void)migrateCheckingNecessity:(BOOL)arg1 lastRelevantPlugin:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)migrationPhaseDescription:(CDUnknownBlockType)arg1;
 - (void)orderedPluginIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)previousBuildVersion:(CDUnknownBlockType)arg1;
 - (void)reportMigrationFailure;

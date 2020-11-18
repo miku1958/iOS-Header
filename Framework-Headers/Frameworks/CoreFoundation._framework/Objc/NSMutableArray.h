@@ -75,6 +75,7 @@
 - (void)sortUsingFunction:(CDUnknownFunctionPointerType)arg1 context:(void *)arg2 range:(struct _NSRange)arg3;
 - (void)sortUsingSelector:(SEL)arg1;
 - (void)sortWithOptions:(unsigned long long)arg1 usingComparator:(CDUnknownBlockType)arg2;
+- (id)sortedArrayFromRange:(struct _NSRange)arg1 options:(unsigned long long)arg2 usingComparator:(CDUnknownBlockType)arg3;
 
 @end
 

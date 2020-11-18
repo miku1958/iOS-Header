@@ -14,8 +14,10 @@
 {
     CLSPerson *_person;
     PHPhotoLibrary *_photoLibrary;
+    unsigned long long _numberOfFaces;
 }
 
+@property (nonatomic) unsigned long long numberOfFaces; // @synthesize numberOfFaces=_numberOfFaces;
 @property (strong, nonatomic) CLSPerson *person; // @synthesize person=_person;
 @property (weak, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 

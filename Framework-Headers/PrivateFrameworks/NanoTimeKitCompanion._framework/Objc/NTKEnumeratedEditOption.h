@@ -10,6 +10,8 @@
 {
 }
 
+@property (readonly, nonatomic) unsigned long long _value; // @dynamic _value;
+
 + (id)_orderedValues;
 + (id)_orderedValuesRestrictedByCurrentDeviceCollection;
 + (BOOL)_valueIsValid:(unsigned long long)arg1;

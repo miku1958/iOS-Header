@@ -47,6 +47,7 @@
 + (id)newFetchRequestForNotes;
 + (id)newLegacyContext;
 + (id)newManagedObjectContext;
++ (id)newlyAddedAttachmentInContext:(id)arg1;
 + (id)pathForIndex;
 + (id)pathForPersistentStore;
 + (id)persistentStoreCoordinator;

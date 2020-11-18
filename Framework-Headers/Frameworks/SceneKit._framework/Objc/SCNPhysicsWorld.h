@@ -52,6 +52,7 @@
 - (void)_drawDebugInAuthoringEnvironment:(void *)arg1;
 - (id)_findFieldAttachedToNode:(id)arg1;
 - (struct btDynamicsWorld *)_handle;
+- (BOOL)_isDefault;
 - (BOOL)_needsRedraw;
 - (id)_physicsContact;
 - (void)_postCommandWithBlock:(CDUnknownBlockType)arg1;
@@ -71,6 +72,8 @@
 - (void)enumerateBodiesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithScene:(id)arg1;
+- (id)objectInAllBehaviorsAtIndex:(unsigned long long)arg1;
+- (BOOL)parseSpecialKey:(id)arg1 withPath:(id)arg2 intoDestination:(id *)arg3;
 - (id)rayTestWithSegmentFromPoint:(struct SCNVector3)arg1 toPoint:(struct SCNVector3)arg2 options:(id)arg3;
 - (void)removeAllBehaviors;
 - (void)removeBehavior:(id)arg1;
@@ -81,6 +84,7 @@
 - (void)setScale:(double)arg1;
 - (void)setScene:(id)arg1;
 - (void)updateCollisionPairs;
+- (id)valueForUndefinedKey:(id)arg1;
 - (void)wakeUpAllBodies;
 
 @end

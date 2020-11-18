@@ -21,6 +21,8 @@
 + (id)requestViewControllerWithConnectionHandler:(CDUnknownBlockType)arg1;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
+- (void)accessorySetupDidBeginPairing;
+- (void)accessorySetupDidFinishPairing;
 - (void)accessorySetupDidFinishWithError:(id)arg1;
 - (void)accessorySetupDidLoad;
 - (void)viewDidLoad;

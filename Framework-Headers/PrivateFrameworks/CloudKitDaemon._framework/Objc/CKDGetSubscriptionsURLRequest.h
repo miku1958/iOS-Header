@@ -23,12 +23,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *subscriptions; // @synthesize subscriptions=_subscriptions;
 
 - (void).cxx_destruct;
+- (id)generateRequestOperations;
 - (id)initWithSubscriptionIDs:(id)arg1;
 - (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 
 @end
 

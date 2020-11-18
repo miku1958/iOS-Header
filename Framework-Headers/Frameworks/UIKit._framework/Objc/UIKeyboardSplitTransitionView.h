@@ -48,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (struct CGImage *)keyImageWithToken:(id)arg1;
 - (id)outerCenterDropShadow;
 - (void)rebuildControlKeys:(unsigned long long)arg1;
-- (void)rebuildFromKeyplane:(id)arg1 toKeyplane:(id)arg2 keyboardType:(long long)arg3 orientation:(long long)arg4;
+- (void)rebuildFromKeyplane:(id)arg1 toKeyplane:(id)arg2 startToken:(id)arg3 endToken:(id)arg4 keyboardType:(long long)arg5 orientation:(long long)arg6;
 - (void)rebuildTransitionForSplitStyleChange:(id)arg1;
 - (struct CGRect)rectEnclosingKeyplane:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;

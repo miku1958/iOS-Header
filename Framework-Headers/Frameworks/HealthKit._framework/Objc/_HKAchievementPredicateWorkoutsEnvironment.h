@@ -27,6 +27,7 @@
 - (void).cxx_destruct;
 - (id)_workoutEnvironmentsFromWorkouts:(id)arg1;
 - (id)_workoutsByFilteringExcludedUUIDs:(id)arg1;
+- (double)averageCaloriesBurnedInWorkoutsFromTimeNumber:(id)arg1 toTimeNumber:(id)arg2;
 - (id)previousBestCaloriesForWorkoutOfType:(id)arg1;
 - (id)workoutsInDateRangeStart:(id)arg1 end:(id)arg2;
 - (id)workoutsOfType:(id)arg1;

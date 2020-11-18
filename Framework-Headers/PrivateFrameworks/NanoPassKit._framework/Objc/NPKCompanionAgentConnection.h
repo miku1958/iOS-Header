@@ -17,6 +17,7 @@
     NSObject<OS_dispatch_queue> *_xpcConnectionQueue;
     NSObject<OS_dispatch_queue> *_cacheQueue;
     BOOL _queueAppropriateFailedActions;
+    BOOL _hasQueuedPaymentPasses;
     id<NPKCompanionAgentConnectionDelegate> _delegate;
     NSMutableSet *_cachedUniqueIDs;
     NSMutableDictionary *_cachedPasses;
@@ -31,6 +32,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<NPKCompanionAgentConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasQueuedPaymentPasses; // @synthesize hasQueuedPaymentPasses=_hasQueuedPaymentPasses;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL queueAppropriateFailedActions; // @synthesize queueAppropriateFailedActions=_queueAppropriateFailedActions;
 @property (readonly) Class superclass;
@@ -38,6 +40,8 @@
 
 + (BOOL)isIssuerAppProvisioningSupported;
 + (BOOL)isSetupAssistantProvisioningSupported;
++ (id)watchPaymentWebService;
++ (id)watchPeerPaymentWebService;
 + (id)watchProvisioningURL;
 + (id)watchProvisioningURLForPaymentPass:(id)arg1;
 - (void).cxx_destruct;
@@ -76,14 +80,17 @@
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
 - (void)paymentPassesWithPrimaryAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)peerPaymentAccountForDevice:(id)arg1;
 - (void)redownloadAllPaymentPassesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removePaymentPassWithUniqueID:(id)arg1 forDevice:(id)arg2 requireRemoteConfirmation:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)savePaymentPass:(id)arg1 forDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setDefaultCardUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setDefaultPaymentApplication:(id)arg1 forPassWithUniqueID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setSharedPaymentWebServiceContext:(id)arg1 forDevice:(id)arg2;
+- (void)setSharedPeerPaymentWebServiceContext:(id)arg1 forDevice:(id)arg2;
 - (id)sharedPaymentWebServiceContext;
 - (id)sharedPaymentWebServiceContextForDevice:(id)arg1;
+- (id)sharedPeerPaymentWebServiceContextForDevice:(id)arg1;
 - (void)shouldShowApplePaySettingsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)shouldShowWatchOfferForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 limit:(long long)arg4 completion:(CDUnknownBlockType)arg5;

@@ -6,7 +6,6 @@
 
 #import <DataDetectorsUI/DDTelephoneNumberAction.h>
 
-__attribute__((visibility("hidden")))
 @interface DDCallAction : DDTelephoneNumberAction
 {
 }
@@ -17,12 +16,15 @@ __attribute__((visibility("hidden")))
 - (BOOL)_titleFitsInActionSheet:(id)arg1;
 - (id)callProvider;
 - (BOOL)canBePerformedByOpeningURL;
-- (id)contactAndLabelForPhoneNumber:(id *)arg1;
-- (id)contactsMatchingPhoneNumber:(id)arg1 inContactStore:(id)arg2;
+- (id)dialRequest;
 - (int)interactionType;
-- (id)labelToUseForPhoneNumber:(id)arg1 ofContact:(id)arg2;
+- (BOOL)isEmail;
 - (id)localizedCallStringForName:(id)arg1 usingCallRelay:(BOOL)arg2;
 - (id)localizedName;
+- (id)notificationIconBundleIdentifier;
+- (id)notificationTitle;
+- (id)notificationTitleTargetString;
+- (id)notificationURL;
 - (void)performFromView:(id)arg1;
 
 @end

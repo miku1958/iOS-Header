@@ -6,21 +6,22 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @interface MPRemotePlaybackQueue : NSObject
 {
     struct _MRSystemAppPlaybackQueue *_mediaRemotePlaybackQueue;
-    NSDictionary *_userInfo;
 }
 
-@property (readonly, nonatomic, getter=isRequestingImmediatePlayback) BOOL requestingImmediatePlayback;
-@property (readonly, nonatomic) BOOL shouldOverrideManuallyCuratedQueue;
-@property (readonly, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
+@property (nonatomic) long long replaceIntent;
+@property (nonatomic, getter=isRequestingImmediatePlayback) BOOL requestingImmediatePlayback;
+@property (nonatomic) BOOL shouldOverrideManuallyCuratedQueue;
+@property (copy, nonatomic) NSString *siriRecommendationIdentifier;
+@property (copy, nonatomic) NSDictionary *userInfo;
 
 + (id)queueWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue *)arg1;
 + (void)registerRemotePlaybackQueueClass:(Class)arg1 forPlaybackQueueType:(int)arg2;
-- (void).cxx_destruct;
+- (struct _MRSystemAppPlaybackQueue *)_mediaRemotePlaybackQueue;
 - (void)dealloc;
 - (id)init;
 - (id)initWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue *)arg1;

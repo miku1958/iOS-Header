@@ -6,11 +6,11 @@
 
 #import <Home/HFItem.h>
 
-#import <Home/NAEquatable-Protocol.h>
+#import <Home/NAIdentifiable-Protocol.h>
 
 @class NSDictionary, NSSet, NSString;
 
-@interface HFControlPanelItem : HFItem <NAEquatable>
+@interface HFControlPanelItem : HFItem <NAIdentifiable>
 {
     NSString *_uniqueIdentifier;
     NSSet *_controlItems;
@@ -29,15 +29,16 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
++ (id)_controlPanelItemRules;
++ (id)na_identity;
++ (id)standardControlPanelItemsForControlItems:(id)arg1;
 - (void).cxx_destruct;
-- (id)_controlItemLatestResultsKeyedByIdentifier;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)controlItemForIdentifier:(id)arg1;
 - (id)identifierForControlItem:(id)arg1;
 - (id)init;
 - (id)initWithControlItems:(id)arg1 displayResults:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isEqualToControlPanelItem:(id)arg1;
 - (long long)sortPriority;
 
 @end

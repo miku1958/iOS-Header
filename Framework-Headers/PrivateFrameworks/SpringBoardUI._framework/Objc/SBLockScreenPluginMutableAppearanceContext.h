@@ -22,6 +22,7 @@
 @property (readonly, nonatomic, getter=isHidden) BOOL hidden;
 @property (readonly, strong, nonatomic) SBLockScreenLegibilitySettings *legibilitySettings;
 @property (readonly, nonatomic) long long notificationBehavior;
+@property (readonly, nonatomic) struct CGRect presentationRegion;
 @property (readonly, nonatomic) long long presentationStyle;
 @property (readonly, nonatomic) unsigned long long restrictedCapabilities;
 @property (readonly) Class superclass;

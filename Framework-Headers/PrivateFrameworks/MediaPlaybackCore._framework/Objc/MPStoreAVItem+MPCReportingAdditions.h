@@ -7,7 +7,8 @@
 #import <MediaPlayer/MPStoreAVItem.h>
 
 @interface MPStoreAVItem (MPCReportingAdditions)
-- (BOOL)mpcReporting_isValidReportingItem;
+- (id)mpcReporting_privateListeningEnabled;
 - (BOOL)mpcReporting_shouldReportPlayEventsToStore;
+- (id)mpcReporting_siriInitiated;
 @end
 

@@ -9,30 +9,32 @@
 #import <SceneKit/NSSecureCoding-Protocol.h>
 #import <SceneKit/SCNAnimatable-Protocol.h>
 
-@class NSArray, NSString, SCNOrderedDictionary, UIColor;
+@class NSArray, NSMutableDictionary, NSString, SCNOrderedDictionary, UIColor;
 
 @interface SCNMaterialProperty : NSObject <SCNAnimatable, NSSecureCoding>
 {
     unsigned int _isPresentationInstance:1;
     unsigned int _isCommonProfileProperty:1;
+    unsigned int _sRGB:1;
+    BOOL _propertyType;
     id _parent;
-    int _propertyType;
     NSString *_customSlotName;
     SCNOrderedDictionary *_animations;
+    NSMutableDictionary *_bindings;
     UIColor *_borderColor;
-    unsigned char _contentType;
     id _contents;
-    long long _mappingChannel;
+    unsigned char _contentType;
+    unsigned char _mappingChannel;
+    unsigned char _minificationFilter;
+    unsigned char _magnificationFilter;
+    unsigned char _mipFilter;
+    unsigned char _wrapS;
+    unsigned char _wrapT;
+    unsigned char _textureComponents;
     float _intensity;
     float _maxAnisotropy;
-    long long _minificationFilter;
-    long long _magnificationFilter;
-    long long _mipFilter;
-    long long _wrapS;
-    long long _wrapT;
     struct __C3DEffectSlot *_customSlot;
     struct __C3DImage *_c3dImage;
-    struct __C3DTextureProxy *_textureProxy;
     struct SCNMatrix4 *_contentTransform;
 }
 
@@ -50,14 +52,17 @@
 @property (nonatomic) long long minificationFilter;
 @property (nonatomic) long long mipFilter;
 @property (readonly) Class superclass;
+@property (nonatomic) long long textureComponents;
 @property (nonatomic) long long wrapS;
 @property (nonatomic) long long wrapT;
 
 + (struct __C3DImage *)_copyC3DImageFromImageData:(id)arg1 typeID:(unsigned long long)arg2;
 + (id)_copyImageFromC3DImage:(struct __C3DImage *)arg1;
++ (id)captureDeviceOutputConsumer;
 + (struct __C3DImage *)copyC3DImageFromImage:(id)arg1;
 + (struct __C3DImage *)copyC3DImageFromImage:(id)arg1 textureOptions:(int)arg2;
 + (id)copyImageFromC3DImage:(struct __C3DImage *)arg1;
++ (id)dvt_supportedTypesForPropertyContents;
 + (id)materialPropertyWithContents:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)UIView;
@@ -66,18 +71,26 @@
 - (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
 - (id)_animationPathForKey:(id)arg1;
 - (void)_clearContents;
+- (void)_copyAnimationsFrom:(id)arg1;
 - (void)_customDecodingOfSCNMaterialProperty:(id)arg1;
 - (void)_customEncodingOfSCNMaterialProperty:(id)arg1;
 - (void)_didDecodeSCNMaterialProperty:(id)arg1;
+- (BOOL)_hasDefaultValues;
 - (void)_layerDidChange:(id)arg1;
-- (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2;
+- (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2 pausedByNode:(BOOL)arg3;
 - (long long)_presentationMappingChannel;
+- (id)_scnAnimationForKey:(id)arg1;
+- (id)_scnBindings;
 - (void)_setC3DImageRef:(struct __C3DImage *)arg1;
 - (void)_setColor:(id)arg1;
+- (void)_setImagePath:(id)arg1 withResolvedPath:(id)arg2;
 - (void)_setParent:(id)arg1;
+- (void)_setupContentsFromC3DImage;
+- (void)_skSceneDidChange:(id)arg1;
 - (void)_syncObjCAnimations;
 - (void)_syncObjCModel;
 - (int)_textureOptions;
+- (void)_updateC3DImageWithContents:(id)arg1;
 - (void)_updateMaterialAttachment:(id)arg1;
 - (void)_updateMaterialBorderColor:(id)arg1;
 - (void)_updateMaterialColor:(id)arg1;
@@ -93,8 +106,10 @@
 - (void)_updateMaterialUIComponent:(id)arg1;
 - (void)addAnimation:(id)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
+- (void)addAnimationPlayer:(id)arg1 forKey:(id)arg2;
 - (id)animationForKey:(id)arg1;
 - (struct __C3DAnimationManager *)animationManager;
+- (id)animationPlayerForKey:(id)arg1;
 - (id)attachment;
 - (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (struct C3DColor4)borderColor4;
@@ -102,20 +117,22 @@
 - (struct C3DColor4)color4;
 - (struct __C3DEffectCommonProfile *)commonProfile;
 - (id)content;
-- (struct __C3DAnimationChannel *)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
+- (id)copy;
+- (id)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
 - (void)copyPropertiesFrom:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (struct __C3DEffectSlot *)effectSlot;
 - (struct __C3DEffectSlot *)effectSlotCreateIfNeeded:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)floatValue;
-- (struct __C3DImage *)getC3DImageRef;
+- (void *)getC3DImageRef;
 - (id)image;
 - (id)init;
 - (id)initPresentationMaterialPropertyWithModelProperty:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithParent:(id)arg1 andCustomName:(id)arg2;
-- (id)initWithParent:(id)arg1 propertyType:(int)arg2;
+- (id)initWithParent:(id)arg1 propertyType:(BOOL)arg2;
 - (BOOL)isAnimationForKeyPaused:(id)arg1;
 - (BOOL)isPausedOrPausedByInheritance;
 - (id)layer;
@@ -127,12 +144,15 @@
 - (id)presentationInstance;
 - (id)presentationMaterialProperty;
 - (id)proceduralContents;
-- (int)propertyType;
+- (id)propertyName;
+- (BOOL)propertyType;
 - (id)pvrtcData;
 - (void)removeAllAnimations;
 - (void)removeAnimationForKey:(id)arg1;
+- (void)removeAnimationForKey:(id)arg1 blendOutDuration:(double)arg2;
 - (void)removeAnimationForKey:(id)arg1 fadeOutDuration:(double)arg2;
 - (void)resumeAnimationForKey:(id)arg1;
+- (BOOL)sRGBTexture;
 - (struct __C3DScene *)sceneRef;
 - (void)setAttachment:(id)arg1;
 - (void)setColor:(id)arg1;
@@ -142,6 +162,7 @@
 - (void)setLayer:(id)arg1;
 - (void)setMtlTexture:(id)arg1;
 - (void)setProceduralContents:(id)arg1;
+- (void)setSRGBTexture:(BOOL)arg1;
 - (void)setSkScene:(id)arg1;
 - (void)setSkTexture:(id)arg1;
 - (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;

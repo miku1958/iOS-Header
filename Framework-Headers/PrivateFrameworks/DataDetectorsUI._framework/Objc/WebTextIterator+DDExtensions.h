@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebKitLegacy/WebTextIterator.h>
+#import <WebKit/WebTextIterator.h>
 
 @interface WebTextIterator (DDExtensions)
 + (id)dd_iteratorForDocument:(id)arg1;

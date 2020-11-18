@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVItem, NSDictionary, NSString, TLAlertConfiguration;
+@class NSDictionary, NSString, TLAlertConfiguration;
 
 @interface SBUISound : NSObject
 {
@@ -14,12 +14,7 @@
     unsigned int _systemSoundID;
     unsigned int _resolvedSystemSoundID;
     unsigned long long _soundBehavior;
-    NSString *_ringtoneName;
-    AVItem *_avItem;
     NSDictionary *_vibrationPattern;
-    BOOL _repeats;
-    double _maxDuration;
-    NSDictionary *_controllerAttributes;
     TLAlertConfiguration *_alertConfiguration;
     CDUnknownBlockType _completionBlock;
     NSString *_songPath;
@@ -30,12 +25,7 @@
 @property (nonatomic, setter=_setResolvedSoundID:) unsigned int _resolvedSystemSoundID; // @synthesize _resolvedSystemSoundID;
 @property (copy, nonatomic) TLAlertConfiguration *alertConfiguration; // @synthesize alertConfiguration=_alertConfiguration;
 @property (nonatomic) long long alertType; // @synthesize alertType=_alertType;
-@property (strong, nonatomic) AVItem *avItem; // @synthesize avItem=_avItem;
-@property (strong, nonatomic) NSDictionary *controllerAttributes; // @synthesize controllerAttributes=_controllerAttributes;
 @property (nonatomic) long long eventType; // @synthesize eventType=_eventType;
-@property (nonatomic) double maxDuration; // @synthesize maxDuration=_maxDuration;
-@property (nonatomic, getter=isRepeating) BOOL repeats; // @synthesize repeats=_repeats;
-@property (strong, nonatomic) NSString *ringtoneName; // @synthesize ringtoneName=_ringtoneName;
 @property (copy, nonatomic) NSString *songPath; // @synthesize songPath=_songPath;
 @property (nonatomic) unsigned long long soundBehavior; // @synthesize soundBehavior=_soundBehavior;
 @property (nonatomic) long long soundType; // @synthesize soundType=_soundType;
@@ -47,10 +37,7 @@
 - (CDUnknownBlockType)_completionBlock;
 - (void)_setCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)description;
-- (id)initWithAVItem:(id)arg1 vibrationPattern:(id)arg2 repeats:(BOOL)arg3 maxDuration:(double)arg4 controllerAttributes:(id)arg5;
 - (id)initWithFeedbackEventType:(long long)arg1;
-- (id)initWithRingtone:(id)arg1 vibrationPattern:(id)arg2 repeats:(BOOL)arg3 maxDuration:(double)arg4 controllerAttributes:(id)arg5;
-- (id)initWithSong:(id)arg1 vibrationPattern:(id)arg2 repeats:(BOOL)arg3 maxDuration:(double)arg4 controllerAttributes:(id)arg5;
 - (id)initWithSystemSoundID:(unsigned int)arg1 behavior:(unsigned long long)arg2 vibrationPattern:(id)arg3;
 - (id)initWithSystemSoundPath:(id)arg1 behavior:(unsigned long long)arg2 vibrationPattern:(id)arg3;
 - (id)initWithToneAlert:(long long)arg1 accountIdentifier:(id)arg2 toneIdentifier:(id)arg3 vibrationIdentifier:(id)arg4;

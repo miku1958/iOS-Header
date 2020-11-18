@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_source;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface _CFPrefsSynchronizer : NSObject
 {
     NSObject<OS_dispatch_source> *_synchTimer;
+    NSObject<OS_dispatch_queue> *_synchQueue;
     struct __CFSet *_dirtySources;
     struct _opaque_pthread_mutex_t _CFPrefsDirtySourcesLock;
     BOOL _active;
@@ -26,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)noteDirtySource:(id)arg1;
 - (void)synchronize;
-- (void)synchronizeAndWait;
+- (void)synchronizeForDaemonTermination;
 
 @end
 

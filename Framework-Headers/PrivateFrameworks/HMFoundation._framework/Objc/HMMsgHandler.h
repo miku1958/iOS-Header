@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class NSNumber;
+@class NSNumber, NSObject;
 @protocol OS_dispatch_queue;
 
-@interface HMMsgHandler : NSObject
+@interface HMMsgHandler : HMFObject
 {
     NSObject<OS_dispatch_queue> *_receiverQueue;
     CDUnknownBlockType _messageHandler;

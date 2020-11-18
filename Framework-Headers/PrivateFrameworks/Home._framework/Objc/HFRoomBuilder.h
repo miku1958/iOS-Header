@@ -16,7 +16,7 @@
 }
 
 @property (readonly, nonatomic) NSSet *accessories;
-@property (readonly, nonatomic) HFMutableSetDiff *accessoryUUIDs; // @synthesize accessoryUUIDs=_accessoryUUIDs;
+@property (strong, nonatomic) HFMutableSetDiff *accessoryUUIDs; // @synthesize accessoryUUIDs=_accessoryUUIDs;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) HMRoom *room;
 @property (strong, nonatomic) HFWallpaperEditCollectionBuilder *wallpaperBuilder; // @synthesize wallpaperBuilder=_wallpaperBuilder;
@@ -29,6 +29,7 @@
 - (id)_updateName;
 - (void)addAccessory:(id)arg1;
 - (id)commitItem;
+- (id)description;
 - (unsigned long long)hash;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
 - (BOOL)isEqual:(id)arg1;

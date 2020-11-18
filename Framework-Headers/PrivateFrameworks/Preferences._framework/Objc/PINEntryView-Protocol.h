@@ -13,6 +13,7 @@
 - (void)appendString:(NSString *)arg1;
 - (BOOL)becomeFirstResponder;
 - (void)deleteLastCharacter;
+- (double)getCurrentTitleFontSize;
 - (void)hideError;
 - (void)hideFailedAttempts;
 - (void)hidePasscodeField:(BOOL)arg1;

@@ -70,7 +70,6 @@
 - (id)initWithContainerEntityProvider:(id)arg1;
 - (void)music_viewInheritedLayoutInsetsDidChange;
 - (void)profileDetailView:(id)arg1 didUpdateFollowingState:(BOOL)arg2;
-- (void)profileDetailViewDidSelectContextualActionsButton:(id)arg1;
 - (void)profileDetailViewDidSelectEditButton:(id)arg1;
 - (void)profileDetailViewDidSelectShareActionsButton:(id)arg1;
 - (void)profileDetailViewDidSelectTitle:(id)arg1;

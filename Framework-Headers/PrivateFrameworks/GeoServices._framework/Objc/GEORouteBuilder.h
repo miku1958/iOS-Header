@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOMapRegion, GEORoute, NSData, NSMutableArray;
 
@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _usesZilch;
     NSMutableArray *_steps;
+    NSMutableArray *_composedGuidanceEvents;
     NSMutableArray *_legs;
     NSData *_pointsData;
     NSMutableArray *_pointSections;
@@ -20,11 +21,11 @@ __attribute__((visibility("hidden")))
     GEORoute *_route;
 }
 
+- (void).cxx_destruct;
 - (void)_buildPointSectionsForRoute:(id)arg1;
 - (id)_composedRouteLegForSteps:(id)arg1 route:(id)arg2;
 - (id)_composedRouteStepForStep:(id)arg1 route:(id)arg2;
 - (void)buildRoute:(id)arg1;
-- (void)dealloc;
 - (id)initWithRoute:(id)arg1;
 
 @end

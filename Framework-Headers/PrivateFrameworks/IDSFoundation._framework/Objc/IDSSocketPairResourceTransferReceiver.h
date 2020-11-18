@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDate, NSDictionary, NSString;
 
@@ -28,12 +28,13 @@
     NSDate *_expiryDate;
 }
 
-@property (readonly, strong, nonatomic) NSDate *expiryDate; // @synthesize expiryDate=_expiryDate;
-@property (readonly, strong, nonatomic) NSString *messageUUID; // @synthesize messageUUID=_messageUUID;
+@property (readonly, nonatomic) NSDate *expiryDate; // @synthesize expiryDate=_expiryDate;
+@property (readonly, nonatomic) NSString *messageUUID; // @synthesize messageUUID=_messageUUID;
 @property (readonly, nonatomic) unsigned long long totalBytesReceived; // @synthesize totalBytesReceived=_totalBytesReceived;
 
 + (id)incomingFilePath;
 + (id)incomingFilePathForMessageUUID:(id)arg1;
+- (void).cxx_destruct;
 - (void)abortTransfer;
 - (BOOL)appendMessage:(id)arg1 receiverError:(unsigned char *)arg2;
 - (void)dealloc;

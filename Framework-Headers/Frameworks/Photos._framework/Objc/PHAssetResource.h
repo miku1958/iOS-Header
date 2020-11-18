@@ -21,12 +21,12 @@
     CDUnknownBlockType _privateFileLoader;
     unsigned long long _pixelWidth;
     unsigned long long _pixelHeight;
-    long long _fileSize;
+    unsigned long long _fileSize;
 }
 
 @property (copy, nonatomic, setter=_setAssetLocalIdentifier:) NSString *assetLocalIdentifier; // @synthesize assetLocalIdentifier=_assetLocalIdentifier;
 @property (readonly, nonatomic, getter=isDerivative) BOOL derivative; // @synthesize derivative=_derivative;
-@property (nonatomic, setter=_setFileSize:) long long fileSize; // @synthesize fileSize=_fileSize;
+@property (nonatomic, setter=_setFileSize:) unsigned long long fileSize; // @synthesize fileSize=_fileSize;
 @property (strong, nonatomic, setter=_setFileURL:) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property (readonly, nonatomic, getter=isLibraryAssetResource) BOOL libraryAssetResource;
 @property (nonatomic, getter=isLocallyAvailable, setter=_setIsLocallyAvailable:) BOOL locallyAvailable; // @synthesize locallyAvailable=_locallyAvailable;

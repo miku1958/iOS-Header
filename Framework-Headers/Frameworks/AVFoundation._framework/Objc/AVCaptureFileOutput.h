@@ -23,7 +23,7 @@
 
 + (void)initialize;
 - (void)dealloc;
-- (id)init;
+- (id)initSubclass;
 - (BOOL)isRecordingPaused;
 - (void)pauseRecording;
 - (BOOL)pausesRecordingOnInterruption;

@@ -4,28 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <TelephonyUtilities/NSCopying-Protocol.h>
 
 @class NSString;
 
-@interface TUMetadataDestinationID : NSObject
+@interface TUMetadataDestinationID : NSObject <NSCopying>
 {
     NSString *_destinationID;
     NSString *_countryCode;
-    NSString *_cacheKey;
     struct __CFPhoneNumber *_phoneNumber;
+    NSString *_cacheKey;
 }
 
-@property (strong, nonatomic) NSString *cacheKey; // @synthesize cacheKey=_cacheKey;
-@property (readonly, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
-@property (readonly, nonatomic) NSString *destinationID; // @synthesize destinationID=_destinationID;
-@property (nonatomic) struct __CFPhoneNumber *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
+@property (readonly, copy, nonatomic) NSString *cacheKey; // @synthesize cacheKey=_cacheKey;
+@property (readonly, copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property (readonly, copy, nonatomic) NSString *destinationID; // @synthesize destinationID=_destinationID;
+@property (readonly, nonatomic) struct __CFPhoneNumber *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 
 + (id)destinationIDWithCall:(id)arg1;
 + (id)destinationIDWithDestinationID:(id)arg1 countryCode:(id)arg2;
 + (id)destinationIDWithRecentCall:(id)arg1;
-+ (id)destinationIDWithVMVoicemail:(id)arg1;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
@@ -33,7 +35,6 @@
 - (id)initWithCall:(id)arg1;
 - (id)initWithDestinationID:(id)arg1 countryCode:(id)arg2;
 - (id)initWithRecentCall:(id)arg1;
-- (id)initWithVMVoicemail:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

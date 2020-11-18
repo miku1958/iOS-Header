@@ -13,33 +13,43 @@
 @interface GEOETATrafficUpdateResponse : PBCodable <NSCopying>
 {
     unsigned long long _debugServerLatencyMs;
+    NSMutableArray *_cameras;
     GEOPDDatasetABStatus *_datasetAbStatus;
     GEOETAServiceResponseSummary *_etaServiceSummary;
+    NSData *_responseId;
     NSMutableArray *_routes;
     NSData *_sessionState;
     int _status;
     CDStruct_00a28cb6 _has;
 }
 
+@property (strong, nonatomic) NSMutableArray *cameras; // @synthesize cameras=_cameras;
 @property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus; // @synthesize datasetAbStatus=_datasetAbStatus;
 @property (nonatomic) unsigned long long debugServerLatencyMs;
 @property (strong, nonatomic) GEOETAServiceResponseSummary *etaServiceSummary;
 @property (readonly, nonatomic) BOOL hasDatasetAbStatus;
 @property (nonatomic) BOOL hasDebugServerLatencyMs;
 @property (readonly, nonatomic) BOOL hasEtaServiceSummary;
+@property (readonly, nonatomic) BOOL hasResponseId;
 @property (readonly, nonatomic) BOOL hasSessionState;
 @property (nonatomic) BOOL hasStatus;
+@property (strong, nonatomic) NSData *responseId; // @synthesize responseId=_responseId;
 @property (strong, nonatomic) NSMutableArray *routes; // @synthesize routes=_routes;
 @property (strong, nonatomic) NSData *sessionState; // @synthesize sessionState=_sessionState;
 @property (nonatomic) int status; // @synthesize status=_status;
 
++ (Class)cameraType;
 + (Class)routeType;
+- (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
+- (void)addCamera:(id)arg1;
 - (void)addRoute:(id)arg1;
+- (id)cameraAtIndex:(unsigned long long)arg1;
+- (unsigned long long)camerasCount;
+- (void)clearCameras;
 - (void)clearRoutes;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

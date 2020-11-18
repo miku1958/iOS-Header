@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class GEOComposedRoute, GEOComposedRouteLeg, GEOComposedTransitTripRouteStep, GEOInstructionSet, GEOPBTransitStop, GEOStep, GEOTransitStep, NSArray, NSString, NSTimeZone;
+@class GEOComposedRoute, GEOComposedRouteLeg, GEOComposedTransitTripRouteStep, GEOInstructionSet, GEOPBTransitStop, GEOStep, GEOTransitStep, NSArray, NSString;
 @protocol GEOTransitArtworkDataSource;
 
 @interface GEOComposedRouteStep : NSObject
@@ -23,7 +23,7 @@
 }
 
 @property (readonly, nonatomic) GEOComposedTransitTripRouteStep *closestLogicalBoardOrAlightStep;
-@property (nonatomic) GEOComposedRoute *composedRoute; // @synthesize composedRoute=_composedRoute;
+@property (weak, nonatomic) GEOComposedRoute *composedRoute; // @synthesize composedRoute=_composedRoute;
 @property (readonly, nonatomic) unsigned int distance;
 @property (readonly, nonatomic) int drivingSide; // @synthesize drivingSide=_drivingSide;
 @property (readonly, nonatomic) unsigned int duration;
@@ -67,13 +67,12 @@
 @property (readonly, nonatomic) unsigned int stepID;
 @property (readonly, nonatomic) unsigned long long stepIndex; // @synthesize stepIndex=_stepIndex;
 @property (readonly, nonatomic) NSArray *steppingArtwork;
-@property (readonly, nonatomic) NSTimeZone *timeZoneForFormattedString;
-@property (readonly, nonatomic) NSTimeZone *timeZoneForStartingOrEndingStop;
 @property (readonly, nonatomic) GEOTransitStep *transitStep;
 @property (readonly, nonatomic) int transportType;
 
+- (void).cxx_destruct;
+- (BOOL)_MapsCarPlay_isEqual:(id)arg1;
 - (BOOL)_belongsToTransferGroup;
-- (void)dealloc;
 - (id)description;
 - (id)firstNameOrBranch;
 - (id)initWithComposedRoute:(id)arg1 GEOStep:(id)arg2 routeLegType:(long long)arg3 stepIndex:(unsigned long long)arg4 pointRange:(struct _NSRange)arg5 maneuverPointRange:(struct _NSRange)arg6;

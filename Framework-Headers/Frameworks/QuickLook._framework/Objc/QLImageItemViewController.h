@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     QLAnimatedImage *_animatedImage;
     double _initialTimeStamp;
     double _currentPlaybackTime;
-    long long _loadingIndex;
     struct CGSize _imageSize;
     BOOL _imageIsAnimated;
 }
@@ -27,14 +26,18 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)shouldBeRemoteForContentType:(id)arg1;
++ (id)supportedContentTypes;
++ (Class)transformerClass;
 - (void).cxx_destruct;
 - (void)animationTimerFired:(double)arg1;
-- (void)dealloc;
+- (id)draggableView;
 - (struct CGSize)imageSize;
-- (void)loadPreviewControllerWithPreviewItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (long long)preferredWhitePointAdaptivityStyle;
 - (void)previewDidAppear:(BOOL)arg1;
 - (void)previewDidDisappear:(BOOL)arg1;
+- (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 
 @end
 

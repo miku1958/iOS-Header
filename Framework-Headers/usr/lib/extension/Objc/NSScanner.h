@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSCopying-Protocol.h>
+#import <Foundation/NSCopying-Protocol.h>
 
 @class NSCharacterSet, NSString;
 

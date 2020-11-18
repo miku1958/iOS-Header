@@ -25,12 +25,6 @@ struct Matrix<double, 3, 1> {
     double _field1[3];
 };
 
-struct VKPoint {
-    double x;
-    double y;
-    double z;
-};
-
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -56,11 +50,25 @@ typedef struct {
 } CDStruct_58d0ca89;
 
 typedef struct {
+    unsigned char _field1;
+    unsigned char _field2;
+    unsigned char _field3;
+    unsigned char _field4;
+    BOOL _field5;
+} CDStruct_511c724f;
+
+typedef struct {
     double x0;
     double x1;
     double y0;
     double y1;
 } CDStruct_aca18c62;
+
+typedef struct {
+    double x;
+    double y;
+    double z;
+} CDStruct_31142d93;
 
 typedef struct {
     double latitude;
@@ -108,7 +116,8 @@ typedef struct {
     unsigned char _field19;
     struct _NSRange _field20;
     BOOL _field21;
-} CDStruct_6ac9d495;
+    unsigned int _field22;
+} CDStruct_c707fdd0;
 
 // Template types
 typedef struct Matrix<double, 3, 1> {

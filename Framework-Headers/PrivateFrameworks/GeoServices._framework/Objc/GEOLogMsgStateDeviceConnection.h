@@ -12,25 +12,31 @@
 
 @interface GEOLogMsgStateDeviceConnection : PBCodable <NSCopying>
 {
+    int _cellularDataState;
     NSString *_deviceCarrierName;
     NSString *_deviceCountryCode;
     int _deviceNetworkConnectivity;
     struct {
+        unsigned int cellularDataState:1;
         unsigned int deviceNetworkConnectivity:1;
     } _has;
 }
 
+@property (nonatomic) int cellularDataState; // @synthesize cellularDataState=_cellularDataState;
 @property (strong, nonatomic) NSString *deviceCarrierName; // @synthesize deviceCarrierName=_deviceCarrierName;
 @property (strong, nonatomic) NSString *deviceCountryCode; // @synthesize deviceCountryCode=_deviceCountryCode;
 @property (nonatomic) int deviceNetworkConnectivity; // @synthesize deviceNetworkConnectivity=_deviceNetworkConnectivity;
+@property (nonatomic) BOOL hasCellularDataState;
 @property (readonly, nonatomic) BOOL hasDeviceCarrierName;
 @property (readonly, nonatomic) BOOL hasDeviceCountryCode;
 @property (nonatomic) BOOL hasDeviceNetworkConnectivity;
 
+- (void).cxx_destruct;
+- (int)StringAsCellularDataState:(id)arg1;
 - (int)StringAsDeviceNetworkConnectivity:(id)arg1;
+- (id)cellularDataStateAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)deviceNetworkConnectivityAsString:(int)arg1;
 - (id)dictionaryRepresentation;

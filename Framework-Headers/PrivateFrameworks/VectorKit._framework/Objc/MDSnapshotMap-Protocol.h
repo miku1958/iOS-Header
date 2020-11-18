@@ -6,19 +6,12 @@
 
 #import <VectorKit/NSObject-Protocol.h>
 
-@class NSArray;
-@protocol VKCustomFeatureDataSource;
-
 @protocol MDSnapshotMap <NSObject>
 
-@property (strong, nonatomic) NSArray *customFeatureDataSources;
-@property (nonatomic) unsigned char labelScaleFactor;
-@property (nonatomic) BOOL localizeLabels;
 @property (nonatomic) BOOL showsBuildings;
-@property (nonatomic) BOOL showsPointsOfInterest;
+@property (nonatomic) BOOL showsVenues;
 
-- (void)addCustomFeatureDataSource:(id<VKCustomFeatureDataSource>)arg1;
 - (BOOL)isShowingNoDataPlaceholders;
-- (void)removeCustomFeatureDataSource:(id<VKCustomFeatureDataSource>)arg1;
+- (struct LabelSettings *)labelSettings;
 @end
 

@@ -88,6 +88,7 @@
 - (void)_loadValueForAggregateFunction:(id)arg1 entityClass:(Class)arg2 property:(id)arg3 query:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)_postEvents;
 - (BOOL)_removeEntitiesWithIdentifiers:(long long *)arg1 count:(unsigned long long)arg2 entityClass:(Class)arg3;
+- (id)_storePlatformRequestContext;
 - (void)_syncGenerationDidChange:(id)arg1;
 - (void)addGlobalPlaylistWithID:(id)arg1 andAddToCloudLibrary:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addItemWithIdentifier:(long long)arg1 toPlaylistWithIdentifier:(long long)arg2 completionBlock:(CDUnknownBlockType)arg3;
@@ -99,6 +100,7 @@
 - (id)adjustedValueForMPProperty:(id)arg1 ofEntity:(id)arg2 withDefaultValue:(id)arg3;
 - (void)clearLocationPropertiesOfItemWithIdentifier:(long long)arg1;
 - (BOOL)collectionExistsContainedWithinPersistentIDs:(const unsigned long long *)arg1 count:(unsigned long long)arg2 groupingType:(long long)arg3 existentPID:(unsigned long long *)arg4;
+- (BOOL)collectionExistsContainedWithinSyncIDs:(id)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (BOOL)collectionExistsWithName:(id)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (BOOL)collectionExistsWithPersistentID:(unsigned long long)arg1 groupingType:(long long)arg2;
 - (BOOL)collectionExistsWithStoreID:(long long)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
@@ -139,6 +141,7 @@
 - (BOOL)playlistExistsWithPersistentID:(unsigned long long)arg1;
 - (long long)playlistGeneration;
 - (void)populateLocationPropertiesOfItemWithIdentifier:(long long)arg1 withPath:(id)arg2 assetProtectionType:(long long)arg3;
+- (void)populateLocationPropertiesOfItemWithIdentifier:(long long)arg1 withPath:(id)arg2 assetProtectionType:(long long)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (BOOL)recordPlayEventForAlbumPersistentID:(long long)arg1;
 - (BOOL)recordPlayEventForPlaylistPersistentID:(long long)arg1;
 - (void)removeAllItemsInPlaylistWithIdentifier:(long long)arg1;

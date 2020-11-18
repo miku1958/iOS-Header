@@ -6,7 +6,7 @@
 
 #import <PassKitUI/PKTableViewCell.h>
 
-@class NSMutableArray, NSString, PKPaymentAuthorizationLayout, UIImageView, UILabel, UIView;
+@class NSAttributedString, NSMutableArray, NSString, PKPaymentAuthorizationLayout, UIImage, UIImageView, UILabel, UIView;
 
 @interface PKPaymentAuthorizationItemCell : PKTableViewCell
 {
@@ -16,15 +16,25 @@
     UIView *_separatorView;
     UIImageView *_arrowView;
     UIImageView *_alertView;
+    UIImageView *_labelImageView;
     NSMutableArray *_constraints;
-    NSString *_label;
-    NSString *_value;
+    BOOL _showsDisclosure;
+    BOOL _showsSeperator;
+    NSAttributedString *_label;
+    UIImage *_labelImage;
+    NSString *_accessibilityLabel;
+    NSAttributedString *_value;
 }
 
-@property (copy, nonatomic) NSString *label; // @synthesize label=_label;
-@property (copy, nonatomic) NSString *value; // @synthesize value=_value;
+@property (copy, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
+@property (copy, nonatomic) NSAttributedString *label; // @synthesize label=_label;
+@property (copy, nonatomic) UIImage *labelImage; // @synthesize labelImage=_labelImage;
+@property (nonatomic) BOOL showsDisclosure; // @synthesize showsDisclosure=_showsDisclosure;
+@property (nonatomic) BOOL showsSeperator; // @synthesize showsSeperator=_showsSeperator;
+@property (copy, nonatomic) NSAttributedString *value; // @synthesize value=_value;
 
 - (void).cxx_destruct;
+- (id)_applyStylingToValueString:(id)arg1 defaultColor:(id)arg2;
 - (void)_createSubviews;
 - (id)_createValueView;
 - (id)addValue:(id)arg1 isPlaceholder:(BOOL)arg2;

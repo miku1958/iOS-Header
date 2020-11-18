@@ -20,6 +20,7 @@
     BOOL _usePhotoReferencesIfAvailable;
     unsigned long long _maximumEncodingLength;
     unsigned long long _maximumImageEncodingLength;
+    struct CGSize _maximumImageSize;
     NSArray *_treatAsUnknownProperties;
     unsigned long long _outputVersion;
     NSArray *_availableEncodings;
@@ -34,6 +35,7 @@
 @property BOOL includeUserSettings; // @synthesize includeUserSettings=_includeUserSettings;
 @property unsigned long long maximumEncodingLength; // @synthesize maximumEncodingLength=_maximumEncodingLength;
 @property unsigned long long maximumImageEncodingLength; // @synthesize maximumImageEncodingLength=_maximumImageEncodingLength;
+@property struct CGSize maximumImageSize; // @synthesize maximumImageSize=_maximumImageSize;
 @property unsigned long long outputVersion; // @synthesize outputVersion=_outputVersion;
 @property BOOL prefersUncroppedPhotos; // @synthesize prefersUncroppedPhotos=_prefersUncroppedPhotos;
 @property (copy) NSArray *treatAsUnknownProperties; // @synthesize treatAsUnknownProperties=_treatAsUnknownProperties;
@@ -41,6 +43,7 @@
 
 + (id)optionsFromPreferences;
 - (void).cxx_destruct;
+- (id)init;
 
 @end
 

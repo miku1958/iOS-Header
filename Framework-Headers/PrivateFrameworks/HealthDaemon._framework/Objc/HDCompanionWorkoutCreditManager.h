@@ -27,7 +27,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_healthDataManager;
 - (void)_queue_fastForwardAnchor;
 - (BOOL)_queue_generateAndSaveSamplesForIntervals:(id)arg1 withExerciseTable:(id)arg2 standHourTable:(id)arg3 error:(id)arg4;
 - (void)_queue_performWorkoutCreditFixup;

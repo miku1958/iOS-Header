@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void)currentAccountCopyTokenWithBundleID:(id)arg1 version:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)getPrimaryiCloudAccountStatus:(CDUnknownBlockType)arg1;
 - (void)prepareFileProvidersWithReply:(CDUnknownBlockType)arg1;
 
 @end

@@ -27,7 +27,7 @@
 
 @property (strong, nonatomic) AXIDCMessage *currentMessageInFlight; // @synthesize currentMessageInFlight=_currentMessageInFlight;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<AXIDCRemoteControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<AXIDCRemoteControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableData *inputBuffer; // @synthesize inputBuffer=_inputBuffer;
@@ -38,6 +38,7 @@
 @property (strong, nonatomic) NSNetService *service; // @synthesize service=_service;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)acceptConnection:(int)arg1;
 - (void)clearMessageQueue;
 - (void)closeConnectionWithError:(id)arg1;

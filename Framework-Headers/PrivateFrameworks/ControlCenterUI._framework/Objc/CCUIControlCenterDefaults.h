@@ -10,13 +10,9 @@
 {
 }
 
-@property (nonatomic) BOOL hasAcknowledgedFirstUseAlert; // @dynamic hasAcknowledgedFirstUseAlert;
+@property (nonatomic) BOOL hasForceTouchedToExpandModule; // @dynamic hasForceTouchedToExpandModule;
+@property (nonatomic) BOOL hasLongPressedToExpandModule; // @dynamic hasLongPressedToExpandModule;
 @property (readonly, nonatomic) BOOL shouldAlwaysBeEnabled; // @dynamic shouldAlwaysBeEnabled;
-@property (readonly, nonatomic) BOOL shouldDisableArtraceButton; // @dynamic shouldDisableArtraceButton;
-@property (readonly, nonatomic) BOOL shouldDisableInternalButtons; // @dynamic shouldDisableInternalButtons;
-@property (readonly, nonatomic) BOOL shouldDisableLaunchingClockToTimer; // @dynamic shouldDisableLaunchingClockToTimer;
-@property (readonly, nonatomic) BOOL shouldDisableScreenRecordingButton; // @dynamic shouldDisableScreenRecordingButton;
-@property (readonly, nonatomic) BOOL shouldEnablePrototypeFeatures; // @dynamic shouldEnablePrototypeFeatures;
 @property (readonly, nonatomic) BOOL shouldExcludeControlCenterFromStatusBarOverrides; // @dynamic shouldExcludeControlCenterFromStatusBarOverrides;
 
 + (id)standardDefaults;

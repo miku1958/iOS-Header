@@ -130,6 +130,12 @@
 @property (readonly, strong, nonatomic) TSKSelection<TSDTextSelection> *textInputSelection;
 @property (readonly) BOOL wantsRawArrowKeyEvents;
 
++ (id)_targetedDragPreviewForSelection:(id)arg1 interactiveCanvasController:(id)arg2 reps:(id)arg3 applyScale:(BOOL)arg4 imageFrameUnion:(struct CGRect *)arg5;
++ (id)dragItemForHitRepWithDragInteraction:(id)arg1 session:(id)arg2 canvasView:(id)arg3 icc:(id)arg4 withTouchPoint:(struct CGPoint)arg5;
++ (id)dropProposalForSession:(id)arg1;
++ (id)previewForDragItem:(id)arg1;
++ (id)retargetedDragItem:(id)arg1 withDefault:(id)arg2 canvasView:(id)arg3 icc:(id)arg4;
+- (id)_repsForStorage:(id)arg1 selection:(id)arg2;
 - (void)abandonMarkedText;
 - (void)addAllDictationInterpretationRangesInRange:(struct _NSRange)arg1 toRanges:(struct TSWPRangeVector *)arg2;
 - (BOOL)allowTrackerManipulatorToTakeControl:(id)arg1;
@@ -160,6 +166,7 @@
 - (unsigned long long)closestCharIndexToPoint:(struct CGPoint)arg1 isAtEndOfLine:(BOOL *)arg2;
 - (void)copy:(id)arg1;
 - (void)copyObject:(id)arg1;
+- (id)copyString;
 - (void)copyToPasteboard:(id)arg1;
 - (unsigned long long)countOfHyperlinksInUserSelection;
 - (id)currentFontColor;
@@ -177,6 +184,7 @@
 - (void)dismissActivePopovers;
 - (void)dismissPhoneticsHUDAnimated:(BOOL)arg1;
 - (id)documentRoot;
+- (id)dragItemForCurrentSelectionWithDragInteraction:(id)arg1 session:(id)arg2 withTouchPoint:(struct CGPoint)arg3;
 - (struct _NSRange)editRange;
 - (id)editingReps;
 - (id)editingSearchReference;
@@ -204,6 +212,7 @@
 - (BOOL)isInParagraphMode;
 - (BOOL)isParagraphModeWithSelection:(id)arg1 onStorage:(id)arg2;
 - (BOOL)isSelectionSingleAnchoredDrawableAttachment;
+- (BOOL)isUnscaledPointInTextSelection:(struct CGPoint)arg1;
 - (id)logicalToVisualSelection:(id)arg1;
 - (id)model;
 - (void)noReplacementsFound:(id)arg1;

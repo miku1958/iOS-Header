@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MFPartialNetworkDataConsumer, MFWeakReferenceHolder, NSData, NSMutableDictionary, NSString, NSURL;
 
@@ -90,7 +90,9 @@
 - (id)fileWrapperForcingDownload:(BOOL)arg1;
 - (id)firstChildPart;
 - (void)getNumberOfAttachments:(unsigned int *)arg1 isSigned:(BOOL *)arg2 isEncrypted:(BOOL *)arg3;
+- (BOOL)hasContentType:(id)arg1 subtype:(id)arg2;
 - (BOOL)hasContents;
+- (BOOL)hasValidMultipartSignedContentType;
 - (id)init;
 - (BOOL)isAttachment;
 - (BOOL)isGenerated;

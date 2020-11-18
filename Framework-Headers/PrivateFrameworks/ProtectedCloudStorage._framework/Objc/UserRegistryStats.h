@@ -27,6 +27,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
+- (id)getUserRegistryStats;
 - (id)initWithCoder:(id)arg1;
 - (void)printUserRegistryStats:(struct __sFILE *)arg1;
 

@@ -12,7 +12,5 @@
 - (id)MPU_libraryLinkArtist;
 - (id)MPU_libraryLinkKind;
 - (id)MPU_libraryLinkPlaylistName;
-- (id)MPU_libraryLinkURL;
-- (id)MPU_libraryLinkURL:(BOOL)arg1;
 @end
 

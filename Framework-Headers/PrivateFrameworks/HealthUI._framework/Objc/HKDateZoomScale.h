@@ -14,20 +14,21 @@
 {
     double _previousZoomScale;
     long long _previousZoom;
-    HKValueRange *_valueRange;
+    HKValueRange *_unitZoomScaleValueRange;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) HKValueRange *valueRange; // @synthesize valueRange=_valueRange;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)maxDate;
 - (id)minDate;
+- (void)setUnitZoomScaleValueRangeForTimeInterval:(double)arg1;
+- (id)unitZoomScaleValueRange;
 - (long long)zoomForZoomScale:(double)arg1;
 - (double)zoomScaleForRange:(struct HKRange)arg1;
 

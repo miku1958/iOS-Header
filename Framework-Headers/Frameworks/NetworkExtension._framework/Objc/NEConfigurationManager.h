@@ -30,7 +30,6 @@
     long long _generation;
     NSData *_SCPreferencesSignature;
     NSUUID *_userUUID;
-    NSString *_configFile;
     id<NEConfigurationManagerDelegate> _delegate;
     long long _configurationChangeSource;
 }
@@ -39,7 +38,6 @@
 @property (copy) CDUnknownBlockType changedHandler; // @synthesize changedHandler=_changedHandler;
 @property int changedNotifyToken; // @synthesize changedNotifyToken=_changedNotifyToken;
 @property (strong) NSObject<OS_dispatch_queue> *changedQueue; // @synthesize changedQueue=_changedQueue;
-@property (copy, nonatomic) NSString *configFile; // @synthesize configFile=_configFile;
 @property long long configurationChangeSource; // @synthesize configurationChangeSource=_configurationChangeSource;
 @property (strong) NSDictionary *currentIndex; // @synthesize currentIndex=_currentIndex;
 @property (strong) NSKeyedUnarchiver *decoder; // @synthesize decoder=_decoder;

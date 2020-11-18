@@ -6,11 +6,18 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
+@class CKDAssetTokenRequest;
+
 __attribute__((visibility("hidden")))
 @interface CKDAssetTokenRequestOperation : CKDDatabaseOperation
 {
+    CKDAssetTokenRequest *_assetTokenRequest;
 }
 
+@property (strong, nonatomic) CKDAssetTokenRequest *assetTokenRequest; // @synthesize assetTokenRequest=_assetTokenRequest;
+
+- (void).cxx_destruct;
+- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
 
 @end

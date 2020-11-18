@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSData, NSDictionary, NSMutableDictionary, NSString, NSURL;
 
-@interface HMFHTTPRequestInternal : NSObject
+@interface HMFHTTPRequestInternal : HMFObject
 {
     NSMutableDictionary *_headerFields;
     NSURL *_URL;

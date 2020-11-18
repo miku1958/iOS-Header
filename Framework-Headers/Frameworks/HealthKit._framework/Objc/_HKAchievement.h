@@ -8,10 +8,11 @@
 
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSNumber, NSString, NSUUID;
+@class NSDate, NSHashTable, NSNumber, NSString, NSUUID;
 
 @interface _HKAchievement : NSObject <NSSecureCoding>
 {
+    NSHashTable *_observers;
     BOOL _alerted;
     BOOL _viewed;
     NSUUID *_UUID;
@@ -19,12 +20,22 @@
     NSDate *_completedDate;
     NSNumber *_value;
     unsigned long long _workoutActivityType;
+    NSNumber *_progressValue;
+    NSNumber *_goalValue;
+    NSNumber *_referenceProgressValue;
+    NSNumber *_paceToReachGoal;
+    NSString *_progressMilestoneLocalizationKeyPrefix;
 }
 
 @property (strong, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 @property (nonatomic, getter=isAlerted) BOOL alerted; // @synthesize alerted=_alerted;
 @property (strong, nonatomic) NSDate *completedDate; // @synthesize completedDate=_completedDate;
 @property (strong, nonatomic) NSString *definitionIdentifier; // @synthesize definitionIdentifier=_definitionIdentifier;
+@property (strong, nonatomic) NSNumber *goalValue; // @synthesize goalValue=_goalValue;
+@property (strong, nonatomic) NSNumber *paceToReachGoal; // @synthesize paceToReachGoal=_paceToReachGoal;
+@property (strong, nonatomic) NSString *progressMilestoneLocalizationKeyPrefix; // @synthesize progressMilestoneLocalizationKeyPrefix=_progressMilestoneLocalizationKeyPrefix;
+@property (strong, nonatomic) NSNumber *progressValue; // @synthesize progressValue=_progressValue;
+@property (strong, nonatomic) NSNumber *referenceProgressValue; // @synthesize referenceProgressValue=_referenceProgressValue;
 @property (strong, nonatomic) NSNumber *value; // @synthesize value=_value;
 @property (nonatomic, getter=isViewed) BOOL viewed; // @synthesize viewed=_viewed;
 @property (nonatomic) unsigned long long workoutActivityType; // @synthesize workoutActivityType=_workoutActivityType;
@@ -33,36 +44,42 @@
 + (id)_formatValue:(id)arg1 usingFormatterNamed:(id)arg2;
 + (id)_nextUUID;
 + (id)_valueFromPlaceholder:(id)arg1 withAchievement:(id)arg2 context:(id)arg3;
++ (id)achievementWithDefinitionIdentifier:(id)arg1 completedDate:(id)arg2 progressValue:(id)arg3 goalValue:(id)arg4 value:(id)arg5 workoutActivityType:(unsigned long long)arg6;
 + (id)achievementWithDefinitionIdentifier:(id)arg1 completedDate:(id)arg2 value:(id)arg3 workoutActivityType:(unsigned long long)arg4;
 + (void)setOverridenUUID:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_achievementDefinition;
-- (id)_buildKeyWithPrefix:(id)arg1 definitionIdentifier:(id)arg2 includingUserName:(BOOL)arg3 isWheelchairUser:(BOOL)arg4;
-- (void)_getLocalizedStringTable:(id *)arg1 bundle:(id *)arg2 includesDefinitionIdentifier:(BOOL *)arg3;
+- (id)_buildKeyWithPrefix:(id)arg1 keyBaseString:(id)arg2 includingUserName:(BOOL)arg3 isWheelchairUser:(BOOL)arg4;
+- (id)_initWithDefinitionIdentifier:(id)arg1 completedDate:(id)arg2 progressValue:(id)arg3 goalValue:(id)arg4 value:(id)arg5 workoutActivityType:(unsigned long long)arg6;
 - (id)_initWithDefinitionIdentifier:(id)arg1 completedDate:(id)arg2 value:(id)arg3;
 - (id)_initWithDefinitionIdentifier:(id)arg1 completedDate:(id)arg2 value:(id)arg3 workoutActivityType:(unsigned long long)arg4;
 - (BOOL)_isWheelchairUser;
 - (id)_localizedStringWithContext:(id)arg1;
-- (id)_pluralizeLocalizedString:(id)arg1 completeNumberOfTimes:(long long)arg2;
+- (id)_pluralizeLocalizedString:(id)arg1 context:(id)arg2;
 - (id)_replacePlaceholdersInString:(id)arg1 withContext:(id)arg2;
 - (BOOL)_validateConfiguration;
+- (void)addObserver:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)localizedDescription;
+- (id)localizedDescriptionAchieved;
 - (id)localizedDescriptionForAlertWithUserName:(id)arg1;
 - (id)localizedDescriptionForAlertWithUserName:(id)arg1 isWheelchairUser:(BOOL)arg2;
 - (id)localizedDescriptionForNewUnearnedAlert;
 - (id)localizedDescriptionForNewUnearnedAlertBadgeBack;
+- (id)localizedDescriptionForProgressAlertWithUserName:(id)arg1;
+- (id)localizedDescriptionFriendAchievedWithName:(id)arg1 wheelchairUser:(BOOL)arg2;
+- (id)localizedDescriptionUnachieved;
 - (id)localizedDescriptionWithNumberOfTimesAchieved:(long long)arg1;
 - (id)localizedDescriptionWithNumberOfTimesAchieved:(long long)arg1 isWheelchairUser:(BOOL)arg2;
 - (id)localizedShareDescriptionWithNumberOfTimesAchieved:(long long)arg1;
 - (id)localizedShareDescriptionWithNumberOfTimesAchieved:(long long)arg1 isWheelchairUser:(BOOL)arg2;
 - (id)localizedTitle;
 - (id)localizedTitleWithIsWheelchairUser:(BOOL)arg1;
+- (void)removeObserver:(id)arg1;
 
 @end
 

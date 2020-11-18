@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOEncyclopedicInfo-Protocol.h>
 
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *textBlockText;
 @property (readonly, nonatomic) NSString *textBlockTitle;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithPlaceData:(id)arg1 attributionMap:(id)arg2;
 
 @end

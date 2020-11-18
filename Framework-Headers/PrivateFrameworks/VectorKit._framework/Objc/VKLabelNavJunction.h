@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/VKLabelNavFeature-Protocol.h>
 
@@ -33,12 +33,20 @@ __attribute__((visibility("hidden")))
         CDStruct_58d0ca89 _field1;
         CDStruct_b2fbf00d _field2;
         CDStruct_b2fbf00d _field3;
-        CDStruct_183601bc *_field4;
-        float _field5;
-        unsigned int _field6;
-        unsigned char _field7;
-        BOOL _field8;
-        BOOL _field9;
+        unsigned long long _field4;
+        unsigned long long _field5;
+        unsigned long long _field6;
+        unsigned long long _field7;
+        short _field8;
+        unsigned char _field9;
+        CDStruct_183601bc *_field10;
+        float _field11;
+        float _field12;
+        unsigned int _field13;
+        unsigned char _field14;
+        BOOL _field15;
+        BOOL _field16;
+        BOOL _field17;
     } *_labelFeature;
     NSString *_name;
     VKLabelNavRoadLabel *_junctionSign;
@@ -46,9 +54,10 @@ __attribute__((visibility("hidden")))
     unsigned long long _depthFromRoute;
     double _worldUnitsPerMeter;
     VKLabelNavJunction *_overpassJunction;
-    BOOL _cachedSignVisibility[2];
-    BOOL _isVisibilityCached[2];
+    BOOL _cachedSignVisibility[3];
+    BOOL _isVisibilityCached[3];
     BOOL _isVisible;
+    BOOL _isPicked;
     Matrix_6e1d3589 _worldCoordinate;
     double _sortValue;
     BOOL _isRouteRefineJunction;
@@ -61,6 +70,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) VKLabelNavRoad *incomingRoad; // @synthesize incomingRoad=_incomingRoad;
 @property (readonly, nonatomic) long long intraRoadPriority;
 @property (readonly, nonatomic) BOOL isAwayFromRoute;
+@property (readonly, nonatomic) BOOL isEtaFeature;
 @property (readonly, nonatomic) BOOL isGuidanceStepStart;
 @property (readonly, nonatomic) BOOL isInGuidance;
 @property (readonly, nonatomic) BOOL isIntersection;
@@ -70,12 +80,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isOnDualCarriageway; // @synthesize isOnDualCarriageway=_isOnDualCarriageway;
 @property (readonly, nonatomic) BOOL isOnRoute;
 @property (readonly, nonatomic) BOOL isOverpass; // @synthesize isOverpass=_isOverpass;
+@property (nonatomic) BOOL isPicked; // @synthesize isPicked=_isPicked;
 @property (readonly, nonatomic) BOOL isRamp;
 @property (readonly, nonatomic) BOOL isRoadTerminus;
 @property (nonatomic) BOOL isRouteOverpass; // @synthesize isRouteOverpass=_isRouteOverpass;
 @property (nonatomic) BOOL isRouteRefineJunction; // @synthesize isRouteRefineJunction=_isRouteRefineJunction;
 @property (readonly, nonatomic) BOOL isStartOfRoadName;
 @property (readonly, nonatomic) BOOL isTileEdgeJunction;
+@property (readonly, nonatomic) BOOL isTrafficCameraFeature;
 @property (readonly, nonatomic) BOOL isVisible; // @synthesize isVisible=_isVisible;
 @property (readonly, nonatomic) VKLabelNavRoadLabel *junctionSign; // @synthesize junctionSign=_junctionSign;
 @property (readonly, nonatomic) int largestRoadClass;

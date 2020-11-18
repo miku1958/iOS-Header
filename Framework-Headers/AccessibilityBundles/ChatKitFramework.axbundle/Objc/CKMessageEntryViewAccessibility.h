@@ -15,7 +15,6 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityApplyArrowLabel;
 - (void)_accessibilityApplyBrowserLabel;
-- (void)_accessibilityApplyDigitalTouchLabel;
 - (void)_accessibilityApplyPhotoLabel;
 - (void)_accessibilityApplyPlaceholderLabel;
 - (void)_accessibilityApplySelectedTraitToMediaButton;
@@ -30,7 +29,7 @@
 - (void)audioReplyButtonStart:(id)arg1;
 - (void)audioReplyButtonStop:(id)arg1;
 - (void)browserButtonTapped:(id)arg1;
-- (void)collpasedPlaceholderLabelTapped:(id)arg1;
+- (void)collapsedPlaceholderLabelTapped:(id)arg1;
 - (void)configureAudioActionMenuControllerForPlayback:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 marginInsets:(struct UIEdgeInsets)arg2 shouldAllowImpact:(BOOL)arg3 shouldShowSendButton:(BOOL)arg4 shouldShowSubject:(BOOL)arg5 shouldShowPluginButtons:(BOOL)arg6 shouldShowCharacterCount:(BOOL)arg7;
 - (void)layoutSubviews;

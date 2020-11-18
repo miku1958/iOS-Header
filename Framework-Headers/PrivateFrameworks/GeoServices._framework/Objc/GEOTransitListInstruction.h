@@ -31,6 +31,7 @@
 + (Class)detailFormattedType;
 + (Class)noticeFormattedType;
 + (Class)priceFormattedType;
+- (void).cxx_destruct;
 - (void)addCommandFormatted:(id)arg1;
 - (void)addDetailFormatted:(id)arg1;
 - (void)addNoticeFormatted:(id)arg1;
@@ -43,7 +44,6 @@
 - (unsigned long long)commandFormattedsCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)detailFormattedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)detailFormattedsCount;

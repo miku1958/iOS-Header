@@ -8,6 +8,7 @@
 
 @interface NSValue (Core3DKitAdditions)
 + (id)SCN_valueWithCGPoint:(struct CGPoint)arg1;
++ (id)SCN_valueWithSimdMatrix4:(CDStruct_14d5dc5e)arg1;
 + (id)valueWithSCNMatrix4:(struct SCNMatrix4)arg1;
 + (id)valueWithSCNVector3:(struct SCNVector3)arg1;
 + (id)valueWithSCNVector4:(struct SCNVector4)arg1;
@@ -15,5 +16,6 @@
 - (struct SCNVector3)SCNVector3Value;
 - (struct SCNVector4)SCNVector4Value;
 - (struct CGPoint)SCN_CGPointValue;
+- (CDStruct_14d5dc5e)SCN_simdMatrix4Value;
 @end
 

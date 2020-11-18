@@ -37,6 +37,7 @@
 @property (strong, nonatomic) id<NACancelable> pressGestureActiveTimerCancellationToken; // @synthesize pressGestureActiveTimerCancellationToken=_pressGestureActiveTimerCancellationToken;
 @property (strong, nonatomic) HUForceInterpolatedPressGestureRecognizer *pressGestureRecognizer; // @synthesize pressGestureRecognizer=_pressGestureRecognizer;
 @property (readonly, nonatomic) NSMapTable *pressedItemContexts; // @synthesize pressedItemContexts=_pressedItemContexts;
+@property (readonly, nonatomic, getter=isQuickControlPresented) BOOL quickControlIsPresented;
 @property (strong, nonatomic) HUQuickControlViewController *quickControlViewController; // @synthesize quickControlViewController=_quickControlViewController;
 @property (readonly) Class superclass;
 @property (readonly, weak, nonatomic) UIView *targetView; // @synthesize targetView=_targetView;
@@ -48,7 +49,7 @@
 - (void)_cleanupForQuickControlDismissal;
 - (void)_configureInitialStateForPressedItemContext:(id)arg1 userInitiated:(BOOL)arg2;
 - (id)_createPressedContextForItem:(id)arg1 userInitiated:(BOOL)arg2;
-- (BOOL)_dismissQuickControlViewControllerAnimated:(BOOL)arg1;
+- (id)_dismissQuickControlViewControllerAnimated:(BOOL)arg1;
 - (void)_endUsingTapticFeedbackIfAvailable;
 - (id)_gestureInstallationView;
 - (void)_handleMutuallyExclusiveGesture:(id)arg1;
@@ -66,8 +67,9 @@
 - (void)_validatePresentationContext:(id)arg1;
 - (void)addMutuallyExclusiveGestureRecognizer:(id)arg1;
 - (id)detailsViewControllerForQuickControlViewController:(id)arg1 item:(id)arg2;
-- (BOOL)dismissQuickControlAnimated:(BOOL)arg1;
-- (void)finishPresentation:(id)arg1 animated:(BOOL)arg2;
+- (id)dismissQuickControlAnimated:(BOOL)arg1;
+- (id)dismissQuickControlAnimated:(BOOL)arg1 wasDismissed:(BOOL *)arg2;
+- (id)finishPresentation:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)hasDetailsActionForQuickControlViewController:(id)arg1 item:(id)arg2;

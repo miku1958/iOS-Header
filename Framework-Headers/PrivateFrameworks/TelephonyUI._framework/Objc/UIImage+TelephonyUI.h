@@ -19,6 +19,21 @@
 + (id)favoritesWidgetTTYDirectGlyphImage;
 + (id)favoritesWidgetTTYRelayGlyphImage;
 + (id)favoritesWidgetVideoGlyphImage;
++ (id)telephonyUIActionButtonGlyphImage;
 + (id)telephonyUIImageNamed:(id)arg1;
++ (id)telephonyUIUnreadIndicatorGlyphImage;
++ (id)telephonyUI_AudioControlsGlyphForDeviceModelType:(long long)arg1;
++ (id)telephonyUI_AudioRouteGlyphForDeviceModelType:(long long)arg1;
++ (id)telephonyUI_BluetoothAudioControlGlyphImage;
++ (id)telephonyUI_BluetoothAudioRouteGlyphImage;
++ (id)telephonyUI_CarPlayAudioRouteGlyphImage;
++ (id)telephonyUI_headphonesAudioRouteGlyphImage;
++ (id)telephonyUI_iPadAudioRouteGlyphImage;
++ (id)telephonyUI_iPhoneAudioRouteGlyphImage;
++ (id)telephonyUI_iPodAudioRouteGlyphImage;
++ (id)telephonyUI_muteAudioRouteGlyphImage;
++ (id)telephonyUI_speakerAudioRouteGlyphImage;
+- (id)imageWithEtchedBorderOfColor:(id)arg1 radius:(double)arg2;
+- (id)imageWithShadow:(id)arg1;
 @end
 

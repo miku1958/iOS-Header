@@ -6,31 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableArray, NSString;
+@class NSDate, NSMutableArray, NSNumber, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface WLKSettingsStore : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
+    NSObject<OS_dispatch_queue> *_readWriteQueue;
     BOOL _privateModeEnabled;
     NSString *_pushToken;
     NSString *_accountID;
+    NSNumber *_optedInVal;
     BOOL _optedIn;
     BOOL _migratediOS;
     BOOL _migratedtvOS;
     NSMutableArray *_apps;
     int _didChangeNotificationToken;
+    NSXPCConnection *_connection;
+    BOOL _hasOutstandingChanges;
     int _ignoreChangesCount;
-    BOOL _hasOutstandingChange;
     NSDate *_lastSyncDate;
     NSDate *_lastSyncToCloudDate;
 }
 
+@property BOOL hasOutstandingChanges; // @synthesize hasOutstandingChanges=_hasOutstandingChanges;
+@property int ignoreChangesCount; // @synthesize ignoreChangesCount=_ignoreChangesCount;
 @property (readonly, copy, nonatomic) NSDate *lastSyncDate; // @synthesize lastSyncDate=_lastSyncDate;
 @property (readonly, copy, nonatomic) NSDate *lastSyncToCloudDate; // @synthesize lastSyncToCloudDate=_lastSyncToCloudDate;
 @property (nonatomic) BOOL migratediOS;
 @property (nonatomic) BOOL migratedtvOS;
 @property (nonatomic) BOOL optedIn;
+@property (strong, nonatomic) NSNumber *optedInVal; // @synthesize optedInVal=_optedInVal;
 @property (nonatomic) BOOL privateModeEnabled;
 @property (strong, nonatomic) NSString *pushToken;
 
@@ -40,15 +46,21 @@
 - (void)_accountStoreChangedNotification:(id)arg1;
 - (id)_appsForChannelID:(id)arg1;
 - (void)_attemptCullingOfObsoleteApp:(id)arg1;
+- (id)_connection;
 - (id)_dictionaryOnDisk;
+- (void)_dictionaryOnDisk:(CDUnknownBlockType)arg1;
 - (id)_dictionaryRepresentation;
 - (void)_readFromDisk;
 - (void)_removeWatchListApp:(id)arg1;
 - (id)_supportPath;
+- (void)_tickleKVO;
+- (void)_updateDisplayNamesForUI:(CDUnknownBlockType)arg1;
 - (void)_writeToDisk;
+- (void)_writeToDisk:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginIgnoringChanges;
 - (id)consentedBrands;
 - (void)dealloc;
+- (id)deniedBrands;
 - (id)description;
 - (void)endIgnoringChanges;
 - (id)init;

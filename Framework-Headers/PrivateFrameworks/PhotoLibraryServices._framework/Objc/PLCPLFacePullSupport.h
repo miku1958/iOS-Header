@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol PLSyncContext, PLSyncableAsset;
 
@@ -14,13 +14,16 @@
     id<PLSyncableAsset> _currentAsset;
 }
 
-+ (void)applyFacesChangesFromAssetChange:(id)arg1 toAsset:(id)arg2 inPhotoLibrary:(id)arg3;
++ (id)_disjointSetsByAddingSet:(id)arg1 toSets:(id)arg2;
++ (void)applyFacesChangesFromAssetChange:(id)arg1 toAsset:(id)arg2 inSyncContext:(id)arg3;
+- (id)_applyAssetChange:(id)arg1 toExistingFaces:(id)arg2 withPolicy:(long long)arg3;
 - (void)_applyDimensionAndStateFromFaceReference:(id)arg1 toDetectedFace:(id)arg2;
 - (void)_applyPersonFromFaceReference:(id)arg1 toDetectedFace:(id)arg2;
-- (id)_detectedFaceFromFaceRef:(id)arg1;
-- (id)_detectedFacesFromAssetChange:(id)arg1;
-- (id)_existingFacesToKeepWithAssetChange:(id)arg1;
-- (void)applyFaceReference:(id)arg1 toDetectedFace:(id)arg2;
+- (BOOL)_canReassignFaceFromPerson:(id)arg1 toPerson:(id)arg2 shouldDedupePersons:(BOOL *)arg3;
+- (id)_createFaceFromFaceRef:(id)arg1 algorithmVersion:(int)arg2;
+- (void)_finalizeFace:(id)arg1 withFaceRef:(id)arg2 applyDimensionAndState:(BOOL)arg3;
+- (long long)_policyForApplyingFaceChangesFromAssetChange:(id)arg1;
+- (void)_unlinkPersonIfVerifiedFromFace:(id)arg1;
 - (void)applyFacesChangesFromAssetChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithSyncContext:(id)arg1 asset:(id)arg2;

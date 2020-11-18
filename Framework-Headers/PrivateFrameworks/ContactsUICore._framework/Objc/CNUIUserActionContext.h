@@ -35,7 +35,7 @@
 + (id)makeDefaultContext;
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithContactStore:(id)arg1;
+- (id)initWithContactStore:(id)arg1 applicationWorkspace:(id)arg2;
 
 @end
 

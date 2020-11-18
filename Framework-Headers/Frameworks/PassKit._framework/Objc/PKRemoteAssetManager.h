@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
-@class NSMutableDictionary, NSURL, NSURLSession;
+@class NSMutableArray, NSMutableDictionary, NSURL, NSURLSession;
 @protocol OS_dispatch_queue;
 
 @interface PKRemoteAssetManager : NSObject
@@ -15,9 +15,12 @@
     NSURLSession *_urlSession;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_manifestItemsByRelativeURL;
+    NSMutableArray *_completionHandlers;
 }
 
 - (void).cxx_destruct;
+- (void)_callCompletionHandlersWithFinishState:(BOOL)arg1 progress:(float)arg2 error:(id)arg3;
+- (void)_downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_flushBundleCaches;
 - (BOOL)addRemoteAssetData:(id)arg1 forManifestItem:(id)arg2 error:(id *)arg3;
 - (BOOL)assetExistsLocally:(id)arg1;

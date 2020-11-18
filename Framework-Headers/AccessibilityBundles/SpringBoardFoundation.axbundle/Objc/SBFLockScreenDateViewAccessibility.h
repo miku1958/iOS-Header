@@ -16,6 +16,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityOverridesInvisibility;
 - (BOOL)_accessibilityPointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (long long)_accessibilitySortPriority;
 - (BOOL)_accessibilityViewIsVisible;
 - (void)_updateLabels;
 - (id)accessibilityElements;

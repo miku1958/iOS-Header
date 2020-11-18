@@ -13,6 +13,9 @@
 @interface NWConcrete_nw_fd_wrapper : NSObject <OS_nw_fd_wrapper>
 {
     int fd;
+    struct os_unfair_lock_s lock;
+    unsigned long long guard;
+    unsigned int guarded:1;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -6,43 +6,46 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreParsec/NSCopying-Protocol.h>
+#import <CoreParsec/NSSecureCoding-Protocol.h>
+#import <CoreParsec/_CPResultSectionForFeedback-Protocol.h>
 
-@class NSData, NSMutableArray, NSString;
+@class NSArray, NSData, NSString;
 
-@interface _CPResultSectionForFeedback : PBCodable <NSCopying>
+@interface _CPResultSectionForFeedback : PBCodable <_CPResultSectionForFeedback, NSSecureCoding>
 {
-    double _rankingScore;
-    NSString *_bundleIdentifier;
-    NSData *_fallbackResultSection;
-    NSString *_identifier;
-    NSMutableArray *_results;
     struct {
         unsigned int rankingScore:1;
     } _has;
+    NSArray *_results;
+    NSString *_identifier;
+    NSString *_bundleIdentifier;
+    double _rankingScore;
+    NSData *_fallbackResultSection;
 }
 
-@property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (strong, nonatomic) NSData *fallbackResultSection; // @synthesize fallbackResultSection=_fallbackResultSection;
+@property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSData *fallbackResultSection; // @synthesize fallbackResultSection=_fallbackResultSection;
 @property (readonly, nonatomic) BOOL hasBundleIdentifier;
 @property (readonly, nonatomic) BOOL hasFallbackResultSection;
 @property (readonly, nonatomic) BOOL hasIdentifier;
-@property (nonatomic) BOOL hasRankingScore;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) BOOL hasRankingScore;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) double rankingScore; // @synthesize rankingScore=_rankingScore;
-@property (strong, nonatomic) NSMutableArray *results; // @synthesize results=_results;
+@property (copy, nonatomic) NSArray *results; // @synthesize results=_results;
+@property (readonly) Class superclass;
 
-+ (Class)resultsType;
 - (void).cxx_destruct;
 - (void)addResults:(id)arg1;
 - (void)clearResults;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithFacade:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)resultsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)resultsCount;

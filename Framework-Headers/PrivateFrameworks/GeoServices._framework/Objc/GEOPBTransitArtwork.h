@@ -9,11 +9,12 @@
 #import <GeoServices/GEOTransitArtworkDataSource-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPBTransitIcon, GEOPBTransitShield, NSString;
+@class GEOPBTransitIcon, GEOPBTransitShield, NSString, PBUnknownFields;
 @protocol GEOTransitIconDataSource, GEOTransitShieldDataSource;
 
 @interface GEOPBTransitArtwork : PBCodable <GEOTransitArtworkDataSource, NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSString *_accessibilityString;
     int _artworkType;
     int _artworkUse;
@@ -53,7 +54,9 @@
 @property (strong, nonatomic) GEOPBTransitShield *shield; // @synthesize shield=_shield;
 @property (readonly, nonatomic) id<GEOTransitShieldDataSource> shieldDataSource;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (int)StringAsArtworkType:(id)arg1;
 - (int)StringAsArtworkUse:(id)arg1;
 - (int)StringAsBadge:(id)arg1;
@@ -62,7 +65,6 @@
 - (id)badgeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)dictionaryRepresentation;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

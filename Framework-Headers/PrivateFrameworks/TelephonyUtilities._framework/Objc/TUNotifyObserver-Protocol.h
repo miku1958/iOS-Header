@@ -10,6 +10,7 @@
 
 @property (copy, nonatomic) CDUnknownBlockType callback;
 @property (readonly, nonatomic, getter=isObserving) BOOL observing;
+@property (readonly, nonatomic) unsigned long long state;
 
 - (void)beginObserving;
 - (void)endObserving;

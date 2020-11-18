@@ -24,7 +24,7 @@
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithClientVehicleSpeed:(CDStruct_c3b9c2ee)arg1;
+- (id)initWithClientVehicleSpeed:(CDStruct_6a5f25ec)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)shortDescription;
 

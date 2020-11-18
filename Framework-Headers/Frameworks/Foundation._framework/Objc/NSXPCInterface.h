@@ -11,7 +11,7 @@
 @interface NSXPCInterface : NSObject
 {
     Protocol *_protocol;
-    struct __CFDictionary *_methods2;
+    void *_reserved2;
     id _reserved1;
 }
 
@@ -20,9 +20,17 @@
 + (id)interfaceWithProtocol:(id)arg1;
 + (id)signatureForBlock:(id)arg1;
 - (id)_allowedClassesForSelector:(SEL)arg1 reply:(BOOL)arg2;
+- (Class)_customSubclass;
+- (id)_generateAndCacheMethodSignatureForRemoteSelector:(SEL)arg1;
+- (BOOL)_hasProxiesInArgumentsOfSelector:(SEL)arg1;
+- (BOOL)_hasProxiesInReplyBlockArgumentsOfSelector:(SEL)arg1;
 - (id)_interfaceForArgument:(unsigned long long)arg1 ofSelector:(SEL)arg2 reply:(BOOL)arg3;
-- (id)_verifiedMethodSignatureForReplyBlockOfSelector:(SEL)arg1;
-- (id)_verifiedMethodSignatureForSelector:(SEL)arg1;
+- (void)_methodSignature:(id *)arg1 allowedClasses:(id *)arg2 forSelector:(SEL)arg3 isReply:(BOOL)arg4;
+- (id)_methodSignatureForRemoteSelector:(SEL)arg1;
+- (id)_methodSignatureForReplyBlockOfSelector:(SEL)arg1;
+- (unsigned long long)_remoteVersion;
+- (unsigned long long)_respondsToRemoteSelector:(SEL)arg1;
+- (Class)_returnClassForSelector:(SEL)arg1;
 - (Class)classForSelector:(SEL)arg1 argumentIndex:(unsigned long long)arg2 ofReply:(BOOL)arg3;
 - (id)classesForSelector:(SEL)arg1 argumentIndex:(unsigned long long)arg2 ofReply:(BOOL)arg3;
 - (void)dealloc;
@@ -34,6 +42,10 @@
 - (void)setClasses:(id)arg1 forSelector:(SEL)arg2 argumentIndex:(unsigned long long)arg3 ofReply:(BOOL)arg4;
 - (void)setInterface:(id)arg1 forSelector:(SEL)arg2 argumentIndex:(unsigned long long)arg3 ofReply:(BOOL)arg4;
 - (void)setReplyBlockSignature:(id)arg1 forSelector:(SEL)arg2;
+- (void)setVersion:(unsigned long long)arg1 forSelector:(SEL)arg2;
+- (void)set_remoteVersion:(unsigned long long)arg1;
+- (unsigned long long)version;
+- (unsigned long long)versionForSelector:(SEL)arg1;
 
 @end
 

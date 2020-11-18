@@ -20,7 +20,9 @@
 - (void)_accessibilitySetValue:(id)arg1;
 - (BOOL)_accessibilityTextOperationAction:(id)arg1;
 - (id)_accessibilityTextOperations;
+- (id)_accessibilityUserTestingChildren;
 - (id)_axAttachmentNames;
+- (void)_axBuildAXTreeFromElement:(id)arg1 outArray:(id)arg2;
 - (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityLabel;
 - (id)accessibilityValue;

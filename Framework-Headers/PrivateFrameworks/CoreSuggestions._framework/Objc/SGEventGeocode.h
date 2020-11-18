@@ -16,6 +16,7 @@
 + (void)geocodeLocation:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 + (BOOL)isGeocodeCandidate:(id)arg1;
 + (BOOL)isGeocodeCandidateLocation:(id)arg1 forEvent:(id)arg2;
++ (BOOL)locationIsAirport:(id)arg1;
 + (BOOL)locationIsGeocoded:(id)arg1;
 
 @end

@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthUI/HKGraphSeriesBlockCoordinateInfo-Protocol.h>
+
 @class NSString;
 
-@interface HKActivityStatisticsChartPointSummary : NSObject
+@interface HKActivityStatisticsChartPointSummary : NSObject <HKGraphSeriesBlockCoordinateInfo>
 {
     NSString *_formattedDateString;
     NSString *_workoutSummaryString;
@@ -17,8 +19,12 @@
 }
 
 @property (readonly, nonatomic) NSString *activityGoalSummaryString; // @synthesize activityGoalSummaryString=_activityGoalSummaryString;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *energyBurnSummaryString; // @synthesize energyBurnSummaryString=_energyBurnSummaryString;
 @property (readonly, nonatomic) NSString *formattedDateString; // @synthesize formattedDateString=_formattedDateString;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *workoutSummaryString; // @synthesize workoutSummaryString=_workoutSummaryString;
 
 + (id)_dateFormatter;
@@ -28,7 +34,6 @@
 + (id)_workoutDurationFormatter;
 - (void).cxx_destruct;
 - (void)_createWorkoutSummaryWithWorkouts:(id)arg1;
-- (id)description;
 - (id)initWithActivityCache:(id)arg1 workouts:(id)arg2;
 
 @end

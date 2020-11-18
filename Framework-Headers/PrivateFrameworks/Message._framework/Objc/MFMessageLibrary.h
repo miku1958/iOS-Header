@@ -96,6 +96,7 @@
 - (id)metadataForMessage:(id)arg1;
 - (id)metadataForMessage:(id)arg1 key:(id)arg2;
 - (unsigned int)minimumRemoteIDForMailbox:(id)arg1;
+- (unsigned long long)mostRecentStatusCountForMailbox:(id)arg1;
 - (unsigned int)nonDeletedCountForAggregatedMailboxes:(id)arg1;
 - (unsigned int)nonDeletedCountForAggregatedMailboxes:(id)arg1 includeServerSearchResults:(BOOL)arg2 includeThreadSearchResults:(BOOL)arg3;
 - (unsigned int)nonDeletedCountForMailbox:(id)arg1;
@@ -120,7 +121,9 @@
 - (void)setFlagsForMessages:(id)arg1 mask:(unsigned long long)arg2;
 - (id)setFlagsFromDictionary:(id)arg1 forMessages:(id)arg2;
 - (void)setFlagsFromDictionary:(id)arg1 forMessagesInMailboxURLString:(id)arg2;
+- (void)setLastSyncAndMostRecentStatusCount:(unsigned long long)arg1 forMailbox:(id)arg2;
 - (void)setMessage:(id)arg1 isPartial:(BOOL)arg2;
+- (void)setMostRecentStatusCount:(unsigned long long)arg1 forMailbox:(id)arg2;
 - (void)setNumberOfAttachments:(unsigned int)arg1 isSigned:(BOOL)arg2 isEncrypted:(BOOL)arg3 forMessage:(id)arg4;
 - (void)setSequenceIdentifier:(id)arg1 forMailbox:(id)arg2;
 - (void)setSequenceIdentifier:(id)arg1 forMessageWithLibraryID:(unsigned int)arg2;
@@ -129,6 +132,7 @@
 - (void)setStoredIntegerPropertyWithName:(id)arg1 value:(id)arg2;
 - (void)setSummary:(id)arg1 forMessage:(id)arg2;
 - (BOOL)shouldCancel;
+- (long long)statusCountDeltaForMailbox:(id)arg1;
 - (id)storedIntegerPropertyWithName:(id)arg1;
 - (unsigned int)totalCountForMailbox:(id)arg1;
 - (unsigned int)unreadCountForAggregatedMailboxes:(id)arg1;

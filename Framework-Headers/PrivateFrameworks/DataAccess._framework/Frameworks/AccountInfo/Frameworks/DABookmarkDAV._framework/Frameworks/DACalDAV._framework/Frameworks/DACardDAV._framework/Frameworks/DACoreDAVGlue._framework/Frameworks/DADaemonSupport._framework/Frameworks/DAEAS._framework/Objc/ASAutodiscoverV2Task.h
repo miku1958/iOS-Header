@@ -18,6 +18,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)_HTTPMethodForRequest:(id)arg1;
 - (id)_OAuthURLFromResponseData:(id)arg1;
 - (id)_easVersion;
@@ -25,7 +26,6 @@
 - (BOOL)_shouldRedirectToHTTPForRequest:(id)arg1;
 - (BOOL)_shouldSendAuthForRequest:(id)arg1;
 - (id)_url;
-- (void)connection:(id)arg1 didReceiveResponse:(id)arg2;
 - (id)contentType;
 - (void)didProcessContext:(id)arg1;
 - (void)finishWithError:(id)arg1;

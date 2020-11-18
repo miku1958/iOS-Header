@@ -8,6 +8,7 @@
 
 @interface UIView (UIAXTextField)
 + (void)_accessibilityPerformValidations:(id)arg1;
+- (double)_accessibilityFontSize;
 - (id)_accessibilitySecureTextForString:(id)arg1;
 - (unsigned long long)_accessibilityTextAreaTraits;
 @end

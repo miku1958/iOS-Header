@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
     SEL _action;
     BOOL _forceToNavBar;
     BOOL _selected;
+    BOOL _enabled;
+    BOOL _roundedSelectedIndicator;
     NSString *_identifier;
     UIImage *_image;
     long long _systemItem;
@@ -30,11 +32,13 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy) NSString *accessibilityIdentifier; // @synthesize accessibilityIdentifier=_accessibilityIdentifier;
+@property BOOL enabled; // @synthesize enabled=_enabled;
 @property BOOL forceToNavBar; // @synthesize forceToNavBar=_forceToNavBar;
 @property (readonly) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy) UIImage *image; // @synthesize image=_image;
 @property (copy) NSArray *options; // @synthesize options=_options;
 @property unsigned long long placement; // @synthesize placement=_placement;
+@property BOOL roundedSelectedIndicator; // @synthesize roundedSelectedIndicator=_roundedSelectedIndicator;
 @property BOOL selected; // @synthesize selected=_selected;
 @property long long systemItem; // @synthesize systemItem=_systemItem;
 @property (copy) NSString *title; // @synthesize title=_title;

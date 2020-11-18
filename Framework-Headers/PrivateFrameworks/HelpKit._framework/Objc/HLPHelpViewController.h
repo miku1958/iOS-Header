@@ -11,7 +11,7 @@
 #import <HelpKit/HLPHelpTopicViewControllerDelegate-Protocol.h>
 #import <HelpKit/HLPReachabilityManagerDelegate-Protocol.h>
 
-@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocaleController, HLPHelpTableOfContentViewController, HLPHelpTopicViewController, HLPHelpUsageController, HLPReachabilityManager, NSArray, NSMutableDictionary, NSString, NSURL, UIBarButtonItem;
+@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocaleController, HLPHelpTableOfContentViewController, HLPHelpTopicViewController, HLPHelpUsageController, HLPReachabilityManager, NSArray, NSLayoutConstraint, NSMutableDictionary, NSString, NSURL, UIBarButtonItem;
 @protocol HLPHelpViewControllerDelegate;
 
 @interface HLPHelpViewController : UIViewController <HLPHelpTableOfContentViewControllerDelegate, HLPHelpTopicViewControllerDelegate, HLPReachabilityManagerDelegate, HLPHelpLoadingViewDelegate>
@@ -22,6 +22,7 @@
     NSURL *_helpBookURL;
     NSMutableDictionary *_localHelpBookNameIDMap;
     UIBarButtonItem *_doneBarButtonItem;
+    NSLayoutConstraint *_loadingViewTopConstraint;
     HLPHelpUsageController *_usageController;
     HLPHelpLocaleController *_localeListController;
     HLPHelpBookController *_helpBookController;
@@ -69,15 +70,19 @@
 + (id)helpViewControllerWithTitle:(id)arg1 identifier:(id)arg2 version:(id)arg3;
 + (id)helpViewControllerWithTitle:(id)arg1 identifier:(id)arg2 version:(id)arg3 subpath:(id)arg4;
 - (void).cxx_destruct;
+- (void)contentSizeCategoryDidChange:(id)arg1;
 - (id)currentHelpTopicItemForTableOfContentViewController:(id)arg1;
 - (void)dealloc;
 - (void)dismiss;
+- (void)displayHelpBookWithLocale:(id)arg1;
 - (void)helpTopicViewController:(id)arg1 failToLoadWithError:(id)arg2;
 - (void)helpTopicViewController:(id)arg1 selectedHelpTopicItem:(id)arg2;
+- (void)helpTopicViewControllerCurrentTopicIsPassionPoint:(id)arg1;
 - (void)helpTopicViewControllerDoneButtonTapped:(id)arg1;
 - (void)helpTopicViewControllerShowHelpBookInfo:(id)arg1;
 - (void)helpTopicViewControllerTableOfContentButtonTapped:(id)arg1;
 - (id)init;
+- (void)loadFromStaticServer;
 - (void)loadHelpBook;
 - (void)popWelcomeTopicView;
 - (void)reachabilityManagerConnectionStatusChanged:(id)arg1 connected:(BOOL)arg2;
@@ -92,6 +97,7 @@
 - (void)updateDoneButton;
 - (void)updateTOCButton;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

@@ -8,15 +8,18 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class GEOMapItemInitialRequestData, GEOPDMapsIdentifier, NSMutableArray, PBUnknownFields;
 
 @interface GEOPDPlace : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     unsigned long long _muid;
     unsigned long long _preferredMuid;
     unsigned long long _updateVersion;
     NSMutableArray *_components;
+    GEOPDMapsIdentifier *_mapsId;
     int _referenceFrame;
+    GEOMapItemInitialRequestData *_requestData;
     int _resultProviderId;
     int _status;
     struct {
@@ -30,23 +33,31 @@
 }
 
 @property (strong, nonatomic) NSMutableArray *components; // @synthesize components=_components;
+@property (readonly, nonatomic) BOOL hasMapsId;
 @property (nonatomic) BOOL hasMuid;
 @property (nonatomic) BOOL hasPreferredMuid;
 @property (nonatomic) BOOL hasReferenceFrame;
+@property (readonly, nonatomic) BOOL hasRequestData;
 @property (nonatomic) BOOL hasResultProviderId;
 @property (nonatomic) BOOL hasStatus;
 @property (nonatomic) BOOL hasUpdateVersion;
+@property (strong, nonatomic) GEOPDMapsIdentifier *mapsId; // @synthesize mapsId=_mapsId;
 @property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
 @property (nonatomic) unsigned long long preferredMuid; // @synthesize preferredMuid=_preferredMuid;
 @property (nonatomic) int referenceFrame;
+@property (strong, nonatomic) GEOMapItemInitialRequestData *requestData;
 @property (nonatomic) int resultProviderId; // @synthesize resultProviderId=_resultProviderId;
 @property (nonatomic) int status; // @synthesize status=_status;
+@property (readonly, nonatomic, getter=isSupportedVenue) BOOL supportedVenue;
+@property (readonly, nonatomic, getter=isSupportedVenuePOI) BOOL supportedVenuePOI;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (nonatomic) unsigned long long updateVersion; // @synthesize updateVersion=_updateVersion;
 
 + (id)attributionForPlaceData:(id)arg1 type:(int)arg2;
 + (Class)componentType;
 + (id)failedPlaceData;
 + (id)failedPlaceDataForMuid:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (int)StringAsReferenceFrame:(id)arg1;
 - (int)StringAsStatus:(id)arg1;
 - (id)_cleanedPhoneNumberForPhoneNumberRepresentation:(id)arg1;
@@ -55,17 +66,24 @@
 - (void)addComponent:(id)arg1;
 - (id)bestName;
 - (id)businessURL;
+- (id)cacheKey;
 - (void)clearComponents;
 - (id)compactDebugDescription;
 - (id)componentAtIndex:(unsigned long long)arg1;
+- (id)componentOfType:(int)arg1 options:(unsigned long long)arg2;
 - (unsigned long long)componentsCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithStrippedOptionalData;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithoutETAComponents;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (void)enumerateComponentOfType:(int)arg1 enumerationOptions:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateComponentValuesOfType:(int)arg1 enumerationOptions:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateComponentsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateValidComponentValuesOfType:(int)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateValidComponentWithValuesOfType:(int)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateValidComponentsWithValuesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)geoMapItem;
 - (id)geoMapItemWithDetourInfo:(id)arg1;
 - (BOOL)hasExpiredComponentsAsOf:(double)arg1;
@@ -73,14 +91,19 @@
 - (BOOL)isCacheable;
 - (BOOL)isDisputed;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isStandAloneBrand;
+- (BOOL)isStringIndicatingPoiInsideWestfield:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)phoneNumberOptsOutOfAds:(id)arg1;
 - (id)phoneNumbers;
+- (int)placeDisplayType;
 - (BOOL)readFrom:(id)arg1;
 - (id)referenceFrameAsString:(int)arg1;
 - (void)setFirstSeenTimestamp:(double)arg1;
 - (id)spokenNameForLocale:(id)arg1;
 - (id)statusAsString:(int)arg1;
+- (BOOL)statusCodeIsValid;
+- (id)successfulComponentWithValuesOfType:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

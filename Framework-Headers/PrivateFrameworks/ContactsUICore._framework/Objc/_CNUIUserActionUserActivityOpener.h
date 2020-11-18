@@ -8,14 +8,14 @@
 
 #import <ContactsUICore/CNUIUserActionUserActivityOpener-Protocol.h>
 
-@class LSApplicationWorkspace, NSString;
+@class CNLSApplicationWorkspace, NSString;
 
 @interface _CNUIUserActionUserActivityOpener : NSObject <CNUIUserActionUserActivityOpener>
 {
-    LSApplicationWorkspace *_applicationWorkspace;
+    CNLSApplicationWorkspace *_applicationWorkspace;
 }
 
-@property (readonly, nonatomic) LSApplicationWorkspace *applicationWorkspace; // @synthesize applicationWorkspace=_applicationWorkspace;
+@property (readonly, nonatomic) CNLSApplicationWorkspace *applicationWorkspace; // @synthesize applicationWorkspace=_applicationWorkspace;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

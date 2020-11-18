@@ -8,16 +8,21 @@
 
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class NSUUID;
+@class NSDictionary, NSUUID;
 
 @interface HKDeletedObject : NSObject <NSSecureCoding>
 {
     NSUUID *_UUID;
+    NSDictionary *_metadata;
+    long long _externalSyncObjectCode;
 }
 
 @property (readonly) NSUUID *UUID; // @synthesize UUID=_UUID;
+@property (nonatomic) long long externalSyncObjectCode; // @synthesize externalSyncObjectCode=_externalSyncObjectCode;
+@property (copy) NSDictionary *metadata; // @synthesize metadata=_metadata;
 
-+ (id)_deletedObjectWithUUID:(id)arg1;
++ (id)_deletedObjectWithUUID:(id)arg1 metadata:(id)arg2;
++ (id)_metadataWithSyncIdentifier:(id)arg1 syncVersion:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_init;

@@ -26,12 +26,14 @@
 
 + (BOOL)_shouldForwardViewWillTransitionToSize;
 - (void).cxx_destruct;
+- (id)_createRecipientFromSharee:(id)arg1;
+- (id)_createShareeFromRecipient:(id)arg1;
 - (id)_recipientFromSharee:(id)arg1;
 - (id)_shareeFromRecipient:(id)arg1;
 - (void)add;
 - (void)cancel;
-- (void)eventAttendeePicker:(id)arg1 cacheValidationStatus:(unsigned long long)arg2 forEmail:(id)arg3;
-- (unsigned long long)eventAttendeePicker:(id)arg1 getValidationStatusForEmailAddress:(id)arg2;
+- (void)eventAttendeePicker:(id)arg1 cacheValidationStatus:(unsigned long long)arg2 forAddress:(id)arg3;
+- (unsigned long long)eventAttendeePicker:(id)arg1 getValidationStatusForAddress:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)preferredContentSize;
 - (void)setSearchAccountID:(id)arg1;

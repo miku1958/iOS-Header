@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthDaemon/HDQueryServer.h>
+#import <HealthDaemon/HDBatchedQueryServer.h>
 
 @class HKQueryAnchor, NSMutableArray, NSObject;
 @protocol OS_dispatch_queue;
 
-@interface HDAnchoredObjectQueryServer : HDQueryServer
+@interface HDAnchoredObjectQueryServer : HDBatchedQueryServer
 {
     BOOL _deliversUpdates;
     BOOL _initialResultsSent;
@@ -35,9 +35,13 @@
 - (BOOL)_queue_shouldAcceptUpdates;
 - (BOOL)_queue_shouldAccumulateUpdates;
 - (void)_queue_start;
+- (void)_queue_startForInitialResults;
+- (void)_queue_startForUpdate;
 - (BOOL)_shouldListenForUpdates;
 - (BOOL)_shouldObserveOnPause;
-- (id)initWithQueryUUID:(id)arg1 dataObject:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 profile:(id)arg6;
+- (id)anchoredObjectQueryClient;
+- (id)initWithQueryUUID:(id)arg1 configuration:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 profile:(id)arg6;
+- (id)requiredEntitlements;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 

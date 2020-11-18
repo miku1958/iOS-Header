@@ -4,10 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaPlaybackCore/NSCoding-Protocol.h>
-#import <MediaPlaybackCore/NSCopying-Protocol.h>
-#import <MediaPlaybackCore/NSObject-Protocol.h>
+#import <MediaPlaybackCore/MPAVItemQueueIdentifier-Protocol.h>
 
-@protocol MPAVItemPlaylistIdentifier <NSObject, NSCoding, NSCopying>
+@protocol MPAVItemPlaylistIdentifier <MPAVItemQueueIdentifier>
 @end
 

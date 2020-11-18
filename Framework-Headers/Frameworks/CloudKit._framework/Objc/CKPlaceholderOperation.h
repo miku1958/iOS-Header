@@ -30,7 +30,9 @@
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 
 - (void).cxx_destruct;
-- (id)CKPropertiesDescription;
+- (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
+- (void)_setIsExecuting:(BOOL)arg1;
+- (void)_setIsFinished:(BOOL)arg1;
 - (void)cancel;
 - (id)description;
 - (id)initWithOperation:(id)arg1 daemonInvocationBlock:(CDUnknownBlockType)arg2;

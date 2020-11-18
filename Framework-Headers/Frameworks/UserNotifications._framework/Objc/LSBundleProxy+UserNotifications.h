@@ -7,7 +7,7 @@
 #import <MobileCoreServices/LSBundleProxy.h>
 
 @interface LSBundleProxy (UserNotifications)
-- (id)_un_applicationBundleURL;
-- (id)un_applicationBundle;
+- (id)un_applicationBundleIdentifier;
+- (id)un_applicationBundleURL;
 @end
 

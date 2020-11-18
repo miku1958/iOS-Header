@@ -12,14 +12,14 @@
 
 @interface MPMediaLibraryView : NSObject <NSCopying>
 {
-    shared_ptr_f45adb51 _coreView;
+    shared_ptr_6af3da69 _coreView;
     MPMediaLibrary *_library;
     unsigned long long _filteringOptions;
 }
 
 @property (readonly, nonatomic) unsigned long long filteringOptions; // @synthesize filteringOptions=_filteringOptions;
 @property (readonly, nonatomic) MPMediaLibrary *library; // @synthesize library=_library;
-@property (readonly, nonatomic) shared_ptr_f45adb51 mlCoreView;
+@property (readonly, nonatomic) shared_ptr_6af3da69 mlCoreView;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

@@ -19,6 +19,8 @@
     PUAlbumPickerViewControllerSpec *_albumPickerViewControllerSpec;
     long long _layoutVariant;
     struct CGSize _baseInterItemSpacing;
+    struct UIEdgeInsets _safeAreaInsets;
+    struct UIEdgeInsets _layoutMargins;
 }
 
 @property (readonly, nonatomic) PUAlbumPickerViewControllerSpec *albumPickerViewControllerSpec; // @synthesize albumPickerViewControllerSpec=_albumPickerViewControllerSpec;
@@ -33,11 +35,14 @@
 @property (readonly, nonatomic) struct CGSize contentSizeForViewInPopover;
 @property (readonly, nonatomic) BOOL displaysAvalancheStacks;
 @property (readonly, nonatomic) long long forceLoadInitialSectionCount;
-@property (readonly, nonatomic) double globalFooterHeight;
+@property (readonly, nonatomic) struct UIEdgeInsets gridContentInsets;
+@property (readonly, nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
 @property (readonly, nonatomic) long long layoutVariant; // @synthesize layoutVariant=_layoutVariant;
 @property (readonly, nonatomic) double maxSearchBarWidth; // @synthesize maxSearchBarWidth=_maxSearchBarWidth;
 @property (readonly, nonatomic) PUPhotosPickerViewControllerSpec *photosPickerViewControllerSpec; // @synthesize photosPickerViewControllerSpec=_photosPickerViewControllerSpec;
+@property (nonatomic) struct UIEdgeInsets safeAreaInsets; // @synthesize safeAreaInsets=_safeAreaInsets;
 @property (readonly, nonatomic) double sectionHeaderHeight;
+@property (readonly, nonatomic) struct UIEdgeInsets sectionHeaderInsets;
 @property (readonly, nonatomic) long long sectionHeaderStyle;
 @property (readonly, nonatomic) BOOL shouldPlaceDeleteInCenterToolbarPosition;
 @property (readonly, nonatomic) BOOL shouldPlaceSelectAllButtonInRightNavigationBar;
@@ -47,7 +52,7 @@
 @property (readonly, nonatomic) BOOL wantsCustomNavigationTransition;
 
 - (void).cxx_destruct;
-- (void)configureCollectionViewGridLayout:(id)arg1 forWidth:(double)arg2;
+- (void)configureCollectionViewGridLayout:(id)arg1 forWidth:(double)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
 - (id)init;
 - (unsigned long long)supportedInterfaceOrientations;
 

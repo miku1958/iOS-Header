@@ -6,13 +6,13 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class PLCloudSharedComment, UILabel, UIView;
+@class PLCloudSharedComment, UILabel, UITextView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoCommentCell : UITableViewCell
 {
     BOOL _usesCompactSeparators;
-    UILabel *_commentContentLabel;
+    UITextView *_commentContentTextView;
     UILabel *_commentBylineLabel;
     UIView *_styledSeparatorView;
     PLCloudSharedComment *_comment;
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 
 @property (copy, nonatomic) PLCloudSharedComment *comment; // @synthesize comment=_comment;
 @property (readonly, strong, nonatomic) UILabel *commentBylineLabel; // @synthesize commentBylineLabel=_commentBylineLabel;
-@property (readonly, strong, nonatomic) UILabel *commentContentLabel; // @synthesize commentContentLabel=_commentContentLabel;
+@property (readonly, strong, nonatomic) UITextView *commentContentTextView; // @synthesize commentContentTextView=_commentContentTextView;
 @property (readonly, strong, nonatomic) UIView *styledSeparatorView; // @synthesize styledSeparatorView=_styledSeparatorView;
 @property (nonatomic) BOOL usesCompactSeparators; // @synthesize usesCompactSeparators=_usesCompactSeparators;
 

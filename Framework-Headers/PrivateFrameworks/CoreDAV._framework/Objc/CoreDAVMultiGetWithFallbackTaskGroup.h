@@ -35,10 +35,10 @@
 @property (nonatomic) id<CoreDAVTaskManager> taskManager;
 @property (nonatomic) double timeoutInterval;
 
+- (void).cxx_destruct;
 - (void)_configureAndSubmitTask:(id)arg1;
 - (void)_fetchOneItem;
 - (void)_switchToSingleGetMode;
-- (void)dealloc;
 - (id)initWithURLs:(id)arg1 multiGetBlock:(CDUnknownBlockType)arg2 getBlock:(CDUnknownBlockType)arg3 accountInfoProvider:(id)arg4 taskManager:(id)arg5;
 - (void)startTaskGroup;
 

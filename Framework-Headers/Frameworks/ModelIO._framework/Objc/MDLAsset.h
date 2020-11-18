@@ -9,32 +9,39 @@
 #import <ModelIO/NSCopying-Protocol.h>
 #import <ModelIO/NSFastEnumeration-Protocol.h>
 
-@class MDLVertexDescriptor, NSArray, NSMapTable, NSMutableArray, NSURL;
-@protocol MDLMeshBufferAllocator, MDLObjectContainerComponent;
+@class MDLVertexDescriptor, MISSING_TYPE, NSMapTable, NSMutableArray, NSURL;
+@protocol MDLAssetResolver, MDLMeshBufferAllocator, MDLObjectContainerComponent;
 
 @interface MDLAsset : NSObject <NSCopying, NSFastEnumeration>
 {
     NSURL *_URL;
     NSMutableArray *_objects;
     id<MDLObjectContainerComponent> _masters;
+    id<MDLObjectContainerComponent> _animations;
     double _startTime;
     double _endTime;
+    MISSING_TYPE *_upAxis;
     NSMapTable *_components;
     double _frameInterval;
+    id<MDLAssetResolver> _resolver;
     id<MDLMeshBufferAllocator> _bufferAllocator;
     MDLVertexDescriptor *_vertexDescriptor;
+    double __timeCodesPerSecond;
 }
 
 @property (readonly, strong, nonatomic) NSURL *URL;
 @property (readonly, nonatomic) struct MDLAABB _bounds;
+@property (nonatomic) double _timeCodesPerSecond; // @synthesize _timeCodesPerSecond=__timeCodesPerSecond;
+@property (strong, nonatomic) id<MDLObjectContainerComponent> animations; // @synthesize animations=_animations;
 @property (readonly, nonatomic) struct boundingBox;
 @property (readonly, strong, nonatomic) id<MDLMeshBufferAllocator> bufferAllocator; // @synthesize bufferAllocator=_bufferAllocator;
-@property (readonly, copy, nonatomic) NSArray *components;
 @property (readonly, nonatomic) unsigned long long count;
 @property (nonatomic) double endTime;
 @property (nonatomic) double frameInterval; // @synthesize frameInterval=_frameInterval;
 @property (strong, nonatomic) id<MDLObjectContainerComponent> masters; // @synthesize masters=_masters;
+@property (strong, nonatomic) id<MDLAssetResolver> resolver; // @synthesize resolver=_resolver;
 @property (nonatomic) double startTime;
+@property (nonatomic) MISSING_TYPE *upAxis; // @synthesize upAxis=_upAxis;
 @property (readonly, strong, nonatomic) MDLVertexDescriptor *vertexDescriptor; // @synthesize vertexDescriptor=_vertexDescriptor;
 
 + (BOOL)canExportFileExtension:(id)arg1;
@@ -47,6 +54,7 @@
 - (struct)boundingBoxAtTime:(double)arg1;
 - (id)childObjectsOfClass:(Class)arg1;
 - (id)componentConformingToProtocol:(id)arg1;
+- (id)components;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)enumerateChildObjectsOfClass:(Class)arg1 usingBlock:(CDUnknownBlockType)arg2 stopPointer:(BOOL *)arg3;
@@ -55,13 +63,17 @@
 - (id)init;
 - (id)initWithBufferAllocator:(id)arg1;
 - (id)initWithURL:(id)arg1;
+- (id)initWithURL:(id)arg1 bufferAllocator:(id)arg2 preserveIndexing:(BOOL)arg3 error:(id *)arg4;
 - (id)initWithURL:(id)arg1 vertexDescriptor:(id)arg2 bufferAllocator:(id)arg3;
 - (id)initWithURL:(id)arg1 vertexDescriptor:(id)arg2 bufferAllocator:(id)arg3 preserveTopology:(BOOL)arg4 error:(id *)arg5;
+- (void)loadTextures;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
+- (id)objectAtPath:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)objects;
 - (void)removeObject:(id)arg1;
+- (void)resolveTextures;
 - (void)setComponent:(id)arg1 forProtocol:(id)arg2;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 

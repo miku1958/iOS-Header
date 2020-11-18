@@ -23,7 +23,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)defaultDirectoryURL;
 - (void).cxx_destruct;
+- (BOOL)copyVideoAtURL:(id)arg1 toURL:(id)arg2;
 - (void)createDirectory;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
@@ -35,17 +37,25 @@
 - (id)proceduralWallpaperInfoForVariant:(long long)arg1;
 - (void)removeProceduralWallpaperForVariants:(long long)arg1;
 - (void)removeVideoForVariant:(long long)arg1;
+- (void)removeWallpaperColorForVariants:(long long)arg1;
 - (void)removeWallpaperImageDataTypes:(unsigned long long)arg1 forVariants:(long long)arg2;
 - (void)removeWallpaperOptionsForVariants:(long long)arg1;
+- (BOOL)setOriginalVideoURL:(id)arg1 forVariant:(long long)arg2;
 - (BOOL)setProceduralWallpaperInfo:(id)arg1 forVariants:(long long)arg2;
 - (BOOL)setVideoURL:(id)arg1 forVariant:(long long)arg2;
+- (BOOL)setWallpaperColor:(id)arg1 forVariants:(long long)arg2;
+- (BOOL)setWallpaperColorName:(id)arg1 forVariants:(long long)arg2;
 - (BOOL)setWallpaperImage:(id)arg1 forVariant:(long long)arg2;
 - (BOOL)setWallpaperOptions:(id)arg1 forVariants:(long long)arg2;
 - (BOOL)setWallpaperOriginalImage:(id)arg1 forVariant:(long long)arg2;
 - (BOOL)setWallpaperThumbnailData:(id)arg1 forVariant:(long long)arg2;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
+- (id)unverifiedVideoURLForVariant:(long long)arg1;
+- (id)verifiedOriginalVideoURLForVariant:(long long)arg1;
 - (id)verifiedVideoURLForVariant:(long long)arg1;
+- (id)wallpaperColorForVariant:(long long)arg1;
+- (id)wallpaperColorNameForVariant:(long long)arg1;
 - (id)wallpaperImageDataForVariant:(long long)arg1 error:(id *)arg2;
 - (id)wallpaperImageForVariant:(long long)arg1;
 - (id)wallpaperImageURLForVariant:(long long)arg1;

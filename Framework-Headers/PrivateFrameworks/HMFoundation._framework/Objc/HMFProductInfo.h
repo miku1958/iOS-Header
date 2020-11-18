@@ -4,26 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
+#import <HMFoundation/NSCopying-Protocol.h>
 #import <HMFoundation/NSSecureCoding-Protocol.h>
 
-@interface HMFProductInfo : NSObject <NSSecureCoding>
+@class HMFSoftwareVersion;
+
+@interface HMFProductInfo : HMFObject <NSCopying, NSSecureCoding>
 {
     long long _productPlatform;
     long long _productClass;
-    CDStruct_f6aba300 _operatingSystemVersion;
+    HMFSoftwareVersion *_softwareVersion;
 }
 
-@property (readonly, nonatomic) CDStruct_f6aba300 operatingSystemVersion; // @synthesize operatingSystemVersion=_operatingSystemVersion;
 @property (readonly, nonatomic) long long productClass; // @synthesize productClass=_productClass;
 @property (readonly, nonatomic) long long productPlatform; // @synthesize productPlatform=_productPlatform;
+@property (readonly, nonatomic) HMFSoftwareVersion *softwareVersion; // @synthesize softwareVersion=_softwareVersion;
 
-+ (CDStruct_f6aba300)decodeOperatingSystemVersionWithCoder:(id)arg1;
-+ (void)encodeOperatingSystemVersion:(CDStruct_f6aba300)arg1 withCoder:(id)arg2;
++ (id)decodeSoftwareVersionWithCoder:(id)arg1;
++ (void)encodeSoftwareVersion:(id)arg1 withCoder:(id)arg2;
 + (id)productInfo;
 + (id)shortDescription;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (id)description;
 - (id)descriptionWithPointer:(BOOL)arg1;
@@ -31,7 +36,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithPlatform:(long long)arg1 class:(long long)arg2 operatingSystemVersion:(CDStruct_f6aba300)arg3;
+- (id)initWithPlatform:(long long)arg1 class:(long long)arg2 softwareVersion:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)shortDescription;
 

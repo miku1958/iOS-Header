@@ -9,20 +9,15 @@
 __attribute__((visibility("hidden")))
 @interface NSConcreteData : NSData
 {
-    unsigned int _isInline:1;
-    unsigned int _retainCount:31;
     unsigned long long _length;
-    unsigned long long _capacity;
     void *_bytes;
-    union {
-        unsigned char _space[12];
-        CDUnknownBlockType _deallocator;
-    } _u;
+    CDUnknownBlockType _deallocator;
 }
 
 - (BOOL)_copyWillRetain;
 - (id)_createDispatchData;
 - (BOOL)_isCompact;
+- (BOOL)_providesConcreteBacking;
 - (const void *)bytes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

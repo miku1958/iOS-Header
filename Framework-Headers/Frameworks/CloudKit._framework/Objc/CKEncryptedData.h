@@ -29,6 +29,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
 - (id)CKPropertiesDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -36,7 +37,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1;
 - (id)initWithEncryptedData:(id)arg1;
+- (id)initWithValue:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)value;
 
 @end
 

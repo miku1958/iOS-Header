@@ -8,7 +8,7 @@
 
 #import <Search/NSCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString, SFSearchSuggestion;
 
 @interface SPSearchQuery : NSObject <NSCopying>
 {
@@ -17,19 +17,25 @@
     NSString *_keyboardLanguage;
     NSString *_keyboardPrimaryLanguage;
     NSArray *markedTextArray;
-    BOOL _cancelled;
     BOOL _finished;
     BOOL _internal;
+    BOOL _promoteLocalResults;
+    BOOL _promoteParsecResults;
     double _creationTime;
     double _cancellationTime;
     unsigned long long _creationStamp;
+    _Atomic BOOL _cancelled;
     BOOL _dictationStable;
     BOOL _grouped;
+    BOOL _noTokenize;
     BOOL _infinitePatience;
     BOOL _isWideScreen;
+    BOOL _isPasscodeLocked;
     NSArray *_searchDomains;
     NSArray *_markedTextArray;
+    SFSearchSuggestion *_engagedSuggestion;
     NSArray *_disabledDomains;
+    NSArray *_searchEntities;
     NSDictionary *_dictationResponse;
     long long _maxCount;
     NSArray *_disabledBundles;
@@ -47,17 +53,23 @@
 @property (nonatomic) BOOL dictationStable; // @synthesize dictationStable=_dictationStable;
 @property (strong, nonatomic) NSArray *disabledBundles; // @synthesize disabledBundles=_disabledBundles;
 @property (readonly, nonatomic) NSArray *disabledDomains; // @synthesize disabledDomains=_disabledDomains;
+@property (readonly, nonatomic) SFSearchSuggestion *engagedSuggestion; // @synthesize engagedSuggestion=_engagedSuggestion;
 @property (nonatomic) BOOL grouped; // @synthesize grouped=_grouped;
 @property (readonly, nonatomic) BOOL hasMarkedText;
 @property (nonatomic) BOOL infinitePatience; // @synthesize infinitePatience=_infinitePatience;
 @property (nonatomic) BOOL internal; // @synthesize internal=_internal;
+@property (readonly, nonatomic) BOOL isPasscodeLocked; // @synthesize isPasscodeLocked=_isPasscodeLocked;
 @property (nonatomic) BOOL isWideScreen; // @synthesize isWideScreen=_isWideScreen;
 @property (readonly, nonatomic) NSString *keyboardLanguage; // @synthesize keyboardLanguage=_keyboardLanguage;
 @property (readonly, nonatomic) NSString *keyboardPrimaryLanguage; // @synthesize keyboardPrimaryLanguage=_keyboardPrimaryLanguage;
 @property (readonly, nonatomic) NSArray *markedTextArray; // @synthesize markedTextArray=_markedTextArray;
 @property (nonatomic) long long maxCount; // @synthesize maxCount=_maxCount;
+@property (nonatomic) BOOL noTokenize; // @synthesize noTokenize=_noTokenize;
+@property (nonatomic) BOOL promoteLocalResults; // @synthesize promoteLocalResults=_promoteLocalResults;
+@property (nonatomic) BOOL promoteParsecResults; // @synthesize promoteParsecResults=_promoteParsecResults;
 @property (nonatomic) unsigned long long queryIdent; // @synthesize queryIdent=_queryIdent;
 @property (readonly, nonatomic) NSArray *searchDomains; // @synthesize searchDomains=_searchDomains;
+@property (readonly, nonatomic) NSArray *searchEntities; // @synthesize searchEntities=_searchEntities;
 @property (readonly, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 @property (nonatomic) unsigned long long whyQuery; // @synthesize whyQuery=_whyQuery;
 
@@ -71,7 +83,7 @@
 - (id)initWithSearchString:(id)arg1;
 - (id)initWithSearchString:(id)arg1 keyboardLanguage:(id)arg2 forSearchDomains:(id)arg3 disabledBundles:(id)arg4;
 - (id)initWithSearchString:(id)arg1 keyboardLanguage:(id)arg2 forSearchDomains:(id)arg3 disabledDomains:(id)arg4 disabledBundles:(id)arg5;
-- (id)initWithSearchString:(id)arg1 keyboardLanguage:(id)arg2 keyboardPrimaryLanguage:(id)arg3 forSearchDomains:(id)arg4 disabledDomains:(id)arg5 disabledBundles:(id)arg6;
+- (id)initWithSearchString:(id)arg1 keyboardLanguage:(id)arg2 keyboardPrimaryLanguage:(id)arg3 forSearchDomains:(id)arg4 disabledDomains:(id)arg5 disabledBundles:(id)arg6 searchEntities:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 
 @end

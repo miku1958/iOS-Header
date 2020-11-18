@@ -49,10 +49,10 @@
 + (id)columnHeadersWithOptions:(unsigned long long)arg1 maximumLength:(unsigned long long)arg2;
 + (id)columnHeadersWithOptions:(unsigned long long)arg1 maximumLength:(unsigned long long)arg2 memorySizeDivisor:(unsigned int)arg3 hasFractionalPageSizes:(BOOL)arg4;
 + (void)initialize;
+- (void).cxx_destruct;
 - (void)addInfoFromRegion:(id)arg1;
 - (unsigned long long)address;
 - (id)breakAtLength:(unsigned long long)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)descriptionWithOptions:(unsigned long long)arg1 maximumLength:(unsigned long long)arg2;
 - (id)descriptionWithOptions:(unsigned long long)arg1 maximumLength:(unsigned long long)arg2 memorySizeDivisor:(unsigned int)arg3 hasFractionalPageSizes:(BOOL)arg4;

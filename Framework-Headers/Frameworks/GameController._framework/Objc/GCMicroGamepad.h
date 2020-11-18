@@ -32,6 +32,7 @@
 - (void)setButton:(id)arg1 pressed:(BOOL)arg2;
 - (void)setButton:(id)arg1 value:(double)arg2;
 - (void)setDpad:(id)arg1 x:(double)arg2 y:(double)arg3;
+- (BOOL)supportsDpadTaps;
 
 @end
 

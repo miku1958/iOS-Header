@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
         unsigned int isMomentary:1;
         unsigned int wasSelected:1;
         unsigned int needsBackgroundAndContentViewUpdate:1;
+        unsigned int usesAXTextSize:1;
     } _segmentFlags;
     NSArray *_infoConstraints;
     double _requestedScaleFactor;
@@ -110,6 +111,7 @@ __attribute__((visibility("hidden")))
 - (void)setPosition:(unsigned int)arg1;
 - (void)setShowDivider:(BOOL)arg1;
 - (void)setTintColor:(id)arg1;
+- (void)setUsesAXTextSize:(BOOL)arg1;
 - (void)setWasSelected:(BOOL)arg1;
 - (BOOL)showDivider;
 - (void)tintColorDidChange;
@@ -120,7 +122,6 @@ __attribute__((visibility("hidden")))
 - (void)updateMasking;
 - (BOOL)useBlockyMagnificationInClassic;
 - (id)viewForLastBaselineLayout;
-- (void)willUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 
 @end
 

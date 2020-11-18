@@ -13,6 +13,10 @@
     NSMutableArray *_messageUnits;
     NSMutableDictionary *_keywordsDictionary;
     NSString *_lowercaseSubject;
+    BOOL _isReply;
+    BOOL _isSent;
+    BOOL _isGroupConversation;
+    BOOL _isSenderSignificant;
     NSString *_identifier;
     NSString *_threadIdentifier;
     NSString *_subject;
@@ -21,13 +25,19 @@
     NSDate *_dateSent;
     NSString *_type;
     NSString *_htmlContent;
+    unsigned long long _messageUnitsTextLength;
 }
 
 @property (strong) NSDate *dateSent; // @synthesize dateSent=_dateSent;
 @property (strong) NSString *htmlContent; // @synthesize htmlContent=_htmlContent;
 @property (strong) NSString *identifier; // @synthesize identifier=_identifier;
+@property BOOL isGroupConversation; // @synthesize isGroupConversation=_isGroupConversation;
+@property BOOL isReply; // @synthesize isReply=_isReply;
+@property BOOL isSenderSignificant; // @synthesize isSenderSignificant=_isSenderSignificant;
+@property BOOL isSent; // @synthesize isSent=_isSent;
 @property (readonly) NSString *lowercaseSubject;
-@property (strong, nonatomic) NSArray *messageUnits; // @synthesize messageUnits=_messageUnits;
+@property (strong, nonatomic) NSArray *messageUnits;
+@property (readonly) unsigned long long messageUnitsTextLength; // @synthesize messageUnitsTextLength=_messageUnitsTextLength;
 @property (strong) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (strong) IPPerson *sender; // @synthesize sender=_sender;
 @property (strong) NSString *subject; // @synthesize subject=_subject;

@@ -20,6 +20,7 @@
 + (id)defaultProvider;
 - (void).cxx_destruct;
 - (void)_loadSuggestionsFramework;
+- (void)confirmEventWithSuggestionID:(id)arg1;
 - (void)confirmSGEventWithRecordID:(id)arg1;
 - (BOOL)eventsFoundInMailEnabled;
 - (id)fakeSGRecordID;

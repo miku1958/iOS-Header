@@ -6,22 +6,33 @@
 
 #import <PhotosUI/PUAlbumListViewController.h>
 
-@class NSArray, UIBarButtonItem;
+#import <PhotosUI/PUPhotoPickerServicesConsumer-Protocol.h>
+
+@class NSArray, NSString, PUUIImagePickerControllerHelper, UIBarButtonItem;
+@protocol PUPhotoPicker;
 
 __attribute__((visibility("hidden")))
-@interface PUUIAlbumListViewController : PUAlbumListViewController
+@interface PUUIAlbumListViewController : PUAlbumListViewController <PUPhotoPickerServicesConsumer>
 {
     UIBarButtonItem *_imagePickerCancelButton;
     BOOL _collectionsFetchResultIsValid;
+    PUUIImagePickerControllerHelper *__imagePickerControllerHelper;
+    id<PUPhotoPicker> _photoPicker;
     NSArray *__imagePickerMediaTypes;
     unsigned long long __imagePickerAssetTypes;
 }
 
 @property (nonatomic, setter=_setImagePickerAssetTypes:) unsigned long long _imagePickerAssetTypes; // @synthesize _imagePickerAssetTypes=__imagePickerAssetTypes;
 @property (copy, nonatomic, setter=_setImagePickerMediaTypes:) NSArray *_imagePickerMediaTypes; // @synthesize _imagePickerMediaTypes=__imagePickerMediaTypes;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<PUPhotoPicker> photoPicker; // @synthesize photoPicker=_photoPicker;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_handleImagePickerCancel:(id)arg1;
+- (id)_imagePickerControllerHelper;
 - (void)_invalidateCollectionsFetchResult;
 - (void)_updateCollectionsFetchResultIfNeeded;
 - (id)assetsFilterPredicate;
@@ -32,11 +43,14 @@ __attribute__((visibility("hidden")))
 - (id)newGridViewControllerForAssetCollection:(id)arg1;
 - (id)newGridViewControllerForFolder:(id)arg1;
 - (BOOL)pu_wantsNavigationBarVisible;
+- (void)setPhotoPickerMediaTypes:(id)arg1;
 - (BOOL)shouldAllowEmailInAlbumSubtitle;
 - (BOOL)shouldHideEmptyCollections;
 - (BOOL)shouldShowAllPhotosItem;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)updateNavigationBarAnimated:(BOOL)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

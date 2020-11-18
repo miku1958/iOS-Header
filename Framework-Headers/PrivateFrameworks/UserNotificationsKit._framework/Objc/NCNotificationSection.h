@@ -6,26 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <UserNotificationsKit/NCDebugInfoProvider-Protocol.h>
+@class NSMutableDictionary;
 
-@class NSMutableDictionary, NSString;
-
-@interface NCNotificationSection : NSObject <NCDebugInfoProvider>
+@interface NCNotificationSection : NSObject
 {
     NSMutableDictionary *_coalescedNotifications;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *coalescedNotifications; // @synthesize coalescedNotifications=_coalescedNotifications;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long notificationsCount;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)addNotificationRequest:(id)arg1;
 - (id)coalescedNotificationForThreadIdentifier:(id)arg1;
-- (id)debugInfoPlist;
 - (id)init;
 - (id)removeNotificationRequest:(id)arg1;
 - (id)replaceNotificationRequest:(id)arg1;

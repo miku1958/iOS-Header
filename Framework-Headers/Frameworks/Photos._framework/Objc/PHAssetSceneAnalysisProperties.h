@@ -6,7 +6,7 @@
 
 #import <Photos/PHAssetPropertySet.h>
 
-@class NSData, NSDate, NSSet;
+@class NSData, NSDate;
 
 @interface PHAssetSceneAnalysisProperties : PHAssetPropertySet
 {
@@ -18,7 +18,6 @@
 @property (readonly, nonatomic) NSData *distanceIdentity; // @synthesize distanceIdentity=_distanceIdentity;
 @property (readonly, nonatomic) NSDate *sceneAnalysisTimestamp; // @synthesize sceneAnalysisTimestamp=_sceneAnalysisTimestamp;
 @property (readonly, nonatomic) unsigned long long sceneAnalysisVersion; // @synthesize sceneAnalysisVersion=_sceneAnalysisVersion;
-@property (readonly, copy, nonatomic) NSSet *sceneClassifications;
 
 + (id)propertiesToFetch;
 + (id)propertySetName;

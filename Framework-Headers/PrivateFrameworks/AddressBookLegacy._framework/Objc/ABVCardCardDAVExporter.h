@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AddressBook/ABVCardExporter.h>
+#import <AddressBookLegacy/ABVCardExporter.h>
 
 @interface ABVCardCardDAVExporter : ABVCardExporter
 {

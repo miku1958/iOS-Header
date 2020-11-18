@@ -16,7 +16,7 @@
 @property (nonatomic, getter=isVoiceOverHandwritingEnabled) BOOL voiceOverHandwritingEnabled; // @synthesize voiceOverHandwritingEnabled=_voiceOverHandwritingEnabled;
 
 + (void)_accessibilityInitializeSubclassRuntimeOverrides;
-+ (void)_handleWebKitInstallation;
++ (void)_handleWebKitLegacyInstallation;
 + (id)sharedGlueObjectIfAvailable;
 + (id)wrapDOMRange:(id)arg1;
 - (id)_currentAccessoryView:(BOOL)arg1;

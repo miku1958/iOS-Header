@@ -8,12 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields;
+@class GEOAbAssignInfo, GEOLocalTime, NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPDAnalyticMetadata : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
     struct GEOSessionID _sessionId;
+    GEOAbAssignInfo *_abAssignInfo;
     NSString *_appIdentifier;
     NSString *_appMajorVersion;
     NSString *_appMinorVersion;
@@ -22,6 +23,7 @@
     NSString *_osVersion;
     NSString *_productName;
     int _requestSource;
+    GEOLocalTime *_requestTime;
     unsigned int _sequenceNumber;
     NSMutableArray *_serviceTags;
     BOOL _isFromApi;
@@ -37,10 +39,12 @@
     } _has;
 }
 
+@property (strong, nonatomic) GEOAbAssignInfo *abAssignInfo; // @synthesize abAssignInfo=_abAssignInfo;
 @property (strong, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 @property (strong, nonatomic) NSString *appMajorVersion; // @synthesize appMajorVersion=_appMajorVersion;
 @property (strong, nonatomic) NSString *appMinorVersion; // @synthesize appMinorVersion=_appMinorVersion;
 @property (strong, nonatomic) NSString *hardwareModel; // @synthesize hardwareModel=_hardwareModel;
+@property (readonly, nonatomic) BOOL hasAbAssignInfo;
 @property (readonly, nonatomic) BOOL hasAppIdentifier;
 @property (readonly, nonatomic) BOOL hasAppMajorVersion;
 @property (readonly, nonatomic) BOOL hasAppMinorVersion;
@@ -52,6 +56,7 @@
 @property (readonly, nonatomic) BOOL hasOsVersion;
 @property (readonly, nonatomic) BOOL hasProductName;
 @property (nonatomic) BOOL hasRequestSource;
+@property (readonly, nonatomic) BOOL hasRequestTime;
 @property (nonatomic) BOOL hasSequenceNumber;
 @property (nonatomic) BOOL hasSessionId;
 @property (nonatomic) BOOL isFromApi; // @synthesize isFromApi=_isFromApi;
@@ -61,18 +66,19 @@
 @property (strong, nonatomic) NSString *osVersion; // @synthesize osVersion=_osVersion;
 @property (strong, nonatomic) NSString *productName; // @synthesize productName=_productName;
 @property (nonatomic) int requestSource; // @synthesize requestSource=_requestSource;
+@property (strong, nonatomic) GEOLocalTime *requestTime; // @synthesize requestTime=_requestTime;
 @property (nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property (strong, nonatomic) NSMutableArray *serviceTags; // @synthesize serviceTags=_serviceTags;
 @property (nonatomic) struct GEOSessionID sessionId; // @synthesize sessionId=_sessionId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)serviceTagType;
+- (void).cxx_destruct;
 - (int)StringAsRequestSource:(id)arg1;
 - (void)addServiceTag:(id)arg1;
 - (void)clearServiceTags;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

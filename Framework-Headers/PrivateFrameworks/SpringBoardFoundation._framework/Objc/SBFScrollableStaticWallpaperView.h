@@ -58,7 +58,7 @@
 - (double)cropZoomScale;
 - (void)dealloc;
 - (void)didMoveToWindow;
-- (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 variant:(long long)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 variant:(long long)arg3 wallpaperSettingsProvider:(id)arg4;
 - (void)layoutSubviews;
 - (void)legibilitySettingsDidChange;
 - (double)parallaxFactor;

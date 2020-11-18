@@ -8,95 +8,29 @@
 
 #import <Celestial/FigXPCCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSDictionary, NSString;
 
 @interface FigCaptureSourceFormat : NSObject <FigXPCCoding>
 {
     NSDictionary *_formatDictionary;
-    BOOL _isMultiStreamFormat;
-    BOOL _isExternalFormat;
     struct opaqueCMFormatDescription *_formatDescription;
-    NSArray *_frontEndScalerCompanionFormats;
 }
 
-@property (readonly) NSArray *AVCaptureSessionPresets;
-@property (readonly) float aeMaxGain;
-@property (readonly) int autoFocusSystem;
-@property (readonly) BOOL capturesStillsFromVideoStream;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, getter=isDefaultActiveFormat) BOOL defaultActiveFormat;
 @property (readonly, copy) NSString *description;
 @property (readonly, getter=isExperimental) BOOL experimental;
+@property (readonly) unsigned int format;
 @property (readonly) struct opaqueCMFormatDescription *formatDescription;
-@property (readonly) NSArray *frontEndScalerCompanionFormats;
-@property (readonly) BOOL hasSensorHDRCompanionIndex;
 @property (readonly) unsigned long long hash;
-@property (readonly, getter=isHDRSupported) BOOL hdrSupported;
-@property (readonly, getter=isHighProfileH264Supported) BOOL highProfileH264Supported;
-@property (readonly, getter=isHighResPhotoFormat) BOOL highResPhotoFormat;
-@property (readonly) CDStruct_79c71658 highResStillImageDimensions;
-@property (readonly, getter=isHighResStillImageSupported) BOOL highResStillImageSupported;
-@property (readonly, getter=isIrisSupported) BOOL irisSupported;
-@property (readonly, getter=isIrisVideoStabilizationSupported) BOOL irisVideoStabilizationSupported;
-@property (readonly) BOOL isExternalFormat;
-@property (readonly) BOOL ispChromaNoiseReductionEnabled;
-@property (readonly) CDStruct_1b6d18a9 maxExposureDuration;
-@property (readonly) float maxISO;
-@property (readonly) int maxIntegrationTimeOverride;
 @property (readonly) unsigned int mediaType;
-@property (readonly) CDStruct_1b6d18a9 minExposureDuration;
-@property (readonly) float minISO;
-@property (readonly, getter=isMultiStreamFormat) BOOL multiStreamFormat;
-@property (readonly) BOOL needsPreviewDPCC;
-@property (readonly, getter=isPhotoFormat) BOOL photoFormat;
-@property (readonly) BOOL prefersSensorHDREnabled;
-@property (readonly, getter=isQuadraHighResStillImageSupported) BOOL quadraHighResStillImageSupported;
-@property (readonly) NSArray *rawLensShadingCorrection;
-@property (readonly) CDStruct_79c71658 sensorCropDimensions;
-@property (readonly) CDStruct_79c71658 sensorDimensions;
-@property (readonly) int sensorHDRCompanionIndex;
-@property (readonly, getter=isShallowDepthOfFieldEffectSupported) BOOL shallowDepthOfFieldEffectSupported;
-@property (readonly) CDStruct_79c71658 sourceCropAspectRatio;
-@property (readonly, getter=isStillImageISPChromaNoiseReductionEnabled) BOOL stillImageISPChromaNoiseReductionEnabled;
-@property (readonly) int stillImageNoiseReductionAndStabilizationScheme;
-@property (readonly, getter=isStillImageStabilizationSupported) BOOL stillImageStabilizationSupported;
 @property (readonly) Class superclass;
-@property (readonly) NSArray *supportedColorSpaces;
-@property (readonly) unsigned int supportedRawPixelFormat;
-@property (readonly) int temporalNoiseReductionMode;
-@property (readonly, getter=isVideoBinned) BOOL videoBinned;
-@property (readonly) float videoDefaultMaxFrameRate;
-@property (readonly) float videoDefaultMinFrameRate;
-@property (readonly) CDStruct_79c71658 videoDimensions;
-@property (readonly) float videoFieldOfView;
-@property (readonly) unsigned int videoFormat;
-@property (readonly) int videoFormatIndex;
-@property (readonly, getter=isVideoLowLightBinningSwitchSupported) BOOL videoLowLightBinningSwitchSupported;
-@property (readonly) float videoMaxSupportedFrameRate;
-@property (readonly) float videoMaxZoomFactor;
-@property (readonly) float videoMinSupportedFrameRate;
-@property (readonly) int videoRawBitDepth;
-@property (readonly) float videoScaleFactor;
-@property (readonly) int videoStabilizationTypeOverrideForCinematic;
-@property (readonly) int videoStabilizationTypeOverrideForStandard;
-@property (readonly, getter=isVideoZoomDynamicSensorCropSupported) BOOL videoZoomDynamicSensorCropSupported;
-@property (readonly) float videoZoomFactorUpscaleThreshold;
-@property (readonly, getter=isVideoZoomSupported) BOOL videoZoomSupported;
-@property (readonly, getter=isWideColorSupported) BOOL wideColorSupported;
 
-+ (void)initialize;
-- (CDStruct_79c71658)_maxUseableSensorDimensions;
-- (CDStruct_79c71658)_outputDimensions;
-- (void)_resolveProperties;
-- (CDStruct_79c71658)_visibleSensorDimensionsIncludingCinematic:(BOOL)arg1;
-- (id)copyWithNewVideoPixelFormat:(unsigned int)arg1;
 - (id)copyXPCEncoding;
 - (void)dealloc;
 - (id)initWithFigCaptureStreamFormatDictionary:(id)arg1;
 - (id)initWithXPCEncoding:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isValidDerivedBravoFormatForUnderlyingFormat:(id)arg1;
-- (BOOL)isVideoStabilizationModeSupported:(int)arg1;
 
 @end
 

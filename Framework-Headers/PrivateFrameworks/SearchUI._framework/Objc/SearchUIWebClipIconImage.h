@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUIFoundation/SearchUIAppIconImage.h>
+#import <SearchUI/SearchUIAppIconImage.h>
 
 @class UIWebClip;
 

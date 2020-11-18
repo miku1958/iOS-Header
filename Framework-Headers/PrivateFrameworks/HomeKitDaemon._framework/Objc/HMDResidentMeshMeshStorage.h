@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HMDDevice, HMDResidentMesh, NSMutableSet;
 
-@interface HMDResidentMeshMeshStorage : NSObject
+@interface HMDResidentMeshMeshStorage : HMFObject
 {
     BOOL _enabled;
     HMDResidentMesh *_owner;

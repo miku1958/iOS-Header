@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSData;
+@class NSData, PBUnknownFields;
 
 @interface GEOSuggestionsOptions : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     int _entriesType;
     int _listType;
     NSData *_suggestionEntryMetadata;
@@ -38,12 +39,13 @@
 @property (nonatomic) BOOL normalizePOIs; // @synthesize normalizePOIs=_normalizePOIs;
 @property (strong, nonatomic) NSData *suggestionEntryMetadata; // @synthesize suggestionEntryMetadata=_suggestionEntryMetadata;
 @property (strong, nonatomic) NSData *suggestionMetadata; // @synthesize suggestionMetadata=_suggestionMetadata;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (int)StringAsEntriesType:(id)arg1;
 - (int)StringAsListType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)entriesTypeAsString:(int)arg1;

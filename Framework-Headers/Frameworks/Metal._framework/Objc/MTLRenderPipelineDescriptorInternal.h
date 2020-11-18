@@ -12,6 +12,8 @@ __attribute__((visibility("hidden")))
     struct MTLRenderPipelineDescriptorPrivate _private;
 }
 
+@property (nonatomic) unsigned long long postVertexDumpBufferIndex;
+
 - (const struct MTLRenderPipelineDescriptorPrivate *)_descriptorPrivate;
 - (unsigned long long)alphaTestFunction;
 - (void)attachVertexDescriptor:(id)arg1;
@@ -23,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)fastBlendDescriptorAtIndex:(unsigned long long)arg1;
 - (id)formattedDescription:(unsigned long long)arg1;
+- (id)fragmentBuffers;
 - (unsigned int)fragmentDepthCompareClampMask;
 - (id)fragmentFunction;
 - (unsigned long long)hash;
@@ -41,9 +44,13 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)logicOperation;
 - (unsigned long long)maxTessellationFactor;
 - (id)newSerializedVertexDataWithFlags:(unsigned long long)arg1 error:(id *)arg2;
+- (BOOL)openGLModeEnabled;
+- (id)pipelineLibrary;
+- (unsigned long long)rasterSampleCount;
 - (void)reset;
 - (unsigned long long)sampleCount;
 - (float)sampleCoverage;
+- (BOOL)sampleCoverageInvert;
 - (unsigned long long)sampleMask;
 - (id)serializeFragmentData;
 - (void)setAlphaTestEnabled:(BOOL)arg1;
@@ -59,10 +66,14 @@ __attribute__((visibility("hidden")))
 - (void)setLogicOperation:(unsigned long long)arg1;
 - (void)setLogicOperationEnabled:(BOOL)arg1;
 - (void)setMaxTessellationFactor:(unsigned long long)arg1;
+- (void)setOpenGLModeEnabled:(BOOL)arg1;
+- (void)setPipelineLibrary:(id)arg1;
 - (void)setPointSmoothEnabled:(BOOL)arg1;
+- (void)setRasterSampleCount:(unsigned long long)arg1;
 - (void)setRasterizationEnabled:(BOOL)arg1;
 - (void)setSampleCount:(unsigned long long)arg1;
 - (void)setSampleCoverage:(float)arg1;
+- (void)setSampleCoverageInvert:(BOOL)arg1;
 - (void)setSampleMask:(unsigned long long)arg1;
 - (void)setStencilAttachmentPixelFormat:(unsigned long long)arg1;
 - (void)setTessellationControlPointIndexType:(unsigned long long)arg1;
@@ -82,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)tessellationOutputWindingOrder;
 - (unsigned long long)tessellationPartitionMode;
 - (void)validateWithDevice:(id)arg1;
+- (id)vertexBuffers;
 - (unsigned int)vertexDepthCompareClampMask;
 - (id)vertexDescriptor;
 - (id)vertexFunction;

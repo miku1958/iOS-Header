@@ -13,6 +13,7 @@
 @interface GEOABAssignmentResponse : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    unsigned long long _branchExpirationTtlHours;
     unsigned long long _refreshIntervalSeconds;
     double _timestamp;
     NSMutableArray *_assignments;
@@ -26,6 +27,7 @@
     BOOL _invalidatePoiCache;
     BOOL _invalidateTileCache;
     struct {
+        unsigned int branchExpirationTtlHours:1;
         unsigned int refreshIntervalSeconds:1;
         unsigned int timestamp:1;
         unsigned int invalidatePoiCache:1;
@@ -34,7 +36,9 @@
 }
 
 @property (strong, nonatomic) NSMutableArray *assignments; // @synthesize assignments=_assignments;
+@property (nonatomic) unsigned long long branchExpirationTtlHours; // @synthesize branchExpirationTtlHours=_branchExpirationTtlHours;
 @property (strong, nonatomic) GEOABClientConfig *clientConfig; // @synthesize clientConfig=_clientConfig;
+@property (nonatomic) BOOL hasBranchExpirationTtlHours;
 @property (readonly, nonatomic) BOOL hasClientConfig;
 @property (nonatomic) BOOL hasInvalidatePoiCache;
 @property (nonatomic) BOOL hasInvalidateTileCache;
@@ -59,6 +63,7 @@
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)assignmentType;
+- (void).cxx_destruct;
 - (id)_clientConfigValueForKey:(id)arg1;
 - (id)_experimentAssignmentForServiceType:(int)arg1 placeRequestType:(int)arg2;
 - (id)_querySubstringForServiceType:(int)arg1 placeRequestType:(int)arg2;
@@ -68,7 +73,6 @@
 - (void)clearAssignments;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

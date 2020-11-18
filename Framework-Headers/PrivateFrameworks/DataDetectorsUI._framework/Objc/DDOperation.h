@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 + (struct __DDScanner *)_sharedScannerForTypes:(unsigned long long)arg1;
 + (CDUnknownBlockType)shouldUrlifyBlockForTypes:(unsigned long long)arg1;
 + (CDUnknownBlockType)urlificationBlockForTypes:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (void)_applyContainerRestrictionsToTypes;
 - (BOOL)_containerReadyForDetection;
 - (int)_createScanQuery;

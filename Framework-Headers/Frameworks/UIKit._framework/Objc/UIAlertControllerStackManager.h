@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (void)_alertControllerWillAppear:(id)arg1;
 - (void)_alertControllerWillDisappear:(id)arg1;
 - (void)_didHideAlertController:(id)arg1;
-- (void)_displayedAlertControllersChanged;
 - (void)_hideStackedAlertControllers;
 - (void)_removeAlertControllerFromStack:(id)arg1;
 - (void)_showHiddenStackedAlertControllers;

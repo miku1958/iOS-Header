@@ -15,13 +15,11 @@
 }
 
 + (id)recordIdWithInternalEntityId:(long long)arg1;
-+ (id)recordIdWithInternalEntityId:(long long)arg1 foreignHash:(id)arg2;
 + (id)recordIdWithNumericValue:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)foreignHash;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInternalEntityId:(long long)arg1;

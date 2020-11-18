@@ -9,7 +9,7 @@
 #import <CloudDocsDaemon/NSURLSessionDownloadDelegate-Protocol.h>
 
 @class NSDictionary, NSMutableDictionary, NSOperationQueue, NSString, NSURL, NSURLSession;
-@protocol OS_dispatch_queue;
+@protocol NSObject, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface BRCUserDefaultsManager : NSObject <NSURLSessionDownloadDelegate>
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSURLSession *_urlSession;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
+    id<NSObject> _defaultsDidChangeNotificationObserver;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -40,8 +41,8 @@ __attribute__((visibility("hidden")))
 - (void)_reset;
 - (void)_saveServerConfigurationDictionaryToDB:(id)arg1;
 - (void)_setServerConfigurationURL:(id)arg1 whenLoaded:(CDUnknownBlockType)arg2;
-- (id)defaultsForAppLibraryIdentifier:(id)arg1;
-- (id)defaultsForAppLibraryName:(id)arg1;
+- (void)dealloc;
+- (id)defaultsForIdentifier:(id)arg1;
 - (id)init;
 - (void)reset;
 - (void)setServerConfigurationURL:(id)arg1 whenLoaded:(CDUnknownBlockType)arg2;

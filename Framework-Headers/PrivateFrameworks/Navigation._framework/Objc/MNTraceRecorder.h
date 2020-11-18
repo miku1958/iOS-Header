@@ -18,9 +18,12 @@
     NSDate *_recordingStartTime;
     BOOL _corrupted;
     BOOL _closed;
+    BOOL _created;
     struct sqlite3_stmt *_updateStart;
     struct sqlite3_stmt *_updateEnd;
+    struct sqlite3_stmt *_updateDirectionsFeedback;
     struct sqlite3_stmt *_updateActiveTransportType;
+    struct sqlite3_stmt *_environmentInfoInsert;
     struct sqlite3_stmt *_debugSettingInsert;
     struct sqlite3_stmt *_audioSettingInsert;
     struct sqlite3_stmt *_stylesheetInsert;
@@ -42,23 +45,28 @@
     struct sqlite3_stmt *_compassHeadingInsert;
     struct sqlite3_stmt *_routeLegGuidanceInsert;
     struct sqlite3_stmt *_routeLegEndGuidanceUpdate;
-    struct sqlite3_stmt *_guidanceEventInsert;
+    struct sqlite3_stmt *_traceEventInsert;
     struct sqlite3_stmt *_significantEventInsert;
+    struct sqlite3_stmt *_scheduleProjectionInsert;
+    struct sqlite3_stmt *_scheduleProjectionUpdate;
+    struct sqlite3_stmt *_commuteDestinationsInsert;
+    struct sqlite3_stmt *_commuteDirectionsRequestInsert;
+    struct sqlite3_stmt *_commuteDirectionsResponseUpdate;
     NSMapTable *_routeRequests;
     unsigned long long _routeRequestCount;
     unsigned long long _routeSelectionCount;
     unsigned long long _etaTrafficUpdateCount;
+    NSMapTable *_commuteDirectionsRequests;
     GEOComposedRouteLeg *_currentLeg;
     CDUnknownBlockType _timeSinceRecordingBeganHandler;
     CDUnknownBlockType _errorHandler;
-    BOOL _copyToCrashReporterDirectory;
     BOOL _lastPauseSpokenAudio;
     long long _lastVolumeSetting;
     id<MNTraceRecorderBackgroundGuard> _backgroundGuardDelegate;
 }
 
 @property (weak, nonatomic) id<MNTraceRecorderBackgroundGuard> backgroundGuardDelegate; // @synthesize backgroundGuardDelegate=_backgroundGuardDelegate;
-@property (nonatomic) BOOL copyToCrashReporterDirectory; // @synthesize copyToCrashReporterDirectory=_copyToCrashReporterDirectory;
+@property (nonatomic) BOOL copyToCrashReporterDirectory;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -69,7 +77,6 @@
 
 - (void).cxx_destruct;
 - (void)_closeTraceDB;
-- (void)_copyTraceToCrashReporter;
 - (void)_createTrace;
 - (void)_dispatchWrite:(CDUnknownBlockType)arg1;
 - (void)_initializeTraceDB;
@@ -88,14 +95,18 @@
 - (id)initWithPath:(id)arg1 clMapMatching:(BOOL)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (void)recordActiveTransportType:(int)arg1 timestamp:(double)arg2;
 - (void)recordAudioSetting:(BOOL)arg1 volume:(long long)arg2;
+- (void)recordCommuteDestinationWithID:(unsigned long long)arg1 name:(id)arg2 waypoint:(id)arg3;
+- (void)recordCommuteDirectionsRequest:(id)arg1 forDestinationID:(unsigned long long)arg2;
+- (void)recordCommuteDirectionsResponse:(id)arg1 error:(id)arg2 forRequest:(id)arg3;
 - (void)recordCompassHeading:(double)arg1 magneticHeading:(double)arg2 accuracy:(double)arg3 timestamp:(id)arg4;
 - (void)recordDebugSetting:(id)arg1 settingValue:(id)arg2;
+- (void)recordDirectionsFeedback:(id)arg1;
 - (void)recordETATrafficUpdateError:(id)arg1;
 - (void)recordETATrafficUpdateRequest:(id)arg1;
 - (void)recordETATrafficUpdateRequest:(id)arg1 forDestination:(id)arg2;
 - (void)recordETATrafficUpdateResponse:(id)arg1;
+- (void)recordEnvironmentInfo:(id)arg1 value:(id)arg2;
 - (void)recordError:(id)arg1;
-- (void)recordGuidanceEventForEventType:(long long)arg1 stage:(long long)arg2 description:(id)arg3;
 - (void)recordGuidanceWasEnded;
 - (void)recordGuidanceWasEndedAtTime:(double)arg1;
 - (void)recordGuidanceWasStartedForRouteLeg:(id)arg1;
@@ -106,6 +117,7 @@
 - (void)recordLocationUpdatePause;
 - (void)recordLocationUpdateResume;
 - (void)recordMotionUpdate:(unsigned long long)arg1 exitType:(unsigned long long)arg2 confidence:(unsigned long long)arg3;
+- (void)recordProjectedArrivalTime:(double)arg1 actualArrivalTime:(double)arg2 arrivalTimeDelta:(double)arg3 matchType:(long long)arg4 vehicleType:(long long)arg5 lastKnownLocation:(id)arg6 forStepIndex:(unsigned long long)arg7 withDuration:(double)arg8 andManeuverType:(int)arg9;
 - (void)recordRouteDeselected;
 - (void)recordRouteError:(id)arg1;
 - (void)recordRouteError:(id)arg1 forRouteRequest:(id)arg2;
@@ -115,6 +127,9 @@
 - (void)recordSignificantEvent:(long long)arg1 withData:(id)arg2;
 - (void)recordSimulatedCoordinate:(struct CLLocationCoordinate2D)arg1 course:(double)arg2 altitude:(double)arg3 speed:(double)arg4 timestamp:(double)arg5 activeTransportType:(int)arg6;
 - (void)recordStylesheet:(id)arg1 data:(id)arg2;
+- (void)recordTraceEvent:(id)arg1;
+- (void)recordTraceEventAtTime:(double)arg1 eventType:(long long)arg2 stage:(long long)arg3 description:(id)arg4;
+- (void)recordTraceEventForEventType:(long long)arg1 stage:(long long)arg2 description:(id)arg3;
 - (void)recordVehicleHeading:(double)arg1 timestamp:(id)arg2;
 - (void)recordVehicleSpeed:(double)arg1 timestamp:(id)arg2;
 - (void)resetLocationsForSimulation;
@@ -127,7 +142,11 @@
 - (void)setRouteGenius:(BOOL)arg1;
 - (void)startWritingTraceToFile;
 - (void)startWritingTraceToFileAtPath:(id)arg1;
+- (void)startWritingTraceToFileAtPath:(id)arg1 shouldPrepareStatements:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)startWritingTraceToFileIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)startWritingTraceToFileWithCompletion:(CDUnknownBlockType)arg1;
 - (double)timeSinceRecordingBegan;
+- (void)updateActualArrivalTime:(double)arg1 arrivalTimeDelta:(double)arg2 forStepIndex:(unsigned long long)arg3;
 
 @end
 

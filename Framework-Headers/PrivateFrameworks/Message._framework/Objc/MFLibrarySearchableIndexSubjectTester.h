@@ -8,16 +8,16 @@
 
 #import <Message/MFLibrarySearchableIndexTesting-Protocol.h>
 
-@class NSDictionary, NSString;
+@class MFLibrarySearchableIndexQueryContext, NSString;
 
 @interface MFLibrarySearchableIndexSubjectTester : NSObject <MFLibrarySearchableIndexTesting>
 {
 }
 
+@property (readonly, nonatomic) MFLibrarySearchableIndexQueryContext *context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSDictionary *queryOptions;
 @property (readonly) Class superclass;
 
 - (id)_subjectFromSearchableItem:(id)arg1;

@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
-@class IDSService, NSArray, NSMutableSet, NSString;
+@class IDSService, NSArray, NSMutableSet, NSObject, NSString;
 @protocol HMDWatchManagerDelegate, OS_dispatch_queue;
 
-@interface HMDWatchManager : NSObject <HMFLogging, IDSServiceDelegate>
+@interface HMDWatchManager : HMFObject <HMFLogging, IDSServiceDelegate>
 {
     NSMutableSet *_connectedWatches;
     BOOL _pairedWithWatch;
@@ -41,6 +41,7 @@
 - (void)__initializeConnectedDevices;
 - (void)_updateConnectedDevices:(id)arg1;
 - (void)addConnectedWatch:(id)arg1;
+- (id)connectedWatchFromDeviceID:(id)arg1;
 - (id)descriptionWithPointer:(BOOL)arg1;
 - (id)init;
 - (void)notifyDelegateOfAddedConnectedWatch:(id)arg1;

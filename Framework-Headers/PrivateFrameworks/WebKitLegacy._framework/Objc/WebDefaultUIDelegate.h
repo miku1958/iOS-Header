@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)webView:(id)arg1 createWebViewWithRequest:(id)arg2 windowFeatures:(id)arg3;
 - (void)webView:(id)arg1 didDrawRect:(struct CGRect)arg2;
 - (void)webView:(id)arg1 didScrollDocumentInFrameView:(id)arg2;
+- (unsigned long long)webView:(id)arg1 dragDestinationActionMaskForSession:(id)arg2;
 - (void)webView:(id)arg1 exceededApplicationCacheOriginQuotaForSecurityOrigin:(id)arg2 totalSpaceNeeded:(unsigned long long)arg3;
 - (id)webView:(id)arg1 generateReplacementFile:(id)arg2;
 - (void)webView:(id)arg1 makeFirstResponder:(id)arg2;

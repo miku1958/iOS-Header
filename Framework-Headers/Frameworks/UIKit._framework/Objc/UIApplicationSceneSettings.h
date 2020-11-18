@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) unsigned long long deactivationReasons;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) long long deviceOrientation;
 @property (readonly, nonatomic) BOOL deviceOrientationEventsEnabled;
 @property (readonly, nonatomic) BOOL forcedStatusBarForegroundTransparent;
 @property (readonly, strong, nonatomic) NSNumber *forcedStatusBarHidden;
@@ -30,6 +31,7 @@
 @property (readonly, nonatomic) BOOL underLock;
 @property (readonly, nonatomic) long long userInterfaceStyle;
 
+- (Class)canvasClass;
 - (BOOL)isUISubclass;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

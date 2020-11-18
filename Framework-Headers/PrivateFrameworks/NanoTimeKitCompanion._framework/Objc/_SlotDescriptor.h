@@ -6,30 +6,32 @@
 
 #import <objc/NSObject.h>
 
-#import <NanoTimeKitCompanion/NTKRestrictedApplicationsChangeObserver-Protocol.h>
+#import <NanoTimeKitCompanion/NTKInstalledSystemApplicationsChangeObserver-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSIndexSet, NSString;
 
-@interface _SlotDescriptor : NSObject <NTKRestrictedApplicationsChangeObserver>
+@interface _SlotDescriptor : NSObject <NTKInstalledSystemApplicationsChangeObserver>
 {
-    unsigned long long _slotAllowedTypes;
     long long _family;
     NSArray *_typesRankedList;
-    unsigned long long _allowedTypes;
+    NSIndexSet *_allowedTypes;
+    NSIndexSet *_possibleTypes;
 }
 
-@property (readonly, nonatomic) unsigned long long allowedTypes; // @synthesize allowedTypes=_allowedTypes;
+@property (readonly, nonatomic) NSIndexSet *allowedTypes; // @synthesize allowedTypes=_allowedTypes;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long family; // @synthesize family=_family;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSIndexSet *possibleTypes; // @synthesize possibleTypes=_possibleTypes;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *typesRankedList; // @synthesize typesRankedList=_typesRankedList;
 
-+ (id)descriptorWithComplicationFamily:(long long)arg1 complicationTypesRankedList:(id)arg2 allowedComplicationTypes:(unsigned long long)arg3;
++ (id)descriptorWithComplicationFamily:(long long)arg1 complicationTypesRankedList:(id)arg2 allowedComplicationTypes:(id)arg3;
 - (void).cxx_destruct;
 - (BOOL)allowsType:(unsigned long long)arg1;
-- (void)restrictedApplicationsDidChange;
+- (void)installedSystemApplicationsDidChange;
+- (BOOL)supportsType:(unsigned long long)arg1;
 
 @end
 

@@ -10,18 +10,20 @@
 
 @interface TKPickerSelectableItem : TKPickerRowItem
 {
-    BOOL _textCentered;
+    BOOL _shouldTintText;
     BOOL _showsCheckmark;
     BOOL _showsDisclosureIndicator;
+    BOOL _shouldPreventSelection;
     NSString *_text;
     NSString *_detailText;
 }
 
 @property (copy, nonatomic, setter=_setDetailText:) NSString *detailText; // @synthesize detailText=_detailText;
+@property (nonatomic, setter=_setShouldPreventSelection:) BOOL shouldPreventSelection; // @synthesize shouldPreventSelection=_shouldPreventSelection;
+@property (nonatomic, setter=_setShouldTintText:) BOOL shouldTintText; // @synthesize shouldTintText=_shouldTintText;
 @property (nonatomic, setter=_setShowsCheckmark:) BOOL showsCheckmark; // @synthesize showsCheckmark=_showsCheckmark;
 @property (nonatomic, setter=_setShowsDisclosureIndicator:) BOOL showsDisclosureIndicator; // @synthesize showsDisclosureIndicator=_showsDisclosureIndicator;
 @property (copy, nonatomic, setter=_setText:) NSString *text; // @synthesize text=_text;
-@property (nonatomic, getter=isTextCentered, setter=_setTextCentered:) BOOL textCentered; // @synthesize textCentered=_textCentered;
 
 - (void).cxx_destruct;
 - (void)_appendDescriptionOfAttributesToString:(id)arg1;

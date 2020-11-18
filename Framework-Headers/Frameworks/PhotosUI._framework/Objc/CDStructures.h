@@ -57,6 +57,13 @@ struct PXAssetBadgeInfo {
     long long count;
 };
 
+struct PXContextualNotificationVisualState {
+    BOOL onscreen;
+    struct CGRect containingFrame;
+    double verticalOffset;
+    double alpha;
+};
+
 struct PXDisplayVelocity {
     double x;
     double y;
@@ -266,6 +273,18 @@ typedef struct {
 } CDStruct_4bbd3430;
 
 typedef struct {
+    long long value;
+    int timescale;
+    unsigned int flags;
+    long long epoch;
+} CDStruct_1b6d18a9;
+
+typedef struct {
+    BOOL _field1;
+    struct CGPoint _field2;
+} CDStruct_7898798c;
+
+typedef struct {
     struct CLLocationCoordinate2D _field1;
     struct {
         double _field1;
@@ -275,6 +294,21 @@ typedef struct {
 
 // Ambiguous groups
 typedef struct {
+    BOOL respondsToItemIndexPathAtLocation;
+    BOOL respondsToItemIndexPathClosestLeadingLocation;
+    BOOL respondsToItemIndexPathClosestAboveLocation;
+} CDStruct_d45a99d3;
+
+typedef struct {
+    BOOL respondsToProgressDidChange;
+    BOOL respondsToStatusDidChange;
+} CDStruct_79eed083;
+
+typedef struct {
     BOOL button;
 } CDStruct_6d279c03;
+
+typedef struct {
+    BOOL selectedIndexPaths;
+} CDStruct_0794f076;
 

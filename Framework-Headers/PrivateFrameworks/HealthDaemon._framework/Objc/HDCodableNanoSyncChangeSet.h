@@ -44,9 +44,11 @@
 @property (readonly) Class superclass;
 
 + (id)changeSetWithChanges:(id)arg1 sessionUUID:(id)arg2 startDate:(id)arg3 sessionError:(id)arg4 statusCode:(int)arg5;
++ (Class)changesType;
 + (id)persistentUserInfoKey;
 + (id)retreiveFromPersistentUserInfo:(id)arg1;
 - (void).cxx_destruct;
+- (int)StringAsStatusCode:(id)arg1;
 - (void)_addChanges:(id)arg1;
 - (void)addChanges:(id)arg1;
 - (void)addToPersistentUserInfo:(id)arg1;
@@ -64,6 +66,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)nanoSyncDescription;
 - (BOOL)readFrom:(id)arg1;
+- (id)statusCodeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -17,19 +17,23 @@
     NSMutableArray *_displayWrappers;
     NSMapTable *_displayWrappersToDataMode;
     BOOL _showsLockedUI;
+    BOOL _faceZooming;
     NTKComplication *_complication;
     long long _complicationFamily;
     CDUnknownBlockType _invalidationHandler;
     NSDate *_pauseDate;
     long long _cachingMode;
     long long _updatingMode;
+    long long _animationMode;
     long long _effectiveFaceDataMode;
 }
 
+@property (readonly, nonatomic) long long animationMode; // @synthesize animationMode=_animationMode;
 @property (readonly, nonatomic) long long cachingMode; // @synthesize cachingMode=_cachingMode;
 @property (readonly, nonatomic) NTKComplication *complication; // @synthesize complication=_complication;
 @property (readonly, nonatomic) long long complicationFamily; // @synthesize complicationFamily=_complicationFamily;
 @property (readonly, nonatomic) long long effectiveFaceDataMode; // @synthesize effectiveFaceDataMode=_effectiveFaceDataMode;
+@property (nonatomic, getter=isFaceZooming) BOOL faceZooming; // @synthesize faceZooming=_faceZooming;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (readonly, weak, nonatomic) id<NTKComplicationDisplay> legacyDisplay;
 @property (strong, nonatomic) NSDate *pauseDate; // @synthesize pauseDate=_pauseDate;
@@ -45,6 +49,7 @@
 - (void).cxx_destruct;
 - (void)DEPRECATEDInvalidate;
 - (void)_activate;
+- (void)_applyAnimationMode;
 - (void)_applyCachingMode;
 - (void)_applyUpdatingMode;
 - (void)_configureForLegacyDisplay:(id)arg1;
@@ -52,15 +57,19 @@
 - (id)_initWithComplication:(id)arg1 legacyDisplay:(id)arg2;
 - (void)_openApp:(id)arg1 withURL:(id)arg2 result:(CDUnknownBlockType)arg3;
 - (void)_openAppWithURL:(id)arg1;
+- (void)_updateEffectiveAnimationMode;
 - (void)_updateEffectiveCachingMode;
 - (void)_updateEffectiveFaceDataMode;
 - (void)_updateEffectiveUpdatingMode;
-- (void)_updateInternalModes;
+- (void)_updateInternalModes:(BOOL)arg1;
+- (void)_updateIsComplicationActive:(BOOL)arg1;
 - (void)activate;
 - (void)addDisplayWrapper:(id)arg1;
 - (id)complicationApplicationIdentifier;
 - (void)deactivate;
 - (void)dealloc;
+- (void)didTouchDown;
+- (void)didTouchUpInside;
 - (void)enumerateDisplayWrappersWithBlock:(CDUnknownBlockType)arg1;
 - (void)handleFaceDefaultsChanged;
 - (BOOL)hasTapAction;

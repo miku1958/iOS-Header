@@ -13,7 +13,7 @@
 
 @optional
 - (unsigned long long)desiredDateComplicationDateStyle;
-- (BOOL)needsAbbreviatedDate;
+- (unsigned long long)overrideDateStyle;
 - (void)setDateComplicationText:(NSString *)arg1 withDayRange:(struct _NSRange)arg2 forDateStyle:(unsigned long long)arg3;
 @end
 

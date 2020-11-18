@@ -14,7 +14,6 @@
 {
 }
 
-@property (copy, nonatomic) NSArray *activeSubscriptionBundleIds;
 @property (copy, nonatomic) NSArray *activeSubscriptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

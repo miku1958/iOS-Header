@@ -16,13 +16,14 @@
 
 @property (readonly, nonatomic) long long locationOfInterestType; // @synthesize locationOfInterestType=_locationOfInterestType;
 
-+ (id)allowedKeys;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLocationOfInterestType:(long long)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -16,6 +16,7 @@
 
 @property (copy, setter=_setCachedSiriLanguageCode:) NSString *_cachedSiriLanguageCode; // @synthesize _cachedSiriLanguageCode;
 
++ (void)_verifyProcessCanDonateIntentWithName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)requestSiriAuthorization:(CDUnknownBlockType)arg1;
 + (id)sharedPreferences;
 + (long long)siriAuthorizationStatus;
@@ -26,6 +27,7 @@
 - (long long)_siriAuthorizationStatus;
 - (id)_siriLanguageCode;
 - (void)_updateWithExtensionContext:(id)arg1;
+- (void)_verifyProcessCanDonateIntentWithName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_weAreRunningAsAnExtension;
 - (void)assertThisProcessHasSiriEntitlement;
 - (id)init;

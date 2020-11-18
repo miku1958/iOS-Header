@@ -9,7 +9,7 @@
 #import <BatteryCenter/NSCoding-Protocol.h>
 #import <BatteryCenter/NSCopying-Protocol.h>
 
-@class NSDictionary, NSString, UIImage;
+@class NSString, UIImage;
 
 @interface BCBatteryDevice : NSObject <NSCopying, NSCoding>
 {
@@ -17,8 +17,9 @@
     NSString *_matchIdentifier;
     long long _percentCharge;
     BOOL _charging;
-    NSDictionary *_glyphs;
+    UIImage *_glyph;
     BOOL _connected;
+    BOOL _batterySaverModeActive;
     BOOL _lowBattery;
     BOOL _internal;
     BOOL _powerSource;
@@ -27,15 +28,18 @@
     long long _vendor;
     long long _powerSourceState;
     long long _productIdentifier;
+    NSString *_accessoryIdentifier;
     NSString *_name;
     unsigned long long _parts;
+    unsigned long long _accessoryCategory;
     NSString *_groupName;
-    NSString *_baseIdentifier;
     long long _transportType;
 }
 
+@property (nonatomic) unsigned long long accessoryCategory; // @synthesize accessoryCategory=_accessoryCategory;
+@property (copy, nonatomic) NSString *accessoryIdentifier; // @synthesize accessoryIdentifier=_accessoryIdentifier;
 @property (nonatomic) BOOL approximatesPercentCharge; // @synthesize approximatesPercentCharge=_approximatesPercentCharge;
-@property (copy, nonatomic) NSString *baseIdentifier; // @synthesize baseIdentifier=_baseIdentifier;
+@property (nonatomic, getter=isBatterySaverModeActive) BOOL batterySaverModeActive; // @synthesize batterySaverModeActive=_batterySaverModeActive;
 @property (nonatomic, getter=isCharging) BOOL charging; // @synthesize charging=_charging;
 @property (nonatomic, getter=isConnected) BOOL connected; // @synthesize connected=_connected;
 @property (nonatomic, getter=isFake) BOOL fake; // @synthesize fake=_fake;
@@ -54,15 +58,14 @@
 @property (nonatomic) long long transportType; // @synthesize transportType=_transportType;
 @property (readonly, nonatomic) long long vendor; // @synthesize vendor=_vendor;
 
-+ (id)batteryDeviceWithIdentifier:(id)arg1 vendor:(long long)arg2 productIdentifier:(long long)arg3 baseIdentifier:(id)arg4 parts:(unsigned long long)arg5 matchIdentifier:(id)arg6;
++ (id)batteryDeviceWithIdentifier:(id)arg1 vendor:(long long)arg2 productIdentifier:(long long)arg3 parts:(unsigned long long)arg4 matchIdentifier:(id)arg5;
 - (void).cxx_destruct;
-- (id)_lazyGlyphs;
+- (id)_lazyGlyph;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)glyphForPartKey:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 vendor:(long long)arg2 productIdentifier:(long long)arg3 baseIdentifier:(id)arg4 parts:(unsigned long long)arg5 matchIdentifier:(id)arg6;
+- (id)initWithIdentifier:(id)arg1 vendor:(long long)arg2 productIdentifier:(long long)arg3 parts:(unsigned long long)arg4 matchIdentifier:(id)arg5;
 
 @end
 

@@ -21,6 +21,7 @@
     long long _idCounter;
     _Atomic unsigned long long _count;
     _Atomic unsigned long long _maxQueueItems;
+    id _lockStateChangeToken;
 }
 
 @property (nonatomic) unsigned long long maxQueueItems;
@@ -30,14 +31,17 @@
 - (id)_getDb;
 - (void)_initIdCounter;
 - (BOOL)_migrateDb:(id)arg1;
+- (void)_openFilesForProcessingWhileLocked;
 - (void)_popWithStringAfterWhereClause:(id)arg1 binder:(CDUnknownBlockType)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)_read:(CDStruct_beb4cc23)arg1 fileId:(int)arg2 callback:(CDUnknownBlockType)arg3;
+- (id)_recreateDb;
 - (void)_trimPermafailDirectory;
 - (void)_unlinkFileWithIdLocked:(int)arg1;
 - (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(BOOL)arg3 item:(id)arg4 callback:(CDUnknownBlockType)arg5;
 - (void)close;
 - (unsigned long long)count;
 - (void)countHighPriorityItems:(unsigned long long *)arg1 lowPriorityItems:(unsigned long long *)arg2;
+- (void)dealloc;
 - (void)deleteWithItemId:(long long)arg1 fileId:(int)arg2;
 - (id)initWithDirectory:(id)arg1;
 - (void)markAsFailedWithId:(long long)arg1;

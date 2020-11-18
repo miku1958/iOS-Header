@@ -17,6 +17,7 @@
 @property (readonly, nonatomic) BOOL doingBiasEstimation;
 @property (readonly, nonatomic) BOOL doingYawCorrection;
 @property (readonly, nonatomic) CDStruct_31142d93 gravity;
+@property (readonly, nonatomic) double heading;
 @property (readonly, nonatomic) CDStruct_27fd20ed magneticField;
 @property (readonly, nonatomic) int magneticFieldCalibrationLevel;
 @property (readonly, nonatomic) CDStruct_31142d93 rotationRate;
@@ -28,7 +29,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDeviceMotion:(CDStruct_7fb6ae47)arg1 andTimestamp:(double)arg2;
+- (id)initWithDeviceMotion:(CDStruct_981b33bd)arg1 andTimestamp:(double)arg2;
 
 @end
 

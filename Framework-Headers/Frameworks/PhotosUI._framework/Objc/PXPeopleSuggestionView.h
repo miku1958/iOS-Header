@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXSmartScaleView.h>
 
-@class CAShapeLayer, NSTimer, UIImageView, UIView;
+@class CAShapeLayer, NSDateFormatter, PXPersonImageRequest, UIImageView, UILabel, UIView;
 @protocol PXPerson;
 
 @interface PXPeopleSuggestionView : PXSmartScaleView
@@ -18,31 +18,35 @@
     UIView *_suggestionView;
     UIView *_dimView;
     CAShapeLayer *_spotlightLayer;
-    NSTimer *_imageLoadInvalidationTimer;
+    PXPersonImageRequest *_imageRequest;
+    NSDateFormatter *_dateFormatter;
+    UILabel *_dateLabel;
     struct CGRect _faceRect;
 }
 
+@property (strong, nonatomic) NSDateFormatter *dateFormatter; // @synthesize dateFormatter=_dateFormatter;
+@property (strong, nonatomic) UILabel *dateLabel; // @synthesize dateLabel=_dateLabel;
 @property (strong, nonatomic) UIView *dimView; // @synthesize dimView=_dimView;
 @property (nonatomic) struct CGRect faceRect; // @synthesize faceRect=_faceRect;
-@property (strong) NSTimer *imageLoadInvalidationTimer; // @synthesize imageLoadInvalidationTimer=_imageLoadInvalidationTimer;
+@property (strong, nonatomic) PXPersonImageRequest *imageRequest; // @synthesize imageRequest=_imageRequest;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
-@property BOOL needsSpotlightUpdate; // @synthesize needsSpotlightUpdate=_needsSpotlightUpdate;
+@property (nonatomic) BOOL needsSpotlightUpdate; // @synthesize needsSpotlightUpdate=_needsSpotlightUpdate;
 @property (strong, nonatomic) CAShapeLayer *spotlightLayer; // @synthesize spotlightLayer=_spotlightLayer;
 @property (readonly, nonatomic) id<PXPerson> suggestion; // @synthesize suggestion=_suggestion;
 @property (strong, nonatomic) UIView *suggestionView; // @synthesize suggestionView=_suggestionView;
-@property BOOL validSpotlight; // @synthesize validSpotlight=_validSpotlight;
+@property (nonatomic) BOOL validSpotlight; // @synthesize validSpotlight=_validSpotlight;
 
 - (void).cxx_destruct;
 - (double)_faceScale;
-- (void)_fetchImageForSuggestion:(id)arg1 targetSize:(struct CGSize)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (struct CGRect)_scaledFaceRect;
+- (void)_updateDateFieldWithSuggestion:(id)arg1;
 - (void)_updateSpotlightAnimated:(BOOL)arg1;
 - (void)_updateSuggestionImageWithAnimatedSpotlight:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)commonInit;
-- (void)dealloc;
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setSuggestion:(id)arg1 animated:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)viewScaleDidChange;
 

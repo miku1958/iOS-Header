@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)recognized:(id)arg1;
+- (BOOL)shouldBeRequiredToFailByGestureRecognizer:(id)arg1;
 - (void)startRecognitionTimer:(double)arg1;
 - (void)startTapTimer:(double)arg1;
 - (void)tooSlow:(id)arg1;

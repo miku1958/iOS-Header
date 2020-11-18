@@ -14,6 +14,7 @@
 {
     NSString *_identifier;
     NSXPCConnection *_connection;
+    BOOL _connected;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,6 +23,10 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_connectToServerIfNecessary;
+- (void)_invalidateConnection;
+- (void)_noteConnectionDropped;
+- (id)_remoteInterfaceWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)getCardItemsWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithIdentifier:(id)arg1;

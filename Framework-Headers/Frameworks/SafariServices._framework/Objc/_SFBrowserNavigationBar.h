@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) _SFBrowserToolbar *toolbar;
 
++ (long long)_metricsCategory;
 - (id)newTextField;
 - (double)placeholderHorizontalInset;
 - (void)tintColorDidChange;

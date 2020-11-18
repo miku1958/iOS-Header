@@ -21,6 +21,7 @@
     BOOL _forcesSingleButtonToCenter;
     NSArray *_currentConstraints;
     BOOL _disableButtonHighlights;
+    BOOL _shouldUseVerticalLayout;
     id<EKUIEventStatusButtonsViewDelegate> _delegate;
     long long _selectedAction;
     double _buttonsCharge;
@@ -34,8 +35,10 @@
 @property (nonatomic) BOOL disableButtonHighlights; // @synthesize disableButtonHighlights=_disableButtonHighlights;
 @property (readonly, nonatomic) UIFont *font;
 @property (nonatomic) long long selectedAction; // @synthesize selectedAction=_selectedAction;
+@property (nonatomic) BOOL shouldUseVerticalLayout; // @synthesize shouldUseVerticalLayout=_shouldUseVerticalLayout;
 @property (nonatomic) long long textSizeMode; // @synthesize textSizeMode=_textSizeMode;
 
++ (id)logHandle;
 - (void).cxx_destruct;
 - (long long)_actionForButton:(id)arg1;
 - (id)_buttonForAction:(long long)arg1;
@@ -50,6 +53,7 @@
 - (void)_setupConstraints;
 - (BOOL)_shouldCenterButton;
 - (void)_updateButtonFontsWithSize:(double)arg1;
+- (double)_updateFontSizesFromDelegate;
 - (void)_updateSelectionToButton:(id)arg1;
 - (double)baselineFromBoundsTop;
 - (void)buttonTapped:(id)arg1;
@@ -57,6 +61,7 @@
 - (id)initWithFrame:(struct CGRect)arg1 actions:(id)arg2 delegate:(id)arg3 centerSingleButton:(BOOL)arg4;
 - (void)layoutSubviews;
 - (void)updateConstraints;
+- (void)updateFonts;
 - (void)updateForMiniBarState:(BOOL)arg1;
 
 @end

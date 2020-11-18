@@ -16,6 +16,7 @@
 - (void)_accessibilityPerformLibraryAddKeepLocalControl:(id)arg1;
 - (id)_accessibilityUserTestingChildren;
 - (id)accessibilityCustomActions;
+- (unsigned long long)accessibilityTraits;
 - (id)lockupViewCustomActions;
 - (void)setLockupViewCustomActions:(id)arg1;
 

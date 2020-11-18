@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CN : NSObject
 {
 }
 
++ (id)_unifyContacts:(id)arg1 includingMainStoreContacts:(BOOL)arg2;
 + (void)addLinkedIdentifier:(id)arg1 toLabeledValue:(id)arg2;
 + (id)allContactProperties;
 + (id)allContactPropertyKeys;
@@ -29,11 +30,13 @@
 + (id)contactPropertiesByKey;
 + (id)contactRelationsDescription;
 + (id)contactTypeDescription;
++ (id)contactUnifyingContacts:(id)arg1 includingMainStoreContacts:(BOOL)arg2;
 + (id)containerEnabledDescription;
 + (id)containerIdentifierDescription;
 + (id)containerNameDescription;
 + (id)containerTypeDescription;
 + (id)containeriOSLegacyIdentifierDescription;
++ (id)creationDateDescription;
 + (id)cropRectDescription;
 + (CDUnknownBlockType)dateComponentsFromDictionaryTransform;
 + (CDUnknownBlockType)dateComponentsToDictionaryTransform;
@@ -62,6 +65,7 @@
 + (id)jobTitleDescription;
 + (id)joinNonEmptyContactProperties:(id)arg1 onContact:(id)arg2;
 + (id)joinNonEmptyContactProperties:(id)arg1 onContact:(id)arg2 withDelimiter:(id)arg3;
++ (id)keyVectorForAllUsedKeysForInternationalSupport;
 + (id)linkIdentifierDescription;
 + (id)localizedNameDelimiterForContact:(id)arg1;
 + (id)localizedPhoneticNameDelimiterForContact:(id)arg1;
@@ -69,6 +73,7 @@
 + (id)middleNameDescription;
 + (id)modificationDateDescription;
 + (id)multiValueContactProperties;
++ (id)mutableContactUnifyingContacts:(id)arg1 includingMainStoreContacts:(BOOL)arg2;
 + (id)namePrefixDescription;
 + (id)nameSuffixDescription;
 + (id)nicknameDescription;
@@ -108,10 +113,10 @@
 + (CDUnknownBlockType)socialProfileToDictionaryTransform;
 + (CDUnknownBlockType)socialProfileToFoundationProfileTransform;
 + (id)socialProfilesDescription;
++ (id)sourceContactForValue:(id)arg1 labeledValueIdentifier:(id)arg2 propertyKey:(id)arg3 inUnifiedContact:(id)arg4;
 + (id)textAlertDescription;
 + (id)thumbnailImageDataDescription;
 + (id)unifyContactMatchInfos:(id)arg1 linkedContacts:(id)arg2;
-+ (id)unifyContacts:(id)arg1 includingMainStoreContacts:(BOOL)arg2;
 + (id)unifyMultivalues:(id)arg1 forProperty:(id)arg2;
 + (id)urlAddressesDescription;
 + (id)writableAlwaysFetchedProperties;

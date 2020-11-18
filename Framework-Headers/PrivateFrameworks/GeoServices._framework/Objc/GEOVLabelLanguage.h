@@ -22,9 +22,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *languageLocale; // @synthesize languageLocale=_languageLocale;
 @property (nonatomic) unsigned int startOffset; // @synthesize startOffset=_startOffset;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

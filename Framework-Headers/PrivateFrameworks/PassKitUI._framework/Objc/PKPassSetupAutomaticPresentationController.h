@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKPaymentVerificationControllerDelegate-Protocol.h>
 
-@class NSString, PKPass, PKPassView, PKPaymentVerificationController, PKPaymentWebService, PKTableHeaderView, UIImage;
+@class NSString, PKPass, PKPassView, PKPaymentProvisioningController, PKPaymentVerificationController, PKPaymentWebService, PKTableHeaderView, UIImage;
 @protocol PKPaymentSetupViewControllerDelegate;
 
 @interface PKPassSetupAutomaticPresentationController : PKPaymentSetupTableViewController <PKPaymentVerificationControllerDelegate>
@@ -19,6 +19,7 @@
     PKPassView *_passView;
     UIImage *_passSnapshot;
     PKPaymentVerificationController *_verificationController;
+    PKPaymentProvisioningController *_provisioningController;
     PKPass *_pass;
     id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
 }
@@ -36,13 +37,15 @@
 - (id)_contextSpecificStringForAggDKey:(id)arg1;
 - (void)_dismissView;
 - (long long)_paymentPassState;
+- (void)_presentNextCredentialWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_saveSettings;
 - (void)_showAddToWatchOfferForPass:(id)arg1;
 - (void)_showVerificationForPass:(id)arg1;
+- (void)_terminateSetupFlow;
 - (void)cancel:(id)arg1;
 - (void)done:(id)arg1;
 - (id)initWithPass:(id)arg1;
-- (id)initWithPaymentWebService:(id)arg1 pass:(id)arg2 context:(long long)arg3;
+- (id)initWithPaymentWebService:(id)arg1 pass:(id)arg2 context:(long long)arg3 provisioningController:(id)arg4;
 - (void)loadView;
 - (void)logAggDContextSpecificCheckpointForKey:(id)arg1;
 - (void)presentVerificationViewController:(id)arg1 animated:(BOOL)arg2;

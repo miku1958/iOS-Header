@@ -8,11 +8,12 @@
 
 #import <MediaServices/NSStreamDelegate-Protocol.h>
 
-@class NSInputStream, NSOutputStream, NSString;
+@class NSInputStream, NSMutableArray, NSOutputStream, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MSVStreamWriter : NSObject <NSStreamDelegate>
 {
+    NSMutableArray *_pendingWriteDataList;
     BOOL _stopped;
     BOOL _closeOnStop;
     struct z_stream_s *_zstreamp;
@@ -45,6 +46,7 @@
 
 - (void).cxx_destruct;
 - (id)_decompressData:(id)arg1;
+- (void)_writeAvailablePendingData;
 - (id)init;
 - (id)initWithOutputStream:(id)arg1 queue:(id)arg2;
 - (id)initWithQueue:(id)arg1;
@@ -53,6 +55,7 @@
 - (void)stream:(id)arg1 handleEvent:(unsigned long long)arg2;
 - (BOOL)writeAllData:(id)arg1 error:(id *)arg2;
 - (void)writeAllData:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)writeData:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)writeStreamError:(CDStruct_87dc826d)arg1;
 
 @end

@@ -10,27 +10,8 @@
 
 @interface GEOLogFrameworkMetricLogMessage : PBCodable <NSCopying>
 {
-    unsigned long long _messageSize;
-    unsigned int _messageCount;
-    int _metricState;
-    int _metricType;
-    unsigned int _retryCount;
-    CDStruct_86e90cf6 _has;
 }
 
-@property (nonatomic) BOOL hasMessageCount;
-@property (nonatomic) BOOL hasMessageSize;
-@property (nonatomic) BOOL hasMetricState;
-@property (nonatomic) BOOL hasMetricType;
-@property (nonatomic) BOOL hasRetryCount;
-@property (nonatomic) unsigned int messageCount; // @synthesize messageCount=_messageCount;
-@property (nonatomic) unsigned long long messageSize; // @synthesize messageSize=_messageSize;
-@property (nonatomic) int metricState; // @synthesize metricState=_metricState;
-@property (nonatomic) int metricType; // @synthesize metricType=_metricType;
-@property (nonatomic) unsigned int retryCount; // @synthesize retryCount=_retryCount;
-
-- (int)StringAsMetricState:(id)arg1;
-- (int)StringAsMetricType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -38,8 +19,6 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
-- (id)metricStateAsString:(int)arg1;
-- (id)metricTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

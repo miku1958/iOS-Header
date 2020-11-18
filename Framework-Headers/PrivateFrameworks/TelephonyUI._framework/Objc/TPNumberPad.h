@@ -12,17 +12,16 @@
 {
     NSMutableArray *_buttons;
     BOOL _numberButtonsEnabled;
+    double _buttonBackgroundAlpha;
 }
 
-@property (nonatomic) double buttonBackgroundAlpha;
+@property (nonatomic) double buttonBackgroundAlpha; // @synthesize buttonBackgroundAlpha=_buttonBackgroundAlpha;
 @property (strong) NSArray *buttons; // @dynamic buttons;
 @property (nonatomic) BOOL numberButtonsEnabled; // @synthesize numberButtonsEnabled=_numberButtonsEnabled;
 
 - (void).cxx_destruct;
 - (void)_addButton:(id)arg1;
-- (double)_backgroundAlphaOfButton:(id)arg1;
 - (void)_layoutGrid;
-- (void)_setBackgroundAlphaOnButton:(id)arg1 alpha:(double)arg2;
 - (void)buttonCancelled:(id)arg1;
 - (void)buttonDown:(id)arg1;
 - (void)buttonLongPressed:(id)arg1;

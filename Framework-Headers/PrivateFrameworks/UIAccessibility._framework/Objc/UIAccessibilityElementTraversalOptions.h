@@ -15,15 +15,17 @@
     BOOL _includeHiddenViews;
     BOOL _sorted;
     BOOL _ignoreObscuresScreen;
+    BOOL _includeAncestorsOfSelfInSiblingMatch;
     BOOL _forSpeakScreen;
     BOOL _shouldIncludeStatusBarWindow;
-    int _direction;
+    long long _direction;
     CDUnknownBlockType _leafNodePredicate;
 }
 
-@property (nonatomic) int direction; // @synthesize direction=_direction;
+@property (nonatomic) long long direction; // @synthesize direction=_direction;
 @property (nonatomic) BOOL forSpeakScreen; // @synthesize forSpeakScreen=_forSpeakScreen;
 @property (nonatomic) BOOL ignoreObscuresScreen; // @synthesize ignoreObscuresScreen=_ignoreObscuresScreen;
+@property (nonatomic) BOOL includeAncestorsOfSelfInSiblingMatch; // @synthesize includeAncestorsOfSelfInSiblingMatch=_includeAncestorsOfSelfInSiblingMatch;
 @property (nonatomic) BOOL includeHiddenViews; // @synthesize includeHiddenViews=_includeHiddenViews;
 @property (copy, nonatomic) CDUnknownBlockType leafNodePredicate; // @synthesize leafNodePredicate=_leafNodePredicate;
 @property (nonatomic) BOOL shouldIncludeKeyboardObscuredElements; // @synthesize shouldIncludeKeyboardObscuredElements=_shouldIncludeKeyboardObscuredElements;
@@ -38,7 +40,7 @@
 + (id)defaultVoiceOverOptions;
 + (id)options;
 + (id)voiceOverOptionsIncludingElementsFromOpaqueProviders:(BOOL)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 

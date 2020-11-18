@@ -6,20 +6,20 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@protocol PXPeopleProgressDatasource <NSObject>
+@protocol PXPeopleProgressDataSource <NSObject>
 
 @property unsigned long long cachedUnlockValue;
-@property BOOL featureUnlockUserDefault;
 
 - (void)asyncPeopleScanningProgress:(void (^)(double, unsigned long long))arg1;
 - (unsigned long long)homeMembersCount;
+- (BOOL)isFaceProcessingComplete;
+- (BOOL)isPersonPromoterDone;
 - (void)loadQueryData;
 - (unsigned long long)pendingAssetCount;
-- (unsigned long long)plusMembersCount;
 - (unsigned long long)processedAssetCount;
-- (double)syncPeopleScanningProgress;
+- (void)syncPeopleScanningProgress:(void (^)(double, unsigned long long))arg1;
 - (unsigned long long)totalAssetCount;
-- (unsigned long long)verifiedCount;
+- (void)updateProgressIfNeededWithWorkBlock:(void (^)(double, unsigned long long))arg1;
 
 @optional
 @end

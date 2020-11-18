@@ -84,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithSession:(id)arg1;
 - (id)initWithSession:(id)arg1 mode:(unsigned long long)arg2;
 - (void)loadView;
+- (BOOL)prefersHomeIndicatorAutoHidden;
 - (BOOL)prefersStatusBarHidden;
 - (BOOL)pu_wantsNavigationBarVisible;
 - (BOOL)pu_wantsTabBarVisible;
@@ -96,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLoad;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 - (id)visibleAssets;
 
 @end

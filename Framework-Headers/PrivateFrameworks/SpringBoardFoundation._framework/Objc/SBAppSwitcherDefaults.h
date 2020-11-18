@@ -12,9 +12,11 @@
 {
 }
 
+@property (nonatomic) unsigned long long bottomEdgeGestureSwipeCount; // @dynamic bottomEdgeGestureSwipeCount;
 @property (readonly, nonatomic) NSArray *legacyRecentApplications; // @dynamic legacyRecentApplications;
-@property (strong, nonatomic) NSArray *recentDisplayItemRoles; // @dynamic recentDisplayItemRoles;
-@property (strong, nonatomic) NSArray *recentDisplayItems; // @dynamic recentDisplayItems;
+@property (readonly, nonatomic) NSArray *legacyRecentDisplayItemRoles; // @dynamic legacyRecentDisplayItemRoles;
+@property (readonly, nonatomic) NSArray *legacyRecentDisplayItems; // @dynamic legacyRecentDisplayItems;
+@property (strong, nonatomic) NSArray *recentsPlistRepresentation; // @dynamic recentsPlistRepresentation;
 @property (readonly, nonatomic, getter=isSpringBoardKillable) BOOL springBoardKillable; // @dynamic springBoardKillable;
 
 - (void)_bindAndRegisterDefaults;

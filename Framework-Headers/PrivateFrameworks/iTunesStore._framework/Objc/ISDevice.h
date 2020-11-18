@@ -13,6 +13,7 @@
 
 @interface ISDevice : NSObject <ISSingleton>
 {
+    long long _biometricStyle;
     unsigned long long _daemonLaunchCount;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSString *_guid;
@@ -35,6 +36,7 @@
 - (BOOL)checkCapabilities:(id)arg1 withMismatches:(id *)arg2;
 - (id)copyProtocolConditionalContext;
 - (void)dealloc;
+- (long long)deviceBiometricStyle;
 - (id)init;
 - (BOOL)releasePowerAssertion:(id)arg1;
 - (void)requestFreeSpace:(unsigned long long)arg1 atPath:(id)arg2 withOptions:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;

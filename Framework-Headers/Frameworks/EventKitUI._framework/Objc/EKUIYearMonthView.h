@@ -18,8 +18,10 @@
     NSSet *_firstOfOverlayMonthIndices;
     NSSet *_firstOfOverlayYearIndices;
     NSCalendar *_calendar;
+    BOOL _computeCircleFrameWithoutAdjustments;
     EKCalendarDate *_calendarDate;
     EKUIOverlayCalendarSignificantDatesProvider *_overlaySignificantDatesProvider;
+    double _circleSizeForDoubleDigit;
 }
 
 @property (readonly, nonatomic) NSCalendar *calendar;
@@ -27,7 +29,8 @@
 @property (readonly, nonatomic) double circleFrameXAdjustment;
 @property (readonly, nonatomic) double circleFrameYAdjustment;
 @property (readonly, nonatomic) double circleSize;
-@property (readonly, nonatomic) double circleSizeForDoubleDigit;
+@property (readonly, nonatomic) double circleSizeForDoubleDigit; // @synthesize circleSizeForDoubleDigit=_circleSizeForDoubleDigit;
+@property (readonly, nonatomic) BOOL computeCircleFrameWithoutAdjustments; // @synthesize computeCircleFrameWithoutAdjustments=_computeCircleFrameWithoutAdjustments;
 @property (readonly, nonatomic) UIColor *dayColor;
 @property (readonly, nonatomic) NSString *dayColorKey;
 @property (readonly, nonatomic) UIFont *dayNumberFont;
@@ -43,6 +46,7 @@
 @property (readonly, nonatomic) double headerXAdjust;
 @property (readonly, nonatomic) BOOL opaque;
 @property (strong, nonatomic) EKUIOverlayCalendarSignificantDatesProvider *overlaySignificantDatesProvider; // @synthesize overlaySignificantDatesProvider=_overlaySignificantDatesProvider;
+@property (readonly, nonatomic) double roundedRectCornerRadius;
 @property (readonly, nonatomic) BOOL showMonthName;
 @property (readonly, nonatomic) BOOL showWeekDayInitials;
 @property (readonly, nonatomic) UIFont *todayNumberFont;
@@ -63,12 +67,15 @@
 - (void).cxx_destruct;
 - (void)_getTodayNumberTextFrame:(struct CGRect *)arg1 circleFrame:(struct CGRect *)arg2;
 - (id)_imageForDayNumber:(id)arg1 size:(struct CGSize)arg2 underlineThickness:(double)arg3;
+- (id)_imageForMonthDays:(long long)arg1 size:(struct CGSize)arg2 underlineThickness:(double)arg3;
 - (id)_imageForMonthName:(id)arg1;
 - (struct CGPoint)_monthNameOriginPoint;
 - (void)_reloadCachedValues;
+- (BOOL)_shouldUseRoundedRectInsteadOfCircle;
 - (id)_todayAttributes;
 - (void)_updateFirstOfMonthAndYearIndices;
 - (void)_updateToday;
+- (void)_warmImageCache;
 - (id)_weekDayInitialsImage;
 - (BOOL)containsCalendarDate:(id)arg1;
 - (id)description;
@@ -77,11 +84,15 @@
 - (struct CGRect)frameForTodayHighlight;
 - (struct CGPoint)headerOrigin;
 - (id)initWithCalendarDate:(id)arg1 calendar:(id)arg2;
+- (BOOL)isCurrentMonth;
 - (void)localeChanged;
+- (double)minHeaderFontSizeUsed;
+- (id)monthNameForDate:(id)arg1;
 - (id)monthString;
 - (void)overlaySignificantDatesChangedInRange:(id)arg1;
 - (BOOL)pointIsAboveMonthNameBaseline:(struct CGPoint)arg1;
 - (void)pulseTodayCircle;
+- (struct CGSize)roundedRectSizeForDayNumberString:(id)arg1;
 - (void)tintColorDidChange;
 - (void)updateToday;
 

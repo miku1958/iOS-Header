@@ -8,7 +8,7 @@
 
 #import <WebUI/UIPrintInteractionControllerDelegate-Protocol.h>
 
-@class NSNumberFormatter, NSString, UIColor, UIFont, UIPrintFormatter, UIWebBrowserView, UIWebPaginationInfo, WebFrame;
+@class NSNumberFormatter, NSString, UIColor, UIFont, UIPrintFormatter, UIViewController, UIWebBrowserView, UIWebPaginationInfo, WebFrame;
 
 @interface WBUPrintPageRenderer : UIPrintPageRenderer <UIPrintInteractionControllerDelegate>
 {
@@ -27,6 +27,7 @@
     WebFrame *_webFrame;
     NSString *_URLString;
     UIPrintFormatter *_contentFormatter;
+    UIViewController *_parentViewController;
 }
 
 @property (strong, nonatomic) NSString *URLString; // @synthesize URLString=_URLString;
@@ -35,6 +36,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
 @property (nonatomic) BOOL printFooter; // @synthesize printFooter=_printFooter;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) WebFrame *webFrame; // @synthesize webFrame=_webFrame;
@@ -46,6 +48,7 @@
 - (id)printControllerWithPageTitle:(id)arg1;
 - (id)printInfoWithPageTitle:(id)arg1;
 - (void)printInteractionControllerDidFinishJob:(id)arg1;
+- (id)printInteractionControllerParentViewController:(id)arg1;
 - (void)printInteractionControllerWillStartJob:(id)arg1;
 - (id)printingFrame;
 

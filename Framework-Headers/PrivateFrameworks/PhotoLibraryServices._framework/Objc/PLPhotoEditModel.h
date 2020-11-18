@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/NSCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSNumber, NSString;
 
 @interface PLPhotoEditModel : NSObject <NSCopying>
 {
@@ -44,11 +44,11 @@
     double _whiteBalanceFaceQ;
     double _whiteBalanceFaceStrength;
     double _whiteBalanceFaceWarmth;
-    double _straightenAngle;
-    struct CGRect _normalizedCropRect;
+    double _straightenAngleRadiansCW;
+    struct CGRect _cropRect;
     long long _cropConstraintWidth;
     long long _cropConstraintHeight;
-    long long _appliedOrientation;
+    long long _userOrientation;
     BOOL _autoCropped;
     NSDictionary *_smartToneStatistics;
     NSDictionary *_smartColorStatistics;
@@ -59,12 +59,31 @@
     NSArray *_autoRedEyeCorrections;
     NSArray *_legacyAutoEnhanceFilters;
     BOOL _legacyAutoEnhanceIsOn;
-    CDStruct_1b6d18a9 _trimStartTimeOffset;
-    CDStruct_1b6d18a9 _trimEndTimeOffset;
+    BOOL _trimEnabled;
+    CDStruct_1b6d18a9 _trimStartTime;
+    CDStruct_1b6d18a9 _trimEndTime;
+    CDStruct_1b6d18a9 _stillPhotoTime;
+    NSNumber *_muted;
+    BOOL _autoLoopEnabled;
+    NSDictionary *_autoLoopRecipe;
+    NSString *_autoLoopFlavor;
+    BOOL _fusionEnabled;
+    NSDictionary *_fusionParameters;
+    BOOL _depthEffectEnabled;
+    NSDictionary *_depthEffectSettings;
+    BOOL _portraitEffectEnabled;
+    NSDictionary *_portraitEffectSettings;
+    NSString *_portraitEffectFilterName;
+    long long _portraitEffectFilterVersion;
+    long long _inputOrientation;
+    struct CGSize _inputSize;
+    BOOL _canRenderPortraitEffect;
 }
 
-@property (readonly, nonatomic) long long appliedOrientation; // @synthesize appliedOrientation=_appliedOrientation;
 @property (readonly, nonatomic, getter=isAutoCropped) BOOL autoCropped; // @synthesize autoCropped=_autoCropped;
+@property (readonly, nonatomic, getter=isAutoLoopEnabled) BOOL autoLoopEnabled; // @synthesize autoLoopEnabled=_autoLoopEnabled;
+@property (readonly, nonatomic) NSString *autoLoopFlavor; // @synthesize autoLoopFlavor=_autoLoopFlavor;
+@property (readonly, nonatomic) NSDictionary *autoLoopRecipe; // @synthesize autoLoopRecipe=_autoLoopRecipe;
 @property (readonly, copy, nonatomic) NSArray *autoRedEyeCorrections; // @synthesize autoRedEyeCorrections=_autoRedEyeCorrections;
 @property (readonly, copy, nonatomic) NSString *autoSmartColorIdentifier; // @synthesize autoSmartColorIdentifier=_autoSmartColorIdentifier;
 @property (readonly, nonatomic) double autoSmartColorLevel; // @synthesize autoSmartColorLevel=_autoSmartColorLevel;
@@ -79,6 +98,8 @@
 @property (readonly, nonatomic) double bwNeutralGammaLevelOffset; // @synthesize bwNeutralGammaLevelOffset=_bwNeutralGammaLevelOffset;
 @property (readonly, nonatomic) double bwStrengthLevelOffset; // @synthesize bwStrengthLevelOffset=_bwStrengthLevelOffset;
 @property (readonly, nonatomic) double bwToneLevelOffset; // @synthesize bwToneLevelOffset=_bwToneLevelOffset;
+@property (readonly, nonatomic, getter=canRenderDepth) BOOL canRenderDepth;
+@property (readonly, nonatomic) BOOL canRenderPortraitEffect; // @synthesize canRenderPortraitEffect=_canRenderPortraitEffect;
 @property (readonly, nonatomic) double colorCastLevelOffset; // @synthesize colorCastLevelOffset=_colorCastLevelOffset;
 @property (readonly, nonatomic) double colorContrastLevelOffset; // @synthesize colorContrastLevelOffset=_colorContrastLevelOffset;
 @property (readonly, nonatomic) double colorVibrancyLevelOffset; // @synthesize colorVibrancyLevelOffset=_colorVibrancyLevelOffset;
@@ -86,17 +107,30 @@
 @property (readonly, nonatomic, getter=isCropConstrained) BOOL cropConstrained;
 @property (readonly, nonatomic) long long cropConstraintHeight; // @synthesize cropConstraintHeight=_cropConstraintHeight;
 @property (readonly, nonatomic) long long cropConstraintWidth; // @synthesize cropConstraintWidth=_cropConstraintWidth;
+@property (readonly, nonatomic) struct CGRect cropRect; // @synthesize cropRect=_cropRect;
+@property (readonly, nonatomic, getter=isDepthEffectEnabled) BOOL depthEffectEnabled; // @synthesize depthEffectEnabled=_depthEffectEnabled;
+@property (readonly, nonatomic) NSDictionary *depthEffectSettings; // @synthesize depthEffectSettings=_depthEffectSettings;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, copy, nonatomic) NSString *effectFilterName; // @synthesize effectFilterName=_effectFilterName;
 @property (readonly, nonatomic) long long effectFilterVersion; // @synthesize effectFilterVersion=_effectFilterVersion;
 @property (readonly, nonatomic) double exposureLevelOffset; // @synthesize exposureLevelOffset=_exposureLevelOffset;
+@property (readonly, nonatomic, getter=isFusionEnabled) BOOL fusionEnabled; // @synthesize fusionEnabled=_fusionEnabled;
+@property (readonly, nonatomic) NSDictionary *fusionParameters; // @synthesize fusionParameters=_fusionParameters;
 @property (readonly, nonatomic) BOOL hasAnyAutoEnhancement;
 @property (readonly, nonatomic) BOOL hasIdentityCrop;
 @property (readonly, nonatomic) BOOL hasRedEyeCorrections;
+@property (readonly, nonatomic) BOOL hasStillPhotoTime;
 @property (readonly, nonatomic) double highlightsLevelOffset; // @synthesize highlightsLevelOffset=_highlightsLevelOffset;
+@property (readonly, nonatomic) long long inputOrientation; // @synthesize inputOrientation=_inputOrientation;
+@property (readonly, nonatomic) struct CGSize inputSize; // @synthesize inputSize=_inputSize;
 @property (readonly, copy, nonatomic) NSArray *legacyAutoEnhanceFilters; // @synthesize legacyAutoEnhanceFilters=_legacyAutoEnhanceFilters;
 @property (readonly, nonatomic) BOOL legacyAutoEnhanceIsOn; // @synthesize legacyAutoEnhanceIsOn=_legacyAutoEnhanceIsOn;
 @property (readonly, nonatomic) double localLightLevelOffset; // @synthesize localLightLevelOffset=_localLightLevelOffset;
-@property (readonly, nonatomic) struct CGRect normalizedCropRect; // @synthesize normalizedCropRect=_normalizedCropRect;
+@property (readonly, nonatomic) NSNumber *muted; // @synthesize muted=_muted;
+@property (readonly, nonatomic, getter=isPortraitEffectEnabled) BOOL portraitEffectEnabled; // @synthesize portraitEffectEnabled=_portraitEffectEnabled;
+@property (readonly, nonatomic) NSString *portraitEffectFilterName; // @synthesize portraitEffectFilterName=_portraitEffectFilterName;
+@property (readonly, nonatomic) long long portraitEffectFilterVersion; // @synthesize portraitEffectFilterVersion=_portraitEffectFilterVersion;
+@property (readonly, nonatomic) NSDictionary *portraitEffectSettings; // @synthesize portraitEffectSettings=_portraitEffectSettings;
 @property (readonly, copy, nonatomic) NSArray *redEyeCorrections; // @synthesize redEyeCorrections=_redEyeCorrections;
 @property (readonly, nonatomic) double shadowsLevelOffset; // @synthesize shadowsLevelOffset=_shadowsLevelOffset;
 @property (readonly, nonatomic, getter=isSmartBWEnabled) BOOL smartBWEnabled; // @synthesize smartBWEnabled=_smartBWEnabled;
@@ -108,21 +142,23 @@
 @property (readonly, nonatomic, getter=isSmartToneEnabled) BOOL smartToneEnabled; // @synthesize smartToneEnabled=_smartToneEnabled;
 @property (readonly, nonatomic) double smartToneLevel; // @synthesize smartToneLevel=_smartToneLevel;
 @property (readonly, copy, nonatomic) NSDictionary *smartToneStatistics; // @synthesize smartToneStatistics=_smartToneStatistics;
-@property (readonly, nonatomic) double straightenAngle; // @synthesize straightenAngle=_straightenAngle;
-@property (readonly, nonatomic) CDStruct_1b6d18a9 trimEndTimeOffset; // @synthesize trimEndTimeOffset=_trimEndTimeOffset;
-@property (readonly, nonatomic) CDStruct_1b6d18a9 trimStartTimeOffset; // @synthesize trimStartTimeOffset=_trimStartTimeOffset;
+@property (readonly, nonatomic) CDStruct_1b6d18a9 stillPhotoTime; // @synthesize stillPhotoTime=_stillPhotoTime;
+@property (readonly, nonatomic) double straightenAngleRadiansCW; // @synthesize straightenAngleRadiansCW=_straightenAngleRadiansCW;
+@property (readonly, nonatomic, getter=isTrimEnabled) BOOL trimEnabled; // @synthesize trimEnabled=_trimEnabled;
+@property (readonly, nonatomic) CDStruct_1b6d18a9 trimEndTime; // @synthesize trimEndTime=_trimEndTime;
+@property (readonly, nonatomic) CDStruct_1b6d18a9 trimStartTime; // @synthesize trimStartTime=_trimStartTime;
+@property (readonly, nonatomic) long long userOrientation; // @synthesize userOrientation=_userOrientation;
 @property (readonly, nonatomic, getter=isWhiteBalanceEnabled) BOOL whiteBalanceEnabled; // @synthesize whiteBalanceEnabled=_whiteBalanceEnabled;
 @property (readonly, nonatomic) double whiteBalanceFaceI; // @synthesize whiteBalanceFaceI=_whiteBalanceFaceI;
 @property (readonly, nonatomic) double whiteBalanceFaceQ; // @synthesize whiteBalanceFaceQ=_whiteBalanceFaceQ;
 @property (readonly, nonatomic) double whiteBalanceFaceStrength; // @synthesize whiteBalanceFaceStrength=_whiteBalanceFaceStrength;
 @property (readonly, nonatomic) double whiteBalanceFaceWarmth; // @synthesize whiteBalanceFaceWarmth=_whiteBalanceFaceWarmth;
 
-+ (id)_identityModel;
 + (void)_loadReferenceLevelsFromCIFilterWithName:(id)arg1 attributeKeys:(id)arg2 intoLevelStructs:(CDStruct_183601bc **)arg3;
 + (void)_loadSubfilterReferenceLevelsIfNeeded;
 + (double)_referenceValueOfType:(long long)arg1 fromLevels:(CDStruct_39925896)arg2;
 + (long long)identityCropConstraint;
-+ (struct CGRect)identityNormalizedCropRect;
++ (id)identityModel;
 + (long long)identityOrientation;
 + (double)referenceBWGrainLevelOfType:(long long)arg1;
 + (double)referenceBWHueLevelOfType:(long long)arg1;
@@ -147,32 +183,35 @@
 + (double)referenceWhiteBalanceFaceQLevelOfType:(long long)arg1;
 + (double)referenceWhiteBalanceFaceStrengthLevelOfType:(long long)arg1;
 + (double)referenceWhiteBalanceFaceWarmthLevelOfType:(long long)arg1;
+- (void).cxx_destruct;
 - (void)_copyValuesFromModel:(id)arg1 interpolationStartModel:(id)arg2 progress:(double)arg3;
-- (id)_debugDictionaryRepresentation;
 - (BOOL)_shouldEarlyExitComparisonToModel:(id)arg1 returnValue:(BOOL *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
+- (struct CGRect)inputImageExtent;
 - (BOOL)isCropConstraintEqualToPhotoEditModel:(id)arg1;
+- (BOOL)isDepthEffectEqualToPhotoEditModel:(id)arg1;
+- (BOOL)isDictionary:(id)arg1 equalToOtherDictionary:(id)arg2;
 - (BOOL)isEffectFilterEqualToPhotoEditModel:(id)arg1;
 - (BOOL)isEqualToPhotoEditModel:(id)arg1;
+- (BOOL)isFilterName:(id)arg1 equalToOtherFilterName:(id)arg2;
 - (BOOL)isGeometryEqualToPhotoEditModel:(id)arg1;
 - (BOOL)isGeometryIdentity;
 - (BOOL)isIdentityModel;
+- (BOOL)isPortraitEffectEqualToPhotoEditModel:(id)arg1;
 - (BOOL)isRedEyeCorrectionEqualToPhotoEditModel:(id)arg1;
 - (BOOL)isSmartBWPrecisionEqualToPhotoEditModel:(id)arg1;
 - (BOOL)isSmartColorPrecisionEqualToPhotoEditModel:(id)arg1;
 - (BOOL)isSmartTonePrecisionEqualToPhotoEditModel:(id)arg1;
 - (BOOL)isTrimEqualToPhotoEditModel:(id)arg1;
 - (BOOL)isVisuallyEqualToPhotoEditModel:(id)arg1;
+- (BOOL)isVisuallyEqualToPhotoEditModel:(id)arg1 excludingTimesAndMute:(BOOL)arg2;
+- (BOOL)isVisuallyEqualToPhotoEditModelExcludingVariations:(id)arg1;
+- (id)loggableDictionaryRepresentation;
 - (id)mutableCopy;
 - (id)pl_aggregateKeysForPreviousPhotoEditModel:(id)arg1;
 - (id)pl_aggregateNameForEffectFilter;
-- (struct CGSize)pl_dataCropConstraintSizeForImageGeometry:(id)arg1;
-- (struct CGRect)pl_dataCropRectForImageGeometry:(id)arg1 straightenAngle:(double)arg2;
-- (BOOL)pl_isCropConstraintEnabled;
-- (BOOL)pl_isCropEnabled;
 
 @end
 

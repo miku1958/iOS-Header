@@ -8,7 +8,7 @@
 
 #import <PhotosUI/PLAssetContainer-Protocol.h>
 
-@class NSArray, NSDate, NSIndexSet, NSOrderedSet, NSString, PLCloudFeedEntry, PLCloudSharedAlbumInvitationRecord, PLManagedAsset;
+@class NSArray, NSCountedSet, NSDate, NSIndexSet, NSOrderedSet, NSString, PLCloudFeedEntry, PLCloudSharedAlbumInvitationRecord, PLManagedAsset;
 @protocol PLCloudSharedAlbumProtocol;
 
 __attribute__((visibility("hidden")))
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL canShowAvalancheStacks;
 @property (readonly, nonatomic) BOOL canShowComments;
 @property (readonly, nonatomic) PLCloudFeedEntry *cloudFeedEntry; // @synthesize cloudFeedEntry=_cloudFeedEntry;
+@property (readonly, nonatomic) NSCountedSet *countsByAssetDisplayType;
 @property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

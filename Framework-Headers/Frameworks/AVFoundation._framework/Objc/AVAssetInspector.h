@@ -16,7 +16,9 @@
 
 @property (readonly, nonatomic) NSData *SHA1Digest;
 @property (readonly, nonatomic) NSArray *alternateTrackGroups;
+@property (readonly, nonatomic, getter=_assetAnalysisMessages) NSArray *assetAnalysisMessages;
 @property (readonly, nonatomic) NSArray *availableMetadataFormats;
+@property (readonly, nonatomic) NSArray *availableVideoDynamicRanges;
 @property (readonly, nonatomic) BOOL canContainFragments;
 @property (readonly, nonatomic) NSArray *commonMetadata;
 @property (readonly, nonatomic, getter=isCompatibleWithAirPlayVideo) BOOL compatibleWithAirPlayVideo;
@@ -30,6 +32,7 @@
 @property (readonly, nonatomic) NSString *identifyingTagClass;
 @property (readonly, nonatomic, getter=_instanceIdentifier) NSString *instanceIdentifier;
 @property (readonly, nonatomic) NSString *lyrics;
+@property (readonly, nonatomic) struct CGSize maximumVideoResolution;
 @property (readonly, nonatomic, getter=_mediaSelectionGroupDictionaries) NSArray *mediaSelectionGroupDictionaries;
 @property (readonly, nonatomic) struct CGSize naturalSize;
 @property (readonly, nonatomic) int naturalTimeScale;
@@ -42,6 +45,7 @@
 @property (readonly, nonatomic) id propertyListForProxy;
 @property (readonly, nonatomic) BOOL providesPreciseDurationAndTiming;
 @property (readonly, nonatomic, getter=isReadable) BOOL readable;
+@property (readonly, nonatomic) BOOL supportsAnalysisReporting;
 @property (readonly, nonatomic) long long trackCount;
 @property (readonly, nonatomic) NSArray *trackIDs;
 @property (readonly, nonatomic) NSDictionary *trackReferences;

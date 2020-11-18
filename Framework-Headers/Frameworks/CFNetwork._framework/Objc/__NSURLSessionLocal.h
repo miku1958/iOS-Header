@@ -25,11 +25,14 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_invalidateQueue;
     CDUnknownBlockType _invalidateCallback;
     const struct XURLCache *_xCache;
-    long long _xCacheOnce;
     const struct XCookieStorage *_xCookies;
-    long long _xCookiesOnce;
     const struct XCredentialStorage *_xCreds;
-    long long _xCredsOnce;
+    BOOL _xCacheInitComplete;
+    BOOL _xCookiesInitComplete;
+    BOOL _xCredsInitComplete;
+    struct mutex _xCacheStorageInitLock;
+    struct mutex _xCookieStorageInitLock;
+    struct mutex _xCredStorageInitLock;
     NSArray *_localProtocolClassesForDefaultSession;
     BOOL _isInvalid;
     NSURLSessionConfiguration *_proxyConfig;
@@ -44,6 +47,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (id)AVAggregateAssetDownloadTaskForURLAsset:(id)arg1 mediaSelections:(id)arg2 assetTitle:(id)arg3 assetArtworkData:(id)arg4 options:(id)arg5;
 - (id)AVAssetDownloadTaskForURLAsset:(id)arg1 assetTitle:(id)arg2 assetArtworkData:(id)arg3 options:(id)arg4;
 - (id)AVAssetDownloadTaskForURLAsset:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

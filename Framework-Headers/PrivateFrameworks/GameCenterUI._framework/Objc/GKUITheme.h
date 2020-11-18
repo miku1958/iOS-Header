@@ -29,7 +29,6 @@
 @property (readonly, nonatomic) GKNetworkImageSource *untreatedAchievementImageSource;
 
 + (id)sharedTheme;
-- (id)_tabBarIconImageNamed:(id)arg1 selectedName:(id)arg2 selected:(BOOL)arg3;
 - (id)achievementsDefaultIcon;
 - (id)achievementsNotStartedIcon;
 - (id)addPlayerButtonImage;
@@ -60,11 +59,6 @@
 - (id)resourceForSelector:(SEL)arg1 missingHandler:(CDUnknownBlockType)arg2;
 - (id)resourceWithName:(id)arg1 missingHandler:(CDUnknownBlockType)arg2;
 - (id)statusDotImage;
-- (id)tabbarIconChallengesSelected:(BOOL)arg1;
-- (id)tabbarIconFriendsSelected:(BOOL)arg1;
-- (id)tabbarIconGamesSelected:(BOOL)arg1;
-- (id)tabbarIconMeSelected:(BOOL)arg1;
-- (id)tabbarIconTurnsSelected:(BOOL)arg1;
 
 @end
 

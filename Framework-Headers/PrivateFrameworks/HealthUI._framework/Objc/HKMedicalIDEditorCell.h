@@ -8,28 +8,30 @@
 
 #import <HealthUI/UITextFieldDelegate-Protocol.h>
 
-@class HKCaretOptionalTextField, NSString, UILabel, UIView;
+@class HKCaretOptionalTextField, NSString, UILabel, UIStackView, UIView;
 @protocol HKMedicalIDEditorCellEditDelegate;
 
 @interface HKMedicalIDEditorCell : UITableViewCell <UITextFieldDelegate>
 {
-    UIView *_verticalSeparatorView;
-    UIView *_horizontalSeparatorView;
     double _minimumLabelWidth;
     id<HKMedicalIDEditorCellEditDelegate> _editDelegate;
+    UIStackView *_stackView;
     UILabel *_labelLabel;
     HKCaretOptionalTextField *_inputTextField;
+    UIView *_verticalSeparatorView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<HKMedicalIDEditorCellEditDelegate> editDelegate; // @synthesize editDelegate=_editDelegate;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HKCaretOptionalTextField *inputTextField; // @synthesize inputTextField=_inputTextField;
+@property (strong, nonatomic) HKCaretOptionalTextField *inputTextField; // @synthesize inputTextField=_inputTextField;
 @property (strong, nonatomic) NSString *label;
-@property (readonly, nonatomic) UILabel *labelLabel; // @synthesize labelLabel=_labelLabel;
+@property (strong, nonatomic) UILabel *labelLabel; // @synthesize labelLabel=_labelLabel;
 @property (nonatomic) double minimumLabelWidth; // @synthesize minimumLabelWidth=_minimumLabelWidth;
+@property (strong, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) UIView *verticalSeparatorView; // @synthesize verticalSeparatorView=_verticalSeparatorView;
 
 + (BOOL)showsLabelAndValue;
 - (void).cxx_destruct;
@@ -37,10 +39,10 @@
 - (void)_localeDidChange:(id)arg1;
 - (void)beginEditing;
 - (void)commitEditing;
-- (void)dealloc;
 - (id)formattedValue;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)layoutSubviews;
+- (void)setupStackView;
+- (void)setupSubviews;
 - (BOOL)textFieldShouldBeginEditing:(id)arg1;
 - (void)updateValueLabel;
 - (void)valueDidChange;

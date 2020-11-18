@@ -24,6 +24,7 @@
 - (void)logPartialRequestObjectData:(id)arg1;
 - (void)logPartialResponseObjectData:(id)arg1;
 - (void)logRequest:(id)arg1 toURL:(id)arg2 withMethod:(id)arg3;
+- (void)logRequestBodyStreamReset;
 - (void)logResponse:(id)arg1;
 - (void)logResponseConfiguration:(unsigned long long)arg1 withMessageClassString:(id)arg2;
 - (BOOL)shouldLog;

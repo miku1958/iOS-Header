@@ -25,6 +25,7 @@
 + (id)lookupByPort:(unsigned int)arg1;
 + (void)registerOutstandingRequest:(id)arg1;
 + (void)unregisterByPort:(unsigned int)arg1;
+- (void).cxx_destruct;
 - (void)_responseReceived:(id)arg1;
 - (void)dealloc;
 - (id)initWithReplyPort:(unsigned int)arg1 handlerQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;

@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL wantsContent;
 @property (readonly, nonatomic) BOOL wantsThumbnail;
 
-+ (id)newFromSqliteValue:(struct Mem *)arg1;
++ (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithDesiredVersion:(id)arg1;
 - (id)initWithServerVersion:(id)arg1 serverName:(id)arg2;
 - (BOOL)isStillValidForEtag:(id)arg1;
+- (void)markLiveAsFault;
 - (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
 
 @end

@@ -13,7 +13,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityIsFacebookButton;
-- (BOOL)_accessibilityIsTwitterButton;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)initWithFrame:(struct CGRect)arg1;

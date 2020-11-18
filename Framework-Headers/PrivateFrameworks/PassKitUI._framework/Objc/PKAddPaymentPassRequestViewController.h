@@ -23,8 +23,8 @@
     CLInUseAssertion *_passbookForegroundAssertion;
     NSObject<OS_dispatch_source> *_datasourceTimeout;
     PKAddPaymentPassRequest *_addRequest;
-    BOOL _maxHeaderWidthCalculated;
-    double _maxHeaderWidth;
+    BOOL _offsetForTextfieldWasCalculated;
+    double _offsetForTextfield;
     BOOL _viewAppearing;
     BOOL _preconditionsValidated;
     PKTableHeaderView *_headerView;

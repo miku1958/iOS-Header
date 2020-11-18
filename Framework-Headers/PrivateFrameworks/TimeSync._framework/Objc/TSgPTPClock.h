@@ -19,6 +19,7 @@
 @property (nonatomic) unsigned char clockPriority2; // @dynamic clockPriority2;
 @property (readonly, copy, nonatomic) NSArray *gptpPath; // @dynamic gptpPath;
 @property (readonly, nonatomic) unsigned long long grandmasterIdentity; // @dynamic grandmasterIdentity;
+@property (readonly, copy, nonatomic) NSArray *ports; // @dynamic ports;
 
 + (id)availablegPTPClockIdentifiers;
 + (unsigned long long)clockIdentifierForInterfaceName:(id)arg1;
@@ -31,6 +32,12 @@
 - (BOOL)addUDPv4PtPPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(unsigned int)arg2 error:(id *)arg3;
 - (BOOL)addUDPv6EtEPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
 - (BOOL)addUDPv6PtPPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
+- (BOOL)addUnicastLinkLayerEtEPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
+- (BOOL)addUnicastLinkLayerPtPPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
+- (BOOL)addUnicastUDPv4EtEPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(unsigned int)arg2 error:(id *)arg3;
+- (BOOL)addUnicastUDPv4PtPPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(unsigned int)arg2 error:(id *)arg3;
+- (BOOL)addUnicastUDPv6EtEPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
+- (BOOL)addUnicastUDPv6PtPPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
 - (id)clockName;
 - (BOOL)convertFrom32BitASTime:(unsigned int *)arg1 toMachAbsoluteTime:(unsigned long long *)arg2 withCount:(unsigned int)arg3;
 - (unsigned long long)convertFrom32BitASToMachAbsoluteTime:(unsigned int)arg1;
@@ -47,6 +54,12 @@
 - (BOOL)removeUDPv4PtPPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(unsigned int)arg2 error:(id *)arg3;
 - (BOOL)removeUDPv6EtEPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
 - (BOOL)removeUDPv6PtPPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
+- (BOOL)removeUnicastLinkLayerEtEPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
+- (BOOL)removeUnicastLinkLayerPtPPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
+- (BOOL)removeUnicastUDPv4EtEPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(unsigned int)arg2 error:(id *)arg3;
+- (BOOL)removeUnicastUDPv4PtPPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(unsigned int)arg2 error:(id *)arg3;
+- (BOOL)removeUnicastUDPv6EtEPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
+- (BOOL)removeUnicastUDPv6PtPPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
 
 @end
 

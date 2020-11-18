@@ -4,36 +4,42 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaToolbox/FigBaseCALayer.h>
+#import <MediaToolbox/FigSubtitleBackdropCALayer.h>
 
-@interface FigSubtitleCALayer : FigBaseCALayer
+#import <MediaToolbox/CALayerDelegate-Protocol.h>
+
+@class NSString;
+
+@interface FigSubtitleCALayer : FigSubtitleBackdropCALayer <CALayerDelegate>
 {
     struct OpaqueFigSubtitleCALayerInternal *layerInternal;
 }
 
+@property (copy, nonatomic) NSString *captionRenderingStrategy;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isOverscanSubtitleSupportEnabled) BOOL overscanSubtitleSupportEnabled;
+@property (readonly) Class superclass;
 
 + (id)defaultActionForKey:(id)arg1;
 - (void)_addBoundsAnimation:(id)arg1 forKey:(id)arg2;
 - (void)_addPositionAnimation:(id)arg1 forKey:(id)arg2;
 - (id)actionForKey:(id)arg1;
 - (void)addAnimations:(id)arg1 forKey:(id)arg2;
-- (void)beginUpdate;
 - (void)clear;
 - (void)dealloc;
-- (void)drawInContext:(struct CGContext *)arg1;
-- (void)endUpdate;
+- (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
 - (void)finalize;
 - (void)handleNeedsLayoutNotification;
 - (id)init;
 - (id)initWithLayer:(id)arg1;
-- (void)layoutSublayers;
+- (void)layoutSublayersOfLayer:(id)arg1;
 - (void)removeAnimationsForKey:(id)arg1;
 - (void)setPlayer:(struct OpaqueFigPlayer *)arg1;
 - (void)setSubtitleGravityNonObscuring:(unsigned char)arg1;
 - (void)setVideosize:(struct CGSize)arg1;
 - (void)setViewport:(struct CGRect)arg1;
-- (id)subtitleLayerDisplay;
 - (void)updateNonForcedSubtitleDisplayEnabled:(unsigned char)arg1;
 
 @end

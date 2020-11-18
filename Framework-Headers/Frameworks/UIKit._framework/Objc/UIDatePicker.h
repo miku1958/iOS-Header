@@ -50,6 +50,7 @@
 - (void)_installPickerView:(id)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (id)_labelTextForCalendarUnit:(unsigned long long)arg1;
+- (id)_lastSelectedDateComponents;
 - (id)_locale;
 - (void)_performScrollTest:(id)arg1 withIterations:(long long)arg2 rowsToScroll:(long long)arg3 inComponent:(long long)arg4;
 - (void)_populateArchivedSubviews:(id)arg1;

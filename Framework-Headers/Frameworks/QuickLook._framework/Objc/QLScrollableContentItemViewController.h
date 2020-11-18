@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_doubleTapRecognized:(id)arg1;
+- (void)_updateScrollViewZoomUpdate:(struct CGSize)arg1;
 - (BOOL)canPinchToDismiss;
 - (void)didEndZoomingAtScale:(double)arg1;
 - (struct CGSize)imageSize;

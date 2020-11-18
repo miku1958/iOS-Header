@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (unsigned long long)_defaultEdgesScrollingContentIntoSafeArea;
 - (void)_registerForRotation:(BOOL)arg1 ofWindow:(id)arg2;
 
 @end

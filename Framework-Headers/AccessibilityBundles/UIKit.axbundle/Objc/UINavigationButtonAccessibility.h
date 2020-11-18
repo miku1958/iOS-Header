@@ -10,13 +10,13 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_canHandleStatusBarMouseEvents:(struct __GSEvent *)arg1;
-- (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
-- (BOOL)accessibilityPerformEscape;
 - (unsigned long long)accessibilityTraits;
+- (id)additionsSelf;
+- (BOOL)isAccessibilityElement;
 
 @end
 

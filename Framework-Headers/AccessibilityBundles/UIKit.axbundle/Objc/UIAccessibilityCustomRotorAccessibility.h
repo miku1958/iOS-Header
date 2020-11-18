@@ -10,9 +10,13 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)init;
+- (void)_accessibilityApplyAttributes;
+- (id)initWithAttributedName:(id)arg1 itemSearchBlock:(CDUnknownBlockType)arg2;
+- (id)initWithName:(id)arg1 itemSearchBlock:(CDUnknownBlockType)arg2;
+- (id)initWithSystemType:(long long)arg1 itemSearchBlock:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -22,10 +22,12 @@
 + (id)autoLayoutCommonWallpaperButton;
 + (id)autoLayoutCommonWallpaperButtonWithStyle:(long long)arg1;
 - (void)_setupBackdropView;
+- (void)_updateContentEdgeInsets;
 - (void)backdropViewDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
+- (void)safeAreaInsetsDidChange;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1;

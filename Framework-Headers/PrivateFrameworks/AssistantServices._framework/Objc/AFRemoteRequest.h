@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class AFRequestInfo;
+@class AFRequestInfo, NSString;
 
 @interface AFRemoteRequest : NSObject
 {
     AFRequestInfo *_info;
+    NSString *_peerIdentifier;
 }
 
 @property (readonly, nonatomic) AFRequestInfo *info; // @synthesize info=_info;
+@property (copy, nonatomic) NSString *peerIdentifier; // @synthesize peerIdentifier=_peerIdentifier;
 
 - (void).cxx_destruct;
 - (id)initWithInfo:(id)arg1;

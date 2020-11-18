@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) NSTextAttachment *attachment; // @synthesize attachment=_attachment;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

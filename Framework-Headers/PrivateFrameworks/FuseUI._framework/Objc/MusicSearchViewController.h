@@ -36,7 +36,9 @@
     NSArray *_titleViewPaletteConstraints;
     BOOL _mediaPickerAllowsLocalSearchOnly;
     BOOL _mediaPickerAllowsMultipleSelection;
+    BOOL _mediaPickerPicksSingleCollection;
     BOOL _mediaPickerIncludePlaylists;
+    BOOL _mediaPickerOmitsGeniusPlaylists;
     BOOL _shouldUseMediaPickerViewConfiguration;
     BOOL _storeSearchViewIsVisible;
     MusicClientContext *_clientContext;
@@ -59,7 +61,7 @@
 + (id)_defaultSearchNavigationControllerWithSearchViewController:(id)arg1;
 + (id)_defaultSearchViewControllerForPresentingViewController:(id)arg1;
 + (id)defaultSearchBarWithTraitCollection:(id)arg1;
-+ (id)mediaPickerSearchViewControllerWithSearchBar:(id)arg1 allowLocalSearchOnly:(BOOL)arg2 allowMultipleSelection:(BOOL)arg3 includePlaylists:(BOOL)arg4 presentingViewController:(id)arg5;
++ (id)mediaPickerSearchViewControllerWithSearchBar:(id)arg1 allowLocalSearchOnly:(BOOL)arg2 allowMultipleSelection:(BOOL)arg3 picksSingleCollection:(BOOL)arg4 includePlaylists:(BOOL)arg5 omitGeniusPlaylists:(BOOL)arg6 presentingViewController:(id)arg7;
 + (id)searchViewControllerForPresentingViewController:(id)arg1 withSearchBar:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)_allowsLocalSearchOnly;
@@ -79,7 +81,7 @@
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (void)dealloc;
-- (id)initForMediaPickerUseAllowLocalSearchOnly:(BOOL)arg1 allowMultipleSelection:(BOOL)arg2 includePlaylists:(BOOL)arg3;
+- (id)initForMediaPickerUseAllowLocalSearchOnly:(BOOL)arg1 allowMultipleSelection:(BOOL)arg2 pickSingleCollection:(BOOL)arg3 includePlaylists:(BOOL)arg4 omitGeniusPlaylists:(BOOL)arg5;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)jsSearchNativeViewController:(id)arg1 selectMediaPickerItem:(id)arg2;
 - (void)jsSearchNativeViewController:(id)arg1 setSearchTerm:(id)arg2;

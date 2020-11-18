@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)_childrenExcludingExcessNodes:(BOOL)arg1 excludingReactors:(BOOL)arg2;
+- (void)_forEachRelevantAccessClaimExcludingClaimsFromSuperarbiter:(BOOL)arg1 performProcedure:(CDUnknownBlockType)arg2;
 - (BOOL)_mayContainCriticalDebuggingInformationExcludingReactors:(BOOL)arg1;
 - (void)addAccessClaim:(id)arg1;
 - (void)addPresenter:(id)arg1;
@@ -61,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)forEachProgressSubscriberOfItemPerformProcedure:(CDUnknownBlockType)arg1;
 - (void)forEachProgressThingOfItemOrContainedItemPerformProcedure:(CDUnknownBlockType)arg1;
 - (void)forEachReactorToItemOrContainedItemPerformProcedure:(CDUnknownBlockType)arg1;
+- (void)forEachRelevantAccessClaimForEvaluatingAgainstClaim:(id)arg1 performProcedure:(CDUnknownBlockType)arg2;
 - (void)forEachRelevantAccessClaimPerformProcedure:(CDUnknownBlockType)arg1;
 - (id)initWithParent:(id)arg1 name:(id)arg2 normalizedName:(id)arg3;
 - (BOOL)itemIsFilePackage;

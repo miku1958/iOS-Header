@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSOperationQueue;
 
@@ -15,7 +15,7 @@
 }
 
 + (id)sharedInstance;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)enqueueThumbnailGenerationIfNeededForDocumentAtURL:(id)arg1 atBackgroundPriority:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)noteThumbnailGenerationQueuedExternallyForDocumentAtURL:(id)arg1;

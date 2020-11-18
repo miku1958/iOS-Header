@@ -17,6 +17,7 @@
     BOOL _isDirty;
     double _strength;
     long long _options;
+    double _scale;
     NSArray *_legibilityConstraints;
     UILayoutGuide *_firstBaselineLayoutGuide;
     UILayoutGuide *_lastBaselineLayoutGuide;
@@ -31,6 +32,7 @@
 @property (nonatomic) BOOL adjustsFontSizeToFitWidth; // @dynamic adjustsFontSizeToFitWidth;
 @property (copy, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
 @property (readonly, nonatomic) double baselineOffset;
+@property (readonly, nonatomic) struct UIEdgeInsets characterOverflowInsets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double firstBaselineOffsetFromBottom;

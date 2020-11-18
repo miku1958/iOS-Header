@@ -13,6 +13,7 @@
     BOOL _hideTitle;
     BOOL _hideDescription;
     BOOL _hideDescriptionIcon;
+    BOOL _adjustsTextColorWhenDisabled;
     UILabel *_titleLabel;
     UILabel *_descriptionLabel;
     NSString *_titleText;
@@ -26,6 +27,7 @@
     UIImageView *_descriptionIconView;
 }
 
+@property (nonatomic) BOOL adjustsTextColorWhenDisabled; // @synthesize adjustsTextColorWhenDisabled=_adjustsTextColorWhenDisabled;
 @property (strong, nonatomic) UIFont *descriptionFont; // @synthesize descriptionFont=_descriptionFont;
 @property (strong, nonatomic) UIImage *descriptionIcon; // @synthesize descriptionIcon=_descriptionIcon;
 @property (readonly, nonatomic) UIImageView *descriptionIconView; // @synthesize descriptionIconView=_descriptionIconView;
@@ -46,6 +48,7 @@
 - (void)_addDescriptionLabel;
 - (void)_addTitleLabel;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (id)labelWithText:(id)arg1 font:(id)arg2;
 - (void)prepareForReuse;
 - (void)setDisabled:(BOOL)arg1;
 - (void)updateConstraints;

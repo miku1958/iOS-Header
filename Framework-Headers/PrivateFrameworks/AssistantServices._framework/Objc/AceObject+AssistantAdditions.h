@@ -10,6 +10,7 @@
 - (id)af_dialogIdentifier;
 - (BOOL)af_isUserUtterance;
 - (BOOL)af_isUtterance;
+- (id)af_speakableText;
 - (id)af_text;
 @end
 

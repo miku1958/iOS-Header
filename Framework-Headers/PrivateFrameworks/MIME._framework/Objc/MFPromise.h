@@ -4,18 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class MFFuture;
+#import <MIME/MFCancelable-Protocol.h>
 
-@interface MFPromise : NSObject
+@class MFFuture, NSString;
+
+@interface MFPromise : NSObject <MFCancelable>
 {
     MFFuture *_future;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly) MFFuture *future; // @synthesize future=_future;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)promise;
+- (void)cancel;
 - (void)dealloc;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)init;

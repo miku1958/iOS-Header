@@ -19,6 +19,7 @@
 - (id<MFFuture>)map:(id (^)(id))arg1;
 - (void)onScheduler:(id<MFScheduler>)arg1 addFailureBlock:(void (^)(NSError *))arg2;
 - (void)onScheduler:(id<MFScheduler>)arg1 addSuccessBlock:(void (^)(id))arg2;
+- (id<MFFuture>)onScheduler:(id<MFScheduler>)arg1 map:(id (^)(id))arg2;
 - (id<MFFuture>)onScheduler:(id<MFScheduler>)arg1 recover:(id<MFFuture> (^)(NSError *))arg2;
 - (id<MFFuture>)onScheduler:(id<MFScheduler>)arg1 then:(id<MFFuture> (^)(id))arg2;
 - (id<MFFuture>)recover:(id<MFFuture> (^)(NSError *))arg1;

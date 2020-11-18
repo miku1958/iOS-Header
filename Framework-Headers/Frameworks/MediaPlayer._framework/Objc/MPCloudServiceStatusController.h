@@ -6,18 +6,21 @@
 
 #import <Foundation/NSObject.h>
 
+#import <MediaPlayer/ICEnvironmentMonitorObserver-Protocol.h>
 #import <MediaPlayer/ISURLBagObserver-Protocol.h>
 #import <MediaPlayer/SSVPlaybackLeaseDelegate-Protocol.h>
 
 @class NSOperationQueue, NSString, SSVFairPlaySubscriptionController, SSVFairPlaySubscriptionStatus, SSVPlaybackLease, SSVSubscriptionStatus;
 @protocol OS_dispatch_queue;
 
-@interface MPCloudServiceStatusController : NSObject <ISURLBagObserver, SSVPlaybackLeaseDelegate>
+@interface MPCloudServiceStatusController : NSObject <ICEnvironmentMonitorObserver, ISURLBagObserver, SSVPlaybackLeaseDelegate>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     unsigned long long _accountStoreChangeObservationCount;
     unsigned long long _automaticLeaseRefreshCount;
     NSObject<OS_dispatch_queue> *_calloutQueue;
+    NSObject<OS_dispatch_queue> *_cloudLibraryStatusAccessQueue;
+    long long _cloudLibraryStatus;
     unsigned long long _cloudLibraryObservationCount;
     NSOperationQueue *_fairPlayOperationQueue;
     unsigned long long _fairPlaySubscriptionStatusObservationCount;
@@ -72,7 +75,6 @@
 - (id)_fairPlaySubscriptionController;
 - (void)_fairPlaySubscriptionControllerSubscriptionStatusDidChangeNotification:(id)arg1;
 - (void)_getCurrentFairPlaySubscriptionStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_networkReachabilityDidChangeNotification:(id)arg1;
 - (void)_setHasSubscriptionLease:(BOOL)arg1 endReasonType:(unsigned long long)arg2;
 - (id)_subscriptionOperationQueue;
 - (void)_subscriptionStatusDidChangeNotification:(id)arg1;
@@ -80,6 +82,7 @@
 - (void)_updateMatchStatus;
 - (void)_updateSubscriptionInformationWithEndReasonType:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateWithURLBagDictionary:(id)arg1;
+- (void)_userIdentityStoreDidChange:(id)arg1;
 - (void)acquireSubscriptionLeaseWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)bagDidChange:(id)arg1;
 - (void)beginAutomaticallyRefreshingSubscriptionLease;
@@ -101,6 +104,7 @@
 - (void)endObservingSubscriptionAvailability;
 - (void)endObservingSubscriptionLease;
 - (void)endObservingSubscriptionStatus;
+- (void)environmentMonitorDidChangeNetworkReachability:(id)arg1;
 - (void)getFairPlaySubscriptionStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getSubscriptionAssetWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getSubscriptionStatusWithOptions:(id)arg1 statusBlock:(CDUnknownBlockType)arg2;

@@ -48,6 +48,7 @@
 - (void)policyManagerUpdatedPolicy:(id)arg1;
 - (void)requestEASVersionWithDelegateTask:(id)arg1;
 - (void)setEASProtocolVersion:(id)arg1;
+- (BOOL)shouldCancelTaskDueToOnPowerFetchMode;
 - (void)shutdown;
 - (id)stateString;
 - (void)taskDidFinish:(id)arg1;

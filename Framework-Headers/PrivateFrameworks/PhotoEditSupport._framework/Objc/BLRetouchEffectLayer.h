@@ -27,6 +27,7 @@
 @property (strong, nonatomic) struct CGContext *layerMask; // @synthesize layerMask=_layerMask;
 @property (readonly, nonatomic) BOOL strokeInProgress; // @synthesize strokeInProgress=_strokeInProgress;
 
+- (void).cxx_destruct;
 - (void)clearMask;
 - (void)dealloc;
 - (struct CGRect)doDrawBrushAtLocation:(struct CGPoint)arg1 opacity:(float)arg2 erase:(BOOL)arg3 magicEdges:(BOOL)arg4 brushSize:(float)arg5 brushSoftness:(float)arg6 firstPoint:(BOOL)arg7;

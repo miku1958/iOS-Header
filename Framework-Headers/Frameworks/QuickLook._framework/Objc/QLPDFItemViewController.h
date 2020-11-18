@@ -4,61 +4,45 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <QuickLook/QLItemViewController.h>
+#import <QuickLook/QLMarkupItemViewController.h>
 
-#import <QuickLook/MarkupViewControllerDelegate-Protocol.h>
+#import <QuickLook/QLPrintingProtocol-Protocol.h>
 
-@class NSString, QLMUViewController;
+@class QLPrintSession;
 
 __attribute__((visibility("hidden")))
-@interface QLPDFItemViewController : QLItemViewController <MarkupViewControllerDelegate>
+@interface QLPDFItemViewController : QLMarkupItemViewController <QLPrintingProtocol>
 {
     BOOL _isFullScreen;
-    long long _lastSavedEditNumber;
-    BOOL _showingSignatureView;
-    BOOL _showingSignatureManagerView;
-    QLMUViewController *_markupViewController;
-    BOOL _hasChangesToUndo;
-    double _topInset;
+    QLPrintSession *_currentPrintSession;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL hasChangesToUndo; // @synthesize hasChangesToUndo=_hasChangesToUndo;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-@property double topInset; // @synthesize topInset=_topInset;
-
++ (BOOL)providesCustomPrinter;
++ (BOOL)shouldBeRemoteForContentType:(id)arg1;
++ (id)supportedContentTypes;
++ (Class)transformerClass;
 - (void).cxx_destruct;
-- (void)_enableMarkupMode:(BOOL)arg1;
-- (BOOL)_needToSaveChanges;
-- (void)_saveChanges;
+- (void)_setupPrintSessionWithSize:(struct CGSize)arg1;
 - (void)_updatePeekSize;
 - (void)_updateThumbnailView;
 - (void)_updateThumbnailViewWithTraitCollection:(id)arg1;
-- (void)_updateToolbarVisibilityAnimated:(BOOL)arg1;
 - (BOOL)automaticallyUpdateScrollViewContentInset;
 - (BOOL)automaticallyUpdateScrollViewContentOffset;
-- (void)buttonPressedWithIdentifier:(id)arg1;
-- (BOOL)canEnterFullScreen;
-- (BOOL)canPinchToDismiss;
-- (BOOL)canRotate;
-- (BOOL)canShowToolBar;
 - (BOOL)canSwipeToDismiss;
 - (BOOL)controller:(id)arg1 shouldOpenLinkAtURL:(id)arg2;
 - (struct UIEdgeInsets)customEdgeInsets;
 - (struct UIEdgeInsets)customSketchOverlayInsets;
-- (void)loadPreviewControllerWithPreviewItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)numberOfPagesWithSize:(struct CGSize)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)pdfDataForPageAtIndex:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)prepareForDrawingPages:(struct _NSRange)arg1 ofSize:(struct CGSize)arg2;
 - (void)previewBecameFullScreen:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)previewDidDisappear:(BOOL)arg1;
 - (void)previewWillAppear:(BOOL)arg1;
-- (void)previewWillDisappear:(BOOL)arg1;
+- (id)printer;
 - (id)scrollView;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldAcceptTouch:(id)arg1 ofGestureRecognizer:(id)arg2;
-- (void)showingSignatureManagerView:(BOOL)arg1;
-- (void)showingSignatureView:(BOOL)arg1;
-- (id)toolbarButtons;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)transitionDidFinish:(BOOL)arg1 didComplete:(BOOL)arg2;
 - (void)transitionDidStart:(BOOL)arg1;

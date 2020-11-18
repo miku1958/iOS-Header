@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_currentIndicatorInfos;
 - (void)_updateFilmstripView;
 - (void)applyLayoutInfo:(id)arg1;
 - (void)becomeReusable;

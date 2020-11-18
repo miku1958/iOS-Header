@@ -6,24 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@protocol OS_dispatch_queue;
 
 @interface CFCommandQueuer : NSObject
 {
-    NSObject<OS_dispatch_group> *_commandGroup;
     NSObject<OS_dispatch_queue> *_commandQueue;
 }
 
-@property (strong) NSObject<OS_dispatch_group> *commandGroup; // @synthesize commandGroup=_commandGroup;
 @property (strong) NSObject<OS_dispatch_queue> *commandQueue; // @synthesize commandQueue=_commandQueue;
 
 - (void).cxx_destruct;
 - (void)dispatchBlock:(CDUnknownBlockType)arg1;
-- (void)dispatchCommand:(id)arg1 isOneWay:(BOOL)arg2 withServiceHelper:(id)arg3 replyWithMetrics:(CDUnknownBlockType)arg4;
-- (void)dispatchCommand:(id)arg1 withServiceHelper:(id)arg2 replyWithMetrics:(CDUnknownBlockType)arg3;
-- (void)dispatchOneWayCommand:(id)arg1 withServiceHelper:(id)arg2 replyWithMetrics:(CDUnknownBlockType)arg3;
+- (void)dispatchCommand:(id)arg1 isOneWay:(BOOL)arg2 withServiceHelper:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)dispatchCommand:(id)arg1 withServiceHelper:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)dispatchOneWayCommand:(id)arg1 withServiceHelper:(id)arg2;
 - (void)initQueuesWithIdentifier:(id)arg1;
 - (id)initWithCommandIdentifier:(id)arg1;
+- (BOOL)isPluginTimeoutDisabled;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <iAdServices/ADAdSheetConnectionDelegate-Protocol.h>
 #import <iAdServices/ADAdSheetProxyDelegate-Protocol.h>
@@ -27,7 +27,6 @@
 - (id)additionalAdSheetLaunchOptions;
 - (void)configureConnection:(id)arg1;
 - (id)init;
-- (void)reportIngestionForPassWithTeamIdentifier:(id)arg1 passTypeIdentifier:(id)arg2 serialNumber:(id)arg3 iAdReportingIdentifier:(id)arg4;
 - (BOOL)shouldLaunchAdSheet;
 
 @end

@@ -30,8 +30,10 @@
 - (int)_daemonProcessID;
 - (id)_newConnection;
 - (id)_recentContactsWithQuery:(id)arg1;
+- (void)_recordContactEvents:(id)arg1 recentsDomain:(id)arg2 sendingAddress:(id)arg3 source:(id)arg4 userInitiated:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 - (id)_remoteLibraryWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)_removeAllRecentContactsWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_removeRecentContactsMatchingQuery:(id)arg1;
 - (BOOL)_removeRecentContactsWithRecentIDs:(id)arg1 syncKeys:(id)arg2 recentsDomain:(id)arg3 error:(out id *)arg4;
 - (id)_searchRecentsUsingQuery:(id)arg1;
 - (void)_searchRecentsUsingQuery:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -44,6 +46,7 @@
 - (void)performRecentsSearch:(id)arg1 operationQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)performRecentsSearch:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)recordContactEvents:(id)arg1 recentsDomain:(id)arg2 sendingAddress:(id)arg3;
+- (void)recordContactEvents:(id)arg1 recentsDomain:(id)arg2 sendingAddress:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)recordContactEvents:(id)arg1 recentsDomain:(id)arg2 sendingAddress:(id)arg3 source:(id)arg4 userInitiated:(BOOL)arg5;
 - (void)recordContactEvents:(id)arg1 recentsDomain:(id)arg2 sendingAddress:(id)arg3 userInitiated:(BOOL)arg4;
 - (BOOL)removeRecentContacts:(id)arg1 error:(out id *)arg2;

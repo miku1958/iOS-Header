@@ -24,11 +24,15 @@ __attribute__((visibility("hidden")))
     int _stage;
     unsigned long long _retryAfter;
     BRCLocalItem *_itemNeedingPCSChaining;
+    NSMutableSet *_chainedParentIDWhitelist;
+    NSMutableSet *_shareRecordIDsNeedingDelete;
 }
 
 @property (readonly, nonatomic) unsigned int batchSize; // @synthesize batchSize=_batchSize;
+@property (readonly, nonatomic) NSMutableSet *chainedParentIDWhitelist; // @synthesize chainedParentIDWhitelist=_chainedParentIDWhitelist;
 @property (readonly, nonatomic) BRCLocalItem *itemNeedingPCSChaining; // @synthesize itemNeedingPCSChaining=_itemNeedingPCSChaining;
 @property (readonly, nonatomic) unsigned long long retryAfter; // @synthesize retryAfter=_retryAfter;
+@property (readonly, nonatomic) NSMutableSet *shareRecordIDsNeedingDelete; // @synthesize shareRecordIDsNeedingDelete=_shareRecordIDsNeedingDelete;
 
 - (void).cxx_destruct;
 - (void)_blackListDescendantStack:(id)arg1 parentItem:(id)arg2 andAddToSet:(id)arg3;

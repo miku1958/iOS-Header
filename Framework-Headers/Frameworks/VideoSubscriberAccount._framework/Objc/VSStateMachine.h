@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, NSOperationQueue, VSOptional;
+@class NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString, VSOptional;
 @protocol VSStateMachineDelegate;
 
 @interface VSStateMachine : NSObject
 {
     int _mode;
+    NSString *_name;
     id<VSStateMachineDelegate> _delegate;
     NSOperationQueue *_transitionQueue;
     VSOptional *_currentState;
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) id<VSStateMachineDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSMutableArray *enqueuedTransitions; // @synthesize enqueuedTransitions=_enqueuedTransitions;
 @property (strong, nonatomic) NSMutableDictionary *ignoredEventsByState; // @synthesize ignoredEventsByState=_ignoredEventsByState;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSOperationQueue *transitionQueue; // @synthesize transitionQueue=_transitionQueue;
 @property (strong, nonatomic) NSMutableDictionary *transitionTable; // @synthesize transitionTable=_transitionTable;
 
@@ -33,6 +35,7 @@
 - (void)_handleEnqueuedTransitions;
 - (void)_setDestinationState:(id)arg1 forEvent:(id)arg2 inState:(id)arg3 ignoringEvent:(BOOL)arg4;
 - (void)activateWithState:(id)arg1;
+- (id)description;
 - (void)enqueueEvent:(id)arg1;
 - (void)ignoreEvent:(id)arg1 inState:(id)arg2;
 - (id)init;

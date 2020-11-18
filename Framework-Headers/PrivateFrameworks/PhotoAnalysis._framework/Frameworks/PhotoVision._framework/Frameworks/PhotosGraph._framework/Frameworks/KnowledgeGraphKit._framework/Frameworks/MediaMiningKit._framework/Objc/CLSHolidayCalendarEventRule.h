@@ -17,8 +17,10 @@
     CLSHolidayCalendarEventRuleRequiredTraits *_requiredTraits;
     id<CLSHolidayCalendarEventDateRuleDelegate> _dateRuleDelegate;
     NSString *_localizedName;
+    unsigned long long _category;
 }
 
+@property (readonly, nonatomic) unsigned long long category; // @synthesize category=_category;
 @property (weak, nonatomic) id<CLSHolidayCalendarEventDateRuleDelegate> dateRuleDelegate; // @synthesize dateRuleDelegate=_dateRuleDelegate;
 @property (readonly, nonatomic) NSArray *dateRules; // @synthesize dateRules=_dateRules;
 @property (readonly, nonatomic) BOOL isCelebration;

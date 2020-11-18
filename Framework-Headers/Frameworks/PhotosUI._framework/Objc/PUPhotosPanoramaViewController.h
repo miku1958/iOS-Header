@@ -19,7 +19,7 @@
 @property (strong, nonatomic) PHAssetCollection *userPanoAlbum; // @synthesize userPanoAlbum=_userPanoAlbum;
 
 - (void).cxx_destruct;
-- (BOOL)_hasScrollableContent;
+- (void)_configureCollectionViewGridLayout:(id)arg1;
 - (void)_updatePhotoDecorationForCell:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)canBeginStackCollapseTransition;
 - (long long)cellFillMode;
@@ -33,6 +33,7 @@
 - (void)updateLayoutMetrics;
 - (void)updatePhotoViewContent:(id)arg1 withThumbnailImage:(id)arg2;
 - (BOOL)updateSpec;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (BOOL)wantsGlobalFooter;
 

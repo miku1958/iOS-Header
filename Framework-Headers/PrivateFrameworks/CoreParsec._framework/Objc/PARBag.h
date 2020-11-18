@@ -15,6 +15,7 @@
     NSString *_userAgent;
     NSString *_clientName;
     NSDictionary *_rawBag;
+    NSDictionary *_maximumCustomFeedbackSizes;
 }
 
 @property (readonly, nonatomic) NSArray *anonymousMetadataPreference;
@@ -23,6 +24,7 @@
 @property (readonly, nonatomic) BOOL collectScores;
 @property (readonly, nonatomic) NSURL *crowdsourcingURL;
 @property (readonly, copy, nonatomic) NSString *customFlight;
+@property (readonly, nonatomic) BOOL disableAsTypedSuggestion;
 @property (readonly, nonatomic) NSArray *downloadResourcesList;
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly, copy, nonatomic) NSArray *enabledDomains;
@@ -32,25 +34,44 @@
 @property (readonly, copy, nonatomic) NSString *firstUseDescriptionText;
 @property (readonly, copy, nonatomic) NSString *firstUseLearnMoreText;
 @property (readonly, copy, nonatomic) NSString *firstUseLearnMoreURL;
+@property (readonly, nonatomic) NSURL *flightURL;
 @property (readonly, nonatomic) unsigned long long maximumCachedQueriesToSend;
 @property (readonly, nonatomic) unsigned long long maximumCachedResultsToSend;
+@property (readonly, nonatomic) NSDictionary *maximumCustomFeedbackSizes; // @synthesize maximumCustomFeedbackSizes=_maximumCustomFeedbackSizes;
 @property (readonly, nonatomic) NSNumber *minSearchRenderTimeout;
+@property (readonly, nonatomic) double minThresholdToSend;
 @property (readonly, nonatomic) double minimumIntervalBetweenQueriesFromBag;
 @property (readonly, nonatomic) unsigned long long minimumQueryLength;
 @property (readonly, nonatomic) NSNumber *otherRenderTimeout;
 @property (readonly, copy, nonatomic) NSDictionary *rawBag; // @synthesize rawBag=_rawBag;
 @property (readonly, copy, nonatomic) NSArray *recentlyUsedAppIdentifierWhitelist;
 @property (readonly, copy, nonatomic) NSDictionary *resources;
+@property (readonly, nonatomic) double safariAll;
+@property (readonly, nonatomic) double safariDecay;
+@property (readonly, nonatomic) double safariLast1day;
+@property (readonly, nonatomic) double safariLast1hour;
+@property (readonly, nonatomic) double safariLast1month;
+@property (readonly, nonatomic) double safariLast1week;
+@property (readonly, nonatomic) double safariMostRecent;
 @property (readonly, nonatomic) BOOL sampleFeatures;
 @property (readonly, nonatomic) NSNumber *searchRenderTimeout;
 @property (readonly, nonatomic) NSURL *searchURL;
 @property (readonly, nonatomic) BOOL sendGeoEnvironmentHeader;
+@property (readonly, nonatomic) unsigned long long smartHistoryCompletionReturnCount;
+@property (readonly, nonatomic) BOOL smartHistoryEnabled;
+@property (readonly, nonatomic) BOOL smartHistoryFeatureFeedbackEnabled;
+@property (readonly, nonatomic) unsigned long long smartHistoryMaxRows;
+@property (readonly, nonatomic) unsigned long long smartHistoryMinimumQueryLength;
+@property (readonly, nonatomic) unsigned long long smartHistorySampleThreshold;
+@property (readonly, nonatomic) unsigned long long smartHistoryTimeout;
 @property (readonly, nonatomic) NSArray *subscriptionProviderBundleIdentifierWhitelist;
 @property (readonly, nonatomic) NSArray *subscriptionProviderDomainWhitelist;
 @property (readonly, nonatomic) double subscriptionTTL;
+@property (readonly, nonatomic) NSArray *suggestionRankerModel;
 @property (readonly, nonatomic) NSArray *supportedGeoLocationSources;
 @property (readonly, nonatomic) double timeoutIntervalForRequest;
 @property (readonly, nonatomic) NSDictionary *tuscanyConfiguration;
+@property (readonly, nonatomic) BOOL use2LayerRanking;
 @property (readonly, copy, nonatomic) NSString *userAgent; // @synthesize userAgent=_userAgent;
 @property (readonly, copy, nonatomic) NSString *version;
 @property (readonly, nonatomic) NSURL *warmURL;
@@ -65,9 +86,11 @@
 - (id)bag_dictionaryForKey:(id)arg1;
 - (id)bag_numberForKey:(id)arg1;
 - (id)bag_stringForKey:(id)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 userAgent:(id)arg2;
+- (unsigned long long)maximumSizeForFeedbackType:(id)arg1;
 - (id)personalizationParameters;
 - (id)urlForIdentifier:(id)arg1;
 

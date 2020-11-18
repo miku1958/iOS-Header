@@ -28,6 +28,7 @@
 + (id)akSystemYellowColor;
 - (double)akAlphaComponent;
 - (id)akBlendedColorWithFraction:(double)arg1 ofColor:(id)arg2;
+- (BOOL)akHasHueEqualToColor:(id)arg1 withTolerance:(double)arg2;
 - (BOOL)akIsEqualToColor:(id)arg1;
 - (id)colorUsingSRGBColorSpace;
 @end

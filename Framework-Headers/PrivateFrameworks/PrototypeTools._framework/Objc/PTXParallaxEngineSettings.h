@@ -46,6 +46,7 @@
 @property double sigmoidDegree; // @synthesize sigmoidDegree=_sigmoidDegree;
 
 + (id)settingsControllerModule;
+- (long long)preferredFramesPerSecond;
 - (void)setDefaultValues;
 
 @end

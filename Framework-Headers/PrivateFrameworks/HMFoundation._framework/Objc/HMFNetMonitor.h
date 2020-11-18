@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class HMFNetAddress;
+@class HMFNetAddress, NSObject;
 @protocol HMFNetMonitorDelegate, OS_dispatch_queue;
 
-@interface HMFNetMonitor : NSObject
+@interface HMFNetMonitor : HMFObject
 {
     BOOL _reachable;
     BOOL _monitoring;

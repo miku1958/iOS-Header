@@ -23,12 +23,12 @@ __attribute__((visibility("hidden")))
 }
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (BOOL)_hasLocationEnteredStation:(id)arg1 routeMatch:(id)arg2;
 - (BOOL)_hasLocationExitedStation:(id)arg1;
 - (BOOL)_isLocationNearAccessPoint:(id)arg1;
 - (BOOL)_isLocationNearEndOfWalkingLeg:(id)arg1;
 - (BOOL)_isLocationNearTransitNode:(id)arg1;
-- (void)dealloc;
 - (id)initWithTransitRouteMatcher:(id)arg1 boardVehicleStep:(id)arg2;
 - (BOOL)updateRouteMatch:(id)arg1 previousRouteMatch:(id)arg2 forLocation:(id)arg3;
 

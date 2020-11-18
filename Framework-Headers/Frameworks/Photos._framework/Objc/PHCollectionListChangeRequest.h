@@ -39,6 +39,7 @@
 @property (readonly, nonatomic) NSString *uuid;
 
 + (id)_changeRequestForCollectionList:(id)arg1 optionalChildCollections:(id)arg2;
++ (BOOL)canGenerateUUIDWithoutEntitlements;
 + (id)changeRequestForCollectionList:(id)arg1;
 + (id)changeRequestForCollectionList:(id)arg1 childCollections:(id)arg2;
 + (id)creationRequestForCollectionListWithTitle:(id)arg1;
@@ -52,7 +53,6 @@
 - (void)addChildCollections:(id)arg1;
 - (BOOL)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
 - (BOOL)applyMutationsToManagedObject:(id)arg1 error:(id *)arg2;
-- (BOOL)canGenerateUUIDLocally;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (void)didMutate;
 - (void)encodeToXPCDict:(id)arg1;
@@ -62,8 +62,8 @@
 - (void)insertChildCollection:(id)arg1 inChildCollectionsAtIndex:(unsigned long long)arg2;
 - (void)insertChildCollections:(id)arg1 atIndexes:(id)arg2;
 - (void)moveChildCollectionsAtIndexes:(id)arg1 toIndex:(unsigned long long)arg2;
-- (id)mutations;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
+- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (void)removeChildCollection:(id)arg1;
 - (void)removeChildCollectionFromChildCollectionsAtIndex:(unsigned long long)arg1;
 - (void)removeChildCollections:(id)arg1;

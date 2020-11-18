@@ -17,8 +17,10 @@
     float _percentComplete;
     float _normalizedPercentComplete;
     double _timeRemaining;
+    BOOL _isDone;
 }
 
+@property (nonatomic) BOOL isDone; // @synthesize isDone=_isDone;
 @property (nonatomic) float normalizedPercentComplete; // @synthesize normalizedPercentComplete=_normalizedPercentComplete;
 @property (nonatomic) float percentComplete; // @synthesize percentComplete=_percentComplete;
 @property (strong, nonatomic) NSString *phase; // @synthesize phase=_phase;
@@ -30,7 +32,6 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (BOOL)isDone;
 
 @end
 

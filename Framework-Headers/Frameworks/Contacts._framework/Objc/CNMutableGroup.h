@@ -17,7 +17,7 @@
 @property (copy, nonatomic) NSString *name; // @dynamic name;
 @property (copy, nonatomic) CNGroup *snapshot; // @dynamic snapshot;
 
-- (void)adoptValuesFromAndSetSnaphot:(id)arg1;
+- (void)adoptValuesFromAndSetSnapshot:(id)arg1;
 - (id)copy;
 - (id)freeze;
 - (id)freezeWithSelfAsSnapshot;

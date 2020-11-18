@@ -16,6 +16,7 @@
     NSString *_albumTitle;
     NSString *_artist;
     NSString *_identifier;
+    NSString *_sandboxExtensionToken;
     NSString *_title;
     NSString *_uRL;
     struct {
@@ -29,9 +30,11 @@
 @property (readonly, nonatomic) BOOL hasAlbumTitle;
 @property (readonly, nonatomic) BOOL hasArtist;
 @property (nonatomic) BOOL hasDuration;
+@property (readonly, nonatomic) BOOL hasSandboxExtensionToken;
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly, nonatomic) BOOL hasURL;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) NSString *sandboxExtensionToken; // @synthesize sandboxExtensionToken=_sandboxExtensionToken;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSString *uRL; // @synthesize uRL=_uRL;
 

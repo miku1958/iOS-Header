@@ -6,14 +6,16 @@
 
 #import <Home/HFStaticItemProvider.h>
 
-@class HMService, NSString;
+@class HMHome, HMService, NSString;
 
 @interface HFAssociatedServiceTypeOptionItemProvider : HFStaticItemProvider
 {
+    HMHome *_home;
     HMService *_service;
     NSString *_serviceType;
 }
 
+@property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) HMService *service; // @synthesize service=_service;
 @property (readonly, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 
@@ -21,7 +23,8 @@
 + (id)_itemForService:(id)arg1 associatedServiceType:(id)arg2;
 + (id)localizedAssociatedServiceTypeStringForServiceType:(id)arg1;
 - (void).cxx_destruct;
-- (id)initWithHome:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithItems:(id)arg1;
 - (id)initWithService:(id)arg1 serviceType:(id)arg2 home:(id)arg3;
 - (id)initWithServiceType:(id)arg1 home:(id)arg2;
 

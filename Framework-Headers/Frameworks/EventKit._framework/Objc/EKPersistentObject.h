@@ -6,27 +6,41 @@
 
 #import <Foundation/NSObject.h>
 
-@class EKEventStore, NSMapTable, NSMutableDictionary, NSMutableSet;
+#import <EventKit/EKFrozenMeltedPair-Protocol.h>
+#import <EventKit/EKProtocolObject-Protocol.h>
 
-@interface EKPersistentObject : NSObject
+@class EKEventStore, EKObjectID, NSDictionary, NSMapTable, NSMutableDictionary, NSMutableSet, NSString;
+
+@interface EKPersistentObject : NSObject <EKProtocolObject, EKFrozenMeltedPair>
 {
-    struct _opaque_pthread_mutex_t {
-        long long __sig;
-        char __opaque[56];
-    } _lock;
+    struct _opaque_pthread_mutex_t _lock;
     EKEventStore *_eventStore;
-    id _objectID;
+    EKObjectID *_objectID;
     NSMutableSet *_dirtyProperties;
     unsigned int _flags;
     NSMapTable *_loadedProperties;
     NSMutableDictionary *_committedProperties;
 }
 
+@property (readonly, nonatomic) BOOL canBeConvertedToFullObject;
 @property (strong, nonatomic) NSMutableDictionary *committedProperties; // @synthesize committedProperties=_committedProperties;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) int entityType;
 @property (readonly, nonatomic) EKEventStore *eventStore;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isFrozen;
+@property (readonly, nonatomic) BOOL isPartialObject;
+@property (readonly, nonatomic) NSDictionary *preFrozenRelationshipObjects;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *uniqueIdentifier;
 
++ (id)_relationForKey:(id)arg1;
++ (BOOL)_shouldRetainPropertyForKey:(id)arg1;
 + (id)defaultPropertiesToLoad;
++ (Class)frozenClass;
++ (Class)meltedClass;
++ (id)propertiesUnavailableForPartialObjects;
 + (id)relations;
 - (void).cxx_destruct;
 - (void)_addDirtyProperty:(id)arg1;
@@ -34,6 +48,7 @@
 - (BOOL)_areDefaultPropertiesLoaded;
 - (void)_createLoadedPropertiesIfNeeded;
 - (void)_fastpathSetProperty:(id)arg1 forKey:(id)arg2 isRelation:(BOOL)arg3;
+- (BOOL)_isNew;
 - (BOOL)_isPendingDelete;
 - (BOOL)_isPendingInsert;
 - (BOOL)_isPendingUpdate;
@@ -45,7 +60,6 @@
 - (void)_primitiveSetValue:(id)arg1 forKey:(id)arg2 daemonSetter:(CDUnknownBlockType)arg3;
 - (id)_primitiveValueForKey:(id)arg1 loader:(CDUnknownBlockType)arg2;
 - (id)_propertyForKey:(id)arg1;
-- (id)_relationForKey:(id)arg1;
 - (void)_releaseLoadedProperties;
 - (void)_removeObjectCore:(id)arg1 fromValues:(id)arg2 relation:(id)arg3;
 - (void)_setDefaultPropertiesLoaded:(BOOL)arg1;
@@ -55,23 +69,28 @@
 - (void)_setPendingInsert:(BOOL)arg1;
 - (void)_setPendingUpdate:(BOOL)arg1;
 - (void)_setProperty:(id)arg1 forKey:(id)arg2;
-- (BOOL)_shouldRetainPropertyForKey:(id)arg1;
-- (void)_takeValues:(id)arg1 forProperties:(id)arg2;
-- (void)_takeValuesForDefaultProperties:(id)arg1 inSet:(id)arg2;
+- (void)_takeValues:(id)arg1 forKeys:(id)arg2;
+- (void)_takeValuesForDefaultPropertyKeys:(id)arg1 values:(id)arg2;
+- (id)changeSet;
 - (void)changed;
 - (id)committedValueForKey:(id)arg1;
 - (void)dealloc;
 - (id)dirtyProperties;
 - (id)dump;
+- (id)existingMeltedObject;
 - (BOOL)existsInStore;
-- (void)faultPropertiesWithNames:(id)arg1;
+- (struct EKPersistentObject *)frozenObject;
 - (id)init;
-- (id)initCommon;
+- (id)initWithObject:(id)arg1;
+- (BOOL)isCompletelyEqual:(id)arg1;
 - (BOOL)isDirty;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqual:(id)arg1 ignoringProperties:(id)arg2;
 - (BOOL)isNew;
 - (BOOL)isPropertyDirty:(id)arg1;
 - (BOOL)isPropertyLoaded:(id)arg1;
+- (BOOL)isPropertyUnavailable:(id)arg1;
+- (id)meltedObjectInStore:(id)arg1;
 - (id)objectID;
 - (void)primitiveAddRelatedObject:(id)arg1 forKey:(id)arg2;
 - (BOOL)primitiveBoolValueForKey:(id)arg1;
@@ -93,17 +112,15 @@
 - (void)primitiveSetURLValue:(id)arg1 forKey:(id)arg2;
 - (id)primitiveStringValueForKey:(id)arg1;
 - (id)primitiveURLValueForKey:(id)arg1;
-- (void)primitiveValueChangedForKey:(id)arg1;
 - (BOOL)pushDirtyProperties:(id *)arg1;
 - (BOOL)refresh;
 - (BOOL)refreshExcludingProperties:(id)arg1;
 - (void)reset;
 - (void)rollback;
 - (void)saved;
-- (void)takeValues:(id)arg1 forProperties:(id)arg2;
-- (void)takeValuesForDefaultProperties:(id)arg1 inSet:(id)arg2;
+- (void)takeValues:(id)arg1 forKeys:(id)arg2;
+- (void)takeValuesForDefaultPropertyKeys:(id)arg1 values:(id)arg2;
 - (void)unloadPropertyForKey:(id)arg1;
-- (BOOL)validate:(id *)arg1;
 
 @end
 

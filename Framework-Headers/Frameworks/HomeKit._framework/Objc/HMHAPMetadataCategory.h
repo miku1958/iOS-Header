@@ -6,23 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/NSSecureCoding-Protocol.h>
+@class NSNumber, NSString;
 
-@class NSString;
-
-@interface HMHAPMetadataCategory : NSObject <NSSecureCoding>
+@interface HMHAPMetadataCategory : NSObject
 {
-    NSString *_uuidStr;
-    NSString *_catDescription;
+    NSNumber *_categoryNumber;
+    NSString *_categoryType;
+    NSString *_categoryDescription;
 }
 
-@property (strong, nonatomic) NSString *catDescription; // @synthesize catDescription=_catDescription;
-@property (strong, nonatomic) NSString *uuidStr; // @synthesize uuidStr=_uuidStr;
+@property (strong, nonatomic) NSString *categoryDescription; // @synthesize categoryDescription=_categoryDescription;
+@property (strong, nonatomic) NSNumber *categoryNumber; // @synthesize categoryNumber=_categoryNumber;
+@property (strong, nonatomic) NSString *categoryType; // @synthesize categoryType=_categoryType;
 
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 
 @end
 

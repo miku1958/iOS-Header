@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_checkDatabaseIntegrity;
 - (void)_closeDatabase;
 - (int)_createFreshDatabaseSchema;
+- (int)_createTableForTabSession;
 - (int)_createTableForTabs;
 - (long long)_databaseIDForBrowserWindow:(id)arg1;
 - (void)_insertTabStateWithData:(id)arg1;
@@ -33,11 +34,13 @@ __attribute__((visibility("hidden")))
 - (void)_migrateFromLegacyPlistIfNeeded;
 - (void)_migrateFromLegacyPlistWithPath:(id)arg1;
 - (int)_migrateToCurrentSchemaVersionIfNeeded;
+- (int)_migrateToSchemaVersion:(int)arg1;
 - (int)_migrateToSchemaVersion_2;
 - (int)_migrateToSchemaVersion_3;
 - (void)_openDatabaseAndCheckIntegrity:(BOOL)arg1;
 - (id)_readSavedSessionStateDataForTabWithUUID:(id)arg1;
 - (void)_readTabStatesWithBrowserWindowUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (int)_recoverFromDatabaseInconsistencyFromSchemaVersion3Migration;
 - (long long)_saveBrowserWindowStateWithData:(id)arg1;
 - (long long)_saveBrowserWindowStateWithDictionary:(id)arg1;
 - (int)_schemaVersion;

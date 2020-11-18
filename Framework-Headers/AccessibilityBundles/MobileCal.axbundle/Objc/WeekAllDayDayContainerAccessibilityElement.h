@@ -23,7 +23,7 @@
 
 - (void).cxx_destruct;
 - (id)_accessibilityParentForFindingScrollParent;
-- (id)accessibilityContainerElements;
+- (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVCaptureDevice, AVCaptureDeviceFormat, AVCaptureDeviceInput, AVCaptureMetadataOutput, AVCaptureMovieFileOutput, AVCapturePhotoOutput, AVCaptureSession, AVCaptureStillImageOutput, AVCaptureVideoDataOutput, AVCaptureVideoPreviewLayer, CAMCaptureEngine, CAMPanoramaConfiguration, CAMPanoramaOutput, NSString;
+@class AVCaptureDevice, AVCaptureDeviceFormat, AVCaptureDeviceInput, AVCaptureMetadataOutput, AVCaptureMovieFileOutput, AVCapturePhotoOutput, AVCaptureSession, AVCaptureVideoDataOutput, AVCaptureVideoPreviewLayer, AVCaptureVideoThumbnailOutput, CAMCaptureEngine, CAMPanoramaConfiguration, CAMPanoramaOutput, NSString;
 @protocol AVCaptureFileOutputRecordingDelegate, AVCapturePhotoCaptureDelegate;
 
 @interface CAMCaptureCommandContext : NSObject
@@ -14,16 +14,17 @@
     AVCaptureSession *_currentCaptureSession;
     AVCaptureDevice *_currentVideoDevice;
     AVCaptureDeviceFormat *_currentVideoDeviceFormat;
+    AVCaptureDeviceFormat *_currentDepthDataFormat;
     NSString *_currentVideoDevicePreset;
     AVCaptureDeviceInput *_currentVideoDeviceInput;
     AVCaptureDevice *_currentAudioDevice;
     AVCaptureDeviceInput *_currentAudioDeviceInput;
-    AVCaptureStillImageOutput *_currentLegacyStillImageOutput;
     AVCapturePhotoOutput *_currentStillImageOutput;
     AVCaptureMovieFileOutput *_currentMovieFileOutput;
     CAMPanoramaOutput *_currentPanoramaOutput;
     AVCaptureMetadataOutput *_currentMetadataOutput;
     AVCaptureVideoDataOutput *_currentEffectsPreviewOutput;
+    AVCaptureVideoThumbnailOutput *_currentVideoThumbnailOutput;
     AVCaptureVideoPreviewLayer *_currentVideoPreviewLayer;
     CAMCaptureEngine *__captureEngine;
 }
@@ -32,8 +33,8 @@
 @property (strong, nonatomic) AVCaptureDevice *currentAudioDevice; // @synthesize currentAudioDevice=_currentAudioDevice;
 @property (strong, nonatomic) AVCaptureDeviceInput *currentAudioDeviceInput; // @synthesize currentAudioDeviceInput=_currentAudioDeviceInput;
 @property (strong, nonatomic) AVCaptureSession *currentCaptureSession; // @synthesize currentCaptureSession=_currentCaptureSession;
+@property (strong, nonatomic) AVCaptureDeviceFormat *currentDepthDataFormat; // @synthesize currentDepthDataFormat=_currentDepthDataFormat;
 @property (strong, nonatomic) AVCaptureVideoDataOutput *currentEffectsPreviewOutput; // @synthesize currentEffectsPreviewOutput=_currentEffectsPreviewOutput;
-@property (strong, nonatomic) AVCaptureStillImageOutput *currentLegacyStillImageOutput; // @synthesize currentLegacyStillImageOutput=_currentLegacyStillImageOutput;
 @property (strong, nonatomic) AVCaptureMetadataOutput *currentMetadataOutput; // @synthesize currentMetadataOutput=_currentMetadataOutput;
 @property (strong, nonatomic) AVCaptureMovieFileOutput *currentMovieFileOutput; // @synthesize currentMovieFileOutput=_currentMovieFileOutput;
 @property (readonly, nonatomic) CAMPanoramaConfiguration *currentPanoramaConfiguration;
@@ -46,17 +47,16 @@
 @property (strong, nonatomic) AVCaptureDeviceInput *currentVideoDeviceInput; // @synthesize currentVideoDeviceInput=_currentVideoDeviceInput;
 @property (strong, nonatomic) NSString *currentVideoDevicePreset; // @synthesize currentVideoDevicePreset=_currentVideoDevicePreset;
 @property (strong, nonatomic) AVCaptureVideoPreviewLayer *currentVideoPreviewLayer; // @synthesize currentVideoPreviewLayer=_currentVideoPreviewLayer;
+@property (strong, nonatomic) AVCaptureVideoThumbnailOutput *currentVideoThumbnailOutput; // @synthesize currentVideoThumbnailOutput=_currentVideoThumbnailOutput;
 
 - (void).cxx_destruct;
 - (id)_captureEngineDeviceForMode:(long long)arg1 desiredDevice:(long long)arg2 videoConfiguration:(long long)arg3 resolvedDevice:(long long *)arg4;
 - (id)audioDeviceInput;
 - (void)clear;
 - (id)initWithCaptureEngine:(id)arg1;
-- (void)legacyStillImageRequest:(id)arg1 didCompleteCaptureWithResult:(id)arg2;
 - (id)metadataOutputForMode:(long long)arg1;
-- (id)outputsForMode:(long long)arg1;
+- (id)outputsForMode:(long long)arg1 shouldUseThumbnailOutputForFilters:(BOOL)arg2;
 - (id)primaryOutputForMode:(long long)arg1;
-- (void)registerLegacyStillImageCaptureRequest:(id)arg1;
 - (void)registerStillImageCaptureRequest:(id)arg1 withSettings:(id)arg2;
 - (void)registerVideoCaptureRequest:(id)arg1;
 - (void)startPanoramaCaptureWithRequest:(id)arg1;

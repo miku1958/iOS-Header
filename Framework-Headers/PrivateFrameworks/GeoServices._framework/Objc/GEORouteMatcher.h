@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOComposedRoute;
 
@@ -12,10 +12,13 @@
 {
     GEOComposedRoute *_route;
     BOOL _useStrictInitialOnRouteCriteria;
+    BOOL _shouldSnapRouteMatchToRoute;
 }
 
+@property (nonatomic) BOOL shouldSnapRouteMatchToRoute; // @synthesize shouldSnapRouteMatchToRoute=_shouldSnapRouteMatchToRoute;
 @property (nonatomic) BOOL useStrictInitialOnRouteCriteria; // @synthesize useStrictInitialOnRouteCriteria=_useStrictInitialOnRouteCriteria;
 
+- (void).cxx_destruct;
 - (id)_candidateForSegment:(id)arg1 location:(id)arg2 previousRouteMatch:(id)arg3;
 - (void)_considerCandidateMatch:(id)arg1;
 - (void)_finishRouteMatch:(id)arg1 previousRouteMatch:(id)arg2 forLocation:(id)arg3;
@@ -25,7 +28,6 @@
 - (void)_startRouteMatch;
 - (id)_startStepForPreviousRouteMatch:(id)arg1;
 - (id)_stepForPointIndex:(unsigned int)arg1 previousStep:(id)arg2;
-- (void)dealloc;
 - (double)distanceToRouteFrom:(CDStruct_c3b9c2ee)arg1;
 - (double)distanceToRouteFrom:(CDStruct_c3b9c2ee)arg1 startDistance:(double)arg2 endDistance:(double)arg3;
 - (id)initWithRoute:(id)arg1;

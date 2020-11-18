@@ -14,10 +14,16 @@ __attribute__((visibility("hidden")))
 @interface CKDPWebAuthTokenRetrieveRequest : PBRequest <NSCopying>
 {
     NSString *_apiToken;
+    BOOL _forceFetchToken;
+    struct {
+        unsigned int forceFetchToken:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSString *apiToken; // @synthesize apiToken=_apiToken;
+@property (nonatomic) BOOL forceFetchToken; // @synthesize forceFetchToken=_forceFetchToken;
 @property (readonly, nonatomic) BOOL hasApiToken;
+@property (nonatomic) BOOL hasForceFetchToken;
 
 + (id)options;
 - (void).cxx_destruct;

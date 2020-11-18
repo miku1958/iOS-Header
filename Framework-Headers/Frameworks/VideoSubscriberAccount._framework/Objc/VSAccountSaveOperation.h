@@ -6,21 +6,21 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class NSOperation, VSAccount, VSAccountChannels, VSAccountStore, VSOptional;
+@class NSArray, NSOperation, VSAccountChannels, VSOptional, VSPersistentStorage;
 
 @interface VSAccountSaveOperation : VSAsyncOperation
 {
     VSOptional *_result;
-    VSAccount *_unsavedAccount;
-    VSAccountStore *_accountStore;
+    NSArray *_unsavedAccounts;
+    VSPersistentStorage *_storage;
     VSAccountChannels *_unsavedChannels;
     NSOperation *_currentOperation;
 }
 
-@property (strong, nonatomic) VSAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (strong, nonatomic) NSOperation *currentOperation; // @synthesize currentOperation=_currentOperation;
 @property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;
-@property (strong, nonatomic) VSAccount *unsavedAccount; // @synthesize unsavedAccount=_unsavedAccount;
+@property (strong, nonatomic) VSPersistentStorage *storage; // @synthesize storage=_storage;
+@property (copy, nonatomic) NSArray *unsavedAccounts; // @synthesize unsavedAccounts=_unsavedAccounts;
 @property (strong, nonatomic) VSAccountChannels *unsavedChannels; // @synthesize unsavedChannels=_unsavedChannels;
 
 - (void).cxx_destruct;
@@ -29,7 +29,7 @@
 - (void)cancel;
 - (void)executionDidBegin;
 - (id)init;
-- (id)initWithUnsavedAccount:(id)arg1 accountStore:(id)arg2 channels:(id)arg3;
+- (id)initWithUnsavedAccounts:(id)arg1 channels:(id)arg2 storage:(id)arg3;
 
 @end
 

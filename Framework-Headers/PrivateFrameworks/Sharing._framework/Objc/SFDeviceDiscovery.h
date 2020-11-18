@@ -9,7 +9,7 @@
 #import <Sharing/NSSecureCoding-Protocol.h>
 #import <Sharing/SFXPCInterface-Protocol.h>
 
-@class NSSet, NSXPCConnection;
+@class NSSet, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFDeviceDiscovery : NSObject <NSSecureCoding, SFXPCInterface>
@@ -34,13 +34,16 @@
     CDUnknownBlockType _deviceChangedHandler;
     unsigned long long _discoveryFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    long long _fastScanMode;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
+    NSString *_purpose;
     long long _rssiThreshold;
     long long _scanRate;
     long long _scanState;
     double _timeout;
     CDUnknownBlockType _timeoutHandler;
+    long long _scanRateOverride;
     CDUnknownBlockType _scanStateChangedHandler;
 }
 
@@ -51,12 +54,15 @@
 @property (copy, nonatomic) CDUnknownBlockType deviceLostHandler; // @synthesize deviceLostHandler=_deviceLostHandler;
 @property (nonatomic) unsigned long long discoveryFlags; // @synthesize discoveryFlags=_discoveryFlags;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property (nonatomic) long long fastScanMode; // @synthesize fastScanMode=_fastScanMode;
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (nonatomic) BOOL overrideScreenOff; // @synthesize overrideScreenOff=_overrideScreenOff;
+@property (copy, nonatomic) NSString *purpose; // @synthesize purpose=_purpose;
 @property (nonatomic) long long rssiThreshold; // @synthesize rssiThreshold=_rssiThreshold;
 @property (nonatomic) BOOL scanCache; // @synthesize scanCache=_scanCache;
 @property (nonatomic) long long scanRate; // @synthesize scanRate=_scanRate;
+@property (nonatomic) long long scanRateOverride; // @synthesize scanRateOverride=_scanRateOverride;
 @property (readonly, nonatomic) long long scanState; // @synthesize scanState=_scanState;
 @property (copy, nonatomic) CDUnknownBlockType scanStateChangedHandler; // @synthesize scanStateChangedHandler=_scanStateChangedHandler;
 @property (nonatomic) BOOL targetUserSession; // @synthesize targetUserSession=_targetUserSession;
@@ -81,6 +87,8 @@
 - (void)deviceDiscoveryLostDevice:(id)arg1;
 - (void)deviceDiscoveryScanStateChanged:(long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)fastScanCancel:(id)arg1;
+- (void)fastScanTrigger:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)invalidate;

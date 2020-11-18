@@ -8,6 +8,9 @@
 
 @interface NSError (UserNotifications)
 + (id)_un_descriptionForUNErrorCode:(long long)arg1;
++ (id)_un_descriptionForUNPrivateErrorCode:(long long)arg1;
++ (id)_updateUserInfo:(id)arg1 withLocalizedDescription:(id)arg2;
 + (id)un_errorWithUNErrorCode:(long long)arg1 userInfo:(id)arg2;
++ (id)un_errorWithUNPrivateErrorCode:(long long)arg1 userInfo:(id)arg2;
 @end
 

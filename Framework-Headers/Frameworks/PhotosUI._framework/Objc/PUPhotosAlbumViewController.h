@@ -8,11 +8,12 @@
 
 #import <PhotosUI/PUPhotosSectionHeaderViewDelegate-Protocol.h>
 #import <PhotosUI/PUSectionedGridLayoutDelegate-Protocol.h>
+#import <PhotosUI/PXEditableNavigationTitleViewDelegate-Protocol.h>
 
-@class NSObject, NSString, PHAssetCollection, PHFetchResult, PUPhotosAlbumViewControllerSpec, PUPhotosPickerViewController;
+@class NSObject, NSString, PHAssetCollection, PHFetchResult, PUPhotosAlbumViewControllerSpec, PUPhotosPickerViewController, PXEditableNavigationTitleView;
 @protocol PLAlbumProtocol;
 
-@interface PUPhotosAlbumViewController : PUPhotosGridViewController <PUSectionedGridLayoutDelegate, PUPhotosSectionHeaderViewDelegate>
+@interface PUPhotosAlbumViewController : PUPhotosGridViewController <PUSectionedGridLayoutDelegate, PUPhotosSectionHeaderViewDelegate, PXEditableNavigationTitleViewDelegate>
 {
     struct {
         BOOL sectionHeadersEnabled;
@@ -23,6 +24,7 @@
     PHAssetCollection *_assetCollection;
     struct NSObject *_album;
     PUPhotosAlbumViewControllerSpec *__albumSpec;
+    PXEditableNavigationTitleView *_editableTitleView;
 }
 
 @property (strong, nonatomic, setter=_setAlbumSpec:) PUPhotosAlbumViewControllerSpec *_albumSpec; // @synthesize _albumSpec=__albumSpec;
@@ -33,24 +35,39 @@
 @property (readonly, nonatomic) PHFetchResult *assetCollectionAssets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) PXEditableNavigationTitleView *editableTitleView; // @synthesize editableTitleView=_editableTitleView;
+@property (readonly, nonatomic) NSString *globalFooterSubtitle;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL shouldShowSectionHeaders;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_collectionView:(id)arg1 dropSessionDidUpdate:(id)arg2 withDestinationIndexPath:(id)arg3;
+- (void)_collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;
 - (void)_countAssetTypesIfNeeded;
+- (void)_ensureEditableTitleView;
+- (void)_getDataForVisualSection:(long long)arg1 hasActionButton:(BOOL *)arg2 locations:(id *)arg3 title:(id *)arg4 startDate:(id *)arg5 endDate:(id *)arg6;
 - (id)_globalHeaderTitle;
 - (void)_invalideSectionHeaders;
+- (BOOL)_navigateToBottomIfNeededAnimated:(BOOL)arg1;
+- (void)_performAddDropWithSession:(id)arg1;
+- (void)_performMoveDropWithCoordinator:(id)arg1;
 - (void)_setNeedsUpdate;
 - (void)_updateSectionHeadersIfNeeded;
 - (BOOL)allowSelectAllButton;
 - (BOOL)canBeginStackCollapseTransition;
+- (BOOL)canDragIn;
+- (BOOL)canDragOut;
+- (BOOL)canHandleDropSession:(id)arg1;
 - (long long)cellFillMode;
 - (void)configureGlobalFooterView:(id)arg1;
 - (void)configureGlobalHeaderView:(id)arg1;
 - (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3 animated:(BOOL)arg4;
 - (struct CGPoint)contentOffsetForPreheating;
 - (void)didTapHeaderView:(id)arg1;
+- (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
+- (id)editableNavigationTitleView:(id)arg1 validateNewText:(id)arg2;
+- (void)editableNavigationTitleViewDidEndEditing:(id)arg1;
 - (id)filterPredicateForAlbum:(struct NSObject *)arg1;
 - (double)globalHeaderHeight;
 - (void)handleAddFromAction;
@@ -62,12 +79,18 @@
 - (BOOL)isTrashBinViewController;
 - (id)localizedTitleForAssets:(id)arg1;
 - (id)newGridLayout;
+- (void)photosDataSource:(id)arg1 didReceivePhotoLibraryChange:(id)arg2;
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
+- (BOOL)pu_handleSecondTabTap;
+- (double)sectionedGridLayout:(id)arg1 accessibilitySectionHeaderHeightForVisualSection:(long long)arg2;
 - (double)sectionedGridLayout:(id)arg1 aspectRatioForItemAtIndexPath:(id)arg2;
+- (double)sectionedGridLayout:(id)arg1 sectionHeaderHeightForVisualSection:(long long)arg2;
 - (id)sessionInfoForTransferredAssets:(id)arg1;
 - (void)setAlbum:(struct NSObject *)arg1 existingFetchResult:(id)arg2;
+- (void)setAssetCollection:(id)arg1;
 - (void)setAssetCollection:(id)arg1 fetchResultContainingAssetCollection:(id)arg2 filterPredicate:(id)arg3;
 - (void)setAssetCollection:(id)arg1 fetchResultContainingAssetCollection:(id)arg2 filterPredicate:(id)arg3 existingFetchResults:(id)arg4;
+- (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSessionInfo:(id)arg1;
 - (void)setupScrubber;
 - (void)updateLayoutMetrics;
@@ -77,6 +100,7 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (BOOL)wantsGlobalFooter;
 
 @end

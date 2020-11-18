@@ -18,15 +18,15 @@ __attribute__((visibility("hidden")))
 - (void)getDiskUsage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getKernelPackageExtensionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getKnowledgeUUIDAndSequenceNumberWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)getLocalizationDictionaryForTypeWithIdentifier:(id)arg1 UUID:(id)arg2 preferredLocalizations:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)getLocalizedNameWithBundleType:(id)arg1 bundleIdentifier:(id)arg2 bundleUUID:(id)arg3 context:(id)arg4 shortNameOnly:(BOOL)arg5 preferredLocalizations:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)getLocalizationDictionaryForTypeWithIdentifier:(id)arg1 unit:(unsigned int)arg2 preferredLocalizations:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)getLocalizedNameWithBundleType:(id)arg1 bundleIdentifier:(id)arg2 bundleUUID:(id)arg3 context:(id)arg4 shortNameOnly:(BOOL)arg5 preferredLocalizations:(id)arg6 validationToken:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
 - (void)getResourceValuesForKeys:(id)arg1 URL:(id)arg2 preferredLocalizations:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)getServerStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getServerStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getURLOverrideForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)mapBundleIdentifiers:(id)arg1 orMachOUUIDs:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)mapPlugInBundleIdentifiersToContainingBundleIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)resolveQueries:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)resolveQueries:(id)arg1 legacySPI:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)willHandleInvocation:(id)arg1 isReply:(BOOL)arg2;
 
 @end

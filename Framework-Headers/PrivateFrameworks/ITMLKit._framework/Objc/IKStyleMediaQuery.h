@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <ITMLKit/NSCopying-Protocol.h>
+
 @class NSDictionary, NSString;
 
-@interface IKStyleMediaQuery : NSObject
+@interface IKStyleMediaQuery : NSObject <NSCopying>
 {
     NSString *_identifier;
     BOOL _isNegated;
@@ -23,7 +25,10 @@
 
 + (id)mediaQueryListWithCSSMediaQuery:(id)arg1;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)hash;
 - (id)initWithMediaType:(id)arg1 featureValues:(id)arg2 isNegated:(BOOL)arg3;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

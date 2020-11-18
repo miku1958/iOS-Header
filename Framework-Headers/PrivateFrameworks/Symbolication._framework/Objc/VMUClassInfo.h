@@ -18,8 +18,8 @@
     unsigned int _ro_flags;
     unsigned int _rw_flags;
     unsigned int _defaultScanType;
-    id *_localIvarList;
     unsigned int _remoteType;
+    id *_localIvarList;
     NSString *_remoteClassName;
     NSString *_displayName;
     NSString *_remoteBinaryPath;
@@ -32,15 +32,16 @@
     const char *_strongLayout;
     BOOL _hasSpecificLayout;
     BOOL _hasVariantLayout;
+    BOOL _usesSwiftRefcounting;
 }
 
-@property (readonly) NSString *binaryName;
-@property (readonly) NSString *binaryPath; // @synthesize binaryPath=_remoteBinaryPath;
-@property (readonly) NSString *className; // @synthesize className=_remoteClassName;
+@property (readonly, nonatomic) NSString *binaryName;
+@property (readonly, nonatomic) NSString *binaryPath; // @synthesize binaryPath=_remoteBinaryPath;
+@property (readonly, nonatomic) NSString *className; // @synthesize className=_remoteClassName;
 @property (readonly, nonatomic) unsigned int defaultScanType;
-@property (readonly) NSString *displayName;
-@property (readonly) NSString *fullIvarDescription;
-@property (readonly) VMUClassInfo *genericInfo;
+@property (readonly, nonatomic) NSString *displayName;
+@property (readonly, nonatomic) NSString *fullIvarDescription;
+@property (readonly, nonatomic) VMUClassInfo *genericInfo;
 @property (readonly) BOOL hasCppConstructorOrDestructor;
 @property (readonly, nonatomic) BOOL hasSpecificLayout;
 @property (readonly, nonatomic) BOOL hasVariantLayout;
@@ -52,17 +53,17 @@
 @property (readonly) BOOL isRootClass;
 @property (readonly, nonatomic) unsigned int pointerSize; // @synthesize pointerSize=_remotePointerSize;
 @property (readonly) unsigned long long remoteIsa; // @synthesize remoteIsa=_remoteIsa;
-@property (readonly) NSString *shortIvarDescription;
-@property (readonly) VMUClassInfo *superclassInfo; // @synthesize superclassInfo=_superclassLayout;
-@property (readonly) NSString *typeName;
+@property (readonly, nonatomic) NSString *shortIvarDescription;
+@property (readonly, nonatomic) VMUClassInfo *superclassInfo; // @synthesize superclassInfo=_superclassLayout;
+@property (readonly, nonatomic) NSString *typeName;
+@property (readonly, nonatomic) BOOL usesSwiftRefcounting; // @synthesize usesSwiftRefcounting=_usesSwiftRefcounting;
 
 + (id)_genericBlockByrefInfo;
 + (id)classInfoWithClassName:(id)arg1 binaryPath:(id)arg2 type:(int)arg3;
 + (id)descriptionForTypeEncoding:(const char *)arg1 ivarName:(const char *)arg2;
-+ (void)disableTestingVersion;
-+ (void)enableTestingVersion;
 + (void)initialize;
 + (unsigned long long)sizeofClassStructure:(BOOL)arg1;
+- (void).cxx_destruct;
 - (void)_addFields:(id)arg1;
 - (void)_addVariantAction:(CDUnknownBlockType)arg1 withEvaluator:(CDUnknownBlockType)arg2;
 - (void)_applyExtendedLayout:(const char *)arg1 withSize:(unsigned int)arg2;
@@ -88,6 +89,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateAllFieldsWithBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateClassHierarchyWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateExternalValuesFromObject:(unsigned long long)arg1 withSize:(unsigned int)arg2 block:(CDUnknownBlockType)arg3;
 - (void)enumerateScanningLocationsForSize:(unsigned int)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateStoredEntriesForObject:(unsigned long long)arg1 ofSize:(unsigned int)arg2 externalValues:(id)arg3 block:(CDUnknownBlockType)arg4;

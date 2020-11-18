@@ -51,6 +51,7 @@
 @property (strong, nonatomic) NSString *vendorId; // @synthesize vendorId=_vendorId;
 
 + (Class)formattedAddressLineHintType;
+- (void).cxx_destruct;
 - (int)StringAsAddressGeocodeAccuracyHint:(id)arg1;
 - (int)StringAsPlaceTypeHint:(id)arg1;
 - (void)addFormattedAddressLineHint:(id)arg1;
@@ -58,7 +59,6 @@
 - (void)clearFormattedAddressLineHints;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)formattedAddressLineHintAtIndex:(unsigned long long)arg1;

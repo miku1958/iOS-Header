@@ -8,14 +8,13 @@
 
 #import <FrontBoard/FBSSceneDelegate-Protocol.h>
 
-@class BSAction, FBSSceneImpl, NSString;
+@class FBSSceneImpl, NSString;
 @protocol FBSSceneDelegate;
 
 @interface FBSystemAppScene : FBSScene <FBSSceneDelegate>
 {
     FBSSceneImpl *_scene;
     id<FBSSceneDelegate> _delegate;
-    BSAction *_invalidationAction;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,7 +22,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)_initWithSceneImpl:(id)arg1 invalidationAction:(id)arg2;
+- (void).cxx_destruct;
+- (id)_initWithSceneImpl:(id)arg1;
 - (void)attachContext:(id)arg1;
 - (void)attachLayer:(id)arg1;
 - (void)attachSceneContext:(id)arg1;
@@ -33,8 +33,6 @@
 - (void)detachContext:(id)arg1;
 - (void)detachLayer:(id)arg1;
 - (void)detachSceneContext:(id)arg1;
-- (id)display;
-- (id)fbsDisplay;
 - (id)identifier;
 - (BOOL)invalidateSnapshotWithContext:(id)arg1;
 - (id)layers;

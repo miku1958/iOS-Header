@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+@class NSData, NSUUID;
 
 @interface _IDSDataChannelLinkContext : NSObject
 {
@@ -18,8 +20,13 @@
     long long _remoteConnectionType;
     unsigned long long _remoteRATType;
     unsigned int _maxBitrate;
+    NSUUID *_linkUUID;
+    long long _relayServerProvider;
+    NSData *_relaySessionToken;
+    NSData *_relaySessionKey;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 
 @end

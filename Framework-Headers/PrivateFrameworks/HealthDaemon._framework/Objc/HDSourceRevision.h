@@ -11,14 +11,18 @@
 @interface HDSourceRevision : NSObject
 {
     HDSourceEntity *_sourceEntity;
-    NSString *_sourceRevision;
+    NSString *_version;
+    NSString *_productType;
+    CDStruct_f6aba300 _operatingSystemVersion;
 }
 
+@property (readonly, nonatomic) CDStruct_f6aba300 operatingSystemVersion; // @synthesize operatingSystemVersion=_operatingSystemVersion;
+@property (readonly, nonatomic) NSString *productType; // @synthesize productType=_productType;
 @property (readonly, nonatomic) HDSourceEntity *sourceEntity; // @synthesize sourceEntity=_sourceEntity;
-@property (readonly, nonatomic) NSString *sourceRevision; // @synthesize sourceRevision=_sourceRevision;
+@property (readonly, nonatomic) NSString *version; // @synthesize version=_version;
 
 - (void).cxx_destruct;
-- (id)initWithSource:(id)arg1 sourceRevision:(id)arg2;
+- (id)initWithSource:(id)arg1 version:(id)arg2 productType:(id)arg3 operatingSystemVersion:(CDStruct_f6aba300)arg4;
 
 @end
 

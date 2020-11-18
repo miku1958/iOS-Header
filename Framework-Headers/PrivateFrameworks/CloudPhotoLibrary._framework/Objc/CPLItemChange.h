@@ -20,6 +20,7 @@
 
 + (BOOL)cplShouldIgnorePropertyForCoding:(id)arg1;
 - (void).cxx_destruct;
+- (id)containerDescription;
 - (id)containerRelationChangesComparedToRelationEnumerator:(id)arg1 error:(id *)arg2;
 - (id)init;
 - (id)propertiesForChangeType:(unsigned long long)arg1;

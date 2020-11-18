@@ -16,23 +16,29 @@
 @property (readonly) BOOL burstFavorite;
 @property (readonly) BOOL burstPicked;
 @property (readonly) NSString *burstUUID;
+@property (readonly) NSString *createdFilename;
 @property BOOL fetchingMetadata;
 @property BOOL fetchingThumbnail;
 @property long long fileSize;
+@property (readonly) NSString *groupUUID;
 @property (readonly) BOOL hasOverriddenOrientation;
 @property (readonly) BOOL highFramerate;
 @property (strong) NSMutableDictionary *metadata_hidden;
 @property unsigned long long orientation;
+@property (readonly) NSString *originalFilename;
+@property (readonly) NSString *originatingAssetID;
 @property (getter=isRaw) BOOL raw;
+@property (readonly) NSString *relatedUUID;
 @property (readonly) BOOL timeLapse;
 
 - (void)dealloc;
 - (id)description;
 - (double)duration;
 - (void)finalize;
+- (BOOL)firstPicked;
 - (void)flushMetadataCache;
 - (void)flushThumbnailCache;
-- (id)handleCommandCompletionNotification:(id)arg1;
+- (void)handleCommandCompletionNotification:(id)arg1;
 - (BOOL)hasMetadata;
 - (BOOL)hasThumbnail;
 - (id)initWithName:(id)arg1 parentFolder:(id)arg2 device:(id)arg3;
@@ -43,6 +49,8 @@
 - (void)setHasMetadata:(BOOL)arg1;
 - (void)setHasThumbnail:(BOOL)arg1;
 - (void)setKeywordPropertiesFromMetadata;
+- (BOOL)setMetadata:(id)arg1;
+- (BOOL)setThumbnailData:(struct __CFData *)arg1 withOrientation:(id)arg2;
 - (struct CGImage *)thumbnail;
 
 @end

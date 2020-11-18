@@ -6,20 +6,22 @@
 
 #import <Home/HFItemProvider.h>
 
-@class NSSet;
+@class HMHome, NSSet;
 
 @interface HFActionSetSuggestionItemProvider : HFItemProvider
 {
     BOOL _hasProvidedStaticSuggestionItems;
+    HMHome *_home;
     NSSet *_staticSuggestionItems;
 }
 
 @property (nonatomic) BOOL hasProvidedStaticSuggestionItems; // @synthesize hasProvidedStaticSuggestionItems=_hasProvidedStaticSuggestionItems;
+@property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSSet *staticSuggestionItems; // @synthesize staticSuggestionItems=_staticSuggestionItems;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithHome:(id)arg1;
-- (id)invalidationReasons;
 - (id)items;
 - (id)reloadItems;
 

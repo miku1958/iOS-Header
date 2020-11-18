@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/GEOResourceManifestTileGroupObserver-Protocol.h>
 
@@ -18,6 +18,7 @@
     VKResourceManager *_resourceManager;
     VKGenericShieldGenerator *_genericShieldGenerator;
     NSArray *_nonRegionalResourceNames;
+    struct mutex _nonRegionalResourceNamesLock;
     NSMapTable *_atlases;
     NSLock *_atlasesLock;
     NSMapTable *_indexes;

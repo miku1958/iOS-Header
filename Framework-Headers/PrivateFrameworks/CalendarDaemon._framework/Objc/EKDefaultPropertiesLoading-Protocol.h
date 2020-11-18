@@ -6,12 +6,12 @@
 
 #import <CalendarDaemon/NSObject-Protocol.h>
 
-@class NSSet;
+@class NSArray;
 
 @protocol EKDefaultPropertiesLoading <NSObject>
 - (BOOL)shouldLoadDefaultProperties;
 
 @optional
-- (NSSet *)defaultPropertiesToLoad;
+- (NSArray *)defaultPropertiesToLoad;
 @end
 

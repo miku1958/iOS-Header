@@ -15,10 +15,10 @@
 
 @property (strong, nonatomic) NSArray *representedElements; // @synthesize representedElements=_representedElements;
 
+- (void).cxx_destruct;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (void)addRepresentedObject:(id)arg1;
-- (void)dealloc;
 - (id)initWithAccessibilityContainer:(id)arg1;
 - (id)initWithAccessibilityContainer:(id)arg1 representedElements:(id)arg2;
 

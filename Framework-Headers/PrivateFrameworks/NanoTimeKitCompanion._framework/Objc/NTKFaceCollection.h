@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <NanoTimeKitCompanion/NTKEnumeratableFaceCollection-Protocol.h>
 #import <NanoTimeKitCompanion/NTKFaceObserver-Protocol.h>
 
 @class NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSString, NSUUID, NTKFace;
 
-@interface NTKFaceCollection : NSObject <NTKFaceObserver>
+@interface NTKFaceCollection : NSObject <NTKFaceObserver, NTKEnumeratableFaceCollection>
 {
     NSString *_logIdentifier;
     NSUUID *_selectedUUID;
@@ -38,11 +39,11 @@
 - (id)UUIDsByFace;
 - (void)_addFace:(id)arg1 forUUID:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)_addFace:(id)arg1 forUUID:(id)arg2 atIndex:(unsigned long long)arg3 suppressingCallbackToObserver:(id)arg4;
+- (id)_chooseNewSelectionBecauseSelectedUUIDWillBeRemovedAtIndex:(unsigned long long)arg1;
 - (void)_didAddFace:(id)arg1 withUUID:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)_didMoveFace:(id)arg1 withUUID:(id)arg2 toIndex:(unsigned long long)arg3;
 - (void)_didRemoveFace:(id)arg1 withUUID:(id)arg2;
 - (void)_didSelectFaceUUID:(id)arg1;
-- (void)_fixSelectionBecauseSelectedUUIDWillBeRemovedAtIndex:(unsigned long long)arg1 suppressingCallbackToObserver:(id)arg2;
 - (void)_notifyAddedFace:(id)arg1 atIndex:(unsigned long long)arg2 omitObserver:(id)arg3;
 - (void)_notifyRemovedFace:(id)arg1 atIndex:(unsigned long long)arg2 omitObserver:(id)arg3;
 - (void)_notifyReorderedFacesOmittingObserver:(id)arg1;
@@ -52,13 +53,17 @@
 - (void)_selectFaceUUID:(id)arg1 notify:(BOOL)arg2;
 - (void)_setContentWithFaces:(id)arg1 order:(id)arg2 selection:(id)arg3;
 - (void)_setSelectedUUID:(id)arg1 notify:(BOOL)arg2 suppressingCallbackToObserver:(id)arg3;
+- (void)_systemAppStateDidChange;
 - (void)_throwIfNotLoaded:(SEL)arg1;
 - (void)_updateLogIdentifier;
 - (void)_updateOrderedUUIDsFromReference:(id)arg1 andNotifyReordered:(BOOL)arg2;
+- (void)_upgradeFace:(id)arg1 forUUID:(id)arg2;
 - (void)addFace:(id)arg1 atIndex:(unsigned long long)arg2 suppressingCallbackToObserver:(id)arg3;
 - (void)addObserver:(id)arg1;
 - (void)appendFace:(id)arg1 suppressingCallbackToObserver:(id)arg2;
 - (BOOL)containsFace:(id)arg1;
+- (void)dealloc;
+- (void)enumerateFaceNamesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateFacesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)faceAtIndex:(unsigned long long)arg1;
 - (id)facesByUUID;

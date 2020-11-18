@@ -13,6 +13,7 @@
 @interface EKParticipantForSorting : NSObject <NSCopying>
 {
     BOOL _isEmail;
+    BOOL _isPhone;
     EKParticipant *_participant;
     NSString *_firstName;
     NSString *_lastName;
@@ -22,6 +23,7 @@
 @property (copy, nonatomic) NSString *cachedDisplayName; // @synthesize cachedDisplayName=_cachedDisplayName;
 @property (copy, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
 @property (nonatomic) BOOL isEmail; // @synthesize isEmail=_isEmail;
+@property (nonatomic) BOOL isPhone; // @synthesize isPhone=_isPhone;
 @property (copy, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
 @property (weak, nonatomic) EKParticipant *participant; // @synthesize participant=_participant;
 

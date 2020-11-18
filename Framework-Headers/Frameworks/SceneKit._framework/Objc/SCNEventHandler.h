@@ -28,9 +28,10 @@
 - (id)init;
 - (void)sceneDidChange;
 - (void)sceneWillChange;
+- (void)setDelegate:(id)arg1;
 - (void)setView:(id)arg1;
-- (void)viewDidDraw;
-- (void)viewWillDraw;
+- (void)viewDidDrawAtTime:(double)arg1;
+- (void)viewWillDrawAtTime:(double)arg1;
 - (BOOL)wantsRedraw;
 
 @end

@@ -37,6 +37,7 @@
 + (id)newAttachmentWithPath:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)attachToDestinationDir:(id)arg1;
 - (id)attachWithDestinationDir:(id)arg1;
 - (id)description;
 - (void)detach;

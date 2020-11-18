@@ -27,11 +27,11 @@
 @property (strong, nonatomic) NSString *query; // @synthesize query=_query;
 
 + (Class)entryType;
+- (void).cxx_destruct;
 - (void)addEntry:(id)arg1;
 - (void)clearEntrys;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)entryAtIndex:(unsigned long long)arg1;

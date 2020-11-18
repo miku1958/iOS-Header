@@ -13,16 +13,19 @@
     NSString *_bundleID;
     NSNumber *_accountDSID;
     long long _claimStyle;
+    unsigned long long _exitReason;
 }
 
 @property (readonly, nonatomic) NSNumber *accountDSID; // @synthesize accountDSID=_accountDSID;
 @property (readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (readonly, nonatomic) long long claimStyle; // @synthesize claimStyle=_claimStyle;
+@property (nonatomic) unsigned long long exitReason; // @synthesize exitReason=_exitReason;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithBundleID:(id)arg1;
 - (id)initWithBundleID:(id)arg1 accountIdentifier:(id)arg2 claimStyle:(long long)arg3;
 - (id)initWithCoder:(id)arg1;
 

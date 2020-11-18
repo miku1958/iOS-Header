@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <ITMLKit/IKJSDeviceSettings-Protocol.h>
 #import <ITMLKit/JSExport-Protocol.h>
 
 @class IKJSRestrictions, NSString;
 
-@protocol _IKJSDeviceSettings <JSExport>
+@protocol _IKJSDeviceSettings <IKJSDeviceSettings, JSExport>
 
 @property (readonly, nonatomic) IKJSRestrictions *Restrictions;
 @property (readonly, nonatomic) struct CGSize Screen;

@@ -6,15 +6,16 @@
 
 #import <Foundation/NSObject.h>
 
-#import <TSUtility/NSCoding-Protocol.h>
 #import <TSUtility/NSCopying-Protocol.h>
 #import <TSUtility/NSMutableCopying-Protocol.h>
+#import <TSUtility/NSSecureCoding-Protocol.h>
 
-@interface TSUIntegerKeyDictionary : NSObject <NSCopying, NSMutableCopying, NSCoding>
+@interface TSUIntegerKeyDictionary : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
     struct __CFDictionary *mDictionary;
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)allValues;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;

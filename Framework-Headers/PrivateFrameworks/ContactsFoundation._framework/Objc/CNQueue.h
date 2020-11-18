@@ -21,7 +21,7 @@
 + (id)boundedQueueWithCapacity:(unsigned long long)arg1;
 + (id)boundedQueueWithCapacity:(unsigned long long)arg1 overflowHandler:(CDUnknownBlockType)arg2;
 + (id)priorityQueueWithComparator:(CDUnknownBlockType)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)dequeue;
 - (void)dequeueObject:(id)arg1;
 - (id)drain;

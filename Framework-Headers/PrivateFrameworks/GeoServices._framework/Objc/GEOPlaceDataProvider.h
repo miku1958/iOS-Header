@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface GEOPlaceDataProvider : NSObject
 {
@@ -17,6 +17,7 @@
 @property (copy, nonatomic) CDUnknownBlockType finishedHandler; // @synthesize finishedHandler=_finishedHandler;
 @property (nonatomic) BOOL isLoading; // @synthesize isLoading=_isLoading;
 
+- (void).cxx_destruct;
 - (void)cancelProviderRequest;
 - (void)cancelRequest;
 - (void)dealloc;

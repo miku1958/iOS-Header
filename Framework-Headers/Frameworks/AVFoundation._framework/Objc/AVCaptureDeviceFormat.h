@@ -14,7 +14,7 @@
 }
 
 @property (readonly, nonatomic) long long autoFocusSystem;
-@property (readonly, nonatomic) struct opaqueCMFormatDescription *formatDescription;
+@property (readonly, nonatomic) const struct opaqueCMFormatDescription *formatDescription;
 @property (readonly, nonatomic) CDStruct_79c71658 highResolutionStillImageDimensions;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 maxExposureDuration;
 @property (readonly, nonatomic) float maxISO;
@@ -22,25 +22,32 @@
 @property (readonly, nonatomic) CDStruct_1b6d18a9 minExposureDuration;
 @property (readonly, nonatomic) float minISO;
 @property (readonly, nonatomic) NSArray *supportedColorSpaces;
+@property (readonly, nonatomic) NSArray *supportedDepthDataFormats;
+@property (readonly, nonatomic) NSArray *unsupportedCaptureOutputClasses;
 @property (readonly, nonatomic, getter=isVideoBinned) BOOL videoBinned;
 @property (readonly, nonatomic) float videoFieldOfView;
 @property (readonly, nonatomic, getter=isVideoHDRSupported) BOOL videoHDRSupported;
 @property (readonly, nonatomic) double videoMaxZoomFactor;
+@property (readonly, nonatomic) double videoMaxZoomFactorForDepthDataDelivery;
+@property (readonly, nonatomic) double videoMinZoomFactorForDepthDataDelivery;
 @property (readonly, nonatomic, getter=isVideoStabilizationSupported) BOOL videoStabilizationSupported;
 @property (readonly, nonatomic) NSArray *videoSupportedFrameRateRanges;
 @property (readonly, nonatomic) double videoZoomFactorUpscaleThreshold;
 
 + (void)initialize;
 - (id)AVCaptureSessionPresets;
-- (id)_stringForFormatDescription:(struct opaqueCMFormatDescription *)arg1 frameRateRanges:(id)arg2;
+- (id)_stringForMediaType:(unsigned int)arg1 formatDescription:(struct opaqueCMFormatDescription *)arg2 frameRateRanges:(id)arg3;
 - (void)dealloc;
 - (CDStruct_1b6d18a9)defaultActiveMaxFrameDuration;
 - (CDStruct_1b6d18a9)defaultActiveMinFrameDuration;
 - (id)description;
-- (id)figCaptureSourceFormat;
+- (id)figCaptureSourceDepthDataFormat;
+- (id)figCaptureSourceVideoFormat;
 - (CDStruct_1b6d18a9)highestSupportedVideoFrameDuration;
 - (id)initWithFigCaptureSourceFormat:(id)arg1;
 - (BOOL)isDefaultActiveFormat;
+- (BOOL)isDepthSupported;
+- (BOOL)isDisparitySupported;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isExperimental;
 - (BOOL)isHighResPhotoFormat;
@@ -48,11 +55,13 @@
 - (BOOL)isIrisVideoStabilizationSupported;
 - (BOOL)isPhotoFormat;
 - (BOOL)isSISSupported;
-- (BOOL)isShallowDepthOfFieldEffectSupported;
+- (BOOL)isStereoFusionSupported;
 - (BOOL)isVideoStabilizationModeSupported:(long long)arg1;
 - (BOOL)isWideColorSupported;
 - (CDStruct_1b6d18a9)lowestSupportedVideoFrameDuration;
 - (BOOL)needsPhotoPreviewDPCC;
+- (id)optimizedPhotoFilterNames;
+- (id)optimizedVideoPreviewFilterNames;
 - (BOOL)prefersVideoHDREnabledForSessionPreset:(id)arg1;
 - (CDStruct_79c71658)previewDimensions;
 - (int)rawBitDepth;

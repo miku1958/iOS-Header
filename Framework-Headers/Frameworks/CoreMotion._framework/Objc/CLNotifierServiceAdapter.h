@@ -26,7 +26,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)forget:(byref id)arg1;
-- (id)initInSilo:(id)arg1;
+- (id)init;
 - (void)invalidate;
 - (int)notifierClientNumForCoparty:(id)arg1;
 - (void)register:(byref id)arg1 forNotification:(int)arg2 registrationInfo:(id)arg3;

@@ -8,6 +8,8 @@
 
 @interface NSDate (DataAccessUtils)
 - (id)gmtDateToDateInTimeZone:(id)arg1;
+- (id)gmtMidnight;
+- (BOOL)isGMTMidnight;
 - (id)nearestMidnight;
 - (id)tzDateToDateInGMT:(id)arg1;
 @end

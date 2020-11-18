@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (double)_row4ControlSegmentWidthLeft;
+- (double)_row4ControlSegmentWidthRight;
 - (double)assistKeyFontSize;
 - (struct CGPoint)dictationKeyOffset;
 - (struct CGPoint)dismissKeyOffset;
@@ -31,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)undoKeyOffset;
 - (struct UIEdgeInsets)variantSymbolFrameInsets;
 - (struct CGPoint)variantSymbolTextOffset;
+- (struct UIEdgeInsets)wideShadowPopupMenuInsets;
 
 @end
 

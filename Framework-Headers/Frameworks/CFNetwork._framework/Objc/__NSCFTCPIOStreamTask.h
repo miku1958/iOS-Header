@@ -6,7 +6,7 @@
 
 #import <CFNetwork/__NSCFURLSessionTask.h>
 
-@class NSData, NSError;
+@class CFNetworkTimer, NSData, NSError, NSMutableArray, __NSCFURLLocalStreamTaskWorkRead, __NSCFURLLocalStreamTaskWorkWrite;
 
 __attribute__((visibility("hidden")))
 @interface __NSCFTCPIOStreamTask : __NSCFURLSessionTask
@@ -18,37 +18,82 @@ __attribute__((visibility("hidden")))
     unsigned char _secure;
     NSError *_cancelError;
     NSData *__initialDataPayload;
+    struct shared_ptr<HTTPProtocol> _httpProtocol;
+    NSMutableArray *_pendingWork;
+    NSMutableArray *_completedSuspendedWork;
+    BOOL _doingWorkOnThisQueue;
+    int _connectionState;
+    BOOL _goneSecure;
+    BOOL _streamsCaptured;
+    CDStruct_59046461 _readError;
+    BOOL _readInProgress;
+    BOOL _readClosed;
+    CDStruct_59046461 _writeError;
+    BOOL _writeEOF;
+    BOOL _writeInProgress;
+    BOOL _writeClosed;
+    BOOL _receivedServerTrustChallenge;
+    CFNetworkTimer *_writeTimer;
+    CFNetworkTimer *_readTimer;
+    __NSCFURLLocalStreamTaskWorkWrite *_currentWriteTask;
+    __NSCFURLLocalStreamTaskWorkRead *_currentReadTask;
 }
 
 @property (copy) NSData *_initialDataPayload; // @synthesize _initialDataPayload=__initialDataPayload;
+@property (strong, nonatomic) __NSCFURLLocalStreamTaskWorkRead *currentReadTask; // @synthesize currentReadTask=_currentReadTask;
+@property (strong, nonatomic) __NSCFURLLocalStreamTaskWorkWrite *currentWriteTask; // @synthesize currentWriteTask=_currentWriteTask;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_onSessionQueue_cleanupAndBreakCycles;
 - (void)_onSessionQueue_disavow;
+- (void)_onqueue_addBlockOp:(CDUnknownBlockType)arg1 description:(const char *)arg2;
+- (void)_onqueue_addBlockOp:(CDUnknownBlockType)arg1 description:(const char *)arg2 shouldWaitForTls:(BOOL)arg3;
 - (void)_onqueue_adjustLoadingPoolPriority;
 - (void)_onqueue_adjustPoolPriority;
+- (void)_onqueue_callbackCompletedWork;
 - (void)_onqueue_cancel;
-- (void)_onqueue_cancel_with_error:(id)arg1;
+- (void)_onqueue_captureStreams;
+- (void)_onqueue_checkForCompletion;
+- (void)_onqueue_cleanUpConnectionEstablishmentState;
+- (void)_onqueue_closeRead;
+- (void)_onqueue_closeWrite;
 - (void)_onqueue_connectionEstablishedWithError:(CDStruct_59046461)arg1 callbackReferent:(id)arg2;
+- (void)_onqueue_dealWithSessionClientCertAuth:(long long)arg1 credential:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_onqueue_dealWithSessionTrustAuth:(long long)arg1 credential:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)_onqueue_errorOrCancelError;
+- (void)_onqueue_ioTick;
 - (void)_onqueue_needClientCert:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_onqueue_needServerTrust:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_onqueue_postConnectConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_onqueue_preConnectionConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_onqueue_processReadWork:(id)arg1;
+- (void)_onqueue_processWriteWork:(id)arg1;
 - (void)_onqueue_resume;
 - (BOOL)_onqueue_sendSessionChallenge:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_onqueue_setTCPIOConnection:(shared_ptr_f0c1381f)arg1;
+- (void)_onqueue_startSecureConnection;
+- (void)_onqueue_stopSecureConnection;
 - (void)_onqueue_suspend;
+- (void)_onqueue_timeoutOccured;
+- (void)_onqueue_tlsCompletion;
+- (void)_onqueue_tlsDisabled;
+- (BOOL)_onqueue_usingCONNECTProxy;
+- (struct __PerformanceTiming *)_performanceTimingRef;
+- (void)_reportTimingDataToAWD:(id)arg1;
 - (void)_task_onqueue_didFinish;
 - (void)cancel;
 - (void)captureStreams;
 - (void)closeRead;
 - (void)closeWrite;
+- (void)copyStreamProperty:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithHost:(id)arg1 port:(long long)arg2 session:(id)arg3 disavow:(CDUnknownBlockType)arg4;
+- (id)initWithTask:(id)arg1 Connection:(shared_ptr_f0c1381f)arg2 disavow:(CDUnknownBlockType)arg3;
 - (shared_ptr_54ecd472)ios;
 - (void)readDataOfMinLength:(unsigned long long)arg1 maxLength:(unsigned long long)arg2 timeout:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (BOOL)shouldDoWorkConsideringTlsState;
 - (void)startSecureConnection;
 - (void)stopSecureConnection;
 - (void)writeData:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;

@@ -7,14 +7,17 @@
 #import <PassKitUI/PKTableViewCell.h>
 
 #import <PassKitUI/PKDatePickerDelegate-Protocol.h>
+#import <PassKitUI/UIPickerViewDataSource-Protocol.h>
+#import <PassKitUI/UIPickerViewDelegate-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
-@class NSArray, NSString, PKDatePicker, PKPaymentSetupField, UIColor;
+@class NSArray, NSString, PKDatePicker, PKPaymentSetupField, UIColor, UIPickerView;
 @protocol PKPaymentSetupFieldCellDelegate;
 
-@interface PKPaymentSetupFieldCell : PKTableViewCell <UITextFieldDelegate, PKDatePickerDelegate>
+@interface PKPaymentSetupFieldCell : PKTableViewCell <UITextFieldDelegate, PKDatePickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 {
     PKDatePicker *_dateInputView;
+    UIPickerView *_pickerInputView;
     BOOL _ignoreCurrentValueChangedNotifications;
     NSArray *_defaultLeadingBarButtonGroups;
     NSArray *_defaultTrailingBarButtonGroups;
@@ -60,6 +63,7 @@
 - (struct CGRect)_separatorFrame;
 - (void)_updateDisplay:(BOOL)arg1;
 - (void)_updateDisplayForFieldTypeDate:(id)arg1;
+- (void)_updateDisplayForFieldTypePicker:(id)arg1;
 - (void)_updateDisplayForFieldTypeText:(id)arg1;
 - (void)datePicker:(id)arg1 didChangeDate:(id)arg2;
 - (void)dealloc;
@@ -69,6 +73,10 @@
 - (id)initWithSetupField:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
+- (long long)numberOfComponentsInPickerView:(id)arg1;
+- (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;
+- (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;
+- (id)pickerView:(id)arg1 titleForRow:(long long)arg2 forComponent:(long long)arg3;
 - (void)pk_applyAppearance:(id)arg1;
 - (id)pk_childrenForAppearance;
 - (void)prepareForReuse;

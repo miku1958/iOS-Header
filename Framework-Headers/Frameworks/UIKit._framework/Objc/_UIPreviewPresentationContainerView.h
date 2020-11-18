@@ -32,6 +32,7 @@
 @property (nonatomic) BOOL shouldRasterizeForTransition; // @dynamic shouldRasterizeForTransition;
 
 - (void).cxx_destruct;
+- (struct CGRect)_preferredPlatterRectForContainerRect:(struct CGRect)arg1;
 - (BOOL)_shouldEnclosedScrollViewFlashIndicators:(id)arg1;
 - (struct CGSize)_standardPreferredContentSize;
 - (void)initPlatterViewsIfNeeded;

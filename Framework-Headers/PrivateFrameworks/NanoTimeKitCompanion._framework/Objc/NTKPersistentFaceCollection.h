@@ -41,6 +41,7 @@
 - (void)_fromDaemon_removeFaceForUUID:(id)arg1;
 - (void)_fromDaemon_updateFaceForUUID:(id)arg1 withConfiguration:(id)arg2;
 - (void)_fromDaemon_updateFaceForUUID:(id)arg1 withResourceDirectory:(id)arg2;
+- (void)_fromDaemon_upgradeFace:(id)arg1 forUUID:(id)arg2;
 - (void)_handleConnectionInterrupted;
 - (void)_handleFlushCompleteForIdentifier:(id)arg1;
 - (void)_notifyLoaded;
@@ -57,11 +58,13 @@
 - (void)_sendToDaemonSelectedUUID;
 - (void)_sendToDaemonUpdatedConfigurationForFace:(id)arg1 withUUID:(id)arg2;
 - (void)_sendToDaemonUpdatedResourceDirectoryForFace:(id)arg1 withUUID:(id)arg2;
+- (void)_sendToDaemonUpgradeForFace:(id)arg1 withUUID:(id)arg2;
 - (id)_serverProxy;
 - (void)addFace:(id)arg1 forUUID:(id)arg2 seqId:(id)arg3;
 - (void)dealloc;
 - (void)faceConfigurationDidChange:(id)arg1;
 - (void)faceResourceDirectoryDidChange:(id)arg1;
+- (void)faceUpgradeOccurred:(id)arg1;
 - (void)flushCompleteForIdentifier:(id)arg1;
 - (BOOL)hasLoaded;
 - (id)initWithCollectionIdentifier:(id)arg1 deviceUUID:(id)arg2;
@@ -75,6 +78,7 @@
 - (void)updateFaceForUUID:(id)arg1 withResourceDirectory:(id)arg2 seqId:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)updateOrderedFaceUUIDs:(id)arg1 seqId:(id)arg2;
 - (void)updateSelectedFaceUUID:(id)arg1 seqId:(id)arg2;
+- (void)upgradeFace:(id)arg1 forUUID:(id)arg2 seqID:(id)arg3;
 
 @end
 

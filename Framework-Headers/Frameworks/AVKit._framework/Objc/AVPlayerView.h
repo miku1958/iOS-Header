@@ -6,18 +6,24 @@
 
 #import <UIKit/UIView.h>
 
-__attribute__((visibility("hidden")))
+@class AVPlayerViewControllerContentView, UIScreen;
+
 @interface AVPlayerView : UIView
 {
-    long long _viewWindowState;
+    BOOL _managesContentViewLayout;
+    AVPlayerViewControllerContentView *_contentView;
+    UIScreen *_primaryScreen;
 }
 
-@property (readonly, nonatomic) long long viewWindowState;
+@property (readonly, nonatomic) AVPlayerViewControllerContentView *contentView; // @synthesize contentView=_contentView;
+@property (nonatomic) BOOL managesContentViewLayout; // @synthesize managesContentViewLayout=_managesContentViewLayout;
+@property (weak, nonatomic) UIScreen *primaryScreen; // @synthesize primaryScreen=_primaryScreen;
 
-- (BOOL)_isEnclosedInNonPagingScrollView;
-- (void)_updateViewWindowState;
-- (void)didMoveToWindow;
-- (void)setFrame:(struct CGRect)arg1;
+- (void).cxx_destruct;
+- (void)dealloc;
+- (id)initWithContentView:(id)arg1;
+- (void)layoutSubviews;
+- (void)setClipsToBounds:(BOOL)arg1;
 - (void)willMoveToWindow:(id)arg1;
 
 @end

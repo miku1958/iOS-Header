@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class CLLocation, NSArray, NSDate, NSDictionary, NSError, NSHashTable, NSNumber, NSString, NSTimeZone, NSTimer, NSURL, WFLocation, WFTemperature;
+@class CLLocation, NSArray, NSDate, NSDictionary, NSError, NSHashTable, NSNumber, NSString, NSTimeZone, NSTimer, NSURL, WFGeocodeRequest, WFLocation, WFTemperature;
 
 @interface City : NSObject
 {
@@ -17,7 +17,6 @@
     BOOL _isUpdating;
     BOOL _isRequestedByFrameworkClient;
     BOOL _lockedForDemoMode;
-    BOOL _updatingTimeZone;
     float _windChill;
     float _windDirection;
     float _windSpeed;
@@ -56,11 +55,13 @@
     unsigned long long _lastUpdateStatus;
     long long _updateInterval;
     NSTimer *_autoUpdateTimer;
+    WFGeocodeRequest *_activeGeocodeRequest;
     NSHashTable *_cityUpdateObservers;
     NSString *_fullName;
 }
 
 @property (copy, nonatomic) NSString *ISO3166CountryAbbreviation; // @synthesize ISO3166CountryAbbreviation=_ISO3166CountryAbbreviation;
+@property (strong, nonatomic) WFGeocodeRequest *activeGeocodeRequest; // @synthesize activeGeocodeRequest=_activeGeocodeRequest;
 @property (strong, nonatomic) NSNumber *airQualityCategory; // @synthesize airQualityCategory=_airQualityCategory;
 @property (strong, nonatomic) NSNumber *airQualityIdx; // @synthesize airQualityIdx=_airQualityIdx;
 @property (nonatomic) BOOL autoUpdate; // @synthesize autoUpdate=_autoUpdate;
@@ -104,7 +105,6 @@
 @property (nonatomic) long long updateInterval; // @synthesize updateInterval=_updateInterval;
 @property (strong, nonatomic) NSDate *updateTime; // @synthesize updateTime=_updateTime;
 @property (copy, nonatomic) NSString *updateTimeString; // @synthesize updateTimeString=_updateTimeString;
-@property (nonatomic, getter=isUpdatingTimeZone) BOOL updatingTimeZone; // @synthesize updatingTimeZone=_updatingTimeZone;
 @property (readonly) NSDictionary *urlComponents;
 @property (nonatomic, setter=setUVIndex:) unsigned long long uvIndex; // @synthesize uvIndex=_uvIndex;
 @property (nonatomic) float visibility; // @synthesize visibility=_visibility;

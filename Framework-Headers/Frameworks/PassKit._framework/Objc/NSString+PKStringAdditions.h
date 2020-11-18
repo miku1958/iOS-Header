@@ -10,6 +10,7 @@
 - (id)decodeHexadecimal;
 - (id)pk_capitalizedStringForPreferredLocale;
 - (id)pk_lowercaseStringForPreferredLocale;
+- (id)pk_uppercaseAttributedString;
 - (id)pk_uppercaseFirstStringForPreferredLocale;
 - (id)pk_uppercaseStringForPreferredLocale;
 @end

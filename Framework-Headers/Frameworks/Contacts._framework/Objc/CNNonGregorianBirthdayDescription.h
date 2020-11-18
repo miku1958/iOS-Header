@@ -21,16 +21,17 @@
 
 - (void *)ABValueFromCNValue:(id)arg1;
 - (id)CNValueForContact:(id)arg1;
+- (id)CNValueFromABBytes:(char *)arg1 length:(unsigned long long)arg2;
 - (id)CNValueFromABValue:(void *)arg1;
-- (int)abPropertyID:(int *)arg1;
+- (BOOL)abPropertyID:(int *)arg1;
+- (BOOL)canUnifyValue:(id)arg1 withValue:(id)arg2;
 - (void)decodeUsingCoder:(id)arg1 contact:(id)arg2;
 - (void)encodeUsingCoder:(id)arg1 contact:(id)arg2;
 - (CDUnknownBlockType)fromPlistTransform;
 - (id)init;
 - (BOOL)isEqualForContact:(id)arg1 other:(id)arg2;
 - (BOOL)isValidValue:(id)arg1 error:(id *)arg2;
-- (BOOL)isValue:(id)arg1 equivalentToValue:(id)arg2;
-- (BOOL)isValue:(id)arg1 preferredToEquivalentValue:(id)arg2;
+- (BOOL)isValue:(id)arg1 preferredToUnifiedValue:(id)arg2;
 - (void)setCNValue:(id)arg1 onContact:(id)arg2;
 - (Class)valueClass;
 

@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppStoreDaemon/ASDRequest.h>
+#import <AppStoreDaemon/ASDEphemeralRequest.h>
 
 @class ASDPurchaseRequestOptions;
 
-@interface ASDPurchaseRequest : ASDRequest
+@interface ASDPurchaseRequest : ASDEphemeralRequest
 {
-    CDUnknownBlockType _completionBlock;
-    ASDPurchaseRequestOptions *_options;
 }
 
-- (void).cxx_destruct;
-- (void)_handleResponse:(id)arg1 error:(id)arg2;
+@property (readonly, copy, nonatomic) ASDPurchaseRequestOptions *options; // @dynamic options;
+
++ (long long)requestType;
 - (id)initWithOptions:(id)arg1;
 - (void)startWithCompletionBlock:(CDUnknownBlockType)arg1;
 

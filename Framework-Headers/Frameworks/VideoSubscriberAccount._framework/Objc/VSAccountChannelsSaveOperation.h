@@ -6,21 +6,23 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class NSError, VSAccountChannels;
+@class NSError, VSAccountChannels, VSAccountChannelsCenter;
 
 @interface VSAccountChannelsSaveOperation : VSAsyncOperation
 {
     NSError *_error;
     VSAccountChannels *_unsavedAccountChannels;
+    VSAccountChannelsCenter *_accountChannelsCenter;
 }
 
+@property (strong, nonatomic) VSAccountChannelsCenter *accountChannelsCenter; // @synthesize accountChannelsCenter=_accountChannelsCenter;
 @property (copy, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) VSAccountChannels *unsavedAccountChannels; // @synthesize unsavedAccountChannels=_unsavedAccountChannels;
 
 - (void).cxx_destruct;
 - (void)executionDidBegin;
 - (id)init;
-- (id)initWithUnsavedAccountChannels:(id)arg1;
+- (id)initWithUnsavedAccountChannels:(id)arg1 accountChannelsCenter:(id)arg2;
 
 @end
 

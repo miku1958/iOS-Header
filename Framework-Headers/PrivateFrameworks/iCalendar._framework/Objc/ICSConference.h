@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSString *region;
 
 - (void)_ICSStringWithOptions:(unsigned long long)arg1 appendingToString:(id)arg2;
+- (id)initWithValue:(id)arg1 type:(unsigned long long)arg2;
 
 @end
 

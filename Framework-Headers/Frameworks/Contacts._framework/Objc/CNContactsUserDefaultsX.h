@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
 
 @property (strong) CNFoundationUserDefaults *foundationUserDefaults; // @synthesize foundationUserDefaults=_foundationUserDefaults;
 
+- (void).cxx_destruct;
 - (id)countryCode;
-- (void)dealloc;
 - (long long)displayNameOrder;
 - (id)init;
 - (id)initWithFoundationUserDefaults:(id)arg1;

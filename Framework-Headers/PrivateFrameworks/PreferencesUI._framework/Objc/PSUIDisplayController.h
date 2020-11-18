@@ -29,7 +29,6 @@
 - (void).cxx_destruct;
 - (void)_cleanupTransactionRef;
 - (void)_localizeAutoLockTitles;
-- (id)autoBrightness:(id)arg1;
 - (id)backlightValue:(id)arg1;
 - (id)blueLightSchedule:(id)arg1;
 - (id)boldTextEnabledForSpecifier:(id)arg1;
@@ -50,7 +49,6 @@
 - (void)profileNotification:(id)arg1;
 - (void)reloadBlueLightSpecifiers;
 - (id)screenLock:(id)arg1;
-- (void)setAutoBrightness:(id)arg1 specifier:(id)arg2;
 - (void)setAutoWhiteBalanceEnabled:(id)arg1 forSpecifier:(id)arg2;
 - (void)setBacklightValue:(id)arg1 specifier:(id)arg2;
 - (void)setBoldTextEnabled:(id)arg1 specifier:(id)arg2;

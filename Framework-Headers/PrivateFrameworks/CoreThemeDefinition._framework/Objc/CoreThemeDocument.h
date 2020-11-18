@@ -6,7 +6,7 @@
 
 #import <CoreThemeDefinition/TDPersistentDocument.h>
 
-@class NSManagedObjectModel, NSMutableDictionary, NSString, NSURL, NSUUID, TDDeviceTraits, TDHistorian, TDThreadMOCOrganizer;
+@class NSManagedObjectModel, NSMutableArray, NSMutableDictionary, NSString, NSURL, NSUUID, TDCatalogGlobals, TDDeviceTraits, TDHistorian, TDThreadMOCOrganizer;
 @protocol TDAssetManagementDelegate, TDCustomAssetProvider;
 
 @interface CoreThemeDocument : TDPersistentDocument
@@ -30,22 +30,20 @@
     int _majorVersion;
     int _minorVersion;
     int _patchVersion;
-    TDDeviceTraits *_optimizeForDeviceTraits;
+    NSMutableArray *_deviceTraits;
     struct _renditionkeyfmt *_keyFormat;
-    long long _capabilities;
+    TDCatalogGlobals *_catalogGlobals;
     id<TDAssetManagementDelegate> _assetManagementDelegate;
     id<TDCustomAssetProvider> _customAssetProvider;
 }
 
-@property (nonatomic) BOOL allowsVibrancy;
 @property (nonatomic) id<TDAssetManagementDelegate> assetManagementDelegate; // @synthesize assetManagementDelegate=_assetManagementDelegate;
+@property (readonly) TDCatalogGlobals *catalogGlobals;
 @property (nonatomic) id<TDCustomAssetProvider> customAssetProvider; // @synthesize customAssetProvider=_customAssetProvider;
-@property (nonatomic) int defaultBlendMode;
-@property (nonatomic) long long documentCapabilities; // @synthesize documentCapabilities=_capabilities;
 @property (readonly, nonatomic) int majorVersion;
 @property (copy, nonatomic) NSString *minimumDeploymentVersion; // @synthesize minimumDeploymentVersion=_minimumDeploymentVersion;
 @property (readonly, nonatomic) int minorVersion;
-@property (strong, nonatomic) TDDeviceTraits *optimizeForDeviceTraits; // @synthesize optimizeForDeviceTraits=_optimizeForDeviceTraits;
+@property (strong, nonatomic) TDDeviceTraits *optimizeForDeviceTraits;
 @property (readonly, nonatomic) int patchVersion;
 @property (copy) NSString *pathToRepresentedDocument; // @synthesize pathToRepresentedDocument;
 @property (readonly, nonatomic) NSURL *themeBitSourceURL;
@@ -80,7 +78,7 @@
 - (void)_backwardsCompatibilityPatchForLayoutDirection;
 - (id)_cachedConstantsForEntity:(id)arg1;
 - (BOOL)_canremoveKeyAttribte:(unsigned short)arg1;
-- (id)_catalogGlobals;
+- (BOOL)_clampMetrics;
 - (long long)_compareFlattenedKeySpec1:(id)arg1 toKeySpec2:(id)arg2;
 - (void)_configureAfterFirstSave;
 - (id)_createNamedElementWithIdentifier:(long long)arg1;
@@ -100,17 +98,20 @@
 - (void)_normalizeRenditionKeySpec:(id)arg1 forSchemaRendition:(id)arg2;
 - (void)_optimizeForDeviceTraits;
 - (id)_predicateForRenditionKeySpec:(id)arg1;
+- (void)_processModelProductions;
 - (void)_removeRedundantPDFBasedRenditions:(id)arg1;
 - (void)_removeRedundantPDFBasedRenditionsForAssets:(id)arg1;
+- (id)_sizeIndexesByNameFromNamedAssetImportInfos:(id)arg1;
 - (void)_synchronousSave;
 - (id)_themeBitSource:(id *)arg1;
 - (id)_themeBitSourceForReferencedFilesAtURLs:(id)arg1 createIfNecessary:(BOOL)arg2;
 - (void)_tidyUpLayerStacks;
 - (void)_updateKeyFormat;
-- (void)_updateRenditionPackings:(id)arg1;
+- (BOOL)_updateRenditionPackings:(id)arg1 error:(id *)arg2;
 - (id)addAssetsAtFileURLs:(id)arg1;
 - (id)addAssetsAtFileURLs:(id)arg1 createProductions:(BOOL)arg2;
 - (id)addAssetsAtFileURLs:(id)arg1 createProductions:(BOOL)arg2 referenceFiles:(BOOL)arg3 bitSource:(id)arg4 customInfos:(id)arg5;
+- (void)addDeviceTraitForOptimization:(id)arg1;
 - (void)addThemeBitSourceAtPath:(id)arg1;
 - (void)addThemeBitSourceAtPath:(id)arg1 createProductions:(BOOL)arg2;
 - (id)allObjectsForEntity:(id)arg1 withSortDescriptors:(id)arg2;
@@ -122,6 +123,7 @@
 - (id)assetAtFileURL:(id)arg1;
 - (id)assetAtPath:(id)arg1;
 - (void)buildModel;
+- (BOOL)canImportNamedAssetImportInfo:(id)arg1;
 - (void)changedObjectsNotification:(id)arg1;
 - (BOOL)checkCompatibilityOfDocumentAtURL:(id)arg1 ofType:(id)arg2 error:(id *)arg3;
 - (void)checkVersionsAndUpdateIfNecessary;
@@ -142,7 +144,9 @@
 - (id)createEffectStyleProductionForPartDefinition:(id)arg1 withNameIdentifier:(id)arg2;
 - (id)createElementProductionWithAsset:(id)arg1;
 - (id)createNamedArtworkProductionsForAssets:(id)arg1 customInfos:(id)arg2 error:(id *)arg3;
+- (id)createNamedColorProductionsForImportInfos:(id)arg1 error:(id *)arg2;
 - (id)createNamedEffectProductionWithName:(id)arg1 isText:(BOOL)arg2;
+- (void)createNamedModelsForCustomInfos:(id)arg1 referenceFiles:(BOOL)arg2 bitSource:(id)arg3 error:(id *)arg4;
 - (void)createNamedTexturesForCustomInfos:(id)arg1 referenceFiles:(BOOL)arg2 bitSource:(id)arg3 error:(id *)arg4;
 - (BOOL)createPSDReferenceArtworkForRenditionGroup:(id)arg1 atDestination:(id)arg2 error:(id *)arg3;
 - (id)createProductionWithRenditionGroup:(id)arg1 forPartDefinition:(id)arg2 artworkFormat:(id)arg3 nameElement:(id)arg4 shouldReplaceExisting:(BOOL)arg5 error:(id *)arg6;
@@ -166,6 +170,7 @@
 - (void)deleteProduction:(id)arg1 shouldDeleteAssetFiles:(BOOL)arg2;
 - (void)deleteProductions:(id)arg1 shouldDeleteAssetFiles:(BOOL)arg2;
 - (id)deploymentTargetWithIdentifier:(long long)arg1;
+- (id)deviceTraitsUsedForOptimization;
 - (BOOL)didMigrate;
 - (id)directionWithIdentifier:(long long)arg1;
 - (id)displayGamutWithIdentifier:(long long)arg1;
@@ -186,8 +191,8 @@
 - (void)importCursorsFromURL:(id)arg1 getUnusedImportedCursors:(id *)arg2 getUnupdatedCursors:(id *)arg3;
 - (void)importCustomAssetsWithImportInfos:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)importNamedAssetsFromFileURLs:(id)arg1 referenceFiles:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)importNamedAssetsWithImportInfos:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)importNamedAssetsWithImportInfos:(id)arg1 referenceFiles:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)incrementallyPackRenditionsSinceDate:(id)arg1 error:(id *)arg2;
 - (id)init;
 - (id)initWithContentsOfURL:(id)arg1 ofType:(id)arg2 error:(id *)arg3;
 - (id)initWithType:(id)arg1 error:(id *)arg2;
@@ -209,7 +214,7 @@
 - (id)newObjectForEntity:(id)arg1;
 - (id)objectsForEntity:(id)arg1 withPredicate:(id)arg2 sortDescriptors:(id)arg3;
 - (id)objectsForEntity:(id)arg1 withPredicate:(id)arg2 sortDescriptors:(id)arg3 error:(id *)arg4;
-- (void)packRenditions;
+- (void)packRenditionsError:(id *)arg1;
 - (id)partWithIdentifier:(long long)arg1;
 - (id)pathToAsset:(id)arg1;
 - (id)persistentStoreTypeForFileType:(id)arg1;
@@ -223,6 +228,7 @@
 - (void)recacheThemeConstant:(id)arg1;
 - (id)relativePathToProductionData;
 - (void)removeCustomizationForSchemaDefinition:(id)arg1 shouldDeleteAssetFiles:(BOOL)arg2;
+- (void)removeDeviceTraitsForOptimization;
 - (const struct _renditionkeyfmt *)renditionKeyFormat;
 - (int)renditionKeySemantics;
 - (long long)renditionKeySpecAttributeCount;
@@ -239,6 +245,7 @@
 - (void)setMetadatum:(id)arg1 forKey:(id)arg2;
 - (void)setRelativePathToProductionData:(id)arg1;
 - (void)setTargetPlatform:(long long)arg1;
+- (BOOL)shouldSupportCompactCompression;
 - (id)sizeClassWithIdentifier:(long long)arg1;
 - (id)sizeWithIdentifier:(long long)arg1;
 - (id)slicesComputedForImageSize:(struct CGSize)arg1 usingSliceInsets:(CDStruct_3c058996)arg2 resizableSliceSize:(struct CGSize)arg3 withRenditionType:(long long)arg4;

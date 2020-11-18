@@ -12,8 +12,10 @@
 @interface AVCaptureMetadataOutputInternal : NSObject
 {
     AVWeakReferencingDelegateStorage *delegateStorage;
+    AVWeakReferencingDelegateStorage *delegateOverrideStorage;
     NSArray *metadataObjectTypes;
     struct CGRect rectOfInterest;
+    BOOL faceTrackingMetadataObjectTypesAvailable;
     AVWeakReference *weakReference;
     struct OpaqueFigSimpleMutex *remoteQueueMutex;
     void *remoteReceiverQueue;

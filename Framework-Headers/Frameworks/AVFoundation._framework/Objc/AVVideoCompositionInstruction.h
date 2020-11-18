@@ -32,6 +32,7 @@
 
 + (void)initialize;
 + (BOOL)supportsSecureCoding;
+- (id)_deepCopy;
 - (void)_setValuesFromDictionary:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

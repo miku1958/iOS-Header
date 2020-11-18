@@ -8,13 +8,13 @@
 
 #import <SpringBoardUIServices/UITextFieldDelegate-Protocol.h>
 
-@class NSMutableCharacterSet, NSString, UIColor, UITextField;
+@class NSMutableCharacterSet, NSString, SBUIPasscodeTextField, UIColor, UIFont, UITextField;
 @protocol SBUIPasscodeEntryFieldDelegate;
 
 @interface SBUIPasscodeEntryField : UIView <UITextFieldDelegate>
 {
     id<SBUIPasscodeEntryFieldDelegate> _delegate;
-    UITextField *_textField;
+    SBUIPasscodeTextField *_textField;
     NSMutableCharacterSet *_numericTrimmingSet;
     BOOL _ignoreCallbacks;
     BOOL _resigningFirstResponder;
@@ -25,6 +25,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBUIPasscodeEntryFieldDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIFont *font;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *stringValue; // @dynamic stringValue;
 @property (readonly) Class superclass;
@@ -33,7 +34,7 @@
 + (BOOL)_usesTextFieldForFirstResponder;
 - (void).cxx_destruct;
 - (void)_appendString:(id)arg1;
-- (void)_autofillForMesaWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_autofillForBiometricAuthenticationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_deleteLastCharacter;
 - (void)_handleKeyUIEvent:(id)arg1 source:(int)arg2;
 - (BOOL)_hasAnyCharacters;
@@ -50,9 +51,10 @@
 - (void)notePasscodeFieldTextDidChange;
 - (void)reset;
 - (BOOL)resignFirstResponder;
-- (void)setBackgroundAlpha:(double)arg1;
 - (BOOL)shouldInsertPasscodeText:(id)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
+- (void)textFieldDidResignFirstResponder:(id)arg1;
 - (BOOL)textFieldShouldBeginEditing:(id)arg1;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 

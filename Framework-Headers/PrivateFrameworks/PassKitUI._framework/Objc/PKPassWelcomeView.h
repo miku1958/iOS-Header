@@ -10,19 +10,26 @@
 
 @interface PKPassWelcomeView : PKWelcomeView
 {
-    UIButton *_appStoreButton;
+    BOOL _currentRearCameraIsAllowed;
+    UIButton *_buttonScanCode;
 }
 
-+ (double)headerImageRegionHeight;
-+ (struct UIEdgeInsets)margins;
-+ (id)messageAttributedString:(BOOL)arg1;
-+ (struct UIEdgeInsets)textInsets;
+@property (strong, nonatomic) UIButton *buttonScanCode; // @synthesize buttonScanCode=_buttonScanCode;
+@property (nonatomic) BOOL currentRearCameraIsAllowed; // @synthesize currentRearCameraIsAllowed=_currentRearCameraIsAllowed;
+
++ (double)bottomMargin;
++ (double)defaultHeight;
++ (struct UIEdgeInsets)headerImageMargins;
++ (struct CGSize)headerImageSize;
++ (id)messageAttributedString;
 - (void).cxx_destruct;
 - (void)_appStorePressed;
 - (void)_scanCodePressed;
+- (void)addScanCodeButton;
 - (void)dealloc;
 - (id)init;
-- (void)layoutSubviews;
+- (BOOL)needsUpdate;
+- (void)removeScanCodeButton;
 
 @end
 

@@ -8,23 +8,26 @@
 
 #import <FTServices/FTMessageQueueDelegate-Protocol.h>
 
-@class IMRemoteURLConnection;
+@class IDSServerBag;
+@protocol FTMessageDeliveryRemoteURLConnection, FTMessageDeliveryRemoteURLConnectionFactory;
 
 @interface FTMessageDelivery_HTTP : FTMessageDelivery <FTMessageQueueDelegate>
 {
-    IMRemoteURLConnection *_remoteConnection;
+    id<FTMessageDeliveryRemoteURLConnectionFactory> _remoteConnectionFactory;
+    id<FTMessageDeliveryRemoteURLConnection> _remoteConnection;
     BOOL _pendingRetryAfterAirplaneMode;
     double _retryTimeAfterAirplaneMode;
+    CDUnknownBlockType _retryBackoffProvider;
+    IDSServerBag *_idsServerBag;
+    IDSServerBag *_iMessageServerBag;
 }
 
+- (void).cxx_destruct;
 - (void)_cleanupURLConnection;
 - (void)_clearRetryTimer;
 - (void)_dequeueIfNeeded;
-- (id)_indentedRegistrationLogWithLevel:(unsigned int)arg1;
-- (void)_notifyDelegateAboutError:(id)arg1 forMessage:(id)arg2;
-- (void)_printArrayToRegistrationLogs:(id)arg1 identationLevel:(unsigned int)arg2;
-- (void)_printDictionaryToRegistrationLogs:(id)arg1 indentationLevel:(unsigned int)arg2;
-- (void)_printObjectToRegistrationLogs:(id)arg1 key:(id)arg2 identationLevel:(unsigned int)arg3;
+- (void)_informDelegatesOfMessage:(id)arg1 result:(id)arg2 resultCode:(long long)arg3 error:(id)arg4;
+- (void)_notifyDelegateAboutError:(id)arg1;
 - (id)_processResultData:(id)arg1 forMessage:(id)arg2 error:(id *)arg3;
 - (BOOL)_sendMessageAsynchronously:(id)arg1 error:(id *)arg2;
 - (void)_serverBagLoaded:(id)arg1;
@@ -35,6 +38,7 @@
 - (void)cancelMessage:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)initWithIDSServerBag:(id)arg1 iMessageServerBag:(id)arg2 remoteConnectionFactory:(id)arg3 retryBackoffProvider:(CDUnknownBlockType)arg4;
 - (void)invalidate;
 - (void)networkStateChanged;
 - (void)queue:(id)arg1 hitTimeoutForMessage:(id)arg2;

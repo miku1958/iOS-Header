@@ -18,8 +18,10 @@
     NSString *_contentItemID;
     NSString *_contextID;
     NSString *_destinationAppDisplayID;
+    NSString *_insertAfterContentItemID;
     NSData *_languageOption;
     NSString *_mediaType;
+    NSString *_nowPlayingContentItemID;
     NSData *_playbackQueueContext;
     int _playbackQueueDestinationOffset;
     int _playbackQueueInsertionPosition;
@@ -28,6 +30,7 @@
     NSString *_radioStationHash;
     float _rating;
     int _repeatMode;
+    int _replaceIntent;
     unsigned int _sendOptions;
     int _shuffleMode;
     float _skipInterval;
@@ -49,6 +52,7 @@
         unsigned int playbackRate:1;
         unsigned int rating:1;
         unsigned int repeatMode:1;
+        unsigned int replaceIntent:1;
         unsigned int sendOptions:1;
         unsigned int shuffleMode:1;
         unsigned int skipInterval:1;
@@ -68,9 +72,11 @@
 @property (readonly, nonatomic) BOOL hasContextID;
 @property (readonly, nonatomic) BOOL hasDestinationAppDisplayID;
 @property (nonatomic) BOOL hasExternalPlayerCommand;
+@property (readonly, nonatomic) BOOL hasInsertAfterContentItemID;
 @property (readonly, nonatomic) BOOL hasLanguageOption;
 @property (readonly, nonatomic) BOOL hasMediaType;
 @property (nonatomic) BOOL hasNegative;
+@property (readonly, nonatomic) BOOL hasNowPlayingContentItemID;
 @property (nonatomic) BOOL hasPlaybackPosition;
 @property (readonly, nonatomic) BOOL hasPlaybackQueueContext;
 @property (nonatomic) BOOL hasPlaybackQueueDestinationOffset;
@@ -81,6 +87,7 @@
 @property (nonatomic) BOOL hasRadioStationID;
 @property (nonatomic) BOOL hasRating;
 @property (nonatomic) BOOL hasRepeatMode;
+@property (nonatomic) BOOL hasReplaceIntent;
 @property (nonatomic) BOOL hasRequestDefermentToPlaybackQueuePosition;
 @property (nonatomic) BOOL hasSendOptions;
 @property (nonatomic) BOOL hasShouldBeginRadioPlayback;
@@ -91,9 +98,11 @@
 @property (readonly, nonatomic) BOOL hasStationURL;
 @property (readonly, nonatomic) BOOL hasSystemAppPlaybackQueueData;
 @property (nonatomic) BOOL hasTrackID;
+@property (strong, nonatomic) NSString *insertAfterContentItemID; // @synthesize insertAfterContentItemID=_insertAfterContentItemID;
 @property (strong, nonatomic) NSData *languageOption; // @synthesize languageOption=_languageOption;
 @property (strong, nonatomic) NSString *mediaType; // @synthesize mediaType=_mediaType;
 @property (nonatomic) BOOL negative; // @synthesize negative=_negative;
+@property (strong, nonatomic) NSString *nowPlayingContentItemID; // @synthesize nowPlayingContentItemID=_nowPlayingContentItemID;
 @property (nonatomic) double playbackPosition; // @synthesize playbackPosition=_playbackPosition;
 @property (strong, nonatomic) NSData *playbackQueueContext; // @synthesize playbackQueueContext=_playbackQueueContext;
 @property (nonatomic) int playbackQueueDestinationOffset; // @synthesize playbackQueueDestinationOffset=_playbackQueueDestinationOffset;
@@ -104,6 +113,7 @@
 @property (nonatomic) long long radioStationID; // @synthesize radioStationID=_radioStationID;
 @property (nonatomic) float rating; // @synthesize rating=_rating;
 @property (nonatomic) int repeatMode; // @synthesize repeatMode=_repeatMode;
+@property (nonatomic) int replaceIntent; // @synthesize replaceIntent=_replaceIntent;
 @property (nonatomic) BOOL requestDefermentToPlaybackQueuePosition; // @synthesize requestDefermentToPlaybackQueuePosition=_requestDefermentToPlaybackQueuePosition;
 @property (nonatomic) unsigned int sendOptions; // @synthesize sendOptions=_sendOptions;
 @property (nonatomic) BOOL shouldBeginRadioPlayback; // @synthesize shouldBeginRadioPlayback=_shouldBeginRadioPlayback;
@@ -116,6 +126,7 @@
 @property (nonatomic) unsigned long long trackID; // @synthesize trackID=_trackID;
 
 - (int)StringAsRepeatMode:(id)arg1;
+- (int)StringAsReplaceIntent:(id)arg1;
 - (int)StringAsShuffleMode:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -127,6 +138,7 @@
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)repeatModeAsString:(int)arg1;
+- (id)replaceIntentAsString:(int)arg1;
 - (id)shuffleModeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -11,7 +11,7 @@
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
 
-@class EKEvent, EKInviteeAlternativeTimeSearcher, EKUIEventInviteesEditViewController, EKUIEventInviteesView, EKUIInviteesViewAddInviteesSection, EKUIInviteesViewAllInviteesCanAttendSection, EKUIInviteesViewInvisibleInviteeStatusSection, EKUIInviteesViewNotRespondedInviteesSection, EKUIInviteesViewOriginalConflictSection, EKUIInviteesViewProposedTimeSection, EKUIInviteesViewRespondedInviteesSection, EKUIInviteesViewSomeInviteesCanAttendSection, NSArray, NSDate, NSString;
+@class EKEvent, EKInviteeAlternativeTimeSearcher, EKUIEventInviteesEditViewController, EKUIEventInviteesView, EKUIInviteesViewAddInviteesSection, EKUIInviteesViewAllInviteesCanAttendSection, EKUIInviteesViewInvisibleInviteeStatusSection, EKUIInviteesViewNotRespondedInviteesSection, EKUIInviteesViewOriginalConflictSection, EKUIInviteesViewProposedTimeSection, EKUIInviteesViewSomeInviteesCanAttendSection, NSArray, NSDate, NSMutableArray, NSString;
 @protocol EKEditItemViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
     EKEvent *_event;
     NSArray *_sections;
     EKUIInviteesViewAddInviteesSection *_addInviteesSection;
-    EKUIInviteesViewRespondedInviteesSection *_respondedSection;
+    NSMutableArray *_respondedSection;
     EKUIInviteesViewNotRespondedInviteesSection *_notRespondedSection;
     EKUIInviteesViewInvisibleInviteeStatusSection *_invisibleInviteeStatusSection;
     EKUIInviteesViewProposedTimeSection *_proposedTimeSection;
@@ -59,7 +59,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) EKUIInviteesViewProposedTimeSection *proposedTimeSection; // @synthesize proposedTimeSection=_proposedTimeSection;
 @property (nonatomic) BOOL resetAttendeesSections; // @synthesize resetAttendeesSections=_resetAttendeesSections;
 @property (nonatomic) BOOL resetConflictResolutionSections; // @synthesize resetConflictResolutionSections=_resetConflictResolutionSections;
-@property (strong, nonatomic) EKUIInviteesViewRespondedInviteesSection *respondedSection; // @synthesize respondedSection=_respondedSection;
+@property (strong, nonatomic) NSMutableArray *respondedSection; // @synthesize respondedSection=_respondedSection;
 @property (strong, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property (strong, nonatomic) NSDate *selectedEndDate; // @synthesize selectedEndDate=_selectedEndDate;
 @property (strong, nonatomic) NSDate *selectedStartDate; // @synthesize selectedStartDate=_selectedStartDate;
@@ -70,7 +70,6 @@ __attribute__((visibility("hidden")))
 
 + (id)_participantsInArray:(id)arg1 thatAreNotInArray:(id)arg2;
 - (void).cxx_destruct;
-- (id)_attendeesWithoutOrganizerAndLocations;
 - (void)_dismiss:(id)arg1;
 - (void)_dismissPresentedViewControllerAnimated:(BOOL)arg1;
 - (void)_eventModified:(id)arg1;

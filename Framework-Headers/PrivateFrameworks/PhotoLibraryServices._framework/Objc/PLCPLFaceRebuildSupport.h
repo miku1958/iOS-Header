@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSManagedObjectContext, PLFaceRebuildHelper, PLManagedAsset;
 
@@ -18,7 +18,7 @@
     int _hiddenFaceCount;
 }
 
-+ (void)rebuildDeferredFacesForAsset:(id)arg1 inPhotoLibrary:(id)arg2;
++ (void)rebuildDeferredFacesForAsset:(id)arg1 inManagedObjectContext:(id)arg2;
 - (void)dealloc;
 - (id)fetchDeferredFacesToRebuild;
 - (id)fetchPersonForDeferredFace:(id)arg1;

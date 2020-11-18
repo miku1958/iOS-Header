@@ -40,6 +40,7 @@
 - (BOOL)atEOF;
 - (unsigned short)charAtPosition:(unsigned long long)arg1 withOffset:(long long)arg2;
 - (unsigned long long)cursor;
+- (id)dataWithRange:(struct _NSRange)arg1;
 - (struct _NSRange)emptyRangeStartingAtCursor;
 - (long long)errorCount;
 - (struct _NSRange)expandRange:(struct _NSRange)arg1 untilNextByteIs:(id)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSValue.h>
+#import <Foundation/NSValue.h>
 
 @interface NSConcreteValue : NSValue
 {
@@ -20,6 +20,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)getValue:(void *)arg1;
+- (void)getValue:(void *)arg1 size:(unsigned long long)arg2;
 - (unsigned long long)hash;
 - (BOOL)isEqualToValue:(id)arg1;
 - (const char *)objCType;

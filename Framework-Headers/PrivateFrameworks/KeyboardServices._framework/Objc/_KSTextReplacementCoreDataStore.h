@@ -29,8 +29,8 @@
 - (void)cleanup;
 - (unsigned long long)countEntriesWithPredicate:(id)arg1;
 - (void)dealloc;
-- (void)deleteTextReplacementsFromLocalStoreWithNames:(id)arg1 excludeSavesToCloud:(BOOL)arg2;
-- (void)deleteTextReplacementsWithPredicate:(id)arg1;
+- (BOOL)deleteTextReplacementsFromLocalStoreWithNames:(id)arg1 excludeSavesToCloud:(BOOL)arg2;
+- (BOOL)deleteTextReplacementsWithPredicate:(id)arg1;
 - (BOOL)didMakeInitialPull;
 - (void)fetchAndMergeTextReplacementEntry:(id)arg1 context:(id)arg2;
 - (id)fetchTextReplacementEntry:(id)arg1 context:(id)arg2;
@@ -39,10 +39,11 @@
 - (id)getSyncStateEntry;
 - (id)init;
 - (id)initWithDirectoryPath:(id)arg1;
-- (void)markDeletesForTextReplacementEntries:(id)arg1;
+- (BOOL)markDeletesForTextReplacementEntries:(id)arg1;
+- (id)persistentStore;
 - (id)queryEntriesWithPredicate:(id)arg1 limit:(unsigned long long)arg2;
 - (id)queryManagedObjectsWithPredicate:(id)arg1 limit:(unsigned long long)arg2;
-- (void)recordTextReplacementEntries:(id)arg1;
+- (BOOL)recordTextReplacementEntries:(id)arg1;
 - (void)saveCKFetchToken:(id)arg1;
 - (id)textReplacementEntriesWithLimit:(unsigned long long)arg1;
 

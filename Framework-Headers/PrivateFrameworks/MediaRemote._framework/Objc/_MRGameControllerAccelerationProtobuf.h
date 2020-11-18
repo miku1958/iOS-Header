@@ -13,10 +13,28 @@
 @interface _MRGameControllerAccelerationProtobuf : PBCodable <NSCopying>
 {
     NSData *_data;
+    float _w;
+    float _x;
+    float _y;
+    float _z;
+    struct {
+        unsigned int w:1;
+        unsigned int x:1;
+        unsigned int y:1;
+        unsigned int z:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
 @property (readonly, nonatomic) BOOL hasData;
+@property (nonatomic) BOOL hasW;
+@property (nonatomic) BOOL hasX;
+@property (nonatomic) BOOL hasY;
+@property (nonatomic) BOOL hasZ;
+@property (nonatomic) float w; // @synthesize w=_w;
+@property (nonatomic) float x; // @synthesize x=_x;
+@property (nonatomic) float y; // @synthesize y=_y;
+@property (nonatomic) float z; // @synthesize z=_z;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

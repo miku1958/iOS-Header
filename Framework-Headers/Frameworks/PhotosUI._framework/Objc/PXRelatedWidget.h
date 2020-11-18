@@ -15,7 +15,7 @@
 #import <PhotosUICore/PXWidget-Protocol.h>
 
 @class NSDictionary, NSString, PXBasicTileAnimator, PXPhotosDetailsContext, PXRelatedDataSource, PXRelatedDataSourceManager, PXRelatedSpecManager, PXRelatedTilingLayout, PXSectionedObjectReference, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec;
-@protocol PXAnonymousView, PXWidgetDelegate;
+@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate;
 
 @interface PXRelatedWidget : NSObject <PXRelatedDataSourceManagerObserver, PXTilingControllerTransitionDelegate, PXTilingControllerScrollDelegate, PXRelatedTilingLayoutDelegate, PXTileSource, PXChangeObserver, PXWidget>
 {
@@ -35,6 +35,7 @@
     BOOL __canExpand;
     BOOL _hasLoadedContentData;
     id<PXWidgetDelegate> _widgetDelegate;
+    id<PXWidgetUnlockDelegate> _widgetUnlockDelegate;
     PXPhotosDetailsContext *_context;
     PXRelatedDataSourceManager *__dataSourceManager;
     PXRelatedSpecManager *__specManager;
@@ -91,6 +92,7 @@
 @property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled;
 @property (weak, nonatomic) id<PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
+@property (weak, nonatomic) id<PXWidgetUnlockDelegate> widgetUnlockDelegate; // @synthesize widgetUnlockDelegate=_widgetUnlockDelegate;
 
 - (void).cxx_destruct;
 - (struct CGPoint)_anchorPointForLayoutContentBounds:(struct CGRect)arg1;
@@ -121,6 +123,7 @@
 - (void *)checkOutTileForIdentifier:(struct PXTileIdentifier)arg1 layout:(id)arg2;
 - (id)createTileAnimator;
 - (id)entryObjectReferenceAtPoint:(struct CGPoint)arg1 inCoordinateSpaceWithIdentifier:(void *)arg2;
+- (void)enumerateTilesForRelatedRelatedEntry:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)extendedTraitCollection;
 - (struct PXTileIdentifier)identifierForTileWithKind:(long long)arg1 relatedEntry:(id)arg2;
 - (struct PXTileIdentifier)identifierForTileWithKind:(long long)arg1 relatedEntry:(id)arg2 layout:(id)arg3;

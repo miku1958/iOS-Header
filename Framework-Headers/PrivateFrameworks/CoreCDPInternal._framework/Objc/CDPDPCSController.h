@@ -31,6 +31,8 @@
 - (void)enableCDPWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithContext:(id)arg1 pcsProxy:(id)arg2;
+- (BOOL)isCloudProtectionEnabledLocally:(id *)arg1;
+- (BOOL)isCompanionInKeychainCircle:(id *)arg1;
 - (void)recoverAndSynchronizeKeysWithCompletion:(CDUnknownBlockType)arg1;
 - (void)recoverKeysWithCompletion:(CDUnknownBlockType)arg1;
 

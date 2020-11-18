@@ -4,64 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, VKSharedResources, VKWorld;
-@protocol MDRenderTarget, OS_dispatch_semaphore;
+@class GEOResourceManifestConfiguration, VKSharedResources;
+@protocol MDRenderTarget;
 
 __attribute__((visibility("hidden")))
 @interface VKModelObject : NSObject
 {
-    VKWorld *_world;
-    VKModelObject *_supermodel;
-    NSMutableArray *_submodels;
     BOOL _active;
     unsigned int _needsLayout;
     unsigned int _needsDisplay;
-    NSObject<OS_dispatch_semaphore> *_drawReady;
-    struct map<md::CommandBufferId, std::__1::unique_ptr<ggl::CommandBuffer, std::__1::default_delete<ggl::CommandBuffer>>, std::__1::less<md::CommandBufferId>, std::__1::allocator<std::__1::pair<const md::CommandBufferId, std::__1::unique_ptr<ggl::CommandBuffer, std::__1::default_delete<ggl::CommandBuffer>>>>> _commandBuffers;
-    struct CommandBufferIdSet _supportedPassIds;
+    struct CartographicLayer *_renderLayer;
     VKSharedResources *_sharedResources;
+    GEOResourceManifestConfiguration *_manifestConfiguration;
     id<MDRenderTarget> _renderTarget;
 }
 
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
+@property (nonatomic) struct CartographicLayer *renderLayer; // @synthesize renderLayer=_renderLayer;
 @property (readonly, nonatomic) id<MDRenderTarget> renderTarget; // @synthesize renderTarget=_renderTarget;
 @property (readonly, nonatomic) VKSharedResources *sharedResources; // @synthesize sharedResources=_sharedResources;
 @property (readonly, nonatomic) shared_ptr_a3c46825 styleManager;
-@property (readonly, nonatomic) NSArray *submodels; // @synthesize submodels=_submodels;
-@property (readonly, nonatomic) VKModelObject *supermodel; // @synthesize supermodel=_supermodel;
-@property (nonatomic) VKWorld *world; // @synthesize world=_world;
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (void)_removeSubmodel:(id)arg1;
-- (void)addSubmodel:(id)arg1;
-- (void)clearCommandBuffers;
-- (void)clearLockedCommandBuffers;
 - (void)dealloc;
-- (void)didMoveToSupermodel;
 - (void)didReceiveMemoryWarning:(BOOL)arg1;
-- (void)didRemoveFromSuperModel;
-- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
-- (void)gglLayoutSceneIfNeeded:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3 dispatchQueue:(id)arg4;
-- (void)gglLayoutSceneWithoutStyleManager:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
-- (BOOL)hasSubmodel:(id)arg1;
-- (id)initWithTarget:(id)arg1 sharedResources:(id)arg2;
+- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(RenderQueue_70f64fd3 *)arg3;
+- (void)gglLayoutSceneWithoutStyleManager:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(RenderQueue_70f64fd3 *)arg3;
+- (id)initWithTarget:(id)arg1 manifestConfiguration:(id)arg2;
 - (void)layoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2;
-- (void)lockCommandBuffers:(struct RenderQueue *)arg1;
-- (void)removeFromSupermodel;
-- (void)removeSubmodel:(id)arg1;
 - (void)reset;
 - (void)runAnimation:(id)arg1;
 - (void)setNeedsDisplay;
 - (void)setNeedsLayout;
-- (void)setSupermodel:(id)arg1;
-- (void)setSupportedPasses:(const struct CommandBufferIdSet *)arg1;
 - (BOOL)shouldLayoutWithoutStyleManager;
-- (const struct CommandBufferIdSet *)supportedRenderPasses;
-- (void)unLockCommandBuffers:(struct RenderQueue *)arg1;
-- (void)willMoveToSupermodel:(id)arg1;
 
 @end
 

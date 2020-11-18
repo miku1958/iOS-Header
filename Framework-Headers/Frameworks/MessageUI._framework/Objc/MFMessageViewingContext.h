@@ -6,8 +6,8 @@
 
 #import <Foundation/NSObject.h>
 
-@class MFActivityMonitor, MFAttachmentManager, MFError, MFLock, MFMailMessage, MFMessageBody, MFMimePart, NSArray, NSConditionLock, NSError;
-@protocol MFMessageViewingContextDelegate, OS_dispatch_queue, SGSuggestionsServiceMailProtocol;
+@class MFActivityMonitor, MFAttachmentManager, MFError, MFLock, MFMailMessage, MFMessageBody, MFMimePart, NSArray, NSError;
+@protocol MFMessageViewingContextDelegate;
 
 @interface MFMessageViewingContext : NSObject
 {
@@ -30,11 +30,6 @@
     unsigned int _isDraftMessage:1;
     unsigned int _isEditableMessage:1;
     unsigned int _showMailboxName:1;
-    unsigned int _shouldAnalyzeMessage:1;
-    NSObject<OS_dispatch_queue> *_suggestionsQueue;
-    NSObject<SGSuggestionsServiceMailProtocol> *_suggestionsService;
-    NSConditionLock *_suggestionsLock;
-    NSArray *_suggestions;
     long long _loadAlternative;
     NSError *_messageAnalysisError;
 }
@@ -44,7 +39,6 @@
 @property (nonatomic, setter=_setContentOffset:) unsigned long long contentOffset; // @synthesize contentOffset=_contentOffset;
 @property (nonatomic) id<MFMessageViewingContextDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL failedToLoad;
-@property (readonly, nonatomic) BOOL hasAnalyzedMessage;
 @property (readonly, nonatomic) BOOL hasLoaded;
 @property (readonly, nonatomic) BOOL hasNoContent;
 @property (nonatomic) BOOL isDraftMessage;
@@ -59,10 +53,8 @@
 @property (strong, nonatomic, setter=_setMessageAnalysisError:) NSError *messageAnalysisError; // @synthesize messageAnalysisError=_messageAnalysisError;
 @property (strong, nonatomic, setter=_setMessageBody:) MFMessageBody *messageBody; // @synthesize messageBody=_body;
 @property (strong, nonatomic, setter=_setSecureMIMEError:) MFError *secureMimeError; // @synthesize secureMimeError=_secureMIMEError;
-@property (nonatomic) BOOL shouldAnalyzeMessage;
 @property (nonatomic) BOOL showMailboxName;
 @property (copy, nonatomic, setter=_setSigners:) NSArray *signers; // @synthesize signers=_signers;
-@property (copy, nonatomic, setter=_setSuggestions:) NSArray *suggestions;
 
 + (BOOL)isAttachmentTooLargeToDownload:(id)arg1;
 + (unsigned long long)nextOffsetForOffset:(unsigned long long)arg1 totalLength:(unsigned long long)arg2 requestedAmount:(unsigned long long)arg3;
@@ -70,11 +62,9 @@
 - (void)_notifyFullMessageLoadFailed;
 - (void)_notifyInitialLoadComplete;
 - (void)_notifyMessageAnalysisComplete;
-- (void)analyzeMessageContent:(id)arg1;
 - (id)attachments;
 - (void)cancelLoad;
 - (void)dealloc;
-- (BOOL)hasAnalyzedMessageWithTimeout:(id)arg1;
 - (id)initWithMessage:(id)arg1 attachmentManager:(id)arg2;
 - (void)load;
 - (void)loadAsPlainText:(BOOL)arg1 asHTML:(BOOL)arg2 downloadIfNecessary:(BOOL)arg3;

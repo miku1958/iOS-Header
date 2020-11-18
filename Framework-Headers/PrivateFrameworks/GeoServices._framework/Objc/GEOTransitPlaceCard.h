@@ -30,10 +30,10 @@
 @property (strong, nonatomic) GEOTransitDepartureSequenceUsage *transitDepartureSequenceUsage; // @synthesize transitDepartureSequenceUsage=_transitDepartureSequenceUsage;
 @property (strong, nonatomic) NSString *transitSystemName; // @synthesize transitSystemName=_transitSystemName;
 
+- (void).cxx_destruct;
 - (int)StringAsTransitCategory:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -14,11 +14,16 @@
     CDStruct_31142d93 _prevGravity;
     CDStruct_31142d93 _userAcceleration;
     struct GCQuaternion _attitude;
+    struct GCQuaternion _prevAttitude;
+    CDStruct_27cd59c8 _eulerAngles;
+    CDStruct_27cd59c8 _prevEulerAngles;
     CDStruct_31142d93 _rotationRate;
     float _tip;
     float _tilt;
     CMMotionManager *_motionMgr;
+    BOOL _linkedOnOrAfterCompassFeature;
     BOOL _motionLite;
+    BOOL _compassEnabled;
     CDUnknownBlockType _valueChangedHandler;
     CDUnknownBlockType _internalValueChangedHandler;
     BOOL _emulatedMotionEnabled;
@@ -28,19 +33,21 @@
 
 @property (readonly, nonatomic) struct GCQuaternion attitude; // @synthesize attitude=_attitude;
 @property (readonly, weak, nonatomic) GCController *controller; // @synthesize controller=_controller;
-@property (readonly, nonatomic) CDStruct_31142d93 gravity; // @synthesize gravity=_gravity;
-@property (readonly, nonatomic) CDStruct_31142d93 rotationRate; // @synthesize rotationRate=_rotationRate;
-@property (readonly, nonatomic) CDStruct_31142d93 userAcceleration; // @synthesize userAcceleration=_userAcceleration;
+@property (readonly, nonatomic) CDStruct_39925896 gravity; // @synthesize gravity=_gravity;
+@property (readonly, nonatomic) BOOL hasAttitudeAndRotationRate;
+@property (readonly, nonatomic) CDStruct_39925896 rotationRate; // @synthesize rotationRate=_rotationRate;
+@property (readonly, nonatomic) CDStruct_39925896 userAcceleration; // @synthesize userAcceleration=_userAcceleration;
 @property (copy, nonatomic) CDUnknownBlockType valueChangedHandler;
 
 - (void).cxx_destruct;
 - (BOOL)_isUpdatingDeviceMotion;
 - (void)_pauseMotionUpdates:(BOOL)arg1;
 - (void)_setAttitude:(struct GCQuaternion)arg1;
-- (void)_setGravity:(CDStruct_31142d93)arg1;
+- (void)_setCompassEnabled:(BOOL)arg1;
+- (void)_setGravity:(CDStruct_39925896)arg1;
 - (void)_setMotionLite:(BOOL)arg1;
-- (void)_setRotationRate:(CDStruct_31142d93)arg1;
-- (void)_setUserAcceleration:(CDStruct_31142d93)arg1;
+- (void)_setRotationRate:(CDStruct_39925896)arg1;
+- (void)_setUserAcceleration:(CDStruct_39925896)arg1;
 - (void)_startDeviceMotionUpdates;
 - (void)_stopDeviceMotionUpdates;
 - (float)_tilt;

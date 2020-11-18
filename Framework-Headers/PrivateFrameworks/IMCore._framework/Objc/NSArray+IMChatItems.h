@@ -11,6 +11,7 @@
 @interface NSArray (IMChatItems)
 
 @property (readonly, nonatomic) IMMessageItem *__imLastMessageItem;
+@property (readonly, nonatomic) IMMessage *firstMessage;
 @property (readonly, nonatomic) IMMessage *lastFinishedMessage;
 @property (readonly, nonatomic) IMMessage *lastIncomingFinishedMessage;
 @property (readonly, nonatomic) IMMessage *lastIncomingMessage;

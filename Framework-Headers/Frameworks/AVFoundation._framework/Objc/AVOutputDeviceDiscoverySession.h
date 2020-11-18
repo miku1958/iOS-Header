@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVOutputDeviceDiscoverySessionAvailableOutputDevices, AVOutputDeviceDiscoverySessionInternal, NSArray;
+@class AVAudioSession, AVOutputDeviceDiscoverySessionAvailableOutputDevices, AVOutputDeviceDiscoverySessionInternal, NSArray;
 
 @interface AVOutputDeviceDiscoverySession : NSObject
 {
@@ -17,15 +17,17 @@
 @property (readonly, nonatomic) AVOutputDeviceDiscoverySessionAvailableOutputDevices *availableOutputDevicesObject;
 @property (readonly, nonatomic) BOOL devicePresenceDetected;
 @property (nonatomic) long long discoveryMode;
+@property (strong, nonatomic) AVAudioSession *targetAudioSession;
 
-- (void)_addFigEndpointPickerNotifications;
-- (int)_configureFigEndpointPickerWithFeature:(unsigned long long)arg1;
-- (void)_handlePickerServerConnectionDiedNotification;
-- (void)_removeFigEndpointPickerNotifications;
++ (void)initialize;
++ (id)outputDeviceDiscoverySessionFactory;
 - (void)dealloc;
-- (void)finalize;
+- (id)impl;
 - (id)init;
 - (id)initWithDeviceFeatures:(unsigned long long)arg1;
+- (id)initWithOutputDeviceDiscoverySessionImpl:(id)arg1;
+- (void)outputDeviceDiscoverySessionImpl:(id)arg1 didExpireWithReplacement:(id)arg2;
+- (void)outputDeviceDiscoverySessionImplDidChangeAvailableOutputDevices:(id)arg1;
 
 @end
 

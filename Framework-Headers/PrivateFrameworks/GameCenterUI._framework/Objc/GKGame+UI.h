@@ -20,7 +20,5 @@
 - (id)loadIconForStyle:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)logoImageWithMaximumSize:(struct CGSize)arg1;
 - (id)macBrushForIconStyle:(long long)arg1;
-- (void)removeGameWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)uninstallApplicationWithBundleIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 @end
 

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_queuedFetches;
     NSMutableArray *_runningFetches;
     NSObject<OS_dispatch_source> *_fetchSource;
+    NSObject<OS_dispatch_source> *_timerSource;
 }
 
 @property (weak, nonatomic) CKDClientContext *context; // @synthesize context=_context;
@@ -26,10 +27,13 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSOperationQueue *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSMutableArray *queuedFetches; // @synthesize queuedFetches=_queuedFetches;
 @property (strong, nonatomic) NSMutableArray *runningFetches; // @synthesize runningFetches=_runningFetches;
+@property (strong, nonatomic) NSObject<OS_dispatch_source> *timerSource; // @synthesize timerSource=_timerSource;
 
 - (void).cxx_destruct;
 - (void)_lockedFetchesAreReady;
 - (id)_lockedGetQueuedFetchForOperation:(id)arg1 ofClass:(Class)arg2;
+- (void)_lockedRescheduleFetchTimer;
+- (void)_lockedTearDownFetchTimer;
 - (void)dealloc;
 - (BOOL)fetchRequestForExistingOperation:(id)arg1 isDependentOnOperation:(id)arg2;
 - (id)init;

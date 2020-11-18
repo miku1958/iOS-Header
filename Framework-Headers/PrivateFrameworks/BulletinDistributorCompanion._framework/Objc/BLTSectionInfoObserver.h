@@ -8,7 +8,7 @@
 
 #import <BulletinDistributorCompanion/BBObserverDelegate-Protocol.h>
 
-@class BBObserver, NSString;
+@class BBObserver, BBSettingsGateway, NSString;
 @protocol BLTSectionInfoObserverDelegate, OS_dispatch_queue;
 
 @interface BLTSectionInfoObserver : NSObject <BBObserverDelegate>
@@ -16,6 +16,7 @@
     BBObserver *_observer;
     NSObject<OS_dispatch_queue> *_queue;
     CDUnknownBlockType _reloadSectionInfoCompletion;
+    BBSettingsGateway *_settingsGateway;
     id<BLTSectionInfoObserverDelegate> _delegate;
 }
 
@@ -27,10 +28,11 @@
 
 - (void).cxx_destruct;
 - (void)_getBBSectionInfoExtendedProperties:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_reconnectObserver;
 - (void)_reloadSectionInfosWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_settingsGatewayReconnected:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)initWithSettingsGateway:(id)arg1;
 - (void)observer:(id)arg1 noteServerConnectionStateChanged:(BOOL)arg2;
 - (void)observer:(id)arg1 removeSection:(id)arg2;
 - (void)observer:(id)arg1 updateSectionInfo:(id)arg2;

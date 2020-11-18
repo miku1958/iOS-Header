@@ -83,6 +83,7 @@
 + (BOOL)dataSyncInProgressFromDataSyncState:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_acceptInvitation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_acceptInvitation:(id)arg1 presenceAuthStatus:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_addHomeWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_checkEventValidity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_declineInvitation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -90,8 +91,10 @@
 - (void)_determineCacheDirectory;
 - (void)_determineCacheFile;
 - (void)_dumpCache:(id)arg1;
+- (void)_dumpHomeConfigurationFile:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_dumpState:(id)arg1 payload:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_eraseHomeDataAndDeleteMetadata:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_fetchHomeConfigurationVerifyCacheRefreshRequested:(BOOL)arg1;
 - (void)_fetchHomeConfigurationWithCache:(BOOL)arg1 refreshRequested:(BOOL)arg2;
 - (void)_fetchHomeConfigurationWithPrivacyCheckWithCache:(BOOL)arg1 refreshRequested:(BOOL)arg2;
 - (void)_handleAccessAllowedWhenLockedUpdatedNotification:(id)arg1;
@@ -118,7 +121,7 @@
 - (void)_notifyAccessAllowedWhenLockedUpdated:(BOOL)arg1;
 - (void)_notifyDelegateOfAppDataUpdate;
 - (void)_notifyResidentProvisioningStatus:(unsigned long long)arg1;
-- (void)_pingDeviceWithUUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_pingDeviceWithUUID:(id)arg1 secure:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_primaryAccountDidChange:(id)arg1 modified:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_primaryAccountWasDeletedWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_privateDelegate;
@@ -130,6 +133,7 @@
 - (void)_registerNotificationHandlers;
 - (void)_removeCacheFile;
 - (void)_removeHome:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_restartWithHomeConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setResidentProvisioningStatus:(unsigned long long)arg1;
 - (void)_shouldDisplayiCloudSwitchWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -140,7 +144,7 @@
 - (void)_updateCurrentHome:(id)arg1;
 - (void)_updateDataSyncState:(id)arg1;
 - (void)_updateHomes:(id)arg1;
-- (void)_updateInvitation:(id)arg1 invitationState:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_updateInvitation:(id)arg1 presenceAuthStatus:(unsigned long long)arg2 invitationState:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_updatePrimaryHome:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateResidentEnabledForThisDevice:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateiCloudSwitchState:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -148,6 +152,7 @@
 - (void)checkEventValidity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)deleteDuetEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dumpHomeConfigurationFile:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dumpState:(id)arg1 payload:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)eraseHomeDataAndDeleteMetadata:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)eraseHomeDataWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -167,6 +172,7 @@
 - (void)queryiCloudSwitchStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeHome:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resetConfiguration:(BOOL)arg1 withoutPopup:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)restartWithHomeConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setApplicationData:(id)arg1;
 - (void)setMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)shouldDisplayiCloudSwitchWithCompletionHandler:(CDUnknownBlockType)arg1;

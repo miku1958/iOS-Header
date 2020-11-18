@@ -108,7 +108,7 @@ struct TBaseFont {
     struct TCFRef<const __CFData *> _field11;
     struct TCFRef<const __CFURL *> _field12;
     struct TCFRef<CGFont *> _field13;
-    int _field14;
+    struct TUnfairLock _field14;
     struct TCFRef<__CFDictionary *> _field15;
     struct TCFRef<const __CFArray *> _field16;
     struct TCFRef<const __CFCharacterSet *> _field17;
@@ -122,14 +122,16 @@ struct TBaseFont {
     struct atomic<long> _field25;
     struct TAtomicPtr<const TBMPDataCache *> _field26;
     struct TAtomicPtr<const std::__1::unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>>*> _field27;
-    struct TAtomicPtr<TTraitsValues *> _field28;
-    struct StrikeMetrics _field29;
-    struct atomic<unsigned int> _field30;
-    struct atomic<unsigned int> _field31;
-    struct atomic<CTFontFormat> _field32;
-    struct TMutex _field33;
-    struct TInlineVector<TCFRef<const __CFData *>, 4> _field34;
-    struct array<TCFRef<__CFDictionary *>, 7> _field35;
+    struct TUnfairLock _field28;
+    struct pair<const unsigned short *, const unsigned short *> _field29;
+    struct TAtomicPtr<TTraitsValues *> _field30;
+    struct StrikeMetrics _field31;
+    struct atomic<unsigned int> _field32;
+    struct atomic<unsigned int> _field33;
+    struct atomic<CTFontFormat> _field34;
+    struct TUnfairLock _field35;
+    struct TInlineVector<TCFRef<const __CFData *>, 4> _field36;
+    struct array<TCFRef<__CFDictionary *>, 7> _field37;
 };
 
 struct TCFRef<CGFont *> {
@@ -174,14 +176,16 @@ struct TInlineVector<TCFRef<const __CFData *>, 4> {
     } _field3;
 };
 
-struct TMutex {
-    struct _opaque_pthread_mutex_t {
-        long long _field1;
-        char _field2[56];
-    } _field1;
+struct TTraitsValues {
+    unsigned int fSymbolic;
+    double fWeight;
+    double fWidth;
+    double fSlant;
 };
 
-struct TTraitsValues;
+struct TUnfairLock {
+    struct os_unfair_lock_s fLock;
+};
 
 struct _NSRange {
     unsigned long long _field1;
@@ -208,8 +212,17 @@ struct atomic<unsigned int> {
     _Atomic unsigned int _field1;
 };
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
+struct pair<const unsigned short *, const unsigned short *> {
+    unsigned short *_field1;
+    unsigned short *_field2;
+};
+
 struct type {
-    unsigned char __lx[216];
+    unsigned char __lx[224];
 };
 
 struct unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>>;

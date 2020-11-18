@@ -8,14 +8,19 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 @interface GEOPBTransitIncidentEntityFilter : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     CDStruct_62a50c50 _nextStopMuids;
 }
 
 @property (readonly, nonatomic) unsigned long long *nextStopMuids;
 @property (readonly, nonatomic) unsigned long long nextStopMuidsCount;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)addNextStopMuid:(unsigned long long)arg1;
 - (void)clearNextStopMuids;
 - (void)copyTo:(id)arg1;

@@ -30,6 +30,7 @@
 @property (nonatomic) unsigned int hourOfDay; // @synthesize hourOfDay=_hourOfDay;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)addCategoryIndex:(unsigned int)arg1;
 - (unsigned int)categoryIndexAtIndex:(unsigned long long)arg1;
 - (void)clearCategoryIndexs;

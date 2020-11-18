@@ -6,43 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class PVTimingStats;
 @protocol PVPersistenceDelegate;
 
 @interface PVDataAccessor : NSObject
 {
-    PVTimingStats *_timingStats;
-    unsigned int _activeFaceprintVersion;
+    unsigned int _activeFaceAlgorithmVersion;
     id<PVPersistenceDelegate> _persistenceDelegate;
 }
 
-@property unsigned int activeFaceprintVersion; // @synthesize activeFaceprintVersion=_activeFaceprintVersion;
+@property unsigned int activeFaceAlgorithmVersion; // @synthesize activeFaceAlgorithmVersion=_activeFaceAlgorithmVersion;
 @property (strong) id<PVPersistenceDelegate> persistenceDelegate; // @synthesize persistenceDelegate=_persistenceDelegate;
 
 - (void).cxx_destruct;
 - (id)activeFaceprintsByFaceLocalIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)allAlgorithmicFaceGroups:(id *)arg1;
-- (id)allAlgorithmicFaceGroupsAsClusterSequenceNumbers:(id *)arg1;
-- (void)autonameFaceClusters:(id)arg1 faceComparer:(id)arg2 recallThreshold:(float)arg3;
-- (void)buildPersonsWithFaceComparer:(id)arg1 canceler:(id)arg2 context:(id)arg3;
-- (id)clusterSequenceNumbersOfKeyFacesFromAlgorithmicGroupsContainingFacesWithLocalIdentifiers:(id)arg1 includeSingletons:(BOOL)arg2 error:(id *)arg3;
-- (unsigned long long)countOfAlgorithmicFaceGroups:(id *)arg1;
+- (unsigned long long)countOfAlgorithmicFaceGroups;
+- (unsigned long long)countOfClusteredFaces;
+- (unsigned long long)countOfClusteredFacesWithClusterSequenceNumbersInRange:(struct _NSRange)arg1;
 - (unsigned long long)countOfClusteringEligibleFaces;
 - (unsigned long long)countOfFaces;
 - (BOOL)deleteEmptyGroupsAndReturnError:(id *)arg1;
-- (BOOL)deleteFaceGroupsAndReturnError:(id *)arg1;
+- (id)deterministicallyOrderedFaceIdentifiersWithLocalIdentifiers:(id)arg1 faceprintVersion:(unsigned int)arg2;
 - (id)facesAlgorithmicallyGroupedWithFacesWithClusterSequenceNumbers:(id)arg1 includeSingletons:(BOOL)arg2 error:(id *)arg3;
-- (id)facesByFaceLocalIdentifiers:(id)arg1 withFaceprintVersion:(unsigned int)arg2 excludeClustered:(BOOL)arg3;
-- (id)facesForClusteringWithFaceprintVersion:(unsigned int)arg1 excludeClustered:(BOOL)arg2 maxCount:(unsigned long long)arg3 error:(id *)arg4;
-- (id)facesForClusteringWithFaceprintVersion:(unsigned int)arg1 minClusterSequenceNumber:(unsigned long long)arg2 maxClusterSequenceNumber:(unsigned long long)arg3 error:(id *)arg4;
 - (id)facesForClusteringWithLocalIdentifiers:(id)arg1 faceprintVersion:(unsigned int)arg2 excludeClustered:(BOOL)arg3;
-- (id)facesForFaceClusterSequenceNumbers:(id)arg1 withFaceprintVersion:(unsigned int)arg2;
-- (id)facesForPersonWithLocalIdentifier:(id)arg1 offset:(unsigned long long)arg2 count:(unsigned long long)arg3 error:(id *)arg4;
-- (id)init;
+- (id)facesForPersonWithLocalIdentifier:(id)arg1 error:(id *)arg2;
+- (id)groupedClusterSequenceNumbersOfFacesInFaceGroupsOfMinimumSize:(unsigned long long)arg1 error:(id *)arg2;
+- (id)invalidFaceClusterSequenceNumbersInClusterSequenceNumbers:(id)arg1 canceler:(id)arg2 error:(id *)arg3;
 - (id)keyFacesFromAlgorithmicGroupsContainingFacesWithClusterSequenceNumbers:(id)arg1 includeSingletons:(BOOL)arg2 error:(id *)arg3;
 - (id)localIdentifiersOfFacesAlgorithmicallyGroupedWithFacesWithLocalIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)localIdentifiersOfKeyFacesFromAlgorithmicGroupsContainingFacesWithLocalIdentifiers:(id)arg1 error:(id *)arg2;
-- (BOOL)persistChangesToAlgorithmicFaceGroups:(id)arg1 andFaces:(id)arg2 withCanceler:(id)arg3 returningPersistedClusters:(id *)arg4 faceGroupsThatLostFaces:(id *)arg5 faceGroupsWithoutKeyFace:(id *)arg6 csnsToBeRemovedFromClusterState:(id)arg7 toBeReclusteredFaceIds:(id)arg8 error:(id *)arg9;
 - (BOOL)persistGeneratedFaceCrops:(id)arg1 error:(id *)arg2;
 - (id)personForLocalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)personWithFaceLocalIdentifier:(id)arg1 error:(id *)arg2;
@@ -51,11 +43,10 @@
 - (id)rejectedFaceLocalIdentifiersForPersonWithLocalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)rejectedFacesForPersonWithLocalIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)removeAlgorithmicallyGroupedFacesWithLocalIdentifiers:(id)arg1 error:(id *)arg2;
-- (void)removeExistingFacesFromCSNs:(id)arg1;
-- (BOOL)resetClusterSequenceNumberOfAllFaces:(id *)arg1;
 - (BOOL)resetClusterSequenceNumberOfFacesWithLocalIdentifiers:(id)arg1 error:(id *)arg2;
-- (BOOL)setKeyFaceOfAlgorithmicFaceGroupToFaceWithClusterSequenceNumbers:(id)arg1 error:(id *)arg2;
-- (id)unclusteredFaceLocalIdentifiersWithFaceprintVersion:(unsigned int)arg1 error:(id *)arg2;
+- (BOOL)resetLibraryClustersWithCanceler:(id)arg1 error:(id *)arg2;
+- (BOOL)unclusterFaces:(id)arg1 canceler:(id)arg2 error:(id *)arg3;
+- (id)unclusteredClusteringEligibleFaceLocalIdentifiers:(id *)arg1;
 - (id)unverifiedVisibleFacesFromFaceGroupContainingFacesWithClusterSequenceNumbers:(id)arg1 withFaceprintVersion:(unsigned int)arg2;
 
 @end

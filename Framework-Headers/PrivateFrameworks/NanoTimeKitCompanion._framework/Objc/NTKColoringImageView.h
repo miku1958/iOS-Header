@@ -8,11 +8,10 @@
 
 #import <NanoTimeKitCompanion/NTKColoringView-Protocol.h>
 
-@class CLKImageProvider, NSString, UIColor, _NTKColorManager;
+@class CLKImageProvider, NSString, UIColor;
 
 @interface NTKColoringImageView : UIImageView <NTKColoringView>
 {
-    _NTKColorManager *_colorManager;
     UIColor *_overrideColor;
     CLKImageProvider *_imageProvider;
     struct CGSize _maxSize;
@@ -31,9 +30,6 @@
 
 - (void).cxx_destruct;
 - (void)_commonInit;
-- (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
-- (void)_updateImageColor;
-- (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithImage:(id)arg1;
 - (id)initWithImage:(id)arg1 highlightedImage:(id)arg2;

@@ -15,15 +15,17 @@
 @property (readonly, nonatomic, getter=isFingerDetectEnabled) BOOL fingerDetectEnabled;
 @property (readonly, nonatomic, getter=isFingerOn) BOOL fingerOn;
 @property (readonly, nonatomic) BOOL hasBiometricAuthenticationCapabilityEnabled;
-@property (readonly, nonatomic) BOOL hasEnrolledFingers;
-@property (readonly, nonatomic) unsigned long long matchMode;
+@property (readonly, nonatomic) BOOL hasEnrolledIdentities;
+@property (readonly, nonatomic) BOOL hasPearlSupport;
 @property (readonly, nonatomic, getter=isMatchingAllowed) BOOL matchingAllowed;
 @property (readonly, nonatomic, getter=isMatchingEnabled) BOOL matchingEnabled;
+@property (readonly, nonatomic, getter=isPearlDetectEnabled) BOOL pearlDetectEnabled;
 
 - (id<BSInvalidatable>)acquireFingerDetectionWantedAssertionForReason:(NSString *)arg1;
 - (id<BSInvalidatable>)acquireMatchingAssertionWithMode:(unsigned long long)arg1 reason:(NSString *)arg2;
 - (void)addObserver:(id<SBUIBiometricResourceObserver>)arg1;
 - (void)refreshMatchMode;
 - (void)removeObserver:(id<SBUIBiometricResourceObserver>)arg1;
+- (void)restartMatchingIfNeededForAssertion:(id<BSInvalidatable>)arg1;
 @end
 

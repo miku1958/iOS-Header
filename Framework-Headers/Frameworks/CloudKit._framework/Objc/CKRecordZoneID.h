@@ -42,6 +42,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSqliteRepresentation:(id)arg1;
 - (id)initWithZoneName:(id)arg1 ownerName:(id)arg2;
+- (BOOL)isDefaultRecordZoneID;
 - (BOOL)isEqual:(id)arg1;
 - (id)sqliteRepresentation;
 

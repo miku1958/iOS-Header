@@ -32,20 +32,19 @@ __attribute__((visibility("hidden")))
 + (Class)_platformBackingAccountClass;
 + (id)fakeAccountWithEmail:(id)arg1 password:(id)arg2;
 - (void).cxx_destruct;
+- (void)_checkAndLogIfAccountError;
 - (id)_initFakeAccountWithEmail:(id)arg1 password:(id)arg2;
 - (id)accountPropertiesForDataclass:(id)arg1;
 - (BOOL)canAuthWithCloudKit;
 - (id)ckAccount;
 - (id)cloudKitAuthTokenWithError:(id *)arg1;
-- (BOOL)cloudKitIsEnabled;
-- (BOOL)cloudPhotosIsEnabled;
+- (void)dealloc;
 - (id)iCloudAuthTokenWithError:(id *)arg1;
 - (BOOL)iCloudDriveAllowsCellularAccess;
 - (BOOL)isDataclassEnabled:(id)arg1;
 - (BOOL)isFakeAccount;
 - (void)renewAuthTokenInStore:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)saveVerifiedAccountInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)updateAccountProperiesInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateAccountPropertiesAndSaveAccountInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)username;
 - (void)validateVettingToken:(id)arg1 vettingEmail:(id)arg2 vettingPhone:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 

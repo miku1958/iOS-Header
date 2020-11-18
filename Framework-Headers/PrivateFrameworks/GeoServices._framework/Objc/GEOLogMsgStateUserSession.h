@@ -8,12 +8,15 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class GEOLocalTime;
+
 @interface GEOLogMsgStateUserSession : PBCodable <NSCopying>
 {
     struct GEOSessionID _navSessionId;
     struct GEOSessionID _sessionId;
     double _navSessionRelativeTimestamp;
     double _relativeTimestamp;
+    GEOLocalTime *_eventTime;
     unsigned int _sequenceNumber;
     struct {
         unsigned int navSessionId:1;
@@ -24,6 +27,8 @@
     } _has;
 }
 
+@property (strong, nonatomic) GEOLocalTime *eventTime; // @synthesize eventTime=_eventTime;
+@property (readonly, nonatomic) BOOL hasEventTime;
 @property (nonatomic) BOOL hasNavSessionId;
 @property (nonatomic) BOOL hasNavSessionRelativeTimestamp;
 @property (nonatomic) BOOL hasRelativeTimestamp;
@@ -35,6 +40,7 @@
 @property (nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property (nonatomic) struct GEOSessionID sessionId; // @synthesize sessionId=_sessionId;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

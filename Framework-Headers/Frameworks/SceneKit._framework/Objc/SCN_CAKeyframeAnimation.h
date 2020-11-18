@@ -6,7 +6,6 @@
 
 #import <QuartzCore/CAKeyframeAnimation.h>
 
-__attribute__((visibility("hidden")))
 @interface SCN_CAKeyframeAnimation : CAKeyframeAnimation
 {
     struct __C3DKeyframedAnimation *_c3dAnimation;
@@ -15,6 +14,7 @@ __attribute__((visibility("hidden")))
 
 - (void)_clearC3DCache;
 - (void)_convertToCA;
+- (BOOL)additive;
 - (id)animationEvents;
 - (BOOL)autoreverses;
 - (id)biasValues;
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)commitsOnCompletion;
 - (id)continuityValues;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)cumulative;
 - (void)dealloc;
 - (id)description;
 - (double)duration;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isAdditive;
 - (BOOL)isCumulative;
 - (BOOL)isRemovedOnCompletion;
+- (id)keyPath;
 - (id)keyTimes;
 - (float)repeatCount;
 - (double)repeatDuration;
@@ -48,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)setFadeInDuration:(double)arg1;
 - (void)setFadeOutDuration:(double)arg1;
 - (void)setFillMode:(id)arg1;
+- (void)setKeyPath:(id)arg1;
 - (void)setKeyTimes:(id)arg1;
 - (void)setRemovedOnCompletion:(BOOL)arg1;
 - (void)setRepeatCount:(float)arg1;

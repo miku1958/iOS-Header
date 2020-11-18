@@ -26,6 +26,7 @@
     } _pairingDelegate;
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _hasExchangedMessage;
+    unsigned int _pairingFlags;
     unsigned long long _state;
     NSData *_inputKey;
     NSMutableData *_inputNonce;
@@ -41,6 +42,7 @@
 @property (strong, nonatomic) NSMutableData *outputNonce; // @synthesize outputNonce=_outputNonce;
 @property (readonly, nonatomic) void *pairedPeerDevice;
 @property (readonly, nonatomic) NSArray *pairedPeerDevices;
+@property (nonatomic) unsigned int pairingFlags; // @synthesize pairingFlags=_pairingFlags;
 @property (readonly, nonatomic) NSString *peerIdentifier;
 @property (readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
 

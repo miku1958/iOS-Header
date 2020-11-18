@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isAlias;
 - (id)modificationDate;
 - (BOOL)renameable;
-- (id)sortDate;
 - (id)sortPath;
 - (id)sortPathComponents;
 - (id)subtitle;

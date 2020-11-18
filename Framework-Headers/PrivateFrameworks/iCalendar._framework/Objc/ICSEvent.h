@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <iCalendar/ICSComponent.h>
+#import <iCalendar/ICSCalendarItem.h>
 
 @class ICSDate, ICSDuration, ICSStructuredLocation, ICSTravelAdvisoryBehavior, ICSTravelDuration, ICSUserAddress, NSArray, NSString, NSURL;
 
-@interface ICSEvent : ICSComponent
+@interface ICSEvent : ICSCalendarItem
 {
 }
 

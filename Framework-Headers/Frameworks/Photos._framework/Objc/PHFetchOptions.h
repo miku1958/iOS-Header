@@ -32,7 +32,9 @@
     NSNumber *_minimumVerifiedFaceCountNumber;
     NSNumber *_minimumUnverifiedFaceCountNumber;
     NSNumber *_includeNonvisibleFacesNumber;
+    NSNumber *_includeOnlyPersonsWithVisibleKeyFacesNumber;
     NSNumber *_includeOnlyFacesNeedingFaceCropNumber;
+    NSNumber *_includeOnlyFacesWithFaceprintsNumber;
     NSNumber *_isExclusivePredicateNumber;
     NSMutableSet *_propertySets;
     NSNumber *_shouldPrefetchCountNumber;
@@ -60,6 +62,8 @@
 @property (nonatomic) BOOL includeHiddenAssets;
 @property (nonatomic) BOOL includeNonvisibleFaces;
 @property (nonatomic) BOOL includeOnlyFacesNeedingFaceCrop;
+@property (nonatomic) BOOL includeOnlyFacesWithFaceprints;
+@property (nonatomic) BOOL includeOnlyPersonsWithVisibleKeyFaces;
 @property (nonatomic) BOOL includePendingMemories;
 @property (nonatomic) BOOL includePlacesSmartAlbum;
 @property (nonatomic) BOOL includeRejectedMemories;

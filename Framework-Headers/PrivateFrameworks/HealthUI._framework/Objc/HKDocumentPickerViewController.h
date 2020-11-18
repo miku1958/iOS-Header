@@ -7,11 +7,12 @@
 #import <HealthUI/HKTableViewController.h>
 
 #import <HealthUI/HKCDADocumentTableViewCellDelegate-Protocol.h>
+#import <HealthUI/HKDataMetadataViewControllerDelegate-Protocol.h>
 
-@class HKHealthStore, HKSource, NSMutableArray, NSMutableSet, NSSet;
+@class HKHealthStore, HKSource, HKTitledIconHeaderView, NSMutableArray, NSMutableSet, NSSet, NSString;
 @protocol HKDocumentPickerViewControllerDelegate;
 
-@interface HKDocumentPickerViewController : HKTableViewController <HKCDADocumentTableViewCellDelegate>
+@interface HKDocumentPickerViewController : HKTableViewController <HKCDADocumentTableViewCellDelegate, HKDataMetadataViewControllerDelegate>
 {
     NSMutableArray *_samplesList;
     long long _presentationStyle;
@@ -19,15 +20,21 @@
     BOOL _hasPendingDocumentFetch;
     HKSource *_source;
     BOOL _showCheckboxes;
+    HKTitledIconHeaderView *_tableHeaderView;
     NSSet *_allSamples;
     NSMutableSet *_enabledSamples;
     id<HKDocumentPickerViewControllerDelegate> _delegate;
 }
 
 @property (readonly, nonatomic) NSSet *allSamples; // @synthesize allSamples=_allSamples;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HKDocumentPickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableSet *enabledSamples; // @synthesize enabledSamples=_enabledSamples;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HKHealthStore *healthStore;
 @property (strong, nonatomic) HKSource *source; // @synthesize source=_source;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_addCancelAndDoneButtons;
@@ -38,7 +45,10 @@
 - (BOOL)_isPrompting;
 - (BOOL)_needsSampleRequestDescription;
 - (id)_tableHeaderView;
+- (void)_updateForCurrentSizeCategory;
 - (void)cdaDocumentTableViewCellDidChangeValue:(id)arg1;
+- (void)configureHeaderView:(id)arg1;
+- (id)dataMetadataViewControllerForSample:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDocumentAuthorizations:(id)arg1;
 - (id)initWithDocuments:(id)arg1 presentationStyle:(long long)arg2;
@@ -47,6 +57,7 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;
 

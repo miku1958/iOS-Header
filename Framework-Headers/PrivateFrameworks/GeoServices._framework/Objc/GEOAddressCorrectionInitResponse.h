@@ -34,6 +34,7 @@
 @property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
 
 + (Class)addressType;
+- (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
 - (void)addAddress:(id)arg1;
 - (id)addressAtIndex:(unsigned long long)arg1;
@@ -41,7 +42,6 @@
 - (void)clearAddress;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

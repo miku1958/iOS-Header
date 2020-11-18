@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDictionary, NSString, NSURL;
+@class NSDictionary, NSProgress, NSURL;
 
 @protocol CloudPhotoDerivativeGeneratorProtocol
+- (NSProgress *)remoteGenerateGIFForVideoAtURL:(NSURL *)arg1 destinationURL:(NSURL *)arg2 reply:(void (^)(NSURL *, NSError *))arg3;
 - (void)remoteGeneratePosterFrameForVideoAtURL:(NSURL *)arg1 maximumPixelCount:(long long)arg2 destinationURL:(NSURL *)arg3 reply:(void (^)(NSURL *, NSError *))arg4;
-- (void)remoteResizeImageAtURL:(NSURL *)arg1 destinationURL:(NSURL *)arg2 maximumPixelCount:(long long)arg3 bakeInOrientation:(BOOL)arg4 colorOutput:(long long)arg5 reply:(void (^)(NSURL *, NSError *))arg6;
+- (void)remoteResizeImageAtURL:(NSURL *)arg1 destinationURL:(NSURL *)arg2 options:(NSDictionary *)arg3 reply:(void (^)(NSURL *, NSError *))arg4;
+- (NSProgress *)remoteSinglePassTranscodeVideoAtURL:(NSURL *)arg1 destinationURL:(NSURL *)arg2 options:(NSDictionary *)arg3 reply:(void (^)(NSURL *, NSError *))arg4;
 - (void)remoteStatusWithReply:(void (^)(long long))arg1;
 - (void)remoteTerminateWithReply:(void (^)(long long))arg1;
-- (void)remoteTranscodeVideoAtURL:(NSURL *)arg1 withAdjustmentsPropertyList:(NSDictionary *)arg2 destinationURL:(NSURL *)arg3 presetName:(NSString *)arg4 outputFileType:(NSString *)arg5 reply:(void (^)(NSURL *, NSError *))arg6;
+- (NSProgress *)remoteTranscodeVideoAtURL:(NSURL *)arg1 withAdjustmentsPropertyList:(NSDictionary *)arg2 destinationURL:(NSURL *)arg3 options:(NSDictionary *)arg4 reply:(void (^)(NSURL *, NSError *))arg5;
 @end
 

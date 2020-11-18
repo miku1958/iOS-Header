@@ -17,12 +17,14 @@
 - (id)_axAssetViewModel;
 - (BOOL)_axDetailsShowing;
 - (BOOL)_axIsFavorite;
+- (void)_axLoadAirplayButtonAccessibility:(id)arg1;
+- (void)_axLoadBackButtonWithNoTitleAccessibility:(id)arg1;
 - (void)_axLoadDetailsButtonAccessibility:(id)arg1;
+- (void)_axLoadDoneButtonAccessibility:(id)arg1;
 - (void)_axLoadEditButtonAccessibility:(id)arg1;
 - (void)_axLoadFavoriteButtonAccessibility:(id)arg1;
 - (void)_axLoadLikeButtonAccessibility:(id)arg1 identifier:(long long)arg2;
 - (id)_newBarButtonItemWithIdentifier:(long long)arg1 location:(long long)arg2;
-- (void)_performToggleDetailsAction;
 - (void)_performToggleFavoriteAction;
 - (BOOL)accessibilityScroll:(long long)arg1;
 

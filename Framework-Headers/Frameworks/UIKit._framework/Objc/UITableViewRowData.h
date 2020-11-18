@@ -28,9 +28,6 @@ __attribute__((visibility("hidden")))
     double _tableTopPadding;
     double _tableBottomPadding;
     double _tableSidePadding;
-    NSIndexPath *_reorderedIndexPath;
-    NSIndexPath *_gapIndexPath;
-    double _reorderedRowHeight;
     struct {
         unsigned int tableHeaderHeightValid:1;
         unsigned int tableFooterHeightValid:1;
@@ -38,26 +35,36 @@ __attribute__((visibility("hidden")))
         unsigned int usesVariableMargins:1;
         unsigned int pinsTableHeaderView:1;
     } _rowDataFlags;
+    NSIndexPath *_gapIndexPath;
+    NSIndexPath *_reorderedIndexPath;
+    NSIndexPath *_draggedIndexPath;
     double _defaultSectionHeaderHeight;
     double _defaultSectionFooterHeight;
+    double _gapRowHeight;
+    double _draggedRowHeight;
 }
 
 @property (readonly, nonatomic) double defaultSectionFooterHeight; // @synthesize defaultSectionFooterHeight=_defaultSectionFooterHeight;
 @property (readonly, nonatomic) double defaultSectionHeaderHeight; // @synthesize defaultSectionHeaderHeight=_defaultSectionHeaderHeight;
+@property (strong, nonatomic) NSIndexPath *draggedIndexPath; // @synthesize draggedIndexPath=_draggedIndexPath;
+@property (nonatomic) double draggedRowHeight; // @synthesize draggedRowHeight=_draggedRowHeight;
+@property (strong, nonatomic) NSIndexPath *gapIndexPath; // @synthesize gapIndexPath=_gapIndexPath;
+@property (nonatomic) double gapRowHeight; // @synthesize gapRowHeight=_gapRowHeight;
 @property (readonly, nonatomic) double heightForAutohidingTableHeaderView;
 @property (readonly, nonatomic) double heightForTableHeaderViewHiding;
 @property (nonatomic) double minimumRowHeight; // @synthesize minimumRowHeight=_minimumRowHeight;
 @property (nonatomic) BOOL pinsTableHeaderView;
-@property (readonly, nonatomic) NSIndexPath *reorderGapIndexPath; // @synthesize reorderGapIndexPath=_gapIndexPath;
-@property (readonly, nonatomic) double reorderedRowHeight; // @synthesize reorderedRowHeight=_reorderedRowHeight;
+@property (strong, nonatomic) NSIndexPath *reorderedIndexPath; // @synthesize reorderedIndexPath=_reorderedIndexPath;
 @property (nonatomic) double rowSpacing; // @synthesize rowSpacing=_rowSpacing;
 @property (nonatomic) double tableBottomPadding; // @synthesize tableBottomPadding=_tableBottomPadding;
 @property (nonatomic) double tableSidePadding; // @synthesize tableSidePadding=_tableSidePadding;
 @property (nonatomic) double tableTopPadding; // @synthesize tableTopPadding=_tableTopPadding;
+@property (readonly, nonatomic) NSIndexPath *temporarilyDeletedIndexPathBeingReordered;
 @property (nonatomic) BOOL usesVariableMargins;
 
 - (void).cxx_destruct;
 - (void)_assertValidIndexPath:(id)arg1 allowEmptySection:(BOOL)arg2;
+- (double)_dropTargetGapHeightForIndexPath:(id)arg1;
 - (void)_ensureSectionOffsetIsValidForSection:(long long)arg1;
 - (id)_nextIndexPathOrSectionHeader:(id)arg1;
 - (id)_previousIndexPathOrSectionHeader:(id)arg1;
@@ -66,12 +73,14 @@ __attribute__((visibility("hidden")))
 - (void)_updateNumSections;
 - (void)_updateSectionRowDataArrayForNumSections:(long long)arg1;
 - (void)_updateTopAndBottomPadding;
-- (void)addReorderGapFromIndexPath:(id)arg1;
+- (void)addDropTargetGapAtIndexPath:(id)arg1;
+- (void)addGapAtIndexPath:(id)arg1;
 - (void)adjustSectionOffsetsBeginningAtIndex:(long long)arg1 count:(long long)arg2 delta:(double)arg3 rowDelta:(long long)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (long long)dropLocationForPoint:(struct CGPoint)arg1 atIndexPath:(id)arg2 withInsets:(struct UIEdgeInsets)arg3;
 - (void)ensureAllSectionsAreValid;
-- (BOOL)ensureHeightsFaultedInForIndexPath:(id)arg1 availHeight:(double)arg2 edgeInset:(struct UIEdgeInsets)arg3 scrollPosition:(long long)arg4;
+- (BOOL)ensureHeightsFaultedInForScrollToIndexPath:(id)arg1 withScrollPosition:(long long)arg2 boundsHeight:(double)arg3;
 - (struct CGRect)floatingRectForFooterInSection:(long long)arg1 visibleRect:(struct CGRect)arg2 heightCanBeGuessed:(BOOL)arg3;
 - (struct CGRect)floatingRectForHeaderInSection:(long long)arg1 visibleRect:(struct CGRect)arg2 heightCanBeGuessed:(BOOL)arg3;
 - (long long)footerAlignmentForSection:(long long)arg1;
@@ -97,6 +106,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidateSection:(long long)arg1;
 - (double)maxFooterTitleWidthForSection:(long long)arg1;
 - (double)maxHeaderTitleWidthForSection:(long long)arg1;
+- (void)moveDropTargetGapToIndexPath:(id)arg1;
 - (void)moveRowAtIndexPathFrom:(id)arg1 toIndexPath:(id)arg2;
 - (long long)numberOfRows;
 - (long long)numberOfRowsBeforeSection:(long long)arg1;
@@ -104,6 +114,7 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfSections;
 - (double)offsetForSection:(id)arg1;
 - (struct CGRect)rectForFooterInSection:(long long)arg1 heightCanBeGuessed:(BOOL)arg2;
+- (struct CGRect)rectForGap;
 - (struct CGRect)rectForGlobalRow:(long long)arg1 heightCanBeGuessed:(BOOL)arg2;
 - (struct CGRect)rectForHeaderInSection:(long long)arg1 heightCanBeGuessed:(BOOL)arg2;
 - (struct CGRect)rectForRow:(long long)arg1 inSection:(long long)arg2 heightCanBeGuessed:(BOOL)arg3;
@@ -111,8 +122,10 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)rectForTable;
 - (struct CGRect)rectForTableFooterView;
 - (struct CGRect)rectForTableHeaderView;
-- (void)removeReorderGapFromIndexPath:(id)arg1;
-- (id)reorderedIndexPath;
+- (void)removeDropTargetGap;
+- (void)removeGap;
+- (double)removeReorderedRowWithHeight:(double)arg1 atIndexPath:(id)arg2;
+- (void)restoreReorderedRowWithHeight:(double)arg1 atIndexPath:(id)arg2;
 - (long long)sectionForPoint:(struct CGPoint)arg1;
 - (long long)sectionForSectionRowData:(id)arg1;
 - (int)sectionLocationForReorderedRow:(long long)arg1 inSection:(long long)arg2;
@@ -120,12 +133,11 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)sectionsInRect:(struct CGRect)arg1;
 - (void)setHeight:(double)arg1 forRowAtIndexPath:(id)arg2;
 - (void)setHeightForTableHeaderViewHiding:(double)arg1;
-- (void)setReorderedIndexPath:(id)arg1;
 - (BOOL)shouldStripHeaderTopPaddingForSection:(long long)arg1;
 - (void)tableFooterHeightDidChangeToHeight:(double)arg1;
 - (void)tableHeaderHeightDidChangeToHeight:(double)arg1;
 - (void)tableViewWidthDidChangeToWidth:(double)arg1;
-- (id)targetIndexPathForPoint:(struct CGPoint)arg1;
+- (id)targetIndexPathForPoint:(struct CGPoint)arg1 adjustedForGap:(BOOL)arg2;
 
 @end
 

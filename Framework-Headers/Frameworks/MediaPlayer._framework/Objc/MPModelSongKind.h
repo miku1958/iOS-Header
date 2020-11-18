@@ -16,7 +16,7 @@
 @property (readonly, nonatomic) unsigned long long variants; // @synthesize variants=_variants;
 
 + (id)kindWithVariants:(unsigned long long)arg1 options:(unsigned long long)arg2;
-- (void)applyToView:(shared_ptr_f45adb51)arg1 withContext:(id)arg2;
+- (void)applyToView:(shared_ptr_5c01893c)arg1 withContext:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (shared_ptr_cf7b8a22)predicateWithBaseProperty:(struct ModelPropertyBase *)arg1;

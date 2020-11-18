@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class IDSDaemonResponseHandler, IMTimer;
 
@@ -15,6 +15,7 @@
     IMTimer *_systemTimer;
 }
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithResponseHandler:(id)arg1 timeoutBlock:(CDUnknownBlockType)arg2 systemTimer:(id)arg3;
 - (void)killSystemTimer;

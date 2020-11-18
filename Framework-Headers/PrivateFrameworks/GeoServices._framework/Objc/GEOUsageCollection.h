@@ -74,6 +74,7 @@
 @property (readonly, nonatomic) unsigned long long tileUsagesCount;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
+- (void).cxx_destruct;
 - (int)StringAsCellWifi:(id)arg1;
 - (int)StringAsGeoService:(id)arg1;
 - (int)StringAsPlaceRequestType:(id)arg1;

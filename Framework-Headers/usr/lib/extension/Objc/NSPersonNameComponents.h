@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSCopying-Protocol.h>
-#import <extension/NSSecureCoding-Protocol.h>
+#import <Foundation/NSCopying-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
@@ -34,6 +34,7 @@
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

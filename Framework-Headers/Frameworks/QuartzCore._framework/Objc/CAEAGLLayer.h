@@ -19,6 +19,7 @@
 @property (copy) NSDictionary *drawableProperties;
 @property double inputTime;
 @property BOOL lowLatency;
+@property unsigned long long maximumDrawableCount;
 @property (readonly) struct _EAGLWindowObject *nativeWindow;
 @property BOOL presentsWithTransaction;
 
@@ -31,6 +32,7 @@
 - (void)didChangeValueForKey:(id)arg1;
 - (void)discardContents;
 - (BOOL)isDrawableAvailable;
+- (BOOL)isDrawableAvailableInternal;
 - (void)layerDidBecomeVisible:(BOOL)arg1;
 - (BOOL)shouldArchiveValueForKey:(id)arg1;
 

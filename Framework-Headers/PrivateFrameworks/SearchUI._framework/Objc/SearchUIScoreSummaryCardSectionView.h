@@ -4,17 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUILayoutFreeSectionView.h>
+#import <SearchUI/SearchUICardSectionView.h>
 
-@interface SearchUIScoreSummaryCardSectionView : SearchUILayoutFreeSectionView
+#import <SearchUI/NUIContainerBoxViewDelegate-Protocol.h>
+
+@class NSString, TLKSplitHeaderView;
+
+@interface SearchUIScoreSummaryCardSectionView : SearchUICardSectionView <NUIContainerBoxViewDelegate>
 {
+    TLKSplitHeaderView *_splitHeaderView;
 }
 
-- (id)firstRowOfViewsForSection:(id)arg1;
-- (id)gridOfViewsForSection:(id)arg1;
-- (id)initWithCardSection:(id)arg1 controller:(id)arg2 style:(unsigned long long)arg3;
-- (id)labelForTeamRecord:(id)arg1;
-- (id)secondRowOfViewsForSection:(id)arg1;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong) TLKSplitHeaderView *splitHeaderView; // @synthesize splitHeaderView=_splitHeaderView;
+@property (readonly) Class superclass;
+
++ (id)dragTitleForCardSection:(id)arg1;
++ (int)separatorStyleForCardSection:(id)arg1;
++ (BOOL)supportsRecyclingForCardSection:(id)arg1;
++ (id)titleForScoreBoard:(id)arg1 forDisplay:(BOOL)arg2;
+- (void).cxx_destruct;
+- (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
+- (id)setupContentView;
+- (void)updateChevronVisible:(BOOL)arg1 leaveSpaceForChevron:(BOOL)arg2;
+- (void)updateWithCardSection:(id)arg1;
 
 @end
 

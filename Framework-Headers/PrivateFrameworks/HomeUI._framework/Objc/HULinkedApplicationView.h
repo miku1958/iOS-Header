@@ -9,6 +9,7 @@
 #import <HomeUI/HUCellProtocol-Protocol.h>
 
 @class HFItem, HULinkedApplicationRatingView, NSArray, NSString, NSURL, UIButton, UIImageView, UILabel;
+@protocol HUResizableCellDelegate;
 
 @interface HULinkedApplicationView : UIView <HUCellProtocol>
 {
@@ -39,6 +40,7 @@
 @property (strong, nonatomic) UILabel *priceLabel; // @synthesize priceLabel=_priceLabel;
 @property (strong, nonatomic) UILabel *publisherLabel; // @synthesize publisherLabel=_publisherLabel;
 @property (strong, nonatomic) HULinkedApplicationRatingView *ratingView; // @synthesize ratingView=_ratingView;
+@property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;
 @property (strong, nonatomic) NSURL *storeURL; // @synthesize storeURL=_storeURL;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIButton *viewButton; // @synthesize viewButton=_viewButton;

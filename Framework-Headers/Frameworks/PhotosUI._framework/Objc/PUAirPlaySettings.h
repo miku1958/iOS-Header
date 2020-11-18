@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUSettings.h>
+#import <PhotosUICore/PXSettings.h>
 
 __attribute__((visibility("hidden")))
-@interface PUAirPlaySettings : PUSettings
+@interface PUAirPlaySettings : PXSettings
 {
     BOOL _ignoreMirroredScreens;
+    BOOL _ignoreScreenRecordingScreens;
     BOOL _compensateForOverscan;
     unsigned long long _placeholderForSecondScreen;
     unsigned long long _placeholderForMirroredScreen;
@@ -17,20 +18,24 @@ __attribute__((visibility("hidden")))
     double _maximumZoomForScrollPadding;
     double _simulatedScreenContentWidth;
     double _simulatedScreenContentHeight;
+    long long _routeAvailabilityOverride;
 }
 
 @property (nonatomic) BOOL compensateForOverscan; // @synthesize compensateForOverscan=_compensateForOverscan;
 @property (nonatomic) BOOL ignoreMirroredScreens; // @synthesize ignoreMirroredScreens=_ignoreMirroredScreens;
+@property (nonatomic) BOOL ignoreScreenRecordingScreens; // @synthesize ignoreScreenRecordingScreens=_ignoreScreenRecordingScreens;
 @property (nonatomic) double maximumZoomForScrollPadding; // @synthesize maximumZoomForScrollPadding=_maximumZoomForScrollPadding;
 @property (nonatomic) double minimumZoomForScrollPadding; // @synthesize minimumZoomForScrollPadding=_minimumZoomForScrollPadding;
 @property (nonatomic) unsigned long long placeholderForMirroredScreen; // @synthesize placeholderForMirroredScreen=_placeholderForMirroredScreen;
 @property (nonatomic) unsigned long long placeholderForSecondScreen; // @synthesize placeholderForSecondScreen=_placeholderForSecondScreen;
+@property (nonatomic) long long routeAvailabilityOverride; // @synthesize routeAvailabilityOverride=_routeAvailabilityOverride;
 @property (nonatomic) double simulatedScreenContentHeight; // @synthesize simulatedScreenContentHeight=_simulatedScreenContentHeight;
 @property (nonatomic) double simulatedScreenContentWidth; // @synthesize simulatedScreenContentWidth=_simulatedScreenContentWidth;
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
 - (id)debugDescription;
+- (id)parentSettings;
 - (void)setDefaultValues;
 
 @end

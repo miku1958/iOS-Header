@@ -13,12 +13,16 @@
 @interface _INPBCallMetricsValue : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    double _callDuration;
     double _timeToEstablish;
     struct {
+        unsigned int callDuration:1;
         unsigned int timeToEstablish:1;
     } _has;
 }
 
+@property (nonatomic) double callDuration; // @synthesize callDuration=_callDuration;
+@property (nonatomic) BOOL hasCallDuration;
 @property (nonatomic) BOOL hasTimeToEstablish;
 @property (nonatomic) double timeToEstablish; // @synthesize timeToEstablish=_timeToEstablish;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;

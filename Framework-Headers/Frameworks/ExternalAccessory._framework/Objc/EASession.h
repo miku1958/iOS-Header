@@ -17,6 +17,8 @@
     NSOutputStream *_outputStream;
     BOOL _openCompleted;
     int _sock;
+    BOOL _useSocketInterfaceForEASession;
+    NSString *_eaSessionUUIDFromCoreAccessories;
 }
 
 @property (readonly, nonatomic) EAAccessory *accessory; // @synthesize accessory=_accessory;
@@ -24,7 +26,9 @@
 @property (readonly, nonatomic) NSOutputStream *outputStream; // @synthesize outputStream=_outputStream;
 @property (readonly, nonatomic) NSString *protocolString; // @synthesize protocolString=_protocolString;
 
+- (id)EASessionUUID;
 - (void)_endStreams;
+- (void)_handleIncomingEAData:(id)arg1;
 - (unsigned int)_sessionID;
 - (id)_shortDescription;
 - (void)_streamClosed;

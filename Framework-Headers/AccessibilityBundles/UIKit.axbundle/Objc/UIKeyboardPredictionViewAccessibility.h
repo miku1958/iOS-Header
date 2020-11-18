@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (int)_accessibilityScannerGroupTraits;
+- (unsigned long long)_accessibilityScannerGroupTraits;
 - (BOOL)_axHidePredictionView:(id)arg1;
 - (BOOL)_axIsCollapsed;
 - (BOOL)_axShowPredictionView:(id)arg1;

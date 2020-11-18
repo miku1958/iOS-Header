@@ -8,12 +8,11 @@
 
 #import <iTunesStore/SSURLSessionManagerDelegate-Protocol.h>
 
-@class ISDataProvider, ISURLRequestPerformance, NSArray, NSCountedSet, NSData, NSMutableData, NSObject, NSString, NSURLCache, NSURLRequest, NSURLResponse, NSURLSessionTask, SSAuthenticationContext, SSHTTPArchive, SSMutableURLRequestProperties, SSURLRequestProperties, SSURLSessionManager;
+@class ISDataProvider, ISURLRequestPerformance, NSArray, NSCountedSet, NSData, NSMutableData, NSNumber, NSObject, NSString, NSURLCache, NSURLRequest, NSURLResponse, NSURLSessionTask, SSAuthenticationContext, SSBag, SSHTTPArchive, SSMutableURLRequestProperties, SSURLRequestProperties, SSURLSessionManager;
 @protocol ISURLOperationDelegate, OS_dispatch_queue;
 
 @interface ISURLOperation : ISOperation <SSURLSessionManagerDelegate>
 {
-    NSURLRequest *_activeURLRequest;
     SSAuthenticationContext *_authenticationContext;
     NSMutableData *_dataBuffer;
     ISDataProvider *_dataProvider;
@@ -25,6 +24,7 @@
     SSURLSessionManager *_urlSessionManager;
     NSURLSessionTask *_urlSessionTask;
     BOOL _usesPrivateCookieStore;
+    NSURLRequest *_activeURLRequest;
     NSObject<OS_dispatch_queue> *_dataBufferAccessQueue;
     SSHTTPArchive *_httpArchive;
     ISURLRequestPerformance *_performanceMetrics;
@@ -39,12 +39,18 @@
 @property (getter=_loadsHTTPFailures, setter=_setLoadsHTTPFailures:) BOOL _loadsHTTPFailures; // @synthesize _loadsHTTPFailures;
 @property (getter=_shouldSetCookies, setter=_setShouldSetCookies:) BOOL _shouldSetCookies; // @synthesize _shouldSetCookies;
 @property (getter=_usesPrivateCookieStore, setter=_setUsesPrivateCookieStore:) BOOL _usesPrivateCookieStore; // @synthesize _usesPrivateCookieStore;
+@property (readonly, copy) NSURLRequest *activeURLRequest; // @synthesize activeURLRequest=_activeURLRequest;
 @property (strong) SSAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
+@property (readonly, nonatomic) SSBag *bag;
 @property (strong) ISDataProvider *dataProvider; // @synthesize dataProvider=_dataProvider;
 @property (readonly, copy) NSString *debugDescription;
-@property id<ISURLOperationDelegate> delegate; // @dynamic delegate;
+@property (weak) id<ISURLOperationDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isURLBagRequest;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentage;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSessionDuration;
 @property (strong, nonatomic) NSArray *passThroughErrors; // @synthesize passThroughErrors=_passThroughErrors;
 @property (readonly) ISURLRequestPerformance *performanceMetrics;
 @property (copy) SSURLRequestProperties *requestProperties;

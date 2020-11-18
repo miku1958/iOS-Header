@@ -21,9 +21,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)eligibleBundleIDs;
++ (void)resolveBundleIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
-- (id)initWithBundleIDs:(id)arg1 accountName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithBundleIDs:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (unsigned long long)supportedInterfaceOrientations;
 
 @end
 

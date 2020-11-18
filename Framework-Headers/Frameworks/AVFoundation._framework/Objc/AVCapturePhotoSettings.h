@@ -8,7 +8,7 @@
 
 #import <AVFoundation/NSCopying-Protocol.h>
 
-@class AVCapturePhotoSettingsInternal, NSArray, NSDictionary, NSURL;
+@class AVCapturePhotoSettingsInternal, NSArray, NSDictionary, NSString, NSURL;
 
 @interface AVCapturePhotoSettings : NSObject <NSCopying>
 {
@@ -17,50 +17,66 @@
 
 @property (nonatomic, getter=isAutoDualCameraFusionEnabled) BOOL autoDualCameraFusionEnabled;
 @property (nonatomic, getter=isAutoStillImageStabilizationEnabled) BOOL autoStillImageStabilizationEnabled;
+@property (readonly, nonatomic) NSArray *availableEmbeddedThumbnailPhotoCodecTypes;
 @property (readonly, nonatomic) NSArray *availablePreviewPhotoPixelFormatTypes;
+@property (nonatomic, getter=isCameraCalibrationDataDeliveryEnabled) BOOL cameraCalibrationDataDeliveryEnabled;
+@property (nonatomic, getter=isDepthDataDeliveryEnabled) BOOL depthDataDeliveryEnabled;
+@property (nonatomic, getter=isDepthDataFiltered) BOOL depthDataFiltered;
+@property (nonatomic, getter=isDualCameraDualPhotoDeliveryEnabled) BOOL dualCameraDualPhotoDeliveryEnabled;
+@property (copy, nonatomic) NSDictionary *embeddedThumbnailPhotoFormat;
+@property (nonatomic) BOOL embedsDepthDataInPhoto;
 @property (nonatomic) long long flashMode;
 @property (readonly, copy) NSDictionary *format;
 @property (nonatomic, getter=isHighResolutionPhotoEnabled) BOOL highResolutionPhotoEnabled;
 @property (copy, nonatomic) NSURL *livePhotoMovieFileURL;
 @property (copy, nonatomic) NSArray *livePhotoMovieMetadata;
+@property (copy, nonatomic) NSString *livePhotoVideoCodecType;
+@property (copy, nonatomic) NSDictionary *metadata;
 @property (copy, nonatomic) NSDictionary *previewPhotoFormat;
+@property (readonly) NSString *processedFileType;
+@property (readonly) NSString *rawFileType;
 @property (readonly) unsigned int rawPhotoPixelFormatType;
 @property (readonly) long long uniqueID;
 
++ (id)burstQualityPhotoSettings;
 + (id)photoSettings;
 + (id)photoSettingsFromPhotoSettings:(id)arg1;
 + (id)photoSettingsWithFormat:(id)arg1;
 + (id)photoSettingsWithRawPixelFormatType:(unsigned int)arg1;
 + (id)photoSettingsWithRawPixelFormatType:(unsigned int)arg1 processedFormat:(id)arg2;
++ (id)photoSettingsWithRawPixelFormatType:(unsigned int)arg1 rawFileType:(id)arg2 processedFormat:(id)arg3 processedFileType:(id)arg4;
 + (long long)uniqueID;
 - (long long)HDRMode;
-- (id)_description;
-- (id)_initWithFormat:(id)arg1 rawPixelFormatType:(unsigned int)arg2 uniqueID:(long long)arg3 exceptionReason:(id *)arg4;
+- (id)_initWithFormat:(id)arg1 processedFileType:(id)arg2 rawPixelFormatType:(unsigned int)arg3 rawFileType:(id)arg4 burstQualityCaptureEnabled:(BOOL)arg5 uniqueID:(long long)arg6 exceptionReason:(id *)arg7;
 - (id)_sanitizedLivePhotoMovieMetadataForArray:(id)arg1 exceptionReason:(id *)arg2;
+- (id)adjustedPhotoFilters;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)debugDescription;
 - (id)description;
+- (struct CGSize)embeddedThumbnailCGSize;
+- (unsigned int)embeddedThumbnailFormatFourCC;
 - (unsigned int)formatFourCC;
 - (id)init;
-- (BOOL)isAutoBravoImageFusionEnabled;
-- (BOOL)isAutoShallowDepthOfFieldEffectEnabled;
-- (BOOL)isOriginalPhotoDeliveryEnabled;
+- (BOOL)isBurstQualityCaptureEnabled;
+- (BOOL)isEV0PhotoDeliveryEnabled;
 - (BOOL)isSquareCropEnabled;
 - (BOOL)isTurboModeEnabled;
 - (id)livePhotoContentIdentifier;
 - (id)livePhotoContentIdentifierForOriginalPhoto;
 - (id)livePhotoMovieFileURLForOriginalPhoto;
 - (id)livePhotoMovieMetadataForOriginalPhoto;
+- (id)photoFilters;
 - (struct CGSize)previewCGSize;
 - (unsigned int)previewFormatFourCC;
-- (void)setAutoBravoImageFusionEnabled:(BOOL)arg1;
-- (void)setAutoShallowDepthOfFieldEffectEnabled:(BOOL)arg1;
+- (void)setAdjustedPhotoFilters:(id)arg1;
+- (void)setEV0PhotoDeliveryEnabled:(BOOL)arg1;
 - (void)setHDRMode:(long long)arg1;
 - (void)setLivePhotoContentIdentifier:(id)arg1;
 - (void)setLivePhotoContentIdentifierForOriginalPhoto:(id)arg1;
 - (void)setLivePhotoMovieFileURLForOriginalPhoto:(id)arg1;
 - (void)setLivePhotoMovieMetadataForOriginalPhoto:(id)arg1;
-- (void)setOriginalPhotoDeliveryEnabled:(BOOL)arg1;
+- (void)setPhotoFilters:(id)arg1;
 - (void)setShutterSound:(unsigned int)arg1;
 - (void)setSquareCropEnabled:(BOOL)arg1;
 - (void)setTurboModeEnabled:(BOOL)arg1;

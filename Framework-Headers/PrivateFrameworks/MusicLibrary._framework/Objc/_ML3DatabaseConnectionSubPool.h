@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)checkoutConnection:(BOOL *)arg1;
 - (void)closeConnectionsAndWaitForBusyConnections:(BOOL)arg1;
 - (void)dealloc;
+- (void)handleDiagnostic:(id)arg1;
 - (id)init;
 - (id)initWithDatabasePath:(id)arg1 maxConcurrentConnections:(unsigned long long)arg2;
 

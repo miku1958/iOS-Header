@@ -36,8 +36,6 @@ __attribute__((visibility("hidden")))
 + (id)_currentFullScreenAlertPresenters;
 + (void)_removePresenter:(id)arg1;
 + (BOOL)_shouldPresentActionSheetsFullscreen;
-+ (id)_topmostAlertWindow;
-+ (id)_topmostLegacyAlertIncludingPresentingAlerts:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)_createWindowIfNecessary;
 - (void)_dismissAlertControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

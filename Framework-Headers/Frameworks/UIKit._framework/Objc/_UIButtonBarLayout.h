@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isGroup;
 - (BOOL)_isSpace;
 - (id)_item;
+- (id)_metricsData;
 - (BOOL)_shouldBeDirty;
 - (void)addConstraintsToActivate:(id)arg1 toDeactivate:(id)arg2;
 - (void)addLayoutGuides:(id)arg1;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithLayoutMetrics:(id)arg1;
 - (double)minimumLayoutWidthGivenMinimumSpaceWidth:(double)arg1;
+- (BOOL)shouldHoriziontallyCenterView:(id)arg1;
 
 @end
 

@@ -9,14 +9,14 @@
 #import <HomeUI/HUQuickControlInteractiveView-Protocol.h>
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class HUColorWheelView, HUQuickControlMagnifierView, HUQuickControlViewProfile, NSString, UILongPressGestureRecognizer;
+@class HUColorWheelView, HUQuickControlColorViewProfile, HUQuickControlMagnifierView, NSString, UILongPressGestureRecognizer;
 @protocol HUColorWheelSpace, HUQuickControlColorPickerViewInteractionDelegate;
 
 @interface HUColorPickerView : UIView <UIGestureRecognizerDelegate, HUQuickControlInteractiveView>
 {
     BOOL _userInteractionActive;
     id<HUQuickControlColorPickerViewInteractionDelegate> _interactionDelegate;
-    HUQuickControlViewProfile *_profile;
+    HUQuickControlColorViewProfile *_profile;
     unsigned long long _colorPickerMode;
     unsigned long long _mirroringAxisBias;
     HUColorWheelView *_colorWheelView;
@@ -27,7 +27,12 @@
         double angle;
         double radius;
     } _selectedColorCoordinate;
-    CDStruct_dbd0f16f _selectedColor;
+    struct {
+        double r;
+        double g;
+        double b;
+        double temperature;
+    } _selectedColor;
 }
 
 @property (nonatomic) unsigned long long colorPickerMode; // @synthesize colorPickerMode=_colorPickerMode;
@@ -41,9 +46,9 @@
 @property (nonatomic) struct CGPoint magnifierLocation;
 @property (strong, nonatomic) HUQuickControlMagnifierView *magnifierView; // @synthesize magnifierView=_magnifierView;
 @property (nonatomic) unsigned long long mirroringAxisBias; // @synthesize mirroringAxisBias=_mirroringAxisBias;
-@property (copy, nonatomic) HUQuickControlViewProfile *profile; // @synthesize profile=_profile;
+@property (copy, nonatomic) HUQuickControlColorViewProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) id secondaryValue;
-@property (nonatomic) CDStruct_dbd0f16f selectedColor; // @synthesize selectedColor=_selectedColor;
+@property (nonatomic) CDStruct_d2b197d1 selectedColor; // @synthesize selectedColor=_selectedColor;
 @property (nonatomic) CDStruct_c3b9c2ee selectedColorCoordinate; // @synthesize selectedColorCoordinate=_selectedColorCoordinate;
 @property (nonatomic) long long sizeSubclass;
 @property (readonly) Class superclass;
@@ -52,9 +57,9 @@
 @property (strong, nonatomic) id value;
 @property (nonatomic) double wheelHoleRadius;
 
-+ (id)_colorWheelSpaceForMode:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_applyMirroringAxisBiasToColorWheelSpaceIfNecessary;
+- (id)_colorWheelSpaceForMode:(unsigned long long)arg1;
 - (void)_configureInitialConstraints;
 - (void)_handleGesture:(id)arg1;
 - (void)_setColorPickerMode:(unsigned long long)arg1 notifyDelegate:(BOOL)arg2;

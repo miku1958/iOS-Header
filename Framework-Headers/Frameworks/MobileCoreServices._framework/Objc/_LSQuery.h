@@ -11,17 +11,23 @@
 
 @interface _LSQuery : NSObject <NSSecureCoding, NSCopying>
 {
+    BOOL _legacy;
 }
+
+@property (nonatomic, getter=isLegacy) BOOL legacy; // @synthesize legacy=_legacy;
 
 + (BOOL)supportsSecureCoding;
 - (BOOL)_canResolveLocallyWithoutMappingDatabase;
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)_init;
+- (BOOL)_requiresDatabaseMappingEntitlement;
 - (BOOL)_shouldCacheResolvedResults;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

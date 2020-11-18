@@ -20,42 +20,40 @@
     NSHashTable *_itemsPendingAssetLoading;
     MPAVItem *_lastItemAnchor;
     NSDate *_lastPausedDate;
+    unsigned long long _lastPreferredQueueDepth;
     BOOL _needsCurrentItemUpdateAfterPlayerItemSync;
     BOOL _preventLoadingItems;
     double _rateQueueDepthAdjustmentDelay;
     NSMutableSet *_reusableItems;
     MPQueuePlayer *_player;
     id<MPAVQueueCoordinatorDataSource> _dataSource;
-    unsigned long long _activeQueueDepth;
-    unsigned long long _maximumQueueDepth;
     MPAVItem *_currentItem;
     NSArray *_items;
     CDUnknownBlockType _equilibriumAchievedHandler;
 }
 
-@property (readonly, nonatomic) unsigned long long activeQueueDepth; // @synthesize activeQueueDepth=_activeQueueDepth;
 @property (readonly, nonatomic) MPAVItem *currentItem; // @synthesize currentItem=_currentItem;
 @property (readonly, weak, nonatomic) id<MPAVQueueCoordinatorDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (copy, nonatomic) CDUnknownBlockType equilibriumAchievedHandler; // @synthesize equilibriumAchievedHandler=_equilibriumAchievedHandler;
 @property (readonly, nonatomic) NSArray *items; // @synthesize items=_items;
-@property (nonatomic) unsigned long long maximumQueueDepth; // @synthesize maximumQueueDepth=_maximumQueueDepth;
 @property (readonly, nonatomic) MPQueuePlayer *player; // @synthesize player=_player;
 
 - (void).cxx_destruct;
 - (void)_beginBackgroundTaskAssertion;
+- (void)_currentItemHasFinishedDownloadingDidChangeNotification:(id)arg1;
 - (void)_dequeueFailedItem:(id)arg1;
 - (void)_endBackgroundTaskAssertion;
 - (BOOL)_hasAchievedEquilibrium;
 - (void)_loadAssetForItem:(id)arg1;
 - (id)_playerItems;
-- (void)_removeAllItemsFromPlayer;
+- (unsigned long long)_preferredQueueDepthWithFirstItem:(id)arg1;
+- (void)_reloadItemsKeepingCurrentItem:(BOOL)arg1;
 - (void)_removeItemFromPlayer:(id)arg1;
 - (void)_sendItemsDidChange;
 - (void)_syncItemsWithPreviousItems:(id)arg1;
 - (void)_syncPlayerItems;
 - (void)_updateCurrentItem;
-- (void)_updateQueueDepth;
-- (void)_updateQueueDepthWithPausedDuration:(double)arg1;
+- (void)_updateQueueDepthIfNeeded;
 - (void)dealloc;
 - (id)initWithPlayer:(id)arg1 dataSource:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
 @protocol HFContactControllerDelegate;
 
 @interface HFContactController : NSObject
@@ -15,15 +15,15 @@
     NSMutableDictionary *_recipientAvailabilities;
     unsigned long long _familyMembersState;
     NSArray *_familyMembers;
-    NSMutableDictionary *_familyMemberDsidToContact;
+    NSDictionary *_familyMemberDsidToContact;
     NSArray *_descriptors;
     NSMutableArray *_familyMemberCallbacks;
 }
 
 @property (weak, nonatomic) id<HFContactControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSArray *descriptors; // @synthesize descriptors=_descriptors;
-@property (copy, nonatomic) NSMutableArray *familyMemberCallbacks; // @synthesize familyMemberCallbacks=_familyMemberCallbacks;
-@property (copy, nonatomic) NSMutableDictionary *familyMemberDsidToContact; // @synthesize familyMemberDsidToContact=_familyMemberDsidToContact;
+@property (strong, nonatomic) NSMutableArray *familyMemberCallbacks; // @synthesize familyMemberCallbacks=_familyMemberCallbacks;
+@property (copy, nonatomic) NSDictionary *familyMemberDsidToContact; // @synthesize familyMemberDsidToContact=_familyMemberDsidToContact;
 @property (copy, nonatomic) NSArray *familyMembers; // @synthesize familyMembers=_familyMembers;
 @property (nonatomic) unsigned long long familyMembersState; // @synthesize familyMembersState=_familyMembersState;
 @property (readonly, copy, nonatomic) NSArray *pendingDestinations;

@@ -14,7 +14,6 @@
 @interface HUIconView : UIView <HUIconContentViewDelegate>
 {
     BOOL _disableContinuousAnimation;
-    BOOL _useEffectContentView;
     UIVisualEffect *_vibrancyEffect;
     unsigned long long _iconSize;
     unsigned long long _displayContext;
@@ -34,12 +33,11 @@
 @property (readonly, nonatomic) id<HFIconDescriptor> iconDescriptor;
 @property (nonatomic) unsigned long long iconSize; // @synthesize iconSize=_iconSize;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL useEffectContentView; // @synthesize useEffectContentView=_useEffectContentView;
 @property (strong, nonatomic) UIVisualEffect *vibrancyEffect; // @synthesize vibrancyEffect=_vibrancyEffect;
 
 - (void).cxx_destruct;
 - (id)_defaultVibrancyEffect;
-- (void)_updateVisualEffect;
+- (void)_updateVisualEffectStateForVibrancyEffectChange:(BOOL)arg1;
 - (id)contentContainerView;
 - (void)iconContentView:(id)arg1 didChangeAspectRatio:(double)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;

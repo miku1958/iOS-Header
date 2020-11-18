@@ -19,6 +19,7 @@
 + (id)_snapshotKeyForValue:(unsigned long long)arg1;
 + (id)optionWithPaletteColor:(unsigned long long)arg1;
 - (id)_valueToFaceBundleStringDict;
+- (long long)swatchStyle;
 
 @end
 

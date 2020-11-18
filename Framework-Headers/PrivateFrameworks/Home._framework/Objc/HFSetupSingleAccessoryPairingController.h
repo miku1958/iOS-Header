@@ -9,43 +9,45 @@
 #import <Home/HFHomeObserver-Protocol.h>
 #import <Home/HFSetupPairingController-Protocol.h>
 
-@class HFAccessoryBrowsingManager, HFDiscoveredAccessory, HMHome, HMSetupAccessoryDescription, NAFuture, NSHashTable, NSString;
+@class HFDiscoveredAccessory, HFSetupAccessoryResult, HMHome, HMSetupAccessoryDescription, NAFuture, NSDate, NSHashTable, NSSet, NSString;
 @protocol HMSetupRemoteService;
 
 @interface HFSetupSingleAccessoryPairingController : NSObject <HFHomeObserver, HFSetupPairingController>
 {
-    NSString *_setupCode;
+    HFSetupAccessoryResult *_setupResult;
     HFDiscoveredAccessory *_discoveredAccessoryToPair;
     id<HMSetupRemoteService> _setupRemoteService;
     HMSetupAccessoryDescription *_setupAccessoryDescription;
     unsigned long long _phase;
-    NSString *_statusText;
+    NSString *_statusTitle;
+    NSString *_statusDescription;
     HMHome *_home;
-    HFDiscoveredAccessory *_pairedDiscoveredAccessory;
+    NSSet *_pairedAccessories;
     NSHashTable *_pairingObservers;
     NAFuture *_pairingFuture;
+    NSDate *_phaseStartDate;
 }
 
-@property (readonly, nonatomic) HFAccessoryBrowsingManager *accessoryBrowser;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) HFDiscoveredAccessory *discoveredAccessoryToPair; // @synthesize discoveredAccessoryToPair=_discoveredAccessoryToPair;
-@property (readonly, nonatomic) BOOL hasFailedAccessories;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
-@property (strong, nonatomic) HFDiscoveredAccessory *pairedDiscoveredAccessory; // @synthesize pairedDiscoveredAccessory=_pairedDiscoveredAccessory;
+@property (strong, nonatomic) NSSet *pairedAccessories; // @synthesize pairedAccessories=_pairedAccessories;
 @property (strong, nonatomic) NAFuture *pairingFuture; // @synthesize pairingFuture=_pairingFuture;
 @property (strong, nonatomic) NSHashTable *pairingObservers; // @synthesize pairingObservers=_pairingObservers;
 @property (nonatomic) unsigned long long phase; // @synthesize phase=_phase;
+@property (strong, nonatomic) NSDate *phaseStartDate; // @synthesize phaseStartDate=_phaseStartDate;
 @property (readonly, nonatomic) HMSetupAccessoryDescription *setupAccessoryDescription; // @synthesize setupAccessoryDescription=_setupAccessoryDescription;
-@property (strong, nonatomic) NSString *setupCode; // @synthesize setupCode=_setupCode;
 @property (weak, nonatomic) id<HMSetupRemoteService> setupRemoteService; // @synthesize setupRemoteService=_setupRemoteService;
-@property (strong, nonatomic) NSString *statusText; // @synthesize statusText=_statusText;
+@property (strong, nonatomic) HFSetupAccessoryResult *setupResult; // @synthesize setupResult=_setupResult;
+@property (strong, nonatomic) NSString *statusDescription; // @synthesize statusDescription=_statusDescription;
+@property (strong, nonatomic) NSString *statusTitle; // @synthesize statusTitle=_statusTitle;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSetupPayloadRetry;
 - (void).cxx_destruct;
 - (void)_assertValidTransitionFromPhase:(unsigned long long)arg1 toPhase:(unsigned long long)arg2;
-- (id)_descriptionForPhase:(unsigned long long)arg1;
 - (void)_failPairingWithDiscoveredAccessory:(id)arg1 error:(id)arg2;
 - (void)_finishPairingWithDiscoveredAccessory:(id)arg1;
 - (void)_tryPairing;

@@ -22,6 +22,7 @@
     unsigned long long _mergeStrategy;
     NSDate *_anchorDate;
     unsigned long long _statisticsOptions;
+    CDUnknownBlockType _unitTest_queryServerStatisticsEnumerationHandler;
 }
 
 @property (readonly, nonatomic) NSDate *anchorDate; // @synthesize anchorDate=_anchorDate;
@@ -30,6 +31,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long statisticsOptions; // @synthesize statisticsOptions=_statisticsOptions;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) CDUnknownBlockType unitTest_queryServerStatisticsEnumerationHandler; // @synthesize unitTest_queryServerStatisticsEnumerationHandler=_unitTest_queryServerStatisticsEnumerationHandler;
 
 - (void).cxx_destruct;
 - (void)_queue_deliverUpdatedStatistics:(id)arg1 error:(id)arg2;
@@ -40,7 +42,8 @@
 - (void)_scheduleFetchAndDeliver;
 - (void)_scheduleUpdateStatistics;
 - (BOOL)_shouldListenForUpdates;
-- (id)initWithQueryUUID:(id)arg1 dataObject:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 profile:(id)arg6;
+- (id)initWithQueryUUID:(id)arg1 configuration:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 profile:(id)arg6;
+- (id)requiredEntitlements;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 

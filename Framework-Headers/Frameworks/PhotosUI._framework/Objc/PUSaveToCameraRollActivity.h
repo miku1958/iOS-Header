@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_itemIsVideoAtURL:(id)arg1;
 - (BOOL)canPerformWithActivityItems:(id)arg1;
 - (void)performActivity;
 - (void)prepareWithActivityItems:(id)arg1;

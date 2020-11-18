@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBUnknownFields;
 
 @interface GEONameInfo : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSString *_locale;
     NSString *_name;
     NSString *_phoneticName;
@@ -40,12 +41,13 @@
 @property (strong, nonatomic) NSString *shield; // @synthesize shield=_shield;
 @property (nonatomic) int shieldType; // @synthesize shieldType=_shieldType;
 @property (nonatomic) int signType; // @synthesize signType=_signType;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (int)StringAsPhoneticType:(id)arg1;
 - (int)StringAsSignType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

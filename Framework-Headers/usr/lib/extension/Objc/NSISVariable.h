@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSCoding-Protocol.h>
+#import <Foundation/NSCoding-Protocol.h>
 
+@class NSISEngine, NSMutableSet;
 @protocol NSISVariableDelegate;
 
 @interface NSISVariable : NSObject <NSCoding>
 {
     id<NSISVariableDelegate> _delegate;
-    int _refCount;
     unsigned int _ident;
+    NSISEngine *_crossIndexEngine;
+    NSMutableSet *_crossIndexSet;
 }
 
 @property id<NSISVariableDelegate> delegate; // @synthesize delegate=_delegate;
@@ -25,8 +27,6 @@
 + (id)variableWithDelegate:(id)arg1 valueRestriction:(int)arg2 shouldBeMinimized:(BOOL)arg3;
 + (id)variableWithName:(id)arg1 valueRestriction:(int)arg2 shouldBeMinimized:(BOOL)arg3;
 + (id)variableWithName:(id)arg1 valueRestriction:(int)arg2 shouldBeMinimized:(BOOL)arg3 valueIsUserObservable:(BOOL)arg4;
-- (BOOL)_isDeallocating;
-- (BOOL)_tryRetain;
 - (double)allowedMagnitudeForIntegralizationAdjustmentOfMarkedConstraint;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -35,9 +35,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)markedConstraint;
 - (BOOL)markedConstraintIsEligibleForIntegralizationAdjustment;
-- (oneway void)release;
-- (id)retain;
-- (unsigned long long)retainCount;
 - (BOOL)shouldBeIntegral;
 - (BOOL)valueIsUserVisible;
 

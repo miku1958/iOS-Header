@@ -12,7 +12,6 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_enableTable:(id)arg1;
 - (id)accessibilityIdentifier;
 
 @end

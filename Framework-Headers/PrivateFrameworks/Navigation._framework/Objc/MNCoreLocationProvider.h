@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     NSBundle *_effectiveBundle;
     NSString *_effectiveBundleIdentifier;
     CDUnknownBlockType _authorizationRequestBlock;
+    BOOL _updatingLocations;
 }
 
 @property (readonly, nonatomic) CLLocationManager *_clLocationManager;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL matchInfoEnabled;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double timeScale;
+@property BOOL updatingLocations; // @synthesize updatingLocations=_updatingLocations;
 @property (readonly, nonatomic) BOOL usesCLMapCorrection;
 
 - (void).cxx_destruct;

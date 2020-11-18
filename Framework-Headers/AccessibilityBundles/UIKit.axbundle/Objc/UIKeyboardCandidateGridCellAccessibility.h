@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityHeaderElements;
+- (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (id)accessibilityLanguage;
 - (unsigned long long)accessibilityTraits;

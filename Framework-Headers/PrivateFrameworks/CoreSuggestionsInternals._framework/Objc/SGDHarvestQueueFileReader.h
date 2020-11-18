@@ -19,7 +19,7 @@
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithDirectory:(id)arg1 fileId:(int)arg2;
+- (id)initWithDirectory:(id)arg1 fileId:(int)arg2 tryLater:(BOOL *)arg3;
 - (void)read:(CDStruct_beb4cc23)arg1 callback:(CDUnknownBlockType)arg2;
 
 @end

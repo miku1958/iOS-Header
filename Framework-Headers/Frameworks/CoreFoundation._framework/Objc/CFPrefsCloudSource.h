@@ -19,7 +19,7 @@
 - (BOOL)enabled;
 - (void)fullCloudSynchronizeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithDomain:(struct __CFString *)arg1 user:(struct __CFString *)arg2 byHost:(BOOL)arg3 containerPath:(struct __CFString *)arg4 containingPreferences:(id)arg5;
-- (void)mergeIntoDictionary:(struct __CFDictionary *)arg1;
+- (void)mergeIntoDictionary:(struct __CFDictionary *)arg1 sourceDictionary:(struct __CFDictionary *)arg2;
 - (void)setConfigurationPath:(struct __CFString *)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setStoreName:(struct __CFString *)arg1;

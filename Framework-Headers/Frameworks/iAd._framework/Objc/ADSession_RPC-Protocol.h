@@ -9,6 +9,7 @@
 @protocol ADSession_RPC
 - (void)_remote_actionViewControllerReadyForPresentationForAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_adImpressionDidLoadWithPublicAttributes:(ADAdImpressionPublicAttributes *)arg1 identifier:(NSString *)arg2;
+- (void)_remote_adImpressionReportedWithIdentifier:(NSString *)arg1;
 - (void)_remote_closeClientAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_contentProxyURLDidChange:(NSURL *)arg1;
 - (void)_remote_creativeWithAdSpaceIdentifier:(NSString *)arg1 didFailWithError:(NSError *)arg2;

@@ -21,19 +21,16 @@
     BOOL _isContainedWithinSplitViewPrimary;
     struct {
         unsigned int didSelectAddButton:1;
-        unsigned int didSelectContextualActionsButton:1;
         unsigned int didSelectPlayButton:1;
         unsigned int didLayoutSubviews:1;
         unsigned int shouldLayoutAsEditing:1;
     } _delegateRespondsToSelector;
     id<MusicEntityHorizontalLockupViewDelegate> _delegate;
-    UIButton *_contextualActionsButton;
     double _textContentLeadingInset;
 }
 
 @property (readonly, nonatomic) struct CGSize artworkSize;
 @property (strong, nonatomic) MusicEntityViewContentDescriptor *contentDescriptor;
-@property (readonly, nonatomic) UIButton *contextualActionsButton; // @synthesize contextualActionsButton=_contextualActionsButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MusicEntityHorizontalLockupViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -53,7 +50,6 @@
 - (void)_addButtonTouchExited:(id)arg1;
 - (void)_addButtonTouchUpInside:(id)arg1;
 - (void)_contentDescriptorDidChange:(id)arg1;
-- (void)_contextualActionsButtonTapped:(id)arg1;
 - (BOOL)_shouldLayoutAsEditing;
 - (BOOL)_shouldShowPlayButton;
 - (void)dealloc;

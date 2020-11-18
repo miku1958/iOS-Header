@@ -22,8 +22,9 @@
 @property (readonly) NSString *label;
 @property (readonly) FTRegion *parentRegion;
 @property (readonly) NSString *regionID;
-@property (readonly, strong) NSArray *subRegions; // @synthesize subRegions=_subRegions;
+@property (readonly) NSArray *subRegions; // @synthesize subRegions=_subRegions;
 
+- (void).cxx_destruct;
 - (id)_initWithDictionary:(id)arg1;
 - (void)_setParentRegion:(id)arg1;
 - (void)dealloc;

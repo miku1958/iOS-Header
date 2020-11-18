@@ -4,19 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class CAContext, NSString;
+@class BSPortDeathWatcher, CAContext, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDSnapshotCATransactionHandler : NSObject <HMFLogging>
+@interface HMDSnapshotCATransactionHandler : HMFObject <HMFLogging>
 {
     CAContext *_snapshotContext;
     NSObject<OS_dispatch_queue> *_clientQueue;
+    BSPortDeathWatcher *_backboardServicesWatcher;
 }
 
+@property (readonly, nonatomic) BSPortDeathWatcher *backboardServicesWatcher; // @synthesize backboardServicesWatcher=_backboardServicesWatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -27,7 +29,9 @@
 + (id)logCategory;
 + (id)sharedHandler;
 - (void).cxx_destruct;
+- (void)_backboardServicesRelaunched;
 - (id)_createSlot:(id)arg1 snapshotCATransaction:(id)arg2;
+- (void)_createSnapshotContext;
 - (void)_deleteSlot:(id)arg1 filePath:(id)arg2 snapshotCATransaction:(id)arg3;
 - (id)createSlot:(id)arg1;
 - (struct CGImage *)createSnapshotCGImageRef:(id)arg1;

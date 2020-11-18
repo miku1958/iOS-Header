@@ -24,6 +24,7 @@
 - (BOOL)_shouldEvictObjectWithDate:(id)arg1;
 - (id)init;
 - (id)objectForKey:(id)arg1;
+- (void)removeAllObjects;
 - (void)removeObjectForKey:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 

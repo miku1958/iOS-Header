@@ -14,7 +14,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_handleObserverQueue;
     NSMutableDictionary *_portToHandleMap;
-    NSMutableDictionary *_portToDeathWatcherMap;
+    NSMutableDictionary *_portToDeathSentinelMap;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *handleObserverQueue; // @synthesize handleObserverQueue=_handleObserverQueue;

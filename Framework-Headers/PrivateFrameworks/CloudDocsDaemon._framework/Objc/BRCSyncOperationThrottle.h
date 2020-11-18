@@ -8,7 +8,7 @@
 
 #import <CloudDocsDaemon/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class BRMangledID;
 
 __attribute__((visibility("hidden")))
 @interface BRCSyncOperationThrottle : NSObject <NSSecureCoding>
@@ -17,12 +17,12 @@ __attribute__((visibility("hidden")))
     int _lastErrorKind;
     double _delay;
     double _nextTry;
-    NSString *_containerID;
+    BRMangledID *_mangledID;
 }
 
-@property (strong, nonatomic) NSString *containerID; // @synthesize containerID=_containerID;
 @property (readonly, nonatomic) double delay; // @synthesize delay=_delay;
 @property (readonly, nonatomic) int lastErrorKind; // @synthesize lastErrorKind=_lastErrorKind;
+@property (strong, nonatomic) BRMangledID *mangledID; // @synthesize mangledID=_mangledID;
 @property (readonly, nonatomic) double nextTry; // @synthesize nextTry=_nextTry;
 
 + (BOOL)supportsSecureCoding;
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithContainerID:(id)arg1 isSyncDown:(BOOL)arg2;
+- (id)initWithMangledID:(id)arg1 isSyncDown:(BOOL)arg2;
 - (void)updateAfterSchedulingTask;
 - (void)updateAfterSchedulingTaskWithMinimumDelay:(double)arg1;
 - (BOOL)updateForClearingOutOfQuota;

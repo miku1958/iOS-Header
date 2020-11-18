@@ -8,5 +8,6 @@
 
 @interface NSString (MCHacks)
 - (id)MCAppendGreenteaSuffix;
+- (id)MCRemoveAppExternalVersionIDParameter;
 @end
 

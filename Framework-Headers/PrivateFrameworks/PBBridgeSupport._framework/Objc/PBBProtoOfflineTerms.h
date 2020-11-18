@@ -32,6 +32,7 @@
 @property (strong, nonatomic) NSData *multiterms; // @synthesize multiterms=_multiterms;
 @property (strong, nonatomic) NSData *warranty; // @synthesize warranty=_warranty;
 
++ (Class)appleLanguagesType;
 - (void).cxx_destruct;
 - (void)addAppleLanguages:(id)arg1;
 - (id)appleLanguagesAtIndex:(unsigned long long)arg1;

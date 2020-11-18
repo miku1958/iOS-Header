@@ -15,5 +15,6 @@
 
 @optional
 - (BOOL)hasRenderedSomething;
+- (BOOL)postsMapViewInitialRenderingNotification;
 @end
 

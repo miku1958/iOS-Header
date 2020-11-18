@@ -22,7 +22,6 @@
 }
 
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1;
-+ (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void).cxx_destruct;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyDataMode;
@@ -70,6 +69,7 @@
 - (void)_scrubToDate:(id)arg1 animated:(BOOL)arg2;
 - (double)_secondHandAlphaForEditMode:(long long)arg1;
 - (long long)_styleIndexForStyle:(unsigned long long)arg1;
+- (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (struct CGPoint)_timeTravelStatusModuleCenter;
 - (BOOL)_timeViewBehindContentForEditMode:(long long)arg1;
 - (void)_unloadSnapshotContentViews;

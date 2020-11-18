@@ -29,7 +29,7 @@
 
 @property (strong, nonatomic) VMUClassInfoMap *indexedClassInfos; // @synthesize indexedClassInfos=_knownClassInfos;
 
-+ (void)initialize;
+- (void).cxx_destruct;
 - (void *)_compareWithGraph:(id)arg1 andMarkOnMatch:(BOOL)arg2;
 - (void)_modifyDerivativeGraphCount:(int)arg1;
 - (CDStruct_8b65991f)_rawReferenceInfoWithName:(unsigned int)arg1;
@@ -54,6 +54,7 @@
 - (void)internalizeNodes;
 - (void)markReachableNodesFromRoots:(void *)arg1 inMap:(void *)arg2;
 - (CDStruct_599faf0f)nodeDetails:(unsigned int)arg1;
+- (unsigned int)nodeForAddress:(unsigned long long)arg1;
 - (unsigned int)nodeReferencedFromSourceNode:(unsigned int)arg1 byIvarWithName:(id)arg2;
 - (CDStruct_8b65991f)referenceInfoWithName:(unsigned int)arg1;
 - (void)stronglyConnectedComponentSearch:(unsigned int)arg1 withRecorder:(CDUnknownBlockType)arg2;

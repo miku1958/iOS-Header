@@ -6,12 +6,17 @@
 
 #import <UIKit/UIView.h>
 
-@class CAGradientLayer, NSString, UITextView;
+@class CAGradientLayer, NSParagraphStyle, NSString, UIFont, UITextView;
 
 __attribute__((visibility("hidden")))
 @interface SFDialogTextView : UIView
 {
-    NSString *_text;
+    NSString *_title;
+    NSString *_message;
+    UIFont *_titleFont;
+    UIFont *_messageFont;
+    UIFont *_messageFontWithTitle;
+    NSParagraphStyle *_titleParagraphStyle;
     UITextView *_textView;
     double _preferredMaxLayoutWidth;
     CAGradientLayer *_topGradient;
@@ -19,13 +24,17 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)_updateFontStyling;
+- (void)_updateText;
+- (void)flashScrollIndicators;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
+- (void)setMessage:(id)arg1;
 - (void)setPreferredMaxLayoutWidth:(double)arg1;
-- (void)setText:(id)arg1;
+- (void)setTitle:(id)arg1;
 
 @end
 

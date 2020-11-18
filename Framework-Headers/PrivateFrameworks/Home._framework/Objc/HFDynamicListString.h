@@ -27,6 +27,7 @@
 
 - (void).cxx_destruct;
 - (id)attributeStringsSortedBySize:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dynamicStringForSize:(struct CGSize)arg1 attributes:(id)arg2;
 - (id)initWithList:(id)arg1 truncationFormat:(id)arg2 summaryFormat:(id)arg3;
 - (BOOL)prefersDynamicString;

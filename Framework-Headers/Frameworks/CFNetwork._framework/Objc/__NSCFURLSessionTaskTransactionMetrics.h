@@ -8,7 +8,7 @@
 
 #import <CFNetwork/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSString, NSURLRequest, NSURLResponse;
+@class NSDate, NSString, NSURLRequest, NSURLResponse, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface __NSCFURLSessionTaskTransactionMetrics : NSURLSessionTaskTransactionMetrics <NSSecureCoding>
@@ -33,19 +33,31 @@ __attribute__((visibility("hidden")))
     BOOL __secureConnection;
     BOOL __localCache;
     BOOL __serverPush;
+    BOOL __connectionRace;
     BOOL __cellular;
     unsigned int __redirected;
     NSString *__localAddressAndPort;
     NSString *__remoteAddressAndPort;
+    NSUUID *__connectionIdentifier;
+    long long __requestHeaderBytesSent;
+    long long __responseHeaderBytesReceived;
+    long long __responseBodyBytesReceived;
+    long long __responseBodyBytesDecoded;
 }
 
 + (BOOL)supportsSecureCoding;
 - (BOOL)_cellular;
+- (id)_connectionIdentifier;
+- (BOOL)_connectionRace;
 - (id)_initWithPerformanceTiming:(struct __PerformanceTiming *)arg1;
 - (id)_localAddressAndPort;
 - (BOOL)_localCache;
 - (unsigned int)_redirected;
 - (id)_remoteAddressAndPort;
+- (long long)_requestHeaderBytesSent;
+- (long long)_responseBodyBytesDecoded;
+- (long long)_responseBodyBytesReceived;
+- (long long)_responseHeaderBytesReceived;
 - (BOOL)_secureConnection;
 - (BOOL)_serverPush;
 - (id)connectEndDate;
@@ -88,10 +100,16 @@ __attribute__((visibility("hidden")))
 - (void)setSecureConnectionEndDate:(id)arg1;
 - (void)setSecureConnectionStartDate:(id)arg1;
 - (void)set_cellular:(BOOL)arg1;
+- (void)set_connectionIdentifier:(id)arg1;
+- (void)set_connectionRace:(BOOL)arg1;
 - (void)set_localAddressAndPort:(id)arg1;
 - (void)set_localCache:(BOOL)arg1;
 - (void)set_redirected:(unsigned int)arg1;
 - (void)set_remoteAddressAndPort:(id)arg1;
+- (void)set_requestHeaderBytesSent:(long long)arg1;
+- (void)set_responseBodyBytesDecoded:(long long)arg1;
+- (void)set_responseBodyBytesReceived:(long long)arg1;
+- (void)set_responseHeaderBytesReceived:(long long)arg1;
 - (void)set_secureConnection:(BOOL)arg1;
 - (void)set_serverPush:(BOOL)arg1;
 

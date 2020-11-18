@@ -20,9 +20,9 @@
 @property (strong, nonatomic) NSMutableArray *recentEvents; // @synthesize recentEvents=_recentEvents;
 
 + (void)setFlushEventsTimerDelay:(double)arg1;
+- (void).cxx_destruct;
 - (double)_elapsedTimeFrom:(unsigned long long)arg1 to:(unsigned long long)arg2;
 - (void)addEvent:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (BOOL)isRedirectedEvent:(id)arg1;
 

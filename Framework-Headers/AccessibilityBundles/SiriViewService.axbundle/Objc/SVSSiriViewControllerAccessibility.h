@@ -14,8 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)siriDidDeactivate;
-- (void)speechSynthesisDidStartSpeaking;
-- (void)speechSynthesisDidStopSpeakingQueueIsEmpty:(BOOL)arg1;
+- (void)speechSynthesisDidStartSpeakingWithIdentifier:(id)arg1;
+- (void)speechSynthesisDidStopSpeakingWithIdentifier:(id)arg1 queueIsEmpty:(BOOL)arg2;
 
 @end
 

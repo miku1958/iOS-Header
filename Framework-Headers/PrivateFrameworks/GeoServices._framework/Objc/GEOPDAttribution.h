@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPDAttribution : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSString *_actionUrlComponent;
     NSMutableArray *_attributionUrls;
     NSString *_externalComponentId;
@@ -27,6 +28,7 @@
 @property (readonly, nonatomic) BOOL hasExternalComponentId;
 @property (readonly, nonatomic) BOOL hasExternalItemId;
 @property (readonly, nonatomic) BOOL hasVendorId;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) NSString *vendorId; // @synthesize vendorId=_vendorId;
 
 + (id)attributionForPlaceDataEncyclopedia:(id)arg1;
@@ -35,6 +37,7 @@
 + (id)attributionForPlaceDataRestaurantReservationLink:(id)arg1;
 + (id)attributionForPlaceDataReview:(id)arg1;
 + (Class)attributionUrlType;
+- (void).cxx_destruct;
 - (BOOL)_isYelp;
 - (void)addAttributionUrl:(id)arg1;
 - (id)attributionUrlAtIndex:(unsigned long long)arg1;
@@ -42,7 +45,6 @@
 - (void)clearAttributionUrls;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

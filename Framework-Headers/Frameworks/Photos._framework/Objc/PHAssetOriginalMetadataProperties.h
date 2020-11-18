@@ -10,20 +10,20 @@
 
 @interface PHAssetOriginalMetadataProperties : PHAssetPropertySet
 {
-    short _originalHeight;
-    short _originalWidth;
     short _originalExifOrientation;
-    int _originalFilesize;
     NSString *_originalAssetsUUID;
+    long long _originalHeight;
+    long long _originalWidth;
     NSString *_originalFilename;
+    unsigned long long _originalFilesize;
 }
 
 @property (readonly, nonatomic) NSString *originalAssetsUUID; // @synthesize originalAssetsUUID=_originalAssetsUUID;
 @property (readonly, nonatomic) short originalExifOrientation; // @synthesize originalExifOrientation=_originalExifOrientation;
 @property (readonly, nonatomic) NSString *originalFilename; // @synthesize originalFilename=_originalFilename;
-@property (readonly, nonatomic) int originalFilesize; // @synthesize originalFilesize=_originalFilesize;
-@property (readonly, nonatomic) short originalHeight; // @synthesize originalHeight=_originalHeight;
-@property (readonly, nonatomic) short originalWidth; // @synthesize originalWidth=_originalWidth;
+@property (readonly, nonatomic) unsigned long long originalFilesize; // @synthesize originalFilesize=_originalFilesize;
+@property (readonly, nonatomic) long long originalHeight; // @synthesize originalHeight=_originalHeight;
+@property (readonly, nonatomic) long long originalWidth; // @synthesize originalWidth=_originalWidth;
 
 + (id)propertiesToFetch;
 + (id)propertySetName;

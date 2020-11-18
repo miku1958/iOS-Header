@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)_getAnchorsForProperty:(id)arg1 set:(id)arg2 store:(id)arg3 healthDatabase:(id)arg4 error:(id *)arg5;
 + (id)_predicateForSyncEntityClass:(Class)arg1;
 + (id)_predicateForSyncEntityClass:(Class)arg1 syncStore:(id)arg2;
 + (id)_predicateForSyncStore:(id)arg1;
@@ -19,11 +20,13 @@
 + (id)columnsDefinition;
 + (id)databaseTable;
 + (BOOL)enumerateSyncAnchorsForStoreID:(long long)arg1 database:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
-+ (BOOL)getReceivedAnchorsWithSet:(id)arg1 store:(id)arg2 healthDatabase:(id)arg3 error:(id *)arg4;
++ (BOOL)getNextAnchorsWithMap:(id)arg1 store:(id)arg2 healthDatabase:(id)arg3 error:(id *)arg4;
++ (BOOL)getReceivedAnchorsWithMap:(id)arg1 store:(id)arg2 healthDatabase:(id)arg3 error:(id *)arg4;
 + (long long)nextSyncAnchorForEntityClass:(Class)arg1 store:(id)arg2 healthDatabase:(id)arg3 error:(id *)arg4;
 + (long long)protectionClass;
 + (long long)receivedAnchorForEntityClass:(Class)arg1 store:(id)arg2 healthDatabase:(id)arg3 error:(id *)arg4;
 + (BOOL)resetNextSyncAnchor:(long long)arg1 forEntityClass:(Class)arg2 store:(id)arg3 healthDatabase:(id)arg4 error:(id *)arg5;
++ (BOOL)resetReceivedAnchorsForStore:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;
 + (BOOL)resetSyncStore:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;
 + (BOOL)setAcknowledgedAnchorsWithMap:(id)arg1 store:(id)arg2 resetNext:(BOOL)arg3 resetInvalid:(BOOL)arg4 healthDatabase:(id)arg5 error:(id *)arg6;
 + (BOOL)setNextSyncAnchor:(long long)arg1 forEntityClass:(Class)arg2 store:(id)arg3 healthDatabase:(id)arg4 error:(id *)arg5;

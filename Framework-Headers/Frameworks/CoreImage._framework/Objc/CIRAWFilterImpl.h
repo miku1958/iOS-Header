@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
     NSNumber *inputNoiseReductionSharpnessAmount;
     NSNumber *inputNoiseReductionContrastAmount;
     NSNumber *inputNoiseReductionDetailAmount;
+    NSNumber *inputMoireAmount;
     NSString *inputDecoderVersion;
     NSNumber *inputBoostShadowAmount;
     NSNumber *inputBias;
@@ -96,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultInputHueMagRYAmount;
 - (id)defaultInputHueMagYGAmount;
 - (id)defaultInputLuminanceNoiseReductionAmount;
+- (id)defaultInputMoireAmount;
 - (id)defaultInputNoiseReductionContrastAmount;
 - (id)defaultInputNoiseReductionDetailAmount;
 - (id)defaultInputNoiseReductionSharpnessAmount;
@@ -156,6 +158,7 @@ __attribute__((visibility("hidden")))
 - (void)setInputImageOrientation:(id)arg1;
 - (void)setInputLinearSpaceFilter:(id)arg1;
 - (void)setInputLuminanceNoiseReductionAmount:(id)arg1;
+- (void)setInputMoireAmount:(id)arg1;
 - (void)setInputNeutralChromaticityX:(id)arg1;
 - (void)setInputNeutralChromaticityY:(id)arg1;
 - (void)setInputNeutralLocation:(id)arg1;

@@ -31,6 +31,7 @@
 - (id)groupIdentifier;
 - (id)initWithError:(id)arg1;
 - (id)initWithWeatherLocationId:(id)arg1;
+- (BOOL)requiresResponse;
 
 @end
 

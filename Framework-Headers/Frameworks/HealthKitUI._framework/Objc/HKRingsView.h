@@ -60,6 +60,8 @@
     unsigned int _coordinateAttribute;
     unsigned int _coordPercentAttribute;
     unsigned int _trigResultsAttribute;
+    unsigned int _emptyShaderAlphaUniform;
+    unsigned int _ringShaderAlphaUniform;
     unsigned int _iconSpritePositionAttribute;
     unsigned int _iconSpriteSizeAttribute;
     unsigned int _iconSpriteColorAttribute;
@@ -72,11 +74,13 @@
     int _ringGroupsPerRow;
     NSArray *_ringGroups;
     double _ringSpacing;
+    double _emptyRingAlpha;
     UIImage *_iconSpriteImage;
     unsigned long long _iconTextureRows;
     unsigned long long _iconTextureColumns;
 }
 
+@property (nonatomic) double emptyRingAlpha; // @synthesize emptyRingAlpha=_emptyRingAlpha;
 @property (strong, nonatomic) UIImage *iconSpriteImage; // @synthesize iconSpriteImage=_iconSpriteImage;
 @property (nonatomic) unsigned long long iconTextureColumns; // @synthesize iconTextureColumns=_iconTextureColumns;
 @property (nonatomic) unsigned long long iconTextureRows; // @synthesize iconTextureRows=_iconTextureRows;
@@ -94,7 +98,6 @@
 + (id)ringsViewConfiguredForThreeRingsOnCompanion;
 + (id)ringsViewConfiguredForThreeRingsOnWatch;
 - (void).cxx_destruct;
-- (void)_context_checkAndRepairFramebuffer;
 - (void)_context_createBuffers;
 - (void)_context_loadFlatColorProgramIfNeeded;
 - (void)_context_loadRingDataForGroupAtIndex:(long long)arg1;
@@ -109,7 +112,7 @@
 - (void)_updateProjectionMatrix;
 - (void)dealloc;
 - (void)didMoveToWindow;
-- (unsigned int)drawInRect:(struct CGRect)arg1;
+- (unsigned int)drawInRect:(struct CGRect)arg1 withContext:(id)arg2;
 - (id)initWithRingGroups:(id)arg1 numberOfRingsPerGroup:(int)arg2;
 - (void)layoutSubviews;
 - (void)ringGroupDidBeginAnimations:(id)arg1;

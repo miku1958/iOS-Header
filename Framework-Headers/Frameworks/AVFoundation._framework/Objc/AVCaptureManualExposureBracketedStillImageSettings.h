@@ -17,6 +17,7 @@
 
 + (id)manualExposureSettingsWithExposureDuration:(CDStruct_1b6d18a9)arg1 ISO:(float)arg2;
 - (id)_initManualExposureSettingsWithExposureDuration:(CDStruct_1b6d18a9)arg1 ISO:(float)arg2;
+- (id)debugDescription;
 - (id)description;
 
 @end

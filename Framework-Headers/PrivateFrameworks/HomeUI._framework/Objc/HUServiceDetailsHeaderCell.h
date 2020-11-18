@@ -8,33 +8,40 @@
 
 #import <HomeUI/HUCellProtocol-Protocol.h>
 
-@class HFItem, HUGridServiceCell, NSArray, NSMutableArray, NSString, UILabel;
+@class HFItem, HUGridServiceCell, NSArray, NSString, UILabel;
+@protocol HUResizableCellDelegate;
 
 @interface HUServiceDetailsHeaderCell : UITableViewCell <HUCellProtocol>
 {
     HFItem *_item;
+    id<HUResizableCellDelegate> _resizingDelegate;
     UILabel *_errorLabel;
     HUGridServiceCell *_serviceCell;
-    NSArray *_allConstraints;
-    NSMutableArray *_hideErrorLabelConstraints;
-    NSMutableArray *_showErrorLabelConstraints;
+    NSArray *_hiddenErrorLabelConstraints;
+    NSArray *_visibleErrorLabelConstraints;
 }
 
-@property (strong, nonatomic) NSArray *allConstraints; // @synthesize allConstraints=_allConstraints;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UILabel *errorLabel; // @synthesize errorLabel=_errorLabel;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSMutableArray *hideErrorLabelConstraints; // @synthesize hideErrorLabelConstraints=_hideErrorLabelConstraints;
+@property (strong, nonatomic) NSArray *hiddenErrorLabelConstraints; // @synthesize hiddenErrorLabelConstraints=_hiddenErrorLabelConstraints;
 @property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
+@property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate; // @synthesize resizingDelegate=_resizingDelegate;
 @property (strong, nonatomic) HUGridServiceCell *serviceCell; // @synthesize serviceCell=_serviceCell;
-@property (strong, nonatomic) NSMutableArray *showErrorLabelConstraints; // @synthesize showErrorLabelConstraints=_showErrorLabelConstraints;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSArray *visibleErrorLabelConstraints; // @synthesize visibleErrorLabelConstraints=_visibleErrorLabelConstraints;
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (void)_configureConstraints;
+- (id)_hiddenErrorLabelConstraints;
+- (BOOL)_shouldShowServiceCell;
+- (void)_updateErrorLabelConstraints;
+- (void)_updateRequiredHeightIfNeeded;
+- (id)_visibleErrorLabelConstraints;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)layoutSubviews;
 - (void)updateUIWithAnimation:(BOOL)arg1;
 
 @end

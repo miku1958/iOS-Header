@@ -70,6 +70,7 @@
 - (void)dealloc;
 - (void)disconnect;
 - (void)enableThroughputMonitoring:(BOOL)arg1;
+- (void)endCompression;
 - (id)init;
 - (void)logReadChars:(const char *)arg1 length:(unsigned long long)arg2;
 - (BOOL)readBytesIntoData:(id)arg1 desiredLength:(unsigned long long)arg2;

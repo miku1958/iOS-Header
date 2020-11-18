@@ -21,7 +21,7 @@
 @property (readonly, nonatomic) BOOL hasMapItemStorage;
 @property (readonly, nonatomic) BOOL hasPlace;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
-@property (strong, nonatomic) GEOMapItemStorage *mapItemStorage;
+@property (strong, nonatomic) GEOMapItemStorage *mapItemStorage; // @synthesize mapItemStorage=_mapItemStorage;
 @property (strong, nonatomic) GEOPDPlace *place; // @synthesize place=_place;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;

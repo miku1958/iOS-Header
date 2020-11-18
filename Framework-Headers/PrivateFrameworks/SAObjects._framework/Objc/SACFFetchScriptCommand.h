@@ -17,6 +17,7 @@
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *fetchScriptType;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *jsScriptIdentifiers;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
@@ -26,6 +27,7 @@
 + (id)fetchScriptCommandWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)requiresResponse;
 
 @end
 

@@ -46,8 +46,8 @@ __attribute__((visibility("hidden")))
     unsigned int _isMemoryMapped:1;
     unsigned int _reserved:30;
     NSSet *_externalTags;
-    unsigned short _renditionInfoCacheLookup[10];
-    id _renditionInfoCache[10];
+    unsigned short _renditionInfoCacheLookup[20];
+    id _renditionInfoCache[20];
     struct os_unfair_lock_s _lock;
     struct os_unfair_lock_s _renditionInfoCacheLock;
 }
@@ -85,7 +85,8 @@ __attribute__((visibility("hidden")))
 - (id)deploymentPlatformVersion;
 - (id)description;
 - (void)enumerateBitmapIndexUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumerateKeysAndObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)enumerateKeysAndObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateKeysAndObjectsWithoutIgnoringUsingBlock:(CDUnknownBlockType)arg1;
 - (id)externalTags;
 - (float)fontSizeForFontSizeType:(id)arg1;
 - (BOOL)getBaselineOffset:(float *)arg1 forFontType:(id)arg2;
@@ -104,6 +105,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)renditionCount;
 - (id)renditionInfoForIdentifier:(unsigned short)arg1;
 - (const struct _renditionkeytoken *)renditionKeyForName:(const char *)arg1 hotSpot:(struct CGPoint *)arg2;
+- (id)renditionNameForKeyBaseList:(struct _renditionkeytoken *)arg1;
 - (id)renditionNameForKeyList:(struct _renditionkeytoken *)arg1;
 - (unsigned int)schemaVersion;
 - (long long)storageTimestamp;

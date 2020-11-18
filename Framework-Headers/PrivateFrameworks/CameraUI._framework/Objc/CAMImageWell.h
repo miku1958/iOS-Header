@@ -6,30 +6,38 @@
 
 #import <UIKit/UIButton.h>
 
+#import <CameraUI/UIGestureRecognizerDelegate-Protocol.h>
+
 @class NSMutableArray, NSString, UIImage, UIImageView, UIView;
 
-@interface CAMImageWell : UIButton
+@interface CAMImageWell : UIButton <UIGestureRecognizerDelegate>
 {
+    BOOL _scaledForInteraction;
     BOOL _thumbnailImageHidden;
     long long _layoutStyle;
     long long _cameraOrientation;
     UIView *__containerView;
     UIImageView *__thumbnailImageView;
-    UIImageView *__maskImageView;
     NSMutableArray *__dimmingViewQueue;
     UIImage *__thumbnailImage;
+    UIImage *__placeholderImage;
     NSString *__uuid;
     struct UIEdgeInsets _tappableEdgeInsets;
 }
 
 @property (readonly, nonatomic) UIView *_containerView; // @synthesize _containerView=__containerView;
 @property (readonly, nonatomic) NSMutableArray *_dimmingViewQueue; // @synthesize _dimmingViewQueue=__dimmingViewQueue;
-@property (readonly, nonatomic) UIImageView *_maskImageView; // @synthesize _maskImageView=__maskImageView;
+@property (strong, nonatomic, setter=_setPlaceholderImage:) UIImage *_placeholderImage; // @synthesize _placeholderImage=__placeholderImage;
 @property (strong, nonatomic, setter=_setThumbnailImage:) UIImage *_thumbnailImage; // @synthesize _thumbnailImage=__thumbnailImage;
 @property (readonly, nonatomic) UIImageView *_thumbnailImageView; // @synthesize _thumbnailImageView=__thumbnailImageView;
 @property (strong, nonatomic, setter=_setUuid:) NSString *_uuid; // @synthesize _uuid=__uuid;
 @property (nonatomic) long long cameraOrientation; // @synthesize cameraOrientation=_cameraOrientation;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
+@property (nonatomic, getter=isScaledForInteraction) BOOL scaledForInteraction; // @synthesize scaledForInteraction=_scaledForInteraction;
+@property (readonly) Class superclass;
 @property (nonatomic) struct UIEdgeInsets tappableEdgeInsets; // @synthesize tappableEdgeInsets=_tappableEdgeInsets;
 @property (readonly, nonatomic) UIImage *thumbnailImage;
 @property (nonatomic, getter=isThumbnailImageHidden) BOOL thumbnailImageHidden; // @synthesize thumbnailImageHidden=_thumbnailImageHidden;
@@ -37,12 +45,14 @@
 - (void).cxx_destruct;
 - (struct CGAffineTransform)_affineTransformForImageOrientation:(long long)arg1;
 - (void)_commonCAMImageWellInitializationWithLayoutStyle:(long long)arg1;
-- (id)_maskImage;
+- (double)_cornerRadiusForLayoutStyle:(long long)arg1;
 - (void)_performEmitAnimationWithImage:(id)arg1 orientation:(long long)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
+- (id)_placeholderImageForLayoutStyle:(long long)arg1;
 - (void)_removeFirstDimmingView;
 - (void)_updateForLayoutStyle;
 - (void)_updateThumbnailImageAnimated:(BOOL)arg1;
 - (void)_updateThumbnailTransformFromCameraOrientation;
+- (struct CGRect)alignmentRectForFrame:(struct CGRect)arg1 scaledForInteraction:(BOOL)arg2;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -52,6 +62,7 @@
 - (void)prepareForThumbnailUpdateFromCapture;
 - (void)recoverFromFailedThumbnailUpdate;
 - (void)setCameraOrientation:(long long)arg1 animated:(BOOL)arg2;
+- (void)setScaledForInteraction:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setThumbnailImage:(id)arg1 animated:(BOOL)arg2;
 - (void)setThumbnailImage:(id)arg1 uuid:(id)arg2 animated:(BOOL)arg3;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

@@ -57,6 +57,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)createTileStampFromColumn:(unsigned long long)arg1 row:(unsigned long long)arg2 withWidth:(unsigned long long)arg3 height:(unsigned long long)arg4 addToTileSet:(BOOL)arg5;
 - (void)dealloc;
+- (id)debugHierarchyPropertyDescriptions;
+- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fillArray:(unsigned int *)arg1 withTilesFromColumn:(unsigned long long)arg2 row:(unsigned long long)arg3 forWidth:(unsigned long long)arg4 height:(unsigned long long)arg5;
 - (void)fillArrayWithTiles:(unsigned int *)arg1;

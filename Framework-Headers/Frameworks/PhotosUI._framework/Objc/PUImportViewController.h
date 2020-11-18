@@ -90,6 +90,7 @@
 - (id)_newEmptyPlaceholderView;
 - (id)_newGenericImageForItemWithExtension:(id)arg1 size:(struct CGSize)arg2;
 - (void)_photosDatabaseHasChanged:(id)arg1;
+- (id)_placeholderExtenstionForItem:(id)arg1;
 - (id)_placeholderForItem:(id)arg1;
 - (void)_reloadDataAndKeepSelection;
 - (void)_removeEmptyAlbumViewAnimated:(BOOL)arg1;
@@ -97,7 +98,6 @@
 - (void)_scrollToCurrentImportIndex;
 - (id)_selectedIndexes;
 - (void)_setSelectedIndexes:(id)arg1;
-- (id)_textBadgeStringForCameraItem:(id)arg1;
 - (id)_thumbnailPathString;
 - (void)_updateCell:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)_updateContentOffsetForPendingViewSizeTransition;
@@ -137,7 +137,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (void)showImportedBadgesForItemsAtIndexes:(id)arg1;
 - (void)stopImport:(id)arg1;
-- (id)textBadgeStringForImageAtIndex:(long long)arg1;
 - (BOOL)updateSpec;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

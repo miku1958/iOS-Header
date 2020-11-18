@@ -6,14 +6,29 @@
 
 #import <Foundation/NSObject.h>
 
+@class CNFileManager, CNURLSessionFactory;
+
 @interface CNData : NSObject
 {
+    CNFileManager *_fileManager;
+    CNURLSessionFactory *_sessionFactory;
 }
 
+@property (readonly, nonatomic) CNFileManager *fileManager; // @synthesize fileManager=_fileManager;
+@property (readonly, nonatomic) CNURLSessionFactory *sessionFactory; // @synthesize sessionFactory=_sessionFactory;
+
++ (unsigned long long)NSDataWritingOptionsFromCNDataWritingOptions:(unsigned long long)arg1;
 + (id)dataWithContentsOfURL:(id)arg1;
++ (id)dataWithContentsOfURL:(id)arg1 sessionFactory:(id)arg2;
 + (id)observableWithContentsOfURL:(id)arg1;
++ (id)observableWithContentsOfURL:(id)arg1 sessionFactory:(id)arg2;
 + (id)writeData:(id)arg1 toURL:(id)arg2 options:(unsigned long long)arg3;
++ (id)writeData:(id)arg1 toURL:(id)arg2 options:(unsigned long long)arg3 fileManager:(id)arg4;
+- (void).cxx_destruct;
 - (id)dataWithContentsOfURL:(id)arg1;
+- (id)init;
+- (id)initWithFileManager:(id)arg1;
+- (id)initWithFileManager:(id)arg1 urlSessionFactory:(id)arg2;
 - (id)observableWithContentsOfURL:(id)arg1;
 - (id)writeData:(id)arg1 toURL:(id)arg2 options:(unsigned long long)arg3;
 

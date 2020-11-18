@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSLock, NSMapTable;
 
@@ -14,19 +14,10 @@
     NSLock *_pendingRequestsLock;
 }
 
-+ (id)_debugRequestName;
-+ (int)_experimentDispatcherRequestTypeForRequest:(id)arg1;
-+ (long long)_experimentType;
-+ (unsigned char)_requestCounterInfoTypeForRequest:(id)arg1;
-+ (id)_serviceTypeNumber;
-+ (BOOL)_shouldThrottleRequests;
-+ (id)_throttleKey;
-+ (unsigned long long)_urlType;
+- (void).cxx_destruct;
 - (void)_cancelRequest:(id)arg1;
-- (void)_startWithRequest:(id)arg1 traits:(id)arg2 auditToken:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_startWithRequest:(id)arg1 traits:(id)arg2 timeout:(double)arg3 auditToken:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)_validateResponse:(id)arg1;
-- (void)dealloc;
+- (void)_startWithRequest:(id)arg1 traits:(id)arg2 auditToken:(id)arg3 config:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)_validateResponse:(id)arg1 userInfo:(id)arg2;
 - (id)init;
 
 @end

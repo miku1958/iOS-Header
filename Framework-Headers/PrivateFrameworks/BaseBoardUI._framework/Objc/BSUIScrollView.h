@@ -31,6 +31,7 @@
 @property (readonly) Class superclass;
 
 - (long long)_activeMethod;
+- (id)_animationForAnimationSettings:(id)arg1;
 - (void)_bs_didEndScrolling;
 - (void)_bs_didScrollWithContext:(CDStruct_3b09cf25)arg1;
 - (void)_bs_willBeginScrolling;
@@ -38,7 +39,10 @@
 - (void)_didEndDraggingNotification:(id)arg1;
 - (void)_didEndScrollAnimationNotification:(id)arg1;
 - (void)_notifyDidScroll;
+- (BOOL)_setContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2 withAnimation:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_setContentOffset:(struct CGPoint)arg1 animation:(id)arg2;
 - (void)_setContentOffset:(struct CGPoint)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)_setCurrentContentOffsetImmediatelyIfScrollInterruptionAnimated:(BOOL)arg1;
 - (void)_setScrollCompletion:(CDUnknownBlockType)arg1;
 - (void)_setScrolling:(BOOL)arg1;
 - (void)_updateScrolling;
@@ -48,6 +52,7 @@
 - (void)setContentOffset:(struct CGPoint)arg1;
 - (void)setContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;
 - (BOOL)setContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)setContentOffset:(struct CGPoint)arg1 withAnimationSettings:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

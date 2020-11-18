@@ -24,7 +24,6 @@
     BOOL _shouldRunWithBackgroundPriority;
     BOOL _stopped;
     BOOL _success;
-    id _threadSafeDelegate;
 }
 
 @property (weak) id<ISOperationDelegate> delegate;
@@ -38,7 +37,6 @@
 @property BOOL shouldMessageMainThread;
 @property BOOL shouldRunWithBackgroundPriority; // @synthesize shouldRunWithBackgroundPriority=_shouldRunWithBackgroundPriority;
 @property BOOL success; // @synthesize success=_success;
-@property (readonly) id threadSafeDelegate;
 @property (readonly) NSString *uniqueKey;
 
 - (void).cxx_destruct;
@@ -55,6 +53,7 @@
 - (BOOL)copyAccountID:(id *)arg1 byAuthenticatingWithContext:(id)arg2 returningError:(id *)arg3;
 - (id)copyActivePowerAssertionIdentifiers;
 - (id)copySerializationLocks;
+- (void)delegateDispatch:(CDUnknownBlockType)arg1;
 - (void)dispatchCompletionBlock;
 - (id)init;
 - (BOOL)loadSoftwareMapReturningError:(id *)arg1;

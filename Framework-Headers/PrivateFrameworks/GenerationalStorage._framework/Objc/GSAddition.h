@@ -35,10 +35,10 @@
 @property (readonly, nonatomic) NSDictionary *userInfo;
 
 + (id)makeNameForUser:(unsigned int)arg1 name:(id)arg2;
+- (void).cxx_destruct;
 - (id)_initWithStorage:(id)arg1 andDictionary:(id)arg2;
 - (void)_refreshWithDictionary:(id)arg1;
 - (BOOL)copyAdditionContentToURL:(id)arg1 error:(id *)arg2;
-- (void)dealloc;
 - (id)description;
 - (id)displayNameWithError:(id *)arg1;
 - (unsigned long long)hash;

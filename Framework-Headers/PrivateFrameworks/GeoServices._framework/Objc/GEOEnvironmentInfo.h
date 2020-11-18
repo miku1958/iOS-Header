@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOResourceManifestDownload, NSData, NSDictionary, NSError, NSString;
 
@@ -26,8 +26,8 @@
 @property (readonly, nonatomic) GEOResourceManifestDownload *resourceManifest;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 
+- (void).cxx_destruct;
 - (id)_manifestURLString;
-- (void)dealloc;
 - (id)initWithName:(id)arg1 displayName:(id)arg2 dictionaryRepresentation:(id)arg3;
 - (BOOL)isActive;
 - (void)makeActive;

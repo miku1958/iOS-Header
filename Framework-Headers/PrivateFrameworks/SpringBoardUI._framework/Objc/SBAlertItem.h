@@ -56,7 +56,6 @@
 - (id)_iconImage;
 - (void)_noteVolumeOrLockPressed;
 - (id)_prepareNewAlertControllerWithLockedState:(BOOL)arg1 requirePasscodeForActions:(BOOL)arg2;
-- (BOOL)_preventLockOver;
 - (id)_publicDescription;
 - (id)alertController;
 - (void)alertItemDidAppear;
@@ -81,6 +80,7 @@
 - (void)dismiss:(int)arg1;
 - (BOOL)dismissOnLock;
 - (BOOL)dismissesOverlaysOnLockScreen;
+- (void)doCleanupAfterDeactivationAnimation;
 - (BOOL)forcesModalAlertAppearance;
 - (id)init;
 - (id)lockLabel;

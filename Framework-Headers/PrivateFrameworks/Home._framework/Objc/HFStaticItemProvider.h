@@ -18,9 +18,10 @@
 @property (strong, nonatomic) NSSet *staticItems; // @synthesize staticItems=_staticItems;
 
 - (void).cxx_destruct;
-- (id)initWithHome:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 - (id)initWithHome:(id)arg1 items:(id)arg2;
-- (id)invalidationReasons;
+- (id)initWithItems:(id)arg1;
 - (id)items;
 - (id)reloadItems;
 

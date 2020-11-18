@@ -13,33 +13,47 @@
 @interface PKProtobufPaymentInstrument : PBCodable <NSCopying>
 {
     double _ingestedDate;
+    long long _peerPaymentAccountBalance;
     NSMutableArray *_associatedWebDomains;
     NSString *_displayName;
+    NSString *_issuerCountryCode;
     NSData *_manifestHash;
     NSString *_passID;
     NSMutableArray *_paymentApplications;
+    NSString *_peerPaymentAccountCurrency;
     NSString *_primaryAccountIdentifier;
     NSString *_primaryAccountNumberSuffix;
+    BOOL _hasAssociatedPeerPaymentAccount;
     BOOL _supportsAutomaticSelection;
     struct {
         unsigned int ingestedDate:1;
+        unsigned int peerPaymentAccountBalance:1;
+        unsigned int hasAssociatedPeerPaymentAccount:1;
         unsigned int supportsAutomaticSelection:1;
     } _has;
 }
 
 @property (strong, nonatomic) NSMutableArray *associatedWebDomains; // @synthesize associatedWebDomains=_associatedWebDomains;
 @property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (nonatomic) BOOL hasAssociatedPeerPaymentAccount; // @synthesize hasAssociatedPeerPaymentAccount=_hasAssociatedPeerPaymentAccount;
 @property (readonly, nonatomic) BOOL hasDisplayName;
+@property (nonatomic) BOOL hasHasAssociatedPeerPaymentAccount;
 @property (nonatomic) BOOL hasIngestedDate;
+@property (readonly, nonatomic) BOOL hasIssuerCountryCode;
 @property (readonly, nonatomic) BOOL hasManifestHash;
 @property (readonly, nonatomic) BOOL hasPassID;
+@property (nonatomic) BOOL hasPeerPaymentAccountBalance;
+@property (readonly, nonatomic) BOOL hasPeerPaymentAccountCurrency;
 @property (readonly, nonatomic) BOOL hasPrimaryAccountIdentifier;
 @property (readonly, nonatomic) BOOL hasPrimaryAccountNumberSuffix;
 @property (nonatomic) BOOL hasSupportsAutomaticSelection;
 @property (nonatomic) double ingestedDate; // @synthesize ingestedDate=_ingestedDate;
+@property (strong, nonatomic) NSString *issuerCountryCode; // @synthesize issuerCountryCode=_issuerCountryCode;
 @property (strong, nonatomic) NSData *manifestHash; // @synthesize manifestHash=_manifestHash;
 @property (strong, nonatomic) NSString *passID; // @synthesize passID=_passID;
 @property (strong, nonatomic) NSMutableArray *paymentApplications; // @synthesize paymentApplications=_paymentApplications;
+@property (nonatomic) long long peerPaymentAccountBalance; // @synthesize peerPaymentAccountBalance=_peerPaymentAccountBalance;
+@property (strong, nonatomic) NSString *peerPaymentAccountCurrency; // @synthesize peerPaymentAccountCurrency=_peerPaymentAccountCurrency;
 @property (strong, nonatomic) NSString *primaryAccountIdentifier; // @synthesize primaryAccountIdentifier=_primaryAccountIdentifier;
 @property (strong, nonatomic) NSString *primaryAccountNumberSuffix; // @synthesize primaryAccountNumberSuffix=_primaryAccountNumberSuffix;
 @property (nonatomic) BOOL supportsAutomaticSelection; // @synthesize supportsAutomaticSelection=_supportsAutomaticSelection;

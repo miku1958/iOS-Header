@@ -8,44 +8,45 @@
 
 #import <HealthDaemon/CLLocationManagerDelegate-Protocol.h>
 
-@class CLInUseAssertion, CLLocationManager, CMElevation, HDServer, HKLocationSeriesSample, NSString, NSUUID;
-@protocol HDHealthDaemon, HDLocationEventDelegate, OS_dispatch_queue;
+@class CLInUseAssertion, CLLocationManager, CMElevation, HDHealthStoreServer, HDProfile, HKLocationSeriesSample, NSString, NSUUID;
+@protocol HDLocationEventDelegate, OS_dispatch_queue;
 
 @interface HDLocationDataCollector : NSObject <CLLocationManagerDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    id<HDHealthDaemon> _daemon;
+    HDProfile *_profile;
     CLLocationManager *_locationManager;
     CLInUseAssertion *_inUseAssertion;
     CMElevation *_elevation;
     int _lastStatus;
     HKLocationSeriesSample *_seriesSample;
+    BOOL _didSaveLocationData;
     double _lastPausedTime;
     unsigned long long _elevationGain;
     unsigned long long _activityType;
     NSUUID *_workoutUUID;
     id<HDLocationEventDelegate> _delegate;
-    HDServer *_server;
+    HDHealthStoreServer *_server;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HDLocationEventDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) HDServer *server; // @synthesize server=_server;
+@property (strong, nonatomic) HDHealthStoreServer *server; // @synthesize server=_server;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_createLocationSeriesSampleAndStartLocation;
-- (void)_freezeCurrentLocationSeriesSample;
 - (void)_handleElevationData:(id)arg1 error:(id)arg2;
 - (void)_pauseLocationUpdates;
+- (void)_queue_createSeriesSample;
+- (void)_queue_deleteCurrentRoute;
+- (void)_queue_freezeCurrentLocationSeriesSample;
 - (void)_queue_resumeWorkout;
 - (void)_queue_start;
-- (void)_startLocationUpdates;
-- (void)_stopGPSUpdates;
+- (void)_queue_stopGPSUpdates;
 - (void)endWorkout;
-- (id)initWithDaemon:(id)arg1 server:(id)arg2 activityType:(unsigned long long)arg3 workoutUUID:(id)arg4;
+- (id)initWithProfile:(id)arg1 server:(id)arg2 activityType:(unsigned long long)arg3 workoutUUID:(id)arg4;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;

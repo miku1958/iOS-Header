@@ -28,11 +28,11 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) AXThreadTimerTask *task; // @synthesize task=_task;
 
+- (void).cxx_destruct;
 - (void)_runAfterDelay:(id)arg1;
 - (void)afterDelay:(double)arg1 processBlock:(CDUnknownBlockType)arg2;
 - (void)afterDelay:(double)arg1 processBlock:(CDUnknownBlockType)arg2 cancelBlock:(CDUnknownBlockType)arg3;
 - (void)cancel;
-- (void)dealloc;
 - (id)initWithThread:(id)arg1;
 
 @end

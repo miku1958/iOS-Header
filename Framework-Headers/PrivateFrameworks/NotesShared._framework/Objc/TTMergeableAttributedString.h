@@ -6,9 +6,18 @@
 
 #import <NotesShared/TTMergeableUndoString.h>
 
-@interface TTMergeableAttributedString : TTMergeableUndoString
+#import <NotesShared/CRCoding-Protocol.h>
+
+@class NSString;
+
+@interface TTMergeableAttributedString : TTMergeableUndoString <CRCoding>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (int)attributeForWritingDirection:(long long)arg1;
 + (id)attributesForRun:(const struct AttributeRun *)arg1;
@@ -21,7 +30,11 @@
 - (id)attributesAtIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (BOOL)attributesEqual:(id)arg1 to:(id)arg2 modelEqual:(BOOL *)arg3;
 - (BOOL)attributesEqual:(id)arg1 toRange:(struct _NSRange)arg2 modelEqual:(BOOL *)arg3;
-- (id)initWithArchive:(const struct String *)arg1 andReplicaID:(id)arg2;
+- (void)encodeWithCRCoder:(id)arg1;
+- (void)encodeWithCRCoder:(id)arg1 string:(struct String *)arg2;
+- (id)initWithArchive:(const struct String *)arg1 andReplicaID:(id)arg2 withOrderedSubstrings:(vector_6c07be0f *)arg3 timestamp:(id)arg4;
+- (id)initWithCRCoder:(id)arg1;
+- (id)initWithCRCoder:(id)arg1 string:(const struct String *)arg2;
 - (void)insertString:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;
 - (void)saveDeltaSinceTimestamp:(id)arg1 toArchive:(struct String *)arg2;

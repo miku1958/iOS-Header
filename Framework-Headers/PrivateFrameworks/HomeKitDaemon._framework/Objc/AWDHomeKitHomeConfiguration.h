@@ -8,12 +8,18 @@
 
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
+@class NSMutableArray;
+
 @interface AWDHomeKitHomeConfiguration : PBCodable <NSCopying>
 {
+    NSMutableArray *_eventTriggers;
     unsigned int _numAccessories;
     unsigned int _numAccessoryServiceGroups;
     unsigned int _numAdmins;
+    unsigned int _numBridgedAccessories;
+    unsigned int _numCertifiedAccessories;
     unsigned int _numEventTriggers;
+    unsigned int _numNotCertifiedAccessories;
     unsigned int _numRooms;
     unsigned int _numScenes;
     unsigned int _numServices;
@@ -27,7 +33,10 @@
         unsigned int numAccessories:1;
         unsigned int numAccessoryServiceGroups:1;
         unsigned int numAdmins:1;
+        unsigned int numBridgedAccessories:1;
+        unsigned int numCertifiedAccessories:1;
         unsigned int numEventTriggers:1;
+        unsigned int numNotCertifiedAccessories:1;
         unsigned int numRooms:1;
         unsigned int numScenes:1;
         unsigned int numServices:1;
@@ -40,12 +49,16 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSMutableArray *eventTriggers; // @synthesize eventTriggers=_eventTriggers;
 @property (nonatomic) BOOL hasIsPrimaryResident;
 @property (nonatomic) BOOL hasIsResidentAvailable;
 @property (nonatomic) BOOL hasNumAccessories;
 @property (nonatomic) BOOL hasNumAccessoryServiceGroups;
 @property (nonatomic) BOOL hasNumAdmins;
+@property (nonatomic) BOOL hasNumBridgedAccessories;
+@property (nonatomic) BOOL hasNumCertifiedAccessories;
 @property (nonatomic) BOOL hasNumEventTriggers;
+@property (nonatomic) BOOL hasNumNotCertifiedAccessories;
 @property (nonatomic) BOOL hasNumRooms;
 @property (nonatomic) BOOL hasNumScenes;
 @property (nonatomic) BOOL hasNumServices;
@@ -58,7 +71,10 @@
 @property (nonatomic) unsigned int numAccessories; // @synthesize numAccessories=_numAccessories;
 @property (nonatomic) unsigned int numAccessoryServiceGroups; // @synthesize numAccessoryServiceGroups=_numAccessoryServiceGroups;
 @property (nonatomic) unsigned int numAdmins; // @synthesize numAdmins=_numAdmins;
+@property (nonatomic) unsigned int numBridgedAccessories; // @synthesize numBridgedAccessories=_numBridgedAccessories;
+@property (nonatomic) unsigned int numCertifiedAccessories; // @synthesize numCertifiedAccessories=_numCertifiedAccessories;
 @property (nonatomic) unsigned int numEventTriggers; // @synthesize numEventTriggers=_numEventTriggers;
+@property (nonatomic) unsigned int numNotCertifiedAccessories; // @synthesize numNotCertifiedAccessories=_numNotCertifiedAccessories;
 @property (nonatomic) unsigned int numRooms; // @synthesize numRooms=_numRooms;
 @property (nonatomic) unsigned int numScenes; // @synthesize numScenes=_numScenes;
 @property (nonatomic) unsigned int numServices; // @synthesize numServices=_numServices;
@@ -67,10 +83,16 @@
 @property (nonatomic) unsigned int numUsers; // @synthesize numUsers=_numUsers;
 @property (nonatomic) unsigned int numZones; // @synthesize numZones=_numZones;
 
++ (Class)eventTriggersType;
+- (void).cxx_destruct;
+- (void)addEventTriggers:(id)arg1;
+- (void)clearEventTriggers;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)eventTriggersAtIndex:(unsigned long long)arg1;
+- (unsigned long long)eventTriggersCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

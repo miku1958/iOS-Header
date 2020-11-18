@@ -6,32 +6,50 @@
 
 #import <objc/NSObject.h>
 
-@class IKAppContext, IKDOMDocument, IKJSInspectorCSSAgent, IKJSInspectorDOMAgent, IKJSInspectorPageAgent, RWIProtocolInspector;
+@class IKAppContext, IKDOMDocument, IKJSInspectorCSSAgent, IKJSInspectorDOMAgent, IKJSInspectorNetworkAgent, IKJSInspectorPageAgent, IKJSInspectorStorageAgent, NSDate, NSMutableArray, NSString, RWIProtocolInspector;
+@protocol IKJSInspectorControllerDelegate;
 
 @interface IKJSInspectorController : NSObject
 {
     IKDOMDocument *_activeDocument;
+    NSMutableArray *_appDocumentStack;
     RWIProtocolInspector *_inspector;
     IKJSInspectorDOMAgent *_domAgent;
+    IKJSInspectorNetworkAgent *_networkAgent;
     IKJSInspectorPageAgent *_pageAgent;
     IKJSInspectorCSSAgent *_cssAgent;
-    BOOL _inspectorConnected;
+    IKJSInspectorStorageAgent *_storageAgent;
     id _inspectorConnectedToken;
     id _inspectorDisconntectedToken;
     IKAppContext *_appContext;
+    id<IKJSInspectorControllerDelegate> _delegate;
+    NSDate *_inspectorConnectDate;
+    NSString *_activeDocumentIdentifier;
 }
 
-@property (readonly, nonatomic) IKDOMDocument *activeDocument; // @synthesize activeDocument=_activeDocument;
+@property (readonly, weak, nonatomic) IKDOMDocument *activeDocument; // @synthesize activeDocument=_activeDocument;
+@property (readonly, copy, nonatomic) NSString *activeDocumentIdentifier; // @synthesize activeDocumentIdentifier=_activeDocumentIdentifier;
 @property (readonly, weak) IKAppContext *appContext; // @synthesize appContext=_appContext;
+@property (weak, nonatomic) id<IKJSInspectorControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) RWIProtocolInspector *inspector; // @synthesize inspector=_inspector;
+@property (readonly, nonatomic) NSDate *inspectorConnectDate; // @synthesize inspectorConnectDate=_inspectorConnectDate;
 
++ (id)_nodeById:(long long)arg1 fromNode:(id)arg2;
++ (id)_nodesByIds:(id)arg1 fromNode:(id)arg2;
++ (id)_templateNameForDocument:(id)arg1;
 - (void).cxx_destruct;
-- (id)_nodeById:(long long)arg1 fromNode:(id)arg2;
-- (void)activeDocumentDidChange;
+- (void)appDocumentDidAppear:(id)arg1;
+- (void)appDocumentDidDisappear:(id)arg1;
+- (void)appDocumentDidLoad:(id)arg1;
+- (void)appDocumentDidUnload:(id)arg1;
 - (void)appDocumentDidUpdate:(id)arg1;
 - (void)dealloc;
+- (void)evaluateMediaQuery:(CDUnknownBlockType)arg1;
 - (id)initWithAppContext:(id)arg1;
+- (void)mediaQueryResultDidChange;
 - (id)nodeById:(long long)arg1;
+- (id)nodesByIds:(id)arg1;
+- (id)registerNetworkRequestLoader:(id)arg1;
 - (void)resetStylesFromNode:(id)arg1;
 - (id)styleFromComposer:(id)arg1;
 - (void)updateStylesheets;

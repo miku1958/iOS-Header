@@ -12,7 +12,7 @@
 #import <iTunesStoreUI/SUPreviewOverlayContainer-Protocol.h>
 #import <iTunesStoreUI/UIPopoverControllerDelegate-Protocol.h>
 
-@class ISURLRequestPerformance, NSString, SSAuthenticationContext, SSMutableURLRequestProperties, SSURLRequestProperties, SUNavigationMenuViewController, SUPageSectionGroup, SUSearchFieldController, SUSegmentedControl, SUStorePageProtocol, SUWebScriptReloadContext, UIPopoverController, _UIBackdropView;
+@class ISURLRequestPerformance, NSNumber, NSString, SSAuthenticationContext, SSMutableURLRequestProperties, SSURLRequestProperties, SUNavigationMenuViewController, SUPageSectionGroup, SUSearchFieldController, SUSegmentedControl, SUStorePageProtocol, SUWebScriptReloadContext, UIPopoverController, _UIBackdropView;
 @protocol SUStorePageViewControllerDelegate;
 
 @interface SUStorePageViewController : SUViewController <SKUITabBarItemRootViewController, SUMenuViewControllerDelegate, SUPreviewOverlayContainer, UIPopoverControllerDelegate, ISURLOperationDelegate>
@@ -63,6 +63,9 @@
 @property (nonatomic, getter=isExternalRequest) BOOL externalRequest; // @synthesize externalRequest=_externalRequest;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL loadsWhenHidden; // @synthesize loadsWhenHidden=_loadsWhenHidden;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentage;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSessionDuration;
 @property (nonatomic) BOOL needsAuthentication; // @synthesize needsAuthentication=_needsAuthentication;
 @property (copy, nonatomic) NSString *scriptUserInfo; // @synthesize scriptUserInfo=_scriptUserInfo;
 @property (readonly, nonatomic) SUSearchFieldController *searchFieldController; // @synthesize searchFieldController=_searchFieldController;
@@ -119,6 +122,7 @@
 - (void)_setPendingChildViewController:(id)arg1;
 - (void)_setRightNavigationItem:(id)arg1 forTag:(long long)arg2;
 - (void)_setSegmentedControl:(id)arg1;
+- (void)_setUseWebViewFastPath:(BOOL)arg1;
 - (BOOL)_shouldDisplayControlsInNavigationBar;
 - (BOOL)_shouldDisplaySegmentedControlInNavigationBar:(id)arg1;
 - (BOOL)_shouldFetchAutomatically;

@@ -27,6 +27,7 @@
 + (id)jpegStillImageNSDataRepresentation:(struct opaqueCMSampleBuffer *)arg1;
 + (id)jpegStillImageNSDataRepresentationForSurface:(void *)arg1 size:(unsigned long long)arg2 metadata:(id)arg3;
 + (unsigned long long)maxStillImageJPEGDataSize;
++ (id)new;
 - (long long)HDRMode;
 - (BOOL)_bracketedSettingsAreValid:(id)arg1 fromConnection:(id)arg2 exceptionReason:(id *)arg3;
 - (id)_figCaptureStillImageSettingsForBracketedCaptureSettingsArray:(id)arg1 fromConnection:(id)arg2;

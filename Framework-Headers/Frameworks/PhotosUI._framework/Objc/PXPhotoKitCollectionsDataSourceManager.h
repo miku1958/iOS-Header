@@ -60,7 +60,9 @@
 - (unsigned long long)_fixedOrderPriorityForVirtualCollection:(id)arg1;
 - (void)_getCollectionListBySectionsFromUnfilteredFetchResult:(id)arg1 collectionList:(id)arg2 collectionListBySections:(id *)arg3 collectionsFetchResultBySection:(id *)arg4;
 - (BOOL)_isEmpty;
+- (BOOL)_isPlacesAlbumAssetCollection:(id)arg1;
 - (BOOL)_needsFetchResultForCollection:(id)arg1;
+- (BOOL)_needsKeyAssetsFetchResultForCollection:(id)arg1;
 - (id)_newDataSource;
 - (void)_recursivelyCollectCollectionsIn:(id)arg1 fetchResult:(id)arg2;
 - (void)_recursivelyEnumerateAssetCollectionsInFetchResult:(id)arg1 block:(CDUnknownBlockType)arg2;

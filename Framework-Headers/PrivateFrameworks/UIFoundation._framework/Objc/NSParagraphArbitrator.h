@@ -17,6 +17,7 @@
     double _hyphenationFactor;
     long long _typesetterBehavior;
     struct _NSRange _paragraphRange;
+    struct _NSRange _previousLineRange;
 }
 
 @property (strong) NSAttributedString *attributedString; // @synthesize attributedString=_attributedString;
@@ -24,6 +25,7 @@
 @property unsigned long long lineBreakStrategy; // @synthesize lineBreakStrategy=_lineBreakStrategy;
 @property (copy) CDUnknownBlockType lineWidth; // @synthesize lineWidth=_lineWidth;
 @property struct _NSRange paragraphRange; // @synthesize paragraphRange=_paragraphRange;
+@property struct _NSRange previousLineRange; // @synthesize previousLineRange=_previousLineRange;
 @property long long typesetterBehavior; // @synthesize typesetterBehavior=_typesetterBehavior;
 @property (copy) CDUnknownBlockType validateLineBreakContext; // @synthesize validateLineBreakContext=_validateLineBreakContext;
 

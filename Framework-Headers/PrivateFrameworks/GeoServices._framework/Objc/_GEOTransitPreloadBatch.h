@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class GEOTileKeyList, NSMutableSet;
+@class GEOTileKeyList, NSMutableArray, NSMutableSet;
 @protocol GEOMapServiceTicket;
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     double startTime;
     double endTime;
     struct vector<GEOLocationCoordinate2D, std::__1::allocator<GEOLocationCoordinate2D>> coords;
+    NSMutableArray *_latLngToLoad;
     unsigned int priority;
     id<GEOMapServiceTicket> placeDataRequestTicketForBatch;
     double endTimeForScheduleFreshness;
@@ -33,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (double)dataRateKB;
-- (void)dealloc;
 - (id)init;
 - (double)networkDataRateKB;
 

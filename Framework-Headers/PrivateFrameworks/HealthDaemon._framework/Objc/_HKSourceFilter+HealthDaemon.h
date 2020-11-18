@@ -7,7 +7,7 @@
 #import <HealthKit/_HKSourceFilter.h>
 
 @interface _HKSourceFilter (HealthDaemon)
-- (id)_sourceIdentifiersWithProfile:(id)arg1 error:(id *)arg2;
+- (id)_sourceEntitiesWithProfile:(id)arg1 error:(id *)arg2;
 - (id)predicateWithProfile:(id)arg1;
 @end
 

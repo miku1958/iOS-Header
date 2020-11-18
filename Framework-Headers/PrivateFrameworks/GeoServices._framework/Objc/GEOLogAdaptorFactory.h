@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -14,10 +14,11 @@
 }
 
 + (id)sharedInstance;
-- (id)_createLogAdaptorWithOptions:(id)arg1;
+- (void).cxx_destruct;
+- (id)_createLogAdaptorWithPolicy:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (id)logAdaptorWithOptions:(id)arg1;
+- (id)logAdaptorWithPolicy:(id)arg1;
 
 @end
 

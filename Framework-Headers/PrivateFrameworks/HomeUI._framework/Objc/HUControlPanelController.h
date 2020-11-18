@@ -39,7 +39,6 @@
 - (void)_updateWriteStateForControlView:(id)arg1;
 - (id)_valueTransformerForControlItem:(id)arg1 controlPanelItem:(id)arg2;
 - (void)addItem:(id)arg1;
-- (id)allCellClasses;
 - (Class)cellClassForItem:(id)arg1;
 - (void)controlView:(id)arg1 valueDidChange:(id)arg2;
 - (void)controlViewDidBeginUserInteraction:(id)arg1;

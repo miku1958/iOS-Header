@@ -6,7 +6,7 @@
 
 #import <CoreImage/CIFilter.h>
 
-@class CIImage, CIVector;
+@class CIImage, CIVector, NSNumber;
 
 __attribute__((visibility("hidden")))
 @interface CIPerspectiveCorrection : CIFilter
@@ -16,10 +16,12 @@ __attribute__((visibility("hidden")))
     CIVector *inputTopRight;
     CIVector *inputBottomRight;
     CIVector *inputBottomLeft;
+    NSNumber *inputCrop;
 }
 
 @property (strong, nonatomic) CIVector *inputBottomLeft; // @synthesize inputBottomLeft;
 @property (strong, nonatomic) CIVector *inputBottomRight; // @synthesize inputBottomRight;
+@property (strong, nonatomic) NSNumber *inputCrop; // @synthesize inputCrop;
 @property (strong, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 @property (strong, nonatomic) CIVector *inputTopLeft; // @synthesize inputTopLeft;
 @property (strong, nonatomic) CIVector *inputTopRight; // @synthesize inputTopRight;

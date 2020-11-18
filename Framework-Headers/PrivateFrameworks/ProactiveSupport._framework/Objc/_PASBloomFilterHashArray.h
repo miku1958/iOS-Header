@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableData;
-
 @interface _PASBloomFilterHashArray : NSObject
 {
-    NSMutableData *_data;
+    unsigned long long _size;
+    int *_data;
 }
 
 @property (readonly, nonatomic) int *hashes;
 
-- (void).cxx_destruct;
-- (id)initWithHashCount:(unsigned long long)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (id)initInternal;
+- (id)initWithCapacity:(unsigned long long)arg1;
 
 @end
 

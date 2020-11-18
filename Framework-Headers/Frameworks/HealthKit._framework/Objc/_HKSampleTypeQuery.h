@@ -6,19 +6,27 @@
 
 #import <HealthKit/HKQuery.h>
 
-@interface _HKSampleTypeQuery : HKQuery
+#import <HealthKit/HKSampleTypeQueryClientInterface-Protocol.h>
+
+@class NSString;
+
+@interface _HKSampleTypeQuery : HKQuery <HKSampleTypeQueryClientInterface>
 {
     CDUnknownBlockType _resultsHandler;
 }
 
-@property (copy) CDUnknownBlockType resultsHandler; // @synthesize resultsHandler=_resultsHandler;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
-+ (Class)_queryServerDataObjectClass;
++ (id)clientInterfaceProtocol;
++ (void)configureClientInterface:(id)arg1;
 - (void).cxx_destruct;
-- (CDUnknownBlockType)_queue_errorHandler;
-- (BOOL)_requiresValidSampleType;
-- (void)deliverSampleTypes:(id)arg1 forQuery:(id)arg2;
+- (void)client_deliverSampleTypes:(id)arg1 query:(id)arg2;
 - (id)initWithPredicate:(id)arg1 resultsHandler:(CDUnknownBlockType)arg2;
+- (void)queue_connectToQueryServerWithHealthStore:(id)arg1 activationUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)queue_deliverError:(id)arg1;
 
 @end
 

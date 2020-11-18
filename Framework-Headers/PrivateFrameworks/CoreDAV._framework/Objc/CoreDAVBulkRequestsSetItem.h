@@ -19,7 +19,7 @@
 @property (strong, nonatomic) CoreDAVBulkRequestsItem *simpleItem; // @synthesize simpleItem=_simpleItem;
 
 + (id)copyParseRules;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 

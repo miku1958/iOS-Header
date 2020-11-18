@@ -15,14 +15,17 @@
     NPKProtoCatalog *_catalog;
     unsigned int _lastKnownResyncID;
     unsigned int _resyncID;
-    CDStruct_a41f3871 _has;
+    unsigned int _syncID;
+    CDStruct_02c44088 _has;
 }
 
 @property (strong, nonatomic) NPKProtoCatalog *catalog; // @synthesize catalog=_catalog;
 @property (nonatomic) BOOL hasLastKnownResyncID;
 @property (nonatomic) BOOL hasResyncID;
+@property (nonatomic) BOOL hasSyncID;
 @property (nonatomic) unsigned int lastKnownResyncID; // @synthesize lastKnownResyncID=_lastKnownResyncID;
 @property (nonatomic) unsigned int resyncID; // @synthesize resyncID=_resyncID;
+@property (nonatomic) unsigned int syncID; // @synthesize syncID=_syncID;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

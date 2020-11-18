@@ -4,32 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UserNotificationsUIKit/NCNotificationRequestContentProvider.h>
+#import <UserNotificationsUIKit/NCNotificationRequestCoalescingContentProvider.h>
 
-@class NSMutableArray, NSString;
-
-@interface NCNotificationRequestHiddenPreviewContentProvider : NCNotificationRequestContentProvider
+@interface NCNotificationRequestHiddenPreviewContentProvider : NCNotificationRequestCoalescingContentProvider
 {
-    BOOL _deviceAuthenticated;
-    NSMutableArray *_coalescedNotificationRequests;
-    NSString *_topic;
 }
-
-@property (strong, nonatomic) NSMutableArray *coalescedNotificationRequests; // @synthesize coalescedNotificationRequests=_coalescedNotificationRequests;
-@property (nonatomic, getter=isDeviceAuthenticated) BOOL deviceAuthenticated; // @synthesize deviceAuthenticated=_deviceAuthenticated;
-@property (copy, nonatomic) NSString *topic; // @synthesize topic=_topic;
-
-- (void).cxx_destruct;
-- (unsigned long long)coalesceCount;
-- (void)coalesceHiddenNotificationRequest:(id)arg1;
-- (id)hintText;
-- (id)init;
-- (id)initWithNotificationRequest:(id)arg1;
-- (id)interfaceActions;
-- (id)primarySubtitleText;
-- (void)removeCoalescedNotificationRequest:(id)arg1;
-- (id)secondaryText;
-- (id)thumbnail;
 
 @end
 

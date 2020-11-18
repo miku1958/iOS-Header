@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) VMUFieldInfo *field;
 @property (readonly, nonatomic) unsigned long long value;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithField:(id)arg1 value:(unsigned long long)arg2;
 
 @end

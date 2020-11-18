@@ -9,9 +9,7 @@
 @class NSDictionary, NSString, NSURL;
 
 @protocol LSInstallationServiceProtocol <NSObject>
-- (void)installApplication:(NSString *)arg1 atURL:(NSURL *)arg2 withOptions:(NSDictionary *)arg3 reply:(void (^)(BOOL, NSError *))arg4;
-- (void)removeSystemApplicationWithBundleIdentifier:(NSString *)arg1 reply:(void (^)(BOOL))arg2;
-- (void)restoreSystemApplicationWithBundleIdentifier:(NSString *)arg1 reply:(void (^)(BOOL))arg2;
-- (void)uninstallApplication:(NSString *)arg1 withOptions:(NSDictionary *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
+- (void)installApplication:(NSString *)arg1 atURL:(NSURL *)arg2 withOptions:(NSDictionary *)arg3 installType:(unsigned long long)arg4 reply:(void (^)(NSArray *, NSError *))arg5;
+- (void)uninstallApplication:(NSString *)arg1 withOptions:(NSDictionary *)arg2 uninstallType:(unsigned long long)arg3 reply:(void (^)(NSArray *, NSError *))arg4;
 @end
 

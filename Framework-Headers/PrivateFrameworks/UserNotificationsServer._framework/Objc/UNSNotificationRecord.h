@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLRegion, NSArray, NSCalendar, NSDate, NSDateComponents, NSDictionary, NSNumber, NSString, NSTimeZone;
+@class CLRegion, NSArray, NSDate, NSDateComponents, NSDictionary, NSNumber, NSString, NSTimeZone;
 
 @interface UNSNotificationRecord : NSObject
 {
@@ -59,7 +59,7 @@
     unsigned long long _toneMediaLibraryItemIdentifier;
     NSDate *_triggerDate;
     NSDateComponents *_triggerDateComponents;
-    NSCalendar *_triggerRepeatCalendar;
+    NSString *_triggerRepeatCalendarIdentifier;
     unsigned long long _triggerRepeatInterval;
     CLRegion *_triggerRegion;
     double _triggerTimeInterval;
@@ -85,8 +85,8 @@
 @property (copy, nonatomic) NSString *defaultActionTitle; // @synthesize defaultActionTitle=_defaultActionTitle;
 @property (copy, nonatomic) NSString *defaultActionTitleLocalizationKey; // @synthesize defaultActionTitleLocalizationKey=_defaultActionTitleLocalizationKey;
 @property (nonatomic, getter=isFromSnooze) BOOL fromSnooze; // @synthesize fromSnooze=_fromSnooze;
+@property (readonly, nonatomic) BOOL hasAlertContent;
 @property (readonly, nonatomic) BOOL hasBadge;
-@property (readonly, nonatomic) BOOL hasBody;
 @property (nonatomic) BOOL hasDefaultAction; // @synthesize hasDefaultAction=_hasDefaultAction;
 @property (readonly, nonatomic) BOOL hasPendingTrigger;
 @property (readonly, nonatomic) BOOL hasSound;
@@ -122,7 +122,7 @@
 @property (copy, nonatomic) NSDateComponents *triggerDateComponents; // @synthesize triggerDateComponents=_triggerDateComponents;
 @property (copy, nonatomic) CLRegion *triggerRegion; // @synthesize triggerRegion=_triggerRegion;
 @property (nonatomic) int triggerRemainingRepeatCount; // @synthesize triggerRemainingRepeatCount=_triggerRemainingRepeatCount;
-@property (copy, nonatomic) NSCalendar *triggerRepeatCalendar; // @synthesize triggerRepeatCalendar=_triggerRepeatCalendar;
+@property (copy, nonatomic) NSString *triggerRepeatCalendarIdentifier; // @synthesize triggerRepeatCalendarIdentifier=_triggerRepeatCalendarIdentifier;
 @property (nonatomic) unsigned long long triggerRepeatInterval; // @synthesize triggerRepeatInterval=_triggerRepeatInterval;
 @property (nonatomic) BOOL triggerRepeats; // @synthesize triggerRepeats=_triggerRepeats;
 @property (nonatomic) double triggerTimeInterval; // @synthesize triggerTimeInterval=_triggerTimeInterval;

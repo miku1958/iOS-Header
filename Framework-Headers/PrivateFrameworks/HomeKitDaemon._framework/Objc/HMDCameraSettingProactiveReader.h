@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAccessory, HMFMessage, NSSet, NSString;
+@class HMDAccessory, HMFMessage, NSObject, NSSet, NSString;
 @protocol HMDCameraSettingProactiveReaderDelegate, OS_dispatch_queue;
 
-@interface HMDCameraSettingProactiveReader : NSObject <HMFLogging>
+@interface HMDCameraSettingProactiveReader : HMFObject <HMFLogging>
 {
     HMFMessage *_message;
     NSObject<OS_dispatch_queue> *_workQueue;

@@ -22,11 +22,13 @@
 @property (readonly, nonatomic) long long version; // @synthesize version=_version;
 
 - (void).cxx_destruct;
+- (BOOL)checkTimesyncDB:(BOOL *)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)initWithCollection:(id)arg1 closeOnRelease:(BOOL)arg2 error:(id *)arg3;
 - (id)initWithCollection:(id)arg1 error:(id *)arg2;
 - (id)initWithURL:(id)arg1 error:(id *)arg2;
 - (BOOL)performDestructiveUpdates:(id *)arg1;
+- (BOOL)repairTimesyncDB:(id *)arg1;
 
 @end
 

@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <ITMLKit/IKJSDevice-Protocol.h>
 #import <ITMLKit/JSExport-Protocol.h>
 
 @class NSNumber, NSString;
 
-@protocol _IKJSDevice <JSExport>
+@protocol _IKJSDevice <IKJSDevice, JSExport>
 
 @property (readonly, nonatomic) BOOL isInAirplaneMode;
 @property (readonly, nonatomic) BOOL isInRetailDemoMode;

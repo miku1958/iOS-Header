@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSProtocolChecker, NSString;
+@class NSArray, NSProtocolChecker, NSString;
 @protocol OS_xpc_object;
 
 @interface IMLocalObject : NSObject
@@ -15,12 +15,12 @@
 }
 
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *connection;
-@property (readonly, nonatomic) BOOL forceSecureCoding;
 @property (readonly, nonatomic) BOOL isValid;
 @property (readonly, nonatomic) NSString *portName;
 @property (strong, nonatomic) NSString *processName;
 @property (readonly, nonatomic) NSProtocolChecker *protocolChecker;
 @property (nonatomic) id target;
+@property (strong, nonatomic) NSArray *whitelistedClasses;
 
 + (id)_imLocalObjectQueue;
 + (void)_registerIMLocalObject:(id)arg1;

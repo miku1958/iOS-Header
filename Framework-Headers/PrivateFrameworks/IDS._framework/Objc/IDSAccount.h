@@ -4,31 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, NSData, NSDate, NSDictionary, NSString, _IDSAccount;
+@class NSArray, NSData, NSDate, NSDictionary, NSSet, NSString, _IDSAccount;
 
 @interface IDSAccount : NSObject
 {
     _IDSAccount *_internal;
 }
 
+@property (readonly, strong, nonatomic) _IDSAccount *_internal;
+@property (nonatomic, setter=_setIsEnabled:) BOOL _isEnabled;
 @property (strong, nonatomic) NSDictionary *accountInfo;
 @property (readonly, nonatomic) int accountType;
-@property (readonly, strong, nonatomic) NSArray *aliasStrings;
-@property (readonly, strong, nonatomic) NSArray *aliases;
+@property (readonly, nonatomic) NSSet *activeAliases;
+@property (readonly, nonatomic) NSArray *aliasStrings;
+@property (readonly, nonatomic) NSArray *aliases;
 @property (readonly, nonatomic) BOOL canSend;
 @property (readonly, nonatomic) NSDate *dateRegistered;
-@property (readonly, strong, nonatomic) NSArray *devices;
-@property (readonly, strong, nonatomic) NSString *displayName;
+@property (readonly, nonatomic) NSArray *devices;
+@property (readonly, nonatomic) NSString *displayName;
+@property (readonly, nonatomic) NSArray *handles;
 @property (readonly, nonatomic) BOOL isActive;
+@property (readonly, nonatomic) BOOL isUsableForOuterMessaging;
 @property (readonly, nonatomic) BOOL isUserDisabled;
 @property (strong, nonatomic) NSString *loginID;
-@property (readonly, strong, nonatomic) NSArray *nearbyDevices;
+@property (readonly, nonatomic) NSArray *nearbyDevices;
 @property (readonly, nonatomic) NSDate *nextRegistrationDate;
-@property (readonly, strong, nonatomic) NSString *primaryServiceName;
+@property (readonly, nonatomic) NSString *primaryServiceName;
 @property (readonly, nonatomic) NSString *profileID;
-@property (readonly, strong, nonatomic) NSDictionary *profileInfo;
+@property (readonly, nonatomic) NSDictionary *profileInfo;
 @property (readonly, nonatomic) NSData *pushToken;
 @property (readonly, nonatomic) NSString *regionBasePhoneNumber;
 @property (readonly, nonatomic) NSString *regionID;
@@ -36,21 +41,21 @@
 @property (readonly, nonatomic) NSArray *registeredURIs;
 @property (readonly, nonatomic) NSData *registrationCertificate;
 @property (readonly, nonatomic) int registrationStatus;
-@property (readonly, strong, nonatomic) NSString *serviceName;
-@property (readonly, strong, nonatomic) NSString *uniqueID;
-@property (readonly, strong, nonatomic) NSArray *vettedAliases;
+@property (readonly, nonatomic) NSString *serviceName;
+@property (readonly, nonatomic) NSString *uniqueID;
+@property (readonly, nonatomic) NSArray *vettedAliases;
 
+- (void).cxx_destruct;
 - (void)_callNearbyDevicesChanged;
 - (id)_initWithDictionary:(id)arg1 uniqueID:(id)arg2 serviceName:(id)arg3;
-- (id)_internal;
-- (BOOL)_isEnabled;
 - (void)_reloadCachedDevices;
 - (void)_reregisterAndReidentify:(BOOL)arg1;
-- (void)_setIsEnabled:(BOOL)arg1;
+- (void)activateAlias:(id)arg1;
 - (void)addAliases:(id)arg1;
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
 - (void)addRegistrationDelegate:(id)arg1 queue:(id)arg2;
 - (void)authenticateAccount;
+- (void)deactivateAlias:(id)arg1;
 - (void)deactivateAndPurgeIdentify;
 - (void)dealloc;
 - (id)description;

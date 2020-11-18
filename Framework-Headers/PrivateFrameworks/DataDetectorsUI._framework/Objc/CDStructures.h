@@ -32,8 +32,7 @@ struct _NSRange {
 
 struct __CFRuntimeBase {
     unsigned long long _field1;
-    unsigned char _field2[4];
-    unsigned int _field3;
+    _Atomic unsigned long long _field2;
 };
 
 struct __CFString;

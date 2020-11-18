@@ -17,6 +17,7 @@
 @property struct __OIChart *chart; // @synthesize chart=_chart;
 @property (strong) id<OIPieSliceRenderer> sliceRenderer; // @synthesize sliceRenderer=_sliceRenderer;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithChart:(struct __OIChart *)arg1;
 - (id)initWithChart:(struct __OIChart *)arg1 sliceRenderer:(id)arg2;

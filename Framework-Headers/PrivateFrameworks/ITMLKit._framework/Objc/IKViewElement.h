@@ -6,22 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <ITMLKit/IKAppDocumentStyleChangeObserving-Protocol.h>
 #import <ITMLKit/IKDOMBindingControllerDelegate-Protocol.h>
 #import <ITMLKit/IKStyleableElement-Protocol.h>
 
-@class IKAppDocument, IKDOMBindingController, IKElementChangeSet, IKViewElementStyle, IKViewElementStyleComposer, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSString;
+@class IKAppDocument, IKDOMBindingController, IKElementChangeSet, IKViewElementStyle, IKViewElementStyleComposer, NSArray, NSDictionary, NSMapTable, NSMutableDictionary, NSMutableSet, NSString;
 @protocol IKStyleableElement;
 
-@interface IKViewElement : NSObject <IKStyleableElement, IKAppDocumentStyleChangeObserving, IKDOMBindingControllerDelegate>
+@interface IKViewElement : NSObject <IKStyleableElement, IKDOMBindingControllerDelegate>
 {
     NSArray *_unfilteredChildren;
     NSArray *_visibleChildren;
-    IKViewElement *_prototypesElement;
+    BOOL _isPartOfPrototypeElement;
+    BOOL _isProxyElement;
     BOOL _disabled;
     BOOL _impressionable;
     BOOL _didUpdateAutoHighlightIdentifier;
-    BOOL _partOfPrototype;
     BOOL _prototypesUpdated;
     IKAppDocument *_appDocument;
     IKViewElementStyleComposer *_styleComposer;
@@ -41,7 +40,7 @@
     NSMutableSet *_activeSingularEvents;
     NSString *_itmlID;
     IKDOMBindingController *_bindingController;
-    NSDictionary *_prototypesByType;
+    NSMapTable *_prototypesByType;
 }
 
 @property (readonly, copy, nonatomic) NSString *accessibilityText; // @synthesize accessibilityText=_accessibilityText;
@@ -63,12 +62,13 @@
 @property (readonly, nonatomic, getter=isHidden) BOOL hidden;
 @property (nonatomic, getter=isImpressionable) BOOL impressionable; // @synthesize impressionable=_impressionable;
 @property (readonly, nonatomic) NSDictionary *impressionableAttributes; // @synthesize impressionableAttributes=_impressionableAttributes;
+@property (readonly, nonatomic) BOOL isPartOfPrototypeElement; // @synthesize isPartOfPrototypeElement=_isPartOfPrototypeElement;
+@property (readonly, nonatomic) BOOL isProxyElement; // @synthesize isProxyElement=_isProxyElement;
 @property (readonly, strong, nonatomic) NSString *itmlID; // @synthesize itmlID=_itmlID;
 @property (strong, nonatomic) NSMutableDictionary *metadataDict; // @synthesize metadataDict=_metadataDict;
 @property (weak, nonatomic) IKViewElement *parent; // @synthesize parent=_parent;
 @property (readonly, weak, nonatomic) id<IKStyleableElement> parentStyleableElement; // @synthesize parentStyleableElement=_parentStyleableElement;
-@property (readonly, nonatomic, getter=isPartOfPrototype) BOOL partOfPrototype; // @synthesize partOfPrototype=_partOfPrototype;
-@property (readonly, nonatomic) NSDictionary *prototypesByType; // @synthesize prototypesByType=_prototypesByType;
+@property (readonly, nonatomic) NSMapTable *prototypesByType; // @synthesize prototypesByType=_prototypesByType;
 @property (readonly, nonatomic) BOOL prototypesUpdated; // @synthesize prototypesUpdated=_prototypesUpdated;
 @property (readonly, strong, nonatomic) IKViewElementStyle *style;
 @property (strong, nonatomic) IKViewElementStyleComposer *styleComposer; // @synthesize styleComposer=_styleComposer;
@@ -82,11 +82,11 @@
 + (BOOL)shouldParseChildDOMElement:(id)arg1;
 + (BOOL)shouldParseChildDOMElements;
 + (id)supportedFeatures;
++ (unsigned long long)updateTypeForChangeInAttribute:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
 + (void)willParseDOMElement:(id)arg1;
 - (void).cxx_destruct;
-- (void)_resetUpdates;
-- (void)_setAppDocument:(id)arg1;
 - (void)_updateSubtreeWithElement:(id)arg1;
+- (id)actualElementForProxyElement:(id)arg1 jsContext:(id)arg2;
 - (void)appDocumentDidMarkStylesDirty;
 - (id)applyUpdatesWithElement:(id)arg1;
 - (id)childElementWithType:(unsigned long long)arg1;
@@ -102,8 +102,8 @@
 - (id)initWithDOMElement:(id)arg1 parent:(id)arg2 elementFactory:(id)arg3;
 - (id)initWithPrototypeElement:(id)arg1 parent:(id)arg2 appDataItem:(id)arg3;
 - (id)objectForKeyedSubscript:(id)arg1;
-- (void)propagateUpdateType:(unsigned long long)arg1;
 - (void)resetProperty:(unsigned long long)arg1;
+- (void)resetUpdates;
 - (void)retrievePresentationDocument:(CDUnknownBlockType)arg1;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (BOOL)shouldResolveDataForDOMBindingController:(id)arg1;

@@ -7,18 +7,22 @@
 #import <objc/NSObject.h>
 
 @class NSXPCConnection;
+@protocol INIntentPreferencesAndVocabularyUpdateService, OS_dispatch_queue;
 
 @interface _INVocabularyConnection : NSObject
 {
     NSXPCConnection *_connection;
+    id<INIntentPreferencesAndVocabularyUpdateService> _remoteObjectProxy;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
-+ (void)load;
++ (void)initialize;
 - (void).cxx_destruct;
 - (void)_clearConnection;
 - (id)_connection;
 - (id)_syncService;
 - (void)dealloc;
+- (id)init;
 - (id)settingsService;
 
 @end

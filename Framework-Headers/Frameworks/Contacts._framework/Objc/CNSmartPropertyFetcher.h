@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Contacts/CNKeyDescriptor_Private-Protocol.h>
 
@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)supportsSecureCoding;
 - (void)_cn_executeGetterForRepresentedKeys:(CDUnknownBlockType)arg1;
+- (id)_cn_optionalKeys;
+- (id)_cn_requiredKeys;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

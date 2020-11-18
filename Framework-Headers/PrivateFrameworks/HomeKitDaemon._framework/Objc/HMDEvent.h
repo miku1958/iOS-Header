@@ -4,32 +4,73 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDEventTrigger, NSString, NSUUID;
+@class HMDEventTrigger, HMDHome, HMFMessageDispatcher, NSObject, NSString, NSUUID;
+@protocol HMDEventDelegate, OS_dispatch_queue;
 
-@interface HMDEvent : NSObject <NSSecureCoding, HMFDumpState>
+@interface HMDEvent : HMFObject <NSSecureCoding, HMFDumpState, HMFMessageReceiver, HMFLogging, HMDBackingStoreObjectProtocol>
 {
+    BOOL _endEvent;
     HMDEventTrigger *_eventTrigger;
+    NSObject<OS_dispatch_queue> *_workQueue;
+    HMFMessageDispatcher *_msgDispatcher;
+    id<HMDEventDelegate> _delegate;
+    HMDHome *_home;
     NSUUID *_uuid;
+    NSString *_triggerType;
+    NSString *_logString;
+    unsigned long long _activationType;
 }
 
+@property (nonatomic) unsigned long long activationType; // @synthesize activationType=_activationType;
+@property (readonly, nonatomic, getter=isActive) BOOL active;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<HMDEventDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=isEndEvent) BOOL endEvent; // @synthesize endEvent=_endEvent;
 @property (weak, nonatomic) HMDEventTrigger *eventTrigger; // @synthesize eventTrigger=_eventTrigger;
 @property (readonly) unsigned long long hash;
+@property (readonly, weak, nonatomic) HMDHome *home; // @synthesize home=_home;
+@property (strong, nonatomic) NSString *logString; // @synthesize logString=_logString;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, nonatomic) NSUUID *messageTargetUUID;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *triggerType; // @synthesize triggerType=_triggerType;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)_activate:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_handleUpdateRequest:(id)arg1;
+- (void)_registerForMessages;
+- (void)_setup;
+- (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
+- (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (void)_updateTriggerType;
+- (void)configure:(id)arg1 messageDispatcher:(id)arg2 queue:(id)arg3 delegate:(id)arg4;
+- (id)createPayload;
 - (id)dumpState;
+- (id)emptyModelObject;
 - (void)encodeWithCoder:(id)arg1;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithModel:(id)arg1 home:(id)arg2;
+- (void)invalidate;
+- (BOOL)isEqual:(id)arg1;
+- (id)logIdentifier;
+- (id)metricData;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1;
+- (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
+- (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 
 @end
 

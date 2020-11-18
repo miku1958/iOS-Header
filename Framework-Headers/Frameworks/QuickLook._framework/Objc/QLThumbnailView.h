@@ -6,30 +6,25 @@
 
 #import <UIKit/UIView.h>
 
-@class QLThumbnailOperation, UIImage;
+@class UIImage;
 
 __attribute__((visibility("hidden")))
 @interface QLThumbnailView : UIView
 {
-    QLThumbnailOperation *_thumbnailOperation;
+    BOOL _alwaysVisible;
     UIImage *_image;
     long long _pageNumber;
-    BOOL _alwaysVisible;
-    struct CGRect unselectedFrame;
     struct CGRect _unselectedFrame;
 }
 
 @property BOOL alwaysVisible; // @synthesize alwaysVisible=_alwaysVisible;
-@property (strong) UIImage *image; // @synthesize image=_image;
+@property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property long long pageNumber; // @synthesize pageNumber=_pageNumber;
-@property (strong) QLThumbnailOperation *thumbnailOperation;
 @property struct CGRect unselectedFrame; // @synthesize unselectedFrame=_unselectedFrame;
 
 - (void).cxx_destruct;
-- (void)dealloc;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setFrame:(struct CGRect)arg1;
 
 @end

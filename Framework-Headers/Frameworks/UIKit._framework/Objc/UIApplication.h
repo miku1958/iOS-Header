@@ -7,21 +7,19 @@
 #import <UIKit/UIResponder.h>
 
 #import <UIKit/FBSDisplayLayoutObserver-Protocol.h>
-#import <UIKit/FBSSceneDelegate-Protocol.h>
 #import <UIKit/FBSUIApplicationSystemServiceDelegate-Protocol.h>
 #import <UIKit/FBSUIApplicationWorkspaceDelegate-Protocol.h>
 #import <UIKit/UIActivityContinuationManagerApplicationContext-Protocol.h>
-#import <UIKit/UIAlertViewDelegate-Protocol.h>
 #import <UIKit/UIApplicationSnapshotPreparing-Protocol.h>
+#import <UIKit/UIStatusBarStyleDelegate_SpringBoardOnly-Protocol.h>
 #import <UIKit/UNRemoteNotificationRegistrarDelegate-Protocol.h>
 
-@class BKSAnimationFenceHandle, BKSProcessAssertion, FBSDisplayLayoutMonitor, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSObject, NSString, NSTimer, SBSApplicationShortcutService, UIActivityContinuationManager, UIAlertView, UIApplicationSceneSettingsDiffInspector, UIColor, UIEvent, UIEventDispatcher, UIEventFetcher, UIForceStageObservable, UIGestureEnvironment, UIMoveEvent, UIRepeatedAction, UIStatusBar, UIStatusBarWindow, UISystemNavigationAction, UIWindow, _UIFeedbackEventBehavior, _UIIdleModeController;
+@class BKSAnimationFenceHandle, BKSProcessAssertion, FBSDisplayLayoutMonitor, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSObject, NSString, NSTimer, SBSApplicationShortcutService, UIActivityContinuationManager, UIAlertController, UIColor, UIEvent, UIEventDispatcher, UIEventFetcher, UIForceStageObservable, UIGestureEnvironment, UIMoveEvent, UINotificationFeedbackGenerator, UIRepeatedAction, UIStatusBar, UIStatusBarWindow, UISystemNavigationAction, UIWindow, _UIIdleModeController;
 @protocol OS_dispatch_queue, UIApplicationDelegate;
 
-@interface UIApplication : UIResponder <FBSUIApplicationWorkspaceDelegate, FBSSceneDelegate, FBSUIApplicationSystemServiceDelegate, FBSDisplayLayoutObserver, UIAlertViewDelegate, UNRemoteNotificationRegistrarDelegate, UIActivityContinuationManagerApplicationContext, UIApplicationSnapshotPreparing>
+@interface UIApplication : UIResponder <FBSUIApplicationWorkspaceDelegate, FBSUIApplicationSystemServiceDelegate, FBSDisplayLayoutObserver, UNRemoteNotificationRegistrarDelegate, UIActivityContinuationManagerApplicationContext, UIApplicationSnapshotPreparing, UIStatusBarStyleDelegate_SpringBoardOnly>
 {
     id<UIApplicationDelegate> _delegate;
-    NSMutableSet *_exclusiveTouchWindows;
     UIEvent *_event;
     UIEvent *_motionEvent;
     UIEvent *_remoteControlEvent;
@@ -29,7 +27,7 @@
     NSArray *_topLevelNibObjects;
     long long _networkResourcesCurrentlyLoadingCount;
     NSTimer *_hideNetworkActivityIndicatorTimer;
-    UIAlertView *_editAlertView;
+    UIAlertController *_editAlertController;
     UIStatusBar *_statusBar;
     long long _statusBarRequestedStyle;
     UIStatusBarWindow *_statusBarWindow;
@@ -43,12 +41,12 @@
     _UIIdleModeController *_idleModeController;
     FBSDisplayLayoutMonitor *_displayLayoutMonitor;
     long long _normativeWhitePointAdaptivityStyle;
+    long long _preferredUserInterfaceStyle;
+    long long _systemUserInterfaceStyle;
     UIEventFetcher *_eventFetcher;
     UIEventDispatcher *_eventDispatcher;
     struct {
         unsigned int deactivatingReasonFlags:13;
-        unsigned int isSuspended:1;
-        unsigned int isSuspendedEventsOnly:1;
         unsigned int isLaunchedSuspended:1;
         unsigned int calledNonSuspendedLaunchDelegate:1;
         unsigned int calledSuspendedLaunchDelegate:1;
@@ -65,7 +63,6 @@
         unsigned int activateEventReceived:1;
         unsigned int systemIsAnimatingApplicationLifecycleEvent:1;
         unsigned int isActivating:1;
-        unsigned int isSuspendedUnderLock:1;
         unsigned int shouldExitAfterSendSuspend:1;
         unsigned int terminating:1;
         unsigned int isHandlingShortCutURL:1;
@@ -95,6 +92,7 @@
         unsigned int delegateNormativeWhitePointAdaptation:1;
         unsigned int delegateHandleSiriTask:1;
         unsigned int delegateSupportsWatchKitRequests:1;
+        unsigned int delegateSupportsIntentForwarding:1;
         unsigned int idleModeVisualEffectsEnabled:1;
         unsigned int userDefaultsSyncDisabled:1;
         unsigned int headsetButtonClickCount:4;
@@ -113,8 +111,6 @@
         unsigned int defaultInterfaceOrientation:3;
         unsigned int supportedInterfaceOrientationsMask:5;
         unsigned int delegateWantsNextResponder:1;
-        unsigned int isRunningInApplicationSwitcher:1;
-        unsigned int isSendingEventForProgrammaticTouchCancellation:1;
         unsigned int delegateWantsStatusBarTouchesEnded:1;
         unsigned int interfaceLayoutDirectionIsValid:1;
         unsigned int interfaceLayoutDirection:3;
@@ -134,31 +130,26 @@
         unsigned int isStatusBarFading:1;
         unsigned int systemWindowsSecure:1;
         unsigned int isFrontBoardForeground:1;
+        unsigned int appSwitcherLayoutState:2;
         unsigned int isObservingPIP:1;
         unsigned int shouldRestoreKeyboardInputState:1;
         unsigned int subclassOverridesInterfaceOrientation:1;
         unsigned int isResigningActive:1;
         unsigned int receivedUnhandledMenuButton:1;
+        unsigned int disablingBecomeFirstResponder:1;
     } _applicationFlags;
     UIColor *_defaultTopNavBarTintColor;
-    long long _undoButtonIndex;
-    long long _redoButtonIndex;
     UIMoveEvent *_moveEvent;
     NSMutableDictionary *_physicalKeyCommandMap;
     NSMutableOrderedSet *_physicalKeycodeMap;
     BOOL _alwaysHitTestsForMainScreen;
     UIWindow *_backgroundHitTestWindow;
-    long long _classicMode;
     int _ignoredStyleOverrides;
-    unsigned long long _externalDeactivationReasons;
     NSMutableSet *_actionsPendingInitialization;
     NSMutableSet *_idleTimerDisabledReasons;
     UIRepeatedAction *_keyRepeatAction;
     double _currentTimestampWhenFirstTouchCameDown;
     struct CGPoint _currentLocationWhereFirstTouchCameDown;
-    UIApplicationSceneSettingsDiffInspector *_sceneSettingsPreLifecycleEventDiffInspector;
-    UIApplicationSceneSettingsDiffInspector *_sceneSettingsPostLifecycleEventDiffInspector;
-    UIApplicationSceneSettingsDiffInspector *_sceneSettingsGeometryMutationDiffInspector;
     BOOL _saveStateRestorationArchiveWithFileProtectionCompleteUntilFirstUserAuthentication;
     BKSProcessAssertion *_fenceTaskAssertion;
     BKSAnimationFenceHandle *_cachedSystemAnimationFence;
@@ -168,27 +159,18 @@
     UIForceStageObservable *_forceStageObservable;
     CDUnknownBlockType _HIDGameControllerEventObserver;
     NSObject<OS_dispatch_queue> *_HIDGameControllerEventQueue;
-    _UIFeedbackEventBehavior *_motionEventBehavior;
+    UINotificationFeedbackGenerator *_motionNotificationGenerator;
     int _simulatorShakeNotificationToken;
     BOOL optOutOfRTL;
     BOOL _isDisplayingActivityContinuationUI;
-    double _lastTimestampWhenFirstTouchCameDown;
-    double _lastTimestampWhenAllTouchesLifted;
-    long long _virtualHorizontalSizeClass;
-    long long _virtualVerticalSizeClass;
     SBSApplicationShortcutService *_shortcutService;
     CDUnknownBlockType ___queuedOrientationChange;
     long long __expectedViewOrientation;
-    struct CGPoint _lastLocationWhereFirstTouchCameDown;
-    struct CGPoint _lastLocationWhereAllTouchesLifted;
-    struct CGSize _virtualWindowSizeInSceneReferenceSpace;
 }
 
 @property (copy, nonatomic, setter=__setQueuedOrientationChange:) CDUnknownBlockType __queuedOrientationChange; // @synthesize __queuedOrientationChange=___queuedOrientationChange;
+@property (nonatomic, setter=_setApplicationActivatedAtLeastOnce:) BOOL _applicationActivatedAtLeastOnce;
 @property (nonatomic, setter=_setExpectedViewOrientation:) long long _expectedViewOrientation; // @synthesize _expectedViewOrientation=__expectedViewOrientation;
-@property (readonly) long long _virtualHorizontalSizeClass; // @synthesize _virtualHorizontalSizeClass;
-@property (readonly) long long _virtualVerticalSizeClass; // @synthesize _virtualVerticalSizeClass;
-@property (readonly) struct CGSize _virtualWindowSizeInSceneReferenceSpace; // @synthesize _virtualWindowSizeInSceneReferenceSpace;
 @property (readonly, nonatomic) NSString *alternateIconName;
 @property (nonatomic) long long applicationIconBadgeNumber;
 @property (readonly, nonatomic) long long applicationState;
@@ -203,10 +185,6 @@
 @property (readonly, nonatomic, getter=isIgnoringInteractionEvents) BOOL ignoringInteractionEvents;
 @property (nonatomic, getter=_isDisplayingActivityContinuationUI, setter=_setIsDisplayingActivityContinuationUI:) BOOL isDisplayingActivityContinuationUI; // @synthesize isDisplayingActivityContinuationUI=_isDisplayingActivityContinuationUI;
 @property (readonly, nonatomic) UIWindow *keyWindow;
-@property (nonatomic, getter=_lastLocationWhereAllTouchesLifted, setter=_setLastLocationWhereAllTouchesLifted:) struct CGPoint lastLocationWhereAllTouchesLifted; // @synthesize lastLocationWhereAllTouchesLifted=_lastLocationWhereAllTouchesLifted;
-@property (nonatomic, getter=_lastLocationWhereFirstTouchCameDown, setter=_setLastLocationWhereFirstTouchCameDown:) struct CGPoint lastLocationWhereFirstTouchCameDown; // @synthesize lastLocationWhereFirstTouchCameDown=_lastLocationWhereFirstTouchCameDown;
-@property (nonatomic, getter=_lastTimestampWhenAllTouchesLifted, setter=_setLastTimestampWhenAllTouchesLifted:) double lastTimestampWhenAllTouchesLifted; // @synthesize lastTimestampWhenAllTouchesLifted=_lastTimestampWhenAllTouchesLifted;
-@property (nonatomic, getter=_lastTimestampWhenFirstTouchCameDown, setter=_setLastTimestampWhenFirstTouchCameDown:) double lastTimestampWhenFirstTouchCameDown; // @synthesize lastTimestampWhenFirstTouchCameDown=_lastTimestampWhenFirstTouchCameDown;
 @property (nonatomic, getter=isNetworkActivityIndicatorVisible) BOOL networkActivityIndicatorVisible;
 @property (nonatomic, getter=_shouldOptOutOfRTL, setter=_setOptOutOfRTL:) BOOL optOutOfRTL; // @synthesize optOutOfRTL;
 @property (readonly, nonatomic) NSString *preferredContentSizeCategory;
@@ -222,15 +200,21 @@
 @property (readonly, nonatomic) long long userInterfaceLayoutDirection;
 @property (readonly, nonatomic) NSArray *windows;
 
++ (id)__falseMainScene;
++ (void)__registerFalseMainScene:(id)arg1;
++ (id)__simulateFalseMainSceneConnection;
 + (long long)_backgroundStyleForString:(id)arg1;
-+ (id)_cachedScenePropertiesForScene:(id)arg1;
++ (long long)_classicMode;
 + (id)_defaultContentSizeCategory;
 + (void)_installAfterCACommitHandler;
 + (BOOL)_isAfterCACommitHandlerInstalled;
 + (BOOL)_isBackgroundStyleTransparent:(long long)arg1;
-+ (void)_removeCachedScenePropertiesForScene:(id)arg1;
-+ (id)_scenePropertiesCache;
-+ (void)_setCachedSceneProperties:(id)arg1 forScene:(id)arg2;
++ (BOOL)_isClassic;
++ (BOOL)_isRunningWithFixedMainThreadPriority;
++ (BOOL)_isSystemUIService;
++ (void)_screensHaveConnected;
++ (BOOL)_shouldBigify;
++ (BOOL)_shouldForceClassicForExtensions;
 + (void)_startStatusBarServerIfNecessary;
 + (void)_startWindowServerIfNecessary;
 + (Class)_statusBarClass;
@@ -238,7 +222,11 @@
 + (Class)_statusBarWindowClass;
 + (id)_stringForBackgroundStyle:(long long)arg1;
 + (id)_systemAnimationFenceExemptQueue;
++ (id)_systemUIServiceClientSettings;
++ (id)_systemUIServiceIdentifier;
++ (BOOL)_wantsApplicationBehaviorAsExtension;
 + (id)displayIdentifier;
++ (id)displayManagerObserver;
 + (long long)interfaceOrientationForString:(id)arg1;
 + (BOOL)isRunningEventPump;
 + (BOOL)isRunningInStoreDemoMode;
@@ -266,17 +254,18 @@
 - (id)_accessibilitySettingsBundle;
 - (void)_accessibilityStatusChanged:(id)arg1;
 - (void)_addAfterCACommitBlockForViewController:(id)arg1;
+- (void)_addAfterNewTouchDownAction:(CDUnknownBlockType)arg1;
 - (void)_addDocument:(id)arg1 forUserActivity:(id)arg2;
 - (void)_addResponder:(id)arg1 forUserActivity:(id)arg2;
 - (void)_addViewControllerForLockingStatusBarTintColor:(id)arg1;
-- (void)_alertSheetStackChanged;
-- (BOOL)_alertWindowShouldRotate;
 - (BOOL)_alwaysHitTestsForMainScreen;
 - (void)_applicationDidEnterBackground;
+- (void)_applicationHandleIntentForwardingAction:(id)arg1;
 - (void)_applicationHandleSiriTask:(id)arg1;
 - (void)_applicationHandleWatchKitRequest:(id)arg1;
 - (BOOL)_applicationLaunchesIntoPortrait;
 - (void)_applicationOpenURL:(id)arg1 payload:(id)arg2;
+- (void)_applicationOpenURLAction:(id)arg1 payload:(id)arg2 origin:(id)arg3;
 - (void)_applicationShouldRequestHealthAuthorization;
 - (BOOL)_areFrontBoardKeyboardHUDsEnabled;
 - (BOOL)_areSystemWindowsSecure;
@@ -288,6 +277,8 @@
 - (void)_beginSnapshotSessionForScene:(id)arg1 withSnapshotBlock:(CDUnknownBlockType)arg2;
 - (id)_cachedSystemAnimationFenceCreatingIfNecessary:(BOOL)arg1;
 - (void)_callInitializationDelegatesForMainScene:(id)arg1 transitionContext:(id)arg2;
+- (void)_calledRunWithMainScene;
+- (BOOL)_canAnimateDragCancelInApp;
 - (BOOL)_canOpenURL:(id)arg1 publicURLsOnly:(BOOL)arg2;
 - (BOOL)_canReceiveDeviceOrientationEvents;
 - (BOOL)_canShowTextServices;
@@ -309,11 +300,13 @@
 - (long long)_classicMode;
 - (void)_clearSystemNavigationAction;
 - (void)_clearTouchesForView:(id)arg1;
+- (void)_configureLaunchOptions:(id)arg1;
 - (void)_configureSnapshotContext:(id)arg1 forScreen:(id)arg2 sceneSettings:(id)arg3;
 - (id)_createSnapshotContextForScene:(id)arg1 withName:(id)arg2 performLayoutWithSettings:(id)arg3;
 - (void)_createStatusBarWithRequestedStyle:(long long)arg1 orientation:(long long)arg2 hidden:(BOOL)arg3;
 - (long long)_currentExpectedInterfaceOrientation;
 - (id)_currentFrameCountForTestDisplay;
+- (unsigned long long)_currentScreenEdgesDeferringSystemGesturesAffectedByStatusBar:(BOOL)arg1;
 - (id)_currentTests;
 - (double)_currentTintViewDuration;
 - (id)_currentTintViewWindow;
@@ -323,13 +316,17 @@
 - (void)_deactivateReachability;
 - (id)_defaultTopNavBarTintColor;
 - (void)_deliverRemainingKeyUpEvents;
-- (void)_destroyContextsAndNotifySpringBoard;
+- (void)_destroyContextsAndNotifySpringBoard:(id)arg1;
 - (BOOL)_didEatCurrentTouch;
+- (BOOL)_disableBecomeFirstResponder;
 - (BOOL)_doRestorationIfNecessary;
+- (id)_dragEvents;
 - (void)_eatCurrentTouch;
+- (long long)_effectiveUserInterfaceStyle;
 - (unsigned long long)_enabledRemoteNotificationTypes;
 - (void)_endBackgroundTask:(unsigned long long)arg1;
 - (void)_endFenceTask:(id)arg1;
+- (void)_endNoPresentingViewControllerAlertController:(id)arg1;
 - (void)_endShowingNetworkActivityIndicator;
 - (void)_enqueueHIDEvent:(struct __IOHIDEvent *)arg1;
 - (id)_event;
@@ -342,7 +339,9 @@
 - (BOOL)_fakingRequiresHighResolution;
 - (void)_fetchInfoPlistFlags;
 - (void)_findBestActivityToMakeCurrent:(id)arg1;
+- (id)_findWindowForControllingOverallAppearance;
 - (void)_finishButtonEvent:(id)arg1;
+- (CDUnknownBlockType)_firstCommitBlock;
 - (id)_firstEligibleResponderForPress:(id)arg1;
 - (void)_fixupBackgroundHitTestWindow;
 - (id)_forceStageObservable;
@@ -356,11 +355,9 @@
 - (long long)_getSpringBoardOrientation;
 - (void)_getUserNotificationCategorieWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_getUserNotificationTypesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_handleApplicationActivationWithScene:(id)arg1 transitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_handleApplicationDeactivationWithScene:(id)arg1 shouldForceExit:(BOOL)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_handleApplicationLaunchEventWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_handleApplicationLifecycleEventWithScene:(id)arg1 transitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_handleApplicationShortcutAction:(id)arg1;
+- (void)_handleDaemonApplicationActivationWithScene:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_handleDelegateCallbacksWithOptions:(id)arg1 isSuspended:(BOOL)arg2 restoreState:(BOOL)arg3;
 - (void)_handleDeviceOrientationChangedEvent:(struct __GSEvent *)arg1;
 - (void)_handleGameControllerEvent:(id)arg1;
@@ -375,6 +372,9 @@
 - (void)_handlePlatformSpecificActions:(id)arg1 forScene:(id)arg2 withTransitionContext:(id)arg3;
 - (void)_handleScreenshot;
 - (void)_handleSnapshotAction:(id)arg1 forScene:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_handleSnapshotAction:(id)arg1 forScene:(id)arg2 deactivationCompletion:(CDUnknownBlockType)arg3;
+- (void)_handleSuspensionActions;
+- (void)_handleTaskCompletionSuspensionEvents:(id)arg1;
 - (void)_handleUnicodeEvent:(struct __IOHIDEvent *)arg1;
 - (void)_handleUserDefaultsDidChange:(id)arg1;
 - (struct __GSKeyboard *)_hardwareKeyboard;
@@ -386,9 +386,11 @@
 - (void)_headsetButtonDown:(struct __IOHIDEvent *)arg1;
 - (void)_headsetButtonUp:(struct __IOHIDEvent *)arg1;
 - (void)_hideNetworkActivityIndicator;
+- (id)_homeIndicatorAutoHiddenControllingWindow;
 - (id)_implicitStatusBarAnimationParametersWithClass:(Class)arg1;
 - (id)_implicitStatusBarHiddenAnimationParametersWithViewController:(id)arg1 animation:(long long)arg2;
 - (id)_implicitStatusBarStyleAnimationParametersWithViewController:(id)arg1;
+- (void)_initiateLaunchActionsForScene:(id)arg1 firstActivation:(BOOL)arg2;
 - (void)_installAutoreleasePoolsIfNecessaryForMode:(struct __CFString *)arg1;
 - (BOOL)_isActivated;
 - (BOOL)_isActivatedIgnoringReason:(int)arg1;
@@ -404,11 +406,11 @@
 - (BOOL)_isOrientationVerticallyCompact:(long long)arg1;
 - (BOOL)_isResigningActive;
 - (BOOL)_isRestorationExtended;
-- (BOOL)_isSendingEventForProgrammaticTouchCancellation;
 - (BOOL)_isSensitiveUIEnabled;
 - (BOOL)_isShowingRemoteSheet;
 - (BOOL)_isSpringBoard;
 - (BOOL)_isSpringBoardShowingAnAlert;
+- (BOOL)_isStatusBarEffectivelyHiddenForContentOverlayInsets;
 - (BOOL)_isStatusBarHiddenForOrientation:(long long)arg1;
 - (BOOL)_isStatusBarTintColorLocked;
 - (BOOL)_isSupportedOrientation:(long long)arg1;
@@ -427,6 +429,7 @@
 - (int)_loadMainStoryboardFileNamed:(id)arg1 bundle:(id)arg2;
 - (id)_localCachesDirectory;
 - (id)_localizedApplicationName;
+- (id)_mainEventEnvironment;
 - (id)_mainScene;
 - (void)_mainSceneCompatibilityModeZoomDidChange;
 - (id)_mainSceneForDisplay:(id)arg1;
@@ -445,11 +448,9 @@
 - (void)_notifyWillChangeStatusBarFrame:(struct CGRect)arg1;
 - (BOOL)_openURL:(id)arg1;
 - (void)_openURL:(id)arg1 originatingView:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_overrideDefaultInterfaceOrientationWithOrientation:(long long)arg1;
 - (BOOL)_overridesDynamicCaret;
 - (void)_performBlockAfterCATransactionCommitSynchronizes:(CDUnknownBlockType)arg1;
 - (void)_performBlockAfterCATransactionCommits:(CDUnknownBlockType)arg1;
-- (void)_performChanges:(CDUnknownBlockType)arg1 withTransitionContext:(id)arg2;
 - (void)_performMemoryWarning;
 - (void)_performSnapshotsWithAction:(id)arg1 forScene:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_performWithUICACommitStateSnapshotting:(CDUnknownBlockType)arg1;
@@ -460,6 +461,7 @@
 - (void)_popTintViewDuration;
 - (void)_postSimpleRemoteNotificationForAction:(long long)arg1 andContext:(long long)arg2 trackID:(id)arg3;
 - (id)_preferredContentSizeCategory:(unsigned long long)arg1;
+- (long long)_preferredUserInterfaceStyle;
 - (BOOL)_prepareButtonEvent:(id)arg1 type:(long long)arg2 phase:(long long)arg3 timestamp:(double)arg4;
 - (BOOL)_prepareButtonEvent:(id)arg1 type:(long long)arg2 phase:(long long)arg3 timestamp:(double)arg4 force:(double)arg5;
 - (BOOL)_prepareButtonEvent:(id)arg1 type:(long long)arg2 phase:(long long)arg3 timestamp:(double)arg4 force:(double)arg5 clickCount:(unsigned long long)arg6 longClick:(BOOL)arg7;
@@ -481,17 +483,16 @@
 - (void)_registerForNameLayerTreeNotification;
 - (void)_registerForRemoteNotificationTypes:(unsigned long long)arg1;
 - (void)_registerForSignificantTimeChangeNotification;
-- (void)_registerForSystemwideDarkModeChangedNotification;
 - (void)_registerForUserDefaultsChanges;
 - (void)_reloadKeyboardArbiterState;
 - (id)_remoteControlEvent;
-- (void)_removeDefaultInterfaceOrientatationOverride;
 - (void)_removeDocument:(id)arg1 forUserActivity:(id)arg2;
 - (void)_removeHIDGameControllerEventObserver;
 - (void)_removeResponder:(id)arg1 forUserActivity:(id)arg2;
 - (void)_removeViewControllerForLockingStatusBarTintColor:(id)arg1;
 - (void)_reportMainSceneUpdateFinished:(CDUnknownBlockType)arg1;
 - (void)_reportResults:(id)arg1;
+- (void)_requestDeviceUnlockWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_requiresHighResolution;
 - (id)_responderForKeyEvents;
 - (unsigned long long)_restorationArchiveProtectionClass;
@@ -503,16 +504,14 @@
 - (void)_runSubTestForKeyboardDismissalWithName:(id)arg1 withHideKeyboardBlock:(CDUnknownBlockType)arg2 withExtraResultsBlock:(CDUnknownBlockType)arg3 withCleanupBlock:(CDUnknownBlockType)arg4;
 - (void)_runSubTestForKeyboardMergeWithName:(id)arg1 withExtraResultsBlock:(CDUnknownBlockType)arg2 withCleanupBlock:(CDUnknownBlockType)arg3;
 - (void)_runSubTestForKeyboardSplitWithName:(id)arg1 withShowKeyboardBlock:(CDUnknownBlockType)arg2 withExtraResultsBlock:(CDUnknownBlockType)arg3 withCleanupBlock:(CDUnknownBlockType)arg4;
+- (void)_runWithDaemonScene:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_runWithMainScene:(id)arg1 transitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_saveApplicationPreservationState:(id)arg1 viewController:(id)arg2 sessionIdentifier:(id)arg3 beginHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_saveApplicationPreservationStateIfSupported;
 - (BOOL)_saveSnapshotWithName:(id)arg1;
-- (id)_sceneIDForScreen:(id)arg1;
-- (id)_sceneSettingsGeometryMutationDiffInspector;
-- (id)_sceneSettingsPostLifecycleEventDiffInspector;
-- (id)_sceneSettingsPreLifecycleEventDiffInspector;
 - (void)_scheduleLocalNotification:(id)arg1;
 - (void)_scheduleSceneEventResponseForScene:(id)arg1 withResponseBlock:(CDUnknownBlockType)arg2;
+- (id)_screenEdgesDeferringSystemGesturesControllingWindow;
 - (void)_scrollsToTopInitiatorView:(id)arg1 touchesEnded:(id)arg2 withEvent:(id)arg3;
 - (void)_sendButtonEventWithPressInfo:(id)arg1;
 - (void)_sendButtonEventWithType:(long long)arg1 phase:(long long)arg2 timestamp:(double)arg3;
@@ -532,15 +531,18 @@
 - (void)_setApplicationBackdropStyle:(long long)arg1;
 - (void)_setApplicationIsOpaque:(BOOL)arg1;
 - (void)_setBackgroundStyle:(long long)arg1;
-- (void)_setClassicMode:(long long)arg1;
 - (void)_setCompatibilityModeOnSettings:(id)arg1;
 - (void)_setDefaultTopNavBarTintColor:(id)arg1;
+- (void)_setDisableBecomeFirstResponder:(BOOL)arg1;
 - (void)_setForcedUserInterfaceLayoutDirection:(long long)arg1;
 - (void)_setHIDGameControllerEventObserver:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 - (void)_setHandlingURL:(BOOL)arg1 url:(id)arg2;
 - (void)_setIdleModeVisualEffectsEnabled:(BOOL)arg1;
 - (void)_setIdleTimerDisabled:(BOOL)arg1 forReason:(id)arg2;
 - (void)_setIgnoreHeadsetClicks:(BOOL)arg1;
+- (void)_setPreferredUserInterfaceStyle:(long long)arg1;
+- (void)_setPreferredUserInterfaceStyle:(long long)arg1 updateWallpaper:(BOOL)arg2;
+- (void)_setPreferredUserInterfaceStyleForWallpaper:(long long)arg1;
 - (void)_setReachabilitySupported:(BOOL)arg1;
 - (void)_setRestorationExtended:(BOOL)arg1;
 - (void)_setRotationDisabledDuringTouch:(BOOL)arg1;
@@ -559,19 +561,18 @@
 - (void)_setSuspendedEventsOnly:(BOOL)arg1;
 - (void)_setSuspendedUnderLock:(BOOL)arg1;
 - (void)_setSystemNavigationAction:(id)arg1;
+- (void)_setSystemUserInterfaceStyle:(long long)arg1;
 - (void)_setSystemWindowsSecure:(BOOL)arg1;
 - (void)_setTopNavBarTintColor:(id)arg1 withDuration:(double)arg2;
 - (void)_setUserDefaultsSyncEnabled:(BOOL)arg1;
-- (void)_setVirtualWindowSizeInSceneReferenceSpace:(struct CGSize)arg1 virtualHorizontalSizeClass:(long long)arg2 virtualVerticalSizeClass:(long long)arg3;
+- (void)_setWantsExclusiveForeground:(BOOL)arg1;
 - (void)_setWatchSystemAppHIDEventFilter:(CDUnknownBlockType)arg1;
 - (void)_setupMotionEventBehavior;
 - (BOOL)_shakeToUndoEnabled;
 - (void)_sheetWithRemoteIdentifierDidDismiss:(id)arg1;
 - (BOOL)_shouldAllowKeyboardArbiter;
 - (BOOL)_shouldAttemptOpenURL:(id)arg1;
-- (BOOL)_shouldBigify;
 - (BOOL)_shouldDelayTouchesForControlCenter;
-- (BOOL)_shouldForceClassicForExtensions;
 - (BOOL)_shouldForceClassicMode;
 - (BOOL)_shouldHandleTestURL:(id)arg1;
 - (BOOL)_shouldIgnoreHeadsetClicks;
@@ -595,6 +596,7 @@
 - (id)_systemAnimationFenceCreatingIfNecessary:(BOOL)arg1;
 - (id)_systemAnimationFenceExemptQueue;
 - (id)_systemNavigationAction;
+- (long long)_systemUserInterfaceStyle;
 - (id)_targetInChainForAction:(SEL)arg1 sender:(id)arg2;
 - (id)_targetResponderForKeyCommandsForResponder:(id)arg1;
 - (BOOL)_taskSuspendingUnsupported;
@@ -612,22 +614,24 @@
 - (void)_updateAccessibilitySettingsLoader;
 - (void)_updateAppPriorityForSuspendedState;
 - (void)_updateApplicationAccessibility;
+- (void)_updateCurrentHomeIndicatorAutoHidden;
+- (void)_updateCurrentScreenEdgesDeferringSystemGestures;
 - (void)_updateCurrentStatusBarViewControllerAppearance;
 - (void)_updateCurrentTintViewColor;
 - (void)_updateCurrentTintViewForWindow:(id)arg1;
+- (void)_updateCurrentUserInterfaceStyleViewControllerAppearance;
 - (void)_updateCurrentWhitePointAdaptivityStyle;
 - (BOOL)_updateDefaultImage;
-- (void)_updateForcedStatusBarForegroundTransparentWithContext:(const CDStruct_0fda2562 *)arg1;
 - (void)_updateForcedStatusBarStyle;
 - (void)_updateIdleModeStatus;
 - (void)_updateLargeTextNotification;
 - (void)_updateOrientation;
-- (void)_updateSceneGeometryWithSettingObserverContext:(CDStruct_0fda2562)arg1;
 - (void)_updateSerializableKeyCommandsForResponder:(id)arg1;
-- (void)_updateSnapshotAndStateRestorationWithAction:(id)arg1;
+- (void)_updateSnapshotAndStateRestorationWithAction:(id)arg1 canvas:(id)arg2;
 - (void)_updateSnapshotForBackgroundApplication:(BOOL)arg1;
-- (void)_updateStateRestorationArchiveForBackgroundEvent:(CDUnknownBlockType)arg1 saveState:(BOOL)arg2 exitIfCouldNotRestoreState:(BOOL)arg3 updateSnapshot:(BOOL)arg4;
+- (void)_updateStateRestorationArchiveForBackgroundEvent:(CDUnknownBlockType)arg1 saveState:(BOOL)arg2 exitIfCouldNotRestoreState:(BOOL)arg3 updateSnapshot:(BOOL)arg4 canvas:(id)arg5;
 - (id)_urlWithSettingsPrivateURLSchemeIfNeeded:(id)arg1;
+- (id)_userInterfaceControllingWindow;
 - (id)_userNotificationCategories;
 - (unsigned long long)_userNotificationTypes;
 - (BOOL)_usesEmoji;
@@ -657,9 +661,6 @@
 - (void)addStatusBarStyleOverrides:(int)arg1;
 - (void)addWebClipToHomeScreen:(id)arg1;
 - (long long)alertInterfaceOrientation;
-- (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
-- (void)alertViewCancel:(id)arg1;
 - (void)applicationDidBeginSuspendAnimation;
 - (void)applicationDidEndResumeAnimation;
 - (void)applicationDidResume;
@@ -730,7 +731,7 @@
 - (void)finishedTest:(id)arg1 extraResults:(id)arg2 withTeardownBlock:(CDUnknownBlockType)arg3;
 - (void)finishedTest:(id)arg1 waitForCommit:(BOOL)arg2 extraResults:(id)arg3;
 - (void)finishedTest:(id)arg1 waitForCommit:(BOOL)arg2 extraResults:(id)arg3 withTeardownBlock:(CDUnknownBlockType)arg4;
-- (BOOL)handleDoubleHeightStatusBarTap:(long long)arg1;
+- (BOOL)handleDoubleHeightStatusBarTapWithStyleOverride:(int)arg1;
 - (BOOL)handleEvent:(struct __GSEvent *)arg1;
 - (BOOL)handleEvent:(struct __GSEvent *)arg1 withNewEvent:(id)arg2;
 - (void)handleKeyEvent:(struct __GSEvent *)arg1;
@@ -785,6 +786,7 @@
 - (BOOL)openURL:(id)arg1;
 - (void)openURL:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)openURL:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (long long)overridenRequestedStyleFromStyle:(long long)arg1;
 - (id)pathToDefaultImageNamed:(id)arg1 forScreen:(id)arg2;
 - (void)performDisablingStatusBarStyleValidation:(CDUnknownBlockType)arg1;
 - (void)popRunLoopMode:(id)arg1;
@@ -802,6 +804,7 @@
 - (void)pushRunLoopMode:(id)arg1 requester:(id)arg2;
 - (void)registerForRemoteNotificationTypes:(unsigned long long)arg1;
 - (void)registerForRemoteNotifications;
+- (void)registerPlatformSpecificLaunchOptions:(CDUnknownBlockType)arg1 transitionContext:(id)arg2;
 - (void)registerUserNotificationSettings:(id)arg1;
 - (void)remoteNotificationRegistrar:(id)arg1 didReceiveDeviceToken:(id)arg2;
 - (void)removeApplicationPreservationStateWithSessionIdentifier:(id)arg1;
@@ -827,8 +830,6 @@
 - (void)runTestForKeyboardRotationWithName:(id)arg1 fromOrientation:(long long)arg2 withShowKeyboardBlock:(CDUnknownBlockType)arg3 withExtraResultsBlock:(CDUnknownBlockType)arg4 withCleanupBlock:(CDUnknownBlockType)arg5;
 - (void)runTestForKeyboardSplitAndMergeWithName:(id)arg1 withShowKeyboardBlock:(CDUnknownBlockType)arg2 withExtraResultsBlock:(CDUnknownBlockType)arg3 withCleanupBlock:(CDUnknownBlockType)arg4;
 - (void)saveApplicationPreservationStateWithSessionIdentifier:(id)arg1 viewController:(id)arg2 beginHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)scene:(id)arg1 didReceiveActions:(id)arg2;
-- (void)scene:(id)arg1 didUpdateWithDiff:(id)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)scheduleLocalNotification:(id)arg1;
 - (id)scheduledLocalNotifications;
 - (BOOL)sendAction:(SEL)arg1 to:(id)arg2 from:(id)arg3 forEvent:(id)arg4;
@@ -901,7 +902,7 @@
 - (void)startedTest:(id)arg1;
 - (id)statusBar;
 - (void)statusBar:(id)arg1 didAnimateFromHeight:(double)arg2 toHeight:(double)arg3 animation:(int)arg4;
-- (long long)statusBar:(id)arg1 styleForRequestedStyle:(long long)arg2 overrides:(int)arg3;
+- (int)statusBar:(id)arg1 effectiveStyleOverridesForRequestedStyle:(long long)arg2 overrides:(int)arg3;
 - (void)statusBar:(id)arg1 willAnimateFromHeight:(double)arg2 toHeight:(double)arg3 duration:(double)arg4 animation:(int)arg5;
 - (struct CGRect)statusBarFrameForOrientation:(long long)arg1;
 - (double)statusBarHeight;

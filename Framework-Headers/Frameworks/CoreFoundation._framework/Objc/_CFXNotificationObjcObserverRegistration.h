@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithObserver:(void *)arg1 parent:(id)arg2;
 - (void *)observer;
 - (void)resetObserverAndChildren:(void *)arg1;
+- (id)retainedObserver;
 
 @end
 

@@ -18,7 +18,10 @@
     NSMutableDictionary *_thumbnails;
     NSMutableDictionary *_proceduralInfo;
     NSMutableDictionary *_videoURLs;
+    NSMutableDictionary *_originalVideoURLs;
     NSMutableDictionary *_wallpaperOptions;
+    NSMutableDictionary *_colors;
+    NSMutableDictionary *_colorNames;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -36,17 +39,25 @@
 - (id)proceduralWallpaperInfoForVariant:(long long)arg1;
 - (void)removeProceduralWallpaperForVariants:(long long)arg1;
 - (void)removeVideoForVariant:(long long)arg1;
+- (void)removeWallpaperColorForVariants:(long long)arg1;
 - (void)removeWallpaperImageDataTypes:(unsigned long long)arg1 forVariants:(long long)arg2;
 - (void)removeWallpaperOptionsForVariants:(long long)arg1;
+- (BOOL)setOriginalVideoURL:(id)arg1 forVariant:(long long)arg2;
 - (BOOL)setProceduralWallpaperInfo:(id)arg1 forVariants:(long long)arg2;
 - (BOOL)setVideoURL:(id)arg1 forVariant:(long long)arg2;
+- (BOOL)setWallpaperColor:(id)arg1 forVariants:(long long)arg2;
+- (BOOL)setWallpaperColorName:(id)arg1 forVariants:(long long)arg2;
 - (BOOL)setWallpaperImage:(id)arg1 forVariant:(long long)arg2;
 - (BOOL)setWallpaperOptions:(id)arg1 forVariants:(long long)arg2;
 - (BOOL)setWallpaperOriginalImage:(id)arg1 forVariant:(long long)arg2;
 - (BOOL)setWallpaperThumbnailData:(id)arg1 forVariant:(long long)arg2;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
+- (id)unverifiedVideoURLForVariant:(long long)arg1;
+- (id)verifiedOriginalVideoURLForVariant:(long long)arg1;
 - (id)verifiedVideoURLForVariant:(long long)arg1;
+- (id)wallpaperColorForVariant:(long long)arg1;
+- (id)wallpaperColorNameForVariant:(long long)arg1;
 - (id)wallpaperImageForVariant:(long long)arg1;
 - (id)wallpaperOptionsForVariant:(long long)arg1;
 - (id)wallpaperOriginalImageForVariant:(long long)arg1;

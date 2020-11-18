@@ -23,6 +23,7 @@
 - (void)_setAXCKEntity:(id)arg1;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
 - (void)configureWithEntity:(id)arg1;
 - (BOOL)isAccessibilityElement;
 

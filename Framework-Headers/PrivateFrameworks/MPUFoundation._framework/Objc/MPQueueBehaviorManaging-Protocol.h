@@ -17,5 +17,6 @@
 @property (readonly, nonatomic) BOOL userCanChangeShuffleAndRepeatType;
 
 - (BOOL)canSkipItem:(MPAVItem *)arg1;
+- (BOOL)canSkipToPreviousItemForItem:(MPAVItem *)arg1;
 @end
 

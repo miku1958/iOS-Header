@@ -55,12 +55,12 @@
 - (id)loadOutstandingFileTransfers;
 - (id)loadOutstandingUserInfoTransfersAndComplicationUserInfo:(id *)arg1;
 - (id)localAppContextFolderURL;
-- (void)onqueue_persistFileTransfer:(id)arg1;
 - (id)outgoingFileTransferPath;
 - (void)persistAppContextData:(id)arg1 received:(BOOL)arg2;
 - (void)persistOutgoingFileTransfer:(id)arg1;
 - (id)persistOutgoingUserInfoTransfer:(id)arg1;
 - (id)receivedAppContextFolderURL;
+- (BOOL)removeItemAtURL:(id)arg1 numberOfRetries:(unsigned long long)arg2 error:(id *)arg3;
 - (void)resetIndexes;
 
 @end

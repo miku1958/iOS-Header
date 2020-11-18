@@ -20,6 +20,7 @@
     int _linkQuality;
     unsigned int _payloadSize;
     unsigned int _receiveOffset;
+    NSString *_topic;
     CDStruct_f8f5923d _has;
 }
 
@@ -34,11 +35,13 @@
 @property (nonatomic) BOOL hasPayloadSize;
 @property (nonatomic) BOOL hasReceiveOffset;
 @property (nonatomic) BOOL hasTimestamp;
+@property (readonly, nonatomic) BOOL hasTopic;
 @property (nonatomic) unsigned int isFromStorage; // @synthesize isFromStorage=_isFromStorage;
 @property (nonatomic) int linkQuality; // @synthesize linkQuality=_linkQuality;
 @property (nonatomic) unsigned int payloadSize; // @synthesize payloadSize=_payloadSize;
 @property (nonatomic) unsigned int receiveOffset; // @synthesize receiveOffset=_receiveOffset;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (strong, nonatomic) NSString *topic; // @synthesize topic=_topic;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

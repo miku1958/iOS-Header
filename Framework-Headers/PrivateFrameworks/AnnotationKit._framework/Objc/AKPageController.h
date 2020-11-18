@@ -9,19 +9,21 @@
 #import <AnnotationKit/AKHighlightColorEditorControllerDelegate-Protocol.h>
 #import <AnnotationKit/AKNoteEditorControllerDelegate-Protocol.h>
 
-@class AKController, AKGeometryHelper, AKHighlightColorEditorController, AKLayerPresentationManager, AKPageModelController, NSMutableDictionary, NSString, UIView;
+@class AKController, AKGeometryHelper, AKHighlightColorEditorController, AKInkPageOverlayController, AKLayerPresentationManager, AKPageModelController, NSMutableDictionary, NSString, UIView;
 @protocol AKControllerDelegateProtocol;
 
 @interface AKPageController : NSObject <AKNoteEditorControllerDelegate, AKHighlightColorEditorControllerDelegate>
 {
     BOOL _shouldPixelate;
-    BOOL _layerPresentationManagerWasSetup;
+    BOOL _superviewDependentThingsWereSetUp;
     AKController *_controller;
     AKPageModelController *_pageModelController;
     unsigned long long _pageIndex;
     AKGeometryHelper *_geometryHelper;
     AKLayerPresentationManager *_layerPresentationManager;
     UIView *_overlayView;
+    AKInkPageOverlayController *_inkPageOverlayController;
+    id _inkOverlayDrawingUndoTarget;
     AKHighlightColorEditorController *_highlightColorEditorController;
     NSMutableDictionary *_noteEditors;
 }
@@ -32,20 +34,23 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) AKGeometryHelper *geometryHelper; // @synthesize geometryHelper=_geometryHelper;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) AKHighlightColorEditorController *highlightColorEditorController; // @synthesize highlightColorEditorController=_highlightColorEditorController;
+@property (readonly, nonatomic) AKHighlightColorEditorController *highlightColorEditorController; // @synthesize highlightColorEditorController=_highlightColorEditorController;
+@property (strong, nonatomic) id inkOverlayDrawingUndoTarget; // @synthesize inkOverlayDrawingUndoTarget=_inkOverlayDrawingUndoTarget;
+@property (strong, nonatomic) AKInkPageOverlayController *inkPageOverlayController; // @synthesize inkPageOverlayController=_inkPageOverlayController;
 @property (strong, nonatomic) AKLayerPresentationManager *layerPresentationManager; // @synthesize layerPresentationManager=_layerPresentationManager;
-@property BOOL layerPresentationManagerWasSetup; // @synthesize layerPresentationManagerWasSetup=_layerPresentationManagerWasSetup;
 @property (strong) NSMutableDictionary *noteEditors; // @synthesize noteEditors=_noteEditors;
 @property (strong, nonatomic) UIView *overlayView; // @synthesize overlayView=_overlayView;
 @property unsigned long long pageIndex; // @synthesize pageIndex=_pageIndex;
 @property (strong) AKPageModelController *pageModelController; // @synthesize pageModelController=_pageModelController;
 @property BOOL shouldPixelate; // @synthesize shouldPixelate=_shouldPixelate;
 @property (readonly) Class superclass;
+@property BOOL superviewDependentThingsWereSetUp; // @synthesize superviewDependentThingsWereSetUp=_superviewDependentThingsWereSetUp;
 
 + (id)pageControllerWithController:(id)arg1 andPageModelController:(id)arg2;
 - (void).cxx_destruct;
 - (id)_initWithController:(id)arg1 andPageModelController:(id)arg2;
 - (id)_popoverPresentingViewController;
+- (void)addPopupToAnnotation:(id)arg1 openPopup:(BOOL)arg2;
 - (id)annotationsBeneathLoupe:(id)arg1;
 - (struct CGPoint)convertPointFromModelToOverlay:(struct CGPoint)arg1;
 - (struct CGPoint)convertPointFromOverlayToModel:(struct CGPoint)arg1;
@@ -56,7 +61,6 @@
 - (unsigned long long)edgeForNoteEditor:(id)arg1;
 - (void)editorController:(id)arg1 deleteAnnotation:(id)arg2;
 - (void)editorController:(id)arg1 editNote:(id)arg2;
-- (void)editorController:(id)arg1 editedAnnotation:(id)arg2 toText:(id)arg3;
 - (BOOL)editorController:(id)arg1 isRightArrowEnabledForAnnotation:(id)arg2;
 - (void)editorController:(id)arg1 setTheme:(id)arg2 forAnnotation:(id)arg3;
 - (void)editorController:(id)arg1 showEditMenuForAnnotation:(id)arg2;
@@ -70,16 +74,18 @@
 - (void)noteEditorWillDismissFromFullScreen:(id)arg1;
 - (void)noteEditorWillPresentFullScreen:(id)arg1;
 - (void)openPopoverForHighlightAnnotation:(id)arg1;
-- (void)openPopoverForNoteAnnotation:(id)arg1;
+- (void)openPopupAnnotation:(id)arg1;
 - (void)overlayWasAddedToSuperview;
 - (id)popoverPresentingViewControllerForNoteEditor:(id)arg1;
 - (void)releaseRelinquishables;
 - (BOOL)relinquishablesAreLoaded;
+- (void)removeNoteFromAnnotation:(id)arg1;
 - (void)setupRelinquishables;
 - (id)stickyContainerForNoteEditor:(id)arg1;
 - (struct CGRect)stickyViewFrameForNoteEditor:(id)arg1;
 - (void)teardown;
 - (void)updateScaleFactor:(double)arg1 isLiveUpdate:(BOOL)arg2 forceUpdate:(BOOL)arg3;
+- (struct CGRect)visibleRectOfOverlay;
 
 @end
 

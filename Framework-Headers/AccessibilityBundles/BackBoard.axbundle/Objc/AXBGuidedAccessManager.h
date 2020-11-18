@@ -6,11 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@interface AXBGuidedAccessManager : NSObject
+#import "MCProfileConnectionObserver-Protocol.h"
+
+@class NSString;
+
+@interface AXBGuidedAccessManager : NSObject <MCProfileConnectionObserver>
 {
     id _notificationToken;
     id _guidedAccessServer;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (BOOL)allowsTripleClickSheet;
 + (BOOL)inGuidedAccess;
@@ -19,6 +28,7 @@
 - (id)_guidedAccessServer;
 - (void)_loadBackboardServerBundle;
 - (id)init;
+- (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
 
 @end
 

@@ -40,6 +40,7 @@
 - (void)removeAllDisplays;
 - (void)removeDisplay:(id)arg1;
 - (id)secureModeViolations;
+- (unsigned int)taskNamePortOfContextId:(unsigned int)arg1;
 - (unsigned int)taskPortOfContextId:(unsigned int)arg1;
 
 @end

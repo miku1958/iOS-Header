@@ -6,21 +6,32 @@
 
 #import <MediaPlayer/MPStoreAVItem.h>
 
+#import <VideosExtras/VideosAVItemCapability-Protocol.h>
+
 @class IKAssetElement, NSString;
 
-@interface VideosExtrasAVItem : MPStoreAVItem
+@interface VideosExtrasAVItem : MPStoreAVItem <VideosAVItemCapability>
 {
     BOOL _loadedHLS;
+    unsigned long long _mediaType;
     id _rtcReportingParentHierarchyToken;
     NSString *_rtcReportingServiceIdentifier;
     BOOL _background;
     IKAssetElement *_assetElement;
-    unsigned long long _mediaType;
 }
 
 @property (readonly, nonatomic) IKAssetElement *assetElement; // @synthesize assetElement=_assetElement;
 @property (readonly, nonatomic, getter=isBackground) BOOL background; // @synthesize background=_background;
-@property (readonly, nonatomic) unsigned long long mediaType; // @synthesize mediaType=_mediaType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long mediaType;
+@property (readonly, nonatomic) BOOL overrideCurrentItemIsReady;
+@property (readonly, nonatomic) unsigned long long overrideType;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsNotification;
+@property (readonly, nonatomic) BOOL supportsPictureInPicture;
+@property (readonly, nonatomic) BOOL supportsScrubbing;
 
 - (void).cxx_destruct;
 - (long long)_expectedPlaybackMode;

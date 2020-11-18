@@ -26,6 +26,7 @@
     NSMutableDictionary *m_focusGuides;
     struct UIEdgeInsets m_unfocusedFocusGuideOutsets;
     BOOL _hasImpendingCursorLocation;
+    unsigned long long _requestedInteractionModel;
     unsigned long long _impendingCursorLocation;
 }
 
@@ -38,6 +39,7 @@
 @property (nonatomic) unsigned long long impendingCursorLocation; // @synthesize impendingCursorLocation=_impendingCursorLocation;
 @property (nonatomic) long long keyboardIdiom; // @synthesize keyboardIdiom=m_idiom;
 @property (nonatomic, getter=isMinimized) BOOL minimized;
+@property (readonly, nonatomic) unsigned long long requestedInteractionModel; // @synthesize requestedInteractionModel=_requestedInteractionModel;
 @property (nonatomic) BOOL showsCandidatesInline;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL typingEnabled;
@@ -65,6 +67,7 @@
 - (void)_deactivateForBackgrounding;
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
 - (BOOL)_disableTouchInput;
+- (long long)_focusTouchSensitivityStyle;
 - (long long)_focusedSound;
 - (id)_getAutocorrection;
 - (id)_getCurrentKeyboardName;
@@ -77,7 +80,6 @@
 - (id)_keyplaneNamed:(id)arg1;
 - (BOOL)_mayRemainFocused;
 - (long long)_positionInCandidateList:(id)arg1;
-- (struct CGSize)_sensitivitySize;
 - (void)_setAutocorrects:(BOOL)arg1;
 - (void)_setDisableTouchInput:(BOOL)arg1;
 - (void)_setInputMode:(id)arg1;
@@ -108,9 +110,9 @@
 - (id)delegate;
 - (void)didFocusGuideWithHeading:(unsigned long long)arg1;
 - (void)didMoveToWindow;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)disableInteraction;
 - (void)displayLayer:(id)arg1;
-- (void)focusedViewDidChange;
 - (void)geometryChangeDone:(BOOL)arg1;
 - (struct UIPeripheralAnimationGeometry)geometryForImplHeightDelta:(double)arg1;
 - (struct UIPeripheralAnimationGeometry)geometryForMinimize:(BOOL)arg1;
@@ -120,6 +122,7 @@
 - (id)initLazily;
 - (id)initWithDefaultSize;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithRequestedInteractionModel:(unsigned long long)arg1;
 - (long long)interfaceOrientation;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isActive;
@@ -157,8 +160,8 @@
 - (void)setUnfocusedFocusGuideOutsets:(struct UIEdgeInsets)arg1;
 - (void)setUnfocusedFocusGuideOutsets:(struct UIEdgeInsets)arg1 fromView:(id)arg2;
 - (void)setupKeyFocusGuides;
-- (BOOL)shouldChangeFocusedItem:(id)arg1 heading:(unsigned long long)arg2;
 - (BOOL)shouldSaveMinimizationState;
+- (BOOL)shouldUpdateFocusInContext:(id)arg1;
 - (BOOL)showPredictionBar;
 - (void)syncMinimizedStateToHardwareKeyboardAttachedState;
 - (void)takeSnapshot;

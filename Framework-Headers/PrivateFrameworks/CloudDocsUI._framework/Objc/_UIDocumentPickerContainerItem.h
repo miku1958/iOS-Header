@@ -30,11 +30,11 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, strong, nonatomic) _UIDocumentPickerContainerModel *model;
+@property (readonly, nonatomic) NSDate *modificationDate;
 @property (weak, nonatomic) _UIDocumentPickerContainerModel *parentModel; // @synthesize parentModel=_parentModel;
 @property (copy, nonatomic) NSString *pickabilityReason; // @synthesize pickabilityReason=_pickabilityReason;
 @property (nonatomic) BOOL pickable; // @synthesize pickable=_pickable;
 @property (readonly, nonatomic) BOOL renameable;
-@property (readonly, nonatomic) NSDate *sortDate;
 @property (readonly, strong, nonatomic) NSString *subtitle;
 @property (readonly, strong, nonatomic) NSString *subtitle2;
 @property (readonly) Class superclass;
@@ -70,9 +70,7 @@
 - (BOOL)isAlias;
 - (BOOL)isEqual:(id)arg1;
 - (void)modelChanged;
-- (id)modificationDate;
 - (id)sortPath;
-- (id)sortTag;
 - (id)tagBlipsWithHeight:(double)arg1 scale:(double)arg2;
 - (id)tags;
 - (id)thumbnailWithSize:(struct CGSize)arg1 scale:(double)arg2;

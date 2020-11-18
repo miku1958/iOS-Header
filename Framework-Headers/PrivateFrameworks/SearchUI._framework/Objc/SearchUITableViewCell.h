@@ -6,40 +6,63 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@protocol SearchUIFeedbackDelegatePrivate;
+#import <SearchUI/SearchUIKeyboardableNavigationProtocol-Protocol.h>
 
-@interface SearchUITableViewCell : UITableViewCell
+@class NSArray, NSString, SearchUIDragSource, SearchUIDropTarget, UIView;
+@protocol SearchUIFeedbackDelegateInternal, SearchUIRowModel;
+
+@interface SearchUITableViewCell : UITableViewCell <SearchUIKeyboardableNavigationProtocol>
 {
-    BOOL _expanded;
+    BOOL _isExpanded;
+    id<SearchUIRowModel> _rowModel;
     unsigned long long _style;
-    id<SearchUIFeedbackDelegatePrivate> _delegate;
+    id<SearchUIFeedbackDelegateInternal> _delegate;
+    UIView *_sizingContainer;
+    SearchUIDragSource *_dragSource;
+    SearchUIDropTarget *_dropTarget;
 }
 
-@property (weak) id<SearchUIFeedbackDelegatePrivate> delegate; // @synthesize delegate=_delegate;
-@property (getter=isExpanded) BOOL expanded; // @synthesize expanded=_expanded;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak) id<SearchUIFeedbackDelegateInternal> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (strong) SearchUIDragSource *dragSource; // @synthesize dragSource=_dragSource;
+@property (strong) SearchUIDropTarget *dropTarget; // @synthesize dropTarget=_dropTarget;
+@property (readonly) unsigned long long hash;
+@property BOOL isExpanded; // @synthesize isExpanded=_isExpanded;
+@property (strong) id<SearchUIRowModel> rowModel; // @synthesize rowModel=_rowModel;
+@property (strong) UIView *sizingContainer; // @synthesize sizingContainer=_sizingContainer;
 @property unsigned long long style; // @synthesize style=_style;
+@property (readonly) Class superclass;
+@property (readonly) NSArray *visibleResults;
 
 + (BOOL)canCellExpandWithResults:(id)arg1;
-+ (Class)classForResult:(id)arg1;
++ (id)cellViewForRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 + (id)convertResultIfNecessary:(id)arg1;
 + (double)distanceToTopOfAppIconsForMultiResultCell;
-+ (BOOL)resultIsSuggestedQuery:(id)arg1;
-+ (id)reuseIdentifierForClass:(Class)arg1;
 + (id)reuseIdentifierForResult:(id)arg1;
-+ (id)reuseIdentifierForResults:(id)arg1;
-+ (id)rowViewForResult:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 - (void).cxx_destruct;
-- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
-- (id)initWithResults:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (BOOL)canSetupKeyboardHandler;
+- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 - (id)initWithStyle:(unsigned long long)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (BOOL)isExpandable;
-- (unsigned long long)numberOfVisibleResults;
+- (void)layoutSubviews;
+- (BOOL)navigateKeyboardLeft;
+- (BOOL)navigateKeyboardRight;
+- (void)removeKeyboardHandler;
+- (void)returnKeyPressed;
+- (void)roundNecessaryCornersForView:(id)arg1;
 - (void)setSectionLocation:(int)arg1 animated:(BOOL)arg2;
+- (void)setupKeyboardHandler;
 - (BOOL)shouldHideBottomSeparator;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (BOOL)supportsRecycling;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
+- (void)updateChevronVisible:(BOOL)arg1 leaveSpaceForChevron:(BOOL)arg2;
 - (void)updateExpanded:(BOOL)arg1;
 - (void)updateWithResult:(id)arg1;
 - (void)updateWithResults:(id)arg1;
+- (void)updateWithRowModel:(id)arg1;
 
 @end
 

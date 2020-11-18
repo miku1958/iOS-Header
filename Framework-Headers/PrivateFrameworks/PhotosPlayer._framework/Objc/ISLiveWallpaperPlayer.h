@@ -33,8 +33,8 @@
 - (void)_seekVideoToEnd;
 - (void)_update;
 - (void)_updatePlayer;
-- (void)_updatePlayerItem;
 - (void)didPerformChanges;
+- (void)setPlayerItem:(id)arg1;
 - (void)statusDidChange;
 
 @end

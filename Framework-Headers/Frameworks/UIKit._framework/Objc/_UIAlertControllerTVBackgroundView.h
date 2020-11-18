@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 + (struct CGSize)backgroundInsetAmount;
 - (void).cxx_destruct;
 - (double)_alphaForHighlighted:(BOOL)arg1 pressed:(BOOL)arg2;
+- (id)_displayedBackgroundColor;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (double)alphaForState:(unsigned long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

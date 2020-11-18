@@ -14,11 +14,10 @@
     NSHashTable *_reachabilityObservers;
     struct __SCNetworkReachability *_reachabilityRef;
     unsigned int _reachabilityFlags;
-    BOOL _isNetworkReachable;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (nonatomic) BOOL isNetworkReachable; // @synthesize isNetworkReachable=_isNetworkReachable;
+@property (readonly, nonatomic) BOOL isNetworkReachable;
 @property (nonatomic) unsigned int reachabilityFlags; // @synthesize reachabilityFlags=_reachabilityFlags;
 
 + (BOOL)isNetworkReachableForFlags:(unsigned int)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEORouteMatch, VKPuckAnimatorLocationProjector, VKRunningCurve, VKTimedAnimation;
 @protocol VKPuckAnimatorDelegate, VKPuckAnimatorTarget;
@@ -34,6 +34,7 @@
 - (id).cxx_construct;
 - (void)_step;
 - (void)dealloc;
+- (id)detailedDescription;
 - (id)init;
 - (void)pause;
 - (void)resume;

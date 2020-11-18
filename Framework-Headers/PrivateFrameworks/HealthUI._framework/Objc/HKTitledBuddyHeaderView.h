@@ -17,6 +17,10 @@
     NSLayoutConstraint *_bodyZeroHeightConstraint;
     NSLayoutConstraint *_bodyBottomConstraint;
     NSLayoutConstraint *_titleBottomConstraint;
+    NSLayoutConstraint *_bodyFirstBaselineConstraint;
+    NSLayoutConstraint *_bodyLastBaselineToLinkConstraint;
+    NSLayoutConstraint *_linkButtonLastBaselineToBottomConstraint;
+    NSLayoutConstraint *_titleLabelBaselineConstraint;
     id<HKTitledBuddyHeaderViewDelegate> _delegate;
     UILabel *_titleLabel;
 }
@@ -28,8 +32,11 @@
 
 - (void).cxx_destruct;
 - (void)_linkButtonTapped:(id)arg1;
+- (void)_updateForCurrentSizeCategory;
 - (id)bodyTextView;
+- (void)deactivateDefaultTitleLabelBaselineConstraint;
 - (id)initWithTopInset:(double)arg1 linkButtonTitle:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

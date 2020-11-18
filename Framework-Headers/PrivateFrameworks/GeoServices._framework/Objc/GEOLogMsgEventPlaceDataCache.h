@@ -18,9 +18,9 @@
 @property (readonly, nonatomic) BOOL hasPlaceDataRequestingAppIdentifier;
 @property (strong, nonatomic) NSString *placeDataRequestingAppIdentifier; // @synthesize placeDataRequestingAppIdentifier=_placeDataRequestingAppIdentifier;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

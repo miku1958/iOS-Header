@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (long long)_accessibilityCompareElement:(id)arg1 toElement:(id)arg2;
+- (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityHitTestSubviews;
 - (BOOL)_accessibilityServesAsContainingParentForOrdering;
 - (id)_accessibilitySubviews;

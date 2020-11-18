@@ -17,6 +17,7 @@
 + (CDStruct_02837cd9)MKMapRectForCoordinateRegion:(CDStruct_26e8d939)arg1;
 + (CDStruct_02837cd9)canonicalMapRect:(CDStruct_02837cd9)arg1;
 + (CDStruct_02837cd9)mapRectForNearbyQueriesFromRect:(CDStruct_02837cd9)arg1 atScale:(double)arg2 targetViewSize:(struct CGSize)arg3;
++ (id)mapViewWithMarkedLocation:(id)arg1 regionRadius:(double)arg2 frame:(struct CGRect)arg3;
 - (void)_commonInit;
 - (double)_radiansFromDegrees:(double)arg1;
 - (double)_sampleMapDistanceFromViewPoint:(struct CGPoint)arg1 toViewPoint:(struct CGPoint)arg2;

@@ -22,9 +22,13 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_wordTokens;
     NSArray *_wordsToSetAfterAnimations;
     unsigned long long _firstIndexToRemoveAfterLineChangeClearingAnimation;
-    BOOL _isPerformingLineChangeClearingAnimation;
-    BOOL _commitResultsAfterDynamicsFinish;
-    BOOL _waitingForDynamicsBehaviorToStop;
+    struct {
+        unsigned int isPerformingLineChangeClearingAnimation:1;
+        unsigned int commitResultsAfterDynamicsFinish:1;
+        unsigned int waitingForDynamicsBehaviorToStop:1;
+        unsigned int didFinalize:1;
+        unsigned int didCleanUp:1;
+    } _ssmFlags;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -41,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)animateText;
 - (void)behaviorDidStop:(id)arg1;
 - (void)commitFinalResults;
+- (void)ensureCleanedUp;
 - (id)initWithTextView:(id)arg1;
 
 @end

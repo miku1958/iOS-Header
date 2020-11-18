@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDBulletinIdentifiers-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessory, HMDCharacteristicMetadata, HMDService, NSData, NSDate, NSDictionary, NSMutableSet, NSNumber, NSString, NSUUID;
+@class HMDCharacteristicMetadata, HMDHAPAccessory, HMDService, NSData, NSDate, NSDictionary, NSMutableSet, NSNumber, NSString, NSUUID;
 
-@interface HMDCharacteristic : NSObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState>
+@interface HMDCharacteristic : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState>
 {
+    BOOL _broadcastNotificationEnabled;
     BOOL _notificationRegisteredWithRemoteGateway;
-    HMDAccessory *_accessory;
+    HMDHAPAccessory *_accessory;
     HMDService *_service;
     NSNumber *_stateNumber;
     NSData *_authorizationData;
@@ -30,8 +31,9 @@
     NSDate *_notificationEnabledTime;
 }
 
-@property (readonly, weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
+@property (readonly, weak, nonatomic) HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
 @property (copy, nonatomic) NSData *authorizationData; // @synthesize authorizationData=_authorizationData;
+@property (nonatomic) BOOL broadcastNotificationEnabled; // @synthesize broadcastNotificationEnabled=_broadcastNotificationEnabled;
 @property (readonly, nonatomic) NSDictionary *bulletinContext;
 @property (strong, nonatomic) NSNumber *characteristicInstanceID; // @synthesize characteristicInstanceID=_characteristicInstanceID;
 @property (strong, nonatomic) HMDCharacteristicMetadata *characteristicMetadata; // @synthesize characteristicMetadata=_characteristicMetadata;
@@ -63,10 +65,11 @@
 - (id)characteristicForHAPAccessory:(id)arg1;
 - (id)characteristicForServerIdentifier:(id)arg1 linkType:(long long)arg2;
 - (id)characteristicTypeDescription;
-- (void)configureWithCharacteristic:(id)arg1 service:(id)arg2 accessory:(id)arg3;
+- (void)configureWithCharacteristic:(id)arg1;
 - (BOOL)deregisterNotificationForClientIdentifier:(id)arg1;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
+- (id)getCharacteristicDictionary;
 - (id)hapCharacteristicTupleWithIdentifier:(id)arg1 linkType:(long long)arg2;
 - (id)initWithCharacteristic:(id)arg1 service:(id)arg2 accessory:(id)arg3;
 - (id)initWithCoder:(id)arg1;
@@ -80,13 +83,17 @@
 - (void)setNotificationEnabled:(BOOL)arg1 forClientIdentifier:(id)arg2;
 - (id)shortTypeDescription;
 - (BOOL)supportsNotification;
+- (BOOL)supportsRead;
 - (void)unconfigure;
 - (void)unconfigureAll;
 - (void)unconfigureForServerIdentifier:(id)arg1 linkType:(long long)arg2;
 - (void)updateLastKnownValue;
 - (void)updateService:(id)arg1 accessory:(id)arg2;
 - (void)updateValue:(id)arg1 updatedTime:(id)arg2 stateNumber:(id)arg3;
+- (BOOL)updateWithDictionary:(id)arg1;
 - (id)validateValue:(id)arg1 outValue:(id *)arg2;
+- (id)validateValueForNotify:(id)arg1 outValue:(id *)arg2;
+- (id)validateValueForWrite:(id)arg1 outValue:(id *)arg2;
 - (BOOL)value:(id)arg1 differentThan:(id)arg2;
 
 @end

@@ -8,11 +8,11 @@
 
 @class CIImage, MISSING_TYPE, NSString;
 
-__attribute__((visibility("hidden")))
 @interface SCNRenderTarget : NSObject
 {
     CDStruct_fd8065c6 _description;
     MISSING_TYPE *_size;
+    unsigned long long _arrayLength;
     CIImage *_ciImage;
     id _texture;
     NSString *_name;
@@ -30,8 +30,8 @@ __attribute__((visibility("hidden")))
 - (id)ciImage;
 - (void)dealloc;
 - (id)description;
-- (id)initWithDescription:(CDStruct_fd8065c6 *)arg1 size: /* Error: Ran out of types for this method. */;
-- (BOOL)matchesDescription:(CDStruct_fd8065c6 *)arg1 size: /* Error: Ran out of types for this method. */;
+- (id)initWithDescription:(CDStruct_fd8065c6 *)arg1 size:(unsigned long long)arg2 arrayLength: /* Error: Ran out of types for this method. */;
+- (BOOL)matchesDescription:(CDStruct_fd8065c6 *)arg1 size:(unsigned long long)arg2 arrayLength: /* Error: Ran out of types for this method. */;
 
 @end
 

@@ -13,12 +13,12 @@
 
 @property (nonatomic) unsigned long long attributes;
 @property (copy, nonatomic) INDateComponentsRange *dateTimeRange;
-@property (copy, nonatomic) NSArray *groupNames;
 @property (copy, nonatomic) NSArray *identifiers;
 @property (copy, nonatomic) NSArray *notificationIdentifiers;
 @property (copy, nonatomic) NSArray *recipients;
 @property (copy, nonatomic) NSArray *searchTerms;
 @property (copy, nonatomic) NSArray *senders;
+@property (copy, nonatomic) NSArray *speakableGroupNames;
 
 - (id)init;
 @end

@@ -8,8 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 @interface GEOPDAmenities : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     struct GEOPDAmenityValue *_amenitys;
     unsigned long long _amenitysCount;
     unsigned long long _amenitysSpace;
@@ -17,8 +20,10 @@
 
 @property (readonly, nonatomic) struct GEOPDAmenityValue *amenitys;
 @property (readonly, nonatomic) unsigned long long amenitysCount;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)amentiesForPlaceData:(id)arg1;
+- (void).cxx_destruct;
 - (void)addAmenity:(struct GEOPDAmenityValue)arg1;
 - (struct GEOPDAmenityValue)amenityAtIndex:(unsigned long long)arg1;
 - (void)clearAmenitys;

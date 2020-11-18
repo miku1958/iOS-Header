@@ -152,7 +152,7 @@
 - (void)layoutMapView;
 - (void)layoutSubviews;
 - (void)mapDoubleTapped:(id)arg1;
-- (CDStruct_02837cd9)mapRectForAnnotations:(id)arg1;
+- (CDStruct_02837cd9)mapRectForAnnotations:(id)arg1 shouldIncludeRadius:(BOOL)arg2;
 - (CDStruct_02837cd9)mapRectMakeWithRadialDistanceForCoordinate:(struct CLLocationCoordinate2D)arg1 andRadius:(double)arg2;
 - (void)mapSwiped:(id)arg1 withPercent:(double)arg2;
 - (void)mapSwipedBegin:(id)arg1;

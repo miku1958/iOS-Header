@@ -4,47 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class HMDHomeManager, NSArray, NSMutableArray, NSMutableDictionary;
+@class HMDHomeManager, NSArray, NSMutableArray;
 
-@interface HMDPendingCloudSyncTransactions : NSObject
+@interface HMDPendingCloudSyncTransactions : HMFObject
 {
     BOOL _uploadInProgress;
-    NSMutableDictionary *_pendingTransactionDictionary;
-    NSMutableArray *_deltaTransactions;
     NSMutableArray *_pendingReasonsSaved;
     NSMutableArray *_deltaReasonsSaved;
     HMDHomeManager *_homeManager;
 }
 
 @property (readonly, nonatomic) NSArray *allReasonsSaved;
-@property (readonly, nonatomic) unsigned long long count;
 @property (strong, nonatomic) NSMutableArray *deltaReasonsSaved; // @synthesize deltaReasonsSaved=_deltaReasonsSaved;
-@property (strong, nonatomic) NSMutableArray *deltaTransactions; // @synthesize deltaTransactions=_deltaTransactions;
 @property (readonly, weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (strong, nonatomic) NSMutableArray *pendingReasonsSaved; // @synthesize pendingReasonsSaved=_pendingReasonsSaved;
-@property (strong, nonatomic) NSMutableDictionary *pendingTransactionDictionary; // @synthesize pendingTransactionDictionary=_pendingTransactionDictionary;
 @property (readonly, nonatomic) NSArray *reasonsSaved;
-@property (readonly, nonatomic) NSArray *transactions;
 @property (nonatomic) BOOL uploadInProgress; // @synthesize uploadInProgress=_uploadInProgress;
 
 + (id)convertSaveReasonToTransationReason:(id)arg1;
-+ (BOOL)isValidRequestTypeKey:(id)arg1;
-+ (id)requestToIdentityTypeMapping;
 - (void).cxx_destruct;
 - (void)_addReasonSaved:(id)arg1 information:(id)arg2;
-- (void)_addTransaction:(id)arg1 reason:(id)arg2 identities:(id)arg3;
-- (void)_fixupPendingTransactions;
-- (void)_loadTransactions:(id)arg1;
 - (void)addReasonSaved:(id)arg1 information:(id)arg2;
-- (void)addTransaction:(id)arg1;
-- (id)identitiesWithHome:(id)arg1 reason:(id)arg2;
 - (id)init;
-- (id)initWithTransaction:(id)arg1 homeManager:(id)arg2;
+- (id)initWithHomeManager:(id)arg1;
 - (void)loadReasonsSaved:(id)arg1;
-- (unsigned long long)preservableTransactionsForHome:(id)arg1;
-- (void)removePendingTransactionsForHome:(id)arg1;
 - (void)reset;
 - (void)startUpload;
 - (void)stopUploadAndClean;

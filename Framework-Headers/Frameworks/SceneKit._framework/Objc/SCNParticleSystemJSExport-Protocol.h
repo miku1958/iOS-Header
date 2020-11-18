@@ -38,6 +38,7 @@
 @property (nonatomic, getter=isLightingEnabled) BOOL lightingEnabled;
 @property (nonatomic, getter=isLocal) BOOL local;
 @property (nonatomic) BOOL loops;
+@property (nonatomic) struct SCNVector3 orientationDirection;
 @property (nonatomic) long long orientationMode;
 @property (nonatomic) double particleAngle;
 @property (nonatomic) double particleAngleVariation;
@@ -53,6 +54,8 @@
 @property (nonatomic) double particleFriction;
 @property (nonatomic) double particleFrictionVariation;
 @property (strong, nonatomic) id particleImage;
+@property (nonatomic) double particleIntensity;
+@property (nonatomic) double particleIntensityVariation;
 @property (nonatomic) double particleLifeSpan;
 @property (nonatomic) double particleLifeSpanVariation;
 @property (nonatomic) double particleMass;

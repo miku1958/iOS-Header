@@ -13,6 +13,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axIndexPathHolder;
+- (id)_axSelectionManager;
+- (void)_axSetIndexPath:(struct PXSimpleIndexPath)arg1;
+- (void)_axSetSelectionManager:(id)arg1;
+- (void)_setAXIndexPathHolder:(id)arg1;
+- (void)_setAXSelectionManager:(id)arg1;
 - (id)accessibilityHint;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;

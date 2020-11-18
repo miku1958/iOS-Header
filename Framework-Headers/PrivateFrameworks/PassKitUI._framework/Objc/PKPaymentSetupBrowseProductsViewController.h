@@ -61,7 +61,6 @@
 - (BOOL)textFieldShouldClear:(id)arg1;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 
 @end

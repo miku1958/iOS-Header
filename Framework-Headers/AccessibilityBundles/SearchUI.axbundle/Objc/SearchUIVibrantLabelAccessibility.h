@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_axValidateString:(id)arg1;
 - (id)accessibilityLabel;
+- (BOOL)isAccessibilityElement;
 
 @end
 

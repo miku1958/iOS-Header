@@ -9,39 +9,35 @@
 @class CADisplayLink;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface SCNDisplayLink : NSObject
 {
     CADisplayLink *_caDisplayLink;
     BOOL _supportTargetTimestamp;
-    id _owner;
     CDUnknownBlockType _block;
+    CDUnknownBlockType _adaptativeFrameDuration;
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _paused;
     BOOL _invalidated;
-    BOOL _asynchronous;
     double _lastFrameTime;
     float _preferredFrameRate;
-    int _queuedFrameCount;
+    _Atomic int _queuedFrameCount;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType adaptativeFrameRate;
 @property (nonatomic, getter=isPaused) BOOL paused;
 @property (nonatomic) float preferredFrameRate;
 
 - (void)_caDisplayLinkCallback;
 - (void)_callbackWithTime:(double)arg1;
+- (void)_cleanup;
 - (BOOL)_isInvalidated;
-- (void)_pause;
-- (void)_resume;
-- (void)_teardown;
 - (void)dealloc;
 - (id)init;
-- (id)initWithOwner:(id)arg1 queue:(id)arg2 block:(CDUnknownBlockType)arg3;
+- (id)initWithQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)invalidate;
 - (int)queuedFrameCount;
 - (void)setNeedsDisplay;
 - (BOOL)setPaused:(BOOL)arg1 nextFrameTimeHint:(double)arg2 lastUpdate:(double)arg3;
-- (void)willDie;
 
 @end
 

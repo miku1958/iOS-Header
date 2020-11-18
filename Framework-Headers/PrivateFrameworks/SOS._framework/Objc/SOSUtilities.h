@@ -10,10 +10,19 @@
 {
 }
 
++ (long long)SOSSelectableTriggerMechanismCapability;
++ (long long)SOSTriggerClickCount;
++ (long long)SOSTriggerMechanismForClickCount:(long long)arg1;
 + (id)_userFriendsDefaults;
 + (id)_userSOSDefaults;
++ (BOOL)canTriggerSOSWithClicks;
++ (BOOL)canTriggerSOSWithVolumeLockHold;
++ (long long)currentSOSTriggerMechanism;
++ (long long)defaultSOSTriggerMechanism;
++ (BOOL)deviceHasHomeButton;
 + (BOOL)isAllowedToMessageSOSContacts;
 + (BOOL)isAutomaticCallCountdownEnabled;
++ (BOOL)isD2xDevice;
 + (BOOL)longPressTriggersEmergencySOS;
 + (BOOL)mustAllowThreeClickTrigger;
 + (void)setAllowedToMessageSOSContacts:(BOOL)arg1;

@@ -27,7 +27,6 @@
 @property (readonly, nonatomic) BOOL shouldVibrateOnRing;
 @property (readonly, nonatomic) BOOL shouldVibrateOnSilent;
 
-+ (struct __CFString *)_copySharedResourcesPreferencesDomainForDomain:(struct __CFString *)arg1;
 + (void)_handleVibrateOnRingOrSilentDidChangeNotification;
 + (void)_handleVibrationPreferencesDidChangeNotificationForPreferencesKinds:(unsigned long long)arg1 atInitiativeOfVibrationManager:(id)arg2;
 + (id)sharedVibrationManager;

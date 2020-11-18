@@ -17,9 +17,9 @@
 @property (readonly, nonatomic) BOOL async; // @synthesize async=_async;
 @property (readonly, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property (readonly, nonatomic) SEL selector; // @synthesize selector=_selector;
-@property (readonly, nonatomic) id target; // @synthesize target=_target;
+@property (readonly, weak, nonatomic) id target; // @synthesize target=_target;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithTarget:(id)arg1 selector:(SEL)arg2 async:(BOOL)arg3;
 

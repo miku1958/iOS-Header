@@ -22,6 +22,7 @@
 
 + (id)storageWithData:(id)arg1;
 - (void).cxx_destruct;
+- (void)appendData:(id)arg1;
 - (void)appendFormat:(id)arg1;
 - (void)appendString:(id)arg1;
 - (void)appendString:(id)arg1 usingEncoding:(unsigned long long)arg2;

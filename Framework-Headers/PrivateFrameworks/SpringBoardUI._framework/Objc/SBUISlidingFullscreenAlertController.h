@@ -37,7 +37,6 @@
 - (id)newBottomBar;
 - (id)newTopBar;
 - (BOOL)shouldShowBottomBar;
-- (void)updateSpringBoardInPreparationForTransparentDismiss;
 - (void)viewDidLoad;
 - (BOOL)viewIsReadyToBeRemoved;
 - (void)viewWillAnimateIn;

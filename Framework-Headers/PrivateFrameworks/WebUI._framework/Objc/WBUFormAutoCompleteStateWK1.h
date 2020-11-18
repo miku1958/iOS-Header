@@ -30,6 +30,7 @@
 - (void)setAutoFillButtonTitle:(id)arg1;
 - (void)setFormControls:(id)arg1 areAutoFilled:(BOOL)arg2 clearField:(id)arg3;
 - (void)setShowingKeyboardInputView:(BOOL)arg1;
+- (BOOL)shouldOfferActionAutoFillCredentials;
 - (id)textFieldValue;
 - (id)webView;
 

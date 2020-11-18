@@ -6,7 +6,7 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOAddress, GEOPDAddress, GEOPDAddressObject, GEOPDEntity, GEOPDPlaceInfo, GEOStructuredAddress, NSDictionary, NSOrderedSet, NSString;
+@class CNPostalAddress, GEOAddress, GEOAddressObject, GEOPDAddress, GEOPDAddressObject, GEOPDEntity, GEOPDPlaceInfo, GEOStructuredAddress, NSDictionary, NSOrderedSet, NSString;
 
 @protocol GEOAddressObjectProtocol <NSObject>
 
@@ -17,7 +17,13 @@
 - (GEOAddress *)address;
 - (NSDictionary *)addressDictionary;
 - (NSString *)cityDisplayNameWithFallback:(BOOL)arg1;
+- (CNPostalAddress *)cnPostalAddress;
+- (NSString *)fullAddressNoCurrentCountryWithMultiline:(BOOL)arg1;
 - (NSString *)fullAddressWithMultiline:(BOOL)arg1;
+- (NSString *)fullAddressWithMultiline:(BOOL)arg1 relative:(GEOAddressObject *)arg2;
+- (id)initWithCNPostalAddress:(CNPostalAddress *)arg1 langauge:(NSString *)arg2 country:(NSString *)arg3 phoneticLocale:(NSString *)arg4;
+- (id)initWithContactAddressDictionary:(NSDictionary *)arg1 langauge:(NSString *)arg2 country:(NSString *)arg3 phoneticLocale:(NSString *)arg4;
+- (id)initWithCurrentCountry;
 - (id)initWithPlaceDataAddressObject:(GEOPDAddressObject *)arg1 placeDataAddress:(GEOPDAddress *)arg2 placeDataInfo:(GEOPDPlaceInfo *)arg3 placeDataEntity:(GEOPDEntity *)arg4 language:(NSString *)arg5 country:(NSString *)arg6 phoneticLocale:(NSString *)arg7;
 - (NSString *)name;
 - (NSString *)parkingDisplayName;
@@ -30,6 +36,10 @@
 - (NSString *)spokenName;
 - (GEOStructuredAddress *)spokenStructuredAddress;
 - (NSOrderedSet *)titlesForMapRect:(CDStruct_90e2a262)arg1;
+- (NSString *)venueLabel;
+- (NSString *)venueLabel:(long long)arg1;
+- (NSString *)venueLevel;
+- (NSString *)venueShortAddress;
 - (NSString *)weatherDisplayName;
 @end
 

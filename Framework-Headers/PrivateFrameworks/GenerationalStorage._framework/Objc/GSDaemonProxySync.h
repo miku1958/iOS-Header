@@ -22,8 +22,8 @@
 @property (strong, nonatomic) id result; // @synthesize result=_result;
 
 + (id)proxy;
-- (struct __CFError *)CFError;
-- (void)dealloc;
+- (void).cxx_destruct;
+- (struct __CFError *)copyCFError;
 - (void)finalize;
 - (void)forwardInvocation:(id)arg1;
 - (void)handleBoolResult:(BOOL)arg1 error:(id)arg2;

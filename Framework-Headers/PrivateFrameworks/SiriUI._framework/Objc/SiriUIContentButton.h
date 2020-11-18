@@ -14,13 +14,17 @@
     UIColor *_defaultColorForTemplate;
     UIColor *_highlightColorForTemplate;
     BOOL _usePlatterStyle;
+    struct UIEdgeInsets _hitTestEdgeInsets;
 }
 
+@property (nonatomic) struct UIEdgeInsets hitTestEdgeInsets; // @synthesize hitTestEdgeInsets=_hitTestEdgeInsets;
 @property (nonatomic) BOOL usePlatterStyle; // @synthesize usePlatterStyle=_usePlatterStyle;
 
 + (id)button;
 + (id)buttonWithImageMask:(id)arg1;
++ (id)buttonWithImageMask:(id)arg1 style:(long long)arg2;
 + (id)buttonWithImageTemplate:(id)arg1;
++ (id)buttonWithImageTemplate:(id)arg1 style:(long long)arg2;
 + (id)buttonWithLightWeightFont;
 + (id)buttonWithMediumWeightFont;
 - (void).cxx_destruct;
@@ -29,6 +33,7 @@
 - (void)_updateTintColor;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setDefaultColorForTemplate:(id)arg1;
 - (void)setHighlightColorForTemplate:(id)arg1;
 - (void)setHighlighted:(BOOL)arg1;

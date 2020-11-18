@@ -71,6 +71,7 @@
 - (void)markAsFinished;
 - (void)markCurrentPassAsFinished;
 - (BOOL)marksOutputTrackAsEnabled;
+- (id)mediaDataLocation;
 - (int)mediaTimeScale;
 - (struct CGSize)naturalSize;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -87,6 +88,7 @@
 - (void)setLanguageCode:(id)arg1;
 - (void)setLayer:(long long)arg1;
 - (void)setMarksOutputTrackAsEnabled:(BOOL)arg1;
+- (void)setMediaDataLocation:(id)arg1;
 - (void)setMediaTimeScale:(int)arg1;
 - (void)setNaturalSize:(struct CGSize)arg1;
 - (void)setPerformsMultiPassEncodingIfSupported:(BOOL)arg1;

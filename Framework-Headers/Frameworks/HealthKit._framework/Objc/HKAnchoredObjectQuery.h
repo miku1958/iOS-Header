@@ -6,34 +6,46 @@
 
 #import <HealthKit/HKQuery.h>
 
-@class HKQueryAnchor;
+#import <HealthKit/HKAnchoredObjectQueryClientInterface-Protocol.h>
 
-@interface HKAnchoredObjectQuery : HKQuery
+@class HKQueryAnchor, NSMutableArray, NSString;
+
+@interface HKAnchoredObjectQuery : HKQuery <HKAnchoredObjectQueryClientInterface>
 {
     BOOL _initialHandlerCalled;
+    NSMutableArray *_samplesPendingDelivery;
+    NSMutableArray *_deletedObjectsPendingDelivery;
     BOOL _includeDeletedObjects;
     CDUnknownBlockType _updateHandler;
     HKQueryAnchor *_anchor;
     unsigned long long _limit;
+    double _collectionInterval;
     CDUnknownBlockType _completionHandler;
 }
 
 @property (strong, nonatomic) HKQueryAnchor *anchor; // @synthesize anchor=_anchor;
+@property (nonatomic) double collectionInterval; // @synthesize collectionInterval=_collectionInterval;
 @property (readonly, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL includeDeletedObjects; // @synthesize includeDeletedObjects=_includeDeletedObjects;
 @property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
 
-+ (Class)_queryServerDataObjectClass;
++ (id)clientInterfaceProtocol;
++ (void)configureClientInterface:(id)arg1;
 - (void).cxx_destruct;
-- (void)_queue_cleanupAfterDeactivation;
-- (void)_queue_configureQueryServerDataObject:(id)arg1;
-- (CDUnknownBlockType)_queue_errorHandler;
-- (BOOL)_queue_shouldStayAliveAfterInitialResults;
-- (void)_queue_validate;
-- (void)deliverSampleObjects:(id)arg1 deletedObjects:(id)arg2 withAnchor:(id)arg3 forQuery:(id)arg4;
+- (void)client_deliverSampleObjects:(id)arg1 deletedObjects:(id)arg2 anchor:(id)arg3 clearPendingSamples:(BOOL)arg4 deliverResults:(BOOL)arg5 query:(id)arg6;
 - (id)initWithType:(id)arg1 predicate:(id)arg2 anchor:(unsigned long long)arg3 limit:(unsigned long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)initWithType:(id)arg1 predicate:(id)arg2 anchor:(id)arg3 limit:(unsigned long long)arg4 resultsHandler:(CDUnknownBlockType)arg5;
+- (void)queue_connectToQueryServerWithHealthStore:(id)arg1 activationUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)queue_deliverError:(id)arg1;
+- (void)queue_populateConfiguration:(id)arg1;
+- (void)queue_queryDidDeactivate:(id)arg1;
+- (BOOL)queue_shouldDeactivateAfterInitialResults;
+- (void)queue_validate;
 
 @end
 

@@ -19,5 +19,6 @@
 - (CNContact *)defaultBillingAddressForPaymentPass:(PKPaymentPass *)arg1;
 - (CNContact *)defaultBillingAddressForRemotePaymentInstrument:(PKRemotePaymentInstrument *)arg1;
 - (void)setDefaultBillingAddress:(CNContact *)arg1 forPaymentPass:(PKPaymentPass *)arg2;
+- (void)setDefaultBillingAddress:(CNContact *)arg1 forRemotePaymentInstrument:(PKRemotePaymentInstrument *)arg2;
 @end
 

@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface ADCanonicalRequest : NSObject
 {
-    BOOL _didSignRequest;
+    BOOL _didLeaveGroup;
     NSObject<OS_dispatch_queue> *_signingQueue;
     NSObject<OS_dispatch_group> *_signingGroup;
 }
 
-@property (nonatomic) BOOL didSignRequest; // @synthesize didSignRequest=_didSignRequest;
+@property (nonatomic) BOOL didLeaveGroup; // @synthesize didLeaveGroup=_didLeaveGroup;
 @property (nonatomic) NSObject<OS_dispatch_group> *signingGroup; // @synthesize signingGroup=_signingGroup;
 @property (nonatomic) NSObject<OS_dispatch_queue> *signingQueue; // @synthesize signingQueue=_signingQueue;
 

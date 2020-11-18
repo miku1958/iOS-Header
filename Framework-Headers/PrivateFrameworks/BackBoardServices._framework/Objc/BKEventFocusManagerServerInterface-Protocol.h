@@ -8,5 +8,6 @@
 
 @protocol BKEventFocusManagerServerInterface <NSObject>
 - (void)setObservesFocusDeferralChanges:(BOOL)arg1;
+- (void)setObservesTouchDelivery:(BOOL)arg1 forTouchIdentifier:(unsigned int)arg2;
 @end
 

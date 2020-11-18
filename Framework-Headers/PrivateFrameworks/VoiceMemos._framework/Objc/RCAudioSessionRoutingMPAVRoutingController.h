@@ -28,6 +28,7 @@
 @property (readonly, nonatomic) BOOL isRoutingToPhoneCall;
 
 - (void).cxx_destruct;
+- (long long)_outputRouteFromAudioSession;
 - (id)_rcDelegate;
 - (void)_updateHasCategoryEverBeenActive;
 - (void)audioSessionInterruptionNotification:(id)arg1;
@@ -36,9 +37,9 @@
 - (void)fetchAvailableRoutesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithName:(id)arg1;
 - (BOOL)makeAudioSessionCategoryActive:(BOOL)arg1;
+- (long long)outputRouteTypeForNavigationIcon;
 - (BOOL)routeOtherThanHandsetAndSpeakerAvailable;
 - (void)setDelegate:(id)arg1;
-- (void)showAvailableRoutes;
 
 @end
 

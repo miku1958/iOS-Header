@@ -12,11 +12,12 @@
     SEL _selector;
 }
 
+@property (readonly, nonatomic) SEL selector; // @synthesize selector=_selector;
+@property (readonly, weak, nonatomic) id target; // @synthesize target=_target;
+
 + (id)targetSelectorWithTarget:(id)arg1 selector:(SEL)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithTarget:(id)arg1 selector:(SEL)arg2;
-- (SEL)selector;
-- (id)target;
 
 @end
 

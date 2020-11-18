@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HMDPairedSync, HMDWatchSync, NSMutableArray, NSString;
 
-@interface HMDWatchSyncState : NSObject
+@interface HMDWatchSyncState : HMFObject
 {
     NSMutableArray *_syncs;
     NSString *_deviceId;

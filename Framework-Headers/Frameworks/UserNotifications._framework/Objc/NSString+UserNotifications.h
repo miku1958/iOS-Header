@@ -8,6 +8,7 @@
 
 @interface NSString (UserNotifications)
 - (id)un_logDigest;
+- (id)un_stringWithMaxLength:(unsigned long long)arg1;
 - (unsigned long long)un_unsignedLongLongValue;
 @end
 

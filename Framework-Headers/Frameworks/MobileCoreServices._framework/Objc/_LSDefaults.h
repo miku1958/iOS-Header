@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSURL;
+@class NSArray, NSData, NSMutableDictionary, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface _LSDefaults : NSObject
@@ -14,8 +14,11 @@
     NSObject<OS_dispatch_queue> *_ivarQueue;
     NSURL *_systemContainerURL;
     NSURL *_systemGroupContainerURL;
-    NSURL *_iconsGroupContainerURL;
     NSURL *_userContainerURL;
+    NSData *_hmacSecret;
+    NSMutableDictionary *_darwinNotificationNames;
+    unsigned int _darwinNotificationNamesUID;
+    struct os_unfair_lock_s _darwinNotificationNamesLock;
     BOOL _inSyncBubble;
     BOOL _inXCTestRigInsecure;
     BOOL _appleInternal;
@@ -23,31 +26,34 @@
     BOOL _hasServer;
     BOOL _inEducationMode;
     BOOL _hasPersistentPreferences;
+    long long _currentDisplayGamut;
 }
 
+@property (readonly) NSData *HMACSecret;
+@property (readonly, nonatomic) BOOL abortIfMayNotMapDatabase;
 @property (readonly, nonatomic) BOOL allowsAlternateIcons;
 @property (readonly, nonatomic, getter=isAppleInternal) BOOL appleInternal; // @synthesize appleInternal=_appleInternal;
+@property (readonly) long long concurrentInstallOperations;
 @property (readonly) unsigned int currentSchemaVersion;
 @property (readonly) double databaseSaveInterval;
 @property (readonly) double databaseSaveLatency;
+@property (readonly) unsigned short databaseStoreFileMode;
 @property (readonly) NSURL *databaseStoreFileURL;
 @property (readonly) NSURL *dbRecoveryFileURL;
 @property (readonly) NSURL *dbSentinelFileURL;
 @property (readonly) BOOL hasPersistentPreferences; // @synthesize hasPersistentPreferences=_hasPersistentPreferences;
 @property BOOL hasServer; // @synthesize hasServer=_hasServer;
-@property (readonly) NSURL *iconCacheFolderURL;
-@property (readonly) NSURL *iconCacheSystemVersionFileURL;
-@property (readonly) NSURL *iconsGroupContainerURL;
 @property (readonly) NSURL *identifiersFileURL;
 @property (readonly, getter=isInEducationMode) BOOL inEducationMode; // @synthesize inEducationMode=_inEducationMode;
 @property (readonly, getter=isInSyncBubble) BOOL inSyncBubble; // @synthesize inSyncBubble=_inSyncBubble;
 @property (readonly, nonatomic, getter=isInXCTestRigInsecure) BOOL inXCTestRigInsecure; // @synthesize inXCTestRigInsecure=_inXCTestRigInsecure;
-@property BOOL isServer; // @synthesize isServer=_isServer;
-@property (readonly) BOOL isSimulator;
+@property (readonly, nonatomic) BOOL issueSandboxExceptionsIfMayNotMapDatabase;
 @property (readonly) NSURL *preferencesFileURL;
 @property (readonly) NSArray *preferredLocalizations; // @dynamic preferredLocalizations;
 @property (readonly) NSURL *queriedSchemesMapFileURL;
 @property (readonly) NSURL *securePeferencesFileURL;
+@property (getter=isServer) BOOL server; // @synthesize server=_isServer;
+@property (readonly, getter=isSimulator) BOOL simulator;
 @property (readonly) NSURL *systemContainerURL;
 @property (readonly) NSURL *systemGroupContainerURL;
 @property (readonly) NSURL *userContainerURL;
@@ -55,13 +61,13 @@
 + (BOOL)appleInternal;
 + (BOOL)hasPersistentPreferences;
 + (BOOL)hasServer;
-+ (id)iconsGroupContainerURL;
 + (BOOL)inSyncBubble;
 + (BOOL)inXCTestRigInsecure;
 + (id)sharedInstance;
 + (id)systemContainerURL;
 + (id)systemGroupContainerURL;
 + (id)userContainerURL;
+- (id)classesWithNameForXCTests:(const char *)arg1;
 - (id)darwinNotificationNameForCurrentUser:(id)arg1;
 - (id)databaseUpdateNotificationName;
 - (void)dealloc;

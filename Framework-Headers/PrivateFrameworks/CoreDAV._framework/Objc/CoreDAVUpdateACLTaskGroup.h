@@ -28,10 +28,10 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
 
+- (void).cxx_destruct;
 - (void)_finishWithError:(id)arg1 state:(int)arg2;
 - (void)_startGetACL;
 - (void)_startSetACLWithAccessControlEntities:(id)arg1;
-- (void)dealloc;
 - (id)initWithAccountInfoProvider:(id)arg1 aceItems:(id)arg2 url:(id)arg3 taskManager:(id)arg4;
 - (void)startTaskGroup;
 - (void)task:(id)arg1 didFinishWithError:(id)arg2;

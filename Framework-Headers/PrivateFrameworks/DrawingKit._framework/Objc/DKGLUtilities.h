@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)_postGLActiveNotification;
++ (void)_postGLInactiveNotification;
 + (unsigned int)compileShader:(id)arg1 ofType:(id)arg2;
 + (void)createFBO:(unsigned int *)arg1 depthRB:(unsigned int *)arg2 texture:(unsigned int *)arg3 width:(int)arg4 height:(int)arg5 format:(unsigned int)arg6;
 + (id)createPlatformGLContext;
@@ -22,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (void)deleteVBO:(unsigned int *)arg1;
 + (void)drawQuadAtX:(float)arg1 Y:(float)arg2 width:(float)arg3 height:(float)arg4;
 + (BOOL)gpuAvailable;
++ (void)initialize;
 + (id)pathForResource:(id)arg1 ofType:(id)arg2;
 + (BOOL)setCurrentGLContext:(id)arg1;
 + (void)setProjectionMatrixForWidth:(float)arg1 height:(float)arg2 flipped:(BOOL)arg3 matrix:(CDStruct_f1db2b5e *)arg4;

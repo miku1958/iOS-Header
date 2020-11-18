@@ -51,6 +51,7 @@
 + (Class)transitIncidentType;
 + (Class)walkingType;
 + (Class)zilchPointsType;
+- (void).cxx_destruct;
 - (id)accessPointAtIndex:(unsigned long long)arg1;
 - (unsigned long long)accessPointsCount;
 - (void)addAccessPoint:(id)arg1;
@@ -82,7 +83,6 @@
 - (void)clearZilchPoints;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)hallAtIndex:(unsigned long long)arg1;

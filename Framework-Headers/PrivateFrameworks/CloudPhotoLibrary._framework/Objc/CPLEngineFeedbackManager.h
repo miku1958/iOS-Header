@@ -25,6 +25,7 @@
 
 - (void).cxx_destruct;
 - (void)_appendMessage:(id)arg1;
+- (void)_appendMessages:(id)arg1;
 - (void)_load;
 - (void)_reallySendFeedbackToServer;
 - (void)_save;
@@ -37,7 +38,9 @@
 - (void)reportEndOfReset;
 - (void)reportFetchChangesRewindToFeatureVersion:(unsigned long long)arg1;
 - (void)reportMessage:(id)arg1;
+- (void)reportMessages:(id)arg1;
 - (void)reportResetType:(id)arg1 reason:(id)arg2;
+- (void)reportSetting:(id)arg1 hasBeenSetToValue:(id)arg2;
 - (void)sendFeedbackToServerIfNecessary;
 
 @end

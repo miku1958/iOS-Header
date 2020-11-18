@@ -27,6 +27,7 @@
 
 + (Class)logoURLsType;
 + (Class)snippetLogoURLsType;
+- (void).cxx_destruct;
 - (void)addLogoURLs:(id)arg1;
 - (void)addSnippetLogoURLs:(id)arg1;
 - (id)bestURLForLogos:(id)arg1 scale:(double)arg2;
@@ -34,7 +35,6 @@
 - (void)clearSnippetLogoURLs;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

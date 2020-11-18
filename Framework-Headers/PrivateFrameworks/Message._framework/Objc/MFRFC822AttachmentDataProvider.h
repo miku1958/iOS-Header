@@ -22,8 +22,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
-- (void)fetchDataForAttachment:(id)arg1 withDataConsumer:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
+- (void)fetchDataForAttachment:(id)arg1 consumer:(id)arg2 progress:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)fetchLocalDataForAttachment:(id)arg1;
 - (id)initWithMessageData:(id)arg1 parentPart:(id)arg2;
 - (id)messageForAttachment:(id)arg1;

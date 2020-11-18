@@ -8,12 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAutocompleteEntryAddress, GEOPDAutocompleteEntryBusiness, GEOPDAutocompleteEntryCategory, GEOPDAutocompleteEntryHighlightLine, GEOPDAutocompleteEntryQuery, PBUnknownFields;
+@class GEOPDAutocompleteEntryAddress, GEOPDAutocompleteEntryBrandProfile, GEOPDAutocompleteEntryBusiness, GEOPDAutocompleteEntryCategory, GEOPDAutocompleteEntryHighlightLine, GEOPDAutocompleteEntryQuery, PBUnknownFields;
 
 @interface GEOPDAutocompleteEntry : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
     GEOPDAutocompleteEntryAddress *_address;
+    GEOPDAutocompleteEntryBrandProfile *_brandProfile;
     GEOPDAutocompleteEntryBusiness *_business;
     GEOPDAutocompleteEntryCategory *_category;
     GEOPDAutocompleteEntryHighlightLine *_highlightExtra;
@@ -26,9 +27,11 @@
 }
 
 @property (strong, nonatomic) GEOPDAutocompleteEntryAddress *address; // @synthesize address=_address;
+@property (strong, nonatomic) GEOPDAutocompleteEntryBrandProfile *brandProfile; // @synthesize brandProfile=_brandProfile;
 @property (strong, nonatomic) GEOPDAutocompleteEntryBusiness *business; // @synthesize business=_business;
 @property (strong, nonatomic) GEOPDAutocompleteEntryCategory *category; // @synthesize category=_category;
 @property (readonly, nonatomic) BOOL hasAddress;
+@property (readonly, nonatomic) BOOL hasBrandProfile;
 @property (readonly, nonatomic) BOOL hasBusiness;
 @property (readonly, nonatomic) BOOL hasCategory;
 @property (readonly, nonatomic) BOOL hasHighlightExtra;
@@ -41,10 +44,10 @@
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

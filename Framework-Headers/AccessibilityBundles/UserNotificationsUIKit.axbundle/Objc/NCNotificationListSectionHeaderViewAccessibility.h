@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (long long)_accessibilitySortPriority;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

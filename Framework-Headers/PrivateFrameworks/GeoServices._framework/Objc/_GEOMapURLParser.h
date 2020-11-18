@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class GEOUserSessionEntity, NSString, NSURL;
+@class GEOURLExtraStorage, GEOUserSessionEntity, NSString, NSURL;
 
 @interface _GEOMapURLParser : NSObject
 {
@@ -33,6 +33,8 @@
     NSString *_contentProviderID;
     NSString *_abRecordID;
     NSString *_abAddressID;
+    NSString *_cnContactIdentifier;
+    NSString *_cnAddressIdentifier;
     GEOUserSessionEntity *_userSessionEntity;
     double _altitude;
     double _rotation;
@@ -42,6 +44,7 @@
     NSString *_lineName;
     long long _favoritesType;
     BOOL _tester;
+    GEOURLExtraStorage *_extraStorage;
 }
 
 @property (readonly) NSString *abAddressID; // @synthesize abAddressID=_abAddressID;
@@ -49,11 +52,14 @@
 @property (readonly) NSString *addressString; // @synthesize addressString=_addressString;
 @property (readonly) double altitude; // @synthesize altitude=_altitude;
 @property (readonly) CDStruct_c3b9c2ee centerCoordinate; // @synthesize centerCoordinate=_centerCoordinate;
+@property (readonly) NSString *cnAddressIdentifier; // @synthesize cnAddressIdentifier=_cnAddressIdentifier;
+@property (readonly) NSString *cnContactIdentifier; // @synthesize cnContactIdentifier=_cnContactIdentifier;
 @property (readonly) NSString *contentProvider; // @synthesize contentProvider=_contentProvider;
 @property (readonly) NSString *contentProviderID; // @synthesize contentProviderID=_contentProviderID;
 @property (readonly) NSString *directionsDestinationAddressString; // @synthesize directionsDestinationAddressString=_directionsDestinationAddressString;
 @property (readonly) NSString *directionsSourceAddressString; // @synthesize directionsSourceAddressString=_directionsSourceAddressString;
 @property (readonly) BOOL exactPositionSpecified; // @synthesize exactPositionSpecified=_exactPositionSpecified;
+@property (readonly) GEOURLExtraStorage *extraStorage; // @synthesize extraStorage=_extraStorage;
 @property (readonly) long long favoritesType; // @synthesize favoritesType=_favoritesType;
 @property (readonly) unsigned long long lineMUID; // @synthesize lineMUID=_lineMUID;
 @property (readonly, copy) NSString *lineName; // @synthesize lineName=_lineName;
@@ -76,7 +82,7 @@
 + (BOOL)isValidMapURL:(id)arg1;
 + (BOOL)isValidMapsCategoryURL:(id)arg1;
 + (BOOL)isValidMapsURLForAppendingSharedSessionID:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithURL:(id)arg1;
 - (BOOL)parseIncludingCustomParameters:(BOOL)arg1;
 

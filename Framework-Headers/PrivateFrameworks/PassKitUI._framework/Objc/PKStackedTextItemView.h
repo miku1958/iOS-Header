@@ -45,6 +45,7 @@
 - (id)initWithStyle:(long long)arg1;
 - (void)layoutIfNeededAnimated:(BOOL)arg1;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
 - (void)setContent:(id)arg1 animated:(BOOL)arg2;
 - (void)setTextAlignment:(long long)arg1 animated:(BOOL)arg2;
 

@@ -25,6 +25,7 @@
 
 + (id)objectFromPlist:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

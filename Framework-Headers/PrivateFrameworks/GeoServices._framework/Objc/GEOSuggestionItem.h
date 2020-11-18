@@ -32,9 +32,9 @@
 @property (strong, nonatomic) NSString *suggestionString; // @synthesize suggestionString=_suggestionString;
 @property (nonatomic) int tappingCount; // @synthesize tappingCount=_tappingCount;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

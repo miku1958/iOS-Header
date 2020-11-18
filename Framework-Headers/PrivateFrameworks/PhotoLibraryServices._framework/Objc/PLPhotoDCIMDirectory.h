@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableDictionary, NSString;
 
@@ -25,15 +25,11 @@
 
 - (id)_userInfoPath;
 - (void)clearDCFDirectories;
-- (void)countOfAllPhotos:(int *)arg1 andVideos:(int *)arg2 stopAfterFirst:(BOOL)arg3;
-- (id)countOfAllPhotosAndVideos;
 - (id)dcfDirectories;
 - (id)dcimPath;
 - (void)dealloc;
 - (BOOL)hasChangedExternally;
 - (id)initWithDCIMPath:(id)arg1;
-- (BOOL)isValidImageExtension:(id)arg1;
-- (BOOL)isValidVideoExtension:(id)arg1;
 - (void)lockDirectory;
 - (id)miscPath;
 - (id)nextAvailableDirectory;

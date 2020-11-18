@@ -8,20 +8,21 @@
 
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HKExtendedServerInterface-Protocol.h>
+#import <HealthDaemon/_HKXPCExportable-Protocol.h>
 
-@class HDClient, HDProfile, NSString;
+@class HDProfile, HDXPCClient, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDHealthExtensionsServer : NSObject <HDDiagnosticObject, HKExtendedServerInterface>
+@interface HDHealthExtensionsServer : NSObject <HDDiagnosticObject, HKExtendedServerInterface, _HKXPCExportable>
 {
     BOOL _registeredForAchievementNotifications;
     BOOL _registeredForAchievementDefinitionUnviewedCountChangeNotifications;
     NSObject<OS_dispatch_queue> *_queue;
-    HDClient *_client;
+    HDXPCClient *_client;
     HDProfile *_profile;
 }
 
-@property (strong, nonatomic) HDClient *client; // @synthesize client=_client;
+@property (strong, nonatomic) HDXPCClient *client; // @synthesize client=_client;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -36,21 +37,25 @@
 - (void).cxx_destruct;
 - (void)_achievementDefinitionAvailabilityChanged:(id)arg1;
 - (void)_achievementDefinitionUnviewedCountChanged:(id)arg1;
-- (void)_achievementsAdded:(id)arg1;
+- (void)_achievementsAddedOrRemoved:(id)arg1;
 - (void)_callClientRemoteAchievementDefinitionUnviewedCountChanged;
 - (void)_checkForUpdatedAchievementAssetsOnce;
-- (id)clientInterface;
+- (void)connectionInvalidated;
 - (void)dealloc;
 - (id)diagnosticDescription;
+- (id)exportedInterface;
 - (id)initWithClient:(id)arg1 profile:(id)arg2;
-- (void)invalidate;
+- (id)remoteInterface;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)remote_achievementAssetAvailabilityOnPairedDeviceForIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_addAchievement:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remote_createMonthlyChallengeAchievementForMonth:(long long)arg1 year:(long long)arg2 predicateString:(id)arg3 progressExpressionString:(id)arg4 goalExpressionString:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)remote_deleteAchievementWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_deleteAllAchievementsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)remote_expressionValue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_fetchAchievementAssetsServerURLWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_fetchAchievementsWithCompletedDateBetweenStart:(id)arg1 end:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)remote_fetchDynamicAchievementDefinitionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_fetchHiddenUnearnedAchievementDefinitionIdentifiersAmongIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_fetchNumberOfUnviewedAchievementsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_fetchUnviewedAchievementDefinitionIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
@@ -58,14 +63,15 @@
 - (void)remote_markAchievementDefinitionIdentifierAlertViewed:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_markAchievementsAlerted:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_nextScheduledAchievementDefinitionAlertTaskDateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)remote_progressAchievementWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_registerForAchievementDefinitionNotificationsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_registerForAchievementNotificationsAndFetchUnalertedCountWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_resetAchievementDefinitionAlertedStates:(BOOL)arg1 availabilityStates:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_runAchievementsFixupAsDryRun:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remote_runCompanionAchievementManagerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_setAchievementAssetsServerURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_setCurrentActivityCacheOverrideDate:(id)arg1 timeZone:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_updateAllAchievementAssetsWithCompletion:(CDUnknownBlockType)arg1;
-- (id)serverInterface;
 
 @end
 

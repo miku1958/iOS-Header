@@ -10,16 +10,22 @@
 #import <FlightUtilities/UIPageViewControllerDataSource-Protocol.h>
 #import <FlightUtilities/UIPageViewControllerDelegate-Protocol.h>
 
-@class FUFLightTrack, FUPlaneTrackerAnnotationView, MKMapView, NSArray, NSMutableArray, NSString, UIPageControl, UIPageViewController, UIVisualEffectView;
+@class FUFLightTrack, FUPlaneTrackerAnnotationView, MKMapView, NSArray, NSLayoutConstraint, NSMutableArray, NSString, UIPageControl, UIPageViewController, UIScrollView, UIVisualEffectView;
 @protocol FUFlightViewDelegate;
 
 @interface FUFlightView : UIView <UIPageViewControllerDelegate, UIPageViewControllerDataSource, FUFlightInfoViewProtocol>
 {
     FUPlaneTrackerAnnotationView *_planeTracker;
-    long long _currentFlightIndex;
     NSMutableArray *_tracks;
     FUFLightTrack *_currentTrack;
+    NSMutableArray *_controllers;
     UIPageViewController *_pageViewController;
+    UIScrollView *_pageViewContainer;
+    BOOL _spotlightMode;
+    NSLayoutConstraint *_pageControllerHeightConstraint;
+    NSArray *_allLegs;
+    unsigned long long _displayStyle;
+    BOOL _ignoreMapUpdate;
     BOOL _highlightCurrentFlightLeg;
     BOOL _showInfoPanel;
     long long _currentFocus;
@@ -28,44 +34,71 @@
     UIView *_borderLineViewLandscape;
     UIView *_borderLineViewPortrait;
     UIPageControl *_pageControl;
+    NSLayoutConstraint *_pageContainerHeightConstraint;
+    NSLayoutConstraint *_lanscapeConstraint1;
+    NSLayoutConstraint *_lanscapeConstraint2;
+    NSLayoutConstraint *_lanscapeConstraint3;
+    NSLayoutConstraint *_portraitConstraint1;
     UIView *_errorView;
     UIView *_loadingView;
     NSArray *_flights;
+    long long _selectedFlight;
+    long long _selectedLeg;
     id<FUFlightViewDelegate> _delegate;
+    NSLayoutConstraint *_bottomMapConstraint;
+    NSLayoutConstraint *_leadingMapConstraint;
     struct UIEdgeInsets _mapInsets;
 }
 
-@property (weak) UIVisualEffectView *backBlurView; // @synthesize backBlurView=_backBlurView;
-@property (weak) UIView *borderLineViewLandscape; // @synthesize borderLineViewLandscape=_borderLineViewLandscape;
-@property (weak) UIView *borderLineViewPortrait; // @synthesize borderLineViewPortrait=_borderLineViewPortrait;
-@property long long currentFocus; // @synthesize currentFocus=_currentFocus;
+@property (weak, nonatomic) UIVisualEffectView *backBlurView; // @synthesize backBlurView=_backBlurView;
+@property (weak, nonatomic) UIView *borderLineViewLandscape; // @synthesize borderLineViewLandscape=_borderLineViewLandscape;
+@property (weak, nonatomic) UIView *borderLineViewPortrait; // @synthesize borderLineViewPortrait=_borderLineViewPortrait;
+@property (strong, nonatomic) NSLayoutConstraint *bottomMapConstraint; // @synthesize bottomMapConstraint=_bottomMapConstraint;
+@property (nonatomic) long long currentFocus; // @synthesize currentFocus=_currentFocus;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<FUFlightViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) unsigned long long displayStyle; // @synthesize displayStyle=_displayStyle;
 @property (strong) UIView *errorView; // @synthesize errorView=_errorView;
 @property (strong, nonatomic) NSArray *flights; // @synthesize flights=_flights;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL highlightCurrentFlightLeg; // @synthesize highlightCurrentFlightLeg=_highlightCurrentFlightLeg;
+@property (nonatomic) BOOL ignoreMapUpdate; // @synthesize ignoreMapUpdate=_ignoreMapUpdate;
+@property (weak, nonatomic) NSLayoutConstraint *lanscapeConstraint1; // @synthesize lanscapeConstraint1=_lanscapeConstraint1;
+@property (weak, nonatomic) NSLayoutConstraint *lanscapeConstraint2; // @synthesize lanscapeConstraint2=_lanscapeConstraint2;
+@property (weak, nonatomic) NSLayoutConstraint *lanscapeConstraint3; // @synthesize lanscapeConstraint3=_lanscapeConstraint3;
+@property (strong, nonatomic) NSLayoutConstraint *leadingMapConstraint; // @synthesize leadingMapConstraint=_leadingMapConstraint;
 @property (strong) UIView *loadingView; // @synthesize loadingView=_loadingView;
 @property (nonatomic) struct UIEdgeInsets mapInsets; // @synthesize mapInsets=_mapInsets;
-@property (weak) MKMapView *mapView; // @synthesize mapView=_mapView;
-@property (weak) UIPageControl *pageControl; // @synthesize pageControl=_pageControl;
+@property (weak, nonatomic) MKMapView *mapView; // @synthesize mapView=_mapView;
+@property (weak, nonatomic) NSLayoutConstraint *pageContainerHeightConstraint; // @synthesize pageContainerHeightConstraint=_pageContainerHeightConstraint;
+@property (weak, nonatomic) UIPageControl *pageControl; // @synthesize pageControl=_pageControl;
+@property (weak, nonatomic) NSLayoutConstraint *portraitConstraint1; // @synthesize portraitConstraint1=_portraitConstraint1;
+@property (nonatomic) long long selectedFlight; // @synthesize selectedFlight=_selectedFlight;
+@property (nonatomic) long long selectedLeg; // @synthesize selectedLeg=_selectedLeg;
 @property (nonatomic) BOOL showInfoPanel; // @synthesize showInfoPanel=_showInfoPanel;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_refreshMapOverlay;
-- (void)_updateToFocus:(long long)arg1 animated:(BOOL)arg2;
+- (unsigned long long)absoluteLegIndex;
 - (void)addTrack:(id)arg1;
+- (id)allLegs;
 - (id)arrivalCamera;
 - (void)awakeFromNib;
 - (void)changeCurrentPage:(id)arg1;
 - (void)cleanupView;
 - (id)currentFlight;
+- (id)currentLeg;
 - (id)departureCamera;
 - (void)fitMap:(BOOL)arg1;
 - (id)flightCamera;
+- (id)flightForLeg:(id)arg1;
 - (void)flightInfoView:(id)arg1 didUpdateFocus:(long long)arg2;
+- (BOOL)hasFollowupContent:(id)arg1;
+- (id)infoViewControllerCreate;
+- (BOOL)landscapeMode;
+- (BOOL)landscapeModeForTraits:(id)arg1;
+- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (void)mapView:(id)arg1 regionDidChangeAnimated:(BOOL)arg2;
 - (id)mapView:(id)arg1 rendererForOverlay:(id)arg2;
@@ -74,13 +107,21 @@
 - (void)pageViewController:(id)arg1 didFinishAnimating:(BOOL)arg2 previousViewControllers:(id)arg3 transitionCompleted:(BOOL)arg4;
 - (id)pageViewController:(id)arg1 viewControllerAfterViewController:(id)arg2;
 - (id)pageViewController:(id)arg1 viewControllerBeforeViewController:(id)arg2;
-- (void)setCurrentIndex:(long long)arg1 animated:(BOOL)arg2;
+- (BOOL)preservesSuperviewLayoutMargins;
+- (void)removeMapBackground;
+- (void)setAbsoluteIndex:(unsigned long long)arg1 animated:(BOOL)arg2;
+- (BOOL)setFlights:(id)arg1 selectedFlight:(long long)arg2 selectedLeg:(long long)arg3;
 - (void)setupStyles;
 - (void)showError;
 - (void)showInfo;
 - (void)showLoading;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateBorderLines;
+- (void)updateConstraints;
 - (void)updateMapArcs;
 - (void)updateMapCamera;
+- (void)updateOrienationConstraints;
+- (void)updatePageControllerScrolling;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <CompanionSync/IDSServiceDelegate-Protocol.h>
 
-@class IDSService, NSDictionary, NSMutableArray, NSMutableIndexSet, NSMutableSet, NSObject, NSString, NSURL, SYDevice, SYStartSyncSession, _SYInputStreamer, _SYOutputStreamer;
+@class IDSMessageContext, IDSService, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSObject, NSString, NSURL, SYDevice, SYStartSyncSession, _SYInputStreamer, _SYOutputStreamer;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     _SYOutputStreamer *_outputStream;
     NSURL *_inputFileURL;
     _SYInputStreamer *_inputStream;
+    IDSMessageContext *_inputPriorityBoostContext;
     NSURL *_responseFileURL;
     _SYOutputStreamer *_responseStream;
     BOOL _responsesCanceled;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
     NSMutableIndexSet *_responseMessageRows;
     NSMutableArray *_deferredIncomingSessions;
     NSMutableSet *_singleMessageUUIDs;
+    NSMutableDictionary *_messageIDsToSessionIDs;
     NSDictionary *_customIDSOptions;
 }
 
@@ -47,10 +49,12 @@ __attribute__((visibility("hidden")))
 - (void)_cancelResponses;
 - (void)_cancelSession;
 - (void)_consumeRemainingStreamDataWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)_crcChecksum:(id)arg1;
 - (void)_enqueueSingleMessage:(id)arg1 withMessageID:(unsigned short)arg2 priority:(long long)arg3 options:(id)arg4 userContext:(id)arg5 callback:(CDUnknownBlockType)arg6;
 - (id)_fileTransferHeader;
-- (void)_handleIncomingSessionFileAtOwnedURL:(id)arg1 metadata:(id)arg2 identifier:(id)arg3;
-- (void)_handleIncomingSessionFileAtURL:(id)arg1 metadata:(id)arg2 identifier:(id)arg3;
+- (void)_handleError:(id)arg1 messageID:(id)arg2 streamer:(id)arg3;
+- (void)_handleIncomingSessionFileAtOwnedURL:(id)arg1 metadata:(id)arg2 identifier:(id)arg3 idsContext:(id)arg4;
+- (void)_handleIncomingSessionFileAtURL:(id)arg1 metadata:(id)arg2 identifier:(id)arg3 idsContext:(id)arg4;
 - (void)_handleIncomingStreamDataWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleProtobuf:(id)arg1 ofType:(unsigned short)arg2 identifier:(id)arg3 isResponse:(BOOL)arg4 withCompletion:(CDUnknownBlockType)arg5;
 - (void)_handleSessionRestart:(id)arg1 priority:(long long)arg2 options:(id)arg3 userContext:(id)arg4 callback:(CDUnknownBlockType)arg5;

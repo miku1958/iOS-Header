@@ -12,7 +12,7 @@
 
 @interface _WKUserContentFilter : NSObject <WKObject>
 {
-    struct ObjectStorage<API::UserContentExtension> _userContentExtension;
+    struct RetainPtr<WKContentRuleList> _contentRuleList;
 }
 
 @property (readonly) struct Object *_apiObject;
@@ -21,7 +21,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (id)_initWithWKContentRuleList:(id)arg1;
 
 @end
 

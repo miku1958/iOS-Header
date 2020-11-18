@@ -17,6 +17,7 @@
     struct CGSize _measuredSize;
     unsigned long long _index;
     BOOL _donatableSpaceIsValid;
+    BOOL _accessibilityEnabled;
     CDStruct_a157df34 _donatableSpace;
     NUIWidgetGridView *_gridView;
 }
@@ -37,6 +38,7 @@
 - (void)_didTapButton:(id)arg1;
 - (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
+- (id)currentFont;
 - (CDStruct_a157df34)donatableSpace;
 - (CDStruct_a157df34)donatableSpaceAllowRemeasure:(BOOL)arg1;
 - (id)initWithWidgetGridView:(id)arg1 item:(id)arg2 index:(unsigned long long)arg3;

@@ -11,20 +11,21 @@
 @interface _HKAchievementPredicateActivitySummaryEnvironment : _HKBaseAchievementPredicateEnvironment
 {
     HKActivitySummary *_activitySummary;
-    double _previousMovePercent;
 }
 
 @property (strong, nonatomic) HKActivitySummary *activitySummary; // @synthesize activitySummary=_activitySummary;
 @property (readonly, nonatomic) double briskMinutes;
+@property (readonly, nonatomic) double briskMinutesPercent;
 @property (readonly, nonatomic) double moveCalories;
 @property (readonly, nonatomic) double moveGoalCalories;
 @property (readonly, nonatomic) double movePercent;
-@property (readonly, nonatomic) double previousMovePercent; // @synthesize previousMovePercent=_previousMovePercent;
 @property (readonly, nonatomic) double standHours;
+@property (readonly, nonatomic) double standPercent;
 @property (readonly, nonatomic) long long stepCount;
 @property (readonly, nonatomic) double walkingRunningDistanceInKilometers;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)initWithActivitySummary:(id)arg1;
 
 @end

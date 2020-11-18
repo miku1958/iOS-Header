@@ -6,17 +6,24 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSString;
+@class NSDictionary, NSString;
+@protocol OS_dispatch_queue, OS_xpc_object;
 
 @interface MRNotification : NSObject
 {
-    CDUnknownBlockType _callback;
-    NSString *_name;
+    NSString *_notification;
+    NSDictionary *_userInfo;
+    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_xpc_object> *_xpcMessage;
 }
 
+@property (readonly, nonatomic) NSString *notification; // @synthesize notification=_notification;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
+@property (strong, nonatomic) NSObject<OS_xpc_object> *xpcMessage; // @synthesize xpcMessage=_xpcMessage;
+
 - (void)dealloc;
-- (id)initWithName:(id)arg1 callback:(CDUnknownBlockType)arg2;
-- (void)onNotification:(id)arg1;
+- (id)initWithNotification:(id)arg1 userInfo:(id)arg2 queue:(id)arg3;
 
 @end
 

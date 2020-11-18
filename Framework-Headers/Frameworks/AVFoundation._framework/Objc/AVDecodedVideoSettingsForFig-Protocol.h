@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @protocol AVDecodedVideoSettingsForFig
 
+@property (readonly, nonatomic) NSString *fieldMode;
 @property (readonly, nonatomic) NSDictionary *pixelBufferAttributes;
 
 @end

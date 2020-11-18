@@ -9,35 +9,41 @@
 #import <Intents/INSpeakable-Protocol.h>
 #import <Intents/INSpeakableStringExport-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface INSpeakableString : NSObject <INSpeakableStringExport, INSpeakable>
 {
     NSString *_spokenPhrase;
     NSString *_pronunciationHint;
-    NSString *_identifier;
+    NSString *_vocabularyIdentifier;
+    NSArray *_alternativeSpeakableMatches;
 }
 
+@property (readonly, nonatomic) NSArray *alternativeSpeakableMatches; // @synthesize alternativeSpeakableMatches=_alternativeSpeakableMatches;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) NSString *identifier;
 @property (strong, nonatomic) NSString *pronunciationHint; // @synthesize pronunciationHint=_pronunciationHint;
 @property (strong, nonatomic) NSString *spokenPhrase; // @synthesize spokenPhrase=_spokenPhrase;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSString *vocabularyIdentifier; // @synthesize vocabularyIdentifier=_vocabularyIdentifier;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_effectiveNSStringValue;
+- (id)_initWithVocabularyIdentifier:(id)arg1 spokenPhrase:(id)arg2 pronunciationHint:(id)arg3 alternativeMatches:(id)arg4;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 spokenPhrase:(id)arg2 pronunciationHint:(id)arg3;
 - (id)initWithSpokenPhrase:(id)arg1;
+- (id)initWithVocabularyIdentifier:(id)arg1 spokenPhrase:(id)arg2 pronunciationHint:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)length;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (id)spokenPhrases;
 
 @end
 

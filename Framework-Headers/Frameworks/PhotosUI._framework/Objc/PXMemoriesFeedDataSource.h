@@ -13,6 +13,7 @@
 @interface PXMemoriesFeedDataSource : PXSectionedDataSource <PXSectionedLayoutEngineDataSourceSnapshot>
 {
     NSArray *_entries;
+    struct PXSimpleIndexPath _indexPathForFirstPastMemorySection;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,6 +21,7 @@
 @property (readonly, copy, nonatomic) NSArray *entries; // @synthesize entries=_entries;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long identifier;
+@property (nonatomic) struct PXSimpleIndexPath indexPathForFirstPastMemorySection; // @synthesize indexPathForFirstPastMemorySection=_indexPathForFirstPastMemorySection;
 @property (readonly, nonatomic) long long numberOfSections;
 @property (readonly) Class superclass;
 
@@ -36,6 +38,7 @@
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSubitemsInItem:(long long)arg1 section:(long long)arg2;
 - (id)objectAtIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)sectionedObjectReferenceForMemoryUUID:(id)arg1;
 
 @end
 

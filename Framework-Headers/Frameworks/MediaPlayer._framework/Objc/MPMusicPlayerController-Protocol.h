@@ -9,7 +9,6 @@
 @protocol MPMusicPlayerController
 
 @optional
-- (NSNumber *)allowsBackgroundVideo;
 - (void)appendQueueDescriptor:(MPMusicPlayerQueueDescriptor *)arg1;
 - (void)beginSeekingBackward;
 - (void)beginSeekingForward;
@@ -21,7 +20,6 @@
 - (NSNumber *)indexOfNowPlayingItem;
 - (NSNumber *)isGeniusAvailable;
 - (NSNumber *)isGeniusAvailableForSeedItems:(NSArray *)arg1;
-- (NSNumber *)isNowPlayingItemFromGeniusMix;
 - (MPMediaItem *)nowPlayingItem;
 - (MPMediaItem *)nowPlayingItemAtIndex:(NSNumber *)arg1;
 - (NSNumber *)numberOfItems;
@@ -29,7 +27,6 @@
 - (void)pauseWithFadeoutDuration:(NSNumber *)arg1;
 - (void)play;
 - (void)playItem:(MPMediaItem *)arg1;
-- (NSNumber *)playbackSpeed;
 - (NSNumber *)playbackState;
 - (void)prepareQueueForPlayback;
 - (void)prepareToPlay;
@@ -41,12 +38,10 @@
 - (NSNumber *)repeatMode;
 - (void)requestQueue;
 - (NSNumber *)serverIsAlive;
-- (void)setAllowsBackgroundVideo:(NSNumber *)arg1;
 - (void)setCurrentChapterIndex:(NSNumber *)arg1;
 - (void)setCurrentPlaybackRate:(NSNumber *)arg1;
 - (void)setCurrentPlaybackTime:(NSNumber *)arg1;
 - (void)setNowPlayingItem:(MPMediaItem *)arg1;
-- (void)setPlaybackSpeed:(NSNumber *)arg1;
 - (void)setQueue:(MPMusicPlayerControllerQueue *)arg1;
 - (void)setQueueWithDescriptor:(MPMusicPlayerQueueDescriptor *)arg1;
 - (void)setQueueWithGeniusMixPlaylist:(MPMediaPlaylist *)arg1;
@@ -70,7 +65,6 @@
 - (void)skipToPreviousChapter;
 - (void)skipToPreviousItem;
 - (void)stop;
-- (NSNumber *)unshuffledIndexOfNowPlayingItem;
 - (NSNumber *)userQueueModificationsDisabled;
 @end
 

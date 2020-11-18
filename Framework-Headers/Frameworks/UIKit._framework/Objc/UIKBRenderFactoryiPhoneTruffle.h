@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)returnKeyOffset;
 - (struct CGPoint)stringKeyOffset;
 - (id)thinKeycapsFontName;
+- (struct CGPoint)variantAnnotationTextOffset;
 - (struct UIEdgeInsets)variantPaddedFrameInsets;
 - (struct UIEdgeInsets)variantSymbolFrameInsets;
 - (struct CGPoint)variantSymbolTextOffset;

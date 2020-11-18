@@ -26,7 +26,7 @@
 
 @property void *_BOMCopier; // @synthesize _BOMCopier;
 @property (copy) CDUnknownBlockType _callback; // @synthesize _callback;
-@property NSObject<OS_dispatch_queue> *_queue; // @synthesize _queue;
+@property (strong) NSObject<OS_dispatch_queue> *_queue; // @synthesize _queue;
 @property id<IMFileCopierDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL didErrorOccur; // @synthesize didErrorOccur=_didErrorOccur;
 @property (readonly, strong) id identifier; // @synthesize identifier=_identifier;

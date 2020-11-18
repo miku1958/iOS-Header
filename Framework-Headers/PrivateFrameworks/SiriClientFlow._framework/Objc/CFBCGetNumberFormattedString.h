@@ -6,22 +6,33 @@
 
 #import <SAObjects/SABaseClientBoundCommand.h>
 
+#import <SiriClientFlow/CFLocalAceHandling-Protocol.h>
+
 @class NSString;
 
-@interface CFBCGetNumberFormattedString : SABaseClientBoundCommand
+@interface CFBCGetNumberFormattedString : SABaseClientBoundCommand <CFLocalAceHandling>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *locale;
 @property (copy, nonatomic) NSString *number;
 @property (copy, nonatomic) NSString *style;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *variant;
 
++ (id)aceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)getNumberFormattedString;
 + (id)getNumberFormattedStringWithDictionary:(id)arg1 context:(id)arg2;
-+ (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (void)handleWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)requiresResponse;
 
 @end

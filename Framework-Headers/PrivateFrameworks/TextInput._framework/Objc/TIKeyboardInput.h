@@ -21,7 +21,9 @@
             unsigned int popupVariant:1;
             unsigned int multitap:1;
             unsigned int flick:1;
+            unsigned int gesture:1;
             unsigned int synthesizedByAcceptingCandidate:1;
+            unsigned int doubleSpace:1;
         } fields;
     } _flags;
     BOOL _backspace;
@@ -35,7 +37,9 @@
 @property (strong, nonatomic) TIKeyboardCandidate *acceptedCandidate; // @synthesize acceptedCandidate=_acceptedCandidate;
 @property (nonatomic, getter=isAutoshifted) BOOL autoshifted;
 @property (nonatomic, getter=isBackspace) BOOL backspace; // @synthesize backspace=_backspace;
+@property (nonatomic, getter=isDoubleSpace) BOOL doubleSpace;
 @property (nonatomic, getter=isFlick) BOOL flick;
+@property (nonatomic, getter=isGesture) BOOL gesture;
 @property (copy, nonatomic) NSString *inputManagerHint; // @synthesize inputManagerHint=_inputManagerHint;
 @property (nonatomic, getter=isMultitap) BOOL multitap;
 @property (copy, nonatomic) id<NSCopying><NSObject><NSSecureCoding> object; // @synthesize object=_object;

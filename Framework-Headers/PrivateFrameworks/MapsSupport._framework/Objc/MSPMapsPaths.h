@@ -11,6 +11,8 @@
 @interface MSPMapsPaths : NSObject
 {
     NSURL *_libraryURL;
+    CDUnknownBlockType _invalidationHandler;
+    NSString *_fuzzyLocationStoragePath;
     NSString *_mapsDirectory;
     NSString *_cacheDirectory;
     NSString *_nanoDirectory;
@@ -43,6 +45,7 @@
 @property (readonly, nonatomic) NSString *failedGeoSearchesSettingsPath; // @synthesize failedGeoSearchesSettingsPath=_failedGeoSearchesSettingsPath;
 @property (readonly, nonatomic) NSString *failedSearchesSettingsPath; // @synthesize failedSearchesSettingsPath=_failedSearchesSettingsPath;
 @property (readonly, nonatomic) NSString *favoritesSyncedMarkerFile; // @synthesize favoritesSyncedMarkerFile=_favoritesSyncedMarkerFile;
+@property (readonly, nonatomic) NSString *fuzzyLocationStoragePath;
 @property (readonly, nonatomic) NSString *geoBookmarksSettingsPath; // @synthesize geoBookmarksSettingsPath=_geoBookmarksSettingsPath;
 @property (readonly, nonatomic) NSString *geoHistorySettingsPath; // @synthesize geoHistorySettingsPath=_geoHistorySettingsPath;
 @property (readonly, nonatomic) NSString *historySettingsPath; // @synthesize historySettingsPath=_historySettingsPath;
@@ -59,6 +62,7 @@
 
 + (id)bookmarksSettingsPath;
 + (id)cacheDirectory;
++ (id)currentMapsApplicationContainerURL;
 + (id)directionsCachePath;
 + (id)directionsSettingsPath;
 + (id)failedDirectionsSettingsPath;
@@ -70,6 +74,8 @@
 + (id)geoHistorySettingsPath;
 + (id)historySettingsPath;
 + (id)historySyncedMarkerFile;
++ (id)mapsApplicationContainerPaths;
++ (id)mapsApplicationContainerPathsWithInvalidationHandler:(CDUnknownBlockType)arg1;
 + (id)mapsDirectory;
 + (id)nanoDirectory;
 + (id)nanoHistorySettingsPath;
@@ -81,10 +87,11 @@
 + (id)transitAppRankerPath;
 - (void).cxx_destruct;
 - (BOOL)_deleteSyncedFileAtPath:(id)arg1;
+- (void)_invalidate;
 - (BOOL)_shouldSyncMergeAfterCheckingOrCreatingMarkerFileAtPath:(id)arg1;
 - (BOOL)deleteFavoritesSyncedMarkerFile;
 - (BOOL)deleteHistorySyncedMarkerFile;
-- (id)initWithLibraryDirectoryURL:(id)arg1;
+- (id)initWithLibraryDirectoryURL:(id)arg1 invalidationHandler:(CDUnknownBlockType)arg2;
 - (BOOL)shouldSyncMergeFavoritesAfterCheckingOrCreatingMarkerFile;
 - (BOOL)shouldSyncMergeHistoryAfterCheckingOrCreatingMarkerFile;
 

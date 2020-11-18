@@ -10,6 +10,8 @@
 
 @property (readonly, nonatomic) BOOL hf_requiresConfirmationToRun;
 
++ (id)hf_localizedStringForSignficantEvent:(id)arg1 offset:(id)arg2;
++ (id)hf_sanitizeTriggerName:(id)arg1 home:(id)arg2;
 - (id)hf_forceDisableReasons;
 @end
 

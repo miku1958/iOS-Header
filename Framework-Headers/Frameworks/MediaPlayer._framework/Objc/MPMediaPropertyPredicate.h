@@ -27,6 +27,7 @@
 
 + (id)predicateWithValue:(id)arg1 forProperty:(id)arg2;
 + (id)predicateWithValue:(id)arg1 forProperty:(id)arg2 comparisonType:(long long)arg3;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)ML3PredicateForContainer;
 - (id)ML3PredicateForTrack;

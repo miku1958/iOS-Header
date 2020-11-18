@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_dict;
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (id)decodedObject;
 - (void)encodeWithCoder:(id)arg1;

@@ -18,11 +18,11 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSMutableArray *pointCharacteristics; // @synthesize pointCharacteristics=_pointCharacteristics;
 
+- (void).cxx_destruct;
 - (void)addPointCharacteristic:(id)arg1;
 - (void)clearPointCharacteristics;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

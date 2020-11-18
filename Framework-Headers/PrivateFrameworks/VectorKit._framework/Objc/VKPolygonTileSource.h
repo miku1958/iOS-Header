@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (long long)defaultMinimumZoomLevel;
-- (unsigned long long)mapLayerForZoomLevelRange;
+- (unsigned char)mapLayerForZoomLevelRange;
 - (id)tileForData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3;
 
 @end

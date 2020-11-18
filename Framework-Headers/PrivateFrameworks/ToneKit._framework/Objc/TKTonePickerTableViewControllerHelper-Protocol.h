@@ -6,7 +6,7 @@
 
 #import <ToneKit/NSObject-Protocol.h>
 
-@class NSIndexPath, NSString, TKPickerRowItem, TKTonePickerItem, UITableView, UITableViewCell, UITableViewController;
+@class NSIndexPath, NSString, TKPickerRowItem, TKPickerTableViewCell, TKTonePickerItem, UITableView, UITableViewCell, UITableViewController;
 @protocol TKTonePickerTableViewLayoutMarginsObserver><TKTonePickerTableViewSeparatorObserver;
 
 @protocol TKTonePickerTableViewControllerHelper <NSObject>
@@ -18,8 +18,8 @@
 - (void)tableView:(UITableView *)arg1 willDisplayCell:(UITableViewCell *)arg2 forPickerRowItem:(TKPickerRowItem *)arg3;
 - (void)tonePickerTableViewControllerWillBeDeallocated:(UITableViewController<TKTonePickerTableViewLayoutMarginsObserver><TKTonePickerTableViewSeparatorObserver> *)arg1;
 - (void)tonePickerTableViewWillDisappear:(BOOL)arg1;
-- (void)updateCell:(UITableViewCell *)arg1 withCheckedStatus:(BOOL)arg2 forPickerRowItem:(TKPickerRowItem *)arg3;
-- (void)updateCell:(UITableViewCell *)arg1 withDetailText:(NSString *)arg2;
+- (void)updateCell:(TKPickerTableViewCell *)arg1 withCheckedStatus:(BOOL)arg2 forTonePickerItem:(TKTonePickerItem *)arg3;
+- (void)updateCell:(TKPickerTableViewCell *)arg1 withDetailText:(NSString *)arg2;
 - (void)updateDividerContentColorToMatchSeparatorColorInTableView:(UITableView *)arg1;
 @end
 

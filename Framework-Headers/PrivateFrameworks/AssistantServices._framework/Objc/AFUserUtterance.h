@@ -18,6 +18,7 @@
     NSDictionary *_correctionIdentifier;
 }
 
+@property (readonly, nonatomic) NSArray *allPhrases;
 @property (readonly, nonatomic) NSDictionary *correctionIdentifier; // @synthesize correctionIdentifier=_correctionIdentifier;
 @property (readonly, nonatomic) NSArray *dictationResult;
 

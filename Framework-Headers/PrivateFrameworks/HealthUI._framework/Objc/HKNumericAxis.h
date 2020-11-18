@@ -6,24 +6,35 @@
 
 #import <HealthUI/HKAxis.h>
 
+@protocol HKAxisLabelDimension, HKZoomScale;
+
 @interface HKNumericAxis : HKAxis
 {
-    double _lastAxisSpread;
-    double _lastStepSize;
-    long long _stepStyle;
+    long long _labelEndingOptions;
+    id<HKAxisLabelDimension> _labelDimension;
+    double _topVerticalLabelPadding;
+    double _bottomVerticalLabelPadding;
+    id<HKZoomScale> _scalarZoomScaleEngine;
 }
 
-@property (nonatomic) long long stepStyle; // @synthesize stepStyle=_stepStyle;
+@property (nonatomic) double bottomVerticalLabelPadding; // @synthesize bottomVerticalLabelPadding=_bottomVerticalLabelPadding;
+@property (strong, nonatomic) id<HKAxisLabelDimension> labelDimension; // @synthesize labelDimension=_labelDimension;
+@property (nonatomic) long long labelEndingOptions; // @synthesize labelEndingOptions=_labelEndingOptions;
+@property (readonly, nonatomic) id<HKZoomScale> scalarZoomScaleEngine; // @synthesize scalarZoomScaleEngine=_scalarZoomScaleEngine;
+@property (nonatomic) double topVerticalLabelPadding; // @synthesize topVerticalLabelPadding=_topVerticalLabelPadding;
 
-- (id)_axisLabelForValue:(id)arg1;
-- (double)_labelSpacingWithMin:(double)arg1 max:(double)arg2 maxNumLabels:(long long)arg3;
-- (id)adjustedRangeForFittedRange:(id)arg1;
++ (double)_roundDownByMultiple:(double)arg1 factor:(double)arg2;
++ (double)_roundUpByMultiple:(double)arg1 factor:(double)arg2;
++ (id)ticksAndLabelsForRangeInModelCoordinates:(id)arg1 maximumLabelCount:(long long)arg2 endingOptions:(long long)arg3 dimension:(id)arg4;
+- (void).cxx_destruct;
+- (id)adjustValueRangeForLabels:(id)arg1;
+- (id)adjustedRangeForFittedRange:(id)arg1 chartRange:(struct HKRange)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)enumerateTickCoordinatesInChartRange:(struct HKRange)arg1 zoomScale:(double)arg2 handler:(CDUnknownBlockType)arg3;
+- (id)findAxisLabelsInModelRange:(id)arg1 zoomScale:(double)arg2;
 - (id)init;
 - (double)labelSpacingFactorForNumberFormatter;
-- (id)labelsForChartRange:(struct HKRange)arg1 zoomScale:(double)arg2;
 - (id)stringFromNumber:(id)arg1;
+- (id)zoomScaleEngine;
 
 @end
 

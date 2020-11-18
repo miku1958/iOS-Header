@@ -8,13 +8,11 @@
 
 #import <WebApp/UIApplicationDelegate-Protocol.h>
 
-@class NSString, NSURL, UIWindow, WebAppController;
+@class NSString, UIWindow, WebAppController;
 
 @interface WebApplication : UIApplication <UIApplicationDelegate>
 {
-    NSURL *_lastActiveWebClipURL;
     WebAppController *_webApp;
-    BOOL _wasSuspendedUnderLock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,9 +25,7 @@
 - (void)_showWebApplicationAtURL:(id)arg1;
 - (BOOL)application:(id)arg1 didFinishLaunchingWithOptions:(id)arg2;
 - (void)applicationDidBecomeActive:(id)arg1;
-- (void)applicationOpenURL:(id)arg1;
 - (BOOL)applicationSuspendWithSettings:(id)arg1;
-- (void)applicationWillResignActive:(id)arg1;
 - (id)nameOfDefaultImageToUpdateAtSuspension;
 - (id)nameOfDefaultImageToUpdateAtSuspension:(long long)arg1;
 

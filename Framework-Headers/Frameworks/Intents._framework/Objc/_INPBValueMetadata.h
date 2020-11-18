@@ -17,6 +17,7 @@
     NSString *_canonicalValue;
     NSString *_input;
     NSString *_source;
+    NSString *_sourceAppBundleIdentifier;
     NSString *_uuid;
     BOOL _confirmed;
     struct {
@@ -30,14 +31,17 @@
 @property (nonatomic) BOOL hasConfirmed;
 @property (readonly, nonatomic) BOOL hasInput;
 @property (readonly, nonatomic) BOOL hasSource;
+@property (readonly, nonatomic) BOOL hasSourceAppBundleIdentifier;
 @property (readonly, nonatomic) BOOL hasUuid;
 @property (strong, nonatomic) NSString *input; // @synthesize input=_input;
 @property (readonly, nonatomic) int *requiredEntitlements;
 @property (readonly, nonatomic) unsigned long long requiredEntitlementsCount;
 @property (strong, nonatomic) NSString *source; // @synthesize source=_source;
+@property (strong, nonatomic) NSString *sourceAppBundleIdentifier; // @synthesize sourceAppBundleIdentifier=_sourceAppBundleIdentifier;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
++ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsRequiredEntitlements:(id)arg1;
 - (void)addRequiredEntitlement:(int)arg1;

@@ -9,7 +9,7 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKQuantity, NSDate, NSDateComponents;
+@class HKQuantity, NSArray, NSDate, NSDateComponents;
 
 @interface HKActivitySummary : NSObject <NSSecureCoding, NSCopying>
 {
@@ -27,6 +27,8 @@
     HKQuantity *_pushCount;
     HKQuantity *_flightsClimbed;
     long long _wheelchairUse;
+    NSArray *_dailyEnergyBurnedStatistics;
+    NSArray *_dailyBriskMinutesStatistics;
     BOOL _dataLoading;
     NSDate *_startDate;
     NSDate *_endDate;
@@ -43,9 +45,10 @@
 @property (strong, nonatomic) HKQuantity *appleStandHours;
 @property (strong, nonatomic) HKQuantity *appleStandHoursGoal;
 @property (strong, nonatomic, getter=_creationDate, setter=_setCreationDate:) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (strong, nonatomic, getter=_dailyBriskMinutesStatistics, setter=_setDailyBriskMinutesStatistics:) NSArray *dailyBriskMinutesStatistics; // @synthesize dailyBriskMinutesStatistics=_dailyBriskMinutesStatistics;
+@property (strong, nonatomic, getter=_dailyEnergyBurnedStatistics, setter=_setDailyEnergyBurnedStatistics:) NSArray *dailyEnergyBurnedStatistics; // @synthesize dailyEnergyBurnedStatistics=_dailyEnergyBurnedStatistics;
 @property (nonatomic, getter=_isDataLoading, setter=_setDataLoading:) BOOL dataLoading; // @synthesize dataLoading=_dataLoading;
 @property (strong, nonatomic, getter=_deepBreathingDuration, setter=_setDeepBreathingDuration:) HKQuantity *deepBreathingDuration;
-@property (readonly, nonatomic, getter=_deepBreathingSessionCount) HKQuantity *deepBreathingSessionCount;
 @property (strong, nonatomic) HKQuantity *distanceWalkingRunning;
 @property (strong, nonatomic, getter=_endDate, setter=_setEndDate:) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (strong, nonatomic, getter=_energyBurnedGoalDate, setter=_setEnergyBurnedGoalDate:) NSDate *energyBurnedGoalDate; // @synthesize energyBurnedGoalDate=_energyBurnedGoalDate;
@@ -68,8 +71,11 @@
 - (BOOL)_allFieldsAreEqual:(id)arg1;
 - (id)_decodeQuantityFromCoder:(id)arg1 forKey:(id)arg2 unit:(id)arg3;
 - (void)_encodeQuantity:(id)arg1 withCoder:(id)arg2 key:(id)arg3 unit:(id)arg4;
+- (BOOL)_hasExerciseGoal;
+- (BOOL)_hasStandHoursGoal;
 - (id)_initWithActivityCache:(id)arg1 shouldIncludePrivateProperties:(BOOL)arg2;
 - (double)_percentageCompleteWithQuantity:(id)arg1 goalQuantity:(id)arg2 unit:(id)arg3;
+- (BOOL)_useHourlyGoalComparison;
 - (void)_validateQuantityAssignment:(id)arg1 expectedUnit:(id)arg2 propertyName:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dateComponentsForCalendar:(id)arg1;

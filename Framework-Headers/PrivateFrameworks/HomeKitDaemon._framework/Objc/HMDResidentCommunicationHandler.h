@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDCentralMessageDispatcher, HMDDevice, HMFTimer, NSMapTable, NSMutableArray, NSString, NSUUID;
+@class HMDCentralMessageDispatcher, HMDDevice, HMFTimer, NSMapTable, NSMutableArray, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDResidentCommunicationHandler : NSObject <HMFLogging, HMFTimerDelegate>
+@interface HMDResidentCommunicationHandler : HMFObject <HMFLogging, HMFTimerDelegate>
 {
-    HMDDevice *_device;
     NSObject<OS_dispatch_queue> *_workQueue;
+    NSMapTable *_deviceMapping;
     NSMutableArray *_pendingReadRequests;
     NSMapTable *_dispatchedReadRequests;
     HMFTimer *_multiReadCoalesceTimer;
@@ -25,12 +25,13 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) HMDDevice *device; // @synthesize device=_device;
+@property (strong, nonatomic) NSMapTable *deviceMapping; // @synthesize deviceMapping=_deviceMapping;
 @property (readonly, nonatomic) NSMapTable *dispatchedReadRequests; // @synthesize dispatchedReadRequests=_dispatchedReadRequests;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSUUID *homeUUID; // @synthesize homeUUID=_homeUUID;
 @property (strong, nonatomic) HMFTimer *multiReadCoalesceTimer; // @synthesize multiReadCoalesceTimer=_multiReadCoalesceTimer;
 @property (readonly, nonatomic) NSMutableArray *pendingReadRequests; // @synthesize pendingReadRequests=_pendingReadRequests;
+@property (readonly, nonatomic) HMDDevice *preferredDevice;
 @property (readonly, weak, nonatomic) HMDCentralMessageDispatcher *remoteDispatcher; // @synthesize remoteDispatcher=_remoteDispatcher;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
@@ -42,11 +43,16 @@
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)_processResponse:(id)arg1 overallError:(id)arg2 messageIdentifier:(id)arg3;
-- (void)_redispatchMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3;
+- (void)_removeDeviceForType:(long long)arg1;
 - (void)_sendMultipleCharacteristicRead;
+- (BOOL)containsDevice:(id)arg1;
 - (void)dealloc;
-- (id)initWithHomeUUID:(id)arg1 device:(id)arg2 remoteDispatcher:(id)arg3;
+- (id)deviceForType:(long long)arg1;
+- (id)initWithHomeUUID:(id)arg1 remoteDispatcher:(id)arg2;
+- (long long)preferredDeviceType;
 - (void)redispatchMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3;
+- (void)removeDeviceForType:(long long)arg1;
+- (void)setDevice:(id)arg1 forType:(long long)arg2;
 - (void)timerDidFire:(id)arg1;
 
 @end

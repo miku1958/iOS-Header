@@ -13,9 +13,12 @@ __attribute__((visibility("hidden")))
 {
     _UIWebViewScrollViewDelegateForwarder *_forwarder;
     BOOL _bouncesSetExplicitly;
+    BOOL _contentInsetAdjustmentBehaviorWasExternallyOverridden;
     UIWebBrowserView *_browserView;
 }
 
+- (BOOL)_contentInsetAdjustmentBehaviorWasExternallyOverridden;
+- (void)_setContentInsetAdjustmentBehaviorInternal:(long long)arg1;
 - (void)_setWebView:(id)arg1;
 - (void)_weaklySetBouncesHorizontally:(BOOL)arg1;
 - (void)dealloc;
@@ -24,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)setBounces:(BOOL)arg1;
 - (void)setBouncesHorizontally:(BOOL)arg1;
 - (void)setBouncesVertically:(BOOL)arg1;
-- (void)setContentInset:(struct UIEdgeInsets)arg1;
+- (void)setContentInsetAdjustmentBehavior:(long long)arg1;
 - (void)setDelegate:(id)arg1;
 
 @end

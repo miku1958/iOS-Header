@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Contacts/CNVCardParsedResultBuilder-Protocol.h>
 
@@ -25,10 +25,10 @@ __attribute__((visibility("hidden")))
 + (id)contactKeyForVCardKey:(id)arg1;
 + (CDUnknownBlockType)contactValueTransformForVCardKey:(id)arg1;
 + (id)labeledValuesWithValues:(id)arg1 transform:(CDUnknownBlockType)arg2 labels:(id)arg3 isPrimaries:(id)arg4;
+- (void).cxx_destruct;
 - (id)build;
 - (BOOL)canSetValueForProperty:(id)arg1;
 - (long long)contactTypeFromPersonFlags:(long long)arg1;
-- (void)dealloc;
 - (id)init;
 - (long long)personFlags;
 - (long long)personFlagsByAddingContactType:(long long)arg1 toFlags:(long long)arg2;

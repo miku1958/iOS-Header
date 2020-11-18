@@ -22,7 +22,6 @@
 
 @property (nonatomic) id<CMPocketStateDelegate> delegate; // @synthesize delegate=_delegate;
 
-+ (void)initialize;
 + (BOOL)isPocketStateAvailable;
 - (void)_disableDispatcher;
 - (void)addToAggdScalarWithName:(id)arg1 andScalar:(unsigned long long)arg2;

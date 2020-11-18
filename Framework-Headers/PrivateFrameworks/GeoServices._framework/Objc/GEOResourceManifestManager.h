@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOResourceManifestServerProxyDelegate-Protocol.h>
 
@@ -33,6 +33,7 @@
     NSLock *_resourceNamesToPathsLock;
     GEOResourceManifestConfiguration *_configuration;
     NSObject<OS_dispatch_source> *_cachedResourceInfoPurgeTimer;
+    unsigned long long _handle;
 }
 
 @property (readonly, nonatomic) GEOActiveTileGroup *activeTileGroup;
@@ -43,21 +44,29 @@
 @property (readonly, nonatomic) id<GEOResourceManifestServerProxy> serverProxy; // @synthesize serverProxy=_serverProxy;
 @property (readonly) Class superclass;
 
++ (id)additionalMigrationTaskClasses;
 + (void)disableServerConnection;
 + (id)modernManager;
 + (id)modernManagerForConfiguration:(id)arg1;
 + (id)modernManagerForTileGroupIdentifier:(unsigned int)arg1;
++ (void)setAdditionalMigrationTaskClasses:(id)arg1;
 + (void)setHiDPI:(BOOL)arg1;
 + (void)setServerProxyClass:(Class)arg1;
 + (id)sharedManager;
++ (struct os_state_data_s *)stateDataForDictionary:(id)arg1 title:(id)arg2;
 + (void)useLocalProxy;
 + (void)useRemoteProxy;
+- (void).cxx_destruct;
 - (id)_activeTileSetForKey:(const struct _GEOTileKey *)arg1;
 - (void)_buildResourceNamesToPaths;
+- (id)_detailedDescriptionDictionaryRepresentationForTileGroup:(id)arg1;
 - (id)_loadActiveTileGroupIfNecessary:(BOOL)arg1;
 - (void)_localeChanged:(id)arg1;
 - (void)_notifyObserversOfResourcesChange;
+- (void)_registerHandlerForStateCapture;
 - (void)_scheduleCachedResourceInfoPurgeTimer;
+- (struct os_state_data_s *)_stateCapture;
+- (void)_unregisterHandlerForStateCapture;
 - (void)activateResourceScale:(int)arg1;
 - (void)activateResourceScenario:(int)arg1;
 - (unsigned int)activeTileGroupIdentifier;
@@ -69,6 +78,7 @@
 - (id)allResourcePaths;
 - (id)authToken;
 - (id)baseURLStringForTileKey:(const struct _GEOTileKey *)arg1;
+- (void)cancelCurrentManifestUpdate;
 - (void)closeServerConnection;
 - (void)deactivateResourceScale:(int)arg1;
 - (void)deactivateResourceScenario:(int)arg1;
@@ -76,7 +86,7 @@
 - (id)detailedDescription;
 - (id)detailedDescriptionDictionaryRepresentation;
 - (void)devResourcesFolderDidChange;
-- (id)disputedBordersQueryStringForTileKey:(const struct _GEOTileKey *)arg1 country:(id)arg2 region:(id)arg3;
+- (id)disputedBordersQueryItemsForTileKey:(const struct _GEOTileKey *)arg1 country:(id)arg2 region:(id)arg3;
 - (void)fakeTileGroupChange;
 - (void)forceUpdate;
 - (void)getResourceManifestWithHandler:(CDUnknownBlockType)arg1;
@@ -92,8 +102,10 @@
 - (unsigned int)mapMatchingZoomLevel;
 - (void)openServerConnection;
 - (id)pathForResourceWithName:(id)arg1;
+- (void)removeDevResources;
 - (void)removeServerProxyObserver:(id)arg1;
 - (void)removeTileGroupObserver:(id)arg1;
+- (int)requestStyleForTileKey:(const struct _GEOTileKey *)arg1;
 - (void)resetActiveTileGroup;
 - (oneway void)serverProxy:(id)arg1 didChangeActiveTileGroup:(id)arg2 finishedCallback:(CDUnknownBlockType)arg3;
 - (oneway void)serverProxyDidStopLoadingResources:(id)arg1;
@@ -109,7 +121,9 @@
 - (BOOL)supportsTileStyle:(int)arg1 size:(int)arg2 scale:(int)arg3;
 - (double)timeToLiveForTileKey:(const struct _GEOTileKey *)arg1;
 - (void)updateManifest:(CDUnknownBlockType)arg1;
+- (void)updateManifest:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateManifestIfNecessary:(CDUnknownBlockType)arg1;
+- (id)updateProgress;
 - (unsigned int)versionForTileKey:(const struct _GEOTileKey *)arg1;
 
 @end

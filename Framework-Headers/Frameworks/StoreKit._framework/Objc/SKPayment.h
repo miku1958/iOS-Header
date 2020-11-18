@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <StoreKit/NSCopying-Protocol.h>
 #import <StoreKit/NSMutableCopying-Protocol.h>
@@ -17,6 +17,7 @@
 }
 
 @property (readonly, copy, nonatomic) NSString *applicationUsername;
+@property (readonly, nonatomic) BOOL isStoreOriginated;
 @property (readonly, copy, nonatomic) NSString *partnerIdentifier;
 @property (readonly, copy, nonatomic) NSString *partnerTransactionIdentifier;
 @property (readonly, copy, nonatomic) NSString *productIdentifier;
@@ -25,6 +26,7 @@
 @property (readonly, copy, nonatomic) NSDictionary *requestParameters;
 @property (readonly, nonatomic) BOOL simulatesAskToBuyInSandbox;
 
++ (id)paymentFromPurchaseIntentWithProduct:(id)arg1;
 + (id)paymentWithProduct:(id)arg1;
 + (id)paymentWithProductIdentifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

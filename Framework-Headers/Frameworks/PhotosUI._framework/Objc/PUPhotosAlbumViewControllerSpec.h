@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) double contentCornerRadius;
-@property (readonly, nonatomic) struct UIEdgeInsets fullMomentsLevelSectionHeaderContentInset;
 @property (readonly, nonatomic) struct UIEdgeInsets fullMomentsLevelSectionHeaderHighlightInset;
 @property (readonly, nonatomic) unsigned long long fullMomentsSectionHeaderBackgroundStyle;
 @property (readonly, nonatomic) long long fullMomentsSectionHeaderStyle; // @synthesize fullMomentsSectionHeaderStyle=_fullMomentsSectionHeaderStyle;
@@ -21,7 +20,6 @@ __attribute__((visibility("hidden")))
 
 - (long long)cellFillMode;
 - (void)configureCollectionViewGridLayout:(id)arg1;
-- (double)fullMomentsSectionHeaderHeight;
 - (id)gridSpec;
 
 @end

@@ -15,7 +15,7 @@
     NSUUID *_inviteeUUID;
 }
 
-@property (readonly, copy, nonatomic) NSString *inviteeName; // @synthesize inviteeName=_inviteeName;
+@property (copy, nonatomic) NSString *inviteeName; // @synthesize inviteeName=_inviteeName;
 @property (readonly, copy, nonatomic) NSUUID *inviteeUUID; // @synthesize inviteeUUID=_inviteeUUID;
 @property (readonly, copy, nonatomic) NSString *inviteeUserID; // @synthesize inviteeUserID=_inviteeUserID;
 
@@ -24,7 +24,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithInviteeUserID:(id)arg1 inviteeName:(id)arg2 invitationState:(long long)arg3 expiryDate:(id)arg4;
+- (id)initWithUUID:(id)arg1 inviteeUserID:(id)arg2 inviteeName:(id)arg3 invitationState:(long long)arg4 expiryDate:(id)arg5;
 
 @end
 

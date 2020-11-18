@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SAObjects/SABaseCommand.h>
+#import <SAObjects/SABaseClientBoundCommand.h>
 
 #import <SAObjects/SAServerBoundCommand-Protocol.h>
 
 @class NSArray, NSString, SASyncAppMetaData;
 
-@interface SASyncChunk : SABaseCommand <SAServerBoundCommand>
+@interface SASyncChunk : SABaseClientBoundCommand <SAServerBoundCommand>
 {
 }
 
@@ -34,6 +34,7 @@
 + (id)chunkWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)requiresResponse;
 
 @end
 

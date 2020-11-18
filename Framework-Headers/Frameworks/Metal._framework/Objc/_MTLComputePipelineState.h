@@ -6,21 +6,32 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSString;
+#import <Metal/MTLComputePipelineState-Protocol.h>
+
+@class MTLIndirectArgumentBufferEmulationData, NSString;
 @protocol MTLDevice;
 
-@interface _MTLComputePipelineState : NSObject
+@interface _MTLComputePipelineState : NSObject <MTLComputePipelineState>
 {
     NSString *_label;
     id<MTLDevice> _device;
+    MTLIndirectArgumentBufferEmulationData *_iabEmulationData;
 }
 
+@property (strong, nonatomic) MTLIndirectArgumentBufferEmulationData *IABEmulationData; // @synthesize IABEmulationData=_iabEmulationData;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device; // @synthesize device=_device;
+@property (readonly) unsigned long long hash;
 @property (readonly) NSString *label; // @synthesize label=_label;
+@property (readonly) unsigned long long maxTotalThreadsPerThreadgroup; // @dynamic maxTotalThreadsPerThreadgroup;
+@property (readonly) unsigned long long staticThreadgroupMemoryLength; // @dynamic staticThreadgroupMemoryLength;
+@property (readonly) Class superclass;
+@property (readonly) unsigned long long threadExecutionWidth; // @dynamic threadExecutionWidth;
 
 - (void)dealloc;
-- (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
+- (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_14f26992)arg1;
 - (id)initWithDevice:(id)arg1 pipelineStateDescriptor:(id)arg2;
 
 @end

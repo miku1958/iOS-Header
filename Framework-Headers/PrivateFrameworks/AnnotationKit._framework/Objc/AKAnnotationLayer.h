@@ -27,7 +27,9 @@
 
 + (id)newAnnotationLayerForAnnotation:(id)arg1 withPageController:(id)arg2;
 - (void).cxx_destruct;
+- (void)_addDebugVisuals;
 - (id)_initWithAnnotation:(id)arg1 andPageController:(id)arg2;
+- (void)_removeDebugVisuals;
 - (void)_startObservingAnnotation;
 - (void)_stopObservingAnnotation;
 - (void)_updateAnnotationLayerWithLoupeFastPath:(BOOL)arg1;

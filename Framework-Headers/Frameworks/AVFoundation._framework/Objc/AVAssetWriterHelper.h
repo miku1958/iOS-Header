@@ -30,6 +30,8 @@
 @property (nonatomic) struct CGAffineTransform preferredTransform;
 @property (nonatomic) float preferredVolume;
 @property (nonatomic) BOOL shouldOptimizeForNetworkUse;
+@property (nonatomic) long long singlePassFileSize;
+@property (nonatomic) long long singlePassMediaDataSize;
 @property (readonly, nonatomic) long long status;
 @property (strong) AVWeakReference *weakReferenceToAssetWriter; // @synthesize weakReferenceToAssetWriter=_weakReferenceToAssetWriter;
 

@@ -6,23 +6,28 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
+@class NSOperationQueue;
+
 @interface VSViewControllerFactory : NSObject
 {
+    NSOperationQueue *_privateQueue;
 }
 
+@property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
+
 + (id)sharedFactory;
-- (id)autoAuthenticationViewController;
-- (id)credentialEntryViewController;
+- (void).cxx_destruct;
+- (id)authenticationViewControllerForViewModel:(id)arg1;
 - (id)identityProviderPickerViewControllerWithIdentityProviders:(id)arg1;
+- (id)init;
 - (id)loadingViewController;
-- (id)onscreenCodeAuthenticationViewController;
 - (id)viewControllerForAboutPrivacyWithTarget:(id)arg1 action:(SEL)arg2;
+- (id)viewControllerForAppsSupportedByIdentityProviderWithID:(id)arg1 delegate:(id)arg2;
+- (id)viewControllerForPlaybackActivityReportingFromAppsWithBundleIDs:(id)arg1 grantingVouchers:(BOOL)arg2 appleAccount:(id)arg3 identityProvider:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)viewControllerForUnsupportedProvider:(id)arg1 withRequestingAppDisplayName:(id)arg2 storage:(id)arg3 acknowledgementHandler:(CDUnknownBlockType)arg4;
 - (id)viewControllerToConfirmAccountDeletionForIdentityProviderDisplayName:(id)arg1 preferredStyle:(long long)arg2 confirmationHandler:(CDUnknownBlockType)arg3;
 - (id)viewControllerToConfirmDeveloperIdentityProviderDeletionWithConfirmationHandler:(CDUnknownBlockType)arg1;
-- (id)viewControlllerForUnsupportedProvider:(id)arg1 withRequestingAppDisplayName:(id)arg2 acknowledgementHandler:(CDUnknownBlockType)arg3;
 - (void)viewServiceRemoteViewControllerWithCompletion:(CDUnknownBlockType)arg1;
-- (id)webAuthenticationViewController;
 
 @end
 

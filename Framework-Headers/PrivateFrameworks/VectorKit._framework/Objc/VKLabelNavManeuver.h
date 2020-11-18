@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/VKLabelNavFeature-Protocol.h>
 
@@ -20,15 +20,19 @@ __attribute__((visibility("hidden")))
     int _type;
     int _drivingSide;
     BOOL _isVisible;
+    BOOL _isPicked;
 }
 
 @property (readonly, nonatomic) long long intraRoadPriority;
 @property (readonly, nonatomic) BOOL isAwayFromRoute;
+@property (readonly, nonatomic) BOOL isEtaFeature;
 @property (readonly, nonatomic) BOOL isGuidanceStepStart;
 @property (readonly, nonatomic) BOOL isInGuidance;
 @property (readonly, nonatomic) BOOL isOnRoute;
+@property (nonatomic) BOOL isPicked; // @synthesize isPicked=_isPicked;
 @property (readonly, nonatomic) BOOL isRamp;
 @property (readonly, nonatomic) BOOL isStartOfRoadName;
+@property (readonly, nonatomic) BOOL isTrafficCameraFeature;
 @property (readonly, nonatomic) BOOL isVisible; // @synthesize isVisible=_isVisible;
 @property (readonly, nonatomic) VKLabelNavRoadLabel *maneuverSign; // @synthesize maneuverSign=_maneuverSign;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;

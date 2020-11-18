@@ -8,6 +8,7 @@
 
 @interface IMSPIMessage (CFAdditions)
 + (long long)messageRowIDForURL:(id)arg1;
++ (BOOL)messagesForGUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (BOOL)messagesForIdentifier:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)messagesForURLs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @end

@@ -24,7 +24,9 @@
 + (struct CGImage *)createRadiosityImageWithImage:(struct CGImage *)arg1 displayScale:(long long)arg2;
 + (void)radiosityImageWithImage:(struct CGImage *)arg1 displayScale:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
+- (unsigned long long)hash;
 - (id)initWithName:(id)arg1 usingRenditionKey:(id)arg2 fromTheme:(unsigned long long)arg3 resolvingWithBlock:(CDUnknownBlockType)arg4;
+- (BOOL)isEqual:(id)arg1;
 - (id)layerImageAtIndex:(unsigned long long)arg1;
 
 @end

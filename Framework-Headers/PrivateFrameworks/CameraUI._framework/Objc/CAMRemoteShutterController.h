@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CAMMotionController;
+@class CAMMotionController, NSArray;
 @protocol CAMRemoteShutterDelegate;
 
 @interface CAMRemoteShutterController : NSObject
@@ -14,17 +14,20 @@
     BOOL _showingPreview;
     BOOL _capturingVideo;
     BOOL _capturingTimelapse;
+    NSArray *_availableCaptureModes;
     long long _captureMode;
     long long _captureDevice;
     long long _flashMode;
     long long _hdrMode;
     long long _irisMode;
     double _zoomAmount;
+    long long _shallowDepthOfFieldStatus;
     id<CAMRemoteShutterDelegate> _delegate;
     CAMMotionController *__motionController;
 }
 
 @property (readonly, nonatomic) CAMMotionController *_motionController; // @synthesize _motionController=__motionController;
+@property (strong, nonatomic) NSArray *availableCaptureModes; // @synthesize availableCaptureModes=_availableCaptureModes;
 @property (nonatomic) long long captureDevice; // @synthesize captureDevice=_captureDevice;
 @property (nonatomic) long long captureMode; // @synthesize captureMode=_captureMode;
 @property (nonatomic, getter=isCapturingTimelapse) BOOL capturingTimelapse; // @synthesize capturingTimelapse=_capturingTimelapse;
@@ -34,6 +37,7 @@
 @property (nonatomic) long long flashMode; // @synthesize flashMode=_flashMode;
 @property (nonatomic) long long hdrMode; // @synthesize hdrMode=_hdrMode;
 @property (nonatomic) long long irisMode; // @synthesize irisMode=_irisMode;
+@property (nonatomic) long long shallowDepthOfFieldStatus; // @synthesize shallowDepthOfFieldStatus=_shallowDepthOfFieldStatus;
 @property (nonatomic, getter=isShowingPreview) BOOL showingPreview; // @synthesize showingPreview=_showingPreview;
 @property (nonatomic) double zoomAmount; // @synthesize zoomAmount=_zoomAmount;
 
@@ -49,10 +53,13 @@
 - (void)closeConnection;
 - (void)countdownCanceled;
 - (void)dealloc;
+- (void)didStartCaptureTimer;
+- (void)didStopCapture;
 - (id)initWithCaptureConfiguration:(id)arg1 motionController:(id)arg2;
 - (void)openConnection;
-- (void)sendThumbnailData:(id)arg1;
-- (void)sendThumbnailImage:(id)arg1;
+- (void)sendThumbnailData:(id)arg1 isVideo:(BOOL)arg2;
+- (void)sendThumbnailImage:(id)arg1 isVideo:(BOOL)arg2;
+- (void)willStartCapturing;
 
 @end
 

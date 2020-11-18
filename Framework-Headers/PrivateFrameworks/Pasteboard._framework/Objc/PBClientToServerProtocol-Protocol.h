@@ -16,7 +16,7 @@
 - (void)localGeneralPasteboardCompletionBlock:(void (^)(PBItemCollection *, NSError *))arg1;
 - (void)pasteboardWithName:(NSString *)arg1 createIfNeeded:(BOOL)arg2 completionBlock:(void (^)(PBItemCollection *, NSError *))arg3;
 - (void)performJanitorialTasksCompletionBlock:(void (^)(void))arg1;
-- (void)requestItemFromPasteboardWithName:(NSString *)arg1 UUID:(NSUUID *)arg2 itemIndex:(unsigned long long)arg3 typeIdentifier:(NSString *)arg4 completionBlock:(void (^)(NSData *, NSFileHandle *, NSError *))arg5;
+- (void)requestItemFromPasteboardWithName:(NSString *)arg1 UUID:(NSUUID *)arg2 itemIndex:(unsigned long long)arg3 typeIdentifier:(NSString *)arg4 completionBlock:(void (^)(NSData *, PBSecurityScopedURLWrapper *, NSError *))arg5;
 - (void)savePasteboard:(PBItemCollection *)arg1 dataProviderEndpoint:(NSXPCListenerEndpoint *)arg2 completionBlock:(void (^)(unsigned long long, long long, NSError *))arg3;
 @end
 

@@ -24,8 +24,8 @@
 @property (readonly, nonatomic) id<GEOTransitRoutingIncidentMessage> routeDetailsIncidentMessage; // @synthesize routeDetailsIncidentMessage=_routeDetailsIncidentMessage;
 @property (readonly, nonatomic) id<GEOTransitRoutingIncidentMessage> steppingIncidentMessage; // @synthesize steppingIncidentMessage=_steppingIncidentMessage;
 
+- (void).cxx_destruct;
 - (void)_commonInitWithDecoderData:(id)arg1;
-- (void)dealloc;
 - (unsigned int)distance;
 - (CDStruct_c3b9c2ee)endGeoCoordinate;
 - (id)initWithComposedRoute:(id)arg1 transitStep:(id)arg2 stepIndex:(unsigned long long)arg3 geoStep:(id)arg4 pointRange:(struct _NSRange)arg5 maneuverPointRange:(struct _NSRange)arg6;

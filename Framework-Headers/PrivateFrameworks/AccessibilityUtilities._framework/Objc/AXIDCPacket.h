@@ -19,9 +19,9 @@
 + (CDStruct_6d9e24e6)headerFromData:(id)arg1;
 + (id)packetDataWithPayload:(id)arg1;
 + (id)packetWithHeader:(CDStruct_6d9e24e6)arg1;
+- (void).cxx_destruct;
 - (id)appendData:(id)arg1;
 - (id)dataPayload;
-- (void)dealloc;
 - (id)initWithHeader:(CDStruct_6d9e24e6)arg1;
 - (unsigned long long)missingLength;
 - (id)objectPayload;

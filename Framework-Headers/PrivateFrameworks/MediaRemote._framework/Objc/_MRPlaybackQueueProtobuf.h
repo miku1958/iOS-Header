@@ -8,7 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, _MRPlaybackQueueContextProtobuf;
+@class NSMutableArray, NSString, _MRNowPlayingPlayerPathProtobuf, _MRPlaybackQueueContextProtobuf;
 
 @interface _MRPlaybackQueueProtobuf : PBCodable <NSCopying>
 {
@@ -16,8 +16,11 @@
     _MRPlaybackQueueContextProtobuf *_context;
     int _location;
     NSString *_requestID;
+    _MRNowPlayingPlayerPathProtobuf *_resolvedPlayerPath;
+    BOOL _notSendingTransaction;
     struct {
         unsigned int location:1;
+        unsigned int notSendingTransaction:1;
     } _has;
 }
 
@@ -25,9 +28,13 @@
 @property (strong, nonatomic) _MRPlaybackQueueContextProtobuf *context; // @synthesize context=_context;
 @property (readonly, nonatomic) BOOL hasContext;
 @property (nonatomic) BOOL hasLocation;
+@property (nonatomic) BOOL hasNotSendingTransaction;
 @property (readonly, nonatomic) BOOL hasRequestID;
+@property (readonly, nonatomic) BOOL hasResolvedPlayerPath;
 @property (nonatomic) int location; // @synthesize location=_location;
+@property (nonatomic) BOOL notSendingTransaction; // @synthesize notSendingTransaction=_notSendingTransaction;
 @property (strong, nonatomic) NSString *requestID; // @synthesize requestID=_requestID;
+@property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *resolvedPlayerPath; // @synthesize resolvedPlayerPath=_resolvedPlayerPath;
 
 + (Class)contentItemType;
 - (void)addContentItem:(id)arg1;

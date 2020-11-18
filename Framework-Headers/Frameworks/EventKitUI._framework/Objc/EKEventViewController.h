@@ -6,16 +6,18 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <EventKitUI/EKEventDetailNotesCellDelegate-Protocol.h>
 #import <EventKitUI/EKEventTitleDetailItemDelegate-Protocol.h>
 #import <EventKitUI/EKUIEventStatusButtonsViewDelegate-Protocol.h>
 #import <EventKitUI/UIAlertViewDelegate-Protocol.h>
+#import <EventKitUI/UIScrollViewDelegate-Protocol.h>
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
 
-@class EKEvent, EKEventDetailItem, EKEventEditViewController, EKUIEventStatusButtonsView, EKUIRecurrenceAlertController, NSArray, NSDictionary, NSString, SingleToolbarItemContainerView, UIScrollView, UITableView, UIView, _UIAccessDeniedView;
+@class EKCustomTitleView, EKEvent, EKEventDetailItem, EKEventEditViewController, EKEventTitleDetailItem, EKUIEventStatusButtonsView, EKUIRecurrenceAlertController, NSArray, NSDictionary, NSMutableDictionary, NSString, SingleToolbarItemContainerView, UIScrollView, UITableView, UIView, _UIAccessDeniedView;
 @protocol EKEventViewDelegate;
 
-@interface EKEventViewController : UIViewController <EKEventTitleDetailItemDelegate, EKUIEventStatusButtonsViewDelegate, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface EKEventViewController : UIViewController <EKEventTitleDetailItemDelegate, EKUIEventStatusButtonsViewDelegate, EKEventDetailNotesCellDelegate, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 {
     NSArray *_items;
     EKEvent *_event;
@@ -32,27 +34,19 @@
     SingleToolbarItemContainerView *_statusButtonsContainerView;
     double _statusButtonsViewCachedFontSize;
     long long _lastOrientation;
+    EKEventTitleDetailItem *_titleItem;
+    EKCustomTitleView *_customTitle;
     EKEventDetailItem *_currentEditItem;
     UITableView *_tableView;
     BOOL _didAppear;
     BOOL _countedAppearance;
-    BOOL _viewIsVisible;
     BOOL _autoPop;
-    BOOL _allowsSubitems;
     BOOL _showsPreview;
     BOOL _hidePreview;
     BOOL _calendarPreviewIsInlineDayView;
     BOOL _inlineDayViewRespectsSelectedCalendarsFilter;
     BOOL _trustsStatus;
-    BOOL _allowsInviteResponses;
-    BOOL _showsAddToCalendar;
-    BOOL _showsUpdateCalendar;
-    BOOL _ICSPreview;
     BOOL _needsReload;
-    BOOL _showsDoneButton;
-    BOOL _showsOutOfDateMessage;
-    BOOL _showsDelegatorMessage;
-    BOOL _showsDelegateMessage;
     BOOL _dead;
     BOOL _tableIsBeingEdited;
     NSArray *_currentSections;
@@ -63,9 +57,23 @@
     UIView *_blankFooterView;
     BOOL _showingBlankFooterView;
     UIViewController *_confirmationAlertPresentationSourceViewController;
+    NSMutableDictionary *_cellHeights;
     BOOL _allowsEditing;
+    BOOL _viewIsVisible;
+    BOOL _ICSPreview;
+    BOOL _allowsInviteResponses;
+    BOOL _showsAddToCalendarForICSPreview;
+    BOOL _showsUpdateCalendarForICSPreview;
+    BOOL _showsDeleteForICSPreview;
+    BOOL _allowsSubitems;
+    BOOL _showsDoneButton;
+    BOOL _showsOutOfDateMessage;
+    BOOL _showsDelegatorMessage;
+    BOOL _showsDelegateMessage;
+    BOOL _showsConferenceItem;
     BOOL _minimalMode;
     BOOL _noninteractivePlatterMode;
+    BOOL _isLargeDayView;
     int _editorShowTransition;
     int _editorHideTransition;
     id<EKEventViewDelegate> _delegate;
@@ -91,23 +99,28 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideCalendarPreview;
 @property (nonatomic) BOOL inlineDayViewRespectsSelectedCalendarsFilter;
+@property (nonatomic) BOOL isLargeDayView; // @synthesize isLargeDayView=_isLargeDayView;
 @property (nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
 @property (nonatomic) BOOL minimalMode; // @synthesize minimalMode=_minimalMode;
 @property (nonatomic) BOOL noninteractivePlatterMode; // @synthesize noninteractivePlatterMode=_noninteractivePlatterMode;
 @property (nonatomic) int scrollToSection;
-@property (nonatomic) BOOL showsAddToCalendar; // @synthesize showsAddToCalendar=_showsAddToCalendar;
+@property (nonatomic) BOOL showsAddToCalendarForICSPreview; // @synthesize showsAddToCalendarForICSPreview=_showsAddToCalendarForICSPreview;
+@property (nonatomic) BOOL showsConferenceItem; // @synthesize showsConferenceItem=_showsConferenceItem;
 @property (nonatomic) BOOL showsDelegateMessage; // @synthesize showsDelegateMessage=_showsDelegateMessage;
 @property (nonatomic) BOOL showsDelegatorMessage; // @synthesize showsDelegatorMessage=_showsDelegatorMessage;
+@property (nonatomic) BOOL showsDeleteForICSPreview; // @synthesize showsDeleteForICSPreview=_showsDeleteForICSPreview;
 @property (nonatomic) BOOL showsDoneButton; // @synthesize showsDoneButton=_showsDoneButton;
 @property (nonatomic) BOOL showsOutOfDateMessage; // @synthesize showsOutOfDateMessage=_showsOutOfDateMessage;
-@property (nonatomic) BOOL showsUpdateCalendar; // @synthesize showsUpdateCalendar=_showsUpdateCalendar;
+@property (nonatomic) BOOL showsUpdateCalendarForICSPreview; // @synthesize showsUpdateCalendarForICSPreview=_showsUpdateCalendarForICSPreview;
 @property (readonly) Class superclass;
+@property BOOL viewIsVisible; // @synthesize viewIsVisible=_viewIsVisible;
 
 + (void)adjustLayoutForCell:(id)arg1 tableViewWidth:(double)arg2 numRowsInSection:(unsigned long long)arg3 cellRow:(unsigned long long)arg4 forceLayout:(BOOL)arg5;
 + (void)setDefaultDatesForEvent:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addToCalendarClicked:(id)arg1;
 - (BOOL)_backingEventAllowsEditing;
+- (void)_clearCustomTitle;
 - (void)_configureItemsForStoreConstraintsGivenCalendar:(id)arg1;
 - (void)_deleteClicked:(id)arg1;
 - (void)_deleteSuggestionTapped:(id)arg1;
@@ -192,6 +205,8 @@
 - (struct CGSize)preferredContentSize;
 - (void)presentEditorAnimated:(BOOL)arg1;
 - (id)previewActionItems;
+- (void)reloadedData;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)setActiveEventEditor:(id)arg1;
 - (void)setNeedsReload;
 - (void)setTopInset:(double)arg1;
@@ -202,19 +217,25 @@
 - (void)tableView:(id)arg1 didHighlightRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didUnhighlightRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (double)topInset;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateTitleWithScrollView:(id)arg1 animation:(BOOL)arg2;
 - (id)viewControllerForEventItem:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewLayoutMarginsDidChange;
 - (id)viewTitle;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

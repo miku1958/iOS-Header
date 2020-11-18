@@ -33,6 +33,7 @@
 + (id)currentTheme;
 + (void)endDisablingUserInteraction:(id)arg1;
 + (void)endUsingOrbTheme;
++ (BOOL)shouldUseAccessibilityLargeTextLayoutWithTraitCollecton:(id)arg1;
 + (BOOL)shouldUsePhoneLayoutWithTraitCollection:(id)arg1;
 
 @end

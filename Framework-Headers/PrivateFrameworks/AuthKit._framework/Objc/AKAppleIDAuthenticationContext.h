@@ -7,13 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <AuthKit/AKAppleIDAuthenticationLimitedUIProvider-Protocol.h>
-#import <AuthKit/CDPAuthProvider-Protocol.h>
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
-@class AKAnisetteData, AKDevice, CDPRecoveryController, NSArray, NSDictionary, NSNumber, NSSet, NSString, NSUUID;
+@class AKAnisetteData, AKDevice, AKNativeAccountRecoveryController, NSArray, NSDictionary, NSNumber, NSSet, NSString, NSUUID;
 @protocol AKAnisetteServiceProtocol, CDPStateUIProvider, OS_dispatch_queue;
 
-@interface AKAppleIDAuthenticationContext : NSObject <AKAppleIDAuthenticationLimitedUIProvider, CDPAuthProvider, NSSecureCoding>
+@interface AKAppleIDAuthenticationContext : NSObject <AKAppleIDAuthenticationLimitedUIProvider, NSSecureCoding>
 {
     id<CDPStateUIProvider> _cdpUiProvider;
     NSString *_generatedCode;
@@ -25,13 +24,15 @@
     struct __CFUserNotification *_activeSecondFactoryEntryPrompt;
     CDUnknownBlockType _secondFactoryEntryCompletion;
     NSObject<OS_dispatch_queue> *_secondFactorQueue;
-    CDPRecoveryController *_recoveryController;
     AKDevice *_proxiedDevice;
     AKDevice *_companionDevice;
-    NSDictionary *_recoveryInfo;
+    NSString *_interpolatedReason;
+    AKNativeAccountRecoveryController *_nativeRecoveryController;
+    unsigned long long _attemptIndex;
     BOOL _isProxyingForApp;
     BOOL _shouldSendIdentityTokenForRemoteUI;
     BOOL _isPasswordEditable;
+    BOOL _shouldSkipInitialReachabilityCheck;
     BOOL _isUsernameEditable;
     BOOL _shouldAllowAppleIDCreation;
     BOOL _needsCredentialRecovery;
@@ -83,9 +84,10 @@
 }
 
 @property (copy, nonatomic) NSString *DSID; // @synthesize DSID=_DSID;
+@property (nonatomic) unsigned long long _attemptIndex; // @synthesize _attemptIndex;
 @property (readonly, nonatomic) unsigned long long _capabilityForUIDisplay; // @synthesize _capabilityForUIDisplay;
-@property (readonly, nonatomic) NSString *_detailedDescription;
 @property (readonly, nonatomic) NSUUID *_identifier; // @synthesize _identifier;
+@property (readonly, nonatomic) NSString *_interpolatedReason;
 @property (nonatomic) BOOL _isPasswordEditable; // @synthesize _isPasswordEditable;
 @property (nonatomic, setter=_setProxyingForApp:) BOOL _isProxyingForApp; // @synthesize _isProxyingForApp;
 @property (copy, nonatomic, setter=_setMessage:) NSString *_message; // @synthesize _message;
@@ -95,6 +97,7 @@
 @property (copy, nonatomic, setter=_setProxiedAppName:) NSString *_proxiedAppName; // @synthesize _proxiedAppName;
 @property (copy, nonatomic, setter=_setShortLivedToken:) NSString *_shortLivedToken; // @synthesize _shortLivedToken;
 @property (nonatomic) BOOL _shouldSendIdentityTokenForRemoteUI; // @synthesize _shouldSendIdentityTokenForRemoteUI;
+@property (readonly, nonatomic) BOOL _shouldSkipInitialReachabilityCheck; // @synthesize _shouldSkipInitialReachabilityCheck;
 @property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (copy, nonatomic) id<AKAnisetteServiceProtocol> anisetteDataProvider; // @synthesize anisetteDataProvider=_anisetteDataProvider;
 @property (nonatomic) BOOL anticipateEscrowAttempt; // @synthesize anticipateEscrowAttempt=_anticipateEscrowAttempt;
@@ -147,29 +150,27 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsPiggybacking; // @synthesize supportsPiggybacking=_supportsPiggybacking;
 @property (strong) NSString *title; // @synthesize title=_title;
-@property (copy) NSString *username; // @synthesize username=_username;
+@property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_handleSecondFactorCodeEntry;
 - (id)_initWithIdentifier:(id)arg1;
 - (BOOL)_localUserHasEmptyPassword;
-- (id)_mapICSCRecoveryResultsToAuthKit:(id)arg1;
 - (id)_sanitizedCopy;
 - (id)_secondFactorQueue;
 - (void)_startListeningForSecondFactorCodeEntryNotification;
 - (void)_stopListeningForSecondFactorCodeEntryNotification;
 - (void)_updateWithValuesFromContext:(id)arg1;
-- (void)cdpContext:(id)arg1 performSilentRecoveryTokenRenewal:(CDUnknownBlockType)arg2;
 - (void)dismissBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
-- (void)dismissICSCRecoveryUIWithCompletion:(CDUnknownBlockType)arg1;
+- (void)dismissNativeRecoveryUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissSecondFactorUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)presentBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
-- (void)presentICSCRecoveryUIWithInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)presentNativeRecoveryUIWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentSecondFactorAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentSecondFactorUIWithCompletion:(CDUnknownBlockType)arg1;
 

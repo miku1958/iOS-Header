@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class NSUUID;
+@class NSObject, NSUUID;
 @protocol HMDFairPlaySAPSessionDelegate, OS_dispatch_queue;
 
-@interface HMDFairPlaySAPSession : NSObject
+@interface HMDFairPlaySAPSession : HMFObject
 {
     unsigned long long _state;
     id<HMDFairPlaySAPSessionDelegate> _delegate;

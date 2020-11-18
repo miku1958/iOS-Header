@@ -37,11 +37,9 @@
     UIImage *_editedContentArtworkImage;
     NSString *_editedContentTitle;
     UIViewController *_relatedContentViewController;
-    id<MusicEntityProviding> __contextualActionsOverrideTracklistEntityProvider;
 }
 
 @property (readonly, nonatomic) MusicEntityValueContext *_containerEntityValueContext; // @synthesize _containerEntityValueContext;
-@property (readonly, nonatomic) id<MusicEntityProviding> _contextualActionsOverrideTracklistEntityProvider; // @synthesize _contextualActionsOverrideTracklistEntityProvider=__contextualActionsOverrideTracklistEntityProvider;
 @property (readonly, nonatomic) MusicProductTracklistTableViewController *_tracklistTableViewController; // @synthesize _tracklistTableViewController;
 @property (readonly, nonatomic) MusicVerticalScrollingContainerViewController *_verticalScrollingContainerViewController; // @synthesize _verticalScrollingContainerViewController;
 @property (strong, nonatomic) MusicClientContext *clientContext; // @synthesize clientContext=_clientContext;

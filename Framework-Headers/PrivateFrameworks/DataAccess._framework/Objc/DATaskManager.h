@@ -6,12 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
-@class DAAccount, DATransaction, NSArray, NSMutableArray, NSMutableSet, NSTimer;
+@class DAAccount, DAActivity, DATransaction, NSArray, NSMutableArray, NSMutableSet, NSTimer;
 @protocol DATask;
 
 @interface DATaskManager : NSObject
 {
     DATransaction *_transaction;
+    DAActivity *_daActivity;
     DAAccount *_account;
     int _state;
     id<DATask> _activeModalTask;
@@ -76,6 +77,7 @@
 - (void)cancelAllTasks;
 - (void)cancelTask:(id)arg1;
 - (void)cancelTask:(id)arg1 withUnderlyingError:(id)arg2;
+- (void)cancelTasksDueToOnPowerMode;
 - (void)dealloc;
 - (id)deviceType;
 - (id)identityPersist;
@@ -85,6 +87,7 @@
 - (id)password;
 - (long long)port;
 - (id)server;
+- (BOOL)shouldCancelTaskDueToOnPowerFetchMode;
 - (void)shutdown;
 - (id)stateString;
 - (void)submitExclusiveTask:(id)arg1;

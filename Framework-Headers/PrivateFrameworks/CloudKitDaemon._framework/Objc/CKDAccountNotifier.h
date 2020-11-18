@@ -24,6 +24,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)postAccountChangedNotification:(id)arg1;
+- (void)postAccountChangedNotificationToClients;
 - (void)registerObserver:(id)arg1 forAccountChangeNotification:(CDUnknownBlockType)arg2;
 - (void)unregisterObserverForAccountChangeNotification:(id)arg1;
 

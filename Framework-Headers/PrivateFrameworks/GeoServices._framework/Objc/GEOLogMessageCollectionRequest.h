@@ -18,11 +18,11 @@
 @property (strong, nonatomic) NSMutableArray *logMessages; // @synthesize logMessages=_logMessages;
 
 + (Class)logMessageType;
+- (void).cxx_destruct;
 - (void)addLogMessage:(id)arg1;
 - (void)clearLogMessages;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

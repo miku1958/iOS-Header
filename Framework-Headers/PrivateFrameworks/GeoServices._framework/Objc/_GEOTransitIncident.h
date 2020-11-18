@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOTransitIncident-Protocol.h>
+#import <GeoServices/NSSecureCoding-Protocol.h>
 
 @class GEOPBTransitIncident, NSArray, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTransitIncident : NSObject <GEOTransitIncident>
+@interface _GEOTransitIncident : NSObject <GEOTransitIncident, NSSecureCoding>
 {
     GEOPBTransitIncident *_incident;
 }
@@ -35,7 +36,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *title;
 
-- (void)dealloc;
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithIncident:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

@@ -28,7 +28,7 @@
 
 + (void)_deleteAllContent;
 + (BOOL)_synchronouslyRemoveItemAtURL:(id)arg1 withFileCoordinator:(id)arg2;
-+ (void)deleleAllDataIfNecessary;
++ (void)deleteAllDataIfNecessary;
 + (id)documentManagerForService:(id)arg1;
 + (void)setPurposeIdentifier:(id)arg1;
 - (void).cxx_destruct;

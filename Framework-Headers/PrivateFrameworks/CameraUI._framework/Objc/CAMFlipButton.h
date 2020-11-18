@@ -6,29 +6,43 @@
 
 #import <UIKit/UIButton.h>
 
-@class UIImageView;
+#import <CameraUI/CAMAccessibilityHUDImageProvider-Protocol.h>
 
-@interface CAMFlipButton : UIButton
+@class NSString, UIImageView;
+
+@interface CAMFlipButton : UIButton <CAMAccessibilityHUDImageProvider>
 {
     long long _layoutStyle;
+    long long _backgroundStyle;
     long long _orientation;
-    UIImageView *__padBackgroundView;
+    UIImageView *__imageView;
+    UIImageView *__backgroundView;
     struct UIEdgeInsets _tappableEdgeInsets;
 }
 
-@property (readonly, nonatomic) UIImageView *_padBackgroundView; // @synthesize _padBackgroundView=__padBackgroundView;
+@property (strong, nonatomic) UIImageView *_backgroundView; // @synthesize _backgroundView=__backgroundView;
+@property (readonly, nonatomic) UIImageView *_imageView; // @synthesize _imageView=__imageView;
+@property (nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
+@property (readonly) Class superclass;
 @property (nonatomic) struct UIEdgeInsets tappableEdgeInsets; // @synthesize tappableEdgeInsets=_tappableEdgeInsets;
 
 + (id)flipButtonWithLayoutStyle:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_commonCAMFlipButtonInitializationWithStyle:(long long)arg1;
-- (void)_updateForLayoutStyle;
 - (void)_updateImages;
 - (struct UIEdgeInsets)alignmentRectInsets;
+- (void)animateFlipClockwise:(BOOL)arg1;
+- (id)imageForAccessibilityHUD;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (id)mainImageNameForAccessibilityHUD:(BOOL)arg1;
+- (void)setBackgroundStyle:(long long)arg1 animated:(BOOL)arg2;
+- (void)setHighlighted:(BOOL)arg1;
 - (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
 
 @end

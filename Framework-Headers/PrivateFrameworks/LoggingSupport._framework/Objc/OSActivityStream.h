@@ -20,7 +20,7 @@
     BOOL _delegateStreamErrorLess;
     BOOL _delegateStreamWithError;
     BOOL _delegateHasDidFail;
-    id<OSDeviceDelegate> deviceDelegate;
+    id<OSDeviceDelegate> _deviceDelegate;
     id<OSActivityStreamDelegate> _delegate;
     unsigned long long _options;
     unsigned long long _eventFilter;
@@ -32,7 +32,7 @@
 @property (nonatomic) NSMutableDictionary *activityFilters; // @synthesize activityFilters=_activityFilters;
 @property (weak, nonatomic) id<OSActivityStreamDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) OSLogDevice *device; // @synthesize device=_device;
-@property (weak, nonatomic) id<OSDeviceDelegate> deviceDelegate; // @synthesize deviceDelegate;
+@property (weak, nonatomic) id<OSDeviceDelegate> deviceDelegate; // @synthesize deviceDelegate=_deviceDelegate;
 @property (nonatomic) unsigned long long eventFilter; // @synthesize eventFilter=_eventFilter;
 @property (nonatomic) unsigned long long events;
 @property (nonatomic) unsigned long long options; // @synthesize options=_options;

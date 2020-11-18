@@ -10,11 +10,12 @@
 #import <CoreDuet/_DKKnowledgeEventStreamDeleting-Protocol.h>
 #import <CoreDuet/_DKKnowledgeQuerying-Protocol.h>
 #import <CoreDuet/_DKKnowledgeSaving-Protocol.h>
+#import <CoreDuet/_DKKnowledgeSynchronizing-Protocol.h>
 
 @class NSXPCConnection, _DKPrivacyPolicyEnforcer, _DKRateLimitPolicyEnforcer;
 @protocol OS_dispatch_queue;
 
-@interface _DKKnowledgeStore : NSObject <_DKKnowledgeEventStreamDeleting, _DKKnowledgeSaving, _DKKnowledgeDeleting, _DKKnowledgeQuerying>
+@interface _DKKnowledgeStore : NSObject <_DKKnowledgeEventStreamDeleting, _DKKnowledgeSynchronizing, _DKKnowledgeSaving, _DKKnowledgeDeleting, _DKKnowledgeQuerying>
 {
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_defaultQueue;
@@ -29,19 +30,27 @@
 
 + (id)knowledgeStore;
 + (id)knowledgeStoreWithDirectReadOnlyAccess;
++ (id)knowledgeStoreWithDirectReadOnlyAccessWithConnection:(id)arg1 storeDirectory:(id)arg2;
++ (id)knowledgeStoreWithDirectReadOnlyAccessWithStore:(id)arg1 storeDirectory:(id)arg2;
++ (id)userKnowledgeStore;
++ (id)userKnowledgeStoreWithDirectReadOnlyAccess;
 - (void).cxx_destruct;
+- (BOOL)confirmConnectionWithError:(id *)arg1;
 - (void)dealloc;
 - (unsigned long long)deleteAllEventsInEventStream:(id)arg1 error:(id *)arg2;
 - (unsigned long long)deleteAllEventsMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (BOOL)deleteObjects:(id)arg1 error:(id *)arg2;
 - (void)deleteObjects:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (BOOL)deleteRemoteState:(id *)arg1;
 - (id)executeQuery:(id)arg1 error:(id *)arg2;
 - (void)executeQuery:(id)arg1 responseQueue:(id)arg2;
 - (void)executeQuery:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)init;
+- (id)initWithConnection:(id)arg1;
 - (id)initWithMachServiceName:(id)arg1;
 - (BOOL)saveObjects:(id)arg1 error:(id *)arg2;
 - (void)saveObjects:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (BOOL)synchronizeWithError:(id *)arg1;
 
 @end
 

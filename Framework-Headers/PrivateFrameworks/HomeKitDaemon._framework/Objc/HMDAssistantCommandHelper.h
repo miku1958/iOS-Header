@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDHome, HMFMessageDispatcher, HMFTimer, NSArray, NSMutableArray, NSString, NSUUID;
+@class HMDHome, HMFMessageDispatcher, HMFTimer, NSArray, NSMutableArray, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDAssistantCommandHelper : NSObject <HMFMessageReceiver, HMFTimerDelegate, HMFLogging>
+@interface HMDAssistantCommandHelper : HMFObject <HMFMessageReceiver, HMFTimerDelegate, HMFLogging>
 {
+    BOOL _executingActionSet;
     CDUnknownBlockType _responseHandler;
     NSUUID *_messageId;
     HMDHome *_home;
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) HMFTimer *actionTimer; // @synthesize actionTimer=_actionTimer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL executingActionSet; // @synthesize executingActionSet=_executingActionSet;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSUUID *messageId; // @synthesize messageId=_messageId;

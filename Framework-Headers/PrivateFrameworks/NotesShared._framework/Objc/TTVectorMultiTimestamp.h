@@ -15,7 +15,8 @@
     NSArray *_timestamps;
 }
 
-@property (readonly, nonatomic) NSArray *timestamps; // @synthesize timestamps=_timestamps;
+@property (readonly, nonatomic) BOOL isDocumentShared;
+@property (strong, nonatomic) NSArray *timestamps; // @synthesize timestamps=_timestamps;
 
 - (void).cxx_destruct;
 - (id)clockElementForUUID:(id)arg1 atIndex:(unsigned long long)arg2;

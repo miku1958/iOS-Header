@@ -14,8 +14,12 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (CDUnknownBlockType)_axDetailsDismissedBlock;
+- (void)_axSetDetailsDismissedBlock:(CDUnknownBlockType)arg1;
 - (void)_ensureScrollViewController;
 - (void)_loadWidgets;
+- (void)_setAXDetailsDismissedBlock:(CDUnknownBlockType)arg1;
+- (BOOL)widgetComposition:(id)arg1 requestViewControllerDismissalAnimated:(BOOL)arg2;
 
 @end
 

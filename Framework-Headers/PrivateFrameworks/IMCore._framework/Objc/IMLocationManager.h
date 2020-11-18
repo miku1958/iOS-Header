@@ -40,6 +40,7 @@
 - (void)_fireCompletionHandlers;
 - (void)_locationManagerTimedOut;
 - (void)_locationUpdateTimerFired:(id)arg1;
+- (BOOL)_shouldSendLocation:(id)arg1 timeIntervalSinceStart:(double)arg2;
 - (void)dealloc;
 - (id)init;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;

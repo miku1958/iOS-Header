@@ -28,6 +28,7 @@
 - (id)encodedClassName;
 - (id)groupIdentifier;
 - (id)initWithResults:(id)arg1;
+- (BOOL)requiresResponse;
 
 @end
 

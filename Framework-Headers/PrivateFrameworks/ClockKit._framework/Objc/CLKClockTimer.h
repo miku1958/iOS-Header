@@ -13,16 +13,18 @@
 {
     CADisplayLink *_displayLink;
     CADisplayLink *_30fpsDisplayLink;
+    CADisplayLink *_nativeDisplayLink;
     NSMutableDictionary *_minuteHandlers;
     NSMutableDictionary *_secondHandlers;
     NSMutableDictionary *_subsecondHandlers;
     NSMutableDictionary *_30fpsHandlers;
+    NSMutableDictionary *_nativeHandlers;
     unsigned long long _nextToken;
     long long _lastHour;
     long long _lastMinute;
     long long _lastSecond;
     double _lastSubsecondFraction;
-    BOOL _inForeground;
+    BOOL _permittedToRun;
     NSObject<OS_dispatch_source> *_signalSource;
     NSMutableDictionary *_identificationLogsByToken;
 }
@@ -39,13 +41,16 @@
 - (struct NSNumber *)_nextTokenWithIdentificationLog:(CDUnknownBlockType)arg1;
 - (void)_on30fpsDisplayLink:(id)arg1;
 - (void)_onDisplayLink:(id)arg1;
+- (void)_onNativeDisplayLink:(id)arg1;
 - (void)_removeToken:(struct NSNumber *)arg1;
 - (void)_update30fpsDisplayLink;
 - (void)_updateDisplayLink;
 - (void)_updateDisplayLinkFrameIntervalAccuracyIfNecessaryForTimePastMinuteInSeconds:(double)arg1;
+- (void)_updateNativeDisplayLink;
 - (void)dealloc;
 - (id)init;
 - (struct NSNumber *)start30fpsUpdatesWithHandler:(CDUnknownBlockType)arg1 identificationLog:(CDUnknownBlockType)arg2;
+- (struct NSNumber *)startDisplayNativeUpdatesWithHandler:(CDUnknownBlockType)arg1 identificationLog:(CDUnknownBlockType)arg2;
 - (struct NSNumber *)startMinuteUpdatesWithHandler:(CDUnknownBlockType)arg1;
 - (struct NSNumber *)startMinuteUpdatesWithHandler:(CDUnknownBlockType)arg1 identificationLog:(CDUnknownBlockType)arg2;
 - (struct NSNumber *)startSecondUpdatesWithHandler:(CDUnknownBlockType)arg1;
@@ -53,6 +58,7 @@
 - (struct NSNumber *)startSubsecondUpdatesWithHandler:(CDUnknownBlockType)arg1;
 - (struct NSNumber *)startSubsecondUpdatesWithHandler:(CDUnknownBlockType)arg1 identificationLog:(CDUnknownBlockType)arg2;
 - (void)stop30fpsUpdatesForToken:(struct NSNumber *)arg1;
+- (void)stopDisplayNativeUpdatesForToken:(struct NSNumber *)arg1;
 - (void)stopMinuteUpdatesForToken:(struct NSNumber *)arg1;
 - (void)stopSecondUpdatesForToken:(struct NSNumber *)arg1;
 - (void)stopSubsecondUpdatesForToken:(id)arg1;

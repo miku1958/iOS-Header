@@ -6,29 +6,38 @@
 
 #import <objc/NSObject.h>
 
+@class NSArray;
+
 @interface _SFDialog : NSObject
 {
     BOOL _completed;
 }
 
-@property (readonly, nonatomic) BOOL canceledOnNavigation;
+@property (readonly, copy, nonatomic) NSArray *additionalCancellationExemptions;
+@property (readonly, nonatomic) BOOL canceledOnCommittedNavigation;
+@property (readonly, nonatomic) BOOL canceledOnProvisionalNavigation;
 @property (readonly, nonatomic) BOOL completionHandlerBlocksWebProcess;
 @property (readonly, nonatomic) long long presentationStyle;
 
 + (id)_dialogWithTitle:(id)arg1 message:(id)arg2 primaryAction:(id)arg3 secondaryAction:(id)arg4 applicationModal:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 + (id)authenticationDialogWithAuthenticationChallenge:(id)arg1 committedURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)blockedPopupWindowDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)continuePrintingDialogWithTitle:(id)arg1 message:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)dialogWithWebUIAlert:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)downloadBlockedDialogWithFileType:(long long)arg1 initiatingURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)formSubmissionDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-+ (id)genericErrorDialogWithTitle:(id)arg1 message:(id)arg2;
++ (id)genericErrorDialogWithTitle:(id)arg1 message:(id)arg2 applicationModal:(BOOL)arg3;
 + (id)javaScriptAlertDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)javaScriptConfirmDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)javaScriptPromptDialogWithMessage:(id)arg1 defaultText:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)mailNavigationDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)noFeedAppDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)pageLoadErrorWithMessage:(id)arg1;
++ (id)printBlockedDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)redirectDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)saveBasicAuthenticationPasswordDialog:(BOOL)arg1 presentsAsActionSheet:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)telephonyNavigationDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (id)userMediaPermissionDialogWithHost:(id)arg1 devices:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)completeWithResponse:(id)arg1;
 - (void)didCompleteWithResponse:(id)arg1;
 - (id)newDialogViewRepresentation;

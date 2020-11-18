@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasSpaceAvailable;
 - (id)initWithTag:(unsigned char)arg1;
 - (void)open;
+- (unsigned long long)streamStatus;
 - (long long)write:(const char *)arg1 maxLength:(unsigned long long)arg2;
 
 @end

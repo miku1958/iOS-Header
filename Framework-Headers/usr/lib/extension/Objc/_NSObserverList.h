@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_copyObserversOfObject:(id)arg1;
+- (void).cxx_destruct;
 - (void)_directAddObserver:(id)arg1;
 - (void)_receiveBox:(id)arg1;
 - (id)addObserver:(id)arg1 toObservableObject:(id)arg2;

@@ -27,6 +27,7 @@
     NSUUID *_uuid;
     NSData *_cdhash;
     NSString *_requirement;
+    NSURL *_dataContainerURL;
 }
 
 @property (strong) NSDictionary *annotations; // @synthesize annotations=_annotations;
@@ -35,6 +36,7 @@
 @property (strong) NSData *cdhash; // @synthesize cdhash=_cdhash;
 @property (readonly) NSString *containingPath;
 @property (strong) NSURL *containingUrl; // @synthesize containingUrl=_containingUrl;
+@property (readonly, nonatomic) NSURL *dataContainerURL; // @synthesize dataContainerURL=_dataContainerURL;
 @property (strong) NSDictionary *entitlements; // @synthesize entitlements=_entitlements;
 @property unsigned long long hubProtocolVersion; // @synthesize hubProtocolVersion=_hubProtocolVersion;
 @property (strong) NSString *identifier; // @synthesize identifier=_identifier;
@@ -76,6 +78,7 @@
 - (id)initWithForm:(id)arg1;
 - (id)initWithName:(id)arg1 url:(id)arg2 bundleInfo:(id)arg3 info:(id)arg4 uuid:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
+- (void)localizedInfoDictionaryForKeys:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)mergeDictionary:(id)arg1 into:(id)arg2;
 - (id)mergeSharedResources:(id)arg1 into:(id)arg2;
 - (id)normalizeInfoDictionary:(id)arg1;

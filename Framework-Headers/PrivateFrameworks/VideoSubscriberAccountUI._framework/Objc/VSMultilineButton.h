@@ -6,16 +6,20 @@
 
 #import <UIKit/UIButton.h>
 
-__attribute__((visibility("hidden")))
 @interface VSMultilineButton : UIButton
 {
 }
 
+- (void)_updateTitleTextColor;
+- (void)dealloc;
 - (void)drawRect:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)tintColorDidChange;
 
 @end
 

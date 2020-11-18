@@ -42,7 +42,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<CoreDAVLocalDBTreeInfoProvider> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<CoreDAVLocalDBTreeInfoProvider> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSURL *folderURL; // @synthesize folderURL=_folderURL;
 @property (readonly, nonatomic) NSDictionary *folderURLToChildrenURLOrder; // @synthesize folderURLToChildrenURLOrder=_folderURLToChildrenURLOrder;
@@ -54,6 +54,7 @@
 @property (strong, nonatomic) NSString *previousSyncToken; // @synthesize previousSyncToken=_previousSyncToken;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_copyContainerParserMappings;
 - (void)_folderModTask:(id)arg1 parsedPropStats:(id)arg2 error:(id)arg3;
 - (void)_foundChildrenOrder:(id)arg1 inFolderWithURL:(id)arg2;
@@ -72,7 +73,6 @@
 - (id)copyFolderMultiGetTaskWithURLs:(id)arg1;
 - (id)copyMultiGetTaskWithURLs:(id)arg1;
 - (id)dataContentType;
-- (void)dealloc;
 - (void)deleteTask:(id)arg1 completedWithError:(id)arg2;
 - (id)initWithFolderURL:(id)arg1 previousCTag:(id)arg2 previousPTag:(id)arg3 previousSyncToken:(id)arg4 actions:(id)arg5 syncItemOrder:(BOOL)arg6 context:(id)arg7 accountInfoProvider:(id)arg8 taskManager:(id)arg9;
 - (BOOL)isWhitelistedError:(id)arg1;

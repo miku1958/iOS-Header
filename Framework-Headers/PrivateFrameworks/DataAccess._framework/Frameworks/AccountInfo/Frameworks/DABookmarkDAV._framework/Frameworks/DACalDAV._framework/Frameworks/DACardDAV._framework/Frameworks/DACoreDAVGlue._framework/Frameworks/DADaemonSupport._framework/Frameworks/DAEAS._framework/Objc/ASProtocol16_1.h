@@ -15,6 +15,7 @@
 - (BOOL)supportsForwarderTracking;
 - (BOOL)supportsMailboxEnhancedSearch;
 - (BOOL)supportsProposeNewTime;
+- (BOOL)supportsUniqueServerId;
 
 @end
 

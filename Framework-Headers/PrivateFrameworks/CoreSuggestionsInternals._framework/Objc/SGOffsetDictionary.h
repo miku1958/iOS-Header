@@ -20,7 +20,7 @@
 - (void)dealloc;
 - (id)fullMappingFromFile:(id)arg1;
 - (id)initWithFilehandle:(id)arg1 sizeFactor:(unsigned long long)arg2 keyLength:(int)arg3 singleByteOffset:(BOOL)arg4;
-- (long long)payloadCountForKey:(const char *)arg1;
+- (int)payloadCountForKey:(const char *)arg1;
 - (unsigned long long)payloadLengthForKey:(const char *)arg1;
 - (unsigned long long)seekLocationForKey:(const char *)arg1;
 - (id)stringValueForKey:(const char *)arg1 fromFile:(id)arg2;

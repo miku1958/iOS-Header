@@ -41,7 +41,6 @@
 - (BOOL)_computeAndSubmitAchievementCountMetric:(BOOL)arg1;
 - (BOOL)_computeAndSubmitDatabaseStatsMetric:(BOOL)arg1;
 - (BOOL)_computeAndSubmitFitnessDailyReportWithAction:(id)arg1 force:(BOOL)arg2;
-- (BOOL)_computeAndSubmitFitnessFriendsMonthlyMetric:(BOOL)arg1;
 - (BOOL)_computeAndSubmitHealthTypesDifferentialPrivacyMetric;
 - (BOOL)_computeAndSubmitSleepAlarmDailyReportWithAction:(id)arg1 force:(BOOL)arg2;
 - (BOOL)_computeAndSubmitSleepAlarmStatistics:(BOOL)arg1;

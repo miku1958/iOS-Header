@@ -15,19 +15,23 @@
 - (BOOL)dismissSiri;
 - (BOOL)isAppSwitcherVisible;
 - (BOOL)isControlCenterVisible;
+- (BOOL)isDockVisible;
 - (BOOL)isMediaPlaying;
 - (BOOL)isNotificationCenterVisible;
 - (BOOL)isNotificationVisible;
 - (BOOL)isNowPlayingUIVisible;
 - (BOOL)isReceivingAirPlay;
 - (BOOL)isScreenSaverVisible;
-- (BOOL)isSideSwitcherVisible;
 - (BOOL)isSiriTalkingOrListening;
 - (BOOL)isSiriVisible;
 - (BOOL)isSoftwareUpdateUIVisible;
 - (BOOL)openSiri;
 - (int)pid;
 - (void)pid:(void (^)(int))arg1;
+- (void)rebootDevice;
 - (void)wakeUpDeviceIfNecessary;
+
+@optional
+- (BOOL)isPasscodeLockVisible;
 @end
 

@@ -47,6 +47,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStartComponents:(id)arg1 endComponents:(id)arg2 calendarIdentifier:(id)arg3 repeatInterval:(unsigned long long)arg4;
 - (id)initWithStartComponents:(id)arg1 endComponents:(id)arg2 calendarIdentifier:(id)arg3 repeatInterval:(unsigned long long)arg4 identifier:(id)arg5;
+- (BOOL)isEqual:(id)arg1;
 - (id)nextTransitionDateAfterDate:(id)arg1;
 
 @end

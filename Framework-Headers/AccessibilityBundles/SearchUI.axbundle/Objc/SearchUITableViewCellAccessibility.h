@@ -13,7 +13,15 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityContainsSportsGrid;
+- (BOOL)_accessibilityHasButtonSubviews;
+- (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (id)_accessibilityRetrieveTableViewCellText;
+- (BOOL)_accessibilityUsesOverrideContainerProtocol;
+- (id)accessibilityElements;
+- (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
+- (BOOL)isAccessibilityElement;
 
 @end
 

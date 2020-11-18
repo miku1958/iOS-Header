@@ -4,10 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <Contacts/NSCopying-Protocol.h>
 #import <Contacts/NSObject-Protocol.h>
 
-@protocol CNiOSContactPredicate <NSObject>
-- (struct __CFArray *)cn_copyPeopleInAddressBook:(void *)arg1 withSortOrder:(unsigned int)arg2 matchInfos:(id *)arg3 options:(unsigned long long)arg4 error:(struct __CFError **)arg5;
+@class CNContactsEnvironment, CNiOSPersonFetchRequest;
+@protocol CNEncodedFetchCursor;
+
+@protocol CNiOSContactPredicate <NSObject, NSCopying>
+- (struct __CFArray *)cn_copyPeopleInAddressBook:(void *)arg1 fetchRequest:(CNiOSPersonFetchRequest *)arg2 matchInfos:(id *)arg3 environment:(CNContactsEnvironment *)arg4 error:(struct __CFError **)arg5;
+- (id<CNEncodedFetchCursor>)cn_cursorForEncodedPeopleFromAddressBook:(void *)arg1 fetchRequest:(CNiOSPersonFetchRequest *)arg2 environment:(CNContactsEnvironment *)arg3 error:(id *)arg4;
+- (BOOL)cn_supportsEncodedFetching;
+- (BOOL)cn_supportsNativeBatchFetch;
 - (BOOL)cn_supportsNativeSorting;
 @end
 

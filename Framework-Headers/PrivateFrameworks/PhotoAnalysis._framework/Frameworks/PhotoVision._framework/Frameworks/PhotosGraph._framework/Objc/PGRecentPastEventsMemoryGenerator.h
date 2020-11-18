@@ -19,8 +19,11 @@
 - (void).cxx_destruct;
 - (void)_computePotentialMemories;
 - (id)_computePotentialMemoriesForPeopleNodes:(id)arg1;
-- (id)_computePotentialMemoriesForTripsWeekendsOrSpecialEvents:(id)arg1 withLocalStartDate:(id)arg2 localEndDate:(id)arg3 subcategory:(long long)arg4;
+- (id)_computePotentialMemoriesForTripsOrWeekends:(id)arg1 withLocalStartDate:(id)arg2 localEndDate:(id)arg3 subcategory:(long long)arg4;
+- (id)_createMemoryDebugWithPotentialMemory:(id)arg1;
 - (id)_peopleSeenInPreviousWeekButNotInPreviousThreeMonthsWithLocalDate:(id)arg1;
+- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
+- (id)_potentialMemoriesForDryTesting;
 - (id)generateMemories:(unsigned long long)arg1;
 - (id)initWithController:(id)arg1;
 

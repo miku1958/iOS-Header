@@ -33,6 +33,7 @@
 - (id)actionPerformerForActionType:(id)arg1;
 - (id)barButtonItemForActionType:(id)arg1;
 - (BOOL)canPerformActionType:(id)arg1;
+- (BOOL)canPerformAssetVariationActions;
 - (id)initWithSelectionSnapshot:(id)arg1;
 - (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;
 - (id)previewActionForActionType:(id)arg1;

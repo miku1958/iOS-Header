@@ -20,8 +20,10 @@
     NSMutableDictionary *_coalescedJobResultsByAssetLocalIdentifier;
     NSNumber *_lastRecordedDarkWakeState;
     _Atomic unsigned long long _lastPerformedJobScenario;
+    BOOL _analysisJobCancelled;
 }
 
+@property BOOL analysisJobCancelled; // @synthesize analysisJobCancelled=_analysisJobCancelled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -34,8 +36,8 @@
 - (void)_checkForDarkWakeStateTransition;
 - (struct CGImage *)_createCGImageFromImageSource:(struct CGImageSource *)arg1 imageOptions:(id)arg2 orientation:(unsigned long long *)arg3 error:(id *)arg4;
 - (unsigned long long)analyzeAssetResourceFileAtURL:(id)arg1 forAsset:(id)arg2 withAttributes:(id)arg3 error:(id *)arg4;
-- (unsigned long long)analyzeAssetWithLocalIdentifer:(id)arg1 workerJob:(id)arg2 error:(id *)arg3;
 - (unsigned long long)analyzeAssetWithLocalIdentifier:(id)arg1 dataLoadingOptions:(id)arg2 usingBlock:(CDUnknownBlockType)arg3 error:(id *)arg4;
+- (unsigned long long)analyzeAssetWithLocalIdentifier:(id)arg1 workerJob:(id)arg2 error:(id *)arg3;
 - (unsigned long long)analyzeImageData:(id)arg1 forAsset:(id)arg2 withAttributes:(id)arg3 error:(id *)arg4;
 - (id)assetResourcesForAsset:(id)arg1 fromDesiredTypes:(const long long *)arg2 count:(unsigned long long)arg3;
 - (id)assetWithLocalIdentifier:(id)arg1 error:(id *)arg2;
@@ -59,8 +61,6 @@
 - (void)performCVMLForcedCleanupWithOptions:(id)arg1;
 - (id)preferredAssetResourcesForAnalyzingAsset:(id)arg1;
 - (BOOL)processAsset:(id)arg1 error:(id *)arg2;
-- (void)scheduleProcessingOfAssetsWithLocalIdentifiers:(id)arg1;
-- (void)scheduleProcessingOfAssetsWithLocalIdentifiers:(id)arg1 withPriority:(long long)arg2;
 - (void)shutdown;
 - (BOOL)startAcknowledgeDeletionsJob:(id)arg1 error:(id *)arg2;
 - (BOOL)startAnalysisJob:(id)arg1 error:(id *)arg2;

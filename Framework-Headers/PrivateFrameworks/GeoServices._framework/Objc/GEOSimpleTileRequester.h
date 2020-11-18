@@ -6,56 +6,82 @@
 
 #import <GeoServices/GEOTileRequester.h>
 
-#import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
+#import <GeoServices/GEOSimpleTileRequesterOperationDelegate-Protocol.h>
+#import <GeoServices/GEOSimpleTileRequesterSubclass-Protocol.h>
 
-@class GEONSURLSharedSession, GEOTileKeyMap, NSMutableArray, NSMutableSet, NSOperationQueue, NSString;
+@class GEODataSession, GEOTileRequestBalancer, NSMutableArray, NSObject, NSString;
+@protocol OS_dispatch_queue, OS_os_activity;
 
-@interface GEOSimpleTileRequester : GEOTileRequester <NSURLSessionDataDelegate>
+@interface GEOSimpleTileRequester : GEOTileRequester <GEOSimpleTileRequesterSubclass, GEOSimpleTileRequesterOperationDelegate>
 {
-    NSMutableArray *_waiting;
-    NSMutableSet *_running;
-    GEOTileKeyMap *_keysToBaseOps;
+    GEOTileRequestBalancer *_balancer;
+    NSMutableArray *_running;
+    NSMutableArray *_errors;
+    NSObject<OS_os_activity> *_activity;
+    NSObject<OS_dispatch_queue> *_workQueue;
+    GEODataSession *_dataSession;
+    unsigned int _qos;
+    struct GEOOnce_s _didStart;
+    struct GEOOnce_s _didCallDelegate;
     BOOL _cancelled;
     BOOL _subclassImplementsTileEdition;
-    NSMutableArray *_errors;
-    NSOperationQueue *_delegateQueue;
-    GEONSURLSharedSession *_session;
+    BOOL _hasRemainingTileKeys;
 }
 
+@property (readonly, nonatomic) NSObject<OS_os_activity> *activity; // @synthesize activity=_activity;
+@property (readonly, nonatomic) GEOTileRequestBalancer *balancer; // @synthesize balancer=_balancer;
+@property (strong, nonatomic) GEODataSession *dataSession; // @synthesize dataSession=_dataSession;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isRunning) BOOL running;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
-+ (long long)eTagType;
++ (unsigned char)eTagType;
+- (void).cxx_destruct;
+- (void)_addRunningOperation:(id)arg1;
 - (void)_cancel;
+- (void)_cancelAllRunningOperations;
 - (void)_cancelKey:(struct _GEOTileKey)arg1;
+- (void)_checkIfDone;
 - (void)_cleanup;
-- (id)_delegateGCDQueue;
-- (void)_doWorkOrFinish;
-- (id)_nextPendingOperation;
+- (id)_createOperationsForTileKey:(const struct _GEOTileKey *)arg1 priority:(unsigned int)arg2;
+- (void)_didStartOperationsForAllTileKeys;
+- (BOOL)_isRunningOperation:(id)arg1;
+- (void)_notifyDelegateDone:(CDUnknownBlockType)arg1;
 - (void)_operationFailed:(id)arg1 error:(id)arg2;
 - (void)_operationFinished:(id)arg1;
-- (void)_releaseEverything;
+- (BOOL)_removeRunningOperation:(id)arg1;
 - (void)_reprioritizeKey:(struct _GEOTileKey)arg1 newPriority:(unsigned int)arg2;
-- (id)_runningOperationForTask:(id)arg1;
-- (void)_startNextPendingOperation:(id)arg1;
-- (BOOL)_verifyDataIntegrity:(id)arg1 checksumMethod:(int)arg2;
+- (void)_startOperation:(id)arg1;
+- (void)_updateRunningCountAndCheckIfDone;
 - (BOOL)allowsCookies;
 - (void)cancel;
 - (void)cancelKey:(const struct _GEOTileKey *)arg1;
 - (int)checksumMethodForIncomingTileDataWithKey:(struct _GEOTileKey *)arg1;
+- (id)createOperationsForTileKey:(struct _GEOTileKey)arg1 priority:(unsigned int)arg2;
+- (void)createRequest:(id *)arg1 localizationRequest:(id *)arg2 forKey:(const struct _GEOTileKey *)arg3;
 - (void)dealloc;
+- (void)didStartOperationsForAllTileKeys;
 - (id)editionHeader;
-- (id)initWithKeyList:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3 cachedEtags:(id)arg4 cachedData:(id)arg5 priorities:(id)arg6;
-- (BOOL)isRunning;
-- (id)localizationURLForTileKey:(struct _GEOTileKey *)arg1;
+- (id)initWithTileRequest:(id)arg1 delegateQueue:(id)arg2 delegate:(id)arg3;
+- (id)localizationURLForTileKey:(const struct _GEOTileKey *)arg1;
 - (id)mergeBaseTile:(id)arg1 withLocalizationTile:(id)arg2;
 - (id)mergeBaseTileEtag:(id)arg1 withLocalizationTileEtag:(id)arg2;
+- (id)newRequestWithType:(int)arg1 URL:(id)arg2 xpcRequest:(id)arg3 entityTag:(id)arg4 cachedData:(id)arg5 allowedRequestMode:(BOOL)arg6;
+- (id)newXPCDataRequestForTileKey:(const struct _GEOTileKey *)arg1;
+- (void)operationFailed:(id)arg1 error:(id)arg2;
+- (void)operationFinished:(id)arg1;
+- (id)operationsForKey:(const struct _GEOTileKey *)arg1;
+- (id)removeOperationsForKey:(const struct _GEOTileKey *)arg1;
 - (void)reprioritizeKey:(const struct _GEOTileKey *)arg1 newPriority:(unsigned int)arg2;
 - (void)start;
-- (unsigned int)tileEditionForKey:(struct _GEOTileKey *)arg1;
-- (id)urlForTileKey:(struct _GEOTileKey *)arg1;
+- (void)startOperations:(id)arg1;
+- (BOOL)tileDataIsCacheableForTileKey:(const struct _GEOTileKey *)arg1;
+- (unsigned int)tileEditionForKey:(const struct _GEOTileKey *)arg1;
+- (id)urlForTileKey:(const struct _GEOTileKey *)arg1;
+- (id)verifyDataIntegrity:(id)arg1 checksumMethod:(int)arg2;
 
 @end
 

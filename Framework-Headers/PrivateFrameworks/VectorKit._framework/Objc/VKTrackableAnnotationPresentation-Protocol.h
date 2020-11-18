@@ -9,7 +9,7 @@
 @protocol VKTrackableAnnotationPresentation <NSObject>
 
 @property (nonatomic) CDStruct_c3b9c2ee presentationCoordinate;
-@property (nonatomic, getter=isTracking) BOOL tracking;
+@property (nonatomic) BOOL tracking;
 
 @end
 

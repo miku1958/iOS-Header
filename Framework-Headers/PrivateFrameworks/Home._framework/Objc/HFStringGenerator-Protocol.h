@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <Home/NSCopying-Protocol.h>
 #import <Home/NSObject-Protocol.h>
 
 @class NSAttributedString, NSDictionary;
 
-@protocol HFStringGenerator <NSObject>
+@protocol HFStringGenerator <NSObject, NSCopying>
 - (NSAttributedString *)dynamicStringForSize:(struct CGSize)arg1 attributes:(NSDictionary *)arg2;
 - (BOOL)prefersDynamicString;
 - (NSAttributedString *)stringWithAttributes:(NSDictionary *)arg1;

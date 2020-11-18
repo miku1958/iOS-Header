@@ -6,17 +6,19 @@
 
 #import <FrontBoardServices/FBSSceneParameters.h>
 
-@class FBSDisplay, FBSSceneClientSettings, FBSSceneSettings;
+@class FBSDisplayConfiguration, FBSSceneClientSettings, FBSSceneSettings;
 
 @interface FBSMutableSceneParameters : FBSSceneParameters
 {
+    FBSDisplayConfiguration *_displayConfiguration;
 }
 
 @property (copy, nonatomic) FBSSceneClientSettings *clientSettings; // @dynamic clientSettings;
-@property (copy, nonatomic) FBSDisplay *display; // @dynamic display;
 @property (copy, nonatomic) FBSSceneSettings *settings; // @dynamic settings;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (void)setDisplay:(id)arg1;
 - (void)updateClientSettingsWithBlock:(CDUnknownBlockType)arg1;
 - (void)updateSettingsWithBlock:(CDUnknownBlockType)arg1;
 

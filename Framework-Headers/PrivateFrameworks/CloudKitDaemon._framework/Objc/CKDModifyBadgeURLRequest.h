@@ -14,11 +14,11 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) unsigned long long badgeValue; // @synthesize badgeValue=_badgeValue;
 
+- (id)generateRequestOperations;
 - (id)initWithBadgeValue:(unsigned long long)arg1;
 - (int)operationType;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 
 @end
 

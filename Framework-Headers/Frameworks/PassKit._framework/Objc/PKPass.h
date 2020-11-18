@@ -9,13 +9,15 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, PKBarcode, PKImage, PKNFCPayload, PKPassDisplayProfile, PKPassPersonalization, PKPaymentPass, UIImage;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, PKBarcode, PKImage, PKLiveRenderedShaderSet, PKNFCPayload, PKPassDisplayProfile, PKPassLiveRenderedImageSet, PKPassPersonalization, PKPaymentPass, UIImage;
 
 @interface PKPass : PKObject <NSCopying, NSSecureCoding>
 {
+    PKLiveRenderedShaderSet *_liveRenderedShaderSet;
     BOOL _remotePass;
     BOOL _voided;
     BOOL _hasStoredValue;
+    BOOL _liveRenderedBackground;
     BOOL _revoked;
     unsigned long long _passType;
     NSString *_serialNumber;
@@ -47,9 +49,9 @@
 @property (readonly, nonatomic) NSURL *appLaunchURL;
 @property (copy, nonatomic) NSSet *associatedPassTypeIdentifiers; // @synthesize associatedPassTypeIdentifiers=_associatedPassTypeIdentifiers;
 @property (copy, nonatomic) NSString *authenticationToken; // @dynamic authenticationToken;
-@property (readonly, nonatomic) PKImage *backFaceImage;
 @property (readonly, nonatomic) NSArray *backFieldBuckets;
 @property (readonly, nonatomic) PKBarcode *barcode;
+@property (readonly, nonatomic) PKImage *cardHolderPicture;
 @property (copy, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
 @property (copy, nonatomic) PKPassDisplayProfile *displayProfile; // @dynamic displayProfile;
 @property (copy, nonatomic) NSSet *embeddedBeacons; // @synthesize embeddedBeacons=_embeddedBeacons;
@@ -64,6 +66,9 @@
 @property (readonly, nonatomic) PKImage *iconImage;
 @property (strong, nonatomic) NSDate *ingestedDate; // @synthesize ingestedDate=_ingestedDate;
 @property (readonly, nonatomic) BOOL isPersonalizable;
+@property (nonatomic) BOOL liveRenderedBackground; // @synthesize liveRenderedBackground=_liveRenderedBackground;
+@property (readonly, nonatomic) PKPassLiveRenderedImageSet *liveRenderedImageSet;
+@property (readonly, nonatomic) PKLiveRenderedShaderSet *liveRenderedShaderSet;
 @property (copy, nonatomic) NSURL *localLocationsURL; // @synthesize localLocationsURL=_localLocationsURL;
 @property (readonly, copy, nonatomic) NSString *localizedDescription;
 @property (readonly, copy, nonatomic) NSString *localizedName;
@@ -72,7 +77,6 @@
 @property (readonly, nonatomic) NSString *lowercaseLocalizedName;
 @property (strong, nonatomic) NSDate *modifiedDate; // @synthesize modifiedDate=_modifiedDate;
 @property (copy, nonatomic, setter=setNFCPayload:) PKNFCPayload *nfcPayload; // @synthesize nfcPayload=_nfcPayload;
-@property (readonly, nonatomic, getter=isNFCPayloadEncrypted) BOOL nfcPayloadEncrypted;
 @property (readonly) NSString *notificationCenterTitle;
 @property (readonly, nonatomic) PKImage *notificationIconImage;
 @property (copy, nonatomic) NSString *organizationName; // @synthesize organizationName=_organizationName;

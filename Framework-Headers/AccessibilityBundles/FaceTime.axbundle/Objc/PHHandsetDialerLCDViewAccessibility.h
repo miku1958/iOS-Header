@@ -16,7 +16,6 @@
 - (double)_accessibilityAllowedGeometryOverlap;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilitySubviews;
-- (void)_axApplyDeleteButtonInfo:(id)arg1;
 - (void)_voStatusChanged:(id)arg1;
 - (void)dealloc;
 - (void)deleteBackward;
@@ -24,7 +23,6 @@
 - (BOOL)hasText;
 - (id)initWithFrame:(struct CGRect)arg1 forDialerType:(int)arg2;
 - (void)insertText:(id)arg1;
-- (id)newDeleteButton;
 - (void)setText:(id)arg1 needsFormat:(BOOL)arg2;
 - (BOOL)shouldGroupAccessibilityChildren;
 - (void)updateAddAndDeleteButtonForText:(id)arg1 name:(id)arg2 animated:(BOOL)arg3;

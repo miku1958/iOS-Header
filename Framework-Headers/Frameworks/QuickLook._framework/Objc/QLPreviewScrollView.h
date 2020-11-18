@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     struct CGSize _lastUpdatedSize;
     BOOL _readyToCancelPanGesture;
     BOOL _needsZoomUpdate;
+    BOOL _preventZoomUpdate;
     BOOL _shouldFit;
     double _minZoomScale;
     double _maxZoomScale;
@@ -27,6 +28,8 @@ __attribute__((visibility("hidden")))
     double _contentIsSmallerThanView;
     id<QLPreviewScrollViewZoomDelegate> _zoomDelegate;
     struct CGSize _contentViewSize;
+    struct UIEdgeInsets _peripheryInsetsLandscape;
+    struct UIEdgeInsets _peripheryInsetsPortrait;
 }
 
 @property (readonly) double contentIsSmallerThanView; // @synthesize contentIsSmallerThanView=_contentIsSmallerThanView;
@@ -39,7 +42,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) double maxZoomScale; // @synthesize maxZoomScale=_maxZoomScale;
 @property (readonly) double minZoomScale; // @synthesize minZoomScale=_minZoomScale;
 @property (nonatomic) BOOL needsZoomUpdate; // @synthesize needsZoomUpdate=_needsZoomUpdate;
+@property struct UIEdgeInsets peripheryInsetsLandscape; // @synthesize peripheryInsetsLandscape=_peripheryInsetsLandscape;
+@property struct UIEdgeInsets peripheryInsetsPortrait; // @synthesize peripheryInsetsPortrait=_peripheryInsetsPortrait;
 @property (readonly) double pinchMaxZoomScale; // @synthesize pinchMaxZoomScale=_pinchMaxZoomScale;
+@property (nonatomic) BOOL preventZoomUpdate; // @synthesize preventZoomUpdate=_preventZoomUpdate;
 @property BOOL shouldFit; // @synthesize shouldFit=_shouldFit;
 @property (readonly) Class superclass;
 @property (weak) id<QLPreviewScrollViewZoomDelegate> zoomDelegate; // @synthesize zoomDelegate=_zoomDelegate;
@@ -51,8 +57,6 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)resetZoomScale;
 - (void)scrollViewDidEndZooming:(id)arg1 withView:(id)arg2 atScale:(double)arg3;
-- (void)scrollViewDidScroll:(id)arg1;
-- (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
 - (void)updateZoomScales;
 - (void)updateZoomScalesWithSize:(struct CGSize)arg1;

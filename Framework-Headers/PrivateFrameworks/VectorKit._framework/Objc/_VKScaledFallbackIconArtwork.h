@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface _VKScaledFallbackIconArtwork : VKIconArtwork
 {
+    double _scaleFactor;
     VKIconArtwork *_artwork;
 }
 
@@ -16,8 +17,12 @@ __attribute__((visibility("hidden")))
 - (id)_newImage;
 - (id)_newImageWithText:(id)arg1 fontName:(id)arg2;
 - (id)_newScaledImage:(id)arg1;
+- (Matrix_8746f91e)anchorPoint;
 - (void)dealloc;
+- (BOOL)hasBounds;
 - (id)initWithArtwork:(id)arg1 contentScale:(double)arg2;
+- (Box_3fb92e00)localCollisionBounds;
+- (Box_55c4a776)localRenderBounds;
 
 @end
 

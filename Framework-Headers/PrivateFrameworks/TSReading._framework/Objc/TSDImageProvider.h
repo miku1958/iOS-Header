@@ -19,6 +19,8 @@
     struct os_unfair_lock_s mInterestLock;
 }
 
+@property (readonly, nonatomic) unsigned long long imageGamut;
+
 + (id)allocWithZone:(struct _NSZone *)arg1;
 - (void)addInterest;
 - (void)addOwner;

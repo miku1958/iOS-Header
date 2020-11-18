@@ -14,22 +14,18 @@ __attribute__((visibility("hidden")))
     BOOL _needUserID;
     NSString *_containerIdentifier;
     CKDContainerInfo *_containerInfo;
-    NSString *_iCloudAuthToken;
 }
 
 @property (nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 @property (copy, nonatomic) CKDContainerInfo *containerInfo; // @synthesize containerInfo=_containerInfo;
-@property (copy, nonatomic) NSString *iCloudAuthToken; // @synthesize iCloudAuthToken=_iCloudAuthToken;
 @property (nonatomic) BOOL needUserID; // @synthesize needUserID=_needUserID;
 
 - (void).cxx_destruct;
-- (id)additionalHeaderValues;
 - (BOOL)allowsAnonymousAccount;
 - (BOOL)allowsAuthedAccount;
 - (BOOL)hasRequestBody;
 - (id)initWithContainerIdentifier:(id)arg1;
 - (long long)partitionType;
-- (void)prepareRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestDidParseJSONObject:(id)arg1;
 - (BOOL)requiresConfiguration;
 - (BOOL)requiresDeviceID;
@@ -38,6 +34,8 @@ __attribute__((visibility("hidden")))
 - (id)sourceApplicationBundleIdentifier;
 - (id)sourceApplicationSecondaryIdentifier;
 - (id)url;
+- (BOOL)usesCloudKitAuthToken;
+- (BOOL)usesiCloudAuthToken;
 
 @end
 

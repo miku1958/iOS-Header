@@ -25,8 +25,10 @@
     unsigned int _replaceMessage;
     NSString *_countryCode;
     NSUUID *_uuid;
+    BOOL _bypassSupportedMessageModesCheck;
 }
 
+@property (nonatomic) BOOL bypassSupportedMessageModesCheck; // @synthesize bypassSupportedMessageModesCheck=_bypassSupportedMessageModesCheck;
 @property (copy, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
 @property (readonly, copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (readonly) NSDate *date; // @synthesize date=_date;

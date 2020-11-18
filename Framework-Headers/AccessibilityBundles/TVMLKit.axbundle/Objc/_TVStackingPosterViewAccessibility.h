@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityFrameDelegate;
-- (int)_accessibilityScanningBehaviorTraits;
+- (unsigned long long)_accessibilityScanningBehaviorTraits;
 - (id)_accessibilitySupplementaryFooterViews;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

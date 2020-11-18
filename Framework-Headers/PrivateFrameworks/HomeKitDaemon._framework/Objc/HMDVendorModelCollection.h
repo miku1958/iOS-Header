@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HMDVendorModelEntry, NSMutableArray;
 
-@interface HMDVendorModelCollection : NSObject
+@interface HMDVendorModelCollection : HMFObject
 {
     NSMutableArray *_vendorModelCollection;
     HMDVendorModelEntry *_defaultEntry;

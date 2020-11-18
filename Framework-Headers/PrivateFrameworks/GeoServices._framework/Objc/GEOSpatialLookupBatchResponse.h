@@ -22,12 +22,12 @@
 @property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
 
 + (Class)responseType;
+- (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
 - (void)addResponse:(id)arg1;
 - (void)clearResponses;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -8,13 +8,14 @@
 
 #import <Metal/NSCopying-Protocol.h>
 
-@class MTLStageInputOutputDescriptor, NSString;
+@class MTLPipelineBufferDescriptorArray, MTLStageInputOutputDescriptor, NSString;
 @protocol MTLFunction;
 
 @interface MTLComputePipelineDescriptor : NSObject <NSCopying>
 {
 }
 
+@property (readonly) MTLPipelineBufferDescriptorArray *buffers; // @dynamic buffers;
 @property (strong, nonatomic) id<MTLFunction> computeFunction; // @dynamic computeFunction;
 @property (copy, nonatomic) NSString *label; // @dynamic label;
 @property (copy, nonatomic) MTLStageInputOutputDescriptor *stageInputDescriptor; // @dynamic stageInputDescriptor;

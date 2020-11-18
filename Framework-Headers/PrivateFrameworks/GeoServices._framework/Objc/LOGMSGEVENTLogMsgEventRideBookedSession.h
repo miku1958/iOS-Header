@@ -8,11 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface LOGMSGEVENTLogMsgEventRideBookedSession : PBCodable <NSCopying>
 {
+    NSMutableArray *_intentResponseFailures;
     NSString *_rideAppId;
     NSString *_rideAppVersion;
     NSString *_rideBookedSessionId;
@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasTappedProactiveTrayItem;
 @property (nonatomic) BOOL hasViewedDetails;
 @property (nonatomic) BOOL hasViewedInProactiveTray;
+@property (strong, nonatomic) NSMutableArray *intentResponseFailures; // @synthesize intentResponseFailures=_intentResponseFailures;
 @property (nonatomic) BOOL invalidVehicleLocation; // @synthesize invalidVehicleLocation=_invalidVehicleLocation;
 @property (nonatomic) BOOL missingVehicleLocation; // @synthesize missingVehicleLocation=_missingVehicleLocation;
 @property (strong, nonatomic) NSString *rideAppId; // @synthesize rideAppId=_rideAppId;
@@ -63,13 +64,18 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL viewedDetails; // @synthesize viewedDetails=_viewedDetails;
 @property (nonatomic) BOOL viewedInProactiveTray; // @synthesize viewedInProactiveTray=_viewedInProactiveTray;
 
++ (Class)intentResponseFailureType;
+- (void).cxx_destruct;
 - (int)StringAsStatusIssue:(id)arg1;
+- (void)addIntentResponseFailure:(id)arg1;
+- (void)clearIntentResponseFailures;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)intentResponseFailureAtIndex:(unsigned long long)arg1;
+- (unsigned long long)intentResponseFailuresCount;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

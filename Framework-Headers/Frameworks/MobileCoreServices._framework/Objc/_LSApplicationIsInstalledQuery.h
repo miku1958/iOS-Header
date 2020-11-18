@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 + (id)queryWithBundleIdentifier:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (BOOL)_requiresDatabaseMappingEntitlement;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -21,13 +21,13 @@
 
 + (Class)possibleStopType;
 + (Class)scheduledLinkType;
+- (void).cxx_destruct;
 - (void)addPossibleStop:(id)arg1;
 - (void)addScheduledLink:(id)arg1;
 - (void)clearPossibleStops;
 - (void)clearScheduledLinks;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

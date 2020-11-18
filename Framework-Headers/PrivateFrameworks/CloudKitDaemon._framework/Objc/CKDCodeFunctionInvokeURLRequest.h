@@ -23,12 +23,13 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 
 - (void).cxx_destruct;
+- (BOOL)allowsAnonymousAccount;
+- (id)generateRequestOperations;
 - (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedParameters:(id)arg3;
 - (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 
 @end
 

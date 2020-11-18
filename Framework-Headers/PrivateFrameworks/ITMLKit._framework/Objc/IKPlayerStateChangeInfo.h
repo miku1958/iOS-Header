@@ -19,6 +19,7 @@
 @property (nonatomic) double elapsedTime;
 @property (copy, nonatomic) NSDictionary *jsonValue; // @synthesize jsonValue=_jsonValue;
 @property (readonly, nonatomic) long long oldState; // @synthesize oldState=_oldState;
+@property (nonatomic) double rate;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 
 + (id)stateNameForState:(long long)arg1;

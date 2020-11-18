@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSMutableArray *bulletinIdentifiers; // @synthesize bulletinIdentifiers=_bulletinIdentifiers;
 @property (strong, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
 
++ (Class)bulletinIdentifierType;
 - (void).cxx_destruct;
 - (void)addBulletinIdentifier:(id)arg1;
 - (id)bulletinIdentifierAtIndex:(unsigned long long)arg1;

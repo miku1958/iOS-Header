@@ -31,7 +31,8 @@
 - (id)_reloadBatteryItems;
 - (id)_reloadCharacteristicStateItems;
 - (CDUnknownBlockType)characteristicStateItemComparator;
-- (id)initWithHome:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 - (id)initWithValueSource:(id)arg1 accessory:(id)arg2;
 - (id)initWithValueSource:(id)arg1 accessory:(id)arg2 service:(id)arg3;
 - (id)initWithValueSource:(id)arg1 service:(id)arg2;

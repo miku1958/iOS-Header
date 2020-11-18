@@ -6,40 +6,47 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreParsec/NSCopying-Protocol.h>
+#import <CoreParsec/NSSecureCoding-Protocol.h>
+#import <CoreParsec/_CPErrorFeedback-Protocol.h>
+#import <CoreParsec/_CPProcessableFeedback-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSDictionary, NSString, _CPError;
 
-@interface _CPErrorFeedback : PBCodable <NSCopying>
+@interface _CPErrorFeedback : PBCodable <_CPProcessableFeedback, _CPErrorFeedback, NSSecureCoding>
 {
+    CDStruct_b5306035 _has;
     unsigned long long _timestamp;
-    int _code;
-    NSString *_domain;
-    NSString *_reason;
-    NSData *_userInfo;
-    struct {
-        unsigned int code:1;
-    } _has;
+    _CPError *_error;
+    _CPError *_underlyingError;
 }
 
-@property (nonatomic) int code; // @synthesize code=_code;
-@property (strong, nonatomic) NSString *domain; // @synthesize domain=_domain;
-@property (nonatomic) BOOL hasCode;
-@property (readonly, nonatomic) BOOL hasDomain;
-@property (readonly, nonatomic) BOOL hasReason;
-@property (readonly, nonatomic) BOOL hasUserInfo;
-@property (strong, nonatomic) NSString *reason; // @synthesize reason=_reason;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
-@property (strong, nonatomic) NSData *userInfo; // @synthesize userInfo=_userInfo;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (strong, nonatomic) _CPError *error; // @synthesize error=_error;
+@property (readonly, nonatomic) id feedbackJSON;
+@property (readonly, nonatomic) BOOL hasError;
+@property (readonly, nonatomic) BOOL hasTimestamp;
+@property (readonly, nonatomic) BOOL hasUnderlyingError;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (readonly, nonatomic) BOOL requiresQueryId;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
+@property (strong, nonatomic) _CPError *underlyingError; // @synthesize underlyingError=_underlyingError;
 
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)init;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithError:(id)arg1;
+- (id)initWithFacade:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

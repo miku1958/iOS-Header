@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HMFoundation/NSCopying-Protocol.h>
 
 @class NSData, NSDictionary;
 
-@interface HMFHTTPResponseInternal : NSObject <NSCopying>
+@interface HMFHTTPResponseInternal : HMFObject <NSCopying>
 {
     long long _statusCode;
     NSDictionary *_headerFields;

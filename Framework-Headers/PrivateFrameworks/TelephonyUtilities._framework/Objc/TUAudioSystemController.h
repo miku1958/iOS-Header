@@ -6,7 +6,7 @@
 
 #import <TelephonyUtilities/TUAudioController.h>
 
-@class NSArray, NSNumber, NSObject;
+@class NSArray, NSDictionary, NSNumber, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface TUAudioSystemController : TUAudioController
@@ -46,6 +46,7 @@
 }
 
 @property (nonatomic, getter=isDownlinkMuted) BOOL downlinkMuted;
+@property (readonly, copy, nonatomic) NSDictionary *pickedRouteAttribute;
 @property (readonly, nonatomic, getter=isTTY) BOOL tty;
 @property (nonatomic, getter=isUplinkMuted) BOOL uplinkMuted;
 
@@ -56,9 +57,9 @@
 - (void)_getPickableRoutesForCategory:(id)arg1 mode:(id)arg2 onlyKnownCombinations:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_handleDownlinkMuteDidChangeNotification:(id)arg1;
 - (void)_handlePickableRoutesDidChangeNotification:(id)arg1;
-- (void)_handleServerConnectionDiedNotification:(id)arg1;
 - (void)_handleUplinkMuteDidChangeNotification:(id)arg1;
 - (void)_loadCurrentPickableRoutesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_mediaServicesWereReset:(id)arg1;
 - (id)_pickableRoutesForPhoneCallWithForceNewRequest:(BOOL)arg1;
 - (id)_pickableRoutesForPlayAndRecordRemoteVoiceWithForceNewRequest:(BOOL)arg1;
 - (id)_pickableRoutesForPlayAndRecordVideoWithForceNewRequest:(BOOL)arg1;
@@ -71,6 +72,7 @@
 - (void)dealloc;
 - (void)getPickableRoutesForCategory:(id)arg1 mode:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
+- (BOOL)pickRoute:(id)arg1 error:(id *)arg2;
 - (id)pickableRouteWithUniqueIdentifier:(id)arg1;
 - (id)pickableRoutesForCategory:(id)arg1 andMode:(id)arg2;
 - (id)pickableRoutesForTTY;

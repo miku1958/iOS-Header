@@ -63,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (double)sizeNeededForItems:(id)arg1;
 - (BOOL)updateDoubleHeightItem;
 - (BOOL)updateItemsWithData:(id)arg1 actions:(int)arg2 animated:(BOOL)arg3;
+- (id)visibleItemViewAtPoint:(struct CGPoint)arg1 inForegroundView:(id)arg2;
 
 @end
 

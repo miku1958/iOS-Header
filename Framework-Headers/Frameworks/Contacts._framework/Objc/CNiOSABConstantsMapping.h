@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary;
 
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 + (id)CNToABPersonSocialProfileConstantsMapping;
 + (id)CNToABPersonSortOrderingConstantsMapping;
 + (id)CNToABSourceTypeConstantsMapping;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithMapping:(id)arg1;
 - (id)invertedMapping;
 - (id)mappedConstant:(id)arg1;

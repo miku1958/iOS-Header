@@ -22,10 +22,14 @@
     NSError *_captureError;
     NSString *_filterName;
     NSURL *_filteredVideoURL;
+    long long _persistenceOptions;
+    long long _temporaryPersistenceOptions;
+    NSString *_bundleIdentifier;
     CDStruct_1b6d18a9 _duration;
     CDStruct_1b6d18a9 _stillImageDisplayTime;
 }
 
+@property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, nonatomic) long long captureDevice; // @synthesize captureDevice=_captureDevice;
 @property (readonly, nonatomic) NSError *captureError; // @synthesize captureError=_captureError;
 @property (readonly, nonatomic) long long captureOrientation; // @synthesize captureOrientation=_captureOrientation;
@@ -34,8 +38,10 @@
 @property (readonly, nonatomic) NSString *filterName; // @synthesize filterName=_filterName;
 @property (readonly, nonatomic) NSURL *filteredVideoURL; // @synthesize filteredVideoURL=_filteredVideoURL;
 @property (readonly, nonatomic) NSString *irisIdentifier; // @synthesize irisIdentifier=_irisIdentifier;
+@property (nonatomic) long long persistenceOptions; // @synthesize persistenceOptions=_persistenceOptions;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 stillImageDisplayTime; // @synthesize stillImageDisplayTime=_stillImageDisplayTime;
 @property (readonly, nonatomic) NSString *stillImagePersistenceUUID; // @synthesize stillImagePersistenceUUID=_stillImagePersistenceUUID;
+@property (nonatomic) long long temporaryPersistenceOptions; // @synthesize temporaryPersistenceOptions=_temporaryPersistenceOptions;
 @property (readonly, nonatomic) NSString *videoPersistenceUUID; // @synthesize videoPersistenceUUID=_videoPersistenceUUID;
 @property (readonly, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 
@@ -44,7 +50,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithVideoURL:(id)arg1 stillImagePersistenceUUID:(id)arg2 videoPersistenceUUID:(id)arg3 irisIdentifier:(id)arg4 captureDevice:(long long)arg5 captureOrientation:(long long)arg6 duration:(CDStruct_1b6d18a9)arg7 stillImageDisplayTime:(CDStruct_1b6d18a9)arg8 captureTime:(double)arg9 captureError:(id)arg10 filterName:(id)arg11 filteredVideoURL:(id)arg12;
+- (id)initWithVideoURL:(id)arg1 stillImagePersistenceUUID:(id)arg2 videoPersistenceUUID:(id)arg3 irisIdentifier:(id)arg4 captureDevice:(long long)arg5 captureOrientation:(long long)arg6 duration:(CDStruct_1b6d18a9)arg7 stillImageDisplayTime:(CDStruct_1b6d18a9)arg8 captureTime:(double)arg9 captureError:(id)arg10 filterName:(id)arg11 filteredVideoURL:(id)arg12 persistenceOptions:(long long)arg13 temporaryPersistenceOptions:(long long)arg14 bundleIdentifier:(id)arg15;
 
 @end
 

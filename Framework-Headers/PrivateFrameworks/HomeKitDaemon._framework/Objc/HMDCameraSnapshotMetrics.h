@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HMDCameraMetricsSnapshotLogEvent, NSError;
 
-@interface HMDCameraSnapshotMetrics : NSObject
+@interface HMDCameraSnapshotMetrics : HMFObject
 {
     HMDCameraMetricsSnapshotLogEvent *_cameraSnapshotMetricsLogEvent;
     NSError *_error;

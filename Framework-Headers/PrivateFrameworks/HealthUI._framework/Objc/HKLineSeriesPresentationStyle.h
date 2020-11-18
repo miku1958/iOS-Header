@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HKFillStyle, HKStrokeStyle, UIImage;
+@class HKAxisLabelStyle, HKFillStyle, HKStrokeStyle, UIImage;
 
 @interface HKLineSeriesPresentationStyle : NSObject
 {
@@ -16,9 +16,13 @@
     HKFillStyle *_fillStyle;
     UIImage *_pointMarkerImage;
     UIImage *_lineEndCap;
+    HKAxisLabelStyle *_annotationStyle;
+    HKAxisLabelStyle *_axisAnnotationStyle;
     double _sineWaveSmoothingFactor;
 }
 
+@property (strong, nonatomic) HKAxisLabelStyle *annotationStyle; // @synthesize annotationStyle=_annotationStyle;
+@property (strong, nonatomic) HKAxisLabelStyle *axisAnnotationStyle; // @synthesize axisAnnotationStyle=_axisAnnotationStyle;
 @property (strong, nonatomic) HKFillStyle *fillStyle; // @synthesize fillStyle=_fillStyle;
 @property (strong, nonatomic) UIImage *lineEndCap; // @synthesize lineEndCap=_lineEndCap;
 @property (strong, nonatomic) UIImage *pointMarkerImage; // @synthesize pointMarkerImage=_pointMarkerImage;

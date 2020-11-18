@@ -7,6 +7,8 @@
 @class NSError;
 
 @protocol HMSetupRemoteHost
+- (void)accessorySetupDidBeginPairing;
+- (void)accessorySetupDidFinishPairing;
 - (void)accessorySetupDidFinishWithError:(NSError *)arg1;
 - (void)accessorySetupDidLoad;
 @end

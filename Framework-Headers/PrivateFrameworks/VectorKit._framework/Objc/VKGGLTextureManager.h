@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/GEOResourceManifestTileGroupObserver-Protocol.h>
 
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     GEOResourceManifestConfiguration *_manifestConfiguration;
     NSObject<OS_dispatch_queue> *_textureQueue;
     shared_ptr_479d1306 _whiteTexture;
+    shared_ptr_479d1306 _arrowTexture;
     struct map<std::__1::basic_string<char>, std::__1::shared_ptr<ggl::Texture2D>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<ggl::Texture2D>>>> _textureDictionary;
     VKResourceManager *_resourceManager;
     struct Device {
@@ -36,9 +37,10 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (const shared_ptr_479d1306 *)arrowTexture;
 - (id)dataWithName:(id)arg1 fromResourceManager:(id)arg2;
 - (void)dealloc;
-- (id)initWithConfiguration:(id)arg1 resourceManager:(id)arg2 device:(Device_f0710f89 *)arg3;
+- (id)initWithConfiguration:(id)arg1 resourceManager:(id)arg2 device:(Device_9226c869 *)arg3;
 - (void)purge;
 - (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;

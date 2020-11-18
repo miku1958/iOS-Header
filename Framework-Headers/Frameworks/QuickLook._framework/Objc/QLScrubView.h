@@ -8,59 +8,51 @@
 
 #import <QuickLook/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, QLPageNumberView, QLThumbnailView;
-@protocol QLScrubViewDataSource;
+@class NSMutableArray, NSMutableDictionary, NSString, QLPageNumberView, QLThumbnailView;
+@protocol QLScrubViewDataSource, QLScrubViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface QLScrubView : UIView <UIGestureRecognizerDelegate>
 {
-    BOOL _runOnMainThread;
     BOOL _needsThumbLayout;
     double _thumbOrigin;
     double _thumbEnd;
     double _thumbHeight;
     long long _pageCount;
     long long _selectedPage;
-    NSOperationQueue *_queue;
-    NSMutableSet *_operations;
     NSMutableDictionary *_thumbViews;
     NSMutableArray *_visibleThumbIndexes;
     QLThumbnailView *_selectedThumbnailView;
     QLPageNumberView *_pageNumberLabel;
     id<QLScrubViewDataSource> _dataSource;
-    id _delegate;
+    id<QLScrubViewDelegate> _delegate;
     double _topOffset;
+    double _bottomOffset;
 }
 
+@property (nonatomic) double bottomOffset; // @synthesize bottomOffset=_bottomOffset;
 @property (weak) id<QLScrubViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak) id delegate; // @synthesize delegate=_delegate;
+@property (weak) id<QLScrubViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property BOOL runOnMainThread;
 @property (readonly) Class superclass;
 @property (nonatomic) double topOffset; // @synthesize topOffset=_topOffset;
 
 + (double)defaultWidth;
 - (void).cxx_destruct;
-- (void)_cancelAllOperations;
 - (void)_handleSwipAtLocation:(struct CGPoint)arg1;
 - (void)_hidePageLabel;
 - (void)_notifyPageChanged;
-- (void)_notifyScrubingEnded;
-- (void)_notifyScrubingStarted;
 - (void)_removeThumbviews;
 - (void)_showPageLabel;
 - (struct CGRect)_thumbnailFrameForPageAtIndex:(long long)arg1;
 - (void)_updatePageLabelPosition;
 - (void)_updateSelectedThumbnailView;
-- (void)dealloc;
-- (void)didReceiveMemoryWarning;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)init;
 - (void)layoutSubviews;
 - (void)longTapReceived:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)panReceived:(id)arg1;
 - (void)reloadThumbnails;
 - (void)selectPageNumber:(long long)arg1;

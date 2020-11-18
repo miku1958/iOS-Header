@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileCoreServices/_LSQuery.h>
+#import <MobileCoreServices/_LSBundleQuery.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _LSApplicationProxyForUserActivityQuery : _LSQuery
+@interface _LSApplicationProxyForUserActivityQuery : _LSBundleQuery
 {
     NSString *_domainName;
     NSString *_activityType;
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 + (id)queryWithDomainName:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (BOOL)_requiresDatabaseMappingEntitlement;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

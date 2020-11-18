@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOTileLoader, NSString;
 
@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (void)fetchDataForJob:(shared_ptr_97fa0047 *)arg1;
 - (shared_ptr_97fa0047)getJobForKey:(const struct _GEOTileKey *)arg1;
 - (id)init;
-- (BOOL)isDownloading;
 - (void)purgeExpired:(double)arg1;
 - (void)reportCorruptTile:(const struct _GEOTileKey *)arg1;
 - (void)updateJobPriority:(shared_ptr_97fa0047 *)arg1;

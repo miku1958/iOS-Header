@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 
@@ -21,7 +21,7 @@
 @property (readonly) Class superclass;
 
 + (id)_newNSUUIDArrayFromCBUUIDStrings:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithRequestTimer:(id)arg1;
 - (void)localPairingResponseForRequestID:(id)arg1 withError:(id)arg2;
 - (void)localPairingResponseForRequestID:(id)arg1 withError:(id)arg2 pairedDevices:(id)arg3;

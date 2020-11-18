@@ -27,6 +27,7 @@
 + (Class)continueCommandType;
 + (Class)mergeCommandType;
 + (Class)normalCommandType;
+- (void).cxx_destruct;
 - (void)addContinueCommand:(id)arg1;
 - (void)addMergeCommand:(id)arg1;
 - (void)addNormalCommand:(id)arg1;
@@ -37,7 +38,6 @@
 - (unsigned long long)continueCommandsCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -14,6 +14,7 @@
 
 @interface NSURLSessionConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
+    BOOL __allowsWCA;
 }
 
 @property (copy) NSDictionary *HTTPAdditionalHeaders; // @dynamic HTTPAdditionalHeaders;
@@ -39,9 +40,11 @@
 @property BOOL _allowsTCPFastOpen; // @dynamic _allowsTCPFastOpen;
 @property BOOL _allowsTLSSessionResumption; // @dynamic _allowsTLSSessionResumption;
 @property BOOL _allowsTLSSessionTickets; // @dynamic _allowsTLSSessionTickets;
+@property BOOL _allowsWCA; // @synthesize _allowsWCA=__allowsWCA;
 @property (copy) id<NSURLSessionAppleIDContext> _appleIDContext; // @dynamic _appleIDContext;
 @property (copy) NSData *_atsContext; // @dynamic _atsContext;
 @property (copy) NSSet *_authenticatorStatusCodes; // @dynamic _authenticatorStatusCodes;
+@property BOOL _clientIsNotExplicitlyDiscretionary; // @dynamic _clientIsNotExplicitlyDiscretionary;
 @property BOOL _collectsTimingData; // @dynamic _collectsTimingData;
 @property (copy) NSString *_companionAppBundleIdentifier; // @dynamic _companionAppBundleIdentifier;
 @property double _connectionCacheCellPurgeTimeout; // @dynamic _connectionCacheCellPurgeTimeout;
@@ -54,8 +57,10 @@
 @property BOOL _disablesOutOfProcessDirectWiFiUsage; // @dynamic _disablesOutOfProcessDirectWiFiUsage;
 @property BOOL _disablesUseOfProxySession; // @dynamic _disablesUseOfProxySession;
 @property BOOL _disallowsSPDY; // @dynamic _disallowsSPDY;
+@property BOOL _duetPreauthorized; // @dynamic _duetPreauthorized;
 @property unsigned long long _forcedNetworkServiceType; // @dynamic _forcedNetworkServiceType;
 @property BOOL _forcesNewConnections; // @dynamic _forcesNewConnections;
+@property BOOL _ignoreDidReceiveResponseDisposition; // @dynamic _ignoreDidReceiveResponseDisposition;
 @property BOOL _infersDiscretionaryFromOriginatingClient; // @dynamic _infersDiscretionaryFromOriginatingClient;
 @property (copy) NSString *_ledBellyServiceIdentifier; // @dynamic _ledBellyServiceIdentifier;
 @property double _longLivedConnectionCacheCellPurgeTimeout; // @dynamic _longLivedConnectionCacheCellPurgeTimeout;
@@ -80,6 +85,7 @@
 @property (getter=_isProxySession) BOOL _proxySession; // @dynamic _proxySession;
 @property BOOL _requiresClientToOpenFiles; // @dynamic _requiresClientToOpenFiles;
 @property BOOL _requiresPowerPluggedIn; // @dynamic _requiresPowerPluggedIn;
+@property BOOL _requiresSustainedDataDelivery; // @dynamic _requiresSustainedDataDelivery;
 @property BOOL _respectsAllowsCellularAccessForDiscretionaryTasks; // @dynamic _respectsAllowsCellularAccessForDiscretionaryTasks;
 @property BOOL _sessionSendsLaunchOnDemandEvents; // @dynamic _sessionSendsLaunchOnDemandEvents;
 @property BOOL _shouldPreserveBackgroundSessionDisposition; // @dynamic _shouldPreserveBackgroundSessionDisposition;
@@ -89,8 +95,10 @@
 @property (copy) NSString *_sourceApplicationBundleIdentifier; // @dynamic _sourceApplicationBundleIdentifier;
 @property (copy) NSString *_sourceApplicationSecondaryIdentifier; // @dynamic _sourceApplicationSecondaryIdentifier;
 @property BOOL _supportsAVAssetDownloads; // @dynamic _supportsAVAssetDownloads;
+@property (copy) NSArray *_suppressedHTTPHeaders; // @dynamic _suppressedHTTPHeaders;
 @property (copy) NSString *_tcpConnectionPoolName; // @dynamic _tcpConnectionPoolName;
 @property long long _timingDataOptions; // @dynamic _timingDataOptions;
+@property (copy) NSString *_tlsTrustPinningPolicyName; // @dynamic _tlsTrustPinningPolicyName;
 @property BOOL _usePipeliningHeuristics; // @dynamic _usePipeliningHeuristics;
 @property (copy) NSString *_watchAppBundleIdentifier; // @dynamic _watchAppBundleIdentifier;
 @property (copy) NSString *_watchExtensionBundleIdentifier; // @dynamic _watchExtensionBundleIdentifier;
@@ -101,6 +109,7 @@
 @property NSString *disposition; // @dynamic disposition;
 @property (copy) NSString *identifier; // @dynamic identifier;
 @property long long minimumFastLanePriority; // @dynamic minimumFastLanePriority;
+@property long long multipathServiceType; // @dynamic multipathServiceType;
 @property unsigned long long networkServiceType; // @dynamic networkServiceType;
 @property long long numFastLanes; // @dynamic numFastLanes;
 @property long long numPriorityLevels; // @dynamic numPriorityLevels;
@@ -114,6 +123,7 @@
 @property BOOL skip_download_unlink; // @dynamic skip_download_unlink;
 @property double timeoutIntervalForRequest; // @dynamic timeoutIntervalForRequest;
 @property double timeoutIntervalForResource; // @dynamic timeoutIntervalForResource;
+@property BOOL waitsForConnectivity; // @dynamic waitsForConnectivity;
 
 + (id)AVBackgroundSessionConfigurationWithIdentifier:(id)arg1;
 + (id)_AVBackgroundSessionConfigurationWithIdentifier:(id)arg1;

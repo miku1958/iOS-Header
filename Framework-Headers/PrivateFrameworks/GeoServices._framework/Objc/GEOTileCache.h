@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOTileCacheReserved;
 @protocol OS_dispatch_source;
@@ -20,6 +20,7 @@
 @property unsigned long long maxCapacity;
 @property unsigned long long maxCost;
 
+- (void).cxx_destruct;
 - (id)_description;
 - (void)_enteredBackground:(id)arg1;
 - (void)_evictWithMaxCost:(unsigned long long)arg1 maxCapacity:(unsigned long long)arg2;

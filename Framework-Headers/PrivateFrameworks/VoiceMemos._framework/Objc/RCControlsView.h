@@ -49,6 +49,7 @@
 - (void).cxx_destruct;
 - (long long)_AVCaptureState;
 - (long long)_AVPreviewState;
+- (void)_contentSizeDidChangeNotification:(id)arg1;
 - (void)_doneButtonPressed:(id)arg1;
 - (void)_inputAvailabilityDidChangeNotification:(id)arg1;
 - (BOOL)_isCaptureButtonEnabled;
@@ -64,6 +65,7 @@
 - (struct CGSize)intrinsicContentSize;
 - (void)performFailedToStartRecordingActions;
 - (void)performRecordButtonPress;
+- (void)setButtonFontForUISize:(id)arg1;
 - (void)setControlsConfiguration:(long long)arg1 animate:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateConstraints;

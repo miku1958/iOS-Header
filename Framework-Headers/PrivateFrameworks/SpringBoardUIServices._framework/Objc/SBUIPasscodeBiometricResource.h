@@ -23,11 +23,12 @@
 @property (readonly, nonatomic, getter=isFingerDetectEnabled) BOOL fingerDetectEnabled;
 @property (readonly, nonatomic, getter=isFingerOn) BOOL fingerOn;
 @property (readonly, nonatomic) BOOL hasBiometricAuthenticationCapabilityEnabled;
-@property (readonly, nonatomic) BOOL hasEnrolledFingers;
+@property (readonly, nonatomic) BOOL hasEnrolledIdentities;
+@property (readonly, nonatomic) BOOL hasPearlSupport;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) unsigned long long matchMode;
 @property (readonly, nonatomic, getter=isMatchingAllowed) BOOL matchingAllowed;
 @property (readonly, nonatomic, getter=isMatchingEnabled) BOOL matchingEnabled;
+@property (readonly, nonatomic, getter=isPearlDetectEnabled) BOOL pearlDetectEnabled;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -37,6 +38,7 @@
 - (id)initWithBiometricResource:(id)arg1 overrideMatchingAssertionFactory:(id)arg2;
 - (void)refreshMatchMode;
 - (void)removeObserver:(id)arg1;
+- (void)restartMatchingIfNeededForAssertion:(id)arg1;
 
 @end
 

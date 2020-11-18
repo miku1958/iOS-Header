@@ -10,11 +10,12 @@
 #import <CoreSpotlight/NSCopying-Protocol.h>
 #import <CoreSpotlight/NSSecureCoding-Protocol.h>
 
-@class CSSearchableItemAttributeSet, NSDate, NSString;
+@class CSSearchableItemAttributeSet, MISSING_TYPE, NSDate, NSString;
 
 @interface CSSearchableItem : NSObject <CSIndexQueuableItem, NSSecureCoding, NSCopying>
 {
     CSSearchableItemAttributeSet *_attributeSet;
+    MISSING_TYPE *_score;
 }
 
 @property (strong) CSSearchableItemAttributeSet *attributeSet; // @synthesize attributeSet=_attributeSet;
@@ -24,6 +25,7 @@
 @property BOOL isUpdate;
 @property BOOL noIndex;
 @property (copy) NSString *protection;
+@property MISSING_TYPE *score; // @synthesize score=_score;
 @property (copy) NSString *uniqueIdentifier;
 
 + (id)searchableItemFromUserActivity:(id)arg1 bundleID:(id)arg2;
@@ -32,13 +34,16 @@
 - (void)_fixBrokenAuthorNames:(id)arg1;
 - (BOOL)_hasAttributesOfType:(id)arg1;
 - (BOOL)_isFullyFormed;
-- (void)_populateMissingPeopleWithNames:(id)arg1 emailAddresses:(id)arg2 itemPersons:(id)arg3 personDictionary:(id)arg4 contactProperties:(id)arg5 nameKey:(id)arg6 emailKey:(id)arg7 contactIdentifierKey:(id)arg8 personKey:(id)arg9 attributeSet:(id)arg10;
+- (void)_parseEmailHeadersForFeatures:(id)arg1;
+- (void)_populateMissingPeopleWithNames:(id)arg1 emailAddresses:(id)arg2 allItemPersons:(id)arg3 primaryItemPersons:(id)arg4 additionalItemPersons:(id)arg5 hiddenAdditionalItemPersons:(id)arg6 personDictionary:(id)arg7 contactProperties:(id)arg8 nameKey:(id)arg9 emailKey:(id)arg10 contactIdentifierKey:(id)arg11 personKey:(id)arg12 attributeSet:(id)arg13;
 - (id)_propertiesDescription;
 - (void)_standardizeDeprecatedProperties:(id)arg1;
 - (void)_standardizeHTML:(id)arg1;
+- (void)_standardizeMarkAs:(id)arg1;
 - (void)_standardizePeople:(id)arg1;
 - (void)_updateWithSearchableItem:(id)arg1;
 - (id)attributes;
+- (void)breakOutPersonInformationInSet:(id)arg1 withName:(id)arg2 emails:(id)arg3 contactIdentifiers:(id)arg4 nameKey:(id)arg5 emailKey:(id)arg6 contactIdentifierKey:(id)arg7 emailAddressKey:(id)arg8 attributeSet:(id)arg9;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (id)description;

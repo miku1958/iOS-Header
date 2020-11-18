@@ -20,7 +20,9 @@
 - (BOOL)_axMore:(id)arg1;
 - (BOOL)accessibilityActivate;
 - (id)accessibilityCustomActions;
+- (id)accessibilityDragSourceDescriptors;
 - (id)accessibilityHint;
+- (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
 

@@ -14,8 +14,8 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityIsScannerGroup;
 - (id)_accessibilityScannerGroupElements;
-- (int)_accessibilityScannerGroupTraits;
-- (id)accessibilityContainerElements;
+- (unsigned long long)_accessibilityScannerGroupTraits;
+- (id)accessibilityElements;
 - (void)dealloc;
 - (BOOL)isAccessibilityElement;
 

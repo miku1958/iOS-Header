@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSNumber, NSString;
 
@@ -23,7 +23,7 @@
 @property (strong, nonatomic) NSString *target; // @synthesize target=_target;
 @property (strong, nonatomic) NSNumber *weight; // @synthesize weight=_weight;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 
 @end

@@ -25,8 +25,8 @@ __attribute__((visibility("hidden")))
 + (id)dummyCellCollectionViewKind;
 + (id)layout;
 + (Class)layoutAttributesClass;
+- (void).cxx_destruct;
 - (struct CGSize)collectionViewContentSize;
-- (void)dealloc;
 - (id)init;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;

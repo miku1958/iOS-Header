@@ -4,19 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Message/MFAttachmentDataProvider.h>
+#import <objc/NSObject.h>
 
-@class MFMessageLibrary, MFWeakReferenceHolder;
+#import <Message/MFAttachmentDataProviderProtocol-Protocol.h>
 
-@interface MFAttachmentLibraryDataProvider : MFAttachmentDataProvider
+@class MFMessageLibrary, NSString;
+
+@interface MFAttachmentLibraryDataProvider : NSObject <MFAttachmentDataProviderProtocol>
 {
-    MFWeakReferenceHolder *_messageLibraryHolder;
+    MFMessageLibrary *_messageLibrary;
 }
 
-@property (weak, nonatomic) MFMessageLibrary *messageLibrary;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (weak) MFMessageLibrary *messageLibrary; // @synthesize messageLibrary=_messageLibrary;
+@property (readonly) Class superclass;
 
-- (void)dealloc;
-- (void)fetchDataForAttachment:(id)arg1 withDataConsumer:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
+- (void)fetchDataForAttachment:(id)arg1 consumer:(id)arg2 progress:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)fetchLocalDataForAttachment:(id)arg1;
 - (id)initWithLibrary:(id)arg1;
 - (id)messageForAttachment:(id)arg1;

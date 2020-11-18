@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_createdAppLibraryNames;
     NSMutableArray *_deletedRecordIDs;
     NSMutableArray *_iworkUnsharedShareIDs;
-    NSMutableDictionary *_iworkRenamedShareIDsToNames;
+    NSMutableDictionary *_renamedShareIDsToNames;
     NSMutableArray *_recordsNeedingNewSharingProtectionInfo;
     NSMutableArray *_recordsNeedingUpdatedSharingProtectionInfo;
     NSMutableDictionary *_recordIDsToDeleteToEtags;
@@ -40,7 +40,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) BRCLocalItem *itemNeedingPCSChaining; // @synthesize itemNeedingPCSChaining=_itemNeedingPCSChaining;
-@property (strong, nonatomic) NSMutableDictionary *iworkRenamedShareIDsToNames; // @synthesize iworkRenamedShareIDsToNames=_iworkRenamedShareIDsToNames;
 @property (strong, nonatomic) NSMutableArray *iworkUnsharedShareIDs; // @synthesize iworkUnsharedShareIDs=_iworkUnsharedShareIDs;
 @property (strong, nonatomic) NSMutableArray *packagesInFlight; // @synthesize packagesInFlight=_packagesInFlight;
 @property (strong, nonatomic) NSMutableDictionary *pluginFieldsForRecordDeletesByID; // @synthesize pluginFieldsForRecordDeletesByID=_pluginFieldsForRecordDeletesByID;
@@ -48,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *recordsNeedingNewSharingProtectionInfo; // @synthesize recordsNeedingNewSharingProtectionInfo=_recordsNeedingNewSharingProtectionInfo;
 @property (strong, nonatomic) NSMutableArray *recordsNeedingUpdatedSharingProtectionInfo; // @synthesize recordsNeedingUpdatedSharingProtectionInfo=_recordsNeedingUpdatedSharingProtectionInfo;
 @property (strong, nonatomic) NSMutableArray *recordsToSave; // @synthesize recordsToSave=_recordsToSave;
+@property (strong, nonatomic) NSMutableDictionary *renamedShareIDsToNames; // @synthesize renamedShareIDsToNames=_renamedShareIDsToNames;
 @property (strong, nonatomic) BRCServerZone *serverZone; // @synthesize serverZone=_serverZone;
 @property (strong, nonatomic) NSString *stageID; // @synthesize stageID=_stageID;
 @property (readonly) Class superclass;

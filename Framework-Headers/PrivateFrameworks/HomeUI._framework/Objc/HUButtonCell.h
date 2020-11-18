@@ -25,7 +25,6 @@
 - (void)prepareForReuse;
 - (void)tintColorDidChange;
 - (void)updateTitle;
-- (void)updateUIWithAnimation:(BOOL)arg1;
 
 @end
 

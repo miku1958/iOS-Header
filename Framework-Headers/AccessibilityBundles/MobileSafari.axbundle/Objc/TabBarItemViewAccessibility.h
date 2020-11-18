@@ -16,6 +16,7 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityUpdateAXInfo;
+- (id)accessibilityIdentifier;
 - (void)setActive:(BOOL)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setTitleText:(id)arg1;

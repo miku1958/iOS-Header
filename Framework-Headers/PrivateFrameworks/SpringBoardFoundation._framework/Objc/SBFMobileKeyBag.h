@@ -16,6 +16,7 @@
     NSMutableArray *_queue_observerStateChangedCallbackBlocks;
     NSHashTable *_queue_observers;
     BOOL _queue_hasPasscodeSet;
+    BOOL _queue_hasUnlockedSinceBoot;
     int _stateChangedNotifyToken;
     int _firstUnlockNotification;
 }
@@ -38,8 +39,9 @@
 - (void)createStashBag:(id)arg1 completion:(CDUnknownBlockType)arg2 completionQueue:(id)arg3;
 - (void)dealloc;
 - (id)init;
-- (void)lock;
+- (void)lockSkippingGracePeriod:(BOOL)arg1;
 - (void)removeObserver:(id)arg1;
+- (BOOL)unlockWithPasscode:(id)arg1 error:(id *)arg2;
 - (void)waitForUnlockWithTimeout:(float)arg1;
 
 @end

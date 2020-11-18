@@ -33,6 +33,7 @@
     UITapGestureRecognizer *_backGestureRecognizer;
     NSUUID *_currentRunningAnimationsUUID;
     BOOL _changedPresentingViewControllerDuringAdaptation;
+    BOOL _shouldContinueTouchesOnTargetViewController;
     BOOL _containerIgnoresDirectTouchEvents;
     BOOL _isCurrentStateCancelled;
     UIView *_sourceView;
@@ -52,8 +53,11 @@
     CDUnknownBlockType __transitionViewForCurrentTransition;
     CDUnknownBlockType __fromViewForCurrentTransition;
     CDUnknownBlockType __toViewForCurrentTransition;
+    CDUnknownBlockType __customFromViewForCurrentTransition;
+    CDUnknownBlockType __customToViewForCurrentTransition;
     CDUnknownBlockType __computeToEndFrameForCurrentTransition;
     CDUnknownBlockType __currentTransitionDidComplete;
+    UIView *_customViewForTouchContinuation;
     struct CGSize _preferredContentSize;
     struct CGRect _sourceRect;
 }
@@ -61,6 +65,8 @@
 @property (copy, nonatomic) CDUnknownBlockType _computeToEndFrameForCurrentTransition; // @synthesize _computeToEndFrameForCurrentTransition=__computeToEndFrameForCurrentTransition;
 @property (strong, nonatomic, getter=_currentPresentationSuperview, setter=_setCurrentPresentationSuperview:) UIView *_currentPresentationSuperview; // @synthesize _currentPresentationSuperview=__currentPresentationSuperview;
 @property (copy, nonatomic) CDUnknownBlockType _currentTransitionDidComplete; // @synthesize _currentTransitionDidComplete=__currentTransitionDidComplete;
+@property (copy, nonatomic) CDUnknownBlockType _customFromViewForCurrentTransition; // @synthesize _customFromViewForCurrentTransition=__customFromViewForCurrentTransition;
+@property (copy, nonatomic) CDUnknownBlockType _customToViewForCurrentTransition; // @synthesize _customToViewForCurrentTransition=__customToViewForCurrentTransition;
 @property (copy, nonatomic) CDUnknownBlockType _fromViewForCurrentTransition; // @synthesize _fromViewForCurrentTransition=__fromViewForCurrentTransition;
 @property (nonatomic, getter=_preferredContentSize, setter=_setPreferredContentSize:) struct CGSize _preferredContentSize; // @synthesize _preferredContentSize;
 @property (copy, nonatomic) CDUnknownBlockType _toViewForCurrentTransition; // @synthesize _toViewForCurrentTransition=__toViewForCurrentTransition;
@@ -74,6 +80,7 @@
 @property (strong, nonatomic, setter=_setContainerView:) UIView *containerView; // @synthesize containerView=_containerView;
 @property (strong, nonatomic, getter=_currentInteractionController, setter=_setCurrentInteractionController:) id<UIViewControllerInteractiveTransitioning> currentInteractionController; // @synthesize currentInteractionController=_currentInteractionController;
 @property (strong, nonatomic, getter=_currentTransitionController, setter=_setCurrentTransitionController:) id<UIViewControllerAnimatedTransitioning> currentTransitionController; // @synthesize currentTransitionController=_currentTransitionController;
+@property (strong, nonatomic, getter=_customViewForTouchContinuation, setter=_setCustomViewForTouchContinuation:) UIView *customViewForTouchContinuation; // @synthesize customViewForTouchContinuation=_customViewForTouchContinuation;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UIAdaptivePresentationControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -89,6 +96,7 @@
 @property (readonly, nonatomic) UIView *presentedView;
 @property (strong, nonatomic, setter=_setPresentedViewController:) UIViewController *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
 @property (strong, nonatomic, setter=_setPresentingViewController:) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property (nonatomic, getter=_shouldContinueTouchesOnTargetViewController, setter=_setShouldContinueTouchesOnTargetViewController:) BOOL shouldContinueTouchesOnTargetViewController; // @synthesize shouldContinueTouchesOnTargetViewController=_shouldContinueTouchesOnTargetViewController;
 @property (readonly, nonatomic) BOOL shouldPresentInFullscreen;
 @property (readonly, nonatomic) BOOL shouldRemovePresentersView;
 @property (nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
@@ -97,7 +105,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UITraitCollection *traitCollection;
 
-+ (struct UIEdgeInsets)_defaultBaseContentInsetsForFrame:(struct CGRect)arg1 inView:(id)arg2;
++ (struct UIEdgeInsets)_defaultBaseContentInsetsForView:(id)arg1 leftMargin:(double *)arg2 rightMargin:(double *)arg3;
 + (BOOL)_preventsAppearanceProxyCustomization;
 + (BOOL)_shouldPostPresentationControllerNotifications;
 - (void).cxx_destruct;
@@ -107,7 +115,7 @@
 - (id)_animatorForContainmentTransition;
 - (id)_appearanceContainer;
 - (Class)_appearanceGuideClass;
-- (struct UIEdgeInsets)_baseContentInsets;
+- (struct UIEdgeInsets)_baseContentInsetsWithLeftMargin:(double *)arg1 rightMargin:(double *)arg2;
 - (void)_beginOcclusionIfNecessary:(BOOL)arg1;
 - (id)_childPresentationController;
 - (void)_cleanup;
@@ -122,6 +130,7 @@
 - (void)_enableOcclusion:(BOOL)arg1;
 - (id)_firstCurrentContextChildInWindow;
 - (struct CGSize)_flipSize:(struct CGSize)arg1;
+- (id)_focusMapContainer;
 - (BOOL)_forcesPreferredAnimationControllers;
 - (struct CGRect)_frameForChildContentContainer:(id)arg1;
 - (struct CGRect)_frameForTransitionViewInPresentationSuperview:(id)arg1;
@@ -151,6 +160,7 @@
 - (id)_presentedViewControllerForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (BOOL)_preserveResponderAcrossWindows;
 - (void)_releaseSnapshot;
+- (id)_rootPresentingViewControllerForNestedPresentation;
 - (void)_sendDelegateWillPresentWithAdaptiveStyle:(long long)arg1 transitionCoordinator:(id)arg2;
 - (void)_sendPresentationControllerNotification:(id)arg1;
 - (id)_sharedParent:(id)arg1 willTransitionToTraitCollection:(id)arg2 withTransitionCoordinator:(id)arg3;

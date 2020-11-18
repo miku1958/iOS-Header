@@ -13,11 +13,15 @@
 @interface CAMTransientAsset : NSObject <PUTransientDisplayAsset>
 {
     BOOL _canPlayPhotoIris;
+    BOOL _canPlayLoopingVideo;
     BOOL _isPhotoIrisPlaceholder;
     BOOL _HDR;
     BOOL _representsBurst;
     NSString *_uuid;
     unsigned long long _mediaType;
+    unsigned long long _mediaSubtypes;
+    long long _playbackStyle;
+    long long _playbackVariation;
     unsigned long long _pixelWidth;
     unsigned long long _pixelHeight;
     double _duration;
@@ -34,30 +38,38 @@
 @property (readonly, nonatomic, getter=isHDR) BOOL HDR; // @synthesize HDR=_HDR;
 @property (readonly, nonatomic) double aspectRatio;
 @property (readonly, copy, nonatomic) NSString *burstIdentifier; // @synthesize burstIdentifier=_burstIdentifier;
+@property (readonly, nonatomic) BOOL canPlayLoopingVideo; // @synthesize canPlayLoopingVideo=_canPlayLoopingVideo;
 @property (readonly, nonatomic) BOOL canPlayPhotoIris; // @synthesize canPlayPhotoIris=_canPlayPhotoIris;
 @property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
-@property (readonly, nonatomic) unsigned long long fullsizeDataFormat;
 @property (readonly, nonatomic) BOOL hasPhotoColorAdjustments;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isAnimatedImage;
+@property (readonly, nonatomic) BOOL isLivePhoto;
 @property (readonly, nonatomic) BOOL isPhotoIrisPlaceholder; // @synthesize isPhotoIrisPlaceholder=_isPhotoIrisPlaceholder;
 @property (readonly, nonatomic) BOOL isTemporaryPlaceholder;
+@property (readonly, nonatomic, getter=isLivePhoto) BOOL livePhoto;
 @property (readonly, nonatomic) NSString *localizedGeoDescription;
 @property (readonly, nonatomic) CLLocation *location;
+@property (readonly, nonatomic) unsigned long long mediaSubtypes; // @synthesize mediaSubtypes=_mediaSubtypes;
 @property (readonly, nonatomic) unsigned long long mediaType; // @synthesize mediaType=_mediaType;
 @property (readonly, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (readonly, nonatomic) unsigned long long numberOfRepresentedAssets; // @synthesize numberOfRepresentedAssets=_numberOfRepresentedAssets;
+@property (readonly, nonatomic) unsigned long long originalFilesize;
 @property (readonly, copy, nonatomic) NSURL *persistenceURL; // @synthesize persistenceURL=_persistenceURL;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 photoIrisStillDisplayTime; // @synthesize photoIrisStillDisplayTime=_photoIrisStillDisplayTime;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 photoIrisVideoDuration; // @synthesize photoIrisVideoDuration=_photoIrisVideoDuration;
 @property (readonly, nonatomic) unsigned long long pixelHeight; // @synthesize pixelHeight=_pixelHeight;
 @property (readonly, nonatomic) unsigned long long pixelWidth; // @synthesize pixelWidth=_pixelWidth;
 @property (readonly, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
+@property (readonly, nonatomic) long long playbackStyle; // @synthesize playbackStyle=_playbackStyle;
+@property (readonly, nonatomic) long long playbackVariation; // @synthesize playbackVariation=_playbackVariation;
 @property (readonly, nonatomic) BOOL representsBurst; // @synthesize representsBurst=_representsBurst;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *uniformTypeIdentifier;
 @property (readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
 - (void).cxx_destruct;

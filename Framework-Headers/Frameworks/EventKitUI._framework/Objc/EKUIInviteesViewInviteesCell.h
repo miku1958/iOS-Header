@@ -40,7 +40,6 @@
 + (id)_nameLabelFont;
 - (void).cxx_destruct;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)setFrame:(struct CGRect)arg1;
 - (void)updateConstraints;
 - (void)updateWithParticipantForSorting:(id)arg1;
 - (void)updateWithParticipantForSorting:(id)arg1 availabilityType:(long long)arg2 showSpinner:(BOOL)arg3 animated:(BOOL)arg4;

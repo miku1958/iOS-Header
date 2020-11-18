@@ -6,24 +6,16 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFTransformItemProvider;
-
 @interface HUCCPageItemManager : HFItemManager
 {
     BOOL _homeAppRemoved;
-    HFTransformItemProvider *_actionSetPageItemProvider;
-    HFTransformItemProvider *_servicePageItemProvider;
 }
 
-@property (strong, nonatomic) HFTransformItemProvider *actionSetPageItemProvider; // @synthesize actionSetPageItemProvider=_actionSetPageItemProvider;
 @property (nonatomic, getter=isHomeAppRemoved) BOOL homeAppRemoved; // @synthesize homeAppRemoved=_homeAppRemoved;
-@property (strong, nonatomic) HFTransformItemProvider *servicePageItemProvider; // @synthesize servicePageItemProvider=_servicePageItemProvider;
 @property (readonly, nonatomic) BOOL shouldShowScenesPage;
 @property (readonly, nonatomic) BOOL shouldShowServicesPage;
 
-- (void).cxx_destruct;
-- (void)_createItemProvidersWithHome:(id)arg1;
-- (id)_itemProviders;
+- (id)_buildItemProvidersForHome:(id)arg1;
 
 @end
 

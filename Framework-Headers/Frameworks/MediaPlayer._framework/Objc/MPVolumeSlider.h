@@ -18,7 +18,6 @@
     UILabel *_routeNameLabel;
     long long _style;
     UIImageView *_thumbImageView;
-    UIImageView *_thumbMaskImageView;
     BOOL _isOffScreen;
     BOOL _forcingOffscreenVisibility;
     BOOL _thumbIsDefault;
@@ -26,6 +25,7 @@
     UIView *_volumeWarningView;
     BOOL _volumeWarningBlinking;
     UIImage *_volumeWarningTrackImage;
+    BOOL _userWasBlocked;
     MPAVRoutingController *_routingController;
     UILayoutGuide *_trackLayoutGuide;
     struct UIEdgeInsets _hitRectInsets;
@@ -40,6 +40,7 @@
 @property (readonly, nonatomic) MPAVRoutingController *routingController;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
+@property (readonly, weak, nonatomic) UIView *thumbView;
 @property (readonly, nonatomic) UILayoutGuide *trackLayoutGuide; // @synthesize trackLayoutGuide=_trackLayoutGuide;
 @property (copy, nonatomic) NSString *volumeAudioCategory;
 @property (strong, nonatomic) UIImage *volumeWarningTrackImage; // @synthesize volumeWarningTrackImage=_volumeWarningTrackImage;
@@ -65,6 +66,7 @@
 - (id)_thumbImageForStyle:(long long)arg1;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
+- (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (id)createThumbView;
 - (void)dealloc;
 - (void)didMoveToSuperview;
@@ -77,6 +79,7 @@
 - (float)maximumValue;
 - (float)minimumValue;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)routingController:(id)arg1 pickedRouteDidChange:(id)arg2;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)setAlpha:(double)arg1;
 - (void)setHidden:(BOOL)arg1;

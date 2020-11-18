@@ -11,6 +11,9 @@
 @protocol TVImageLoader <NSObject>
 - (void)cancelLoad:(id)arg1;
 - (NSString *)imageKeyForObject:(id)arg1;
+
+@optional
 - (id)loadImageForObject:(id)arg1 scaleToSize:(struct CGSize)arg2 cropToFit:(BOOL)arg3 completionHandler:(void (^)(TVImage *, NSString *, NSDate *, unsigned long long, NSError *))arg4;
+- (id)loadImageForObject:(id)arg1 scaleToSize:(struct CGSize)arg2 cropToFit:(BOOL)arg3 imageDirection:(long long)arg4 completionHandler:(void (^)(TVImage *, NSString *, NSDate *, unsigned long long, NSError *))arg5;
 @end
 

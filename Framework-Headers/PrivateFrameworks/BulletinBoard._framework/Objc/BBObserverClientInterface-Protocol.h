@@ -12,7 +12,6 @@
 - (void)noteAlertBehaviorOverridesChanged:(NSNumber *)arg1;
 - (void)noteServerReceivedResponseForBulletin:(BBBulletin *)arg1;
 - (void)removeSection:(NSString *)arg1;
-- (void)updateBulletin:(BBBulletinUpdateTransaction *)arg1;
 - (void)updateBulletin:(BBBulletinUpdateTransaction *)arg1 withHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)updateSectionInfo:(BBSectionInfo *)arg1;
 - (void)updateSectionOrder:(NSArray *)arg1;

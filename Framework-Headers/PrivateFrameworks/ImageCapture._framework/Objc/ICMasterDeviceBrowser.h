@@ -24,7 +24,6 @@
 + (id)defaultBrowser;
 + (BOOL)exists;
 - (void)addBrowser:(id)arg1;
-- (int)addExFATCamera:(id)arg1;
 - (int)addMSCamera:(id)arg1;
 - (int)addPTPCamera:(id)arg1;
 - (void)dealloc;
@@ -39,6 +38,7 @@
 - (void)removePTPCamera:(id)arg1;
 - (int)start:(id)arg1;
 - (void)stop:(id)arg1;
+- (int)updateExFATCamera:(id)arg1;
 
 @end
 

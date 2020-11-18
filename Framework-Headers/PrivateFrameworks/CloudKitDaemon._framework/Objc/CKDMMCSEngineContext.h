@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_semaphore> *_semaphore;
     NSRunLoop *_runLoop;
     NSString *_runLoopMode;
-    NSString *_protocolVersion;
     NSMutableIndexSet *_inMemoryItemsIDs;
 }
 
@@ -33,7 +32,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableIndexSet *inMemoryItemsIDs; // @synthesize inMemoryItemsIDs=_inMemoryItemsIDs;
 @property (nonatomic) unsigned int maxChunkCountForSection; // @synthesize maxChunkCountForSection=_maxChunkCountForSection;
 @property (strong, nonatomic) NSString *path; // @synthesize path=_path;
-@property (strong, nonatomic) NSString *protocolVersion; // @synthesize protocolVersion=_protocolVersion;
 @property (nonatomic) long long refCount; // @synthesize refCount=_refCount;
 @property (strong, nonatomic) NSRunLoop *runLoop; // @synthesize runLoop=_runLoop;
 @property (strong, nonatomic) NSString *runLoopMode; // @synthesize runLoopMode=_runLoopMode;
@@ -46,7 +44,7 @@ __attribute__((visibility("hidden")))
 + (id)setupMMCSEngineWithApplicationBundleID:(id)arg1 path:(id)arg2 wasCached:(BOOL *)arg3 error:(id *)arg4;
 + (id)sharedContextsByPath;
 + (id)sharedContextsQueue;
-+ (void)tearDownMMCSEngineWithContext:(id)arg1;
++ (BOOL)tearDownMMCSEngineWithContext:(id)arg1;
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
 - (void)_MMCSThread;

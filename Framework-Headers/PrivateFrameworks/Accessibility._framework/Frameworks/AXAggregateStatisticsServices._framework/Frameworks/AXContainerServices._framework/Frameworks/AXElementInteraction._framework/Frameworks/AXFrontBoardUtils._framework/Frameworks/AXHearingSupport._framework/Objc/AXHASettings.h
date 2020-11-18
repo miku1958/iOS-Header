@@ -21,6 +21,8 @@
 @property (nonatomic) BOOL exportsLiveListenToFile;
 @property (nonatomic) BOOL independentHearingAidSettings;
 @property (nonatomic) long long mediaAudioRoute;
+@property (nonatomic) BOOL multideviceAudioEnabled;
+@property (nonatomic) BOOL multideviceSettingsEnabled;
 @property (strong, nonatomic) NSDictionary *pairedHearingAids;
 @property (strong, nonatomic) NSMutableSet *registeredNotifications; // @synthesize registeredNotifications=_registeredNotifications;
 @property (nonatomic) BOOL shouldStreamToLeftAid;
@@ -53,6 +55,7 @@
 - (void)removeDeviceIDFromCloudBlacklist:(id)arg1;
 - (void)setLocalHearingAidsFromiCloud:(id)arg1;
 - (BOOL)shouldUseiCloud;
+- (void)updateControlCenterPreference;
 
 @end
 

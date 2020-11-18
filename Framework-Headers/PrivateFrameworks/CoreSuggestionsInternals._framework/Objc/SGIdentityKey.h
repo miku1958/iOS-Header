@@ -28,6 +28,7 @@
 + (id)keyForNormalizedEmail:(id)arg1;
 + (id)keyForNormalizedPhone:(id)arg1;
 + (id)keyForPersonHandle:(id)arg1;
++ (id)keyForSocialProfile:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -35,6 +36,7 @@
 - (BOOL)hasEmailAddress;
 - (BOOL)hasInstantMessageAddress;
 - (BOOL)hasPhone;
+- (BOOL)hasSocialProfile;
 - (unsigned long long)hash;
 - (id)identityKey;
 - (id)initWithSerialized:(id)arg1;
@@ -44,6 +46,7 @@
 - (BOOL)isEqualToIdentityKey:(id)arg1;
 - (id)phone;
 - (id)serialize;
+- (id)socialProfile;
 - (id)uniqueIdentifier;
 
 @end

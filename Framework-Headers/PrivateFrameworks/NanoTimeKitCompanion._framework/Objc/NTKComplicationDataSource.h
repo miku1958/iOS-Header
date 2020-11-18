@@ -27,8 +27,12 @@
 + (BOOL)acceptsComplicationType:(unsigned long long)arg1 withFamily:(long long)arg2;
 + (Class)dataSourceClassForComplicationType:(unsigned long long)arg1 family:(long long)arg2;
 - (void).cxx_destruct;
+- (void)becomeActive;
+- (void)becomeInactive;
 - (id)complicationApplicationIdentifier;
 - (id)currentSwitcherTemplate;
+- (void)didTouchDown;
+- (void)didTouchUpInside;
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;
 - (void)getDesiredUpdateIntervalWithHandler:(CDUnknownBlockType)arg1;
 - (void)getLaunchURLForTimelineEntryDate:(id)arg1 timeTravelDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
@@ -40,7 +44,9 @@
 - (id)initWithComplication:(id)arg1 family:(long long)arg2;
 - (id)lockedTemplate;
 - (void)pause;
+- (void)pauseAnimations;
 - (void)resume;
+- (void)resumeAnimations;
 
 @end
 

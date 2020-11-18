@@ -68,6 +68,7 @@
 - (void)_resetImpulseQuietness;
 - (void)_setAllowableSeparation:(double)arg1;
 - (void)_setAllowsDynamicTouchesList:(BOOL)arg1;
+- (void)_setTranslation:(struct CGPoint)arg1 inView:(id)arg2;
 - (BOOL)_shouldFailInResponseToPresses:(id)arg1 withEvent:(id)arg2;
 - (BOOL)_shouldReceivePress:(id)arg1;
 - (struct CGPoint)_startPointInView:(id)arg1;

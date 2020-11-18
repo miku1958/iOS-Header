@@ -76,9 +76,10 @@
 - (id)feedbackProcessorForAutoFillCorrectionManager:(id)arg1;
 - (id)formAutoFillCorrectionManagerForFormFieldClassificationCorrector:(id)arg1;
 - (id)formFieldClassificationCorrector:(id)arg1 bestAddressBookLabelForControlValue:(id)arg2;
+- (BOOL)formFieldClassificationCorrector:(id)arg1 hasAddressBookDataForAddressBookLabel:(id)arg2;
 - (void)gatherAutoFillDisplayDataWithTextField:(id)arg1 displayedInQuickType:(BOOL)arg2 prefix:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)gatherValuesForForm:(id)arg1 inFrame:(id)arg2 multiRoundAutoFillManager:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)init;
+- (id)initWithAggressiveKeychainCaching:(BOOL)arg1;
 - (BOOL)mayFillCreditCardDataInFrame:(id)arg1;
 - (BOOL)mayPreFillInFrame:(id)arg1 ancestorFrames:(id)arg2;
 - (void)prepareMeCard;

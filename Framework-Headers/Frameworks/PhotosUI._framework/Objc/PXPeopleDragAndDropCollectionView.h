@@ -6,55 +6,37 @@
 
 #import <UIKit/UICollectionView.h>
 
-@class NSIndexPath, PXPeopleFavoritingShelfView, PXPeopleHomeCollectionViewCell, UIVisualEffect;
+@class NSIndexPath, PXPeopleCollectionViewCell, UIVisualEffect;
 @protocol PXPeopleDragAndDropCollectionViewDelegate;
 
 @interface PXPeopleDragAndDropCollectionView : UICollectionView
 {
     BOOL _interactiveMode;
     BOOL _validDrop;
-    BOOL _animatingFavorite;
     id<PXPeopleDragAndDropCollectionViewDelegate> _dragDropDelegate;
-    PXPeopleHomeCollectionViewCell *_dragSourceCell;
+    PXPeopleCollectionViewCell *_dragSourceCell;
     NSIndexPath *_dragSourceIndexPath;
     UIVisualEffect *_blurEffect;
-    NSIndexPath *_dragDestIndexPath;
-    PXPeopleFavoritingShelfView *_favoriteShelfView;
 }
 
-@property (nonatomic) BOOL animatingFavorite; // @synthesize animatingFavorite=_animatingFavorite;
 @property (strong, nonatomic) UIVisualEffect *blurEffect; // @synthesize blurEffect=_blurEffect;
-@property (strong, nonatomic) NSIndexPath *dragDestIndexPath; // @synthesize dragDestIndexPath=_dragDestIndexPath;
 @property (weak, nonatomic) id<PXPeopleDragAndDropCollectionViewDelegate> dragDropDelegate; // @synthesize dragDropDelegate=_dragDropDelegate;
-@property (strong, nonatomic) PXPeopleHomeCollectionViewCell *dragSourceCell; // @synthesize dragSourceCell=_dragSourceCell;
+@property (strong, nonatomic) PXPeopleCollectionViewCell *dragSourceCell; // @synthesize dragSourceCell=_dragSourceCell;
 @property (strong, nonatomic) NSIndexPath *dragSourceIndexPath; // @synthesize dragSourceIndexPath=_dragSourceIndexPath;
-@property (strong, nonatomic) PXPeopleFavoritingShelfView *favoriteShelfView; // @synthesize favoriteShelfView=_favoriteShelfView;
 @property (nonatomic) BOOL interactiveMode; // @synthesize interactiveMode=_interactiveMode;
 @property (nonatomic) BOOL validDrop; // @synthesize validDrop=_validDrop;
 
 - (void).cxx_destruct;
-- (void)_animateShelfSlideIn;
-- (void)_animateShelfSlideOutWithDroppedView:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_autoscrollForReordering:(id)arg1;
 - (id)_footerAttributes;
 - (double)_highestVisibleCellZOrder;
-- (void)animateDropToFavoriteShelf:(CDUnknownBlockType)arg1;
 - (BOOL)beginInteractiveMovementAtLocation:(struct CGPoint)arg1 forItemAtIndexPath:(id)arg2;
 - (void)cancelInteractiveMovement;
-- (BOOL)dropTargetIsFavoriteSection;
-- (BOOL)dropTargetIsFavoriteShelf;
-- (void)embedFavoriteShelfAndInvalidateLayout:(BOOL)arg1;
 - (void)endInteractiveMovement;
-- (unsigned long long)favoriteShelfAppearance;
 - (void)layoutSubviews;
 - (void)reloadData;
-- (void)removeFavoriteShelf;
 - (void)resetTransformForSourceIndex:(id)arg1;
 - (long long)sectionAtPoint:(struct CGPoint)arg1;
-- (struct CGSize)shelfSize;
-- (void)showFavoriteShelfIfNeeded;
 - (id)sortedIndexPathsForSelectedItems;
-- (void)updateInteractiveMovementTargetPosition:(struct CGPoint)arg1;
 
 @end
 

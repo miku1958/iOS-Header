@@ -18,7 +18,7 @@
 @property (strong, nonatomic) CoreDAVItemWithNoChildren *unauthenticated; // @synthesize unauthenticated=_unauthenticated;
 
 + (id)copyParseRules;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 

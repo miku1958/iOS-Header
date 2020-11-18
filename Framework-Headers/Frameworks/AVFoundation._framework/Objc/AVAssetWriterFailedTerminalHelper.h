@@ -20,6 +20,7 @@
 - (void)finishWritingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithConfigurationState:(id)arg1;
 - (id)initWithConfigurationState:(id)arg1 terminalError:(id)arg2;
+- (void)setFinishWritingDelegate:(id)arg1;
 - (void)startSessionAtSourceTime:(CDStruct_1b6d18a9)arg1;
 - (long long)status;
 

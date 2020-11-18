@@ -30,10 +30,10 @@
 @property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
 @property (nonatomic) float zoomLevel; // @synthesize zoomLevel=_zoomLevel;
 
+- (void).cxx_destruct;
 - (void)_setMapMode:(int)arg1 region:(id)arg2;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

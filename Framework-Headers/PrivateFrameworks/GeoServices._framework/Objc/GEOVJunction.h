@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *connectingRoads; // @synthesize connectingRoads=_connectingRoads;
 @property (strong, nonatomic) NSMutableArray *laneConnections; // @synthesize laneConnections=_laneConnections;
 
+- (void).cxx_destruct;
 - (void)addConnectingRoad:(id)arg1;
 - (void)addLaneConnections:(id)arg1;
 - (void)clearConnectingRoads;
@@ -28,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)connectingRoadsCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

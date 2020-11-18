@@ -9,18 +9,18 @@
 #import <SearchUI/MFMailComposeViewControllerDelegate-Protocol.h>
 
 @class NSString, SFSearchResult, UIViewController;
-@protocol SearchUIFeedbackDelegate;
+@protocol SFFeedbackListener;
 
 @interface SearchUIGradingFeedbackViewController : UIAlertController <MFMailComposeViewControllerDelegate>
 {
     SFSearchResult *_result;
     UIViewController *_viewControllerForPresenting;
-    id<SearchUIFeedbackDelegate> _feedbackDelegate;
+    id<SFFeedbackListener> _feedbackDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (weak) id<SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
+@property (weak) id<SFFeedbackListener> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
 @property (readonly) unsigned long long hash;
 @property (strong) SFSearchResult *result; // @synthesize result=_result;
 @property (readonly) Class superclass;

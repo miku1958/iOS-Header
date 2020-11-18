@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEORegionalResourceTile : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_attributions;
     NSMutableArray *_childrens;
     NSMutableArray *_iconChecksums;
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) NSMutableArray *childrens; // @synthesize childrens=_childrens;
 @property (strong, nonatomic) NSMutableArray *iconChecksums; // @synthesize iconChecksums=_iconChecksums;
 @property (strong, nonatomic) NSMutableArray *icons; // @synthesize icons=_icons;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (nonatomic) unsigned int x; // @synthesize x=_x;
 @property (nonatomic) unsigned int y; // @synthesize y=_y;
 @property (nonatomic) unsigned int z; // @synthesize z=_z;
@@ -33,6 +35,7 @@
 + (Class)childrenType;
 + (Class)iconChecksumType;
 + (Class)iconType;
+- (void).cxx_destruct;
 - (void)addAttribution:(id)arg1;
 - (void)addChildren:(id)arg1;
 - (void)addIcon:(id)arg1;
@@ -48,7 +51,6 @@
 - (BOOL)containsTileKey:(const struct _GEOTileKey *)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -6,12 +6,11 @@
 
 #import <CoreBluetooth/CBPeer.h>
 
-@class CBCentralManager, NSArray, NSMutableDictionary, NSNumber, NSString;
+@class NSArray, NSHashTable, NSMutableDictionary, NSNumber, NSString;
 @protocol CBPeripheralDelegate;
 
 @interface CBPeripheral : CBPeer
 {
-    CBCentralManager *_centralManager;
     struct {
         unsigned int didUpdateName:1;
         unsigned int didModifyServices:1;
@@ -27,22 +26,29 @@
         unsigned int didUpdateDescriptorValue:1;
         unsigned int didWriteDescriptorValue:1;
         unsigned int didReceiveTimeSync:1;
+        unsigned int didOpenL2CAPChannel:1;
     } _delegateFlags;
     NSMutableDictionary *_attributes;
+    BOOL _canSendWriteWithoutResponse;
     BOOL _isConnectedToSystem;
+    unsigned int _writesPending;
     id<CBPeripheralDelegate> _delegate;
     NSString *_name;
     NSNumber *_RSSI;
     long long _state;
     NSArray *_services;
+    NSHashTable *_l2capChannels;
 }
 
 @property (strong) NSNumber *RSSI; // @synthesize RSSI=_RSSI;
+@property BOOL canSendWriteWithoutResponse; // @synthesize canSendWriteWithoutResponse=_canSendWriteWithoutResponse;
 @property (weak, nonatomic) id<CBPeripheralDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL isConnectedToSystem; // @synthesize isConnectedToSystem=_isConnectedToSystem;
+@property (readonly, strong, nonatomic) NSHashTable *l2capChannels; // @synthesize l2capChannels=_l2capChannels;
 @property (strong) NSString *name; // @synthesize name=_name;
 @property (strong) NSArray *services; // @synthesize services=_services;
 @property long long state; // @synthesize state=_state;
+@property unsigned int writesPending; // @synthesize writesPending=_writesPending;
 
 - (void).cxx_destruct;
 - (id)attributeForHandle:(id)arg1;
@@ -65,6 +71,8 @@
 - (void)handleDescriptorValueWritten:(id)arg1;
 - (void)handleDisconnection;
 - (void)handleFailedConnection;
+- (void)handleL2CAPChannelClosed:(id)arg1;
+- (void)handleL2CAPChannelOpened:(id)arg1;
 - (void)handleMsg:(int)arg1 args:(id)arg2;
 - (void)handleNameUpdated:(id)arg1;
 - (void)handleRSSIUpdated:(id)arg1;
@@ -78,11 +86,17 @@
 - (BOOL)hasTag:(id)arg1;
 - (id)initWithCentralManager:(id)arg1 info:(id)arg2;
 - (void)invalidateAllAttributes;
+- (BOOL)isConnected;
+- (void)isReadyForUpdates;
+- (id)l2capChannelForPeer:(id)arg1 withPsm:(unsigned short)arg2;
 - (unsigned long long)maximumWriteValueLengthForType:(long long)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)openL2CAPChannel:(unsigned short)arg1;
+- (void)openL2CAPChannel:(unsigned short)arg1 options:(id)arg2;
 - (void)readRSSI;
 - (void)readValueForCharacteristic:(id)arg1;
 - (void)readValueForDescriptor:(id)arg1;
+- (void)removeAllL2CAPChannels;
 - (void)removeAttributeForHandle:(id)arg1;
 - (void)sendMsg:(int)arg1 args:(id)arg2;
 - (void)sendMsg:(int)arg1 requiresConnected:(BOOL)arg2 args:(id)arg3;

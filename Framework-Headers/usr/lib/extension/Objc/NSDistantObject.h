@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSProxy.h>
+#import <Foundation/NSProxy.h>
 
-#import <extension/NSCoding-Protocol.h>
+#import <Foundation/NSCoding-Protocol.h>
 
 @class NSConnection;
 

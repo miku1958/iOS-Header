@@ -6,16 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray, UILabel;
+@class NSMutableArray, UIImageView, UILabel;
 
 @interface PKContinuityPaymentCardSummaryView : UIView
 {
     NSMutableArray *_constraints;
-    UILabel *_labelView;
     UILabel *_valueView;
+    UIImageView *_thumbnailView;
 }
 
-@property (readonly, nonatomic) UILabel *labelView; // @synthesize labelView=_labelView;
+@property (readonly, nonatomic) UIImageView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
 @property (readonly, nonatomic) UILabel *valueView; // @synthesize valueView=_valueView;
 
 - (void).cxx_destruct;

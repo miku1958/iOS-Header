@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSDictionary, NSString;
 @protocol NSObject><NSCopying;
@@ -59,9 +59,11 @@
 - (BOOL)isFieldTypeDate;
 - (BOOL)isFieldTypeFooter;
 - (BOOL)isFieldTypeLabel;
+- (BOOL)isFieldTypePicker;
 - (BOOL)isFieldTypeText;
 - (id)labelFieldObject;
 - (void)noteCurrentValueChanged;
+- (id)pickerFieldObject;
 - (id)submissionString;
 - (BOOL)submissionStringMeetsAllRequirements;
 - (id)textFieldObject;

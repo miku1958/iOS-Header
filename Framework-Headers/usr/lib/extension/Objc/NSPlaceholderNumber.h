@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSPlaceholderValue.h>
+#import <Foundation/NSPlaceholderValue.h>
 
 __attribute__((visibility("hidden")))
 @interface NSPlaceholderNumber : NSPlaceholderValue

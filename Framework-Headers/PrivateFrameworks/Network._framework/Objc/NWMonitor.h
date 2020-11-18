@@ -8,7 +8,7 @@
 
 #import <Network/NSURLSessionTaskDelegate-Protocol.h>
 
-@class NSArray, NSString, NSURL, NSUUID, NWEndpoint, NWNetworkDescription, NWParameters, NWPathEvaluator;
+@class NSArray, NSString, NSURL, NSUUID, NWEndpoint, NWInterface, NWNetworkDescription, NWParameters, NWPathEvaluator;
 
 @interface NWMonitor : NSObject <NSURLSessionTaskDelegate>
 {
@@ -21,7 +21,7 @@
     NWPathEvaluator *_pathEvaluator;
     NSUUID *_lastProbeUUID;
     NSURL *_lastProbeURL;
-    unsigned long long _interfaceIndex;
+    NWInterface *_interface;
 }
 
 @property (strong) NWNetworkDescription *bestAvailableNetworkDescription; // @synthesize bestAvailableNetworkDescription=_bestAvailableNetworkDescription;
@@ -29,7 +29,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong) NWEndpoint *endpoint; // @synthesize endpoint=_endpoint;
 @property (readonly) unsigned long long hash;
-@property unsigned long long interfaceIndex; // @synthesize interfaceIndex=_interfaceIndex;
+@property (strong) NWInterface *interface; // @synthesize interface=_interface;
 @property (strong) NSURL *lastProbeURL; // @synthesize lastProbeURL=_lastProbeURL;
 @property (strong) NSUUID *lastProbeUUID; // @synthesize lastProbeUUID=_lastProbeUUID;
 @property unsigned int mID; // @synthesize mID=_mID;

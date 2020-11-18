@@ -49,6 +49,7 @@
 
 + (id)allClients;
 + (void)initialize;
+- (void).cxx_destruct;
 - (void)_attemptToEstablishConnection;
 - (void)_commonInit;
 - (id)_createRegistrationWithReplyMachPort:(unsigned int)arg1 forAsyncReplyOnQueue:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;

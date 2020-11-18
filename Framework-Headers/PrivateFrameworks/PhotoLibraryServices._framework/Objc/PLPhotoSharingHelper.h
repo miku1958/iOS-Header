@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface PLPhotoSharingHelper : NSObject
 {
@@ -66,7 +66,10 @@
 + (long long)maxAssetsPerStream;
 + (long long)maxCharactersPerComment;
 + (long long)maxCommentsPerAsset;
++ (long long)maxGIFSizeForPublishing;
 + (long long)maxNumDerivativesToDownloadPerPush;
++ (long long)maxNumDerivativesToPrefetchPerDay;
++ (long long)maxNumThumbnailsToPrefetchPerDay;
 + (long long)maxOwnedStreams;
 + (long long)maxSubscribedStreams;
 + (long long)maxSubscribersPerStream;
@@ -92,10 +95,10 @@
 + (BOOL)sharedStreamsEnabled;
 + (BOOL)sharedStreamsExplictlyDisabled;
 + (BOOL)sharedStreamsUIEnabled;
-+ (id)sharingEmail;
 + (id)sharingPersonID;
++ (id)sharingUsername;
 + (id)streamdVideoCache;
-+ (id)temporaryDerivativePathForCollectionGUID:(id)arg1;
++ (id)temporaryDerivativePathForCollectionGUID:(id)arg1 uti:(id)arg2;
 + (id)temporaryLargeVideoDerivativePathForCollectionGUID:(id)arg1;
 + (id)temporarySmallVideoDerivativePathForCollectionGUID:(id)arg1;
 + (id)temporaryThumbnailPathForCollectionGUID:(id)arg1;

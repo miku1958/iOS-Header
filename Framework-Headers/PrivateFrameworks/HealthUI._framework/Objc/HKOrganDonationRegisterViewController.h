@@ -8,10 +8,11 @@
 
 #import <HealthUI/HKOrganDonationConnectionManagerDelegate-Protocol.h>
 #import <HealthUI/HKOrganDonationRegistrantDelegate-Protocol.h>
+#import <HealthUI/HKSimpleDataEntryItemToolbarDelegate-Protocol.h>
 
 @class HKHealthStore, HKOrganDonationConnectionManager, HKOrganDonationRegistrant, NSArray, NSString, UIActivityIndicatorView, UIBarButtonItem, UIButton, UIFont, UIView, _HKMedicalIDData;
 
-@interface HKOrganDonationRegisterViewController : UITableViewController <HKOrganDonationRegistrantDelegate, HKOrganDonationConnectionManagerDelegate>
+@interface HKOrganDonationRegisterViewController : UITableViewController <HKOrganDonationRegistrantDelegate, HKOrganDonationConnectionManagerDelegate, HKSimpleDataEntryItemToolbarDelegate>
 {
     HKOrganDonationConnectionManager *_connectionManager;
     HKHealthStore *_healthStore;
@@ -58,7 +59,11 @@
 - (void)_toggleLoadingStatusIsLoading:(BOOL)arg1;
 - (void)_toggleNextButtonEnabledState;
 - (void)cancelButtonTapped:(id)arg1;
+- (void)dataEntryItemDonePressed:(id)arg1;
+- (void)dataEntryItemNextPressed:(id)arg1;
+- (void)dataEntryItemPrevPressed:(id)arg1;
 - (void)dealloc;
+- (void)focusItemAtIndex:(long long)arg1;
 - (id)init;
 - (void)nextButtonTapped:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
@@ -74,6 +79,7 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateButtonTapped:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

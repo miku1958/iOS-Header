@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PersistentConnection/PCLoggingDelegate-Protocol.h>
-
 @class NSDate, NSRunLoop, NSString, PCDispatchTimer;
 @protocol OS_dispatch_queue;
 
-@interface PCSimpleTimer : NSObject <PCLoggingDelegate>
+@interface PCSimpleTimer : NSObject
 {
     double _fireTime;
     double _startTime;
@@ -36,16 +34,12 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disableSystemWaking; // @synthesize disableSystemWaking=_disableSystemWaking;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *loggingIdentifier; // @synthesize loggingIdentifier=_serviceIdentifier;
-@property (readonly) Class superclass;
 @property (nonatomic, getter=isUserVisible) BOOL userVisible;
 
 + (double)currentMachTimeInterval;
 + (id)lastSystemWakeDate;
+- (void).cxx_destruct;
 - (void)_fireTimerFired;
 - (id)_getTimerMode;
 - (id)_getTimerRunLoop;
@@ -59,6 +53,7 @@
 - (void)_significantTimeChange;
 - (void)_updateTimers;
 - (void)dealloc;
+- (id)debugDescription;
 - (BOOL)firingIsImminent;
 - (id)initWithAbsoluteTime:(double)arg1 serviceIdentifier:(id)arg2 target:(id)arg3 selector:(SEL)arg4 userInfo:(id)arg5 triggerOnGMTChange:(BOOL)arg6;
 - (id)initWithFireDate:(id)arg1 serviceIdentifier:(id)arg2 target:(id)arg3 selector:(SEL)arg4 userInfo:(id)arg5;

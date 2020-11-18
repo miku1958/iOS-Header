@@ -22,7 +22,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL valid; // @synthesize valid=_valid;
 
-+ (void)becameFatallyBlocked:(id)arg1;
++ (void)becameFatallyBlocked:(id)arg1 index:(unsigned long long)arg2;
 + (void)performSyncOnSilo:(id)arg1 invoker:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithClient:(struct CLNotifierClientBase *)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/VKGesturingCameraController-Protocol.h>
 
@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
     struct CGPoint _pitchStartScreenPoint;
     BOOL _notifyCameraStateChanges;
     VKCameraController *_cameraController;
-    int _flyoverMode;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -51,7 +50,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isPinching;
 - (BOOL)isPitching;
 - (BOOL)isRotating;
-- (void)setFlyoverMode:(int)arg1;
 - (void)startPanningAtPoint:(struct CGPoint)arg1 panAtStartPoint:(BOOL)arg2;
 - (void)startPinchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)startPitchingWithFocusPoint:(struct CGPoint)arg1;

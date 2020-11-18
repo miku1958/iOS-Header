@@ -4,28 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthDaemon/HDJournalEntry.h>
+#import <HealthDaemon/_HDAssociationInsertionJournalEntry.h>
 
-@class NSData, NSUUID;
-
-@interface _HDCorrelationInsertionJournalEntry : HDJournalEntry
+@interface _HDCorrelationInsertionJournalEntry : _HDAssociationInsertionJournalEntry
 {
-    NSUUID *_correlationUUID;
-    NSData *_objectUUIDsData;
-    long long _provenance;
 }
-
-@property (readonly, nonatomic) NSUUID *correlationUUID; // @synthesize correlationUUID=_correlationUUID;
-@property (readonly, nonatomic) NSData *objectUUIDsData; // @synthesize objectUUIDsData=_objectUUIDsData;
-@property (readonly, nonatomic) long long provenance; // @synthesize provenance=_provenance;
-
-+ (void)applyEntries:(id)arg1 withProfile:(id)arg2;
-+ (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
-- (id)description;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithCorrelationUUID:(id)arg1 objectUUIDsData:(id)arg2 provenance:(long long)arg3;
 
 @end
 

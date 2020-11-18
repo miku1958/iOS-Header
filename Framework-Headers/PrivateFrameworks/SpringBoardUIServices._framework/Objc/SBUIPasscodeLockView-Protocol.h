@@ -6,31 +6,40 @@
 
 #import <SpringBoardUIServices/NSObject-Protocol.h>
 
-@class NSString, UIColor;
+@class BSAnimationSettings, NSString, SBUIProudLockIconView, UIColor;
 @protocol SBFLegibilitySettingsProvider, SBUIPasscodeLockViewDelegate;
 
 @protocol SBUIPasscodeLockView <NSObject>
 
+@property (nonatomic) BOOL allowsAutomaticBiometricPresentationTransition;
 @property (nonatomic) double backgroundAlpha;
 @property (strong, nonatomic) id<SBFLegibilitySettingsProvider> backgroundLegibilitySettingsProvider;
 @property (nonatomic, getter=isBiometricAuthenticationAllowed) BOOL biometricAuthenticationAllowed;
-@property (nonatomic) unsigned long long biometricMatchMode;
+@property (nonatomic) BOOL biometricPresentationAncillaryButtonsVisible;
 @property (strong, nonatomic) UIColor *customBackgroundColor;
 @property (weak, nonatomic) id<SBUIPasscodeLockViewDelegate> delegate;
+@property (strong, nonatomic) SBUIProudLockIconView *overrideProudLockView;
 @property (readonly, nonatomic) NSString *passcode;
 @property (nonatomic) BOOL playsKeypadSounds;
+@property (nonatomic) BOOL proudLockShowsBiometricStates;
 @property (nonatomic, getter=isScreenOn) BOOL screenOn;
 @property (nonatomic) BOOL showsCancelButton;
 @property (nonatomic) BOOL showsEmergencyCallButton;
+@property (nonatomic) BOOL showsProudLock;
 @property (nonatomic) BOOL showsStatusField;
 @property (readonly, nonatomic) int style;
+@property (copy, nonatomic) NSString *unlockDestination;
+@property (nonatomic) BOOL usesBiometricPresentation;
 
 - (void)autofillForSuccessfulMesaAttemptWithCompletion:(void (^)(void))arg1;
+- (void)becomeActiveWithAnimationSettings:(BSAnimationSettings *)arg1;
 - (void)reset;
 - (void)resetForFailedMesaAttemptWithStatusText:(NSString *)arg1 andSubtitle:(NSString *)arg2;
 - (void)resetForFailedPasscode;
 - (void)resetForScreenOff;
+- (void)resetForSuccessViaPasscode:(BOOL)arg1;
 - (void)setAllowsStatusTextUpdatingOnResignFirstResponder:(BOOL)arg1;
+- (void)setKeypadVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)updateStatusText:(NSString *)arg1 subtitle:(NSString *)arg2 animated:(BOOL)arg3;
 @end
 

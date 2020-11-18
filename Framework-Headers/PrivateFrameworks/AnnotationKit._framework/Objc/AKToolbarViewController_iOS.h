@@ -10,44 +10,49 @@
 #import <AnnotationKit/AKSignaturesViewControllerDelegate-Protocol.h>
 #import <AnnotationKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class AKColorPickerViewController, AKFloatingAttributePickerViewController, AKLineStylesViewController, AKSignaturesViewController_iOS, AKTextAttributesViewController, AKUndoViewController, NSArray, NSLayoutConstraint, NSString, UIAlertController, UIBarButtonItem, UIGestureRecognizer, UIView;
+@class AKColorPickerViewController, AKFloatingAttributePickerViewController, AKLineStylesViewController, AKSignaturesViewController_iOS, AKTextAttributesViewController, NSArray, NSLayoutConstraint, NSString, UIAlertController, UIBarButtonItem, UIColor, UIView;
 
 @interface AKToolbarViewController_iOS : AKToolbarViewController <AKSignaturesViewControllerDelegate, AKSignatureCreationControllerDelegate, UIPopoverPresentationControllerDelegate>
 {
-    UIView *_attributeToolbarContainer;
+    UIColor *_barTintColor;
+    UIColor *_tintColor;
+    UIView *_floatingAttributeToolbarContainer;
     UIBarButtonItem *_richSketchButton;
     UIBarButtonItem *_sketchButton;
+    UIBarButtonItem *_inkButton;
     UIBarButtonItem *_textButton;
     UIBarButtonItem *_loupeButton;
     UIBarButtonItem *_signatureButton;
     UIBarButtonItem *_undoButton;
+    UIBarButtonItem *_redoButton;
     UIBarButtonItem *_textStyleButton;
     UIBarButtonItem *_lineStyleButton;
     UIBarButtonItem *_strokeColorButton;
     NSArray *_staticToolbarItems;
-    UIGestureRecognizer *_longPressGestureRecognizer;
     UIAlertController *_signaturesAlertController;
+    UIAlertController *_undoAlertController;
     AKSignaturesViewController_iOS *_signaturesSheetViewController;
     AKLineStylesViewController *_lineStylesViewController;
     AKTextAttributesViewController *_textAttributesViewController;
     AKColorPickerViewController *_colorPickerPopoverViewController;
-    AKUndoViewController *_undoPopoverViewController;
     AKFloatingAttributePickerViewController *_attributeToolbarViewController;
     NSLayoutConstraint *_attributeToolbarViewControllerConstraint;
 }
 
-@property (strong, nonatomic) UIView *attributeToolbarContainer; // @synthesize attributeToolbarContainer=_attributeToolbarContainer;
 @property (strong, nonatomic) AKFloatingAttributePickerViewController *attributeToolbarViewController; // @synthesize attributeToolbarViewController=_attributeToolbarViewController;
 @property (strong, nonatomic) NSLayoutConstraint *attributeToolbarViewControllerConstraint; // @synthesize attributeToolbarViewControllerConstraint=_attributeToolbarViewControllerConstraint;
+@property (strong, nonatomic) UIColor *barTintColor; // @synthesize barTintColor=_barTintColor;
 @property (strong, nonatomic) AKColorPickerViewController *colorPickerPopoverViewController; // @synthesize colorPickerPopoverViewController=_colorPickerPopoverViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIView *floatingAttributeToolbarContainer; // @synthesize floatingAttributeToolbarContainer=_floatingAttributeToolbarContainer;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double heightIncludingAdditionalVisibleBars;
+@property (strong, nonatomic) UIBarButtonItem *inkButton; // @synthesize inkButton=_inkButton;
 @property (strong, nonatomic) UIBarButtonItem *lineStyleButton; // @synthesize lineStyleButton=_lineStyleButton;
 @property (strong, nonatomic) AKLineStylesViewController *lineStylesViewController; // @synthesize lineStylesViewController=_lineStylesViewController;
-@property (strong, nonatomic) UIGestureRecognizer *longPressGestureRecognizer; // @synthesize longPressGestureRecognizer=_longPressGestureRecognizer;
 @property (strong, nonatomic) UIBarButtonItem *loupeButton; // @synthesize loupeButton=_loupeButton;
+@property (strong, nonatomic) UIBarButtonItem *redoButton; // @synthesize redoButton=_redoButton;
 @property (strong, nonatomic) UIBarButtonItem *richSketchButton; // @synthesize richSketchButton=_richSketchButton;
 @property (strong, nonatomic) UIBarButtonItem *signatureButton; // @synthesize signatureButton=_signatureButton;
 @property (strong, nonatomic) UIAlertController *signaturesAlertController; // @synthesize signaturesAlertController=_signaturesAlertController;
@@ -59,8 +64,9 @@
 @property (strong, nonatomic) AKTextAttributesViewController *textAttributesViewController; // @synthesize textAttributesViewController=_textAttributesViewController;
 @property (strong, nonatomic) UIBarButtonItem *textButton; // @synthesize textButton=_textButton;
 @property (strong, nonatomic) UIBarButtonItem *textStyleButton; // @synthesize textStyleButton=_textStyleButton;
+@property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
+@property (strong, nonatomic) UIAlertController *undoAlertController; // @synthesize undoAlertController=_undoAlertController;
 @property (strong, nonatomic) UIBarButtonItem *undoButton; // @synthesize undoButton=_undoButton;
-@property (strong, nonatomic) AKUndoViewController *undoPopoverViewController; // @synthesize undoPopoverViewController=_undoPopoverViewController;
 @property (readonly, nonatomic) double visibleHeightOfAttributeBar;
 
 - (void).cxx_destruct;
@@ -70,20 +76,21 @@
 - (id)_buildUndoAlertController;
 - (id)_createNewColorPickerToolbarButtonWithTarget:(id)arg1 selector:(SEL)arg2;
 - (id)_createNewCustomViewToolbarButtonWithImage:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
-- (id)_createNewToggleToolbarButtonWithImage:(id)arg1 tag:(long long)arg2 target:(id)arg3 selector:(SEL)arg4;
+- (id)_createNewToggleToolbarButtonWithImage:(id)arg1 tag:(long long)arg2 target:(id)arg3 selector:(SEL)arg4 autoUpdatesColor:(BOOL)arg5;
 - (void)_deleteSelectedItems:(id)arg1;
 - (void)_dismissCurrentlyPresentedPopoverAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)_doodleModeToolbarImage;
 - (void)_layoutAttributeContainer;
 - (void)_layoutToolbarForTraitCollection:(id)arg1;
+- (BOOL)_legacyDoodlesEnabled;
 - (void)_peripheralAvailabilityDidUpdate:(id)arg1;
+- (void)_redoButtonAction:(id)arg1;
 - (void)_setupPassthroughViewsForViewController:(id)arg1;
 - (void)_showColorPickerPopover:(id)arg1;
 - (void)_showLineStylePopover:(id)arg1;
 - (void)_showSignaturesPopover:(id)arg1;
 - (void)_showTextStylePopover:(id)arg1;
 - (void)_showUndoAlert:(id)arg1;
-- (void)_sketchButtonAction:(id)arg1;
 - (id)_toolbarButtonItemOfType:(unsigned long long)arg1;
 - (void)_undoAllButtonAction:(id)arg1;
 - (void)_undoButtonAction:(id)arg1;
@@ -94,8 +101,10 @@
 - (unsigned long long)_workaroundToolbarPopoverPositioningBug26744300;
 - (void)dealloc;
 - (void)dismissAttributeToolbarForSelectedAnnotations;
+- (void)dismissAttributeToolbarImmediately;
 - (void)dismissPresentedPopovers;
 - (id)initWithController:(id)arg1;
+- (BOOL)isPresentingPopover;
 - (BOOL)isPresentingPopovers;
 - (void)loadView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -109,6 +118,7 @@
 - (void)signaturesViewControllerContinueToManageSignatures:(id)arg1;
 - (void)signaturesViewControllerDidCancel:(id)arg1;
 - (void)signaturesViewControllerDidSelectSignature:(id)arg1;
+- (void)signaturesViewControllerEnterSignatureMode:(id)arg1;
 - (void)syncUIToSelectedColor;
 - (void)traitCollectionDidChange:(id)arg1;
 

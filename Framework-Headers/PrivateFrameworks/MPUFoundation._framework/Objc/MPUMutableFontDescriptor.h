@@ -14,6 +14,7 @@
 @property (nonatomic) long long leadingAdjustment; // @dynamic leadingAdjustment;
 @property (nonatomic) double systemFontSize; // @dynamic systemFontSize;
 @property (nonatomic) long long textStyle; // @dynamic textStyle;
+@property (nonatomic) BOOL usesCondensedMetrics; // @dynamic usesCondensedMetrics;
 @property (nonatomic) BOOL usesItalic; // @dynamic usesItalic;
 @property (nonatomic) BOOL wantsMonospaceNumbers; // @dynamic wantsMonospaceNumbers;
 @property (nonatomic) long long weight; // @dynamic weight;

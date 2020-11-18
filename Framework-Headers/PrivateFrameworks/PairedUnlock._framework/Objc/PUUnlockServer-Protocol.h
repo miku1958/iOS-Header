@@ -10,12 +10,13 @@
 
 @protocol PUUnlockServer <NSObject>
 - (void)checkIn;
-- (void)didCompletePasscodeAction:(BOOL)arg1 error:(NSError *)arg2;
+- (void)didCompleteRemoteAction:(BOOL)arg1 error:(NSError *)arg2;
 - (void)disableOnlyRemoteUnlock;
 - (void)enableOnlyRemoteUnlockWithPasscode:(NSString *)arg1;
-- (void)getRemoteDeviceState;
 - (void)pairForUnlockWithPasscode:(NSString *)arg1;
-- (void)requestRemoteDevicePasscodeAction:(long long)arg1 type:(long long)arg2;
+- (void)queryRemoteDeviceState:(void (^)(PURemoteDeviceState *, NSError *))arg1;
+- (void)requestDeviceSetWristDetectionDisabled:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
+- (void)requestRemoteDeviceRemoteAction:(long long)arg1 type:(long long)arg2;
 - (void)requestRemoteDeviceRemoveLockout;
 - (void)requestRemoteDeviceUnlockNotification;
 - (void)unpairForUnlock;

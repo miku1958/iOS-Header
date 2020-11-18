@@ -31,6 +31,7 @@
 - (BOOL)shouldInsetContent;
 - (void)viewDidBecomeVisible;
 - (BOOL)webView:(id)arg1 shouldStartLoadWithRequest:(id)arg2 navigationType:(long long)arg3;
+- (void)webViewDidFinishLoad:(id)arg1;
 
 @end
 

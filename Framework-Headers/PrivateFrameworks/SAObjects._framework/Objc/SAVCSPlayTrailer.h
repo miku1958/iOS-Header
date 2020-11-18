@@ -6,14 +6,16 @@
 
 #import <SAObjects/SAAceView.h>
 
-@class NSString, SAUIImageResource;
+@class NSString, NSURL, SAUIImageResource;
 
 @interface SAVCSPlayTrailer : SAAceView
 {
 }
 
 @property (copy, nonatomic) NSString *contentType;
+@property (copy, nonatomic) NSURL *hiresTrailerUri;
 @property (strong, nonatomic) SAUIImageResource *image;
+@property (copy, nonatomic) NSURL *lowresTrailerUri;
 @property (copy, nonatomic) NSString *utsId;
 
 + (id)playTrailer;

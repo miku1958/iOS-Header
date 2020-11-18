@@ -28,11 +28,11 @@
 @property (nonatomic) int layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (strong, nonatomic) GEOMultiTabsState *multiTabsState; // @synthesize multiTabsState=_multiTabsState;
 
+- (void).cxx_destruct;
 - (int)StringAsLayoutInfo:(id)arg1;
 - (int)StringAsLayoutStyle:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

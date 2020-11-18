@@ -41,6 +41,7 @@
     NSString *_authPasswordEquivalent;
     NSString *_authPasswordFieldID;
     BOOL _parseFinished;
+    CDUnknownBlockType _webViewDoneHandler;
     id<RUIObjectModelDelegate> _delegate;
     NSString *_identifier;
     RUIStyle *_style;
@@ -101,6 +102,7 @@
 - (void)_stopNavigationBarSpinnerIfNeededForAttributes:(id)arg1;
 - (void)_unsafe_setPages:(id)arg1;
 - (id)_viewControllerFromNavigatingBackWithinDisplayedPagesAnimated:(BOOL)arg1;
+- (id)absoluteURLWithString:(id)arg1;
 - (void)activateElement:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addAlertElement:(id)arg1;
 - (id)alertController;
@@ -149,6 +151,7 @@
 - (void)runScript;
 - (void)setJSGlobalContext:(struct OpaqueJSContext *)arg1;
 - (void)setPages:(id)arg1;
+- (void)showModalWebViewWithLinkURL:(id)arg1 scaleToFit:(BOOL)arg2 loadCompletion:(CDUnknownBlockType)arg3 doneHandler:(CDUnknownBlockType)arg4;
 - (void)startNavigationBarSpinnerWithTitle:(id)arg1;
 - (void)stopNavigationBarSpinner;
 - (id)stringForAttributeName:(id)arg1 withAttributes:(id)arg2;

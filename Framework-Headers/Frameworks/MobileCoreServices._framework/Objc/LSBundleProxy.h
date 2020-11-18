@@ -8,29 +8,34 @@
 
 #import <MobileCoreServices/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, NSUUID, _LSLazyPropertyList;
+@class NSArray, NSDictionary, NSString, NSURL, NSUUID, _LSBundleIDValidationToken, _LSLazyPropertyList;
 
 @interface LSBundleProxy : LSResourceProxy <NSSecureCoding>
 {
+    NSString *_localizedShortName;
     unsigned long long _bundleFlags;
     unsigned int _plistContentFlags;
+    unsigned char _iconFlags;
     BOOL _foundBackingBundle;
-    BOOL _isContainerized;
+    BOOL _containerized;
     BOOL _profileValidated;
     BOOL _UPPValidated;
     NSString *_bundleType;
-    NSString *_localizedShortName;
     NSURL *_bundleURL;
     NSString *_bundleExecutable;
     NSString *_bundleVersion;
+    NSString *_sdkVersion;
     NSString *_signerIdentity;
+    NSString *_signerOrganization;
     NSUUID *_cacheGUID;
     unsigned long long _sequenceNumber;
     NSArray *_machOUUIDs;
+    unsigned long long _compatibilityState;
     _LSLazyPropertyList *__infoDictionary;
     _LSLazyPropertyList *__groupContainers;
     _LSLazyPropertyList *__entitlements;
     _LSLazyPropertyList *__environmentVariables;
+    _LSBundleIDValidationToken *__validationToken;
 }
 
 @property (readonly, nonatomic) BOOL UPPValidated; // @synthesize UPPValidated=_UPPValidated;
@@ -38,6 +43,7 @@
 @property (copy, nonatomic, setter=_setEnvironmentVariables:) _LSLazyPropertyList *_environmentVariables; // @synthesize _environmentVariables=__environmentVariables;
 @property (copy, nonatomic, setter=_setGroupContainers:) _LSLazyPropertyList *_groupContainers; // @synthesize _groupContainers=__groupContainers;
 @property (copy, nonatomic, setter=_setInfoDictionary:) _LSLazyPropertyList *_infoDictionary; // @synthesize _infoDictionary=__infoDictionary;
+@property (strong, nonatomic, setter=_setValidationToken:) _LSBundleIDValidationToken *_validationToken; // @synthesize _validationToken=__validationToken;
 @property (readonly, nonatomic) NSURL *appStoreReceiptURL; // @dynamic appStoreReceiptURL;
 @property (readonly, nonatomic) NSURL *bundleContainerURL;
 @property (readonly, nonatomic) NSString *bundleExecutable; // @synthesize bundleExecutable=_bundleExecutable;
@@ -47,29 +53,35 @@
 @property (readonly, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property (readonly, nonatomic) NSUUID *cacheGUID; // @synthesize cacheGUID=_cacheGUID;
 @property (readonly, nonatomic) NSString *canonicalExecutablePath;
+@property (nonatomic, setter=_setCompatibilityState:) unsigned long long compatibilityState; // @synthesize compatibilityState=_compatibilityState;
 @property (readonly, nonatomic) NSURL *containerURL;
+@property (readonly, nonatomic, getter=isContainerized) BOOL containerized; // @synthesize containerized=_containerized;
 @property (readonly, nonatomic) NSURL *dataContainerURL;
 @property (readonly, nonatomic) NSDictionary *entitlements;
 @property (readonly, nonatomic) NSDictionary *environmentVariables;
 @property (readonly, nonatomic) BOOL foundBackingBundle; // @synthesize foundBackingBundle=_foundBackingBundle;
 @property (readonly, nonatomic) NSDictionary *groupContainerURLs;
-@property (readonly, nonatomic) BOOL isContainerized; // @synthesize isContainerized=_isContainerized;
-@property (readonly, nonatomic) NSString *localizedShortName; // @synthesize localizedShortName=_localizedShortName;
+@property (readonly, nonatomic) NSString *localizedShortName;
 @property (copy, nonatomic) NSArray *machOUUIDs; // @synthesize machOUUIDs=_machOUUIDs;
 @property (readonly, nonatomic) BOOL profileValidated; // @synthesize profileValidated=_profileValidated;
+@property (copy, nonatomic, setter=setSDKVersion:) NSString *sdkVersion; // @synthesize sdkVersion=_sdkVersion;
 @property (readonly, nonatomic) unsigned long long sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property (readonly, nonatomic) NSString *signerIdentity; // @synthesize signerIdentity=_signerIdentity;
+@property (readonly, nonatomic) NSString *signerOrganization; // @synthesize signerOrganization=_signerOrganization;
 
 + (id)bundleProxyForCurrentProcess;
++ (BOOL)bundleProxyForCurrentProcessNeedsUpdate:(id)arg1;
 + (id)bundleProxyForIdentifier:(id)arg1;
 + (id)bundleProxyForURL:(id)arg1;
++ (BOOL)canInstantiateFromDatabase;
 + (BOOL)supportsSecureCoding;
 - (unsigned long long)_containerClassForLSBundleType:(id)arg1;
 - (id)_dataContainerURLFromContainerManager;
 - (id)_environmentVariablesFromContainerManager;
 - (id)_groupContainerURLsFromContainerManager;
-- (id)_initWithBundleUnit:(unsigned int)arg1 bundleType:(unsigned long long)arg2 bundleID:(id)arg3 localizedName:(id)arg4 bundleContainerURL:(id)arg5 dataContainerURL:(id)arg6 resourcesDirectoryURL:(id)arg7 iconsDictionary:(id)arg8 iconFileNames:(id)arg9 version:(id)arg10;
+- (id)_initWithBundleUnit:(unsigned int)arg1 context:(struct LSContext *)arg2 bundleType:(unsigned long long)arg3 bundleID:(id)arg4 localizedName:(id)arg5 bundleContainerURL:(id)arg6 dataContainerURL:(id)arg7 resourcesDirectoryURL:(id)arg8 iconsDictionary:(id)arg9 iconFileNames:(id)arg10 version:(id)arg11;
 - (id)_valueForEqualityTesting;
+- (id)appStoreReceiptName;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)entitlementValueForKey:(id)arg1 ofClass:(Class)arg2;
@@ -78,12 +90,12 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)localizedName;
+- (id)localizedNameWithPreferredLocalizations:(id)arg1 useShortNameOnly:(BOOL)arg2;
 - (id)localizedValuesForKeys:(id)arg1 fromTable:(id)arg2;
 - (id)objectForInfoDictionaryKey:(id)arg1 ofClass:(Class)arg2;
 - (id)objectForInfoDictionaryKey:(id)arg1 ofClass:(Class)arg2 valuesOfClass:(Class)arg3;
 - (id)objectsForInfoDictionaryKeys:(id)arg1;
-- (void)setLocalizedShortName:(id)arg1;
-- (void)setPropertyListCachingStrategy:(unsigned long long)arg1;
 - (id)uniqueIdentifier;
 
 @end

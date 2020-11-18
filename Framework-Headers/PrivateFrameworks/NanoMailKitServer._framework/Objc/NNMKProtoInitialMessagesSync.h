@@ -8,7 +8,7 @@
 
 #import <NanoMailKitServer/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString;
+@class NNMKProtoMailbox, NSData, NSMutableArray, NSString;
 
 @interface NNMKProtoInitialMessagesSync : PBCodable <NSCopying>
 {
@@ -16,12 +16,15 @@
     NSData *_dateSynced;
     unsigned int _fullSyncVersion;
     NSMutableArray *_initialMessages;
+    NNMKProtoMailbox *_mailbox;
+    unsigned int _mailboxSyncVersion;
     NSString *_syncedMailboxAccountId;
     NSString *_syncedMailboxCustomName;
     unsigned int _syncedMailboxType;
     NSString *_syncedMailboxURL;
     struct {
         unsigned int fullSyncVersion:1;
+        unsigned int mailboxSyncVersion:1;
         unsigned int syncedMailboxType:1;
     } _has;
 }
@@ -32,16 +35,21 @@
 @property (readonly, nonatomic) BOOL hasDateForRequestingMoreMessages;
 @property (readonly, nonatomic) BOOL hasDateSynced;
 @property (nonatomic) BOOL hasFullSyncVersion;
+@property (readonly, nonatomic) BOOL hasMailbox;
+@property (nonatomic) BOOL hasMailboxSyncVersion;
 @property (readonly, nonatomic) BOOL hasSyncedMailboxAccountId;
 @property (readonly, nonatomic) BOOL hasSyncedMailboxCustomName;
 @property (nonatomic) BOOL hasSyncedMailboxType;
 @property (readonly, nonatomic) BOOL hasSyncedMailboxURL;
 @property (strong, nonatomic) NSMutableArray *initialMessages; // @synthesize initialMessages=_initialMessages;
+@property (strong, nonatomic) NNMKProtoMailbox *mailbox; // @synthesize mailbox=_mailbox;
+@property (nonatomic) unsigned int mailboxSyncVersion; // @synthesize mailboxSyncVersion=_mailboxSyncVersion;
 @property (strong, nonatomic) NSString *syncedMailboxAccountId; // @synthesize syncedMailboxAccountId=_syncedMailboxAccountId;
 @property (strong, nonatomic) NSString *syncedMailboxCustomName; // @synthesize syncedMailboxCustomName=_syncedMailboxCustomName;
 @property (nonatomic) unsigned int syncedMailboxType; // @synthesize syncedMailboxType=_syncedMailboxType;
 @property (strong, nonatomic) NSString *syncedMailboxURL; // @synthesize syncedMailboxURL=_syncedMailboxURL;
 
++ (Class)initialMessageType;
 - (void).cxx_destruct;
 - (void)addInitialMessage:(id)arg1;
 - (void)clearInitialMessages;

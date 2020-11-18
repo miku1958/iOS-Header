@@ -6,89 +6,136 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthDaemon/HDActiveWorkoutServerDelegate-Protocol.h>
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HDForegroundClientProcessObserver-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 #import <HealthDaemon/HDWorkoutEventCollectorDelegate-Protocol.h>
 
-@class CLLocationManager, CMWorkoutManager, HDPrimaryProfile, HDWorkoutLocationSmoother, NSHashTable, NSMutableSet, NSString, _HDWorkoutData;
+@class BBQuietModeOverrideAssertion, CLLocationManager, CMWorkoutManager, CSLSSession, HDAlertSuppressor, HDPowerSavingModeManager, HDProfile, HDWatchAppStateMonitor, HDWorkoutLocationSmoother, NSHashTable, NSMutableDictionary, NSMutableSet, NSString, _HDWorkoutData;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface HDWorkoutManager : NSObject <HDWorkoutEventCollectorDelegate, HDDiagnosticObject, HDHealthDaemonReadyObserver, HDDatabaseProtectedDataObserver, HDForegroundClientProcessObserver>
+@interface HDWorkoutManager : NSObject <HDActiveWorkoutServerDelegate, HDDatabaseProtectedDataObserver, HDDiagnosticObject, HDForegroundClientProcessObserver, HDHealthDaemonReadyObserver, HDWorkoutEventCollectorDelegate>
 {
-    HDPrimaryProfile *_primaryProfile;
     _HDWorkoutData *_currentWorkout;
-    NSObject<OS_dispatch_queue> *_queue;
+    _HDWorkoutData *_nextWorkout;
+    NSMutableDictionary *_activeWorkoutServers;
+    HDAlertSuppressor *_alertSuppressor;
+    HDPowerSavingModeManager *_powerSavingModeManager;
     NSMutableSet *_currentObservedTypes;
     NSHashTable *_observerTable;
-    NSObject<OS_dispatch_source> *_suppressActivityKeepaliveTimer;
-    CMWorkoutManager *_cmWorkoutManager;
     NSMutableSet *_eventCollectors;
+    NSMutableSet *_startedEventCollectors;
     BOOL _waitingForStopEvent;
     BOOL _stopEventAfterPause;
-    _HDWorkoutData *_nextWorkout;
-    CLLocationManager *_locationManager;
-    HDWorkoutLocationSmoother *_locationSmoother;
     BOOL _needToCheckForLocationSeriesOnUnlock;
     BOOL _isFirstLaunchAndNotYetSmoothed;
+    void *_heartRateRecoveryPowerAssertion;
+    NSObject<OS_dispatch_source> *_heartRateRecoveryTimer;
+    _HDWorkoutData *_currentHeartRateRecoveryWorkout;
+    BOOL _isInHeartRateRecovery;
+    CMWorkoutManager *_cmWorkoutManager;
+    CLLocationManager *_locationManager;
+    CSLSSession *_carouselSession;
+    BOOL _enableDNDDuringWorkout;
+    BBQuietModeOverrideAssertion *_quietModeOverrideAssertion;
+    HDWatchAppStateMonitor *_appStateMonitor;
+    NSObject<OS_dispatch_queue> *_queue;
+    HDProfile *_profile;
+    HDWorkoutLocationSmoother *_locationSmoother;
 }
 
+@property (strong, nonatomic) CSLSSession *carouselSession;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL enableDNDDuringWorkout;
+@property (readonly, nonatomic) BOOL hasAnyActiveConnectedGymWorkouts;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isInHeartRateRecovery;
+@property (strong, nonatomic) HDWorkoutLocationSmoother *locationSmoother; // @synthesize locationSmoother=_locationSmoother;
+@property (readonly, weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong, nonatomic) BBQuietModeOverrideAssertion *quietModeOverrideAssertion;
 @property (readonly) Class superclass;
 
 + (id)_distanceTypeForActivityType:(unsigned long long)arg1 isIndoor:(BOOL)arg2;
-+ (id)observedTypesForActivityType:(unsigned long long)arg1 isIndoor:(BOOL)arg2;
++ (id)observedTypesForActivityType:(unsigned long long)arg1 isIndoor:(BOOL)arg2 connectedToFitnessMachine:(BOOL)arg3;
 - (void).cxx_destruct;
 - (void)_associationsSyncedForWorkout:(id)arg1;
-- (long long)_cmSwimLocationForHKSwimmingLocation:(long long)arg1;
 - (id)_coreMotionWorkoutManager;
+- (void)_loadWorkoutDNDDefault;
 - (id)_mainQueue_locationManager;
+- (void)_observeDNDWorkoutDefault;
+- (BOOL)_pluginHasBackgroundRunMode:(id)arg1 errorOut:(id *)arg2;
+- (void)_postWorkoutUpdatedNotification;
+- (void)_queue_activeWorkoutServerDidDeactivate:(id)arg1;
+- (void)_queue_beginHeartRateRecovery;
+- (unsigned long long)_queue_currentWorkoutActivityType;
+- (long long)_queue_currentWorkoutLocationType;
 - (void)_queue_didUpdateCurrentWorkoutSession;
-- (void)_queue_doSuppressActivityAlertsForWorkout:(id)arg1;
+- (void)_queue_disableViewOnWakeForWorkout:(id)arg1;
+- (void)_queue_enableViewOnWakeForWorkout:(id)arg1;
+- (void)_queue_endCarouselSession;
+- (void)_queue_endHeartRateRecovery;
 - (id)_queue_eventCollectors;
-- (void)_queue_finishedLaunchingWorkoutApp:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_queue_immediateUpdateWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)_queue_isPowerSavingEnabledForCurrentActivity;
 - (id)_queue_locationSmoother;
+- (void)_queue_logWorkoutStateToPowerLog;
 - (void)_queue_pauseCurrentSession;
+- (void)_queue_releaseQuietModeAssertion;
 - (void)_queue_resetActivityTypeForWorkoutSession:(id)arg1;
 - (void)_queue_resumeCurrentSession;
 - (void)_queue_sessionEnded;
 - (void)_queue_setActivityType:(unsigned long long)arg1 forSessionUUID:(id)arg2 isIndoor:(BOOL)arg3;
 - (void)_queue_setActivityTypeForWorkoutSession:(id)arg1;
 - (void)_queue_setCurrentSessionState:(long long)arg1;
-- (void)_queue_setSuppressActivityAlerts:(BOOL)arg1 forWorkout:(id)arg2;
-- (void)_queue_setViewOnWake:(BOOL)arg1 forWorkout:(id)arg2;
 - (void)_queue_smoothAllUnsmoothedLocationSeries;
 - (void)_queue_startBackgroundExecutionForWorkout:(id)arg1;
+- (void)_queue_startCarouselSessionForBundleID:(id)arg1;
 - (void)_queue_startDataAndEventCollection;
+- (void)_queue_startDataCollectionForTypes:(id)arg1;
 - (void)_queue_startWatchAppWithWorkoutConfiguration:(id)arg1 client:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_queue_startWorkout:(id)arg1;
 - (void)_queue_stopBackgroundExecution;
 - (void)_queue_stopCurrentSessionWaitingForStopEvent:(BOOL)arg1;
 - (void)_queue_stopDataAndEventCollection;
+- (void)_queue_stopDataCollectionForTypes:(id)arg1;
+- (void)_queue_takeQuietModeAssertion;
+- (void)_queue_updateFakingDataInSimulator;
+- (void)_receivedStartWorkoutAppRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_sendStartWorkoutAppResponse:(CDUnknownBlockType)arg1 error:(id)arg2;
 - (void)_setupLocationObserversIfNeeded;
+- (BOOL)_shouldWaitForCMStopEventForActivity:(unsigned long long)arg1;
+- (void)_startWatchAppWithWorkoutConfiguration:(id)arg1 client:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_unobserveDNDWorkoutDefault;
 - (id)_workoutSessionNotCurrentError:(id)arg1;
 - (void)addWorkoutEventObserver:(id)arg1;
 - (void)clientInvalidated:(id)arg1;
+- (void)createActiveWorkoutServerWithConfiguration:(id)arg1 clientProxy:(id)arg2 server:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (unsigned long long)currentWorkoutActivityType;
 - (id)currentWorkoutClient;
+- (long long)currentWorkoutLocationType;
 - (void)daemonReady:(id)arg1;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
 - (id)diagnosticDescription;
+- (void)endHeartRateRecovery;
 - (void)foregroundClientProcessesDidChange:(id)arg1;
-- (void)generateMarkerEventWithDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)generatePauseOrResumeRequestWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getFirstPartyWorkoutSnapshotWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)hasActiveWorkoutServerForClient:(id)arg1;
 - (BOOL)hasAnyActiveWorkouts;
 - (void)hk_fakeLapEventWithDate:(id)arg1 strokeStyle:(long long)arg2;
 - (void)hk_fakeStopEventWithDate:(id)arg1;
-- (id)initWithPrimaryProfile:(id)arg1;
+- (id)initWithProfile:(id)arg1;
+- (BOOL)isPowerSavingEnabledForCurrentActivity;
+- (void)pauseActiveWorkoutsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)pauseCurrentWorkoutWithCompletion:(CDUnknownBlockType)arg1;
 - (void)pauseWorkoutSessionWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)pluginHasBackgroundRunMode:(id)arg1 errorOut:(id *)arg2;
+- (void)receiveMetrics:(id)arg1;
 - (void)receivedStartWorkoutAppRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)receivedWorkoutEvent:(id)arg1;
 - (void)removeWorkoutEventObserver:(id)arg1;
@@ -97,6 +144,8 @@
 - (void)startWatchAppWithWorkoutConfiguration:(id)arg1 client:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)startWorkoutSession:(id)arg1 client:(id)arg2 server:(id)arg3 isFirstParty:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)stopWorkoutSessionWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)unitTest_smoothRoute:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)workoutServerDidDeactivate:(id)arg1;
 
 @end
 

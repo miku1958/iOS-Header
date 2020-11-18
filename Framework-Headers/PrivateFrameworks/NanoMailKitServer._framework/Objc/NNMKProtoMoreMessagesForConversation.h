@@ -16,7 +16,9 @@
     NSString *_conversationId;
     NSData *_dateSynced;
     unsigned int _fullSyncVersion;
-    CDStruct_a125a100 _has;
+    NSString *_mailboxId;
+    unsigned int _mailboxSyncVersion;
+    CDStruct_8d07e858 _has;
 }
 
 @property (strong, nonatomic) NSMutableArray *addedMessages; // @synthesize addedMessages=_addedMessages;
@@ -26,7 +28,12 @@
 @property (readonly, nonatomic) BOOL hasConversationId;
 @property (readonly, nonatomic) BOOL hasDateSynced;
 @property (nonatomic) BOOL hasFullSyncVersion;
+@property (readonly, nonatomic) BOOL hasMailboxId;
+@property (nonatomic) BOOL hasMailboxSyncVersion;
+@property (strong, nonatomic) NSString *mailboxId; // @synthesize mailboxId=_mailboxId;
+@property (nonatomic) unsigned int mailboxSyncVersion; // @synthesize mailboxSyncVersion=_mailboxSyncVersion;
 
++ (Class)addedMessageType;
 - (void).cxx_destruct;
 - (void)addAddedMessage:(id)arg1;
 - (id)addedMessageAtIndex:(unsigned long long)arg1;

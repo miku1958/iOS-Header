@@ -4,35 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUIStackView.h>
+#import <SearchUI/SearchUIWidthLimitedStackView.h>
 
-#import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
+@class SFPunchout, SKUIItemOfferButton, SearchUIMovieCardSectionView, SearchUIVibrantLabel;
 
-@class NSString, SFMediaInfoCardSection, SFPunchout, SKUIItemOfferButton, SearchUICardViewController, UILabel;
-
-@interface SearchUIMovieCardSectionBuyButtonView : SearchUIStackView <NUIContainerStackViewDelegate>
+@interface SearchUIMovieCardSectionBuyButtonView : SearchUIWidthLimitedStackView
 {
-    UILabel *_subtitleLabel;
+    SearchUIVibrantLabel *_subtitleLabel;
     SKUIItemOfferButton *_button;
     SFPunchout *_punchout;
-    SearchUICardViewController *_controller;
-    SFMediaInfoCardSection *_section;
+    SearchUIMovieCardSectionView *_cardSectionView;
 }
 
 @property (strong) SKUIItemOfferButton *button; // @synthesize button=_button;
-@property (weak) SearchUICardViewController *controller; // @synthesize controller=_controller;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (weak) SearchUIMovieCardSectionView *cardSectionView; // @synthesize cardSectionView=_cardSectionView;
 @property (strong) SFPunchout *punchout; // @synthesize punchout=_punchout;
-@property (strong) SFMediaInfoCardSection *section; // @synthesize section=_section;
-@property (strong) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
-@property (readonly) Class superclass;
+@property (strong) SearchUIVibrantLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 
 - (void).cxx_destruct;
 - (void)buttonPressed;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)initWithTitle:(id)arg1 subtitle:(id)arg2 punchout:(id)arg3 controller:(id)arg4 section:(id)arg5;
+- (id)initWithTitle:(id)arg1 subtitle:(id)arg2 punchout:(id)arg3 cardSectionView:(id)arg4;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 
 @end

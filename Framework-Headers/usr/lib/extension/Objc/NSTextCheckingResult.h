@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSCopying-Protocol.h>
-#import <extension/NSSecureCoding-Protocol.h>
+#import <Foundation/NSCopying-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
 @interface NSTextCheckingResult : NSObject <NSCopying, NSSecureCoding>
 {
@@ -52,6 +52,7 @@
 - (id)orthography;
 - (id)phoneNumber;
 - (struct _NSRange)rangeAtIndex:(unsigned long long)arg1;
+- (struct _NSRange)rangeWithName:(id)arg1;
 - (id)referenceDate;
 - (id)regularExpression;
 - (id)replacementString;

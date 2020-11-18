@@ -11,8 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (double)capitalAbcSymbolSize;
+- (double)centerColumnWidthFactor;
 - (double)controlColumnWidthFactor;
-- (void)setupColumnLayoutSegmentsWithControlWidth:(double)arg1;
 
 @end
 

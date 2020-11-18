@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IDSFoundation/NSCoding-Protocol.h>
 
@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSData *uncompressedData; // @synthesize uncompressedData=_uncompressedData;
 
 + (id)keyRepresentationForType:(unsigned short)arg1 isResponse:(BOOL)arg2;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;

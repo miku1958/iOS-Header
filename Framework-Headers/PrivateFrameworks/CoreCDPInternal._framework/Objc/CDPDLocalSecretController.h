@@ -42,9 +42,10 @@
 - (void)finishOfflineLocalSecretChangeWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithContext:(id)arg1;
 - (void)localSecretChangedTo:(id)arg1 secretType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)promotForLocalSecretWithCompletion:(CDUnknownBlockType)arg1;
 - (void)promptForAdoptionOfMultipleICSCWithCompletion:(CDUnknownBlockType)arg1;
-- (BOOL)synchronizeCircleViewsForSecureBackupController:(id)arg1;
+- (void)promptForLocalSecretWithCompletion:(CDUnknownBlockType)arg1;
+- (id)secureChannelContextForController:(id)arg1;
+- (BOOL)synchronizeCircleViewsForSecureBackupContext:(id)arg1;
 
 @end
 

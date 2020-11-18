@@ -28,6 +28,7 @@
 - (id)encodedClassName;
 - (id)groupIdentifier;
 - (id)initWithWeatherLocations:(id)arg1;
+- (BOOL)requiresResponse;
 
 @end
 

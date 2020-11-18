@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -13,12 +13,12 @@
     NSMutableDictionary *_callMetadata;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *callMetadata; // @synthesize callMetadata=_callMetadata;
+@property (readonly, nonatomic) NSMutableDictionary *callMetadata; // @synthesize callMetadata=_callMetadata;
+@property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 
 - (void).cxx_destruct;
 - (id)description;
 - (id)init;
-- (BOOL)isEmpty;
 - (id)metadataForProvider:(Class)arg1;
 - (void)setMetadata:(id)arg1 forProvider:(Class)arg2;
 

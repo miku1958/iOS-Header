@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HMFoundation/NSCopying-Protocol.h>
 #import <HMFoundation/NSMutableCopying-Protocol.h>
 
 @class HMFHTTPRequest, HMFHTTPResponseInternal, NSData, NSDictionary;
 
-@interface HMFHTTPResponse : NSObject <NSCopying, NSMutableCopying>
+@interface HMFHTTPResponse : HMFObject <NSCopying, NSMutableCopying>
 {
     HMFHTTPResponseInternal *_internal;
     HMFHTTPRequest *_request;

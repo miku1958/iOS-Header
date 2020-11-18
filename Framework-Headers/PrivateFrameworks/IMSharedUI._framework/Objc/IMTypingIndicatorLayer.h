@@ -49,7 +49,7 @@
 + (struct CGSize)defaultSize;
 + (struct UIColor *)defaultThinkingDotColor;
 + (struct CGRect)iconImageFrame;
-+ (double)iconImageLeadingSpace;
++ (double)iconImageTrailingSpace;
 + (struct CGRect)largeBubbleFrame;
 + (struct CGPoint)largeBubbleGrowOffset;
 + (struct CGRect)mediumBubbleFrame;

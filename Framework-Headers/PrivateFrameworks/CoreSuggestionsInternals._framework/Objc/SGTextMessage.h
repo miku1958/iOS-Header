@@ -24,6 +24,8 @@
 - (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithSearchableItem:(id)arg1;
+- (id)spotlightBundleIdentifier;
+- (id)spotlightDomainIdentifier;
 
 @end
 

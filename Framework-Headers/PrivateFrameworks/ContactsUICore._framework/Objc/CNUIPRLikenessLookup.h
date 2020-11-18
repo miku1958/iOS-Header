@@ -35,11 +35,13 @@
 @property (readonly) Class superclass;
 
 + (id)basicMonogramObservableForContactFuture:(id)arg1;
++ (id)basicMonogramObservableFromString:(id)arg1;
 + (id)contactFuture:(id)arg1 contactStore:(id)arg2 scheduler:(id)arg3;
 + (id)descriptorForRequiredKeys;
 + (id)observableFromLikenessProviderBlock:(CDUnknownBlockType)arg1 withScheduler:(id)arg2;
 + (id)photoObservableWithPhotoFuture:(id)arg1 scheduler:(id)arg2;
 - (void).cxx_destruct;
+- (id)basicMonogramObservableFromString:(id)arg1;
 - (id)basicMonogramObservableWithContactFuture:(id)arg1;
 - (id)blessedPhotoObservableWithFuture:(id)arg1 contact:(id)arg2;
 - (id)contentObservableForContact:(id)arg1 placeholderProviderFactory:(id)arg2;

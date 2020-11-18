@@ -43,6 +43,7 @@
 - (void)clearTexelData;
 - (id)generateDataAtLevel:(long long)arg1;
 - (struct CGImage *)imageFromTexture;
+- (struct CGImage *)imageFromTextureAtLevel:(unsigned long long)arg1;
 - (id)init;
 - (id)initWithData:(id)arg1 topLeftOrigin:(BOOL)arg2 name:(id)arg3 dimensions:(long long)arg4 rowStride:(unsigned long long)arg5 channelCount:(long long)arg6 channelEncoding:(BOOL)arg7 isCube: /* Error: Ran out of types for this method. */;
 - (void)loadDataWithBottomLeftOriginAtMipLevel:(long long)arg1 create:(BOOL)arg2;
@@ -52,11 +53,13 @@
 - (id)texelDataWithBottomLeftOrigin;
 - (id)texelDataWithBottomLeftOriginAtMipLevel:(long long)arg1 create:(BOOL)arg2;
 - (id)texelDataWithTopLeftOrigin;
+- (id)texelDataWithTopLeftOrigin:(unsigned long long)arg1;
 - (id)texelDataWithTopLeftOriginAtMipLevel:(long long)arg1 create:(BOOL)arg2;
 - (struct MDLTextureData *)textureData;
-- (BOOL)writeToFile:(id)arg1 atomically:(BOOL)arg2;
 - (BOOL)writeToURL:(id)arg1;
+- (BOOL)writeToURL:(id)arg1 level:(unsigned long long)arg2;
 - (BOOL)writeToURL:(id)arg1 type:(struct __CFString *)arg2;
+- (BOOL)writeToURL:(id)arg1 type:(struct __CFString *)arg2 level:(unsigned long long)arg3;
 
 @end
 

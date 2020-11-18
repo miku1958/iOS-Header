@@ -17,10 +17,8 @@
 - (void)_axObservePIPStateNotifications;
 - (void)_axPIPStop:(id)arg1;
 - (void)_axSetupVideoLayerView;
-- (void)_firePlaybackControlsViewVisibilityTimer:(id)arg1;
 - (void)_togglePictureInPicture;
 - (void)dealloc;
-- (void)loadView;
 
 @end
 

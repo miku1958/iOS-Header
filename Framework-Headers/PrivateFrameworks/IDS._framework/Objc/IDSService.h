@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSSet, _IDSService;
 
@@ -13,22 +13,38 @@
     _IDSService *_internal;
 }
 
-@property (readonly, strong, nonatomic) _IDSService *_internal;
+@property (readonly, nonatomic) _IDSService *_internal;
 @property (readonly, copy, nonatomic) NSSet *accounts;
 @property (readonly, copy, nonatomic) NSArray *devices;
 @property (readonly, copy, nonatomic) NSSet *internalAccounts;
 
 + (BOOL)checkMessageSize:(unsigned long long)arg1 priority:(long long)arg2;
++ (id)removeSentinelFromAliases:(id)arg1;
+- (void).cxx_destruct;
+- (id)_accountWithAlias:(id)arg1;
+- (void)activateAlias:(id)arg1;
+- (void)activateAliases:(id)arg1;
+- (id)activeAliases;
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
+- (id)aliases;
 - (BOOL)cancelIdentifier:(id)arg1 error:(id *)arg2;
 - (id)datagramChannelForSessionDestination:(id)arg1 error:(id *)arg2;
 - (id)datagramChannelForSocketDescriptor:(int)arg1 error:(id *)arg2;
 - (id)datagramConnectionForSessionDestination:(id)arg1 error:(id *)arg2;
 - (id)datagramConnectionForSocketDescriptor:(int)arg1 error:(id *)arg2;
+- (void)deactivateAlias:(id)arg1;
+- (void)deactivateAliases:(id)arg1;
 - (void)dealloc;
 - (id)deviceForFromID:(id)arg1;
 - (id)deviceForUniqueID:(id)arg1;
 - (id)devicesForBTUUID:(id)arg1;
+- (void)disable;
+- (void)disablePhoneUser;
+- (void)disableiCloudUser;
+- (void)enable;
+- (void)enablePhoneUser;
+- (void)enableiCloudUser;
+- (id)firstRoutableInternetDestinationForSelf;
 - (id)iCloudAccount;
 - (id)initWithService:(id)arg1;
 - (id)initWithService:(id)arg1 commands:(id)arg2;
@@ -37,11 +53,14 @@
 - (id)internal;
 - (BOOL)isPretendingToBeFull;
 - (long long)maxHomeKitPayloadSize;
+- (void)performGroupTask:(CDUnknownBlockType)arg1;
 - (SEL)protobufActionForIncomingRequestsOfType:(unsigned short)arg1;
 - (SEL)protobufActionForIncomingResponsesOfType:(unsigned short)arg1;
 - (void)removeDelegate:(id)arg1;
+- (void)scheduleTransactionLogTask:(id)arg1;
 - (BOOL)sendAccessoryData:(id)arg1 toAccessoryID:(id)arg2 accessToken:(id)arg3 options:(id)arg4 identifier:(id *)arg5 error:(id *)arg6;
 - (void)sendAckForMessageWithContext:(id)arg1;
+- (BOOL)sendAheadGroup:(id)arg1 priority:(long long)arg2 options:(id)arg3 identifier:(id *)arg4 error:(id *)arg5;
 - (BOOL)sendData:(id)arg1 fromAccount:(id)arg2 toDestinations:(id)arg3 priority:(long long)arg4 options:(id)arg5 identifier:(id *)arg6 error:(id *)arg7;
 - (BOOL)sendData:(id)arg1 priority:(long long)arg2 options:(id)arg3 identifier:(id *)arg4 error:(id *)arg5;
 - (BOOL)sendData:(id)arg1 toDestinations:(id)arg2 priority:(long long)arg3 options:(id)arg4 identifier:(id *)arg5 error:(id *)arg6;

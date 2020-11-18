@@ -6,12 +6,14 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSString, UIColor, UIFont, UILabel, UIView;
+@class NSString, UIButton, UIColor, UIFont, UILabel, UIView;
 
 @interface FIUIWorkoutSummaryColoredDetailTableViewCell : UITableViewCell
 {
     UILabel *_titleLabel;
     UILabel *_detailLabel;
+    UILabel *_secondTitleLabel;
+    UILabel *_secondDetailLabel;
     UILabel *_noDataLabel;
     UIFont *_detailFont;
     UIFont *_suffixFont;
@@ -20,17 +22,20 @@
     NSString *_suffixString;
     UIColor *_textColor;
     BOOL _shouldForceLTRForDetailString;
+    BOOL _showBackgroundButton;
+    UIButton *_customAccessoryButton;
     UIView *_optionalButtonView;
-    UIView *_customAccessoryView;
 }
 
-@property (strong, nonatomic) UIView *customAccessoryView; // @synthesize customAccessoryView=_customAccessoryView;
-@property (readonly, nonatomic) UIView *optionalButtonView; // @synthesize optionalButtonView=_optionalButtonView;
+@property (strong, nonatomic) UIButton *customAccessoryButton; // @synthesize customAccessoryButton=_customAccessoryButton;
+@property (strong, nonatomic) UIView *optionalButtonView; // @synthesize optionalButtonView=_optionalButtonView;
+@property (nonatomic) BOOL showBackgroundButton; // @synthesize showBackgroundButton=_showBackgroundButton;
 
 + (double)rowHeightWithNoDataString:(id)arg1;
++ (double)rowHeightWithSecondMetric;
 - (void).cxx_destruct;
-- (void)_formatDetailLabel;
 - (void)_resizeFontsIfNeededToFitWidth:(double)arg1;
+- (void)_setDefaultValueFontSizes;
 - (void)_setupUI;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
@@ -38,6 +43,7 @@
 - (void)setDetailString:(id)arg1 suffixString:(id)arg2 textColor:(id)arg3 shouldForceLTRForDetailString:(BOOL)arg4;
 - (void)setLineHidden:(BOOL)arg1;
 - (void)setNoDataString:(id)arg1 textColor:(id)arg2;
+- (void)setSecondMetricTitle:(id)arg1 detailString:(id)arg2 detailColor:(id)arg3;
 - (void)setTitleString:(id)arg1;
 
 @end

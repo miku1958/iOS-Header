@@ -10,7 +10,7 @@
 #import <FrontBoardServices/FBSSceneHandle-Protocol.h>
 #import <FrontBoardServices/FBSSceneSnapshotRequestDelegate-Protocol.h>
 
-@class CADisplay, FBSDisplay, FBSSceneClientSettings, FBSSceneSettings, FBSSceneSpecification, FBSSerialQueue, NSMutableArray, NSObject, NSString;
+@class FBSSceneClientSettings, FBSSceneSettings, FBSSceneSpecification, FBSSerialQueue, NSMutableArray, NSObject, NSString;
 @protocol FBSSceneClientAgent, FBSSceneDelegate, FBSSceneUpdater, OS_dispatch_queue;
 
 @interface FBSSceneImpl : FBSScene <FBSSceneSnapshotRequestDelegate, FBSSceneHandle, FBSSceneAgentProxy>
@@ -23,8 +23,6 @@
     id<FBSSceneUpdater> _updater;
     id<FBSSceneClientAgent> _agent;
     CDUnknownBlockType _agentMessageHandler;
-    CADisplay *_display;
-    FBSDisplay *_fbsDisplay;
     FBSSerialQueue *_callOutQueue;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableArray *_layers;
@@ -37,12 +35,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_didCreateWithTransitionContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_hasAgent;
-- (id)_initWithCallOutQueue:(id)arg1 updater:(id)arg2 identifier:(id)arg3 display:(id)arg4 settings:(id)arg5 clientSettings:(id)arg6;
-- (id)_initWithInternalQueue:(id)arg1 callOutQueue:(id)arg2 updater:(id)arg3 identifier:(id)arg4 specification:(id)arg5 display:(id)arg6 settings:(id)arg7 clientSettings:(id)arg8;
-- (id)_initWithQueue:(id)arg1 callOutQueue:(id)arg2 identifier:(id)arg3 specification:(id)arg4 display:(id)arg5 settings:(id)arg6 clientSettings:(id)arg7;
-- (id)_initWithWorkspace:(id)arg1 updater:(id)arg2 identifier:(id)arg3 display:(id)arg4 settings:(id)arg5 clientSettings:(id)arg6;
+- (id)_initWithInternalQueue:(id)arg1 callOutQueue:(id)arg2 updater:(id)arg3 identifier:(id)arg4 specification:(id)arg5 settings:(id)arg6 clientSettings:(id)arg7;
+- (id)_initWithQueue:(id)arg1 callOutQueue:(id)arg2 identifier:(id)arg3 specification:(id)arg4 settings:(id)arg5 clientSettings:(id)arg6;
 - (void)_performDelegateCallOut:(CDUnknownBlockType)arg1;
 - (void)_queue_configureReceivedActions:(id)arg1;
 - (void)_queue_invalidate;
@@ -65,10 +62,9 @@
 - (void)detachContext:(id)arg1;
 - (void)detachLayer:(id)arg1;
 - (void)detachSceneContext:(id)arg1;
-- (id)display;
-- (id)fbsDisplay;
 - (id)hostProcess;
 - (id)identifier;
+- (id)initWithCallOutQueue:(id)arg1 identifier:(id)arg2 parameters:(id)arg3;
 - (id)initWithQueue:(id)arg1 identifier:(id)arg2 display:(id)arg3 settings:(id)arg4 clientSettings:(id)arg5;
 - (BOOL)invalidateSnapshotWithContext:(id)arg1;
 - (id)layers;

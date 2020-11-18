@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)_enqueueCompletionState:(id)arg1;
 - (void)_flushView:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)_gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (void)_handleDirectionalPageWithHorizontalVelocity:(double)arg1 verticalVelocity:(double)arg2;
 - (void)_invalidateOffscreenViews;
 - (BOOL)_isDeceleratingInOppositionToNavigationDirection:(long long)arg1;
 - (BOOL)_isScrollInProgress:(BOOL)arg1;

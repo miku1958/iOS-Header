@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoPassKit/NSObject-Protocol.h>
+#import <NanoPassKit/PKWebServiceArchiver-Protocol.h>
 
-@class PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext;
+@class PKPaymentWebServiceBackgroundContext;
 
-@protocol PKPaymentWebServiceArchiver <NSObject>
+@protocol PKPaymentWebServiceArchiver <PKWebServiceArchiver>
 - (void)archiveBackgroundContext:(PKPaymentWebServiceBackgroundContext *)arg1;
-- (void)archiveContext:(PKPaymentWebServiceContext *)arg1;
 @end
 

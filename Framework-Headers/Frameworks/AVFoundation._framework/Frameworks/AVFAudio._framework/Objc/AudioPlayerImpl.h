@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVAudioFormat, AVAudioSession, NSArray, NSData, NSDictionary, NSURL;
 @protocol AVAudioPlayerDelegate, OS_dispatch_queue;

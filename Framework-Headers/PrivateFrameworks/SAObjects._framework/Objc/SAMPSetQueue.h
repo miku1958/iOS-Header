@@ -12,10 +12,14 @@
 {
 }
 
-@property (copy, nonatomic) NSString *airplayRouteUID;
+@property (copy, nonatomic) NSString *assetInfo;
+@property (nonatomic) BOOL dryRun;
 @property (copy, nonatomic) NSArray *filters;
+@property (copy, nonatomic) NSArray *hashedRouteUIDs;
 @property (strong, nonatomic) SAMPCollection *mediaItems;
+@property (copy, nonatomic) NSString *recommendationId;
 @property (nonatomic) BOOL shouldOverrideManuallyCuratedUpNext;
+@property (nonatomic) BOOL shouldReloadQueue;
 @property (nonatomic) BOOL shouldShuffle;
 @property (copy, nonatomic) NSArray *sort;
 @property (copy, nonatomic) NSNumber *startPlaying;
@@ -24,6 +28,7 @@
 + (id)setQueueWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)mutatingCommand;
 - (BOOL)requiresResponse;
 
 @end

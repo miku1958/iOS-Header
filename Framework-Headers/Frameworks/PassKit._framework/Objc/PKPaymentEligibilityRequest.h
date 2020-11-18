@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitCore/PKPaymentOverlayableRequest.h>
+#import <PassKitCore/PKPaymentWebServiceRequest.h>
 
 @class NSData, NSString, PKPaymentCredential;
 
-@interface PKPaymentEligibilityRequest : PKPaymentOverlayableRequest
+@interface PKPaymentEligibilityRequest : PKPaymentWebServiceRequest
 {
     PKPaymentCredential *_paymentCredential;
     NSString *_productIdentifier;
@@ -29,6 +29,7 @@
     NSData *_wrappedKey;
     NSString *_nonce;
     long long _source;
+    NSString *_referrerIdentifier;
 }
 
 @property (copy, nonatomic) NSData *FPInfo; // @synthesize FPInfo=_FPInfo;
@@ -48,6 +49,7 @@
 @property (nonatomic) long long primaryAccountNumberInputMethod; // @synthesize primaryAccountNumberInputMethod=_primaryAccountNumberInputMethod;
 @property (copy, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property (copy, nonatomic) NSData *publicKeyHash; // @synthesize publicKeyHash=_publicKeyHash;
+@property (copy, nonatomic) NSString *referrerIdentifier; // @synthesize referrerIdentifier=_referrerIdentifier;
 @property (readonly, nonatomic) long long source; // @synthesize source=_source;
 @property (copy, nonatomic) NSData *wrappedKey; // @synthesize wrappedKey=_wrappedKey;
 

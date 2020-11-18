@@ -21,10 +21,10 @@
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)storageForCompletionItem:(id)arg1;
+- (void).cxx_destruct;
 - (void)applyToUserSearchInput:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

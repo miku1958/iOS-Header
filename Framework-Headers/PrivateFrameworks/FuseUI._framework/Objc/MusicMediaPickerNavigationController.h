@@ -22,7 +22,9 @@
     BOOL _allowsMultipleSelection;
     BOOL _includeStoreItemsInSearch;
     BOOL _allowsCollectionsInSelectedEntities;
+    BOOL _picksSingleCollectionEntity;
     BOOL _showsOnlyStoreItems;
+    unsigned int _watchCompatibilityVersion;
     MusicClientContext *_clientContext;
     id<MusicMediaPickerDelegate> _mediaPickerDelegate;
     NSString *_prompt;
@@ -38,13 +40,16 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL includeStoreItemsInSearch; // @synthesize includeStoreItemsInSearch=_includeStoreItemsInSearch;
 @property (weak, nonatomic) id<MusicMediaPickerDelegate> mediaPickerDelegate; // @synthesize mediaPickerDelegate=_mediaPickerDelegate;
+@property (readonly, nonatomic) BOOL omitsGeniusPlaylists;
 @property (readonly, nonatomic) NSArray *pickedEntities; // @synthesize pickedEntities=_pickedEntities;
+@property (nonatomic) BOOL picksSingleCollectionEntity; // @synthesize picksSingleCollectionEntity=_picksSingleCollectionEntity;
 @property (copy, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;
 @property (readonly, nonatomic) UIBarButtonItem *rightBarButtonItem;
 @property (strong, nonatomic) NSMutableArray *selectedEntitiesForActiveSession; // @synthesize selectedEntitiesForActiveSession=_selectedEntitiesForActiveSession;
 @property (nonatomic) BOOL showsOnlyStoreItems; // @synthesize showsOnlyStoreItems=_showsOnlyStoreItems;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
+@property (nonatomic) unsigned int watchCompatibilityVersion; // @synthesize watchCompatibilityVersion=_watchCompatibilityVersion;
 
 + (id)navigationController;
 + (id)selectedItemsForActiveSession;
@@ -54,6 +59,7 @@
 - (void)_insertSearchBarIntoTableView:(id)arg1;
 - (BOOL)_isMetadataAddable:(id)arg1;
 - (void)_reloadDataInViewController:(id)arg1;
+- (id)_searchBarInViewController:(id)arg1;
 - (void)_selectItem:(id)arg1;
 - (void)_stylizeSearchBar:(id)arg1;
 - (void)_updatePrompt;
@@ -69,6 +75,7 @@
 - (void)selectAllMediaItemsInCollection:(id)arg1 fromViewController:(id)arg2;
 - (void)selectMediaItem:(id)arg1 fromViewController:(id)arg2;
 - (void)viewDidLoad;
+- (void)viewSafeAreaInsetsDidChange;
 
 @end
 

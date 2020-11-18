@@ -130,6 +130,7 @@
 @property (strong, nonatomic) NSData *zilch; // @synthesize zilch=_zilch;
 
 + (Class)infoType;
+- (void).cxx_destruct;
 - (int)StringAsColor:(id)arg1;
 - (int)StringAsLaneClosureType:(id)arg1;
 - (int)StringAsSignificance:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -14,8 +14,8 @@
 {
     NSPersonNameComponents *_name;
     CNPostalAddress *_postalAddress;
-    NSString *_emailAddress;
     CNPhoneNumber *_phoneNumber;
+    NSString *_emailAddress;
     NSString *_supplementarySubLocality;
 }
 

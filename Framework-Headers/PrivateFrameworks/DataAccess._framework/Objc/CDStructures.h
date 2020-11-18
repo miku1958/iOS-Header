@@ -69,8 +69,7 @@ struct CPRecordStore;
 struct CalDatabase {
     struct __CFRuntimeBase {
         unsigned long long _field1;
-        unsigned char _field2[4];
-        unsigned int _field3;
+        _Atomic unsigned long long _field2;
     } _field1;
     int _field2;
     struct CPRecordStore *_field3;
@@ -88,14 +87,18 @@ struct CalDatabase {
     int _field15;
     struct __CFString *_field16;
     struct __CFString *_field17;
-    int _field18;
-    CDUnknownBlockType _field19;
-    struct _opaque_pthread_mutex_t _field20;
-    BOOL _field21;
-    struct __CFArray *_field22;
+    struct __CFString *_field18;
+    int _field19;
+    CDUnknownBlockType _field20;
+    struct _opaque_pthread_mutex_t _field21;
+    BOOL _field22;
     struct __CFArray *_field23;
-    BOOL _field24;
-    id _field25;
+    struct __CFArray *_field24;
+    struct __CFArray *_field25;
+    struct __CFArray *_field26;
+    BOOL _field27;
+    id _field28;
+    BOOL _field29;
 };
 
 struct CalEventOccurrenceCache;

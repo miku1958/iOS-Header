@@ -8,7 +8,7 @@
 
 #import <GameCenterFoundation/NSFilePresenter-Protocol.h>
 
-@class NSDate, NSFileVersion, NSOperationQueue, NSString, NSURL;
+@class NSDate, NSFileVersion, NSOperationQueue, NSSet, NSString, NSURL;
 
 @interface GKSavedGameDocument : NSObject <NSFilePresenter>
 {
@@ -31,6 +31,7 @@
 @property (nonatomic) BOOL isConflictVersion; // @synthesize isConflictVersion=_isConflictVersion;
 @property (strong, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly) NSSet *observedPresentedItemUbiquityAttributes;
 @property (readonly, strong) NSOperationQueue *presentedItemOperationQueue;
 @property (readonly, copy) NSURL *presentedItemURL;
 @property (readonly, copy) NSURL *primaryPresentedItemURL;

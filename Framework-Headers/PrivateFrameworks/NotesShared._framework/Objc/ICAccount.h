@@ -60,6 +60,7 @@
 + (id)existingCloudObjectForRecordID:(id)arg1 context:(id)arg2;
 + (void)initialize;
 + (void)initializeLocalAccountNamesInBackground;
++ (BOOL)isCloudKitAccountAvailable;
 + (id)keyPathsForValuesAffectingCanBeSharedViaICloud;
 + (id)keyPathsForValuesAffectingLocalizedName;
 + (id)keyPathsForValuesAffectingVisibleNoteContainerChildren;
@@ -104,8 +105,10 @@
 - (void)noteWillBeDeletedOrUndeleted:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)passwordProtectedNotes;
+- (id)predicateForAttachmentsInAccount;
 - (id)predicateForFolders;
 - (id)predicateForNotesInAccount;
+- (id)predicateForPinnedNotes;
 - (id)predicateForSearchableAttachments;
 - (id)predicateForSearchableNotes;
 - (id)predicateForVisibleAttachments;

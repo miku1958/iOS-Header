@@ -14,16 +14,16 @@
     unsigned long long _index;
 }
 
-- (void)_removeItem:(id)arg1;
+- (void).cxx_destruct;
 - (id)completedItems;
 - (id)currentItem;
-- (void)dealloc;
 - (id)description;
 - (void)didCompleteItem:(id)arg1;
 - (id)initWithItems:(id)arg1;
 - (BOOL)isCompleted;
 - (id)items;
 - (id)itemsNotCompleted;
+- (void)removeItem:(id)arg1;
 - (void)setItems:(id)arg1;
 
 @end

@@ -4,13 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUILayoutFreeSectionView.h>
+#import <SearchUI/SearchUICardSectionView.h>
 
-@interface SearchUITrailersCardSectionView : SearchUILayoutFreeSectionView
+@class NUIContainerStackView;
+
+@interface SearchUITrailersCardSectionView : SearchUICardSectionView
 {
 }
 
-- (id)initWithCardSection:(id)arg1 controller:(id)arg2 style:(unsigned long long)arg3;
+@property (strong) NUIContainerStackView *contentView; // @dynamic contentView;
+
+- (id)initWithCardSection:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)setupContentView;
 
 @end
 

@@ -6,22 +6,16 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-#import <VideoSubscriberAccount/VSIdentityProviderFetchAllResult-Protocol.h>
+@class VSDeveloperServiceConnection, VSOptional;
 
-@class NSString, VSDeveloperServiceConnection, VSOptional;
-
-@interface VSDeveloperIdentityProviderFetchAllOperation : VSAsyncOperation <VSIdentityProviderFetchAllResult>
+@interface VSDeveloperIdentityProviderFetchAllOperation : VSAsyncOperation
 {
     VSOptional *_result;
     VSDeveloperServiceConnection *_connection;
 }
 
 @property (strong, nonatomic) VSDeveloperServiceConnection *connection; // @synthesize connection=_connection;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)executionDidBegin;

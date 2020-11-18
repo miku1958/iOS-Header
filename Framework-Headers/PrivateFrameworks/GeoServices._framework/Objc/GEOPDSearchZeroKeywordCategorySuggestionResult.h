@@ -23,6 +23,7 @@
 
 + (Class)categoryType;
 + (Class)zeroKeywordEntryType;
+- (void).cxx_destruct;
 - (void)addCategory:(id)arg1;
 - (void)addZeroKeywordEntry:(id)arg1;
 - (id)categoryAtIndex:(unsigned long long)arg1;
@@ -31,7 +32,6 @@
 - (void)clearZeroKeywordEntrys;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

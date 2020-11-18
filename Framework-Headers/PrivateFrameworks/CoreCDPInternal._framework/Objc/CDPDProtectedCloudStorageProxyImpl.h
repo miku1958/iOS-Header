@@ -23,6 +23,7 @@
 - (struct _PCSIdentitySetData *)pcsIdentityCreateWithInfo:(id)arg1 error:(id *)arg2;
 - (BOOL)pcsIdentityMigrateToStingrayWithInfo:(id)arg1 error:(id *)arg2;
 - (BOOL)pcsIdentityMigrateToiCDPWithInfo:(id)arg1 error:(id *)arg2;
+- (BOOL)pcsIdentitySetCompanionInCircle:(struct _PCSIdentitySetData *)arg1 error:(id *)arg2;
 - (BOOL)pcsIdentitySetIsInICDPLocal:(struct _PCSIdentitySetData *)arg1 error:(id *)arg2;
 - (BOOL)pcsIdentitySetIsInICDPNetwork:(struct _PCSIdentitySetData *)arg1 options:(id)arg2 error:(id *)arg3;
 - (struct _PCSIdentitySetData *)pcsIdentitySetupWithInfo:(id)arg1 error:(id *)arg2;

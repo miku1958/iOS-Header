@@ -10,11 +10,15 @@
 
 @interface BRAsset : NSObject
 {
+    BOOL _hasAudio;
+    BOOL _hasHaptic;
     BOOL _isNull;
     long long _type;
     NSDictionary *_parameters;
 }
 
+@property (nonatomic) BOOL hasAudio; // @synthesize hasAudio=_hasAudio;
+@property (nonatomic) BOOL hasHaptic; // @synthesize hasHaptic=_hasHaptic;
 @property (readonly, nonatomic) BOOL isNull; // @synthesize isNull=_isNull;
 @property (readonly, nonatomic) NSDictionary *parameters; // @synthesize parameters=_parameters;
 @property (readonly, nonatomic) id propertyList;

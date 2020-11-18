@@ -14,6 +14,8 @@
 {
     UIColor *_barBackgroundColor;
     long long _shadowStyle;
+    BOOL _hasExplicitlyDefinedSupportedInterfaceOrientations;
+    unsigned long long _explicitlyDefinedSupportedInterfaceOrientations;
     UIView *_backgroundView;
     UIImageView *_wallpaperView;
     UIVisualEffectView *_blurView;
@@ -26,14 +28,18 @@
 
 - (void).cxx_destruct;
 - (void)_applyShadowStyleForViewController:(id)arg1;
+- (void)_updateBarTintColorForViewController:(id)arg1;
 - (void)_updateWithWallpaperImage:(id)arg1;
 - (void)dealloc;
 - (id)initWithBarBackgroundColor:(id)arg1 barShadowStyle:(long long)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
+- (void)setSupportedInterfaceOrientations:(unsigned long long)arg1;
 - (void)setupBackgroundViewWithBlurEffect:(long long)arg1;
 - (void)setupWallpaper;
+- (BOOL)shouldAutorotate;
+- (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

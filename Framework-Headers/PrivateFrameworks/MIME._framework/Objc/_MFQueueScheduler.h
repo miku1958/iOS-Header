@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MIME/MFScheduler-Protocol.h>
 
@@ -19,15 +19,17 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (BOOL)_prefersImmediateExecution;
 - (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (id)init;
 - (id)initWithQueue:(id)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1;
+- (void)performSyncBlock:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -14,23 +14,25 @@ __attribute__((visibility("hidden")))
 @interface DDRemoteActionViewController : _UIRemoteViewController <DDRemoteActionPresenter>
 {
     BOOL _proxyConfigured;
-    DDAction *_action;
-    DDActionController *_actionController;
     BOOL _waitingForRemoteConfiguration;
     BOOL _receivedActionDidFinish;
+    DDAction *_action;
+    DDActionController *_actionController;
 }
 
-@property (weak) DDAction *action; // @synthesize action=_action;
-@property (weak) DDActionController *actionController; // @synthesize actionController=_actionController;
+@property (weak, nonatomic) DDAction *action; // @synthesize action=_action;
+@property (weak, nonatomic) DDActionController *actionController; // @synthesize actionController=_actionController;
 
 + (id)exportedInterface;
 + (id)prepareViewController:(id)arg1 forAction:(id)arg2 actionController:(id)arg3;
 + (id)serviceViewControllerInterface;
+- (void).cxx_destruct;
 - (void)_prepareForAction:(id)arg1 inActionController:(id)arg2;
+- (void)actionBecameCancellable:(BOOL)arg1;
 - (void)actionDidFinish;
 - (void)adaptForPresentationInPopover:(BOOL)arg1;
 - (void)getIsBeingPresentedInPopover:(CDUnknownBlockType)arg1;
-- (void)viewControllerReadyAndIsModal:(BOOL)arg1;
+- (void)viewControllerReady;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 
 @end

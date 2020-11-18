@@ -16,6 +16,8 @@
 
 + (id)sharedManager;
 - (id)_init;
+- (id)activeDownloadForMediaItemPersistentID:(long long)arg1;
+- (id)activeDownloadForStoreID:(long long)arg1;
 - (void)addObserver:(id)arg1;
 - (void)cancelDownloads:(id)arg1;
 - (void)enqueueAssetForDownload:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

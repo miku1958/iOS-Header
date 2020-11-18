@@ -6,19 +6,65 @@
 
 #import <SearchFoundation/SFTitleCardSection.h>
 
-@class NSArray;
+#import <SearchFoundation/NSCopying-Protocol.h>
+#import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFAppLinkCardSection-Protocol.h>
 
-@interface SFAppLinkCardSection : SFTitleCardSection
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor;
+
+@interface SFAppLinkCardSection : SFTitleCardSection <SFAppLinkCardSection, NSSecureCoding, NSCopying>
 {
+    CDStruct_5ff9a38c _has;
+    BOOL _canBeHidden;
+    BOOL _hasTopPadding;
+    BOOL _hasBottomPadding;
+    int _separatorStyle;
+    NSArray *_punchoutOptions;
+    NSString *_punchoutPickerTitle;
+    NSString *_punchoutPickerDismissText;
+    NSString *_type;
+    SFColor *_backgroundColor;
+    NSString *_title;
+    NSString *_subtitle;
     NSArray *_appLinks;
 }
 
 @property (copy, nonatomic) NSArray *appLinks; // @synthesize appLinks=_appLinks;
+@property (strong, nonatomic) SFColor *backgroundColor;
+@property (nonatomic) BOOL canBeHidden;
+@property (copy, nonatomic) NSString *cardSectionId;
+@property (copy, nonatomic) NSArray *commands;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (nonatomic) BOOL hasBottomPadding;
+@property (nonatomic) BOOL hasTopPadding;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hideDivider;
+@property (nonatomic) BOOL isCentered;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (strong, nonatomic) SFCard *nextCard;
+@property (copy, nonatomic) NSArray *parameterKeyPaths;
+@property (copy, nonatomic) NSArray *punchoutOptions;
+@property (copy, nonatomic) NSString *punchoutPickerDismissText;
+@property (copy, nonatomic) NSString *punchoutPickerTitle;
+@property (copy, nonatomic) NSString *resultIdentifier;
+@property (nonatomic) int separatorStyle;
+@property (copy, nonatomic) NSString *subtitle;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *type;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasCanBeHidden;
+- (BOOL)hasHasBottomPadding;
+- (BOOL)hasHasTopPadding;
+- (BOOL)hasSeparatorStyle;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 
 @end
 

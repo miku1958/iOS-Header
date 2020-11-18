@@ -160,7 +160,6 @@
 - (float)elementPercentageFromElement:(int)arg1 forOverallPercentage:(float)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fill;
-- (void)finalize;
 - (double)flatness;
 - (void)flattenIntoPath:(id)arg1;
 - (void)getLineDash:(double *)arg1 count:(long long *)arg2 phase:(double *)arg3;

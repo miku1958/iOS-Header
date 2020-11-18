@@ -11,6 +11,7 @@
 @protocol _CATRemoteConnectionSendContext <NSObject>
 
 @property (nonatomic) unsigned long long bytesWritten;
+@property (readonly, nonatomic) unsigned long long clientBytesWritten;
 @property (readonly, nonatomic) BOOL hasBytesRemaining;
 @property (readonly, nonatomic) id userInfo;
 

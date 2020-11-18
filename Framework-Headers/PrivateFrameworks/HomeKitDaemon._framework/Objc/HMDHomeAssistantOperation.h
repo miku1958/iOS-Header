@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMFTimer, NSMutableSet, NSSet, NSString;
+@class HMFTimer, NSMutableSet, NSObject, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDHomeAssistantOperation : NSObject <HMFTimerDelegate>
+@interface HMDHomeAssistantOperation : HMFObject <HMFTimerDelegate>
 {
     BOOL _completionHandlerCalled;
     NSObject<OS_dispatch_queue> *_workQueue;

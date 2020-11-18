@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
+#import <PhotosUI/CAAnimationDelegate-Protocol.h>
+
 @class NSArray, NSString, PUStackView, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface PUPickerBannerView : UIView
+@interface PUPickerBannerView : UIView <CAAnimationDelegate>
 {
     BOOL __animatingStackView;
     unsigned long long _style;
@@ -28,10 +30,14 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic, setter=_setAnimationCompletionHandler:) CDUnknownBlockType _animationCompletionHandler; // @synthesize _animationCompletionHandler=__animationCompletionHandler;
 @property (strong, nonatomic, setter=_setLabel:) UILabel *_label; // @synthesize _label=__label;
 @property (strong, nonatomic, setter=_setStackView:) PUStackView *_stackView; // @synthesize _stackView=__stackView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *images; // @synthesize images=_images;
 @property (strong, nonatomic) UIView *leftView; // @synthesize leftView=_leftView;
 @property (strong, nonatomic) UIView *rightView; // @synthesize rightView=_rightView;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;

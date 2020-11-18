@@ -8,30 +8,32 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSArray, NSDictionary, NSMutableArray, PBUnknownFields;
 
 @interface GEOAdditionalEnabledMarkets : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_transitMarkets;
 }
 
+@property (readonly, nonatomic) NSArray *queryItems;
+@property (readonly, nonatomic) NSDictionary *queryParameters;
 @property (strong, nonatomic) NSMutableArray *transitMarkets; // @synthesize transitMarkets=_transitMarkets;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)_additionalEnabledTransitMarkets;
 + (id)additionalEnabledMarkets;
 + (Class)transitMarketType;
+- (void).cxx_destruct;
 - (void)addTransitMarket:(id)arg1;
 - (void)clearTransitMarkets;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
-- (id)queryParameters;
-- (id)queryString;
 - (BOOL)readFrom:(id)arg1;
 - (void)reload;
 - (id)transitMarketAtIndex:(unsigned long long)arg1;

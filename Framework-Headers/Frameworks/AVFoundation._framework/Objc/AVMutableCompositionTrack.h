@@ -20,6 +20,7 @@
 @property (nonatomic) float preferredVolume;
 @property (copy, nonatomic) NSArray *segments;
 
++ (BOOL)expectsPropertyRevisedNotifications;
 - (void)_notifyAssetThatDurationDidChangeWithSuccess:(BOOL)arg1;
 - (void)_notifyAssetThatDurationWillChange;
 - (void)_notifySelfThatSegmentsDidChangeWithSuccess:(BOOL)arg1;

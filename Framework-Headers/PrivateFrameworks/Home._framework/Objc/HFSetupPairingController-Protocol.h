@@ -6,25 +6,24 @@
 
 #import <Home/NSObject-Protocol.h>
 
-@class HFAccessoryBrowsingManager, HFDiscoveredAccessory, HMHome, NAFuture, NSString;
+@class HFDiscoveredAccessory, HFSetupAccessoryResult, HMHome, HMSetupAccessoryDescription, NAFuture, NSSet, NSString;
 @protocol HFSetupPairingObserver;
 
 @protocol HFSetupPairingController <NSObject>
 
-@property (readonly, nonatomic) HFAccessoryBrowsingManager *accessoryBrowser;
 @property (readonly, nonatomic) HFDiscoveredAccessory *discoveredAccessoryToPair;
-@property (readonly, nonatomic) BOOL hasFailedAccessories;
 @property (readonly, nonatomic) HMHome *home;
 @property (readonly, nonatomic) unsigned long long phase;
-@property (strong, nonatomic) NSString *setupCode;
-@property (readonly, nonatomic) NSString *statusText;
+@property (readonly, nonatomic) HMSetupAccessoryDescription *setupAccessoryDescription;
+@property (strong, nonatomic) HFSetupAccessoryResult *setupResult;
+@property (readonly, nonatomic) NSString *statusDescription;
+@property (readonly, nonatomic) NSString *statusTitle;
 
++ (BOOL)supportsSetupPayloadRetry;
 - (void)addPairingObserver:(id<HFSetupPairingObserver>)arg1;
 - (NAFuture *)cancel;
-- (HFDiscoveredAccessory *)pairedDiscoveredAccessory;
+- (NSSet *)pairedAccessories;
 - (void)removePairingObserver:(id<HFSetupPairingObserver>)arg1;
 - (void)startWithHome:(HMHome *)arg1;
-
-@optional
 @end
 

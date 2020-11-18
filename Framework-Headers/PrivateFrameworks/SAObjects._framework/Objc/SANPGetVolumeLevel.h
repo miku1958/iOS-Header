@@ -6,9 +6,13 @@
 
 #import <SAObjects/SABaseClientBoundCommand.h>
 
+@class NSArray;
+
 @interface SANPGetVolumeLevel : SABaseClientBoundCommand
 {
 }
+
+@property (copy, nonatomic) NSArray *hashedRouteUIDs;
 
 + (id)getVolumeLevel;
 + (id)getVolumeLevelWithDictionary:(id)arg1 context:(id)arg2;

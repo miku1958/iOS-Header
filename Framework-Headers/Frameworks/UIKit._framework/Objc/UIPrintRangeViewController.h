@@ -11,7 +11,7 @@
 #import <UIKit/UITableViewDataSource-Protocol.h>
 #import <UIKit/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UIPickerView, UIPrintPanelViewController, UITableView;
+@class NSArray, NSString, UIPickerView, UIPrintPanelViewController, UITableView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIPrintRangeViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     UIPickerView *_toPicker;
     UITableView *_tableView;
     double _pickerWidth;
+    UIView *_footerPickerView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -40,11 +41,14 @@ __attribute__((visibility("hidden")))
 - (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;
 - (id)pickerView:(id)arg1 titleForRow:(long long)arg2 forComponent:(long long)arg3;
 - (double)pickerView:(id)arg1 widthForComponent:(long long)arg2;
+- (void)reloadTableView;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;

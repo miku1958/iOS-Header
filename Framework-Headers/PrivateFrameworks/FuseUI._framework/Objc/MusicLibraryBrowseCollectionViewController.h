@@ -68,7 +68,6 @@
 - (void)_invalidateLayoutMetrics;
 - (id)_itemEntityValueContext;
 - (id)_layoutMetrics;
-- (void)_presentContextualActionsWithEntityValueContext:(id)arg1 fromButton:(id)arg2;
 - (void)_recycleCoalescingEntityValueProvider:(id)arg1;
 - (double)_secondaryReferenceMetricForQueryingLayoutInterpolators;
 - (id)_sectionEntityValueContextForIndex:(unsigned long long)arg1;
@@ -80,9 +79,7 @@
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didEndDisplayingSupplementaryView:(id)arg2 forElementOfKind:(id)arg3 atIndexPath:(id)arg4;
 - (void)collectionView:(id)arg1 didSelectAddButtonForCell:(id)arg2;
-- (void)collectionView:(id)arg1 didSelectContextualActionsButton:(id)arg2 forCell:(id)arg3;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
-- (void)collectionView:(id)arg1 didSelectPlayButtonAction:(unsigned long long)arg2 forCell:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (BOOL)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface GEOSnappedRouteEdge : NSObject
 {
@@ -19,11 +19,11 @@
 
 @property (readonly, nonatomic) BOOL clippedBack; // @synthesize clippedBack=_clippedBack;
 @property (readonly, nonatomic) BOOL clippedFront; // @synthesize clippedFront=_clippedFront;
-@property (readonly, nonatomic) CDStruct_2244da21 *feature;
+@property (readonly, nonatomic) CDStruct_a2ef2718 *feature;
 @property (readonly, nonatomic) shared_ptr_92bc9970 mapEdge; // @synthesize mapEdge=_mapEdge;
 @property (readonly, nonatomic) unsigned long long mapEdgeOffset; // @synthesize mapEdgeOffset=_mapEdgeOffset;
 @property (readonly, nonatomic) unsigned long long pointCount;
-@property (readonly, nonatomic) CDStruct_b2fbf00d *points;
+@property (readonly, nonatomic) CDStruct_6e3f967a *points;
 @property (readonly, nonatomic) struct PolylineCoordinate routeOffsetA;
 @property (readonly, nonatomic) struct PolylineCoordinate routeOffsetB;
 @property (readonly, nonatomic) struct PolylineCoordinate *routeOffsets;
@@ -31,7 +31,6 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)calculateRouteOffsetsBetweenA:(struct PolylineCoordinate)arg1 andB:(struct PolylineCoordinate)arg2 overLength:(float)arg3 onRoute:(id)arg4;
-- (void)dealloc;
 - (id)description;
 - (id)initWithRoadPath:(const RoadPathElement_1a15aef6 *)arg1 sectionRect:(const CDStruct_90e2a262 *)arg2;
 

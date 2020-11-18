@@ -10,11 +10,13 @@
 {
 }
 
-+ (id)_accessibilityTitleForSystemTag:(long long)arg1;
 + (id)_axFocusedWindowSubviews;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)__accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)_accessibilityAllDragSourceDescriptors;
+- (id)_accessibilityAllDropPointDescriptors;
+- (id)_accessibilityAuditIssuesWithOptions:(id)arg1;
 - (id)_accessibilityAutomaticIdentifier;
 - (BOOL)_accessibilityAvoidsMockViewContainers;
 - (BOOL)_accessibilityBlocksInteraction;
@@ -22,12 +24,17 @@
 - (id)_accessibilityCheckForAllowedModalView:(struct CGPoint)arg1 event:(id)arg2;
 - (id)_accessibilityChildVendingParent;
 - (id)_accessibilityCirclePathBasedOnBoundsWidth;
+- (BOOL)_accessibilityDidLoadAccessibilityInformation;
 - (void)_accessibilityFinalize;
 - (struct CGRect)_accessibilityFrameForView:(id)arg1;
+- (BOOL)_accessibilityHasDragDestinations;
+- (BOOL)_accessibilityHasDragSources;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityHitTestSubviews;
 - (long long)_accessibilityHorizontalSizeClass;
 - (BOOL)_accessibilityIsIgnored;
+- (BOOL)_accessibilityIsInTableCell;
+- (BOOL)_accessibilityIsScannerElement;
 - (BOOL)_accessibilityIsUserInteractionEnabled;
 - (BOOL)_accessibilityIsUserInteractionEnabledChain;
 - (double)_accessibilityMaxFuzzyHitTestDistance;
@@ -37,6 +44,7 @@
 - (BOOL)_accessibilityOnlyComparesByXAxis;
 - (BOOL)_accessibilityPointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_accessibilityPostNotification:(id)arg1;
+- (id)_accessibilityProxyView;
 - (id)_accessibilityRetrieveIvarText;
 - (id)_accessibilityRetrieveLabelFromTableViewCell;
 - (BOOL)_accessibilityServesAsContainingParentForOrdering;
@@ -46,12 +54,16 @@
 - (BOOL)_accessibilityUseAccessibilityFrameForHittest;
 - (id)_accessibilityUserTestingChildren;
 - (long long)_accessibilityVerticalSizeClass;
+- (double)_accessibilityViewAlpha;
 - (id)_accessibilityViewController;
 - (BOOL)_accessibilityViewIsActive;
+- (BOOL)_axHasNoVisibleAxElements;
 - (void)_axPrintSubviews:(long long)arg1 string:(id)arg2;
 - (id)_axResponderChain;
 - (id)_axSubviews;
+- (BOOL)_axViewIsOffScreen:(id)arg1;
 - (id)_axWindowSubviews;
+- (void)_setAccessibilityDidLoadAccessibilityInformation:(BOOL)arg1;
 - (id)_superAccessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)accessibilityContainer;
 - (BOOL)accessibilityElementIsFocused;
@@ -63,6 +75,7 @@
 - (BOOL)accessibilityViewIsModal;
 - (BOOL)isAccessibilityElement;
 - (void)setIsAccessibilityElement:(BOOL)arg1;
+- (void)willMoveToWindow:(id)arg1;
 
 @end
 

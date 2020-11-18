@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
     UIImageView *_imageView;
     _UITableViewCellEditControlMinusView *_minusView;
     UIImageView *_shadowView;
+    double _focalY;
+    double _focalHeight;
     unsigned int _style:2;
     unsigned int _rotated:1;
     unsigned int _rotating:1;
@@ -30,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)_currentImage;
 - (id)_deleteImage:(double)arg1;
 - (id)_deleteImageBackground:(double)arg1;
+- (id)_imageView;
 - (id)_insertImage:(double)arg1;
 - (struct CGRect)_minusRect;
 - (id)_minusView;
@@ -41,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)_toggleRotate;
 - (void)_toggleRotateAnimationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)_updateImageView;
+- (void)adjustLayoutForFocalRect:(struct CGRect)arg1;
 - (struct CGSize)defaultSize;
 - (id)initWithTableViewCell:(id)arg1 editingStyle:(long long)arg2;
 - (BOOL)isRotating;

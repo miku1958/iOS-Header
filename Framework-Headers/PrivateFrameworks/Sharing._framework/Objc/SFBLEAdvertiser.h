@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CUBitCoder, CURetrier, NSData, NSDictionary, NSString;
+@class CURetrier, NSArray, NSData, NSDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface SFBLEAdvertiser : NSObject
@@ -14,7 +14,6 @@
     BOOL _activateCalled;
     long long _advertiseState;
     BOOL _invalidateCalled;
-    CUBitCoder *_payloadCoder;
     NSData *_payloadDataCurrent;
     NSData *_payloadDataPrevious;
     NSDictionary *_payloadFields;
@@ -28,6 +27,7 @@
     CDUnknownBlockType _connectionHandler;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _invalidationHandler;
+    NSArray *_lePipeDevices;
 }
 
 @property (nonatomic) long long advertiseRate; // @synthesize advertiseRate=_advertiseRate;
@@ -36,6 +36,7 @@
 @property (copy, nonatomic) CDUnknownBlockType connectionHandler; // @synthesize connectionHandler=_connectionHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
+@property (copy, nonatomic) NSArray *lePipeDevices; // @synthesize lePipeDevices=_lePipeDevices;
 
 - (void).cxx_destruct;
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
@@ -50,7 +51,6 @@
 - (id)init;
 - (id)initWithType:(long long)arg1;
 - (void)invalidate;
-- (void)setPayloadCoder:(id)arg1 fields:(id)arg2 identifier:(id)arg3;
 - (void)setPayloadData:(id)arg1;
 - (void)setPayloadFields:(id)arg1;
 

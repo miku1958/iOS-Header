@@ -6,22 +6,43 @@
 
 #import <Metal/MTLArrayType.h>
 
+@class MTLType;
+
 __attribute__((visibility("hidden")))
 @interface MTLArrayTypeInternal : MTLArrayType
 {
+    unsigned long long _dataType;
     unsigned int _arrayLength:32;
     unsigned int _stride:32;
     id _details;
     unsigned long long _elementType;
+    unsigned long long _pixelFormat;
+    unsigned long long _aluType;
+    MTLType *_elementTypeInfo;
+    BOOL _isIndirectArgumentBuffer;
+    unsigned long long _argumentIndexStride;
 }
 
+@property (readonly) unsigned long long aluType; // @synthesize aluType=_aluType;
+@property (nonatomic) unsigned long long argumentIndexStride; // @synthesize argumentIndexStride=_argumentIndexStride;
+@property (nonatomic) unsigned long long indirectArgumentIndexStride;
+@property BOOL isIndirectArgumentBuffer; // @synthesize isIndirectArgumentBuffer=_isIndirectArgumentBuffer;
+@property (readonly) unsigned long long pixelFormat; // @synthesize pixelFormat=_pixelFormat;
+
 - (unsigned long long)arrayLength;
+- (unsigned long long)dataType;
 - (void)dealloc;
 - (id)elementArrayType;
+- (id)elementIndirectArgumentType;
+- (id)elementPointerType;
 - (id)elementStructType;
+- (id)elementTextureReferenceType;
 - (unsigned long long)elementType;
+- (id)elementTypeDescription;
 - (id)formattedDescription:(unsigned long long)arg1;
-- (id)initWithArrayLength:(unsigned long long)arg1 elementType:(unsigned long long)arg2 stride:(unsigned long long)arg3 details:(id)arg4;
+- (id)initWithArrayLength:(unsigned long long)arg1 elementType:(unsigned long long)arg2 stride:(unsigned long long)arg3 pixelFormat:(unsigned long long)arg4 aluType:(unsigned long long)arg5 details:(id)arg6;
+- (BOOL)isArrayLayoutThreadSafeWith:(id)arg1;
+- (void)setStride:(unsigned long long)arg1;
 - (unsigned long long)stride;
 
 @end

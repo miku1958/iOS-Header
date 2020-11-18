@@ -18,7 +18,10 @@
 
 @property (copy, nonatomic) NSDate *lastCheckInAttemptDate;
 @property (copy, nonatomic) NSDate *lastCheckInSuccessDate;
+@property (nonatomic) unsigned long long lastKnownIDMSEnvironment;
 @property (nonatomic) long long shouldAddHSA2CreateHeader;
+@property (nonatomic) long long shouldAllowExperimentalMode;
+@property (nonatomic) long long shouldAllowPhoneNumberAccounts;
 @property (nonatomic) long long shouldDisablePETs;
 @property (nonatomic) long long shouldDisablePiggybacking;
 @property (nonatomic) long long shouldFakeAuthSuccess;

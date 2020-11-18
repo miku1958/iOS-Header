@@ -6,6 +6,8 @@
 
 #import <Message/NSObject-Protocol.h>
 
+@class MFMessageInfo;
+
 @protocol MFBaseMessage <NSObject>
 
 @property (readonly, nonatomic) long long conversationHash;
@@ -14,11 +16,14 @@
 @property (readonly, nonatomic) BOOL deleted;
 @property (readonly, nonatomic) BOOL flagged;
 @property (readonly, nonatomic, getter=isKnownToHaveAttachments) BOOL knownToHaveAttachments;
+@property (readonly, nonatomic) unsigned int libraryID;
+@property (readonly, nonatomic, getter=isLibraryMessage) BOOL libraryMessage;
 @property (readonly, nonatomic) unsigned int mailboxID;
 @property (readonly, nonatomic) long long messageIDHash;
 @property (readonly, nonatomic) BOOL read;
 @property (readonly, nonatomic) BOOL senderVIP;
 @property (readonly, nonatomic) unsigned int uid;
 
+- (MFMessageInfo *)copyMessageInfo;
 @end
 

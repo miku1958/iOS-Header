@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary, NSMutableDictionary, NSURL;
+@class CPLAccountFlags, NSData, NSDate, NSDictionary, NSMutableDictionary, NSURL;
 @protocol CPLStatusDelegate, OS_dispatch_queue;
 
 @interface CPLStatus : NSObject
@@ -17,11 +17,18 @@
     id<CPLStatusDelegate> _delegate;
 }
 
+@property (readonly, nonatomic) CPLAccountFlags *accountFlags;
+@property (copy, nonatomic) NSData *accountFlagsData;
 @property (readonly, nonatomic) NSDictionary *cloudAssetCountPerType;
 @property (readonly, nonatomic) NSDate *cloudAssetCountPerTypeLastCheckDate;
+@property (nonatomic, getter=isConnectedToNetwork) BOOL connectedToNetwork;
 @property (weak, nonatomic) id<CPLStatusDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSDate *exitDeleteTime;
+@property (readonly, nonatomic) BOOL hasBatteryBudget;
+@property (readonly, nonatomic) BOOL hasCellularBudget;
 @property (nonatomic) BOOL hasChangesToProcess;
+@property (readonly, nonatomic) BOOL hasValidSystemBudget;
+@property (nonatomic) BOOL iCloudLibraryClientVersionTooOld;
 @property (nonatomic) BOOL iCloudLibraryExists;
 @property (nonatomic) BOOL iCloudLibraryHasBeenWiped;
 @property (copy, nonatomic) NSDate *initialSyncDate;
@@ -38,7 +45,9 @@
 - (id)initWithClientLibraryBaseURL:(id)arg1;
 - (void)refetchFromDisk;
 - (void)setCloudAssetCountPerType:(id)arg1 updateCheckDate:(BOOL)arg2;
+- (void)setHasCellularBudget:(BOOL)arg1 hasBatteryBudget:(BOOL)arg2 isBudgetValid:(BOOL)arg3;
 - (id)statusDescription;
+- (BOOL)writeInitialSyncMarker:(id *)arg1;
 
 @end
 

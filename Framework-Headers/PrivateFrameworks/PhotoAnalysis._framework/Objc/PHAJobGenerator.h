@@ -28,8 +28,9 @@
 + (long long)maxBatchSize;
 - (void).cxx_destruct;
 - (BOOL)_anyWorkerIsLoadBalanceSkipping;
-- (void)_increaseJobGeneratedGoalLevel;
+- (void)_increaseGoalLevelIfNeeeded;
 - (void)_incrementGeneratedJobCountForWorkerType:(short)arg1;
+- (void)_jumpToGoalJobCountForWorkerType:(short)arg1;
 - (id)_produceAcknowledgeDeletesJobForWorkerType:(short)arg1 scenario:(unsigned long long)arg2 defaultsDisabledKey:(id)arg3 failureReason:(id *)arg4;
 - (id)_produceAssetAnalysisOrAdditionalJobWithForWorkerType:(short)arg1 workInfoReaderMode:(id)arg2 scenario:(unsigned long long)arg3 allowLoadBalanceSkip:(BOOL)arg4 additionalStatesToExclude:(id)arg5 askAboutAdditionalJobs:(BOOL)arg6 canUseNetwork:(BOOL)arg7 defaultsDisabledKey:(id)arg8 failureReason:(id *)arg9;
 - (BOOL)_shouldLoadBalanceSkipForWorkerType:(short)arg1;

@@ -12,6 +12,8 @@
 + (SEL)_selectorForInformingDelegateOfCancellationByFig;
 - (void)_performCancellationByClient;
 - (NSDictionary *)_requestDictionary;
+- (unsigned long long)_requestID;
+- (struct __CFDictionary *)_requestInfo;
 - (BOOL)_shouldInformDelegateOfFigCancellation;
 - (AVWeakReference *)_weakReference;
 @end

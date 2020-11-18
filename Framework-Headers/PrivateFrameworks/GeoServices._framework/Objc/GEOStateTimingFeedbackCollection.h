@@ -32,11 +32,11 @@
 @property (strong, nonatomic) NSMutableArray *stateTransitions; // @synthesize stateTransitions=_stateTransitions;
 
 + (Class)stateTransitionType;
+- (void).cxx_destruct;
 - (void)addStateTransition:(id)arg1;
 - (void)clearStateTransitions;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

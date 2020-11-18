@@ -12,12 +12,14 @@
 @interface _HDHealthServiceDiscoveryInfo : NSObject
 {
     NSMutableSet *_peripheralsUUIDs;
+    BOOL _alwaysNotify;
     unsigned long long _discoveryIdentifier;
     CDUnknownBlockType _discoveryHandler;
     CBUUID *_serviceUUID;
     NSObject<OS_dispatch_source> *_timeoutTimer;
 }
 
+@property (readonly, nonatomic) BOOL alwaysNotify; // @synthesize alwaysNotify=_alwaysNotify;
 @property (readonly, nonatomic) CDUnknownBlockType discoveryHandler; // @synthesize discoveryHandler=_discoveryHandler;
 @property (nonatomic) unsigned long long discoveryIdentifier; // @synthesize discoveryIdentifier=_discoveryIdentifier;
 @property (readonly, nonatomic) CBUUID *serviceUUID; // @synthesize serviceUUID=_serviceUUID;
@@ -25,7 +27,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)_addPeripheralUUID:(id)arg1;
-- (id)initWithHandler:(CDUnknownBlockType)arg1 serviceUUID:(id)arg2;
+- (id)initWithHandler:(CDUnknownBlockType)arg1 serviceUUID:(id)arg2 alwaysNotify:(BOOL)arg3;
 
 @end
 

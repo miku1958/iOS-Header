@@ -9,7 +9,7 @@
 #import <CompanionSync/NMSDeviceSourced-Protocol.h>
 #import <CompanionSync/NMSObfuscatableDescriptionProviding-Protocol.h>
 
-@class NMSMessageCenter, NSDictionary, NSString, NSURL;
+@class IDSMessageContext, NMSMessageCenter, NSDictionary, NSString, NSURL;
 
 @interface NMSIncomingFileTransfer : NSObject <NMSDeviceSourced, NMSObfuscatableDescriptionProviding>
 {
@@ -20,12 +20,14 @@
     NSDictionary *_metadata;
     id _pbHeaderInfo;
     unsigned long long _priority;
+    IDSMessageContext *_idsContext;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) IDSMessageContext *idsContext; // @synthesize idsContext=_idsContext;
 @property (copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
 @property (weak, nonatomic) NMSMessageCenter *messageCenter; // @synthesize messageCenter=_messageCenter;
 @property (copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;

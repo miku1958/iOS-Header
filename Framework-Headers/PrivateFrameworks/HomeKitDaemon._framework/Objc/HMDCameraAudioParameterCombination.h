@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HMDAudioCodecGroup, HMDAudioSampleRate, HMDBitRateSetting, NSNumber;
 
-@interface HMDCameraAudioParameterCombination : NSObject
+@interface HMDCameraAudioParameterCombination : HMFObject
 {
     HMDAudioCodecGroup *_codecGroupType;
     HMDBitRateSetting *_bitrateSetting;

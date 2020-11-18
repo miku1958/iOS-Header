@@ -27,6 +27,7 @@
 @property (strong, nonatomic) NSString *recordID; // @synthesize recordID=_recordID;
 @property (strong, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
 
++ (Class)keyType;
 - (void).cxx_destruct;
 - (void)addKey:(id)arg1;
 - (void)clearKeys;

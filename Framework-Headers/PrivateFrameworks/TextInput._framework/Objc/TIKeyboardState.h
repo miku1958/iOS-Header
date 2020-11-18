@@ -9,7 +9,7 @@
 #import <TextInput/NSCopying-Protocol.h>
 #import <TextInput/NSSecureCoding-Protocol.h>
 
-@class NSString, NSUUID, TIDocumentState, TIInputContextHistory, TIKeyboardCandidate, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardSecureCandidateRenderTraits, TITextInputTraits;
+@class NSArray, NSString, NSUUID, TIDocumentState, TIInputContextHistory, TIKeyboardCandidate, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardSecureCandidateRenderTraits, TITextInputTraits;
 
 @interface TIKeyboardState : NSObject <NSCopying, NSSecureCoding>
 {
@@ -30,6 +30,8 @@
             unsigned int autocapitalizationEnabled:1;
             unsigned int canSendCurrentLocation:1;
             unsigned int isScreenLocked:1;
+            unsigned int longPredictionListEnabled:1;
+            unsigned int needAutofill:1;
         } fields;
     } _mask;
     union {
@@ -54,6 +56,7 @@
     TIKeyboardCandidate *_currentCandidate;
     TITextInputTraits *_textInputTraits;
     NSString *_responseContext;
+    NSArray *_supportedPayloadIds;
 }
 
 @property (nonatomic) BOOL autocapitalizationEnabled;
@@ -76,6 +79,8 @@
 @property (nonatomic) BOOL keyboardEventsLagging;
 @property (nonatomic) unsigned long long keyboardType;
 @property (copy, nonatomic) TIKeyboardLayoutState *layoutState; // @synthesize layoutState=_layoutState;
+@property (nonatomic) BOOL longPredictionListEnabled;
+@property (nonatomic) BOOL needAutofill;
 @property (nonatomic) BOOL needsCandidateMetadata;
 @property (copy, nonatomic) NSString *recipientIdentifier; // @synthesize recipientIdentifier=_recipientIdentifier;
 @property (copy, nonatomic) NSString *responseContext; // @synthesize responseContext=_responseContext;
@@ -86,6 +91,7 @@
 @property (nonatomic) BOOL shortcutConversionEnabled;
 @property (nonatomic) BOOL shouldSkipCandidateSelection;
 @property (nonatomic) BOOL splitKeyboardMode;
+@property (copy, nonatomic) NSArray *supportedPayloadIds; // @synthesize supportedPayloadIds=_supportedPayloadIds;
 @property (nonatomic) BOOL suppressingCandidateSelection;
 @property (strong, nonatomic) TITextInputTraits *textInputTraits; // @synthesize textInputTraits=_textInputTraits;
 @property (nonatomic) BOOL userSelectedCurrentCandidate;
@@ -98,6 +104,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

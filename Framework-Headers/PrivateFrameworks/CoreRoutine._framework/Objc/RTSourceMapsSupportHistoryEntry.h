@@ -13,7 +13,7 @@
     NSDate *_usageDate;
 }
 
-@property (strong, nonatomic) NSDate *usageDate; // @synthesize usageDate=_usageDate;
+@property (readonly, nonatomic) NSDate *usageDate; // @synthesize usageDate=_usageDate;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

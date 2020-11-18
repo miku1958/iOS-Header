@@ -30,6 +30,8 @@
     NSArray *_tags;
     NSURL *_URL;
     NSString *_naturalLanguageEventTypeIdentifier;
+    unsigned long long _naturalLanguageEventAttributes;
+    NSArray *_schemaOrg;
 }
 
 @property (readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
@@ -44,9 +46,11 @@
 @property (readonly, nonatomic) NSDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property (readonly, nonatomic) NSArray *locations; // @synthesize locations=_locations;
 @property (readonly, nonatomic, getter=isNaturalLanguageEvent) BOOL naturalLanguageEvent;
+@property (readonly, nonatomic) unsigned long long naturalLanguageEventAttributes; // @synthesize naturalLanguageEventAttributes=_naturalLanguageEventAttributes;
 @property (readonly, nonatomic) NSString *naturalLanguageEventTypeIdentifier; // @synthesize naturalLanguageEventTypeIdentifier=_naturalLanguageEventTypeIdentifier;
 @property (readonly, nonatomic) NSString *notes; // @synthesize notes=_notes;
 @property (readonly, nonatomic) NSString *opaqueKey; // @synthesize opaqueKey=_opaqueKey;
+@property (readonly, nonatomic) NSArray *schemaOrg; // @synthesize schemaOrg=_schemaOrg;
 @property (readonly, nonatomic) NSDate *start; // @synthesize start=_start;
 @property (readonly, nonatomic) NSTimeZone *startTimeZone; // @synthesize startTimeZone=_startTimeZone;
 @property (readonly) Class superclass;
@@ -59,7 +63,9 @@
 - (void).cxx_destruct;
 - (void)_applyTimeRangeToEKEvent:(id)arg1;
 - (id)_componentsForDate:(id)arg1 timeZone:(id)arg2 isEnd:(BOOL)arg3 calendar:(id)arg4;
+- (id)_naturalLanguageEventTagsInTags:(id)arg1;
 - (id)dateForUTCDate:(id)arg1 withTimeZone:(id)arg2;
+- (double)duration;
 - (void)encodeWithCoder:(id)arg1;
 - (id)endDateComponents;
 - (id)firstLocationForType:(unsigned long long)arg1;
@@ -71,14 +77,13 @@
 - (void)geocodeWithCallback:(CDUnknownBlockType)arg1;
 - (id)geocodedEventWithStartDate:(id)arg1 startTimeZone:(id)arg2 endDate:(id)arg3 endTimeZone:(id)arg4 locations:(id)arg5;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRecordId:(id)arg1 origin:(id)arg2 uniqueKey:(id)arg3 opaqueKey:(id)arg4 title:(id)arg5 notes:(id)arg6 start:(id)arg7 startTimeZone:(id)arg8 end:(id)arg9 endTimeZone:(id)arg10 isAllDay:(BOOL)arg11 creationDate:(id)arg12 lastModifiedDate:(id)arg13 locations:(id)arg14 tagStrings:(id)arg15 URL:(id)arg16 naturalLanguageEventIdentifier:(id)arg17;
+- (id)initWithRecordId:(id)arg1 origin:(id)arg2 uniqueKey:(id)arg3 opaqueKey:(id)arg4 title:(id)arg5 notes:(id)arg6 start:(id)arg7 startTimeZone:(id)arg8 end:(id)arg9 endTimeZone:(id)arg10 isAllDay:(BOOL)arg11 creationDate:(id)arg12 lastModifiedDate:(id)arg13 locations:(id)arg14 tagStrings:(id)arg15 URL:(id)arg16 naturalLanguageEventIdentifier:(id)arg17 naturalLanguageEventAttributes:(unsigned long long)arg18 schemaOrg:(id)arg19;
 - (id)initWithRecordId:(id)arg1 origin:(id)arg2 uniqueKey:(id)arg3 opaqueKey:(id)arg4 title:(id)arg5 notes:(id)arg6 start:(id)arg7 startTimeZone:(id)arg8 end:(id)arg9 endTimeZone:(id)arg10 isAllDay:(BOOL)arg11 creationDate:(id)arg12 lastModifiedDate:(id)arg13 locations:(id)arg14 tags:(id)arg15 URL:(id)arg16;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToEvent:(id)arg1;
 - (void)mergeIntoEKEvent:(id)arg1;
 - (void)mergeIntoEKEvent:(id)arg1 withStore:(id)arg2;
 - (void)mergeIntoEKEvent:(id)arg1 withStore:(id)arg2 preservingValuesDifferentFrom:(id)arg3;
-- (id)naturalLanguageEventTypeIdentifierInTags:(id)arg1;
 - (id)startDateComponents;
 - (id)toEKEventWithStore:(id)arg1;
 

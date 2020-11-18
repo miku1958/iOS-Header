@@ -6,10 +6,19 @@
 
 #import <PassKitUI/PKPassFrontFaceView.h>
 
+@class UILabel;
+
 @interface PKPassPaymentCardFrontFaceView : PKPassFrontFaceView
 {
+    UILabel *_balanceLabel;
 }
 
+- (void).cxx_destruct;
+- (void)_handleAccountChanged:(id)arg1;
+- (void)_updateBalanceWithAccount:(id)arg1;
+- (void)createHeaderContentViews;
+- (void)dealloc;
+- (void)layoutSubviews;
 - (id)shortFaceTemplate;
 - (id)shortScrunchedFaceTemplate;
 - (BOOL)showsShare;

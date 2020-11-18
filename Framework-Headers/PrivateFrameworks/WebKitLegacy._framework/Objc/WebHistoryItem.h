@@ -50,7 +50,7 @@
 - (id)initWithURL:(id)arg1 title:(id)arg2;
 - (id)initWithURLString:(id)arg1 title:(id)arg2 displayTitle:(id)arg3 lastVisitedTimeInterval:(double)arg4;
 - (id)initWithURLString:(id)arg1 title:(id)arg2 lastVisitedTimeInterval:(double)arg3;
-- (id)initWithWebCoreHistoryItem:(PassRefPtr_b1663a8c)arg1;
+- (id)initWithWebCoreHistoryItem:(Ref_08abb09a *)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isTargetItem;
 - (BOOL)lastVisitWasFailure;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreDAV/NSXMLParserDelegate-Protocol.h>
 
@@ -38,11 +38,11 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isUnrecognized; // @synthesize isUnrecognized=_isUnrecognized;
 @property (nonatomic) SEL parentElementSetter; // @synthesize parentElementSetter=_parentElementSetter;
-@property (nonatomic) CoreDAVXMLElementGenerator *parentGenerator; // @synthesize parentGenerator=_parentGenerator;
+@property (weak, nonatomic) CoreDAVXMLElementGenerator *parentGenerator; // @synthesize parentGenerator=_parentGenerator;
 @property (nonatomic) int parsingState; // @synthesize parsingState=_parsingState;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithParser:(id)arg1 baseURL:(id)arg2 rootElementNameSpace:(id)arg3 elementName:(id)arg4 parseClass:(Class)arg5;
 - (id)initWithParser:(id)arg1 parentGenerator:(id)arg2 parentElementSetter:(SEL)arg3 element:(id)arg4;
 - (BOOL)isExpectedNameSpace:(id)arg1 andElementName:(id)arg2;

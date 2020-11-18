@@ -15,15 +15,16 @@ __attribute__((visibility("hidden")))
     QLItem *_previewItem;
 }
 
-@property (strong) NSError *error; // @synthesize error=_error;
+@property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong) QLItem *previewItem; // @synthesize previewItem=_previewItem;
 
 - (void).cxx_destruct;
+- (void)_updateLabelsWithCurrentErrorIfNeeded;
 - (BOOL)canEnterFullScreen;
 - (BOOL)canPinchToDismiss;
 - (BOOL)canSwipeToDismiss;
 - (id)errorView;
-- (void)loadPreviewControllerWithPreviewItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)loadView;
 
 @end

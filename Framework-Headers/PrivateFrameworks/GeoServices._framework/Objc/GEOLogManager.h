@@ -4,17 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSLock, NSMutableArray;
+@class NSMutableArray;
 @protocol GEOLogAdaptor, OS_dispatch_queue;
 
 @interface GEOLogManager : NSObject
 {
     NSObject<OS_dispatch_queue> *_loggingQueue;
     NSMutableArray *_logAdaptors;
-    NSMutableArray *_remoteAdaptorOptions;
-    NSLock *_remoteAdaptorOptionsLock;
     id<GEOLogAdaptor> _serverLogAdaptorManager;
     void *_loggingQueueIdentityKey;
     void *_loggingQueueIdentityValue;
@@ -23,6 +21,7 @@
 @property (strong, nonatomic) id<GEOLogAdaptor> serverLogAdaptorManager; // @synthesize serverLogAdaptorManager=_serverLogAdaptorManager;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_addLogAdaptor:(id)arg1;
 - (void)_applicationDeactivating:(id)arg1;
 - (void)_applicationWillTerminate:(id)arg1;
@@ -37,10 +36,8 @@
 - (void)_removeAllLogAdaptors;
 - (void)_removeLogAdaptor:(id)arg1;
 - (void)_setupDefaultAdaptors;
-- (void)_setupXPCRemoteAdators;
 - (void)_unregisterLogMsgStateOfType:(int)arg1;
-- (void)_updateAndSetupRemoteAdaptors;
-- (BOOL)_updateRemoteAdaptorOptions;
+- (void)_updateAdaptorPolicyConfiguration:(id)arg1;
 - (void)addLogAdaptor:(id)arg1;
 - (void)dealloc;
 - (void)disableLogMsgInstrumentation;
@@ -55,6 +52,7 @@
 - (void)removeLogAdaptor:(id)arg1;
 - (BOOL)shouldSendUsageUsingNewLogManager;
 - (void)unregisterLogMsgStateOfType:(int)arg1;
+- (void)updateAdaptorPolicyConfiguration:(id)arg1;
 - (void)waitForEmptyLoggingQueue:(CDUnknownBlockType)arg1;
 
 @end

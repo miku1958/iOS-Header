@@ -17,7 +17,7 @@
     double _timeout;
 }
 
-@property (readonly, strong, nonatomic) XBApplicationLaunchCompatibilityInfo *applicationCompatibilityInfo; // @synthesize applicationCompatibilityInfo=_applicationCompatibilityInfo;
+@property (readonly, nonatomic) XBApplicationLaunchCompatibilityInfo *applicationCompatibilityInfo; // @synthesize applicationCompatibilityInfo=_applicationCompatibilityInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -25,7 +25,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double timeout; // @synthesize timeout=_timeout;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)initWithApplicationCompatibilityInfo:(id)arg1 launchRequest:(id)arg2 timeout:(double)arg3;

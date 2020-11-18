@@ -28,6 +28,7 @@
 + (long long)adjustmentBaseVersionFromVideoRequestVersion:(long long)arg1;
 + (long long)imageRequestVersionFromAdjustmentBaseVersion:(long long)arg1;
 + (id)opaqueAdjustmentData;
++ (id)photoEditModelWithAdjustmentData:(id)arg1 asset:(id)arg2;
 + (BOOL)supportsSecureCoding;
 + (long long)videoRequestVersionFromAdjustmentBaseVersion:(long long)arg1;
 - (void).cxx_destruct;

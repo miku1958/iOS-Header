@@ -8,7 +8,7 @@
 
 #import <Navigation/GEOETAUpdaterDelegate-Protocol.h>
 
-@class GEOETAUpdater, NSArray, NSMapTable, NSString;
+@class GEOApplicationAuditToken, GEOETATrafficUpdateResponse, GEOETAUpdater, NSArray, NSMapTable, NSString;
 @protocol MNETAManagerDelegate;
 
 @interface MNETAManager : NSObject <GEOETAUpdaterDelegate>
@@ -19,15 +19,20 @@
     NSMapTable *_etaRoutesTable;
     double _requestInterval;
     double _debugInitialRequestDelay;
+    GEOETATrafficUpdateResponse *_currentResponse;
+    GEOApplicationAuditToken *_auditToken;
 }
 
+@property (strong, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (nonatomic) double debugBackgroundTimeWindow;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) double debugInitialRequestDelay; // @synthesize debugInitialRequestDelay=_debugInitialRequestDelay;
 @property (weak, nonatomic) id<MNETAManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long maxAlternateRoutesCount;
 @property (nonatomic) double requestInterval; // @synthesize requestInterval=_requestInterval;
+@property (strong, nonatomic) NSString *requestingAppIdentifier;
 @property (strong, nonatomic) NSArray *routes; // @synthesize routes=_routes;
 @property (readonly) Class superclass;
 

@@ -16,15 +16,16 @@ __attribute__((visibility("hidden")))
 + (BOOL)requiresEventAccess;
 + (BOOL)requiresEventOrReminderAccess;
 + (BOOL)requiresReminderAccess;
-- (void)CADDatabaseAddContactWithIdentifier:(id)arg1 forCalendarItem:(CDStruct_1ef3fb1f)arg2 withReply:(CDUnknownBlockType)arg3;
+- (void)CADDatabaseAddContactWithIdentifier:(id)arg1 forCalendarItem:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseCancelFetchRequestWithIdentifier:(unsigned int)arg1;
 - (void)CADDatabaseCountEntitiesOfType:(int)arg1 withContactIdentifier:(id)arg2 withReply:(CDUnknownBlockType)arg3;
-- (void)CADDatabaseExportCalendarItemAsICS:(CDStruct_1ef3fb1f)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)CADDatabaseExportCalendarItemAsICS:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseFetchCalendarItemsWithPredicate:(id)arg1 entityType:(int)arg2 fetchIdentifier:(int)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADDatabaseFetchEntitiesOfType:(int)arg1 withContactIdentifier:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseGetCalendarItemWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)CADDatabaseGetContactIdentifierForCalendarItem:(CDStruct_1ef3fb1f)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)CADDatabaseRemoveContactIdentifier:(id)arg1 forCalendarItem:(CDStruct_1ef3fb1f)arg2 withReply:(CDUnknownBlockType)arg3;
+- (void)CADDatabaseGetCalendarItemsWithUniqueIdentifier:(id)arg1 inCalendar:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)CADDatabaseGetContactIdentifierForCalendarItem:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)CADDatabaseRemoveContactIdentifier:(id)arg1 forCalendarItem:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 - (id)_resultsFilteredForJunkEvents:(id)arg1;
 - (id)_resultsFilteredForTCCAccess:(id)arg1;
 

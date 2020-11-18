@@ -15,6 +15,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)init;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setPlayer:(id)arg1;

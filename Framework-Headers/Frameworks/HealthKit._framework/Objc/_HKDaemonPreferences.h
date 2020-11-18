@@ -17,6 +17,7 @@
 + (BOOL)isStoreDemoModeSet;
 + (BOOL)shouldGenerateDemoData;
 + (void)synchronizePreferencesWithWatch:(id)arg1;
++ (BOOL)usingDemoDataDatabase;
 + (id)valueForKey:(id)arg1;
 
 @end

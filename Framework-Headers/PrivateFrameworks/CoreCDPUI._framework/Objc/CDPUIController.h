@@ -52,6 +52,7 @@
 - (void)_presentRemoteApprovalViewControllerWithEscapeOfferMask:(unsigned long long)arg1;
 - (void)_presentRemoteSecretControllerWithNewestDevice:(id)arg1;
 - (void)_presentRootController:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_recoveryKeyControllerWithContext:(id)arg1 validator:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_recoveryKeyEscapeOffer;
 - (id)_recoveryKeyEscapeOption;
 - (id)_recoveryKeyEscapeOptionWithPresentationBlock:(CDUnknownBlockType)arg1;
@@ -78,9 +79,8 @@
 - (void)cdpContext:(id)arg1 promptForICSCWithIsNumeric:(BOOL)arg2 numericLength:(id)arg3 isRandom:(BOOL)arg4 validator:(id)arg5;
 - (void)cdpContext:(id)arg1 promptForInteractiveAuthenticationWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cdpContext:(id)arg1 promptForLocalSecretWithHandler:(id)arg2;
+- (void)cdpContext:(id)arg1 promptForRecoveryKeyWithValidator:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)cdpContext:(id)arg1 promptForRemoteSecretWithDevices:(id)arg2 offeringRemoteApproval:(BOOL)arg3 validator:(id)arg4;
-- (void)cdpContext:(id)arg1 promptToInformUserOfAccountLockOutWithCompletion:(CDUnknownBlockType)arg2;
-- (void)cdpContext:(id)arg1 promptToInformUserOfAccountUnlockWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cdpContext:(id)arg1 showError:(id)arg2 withDefaultIndex:(long long)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (void)devicePicker:(id)arg1 didSelectDevice:(id)arg2;
@@ -88,6 +88,7 @@
 - (void)dismissRecoveryFlow:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)exceededMaximumAttemptsForRemoteSecretEntry:(id)arg1;
 - (void)finishValidation:(id)arg1 withError:(id)arg2;
+- (void)handleBackPopCompletion;
 - (void)keychainSyncController:(id)arg1 didFinishWithResult:(id)arg2 error:(id)arg3;
 - (void)performAccountReset:(id)arg1;
 - (void)performRecoveryKeyRecovery:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOCacheManaging-Protocol.h>
 
@@ -21,12 +21,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)_isLocalProxy;
 + (id)sharedManager;
 + (void)useLocalProxy;
++ (void)useProxy:(Class)arg1;
 + (void)useRemoteProxy;
+- (void).cxx_destruct;
 - (void)checkHasExpiredWithInvalidationDatas:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (id)init;
 - (long long)invalidationStateForComponent:(id)arg1;
 - (long long)invalidationStateForPlace:(id)arg1;

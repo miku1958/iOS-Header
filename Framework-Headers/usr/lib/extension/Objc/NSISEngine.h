@@ -6,9 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSISVariableDelegate-Protocol.h>
+#import <Foundation/NSISVariableDelegate-Protocol.h>
 
-@class NSHashTable, NSISVariable, NSISVariableChangeTracker, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSThread;
+@class NSHashTable, NSISVariable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSThread, _NSISVariableObservable;
 @protocol NSISEngineDelegate, NSObservable;
 
 @interface NSISEngine : NSObject <NSISVariableDelegate>
@@ -19,9 +19,9 @@
     NSMutableArray *_variablesWithValueRestrictionViolations;
     NSMutableArray *_pendingRemovals;
     NSHashTable *_pendingMarkerDelegates;
-    NSISVariableChangeTracker *_variableChangeTracker;
     NSObject<NSObservable> *_variableChangeTransactionSignal;
     NSMapTable *_variableObservables;
+    _NSISVariableObservable *_dirtyObservables;
     id<NSISEngineDelegate> _delegate;
     NSMapTable *_brokenConstraintPositiveErrors;
     NSMapTable *_brokenConstraintNegativeErrors;
@@ -73,9 +73,11 @@
 - (id)_brokenConstraintPositiveErrors;
 - (id)_brokenConstraintPositiveErrorsIfAvailable;
 - (void)_coreReplaceMarker:(id)arg1 withMarkerPlusDelta:(double)arg2;
+- (BOOL)_dirtyListContainsObservable:(id)arg1;
+- (void)_dirtyListPrependObservable:(id)arg1;
+- (void)_dirtyListRemoveObservable:(id)arg1;
 - (BOOL)_disambiguateFrame:(struct CGRect *)arg1 forAmbiguousItem:(id)arg2 withOldFrame:(struct CGRect)arg3;
 - (void)_flushPendingRemovals;
-- (void)_noteValueOfVariable:(id)arg1 changedFrom:(double)arg2;
 - (BOOL)_optimizeIfNotDisabled;
 - (unsigned long long)_optimizeWithoutRebuilding;
 - (BOOL)_variableIsAbsentExceptForObjectiveRow:(id)arg1;
@@ -90,7 +92,6 @@
 - (id)candidateRedundantConstraints;
 - (void)changeVariableToBeOptimized:(id)arg1 fromPriority:(double)arg2 toPriority:(double)arg3;
 - (id)chooseHeadForRowBody:(id)arg1 outNewToEngine:(BOOL *)arg2;
-- (id)chooseOutgoingRowHeadForIncomingRowHead:(id)arg1 resolveTiesRandomly:(BOOL)arg2;
 - (void)constraintDidChangeSuchThatMarker:(id)arg1 shouldBeReplacedByMarkerPlusDelta:(double)arg2;
 - (id)constraints;
 - (id)constraintsAffectingValueOfVariable:(id)arg1;
@@ -110,13 +111,13 @@
 - (BOOL)hasObservableForVariable:(id)arg1;
 - (BOOL)hasValue:(double *)arg1 forExpression:(id)arg2;
 - (BOOL)hasValue:(double *)arg1 forVariable:(id)arg2;
+- (BOOL)hasValueForPossiblyDeallocatedVariable:(id)arg1;
 - (BOOL)incoming:(id *)arg1 andOutgoing:(id *)arg2 rowHeadsThatMakeValueAmbiguousForVariable:(id)arg3;
 - (id)init;
 - (double)integralizationAdjustmentForMarker:(id)arg1;
 - (BOOL)isTrackingVariableChanges;
 - (id)markerForBrokenConstraintWithNegativeErrorVar:(id)arg1;
 - (id)markerForBrokenConstraintWithPositiveErrorVar:(id)arg1;
-- (unsigned long long)minimizeConstantInObjectiveRowWithHead:(id)arg1;
 - (id)negativeErrorVarForBrokenConstraintWithMarker:(id)arg1;
 - (id)nsis_descriptionOfVariable:(id)arg1;
 - (BOOL)nsis_shouldIntegralizeVariable:(id)arg1;
@@ -130,7 +131,6 @@
 - (void)performPendingChangeNotifications;
 - (void)performPendingChangeNotificationsForItem:(id)arg1;
 - (unsigned long long)pivotCount;
-- (void)pivotToMakeBodyVar:(id)arg1 newHeadOfRowWithHead:(id)arg2 andDropRow:(BOOL)arg3;
 - (id)positiveErrorVarForBrokenConstraintWithMarker:(id)arg1;
 - (void)rawRemoveRowWithHead:(id)arg1;
 - (void)rawSetRowWithHead:(id)arg1 body:(id)arg2;
@@ -139,23 +139,12 @@
 - (void)removeBodyVarFromAllRows:(id)arg1;
 - (void)removeConstraintWithMarker:(id)arg1;
 - (void)removeObservableForVariable:(id)arg1;
-- (void)removeRowWithHead:(id)arg1;
 - (void)removeVariableToBeOptimized:(id)arg1 priority:(double)arg2;
 - (void)replaceMarker:(id)arg1 withMarkerPlusCoefficient:(double)arg2 timesVariable:(id)arg3;
 - (unsigned long long)replayCommandsData:(id)arg1 verifyingIntegrity:(BOOL)arg2;
-- (id)rowBodyForHead:(id)arg1;
-- (id)rowBodyForNonObjectiveHead:(id)arg1;
-- (id)rowBodyForObjectiveHead:(id)arg1;
-- (void)rowCrossIndexNoteBodyVariable:(id)arg1 wasAddedToRowWithHead:(id)arg2;
-- (void)rowCrossIndexNoteBodyVariable:(id)arg1 wasRemovedFromRowWithHead:(id)arg2;
-- (void)rowCrossIndexNoteDroppedBodyVar:(id)arg1;
-- (id)rowHeadsForRowsContainingBodyVar:(id)arg1;
-- (void)sendChangeNotificationForVariable:(id)arg1;
 - (void)setIntegralizationAdjustment:(double)arg1 forMarker:(id)arg2;
 - (void)setNegativeErrorVar:(id)arg1 forBrokenConstraintWithMarker:(id)arg2;
 - (void)setPositiveErrorVar:(id)arg1 forBrokenConstraintWithMarker:(id)arg2;
-- (void)setRowWithHead:(id)arg1 body:(id)arg2;
-- (void)substituteOutAllOccurencesOfBodyVar:(id)arg1 withExpression:(id)arg2;
 - (BOOL)tryAddingDirectly:(id)arg1;
 - (BOOL)tryToAddConstraintWithMarker:(id)arg1 expression:(id)arg2 integralizationAdjustment:(double)arg3 mutuallyExclusiveConstraints:(id *)arg4;
 - (BOOL)tryToChangeConstraintSuchThatMarker:(id)arg1 isReplacedByMarkerPlusDelta:(double)arg2 undoHandler:(CDUnknownBlockType)arg3;

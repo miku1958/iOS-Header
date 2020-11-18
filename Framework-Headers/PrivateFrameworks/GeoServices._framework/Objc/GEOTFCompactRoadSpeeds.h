@@ -46,6 +46,7 @@
 @property (nonatomic) float startOffset; // @synthesize startOffset=_startOffset;
 
 + (Class)predictedSpeedType;
+- (void).cxx_destruct;
 - (int)StringAsColor:(id)arg1;
 - (void)addGeoIds:(long long)arg1;
 - (void)addPredictedSpeed:(id)arg1;

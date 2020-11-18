@@ -9,10 +9,12 @@
 #import <AssistantServices/AFClientServiceDelegate-Protocol.h>
 
 @class AFConnection, NSString;
+@protocol OS_dispatch_queue;
 
 @interface AFConnectionClientServiceDelegate : NSObject <AFClientServiceDelegate>
 {
     AFConnection *_connection;
+    NSObject<OS_dispatch_queue> *_targetQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,6 +27,10 @@
 - (oneway void)aceConnectionWillRetryOnError:(id)arg1;
 - (oneway void)acousticIDRequestDidFinishWithSuccess:(BOOL)arg1;
 - (oneway void)acousticIDRequestWillStart;
+- (oneway void)audioPlaybackRequestDidNotStart:(id)arg1 error:(id)arg2;
+- (oneway void)audioPlaybackRequestDidStart:(id)arg1;
+- (oneway void)audioPlaybackRequestDidStop:(id)arg1 error:(id)arg2;
+- (oneway void)audioPlaybackRequestWillStart:(id)arg1;
 - (oneway void)audioSessionDidBeginInterruption;
 - (oneway void)audioSessionDidEndInterruption:(BOOL)arg1;
 - (oneway void)audioSessionIDChanged:(unsigned int)arg1;
@@ -32,11 +38,11 @@
 - (oneway void)extensionRequestFinishedForApplication:(id)arg1 error:(id)arg2;
 - (oneway void)extensionRequestWillStartForApplication:(id)arg1;
 - (oneway void)getBulletinContext:(CDUnknownBlockType)arg1;
-- (id)initWithConnection:(id)arg1;
+- (oneway void)handleIntent:(id)arg1 inBackgroundAppWithBundleId:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (id)initWithConnection:(id)arg1 targetQueue:(id)arg2;
 - (oneway void)invalidateCurrentUserActivity;
 - (oneway void)musicWasDetected;
-- (oneway void)requestDidFailWithError:(id)arg1 requestClass:(id)arg2;
-- (oneway void)requestDidFinish;
+- (oneway void)quickStopWasHandledWithActions:(unsigned long long)arg1;
 - (oneway void)requestDidReceiveCommand:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (oneway void)requestRequestedDismissAssistant;
 - (oneway void)requestRequestedOpenApplicationWithBundleID:(id)arg1 URL:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -47,7 +53,7 @@
 - (oneway void)speechRecognized:(id)arg1;
 - (oneway void)speechRecognizedAdditionalInterpretation:(id)arg1 refId:(id)arg2;
 - (oneway void)speechRecognizedPartialResult:(id)arg1;
-- (oneway void)speechRecordingDidBeginOnAVRecordRoute:(id)arg1;
+- (oneway void)speechRecordingDidBeginOnAVRecordRoute:(id)arg1 audioSessionID:(unsigned int)arg2;
 - (oneway void)speechRecordingDidCancel;
 - (oneway void)speechRecordingDidChangeAVRecordRoute:(id)arg1;
 - (oneway void)speechRecordingDidEnd;
@@ -58,7 +64,7 @@
 - (oneway void)speechRecordingPerformTwoShotPromptWithType:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (oneway void)speechRecordingStartpointDetected;
 - (oneway void)speechRecordingWillBeginRecognitionUpdateForTask:(id)arg1;
-- (oneway void)speechRecordingWillBeginWithLevelsSharedMem:(id)arg1;
+- (oneway void)speechRecordingWillBeginWithInputAudioPowerXPCWrapper:(id)arg1;
 - (oneway void)startUIRequestWithText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

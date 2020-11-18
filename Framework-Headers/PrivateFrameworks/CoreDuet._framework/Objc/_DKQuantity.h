@@ -26,6 +26,7 @@
 @property (readonly) Class superclass;
 
 + (id)entityName;
++ (id)fromPBCodable:(id)arg1;
 + (id)objectFromManagedObject:(id)arg1 readMetadata:(BOOL)arg2 cache:(id)arg3;
 + (id)quantityWithDouble:(double)arg1 type:(id)arg2;
 + (BOOL)supportsSecureCoding;
@@ -35,9 +36,12 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDouble:(double)arg1 type:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 - (id)objectType;
 - (id)primaryValue;
 - (id)stringValue;
+- (id)toPBCodable;
+- (long long)typeCode;
 
 @end
 

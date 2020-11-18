@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 
 + (id)customAttributes;
 - (id)_kernel;
+- (void)dealloc;
 - (const char *)lumaTable;
 - (id)outputImage;
 - (void)setDefaults;

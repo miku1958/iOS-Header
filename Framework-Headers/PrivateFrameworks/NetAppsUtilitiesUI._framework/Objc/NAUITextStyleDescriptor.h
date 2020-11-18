@@ -26,6 +26,7 @@
 + (id)defaultFontForTextStyleDescriptor:(id)arg1;
 + (id)descriptorWithTextStyle:(id)arg1;
 + (id)fontWithTextStyleDescriptor:(id)arg1;
++ (id)na_identity;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

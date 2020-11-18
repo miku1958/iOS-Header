@@ -6,22 +6,29 @@
 
 #import <iTunesStore/ISDialog.h>
 
-@class NSString;
+@class NSLock, NSString, SSPaymentSheet;
 
 @interface ISTouchIDDialog : ISDialog
 {
+    NSLock *_lock;
     BOOL _isFree;
+    SSPaymentSheet *_paymentSheet;
     NSString *_body;
     NSString *_username;
 }
 
 @property (copy, nonatomic) NSString *body; // @synthesize body=_body;
+@property (copy) NSString *fallbackExplanation;
+@property (copy) NSString *fallbackMessage;
 @property (nonatomic) BOOL isFree; // @synthesize isFree=_isFree;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 
 - (void).cxx_destruct;
+- (void)_init;
+- (void)_parseDialogDictionary:(id)arg1;
 - (id)buttonForButtonType:(long long)arg1;
 - (id)initWithDialogDictionary:(id)arg1;
+- (id)paymentSheet;
 
 @end
 

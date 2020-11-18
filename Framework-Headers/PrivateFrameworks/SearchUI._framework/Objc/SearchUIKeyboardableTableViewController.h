@@ -6,25 +6,32 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class UITextField;
+@class UIControl;
+@protocol UITextInput;
 
 @interface SearchUIKeyboardableTableViewController : UITableViewController
 {
-    UITextField *_textField;
+    BOOL _shouldHideTableCellsUnderKeyboard;
+    UIControl<UITextInput> *_textField;
     double _keyboardHeight;
 }
 
 @property double keyboardHeight; // @synthesize keyboardHeight=_keyboardHeight;
-@property (strong) UITextField *textField; // @synthesize textField=_textField;
+@property (nonatomic) BOOL shouldHideTableCellsUnderKeyboard; // @synthesize shouldHideTableCellsUnderKeyboard=_shouldHideTableCellsUnderKeyboard;
+@property (weak) UIControl<UITextInput> *textField; // @synthesize textField=_textField;
 
 - (void).cxx_destruct;
 - (void)addKeyCommandForKey:(id)arg1 action:(SEL)arg2;
+- (BOOL)canBecomeFirstResponder;
 - (BOOL)canHighlightRowAtIndexPath:(id)arg1;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)deletePressed;
 - (void)downArrowPressed:(id)arg1;
 - (void)goBack;
-- (void)highlightRowAtIndexPath:(id)arg1;
+- (void)hideCellsBelowKeyboardIfNecessary;
+- (void)highlightRowAtIndexPath:(id)arg1 upward:(BOOL)arg2;
+- (id)indexPathForNextSelectableIndexPath:(id)arg1 upward:(BOOL)arg2;
+- (id)indexPathToSelectForKeyboardOnQuickReturn;
 - (id)init;
 - (BOOL)isLeftToRightOrientation;
 - (BOOL)isOnCard;
@@ -36,9 +43,13 @@
 - (void)returnPressed;
 - (void)rightArrowPressed;
 - (void)scrollIndexPathToVisible:(id)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
+- (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)selectHighlightedRow;
+- (void)showKeyboard;
 - (void)upArrowPressed:(id)arg1;
-- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 
 @end
 

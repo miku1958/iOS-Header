@@ -8,11 +8,12 @@
 
 #import <iCloudQuotaUI/PSCloudStorageOffersManagerDelegate-Protocol.h>
 
-@class NSString, NSURLSession, PSCloudStorageOffersManager;
+@class NSDictionary, NSString, NSURLSession, PSCloudStorageOffersManager;
 
 @interface ICQUpgradeCloudStorageFlowManager : ICQUpgradeFlowManager <PSCloudStorageOffersManagerDelegate>
 {
     NSURLSession *_buyProductSession;
+    NSString *_storagePurchaseButtonId;
     PSCloudStorageOffersManager *_storageOffersManager;
     CDUnknownBlockType _purchaseCompletionHandler;
 }
@@ -22,6 +23,8 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType purchaseCompletionHandler; // @synthesize purchaseCompletionHandler=_purchaseCompletionHandler;
 @property (strong, nonatomic) PSCloudStorageOffersManager *storageOffersManager; // @synthesize storageOffersManager=_storageOffersManager;
+@property (strong, nonatomic) NSString *storagePurchaseButtonId; // @synthesize storagePurchaseButtonId=_storagePurchaseButtonId;
+@property (readonly, nonatomic) NSDictionary *storagePurchaseKeybag;
 @property (readonly) Class superclass;
 
 + (BOOL)_canDoTokenPurchaseWithOffer:(id)arg1;
@@ -36,7 +39,7 @@
 - (id)_buyProductRequestWithAccount:(id)arg1 token:(id)arg2;
 - (void)_buyProductShouldUseToken:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_buyProductURL;
-- (void)_performPageButtonActionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_performPageButtonActionWithParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performPurchase;
 - (void)_performPurchaseUsingSettingsUI;
 - (void)_performPurchaseUsingTouchID;
@@ -47,6 +50,7 @@
 - (void)manager:(id)arg1 loadDidFailWithError:(id)arg2;
 - (void)manager:(id)arg1 willPresentViewController:(id)arg2;
 - (void)managerDidCancel:(id)arg1;
+- (id)secureTokenMissingError;
 
 @end
 

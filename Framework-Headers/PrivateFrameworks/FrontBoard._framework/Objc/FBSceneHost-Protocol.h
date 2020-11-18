@@ -6,13 +6,13 @@
 
 #import <FrontBoard/NSObject-Protocol.h>
 
-@class FBSDisplay, FBSSceneClientSettings, FBSSceneClientSettingsDiff, FBSSceneLayer, FBSSceneTransitionContext, NSSet, NSString;
+@class FBSSceneClientSettings, FBSSceneClientSettingsDiff, FBSSceneLayer, FBSSceneSpecification, FBSSceneTransitionContext, NSSet, NSString;
 @protocol FBSceneClient;
 
 @protocol FBSceneHost <NSObject>
 
-@property (readonly, strong, nonatomic) FBSDisplay *display;
 @property (readonly, copy, nonatomic) NSString *identifier;
+@property (readonly, copy, nonatomic) FBSSceneSpecification *specification;
 
 - (void)client:(id<FBSceneClient>)arg1 attachLayer:(FBSSceneLayer *)arg2;
 - (void)client:(id<FBSceneClient>)arg1 detachLayer:(FBSSceneLayer *)arg2;

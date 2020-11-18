@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Contacts/NSSecureCoding-Protocol.h>
 
@@ -12,20 +12,22 @@
 
 @interface CNChangeHistoryFetchRequest : NSObject <NSSecureCoding>
 {
-    BOOL _contactChanges;
-    BOOL _groupChanges;
+    BOOL _unifyResults;
+    BOOL _includeGroupChanges;
+    BOOL _includeChangeAnchors;
     NSString *_clientIdentifier;
 }
 
-@property (strong, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
-@property (nonatomic) BOOL contactChanges; // @synthesize contactChanges=_contactChanges;
-@property (nonatomic) BOOL groupChanges; // @synthesize groupChanges=_groupChanges;
+@property (readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property (nonatomic) BOOL includeChangeAnchors; // @synthesize includeChangeAnchors=_includeChangeAnchors;
+@property (nonatomic) BOOL includeGroupChanges; // @synthesize includeGroupChanges=_includeGroupChanges;
+@property (nonatomic) BOOL unifyResults; // @synthesize unifyResults=_unifyResults;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)init;
+- (id)initWithClientIdentifier:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 
 @end

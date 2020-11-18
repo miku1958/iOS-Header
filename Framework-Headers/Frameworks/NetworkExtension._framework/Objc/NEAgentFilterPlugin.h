@@ -65,9 +65,10 @@
 - (void)handleInitWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleMessage:(id)arg1 withOuterMessage:(id)arg2;
 - (void)handleNewFlowMessage:(id)arg1 forConnection:(id)arg2;
+- (void)handleOpenChannel:(id)arg1;
 - (void)handleStart:(id)arg1;
 - (void)handleStop:(id)arg1;
-- (id)initWithSession:(id)arg1 pluginType:(id)arg2 primaryPluginType:(id)arg3 pluginBundle:(struct __CFBundle *)arg4;
+- (id)initWithSession:(id)arg1 pluginType:(id)arg2 primaryPluginType:(id)arg3 pluginBundle:(struct __CFBundle *)arg4 applicationPath:(id)arg5;
 - (void)sendBrowserContentFilterServerRequest;
 - (void)sendEnvironmentEventComplete:(long long)arg1;
 - (BOOL)sendSetPersistentData:(struct __CFDictionary *)arg1 ofType:(long long)arg2;

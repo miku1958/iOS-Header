@@ -21,7 +21,8 @@
 @property (strong) id context; // @synthesize context=_context;
 @property (strong) IMLocalObject *localObject; // @synthesize localObject=_localObject;
 @property BOOL shouldBoost; // @synthesize shouldBoost=_boost;
-@property NSObject<OS_xpc_object> *xpcMessage; // @synthesize xpcMessage=_xpcMessage;
+@property (strong) NSObject<OS_voucher> *voucher; // @synthesize voucher=_voucher;
+@property (strong) NSObject<OS_xpc_object> *xpcMessage; // @synthesize xpcMessage=_xpcMessage;
 
 - (void)dealloc;
 - (id)init;

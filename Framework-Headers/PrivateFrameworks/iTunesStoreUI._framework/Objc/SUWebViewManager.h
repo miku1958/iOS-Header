@@ -31,6 +31,7 @@
     NSMutableSet *_requireCellularURLs;
     NSMapTable *_scriptInterfaces;
     SUScriptWindowContext *_scriptWindowContext;
+    BOOL _shouldSignRequests;
     NSSet *_suppressCookiesHosts;
     long long _usingNetworkCount;
     struct __CFSet *_webFramesPendingInitialRequest;
@@ -48,6 +49,7 @@
 @property (strong, nonatomic) id originalResourceLoadDelegate; // @synthesize originalResourceLoadDelegate=_originalResourceLoadDelegate;
 @property (strong, nonatomic) id originalUIDelegate; // @synthesize originalUIDelegate=_originalUIDelegate;
 @property (strong, nonatomic) SUScriptWindowContext *scriptWindowContext; // @synthesize scriptWindowContext=_scriptWindowContext;
+@property (nonatomic) BOOL shouldSignRequests; // @synthesize shouldSignRequests=_shouldSignRequests;
 @property (readonly) Class superclass;
 @property (readonly, weak, nonatomic) UIWebView *webView; // @synthesize webView=_webView;
 
@@ -58,6 +60,7 @@
 - (id)_delegate;
 - (void)_endUsingNetwork;
 - (void)_enumerateScriptInterfacesWithBlock:(CDUnknownBlockType)arg1;
+- (id)_locateStorePageViewController;
 - (BOOL)_presentModalAlertWithMessage:(id)arg1 includingCancelButton:(BOOL)arg2 configurationHandler:(CDUnknownBlockType)arg3;
 - (void)_requestWebScriptReloadWithContext:(id)arg1;
 - (id)_userIdentifier;

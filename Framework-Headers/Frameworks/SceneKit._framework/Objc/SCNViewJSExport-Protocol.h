@@ -6,19 +6,23 @@
 
 #import <SceneKit/JSExport-Protocol.h>
 
-@class SCNNode, SCNScene;
+@class SCNCameraController, SCNNode, SCNScene;
+@protocol SCNCameraControlConfiguration;
 
 @protocol SCNViewJSExport <JSExport>
 
 @property (nonatomic) BOOL allowsCameraControl;
 @property (nonatomic) unsigned long long antialiasingMode;
 @property (copy, nonatomic) id backgroundColor;
+@property (readonly, nonatomic) id<SCNCameraControlConfiguration> cameraControlConfiguration;
 @property (nonatomic) double currentTime;
+@property (readonly, nonatomic) SCNCameraController *defaultCameraController;
 @property (nonatomic) id delegate;
 @property (nonatomic) BOOL loops;
 @property (nonatomic, getter=isPlaying) BOOL playing;
 @property (strong, nonatomic) SCNNode *pointOfView;
 @property (nonatomic) long long preferredFramesPerSecond;
+@property (nonatomic) BOOL rendersContinuously;
 @property (strong, nonatomic) SCNScene *scene;
 @property (nonatomic) BOOL showsStatistics;
 

@@ -8,12 +8,7 @@
 
 @interface __PUScrubberViewAccessibility : NSObject
 {
-    struct {
-        long long value;
-        int timescale;
-        unsigned int flags;
-        long long epoch;
-    } __CMTime__;
+    CDStruct_1b6d18a9 __CMTime__;
 }
 
 @end

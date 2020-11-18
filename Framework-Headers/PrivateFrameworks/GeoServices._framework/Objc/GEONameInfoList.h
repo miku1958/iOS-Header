@@ -8,21 +8,23 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEONameInfoList : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_nameInfos;
 }
 
 @property (strong, nonatomic) NSMutableArray *nameInfos; // @synthesize nameInfos=_nameInfos;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)nameInfoType;
+- (void).cxx_destruct;
 - (void)addNameInfo:(id)arg1;
 - (void)clearNameInfos;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

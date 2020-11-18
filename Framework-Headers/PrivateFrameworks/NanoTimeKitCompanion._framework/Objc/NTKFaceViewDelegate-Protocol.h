@@ -6,7 +6,7 @@
 
 #import <NanoTimeKitCompanion/NSObject-Protocol.h>
 
-@class NSDate, NSString;
+@class NSDate, NSString, UIViewController;
 
 @protocol NTKFaceViewDelegate <NSObject>
 - (BOOL)faceViewComplicationIsEmptyForSlot:(NSString *)arg1;
@@ -19,6 +19,7 @@
 - (void)faceViewWantsComplicationKeylineFramesReloaded;
 - (void)faceViewWantsCustomKeylineFramesReloadedForEditMode:(long long)arg1;
 - (void)faceViewWantsStatusBarHidden:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)faceViewWantsToPresentViewController:(UIViewController *)arg1;
 - (void)faceViewWantsUnadornedSnapshotViewRemoved;
 - (void)faceViewWillEnterTimeTravel;
 - (void)faceViewWillExitTimeTravel;

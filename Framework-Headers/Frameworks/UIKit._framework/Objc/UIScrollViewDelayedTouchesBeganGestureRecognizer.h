@@ -16,6 +16,7 @@
     UIView<UIScrollViewDelayedTouchesBeganGestureRecognizerClient> *_client;
 }
 
++ (BOOL)_shouldDefaultToTouches;
 - (void).cxx_destruct;
 - (id)_clientView;
 - (void)_resetGestureRecognizer;

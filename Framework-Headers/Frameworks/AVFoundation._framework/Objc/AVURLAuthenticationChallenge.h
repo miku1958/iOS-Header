@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSURLAuthenticationChallenge.h>
+#import <CFNetwork/NSURLAuthenticationChallenge.h>
 
 #import <AVFoundation/AVAssetResourceLoaderRequest-Protocol.h>
 
@@ -14,8 +14,12 @@
 {
     AVWeakReference *_weakReference;
     NSDictionary *_requestDictionary;
+    unsigned long long _requestID;
+    struct __CFDictionary *_requestInfo;
 }
 
+@property (readonly, nonatomic) unsigned long long _requestID;
+@property (readonly, nonatomic) struct __CFDictionary *_requestInfo; // @synthesize _requestInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -30,6 +34,7 @@
 - (id)init;
 - (id)initWithAuthenticationChallenge:(id)arg1 sender:(id)arg2;
 - (id)initWithAuthenticationChallenge:(id)arg1 sender:(id)arg2 requestDictionary:(id)arg3;
+- (id)initWithAuthenticationChallenge:(id)arg1 sender:(id)arg2 requestInfo:(struct __CFDictionary *)arg3 requestID:(unsigned long long *)arg4;
 - (id)initWithProtectionSpace:(id)arg1 proposedCredential:(id)arg2 previousFailureCount:(long long)arg3 failureResponse:(id)arg4 error:(id)arg5 sender:(id)arg6;
 
 @end

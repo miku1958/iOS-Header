@@ -33,11 +33,15 @@
 @property (nonatomic) long long keyboardType;
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
+@property (nonatomic) long long smartDashesType;
+@property (nonatomic) long long smartInsertDeleteType;
+@property (nonatomic) long long smartQuotesType;
 @property (nonatomic) long long spellCheckingType;
 @property (copy, nonatomic) NSString *stringValue;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *textContentType;
 
++ (id)generatorFieldFont;
 - (void).cxx_destruct;
 - (void)_syncStringValueToLabels;
 - (void)_updateFonts:(id)arg1;

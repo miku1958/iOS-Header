@@ -48,13 +48,16 @@ __attribute__((visibility("hidden")))
 - (void)_request:(id)arg1 didFailWithError:(id)arg2;
 - (void)_request:(id)arg1 didFinishWithResponse:(id)arg2;
 - (id)_requestForID:(id)arg1;
+- (BOOL)_shouldAuthenticateAccountProviderWithIdentifier:(id)arg1;
+- (void)dealloc;
 - (void)dismissViewServiceRemoteViewController:(id)arg1;
 - (void)enqueueViewServiceRequest:(id)arg1 withIdentifier:(id)arg2;
-- (id)init;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (long long)modalPresentationStyle;
 - (void)presentViewServiceRemoteViewController:(id)arg1;
 - (void)viewServiceRemoteViewController:(id)arg1 didCancelRequest:(id)arg2;
 - (void)viewServiceRemoteViewController:(id)arg1 didChooseAdditionalProvidersForRequest:(id)arg2;
+- (void)viewServiceRemoteViewController:(id)arg1 didSelectProviderWithIdentifier:(id)arg2 vetoHandler:(CDUnknownBlockType)arg3;
 - (void)viewServiceRemoteViewController:(id)arg1 didTerminateWithError:(id)arg2;
 - (void)viewServiceRemoteViewController:(id)arg1 request:(id)arg2 didFailWithError:(id)arg3;
 - (void)viewServiceRemoteViewController:(id)arg1 request:(id)arg2 didFinishWithResponse:(id)arg3;

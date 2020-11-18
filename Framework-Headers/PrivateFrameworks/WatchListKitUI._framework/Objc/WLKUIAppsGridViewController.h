@@ -22,6 +22,7 @@
     UIFont *_labelFont;
 }
 
+@property (copy, nonatomic) NSArray *apps; // @synthesize apps=_apps;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -32,7 +33,7 @@
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (id)init;
-- (void)setApps:(id)arg1;
+- (void)setTitle:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 
 @end

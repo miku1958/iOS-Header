@@ -26,6 +26,7 @@
 + (id)notPredicateWithSubpredicate:(id)arg1;
 + (id)orPredicateWithSubpredicates:(id)arg1;
 + (id)predicateForChangeAtKeyPath:(id)arg1;
++ (id)predicateForChangeAtKeyPaths:(id)arg1;
 + (id)predicateForKeyPath:(id)arg1 equalToValue:(id)arg2;
 + (id)predicateForKeyPath:(id)arg1 withFormat:(id)arg2;
 + (id)predicateForKeyPath:(id)arg1 withPredicate:(id)arg2;

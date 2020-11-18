@@ -9,11 +9,12 @@
 #import <PhotosUICore/PXPeopleSuggestionManagerDelegate-Protocol.h>
 #import <PhotosUICore/PXPeopleSummaryDelegate-Protocol.h>
 
-@class NSString, NSTimer, PXAnimatedHeaderView, PXPeopleConfirmationSummaryViewController, PXPeopleSuggestionManager, PXPeopleSuggestionView, UIActivityIndicatorView, UILabel, UIView;
+@class NSString, NSTimer, PXAnimatedHeaderView, PXPeopleConfirmationLoadingView, PXPeopleConfirmationSummaryViewController, PXPeopleSuggestionManager, PXPeopleSuggestionView, UIActivityIndicatorView, UILabel;
 
 @interface PXPeopleConfirmationViewController : UIViewController <PXPeopleSuggestionManagerDelegate, PXPeopleSummaryDelegate>
 {
     BOOL _suggestionsPresented;
+    BOOL _showTypeDebugColor;
     PXPeopleSuggestionManager *_suggestionManager;
     PXPeopleSuggestionView *_suggestionView;
     PXAnimatedHeaderView *_headerView;
@@ -21,10 +22,7 @@
     UILabel *_interimLoadingLabel;
     UIActivityIndicatorView *_interimLoadingIndicator;
     unsigned long long _viewState;
-    UIView *_loadingView;
-    UIView *_loadingStatusView;
-    UILabel *_noneFoundStatusLabel;
-    UIActivityIndicatorView *_initialLoadingIndicator;
+    PXPeopleConfirmationLoadingView *_loadingView;
     PXPeopleConfirmationSummaryViewController *_summaryViewController;
     NSTimer *_loadingDelayTimer;
 }
@@ -34,18 +32,16 @@
 @property (strong, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PXAnimatedHeaderView *headerView; // @synthesize headerView=_headerView;
-@property (strong) UIActivityIndicatorView *initialLoadingIndicator; // @synthesize initialLoadingIndicator=_initialLoadingIndicator;
-@property (strong) UIActivityIndicatorView *interimLoadingIndicator; // @synthesize interimLoadingIndicator=_interimLoadingIndicator;
-@property (strong) UILabel *interimLoadingLabel; // @synthesize interimLoadingLabel=_interimLoadingLabel;
+@property (strong, nonatomic) UIActivityIndicatorView *interimLoadingIndicator; // @synthesize interimLoadingIndicator=_interimLoadingIndicator;
+@property (strong, nonatomic) UILabel *interimLoadingLabel; // @synthesize interimLoadingLabel=_interimLoadingLabel;
 @property (readonly) BOOL isSummaryViewShowing;
-@property (strong) NSTimer *loadingDelayTimer; // @synthesize loadingDelayTimer=_loadingDelayTimer;
-@property (strong) UIView *loadingStatusView; // @synthesize loadingStatusView=_loadingStatusView;
-@property (strong) UIView *loadingView; // @synthesize loadingView=_loadingView;
-@property (strong) UILabel *noneFoundStatusLabel; // @synthesize noneFoundStatusLabel=_noneFoundStatusLabel;
+@property (strong, nonatomic) NSTimer *loadingDelayTimer; // @synthesize loadingDelayTimer=_loadingDelayTimer;
+@property (strong, nonatomic) PXPeopleConfirmationLoadingView *loadingView; // @synthesize loadingView=_loadingView;
+@property (nonatomic) BOOL showTypeDebugColor; // @synthesize showTypeDebugColor=_showTypeDebugColor;
 @property (readonly) PXPeopleSuggestionManager *suggestionManager; // @synthesize suggestionManager=_suggestionManager;
 @property (strong, nonatomic) PXPeopleSuggestionView *suggestionView; // @synthesize suggestionView=_suggestionView;
-@property BOOL suggestionsPresented; // @synthesize suggestionsPresented=_suggestionsPresented;
-@property (strong) PXPeopleConfirmationSummaryViewController *summaryViewController; // @synthesize summaryViewController=_summaryViewController;
+@property (nonatomic) BOOL suggestionsPresented; // @synthesize suggestionsPresented=_suggestionsPresented;
+@property (strong, nonatomic) PXPeopleConfirmationSummaryViewController *summaryViewController; // @synthesize summaryViewController=_summaryViewController;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long viewState; // @synthesize viewState=_viewState;
 
@@ -58,19 +54,19 @@
 - (void)displaySummary;
 - (void)doneTapped:(id)arg1;
 - (id)initWithPerson:(id)arg1;
-- (void)loadingMoreSuggestionsForSuggestionManager:(id)arg1;
 - (void)noMoreSuggestionsAvailableForSuggestionManager:(id)arg1;
 - (void)performUndo:(id)arg1;
 - (id)personForSummaryViewController:(id)arg1;
 - (void)presentSuggestion:(id)arg1 animated:(BOOL)arg2;
 - (void)suggestionDidDisplay;
-- (void)suggestionManager:(id)arg1 hasNewSuggestionAvailable:(id)arg2;
+- (void)suggestionManager:(id)arg1 hasNewSuggestionsAvailable:(id)arg2;
 - (void)undoConfirm:(id)arg1;
 - (void)undoDeny:(id)arg1;
 - (void)updateViewWithViewState:(unsigned long long)arg1;
 - (unsigned long long)userConfirmedCountForSummaryViewController:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)willLoadMoreSuggestionsForSuggestionManager:(id)arg1;
 
 @end
 

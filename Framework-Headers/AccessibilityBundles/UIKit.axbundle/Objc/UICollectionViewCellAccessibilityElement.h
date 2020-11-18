@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (BOOL)_accessibilityBackingElementIsValid;
 - (BOOL)_accessibilityCanBecomeNativeFocused;
+- (id)_accessibilityCollectionViewCellContentSubviews;
 - (void)_accessibilityCopy;
 - (void)_accessibilityCut;
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;
@@ -33,7 +34,7 @@
 - (BOOL)_accessibilityIsScannerGroup;
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (void)_accessibilityPaste;
-- (int)_accessibilityScannerActivateBehavior;
+- (long long)_accessibilityScannerActivateBehavior;
 - (void)_accessibilitySelect;
 - (void)_accessibilitySelectAll;
 - (struct _NSRange)_accessibilitySelectedTextRange;
@@ -41,6 +42,7 @@
 - (BOOL)_accessibilitySetNativeFocus;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (BOOL)_accessibilityShouldAttemptScrollToFrameOnParentView;
+- (BOOL)_accessibilityShouldIncludeRowRangeInElementDescription;
 - (BOOL)_accessibilitySupportsActivateAction;
 - (id)_accessibilityTextOperations;
 - (id)_accessibilityTextViewTextOperationResponder;

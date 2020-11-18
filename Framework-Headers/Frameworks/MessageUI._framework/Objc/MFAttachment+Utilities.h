@@ -38,8 +38,8 @@
 - (BOOL)isDisplayableByWebKit;
 - (BOOL)isDisplayableImage;
 - (BOOL)isDisplayableInline;
-- (BOOL)isDisplayableInlineWithData:(id)arg1;
 - (BOOL)isDisplayableInsidePlugin;
+- (BOOL)isDisplayableSinglePagePDFFile;
 - (BOOL)isMedia;
 - (BOOL)isPDFFile;
 - (BOOL)isRFC822;

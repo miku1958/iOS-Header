@@ -49,6 +49,7 @@
 - (id)allNotificationRequests;
 - (void)clearAllSections;
 - (void)clearSectionWithIdentifier:(id)arg1;
+- (BOOL)containsNotificationRequest:(id)arg1;
 - (id)dateForSectionIdentifier:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

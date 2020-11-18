@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -17,7 +17,7 @@
 @property (strong) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (strong) NSString *coreSpotlightUniqueIdentifier; // @synthesize coreSpotlightUniqueIdentifier=_coreSpotlightUniqueIdentifier;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

@@ -14,16 +14,22 @@
     int _parentID;
     long long _changeType;
     WebBookmark *_bookmark;
+    unsigned long long _modifiedAttributes;
 }
 
 @property (readonly, nonatomic) WebBookmark *bookmark; // @synthesize bookmark=_bookmark;
 @property (nonatomic) int bookmarkID; // @synthesize bookmarkID=_bookmarkID;
 @property (readonly, nonatomic) long long changeType; // @synthesize changeType=_changeType;
 @property (readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly, nonatomic) unsigned long long modifiedAttributes; // @synthesize modifiedAttributes=_modifiedAttributes;
 @property (nonatomic) int parentID; // @synthesize parentID=_parentID;
 
 + (id)bookmarkAddChangeWithBookmark:(id)arg1;
++ (id)bookmarkModifyChangeWithBookmark:(id)arg1;
 - (void).cxx_destruct;
+- (void)_setModifiedAttributesIfSupported;
+- (void)applyModificationsToBookmark:(id)arg1;
+- (BOOL)attributesMarkedAsModify:(unsigned long long)arg1;
 - (id)initWithBookmark:(id)arg1 bookmarkID:(int)arg2 parentID:(int)arg3 changeType:(long long)arg4;
 - (id)initWithBookmarkID:(int)arg1 parentID:(int)arg2 changeType:(long long)arg3;
 - (id)initWithDictionaryRepresentation:(id)arg1;

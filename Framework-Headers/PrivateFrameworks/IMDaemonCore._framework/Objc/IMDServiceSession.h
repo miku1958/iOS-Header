@@ -10,7 +10,8 @@
 #import <IMDaemonCore/IMServiceSessionProtocol-Protocol.h>
 #import <IMDaemonCore/IMSystemMonitorListener-Protocol.h>
 
-@class IMConnectionMonitor, IMDAccount, IMDService, IMSystemProxySettingsFetcher, IMTimer, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSRecursiveLock, NSString, NSTimer;
+@class IMConnectionMonitor, IMDAccount, IMDService, IMSystemProxySettingsFetcher, IMTimer, IMTimingCollection, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSRecursiveLock, NSString, NSTimer;
+@protocol IMDAutoReplying;
 
 @interface IMDServiceSession : NSObject <IMSystemMonitorListener, IMConnectionMonitorDelegate, IMServiceSessionProtocol>
 {
@@ -28,9 +29,12 @@
     IMTimer *_messageRoutingTimer;
     IMTimer *_messageExpireStateTimer;
     IMTimer *_messageWatchdogTimer;
+    id<IMDAutoReplying> _messageAutoReplier;
     NSTimer *_storageTimer;
     NSMutableSet *_messagesReceivedDuringStorage;
     unsigned long long _pendingReadReceiptFromStorageCount;
+    IMTimingCollection *_timingComingBackFromStorage;
+    unsigned long long _messagesProcessedComingBackFromStorage;
     IMConnectionMonitor *_connectionMonitor;
     NSTimer *_reconnectTimer;
     NSString *_loginID;
@@ -94,6 +98,7 @@
 - (void)_abandonPWFetcher;
 - (void)_abandonSystemProxySettingsFetcher;
 - (void)_autoReconnectTimer:(id)arg1;
+- (id)_autoReplier;
 - (void)_callMonitorStateChanged:(id)arg1;
 - (void)_clearAutoReconnectTimer;
 - (void)_clearConnectionMonitor;
@@ -136,6 +141,7 @@
 - (void)_updateConnectionMonitorWithRemoteHost:(id)arg1;
 - (void)_updateExpireStateForMessageGUID:(id)arg1;
 - (void)_updateExpireStateTimerWithInterval:(double)arg1;
+- (void)_updateInputMessage:(id)arg1 forExistingMessage:(id)arg2;
 - (void)_updateRoutingForMessageGUID:(id)arg1 chatGUID:(id)arg2 error:(unsigned int)arg3 account:(id)arg4;
 - (void)_updateRoutingTimerWithInterval:(double)arg1;
 - (void)_updateStorageTimerWithInterval:(double)arg1;
@@ -152,6 +158,8 @@
 - (void)autoLogin;
 - (void)autoReconnect;
 - (void)autoReconnectWithAccount:(id)arg1;
+- (void)autoReplier:(id)arg1 generatedAutoReplyText:(id)arg2 forChat:(id)arg3;
+- (void)autoReplier:(id)arg1 receivedUrgentRequestForMessages:(id)arg2;
 - (void)beginBuddyChanges;
 - (BOOL)blockIdleStatus;
 - (id)blockList;
@@ -179,6 +187,8 @@
 - (id)chatRoomForGroupChatIdentifier:(id)arg1;
 - (void)clearLocalProperties;
 - (void)clearPropertiesOfBuddy:(id)arg1;
+- (void)closeSessionChat:(id)arg1 style:(unsigned char)arg2;
+- (void)closeSessionChatID:(id)arg1 identifier:(id)arg2 style:(unsigned char)arg3;
 - (void)connectionMonitorDidUpdate:(id)arg1;
 - (void)dealloc;
 - (void)declineInvitationToChat:(id)arg1 style:(unsigned char)arg2;
@@ -188,16 +198,18 @@
 - (void)didChangeMemberStatus:(int)arg1 forHandle:(id)arg2 forChat:(id)arg3 style:(unsigned char)arg4;
 - (void)didChangeMemberStatus:(int)arg1 forHandle:(id)arg2 fromHandle:(id)arg3 unformattedNumber:(id)arg4 countryCode:(id)arg5 forChat:(id)arg6 style:(unsigned char)arg7;
 - (void)didChangeMemberStatus:(int)arg1 forHandle:(id)arg2 fromHandle:(id)arg3 unformattedNumber:(id)arg4 countryCode:(id)arg5 forChat:(id)arg6 style:(unsigned char)arg7 account:(id)arg8;
+- (void)didChangeMemberStatus:(int)arg1 forHandle:(id)arg2 fromHandle:(id)arg3 unformattedNumber:(id)arg4 countryCode:(id)arg5 forChat:(id)arg6 style:(unsigned char)arg7 account:(id)arg8 destinationCallerID:(id)arg9;
 - (void)didChangeMemberStatus:(int)arg1 forHandle:(id)arg2 unformattedNumber:(id)arg3 countryCode:(id)arg4 forChat:(id)arg5 style:(unsigned char)arg6;
 - (void)didJoinChat:(id)arg1 style:(unsigned char)arg2;
 - (void)didJoinChat:(id)arg1 style:(unsigned char)arg2 displayName:(id)arg3 groupID:(id)arg4 handleInfo:(id)arg5;
 - (void)didJoinChat:(id)arg1 style:(unsigned char)arg2 displayName:(id)arg3 groupID:(id)arg4 handleInfo:(id)arg5 account:(id)arg6;
+- (void)didJoinChat:(id)arg1 style:(unsigned char)arg2 displayName:(id)arg3 groupID:(id)arg4 handleInfo:(id)arg5 isSpam:(BOOL)arg6 spamExtensionName:(id)arg7;
 - (void)didJoinChat:(id)arg1 style:(unsigned char)arg2 handleInfo:(id)arg3;
 - (void)didJoinChat:(id)arg1 style:(unsigned char)arg2 handleInfo:(id)arg3 account:(id)arg4;
 - (void)didLeaveChat:(id)arg1 style:(unsigned char)arg2;
 - (void)didLeaveChat:(id)arg1 style:(unsigned char)arg2 account:(id)arg3;
 - (void)didReceiveBalloonPayload:(id)arg1 forChat:(id)arg2 style:(unsigned char)arg3 messageGUID:(id)arg4 account:(id)arg5;
-- (void)didReceiveDisplayNameChange:(id)arg1 fromID:(id)arg2 forChat:(id)arg3 style:(unsigned char)arg4 account:(id)arg5;
+- (void)didReceiveDisplayNameChange:(id)arg1 fromID:(id)arg2 toIdentifier:(id)arg3 forChat:(id)arg4 style:(unsigned char)arg5 account:(id)arg6;
 - (void)didReceiveError:(unsigned int)arg1 forMessageID:(id)arg2 forceError:(BOOL)arg3;
 - (void)didReceiveError:(unsigned int)arg1 forMessageID:(id)arg2 forceError:(BOOL)arg3 account:(id)arg4;
 - (void)didReceiveErrorMessage:(id)arg1 forChat:(id)arg2 style:(unsigned char)arg3;
@@ -230,10 +242,12 @@
 - (void)didUpdateChatStatus:(int)arg1 chat:(id)arg2 style:(unsigned char)arg3 account:(id)arg4;
 - (void)didUpdateChatStatus:(int)arg1 chat:(id)arg2 style:(unsigned char)arg3 displayName:(id)arg4 groupID:(id)arg5 handleInfo:(id)arg6;
 - (void)didUpdateChatStatus:(int)arg1 chat:(id)arg2 style:(unsigned char)arg3 displayName:(id)arg4 groupID:(id)arg5 handleInfo:(id)arg6 account:(id)arg7;
+- (void)didUpdateChatStatus:(int)arg1 chat:(id)arg2 style:(unsigned char)arg3 displayName:(id)arg4 groupID:(id)arg5 handleInfo:(id)arg6 account:(id)arg7 isSpam:(BOOL)arg8 spamExtensionName:(id)arg9;
 - (void)didUpdateChatStatus:(int)arg1 chat:(id)arg2 style:(unsigned char)arg3 handleInfo:(id)arg4;
 - (void)disallowReconnection;
 - (void)endBuddyChanges;
 - (void)endMessageSuppression;
+- (void)enqueReplayMessageCallback:(CDUnknownBlockType)arg1;
 - (BOOL)equalID:(id)arg1 andID:(id)arg2;
 - (id)groupChatIdentifierForChatRoom:(id)arg1;
 - (id)groups;
@@ -271,6 +285,7 @@
 - (void)noteBadPassword;
 - (void)noteItemFromStorage:(id)arg1;
 - (void)noteLastItemFromStorage:(id)arg1;
+- (void)noteLastItemProcessed;
 - (void)noteMessagesMarkedAsReadForChatWithGUID:(id)arg1;
 - (void)noteSuppressedMessageUpdate:(id)arg1;
 - (void)notifyDidSendMessageID:(id)arg1;
@@ -307,12 +322,15 @@
 - (void)requestVCWithPerson:(id)arg1 properties:(id)arg2 conference:(id)arg3;
 - (void)respondToVCInvitationWithPerson:(id)arg1 properties:(id)arg2 conference:(id)arg3;
 - (void)resumeBuddyUpdates;
+- (void)scheduleTransactionLogTask:(id)arg1;
 - (void)sendAVMessageToPerson:(id)arg1 sessionID:(unsigned int)arg2 type:(unsigned int)arg3 userInfo:(id)arg4 conference:(id)arg5;
 - (void)sendCommand:(id)arg1 withProperties:(id)arg2 toPerson:(id)arg3;
 - (void)sendCommand:(id)arg1 withProperties:(id)arg2 toPerson:(id)arg3 toChatID:(id)arg4 identifier:(id)arg5 style:(unsigned char)arg6;
 - (void)sendCounterProposalToPerson:(id)arg1 properties:(id)arg2 conference:(id)arg3;
+- (void)sendDeleteCommand:(id)arg1 forChatGUID:(id)arg2;
 - (void)sendFileTransfer:(id)arg1 toPerson:(id)arg2;
 - (void)sendLocationSharingInfo:(id)arg1 toID:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)sendLogDumpMessageAtFilePath:(id)arg1 toRecipient:(id)arg2;
 - (void)sendMessage:(id)arg1 toChat:(id)arg2 style:(unsigned char)arg3;
 - (void)sendMessage:(id)arg1 toChat:(id)arg2 style:(unsigned char)arg3 account:(id)arg4;
 - (void)sendMessage:(id)arg1 toChatID:(id)arg2 identifier:(id)arg3 style:(unsigned char)arg4;

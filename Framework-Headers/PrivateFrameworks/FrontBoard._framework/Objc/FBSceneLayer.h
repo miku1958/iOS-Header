@@ -26,7 +26,6 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *externalSceneID; // @synthesize externalSceneID=_externalSceneID;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) unsigned int identifier;
 @property (nonatomic) double level; // @synthesize level=_level;
 @property (nonatomic) unsigned int sceneID; // @synthesize sceneID=_sceneID;
 @property (readonly) Class superclass;

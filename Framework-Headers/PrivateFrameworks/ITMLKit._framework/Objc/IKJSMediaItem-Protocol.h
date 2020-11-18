@@ -10,6 +10,7 @@
 
 @protocol IKJSMediaItem <JSExport>
 
+@property (strong, nonatomic) NSString *artworkImageSrcset;
 @property (strong, nonatomic) NSString *artworkImageURL;
 @property (strong, nonatomic) NSString *contentRatingDomain;
 @property (strong, nonatomic) NSNumber *contentRatingRanking;

@@ -13,6 +13,7 @@
 
 @optional
 - (void)pickerViewController:(SiriUIObjectPickerViewController *)arg1 didDismissPicker:(UIViewController *)arg2;
+- (void)pickerViewController:(SiriUIObjectPickerViewController *)arg1 didRequestKeyboardWithVisibility:(BOOL)arg2;
 - (void)pickerViewController:(SiriUIObjectPickerViewController *)arg1 didSelectObject:(SAUIDomainObjectPickerSelection *)arg2 fromPicker:(UIViewController *)arg3;
 - (void)pickerViewController:(SiriUIObjectPickerViewController *)arg1 shouldPresentPicker:(UIViewController *)arg2 completion:(void (^)(BOOL))arg3;
 - (void)pickerViewController:(SiriUIObjectPickerViewController *)arg1 willDismissPicker:(UIViewController *)arg2;

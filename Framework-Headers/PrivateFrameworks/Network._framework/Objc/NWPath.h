@@ -8,7 +8,7 @@
 
 #import <Network/NWPrettyDescription-Protocol.h>
 
-@class NSArray, NSString, NSUUID, NWEndpoint, NWInterface, NWParameters;
+@class NSArray, NSString, NSUUID, NWBrowseDescriptor, NWEndpoint, NWInterface, NWParameters;
 @protocol OS_nw_path;
 
 @interface NWPath : NSObject <NWPrettyDescription>
@@ -16,14 +16,18 @@
     NSObject<OS_nw_path> *_internalPath;
 }
 
+@property (readonly, nonatomic) NWBrowseDescriptor *browseDescriptor;
 @property (readonly, nonatomic) NSUUID *clientID;
-@property (strong, nonatomic) NWEndpoint *derivedEndpoint;
+@property (readonly, nonatomic) NWInterface *connectedInterface;
+@property (readonly, nonatomic, getter=isDefunct) BOOL defunct;
 @property (readonly, nonatomic) NWParameters *derivedParameters;
 @property (readonly, nonatomic, getter=isDirect) BOOL direct;
 @property (readonly, nonatomic) NSArray *dnsSearchDomains;
 @property (readonly, nonatomic) NSArray *dnsServers;
 @property (readonly, nonatomic) NSArray *dnsServersAsStrings;
 @property (readonly, nonatomic) int dnsServiceID;
+@property (readonly, nonatomic) NWEndpoint *effectiveLocalEndpoint;
+@property (readonly, nonatomic) NWEndpoint *effectiveRemoteEndpoint;
 @property (readonly, nonatomic, getter=isEligibleForCrazyIvan46) BOOL eligibleForCrazyIvan46;
 @property (readonly, nonatomic) NWEndpoint *endpoint;
 @property (readonly, nonatomic, getter=isExpensive) BOOL expensive;
@@ -35,9 +39,12 @@
 @property (readonly, nonatomic, getter=isFiltered) BOOL filtered;
 @property (readonly, nonatomic, getter=isFlowDivert) BOOL flowDivert;
 @property (readonly, nonatomic) unsigned int flowDivertControlUnit;
+@property (readonly, nonatomic) NSArray *flows;
+@property (readonly, nonatomic) BOOL hasBrowseDescriptor;
 @property (readonly, nonatomic) NWInterface *interface;
 @property (readonly) NSObject<OS_nw_path> *internalPath; // @synthesize internalPath=_internalPath;
 @property (readonly, nonatomic, getter=isLocal) BOOL local;
+@property (readonly, nonatomic) long long maximumDatagramSize;
 @property (readonly, nonatomic) long long mtu;
 @property (readonly, nonatomic) NWParameters *parameters;
 @property (readonly, nonatomic) unsigned int policyID;
@@ -52,21 +59,29 @@
 @property (readonly, nonatomic) BOOL supportsDNS;
 @property (readonly, nonatomic) BOOL supportsIPv4;
 @property (readonly, nonatomic) BOOL supportsIPv6;
+@property (readonly, nonatomic, getter=isViable) BOOL viable;
 
 + (id)allClientIDs;
++ (id)createStringFromStatus:(long long)arg1;
 + (id)pathForClientID:(id)arg1;
-+ (id)statusToString:(long long)arg1;
++ (id)pathWithProtocolBufferData:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyFlowDivertToken;
+- (id)createProtocolBufferObject;
+- (id)delegateInterface;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
+- (BOOL)ecnEnabled;
+- (BOOL)fastOpenBlocked;
 - (id)genericNetworkAgentsWithDomain:(id)arg1 type:(id)arg2;
 - (BOOL)hasUnsatisfiedFallbackAgent;
 - (id)inactiveNetworkAgentUUIDsOnlyVoluntary:(BOOL)arg1;
 - (id)init;
 - (id)initWithPath:(id)arg1;
 - (BOOL)isEqualToPath:(id)arg1;
+- (BOOL)isLinkQualityAbort;
 - (id)networkAgentsOfType:(Class)arg1;
+- (BOOL)shouldProbeConnectivity;
 - (BOOL)unsatisfiedVoluntaryAgentMatchesAddress:(id)arg1 triggerImmediately:(BOOL *)arg2;
 - (BOOL)usesInterfaceType:(long long)arg1;
 - (BOOL)usesNetworkAgent:(id)arg1;

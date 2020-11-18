@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <CoreMediaStream/NSCopying-Protocol.h>
+#import <CoreMediaStream/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSDate, NSDictionary, NSString;
 @protocol NSCoding;
 
-@interface MSASAssetCollection : NSObject <NSCopying>
+@interface MSASAssetCollection : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _hasComments;
     BOOL _isDeletable;
@@ -64,6 +65,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFileName:(id)arg1 path:(id)arg2;
+- (BOOL)isAutoloopVideo;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isPhotoIris;
 - (BOOL)isVideo;

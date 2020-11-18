@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSMutableArray, NSMutableSet, NSNotificationCenter, NSNumber, PLManagedObjectContext;
 
@@ -93,7 +93,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)postShouldReloadNotification;
 - (void)processContextDidChangeNotification:(id)arg1;
-- (void)processContextDidSaveNotification:(id)arg1;
+- (void)processContextDidSaveObjectIDsNotification:(id)arg1;
 - (void)removeAssetChangeObserver:(id)arg1;
 - (void)removeAssetContainerChangeObserver:(id)arg1 container:(id)arg2;
 - (void)removeAssetContainerListChangeObserver:(id)arg1 containerList:(id)arg2;

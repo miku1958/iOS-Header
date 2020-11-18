@@ -23,7 +23,9 @@
 @property (readonly, nonatomic) NSDictionary *graphs; // @synthesize graphs=_graphs;
 @property (strong, nonatomic) id<GKSceneRootNodeType> rootNode; // @synthesize rootNode=_rootNode;
 
++ (id)_sceneWithFileNamed:(id)arg1 rootNode:(id)arg2;
 + (id)sceneWithFileNamed:(id)arg1;
++ (id)sceneWithFileNamed:(id)arg1 rootNode:(id)arg2;
 - (void).cxx_destruct;
 - (void)addEntity:(id)arg1;
 - (void)addGraph:(id)arg1 name:(id)arg2;

@@ -6,13 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-#import <PhotosUI/PUVideoScrubberControllerDelegate-Protocol.h>
+#import <PhotosUI/PXVideoScrubberControllerDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UIScrollViewDelegate-Protocol.h>
 
-@class AVPlayer, NSString, PUFilmstripView, PUPlayheadView, PUVideoScrubberController, UIImage, UIScrollView;
+@class AVPlayer, NSString, PUFilmstripView, PUPlayheadView, PXVideoScrubberController, UIImage, UIScrollView;
 
-@interface PHVideoScrubberView : UIView <PUVideoScrubberControllerDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate>
+@interface PHVideoScrubberView : UIView <PXVideoScrubberControllerDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate>
 {
     unsigned long long _previousPlayState;
     BOOL __needsUpdateFilmStripView;
@@ -21,7 +21,7 @@
     double _estimatedDuration;
     UIImage *_placeholderThumbnail;
     PUFilmstripView *__filmStripView;
-    PUVideoScrubberController *__videoScrubberController;
+    PXVideoScrubberController *__videoScrubberController;
     UIScrollView *__scrollView;
     PUPlayheadView *__playheadView;
 }
@@ -31,7 +31,7 @@
 @property (nonatomic, setter=_setNeedsUpdateVideoScrubberController:) BOOL _needsUpdateVideoScrubberController; // @synthesize _needsUpdateVideoScrubberController=__needsUpdateVideoScrubberController;
 @property (strong, nonatomic, setter=_setPlayheadView:) PUPlayheadView *_playheadView; // @synthesize _playheadView=__playheadView;
 @property (strong, nonatomic, setter=_setScrollView:) UIScrollView *_scrollView; // @synthesize _scrollView=__scrollView;
-@property (strong, nonatomic, setter=_setVideoScrubberController:) PUVideoScrubberController *_videoScrubberController; // @synthesize _videoScrubberController=__videoScrubberController;
+@property (strong, nonatomic, setter=_setVideoScrubberController:) PXVideoScrubberController *_videoScrubberController; // @synthesize _videoScrubberController=__videoScrubberController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double estimatedDuration; // @synthesize estimatedDuration=_estimatedDuration;
@@ -53,8 +53,6 @@
 - (double)_lengthForDuration:(double)arg1;
 - (BOOL)_needsUpdate;
 - (BOOL)_playerIsPlaying;
-- (void)_startObservingPlayerStatus;
-- (void)_stopObservingPlayerStatus;
 - (void)_updateFilmStripViewIfNeeded;
 - (void)_updateIfNeeded;
 - (void)_updatePlayheadFrame;

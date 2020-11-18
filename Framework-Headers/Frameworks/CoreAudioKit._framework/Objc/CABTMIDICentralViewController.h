@@ -20,6 +20,8 @@
     BOOL didCleanup;
     BOOL inEditingMode;
     NSTimer *connectionTimer;
+    UIBarButtonItem *previousLeftItem;
+    UIBarButtonItem *previousRightItem;
     UIBarButtonItem *editButton;
     UIBarButtonItem *cancelButton;
     UIBarButtonItem *forgetButton;

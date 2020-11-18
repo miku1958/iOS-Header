@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 
 - (void)_triggerAction:(id)arg1;
 - (double)_visibleAlpha;
+- (id)accessibilityHUDRepresentation;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)dealloc;
 - (void)setVisible:(BOOL)arg1;

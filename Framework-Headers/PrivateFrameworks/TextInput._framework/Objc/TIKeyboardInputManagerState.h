@@ -31,6 +31,7 @@
             unsigned int inputStringIsExemptFromChecker:1;
             unsigned int suppressPlaceholderCandidate:1;
             unsigned int usesAutocorrectionLists:1;
+            unsigned int autoquoteType:2;
         } fields;
     } _mask;
     BOOL _shouldAddModifierSymbolsToWordCharacters;
@@ -53,6 +54,7 @@
 }
 
 @property (strong, nonatomic) TIKeyboardCandidate *autocorrectionRecordForInputString; // @synthesize autocorrectionRecordForInputString=_autocorrectionRecordForInputString;
+@property (nonatomic) unsigned long long autoquoteType;
 @property (nonatomic) BOOL canHandleKeyHitTest;
 @property (nonatomic) BOOL commitsAcceptedCandidate;
 @property (nonatomic) BOOL ignoresDeadKeys;

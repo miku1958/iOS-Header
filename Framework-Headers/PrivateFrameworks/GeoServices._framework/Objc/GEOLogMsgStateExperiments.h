@@ -8,25 +8,28 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOABClientConfig, GEOABExperimentAssignment, GEOPDDatasetABStatus;
+@class GEOABClientConfig, GEOABExperimentAssignment, GEOAbAssignInfo, GEOPDDatasetABStatus;
 
 @interface GEOLogMsgStateExperiments : PBCodable <NSCopying>
 {
+    GEOAbAssignInfo *_abAssignInfo;
     GEOABClientConfig *_clientAbExperimentAssignment;
     GEOPDDatasetABStatus *_datasetAbStatus;
     GEOABExperimentAssignment *_tilesAbExperimentAssignment;
 }
 
+@property (strong, nonatomic) GEOAbAssignInfo *abAssignInfo; // @synthesize abAssignInfo=_abAssignInfo;
 @property (strong, nonatomic) GEOABClientConfig *clientAbExperimentAssignment; // @synthesize clientAbExperimentAssignment=_clientAbExperimentAssignment;
 @property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus; // @synthesize datasetAbStatus=_datasetAbStatus;
+@property (readonly, nonatomic) BOOL hasAbAssignInfo;
 @property (readonly, nonatomic) BOOL hasClientAbExperimentAssignment;
 @property (readonly, nonatomic) BOOL hasDatasetAbStatus;
 @property (readonly, nonatomic) BOOL hasTilesAbExperimentAssignment;
 @property (strong, nonatomic) GEOABExperimentAssignment *tilesAbExperimentAssignment; // @synthesize tilesAbExperimentAssignment=_tilesAbExperimentAssignment;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

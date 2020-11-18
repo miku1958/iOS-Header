@@ -31,6 +31,7 @@
 + (void)enableBluetoothAndWiFi;
 - (void).cxx_destruct;
 - (void)attemptAutoUnlock;
+- (void)authPromptInfoWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)autoUnlockStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)beganAttemptWithDevice:(id)arg1;
 - (void)cancelAutoUnlock;

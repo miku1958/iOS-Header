@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (int)_accessibilityScannerGroupTraits;
+- (unsigned long long)_accessibilityScannerGroupTraits;
 - (void)_stepSelectedCandidateInDirection:(BOOL)arg1;
 - (long long)accessibilityNavigationStyle;
 - (void)candidateListSelectionDidChange:(id)arg1;

@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilitySetImageNames;
+- (void)_accessibilitySetImageNameForImage:(id)arg1 options:(unsigned long long)arg2;
 - (id)_axIdentificationForMask:(unsigned long long)arg1;
 - (id)_axLabelForMask:(unsigned long long)arg1;
 - (id)statusIndicatorImageWithOptions:(unsigned long long)arg1;

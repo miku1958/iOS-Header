@@ -7,7 +7,8 @@
 #import <MultipeerConnectivity/NSObject-Protocol.h>
 #import <MultipeerConnectivity/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, UIFocusAnimationCoordinator, UITableView, UITableViewCell, UITableViewFocusUpdateContext, UIView;
+@class NSArray, NSIndexPath, NSString, UIFocusAnimationCoordinator, UISwipeActionsConfiguration, UITableView, UITableViewCell, UITableViewFocusUpdateContext, UIView;
+@protocol UISpringLoadedInteractionContext;
 
 @protocol UITableViewDelegate <NSObject, UIScrollViewDelegate>
 
@@ -35,13 +36,16 @@
 - (double)tableView:(UITableView *)arg1 heightForHeaderInSection:(long long)arg2;
 - (double)tableView:(UITableView *)arg1 heightForRowAtIndexPath:(NSIndexPath *)arg2;
 - (long long)tableView:(UITableView *)arg1 indentationLevelForRowAtIndexPath:(NSIndexPath *)arg2;
+- (UISwipeActionsConfiguration *)tableView:(UITableView *)arg1 leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)arg2;
 - (void)tableView:(UITableView *)arg1 performAction:(SEL)arg2 forRowAtIndexPath:(NSIndexPath *)arg3 withSender:(id)arg4;
 - (BOOL)tableView:(UITableView *)arg1 shouldHighlightRowAtIndexPath:(NSIndexPath *)arg2;
 - (BOOL)tableView:(UITableView *)arg1 shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)arg2;
 - (BOOL)tableView:(UITableView *)arg1 shouldShowMenuForRowAtIndexPath:(NSIndexPath *)arg2;
+- (BOOL)tableView:(UITableView *)arg1 shouldSpringLoadRowAtIndexPath:(NSIndexPath *)arg2 withContext:(id<UISpringLoadedInteractionContext>)arg3;
 - (BOOL)tableView:(UITableView *)arg1 shouldUpdateFocusInContext:(UITableViewFocusUpdateContext *)arg2;
 - (NSIndexPath *)tableView:(UITableView *)arg1 targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)arg2 toProposedIndexPath:(NSIndexPath *)arg3;
 - (NSString *)tableView:(UITableView *)arg1 titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)arg2;
+- (UISwipeActionsConfiguration *)tableView:(UITableView *)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)arg2;
 - (UIView *)tableView:(UITableView *)arg1 viewForFooterInSection:(long long)arg2;
 - (UIView *)tableView:(UITableView *)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)tableView:(UITableView *)arg1 willBeginEditingRowAtIndexPath:(NSIndexPath *)arg2;

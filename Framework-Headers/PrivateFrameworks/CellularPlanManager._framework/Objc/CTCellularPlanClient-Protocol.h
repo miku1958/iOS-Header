@@ -9,20 +9,24 @@
 @class CTCellularPlanItem, NSData, NSDictionary, NSNumber, NSString;
 
 @protocol CTCellularPlanClient <NSObject>
-- (void)addNewRemotePlan:(void (^)(NSError *))arg1;
-- (void)addNewRemotePlanWithCardData:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)addNewRemotePlanWithIccid:(NSString *)arg1 authCode:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
-- (void)deleteRemoteProfile:(NSData *)arg1;
+- (void)addNewRemotePlan:(BOOL)arg1 userConsent:(long long)arg2 completion:(void (^)(NSError *))arg3;
+- (void)addNewRemotePlanWithAddress:(NSString *)arg1 matchingId:(NSString *)arg2 oid:(NSString *)arg3 confirmationCode:(NSString *)arg4 isPairing:(BOOL)arg5 userConsent:(long long)arg6 completion:(void (^)(NSError *))arg7;
+- (void)addNewRemotePlanWithCardData:(NSString *)arg1 confirmationCode:(NSString *)arg2 isPairing:(BOOL)arg3 userConsent:(long long)arg4 completion:(void (^)(NSError *))arg5;
+- (void)deleteAllRemoteProfiles;
+- (void)deleteRemoteProfile:(NSString *)arg1;
+- (void)didCancelRemotePlan;
 - (void)didDeleteRemotePlanItem:(CTCellularPlanItem *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)didProvisionEsimWithIccid:(NSString *)arg1;
 - (void)didPurchasePlanWithIccid:(NSString *)arg1 downloadProfile:(BOOL)arg2;
-- (void)didPurchaseRemotePlanForCsn:(NSString *)arg1 withIccid:(NSString *)arg2 completion:(void (^)(BOOL))arg3;
+- (void)didPurchaseRemotePlanForEid:(NSString *)arg1 imei:(NSString *)arg2 meid:(NSString *)arg3 iccid:(NSString *)arg4 alternateSmdpFqdn:(NSString *)arg5 completion:(void (^)(BOOL))arg6;
 - (void)didSelectPlanItem:(CTCellularPlanItem *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)didSelectRemotePlanItem:(CTCellularPlanItem *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
-- (void)endSession;
+- (void)eraseAllRemotePlansWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)expirePlan;
 - (void)fetchNewProfilesWithCompletion:(void (^)(BOOL, NSError *))arg1 additionalParameters:(NSDictionary *)arg2;
-- (void)fetchRemotePlanOnly:(NSDictionary *)arg1 url:(NSString *)arg2;
+- (void)fetchRemoteProfiles:(NSString *)arg1;
+- (void)finishRemoteProvisioningWithCompletion:(void (^)(BOOL))arg1;
+- (void)getAutoPlanSelectionWithCompletion:(void (^)(BOOL))arg1;
 - (void)getCurrentPlanType:(void (^)(long long))arg1;
 - (void)getDeviceInfo:(void (^)(NSDictionary *))arg1;
 - (void)getESimServerURL:(void (^)(NSString *))arg1;
@@ -42,15 +46,17 @@
 - (void)manageAccountForRemotePlan:(CTCellularPlanItem *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)mccMncOverride:(void (^)(long long, long long))arg1;
 - (void)openInternalUrlId:(long long)arg1;
+- (void)ping;
 - (void)planItemsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
-- (void)registerHasNewProfileCompletion:(void (^)(BOOL))arg1;
+- (void)registerHasNewProfileCompletion:(void (^)(BOOL, BOOL))arg1;
 - (void)remotePlanItemsWithUpdateFetch:(BOOL)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
-- (void)remotePlanLaunchInfoForCsn:(NSData *)arg1 completion:(void (^)(NSString *, NSString *, NSError *))arg2;
+- (void)remotePlanLaunchInfoForCsn:(NSData *)arg1 completion:(void (^)(NSString *, NSDictionary *, NSError *))arg2;
 - (void)remotePlansSignupParamsForCsn:(NSData *)arg1 completion:(void (^)(NSDictionary *))arg2;
 - (void)remoteSignIdMapForSessionId:(NSString *)arg1 locationRequired:(BOOL)arg2 withCompletion:(void (^)(NSString *, NSError *))arg3;
 - (void)retrieveRequestSettings:(void (^)(NSDictionary *, NSDictionary *, NSDictionary *))arg1;
-- (void)selectRemoteProfile:(NSData *)arg1;
+- (void)selectRemoteProfile:(NSString *)arg1;
 - (void)setActivePlan:(NSData *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)setAutoPlanSelection:(BOOL)arg1;
 - (void)setESimServerURL:(NSString *)arg1;
 - (void)setIMEIPrefix:(NSString *)arg1;
 - (void)setLatitude:(NSNumber *)arg1 andLongitude:(NSNumber *)arg2;
@@ -62,9 +68,10 @@
 - (void)shouldShowAddNewRemotePlanWithFlowType:(void (^)(BOOL, unsigned long long, NSError *))arg1;
 - (void)shouldShowPlanList:(void (^)(BOOL))arg1;
 - (void)signIdMapForSessionId:(NSString *)arg1 locationRequired:(BOOL)arg2 withCompletion:(void (^)(NSString *, NSError *))arg3 latitude:(NSNumber *)arg4 longitude:(NSNumber *)arg5;
-- (void)startSession;
+- (void)startRemoteProvisioningWithCompletion:(void (^)(BOOL))arg1;
 - (void)triggerAddNewDataPlan:(void (^)(NSError *))arg1;
 - (void)updatePlansDatabase;
+- (void)userDidProvideConsentResponse:(BOOL)arg1 iccid:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)willDisplayPlanItems;
 @end
 

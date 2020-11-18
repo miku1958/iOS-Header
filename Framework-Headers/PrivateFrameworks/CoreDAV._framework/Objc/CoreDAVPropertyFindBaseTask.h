@@ -17,9 +17,9 @@
 @property (strong, nonatomic) CoreDAVMultiStatusItem *multiStatus; // @synthesize multiStatus=_multiStatus;
 @property (strong, nonatomic) NSSet *propertiesToFind; // @synthesize propertiesToFind=_propertiesToFind;
 
+- (void).cxx_destruct;
 - (id)additionalHeaderValues;
 - (id)copyDefaultParserForContentType:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)finishCoreDAVTaskWithError:(id)arg1;
 - (id)getTotalFailureError;

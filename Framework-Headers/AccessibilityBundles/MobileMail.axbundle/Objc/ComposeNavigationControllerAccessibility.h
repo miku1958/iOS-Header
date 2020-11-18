@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)setNavigationBarButtonItemsVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setContentVisible:(BOOL)arg1;
 
 @end
 

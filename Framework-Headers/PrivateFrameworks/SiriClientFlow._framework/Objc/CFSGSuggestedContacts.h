@@ -21,7 +21,7 @@
 @property (copy, nonatomic) NSArray *suggestedContactsWithOrigin;
 @property (readonly) Class superclass;
 
-+ (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
++ (id)aceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)suggestedContacts;
 + (id)suggestedContactsWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;

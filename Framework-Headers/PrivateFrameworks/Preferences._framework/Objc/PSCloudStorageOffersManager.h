@@ -14,6 +14,8 @@
 @interface PSCloudStorageOffersManager : NSObject <CommerceRemoteUIDelegateDelegate>
 {
     CommerceRemoteUIDelegate *_commerceDelegate;
+    BOOL _shouldOfferFamilySharePlansOnly;
+    BOOL _skipRetryWithoutToken;
     BOOL _skipCompletionAlert;
     BOOL _supportsModernAlerts;
     id<PSCloudStorageOffersManagerDelegate> _delegate;
@@ -25,7 +27,9 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long requiredStorageThreshold; // @synthesize requiredStorageThreshold=_requiredStorageThreshold;
+@property (nonatomic) BOOL shouldOfferFamilySharePlansOnly; // @synthesize shouldOfferFamilySharePlansOnly=_shouldOfferFamilySharePlansOnly;
 @property (nonatomic) BOOL skipCompletionAlert; // @synthesize skipCompletionAlert=_skipCompletionAlert;
+@property (nonatomic) BOOL skipRetryWithoutToken; // @synthesize skipRetryWithoutToken=_skipRetryWithoutToken;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsModernAlerts; // @synthesize supportsModernAlerts=_supportsModernAlerts;
 

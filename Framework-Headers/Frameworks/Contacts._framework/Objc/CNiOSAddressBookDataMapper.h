@@ -4,25 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Contacts/CNDataMapper-Protocol.h>
 
-@class CNiOSAddressBook, NSString;
+@class CNContactsEnvironment, CNiOSAddressBook, NSString;
+@protocol CNContactsLogger;
 
-__attribute__((visibility("hidden")))
 @interface CNiOSAddressBookDataMapper : NSObject <CNDataMapper>
 {
     CNiOSAddressBook *_addressBook;
+    CNContactsEnvironment *_environment;
+    id<CNContactsLogger> _logger;
 }
 
 @property (readonly, nonatomic) CNiOSAddressBook *addressBook; // @synthesize addressBook=_addressBook;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) CNContactsEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<CNContactsLogger> logger; // @synthesize logger=_logger;
 @property (readonly) Class superclass;
 
++ (id)contactBuffersDecoderForFetchRequest:(id)arg1;
 + (void)initialize;
+- (void).cxx_destruct;
 - (id)_containersMatchingPredicate:(id)arg1 remote:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)_fechAllRecordsInSaveContext:(id)arg1 error:(id *)arg2;
 - (BOOL)_fetchAccountsInSaveContext:(id)arg1 error:(id *)arg2;
@@ -40,34 +46,34 @@ __attribute__((visibility("hidden")))
 - (BOOL)_processGroupsFromSaveContext:(id)arg1 error:(id *)arg2;
 - (BOOL)_processSubgroupMembershipsFromSaveContext:(id)arg1 error:(id *)arg2;
 - (id)accountsMatchingPredicate:(id)arg1 error:(id *)arg2;
-- (id)batchEnumeratorForFetchRequest:(id)arg1;
 - (BOOL)canExecuteSaveRequest:(id)arg1 error:(id *)arg2;
 - (id)changeHistoryWithFetchRequest:(id)arg1 error:(id *)arg2;
-- (BOOL)clearChangeHistoryForClient:(id)arg1 toSequenceNumber:(long long)arg2 error:(id *)arg3;
+- (BOOL)clearChangeHistoryForClientIdentifier:(id)arg1 toChangeAnchor:(id)arg2 error:(id *)arg3;
 - (id)contactIdentifierWithMatchingDictionary:(id)arg1;
+- (id)contactObservableForFetchRequest:(id)arg1;
 - (id)contactWithUserActivityUserInfo:(id)arg1 keysToFetch:(id)arg2;
-- (id)contactsForFetchRequest:(id)arg1 error:(id *)arg2;
-- (id)contactsForFetchRequest:(id)arg1 matchInfos:(id *)arg2 error:(id *)arg3;
-- (id)contactsWithIdentifiers:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
 - (id)containersMatchingPredicate:(id)arg1 error:(id *)arg2;
-- (void)dealloc;
 - (id)defaultContainerIdentifier;
 - (id)defaultContainerIdentifierForAddressBook:(void *)arg1;
 - (id)descriptorForRequiredKeysForMatchingDictionary;
+- (id)encodedContactsCursorForFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)executeFetchRequest:(id)arg1 progressiveResults:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)executeSaveRequest:(id)arg1 error:(id *)arg2;
 - (BOOL)executeSaveRequest:(id)arg1 response:(id *)arg2 error:(id *)arg3;
+- (BOOL)fetchAndDecodeEncodedContactsForFetchRequest:(id)arg1 error:(id *)arg2 cancelationToken:(id)arg3 batchHandler:(CDUnknownBlockType)arg4;
+- (BOOL)fetchContactsForFetchRequest:(id)arg1 error:(id *)arg2 batchHandler:(CDUnknownBlockType)arg3;
+- (BOOL)fetchEncodedContactsForFetchRequest:(id)arg1 error:(id *)arg2 cancelationToken:(id)arg3 batchHandler:(CDUnknownBlockType)arg4;
 - (id)groupsMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)groupsWithIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)identifierWithError:(id *)arg1;
 - (id)init;
 - (id)initWithAddressBook:(id)arg1;
 - (id)initWithContactsEnvironment:(id)arg1;
+- (id)initWithContactsEnvironment:(id)arg1 addressBook:(id)arg2;
 - (id)matchingDictionaryForContact:(id)arg1;
-- (id)meContactIdentifierWithError:(id *)arg1;
-- (id)membersOfGroupWithIdentifier:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
+- (id)meContactIdentifiers:(id *)arg1;
 - (id)policyForContainerWithIdentifier:(id)arg1 error:(id *)arg2;
-- (BOOL)registerClientForChangeHistory:(id)arg1 error:(id *)arg2;
+- (BOOL)registerChangeHistoryClientIdentifier:(id)arg1 error:(id *)arg2;
 - (void)requestAccessForEntityType:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)requestAccessForEntityType:(long long)arg1 error:(id *)arg2;
 - (id)serverSearchContainersMatchingPredicate:(id)arg1 error:(id *)arg2;
@@ -76,7 +82,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)setMeContact:(id)arg1 forContainer:(id)arg2 error:(id *)arg3;
 - (id)subgroupsOfGroupWithIdentifier:(id)arg1 error:(id *)arg2;
 - (id)unifiedContactCountWithError:(id *)arg1;
-- (BOOL)unregisterClientForChangeHistory:(id)arg1 error:(id *)arg2;
+- (BOOL)unregisterChangeHistoryClientIdentifier:(id)arg1 error:(id *)arg2;
 - (id)usedLabelsForPropertyWithKey:(id)arg1 error:(id *)arg2;
 - (id)userActivityUserInfoForContact:(id)arg1;
 

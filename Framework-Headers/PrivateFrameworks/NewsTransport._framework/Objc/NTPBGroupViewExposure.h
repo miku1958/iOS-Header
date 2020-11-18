@@ -12,43 +12,69 @@
 
 @interface NTPBGroupViewExposure : PBCodable <NSCopying>
 {
+    int _feedAutoSubscribeType;
     NSData *_feedViewExposureId;
     int _groupArticleCountInForYou;
     int _groupDisplayRankInForYou;
     NSString *_groupFeedId;
+    int _groupFormationReason;
+    int _groupPresentationReason;
     int _groupType;
     NSMutableArray *_groupedArticleIds;
+    int _topStoryMandatoryArticleCount;
+    int _topStoryOptionalArticleCount;
     BOOL _isSubscribedToGroupFeed;
     struct {
+        unsigned int feedAutoSubscribeType:1;
         unsigned int groupArticleCountInForYou:1;
         unsigned int groupDisplayRankInForYou:1;
+        unsigned int groupFormationReason:1;
+        unsigned int groupPresentationReason:1;
         unsigned int groupType:1;
+        unsigned int topStoryMandatoryArticleCount:1;
+        unsigned int topStoryOptionalArticleCount:1;
         unsigned int isSubscribedToGroupFeed:1;
     } _has;
 }
 
+@property (nonatomic) int feedAutoSubscribeType; // @synthesize feedAutoSubscribeType=_feedAutoSubscribeType;
 @property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
 @property (nonatomic) int groupArticleCountInForYou; // @synthesize groupArticleCountInForYou=_groupArticleCountInForYou;
 @property (nonatomic) int groupDisplayRankInForYou; // @synthesize groupDisplayRankInForYou=_groupDisplayRankInForYou;
 @property (strong, nonatomic) NSString *groupFeedId; // @synthesize groupFeedId=_groupFeedId;
+@property (nonatomic) int groupFormationReason; // @synthesize groupFormationReason=_groupFormationReason;
+@property (nonatomic) int groupPresentationReason; // @synthesize groupPresentationReason=_groupPresentationReason;
 @property (nonatomic) int groupType; // @synthesize groupType=_groupType;
 @property (strong, nonatomic) NSMutableArray *groupedArticleIds; // @synthesize groupedArticleIds=_groupedArticleIds;
+@property (nonatomic) BOOL hasFeedAutoSubscribeType;
 @property (readonly, nonatomic) BOOL hasFeedViewExposureId;
 @property (nonatomic) BOOL hasGroupArticleCountInForYou;
 @property (nonatomic) BOOL hasGroupDisplayRankInForYou;
 @property (readonly, nonatomic) BOOL hasGroupFeedId;
+@property (nonatomic) BOOL hasGroupFormationReason;
+@property (nonatomic) BOOL hasGroupPresentationReason;
 @property (nonatomic) BOOL hasGroupType;
 @property (nonatomic) BOOL hasIsSubscribedToGroupFeed;
+@property (nonatomic) BOOL hasTopStoryMandatoryArticleCount;
+@property (nonatomic) BOOL hasTopStoryOptionalArticleCount;
 @property (nonatomic) BOOL isSubscribedToGroupFeed; // @synthesize isSubscribedToGroupFeed=_isSubscribedToGroupFeed;
+@property (nonatomic) int topStoryMandatoryArticleCount; // @synthesize topStoryMandatoryArticleCount=_topStoryMandatoryArticleCount;
+@property (nonatomic) int topStoryOptionalArticleCount; // @synthesize topStoryOptionalArticleCount=_topStoryOptionalArticleCount;
 
 + (Class)groupedArticleIdsType;
 - (void).cxx_destruct;
+- (int)StringAsFeedAutoSubscribeType:(id)arg1;
+- (int)StringAsGroupFormationReason:(id)arg1;
+- (int)StringAsGroupPresentationReason:(id)arg1;
 - (int)StringAsGroupType:(id)arg1;
 - (void)addGroupedArticleIds:(id)arg1;
 - (void)clearGroupedArticleIds;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)feedAutoSubscribeTypeAsString:(int)arg1;
+- (id)groupFormationReasonAsString:(int)arg1;
+- (id)groupPresentationReasonAsString:(int)arg1;
 - (id)groupTypeAsString:(int)arg1;
 - (id)groupedArticleIdsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)groupedArticleIdsCount;

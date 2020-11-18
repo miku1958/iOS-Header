@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebKitLegacy/DOMDocument.h>
+#import <WebKit/DOMDocument.h>
 
 @interface DOMDocument (DDExtension)
 - (void)dd_resetResults;

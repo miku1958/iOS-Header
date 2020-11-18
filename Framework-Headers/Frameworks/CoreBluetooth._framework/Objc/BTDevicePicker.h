@@ -6,16 +6,16 @@
 
 #import <Foundation/NSObject.h>
 
-#import <CoreBluetooth/UIAlertViewDelegate-Protocol.h>
 #import <CoreBluetooth/UITableViewDataSource-Protocol.h>
 #import <CoreBluetooth/UITableViewDelegate-Protocol.h>
 
-@class BluetoothManager, NSMutableArray, NSPredicate, NSString, PSSpecifierStub, UIAlertView, UITableView;
+@class BluetoothManager, NSMutableArray, NSPredicate, NSString, PSSpecifierStub, UIAlertController, UITableView, UIWindow;
 @protocol BTDevicePickerDelegate;
 
-@interface BTDevicePicker : NSObject <UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface BTDevicePicker : NSObject <UITableViewDelegate, UITableViewDataSource>
 {
-    UIAlertView *_alertView;
+    UIAlertController *_alertView;
+    UIWindow *_alertWindow;
     UITableView *_tableView;
     NSMutableArray *_deviceList;
     NSString *_title;
@@ -42,11 +42,12 @@
 - (void)_btSSPNumericComparisonHandler:(id)arg1;
 - (void)_btSSPPasskeyDisplayHandler:(id)arg1;
 - (void)alertSheetDismissed:(id)arg1;
-- (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
 - (void)applicationWillResignActive:(id)arg1;
 - (void)authenticationRequestHandler:(id)arg1;
+- (void)cancelDevicePicker;
 - (void)checkAttachTimeout;
 - (void)cleanupPairing;
+- (void)createAlertWindow;
 - (void)dealloc;
 - (void)deviceConnectionCompleteHandler:(id)arg1;
 - (void)deviceDiscoveryStoppedHandler:(id)arg1;

@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface MTLSamplerDescriptorInternal : MTLSamplerDescriptor
 {
-    struct MTLSamplerDescriptorPrivate *_private;
+    struct MTLSamplerDescriptorPrivate _private;
 }
 
 - (unsigned long long)compareFunction;
@@ -46,7 +46,9 @@ __attribute__((visibility("hidden")))
 - (void)setNormalizedCoordinates:(BOOL)arg1;
 - (void)setRAddressMode:(unsigned long long)arg1;
 - (void)setSAddressMode:(unsigned long long)arg1;
+- (void)setSupportArgumentBuffers:(BOOL)arg1;
 - (void)setTAddressMode:(unsigned long long)arg1;
+- (BOOL)supportArgumentBuffers;
 - (unsigned long long)tAddressMode;
 
 @end

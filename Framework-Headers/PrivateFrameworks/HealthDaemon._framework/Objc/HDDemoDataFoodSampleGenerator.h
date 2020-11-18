@@ -22,6 +22,7 @@
     double _nextBloodGlucoseFingerStickSampleTime;
     double _nextBloodGlucoseMealTime;
     double _lastBloodGlucose;
+    double _nextInsulinPumpBasalSampleTime;
     double _carbohydratesLeftToDigest;
     double _bloodGlucoseCarbohydrateGlycemicRate;
     double _bloodGlucoseDecreaseRateDueToInsulin;
@@ -40,6 +41,7 @@
 @property (nonatomic) double nextBloodGlucoseSampleTime; // @synthesize nextBloodGlucoseSampleTime=_nextBloodGlucoseSampleTime;
 @property (nonatomic) double nextBreakfastTime; // @synthesize nextBreakfastTime=_nextBreakfastTime;
 @property (nonatomic) double nextDinnerTime; // @synthesize nextDinnerTime=_nextDinnerTime;
+@property (nonatomic) double nextInsulinPumpBasalSampleTime; // @synthesize nextInsulinPumpBasalSampleTime=_nextInsulinPumpBasalSampleTime;
 @property (nonatomic) double nextLunchTime; // @synthesize nextLunchTime=_nextLunchTime;
 @property (nonatomic) double nextMealTime; // @synthesize nextMealTime=_nextMealTime;
 @property (nonatomic) double nextSnackTime; // @synthesize nextSnackTime=_nextSnackTime;
@@ -53,12 +55,18 @@
 - (BOOL)_isTypicalNutritionTrackingQuantityType:(id)arg1;
 - (id)_mealForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (double)_nextMealTimeForDemoPerson:(id)arg1 atTime:(double)arg2;
+- (double)basalInsulinDeliveryForTotalDailyInsulinInUnits:(double)arg1 timeInterval:(double)arg2;
+- (id)basalInsulinInjectionForDemoPerson:(id)arg1 quantityType:(id)arg2 totalDailyInsulinInUnits:(double)arg3 sampleDate:(id)arg4;
+- (id)basalInsulinPumpDeliveryForDemoPerson:(id)arg1 quantityType:(id)arg2 totalDailyInsulinInUnits:(double)arg3 currentTime:(double)arg4 sampleDate:(id)arg5;
 - (id)bloodGlucoseForDemoPerson:(id)arg1 atTime:(double)arg2;
+- (id)bolusInsulinDeliveryForFoodItems:(id)arg1 totalDailyInsulinInUnits:(double)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (void)generateSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (long long)mealTypeForTime:(double)arg1;
 - (void)setupWithDemoDataGenerator:(id)arg1;
+- (double)totalDailyInsulinTherapyRequirementForDemoPerson:(id)arg1;
 - (id)waterConsumedForDemoPerson:(id)arg1 atTime:(double)arg2;
 
 @end

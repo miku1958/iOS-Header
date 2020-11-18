@@ -17,11 +17,13 @@
     NSArray *_customResponses;
     NSString *_taggedText;
     NSArray *_sentenceEntities;
+    NSArray *_matchedRanges;
 }
 
 @property (strong) NSArray *customResponses; // @synthesize customResponses=_customResponses;
 @property unsigned long long gender; // @synthesize gender=_gender;
 @property (strong) NSString *language; // @synthesize language=_language;
+@property (strong) NSArray *matchedRanges; // @synthesize matchedRanges=_matchedRanges;
 @property (getter=isSensitive) int sensitive; // @synthesize sensitive=_sensitive;
 @property (strong) NSArray *sentenceEntities; // @synthesize sentenceEntities=_sentenceEntities;
 @property unsigned long long sentenceType; // @synthesize sentenceType=_sentenceType;

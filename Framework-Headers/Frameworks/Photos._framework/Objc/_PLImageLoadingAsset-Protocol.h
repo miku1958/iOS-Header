@@ -28,8 +28,10 @@
 - (BOOL)isCloudSharedAsset;
 - (BOOL)isInFlight;
 - (BOOL)isJPEG;
+- (BOOL)isLoopingVideo;
 - (BOOL)isOriginalSRGB;
 - (BOOL)isPartOfBurst;
+- (BOOL)isPrimaryImageFormat;
 - (BOOL)isRAW;
 - (BOOL)isStreamedVideo;
 - (BOOL)isTimelapsePlaceholder;
@@ -42,6 +44,7 @@
 - (int)orientation;
 - (NSString *)originalFileName;
 - (long long)originalImageOrientation;
+- (struct CGSize)originalImageSize;
 - (NSString *)pathForAdjustedSRGBLargeThumbnailFile;
 - (NSString *)pathForAdjustmentDataFile;
 - (NSString *)pathForAdjustmentFile;

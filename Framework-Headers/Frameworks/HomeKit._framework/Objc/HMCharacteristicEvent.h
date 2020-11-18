@@ -6,30 +6,41 @@
 
 #import <HomeKit/HMEvent.h>
 
+#import <HomeKit/HMCharacteristicEventProtocol-Protocol.h>
+#import <HomeKit/NSCopying-Protocol.h>
+#import <HomeKit/NSMutableCopying-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMCharacteristic;
+@class HMCharacteristic, NSString;
 @protocol NSCopying;
 
-@interface HMCharacteristicEvent : HMEvent <NSSecureCoding>
+@interface HMCharacteristicEvent : HMEvent <NSSecureCoding, HMCharacteristicEventProtocol, NSCopying, NSMutableCopying>
 {
     id<NSCopying> _triggerValue;
     HMCharacteristic *_characteristic;
 }
 
-@property (strong, nonatomic) HMCharacteristic *characteristic; // @synthesize characteristic=_characteristic;
+@property (readonly, nonatomic) HMCharacteristic *characteristic; // @synthesize characteristic=_characteristic;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) id<NSCopying> triggerValue; // @synthesize triggerValue=_triggerValue;
 
 + (id)createWithDictionary:(id)arg1 home:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_handleEventUpdatedNotification:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (id)_serializeForAdd;
 - (void)_updateTriggerValue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCharacteristic:(id)arg1 triggerValue:(id)arg2;
-- (id)initWithCharacteristic:(id)arg1 triggerValue:(id)arg2 allowWithoutNotification:(BOOL)arg3;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDict:(id)arg1 characteristic:(id)arg2 triggerValue:(id)arg3;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (void)setCharacteristic:(id)arg1;
 - (void)updateTriggerValue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

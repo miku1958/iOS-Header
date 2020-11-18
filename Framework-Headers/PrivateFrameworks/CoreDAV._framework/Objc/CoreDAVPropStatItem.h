@@ -22,7 +22,7 @@
 @property (strong, nonatomic) CoreDAVLeafItem *status; // @synthesize status=_status;
 
 + (id)copyParseRules;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 

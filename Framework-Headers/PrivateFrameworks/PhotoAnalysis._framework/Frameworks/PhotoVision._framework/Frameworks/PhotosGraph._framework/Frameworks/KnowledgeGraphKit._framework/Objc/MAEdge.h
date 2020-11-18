@@ -26,6 +26,7 @@
 - (void)_setPersistentStorePropertyValue:(id)arg1 forKey:(id)arg2;
 - (void)_updatePersistentStoreElement;
 - (id)commonNode:(id)arg1;
+- (BOOL)conformsToEdgeSchema:(id)arg1;
 - (id)description;
 - (id)init;
 - (id)initWithLabel:(unsigned short)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;

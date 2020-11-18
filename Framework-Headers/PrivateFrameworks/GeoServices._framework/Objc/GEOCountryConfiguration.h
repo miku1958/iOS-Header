@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <GeoServices/_GEOCountryConfigurationServerProxyDelegate-Protocol.h>
@@ -26,6 +26,7 @@
 
 @property (copy, nonatomic) NSString *countryCode;
 @property (readonly, nonatomic) BOOL currentCountrySupportsCarIntegration;
+@property (readonly, nonatomic) BOOL currentCountrySupportsCommute;
 @property (readonly, nonatomic) BOOL currentCountrySupportsDirections;
 @property (readonly, nonatomic) BOOL currentCountrySupportsNavigation;
 @property (readonly, nonatomic) BOOL currentCountrySupportsRouteGenius;
@@ -39,6 +40,7 @@
 + (void)disableServerConnection;
 + (void)setUseLocalProxy:(BOOL)arg1;
 + (id)sharedConfiguration;
+- (void).cxx_destruct;
 - (id)_countryDefaultForKey:(id)arg1 inCountry:(id)arg2 sourcePtr:(long long *)arg3;
 - (id)_defaultForKey:(id)arg1 inCountry:(id)arg2 defaultValue:(id)arg3 sourcePtr:(long long *)arg4;
 - (void)_resetSupportedFeatures;

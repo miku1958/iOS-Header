@@ -8,7 +8,7 @@
 
 #import <Contacts/ABPredicateDelegate-Protocol.h>
 
-@class ABPredicate, CNCancelationToken, NSString;
+@class ABPredicate, CNCancelationToken, CNContactsEnvironment, NSString;
 @protocol CNObserver;
 
 __attribute__((visibility("hidden")))
@@ -16,27 +16,29 @@ __attribute__((visibility("hidden")))
 {
     void *_addressBook;
     unsigned int _sortOrdering;
-    CNCancelationToken *_cancelationToken;
     ABPredicate *_predicate;
     unsigned long long _options;
+    CNContactsEnvironment *_environment;
+    CNCancelationToken *_cancelationToken;
     id<CNObserver> _observer;
 }
 
-@property (nonatomic) void *addressBook;
-@property (strong) CNCancelationToken *cancelationToken; // @synthesize cancelationToken=_cancelationToken;
+@property (readonly, nonatomic) void *addressBook; // @synthesize addressBook=_addressBook;
+@property (readonly, nonatomic) CNCancelationToken *cancelationToken; // @synthesize cancelationToken=_cancelationToken;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) CNContactsEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<CNObserver> observer; // @synthesize observer=_observer;
-@property (nonatomic) unsigned long long options; // @synthesize options=_options;
-@property (strong, nonatomic) ABPredicate *predicate; // @synthesize predicate=_predicate;
-@property (nonatomic) unsigned int sortOrdering; // @synthesize sortOrdering=_sortOrdering;
+@property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
+@property (readonly, nonatomic) ABPredicate *predicate; // @synthesize predicate=_predicate;
+@property (readonly, nonatomic) unsigned int sortOrdering; // @synthesize sortOrdering=_sortOrdering;
 @property (readonly) Class superclass;
 
-+ (id)globalQueue;
-+ (id)observableWithPredicates:(id)arg1 sortOrdering:(unsigned int)arg2 options:(unsigned long long)arg3 addressBook:(void *)arg4;
++ (id)observableWithPredicates:(id)arg1 sortOrdering:(unsigned int)arg2 options:(unsigned long long)arg3 addressBook:(void *)arg4 environment:(id)arg5;
+- (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithPredicate:(id)arg1 sortOrdering:(unsigned int)arg2 options:(unsigned long long)arg3 addressBook:(void *)arg4;
+- (id)initWithPredicate:(id)arg1 sortOrdering:(unsigned int)arg2 options:(unsigned long long)arg3 addressBook:(void *)arg4 environment:(id)arg5;
 - (BOOL)predicateShouldContinue:(id)arg1;
 - (BOOL)predicateShouldContinue:(id)arg1 afterFindingRecord:(void *)arg2;
 - (BOOL)predicateShouldContinue:(id)arg1 afterFindingRecord:(void *)arg2 metadata:(id)arg3;

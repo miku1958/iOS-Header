@@ -4,31 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSMutableSet;
-@protocol OS_dispatch_queue;
+@class NSArray, NSMutableArray;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface FBSSerialQueue : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableArray *_blocks;
+    unsigned long long _enqueueID;
+    unsigned long long _dequeueID;
     NSObject<OS_dispatch_queue> *_targetQueue;
     NSArray *_mainRunLoopModes;
     struct __CFRunLoopSource *_runLoopSource;
     BOOL _runLoopSourceHandlingBlock;
-    NSMutableSet *_enqueueSemaphores;
+    NSObject<OS_dispatch_semaphore> *_synchronizingEnqueueSemaphore;
+    unsigned long long _lastSynchronizingWorkspaceName;
 }
 
 + (id)queueWithDispatchQueue:(id)arg1;
 + (id)queueWithMainRunLoopModes:(id)arg1;
-- (void)_deregisterEnqueueSemaphore:(id)arg1;
 - (BOOL)_hasNext;
 - (id)_initWithDispatchQueue:(id)arg1 mainRunLoopModes:(id)arg2;
 - (BOOL)_performNext;
 - (void)_performNextFromRunLoopSource;
 - (void)_queue_performAsync:(CDUnknownBlockType)arg1;
-- (void)_registerEnqueueSemaphore:(id)arg1;
+- (void)_setSynchronizingEnqueueSemaphore:(id)arg1 forWorkspaceWithName:(unsigned long long)arg2;
 - (void)assertOnQueue;
 - (void)dealloc;
 - (id)description;

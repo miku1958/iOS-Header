@@ -6,7 +6,7 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDecimalNumber, NSNumber, NSString, PKFelicaAppletHistory, PKFelicaTransitAppletState, PKPaymentApplication, PKPaymentWebServiceContext;
+@class NSArray, NSData, NSDate, NSDecimalNumber, NSNumber, NSString, PKFelicaAppletHistory, PKFelicaTransitAppletState, PKPaymentApplication;
 
 @protocol NPKGizmoServerProtocol <NSObject>
 - (void)addPassData:(NSData *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
@@ -19,7 +19,6 @@
 - (void)fetchPrerenderedPassImageWithID:(NSString *)arg1 width:(NSNumber *)arg2 height:(NSNumber *)arg3 compact:(NSNumber *)arg4 reply:(void (^)(NSData *))arg5;
 - (void)fetchRelevantPassTuplesWithReply:(void (^)(NSArray *))arg1;
 - (void)fetchSecureElementIdentifiers:(void (^)(NSArray *))arg1;
-- (void)getSharedWebServiceContextWithCompletion:(void (^)(PKPaymentWebServiceContext *))arg1;
 - (void)handleAddedValue:(NSDecimalNumber *)arg1 forPassUniqueID:(NSString *)arg2;
 - (void)handleEndedServiceModeRequest;
 - (void)handlePaymentTransactions:(NSArray *)arg1 forPassUniqueIDs:(NSArray *)arg2 completion:(void (^)(void))arg3;
@@ -31,6 +30,5 @@
 - (void)setExpressTransitUniqueID:(NSString *)arg1 applicationIdentifier:(NSString *)arg2 completion:(void (^)(unsigned long long, NSString *))arg3;
 - (void)setNeedsRelevancyInformation:(BOOL)arg1;
 - (void)setPreferredPaymentApplicationAID:(NSString *)arg1 forPaymentPassWithID:(NSString *)arg2;
-- (void)setSharedWebServiceContext:(PKPaymentWebServiceContext *)arg1 completion:(void (^)(BOOL))arg2;
 @end
 

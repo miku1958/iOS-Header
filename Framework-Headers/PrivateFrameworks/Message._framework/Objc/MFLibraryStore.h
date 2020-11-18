@@ -80,6 +80,7 @@
 - (void)deleteMessagesOlderThanNumberOfDays:(int)arg1 compact:(BOOL)arg2;
 - (void)doCompact;
 - (unsigned long long)fetchWindow;
+- (unsigned long long)fetchWindowCap;
 - (id)filterMessagesByMembership:(id)arg1;
 - (id)fullBodyDataForMessage:(id)arg1 andHeaderDataIfReadilyAvailable:(id *)arg2 isComplete:(BOOL *)arg3 downloadIfNecessary:(BOOL)arg4 didDownload:(BOOL *)arg5;
 - (id)fullBodyDataForMessage:(id)arg1 andHeaderDataIfReadilyAvailable:(id *)arg2 isComplete:(BOOL *)arg3 downloadIfNecessary:(BOOL)arg4 usePartDatas:(BOOL)arg5 didDownload:(BOOL *)arg6;

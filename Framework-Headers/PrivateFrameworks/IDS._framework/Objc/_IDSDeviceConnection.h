@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 
-@class NSInputStream, NSMutableDictionary, NSOutputStream, NSString;
+@class NSDictionary, NSInputStream, NSMutableDictionary, NSNumber, NSOutputStream, NSString;
 @protocol OS_dispatch_queue;
 
 @interface _IDSDeviceConnection : NSObject <IDSDaemonListenerProtocol>
@@ -27,18 +27,21 @@
     NSInputStream *_inputStreamForSocket;
     NSOutputStream *_outputStreamForSocket;
     BOOL _hasTimedOut;
+    NSNumber *_clientTimeout;
     NSMutableDictionary *_awdMetrics;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) NSInputStream *inputStream;
-@property (readonly, nonatomic) unsigned long long mtu; // @synthesize mtu=_mtu;
-@property (readonly, strong, nonatomic) NSOutputStream *outputStream;
+@property (readonly, nonatomic) NSInputStream *inputStream;
+@property (readonly, nonatomic) NSDictionary *metrics;
+@property (readonly, nonatomic) unsigned long long mtu;
+@property (readonly, nonatomic) NSOutputStream *outputStream;
 @property (readonly, nonatomic) int socket;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_cleanupCompletionBlock;
 - (void)_close;
 - (void)_connect;

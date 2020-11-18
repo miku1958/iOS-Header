@@ -21,10 +21,9 @@
 @property (nonatomic) unsigned long long maximumNumberOfItems; // @synthesize maximumNumberOfItems=_maximumNumberOfItems;
 
 - (void).cxx_destruct;
+- (id)_buildItemProvidersForHome:(id)arg1;
 - (CDUnknownBlockType)_comparatorForSectionIdentifier:(id)arg1;
-- (void)_createItemProvidersWithHome:(id)arg1;
 - (id)_itemForSorting;
-- (id)_itemProviders;
 - (id)initWithDelegate:(id)arg1 itemType:(unsigned long long)arg2;
 - (void)reloadForMaximumNumberOfItemsChange;
 

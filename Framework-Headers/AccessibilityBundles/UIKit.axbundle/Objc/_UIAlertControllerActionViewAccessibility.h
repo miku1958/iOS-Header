@@ -19,6 +19,7 @@
 - (BOOL)_accessibilityUserTestingIsPreferredButton;
 - (id)accessibilityLabel;
 - (id)accessibilityLanguage;
+- (id)accessibilityLocalizedStringTableName;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 

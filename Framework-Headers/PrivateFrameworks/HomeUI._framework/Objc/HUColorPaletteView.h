@@ -9,24 +9,27 @@
 #import <HomeUI/HUQuickControlInteractiveView-Protocol.h>
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class HFColorPalette, HFColorPaletteColor, HUQuickControlViewProfile, NSArray, NSNumber, NSString, UILongPressGestureRecognizer;
+@class HFColorPalette, HFColorPaletteColor, HUQuickControlColorViewProfile, NSArray, NSNumber, NSString, UILongPressGestureRecognizer;
 @protocol HUQuickControlColorPaletteViewInteractionDelegate;
 
 @interface HUColorPaletteView : UIView <UIGestureRecognizerDelegate, HUQuickControlInteractiveView>
 {
     BOOL _userInteractionActive;
     BOOL _colorPaletteHasChanged;
-    HUQuickControlViewProfile *_profile;
+    HUQuickControlColorViewProfile *_profile;
     id<HUQuickControlColorPaletteViewInteractionDelegate> _interactionDelegate;
     HFColorPalette *_colorPalette;
     double _circleRadius;
     NSArray *_colorSwatchViews;
+    HFColorPalette *_calibratedColorPalette;
     HFColorPaletteColor *_selectedColor;
     NSNumber *_trackingColorIndex;
+    NSNumber *_selectedColorBiasIndex;
     UILongPressGestureRecognizer *_gestureRecognizer;
     UILongPressGestureRecognizer *_changePresetRecognizer;
 }
 
+@property (strong, nonatomic) HFColorPalette *calibratedColorPalette; // @synthesize calibratedColorPalette=_calibratedColorPalette;
 @property (strong, nonatomic) UILongPressGestureRecognizer *changePresetRecognizer; // @synthesize changePresetRecognizer=_changePresetRecognizer;
 @property (nonatomic) double circleRadius; // @synthesize circleRadius=_circleRadius;
 @property (strong, nonatomic) HFColorPalette *colorPalette; // @synthesize colorPalette=_colorPalette;
@@ -37,9 +40,10 @@
 @property (strong, nonatomic) UILongPressGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<HUQuickControlColorPaletteViewInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
-@property (copy, nonatomic) HUQuickControlViewProfile *profile; // @synthesize profile=_profile;
+@property (copy, nonatomic) HUQuickControlColorViewProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) id secondaryValue;
 @property (strong, nonatomic) HFColorPaletteColor *selectedColor; // @synthesize selectedColor=_selectedColor;
+@property (strong, nonatomic) NSNumber *selectedColorBiasIndex; // @synthesize selectedColorBiasIndex=_selectedColorBiasIndex;
 @property (nonatomic) long long sizeSubclass;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSNumber *trackingColorIndex; // @synthesize trackingColorIndex=_trackingColorIndex;
@@ -50,9 +54,11 @@
 - (void)_buildColorSwatchViews;
 - (void)_handleGesture:(id)arg1;
 - (void)_handleGestureForVeryLongPress:(id)arg1;
+- (unsigned long long)_indexForSelectedColor:(id)arg1 includeBias:(BOOL)arg2;
 - (void)_setColorPalette:(id)arg1 notifyDelegate:(BOOL)arg2;
 - (void)_setSelectedColor:(id)arg1 notifyDelegate:(BOOL)arg2 updateSelectionState:(BOOL)arg3;
 - (id)_swatchIndexForGestureRecognizer:(id)arg1;
+- (void)_updateCalibratedColorPalette;
 - (void)_updateColorSelectionAnimated:(BOOL)arg1;
 - (void)_updateColorSwatchViewsWithAnimations:(BOOL)arg1;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;

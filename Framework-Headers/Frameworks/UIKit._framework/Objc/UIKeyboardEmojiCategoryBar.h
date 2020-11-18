@@ -6,7 +6,8 @@
 
 #import <UIKit/UIKeyboardEmojiKeyView.h>
 
-@class UIKeyboardEmojiGraphicsTraits, UIView;
+@class UIKeyboardEmojiGraphicsTraits, UIResponder, UIView;
+@protocol UIKBEmojiHitTestResponder;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiCategoryBar : UIKeyboardEmojiKeyView
@@ -16,9 +17,11 @@ __attribute__((visibility("hidden")))
     UIKeyboardEmojiGraphicsTraits *_emojiGraphicsTraits;
     BOOL _isScrubbing;
     double _scrubStartXLocation;
+    UIResponder<UIKBEmojiHitTestResponder> *_hitTestResponder;
 }
 
 @property (strong, nonatomic) UIKeyboardEmojiGraphicsTraits *emojiGraphicsTraits; // @synthesize emojiGraphicsTraits=_emojiGraphicsTraits;
+@property (nonatomic) UIResponder<UIKBEmojiHitTestResponder> *hitTestResponder; // @synthesize hitTestResponder=_hitTestResponder;
 @property (strong, nonatomic) UIView *scrubView; // @synthesize scrubView=_scrubView;
 @property unsigned long long selectedIndex; // @synthesize selectedIndex=_selectedIndex;
 

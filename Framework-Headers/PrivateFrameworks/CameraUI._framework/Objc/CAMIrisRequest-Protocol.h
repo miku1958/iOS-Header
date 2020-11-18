@@ -9,11 +9,11 @@
 @class NSString, NSURL;
 
 @protocol CAMIrisRequest <NSObject>
-- (NSString *)irisIdentifierForOriginal:(BOOL)arg1;
-- (NSURL *)irisLocalVideoDestinationURLForOriginal:(BOOL)arg1;
-- (NSString *)irisStillImagePersistenceUUIDForOriginal:(BOOL)arg1;
-- (NSString *)irisVideoPersistenceUUIDForOriginal:(BOOL)arg1;
-- (BOOL)isOriginalLocalVideoDestinationURL:(NSURL *)arg1;
+- (NSString *)irisIdentifierForEV0:(BOOL)arg1;
+- (NSURL *)irisLocalVideoDestinationURLForEV0:(BOOL)arg1;
+- (NSString *)irisStillImagePersistenceUUIDForEV0:(BOOL)arg1;
+- (NSString *)irisVideoPersistenceUUIDForEV0:(BOOL)arg1;
+- (BOOL)isEV0LocalVideoDestinationURL:(NSURL *)arg1;
 - (BOOL)shouldPersistToLivePhotoDirectory;
 @end
 

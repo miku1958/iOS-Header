@@ -17,6 +17,7 @@
 - (NSString *)dataCollectorDiagnosticDescription;
 - (void)updateCollectionInterval:(double)arg1 forType:(HKObjectType *)arg2;
 - (void)updateHistoricalData;
+- (void)updateHistoricalDataForcedUpdate:(BOOL)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)updateHistoricalDataWithCompletion:(void (^)(BOOL, NSError *))arg1;
 
 @optional

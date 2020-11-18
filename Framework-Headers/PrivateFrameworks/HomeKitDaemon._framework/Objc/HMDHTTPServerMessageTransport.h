@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFHTTPServerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMFHTTPServer, NSArray, NSDictionary, NSMutableArray, NSString, NSUUID;
+@class HMFHTTPServer, NSArray, NSDictionary, NSMutableArray, NSObject, NSString, NSUUID;
 @protocol HMDHTTPServerMessageTransportDelegate, OS_dispatch_queue;
 
-@interface HMDHTTPServerMessageTransport : NSObject <HMFHTTPServerDelegate, HMFTimerDelegate>
+@interface HMDHTTPServerMessageTransport : HMFObject <HMFHTTPServerDelegate, HMFTimerDelegate>
 {
     NSMutableArray *_clientConnections;
     HMFHTTPServer *_server;

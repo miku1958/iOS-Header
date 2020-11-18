@@ -10,7 +10,6 @@
 
 @interface HMDResidentUser : HMDUser
 {
-    NSString *_displayName;
     NSString *_deviceIdentifier;
     unsigned long long _configurationState;
 }
@@ -21,14 +20,17 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)configureWithIDSDevice:(id)arg1;
-- (id)displayName;
 - (void)encodeWithCoder:(id)arg1;
 - (id)encodingRemoteDisplayName;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithUserID:(id)arg1 pairingIdentity:(id)arg2 displayName:(id)arg3 deviceIdentifier:(id)arg4 configurationState:(unsigned long long)arg5;
+- (id)initWithModelObject:(id)arg1;
+- (id)initWithUserID:(id)arg1 displayName:(id)arg2 forHomeIdentifier:(id)arg3 uuid:(id)arg4 pairingIdentity:(id)arg5 deviceIdentifier:(id)arg6 configurationState:(unsigned long long)arg7;
 - (BOOL)mergeFromUser:(id)arg1 dataVersion:(long long)arg2;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1;
+- (BOOL)refreshDisplayName;
+- (BOOL)requiresMakoSupport;
 - (void)setDeviceIdentifier:(id)arg1;
-- (void)setDisplayName:(id)arg1;
+- (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 
 @end
 

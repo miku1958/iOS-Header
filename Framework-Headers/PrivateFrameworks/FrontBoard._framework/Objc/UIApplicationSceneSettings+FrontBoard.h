@@ -10,5 +10,6 @@
 
 @property (readonly, nonatomic, getter=isEffectivelyBackgrounded) BOOL effectivelyBackgrounded;
 
+- (BOOL)fb_isUnderLock;
 @end
 

@@ -42,12 +42,12 @@
 @property (readonly, nonatomic) id<GEOTransitRoutingIncidentMessage> steppingIncidentMessage; // @synthesize steppingIncidentMessage=_steppingIncidentMessage;
 @property (readonly, nonatomic) GEOTransitStep *transitStep; // @synthesize transitStep=_transitStep;
 
+- (void).cxx_destruct;
 - (id)_intermediateListNameForStop:(id)arg1;
 - (id)_largestEntityAtStop:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (unsigned long long)_muidForStop:(id)arg1;
 - (void)_populateArtworksWithDecoderData:(id)arg1;
 - (void)_populateIncidentsWithDecoderData:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned int)distance;
 - (unsigned int)duration;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <DataDetectorsUI/DDActionDelegate-Protocol.h>
 #import <DataDetectorsUI/UIPopoverPresentationControllerDelegate-Protocol.h>
@@ -34,27 +34,34 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) id<DDDetectionControllerInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_cleanup;
 - (void)_didDismissActionViewController;
 - (void)_dismissCurrentViewControllerOurselves;
 - (void)_presentController:(id)arg1;
 - (void)_presentCurrentViewControllerOurselves;
 - (void)_willPresentViewController;
+- (void)action:(id)arg1 becameCancellable:(BOOL)arg2;
 - (void)action:(id)arg1 viewControllerReady:(id)arg2;
 - (void)actionDidFinish:(id)arg1;
+- (BOOL)actionIsCancellable;
 - (id)actionsForURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 - (id)actionsForURL:(id)arg1 result:(struct __DDResult *)arg2 enclosingResult:(struct __DDResult *)arg3 context:(id)arg4;
+- (void)cancelAction;
 - (void)dealloc;
 - (id)defaultActionForURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 - (void)dismissCurrentController;
+- (BOOL)facetimeAvailable;
 - (void)failedToPrepareViewControllerForAction:(id)arg1;
 - (id)init;
+- (BOOL)isPerformingAction;
 - (BOOL)isPresentingInPopover;
 - (void)performAction:(id)arg1;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (void)prepareForPopoverPresentation:(id)arg1;
 - (id)presentationController:(id)arg1 viewControllerForAdaptivePresentationStyle:(long long)arg2;
 - (void)tellDelegateActionDidFinish;
+- (void)viewControllerRequiresModalInPopover:(BOOL)arg1;
 
 @end
 

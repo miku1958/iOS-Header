@@ -23,6 +23,7 @@
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)invalidate;
 - (BOOL)isHoldingUpdates;
+- (BOOL)isHoldingUpdatesForKey:(id)arg1;
 - (void)setNeedsUpdate;
 - (void)updateIfNeeded;
 

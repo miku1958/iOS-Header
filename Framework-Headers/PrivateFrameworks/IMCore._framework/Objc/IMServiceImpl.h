@@ -60,6 +60,7 @@
 @property (readonly, nonatomic) NSDictionary *cardMap;
 @property (strong, nonatomic) NSString *countryCode;
 @property (strong, nonatomic) NSDictionary *defaultAccountSettings; // @synthesize defaultAccountSettings=_defaultSettings;
+@property (readonly, nonatomic, getter=isDiscontinued) BOOL discontinued;
 @property (readonly, nonatomic) NSArray *emailDomains; // @synthesize emailDomains=_emailDomains;
 @property (readonly, nonatomic) BOOL handlesChatInvites; // @synthesize handlesChatInvites=_handlesChatInvites;
 @property (readonly, nonatomic) BOOL ignoresNetworkConnectivity; // @synthesize ignoresNetworkConnectivity=_ignoresNetworkConnectivity;

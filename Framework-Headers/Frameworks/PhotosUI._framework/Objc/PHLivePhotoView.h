@@ -20,11 +20,14 @@
     struct {
         BOOL respondsToDidEndPlayingVitality;
         BOOL respondsToDidBeginHinting;
+        BOOL respondsToDidBeginScrubbing;
+        BOOL respondsToDidEndScrubbing;
     } _delegatePrivateFlags;
     long long _currentPlaybackStyle;
     BOOL _muted;
     BOOL __playingVitality;
     BOOL __playbackRequested;
+    BOOL _scrubbing;
     BOOL _shouldApplyTargetReadiness;
     BOOL _showsStatusBorder;
     id<PHLivePhotoViewDelegate> _delegate;
@@ -35,6 +38,7 @@
     ISLivePhotoUIView *_playerView;
     ISLivePhotoPlayer *_player;
     struct CGPoint _scaleAnchorOffset;
+    CDStruct_e83c9415 _trimmedTimeRange;
 }
 
 @property (nonatomic, setter=_setPlaybackRequested:) BOOL _playbackRequested; // @synthesize _playbackRequested=__playbackRequested;
@@ -43,29 +47,35 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PHLivePhotoViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=isDisplayingPhoto) BOOL displayingPhoto;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PHLivePhoto *livePhoto; // @synthesize livePhoto=_livePhoto;
 @property (nonatomic, getter=isMuted) BOOL muted; // @synthesize muted=_muted;
+@property (nonatomic) struct CGImage *overridePhoto;
 @property (strong, nonatomic) UIView *photoView; // @synthesize photoView=_photoView;
 @property (readonly, nonatomic) UIGestureRecognizer *playbackGestureRecognizer;
 @property (strong, nonatomic) ISLivePhotoPlayer *player; // @synthesize player=_player;
 @property (strong, nonatomic) ISLivePhotoUIView *playerView; // @synthesize playerView=_playerView;
 @property (nonatomic) struct CGPoint scaleAnchorOffset; // @synthesize scaleAnchorOffset=_scaleAnchorOffset;
+@property (nonatomic, setter=_setScrubbing:) BOOL scrubbing; // @synthesize scrubbing=_scrubbing;
+@property (nonatomic) CDStruct_1b6d18a9 seekTime;
 @property (nonatomic) BOOL shouldApplyTargetReadiness; // @synthesize shouldApplyTargetReadiness=_shouldApplyTargetReadiness;
 @property (nonatomic) BOOL showsStatusBorder; // @synthesize showsStatusBorder=_showsStatusBorder;
 @property (readonly) Class superclass;
 @property (nonatomic) long long targetReadiness; // @synthesize targetReadiness=_targetReadiness;
+@property (nonatomic) CDStruct_e83c9415 trimmedTimeRange; // @synthesize trimmedTimeRange=_trimmedTimeRange;
 
 + (id)livePhotoBadgeImageWithOptions:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_commonPHLivePhotoViewInitialization;
 - (void)_handlePlayerItemStatusChanged;
 - (void)_playerDidBeginHinting;
-- (void)_updateCurrentPlaybackStyle;
+- (void)_updateCurrentPlaybackStyleAndSeeking;
 - (void)_updatePlayerAudioEnabled;
 - (void)_updatePlayerTargetReadiness;
 - (void)_updatePlayingVitality;
 - (void)_updateStatusBorder;
+- (id)generateSnapshotImage;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;

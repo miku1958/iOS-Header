@@ -13,19 +13,20 @@ __attribute__((visibility("hidden")))
 {
     double _topInset;
     double _bottomInset;
-    unsigned long long _style;
     unsigned long long _presentationMode;
+    struct UIEdgeInsets _peripheryInsets;
 }
 
 @property (readonly) double bottomInset; // @synthesize bottomInset=_bottomInset;
+@property (readonly) struct UIEdgeInsets peripheryInsets; // @synthesize peripheryInsets=_peripheryInsets;
 @property (readonly) unsigned long long presentationMode; // @synthesize presentationMode=_presentationMode;
-@property (readonly) unsigned long long style; // @synthesize style=_style;
 @property (readonly) double topInset; // @synthesize topInset=_topInset;
 
 + (BOOL)supportsSecureCoding;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTopInset:(double)arg1 bottomInset:(double)arg2 style:(unsigned long long)arg3 presentationMode:(unsigned long long)arg4;
+- (id)initWithTopInset:(double)arg1 bottomInset:(double)arg2 presentationMode:(unsigned long long)arg3 peripheryInsets:(struct UIEdgeInsets)arg4;
 
 @end
 

@@ -7,7 +7,12 @@
 #import <UIKit/UIFont.h>
 
 @interface UIFont (TelephonyUI)
++ (id)telephonyUIBodyShortEmphasizedFont;
 + (id)telephonyUIBodyShortFont;
++ (id)telephonyUIBodyShortItalicFont;
++ (id)telephonyUIFontWithDescriptor:(id)arg1;
++ (id)telephonyUIFootnoteShortFont;
 + (id)telephonyUISubheadlineShortFont;
+- (id)telephonyUIFontByAddingCaseSensitiveLayoutEnabledAttribute;
 @end
 

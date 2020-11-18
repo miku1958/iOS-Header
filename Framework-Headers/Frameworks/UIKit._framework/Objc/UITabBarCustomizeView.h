@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     double _gridOffset;
     struct CGRect _firstItemRect;
     UITabBarItem *_selectedBeforeItem;
+    BOOL _isBeingDismissed;
     NSArray *_availableItems;
 }
 
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)itemInTabBarWithTouches:(id)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;
+- (void)setIsBeingDismissed;
 - (void)setTabBar:(id)arg1 currentItems:(id)arg2 availableItems:(id)arg3;
 - (void)tabBarTouchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)tabBarTouchesCancelled:(id)arg1 withEvent:(id)arg2;

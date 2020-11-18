@@ -22,7 +22,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (void)setTimestamp:(unsigned long long)arg1;
 
 @end
 

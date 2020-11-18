@@ -4,39 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class GEOComposedRoute, GEORouteMatch, GEORouteMatcher, NSArray, NSHashTable;
+@class GEOComposedRoute, GEORouteMatch, NSArray, NSHashTable;
 
 @interface VKNavContext : NSObject
 {
     GEOComposedRoute *_route;
     GEORouteMatch *_routeMatch;
-    GEORouteMatcher *_routeMatcher;
     unsigned long long _currentStepIndex;
     struct vector<GEOLocationCoordinate2D, std::__1::allocator<GEOLocationCoordinate2D>> _pointsToFrame;
     NSHashTable *_observers;
     NSArray *_groupedManeuverCounts;
-    unsigned int _alternateRouteStartPointIndex;
-    GEOComposedRoute *_alternateRoute;
+    unsigned long long _navCameraHeadingOverride;
+    struct vector<AdditionalRouteInfo, std::__1::allocator<AdditionalRouteInfo>> _additionalRoutesToFrame;
+    unsigned long long _navigationCameraHeadingOverride;
 }
 
-@property (strong, nonatomic) GEOComposedRoute *alternateRoute; // @synthesize alternateRoute=_alternateRoute;
-@property (nonatomic) unsigned int alternateRouteStartPointIndex; // @synthesize alternateRouteStartPointIndex=_alternateRouteStartPointIndex;
 @property (nonatomic) unsigned long long currentStepIndex; // @synthesize currentStepIndex=_currentStepIndex;
 @property (readonly, nonatomic) unsigned long long groupedManeuverCount; // @dynamic groupedManeuverCount;
 @property (copy, nonatomic) NSArray *groupedManeuverCounts; // @synthesize groupedManeuverCounts=_groupedManeuverCounts;
+@property (nonatomic) unsigned long long navigationCameraHeadingOverride; // @synthesize navigationCameraHeadingOverride=_navigationCameraHeadingOverride;
 @property (readonly, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 @property (strong, nonatomic) GEORouteMatch *routeMatch; // @synthesize routeMatch=_routeMatch;
-@property (readonly, nonatomic) GEORouteMatcher *routeMatcher; // @synthesize routeMatcher=_routeMatcher;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_notifyObserversStateChanged;
 - (void)addObserver:(id)arg1;
 - (void)addPointToFrame:(CDStruct_c3b9c2ee)arg1;
+- (void)addRouteToFrame:(id)arg1 divergenceCoord:(struct PolylineCoordinate)arg2 convergenceCoord:(struct PolylineCoordinate)arg3;
+- (void)clearAdditionalRoutesToFrame;
 - (void)clearPointsToFrame;
 - (void)dealloc;
+- (void)enumerateAdditionalRoutesToFrameUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumeratePointsToFrameUsingBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)removeObserver:(id)arg1;

@@ -7,11 +7,10 @@
 #import <GameCenterUI/GKExtensionHostContext.h>
 
 #import <GameCenterUI/GKGameCenterDashboardHostProtocol-Protocol.h>
-#import <GameCenterUI/GKGameCenterDashboardServiceProtocol-Protocol.h>
 
 @class GKGame, NSString;
 
-@interface GKDashboardExtensionHostContext : GKExtensionHostContext <GKGameCenterDashboardHostProtocol, GKGameCenterDashboardServiceProtocol>
+@interface GKDashboardExtensionHostContext : GKExtensionHostContext <GKGameCenterDashboardHostProtocol>
 {
 }
 
@@ -23,21 +22,7 @@
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
-- (id)extensionObjectProxy;
-- (void)finishWithMatch:(id)arg1;
 - (void)getMethodsImplementedByChallengeEventHandlerDelegate:(CDUnknownBlockType)arg1;
-- (void)hostDidChangeLeaderboardIdentifier:(id)arg1;
-- (void)hostDidChangeLeaderboardTimeScope:(id)arg1;
-- (void)hostDidChangeViewState:(id)arg1;
-- (void)hostDidParseDashboardImageNames:(id)arg1 leaderboardSetNames:(id)arg2 leaderboardNames:(id)arg3;
-- (void)hostSupportsShowingPlayForChallenge:(BOOL)arg1;
-- (void)hostSupportsShowingPlayForTurnBasedMatch:(BOOL)arg1;
-- (void)hostSupportsShowingQuitForTurnBasedMatch:(BOOL)arg1;
-- (void)playPressedForChallenge:(id)arg1;
-- (void)playerQuitMatch:(id)arg1;
-- (void)remoteControllerDidChangeViewState:(id)arg1;
-- (void)remoteControllerDidSelectLeaderboardIdentifier:(id)arg1;
-- (void)remoteControllerDidSelectLeaderboardTimeScope:(id)arg1;
 - (void)requestDashboardLogoImageWithHandler:(CDUnknownBlockType)arg1;
 - (void)requestImagesForLeaderboardSetsWithHandler:(CDUnknownBlockType)arg1;
 - (void)requestImagesForLeaderboardsInSet:(id)arg1 handler:(CDUnknownBlockType)arg2;

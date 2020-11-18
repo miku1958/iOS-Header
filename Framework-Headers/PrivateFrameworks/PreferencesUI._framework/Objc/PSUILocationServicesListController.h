@@ -25,6 +25,7 @@
     FMFSession *_locationSharingSession;
     FMFDevice *_locationSharingDevice;
     NSNumber *_locationSharingEnabled;
+    NSNumber *_isLocationServicesEnabled;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -37,9 +38,11 @@
 + (void)setCoreRoutineAuthorized:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)_cancelConfirmDisableForSpecifier:(id)arg1;
+- (void)_handleAuthenticationForSpecifier:(id)arg1 success:(BOOL)arg2 error:(id)arg3;
 - (BOOL)_isBundleBlacklisted:(id)arg1;
 - (BOOL)_isFindMyDeviceSpecifier:(id)arg1;
 - (void)_locationSharingSpecifierWasTapped:(id)arg1;
+- (void)_pushCoreRoutineViewController;
 - (void)_setEntityAuthorized:(BOOL)arg1 specifier:(id)arg2;
 - (void)_setLocationServicesEnabled:(BOOL)arg1;
 - (BOOL)_shouldEnableLocationSharingSpecifier;
@@ -79,6 +82,7 @@
 - (void)startLocationStatusUpdates;
 - (void)stopLocationStatusUpdates;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (void)updateFindMyFriendsStateBasedOnRestriction;
 - (void)updateForApplicationDidBecomeActive:(id)arg1;
 - (void)updateLocationSharingSpecifiersWithReload:(BOOL)arg1;

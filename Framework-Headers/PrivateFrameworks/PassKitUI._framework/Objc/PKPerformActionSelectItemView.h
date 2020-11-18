@@ -10,7 +10,7 @@
 #import <PassKitUI/UITableViewDataSource-Protocol.h>
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 
-@class NSDateFormatter, NSString, PKPass, PKPaymentPassAction, PKPerformActionSelectItemExpiresHeader, PKSelectedItemActionItem, UITableView;
+@class NSDateFormatter, NSString, PKPass, PKPaymentPassAction, PKPerformActionSelectItemExpiresHeader, PKSelectedItemActionItem, UITableView, UITextField;
 @protocol PKPerformActionViewDelegate;
 
 @interface PKPerformActionSelectItemView : UIView <UITableViewDelegate, UITableViewDataSource, PKPerformActionView>
@@ -24,6 +24,7 @@
     id<PKPerformActionViewDelegate> _delegate;
 }
 
+@property (readonly, nonatomic) UITextField *amountTextField;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKPerformActionViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

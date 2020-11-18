@@ -14,10 +14,9 @@
 
 @property (readonly, nonatomic) BOOL hasTranslucentAppearance;
 
-+ (double)standardMinimumHeightInPopoverView;
+- (double)_totalContentHeightForPreferredContentSize;
 - (void)_updateTranslucentAppearanceIfNeeded;
 - (id)backgroundColorUsingTranslucentAppearance:(BOOL)arg1;
-- (double)minimumHeightInPopoverView;
 - (struct CGSize)preferredContentSize;
 - (void)updateTranslucentAppearance;
 - (void)viewDidAppear:(BOOL)arg1;

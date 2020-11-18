@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AddressBook/ABPredicate.h>
+#import <AddressBookLegacy/ABPredicate.h>
 
-#import <AddressBook/DASearchQueryConsumer-Protocol.h>
+#import <AddressBookLegacy/DASearchQueryConsumer-Protocol.h>
 
 @class DAContactsSearchQuery, DADConnection, NSConditionLock, NSMutableArray, NSString;
 @protocol ABPredicateDelegate;

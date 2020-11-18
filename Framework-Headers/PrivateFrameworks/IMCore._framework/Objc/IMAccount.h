@@ -87,6 +87,7 @@
 @property (readonly, nonatomic) NSArray *addressBookProperties;
 @property (readonly, nonatomic) NSString *addressBookProperty;
 @property (readonly, nonatomic) NSArray *aliases;
+@property (readonly, nonatomic) NSArray *aliasesToRegister;
 @property (strong, nonatomic) NSArray *allowList;
 @property (readonly, nonatomic) BOOL allowsMMSRelay;
 @property (readonly, nonatomic) BOOL allowsSMSRelay;
@@ -101,6 +102,7 @@
 @property (nonatomic) unsigned int blockingMode; // @synthesize blockingMode=_cachedBlockingMode;
 @property (readonly, nonatomic) IMPeople *buddyList; // @synthesize buddyList=_buddyList;
 @property (readonly, nonatomic) BOOL canActivate;
+@property (readonly, nonatomic) BOOL canSendMessages;
 @property (readonly, nonatomic) unsigned long long capabilities; // @synthesize capabilities=_capabilities;
 @property (readonly, nonatomic) NSString *countryCode;
 @property (readonly, nonatomic) NSDictionary *dictionary;
@@ -171,6 +173,7 @@
 + (id)temporaryPasswordForAccount:(id)arg1 forAuthID:(id)arg2 forServiceName:(id)arg3;
 - (void).cxx_destruct;
 - (id)_aliasInfoForAlias:(id)arg1;
+- (BOOL)_aliasIsVisible:(id)arg1;
 - (id)_aliases;
 - (void)_applyChangesToTemporaryCache:(id)arg1;
 - (void)_clearImageCache;
@@ -359,7 +362,7 @@
 - (long long)typeForAlias:(id)arg1;
 - (void)unEnrollDeviceInSMSRelay:(id)arg1;
 - (BOOL)unregisterAccount;
-- (void)unregisterIMHandle:(id)arg1;
+- (void)unregisterIMHandleWithID:(id)arg1;
 - (BOOL)unvalidateAlias:(id)arg1;
 - (BOOL)unvalidateAliases:(id)arg1;
 - (BOOL)updateAuthorizationCredentials:(id)arg1 token:(id)arg2;

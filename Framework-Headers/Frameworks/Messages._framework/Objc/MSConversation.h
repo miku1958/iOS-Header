@@ -6,30 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class MSMessage, NSArray, NSString, NSUUID;
+@class MSMessage, NSArray, NSData, NSString, NSUUID;
 @protocol MSConversationDelegate;
 
 @interface MSConversation : NSObject
 {
     NSUUID *_identifier;
     NSString *_conversationIdentifier;
+    NSData *_engramID;
     MSMessage *_selectedMessage;
     NSUUID *_localParticipantIdentifier;
     NSArray *_remoteParticipantIdentifiers;
+    NSString *_senderAddress;
+    NSArray *_recipientAddresses;
     id<MSConversationDelegate> _delegate;
 }
 
 @property (readonly, nonatomic) NSString *conversationIdentifier; // @synthesize conversationIdentifier=_conversationIdentifier;
 @property (weak, nonatomic) id<MSConversationDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) NSData *engramID; // @synthesize engramID=_engramID;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSUUID *localParticipantIdentifier; // @synthesize localParticipantIdentifier=_localParticipantIdentifier;
+@property (readonly, nonatomic) NSArray *recipientAddresses; // @synthesize recipientAddresses=_recipientAddresses;
 @property (strong, nonatomic) NSArray *remoteParticipantIdentifiers; // @synthesize remoteParticipantIdentifiers=_remoteParticipantIdentifiers;
 @property (strong, nonatomic) MSMessage *selectedMessage; // @synthesize selectedMessage=_selectedMessage;
+@property (readonly, nonatomic) NSString *senderAddress; // @synthesize senderAddress=_senderAddress;
 
 + (id)activeConversation;
 - (void).cxx_destruct;
 - (id)_initWithState:(id)arg1;
 - (void)_insertAttachment:(id)arg1 adamID:(id)arg2 appName:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_insertAttachment:(id)arg1 withAlternateFilename:(id)arg2 skipShelf:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_insertMessage:(id)arg1 localizedChangeDescription:(id)arg2 skipShelf:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_insertMessage:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_insertRichLink:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_insertSticker:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_insertText:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_updateWithState:(id)arg1;
 - (id)context;
 - (id)inputMessagePayload;
@@ -45,7 +57,12 @@
 - (void)insertStickerWithMediaAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)insertText:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)recipientIdentifiers;
-- (id)senderIdentifier;
+- (void)sendAttachment:(id)arg1 withAlternateFilename:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)sendMessage:(id)arg1 localizedChangeDescription:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)sendRichLink:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)sendSticker:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)sendText:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)senderIdentifier;
 - (void)stageMessage:(id)arg1 localizedChangeDescription:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)unstageAllItems;

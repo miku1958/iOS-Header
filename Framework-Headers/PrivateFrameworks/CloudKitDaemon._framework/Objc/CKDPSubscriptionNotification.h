@@ -8,28 +8,35 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPSubscriptionNotificationAlert, NSMutableArray;
+@class CKDPSubscriptionNotificationAlert, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDPSubscriptionNotification : PBCodable <NSCopying>
 {
     NSMutableArray *_additionalFields;
     CKDPSubscriptionNotificationAlert *_alert;
+    NSString *_collapseIdKey;
     BOOL _shouldBadge;
     BOOL _shouldSendContentAvailable;
+    BOOL _shouldSendMutableContent;
     struct {
         unsigned int shouldBadge:1;
         unsigned int shouldSendContentAvailable:1;
+        unsigned int shouldSendMutableContent:1;
     } _has;
 }
 
 @property (strong, nonatomic) NSMutableArray *additionalFields; // @synthesize additionalFields=_additionalFields;
 @property (strong, nonatomic) CKDPSubscriptionNotificationAlert *alert; // @synthesize alert=_alert;
+@property (strong, nonatomic) NSString *collapseIdKey; // @synthesize collapseIdKey=_collapseIdKey;
 @property (readonly, nonatomic) BOOL hasAlert;
+@property (readonly, nonatomic) BOOL hasCollapseIdKey;
 @property (nonatomic) BOOL hasShouldBadge;
 @property (nonatomic) BOOL hasShouldSendContentAvailable;
+@property (nonatomic) BOOL hasShouldSendMutableContent;
 @property (nonatomic) BOOL shouldBadge; // @synthesize shouldBadge=_shouldBadge;
 @property (nonatomic) BOOL shouldSendContentAvailable; // @synthesize shouldSendContentAvailable=_shouldSendContentAvailable;
+@property (nonatomic) BOOL shouldSendMutableContent; // @synthesize shouldSendMutableContent=_shouldSendMutableContent;
 
 + (Class)additionalFieldsType;
 - (void).cxx_destruct;

@@ -8,20 +8,10 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, NTPBDate, NTPBRecordBase;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort, NSMutableArray, NSString, NTPBDate, NTPBRecordBase;
 
 @interface NTPBArticleRecord : PBCodable <NSCopying>
 {
-    struct {
-        unsigned long long *list;
-        unsigned long long count;
-        unsigned long long size;
-    } _topicFlags;
-    struct {
-        double *list;
-        unsigned long long count;
-        unsigned long long size;
-    } _topicScores;
     long long _backendArticleVersion;
     long long _behaviorFlags;
     long long _minimumNewsVersion;
@@ -48,6 +38,7 @@
     NSString *_excerptURL;
     NSString *_flintDocumentURL;
     NSMutableArray *_flintFontResourceIDs;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *_globalCohort;
     NSMutableArray *_iAdCategories;
     NSMutableArray *_iAdKeywords;
     NSMutableArray *_iAdSectionIDs;
@@ -57,6 +48,7 @@
     NSString *_referencedArticleID;
     NSMutableArray *_relatedArticleIDs;
     NSString *_shortExcerpt;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *_sourceChannelCohort;
     NSString *_sourceChannelTagID;
     int _storyType;
     NSString *_subtitle;
@@ -72,7 +64,7 @@
     NSString *_thumbnailWidgetTaggedURL;
     NSString *_thumbnailWidgetURL;
     NSString *_title;
-    NSMutableArray *_topicIDs;
+    NSMutableArray *_topics;
     NSString *_videoURL;
     BOOL _isDraft;
     BOOL _isFeatureCandidate;
@@ -116,6 +108,7 @@
 @property (strong, nonatomic) NSString *excerptURL; // @synthesize excerptURL=_excerptURL;
 @property (strong, nonatomic) NSString *flintDocumentURL; // @synthesize flintDocumentURL=_flintDocumentURL;
 @property (strong, nonatomic) NSMutableArray *flintFontResourceIDs; // @synthesize flintFontResourceIDs=_flintFontResourceIDs;
+@property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *globalCohort; // @synthesize globalCohort=_globalCohort;
 @property (readonly, nonatomic) BOOL hasAccessoryText;
 @property (nonatomic) BOOL hasBackendArticleVersion;
 @property (readonly, nonatomic) BOOL hasBase;
@@ -127,6 +120,7 @@
 @property (readonly, nonatomic) BOOL hasDisplayTopicTagID;
 @property (readonly, nonatomic) BOOL hasExcerptURL;
 @property (readonly, nonatomic) BOOL hasFlintDocumentURL;
+@property (readonly, nonatomic) BOOL hasGlobalCohort;
 @property (nonatomic) BOOL hasIsDraft;
 @property (nonatomic) BOOL hasIsFeatureCandidate;
 @property (nonatomic) BOOL hasIsPaid;
@@ -137,6 +131,7 @@
 @property (nonatomic) BOOL hasPublisherArticleVersion;
 @property (readonly, nonatomic) BOOL hasReferencedArticleID;
 @property (readonly, nonatomic) BOOL hasShortExcerpt;
+@property (readonly, nonatomic) BOOL hasSourceChannelCohort;
 @property (readonly, nonatomic) BOOL hasSourceChannelTagID;
 @property (nonatomic) BOOL hasStoryType;
 @property (readonly, nonatomic) BOOL hasSubtitle;
@@ -178,6 +173,7 @@
 @property (strong, nonatomic) NSString *referencedArticleID; // @synthesize referencedArticleID=_referencedArticleID;
 @property (strong, nonatomic) NSMutableArray *relatedArticleIDs; // @synthesize relatedArticleIDs=_relatedArticleIDs;
 @property (strong, nonatomic) NSString *shortExcerpt; // @synthesize shortExcerpt=_shortExcerpt;
+@property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *sourceChannelCohort; // @synthesize sourceChannelCohort=_sourceChannelCohort;
 @property (strong, nonatomic) NSString *sourceChannelTagID; // @synthesize sourceChannelTagID=_sourceChannelTagID;
 @property (nonatomic) int storyType; // @synthesize storyType=_storyType;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
@@ -202,11 +198,7 @@
 @property (strong, nonatomic) NSString *thumbnailWidgetTaggedURL; // @synthesize thumbnailWidgetTaggedURL=_thumbnailWidgetTaggedURL;
 @property (strong, nonatomic) NSString *thumbnailWidgetURL; // @synthesize thumbnailWidgetURL=_thumbnailWidgetURL;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
-@property (readonly, nonatomic) unsigned long long *topicFlags;
-@property (readonly, nonatomic) unsigned long long topicFlagsCount;
-@property (strong, nonatomic) NSMutableArray *topicIDs; // @synthesize topicIDs=_topicIDs;
-@property (readonly, nonatomic) double *topicScores;
-@property (readonly, nonatomic) unsigned long long topicScoresCount;
+@property (strong, nonatomic) NSMutableArray *topics; // @synthesize topics=_topics;
 @property (nonatomic) double videoDuration; // @synthesize videoDuration=_videoDuration;
 @property (strong, nonatomic) NSString *videoURL; // @synthesize videoURL=_videoURL;
 
@@ -218,7 +210,7 @@
 + (Class)iAdSectionIDsType;
 + (Class)moreFromPublisherArticleIDsType;
 + (Class)relatedArticleIDsType;
-+ (Class)topicIDsType;
++ (Class)topicsType;
 - (void)addAllowedStorefrontIDs:(id)arg1;
 - (void)addBlockedStorefrontIDs:(id)arg1;
 - (void)addFlintFontResourceIDs:(id)arg1;
@@ -227,9 +219,7 @@
 - (void)addIAdSectionIDs:(id)arg1;
 - (void)addMoreFromPublisherArticleIDs:(id)arg1;
 - (void)addRelatedArticleIDs:(id)arg1;
-- (void)addTopicFlags:(unsigned long long)arg1;
-- (void)addTopicIDs:(id)arg1;
-- (void)addTopicScores:(double)arg1;
+- (void)addTopics:(id)arg1;
 - (id)allowedStorefrontIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)allowedStorefrontIDsCount;
 - (id)blockedStorefrontIDsAtIndex:(unsigned long long)arg1;
@@ -242,9 +232,7 @@
 - (void)clearIAdSectionIDs;
 - (void)clearMoreFromPublisherArticleIDs;
 - (void)clearRelatedArticleIDs;
-- (void)clearTopicFlags;
-- (void)clearTopicIDs;
-- (void)clearTopicScores;
+- (void)clearTopics;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
@@ -265,12 +253,8 @@
 - (BOOL)readFrom:(id)arg1;
 - (id)relatedArticleIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)relatedArticleIDsCount;
-- (void)setTopicFlags:(unsigned long long *)arg1 count:(unsigned long long)arg2;
-- (void)setTopicScores:(double *)arg1 count:(unsigned long long)arg2;
-- (unsigned long long)topicFlagsAtIndex:(unsigned long long)arg1;
-- (id)topicIDsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)topicIDsCount;
-- (double)topicScoresAtIndex:(unsigned long long)arg1;
+- (id)topicsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)topicsCount;
 - (void)writeTo:(id)arg1;
 
 @end

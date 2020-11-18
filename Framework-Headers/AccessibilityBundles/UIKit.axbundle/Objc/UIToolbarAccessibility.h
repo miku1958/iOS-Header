@@ -16,7 +16,7 @@
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityOnlyComparesByXAxis;
-- (void)_buttonBarFinishedAnimating;
+- (BOOL)_accessibilitySupportsContentSizeCategory:(id)arg1;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)shouldGroupAccessibilityChildren;
 

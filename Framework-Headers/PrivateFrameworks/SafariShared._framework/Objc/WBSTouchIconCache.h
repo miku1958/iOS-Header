@@ -33,7 +33,6 @@
 }
 
 @property (readonly, nonatomic) NSURL *cacheDirectoryURL; // @synthesize cacheDirectoryURL=_cacheDirectoryURL;
-@property (nonatomic, getter=isCachingDisabled) BOOL cachingDisabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

@@ -16,9 +16,9 @@
     long long _style;
     double _glyphViewPadding;
     double _labelTopPadding;
-    BOOL _enhancedContrast;
     BOOL _touchRecognizingHint;
     BOOL _persistentEmulationHint;
+    BOOL _accessPass;
     long long _state;
     PKGlyphView *_glyph;
     UILabel *_label;
@@ -26,6 +26,7 @@
     id<PKPassPaymentPayStateViewDelegate> _delegate;
 }
 
+@property (nonatomic) BOOL accessPass; // @synthesize accessPass=_accessPass;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<PKPassPaymentPayStateViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -34,24 +35,26 @@
 @property (readonly, nonatomic) UILabel *label; // @synthesize label=_label;
 @property (nonatomic) double labelAlpha; // @synthesize labelAlpha=_labelAlpha;
 @property (nonatomic) BOOL persistentEmulationHint; // @synthesize persistentEmulationHint=_persistentEmulationHint;
-@property (nonatomic) long long state; // @synthesize state=_state;
+@property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL touchRecognizingHint; // @synthesize touchRecognizingHint=_touchRecognizingHint;
 
 - (void).cxx_destruct;
-- (void)_applyStateWithTextOverride:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_applyStatePreservingGlyphState:(BOOL)arg1 overridingText:(id)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)_attributedTextWithTitle:(id)arg1;
 - (id)_attributedTextWithTitle:(id)arg1 subtitle:(id)arg2;
 - (BOOL)_canEmphasizeState:(long long)arg1;
+- (BOOL)_canPreserveGlyphForState:(long long)arg1;
 - (void)_configureLayoutMetrics;
-- (id)_labelForState:(long long)arg1 textOverride:(id)arg2;
+- (long long)_defaultGlyphStateForState:(long long)arg1;
 - (id)_textForState:(long long)arg1 textOverride:(id)arg2;
 - (void)dealloc;
 - (void)emphasizeStateIfPossible:(long long)arg1 withTextOverride:(id)arg2;
 - (void)glyphView:(id)arg1 revealingCheckmark:(BOOL)arg2;
-- (id)initWithStyle:(long long)arg1 enhancedContrast:(BOOL)arg2;
+- (id)initWithStyle:(long long)arg1;
 - (void)layoutSubviews;
-- (void)setState:(long long)arg1 textOverride:(id)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)setState:(long long)arg1 animated:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)setState:(long long)arg1 preservingGlyphState:(BOOL)arg2 overridingText:(id)arg3 animated:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 
 @end
 

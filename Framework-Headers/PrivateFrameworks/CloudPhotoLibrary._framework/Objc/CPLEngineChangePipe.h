@@ -29,7 +29,6 @@
 - (BOOL)hasQueuedBatches;
 - (BOOL)hasSomeChangeWithIdentifier:(id)arg1;
 - (id)initWithEngineStore:(id)arg1 name:(id)arg2;
-- (BOOL)markChangesWithIdentifier:(id)arg1 withAlterationType:(unsigned long long)arg2 error:(id *)arg3;
 - (id)nextBatch;
 - (id)popAllChangeBatchesWithError:(id *)arg1;
 - (BOOL)popChangeBatch:(id *)arg1 error:(id *)arg2;

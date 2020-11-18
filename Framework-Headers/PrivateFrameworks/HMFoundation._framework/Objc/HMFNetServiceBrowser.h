@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HMFoundation/NSNetServiceBrowserDelegate-Protocol.h>
 
-@class NSArray, NSHashTable, NSNetServiceBrowser, NSString;
+@class NSArray, NSHashTable, NSNetServiceBrowser, NSObject, NSString;
 @protocol HMFNetServiceBrowserDelegate, OS_dispatch_queue;
 
-@interface HMFNetServiceBrowser : NSObject <NSNetServiceBrowserDelegate>
+@interface HMFNetServiceBrowser : HMFObject <NSNetServiceBrowserDelegate>
 {
     NSHashTable *_cachedNetServices;
     BOOL _shouldCache;

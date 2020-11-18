@@ -8,6 +8,9 @@
 
 @interface NSURL (dd_private)
 - (id)dd_emailFromMailtoScheme;
+- (BOOL)dd_isAnySimpleTelephonyScheme;
+- (BOOL)dd_isMaps;
 - (id)dd_phoneNumberFromTelScheme;
+- (id)dd_phoneNumberFromTelSchemeAndExtractBody:(id *)arg1;
 @end
 

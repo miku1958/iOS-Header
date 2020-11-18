@@ -6,7 +6,18 @@
 
 #import <CloudKit/CKRecordID.h>
 
-@interface CKRecordID (BRCItemAdditions)
+#import <CloudDocsDaemon/PQLValuable-Protocol.h>
+
+@class NSString;
+
+@interface CKRecordID (BRCItemAdditions) <PQLValuable>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
 - (id)_itemIDWithLibraryRowID:(id)arg1 session:(id)arg2;
 - (id)brc_appLibraryDocumentsZoneName;
 - (id)brc_appLibraryRootZoneName;
@@ -17,5 +28,6 @@
 - (id)brc_itemIDWithSession:(id)arg1;
 - (id)brc_itemIDWithSession:(id)arg1 error:(id *)arg2;
 - (BOOL)brc_itemType;
+- (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
 @end
 

@@ -37,6 +37,7 @@
 - (struct CGSize)intrinsicContentSize;
 - (void)setBarHidden:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setSelectedIndex:(unsigned long long)arg1;
+- (long long)tagForCandidateItemAtIndex:(unsigned long long)arg1;
 
 @end
 

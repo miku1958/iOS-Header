@@ -94,7 +94,6 @@
 - (void)_handleSectionContentDescriptorDidInvalidateNotification:(id)arg1;
 - (void)_invalidateIndexBarDataSource;
 - (id)_itemEntityValueContext;
-- (void)_presentContextualActionsWithEntityValueContext:(id)arg1 fromButton:(id)arg2;
 - (void)_recycleItemCoalescingEntityValueProvider:(id)arg1;
 - (void)_recycleSectionCoalescingEntityValueProvider:(id)arg1;
 - (void)_registerForNotificationsForContentDescriptors;
@@ -151,11 +150,7 @@
 - (void)tableView:(id)arg1 didEndReorderingRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didHighlightRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectAddButtonForCell:(id)arg2 events:(unsigned long long)arg3;
-- (void)tableView:(id)arg1 didSelectContextualActionsButton:(id)arg2 forCell:(id)arg3;
-- (void)tableView:(id)arg1 didSelectContextualActionsButton:(id)arg2 forSectionHeaderView:(id)arg3;
 - (void)tableView:(id)arg1 didSelectHeaderViewForSection:(long long)arg2;
-- (void)tableView:(id)arg1 didSelectPlayButtonAction:(unsigned long long)arg2 forCell:(id)arg3;
-- (void)tableView:(id)arg1 didSelectPlayButtonAction:(unsigned long long)arg2 forSectionHeaderView:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;

@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAClientBoundCommand-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSNumber, NSString;
 
 @interface SABaseClientBoundCommand : SABaseCommand <SAClientBoundCommand>
 {
@@ -23,11 +23,13 @@
 @property (copy, nonatomic) NSString *metricsContext;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSNumber *usefulnessScore;
 
 + (id)baseClientBoundCommand;
 + (id)baseClientBoundCommandWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)mutatingCommand;
 - (BOOL)requiresResponse;
 
 @end

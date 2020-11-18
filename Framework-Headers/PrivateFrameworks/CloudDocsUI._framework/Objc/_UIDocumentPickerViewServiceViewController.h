@@ -81,10 +81,10 @@ __attribute__((visibility("hidden")))
 - (void)_tryExportingFile:(id)arg1 toLocation:(id)arg2;
 - (void)_updateDefaultPicker;
 - (struct CGSize)_updatedContentSizeForPreferredContentSize:(struct CGSize)arg1;
+- (void)_waitForDownloadOfURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_warnSharingForTarget:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_warnSharingPreMove;
 - (void)_willAppearInRemoteViewController;
-- (void)beginDownloadingURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)dismissWithURL:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)documentListController:(id)arg1 didSelectContainerWithViewController:(id)arg2;

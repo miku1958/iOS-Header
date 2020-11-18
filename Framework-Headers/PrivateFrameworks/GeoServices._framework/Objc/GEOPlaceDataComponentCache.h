@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOPlaceDataDBReader, GEOPlaceDataDBWriter;
 @protocol OS_dispatch_queue;
@@ -19,11 +19,11 @@
 
 @property (readonly, nonatomic) int resultProviderID; // @synthesize resultProviderID=_resultProviderID;
 
+- (void).cxx_destruct;
 - (id)allCacheEntries;
 - (void)calculateFreeableSpaceWithHandler:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 - (id)componentForKey:(union _GEOPlaceDataComponentKey)arg1;
 - (void)componentsForKeys:(id)arg1 finished:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (void)deletePhoneNumberMapping;
 - (void)evictAllEntries;
 - (void)evictPlaceDataForKey:(struct _GEOTileKey)arg1;

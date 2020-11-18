@@ -6,7 +6,7 @@
 
 #import <CFNetwork/NSURLSession.h>
 
-@class NSDictionary, NSObject, NSOperationQueue, NSString, NSURLSessionConfiguration;
+@class NSDictionary, NSMutableDictionary, NSMutableSet, NSObject, NSOperationQueue, NSString, NSURLSessionConfiguration;
 @protocol NSURLSessionDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -22,12 +22,16 @@ __attribute__((visibility("hidden")))
     NSString *_uuid;
     CDUnknownBlockType _connBlock;
     NSDictionary *_atsState;
+    NSMutableDictionary *_altSvc;
+    NSMutableSet *_h2BlacklistedHosts;
 }
 
 @property (readonly, copy) NSDictionary *delegateOptions;
 
+- (id)_altSvc;
 - (id)_atsState;
 - (CDUnknownBlockType)_connBlock;
+- (id)_h2BlacklistedHosts;
 - (BOOL)_isSharedSession;
 - (id)_local_immutable_configuration;
 - (id)_uuid;
@@ -41,8 +45,10 @@ __attribute__((visibility("hidden")))
 - (void)setDelegateQueue:(id)arg1;
 - (void)setInvalid:(BOOL)arg1;
 - (void)setSessionDescription:(id)arg1;
+- (void)set_altSvc:(id)arg1;
 - (void)set_atsState:(id)arg1;
 - (void)set_connBlock:(CDUnknownBlockType)arg1;
+- (void)set_h2BlacklistedHosts:(id)arg1;
 - (void)set_isSharedSession:(BOOL)arg1;
 - (void)set_local_immutable_configuration:(id)arg1;
 - (void)set_uuid:(id)arg1;

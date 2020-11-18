@@ -19,7 +19,7 @@
 @property (nonatomic, getter=isCancelled) BOOL cancel; // @synthesize cancel;
 @property (nonatomic, getter=isFinished) BOOL finished; // @synthesize finished;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)run;
 - (void)runAfterDelay:(float)arg1;
 

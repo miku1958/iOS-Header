@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class HAPWACScanRequest, NSMutableArray;
+@class HAPWACScanRequest, NSMutableArray, NSObject;
 @protocol OS_dispatch_queue;
 
-@interface HAPWACScanner : NSObject
+@interface HAPWACScanner : HMFObject
 {
     BOOL _scanInProgres;
     NSMutableArray *_pendingRequests;
@@ -27,6 +27,7 @@
 - (void)__nextRequest;
 - (id)__pendingRequestWithUUID:(id)arg1;
 - (void)__runRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)__stopScanRequests;
 - (BOOL)activeScan;
 - (void)addRequest:(id)arg1;
 - (void)cancelRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -34,6 +35,7 @@
 - (id)init;
 - (id)initPrivate;
 - (void)scanForWACAndExtractSetupDictWithNumberOfScans:(unsigned long long)arg1 andCompletion:(CDUnknownBlockType)arg2;
+- (void)stopScanRequests;
 
 @end
 

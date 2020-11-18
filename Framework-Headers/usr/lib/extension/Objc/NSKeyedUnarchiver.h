@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSCoder.h>
+#import <Foundation/NSCoder.h>
 
 @protocol NSKeyedUnarchiverDelegate;
 
@@ -39,6 +39,8 @@
 + (id)unarchiveObjectWithData:(id)arg1 error:(id *)arg2;
 + (id)unarchiveObjectWithFile:(id)arg1;
 + (id)unarchiveTopLevelObjectWithData:(id)arg1 error:(id *)arg2;
++ (id)unarchivedObjectOfClass:(Class)arg1 fromData:(id)arg2 error:(id *)arg3;
++ (id)unarchivedObjectOfClasses:(id)arg1 fromData:(id)arg2 error:(id *)arg3;
 - (void)__setError:(id)arg1;
 - (id)_allowedClassNames;
 - (BOOL)_allowsValueCoding;
@@ -76,6 +78,7 @@
 - (id)error;
 - (void)finishDecoding;
 - (id)init;
+- (id)initForReadingFromData:(id)arg1 error:(id *)arg2;
 - (id)initForReadingWithData:(id)arg1;
 - (id)initWithStream:(id)arg1;
 - (void)replaceObject:(id)arg1 withObject:(id)arg2;

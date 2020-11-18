@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSLock, NSMutableArray, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
@@ -56,6 +56,7 @@
 @property (nonatomic) unsigned long long maxDatabaseSize; // @synthesize maxDatabaseSize=_maxDatabaseSize;
 @property (readonly, nonatomic) NSString *path; // @synthesize path=_path;
 
+- (void).cxx_destruct;
 - (void)_assertDatabaseSize;
 - (void)_closeDB;
 - (void)_countryChanged:(id)arg1;

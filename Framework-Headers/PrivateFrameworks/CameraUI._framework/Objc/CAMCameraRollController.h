@@ -15,7 +15,7 @@
 #import <CameraUI/UIViewControllerPreviewingDelegate-Protocol.h>
 #import <CameraUI/UIViewControllerPreviewingDelegate_Private-Protocol.h>
 
-@class CAMTransientDataSource, CAMTransientImageManager, NSMutableSet, NSString, PUOneUpPresentationHelper, PUPhotoKitDataSourceManager, PXPhotosDataSource, UIGestureRecognizer;
+@class CAMTransientDataSource, CAMTransientImageManager, NSMutableDictionary, NSMutableSet, NSString, PUOneUpPresentationHelper, PUPhotoKitDataSourceManager, PXPhotosDataSource, UIGestureRecognizer;
 @protocol CAMCameraRollControllerImageWellDelegate, CAMCameraRollControllerPresentationDelegate, CAMCameraRollControllerSessionDelegate, OS_dispatch_source;
 
 @interface CAMCameraRollController : NSObject <PXPhotosDataSourceChangeObserver, PUOneUpPresentationHelperDelegate, PUOneUpPresentationHelperAssetDisplayDelegate, PLCameraPreviewWellImageChangeObserver, PUBrowsingViewModelChangeObserver, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, UIInteractionProgressObserver>
@@ -28,7 +28,11 @@
         BOOL respondsToImageForReveal;
         BOOL respondsToRevealWillBegin;
         BOOL respondsToRevealDidEnd;
+        BOOL respondsToWillPresentCameraRoll;
+        BOOL respondsToPrefersPresentingStatusbarHiddenDidChange;
+        BOOL respondsToPreferredPresentationOrientation;
     } _presentationDelegateFlags;
+    BOOL _prefersPresentingStatusbarHidden;
     BOOL _shouldPauseAudioSessionUpdatesForCapture;
     BOOL __allowUpdating;
     BOOL __updateIsScheduled;
@@ -37,6 +41,7 @@
     BOOL __oneUpFullyPresented;
     BOOL __didSetupMechanismsForStoppingCaptureSession;
     BOOL __didStopCaptureSession;
+    BOOL __deferringStagedMediaLoading;
     unsigned short _sessionIdentifier;
     id<CAMCameraRollControllerSessionDelegate> _sessionDelegate;
     id<CAMCameraRollControllerImageWellDelegate> _imageWellDelegate;
@@ -47,14 +52,19 @@
     CAMTransientImageManager *__transientImageManager;
     PUPhotoKitDataSourceManager *__photoKitDataSourceManager;
     NSMutableSet *__sessionAssetUUIDs;
+    NSMutableSet *__ignoredEV0UUIDs;
+    NSMutableDictionary *__HDRUUIDToIgnoredEV0UUIDs;
     PXPhotosDataSource *__photosDataSource;
     PXPhotosDataSource *__stagedDataSource;
     NSObject<OS_dispatch_source> *__memoryWarningSource;
 }
 
+@property (readonly, nonatomic) NSMutableDictionary *_HDRUUIDToIgnoredEV0UUIDs; // @synthesize _HDRUUIDToIgnoredEV0UUIDs=__HDRUUIDToIgnoredEV0UUIDs;
 @property (nonatomic, setter=_setAllowUpdating:) BOOL _allowUpdating; // @synthesize _allowUpdating=__allowUpdating;
+@property (nonatomic, getter=_isDeferringStagedMediaLoading, setter=_setDeferringStagedMediaLoading:) BOOL _deferringStagedMediaLoading; // @synthesize _deferringStagedMediaLoading=__deferringStagedMediaLoading;
 @property (nonatomic, setter=_setDidSetupMechanismsForStoppingCaptureSession:) BOOL _didSetupMechanismsForStoppingCaptureSession; // @synthesize _didSetupMechanismsForStoppingCaptureSession=__didSetupMechanismsForStoppingCaptureSession;
 @property (nonatomic, setter=_setDidStopCaptureSession:) BOOL _didStopCaptureSession; // @synthesize _didStopCaptureSession=__didStopCaptureSession;
+@property (readonly, nonatomic) NSMutableSet *_ignoredEV0UUIDs; // @synthesize _ignoredEV0UUIDs=__ignoredEV0UUIDs;
 @property (readonly, nonatomic) NSObject<OS_dispatch_source> *_memoryWarningSource; // @synthesize _memoryWarningSource=__memoryWarningSource;
 @property (nonatomic, getter=_isOneUpFullyPresented, setter=_setOneUpFullyPresented:) BOOL _oneUpFullyPresented; // @synthesize _oneUpFullyPresented=__oneUpFullyPresented;
 @property (readonly, nonatomic) PUOneUpPresentationHelper *_oneUpPresentationHelper; // @synthesize _oneUpPresentationHelper=__oneUpPresentationHelper;
@@ -72,6 +82,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<CAMCameraRollControllerImageWellDelegate> imageWellDelegate; // @synthesize imageWellDelegate=_imageWellDelegate;
+@property (nonatomic, setter=_setPrefersPresentingStatusbarHidden:) BOOL prefersPresentingStatusbarHidden; // @synthesize prefersPresentingStatusbarHidden=_prefersPresentingStatusbarHidden;
 @property (weak, nonatomic) id<CAMCameraRollControllerPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property (strong, nonatomic, setter=_setPreviewGestureRecognizer:) UIGestureRecognizer *previewGestureRecognizer; // @synthesize previewGestureRecognizer=_previewGestureRecognizer;
 @property (weak, nonatomic) id<CAMCameraRollControllerSessionDelegate> sessionDelegate; // @synthesize sessionDelegate=_sessionDelegate;
@@ -83,6 +94,7 @@
 - (void)_cancelDelayedStopCaptureSession;
 - (void)_ensureCameraRollViewController;
 - (void)_invalidateTransientAssets;
+- (BOOL)_isPasscodeLocked;
 - (void)_performPreload;
 - (void)_registerBrowsingViewModelChangeObserver;
 - (void)_scheduleStopCaptureSessionAfterDelay:(double)arg1;
@@ -105,28 +117,33 @@
 - (void)applicationDidEnterBackground:(id)arg1;
 - (void)applicationResumed:(id)arg1;
 - (void)applicationWillEnterForeground:(id)arg1;
+- (void)beginAllowingStagedMediaLoading;
 - (void)cameraPreviewWellImageDidChange:(id)arg1;
+- (void)clearIgnoredImageWellUUIDs;
 - (void)dealloc;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
 - (void)didPersistAssetWithUUID:(id)arg1 captureSession:(unsigned short)arg2;
 - (BOOL)dismissCameraRollViewControllerForced:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)handlePresentingPanGestureRecognizer:(id)arg1;
+- (void)ignoreImageWellChangeNotificationForEV0UUID:(id)arg1 withHDRUUID:(id)arg2;
 - (id)init;
 - (void)interactionProgress:(id)arg1 didEnd:(BOOL)arg2;
-- (void)interactionProgressDidUpdate:(id)arg1;
 - (BOOL)isCameraRollViewControllerPresented;
 - (BOOL)isCaptureSessionCurrent:(unsigned short)arg1;
 - (void)oneUpPresentationHelper:(id)arg1 previewScrubberDidBecomeAvailable:(id)arg2;
 - (struct CGRect)oneUpPresentationHelper:(id)arg1 rectForAssetReference:(id)arg2 cropInsets:(struct UIEdgeInsets *)arg3 contentsRect:(struct CGRect *)arg4;
 - (void)oneUpPresentationHelper:(id)arg1 shouldHideAssetReferences:(id)arg2;
+- (void)oneUpPresentationHelper:(id)arg1 willPresentOneUpViewController:(id)arg2;
+- (BOOL)oneUpPresentationHelperEnableFreezeLayoutOnOrientationChange:(id)arg1;
 - (long long)oneUpPresentationHelperPreferredBarStyle:(id)arg1;
+- (long long)oneUpPresentationHelperPreferredPresentationOrientation:(id)arg1;
 - (BOOL)oneUpPresentationHelperShouldLeaveContentOnSecondScreen:(id)arg1;
 - (id)oneUpPresentationHelperViewController:(id)arg1;
 - (id)persistedThumbnailImage;
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
 - (void)ppt_preload;
 - (void)preload;
-- (void)presentCameraRollViewControllerAnimated:(BOOL)arg1 interactive:(BOOL)arg2;
+- (void)presentCameraRollViewControllerAnimated:(BOOL)arg1 interactive:(BOOL)arg2 deferringStagedMediaLoading:(BOOL)arg3;
 - (void)presentingViewControllerViewDidAppear:(BOOL)arg1;
 - (void)presentingViewControllerViewDidDisappear:(BOOL)arg1;
 - (void)presentingViewControllerViewWillAppear:(BOOL)arg1;
@@ -140,6 +157,7 @@
 - (void)resetNavigation;
 - (BOOL)shouldStartPreviewingSimultaneouslyWithGestureRecognizer:(id)arg1;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
+- (void)willPersistAssetWithUUID:(id)arg1 captureSession:(unsigned short)arg2;
 - (void)willPresentPreviewViewController:(id)arg1 forLocation:(struct CGPoint)arg2 inSourceView:(id)arg3;
 
 @end

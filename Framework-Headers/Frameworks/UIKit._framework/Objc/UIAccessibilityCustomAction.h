@@ -6,21 +6,23 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSString;
+@class NSAttributedString, NSString;
 
 @interface UIAccessibilityCustomAction : NSObject
 {
-    NSString *_name;
+    NSAttributedString *_attributedName;
     id _target;
     SEL _selector;
 }
 
-@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (copy, nonatomic) NSAttributedString *attributedName; // @synthesize attributedName=_attributedName;
+@property (copy, nonatomic) NSString *name;
 @property (nonatomic) SEL selector; // @synthesize selector=_selector;
 @property (weak, nonatomic) id target; // @synthesize target=_target;
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)initWithAttributedName:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
 - (id)initWithName:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
 
 @end

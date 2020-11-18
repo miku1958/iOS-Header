@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDate, NSString;
 @protocol OS_dispatch_queue;
@@ -21,12 +21,12 @@
 + (id)defaultInstrumentation;
 + (void)endInstrumentation;
 + (id)initializeDefaultInstrumentation;
+- (void).cxx_destruct;
 - (void)_captureScreenVideo:(id)arg1;
 - (void)_setupLogging;
 - (void)captureEventRecorderScreenVideo;
 - (void)captureUIEvent:(id)arg1;
 - (void)captureUserActionLogMessageEvent:(id)arg1;
-- (void)dealloc;
 - (id)getRecordedFilePaths;
 - (id)init;
 - (void)initializeFilepaths;

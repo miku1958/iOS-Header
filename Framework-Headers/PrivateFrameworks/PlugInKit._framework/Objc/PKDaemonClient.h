@@ -28,6 +28,8 @@
 - (id)convertFromXPC:(id)arg1;
 - (void)copyReceipt:(CDUnknownBlockType)arg1;
 - (id)errorInReply:(id)arg1;
+- (void)findPlugInByPathURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)findPlugInByUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)holdPlugins:(id)arg1 flags:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)initWithServiceName:(const char *)arg1;
 - (void)matchPlugIns:(id)arg1 flags:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
@@ -37,6 +39,7 @@
 - (id)request:(const char *)arg1;
 - (id)request:(const char *)arg1 paths:(id)arg2;
 - (void)send:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)set:(id)arg1 plugins:(id)arg2;
 - (void)set:(id)arg1 uuids:(id)arg2;
 - (void)setPluginAnnotations:(id)arg1 annotations:(id)arg2 reply:(CDUnknownBlockType)arg3;
 

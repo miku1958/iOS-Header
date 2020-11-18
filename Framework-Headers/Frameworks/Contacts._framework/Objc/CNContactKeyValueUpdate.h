@@ -18,9 +18,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) CNPropertyDescription *property; // @synthesize property=_property;
 @property (readonly) id value; // @synthesize value=_value;
 
+- (void).cxx_destruct;
 - (BOOL)applyToABPerson:(void *)arg1 withPropertiesContext:(id)arg2 error:(id *)arg3;
 - (void)applyToMutableContact:(id)arg1 withIdentifierMap:(id)arg2;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithProperty:(id)arg1 value:(id)arg2;

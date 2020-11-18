@@ -62,10 +62,14 @@
 - (void)_didMoveToView:(id)arg1;
 - (id)_getFocusNodes;
 - (BOOL)_hasConstraints;
+- (BOOL)_isDirty;
 - (struct SKCNode *)_makeBackingNode;
+- (void)_notifyNextDirtyState;
 - (id)_parentFocusEnvironment;
 - (void)_registerConstraintsForNode:(id)arg1;
 - (void)_removeConstraintsForNode:(id)arg1;
+- (void)_setBackgroundContentsWithBuffer:(struct __CVBuffer *)arg1;
+- (void)_setDirty;
 - (void)_setNeedsRender;
 - (void)_setNeedsUpdate;
 - (void)_update:(double)arg1;
@@ -77,6 +81,8 @@
 - (struct CGPoint)convertPointToView:(struct CGPoint)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)debugHierarchyPropertyDescriptions;
+- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (id)description;
 - (void)didApplyConstraints;
 - (void)didChangeSize:(struct CGSize)arg1;
@@ -87,6 +93,7 @@
 - (void)didSimulatePhysics;
 - (void)encodeWithCoder:(id)arg1;
 - (struct CGRect)frame;
+- (void)handleAVAudioEngineInterruption:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSize:(struct CGSize)arg1;

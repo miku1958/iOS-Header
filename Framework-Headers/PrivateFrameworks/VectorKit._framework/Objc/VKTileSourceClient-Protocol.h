@@ -20,6 +20,11 @@
 - (void)tileSource:(VKTileSource *)arg1 invalidateKeys:(VKTileKeyList *)arg2;
 - (void)tileSource:(VKTileSource *)arg1 invalidateTilesWithState:(unsigned long long)arg2;
 - (BOOL)tileSource:(VKTileSource *)arg1 keyIsNeeded:(const struct VKTileKey *)arg2;
+- (long long)tileSource:(VKTileSource *)arg1 overrideForMaximumZoomLevel:(long long)arg2;
 - (void)willStartLoadingTiles;
+
+@optional
+- (void)dirtyTile:(const struct VKTileKey *)arg1 source:(VKTileSource *)arg2;
+- (void)expireTilesForTileSource:(VKTileSource *)arg1;
 @end
 

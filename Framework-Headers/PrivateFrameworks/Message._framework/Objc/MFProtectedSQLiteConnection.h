@@ -10,8 +10,6 @@
 
 @interface MFProtectedSQLiteConnection : MFSQLiteConnection
 {
-    NSString *_protectedName;
-    long long _vfsOnce;
     NSString *_vfsName;
     BOOL _attached;
 }
@@ -23,7 +21,7 @@
 - (void)close;
 - (void)dealloc;
 - (int)detachProtectedDatabase;
-- (id)initWithPath:(id)arg1 databaseName:(id)arg2 protectedName:(id)arg3;
+- (id)initWithConfiguration:(id)arg1;
 
 @end
 

@@ -13,8 +13,8 @@
 @interface VMVoicemailGreeting : NSObject <NSSecureCoding>
 {
     double _duration;
-    NSURL *_url;
     unsigned long long _type;
+    NSURL *_url;
 }
 
 @property (nonatomic) double duration; // @synthesize duration=_duration;

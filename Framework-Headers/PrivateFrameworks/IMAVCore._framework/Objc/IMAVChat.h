@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IMAVCore/IMSystemMonitorListener-Protocol.h>
 
@@ -64,12 +64,10 @@
     BOOL _isAudioInterrupted;
     BOOL _connectionStarted;
     BOOL _relayed;
-    BOOL _isCallUpgrade;
     BOOL _mayRequireBreakBeforeMake;
     BOOL _terminating;
     BOOL _didRemoteMute;
     BOOL _didRemotePause;
-    BOOL _callUpgrade;
     BOOL _airplaneModeEnabled;
     BOOL _metadataFinalized;
     NSTimer *_inviteTimeoutTimer;
@@ -97,7 +95,6 @@
 @property (readonly, strong, nonatomic) NSArray *_imHandles;
 @property (strong, nonatomic, setter=_setInterruptionBegan:) NSDate *_interruptionBegan; // @synthesize _interruptionBegan;
 @property (nonatomic, setter=_setIsAudioInterrupted:) BOOL _isAudioInterrupted; // @synthesize _isAudioInterrupted;
-@property (nonatomic, setter=_setIsCallUpgrade:) BOOL _isCallUpgrade; // @synthesize _isCallUpgrade;
 @property (readonly, nonatomic) BOOL _isProxy;
 @property (nonatomic, setter=_setIsVideoInterrupted:) BOOL _isVideoInterrupted; // @synthesize _isVideoInterrupted;
 @property (nonatomic, setter=_setLocalNetworkConnectionType:) unsigned long long _localNetworkConnectionType; // @synthesize _localNetworkConnectionType;
@@ -114,7 +111,6 @@
 @property (readonly, nonatomic) BOOL _usesRelay;
 @property (readonly, strong, nonatomic) IMAccount *account;
 @property (nonatomic, setter=_setAirplaneModeEnabled:) BOOL airplaneModeEnabled; // @synthesize airplaneModeEnabled=_airplaneModeEnabled;
-@property (nonatomic, getter=isCallUpgrade, setter=_setCallUpgrade:) BOOL callUpgrade; // @synthesize callUpgrade=_callUpgrade;
 @property (strong, nonatomic, setter=_setCallerProperties:) NSDictionary *callerProperties; // @synthesize callerProperties=_callerProperties;
 @property (nonatomic) unsigned int cameraOrientation;
 @property (nonatomic) unsigned int cameraType;

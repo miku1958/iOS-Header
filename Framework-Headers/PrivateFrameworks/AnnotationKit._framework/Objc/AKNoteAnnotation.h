@@ -6,26 +6,26 @@
 
 #import <AnnotationKit/AKAnnotation.h>
 
-#import <AnnotationKit/AKChildAnnotationProtocol-Protocol.h>
 #import <AnnotationKit/AKFilledAnnotationProtocol-Protocol.h>
+#import <AnnotationKit/AKParentAnnotationProtocol-Protocol.h>
 #import <AnnotationKit/AKRectangularAnnotationProtocol-Protocol.h>
 
 @class NSString, UIColor;
 
-@interface AKNoteAnnotation : AKAnnotation <AKChildAnnotationProtocol, AKRectangularAnnotationProtocol, AKFilledAnnotationProtocol>
+@interface AKNoteAnnotation : AKAnnotation <AKParentAnnotationProtocol, AKRectangularAnnotationProtocol, AKFilledAnnotationProtocol>
 {
     UIColor *_fillColor;
-    AKAnnotation *_parentAnnotation;
+    AKAnnotation *_childAnnotation;
     NSString *_contents;
     struct CGRect _rectangle;
 }
 
+@property (weak) AKAnnotation *childAnnotation; // @synthesize childAnnotation=_childAnnotation;
 @property (copy) NSString *contents; // @synthesize contents=_contents;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong) UIColor *fillColor; // @synthesize fillColor=_fillColor;
 @property (readonly) unsigned long long hash;
-@property (weak) AKAnnotation *parentAnnotation; // @synthesize parentAnnotation=_parentAnnotation;
 @property struct CGRect rectangle; // @synthesize rectangle=_rectangle;
 @property (readonly) Class superclass;
 

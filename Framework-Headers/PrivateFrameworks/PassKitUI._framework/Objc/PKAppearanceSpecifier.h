@@ -32,6 +32,7 @@
     UIColor *_footerHyperlinkColor;
     UIColor *_progressBarTintColor;
     UIColor *_progressBarTrackTintColor;
+    UIColor *_searchBarTintcolor;
     UIColor *_cameraCaptureMaskColor;
     UIColor *_cameraCaptureMaskOutlineColor;
     UIImage *_navBarPointImage;
@@ -56,6 +57,7 @@
 @property (copy, nonatomic) UIImage *navBarShadowPointImage; // @synthesize navBarShadowPointImage=_navBarShadowPointImage;
 @property (copy, nonatomic) UIColor *progressBarTintColor; // @synthesize progressBarTintColor=_progressBarTintColor;
 @property (copy, nonatomic) UIColor *progressBarTrackTintColor; // @synthesize progressBarTrackTintColor=_progressBarTrackTintColor;
+@property (copy, nonatomic) UIColor *searchBarTintcolor; // @synthesize searchBarTintcolor=_searchBarTintcolor;
 @property (copy, nonatomic) UIColor *tableViewCellAccessoryColor; // @synthesize tableViewCellAccessoryColor=_tableViewCellAccessoryColor;
 @property (copy, nonatomic) UIColor *tableViewCellAccessoryHighlightColor; // @synthesize tableViewCellAccessoryHighlightColor=_tableViewCellAccessoryHighlightColor;
 @property (copy, nonatomic) UIColor *tableViewCellHighlightColor; // @synthesize tableViewCellHighlightColor=_tableViewCellHighlightColor;

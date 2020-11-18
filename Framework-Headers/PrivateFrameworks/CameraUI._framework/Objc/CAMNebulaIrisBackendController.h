@@ -10,7 +10,7 @@
 #import <CameraUI/CAMPersistenceResultDelegate-Protocol.h>
 #import <CameraUI/CAMStillImageCaptureRequestDelegate-Protocol.h>
 
-@class AVAssetExportSession, BKSApplicationStateMonitor, CAMNebulaKeepAliveController, CAMPersistenceController, NSMutableArray, NSMutableDictionary, NSString;
+@class AVAssetExportSession, BKSApplicationStateMonitor, CAMNebulaKeepAliveController, CAMPersistenceController, NSHashTable, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CAMNebulaIrisBackendController : NSObject <CAMStillImageCaptureRequestDelegate, CAMNebulaDaemonIrisProtocol, CAMPersistenceResultDelegate>
@@ -27,12 +27,16 @@
     NSMutableDictionary *__pendingOrInFlightJobsByUniqueIdentifier;
     NSMutableArray *__pendingExportVideoJobs;
     AVAssetExportSession *__activeExportSession;
+    NSMutableDictionary *__bundleIdentifiersByVideoPersistenceUUID;
     BKSApplicationStateMonitor *__applicationStateMonitor;
+    NSHashTable *__clientConnections;
 }
 
 @property (nonatomic, getter=_coordinationQueue_isIOWorkSuspended, setter=_coordinationQueue_setIOWorkSuspended:) BOOL _IOWorkSuspended;
 @property (strong, nonatomic, setter=_setActiveExportSession:) AVAssetExportSession *_activeExportSession; // @synthesize _activeExportSession=__activeExportSession;
 @property (readonly, nonatomic) BKSApplicationStateMonitor *_applicationStateMonitor; // @synthesize _applicationStateMonitor=__applicationStateMonitor;
+@property (readonly, nonatomic) NSMutableDictionary *_bundleIdentifiersByVideoPersistenceUUID; // @synthesize _bundleIdentifiersByVideoPersistenceUUID=__bundleIdentifiersByVideoPersistenceUUID;
+@property (readonly, nonatomic) NSHashTable *_clientConnections; // @synthesize _clientConnections=__clientConnections;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_coordinationQueue; // @synthesize _coordinationQueue=__coordinationQueue;
 @property (nonatomic, getter=_coordinationQueue_isCrashRecoveryNeeded, setter=_coordinationQueue_setCrashRecoveryNeeded:) BOOL _crashRecoveryNeeded; // @synthesize _crashRecoveryNeeded=__crashRecoveryNeeded;
 @property (readonly, nonatomic) CAMNebulaKeepAliveController *_keepAliveController; // @synthesize _keepAliveController=__keepAliveController;
@@ -75,7 +79,7 @@
 - (void)dealloc;
 - (void)enqueueIrisVideoJobs:(id)arg1;
 - (void)handleClientConnection:(id)arg1;
-- (void)handleClientDisconnection;
+- (void)handleClientDisconnection:(id)arg1;
 - (id)init;
 - (id)initWithPersistenceController:(id)arg1 keepAliveController:(id)arg2;
 - (void)performIrisCrashRecovery;

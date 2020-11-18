@@ -26,6 +26,7 @@
 - (void)_cnfSignInWithUsername:(id)arg1 password:(id)arg2;
 - (void)_completeIfAccountIsAlreadyRegistered;
 - (void)_handleRegistarResults:(BOOL)arg1 alertController:(id)arg2;
+- (id)_iCloudUserName;
 - (id)_imService;
 - (void)_showSettingsController;
 - (void)continueRegisteringAccount:(id)arg1;

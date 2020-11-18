@@ -13,12 +13,17 @@
 
 @interface NWConcrete_nw_endpoint_fallback : NSObject <OS_nw_endpoint_fallback>
 {
+    unsigned long long fallback_usage_cap;
+    unsigned long long fallback_cap_interval;
     NWConcrete_nw_endpoint_handler *primary_child;
     NWConcrete_nw_endpoint_handler *fallback_child;
     int result;
     NSObject<OS_nw_interface> *primary_interface;
     NSObject<OS_nw_interface> *fallback_interface;
     void *fallback_timer;
+    void *post_transport_timer;
+    void *usage_cap_timer;
+    unsigned int fallback_disposition;
     unsigned int weak_fallback:1;
     unsigned int no_fallback_timer:1;
     unsigned int fallback_based_on_interface_type:1;

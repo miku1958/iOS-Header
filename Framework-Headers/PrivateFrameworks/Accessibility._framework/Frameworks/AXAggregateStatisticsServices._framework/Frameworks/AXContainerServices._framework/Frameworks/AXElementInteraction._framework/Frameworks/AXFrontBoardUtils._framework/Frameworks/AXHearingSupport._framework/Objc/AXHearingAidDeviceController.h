@@ -9,7 +9,7 @@
 #import <AXHearingSupport/AXHADeviceControllerProtocol-Protocol.h>
 #import <AXHearingSupport/CBCentralManagerDelegate-Protocol.h>
 
-@class AXHAAccessQueueTimer, AXHADispatchTimer, CBCentralManager, NSLock, NSMutableArray, NSMutableDictionary, NSString;
+@class AXHADispatchTimer, CBCentralManager, NSLock, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface AXHearingAidDeviceController : NSObject <CBCentralManagerDelegate, AXHADeviceControllerProtocol>
@@ -17,15 +17,16 @@
     CBCentralManager *_bluetoothManager;
     NSLock *_centralRequestsLock;
     BOOL _isScanning;
+    BOOL _isResetting;
     NSObject<OS_dispatch_queue> *_bluetoothCentralQueue;
     NSMutableArray *_availableSearchBlocks;
     NSMutableArray *_connectedSearchBlocks;
     NSMutableArray *_updateDeviceBlocks;
-    AXHAAccessQueueTimer *_deviceUpdatesTimer;
+    NSObject<OS_dispatch_queue> *_deviceUpdatesQueue;
     NSMutableDictionary *_deviceUpdatesDescription;
     AXHADispatchTimer *_advertisingTimeoutTimer;
     NSMutableDictionary *_advertisingTimestamps;
-    AXHAAccessQueueTimer *_availableDeviceTimer;
+    AXHADispatchTimer *_availableDeviceTimer;
     BOOL _shouldActiveScan;
     NSMutableArray *_availablePeripherals;
     NSMutableArray *_loadedDevices;
@@ -97,7 +98,7 @@
 - (void)sendRequestToCentralManager:(CDUnknownBlockType)arg1;
 - (void)stopPropertyUpdates;
 - (void)stopSearching;
-- (void)unpairPeripheral:(id)arg1;
+- (void)unpairPeripheralWithUUID:(id)arg1;
 - (void)updateProperty:(unsigned long long)arg1 forDeviceID:(id)arg2;
 - (id)valueForProperty:(unsigned long long)arg1 forDeviceID:(id)arg2;
 - (void)writeValue:(id)arg1 forProperty:(unsigned long long)arg2 forDeviceID:(id)arg3;

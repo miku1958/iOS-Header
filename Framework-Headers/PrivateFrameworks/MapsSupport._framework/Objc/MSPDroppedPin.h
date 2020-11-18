@@ -14,13 +14,17 @@
 {
     PBUnknownFields *_unknownFields;
     double _timestamp;
+    int _floorOrdinal;
     GEOLatLng *_latLng;
     GEOMapRegion *_mapRegion;
     struct {
         unsigned int timestamp:1;
+        unsigned int floorOrdinal:1;
     } _has;
 }
 
+@property (nonatomic) int floorOrdinal; // @synthesize floorOrdinal=_floorOrdinal;
+@property (nonatomic) BOOL hasFloorOrdinal;
 @property (readonly, nonatomic) BOOL hasLatLng;
 @property (readonly, nonatomic) BOOL hasMapRegion;
 @property (nonatomic) BOOL hasTimestamp;

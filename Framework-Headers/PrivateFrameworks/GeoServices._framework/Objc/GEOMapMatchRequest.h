@@ -27,13 +27,13 @@
 
 + (Class)locationType;
 + (Class)waypointType;
+- (void).cxx_destruct;
 - (void)addLocation:(id)arg1;
 - (void)addWaypoint:(id)arg1;
 - (void)clearLocations;
 - (void)clearWaypoints;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

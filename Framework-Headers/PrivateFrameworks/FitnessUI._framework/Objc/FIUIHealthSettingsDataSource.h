@@ -8,7 +8,7 @@
 
 #import <FitnessUI/UITableViewDataSource-Protocol.h>
 
-@class FIUIActivitySettingsController, FIUIHealthSettingsBirthDatePickerController, FIUIHealthSettingsHeightPickerController, FIUIHealthSettingsSexPickerController, FIUIHealthSettingsTableViewCell, FIUIHealthSettingsWeightPickerController, FIUIHealthSettingsWheelchairUsePickerController, NSString;
+@class FIActivitySettingsController, FIUIHealthSettingsBirthDatePickerController, FIUIHealthSettingsHeightPickerController, FIUIHealthSettingsSexPickerController, FIUIHealthSettingsTableViewCell, FIUIHealthSettingsWeightPickerController, FIUIHealthSettingsWheelchairUsePickerController, NSString;
 
 @interface FIUIHealthSettingsDataSource : NSObject <UITableViewDataSource>
 {
@@ -17,9 +17,9 @@
     FIUIHealthSettingsTableViewCell *_heightCell;
     FIUIHealthSettingsTableViewCell *_weightCell;
     FIUIHealthSettingsTableViewCell *_wheelchairUseCell;
-    FIUIActivitySettingsController *_preEditSettingsController;
+    FIActivitySettingsController *_preEditSettingsController;
     BOOL _showWheelchair;
-    FIUIActivitySettingsController *_settingsController;
+    FIActivitySettingsController *_settingsController;
     FIUIHealthSettingsBirthDatePickerController *_birthDatePickerController;
     FIUIHealthSettingsHeightPickerController *_heightPickerController;
     FIUIHealthSettingsWeightPickerController *_weightPickerController;
@@ -30,10 +30,10 @@
 @property (strong, nonatomic) FIUIHealthSettingsBirthDatePickerController *birthDatePickerController; // @synthesize birthDatePickerController=_birthDatePickerController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) FIUIActivitySettingsController *editedSettingsController;
+@property (readonly, nonatomic) FIActivitySettingsController *editedSettingsController;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) FIUIHealthSettingsHeightPickerController *heightPickerController; // @synthesize heightPickerController=_heightPickerController;
-@property (strong, nonatomic) FIUIActivitySettingsController *settingsController; // @synthesize settingsController=_settingsController;
+@property (strong, nonatomic) FIActivitySettingsController *settingsController; // @synthesize settingsController=_settingsController;
 @property (strong, nonatomic) FIUIHealthSettingsSexPickerController *sexPickerController; // @synthesize sexPickerController=_sexPickerController;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) FIUIHealthSettingsWeightPickerController *weightPickerController; // @synthesize weightPickerController=_weightPickerController;

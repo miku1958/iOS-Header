@@ -17,7 +17,9 @@
 @property (nonatomic) long long lastErrorCode;
 @property (readonly, nonatomic) long long options;
 @property (readonly, nonatomic) UIViewController *presentingViewController;
+@property (nonatomic) BOOL reUsed;
 @property (nonatomic) int screenfuls;
+@property (nonatomic) int slotPosition;
 
 - (void)pauseBannerMedia;
 - (void)privacyButtonWasTapped;

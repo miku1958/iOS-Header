@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isInterfaceUsable;
 @property (readonly, nonatomic) BOOL isInternetReachable;
 @property (readonly, nonatomic) BOOL isLTEWithCDRX;
+@property (readonly, nonatomic) BOOL isNetworkingPowerExpensiveToUse;
 @property (readonly, nonatomic) BOOL isPoorLinkQuality;
 @property (readonly, nonatomic) BOOL isRadioHot;
 @property (readonly, nonatomic) int linkQuality;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) struct __CFString *wwanInterfaceName;
 
+- (void).cxx_destruct;
 - (void)_addMonitorWithInterfaceName:(id)arg1;
 - (void)_callDelegateOnIvarQueueWithBlock:(CDUnknownBlockType)arg1;
 - (void)_forwardConfigurationOnIvarQueue;

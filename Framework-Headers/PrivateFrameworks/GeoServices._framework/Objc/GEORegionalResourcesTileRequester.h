@@ -14,8 +14,8 @@
 }
 
 + (unsigned char)tileProviderIdentifier;
+- (void).cxx_destruct;
 - (void)cancel;
-- (void)dealloc;
 - (void)start;
 
 @end

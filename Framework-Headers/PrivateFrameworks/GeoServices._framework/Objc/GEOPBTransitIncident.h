@@ -8,16 +8,18 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class GEOPBTransitArtwork, NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPBTransitIncident : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     unsigned long long _incidentMuid;
     NSMutableArray *_affectedEntitys;
     unsigned int _creationDatetime;
     unsigned int _endDatetime;
     int _iconEnum;
     unsigned int _incidentIndex;
+    GEOPBTransitArtwork *_incidentTypeArtwork;
     NSString *_longDescriptionString;
     NSString *_messageForAllBlocking;
     NSString *_messageForIncidentType;
@@ -49,6 +51,7 @@
 @property (nonatomic) BOOL hasIconEnum;
 @property (nonatomic) BOOL hasIncidentIndex;
 @property (nonatomic) BOOL hasIncidentMuid;
+@property (readonly, nonatomic) BOOL hasIncidentTypeArtwork;
 @property (readonly, nonatomic) BOOL hasLongDescriptionString;
 @property (readonly, nonatomic) BOOL hasMessageForAllBlocking;
 @property (readonly, nonatomic) BOOL hasMessageForIncidentType;
@@ -60,6 +63,7 @@
 @property (nonatomic) int iconEnum; // @synthesize iconEnum=_iconEnum;
 @property (nonatomic) unsigned int incidentIndex; // @synthesize incidentIndex=_incidentIndex;
 @property (nonatomic) unsigned long long incidentMuid; // @synthesize incidentMuid=_incidentMuid;
+@property (strong, nonatomic) GEOPBTransitArtwork *incidentTypeArtwork; // @synthesize incidentTypeArtwork=_incidentTypeArtwork;
 @property (strong, nonatomic) NSString *longDescriptionString; // @synthesize longDescriptionString=_longDescriptionString;
 @property (strong, nonatomic) NSString *messageForAllBlocking; // @synthesize messageForAllBlocking=_messageForAllBlocking;
 @property (strong, nonatomic) NSString *messageForIncidentType; // @synthesize messageForIncidentType=_messageForIncidentType;
@@ -67,9 +71,11 @@
 @property (strong, nonatomic) NSString *shortDescriptionString; // @synthesize shortDescriptionString=_shortDescriptionString;
 @property (nonatomic) unsigned int startDatetime; // @synthesize startDatetime=_startDatetime;
 @property (strong, nonatomic) NSString *titleString; // @synthesize titleString=_titleString;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (nonatomic) unsigned int updatedDatetime; // @synthesize updatedDatetime=_updatedDatetime;
 
 + (Class)affectedEntityType;
+- (void).cxx_destruct;
 - (int)StringAsIconEnum:(id)arg1;
 - (void)addAffectedEntity:(id)arg1;
 - (id)affectedEntityAtIndex:(unsigned long long)arg1;
@@ -77,7 +83,6 @@
 - (void)clearAffectedEntitys;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

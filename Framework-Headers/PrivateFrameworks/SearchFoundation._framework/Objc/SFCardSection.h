@@ -6,37 +6,63 @@
 
 #import <objc/NSObject.h>
 
-#import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/NSCopying-Protocol.h>
+#import <SearchFoundation/SFCardSection-Protocol.h>
+#import <SearchFoundation/SFJSONSerializable-Protocol.h>
 
-@class NSArray, NSString, SFCard;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor;
 
-@interface SFCardSection : NSObject <NSSecureCoding>
+@interface SFCardSection : NSObject <SFJSONSerializable, SFCardSection, NSCopying>
 {
-    BOOL _hideDivider;
+    BOOL _hasBottomPadding;
     BOOL _canBeHidden;
     BOOL _hasTopPadding;
-    BOOL _hasBottomPadding;
-    NSArray *_punchoutOptions;
-    NSString *_punchoutPickerTitle;
-    NSString *_punchoutPickerDismissText;
+    BOOL _hideDivider;
+    int _separatorStyle;
     NSString *_type;
     SFCard *_nextCard;
+    NSArray *_commands;
+    NSString *_punchoutPickerTitle;
+    NSArray *_punchoutOptions;
+    NSString *_punchoutPickerDismissText;
+    NSArray *_parameterKeyPaths;
+    NSString *_cardSectionId;
+    SFColor *_backgroundColor;
+    NSString *_resultIdentifier;
 }
 
+@property (strong, nonatomic) SFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (nonatomic) BOOL canBeHidden; // @synthesize canBeHidden=_canBeHidden;
+@property (copy, nonatomic) NSString *cardSectionId; // @synthesize cardSectionId=_cardSectionId;
+@property (copy, nonatomic) NSArray *commands; // @synthesize commands=_commands;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
 @property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideDivider; // @synthesize hideDivider=_hideDivider;
+@property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SFCard *nextCard; // @synthesize nextCard=_nextCard;
+@property (copy, nonatomic) NSArray *parameterKeyPaths; // @synthesize parameterKeyPaths=_parameterKeyPaths;
 @property (copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
+@property (copy, nonatomic) NSString *resultIdentifier; // @synthesize resultIdentifier=_resultIdentifier;
+@property (nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -6,19 +6,24 @@
 
 #import <PassKitUI/PKPaymentSetupTableViewController.h>
 
+#import <PassKitUI/PKPaymentProvisioningControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupViewControllerCanHideSetupLaterButton-Protocol.h>
 
-@class NSArray, NSString, PKPaymentProvisioningController, PKPaymentSetupCardDetailsFooterView, PKPaymentSetupProduct, PKTableHeaderView;
+@class NSMutableArray, NSString, PKPaymentProvisioningController, PKPaymentRemoteCredentialTableViewCell, PKPaymentSetupFooterView, PKPaymentSetupProduct, PKTableHeaderView, UIImage;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPaymentRemoteCredentialsViewController : PKPaymentSetupTableViewController <PKPaymentSetupViewControllerCanHideSetupLaterButton>
+@interface PKPaymentRemoteCredentialsViewController : PKPaymentSetupTableViewController <PKPaymentSetupViewControllerCanHideSetupLaterButton, PKPaymentProvisioningControllerDelegate>
 {
     PKPaymentProvisioningController *_provisioningController;
     id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
-    NSArray *_remoteCredentials;
+    NSMutableArray *_remoteCredentialCaches;
     PKTableHeaderView *_tableHeader;
-    PKPaymentSetupCardDetailsFooterView *_tableFooter;
+    PKPaymentSetupFooterView *_tableFooter;
     BOOL _allowsManualEntry;
+    UIImage *_placeHolder;
+    PKPaymentRemoteCredentialTableViewCell *_sizingCell;
+    unsigned long long _maximumNumberOfSelectableCredentials;
+    double _cachedHeaderViewWidth;
     BOOL _hideSetupLaterButton;
     PKPaymentSetupProduct *_product;
 }
@@ -31,19 +36,31 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_deviceSpecificLocalizedStringKeyForKey:(id)arg1;
-- (void)_presentCardDetailsControllerForCredential:(id)arg1;
+- (void)_createPassSnapshotFromPaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)_numberOfSelectedCredentials;
 - (void)_presentManualAddController;
 - (void)_presentViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_setPassSnapshotOnCell:(id)arg1 cell:(id)arg2;
 - (void)_setUserInteractionEnabled:(BOOL)arg1;
+- (void)_setupLater;
+- (void)_startProvisioningForSelectedCards;
+- (void)_updateForSelectionCount;
+- (void)_updateMaximumSelectableCredentials;
+- (void)_updateRemoteCredentialCache;
+- (void)_updateTableHeaderViewSubtitle;
+- (void)dealloc;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 delegate:(id)arg3 remoteCredentials:(id)arg4 allowsManualEntry:(BOOL)arg5;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)paymentPassUpdatedOnCredential:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (void)viewDidLayoutSubviews;
+- (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

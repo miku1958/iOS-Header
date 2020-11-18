@@ -6,27 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <UserNotificationsServer/UNSApplicationWorkStoreObserver-Protocol.h>
+@class FBSSystemService, NSMutableDictionary, UNSLocationMonitor;
 
-@class BKSApplicationStateMonitor, FBSSystemService, NSMutableDictionary, NSString, UNSApplicationWorkStore, UNSLocationMonitor;
-@protocol UNSSystemStateProviding;
-
-@interface UNSApplicationLauncher : NSObject <UNSApplicationWorkStoreObserver>
+@interface UNSApplicationLauncher : NSObject
 {
     FBSSystemService *_systemService;
-    BKSApplicationStateMonitor *_appStateMonitor;
     UNSLocationMonitor *_locationMonitor;
     NSMutableDictionary *_bundleIdentifierToAssertions;
-    double _backgroundFetchDuration;
-    id<UNSSystemStateProviding> _systemStateProvider;
-    UNSApplicationWorkStore *_applicationWorkStore;
 }
-
-@property (strong, nonatomic) UNSApplicationWorkStore *applicationWorkStore; // @synthesize applicationWorkStore=_applicationWorkStore;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_actionForNotificationResponse:(id)arg1 bundleIdentifier:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
@@ -34,23 +21,16 @@
 - (id)_newProcessAssertionForBundleID:(id)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 watchdogInterval:(double)arg5 acquisitionHandler:(CDUnknownBlockType)arg6 invalidationHandler:(CDUnknownBlockType)arg7;
 - (void)_queue_addProcessAssertion:(id)arg1 forBundleID:(id)arg2;
 - (void)_queue_removeAllProcessAssertionsAndInvalidate:(BOOL)arg1;
-- (void)_queue_removeAllProcessAssertionsForBundleID:(id)arg1 invalidate:(BOOL)arg2;
 - (void)_queue_removeProcessAssertion:(id)arg1 forBundleID:(id)arg2 invalidate:(BOOL)arg3;
 - (void)_queue_removeProcessAssertionsHavingReason:(unsigned int)arg1 forBundleID:(id)arg2 invalidate:(BOOL)arg3;
-- (void)_queue_updateApplicationStateMonitor;
 - (void)_removeAllProcessAssertionsAndInvalidate:(BOOL)arg1;
-- (void)_removeAllProcessAssertionsForBundleID:(id)arg1 invalidate:(BOOL)arg2;
 - (void)_removeProcessAssertion:(id)arg1 forBundleID:(id)arg2 invalidate:(BOOL)arg3;
 - (void)_removeProcessAssertionsHavingReason:(unsigned int)arg1 forBundleID:(id)arg2 invalidate:(BOOL)arg3;
-- (void)_setupApplicationStateMonitor;
-- (void)backgroundLaunchApplication:(id)arg1 withContentAvailablePush:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)backgroundLaunchApplication:(id)arg1 withNewsstandPush:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)backgroundLaunchApplication:(id)arg1 withResponse:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (void)foregroundLaunchApplication:(id)arg1 withResponse:(id)arg2 launchImageName:(id)arg3 origin:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)initWithSystemService:(id)arg1 locationMonitor:(id)arg2 systemStateProvider:(id)arg3;
-- (double)queryBackgroundFetchDuration;
-- (void)workStore:(id)arg1 applicationsWithWorkChanged:(id)arg2;
+- (id)initWithSystemService:(id)arg1 locationMonitor:(id)arg2;
+- (void)willPresentNotification:(id)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

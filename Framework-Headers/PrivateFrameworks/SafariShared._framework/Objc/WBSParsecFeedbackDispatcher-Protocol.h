@@ -23,12 +23,15 @@
 - (void)didGenerateCompletionListItemsWithRankingObserver:(WBSCompletionListRankingObserver *)arg1;
 - (void)didReceiveParsecResultsAfterTimeout:(NSArray *)arg1;
 - (void)searchViewAppearedBecauseOfEvent:(unsigned long long)arg1;
+- (void)searchViewAppearedBecauseOfEvent:(unsigned long long)arg1 isSafariReaderAvailable:(BOOL)arg2;
 - (void)searchViewDisappearedBecauseOfEvent:(long long)arg1;
 - (void)userDidEngageWithCompletionListItem:(id<WBSCompletionListItem>)arg1 atPosition:(unsigned long long)arg2 withEngagementActionDictionary:(NSDictionary *)arg3;
 - (void)userDidEngageWithCompletionListItem:(id<WBSCompletionListItem>)arg1 onActionButton:(BOOL)arg2 method:(long long)arg3;
+- (void)userDidEngageWithCompletionListItem:(id<WBSCompletionListItem>)arg1 onActionButton:(BOOL)arg2 method:(long long)arg3 doesMatchSiriSuggestion:(BOOL)arg4;
 - (void)userDidEngageWithCompletionListItem:(id<WBSCompletionListItem>)arg1 withCardActionDictionary:(NSDictionary *)arg2;
 - (void)userDidSelectCompletionListItem:(id<WBSCompletionListItem>)arg1;
 - (void)userDidSelectCompletionListItem:(id<WBSCompletionListItem>)arg1 atPosition:(unsigned long long)arg2;
+- (void)userTypedGoToSearch:(NSString *)arg1 endpoint:(unsigned long long)arg2;
 - (void)userTypedURLDirectly:(NSString *)arg1;
 @end
 

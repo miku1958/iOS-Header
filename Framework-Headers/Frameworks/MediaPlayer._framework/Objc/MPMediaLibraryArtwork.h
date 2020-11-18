@@ -7,14 +7,17 @@
 #import <Foundation/NSObject.h>
 
 @class ML3Artwork, MPMediaLibraryArtworkRequest, NSArray, NSDictionary, NSURL;
+@protocol OS_dispatch_queue;
 
 @interface MPMediaLibraryArtwork : NSObject
 {
     NSArray *_validSizes;
     MPMediaLibraryArtworkRequest *_artworkRequest;
     ML3Artwork *_artwork;
+    NSObject<OS_dispatch_queue> *_accessQueue;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
 @property (strong, nonatomic) ML3Artwork *artwork; // @synthesize artwork=_artwork;
 @property (weak, nonatomic) MPMediaLibraryArtworkRequest *artworkRequest; // @synthesize artworkRequest=_artworkRequest;
 @property (copy, nonatomic) NSDictionary *effectsMetadata;
@@ -30,6 +33,7 @@
 - (unsigned long long)hash;
 - (id)imageFileURLForEffect:(id)arg1;
 - (id)imageFileURLForSize:(struct CGSize)arg1;
+- (id)init;
 - (BOOL)isEqual:(id)arg1;
 
 @end

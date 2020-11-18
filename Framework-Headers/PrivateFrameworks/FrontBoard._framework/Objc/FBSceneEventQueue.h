@@ -11,6 +11,7 @@
 }
 
 - (void)_noteQueueDidDrain;
+- (void)_noteQueueDidUnlock;
 - (void)_noteWillExecuteEvent:(id)arg1;
 - (void)_noteWillPendEvents:(id)arg1 atPosition:(int)arg2;
 

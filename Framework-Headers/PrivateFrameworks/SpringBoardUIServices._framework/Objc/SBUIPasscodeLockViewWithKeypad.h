@@ -9,19 +9,13 @@
 #import <SpringBoardUIServices/SBUIPasscodeEntryFieldDelegate-Protocol.h>
 #import <SpringBoardUIServices/SBUIPasscodeLockNumberPadDelegate-Protocol.h>
 
-@class NSString, SBUIPasscodeLockNumberPad, UILabel, UIView;
+@class NSString, SBUIPasscodeLockNumberPad, UILabel;
 
 @interface SBUIPasscodeLockViewWithKeypad : SBUIPasscodeLockViewBase <SBUIPasscodeLockNumberPadDelegate, SBUIPasscodeEntryFieldDelegate>
 {
     UILabel *_statusTitleView;
     UILabel *_statusSubtitleView;
-    UIView *_statusBackgroundView;
     SBUIPasscodeLockNumberPad *_numberPad;
-    UIView *_topToStatusFieldOrEntryFieldFiller;
-    UIView *_entryFieldToNumberPadFiller;
-    UIView *_leftToNumberPadFiller;
-    UIView *_rightToNumberPadFiller;
-    UIView *_bottomToNumberPadFiller;
     NSString *_lastCharacterBeforeBackspace;
     BOOL _undoInputOnTouchCancellation;
     BOOL _useLightStyle;
@@ -38,10 +32,11 @@
 @property (nonatomic, getter=_undoInputOnTouchCancellation, setter=_setUndoInputOnTouchCancellation:) BOOL undoInputOnTouchCancellation; // @synthesize undoInputOnTouchCancellation=_undoInputOnTouchCancellation;
 
 - (void).cxx_destruct;
+- (struct CGRect)_defaultEntryFieldPosition;
 - (double)_entryFieldBottomYDistanceFromNumberPadTopButton;
 - (BOOL)_includesStatusView;
+- (void)_layoutEntryField;
 - (void)_layoutStatusView;
-- (void)_luminanceBoostDidChange;
 - (id)_newEntryField;
 - (id)_newStatusSubtitleView;
 - (id)_newStatusTitleView;
@@ -53,16 +48,16 @@
 - (id)_numberPad;
 - (double)_numberPadOffsetFromTopOfScreen;
 - (id)_numericEntryFieldIfExists;
+- (double)_offsetForCenteringTitleAndEntryFieldFrame:(struct CGRect)arg1 withTopYvalue:(double)arg2 bottomYvalue:(double)arg3;
 - (void)_setHasInput:(BOOL)arg1;
-- (id)_statusBackgroundView;
 - (id)_statusSubtitleView;
 - (id)_statusSubtitleViewTitleFont;
 - (id)_statusTitleView;
 - (id)_statusTitleViewTitleFont;
 - (double)_statusTitleWidth;
 - (void)_toggleForStatusField;
+- (void)_updateFonts;
 - (BOOL)_usesLightStyle;
-- (double)backgroundAlpha;
 - (void)dealloc;
 - (id)init;
 - (id)initWithLightStyle:(BOOL)arg1;
@@ -80,12 +75,14 @@
 - (void)passcodeLockNumberPadEmergencyCallButtonHit:(id)arg1;
 - (void)reset;
 - (void)resetForFailedPasscode;
-- (void)setBackgroundAlpha:(double)arg1;
-- (void)setCustomBackgroundColor:(id)arg1;
+- (void)setKeypadVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setShowsCancelButton:(BOOL)arg1;
 - (void)setShowsEmergencyCallButton:(BOOL)arg1;
 - (void)setShowsStatusField:(BOOL)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateForTransitionToPasscodeView:(BOOL)arg1;
 - (void)updateStatusText:(id)arg1 subtitle:(id)arg2 animated:(BOOL)arg3;
+- (void)willTransitionToPasscodeView;
 
 @end
 

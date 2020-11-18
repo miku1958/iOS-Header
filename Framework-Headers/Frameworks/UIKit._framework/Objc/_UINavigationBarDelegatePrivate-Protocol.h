@@ -6,15 +6,29 @@
 
 #import <UIKit/UINavigationBarDelegate-Protocol.h>
 
-@class UINavigationBar;
+@class UINavigationBar, UINavigationItem, UISearchController;
+@protocol UIViewControllerTransitionCoordinator;
 
 @protocol _UINavigationBarDelegatePrivate <UINavigationBarDelegate>
 
 @optional
+- (double)_customNavigationTransitionDuration;
+- (BOOL)_hasInterruptibleNavigationTransition;
+- (struct CGRect)_incomingNavigationBarFrame;
+- (BOOL)_isInteractiveCustomNavigationTransition;
+- (struct NSDirectionalEdgeInsets)_layoutMarginsforNavigationBar:(UINavigationBar *)arg1;
+- (void)_navigationBarChangedSize:(UINavigationBar *)arg1;
 - (void)_navigationBarDidChangeStyle:(UINavigationBar *)arg1;
 - (void)_navigationBarDidEndAnimation:(UINavigationBar *)arg1;
+- (BOOL)_navigationBarShouldUpdateProgress;
+- (void)_navigationBarWillBeginCoordinatedTransitionAnimations:(UINavigationBar *)arg1;
+- (void)_navigationItemDidUpdateSearchController:(UINavigationItem *)arg1 oldSearchController:(UISearchController *)arg2;
+- (BOOL)_shouldCrossFadeNavigationBar;
+- (id<UIViewControllerTransitionCoordinator>)_transitionCoordinator;
 - (void)_updatePaletteConstraints;
 - (void)_updatePalettesWithBlock:(void (^)(_UINavigationControllerPalette *))arg1;
+- (BOOL)_willPerformCustomNavigationTransitionForPop;
+- (BOOL)_willPerformCustomNavigationTransitionForPush;
 - (BOOL)enableBackButtonDuringTransition;
 - (BOOL)isNavigationBarHidden;
 - (void)navigationBarDidChangeOpacity:(UINavigationBar *)arg1;

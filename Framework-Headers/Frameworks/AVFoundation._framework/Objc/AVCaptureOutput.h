@@ -15,6 +15,8 @@
 
 @property (readonly, nonatomic) NSArray *connections;
 
++ (id)availableVideoCodecTypesForSourceDevice:(id)arg1 sourceFormat:(id)arg2 outputDimensions:(CDStruct_79c71658)arg3 fileType:(id)arg4 videoCodecTypesWhiteList:(id)arg5;
++ (long long)dataDroppedReasonFromSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 + (void)initialize;
 - (id)_inputForConnection:(id)arg1;
 - (id)_recommendedAudioOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 fileType:(id)arg3;
@@ -35,15 +37,14 @@
 - (id)firstEnabledConnectionForMediaType:(id)arg1;
 - (void)handleServerConnectionDeathForFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (BOOL)hasRequiredOutputFormatForConnection:(id)arg1;
-- (id)init;
+- (id)initSubclass;
 - (id)liveConnections;
 - (struct CGRect)metadataOutputRectOfInterestForRect:(struct CGRect)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (struct CGSize)outputSizeForSourceFormat:(id)arg1;
 - (void)performBlockOnSessionNotifyingThread:(CDUnknownBlockType)arg1;
 - (void)performFigCaptureSessionOperationSafelyUsingBlock:(CDUnknownBlockType)arg1;
-- (id)recommendedOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 fileType:(id)arg3;
-- (id)recommendedVideoOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 videoCodec:(id)arg3;
+- (id)recommendedOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 videoCodecType:(id)arg3 fileType:(id)arg4;
 - (struct CGRect)rectForMetadataOutputRectOfInterest:(struct CGRect)arg1;
 - (void)removeConnection:(id)arg1;
 - (unsigned int)requiredOutputFormatForConnection:(id)arg1;

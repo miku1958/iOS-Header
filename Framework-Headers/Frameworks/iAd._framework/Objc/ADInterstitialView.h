@@ -37,10 +37,10 @@
 - (void)enablePrivacyButton;
 - (id)initForInterstitialAd:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)positionAdPrivacyMark;
 - (void)removeFromSuperview;
 - (void)setAlpha:(double)arg1;
 - (void)setBounds:(struct CGRect)arg1;
-- (void)setFrame:(struct CGRect)arg1;
 - (void)setHidden:(BOOL)arg1;
 - (void)setTransform:(struct CGAffineTransform)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

@@ -7,7 +7,6 @@
 #import <SAObjects/SABaseCommand.h>
 
 @interface SABaseCommand (CFAdditions)
-+ (id)newAceObjectWithDictionaryWithCustomHandling:(id)arg1 context:(id)arg2;
-- (void)dealloc;
++ (id)aceObjectWithDictionaryWithCustomHandling:(id)arg1 context:(id)arg2;
 @end
 

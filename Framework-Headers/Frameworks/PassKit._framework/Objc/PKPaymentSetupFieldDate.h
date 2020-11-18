@@ -17,6 +17,7 @@
     NSString *_submissionFormat;
 }
 
+@property (copy, nonatomic) NSDate *currentValue; // @dynamic currentValue;
 @property (readonly, copy, nonatomic) NSDate *defaultDate;
 @property (nonatomic) BOOL showsDay; // @synthesize showsDay=_showsDay;
 @property (nonatomic) BOOL showsMonth; // @synthesize showsMonth=_showsMonth;
@@ -29,7 +30,6 @@
 - (id)displayString;
 - (unsigned long long)fieldType;
 - (id)initWithIdentifier:(id)arg1 type:(unsigned long long)arg2;
-- (void)setCurrentValue:(id)arg1;
 - (id)submissionString;
 - (BOOL)submissionStringMeetsAllRequirements;
 - (void)updateWithConfiguration:(id)arg1;

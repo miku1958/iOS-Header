@@ -23,13 +23,16 @@
 
 + (BOOL)canAuthenticate;
 + (BOOL)registerCredentialsFromContext:(id)arg1;
++ (BOOL)registerCredentialsFromContext:(id)arg1 force:(BOOL)arg2;
 - (void).cxx_destruct;
 - (int)_authenticatedCircleStatus:(id *)arg1;
 - (int)_circleStatus:(id *)arg1;
 - (BOOL)_performSOSCBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
+- (BOOL)_viewMemberForView:(struct __CFString *)arg1 error:(id *)arg2;
 - (BOOL)anyPeerHasEnabledViewsInSet:(id)arg1 error:(id *)arg2;
 - (int)circleStatus:(id *)arg1;
 - (id)generateRecoveryKeyWithInfo:(id)arg1 error:(id *)arg2;
+- (id)generateVerifierWithRcoveryKey:(id)arg1 error:(id *)arg2;
 - (BOOL)hasNonViewAwarePeers;
 - (id)initWithContext:(id)arg1;
 - (BOOL)isLastBackupMakingPeer:(id *)arg1;
@@ -41,9 +44,11 @@
 - (BOOL)requestToJoinCircle:(id *)arg1;
 - (BOOL)requestToJoinCircleAfterRestore:(id *)arg1;
 - (BOOL)requestToResetCircle:(id *)arg1;
+- (BOOL)requestToResetCloudKitData:(id *)arg1;
 - (BOOL)setViewsWithEnableSet:(id)arg1 disableSet:(id)arg2;
 - (BOOL)synchronizeCircleViews;
 - (BOOL)viewMemberForAutofillPasswords:(id *)arg1;
+- (BOOL)viewMemberForPCSMaster:(id *)arg1;
 
 @end
 

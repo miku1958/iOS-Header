@@ -25,8 +25,10 @@
 @property (readonly, nonatomic) NSArray *sortedValues;
 @property (copy, nonatomic) CDUnknownBlockType valueComparator; // @synthesize valueComparator=_valueComparator;
 
++ (id)binaryValueSetWithCharacteristicMetadata:(id)arg1 firstValue:(id)arg2 firstTitle:(id)arg3 secondValue:(id)arg4 secondTitle:(id)arg5;
 - (void).cxx_destruct;
 - (BOOL)addValue:(id)arg1 displayResults:(id)arg2;
+- (BOOL)addValue:(id)arg1 displayResults:(id)arg2 addOnlyIfValid:(BOOL)arg3;
 - (void)addValuesFromArray:(id)arg1 displayResultsGenerator:(CDUnknownBlockType)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;

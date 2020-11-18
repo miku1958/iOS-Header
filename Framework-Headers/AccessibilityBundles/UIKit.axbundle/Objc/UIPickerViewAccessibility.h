@@ -12,7 +12,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (int)_accessibilityPickerType;
+- (long long)_accessibilityPickerType;
 - (void)_accessibilityResetContainerElements;
 - (id)accessibilityElements;
 - (void)dealloc;

@@ -12,7 +12,7 @@
 {
 }
 
-@property (nonatomic) id<CoreDAVCopyTaskDelegate> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<CoreDAVCopyTaskDelegate> delegate; // @dynamic delegate;
 
 - (void)_callBackToDelegateWithResponses:(id)arg1 error:(id)arg2;
 - (void)dealloc;

@@ -22,6 +22,7 @@
 @property (readonly, strong, nonatomic) GCMicroGamepad *microGamepad;
 @property (readonly, strong, nonatomic) GCMotion *motion;
 @property (strong, nonatomic) NSString *physicalDeviceUniqueID;
+@property (nonatomic) BOOL physicalDeviceUsesCompass;
 @property (nonatomic) long long playerIndex;
 @property (strong, nonatomic) id<GCNamedProfile> profile;
 @property (readonly, nonatomic) unsigned int service;

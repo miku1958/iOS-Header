@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -15,7 +15,7 @@
 }
 
 + (id)sharedInstance;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (BOOL)hasActiveConnection:(id)arg1 forKey:(id)arg2;
 - (id)init;
 - (void)removeActiveConnection:(id)arg1 forKey:(id)arg2;

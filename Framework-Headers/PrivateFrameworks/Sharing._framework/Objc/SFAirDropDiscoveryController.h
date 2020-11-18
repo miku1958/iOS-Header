@@ -44,6 +44,7 @@
 - (id)discoverableModeToString:(long long)arg1;
 - (void)handleOperationCallback:(struct __SFOperation *)arg1 event:(long long)arg2 withResults:(id)arg3;
 - (id)init;
+- (void)invalidate;
 - (long long)operationDiscoverableModeToInteger:(id)arg1;
 - (void)updateAlertControllerTitle;
 - (void)wirelessSettingsDidChange:(id)arg1;

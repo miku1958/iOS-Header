@@ -9,20 +9,20 @@
 #import <MessageUI/UITableViewDataSource-Protocol.h>
 #import <MessageUI/UITableViewDelegate-Protocol.h>
 
-@class MFMailComposeRecipientView, NSArray, NSMutableArray, NSMutableIndexSet, NSString, UITableView;
+@class MFComposeRecipientTextView, NSArray, NSMutableArray, NSMutableIndexSet, NSString, UITableView;
 
 @interface MFMailComposeCorecipientViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *_tableView;
     NSMutableIndexSet *_selectedIndexes;
     NSMutableArray *_recipients;
-    MFMailComposeRecipientView *_recipientView;
+    MFComposeRecipientTextView *_recipientView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) MFMailComposeRecipientView *recipientView; // @synthesize recipientView=_recipientView;
+@property (strong, nonatomic) MFComposeRecipientTextView *recipientView; // @synthesize recipientView=_recipientView;
 @property (readonly, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (readonly) Class superclass;
 

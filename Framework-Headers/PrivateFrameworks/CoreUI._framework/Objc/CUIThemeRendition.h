@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
     long long _type;
     unsigned int _subtype;
     unsigned int _scale;
+    int _exifOrientation;
+    int _blendMode;
     struct {
         unsigned int isHeaderFlaggedFPO:1;
         unsigned int isExcludedFromContrastFilter:1;
@@ -24,8 +26,8 @@ __attribute__((visibility("hidden")))
         unsigned int bitmapEncoding:4;
         unsigned int optOutOfThinning:1;
         unsigned int isFlippable:1;
-        unsigned int otherImageProvider:1;
         unsigned int isTintable:1;
+        unsigned int preservedVectorRepresentation:1;
         unsigned int reserved:20;
     } _renditionFlags;
     long long _templateRenderingMode;
@@ -35,9 +37,7 @@ __attribute__((visibility("hidden")))
     NSData *_srcData;
     long long _validLookGradation;
     double _opacity;
-    int _blendMode;
     NSString *_utiType;
-    int _exifOrientation;
     struct CGImage *_uncroppedImage;
 }
 
@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 + (id)displayNameForRenditionType:(long long)arg1;
 + (id)filteredCSIDataFromBaseCSIData:(id)arg1;
 + (Class)renditionClassForRenditionType:(long long)arg1 andPixelFormat:(unsigned int)arg2;
+- (struct CGRect)_destinationFrame;
 - (id)_initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
 - (void)_initalizeMetadataFromCSIData:(const struct _csiheader *)arg1;
@@ -61,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (int)bitmapEncoding;
 - (unsigned long long)colorSpaceID;
 - (struct CGImage *)createImageFromPDFRenditionWithScale:(double)arg1;
+- (const struct _csicolor *)csiColor;
 - (id)data;
 - (void)dealloc;
 - (id)description;
@@ -94,9 +96,12 @@ __attribute__((visibility("hidden")))
 - (id)packedContents;
 - (struct CGPDFDocument *)pdfDocument;
 - (int)pixelFormat;
+- (BOOL)preservedVectorRepresentation;
 - (id)provideTextureInfo;
 - (double)scale;
+- (id)sizeIndexes;
 - (id)sliceInformation;
+- (unsigned long long)sourceRowbytes;
 - (unsigned int)subtype;
 - (long long)templateRenderingMode;
 - (id)textureImages;

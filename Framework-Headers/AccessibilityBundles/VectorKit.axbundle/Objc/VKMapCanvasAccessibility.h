@@ -12,7 +12,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)accessibilityContainerElements;
+- (id)accessibilityElements;
 
 @end
 

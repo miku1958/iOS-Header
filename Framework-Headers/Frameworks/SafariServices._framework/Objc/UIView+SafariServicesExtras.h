@@ -10,6 +10,8 @@
 
 @property (readonly, nonatomic) BOOL _sf_hasLandscapeAspectRatio;
 @property (readonly, nonatomic) BOOL _sf_isFullScreenWidth;
+@property (readonly, nonatomic) struct UIEdgeInsets _sf_safeAreaInsets;
+@property (readonly, nonatomic) struct UIEdgeInsets _sf_safeAreaInsetsFlippedForLayoutDirectionality;
 @property (readonly, nonatomic) BOOL _sf_usesLeftToRightLayout;
 
 - (double)_sf_convertY:(double)arg1 toCoordinateSpace:(id)arg2;

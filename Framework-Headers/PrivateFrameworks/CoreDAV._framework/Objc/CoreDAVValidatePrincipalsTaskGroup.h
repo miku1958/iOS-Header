@@ -28,10 +28,10 @@
 @property (strong, nonatomic) NSURL *urlBeingExamined; // @synthesize urlBeingExamined=_urlBeingExamined;
 @property (strong, nonatomic) NSMutableSet *urlsToExamine; // @synthesize urlsToExamine=_urlsToExamine;
 
+- (void).cxx_destruct;
 - (void)_fetchNextURL;
 - (void)_finishWithError:(id)arg1;
 - (void)cancelTaskGroup;
-- (void)dealloc;
 - (id)initWithAccountInfoProvider:(id)arg1 urls:(id)arg2 taskManager:(id)arg3;
 - (void)startTaskGroup;
 - (void)task:(id)arg1 didFinishWithError:(id)arg2;

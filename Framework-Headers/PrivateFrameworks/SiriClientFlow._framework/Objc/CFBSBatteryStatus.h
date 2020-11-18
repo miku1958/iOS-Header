@@ -17,7 +17,7 @@
 @property (copy, nonatomic) NSString *deviceName;
 @property (copy, nonatomic) NSNumber *lowBattery;
 
-+ (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
++ (id)aceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)object;
 + (id)objectWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;

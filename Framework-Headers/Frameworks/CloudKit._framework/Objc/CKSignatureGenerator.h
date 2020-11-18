@@ -16,6 +16,7 @@
 @property (nonatomic, getter=isValid) BOOL valid; // @synthesize valid=_valid;
 
 + (BOOL)isValidSignature:(id)arg1;
++ (BOOL)isValidV2Signature:(id)arg1;
 + (id)signatureWithFileDescriptor:(int)arg1 error:(id *)arg2;
 - (char *)_newSignatureByFinishingGenerator;
 - (id)dataByFinishingSignature;

@@ -18,7 +18,9 @@
 @property BOOL appliesX;
 @property BOOL appliesY;
 @property (copy) NSString *keyPath;
+@property unsigned int sourceContextId;
 @property (weak) CALayer *sourceLayer;
+@property unsigned long long sourceLayerRenderId;
 @property (copy) NSArray *sourcePoints;
 @property BOOL targetsSuperlayer;
 

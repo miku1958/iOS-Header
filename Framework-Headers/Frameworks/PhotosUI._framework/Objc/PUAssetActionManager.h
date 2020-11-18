@@ -18,6 +18,7 @@
 + (CDUnknownBlockType)_unlockDeviceHandler;
 + (void)setUnlockDeviceHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+- (id)actionPerformerForDuplicatingAssetsByAssetCollection:(id)arg1 withNewStillImageTime:(CDStruct_1b6d18a9)arg2;
 - (id)actionPerformerForSettingFavoriteTo:(BOOL)arg1 onAssetsByAssetCollection:(id)arg2;
 - (id)actionPerformerForSimpleActionType:(unsigned long long)arg1 onAssetsByAssetCollection:(id)arg2;
 - (BOOL)canPerformAction:(unsigned long long)arg1 onAllAssetsByAssetCollection:(id)arg2;

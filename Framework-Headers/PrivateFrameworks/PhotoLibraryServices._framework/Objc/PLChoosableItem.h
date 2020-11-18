@@ -4,22 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
 @interface PLChoosableItem : NSObject
 {
-    int _width;
-    int _height;
     int _type;
+    long long _width;
+    long long _height;
     NSString *_uniformTypeIdentifier;
 }
 
-@property (readonly, nonatomic) int height; // @synthesize height=_height;
+@property (readonly, nonatomic) long long height; // @synthesize height=_height;
 @property (readonly, nonatomic) int type; // @synthesize type=_type;
 @property (readonly, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
-@property (readonly, nonatomic) int width; // @synthesize width=_width;
+@property (readonly, nonatomic) long long width; // @synthesize width=_width;
 
 + (id)choosableItemsFromCloudResources:(id)arg1;
 - (long long)compareUsingWidth:(id)arg1;
@@ -27,7 +27,7 @@
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithCloudResource:(id)arg1;
-- (id)initWithWidth:(int)arg1 height:(int)arg2 type:(int)arg3 uniformTypeIdentifier:(id)arg4;
+- (id)initWithWidth:(long long)arg1 height:(long long)arg2 type:(int)arg3 uniformTypeIdentifier:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToChoosableItem:(id)arg1;
 

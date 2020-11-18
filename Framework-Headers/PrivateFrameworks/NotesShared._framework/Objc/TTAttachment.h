@@ -25,6 +25,7 @@
 
 + (BOOL)isAttachment:(id)arg1 equalToModelComparable:(id)arg2;
 - (void).cxx_destruct;
+- (id)attachmentInContext:(id)arg1;
 - (BOOL)isEqualToModelComparable:(id)arg1;
 
 @end

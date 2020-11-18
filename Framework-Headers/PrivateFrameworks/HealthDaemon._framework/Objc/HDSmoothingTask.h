@@ -6,19 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class HKLocationSeriesSample, NSArray;
+@class HKWorkoutRoute, NSArray;
 
 @interface HDSmoothingTask : NSObject
 {
-    HKLocationSeriesSample *_sample;
+    HKWorkoutRoute *_sample;
     NSArray *_unsmoothedLocations;
+    CDUnknownBlockType _completionHandler;
+    long long _smoothingAttempts;
 }
 
-@property (strong, nonatomic) HKLocationSeriesSample *sample; // @synthesize sample=_sample;
+@property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (strong, nonatomic) HKWorkoutRoute *sample; // @synthesize sample=_sample;
+@property long long smoothingAttempts; // @synthesize smoothingAttempts=_smoothingAttempts;
 @property (strong, nonatomic) NSArray *unsmoothedLocations; // @synthesize unsmoothedLocations=_unsmoothedLocations;
 
 - (void).cxx_destruct;
 - (id)description;
+- (id)initWithRoute:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

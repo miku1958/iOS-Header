@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOComposedRoute, GEOComposedRouteStep, GEOComposedTransitStationRouteStep, GEOComposedTransitTripRouteStep, GEONavigationMatchInfo, NSArray, NSDate;
 
@@ -22,7 +22,7 @@
     unsigned long long _consecutiveProgressionsOffRoute;
     double _distanceTraveledOffRoute;
     BOOL _isGoodMatch;
-    CDStruct_2244da21 *_road;
+    CDStruct_a2ef2718 *_road;
     double _roadWidth;
     GEORouteMatch *_projectedFrom;
     NSDate *_timestamp;
@@ -43,7 +43,7 @@
 @property (nonatomic) double modifiedCourseAccuracy; // @synthesize modifiedCourseAccuracy=_modifiedCourseAccuracy;
 @property (nonatomic) double modifiedHorizontalAccuracy; // @synthesize modifiedHorizontalAccuracy=_modifiedHorizontalAccuracy;
 @property (strong, nonatomic) GEORouteMatch *projectedFrom; // @synthesize projectedFrom=_projectedFrom;
-@property (nonatomic) CDStruct_2244da21 *road; // @synthesize road=_road;
+@property (nonatomic) CDStruct_a2ef2718 *road; // @synthesize road=_road;
 @property (readonly, nonatomic) double roadWidth; // @synthesize roadWidth=_roadWidth;
 @property (readonly, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 @property (readonly, nonatomic) struct PolylineCoordinate routeCoordinate; // @synthesize routeCoordinate=_routeCoordinate;
@@ -56,6 +56,7 @@
 @property (readonly, nonatomic) GEOComposedTransitTripRouteStep *transitTripStep;
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (double)fractionOfCurrentStepTraveled;
@@ -65,8 +66,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualIgnoringScore:(id)arg1;
 - (BOOL)routeMatchBehind:(id)arg1;
+- (void)setRouteCoordinate:(struct PolylineCoordinate)arg1;
 - (void)updateOffRouteProgress:(id)arg1 minDistanceToGetOnRoute:(double)arg2;
-- (void)updateWithMinRouteCoordinate:(struct PolylineCoordinate)arg1;
 
 @end
 

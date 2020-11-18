@@ -6,12 +6,13 @@
 
 #import <UserNotifications/NSObject-Protocol.h>
 
-@class NSArray, NSSet, NSString, UNNotificationRequest;
+@class NSArray, NSNumber, NSSet, NSString, UNNotificationRequest;
 
 @protocol UNUserNotificationServerProtocol <NSObject>
 - (void)addNotificationRequest:(UNNotificationRequest *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
 - (void)addNotificationRequests:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(void))arg3;
 - (void)getAllowsRemoteNotificationsForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(BOOL))arg2;
+- (void)getBadgeNumberForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(NSNumber *))arg2;
 - (void)getDeliveredNotificationsForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(NSArray *))arg2;
 - (void)getNotificationCategoriesForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(NSSet *))arg2;
 - (void)getNotificationSettingsForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(UNNotificationSettings *))arg2;
@@ -24,6 +25,8 @@
 - (void)removeSimilarNotificationRequests:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(void))arg3;
 - (void)requestAuthorizationWithOptions:(unsigned long long)arg1 forBundleIdentifier:(NSString *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)requestTokenForRemoteNotificationsForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
+- (void)setBadgeNumber:(NSNumber *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
+- (void)setBadgeString:(NSString *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
 - (void)setNotificationCategories:(NSSet *)arg1 forBundleIdentifier:(NSString *)arg2;
 - (void)setNotificationRequests:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(void))arg3;
 - (void)setObservingUserNotifications:(BOOL)arg1 forBundleIdentifier:(NSString *)arg2;

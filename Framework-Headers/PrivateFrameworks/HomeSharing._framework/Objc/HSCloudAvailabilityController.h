@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <HomeSharing/HSCloudAvailability-Protocol.h>
+#import <HomeSharing/ICEnvironmentMonitorObserver-Protocol.h>
 #import <HomeSharing/RadiosPreferencesDelegate-Protocol.h>
 
 @class NSString, RadiosPreferences;
 @protocol OS_dispatch_queue;
 
-@interface HSCloudAvailabilityController : NSObject <RadiosPreferencesDelegate, HSCloudAvailability>
+@interface HSCloudAvailabilityController : NSObject <RadiosPreferencesDelegate, ICEnvironmentMonitorObserver, HSCloudAvailability>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     BOOL _hasProperNetworkConditionsToShowCloudMedia;
@@ -32,7 +33,6 @@
     long long _networkType;
     RadiosPreferences *_radiosPreferences;
     unsigned long long _networkReachabilityObservationCount;
-    struct __SCNetworkReachability *_reachabilityRef;
     struct __CTServerConnection *_ctServerConnection;
 }
 
@@ -44,16 +44,14 @@
 + (id)sharedController;
 - (void).cxx_destruct;
 - (void)_applicationWillEnterForeground:(id)arg1;
-- (void)_cellularNetworkAllowedDidChangeNotification:(id)arg1;
 - (BOOL)_hasCellularCapability;
 - (BOOL)_hasWiFiCapability;
 - (BOOL)_isAutoDownloadOnCellularAllowed;
-- (void)_networkTypeDidChangeNotification:(id)arg1;
 - (void)_onQueue_beginObservingReachabilityChanges;
 - (void)_onQueue_endObservingReachabilityChanges;
 - (void)_onQueue_updateCanShowCloudDownloadButtonsWithNotification:(BOOL)arg1;
 - (void)_onQueue_updateCanShowCloudTracksWithNotification:(BOOL)arg1;
-- (void)_setNewIsNetworkReachable:(BOOL)arg1;
+- (void)_setNewIsNetworkReachable:(BOOL)arg1 networkType:(long long)arg2;
 - (BOOL)_uncachedIsAutoDownloadOnCellularAllowed;
 - (BOOL)_uncachedIsShowingAllMusic;
 - (BOOL)_uncachedIsShowingAllVideo;
@@ -65,6 +63,7 @@
 - (BOOL)canShowCloudVideo;
 - (void)dealloc;
 - (void)endObservingNetworkReachability;
+- (void)environmentMonitorDidChangeNetworkReachability:(id)arg1;
 - (BOOL)hasProperNetworkConditionsToPlayMedia;
 - (BOOL)hasProperNetworkConditionsToShowCloudMedia;
 - (id)init;

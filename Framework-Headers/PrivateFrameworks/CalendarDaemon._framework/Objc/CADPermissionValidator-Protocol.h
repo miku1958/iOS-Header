@@ -11,8 +11,10 @@
 @property (readonly) BOOL canMakeSpotlightChanges;
 @property (readonly) BOOL canModifyCalendarDatabase;
 @property (readonly) BOOL canModifySuggestedEventCalendar;
-@property (readonly) BOOL canSetAutomaticLocationGeocodingAllowedValue;
+@property (readonly) BOOL hasCalendarToolEntitlement;
 @property (readonly) BOOL hasContactsUIEntitlement;
+@property (readonly) BOOL hasMigrationEntitlement;
+@property (readonly) BOOL hasSyncClientEntitlement;
 @property (readonly) BOOL internalAccessLevelGranted;
 @property (readonly) BOOL testingAccessLevelGranted;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Contacts/NSCopying-Protocol.h>
 #import <Contacts/NSSecureCoding-Protocol.h>
@@ -33,29 +33,35 @@
 @property (readonly, nonatomic) SEL writeSelector; // @synthesize writeSelector=_writeSelector;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void *)ABValueForABPerson:(void *)arg1;
 - (void *)ABValueFromCNValue:(id)arg1;
+- (id)CNMutableValueForABMultivalue;
 - (id)CNValueForContact:(id)arg1;
+- (id)CNValueFromABBytes:(char *)arg1 length:(unsigned long long)arg2;
 - (id)CNValueFromABValue:(void *)arg1;
 - (BOOL)abPropertyID:(int *)arg1;
+- (BOOL)applyABMultivalueValueBytes:(char *)arg1 length:(unsigned long long)arg2 identifier:(id)arg3 legacyIdentifier:(int)arg4 label:(id)arg5 toCNMultivalueRepresentation:(id)arg6;
+- (BOOL)applyDictionary:(id)arg1 identifier:(id)arg2 legacyIdentifier:(int)arg3 label:(id)arg4 toCNMultivalueRepresentation:(id)arg5;
 - (void)assertValueType:(id)arg1;
+- (BOOL)canUnifyValue:(id)arg1 withValue:(id)arg2;
 - (void)copyFromABPerson:(void *)arg1 toContact:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)decodeUsingCoder:(id)arg1 contact:(id)arg2;
 - (void)encodeUsingCoder:(id)arg1 contact:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
-- (id)equivalentLabelsForLabel:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithKey:(id)arg1 readSelector:(SEL)arg2 writeSelector:(SEL)arg3;
 - (BOOL)isEqualIgnoringIdentifiersForContact:(id)arg1 other:(id)arg2;
 - (BOOL)isValidValue:(id)arg1 error:(id *)arg2;
-- (BOOL)isValue:(id)arg1 equivalentToValue:(id)arg2;
-- (BOOL)isValue:(id)arg1 preferredToEquivalentValue:(id)arg2;
+- (BOOL)isValue:(id)arg1 equalToEmptyEquivalentOrValue:(id)arg2;
+- (BOOL)isValue:(id)arg1 preferredToUnifiedValue:(id)arg2;
 - (BOOL)setABValue:(void *)arg1 onABPerson:(void *)arg2 error:(struct __CFError **)arg3;
 - (BOOL)setCNValue:(id)arg1 onABPerson:(void *)arg2 withDependentPropertiesContext:(id)arg3 error:(id *)arg4;
 - (void)setCNValue:(id)arg1 onContact:(id)arg2;
 - (id)stringForIndexingForContact:(id)arg1;
+- (BOOL)supportsABLazyLoading;
+- (id)unifiableLabelsForLabel:(id)arg1;
 - (id)valueWithResetIdentifiers:(id)arg1;
 
 @end

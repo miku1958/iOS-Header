@@ -20,6 +20,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *interfaceOrientation;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL victoryDevice;
 
 + (id)watchData;
 + (id)watchDataWithDictionary:(id)arg1 context:(id)arg2;

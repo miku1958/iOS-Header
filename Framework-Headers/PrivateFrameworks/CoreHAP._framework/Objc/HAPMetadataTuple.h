@@ -4,21 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSString;
 
-@interface HAPMetadataTuple : NSObject
+@interface HAPMetadataTuple : HMFObject
 {
-    NSString *_characteristicName;
-    NSString *_serviceName;
+    NSString *_characteristicType;
+    NSString *_serviceType;
+    NSString *_index;
 }
 
-@property (readonly, nonatomic) NSString *characteristicName; // @synthesize characteristicName=_characteristicName;
-@property (readonly, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
+@property (readonly, nonatomic) NSString *characteristicType; // @synthesize characteristicType=_characteristicType;
+@property (readonly, nonatomic) NSString *index; // @synthesize index=_index;
+@property (readonly, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 
 - (void).cxx_destruct;
-- (id)initWithCharacteristic:(id)arg1 service:(id)arg2;
+- (unsigned long long)hash;
+- (id)initWithCharacteristicType:(id)arg1 serviceType:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

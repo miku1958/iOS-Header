@@ -29,9 +29,9 @@
 @property (readonly, nonatomic) NSString *nextCTag; // @synthesize nextCTag=_nextCTag;
 @property (readonly, nonatomic) NSDictionary *uuidsToAddActions; // @synthesize uuidsToAddActions=_uuidsToAddActions;
 
+- (void).cxx_destruct;
 - (id)additionalHeaderValues;
 - (id)copyDefaultParserForContentType:(id)arg1;
-- (void)dealloc;
 - (void)fillOutDataWithUUIDsToAddActions:(id)arg1 hrefsToModDeleteActions:(id)arg2;
 - (void)finishCoreDAVTaskWithError:(id)arg1;
 - (id)httpMethod;

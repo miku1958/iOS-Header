@@ -22,13 +22,14 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<AXElementInteractionManagerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<AXElementInteractionManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL displayCursor; // @synthesize displayCursor=_displayCursor;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (id)sharedManager;
+- (void).cxx_destruct;
 - (id)_allowDelegateToDecideElement:(id)arg1;
 - (id)_client;
 - (id)_clientIdentifier;
@@ -41,7 +42,6 @@
 - (int)_registerForAXNotifications:(BOOL)arg1;
 - (void)_sendMessage:(id)arg1 withIdentifier:(unsigned long long)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (void)_sendMessageWithIdentifier:(unsigned long long)arg1 errorHandler:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (void)endInteractionMode;
 - (id)focusedElement;
 - (id)init;

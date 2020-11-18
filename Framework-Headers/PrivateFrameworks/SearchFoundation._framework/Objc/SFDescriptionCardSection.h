@@ -6,20 +6,45 @@
 
 #import <SearchFoundation/SFTitleCardSection.h>
 
-@class NSNumber, NSString, NSURL, SFImage, SFText;
+#import <SearchFoundation/NSCopying-Protocol.h>
+#import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFDescriptionCardSection-Protocol.h>
 
-@interface SFDescriptionCardSection : SFTitleCardSection
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, NSURL, SFCard, SFColor, SFImage, SFText;
+
+@interface SFDescriptionCardSection : SFTitleCardSection <SFDescriptionCardSection, NSSecureCoding, NSCopying>
 {
+    struct {
+        unsigned int canBeHidden:1;
+        unsigned int hasTopPadding:1;
+        unsigned int hasBottomPadding:1;
+        unsigned int separatorStyle:1;
+        unsigned int titleNoWrap:1;
+        unsigned int descriptionExpand:1;
+        unsigned int imageAlign:1;
+        unsigned int textAlign:1;
+    } _has;
+    BOOL _canBeHidden;
+    BOOL _hasTopPadding;
+    BOOL _hasBottomPadding;
     BOOL _titleNoWrap;
     BOOL _descriptionExpand;
+    int _separatorStyle;
+    int _imageAlign;
+    int _textAlign;
+    NSArray *_punchoutOptions;
+    NSString *_punchoutPickerTitle;
+    NSString *_punchoutPickerDismissText;
+    NSString *_type;
+    SFColor *_backgroundColor;
+    NSString *_title;
+    NSString *_subtitle;
     SFText *_descriptionText;
     NSString *_expandText;
     SFImage *_image;
     NSNumber *_titleWeight;
     NSNumber *_descriptionSize;
     NSNumber *_descriptionWeight;
-    unsigned long long _imageAlign;
-    unsigned long long _textAlign;
     NSString *_attributionText;
     NSURL *_attributionURL;
     SFImage *_attributionGlyph;
@@ -28,21 +53,55 @@
 @property (strong, nonatomic) SFImage *attributionGlyph; // @synthesize attributionGlyph=_attributionGlyph;
 @property (copy, nonatomic) NSString *attributionText; // @synthesize attributionText=_attributionText;
 @property (copy, nonatomic) NSURL *attributionURL; // @synthesize attributionURL=_attributionURL;
+@property (strong, nonatomic) SFColor *backgroundColor;
+@property (nonatomic) BOOL canBeHidden;
+@property (copy, nonatomic) NSString *cardSectionId;
+@property (copy, nonatomic) NSArray *commands;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL descriptionExpand; // @synthesize descriptionExpand=_descriptionExpand;
 @property (copy, nonatomic) NSNumber *descriptionSize; // @synthesize descriptionSize=_descriptionSize;
 @property (strong, nonatomic) SFText *descriptionText; // @synthesize descriptionText=_descriptionText;
 @property (copy, nonatomic) NSNumber *descriptionWeight; // @synthesize descriptionWeight=_descriptionWeight;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (copy, nonatomic) NSString *expandText; // @synthesize expandText=_expandText;
+@property (nonatomic) BOOL hasBottomPadding;
+@property (nonatomic) BOOL hasTopPadding;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hideDivider;
 @property (strong, nonatomic) SFImage *image; // @synthesize image=_image;
-@property (nonatomic) unsigned long long imageAlign; // @synthesize imageAlign=_imageAlign;
-@property (nonatomic) unsigned long long textAlign; // @synthesize textAlign=_textAlign;
+@property (nonatomic) int imageAlign; // @synthesize imageAlign=_imageAlign;
+@property (nonatomic) BOOL isCentered;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (strong, nonatomic) SFCard *nextCard;
+@property (copy, nonatomic) NSArray *parameterKeyPaths;
+@property (copy, nonatomic) NSArray *punchoutOptions;
+@property (copy, nonatomic) NSString *punchoutPickerDismissText;
+@property (copy, nonatomic) NSString *punchoutPickerTitle;
+@property (copy, nonatomic) NSString *resultIdentifier;
+@property (nonatomic) int separatorStyle;
+@property (copy, nonatomic) NSString *subtitle;
+@property (readonly) Class superclass;
+@property (nonatomic) int textAlign; // @synthesize textAlign=_textAlign;
+@property (copy, nonatomic) NSString *title;
 @property (nonatomic) BOOL titleNoWrap; // @synthesize titleNoWrap=_titleNoWrap;
 @property (copy, nonatomic) NSNumber *titleWeight; // @synthesize titleWeight=_titleWeight;
+@property (copy, nonatomic) NSString *type;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasCanBeHidden;
+- (BOOL)hasDescriptionExpand;
+- (BOOL)hasHasBottomPadding;
+- (BOOL)hasHasTopPadding;
+- (BOOL)hasImageAlign;
+- (BOOL)hasSeparatorStyle;
+- (BOOL)hasTextAlign;
+- (BOOL)hasTitleNoWrap;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 
 @end
 

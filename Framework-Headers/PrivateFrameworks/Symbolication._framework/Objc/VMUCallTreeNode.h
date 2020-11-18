@@ -13,19 +13,17 @@
     VMUCallTreeNode *_parent;
     NSString *_name;
     unsigned long long _address;
-    unsigned int _count;
     unsigned long long _numBytes;
+    unsigned int _count;
     unsigned int _numChildren;
-    union {
-        void *theChild;
-        void **theChildren;
-    } _un;
+    void *_children;
 }
 
 + (id)makeFakeRootForNode:(id)arg1;
 + (id)nodeWithName:(id)arg1 address:(unsigned long long)arg2 count:(unsigned int)arg3 numBytes:(unsigned long long)arg4;
 + (id)rootForSamples:(id)arg1 symbolicator:(struct _CSTypeRef)arg2;
 + (id)rootForSamples:(id)arg1 symbolicator:(struct _CSTypeRef)arg2 sampler:(id)arg3 options:(unsigned long long)arg4;
+- (void).cxx_destruct;
 - (void)addChild:(id)arg1;
 - (void)addChildCountsIntoNode;
 - (unsigned long long)address;
@@ -68,7 +66,6 @@
 - (id)pseudoName;
 - (id)pseudoNodeTopOfStackChild;
 - (void)setChildren:(id)arg1;
-- (void)setNumChildren:(unsigned int)arg1;
 - (id)sortedChildrenWithPseudoNode;
 - (id)sortedChildrenWithPseudoNode:(id)arg1 withCompare:(SEL)arg2;
 - (id)stringFromCallTreeIndentIfNoBranches:(BOOL)arg1;

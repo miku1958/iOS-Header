@@ -42,6 +42,7 @@
 - (void)installProfile:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)invalidate;
 - (void)obliterateGizmo:(CDUnknownBlockType)arg1;
+- (void)obliterateGizmoPreservingeSIM:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)protocol;
 - (void)purgeUsageBundle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)rebootDevice;

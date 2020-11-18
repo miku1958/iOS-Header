@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (id)clone;
 - (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 transform:(struct CGAffineTransform)arg5 zPosition:(double)arg6 coordinateSystem:(id)arg7;
-- (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 transform:(struct CGAffineTransform)arg5 zPosition:(double)arg6 coordinateSystem:(id)arg7 isOverContent:(BOOL)arg8;
+- (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 transform:(struct CGAffineTransform)arg5 zPosition:(double)arg6 hitTestOutset:(struct UIEdgeInsets)arg7 coordinateSystem:(id)arg8 isOverContent:(BOOL)arg9;
 - (BOOL)isGeometryEqualToLayoutInfo:(id)arg1;
 
 @end

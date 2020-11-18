@@ -46,6 +46,8 @@
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)requestLocation;
+- (BOOL)shouldStopRequestingLocationAfterCallback;
+- (void)stopRequestingLocationUpdates;
 - (void)warmUpLocationRequest;
 
 @end

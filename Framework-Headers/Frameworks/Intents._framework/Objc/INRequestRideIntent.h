@@ -21,14 +21,13 @@
 @property (readonly, copy, nonatomic) NSNumber *partySize;
 @property (readonly, copy, nonatomic) INPaymentMethod *paymentMethod;
 @property (readonly, copy, nonatomic) CLPlacemark *pickupLocation;
-@property (readonly, nonatomic) INDateComponentsRange *pickupTime;
 @property (readonly, copy, nonatomic) INSpeakableString *rideOptionName;
 @property (readonly, copy, nonatomic) INDateComponentsRange *scheduledPickupTime;
 @property (readonly) Class superclass;
 
 - (id)_dictionaryRepresentation;
 - (id)_metadata;
-- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
+- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_typedBackingStore;
 - (id)domain;
 - (id)initWithPickupLocation:(id)arg1 dropOffLocation:(id)arg2 rideOptionName:(id)arg3 partySize:(id)arg4 paymentMethod:(id)arg5;

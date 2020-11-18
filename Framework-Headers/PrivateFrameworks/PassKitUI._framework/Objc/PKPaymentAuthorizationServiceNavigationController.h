@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UINavigationController.h>
+#import <PassKitUI/PKBlurredNavigationController.h>
 
 #import <PassKitUI/UINavigationControllerDelegate-Protocol.h>
 
 @class NSString, PKPaymentAuthorizationLayout, PKPaymentAuthorizationServiceViewController;
 @protocol UIViewControllerTransitioningDelegate;
 
-@interface PKPaymentAuthorizationServiceNavigationController : UINavigationController <UINavigationControllerDelegate>
+@interface PKPaymentAuthorizationServiceNavigationController : PKBlurredNavigationController <UINavigationControllerDelegate>
 {
     PKPaymentAuthorizationLayout *_layout;
     PKPaymentAuthorizationServiceViewController *_authorizationViewController;
@@ -26,12 +26,8 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_setPreferredContentSizeFromChildContentContainer:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
-- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)viewDidLoad;
 
 @end
 

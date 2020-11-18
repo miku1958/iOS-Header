@@ -9,7 +9,7 @@
 #import <Message/MFDiagnosticsGenerator-Protocol.h>
 #import <Message/RadiosPreferencesDelegate-Protocol.h>
 
-@class AWDMailNetworkDiagnosticsReport, NSLock, NSMutableArray, NSMutableSet, NSString, NSThread, RadiosPreferences;
+@class AWDMailNetworkDiagnosticsReport, MFObservable, NSLock, NSMutableArray, NSMutableSet, NSString, NSThread, RadiosPreferences;
 @protocol OS_dispatch_queue;
 
 @interface MFNetworkController : NSObject <MFDiagnosticsGenerator, RadiosPreferencesDelegate>
@@ -29,6 +29,7 @@
     BOOL _isWiFiEnabled;
     BOOL _isRoamingAllowed;
     BOOL _data;
+    BOOL _alternateAdviceState;
     NSString *_dataIndicator;
     RadiosPreferences *_radiosPreferences;
     NSObject<OS_dispatch_queue> *_prefsQueue;
@@ -43,7 +44,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) MFObservable *networkObservable;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) MFObservable *wifiObservable;
 
 + (id)networkAssertionWithIdentifier:(id)arg1;
 + (id)sharedInstance;
@@ -67,6 +70,7 @@
 - (id)copyDiagnosticInformation;
 - (int)dataStatus;
 - (void)dealloc;
+- (BOOL)hasAlternateAdvice;
 - (BOOL)inAirplaneMode;
 - (id)init;
 - (void)invalidate;

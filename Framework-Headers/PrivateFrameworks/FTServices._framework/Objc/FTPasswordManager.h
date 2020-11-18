@@ -6,17 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccountStore, IMUserNotificationCenter, NSMutableSet;
+#import <FTServices/FTPasswordManager-Protocol.h>
 
-@interface FTPasswordManager : NSObject
+@class ACAccountStore, IMUserNotificationCenter, NSMutableSet, NSString;
+
+@interface FTPasswordManager : NSObject <FTPasswordManager>
 {
     NSMutableSet *_runningQueries;
     ACAccountStore *_accountStore;
     IMUserNotificationCenter *_userNotificationCenter;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)_loginUserNotificationForService:(id)arg1 user:(id)arg2 isForBadPassword:(BOOL)arg3 showForgetPassword:(BOOL)arg4 shouldRememberPassword:(BOOL)arg5;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)_accountBasedOnProfileID:(id)arg1 orUsername:(id)arg2 inStore:(id)arg3;
 - (id)_accountOptionsDictForRenewCredentialsForService:(id)arg1 username:(id)arg2;
 - (id)_accountWithProfileID:(id)arg1 username:(id)arg2 inStore:(id)arg3;
@@ -33,9 +41,11 @@
 - (void)_setKeychainPassword:(id)arg1 forUsername:(id)arg2 service:(id)arg3;
 - (id)acAccountWithProfileID:(id)arg1 username:(id)arg2 accountStore:(id)arg3;
 - (void)cancelRequestID:(id)arg1 serviceIdentifier:(id)arg2;
-- (void)dealloc;
+- (void)cleanUpAccountsBasedOnInUseUsernames:(id)arg1 profileIDs:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)cleanUpAccountsWithUsername:(id)arg1 orProfileID:(id)arg2 basedOnInUseUsernames:(id)arg3 profileIDs:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)fetchAuthTokenForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 outRequestID:(id *)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)fetchPasswordForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 outRequestID:(id *)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (id)iCloudUsername;
 - (id)init;
 - (id)initWithUserNotificationCenter:(id)arg1;
 - (BOOL)isiCloudSignedIn;

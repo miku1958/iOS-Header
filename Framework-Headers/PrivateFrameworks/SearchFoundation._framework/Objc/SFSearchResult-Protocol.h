@@ -11,7 +11,7 @@
 @property (strong, nonatomic) SFActionItem *action;
 @property (copy, nonatomic) NSString *applicationBundleIdentifier;
 @property (copy, nonatomic) NSString *auxiliaryBottomText;
-@property (nonatomic) unsigned long long auxiliaryBottomTextColor;
+@property (nonatomic) int auxiliaryBottomTextColor;
 @property (copy, nonatomic) NSString *auxiliaryMiddleText;
 @property (copy, nonatomic) NSString *auxiliaryTopText;
 @property (copy, nonatomic) NSString *calendarIdentifier;
@@ -20,11 +20,17 @@
 @property (copy, nonatomic) NSString *completion;
 @property (strong, nonatomic) SFImage *completionImage;
 @property (copy, nonatomic) NSString *contactIdentifier;
+@property (copy, nonatomic) NSString *contentType;
+@property (copy, nonatomic) NSArray *contentTypeTree;
 @property (copy, nonatomic) NSString *correctedQuery;
 @property (strong, nonatomic) SFCustom *customProperties;
+@property (nonatomic) long long dataOwnerType;
 @property (copy, nonatomic) NSArray *descriptions;
 @property (strong, nonatomic) NSNumber *engagementScore;
+@property (copy, nonatomic) NSString *fbr;
 @property (copy, nonatomic) NSDictionary *featureScaling;
+@property (copy, nonatomic) NSString *fileProviderDomainIdentifier;
+@property (copy, nonatomic) NSString *fileProviderIdentifier;
 @property (copy, nonatomic) NSString *footnote;
 @property (strong, nonatomic) SFImage *icon;
 @property (copy, nonatomic) NSString *identifier;
@@ -36,6 +42,8 @@
 @property (nonatomic) BOOL isSecondaryTitleDetached;
 @property (nonatomic) BOOL isStaticCorrection;
 @property (nonatomic) BOOL isStreaming;
+@property (copy, nonatomic) NSArray *itemProviderDataTypes;
+@property (copy, nonatomic) NSArray *itemProviderFileTypes;
 @property (copy, nonatomic) NSDictionary *localFeatures;
 @property (strong, nonatomic) NSData *mapsData;
 @property (strong, nonatomic) SFImage *mapsMoreIcon;
@@ -50,7 +58,7 @@
 @property (copy, nonatomic) NSString *nearbyBusinessesString;
 @property (nonatomic) unsigned long long origRank;
 @property (nonatomic) double personalizationScore;
-@property (nonatomic) unsigned long long placement;
+@property (nonatomic) int placement;
 @property (nonatomic) BOOL preventThumbnailImageScaling;
 @property (nonatomic) BOOL publiclyIndexable;
 @property (copy, nonatomic) NSString *publishDate;
@@ -70,16 +78,18 @@
 @property (copy, nonatomic) NSURL *sectionHeaderMoreURL;
 @property (nonatomic) double serverScore;
 @property (copy, nonatomic) NSString *sourceName;
+@property (copy, nonatomic) NSString *srf;
 @property (copy, nonatomic) NSString *storeIdentifier;
 @property (strong, nonatomic) SFImage *thumbnail;
 @property (strong, nonatomic) SFText *title;
 @property (copy, nonatomic) NSString *titleNote;
 @property (strong, nonatomic) NSNumber *titleNoteSize;
-@property (nonatomic) unsigned long long topHit;
+@property (nonatomic) int topHit;
 @property (copy, nonatomic) NSDictionary *topicDistribution;
-@property (nonatomic) unsigned long long type;
+@property (nonatomic) int type;
 @property (strong, nonatomic) NSURL *url;
 @property (copy, nonatomic) NSString *userActivityRequiredString;
+@property (copy, nonatomic) NSString *userInput;
 
 @end
 

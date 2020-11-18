@@ -78,13 +78,13 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL tappedDatePicker; // @synthesize tappedDatePicker=_tappedDatePicker;
 
 + (Class)errorMessageType;
+- (void).cxx_destruct;
 - (int)StringAsEndState:(id)arg1;
 - (int)StringAsEndView:(id)arg1;
 - (void)addErrorMessage:(id)arg1;
 - (void)clearErrorMessages;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)endStateAsString:(int)arg1;

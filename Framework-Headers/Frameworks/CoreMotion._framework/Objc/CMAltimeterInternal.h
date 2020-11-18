@@ -20,6 +20,7 @@
     } fBaseAltimeterSample;
     float fBarometricBaseAltitude;
     BOOL fBaselineReceived;
+    float fMostRecentFilteredPressure;
     struct deque<float, std::__1::allocator<float>> fPressureSamples;
     NSObject<OS_dispatch_queue> *fInternalQueue;
     NSObject<OS_dispatch_source> *fWatchdogTimer;
@@ -29,16 +30,20 @@
     CDUnknownBlockType fSignificantElevationSampleHandler;
     double fElevationAscendedOffset;
     double fElevationDescendedOffset;
-    BOOL fStopUpdates;
+    BOOL fStopSignificantElevationUpdates;
+    double fFilteredElevationOffset;
+    BOOL fStopRelativeAltitudeUpdates;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_querySignificantElevationChangeFromDate:(id)arg1 toDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)_startElevationUpdatesWithHandler:(CDUnknownBlockType)arg1;
+- (void)_startRelativeAltitudeUpdates;
 - (void)_startSignificantElevationUpdatesWithHandler:(CDUnknownBlockType)arg1;
 - (void)_startWatchdogCheckins;
 - (void)_stopElevationUpdates;
+- (void)_stopRelativeAltitudeUpdates;
 - (void)_stopSignificantElevationUpdates;
 - (void)_stopWatchdogCheckins;
 - (void)_teardown;

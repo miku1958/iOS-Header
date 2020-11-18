@@ -8,33 +8,38 @@
 
 #import <AVKit/NSCoding-Protocol.h>
 
-@class AVPlayerController, AVTimer;
+@class AVTimer;
 @protocol AVTimeControlling;
 
-__attribute__((visibility("hidden")))
 @interface AVPlayerControllerTimeResolver : NSObject <NSCoding>
 {
-    AVPlayerController *_playerController;
+    id<AVTimeControlling> _playerController;
     double _interval;
     double _resolution;
     double _currentTime;
     AVTimer *_timer;
+    double _minTime;
+    double _maxTime;
 }
 
 @property double currentTime;
 @property (readonly, getter=isCurrentTimeAtEndOfSeekableTimeRanges) BOOL currentTimeAtEndOfSeekableTimeRanges;
 @property double currentTimeWithinEndTimes;
 @property double interval;
+@property double maxTime; // @synthesize maxTime=_maxTime;
+@property double minTime; // @synthesize minTime=_minTime;
 @property (strong) id<AVTimeControlling> playerController;
 @property (readonly) double remainingTargetTimeWithinEndTimes;
 @property (readonly) double remainingTime;
 @property (readonly) double remainingTimeWithinEndTimes;
 @property double resolution;
+@property (readonly) double seekableTimeRangeDuration;
 @property double targetTime;
 @property double targetTimeWithinEndTimes;
 @property (readonly, getter=isThirtySecondsBeforeCurrentTimeWithinSeekableTimeRanges) BOOL thirtySecondsBeforeCurrentTimeWithinSeekableTimeRanges;
 
 + (BOOL)automaticallyNotifiesObserversOfCurrentTime;
++ (id)keyPathForValuesAffectingSeekableTimeRangeDuration;
 + (id)keyPathsForValuesAffectingCurrentTimeAtEndOfSeekableTimeRanges;
 + (id)keyPathsForValuesAffectingCurrentTimeWithinEndTimes;
 + (id)keyPathsForValuesAffectingRemainingTargetTimeWithinEndTimes;

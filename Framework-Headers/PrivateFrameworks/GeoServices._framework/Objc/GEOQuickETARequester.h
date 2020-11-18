@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEODirectionsRequest, GEOETARequest, GEOQuickETARequest, NSString;
 
@@ -14,11 +14,14 @@
     GEOETARequest *_simpleETARequest;
     GEODirectionsRequest *_directionsETARequest;
     NSString *_loggingFacility;
+    int _requestMode;
 }
 
 @property (copy, nonatomic) NSString *loggingFacility; // @synthesize loggingFacility=_loggingFacility;
 
 + (BOOL)requestTrafficAndETAFromWaypoint:(id)arg1 toWaypoints:(id)arg2 transportType:(int)arg3 automobileOptions:(id)arg4 handler:(CDUnknownBlockType)arg5;
++ (BOOL)requestTrafficAndETAFromWaypoint:(id)arg1 toWaypoints:(id)arg2 transportType:(int)arg3 automobileOptions:(id)arg4 withShortTrafficString:(BOOL)arg5 handler:(CDUnknownBlockType)arg6;
+- (void).cxx_destruct;
 - (void)_calculateRoutingETAWithHandler:(CDUnknownBlockType)arg1;
 - (void)_calculateRoutingETAWithSummary:(BOOL)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_calculateSimpleETAFromAPI:(BOOL)arg1 WithHandler:(CDUnknownBlockType)arg2;
@@ -27,8 +30,8 @@
 - (void)calculateETAFromAPI:(BOOL)arg1 includeSummary:(BOOL)arg2 WithResponseHandler:(CDUnknownBlockType)arg3;
 - (void)calculateETAWithResponseHandler:(CDUnknownBlockType)arg1;
 - (void)cancel;
-- (void)dealloc;
 - (id)initWithRequest:(id)arg1;
+- (id)initWithRequest:(id)arg1 requestMode:(int)arg2;
 
 @end
 

@@ -21,6 +21,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRangeArray:(id)arg1 regularExpression:(id)arg2;
 - (id)initWithRanges:(struct _NSRange *)arg1 count:(unsigned long long)arg2 regularExpression:(id)arg3;
+- (struct _NSRange)rangeWithName:(id)arg1;
 - (id)resultByAdjustingRangesWithOffset:(long long)arg1;
 - (unsigned long long)resultType;
 

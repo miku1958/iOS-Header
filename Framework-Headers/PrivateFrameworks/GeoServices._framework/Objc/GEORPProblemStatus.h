@@ -37,10 +37,10 @@
 @property (strong, nonatomic) GEORPResolution *problemResolution; // @synthesize problemResolution=_problemResolution;
 @property (nonatomic) int problemState; // @synthesize problemState=_problemState;
 
+- (void).cxx_destruct;
 - (int)StringAsProblemState:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

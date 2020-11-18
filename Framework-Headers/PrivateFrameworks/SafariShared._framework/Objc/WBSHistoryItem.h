@@ -10,7 +10,6 @@
 
 @interface WBSHistoryItem : NSObject
 {
-    NSString *_urlString;
     WBSHistoryVisit *_lastVisit;
     NSMutableSet *_visitsPendingWriteToDataStore;
     long long _databaseID;
@@ -25,6 +24,7 @@
     float _cachedTopSitesVisitScore;
     NSURL *_url;
     NSString *_userVisibleURLString;
+    NSString *_urlString;
     unsigned long long _visitCountScore;
     double _lastTimeTopSitesScoreWasComputed;
 }
@@ -55,8 +55,7 @@
 @property (copy, nonatomic) NSString *title;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 @property (readonly, nonatomic) NSURL *urlOnSynchronizationQueue;
-@property (readonly, nonatomic) NSString *urlString;
-@property (readonly, nonatomic) NSString *urlStringOnSynchronizationQueue;
+@property (readonly, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 @property (readonly, nonatomic) NSString *userVisibleURLString; // @synthesize userVisibleURLString=_userVisibleURLString;
 @property (readonly, nonatomic) unsigned long long visitCount;
 @property (readonly, nonatomic) unsigned long long visitCountScore; // @synthesize visitCountScore=_visitCountScore;
@@ -95,6 +94,7 @@
 - (void)removeVisits:(id)arg1 candidateLastVisit:(id)arg2;
 - (void)removeVisitsOnSynchronizationQueue:(id)arg1 candidateLastVisit:(id)arg2;
 - (void)scoreOfVisit:(id)arg1 wasUpdatedFrom:(unsigned long long)arg2 to:(unsigned long long)arg3;
+- (void)visitWasModified:(id)arg1;
 - (void)wasRedirectedFrom:(id)arg1 to:(id)arg2;
 - (void)wasVisited:(id)arg1;
 

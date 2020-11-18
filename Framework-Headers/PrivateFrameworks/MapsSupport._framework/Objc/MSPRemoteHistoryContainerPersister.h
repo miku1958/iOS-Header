@@ -8,10 +8,11 @@
 
 #import <MapsSupport/MSPMapsPushDaemonProxyObserver-Protocol.h>
 
-@class NSString;
+@class NSString, NSUUID;
 
 @interface MSPRemoteHistoryContainerPersister : MSPContainerPersister <MSPMapsPushDaemonProxyObserver>
 {
+    NSUUID *_lastOperationIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -19,11 +20,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)_reportErrorIfAny:(id)arg1;
-- (void)commitEditedContents:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
+- (void)_reportErrorIfAny:(id)arg1 purpose:(id)arg2;
+- (void)commitByMergingWithStateSnapshot:(id)arg1 mergeOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)commitEditWithNewContents:(id)arg1 edits:(id)arg2 appliedToOldContents:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dealloc;
+- (void)eraseWithCompletion:(CDUnknownBlockType)arg1;
 - (void)favoritesDidChange;
 - (void)fetchContentsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchStateSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (void)historyDidChange;
 - (id)init;
 - (void)pushDaemonProxyReceivedNotificationData:(id)arg1 forType:(id)arg2 recordIdentifier:(id)arg3;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreDuet/_DKObjectCache.h>
+#import <Foundation/NSCache.h>
 
-@interface _DKEventStreamCache : _DKObjectCache
+@interface _DKEventStreamCache : NSCache
 {
 }
 

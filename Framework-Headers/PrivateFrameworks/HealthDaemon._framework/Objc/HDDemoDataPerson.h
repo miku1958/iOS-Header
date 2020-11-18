@@ -44,6 +44,11 @@
     double _weightChangePercentageMax;
     NSArray *_weightGainHolidayDaysInYear;
     long long _restingHeartRate;
+    long long _restingHeartRateMaxDailyDifference;
+    long long _restingHeartRateMaxTotalDifference;
+    long long _walkingHeartRateAverage;
+    long long _walkingHeartRateAverageMaxDailyDifference;
+    long long _walkingHeartRateAverageMaxTotalDifference;
     double _heartRateSampleFrequency;
     double _heartRateSampleFrequencyStdDev;
     double _heartRateSampleNoiseStdDev;
@@ -119,13 +124,15 @@
     double _fallSampleFrequency;
     double _fallsDailyMean;
     double _fallsDailyStdDev;
+    double _spirometrySampleFrequency;
+    double _spirometrySampleTime;
+    long long _asthmaSeverity;
     double _continuousGlucoseMonitoringSampleFrequency;
     double _numDailyFingerSticksAdherence;
     double _insulinSensitivity;
     double _insulinProduction;
-    double _spirometrySampleFrequency;
-    double _spirometrySampleTime;
-    long long _asthmaSeverity;
+    double _insulinAdherence;
+    unsigned long long _insulinTherapy;
     double _mindfulSessionFrequency;
     long long _mindfulSessionMean;
     long long _mindfulSessionStdDev;
@@ -185,8 +192,10 @@
 @property (nonatomic) double heightTargetInCm; // @synthesize heightTargetInCm=_heightTargetInCm;
 @property (nonatomic) double hipCircumferenceInInches; // @synthesize hipCircumferenceInInches=_hipCircumferenceInInches;
 @property (nonatomic) double inBedTimeStdDev; // @synthesize inBedTimeStdDev=_inBedTimeStdDev;
+@property (nonatomic) double insulinAdherence; // @synthesize insulinAdherence=_insulinAdherence;
 @property (nonatomic) double insulinProduction; // @synthesize insulinProduction=_insulinProduction;
 @property (nonatomic) double insulinSensitivity; // @synthesize insulinSensitivity=_insulinSensitivity;
+@property (nonatomic) unsigned long long insulinTherapy; // @synthesize insulinTherapy=_insulinTherapy;
 @property (copy, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
 @property (nonatomic) double lunchTime; // @synthesize lunchTime=_lunchTime;
 @property (nonatomic) double mealTimeSampleNoiseStdDev; // @synthesize mealTimeSampleNoiseStdDev=_mealTimeSampleNoiseStdDev;
@@ -214,6 +223,8 @@
 @property (nonatomic) long long restingDiastolicBloodPressure; // @synthesize restingDiastolicBloodPressure=_restingDiastolicBloodPressure;
 @property (nonatomic) double restingDiastolicBloodPressureSampleNoiseStdDev; // @synthesize restingDiastolicBloodPressureSampleNoiseStdDev=_restingDiastolicBloodPressureSampleNoiseStdDev;
 @property (nonatomic) long long restingHeartRate; // @synthesize restingHeartRate=_restingHeartRate;
+@property (nonatomic) long long restingHeartRateMaxDailyDifference; // @synthesize restingHeartRateMaxDailyDifference=_restingHeartRateMaxDailyDifference;
+@property (nonatomic) long long restingHeartRateMaxTotalDifference; // @synthesize restingHeartRateMaxTotalDifference=_restingHeartRateMaxTotalDifference;
 @property (nonatomic) long long restingRespirationRate; // @synthesize restingRespirationRate=_restingRespirationRate;
 @property (nonatomic) double restingRespirationRateSampleFrequency; // @synthesize restingRespirationRateSampleFrequency=_restingRespirationRateSampleFrequency;
 @property (nonatomic) double restingRespirationRateSampleNoiseStdDev; // @synthesize restingRespirationRateSampleNoiseStdDev=_restingRespirationRateSampleNoiseStdDev;
@@ -239,6 +250,9 @@
 @property (nonatomic) double waistCircumferenceInInches; // @synthesize waistCircumferenceInInches=_waistCircumferenceInInches;
 @property (nonatomic) double wakeUpTime; // @synthesize wakeUpTime=_wakeUpTime;
 @property (nonatomic) double wakeUpTimeNoiseStdDev; // @synthesize wakeUpTimeNoiseStdDev=_wakeUpTimeNoiseStdDev;
+@property (nonatomic) long long walkingHeartRateAverage; // @synthesize walkingHeartRateAverage=_walkingHeartRateAverage;
+@property (nonatomic) long long walkingHeartRateAverageMaxDailyDifference; // @synthesize walkingHeartRateAverageMaxDailyDifference=_walkingHeartRateAverageMaxDailyDifference;
+@property (nonatomic) long long walkingHeartRateAverageMaxTotalDifference; // @synthesize walkingHeartRateAverageMaxTotalDifference=_walkingHeartRateAverageMaxTotalDifference;
 @property (nonatomic) double waterConsumedDailyMean; // @synthesize waterConsumedDailyMean=_waterConsumedDailyMean;
 @property (nonatomic) double waterConsumedIntervalMean; // @synthesize waterConsumedIntervalMean=_waterConsumedIntervalMean;
 @property (nonatomic) double waterConsumedIntervalStdDev; // @synthesize waterConsumedIntervalStdDev=_waterConsumedIntervalStdDev;
@@ -259,8 +273,10 @@
 
 + (id)defaultPersonWithBiologicalSex:(long long)arg1;
 - (void).cxx_destruct;
+- (void)applyProfileType:(long long)arg1;
 - (id)fullName;
 - (id)initWithFirstName:(id)arg1 lastName:(id)arg2 description:(id)arg3 birthDateComponents:(id)arg4 biologicalSex:(long long)arg5;
+- (void)setHighFidelityGeneration:(BOOL)arg1;
 - (void)updateMedicalIDData;
 
 @end

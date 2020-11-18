@@ -100,12 +100,12 @@
 - (unsigned long long)_getEffectivePreferredFramesPerSecond;
 - (id)_getPerformanceStats;
 - (float)_getViewContentsScale;
-- (BOOL)_isDrawableAvailable;
 - (long long)_preferredFocusMovementStyle;
-- (id)_regionForFocusedItem:(id)arg1 inScreen:(id)arg2;
+- (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (void)_renderContent;
 - (void)_renderSynchronouslyForTime:(double)arg1 preRender:(CDUnknownBlockType)arg2 postRender:(CDUnknownBlockType)arg3;
 - (void)_renderToIOSurfaceID:(unsigned int)arg1 scaleFactor:(float)arg2 asynchronous:(BOOL)arg3 preRender:(CDUnknownBlockType)arg4 postRender:(CDUnknownBlockType)arg5;
+- (BOOL)_renderUpdateEnabled;
 - (void)_reshape;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 - (void)_setUpdateQueue:(id)arg1;
@@ -127,6 +127,9 @@
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromScene:(id)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toScene:(id)arg2;
 - (void)dealloc;
+- (id)debugHierarchyAdditionalGroupingIDs;
+- (id)debugHierarchyObjectsInGroupWithID:(id)arg1 outOptions:(id *)arg2;
+- (id)debugHierarchyPropertyDescriptions;
 - (void)debugPrint;
 - (void)didMoveToWindow;
 - (void)drawRect:(struct CGRect)arg1;
@@ -154,6 +157,7 @@
 - (void)runOnce;
 - (void)setDynamicRenderBlock:(CDUnknownBlockType)arg1;
 - (void)setUpRenderCallback;
+- (void)set_renderUpdateEnabled:(BOOL)arg1;
 - (void)set_showsCPUStats:(BOOL)arg1;
 - (void)set_showsGPUStats:(BOOL)arg1;
 - (void)set_usesAsyncUpdateQueue:(BOOL)arg1;

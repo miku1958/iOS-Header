@@ -7,6 +7,6 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (SBDefaultExistance)
-- (BOOL)defaultExists:(id)arg1;
+- (BOOL)bs_defaultExists:(id)arg1;
 @end
 

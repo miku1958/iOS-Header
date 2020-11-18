@@ -32,8 +32,16 @@
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) BOOL wasInitalizedFromDictionaryRepresentation; // @synthesize wasInitalizedFromDictionaryRepresentation=_wasInitalizedFromDictionaryRepresentation;
 
++ (id)allVoicesForSiriSessionLanguage:(id)arg1;
++ (long long)defaultGenderForOutputVoiceLanguageCode:(id)arg1;
++ (long long)genderForVSSpeechGender:(long long)arg1;
 + (BOOL)supportsSecureCoding;
++ (id)voiceInfoForLanguageCode:(id)arg1;
 - (void).cxx_destruct;
+- (long long)VSSpeechFootprint;
+- (long long)VSSpeechGender;
+- (long long)VSSpeechType;
+- (id)VSVoiceAsset;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -47,6 +55,8 @@
 - (id)initWithLanguageCode:(id)arg1 gender:(long long)arg2 isCustom:(BOOL)arg3;
 - (id)initWithLanguageCode:(id)arg1 gender:(long long)arg2 isCustom:(BOOL)arg3 name:(id)arg4 footprint:(long long)arg5 contentVersion:(id)arg6 masteredVersion:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isMatchForVoiceAsset:(id)arg1;
+- (BOOL)isValidForSiriSessionLanguage:(id)arg1;
 
 @end
 

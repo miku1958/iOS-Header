@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
+#import <HomeKitDaemon/NSCopying-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class NSMutableDictionary, NSString, NSUUID;
 
-@interface HMDApplicationData : NSObject <NSSecureCoding, HMFDumpState>
+@interface HMDApplicationData : HMFObject <NSSecureCoding, NSCopying, HMFDumpState>
 {
+    NSUUID *_parentUUID;
+    NSUUID *_uuid;
     NSMutableDictionary *_appDataDictionary;
 }
 
@@ -21,19 +24,25 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSUUID *parentUUID; // @synthesize parentUUID=_parentUUID;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)applicationDataForIdentifier:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionary;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
+- (id)initWithDictionary:(id)arg1 parentUUID:(id)arg2;
+- (id)initWithParentUUID:(id)arg1;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (void)removeApplicationDataForIdentifier:(id)arg1;
 - (void)setApplicationData:(id)arg1 forIdentifier:(id)arg2;
+- (void)updateParentUUIDIfNil:(id)arg1;
+- (void)updateWithModel:(id)arg1;
 
 @end
 

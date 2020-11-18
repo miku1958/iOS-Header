@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)dealloc;
 - (double)distanceInMetersFrom:(CDStruct_c3b9c2ee)arg1 outClosestCoordinateOnLine:(CDStruct_c3b9c2ee *)arg2;
 - (id)initWithMap:(id)arg1 transitEdge:(shared_ptr_24ebf3c0)arg2;
 

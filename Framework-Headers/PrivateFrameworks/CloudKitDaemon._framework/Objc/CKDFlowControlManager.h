@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)CKStatusReportArray;
 - (id)_flowControlForOperation:(id)arg1;
 - (id)_flowControlForOperation:(id)arg1 createIfNecessary:(BOOL)arg2;
-- (BOOL)checkFlowControlIsLimited:(id)arg1;
+- (BOOL)checkFlowControlIsLimited:(id)arg1 outReportableError:(id *)arg2;
 - (double)currentBudget:(id)arg1;
 - (unsigned long long)currentBudgetCap:(id)arg1;
 - (double)currentRegeneration:(id)arg1;
@@ -35,9 +35,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasStatusToReport;
 - (id)initWithDefaultBudget:(unsigned long long)arg1 maximumThrottleTime:(double)arg2 andDefaultRegeneration:(double)arg3;
 - (double)secondsUntilFlowControlNotLimited:(id)arg1;
-- (void)updateFlowControl:(id)arg1 withCost:(unsigned long long)arg2;
-- (void)updateFlowControl:(id)arg1 withRetryAfter:(unsigned long long)arg2;
-- (void)updateFlowControlWithLocalErrorForOperation:(id)arg1;
+- (void)updateFlowControl:(id)arg1 withCost:(unsigned long long)arg2 reportableError:(id)arg3;
+- (void)updateFlowControl:(id)arg1 withRetryAfter:(unsigned long long)arg2 reportableError:(id)arg3;
+- (void)updateFlowControlForOperation:(id)arg1 reportableError:(id)arg2;
 
 @end
 

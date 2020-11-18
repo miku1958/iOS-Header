@@ -24,6 +24,8 @@
 }
 
 @property (readonly) NSString *UDIDeviceIdentifier;
+@property (readonly, nonatomic) NSString *_connectedGymDeviceFullName;
+@property (readonly, nonatomic) NSString *_connectedGymDeviceTypeName;
 @property (readonly) NSString *firmwareVersion;
 @property (readonly) NSString *hardwareVersion;
 @property (readonly) NSString *localIdentifier;
@@ -35,8 +37,11 @@
 + (id)localDevice;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (unsigned long long)_fitnessMachineType;
 - (id)_init;
+- (BOOL)_isConnectedGymDevice;
 - (void)_setFirmwareVersion:(id)arg1;
+- (void)_setFitnessMachineType:(unsigned long long)arg1;
 - (void)_setHardwareVersion:(id)arg1;
 - (void)_setLocalIdentifier:(id)arg1;
 - (void)_setManufacturer:(id)arg1;

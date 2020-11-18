@@ -11,11 +11,16 @@
 }
 
 + (unsigned long long)_digestForArgs:(id)arg1;
++ (BOOL)allowPartialOutputRegion;
++ (BOOL)allowSRGBTranferFuntionOnInputAtIndex:(int)arg1;
++ (BOOL)allowSRGBTranferFuntionOnOutput;
 + (id)applyWithExtent:(struct CGRect)arg1 inputs:(id)arg2 arguments:(id)arg3 error:(id *)arg4;
 + (int)formatForInputAtIndex:(int)arg1;
 + (int)outputFormat;
++ (BOOL)outputIsOpaque;
 + (BOOL)processWithInputs:(id)arg1 arguments:(id)arg2 output:(id)arg3 error:(id *)arg4;
 + (struct CGRect)roiForInput:(int)arg1 arguments:(id)arg2 outputRect:(struct CGRect)arg3;
++ (BOOL)skipFormatChecks;
 + (BOOL)synchronizeInputs;
 
 @end

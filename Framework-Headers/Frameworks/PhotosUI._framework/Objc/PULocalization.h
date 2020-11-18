@@ -10,9 +10,7 @@
 {
 }
 
-+ (id)_emptyMyPhotoStreamMessage;
 + (id)messageForCloudFeedUpdatingLibraryNoNetwork;
-+ (id)messageForEmptyAlbumList:(id)arg1;
 + (id)messageForEmptyCollectionListFetchResult:(id)arg1 fromFolder:(BOOL)arg2;
 + (id)messageForEmptyPhotoLibrary;
 + (id)messageForEmptyPhotosCollection:(id)arg1;

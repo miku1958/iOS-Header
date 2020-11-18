@@ -8,11 +8,11 @@
 
 #import <HealthUI/HKSwitchTableViewCellDelegate-Protocol.h>
 
-@class HKDataUnitController, HKHealthStore, NSMutableArray, NSUUID;
+@class HKDisplayTypeController, HKHealthStore, NSMutableArray, NSUUID;
 
 @interface _HKIngestSettingsViewController : HKTableViewController <HKSwitchTableViewCellDelegate>
 {
-    HKDataUnitController *_dataUnitController;
+    HKDisplayTypeController *_displayTypeController;
     NSMutableArray *_dataTypeNames;
     BOOL _deviceEnabled;
     BOOL _deviceFound;
@@ -24,7 +24,7 @@
 @property (strong, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 
 - (void).cxx_destruct;
-- (id)_initWithHealthStore:(id)arg1 dataUnitController:(id)arg2;
+- (id)_initWithHealthStore:(id)arg1 displayTypeController:(id)arg2;
 - (void)fetchEnabledStatusForPeripheral;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)reloadData:(id)arg1;

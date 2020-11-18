@@ -6,7 +6,7 @@
 
 #import <StoreKitUI/SKUIGiftTableViewSection.h>
 
-@class NSString, SKUIGift, SKUIGiftRecipientTableViewCell, UITextView;
+@class NSString, SKUIGift, SKUIGiftRecipientTableViewCell, SKUIGiftTextTableViewCell, UITextView;
 @protocol UITextFieldDelegate;
 
 @interface SKUIGiftAddressingSection : SKUIGiftTableViewSection
@@ -18,9 +18,11 @@
     SKUIGiftRecipientTableViewCell *_recipientTableViewCell;
     id<UITextFieldDelegate> _textFieldDelegate;
     double _textViewCellHeight;
+    SKUIGiftTextTableViewCell *_messageCell;
 }
 
 @property (strong, nonatomic) SKUIGift *gift; // @synthesize gift=_gift;
+@property (strong, nonatomic) SKUIGiftTextTableViewCell *messageCell; // @synthesize messageCell=_messageCell;
 @property (nonatomic) id<UITextFieldDelegate> textFieldDelegate; // @synthesize textFieldDelegate=_textFieldDelegate;
 
 - (void).cxx_destruct;
@@ -28,7 +30,6 @@
 - (id)_footerString;
 - (id)_recipientTableViewCell;
 - (id)_textFieldTableViewCellForTableView:(id)arg1 indexPath:(id)arg2;
-- (id)_textViewCellForTableView:(id)arg1 indexPath:(id)arg2;
 - (void)beginEditingMessageForTableView:(id)arg1 indexPath:(id)arg2;
 - (void)endEditingMessageForTableView:(id)arg1 indexPath:(id)arg2;
 - (double)heightForCellInTableView:(id)arg1 indexPath:(id)arg2;

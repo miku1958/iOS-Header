@@ -30,8 +30,12 @@
 
 + (id)createFakeTestEntry;
 + (id)createFakeTestFeedbackDictionary;
++ (id)negativeFeedbackForAutoLoopKeys;
++ (id)negativeFeedbackForImageQualityKeys;
 + (id)negativeFeedbackForMemoriesKeys;
 + (id)negativeFeedbackForMemoryDetailsKeys;
++ (id)positiveFeedbackForAutoLoopKeys;
++ (id)positiveFeedbackForImageQualityKeys;
 + (id)positiveFeedbackForMemoriesKeys;
 + (id)positiveFeedbackForMemoryDetailsKeys;
 - (void).cxx_destruct;

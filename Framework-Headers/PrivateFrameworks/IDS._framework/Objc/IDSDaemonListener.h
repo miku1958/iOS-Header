@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 
@@ -31,12 +31,13 @@
 @property (nonatomic, setter=_setHidingDisconnect:) BOOL _hidingDisconnect;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, strong, nonatomic) NSString *deviceIdentifier;
+@property (readonly, nonatomic) NSString *deviceIdentifier;
 @property (readonly, nonatomic) BOOL hasPostedSetupComplete;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isSetupComplete;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)__postSetupComplete;
 - (void)_callHandlersAsyncWithBlock:(CDUnknownBlockType)arg1;
 - (void)_callHandlersWithBlock:(CDUnknownBlockType)arg1;
@@ -78,10 +79,10 @@
 - (void)continuityDidStopScanningForType:(long long)arg1;
 - (void)continuityDidUpdateState:(long long)arg1;
 - (void)deactivatePairedDevices;
-- (void)dealloc;
 - (id)dependentDevicesForAccount:(id)arg1;
 - (void)device:(id)arg1 nsuuidChanged:(id)arg2;
 - (void)deviceIdentifierDidChange:(id)arg1;
+- (void)didGetIdentities:(id)arg1 error:(id)arg2;
 - (void)didSwitchActivePairedDevice:(id)arg1;
 - (id)enabledAccountsForService:(id)arg1;
 - (void)forwardInvocation:(id)arg1;

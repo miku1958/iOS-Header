@@ -13,11 +13,11 @@
     NSData *_data;
 }
 
-@property (readonly, strong, nonatomic) NSData *data;
+@property (readonly, nonatomic) NSData *data;
 
+- (void).cxx_destruct;
 - (id)_nonHeaderData;
 - (unsigned char)command;
-- (void)dealloc;
 - (id)initWithCommand:(unsigned char)arg1 underlyingData:(id)arg2;
 - (id)initWithData:(id)arg1;
 

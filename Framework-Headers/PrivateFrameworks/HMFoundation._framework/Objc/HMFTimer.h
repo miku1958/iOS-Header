@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
+@class NSObject;
 @protocol HMFTimerDelegate, OS_dispatch_queue, OS_dispatch_source;
 
-@interface HMFTimer : NSObject
+@interface HMFTimer : HMFObject
 {
     double _timeInterval;
     unsigned long long _leeway;

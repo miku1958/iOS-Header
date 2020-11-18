@@ -158,6 +158,7 @@
 - (void)useCachedSizedImage:(id)arg1;
 - (void)viewScaleDidChange;
 - (BOOL)wantsToDistortWithImagerContext;
+- (void)wideGamutValueDidChange;
 - (void)willBeRemoved;
 - (void)willBeginReadMode;
 - (void)willUpdateLayer:(id)arg1;

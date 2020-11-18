@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
 - (id)callProvider;
 - (int)interactionType;
 - (id)localizedName;
+- (id)notificationIconBundleIdentifier;
+- (id)notificationTitle;
 
 @end
 

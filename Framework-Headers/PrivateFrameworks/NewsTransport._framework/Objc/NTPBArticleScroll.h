@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSMutableArray, NSString;
 
 @interface NTPBArticleScroll : PBCodable <NSCopying>
 {
@@ -16,6 +16,7 @@
     NSData *_articleSessionId;
     NSData *_articleViewingSessionId;
     NSData *_feedViewExposureId;
+    NSMutableArray *_fractionalCohortMemberships;
     NSString *_referencedArticleId;
     int _scrollHostViewType;
     NSString *_scrollVelocity;
@@ -41,6 +42,7 @@
 @property (strong, nonatomic) NSData *articleSessionId; // @synthesize articleSessionId=_articleSessionId;
 @property (strong, nonatomic) NSData *articleViewingSessionId; // @synthesize articleViewingSessionId=_articleViewingSessionId;
 @property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
+@property (strong, nonatomic) NSMutableArray *fractionalCohortMemberships; // @synthesize fractionalCohortMemberships=_fractionalCohortMemberships;
 @property (nonatomic) BOOL hasAdSupportedChannel;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (readonly, nonatomic) BOOL hasArticleSessionId;
@@ -67,10 +69,15 @@
 @property (strong, nonatomic) NSString *verticalScrollPositionStart; // @synthesize verticalScrollPositionStart=_verticalScrollPositionStart;
 @property (nonatomic) float verticalScrollPositionStarting; // @synthesize verticalScrollPositionStarting=_verticalScrollPositionStarting;
 
++ (Class)fractionalCohortMembershipType;
 - (void).cxx_destruct;
+- (void)addFractionalCohortMembership:(id)arg1;
+- (void)clearFractionalCohortMemberships;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)fractionalCohortMembershipAtIndex:(unsigned long long)arg1;
+- (unsigned long long)fractionalCohortMembershipsCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

@@ -13,8 +13,12 @@
 @property (readonly, nonatomic) PXExtendedTraitCollection *px_extendedTraitCollection;
 
 + (void)_px_prepareClassForExtendedTraitCollection;
++ (void)px_preloadExtendedTraitCollection;
+- (void)_pxswizzled_viewControllerTraitCollection_didMoveToParentViewController:(id)arg1;
 - (void)_pxswizzled_viewControllerTraitCollection_traitCollectionDidChange:(id)arg1;
 - (void)_pxswizzled_viewControllerTraitCollection_viewDidLoad;
+- (void)_pxswizzled_viewControllerTraitCollection_viewLayoutMarginsDidChange;
+- (void)_pxswizzled_viewControllerTraitCollection_viewSafeAreaInsetsDidChange;
 - (void)_pxswizzled_viewControllerTraitCollection_viewWillAppear:(BOOL)arg1;
 - (void)_pxswizzled_viewControllerTraitCollection_viewWillLayoutSubviews;
 - (void)_pxswizzled_viewControllerTraitCollection_viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

@@ -4,34 +4,49 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <AppSupportUI/NUIContainerStackView.h>
 
-@class NSURL, SFCardSection, SearchUICardViewController;
+#import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
 
-@interface SearchUICardSectionView : UIView
+@class NSString, SFCardSection, UIView;
+@protocol SearchUIFeedbackDelegate;
+
+@interface SearchUICardSectionView : NUIContainerStackView <NUIContainerStackViewDelegate>
 {
-    BOOL _hideSeparatorBelow;
-    BOOL _fullWidthSeparator;
-    SearchUICardViewController *_controller;
+    BOOL _spansFullWidth;
     unsigned long long _style;
-    NSURL *_url;
     SFCardSection *_section;
+    id<SearchUIFeedbackDelegate> _feedbackDelegate;
+    UIView *_contentView;
+    UIView *_chevronView;
 }
 
-@property (weak) SearchUICardViewController *controller; // @synthesize controller=_controller;
-@property (nonatomic) BOOL fullWidthSeparator; // @synthesize fullWidthSeparator=_fullWidthSeparator;
-@property (nonatomic) BOOL hideSeparatorBelow; // @synthesize hideSeparatorBelow=_hideSeparatorBelow;
+@property (strong) UIView *chevronView; // @synthesize chevronView=_chevronView;
+@property (strong) UIView *contentView; // @synthesize contentView=_contentView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (weak) id<SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SFCardSection *section; // @synthesize section=_section;
+@property (readonly) BOOL spansFullWidth; // @synthesize spansFullWidth=_spansFullWidth;
 @property unsigned long long style; // @synthesize style=_style;
-@property (strong) NSURL *url; // @synthesize url=_url;
+@property (readonly) Class superclass;
 
-+ (Class)classForSection:(id)arg1;
++ (id)dragSubtitleForCardSection:(id)arg1;
++ (id)dragTitleForCardSection:(id)arg1;
++ (Class)layerClass;
++ (double)separatorInsetForLeadingImageForSection:(id)arg1;
++ (int)separatorStyleForCardSection:(id)arg1;
++ (BOOL)supportsRecyclingForCardSection:(id)arg1;
 - (void).cxx_destruct;
-- (id)initWithCardSection:(id)arg1 controller:(id)arg2;
-- (id)initWithCardSection:(id)arg1 controller:(id)arg2 style:(unsigned long long)arg3;
-- (id)initWithCardSection:(id)arg1 style:(unsigned long long)arg2;
-- (BOOL)isAutoLayoutFree;
-- (double)separatorLeftInset;
+- (void)didInvalidateSizeAnimate:(BOOL)arg1;
+- (id)initWithCardSection:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (void)openPunchout:(id)arg1 triggerEvent:(unsigned long long)arg2;
+- (void)presentViewController:(id)arg1;
+- (id)sendFeedbackForPunchout:(id)arg1 triggerEvent:(unsigned long long)arg2;
+- (id)setupContentView;
+- (void)updateChevronVisible:(BOOL)arg1 leaveSpaceForChevron:(BOOL)arg2;
+- (void)updateWithCardSection:(id)arg1;
 
 @end
 

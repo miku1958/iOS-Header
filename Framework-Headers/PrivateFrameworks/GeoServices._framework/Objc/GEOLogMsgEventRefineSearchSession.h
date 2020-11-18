@@ -31,13 +31,13 @@
 @property (strong, nonatomic) NSMutableArray *suggestionItems; // @synthesize suggestionItems=_suggestionItems;
 
 + (Class)suggestionItemType;
+- (void).cxx_destruct;
 - (int)StringAsRefineSearchType:(id)arg1;
 - (int)StringAsSearchType:(id)arg1;
 - (void)addSuggestionItem:(id)arg1;
 - (void)clearSuggestionItems;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

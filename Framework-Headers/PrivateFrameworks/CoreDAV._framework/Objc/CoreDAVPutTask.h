@@ -14,10 +14,10 @@
     NSString *_nextETag;
 }
 
-@property (nonatomic) id<CoreDAVTaskDelegate> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<CoreDAVTaskDelegate> delegate; // @dynamic delegate;
 @property (strong, nonatomic) NSString *nextETag; // @synthesize nextETag=_nextETag;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)finishCoreDAVTaskWithError:(id)arg1;
 - (id)httpMethod;

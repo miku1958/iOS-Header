@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSFileHandle.h>
+#import <Foundation/NSFileHandle.h>
 
 @class NSObject;
 @protocol OS_dispatch_data, OS_dispatch_io, OS_dispatch_queue, OS_dispatch_source;
@@ -12,8 +12,6 @@
 __attribute__((visibility("hidden")))
 @interface NSConcreteFileHandle : NSFileHandle
 {
-    int _fd;
-    unsigned short _flags;
     struct __CFRunLoopSource *_source;
     struct __CFRunLoop *_rl;
     unsigned short _activity;
@@ -28,6 +26,8 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_source> *_readMonitoringSource;
     NSObject<OS_dispatch_source> *_writeMonitoringSource;
     NSObject<OS_dispatch_queue> *_monitoringQueue;
+    int _fd;
+    _Atomic unsigned short _flags;
 }
 
 - (void)_cancelDispatchSources;

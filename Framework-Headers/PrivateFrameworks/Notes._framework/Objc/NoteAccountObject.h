@@ -6,11 +6,9 @@
 
 #import <Notes/NoteCollectionObject.h>
 
-#import <Notes/ICLegacyAccount-Protocol.h>
-
 @class NSDictionary, NSNumber, NSSet, NSString, NoteStoreObject;
 
-@interface NoteAccountObject : NoteCollectionObject <ICLegacyAccount>
+@interface NoteAccountObject : NoteCollectionObject
 {
     NSDictionary *_constraints;
     NSNumber *_preventMovingNotesToOtherAccounts;
@@ -20,31 +18,22 @@
 @property (nonatomic) int accountType;
 @property (strong, nonatomic) NSDictionary *constraints; // @synthesize constraints=_constraints;
 @property (strong, nonatomic) NSString *constraintsPath; // @dynamic constraintsPath;
-@property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NoteStoreObject *defaultStore; // @dynamic defaultStore;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didChooseToMigrate; // @dynamic didChooseToMigrate;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *name; // @dynamic name;
 @property (strong, nonatomic) NSString *pathToConstraintsPlist;
 @property (readonly, nonatomic) BOOL preventMovingNotesToOtherAccounts;
 @property (strong, nonatomic) NSSet *stores; // @dynamic stores;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) NSNumber *type; // @dynamic type;
 
 - (void).cxx_destruct;
 - (id)basicAccountIdentifier;
 - (id)collectionInfo;
-- (id)defaultFolder;
 - (void)didTurnIntoFault;
-- (id)emailAddress;
-- (id)folders;
 - (id)noteVisibilityTestingForSearchingAccount;
-- (id)objectIdentifier;
 - (id)predicateForNotes;
 - (BOOL)shouldMarkNotesAsDeleted;
 - (id)storeForExternalId:(id)arg1;
-- (BOOL)supportsAttachments;
 - (BOOL)validateDefaultStore:(id *)arg1 error:(id *)arg2;
 - (void)willSave;
 

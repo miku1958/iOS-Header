@@ -7,14 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <CloudKitDaemon/CKDCancelling-Protocol.h>
+#import <CloudKitDaemon/CKDMMCSItemReaderWriterDelegateProtocol-Protocol.h>
 
-@class CKDMMCS, CKDMMCSItem, CKDMMCSItemGroup, CKDOperation, NSMapTable;
+@class CKDMMCS, CKDMMCSItem, CKDMMCSItemGroup, CKDOperation, NSMapTable, NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface CKDMMCSItemGroupContext : NSObject <CKDCancelling>
+@interface CKDMMCSItemGroupContext : NSObject <CKDCancelling, CKDMMCSItemReaderWriterDelegateProtocol>
 {
     CKDOperation *_operation;
     id _operationInfo;
+    NSNumber *_hasConformingOperation;
     CKDMMCS *_MMCS;
     CKDMMCSItemGroup *_itemGroup;
     CDUnknownBlockType _progressBlock;
@@ -31,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKDMMCSItem *MMCSPackageSectionItem; // @synthesize MMCSPackageSectionItem=_MMCSPackageSectionItem;
 @property (copy, nonatomic) CDUnknownBlockType commandBlock; // @synthesize commandBlock=_commandBlock;
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
+@property (strong, nonatomic) NSNumber *hasConformingOperation; // @synthesize hasConformingOperation=_hasConformingOperation;
 @property (strong, nonatomic) CKDMMCSItemGroup *itemGroup; // @synthesize itemGroup=_itemGroup;
 @property (nonatomic) long long mmcsOperationType; // @synthesize mmcsOperationType=_mmcsOperationType;
 @property (weak, nonatomic) CKDOperation *operation; // @synthesize operation=_operation;
@@ -48,12 +51,16 @@ __attribute__((visibility("hidden")))
 - (void)_startTrackingMMCSItems:(id)arg1;
 - (void)_stopTrackingMMCSItems:(id)arg1;
 - (void)cancel;
+- (id)conformingOperation;
+- (void)didCloseItemReaderWriter:(id)arg1 result:(BOOL)arg2 error:(id)arg3;
 - (void)didCompleteRequestWithError:(id)arg1;
+- (id)didGetFileMetadataItemReaderWriter:(id)arg1 fileMetadata:(id)arg2 error:(id)arg3;
 - (void)didGetItemID:(unsigned long long)arg1 signature:(id)arg2 path:(id)arg3 error:(id)arg4 results:(id)arg5;
 - (void)didGetMetricsForRequest:(id)arg1;
-- (void)didPutItemID:(unsigned long long)arg1 signature:(id)arg2 receipt:(id)arg3 error:(id)arg4;
+- (void)didOpenItemReaderWriter:(id)arg1 result:(BOOL)arg2 error:(id)arg3;
 - (void)didPutItemID:(unsigned long long)arg1 signature:(id)arg2 results:(id)arg3;
-- (void)didPutSectionWithSignature:(id)arg1 receipt:(id)arg2 error:(id)arg3;
+- (void)didPutSectionWithSignature:(id)arg1 results:(id)arg2;
+- (BOOL)didReadFromItemReaderWriter:(id)arg1 offset:(unsigned long long)arg2 bytes:(char *)arg3 length:(unsigned long long)arg4 bytesRead:(unsigned long long *)arg5 error:(id *)arg6;
 - (id)findTrackedMMCSItemByItemID:(unsigned long long)arg1;
 - (id)getCKDMMCSItemReaderByPathForMMCSItem:(id)arg1 error:(id *)arg2;
 - (struct MMCSItemReaderWriter *)getMMCSItemReaderForItemID:(unsigned long long)arg1 error:(id *)arg2;
@@ -64,6 +71,10 @@ __attribute__((visibility("hidden")))
 - (void)updateProgressForItemID:(unsigned long long)arg1 state:(int)arg2 progress:(double)arg3 error:(id)arg4;
 - (void)updateProgressForItemID:(unsigned long long)arg1 state:(int)arg2 progress:(double)arg3 results:(id)arg4;
 - (void)updateProgressForPackageSectionState:(int)arg1 progress:(double)arg2 results:(id)arg3;
+- (BOOL)willCloseItemReaderWriter:(id)arg1 error:(id *)arg2;
+- (BOOL)willGetFileMetadataItemReaderWriter:(id)arg1 error:(id *)arg2;
+- (BOOL)willOpenItemReaderWriter:(id)arg1 error:(id *)arg2;
+- (BOOL)willReadFromItemReaderWriter:(id)arg1 offset:(unsigned long long)arg2 bytes:(char *)arg3 length:(unsigned long long)arg4 bytesRead:(unsigned long long *)arg5 error:(id *)arg6;
 
 @end
 

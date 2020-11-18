@@ -8,7 +8,7 @@
 
 #import <UIKit/UITextDocumentProxy-Protocol.h>
 
-@class NSString, TIDocumentState, TIKeyboardOutput, TITextInputTraits, UITextInputMode, _UIInputViewControllerOutput, _UIInputViewControllerState;
+@class NSString, NSUUID, TIDocumentState, TIKeyboardOutput, TITextInputTraits, UITextInputMode, _UIInputViewControllerOutput, _UIInputViewControllerState;
 @protocol _UITextDocumentInterfaceDelegate;
 
 __attribute__((visibility("hidden")))
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *documentContextAfterInput;
 @property (readonly, nonatomic) NSString *documentContextBeforeInput;
+@property (readonly, copy, nonatomic) NSUUID *documentIdentifier;
 @property (readonly, nonatomic) UITextInputMode *documentInputMode;
 @property (readonly, nonatomic, getter=_documentState) TIDocumentState *documentState;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
@@ -39,6 +40,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long keyboardType;
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
+@property (readonly, nonatomic) NSString *selectedText;
+@property (nonatomic) long long smartDashesType;
+@property (nonatomic) long long smartInsertDeleteType;
+@property (nonatomic) long long smartQuotesType;
 @property (nonatomic) long long spellCheckingType;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *textContentType;
@@ -47,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)_createControllerOutputIfNecessary;
 - (void)_didPerformOutputOperation;
 - (void)_handleInputViewControllerState:(id)arg1;
+- (void)_setHasDictation:(BOOL)arg1;
 - (void)_setInputModeList:(long long)arg1 touchBegan:(double)arg2 fromLocation:(struct CGPoint)arg3 updatePoint:(struct CGPoint)arg4;
 - (void)_setPrimaryLanguage:(id)arg1;
 - (void)_setShouldAdvanceInputMode;

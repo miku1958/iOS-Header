@@ -8,15 +8,18 @@
 
 #import <HealthDaemon/CLLocationSmootherDelegate-Protocol.h>
 
-@class CLLocationSmoother, HDProfile, NSMutableArray, NSString;
+@class CLLocationSmoother, HDProfile, HDSmoothingTask, NSMutableArray, NSString, NSTimer;
 @protocol OS_dispatch_queue;
 
 @interface HDWorkoutLocationSmoother : NSObject <CLLocationSmootherDelegate>
 {
+    NSString *_xpcTransactionName;
     CLLocationSmoother *_smoother;
-    NSMutableArray *_listOfSmoothingTasks;
     NSObject<OS_dispatch_queue> *_queue;
     HDProfile *_profile;
+    NSMutableArray *_pendingSmoothingTasks;
+    HDSmoothingTask *_currentSmoothingTask;
+    NSTimer *_timeoutTimer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,18 +28,22 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_hkLocationDataFromLocations:(id)arg1;
-- (BOOL)_queue_containsWorkoutObject:(id)arg1 containsWorkout:(BOOL *)arg2;
-- (BOOL)_queue_createNewLocationSeriesWithMetadata:(id)arg1 sourceEntity:(id)arg2 withLocations:(id)arg3 error:(id *)arg4 newSeries:(id *)arg5;
-- (BOOL)_queue_createNewSeriesFromTask:(id)arg1 withLocations:(id)arg2 error:(id *)arg3;
-- (BOOL)_queue_deleteSample:(id)arg1;
-- (BOOL)_queue_fetchLocationsForSampleUUID:(id)arg1 fetchedLocations:(id *)arg2;
-- (id)_queue_nextSmoothingTask;
-- (void)_queue_smoothLocationSample:(id)arg1;
+- (BOOL)_containsWorkoutObject:(id)arg1 error:(id *)arg2;
+- (id)_createWorkoutRouteWithMetadata:(id)arg1 sourceEntity:(id)arg2 locations:(id)arg3 error:(id *)arg4;
+- (BOOL)_deleteSample:(id)arg1 error:(id *)arg2;
+- (void)_finishSmoothingSample;
+- (id)_locationsForSampleUUID:(id)arg1 error:(id *)arg2;
+- (BOOL)_queue_createNewSeriesFromTask:(id)arg1 locations:(id)arg2 error:(id *)arg3;
+- (void)_queue_didSmoothLocations:(id)arg1;
+- (void)_queue_smoothNextSample;
+- (void)_queue_smoothRouteSampleForTask:(id)arg1;
+- (void)_queue_smoothingDidTimeout;
+- (void)_scheduleSmoothingTimeoutTimer;
 - (BOOL)_workoutExistsForSample:(id)arg1;
 - (id)initWithProfile:(id)arg1;
 - (void)locationManager:(id)arg1 didSmoothLocations:(id)arg2 ofType:(int)arg3;
-- (void)smoothLocationSample:(id)arg1;
+- (void)smoothRouteSample:(id)arg1;
+- (void)unitTest_smoothRouteSample:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

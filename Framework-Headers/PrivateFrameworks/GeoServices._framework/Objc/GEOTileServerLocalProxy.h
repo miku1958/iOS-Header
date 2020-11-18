@@ -8,7 +8,8 @@
 
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 
-@class GEODBReader, GEODBWriter, NSLock, NSMapTable, NSMutableArray, NSString;
+@class GEODBReader, GEODBWriter, NSLock, NSMapTable, NSMutableArray, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 @interface GEOTileServerLocalProxy : GEOTileServerProxy <GEOResourceManifestTileGroupObserver>
 {
@@ -18,6 +19,7 @@
     NSMapTable *_providers;
     NSMutableArray *_inProgress;
     NSLock *_inProgressLock;
+    NSObject<OS_dispatch_queue> *_workQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,6 +27,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_registerBuiltInProviders;
 - (void)_updateExpiringTilesets;
 - (void)beginPreloadSessionOfSize:(unsigned long long)arg1 exclusive:(BOOL)arg2;
@@ -34,8 +37,8 @@
 - (void)dealloc;
 - (void)endPreloadSession;
 - (void)flushPendingWrites;
-- (id)initWithCacheLocation:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3;
-- (void)loadTiles:(id)arg1 priorities:(unsigned int *)arg2 options:(unsigned long long)arg3 client:(id)arg4;
+- (id)initWithCacheLocation:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3 delegateQueue:(id)arg4 delegate:(id)arg5;
+- (void)loadTiles:(id)arg1 priorities:(const unsigned int *)arg2 hasAdditionalInfos:(const BOOL *)arg3 additionalInfos:(const CDStruct_58878026 *)arg4 options:(unsigned long long)arg5 client:(id)arg6;
 - (void)open;
 - (void)registerProvider:(Class)arg1;
 - (void)reportCorruptTile:(const struct _GEOTileKey *)arg1;

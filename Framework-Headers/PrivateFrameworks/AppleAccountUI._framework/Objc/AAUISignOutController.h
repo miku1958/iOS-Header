@@ -28,18 +28,21 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (struct NSDictionary *)_actionableDataclassOptions;
 - (id)_dataclassViewController;
 - (void)_delegate_signOutControllerDidCancel;
 - (void)_delegate_signOutControllerDidCompleteWithSuccess:(BOOL)arg1 error:(id)arg2;
+- (BOOL)_hasHealthData;
 - (BOOL)_hasPaymentPasses;
 - (void)_mainQueue_continueSignOutWithDataclassActions:(struct NSDictionary *)arg1;
 - (void)_mainQueue_presentSpinnerPageWithDataclassActions:(struct NSDictionary *)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_mainQueue_promptForConfirmationInViewController:(id)arg1 simplified:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (id)_signOutConfirmationMessage:(BOOL)arg1;
+- (id)_signOutMessageSimplified:(BOOL)arg1 withConfirmation:(BOOL)arg2;
 - (id)_spinnerViewControllerForActions:(struct NSDictionary *)arg1;
 - (void)dataclassPickerViewController:(id)arg1 didCompleteWithDataclassActions:(struct NSDictionary *)arg2;
 - (void)dataclassPickerViewControllerDidCancel:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)footerTextForDataclassPickerViewController:(id)arg1;
 - (id)initWithAccount:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)prepareInViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -8,8 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 @interface GEOPhotoOptions : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _photoSizes;
     int _maxPhotos;
     int _photoType;
@@ -21,7 +24,9 @@
 @property (readonly, nonatomic) int *photoSizes;
 @property (readonly, nonatomic) unsigned long long photoSizesCount;
 @property (nonatomic) int photoType; // @synthesize photoType=_photoType;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (int)StringAsPhotoSizes:(id)arg1;
 - (int)StringAsPhotoType:(id)arg1;
 - (void)addPhotoSize:(int)arg1;

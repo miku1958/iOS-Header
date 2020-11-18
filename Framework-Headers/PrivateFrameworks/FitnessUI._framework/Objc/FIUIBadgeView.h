@@ -8,14 +8,12 @@
 
 #import <FitnessUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class EAGLContext, FIUIBadge, GLKTextureInfo, NSAttributedString, NSDictionary, NSString, UIImage, UIPanGestureRecognizer, UITapGestureRecognizer;
+@class FIUIBadge, GLKTextureInfo, NSAttributedString, NSDictionary, NSString, UIImage, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol FIUIBadgeViewDelegate;
 
 @interface FIUIBadgeView : HKGLView <UIGestureRecognizerDelegate>
 {
     FIUIBadge *_badge;
-    EAGLContext *_context;
-    BOOL _contextPushed;
     union _GLKMatrix4 _viewProjectionMatrix;
     GLKTextureInfo *_colorTexture;
     GLKTextureInfo *_envTexture;
@@ -81,10 +79,9 @@
 - (void)_setBackTextureNeedsRegeneration;
 - (void)_tapped:(id)arg1;
 - (id)_valueForTweak:(id)arg1;
-- (void)_withContext:(CDUnknownBlockType)arg1;
 - (void)configureForAchievement:(id)arg1 userName:(id)arg2 usingSmallVariant:(BOOL)arg3;
 - (void)dealloc;
-- (unsigned int)drawInRect:(struct CGRect)arg1;
+- (unsigned int)drawInRect:(struct CGRect)arg1 withContext:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)init;
 - (double)playFlipInAnimation;

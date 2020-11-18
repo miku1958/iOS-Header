@@ -37,6 +37,8 @@
     NSString *_userID;
     double _delayTime;
     NSMutableArray *_earlyListeners;
+    long long _resignActiveCount;
+    struct _opaque_pthread_mutex_t _ivarLock;
 }
 
 @property (nonatomic) int _dataProtectionState; // @synthesize _dataProtectionState;
@@ -62,7 +64,9 @@
 @property (readonly, nonatomic) BOOL isSystemLocked; // @synthesize isSystemLocked=_systemLocked;
 @property (readonly, nonatomic) BOOL isUnderDataProtectionLock;
 @property (readonly, nonatomic) BOOL isUnderFirstDataProtectionLock;
+@property (nonatomic) struct _opaque_pthread_mutex_t ivarLock; // @synthesize ivarLock=_ivarLock;
 @property (nonatomic) BOOL receivesMemoryWarnings; // @synthesize receivesMemoryWarnings=_receivesMemoryWarnings;
+@property (nonatomic) long long resignActiveCount; // @synthesize resignActiveCount=_resignActiveCount;
 @property (readonly, nonatomic) double systemIdleTime;
 @property (readonly, nonatomic) BOOL systemIsShuttingDown;
 @property (readonly, nonatomic) BOOL systemIsSleeping; // @synthesize systemIsSleeping=_willSleep;
@@ -75,6 +79,8 @@
 
 + (id)sharedInstance;
 - (void)_addEarlyListener:(id)arg1;
+- (void)_alreadyLocked_clearIdleTimer;
+- (BOOL)_alreadyLocked_isSystemIdle;
 - (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_applicationDidRemoveDeactivationReason:(id)arg1;
@@ -86,9 +92,11 @@
 - (void)_checkRestoredFromBackup;
 - (void)_clearIdleTimer;
 - (void)_deliverNotificationSelector:(SEL)arg1;
+- (BOOL)_deviceStillUnderFirstLock;
 - (void)_forceResumed;
 - (void)_forceSuspended;
 - (void)_handleLoginWindowNotification:(id)arg1;
+- (BOOL)_isUnderDataProtectionLockForState:(int)arg1;
 - (void)_notificationCenterDidDisappear:(id)arg1;
 - (void)_notificationCenterWillAppear:(id)arg1;
 - (void)_overrideAndDisableIdleTimer:(BOOL)arg1;

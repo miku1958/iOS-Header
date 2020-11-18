@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUSettings.h>
+#import <PhotosUICore/PXSettings.h>
 
-@class PUScrubberSettings, PUSwipeDownSettings;
+@class PUScrubberSettings;
 
-@interface PUOneUpSettings : PUSettings
+@interface PUOneUpSettings : PXSettings
 {
+    BOOL _showInitialDetailsIndicator;
+    BOOL _enableSuggestionsAnalysis;
+    BOOL _initialDetailsIndicatorShouldSlideIn;
     BOOL _allowUserTransform;
     BOOL _allowBadges;
     BOOL _allowScrubber;
@@ -25,23 +28,37 @@
     BOOL _allowStatusBar;
     BOOL _doubleTapZoomAreaExcludesBars;
     BOOL _doubleTapZoomAreaExcludesBackground;
+    BOOL _enableFigPhotoTiledLayer;
+    BOOL _useURLForLargePhotosWithFigPhotoTiledLayer;
+    BOOL _forceURLWithFigPhotoTiledLayer;
+    BOOL _allowPlayButtonInBars;
     BOOL _playVideoInScrubber;
     BOOL _lockScrollDuringLivePhotoPlayback;
+    BOOL _livePhotoScrubberShowForPlayback;
+    BOOL _allowGIFPlayback;
+    BOOL _showGIFLoadingDelays;
     BOOL _useDebuggingColors;
-    BOOL _useDebuggingTitle;
     BOOL _useDebuggingProgressLabel;
     BOOL _showBufferingIndicatorDuringPlay;
+    BOOL _showLoadingIndicatorDuringDownload;
+    BOOL _alwaysShowAirPlayButton;
     BOOL _simulateAssetContentDownload;
     BOOL _simulateAssetContentDownloadFailure;
+    long long _suggestionsStyle;
+    long long _suggestionMinimumAssetAgeInDays;
+    long long _simulatedAssetVariationSuggestion;
+    double _initialDetailsIndicatorDelay;
+    double _initialDetailsIndicatorDuration;
     long long _titleTapAction;
-    PUSwipeDownSettings *_swipeDownSettings;
     PUScrubberSettings *_scrubberSettings;
+    unsigned long long _scaleToFitBehavior;
     long long _userNavigationMaximumDistance;
     long long _accessoryViewType;
     double _accessoryInitialTopPosition;
     double _minimumVisibleContentHeight;
     double _minimumVisibleCommentedContentHeight;
     double _chromeDefaultAnimationDuration;
+    long long _chromeAutoHideBehaviorOnLivePhoto;
     long long _chromeAutoHideBehaviorOnPlayButton;
     long long _chromeAutoHideBehaviorOnSwipe;
     long long _chromeAutoHideBehaviorOnZoom;
@@ -72,6 +89,10 @@
     double _bounceDelay;
     double _bounceSpringDamping;
     double _bounceInitialVelocity;
+    double _playGIFSettledThreshold;
+    double _playGIFEnterThreshold;
+    double _playGIFMoveOutThreshold;
+    long long _debuggingTitleType;
     unsigned long long _debuggingBadges;
     unsigned long long _debuggingBadgesWhenFavorite;
 }
@@ -82,16 +103,20 @@
 @property (nonatomic) BOOL allowChromeHiding; // @synthesize allowChromeHiding=_allowChromeHiding;
 @property (nonatomic) BOOL allowDoubleTapZoom; // @synthesize allowDoubleTapZoom=_allowDoubleTapZoom;
 @property (nonatomic) BOOL allowFullsizeJPEGDisplay; // @synthesize allowFullsizeJPEGDisplay=_allowFullsizeJPEGDisplay;
+@property (nonatomic) BOOL allowGIFPlayback; // @synthesize allowGIFPlayback=_allowGIFPlayback;
 @property (nonatomic) BOOL allowParallax; // @synthesize allowParallax=_allowParallax;
+@property (nonatomic) BOOL allowPlayButtonInBars; // @synthesize allowPlayButtonInBars=_allowPlayButtonInBars;
 @property (nonatomic) BOOL allowScrubber; // @synthesize allowScrubber=_allowScrubber;
 @property (nonatomic) BOOL allowStatusBar; // @synthesize allowStatusBar=_allowStatusBar;
 @property (nonatomic) BOOL allowUserTransform; // @synthesize allowUserTransform=_allowUserTransform;
+@property (nonatomic) BOOL alwaysShowAirPlayButton; // @synthesize alwaysShowAirPlayButton=_alwaysShowAirPlayButton;
 @property (nonatomic) double barsAreaVerticalOutset; // @synthesize barsAreaVerticalOutset=_barsAreaVerticalOutset;
 @property (nonatomic) double bounceDelay; // @synthesize bounceDelay=_bounceDelay;
 @property (nonatomic) double bounceDuration; // @synthesize bounceDuration=_bounceDuration;
 @property (nonatomic) double bounceInitialVelocity; // @synthesize bounceInitialVelocity=_bounceInitialVelocity;
 @property (nonatomic) double bounceSpringDamping; // @synthesize bounceSpringDamping=_bounceSpringDamping;
 @property (nonatomic) long long chromeAnimationType; // @synthesize chromeAnimationType=_chromeAnimationType;
+@property (nonatomic) long long chromeAutoHideBehaviorOnLivePhoto; // @synthesize chromeAutoHideBehaviorOnLivePhoto=_chromeAutoHideBehaviorOnLivePhoto;
 @property (nonatomic) long long chromeAutoHideBehaviorOnPlayButton; // @synthesize chromeAutoHideBehaviorOnPlayButton=_chromeAutoHideBehaviorOnPlayButton;
 @property (nonatomic) long long chromeAutoHideBehaviorOnSwipe; // @synthesize chromeAutoHideBehaviorOnSwipe=_chromeAutoHideBehaviorOnSwipe;
 @property (nonatomic) long long chromeAutoHideBehaviorOnZoom; // @synthesize chromeAutoHideBehaviorOnZoom=_chromeAutoHideBehaviorOnZoom;
@@ -101,13 +126,21 @@
 @property (nonatomic) double chromeTimedAutoHideAnimationDuration; // @synthesize chromeTimedAutoHideAnimationDuration=_chromeTimedAutoHideAnimationDuration;
 @property (nonatomic) unsigned long long debuggingBadges; // @synthesize debuggingBadges=_debuggingBadges;
 @property (nonatomic) unsigned long long debuggingBadgesWhenFavorite; // @synthesize debuggingBadgesWhenFavorite=_debuggingBadgesWhenFavorite;
+@property (nonatomic) long long debuggingTitleType; // @synthesize debuggingTitleType=_debuggingTitleType;
 @property (nonatomic) double defaultMaximumZoomFactor; // @synthesize defaultMaximumZoomFactor=_defaultMaximumZoomFactor;
 @property (nonatomic) BOOL doubleTapZoomAreaExcludesBackground; // @synthesize doubleTapZoomAreaExcludesBackground=_doubleTapZoomAreaExcludesBackground;
 @property (nonatomic) BOOL doubleTapZoomAreaExcludesBars; // @synthesize doubleTapZoomAreaExcludesBars=_doubleTapZoomAreaExcludesBars;
 @property (nonatomic) double doubleTapZoomFactor; // @synthesize doubleTapZoomFactor=_doubleTapZoomFactor;
+@property (nonatomic) BOOL enableFigPhotoTiledLayer; // @synthesize enableFigPhotoTiledLayer=_enableFigPhotoTiledLayer;
+@property (nonatomic) BOOL enableSuggestionsAnalysis; // @synthesize enableSuggestionsAnalysis=_enableSuggestionsAnalysis;
+@property (nonatomic) BOOL forceURLWithFigPhotoTiledLayer; // @synthesize forceURLWithFigPhotoTiledLayer=_forceURLWithFigPhotoTiledLayer;
 @property (nonatomic) BOOL hideToolbarWhenShowingAccessoryView; // @synthesize hideToolbarWhenShowingAccessoryView=_hideToolbarWhenShowingAccessoryView;
+@property (nonatomic) double initialDetailsIndicatorDelay; // @synthesize initialDetailsIndicatorDelay=_initialDetailsIndicatorDelay;
+@property (nonatomic) double initialDetailsIndicatorDuration; // @synthesize initialDetailsIndicatorDuration=_initialDetailsIndicatorDuration;
+@property (nonatomic) BOOL initialDetailsIndicatorShouldSlideIn; // @synthesize initialDetailsIndicatorShouldSlideIn=_initialDetailsIndicatorShouldSlideIn;
 @property (nonatomic) double interpageSpacing; // @synthesize interpageSpacing=_interpageSpacing;
 @property (nonatomic) double livePhotoInteractionThreshold; // @synthesize livePhotoInteractionThreshold=_livePhotoInteractionThreshold;
+@property (nonatomic) BOOL livePhotoScrubberShowForPlayback; // @synthesize livePhotoScrubberShowForPlayback=_livePhotoScrubberShowForPlayback;
 @property (nonatomic) BOOL lockScrollDuringLivePhotoPlayback; // @synthesize lockScrollDuringLivePhotoPlayback=_lockScrollDuringLivePhotoPlayback;
 @property (nonatomic) double maximumInitialZoomToFillScaleForCompactSizeClass; // @synthesize maximumInitialZoomToFillScaleForCompactSizeClass=_maximumInitialZoomToFillScaleForCompactSizeClass;
 @property (nonatomic) double maximumInitialZoomToFillScaleForRegularSizeClass; // @synthesize maximumInitialZoomToFillScaleForRegularSizeClass=_maximumInitialZoomToFillScaleForRegularSizeClass;
@@ -120,19 +153,28 @@
 @property (nonatomic) double parallaxFactor; // @synthesize parallaxFactor=_parallaxFactor;
 @property (nonatomic) long long parallaxModel; // @synthesize parallaxModel=_parallaxModel;
 @property (nonatomic) BOOL persistChromeVisibility; // @synthesize persistChromeVisibility=_persistChromeVisibility;
+@property (nonatomic) double playGIFEnterThreshold; // @synthesize playGIFEnterThreshold=_playGIFEnterThreshold;
+@property (nonatomic) double playGIFMoveOutThreshold; // @synthesize playGIFMoveOutThreshold=_playGIFMoveOutThreshold;
+@property (nonatomic) double playGIFSettledThreshold; // @synthesize playGIFSettledThreshold=_playGIFSettledThreshold;
 @property (nonatomic) BOOL playVideoInScrubber; // @synthesize playVideoInScrubber=_playVideoInScrubber;
+@property (nonatomic) unsigned long long scaleToFitBehavior; // @synthesize scaleToFitBehavior=_scaleToFitBehavior;
 @property (strong, nonatomic) PUScrubberSettings *scrubberSettings; // @synthesize scrubberSettings=_scrubberSettings;
 @property (nonatomic) BOOL showBufferingIndicatorDuringPlay; // @synthesize showBufferingIndicatorDuringPlay=_showBufferingIndicatorDuringPlay;
 @property (nonatomic) BOOL showFacesAreaRect; // @synthesize showFacesAreaRect=_showFacesAreaRect;
+@property (nonatomic) BOOL showGIFLoadingDelays; // @synthesize showGIFLoadingDelays=_showGIFLoadingDelays;
+@property (nonatomic) BOOL showInitialDetailsIndicator; // @synthesize showInitialDetailsIndicator=_showInitialDetailsIndicator;
+@property (nonatomic) BOOL showLoadingIndicatorDuringDownload; // @synthesize showLoadingIndicatorDuringDownload=_showLoadingIndicatorDuringDownload;
 @property (nonatomic) BOOL simulateAssetContentDownload; // @synthesize simulateAssetContentDownload=_simulateAssetContentDownload;
 @property (nonatomic) BOOL simulateAssetContentDownloadFailure; // @synthesize simulateAssetContentDownloadFailure=_simulateAssetContentDownloadFailure;
-@property (strong, nonatomic) PUSwipeDownSettings *swipeDownSettings; // @synthesize swipeDownSettings=_swipeDownSettings;
+@property (nonatomic) long long simulatedAssetVariationSuggestion; // @synthesize simulatedAssetVariationSuggestion=_simulatedAssetVariationSuggestion;
+@property (nonatomic) long long suggestionMinimumAssetAgeInDays; // @synthesize suggestionMinimumAssetAgeInDays=_suggestionMinimumAssetAgeInDays;
+@property (nonatomic) long long suggestionsStyle; // @synthesize suggestionsStyle=_suggestionsStyle;
 @property (nonatomic) long long titleTapAction; // @synthesize titleTapAction=_titleTapAction;
 @property (nonatomic) BOOL useDebuggingColors; // @synthesize useDebuggingColors=_useDebuggingColors;
 @property (nonatomic) BOOL useDebuggingProgressLabel; // @synthesize useDebuggingProgressLabel=_useDebuggingProgressLabel;
-@property (nonatomic) BOOL useDebuggingTitle; // @synthesize useDebuggingTitle=_useDebuggingTitle;
 @property (nonatomic) BOOL useGlobalCommentsVisibility; // @synthesize useGlobalCommentsVisibility=_useGlobalCommentsVisibility;
 @property (nonatomic) BOOL useGlobalDetailsVisibility; // @synthesize useGlobalDetailsVisibility=_useGlobalDetailsVisibility;
+@property (nonatomic) BOOL useURLForLargePhotosWithFigPhotoTiledLayer; // @synthesize useURLForLargePhotosWithFigPhotoTiledLayer=_useURLForLargePhotosWithFigPhotoTiledLayer;
 @property (nonatomic) long long userNavigationMaximumDistance; // @synthesize userNavigationMaximumDistance=_userNavigationMaximumDistance;
 @property (nonatomic) double videoPauseThreshold; // @synthesize videoPauseThreshold=_videoPauseThreshold;
 @property (nonatomic) unsigned long long viewModelCacheCountLimit; // @synthesize viewModelCacheCountLimit=_viewModelCacheCountLimit;
@@ -144,6 +186,9 @@
 + (id)settingsControllerModule;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_invalidatePrototypeRelatedSettings;
+- (void)_updatePrototypeRelatedSettings;
+- (id)parentSettings;
 - (void)setDefaultValues;
 
 @end

@@ -8,19 +8,22 @@
 
 #import <TelephonyUI/TPNumberPadButtonProtocol-Protocol.h>
 
-@class CALayer, NSString, TPRevealingRingView, UIColor;
+@class CALayer, NSString, TPRevealingRingView, UIColor, UIView;
 
 @interface TPNumberPadButton : UIControl <TPNumberPadButtonProtocol>
 {
-    TPRevealingRingView *_revealingRingView;
     unsigned int character;
     UIColor *_color;
     CALayer *_glyphLayer;
     CALayer *_highlightedGlyphLayer;
+    UIView *_circleView;
+    UIColor *_buttonColor;
+    TPRevealingRingView *_revealingRingView;
 }
 
-@property (nonatomic) double alphaOutsideAndInsideRing; // @dynamic alphaOutsideAndInsideRing;
+@property (readonly, nonatomic) UIColor *buttonColor; // @synthesize buttonColor=_buttonColor;
 @property unsigned int character; // @synthesize character;
+@property (strong) UIView *circleView; // @synthesize circleView=_circleView;
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -30,11 +33,9 @@
 @property (readonly, nonatomic) TPRevealingRingView *revealingRingView; // @synthesize revealingRingView=_revealingRingView;
 @property (readonly) Class superclass;
 
++ (struct CGRect)circleBounds;
 + (struct CGSize)defaultSize;
-+ (double)highlightCrossfadeHighlightBeginTime;
-+ (double)highlightCrossfadeHighlightFadeDuration;
-+ (double)highlightCrossfadeNormalBeginTime;
-+ (double)highlightCrossfadeNormalFadeDuration;
++ (double)highlightedCircleViewAlpha;
 + (double)horizontalPadding;
 + (id)imageForCharacter:(unsigned int)arg1;
 + (id)imageForCharacter:(unsigned int)arg1 highlighted:(BOOL)arg2;
@@ -46,21 +47,17 @@
 + (void)resetLocale;
 + (void)resetLocaleIfNeeded;
 + (id)scriptKey;
-+ (double)unhighlightCrossfadeHighlightBeginTime;
-+ (double)unhighlightCrossfadeHighlightFadeDuration;
-+ (double)unhighlightCrossfadeNormalBeginTime;
-+ (double)unhighlightCrossfadeNormalFadeDuration;
++ (double)unhighlightedCircleViewAlpha;
 + (BOOL)usesBoldAssets;
 + (BOOL)usesTelephonyGlyphsWhereAvailable;
 + (double)verticalPadding;
 - (void).cxx_destruct;
 - (id)defaultColor;
+- (void)highlightCircleView:(BOOL)arg1 animated:(BOOL)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initForCharacter:(unsigned int)arg1;
 - (void)loadImagesForCurrentCharacter;
 - (void)setHighlighted:(BOOL)arg1;
-- (void)setUsesColorBurnBlending;
-- (void)setUsesColorDodgeBlending;
 - (void)touchCancelled;
 - (void)touchDown;
 - (void)touchUp;

@@ -6,15 +6,19 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class NSString;
+@class NSArray, NSDictionary, NSString;
 @protocol NSFastEnumeration, PLSyncableDetectedFace, PLSyncablePerson;
 
 @protocol PLSyncContext <NSObject>
 
+@property (copy, nonatomic) NSArray *personUUIDsToDedupe;
+@property (readonly, nonatomic) BOOL serverSupportsGraphHome;
 @property (readonly, nonatomic) BOOL serverSupportsVision;
 
+- (NSDictionary *)assetAdjustmentStateForCloudIdentifier:(NSString *)arg1;
 - (void)deleteFaces:(id<NSFastEnumeration>)arg1;
 - (id<PLSyncableDetectedFace>)makeFace;
 - (id<PLSyncablePerson>)personForUUID:(NSString *)arg1;
+- (BOOL)personUUIDIsDeleted:(NSString *)arg1;
 @end
 

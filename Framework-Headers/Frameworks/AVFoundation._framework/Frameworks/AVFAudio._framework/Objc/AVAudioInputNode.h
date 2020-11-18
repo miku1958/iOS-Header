@@ -20,8 +20,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic) float volume;
 
-- (id)initWithIOUnit:(struct AVAudioIOUnit *)arg1;
 - (float)rate;
+- (BOOL)setManualRenderingInputPCMFormat:(id)arg1 inputBlock:(CDUnknownBlockType)arg2;
 - (void)setRate:(float)arg1;
 
 @end

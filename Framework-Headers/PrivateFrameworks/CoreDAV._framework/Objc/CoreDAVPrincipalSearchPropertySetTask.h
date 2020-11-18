@@ -12,7 +12,7 @@
 {
 }
 
-@property (nonatomic) id<CoreDAVPrincipalSearchPropertySetTaskDelegate> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<CoreDAVPrincipalSearchPropertySetTaskDelegate> delegate; // @dynamic delegate;
 
 - (id)copyDefaultParserForContentType:(id)arg1;
 - (void)finishCoreDAVTaskWithError:(id)arg1;

@@ -24,6 +24,7 @@
 
 + (id)delegateBundleIDsForManagedAccount;
 + (BOOL)isMultiUser;
++ (BOOL)isSettingUpMultiUser;
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_createAppleAccountWithUsername:(id)arg1 password:(id)arg2 rawPassword:(id)arg3 completion:(CDUnknownBlockType)arg4;

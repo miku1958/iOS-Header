@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)_freeBytes;
+- (BOOL)_providesConcreteBacking;
 - (void)appendBytes:(const void *)arg1 length:(unsigned long long)arg2;
 - (void)appendData:(id)arg1;
 - (const void *)bytes;

@@ -6,13 +6,13 @@
 
 #import <CoreData/NSPropertyDescription.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface NSPropertyDescription (VSSubscriptionAdditions)
 
 @property (copy, nonatomic, getter=vs_JSONKey, setter=vs_setJSONKey:) NSString *JSONKey;
 @property (copy, nonatomic, getter=vs_JSONValueTransformerName, setter=vs_setJSONValueTransformerName:) NSString *JSONValueTransformerName;
-@property (strong, nonatomic, getter=vs_expectedJSONValueClass, setter=vs_setExpectedJSONValueClass:) Class expectedJSONValueClass;
+@property (copy, nonatomic, getter=vs_expectedJSONValueClasses, setter=vs_setExpectedJSONValueClasses:) NSArray *expectedJSONValueClass;
 @property (copy, nonatomic, getter=vs_propertyListKey, setter=vs_setPropertyListKey:) NSString *propertyListKey;
 @property (copy, nonatomic, getter=vs_propertyListValueTransformerName, setter=vs_setPropertyListValueTransformerName:) NSString *propertyListValueTransformerName;
 @property (nonatomic, getter=vs_isRequiredJSONValue, setter=vs_setRequiredJSONValue:) BOOL requiredJSONValue;

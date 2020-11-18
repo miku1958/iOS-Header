@@ -50,7 +50,7 @@
 - (id)alertSpecificationAtIndex:(unsigned long long)arg1;
 - (id)alertSpecificationForAlertKey:(id)arg1;
 - (id)initWithServerDictionary:(id)arg1 accountAltDSID:(id)arg2 notificationID:(id)arg3 retrievalDate:(id)arg4 callbackInterval:(double)arg5 bundleIdentifier:(id)arg6;
-- (id)keybagForBuyStorage;
+- (id)storagePurchaseKeybagForButtonId:(id)arg1;
 
 @end
 

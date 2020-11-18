@@ -23,7 +23,6 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (id)modelGenericObject;
-- (id)mqf_playbackItemMetadataModelObject;
 - (void)setEpisode:(id)arg1;
 
 @end

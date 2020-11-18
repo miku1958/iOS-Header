@@ -9,7 +9,7 @@
 #import <NetworkExtension/NSCopying-Protocol.h>
 #import <NetworkExtension/NSSecureCoding-Protocol.h>
 
-@class NEFilterAbsoluteVerdict, NSURL;
+@class NEFilterAbsoluteVerdict, NSData, NSString, NSURL, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface NEFilterFlow : NSObject <NSSecureCoding, NSCopying>
@@ -17,24 +17,37 @@
     BOOL _isOpen;
     NEFilterAbsoluteVerdict *_currentVerdict;
     BOOL _isRemediationFlow;
+    int _pid;
+    int _epid;
     NSURL *_URL;
+    NSData *_sourceAppUniqueIdentifier;
+    NSString *_sourceAppIdentifier;
+    NSString *_sourceAppVersion;
     NSObject<OS_dispatch_queue> *_queue;
+    NSUUID *_flowUUID;
 }
 
-@property (readonly) NSURL *URL; // @synthesize URL=_URL;
+@property (copy) NSURL *URL; // @synthesize URL=_URL;
 @property (strong) NEFilterAbsoluteVerdict *currentVerdict;
+@property int epid; // @synthesize epid=_epid;
+@property (copy) NSUUID *flowUUID; // @synthesize flowUUID=_flowUUID;
 @property BOOL isOpen;
 @property BOOL isRemediationFlow; // @synthesize isRemediationFlow=_isRemediationFlow;
+@property int pid; // @synthesize pid=_pid;
 @property (strong) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (copy) NSString *sourceAppIdentifier; // @synthesize sourceAppIdentifier=_sourceAppIdentifier;
+@property (copy) NSData *sourceAppUniqueIdentifier; // @synthesize sourceAppUniqueIdentifier=_sourceAppUniqueIdentifier;
+@property (copy) NSString *sourceAppVersion; // @synthesize sourceAppVersion=_sourceAppVersion;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)close;
+- (void)copySourceAppInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithURL:(id)arg1;
+- (id)initWithURL:(id)arg1 sourceAppIdentifier:(id)arg2;
 
 @end
 

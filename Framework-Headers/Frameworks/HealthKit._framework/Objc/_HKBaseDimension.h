@@ -32,12 +32,16 @@ __attribute__((visibility("hidden")))
 + (id)_uniquedDimensionWithName:(id)arg1 configuration:(CDUnknownBlockType)arg2;
 + (id)conductance;
 + (id)energy;
++ (id)equivalents;
 + (id)length;
 + (id)mass;
++ (id)nonConvertibleIU;
++ (id)nonConvertibleMole;
 + (id)nullDimension;
 + (id)pressure;
 + (id)temperature;
 + (id)time;
++ (id)titer;
 + (id)volume;
 - (void).cxx_destruct;
 - (id)_baseDimensions;

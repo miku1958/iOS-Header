@@ -32,12 +32,12 @@
 @property (nonatomic) int type; // @synthesize type=_type;
 
 + (Class)displayLineType;
+- (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
 - (void)addDisplayLine:(id)arg1;
 - (void)clearDisplayLines;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)displayLineAtIndex:(unsigned long long)arg1;

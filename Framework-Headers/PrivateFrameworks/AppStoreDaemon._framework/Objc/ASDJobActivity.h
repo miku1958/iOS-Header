@@ -29,6 +29,7 @@
     BOOL _isUpdate;
     BOOL _launchProhibited;
     BOOL _softwareIconNeedsShine;
+    BOOL _thirtyTwoBitOnly;
     NSData *_appReceiptData;
     NSArray *_assets;
     NSNumber *_artistID;
@@ -124,6 +125,7 @@
 @property (copy, nonatomic) NSString *storeDownloadKey; // @synthesize storeDownloadKey=_storeDownloadKey;
 @property (copy, nonatomic) NSString *storeTransactionID; // @synthesize storeTransactionID=_storeTransactionID;
 @property (copy, nonatomic) NSString *storefront; // @synthesize storefront=_storefront;
+@property (getter=is32BitOnly) BOOL thirtyTwoBitOnly; // @synthesize thirtyTwoBitOnly=_thirtyTwoBitOnly;
 @property (copy, nonatomic) NSString *thumbnailURL; // @synthesize thumbnailURL=_thumbnailURL;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSString *variantID; // @synthesize variantID=_variantID;

@@ -16,6 +16,7 @@
 @interface MPStoreAVItem : MPAVItem <AVAssetResourceLoaderDelegate, SSVSecureKeyDeliveryRequestOperationDelegate, MPRTCReportingItemSessionCreating>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
+    NSObject<OS_dispatch_queue> *_persistenceQueue;
     unsigned long long _assetQuality;
     BOOL _didDeferLeaseStart;
     BOOL _hasEverPrioritizedPlayerItem;
@@ -35,6 +36,7 @@
     AVAssetResourceLoadingRequest *_loadingRequest;
     NSData *_serverPlaybackContextDataForStoppingLease;
     BOOL _rentalCheckoutRequired;
+    BOOL _ignoreHLSOfflinePlaybackKeys;
     unsigned long long _options;
     MPMediaPlaybackItemMetadata *_playbackItemMetadata;
     NSString *_assetSourceStoreFrontID;
@@ -42,6 +44,8 @@
     NSString *_requestingBundleVersion;
     long long _equivalencySourceAdamID;
     unsigned long long _rentalID;
+    NSNumber *_privateListeningEnabled;
+    NSNumber *_siriInitiated;
 }
 
 @property (readonly, nonatomic) BOOL allowsStoreBagStreamingKeyURLsFallback;
@@ -51,8 +55,10 @@
 @property (nonatomic) long long equivalencySourceAdamID; // @synthesize equivalencySourceAdamID=_equivalencySourceAdamID;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isiTunesStoreStream) BOOL iTunesStoreStream;
+@property (nonatomic, getter=isIgnoringHLSOfflinePlaybackKeys) BOOL ignoreHLSOfflinePlaybackKeys; // @synthesize ignoreHLSOfflinePlaybackKeys=_ignoreHLSOfflinePlaybackKeys;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (readonly, nonatomic) MPMediaPlaybackItemMetadata *playbackItemMetadata; // @synthesize playbackItemMetadata=_playbackItemMetadata;
+@property (copy, nonatomic, getter=isPrivateListeningEnabled) NSNumber *privateListeningEnabled; // @synthesize privateListeningEnabled=_privateListeningEnabled;
 @property (readonly, nonatomic, getter=isRentalCheckoutRequired) BOOL rentalCheckoutRequired; // @synthesize rentalCheckoutRequired=_rentalCheckoutRequired;
 @property (readonly, nonatomic) unsigned long long rentalID; // @synthesize rentalID=_rentalID;
 @property (copy, nonatomic) NSString *requestingBundleIdentifier; // @synthesize requestingBundleIdentifier=_requestingBundleIdentifier;
@@ -61,6 +67,7 @@
 @property (readonly, nonatomic) id rtcReportingParentHierarchyToken;
 @property (readonly, copy, nonatomic) NSString *rtcReportingServiceIdentifier;
 @property (strong, nonatomic) NSData *serverPlaybackContextDataForStoppingLease; // @synthesize serverPlaybackContextDataForStoppingLease=_serverPlaybackContextDataForStoppingLease;
+@property (copy, nonatomic, getter=isSiriInitiated) NSNumber *siriInitiated; // @synthesize siriInitiated=_siriInitiated;
 @property (readonly, nonatomic) unsigned long long streamType;
 @property (readonly, copy, nonatomic) NSURL *streamingKeyCertificateURL;
 @property (readonly, copy, nonatomic) NSURL *streamingKeyServerURL;
@@ -78,17 +85,18 @@
 - (id)_bookmarkTime;
 - (id)_chapterTitleForTime:(double)arg1;
 - (void)_currentPlaybackRateDidChange:(float)arg1;
-- (double)_expectedStartTimeWithPlaybackInfo:(id)arg1;
-- (double)_expectedStopTimeWithPlaybackInfo:(id)arg1;
 - (BOOL)_getAssetURL:(id *)arg1 playWhileDownloadSession:(id *)arg2 assetQuality:(unsigned long long *)arg3 error:(id *)arg4 usingStoreDownload:(id)arg5 assetOptions:(id)arg6 shouldStartDownload:(BOOL)arg7;
 - (void)_handlePlaybackFinishedTime:(double)arg1 finishedByHittingEnd:(BOOL)arg2;
 - (void)_handleUpdatedLikedState:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)_handledLoadingRequestWithOfflinePersistantKey:(id)arg1;
+- (BOOL)_isBackgroundPlaybackRestricted;
 - (void)_loadMediaItemWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_mediaPlaybackItemMetadataDidChangeNotification:(id)arg1;
 - (void)_mediaPlaybackItemMetadataLikedStateDidChangeNotification:(id)arg1;
 - (id)_mediaSelectionOptionFromGroup:(id)arg1 withTrackID:(int)arg2;
 - (id)_newTimeMarkersForChapterType:(long long)arg1;
 - (void)_persistPlaybackStartTime:(double)arg1;
+- (void)_persistURI:(id)arg1 persistentContentKey:(id)arg2;
 - (long long)_persistedLikedState;
 - (void)_prioritizeDownloadSessionsIfNeeded;
 - (BOOL)_shouldRememberBookmarkTime;
@@ -98,6 +106,8 @@
 - (void)_willResignActivePlayerItem;
 - (id)album;
 - (id)albumArtist;
+- (unsigned long long)albumArtistPersistentID;
+- (unsigned long long)albumPersistentID;
 - (long long)albumStoreID;
 - (unsigned long long)albumTrackCount;
 - (unsigned long long)albumTrackNumber;
@@ -106,12 +116,14 @@
 - (BOOL)allowsExternalPlayback;
 - (void)applyVolumeNormalizationWithSoundCheckEnabled:(BOOL)arg1;
 - (id)artist;
+- (unsigned long long)artistPersistentID;
 - (long long)artistStoreID;
 - (id)artworkCatalogForPlaybackTime:(double)arg1;
 - (id)artworkTimeMarkers;
 - (BOOL)canSeedGenius;
 - (id)chapterTimeMarkers;
 - (id)composer;
+- (unsigned long long)composerPersistentID;
 - (id)copyrightText;
 - (long long)customAVEQPreset;
 - (void)dealloc;
@@ -122,6 +134,7 @@
 - (double)durationFromExternalMetadata;
 - (id)externalContentIdentifier;
 - (id)genre;
+- (unsigned long long)genrePersistentID;
 - (void)handlePlaybackFinishedTime:(double)arg1 finishedByHittingEnd:(BOOL)arg2;
 - (BOOL)hasAlternatesForTypes:(unsigned long long)arg1;
 - (id)init;
@@ -138,6 +151,7 @@
 - (void)loadAssetAndPlayerItem;
 - (id)mainTitle;
 - (id)mediaItem;
+- (unsigned long long)mediaType;
 - (id)modelGenericObject;
 - (long long)mpcReporting_equivalencySourceAdamID;
 - (id)mpcReporting_requestingBundleIdentifier;
@@ -160,13 +174,13 @@
 - (void)setPlaybackStoppedTime:(double)arg1;
 - (void)setRating:(float)arg1;
 - (void)setupPlaybackInfo;
+- (BOOL)shouldShowComposer;
 - (id)storeDownload;
 - (long long)storeItemInt64ID;
 - (long long)storePlaybackEndpointType;
 - (long long)storeSubscriptionAdamID;
 - (BOOL)supportsLikedState;
 - (BOOL)supportsRewindAndFastForward15Seconds;
-- (id)titlesForTime:(double)arg1;
 - (long long)type;
 - (id)urlTimeMarkers;
 - (BOOL)useEmbeddedChapterData;

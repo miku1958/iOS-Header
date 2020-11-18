@@ -13,7 +13,7 @@
     VSOptional *_result;
 }
 
-@property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;
+@property (strong) VSOptional *result; // @synthesize result=_result;
 
 - (void).cxx_destruct;
 - (void)_finishWithData:(id)arg1;

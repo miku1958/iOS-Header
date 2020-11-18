@@ -50,7 +50,7 @@
 @property (nonatomic) BOOL activityGovernorOverride; // @dynamic activityGovernorOverride;
 @property (readonly, nonatomic) PHAJobConstraintsObserver *constraintsObserver; // @synthesize constraintsObserver=_constraintsObserver;
 @property (strong, nonatomic) PHAWorkerJob *currentBackgroundJob; // @synthesize currentBackgroundJob=_currentBackgroundJob;
-@property (copy, nonatomic) PHAJobConstraints *currentConstraints; // @synthesize currentConstraints=_currentConstraints;
+@property (copy) PHAJobConstraints *currentConstraints; // @synthesize currentConstraints=_currentConstraints;
 @property (strong, nonatomic) PHAWorkerJob *currentForegroundJob; // @synthesize currentForegroundJob=_currentForegroundJob;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PHAJobCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
@@ -97,7 +97,7 @@
 - (void)_scheduleNextJob;
 - (id)_workerForJob:(id)arg1;
 - (void)analysisStateObserver:(id)arg1 didChangeAnalysisStateTo:(int)arg2 from:(int)arg3 assetIdentifier:(id)arg4 workerFlags:(int)arg5 workerType:(short)arg6;
-- (void)coalescer:(id)arg1 didCoalesce:(id)arg2 forWorkerType:(short)arg3;
+- (void)coalescer:(id)arg1 didCoalesce:(id)arg2;
 - (void)dealloc;
 - (void)didFinishJob:(id)arg1;
 - (void)enforceTimeouts;
@@ -109,10 +109,11 @@
 - (id)initWithManager:(id)arg1;
 - (id)initWithManager:(id)arg1 initialConstraints:(id)arg2 additionalWorkersByType:(id)arg3;
 - (void)jobCoalescer:(id)arg1 didProduceJob:(id)arg2;
-- (void)jobConstraintsObserver:(id)arg1 constraintsDidChange:(id)arg2 mask:(id)arg3;
+- (void)jobConstraintsObserver:(id)arg1 constraintsDidChange:(id)arg2 mask:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)photoLibrary;
 - (void)scheduleAssetForOnDemandAnalysisWithUUID:(id)arg1 workerType:(short)arg2 workerFlags:(int)arg3 context:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)setJobProcessingConstraintsWithValues:(id)arg1 mask:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)shutdown;
 - (id)statusAsDictionary;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOMapServiceSearchTicket-Protocol.h>
 
-@class GEOMapRegion, GEOMapServiceTraits, GEORelatedSearchSuggestion, NSArray, NSDictionary, NSString;
+@class GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEORelatedSearchSuggestion, NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _GEOReverseGeocodeRequestTicket : _GEOPlaceRequestTicket <GEOMapServiceSearchTicket>
@@ -16,10 +16,16 @@ __attribute__((visibility("hidden")))
     BOOL _shiftLocationsIfNeeded;
 }
 
+@property (readonly, nonatomic) NSArray *browseCategories;
+@property (nonatomic) unsigned long long cachePolicy;
+@property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
 @property (readonly, nonatomic, getter=isChainResultSet) BOOL chainResultSet;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) GEODirectionIntent *directionIntent;
+@property (readonly, nonatomic) NSArray *displayHeaderSubstitutes;
+@property (readonly, nonatomic) unsigned int dymSuggestionVisibleTime;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *relatedSearchSuggestions;
 @property (readonly, nonatomic) NSDictionary *responseUserInfo;
@@ -29,11 +35,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *searchQuery;
 @property (readonly, nonatomic) int searchResultType;
 @property (readonly, nonatomic) BOOL shouldEnableRedoSearch;
+@property (readonly, nonatomic) BOOL showDymSuggestionCloseButton;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) GEOMapServiceTraits *traits;
 
 - (id)initWithRequest:(id)arg1 shiftLocationsIfNeeded:(BOOL)arg2 traits:(id)arg3;
-- (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
+- (void)submitWithHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 timeout:(long long)arg3 networkActivity:(CDUnknownBlockType)arg4;
 
 @end
 

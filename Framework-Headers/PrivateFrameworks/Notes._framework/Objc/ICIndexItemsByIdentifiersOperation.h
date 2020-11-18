@@ -18,8 +18,8 @@
 - (void).cxx_destruct;
 - (id)initWithSearchableIndex:(id)arg1 dataSources:(id)arg2;
 - (id)initWithSearchableIndex:(id)arg1 dataSources:(id)arg2 identifiersToIndex:(id)arg3;
+- (id)objectIDsToIndexFromDataSource:(id)arg1;
 - (id)searchableItemIdentifiersToDeleteFromDataSource:(id)arg1;
-- (id)searchableItemsToIndexFromDataSource:(id)arg1;
 
 @end
 

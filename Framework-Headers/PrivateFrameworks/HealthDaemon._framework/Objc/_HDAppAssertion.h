@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class HDAppAssertionManager, HDDaemon, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@class HDAppAssertionManager, HDProfile, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface _HDAppAssertion : NSObject
 {
     BOOL _invalidated;
     NSString *_bundleIdentifier;
-    NSMutableArray *_pendingDataTypeCodes;
+    NSMutableDictionary *_pendingDataTypeCodesToAnchors;
     double _lastLaunchAttempt;
     long long _launchErrorCount;
-    HDDaemon *_daemon;
+    HDProfile *_profile;
     HDAppAssertionManager *_assertionManager;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_pendingLaunchCompletions;
@@ -26,25 +26,26 @@
 
 @property (weak, nonatomic) HDAppAssertionManager *assertionManager; // @synthesize assertionManager=_assertionManager;
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (weak, nonatomic) HDDaemon *daemon; // @synthesize daemon=_daemon;
 @property (nonatomic) BOOL invalidated; // @synthesize invalidated=_invalidated;
 @property (readonly, nonatomic) double lastLaunchAttempt; // @synthesize lastLaunchAttempt=_lastLaunchAttempt;
 @property (readonly, nonatomic) long long launchErrorCount; // @synthesize launchErrorCount=_launchErrorCount;
 @property (readonly, nonatomic) double nextLaunchAttempt;
-@property (readonly, nonatomic) NSMutableArray *pendingDataTypeCodes; // @synthesize pendingDataTypeCodes=_pendingDataTypeCodes;
+@property (readonly, nonatomic) NSMutableDictionary *pendingDataTypeCodesToAnchors; // @synthesize pendingDataTypeCodesToAnchors=_pendingDataTypeCodesToAnchors;
 @property (strong, nonatomic) NSMutableDictionary *pendingLaunchCompletions; // @synthesize pendingLaunchCompletions=_pendingLaunchCompletions;
 @property (strong, nonatomic) NSMutableSet *processAssertions; // @synthesize processAssertions=_processAssertions;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *processDeathSource; // @synthesize processDeathSource=_processDeathSource;
+@property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 - (void).cxx_destruct;
 - (void)_queue_acquireAssertionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_queue_invalidate;
-- (void)extendForDataType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)extendForDataType:(long long)arg1 anchor:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)hash;
-- (id)initWithBundleIdentifier:(id)arg1 assertionManager:(id)arg2 daemon:(id)arg3 queue:(id)arg4;
-- (void)invalidateForDataType:(long long)arg1;
+- (id)initWithBundleIdentifier:(id)arg1 assertionManager:(id)arg2 profile:(id)arg3 queue:(id)arg4;
+- (void)invalidateForDataType:(long long)arg1 anchor:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (id)launchBundleIdentifier;
 - (void)launchWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

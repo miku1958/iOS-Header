@@ -9,7 +9,6 @@
 @class AVVCAudioBuffer, AVVoiceController, NSDictionary, NSError;
 
 @protocol AVVoiceControllerRecordDelegate <NSObject>
-- (void)voiceControllerRecordBufferAvailable:(AVVoiceController *)arg1 buffer:(AVVCAudioBuffer *)arg2;
 
 @optional
 - (void)voiceControllerBeginRecordInterruption:(AVVoiceController *)arg1;
@@ -23,6 +22,9 @@
 - (void)voiceControllerEncoderErrorDidOccur:(AVVoiceController *)arg1 error:(NSError *)arg2;
 - (void)voiceControllerEndRecordInterruption:(AVVoiceController *)arg1;
 - (void)voiceControllerLPCMRecordBufferAvailable:(AVVoiceController *)arg1 buffer:(AVVCAudioBuffer *)arg2;
+- (void)voiceControllerMediaServicesWereLost:(AVVoiceController *)arg1;
+- (void)voiceControllerMediaServicesWereReset:(AVVoiceController *)arg1;
+- (void)voiceControllerRecordBufferAvailable:(AVVoiceController *)arg1 buffer:(AVVCAudioBuffer *)arg2;
 - (void)voiceControllerRecordHardwareConfigurationDidChange:(AVVoiceController *)arg1 toConfiguration:(int)arg2;
 @end
 

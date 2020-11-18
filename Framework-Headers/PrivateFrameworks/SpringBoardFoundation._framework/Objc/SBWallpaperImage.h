@@ -15,9 +15,12 @@
 
 @property (readonly, nonatomic) NSData *data; // @synthesize data=_data;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 wallpaperData:(id)arg3;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithFlatColor:(id)arg1;
 - (id)initWithFlatColor:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3;
 - (id)initWithImage:(id)arg1 wallpaperData:(id)arg2;

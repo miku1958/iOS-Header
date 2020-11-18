@@ -31,9 +31,10 @@
 @property (readonly, nonatomic) BOOL touchpadInput; // @synthesize touchpadInput=_touchpadInput;
 
 + (id)traitsWithScreen:(id)arg1 orientation:(long long)arg2;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithScreen:(id)arg1 orientation:(long long)arg2;
-- (void)updateForTextInputTraits:(id)arg1 supportsTouchInput:(id)arg2;
+- (void)updateForTextInputTraits:(id)arg1 supportedInteractionModel:(unsigned long long)arg2;
 
 @end
 

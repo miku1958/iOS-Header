@@ -7,7 +7,14 @@
 #import <Foundation/NSValue.h>
 
 @interface NSValue (BaseBoard)
++ (id)bs_valueWithCGAffineTransform:(struct CGAffineTransform)arg1;
++ (id)bs_valueWithCGPoint:(struct CGPoint)arg1;
 + (id)bs_valueWithCGRect:(struct CGRect)arg1;
++ (id)bs_valueWithCGSize:(struct CGSize)arg1;
+- (struct CGAffineTransform)bs_CGAffineTransformValue;
+- (struct CGPoint)bs_CGPointValue;
 - (struct CGRect)bs_CGRectValue;
+- (struct CGSize)bs_CGSizeValue;
+- (BOOL)bs_getValue:(out void *)arg1 ofSize:(unsigned long long)arg2;
 @end
 

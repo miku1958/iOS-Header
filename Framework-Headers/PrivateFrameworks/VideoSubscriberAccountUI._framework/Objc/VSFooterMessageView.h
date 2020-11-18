@@ -8,7 +8,7 @@
 
 #import <VideoSubscriberAccountUI/PSHeaderFooterView-Protocol.h>
 
-@class NSString;
+@class NSString, VSFontCenter;
 
 __attribute__((visibility("hidden")))
 @interface VSFooterMessageView : UIView <PSHeaderFooterView>
@@ -16,15 +16,19 @@ __attribute__((visibility("hidden")))
     NSString *_primaryMessage;
     NSString *_secondaryMessage;
     NSString *_tertiaryMessage;
+    VSFontCenter *_fontCenter;
 }
 
+@property (strong, nonatomic) VSFontCenter *fontCenter; // @synthesize fontCenter=_fontCenter;
 @property (copy, nonatomic) NSString *primaryMessage; // @synthesize primaryMessage=_primaryMessage;
 @property (copy, nonatomic) NSString *secondaryMessage; // @synthesize secondaryMessage=_secondaryMessage;
 @property (copy, nonatomic) NSString *tertiaryMessage; // @synthesize tertiaryMessage=_tertiaryMessage;
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)initWithSpecifier:(id)arg1;
 - (double)preferredHeightForWidth:(double)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

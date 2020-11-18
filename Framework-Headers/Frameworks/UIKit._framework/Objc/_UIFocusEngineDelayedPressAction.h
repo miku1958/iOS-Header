@@ -6,18 +6,18 @@
 
 #import <Foundation/NSObject.h>
 
-@class _UIFocusEngine;
+@class _UIFocusEventRecognizer;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusEngineDelayedPressAction : NSObject
 {
-    _UIFocusEngine *_sender;
+    _UIFocusEventRecognizer *_sender;
     long long _pressType;
     double _timestamp;
 }
 
 @property (readonly, nonatomic) long long pressType; // @synthesize pressType=_pressType;
-@property (readonly, weak, nonatomic) _UIFocusEngine *sender; // @synthesize sender=_sender;
+@property (readonly, weak, nonatomic) _UIFocusEventRecognizer *sender; // @synthesize sender=_sender;
 @property (readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
 + (void)sendDelayedPressWithType:(long long)arg1 timestamp:(double)arg2 sender:(id)arg3;

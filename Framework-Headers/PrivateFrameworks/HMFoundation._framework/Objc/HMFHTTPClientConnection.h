@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HMFoundation/_HMFCFHTTPServerConnectionDelegate-Protocol.h>
 
-@class HMFNetAddress, NSMutableArray, NSString, _HMFCFHTTPServerConnection;
+@class HMFNetAddress, NSMutableArray, NSObject, NSString, _HMFCFHTTPServerConnection;
 @protocol HMFHTTPClientConnectionDelegate, OS_dispatch_queue;
 
-@interface HMFHTTPClientConnection : NSObject <_HMFCFHTTPServerConnectionDelegate>
+@interface HMFHTTPClientConnection : HMFObject <_HMFCFHTTPServerConnectionDelegate>
 {
     id<HMFHTTPClientConnectionDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_clientQueue;

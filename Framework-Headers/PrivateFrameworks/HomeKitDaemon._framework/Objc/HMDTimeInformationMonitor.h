@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMFTimer, NSHashTable, NSString;
+@class HMFTimer, NSHashTable, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDTimeInformationMonitor : NSObject <HMFTimerDelegate>
+@interface HMDTimeInformationMonitor : HMFObject <HMFTimerDelegate>
 {
     HMFTimer *_expirationTimer;
     NSHashTable *_delegates;

@@ -19,6 +19,8 @@
     MPMediaPredicate *_storeItemsMediaLibraryPredicate;
     BOOL _invokedForPlaylistEditing;
     BOOL _showsOnlyStoreItems;
+    BOOL _picksSingleCollection;
+    BOOL _omitsGeniusPlaylists;
     MusicClientContext *_clientContext;
 }
 
@@ -27,6 +29,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isInvokedForPlaylistEditing) BOOL invokedForPlaylistEditing; // @synthesize invokedForPlaylistEditing=_invokedForPlaylistEditing;
+@property (nonatomic) BOOL omitsGeniusPlaylists; // @synthesize omitsGeniusPlaylists=_omitsGeniusPlaylists;
+@property (nonatomic) BOOL picksSingleCollection; // @synthesize picksSingleCollection=_picksSingleCollection;
 @property (nonatomic) BOOL showsOnlyStoreItems; // @synthesize showsOnlyStoreItems=_showsOnlyStoreItems;
 @property (readonly) Class superclass;
 
@@ -34,6 +38,7 @@
 - (void)_dataSourceDidInvalidate:(id)arg1;
 - (void)_filterAvailableCategoryConfigurations;
 - (void)_loadCategoryConfigurations;
+- (void)_reloadLibraryCategories;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;

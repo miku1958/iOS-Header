@@ -28,7 +28,6 @@
     BOOL _dispatchedBytesAvailable;
     unsigned long long _bytesRead;
     unsigned long long _bytesWritten;
-    BOOL _enableThroughputMonitoring;
     NSCondition *_condition;
 }
 
@@ -48,7 +47,6 @@
 - (void)_readBytesFromStream;
 - (void)close;
 - (void)dealloc;
-- (void)enableThroughputMonitoring:(BOOL)arg1;
 - (id)initCallBack:(CDUnknownBlockType)arg1 onDispatchQueue:(id)arg2;
 - (void)openToHostName:(id)arg1 port:(long long)arg2;
 - (id)propertyForKey:(id)arg1;

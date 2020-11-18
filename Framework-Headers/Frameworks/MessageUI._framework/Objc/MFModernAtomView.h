@@ -23,12 +23,16 @@
     UILabel *_label;
     UIActivityIndicatorView *_activityIndicator;
     double _scalingFactor;
+    BOOL _wrappingSupported;
+    BOOL _cachedIsWrappingEnabled;
     BOOL _isPrimaryAddressAtom;
     BOOL _separatorHidden;
     BOOL _separatorIsLeftAligned;
     BOOL _selected;
+    NSString *_title;
     UIFont *_titleFont;
     unsigned long long _presentationOptions;
+    double _firstLineIndent;
 }
 
 @property (readonly, nonatomic) MFModernAtomIconView *accessoryIconView; // @synthesize accessoryIconView=_accessoryIconView;
@@ -41,6 +45,7 @@
 @property (readonly, nonatomic) struct UIEdgeInsets edgeInsets;
 @property (readonly, nonatomic) unsigned long long effectivePresentationOptions;
 @property (readonly, nonatomic) UIColor *effectiveTintColor;
+@property (nonatomic) double firstLineIndent; // @synthesize firstLineIndent=_firstLineIndent;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hidesVIPIndicator;
 @property (nonatomic) BOOL isPrimaryAddressAtom; // @synthesize isPrimaryAddressAtom=_isPrimaryAddressAtom;
@@ -52,14 +57,14 @@
 @property (nonatomic) BOOL separatorIsLeftAligned; // @synthesize separatorIsLeftAligned=_separatorIsLeftAligned;
 @property (nonatomic) int separatorStyle;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 @property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_label;
 
 + (id)_SMSTintColor;
 + (id)_badgeImagesForPresentationOptions:(unsigned long long)arg1 iconOrder:(const unsigned long long *)arg2 orderingLength:(unsigned long long)arg3 tintColor:(id)arg4 large:(BOOL)arg5 variant:(int)arg6;
-+ (id)_defaultLabelAttributes;
-+ (id)_defaultLabelAttributesWithFont:(id)arg1;
++ (id)_defaultLabelAttributesWithFont:(id)arg1 wrappingEnabled:(BOOL)arg2;
++ (id)_defaultLabelAttributesWithWrappingEnabled:(BOOL)arg1;
 + (id)_defaultTintColor;
 + (id)_failureTintColor;
 + (struct CGPoint)defaultBaselinePoint;
@@ -68,6 +73,8 @@
 + (double)horizontalPadding;
 + (BOOL)presentationOptions:(unsigned long long *)arg1 encodedIntoAddress:(id)arg2;
 + (id)primaryAtomFont;
+- (id)_centeredTextAttachmentWithImage:(id)arg1;
+- (id)_chevronTextAttachment;
 - (void)_invalidatePresentationOptions;
 - (double)_leftInset;
 - (double)_leftPadding;
@@ -79,17 +86,21 @@
 - (void)_updateActivityIndicator;
 - (void)_updateCompositingFilters;
 - (void)_updateFontIfNecessary;
+- (void)_updateLabelAttributes;
+- (void)_updateSubviewsForWrapping;
 - (void)appendPresentationOption:(unsigned long long)arg1;
 - (void)clearPresentationOption:(unsigned long long)arg1;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 presentationOptions:(unsigned long long)arg2 separatorStyle:(int)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 presentationOptions:(unsigned long long)arg2 separatorStyle:(int)arg3 wrappingSupported:(BOOL)arg4;
 - (struct CGSize)intrinsicContentSize;
+- (BOOL)isWrappingEnabled;
 - (void)layoutSubviews;
 - (void)performBuildInAnimationFromTextColor:(id)arg1 withDuration:(double)arg2;
 - (double)preferredWidth;
 - (double)preferredWidthWithSizeConstraints:(struct CGSize)arg1;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2 style:(unsigned long long)arg3;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;
 - (id)viewForLastBaselineLayout;
 

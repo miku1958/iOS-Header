@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 
 @class NSCache, NSLock, NSMutableArray, NSString;
-@protocol _GEOLocationShifterProxy;
+@protocol OS_dispatch_queue, _GEOLocationShifterProxy;
 
 @interface GEOLocationShifter : NSObject <GEOResourceManifestTileGroupObserver>
 {
@@ -19,6 +19,7 @@
     NSMutableArray *_locationsToShift;
     NSCache *_shiftFunctionCache;
     int _resetPrivacyToken;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -29,10 +30,12 @@
 
 + (BOOL)isLocationShiftEnabled;
 + (BOOL)isLocationShiftRequiredForCoordinate:(CDStruct_c3b9c2ee)arg1;
++ (BOOL)isLocationShiftRequiredForRegion:(id)arg1;
 + (unsigned int)locationShiftFunctionVersion;
 + (void)useLocalProxy;
+- (void).cxx_destruct;
 - (void)_countryProvidersDidChange:(id)arg1;
-- (void)_fetchShiftFunctionForCoordinate:(CDStruct_c3b9c2ee)arg1 withCompletionHandler:(CDUnknownBlockType)arg2 callbackQueue:(id)arg3;
+- (void)_fetchShiftFunctionForLatLng:(id)arg1 auditToken:(id)arg2 callbackQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_requestNextShiftFunctionIfNecessary;
 - (void)_reset;
 - (BOOL)_shiftLocation:(id)arg1;
@@ -42,6 +45,10 @@
 - (BOOL)shiftCoordinate:(CDStruct_c3b9c2ee)arg1 accuracy:(double)arg2 shiftedCoordinate:(CDStruct_c3b9c2ee *)arg3 shiftedAccuracy:(double *)arg4;
 - (void)shiftCoordinate:(CDStruct_c3b9c2ee)arg1 accuracy:(double)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)shiftCoordinate:(CDStruct_c3b9c2ee)arg1 accuracy:(double)arg2 withCompletionHandler:(CDUnknownBlockType)arg3 mustGoToNetworkCallback:(CDUnknownBlockType)arg4 errorHandler:(CDUnknownBlockType)arg5 callbackQueue:(id)arg6;
+- (void)shiftLatLng:(id)arg1 accuracy:(double)arg2 auditToken:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4 mustGoToNetworkCallback:(CDUnknownBlockType)arg5 errorHandler:(CDUnknownBlockType)arg6 callbackQueue:(id)arg7;
+- (BOOL)shiftLatLng:(id)arg1 accuracy:(double)arg2 shiftedCoordinate:(CDStruct_c3b9c2ee *)arg3 shiftedAccuracy:(double *)arg4;
+- (void)shiftLatLng:(id)arg1 accuracy:(double)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)shiftLatLng:(id)arg1 accuracy:(double)arg2 withCompletionHandler:(CDUnknownBlockType)arg3 mustGoToNetworkCallback:(CDUnknownBlockType)arg4 errorHandler:(CDUnknownBlockType)arg5 callbackQueue:(id)arg6;
 
 @end
 

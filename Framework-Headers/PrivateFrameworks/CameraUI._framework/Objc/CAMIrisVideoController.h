@@ -6,22 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class CAMNebulaDaemonProxyManager;
-@protocol OS_dispatch_queue;
+#import <CameraUI/CAMNebulaDaemonIrisClientProtocol-Protocol.h>
 
-@interface CAMIrisVideoController : NSObject
+@class CAMNebulaDaemonProxyManager, NSMutableArray, NSMutableDictionary, NSString;
+@protocol CAMIrisVideoControllerDelegate, OS_dispatch_queue;
+
+@interface CAMIrisVideoController : NSObject <CAMNebulaDaemonIrisClientProtocol>
 {
+    id<CAMIrisVideoControllerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *__mutexQueue;
     CAMNebulaDaemonProxyManager *__nebulaDaemonProxyManager;
+    NSMutableArray *__jobsToBeSent;
+    NSMutableDictionary *__pendingJobs;
 }
 
+@property (readonly, nonatomic) NSMutableArray *_jobsToBeSent; // @synthesize _jobsToBeSent=__jobsToBeSent;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_mutexQueue; // @synthesize _mutexQueue=__mutexQueue;
 @property (readonly, nonatomic) CAMNebulaDaemonProxyManager *_nebulaDaemonProxyManager; // @synthesize _nebulaDaemonProxyManager=__nebulaDaemonProxyManager;
+@property (readonly, nonatomic) NSMutableDictionary *_pendingJobs; // @synthesize _pendingJobs=__pendingJobs;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, weak, nonatomic) id<CAMIrisVideoControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)init;
-- (id)initWithNebulaDaemonProxyManager:(id)arg1;
+- (void)_notifyDelegateOfVideoLocalPersistenceResult:(id)arg1 forVideoPersistenceUUID:(id)arg2;
+- (void)_submitJob:(id)arg1;
+- (id)initWithNebulaDaemonProxyManager:(id)arg1 delegate:(id)arg2;
+- (BOOL)isWaitingOnNebuladForRequest:(id)arg1;
+- (void)nebulaDaemonDidCompleteLocalVideoPersistenceWithResult:(id)arg1;
 - (void)stillImageRequest:(id)arg1 didCompleteVideoCaptureWithResult:(id)arg2;
+- (void)stillImageRequestDidCompleteCapture:(id)arg1 error:(id)arg2;
 
 @end
 

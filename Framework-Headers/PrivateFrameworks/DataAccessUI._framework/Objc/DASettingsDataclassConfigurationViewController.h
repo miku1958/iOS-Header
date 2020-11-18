@@ -6,21 +6,15 @@
 
 #import <AccountsUI/ACUIDataclassConfigurationViewController.h>
 
-#import <DataAccessUI/UIModalViewDelegate-Protocol.h>
+@class DAAccount;
 
-@class DAAccount, NSString;
-
-@interface DASettingsDataclassConfigurationViewController : ACUIDataclassConfigurationViewController <UIModalViewDelegate>
+@interface DASettingsDataclassConfigurationViewController : ACUIDataclassConfigurationViewController
 {
     DAAccount *_daAccount;
     BOOL _haveRegisteredForAccountsChanged;
 }
 
 @property (strong, nonatomic) DAAccount *daAccount; // @synthesize daAccount=_daAccount;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_accountsChanged:(id)arg1;

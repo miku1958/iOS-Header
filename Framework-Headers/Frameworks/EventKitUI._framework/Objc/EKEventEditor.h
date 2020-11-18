@@ -29,6 +29,10 @@
     BOOL _focusTitleOnAppearance;
     EKUIAutocompleteSearchResult *_selectedAutocompleteResult;
     unsigned long long _selectedAutocompleteResultIndex;
+    EKUIAutocompleteSearchResult *_zeroKeywordResult;
+    EKUIAutocompleteSearchResult *_naturalLanguageResult;
+    BOOL _hasShownZeroKeywordResult;
+    BOOL _hasShownNaturalLanguageResult;
     EKUIAutocompletePETTracker *_autocompletePETTracker;
     BOOL _showAttachments;
     UIColor *_backgroundColor;
@@ -42,15 +46,16 @@
 @property (nonatomic) BOOL showAttachments; // @synthesize showAttachments=_showAttachments;
 @property (readonly) Class superclass;
 
++ (Class)_SGSuggestionsServiceClass;
 + (void)_applyTimeToAutocompleteResults:(id)arg1 usingCurrentStartDate:(id)arg2 currentEndDate:(id)arg3 timeImplicitlySet:(BOOL)arg4;
 + (id)_copyAlarmsForAutocompleteFromResult:(id)arg1;
 + (id)_copyAttendeesForAutocompleteFromResult:(id)arg1;
 + (void)_modifyCurrentEvent:(id)arg1 withAutocompleteResult:(id)arg2;
 + (id)_now;
++ (id)defaultTitleForCalendarItem;
 - (void).cxx_destruct;
 - (void)_beginAutocompleteSearch:(id)arg1;
 - (id)_calendarItemIndexSet;
-- (BOOL)_canDetachSingleOccurrence;
 - (void)_cancelPendingAutocompleteAndCleanup;
 - (void)_copyEventForPossibleRevert;
 - (id)_editItems;
@@ -69,7 +74,6 @@
 - (void)autocompleteResultsEditItemDidHideResults:(id)arg1;
 - (void)autocompleteResultsEditItemDidShowResults:(id)arg1;
 - (id)defaultAlertTitle;
-- (id)defaultTitleForCalendarItem;
 - (void)editItemDidStartEditing:(id)arg1;
 - (void)editItemTextChanged:(id)arg1;
 - (unsigned long long)entityType;

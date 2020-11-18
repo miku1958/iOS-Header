@@ -8,29 +8,33 @@
 
 #import <EventKit/CADClientInterface-Protocol.h>
 
-@class NSMutableDictionary, NSXPCConnection;
-@protocol CADInterface, OS_dispatch_queue;
+@class CADDatabaseInitializationOptions, NSMutableDictionary, NSXPCConnection;
+@protocol CADInterface, EKDaemonConnectionDelegate, OS_dispatch_queue;
 
 @interface EKDaemonConnection : NSObject <CADClientInterface>
 {
     NSObject<OS_dispatch_queue> *_connectionLock;
     id<CADInterface> _remoteOperationProxy;
+    id<CADInterface> _syncRemoteOperationProxy;
     NSObject<OS_dispatch_queue> *_replyHandlerLock;
     NSMutableDictionary *_cancellableOperations;
     unsigned int _nextCancellationToken;
     BOOL _registeredForStartNote;
     NSXPCConnection *_xpcConnection;
-    id _delegate;
+    id<EKDaemonConnectionDelegate> _delegate;
+    CADDatabaseInitializationOptions *_initializationOptions;
 }
 
 @property (readonly, strong, nonatomic) id<CADInterface> CADOperationProxy;
-@property (weak) id delegate; // @synthesize delegate=_delegate;
+@property (readonly, strong, nonatomic) id<CADInterface> CADOperationProxySync;
+@property (weak) id<EKDaemonConnectionDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) CADDatabaseInitializationOptions *initializationOptions; // @synthesize initializationOptions=_initializationOptions;
 @property (readonly, strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
-+ (void)waitOnSemaphoreWithBlock:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (void)CADClientReceiveOccurrenceCacheSearchResults:(id)arg1 forSearchToken:(unsigned int)arg2 finished:(BOOL)arg3;
 - (BOOL)_connectToServer;
+- (void)_createConnectionAndOperationProxyIfNeeded;
 - (void)_daemonRestarted;
 - (void)_finishAllRepliesOnServerDeath;
 - (unsigned int)addCancellableRemoteOperation:(id)arg1;

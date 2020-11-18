@@ -10,6 +10,7 @@
 #import <CoreSpotlight/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSSet, NSString, NSUUID;
+@protocol OS_xpc_object;
 
 @interface CSUserAction : NSObject <CSCoderEncoder, NSSecureCoding>
 {
@@ -27,6 +28,7 @@
 @property (strong) NSSet *keywords; // @synthesize keywords=_keywords;
 @property (strong, nonatomic) NSUUID *uaIdentifier; // @synthesize uaIdentifier=_uaIdentifier;
 @property (strong) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
+@property (readonly, nonatomic) NSObject<OS_xpc_object> *xpc_dictionary;
 
 + (id)actionFromUserActivity:(id)arg1 searchableItem:(id)arg2;
 + (BOOL)supportsSecureCoding;
@@ -39,6 +41,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithXPCDict:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

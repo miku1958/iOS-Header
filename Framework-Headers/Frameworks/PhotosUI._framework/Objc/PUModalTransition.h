@@ -28,8 +28,10 @@
 - (void)completeInteractiveDismissTransitionFinished:(BOOL)arg1;
 - (void)completeInteractivePresentTransitionFinished:(BOOL)arg1;
 - (void)finishInteractiveTransition;
+- (void)imageModulationIntensityDidChange;
 - (id)interactionControllerForDismissal:(id)arg1;
 - (id)interactionControllerForPresentation:(id)arg1;
+- (id)presentingViewController;
 - (void)transitionWillDismissInteractively:(BOOL)arg1;
 - (void)transitionWillPresentInteractively:(BOOL)arg1;
 

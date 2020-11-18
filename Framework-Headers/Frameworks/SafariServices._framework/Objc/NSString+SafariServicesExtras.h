@@ -11,6 +11,7 @@
 @property (readonly, nonatomic) NSString *sf_URLScheme;
 @property (readonly, nonatomic) BOOL sf_isFeedScheme;
 
+- (id)_sf_ensurePathExtension:(id)arg1;
 - (id)sf_lastPathComponentWithoutZipExtension;
 - (id)sf_stringByReplacingLastOccurrenceOfWhitespaceWithANonBreakingSpace;
 - (id)sf_stringByReplacingMarkupCharactersWithHTMLEntities;

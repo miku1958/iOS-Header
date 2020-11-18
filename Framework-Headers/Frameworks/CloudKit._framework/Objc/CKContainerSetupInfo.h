@@ -8,25 +8,37 @@
 
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKAccountInfo, CKContainerID, NSDictionary, NSString;
+@class CKAccountOverrideInfo, CKContainerID, NSDictionary, NSString;
 
 @interface CKContainerSetupInfo : NSObject <NSSecureCoding>
 {
     BOOL _captureResponseHTTPHeaders;
     BOOL _wantsSiloedContext;
+    BOOL _useZoneWidePCS;
     BOOL _holdAllOperations;
+    BOOL _returnPCSMetadata;
+    BOOL _useMMCSEncryptionV2;
+    BOOL _bypassPCSEncryption;
+    BOOL _masqueradeAsThirdPartyApp;
+    unsigned int _clientSDKVersion;
     CKContainerID *_containerID;
     NSString *_sourceApplicationBundleIdentifier;
-    CKAccountInfo *_accountInfoOverride;
+    CKAccountOverrideInfo *_accountInfoOverride;
     NSDictionary *_fakeEntitlements;
 }
 
-@property (strong, nonatomic) CKAccountInfo *accountInfoOverride; // @synthesize accountInfoOverride=_accountInfoOverride;
+@property (strong, nonatomic) CKAccountOverrideInfo *accountInfoOverride; // @synthesize accountInfoOverride=_accountInfoOverride;
+@property (nonatomic) BOOL bypassPCSEncryption; // @synthesize bypassPCSEncryption=_bypassPCSEncryption;
 @property (nonatomic) BOOL captureResponseHTTPHeaders; // @synthesize captureResponseHTTPHeaders=_captureResponseHTTPHeaders;
+@property (nonatomic) unsigned int clientSDKVersion; // @synthesize clientSDKVersion=_clientSDKVersion;
 @property (strong, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property (strong, nonatomic) NSDictionary *fakeEntitlements; // @synthesize fakeEntitlements=_fakeEntitlements;
 @property (nonatomic) BOOL holdAllOperations; // @synthesize holdAllOperations=_holdAllOperations;
+@property (nonatomic) BOOL masqueradeAsThirdPartyApp; // @synthesize masqueradeAsThirdPartyApp=_masqueradeAsThirdPartyApp;
+@property (nonatomic) BOOL returnPCSMetadata; // @synthesize returnPCSMetadata=_returnPCSMetadata;
 @property (strong, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
+@property (nonatomic) BOOL useMMCSEncryptionV2; // @synthesize useMMCSEncryptionV2=_useMMCSEncryptionV2;
+@property (nonatomic) BOOL useZoneWidePCS; // @synthesize useZoneWidePCS=_useZoneWidePCS;
 @property (nonatomic) BOOL wantsSiloedContext; // @synthesize wantsSiloedContext=_wantsSiloedContext;
 
 + (BOOL)supportsSecureCoding;

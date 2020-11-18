@@ -11,6 +11,7 @@
 @interface HKEmergencyCardTableItem : NSObject
 {
     BOOL _isInEditMode;
+    BOOL _shouldShowHints;
     _HKMedicalIDData *_data;
     UIViewController *_owningViewController;
 }
@@ -18,6 +19,7 @@
 @property (strong, nonatomic) _HKMedicalIDData *data; // @synthesize data=_data;
 @property (readonly, nonatomic) BOOL isInEditMode; // @synthesize isInEditMode=_isInEditMode;
 @property (weak, nonatomic) UIViewController *owningViewController; // @synthesize owningViewController=_owningViewController;
+@property (nonatomic) BOOL shouldShowHints; // @synthesize shouldShowHints=_shouldShowHints;
 
 - (void).cxx_destruct;
 - (id)_dequeueNoValueCellInTableView:(id)arg1 withTitle:(id)arg2;

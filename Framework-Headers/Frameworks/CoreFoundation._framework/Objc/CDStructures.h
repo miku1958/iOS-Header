@@ -96,11 +96,11 @@ struct vertex {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned long long _field1;
-    id *_field2;
-    unsigned long long *_field3;
-    unsigned long long _field4[5];
-} CDStruct_70511ce9;
+    unsigned long long state;
+    id *itemsPtr;
+    unsigned long long *mutationsPtr;
+    unsigned long long extra[5];
+} CDStruct_58648341;
 
 typedef struct {
     id *_field1;
@@ -152,6 +152,46 @@ typedef struct {
     void *singleChildKey;
     struct *callbacks;
 } CDStruct_a86bd46d;
+
+typedef struct {
+    id *objs;
+    union {
+        unsigned long long mutations;
+        struct {
+            unsigned int muts;
+            unsigned int used:26;
+            unsigned int szidx:6;
+        } ;
+    } state;
+} CDStruct_af6d7307;
+
+typedef struct {
+    id *buffer;
+    union {
+        struct {
+            unsigned long long mutations;
+        } ;
+        struct {
+            unsigned int muts;
+            unsigned int used:25;
+            unsigned int kvo:1;
+            unsigned int szidx:6;
+        } ;
+    } state;
+} CDStruct_2af495fa;
+
+typedef struct {
+    id *list;
+    unsigned int offset;
+    unsigned int size;
+    union {
+        unsigned long long mutations;
+        struct {
+            unsigned int muts;
+            unsigned int used;
+        } ;
+    } state;
+} CDStruct_a6934631;
 
 #pragma mark Typedef'd Unions
 

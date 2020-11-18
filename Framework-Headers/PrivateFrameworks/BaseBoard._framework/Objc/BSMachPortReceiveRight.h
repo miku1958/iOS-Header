@@ -13,7 +13,6 @@
 + (void)_queue_destroyPort:(unsigned int)arg1;
 + (id)_rightDescription;
 + (BOOL)supportsSecureCoding;
-- (id)_initWithPort:(unsigned int)arg1 previousTrace:(id)arg2;
 - (BOOL)_queue_isUsable;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;

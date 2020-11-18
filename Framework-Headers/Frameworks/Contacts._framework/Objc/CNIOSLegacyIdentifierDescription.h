@@ -30,6 +30,7 @@
 - (BOOL)setABValue:(void *)arg1 onABPerson:(void *)arg2 error:(struct __CFError **)arg3;
 - (void)setCNValue:(id)arg1 onContact:(id)arg2;
 - (Class)valueClass;
+- (id)valueWithResetIdentifiers:(id)arg1;
 
 @end
 

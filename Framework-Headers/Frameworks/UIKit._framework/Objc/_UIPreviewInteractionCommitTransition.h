@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_applyCommitEffectTransformToView:(id)arg1;
 - (id)_preferredTransitionAnimator;
+- (id)_preferredTransitionAnimatorForReducedMotion;
+- (BOOL)_shouldReduceMotion;
 - (id)initWithPresentedViewController:(id)arg1;
 - (void)performTransitionWithPresentationBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 

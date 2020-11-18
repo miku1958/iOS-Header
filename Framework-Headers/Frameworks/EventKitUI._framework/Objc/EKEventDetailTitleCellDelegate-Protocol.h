@@ -8,6 +8,8 @@
 
 @protocol EKEventDetailTitleCellDelegate
 - (void)editButtonPressed;
+- (BOOL)hidesSeparator;
+- (BOOL)minimalMode;
 - (void)predictionWasActedOn;
 - (NSDate *)proposedTime;
 - (BOOL)shouldShowEditButtonInline;

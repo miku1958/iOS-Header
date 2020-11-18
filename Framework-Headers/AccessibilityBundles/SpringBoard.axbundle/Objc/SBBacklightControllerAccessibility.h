@@ -11,12 +11,11 @@
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
++ (void)isIdling;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_didIdle;
 - (void)animateBacklightToFactor:(float)arg1 duration:(double)arg2 source:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)screenIsDim;
-- (void)turnOnScreenFullyWithBacklightSource:(long long)arg1;
 
 @end
 

@@ -6,21 +6,31 @@
 
 #import <objc/NSObject.h>
 
+#import <SearchFoundation/NSCopying-Protocol.h>
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFMoreResults-Protocol.h>
 
-@class NSString;
+@class NSData, NSDictionary, NSString;
 
-@interface SFMoreResults : NSObject <NSSecureCoding>
+@interface SFMoreResults : NSObject <SFMoreResults, NSSecureCoding, NSCopying>
 {
     NSString *_label;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 - (void)loadSearchResultsWithCompletionAndErrorHandler:(CDUnknownBlockType)arg1;
 - (void)loadSearchResultsWithCompletionHandler:(CDUnknownBlockType)arg1;
 

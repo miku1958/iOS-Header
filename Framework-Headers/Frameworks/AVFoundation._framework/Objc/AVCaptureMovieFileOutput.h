@@ -19,6 +19,7 @@
 
 + (BOOL)consolidateMovieFragmentsInFile:(id)arg1 error:(id *)arg2;
 + (void)initialize;
++ (id)new;
 + (long long)nextMovieFileSettingsID;
 + (BOOL)updateMovieMetadataInFile:(id)arg1 withMetadata:(id)arg2 error:(id *)arg3;
 - (id)_avErrorUserInfoDictionaryForError:(int)arg1 wrapper:(id)arg2 payload:(id)arg3;

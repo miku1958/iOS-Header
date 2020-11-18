@@ -5,16 +5,23 @@
 //
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
+#import <PhotoLibraryServices/PLSyncableObject-Protocol.h>
 
-@class NSDate, NSSet;
+@class NSDate, NSSet, NSString;
 
-@protocol PLSyncableAsset <NSObject>
+@protocol PLSyncableAsset <NSObject, PLSyncableObject>
 
+@property (readonly, strong, nonatomic) NSString *cloudIdentifier;
 @property (readonly, copy, nonatomic) NSDate *dateForComparingAdjustmentVersions;
 @property (strong, nonatomic) NSSet *detectedFaces;
-@property (readonly, nonatomic) BOOL faceProcessed;
-@property (readonly, nonatomic) short height;
-@property (readonly, nonatomic) short width;
+@property (readonly, nonatomic) id faceAdjustmentVersion;
+@property (readonly, nonatomic) BOOL faceDetectionComplete;
+@property (readonly, nonatomic) BOOL hasAdjustmentsOrLegacyAdjustments;
+@property (readonly, nonatomic) long long height;
+@property (readonly, copy, nonatomic) NSString *syncedAdjustmentFingerprint;
+@property (readonly, nonatomic) long long width;
 
+- (void)markForNeedingFaceDetection;
+- (NSString *)syncDescription;
 @end
 

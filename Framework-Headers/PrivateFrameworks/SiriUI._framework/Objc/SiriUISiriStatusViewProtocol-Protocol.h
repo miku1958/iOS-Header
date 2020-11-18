@@ -18,7 +18,10 @@
 @property (nonatomic) double flamesViewWidth;
 @property (nonatomic, getter=isInUITrackingMode) BOOL inUITrackingMode;
 @property (nonatomic) long long mode;
+@property (nonatomic) BOOL paused;
+@property (readonly, nonatomic) double statusViewHeight;
 
+- (void)fadeOutCurrentAura;
 - (void)forceMicVisible:(BOOL)arg1;
 @end
 

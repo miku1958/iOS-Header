@@ -34,6 +34,7 @@
 - (void)deleteAll;
 - (void)deleteObjectWithUniqueId:(id)arg1;
 - (void)deleteObjectsWithUniqueIds:(id)arg1;
+- (id)deleteWithPredicate:(id)arg1;
 - (id)fetchAll;
 - (id)fetchAllNoLimit;
 - (id)fetchAllObjectsWithUniqueId:(id)arg1;

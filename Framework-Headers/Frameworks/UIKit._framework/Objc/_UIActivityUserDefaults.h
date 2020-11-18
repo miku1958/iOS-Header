@@ -8,35 +8,38 @@
 
 @class NSString, NSUserDefaults;
 
-__attribute__((visibility("hidden")))
 @interface _UIActivityUserDefaults : NSObject
 {
-    NSString *_identifier;
-    NSUserDefaults *_userDefaults;
+    NSString *_activityDefaultsKey;
+    NSUserDefaults *_underlyingUserDefaults;
 }
 
-@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
+@property (copy, nonatomic) NSString *activityDefaultsKey; // @synthesize activityDefaultsKey=_activityDefaultsKey;
+@property (strong, nonatomic) NSUserDefaults *underlyingUserDefaults; // @synthesize underlyingUserDefaults=_underlyingUserDefaults;
 
 + (id)builtinActivityOrder;
++ (void)migrateUserDefaultKeyIfNecessary:(id)arg1 hasMigratedKey:(id)arg2 fromUserDefaults:(id)arg3 toUserDefaults:(id)arg4;
++ (void)migrateUserDefaultKeysIfNecessary:(id)arg1 fromUIKitDefaultsToUserDefaults:(id)arg2;
 + (id)updatedActivityIdentifiersUserOrderWithPreviousOrder:(id)arg1 someSortedActivityIdentifiers:(id)arg2;
 - (void).cxx_destruct;
-- (id)activitiesSortedByActivityIdentifierOrder:(id)arg1 forActivities:(id)arg2;
-- (id)activitiesSortedByUserOrderForActivities:(id)arg1;
+- (void)_setUserDefaultsDictionary:(id)arg1;
+- (id)_userDefaultsDictionary;
+- (id)activitiesBySortingActivities:(id)arg1 byIdentifierWithDefaultActivityIdentifierOrdering:(id)arg2;
+- (id)activitiesOrderedByUserActivityOrderForActivities:(id)arg1;
 - (id)activityIdentifiersInUserOrder;
 - (BOOL)activityIsHidden:(id)arg1;
 - (id)applicationExtensionForActivity:(id)arg1;
 - (BOOL)canHideActivity:(id)arg1;
 - (id)defaultsValueForKey:(id)arg1 activity:(id)arg2;
 - (id)identifierForActivity:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 userDefaults:(id)arg2;
-- (id)migrateSortOrderIfNeededForBuiltInActivityType:(id)arg1 activityIdentifierOrder:(id)arg2;
+- (id)initWithUnderlyingUserDefaults:(id)arg1 activityDefaultsKey:(id)arg2;
+- (id)migrateSortOrderIfNeededForBuiltInActivityType:(id)arg1 activityIdentifierOrdering:(id)arg2;
 - (id)mutableActivityIdentifiersArrayForActivitiesArray:(id)arg1;
 - (void)postActivityUserDefaultsDidChangeNotification;
 - (void)setActivity:(id)arg1 asHidden:(BOOL)arg2;
 - (void)setActivityIdentifiersInUserOrder:(id)arg1;
 - (void)setDefaultsValue:(id)arg1 forKey:(id)arg2 activity:(id)arg3;
-- (void)updateUserOrderWithSomeSortedActivities:(id)arg1;
+- (void)updateUserActivityOrderWithOrderedPartialActivities:(id)arg1;
 
 @end
 

@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class HFUpdateLogger, NAFuture, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSMutableSet;
+@class HFMutableAggregatedCharacteristicReadPolicy, HFUpdateLogger, NAFuture, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSMutableSet;
 @protocol OS_dispatch_group;
 
 @interface HFCharacteristicValueTransaction : NSObject
 {
     BOOL _loggerIsExternal;
-    NSMutableArray *_readValidators;
+    HFMutableAggregatedCharacteristicReadPolicy *_readPolicy;
     NSMutableSet *_characteristicsToRead;
     NSMutableSet *_writeCharacteristicRequests;
     NSMutableSet *_actionSetsToExecute;
@@ -23,14 +23,14 @@
     NSMutableDictionary *_writeFuturesKeyedByCharacteristicIdentifier;
     NAFuture *_commitFuture;
     NSObject<OS_dispatch_group> *_onFinishGroup;
-    NSMutableSet *_clientReasons;
+    NSMutableArray *_clientReasonsStack;
     HFUpdateLogger *_logger;
 }
 
 @property (strong, nonatomic) NSDictionary *actionSetErrorsKeyedByUUID; // @synthesize actionSetErrorsKeyedByUUID=_actionSetErrorsKeyedByUUID;
 @property (strong, nonatomic) NSMutableSet *actionSetsToExecute; // @synthesize actionSetsToExecute=_actionSetsToExecute;
 @property (strong, nonatomic) NSMutableSet *characteristicsToRead; // @synthesize characteristicsToRead=_characteristicsToRead;
-@property (strong, nonatomic) NSMutableSet *clientReasons; // @synthesize clientReasons=_clientReasons;
+@property (strong, nonatomic) NSMutableArray *clientReasonsStack; // @synthesize clientReasonsStack=_clientReasonsStack;
 @property (strong, nonatomic) NAFuture *commitFuture; // @synthesize commitFuture=_commitFuture;
 @property (strong, nonatomic) HFUpdateLogger *logger; // @synthesize logger=_logger;
 @property (nonatomic) BOOL loggerIsExternal; // @synthesize loggerIsExternal=_loggerIsExternal;
@@ -38,14 +38,13 @@
 @property (strong, nonatomic) NSError *overallReadError; // @synthesize overallReadError=_overallReadError;
 @property (strong, nonatomic) NSError *overallWriteError; // @synthesize overallWriteError=_overallWriteError;
 @property (strong, nonatomic) NSMutableDictionary *readFuturesKeyedByCharacteristicIdentifier; // @synthesize readFuturesKeyedByCharacteristicIdentifier=_readFuturesKeyedByCharacteristicIdentifier;
-@property (strong, nonatomic) NSMutableArray *readValidators; // @synthesize readValidators=_readValidators;
+@property (strong, nonatomic) HFMutableAggregatedCharacteristicReadPolicy *readPolicy; // @synthesize readPolicy=_readPolicy;
 @property (strong, nonatomic) NSMutableSet *writeCharacteristicRequests; // @synthesize writeCharacteristicRequests=_writeCharacteristicRequests;
 @property (strong, nonatomic) NSMutableDictionary *writeFuturesKeyedByCharacteristicIdentifier; // @synthesize writeFuturesKeyedByCharacteristicIdentifier=_writeFuturesKeyedByCharacteristicIdentifier;
 
 - (void).cxx_destruct;
 - (id)executionErrorForActionSet:(id)arg1;
 - (id)init;
-- (BOOL)shouldReadCharacteristic:(id)arg1 error:(id *)arg2;
 
 @end
 

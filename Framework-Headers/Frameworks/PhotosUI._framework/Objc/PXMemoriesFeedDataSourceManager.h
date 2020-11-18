@@ -38,6 +38,7 @@
 - (void)handleNonIncrementalFetchResultChange:(id)arg1;
 - (id)initWithPhotoLibrary:(id)arg1;
 - (id)objectReferenceForMemory:(id)arg1;
+- (void)reloadMemories:(BOOL)arg1;
 - (void)startGeneratingMemories;
 
 @end

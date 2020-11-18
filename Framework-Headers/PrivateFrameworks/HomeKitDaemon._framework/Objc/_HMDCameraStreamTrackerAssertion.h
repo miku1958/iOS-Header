@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HMDCameraSessionID, HMDCameraStreamTracker;
 
-@interface _HMDCameraStreamTrackerAssertion : NSObject
+@interface _HMDCameraStreamTrackerAssertion : HMFObject
 {
     HMDCameraStreamTracker *_streamTracker;
     HMDCameraSessionID *_streamSessionID;

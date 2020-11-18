@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _shouldDismiss;
     BOOL _shouldAdvanceInputMode;
+    BOOL _hasDictation;
     BOOL _requiresInputManagerSync;
     BOOL _shouldAdvanceResponder;
     BOOL _shouldPostReturnKeyNotification;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
     struct CGPoint _inputModeListUpdatePoint;
 }
 
+@property (nonatomic) BOOL hasDictation; // @synthesize hasDictation=_hasDictation;
 @property (nonatomic) struct CGPoint inputModeListFromLocation; // @synthesize inputModeListFromLocation=_inputModeListFromLocation;
 @property (nonatomic) double inputModeListTouchBegan; // @synthesize inputModeListTouchBegan=_inputModeListTouchBegan;
 @property (nonatomic) long long inputModeListTouchPhase; // @synthesize inputModeListTouchPhase=_inputModeListTouchPhase;

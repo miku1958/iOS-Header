@@ -68,6 +68,7 @@
 
 + (Class)maneuverNameType;
 + (Class)signpostType;
+- (void).cxx_destruct;
 - (int)StringAsDrivingSide:(id)arg1;
 - (int)StringAsJunctionType:(id)arg1;
 - (int)StringAsManeuverType:(id)arg1;

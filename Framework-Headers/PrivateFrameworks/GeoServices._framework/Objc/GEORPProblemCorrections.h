@@ -15,6 +15,7 @@
     NSString *_comments;
     GEORPCorrectedCoordinate *_correctedCoordinate;
     NSMutableArray *_correctedFields;
+    NSMutableArray *_correctedFlags;
     GEORPCorrectedLabel *_correctedLabel;
     GEORPMapLocation *_correctedMapLocation;
     GEORPCorrectedSearch *_correctedSearch;
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) NSString *comments; // @synthesize comments=_comments;
 @property (strong, nonatomic) GEORPCorrectedCoordinate *correctedCoordinate; // @synthesize correctedCoordinate=_correctedCoordinate;
 @property (strong, nonatomic) NSMutableArray *correctedFields; // @synthesize correctedFields=_correctedFields;
+@property (strong, nonatomic) NSMutableArray *correctedFlags; // @synthesize correctedFlags=_correctedFlags;
 @property (strong, nonatomic) GEORPCorrectedLabel *correctedLabel; // @synthesize correctedLabel=_correctedLabel;
 @property (strong, nonatomic) GEORPMapLocation *correctedMapLocation; // @synthesize correctedMapLocation=_correctedMapLocation;
 @property (strong, nonatomic) GEORPCorrectedSearch *correctedSearch; // @synthesize correctedSearch=_correctedSearch;
@@ -47,16 +49,21 @@
 @property (strong, nonatomic) GEORPPlaceProblem *placeProblem; // @synthesize placeProblem=_placeProblem;
 
 + (Class)correctedFieldType;
++ (Class)correctedFlagType;
 + (Class)photoWithMetadataType;
+- (void).cxx_destruct;
 - (void)addCorrectedField:(id)arg1;
+- (void)addCorrectedFlag:(id)arg1;
 - (void)addPhotoWithMetadata:(id)arg1;
 - (void)clearCorrectedFields;
+- (void)clearCorrectedFlags;
 - (void)clearPhotoWithMetadatas;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)correctedFieldAtIndex:(unsigned long long)arg1;
 - (unsigned long long)correctedFieldsCount;
-- (void)dealloc;
+- (id)correctedFlagAtIndex:(unsigned long long)arg1;
+- (unsigned long long)correctedFlagsCount;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

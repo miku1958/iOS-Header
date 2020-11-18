@@ -27,7 +27,7 @@
 @property (readonly, nonatomic) NSData *signature; // @synthesize signature=_signature;
 @property (readonly) Class superclass;
 
-+ (id)newFromSqliteValue:(struct Mem *)arg1;
++ (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

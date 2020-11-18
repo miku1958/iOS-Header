@@ -6,32 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-@class AVCaptureVideoPreviewLayer, CAMEffectsFullsizeView, CAMEffectsGridLabelsView, CAMEffectsGridView;
+@class AVCaptureVideoPreviewLayer;
 
 @interface CAMVideoPreviewView : UIView
 {
-    BOOL _disableLayoutForPreviewView;
-    BOOL _disableLayoutForEffectsFullsizeView;
-    BOOL _disableLayoutForEffectsGridViews;
     BOOL _square;
     AVCaptureVideoPreviewLayer *_videoPreviewLayer;
     UIView *_previewLayerView;
-    CAMEffectsFullsizeView *_effectsFullsizeView;
-    CAMEffectsGridView *_effectsGridView;
-    CAMEffectsGridLabelsView *_effectsGridLabelsView;
-    UIView *_fadeOutView;
     long long _previewViewAspectMode;
-    long long _orientation;
 }
 
-@property (nonatomic, getter=isDisabledLayoutForEffectsFullsizeView) BOOL disableLayoutForEffectsFullsizeView; // @synthesize disableLayoutForEffectsFullsizeView=_disableLayoutForEffectsFullsizeView;
-@property (nonatomic, getter=isDisabledLayoutForEffectsGridViews) BOOL disableLayoutForEffectsGridViews; // @synthesize disableLayoutForEffectsGridViews=_disableLayoutForEffectsGridViews;
-@property (nonatomic, getter=isDisabledLayoutForPreviewView) BOOL disableLayoutForPreviewView; // @synthesize disableLayoutForPreviewView=_disableLayoutForPreviewView;
-@property (readonly, nonatomic) CAMEffectsFullsizeView *effectsFullsizeView; // @synthesize effectsFullsizeView=_effectsFullsizeView;
-@property (readonly, nonatomic) CAMEffectsGridLabelsView *effectsGridLabelsView; // @synthesize effectsGridLabelsView=_effectsGridLabelsView;
-@property (readonly, nonatomic) CAMEffectsGridView *effectsGridView; // @synthesize effectsGridView=_effectsGridView;
-@property (readonly, nonatomic) UIView *fadeOutView; // @synthesize fadeOutView=_fadeOutView;
-@property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (readonly, nonatomic) UIView *previewLayerView; // @synthesize previewLayerView=_previewLayerView;
 @property (nonatomic) long long previewViewAspectMode; // @synthesize previewViewAspectMode=_previewViewAspectMode;
 @property (nonatomic, getter=isSquare) BOOL square; // @synthesize square=_square;
@@ -40,18 +24,10 @@
 - (void).cxx_destruct;
 - (struct CGRect)_frameForSubviewsAccountForSquare:(BOOL)arg1;
 - (void)_updateAspectModeForSublayers;
-- (struct CGRect)convertRect:(struct CGRect)arg1 toSublayer:(id)arg2;
-- (void)createEffectsFullsizeView;
-- (void)createEffectsGridViews;
 - (void)dealloc;
-- (void)destroyEffectsFullsizeViewRemoveFromSuperview:(BOOL)arg1;
-- (void)destroyEffectsGridViewsRemoveFromSuperview:(BOOL)arg1;
-- (struct CGRect)frameForView:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
 - (void)setSquare:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)updateToContentSize:(id)arg1;
 
 @end
 

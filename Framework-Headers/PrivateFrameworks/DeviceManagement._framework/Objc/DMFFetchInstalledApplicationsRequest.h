@@ -4,28 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFFetchApplicationsRequest.h>
 
-@class NSArray;
-
-@interface DMFFetchInstalledApplicationsRequest : CATTaskRequest
+@interface DMFFetchInstalledApplicationsRequest : DMFFetchApplicationsRequest
 {
-    BOOL _excludeIcon;
-    unsigned long long _typeFilter;
-    unsigned long long _stateFilter;
-    NSArray *_bundleIdentifiers;
 }
-
-@property (copy, nonatomic) NSArray *bundleIdentifiers; // @synthesize bundleIdentifiers=_bundleIdentifiers;
-@property (nonatomic) BOOL excludeIcon; // @synthesize excludeIcon=_excludeIcon;
-@property (nonatomic) unsigned long long stateFilter; // @synthesize stateFilter=_stateFilter;
-@property (nonatomic) unsigned long long typeFilter; // @synthesize typeFilter=_typeFilter;
-
-+ (BOOL)supportsSecureCoding;
-+ (Class)whitelistedClassForResultObject;
-- (void).cxx_destruct;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 
 @end
 

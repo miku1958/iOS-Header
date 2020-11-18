@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TelephonyUtilities/TUCallProviderManagerDataSource-Protocol.h>
 #import <TelephonyUtilities/TUCallProviderManagerXPCClient-Protocol.h>
@@ -22,6 +22,7 @@
     NSDictionary *_providersByIdentifier;
 }
 
+@property (readonly, nonatomic) BOOL currentProcessCanAccessInitialState;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<TUCallProviderManagerDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -33,11 +34,13 @@
 @property (nonatomic) int token; // @synthesize token=_token;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
++ (id)asynchronousServer;
 + (id)callProviderManagerAllowedClasses;
 + (id)callProviderManagerClientXPCInterface;
 + (id)callProviderManagerServerXPCInterface;
 + (void)setAsynchronousServer:(id)arg1;
 + (void)setSynchronousServer:(id)arg1;
++ (id)synchronousServer;
 - (void).cxx_destruct;
 - (void)_requestInitialState;
 - (void)_updateProvidersByIdentifier:(id)arg1;
@@ -45,6 +48,8 @@
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;
+- (void)launchAppForDialRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)openURL:(id)arg1 isSensitive:(BOOL)arg2 error:(id *)arg3;
 - (id)server;
 - (id)serverWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)synchronousServerWithErrorHandler:(CDUnknownBlockType)arg1;

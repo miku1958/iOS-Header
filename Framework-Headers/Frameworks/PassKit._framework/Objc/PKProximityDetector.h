@@ -4,36 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
-@class IDSDevice, SFDeviceDiscovery;
+@class NSUUID, SFDeviceDiscovery;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface PKProximityDetector : NSObject
 {
-    SFDeviceDiscovery *_sharingDiscovery;
-    BOOL _detectingDeviceNearby;
+    SFDeviceDiscovery *_nearbyInfoDiscovery;
+    BOOL _advertisingDeviceNearby;
     NSObject<OS_dispatch_source> *_timer;
     NSObject<OS_dispatch_queue> *_timerQueue;
     NSObject<OS_dispatch_queue> *_discoveryQueue;
-    double _timeoutDuration;
     unsigned int _powerAssertionIdentifier;
     BOOL _isDetecting;
-    IDSDevice *_detectingDevice;
+    NSUUID *_advertisingDeviceUUID;
     CDUnknownBlockType _handler;
 }
 
-@property (readonly, nonatomic) IDSDevice *detectingDevice; // @synthesize detectingDevice=_detectingDevice;
+@property (readonly, nonatomic) NSUUID *advertisingDeviceUUID; // @synthesize advertisingDeviceUUID=_advertisingDeviceUUID;
 @property (copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property (readonly, nonatomic) BOOL isDetecting; // @synthesize isDetecting=_isDetecting;
 
 - (void).cxx_destruct;
+- (CDUnknownBlockType)_createDeviceFoundBlockWithName:(id)arg1;
+- (CDUnknownBlockType)_createDeviceLostBlockWithName:(id)arg1;
+- (CDUnknownBlockType)_createDiscoveryActivationBlockWithName:(id)arg1 duration:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_createPowerAssertion;
 - (void)_endPowerAssertion;
+- (void)_queue_endDetecting;
 - (void)dealloc;
 - (void)endDetecting;
-- (id)initWithDevice:(id)arg1;
-- (void)startDetectingForDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)initWithAdvertisingDeviceUUID:(id)arg1;
+- (void)startDetectingWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

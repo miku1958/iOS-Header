@@ -8,7 +8,7 @@
 
 #import <SpringBoardFoundation/SBFUserAuthenticationModel-Protocol.h>
 
-@class NSString, SBFMobileKeyBag, SBSecurityDefaults;
+@class MCProfileConnection, NSString, SBFMobileKeyBag, SBSecurityDefaults;
 @protocol SBFUserAuthenticationModelDelegate;
 
 @interface SBFUserAuthenticationModelSEP : NSObject <SBFUserAuthenticationModel>
@@ -18,6 +18,7 @@
     BOOL _permanentlyBlocked;
     BOOL _pendingWipe;
     SBSecurityDefaults *_securityDefaults;
+    MCProfileConnection *_profileConnection;
     id<SBFUserAuthenticationModelDelegate> _delegate;
 }
 
@@ -31,6 +32,8 @@
 @property (readonly, nonatomic) double timeUntilUnblockedSinceReferenceDate;
 
 - (void).cxx_destruct;
+- (id)_initWithKeyBag:(id)arg1 profileConnection:(id)arg2;
+- (BOOL)_isDeviceWipePreferenceEnabled;
 - (void)_refreshStateAndNotify:(BOOL)arg1;
 - (void)_refreshStateForMkbState:(id)arg1 notify:(BOOL)arg2;
 - (void)clearBlockedState;

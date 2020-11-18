@@ -11,8 +11,8 @@
 }
 
 + (id)_servicePredicate:(id)arg1;
-+ (id)_servicesInDatabase:(id)arg1 daemon:(id)arg2 removals:(id *)arg3;
-+ (id)allServicesFromHealthDaemon:(id)arg1 error:(id *)arg2;
++ (id)_servicesInDatabase:(id)arg1 profile:(id)arg2 removals:(id *)arg3;
++ (id)allServicesWithProfile:(id)arg1 error:(id *)arg2;
 + (id)columnsDefinition;
 + (id)databaseTable;
 + (BOOL)deleteService:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;

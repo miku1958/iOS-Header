@@ -4,9 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface CNErrorFactory : NSObject
 {
 }
@@ -17,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (id)errorByAddingUserInfoEntries:(id)arg1 toError:(id)arg2;
 + (id)errorByPrependingKeyPath:(id)arg1 toKeyPathsInError:(id)arg2;
 + (id)errorForiOSABError:(struct __CFError *)arg1;
++ (id)errorObject:(id)arg1 doesNotImplementSelector:(SEL)arg2;
 + (id)errorWithCode:(long long)arg1 userInfo:(id)arg2;
 + (id)genericiOSABError;
 

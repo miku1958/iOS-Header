@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)additionalHeaderValues;
 - (BOOL)allowsAnonymousAccount;
-- (Class)expectedResponseClass;
 - (BOOL)hasRequestBody;
 - (id)httpMethod;
 - (long long)partitionType;

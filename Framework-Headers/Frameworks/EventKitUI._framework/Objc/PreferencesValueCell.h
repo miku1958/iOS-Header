@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <EventKitUI/EKUIConstrainedFontsTableViewCell.h>
+#import <EventKitUI/EKUITableViewCell.h>
 
 @protocol EKCellShortener;
 
-@interface PreferencesValueCell : EKUIConstrainedFontsTableViewCell
+@interface PreferencesValueCell : EKUITableViewCell
 {
     id<EKCellShortener> _shortener;
 }

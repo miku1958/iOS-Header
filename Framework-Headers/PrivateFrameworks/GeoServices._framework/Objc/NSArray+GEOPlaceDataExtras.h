@@ -8,6 +8,7 @@
 
 @interface NSArray (GEOPlaceDataExtras)
 - (id)_geo_bestLocalizedString;
+- (id)_geo_bestLocalizedStringLocaleValue;
 - (id)_geo_bestLocalizedStringValue;
 @end
 

@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     UIView *_seed;
     BOOL _hasFinishedRevealing;
     UILabel *_textLabel;
-    BOOL _scrollViewVerticalFeedbackBehaviorEnabled;
+    BOOL _scrollViewVerticalFeedbackGeneratorEnabled;
     BOOL _areAnimationsValid;
     double _currentPopStiffness;
     double _impactIntensity;
@@ -33,12 +33,13 @@ __attribute__((visibility("hidden")))
 - (struct CGAffineTransform)_bloomedSeedTransform;
 - (void)_cleanUpAfterRevealing;
 - (double)_currentTimeOffset;
-- (double)_effectiveScrollViewHeight;
 - (id)_effectiveTintColor;
 - (id)_effectiveTintColorWithAlpha:(double)arg1;
 - (void)_goAway;
 - (double)_heightAtWhichNoneOfTheInterfaceElementsAreVisibleEvenIfTheControlIsStillPartiallyOnScreen;
+- (double)_maximumSnappingHeightScalingForScrollViewHeight;
 - (double)_percentageShowing;
+- (void)_removeAllAnimations;
 - (void)_resetToRevealingState;
 - (void)_reveal;
 - (void)_setBloomedAppearance;

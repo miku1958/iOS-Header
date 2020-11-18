@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUSettings.h>
+#import <PhotosUICore/PXSettings.h>
 
 __attribute__((visibility("hidden")))
-@interface PUMedusaSettings : PUSettings
+@interface PUMedusaSettings : PXSettings
 {
     double __desiredWidth;
     double __widthDelay;
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 + (void)runSizeTest;
 + (id)settingsControllerModule;
 + (id)sharedInstance;
+- (id)parentSettings;
 
 @end
 

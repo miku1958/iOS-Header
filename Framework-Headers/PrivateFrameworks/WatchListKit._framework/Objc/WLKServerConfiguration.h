@@ -6,43 +6,36 @@
 
 #import <objc/NSObject.h>
 
-#import <WatchListKit/WLKServerConfigurationRequestOperationDelegate-Protocol.h>
-
-@class NSArray, NSDate, NSDictionary, NSMutableDictionary, NSOperationQueue, NSString;
+@class NSArray, NSDate, NSDictionary, NSMutableDictionary, NSOperationQueue, NSString, NSXPCConnection, WLKServerConfigurationResponse;
 @protocol OS_dispatch_queue;
 
-@interface WLKServerConfiguration : NSObject <WLKServerConfigurationRequestOperationDelegate>
+@interface WLKServerConfiguration : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSOperationQueue *_fetchQueue;
+    NSOperationQueue *_operationQueue;
+    WLKServerConfigurationResponse *_response;
     NSArray *_orderedChannels;
     NSDictionary *_channelsByID;
-    NSDictionary *_dictionary;
     int _didChangeNotificationToken;
-    NSDictionary *_endpointsDictionary;
-    NSOperationQueue *_operationQueue;
-    NSDictionary *_requiredRequestKeyValuePairsDictionary;
-    NSDictionary *_serverRoutesDictionary;
     NSMutableDictionary *_completions;
-    unsigned long long _cachedEnvironmentHash;
     NSString *_nextEK;
+    NSXPCConnection *_connection;
     BOOL _loaded;
-    NSDate *_expirationDate;
+    BOOL _isFetching;
     CDUnknownBlockType _fetchCompletionHandler;
+    NSDictionary *_requiredRequestKeyValuePairsDictionary;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *channels;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionary;
-@property (copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property (readonly, copy, nonatomic) NSDate *expirationDate;
 @property (copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
-@property (readonly) unsigned long long hash;
+@property BOOL isFetching; // @synthesize isFetching=_isFetching;
 @property (readonly, nonatomic, getter=isLoaded) BOOL loaded; // @synthesize loaded=_loaded;
 @property (readonly, copy, nonatomic) NSArray *orderedChannels;
 @property (strong, nonatomic) NSDictionary *requiredRequestKeyValuePairsDictionary; // @synthesize requiredRequestKeyValuePairsDictionary=_requiredRequestKeyValuePairsDictionary;
 @property (readonly, copy, nonatomic) NSDictionary *serverRoutesDictionary;
-@property (readonly) Class superclass;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -53,7 +46,9 @@
 - (void)_clearCompletionsForEnvironment:(id)arg1;
 - (void)_commonInit;
 - (id)_completionsForEnvironment:(id)arg1;
-- (id)_diskCacheDebug;
+- (id)_connection;
+- (void)_fetchConfigurationCache:(CDUnknownBlockType)arg1;
+- (void)_fetchConfigurationInProcess:(CDUnknownBlockType)arg1;
 - (void)_fetchConfigurationSynchronously;
 - (void)_handleLibraryDidChangeNotification:(id)arg1;
 - (id)_init;
@@ -63,13 +58,11 @@
 - (id)_prevCachePath;
 - (id)_readFromDisk;
 - (id)_readFromDiskPath:(id)arg1;
+- (void)_reloadFromCache:(id)arg1;
 - (void)_setNextEK:(id)arg1;
+- (void)_synchronizeWithCache:(id)arg1 notifySelf:(BOOL)arg2 others:(BOOL)arg3;
 - (void)_synchronizeWithCacheAndNotifySelf:(BOOL)arg1 others:(BOOL)arg2;
-- (void)_synchronizeWithCacheAndNotifySelf:(BOOL)arg1 others:(BOOL)arg2 ignoreValidation:(BOOL)arg3;
-- (void)_updateWithResponse:(id)arg1 expirationDate:(id)arg2 environmentHash:(unsigned long long)arg3;
 - (BOOL)_writeToDisk:(id)arg1;
-- (void)applicationConfigRequestOperationDidFail:(id)arg1;
-- (void)applicationConfigRequestOperationDidFinish:(id)arg1;
 - (void)dealloc;
 - (id)endpointForKey:(id)arg1;
 - (void)fetchConfiguration:(CDUnknownBlockType)arg1;

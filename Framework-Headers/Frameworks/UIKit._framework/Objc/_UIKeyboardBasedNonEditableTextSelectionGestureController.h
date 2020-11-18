@@ -9,13 +9,9 @@
 __attribute__((visibility("hidden")))
 @interface _UIKeyboardBasedNonEditableTextSelectionGestureController : _UIKeyboardBasedTextSelectionGestureController
 {
-    BOOL _useEditableGesture;
 }
 
-- (void)_synchronousGranularityExpandingGestureWithTimeInterval:(double)arg1 timeGranularity:(double)arg2 isMidPan:(BOOL)arg3;
-- (void)oneFingerForcePan:(id)arg1;
-- (void)oneFingerForcePress:(id)arg1;
-- (void)transitionFromBlockMagnifyToBlockSelectWithLocation:(struct CGPoint)arg1 viaDrag:(BOOL)arg2;
+- (Class)gestureCluster;
 
 @end
 

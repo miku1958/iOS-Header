@@ -8,22 +8,24 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEOPDRoadAccessInfo : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_roadAccessPoints;
 }
 
 @property (strong, nonatomic) NSMutableArray *roadAccessPoints; // @synthesize roadAccessPoints=_roadAccessPoints;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)roadAccessInfoForPlaceData:(id)arg1;
 + (Class)roadAccessPointType;
+- (void).cxx_destruct;
 - (void)addRoadAccessPoint:(id)arg1;
 - (void)clearRoadAccessPoints;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

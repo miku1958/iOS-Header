@@ -12,6 +12,7 @@
 - (void)close;
 - (void)moveToFront;
 - (void)showErrorDeviceOfflineForShareURL:(NSURL *)arg1 reply:(void (^)(void))arg2;
+- (void)showErrorDocumentsAppNotVisibleForShareURL:(NSURL *)arg1 reply:(void (^)(void))arg2;
 - (void)showErrorInstallNativeAppForShareMetadata:(CKShareMetadata *)arg1 reply:(void (^)(BOOL, BOOL, NSError *))arg2;
 - (void)showErrorItemUnavailableOrAccessRestrictedForShareURL:(NSURL *)arg1 reply:(void (^)(void))arg2;
 - (void)showErrorNativeAppDisabledByProfileForShareMetadata:(CKShareMetadata *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
@@ -20,7 +21,6 @@
 - (void)showErrorServerNotReachableForShareURL:(NSURL *)arg1 reply:(void (^)(void))arg2;
 - (void)showErrorSignInToiCloudForShareMetadata:(CKShareMetadata *)arg1 reply:(void (^)(BOOL, BOOL, NSError *))arg2;
 - (void)showErrorTurnOniCloudDriveForShareMetadata:(CKShareMetadata *)arg1 reply:(void (^)(BOOL, BOOL, NSError *))arg2;
-- (void)showErroriCloudDriveAppNotVisibleForShareURL:(NSURL *)arg1 reply:(void (^)(void))arg2;
 - (void)showJoinDialogForShareMetadata:(CKShareMetadata *)arg1 session:(BRCAccountSession *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 @end
 

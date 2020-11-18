@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDateFormatter, NSLocale;
 
@@ -57,29 +57,18 @@
 @property (nonatomic) BOOL useTime; // @synthesize useTime=_useTime;
 @property (nonatomic) BOOL yearOnly; // @synthesize yearOnly=_yearOnly;
 
-+ (void)_dumpAllDateCombinationsWithFormatters;
 - (BOOL)_date:(id)arg1 isWithinDaysInThePast:(long long)arg2;
-- (BOOL)_date:(id)arg1 isWithinDaysInThePast:(long long)arg2 fromCurrentDate:(id)arg3;
-- (id)_dateCombinationAfterUpdatingCurrentDateWithStartDate:(id)arg1 endDate:(id)arg2 currentDate:(id)arg3 dateFormatter:(id)arg4 calendarUnit:(unsigned long long)arg5 value:(long long)arg6;
-- (id)_dateCombinationAfterUpdatingStartAndEndDatesWithStartDate:(id)arg1 endDate:(id)arg2 currentDate:(id)arg3 dateFormatter:(id)arg4 calendarUnit:(unsigned long long)arg5 value:(long long)arg6;
-- (id)_dateCombinationWithStartDate:(id)arg1 endDate:(id)arg2 currentDate:(id)arg3 dateFormatter:(id)arg4;
 - (id)_dayDifferentMonthsTemplate;
 - (id)_dayTemplate;
-- (void)_dumpDateCombinationWithStartDate:(id)arg1 endDate:(id)arg2 currentDate:(id)arg3 dateFormatter:(id)arg4;
-- (void)_dumpDateCombinations;
 - (id)_formattedDateRangeWithStartDate:(id)arg1 endDate:(id)arg2 currentDate:(id)arg3;
 - (id)_formattedDateWithUDateFormatter:(struct UDateIntervalFormat *)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (void)_invalidateFormats;
 - (void)_localeChanged:(id)arg1;
 - (struct UDateIntervalFormat *)_newUDateFormatterForLocale:(id)arg1 template:(id)arg2;
 - (void)_postChangeNotification;
-- (id)_relativeCombinationsForDate:(id)arg1;
 - (void)_releaseUDateFormatter:(struct UDateIntervalFormat *)arg1;
 - (id)_sameMonthTemplate;
 - (void)_significantTimeChange:(id)arg1;
-- (void)_updateCurrentDateAndDumpDateCombinationWithStartDate:(id)arg1 endDate:(id)arg2 currentDate:(id)arg3 dateFormatter:(id)arg4 calendarUnit:(unsigned long long)arg5 value:(long long)arg6;
-- (void)_updateDateComponents:(id)arg1 withValueValue:(long long)arg2 forCalendarUnit:(unsigned long long)arg3;
-- (void)_updateStartAndEndDatesAndDumpDateCombinationWithStartDate:(id)arg1 endDate:(id)arg2 currentDate:(id)arg3 dateFormatter:(id)arg4 calendarUnit:(unsigned long long)arg5 value:(long long)arg6;
 - (void)configureForFormatPreset:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)formattedDate:(id)arg1;

@@ -35,7 +35,6 @@
 
 + (id)_swatchColorForColorOption:(id)arg1;
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1;
-+ (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 + (Class)_timeViewClass;
 - (void).cxx_destruct;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
@@ -96,6 +95,7 @@
 - (void)_startStopwatchUpdates;
 - (void)_stopStopwatchUpdates;
 - (BOOL)_supportsUnadornedSnapshot;
+- (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void)_unloadSnapshotContentViews;
 - (void)_updateComplicationFactoryWithDateComplicationView:(id)arg1;
 - (void)_updateDateComplicationPositionIfNecessary;

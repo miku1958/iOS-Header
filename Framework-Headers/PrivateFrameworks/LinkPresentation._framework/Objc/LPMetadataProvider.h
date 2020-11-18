@@ -60,6 +60,8 @@
 - (void)_fetchedMetadata:(id)arg1;
 - (void)_redistinguishImagesAndIcons;
 - (void)_startWatchdogTimer;
+- (BOOL)_switchToSpecializationIfPossibleForMIMEType:(id)arg1 URL:(id)arg2;
+- (BOOL)_switchToSpecializationIfPossibleForMetadata:(id)arg1 URL:(id)arg2;
 - (void)cancel;
 - (void)dealloc;
 - (id)init;

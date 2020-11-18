@@ -57,6 +57,7 @@
 - (void)endParagraph;
 - (unsigned int)hyphenCharacterForGlyphAtIndex:(unsigned long long)arg1;
 - (float)hyphenationFactorForGlyphAtIndex:(unsigned long long)arg1;
+- (id)init;
 - (struct _NSRange)layoutCharactersInRange:(struct _NSRange)arg1 forLayoutManager:(id)arg2 maximumNumberOfLineFragments:(unsigned long long)arg3;
 - (void)layoutGlyphsInLayoutManager:(id)arg1 startingAtGlyphIndex:(unsigned long long)arg2 maxNumberOfLineFragments:(unsigned long long)arg3 nextGlyphIndex:(unsigned long long *)arg4;
 - (unsigned long long)layoutParagraphAtPoint:(struct CGPoint *)arg1;

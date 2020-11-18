@@ -4,21 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HealthDaemon/HDCollectionCalculator.h>
 
 @class NSMutableArray;
 
-@interface HDTimeIntervalCollectionCalculator : NSObject
+@interface HDTimeIntervalCollectionCalculator : HDCollectionCalculator
 {
     NSMutableArray *_timePeriods;
-    double _startInterval;
-    double _endInterval;
 }
 
 - (void).cxx_destruct;
 - (void)_shortenRangesConsideringPreferredSourceValue:(id)arg1 lesserRange:(id)arg2;
 - (void)addTimePeriodWithStartTime:(double)arg1 endTime:(double)arg2;
-- (id)initWithStartDate:(id)arg1 endDate:(id)arg2;
+- (id)initForSingleStatistics;
 - (double)totalDuration;
 
 @end

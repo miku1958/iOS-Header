@@ -27,11 +27,11 @@
     BOOL _isWWANInterfaceDataActive;
     BOOL _ctIsWWANInHomeCountry;
     BOOL _hasWWANStatusIndicator;
+    BOOL _isWWANInterfaceSuspended;
     BOOL _isPowerStateDetectionSupported;
     BOOL _isWWANInterfaceInProlongedHighPowerState;
     BOOL _isWWANInterfaceActivationPermitted;
     double _lastActivationTime;
-    int _wwanRSSI;
     BOOL _isInCall;
     BOOL _isWakeOnWiFiSupported;
     BOOL _isWakeOnWiFiEnabled;
@@ -40,7 +40,7 @@
 
 @property (readonly) NSString *WWANInterfaceName;
 @property (readonly) BOOL areAllNetworkInterfacesDisabled;
-@property (readonly, strong, nonatomic) NSString *currentLinkQualityString;
+@property (readonly, nonatomic) NSString *currentLinkQualityString;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) BOOL doesWWANInterfaceExist;
@@ -53,11 +53,13 @@
 @property (readonly) BOOL isWWANInHomeCountry;
 @property (readonly) BOOL isWWANInterfaceActivationPermitted;
 @property (readonly) BOOL isWWANInterfaceInProlongedHighPowerState;
+@property (readonly) BOOL isWWANInterfaceSuspended;
 @property (readonly) BOOL isWWANInterfaceUp;
 @property (readonly) BOOL isWakeOnWiFiSupported;
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_adjustWakeOnWiFi;
 - (void)_adjustWakeOnWiFiLocked;
 - (void)_adjustWiFiAutoAssociation;

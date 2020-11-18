@@ -10,7 +10,7 @@
 #import <FrontBoard/FBSceneManagerInternalObserver-Protocol.h>
 #import <FrontBoard/FBSceneMonitorDelegate-Protocol.h>
 
-@class FBSMutableSceneSettings, FBSSceneClientSettingsDiffInspector, FBSSceneSettings, FBScene, NSMutableDictionary, NSMutableSet, NSString;
+@class FBSMutableSceneSettings, FBSSceneClientSettingsDiffInspector, FBSSceneSettings, FBScene, FBSceneMonitorBehaviors, NSMutableDictionary, NSMutableSet, NSString;
 @protocol FBSceneMonitorDelegate;
 
 @interface FBSceneMonitor : NSObject <FBSceneManagerInternalObserver, FBSceneLayerManagerObserver, FBSceneMonitorDelegate>
@@ -25,10 +25,9 @@
     FBSMutableSceneSettings *_sceneSettings;
     FBSMutableSceneSettings *_effectiveSettings;
     FBSSceneSettings *_lastCommitSettings;
-    BOOL _monitorSettings;
-    BOOL _monitorEffectiveSettings;
-    BOOL _monitorPairing;
-    BOOL _monitorClientSettings;
+    FBSceneMonitorBehaviors *_givenMonitorBehaviors;
+    FBSceneMonitorBehaviors *_delegateMonitorBehaviors;
+    FBSceneMonitorBehaviors *_effectiveMonitorBehaviors;
     BOOL _monitorSceneCommits;
     BOOL _invalidated;
     BOOL _isSynchronizing;
@@ -37,6 +36,7 @@
     id<FBSceneMonitorDelegate> _delegate;
 }
 
+@property (copy, nonatomic) FBSceneMonitorBehaviors *behaviors; // @synthesize behaviors=_givenMonitorBehaviors;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<FBSceneMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -47,6 +47,10 @@
 @property (readonly, strong, nonatomic) FBSSceneSettings *sceneSettings; // @synthesize sceneSettings=_sceneSettings;
 @property (readonly) Class superclass;
 
+- (id)_effectiveBehaviors;
+- (void)_evaluateEffectiveMonitorBehaviors;
+- (id)_initWithSceneManager:(id)arg1 sceneID:(id)arg2;
+- (void)_setEffectiveMonitorBehaviors:(id)arg1;
 - (void)_updateAllSceneStateIgnoringDelegate;
 - (void)_updateEffectiveSceneSettings:(BOOL)arg1;
 - (void)_updateExternalScenes:(BOOL)arg1;

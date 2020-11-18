@@ -4,7 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#pragma mark Blocks
+
+typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
+
 #pragma mark Named Structures
+
+struct CGAffineTransform {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+};
 
 struct CGPoint {
     double x;
@@ -19,6 +32,13 @@ struct CGRect {
 struct CGSize {
     double width;
     double height;
+};
+
+struct NSDirectionalEdgeInsets {
+    double top;
+    double leading;
+    double bottom;
+    double trailing;
 };
 
 struct UIEdgeInsets {

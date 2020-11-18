@@ -6,25 +6,28 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <HomeUI/HFHomeObserver-Protocol.h>
 #import <HomeUI/HFItemManagerDelegate-Protocol.h>
+#import <HomeUI/HUItemPresentationContainer-Protocol.h>
 #import <HomeUI/HUPresentationDelegate-Protocol.h>
 #import <HomeUI/HUPresentationDelegateHost-Protocol.h>
+#import <HomeUI/PGPictureInPictureProxyDelegate-Protocol.h>
 
-@class HFCameraAudioManager, HFItemManager, HUCameraMicrophoneButton, HUCameraView, MPVolumeSlider, NSArray, NSString, UIBarButtonItem, UIView;
+@class HFCameraAudioManager, HFCameraItem, HFItem, HFItemManager, HUCameraMicrophoneButton, HUCameraStreamContentViewController, MPVolumeSlider, NSLayoutConstraint, NSString, PGPictureInPictureProxy, UIBarButtonItem;
 @protocol HUCameraStreamViewControllerDelegate, HUPresentationDelegate;
 
-@interface HUCameraStreamViewController : UIViewController <HFHomeObserver, HFItemManagerDelegate, HUPresentationDelegate, HUPresentationDelegateHost>
+@interface HUCameraStreamViewController : UIViewController <HFItemManagerDelegate, HUPresentationDelegate, PGPictureInPictureProxyDelegate, HUItemPresentationContainer, HUPresentationDelegateHost>
 {
-    BOOL _beingPreviewed;
+    BOOL _navigationControllerSetup;
     BOOL _barsHidden;
-    BOOL _viewFullyVisible;
+    BOOL _didSetupMicrophoneButtonConstraints;
     id<HUPresentationDelegate> _presentationDelegate;
-    HFItemManager *_itemManager;
     id<HUCameraStreamViewControllerDelegate> _delegate;
+    HUCameraStreamContentViewController *_cameraStreamContentViewController;
+    HFItemManager *_itemManager;
+    PGPictureInPictureProxy *_pipProxy;
+    UIViewController *_lastPresentingViewController;
     HFCameraAudioManager *_cameraAudioManager;
-    NSArray *_viewConstraints;
-    HUCameraView *_cameraView;
+    NSLayoutConstraint *_volumeSliderWidthConstraint;
     MPVolumeSlider *_volumeSlider;
     UIBarButtonItem *_volumeBarButtonItem;
     HUCameraMicrophoneButton *_microphoneButton;
@@ -32,59 +35,62 @@
 }
 
 @property (nonatomic, getter=areBarsHidden) BOOL barsHidden; // @synthesize barsHidden=_barsHidden;
-@property (nonatomic, getter=isBeingPreviewed) BOOL beingPreviewed; // @synthesize beingPreviewed=_beingPreviewed;
 @property (strong, nonatomic) HFCameraAudioManager *cameraAudioManager; // @synthesize cameraAudioManager=_cameraAudioManager;
-@property (readonly, nonatomic) UIView *cameraOverlaySnapshot;
-@property (strong, nonatomic) HUCameraView *cameraView; // @synthesize cameraView=_cameraView;
-@property (readonly, nonatomic) UIView *cameraViewSnapshot;
+@property (readonly, nonatomic) HFCameraItem *cameraItem;
+@property (readonly, nonatomic) HUCameraStreamContentViewController *cameraStreamContentViewController; // @synthesize cameraStreamContentViewController=_cameraStreamContentViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUCameraStreamViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didSetupMicrophoneButtonConstraints; // @synthesize didSetupMicrophoneButtonConstraints=_didSetupMicrophoneButtonConstraints;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) HFItemManager *itemManager; // @synthesize itemManager=_itemManager;
+@property (readonly, nonatomic) HFItem *hu_presentedItem;
+@property (readonly, nonatomic) HFItemManager *itemManager; // @synthesize itemManager=_itemManager;
+@property (weak, nonatomic) UIViewController *lastPresentingViewController; // @synthesize lastPresentingViewController=_lastPresentingViewController;
 @property (strong, nonatomic) UIBarButtonItem *microphoneBarButtonItem; // @synthesize microphoneBarButtonItem=_microphoneBarButtonItem;
 @property (strong, nonatomic) HUCameraMicrophoneButton *microphoneButton; // @synthesize microphoneButton=_microphoneButton;
+@property (nonatomic, getter=isNavigationControllerSetup) BOOL navigationControllerSetup; // @synthesize navigationControllerSetup=_navigationControllerSetup;
+@property (strong, nonatomic) PGPictureInPictureProxy *pipProxy; // @synthesize pipProxy=_pipProxy;
 @property (weak, nonatomic) id<HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSArray *viewConstraints; // @synthesize viewConstraints=_viewConstraints;
-@property (nonatomic, getter=isViewFullyVisible) BOOL viewFullyVisible; // @synthesize viewFullyVisible=_viewFullyVisible;
+@property (nonatomic) unsigned long long viewAppearanceState;
 @property (strong, nonatomic) UIBarButtonItem *volumeBarButtonItem; // @synthesize volumeBarButtonItem=_volumeBarButtonItem;
 @property (strong, nonatomic) MPVolumeSlider *volumeSlider; // @synthesize volumeSlider=_volumeSlider;
+@property (strong, nonatomic) NSLayoutConstraint *volumeSliderWidthConstraint; // @synthesize volumeSliderWidthConstraint=_volumeSliderWidthConstraint;
 
-+ (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
-- (id)_cameraItem;
-- (id)_cameraManager;
-- (id)_createBarBackgroundView;
-- (void)_createCameraAudioManagerIfNecessary;
-- (void)_detailsButtonPressed:(id)arg1;
-- (void)_doneButtonPressed:(id)arg1;
+- (void)_attachCameraStreamViewController;
+- (id)_barBackgroundView;
+- (id)_cameraProfile;
+- (void)_detailsButtonPressed;
+- (void)_doneButtonPressed;
+- (void)_handleApplicationDidBecomeActiveNotification;
 - (void)_handleBarHideTapGesture:(id)arg1;
-- (BOOL)_isStreaming;
-- (void)_microphoneButtonPressed:(id)arg1;
-- (id)_preferredCameraSource;
+- (void)_microphoneButtonPressed;
+- (void)_presentCameraDetailsWithViewController:(id)arg1;
 - (void)_setupNavigationController;
-- (void)_updateCameraViewsIncludingError:(BOOL)arg1;
-- (void)_updateIncomingAudioStreamSetting;
+- (unsigned long long)_streamState;
+- (void)_updateCameraAudioManager;
+- (void)_updateMicrophoneButton;
 - (void)_updateNavigationItemTitle;
-- (void)_updatePreferredContentSize;
-- (void)_updateToolbarButtonFramesForSize:(struct CGSize)arg1;
-- (void)_updateToolbarButtons;
-- (void)finishPresentation:(id)arg1 animated:(BOOL)arg2;
-- (void)home:(id)arg1 didRemoveAccessory:(id)arg2;
-- (id)initWithCameraItem:(id)arg1 delegate:(id)arg2;
+- (id)finishPresentation:(id)arg1 animated:(BOOL)arg2;
+- (id)initWithCameraItem:(id)arg1;
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
+- (void)pictureInPictureProxy:(id)arg1 didStopPictureInPictureWithAnimationType:(long long)arg2 reason:(long long)arg3;
+- (void)pictureInPictureProxy:(id)arg1 willStartPictureInPictureWithAnimationType:(long long)arg2;
+- (void)pictureInPictureProxy:(id)arg1 willStopPictureInPictureWithAnimationType:(long long)arg2 reason:(long long)arg3;
+- (void)pictureInPictureProxyPictureInPictureInterruptionBegan:(id)arg1;
+- (void)pictureInPictureProxyPictureInPictureInterruptionEnded:(id)arg1;
+- (struct CGRect)pictureInPictureProxyViewFrameForTransitionAnimation:(id)arg1;
+- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (long long)preferredStatusBarUpdateAnimation;
+- (BOOL)prefersHomeIndicatorAutoHidden;
 - (BOOL)prefersStatusBarHidden;
-- (unsigned long long)supportedInterfaceOrientations;
-- (void)updateViewConstraints;
+- (id)previewActionItems;
 - (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

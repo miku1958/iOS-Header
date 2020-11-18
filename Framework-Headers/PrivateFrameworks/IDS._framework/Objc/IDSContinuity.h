@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class _IDSContinuity;
 
@@ -15,6 +15,7 @@
 
 @property (readonly) long long state;
 
+- (void).cxx_destruct;
 - (void)connectToPeer:(id)arg1;
 - (void)dealloc;
 - (void)disconnectFromPeer:(id)arg1;

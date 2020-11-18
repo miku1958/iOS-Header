@@ -14,7 +14,7 @@
 
 + (id)delegate;
 - (struct __OpaqueSOSPeerInfo *)copyPeerInfoError:(id *)arg1;
-- (BOOL)processCircleJoinData:(id)arg1 error:(id *)arg2;
+- (BOOL)processCircleJoinData:(id)arg1 version:(int)arg2 error:(id *)arg3;
 
 @end
 

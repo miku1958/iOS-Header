@@ -11,16 +11,20 @@
 #import <PassKitUI/RemoteUIControllerDelegate-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
-@class CLInUseAssertion, NSString, PKPaymentProvisioningController, PKPaymentSetupCardDetailsFooterView, PKPaymentVerificationController, RemoteUIController, _UIFeedbackEventBehavior;
+@class CLInUseAssertion, NSString, NSTimer, PKPaymentProvisioningController, PKPaymentSetupFooterView, PKPaymentVerificationController, RemoteUIController, UINotificationFeedbackGenerator;
 
 @interface PKPaymentSetupProvisioningFieldsViewController : PKPaymentSetupFieldsViewController <UITextFieldDelegate, RemoteUIControllerDelegate, PKPaymentVerificationControllerDelegate, PKPaymentSetupViewControllerCanHideSetupLaterButton>
 {
-    PKPaymentSetupCardDetailsFooterView *_cardDetailsFooterView;
+    PKPaymentSetupFooterView *_cardDetailsFooterView;
     RemoteUIController *_termsUIController;
     CLInUseAssertion *_CLInUse;
     BOOL _termsPresented;
-    _UIFeedbackEventBehavior *_cardAddedBehavior;
+    UINotificationFeedbackGenerator *_cardAddedFeedbackGenerator;
     PKPaymentVerificationController *_verificationController;
+    BOOL _waitForActivation;
+    CDUnknownBlockType _waitForActivationCompletionHandler;
+    NSTimer *_waitForActivationTimer;
+    NSString *_activatingPaymentPassUniqueID;
     BOOL _hideSetupLaterButton;
     PKPaymentProvisioningController *_paymentProvisioningController;
 }
@@ -34,18 +38,26 @@
 
 - (void).cxx_destruct;
 - (id)_cardDetailsFooterView;
+- (void)_cleanupWaitForActivation;
+- (void)_didActivatePaymentPass:(id)arg1;
+- (void)_handleNextCredentialWithPresentationDelay:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handlePassSuccessfullyAdded:(id)arg1;
+- (void)_passLibraryDidChange:(id)arg1;
 - (void)_performEligibilityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performFinishWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performProvisionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performTermsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_provisioningLocalizedProgressDescriptionDidChange:(id)arg1;
 - (void)_provisioningStateDidChange:(id)arg1;
+- (void)_requestWaitForActivation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_shouldShowAutomaticSelectionForPass:(id)arg1;
 - (BOOL)_shouldShowVerificationMethodsForPass:(id)arg1;
 - (void)_showAddToWatchOfferForPass:(id)arg1;
 - (void)_showAutomaticSelectionForPass:(id)arg1;
 - (void)_showVerificationMethodsForPass:(id)arg1;
 - (void)_showVerifiedUI;
+- (void)_waitForActivation:(id)arg1;
+- (void)_waitForActivationDidTimeout:(id)arg1;
 - (void)acceptTerms;
 - (void)addDifferentCard:(id)arg1;
 - (void)dealloc;
@@ -58,7 +70,7 @@
 - (void)handleNextActionError:(id)arg1 shouldContinue:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)handleNextActionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleNextButtonTapped:(id)arg1;
-- (void)handlePassSuccessfullyAdded:(id)arg1;
+- (void)handlePassSuccessfullyAdded:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 setupFieldsModel:(id)arg4;
 - (id)initWithWebService:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 setupFieldsModel:(id)arg4;

@@ -4,37 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOPhoneNumberResolving-Protocol.h>
 
-@class NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue;
+@class GEOPNRReadersCache, NSString;
 
 @interface GEOPhoneNumberResolverLocalProxy : NSObject <GEOPhoneNumberResolving>
 {
-    struct _GEOGenericContainer<unsigned short, (anonymous namespace)::PackReader, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, geo::GEOGenericContainerStrongReferenceTag, 64, 2097152, geo::GEOGenericContainerLockingTag, detail::_default_pointer_type> _packReaders;
-    NSMutableDictionary *_mostPreferredLangauges;
-    NSObject<OS_dispatch_queue> *_workQueue;
+    GEOPNRReadersCache *_readersCache;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, strong, nonatomic) GEOPNRReadersCache *readersCache; // @synthesize readersCache=_readersCache;
 @property (readonly) Class superclass;
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)_internationalCodeForCountryCode:(id)arg1;
-- (void)_localeChanged:(id)arg1;
-- (id)_localizedCountryNameForCountryCode:(id)arg1;
-- (id)_localizedCountryNameForCountryCode:(id)arg1 languageCode:(id)arg2;
-- (void)dealloc;
-- (BOOL)decomposePhoneNumber:(id)arg1 country:(id)arg2 components:(struct PhoneNumberComponents *)arg3;
 - (id)init;
-- (shared_ptr_ef0c1bec)readerForCountryCode:(unsigned short)arg1;
+- (id)resolveFullyQualifiedPhoneNumber:(id)arg1 inCountry:(id)arg2 withError:(id *)arg3;
 - (void)resolvePhoneNumbers:(id)arg1 handler:(CDUnknownBlockType)arg2 queue:(id)arg3;
-- (id)stringForLocationNameStrings:(const struct LocationNameStrings *)arg1 countryName:(id)arg2;
+- (id)resolveUnknownFormatPhoneNumber:(id)arg1 inCountry:(id)arg2 withError:(id *)arg3;
+- (id)resolvedStringForCC:(id)arg1 inCountry:(id)arg2 locationIndex:(unsigned int)arg3 error:(id *)arg4;
 
 @end
 

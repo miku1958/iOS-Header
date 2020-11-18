@@ -153,6 +153,12 @@ struct RTRenderable;
 
 struct SCNOctree;
 
+struct SdfPath {
+    struct intrusive_ptr<const Sdf_PathNode> _field1;
+};
+
+struct Sdf_PathNode;
+
 struct SkyDescriptor {
     float _field1;
     float _field2;
@@ -171,15 +177,52 @@ struct SkyDescriptor {
     float _field15;
     float _field16;
     float _field17;
-    struct Detail *_field18;
-    unsigned int _field19;
+    float _field18;
+    struct Detail *_field19;
     unsigned int _field20;
-    float _field21;
+    unsigned int _field21;
     float _field22;
     float _field23;
     float _field24;
-    void *_field25;
+    float _field25;
+    void *_field26;
 };
+
+struct TfPointerAndBits<const TfToken::_Rep> {
+    struct _Rep *_field1;
+};
+
+struct TfPointerAndBits<const VtValue::_TypeInfo> {
+    struct _TypeInfo *_ptrAndBits;
+};
+
+struct TfToken {
+    struct TfPointerAndBits<const TfToken::_Rep> _field1;
+};
+
+struct TimeSampledVtValue;
+
+struct UsdAttribute {
+    int _field1;
+    struct Usd_PrimDataHandle _field2;
+    struct SdfPath _field3;
+    struct TfToken _field4;
+};
+
+struct Usd_PrimData;
+
+struct Usd_PrimDataHandle {
+    struct intrusive_ptr<const Usd_PrimData> _field1;
+};
+
+struct VtValue {
+    struct aligned_storage_imp<8, 8> _storage;
+    struct TfPointerAndBits<const VtValue::_TypeInfo> _info;
+};
+
+struct _Rep;
+
+struct _TypeInfo;
 
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, int>, void *>*> {
     struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, int>, void *>*> *__next_;
@@ -213,8 +256,22 @@ struct __sbuf {
     int _field2;
 };
 
+struct a8;
+
+struct aligned_storage_imp<8, 8> {
+    union data_t data_;
+};
+
 struct float4x4 {
     MISSING_TYPE *columns[4];
+};
+
+struct intrusive_ptr<const Sdf_PathNode> {
+    struct Sdf_PathNode *_field1;
+};
+
+struct intrusive_ptr<const Usd_PrimData> {
+    struct Usd_PrimData *_field1;
 };
 
 struct mutex {
@@ -268,6 +325,14 @@ struct unordered_map<unsigned long long, int, std::__1::hash<unsigned long long>
             float __first_;
         } __p3_;
     } __table_;
+};
+
+struct vector<(anonymous namespace)::TimeSampledVtValue, std::__1::allocator<(anonymous namespace)::TimeSampledVtValue>> {
+    struct TimeSampledVtValue *__begin_;
+    struct TimeSampledVtValue *__end_;
+    struct __compressed_pair<(anonymous namespace)::TimeSampledVtValue *, std::__1::allocator<(anonymous namespace)::TimeSampledVtValue>> {
+        struct TimeSampledVtValue *__first_;
+    } __end_cap_;
 };
 
 struct vector<MDLLight *, std::__1::allocator<MDLLight *>> {
@@ -347,4 +412,11 @@ typedef struct vector<int, std::__1::allocator<int>> {
         int *_field1;
     } _field3;
 } vector_3203cf93;
+
+#pragma mark Named Unions
+
+union data_t {
+    char buf[8];
+    struct a8 align_;
+};
 

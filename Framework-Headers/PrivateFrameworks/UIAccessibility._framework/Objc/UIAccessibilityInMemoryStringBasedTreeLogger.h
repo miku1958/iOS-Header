@@ -23,7 +23,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithElementDescriptionKey:(id)arg1;
 - (id)initWithPrefix:(id)arg1;

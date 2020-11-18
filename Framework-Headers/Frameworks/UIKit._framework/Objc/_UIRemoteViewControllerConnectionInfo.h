@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIRemoteViewControllerConnectionInfo : NSObject
 {
-    BOOL _prefersStatusBarHidden;
+    int _preferredStatusBarVisibility;
     _UIViewServiceInterface *_interface;
     id _viewControllerOperatorProxy;
     id _serviceViewControllerProxy;
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property (strong) _UIHostedWindowHostingHandle *hostedWindowHostingHandle; // @synthesize hostedWindowHostingHandle=_hostedWindowHostingHandle;
 @property (strong) _UIViewServiceInterface *interface; // @synthesize interface=_interface;
 @property long long preferredStatusBarStyle; // @synthesize preferredStatusBarStyle=_preferredStatusBarStyle;
-@property BOOL prefersStatusBarHidden; // @synthesize prefersStatusBarHidden=_prefersStatusBarHidden;
+@property int preferredStatusBarVisibility; // @synthesize preferredStatusBarVisibility=_preferredStatusBarVisibility;
 @property (strong) _UIHostedWindowHostingHandle *remoteKeyboardsWindowHostingHandle; // @synthesize remoteKeyboardsWindowHostingHandle=_remoteKeyboardsWindowHostingHandle;
 @property (strong) BSMachPortSendRight *serviceAccessibilityServerPortWrapper; // @synthesize serviceAccessibilityServerPortWrapper=_serviceAccessibilityServerPortWrapper;
 @property (strong) id serviceViewControllerControlMessageProxy; // @synthesize serviceViewControllerControlMessageProxy=_serviceViewControllerControlMessageProxy;

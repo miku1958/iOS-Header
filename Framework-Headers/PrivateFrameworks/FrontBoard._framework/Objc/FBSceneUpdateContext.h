@@ -20,12 +20,13 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSString *sceneID; // @synthesize sceneID=_sceneID;
-@property (strong, nonatomic) FBSSceneSettingsDiff *settingsDiff; // @synthesize settingsDiff=_settingsDiff;
+@property (readonly, copy, nonatomic) NSString *sceneID; // @synthesize sceneID=_sceneID;
+@property (readonly, strong, nonatomic) FBSSceneSettingsDiff *settingsDiff; // @synthesize settingsDiff=_settingsDiff;
 @property (readonly) Class superclass;
-@property (nonatomic) unsigned long long transactionID; // @synthesize transactionID=_transactionID;
+@property (readonly, nonatomic) unsigned long long transactionID; // @synthesize transactionID=_transactionID;
 
 + (id)contextWithSceneID:(id)arg1 transactionID:(unsigned long long)arg2 settingsDiff:(id)arg3;
+- (id)_initWithSceneID:(id)arg1 transactionID:(unsigned long long)arg2 settingsDiff:(id)arg3;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

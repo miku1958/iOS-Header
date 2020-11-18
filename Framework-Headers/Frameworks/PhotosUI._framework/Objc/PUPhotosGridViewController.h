@@ -9,10 +9,11 @@
 #import <PhotosUI/PHAssetCollectionDataSource-Protocol.h>
 #import <PhotosUI/PLDismissableViewController-Protocol.h>
 #import <PhotosUI/PLNavigableAssetContainerViewController-Protocol.h>
-#import <PhotosUI/PUCollectionViewReorderDelegate-Protocol.h>
+#import <PhotosUI/PUCollectionViewSelectionDelegate-Protocol.h>
 #import <PhotosUI/PUDeletePhotosActionControllerDelegate-Protocol.h>
 #import <PhotosUI/PUOneUpPresentationHelperDelegate-Protocol.h>
 #import <PhotosUI/PUPhotosGlobalFooterViewDelegate-Protocol.h>
+#import <PhotosUI/PUPhotosGlobalFooterViewLayoutDelegate-Protocol.h>
 #import <PhotosUI/PUPhotosGridBarsHelperDelegate-Protocol.h>
 #import <PhotosUI/PUPhotosSharingViewControllerDelegate-Protocol.h>
 #import <PhotosUI/PUScrollViewSpeedometerDelegate-Protocol.h>
@@ -23,22 +24,25 @@
 #import <PhotosUI/PUSwipeSelectionManagerDelegate-Protocol.h>
 #import <PhotosUI/PXAutoScrollerDelegate-Protocol.h>
 #import <PhotosUI/PXPhotosDataSourceChangeObserver-Protocol.h>
+#import <PhotosUI/PXSettingsKeyObserver-Protocol.h>
+#import <PhotosUI/UICollectionViewDragDestination-Protocol.h>
+#import <PhotosUI/UICollectionViewDragSource-Protocol.h>
+#import <PhotosUI/UIDropInteractionDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <PhotosUI/_UISettingsKeyObserver-Protocol.h>
 
-@class ICQUpgradeFlowManager, NSIndexPath, NSIndexSet, NSMutableDictionary, NSString, PHAsset, PHAssetCollection, PHCachingImageManager, PHFetchResult, PLDateRangeFormatter, PUAlbumListTransitionContext, PUAlbumPickerViewController, PUDeletePhotosActionController, PUDuplicateActionController, PUOneUpPresentationHelper, PUPhotoBrowserOneUpPresentationAdaptor, PUPhotoPinchGestureRecognizer, PUPhotoSelectionManager, PUPhotosGridBarsHelper, PUPhotosGridViewControllerSpec, PUPhotosSharingViewController, PUScrollViewSpeedometer, PUSearchButtonItem, PUSessionInfo, PUSlideshowViewController, PUSwipeSelectionManager, PXAssetBadgeManager, PXPhotosDataSource, UIAlertController, UIBarButtonItem, UICollectionViewLayout, UILongPressGestureRecognizer, UINavigationButton, UIPanGestureRecognizer, UIPopoverPresentationController, UIView, UIViewController;
+@class NSIndexPath, NSIndexSet, NSMutableDictionary, NSString, PHAsset, PHAssetCollection, PHCachingImageManager, PHFetchResult, PLDateRangeFormatter, PUAlbumListTransitionContext, PUAlbumPickerViewController, PUDeletePhotosActionController, PUDuplicateActionController, PUOneUpPresentationHelper, PUPhotoBrowserOneUpPresentationAdaptor, PUPhotoPinchGestureRecognizer, PUPhotoSelectionManager, PUPhotosGlobalFooterView, PUPhotosGridBarsHelper, PUPhotosGridViewControllerSpec, PUPhotosSharingViewController, PUScrollViewSpeedometer, PUSearchButtonItem, PUSessionInfo, PUSlideshowViewController, PUSwipeSelectionManager, PXAssetBadgeManager, PXPhotosDataSource, UIAlertController, UIBarButtonItem, UICollectionViewLayout, UILongPressGestureRecognizer, UINavigationButton, UIPanGestureRecognizer, UIPopoverPresentationController, UIView, UIViewController;
 @protocol PUGridLayoutProtocol, UIViewControllerPreviewing;
 
-@interface PUPhotosGridViewController : UICollectionViewController <UIPopoverPresentationControllerDelegate, PUCollectionViewReorderDelegate, PUSessionInfoObserver, PHAssetCollectionDataSource, _UISettingsKeyObserver, PXPhotosDataSourceChangeObserver, PUDeletePhotosActionControllerDelegate, PUPhotosSharingViewControllerDelegate, PUSlideshowViewControllerDelegate, PUSwipeSelectionManagerDelegate, PUSwipeSelectionManagerDataSource, PXAutoScrollerDelegate, PUOneUpPresentationHelperDelegate, PUPhotosGlobalFooterViewDelegate, PUPhotosGridBarsHelperDelegate, UIGestureRecognizerDelegate, PLNavigableAssetContainerViewController, PLDismissableViewController, PUStackedAlbumControllerTransition, PUScrollViewSpeedometerDelegate>
+@interface PUPhotosGridViewController : UICollectionViewController <UIPopoverPresentationControllerDelegate, PUCollectionViewSelectionDelegate, PUSessionInfoObserver, PHAssetCollectionDataSource, PXSettingsKeyObserver, PXPhotosDataSourceChangeObserver, PUDeletePhotosActionControllerDelegate, PUPhotosSharingViewControllerDelegate, PUSlideshowViewControllerDelegate, PUSwipeSelectionManagerDelegate, PUSwipeSelectionManagerDataSource, PXAutoScrollerDelegate, PUOneUpPresentationHelperDelegate, PUPhotosGlobalFooterViewDelegate, PUPhotosGlobalFooterViewLayoutDelegate, PUPhotosGridBarsHelperDelegate, UICollectionViewDragSource, UICollectionViewDragDestination, UIDropInteractionDelegate, UIGestureRecognizerDelegate, PLNavigableAssetContainerViewController, PLDismissableViewController, PUStackedAlbumControllerTransition, PUScrollViewSpeedometerDelegate>
 {
-    NSIndexPath *_menuIndexPath;
     BOOL _isMenuIndexPathExact;
     BOOL _showingMenu;
     BOOL _contentViewInSyncWithModel;
     BOOL _didScrollToInitialPosition;
     UIView *_alternateContentView;
     double _lastTransitionWidth;
+    PHFetchResult *_collectionListFetchResultBeforeChange;
     PHAsset *_visibleReferenceAssetBeforeChange;
     PHAssetCollection *_visibleReferenceAssetContainerBeforeChange;
     NSIndexPath *_visibleReferenceAssetIndexPathBeforeChange;
@@ -61,12 +65,13 @@
     NSMutableDictionary *_progressInfosByCachedIndexPath;
     CDUnknownBlockType _pendingNavigationBlock;
     unsigned long long _suppressesColorSettingsCount;
+    PUPhotosGlobalFooterView *_measuringGlobalFooterView;
     BOOL _initiallyScrolledToBottom;
     BOOL _alwaysHideTabBar;
     BOOL __needsNewEmptyPlaceholderView;
-    BOOL __hasEditSessionReorderedItems;
     BOOL _showsCustomDoneButtonItemOnLeft;
     BOOL __didForceDataSource;
+    BOOL _hasKnownNonEmptyContent_toWorkAround31995766;
     PLDateRangeFormatter *__dateRangeFormatter;
     PXPhotosDataSource *_photosDataSource;
     PUSessionInfo *_sessionInfo;
@@ -102,15 +107,18 @@
     PUSwipeSelectionManager *__swipeSelectionManager;
     long long __batchPreheatingCount;
     CDUnknownBlockType _ppt_nextDeleteFinishedBlock;
+    CDUnknownBlockType _ppt_dataSourceChangeHandler;
     id __pendingViewSizeTransitionContext;
     id __cachedViewSizeTransitionContext;
     id<UIViewControllerPreviewing> _previewingItem;
     NSIndexPath *__previewingIndexPath;
-    ICQUpgradeFlowManager *__upgradeFlowManager;
     PXAssetBadgeManager *__badgeManager;
+    NSIndexPath *__menuIndexPath;
+    CDUnknownBlockType _pendingProcessDataSourceUpdateBlock;
     struct CGPoint __previousPreheatContentOffset;
     struct CGPoint __previousPrefetchContentOffset;
     struct CGSize __cachedViewSizeTransitionContextSize;
+    struct UIEdgeInsets _collectionViewLayoutReferenceSafeAreaInsets;
     struct CGRect __previousPreheatRect;
     struct CGRect __previousPrefetchRect;
 }
@@ -130,8 +138,8 @@
 @property (nonatomic, setter=_setDidForceDataSource:) BOOL _didForceDataSource; // @synthesize _didForceDataSource=__didForceDataSource;
 @property (strong, nonatomic, setter=_setDuplicateActionController:) PUDuplicateActionController *_duplicateActionController; // @synthesize _duplicateActionController=__duplicateActionController;
 @property (strong, nonatomic, setter=_setEmptyPlaceholderView:) UIView *_emptyPlaceholderView; // @synthesize _emptyPlaceholderView=__emptyPlaceholderView;
-@property (nonatomic, setter=_setHasEditSessionReorderedItems:) BOOL _hasEditSessionReorderedItems; // @synthesize _hasEditSessionReorderedItems=__hasEditSessionReorderedItems;
 @property (nonatomic, setter=_setMaximumNumberOfRowsToPreheat:) long long _maximumNumberOfRowsToPreheat; // @synthesize _maximumNumberOfRowsToPreheat=__maximumNumberOfRowsToPreheat;
+@property (strong, nonatomic, setter=_setMenuIndexPath:) NSIndexPath *_menuIndexPath; // @synthesize _menuIndexPath=__menuIndexPath;
 @property (nonatomic, setter=_setNeedsNewEmptyPlaceholderView:) BOOL _needsNewEmptyPlaceholderView; // @synthesize _needsNewEmptyPlaceholderView=__needsNewEmptyPlaceholderView;
 @property (strong, nonatomic, setter=_setPendingViewSizeTransitionContext:) id _pendingViewSizeTransitionContext; // @synthesize _pendingViewSizeTransitionContext=__pendingViewSizeTransitionContext;
 @property (strong, nonatomic, setter=_setPhotoBrowserOneUpPresentationAdaptor:) PUPhotoBrowserOneUpPresentationAdaptor *_photoBrowserOneUpPresentationAdaptor; // @synthesize _photoBrowserOneUpPresentationAdaptor=__photoBrowserOneUpPresentationAdaptor;
@@ -148,25 +156,28 @@
 @property (strong, nonatomic, setter=_setSharingViewController:) PUPhotosSharingViewController *_sharingViewController; // @synthesize _sharingViewController=__sharingViewController;
 @property (strong, nonatomic, setter=_setSlideshowViewController:) PUSlideshowViewController *_slideshowViewController; // @synthesize _slideshowViewController=__slideshowViewController;
 @property (strong, nonatomic, setter=_setSwipeSelectionManager:) PUSwipeSelectionManager *_swipeSelectionManager; // @synthesize _swipeSelectionManager=__swipeSelectionManager;
-@property (strong, nonatomic, setter=_setUpgradeFlowManager:) ICQUpgradeFlowManager *_upgradeFlowManager; // @synthesize _upgradeFlowManager=__upgradeFlowManager;
 @property (strong, nonatomic) PUAlbumListTransitionContext *albumListTransitionContext; // @synthesize albumListTransitionContext=_albumListTransitionContext;
 @property (nonatomic) unsigned long long allowedActions; // @synthesize allowedActions=_allowedActions;
 @property (nonatomic) BOOL alwaysHideTabBar; // @synthesize alwaysHideTabBar=_alwaysHideTabBar;
 @property (readonly, nonatomic) PHFetchResult *assetCollectionsFetchResult;
 @property (readonly, nonatomic) PHFetchResult *collectionListFetchResult;
-@property (nonatomic, setter=_setCollectionViewLayoutReferenceWidth:) double collectionViewLayoutReferenceWidth; // @synthesize collectionViewLayoutReferenceWidth=_collectionViewLayoutReferenceWidth;
+@property (nonatomic) struct UIEdgeInsets collectionViewLayoutReferenceSafeAreaInsets; // @synthesize collectionViewLayoutReferenceSafeAreaInsets=_collectionViewLayoutReferenceSafeAreaInsets;
+@property (nonatomic) double collectionViewLayoutReferenceWidth; // @synthesize collectionViewLayoutReferenceWidth=_collectionViewLayoutReferenceWidth;
 @property (strong, nonatomic) UIBarButtonItem *customDoneButtonItem; // @synthesize customDoneButtonItem=_customDoneButtonItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) PUPhotosGridViewControllerSpec *gridSpec; // @synthesize gridSpec=_gridSpec;
+@property (nonatomic) BOOL hasKnownNonEmptyContent_toWorkAround31995766; // @synthesize hasKnownNonEmptyContent_toWorkAround31995766=_hasKnownNonEmptyContent_toWorkAround31995766;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL initiallyScrolledToBottom; // @synthesize initiallyScrolledToBottom=_initiallyScrolledToBottom;
 @property (strong, nonatomic) UICollectionViewLayout<PUGridLayoutProtocol> *mainGridLayout; // @synthesize mainGridLayout=_mainGridLayout;
 @property (copy, nonatomic) CDUnknownBlockType onViewDidAppearCompletion; // @synthesize onViewDidAppearCompletion=_onViewDidAppearCompletion;
 @property (strong, nonatomic, setter=_setOneUpPresentationHelper:) PUOneUpPresentationHelper *oneUpPresentationHelper; // @synthesize oneUpPresentationHelper=_oneUpPresentationHelper;
+@property (copy, nonatomic) CDUnknownBlockType pendingProcessDataSourceUpdateBlock; // @synthesize pendingProcessDataSourceUpdateBlock=_pendingProcessDataSourceUpdateBlock;
 @property (strong, nonatomic, setter=_setPhotoOrStackPinchGestureRecognizer:) PUPhotoPinchGestureRecognizer *photoOrStackPinchGestureRecognizer; // @synthesize photoOrStackPinchGestureRecognizer=_photoOrStackPinchGestureRecognizer;
 @property (strong, nonatomic, setter=_setPhotoSelectionManager:) PUPhotoSelectionManager *photoSelectionManager; // @synthesize photoSelectionManager=_photoSelectionManager;
 @property (strong, nonatomic) PXPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
+@property (copy, nonatomic, setter=ppt_setDataSourceChangeHandler:) CDUnknownBlockType ppt_dataSourceChangeHandler; // @synthesize ppt_dataSourceChangeHandler=_ppt_dataSourceChangeHandler;
 @property (copy, nonatomic, setter=ppt_setNextDeleteFinishedBlock:) CDUnknownBlockType ppt_nextDeleteFinishedBlock; // @synthesize ppt_nextDeleteFinishedBlock=_ppt_nextDeleteFinishedBlock;
 @property (strong, nonatomic, setter=_setPreviewingItem:) id<UIViewControllerPreviewing> previewingItem; // @synthesize previewingItem=_previewingItem;
 @property (strong, nonatomic) PUSessionInfo *sessionInfo; // @synthesize sessionInfo=_sessionInfo;
@@ -178,12 +189,13 @@
 + (void)transferPhotoBrowserFromGridViewController:(id)arg1 toGridViewController:(id)arg2;
 - (void).cxx_destruct;
 - (void)_addButtonPressed:(id)arg1;
+- (double)_adjustedTransitionWidth;
 - (id)_allAssetsInCollections;
 - (BOOL)_allowsActions:(unsigned long long)arg1;
+- (id)_api_dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
 - (BOOL)_areAllAssetsSelected;
 - (id)_assetsAllowingEditOperation:(long long)arg1 fromAssets:(id)arg2;
 - (id)_assetsAllowingRemove:(BOOL)arg1 orDelete:(BOOL)arg2 fromAssets:(id)arg3;
-- (id)_avalancheStackImageForAsset:(id)arg1 partialStack:(BOOL)arg2;
 - (id)_barButtonSpacerWithWidth:(double)arg1;
 - (void)_beginInteractiveNavigationForItemAtIndexPath:(id)arg1;
 - (void)_beginInteractiveStackCollapse:(id)arg1;
@@ -198,12 +210,20 @@
 - (void)_cancelImageRequestForCell:(id)arg1;
 - (void)_cleanUpAfterSharingDismissal;
 - (void)_clearAutomaticContentOffsetSnapshot;
+- (BOOL)_collectionView:(id)arg1 canHandleDropSesson:(id)arg2;
+- (id)_collectionView:(id)arg1 dropSessionDidUpdate:(id)arg2 withDestinationIndexPath:(id)arg3;
+- (id)_collectionView:(id)arg1 itemsForAddingToDragSession:(id)arg2 atIndexPath:(id)arg3 point:(struct CGPoint)arg4;
+- (id)_collectionView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
+- (id)_collectionView:(id)arg1 liftingPreviewParametersForItemAtIndexPath:(id)arg2;
+- (void)_collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;
 - (BOOL)_collectionView:(id)arg1 shouldApplyTransitionContentOffset:(struct CGPoint)arg2 contentSize:(struct CGSize)arg3;
+- (BOOL)_confidentialityWarningRequiredForAsset:(id)arg1;
 - (void)_configureAddPlaceholderCell:(id)arg1 animated:(BOOL)arg2;
 - (void)_configureDecorationsForCell:(id)arg1 withAsset:(id)arg2 assetCollection:(id)arg3 thumbnailIsPlaceholder:(BOOL)arg4 assetMayHaveChanged:(BOOL)arg5;
 - (void)_contentSizeCategoryDidChangeNotification:(id)arg1;
 - (long long)_deleteActionForBarButtonItem:(id)arg1;
 - (id)_deselectAllBarButtonItem;
+- (id)_dragItemsForIndexPath:(id)arg1;
 - (void)_ensureOneUpPresentationHelper;
 - (void)_getFirstAsset:(id *)arg1 collection:(id *)arg2;
 - (void)_handleCancelButton:(id)arg1;
@@ -213,6 +233,7 @@
 - (void)_handleSelectionButton:(id)arg1;
 - (void)_handleSwipeSelectionFromLocation:(struct CGPoint)arg1;
 - (void)_handleSwipeSelectionGesture:(id)arg1;
+- (BOOL)_hasAccessibilityLargeText;
 - (BOOL)_hasAtLeastOneContainer;
 - (unsigned long long)_indexForPhotoCollection:(id)arg1;
 - (id)_indexesWithoutPlaceholdersFromIndexes:(id)arg1 inSection:(long long)arg2;
@@ -227,9 +248,11 @@
 - (id)_performDuplicateActivityWithAssets:(id)arg1;
 - (id)_performHideActivityWithAssets:(id)arg1;
 - (id)_pickerBannerView;
+- (void)_presentConfidentialityWarning;
 - (void)_presentSearchViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)_presentSearchViewControllerAnimated:(BOOL)arg1;
 - (void)_presentSharingViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_previewParametersForItemAtIndexPath:(id)arg1;
 - (id)_referenceBarButtonItemForDeleteAction:(long long)arg1;
 - (void)_removeButtonPressed:(id)arg1;
 - (void)_removeSelectedAssetsWithCompletion:(CDUnknownBlockType)arg1;
@@ -252,9 +275,9 @@
 - (void)_updateBackButtonTitle;
 - (void)_updateCollectionViewMultipleSelection;
 - (void)_updateContentOffsetForPendingViewSizeTransition;
-- (void)_updateGlobalFooterOnWidthChange;
 - (void)_updateGlobalHeaderVisibility;
 - (void)_updateIndexPathForProgressInfo:(id)arg1;
+- (void)_updateLayoutReferenceValues;
 - (void)_updateNavigationBannerAnimated:(BOOL)arg1;
 - (void)_updatePhotoDecorationForCell:(id)arg1 animated:(BOOL)arg2;
 - (void)_updatePhotoSelectionManager;
@@ -271,6 +294,7 @@
 - (id)alternateContentView;
 - (id)assetAtIndexPath:(id)arg1;
 - (id)assetAtIndexPathIfSafe:(id)arg1;
+- (id)assetCollectionForSectionHeaderAtIndex:(unsigned long long)arg1;
 - (id)assetIndexPathForPhotoToken:(id)arg1;
 - (id)assetsInAssetCollection:(id)arg1;
 - (void)autoScroller:(id)arg1 didAutoscrollWithTimestamp:(double)arg2;
@@ -283,17 +307,18 @@
 - (BOOL)canBeginStackCollapseTransition;
 - (BOOL)canDeleteContent;
 - (BOOL)canDisplayEditButton;
+- (BOOL)canDragIn;
+- (BOOL)canDragOut;
+- (BOOL)canHandleDropSession:(id)arg1;
 - (BOOL)canNavigateToPhotoInteractively:(BOOL)arg1;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (double)cellAspectRatioHint;
 - (long long)cellFillMode;
-- (BOOL)collectionView:(id)arg1 canReorderItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
-- (void)collectionView:(id)arg1 moveItemAtIndexPath:(id)arg2 toIndexPath:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)collectionView:(id)arg1 dragPreviewParametersForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
-- (id)collectionView:(id)arg1 targetIndexPathForMoveFromIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 transitionLayoutForOldLayout:(id)arg2 newLayout:(id)arg3;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)configureGlobalFooterView:(id)arg1;
@@ -311,6 +336,8 @@
 - (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
 - (void)didSelectAddPlaceholderInSection:(long long)arg1;
 - (id)displayTitleInfoForDetailsOfAssetCollection:(id)arg1 withTitleCategory:(long long)arg2 preferredAttributesPromise:(CDUnknownBlockType)arg3;
+- (BOOL)dropInteraction:(id)arg1 canHandleSession:(id)arg2;
+- (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
 - (void)endBatchPreheating;
 - (void)endShowingProgressWithIdentifier:(id)arg1;
 - (void)endSuppressingColorSettingsUpdate;
@@ -320,8 +347,10 @@
 - (void)getTitle:(out id *)arg1 prompt:(out id *)arg2 shouldHideBackButton:(out BOOL *)arg3 leftBarButtonItems:(out id *)arg4 rightBarButtonItems:(out id *)arg5;
 - (double)globalHeaderHeight;
 - (id)gridLayout;
+- (void)gridSettings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)handleAddFromAction;
 - (void)handleAddToAction;
+- (void)handleDrop:(id)arg1;
 - (void)handleLongPressGesture:(id)arg1;
 - (void)handleNavigateToAsset:(id)arg1 inContainer:(id)arg2;
 - (void)handleToggleSelectionOfItemAtIndexPath:(id)arg1;
@@ -333,6 +362,7 @@
 - (id)imageRequestOptionsForAsset:(id)arg1 pixelSize:(inout struct CGSize *)arg2;
 - (id)indexPathForAsset:(id)arg1 hintCollection:(id)arg2 hintIndexPath:(id)arg3;
 - (id)indexPathsForPreheatingInRect:(struct CGRect)arg1;
+- (id)indexPathsForSelectedItemsInCollectionView:(id)arg1;
 - (id)initWithCollectionViewLayout:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithSpec:(id)arg1;
@@ -377,7 +407,7 @@
 - (id)photoCollectionAtIndex:(unsigned long long)arg1;
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
 - (void)photosDataSourceWillChange:(id)arg1;
-- (void)photosGlobalFooterView:(id)arg1 presentPurchaseFlowWithFlowManager:(id)arg2;
+- (void)photosGlobalFooterView:(id)arg1 presentViewController:(id)arg2;
 - (void)photosGlobalFooterViewDidChangeHeight:(id)arg1;
 - (void)photosGridBarsHelper:(id)arg1 didChange:(unsigned long long)arg2;
 - (void)photosGridBarsHelper:(id)arg1 getTitle:(out id *)arg2 prompt:(out id *)arg3 shouldHideBackButton:(out BOOL *)arg4 leftBarButtonItems:(out id *)arg5 rightBarButtonItems:(out id *)arg6 forPhotoSelectionManager:(id)arg7;
@@ -443,6 +473,7 @@
 - (long long)swipeSelectionManager:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (id)swipeSelectionManager:(id)arg1 photoCollectionAtIndex:(unsigned long long)arg2;
 - (void)swipeSelectionManager:(id)arg1 updatePhotoSelectionWithIndexes:(id)arg2 inSection:(long long)arg3 selectionMode:(long long)arg4;
+- (double)topMarginForPhotosGlobalFooterView:(id)arg1;
 - (void)uninstallGestureRecognizers;
 - (void)updateEmptyPlaceholderViewAnimated:(BOOL)arg1;
 - (void)updateGlobalFooter;

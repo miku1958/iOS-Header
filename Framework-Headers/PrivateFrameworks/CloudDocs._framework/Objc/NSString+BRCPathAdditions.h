@@ -31,7 +31,7 @@
 - (id)br_pathRelativeToPath:(id)arg1;
 - (id)br_realpath;
 - (id)br_realpathKeepingLastSymlink;
-- (id)br_representableDirectoryExtension;
+- (id)br_representableDirectoryName;
 - (id)br_representableHFSFileNameWithNumber:(id)arg1 addedExtension:(id)arg2 makeDotFile:(BOOL)arg3;
 - (id)br_sideFaultName;
 - (id)br_sideFaultPath;

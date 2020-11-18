@@ -32,6 +32,7 @@
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2 collapseAfterCount:(long long)arg3;
 - (void)reloadSpecifier:(id)arg1;
+- (void)reloadSpecifiers;
 - (void)removeAllSpecifiers;
 - (void)showAll;
 - (id)showAllSpecifier;

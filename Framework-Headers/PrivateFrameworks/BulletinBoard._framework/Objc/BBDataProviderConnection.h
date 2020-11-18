@@ -34,8 +34,9 @@
 
 + (void)initialize;
 - (void).cxx_destruct;
-- (id)_addDataProvider:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_addDataProvider:(id)arg1 withAdditionHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_invalidate;
+- (void)_queue_setServerProxy:(id)arg1;
 - (id)addDataProvider:(id)arg1;
 - (void)addDataProvider:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)addParentSectionInfo:(id)arg1 displayName:(id)arg2 icon:(id)arg3;

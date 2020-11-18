@@ -7,12 +7,12 @@
 #import <IMSharedUtilities/IMItem.h>
 
 #import <IMSharedUtilities/IMRemoteObjectCoding-Protocol.h>
-#import <IMSharedUtilities/NSCoding-Protocol.h>
 #import <IMSharedUtilities/NSCopying-Protocol.h>
+#import <IMSharedUtilities/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface IMParticipantChangeItem : IMItem <NSCoding, NSCopying, IMRemoteObjectCoding>
+@interface IMParticipantChangeItem : IMItem <NSSecureCoding, NSCopying, IMRemoteObjectCoding>
 {
     long long _changeType;
     NSString *_otherCountryCode;
@@ -25,12 +25,14 @@
 @property (strong, nonatomic) NSString *otherHandle; // @synthesize otherHandle=_otherHandle;
 @property (strong, nonatomic) NSString *otherUnformattedID; // @synthesize otherUnformattedID=_otherUnformattedID;
 
++ (BOOL)supportsSecureCoding;
 - (id)copyDictionaryRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -6,58 +6,79 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreParsec/NSCopying-Protocol.h>
+#import <CoreParsec/NSSecureCoding-Protocol.h>
+#import <CoreParsec/_CPFeedbackUUID-Protocol.h>
+#import <CoreParsec/_CPProcessableFeedback-Protocol.h>
+#import <CoreParsec/_CPStartNetworkSearchFeedback-Protocol.h>
 
-@class NSString, _CPHTTPHeader;
+@class NSData, NSDictionary, NSString;
 
-@interface _CPStartNetworkSearchFeedback : PBCodable <NSCopying>
+@interface _CPStartNetworkSearchFeedback : PBCodable <_CPProcessableFeedback, _CPFeedbackUUID, _CPStartNetworkSearchFeedback, NSSecureCoding>
 {
-    unsigned long long _queryId;
-    unsigned long long _timestamp;
-    int _endpoint;
-    _CPHTTPHeader *_header;
-    NSString *_input;
-    int _triggerEvent;
-    NSString *_url;
-    NSString *_uuid;
     struct {
+        unsigned int timestamp:1;
         unsigned int queryId:1;
         unsigned int endpoint:1;
-        unsigned int triggerEvent:1;
+        unsigned int tuscanyStatus:1;
     } _has;
+    int _endpoint;
+    int _triggerEvent;
+    int _lookupSelectionType;
+    int _tuscanyStatus;
+    unsigned long long _timestamp;
+    NSString *_input;
+    NSString *_uuid;
+    unsigned long long _queryId;
+    NSString *_url;
+    NSDictionary *_headers;
+    unsigned long long _whichTrigger;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (nonatomic) int endpoint; // @synthesize endpoint=_endpoint;
-@property (nonatomic) BOOL hasEndpoint;
-@property (readonly, nonatomic) BOOL hasHeader;
+@property (readonly, nonatomic) id feedbackJSON;
+@property (readonly, nonatomic) BOOL hasEndpoint;
 @property (readonly, nonatomic) BOOL hasInput;
-@property (nonatomic) BOOL hasQueryId;
-@property (nonatomic) BOOL hasTriggerEvent;
+@property (readonly, nonatomic) BOOL hasLookupSelectionType;
+@property (readonly, nonatomic) BOOL hasQueryId;
+@property (readonly, nonatomic) BOOL hasTimestamp;
+@property (readonly, nonatomic) BOOL hasTriggerEvent;
+@property (readonly, nonatomic) BOOL hasTuscanyStatus;
 @property (readonly, nonatomic) BOOL hasUrl;
 @property (readonly, nonatomic) BOOL hasUuid;
-@property (strong, nonatomic) _CPHTTPHeader *header; // @synthesize header=_header;
-@property (strong, nonatomic) NSString *input; // @synthesize input=_input;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSDictionary *headers; // @synthesize headers=_headers;
+@property (copy, nonatomic) NSString *input; // @synthesize input=_input;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (nonatomic) int lookupSelectionType; // @synthesize lookupSelectionType=_lookupSelectionType;
 @property (nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (readonly, nonatomic) BOOL requiresQueryId;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
-@property (strong, nonatomic) NSString *url; // @synthesize url=_url;
-@property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
+@property (nonatomic) int tuscanyStatus; // @synthesize tuscanyStatus=_tuscanyStatus;
+@property (copy, nonatomic) NSString *url; // @synthesize url=_url;
+@property (readonly, copy, nonatomic) NSString *uuid;
+@property (copy, nonatomic) NSString *uuid;
+@property (readonly, nonatomic) unsigned long long whichTrigger; // @synthesize whichTrigger=_whichTrigger;
 
++ (id)startSearchFeedbackWithUUID;
 - (void).cxx_destruct;
-- (int)StringAsEndpoint:(id)arg1;
-- (int)StringAsTriggerEvent:(id)arg1;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (id)dictionaryRepresentation;
-- (id)endpointAsString:(int)arg1;
-- (unsigned long long)hash;
-- (id)headers;
+- (BOOL)getHeaders:(id *)arg1 forKey:(id)arg2;
+- (id)init;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithFacade:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (void)setHeaders:(id)arg1;
-- (id)triggerEventAsString:(int)arg1;
+- (void)setHeaders:(id)arg1 forKey:(id)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

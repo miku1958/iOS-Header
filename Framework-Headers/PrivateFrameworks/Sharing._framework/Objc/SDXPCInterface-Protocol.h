@@ -4,39 +4,71 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData, NSString, NSUUID, SFBLEDevice, SFCoordinatedAlertRequest, SFDeviceDiscovery, SFEventMessage, SFRemoteInteractionSession, SFRequestMessage, SFResponseMessage, SFService, SFSession;
+@class NSData, NSDictionary, NSString, NSURL, NSUUID, NSXPCListenerEndpoint, SFBLEDevice, SFCoordinatedAlertRequest, SFDevice, SFDeviceDiscovery, SFEventMessage, SFRemoteInteractionSession, SFRequestMessage, SFResponseMessage, SFService, SFSession, SFUserNotification;
 
 @protocol SDXPCInterface
+- (void)accountForAppleID:(NSString *)arg1 withCompletion:(void (^)(SFAppleIDAccount *, NSError *))arg2;
+- (void)activateAssertionWithIdentifier:(NSString *)arg1;
 - (void)activityStateWithCompletion:(void (^)(unsigned long long, NSError *))arg1;
+- (void)addAppleID:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)appleIDInfoWithCompletion:(void (^)(NSString *, NSData *, NSError *))arg1;
+- (void)appleIDListWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)bluetoothUserInteraction;
+- (void)contactIDForEmailHash:(NSString *)arg1 phoneHash:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)coordinatedAlertsRequestFinish;
 - (void)coordinatedAlertsRequestStart:(SFCoordinatedAlertRequest *)arg1 completion:(void (^)(NSError *, BOOL, NSDictionary *))arg2;
 - (void)deviceDiscoveryActivate:(SFDeviceDiscovery *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)deviceDiscoveryFastScanCancel:(NSString *)arg1;
+- (void)deviceDiscoveryFastScanTrigger:(NSString *)arg1;
 - (void)deviceDiscoveryUpdate:(SFDeviceDiscovery *)arg1;
 - (void)diagnosticBLEModeWithCompletion:(void (^)(NSError *))arg1;
 - (void)diagnosticControl:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)diagnosticGetVersionWithCompletion:(void (^)(NSString *))arg1;
 - (void)diagnosticLogControl:(NSString *)arg1 completion:(void (^)(NSString *))arg2;
+- (void)diagnosticMock:(NSString *)arg1 device:(SFBLEDevice *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)diagnosticMockStart:(void (^)(NSError *))arg1;
+- (void)diagnosticMockStop:(void (^)(NSError *))arg1;
 - (void)diagnosticShow:(NSString *)arg1 completion:(void (^)(NSString *))arg2;
 - (void)diagnosticUnlockTestClientWithDevice:(SFBLEDevice *)arg1;
 - (void)diagnosticUnlockTestServer;
+- (void)displayNameForEmailHash:(NSString *)arg1 phoneHash:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
+- (void)displayStringForContactIdentifier:(NSString *)arg1 deviceIdentifier:(NSUUID *)arg2 completion:(void (^)(NSString *, BOOL, NSError *))arg3;
+- (void)myAccountWithCompletion:(void (^)(SFAppleIDAccount *, NSError *))arg1;
+- (void)nfcTagReaderUIActivateWithEndpoint:(NSXPCListenerEndpoint *)arg1 params:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)openSetupURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)pairTLSClient:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
+- (void)preventExitForLocaleReason:(NSString *)arg1;
+- (void)reenableProxCardType:(unsigned char)arg1 completion:(void (^)(NSError *))arg2;
 - (void)remoteInteractionSessionActivate:(SFRemoteInteractionSession *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)remoteInteractionSessionClearText;
 - (void)remoteInteractionSessionCommitText;
 - (void)remoteInteractionSessionDeleteTextBackward;
 - (void)remoteInteractionSessionInsertText:(NSString *)arg1;
 - (void)remoteInteractionSessionSetText:(NSString *)arg1;
+- (void)requestWithInfo:(NSDictionary *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)retriggerProximityPairing:(void (^)(NSError *))arg1;
+- (void)retriggerProximitySetup:(void (^)(NSError *))arg1;
 - (void)serviceActivate:(SFService *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)serviceActivateTLSWithCompletion:(void (^)(NSError *))arg1;
+- (void)servicePairTLSWithPeer:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)serviceReceivedTLSData:(NSData *)arg1 type:(unsigned char)arg2 peer:(NSUUID *)arg3;
 - (void)serviceSendEvent:(SFEventMessage *)arg1;
 - (void)serviceSendFrameType:(unsigned char)arg1 data:(NSData *)arg2 peer:(NSUUID *)arg3;
 - (void)serviceSendRequest:(SFRequestMessage *)arg1;
 - (void)serviceSendResponse:(SFResponseMessage *)arg1;
+- (void)serviceSendTLSEncryptedObject:(NSDictionary *)arg1 toPeer:(NSUUID *)arg2;
 - (void)serviceUpdate:(SFService *)arg1;
 - (void)sessionActivate:(SFSession *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)sessionReceivedTLSData:(NSData *)arg1 type:(unsigned char)arg2;
 - (void)sessionSendEvent:(SFEventMessage *)arg1;
 - (void)sessionSendFrameType:(unsigned char)arg1 data:(NSData *)arg2;
 - (void)sessionSendRequest:(SFRequestMessage *)arg1;
 - (void)sessionSendResponse:(SFResponseMessage *)arg1;
+- (void)sessionSendTLSEncryptedObject:(NSDictionary *)arg1;
+- (void)setupDevice:(SFDevice *)arg1 homeIdentifier:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)showDevicePickerWithInfo:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)statusInfoWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)triggerHomeKitDeviceDetectedWithURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)userNotificationPresent:(SFUserNotification *)arg1;
+- (void)wifiPasswordSharingAvailabilityWithCompletion:(void (^)(unsigned int, NSError *))arg1;
 @end
 

@@ -6,17 +6,17 @@
 
 #import <CloudKit/CKOperation.h>
 
-@class NSMutableArray;
+@class NSMutableDictionary;
 
 @interface CKDiscoverAllUserIdentitiesOperation : CKOperation
 {
     CDUnknownBlockType _userIdentityDiscoveredBlock;
     CDUnknownBlockType _discoverAllUserIdentitiesCompletionBlock;
-    NSMutableArray *_discoveredIdentities;
+    NSMutableDictionary *_identityToContactIdentifiers;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType discoverAllUserIdentitiesCompletionBlock; // @synthesize discoverAllUserIdentitiesCompletionBlock=_discoverAllUserIdentitiesCompletionBlock;
-@property (strong, nonatomic) NSMutableArray *discoveredIdentities; // @synthesize discoveredIdentities=_discoveredIdentities;
+@property (strong, nonatomic) NSMutableDictionary *identityToContactIdentifiers; // @synthesize identityToContactIdentifiers=_identityToContactIdentifiers;
 @property (copy, nonatomic) CDUnknownBlockType userIdentityDiscoveredBlock; // @synthesize userIdentityDiscoveredBlock=_userIdentityDiscoveredBlock;
 
 - (void).cxx_destruct;
@@ -27,7 +27,6 @@
 - (id)init;
 - (Class)operationInfoClass;
 - (void)performCKOperation;
-- (void)setLongLived:(BOOL)arg1;
 
 @end
 

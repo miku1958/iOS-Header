@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSSet, VKPolylineOverlay, VKPolylineOverlayRenderRegion;
 @protocol VKRouteLineObserverProtocol;
@@ -30,13 +30,14 @@ __attribute__((visibility("hidden")))
     double _lastTrafficTimeStamp;
     NSSet *_retainedTiles;
     VKPolylineOverlayRenderRegion *_renderRegion;
+    struct ManeuverArrowCoordinates _maneuverArrowCoordinates;
+    double _builtViewUnitsPerPoint;
 }
 
 @property (readonly, nonatomic) Box_3d7e3c2c bounds; // @synthesize bounds=_bounds;
 @property BOOL hasNewRoadMatches; // @synthesize hasNewRoadMatches=_hasNewRoadMatches;
-@property (readonly, nonatomic) BOOL needsUpdate;
 @property (nonatomic) id<VKRouteLineObserverProtocol> observer; // @synthesize observer=_observer;
-@property (nonatomic) VKPolylineOverlay *overlay; // @synthesize overlay=_overlay;
+@property (readonly, nonatomic) VKPolylineOverlay *overlay; // @synthesize overlay=_overlay;
 @property (readonly, nonatomic) vector_8449fd58 sections; // @synthesize sections=_sections;
 @property (nonatomic) double simplificationEpsilonPoints; // @synthesize simplificationEpsilonPoints=_simplificationEpsilonPoints;
 
@@ -44,13 +45,19 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_updateBounds:(id)arg1;
 - (void)_updateTilesCovered:(id)arg1;
-- (BOOL)buildRouteLineForPainter:(id)arg1 keysInView:(id)arg2 tiles:(id)arg3 containerModel:(id)arg4 viewUnitsPerPoint:(double)arg5 force:(BOOL)arg6 selected:(BOOL)arg7;
+- (double)boundsUnitsPerMeter;
+- (BOOL)buildRouteLine:(id)arg1 tiles:(id)arg2 viewUnitsPerPoint:(double)arg3 force:(BOOL)arg4 selected:(BOOL)arg5 isNavMode:(BOOL)arg6;
 - (void)createMeshIfNecessary:(long long)arg1;
 - (void)dealloc;
 - (void)forEachSection:(CDUnknownBlockType)arg1;
 - (void)generateArrowsForManeuverDisplayMode:(int)arg1 routeLineWidth:(double)arg2;
+- (id)initWithPolylineOverlay:(id)arg1;
+- (Matrix_08d701e4)inverseManeuverTransform;
 - (BOOL)isTrafficUpToDate;
 - (BOOL)isTrafficUptoDate:(double)arg1;
+- (vector_1a7ef145)maneuverPoints;
+- (Matrix_08d701e4)maneuverTransform;
+- (BOOL)needsUpdateForViewingScale:(double)arg1;
 - (void)splitRouteLineAtAnnotation:(id)arg1;
 
 @end

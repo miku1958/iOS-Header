@@ -6,30 +6,28 @@
 
 #import <Foundation/NSObject.h>
 
-@class MPMediaItem, MPMediaPlaylist, MPMediaQuery, MPRadioStation, NSArray, NSDictionary, NSString;
+@class MPMediaItem, MPMediaPlaylist, MPMediaQuery, MPMusicPlayerQueueDescriptor, MPRadioStation, NSArray, NSDictionary, NSString;
 
 @interface MPMusicPlayerClientState : NSObject
 {
-    BOOL _allowsBackgroundVideo;
+    BOOL _hasAudioBackgroundMode;
+    BOOL _seeking;
+    BOOL _useApplicationSpecificQueue;
     int _backgroundPlaybackAccess;
     MPMediaItem *_firstItem;
     MPMediaPlaylist *_geniusMixPlaylist;
-    BOOL _hasAudioBackgroundMode;
     MPMediaQuery *_query;
-    MPRadioStation *_radioStation;
     long long _repeatMode;
-    BOOL _seeking;
     long long _shuffleMode;
-    BOOL _useApplicationSpecificQueue;
-    BOOL _videoPlaybackEnabled;
     NSDictionary *_assetStoreFrontOverrides;
     NSDictionary *_endTimeModifications;
+    MPRadioStation *_radioStation;
     NSString *_startItemID;
     NSDictionary *_startTimeModifications;
     NSArray *_storeIDs;
+    MPMusicPlayerQueueDescriptor *_queueDescriptor;
 }
 
-@property (nonatomic) BOOL allowsBackgroundVideo; // @synthesize allowsBackgroundVideo=_allowsBackgroundVideo;
 @property (copy, nonatomic) NSDictionary *assetStoreFrontOverrides; // @synthesize assetStoreFrontOverrides=_assetStoreFrontOverrides;
 @property (nonatomic) int backgroundPlaybackAccess; // @synthesize backgroundPlaybackAccess=_backgroundPlaybackAccess;
 @property (copy, nonatomic) NSDictionary *endTimeModifications; // @synthesize endTimeModifications=_endTimeModifications;
@@ -37,6 +35,7 @@
 @property (strong, nonatomic) MPMediaPlaylist *geniusMixPlaylist; // @synthesize geniusMixPlaylist=_geniusMixPlaylist;
 @property (nonatomic) BOOL hasAudioBackgroundMode; // @synthesize hasAudioBackgroundMode=_hasAudioBackgroundMode;
 @property (strong, nonatomic) MPMediaQuery *query; // @synthesize query=_query;
+@property (strong, nonatomic) MPMusicPlayerQueueDescriptor *queueDescriptor; // @synthesize queueDescriptor=_queueDescriptor;
 @property (strong, nonatomic) MPRadioStation *radioStation; // @synthesize radioStation=_radioStation;
 @property (nonatomic) long long repeatMode; // @synthesize repeatMode=_repeatMode;
 @property (nonatomic) BOOL seeking; // @synthesize seeking=_seeking;
@@ -45,7 +44,6 @@
 @property (copy, nonatomic) NSDictionary *startTimeModifications; // @synthesize startTimeModifications=_startTimeModifications;
 @property (copy, nonatomic) NSArray *storeIDs; // @synthesize storeIDs=_storeIDs;
 @property (nonatomic) BOOL useApplicationSpecificQueue; // @synthesize useApplicationSpecificQueue=_useApplicationSpecificQueue;
-@property (nonatomic) BOOL videoPlaybackEnabled; // @synthesize videoPlaybackEnabled=_videoPlaybackEnabled;
 
 - (void).cxx_destruct;
 

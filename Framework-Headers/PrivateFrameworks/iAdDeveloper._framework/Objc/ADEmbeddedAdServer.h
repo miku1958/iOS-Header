@@ -56,9 +56,10 @@
 + (id)manifestForAdAtURL:(id)arg1;
 + (id)supportedDevicesForAdProperties:(id)arg1;
 - (id)_actionDictionaryFromProperties:(id)arg1 path:(id)arg2 error:(id *)arg3;
-- (id)_adDataForPath:(id)arg1 creative:(id)arg2 error:(id *)arg3;
+- (id)_adDataForPath:(id)arg1 creative:(id)arg2 requester:(id)arg3 error:(id *)arg4;
 - (id)_defaultResponseForBatchRequest:(id)arg1;
 - (id)_handleAdSlotRequest:(id)arg1 message:(id)arg2;
+- (id)_handleAdSpaceStatusEventRequest:(id)arg1 message:(id)arg2;
 - (id)_handleBatchRequest:(id)arg1 message:(id)arg2;
 - (id)_handleConfigurationRequest:(id)arg1 message:(id)arg2;
 - (id)_handleGenericAnalyticsRequest:(id)arg1 message:(id)arg2 type:(int)arg3;
@@ -81,14 +82,13 @@
 - (id)_handleRewardsCodeResultRequest:(id)arg1 message:(id)arg2;
 - (id)_handleSegmentUpdateRequest:(id)arg1 message:(id)arg2;
 - (id)_handleServerErrorRequest:(id)arg1 message:(id)arg2;
-- (id)_handleUserTargetingRequest:(id)arg1 message:(id)arg2;
 - (id)_integerColorFromStringColor:(id)arg1;
 - (id)_mimeTypeForExtension:(id)arg1;
 - (BOOL)_tryAddingAdTagContentStringForCreative:(id)arg1 toAdReponse:(id)arg2 withAdPath:(id)arg3;
 - (id)_webArchiveFilenameForDirectory:(id)arg1 withBaseURL:(id)arg2;
 - (id)_webResourceForPath:(id)arg1 url:(id)arg2;
 - (id)_webResourcesInDirectory:(id)arg1 baseURL:(id)arg2;
-- (id)adDataForAdBundleAtPath:(id)arg1 creative:(id)arg2 allowWebArchive:(BOOL)arg3;
+- (id)adDataForAdBundleAtPath:(id)arg1 creative:(id)arg2 requesterId:(id)arg3 allowWebArchive:(BOOL)arg4;
 - (void)dealloc;
 - (void)httpServer:(id)arg1 closedConnection:(id)arg2;
 - (void)httpServer:(id)arg1 closedConnection:(id)arg2 withError:(id)arg3;

@@ -8,7 +8,8 @@
 
 #import <Symbolication/VMUCommonGraphInterface-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, VMUClassInfoMap, VMUNodeToStringMap, VMURangeToStringMap;
+@class NSArray, NSDictionary, NSString, VMUClassInfoMap, VMUDebugTimer, VMUGraphStackLogReader, VMUNodeToStringMap, VMURangeToStringMap;
+@protocol VMUStackLogReader;
 
 @interface VMUProcessObjectGraph : VMUObjectGraph <VMUCommonGraphInterface>
 {
@@ -18,32 +19,40 @@
     NSArray *_regions;
     unsigned int _regionCount;
     NSArray *_zoneNames;
-    NSString *_procDescription;
-    NSString *_procName;
+    NSString *_processName;
+    NSString *_processDescriptionString;
+    NSString *_binaryImagesDescription;
     VMURangeToStringMap *_threadNameRanges;
     VMURangeToStringMap *_binarySectionNameRanges;
     VMURangeToStringMap *_regionSymbolNameRanges;
+    BOOL _gotObjcClassStructureRanges;
     NSDictionary *_pthreadOffsets;
     VMUNodeToStringMap *_nodeLabels;
     void *_userMarked;
+    VMUGraphStackLogReader *_stackLogReader;
+    VMUDebugTimer *_debugTimer;
 }
 
+@property (readonly, nonatomic) NSString *binaryImagesDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) VMUDebugTimer *debugTimer; // @synthesize debugTimer=_debugTimer;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL is64bit;
 @property (readonly, nonatomic) unsigned int nodeCount;
 @property (readonly, nonatomic) unsigned int nodeNamespaceSize;
 @property (readonly, nonatomic) int pid; // @synthesize pid=_pid;
-@property (copy, nonatomic) NSString *processName;
+@property (readonly, nonatomic) NSString *processDescriptionString;
+@property (readonly, nonatomic) NSString *processName;
 @property (readonly, nonatomic) VMUClassInfoMap *realizedClasses;
 @property (readonly, nonatomic) unsigned int regionCount; // @synthesize regionCount=_regionCount;
 @property (nonatomic) unsigned long long snapshotMachTime; // @synthesize snapshotMachTime=_machAbsolute;
+@property (strong, nonatomic) id<VMUStackLogReader> stackLogReader; // @synthesize stackLogReader=_stackLogReader;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSString *toolHeaderDescription;
 @property (readonly, nonatomic) unsigned int vmPageSize; // @synthesize vmPageSize=_kernPageSize;
 @property (readonly, nonatomic) unsigned int zoneCount;
 
+- (void).cxx_destruct;
 - (void)_deriveObjcClassStructureRanges;
 - (id)_descriptionForRegionAddress:(unsigned long long)arg1 withOffset:(unsigned long long)arg2 showSegment:(BOOL)arg3;
 - (id)_detailedNodeOffsetDescription:(CDStruct_8b65991f)arg1 withSourceNode:(unsigned int)arg2 destinationNode:(unsigned int)arg3 alignmentSpacing:(unsigned int)arg4;
@@ -57,6 +66,7 @@
 - (void)dealloc;
 - (unsigned int)enumerateReferencesFromDataRegion:(id)arg1 atGlobalSymbol:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (unsigned int)enumerateRegionsWithBlock:(CDUnknownBlockType)arg1;
+- (BOOL)hasLabelsForNodes;
 - (id)initWithArchived:(id)arg1 version:(long long)arg2 options:(unsigned long long)arg3;
 - (id)initWithPid:(int)arg1 nodes:(struct _VMUBlockNode *)arg2 nodeCount:(unsigned int)arg3 zoneNames:(id)arg4 classInfoMap:(id)arg5 regions:(id)arg6 pthreadOffsets:(id)arg7 userMarked:(void *)arg8;
 - (id)labelForNode:(unsigned int)arg1;
@@ -72,14 +82,18 @@
 - (void)refineTypesWithOverlay:(id)arg1;
 - (id)regionSymbolNameForAddress:(unsigned long long)arg1;
 - (struct _VMURange)regionSymbolRangeContainingAddress:(unsigned long long)arg1;
+- (void)setBinaryImagesDescription:(id)arg1;
 - (void)setBinarySectionName:(id)arg1 forRange:(struct _VMURange)arg2;
 - (void)setLabel:(id)arg1 forNode:(unsigned int)arg2;
+- (void)setProcessDescriptionString:(id)arg1;
+- (void)setProcessName:(id)arg1;
 - (void)setRegionSymbolName:(id)arg1 forRange:(struct _VMURange)arg2;
 - (void)setThreadName:(id)arg1 forRange:(struct _VMURange)arg2;
 - (void)setUserMarked:(void *)arg1;
 - (id)shortLabelForMallocNode:(unsigned int)arg1;
 - (id)shortNodeDescription:(unsigned int)arg1;
 - (id)threadNameForAddress:(unsigned long long)arg1;
+- (id)vmuVMRegionForAddress:(unsigned long long)arg1;
 - (id)vmuVMRegionForNode:(unsigned int)arg1;
 - (id)zoneNameForIndex:(unsigned int)arg1;
 

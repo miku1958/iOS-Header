@@ -25,19 +25,19 @@
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
-- (BOOL)_areEligibleSceneSettings:(id)arg1 forProcess:(id)arg2;
+- (BOOL)_areEligibleSceneSettings:(id)arg1 forScene:(id)arg2;
 - (id)_bandForSceneLevel:(double)arg1 createIfNeeded:(BOOL)arg2;
 - (id)_deactivationBandsForLevel:(double)arg1;
 - (unsigned long long)_deactivationReasonsForScene:(id)arg1 withSettings:(id)arg2;
-- (BOOL)_isEligibleDisplay:(id)arg1;
+- (BOOL)_isEligibleDisplayIdentity:(id)arg1;
 - (BOOL)_isEligibleProcess:(id)arg1;
-- (BOOL)_isEligibleScene:(id)arg1;
-- (BOOL)_isEligibleScene:(id)arg1 forSettings:(id)arg2;
+- (BOOL)_isEligibleScene:(id)arg1 withSettings:(id)arg2;
 - (void)_noteSceneWillUpdate:(id)arg1 oldSettings:(id)arg2 newSettings:(id)arg3;
-- (void)_setDeactivationReasons:(unsigned long long)arg1 onScene:(id)arg2 withSettings:(id)arg3;
+- (void)_setDeactivationReasons:(unsigned long long)arg1 onScene:(id)arg2 withSettings:(id)arg3 reason:(id)arg4;
+- (BOOL)_shouldTrackSceneInitiallyAtInitialization:(id)arg1;
 - (void)_trackScene:(id)arg1;
 - (void)_untrackScene:(id)arg1;
-- (void)_updateAllScenesForBand:(id)arg1 withTransitionContext:(id)arg2;
+- (void)_updateAllScenesForBand:(id)arg1 withTransitionContext:(id)arg2 reason:(id)arg3;
 - (void)addAssertion:(id)arg1 withTransitionContext:(id)arg2;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

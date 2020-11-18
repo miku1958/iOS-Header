@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) BOOL isOTAWordlistCandidate;
 @property (readonly, nonatomic) BOOL isPersonName;
 @property (readonly, nonatomic) BOOL isPredictionCandidate;
+@property (readonly, nonatomic) BOOL isRegionalCandidate;
 @property (readonly, nonatomic) BOOL isSyntheticCandidate;
 @property (readonly, nonatomic) BOOL isUserWordCandidate;
 @property (readonly, nonatomic) struct MecabraCandidateBase *rawCandidate;

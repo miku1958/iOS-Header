@@ -16,7 +16,6 @@
     BOOL _update;
     BOOL _sticker;
     BOOL _shouldExpire;
-    BOOL _pluginPayloadSent;
     BOOL _isPlayed;
     BOOL _isFromMe;
     NSAttributedString *_text;
@@ -26,14 +25,17 @@
     NSString *_statusText;
     NSDictionary *_userInfo;
     NSString *_messageGUID;
+    NSString *_associatedMessageGUID;
     NSString *_pluginBundleID;
     NSArray *_consumedSessionPayloads;
+    NSString *_pluginSessionGUID;
     DDScannerResult *_dataDetectedResult;
     NSArray *_attachments;
     IMBalloonPluginDataSource *_datasource;
     NSString *_sender;
 }
 
+@property (strong, nonatomic) NSString *associatedMessageGUID; // @synthesize associatedMessageGUID=_associatedMessageGUID;
 @property (strong, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
 @property (strong, nonatomic) NSString *breadcrumbText; // @synthesize breadcrumbText=_breadcrumbText;
 @property (strong, nonatomic) NSArray *consumedSessionPayloads; // @synthesize consumedSessionPayloads=_consumedSessionPayloads;
@@ -44,7 +46,7 @@
 @property (nonatomic) BOOL isPlayed; // @synthesize isPlayed=_isPlayed;
 @property (strong, nonatomic) NSString *messageGUID; // @synthesize messageGUID=_messageGUID;
 @property (strong, nonatomic) NSString *pluginBundleID; // @synthesize pluginBundleID=_pluginBundleID;
-@property (readonly, nonatomic) BOOL pluginPayloadSent; // @synthesize pluginPayloadSent=_pluginPayloadSent;
+@property (strong, nonatomic) NSString *pluginSessionGUID; // @synthesize pluginSessionGUID=_pluginSessionGUID;
 @property (copy, nonatomic) NSString *sender; // @synthesize sender=_sender;
 @property (nonatomic) BOOL shouldExpire; // @synthesize shouldExpire=_shouldExpire;
 @property (readonly, nonatomic) BOOL shouldHideAttachments;

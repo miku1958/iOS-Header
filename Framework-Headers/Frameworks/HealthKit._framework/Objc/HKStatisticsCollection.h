@@ -34,7 +34,6 @@
 - (void)_resetStatistics:(id)arg1;
 - (id)_statisticsForIndex:(long long)arg1;
 - (id)_statisticsPeriodAndIndex:(long long *)arg1 forDate:(id)arg2;
-- (id)_statisticsPeriodsFromDate:(id)arg1 toDate:(id)arg2;
 - (id)_timePeriodForDate:(id)arg1;
 - (void)_timePeriodForStatisticsAtIndex:(long long)arg1 startDate:(id *)arg2 endDate:(id *)arg3;
 - (void)enumerateStatisticsFromDate:(id)arg1 toDate:(id)arg2 withBlock:(CDUnknownBlockType)arg3;

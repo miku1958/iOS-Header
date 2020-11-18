@@ -10,15 +10,19 @@
 
 @interface RUISpinnerRecord : NSObject
 {
+    BOOL _hidesBackButton;
     NSArray *_rightItems;
     NSArray *_leftItems;
     UINavigationItem *_navigationItem;
     NSString *_title;
+    NSString *_spinningTitle;
 }
 
+@property (nonatomic) BOOL hidesBackButton; // @synthesize hidesBackButton=_hidesBackButton;
 @property (copy, nonatomic) NSArray *leftItems; // @synthesize leftItems=_leftItems;
 @property (strong, nonatomic) UINavigationItem *navigationItem; // @synthesize navigationItem=_navigationItem;
 @property (copy, nonatomic) NSArray *rightItems; // @synthesize rightItems=_rightItems;
+@property (copy, nonatomic) NSString *spinningTitle; // @synthesize spinningTitle=_spinningTitle;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;

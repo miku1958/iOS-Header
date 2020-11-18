@@ -30,6 +30,7 @@
 
 + (id)instantiateWithExtension:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+- (struct CGRect)_defaultInitialViewFrame;
 - (void)_displayError:(id)arg1;
 - (void)_displayRemoteViewController;
 - (void)dealloc;

@@ -18,6 +18,7 @@
 + (BOOL)isAvailable;
 + (BOOL)supportsSecureCoding;
 + (id)swimLocationName:(long long)arg1;
++ (id)swimWorkoutInstance:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

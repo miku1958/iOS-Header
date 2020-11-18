@@ -7,27 +7,34 @@
 #import <objc/NSObject.h>
 
 #import <HealthKit/NSCopying-Protocol.h>
+#import <HealthKit/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface HKNanoSyncPairedDeviceInfo : NSObject <NSCopying>
+@interface HKNanoSyncPairedDeviceInfo : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_sourceBundleIdentifier;
     NSString *_systemBuildVersion;
-    BOOL _active;
+    NSString *_productType;
+    unsigned long long _state;
     int _protocolVersion;
 }
 
 @property (readonly, getter=isActive) BOOL active;
+@property (readonly, copy) NSString *productType;
 @property (readonly) int protocolVersion;
+@property (readonly, getter=isRestoreComplete) BOOL restoreComplete;
 @property (readonly, copy) NSString *sourceBundleIdentifier;
 @property (readonly, copy) NSString *systemBuildVersion;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithSourceBundleIdentifier:(id)arg1 systemBuildVersion:(id)arg2 active:(BOOL)arg3 protocolVersion:(int)arg4;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithSourceBundleIdentifier:(id)arg1 systemBuildVersion:(id)arg2 productType:(id)arg3 active:(BOOL)arg4 restoreComplete:(BOOL)arg5 protocolVersion:(int)arg6;
 - (BOOL)isEqual:(id)arg1;
 
 @end

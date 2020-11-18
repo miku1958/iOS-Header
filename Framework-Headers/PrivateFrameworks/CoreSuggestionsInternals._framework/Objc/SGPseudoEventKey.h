@@ -26,9 +26,11 @@
 
 + (BOOL)isSupportedEntityType:(long long)arg1;
 - (void).cxx_destruct;
+- (id)alternativeKeysForEventKitQuery;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithGloballyUniqueId:(id)arg1;
 - (id)initWithSerialized:(id)arg1;
+- (BOOL)isDropoff;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPseudoEventKey:(id)arg1;
 - (id)keyForEventKitQuery;

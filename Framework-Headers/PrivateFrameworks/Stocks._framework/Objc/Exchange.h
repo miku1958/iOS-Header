@@ -11,12 +11,14 @@
 @interface Exchange : NSObject
 {
     NSString *_name;
+    NSDate *_lastCloseDate;
     NSDate *_nextOpenDate;
     long long _status;
     double _streamInterval;
     double _lastUpdateTime;
 }
 
+@property (strong, nonatomic) NSDate *lastCloseDate; // @synthesize lastCloseDate=_lastCloseDate;
 @property (readonly, nonatomic) double lastUpdateTime; // @synthesize lastUpdateTime=_lastUpdateTime;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSDate *nextOpenDate; // @synthesize nextOpenDate=_nextOpenDate;

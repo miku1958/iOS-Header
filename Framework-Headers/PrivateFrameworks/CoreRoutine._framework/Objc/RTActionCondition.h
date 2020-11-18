@@ -8,28 +8,26 @@
 
 #import <CoreRoutine/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSString, RTLocationOfInterest;
+@class NSArray, RTAction;
 
 @interface RTActionCondition : NSObject <NSSecureCoding>
 {
-    RTLocationOfInterest *_locationOfInterest;
-    long long _locationOfInterestState;
-    NSDate *_date;
-    NSString *_depiction;
+    RTAction *_action;
+    NSArray *_dateIntervals;
 }
 
-@property (readonly, nonatomic) NSDate *date; // @synthesize date=_date;
-@property (readonly, nonatomic) NSString *depiction; // @synthesize depiction=_depiction;
-@property (readonly, nonatomic) RTLocationOfInterest *locationOfInterest; // @synthesize locationOfInterest=_locationOfInterest;
-@property (readonly, nonatomic) long long locationOfInterestState; // @synthesize locationOfInterestState=_locationOfInterestState;
+@property (readonly, nonatomic) RTAction *action; // @synthesize action=_action;
+@property (readonly, nonatomic) NSArray *dateIntervals; // @synthesize dateIntervals=_dateIntervals;
 
-+ (id)locationOfInterestStateToString:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)init;
+- (id)initWithAction:(id)arg1 dateIntervals:(id)arg2;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithLoi:(id)arg1 loiState:(long long)arg2 date:(id)arg3 depiction:(id)arg4;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToActionCondition:(id)arg1;
 
 @end
 

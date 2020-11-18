@@ -34,12 +34,12 @@
 @property (nonatomic) BOOL supportsRestaurantReservations; // @synthesize supportsRestaurantReservations=_supportsRestaurantReservations;
 
 + (Class)handledSchemesType;
+- (void).cxx_destruct;
 - (int)StringAsRestaurantReservationExtensionSupport:(id)arg1;
 - (void)addHandledSchemes:(id)arg1;
 - (void)clearHandledSchemes;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)handledSchemesAtIndex:(unsigned long long)arg1;

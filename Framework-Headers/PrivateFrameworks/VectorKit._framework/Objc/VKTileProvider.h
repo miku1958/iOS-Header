@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/VKLRUCacheDelegate-Protocol.h>
 #import <VectorKit/VKTileSourceClient-Protocol.h>
 
-@class GEOResourceManifestConfiguration, GEOTileKeyList, NSArray, NSLocale, NSMutableSet, NSSet, NSString, VKMapRasterizer, VKTileCache, VKTileKeyList, VKTileSelection, VKTileSource, VKTimer, _VKTileProviderTimerTarget;
+@class GEOResourceManifestConfiguration, GEOTileKeyList, NSArray, NSLocale, NSMutableSet, NSSet, NSString, VKMapRasterizer, VKTileCache, VKTileKeyList, VKTileSource, VKTimer, _VKTileProviderTimerTarget;
 @protocol VKMapLayer, VKTileProviderClient;
 
 __attribute__((visibility("hidden")))
@@ -17,11 +17,14 @@ __attribute__((visibility("hidden")))
 {
     id<VKTileProviderClient> _client;
     int _mode;
-    VKTileSelection *_tileSelection;
+    struct unique_ptr<md::TileSelector, std::__1::default_delete<md::TileSelector>> _tileSelector;
     VKTileKeyList *_keysInView;
     VKTileKeyList *_neighborKeys;
     VKTileKeyList *_prefetchKeys;
     VKTimer *_evaluationTimer;
+    double _lastFetchTime;
+    double _lastSelectTime;
+    double _lastHoleLogTime;
     VKTimer *_prefetchTimer;
     NSMutableSet *_tilesToRender;
     NSArray *_holes;
@@ -29,11 +32,13 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_fallbackTiles;
     NSMutableSet *_neighborTiles;
     unsigned long long _neighborMode;
-    BOOL _fallbackEnabled;
+    unsigned char _fallbackFunction;
+    BOOL _useStableFallback;
+    VKTileKeyList *_previousTiles;
     BOOL _prefetchEnabled;
     VKTileCache *_tilePool;
-    VKTileSource *_tilesSources[34];
-    VKTileSource *_optionalTileSources[34];
+    VKTileSource *_tilesSources[33];
+    VKTileSource *_optionalTileSources[33];
     shared_ptr_a3c46825 _styleManager;
     float _loadingProgress;
     BOOL _hasFailedTile;
@@ -46,7 +51,6 @@ __attribute__((visibility("hidden")))
     id<VKMapLayer> _debugLayer;
     GEOTileKeyList *_debugLayerKeys;
     unsigned long long _tileReserveLimit;
-    unsigned long long _tileMaximumLimit;
     unsigned int _prefetchNumberOfScreens;
     BOOL _useSmallTileCache;
     float _lastMidDisplayZoomLevel;
@@ -58,6 +62,7 @@ __attribute__((visibility("hidden")))
     _VKTileProviderTimerTarget *_prefetchTarget;
     GEOResourceManifestConfiguration *_manifestConfiguration;
     NSLocale *_locale;
+    shared_ptr_e963992e _taskContext;
 }
 
 @property (nonatomic) id<VKTileProviderClient> client; // @synthesize client=_client;
@@ -66,7 +71,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) id<VKMapLayer> debugLayer; // @synthesize debugLayer=_debugLayer;
 @property (readonly, nonatomic) GEOTileKeyList *debugLayerKeys; // @synthesize debugLayerKeys=_debugLayerKeys;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, getter=isFallbackEnabled) BOOL fallbackEnabled; // @synthesize fallbackEnabled=_fallbackEnabled;
+@property (nonatomic) unsigned char fallbackFunction; // @synthesize fallbackFunction=_fallbackFunction;
 @property (readonly, nonatomic, getter=isFinishedLoading) BOOL finishedLoading; // @synthesize finishedLoading=_finishedLoading;
 @property (readonly, nonatomic, getter=isFinishedLoadingOptionalLayers) BOOL finishedLoadingOptionalLayers; // @synthesize finishedLoadingOptionalLayers=_finishedLoadingOptionalLayers;
 @property (readonly, nonatomic) BOOL hasFailedTile; // @synthesize hasFailedTile=_hasFailedTile;
@@ -82,31 +87,34 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) shared_ptr_a3c46825 styleManager; // @synthesize styleManager=_styleManager;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSSet *tilesToRender; // @synthesize tilesToRender=_tilesToRender;
-@property (nonatomic) BOOL useSmallTileCache; // @synthesize useSmallTileCache=_useSmallTileCache;
+@property (nonatomic) BOOL useStableFallback; // @synthesize useStableFallback=_useStableFallback;
 @property (readonly, nonatomic) NSArray *visibleTileSets;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_dirtyTile:(id)arg1 source:(id)arg2 layer:(unsigned long long)arg3;
+- (void)_dirtyTile:(id)arg1 source:(id)arg2 layer:(unsigned char)arg3;
 - (void)_disableTimers;
 - (void)_fetchAvailableTiles:(BOOL)arg1;
 - (void)_fillHoles:(id)arg1 context:(struct LayoutContext *)arg2;
 - (void)_prefetchTiles;
 - (void)_resizeCache;
 - (void)_updateTimers:(int)arg1;
+- (void)bestAccuracyFallbackForHoles:(id)arg1 context:(struct LayoutContext *)arg2 previousTiles:(id)arg3;
 - (BOOL)cache:(id)arg1 willEvictObject:(id)arg2 forKey:(const struct VKCacheKey *)arg3;
 - (BOOL)canRenderTile:(id)arg1;
 - (void)cancelLoadForMapTile:(id)arg1;
 - (void)cancelLoadingTiles;
-- (void)changeTileForKey:(const struct VKTileKey *)arg1 toState:(unsigned long long)arg2 withMetadata:(id)arg3 withTile:(id)arg4 forLayer:(unsigned long long)arg5;
+- (void)changeTileForKey:(const struct VKTileKey *)arg1 toState:(unsigned long long)arg2 withMetadata:(id)arg3 withTile:(id)arg4 forLayer:(unsigned char)arg5;
 - (void)clearScene;
 - (void)configureTileSelection;
 - (void)dealloc;
+- (id)describeReasonForTileBeingHole:(id)arg1 atTime:(double)arg2;
 - (void)describeTilesFromList:(id)arg1 output:(id)arg2;
 - (void)describeTilesFromList:(id)arg1 outputtoDict:(id)arg2;
 - (id)detailedDescription;
 - (id)detailedDescriptionDictionaryRepresentation;
 - (void)didStopLoadingTilesWithError:(id)arg1;
+- (void)dirtyTile:(const struct VKTileKey *)arg1 source:(id)arg2;
 - (void)dirtyTilesFromTileSource:(id)arg1;
 - (BOOL)evaluateNeighborTileForRendering:(id)arg1;
 - (BOOL)evaluateSelectedTileForRendering:(id)arg1;
@@ -116,26 +124,33 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasAllTileData:(id)arg1;
 - (BOOL)hasRequiredTileData:(id)arg1;
 - (BOOL)inFailedState:(id)arg1;
-- (id)initWithClient:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3;
+- (id)initWithClient:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 taskContext:(shared_ptr_e963992e)arg4 tileSelectionProfile:(unique_ptr_6bf34eb3 *)arg5;
 - (void)invalidateRasterizedTiles;
 - (void)invalidateTilesFromTileSource:(id)arg1;
-- (unsigned long long)layerForSource:(id)arg1;
+- (unsigned char)layerForSource:(id)arg1;
+- (void)logPersistentHoles;
+- (void)populateDebugNode:(shared_ptr_eafb90f9)arg1;
+- (void)populateDebugNodeForKeys:(shared_ptr_eafb90f9)arg1 keys:(id)arg2;
+- (void)populateDebugNodeForTiles:(shared_ptr_eafb90f9)arg1 tiles:(id)arg2;
 - (void)prepareTileForRendering:(id)arg1;
 - (void)quiesce;
 - (void)rasterizer:(id)arg1 didMakeRasterTile:(id)arg2 forKey:(const struct VKTileKey *)arg3;
+- (void)releaseBestAccuracyFallbackTilesForTile:(id)arg1 context:(struct LayoutContext *)arg2 previousTiles:(id)arg3;
 - (void)releaseFallbackTileForRendering:(id)arg1;
-- (void)releaseFallbackTilesForTile:(id)arg1 context:(struct LayoutContext *)arg2;
 - (void)releaseNeighborTileForRendering:(id)arg1;
 - (void)releaseTileForRendering:(id)arg1;
-- (void)removeTileSourceForMapLayer:(unsigned long long)arg1;
+- (void)removeTileSourceForMapLayer:(unsigned char)arg1;
 - (void)requireRasterization:(id)arg1;
+- (void)rescindOverlappedTiles;
+- (void)rescindTileForRendering:(id)arg1;
 - (void)retireNeighborTiles:(id)arg1;
 - (void)retireRenderTiles:(id)arg1;
 - (id)selectTiles:(int *)arg1 needRasterization:(BOOL *)arg2;
 - (void)setTileExclusionAreas:(const vector_ea81101c *)arg1;
-- (void)setTileSource:(id)arg1 forMapLayer:(unsigned long long)arg2 optional:(BOOL)arg3;
-- (id)sourceForLayer:(unsigned long long)arg1;
+- (void)setTileSource:(id)arg1 forMapLayer:(unsigned char)arg2 optional:(BOOL)arg3;
+- (id)sourceForLayer:(unsigned char)arg1;
 - (id)sourceForMapLayer:(id)arg1;
+- (BOOL)tile:(id)arg1 hasBecomeTerminalSince:(double)arg2;
 - (BOOL)tileExclusionAreaVisible;
 - (id)tileForKey:(const struct VKTileKey *)arg1;
 - (BOOL)tileMatters:(id)arg1;
@@ -147,7 +162,10 @@ __attribute__((visibility("hidden")))
 - (void)tileSource:(id)arg1 invalidateKeys:(id)arg2;
 - (void)tileSource:(id)arg1 invalidateTilesWithState:(unsigned long long)arg2;
 - (BOOL)tileSource:(id)arg1 keyIsNeeded:(const struct VKTileKey *)arg2;
+- (long long)tileSource:(id)arg1 overrideForMaximumZoomLevel:(long long)arg2;
 - (void)tileSourcesDidChange;
+- (void)tileStatusFromList:(id)arg1 canRender:(out id *)arg2 canNotRender:(out id *)arg3;
+- (double)timeTileLastUpdatedHoleStatus:(id)arg1;
 - (void)timerFired:(id)arg1;
 - (void)updateWithContext:(struct LayoutContext *)arg1 selectionScale:(float)arg2;
 - (void)willStartLoadingTiles;

@@ -12,6 +12,7 @@
 {
     BOOL _active;
     BOOL _detached;
+    BOOL _shouldPreserveCurrentContent;
     BOOL _reusable;
     BOOL _wantsVisibleRectChanges;
     NSString *_reuseIdentifier;
@@ -29,6 +30,8 @@
 @property (readonly, nonatomic) PUTileLayoutInfo *presentationLayoutInfo;
 @property (nonatomic, getter=isReusable) BOOL reusable; // @synthesize reusable=_reusable;
 @property (readonly, nonatomic) NSString *reuseIdentifier; // @synthesize reuseIdentifier=_reuseIdentifier;
+@property (readonly, nonatomic) BOOL shouldAvoidInPlaceSnapshottedFadeOut;
+@property (nonatomic) BOOL shouldPreserveCurrentContent; // @synthesize shouldPreserveCurrentContent=_shouldPreserveCurrentContent;
 @property (readonly, weak, nonatomic) PUTilingView *tilingView; // @synthesize tilingView=_tilingView;
 @property (readonly, nonatomic) struct CGRect visibleRect;
 @property (readonly, nonatomic) BOOL wantsVisibleRectChanges; // @synthesize wantsVisibleRectChanges=_wantsVisibleRectChanges;

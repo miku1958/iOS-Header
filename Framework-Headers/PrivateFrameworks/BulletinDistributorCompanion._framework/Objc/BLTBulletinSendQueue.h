@@ -27,12 +27,14 @@
 - (void).cxx_destruct;
 - (void)_queue_performSend;
 - (void)_queue_queuePending;
+- (void)_queue_sendRequest:(id)arg1 type:(unsigned short)arg2 withTimeout:(id)arg3 isTrafficRestricted:(BOOL)arg4 didSend:(CDUnknownBlockType)arg5 didQueue:(CDUnknownBlockType)arg6;
 - (void)_queue_startTimerWithFireDate:(id)arg1;
-- (void)_sendRequest:(id)arg1 type:(unsigned short)arg2 withTimeout:(id)arg3 isTrafficRestricted:(BOOL)arg4 attachmentURL:(id)arg5 attachmentKey:(id)arg6 didSend:(CDUnknownBlockType)arg7 didQueue:(CDUnknownBlockType)arg8;
 - (void)handleFileURL:(id)arg1;
 - (id)init;
 - (void)queuePending;
 - (void)sendNow;
+- (void)sendRequest:(id)arg1 type:(unsigned short)arg2 didSend:(CDUnknownBlockType)arg3 didQueue:(CDUnknownBlockType)arg4;
+- (void)sendRequest:(id)arg1 withTimeout:(id)arg2 isTrafficRestricted:(BOOL)arg3 didSend:(CDUnknownBlockType)arg4;
 
 @end
 

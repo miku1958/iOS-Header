@@ -4,38 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
-@class NSDate, NSDecimalNumber, NSString;
+@class NSDate, NSString;
 
 @interface PKActivityEvent : NSObject
 {
     BOOL _unread;
+    NSString *_eventType;
     NSString *_identifier;
-    NSString *_name;
-    NSString *_email;
-    NSString *_phoneNumber;
-    NSString *_summary;
-    NSDecimalNumber *_amount;
-    NSString *_currencyCode;
     NSDate *_date;
 }
 
-@property (readonly, copy, nonatomic) NSDecimalNumber *amount; // @synthesize amount=_amount;
-@property (readonly, copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
-@property (readonly, nonatomic) NSDate *date; // @synthesize date=_date;
-@property (readonly, copy, nonatomic) NSString *email; // @synthesize email=_email;
+@property (readonly, copy, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (readonly, nonatomic) NSString *eventType; // @synthesize eventType=_eventType;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
-@property (readonly, copy, nonatomic) NSString *summary; // @synthesize summary=_summary;
 @property (readonly, nonatomic, getter=isUnread) BOOL unread; // @synthesize unread=_unread;
 
++ (id)eventsWithTransactions:(id)arg1;
 - (void).cxx_destruct;
-- (void)dealloc;
 - (unsigned long long)hash;
-- (id)init;
-- (id)initWithDictionary:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 date:(id)arg2 unread:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToActivityEvent:(id)arg1;
 

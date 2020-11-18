@@ -6,21 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber, NSString, PKPaymentInstructions;
+@class NSData, NSNumber, NSString;
 
 @interface PKAuthenticatorEvaluationRequest : NSObject
 {
+    BOOL _assumeUserIntentAvailable;
     NSString *_reason;
     NSString *_processName;
     NSNumber *_processIdentifier;
     NSString *_PINTitle;
     NSNumber *_PINLength;
-    PKPaymentInstructions *_instructions;
+    NSData *_externalizedContext;
+    struct __SecAccessControl *_accessControlRef;
 }
 
 @property (copy, nonatomic) NSNumber *PINLength; // @synthesize PINLength=_PINLength;
 @property (copy, nonatomic) NSString *PINTitle; // @synthesize PINTitle=_PINTitle;
-@property (strong, nonatomic) PKPaymentInstructions *instructions; // @synthesize instructions=_instructions;
+@property (nonatomic) struct __SecAccessControl *accessControlRef; // @synthesize accessControlRef=_accessControlRef;
+@property (nonatomic) BOOL assumeUserIntentAvailable; // @synthesize assumeUserIntentAvailable=_assumeUserIntentAvailable;
+@property (strong, nonatomic) NSData *externalizedContext; // @synthesize externalizedContext=_externalizedContext;
 @property (copy, nonatomic) NSNumber *processIdentifier; // @synthesize processIdentifier=_processIdentifier;
 @property (copy, nonatomic) NSString *processName; // @synthesize processName=_processName;
 @property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;

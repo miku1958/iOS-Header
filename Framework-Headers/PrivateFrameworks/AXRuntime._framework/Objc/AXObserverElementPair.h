@@ -13,7 +13,7 @@
 
 @property (readonly, nonatomic) id observer; // @synthesize observer=_observer;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithObserver:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

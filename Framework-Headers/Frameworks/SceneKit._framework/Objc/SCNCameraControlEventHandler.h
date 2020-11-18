@@ -28,9 +28,11 @@
     UIGestureRecognizer *_pinchGesture;
     UIGestureRecognizer *_panGesture;
     UIGestureRecognizer *_rotateGesture;
-    long long _stickyAxis;
+    unsigned long long _stickyAxis;
     struct C3DSphere _viewedObjectSphere;
     unsigned int _isViewedObjectSphereComputed:1;
+    struct os_unfair_lock_s _stateLock;
+    unsigned int _enabled:1;
     unsigned int _hasAutomaticCameraTarget:1;
     unsigned int _automaticCameraTargetUpToDate:1;
     unsigned int _inertia:1;
@@ -59,10 +61,11 @@
 @property double friction;
 @property BOOL gimbalLockMode;
 @property struct SCNVector3 gimbalLockVector;
-@property long long stickyAxis;
+@property unsigned long long stickyAxis;
 
 + (MISSING_TYPE *)frontVectorWithPointOfView:(id)arg1;
 + (struct SCNMatrix4)matrixWithNoRoll:(struct SCNMatrix4)arg1;
+- (BOOL)_3DConnexionIsPressed;
 - (void)_beginTranslateAtLocation:(struct CGPoint)arg1;
 - (double)_browseScale;
 - (BOOL)_freeCameraActivated;
@@ -72,13 +75,14 @@
 - (void)_handlePress:(id)arg1;
 - (void)_handleRotation:(id)arg1;
 - (void)_installFreeViewCameraIfNeeded;
+- (BOOL)_isInertiaRunning;
 - (void)_onInertiaTimer;
 - (void)_prepareFreeViewCamera;
 - (void)_resetBrowseScaleFactor;
 - (void)_resetFreeViewCamera;
-- (void)_rotateWithDrag:(struct CGPoint)arg1 mode:(long long)arg2 stickyAxis:(long long)arg3;
+- (void)_rotateWithDrag:(struct CGPoint)arg1 mode:(long long)arg2 stickyAxis:(unsigned long long)arg3;
+- (void)_setInertiaRunning:(BOOL)arg1;
 - (void)_startBrowsingIfNeeded:(struct CGPoint)arg1;
-- (void)_stopInertiaIfNeeded;
 - (void)_switchToFreeViewCamera;
 - (void)_translateTo:(struct CGPoint)arg1;
 - (float)_translationCoef;
@@ -91,6 +95,7 @@
 - (void)computeAutomaticTargetPoint;
 - (BOOL)computeBoundingSphereOmittingFloorsForNode:(struct __C3DNode *)arg1 sphere:(struct C3DSphere *)arg2;
 - (void)dealloc;
+- (BOOL)enabled;
 - (void)endDraggingWithVelocity:(struct CGPoint)arg1;
 - (void)focusNode:(id)arg1;
 - (id)freeCamera;
@@ -108,10 +113,11 @@
 - (void)sceneDidChange;
 - (void)sceneWillChange;
 - (void)setEnableFreeCamera:(BOOL)arg1;
+- (void)setEnabled:(BOOL)arg1;
 - (void)setZoomFactor:(double)arg1;
 - (void)translateByX:(float)arg1 Y:(float)arg2 Z:(float)arg3;
 - (void)updateBrowseScaleFactor;
-- (void)viewWillDraw;
+- (void)viewWillDrawAtTime:(double)arg1;
 - (struct C3DSphere)viewedObjectSphere;
 - (BOOL)wantsRedraw;
 - (void)zoomBy:(float)arg1;

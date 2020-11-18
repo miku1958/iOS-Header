@@ -8,15 +8,16 @@
 
 #import <HealthDaemon/HDProcessStateObserver-Protocol.h>
 
-@class BKSProcessAssertion, CLInUseAssertion, HDClient, HDProfile, NSString;
+@class BKSProcessAssertion, CLInUseAssertion, HDProfile, HDXPCClient, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDBackgroundWorkoutRunner : NSObject <HDProcessStateObserver>
 {
-    HDClient *_client;
+    HDXPCClient *_client;
     HDProfile *_profile;
     BKSProcessAssertion *_assertion;
     CLInUseAssertion *_coreLocationAssertion;
+    BOOL _shouldAcquireCLAssertion;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
@@ -26,10 +27,14 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_queue_acquireBackgroundRunningAssertion;
+- (void)_queue_acquireCLInUseAssertion;
 - (BOOL)_queue_hasBackgroundPermission;
 - (void)_queue_releaseAssertion;
-- (BOOL)_queue_takeAssertion;
-- (id)initWithClient:(id)arg1 profile:(id)arg2;
+- (void)_queue_releaseBackgroundRunningAssertion;
+- (void)_queue_releaseCLInUseAssertion;
+- (void)_queue_takeAssertion;
+- (id)initWithServer:(id)arg1 profile:(id)arg2;
 - (void)processDidEnterForeground:(id)arg1;
 - (void)start;
 - (void)stop;

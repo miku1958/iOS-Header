@@ -29,7 +29,7 @@
 @property (readonly, nonatomic) long long columnCount;
 @property (readonly, nonatomic) NSString *columnItemType;
 @property (readonly, nonatomic) NSString *columnType;
-@property (strong, nonatomic) IKCSSRule *cssRule; // @synthesize cssRule=_cssRule;
+@property (readonly, copy, nonatomic) IKCSSRule *cssRule; // @synthesize cssRule=_cssRule;
 @property (readonly, nonatomic) NSString *dividerType;
 @property (readonly, nonatomic) unsigned long long elementAlignment;
 @property (readonly, nonatomic) struct UIEdgeInsets elementMargin;
@@ -77,6 +77,7 @@
 + (id)elementStyleWithSelector:(id)arg1 aggregatingStyles:(id)arg2;
 + (id)elementStyleWithSelector:(id)arg1 cssRule:(id)arg2 filterBlockedStyles:(BOOL)arg3;
 + (id)elementStyleWithSelector:(id)arg1 inlineStyleString:(id)arg2 filterBlockedStyles:(BOOL)arg3;
++ (id)elementStyleWithSelector:(id)arg1 inlineStyleString:(id)arg2 filterBlockedStyles:(BOOL)arg3 inlineStyleRangeCorrect:(BOOL)arg4;
 + (unsigned long long)imageTreatmentFromString:(id)arg1;
 + (void)initialize;
 + (BOOL)isHiddenStyleRegistered;
@@ -95,6 +96,7 @@
 - (struct UIEdgeInsets)_edgeInsetsForStyleKey:(id)arg1;
 - (id)_gradientFromString:(id)arg1;
 - (id)_newColorFromString:(id)arg1;
+- (void)_setDeclaration:(id)arg1 forKey:(id)arg2;
 - (id)_styleNameForAlias:(id)arg1;
 - (id)debugDescription;
 - (id)description;

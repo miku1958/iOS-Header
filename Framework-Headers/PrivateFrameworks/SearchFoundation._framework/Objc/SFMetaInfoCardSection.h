@@ -4,29 +4,69 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchFoundation/SFCard.h>
+#import <SearchFoundation/SFCardSection.h>
 
+#import <SearchFoundation/NSCopying-Protocol.h>
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFMetaInfoCardSection-Protocol.h>
 
-@class NSURL, SFImage;
+@class NSArray, NSData, NSDictionary, NSString, NSURL, SFCard, SFColor, SFImage;
 
-@interface SFMetaInfoCardSection : SFCard <NSSecureCoding>
+@interface SFMetaInfoCardSection : SFCardSection <SFMetaInfoCardSection, NSSecureCoding, NSCopying>
 {
+    CDStruct_b48e3102 _has;
+    BOOL _canBeHidden;
+    BOOL _hasTopPadding;
+    BOOL _hasBottomPadding;
     BOOL _trending;
+    int _separatorStyle;
+    NSArray *_punchoutOptions;
+    NSString *_punchoutPickerTitle;
+    NSString *_punchoutPickerDismissText;
+    NSString *_type;
+    SFColor *_backgroundColor;
     NSURL *_contentURL;
     NSURL *_hostPageURL;
     SFImage *_badge;
 }
 
+@property (strong, nonatomic) SFColor *backgroundColor;
 @property (strong, nonatomic) SFImage *badge; // @synthesize badge=_badge;
+@property (nonatomic) BOOL canBeHidden;
+@property (copy, nonatomic) NSString *cardSectionId;
+@property (copy, nonatomic) NSArray *commands;
 @property (copy, nonatomic) NSURL *contentURL; // @synthesize contentURL=_contentURL;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (nonatomic) BOOL hasBottomPadding;
+@property (nonatomic) BOOL hasTopPadding;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hideDivider;
 @property (copy, nonatomic) NSURL *hostPageURL; // @synthesize hostPageURL=_hostPageURL;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (strong, nonatomic) SFCard *nextCard;
+@property (copy, nonatomic) NSArray *parameterKeyPaths;
+@property (copy, nonatomic) NSArray *punchoutOptions;
+@property (copy, nonatomic) NSString *punchoutPickerDismissText;
+@property (copy, nonatomic) NSString *punchoutPickerTitle;
+@property (copy, nonatomic) NSString *resultIdentifier;
+@property (nonatomic) int separatorStyle;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL trending; // @synthesize trending=_trending;
+@property (copy, nonatomic) NSString *type;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasCanBeHidden;
+- (BOOL)hasHasBottomPadding;
+- (BOOL)hasHasTopPadding;
+- (BOOL)hasSeparatorStyle;
+- (BOOL)hasTrending;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 
 @end
 

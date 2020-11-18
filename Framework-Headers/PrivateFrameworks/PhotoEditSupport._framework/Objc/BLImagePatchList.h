@@ -16,6 +16,7 @@
 }
 
 + (id)imagePatchListWithSingleImage:(struct CGImage *)arg1;
+- (void).cxx_destruct;
 - (void)addPatch:(id)arg1;
 - (long long)count;
 - (void)dealloc;

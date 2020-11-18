@@ -18,16 +18,16 @@
     BOOL _isInvalid;
     BOOL _isRegistered;
     BOOL _isTimerSet;
+    BOOL _shouldStop;
+    BOOL _isWaitingForStoppingThread;
     NSString *_description;
     BOOL _descriptionChanged;
     NSThread *_nsThread;
-    BOOL _shouldStop;
-    BOOL _isWaitingForStoppingThread;
     id __key;
     double _lastStartTime;
 }
 
-@property (nonatomic, setter=_setKey:) id _key; // @synthesize _key=__key;
+@property (strong, nonatomic, setter=_setKey:) id _key; // @synthesize _key=__key;
 @property (nonatomic, setter=_setLastStartTime:) double lastStartTime; // @synthesize lastStartTime=_lastStartTime;
 
 + (BOOL)_addThreadToRegisteredThreads:(id)arg1 withThreadKey:(id)arg2;
@@ -35,10 +35,14 @@
 + (BOOL)_removeThreadFromRegisteredThreads:(id)arg1 withThreadKey:(id)arg2;
 + (long long)activeThreadCount;
 + (id)activity;
++ (long long)defaultThreadPriority;
 + (void)initialize;
 + (void)invalidateForKey:(id)arg1;
 + (double)lastStartTimeForKey:(id)arg1;
 + (void)postStopNotification;
++ (void)setDefaultThreadPriority:(long long)arg1;
+- (void).cxx_destruct;
+- (void)_assignThreadPriority;
 - (void)_enqueueImmediateTask:(id)arg1 cancelMask:(unsigned int)arg2 lastStartTime:(double *)arg3;
 - (void)_enqueueTask:(id)arg1 cancelMask:(unsigned int)arg2 lastStartTime:(double *)arg3;
 - (void)_enqueueWaitingTask:(id)arg1 cancelMask:(unsigned int)arg2 lastStartTime:(double *)arg3;

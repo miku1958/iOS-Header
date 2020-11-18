@@ -11,6 +11,7 @@
 + (BOOL)__accessibilityGuidedAccessStateEnabled;
 + (void)__accessibilityRequestGuidedAccessSession:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_accessibilityFinalize;
+- (id)accessibilityIdentification;
 - (void)accessibilitySetIdentification:(id)arg1;
 @end
 

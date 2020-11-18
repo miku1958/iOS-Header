@@ -10,5 +10,6 @@
 
 @optional
 - (void)createPlaybackContextWithCompletion:(void (^)(MPPlaybackContext *, NSError *))arg1;
+- (void)getPlaybackContextWithCompletion:(void (^)(MPPlaybackContext *, NSError *))arg1;
 @end
 

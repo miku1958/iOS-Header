@@ -6,32 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class INCWatchdogTimer, INExtensionContextHost, NSArray, NSExtension, NSString;
+@class INCWatchdogTimer, NSArray, NSError, NSExtension, NSOperationQueue, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface INCExtensionRequest : NSObject
 {
-    NSExtension *_extension;
-    INExtensionContextHost *_contextHost;
+    NSUUID *_requestIdentifier;
     INCWatchdogTimer *_contextTimer;
     NSObject<OS_dispatch_queue> *_queue;
+    NSOperationQueue *_requestOperationQueue;
+    NSExtension *_extension;
+    NSError *_error;
     NSString *_identifier;
     NSArray *_extensionInputItems;
 }
 
+@property (strong, nonatomic) NSError *_error; // @synthesize _error;
+@property (strong, nonatomic) NSExtension *_extension; // @synthesize _extension;
 @property (strong, nonatomic) NSArray *extensionInputItems; // @synthesize extensionInputItems=_extensionInputItems;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 
 - (void).cxx_destruct;
-- (id)_contextHost;
-- (void)_fetchExtensionContextHostForIntent:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_fetchMatchingSiriExtensionForIntent:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_extensionContextHost;
+- (id)_requestOperationQueue;
 - (void)_resetContextTimer;
-- (void)_resetExtensionContextHost;
+- (void)_resetExtensionContextHostWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_scheduleContextTimer;
-- (void)_setContextHost:(id)arg1;
-- (void)_startExtensionConnectionForExtension:(id)arg1 intent:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)dealloc;
 - (id)initWithIdentifier:(id)arg1;
 - (void)reset;
 - (void)startRequestForIntent:(id)arg1 completion:(CDUnknownBlockType)arg2;

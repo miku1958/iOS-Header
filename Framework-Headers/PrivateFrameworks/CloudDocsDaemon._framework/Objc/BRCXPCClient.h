@@ -10,20 +10,23 @@
 #import <CloudDocsDaemon/BRCNotificationPipeDelegate-Protocol.h>
 #import <CloudDocsDaemon/BRCProcessMonitorDelegate-Protocol.h>
 
-@class BRCAccountSession, BRCClientPrivilegesDescriptor, NSCountedSet, NSSet, NSString, NSXPCConnection, brc_task_tracker;
+@class BRCAccountSession, BRCClientPrivilegesDescriptor, BRMangledID, NSCountedSet, NSOperationQueue, NSSet, NSString, NSXPCConnection, brc_task_tracker;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface BRCXPCClient : NSObject <BRCProcessMonitorDelegate, BRCForegroundClient, BRCNotificationPipeDelegate>
 {
     BRCClientPrivilegesDescriptor *_clientPriviledgesDescriptor;
+    NSCountedSet *_appLibraries;
+    brc_task_tracker *_tracker;
+    NSObject<OS_dispatch_queue> *_queue;
+    NSOperationQueue *_operationQueue;
     BRCAccountSession *_session;
+    int _clientPid;
+    CDStruct_4c969caf auditToken;
     BOOL _dieOnInvalidate;
     unsigned int _isForeground:1;
     unsigned int _invalidated:1;
-    int _clientPid;
-    CDStruct_4c969caf auditToken;
-    NSCountedSet *_appLibraries;
-    brc_task_tracker *_tracker;
     BOOL _isUsingUbiquity;
     NSXPCConnection *_connection;
 }
@@ -32,13 +35,14 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) BRCClientPrivilegesDescriptor *clientPriviledgesDescriptor; // @synthesize clientPriviledgesDescriptor=_clientPriviledgesDescriptor;
 @property (readonly, weak, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) NSString *defaultAppLibraryID;
+@property (readonly, nonatomic) BRMangledID *defaultMangledID;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL dieOnInvalidate; // @synthesize dieOnInvalidate=_dieOnInvalidate;
 @property (readonly, nonatomic) NSSet *entitledAppLibraryIDs;
 @property (readonly, nonatomic) BOOL hasPrivateSharingInterfaceEntitlement;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier;
+@property (readonly, nonatomic) BOOL isSandboxed;
 @property (nonatomic) BOOL isUsingUbiquity; // @synthesize isUsingUbiquity=_isUsingUbiquity;
 @property (strong, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
 @property (readonly) Class superclass;
@@ -56,15 +60,17 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isAppLibraryProxyEntitled;
 - (BOOL)_isAppLibraryProxyWithError:(id *)arg1;
 - (BOOL)_isAutomationEntitled;
-- (void)_setupAppLibraryAndZoneWithID:(id)arg1 andSendReply:(CDUnknownBlockType)arg2;
-- (id)_setupPrivateAppLibrary:(id)arg1 error:(id *)arg2;
-- (id)_sharingOperationDocumentFromLookup:(id)arg1 url:(id)arg2 error:(id *)arg3;
+- (id)_setupAppLibrary:(id)arg1 error:(id *)arg2;
+- (void)_setupAppLibraryAndZoneWithID:(id)arg1 recreateDocumentsIfNeeded:(BOOL)arg2 reply:(CDUnknownBlockType)arg3;
+- (id)_sharingOperationItemFromLookup:(id)arg1 url:(id)arg2 allowDirectory:(BOOL)arg3 error:(id *)arg4;
 - (void)_startDownloadItemsAtURLs:(id)arg1 pos:(unsigned long long)arg2 options:(unsigned long long)arg3 error:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)_startMonitoringProcessIfNeeded;
 - (void)_startSharingOperationAfterAcceptation:(struct _BRCFrameworkOperation *)arg1 client:(id)arg2 item:(id)arg3;
 - (void)_stopMonitoringProcess;
+- (void)_t_resetAllZones:(id)arg1 waitUntilIdle:(BOOL)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)accessLogicalOrPhysicalURL:(id)arg1 accessKind:(long long)arg2 dbAccessKind:(long long)arg3 asynchronously:(BOOL)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)addAppLibrary:(id)arg1;
+- (void)addOperation:(id)arg1;
 - (BOOL)canAccessLogicalOrPhysicalURL:(id)arg1 accessKind:(long long)arg2;
 - (BOOL)canAccessPath:(const char *)arg1 accessKind:(long long)arg2;
 - (BOOL)canAccessPhysicalURL:(id)arg1;
@@ -72,7 +78,6 @@ __attribute__((visibility("hidden")))
 - (void)dumpToContext:(id)arg1;
 - (id)initWithConnection:(id)arg1;
 - (void)invalidate;
-- (BOOL)isSandboxed;
 - (id)issueContainerExtensionForURL:(id)arg1 error:(id *)arg2;
 - (void)notificationPipe:(id)arg1 didObserveAppLibrary:(id)arg2;
 - (void)notificationPipe:(id)arg1 willObserveAppLibrary:(id)arg2;

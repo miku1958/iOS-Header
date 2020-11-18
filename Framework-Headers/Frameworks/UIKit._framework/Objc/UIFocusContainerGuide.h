@@ -10,9 +10,9 @@
 {
 }
 
-- (BOOL)_focusRegionIsEligibleForFocus;
+- (BOOL)_isEligibleForFocusInteraction;
+- (BOOL)_legacy_isEligibleForFocusInteraction;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
-- (BOOL)_shouldSearchForFocusRegionsInContext:(id)arg1;
 - (id)init;
 
 @end

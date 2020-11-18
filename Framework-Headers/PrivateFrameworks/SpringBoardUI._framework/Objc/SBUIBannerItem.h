@@ -6,18 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <SpringBoardUI/SBUIQuietModePlayability-Protocol.h>
-
-@class NSString;
-
-@interface SBUIBannerItem : NSObject <SBUIQuietModePlayability>
+@interface SBUIBannerItem : NSObject
 {
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (CDUnknownBlockType)action;
 - (id)actionWithIdentifier:(id)arg1;
@@ -25,15 +16,10 @@
 - (BOOL)canShowWhileLocked;
 - (id)defaultActionWithContext:(id)arg1;
 - (BOOL)hasSubActions;
-- (BOOL)inertWhenLocked;
-- (BOOL)isCritical;
 - (BOOL)isSticky;
 - (id)lockScreenActionContextWithContext:(id)arg1;
 - (id)message;
-- (BOOL)overridesPocketMode;
-- (BOOL)overridesQuietMode;
 - (unsigned long long)priority;
-- (id)pullDownNotification;
 - (BOOL)shouldPlayLightsAndSirens;
 - (BOOL)shouldShowModalSubActions;
 - (id)sortDate;

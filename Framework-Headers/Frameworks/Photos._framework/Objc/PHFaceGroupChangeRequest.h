@@ -41,6 +41,7 @@
 @property (nonatomic) long long unnamedFaceCount;
 @property (readonly, nonatomic) NSString *uuid;
 
++ (BOOL)canGenerateUUIDWithoutEntitlements;
 + (id)changeRequestForFaceGroup:(id)arg1;
 + (id)creationRequestForFaceGroup;
 + (void)deleteFaceGroups:(id)arg1;
@@ -55,15 +56,14 @@
 - (void)addFaces:(id)arg1;
 - (BOOL)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
 - (BOOL)applyMutationsToManagedObject:(id)arg1 error:(id *)arg2;
-- (BOOL)canGenerateUUIDLocally;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (void)didMutate;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initWithXPCDict:(id)arg1 clientEntitlements:(id)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
-- (id)mutations;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
+- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (void)removeFaces:(id)arg1;
 - (void)setKeyFace:(id)arg1;
 - (BOOL)validateInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;

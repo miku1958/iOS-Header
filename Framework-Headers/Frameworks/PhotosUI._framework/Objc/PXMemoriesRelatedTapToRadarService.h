@@ -10,9 +10,6 @@
 {
 }
 
-+ (id)_sanitizeGraphDataDictionaryForArchiving:(id)arg1 memoryLocalIdentifier:(id)arg2;
-+ (id)extractDatesAndAssetCounts:(id)arg1;
-+ (id)getSummaryFromProviderItem:(id)arg1;
 + (BOOL)isServiceAvailableForProviders:(id)arg1;
 - (id)_libraryStatDictionary;
 - (id)_providerItemsSummary;

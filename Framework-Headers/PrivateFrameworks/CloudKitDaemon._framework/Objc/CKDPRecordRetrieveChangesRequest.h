@@ -19,20 +19,28 @@ __attribute__((visibility("hidden")))
     CKDPRequestedFields *_requestedFields;
     NSData *_syncContinuationToken;
     CKDPRecordZoneIdentifier *_zoneIdentifier;
+    BOOL _ignoreCallingDeviceChanges;
+    BOOL _newestFirst;
     struct {
         unsigned int maxChanges:1;
         unsigned int requestedChangeTypes:1;
+        unsigned int ignoreCallingDeviceChanges:1;
+        unsigned int newestFirst:1;
     } _has;
 }
 
 @property (strong, nonatomic) CKDPAssetsToDownload *assetsToDownload; // @synthesize assetsToDownload=_assetsToDownload;
 @property (readonly, nonatomic) BOOL hasAssetsToDownload;
+@property (nonatomic) BOOL hasIgnoreCallingDeviceChanges;
 @property (nonatomic) BOOL hasMaxChanges;
+@property (nonatomic) BOOL hasNewestFirst;
 @property (nonatomic) BOOL hasRequestedChangeTypes;
 @property (readonly, nonatomic) BOOL hasRequestedFields;
 @property (readonly, nonatomic) BOOL hasSyncContinuationToken;
 @property (readonly, nonatomic) BOOL hasZoneIdentifier;
+@property (nonatomic) BOOL ignoreCallingDeviceChanges; // @synthesize ignoreCallingDeviceChanges=_ignoreCallingDeviceChanges;
 @property (nonatomic) unsigned int maxChanges; // @synthesize maxChanges=_maxChanges;
+@property (nonatomic) BOOL newestFirst; // @synthesize newestFirst=_newestFirst;
 @property (nonatomic) int requestedChangeTypes; // @synthesize requestedChangeTypes=_requestedChangeTypes;
 @property (strong, nonatomic) CKDPRequestedFields *requestedFields; // @synthesize requestedFields=_requestedFields;
 @property (strong, nonatomic) NSData *syncContinuationToken; // @synthesize syncContinuationToken=_syncContinuationToken;

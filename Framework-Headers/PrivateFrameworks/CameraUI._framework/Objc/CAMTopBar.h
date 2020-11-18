@@ -6,12 +6,14 @@
 
 #import <UIKit/UIView.h>
 
+#import <CameraUI/CAMAccessibilityHUDItemProvider-Protocol.h>
+#import <CameraUI/CAMBarsAccessibilityHUDManagerGestureProvider-Protocol.h>
 #import <CameraUI/CAMExpandableMenuButtonDelegate-Protocol.h>
 
-@class CAMElapsedTimeView, CAMExpandableMenuButton, CAMFilterButton, CAMFlashButton, CAMFlipButton, CAMFramerateIndicatorView, CAMHDRButton, CAMIrisButton, CAMTimerButton, NSMutableArray;
+@class CAMElapsedTimeView, CAMExpandableMenuButton, CAMFilterButton, CAMFlashButton, CAMFlipButton, CAMFramerateIndicatorView, CAMHDRButton, CAMIrisButton, CAMTimerButton, NSMutableArray, NSString;
 @protocol CAMControlVisibilityUpdateDelegate;
 
-@interface CAMTopBar : UIView <CAMExpandableMenuButtonDelegate>
+@interface CAMTopBar : UIView <CAMExpandableMenuButtonDelegate, CAMAccessibilityHUDItemProvider, CAMBarsAccessibilityHUDManagerGestureProvider>
 {
     id<CAMControlVisibilityUpdateDelegate> _visibilityUpdateDelegate;
     long long _style;
@@ -37,15 +39,19 @@
 @property (strong, nonatomic, setter=_setExpandedMenuButton:) CAMExpandableMenuButton *_expandedMenuButton; // @synthesize _expandedMenuButton=__expandedMenuButton;
 @property (nonatomic, setter=_setExpandedMenuButtonTappableInsets:) struct UIEdgeInsets _expandedMenuButtonTappableInsets; // @synthesize _expandedMenuButtonTappableInsets=__expandedMenuButtonTappableInsets;
 @property (nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) CAMElapsedTimeView *elapsedTimeView; // @synthesize elapsedTimeView=_elapsedTimeView;
 @property (strong, nonatomic) CAMFilterButton *filterButton; // @synthesize filterButton=_filterButton;
 @property (strong, nonatomic) CAMFlashButton *flashButton; // @synthesize flashButton=_flashButton;
 @property (strong, nonatomic) CAMFlipButton *flipButton; // @synthesize flipButton=_flipButton;
 @property (readonly, nonatomic, getter=isFloating) BOOL floating;
 @property (strong, nonatomic) CAMFramerateIndicatorView *framerateIndicatorView; // @synthesize framerateIndicatorView=_framerateIndicatorView;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CAMIrisButton *irisButton; // @synthesize irisButton=_irisButton;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (nonatomic) long long style; // @synthesize style=_style;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) CAMTimerButton *timerButton; // @synthesize timerButton=_timerButton;
 @property (weak, nonatomic) id<CAMControlVisibilityUpdateDelegate> visibilityUpdateDelegate; // @synthesize visibilityUpdateDelegate=_visibilityUpdateDelegate;
 
@@ -61,6 +67,7 @@
 - (void)_commonCAMTopBarInitialization;
 - (void)_computeHorizontalLayoutForViewsBetweenLeftView:(id)arg1 rightView:(id)arg2 views:(id)arg3 alignmentRects:(id)arg4;
 - (double)_interpolatedFloatingBarHeight;
+- (void)_iterateViewsInHUDManager:(id)arg1 forHUDItem:(CDUnknownBlockType)arg2;
 - (void)_layoutControls:(id)arg1 apply:(BOOL)arg2 withExpandedMenuButton:(id)arg3 collapsingMenuButton:(id)arg4 collapsingFrame:(struct CGRect *)arg5;
 - (void)_layoutDefaultStyle;
 - (void)_layoutFloatingRecordingStyle;
@@ -75,10 +82,12 @@
 - (void)expandMenuButton:(id)arg1 animated:(BOOL)arg2;
 - (struct CGRect)expandedFrameForMenuButton:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)hudItemForAccessibilityHUDManager:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (void)setBackgroundStyle:(long long)arg1 animated:(BOOL)arg2;
 - (void)setStyle:(long long)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldHideElapsedTimeViewForGraphConfiguration:(id)arg1;
@@ -89,6 +98,7 @@
 - (BOOL)shouldHideHDRButtonForGraphConfiguration:(id)arg1;
 - (BOOL)shouldHideIrisButtonForGraphConfiguration:(id)arg1;
 - (BOOL)shouldHideTimerButtonForGraphConfiguration:(id)arg1;
+- (id)touchingRecognizersToCancel;
 
 @end
 

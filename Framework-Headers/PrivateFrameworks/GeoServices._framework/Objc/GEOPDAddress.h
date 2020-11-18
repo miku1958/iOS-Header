@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEOPDAddress : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     int _knownAccuracy;
     NSMutableArray *_localizedAddress;
     NSMutableArray *_spokenNavigationAddress;
@@ -26,10 +27,12 @@
 @property (strong, nonatomic) NSMutableArray *localizedAddress; // @synthesize localizedAddress=_localizedAddress;
 @property (strong, nonatomic) NSMutableArray *spokenNavigationAddress; // @synthesize spokenNavigationAddress=_spokenNavigationAddress;
 @property (strong, nonatomic) NSMutableArray *spokenStructuredAddress; // @synthesize spokenStructuredAddress=_spokenStructuredAddress;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)localizedAddressType;
 + (Class)spokenNavigationAddressType;
 + (Class)spokenStructuredAddressType;
+- (void).cxx_destruct;
 - (int)StringAsKnownAccuracy:(id)arg1;
 - (void)addLocalizedAddress:(id)arg1;
 - (void)addSpokenNavigationAddress:(id)arg1;
@@ -39,7 +42,6 @@
 - (void)clearSpokenStructuredAddress;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

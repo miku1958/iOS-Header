@@ -18,6 +18,8 @@
 + (id)analogDotColorForColor:(unsigned long long)arg1;
 + (BOOL)colorHasWhiteElements:(unsigned long long)arg1;
 + (id)digitalComplicationsColorForColor:(unsigned long long)arg1;
++ (id)digitalComplicationsPlatterColorForColor:(unsigned long long)arg1;
++ (id)handInlayColorForColor:(unsigned long long)arg1;
 + (id)handsAndLogoColorForColor:(unsigned long long)arg1;
 + (id)numbersColorForColor:(unsigned long long)arg1;
 + (id)platterColor;

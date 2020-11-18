@@ -12,6 +12,7 @@
 
 @interface NTPBSearchResultSelect : PBCodable <NSCopying>
 {
+    NSMutableArray *_articleResultArticleIds;
     NSString *_campaignId;
     NSString *_campaignType;
     NSMutableArray *_channelResultFeedIds;
@@ -23,13 +24,17 @@
     NSMutableArray *_searchResults;
     NSString *_searchString;
     int _selectedResultActionType;
+    NSString *_selectedResultArticleId;
     NSString *_selectedResultFeedId;
     int _selectedResultRankInSection;
     int _selectedResultSection;
     NSString *_selectedResultString;
     int _selectedResultType;
     NSString *_storeFrontId;
+    NSString *_topResultArticleId;
+    NSString *_topResultChannelId;
     NSString *_topResultFeedId;
+    NSString *_topResultTopicId;
     NSMutableArray *_topicResultFeedIds;
     int _totalResults;
     int _totalResultsInSelectedSection;
@@ -50,6 +55,7 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSMutableArray *articleResultArticleIds; // @synthesize articleResultArticleIds=_articleResultArticleIds;
 @property (strong, nonatomic) NSString *campaignId; // @synthesize campaignId=_campaignId;
 @property (strong, nonatomic) NSString *campaignType; // @synthesize campaignType=_campaignType;
 @property (strong, nonatomic) NSMutableArray *channelResultFeedIds; // @synthesize channelResultFeedIds=_channelResultFeedIds;
@@ -64,6 +70,7 @@
 @property (nonatomic) BOOL hasSearchResultSelectLocation;
 @property (readonly, nonatomic) BOOL hasSearchString;
 @property (nonatomic) BOOL hasSelectedResultActionType;
+@property (readonly, nonatomic) BOOL hasSelectedResultArticleId;
 @property (readonly, nonatomic) BOOL hasSelectedResultFeedId;
 @property (nonatomic) BOOL hasSelectedResultRankInSection;
 @property (nonatomic) BOOL hasSelectedResultSection;
@@ -71,7 +78,10 @@
 @property (readonly, nonatomic) BOOL hasSelectedResultString;
 @property (nonatomic) BOOL hasSelectedResultType;
 @property (readonly, nonatomic) BOOL hasStoreFrontId;
+@property (readonly, nonatomic) BOOL hasTopResultArticleId;
+@property (readonly, nonatomic) BOOL hasTopResultChannelId;
 @property (readonly, nonatomic) BOOL hasTopResultFeedId;
+@property (readonly, nonatomic) BOOL hasTopResultTopicId;
 @property (nonatomic) BOOL hasTotalResults;
 @property (nonatomic) BOOL hasTotalResultsInSelectedSection;
 @property (strong, nonatomic) NSMutableArray *nonSelectedResultFeedIds; // @synthesize nonSelectedResultFeedIds=_nonSelectedResultFeedIds;
@@ -81,6 +91,7 @@
 @property (strong, nonatomic) NSMutableArray *searchResults; // @synthesize searchResults=_searchResults;
 @property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 @property (nonatomic) int selectedResultActionType; // @synthesize selectedResultActionType=_selectedResultActionType;
+@property (strong, nonatomic) NSString *selectedResultArticleId; // @synthesize selectedResultArticleId=_selectedResultArticleId;
 @property (strong, nonatomic) NSString *selectedResultFeedId; // @synthesize selectedResultFeedId=_selectedResultFeedId;
 @property (nonatomic) int selectedResultRankInSection; // @synthesize selectedResultRankInSection=_selectedResultRankInSection;
 @property (nonatomic) int selectedResultSection; // @synthesize selectedResultSection=_selectedResultSection;
@@ -88,11 +99,15 @@
 @property (strong, nonatomic) NSString *selectedResultString; // @synthesize selectedResultString=_selectedResultString;
 @property (nonatomic) int selectedResultType; // @synthesize selectedResultType=_selectedResultType;
 @property (strong, nonatomic) NSString *storeFrontId; // @synthesize storeFrontId=_storeFrontId;
+@property (strong, nonatomic) NSString *topResultArticleId; // @synthesize topResultArticleId=_topResultArticleId;
+@property (strong, nonatomic) NSString *topResultChannelId; // @synthesize topResultChannelId=_topResultChannelId;
 @property (strong, nonatomic) NSString *topResultFeedId; // @synthesize topResultFeedId=_topResultFeedId;
+@property (strong, nonatomic) NSString *topResultTopicId; // @synthesize topResultTopicId=_topResultTopicId;
 @property (strong, nonatomic) NSMutableArray *topicResultFeedIds; // @synthesize topicResultFeedIds=_topicResultFeedIds;
 @property (nonatomic) int totalResults; // @synthesize totalResults=_totalResults;
 @property (nonatomic) int totalResultsInSelectedSection; // @synthesize totalResultsInSelectedSection=_totalResultsInSelectedSection;
 
++ (Class)articleResultArticleIdsType;
 + (Class)channelResultFeedIdsType;
 + (Class)nonSelectedResultFeedIdType;
 + (Class)searchResultsType;
@@ -100,12 +115,16 @@
 - (void).cxx_destruct;
 - (int)StringAsSearchExecutionMethod:(id)arg1;
 - (int)StringAsSearchLocation:(id)arg1;
+- (void)addArticleResultArticleIds:(id)arg1;
 - (void)addChannelResultFeedIds:(id)arg1;
 - (void)addNonSelectedResultFeedId:(id)arg1;
 - (void)addSearchResults:(id)arg1;
 - (void)addTopicResultFeedIds:(id)arg1;
+- (id)articleResultArticleIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)articleResultArticleIdsCount;
 - (id)channelResultFeedIdsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)channelResultFeedIdsCount;
+- (void)clearArticleResultArticleIds;
 - (void)clearChannelResultFeedIds;
 - (void)clearNonSelectedResultFeedIds;
 - (void)clearSearchResults;

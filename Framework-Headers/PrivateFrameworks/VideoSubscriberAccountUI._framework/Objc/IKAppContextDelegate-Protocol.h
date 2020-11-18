@@ -6,7 +6,7 @@
 
 #import <VideoSubscriberAccountUI/NSObject-Protocol.h>
 
-@class IKAppContext, IKAppMediaItemBridge, IKAppPlayerBridge, IKAppPlaylistBridge, IKAppTabBar, IKDOMDocument, JSContext, NSDictionary, NSError, NSURLSessionConfiguration;
+@class IKAppContext, IKAppMediaItemBridge, IKAppPlayerBridge, IKAppPlaylistBridge, IKAppTabBar, IKDOMDocument, JSContext, NSData, NSDictionary, NSError, NSString, NSURLSessionConfiguration;
 @protocol IKAppDeviceConfig, IKAppMediaItem, IKAppNavigationController, IKAppPlayer, IKAppPlaylist;
 
 @protocol IKAppContextDelegate <NSObject>
@@ -25,6 +25,8 @@
 - (id<IKAppMediaItem>)objectForMediaItem:(IKAppMediaItemBridge *)arg1;
 - (id<IKAppPlayer>)objectForPlayer:(IKAppPlayerBridge *)arg1;
 - (id<IKAppPlaylist>)objectForPlaylist:(IKAppPlaylistBridge *)arg1;
+- (NSData *)sourceApplicationAuditTokenDataForContext:(IKAppContext *)arg1;
+- (NSString *)sourceApplicationBundleIdentifierForContext:(IKAppContext *)arg1;
 - (IKAppTabBar *)tabBarForContext:(IKAppContext *)arg1;
 - (NSURLSessionConfiguration *)xhrSessionConfigurationForContext:(IKAppContext *)arg1;
 @end

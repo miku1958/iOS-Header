@@ -18,6 +18,7 @@
     long long _urlType;
     NSString *_subtarget;
     NSDictionary *_dictionary;
+    BOOL _tidContinue;
 }
 
 @property int actionType; // @synthesize actionType=_actionType;
@@ -26,17 +27,18 @@
 @property (strong) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 @property (readonly) unsigned long long hash;
 @property (strong) id parameter; // @synthesize parameter=_parameter;
+@property (readonly) BOOL shouldContinueTouchIDSession; // @synthesize shouldContinueTouchIDSession=_tidContinue;
 @property (copy) NSString *subtarget; // @synthesize subtarget=_subtarget;
 @property (readonly) Class superclass;
 @property (strong) NSString *title; // @synthesize title=_title;
 @property long long urlType; // @synthesize urlType=_urlType;
 
 + (id)buttonWithTitle:(id)arg1;
+- (void).cxx_destruct;
 - (int)_actionTypeForString:(id)arg1;
 - (void)_openURLWithRequest:(id)arg1;
 - (long long)_urlTypeForString:(id)arg1;
 - (id)copyXPCEncoding;
-- (void)dealloc;
 - (id)initWithXPCEncoding:(id)arg1;
 - (BOOL)isEqual:(id)arg1 superficial:(BOOL)arg2;
 - (void)loadFromDictionary:(id)arg1;

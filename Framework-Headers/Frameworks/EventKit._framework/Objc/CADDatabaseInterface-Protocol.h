@@ -4,28 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData;
+@class CADDatabaseInitializationOptions, CADObjectID, NSArray, NSData;
 
 @protocol CADDatabaseInterface
 - (void)CADDatabaseCanModifyCalendarDatabase:(void (^)(int, BOOL))arg1;
+- (void)CADDatabaseClearSuperfluousChanges:(void (^)(int))arg1;
 - (void)CADDatabaseCommitWithReply:(void (^)(int, BOOL, NSDictionary *))arg1;
+- (void)CADDatabaseExportICSDataForCalendarItems:(NSArray *)arg1 preventLineFolding:(BOOL)arg2 reply:(void (^)(int, NSData *))arg3;
 - (void)CADDatabaseFetchChangedObjectIDsSinceSequenceNumber:(long long)arg1 reply:(void (^)(int, BOOL, long long, NSArray *, NSArray *, NSArray *))arg2;
+- (void)CADDatabaseFetchObjectChangesForEntityType:(int)arg1 insideObject:(CADObjectID *)arg2 reply:(void (^)(int, BOOL, long long, NSArray *))arg3;
 - (void)CADDatabaseGetChangedEntityIDsSinceTimestamp:(double)arg1 reply:(void (^)(int, BOOL, NSArray *, double))arg2;
 - (void)CADDatabaseGetChangesSinceSequenceNumber:(int)arg1 reply:(void (^)(int, NSDictionary *))arg2;
 - (void)CADDatabaseGetNextAssignableColorWithReply:(void (^)(int, NSString *))arg1;
 - (void)CADDatabaseGetSequenceNumber:(void (^)(int, int))arg1;
 - (void)CADDatabaseGetUUID:(void (^)(int, NSString *))arg1;
 - (void)CADDatabaseImportICSData:(NSData *)arg1 intoCalendarWithID:(int)arg2 optionsMask:(unsigned long long)arg3 reply:(void (^)(int, NSArray *))arg4;
-- (void)CADDatabaseIsAutomaticLocationGeocodingAllowed:(void (^)(int, BOOL))arg1;
+- (void)CADDatabaseLastConfirmedSplashScreenVersion:(void (^)(int, unsigned long long))arg1;
 - (void)CADDatabaseMarkChangedObjectIDsConsumedUpToSequenceNumber:(long long)arg1 reply:(void (^)(int))arg2;
 - (void)CADDatabaseRebuildOccurrenceCacheWithReply:(void (^)(int))arg1;
-- (void)CADDatabaseRegisterForDetailedChangeTracking:(void (^)(int))arg1;
+- (void)CADDatabaseRegisterForDetailedChangeTracking:(void (^)(int, long long))arg1;
 - (void)CADDatabaseResetWithReply:(void (^)(int))arg1;
 - (void)CADDatabaseRollbackWithReply:(void (^)(int))arg1;
 - (void)CADDatabaseSaveWithReply:(void (^)(int))arg1;
-- (void)CADDatabaseSetAutomaticLocationGeocodingAllowed:(BOOL)arg1 reply:(void (^)(int))arg2;
-- (void)CADDatabaseSetInitializationOptions:(int)arg1 reply:(void (^)(int))arg2;
+- (void)CADDatabaseSetInitializationOptions:(CADDatabaseInitializationOptions *)arg1 reply:(void (^)(int))arg2;
 - (void)CADDatabaseSetShowsDeclinedEvents:(BOOL)arg1 reply:(void (^)(int))arg2;
-- (void)CADDatabaseSetSourceAccountManagement:(int)arg1 reply:(void (^)(int))arg2;
 @end
 

@@ -68,7 +68,7 @@
 @property (strong, nonatomic) NSString *rematchID; // @synthesize rematchID=_rematchID;
 @property (strong, nonatomic) NSData *selfBlob; // @synthesize selfBlob=_selfBlob;
 @property (strong, nonatomic) GKSession *session; // @synthesize session=_session;
-@property (nonatomic) NSObject<OS_dispatch_queue> *stateChangeQueue; // @synthesize stateChangeQueue=_stateChangeQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *stateChangeQueue; // @synthesize stateChangeQueue=_stateChangeQueue;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned char version; // @synthesize version=_version;
 

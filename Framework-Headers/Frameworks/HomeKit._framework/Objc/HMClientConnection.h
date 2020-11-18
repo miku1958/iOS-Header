@@ -30,6 +30,10 @@
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) HMXpcClient *xpcClient; // @synthesize xpcClient=_xpcClient;
 
++ (BOOL)areAnyAccessoriesConfigured;
++ (BOOL)areAnySpeakersConfigured;
++ (BOOL)areHomesConfigured;
++ (id)siriHomeIdentifier;
 - (void).cxx_destruct;
 - (void)_registerToDaemon;
 - (void)_reportResultsTohandler:(CDUnknownBlockType)arg1;

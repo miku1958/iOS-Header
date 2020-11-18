@@ -6,7 +6,7 @@
 
 #import <UIKit/NSObject-Protocol.h>
 
-@class CKContainerID, CKShare, NSArray, NSData, NSString, UIColor, UIImage, UITraitCollection, _UIDocumentPickerNSURLWrapper;
+@class CKContainerID, CKShare, FPSandboxingURLWrapper, NSData, NSDictionary, NSString, UIColor, UIImage, UITraitCollection;
 
 @protocol _UIShareInvitationViewController <NSObject>
 - (void)_prepareForDisplayWithCompletion:(void (^)(struct CGSize))arg1;
@@ -23,10 +23,14 @@
 - (void)_setMailSubject:(NSString *)arg1 template:(NSString *)arg2;
 - (void)_setMessageTemplate:(NSString *)arg1;
 - (void)_setOverrideTraitCollection:(UITraitCollection *)arg1;
-- (void)_setParticipantDetails:(NSArray *)arg1;
+- (void)_setParticipantDetails:(NSDictionary *)arg1;
+- (void)_setPrimaryAuxiliarySwitchState:(BOOL)arg1;
+- (void)_setPrimaryAuxiliarySwitchTitle:(NSString *)arg1;
+- (void)_setSandboxingURLWrapper:(FPSandboxingURLWrapper *)arg1;
+- (void)_setSecondaryAuxiliarySwitchState:(BOOL)arg1;
+- (void)_setSecondaryAuxiliarySwitchTitle:(NSString *)arg1;
 - (void)_setShowAddPeople:(BOOL)arg1;
 - (void)_setThumbnail:(UIImage *)arg1;
 - (void)_setTintColor:(UIColor *)arg1;
-- (void)_setURLWrapper:(_UIDocumentPickerNSURLWrapper *)arg1;
 @end
 

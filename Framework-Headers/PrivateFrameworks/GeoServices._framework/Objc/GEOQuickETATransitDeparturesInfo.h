@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSDate, NSString;
 
@@ -25,8 +25,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *direction; // @synthesize direction=_direction;
 @property (readonly, nonatomic) NSString *headsign; // @synthesize headsign=_headsign;
 
+- (void).cxx_destruct;
 - (id)_chooseMostImportantTransitLegInRoute:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithComposedRoute:(id)arg1;
 

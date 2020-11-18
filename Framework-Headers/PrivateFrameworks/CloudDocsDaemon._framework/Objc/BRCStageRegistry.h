@@ -15,10 +15,9 @@
 @interface BRCStageRegistry : NSObject <BRCModule, BRCLowDiskDelegate>
 {
     BRCAccountSession *_session;
-    NSString *_stageDirectoryPath[6];
-    unsigned long long _stageDirectoryFileID[6];
+    NSString *_stageDirectoryPath[7];
+    unsigned long long _stageDirectoryFileID[7];
     NSMutableSet *_unflushedStagedFileIDs;
-    NSMutableSet *_appLibrariesWithUnflushedFileIDs;
     NSMutableSet *_activeUploadStageIDs;
     NSMutableSet *_activeDownloadStageIDs;
     NSMutableDictionary *_watchedLockedFileIDs;
@@ -39,8 +38,10 @@
 @property (readonly, nonatomic) BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
 @property (readonly) Class superclass;
 
++ (unsigned short)computeItemModeFromStatInfo:(id)arg1 sharingOptions:(unsigned long long)arg2 isDirectory:(BOOL)arg3;
 + (void)migrateStageToVersion2_0WithSession:(id)arg1;
 - (void).cxx_destruct;
+- (id)_anchorNameForChangeToken:(id)arg1 recordZoneID:(id)arg2;
 - (void)_fileIDMightHaveBeenUnlocked:(id)arg1;
 - (BOOL)_flockToMakeLiveAtPath:(id)arg1 error:(id *)arg2;
 - (BOOL)_graveyardAt:(int)arg1 path:(id)arg2 forItemID:(id)arg3;
@@ -50,7 +51,7 @@
 - (long long)_purgeSpaceUnderQueue:(long long)arg1 withUrgency:(int)arg2;
 - (void)_updatePersistedStateWithLatestGCStartTime:(long long)arg1;
 - (void)_watchLockedRelpath:(id)arg1;
-- (void)applyMetadataOnFileDescriptor:(int)arg1 liveFileDescriptor:(int)arg2 clientZone:(id)arg3 statInfo:(id)arg4 version:(id)arg5;
+- (void)applyMetadataOnFileDescriptor:(int)arg1 liveFileDescriptor:(int)arg2 clientZone:(id)arg3 statInfo:(id)arg4 version:(id)arg5 sharingOptions:(unsigned long long)arg6;
 - (void)associateDownloadStageID:(id)arg1 withOperation:(id)arg2;
 - (void)associateSyncUpStageID:(id)arg1 withOperation:(id)arg2;
 - (void)cancel;
@@ -63,7 +64,7 @@
 - (id)createURLForUploadWithStageID:(id)arg1 name:(id)arg2;
 - (BOOL)didFlushStagedFileID:(unsigned long long)arg1;
 - (void)disarmLockedTestTimer;
-- (BOOL)existsInOldVersionStage:(unsigned long long)arg1 generationID:(unsigned int *)arg2;
+- (BOOL)existsInOldVersionStageOrGraveyard:(unsigned long long)arg1;
 - (BOOL)existsInStage:(unsigned long long)arg1 generationID:(unsigned int *)arg2;
 - (void)forgetWatchedLockedFileID:(id)arg1;
 - (void)forgetWatchedLockedFileIDsForAppLibrary:(id)arg1;
@@ -73,7 +74,8 @@
 - (void)lowDiskStatusChangedForDevice:(int)arg1 hasEnoughSpace:(BOOL)arg2;
 - (BOOL)makeDirectoryInStageGatherFileID:(unsigned long long *)arg1 generationID:(unsigned int *)arg2 error:(id *)arg3;
 - (BOOL)makeItemLive:(id)arg1 fromStage:(unsigned long long)arg2 bySwappingWith:(id)arg3 fileName:(id)arg4 error:(id *)arg5;
-- (id)makeNonLocalVersionSideFaultWithAdditionName:(id)arg1 appLibrary:(id)arg2 statInfo:(id)arg3 version:(id)arg4 error:(id *)arg5;
+- (id)makeNonLocalVersionSideFaultWithAdditionName:(id)arg1 clientZone:(id)arg2 statInfo:(id)arg3 version:(id)arg4 sharingOptions:(unsigned long long)arg5 error:(id *)arg6;
+- (id)makePendingFetchRecordDirWithStartingChangeToken:(id)arg1 recordZoneID:(id)arg2;
 - (BOOL)makeSideFaultInStageGatherFileID:(unsigned long long *)arg1 generationID:(unsigned int *)arg2 documentID:(unsigned int *)arg3 properties:(id)arg4 inAppLibrary:(id)arg5 forCreation:(BOOL)arg6 error:(id *)arg7;
 - (BOOL)makeSymlinkWithTarget:(id)arg1 inStageGatherFileID:(unsigned long long *)arg2 generationID:(unsigned int *)arg3 error:(id *)arg4;
 - (BOOL)moveFromStage:(unsigned long long)arg1 toPath:(id)arg2 fileName:(id)arg3 error:(id *)arg4;
@@ -82,6 +84,7 @@
 - (BOOL)moveToGraveyardFromPath:(id)arg1 forItemID:(id)arg2 error:(id *)arg3;
 - (id)nonLocalFaultURLForAdditionName:(id)arg1;
 - (void)open;
+- (BOOL)pendingFetchRecordDirExistsInStageWithStartingChangeToken:(id)arg1 recordZoneID:(id)arg2;
 - (long long)purgableSpace;
 - (long long)purgeGraveyardSpace:(long long)arg1 withUrgency:(int)arg2;
 - (long long)purgeSpace:(long long)arg1 withUrgency:(int)arg2;

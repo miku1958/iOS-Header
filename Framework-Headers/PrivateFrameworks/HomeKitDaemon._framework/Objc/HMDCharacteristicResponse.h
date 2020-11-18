@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HMDCharacteristicRequest, NSDate, NSError, NSNumber;
 
-@interface HMDCharacteristicResponse : NSObject
+@interface HMDCharacteristicResponse : HMFObject
 {
     HMDCharacteristicRequest *_request;
     id _value;

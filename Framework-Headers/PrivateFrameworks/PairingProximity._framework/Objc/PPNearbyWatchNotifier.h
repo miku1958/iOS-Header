@@ -31,6 +31,7 @@
 
 + (BOOL)isWatchAppRemoved;
 + (id)sharedNotifier;
++ (BOOL)shouldScanForNearbyDevices;
 - (void).cxx_destruct;
 - (void)_cleanupDiscoveryDidFindDevice:(BOOL)arg1 error:(id)arg2;
 - (void)bulletinProviderDidClearBulletins:(id)arg1;

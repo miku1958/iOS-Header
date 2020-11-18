@@ -6,7 +6,7 @@
 
 #import <MarkupUI/NSObject-Protocol.h>
 
-@class NSString, NSURL, PDFActionRemoteGoTo, PDFView;
+@class NSURL, PDFActionRemoteGoTo, PDFView;
 
 @protocol PDFViewDelegate <NSObject>
 
@@ -14,9 +14,6 @@
 - (void)PDFViewOpenPDF:(PDFView *)arg1 forRemoteGoToAction:(PDFActionRemoteGoTo *)arg2;
 - (void)PDFViewPerformFind:(PDFView *)arg1;
 - (void)PDFViewPerformGoToPage:(PDFView *)arg1;
-- (void)PDFViewPerformPrint:(PDFView *)arg1;
-- (NSString *)PDFViewPrintJobTitle:(PDFView *)arg1;
-- (double)PDFViewWillChangeScaleFactor:(PDFView *)arg1 toScale:(double)arg2;
 - (void)PDFViewWillClickOnLink:(PDFView *)arg1 withURL:(NSURL *)arg2;
 @end
 

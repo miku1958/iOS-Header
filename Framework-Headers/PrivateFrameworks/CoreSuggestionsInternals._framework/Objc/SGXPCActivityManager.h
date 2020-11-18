@@ -22,8 +22,6 @@
 
 + (id)nameForActivityId:(int)arg1;
 + (id)sharedInstance;
-+ (void)stopUsingMockSharedInstance;
-+ (void)useMockSharedInstance:(id)arg1;
 - (void).cxx_destruct;
 - (id)_taskForActivity:(id)arg1;
 - (id)activityForActivityId:(int)arg1;

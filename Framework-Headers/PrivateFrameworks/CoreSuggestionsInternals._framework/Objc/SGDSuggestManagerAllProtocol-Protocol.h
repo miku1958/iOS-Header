@@ -4,10 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <CoreSuggestionsInternals/SGDSuggestManagerContactsProtocol-Protocol.h>
+#import <CoreSuggestionsInternals/SGDSuggestManagerEventsProtocol-Protocol.h>
+#import <CoreSuggestionsInternals/SGDSuggestManagerFidesProtocol-Protocol.h>
+#import <CoreSuggestionsInternals/SGDSuggestManagerInternalProtocol-Protocol.h>
+#import <CoreSuggestionsInternals/SGDSuggestManagerMailProtocol-Protocol.h>
 #import <CoreSuggestionsInternals/SGDSuggestManagerMessagesProtocol-Protocol.h>
-#import <CoreSuggestionsInternals/SGDSuggestManagerProtocol-Protocol.h>
-#import <CoreSuggestionsInternals/SGDSuggestManagerSearchToShareProtocol-Protocol.h>
+#import <CoreSuggestionsInternals/_SGDSuggestManagerBaseProtocol-Protocol.h>
 
-@protocol SGDSuggestManagerAllProtocol <SGDSuggestManagerProtocol, SGDSuggestManagerMessagesProtocol, SGDSuggestManagerSearchToShareProtocol>
+@protocol SGDSuggestManagerAllProtocol <_SGDSuggestManagerBaseProtocol, SGDSuggestManagerMailProtocol, SGDSuggestManagerContactsProtocol, SGDSuggestManagerEventsProtocol, SGDSuggestManagerInternalProtocol, SGDSuggestManagerMessagesProtocol, SGDSuggestManagerFidesProtocol>
 @end
 

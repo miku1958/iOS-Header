@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOETAUpdaterDelegate-Protocol.h>
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
 @class GEOCommonOptions, GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsRequestFeedback, GEOETARoute, GEOETAUpdater, GEOLocation, GEOMapRegion, GEOMapServiceTraits, GEORouteAttributes, GEORouteHypothesis, GEORouteHypothesizerAnalyticsStore, GEORouteMatch, NSDate, NSMutableArray, NSString;
-@protocol OS_dispatch_semaphore;
+@protocol GEOTTLTraceRecorder, OS_dispatch_semaphore;
 
 @interface GEORouteHypothesisMonitor : NSObject <GEOETAUpdaterDelegate, NSSecureCoding>
 {
@@ -41,6 +41,8 @@
     BOOL _isTraveling;
     double _travelScore;
     GEOMapRegion *_arrivalMapRegion;
+    NSString *_traceName;
+    id<GEOTTLTraceRecorder> _traceRecorder;
 }
 
 @property (readonly, nonatomic) NSDate *arrivalDate; // @synthesize arrivalDate=_arrivalDate;
@@ -57,12 +59,15 @@
 @property (readonly, nonatomic) BOOL supportsLiveTraffic;
 @property (readonly, nonatomic) int transportType; // @synthesize transportType=_transportType;
 
-+ (id)monitorWithSource:(id)arg1 toDestination:(id)arg2 transportType:(int)arg3 arrivalDate:(id)arg4 traits:(id)arg5;
++ (id)monitorWithSource:(id)arg1 toDestination:(id)arg2 transportType:(int)arg3 arrivalDate:(id)arg4 traceName:(id)arg5 traits:(id)arg6;
 + (id)serverFormattedStringFormatter;
 + (void)setServerFormattedStringFormatter:(id)arg1;
++ (void)setTTLTraceRecorderFactory:(id)arg1;
 + (void)setUserPreferencesProvider:(id)arg1;
 + (BOOL)supportsSecureCoding;
++ (id)ttlTraceRecorderFactory;
 + (id)userPreferencesProvider;
+- (void).cxx_destruct;
 - (void)_commonInit;
 - (void)_executeBlockAccessingCurrentRequest:(CDUnknownBlockType)arg1;
 - (void)_fetchETAWithRouteMatch:(id)arg1;
@@ -70,6 +75,7 @@
 - (BOOL)_hasInitialRoute;
 - (void)_recalculateETAWithRouteMatch:(id)arg1;
 - (void)_recievedRouteResponse:(id)arg1 forLocation:(id)arg2 isReroute:(BOOL)arg3;
+- (void)_recordTraceForEvent:(long long)arg1 parameters:(id)arg2;
 - (void)_requestNewRouteFromLocation:(id)arg1 usualRouteData:(id)arg2;
 - (void)_routeRequestFailed:(id)arg1;
 - (void)_showDebugAlert;
@@ -90,7 +96,7 @@
 - (id)etaUpdaterRoutesForETATrafficUpdateRequest:(id)arg1;
 - (void)etaUpdaterUpdatedETA:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSource:(id)arg1 toDestination:(id)arg2 transportType:(int)arg3 arrivalDate:(id)arg4 traits:(id)arg5;
+- (id)initWithSource:(id)arg1 toDestination:(id)arg2 transportType:(int)arg3 arrivalDate:(id)arg4 traceName:(id)arg5 traits:(id)arg6;
 - (void)recordETAUpdatesAfterEventStart;
 - (id)routeMatchForLocation:(id)arg1;
 - (void)stopMonitoring;

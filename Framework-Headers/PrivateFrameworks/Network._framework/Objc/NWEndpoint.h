@@ -28,11 +28,13 @@
 + (unsigned int)endpointType;
 + (id)endpointWithCEndpoint:(id)arg1;
 + (id)endpointWithInternalEndpoint:(id)arg1;
++ (id)endpointWithProtocolBufferData:(id)arg1;
 + (BOOL)supportsResolverCallback;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyCEndpoint;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)createProtocolBufferObject;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
 - (void)encodeWithCoder:(id)arg1;

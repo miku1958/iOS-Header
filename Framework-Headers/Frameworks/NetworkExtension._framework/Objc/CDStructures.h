@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#pragma mark Blocks
+#pragma mark Function Pointers and Blocks
+
+typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
@@ -32,11 +34,18 @@ struct NEAgentFilterPluginCallbacks {
     CDUnknownFunctionPointerType PluginDispose;
 };
 
+struct NEIKEPacketDelegateCallbacks {
+    CDUnknownFunctionPointerType registerIKEFlow;
+    CDUnknownFunctionPointerType unregisterIKEFlow;
+    CDUnknownFunctionPointerType sendData;
+    CDUnknownFunctionPointerType invalidate;
+    void *delegateHandle;
+};
+
 struct _VPNConfigurationPrivate {
     struct __CFRuntimeBase {
         unsigned long long _field1;
-        unsigned char _field2[4];
-        unsigned int _field3;
+        _Atomic unsigned long long _field2;
     } _field1;
     struct __CFString *_field2;
     unsigned char _field3;

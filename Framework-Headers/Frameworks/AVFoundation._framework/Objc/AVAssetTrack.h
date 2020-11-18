@@ -19,6 +19,7 @@
 @property (readonly, weak, nonatomic) AVAsset *asset;
 @property (readonly, nonatomic) int trackID;
 
++ (BOOL)expectsPropertyRevisedNotifications;
 + (id)keyPathsForValuesAffectingTimeRange;
 + (id)mediaCharacteristicsForMediaTypes;
 - (id)_assetTrackInspector;
@@ -60,6 +61,7 @@
 - (BOOL)hasProtectedContent;
 - (unsigned long long)hash;
 - (id)init;
+- (BOOL)isDecodable;
 - (BOOL)isEnabled;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isExcludedFromAutoselectionInTrackGroup;

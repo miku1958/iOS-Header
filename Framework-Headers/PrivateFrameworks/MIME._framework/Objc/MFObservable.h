@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface MFObservable : NSObject
 {
 }
 
++ (id)combineLatest:(id)arg1;
 + (id)concatenate:(id)arg1;
 + (id)emptyObservable;
 + (id)merge:(id)arg1;
@@ -35,6 +36,7 @@
 - (id)doOnSubscribe:(CDUnknownBlockType)arg1;
 - (id)doOnTerminate:(CDUnknownBlockType)arg1;
 - (id)filter:(CDUnknownBlockType)arg1;
+- (id)first;
 - (id)map:(CDUnknownBlockType)arg1;
 - (id)observeOn:(id)arg1;
 - (id)publish;
@@ -47,6 +49,7 @@
 - (id)startWith:(id)arg1 scheduler:(id)arg2;
 - (id)subscribeOn:(id)arg1;
 - (id)subscribeWithResultBlock:(CDUnknownBlockType)arg1;
+- (id)take:(unsigned long long)arg1;
 
 @end
 

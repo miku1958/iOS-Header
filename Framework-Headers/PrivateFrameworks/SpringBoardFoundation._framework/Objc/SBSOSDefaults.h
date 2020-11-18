@@ -11,10 +11,12 @@
 }
 
 @property (readonly, nonatomic) BOOL disablesForAccessibility; // @dynamic disablesForAccessibility;
-@property (readonly, nonatomic) unsigned long long numberOfPressesToTrigger; // @dynamic numberOfPressesToTrigger;
+@property (nonatomic) BOOL performedCheckForTripleClickSOSMigrationAlert; // @dynamic performedCheckForTripleClickSOSMigrationAlert;
 
 - (void)_bindAndRegisterDefaults;
-- (BOOL)hasIndiaConfiguration;
+- (BOOL)clawCanTriggerSOS;
+- (BOOL)isAutomaticCallCountdownEnabled;
+- (long long)lockButtonSOSTriggerCount;
 
 @end
 

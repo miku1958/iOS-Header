@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOTransitLine-Protocol.h>
 
-@class GEOPBTransitLine, GEOStyleAttributes, NSArray, NSString;
+@class GEOMapItemIdentifier, GEOPBTransitLine, GEOStyleAttributes, NSArray, NSString;
 @protocol GEOTransitArtworkDataSource, GEOTransitSystem;
 
 __attribute__((visibility("hidden")))
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     id<GEOTransitSystem> _system;
 }
 
+@property (readonly, nonatomic) id<GEOTransitArtworkDataSource> alternateArtwork;
 @property (readonly, nonatomic) id<GEOTransitArtworkDataSource> artwork;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) unsigned long long departureTimeDisplayStyle;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasLineColorString;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) GEOMapItemIdentifier *identifier;
 @property (readonly, nonatomic) NSString *lineColorString;
 @property (readonly, nonatomic) id<GEOTransitArtworkDataSource> modeArtwork;
 @property (readonly, nonatomic) unsigned long long muid;
@@ -35,7 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<GEOTransitSystem> system;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithLine:(id)arg1 system:(id)arg2;
 
 @end

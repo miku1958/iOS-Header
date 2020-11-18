@@ -6,41 +6,50 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreParsec/NSCopying-Protocol.h>
+#import <CoreParsec/NSSecureCoding-Protocol.h>
+#import <CoreParsec/_CPParsecFeedback-Protocol.h>
 
-@class _CPFeedbackPayload;
+@class NSData, NSString, _CPFeedbackPayload;
 
-@interface _CPParsecFeedback : PBCodable <NSCopying>
+@interface _CPParsecFeedback : PBCodable <_CPParsecFeedback, NSSecureCoding>
 {
-    unsigned long long _clientQueryId;
-    long long _queryId;
-    unsigned long long _relTimestamp;
-    _CPFeedbackPayload *_payload;
     struct {
-        unsigned int clientQueryId:1;
         unsigned int queryId:1;
         unsigned int relTimestamp:1;
     } _has;
+    _CPFeedbackPayload *_payload;
+    unsigned long long _queryId;
+    unsigned long long _relTimestamp;
+    NSString *_parsecDeveloperID;
+    NSString *_userAgent;
+    NSString *_userGuid;
 }
 
-@property (nonatomic) unsigned long long clientQueryId; // @synthesize clientQueryId=_clientQueryId;
-@property (nonatomic) BOOL hasClientQueryId;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasParsecDeveloperID;
 @property (readonly, nonatomic) BOOL hasPayload;
-@property (nonatomic) BOOL hasQueryId;
-@property (nonatomic) BOOL hasRelTimestamp;
+@property (readonly, nonatomic) BOOL hasQueryId;
+@property (readonly, nonatomic) BOOL hasRelTimestamp;
+@property (readonly, nonatomic) BOOL hasUserAgent;
+@property (readonly, nonatomic) BOOL hasUserGuid;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSString *parsecDeveloperID; // @synthesize parsecDeveloperID=_parsecDeveloperID;
 @property (strong, nonatomic) _CPFeedbackPayload *payload; // @synthesize payload=_payload;
-@property (nonatomic) long long queryId; // @synthesize queryId=_queryId;
+@property (nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
 @property (nonatomic) unsigned long long relTimestamp; // @synthesize relTimestamp=_relTimestamp;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *userAgent; // @synthesize userAgent=_userAgent;
+@property (copy, nonatomic) NSString *userGuid; // @synthesize userGuid=_userGuid;
 
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (BOOL)requiresQueryId;
 - (void)writeTo:(id)arg1;
 
 @end

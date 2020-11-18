@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class MPMediaItem, MPModelGenericObject, NSNumber, NSString, NSURL;
+@class MPMediaItem, MPModelGenericObject, NSDictionary, NSNumber, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface MPMediaPlaybackItemMetadata : NSObject
@@ -20,6 +20,8 @@
     BOOL _shouldReportPlayEventsToStore;
     BOOL _shouldRememberBookmarkTime;
     BOOL _subscriptionRequired;
+    BOOL _prefersStoreContentInfo;
+    BOOL _offlineHLS;
     float _volumeNormalization;
     NSString *_albumArtistName;
     long long _albumStoreAdamID;
@@ -49,8 +51,10 @@
     NSNumber *_iTunesStoreContentID;
     NSNumber *_iTunesStoreContentDSID;
     NSNumber *_rentalIdentifier;
+    NSDictionary *_hlsOfflinePlaybackKeys;
 }
 
+@property (readonly, copy, nonatomic) NSDictionary *additionalHTTPHeaderFields;
 @property (readonly, copy, nonatomic) NSString *albumArtistName; // @synthesize albumArtistName=_albumArtistName;
 @property (readonly, nonatomic) long long albumStoreAdamID; // @synthesize albumStoreAdamID=_albumStoreAdamID;
 @property (readonly, copy, nonatomic) NSString *albumTitle; // @synthesize albumTitle=_albumTitle;
@@ -69,6 +73,7 @@
 @property (readonly, nonatomic) long long endpointType; // @synthesize endpointType=_endpointType;
 @property (readonly, nonatomic) double expectedDuration; // @synthesize expectedDuration=_expectedDuration;
 @property (readonly, copy, nonatomic) NSString *genreTitle; // @synthesize genreTitle=_genreTitle;
+@property (readonly, nonatomic) NSDictionary *hlsOfflinePlaybackKeys; // @synthesize hlsOfflinePlaybackKeys=_hlsOfflinePlaybackKeys;
 @property (readonly, copy, nonatomic) NSNumber *iTunesStoreContentDSID; // @synthesize iTunesStoreContentDSID=_iTunesStoreContentDSID;
 @property (readonly, copy, nonatomic) NSString *iTunesStoreContentDownloadParameters;
 @property (readonly, copy, nonatomic) NSNumber *iTunesStoreContentID; // @synthesize iTunesStoreContentID=_iTunesStoreContentID;
@@ -81,6 +86,8 @@
 @property (readonly, nonatomic) MPMediaItem *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property (readonly, nonatomic) long long mediaLibraryPersistentID; // @synthesize mediaLibraryPersistentID=_mediaLibraryPersistentID;
 @property (readonly, nonatomic) MPModelGenericObject *modelGenericObject; // @synthesize modelGenericObject=_modelGenericObject;
+@property (readonly, nonatomic, getter=isOfflineHLS) BOOL offlineHLS; // @synthesize offlineHLS=_offlineHLS;
+@property (readonly, nonatomic) BOOL prefersStoreContentInfo; // @synthesize prefersStoreContentInfo=_prefersStoreContentInfo;
 @property (readonly, copy, nonatomic) NSURL *protectedContentSupportStorageURL; // @synthesize protectedContentSupportStorageURL=_protectedContentSupportStorageURL;
 @property (readonly, nonatomic, getter=_rentalIdentifier) NSNumber *rentalIdentifier; // @synthesize rentalIdentifier=_rentalIdentifier;
 @property (readonly, nonatomic) BOOL requiresPlayWhileDownload; // @synthesize requiresPlayWhileDownload=_requiresPlayWhileDownload;
@@ -101,6 +108,7 @@
 - (BOOL)_calculateAllowsCellularNetworking;
 - (void)_contentTasteControllerDidChangeNotification:(id)arg1;
 - (void)_musicCellularNetworkingAllowedDidChangeNotification:(id)arg1;
+- (void)_persistURI:(id)arg1 persistentContentKey:(id)arg2;
 - (BOOL)_requiresPendingItemDownload;
 - (void)_setNeedsAllowsCellularNetworkingUpdate;
 - (void)_storeCellularNetworkingAllowedDidChangeNotification:(id)arg1;

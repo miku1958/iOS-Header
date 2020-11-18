@@ -4,19 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <EventKitUI/EKUIConstrainedFontsTableViewCell.h>
+#import <EventKitUI/EKUITableViewCell.h>
 
-@class TwoPartTextLabel, UIColor;
+@class TwoPartTextLabel, UIColor, UILabel;
 @protocol EKCellShortener;
 
-@interface PreferencesTwoPartValueCell : EKUIConstrainedFontsTableViewCell
+@interface PreferencesTwoPartValueCell : EKUITableViewCell
 {
     TwoPartTextLabel *_twoPartLabel;
     unsigned int _notifiedShort;
+    UILabel *_largePart2TextLabel;
+    BOOL _strikeThroughLargeDetailTextLabel;
+    BOOL _strikeThroughLargePart2TextLabel;
     id<EKCellShortener> _shortener;
 }
 
+@property (readonly, strong, nonatomic) UILabel *largePart2TextLabel;
 @property (weak, nonatomic) id<EKCellShortener> shortener; // @synthesize shortener=_shortener;
+@property (nonatomic) BOOL strikeThroughLargeDetailTextLabel; // @synthesize strikeThroughLargeDetailTextLabel=_strikeThroughLargeDetailTextLabel;
+@property (nonatomic) BOOL strikeThroughLargePart2TextLabel; // @synthesize strikeThroughLargePart2TextLabel=_strikeThroughLargePart2TextLabel;
 @property (readonly, strong, nonatomic) TwoPartTextLabel *twoPartTextLabel;
 @property (readonly, strong, nonatomic) UIColor *valueColor;
 
@@ -27,6 +33,7 @@
 - (void)layoutSubviews;
 - (void)layoutText:(id)arg1 andValue:(id)arg2;
 - (void)shorten;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

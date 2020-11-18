@@ -45,7 +45,7 @@
 - (void)endSessionWithEndReason:(long long)arg1;
 - (void)sessionDidReceiveError:(id)arg1;
 - (void)sessionDidReceiveHeartRate:(double)arg1;
-- (void)startScoringSession;
+- (void)startGuiding;
 - (void)startSessionWithStartDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

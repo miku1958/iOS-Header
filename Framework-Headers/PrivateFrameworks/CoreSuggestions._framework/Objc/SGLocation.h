@@ -21,11 +21,13 @@
     double _longitude;
     double _accuracy;
     double _quality;
+    NSString *_airportCode;
     NSData *_handle;
 }
 
 @property (readonly, nonatomic) double accuracy; // @synthesize accuracy=_accuracy;
 @property (readonly, nonatomic) NSString *address; // @synthesize address=_address;
+@property (readonly, nonatomic) NSString *airportCode; // @synthesize airportCode=_airportCode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isGeocoded) BOOL geocoded;
@@ -45,17 +47,19 @@
 - (void)encodeWithCoder:(id)arg1;
 - (double)geocodeAccuracy;
 - (id)geocodeAddress;
+- (id)geocodeAirportCode;
 - (id)geocodeHandle;
 - (BOOL)geocodeIsEnd;
 - (BOOL)geocodeIsStart;
 - (id)geocodeLabel;
 - (double)geocodeLatitude;
 - (double)geocodeLongitude;
+- (id)geocodedLocationWithLabel:(id)arg1 address:(id)arg2 latitude:(double)arg3 longitude:(double)arg4 accuracy:(double)arg5 handle:(id)arg6;
 - (id)geocodedLocationWithLatitude:(double)arg1 longitude:(double)arg2 accuracy:(double)arg3 handle:(id)arg4;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithId:(id)arg1 origin:(id)arg2 type:(unsigned long long)arg3 label:(id)arg4 address:(id)arg5 accuracy:(double)arg6 quality:(double)arg7;
-- (id)initWithId:(id)arg1 origin:(id)arg2 type:(unsigned long long)arg3 label:(id)arg4 address:(id)arg5 latitude:(double)arg6 longitude:(double)arg7 accuracy:(double)arg8 quality:(double)arg9 handle:(id)arg10;
-- (id)initWithId:(id)arg1 origin:(id)arg2 type:(unsigned long long)arg3 label:(id)arg4 latitude:(double)arg5 longitude:(double)arg6 accuracy:(double)arg7 quality:(double)arg8;
+- (id)initWithId:(id)arg1 origin:(id)arg2 type:(unsigned long long)arg3 label:(id)arg4 address:(id)arg5 airportCode:(id)arg6 accuracy:(double)arg7 quality:(double)arg8;
+- (id)initWithId:(id)arg1 origin:(id)arg2 type:(unsigned long long)arg3 label:(id)arg4 address:(id)arg5 airportCode:(id)arg6 latitude:(double)arg7 longitude:(double)arg8 accuracy:(double)arg9 quality:(double)arg10 handle:(id)arg11;
+- (id)initWithId:(id)arg1 origin:(id)arg2 type:(unsigned long long)arg3 label:(id)arg4 airportCode:(id)arg5 latitude:(double)arg6 longitude:(double)arg7 accuracy:(double)arg8 quality:(double)arg9;
 - (id)initWithLocation:(id)arg1 latitude:(double)arg2 longitude:(double)arg3 accuracy:(double)arg4 handle:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToLocation:(id)arg1;

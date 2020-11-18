@@ -40,9 +40,8 @@
 - (id)init;
 - (void)startAccelerometerUpdates;
 - (void)startAccelerometerUpdatesToQueue:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)startDeviceMotionLiteDebugUpdatesForDeviceID:(id)arg1 toQueue:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)startDeviceMotionLiteFusedUpdatesForDeviceID:(id)arg1 toQueue:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (void)startDeviceMotionLiteUpdatesForDeviceID:(id)arg1 usingConfiguration:(CDStruct_fcaf9308)arg2 toQueue:(id)arg3 withFusedHandler:(CDUnknownBlockType)arg4 debugHandler:(CDUnknownBlockType)arg5;
+- (void)startDeviceMotionLiteUpdatesForDeviceID:(id)arg1 usingConfiguration:(CDStruct_fcaf9308)arg2 toQueue:(id)arg3 withFusedHandler:(CDUnknownBlockType)arg4;
 - (void)startDeviceMotionUpdates;
 - (void)startDeviceMotionUpdatesToQueue:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)startDeviceMotionUpdatesUsingReferenceFrame:(unsigned long long)arg1;

@@ -8,7 +8,7 @@
 
 #import <Home/HFCharacteristicValueSource-Protocol.h>
 
-@class HFCharacteristicValueTransaction, NACancelationToken, NSMutableArray, NSMutableDictionary, NSMutableSet, NSRecursiveLock, NSSet, NSString;
+@class HFCharacteristicValueTransaction, NACancelationToken, NAFuture, NSMutableArray, NSMutableDictionary, NSMutableSet, NSRecursiveLock, NSSet, NSString;
 @protocol HFCharacteristicOperationContextProviding, HFCharacteristicValueReader, HFCharacteristicValueWriter;
 
 @interface HFCharacteristicValueManager : NSObject <HFCharacteristicValueSource>
@@ -27,6 +27,7 @@
     NSMutableDictionary *_cachedWriteErrorsKeyedByCharacteristicIdentifier;
     NSMutableDictionary *_cachedExecutionErrorsKeyedByActionSetIdentifier;
     NACancelationToken *_inFlightReadCancelationToken;
+    NAFuture *_firstReadCompleteFuture;
 }
 
 @property (nonatomic) long long _debug_totalNumberOfIssuedBatchReadRequests; // @synthesize _debug_totalNumberOfIssuedBatchReadRequests=__debug_totalNumberOfIssuedBatchReadRequests;
@@ -42,6 +43,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSSet *executingActionSets;
+@property (readonly, nonatomic) NAFuture *firstReadCompleteFuture; // @synthesize firstReadCompleteFuture=_firstReadCompleteFuture;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NACancelationToken *inFlightReadCancelationToken; // @synthesize inFlightReadCancelationToken=_inFlightReadCancelationToken;
 @property (strong, nonatomic) NSMutableSet *mutableAllReadCharacteristics; // @synthesize mutableAllReadCharacteristics=_mutableAllReadCharacteristics;
@@ -53,32 +55,35 @@
 @property (strong, nonatomic) id<HFCharacteristicValueReader> valueReader; // @synthesize valueReader=_valueReader;
 @property (strong, nonatomic) id<HFCharacteristicValueWriter> valueWriter; // @synthesize valueWriter=_valueWriter;
 
++ (id)na_identity;
 - (void).cxx_destruct;
 - (id)_openTransactionCompletionFuture;
-- (id)_readValuesForCharacteristics:(id)arg1 readSuccessBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (id)_transactionLock_characteristicsWithPendingWritesInTransacton:(id)arg1 includeDirectWrites:(BOOL)arg2 includeActionSets:(BOOL)arg3;
 - (void)_transactionLock_executeActionSetTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_transactionLock_executeReadTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_transactionLock_executeWriteTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)beginTransactionWithReason:(id)arg1;
-- (void)beginTransactionWithReason:(id)arg1 logger:(id)arg2 readValidator:(CDUnknownBlockType)arg3;
+- (void)beginTransactionWithReason:(id)arg1 readPolicy:(id)arg2 logger:(id)arg3;
 - (id)cachedErrorForExecutionOfActionSet:(id)arg1;
 - (id)cachedErrorForWriteToCharacteristic:(id)arg1;
 - (id)cachedReadErrorForCharacteristic:(id)arg1;
 - (id)cachedValueForCharacteristic:(id)arg1;
 - (void)cancelInFlightReadRequests;
 - (void)commitTransactionWithReason:(id)arg1;
+- (id)executeActionSet:(id)arg1;
 - (void)executeActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)hasCachedReadErrorForAccessory:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (id)initWithValueReader:(id)arg1 valueWriter:(id)arg2;
 - (void)invalidateAllCachedErrors;
+- (void)invalidateCachedErrorForExecutionOfActionSet:(id)arg1;
 - (void)invalidateCachedValueForCharacteristic:(id)arg1;
 - (void)invalidateCachedValuesForAccessory:(id)arg1;
-- (void)readValueForCharacteristic:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (id)readValueForCharacteristic:(id)arg1;
 - (id)readValuesForCharacteristicTypes:(id)arg1 inServices:(id)arg2;
 - (id)readValuesForCharacteristics:(id)arg1;
 - (id)readValuesForCharacteristicsPassingTest:(CDUnknownBlockType)arg1 inServices:(id)arg2;
-- (void)writeValue:(id)arg1 forCharacteristic:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)writeValue:(id)arg1 forCharacteristic:(id)arg2;
 - (id)writeValuesForCharacteristics:(id)arg1;
 
 @end

@@ -51,6 +51,8 @@
 - (void)loadArtworkInfoForContainerSagaIDs:(NSArray *)arg1 completion:(void (^)(NSError *, NSArray *))arg2;
 - (void)loadArtworkInfoForPurchaseHistoryIDs:(NSArray *)arg1 completion:(void (^)(NSError *, NSArray *))arg2;
 - (void)loadArtworkInfoForSagaIDs:(NSArray *)arg1 completion:(void (^)(NSError *, NSArray *))arg2;
+- (void)loadArtworkInfoForSubscriptionContainerPersistentIDs:(NSArray *)arg1 completion:(void (^)(NSError *, NSArray *))arg2;
+- (void)loadArtworkInfoForSubscriptionItemPersistentIDs:(NSArray *)arg1 completion:(void (^)(NSError *, NSArray *))arg2;
 - (void)loadBooksForStoreIDs:(NSArray *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (void)loadGeniusItemsForSagaID:(unsigned long long)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)loadIsJaliscoGeniusSupportedWithCompletion:(void (^)(BOOL, NSError *))arg1;
@@ -58,6 +60,9 @@
 - (void)loadJaliscoGeniusCUIDWithCompletion:(void (^)(NSString *, NSError *))arg1;
 - (void)loadJaliscoGeniusLearnMoreURLWithCompletion:(void (^)(NSURL *, NSError *))arg1;
 - (void)loadJaliscoGeniusOperationStatusWithCompletion:(void (^)(long long, NSError *))arg1;
+- (void)loadScreenshotInfoForPurchaseHistoryIDs:(NSArray *)arg1 completion:(void (^)(NSError *, NSArray *))arg2;
+- (void)loadScreenshotInfoForSagaIDs:(NSArray *)arg1 completion:(void (^)(NSError *, NSArray *))arg2;
+- (void)loadScreenshotInfoForSubscriptionPersistentIDs:(NSArray *)arg1 completion:(void (^)(NSError *, NSArray *))arg2;
 - (void)loadUpdateProgressWithCompletion:(void (^)(NSError *, float))arg1;
 - (void)publishPlaylistWithSagaID:(long long)arg1 completion:(void (^)(NSString *, NSString *, NSError *))arg2;
 - (void)redownloadPurchaseAppWithStoreID:(NSNumber *)arg1 completion:(void (^)(NSError *, NSData *))arg2;

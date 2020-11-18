@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class BBDataProviderConnection, CALNRemoteEventProvider, CALNRemoteReminderProvider, EKTravelEngine, _EKAlarmEngine, _EKNotificationMonitor;
+#import <CalendarNotification/CADModule-Protocol.h>
+
+@class BBDataProviderConnection, CALNRemoteEventProvider, CALNRemoteReminderProvider, EKTravelEngine, NSString, _EKAlarmEngine, _EKNotificationMonitor;
 @protocol OS_dispatch_queue;
 
-@interface CALNBulletinBoardProvider : NSObject
+@interface CALNBulletinBoardProvider : NSObject <CADModule>
 {
     NSObject<OS_dispatch_queue> *_bulletinQueue;
     NSObject<OS_dispatch_queue> *_notificationMonitorQueue;
@@ -21,6 +23,11 @@
     _EKNotificationMonitor *_notificationMonitor;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)_bbProviderDarwinNotifications;
 + (id)requestedDarwinNotifications;
 + (id)sharedProvider;
@@ -29,11 +36,13 @@
 - (void)_notificationCountChanged:(id)arg1;
 - (void)_notificationsChanged:(id)arg1;
 - (void)_unalertedNotificationsReceived:(id)arg1;
+- (void)activate;
 - (void)databaseChanged;
+- (void)deactivate;
 - (void)dealloc;
 - (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
-- (void)handleDarwinNotification:(id)arg1;
 - (id)init;
+- (void)receivedNotificationNamed:(id)arg1;
 - (void)registerDataProviders;
 - (void)registerForNotifications;
 - (void)startAlarmEngine;

@@ -21,19 +21,29 @@
 @property (nonatomic) BOOL proposedStartDateChanged;
 @property (nonatomic) BOOL statusChanged;
 
++ (int)_calAttendeeStatusFromEKParticipantStatus:(long long)arg1;
++ (long long)_ekParticipantStatusFromCalAttendeeStatus:(int)arg1;
 + (id)attendeeWithEmailAddress:(id)arg1 name:(id)arg2;
++ (id)attendeeWithName:(id)arg1 emailAddress:(id)arg2;
 + (id)attendeeWithName:(id)arg1 emailAddress:(id)arg2 address:(id)arg3;
-- (id)_persistentAttendee;
++ (id)attendeeWithName:(id)arg1 emailAddress:(id)arg2 phoneNumber:(id)arg3 url:(id)arg4;
++ (id)attendeeWithName:(id)arg1 phoneNumber:(id)arg2;
++ (id)attendeeWithName:(id)arg1 url:(id)arg2;
++ (Class)frozenClass;
+- (BOOL)_isParticipantStatusDirty;
+- (void)_setFlag:(unsigned int)arg1 value:(BOOL)arg2;
+- (BOOL)_valueForFlag:(unsigned int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (unsigned long long)hash;
-- (id)init;
-- (id)initWithEmailAddress:(id)arg1 name:(id)arg2;
-- (id)initWithName:(id)arg1 emailAddress:(id)arg2 address:(id)arg3;
+- (unsigned int)flags;
 - (BOOL)isCurrentUser;
-- (BOOL)isEqual:(id)arg1;
-- (id)lazyLoadRelationForKey:(id)arg1;
+- (void)markAsForward;
 - (id)owner;
+- (int)pendingStatusRaw;
+- (void)setFlags:(unsigned int)arg1;
+- (void)setPendingStatusRaw:(int)arg1;
+- (void)setStatusRaw:(int)arg1;
+- (int)statusRaw;
 
 @end
 

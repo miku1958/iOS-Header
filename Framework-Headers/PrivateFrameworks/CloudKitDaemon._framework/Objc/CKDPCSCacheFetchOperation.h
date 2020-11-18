@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface CKDPCSCacheFetchOperation : CKDDatabaseOperation
 {
+    BOOL _willRetryFetchSuperCalled;
     BOOL _didFetchData;
     BOOL _wasFetchedFromCache;
     BOOL _shouldRetry;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSError *fetchError; // @synthesize fetchError=_fetchError;
 @property (readonly, nonatomic) NSObject<OS_dispatch_group> *fetchGroup; // @synthesize fetchGroup=_fetchGroup;
 @property (nonatomic) unsigned long long fetchOptions; // @synthesize fetchOptions=_fetchOptions;
+@property (readonly, nonatomic) BOOL hasAllPCSData;
 @property (strong, nonatomic) id<CKSQLiteItem> itemID; // @synthesize itemID=_itemID;
 @property (readonly, nonatomic) NSString *itemTypeName;
 @property (nonatomic) int numRetries; // @synthesize numRetries=_numRetries;
@@ -39,21 +41,25 @@ __attribute__((visibility("hidden")))
 @property (getter=isPCSDataInvalidated) BOOL pcsDataInvalidated; // @synthesize pcsDataInvalidated=_pcsDataInvalidated;
 @property (nonatomic) BOOL shouldRetry; // @synthesize shouldRetry=_shouldRetry;
 @property (nonatomic) BOOL wasFetchedFromCache; // @synthesize wasFetchedFromCache=_wasFetchedFromCache;
+@property (nonatomic) BOOL willRetryFetchSuperCalled; // @synthesize willRetryFetchSuperCalled=_willRetryFetchSuperCalled;
 
 - (void).cxx_destruct;
-- (BOOL)_createParentPCS;
+- (BOOL)_createAdditionalPCS;
 - (BOOL)_decryptPCS;
+- (BOOL)_errorShouldImpactFlowControl:(id)arg1;
+- (BOOL)_fetchDependentPCS;
 - (BOOL)_fetchPCSDataFromDatabase;
 - (BOOL)_fetchPCSDataFromServer;
-- (BOOL)_fetchParentPCS;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (BOOL)_savePCSDataToCache;
+- (BOOL)_saveUpdatedPCSToServer;
+- (void)_willRetryFetch;
 - (BOOL)canBeUsedForOperation:(id)arg1 withOptions:(unsigned long long)arg2;
-- (BOOL)hasAllPCSData;
-- (id)initWithItemID:(id)arg1 parentOperation:(id)arg2 cache:(id)arg3 options:(unsigned long long)arg4;
+- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
 - (BOOL)makeStateTransition;
 - (id)nameForState:(unsigned long long)arg1;
+- (BOOL)needsAdditionalPCSCreation;
 
 @end
 

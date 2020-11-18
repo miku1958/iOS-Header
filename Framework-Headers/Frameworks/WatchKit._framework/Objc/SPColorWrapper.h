@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <WatchKit/NSCopying-Protocol.h>
 #import <WatchKit/NSSecureCoding-Protocol.h>
 
 @class UIColor;
 
-@interface SPColorWrapper : NSObject <NSSecureCoding>
+@interface SPColorWrapper : NSObject <NSSecureCoding, NSCopying>
 {
     UIColor *_color;
 }
@@ -20,6 +21,7 @@
 + (BOOL)supportsSecureCoding;
 + (id)wrapperForColor:(id)arg1;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

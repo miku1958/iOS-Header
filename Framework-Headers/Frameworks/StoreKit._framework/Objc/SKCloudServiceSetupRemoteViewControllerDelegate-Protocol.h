@@ -13,5 +13,6 @@
 - (void)cloudServiceSetupRemoteViewController:(SKCloudServiceSetupRemoteViewController *)arg1 requestsDismissalWithAnimation:(BOOL)arg2 completion:(void (^)(void))arg3;
 - (void)cloudServiceSetupRemoteViewController:(SKCloudServiceSetupRemoteViewController *)arg1 requestsDismissingSafariViewControllerAnimated:(BOOL)arg2 completion:(void (^)(void))arg3;
 - (void)cloudServiceSetupRemoteViewController:(SKCloudServiceSetupRemoteViewController *)arg1 requestsPresentingSafariViewControllerWithURL:(NSURL *)arg2 animated:(BOOL)arg3 completion:(void (^)(void))arg4;
+- (void)overrideCreditCardPresentationWithCompletion:(void (^)(SUCreditCardReaderOutput *))arg1;
 @end
 

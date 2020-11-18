@@ -75,7 +75,6 @@
 @property (nonatomic) BOOL needToFetchSecureProperties; // @synthesize needToFetchSecureProperties=_needToFetchSecureProperties;
 @property (nonatomic) long long pairingCompatibilityVersion; // @synthesize pairingCompatibilityVersion=_pairingCompatibilityVersion;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *pairingOrSwitchCompleteQueue; // @synthesize pairingOrSwitchCompleteQueue=_pairingOrSwitchCompleteQueue;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 @property (nonatomic) BOOL secureDataIsAvailable; // @synthesize secureDataIsAvailable=_secureDataIsAvailable;
 @property (nonatomic) int securePropertiesUnlockedNotifyToken; // @synthesize securePropertiesUnlockedNotifyToken=_securePropertiesUnlockedNotifyToken;
 @property (strong, nonatomic) NSMutableArray *securePropertiesUpdateBlocks; // @synthesize securePropertiesUpdateBlocks=_securePropertiesUpdateBlocks;
@@ -132,6 +131,7 @@
 - (void)_xpcInvalidationHandler;
 - (void)abortPairing;
 - (void)abortPairingWithReason:(id)arg1;
+- (void)applyDiff:(id)arg1;
 - (void)beginDiscovery;
 - (id)blockAndQueryVersions;
 - (void)blockUntilDeviceCollectionIsInitialized;
@@ -160,6 +160,7 @@
 - (id)getDevices;
 - (id)getDevicesMatching:(CDUnknownBlockType)arg1;
 - (void)getDevicesWithBlock:(CDUnknownBlockType)arg1;
+- (void)getMigrationPairingCharacteristicReadDataWithQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)getPairedDevices;
 - (void)getSwitchEventsFromIndex:(unsigned int)arg1 inlineCallback:(CDUnknownBlockType)arg2;
 - (void)gizmoOOBAdvertiseAndPairWithName:(id)arg1 operationHasBegun:(CDUnknownBlockType)arg2;
@@ -170,6 +171,7 @@
 - (void)initializeWithShouldMakeEmptyDeviceCollection:(BOOL)arg1;
 - (BOOL)isDaemonIdle;
 - (BOOL)isPaired;
+- (BOOL)isWatchSetupPushActive;
 - (long long)maxPairedDeviceCount;
 - (long long)minQuickSwitchCompatibilityVersion;
 - (void)notifyActivationCompleted:(id)arg1 withSuccess:(BOOL)arg2;
@@ -185,6 +187,8 @@
 - (void)pairingStorePathPairingID:(CDUnknownBlockType)arg1;
 - (void)parseDiffForNRDeviceUpdatesAndPairUnpair:(id)arg1 hasSecurePropertyEntitlement:(BOOL)arg2 shouldBeQuiet:(BOOL)arg3;
 - (void)postNotification:(id)arg1 forDeviceID:(id)arg2 withUserInfo:(id)arg3;
+- (void)putMigrationChallengeCharacteristicWriteData:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)queue;
 - (unsigned long long)readNotifyToken:(int)arg1;
 - (int)registerNotifyTokenWithName:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (int)registerNotifyTokenWithName:(id)arg1 withQueue:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
@@ -201,7 +205,10 @@
 - (void)setActivePairedDevice:(id)arg1 isMagicSwitch:(BOOL)arg2 operationHasCompleted:(CDUnknownBlockType)arg3;
 - (void)setActivePairedDevice:(id)arg1 operationHasCompleted:(CDUnknownBlockType)arg2;
 - (void)setActivePairedDevice:(id)arg1 withActiveDeviceAssertionHandler:(CDUnknownBlockType)arg2;
+- (void)setMigrationConsented:(BOOL)arg1 forDevice:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)setupDeviceCollectionObserver;
+- (void)startWatchSetupPush;
+- (void)stopWatchSetupPush;
 - (BOOL)supportsPairedDevice;
 - (void)suspendPairingClientCrashMonitoring;
 - (unsigned int)switchIndex;

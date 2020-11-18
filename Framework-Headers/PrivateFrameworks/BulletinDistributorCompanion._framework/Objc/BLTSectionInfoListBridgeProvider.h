@@ -30,6 +30,7 @@
 - (void)_reloadUpdatedOverrides;
 - (void)_reloadUpdatedOverridesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (void)enableNotifications:(BOOL)arg1 sectionID:(id)arg2 mirror:(BOOL)arg3;
 - (id)init;
 - (void)reloadWithCompletion:(CDUnknownBlockType)arg1;
 

@@ -17,9 +17,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (BOOL)_canResolveLocallyWithoutMappingDatabase;
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)getLocallyResolvedType:(id *)arg1 orErrorWithoutMappingDatabase:(id *)arg2;

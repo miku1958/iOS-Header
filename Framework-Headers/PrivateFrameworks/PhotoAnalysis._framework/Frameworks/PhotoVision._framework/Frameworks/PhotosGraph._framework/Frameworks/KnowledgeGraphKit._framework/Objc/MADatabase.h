@@ -32,12 +32,15 @@
 + (BOOL)hasMarker:(id)arg1;
 + (BOOL)migrateFromURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 + (id)persistentStoreCoordinatorOptions;
++ (BOOL)setMarkerAtURL:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_addProperty:(id)arg1 toProperties:(id)arg2;
 - (id)_markerFilePath;
 - (id)_modelGraph;
 - (void)_resetCoreDataStack;
 - (void)_save:(CDUnknownBlockType)arg1 force:(BOOL)arg2;
 - (BOOL)_saveSynchonously:(id *)arg1;
+- (BOOL)_setValue:(id)arg1 onProperty:(id)arg2;
 - (void)addEdge:(id)arg1 requiresTesting:(BOOL)arg2;
 - (void)addNode:(id)arg1 requiresTesting:(BOOL)arg2;
 - (void)dealloc;

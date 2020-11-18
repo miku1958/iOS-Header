@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class FBSDisplay, NSOrderedSet, UIImage;
+#import <SplashBoard/BSInvalidatable-Protocol.h>
 
-@interface XBDisplaySnapshot : NSObject
+@class FBSDisplayConfiguration, NSOrderedSet, NSString, UIImage;
+
+@interface XBDisplaySnapshot : NSObject <BSInvalidatable>
 {
-    FBSDisplay *_display;
+    FBSDisplayConfiguration *_displayConfiguration;
     NSOrderedSet *_layers;
     BOOL _opaque;
     struct CGSize _snapshotSize;
@@ -22,21 +24,27 @@
 
 @property (readonly, nonatomic) struct CGImage *CGImage;
 @property (readonly, nonatomic) void *IOSurface;
-@property (readonly, strong, nonatomic) UIImage *UIImage;
+@property (readonly, nonatomic) UIImage *UIImage;
 @property (readonly, nonatomic, getter=isDataLoaded) BOOL dataLoaded;
-@property (readonly, strong, nonatomic) FBSDisplay *display; // @synthesize display=_display;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) FBSDisplayConfiguration *displayConfiguration; // @synthesize displayConfiguration=_displayConfiguration;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSOrderedSet *layers; // @synthesize layers=_layers;
 @property (nonatomic, getter=isOpaque) BOOL opaque; // @synthesize opaque=_opaque;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 @property (nonatomic) struct CGSize snapshotSize; // @synthesize snapshotSize=_snapshotSize;
+@property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (double)_scale;
 - (struct CGSize)_scaledSnapshotSize;
 - (void)_synchronizedCaptureWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)capture;
 - (void)dealloc;
-- (id)initWithDisplay:(id)arg1 layer:(id)arg2;
-- (id)initWithDisplay:(id)arg1 layers:(id)arg2;
+- (id)initWithDisplayConfiguration:(id)arg1 layer:(id)arg2;
+- (id)initWithDisplayConfiguration:(id)arg1 layers:(id)arg2;
+- (void)invalidate;
 
 @end
 

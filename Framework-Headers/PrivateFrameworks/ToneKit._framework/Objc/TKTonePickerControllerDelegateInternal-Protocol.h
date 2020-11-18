@@ -24,7 +24,6 @@
 - (void)tonePickerControllerDidStopPlaying:(TKTonePickerController *)arg1 withFadeOutDuration:(double)arg2;
 - (void)tonePickerControllerRequestsMediaItemsRefresh:(TKTonePickerController *)arg1;
 - (void)tonePickerControllerRequestsPresentingMediaItemPicker:(TKTonePickerController *)arg1;
-- (void)tonePickerControllerRequestsPresentingToneStore:(TKTonePickerController *)arg1;
 - (void)tonePickerControllerRequestsPresentingVibrationPicker:(TKTonePickerController *)arg1;
 - (BOOL)tonePickerControllerShouldShowMedia:(TKTonePickerController *)arg1;
 @end

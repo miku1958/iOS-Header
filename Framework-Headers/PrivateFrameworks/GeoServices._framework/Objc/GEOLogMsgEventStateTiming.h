@@ -14,7 +14,9 @@
 {
     double _durationInOldState;
     NSMutableArray *_stateTransitionFeedbacks;
-    CDStruct_ef245c49 _has;
+    struct {
+        unsigned int durationInOldState:1;
+    } _has;
 }
 
 @property (nonatomic) double durationInOldState; // @synthesize durationInOldState=_durationInOldState;
@@ -22,11 +24,11 @@
 @property (strong, nonatomic) NSMutableArray *stateTransitionFeedbacks; // @synthesize stateTransitionFeedbacks=_stateTransitionFeedbacks;
 
 + (Class)stateTransitionFeedbackType;
+- (void).cxx_destruct;
 - (void)addStateTransitionFeedback:(id)arg1;
 - (void)clearStateTransitionFeedbacks;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -13,18 +13,24 @@
 {
     NSObject<OS_dispatch_queue> *_memberQueue;
     NSDictionary *_memberQueueDetails;
+    NSDictionary *_memberQueueSetAsideDetails;
 }
 
 @property (copy, nonatomic) NSDictionary *details;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *memberQueue; // @synthesize memberQueue=_memberQueue;
 @property (strong, nonatomic) NSDictionary *memberQueueDetails; // @synthesize memberQueueDetails=_memberQueueDetails;
+@property (strong, nonatomic) NSDictionary *memberQueueSetAsideDetails; // @synthesize memberQueueSetAsideDetails=_memberQueueSetAsideDetails;
+@property (copy, nonatomic) NSDictionary *setAsideDetails;
 
 + (id)sharedConfiguration;
 - (void).cxx_destruct;
+- (id)diagnosticsUploadURL;
 - (id)init;
 - (BOOL)isAwaitingConfiguration;
+- (BOOL)isProvisionallyEnrolled;
 - (BOOL)isSupervised;
 - (BOOL)isTeslaEnrolled;
+- (id)provisionalEnrollmentExpirationDate;
 - (void)refreshDetailsFromDisk;
 - (int)userMode;
 

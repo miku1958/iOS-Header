@@ -9,6 +9,7 @@
 @interface NSString (FormatExtras)
 + (BOOL)_componentsWillUseShortFormat:(id)arg1;
 + (id)_frequencyStringForComponents:(id)arg1 forRange:(BOOL)arg2 forceShort:(BOOL)arg3;
++ (long long)_navigation_abbreviatedFromatterUnitsStyleForLocale:(id)arg1;
 + (id)_navigation_addPrefixToInstructions:(id)arg1 isServer:(BOOL)arg2 isSpoken:(BOOL)arg3;
 + (BOOL)_navigation_compareServerInstructions:(id)arg1 withClientInstructions:(id)arg2;
 + (id)_navigation_descriptionForFrequencyMinuteValue:(long long)arg1;
@@ -27,17 +28,20 @@
 + (id)_navigation_localizedStringForDistance:(double)arg1 detail:(long long)arg2 unitFormat:(long long)arg3 locale:(id)arg4 useMetric:(unsigned long long)arg5 useYards:(unsigned long long)arg6;
 + (BOOL)_navigation_logIfContainsVariables:(id)arg1;
 + (void)_navigation_logMismatchBetweenServerInstruction:(id)arg1 clientInstruction:(id)arg2;
-+ (id)_navigation_replacementForFormatToken:(id)arg1 timeStampTimeZone:(id)arg2 abbreviatedUnits:(BOOL)arg3 detail:(long long)arg4 spoken:(BOOL)arg5;
++ (id)_navigation_overridenTokenForToken:(id)arg1 overrideVariables:(id)arg2;
++ (id)_navigation_replacementForFormatToken:(id)arg1 abbreviatedUnits:(BOOL)arg2 detail:(long long)arg3 spoken:(BOOL)arg4 overrideVariables:(id)arg5;
 + (id)_navigation_selectInstructionWithServerString:(id)arg1 isSpoken:(BOOL)arg2 clientBlock:(CDUnknownBlockType)arg3;
 + (id)_navigation_selectInstructionWithServerStringArray:(id)arg1 isSpoken:(BOOL)arg2 clientBlock:(CDUnknownBlockType)arg3;
 + (id)_navigation_stringForDistance:(double)arg1 formatter:(id)arg2 locale:(id)arg3;
 + (id)_navigation_stringForExpectedTravelTime:(double)arg1 dateUnitStyle:(long long)arg2;
 + (id)_navigation_stringForServerFormattedString:(id)arg1;
-+ (id)_navigation_stringForServerFormattedString:(id)arg1 timeZone:(id)arg2 abbreviatedUnits:(BOOL)arg3 detail:(long long)arg4 spoken:(BOOL)arg5 overrideVariables:(id)arg6;
++ (id)_navigation_stringForServerFormattedString:(id)arg1 abbreviatedUnits:(BOOL)arg2 detail:(long long)arg3 spoken:(BOOL)arg4 overrideVariables:(id)arg5;
++ (id)_navigation_stringWithMinutes:(unsigned long long)arg1 andAbbreviationType:(unsigned long long)arg2;
 + (id)_navigation_stringWithSeconds:(unsigned long long)arg1 abbreviated:(BOOL)arg2;
 + (id)_navigation_stringWithSeconds:(unsigned long long)arg1 andAbbreviationType:(unsigned long long)arg2;
-+ (id)_navigation_stringWithTimeStampValues:(id)arg1 defaultTimeZone:(id)arg2;
++ (id)_navigation_stringWithTimeStampValues:(id)arg1;
 - (BOOL)_navigation_containsVariables;
+- (unsigned long long)_navigation_distanceLevenshtein:(id)arg1;
 - (BOOL)_navigation_isCJK;
 - (BOOL)_navigation_isEqualToString:(id)arg1;
 - (id)_navigation_stringByMakingPhonetic;
@@ -46,5 +50,6 @@
 - (id)_navigation_stringByMarkingAsNormalText;
 - (id)_navigation_stripDebugPrefix;
 - (id)_navigation_stripTagsFromSpokenString;
+- (id)_navigation_stripVariablesFromString;
 @end
 

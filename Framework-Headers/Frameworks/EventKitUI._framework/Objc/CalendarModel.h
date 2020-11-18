@@ -23,6 +23,7 @@
     id<OccurrenceCacheDataSourceProtocol> _occurrenceCacheDataSource;
     id<OccurrenceCacheDataSourceProtocol> _occurrenceCacheFilteredDataSource;
     long long _cachedFakeTodayIndex;
+    long long _displayableAccountErrorsCount;
     NSSet *_selectedCalendars;
     NSString *_searchString;
     NSCalendar *_calendar;
@@ -32,6 +33,7 @@
 }
 
 @property (copy, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
+@property (readonly, nonatomic) long long displayableAccountErrorsCount;
 @property (readonly, nonatomic) EKEventStore *eventStore; // @synthesize eventStore=_eventStore;
 @property (nonatomic) unsigned long long firstVisibleSecond; // @synthesize firstVisibleSecond=_firstVisibleSecond;
 @property (readonly, nonatomic) long long readWriteCalendarCount;
@@ -54,7 +56,7 @@
 - (id)_notificationMonitor;
 - (void)_notificationsExpired:(id)arg1;
 - (void)_occurrenceCacheChanged;
-- (void)_processReloadForCacheOnly:(BOOL)arg1 includingCalendars:(BOOL)arg2 checkCalendarsValid:(BOOL)arg3;
+- (void)_processReloadForCacheOnly:(BOOL)arg1 includingCalendars:(BOOL)arg2 checkCalendarsValid:(BOOL)arg3 checkSources:(BOOL)arg4;
 - (void)_recreateOccurrenceCacheDataSources;
 - (void)_reloadIfTodayDetermined;
 - (void)_searchResultsAvailable:(id)arg1;
@@ -72,6 +74,7 @@
 - (BOOL)cachedOccurrencesAreLoaded;
 - (void)calendarEventLoader:(id)arg1 occurrencesDidUpdateBetweenStart:(double)arg2 end:(double)arg3;
 - (id)closestOccurrenceToTomorrowForEventUID:(int)arg1;
+- (long long)countSourcesWithErrors;
 - (id)dateForCachedOccurrencesInSection:(long long)arg1;
 - (id)dateForCachedOccurrencesInSection:(long long)arg1 usingFilter:(BOOL)arg2;
 - (void)dealloc;
@@ -93,8 +96,8 @@
 - (id)occurrencesForStartDate:(id)arg1 endDate:(id)arg2 preSorted:(BOOL)arg3 waitForLoad:(BOOL)arg4;
 - (id)occurrencesForStartDay:(id)arg1 endDay:(id)arg2 preSorted:(BOOL)arg3 waitForLoad:(BOOL)arg4;
 - (void)prepareForAppSuspend;
-- (void)refreshAccountListIfNeeded:(BOOL)arg1;
-- (void)refreshCalendarDataIfNeeded:(BOOL)arg1;
+- (id)refreshAccountListIfNeeded:(BOOL)arg1;
+- (id)refreshCalendarDataIfNeeded:(BOOL)arg1;
 - (BOOL)removeEvent:(id)arg1 withSpan:(long long)arg2 error:(id *)arg3;
 - (BOOL)searchingOccurrences;
 - (long long)sectionForCachedOccurrencesOnDate:(id)arg1;

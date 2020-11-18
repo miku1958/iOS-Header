@@ -10,5 +10,6 @@
 
 @property (nonatomic) struct _OpaquePCSShareProtection *recordPCS;
 
+- (void)fillOutPCSMetadataInfo;
 @end
 

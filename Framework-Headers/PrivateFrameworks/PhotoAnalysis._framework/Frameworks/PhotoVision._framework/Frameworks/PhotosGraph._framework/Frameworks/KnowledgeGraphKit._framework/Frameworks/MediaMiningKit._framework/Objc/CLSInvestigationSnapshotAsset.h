@@ -40,15 +40,21 @@
     NSNumber *_clsShareCount;
     NSData *_clsDistanceIdentity;
     NSNumber *_clsVideoScore;
+    NSNumber *_clsActivityLevel;
+    NSNumber *_clsVideoFaceCount;
     NSNumber *_clsSharpnessScore;
     NSNumber *_clsContentScore;
     NSNumber *_duration;
+    NSNumber *_clsSmileCount;
+    NSNumber *_clsBlinkCount;
+    NSNumber *_clsExposureCount;
     NSArray *_clsUnprefetchedPeopleNames;
 }
 
 @property (readonly, nonatomic) double clsContentScore;
 @property (readonly, nonatomic) NSDate *clsDate;
 @property (readonly, nonatomic) NSData *clsDistanceIdentity;
+@property (readonly, nonatomic) float clsExposureScore;
 @property (readonly, nonatomic) BOOL clsIsHDR;
 @property (readonly, nonatomic) BOOL clsIsSDOF;
 @property (readonly, nonatomic) CLLocation *clsLocation;
@@ -57,6 +63,7 @@
 @property (readonly, nonatomic) long long clsPlayCount;
 @property (readonly, copy, nonatomic) NSSet *clsSceneClassifications;
 @property (readonly, nonatomic) long long clsShareCount;
+@property (readonly, nonatomic) float clsSharpnessScore;
 @property (readonly, nonatomic) NSArray *clsUnprefetchedPeopleNames; // @synthesize clsUnprefetchedPeopleNames=_clsUnprefetchedPeopleNames;
 @property (readonly, nonatomic) long long clsViewCount;
 @property (readonly, nonatomic) NSDate *date;
@@ -80,7 +87,10 @@
 - (void).cxx_destruct;
 - (double)_score;
 - (id)cloudIdentifier;
-- (float)clsSharpnessScore;
+- (float)clsActivityLevel;
+- (long long)clsBlinkCount;
+- (long long)clsSmileCount;
+- (unsigned long long)clsVideoFaceCount;
 - (float)clsVideoScore;
 - (struct CGImage *)createThumbnailWithResolution:(unsigned long long)arg1 fillMode:(BOOL)arg2 networkAllowed:(BOOL)arg3;
 - (id)creationDate;

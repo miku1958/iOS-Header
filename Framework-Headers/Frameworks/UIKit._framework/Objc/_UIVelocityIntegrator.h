@@ -8,12 +8,12 @@
 
 @class NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface _UIVelocityIntegrator : NSObject
 {
     BOOL _hasMemoizedVelocity;
-    NSMutableArray *_samples;
+    double _minimumRequiredMovement;
     double _hysteresisTimeInterval;
+    NSMutableArray *_samples;
     double _resetHysteresisOnSampleThetaDiff;
     CDUnknownBlockType _didResetHysteresisOnThetaDiffHandler;
     struct CGVector _offset;
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasMemoizedVelocity; // @synthesize hasMemoizedVelocity=_hasMemoizedVelocity;
 @property (nonatomic) double hysteresisTimeInterval; // @synthesize hysteresisTimeInterval=_hysteresisTimeInterval;
 @property (nonatomic) struct CGVector memoizedVelocity; // @synthesize memoizedVelocity=_memoizedVelocity;
+@property (nonatomic) double minimumRequiredMovement; // @synthesize minimumRequiredMovement=_minimumRequiredMovement;
 @property (nonatomic) struct CGVector offset; // @synthesize offset=_offset;
 @property (nonatomic) double resetHysteresisOnSampleThetaDiff; // @synthesize resetHysteresisOnSampleThetaDiff=_resetHysteresisOnSampleThetaDiff;
 @property (strong, nonatomic) NSMutableArray *samples; // @synthesize samples=_samples;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (struct CGVector)_computedVelocity;
+- (long long)_sampleCount;
 - (void)addSample:(struct CGPoint)arg1;
 - (BOOL)hasVelocity;
 - (id)init;

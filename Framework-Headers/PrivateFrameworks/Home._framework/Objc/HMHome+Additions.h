@@ -7,22 +7,36 @@
 #import <HomeKit/HMHome.h>
 
 @interface HMHome (Additions)
++ (id)_hf_appDataKeyForColorPaletteOfType:(unsigned long long)arg1;
+- (id)hf_accessControlDescriptor;
 - (id)hf_accessoryWithIdentifier:(id)arg1;
+- (id)hf_actionSetWithUUID:(id)arg1;
 - (id)hf_allBridgeAccessories;
+- (id)hf_allCameraProfiles;
+- (id)hf_allMediaProfiles;
 - (id)hf_allNonEmptyActionSets;
 - (id)hf_allProgrammableSwitchAccessories;
 - (id)hf_allRooms;
 - (id)hf_allServices;
+- (id)hf_allUsersIncludingCurrentUser;
+- (id)hf_allVisibleServices;
 - (id)hf_cameraProfileWithIdentifier:(id)arg1;
 - (id)hf_characteristicValueManager;
 - (id)hf_colorPalette;
+- (id)hf_colorPaletteOfType:(unsigned long long)arg1;
 - (BOOL)hf_currentUserIsAdministrator;
+- (BOOL)hf_currentUserIsOwner;
+- (BOOL)hf_hasMediaAccessories;
 - (BOOL)hf_homeHasOnboarded;
 - (BOOL)hf_isCurrentLocationHome;
+- (BOOL)hf_isPresenceAuthorizedForUser:(id)arg1;
 - (BOOL)hf_isUserAtHome;
+- (id)hf_mediaAccessories;
 - (id)hf_notesApplicationData;
+- (id)hf_primaryResidentDevice;
 - (unsigned long long)hf_remoteAccessState;
 - (id)hf_reorderableActionSetsList;
+- (id)hf_reorderableCamerasList;
 - (id)hf_reorderableRoomsList;
 - (id)hf_reorderableServicesList;
 - (id)hf_roomWithIdentifier:(id)arg1;
@@ -32,6 +46,11 @@
 - (id)hf_setNotesApplicationData:(id)arg1;
 - (BOOL)hf_supportsPerUserRemoteAccess;
 - (BOOL)hf_supportsRemoteAccessRestrictions;
+- (BOOL)hf_supportsSharedEventAutomation;
+- (id)hf_updateAccessControlDescriptor:(id)arg1;
+- (id)hf_updateAutomaticSoftwareUpdateEnabled:(BOOL)arg1;
 - (id)hf_updateColorPalette:(id)arg1;
+- (id)hf_updateColorPalette:(id)arg1 type:(unsigned long long)arg2;
+- (id)hf_zoneWithIdentifier:(id)arg1;
 @end
 

@@ -14,18 +14,34 @@
 @interface MTLRenderPassDescriptor : NSObject <NSCopying>
 {
     unsigned long long _renderTargetArrayLength;
+    unsigned long long _imageblockSampleLength;
+    unsigned long long _threadgroupMemoryLength;
+    unsigned long long _tileWidth;
+    unsigned long long _tileHeight;
+    unsigned long long _defaultSampleCount;
+    unsigned long long _defaultRasterSampleCount;
 }
 
 @property (readonly) MTLRenderPassColorAttachmentDescriptorArray *colorAttachments; // @dynamic colorAttachments;
+@property (nonatomic) unsigned long long defaultRasterSampleCount; // @synthesize defaultRasterSampleCount=_defaultRasterSampleCount;
+@property (nonatomic) unsigned long long defaultSampleCount; // @synthesize defaultSampleCount=_defaultSampleCount;
 @property (copy, nonatomic) MTLRenderPassDepthAttachmentDescriptor *depthAttachment; // @dynamic depthAttachment;
+@property (nonatomic) unsigned long long imageblockSampleLength; // @synthesize imageblockSampleLength=_imageblockSampleLength;
 @property (nonatomic) unsigned long long renderTargetArrayLength; // @synthesize renderTargetArrayLength=_renderTargetArrayLength;
+@property (nonatomic) unsigned long long renderTargetHeight; // @dynamic renderTargetHeight;
+@property (nonatomic) unsigned long long renderTargetWidth; // @dynamic renderTargetWidth;
 @property (copy, nonatomic) MTLRenderPassStencilAttachmentDescriptor *stencilAttachment; // @dynamic stencilAttachment;
+@property (nonatomic) unsigned long long threadgroupMemoryLength; // @synthesize threadgroupMemoryLength=_threadgroupMemoryLength;
+@property (nonatomic) unsigned long long tileHeight; // @synthesize tileHeight=_tileHeight;
+@property (nonatomic) unsigned long long tileWidth; // @synthesize tileWidth=_tileWidth;
 @property (strong, nonatomic) id<MTLBuffer> visibilityResultBuffer; // @dynamic visibilityResultBuffer;
 
 + (id)alloc;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)renderPassDescriptor;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)getSamplePositions:(CDStruct_6e3f967a *)arg1 count:(unsigned long long)arg2;
+- (void)setSamplePositions:(const CDStruct_6e3f967a *)arg1 count:(unsigned long long)arg2;
 
 @end
 

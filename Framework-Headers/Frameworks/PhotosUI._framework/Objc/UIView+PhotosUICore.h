@@ -8,6 +8,9 @@
 
 @interface UIView (PhotosUICore)
 
+@property (readonly, nonatomic) BOOL px_hasHiddenAncestor;
+@property (readonly, nonatomic) BOOL px_intersectsWindowBounds;
+@property (readonly, nonatomic) struct UIEdgeInsets px_peripheryInsets;
 @property (readonly, nonatomic) double px_screenScale;
 
 + (void)_px_animateView:(id)arg1 toCenter:(struct CGPoint)arg2 bounds:(struct CGRect)arg3 transform:(struct CGAffineTransform)arg4 withInitialVelocity:(struct PXDisplayVelocity)arg5 usingSpringAnimation:(CDUnknownBlockType)arg6 completion:(CDUnknownBlockType)arg7;

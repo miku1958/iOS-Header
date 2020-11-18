@@ -6,13 +6,15 @@
 
 #import <Foundation/NSObject.h>
 
+#import <VisualVoicemail/NSCopying-Protocol.h>
 #import <VisualVoicemail/NSSecureCoding-Protocol.h>
 
-@interface VMVoicemailCapabilities : NSObject <NSSecureCoding>
+@interface VMVoicemailCapabilities : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _canChangeGreeting;
     BOOL _canChangePassword;
     BOOL _mailboxRequiresSetup;
+    BOOL _transcriptionEnabled;
     long long _mailboxGreetingState;
     double _maximumGreetingDuration;
     unsigned long long _minimumPasswordLength;
@@ -26,13 +28,19 @@
 @property (readonly, nonatomic) double maximumGreetingDuration; // @synthesize maximumGreetingDuration=_maximumGreetingDuration;
 @property (readonly, nonatomic) unsigned long long maximumPasswordLength; // @synthesize maximumPasswordLength=_maximumPasswordLength;
 @property (readonly, nonatomic) unsigned long long minimumPasswordLength; // @synthesize minimumPasswordLength=_minimumPasswordLength;
+@property (readonly, nonatomic, getter=isTranscriptionEnabled) BOOL transcriptionEnabled; // @synthesize transcriptionEnabled=_transcriptionEnabled;
 
 + (BOOL)supportsSecureCoding;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
-- (id)initWithCanChangeGreeting:(BOOL)arg1 canChangePassword:(BOOL)arg2 mailboxRequiresSetup:(BOOL)arg3 mailboxGreetingState:(long long)arg4 maximumGreetingDuration:(double)arg5 minimumPasswordLength:(unsigned long long)arg6 maximumPasswordLength:(unsigned long long)arg7;
+- (id)initWithCanChangeGreeting:(BOOL)arg1 canChangePassword:(BOOL)arg2 mailboxRequiresSetup:(BOOL)arg3 mailboxGreetingState:(long long)arg4 maximumGreetingDuration:(double)arg5 minimumPasswordLength:(unsigned long long)arg6 maximumPasswordLength:(unsigned long long)arg7 transcriptionEnabled:(BOOL)arg8;
+- (id)initWithCapabilities:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToCapabilities:(id)arg1;
 
 @end
 

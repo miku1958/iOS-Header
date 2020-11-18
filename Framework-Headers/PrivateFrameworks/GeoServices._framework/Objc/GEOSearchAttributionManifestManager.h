@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol GEOSearchAttributionServerProxy;
 
@@ -15,12 +15,14 @@
 
 @property (readonly, nonatomic) id<GEOSearchAttributionServerProxy> serverProxy; // @synthesize serverProxy=_serverProxy;
 
++ (void)setUseLocalProxy:(BOOL)arg1;
 + (id)sharedManager;
 + (void)useLocalProxy;
++ (void)useProxy:(Class)arg1;
 + (void)useRemoteProxy;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
-- (void)loadAttributionInfoForIdentifier:(id)arg1 version:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4;
+- (void)loadAttributionInfoForIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

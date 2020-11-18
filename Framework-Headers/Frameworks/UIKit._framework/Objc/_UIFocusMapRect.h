@@ -9,20 +9,23 @@
 #import <UIKit/_UIFocusMapArea-Protocol.h>
 
 @class NSString;
+@protocol UICoordinateSpace;
 
 @interface _UIFocusMapRect : NSObject <_UIFocusMapArea>
 {
+    id<UICoordinateSpace> _coordinateSpace;
     struct CGRect _frame;
 }
 
+@property (readonly, weak, nonatomic) id<UICoordinateSpace> coordinateSpace; // @synthesize coordinateSpace=_coordinateSpace;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)init;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (void).cxx_destruct;
+- (id)initWithFrame:(struct CGRect)arg1 coordinateSpace:(id)arg2;
 - (id)intersectionWithRegion:(id)arg1;
 - (BOOL)intersectsRect:(struct CGRect)arg1;
 - (BOOL)intersectsRegion:(id)arg1;

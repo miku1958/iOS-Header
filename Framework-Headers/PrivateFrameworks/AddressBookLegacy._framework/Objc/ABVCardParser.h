@@ -95,6 +95,7 @@
 - (BOOL)hasImportErrors;
 - (BOOL)importToPerson:(void *)arg1 foundProperties:(const struct __CFArray **)arg2;
 - (BOOL)importToValueSetter:(id)arg1;
+- (id)init;
 - (id)initWithData:(id)arg1;
 - (id)initWithData:(id)arg1 watchdogTimer:(id)arg2;
 - (void)noteLackOfValueForImageData;

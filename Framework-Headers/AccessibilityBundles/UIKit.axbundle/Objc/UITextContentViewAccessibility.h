@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityAttributedTextRetrieval;
 - (id)_accessibilityAttributedValueForRange:(struct _NSRange *)arg1;
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;
 - (struct _NSRange)_accessibilitySelectedTextRange;
@@ -26,6 +27,7 @@
 - (id)_accessibilityTextViewTextOperationResponder;
 - (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint;
+- (id)accessibilityCustomRotors;
 - (struct CGRect)accessibilityFrame;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

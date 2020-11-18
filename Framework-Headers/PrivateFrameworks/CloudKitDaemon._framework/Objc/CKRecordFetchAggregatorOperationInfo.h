@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _fetchAssetContents;
     BOOL _preserveOrdering;
+    BOOL _forceDecryptionAttempt;
     NSSet *_desiredKeys;
     NSDictionary *_assetTransferOptionsByRecordTypeAndKey;
 }
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
 @property (strong, nonatomic) NSSet *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (nonatomic) BOOL fetchAssetContents; // @synthesize fetchAssetContents=_fetchAssetContents;
+@property (nonatomic) BOOL forceDecryptionAttempt; // @synthesize forceDecryptionAttempt=_forceDecryptionAttempt;
 @property (nonatomic) BOOL preserveOrdering; // @synthesize preserveOrdering=_preserveOrdering;
 
 - (void).cxx_destruct;

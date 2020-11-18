@@ -4,80 +4,72 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-#import <HomeKitDaemon/HMDMerging-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMFMerging-Protocol.h>
+#import <HomeKitDaemon/HMFObject-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccount, HMDHomeKitVersion, HMFProductInfo, NSString, NSUUID;
+@class HMDAccount, HMDDeviceCapabilities, HMDHomeKitVersion, HMFProductInfo, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDDevice : NSObject <HMFLogging, HMDMerging, NSSecureCoding>
+@interface HMDDevice : HMFObject <HMFObject, HMFLogging, HMFMerging, NSSecureCoding>
 {
-    BOOL _supportsKeychainSync;
-    BOOL _supportsCloudDataSync;
-    BOOL _residentCapable;
-    BOOL _remoteGatewayCapable;
     NSString *_name;
     HMFProductInfo *_productInfo;
     HMDHomeKitVersion *_version;
-    NSUUID *_accountIdentifier;
+    HMDDeviceCapabilities *_capabilities;
+    NSUUID *_idsIdentifierHash;
+    NSUUID *_idsIdentifier;
+    NSString *_destination;
     NSUUID *_identifier;
     HMDAccount *_account;
     NSObject<OS_dispatch_queue> *_propertyQueue;
-    NSString *_destination;
 }
 
 @property (weak, nonatomic) HMDAccount *account; // @synthesize account=_account;
-@property (readonly, copy, nonatomic) NSUUID *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
+@property (copy) HMDDeviceCapabilities *capabilities; // @synthesize capabilities=_capabilities;
 @property (readonly, getter=isCurrentDevice) BOOL currentDevice;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *destination; // @synthesize destination=_destination;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (copy, setter=setIDSIdentifier:) NSUUID *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
+@property (copy, setter=setIDSIdentifierHash:) NSUUID *idsIdentifierHash; // @synthesize idsIdentifierHash=_idsIdentifierHash;
 @property (readonly, copy) NSString *name; // @synthesize name=_name;
-@property (strong) HMFProductInfo *productInfo; // @synthesize productInfo=_productInfo;
+@property (copy) HMFProductInfo *productInfo; // @synthesize productInfo=_productInfo;
+@property (readonly, copy) NSString *propertyDescription;
 @property (readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property (getter=isRemoteGatewayCapable) BOOL remoteGatewayCapable; // @synthesize remoteGatewayCapable=_remoteGatewayCapable;
-@property (getter=isResidentCapable) BOOL residentCapable; // @synthesize residentCapable=_residentCapable;
 @property (readonly) Class superclass;
-@property BOOL supportsCloudDataSync; // @synthesize supportsCloudDataSync=_supportsCloudDataSync;
-@property BOOL supportsKeychainSync; // @synthesize supportsKeychainSync=_supportsKeychainSync;
-@property (strong, nonatomic) HMDHomeKitVersion *version; // @synthesize version=_version;
+@property (copy, nonatomic) HMDHomeKitVersion *version; // @synthesize version=_version;
 
-+ (id)accountIdentifierFromDevice:(id)arg1 error:(id *)arg2;
-+ (id)accountIdentifierFromDeviceUniqueIdentifier:(id)arg1 error:(id *)arg2;
-+ (id)currentDeviceWithIDSAccount:(id)arg1;
-+ (id)destinationForDevice:(id)arg1;
++ (id)currentDeviceWithIDSService:(id)arg1;
++ (id)destinationForDevice:(id)arg1 service:(id)arg2;
 + (id)deviceDestinationForDestination:(id)arg1;
-+ (id)deviceDestinationForDevice:(id)arg1;
-+ (BOOL)deviceSupportsCloudDataSync:(id)arg1;
-+ (BOOL)deviceSupportsKeychainSync:(id)arg1;
++ (id)deviceDestinationForDevice:(id)arg1 service:(id)arg2;
 + (id)deviceWithDestination:(id)arg1;
-+ (id)identifierFromDevice:(id)arg1 error:(id *)arg2;
++ (id)identifierFromDevice:(id)arg1 service:(id)arg2 error:(id *)arg3;
 + (id)identifierFromDeviceDestination:(id)arg1 error:(id *)arg2;
++ (id)idsIdentifierHashFromDevice:(id)arg1 error:(id *)arg2;
++ (id)idsIdentifierHashFromDeviceUniqueIdentifier:(id)arg1 error:(id *)arg2;
 + (void)initialize;
-+ (BOOL)isRemoteGatewayCapableDevice:(id)arg1;
-+ (BOOL)isResidentCapableDevice:(id)arg1;
 + (BOOL)isValidDestination:(id)arg1;
 + (id)logCategory;
 + (id)namespace;
-+ (id)shortDescription;
 + (BOOL)supportsSecureCoding;
-+ (id)versionForDevice:(id)arg1;
 - (void).cxx_destruct;
-- (id)descriptionWithPointer:(BOOL)arg1;
+- (BOOL)bsoIsEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIDSDevice:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 accountIdentifier:(id)arg2 name:(id)arg3 productInfo:(id)arg4 destination:(id)arg5 version:(id)arg6 supportsKeychainSync:(BOOL)arg7 supportsCloudDataSync:(BOOL)arg8 isResidentCapable:(BOOL)arg9 isRemoteGatewayCapable:(BOOL)arg10;
+- (id)initWithIdentifier:(id)arg1 idsIdentifier:(id)arg2 idsIdentifierHash:(id)arg3 name:(id)arg4 productInfo:(id)arg5 destination:(id)arg6 version:(id)arg7 capabilities:(id)arg8;
+- (id)initWithService:(id)arg1 device:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)logIdentifier;
 - (BOOL)mergeObject:(id)arg1;
-- (void)setAccountIdentifier:(id)arg1;
+- (void)setDestination:(id)arg1;
 - (void)setName:(id)arg1;
 - (id)shortDescription;
 

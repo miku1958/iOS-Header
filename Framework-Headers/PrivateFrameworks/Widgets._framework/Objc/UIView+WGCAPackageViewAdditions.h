@@ -9,7 +9,7 @@
 @interface UIView (WGCAPackageViewAdditions)
 - (void)_wg_innerWalkSubviewTreeWithBlock:(CDUnknownBlockType)arg1 stop:(BOOL *)arg2;
 - (BOOL)wg_imageContentsDrawWithinBounds;
-- (BOOL)wg_supportsBottomCornerRadiusGivenRootView:(id)arg1 withCornerRadius:(double)arg2 supportedCorners:(unsigned int *)arg3;
+- (BOOL)wg_supportsBottomCornerRadiusGivenRootView:(id)arg1 withCornerRadius:(double)arg2 supportedCorners:(unsigned long long *)arg3;
 - (void)wg_walkSubviewTreeWithBlock:(CDUnknownBlockType)arg1;
 @end
 

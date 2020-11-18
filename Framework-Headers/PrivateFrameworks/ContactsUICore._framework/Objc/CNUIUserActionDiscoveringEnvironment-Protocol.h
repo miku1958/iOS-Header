@@ -7,7 +7,7 @@
 #import <ContactsUICore/NSObject-Protocol.h>
 
 @class CNContactStore, CNUIIDSContactPropertyResolver;
-@protocol CNCapabilities, CNLSApplicationWorkspace, CNMCProfileConnection, CNSchedulerProvider, CNTUCallProviderManager, CNUIUserActionDiscoveringEnvironment;
+@protocol CNCapabilities, CNLSApplicationWorkspace, CNMCProfileConnection, CNSchedulerProvider, CNTUCallProviderManager, CNUIDefaultUserActionFetcher, CNUIUserActionDiscoveringEnvironment;
 
 @protocol CNUIUserActionDiscoveringEnvironment <NSObject>
 
@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) id<CNTUCallProviderManager> callProviderManager;
 @property (readonly, nonatomic) id<CNCapabilities> capabilities;
 @property (readonly, nonatomic) CNContactStore *contactStore;
+@property (readonly, nonatomic) id<CNUIDefaultUserActionFetcher> defaultUserActionFetcher;
 @property (readonly, nonatomic) id<CNSchedulerProvider> highLatencySchedulerProvider;
 @property (readonly, nonatomic) CNUIIDSContactPropertyResolver *idsContactPropertyResolver;
 @property (readonly, nonatomic) id<CNMCProfileConnection> profileConnection;

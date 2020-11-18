@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOETAUpdaterDelegate-Protocol.h>
 #import <GeoServices/GEORouteHypothesizerUpdaterDelegate-Protocol.h>
@@ -39,7 +39,7 @@
 
 @property (readonly, nonatomic) NSDate *arrivalDate; // @synthesize arrivalDate=_arrivalDate;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<GEORouteHypothesizerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<GEORouteHypothesizerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSDate *departureDate; // @synthesize departureDate=_departureDate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) GEOComposedWaypoint *destination; // @synthesize destination=_destination;
@@ -53,6 +53,7 @@
 @property (readonly, nonatomic) BOOL supportsDirections;
 @property (readonly, nonatomic) BOOL supportsLiveTraffic;
 
+- (void).cxx_destruct;
 - (void)_commonInit;
 - (void)_createUpdaterWithStartingLocation:(id)arg1;
 - (void)_refreshETAWithRouteMatch:(id)arg1;

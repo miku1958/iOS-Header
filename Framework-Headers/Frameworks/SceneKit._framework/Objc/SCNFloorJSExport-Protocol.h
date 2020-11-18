@@ -8,10 +8,13 @@
 
 @protocol SCNFloorJSExport <JSExport>
 
+@property (nonatomic) double length;
+@property (nonatomic) unsigned long long reflectionCategoryBitMask;
 @property (nonatomic) double reflectionFalloffEnd;
 @property (nonatomic) double reflectionFalloffStart;
 @property (nonatomic) double reflectionResolutionScaleFactor;
 @property (nonatomic) double reflectivity;
+@property (nonatomic) double width;
 
 + (id)floor;
 @end

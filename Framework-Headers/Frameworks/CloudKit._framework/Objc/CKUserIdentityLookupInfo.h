@@ -17,11 +17,9 @@
     NSString *_emailAddress;
     NSString *_phoneNumber;
     CKRecordID *_userRecordID;
-    NSString *_dsid;
     NSData *_encryptedPersonalInfo;
 }
 
-@property (strong, nonatomic) NSString *dsid; // @synthesize dsid=_dsid;
 @property (copy, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 @property (strong, nonatomic) NSData *encryptedPersonalInfo; // @synthesize encryptedPersonalInfo=_encryptedPersonalInfo;
 @property (copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;

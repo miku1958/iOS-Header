@@ -27,11 +27,11 @@
 @property (nonatomic) int structureType; // @synthesize structureType=_structureType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (int)StringAsIntentType:(id)arg1;
 - (int)StringAsStructureType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

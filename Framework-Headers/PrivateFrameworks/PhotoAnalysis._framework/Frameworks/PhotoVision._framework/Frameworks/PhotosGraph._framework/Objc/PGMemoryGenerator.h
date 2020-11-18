@@ -22,19 +22,29 @@
 @property unsigned long long precision; // @synthesize precision=_precision;
 
 + (id)assetPropertySetsForMemories;
-+ (long long)titleDateMatchingTypeForMemoryCategory:(unsigned long long)arg1;
++ (long long)titleDateMatchingTypeForMemoryCategory:(long long)arg1;
 - (void).cxx_destruct;
-- (void)_curateMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (id)_electedBestScoringPotentialMemoriesWithCount:(unsigned long long)arg1 fromPotentialMemories:(id)arg2;
+- (id)_additionalInfoKeywordsForPotentialMemory:(id)arg1;
+- (BOOL)_collectionIsAcceptableForUpgrade:(id)arg1;
+- (id)_createMemoryDebugWithPotentialMemory:(id)arg1;
+- (void)_enumerateBestScoringPotentialMemoriesInPotentialMemories:(id)arg1 attemptUpgradesBeforeSorting:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_generateDefaultTitleAndSubtitleForMemory:(id)arg1 withPotentialMemory:(id)arg2;
+- (void)_generateExtendedCuratedSetForMemory:(id)arg1 withPotentialMemory:(id)arg2;
+- (id)_generateMemoryForDryTesting;
+- (void)_mergeCurationSetsIfNeededForMemory:(id)arg1;
 - (unsigned long long)_numberOfIndependentMomentNodesInMomentNodes:(id)arg1 aggregations:(id)arg2;
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (id)_potentialMemories:(unsigned long long)arg1;
+- (id)_potentialMemoriesForDryTesting;
+- (BOOL)canProceedAfterAttemptingMeaningfulEventUpgradeForPotentialMemory:(id)arg1 didUpgradeToWeekend:(BOOL)arg2 upgradedToMeaningfulEvent:(BOOL *)arg3;
+- (BOOL)canProceedAfterAttemptingUpgradesForPotentialMemory:(id)arg1;
+- (BOOL)canProceedAfterAttemptingWeekendUpgradeForPotentialMemory:(id)arg1 upgradedToWeekend:(BOOL *)arg2;
+- (id)createMemoryWithPotentialMemory:(id)arg1;
 - (id)generateAllMemories;
 - (id)generateMemories:(unsigned long long)arg1;
 - (id)generateMemory;
 - (id)initWithController:(id)arg1;
-- (void)setDefaultValuesIfNeededOnNewMemoryNeededOnNewMemory:(id)arg1 withPotentialMemory:(id)arg2;
+- (void)setDefaultValuesIfNeededOnNewMemory:(id)arg1 withPotentialMemory:(id)arg2;
 
 @end
 

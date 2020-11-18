@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSString;
+@class GEOMapItemIdentifier, NSString;
 
 @interface VKTransitLineMarker : NSObject
 {
-    unsigned long long _featureID;
+    GEOMapItemIdentifier *_identifier;
     NSString *_shieldText;
     NSString *_shieldLocale;
     long long _shieldType;
@@ -20,7 +20,8 @@
     void *_transitLinkID;
 }
 
-@property (readonly, nonatomic) unsigned long long featureID; // @synthesize featureID=_featureID;
+@property (readonly, nonatomic) unsigned long long featureID;
+@property (readonly, nonatomic) GEOMapItemIdentifier *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSString *labelLocale; // @synthesize labelLocale=_labelLocale;
 @property (readonly, nonatomic) NSString *labelText; // @synthesize labelText=_labelText;
 @property (readonly, nonatomic) CDStruct_87ab733e shieldColor; // @synthesize shieldColor=_shieldColor;
@@ -34,7 +35,7 @@
 - (void)dealloc;
 - (id)description;
 - (id)initWithFeature:(CDStruct_5be08681 *)arg1 transitLink:(const CDStruct_cb3d236a *)arg2;
-- (id)initWithFeatureID:(unsigned long long)arg1;
+- (id)initWithIdentifier:(id)arg1;
 
 @end
 

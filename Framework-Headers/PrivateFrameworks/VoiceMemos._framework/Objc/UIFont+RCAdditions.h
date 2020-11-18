@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) NSString *rc_textStyle;
 
-+ (id)rcs_ultraLightMonospacedFontOfSize:(double)arg1;
++ (id)rcs_dynamicMonospacedTitle0Font;
++ (id)rcs_monospacedSubheadlineFont;
 @end
 

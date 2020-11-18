@@ -6,30 +6,34 @@
 
 #import <Home/HFTriggerBuilder.h>
 
-@class NSArray, NSTimeZone;
-@protocol HFTimerTriggerExecutionTime;
+@class HFConcreteTimeTriggerBuilder, HFEventBuilder, NSArray, NSTimeZone;
+@protocol HFTimeEventBuilder;
 
 @interface HFTimerTriggerBuilder : HFTriggerBuilder
 {
-    id<HFTimerTriggerExecutionTime> _executionTime;
-    NSArray *_recurrences;
-    NSTimeZone *_timeZone;
+    unsigned long long _preferredHomeKitObjectType;
+    HFConcreteTimeTriggerBuilder *_concreteTriggerBuilder;
 }
 
-@property (strong, nonatomic) id<HFTimerTriggerExecutionTime> executionTime; // @synthesize executionTime=_executionTime;
-@property (copy, nonatomic) NSArray *recurrences; // @synthesize recurrences=_recurrences;
-@property (copy, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
+@property (strong, nonatomic) HFConcreteTimeTriggerBuilder *concreteTriggerBuilder; // @synthesize concreteTriggerBuilder=_concreteTriggerBuilder;
+@property (strong, nonatomic) HFEventBuilder<HFTimeEventBuilder> *eventBuilder;
+@property (nonatomic) unsigned long long preferredHomeKitObjectType; // @synthesize preferredHomeKitObjectType=_preferredHomeKitObjectType;
+@property (copy, nonatomic) NSArray *recurrences;
+@property (copy, nonatomic) NSTimeZone *timeZone;
 
 - (void).cxx_destruct;
-- (id)_executionTime;
-- (BOOL)_hasWeekdayRecurrence;
+- (void)_createConcreteTriggerBuilder;
+- (BOOL)_currentStateRequiresEventBasedTimeTriggers;
 - (id)_performValidation;
-- (id)_updateRecurrences;
-- (id)_updateTimeZone;
+- (BOOL)_supportsEventBasedTimeTriggers;
 - (id)commitCreateTrigger;
 - (id)commitEditTrigger;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2 context:(id)arg3;
 - (id)naturalLanguageNameOfType:(unsigned long long)arg1;
+- (void)setEnabled:(BOOL)arg1;
+- (void)setName:(id)arg1;
+- (BOOL)supportsConditions;
+- (BOOL)supportsEndEvents;
 
 @end
 

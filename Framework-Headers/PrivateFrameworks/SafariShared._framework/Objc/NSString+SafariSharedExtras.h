@@ -10,6 +10,7 @@
 
 @property (readonly, copy, nonatomic) NSString *safari_stringByRemovingExcessWhitespace;
 
++ (id)safari_localizedStringFromComponents:(id)arg1 usingConjunctionForFinalJoiner:(BOOL)arg2;
 + (id)safari_stringAsHexWithBuffer:(const char *)arg1 length:(unsigned long long)arg2;
 + (id)safari_stringAsHexWithData:(id)arg1;
 + (id)safari_stringByBase64EncodingData:(id)arg1;
@@ -28,6 +29,7 @@
 - (id)safari_fixedStringByExpandingTildeInPath;
 - (BOOL)safari_hasDirectionalPrefix;
 - (BOOL)safari_isJavaScriptURLString;
+- (BOOL)safari_isPathExtensionAllowedForAnalytics;
 - (BOOL)safari_isVisualDuplicateOfURLString:(id)arg1;
 - (id)safari_md5Hash;
 - (id)safari_possibleTopLevelDomainCorrectionForUserTypedString;
@@ -39,6 +41,7 @@
 - (id)safari_stringByRemovingTopLevelDomainFromHost;
 - (id)safari_stringByRemovingUnnecessaryCharactersFromUserTypedURLString;
 - (id)safari_stringByRemovingWwwDotPrefix;
+- (id)safari_stringByReplacingCharactersInSet:(id)arg1 withString:(id)arg2;
 - (id)safari_stringBySubstitutingAmpersandAndAngleBracketsForHTMLEntities;
 - (id)safari_stringBySubstitutingHTMLEntitiesForAmpersandAndAngleBrackets;
 - (id)safari_stringEncodedAsURLQueryParameter;

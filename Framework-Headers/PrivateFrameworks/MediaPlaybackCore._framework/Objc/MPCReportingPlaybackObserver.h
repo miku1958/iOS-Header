@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MPAVController, MPAVItem, MPCReportingController, NSData, NSString;
+@class MPAVController, MPAVItem, MPCReportingController, NSData, NSOperationQueue, NSString;
 
 @interface MPCReportingPlaybackObserver : NSObject
 {
@@ -16,6 +16,7 @@
     BOOL _isReloadingWithPlaybackContext;
     BOOL _isScrubbing;
     MPAVItem *_itemForCurrentTimeChange;
+    NSOperationQueue *_recordEventOperationQueue;
     double _lastPlayEventEndTimeForCurrentItem;
     double _lastPlayEventTimeStamp;
     BOOL _shouldReportAsPlaying;
@@ -39,6 +40,7 @@
 - (double)_itemEndTimeForItem:(id)arg1 withProposedEndTime:(double)arg2;
 - (void)_itemReportingJingleTimedMetadataDidChangeNotification:(id)arg1;
 - (double)_itemStartTimeForItem:(id)arg1;
+- (id)_newReportingPlaybackActivityEventForPlayActivityEvent:(id)arg1 eventSource:(id)arg2;
 - (void)_playerDidReloadWithPlaybackContextNotification:(id)arg1;
 - (void)_playerDidSetCurrentTimeNotification:(id)arg1;
 - (void)_playerItemDidChangeNotification:(id)arg1;
@@ -52,8 +54,8 @@
 - (void)didHitPlaybackTimeoutEndingPlayback:(BOOL)arg1 withCurrentItem:(id)arg2;
 - (void)didTransitionItemForBan:(id)arg1;
 - (id)initWithPlayer:(id)arg1 reportingController:(id)arg2;
-- (id)newPlayActivityEventForSource:(id)arg1;
-- (id)newReportingPlaybackActivityEventForPlayActivityEvent:(id)arg1 eventSource:(id)arg2;
+- (id)newPlayActivityEvent;
+- (void)recordPlayActivityEvents:(id)arg1 forEventSource:(id)arg2;
 - (void)willHitPlaybackTimeoutEndingPlayback:(BOOL)arg1 withCurrentItem:(id)arg2;
 - (void)willTransitionItemForBan:(id)arg1;
 

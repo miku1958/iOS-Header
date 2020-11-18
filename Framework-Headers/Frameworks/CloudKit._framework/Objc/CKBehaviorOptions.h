@@ -6,20 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSString, NSUserDefaults;
 @protocol OS_dispatch_queue;
 
 @interface CKBehaviorOptions : NSObject
 {
+    BOOL _didReadAutomatedDeviceGroup;
     int _mcToken;
     int _ckToken;
     NSMutableDictionary *_cachedPrefs;
     NSObject<OS_dispatch_queue> *_cachedPrefsQueue;
+    NSString *_automatedDeviceGroup;
+    NSUserDefaults *_automatedDeviceGroupDefaults;
 }
 
+@property (strong, nonatomic) NSString *automatedDeviceGroup; // @synthesize automatedDeviceGroup=_automatedDeviceGroup;
+@property (strong, nonatomic) NSUserDefaults *automatedDeviceGroupDefaults; // @synthesize automatedDeviceGroupDefaults=_automatedDeviceGroupDefaults;
 @property (strong, nonatomic) NSMutableDictionary *cachedPrefs; // @synthesize cachedPrefs=_cachedPrefs;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *cachedPrefsQueue; // @synthesize cachedPrefsQueue=_cachedPrefsQueue;
 @property (nonatomic) int ckToken; // @synthesize ckToken=_ckToken;
+@property BOOL didReadAutomatedDeviceGroup; // @synthesize didReadAutomatedDeviceGroup=_didReadAutomatedDeviceGroup;
 @property (nonatomic) int mcToken; // @synthesize mcToken=_mcToken;
 
 + (id)sharedOptions;
@@ -52,6 +58,7 @@
 - (int)clientThrottleQueueWidth;
 - (BOOL)compressRequests;
 - (id)configBaseURL;
+- (id)containerIDToForceFatalManateeZoneDecryptionFailure;
 - (id)customCloudDBBaseURL;
 - (id)customCodeServiceBaseURL;
 - (id)customDeviceServiceBaseURL;
@@ -78,9 +85,11 @@
 - (unsigned long long)maxPackageDownloadsPerBatchWithDefaultValue:(unsigned long long)arg1;
 - (unsigned long long)maxPackageUploadsPerBatchWithDefaultValue:(unsigned long long)arg1;
 - (double)maxRecentProxyAge;
-- (double)maximumFetchWaitTime;
+- (double)maxTimeIntervalSinceLastZoneishPCSKeyRoll;
+- (double)maximumQueuedFetchWaitTime;
 - (double)maximumThrottleSeconds;
 - (double)maximumWaitAfterFetchRequest;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (double)operationTimeout;
 - (BOOL)optimisticPCS;
 - (id)otherAccountsWithDefaultValue:(id)arg1;
@@ -94,10 +103,13 @@
 - (double)publicIdentitiesExpirationTimeout;
 - (unsigned long long)recentProxiesToSave;
 - (unsigned long long)recordCacheSizeLimit;
+- (BOOL)rollRecordMasterKeysOnUnshare;
+- (BOOL)rollRecordPCSMasterKeys;
+- (BOOL)rollZonePCSIdentities;
 - (BOOL)sandboxCloudD;
 - (unsigned long long)savedErrorCount;
 - (BOOL)sendDebugHeader;
-- (int)serverIDExpiryTime;
+- (BOOL)sendKeyIDsOnAllRequests;
 - (void)setBuildVersion:(id)arg1;
 - (void)setCFNetworkLogging:(BOOL)arg1;
 - (void)setCKCtlPrompt:(char *)arg1;
@@ -106,6 +118,7 @@
 - (void)setCachedRecordExpiryTime:(int)arg1;
 - (void)setCompressRequests:(BOOL)arg1;
 - (void)setConfigBaseURL:(id)arg1;
+- (void)setContainerIDToForceFatalManateeZoneDecryptionFailure:(id)arg1;
 - (void)setCustomCloudDBBaseURL:(id)arg1;
 - (void)setCustomCodeServiceBaseURL:(id)arg1;
 - (void)setCustomDeviceServiceBaseURL:(id)arg1;
@@ -123,8 +136,10 @@
 - (void)setPrimaryAccountPasswordOverride:(id)arg1;
 - (void)setProductName:(id)arg1;
 - (void)setProductVersion:(id)arg1;
+- (void)setRollRecordMasterKeysOnUnshare:(BOOL)arg1;
+- (void)setRollRecordPCSMasterKeys:(BOOL)arg1;
+- (void)setRollZonePCSIdentities:(BOOL)arg1;
 - (void)setSendDebugHeader:(BOOL)arg1;
-- (void)setServerIDExpiryTime:(int)arg1;
 - (void)setSetupBaseURL:(id)arg1;
 - (void)setShouldProfileSQL:(BOOL)arg1;
 - (void)setSqlBatchCount:(long long)arg1;
@@ -133,6 +148,7 @@
 - (void)setTrafficLogMaximumDataSize:(int)arg1;
 - (void)setUseBackgroundSessions:(BOOL)arg1;
 - (void)setUseEncryption:(BOOL)arg1;
+- (void)setUseEnhancedPCSEncryptionContext:(BOOL)arg1;
 - (void)setUsePreauth:(BOOL)arg1;
 - (void)setUseStingray:(BOOL)arg1;
 - (id)setupBaseURL;
@@ -147,10 +163,10 @@
 - (int)trafficLogQueueWidth;
 - (BOOL)useBackgroundSessions;
 - (BOOL)useEncryption;
+- (BOOL)useEnhancedPCSEncryptionContext;
 - (BOOL)useModTimeInAssetCacheEviction;
 - (BOOL)usePreauth;
 - (BOOL)useStingray;
-- (BOOL)validateMescalResponses;
 - (id)vettedEmailsTestFormat;
 
 @end

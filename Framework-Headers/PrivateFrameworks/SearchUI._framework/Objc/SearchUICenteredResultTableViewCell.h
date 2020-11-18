@@ -6,20 +6,16 @@
 
 #import <SearchUI/SearchUITableViewCell.h>
 
-@class UILabel;
+@class TLKNumericalResultView;
 
 @interface SearchUICenteredResultTableViewCell : SearchUITableViewCell
 {
-    UILabel *_vibrantTitleLabel;
-    UILabel *_subtitleLabel;
 }
 
-@property (strong) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
-@property (strong) UILabel *vibrantTitleLabel; // @synthesize vibrantTitleLabel=_vibrantTitleLabel;
+@property (strong) TLKNumericalResultView *sizingContainer; // @dynamic sizingContainer;
 
-- (void).cxx_destruct;
-- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
-- (void)updateWithResult:(id)arg1;
+- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (void)updateWithRowModel:(id)arg1;
 
 @end
 

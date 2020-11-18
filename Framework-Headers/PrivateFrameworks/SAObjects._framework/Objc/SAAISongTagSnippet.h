@@ -6,13 +6,12 @@
 
 #import <SAObjects/SAUISnippet.h>
 
-@class SAAISongTag, SAMPPlaybackButton, SAUIAppPunchOut, SAUIButton;
+@class SAAISongTag, SAMPPlaybackButton, SAUIAppPunchOut;
 
 @interface SAAISongTagSnippet : SAUISnippet
 {
 }
 
-@property (strong, nonatomic) SAUIButton *addButton;
 @property (strong, nonatomic) SAUIAppPunchOut *attributionPunchOut;
 @property (strong, nonatomic) SAMPPlaybackButton *playbackButton;
 @property (strong, nonatomic) SAUIAppPunchOut *purchaseSongPunchOut;

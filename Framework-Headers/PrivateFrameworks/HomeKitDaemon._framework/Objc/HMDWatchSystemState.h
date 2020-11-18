@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class NSHashTable;
+@class NSHashTable, NSObject;
 @protocol OS_dispatch_queue;
 
-@interface HMDWatchSystemState : NSObject
+@interface HMDWatchSystemState : HMFObject
 {
     BOOL _companionReachable;
     NSHashTable *_watchSystemStateDelegates;

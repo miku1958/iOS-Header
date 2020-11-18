@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) NSString *languageIdentifier;
 
 + (id)addLikelySubtagsForLocaleIdentifier:(id)arg1;
++ (id)archivedPreferences;
 + (id)canonicalLanguageAndScriptCodeIdentifierForIdentifier:(id)arg1;
 + (id)canonicalLocaleIdentifier:(id)arg1 withNewLanguageIdentifier:(id)arg2;
 + (id)canonicalLocaleIdentifierFromComponents:(id)arg1;
@@ -27,6 +28,7 @@
 + (id)renderableLocaleLanguages;
 + (id)renderableUILanguages;
 + (void)resetTimeFormat;
++ (void)setArchivedPreferences:(id)arg1;
 + (void)setLanguageToPreferredLanguages:(id)arg1 fallback:(id)arg2;
 + (void)setLocaleAfterLanguageChange:(id)arg1;
 + (void)setLocaleAfterRegionChange:(id)arg1;

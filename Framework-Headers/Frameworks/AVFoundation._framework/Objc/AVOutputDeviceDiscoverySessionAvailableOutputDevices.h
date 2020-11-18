@@ -16,12 +16,13 @@
 @property (readonly, nonatomic) NSArray *otherDevices;
 @property (readonly, nonatomic) NSArray *recentlyUsedDevices;
 
++ (id)outputDeviceDiscoverySessionAvailableOutputDevicesWithAvailableFigEndpoints:(id)arg1;
 - (void)_loadOutputDevices;
 - (void)dealloc;
-- (void)finalize;
 - (unsigned long long)hash;
+- (id)impl;
 - (id)init;
-- (id)initWithAvailableFigEndpoints:(id)arg1;
+- (id)initWithOutputDeviceDiscoverySessionAvailableOutputDevicesImpl:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -24,13 +24,11 @@
 - (BOOL)currentRouteHasVolumeControl;
 - (void)dealloc;
 - (BOOL)didCancelRoutePicking:(id)arg1;
-- (BOOL)enablePortDiscovery:(BOOL)arg1;
 - (BOOL)getActiveCategoryMuted:(BOOL *)arg1;
 - (BOOL)getActiveCategoryMuted:(BOOL *)arg1 forRoute:(id)arg2 andDeviceIdentifier:(id)arg3;
 - (BOOL)getActiveCategoryVolume:(float *)arg1 andName:(id *)arg2;
 - (BOOL)getActiveCategoryVolume:(float *)arg1 andName:(id *)arg2 fallbackCategory:(id)arg3;
 - (BOOL)getActiveCategoryVolume:(float *)arg1 andName:(id *)arg2 forRoute:(id)arg3 andDeviceIdentifier:(id)arg4;
-- (BOOL)getPortDiscoveryEnabled;
 - (BOOL)getVibeIntensity:(float *)arg1;
 - (BOOL)getVolume:(float *)arg1 forCategory:(id)arg2;
 - (BOOL)getVolumeForAccessory:(float *)arg1 forCategory:(id)arg2 accessoryRoute:(id)arg3 andAccessoryDeviceIdentifier:(id)arg4;
@@ -57,7 +55,6 @@
 - (BOOL)toggleActiveCategoryMuted;
 - (BOOL)toggleActiveCategoryMutedForRoute:(id)arg1 andDeviceIdentifier:(id)arg2;
 - (id)volumeCategoryForAudioCategory:(id)arg1;
-- (BOOL)willStartRoutePicking:(id)arg1;
 
 @end
 

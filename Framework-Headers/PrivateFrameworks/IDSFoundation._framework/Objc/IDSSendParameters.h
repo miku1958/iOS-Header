@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IDSFoundation/NSCopying-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDictionary, NSMutableDictionary, NSNumber, NSString;
+@class IDSDestination, IDSOutgoingMessageCheckpointTrace, NSArray, NSData, NSDate, NSDictionary, NSMutableDictionary, NSNumber, NSString;
 
 @interface IDSSendParameters : NSObject <NSCopying>
 {
     NSMutableDictionary *_params;
+    IDSOutgoingMessageCheckpointTrace *_checkpointTrace;
 }
 
 @property (strong, nonatomic) NSData *accessToken;
@@ -25,6 +26,7 @@
 @property (nonatomic) BOOL bypassDuet;
 @property (nonatomic) BOOL bypassSizeCheck;
 @property (nonatomic) BOOL bypassStorage;
+@property (strong, nonatomic) IDSOutgoingMessageCheckpointTrace *checkpointTrace; // @synthesize checkpointTrace=_checkpointTrace;
 @property (strong, nonatomic) NSNumber *command;
 @property (nonatomic) BOOL compressPayload;
 @property (nonatomic) BOOL compressed;
@@ -32,18 +34,21 @@
 @property (strong, nonatomic) NSData *data;
 @property (strong, nonatomic) NSData *dataToEncrypt;
 @property (strong, nonatomic) NSDictionary *deliveryStatusContext;
-@property (strong, nonatomic) NSArray *destinations;
-@property (readonly, strong, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (strong, nonatomic) IDSDestination *destinations;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (nonatomic) BOOL disableAliasValidation;
+@property (nonatomic) BOOL disallowRefresh;
 @property (strong, nonatomic) NSArray *duetIdentifiersOverride;
 @property (nonatomic) BOOL encryptPayload;
 @property (nonatomic) BOOL enforceRemoteTimeouts;
 @property (nonatomic) BOOL expectsPeerResponse;
-@property (readonly, strong, nonatomic) NSDate *expirationDate;
+@property (readonly, nonatomic) NSDate *expirationDate;
 @property (nonatomic) BOOL fakeMessage;
+@property (strong, nonatomic) NSArray *finalDestinations;
 @property (nonatomic) BOOL fireAndForget;
 @property (nonatomic) BOOL forceEncryptionOff;
 @property (strong, nonatomic) NSString *fromID;
+@property (strong, nonatomic) NSData *groupData;
 @property (nonatomic) BOOL homeKitPayload;
 @property (strong, nonatomic) NSString *identifier;
 @property (strong, nonatomic) NSArray *interestingRegistrationProperties;
@@ -54,6 +59,8 @@
 @property (strong, nonatomic) NSDictionary *message;
 @property (strong, nonatomic) NSNumber *messageType;
 @property (strong, nonatomic) NSData *messageUUID;
+@property (strong, nonatomic) NSString *metricReportIdentifier;
+@property (nonatomic) BOOL nonCloudWaking;
 @property (nonatomic) BOOL nonWaking;
 @property (strong, nonatomic) NSString *originalfromID;
 @property (strong, nonatomic) NSString *peerResponseIdentifier;
@@ -74,8 +81,9 @@
 @property (nonatomic) BOOL wantsDeliveryStatus;
 @property (nonatomic) BOOL wantsResponse;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
+- (id)dictionaryRepresentationIncludingTrace:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

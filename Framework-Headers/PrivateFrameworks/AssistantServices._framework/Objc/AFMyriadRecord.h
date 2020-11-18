@@ -12,14 +12,16 @@
 {
     unsigned char _goodness;
     unsigned char _userConfidence;
+    unsigned char _deviceGroup;
+    unsigned char _deviceClass;
     unsigned char _tieBreaker;
     BOOL _isMe;
     unsigned short _pHash;
-    unsigned short _deviceClass;
     NSUUID *_deviceID;
 }
 
-@property (nonatomic) unsigned short deviceClass; // @synthesize deviceClass=_deviceClass;
+@property (nonatomic) unsigned char deviceClass; // @synthesize deviceClass=_deviceClass;
+@property (nonatomic) unsigned char deviceGroup; // @synthesize deviceGroup=_deviceGroup;
 @property (strong, nonatomic) NSUUID *deviceID; // @synthesize deviceID=_deviceID;
 @property (nonatomic) unsigned char goodness; // @synthesize goodness=_goodness;
 @property (nonatomic) BOOL isMe; // @synthesize isMe=_isMe;
@@ -35,7 +37,10 @@
 - (id)init;
 - (id)initWithAudioData:(id)arg1;
 - (id)initWithDeviceID:(id)arg1 data:(id)arg2;
+- (BOOL)isAContinuation;
 - (BOOL)isATrump;
+- (BOOL)isAnEmergency;
+- (BOOL)isAnEmergencyHandled;
 
 @end
 

@@ -80,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (long long)controlSize;
 - (struct CGImage *)copyLayerImageContentsAndCenter:(struct CGRect *)arg1;
 - (struct CGImage *)copyLayerImageContentsAndCenter:(struct CGRect *)arg1 renditionKey:(id)arg2;
+- (struct CGImage *)copySegmentLayerContents:(int)arg1 andCenter:(struct CGRect *)arg2 leftSeparatorWidth:(double)arg3 rightSeparatorWidth:(double)arg4 renditionKey:(id)arg5 effects:(id)arg6;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)displayName;
@@ -139,6 +140,7 @@ __attribute__((visibility("hidden")))
 - (id)renditionSliceInformationForRect:(struct CGRect)arg1 keyAdjustment:(id)arg2;
 - (long long)renditionType;
 - (void)setControlSize:(long long)arg1;
+- (struct CGSize)sizeForSegmentOfType:(int)arg1;
 - (unsigned long long)themeIndex;
 - (id)themeRendition;
 - (id)thumbnail;

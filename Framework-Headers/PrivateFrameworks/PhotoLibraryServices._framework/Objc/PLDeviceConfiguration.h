@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface PLDeviceConfiguration : NSObject
 {
@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) BOOL isRidingPowderSnow; // @synthesize isRidingPowderSnow=_isRidingPowderSnow;
 @property (nonatomic) BOOL isTV; // @synthesize isTV=_isTV;
 @property (nonatomic) BOOL isWatch; // @synthesize isWatch=_isWatch;
+@property (readonly, nonatomic) unsigned long long logicalScreenPixelSize;
 @property (readonly, nonatomic) struct CGSize logicalScreenSize; // @synthesize logicalScreenSize=_logicalScreenSize;
 @property (readonly, nonatomic) double screenScale; // @synthesize screenScale=_screenScale;
 @property (readonly, nonatomic) BOOL shouldUseNanoThumbnailFormats; // @dynamic shouldUseNanoThumbnailFormats;

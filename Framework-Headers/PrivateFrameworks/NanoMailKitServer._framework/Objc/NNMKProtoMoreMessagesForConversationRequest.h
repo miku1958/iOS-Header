@@ -15,6 +15,7 @@
     NSData *_beforeDateReceived;
     NSString *_conversationId;
     unsigned int _fullSyncVersion;
+    NSString *_mailboxId;
     CDStruct_a125a100 _has;
 }
 
@@ -24,6 +25,8 @@
 @property (readonly, nonatomic) BOOL hasBeforeDateReceived;
 @property (readonly, nonatomic) BOOL hasConversationId;
 @property (nonatomic) BOOL hasFullSyncVersion;
+@property (readonly, nonatomic) BOOL hasMailboxId;
+@property (strong, nonatomic) NSString *mailboxId; // @synthesize mailboxId=_mailboxId;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

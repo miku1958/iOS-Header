@@ -30,7 +30,6 @@
 
 - (void).cxx_destruct;
 - (void)_removeIconViewForSection:(id)arg1;
-- (BOOL)_shouldShowSwitchForSearchEntry:(id)arg1;
 - (void)_updateIconViews:(BOOL)arg1;
 - (id)init;
 - (void)loadView;

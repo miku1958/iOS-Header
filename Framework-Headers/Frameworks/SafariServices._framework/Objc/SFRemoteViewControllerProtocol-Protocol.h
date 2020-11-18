@@ -9,13 +9,14 @@
 @class NSNumber, NSString, NSURL;
 
 @protocol SFRemoteViewControllerProtocol <NSObject>
+- (void)didDecideCookieSharingForURL:(NSURL *)arg1 shouldCancel:(BOOL)arg2;
 - (void)didFinishInitialLoad:(BOOL)arg1;
 - (void)didLoadWebView;
 - (void)executeCustomActivityProxyID:(NSNumber *)arg1;
-- (void)fetchHostAppCustomActivitiesForURL:(NSURL *)arg1 title:(NSString *)arg2;
+- (void)fetchActivityViewControllerInfoForURL:(NSURL *)arg1 title:(NSString *)arg2;
+- (void)initialLoadDidRedirectToURL:(NSURL *)arg1;
 - (void)setRemoteSwipeGestureEnabled:(BOOL)arg1;
 - (void)willDismissServiceViewController;
 - (void)willOpenURLInHostApplication:(NSURL *)arg1;
-- (void)willUpdateStatusBarStyle:(NSNumber *)arg1;
 @end
 

@@ -23,7 +23,7 @@
 @property (nonatomic) unsigned long long feeds; // @synthesize feeds=_feeds;
 @property (nonatomic) double gatewayTimeout; // @synthesize gatewayTimeout=_gatewayTimeout;
 @property (copy, nonatomic) NSArray *gateways; // @synthesize gateways=_gateways;
-@property (copy, nonatomic) NSMutableSet *gatewaysPlayedLightsAndSirens; // @synthesize gatewaysPlayedLightsAndSirens=_gatewaysPlayedLightsAndSirens;
+@property (strong, nonatomic) NSMutableSet *gatewaysPlayedLightsAndSirens; // @synthesize gatewaysPlayedLightsAndSirens=_gatewaysPlayedLightsAndSirens;
 
 - (void).cxx_destruct;
 - (void)attemptNextGatewayInEnumerator:(id)arg1 playLightsAndSirens:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;

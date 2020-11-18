@@ -14,12 +14,13 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityBannerIsSticky;
-- (id)_accessibilityCustomActions;
 - (BOOL)_axClear:(id)arg1;
 - (BOOL)_axDismiss;
 - (BOOL)_axMore:(id)arg1;
 - (void)_axPerformBlockOnNotificationController:(CDUnknownBlockType)arg1;
+- (id)accessibilityCustomActions;
 - (id)accessibilityHint;
+- (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)isAccessibilityElement;

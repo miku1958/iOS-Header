@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSLock;
 
@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     NSLock *_regionsLock;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (BOOL)needsLocalizationForKey:(const struct _GEOTileKey *)arg1 language:(id)arg2;
 - (void)reset;

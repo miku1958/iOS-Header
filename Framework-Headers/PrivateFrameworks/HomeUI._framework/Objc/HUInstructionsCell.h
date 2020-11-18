@@ -9,23 +9,27 @@
 #import <HomeUI/HUCellProtocol-Protocol.h>
 
 @class HFItem, HUGridLayoutOptions, NSArray, NSString, UILabel;
+@protocol HUResizableCellDelegate;
 
 @interface HUInstructionsCell : UITableViewCell <HUCellProtocol>
 {
     HFItem *_item;
     HUGridLayoutOptions *_layoutOptions;
+    double _contentBottomMargin;
     UILabel *_titleLabel;
     UILabel *_descriptionLabel;
     NSArray *_constraints;
 }
 
 @property (strong, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
+@property (nonatomic) double contentBottomMargin; // @synthesize contentBottomMargin=_contentBottomMargin;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
 @property (strong, nonatomic) HUGridLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
+@property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 

@@ -6,35 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocation, NSDate;
-
 @interface NTKLocationManager : NSObject
 {
-    BOOL _enableLogging;
-    CLLocation *_currentLocation;
-    CLLocation *_lastLocation;
-    CLLocation *_forcedLocation;
-    NSDate *_lastLocationUpdateTime;
 }
 
-@property (strong, nonatomic) CLLocation *currentLocation; // @synthesize currentLocation=_currentLocation;
-@property (strong, nonatomic) CLLocation *forcedLocation; // @synthesize forcedLocation=_forcedLocation;
-@property (strong, nonatomic) CLLocation *lastLocation; // @synthesize lastLocation=_lastLocation;
-@property (strong, nonatomic) NSDate *lastLocationUpdateTime; // @synthesize lastLocationUpdateTime=_lastLocationUpdateTime;
-
 + (id)fallbackLocation;
-+ (id)lastLocationUpdateTimeFromDefaults;
-+ (id)locationFromDefaults;
 + (id)sharedLocationManager;
-+ (void)updateDefaultsLocation:(id)arg1;
-+ (void)updateLastLocationUpdateTime:(id)arg1;
-- (void).cxx_destruct;
-- (void)forceLocation:(id)arg1;
-- (id)init;
-- (id)nameOfCurrentLocation;
-- (void)placemarkForCurrentLocationWithHandler:(CDUnknownBlockType)arg1;
-- (struct NSNumber *)startLocationUpdatesWithHandler:(CDUnknownBlockType)arg1;
-- (void)stopLocationUpdatesForToken:(struct NSNumber *)arg1;
+- (id)anyLocation;
+- (id)currentLocation;
+- (id)previousLocation;
+- (struct NSString *)startLocationUpdatesWithHandler:(CDUnknownBlockType)arg1;
+- (struct NSString *)startLocationUpdatesWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)stopLocationUpdatesForToken:(struct NSString *)arg1;
 
 @end
 

@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class HMDCameraSessionID, HMDCameraSnapshotMetrics, HMDSnapshotCompletionTimer, NSMutableArray, NSString;
 @protocol HMDCameraGetSnapshotProtocol;
 
-@interface HMDSnapshotSession : NSObject <HMFLogging>
+@interface HMDSnapshotSession : HMFObject <HMFLogging>
 {
     HMDCameraSessionID *_sessionID;
     id<HMDCameraGetSnapshotProtocol> _snapshotGetter;

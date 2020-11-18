@@ -25,6 +25,7 @@
 - (void)_accessibilityReplaceCharactersAtCursor:(unsigned long long)arg1 withString:(id)arg2;
 - (BOOL)_accessibilitySupportsHandwriting;
 - (void)_resetForFailedPasscode:(BOOL)arg1;
+- (void)_setPasscodeLockViewState:(long long)arg1 animated:(BOOL)arg2;
 - (void)_updateStatusTextForBioEvent:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (BOOL)becomeFirstResponder;
 

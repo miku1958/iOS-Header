@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSArray, NSMutableArray, PKPaymentHeroImageManifest;
 @protocol PKPaymentHeroImageControllerDelegate;
@@ -12,13 +12,14 @@
 @interface PKPaymentHeroImageController : NSObject
 {
     PKPaymentHeroImageManifest *_manifest;
-    NSArray *_featuredNetworks;
     NSMutableArray *_currentNetworksDownloading;
     id<PKPaymentHeroImageControllerDelegate> _delegate;
     long long _watchSize;
+    NSArray *_featuredNetworks;
 }
 
 @property (nonatomic) id<PKPaymentHeroImageControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (copy, nonatomic) NSArray *featuredNetworks; // @synthesize featuredNetworks=_featuredNetworks;
 @property (nonatomic) long long watchSize; // @synthesize watchSize=_watchSize;
 
 + (void)_addNetworkImageDownloadError:(id)arg1 downloadedSha1:(id)arg2;
@@ -30,10 +31,10 @@
 - (id)_debugString;
 - (void)beginDownloadingRemoteImages;
 - (void)beginDownloadingRemoteImagesWithCompletion:(CDUnknownBlockType)arg1;
+- (struct CGSize)cardArtSizeForSize:(struct CGSize)arg1;
 - (BOOL)containsPaymentCredentialType:(long long)arg1;
 - (void)downloadRemoteImageForNetwork:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)featuredNetworksImageData;
-- (struct CGSize)imageSizeForScreenSize:(struct CGSize)arg1;
 - (id)initWithManifest:(id)arg1 featuredNetworks:(id)arg2;
 - (id)initWithManifest:(id)arg1 featuredNetworks:(id)arg2 webService:(id)arg3;
 - (id)primaryFeaturedNetwork;

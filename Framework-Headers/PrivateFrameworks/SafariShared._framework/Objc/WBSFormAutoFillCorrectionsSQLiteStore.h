@@ -6,17 +6,20 @@
 
 #import <objc/NSObject.h>
 
+#import <SafariShared/WBSCrowdsourcedFeedbackWhitelist-Protocol.h>
 #import <SafariShared/WBSFormAutoFillCorrectionsStore-Protocol.h>
 
-@class NSString, NSURL, WBSFormAutoFillCorrectionsDomainNormalizer, WBSSQLiteDatabase;
+@class NSString, NSURL, WBSCrowdsourcedFeedbackDomainNormalizer, WBSSQLiteDatabase;
 @protocol OS_dispatch_queue;
 
-@interface WBSFormAutoFillCorrectionsSQLiteStore : NSObject <WBSFormAutoFillCorrectionsStore>
+@interface WBSFormAutoFillCorrectionsSQLiteStore : NSObject <WBSFormAutoFillCorrectionsStore, WBSCrowdsourcedFeedbackWhitelist>
 {
-    NSURL *_databaseURL;
-    WBSSQLiteDatabase *_database;
+    NSURL *_localDatabaseURL;
+    NSURL *_parsecDatabaseURL;
+    WBSSQLiteDatabase *_localDatabase;
+    WBSSQLiteDatabase *_parsecDatabase;
     NSObject<OS_dispatch_queue> *_databaseQueue;
-    WBSFormAutoFillCorrectionsDomainNormalizer *_domainNormalizer;
+    WBSCrowdsourcedFeedbackDomainNormalizer *_domainNormalizer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,40 +27,44 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_defaultDatabaseURL;
++ (id)_defaultLocalDatabaseURL;
++ (id)_defaultParsecDatabaseURL;
 + (id)standardStore;
 - (void).cxx_destruct;
 - (id)_classificationForFieldWithFingerprint:(id)arg1 onDomain:(id)arg2;
-- (void)_closeDatabase;
-- (int)_createFreshDatabaseSchema;
-- (BOOL)_isDatabaseOpen;
-- (id)_metadataStringValueForKey:(id)arg1;
-- (int)_migrateToCurrentSchemaVersionIfNeeded;
-- (BOOL)_migrateToSchemaVersion:(int)arg1;
+- (void)_closeDatabases;
+- (int)_createFreshLocalDatabaseSchema;
+- (int)_createFreshParsecDatabaseSchema;
+- (BOOL)_isDatabaseOpen:(id)arg1;
+- (int)_migrateToCurrentSchemaVersionIfNeededForDatabase:(id)arg1;
+- (BOOL)_migrateToSchemaVersion:(int)arg1 forDatabase:(id)arg2;
 - (int)_migrateToSchemaVersion_2;
+- (int)_migrateToSchemaVersion_3;
 - (id)_normalizeDomain:(id)arg1;
-- (void)_openDatabase;
-- (void)_openDatabaseIfNeeded;
+- (void)_openDatabaseAtURL:(id)arg1;
+- (void)_openDatabasesIfNeeded;
+- (void)_openLocalDatabase;
+- (void)_openParsecDatabase;
+- (id)_parsecMetadataStringValueForKey:(id)arg1;
 - (BOOL)_removeAllLocalClassifications;
 - (BOOL)_removeLocalClassificationsForDomain:(id)arg1 recordedOnOrAfter:(id)arg2;
 - (BOOL)_replaceCrowdsourcedCorrectionSetsWithCorrectionSets:(id)arg1 retrievalURLString:(id)arg2;
 - (BOOL)_replaceDomainWhitelistWithDomains:(id)arg1 retrievalURLString:(id)arg2;
-- (int)_schemaVersion;
+- (int)_schemaVersionForDatabase:(id)arg1;
 - (BOOL)_setCrowdsourcedClassification:(id)arg1 forFieldWithFingerprint:(id)arg2 onDomain:(id)arg3;
-- (int)_setDatabaseSchemaVersion:(int)arg1;
+- (int)_setDatabaseSchemaVersion:(int)arg1 forDatabase:(id)arg2;
 - (BOOL)_setDomain:(id)arg1 isWhitelistedForFeedback:(BOOL)arg2;
 - (void)_setLocalClassification:(id)arg1 forFieldWithFingerprint:(id)arg2 onDomain:(id)arg3 date:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (BOOL)_setLocalClassification:(id)arg1 forFieldWithFingerprint:(id)arg2 onDomain:(id)arg3 dateReclassified:(id)arg4;
-- (BOOL)_setMetadataStringValue:(id)arg1 forKey:(id)arg2;
-- (BOOL)_tryToPerformTransactionInBlock:(CDUnknownBlockType)arg1;
+- (BOOL)_setParsecMetadataStringValue:(id)arg1 forKey:(id)arg2;
+- (BOOL)_tryToPerformTransactionOnDatabase:(id)arg1 inBlock:(CDUnknownBlockType)arg2;
 - (void)closeDatabase;
-- (void)dealloc;
 - (void)getClassificationForFieldWithFingerprint:(id)arg1 onDomain:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getLastCrowdsourcedCorrectionsRetrievalURLStringWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getLastWhitelistRetrievalURLStringWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getWhitelistStatusForDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)initWithDatabaseURL:(id)arg1;
+- (id)initWithLocalDatabaseURL:(id)arg1 parsecDatabaseURL:(id)arg2;
 - (void)removeAllLocalClassificationsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeLocalClassificationsForDomain:(id)arg1 recordedOnOrAfter:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)replaceCrowdsourcedCorrectionSetsWithCorrectionSets:(id)arg1 retrievalURLString:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

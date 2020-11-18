@@ -19,7 +19,7 @@
 - (id)_accessibilityTitleForLeadingActionWithCell:(id)arg1;
 - (id)_axAutomaticallyMarkReadTimer;
 - (void)_axCancelMarkAsReadTimer;
-- (id)_axElementForFocusInCell:(id)arg1;
+- (id)_axElementForFocusInCell:(id)arg1 shouldAllowCollapsedCell:(BOOL)arg2;
 - (id)_axFirstVisibleCell;
 - (BOOL)_axFocusOnReferenceMessage;
 - (id)_axMessageSubjectView;

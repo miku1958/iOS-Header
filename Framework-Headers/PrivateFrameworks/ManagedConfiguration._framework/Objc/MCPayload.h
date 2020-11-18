@@ -37,16 +37,22 @@
 @property (readonly, strong, nonatomic) NSString *type; // @synthesize type=_type;
 @property (readonly, nonatomic) long long version; // @synthesize version=_version;
 
++ (id)applicablePayloadsForHomePod;
 + (id)badFieldTypeErrorWithField:(id)arg1;
 + (id)badFieldValueErrorWithField:(id)arg1;
 + (id)badFieldValueErrorWithField:(id)arg1 underlyingError:(id)arg2;
++ (id)cellularRequiredPayloads;
++ (id)conflictingFieldValueErrorWithUnderlyingError:(id)arg1;
 + (id)localizedDescriptionForPayloadCount:(unsigned long long)arg1;
 + (id)localizedParenthesizedFormDescriptionForPayloadCount:(unsigned long long)arg1;
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
++ (id)mdmAdoptablePayloads;
++ (id)minimumWatchVersionRequirementsForPayloads;
 + (id)missingFieldErrorWithField:(id)arg1 underlyingError:(id)arg2;
 + (id)payloadFromDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 + (id)payloadsFromArray:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
++ (id)supervisedRequiredPayloads;
 + (id)typeStrings;
 + (id)unavailablePayloadsInEphemeralMultiUser;
 + (id)unavailableSystemPayloadsInEphemeralMultiUser;

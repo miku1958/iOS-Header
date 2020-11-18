@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -19,6 +19,7 @@
 - (void)_clearName;
 - (BOOL)_isNameCached;
 - (void)acceptSSP:(long long)arg1;
+- (int)accessorySettingFeatureBitMask;
 - (id)address;
 - (int)batteryLevel;
 - (BOOL)cloudPaired;
@@ -34,6 +35,8 @@
 - (struct BTDeviceImpl *)device;
 - (void)disconnect;
 - (unsigned int)doubleTapAction;
+- (unsigned int)doubleTapActionEx:(unsigned int *)arg1 rightAction:(unsigned int *)arg2;
+- (unsigned int)doubleTapCapability;
 - (void)endVoiceCommand;
 - (unsigned int)getConnectingServiceMask;
 - (id)getServiceSetting:(unsigned int)arg1 key:(id)arg2;
@@ -42,6 +45,7 @@
 - (BOOL)isAccessory;
 - (BOOL)isAppleAudioDevice;
 - (BOOL)isServiceSupported:(unsigned int)arg1;
+- (unsigned int)listeningMode;
 - (BOOL)magicPaired;
 - (BOOL)magicPairedDeviceNameUpdated;
 - (unsigned int)majorClass;
@@ -54,7 +58,9 @@
 - (void)setConnectingServicemask:(unsigned int)arg1;
 - (void)setDevice:(struct BTDeviceImpl *)arg1;
 - (BOOL)setDoubleTapAction:(unsigned int)arg1;
+- (BOOL)setDoubleTapActionEx:(unsigned int)arg1 rightAction:(unsigned int)arg2;
 - (BOOL)setInEarDetectEnabled:(BOOL)arg1;
+- (BOOL)setListeningMode:(unsigned int)arg1;
 - (BOOL)setMicMode:(unsigned int)arg1;
 - (void)setPIN:(id)arg1;
 - (void)setServiceSetting:(unsigned int)arg1 key:(id)arg2 value:(id)arg3;

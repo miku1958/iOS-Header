@@ -34,6 +34,7 @@
 + (void)_removePageControllersAtIndexes:(id)arg1;
 + (BOOL)openParentApplication:(id)arg1 reply:(CDUnknownBlockType)arg2;
 + (void)reloadRootControllersWithNames:(id)arg1 contexts:(id)arg2;
++ (void)reloadRootPageControllersWithNames:(id)arg1 contexts:(id)arg2 orientation:(long long)arg3 pageIndex:(long long)arg4;
 + (struct CGRect)screenBounds;
 + (double)screenScale;
 - (void).cxx_destruct;
@@ -52,6 +53,7 @@
 - (id)contextsForSegueWithIdentifier:(id)arg1 inTable:(id)arg2 rowIndex:(long long)arg3;
 - (void)didAppear;
 - (void)didDeactivate;
+- (void)didRegisterWithRemoteInterface;
 - (void)dismissAddPassesController;
 - (void)dismissAudioRecorderController;
 - (void)dismissController;
@@ -64,6 +66,9 @@
 - (void)handleUserActivity:(id)arg1;
 - (id)init;
 - (id)initWithContext:(id)arg1;
+- (void)interfaceDidScrollToTop;
+- (void)interfaceOffsetDidScrollToBottom;
+- (void)interfaceOffsetDidScrollToTop;
 - (void)invalidateUserActivity;
 - (void)pickerDidFocus:(id)arg1;
 - (void)pickerDidResignFocus:(id)arg1;
@@ -78,6 +83,7 @@
 - (void)presentTextInputControllerWithSuggestions:(id)arg1 allowedInputMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentTextInputControllerWithSuggestionsForLanguage:(CDUnknownBlockType)arg1 allowedInputMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)pushControllerWithName:(id)arg1 context:(id)arg2;
+- (void)scrollToObject:(id)arg1 atScrollPosition:(long long)arg2 animated:(BOOL)arg3;
 - (void)setTitle:(id)arg1;
 - (void)table:(id)arg1 didSelectRowAtIndex:(long long)arg2;
 - (void)updateUserActivity:(id)arg1 userInfo:(id)arg2;

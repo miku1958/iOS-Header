@@ -31,13 +31,17 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_layoutBottomSubview:(id)arg1 withMinY:(double)arg2 withSize:(struct CGSize)arg3;
 - (void)appendString:(id)arg1;
 - (BOOL)becomeFirstResponder;
 - (void)deleteLastCharacter;
+- (double)getCurrentTitleFontSize;
 - (void)hideError;
 - (void)hideFailedAttempts;
 - (void)hidePasscodeField:(BOOL)arg1;
+- (void)layoutBottomSubview:(id)arg1 withLabel:(id)arg2 withMinY:(double)arg3;
 - (void)layoutSubviews;
+- (void)layoutTopLabel:(id)arg1 withMaxY:(double)arg2;
 - (void)notifyDelegatePINChanged;
 - (void)notifyDelegatePINEntered;
 - (id)optionsButton;

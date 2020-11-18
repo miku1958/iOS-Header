@@ -22,8 +22,10 @@
 - (id)initWithFileURL:(id)arg1;
 - (void)persist;
 - (void)setData:(id)arg1 forKey:(id)arg2;
+- (void)setInt32:(int)arg1 forKey:(id)arg2;
 - (void)setString:(id)arg1 forKey:(id)arg2;
 - (void)setUInt16:(unsigned short)arg1 forKey:(id)arg2;
+- (void)setUInt64:(unsigned long long)arg1 forKey:(id)arg2;
 - (void)setUUIDString:(id)arg1 forKey:(id)arg2;
 
 @end

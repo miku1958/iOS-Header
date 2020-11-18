@@ -7,9 +7,8 @@
 #import <EventKit/EKEvent.h>
 
 @interface EKEvent (AttendeeSorting)
-- (id)_clockIconString;
-- (id)_commentIconString;
 - (id)_sortedEKParticipantsForSortingIgnoringNonHumans:(id)arg1;
+- (id)attendeesWithoutOrganizerAndLocations;
 - (BOOL)hasHumanInviteesToDisplay;
 - (id)sortEKParticipantsIgnoringNonHumans:(id)arg1;
 - (id)sortedEKParticipantsDisplayStringsIgnoringNonHumans:(id)arg1;

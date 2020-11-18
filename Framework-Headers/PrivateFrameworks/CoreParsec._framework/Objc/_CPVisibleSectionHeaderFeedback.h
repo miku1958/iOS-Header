@@ -6,36 +6,49 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreParsec/NSCopying-Protocol.h>
+#import <CoreParsec/NSSecureCoding-Protocol.h>
+#import <CoreParsec/_CPProcessableFeedback-Protocol.h>
+#import <CoreParsec/_CPVisibleSectionHeaderFeedback-Protocol.h>
 
-@class _CPResultSectionForFeedback;
+@class NSData, NSDictionary, NSString, _CPResultSectionForFeedback;
 
-@interface _CPVisibleSectionHeaderFeedback : PBCodable <NSCopying>
+@interface _CPVisibleSectionHeaderFeedback : PBCodable <_CPProcessableFeedback, _CPVisibleSectionHeaderFeedback, NSSecureCoding>
 {
-    unsigned long long _timestamp;
-    int _headerType;
-    _CPResultSectionForFeedback *_section;
     struct {
+        unsigned int timestamp:1;
         unsigned int headerType:1;
     } _has;
+    int _headerType;
+    unsigned long long _timestamp;
+    _CPResultSectionForFeedback *_section;
 }
 
-@property (nonatomic) BOOL hasHeaderType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly, nonatomic) id feedbackJSON;
+@property (readonly, nonatomic) BOOL hasHeaderType;
 @property (readonly, nonatomic) BOOL hasSection;
+@property (readonly, nonatomic) BOOL hasTimestamp;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) int headerType; // @synthesize headerType=_headerType;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (readonly, nonatomic) BOOL requiresQueryId;
 @property (strong, nonatomic) _CPResultSectionForFeedback *section; // @synthesize section=_section;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 
 - (void).cxx_destruct;
-- (int)StringAsHeaderType:(id)arg1;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (id)dictionaryRepresentation;
-- (unsigned long long)hash;
-- (id)headerTypeAsString:(int)arg1;
+- (id)init;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithFacade:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

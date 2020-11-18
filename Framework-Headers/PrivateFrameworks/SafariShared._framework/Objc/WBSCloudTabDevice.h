@@ -15,6 +15,7 @@
     BOOL _closeRequestSupported;
     BOOL _hasDuplicateName;
     BOOL _ephemeralDevice;
+    BOOL _cloudKitBookmarkSyncingSupported;
     NSString *_name;
     NSString *_uuid;
     NSArray *_tabs;
@@ -22,6 +23,7 @@
 }
 
 @property (readonly, nonatomic, getter=isCloseRequestSupported) BOOL closeRequestSupported; // @synthesize closeRequestSupported=_closeRequestSupported;
+@property (readonly, nonatomic, getter=isCloudKitBookmarkSyncingSupported) BOOL cloudKitBookmarkSyncingSupported; // @synthesize cloudKitBookmarkSyncingSupported=_cloudKitBookmarkSyncingSupported;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic, getter=isEphemeralDevice) BOOL ephemeralDevice; // @synthesize ephemeralDevice=_ephemeralDevice;
 @property (readonly, nonatomic) BOOL hasDuplicateName; // @synthesize hasDuplicateName=_hasDuplicateName;

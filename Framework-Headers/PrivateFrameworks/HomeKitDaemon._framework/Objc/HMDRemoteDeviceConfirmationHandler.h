@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMFTimer, NSString;
+@class HMFTimer, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDRemoteDeviceConfirmationHandler : NSObject <HMFTimerDelegate>
+@interface HMDRemoteDeviceConfirmationHandler : HMFObject <HMFTimerDelegate>
 {
     double _timeout;
     CDUnknownBlockType _completionHandler;

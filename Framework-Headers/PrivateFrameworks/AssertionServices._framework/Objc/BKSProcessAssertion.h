@@ -4,54 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <AssertionServices/BKSAssertion.h>
 
-#import <AssertionServices/BKSProcessAssertionClientHandler-Protocol.h>
+@class NSString;
 
-@class BKSProcessAssertionClient, BSSignal, NSString;
-@protocol OS_dispatch_queue;
-
-@interface BKSProcessAssertion : NSObject <BKSProcessAssertionClientHandler>
+@interface BKSProcessAssertion : BKSAssertion
 {
-    BSSignal *_invalidationSignal;
-    BOOL _acquired;
     int _pid;
-    NSString *_identifier;
     NSString *_bundleIdentifier;
-    NSString *_name;
     unsigned int _flags;
     unsigned int _reason;
-    CDUnknownBlockType _invalidationHandler;
-    CDUnknownBlockType _acquisitionHandler;
-    BKSProcessAssertionClient *_client;
-    NSObject<OS_dispatch_queue> *_clientQueue;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned int flags;
-@property (readonly) unsigned long long hash;
-@property (copy, nonatomic) CDUnknownBlockType invalidationHandler;
-@property (copy, nonatomic) NSString *name;
 @property (readonly, nonatomic) unsigned int reason; // @synthesize reason=_reason;
-@property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL valid;
 
 + (id)NameForReason:(unsigned int)arg1;
-- (BOOL)_clientQueue_acquireAssertion;
-- (void)_clientQueue_invalidate:(BOOL)arg1;
-- (void)_clientQueue_updateAssertion;
-- (BOOL)acquire;
-- (void)assertionDidInvalidate;
+- (id)_clientQueue_createEvent;
+- (id)_clientQueue_destroyEvent;
+- (id)_clientQueue_updateEvent;
 - (void)dealloc;
 - (id)init;
 - (id)initWithBundleIdentifier:(id)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4;
 - (id)initWithBundleIdentifier:(id)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (id)initWithBundleIdentifier:(id)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(CDUnknownBlockType)arg5 acquire:(BOOL)arg6;
+- (id)initWithBundleIdentifier:(id)arg1 pid:(int)arg2 flags:(unsigned int)arg3 reason:(unsigned int)arg4 name:(id)arg5 withHandler:(CDUnknownBlockType)arg6 acquire:(BOOL)arg7;
 - (id)initWithPID:(int)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4;
 - (id)initWithPID:(int)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (id)initWithPID:(int)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(CDUnknownBlockType)arg5 acquire:(BOOL)arg6;
-- (void)invalidate;
 
 @end
 

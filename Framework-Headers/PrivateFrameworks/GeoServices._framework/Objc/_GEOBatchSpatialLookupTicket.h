@@ -4,33 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <GeoServices/GEOAbstractTicket.h>
 
 #import <GeoServices/GEOMapServiceBatchSpatialLookupTicket-Protocol.h>
 
 @class GEOMapServiceTraits, GEOSpatialLookupBatchRequest, GEOSpatialLookupBatchResponse, NSArray, NSMapTable, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOBatchSpatialLookupTicket : NSObject <GEOMapServiceBatchSpatialLookupTicket>
+@interface _GEOBatchSpatialLookupTicket : GEOAbstractTicket <GEOMapServiceBatchSpatialLookupTicket>
 {
-    GEOMapServiceTraits *_traits;
     GEOSpatialLookupBatchRequest *_request;
     GEOSpatialLookupBatchResponse *_response;
     NSArray *_parameters;
     NSMapTable *_parametersToMapItems;
-    BOOL _canceled;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) GEOMapServiceTraits *traits; // @synthesize traits=_traits;
+@property (readonly, nonatomic) GEOMapServiceTraits *traits;
 
-- (void)cancel;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithRequest:(id)arg1 forParameters:(id)arg2 traits:(id)arg3;
 - (id)mapItemsForParameters:(id)arg1;
+- (void)submitWithHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 networkActivity:(CDUnknownBlockType)arg3;
+- (void)submitWithHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 networkActivity:(CDUnknownBlockType)arg3 queue:(id)arg4;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2 queue:(id)arg3;
 

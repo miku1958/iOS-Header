@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
+#import <PassKitCore/PKCloudStoreCoding-Protocol.h>
 
-@class CLLocation, NSString, NSURL;
+@class CLLocation, CNPostalAddress, NSString, NSURL;
 
-@interface PKMerchant : NSObject <NSSecureCoding>
+@interface PKMerchant : NSObject <NSSecureCoding, PKCloudStoreCoding>
 {
     int _resultProviderIdentifier;
     NSString *_displayName;
@@ -24,6 +25,7 @@
     NSURL *_url;
     double _locationLatitude;
     double _locationLongitude;
+    CNPostalAddress *_postalAddress;
 }
 
 @property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
@@ -37,19 +39,24 @@
 @property (copy, nonatomic) NSString *mapsName; // @synthesize mapsName=_mapsName;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
+@property (copy, nonatomic) CNPostalAddress *postalAddress; // @synthesize postalAddress=_postalAddress;
 @property (copy, nonatomic) NSString *rawName; // @synthesize rawName=_rawName;
 @property (nonatomic) int resultProviderIdentifier; // @synthesize resultProviderIdentifier=_resultProviderIdentifier;
 @property (copy, nonatomic, setter=setURL:) NSURL *url; // @synthesize url=_url;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_jsonEncodedPostalAddressString;
 - (void)_regenerateDisplayName;
 - (id)description;
+- (void)encodeWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCloudStoreCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToMerchant:(id)arg1;
+- (id)recordTypesAndNames;
 
 @end
 

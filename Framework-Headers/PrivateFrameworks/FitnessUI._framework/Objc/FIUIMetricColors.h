@@ -32,12 +32,14 @@
 @property (strong, nonatomic) NSString *workoutRingColorIdentifier; // @synthesize workoutRingColorIdentifier=_workoutRingColorIdentifier;
 
 + (id)briskColors;
++ (id)cadenceColors;
 + (id)clockColors;
 + (id)deepBreathingColors;
 + (id)distanceColors;
 + (id)elapsedTimeColors;
 + (id)elevationColors;
 + (id)energyColors;
++ (id)flightsClimbedColors;
 + (id)heartRateColors;
 + (id)keyColors;
 + (id)lapColors;
@@ -47,7 +49,9 @@
 + (struct CGGradient *)newGradientForStartColor:(id)arg1 endColor:(id)arg2;
 + (id)noMetricColors;
 + (id)paceColors;
++ (id)powerColors;
 + (id)sedentaryColors;
++ (id)stepColors;
 + (id)systemGrayTextColor;
 - (void).cxx_destruct;
 

@@ -9,7 +9,7 @@
 #import <Home/HFAccessoryObserver-Protocol.h>
 #import <Home/HFCameraObserver-Protocol.h>
 
-@class HMCameraProfile, NSError, NSHashTable, NSString;
+@class HMCameraProfile, NSDate, NSError, NSMapTable, NSString;
 @protocol NACancelable;
 
 @interface HFCameraManager : NSObject <HFAccessoryObserver, HFCameraObserver>
@@ -17,9 +17,11 @@
     BOOL _isRegisteredForEvents;
     NSError *_cachedStreamError;
     HMCameraProfile *_cameraProfile;
-    NSHashTable *_snapshotRequesters;
-    NSHashTable *_streamRequesters;
+    NSMapTable *_snapshotRequesters;
+    NSMapTable *_streamRequesters;
     id<NACancelable> _nextSnapshotEvent;
+    NSDate *_snapshotErrorDate;
+    unsigned long long _snapshotErrorCount;
 }
 
 @property (strong, nonatomic) NSError *cachedStreamError; // @synthesize cachedStreamError=_cachedStreamError;
@@ -29,22 +31,24 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isRegisteredForEvents; // @synthesize isRegisteredForEvents=_isRegisteredForEvents;
 @property (strong, nonatomic) id<NACancelable> nextSnapshotEvent; // @synthesize nextSnapshotEvent=_nextSnapshotEvent;
-@property (readonly, nonatomic) NSHashTable *snapshotRequesters; // @synthesize snapshotRequesters=_snapshotRequesters;
-@property (readonly, nonatomic) NSHashTable *streamRequesters; // @synthesize streamRequesters=_streamRequesters;
+@property (nonatomic) unsigned long long snapshotErrorCount; // @synthesize snapshotErrorCount=_snapshotErrorCount;
+@property (strong, nonatomic) NSDate *snapshotErrorDate; // @synthesize snapshotErrorDate=_snapshotErrorDate;
+@property (readonly, nonatomic) NSMapTable *snapshotRequesters; // @synthesize snapshotRequesters=_snapshotRequesters;
+@property (readonly, nonatomic) NSMapTable *streamRequesters; // @synthesize streamRequesters=_streamRequesters;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_beginContinuousStreaming;
 - (void)_beginPeriodicSnapshots;
 - (void)_cancelNextSnapshotEvent;
-- (void)_dispatchStreamFailedToStartWithError:(id)arg1;
 - (void)_dispatchStreamStateUpdate;
 - (void)_endContinuousStreaming;
 - (void)_endPeriodicSnapshots;
-- (void)_handleApplicationWillEnterForegroundNotification;
+- (void)_handleApplicationDidBecomeActiveNotificationNotification;
 - (BOOL)_hasSnapshotRequesters;
 - (BOOL)_hasStreamRequesters;
-- (void)_scheduleNextSnapshotEvent;
+- (id)_nextSnapshotDate;
+- (void)_scheduleNextSnapshotEventWithPreviousError:(id)arg1;
 - (double)_snapshotTimeInterval;
 - (void)_startStreaming;
 - (void)_stopStreaming;

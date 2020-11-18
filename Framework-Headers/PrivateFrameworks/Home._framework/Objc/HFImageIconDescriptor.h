@@ -23,6 +23,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)iconDescriptorByMergingWithIconDescriptor:(id)arg1;
 - (id)initWithImageIdentifier:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

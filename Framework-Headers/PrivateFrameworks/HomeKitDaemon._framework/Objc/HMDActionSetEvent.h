@@ -31,7 +31,6 @@
 
 + (id)actionSetTriggered:(id)arg1 source:(unsigned long long)arg2 numAccessories:(unsigned int)arg3 bundleId:(id)arg4 transactionId:(id)arg5;
 + (void)initialize;
-+ (id)stringForSource:(unsigned long long)arg1;
 + (id)uuid;
 - (void).cxx_destruct;
 - (unsigned int)AWDMessageType;

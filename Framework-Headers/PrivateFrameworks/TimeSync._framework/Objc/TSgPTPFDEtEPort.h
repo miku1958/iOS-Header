@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TimeSync/TSgPTPPort.h>
+#import <TimeSync/TSgPTPNetworkPort.h>
 
-@class NSDictionary;
+@class TSgPTPPortStatistics;
 
-@interface TSgPTPFDEtEPort : TSgPTPPort
+@interface TSgPTPFDEtEPort : TSgPTPNetworkPort
 {
 }
 
-@property (readonly, nonatomic) NSDictionary *statistics; // @dynamic statistics;
+@property (readonly, nonatomic) TSgPTPPortStatistics *statistics; // @dynamic statistics;
 
 + (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
 

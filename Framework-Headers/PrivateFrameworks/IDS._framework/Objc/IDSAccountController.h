@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSSet, _IDSAccountController;
 
@@ -13,8 +13,11 @@
     _IDSAccountController *_internal;
 }
 
-@property (readonly, strong, nonatomic) NSSet *accounts;
+@property (readonly, nonatomic) NSSet *accounts;
 
+- (void).cxx_destruct;
+- (void)_disableAccount:(id)arg1;
+- (void)_enableAccount:(id)arg1;
 - (id)_initWithService:(id)arg1;
 - (id)_initWithService:(id)arg1 onIDSQueue:(BOOL)arg2;
 - (id)_internal;

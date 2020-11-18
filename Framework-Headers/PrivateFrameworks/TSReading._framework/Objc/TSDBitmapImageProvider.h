@@ -13,6 +13,7 @@
 {
     struct CGImageSource *mImageSource;
     struct CGImage *mImage;
+    unsigned long long mImageGamut;
     struct CGSize mNaturalSize;
     long long mOrientation;
     BOOL mIsOpaque;
@@ -46,6 +47,7 @@
 - (BOOL)hasFlushableContent;
 - (void)i_commonInit;
 - (unsigned long long)imageDPI;
+- (unsigned long long)imageGamut;
 - (BOOL)isOpaque;
 - (BOOL)isValid;
 - (struct CGSize)naturalSize;

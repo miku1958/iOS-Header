@@ -36,6 +36,7 @@
 @property (readonly) Class superclass;
 
 + (id)timerTargettingMainAccessQueue;
+- (void).cxx_destruct;
 - (void)_afterDelay:(double)arg1 processBlock:(CDUnknownBlockType)arg2 shouldTreatAsWritingBlock:(BOOL)arg3;
 - (void)_didFinishProcessingBlock;
 - (void)_performEnqueuedWritingBlock:(CDUnknownBlockType)arg1 asynchronousExecutionWarningHandler:(SEL)arg2;

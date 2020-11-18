@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) SCRCMathExpression *divisor; // @synthesize divisor=_divisor;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(BOOL)arg2;
 

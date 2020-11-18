@@ -28,6 +28,7 @@
 @property (readonly) Class superclass;
 
 + (id)server;
+- (void).cxx_destruct;
 - (id)_axSpringBoardServerInstance;
 - (id)_axSpringBoardServerInstanceDelegate;
 - (id)_axSpringBoardServerInstanceIfExists;
@@ -54,17 +55,17 @@
 - (id)applicationWithIdentifier:(id)arg1;
 - (BOOL)areSystemGesturesDisabledByAccessibility;
 - (BOOL)areSystemGesturesDisabledNatively;
+- (void)armApplePay;
 - (void)cancelReachabilityDetection;
 - (void)cleanupAlertHandler;
-- (BOOL)clearSideAppState;
 - (void)copyStringToPasteboard:(id)arg1;
-- (void)dealloc;
 - (void)dismissAppSwitcher;
 - (BOOL)dismissSiri;
 - (id)focusedAppPID;
 - (id)focusedAppProcess;
 - (id)focusedApps;
 - (BOOL)hasActiveCall;
+- (BOOL)hasActiveEndpointCall;
 - (BOOL)hasActiveOrPendingCall;
 - (BOOL)hasActiveOrPendingCallOrFaceTime;
 - (void)hideAlert;
@@ -73,6 +74,7 @@
 - (id)installedApps;
 - (BOOL)isAppSwitcherVisible;
 - (BOOL)isControlCenterVisible;
+- (BOOL)isDockVisible;
 - (BOOL)isInspectorMinimized;
 - (BOOL)isMagnifierVisible;
 - (void)isMagnifierVisibleWithCompletion:(CDUnknownBlockType)arg1;
@@ -85,6 +87,7 @@
 - (BOOL)isNotificationVisible;
 - (BOOL)isNowPlayingUIVisible;
 - (BOOL)isOrientationLocked;
+- (BOOL)isPasscodeLockVisible;
 - (BOOL)isPointInsideAccessibilityInspector:(id)arg1;
 - (BOOL)isPurpleBuddyAppFrontmost;
 - (BOOL)isReceivingAirPlay;
@@ -92,8 +95,8 @@
 - (BOOL)isScreenLockedWithPasscode:(BOOL *)arg1;
 - (BOOL)isScreenSaverVisible;
 - (BOOL)isSettingsAppFrontmost;
+- (BOOL)isShowingHomescreen;
 - (BOOL)isSideSwitchUsedForOrientation;
-- (BOOL)isSideSwitcherVisible;
 - (BOOL)isSiriTalkingOrListening;
 - (BOOL)isSiriVisible;
 - (BOOL)isSoftwareUpdateUIVisible;
@@ -107,6 +110,7 @@
 - (BOOL)isVoiceControlRunning;
 - (void)launchMagnifierApp;
 - (BOOL)loadGAXBundleForUnmanagedASAM;
+- (id)medusaApps;
 - (void)openAppSwitcher;
 - (void)openAssistiveTouchCustomGestureCreation;
 - (void)openSCATCustomGestureCreation;
@@ -120,6 +124,7 @@
 - (int)purpleBuddyPID;
 - (void)purpleBuddyPID:(CDUnknownBlockType)arg1;
 - (double)reachabilityOffset;
+- (void)rebootDevice;
 - (void)registerReachabilityHandler:(CDUnknownBlockType)arg1 withIdentifierCallback:(CDUnknownBlockType)arg2;
 - (void)registerSpringBoardActionHandler:(CDUnknownBlockType)arg1 withIdentifierCallback:(CDUnknownBlockType)arg2;
 - (void)relinquishAssertionWithType:(id)arg1 identifier:(id)arg2;
@@ -149,6 +154,7 @@
 - (void)startHearingAidServer;
 - (void)systemAppInfoWithQuery:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)takeScreenshot;
+- (void)toggleDock;
 - (BOOL)toggleIncomingCall;
 - (void)toggleNotificationCenter;
 - (int)topEventPidOverride;

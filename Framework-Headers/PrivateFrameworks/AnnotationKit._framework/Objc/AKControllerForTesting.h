@@ -6,7 +6,7 @@
 
 #import <AnnotationKit/AKController.h>
 
-@class AKActionController, AKAttributeController, AKIntelligentSketchController, AKMainEventHandler, AKModelController, AKSignatureModelController, AKToolController, AKUndoController, UIView;
+@class AKActionController, AKAttributeController, AKLegacyDoodleController, AKMainEventHandler, AKModelController, AKSignatureModelController, AKToolController, AKUndoController, UIView;
 @protocol AKControllerDelegateProtocol;
 
 @interface AKControllerForTesting : AKController
@@ -20,14 +20,14 @@
     AKMainEventHandler *_testingMainEventHandler;
     UIView *_testingToolbarView;
     UIView *_testingOverlayView;
-    AKIntelligentSketchController *_testingIntelligentSketchController;
+    AKLegacyDoodleController *_testingIntelligentSketchController;
     AKSignatureModelController *_testingSignatureModelController;
 }
 
 @property (strong) AKActionController *testingActionController; // @synthesize testingActionController=_testingActionController;
 @property (strong) AKAttributeController *testingAttributeController; // @synthesize testingAttributeController=_testingAttributeController;
 @property (strong) id<AKControllerDelegateProtocol> testingDelegate; // @synthesize testingDelegate=_testingDelegate;
-@property (strong) AKIntelligentSketchController *testingIntelligentSketchController; // @synthesize testingIntelligentSketchController=_testingIntelligentSketchController;
+@property (strong) AKLegacyDoodleController *testingIntelligentSketchController; // @synthesize testingIntelligentSketchController=_testingIntelligentSketchController;
 @property (strong) AKMainEventHandler *testingMainEventHandler; // @synthesize testingMainEventHandler=_testingMainEventHandler;
 @property (strong) AKModelController *testingModelController; // @synthesize testingModelController=_testingModelController;
 @property (strong) UIView *testingOverlayView; // @synthesize testingOverlayView=_testingOverlayView;
@@ -42,7 +42,7 @@
 - (id)attributeController;
 - (id)delegate;
 - (id)init;
-- (id)intelligentSketchController;
+- (id)legacyDoodleController;
 - (id)mainEventHandler;
 - (id)modelController;
 - (id)overlayView;

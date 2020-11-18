@@ -37,7 +37,8 @@
 + (void)initialize;
 + (BOOL)registerRemoteElement:(id)arg1;
 + (id)remoteElementForBlock:(CDUnknownBlockType)arg1;
-+ (id)remoteElementForContextId:(unsigned int)arg1;
++ (id)remoteElementsForBlock:(CDUnknownBlockType)arg1;
++ (id)remoteElementsForContextId:(unsigned int)arg1;
 - (void).cxx_destruct;
 - (id)_accessibilityActiveKeyboard;
 - (id)_accessibilityFirstElement;
@@ -47,8 +48,8 @@
 - (id)_accessibilitySortedElementsWithin;
 - (id)_accessibilityTextOperations;
 - (id)_accessibilityTextViewTextOperationResponder;
-- (id)_remoteElementWithAttribute:(int)arg1 limitToRemoteSubviews:(BOOL)arg2;
-- (id)accessibilityContainerElements;
+- (id)_remoteElementWithAttribute:(long long)arg1 limitToRemoteSubviews:(BOOL)arg2;
+- (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
 - (void)dealloc;
 - (id)description;

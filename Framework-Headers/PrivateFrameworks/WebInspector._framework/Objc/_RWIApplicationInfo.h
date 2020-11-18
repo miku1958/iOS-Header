@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSString *_bundleId;
     NSString *_name;
     _RWIRelayConnectionToApplication *_connection;
+    NSString *_debuggerConnectionIdentifier;
     unsigned long long _applicationState;
 }
 
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long applicationState; // @synthesize applicationState=_applicationState;
 @property (copy, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property (strong, nonatomic) _RWIRelayConnectionToApplication *connection; // @synthesize connection=_connection;
+@property (copy, nonatomic) NSString *debuggerConnectionIdentifier; // @synthesize debuggerConnectionIdentifier=_debuggerConnectionIdentifier;
 @property (readonly, nonatomic) BOOL hasRemoteDebugSession; // @synthesize hasRemoteDebugSession=_hasRemoteDebugSession;
 @property (readonly, nonatomic) BOOL hasUpdatedFromListing; // @synthesize hasUpdatedFromListing=_hasUpdatedFromListing;
 @property (readonly, nonatomic) NSString *identifier; // @dynamic identifier;

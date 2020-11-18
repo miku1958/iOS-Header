@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class NSMutableArray, WBSCyclerDeviceCoordinator;
 @protocol WBSCyclerTestSuite, WBSCyclerTestTarget;
 
 @interface WBSCyclerTestRunner : NSObject
@@ -17,8 +17,10 @@
     BOOL _running;
     id<WBSCyclerTestSuite> _testSuite;
     id<WBSCyclerTestTarget> _target;
+    WBSCyclerDeviceCoordinator *_deviceCoordinator;
 }
 
+@property (readonly, nonatomic) WBSCyclerDeviceCoordinator *deviceCoordinator; // @synthesize deviceCoordinator=_deviceCoordinator;
 @property (readonly, nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
 @property (readonly, nonatomic) id<WBSCyclerTestTarget> target; // @synthesize target=_target;
 @property (readonly, nonatomic) id<WBSCyclerTestSuite> testSuite; // @synthesize testSuite=_testSuite;
@@ -32,7 +34,7 @@
 - (void)dealloc;
 - (void)handleRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)initWithTestSuite:(id)arg1 target:(id)arg2;
+- (id)initWithTestSuite:(id)arg1 target:(id)arg2 deviceCoordinator:(id)arg3;
 - (void)requestStop;
 - (void)runWithCompletionHandler:(CDUnknownBlockType)arg1;
 

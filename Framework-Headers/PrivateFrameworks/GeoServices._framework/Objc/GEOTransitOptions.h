@@ -30,6 +30,7 @@
 @property (nonatomic) BOOL showICFares;
 @property (nonatomic) int surchargeOption;
 
+- (void).cxx_destruct;
 - (int)StringAsAvoidedModes:(id)arg1;
 - (int)StringAsPrioritization:(id)arg1;
 - (void)addAvoidedMode:(int)arg1;

@@ -48,7 +48,7 @@
 - (void)_addFigAssetNotifications;
 - (id)_assetInspector;
 - (id)_assetInspectorLoader;
-- (void)_attachToContentKeySession:(id)arg1;
+- (int)_attachToContentKeySession:(id)arg1;
 - (BOOL)_attachedToExternalContentKeySession;
 - (Class)_classForAssetTracks;
 - (Class)_classForFigAssetInspectorLoader;
@@ -58,6 +58,7 @@
 - (struct OpaqueFigFormatReader *)_formatReader;
 - (void)_handleURLRequest:(id)arg1;
 - (BOOL)_hasResourceLoaderDelegate;
+- (id)_installHandlerForNSURLSessionConfiguration:(id)arg1 queue:(id)arg2;
 - (id)_instanceIdentifier;
 - (id)_managedAssetCache;
 - (struct OpaqueFigPlaybackItem *)_playbackItem;

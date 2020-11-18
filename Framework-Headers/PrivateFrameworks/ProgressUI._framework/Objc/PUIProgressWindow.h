@@ -6,12 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <ProgressUI/CALayerDelegate-Protocol.h>
+
 @class CAContext, CALayer, NSString;
 
-@interface PUIProgressWindow : NSObject
+@interface PUIProgressWindow : NSObject <CALayerDelegate>
 {
     BOOL _weCreatedTheContext;
     CAContext *_context;
+    int _deviceClass;
     struct CGSize _displaySize;
     struct CGSize _framebufferSize;
     struct CGSize _layerPositioningSize;
@@ -19,6 +22,7 @@
     float _displayOrientation;
     BOOL _sideways;
     BOOL _renderWithIOSurface;
+    id _framebufferListenerToken;
     float _currentProgress;
     struct CGImage *_appleLogo;
     double _progressXDelta;
@@ -28,13 +32,14 @@
     BOOL _white;
     BOOL _showsProgressBar;
     CALayer *_progressLayer;
-    BOOL _showPluginName;
-    CALayer *_pluginNameLayer;
-    NSString *_pluginName;
     CALayer *_layer;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CALayer *layer; // @synthesize layer=_layer;
+@property (readonly) Class superclass;
 
 + (BOOL)_usesPreBoardAppearance;
 + (void)setUsesPreBoardAppearance;
@@ -44,7 +49,6 @@
 - (void)_createContext;
 - (struct CGImage *)_createImageWithName:(const char *)arg1 scale:(int)arg2 displayHeight:(int)arg3;
 - (void)_createLayer;
-- (void)_drawPluginNameLayerInContext:(struct CGContext *)arg1;
 - (void)_drawProgressLayerInContext:(struct CGContext *)arg1;
 - (BOOL)_isNano;
 - (void)_layoutScreen;
@@ -52,6 +56,7 @@
 - (int)_nanoMaterial;
 - (const char *)_productSuffix;
 - (void)_updateIOSurface;
+- (void)_updateLayerForFramebufferSize:(struct CGSize)arg1;
 - (void)dealloc;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
 - (id)init;
@@ -62,7 +67,6 @@
 - (id)initWithProgressBarVisibility:(BOOL)arg1 createContext:(BOOL)arg2 contextLevel:(float)arg3 appearance:(long long)arg4;
 - (id)initWithProgressBarVisibility:(BOOL)arg1 level:(float)arg2;
 - (id)initWithProgressBarVisibility:(BOOL)arg1 level:(float)arg2 forceInverted:(BOOL)arg3;
-- (void)setPluginName:(id)arg1;
 - (void)setProgressValue:(float)arg1;
 - (void)setVisible:(BOOL)arg1;
 

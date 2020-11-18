@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray, NSString;
 
@@ -19,9 +19,9 @@
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 
+- (void).cxx_destruct;
 - (void)_addBranch:(id)arg1;
 - (id)_branchForLabel:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithIdentifier:(id)arg1 name:(id)arg2;
 

@@ -18,6 +18,8 @@
 @property (copy, setter=_setLastModifiedProperties:) NSArray *_lastModifiedProperties; // @synthesize _lastModifiedProperties=__lastModifiedProperties;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long estimatedLocalLibraryAssetCount;
+@property (readonly, nonatomic) unsigned long long estimatedLocalLibrarySize;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CPLPlatformObject *platformObject;
 @property (readonly) Class superclass;
@@ -27,16 +29,21 @@
 - (BOOL)addRecord:(id)arg1 error:(id *)arg2;
 - (BOOL)applyBatch:(id)arg1 direction:(unsigned long long)arg2 withError:(id *)arg3;
 - (id)compactedBatchFromExpandedBatch:(id)arg1;
+- (unsigned long long)countOfRecordsWithRelatedIdentifier:(id)arg1 class:(Class)arg2;
 - (BOOL)deleteRecordWithIdentifier:(id)arg1 error:(id *)arg2;
+- (void)fillRelatedIdentifiersInChange:(id)arg1;
 - (BOOL)hasRecordWithIdentifier:(id)arg1;
+- (BOOL)hasRecordWithRelatedIdentifier:(id)arg1 class:(Class)arg2;
 - (id)localChangeBatchFromCloudBatch:(id)arg1 usingMapping:(id)arg2 withError:(id *)arg3;
 - (id)recordWithIdentifier:(id)arg1;
 - (id)recordsWithRelatedIdentifier:(id)arg1;
+- (id)recordsWithRelatedIdentifier:(id)arg1 class:(Class)arg2;
 - (id)relatedIdentifierForRecordWithIdentifier:(id)arg1;
 - (BOOL)resetWithError:(id *)arg1;
 - (id)resourceOfType:(unsigned long long)arg1 forRecordWithIdentifier:(id)arg2 error:(id *)arg3;
 - (id)status;
 - (id)statusDictionary;
+- (BOOL)storeEstimatedLocalLibrarySize:(unsigned long long)arg1 estimatedAssetCount:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)updateRecord:(id)arg1 error:(id *)arg2;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSString;
+@class NSArray, NSData, NSDictionary, NSLock, NSMutableArray, NSString;
 @protocol EAAccessoryDelegate;
 
 @interface EAAccessoryInternal : NSObject
@@ -17,15 +17,19 @@
     NSString *_manufacturer;
     NSString *_modelNumber;
     NSString *_serialNumber;
-    NSString *_firmwareRevision;
+    NSString *_firmwareRevisionActive;
+    NSString *_firmwareRevisionPending;
     NSString *_hardwareRevision;
     NSString *_dockType;
     NSString *_macAddress;
     NSString *_preferredApp;
+    NSData *_certSerial;
+    NSData *_certData;
     int _classType;
     NSDictionary *_audioPorts;
     unsigned int _capabilities;
     BOOL _notPresentInIAPAccessoriesArray;
+    NSLock *_locationLock;
     NSMutableArray *_sessionsList;
     NSArray *_eqNames;
     int _locationSentenceTypesMask;
@@ -37,7 +41,10 @@
     BOOL _pointOfInterestHandoffEnabled;
     BOOL _hasIPConnection;
     BOOL _isAvailableOverBonjour;
+    BOOL _createdByCoreAccessories;
     unsigned int _eqIndex;
+    NSMutableArray *_enqueuedNMEASentences;
+    NSString *_coreAccessoryPrimaryUUID;
     NSString *_bonjourName;
     CDUnknownBlockType _pairingCompletionBlock;
     CDUnknownBlockType _WiFiCredentialsCompletionBlock;
@@ -48,14 +55,20 @@
 @property (copy, nonatomic) NSString *bonjourName; // @synthesize bonjourName=_bonjourName;
 @property (strong, nonatomic) NSArray *cameraComponents; // @synthesize cameraComponents=_cameraComponents;
 @property (nonatomic) unsigned int capabilities; // @synthesize capabilities=_capabilities;
+@property (copy, nonatomic) NSData *certData; // @synthesize certData=_certData;
+@property (copy, nonatomic) NSData *certSerial; // @synthesize certSerial=_certSerial;
 @property (nonatomic) int classType; // @synthesize classType=_classType;
 @property (nonatomic) BOOL connected; // @synthesize connected=_connected;
 @property (nonatomic) unsigned int connectionID; // @synthesize connectionID=_connectionID;
+@property (copy, nonatomic) NSString *coreAccessoryPrimaryUUID; // @synthesize coreAccessoryPrimaryUUID=_coreAccessoryPrimaryUUID;
+@property BOOL createdByCoreAccessories; // @synthesize createdByCoreAccessories=_createdByCoreAccessories;
 @property (nonatomic) id<EAAccessoryDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSString *dockType; // @synthesize dockType=_dockType;
+@property (strong, nonatomic) NSMutableArray *enqueuedNMEASentences; // @synthesize enqueuedNMEASentences=_enqueuedNMEASentences;
 @property (nonatomic) unsigned int eqIndex; // @synthesize eqIndex=_eqIndex;
 @property (strong, nonatomic) NSArray *eqNames; // @synthesize eqNames=_eqNames;
-@property (copy, nonatomic) NSString *firmwareRevision; // @synthesize firmwareRevision=_firmwareRevision;
+@property (copy, nonatomic) NSString *firmwareRevisionActive; // @synthesize firmwareRevisionActive=_firmwareRevisionActive;
+@property (copy, nonatomic) NSString *firmwareRevisionPending; // @synthesize firmwareRevisionPending=_firmwareRevisionPending;
 @property (copy, nonatomic) NSString *hardwareRevision; // @synthesize hardwareRevision=_hardwareRevision;
 @property (nonatomic) BOOL hasIPConnection; // @synthesize hasIPConnection=_hasIPConnection;
 @property (nonatomic) BOOL isAvailableOverBonjour; // @synthesize isAvailableOverBonjour=_isAvailableOverBonjour;

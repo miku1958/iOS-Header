@@ -42,10 +42,8 @@
 - (id)_parentCollectionView;
 - (void)_reloadHighlightImageViewAnimated:(BOOL)arg1;
 - (void)dealloc;
-- (void)horizontalLockupView:(id)arg1 didSelectPlayButtonAction:(unsigned long long)arg2;
 - (void)horizontalLockupViewDidLayoutSubviews:(id)arg1;
 - (void)horizontalLockupViewDidSelectAddButton:(id)arg1 events:(unsigned long long)arg2;
-- (void)horizontalLockupViewDidSelectContextualActionsButton:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setBackgroundColor:(id)arg1;
@@ -56,7 +54,6 @@
 - (id)traitCollection;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateForAsynchronousPropertyLoadCompleted;
-- (void)verticalLockupView:(id)arg1 didSelectPlayButtonAction:(unsigned long long)arg2;
 
 @end
 

@@ -27,7 +27,6 @@
 @property (weak, nonatomic) id<NCNotificationStaticContentProvidingDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSString *hintText;
 @property (readonly, nonatomic) UIImage *icon;
 @property (readonly, nonatomic) NSArray *interfaceActions;
 @property (readonly, nonatomic) unsigned long long messageNumberOfLines;

@@ -25,6 +25,7 @@
 
 - (void).cxx_destruct;
 - (void)_menuBarHeightChange:(id)arg1;
+- (id)childViewControllerForHomeIndicatorAutoHidden;
 - (void)dealloc;
 - (id)initWithContext:(id)arg1;
 - (void)viewDidLoad;

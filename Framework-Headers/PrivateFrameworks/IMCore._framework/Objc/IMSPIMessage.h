@@ -22,20 +22,26 @@
     NSDate *_lastReadDate;
     IMSPIHandle *_sender;
     long long _messageID;
+    NSArray *_attachments;
     BOOL _isOutgoing;
     BOOL _isRead;
     BOOL _isAudioMessage;
+    BOOL _isGroupChat;
     NSString *_groupID;
+    NSString *_chatIdentifier;
     NSString *_displayName;
+    NSString *_service;
     IMSPIMessage *_referencedMessage;
     NSString *_bundleId;
     long long _messageType;
     NSString *_displayAppName;
 }
 
+@property (strong) NSArray *attachments; // @synthesize attachments=_attachments;
 @property (strong) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
 @property (strong) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property (strong) NSArray *chatGuids; // @synthesize chatGuids=_chatGuids;
+@property (strong) NSString *chatIdentifier; // @synthesize chatIdentifier=_chatIdentifier;
 @property (strong) NSDate *date; // @synthesize date=_date;
 @property (strong) NSDate *dateRead; // @synthesize dateRead=_dateRead;
 @property (strong) NSString *displayAppName; // @synthesize displayAppName=_displayAppName;
@@ -44,6 +50,7 @@
 @property (strong) NSString *groupID; // @synthesize groupID=_groupID;
 @property (strong) NSString *guid; // @synthesize guid=_guid;
 @property BOOL isAudioMessage; // @synthesize isAudioMessage=_isAudioMessage;
+@property BOOL isGroupChat; // @synthesize isGroupChat=_isGroupChat;
 @property BOOL isOutgoing; // @synthesize isOutgoing=_isOutgoing;
 @property BOOL isRead; // @synthesize isRead=_isRead;
 @property (strong) NSDate *lastReadDate; // @synthesize lastReadDate=_lastReadDate;
@@ -52,6 +59,7 @@
 @property (strong) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (strong) IMSPIMessage *referencedMessage; // @synthesize referencedMessage=_referencedMessage;
 @property (strong) IMSPIHandle *sender; // @synthesize sender=_sender;
+@property (strong) NSString *service; // @synthesize service=_service;
 @property (strong) NSString *subject; // @synthesize subject=_subject;
 @property (strong) NSString *text; // @synthesize text=_text;
 @property (readonly) NSURL *url;

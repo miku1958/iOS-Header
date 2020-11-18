@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSArray *openIntervals; // @synthesize openIntervals=_openIntervals;
 
 + (id)dailyHours:(id)arg1 forDays:(struct _NSRange)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 
 @end

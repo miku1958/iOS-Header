@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CommonUtilities/CUTPowerMonitorDelegate-Protocol.h>
-
 @class NSDictionary, NSHashTable, NSMutableSet, NSNumber, NSRecursiveLock, NSRunLoop, NSString, NSThread;
 
-@interface CUTWiFiManager : NSObject <CUTPowerMonitorDelegate>
+@interface CUTWiFiManager : NSObject
 {
     BOOL _shouldAutoAssociateAsForeground;
     BOOL _isHostingHotSpot;
@@ -35,12 +33,9 @@
 @property (readonly, nonatomic) BOOL autoAssociateWiFi;
 @property (nonatomic) BOOL autoAssociateWiFiAsForegroundClient; // @synthesize autoAssociateWiFiAsForegroundClient=_shouldAutoAssociateAsForeground;
 @property (nonatomic) void *currentNetwork; // @synthesize currentNetwork=_currentNetwork;
-@property (readonly, strong, nonatomic) NSString *currentSSID;
-@property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) NSString *currentSSID;
 @property (strong, nonatomic) NSHashTable *delegateMap; // @synthesize delegateMap=_delegateMap;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) void *dynamicStore; // @synthesize dynamicStore=_dynamicStore;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isHostingWiFiHotSpot; // @synthesize isHostingWiFiHotSpot=_isHostingHotSpot;
 @property (readonly, nonatomic) BOOL isWiFiAssociated;
 @property (readonly, nonatomic) BOOL isWiFiCaptive;
@@ -51,11 +46,10 @@
 @property (nonatomic) int linkToken; // @synthesize linkToken=_linkToken;
 @property (strong, nonatomic) NSRecursiveLock *lock; // @synthesize lock=_lock;
 @property (nonatomic) struct __CFRunLoopSource *runLoopSource; // @synthesize runLoopSource=_runLoopSource;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableSet *wiFiAutoAssociationTokens; // @synthesize wiFiAutoAssociationTokens=_wiFiAutoAssociationTokens;
-@property (readonly, strong, nonatomic) NSNumber *wiFiScaledRSSI;
-@property (readonly, strong, nonatomic) NSNumber *wiFiScaledRate;
-@property (readonly, strong, nonatomic) NSNumber *wiFiSignalStrength;
+@property (readonly, nonatomic) NSNumber *wiFiScaledRSSI;
+@property (readonly, nonatomic) NSNumber *wiFiScaledRate;
+@property (readonly, nonatomic) NSNumber *wiFiSignalStrength;
 @property (nonatomic) void *wifiDevice; // @synthesize wifiDevice=_wifiDevice;
 @property (nonatomic) void *wifiManager; // @synthesize wifiManager=_wifiManager;
 @property (strong, nonatomic) NSRunLoop *wifiRunLoop; // @synthesize wifiRunLoop=_wifiRunLoop;
@@ -65,6 +59,7 @@
 @property (strong, nonatomic) NSHashTable *wowClients; // @synthesize wowClients=_wowClients;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_adjustWiFiAutoAssociation;
 - (void)_adjustWiFiAutoAssociationLocked;
 - (void)_adjustWoWState;

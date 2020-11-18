@@ -10,7 +10,7 @@
 #import <FrontBoard/FBSceneHost-Protocol.h>
 #import <FrontBoard/FBUISceneUpdater-Protocol.h>
 
-@class FBProcess, FBSDisplay, FBSMutableSceneSettings, FBSSceneClientSettings, FBSSceneDefinition, FBSSceneParameters, FBSSceneSettings, FBSceneHostManager, FBSceneLayerManager, FBWindowContextHostManager, FBWindowContextManager, NSHashTable, NSString;
+@class FBProcess, FBSDisplayConfiguration, FBSMutableSceneSettings, FBSSceneClientSettings, FBSSceneDefinition, FBSSceneParameters, FBSSceneSettings, FBSSceneSpecification, FBSceneHostManager, FBSceneLayerManager, NSHashTable, NSString;
 @protocol BSInvalidatable, FBSceneClient, FBSceneClientProvider, FBSceneDelegate;
 
 @interface FBScene : NSObject <BSDescriptionProviding, FBUISceneUpdater, FBSceneHost>
@@ -24,16 +24,15 @@
     FBProcess *_clientProcess;
     NSString *_identifier;
     NSString *_workspaceIdentifier;
-    FBSDisplay *_display;
     FBSMutableSceneSettings *_mutableSettings;
     FBSSceneSettings *_settings;
     FBSSceneClientSettings *_clientSettings;
     FBSSceneDefinition *_definition;
     NSHashTable *_geometryObservers;
     unsigned long long _transactionID;
-    BOOL _waitingForResponse;
     BOOL _lockedForMutation;
     id<BSInvalidatable> _stateCaptureAssertion;
+    unsigned long long _lastForegroundingTransitionID;
 }
 
 @property (nonatomic, setter=_setLockedForMutation:) BOOL _lockedForMutation; // @synthesize _lockedForMutation;
@@ -42,24 +41,21 @@
 @property (readonly, strong, nonatomic) FBProcess *clientProcess; // @synthesize clientProcess=_clientProcess;
 @property (readonly, strong, nonatomic) id<FBSceneClientProvider> clientProvider; // @synthesize clientProvider=_clientProvider;
 @property (readonly, strong, nonatomic) FBSSceneClientSettings *clientSettings; // @synthesize clientSettings=_clientSettings;
-@property (readonly, strong, nonatomic) FBWindowContextHostManager *contextHostManager;
-@property (readonly, strong, nonatomic) FBWindowContextManager *contextManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy, nonatomic) FBSSceneDefinition *definition; // @synthesize definition=_definition;
 @property (nonatomic) id<FBSceneDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, strong, nonatomic) FBSDisplay *display; // @synthesize display=_display;
+@property (readonly, strong, nonatomic) FBSDisplayConfiguration *display;
 @property (readonly) unsigned long long hash;
 @property (readonly, strong, nonatomic) FBSceneHostManager *hostManager; // @synthesize hostManager=_hostManager;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, strong, nonatomic) FBSceneLayerManager *layerManager; // @synthesize layerManager=_layerManager;
 @property (readonly, strong, nonatomic) FBSMutableSceneSettings *mutableSettings; // @synthesize mutableSettings=_mutableSettings;
 @property (readonly, copy, nonatomic) FBSSceneParameters *parameters;
-@property (readonly, copy, nonatomic) NSString *sceneIdentifier;
 @property (readonly, strong, nonatomic) FBSSceneSettings *settings; // @synthesize settings=_settings;
+@property (readonly, copy, nonatomic) FBSSceneSpecification *specification;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isValid) BOOL valid; // @synthesize valid=_valid;
-@property (readonly, nonatomic, getter=isWaitingForResponse) BOOL waitingForResponse; // @synthesize waitingForResponse=_waitingForResponse;
 @property (readonly, copy, nonatomic) NSString *workspaceIdentifier; // @synthesize workspaceIdentifier=_workspaceIdentifier;
 
 - (void)_addSceneGeometryObserver:(id)arg1;

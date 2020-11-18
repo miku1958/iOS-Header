@@ -19,11 +19,13 @@
 - (id)_accessibilityEquivalenceTag;
 - (BOOL)_accessibilityIsThreadedChildCell;
 - (id)_accessibilityLabelWithoutAttributes;
+- (id)_accessibilityLinkedUIElements;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityMoreAction:(id)arg1;
 - (void)_accessibilityPerformCellAction:(unsigned long long)arg1;
 - (BOOL)_accessibilityPerformSwipeAccessory;
-- (int)_accessibilityScannerActivateBehavior;
+- (BOOL)_accessibilityRetainsCustomRotorActionSetting;
+- (long long)_accessibilityScannerActivateBehavior;
 - (id)_accessibilityScrollStatus;
 - (id)_accessibilitySubviewsForAdding;
 - (BOOL)_accessibilityToggleFlagAction:(id)arg1;

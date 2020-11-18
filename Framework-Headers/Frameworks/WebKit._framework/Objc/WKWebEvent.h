@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebCore/WebEvent.h>
+#import <WebKitLegacy/WebEvent.h>
 
 @class UIEvent;
 

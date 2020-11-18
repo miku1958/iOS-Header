@@ -26,6 +26,8 @@
     long long _certificateType;
     NEVPNIKEv2SecurityAssociationParameters *_IKESecurityAssociationParameters;
     NEVPNIKEv2SecurityAssociationParameters *_childSecurityAssociationParameters;
+    long long _minimumTLSVersion;
+    long long _maximumTLSVersion;
     NSString *_pluginType;
     NSArray *_IKESecurityAssociationParametersArray;
     NSArray *_childSecurityAssociationParametersArray;
@@ -43,6 +45,8 @@
 @property BOOL disableRedirect; // @synthesize disableRedirect=_disableRedirect;
 @property BOOL enablePFS; // @synthesize enablePFS=_enablePFS;
 @property BOOL enableRevocationCheck; // @synthesize enableRevocationCheck=_enableRevocationCheck;
+@property long long maximumTLSVersion; // @synthesize maximumTLSVersion=_maximumTLSVersion;
+@property long long minimumTLSVersion; // @synthesize minimumTLSVersion=_minimumTLSVersion;
 @property int natKeepAliveOffloadEnable; // @synthesize natKeepAliveOffloadEnable=_natKeepAliveOffloadEnable;
 @property int natKeepAliveOffloadInterval; // @synthesize natKeepAliveOffloadInterval=_natKeepAliveOffloadInterval;
 @property (readonly) NSString *pluginType; // @synthesize pluginType=_pluginType;

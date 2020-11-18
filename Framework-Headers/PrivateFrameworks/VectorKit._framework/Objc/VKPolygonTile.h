@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VectorKit/VKVectorTile.h>
+#import <VectorKit/VKSkewingVectorTile.h>
 
-@class NSArray, NSMutableArray, VKAnimation;
+#import <VectorKit/VKPolygonTile-Protocol.h>
+
+@class VKAnimation;
 
 __attribute__((visibility("hidden")))
-@interface VKPolygonTile : VKVectorTile
+@interface VKPolygonTile : VKSkewingVectorTile <VKPolygonTile>
 {
-    NSMutableArray *_polygonGroups;
-    NSMutableArray *_coastlineGroups;
+    vector_2e22b445 _polygonGroups;
+    vector_0661f58a _coastlineGroups;
     float _alpha;
     float _scale;
     float _minLayeringHeight;
@@ -26,18 +28,18 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) float alpha; // @synthesize alpha=_alpha;
 @property (strong, nonatomic) VKAnimation *animation; // @synthesize animation=_animation;
 @property (strong, nonatomic) VKAnimation *animationForPitch; // @synthesize animationForPitch=_animationForPitch;
-@property (readonly, nonatomic) NSArray *coastlineGroups; // @synthesize coastlineGroups=_coastlineGroups;
+@property (readonly, nonatomic) vector_0661f58a *coastlineGroups; // @synthesize coastlineGroups=_coastlineGroups;
 @property (readonly, nonatomic) float maxLayeringHeight; // @synthesize maxLayeringHeight=_maxLayeringHeight;
 @property (readonly, nonatomic) float minLayeringHeight; // @synthesize minLayeringHeight=_minLayeringHeight;
-@property (readonly, nonatomic) NSArray *polygonGroups; // @synthesize polygonGroups=_polygonGroups;
+@property (readonly, nonatomic) const vector_2e22b445 *polygonGroups;
 @property (nonatomic) float scale; // @synthesize scale=_scale;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)buildCoastlinesWithStyleManager:(shared_ptr_a3c46825 *)arg1;
-- (void)buildMeshesWithDevice:(Device_f0710f89 *)arg1 triangulator:(id)arg2 prepareExtrusion:(BOOL)arg3;
+- (void)buildMeshesWithDevice:(Device_9226c869 *)arg1 triangulator:(id)arg2 prepareExtrusion:(BOOL)arg3;
 - (void)dealloc;
-- (id)initWithKey:(const struct VKTileKey *)arg1 modelTile:(id)arg2 prepareExtrusion:(BOOL)arg3 styleManager:(shared_ptr_a3c46825)arg4 sharedResources:(id)arg5 contentScale:(double)arg6 device:(Device_f0710f89 *)arg7;
+- (id)initWithKey:(const struct VKTileKey *)arg1 modelTile:(id)arg2 prepareExtrusion:(BOOL)arg3 styleManager:(shared_ptr_a3c46825)arg4 sharedResources:(id)arg5 contentScale:(double)arg6 device:(Device_9226c869 *)arg7;
 - (void)setTransitNodesRouteAttributes:(const unordered_map_5292d3da *)arg1;
 
 @end

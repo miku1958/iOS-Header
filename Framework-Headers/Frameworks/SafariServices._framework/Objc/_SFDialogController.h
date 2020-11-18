@@ -39,17 +39,19 @@
 - (void)_dismissDialogWithAdditionalAnimations:(CDUnknownBlockType)arg1;
 - (id)_initWithDialogManager:(id)arg1;
 - (BOOL)_isPresentingDialog;
-- (void)_presentDialog:(id)arg1 forWebProcessID:(int)arg2 withAdditionalAnimations:(CDUnknownBlockType)arg3;
+- (long long)_presentDialog:(id)arg1 forWebProcessID:(int)arg2 withAdditionalAnimations:(CDUnknownBlockType)arg3;
 - (unsigned long long)_tabID;
 - (void)cancelPresentedDialogIfNeeded;
-- (void)dialogView:(id)arg1 didSelectPrimaryAction:(BOOL)arg2 withInputText:(id)arg3 passwordText:(id)arg4;
+- (void)dialogView:(id)arg1 didSelectActionAtIndex:(unsigned long long)arg2 withInputText:(id)arg3 passwordText:(id)arg4;
 - (id)init;
 - (void)owningTabWillClose;
 - (void)owningWebViewDidChangeProcessID;
+- (void)owningWebViewDidCommitNavigationWithURL:(id)arg1;
 - (void)owningWebViewWillBecomeActive;
 - (void)owningWebViewWillNavigate;
 - (void)presentDialog:(id)arg1;
 - (void)presentDialog:(id)arg1 animateAlongsidePresentation:(CDUnknownBlockType)arg2 dismissal:(CDUnknownBlockType)arg3;
+- (void)presentNextDialogIfNeeded;
 
 @end
 

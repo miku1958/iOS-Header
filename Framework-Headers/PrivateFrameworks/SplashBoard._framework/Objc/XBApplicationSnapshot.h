@@ -19,6 +19,7 @@
     NSMutableDictionary *_variantsByID;
     BOOL _invalidated;
     NSString *_identifier;
+    NSString *_logIdentifier;
     NSString *_groupID;
     NSString *_variantID;
     NSString *_launchInterfaceIdentifier;
@@ -50,6 +51,7 @@
     unsigned long long _imageAccessCount;
     BOOL _keepImageAccessUntilExpiration;
     NSDictionary *_extendedData;
+    CDUnknownBlockType _imageGenerator;
     struct CGAffineTransform _imageTransform;
 }
 
@@ -66,7 +68,7 @@
 @property (copy) XBSnapshotContainerIdentity *containerIdentity; // @synthesize containerIdentity=_containerIdentity;
 @property (nonatomic) struct CGRect contentFrame;
 @property (nonatomic) long long contentType; // @synthesize contentType=_contentType;
-@property (readonly, strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSDate *expirationDate; // @dynamic expirationDate;
@@ -77,11 +79,12 @@
 @property (nonatomic) long long fileLocation; // @synthesize fileLocation=_fileLocation;
 @property (readonly, copy, nonatomic) NSString *filename; // @synthesize filename=_filename;
 @property (nonatomic, getter=isFullScreen) BOOL fullScreen; // @synthesize fullScreen=_fullScreen;
-@property (readonly, strong, nonatomic) XBApplicationSnapshotGenerationContext *generationContext; // @synthesize generationContext=_generationContext;
+@property (readonly, nonatomic) XBApplicationSnapshotGenerationContext *generationContext; // @synthesize generationContext=_generationContext;
 @property (readonly, copy, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
 @property (readonly, nonatomic) BOOL hasFullSizedContent;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) CDUnknownBlockType imageGenerator; // @synthesize imageGenerator=_imageGenerator;
 @property (nonatomic, getter=isImageOpaque) BOOL imageOpaque; // @synthesize imageOpaque=_imageOpaque;
 @property (nonatomic) long long imageOrientation; // @synthesize imageOrientation=_imageOrientation;
 @property (nonatomic) double imageScale; // @synthesize imageScale=_imageScale;
@@ -89,6 +92,7 @@
 @property (nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property (strong, nonatomic) NSDate *lastUsedDate; // @synthesize lastUsedDate=_lastUsedDate;
 @property (copy, nonatomic) NSString *launchInterfaceIdentifier; // @synthesize launchInterfaceIdentifier=_launchInterfaceIdentifier;
+@property (readonly, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) struct CGSize naturalSize;
 @property (readonly, copy, nonatomic) NSString *path; // @synthesize path=_path;
@@ -96,14 +100,16 @@
 @property (copy, nonatomic) NSString *requiredOSVersion; // @synthesize requiredOSVersion=_requiredOSVersion;
 @property (copy, nonatomic) NSString *scheme; // @synthesize scheme=_scheme;
 @property (copy, nonatomic) XBStatusBarSettings *statusBarSettings; // @synthesize statusBarSettings=_statusBarSettings;
-@property (readonly, strong, nonatomic, getter=_store) id<XBSnapshotManifestStore> store; // @synthesize store=_store;
+@property (readonly, nonatomic, getter=_store) id<XBSnapshotManifestStore> store; // @synthesize store=_store;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *variantID; // @synthesize variantID=_variantID;
 
++ (id)dataForImage:(id)arg1 withFormat:(long long)arg2;
 + (id)normalizeSnapshotName:(id)arg1;
+- (void).cxx_destruct;
 - (void)_cacheImage:(id)arg1;
 - (id)_cachedImage;
-- (void)_commonInit;
+- (void)_commonInitWithIdentifier:(id)arg1;
 - (id)_configureDefaultPathWithinGroupForFormat:(long long)arg1;
 - (void)_configureWithPath:(id)arg1;
 - (id)_createVariantWithIdentifier:(id)arg1;

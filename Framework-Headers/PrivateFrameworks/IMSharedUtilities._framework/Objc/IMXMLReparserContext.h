@@ -12,16 +12,16 @@
 {
     NSString *_inContent;
     NSString *_outContent;
-    NSArray *_attributesToPreserve;
     NSDictionary *_attributesToMerge;
     NSError *_error;
+    NSArray *_attributesToPreserve;
 }
 
 @property (readonly, strong) NSString *_inContent; // @synthesize _inContent;
 @property (readonly, strong, nonatomic) NSDictionary *attributesToMerge; // @synthesize attributesToMerge=_attributesToMerge;
 @property (readonly, strong, nonatomic) NSArray *attributesToPreserve; // @synthesize attributesToPreserve=_attributesToPreserve;
 @property (readonly, strong, nonatomic) NSError *error; // @synthesize error=_error;
-@property (readonly, strong, nonatomic) NSString *outContent; // @synthesize outContent=_outContent;
+@property (readonly, copy, nonatomic) NSString *outContent; // @synthesize outContent=_outContent;
 
 - (void)_setOutContent:(id)arg1 error:(id)arg2;
 - (void)dealloc;

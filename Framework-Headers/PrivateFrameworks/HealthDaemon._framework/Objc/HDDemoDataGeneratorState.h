@@ -30,6 +30,9 @@
 @property (nonatomic) long long currentDay; // @synthesize currentDay=_currentDay;
 @property (nonatomic) double currentTime; // @synthesize currentTime=_currentTime;
 @property (readonly, nonatomic, getter=isCycling) BOOL cycling;
+@property (readonly, nonatomic, getter=isDoingElliptical) BOOL doingElliptical;
+@property (readonly, nonatomic, getter=isDoingHIIT) BOOL doingHIIT;
+@property (readonly, nonatomic, getter=isDoingYoga) BOOL doingYoga;
 @property (nonatomic) double endTime; // @synthesize endTime=_endTime;
 @property (readonly, nonatomic, getter=isExercising) BOOL exercising;
 @property (nonatomic, getter=isFinished) BOOL finished; // @synthesize finished=_finished;
@@ -40,6 +43,7 @@
 @property (readonly, nonatomic, getter=isRunning) BOOL running;
 @property (nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property (readonly, nonatomic, getter=isSwimming) BOOL swimming;
+@property (readonly, nonatomic, getter=isWalking) BOOL walking;
 @property (strong, nonatomic) HDDemoDataGeneratorWorkoutConfiguration *workoutConfiguration; // @synthesize workoutConfiguration=_workoutConfiguration;
 
 + (BOOL)supportsSecureCoding;

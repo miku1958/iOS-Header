@@ -4,34 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <NewsServicesInternal/NSSArticleViewControllerInternal.h>
 
-@class NSSArticle, NSSArticleView, UIActivityIndicatorView;
-
-@interface NSSArticleViewController : UIViewController
+@interface NSSArticleViewController : NSSArticleViewControllerInternal
 {
-    BOOL _articleLoading;
-    NSSArticle *_article;
-    NSSArticleView *_articleView;
-    UIActivityIndicatorView *_spinner;
 }
-
-@property (strong, nonatomic) NSSArticle *article; // @synthesize article=_article;
-@property (nonatomic) BOOL articleLoading; // @synthesize articleLoading=_articleLoading;
-@property (strong, nonatomic) NSSArticleView *articleView; // @synthesize articleView=_articleView;
-@property (strong, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
-
-- (void).cxx_destruct;
-- (void)_tickleArticleView;
-- (void)_tickleSpinner;
-- (id)initWithArticle:(id)arg1;
-- (id)initWithNotification:(id)arg1;
-- (id)initWithSpotlightIdentifier:(id)arg1;
-- (BOOL)prefersStatusBarHidden;
-- (void)presentArticle:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillLayoutSubviews;
 
 @end
 

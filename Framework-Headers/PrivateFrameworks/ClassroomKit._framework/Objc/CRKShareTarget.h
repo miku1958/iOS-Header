@@ -36,6 +36,8 @@
 @property (strong, nonatomic) CATTaskClient *taskClient; // @synthesize taskClient=_taskClient;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 
++ (id)sandboxExtensionForPath:(id)arg1;
++ (id)sandboxExtensionsForFileURLs:(id)arg1;
 - (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
@@ -43,8 +45,6 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToShareTarget:(id)arg1;
 - (id)operationToSendItems:(id)arg1 fromBundleIdentifier:(id)arg2 description:(id)arg3 previewImageData:(id)arg4;
-- (id)sandboxExtensionForPath:(id)arg1;
-- (id)sandboxExtensionsForFileURLs:(id)arg1;
 
 @end
 

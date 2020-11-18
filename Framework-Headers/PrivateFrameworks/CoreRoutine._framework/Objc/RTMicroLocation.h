@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <CoreRoutine/NSCopying-Protocol.h>
+#import <CoreRoutine/NSSecureCoding-Protocol.h>
 
 @class NSUUID;
 
-@interface RTMicroLocation : NSObject <NSCopying>
+@interface RTMicroLocation : NSObject <NSSecureCoding, NSCopying>
 {
     NSUUID *_identifier;
     double _probability;
@@ -19,14 +20,17 @@
 @property (strong, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) double probability; // @synthesize probability=_probability;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 probability:(double)arg2;
-- (id)initWithMicroLocationResult:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToMicroLocation:(id)arg1;
 
 @end
 

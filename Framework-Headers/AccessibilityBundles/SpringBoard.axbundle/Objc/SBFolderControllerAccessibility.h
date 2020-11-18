@@ -18,11 +18,7 @@
 - (void)_accessibilityScheduleSBAXClosingFolderTimer;
 - (void)_cancelCloseFolderTimer;
 - (void)_closeFolderTimerFired;
-- (void)_dragPauseTimerFired:(id)arg1;
-- (void)_scrollLeft:(id)arg1;
-- (void)_scrollRight:(id)arg1;
 - (void)_setCloseFolderTimerIfNecessary;
-- (void)_updateDragPauseForTouch:(id)arg1;
 
 @end
 

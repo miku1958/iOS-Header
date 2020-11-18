@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSString;
 @protocol NSObject;
@@ -23,7 +23,7 @@
 @property (readonly, nonatomic) unsigned char command; // @synthesize command=_command;
 @property (strong, nonatomic) id<NSObject> context; // @synthesize context=_context;
 @property (strong, nonatomic) NSString *topic; // @synthesize topic=_topic;
-@property (readonly, strong, nonatomic) NSData *underlyingData; // @synthesize underlyingData=_underlyingData;
+@property (readonly, nonatomic) NSData *underlyingData; // @synthesize underlyingData=_underlyingData;
 @property (readonly, nonatomic) unsigned long long underlyingDataLength;
 @property (nonatomic) BOOL useDynamicServiceName; // @synthesize useDynamicServiceName=_useDynamicServiceName;
 
@@ -32,9 +32,9 @@
 + (id)messageWithCommand:(unsigned char)arg1 data:(id)arg2;
 + (id)messageWithData:(id)arg1;
 + (id)messageWithHeaderData:(id)arg1 data:(id)arg2;
+- (void).cxx_destruct;
 - (id)_existingUnderlyingData;
 - (id)_nonHeaderData;
-- (void)dealloc;
 - (id)initWithCommand:(unsigned char)arg1 underlyingData:(id)arg2;
 
 @end

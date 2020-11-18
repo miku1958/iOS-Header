@@ -6,31 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, PMLModelCovariates, PMLModelRegressor, PMLModelWeights;
+@class PMLModelRegressor, PMLModelWeights, PMLSparseMatrix;
 
 @interface PMLGradientSolver : NSObject
 {
-    double _learningRate;
-    PMLModelCovariates *_covariates;
-    double _scale;
+    float _learningRate;
     CDUnknownBlockType _gradientCalculator;
     CDUnknownBlockType _predictionCalculator;
-    NSMutableArray *_covariateCache;
-    NSMutableArray *_regressorCache;
+    CDUnknownBlockType _batchPredictionCalculator;
+    BOOL _intercept;
     PMLModelWeights *_weights;
+    PMLSparseMatrix *_covariates;
     PMLModelRegressor *_objective;
 }
 
-@property (strong) PMLModelCovariates *covariates;
-@property (strong) PMLModelRegressor *objective; // @synthesize objective=_objective;
-@property (strong) PMLModelWeights *weights; // @synthesize weights=_weights;
+@property (strong, nonatomic) PMLSparseMatrix *covariates; // @synthesize covariates=_covariates;
+@property BOOL intercept; // @synthesize intercept=_intercept;
+@property (strong, nonatomic) PMLModelRegressor *objective; // @synthesize objective=_objective;
+@property (strong, nonatomic) PMLModelWeights *weights; // @synthesize weights=_weights;
 
 - (void).cxx_destruct;
-- (id)initWithLearningRate:(double)arg1 weights:(id)arg2 gradientCalculator:(CDUnknownBlockType)arg3 predictionCalculator:(CDUnknownBlockType)arg4;
-- (double)iteration;
-- (double)meanSquaredError;
-- (double)predict:(id)arg1;
+- (id)batchPredict:(id)arg1;
+- (id)computeAvgGradientWithIterations:(unsigned long long)arg1;
+- (id)init;
+- (id)initWithLearningRate:(float)arg1 weights:(id)arg2 gradientCalculator:(CDUnknownBlockType)arg3 predictionCalculator:(CDUnknownBlockType)arg4 batchPredictionCalculator:(CDUnknownBlockType)arg5;
+- (id)initWithLearningRate:(float)arg1 weights:(id)arg2 intercept:(BOOL)arg3 gradientCalculator:(CDUnknownBlockType)arg4 predictionCalculator:(CDUnknownBlockType)arg5 batchPredictionCalculator:(CDUnknownBlockType)arg6;
+- (float)meanSquaredError;
+- (float)predict:(id)arg1;
 - (void)solve;
+- (void)solveForCovariates:(id)arg1 objectives:(id)arg2;
+- (void)solveWithAvgGradient:(float *)arg1 maxNumberOfIterations:(unsigned long long)arg2;
 
 @end
 

@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoard/FBUISceneIdentity-Protocol.h>
-
 @class FBSSceneSettings, FBSSceneTransitionContext, NSSet, UIView;
 
-@protocol FBUISceneUpdater <FBUISceneIdentity>
+@protocol FBUISceneUpdater
 - (UIView *)contentView;
 - (void)sendActions:(NSSet *)arg1;
 - (void)updateSettings:(FBSSceneSettings *)arg1 withTransitionContext:(FBSSceneTransitionContext *)arg2 completion:(void (^)(BOOL))arg3;

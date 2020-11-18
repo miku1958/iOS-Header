@@ -23,9 +23,13 @@
     HKQuantity *_goal;
     unsigned long long _goalType;
     NSString *_bundleID;
+    NSString *_deviceManufacturer;
+    NSString *_deviceModel;
 }
 
 @property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property (strong, nonatomic) NSString *deviceManufacturer; // @synthesize deviceManufacturer=_deviceManufacturer;
+@property (strong, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (strong, nonatomic) NSUUID *friendUUID; // @synthesize friendUUID=_friendUUID;
 @property (strong, nonatomic) HKQuantity *goal; // @synthesize goal=_goal;
@@ -38,7 +42,7 @@
 @property (nonatomic) unsigned long long workoutActivityType; // @synthesize workoutActivityType=_workoutActivityType;
 
 + (id)fitnessFriendWorkoutFromHKWorkout:(id)arg1;
-+ (id)fitnessFriendworkoutWithActivityType:(unsigned long long)arg1 friendUUID:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 duration:(double)arg5 totalActiveEnergyBurned:(id)arg6 totalBasalEnergyBurned:(id)arg7 totalDistance:(id)arg8 goalType:(unsigned long long)arg9 goal:(id)arg10 bundleID:(id)arg11 isWatchWorkout:(BOOL)arg12 isIndoorWorkout:(BOOL)arg13;
++ (id)fitnessFriendworkoutWithActivityType:(unsigned long long)arg1 friendUUID:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 duration:(double)arg5 totalActiveEnergyBurned:(id)arg6 totalBasalEnergyBurned:(id)arg7 totalDistance:(id)arg8 goalType:(unsigned long long)arg9 goal:(id)arg10 bundleID:(id)arg11 isWatchWorkout:(BOOL)arg12 isIndoorWorkout:(BOOL)arg13 deviceManufacturer:(id)arg14 deviceModel:(id)arg15;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;

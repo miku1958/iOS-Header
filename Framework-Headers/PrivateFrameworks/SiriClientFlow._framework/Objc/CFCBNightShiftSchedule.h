@@ -21,7 +21,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CFCBNightShiftTransitionTime *toTime;
 
-+ (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
++ (id)aceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)nightShiftSchedule;
 + (id)nightShiftScheduleWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;

@@ -41,6 +41,8 @@
 @property (strong, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property (strong, nonatomic) NSMutableArray *tos; // @synthesize tos=_tos;
 
++ (Class)ccType;
++ (Class)toType;
 - (void).cxx_destruct;
 - (void)addCc:(id)arg1;
 - (void)addTo:(id)arg1;

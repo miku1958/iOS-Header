@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSString;
 
-@interface HMDFieldWrapper : NSObject
+@interface HMDFieldWrapper : HMFObject
 {
     long long _tlvid;
     NSString *_name;
 }
 
-@property (nonatomic) NSString *name; // @synthesize name=_name;
+@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) long long tlvid; // @synthesize tlvid=_tlvid;
 
+- (void).cxx_destruct;
 - (id)initWithTlvId:(unsigned long long)arg1 name:(id)arg2;
 
 @end

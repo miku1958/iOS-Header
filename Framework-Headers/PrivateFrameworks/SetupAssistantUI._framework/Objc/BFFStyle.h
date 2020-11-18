@@ -11,9 +11,11 @@
 }
 
 + (id)sharedStyle;
+- (struct CGSize)_effectiveSizeForIcon:(id)arg1 inView:(id)arg2;
 - (void)applyThemeToAllTableViews;
 - (void)applyThemeToLabel:(id)arg1;
 - (void)applyThemeToNavigationController:(id)arg1;
+- (void)applyThemeToNavigationController:(id)arg1 allowUnderlap:(BOOL)arg2;
 - (void)applyThemeToRemoteUIWebViewController:(id)arg1;
 - (void)applyThemeToSectionHeaderLabel:(id)arg1;
 - (void)applyThemeToTableCell:(id)arg1;
@@ -21,20 +23,26 @@
 - (void)applyThemeToTitleLabel:(id)arg1;
 - (id)backgroundColor;
 - (double)baselineInsetForHeaderTitle;
+- (id)continueButtonWithTitle:(id)arg1 inView:(id)arg2;
 - (struct UIEdgeInsets)edgeInsetsForHeaderView:(id)arg1;
 - (struct UIEdgeInsets)edgeInsetsForTable:(id)arg1;
 - (double)headerIconBaselineOffset;
 - (double)headerIconBaselineOffsetForView:(id)arg1;
 - (double)headerSubheaderBaselineSpacingForView:(id)arg1;
 - (double)headerTitleBaselineOffsetForView:(id)arg1 hasIcon:(BOOL)arg2;
+- (double)headerTitleBaselineOffsetForView:(id)arg1 icon:(id)arg2;
 - (double)headerTitleBaselineOffsetHasIcon:(BOOL)arg1;
 - (id)headerTitleFont;
+- (double)headerYOffsetForIcon:(id)arg1 inView:(id)arg2;
+- (struct UIEdgeInsets)horizontalInsetsForContainingInView:(id)arg1 width:(double)arg2;
 - (double)horizontalMarginForView:(id)arg1;
 - (double)nonTableHorizontalMargin;
 - (double)screenHeaderFooterSideInsetForView:(id)arg1;
 - (double)screenHeaderHeightForView:(id)arg1;
 - (double)singleLineCellHeightForTable:(id)arg1;
+- (struct CGSize)sizeForContinueButtonInParent:(id)arg1;
 - (id)tableCellFont;
+- (double)tallRowHeight;
 
 @end
 

@@ -12,8 +12,6 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityReducedSizeImage:(id)arg1;
-- (void)saveScreenshots;
 
 @end
 

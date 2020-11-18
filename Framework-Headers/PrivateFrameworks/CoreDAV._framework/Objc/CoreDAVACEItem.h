@@ -27,7 +27,7 @@
 
 + (id)copyParseRules;
 + (id)privilegeItemWithNameSpace:(id)arg1 andName:(id)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 - (id)initWithPrincipal:(id)arg1 shouldInvert:(BOOL)arg2 action:(int)arg3 withPrivileges:(id)arg4;

@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 
 + (id)collectionViewKind;
 + (id)reuseIdentifier;
+- (void).cxx_destruct;
 - (void)applyLayoutAttributes:(id)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)prepareForReuse;
 - (void)updateArrow;

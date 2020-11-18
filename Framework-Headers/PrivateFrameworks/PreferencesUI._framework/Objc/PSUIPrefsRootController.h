@@ -13,7 +13,9 @@
     PSUIPrefsListController *_rootListController;
 }
 
++ (BOOL)isPlayingRingtone;
 + (void)playRingtoneWithIdentifier:(id)arg1 loop:(BOOL)arg2;
++ (void)stopRingtoneWithFadeOut:(float)arg1;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithTitle:(id)arg1 identifier:(id)arg2;

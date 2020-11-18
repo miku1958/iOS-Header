@@ -14,19 +14,24 @@ __attribute__((visibility("hidden")))
 {
     UIBarButtonItem *_backItem;
     UIBarButtonItem *_forwardItem;
-    UIBarButtonItem *_openInSafariItem;
     id<_SFBrowserToolbarDelegate> _browserDelegate;
     id<_SFBrowserToolbarDataSource> _dataSource;
     UIBarButtonItem *_actionItem;
+    UIBarButtonItem *_openInSafariItem;
 }
 
 @property (readonly, nonatomic) UIBarButtonItem *actionItem; // @synthesize actionItem=_actionItem;
 @property (weak, nonatomic) id<_SFBrowserToolbarDelegate> browserDelegate; // @synthesize browserDelegate=_browserDelegate;
 @property (weak, nonatomic) id<_SFBrowserToolbarDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (readonly, nonatomic) double differenceBetweenWidthsOfLeadingAndTrailingItems;
+@property (readonly, nonatomic) UIBarButtonItem *openInSafariItem; // @synthesize openInSafariItem=_openInSafariItem;
 
 - (void).cxx_destruct;
 - (double)URLFieldHorizontalMargin;
+- (double)_contentMargin;
 - (id)_toolbarItems;
+- (double)_totalWidthOfLeadingItems;
+- (double)_totalWidthOfTrailingItems;
 - (void)actionButtonPressed;
 - (void)backButtonPressed;
 - (void)forwardButtonPressed;

@@ -6,19 +6,38 @@
 
 #import <Foundation/NSObject.h>
 
-@class IMDReplayStorageController;
+@class IMDReplayStorageController, IMDReplayStorageIterationContext, NSDictionary;
 
 @interface IMDReplayController : NSObject
 {
     IMDReplayStorageController *_storageController;
+    IMDReplayStorageController *_suspendedStorageController;
+    BOOL _isRecordingReplayDB;
+    NSDictionary *_syncTaskByServiceName;
+    IMDReplayStorageIterationContext *_heldDeletionContext;
+    CDUnknownBlockType _automationCompletionBlock;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType automationCompletionBlock; // @synthesize automationCompletionBlock=_automationCompletionBlock;
+@property (strong, nonatomic) IMDReplayStorageIterationContext *heldDeletionContext; // @synthesize heldDeletionContext=_heldDeletionContext;
+@property (readonly, nonatomic) BOOL isRecordingReplayDB; // @synthesize isRecordingReplayDB=_isRecordingReplayDB;
+@property (strong, nonatomic) NSDictionary *syncTaskByServiceName; // @synthesize syncTaskByServiceName=_syncTaskByServiceName;
+
++ (long long)batchSize;
 + (id)sharedInstance;
+- (void)_fetchNexBatchOfMessagesAndReplay;
 - (void)_processBatch:(id)arg1;
 - (void)dealloc;
 - (void)deleteReplayDBIfNotUnderFirstUnlock;
+- (void)endRecordingReplayDatabase;
 - (id)init;
+- (id)initWithStorageController:(id)arg1;
+- (void)overrideStorageControllerWithDatabaseFromPath:(id)arg1;
 - (void)replayMessages;
+- (void)replayMessagesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)restoreDefaultStoreControllerInstance;
+- (void)scheduleSyncTaskForServices:(id)arg1;
+- (void)startRecordingReplayDatabase;
 - (BOOL)storeMessage:(id)arg1 type:(unsigned char)arg2 error:(id *)arg3;
 
 @end

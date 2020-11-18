@@ -11,10 +11,12 @@
     BOOL _toolbarItemsChanged;
     BOOL _accessoryViewChanged;
     BOOL _accessoryViewTopOutsetChanged;
+    BOOL _accessoryViewMaximumHeightChanged;
     BOOL _maximumHeightChanged;
 }
 
 @property (nonatomic, setter=_setAccessoryViewChanged:) BOOL accessoryViewChanged; // @synthesize accessoryViewChanged=_accessoryViewChanged;
+@property (nonatomic, setter=_setAccessoryViewMaximumHeightChanged:) BOOL accessoryViewMaximumHeightChanged; // @synthesize accessoryViewMaximumHeightChanged=_accessoryViewMaximumHeightChanged;
 @property (nonatomic, setter=_setAccessoryViewTopOutsetChanged:) BOOL accessoryViewTopOutsetChanged; // @synthesize accessoryViewTopOutsetChanged=_accessoryViewTopOutsetChanged;
 @property (nonatomic, setter=_setMaximumHeightChanged:) BOOL maximumHeightChanged; // @synthesize maximumHeightChanged=_maximumHeightChanged;
 @property (nonatomic, setter=_setToolbarItemsChanged:) BOOL toolbarItemsChanged; // @synthesize toolbarItemsChanged=_toolbarItemsChanged;

@@ -46,7 +46,7 @@
 - (void)_syncObjCModel:(struct __C3DTextGeometry *)arg1;
 - (BOOL)_wantsSeparateGeometryElements;
 - (id)copy;
-- (struct __C3DAnimationChannel *)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
+- (id)copyAnimationPathForKeyPath:(id)arg1 animation:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

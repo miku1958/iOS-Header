@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <ITMLKit/IKJSImpression-Protocol.h>
 #import <ITMLKit/JSExport-Protocol.h>
 
 @class NSArray, NSString;
 
-@protocol _IKJSImpression <JSExport>
+@protocol _IKJSImpression <IKJSImpression, JSExport>
 
 @property (readonly, nonatomic) NSArray *children;
 @property (readonly, nonatomic) NSString *data;

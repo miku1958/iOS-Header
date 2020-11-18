@@ -25,6 +25,7 @@
     FBSScene *_scene;
     int _updateCounter;
     BKSApplicationStateMonitor *_stateMonitor;
+    _UIKeyboardArbiterHandle *_disablingHandle;
     id<_UIKeyboardArbiterLink> _sceneLink;
     _UIKeyboardChangedInformation *_lastUpdate;
 }
@@ -39,6 +40,7 @@
 - (void).cxx_destruct;
 - (void)activateClients;
 - (void)attemptConnection;
+- (void)checkHostingState;
 - (void)completeKeyboardStatusChangedFromHandler:(id)arg1;
 - (void)dealloc;
 - (void)handleUnexpectedDeallocForHandler:(id)arg1;
@@ -57,6 +59,7 @@
 - (void)retrieveDebugInformationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)runOperations:(CDUnknownBlockType)arg1 onHandler:(id)arg2;
 - (void)scheduleWindowTimeout;
+- (void)setKeyboardTotalDisable:(BOOL)arg1 withFence:(id)arg2 fromHandler:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)transition:(id)arg1 eventStage:(unsigned long long)arg2 withInfo:(id)arg3 fromHandler:(id)arg4;
 - (void)updateInterestedBundleIDs;
 - (void)updateKeyboardStatus:(id)arg1 fromHandler:(id)arg2;

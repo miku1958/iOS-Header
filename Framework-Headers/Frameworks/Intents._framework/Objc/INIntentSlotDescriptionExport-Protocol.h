@@ -7,7 +7,7 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @protocol INIntentSlotDescriptionExport <NSObject, JSExport>
 
@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) BOOL isPrivate;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, nonatomic) SEL resolveSelector;
+@property (readonly, copy, nonatomic) NSArray *resolveSelectorStrings;
 @property (readonly, nonatomic) unsigned long long tag;
 @property (readonly, nonatomic) long long valueStyle;
 @property (readonly, nonatomic) long long valueType;

@@ -6,15 +6,13 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFStaticItem, HFStaticItemProvider, HFStatusItemProvider;
+@class HFStaticItem, HFStatusItemProvider;
 
 @interface HFHomeStatusItemManager : HFItemManager
 {
     HFStaticItem *_showDetailsItem;
-    Class _weatherStatusItemClass;
-    HFStaticItemProvider *_staticItemProvider;
-    HFStatusItemProvider *_statusItemProvider;
     unsigned long long _maxStatusItemCount;
+    HFStatusItemProvider *_statusItemProvider;
     long long _latestOverallPriority;
     unsigned long long _latestOverallLoadingState;
 }
@@ -23,22 +21,19 @@
 @property (nonatomic) long long latestOverallPriority; // @synthesize latestOverallPriority=_latestOverallPriority;
 @property (nonatomic) unsigned long long maxStatusItemCount; // @synthesize maxStatusItemCount=_maxStatusItemCount;
 @property (strong, nonatomic) HFStaticItem *showDetailsItem; // @synthesize showDetailsItem=_showDetailsItem;
-@property (strong, nonatomic) HFStaticItemProvider *staticItemProvider; // @synthesize staticItemProvider=_staticItemProvider;
 @property (strong, nonatomic) HFStatusItemProvider *statusItemProvider; // @synthesize statusItemProvider=_statusItemProvider;
-@property (readonly, nonatomic) Class weatherStatusItemClass; // @synthesize weatherStatusItemClass=_weatherStatusItemClass;
 
 - (void).cxx_destruct;
+- (id)_buildItemProvidersForHome:(id)arg1;
 - (CDUnknownBlockType)_comparatorForSectionIdentifier:(id)arg1;
-- (void)_createItemProvidersWithHome:(id)arg1;
 - (void)_didFinishUpdateTransactionWithAffectedItems:(id)arg1;
-- (id)_itemProviders;
 - (id)_itemsToHideInSet:(id)arg1;
 - (long long)_overallPriority;
+- (unsigned long long)_overflowStatusItemCount;
 - (BOOL)_requiresNotificationsForCharacteristic:(id)arg1;
-- (id)_styleForItem:(id)arg1;
+- (id)_showDetailsItemTitle;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
-- (id)initWithMaxStatusItems:(unsigned long long)arg1 weatherStatusItemClass:(Class)arg2 delegate:(id)arg3;
-- (unsigned long long)overflowStatusItemCount;
+- (id)initWithMaxStatusItems:(unsigned long long)arg1 delegate:(id)arg2;
 
 @end
 

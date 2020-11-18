@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <ITMLKit/IKJSTabBar-Protocol.h>
 #import <ITMLKit/JSExport-Protocol.h>
 
 @class IKJSTabBarItem, NSArray;
 
-@protocol _IKJSTabBar <JSExport>
+@protocol _IKJSTabBar <IKJSTabBar, JSExport>
 
 @property (strong, nonatomic) IKJSTabBarItem *selectedTab;
 @property (readonly, nonatomic) NSArray *tabs;

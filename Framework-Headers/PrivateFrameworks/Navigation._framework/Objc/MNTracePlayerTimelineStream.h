@@ -6,31 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, NSTimer;
-@protocol MNTracePlayerTimelineStreamDelegate;
+@class NSArray;
 
 @interface MNTracePlayerTimelineStream : NSObject
 {
-    id<MNTracePlayerTimelineStreamDelegate> _delegate;
-    CDUnknownBlockType _handler;
     NSArray *_data;
-    NSString *_timestampKey;
-    NSTimer *_timer;
-    unsigned long long _lastReportedIndex;
     unsigned long long _nextIndex;
-    double _timeUntilNextUpdate;
+    double _nextUpdatePosition;
+    CDUnknownBlockType _handler;
 }
 
-@property (weak, nonatomic) id<MNTracePlayerTimelineStreamDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
-@property (readonly, nonatomic) unsigned long long lastReportedIndex; // @synthesize lastReportedIndex=_lastReportedIndex;
 @property (readonly, nonatomic) unsigned long long nextIndex; // @synthesize nextIndex=_nextIndex;
+@property (readonly, nonatomic) double nextUpdatePosition; // @synthesize nextUpdatePosition=_nextUpdatePosition;
 
 - (void).cxx_destruct;
-- (void)_timerFired;
-- (id)initWithData:(id)arg1 timestampKey:(id)arg2;
-- (void)scheduleUpdateFromCurrentTime:(double)arg1;
-- (void)stop;
+- (id)initWithData:(id)arg1;
+- (void)jumpToPosition:(double)arg1;
+- (void)triggerNextUpdate;
 
 @end
 

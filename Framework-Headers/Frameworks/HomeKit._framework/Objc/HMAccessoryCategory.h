@@ -35,6 +35,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithType:(id)arg1 name:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

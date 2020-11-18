@@ -25,6 +25,7 @@
 + (id)pointOfInterestCategories;
 + (id)regionOfInterestCategories;
 + (id)searchBusinessItemsAtCoordinate:(struct CLLocationCoordinate2D)arg1 forCategories:(id)arg2 precision:(double)arg3;
++ (struct CLLocationCoordinate2D)shiftedCoordinatesFromOriginalCoordinates:(struct CLLocationCoordinate2D)arg1;
 + (id)shiftedLocationFromOriginalLocation:(id)arg1;
 - (id)_pointOfInterestTraits;
 - (id)_regionOfInterestCategories;

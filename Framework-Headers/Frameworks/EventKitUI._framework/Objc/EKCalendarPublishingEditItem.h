@@ -8,14 +8,12 @@
 
 #import <EventKitUI/CalendarPublishingActivityDelegate-Protocol.h>
 
-@class NSString, UIActivityIndicatorView, UILabel, UIView;
+@class NSString, UIActivityIndicatorView, UITableViewHeaderFooterView, UIView;
 
 @interface EKCalendarPublishingEditItem : EKCalendarEditItem <CalendarPublishingActivityDelegate>
 {
     BOOL _published;
-    UIView *_footerView;
-    UILabel *_descriptionLabel;
-    UILabel *_publishingLabel;
+    UITableViewHeaderFooterView *_footerView;
     UIActivityIndicatorView *_spinner;
 }
 
@@ -36,7 +34,6 @@
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (double)footerHeightForSection;
 - (id)footerViewForSection;
-- (void)layoutForWidth:(double)arg1;
 - (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;
 - (void)messageComposeViewController:(id)arg1 didFinishWithResult:(long long)arg2;
 - (unsigned long long)numberOfSubitems;

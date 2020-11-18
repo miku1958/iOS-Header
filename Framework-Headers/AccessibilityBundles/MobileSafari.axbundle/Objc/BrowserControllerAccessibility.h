@@ -20,6 +20,7 @@
 - (void)_axUpdateVisibleContentInsetForScrollView:(id)arg1;
 - (void)_initSubviews;
 - (void)_setContentInsetAdjustments:(struct UIEdgeInsets)arg1 forScrollView:(id)arg2;
+- (void)_setShowingSidebar:(BOOL)arg1;
 - (id)accessibilityActiveTabDocument;
 - (id)accessibilityCurrentWebView;
 - (BOOL)accessibilityPerformEscape;

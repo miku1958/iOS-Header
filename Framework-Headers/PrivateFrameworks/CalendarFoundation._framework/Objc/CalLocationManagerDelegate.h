@@ -8,15 +8,14 @@
 
 #import <CalendarFoundation/CLLocationManagerDelegate-Protocol.h>
 
-@class CLLocation, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@class CLLocation, CLLocationManager, NSString;
 
 @interface CalLocationManagerDelegate : NSObject <CLLocationManagerDelegate>
 {
-    NSObject<OS_dispatch_source> *_timer;
-    NSObject<OS_dispatch_queue> *_queue;
     CLLocation *_currentLocation;
     CDUnknownBlockType _completionBlock;
+    CLLocationManager *_manager;
+    NSString *_currentBundleID;
     BOOL _didFinish;
 }
 
@@ -32,12 +31,10 @@
 - (void)cancel;
 - (void)dealloc;
 - (void)didFinishLocationLookupWithLocation:(id)arg1 error:(id)arg2;
-- (id)initWithQueue:(id)arg1;
+- (id)initWithCurrentBundleID:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
-- (void)locationManager:(id)arg1 didUpdateToLocation:(id)arg2 fromLocation:(id)arg3;
-- (void)startTimer;
-- (void)stopTimer;
+- (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)timeout;
 
 @end

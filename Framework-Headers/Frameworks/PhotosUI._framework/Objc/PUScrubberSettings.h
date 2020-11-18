@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUSettings.h>
+#import <PhotosUICore/PXSettings.h>
 
 __attribute__((visibility("hidden")))
-@interface PUScrubberSettings : PUSettings
+@interface PUScrubberSettings : PXSettings
 {
     BOOL _usePreviewScrubberMargins;
     BOOL _useTrianglePositionIndicator;
@@ -64,6 +64,7 @@ __attribute__((visibility("hidden")))
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
+- (id)parentSettings;
 - (void)setDefaultValues;
 
 @end

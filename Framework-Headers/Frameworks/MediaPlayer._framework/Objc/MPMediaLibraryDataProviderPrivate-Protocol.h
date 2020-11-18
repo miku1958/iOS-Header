@@ -30,6 +30,7 @@
 - (void)addTracksToMyLibrary:(NSArray *)arg1;
 - (void)clearLocationPropertiesOfItemWithIdentifier:(long long)arg1;
 - (BOOL)collectionExistsContainedWithinPersistentIDs:(const unsigned long long *)arg1 count:(unsigned long long)arg2 groupingType:(long long)arg3 existentPID:(unsigned long long *)arg4;
+- (BOOL)collectionExistsContainedWithinSyncIDs:(NSArray *)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (BOOL)collectionExistsWithName:(NSString *)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (BOOL)collectionExistsWithPersistentID:(unsigned long long)arg1 groupingType:(long long)arg2;
 - (BOOL)collectionExistsWithStoreID:(long long)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
@@ -55,6 +56,7 @@
 - (BOOL)performTransactionWithBlock:(BOOL (^)(void))arg1;
 - (BOOL)playlistExistsWithPersistentID:(unsigned long long)arg1;
 - (void)populateLocationPropertiesOfItemWithIdentifier:(long long)arg1 withPath:(NSString *)arg2 assetProtectionType:(long long)arg3;
+- (void)populateLocationPropertiesOfItemWithIdentifier:(long long)arg1 withPath:(NSString *)arg2 assetProtectionType:(long long)arg3 completionBlock:(void (^)(BOOL, NSError *))arg4;
 - (BOOL)recordPlayEventForAlbumPersistentID:(long long)arg1;
 - (BOOL)recordPlayEventForPlaylistPersistentID:(long long)arg1;
 - (void)releaseGeniusClusterPlaylist:(void *)arg1;

@@ -6,48 +6,99 @@
 
 #import <PhotoLibrary/PLUIImageViewController.h>
 
+#import <PhotosUI/PUPhotoPickerSelectionHandler-Protocol.h>
+#import <PhotosUI/PUPhotoPickerServicesConsumer-Protocol.h>
+#import <PhotosUI/PUVideoPlayerViewDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, NSURL, PHAsset, PHLivePhotoView, PUBrowsingIrisPlayer;
+@class ISAnimatedImageView, NSString, NSURL, PHAsset, PHLivePhotoView, PUBrowsingIrisPlayer, PUPhotoPickerAppearance, PUVideoPlayerView;
+@protocol PUPhotoPicker;
 
 __attribute__((visibility("hidden")))
-@interface PUUIImageViewController : PLUIImageViewController <UIGestureRecognizerDelegate>
+@interface PUUIImageViewController : PLUIImageViewController <UIGestureRecognizerDelegate, PUVideoPlayerViewDelegate, PUPhotoPickerServicesConsumer, PUPhotoPickerSelectionHandler>
 {
     BOOL _isIris;
+    BOOL _isAutoloop;
+    BOOL _isAnimatedImage;
     BOOL _wantsLivePhotoResult;
     BOOL _wantsVideoURLResult;
     PHAsset *_asset;
     int __imageManagerVideoRequestID;
+    int __animatedImageRequestID;
+    id<PUPhotoPicker> _photoPicker;
     PUBrowsingIrisPlayer *__irisPlayer;
     PHLivePhotoView *__livePhotoView;
-    NSString *__videoAssetURL;
+    PUVideoPlayerView *__autoloopView;
+    ISAnimatedImageView *__animatedImageView;
+    NSURL *__videoAssetURL;
     NSURL *__assetURL;
+    PUPhotoPickerAppearance *_previousPhotoPickerAppearance;
 }
 
+@property (setter=_setAnimatedImageRequestID:) int _animatedImageRequestID; // @synthesize _animatedImageRequestID=__animatedImageRequestID;
+@property (strong, nonatomic, setter=_setAnimatedImageView:) ISAnimatedImageView *_animatedImageView; // @synthesize _animatedImageView=__animatedImageView;
 @property (strong, nonatomic, setter=_setAssetURL:) NSURL *_assetURL; // @synthesize _assetURL=__assetURL;
+@property (strong, nonatomic, setter=_setAutoloopView:) PUVideoPlayerView *_autoloopView; // @synthesize _autoloopView=__autoloopView;
 @property (setter=_setImageManagerVideoRequestID:) int _imageManagerVideoRequestID; // @synthesize _imageManagerVideoRequestID=__imageManagerVideoRequestID;
 @property (strong, nonatomic) PUBrowsingIrisPlayer *_irisPlayer; // @synthesize _irisPlayer=__irisPlayer;
 @property (strong, nonatomic, setter=_setLivePhotoView:) PHLivePhotoView *_livePhotoView; // @synthesize _livePhotoView=__livePhotoView;
-@property (strong, nonatomic, setter=_setVideoAssetURL:) NSString *_videoAssetURL; // @synthesize _videoAssetURL=__videoAssetURL;
+@property (strong, nonatomic, setter=_setVideoAssetURL:) NSURL *_videoAssetURL; // @synthesize _videoAssetURL=__videoAssetURL;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<PUPhotoPicker> photoPicker; // @synthesize photoPicker=_photoPicker;
+@property (strong, nonatomic) PUPhotoPickerAppearance *previousPhotoPickerAppearance; // @synthesize previousPhotoPickerAppearance=_previousPhotoPickerAppearance;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_fetchAnimatedImageWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fetchLivePhotoWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_fetchPreviewImageWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fetchVideoWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_finishAutoloopDeliveryWithVideoURL:(id)arg1 gifURL:(id)arg2;
+- (void)_generateGIFFromVideoURL:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_handleAnimatedImagePreviewResult:(id)arg1;
+- (void)_handleAnimatedImageResult:(id)arg1;
+- (void)_handleAutoloopPreviewImageResult:(id)arg1;
+- (void)_handleAutoloopVideoResult:(id)arg1;
 - (void)_handleLivePhotoRequestResult:(id)arg1 info:(id)arg2;
+- (BOOL)_isPhotosPickerExtensionAvailable;
+- (void)_loadAnimatedImage;
+- (void)_loadAutoloopVideo;
 - (void)_loadLivePhoto;
+- (id)chooseButtonTitle;
 - (void)cropOverlayWasOKed:(id)arg1;
+- (BOOL)disableVideoTrimMessage;
+- (BOOL)doNotTranscode;
+- (id)exportPreset;
+- (BOOL)force1XCroppedImage;
+- (BOOL)forceNativeScreenScale;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (void)handleAutoloopSelected;
+- (void)handleMediaSelectionUsingTile:(id)arg1 managedAsset:(id)arg2 args:(id)arg3 includeEditing:(BOOL)arg4;
+- (void)handleVideoSelectionWithURL:(id)arg1 args:(id)arg2;
+- (BOOL)imagePickerAllowsEditing;
+- (unsigned long long)imagePickerSavingOptions;
 - (id)initWithPhoto:(id)arg1 imagePickerProperties:(id)arg2 expectsLivePhoto:(BOOL)arg3;
 - (id)irisPlayerView:(id)arg1 delegateForGestureRecognizer:(id)arg2;
 - (id)irisPlayerViewViewHostingGestureRecognizers:(id)arg1;
+- (BOOL)isDisplayedInPhotoPicker;
 - (void)loadView;
+- (void)performPhotoPickerSelection;
 - (void)setIrisPlayer:(id)arg1;
+- (void)setPhotoPickerMediaTypes:(id)arg1;
+- (void)setupNavigationItem;
+- (BOOL)uiipc_useTelephonyUI;
+- (id)videoMaximumDuration;
+- (void)videoPlayerView:(id)arg1 isReadyForDisplayDidChange:(BOOL)arg2;
+- (id)videoQuality;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
+- (BOOL)viewImageBeforeSelecting;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (BOOL)wantsAutoloopUI;
+- (BOOL)wantsLegacyImageUI;
 
 @end
 

@@ -29,10 +29,12 @@
 @property (readonly, strong, nonatomic) MDLScatteringFunction *scatteringFunction;
 
 - (void).cxx_destruct;
+- (void)conformToMatProperties;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)init;
 - (id)initWithName:(id)arg1 physicallyPlausibleBSDF:(struct PhysicallyPlausibleDistribution *)arg2;
 - (id)initWithName:(id)arg1 scatteringFunction:(id)arg2;
+- (void)loadTexturesUsingResolver:(id)arg1;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)propertiesWithSemantic:(unsigned long long)arg1;
@@ -40,6 +42,7 @@
 - (id)propertyWithSemantic:(unsigned long long)arg1;
 - (void)removeAllProperties;
 - (void)removeProperty:(id)arg1;
+- (void)resolveTexturesWithResolver:(id)arg1;
 - (void)setProperty:(id)arg1;
 - (void)setScatteringFunction:(id)arg1;
 

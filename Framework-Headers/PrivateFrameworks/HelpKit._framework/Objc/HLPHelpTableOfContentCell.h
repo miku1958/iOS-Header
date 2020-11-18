@@ -15,11 +15,9 @@
     NSLayoutConstraint *_arrowImageViewWidthConstraint;
     NSLayoutConstraint *_sectionImageWidthConstraint;
     NSLayoutConstraint *_sectionImageLeadingConstraint;
-    NSLayoutConstraint *_nameLabelMinHeightConstraint;
     BOOL _showFirstLevelIcon;
     BOOL _closed;
     BOOL _RTL;
-    double _minNameLabelHeight;
     HLPHelpItem *_helpItem;
     UILabel *_nameLabel;
     UIImageView *_arrowImageView;
@@ -30,7 +28,6 @@
 @property (strong, nonatomic) UIImageView *arrowImageView; // @synthesize arrowImageView=_arrowImageView;
 @property (nonatomic) BOOL closed; // @synthesize closed=_closed;
 @property (strong, nonatomic) HLPHelpItem *helpItem; // @synthesize helpItem=_helpItem;
-@property (nonatomic) double minNameLabelHeight; // @synthesize minNameLabelHeight=_minNameLabelHeight;
 @property (strong, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property (strong, nonatomic) UIImageView *sectionImageView; // @synthesize sectionImageView=_sectionImageView;
 @property (nonatomic) BOOL showFirstLevelIcon; // @synthesize showFirstLevelIcon=_showFirstLevelIcon;

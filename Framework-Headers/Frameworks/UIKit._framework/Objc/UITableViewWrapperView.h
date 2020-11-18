@@ -17,15 +17,18 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *stuckToBackViews; // @synthesize stuckToBackViews=_stuckToBackViews;
 
 - (void).cxx_destruct;
+- (void)_addSubview:(id)arg1 positioned:(long long)arg2 relativeTo:(id)arg3;
 - (BOOL)_forwardsToParentScroller;
 - (void)_stickViewToBack:(id)arg1;
 - (void)_unstickView:(id)arg1;
+- (void)bringSubviewToFront:(id)arg1;
 - (void)dealloc;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)handleSwipeBeginning:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)sendSubviewToBack:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;

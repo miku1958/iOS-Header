@@ -4,45 +4,51 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewCell.h>
+#import <HealthUI/HKSimpleDataEntryCell.h>
 
-#import <HealthUI/HKSimpleDataEntryCellType-Protocol.h>
 #import <HealthUI/UITextFieldDelegate-Protocol.h>
 
-@class HKCaretOptionalTextField, NSNumber, NSString, UILabel, UIView;
+@class HKCaretOptionalTextField, NSArray, NSNumber, NSString, UILabel, UIView;
 @protocol HKSimpleDataEntryCellDelegate;
 
-@interface HKSimpleDataEntryPlainTextCell : UITableViewCell <UITextFieldDelegate, HKSimpleDataEntryCellType>
+@interface HKSimpleDataEntryPlainTextCell : HKSimpleDataEntryCell <UITextFieldDelegate>
 {
     UIView *_horizontalSeparator;
     NSNumber *_characterCountLimit;
     BOOL _editDisabled;
+    NSArray *_regularConstraints;
+    NSArray *_largeTextConstraints;
     id<HKSimpleDataEntryCellDelegate> _delegate;
     UILabel *_titleLabel;
     HKCaretOptionalTextField *_inputTextField;
+    NSString *_lastChangedText;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HKSimpleDataEntryCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL editDisabled;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HKCaretOptionalTextField *inputTextField; // @synthesize inputTextField=_inputTextField;
+@property (strong, nonatomic) NSString *lastChangedText; // @synthesize lastChangedText=_lastChangedText;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
-- (void)_setupFonts;
+- (void)_informDelegateForContentChange;
 - (void)_setupInputTextFieldWithIntention:(long long)arg1;
+- (void)_setupLabels;
 - (void)_setupLayoutConstraints;
+- (void)_updateForCurrentSizeCategory;
+- (void)beginEditing;
+- (BOOL)editDisabled;
 - (id)initWithIntention:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)setEditDisabled:(BOOL)arg1;
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
-- (void)textFieldDidBeginEditing:(id)arg1;
 - (void)textFieldDidChangeValue:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1;
 - (BOOL)textFieldShouldBeginEditing:(id)arg1;
 - (BOOL)textFieldShouldReturn:(id)arg1;
-- (void)toggleMissingState:(BOOL)arg1 forKey:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

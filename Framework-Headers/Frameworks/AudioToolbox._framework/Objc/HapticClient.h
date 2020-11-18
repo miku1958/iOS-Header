@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     struct unique_ptr<ClientSyncCaller, std::__1::default_delete<ClientSyncCaller>> _syncCaller;
     struct HapticSharedMemory _sharedBuffer;
     unsigned long long _uniqueID;
+    int _serverTimeout;
     BOOL _prewarmed;
     BOOL _running;
     BOOL _connected;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property BOOL connected; // @synthesize connected=_connected;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly) double hapticLatency;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL prewarmed; // @synthesize prewarmed=_prewarmed;
 @property (readonly) BOOL running; // @synthesize running=_running;
@@ -53,16 +55,19 @@ __attribute__((visibility("hidden")))
 - (void)handleConnectionError;
 - (void)handleHapticServerCrash;
 - (id)initAndReturnError:(id *)arg1;
-- (BOOL)loadHapticPreset:(id)arg1 error:(id *)arg2;
+- (BOOL)loadHapticEvent:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (BOOL)loadHapticPattern:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (BOOL)loadHapticSequence:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (BOOL)prepareHapticSequence:(unsigned long long)arg1 error:(id *)arg2;
 - (void)prewarm:(CDUnknownBlockType)arg1;
 - (void)releaseResources;
-- (BOOL)sendEvents:(id)arg1 atTime:(double)arg2 channel:(unsigned long long)arg3 error:(id *)arg4;
+- (BOOL)sendEvents:(id)arg1 atTime:(double)arg2 channel:(unsigned long long)arg3 outToken:(unsigned long long *)arg4 error:(id *)arg5;
 - (BOOL)setChannelEventBehavior:(unsigned long long)arg1 channel:(unsigned long long)arg2;
 - (void)setChannelKeys:(id)arg1;
 - (BOOL)setNumberOfChannels:(unsigned long long)arg1 error:(id *)arg2;
 - (BOOL)setParameter:(unsigned long long)arg1 atTime:(double)arg2 value:(float)arg3 channel:(unsigned long long)arg4;
+- (BOOL)setPlayerBehavior:(unsigned long long)arg1 error:(id *)arg2;
+- (BOOL)setSequenceParameter:(unsigned long long)arg1 atTime:(double)arg2 value:(float)arg3 sequenceID:(unsigned long long)arg4 channel:(unsigned long long)arg5;
 - (BOOL)setupConnectionAndReturnError:(id *)arg1;
 - (int)setupSharedMemory:(id)arg1 size:(unsigned int)arg2;
 - (BOOL)startEventAndReturnToken:(unsigned long long)arg1 type:(unsigned long long)arg2 atTime:(double)arg3 channel:(unsigned long long)arg4 eventToken:(unsigned long long *)arg5;

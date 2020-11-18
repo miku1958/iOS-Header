@@ -19,6 +19,7 @@
 - (void)accountWithIdentifier:(NSString *)arg1 handler:(void (^)(ACAccount *, NSError *))arg2;
 - (void)accountsOnPairedDeviceWithAccountType:(ACAccountType *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
 - (void)accountsWithAccountType:(ACAccountType *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
+- (void)accountsWithAccountType:(ACAccountType *)arg1 options:(unsigned long long)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)accountsWithAccountTypeIdentifiers:(NSArray *)arg1 preloadedProperties:(NSArray *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)accountsWithHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)addClientToken:(NSString *)arg1 forAccountIdentifier:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;

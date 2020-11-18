@@ -46,7 +46,7 @@
 - (id)deviceUUIDBytesWithProvenance:(id)arg1;
 - (id)initWithProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3;
 - (id)provenanceWithID:(long long)arg1;
-- (id)sourceRevisionForPersistentID:(id)arg1 sourceVersion:(id)arg2 profile:(id)arg3 error:(id *)arg4;
+- (id)sourceRevisionForPersistentID:(id)arg1 sourceVersion:(id)arg2 productType:(id)arg3 operatingSystemVersion:(CDStruct_f6aba300)arg4 profile:(id)arg5 error:(id *)arg6;
 
 @end
 

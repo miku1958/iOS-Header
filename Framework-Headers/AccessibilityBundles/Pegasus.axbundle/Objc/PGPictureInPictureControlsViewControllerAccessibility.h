@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_cancelButtonTapped:(id)arg1;
-- (void)_handleSingleTapGesture:(id)arg1;
+- (void)_handleSingleTapGestureRecognizer:(id)arg1;
 - (void)_postAnnoucement:(id)arg1;
 - (void)_showControlsIfNeededAndHideIfPossibleAfterDelayIfPlayingWithDelay:(double)arg1;
 - (void)_stopButtonTapped:(id)arg1;

@@ -15,6 +15,7 @@
     BOOL _isForShortcutConversion;
     BOOL _isAutocorrection;
     BOOL _OTAWordListCandidate;
+    BOOL _regionalCandidate;
     NSString *_candidate;
     NSString *_input;
     NSNumber *_mecabraCandidatePointerValue;
@@ -33,13 +34,11 @@
 - (unsigned long long)deleteCount;
 - (void)encodeWithCandidateResultSetCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 mecabraCandidatePointerValue:(id)arg3 isExtension:(BOOL)arg4 isEmoji:(BOOL)arg5 isShortcut:(BOOL)arg6 isAutocorrection:(BOOL)arg7 isFromOTAWordList:(BOOL)arg8;
-- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 mecabraCandidatePointerValue:(id)arg3 isExtension:(BOOL)arg4 isEmoji:(BOOL)arg5 isShortcut:(BOOL)arg6 isAutocorrection:(BOOL)arg7 isFromOTAWordList:(BOOL)arg8 deleteCount:(unsigned long long)arg9;
-- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 mecabraCandidatePointerValue:(id)arg3 isExtension:(BOOL)arg4 isEmoji:(BOOL)arg5 isShortcut:(BOOL)arg6 isAutocorrection:(BOOL)arg7 isFromOTAWordList:(BOOL)arg8 deleteCount:(unsigned long long)arg9 cursorMovement:(long long)arg10;
+- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 mecabraCandidatePointerValue:(id)arg3 withFlags:(int)arg4;
+- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 mecabraCandidatePointerValue:(id)arg3 withFlags:(int)arg4 deleteCount:(unsigned long long)arg5 cursorMovement:(long long)arg6;
 - (id)initWithCandidateResultSetCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSurface:(id)arg1 input:(id)arg2 mecabraCandidatePointerValue:(id)arg3;
-- (id)initWithSurface:(id)arg1 input:(id)arg2 mecabraCandidatePointerValue:(id)arg3 isExtension:(BOOL)arg4;
 - (id)input;
 - (BOOL)isAutocorrection;
 - (BOOL)isEmojiCandidate;
@@ -47,6 +46,7 @@
 - (BOOL)isForShortcutConversion;
 - (BOOL)isFullwidthCandidate;
 - (BOOL)isOTAWordListCandidate;
+- (BOOL)isRegionalCandidate;
 - (id)label;
 
 @end

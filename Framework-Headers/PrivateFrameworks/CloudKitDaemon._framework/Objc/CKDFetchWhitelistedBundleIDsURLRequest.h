@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType bundleIDsFetchedBlock; // @synthesize bundleIDsFetchedBlock=_bundleIDsFetchedBlock;
 
 - (void).cxx_destruct;
+- (id)generateRequestOperations;
 - (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 - (BOOL)requiresTokenRegistration;
 - (id)sourceApplicationBundleIdentifier;
 

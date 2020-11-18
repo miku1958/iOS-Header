@@ -13,12 +13,16 @@ __attribute__((visibility("hidden")))
 {
     UITableViewCell *_cell;
     struct CGPoint _downPoint;
+    double _focalY;
+    double _focalHeight;
 }
 
 @property (readonly, nonatomic) BOOL wantsMaskingWhileAnimatingDisabled;
 
 - (void).cxx_destruct;
+- (id)_imageView;
 - (void)_updateImageView;
+- (void)adjustLayoutForFocalRect:(struct CGRect)arg1;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;

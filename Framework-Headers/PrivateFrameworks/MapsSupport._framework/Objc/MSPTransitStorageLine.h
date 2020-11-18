@@ -9,13 +9,14 @@
 #import <MapsSupport/GEOTransitLine-Protocol.h>
 #import <MapsSupport/NSCopying-Protocol.h>
 
-@class MSPTransitStorageArtwork, MSPTransitStorageSystem, NSArray, NSString, PBUnknownFields;
+@class GEOMapItemIdentifier, MSPTransitStorageArtwork, MSPTransitStorageSystem, NSArray, NSString, PBUnknownFields;
 @protocol GEOTransitArtworkDataSource, GEOTransitSystem;
 
 @interface MSPTransitStorageLine : PBCodable <GEOTransitLine, NSCopying>
 {
     PBUnknownFields *_unknownFields;
     unsigned long long _muid;
+    MSPTransitStorageArtwork *_alternateArtwork;
     MSPTransitStorageArtwork *_artwork;
     NSString *_lineColorString;
     MSPTransitStorageArtwork *_modeArtwork;
@@ -24,12 +25,15 @@
     CDStruct_e99c65f7 _has;
 }
 
+@property (readonly, nonatomic) id<GEOTransitArtworkDataSource> alternateArtwork;
+@property (strong, nonatomic) MSPTransitStorageArtwork *alternateArtwork; // @synthesize alternateArtwork=_alternateArtwork;
 @property (readonly, nonatomic) id<GEOTransitArtworkDataSource> artwork;
 @property (strong, nonatomic) MSPTransitStorageArtwork *artwork; // @synthesize artwork=_artwork;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) unsigned long long departureTimeDisplayStyle;
 @property (readonly, nonatomic) BOOL departuresAreVehicleSpecific;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasAlternateArtwork;
 @property (readonly, nonatomic) BOOL hasArtwork;
 @property (readonly, nonatomic) BOOL hasLineColorString;
 @property (readonly, nonatomic) BOOL hasLineColorString;
@@ -38,6 +42,7 @@
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasSystem;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) GEOMapItemIdentifier *identifier;
 @property (readonly, nonatomic) NSString *lineColorString;
 @property (strong, nonatomic) NSString *lineColorString; // @synthesize lineColorString=_lineColorString;
 @property (readonly, nonatomic) id<GEOTransitArtworkDataSource> modeArtwork;
@@ -53,7 +58,6 @@
 @property (strong, nonatomic) MSPTransitStorageSystem *system; // @synthesize system=_system;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
-+ (id)__test_mtaLineR;
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

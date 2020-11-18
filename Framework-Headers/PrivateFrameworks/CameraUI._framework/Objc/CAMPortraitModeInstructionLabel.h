@@ -9,17 +9,23 @@
 @interface CAMPortraitModeInstructionLabel : CAMInstructionLabel
 {
     long long _shallowDepthOfFieldStatus;
+    long long _flashMode;
     unsigned long long _numberOfPeopleFound;
+    long long _devicePosition;
+    long long _lightingType;
 }
 
+@property (nonatomic) long long devicePosition; // @synthesize devicePosition=_devicePosition;
+@property (nonatomic) long long flashMode; // @synthesize flashMode=_flashMode;
+@property (nonatomic) long long lightingType; // @synthesize lightingType=_lightingType;
 @property (nonatomic) unsigned long long numberOfPeopleFound; // @synthesize numberOfPeopleFound=_numberOfPeopleFound;
 @property (nonatomic) long long shallowDepthOfFieldStatus; // @synthesize shallowDepthOfFieldStatus=_shallowDepthOfFieldStatus;
 
-+ (id)_textForShallowDepthOfFieldStatus:(long long)arg1 numberOfPeopleFound:(unsigned long long)arg2;
++ (id)_textForShallowDepthOfFieldStatus:(long long)arg1 numberOfPeopleFound:(unsigned long long)arg2 flashMode:(long long)arg3 devicePosition:(long long)arg4 lightingType:(long long)arg5;
 + (BOOL)shouldDisplayInstructionForShallowDepthOfFieldStatus:(long long)arg1;
 - (double)_backgroundAlpha;
 - (struct UIEdgeInsets)_textInsets;
-- (void)_updateText;
+- (void)_updateTextWithPriorStatus:(long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

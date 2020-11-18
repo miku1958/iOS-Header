@@ -291,6 +291,7 @@
 - (BOOL)wantsToHandleTapsOnContainingGroup;
 - (BOOL)wantsToHandleTapsWhenLocked;
 - (void)wasAddedToParent;
+- (void)wideGamutValueDidChange;
 - (void)willBeRemoved;
 - (void)willBeRemovedFromParent;
 - (void)willReplaceContentsFromRep:(id)arg1;

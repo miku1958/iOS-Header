@@ -4,25 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CloudKitDaemon/CKDOperation.h>
+#import <CloudKitDaemon/CKDDatabaseOperation.h>
 
 @class NSMutableArray, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface CKDAcceptSharesOperation : CKDOperation
+@interface CKDAcceptSharesOperation : CKDDatabaseOperation
 {
-    int _numShareAcceptAttempts;
     CDUnknownBlockType _acceptCompletionBlock;
     NSMutableDictionary *_clientProvidedMetadatasByURL;
     NSMutableArray *_shareURLsToAccept;
     NSMutableArray *_acceptedShareURLsToFetch;
     NSMutableDictionary *_shareMetadatasToAcceptByURL;
+    unsigned long long _numShareAcceptAttempts;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType acceptCompletionBlock; // @synthesize acceptCompletionBlock=_acceptCompletionBlock;
 @property (strong, nonatomic) NSMutableArray *acceptedShareURLsToFetch; // @synthesize acceptedShareURLsToFetch=_acceptedShareURLsToFetch;
 @property (strong, nonatomic) NSMutableDictionary *clientProvidedMetadatasByURL; // @synthesize clientProvidedMetadatasByURL=_clientProvidedMetadatasByURL;
-@property (nonatomic) int numShareAcceptAttempts; // @synthesize numShareAcceptAttempts=_numShareAcceptAttempts;
+@property (nonatomic) unsigned long long numShareAcceptAttempts; // @synthesize numShareAcceptAttempts=_numShareAcceptAttempts;
 @property (strong, nonatomic) NSMutableDictionary *shareMetadatasToAcceptByURL; // @synthesize shareMetadatasToAcceptByURL=_shareMetadatasToAcceptByURL;
 @property (strong, nonatomic) NSMutableArray *shareURLsToAccept; // @synthesize shareURLsToAccept=_shareURLsToAccept;
 

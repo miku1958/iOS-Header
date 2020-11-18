@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double score; // @synthesize score=_score;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (BOOL)_checkForArrival:(id)arg1 routeMatch:(id)arg2;
 - (void)_requestNewRouteFromLocation:(id)arg1 usualRouteData:(id)arg2;
 - (int)_transportType;

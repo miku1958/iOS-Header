@@ -6,27 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CKDClientInfo : NSObject
 {
-    NSArray *_enabledKeyboards;
     NSString *_cachedHostname;
     NSObject<OS_dispatch_queue> *_hostCallbackQueue;
     struct MGNotificationTokenStruct *_hostNotificationToken;
 }
 
-@property (readonly, nonatomic) Class CKDUITextInputModeClass;
-@property (readonly, nonatomic) NSArray *enabledKeyboards;
 @property (readonly, nonatomic) NSString *hostname;
 
 + (id)sharedClientInfo;
 - (void).cxx_destruct;
 - (id)_init;
-- (void)_inputModeChanged;
-- (void)_refreshEnabledKeyboards;
 - (void)_refreshHostname;
 - (void)dealloc;
 - (id)init;

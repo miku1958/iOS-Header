@@ -18,5 +18,6 @@
 - (void)setSelectedFaceUUID:(NSUUID *)arg1;
 - (void)updateFaceForUUID:(NSUUID *)arg1 withConfiguration:(NTKFaceConfiguration *)arg2;
 - (void)updateFaceForUUID:(NSUUID *)arg1 withResourceDirectory:(NSString *)arg2;
+- (void)upgradeFace:(NTKFace *)arg1 forUUID:(NSUUID *)arg2;
 @end
 

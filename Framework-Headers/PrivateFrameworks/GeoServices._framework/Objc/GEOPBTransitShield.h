@@ -9,10 +9,11 @@
 #import <GeoServices/GEOTransitShieldDataSource-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBUnknownFields;
 
 @interface GEOPBTransitShield : PBCodable <GEOTransitShieldDataSource, NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSString *_shieldColor;
     unsigned int _shieldEnumValue;
     NSString *_shieldText;
@@ -34,10 +35,11 @@
 @property (strong, nonatomic) NSString *shieldText; // @synthesize shieldText=_shieldText;
 @property (readonly, nonatomic) long long shieldType;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)dictionaryRepresentation;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

@@ -9,19 +9,22 @@
 @interface WBSCyclerOperation : NSObject
 {
     unsigned long long _numberOfRemainingAttempts;
+    float _backoffRatio;
     BOOL _finished;
     BOOL _executing;
     CDUnknownBlockType _block;
+    double _nextBackoffTimeInterval;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
 @property (readonly, nonatomic, getter=isExecuting) BOOL executing; // @synthesize executing=_executing;
 @property (readonly, nonatomic, getter=isFinished) BOOL finished; // @synthesize finished=_finished;
+@property (readonly, nonatomic) double nextBackoffTimeInterval; // @synthesize nextBackoffTimeInterval=_nextBackoffTimeInterval;
 
 - (void).cxx_destruct;
 - (void)executeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithMaximumNumberOfAttempts:(unsigned long long)arg1;
+- (id)initWithMaximumNumberOfAttempts:(unsigned long long)arg1 backoffRatio:(float)arg2;
 
 @end
 

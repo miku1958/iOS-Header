@@ -10,10 +10,14 @@
 {
 }
 
-- (long long)events;
-- (id)initWithEvents:(long long)arg1 targetQueue:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (void)sendResponse:(id)arg1;
-- (void)sendResponseWithUnHandledEvents:(long long)arg1;
+@property (readonly, nonatomic) unsigned long long events;
+
+- (id)initWithEvents:(unsigned long long)arg1;
+- (id)initWithEvents:(unsigned long long)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)sendResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)sendResponseWithUnHandledEvents:(unsigned long long)arg1;
+- (id)settings:(id)arg1 keyDescriptionForSetting:(unsigned long long)arg2;
+- (id)settings:(id)arg1 valueDescriptionForFlag:(long long)arg2 object:(id)arg3 ofSetting:(unsigned long long)arg4;
 
 @end
 

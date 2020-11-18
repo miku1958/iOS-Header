@@ -6,18 +6,22 @@
 
 #import <Home/HFItemProvider.h>
 
-@class NSMutableSet;
+@class HMHome, NSMutableSet;
 
 @interface HFTriggerItemProvider : HFItemProvider
 {
     CDUnknownBlockType _filter;
+    HMHome *_home;
     NSMutableSet *_triggerItems;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
+@property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSMutableSet *triggerItems; // @synthesize triggerItems=_triggerItems;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 - (id)initWithHome:(id)arg1;
 - (id)invalidationReasons;
 - (id)items;

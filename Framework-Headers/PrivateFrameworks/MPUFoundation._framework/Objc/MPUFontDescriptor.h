@@ -18,6 +18,7 @@
     double _systemFontSize;
     long long _textStyle;
     BOOL _usesItalic;
+    BOOL _usesCondensedMetrics;
     BOOL _wantsMonospaceNumbers;
     long long _weight;
     UIFont *_preferredFont;
@@ -39,6 +40,7 @@
 @property (readonly, nonatomic) double preferredFontLineHeight;
 @property (readonly, nonatomic) double systemFontSize; // @synthesize systemFontSize=_systemFontSize;
 @property (readonly, nonatomic) long long textStyle; // @synthesize textStyle=_textStyle;
+@property (readonly, nonatomic) BOOL usesCondensedMetrics; // @synthesize usesCondensedMetrics=_usesCondensedMetrics;
 @property (readonly, nonatomic) BOOL usesItalic; // @synthesize usesItalic=_usesItalic;
 @property (readonly, nonatomic) BOOL wantsMonospaceNumbers; // @synthesize wantsMonospaceNumbers=_wantsMonospaceNumbers;
 @property (readonly, nonatomic) long long weight; // @synthesize weight=_weight;
@@ -47,10 +49,10 @@
 + (id)_baseNativeTextStyleForTextStyle:(long long)arg1;
 + (id)_fontDescriptorWithTextStyle:(long long)arg1 leadingAdjustment:(long long)arg2 weight:(long long)arg3 systemFontSize:(double)arg4 defaultPointSizeAdjustment:(double)arg5;
 + (id)_fontPointSizeLayoutInterpolatorForTextStyle:(long long)arg1;
-+ (void)_getNativeFontDescriptorSymbolicTraits:(unsigned int *)arg1 nativeTextStyleAttribute:(id *)arg2 forWeight:(long long)arg3;
++ (void)_getNativeFontDescriptorSymbolicTraits:(unsigned int *)arg1 nativeTextStyleAttribute:(id *)arg2 forWeight:(long long)arg3 textStyle:(long long)arg4;
 + (double)_layoutInterpolatorReferenceMetricForContentSizeCategory:(id)arg1;
 + (unsigned int)_nativeFontDescriptorSymbolicTraitsForLeadingAdjustment:(long long)arg1;
-+ (unsigned int)_nativeFontDescriptorSymbolicTraitsForUsingItalic:(BOOL)arg1;
++ (unsigned int)_nativeFontDescriptorSymbolicTraitsForUsingItalic:(BOOL)arg1 isCondensedMetrics:(BOOL)arg2;
 + (id)fontDescriptorWithSystemFontSize:(double)arg1;
 + (id)fontDescriptorWithSystemFontSize:(double)arg1 leadingAdjustment:(long long)arg2;
 + (id)fontDescriptorWithSystemFontSize:(double)arg1 leadingAdjustment:(long long)arg2 weight:(long long)arg3;

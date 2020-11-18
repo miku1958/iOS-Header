@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Contacts/CNChangeNotificationReceiver-Protocol.h>
 
@@ -43,16 +43,16 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSCountedSet *supressedNotificationNames; // @synthesize supressedNotificationNames=_supressedNotificationNames;
 
+- (void).cxx_destruct;
 - (void)addListenerForNotificationName:(id)arg1 registration:(CDUnknownBlockType)arg2 removal:(CDUnknownBlockType)arg3;
 - (void)addNotificationPoster:(CDUnknownBlockType)arg1 forNotificationName:(id)arg2;
 - (void)coalesceNotificationName:(id)arg1;
-- (void)dealloc;
 - (void)forwardNotificationName:(id)arg1 asNotificationName:(id)arg2;
 - (id)initWithSchedulerProvider:(id)arg1;
 - (void)postNotificationName:(id)arg1 fromSender:(id)arg2 saveIdentifier:(id)arg3 isFromExternalProcess:(BOOL)arg4;
-- (void)postNotificationName:(id)arg1 fromSender:(id)arg2 saveIdentifier:(id)arg3 userInfo:(id)arg4 shouldForwardExternally:(BOOL)arg5 calledFromNotifierQueue:(BOOL)arg6 isFromExternalProcess:(BOOL)arg7;
+- (CDUnknownBlockType)postNotificationName:(id)arg1 fromSender:(id)arg2 saveIdentifier:(id)arg3 userInfo:(id)arg4 shouldForwardExternally:(BOOL)arg5 calledFromNotifierQueue:(BOOL)arg6 isFromExternalProcess:(BOOL)arg7;
 - (void)receiveExternalNotificationName:(id)arg1;
-- (void)receiveNotificationName:(id)arg1 fromSender:(id)arg2 saveIdentifier:(id)arg3 userInfo:(id)arg4 calledFromNotifierQueue:(BOOL)arg5 isFromExternalProcess:(BOOL)arg6;
+- (CDUnknownBlockType)receiveNotificationName:(id)arg1 fromSender:(id)arg2 saveIdentifier:(id)arg3 userInfo:(id)arg4 calledFromNotifierQueue:(BOOL)arg5 isFromExternalProcess:(BOOL)arg6;
 - (void)receiveNotificationName:(id)arg1 fromSender:(id)arg2 saveIdentifier:(id)arg3 userInfo:(id)arg4 isFromExternalProcess:(BOOL)arg5;
 - (void)removeAllRegisteredNotificationSources;
 - (void)stopSupressionOfNotificationName:(id)arg1;

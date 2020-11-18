@@ -17,7 +17,8 @@
     float _videoVolume;
     AVPlayer *_providedAVPlayer;
     NSObject<OS_dispatch_queue> *_outputQueue;
-    NSHashTable *_outputQueue_outputs;
+    NSHashTable *_outputs;
+    NSString *_apertureMode;
     struct {
         BOOL videoPlayer;
         BOOL videoPlayerVolume;
@@ -38,7 +39,6 @@
     id __videoWillPlayToPhotoObserver;
     ISPlayerState *_lastAppliedLayoutInfo;
     ISPlayerOutputContent *__outputContent;
-    NSString *_playbackStyleIdentifier;
     double _lastAppliedScale;
     CDStruct_1b6d18a9 __videoForwardPlaybackEndTime;
 }
@@ -57,7 +57,6 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic, setter=_setLastAppliedLayoutInfo:) ISPlayerState *lastAppliedLayoutInfo; // @synthesize lastAppliedLayoutInfo=_lastAppliedLayoutInfo;
 @property (nonatomic, setter=_setLastAppliedScale:) double lastAppliedScale; // @synthesize lastAppliedScale=_lastAppliedScale;
-@property (copy, nonatomic, setter=_setPlaybackStyleIdentifier:) NSString *playbackStyleIdentifier; // @synthesize playbackStyleIdentifier=_playbackStyleIdentifier;
 @property (strong, nonatomic) ISPlayerItem *playerItem; // @synthesize playerItem=_playerItem;
 @property (nonatomic, setter=_setStatus:) long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;
@@ -88,6 +87,7 @@
 - (void)_videoWillPlayToPhoto;
 - (void)activeBehaviorDidChange;
 - (void)addOutput:(id)arg1;
+- (id)apertureMode;
 - (void)applyOutputInfo:(id)arg1 fromBehavior:(id)arg2 withTransitionOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)applyScale:(double)arg1 withTransitionOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)avPlayer:(id)arg1 itemDidPlayToEnd:(id)arg2;
@@ -111,14 +111,15 @@
 - (id)initWithVideoPlayer:(id)arg1;
 - (id)mutableChangeObject;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
-- (void)playbackStyleIdentifierDidChange;
 - (void)playerItemDidChange;
 - (void)removeOutput:(id)arg1;
+- (void)setApertureMode:(id)arg1;
 - (void)setVideoVolume:(float)arg1;
 - (void)statusDidChange;
 - (float)videoPlayRate;
 - (float)videoVolume;
 - (double)videoWillPlayToEndInterval;
+- (double)videoWillPlayToPhotoInterval;
 - (void)willRemoveOutput:(id)arg1;
 
 @end

@@ -9,22 +9,27 @@
 #import <Photos/PHInsertChangeRequest-Protocol.h>
 #import <Photos/PHUpdateChangeRequest-Protocol.h>
 
-@class NSData, NSDate, NSDictionary, NSManagedObjectID, NSString, PHChangeRequestHelper, PHObjectPlaceholder, PHRelationshipChangeRequestHelper;
+@class NSData, NSDate, NSDictionary, NSManagedObjectID, NSString, PHChangeRequestHelper, PHMemoryFeature, PHObjectPlaceholder, PHRelationshipChangeRequestHelper;
 
 @interface PHMemoryChangeRequest : NSObject <PHInsertChangeRequest, PHUpdateChangeRequest>
 {
     BOOL _clientEntitled;
     BOOL _clientEntitledToMemoryMutation;
     NSString *_clientName;
+    BOOL _incrementPlayCount;
+    BOOL _incrementShareCount;
+    BOOL _incrementViewCount;
     int _clientProcessID;
-    NSDictionary *_movieAssetState;
     PHChangeRequestHelper *_helper;
+    NSDictionary *_movieAssetState;
     PHRelationshipChangeRequestHelper *_keyAssetHelper;
     PHRelationshipChangeRequestHelper *_representativeAssetsHelper;
     PHRelationshipChangeRequestHelper *_curatedAssetsHelper;
+    PHRelationshipChangeRequestHelper *_extendedCuratedAssetsHelper;
     PHRelationshipChangeRequestHelper *_movieCuratedAssetsHelper;
 }
 
+@property (strong, nonatomic) PHMemoryFeature *blacklistedFeature;
 @property (nonatomic) long long category;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled; // @synthesize clientEntitled=_clientEntitled;
 @property (readonly, nonatomic) BOOL clientEntitledToMemoryMutation; // @synthesize clientEntitledToMemoryMutation=_clientEntitledToMemoryMutation;
@@ -34,6 +39,7 @@
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *curatedAssetsHelper; // @synthesize curatedAssetsHelper=_curatedAssetsHelper;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) PHRelationshipChangeRequestHelper *extendedCuratedAssetsHelper; // @synthesize extendedCuratedAssetsHelper=_extendedCuratedAssetsHelper;
 @property (nonatomic, getter=isFavorite) BOOL favorite;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PHChangeRequestHelper *helper; // @synthesize helper=_helper;
@@ -46,6 +52,7 @@
 @property (strong, nonatomic) NSData *movieData;
 @property (readonly, getter=isMutated) BOOL mutated;
 @property (readonly, getter=isNew) BOOL new;
+@property (nonatomic) unsigned long long notificationState;
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (nonatomic, getter=isPending) BOOL pending;
 @property (strong, nonatomic) NSData *photosGraphData;
@@ -63,9 +70,12 @@
 + (id)_preferredAttributesForMemoryCreationFromObject:(id)arg1 withSuccess:(BOOL)arg2 title:(id)arg3 subtitle:(id)arg4 error:(id)arg5 proposedAttributes:(id)arg6;
 + (BOOL)_shouldAcceptProposedAttributes:(id)arg1;
 + (long long)_titleFormatForProposedAttributes:(id)arg1;
++ (BOOL)canGenerateUUIDWithoutEntitlements;
 + (id)changeRequestForMemory:(id)arg1;
++ (id)changeRequestForRemotelyViewedMemoryWithLocalIdentifier:(id)arg1;
 + (id)creationRequestForMemoryWithTitle:(id)arg1 subtitle:(id)arg2 creationDate:(id)arg3 category:(long long)arg4 assets:(id)arg5 curatedAssets:(id)arg6 keyAsset:(id)arg7;
 + (id)creationRequestForMemoryWithTitle:(id)arg1 subtitle:(id)arg2 creationDate:(id)arg3 category:(long long)arg4 representativeAssets:(id)arg5 curatedAssets:(id)arg6 keyAsset:(id)arg7;
++ (id)creationRequestForMemoryWithTitle:(id)arg1 subtitle:(id)arg2 creationDate:(id)arg3 category:(long long)arg4 subcategory:(long long)arg5 representativeAssets:(id)arg6 curatedAssets:(id)arg7 extendedCuratedAssets:(id)arg8 keyAsset:(id)arg9;
 + (id)creationRequestForMemoryWithTitle:(id)arg1 subtitle:(id)arg2 creationDate:(id)arg3 category:(long long)arg4 subcategory:(long long)arg5 representativeAssets:(id)arg6 curatedAssets:(id)arg7 keyAsset:(id)arg8;
 + (void)deleteMemories:(id)arg1;
 + (id)preferredAttributesForMemoryCreationFromAssetCollection:(id)arg1 proposedAttributes:(id)arg2;
@@ -74,25 +84,29 @@
 + (id)validateMemoryTitle:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)_mutableCuratedAssetObjectIDsAndUUIDs;
+- (id)_mutableExtendedCuratedAssetObjectIDsAndUUIDs;
 - (id)_mutableKeyAssetObjectIDsAndUUIDs;
 - (id)_mutableRepresentativeAssetObjectIDsAndUUIDs;
 - (void)_prepareAssetIDsIfNeeded;
 - (BOOL)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
 - (BOOL)applyMutationsToManagedObject:(id)arg1 error:(id *)arg2;
-- (BOOL)canGenerateUUIDLocally;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (void)didMutate;
 - (void)encodeToXPCDict:(id)arg1;
+- (void)incrementPlayCount;
+- (void)incrementShareCount;
+- (void)incrementViewCount;
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initWithXPCDict:(id)arg1 clientEntitlements:(id)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
-- (id)mutations;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
+- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
+- (void)setKeyAsset:(id)arg1;
 - (void)setMovieCuratedAssets:(id)arg1;
 - (void)setMovieStateData:(id)arg1 forAsset:(id)arg2;
 - (void)setQueryHintObject:(id)arg1;
 - (void)setQueryHintObjects:(id)arg1;
-- (void)setRepresentativeAssets:(id)arg1 curatedAssets:(id)arg2 keyAsset:(id)arg3;
+- (void)setRepresentativeAssets:(id)arg1 curatedAssets:(id)arg2 extendedCuratedAssets:(id)arg3 keyAsset:(id)arg4;
 - (void)setSubcategory:(long long)arg1;
 - (long long)subcategory;
 - (BOOL)validateForDeleteManagedObject:(id)arg1 error:(id *)arg2;

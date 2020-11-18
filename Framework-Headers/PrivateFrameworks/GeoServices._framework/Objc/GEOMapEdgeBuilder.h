@@ -47,7 +47,6 @@ __attribute__((visibility("hidden")))
 - (id)_tileFinderForMap:(id)arg1 center:(CDStruct_c3b9c2ee)arg2 radius:(double)arg3;
 - (void)buildEdge:(CDUnknownBlockType)arg1;
 - (void)cancel;
-- (void)dealloc;
 - (id)initWithMap:(id)arg1;
 
 @end

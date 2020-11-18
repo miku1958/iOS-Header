@@ -6,51 +6,56 @@
 
 #import <objc/NSObject.h>
 
-@class MNLocation, MNNavigationSession;
-@protocol MNLocationTrackerDelegate;
+@class GEOApplicationAuditToken, MNLocation, MNNavigationSession, MNObserverHashTable;
 
 __attribute__((visibility("hidden")))
 @interface MNLocationTracker : NSObject
 {
-    id<MNLocationTrackerDelegate> _delegate;
+    MNObserverHashTable *_safeDelegate;
     int _state;
+    GEOApplicationAuditToken *_auditToken;
     MNLocation *_lastMatchedLocation;
     MNNavigationSession *_navigationSession;
+    BOOL _localizeRoadNames;
 }
 
-@property (weak, nonatomic) id<MNLocationTrackerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) BOOL guidancePromptsEnabled;
+@property (strong, nonatomic, getter=_auditToken, setter=_setAuditToken:) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (readonly, nonatomic) BOOL hasArrived;
 @property (readonly, nonatomic) MNLocation *lastMatchedLocation; // @synthesize lastMatchedLocation=_lastMatchedLocation;
-@property (readonly, nonatomic) MNNavigationSession *navigationSession; // @synthesize navigationSession=_navigationSession;
+@property (readonly, weak, nonatomic) MNNavigationSession *navigationSession; // @synthesize navigationSession=_navigationSession;
+@property (readonly, nonatomic) MNObserverHashTable *safeDelegate; // @synthesize safeDelegate=_safeDelegate;
 @property (readonly, nonatomic) BOOL shouldProjectAlongRoute;
 @property (nonatomic, setter=_setState:) int state; // @synthesize state=_state;
 @property (readonly, nonatomic) int transportType;
 
 - (void).cxx_destruct;
 - (BOOL)_checkArrivalForLocation:(id)arg1;
+- (BOOL)_checkArrivalForLocation:(id)arg1 route:(id)arg2 destination:(id)arg3;
+- (void)_defaultsDidChange;
 - (id)_matchedLocationForLocation:(id)arg1;
+- (void)_roadFeaturesForFeature:(CDStruct_c707fdd0 *)arg1 outRoadName:(id *)arg2 outShieldText:(id *)arg3 outShieldType:(long long *)arg4;
 - (void)_switchedToStepAtIndex:(unsigned long long)arg1;
 - (void)_updateMatchedLocation:(id)arg1;
+- (void)_updateShouldLocalizeRoadNames;
+- (void)dealloc;
+- (void)forceOnRoute:(id)arg1 atLocation:(id)arg2;
+- (id)init;
 - (id)initWithNavigationSession:(id)arg1;
 - (id)matchedLocationForLocation:(id)arg1;
 - (void)pause;
 - (BOOL)paused;
-- (BOOL)repeatCurrentGuidance;
-- (BOOL)repeatCurrentTrafficAlert;
 - (void)reroute:(id)arg1 reason:(unsigned long long)arg2;
 - (void)resetForTracePlayerAtLocation:(id)arg1;
 - (void)resume;
-- (id)routeRepresentation;
-- (void)setVoiceGuidanceEnabled:(BOOL)arg1;
+- (void)setDelegate:(id)arg1;
 - (BOOL)shouldAllowPause;
 - (void)startTracking;
-- (void)startTrackingWithGuidanceEnabled:(BOOL)arg1 midRoute:(BOOL)arg2;
 - (void)stopTracking;
 - (void)traceForcedActiveTransportTypeChange:(int)arg1;
 - (void)traceForcedRerouteWithResponse:(id)arg1 request:(id)arg2;
+- (void)traceJumpedInTime;
+- (void)tracePaused;
 - (void)updateDestination:(id)arg1 finishedHandler:(CDUnknownBlockType)arg2;
-- (void)updateForTracePaused;
 - (void)updateLocation:(id)arg1;
 - (void)updateVehicleHeading:(double)arg1 timestamp:(id)arg2;
 - (void)updateVehicleSpeed:(double)arg1 timestamp:(id)arg2;

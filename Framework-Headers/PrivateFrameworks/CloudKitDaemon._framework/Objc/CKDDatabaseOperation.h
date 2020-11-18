@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
 
 - (id)CKStatusReportProperties;
 - (id)activityCreate;
-- (void)configureRequest:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
-- (id)newChildOperationInfoOfClass:(Class)arg1;
+- (void)setPCSData:(id)arg1 forFetchedRecordID:(id)arg2;
+- (void)setPCSData:(id)arg1 forFetchedShareID:(id)arg2;
+- (void)setPCSData:(id)arg1 forFetchedZoneID:(id)arg2;
+- (void)spawnAndRunOperationOfClass:(Class)arg1 operationInfo:(id)arg2 spawnQueue:(id)arg3 operationConfigurationBlock:(CDUnknownBlockType)arg4;
 
 @end
 

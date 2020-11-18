@@ -16,6 +16,7 @@
     NSData *_currentDateForRequestingMoreMessages;
     NSData *_currentMessageIdsAndStatus;
     unsigned int _fullSyncVersion;
+    NSString *_mailboxId;
     BOOL _wantsBatchedResponse;
     BOOL _willTrimDatabaseAfterResults;
     struct {
@@ -33,8 +34,10 @@
 @property (readonly, nonatomic) BOOL hasCurrentDateForRequestingMoreMessages;
 @property (readonly, nonatomic) BOOL hasCurrentMessageIdsAndStatus;
 @property (nonatomic) BOOL hasFullSyncVersion;
+@property (readonly, nonatomic) BOOL hasMailboxId;
 @property (nonatomic) BOOL hasWantsBatchedResponse;
 @property (nonatomic) BOOL hasWillTrimDatabaseAfterResults;
+@property (strong, nonatomic) NSString *mailboxId; // @synthesize mailboxId=_mailboxId;
 @property (nonatomic) BOOL wantsBatchedResponse; // @synthesize wantsBatchedResponse=_wantsBatchedResponse;
 @property (nonatomic) BOOL willTrimDatabaseAfterResults; // @synthesize willTrimDatabaseAfterResults=_willTrimDatabaseAfterResults;
 

@@ -6,29 +6,35 @@
 
 #import <SAObjects/SADomainCommand.h>
 
+#import <SiriClientFlow/CFLocalAceHandling-Protocol.h>
 #import <SiriClientFlow/SAAceSerializable-Protocol.h>
 
 @class CFCBNightShiftSchedule, NSNumber, NSString;
 
-@interface CFCBSetNightShiftMode : SADomainCommand <SAAceSerializable>
+@interface CFCBSetNightShiftMode : SADomainCommand <CFLocalAceHandling, SAAceSerializable>
 {
 }
 
 @property (copy, nonatomic) NSNumber *active;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSNumber *enable;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *mode;
 @property (copy, nonatomic) NSString *option;
 @property (strong, nonatomic) CFCBNightShiftSchedule *schedule;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 
-+ (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
++ (id)aceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)setNightShiftMode;
 + (id)setNightShiftModeWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (void)handleWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)requiresResponse;
 
 @end

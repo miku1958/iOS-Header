@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXPhotosDetailsBarsContentView-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSString, UIColor, UIFont, UILabel;
+@class NSArray, NSString, UIColor, UIFont, UILabel;
 
 @interface PXNavigationTitleView : UIView <PXPhotosDetailsBarsContentView>
 {
@@ -30,21 +30,15 @@
     double _subviewsAlpha;
     UILabel *__titleLabel;
     UILabel *__subtitleLabel;
-    double __subtitleVerticalOffset;
     NSArray *__constraints;
-    NSLayoutConstraint *__subtitleBottomLayoutConstraint;
-    struct PXAssetBadgeInfo _badgeInfo;
     struct UIEdgeInsets __margins;
 }
 
 @property (strong, nonatomic, setter=_setConstraints:) NSArray *_constraints; // @synthesize _constraints=__constraints;
 @property (nonatomic, setter=_setMargins:) struct UIEdgeInsets _margins; // @synthesize _margins=__margins;
-@property (strong, nonatomic, setter=_setSubtitleBottomLayoutConstraint:) NSLayoutConstraint *_subtitleBottomLayoutConstraint; // @synthesize _subtitleBottomLayoutConstraint=__subtitleBottomLayoutConstraint;
 @property (readonly, nonatomic) UILabel *_subtitleLabel; // @synthesize _subtitleLabel=__subtitleLabel;
-@property (nonatomic, setter=_setSubtitleVerticalOffset:) double _subtitleVerticalOffset; // @synthesize _subtitleVerticalOffset=__subtitleVerticalOffset;
 @property (nonatomic, getter=_isSubtitleVisible, setter=_setSubtitleVisible:) BOOL _subtitleVisible; // @synthesize _subtitleVisible=__subtitleVisible;
 @property (readonly, nonatomic) UILabel *_titleLabel; // @synthesize _titleLabel=__titleLabel;
-@property (nonatomic) struct PXAssetBadgeInfo badgeInfo; // @synthesize badgeInfo=_badgeInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -57,9 +51,7 @@
 @property (strong, nonatomic) UIColor *titleTextColor; // @synthesize titleTextColor=_titleTextColor;
 @property (nonatomic) long long verticalSizeClass; // @synthesize verticalSizeClass=_verticalSizeClass;
 
-+ (id)_livePhotoBadgeImage;
 - (void).cxx_destruct;
-- (id)_attributedStringWithBadgeInfo:(struct PXAssetBadgeInfo)arg1 font:(id)arg2 verticalOffset:(double *)arg3;
 - (void)_invalidateConstraints;
 - (void)_invalidateFonts;
 - (void)_invalidateSize;
@@ -70,9 +62,7 @@
 - (void)_updateFontsIfNeeded;
 - (void)_updateIfNeeded;
 - (void)_updateSizeIfNeeded;
-- (void)_updateSubtitleBottomLayoutConstraint;
 - (void)_updateTextsIfNeeded;
-- (id)attributedStringWithBadgeInfo:(struct PXAssetBadgeInfo)arg1 font:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)updateConstraints;

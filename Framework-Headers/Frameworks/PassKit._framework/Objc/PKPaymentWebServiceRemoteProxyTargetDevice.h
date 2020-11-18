@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/PKPaymentWebServiceProxyObjectExportedInterface-Protocol.h>
 
@@ -30,6 +30,7 @@
 - (void)archiveBackgroundContext:(id)arg1;
 - (void)archiveContext:(id)arg1;
 - (void)canProvisionPaymentPassWithPrimaryAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)claimSecureElementForCurrentUserWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)deleteApplicationWithAID:(id)arg1;
 - (void)didRegisterWithRegionMap:(id)arg1 primaryRegionTopic:(id)arg2;
@@ -38,6 +39,7 @@
 - (void)getContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getProvisioningDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getRegistrationDataWithAuthToken:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getTrustedDeviceEnrollmentInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handlePotentialExpressPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)hasPassesOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
@@ -50,6 +52,7 @@
 - (void)paymentSupportedInCurrentRegion:(CDUnknownBlockType)arg1;
 - (void)queueConnectionToTrustedServiceManagerForPushTopic:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)removePass:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)secureElementOwnershipStateForCurrentUserWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setNewAuthRandomIfNecessaryReturningPairingState:(CDUnknownBlockType)arg1;
 - (void)signData:(id)arg1 signatureEntanglementMode:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)validateAddPreconditionsWithCompletion:(CDUnknownBlockType)arg1;

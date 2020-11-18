@@ -16,16 +16,22 @@ __attribute__((visibility("hidden")))
 {
     UIView *_mirroredView;
     struct CGSize _fixedSize;
+    CDUnknownBlockType _sizeBlock;
+    UIView *_fallbackView;
+    UIView *_associatedView;
 }
 
+@property (strong, nonatomic) UIView *associatedView; // @synthesize associatedView=_associatedView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIView *fallbackView; // @synthesize fallbackView=_fallbackView;
 @property (nonatomic) struct CGSize fixedSize;
 @property (readonly) unsigned long long hash;
 @property (readonly, strong) UIView *placeheldView;
 @property (readonly) Class superclass;
 
 + (id)placeholderForView:(id)arg1;
++ (id)placeholderWithSizer:(CDUnknownBlockType)arg1;
 + (id)placeholderWithWidth:(double)arg1 height:(double)arg2;
 - (void)_beginSplitTransitionIfNeeded:(double)arg1 gapWidth:(double)arg2;
 - (struct CGRect)_compatibleBounds;
@@ -37,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithSize:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (BOOL)isEqual:(id)arg1;
 - (void)layoutMergedSubviews;
 - (void)layoutSplitSubviewsWithLeftContentSize:(struct CGSize)arg1 rightContentSize:(struct CGSize)arg2;
 - (struct CGSize)leftContentViewSize;

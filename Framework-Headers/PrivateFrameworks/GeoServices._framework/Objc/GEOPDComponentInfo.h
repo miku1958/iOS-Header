@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDComponentFilter;
+@class GEOPDComponentFilter, PBUnknownFields;
 
 @interface GEOPDComponentInfo : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     unsigned int _count;
     GEOPDComponentFilter *_filter;
     unsigned int _startIndex;
@@ -38,13 +39,14 @@
 @property (nonatomic) BOOL includeSource; // @synthesize includeSource=_includeSource;
 @property (nonatomic) unsigned int startIndex; // @synthesize startIndex=_startIndex;
 @property (nonatomic) int type; // @synthesize type=_type;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (nonatomic) int urgency; // @synthesize urgency=_urgency;
 
+- (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
 - (int)StringAsUrgency:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

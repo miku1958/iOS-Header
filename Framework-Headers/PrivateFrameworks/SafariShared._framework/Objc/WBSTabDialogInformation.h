@@ -6,7 +6,8 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
+@class NSArray;
+
 @interface WBSTabDialogInformation : NSObject
 {
     CDUnknownBlockType _dismissalBlock;
@@ -15,12 +16,12 @@ __attribute__((visibility("hidden")))
     BOOL _blockingWebProcess;
     BOOL _dismissed;
     BOOL _presented;
-    unsigned long long _cancellationExceptions;
+    NSArray *_cancellationExemptions;
     CDStruct_497cfc99 _slot;
 }
 
 @property (readonly, nonatomic, getter=isBlockingWebProcess) BOOL blockingWebProcess; // @synthesize blockingWebProcess=_blockingWebProcess;
-@property (nonatomic) unsigned long long cancellationExceptions; // @synthesize cancellationExceptions=_cancellationExceptions;
+@property (copy, nonatomic) NSArray *cancellationExemptions; // @synthesize cancellationExemptions=_cancellationExemptions;
 @property (readonly, nonatomic, getter=isDismissed) BOOL dismissed; // @synthesize dismissed=_dismissed;
 @property (readonly, nonatomic, getter=isPresented) BOOL presented; // @synthesize presented=_presented;
 @property (nonatomic) CDStruct_497cfc99 slot; // @synthesize slot=_slot;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)dismissWithResponse:(id)arg1;
 - (id)initWithPresentationBlock:(CDUnknownBlockType)arg1 dismissalBlock:(CDUnknownBlockType)arg2 blocksWebProcessUntilDismissed:(BOOL)arg3;
+- (BOOL)isExemptFromCancellationInContext:(id)arg1;
 - (void)presentIfNeeded;
 
 @end

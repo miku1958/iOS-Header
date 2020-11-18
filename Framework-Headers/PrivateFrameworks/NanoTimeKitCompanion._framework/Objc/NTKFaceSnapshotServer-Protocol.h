@@ -10,6 +10,7 @@
 
 @protocol NTKFaceSnapshotServer <NSObject>
 - (void)createFaceForPerformanceTesting:(long long)arg1;
+- (void)performAfterCompletingCurrentlyPendingSnapshots:(void (^)(void))arg1;
 - (void)registerForUpdates;
 - (void)requestSnapshotOfFace:(NTKFace *)arg1;
 - (void)updateAllSnapshots;

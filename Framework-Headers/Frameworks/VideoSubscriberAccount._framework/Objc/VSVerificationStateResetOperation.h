@@ -6,15 +6,17 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class NSURLSessionTask, VSOptional, VSStoreURLBag;
+@class NSURLSessionTask, VSAuditToken, VSOptional, VSStoreURLBag;
 
 @interface VSVerificationStateResetOperation : VSAsyncOperation
 {
+    VSAuditToken *_auditToken;
     VSOptional *_result;
     VSStoreURLBag *_bag;
     NSURLSessionTask *_resetStateTask;
 }
 
+@property (copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (strong, nonatomic) VSStoreURLBag *bag; // @synthesize bag=_bag;
 @property (strong, nonatomic) NSURLSessionTask *resetStateTask; // @synthesize resetStateTask=_resetStateTask;
 @property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;

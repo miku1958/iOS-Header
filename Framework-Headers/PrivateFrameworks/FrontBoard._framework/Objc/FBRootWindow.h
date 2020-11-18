@@ -8,13 +8,15 @@
 
 #import <FrontBoard/FBSceneTransformTarget-Protocol.h>
 
-@class NSHashTable, NSString, UIView;
+@class CALayer, NSHashTable, NSString, UIView;
 
 @interface FBRootWindow : _UIRootWindow <FBSceneTransformTarget>
 {
     UIView *_sceneContainerView;
     UIView *_systemGestureView;
     NSHashTable *_transforms;
+    CALayer *_bezelLayer;
+    CALayer *_maskLayer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,6 +27,8 @@
 + (BOOL)_isSecure;
 - (BOOL)_appearsInLoupe;
 - (BOOL)_canBecomeKeyWindow;
+- (void)_configureRootLayer:(id)arg1 transformLayer:(id)arg2;
+- (id)_focusResponder;
 - (BOOL)_shouldPrepareScreenForWindow;
 - (id)_systemGestureView;
 - (void)_updateTransforms;
@@ -33,6 +37,8 @@
 - (void)dealloc;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithDisplay:(id)arg1;
+- (id)initWithDisplayConfiguration:(id)arg1;
+- (id)initWithScreen:(id)arg1;
 - (void)removeSceneTransform:(id)arg1;
 - (id)sceneContainerView;
 - (void)setFrame:(struct CGRect)arg1;

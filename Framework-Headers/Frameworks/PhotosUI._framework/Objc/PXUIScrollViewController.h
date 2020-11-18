@@ -47,7 +47,6 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewWillLayoutSubviews:(id)arg1;
-- (void)setContentInset:(struct UIEdgeInsets)arg1;
 - (void)setScrollViewContentBounds:(struct CGRect)arg1;
 - (void)setScrollViewNeedsLayout;
 

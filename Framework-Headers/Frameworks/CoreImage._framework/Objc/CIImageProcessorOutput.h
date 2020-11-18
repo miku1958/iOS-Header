@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGRect region;
 
 - (void)dealloc;
-- (id)initWithSurface:(struct __IOSurface *)arg1 texture:(struct Texture)arg2 bounds:(struct CGRect)arg3 context:(struct Context *)arg4;
+- (id)initWithSurface:(struct __IOSurface *)arg1 texture:(struct Texture)arg2 allowSRGB:(BOOL)arg3 bounds:(struct CGRect)arg4 context:(struct Context *)arg5;
 - (BOOL)metalCommandBufferRequested;
 
 @end

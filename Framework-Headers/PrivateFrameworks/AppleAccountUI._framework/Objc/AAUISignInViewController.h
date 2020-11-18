@@ -12,16 +12,17 @@
 #import <AppleAccountUI/UITextFieldDelegate-Protocol.h>
 #import <AppleAccountUI/UITextViewDelegate-Protocol.h>
 
-@class AAUIBuddyView, AAUIHeaderView, NSArray, NSString, UILabel, UITableView, UITableViewCell;
+@class AAUIBuddyView, AAUIHeaderView, NSArray, NSString, UILabel, UITableView, UITableViewCell, UITableViewHeaderFooterView;
 @protocol AAUISignInViewControllerDelegate;
 
 @interface AAUISignInViewController : UIViewController <RemoteUIControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UITextViewDelegate>
 {
-    AAUIHeaderView *_tableHeaderView;
     UITableView *_tableView;
     UITableViewCell *_usernameCell;
     UITableViewCell *_passwordCell;
-    AAUIBuddyView *_tableFooterView;
+    UITableViewHeaderFooterView *_tableHeaderView;
+    AAUIHeaderView *_accountsHeaderView;
+    UITableViewHeaderFooterView *_tableFooterView;
     NSArray *_compactConstraints;
     NSArray *_expandedConstraints;
     BOOL _shouldAnticipatePiggybacking;
@@ -44,23 +45,26 @@
 @property (readonly, nonatomic) UILabel *titleLabel;
 @property (strong, nonatomic) AAUIBuddyView *view; // @dynamic view;
 
++ (void)phoneNumberSupportedWithCompletion:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+- (id)_accountsHeaderView;
 - (void)_actionButtonSelected:(id)arg1;
 - (void)_attemptAuthentication;
 - (void)_attemptAuthenticationWithContext:(id)arg1;
 - (id)_attributedStringForFooter;
 - (id)_authorizationValueForAuthenticationResults:(id)arg1;
 - (void)_beginObservingKeyboardWillShowNotifications;
+- (void)_beginObservingSizeCategoryNotification;
 - (void)_beginObservingTextFieldDidChangeNotifications;
 - (id)_cancelBarButtonItem;
 - (void)_cancelButtonSelected:(id)arg1;
-- (double)_compressedHeightForView:(id)arg1 containedInView:(id)arg2;
 - (void)_delegate_signInViewControllerDidCancel;
 - (void)_delegate_signInViewControllerDidCompleteWithAuthenticationResults:(id)arg1;
 - (void)_endObservingKeyboardWillShowNotifications;
+- (void)_endObservingSizeCategoryNotification;
 - (void)_endObservingTextFieldDidChangeNotifications;
-- (id)_fontForFooter;
 - (BOOL)_hasValidCredentials;
+- (BOOL)_isGreenTeaCapable;
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
 - (id)_nextBarButtonItem;
@@ -79,25 +83,26 @@
 - (void)_updateContentInsetWithHeight:(double)arg1;
 - (id)_usernameCell;
 - (id)authenticationContext;
+- (void)constrainView:(id)arg1 toFillHeaderFooterView:(id)arg2;
 - (void)dealloc;
-- (double)heightForFooterInTableView:(id)arg1;
-- (double)heightForHeaderInTableView:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (BOOL)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3;
+- (void)sizeCategoryDidChange:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldDrawTopSeparatorForSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
-- (id)viewForFooterInTableView:(id)arg1;
-- (id)viewForHeaderInTableView:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

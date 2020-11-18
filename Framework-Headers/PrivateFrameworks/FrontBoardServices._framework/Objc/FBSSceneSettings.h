@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
 #import <FrontBoardServices/NSCopying-Protocol.h>
 #import <FrontBoardServices/NSMutableCopying-Protocol.h>
 
-@class BSSettings, NSArray, NSSet, NSString;
+@class BSSettings, FBSDisplayConfiguration, FBSDisplayIdentity, NSArray, NSSet, NSString;
 
 @interface FBSSceneSettings : NSObject <BSDescriptionProviding, NSCopying, NSMutableCopying>
 {
+    FBSDisplayConfiguration *_displayConfiguration;
     struct CGRect _frame;
     double _level;
     long long _interfaceOrientation;
@@ -29,6 +30,8 @@
 @property (readonly, nonatomic, getter=isBackgrounded) BOOL backgrounded; // @synthesize backgrounded=_backgrounded;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) FBSDisplayConfiguration *displayConfiguration; // @synthesize displayConfiguration=_displayConfiguration;
+@property (readonly, copy, nonatomic) FBSDisplayIdentity *displayIdentity;
 @property (readonly, nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;

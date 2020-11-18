@@ -8,17 +8,16 @@
 
 @class NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CNFutureCompletionBlocks : NSObject
 {
     NSMutableArray *_completionBlocks;
     BOOL _shouldCallImmediately;
 }
 
+- (void).cxx_destruct;
 - (void)addCompletionBlock:(CDUnknownBlockType)arg1 orCallWithFutureResult:(id)arg2;
 - (void)addFailureBlock:(CDUnknownBlockType)arg1 orCallWithFutureResult:(id)arg2;
 - (void)addSuccessBlock:(CDUnknownBlockType)arg1 orCallWithFutureResult:(id)arg2;
-- (void)dealloc;
 - (void)flushCompletionBlocksWithFutureResult:(id)arg1;
 - (id)init;
 - (void)setShouldCallImmediately:(BOOL)arg1;

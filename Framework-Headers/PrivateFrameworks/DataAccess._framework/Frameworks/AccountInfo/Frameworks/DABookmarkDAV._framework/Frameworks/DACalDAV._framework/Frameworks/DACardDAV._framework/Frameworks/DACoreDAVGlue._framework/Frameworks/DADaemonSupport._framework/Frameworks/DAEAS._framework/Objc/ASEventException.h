@@ -42,6 +42,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)exceptionDate;
+- (BOOL)fillOutMissingExternalIds;
 - (BOOL)hasOccurrenceInTheFuture;
 - (id)initWithCalEvent:(void *)arg1 originalEvent:(id)arg2 account:(id)arg3;
 - (id)initWithCoder:(id)arg1;

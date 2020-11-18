@@ -6,16 +6,20 @@
 
 #import <GeoServices/GEORoutePreloader.h>
 
-@class GEOTileKeyList, NSMapTable, NSMutableArray, NSTimer;
-@protocol GEORoutePreloadCamera;
+#import <GeoServices/GEORoutePreloaderSubclass-Protocol.h>
 
-@interface GEONavRoutePreloader : GEORoutePreloader
+@class GEOTileKeyList, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSTimer;
+@protocol GEORoutePreloadCamera, OS_os_log;
+
+@interface GEONavRoutePreloader : GEORoutePreloader <GEORoutePreloaderSubclass>
 {
     id<GEORoutePreloadCamera> _camera;
     GEOTileKeyList *_tilesLoadingOrLoaded;
     GEOTileKeyList *_tilesReceived;
     GEOTileKeyList *_tilesMissed;
     NSMutableArray *_steps;
+    NSMutableArray *_failedSubscriptions;
+    NSMutableDictionary *_subscriptions;
     unsigned int _stepGeneration;
     BOOL _tooFarFromRoute;
     long long _currentLoadingSteps;
@@ -31,7 +35,9 @@
 }
 
 @property (strong, nonatomic) id<GEORoutePreloadCamera> camera; // @synthesize camera=_camera;
+@property (readonly, nonatomic) NSObject<OS_os_log> *preloaderLog;
 
+- (void).cxx_destruct;
 - (void)_accumulateSteps;
 - (void)_cancelAllSteps;
 - (void)_cancelPreloadTasks;
@@ -43,6 +49,8 @@
 - (void)_incrementErrorForStep:(id)arg1;
 - (BOOL)_loadStep:(id)arg1 requireWiFi:(BOOL)arg2;
 - (void)_performNextRequests;
+- (void)_performSubscriptionRequestsPreemptedStepIndex:(long long)arg1 currentRoutePositionStepIndex:(long long)arg2 firstErrorStepIndex:(long long)arg3 firstLoadStepIndex:(long long)arg4 loadStepsAhead:(long long)arg5 loadStepsAheadIfNoWiFi:(long long)arg6;
+- (void)_performTileRequestsPreemptedStepIndex:(long long)arg1 currentRoutePositionStepIndex:(long long)arg2 firstErrorStepIndex:(long long)arg3 firstLoadStepIndex:(long long)arg4 loadStepsAhead:(long long)arg5 loadStepsAheadIfNoWiFi:(long long)arg6;
 - (void)_resetErrCounts;
 - (void)_retryFailuresWithErrorsReset:(BOOL)arg1;
 - (void)beginLoading;
@@ -54,7 +62,6 @@
 - (BOOL)loggingEnabled;
 - (BOOL)minimalDebuggingEnabled;
 - (int)preloadStateForTile:(const struct _GEOTileKey *)arg1;
-- (void)preloaderLog:(id)arg1;
 - (void)setNetworkQuality:(unsigned long long)arg1;
 - (void)setTraits:(id)arg1;
 - (void)stopLoading;

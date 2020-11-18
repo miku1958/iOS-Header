@@ -8,35 +8,36 @@
 
 #import <PhotosUICore/PXPeopleStatusViewDelegate-Protocol.h>
 
-@class NSString, PXPeopleProgressManager, PXPeopleStatusViewController;
+@class NSString, PXPeopleProgressManager, PXPeopleSectionedDataSource, PXPeopleStatusViewController;
 
 @interface PXPeopleOnboardingViewController : UIViewController <PXPeopleStatusViewDelegate>
 {
-    BOOL _originalNavBarTranslucent;
     unsigned long long _onboardStatus;
     PXPeopleProgressManager *_progressManager;
     PXPeopleStatusViewController *_statusViewController;
+    PXPeopleSectionedDataSource *_peopleDataSource;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long onboardStatus; // @synthesize onboardStatus=_onboardStatus;
-@property BOOL originalNavBarTranslucent; // @synthesize originalNavBarTranslucent=_originalNavBarTranslucent;
+@property (strong, nonatomic) PXPeopleSectionedDataSource *peopleDataSource; // @synthesize peopleDataSource=_peopleDataSource;
 @property (strong, nonatomic) PXPeopleProgressManager *progressManager; // @synthesize progressManager=_progressManager;
 @property (strong, nonatomic) PXPeopleStatusViewController *statusViewController; // @synthesize statusViewController=_statusViewController;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_progressChanged:(id)arg1;
+- (void)_pushToPeopleHome:(id)arg1;
 - (void)_transitionFromViewController:(id)arg1 toViewController:(id)arg2;
 - (void)_updateStatusViewForStatus:(unsigned long long)arg1 progress:(double)arg2;
 - (void)_updateWithStatus:(unsigned long long)arg1 progress:(double)arg2;
 - (void)dealloc;
 - (void)didReceiveMemoryWarning;
 - (id)init;
-- (id)initWithProgressManager:(id)arg1;
-- (void)pushToPeopleHome:(id)arg1;
+- (id)initWithDataSource:(id)arg1 progressManager:(id)arg2;
+- (id)peopleHomeController;
 - (void)statusViewControllerEnterButtonTapped:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;

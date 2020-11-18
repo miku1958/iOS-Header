@@ -6,12 +6,13 @@
 
 #import <SAObjects/SASStartSpeech.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface SASStartSpeechRequest : SASStartSpeech
 {
 }
 
+@property (copy, nonatomic) NSString *clientModelVersion;
 @property (nonatomic) BOOL eyesFree;
 @property (nonatomic) BOOL handsFree;
 @property (nonatomic) BOOL talkOnly;
@@ -23,6 +24,7 @@
 + (id)startSpeechRequestWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)requiresResponse;
 
 @end
 

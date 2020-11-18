@@ -12,9 +12,11 @@
 {
     long long _type;
     NSString *_name;
+    struct _NSRange _range;
 }
 
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (nonatomic) struct _NSRange range; // @synthesize range=_range;
 @property (readonly, nonatomic) NSString *stringValue;
 @property long long type; // @synthesize type=_type;
 

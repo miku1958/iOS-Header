@@ -6,18 +6,20 @@
 
 #import <PhotoVision/PVObject.h>
 
-#import <PhotoVision/CVMLPhotosFaceRepresentation-Protocol.h>
+#import <PhotoVision/PFPhotosFaceRepresentation-Protocol.h>
 
 @class NSString, PVFaceprint;
 
-@interface PVFace : PVObject <CVMLPhotosFaceRepresentation>
+@interface PVFace : PVObject <PFPhotosFaceRepresentation>
 {
     BOOL _hidden;
     BOOL _isInTrash;
     BOOL _manual;
+    BOOL _isTooSmall;
     BOOL _hasSmile;
     BOOL _isLeftEyeClosed;
     BOOL _isRightEyeClosed;
+    int _trainingType;
     unsigned int _faceAlgorithmVersion;
     NSString *_personLocalIdentifier;
     long long _sourceWidth;
@@ -32,6 +34,7 @@
     double _mouthX;
     double _mouthY;
     double _blurScore;
+    double _exposureScore;
     NSString *_adjustmentVersion;
     long long _nameSource;
     double _poseRoll;
@@ -54,6 +57,7 @@
 @property (nonatomic) double centerX; // @synthesize centerX=_centerX;
 @property (nonatomic) double centerY; // @synthesize centerY=_centerY;
 @property (nonatomic) long long clusterSequenceNumber; // @synthesize clusterSequenceNumber=_clusterSequenceNumber;
+@property (nonatomic) double exposureScore; // @synthesize exposureScore=_exposureScore;
 @property (nonatomic) double expressionConfidence; // @synthesize expressionConfidence=_expressionConfidence;
 @property (nonatomic) double expressionScore1; // @synthesize expressionScore1=_expressionScore1;
 @property (nonatomic) double expressionScore2; // @synthesize expressionScore2=_expressionScore2;
@@ -68,6 +72,7 @@
 @property (nonatomic) BOOL isInTrash; // @synthesize isInTrash=_isInTrash;
 @property (nonatomic) BOOL isLeftEyeClosed; // @synthesize isLeftEyeClosed=_isLeftEyeClosed;
 @property (nonatomic) BOOL isRightEyeClosed; // @synthesize isRightEyeClosed=_isRightEyeClosed;
+@property (nonatomic) BOOL isTooSmall; // @synthesize isTooSmall=_isTooSmall;
 @property (nonatomic) double leftEyeX; // @synthesize leftEyeX=_leftEyeX;
 @property (nonatomic) double leftEyeY; // @synthesize leftEyeY=_leftEyeY;
 @property (nonatomic) BOOL manual; // @synthesize manual=_manual;
@@ -84,6 +89,7 @@
 @property (nonatomic) double size; // @synthesize size=_size;
 @property (nonatomic) long long sourceHeight; // @synthesize sourceHeight=_sourceHeight;
 @property (nonatomic) long long sourceWidth; // @synthesize sourceWidth=_sourceWidth;
+@property (nonatomic) int trainingType; // @synthesize trainingType=_trainingType;
 
 + (id)faceForCVMLFaceObservation:(id)arg1 fromImage:(id)arg2 error:(id *)arg3;
 + (id)faceForCVMLFaceObservation:(id)arg1 fromImageWithPixelWidth:(unsigned long long)arg2 pixelHeight:(unsigned long long)arg3 error:(id *)arg4;
@@ -93,13 +99,20 @@
 - (struct CGRect)absoluteFaceRect;
 - (struct CGRect)absoluteFaceRectForImageSize:(struct CGSize)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (double)cvmlPhotosFaceRepresentationCenterX;
-- (double)cvmlPhotosFaceRepresentationCenterY;
-- (double)cvmlPhotosFaceRepresentationSize;
-- (long long)cvmlPhotosFaceRepresentationSourceHeight;
-- (long long)cvmlPhotosFaceRepresentationSourceWidth;
 - (id)description;
 - (struct CGRect)normalizedFaceRect;
+- (double)photosFaceRepresentationBlurScore;
+- (double)photosFaceRepresentationCenterX;
+- (double)photosFaceRepresentationCenterY;
+- (long long)photosFaceRepresentationClusterSequenceNumber;
+- (BOOL)photosFaceRepresentationHasSmile;
+- (BOOL)photosFaceRepresentationIsLeftEyeClosed;
+- (BOOL)photosFaceRepresentationIsRightEyeClosed;
+- (id)photosFaceRepresentationLocalIdentifier;
+- (long long)photosFaceRepresentationQualityMeasure;
+- (double)photosFaceRepresentationSize;
+- (long long)photosFaceRepresentationSourceHeight;
+- (long long)photosFaceRepresentationSourceWidth;
 - (BOOL)setCenterAndSizeFromNormalizedFaceRect:(struct CGRect)arg1;
 - (void)setCoordinatesAndFeaturesFromFace:(id)arg1;
 

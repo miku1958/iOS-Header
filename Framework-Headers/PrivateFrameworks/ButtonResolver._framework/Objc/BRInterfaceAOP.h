@@ -10,7 +10,8 @@
 
 @interface BRInterfaceAOP : BRInterface
 {
-    struct __IOHIDEventSystemClient *_client;
+    struct IONotificationPort *_notificationPort;
+    unsigned int _arrivalNotification;
     CDUnknownBlockType _notificationBlock;
     NSString *_notificationName;
     HAButtonHapticsLoader *_loader;
@@ -18,27 +19,33 @@
     NSMutableArray *_slotArray;
     NSMutableDictionary *_stateDict;
     BOOL _isReady;
+    BOOL _fastHaptics;
+    unsigned int _service;
+    unsigned int _connect;
     unsigned long long _maxAssetSlots;
-    struct __IOHIDServiceClient *_service;
 }
 
-@property (nonatomic) struct __IOHIDServiceClient *service; // @synthesize service=_service;
+@property (nonatomic) unsigned int connect; // @synthesize connect=_connect;
+@property (readonly, nonatomic) BOOL fastHaptics; // @synthesize fastHaptics=_fastHaptics;
+@property (nonatomic) unsigned int service; // @synthesize service=_service;
 
++ (int)_convertAssertion:(unsigned long long)arg1;
 + (int)_convertClickState:(unsigned long long)arg1;
 + (int)_convertForceFeel:(unsigned long long)arg1;
 + (id)interface;
-- (void)_findDevices;
+- (void)_findService;
 - (void)_receiveLoaderAvailableNotification:(id)arg1;
 - (BOOL)_serviceSetProperty:(void *)arg1 forKey:(struct __CFString *)arg2;
 - (BOOL)_setDefaultAOPConfigs;
 - (BOOL)_setGlobalAOPConfigsFromBRFConfigs:(id)arg1;
-- (BOOL)_setStateAOPConfigsFromStateData:(id)arg1;
+- (BOOL)_setStateAOPConfigsFromStateData:(id)arg1 andSlotData:(id)arg2;
 - (id)dataForSlot:(id)arg1 fromArray:(id)arg2;
 - (void)dealloc;
 - (id)description;
 - (BOOL)disableStates:(id)arg1 clearAsset:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)enableStates:(id)arg1 error:(id *)arg2;
 - (id)init;
+- (id)initWithFastHaptics:(BOOL)arg1;
 - (BOOL)isReady;
 - (unsigned long long)maxAssetSlots;
 - (void)mergeStateChanges:(id)arg1 into:(id)arg2;

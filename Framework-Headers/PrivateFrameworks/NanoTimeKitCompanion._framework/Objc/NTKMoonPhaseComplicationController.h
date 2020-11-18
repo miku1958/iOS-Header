@@ -8,7 +8,7 @@
 
 #import <NanoTimeKitCompanion/NTKTimeTravel-Protocol.h>
 
-@class CLLocation, NSDate, NSNumber, NSTimer;
+@class CLLocation, NSDate, NSString, NSTimer;
 @protocol NTKMoonPhaseComplicationDisplay;
 
 @interface NTKMoonPhaseComplicationController : NTKComplicationController <NTKTimeTravel>
@@ -24,13 +24,13 @@
     NSTimer *_afterEventTimer;
     BOOL _paused;
     BOOL _missedUpdateWhilePaused;
-    struct NSNumber *_token;
+    struct NSString *_token;
     CLLocation *_location;
 }
 
 @property (readonly, weak, nonatomic) id<NTKMoonPhaseComplicationDisplay> legacyDisplay; // @dynamic legacyDisplay;
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
-@property (strong, nonatomic) NSNumber *token; // @synthesize token=_token;
+@property (strong, nonatomic) NSString *token; // @synthesize token=_token;
 
 + (BOOL)_acceptsComplicationType:(unsigned long long)arg1;
 - (void).cxx_destruct;

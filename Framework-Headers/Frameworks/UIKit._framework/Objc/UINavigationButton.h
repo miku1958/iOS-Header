@@ -25,14 +25,14 @@
     BOOL _isFontScaleInvalid;
     BOOL _wantsBlendModeForAccessibilityBackgrounds;
     BOOL __barItemHidden;
-    double _minimumWidth;
-    double _maximumWidth;
     long long _buttonItemStyle;
     NSDictionary *_stylesForSizingTitles;
     double _fontScaleAdjustment;
     UIColor *_accessibilityBackgroundTintColor;
     Class _appearanceGuideClass;
     UIView *__enclosingBar;
+    double _minimumWidth;
+    double _maximumWidth;
     struct UIEdgeInsets __additionalSelectionInsets;
 }
 
@@ -46,6 +46,7 @@
 @property (nonatomic, setter=_setFontScaleAdjustment:) double _fontScaleAdjustment; // @synthesize _fontScaleAdjustment;
 @property (nonatomic, setter=_setFontScaleInvalid:) BOOL _isFontScaleInvalid; // @synthesize _isFontScaleInvalid;
 @property (copy, nonatomic, setter=_setStylesForSizingTitles:) NSDictionary *_stylesForSizingTitles; // @synthesize _stylesForSizingTitles;
+@property (strong, nonatomic, setter=_setTintColor:) UIColor *_tintColor;
 @property (nonatomic, setter=_setWantsBlendModeForAccessibilityBackgrounds:) BOOL _wantsBlendModeForAccessibilityBackgrounds; // @synthesize _wantsBlendModeForAccessibilityBackgrounds;
 @property (nonatomic) long long barStyle; // @synthesize barStyle=_barStyle;
 @property (nonatomic) int controlSize;
@@ -99,7 +100,6 @@
 - (BOOL)_isModernButton;
 - (struct UIEdgeInsets)_pathImageEdgeInsets;
 - (struct UIEdgeInsets)_pathTitleEdgeInsets;
-- (void)_prepareToAppearInNavigationItem:(id)arg1 onLeft:(BOOL)arg2;
 - (struct CGRect)_selectedIndicatorBounds;
 - (void)_sendSetNeedsLayoutToSuperviewOnTitleAnimationCompletionIfNecessary;
 - (void)_setBackButtonBackgroundImage:(id)arg1 forState:(unsigned long long)arg2 barMetrics:(long long)arg3;
@@ -111,15 +111,14 @@
 - (void)_setBoundsAdjustment:(struct CGSize)arg1;
 - (void)_setFrame:(struct CGRect)arg1 deferLayout:(BOOL)arg2;
 - (void)_setGroupName:(id)arg1 forNavigationBar:(id)arg2;
-- (void)_setTintColor:(id)arg1;
 - (void)_setTitleFrozen:(BOOL)arg1;
 - (void)_setTitlePositionAdjustment:(struct UIOffset)arg1 forBarMetrics:(long long)arg2;
 - (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_setWantsLetterpressContent;
 - (BOOL)_showsAccessibilityBackgroundWhenEnabled;
-- (id)_tintColor;
 - (struct UIOffset)_titlePositionAdjustmentForBarMetrics:(long long)arg1;
 - (id)_titleTextAttributesForState:(unsigned long long)arg1;
+- (void)_uinavigationbar_prepareToAppearInNavigationItem:(id)arg1 onLeft:(BOOL)arg2;
 - (void)_updateContentInsets;
 - (void)_updateShadowOffsetWithAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_updateStyle;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDate, PLCloudResourcePrefetchManager, PLCloudResourcePruneManager;
 @protocol OS_dispatch_queue;
@@ -22,7 +22,8 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithCPLManager:(id)arg1;
-- (void)startAutomaticPrefetchOrPruneWithTimeout:(BOOL)arg1;
+- (void)startAutomaticPrefetchAndPruneWithTimeout:(BOOL)arg1;
+- (void)startAutomaticPruneIfNecessary;
 - (id)statusForDebug:(BOOL)arg1;
 - (void)stop;
 

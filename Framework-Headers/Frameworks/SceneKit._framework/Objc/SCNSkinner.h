@@ -13,9 +13,9 @@
 @interface SCNSkinner : NSObject <NSSecureCoding>
 {
     struct __C3DSkinner *_skinner;
-    SCNNode *_skeleton;
     SCNGeometry *_baseGeometry;
     BOOL _bonesAndIndicesCompression;
+    SCNNode *_skeleton;
 }
 
 @property (strong, nonatomic) SCNGeometry *baseGeometry;
@@ -24,7 +24,7 @@
 @property (readonly, nonatomic) NSArray *boneInverseBindTransforms;
 @property (readonly, nonatomic) SCNGeometrySource *boneWeights;
 @property (readonly, nonatomic) NSArray *bones;
-@property (strong, nonatomic) SCNNode *skeleton;
+@property (weak, nonatomic) SCNNode *skeleton;
 
 + (struct __C3DSkinner *)_createSkinnerWithCompressedData:(id)arg1 bonesCount:(unsigned long long)arg2 vertexCount:(unsigned long long)arg3;
 + (struct __C3DSkinner *)_createSkinnerWithVertexCount:(long long)arg1 bones:(id)arg2 boneWeights:(id)arg3 boneIndices:(id)arg4 baseGeometry:(id)arg5;

@@ -10,6 +10,7 @@
 
 @interface ISBiometricUpdateTouchIDSettingsOperation : ISOperation
 {
+    BOOL _regeneratePublicKey;
     CDUnknownBlockType _resultBlock;
     long long _status;
     NSNumber *_accountIdentifier;
@@ -20,6 +21,7 @@
 @property (copy, nonatomic) NSNumber *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property (copy, nonatomic) NSString *attestationString; // @synthesize attestationString=_attestationString;
 @property (strong, nonatomic) ISBiometricStore *biometricStore; // @synthesize biometricStore=_biometricStore;
+@property BOOL regeneratePublicKey; // @synthesize regeneratePublicKey=_regeneratePublicKey;
 @property (copy) CDUnknownBlockType resultBlock; // @synthesize resultBlock=_resultBlock;
 @property (readonly) long long status; // @synthesize status=_status;
 

@@ -8,52 +8,45 @@
 
 #import <PhotosUICore/PHPhotoLibraryChangeObserver-Protocol.h>
 
-@class NSDictionary, NSObject, NSString, PXPeopleFaceTileImageManager;
-@protocol OS_dispatch_queue;
+@class NSDictionary, NSMutableDictionary, NSString, PXPeopleFaceTileImageManager;
 
 @interface PXPeoplePersonDataSource : PXPeopleDataSource <PHPhotoLibraryChangeObserver>
 {
     PXPeopleFaceTileImageManager *_imageManager;
-    NSDictionary *_keyFacesByPersons;
+    NSMutableDictionary *_keyFacesByPersons;
     NSDictionary *_assetsByFaces;
-    NSObject<OS_dispatch_queue> *_imageManagerDataSourceLoadingQueue;
-    long long _personType;
+    unsigned long long _personFetchType;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PXPeopleFaceTileImageManager *imageManager;
-@property (nonatomic) long long personType; // @synthesize personType=_personType;
+@property (nonatomic) unsigned long long personFetchType; // @synthesize personFetchType=_personFetchType;
 @property (readonly) Class superclass;
 
-+ (id)hiddenPeopleDataSourceWithFetchLimit:(unsigned long long)arg1;
-+ (id)importantPeopleDataSourceWithFetchLimit:(unsigned long long)arg1;
-+ (CDUnknownBlockType)manualOrderComparator;
-+ (id)otherPeopleDataSourceWithFetchLimit:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)_applyChanges:(id)arg1;
 - (id)_assetForFace:(id)arg1;
 - (void)_asyncLoadImageForItem:(id)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3 fastDisplayBlock:(CDUnknownBlockType)arg4;
+- (void)_cacheFacesAndAssets;
 - (id)_faceForPerson:(id)arg1;
-- (void)_handleMembersLoadedWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_fetchResultForFetchType:(unsigned long long)arg1 fetchOptions:(id)arg2;
 - (id)_itemsArrayFromObjects:(id)arg1;
 - (id)_membersForModelObjects:(id)arg1;
-- (void)_updateMember:(id)arg1 WithModelObject:(id)arg2;
+- (long long)_personTypeForFetchType:(unsigned long long)arg1;
 - (void)addVisiblePerson:(id)arg1;
 - (void)cancelImageLoadingForItem:(id)arg1;
-- (CDUnknownBlockType)defaultComparator;
-- (id)initWithImageManagerSupportAndName:(id)arg1 objectsReloadBlock:(CDUnknownBlockType)arg2 asynchronousLoad:(BOOL)arg3 callbackDelegate:(id)arg4;
-- (id)initWithName:(id)arg1 fetchResultBlock:(CDUnknownBlockType)arg2;
-- (id)initWithName:(id)arg1 objects:(id)arg2;
-- (id)initWithName:(id)arg1 personType:(long long)arg2 fetchLimit:(unsigned long long)arg3;
-- (id)initWithName:(id)arg1 personType:(long long)arg2 objects:(id)arg3;
+- (id)generateFetchResult;
+- (id)initWithName:(id)arg1 personFetchType:(unsigned long long)arg2 fetchLimit:(unsigned long long)arg3;
+- (id)initWithName:(id)arg1 personFetchType:(unsigned long long)arg2 objects:(id)arg3;
 - (void)loadObjectsAndUpdateMembersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)photoLibraryDidChange:(id)arg1;
 - (void)removeVisiblePerson:(id)arg1;
 - (void)startListeningForChanges;
 - (void)stopListeningForChanges;
 - (id)titleAtIndex:(unsigned long long)arg1;
+- (void)updateKeyFace:(id)arg1 forPerson:(id)arg2;
 
 @end
 

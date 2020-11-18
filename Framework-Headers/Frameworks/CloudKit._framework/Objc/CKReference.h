@@ -25,8 +25,11 @@
 @property (readonly, nonatomic) unsigned long long referenceAction; // @synthesize referenceAction=_referenceAction;
 @property (readonly) Class superclass;
 
++ (unsigned long long)ckReferenceActionForCKDPRecordReferenceType:(int)arg1;
++ (int)ckdpReferenceTypeForCKReferenceAction:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
 - (id)CKPropertiesDescription;
 - (id)_initBare;
 - (id)ckShortDescription;

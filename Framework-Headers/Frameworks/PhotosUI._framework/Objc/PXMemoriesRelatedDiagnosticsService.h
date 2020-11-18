@@ -10,7 +10,7 @@
 {
 }
 
-- (id)_curationDebugStringForDictionary:(id)arg1;
+- (id)_curationDebugStringForDictionary:(id)arg1 asset:(id)arg2;
 - (BOOL)canProvideConsoleDescription;
 - (BOOL)canProvideContextualViewController;
 - (BOOL)canProvideSettingsViewController;

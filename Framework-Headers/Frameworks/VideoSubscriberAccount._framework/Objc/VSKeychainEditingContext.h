@@ -6,27 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, NSSet;
+@class NSMutableSet, NSSet, NSUndoManager, VSKeychainStore;
 
 __attribute__((visibility("hidden")))
 @interface VSKeychainEditingContext : NSObject
 {
+    VSKeychainStore *_keychainStore;
+    NSUndoManager *_undoManager;
     NSMutableSet *_items;
 }
 
 @property (readonly, nonatomic) NSSet *deletedItems;
 @property (readonly, nonatomic) NSSet *insertedItems;
 @property (strong, nonatomic) NSMutableSet *items; // @synthesize items=_items;
+@property (strong, nonatomic) VSKeychainStore *keychainStore; // @synthesize keychainStore=_keychainStore;
 @property (readonly, nonatomic) NSSet *registeredItems;
+@property (strong, nonatomic) NSUndoManager *undoManager; // @synthesize undoManager=_undoManager;
 @property (readonly, nonatomic) NSSet *updatedItems;
 
 - (void).cxx_destruct;
-- (struct __CFDictionary *)_createQueryForItemValues:(id)arg1 withItemKind:(id)arg2;
 - (id)_findOrCreateItemForCommittedValues:(id)arg1 withItemKind:(id)arg2;
-- (void)_populateErrors:(id)arg1 withResult:(int)arg2 affectingItem:(id)arg3;
+- (void)_populateErrors:(id)arg1 withError:(id)arg2 affectingItem:(id)arg3;
 - (void)_populateQuery:(struct __CFDictionary *)arg1 usingPredicate:(id)arg2 withItemKind:(id)arg3;
-- (void)_populateResult:(id)arg1 forRequest:(id)arg2 fromMatch:(struct __CFDictionary *)arg3;
-- (void)_populateUserInfoDictionary:(id)arg1 withSecErrorCode:(int)arg2;
+- (void)_populateResult:(id)arg1 forRequest:(id)arg2 fromMatch:(id)arg3;
+- (id)_queryForItemValues:(id)arg1 withItemKind:(id)arg2;
 - (id)_subsetOfRegisteredItemsWithKeyPath:(id)arg1;
 - (void)deleteItem:(id)arg1;
 - (id)executeFetchRequest:(id)arg1 error:(id *)arg2;

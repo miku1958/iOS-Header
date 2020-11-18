@@ -11,18 +11,24 @@
     unsigned int _service;
     unsigned int _connection;
     struct IONotificationPort *_notificationPort;
+    unsigned int _interestNotification;
+    BOOL _serviceIsAlive;
 }
 
-@property (readonly, nonatomic) unsigned int connection;
-@property (readonly, nonatomic) unsigned int service;
+@property (readonly, nonatomic) unsigned int connection; // @dynamic connection;
+@property (readonly, nonatomic) unsigned int service; // @dynamic service;
+@property (readonly, nonatomic) BOOL serviceIsAlive; // @dynamic serviceIsAlive;
 
 + (id)availableKernelClockIdentifiers;
 + (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
 + (id)iokitMatchingDictionaryForClockIdentifier:(unsigned long long)arg1;
+- (void)_handleInterestNotification:(unsigned int)arg1 withArgument:(void *)arg2;
 - (void)_handleNotification:(unsigned int)arg1 withArg1:(unsigned long long)arg2 andArg2:(unsigned long long)arg3;
 - (id)clockName;
+- (unsigned long long)convertFromDomainIntervalToMachAbsoluteInterval:(unsigned long long)arg1;
 - (BOOL)convertFromDomainTime:(unsigned long long *)arg1 toMachAbsoluteTime:(unsigned long long *)arg2 withCount:(unsigned int)arg3;
 - (unsigned long long)convertFromDomainToMachAbsoluteTime:(unsigned long long)arg1 withFlags:(unsigned int *)arg2;
+- (unsigned long long)convertFromMachAbsoluteIntervalToDomainInterval:(unsigned long long)arg1;
 - (BOOL)convertFromMachAbsoluteTime:(unsigned long long *)arg1 toDomainTime:(unsigned long long *)arg2 withCount:(unsigned int)arg3;
 - (unsigned long long)convertFromMachAbsoluteToDomainTime:(unsigned long long)arg1 withFlags:(unsigned int *)arg2;
 - (void)dealloc;
@@ -32,6 +38,7 @@
 - (id)initWithClockIdentifier:(unsigned long long)arg1;
 - (int)lockState;
 - (BOOL)registerAsyncCallback;
+- (void)setServiceIsAlive:(BOOL)arg1;
 
 @end
 

@@ -6,12 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-#import <MediaPlayer/NSCopying-Protocol.h>
+#import <MediaPlayer/MPArtworkDataSourceVisualIdenticality-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString, NSURL;
 
-@interface MPStoreArtworkRequestToken : NSObject <NSCopying, NSSecureCoding>
+@interface MPStoreArtworkRequestToken : NSObject <NSSecureCoding, MPArtworkDataSourceVisualIdenticality>
 {
     BOOL _shouldIgnoreImage;
     NSURL *_artworkURL;
@@ -22,9 +22,13 @@
 
 @property (copy, nonatomic) NSURL *artworkURL; // @synthesize artworkURL=_artworkURL;
 @property (copy, nonatomic) NSString *cropStyle; // @synthesize cropStyle=_cropStyle;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *lookupItemArtworks; // @synthesize lookupItemArtworks=_lookupItemArtworks;
 @property (nonatomic) BOOL shouldIgnoreImage; // @synthesize shouldIgnoreImage=_shouldIgnoreImage;
 @property (copy, nonatomic) NSString *sourceEditorialArtworkKind; // @synthesize sourceEditorialArtworkKind=_sourceEditorialArtworkKind;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -32,6 +36,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (id)stringRepresentation;
 
 @end
 

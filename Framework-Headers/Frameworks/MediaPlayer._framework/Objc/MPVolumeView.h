@@ -9,11 +9,11 @@
 #import <MediaPlayer/MPAVRoutingControllerDelegate-Protocol.h>
 #import <MediaPlayer/NSCoding-Protocol.h>
 
-@class MPAVRoutingController, MPAVRoutingSheet, MPAudioVideoRoutingPopoverController, MPVolumeSlider, NSString, UIButton, UIImage, UILabel;
+@class MPAVRoutingController, MPMediaControlsStandaloneViewController, MPVolumeSlider, NSString, UIButton, UIImage, UILabel;
 
 @interface MPVolumeView : UIView <MPAVRoutingControllerDelegate, NSCoding>
 {
-    MPAVRoutingSheet *_routingSheet;
+    MPMediaControlsStandaloneViewController *_mediaControlsViewController;
     MPAVRoutingController *_routingController;
     BOOL _hasNonDefaultRouteButtonImages;
     BOOL _hasNonDefaultMaxVolumeSliderImage;
@@ -23,7 +23,6 @@
     BOOL _routeButtonShowsTouchWhenHighlighted;
     BOOL _routeDiscoveryEnabled;
     UILabel *_routeLabel;
-    MPAudioVideoRoutingPopoverController *_routePopoverController;
     BOOL _showingButton;
     BOOL _showingLabel;
     BOOL _showingSlider;
@@ -35,7 +34,6 @@
     BOOL _wirelessRouteIsPicked;
     BOOL _wirelessRoutesAvailable;
     BOOL _pushedRouteDiscoveryModeState;
-    unsigned long long _routePopoverPermittedArrowDirections;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -45,7 +43,6 @@
 @property (readonly, nonatomic) BOOL isShowingRouteButton;
 @property (readonly, nonatomic) BOOL isVisible;
 @property (nonatomic) BOOL routeButtonShowsTouchWhenHighlighted;
-@property (nonatomic) unsigned long long routePopoverPermittedArrowDirections; // @synthesize routePopoverPermittedArrowDirections=_routePopoverPermittedArrowDirections;
 @property (nonatomic) BOOL showsRouteButton;
 @property (nonatomic) BOOL showsVolumeSlider;
 @property (readonly, nonatomic) long long style;
@@ -64,13 +61,12 @@
 - (void)_displayAudioRoutePicker;
 - (void)_getDefaultVolumeSliderFrame:(struct CGRect *)arg1 routeButtonFrame:(struct CGRect *)arg2 forBounds:(struct CGRect)arg3;
 - (void)_initWithStyle:(long long)arg1;
-- (void)_registerNotifications;
 - (id)_routeButton;
+- (void)_routingControllerDidUpdateVolumeControlState:(id)arg1;
 - (void)_setRouteDiscoveryEnabled:(BOOL)arg1;
 - (void)_setShowsRouteButton:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setShowsVolumeSlider:(BOOL)arg1;
 - (void)_setVolumeAudioCategory:(id)arg1;
-- (void)_unregisterNotifications;
 - (void)_updateWirelessRouteStatus;
 - (void)dealloc;
 - (void)didMoveToSuperview;
@@ -85,9 +81,9 @@
 - (id)maximumVolumeSliderImageForState:(unsigned long long)arg1;
 - (id)minimumVolumeSliderImageForState:(unsigned long long)arg1;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)popoverControllerDidDismissPopover:(id)arg1;
 - (id)routeButtonImageForState:(unsigned long long)arg1;
 - (struct CGRect)routeButtonRectForBounds:(struct CGRect)arg1;
+- (void)routingController:(id)arg1 volumeControlAvailabilityDidChange:(BOOL)arg2;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)setAlpha:(double)arg1;
 - (void)setHidden:(BOOL)arg1;
@@ -99,7 +95,6 @@
 - (struct CGRect)volumeSliderRectForBounds:(struct CGRect)arg1;
 - (id)volumeThumbImageForState:(unsigned long long)arg1;
 - (struct CGRect)volumeThumbRectForBounds:(struct CGRect)arg1 volumeSliderRect:(struct CGRect)arg2 value:(float)arg3;
-- (void)willMoveToWindow:(id)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOServerFormattedString-Protocol.h>
 
@@ -18,14 +18,15 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSString *formatString;
 @property (readonly, nonatomic) NSArray *formatStrings;
 @property (readonly, nonatomic) NSArray *formatTokens;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *separators;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithString:(id)arg1;
 
 @end

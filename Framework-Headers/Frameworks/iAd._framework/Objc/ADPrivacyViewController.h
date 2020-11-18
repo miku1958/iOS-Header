@@ -36,6 +36,7 @@
 - (void)_clientApplicationDidEnterBackground;
 - (void)_commonInit;
 - (void)_connectionWithAdSheetWasLost;
+- (void)_considerRequestingRemotePrivacyViewController;
 - (void)_dismissAndReset;
 - (void)_dismissPrivacyViewController;
 - (void)_forwardErrorToDelegate:(id)arg1;

@@ -6,19 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURL;
+@class NSMutableData, NSString, NSURL;
 
 @interface ICPDFGenerator : NSObject
 {
     struct CGContext *_pdfContext;
     NSURL *_fileURL;
     NSString *_title;
+    NSMutableData *_data;
     struct CGRect _pageRect;
 }
 
+@property (strong, nonatomic) NSMutableData *data; // @synthesize data=_data;
 @property (copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property (nonatomic) struct CGRect pageRect; // @synthesize pageRect=_pageRect;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (readonly, nonatomic) NSURL *url;
 
 - (void).cxx_destruct;
 - (void)addPageWithPageRect:(struct CGRect)arg1 renderBlock:(CDUnknownBlockType)arg2;
@@ -26,6 +29,7 @@
 - (void)dealloc;
 - (void)finishGenerating;
 - (id)init;
+- (id)initWithMutableData:(id)arg1 pageRect:(struct CGRect)arg2 title:(id)arg3;
 - (id)initWithURL:(id)arg1 pageRect:(struct CGRect)arg2 title:(id)arg3;
 - (BOOL)startGenerating;
 

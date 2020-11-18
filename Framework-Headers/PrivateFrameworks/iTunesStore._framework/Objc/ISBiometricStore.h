@@ -6,38 +6,44 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber;
+@class NSCache, NSLock, NSNumber;
 @protocol OS_dispatch_queue;
 
 @interface ISBiometricStore : NSObject
 {
+    NSCache *_contextCache;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    NSLock *_lock;
     BOOL _shouldUseTouchID2;
 }
 
 @property long long biometricState;
+@property (readonly, getter=isBiometricStateEnabled) BOOL biometricStateEnabled;
 @property (readonly) NSNumber *lastRegisteredAccountIdentifier;
 
++ (id)diskBasedPaymentSheet;
 + (id)keychainLabelForAccountID:(id)arg1;
 + (id)sharedInstance;
 + (BOOL)shouldUseTouchID2;
 - (void).cxx_destruct;
-- (BOOL)_isIdentityMapValidForAccountIdentifier:(id)arg1;
 - (void)_updateTouchIDVersionWithBagKey:(id)arg1;
 - (void)_updateUserDefaultsKey:(struct __CFString *)arg1 withBooleanValue:(BOOL)arg2;
+- (void)addContextToCache:(id)arg1 withToken:(id)arg2;
 - (long long)biometricAvailabilityForAccountIdentifier:(id)arg1;
 - (BOOL)canPerformBiometricOptIn;
 - (BOOL)canPerformExtendedTouchIDActionsForAccountIdentifier:(id)arg1;
 - (void)clearLastRegisteredAccountIdentifier;
 - (id)createAttestationDataForAccountIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)deleteKeychainTokensForAccountIdentifier:(id)arg1 error:(id *)arg2;
+- (id)fetchContextFromCacheWithToken:(id)arg1 evict:(BOOL)arg2;
 - (unsigned long long)identityMapCount;
 - (id)initWithBagListener;
+- (BOOL)isIdentityMapValidForAccountIdentifier:(id)arg1;
 - (id)publicKeyDataForAccountIdentifier:(id)arg1 error:(id *)arg2;
 - (void)registerAccountIdentifier:(id)arg1;
 - (void)saveIdentityMapForAccountIdentifier:(id)arg1;
 - (BOOL)shouldUseTouchID2;
-- (id)signData:(id)arg1 reason:(id)arg2 fallback:(id)arg3 cancel:(id)arg4 forAccountIdentifier:(id)arg5 error:(id *)arg6;
+- (id)signData:(id)arg1 context:(id)arg2 error:(id *)arg3;
 
 @end
 

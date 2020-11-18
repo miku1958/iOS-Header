@@ -11,9 +11,10 @@
 
 @interface MCSession : NSObject
 {
-    id<MCSessionDelegate> _delegate;
-    id<MCSessionPrivateDelegate> _privateDelegate;
     BOOL _AWDLDisabled;
+    id<MCSessionDelegate> _delegate;
+    BOOL _preferNCMOverEthernet;
+    id<MCSessionPrivateDelegate> _privateDelegate;
     unsigned int _gckPID;
     MCPeerID *_myPeerID;
     NSArray *_securityIdentity;
@@ -31,7 +32,6 @@
 }
 
 @property (nonatomic, getter=isAWDLDisabled) BOOL AWDLDisabled;
-@property (nonatomic, getter=isAWDLDisabled) BOOL AWDLDisabled; // @synthesize AWDLDisabled=_AWDLDisabled;
 @property (nonatomic) struct OpaqueAGPSession *agpSession; // @synthesize agpSession=_agpSession;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property (readonly, nonatomic) NSArray *connectedPeers;
@@ -44,6 +44,7 @@
 @property (readonly, nonatomic) MCPeerID *myPeerID; // @synthesize myPeerID=_myPeerID;
 @property (strong, nonatomic) NSMutableDictionary *peerIDMap; // @synthesize peerIDMap=_peerIDMap;
 @property (strong, nonatomic) NSMutableDictionary *peerStates; // @synthesize peerStates=_peerStates;
+@property (nonatomic) BOOL preferNCMOverEthernet;
 @property (nonatomic) id<MCSessionPrivateDelegate> privateDelegate; // @dynamic privateDelegate;
 @property (nonatomic) id<MCSessionPrivateDelegate> privateDelegate;
 @property (readonly, nonatomic) NSArray *securityIdentity; // @synthesize securityIdentity=_securityIdentity;

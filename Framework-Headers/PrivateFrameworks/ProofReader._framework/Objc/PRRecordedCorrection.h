@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, NSTextCheckingResult;
 
@@ -20,6 +20,7 @@
 - (id)correctedString;
 - (id)correctionResult;
 - (void)dealloc;
+- (id)description;
 - (id)initWithCorrectionResult:(id)arg1 correctedString:(id)arg2;
 
 @end

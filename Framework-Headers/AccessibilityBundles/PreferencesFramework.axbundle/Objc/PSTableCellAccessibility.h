@@ -33,6 +33,7 @@
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
 - (BOOL)isAccessibilityElement;
 - (void)prepareForReuse;
+- (void)refreshCellContentsWithSpecifier:(id)arg1;
 
 @end
 

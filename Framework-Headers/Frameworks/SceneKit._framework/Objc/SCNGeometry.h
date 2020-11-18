@@ -12,7 +12,7 @@
 #import <SceneKit/SCNBoundingVolume-Protocol.h>
 #import <SceneKit/SCNShadable-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, SCNGeometryElement, SCNGeometrySource, SCNMaterial, SCNOrderedDictionary, SCNProgram, SCNShadableHelper;
+@class MISSING_TYPE, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, SCNGeometryElement, SCNGeometrySource, SCNMaterial, SCNOrderedDictionary, SCNProgram, SCNShadableHelper;
 
 @interface SCNGeometry : NSObject <SCNAnimatable, SCNBoundingVolume, SCNShadable, NSCopying, NSSecureCoding>
 {
@@ -20,13 +20,16 @@
     unsigned int _isPresentationInstance:1;
     NSMutableArray *_sources;
     NSMutableArray *_elements;
+    NSArray *_sourceChannels;
     NSMutableArray *_materials;
     SCNOrderedDictionary *_animations;
+    NSMutableDictionary *_bindings;
     NSArray *_levelsOfDetail;
     unsigned long long _subdivisionLevel;
+    BOOL _subdivisionIsAdaptive;
+    CDStruct_4c02ed10 _subdivisionSettings;
     SCNGeometrySource *_edgeCreasesSource;
     SCNGeometryElement *_edgeCreasesElement;
-    CDStruct_4c02ed10 _subdivisionSettings;
     SCNShadableHelper *_shadableHelper;
     struct SCNVector3 *_fixedBoundingBoxExtrema;
     NSString *_name;
@@ -50,6 +53,7 @@
 @property (copy, nonatomic) NSDictionary *shaderModifiers;
 @property (nonatomic) unsigned long long subdivisionLevel;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL wantsAdaptiveSubdivision;
 
 + (id)boxWithWidth:(double)arg1 height:(double)arg2 length:(double)arg3 cornerRadius:(double)arg4 options:(id)arg5;
 + (id)capsuleWithRadius:(double)arg1 height:(double)arg2 options:(id)arg3;
@@ -59,7 +63,9 @@
 + (id)geometry;
 + (id)geometryWithGeometryRef:(struct __C3DGeometry *)arg1;
 + (id)geometryWithMDLMesh:(id)arg1;
++ (id)geometryWithMDLMesh:(id)arg1 submesh:(id)arg2;
 + (id)geometryWithSources:(id)arg1 elements:(id)arg2;
++ (id)geometryWithSources:(id)arg1 elements:(id)arg2 sourceChannels:(id)arg3;
 + (id)morpherWithMDLMesh:(id)arg1;
 + (id)planeWithWidth:(double)arg1 height:(double)arg2 options:(id)arg3;
 + (id)pyramidWithWidth:(double)arg1 height:(double)arg2 length:(double)arg3 options:(id)arg4;
@@ -71,6 +77,7 @@
 - (const void *)__CFObject;
 - (struct __C3DGeometry *)__createCFObject;
 - (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
+- (void)_copyAnimationsFrom:(id)arg1;
 - (void)_customDecodingOfSCNGeometry:(id)arg1;
 - (void)_customEncodingOfSCNGeometry:(id)arg1;
 - (void)_discardOriginalTopology;
@@ -80,15 +87,20 @@
 - (id)_geometryByRemovingSkinnerSources;
 - (id)_geometryByUnifyingNormalsWithCreaseThreshold:(double)arg1;
 - (id)_geometryByWeldingVerticesWithThreshold:(double)arg1 normalThreshold:(double)arg2;
+- (BOOL)_hasFixedBoundingBoxExtrema;
 - (id)_materialWithName:(id)arg1;
-- (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2;
+- (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2 pausedByNode:(BOOL)arg3;
 - (void)_releaseCachedSourcesAndElements;
+- (id)_renderableCopy;
+- (id)_scnAnimationForKey:(id)arg1;
+- (id)_scnBindings;
 - (void)_setAttributes:(id)arg1;
 - (void)_setGeometryRef:(struct __C3DGeometry *)arg1;
 - (void)_setupGeometryElements;
 - (void)_setupGeometrySources;
 - (void)_setupObjCModelFrom:(id)arg1;
 - (void)_setupShadableHelperIfNeeded;
+- (void)_shadableSetValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (CDStruct_4c02ed10)_subdivisionSettings;
 - (void)_syncEntityObjCModel;
 - (void)_syncObjCAnimations;
@@ -96,13 +108,19 @@
 - (void)_unifyNormals;
 - (void)addAnimation:(id)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
+- (void)addAnimationPlayer:(id)arg1 forKey:(id)arg2;
 - (id)animationForKey:(id)arg1;
 - (struct __C3DAnimationManager *)animationManager;
+- (id)animationPlayerForKey:(id)arg1;
 - (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (id)copy;
-- (struct __C3DAnimationChannel *)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
+- (id)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)countOfMaterials;
+- (id)customMaterialAttributeNames;
+- (id)customMaterialAttributes;
+- (id)customMaterialProperties;
+- (id)customMaterialPropertyNames;
 - (void)dealloc;
 - (id)debugQuickLookData;
 - (id)debugQuickLookObject;
@@ -110,6 +128,7 @@
 - (id)geometryDescription;
 - (id)geometryElementAtIndex:(long long)arg1;
 - (struct __C3DGeometry *)geometryRef;
+- (id)geometrySourceChannels;
 - (id)geometrySourceForSemantic:(id)arg1;
 - (id)geometrySourcesForSemantic:(id)arg1;
 - (id)getBoundingBox;
@@ -145,6 +164,7 @@
 - (void)removeAllAnimations;
 - (void)removeAllMaterials;
 - (void)removeAnimationForKey:(id)arg1;
+- (void)removeAnimationForKey:(id)arg1 blendOutDuration:(double)arg2;
 - (void)removeAnimationForKey:(id)arg1 fadeOutDuration:(double)arg2;
 - (void)removeMaterial:(id)arg1;
 - (void)removeMaterialAtIndex:(unsigned long long)arg1;
@@ -164,6 +184,8 @@
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (void)setValueForKey:(id)arg1 optionKey:(id)arg2 options:(id)arg3;
 - (void)set_subdivisionSettings:(CDStruct_4c02ed10)arg1;
+- (id)shaderModifiersArgumentsNames;
+- (BOOL)simdGetBoundingSphereCenter:(MISSING_TYPE **)arg1 radius:(float *)arg2;
 - (void)unbindAnimatablePath:(id)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 

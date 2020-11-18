@@ -6,10 +6,12 @@
 
 #import <CameraUI/CAMExpandableMenuButton.h>
 
-@class UIImageView;
+#import <CameraUI/CAMAccessibilityHUDImageProvider-Protocol.h>
+
+@class NSString, UIImageView;
 @protocol CAMTimerButtonDelegate;
 
-@interface CAMTimerButton : CAMExpandableMenuButton
+@interface CAMTimerButton : CAMExpandableMenuButton <CAMAccessibilityHUDImageProvider>
 {
     BOOL _hideOffWhenCollapsed;
     id<CAMTimerButtonDelegate> _delegate;
@@ -17,15 +19,20 @@
 }
 
 @property (readonly, nonatomic) UIImageView *_glyphView; // @synthesize _glyphView=__glyphView;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CAMTimerButtonDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) long long duration;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideOffWhenCollapsed; // @synthesize hideOffWhenCollapsed=_hideOffWhenCollapsed;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_commonCAMTimerButtonInitialization;
-- (id)_currentGlyphImage;
+- (id)_currentGlyphImageForAccessibiliyHUD:(BOOL)arg1;
 - (void)_updateCurrentGlyphImage;
 - (id)headerView;
+- (id)imageForAccessibilityHUD;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithLayoutStyle:(long long)arg1;
 - (long long)numberOfMenuItems;

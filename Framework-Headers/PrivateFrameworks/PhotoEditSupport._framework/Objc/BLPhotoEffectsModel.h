@@ -18,10 +18,10 @@
     BLPEModel *_model;
 }
 
+- (void).cxx_destruct;
 - (BOOL)canRenderCI;
 - (id)ciImageWithPhotoEffectsForCIImage:(id)arg1 inDestRect:(struct CGRect)arg2 withPadding:(double)arg3;
 - (id)ciImageWithPhotoEffectsForImageBuffer:(id)arg1 inDestRect:(struct CGRect)arg2 withPadding:(double)arg3;
-- (void)dealloc;
 - (BOOL)hasEdgeEffects;
 - (BOOL)hasFastDownstreamEffects;
 - (BOOL)hasInkEffects;

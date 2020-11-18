@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
@@ -16,6 +16,7 @@
     BOOL _supportsContactlessPayment;
     BOOL _supportsInAppPayment;
     BOOL _supportsOptionalAuthentication;
+    BOOL _requiresDeferredAuthorization;
     BOOL _inAppPINRequired;
     BOOL _auxiliary;
     NSString *_dpanIdentifier;
@@ -50,6 +51,7 @@
 @property (copy, nonatomic) NSString *inAppPINRequiredCurrency; // @synthesize inAppPINRequiredCurrency=_inAppPINRequiredCurrency;
 @property (nonatomic) long long paymentNetworkIdentifier; // @synthesize paymentNetworkIdentifier=_paymentNetworkIdentifier;
 @property (nonatomic) unsigned long long paymentType; // @synthesize paymentType=_paymentType;
+@property (nonatomic) BOOL requiresDeferredAuthorization; // @synthesize requiresDeferredAuthorization=_requiresDeferredAuthorization;
 @property (copy, nonatomic, setter=setSanitizedDPAN:) NSString *sanitizedDPAN; // @synthesize sanitizedDPAN=_sanitizedDPAN;
 @property (copy, nonatomic) NSString *secureElementIdentifier; // @synthesize secureElementIdentifier=_secureElementIdentifier;
 @property (nonatomic) long long state; // @synthesize state=_state;
@@ -65,7 +67,10 @@
 + (id)applicationWithProtobuf:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)acceptedForSupportedNetworkIdentifiers:(id)arg1 merchantCapabilities:(unsigned long long)arg2 paymentMode:(long long)arg3 webPayment:(BOOL)arg4 webService:(id)arg5;
+- (BOOL)acceptedForNonWebPaymentWithSupportedNetworkIdentifiers:(id)arg1 merchantCapabilities:(unsigned long long)arg2 paymentMode:(long long)arg3;
+- (BOOL)acceptedForNonWebPaymentWithSupportedNetworkIdentifiers:(id)arg1 merchantCapabilities:(unsigned long long)arg2 paymentMode:(long long)arg3 paymentApplicationStates:(id)arg4;
+- (BOOL)acceptedForWebPaymentWithSupportedNetworkIdentifiers:(id)arg1 merchantCapabilities:(unsigned long long)arg2 paymentMode:(long long)arg3 webService:(id)arg4;
+- (BOOL)acceptedForWebPaymentWithSupportedNetworkIdentifiers:(id)arg1 merchantCapabilities:(unsigned long long)arg2 paymentMode:(long long)arg3 webService:(id)arg4 paymentApplicationStates:(id)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -75,6 +80,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPaymentApplication:(id)arg1;
 - (id)protobuf;
+- (BOOL)supportsExpressMode:(id)arg1;
 - (BOOL)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2;
 
 @end

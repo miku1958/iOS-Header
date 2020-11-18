@@ -4,27 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, TUMetadataCacheDataProviderDelegate;
 
 @interface TUMetadataCacheDataProvider : NSObject
 {
-    NSObject<OS_dispatch_queue> *_synchronizationQueue;
+    id<TUMetadataCacheDataProviderDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_concurrentQueue;
     NSMutableDictionary *_providerCache;
 }
 
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *concurrentQueue; // @synthesize concurrentQueue=_concurrentQueue;
+@property (weak, nonatomic) id<TUMetadataCacheDataProviderDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (readonly, nonatomic) NSMutableDictionary *providerCache; // @synthesize providerCache=_providerCache;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *synchronizationQueue; // @synthesize synchronizationQueue=_synchronizationQueue;
 
 - (void).cxx_destruct;
 - (id)description;
 - (id)init;
-- (BOOL)isEmpty;
 - (id)metadataForDestinationID:(id)arg1;
-- (void)removeMetadataForKey:(id)arg1;
-- (void)setObject:(id)arg1 forKey:(id)arg2;
+- (void)refresh;
+- (void)setObject:(id)arg1 forDestinationID:(id)arg2;
 - (void)updateCacheWithDestinationIDs:(id)arg1 withGroup:(id)arg2;
 
 @end

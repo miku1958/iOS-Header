@@ -19,7 +19,13 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_localizedArguments;
     NSString *_localizedKey;
     NSString *_soundName;
+    NSString *_subtitle;
+    NSMutableArray *_subtitleLocalizedArguments;
+    NSString *_subtitleLocalizedKey;
     NSString *_text;
+    NSString *_title;
+    NSMutableArray *_titleLocalizedArguments;
+    NSString *_titleLocalizedKey;
 }
 
 @property (strong, nonatomic) NSString *actionLocKey; // @synthesize actionLocKey=_actionLocKey;
@@ -29,17 +35,33 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasLaunchImage;
 @property (readonly, nonatomic) BOOL hasLocalizedKey;
 @property (readonly, nonatomic) BOOL hasSoundName;
+@property (readonly, nonatomic) BOOL hasSubtitle;
+@property (readonly, nonatomic) BOOL hasSubtitleLocalizedKey;
 @property (readonly, nonatomic) BOOL hasText;
+@property (readonly, nonatomic) BOOL hasTitle;
+@property (readonly, nonatomic) BOOL hasTitleLocalizedKey;
 @property (strong, nonatomic) NSString *launchImage; // @synthesize launchImage=_launchImage;
 @property (strong, nonatomic) NSMutableArray *localizedArguments; // @synthesize localizedArguments=_localizedArguments;
 @property (strong, nonatomic) NSString *localizedKey; // @synthesize localizedKey=_localizedKey;
 @property (strong, nonatomic) NSString *soundName; // @synthesize soundName=_soundName;
+@property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (strong, nonatomic) NSMutableArray *subtitleLocalizedArguments; // @synthesize subtitleLocalizedArguments=_subtitleLocalizedArguments;
+@property (strong, nonatomic) NSString *subtitleLocalizedKey; // @synthesize subtitleLocalizedKey=_subtitleLocalizedKey;
 @property (strong, nonatomic) NSString *text; // @synthesize text=_text;
+@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (strong, nonatomic) NSMutableArray *titleLocalizedArguments; // @synthesize titleLocalizedArguments=_titleLocalizedArguments;
+@property (strong, nonatomic) NSString *titleLocalizedKey; // @synthesize titleLocalizedKey=_titleLocalizedKey;
 
 + (Class)localizedArgumentsType;
++ (Class)subtitleLocalizedArgumentsType;
++ (Class)titleLocalizedArgumentsType;
 - (void).cxx_destruct;
 - (void)addLocalizedArguments:(id)arg1;
+- (void)addSubtitleLocalizedArguments:(id)arg1;
+- (void)addTitleLocalizedArguments:(id)arg1;
 - (void)clearLocalizedArguments;
+- (void)clearSubtitleLocalizedArguments;
+- (void)clearTitleLocalizedArguments;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -50,6 +72,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)localizedArgumentsCount;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)subtitleLocalizedArgumentsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)subtitleLocalizedArgumentsCount;
+- (id)titleLocalizedArgumentsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)titleLocalizedArgumentsCount;
 - (void)writeTo:(id)arg1;
 
 @end

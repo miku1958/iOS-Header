@@ -6,11 +6,26 @@
 
 #import <SearchUI/SearchUICardSectionView.h>
 
-@interface SearchUITwitterCardSectionView : SearchUICardSectionView
+#import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
+
+@class NSString, TLKStackView, UIView;
+
+@interface SearchUITwitterCardSectionView : SearchUICardSectionView <NUIContainerStackViewDelegate>
 {
+    UIView *_pictureView;
 }
 
-- (id)initWithCardSection:(id)arg1 controller:(id)arg2 style:(unsigned long long)arg3;
+@property (strong) TLKStackView *contentView; // @dynamic contentView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong) UIView *pictureView; // @synthesize pictureView=_pictureView;
+@property (readonly) Class superclass;
+
+- (void).cxx_destruct;
+- (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
+- (id)initWithCardSection:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)setupContentView;
 
 @end
 

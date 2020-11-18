@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -15,8 +15,9 @@
     int _token;
 }
 
-@property (readonly, strong, nonatomic) NSString *service;
+@property (readonly, nonatomic) NSString *service;
 
+- (void).cxx_destruct;
 - (void)_postAvailability:(long long)arg1;
 - (void)_updateAvailability;
 - (void)dealloc;

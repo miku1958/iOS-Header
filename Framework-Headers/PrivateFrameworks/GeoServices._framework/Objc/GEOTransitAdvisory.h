@@ -18,9 +18,9 @@
 @property (readonly, nonatomic) BOOL hasText;
 @property (strong, nonatomic) GEOFormattedString *text; // @synthesize text=_text;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

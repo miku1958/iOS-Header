@@ -19,6 +19,7 @@
 + (long long)indexForNumeralsStyle:(unsigned long long)arg1;
 + (id)optionWithStyle:(unsigned long long)arg1;
 - (id)_valueToFaceBundleStringDict;
+- (long long)swatchStyle;
 
 @end
 

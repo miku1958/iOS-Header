@@ -17,7 +17,6 @@
 - (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame:(id)arg1;
 - (id)accessibilityLabel:(id)arg1;
-- (void)dealloc;
 - (id)initWithClientContext:(id)arg1;
 - (void)setIconImage:(id)arg1;
 - (void)setNumberOfUserRatings:(long long)arg1;

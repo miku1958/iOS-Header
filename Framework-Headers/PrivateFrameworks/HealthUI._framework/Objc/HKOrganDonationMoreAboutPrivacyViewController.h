@@ -16,7 +16,9 @@
 @property (strong, nonatomic) UITextView *textView; // @synthesize textView=_textView;
 
 - (void).cxx_destruct;
+- (void)_updateForCurrentSizeCategory;
 - (void)doneButtonTapped:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

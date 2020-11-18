@@ -45,6 +45,8 @@
     EKTravelEngineHypothesis *_latestHypothesis;
     NSDate *_lastFireTimeOfAlertOffsetFromTravelTime;
     NSDate *_lastTimeBulletinAdded;
+    NSURL *_conferenceURL;
+    unsigned long long _currentRouteHypothesizerNotificationType;
     NSDate *_fireDate;
     struct CLLocationCoordinate2D _geoLocationCoordinates;
 }
@@ -54,6 +56,8 @@
 @property (readonly, nonatomic) NSString *alarmID; // @synthesize alarmID=_alarmID;
 @property (readonly, nonatomic) BOOL allDay; // @synthesize allDay=_allDay;
 @property (readonly, nonatomic) NSUserActivity *appLink; // @synthesize appLink=_appLink;
+@property (strong, nonatomic) NSURL *conferenceURL; // @synthesize conferenceURL=_conferenceURL;
+@property (nonatomic) unsigned long long currentRouteHypothesizerNotificationType; // @synthesize currentRouteHypothesizerNotificationType=_currentRouteHypothesizerNotificationType;
 @property (readonly, nonatomic) NSString *dismissalID; // @synthesize dismissalID=_dismissalID;
 @property (readonly, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (readonly, nonatomic) NSURL *entityID; // @synthesize entityID=_entityID;

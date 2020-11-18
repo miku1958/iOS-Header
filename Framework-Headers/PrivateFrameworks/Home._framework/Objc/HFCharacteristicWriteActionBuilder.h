@@ -23,6 +23,8 @@
 - (void).cxx_destruct;
 - (id)_performValidation;
 - (id)commitItem;
+- (id)copyForCreatingNewAction;
+- (id)createNewAction;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
 - (BOOL)requiresDeviceUnlock;
 - (BOOL)updateWithActionBuilder:(id)arg1;

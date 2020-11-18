@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSValue.h>
+#import <Foundation/NSValue.h>
 
 __attribute__((visibility("hidden")))
 @interface NSWeakObjectValue : NSValue
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)getValue:(void *)arg1;
+- (void)getValue:(void *)arg1 size:(unsigned long long)arg2;
 - (unsigned long long)hash;
 - (id)initWithObject:(id)arg1;
 - (BOOL)isEqualToValue:(id)arg1;

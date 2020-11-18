@@ -12,7 +12,7 @@
 #import <MusicCarDisplayUI/UITableViewDataSource-Protocol.h>
 #import <MusicCarDisplayUI/UITableViewDelegate-Protocol.h>
 
-@class AVExternalDevice, MCDNowPlayingButton, MCDPCContainer, MPWeakTimer, NSIndexPath, NSObject, NSString, UIActivityIndicatorView, UITableView, UIView, _MCDBrowsableContentTableViewPreloader, _UIFilteredDataSource;
+@class AVExternalDevice, MCDNowPlayingButton, MCDPCContainer, MPWeakTimer, NSIndexPath, NSObject, NSString, UITableView, UIView, _MCDBrowsableContentTableViewPreloader, _UIFilteredDataSource;
 @protocol OS_dispatch_queue;
 
 @interface MCDBrowsableContentTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, MCDPCContainerDelegate, MCDErrorViewDelegate>
@@ -22,7 +22,6 @@
     MCDPCContainer *_container;
     long long _count;
     NSIndexPath *_selectedNextIndexPath;
-    UIActivityIndicatorView *_activityIndicator;
     _UIFilteredDataSource *_dataSource;
     NSIndexPath *_reselectIndexPath;
     MPWeakTimer *_loadingTimer;
@@ -37,11 +36,13 @@
     BOOL _didPushToNowPlayingAtLaunch;
     BOOL _hasTabbedBrowsing;
     BOOL _visible;
+    BOOL _currentlyPlayingApp;
     NSIndexPath *_selectedIndexPath;
     UIView *_placeholderView;
 }
 
 @property (readonly, nonatomic) MCDPCContainer *container; // @synthesize container=_container;
+@property (nonatomic) BOOL currentlyPlayingApp; // @synthesize currentlyPlayingApp=_currentlyPlayingApp;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -74,7 +75,6 @@
 - (id)preferredFocusEnvironments;
 - (void)reloadTable;
 - (void)reloadWithCompletion:(CDUnknownBlockType)arg1;
-- (void)showActivity:(BOOL)arg1 inCell:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didFocusRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

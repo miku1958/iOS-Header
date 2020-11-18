@@ -9,16 +9,24 @@
 __attribute__((visibility("hidden")))
 @interface _VKPOIIconArtwork : VKIconArtwork
 {
-    struct CGImage *_glyphImage;
-    struct VKIconStyleInfo _style;
+    struct _retain_ptr<CGImage *, geo::_retain_cf<CGImage *>, geo::_release_cf, geo::_hash_cf, geo::_equal_cf> _glyphImage;
     BOOL _hasText;
+    struct unique_ptr<md::IconImage::CircleMetrics, std::__1::default_delete<md::IconImage::CircleMetrics>> _circleMetrics;
+    struct unique_ptr<md::IconImage::BalloonMetrics, std::__1::default_delete<md::IconImage::BalloonMetrics>> _balloonMetrics;
 }
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)_cleanUpAfterDrawing;
 - (id)_newImage;
+- (Matrix_8746f91e)anchorPoint;
 - (void)dealloc;
-- (id)initWithGlyph:(struct CGImage *)arg1 style:(struct VKIconStyleInfo *)arg2 contentScale:(double)arg3 hasText:(BOOL)arg4;
+- (BOOL)hasBounds;
+- (id)initWithGlyph:(struct CGImage *)arg1 style:(const struct Style *)arg2 extraStyle:(const struct ExtraStyle *)arg3 contentScale:(double)arg4 hasText:(BOOL)arg5;
+- (BOOL)isPOIBalloon;
+- (BOOL)isPOICircle;
+- (Box_3fb92e00)localCollisionBounds;
+- (Box_55c4a776)localRenderBounds;
 
 @end
 

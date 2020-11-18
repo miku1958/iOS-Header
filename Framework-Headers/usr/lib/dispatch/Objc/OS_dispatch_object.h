@@ -11,6 +11,7 @@
 }
 
 - (void)_dispose;
+- (void)dealloc;
 - (id)debugDescription;
 - (id)init;
 

@@ -35,8 +35,8 @@
 - (unsigned long long)edgesForExtendedLayout;
 - (id)initWithMoreInfoItems:(id)arg1 paymentPass:(id)arg2 context:(long long)arg3 dismissalHandler:(CDUnknownBlockType)arg4;
 - (void)loadView;
-- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 
 @end
 

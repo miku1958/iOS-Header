@@ -9,12 +9,12 @@
 #import <FrontBoard/FBSceneClient-Protocol.h>
 #import <FrontBoard/FBUISceneHost-Protocol.h>
 
-@class FBSSceneParameters, FBUISceneIdentity, NSString;
+@class FBSSceneParameters, NSString;
 @protocol FBSceneHost, FBUISceneClientProxy;
 
 @interface FBUISceneHostBridge : NSObject <FBUISceneHost, FBSceneClient>
 {
-    FBUISceneIdentity *_identity;
+    NSString *_identifier;
     FBSSceneParameters *_parameters;
     id<FBSceneHost> _legacyHost;
     id<FBUISceneClientProxy> _sceneClient;
@@ -24,10 +24,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) FBUISceneIdentity *identity; // @synthesize identity=_identity;
 @property (weak) id<FBSceneHost> legacyHost; // @synthesize legacyHost=_legacyHost;
 @property (strong) id<FBUISceneClientProxy> sceneClient; // @synthesize sceneClient=_sceneClient;
-@property (readonly, copy, nonatomic) NSString *sceneIdentifier;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -36,11 +34,10 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)didInvalidateSceneClient:(id)arg1;
 - (void)host:(id)arg1 configureWithDefinition:(id)arg2 parameters:(id)arg3;
-- (void)host:(id)arg1 configureWithInitialClientSettings:(id)arg2;
 - (void)host:(id)arg1 didInvalidateWithTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)host:(id)arg1 didReceiveActions:(id)arg2;
 - (void)host:(id)arg1 didUpdateSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (id)initWithSceneIdentity:(id)arg1 initialParameters:(id)arg2;
+- (id)initWithSceneIdentifier:(id)arg1 initialParameters:(id)arg2;
 - (void)invalidateSceneClient;
 - (void)registerSceneClient:(id)arg1;
 - (void)sceneClient:(id)arg1 didAttachLayer:(id)arg2;
@@ -48,6 +45,8 @@
 - (void)sceneClient:(id)arg1 didReceiveActions:(id)arg2;
 - (void)sceneClient:(id)arg1 didUpdateClientSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4;
 - (void)sceneClient:(id)arg1 didUpdateLayer:(id)arg2;
+- (id)sceneIdentifier;
+- (id)sceneSpecification;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

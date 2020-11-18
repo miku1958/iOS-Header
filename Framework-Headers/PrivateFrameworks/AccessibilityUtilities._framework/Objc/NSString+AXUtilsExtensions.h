@@ -9,5 +9,10 @@
 @interface NSString (AXUtilsExtensions)
 - (BOOL)axContainsString:(id)arg1;
 - (BOOL)axContainsString:(id)arg1 options:(long long)arg2;
+- (BOOL)axIsGenericLanguageCode;
+- (BOOL)axIsLanguageCode;
+- (BOOL)axIsRegionalLanguageCode;
+- (id)axLanguageCode;
+- (id)axRegionCode;
 @end
 

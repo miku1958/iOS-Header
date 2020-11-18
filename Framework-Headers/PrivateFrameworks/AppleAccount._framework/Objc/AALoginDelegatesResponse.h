@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) NSNumber *status;
 @property (readonly, nonatomic) NSString *statusMessage;
 
+- (id)augmentedResponseParametersForServiceIdentifier:(id)arg1 withAppleID:(id)arg2 password:(id)arg3 DSID:(id)arg4 altDSID:(id)arg5;
 - (id)responseParametersForServiceIdentifier:(id)arg1;
 
 @end

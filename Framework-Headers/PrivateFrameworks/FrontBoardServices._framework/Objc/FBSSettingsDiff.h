@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSSettingDescriptionProvider-Protocol.h>
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
@@ -28,6 +28,7 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
+- (void)evaluateWithInspector:(id)arg1 context:(void *)arg2;
 - (id)init;
 - (id)initWithChanges:(id)arg1 fromSettings:(id)arg2 toSettings:(id)arg3;
 - (id)initWithXPCDictionary:(id)arg1;

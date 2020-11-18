@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)_defaultAttributes;
 - (id)_initWithFrame:(struct CGRect)arg1 button:(id)arg2;
 - (void)_invalidateCachedDefaultAttributes;
+- (double)_paddingForBaselineSpacingFromEdge:(int)arg1 toNeighborEdge:(int)arg2;
 - (void)_setMinimumFontSize:(double)arg1;
 - (void)_setWantsAutolayout;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;

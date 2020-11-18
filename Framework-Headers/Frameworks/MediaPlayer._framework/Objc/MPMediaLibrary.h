@@ -83,7 +83,7 @@
 }
 
 @property (strong, nonatomic) id _MLCoreStorage; // @synthesize _MLCoreStorage=__MLCoreStorage;
-@property (readonly, nonatomic) shared_ptr_2d06daf8 _MediaLibrary_coreLibrary;
+@property (readonly, nonatomic) shared_ptr_0f3dbfb3 _MediaLibrary_coreLibrary;
 @property (readonly, nonatomic) NSString *_syncValidity;
 @property (readonly, nonatomic) NSDate *lastModifiedDate;
 @property (readonly, nonatomic) NSURL *protectedContentSupportStorageURL;
@@ -167,6 +167,7 @@
 - (void)clearLocationPropertiesOfItem:(id)arg1;
 - (long long)cloudFilteringType;
 - (BOOL)collectionExistsContainedWithinPersistentIDs:(const unsigned long long *)arg1 count:(unsigned long long)arg2 groupingType:(long long)arg3 existentPID:(unsigned long long *)arg4;
+- (BOOL)collectionExistsContainedWithinSyncIDs:(id)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (BOOL)collectionExistsWithName:(id)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (BOOL)collectionExistsWithPersistentID:(unsigned long long)arg1 groupingType:(long long)arg2;
 - (BOOL)collectionExistsWithStoreID:(long long)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
@@ -239,10 +240,8 @@
 - (id)itemWithPersistentID:(unsigned long long)arg1 verifyExistence:(BOOL)arg2;
 - (id)itemWithStoreID:(unsigned long long)arg1;
 - (id)libraryDataProvider;
-- (BOOL)libraryHasBeenModifiedWithToken:(id)arg1;
 - (id)localizedSectionHeaderForSectionIndex:(unsigned long long)arg1;
 - (id)localizedSectionIndexTitles;
-- (id)modificationToken;
 - (id)multiverseIdentifierForCollectionWithPersistentID:(long long)arg1 groupingType:(long long)arg2;
 - (id)multiverseIdentifierForTrackWithPersistentID:(long long)arg1;
 - (id)name;
@@ -256,6 +255,7 @@
 - (long long)playlistGeneration;
 - (id)playlistWithPersistentID:(unsigned long long)arg1;
 - (void)populateLocationPropertiesOfItem:(id)arg1 withPath:(id)arg2 assetProtectionType:(long long)arg3;
+- (void)populateLocationPropertiesOfItem:(id)arg1 withPath:(id)arg2 assetProtectionType:(long long)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)preferredAudioLanguages;
 - (id)preferredSubtitleLanguages;
 - (BOOL)recordPlayEventForAlbumPersistentID:(long long)arg1;

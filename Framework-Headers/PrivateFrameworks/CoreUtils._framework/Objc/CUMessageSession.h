@@ -6,34 +6,56 @@
 
 #import <Foundation/NSObject.h>
 
+#import <CoreUtils/CUMessageSessionXPCClientInterface-Protocol.h>
+#import <CoreUtils/NSSecureCoding-Protocol.h>
+
+@class NSString, NSXPCConnection, NSXPCListenerEndpoint;
 @protocol OS_dispatch_queue;
 
-@interface CUMessageSession : NSObject
+@interface CUMessageSession : NSObject <CUMessageSessionXPCClientInterface, NSSecureCoding>
 {
-    NSObject<OS_dispatch_queue> *_dispatchQueue;
-    CDUnknownBlockType _invalidationHandler;
-    NSObject<OS_dispatch_queue> *_internalDispatchQueue;
     CDUnknownBlockType _activateHandler;
+    NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _invalidateHandler;
+    CDUnknownBlockType _invalidationHandler;
+    NSXPCListenerEndpoint *_listenerEndpoint;
     CDUnknownBlockType _registerRequestHandler;
     CDUnknownBlockType _sendRequestHandler;
+    struct LogCategory *_ucat;
+    BOOL _activateCalled;
+    BOOL _invalidateCalled;
+    BOOL _invalidateDone;
+    struct NSMutableDictionary *_requestMap;
+    NSXPCConnection *_xpcCnx;
+    NSString *_label;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType activateHandler; // @synthesize activateHandler=_activateHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalDispatchQueue; // @synthesize internalDispatchQueue=_internalDispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType invalidateHandler; // @synthesize invalidateHandler=_invalidateHandler;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
+@property (copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (strong, nonatomic) NSXPCListenerEndpoint *listenerEndpoint; // @synthesize listenerEndpoint=_listenerEndpoint;
 @property (copy, nonatomic) CDUnknownBlockType registerRequestHandler; // @synthesize registerRequestHandler=_registerRequestHandler;
 @property (copy, nonatomic) CDUnknownBlockType sendRequestHandler; // @synthesize sendRequestHandler=_sendRequestHandler;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_cleanup;
+- (void)_ensureXPCStarted;
+- (void)_interrupted;
+- (void)_invalidated;
+- (void)_registerRequestID:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_sendRequestID:(id)arg1 options:(id)arg2 request:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (void)activate;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithTemplate:(id)arg1;
 - (void)invalidate;
 - (void)registerRequestID:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)remoteRequestID:(id)arg1 options:(id)arg2 request:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (void)sendRequestID:(id)arg1 options:(id)arg2 request:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
 
 @end

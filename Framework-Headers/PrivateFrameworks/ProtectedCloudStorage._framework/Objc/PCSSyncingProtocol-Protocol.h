@@ -4,18 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @protocol PCSSyncingProtocol
+- (void)createIdentity:(NSString *)arg1 roll:(BOOL)arg2 complete:(void (^)(NSData *, NSError *))arg3;
 - (void)deleteThisDevice:(NSDictionary *)arg1 withReply:(void (^)(NSError *))arg2;
 - (void)escrowRecordIDs:(NSDictionary *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
 - (void)fetchAllDeviceKeys:(NSDictionary *)arg1 withReply:(void (^)(NSString *, NSData *, NSData *, NSArray *, NSError *))arg2;
 - (void)fetchStats:(void (^)(UserRegistryStats *))arg1;
 - (void)getAllClients:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getPCSKeyHash:(void (^)(NSData *, NSError *))arg1;
+- (void)manateeStatus:(NSString *)arg1 complete:(void (^)(unsigned int))arg2;
 - (void)requestKeys:(NSDictionary *)arg1 withReply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)syncKeys:(NSDictionary *)arg1 withReply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)triggerDaily:(NSDictionary *)arg1 withReply:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)triggerSyncingWithEscrowProxy:(NSString *)arg1 complete:(void (^)(BOOL, NSError *))arg2;
 - (void)triggerUserRegistryCheck:(NSDictionary *)arg1 withReply:(void (^)(NSError *))arg2;
+- (void)triggerWatchSyncing:(void (^)(void))arg1;
 @end
 

@@ -18,15 +18,16 @@ __attribute__((visibility("hidden")))
     UIInputSwitcherView *m_switcherView;
     double m_lastGlobeKeyUpTime;
     NSString *_newMode;
-    BOOL _otherKeyPressedDuringShiftDown;
+    BOOL _isGlobeKeyDown;
     NSString *_loadedIdentifier;
 }
 
+@property (nonatomic) BOOL isGlobeKeyDown; // @synthesize isGlobeKeyDown=_isGlobeKeyDown;
 @property (copy, nonatomic) NSString *loadedIdentifier; // @synthesize loadedIdentifier=_loadedIdentifier;
-@property (nonatomic) BOOL otherKeyPressedDuringShiftDown; // @synthesize otherKeyPressedDuringShiftDown=_otherKeyPressedDuringShiftDown;
 
 + (id)activeInstance;
 + (id)sharedInstance;
+- (void)_showSwitcherViewAsHUD;
 - (void)cancelShowSwitcherTimer;
 - (void)clearHideSwitcherTimer;
 - (void)clearKeyHoldTimer;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)touchHideSwitcherTimer;
 - (void)touchKeyHoldTimer;
 - (void)touchShowSwitcherTimer;
+- (void)updateHardwareLayout;
 
 @end
 

@@ -15,6 +15,7 @@
     UILabel *_placeholderLabel;
     BOOL _allowEnclosingViewScroll;
     struct CGSize _previousIntrinsicContentSize;
+    struct CGSize _previousSizeThatFits;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -38,6 +39,7 @@
 - (void)setContentSize:(struct CGSize)arg1;
 - (void)setFont:(id)arg1;
 - (void)setTextAlignment:(long long)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol VKCustomFeatureDataSource;
 
@@ -31,10 +31,22 @@
 - (void)setFeatureID:(unsigned long long)arg1;
 - (void)setMaxZoom:(float)arg1;
 - (void)setMinZoom:(float)arg1;
+- (void)setPlaceholderIconWithSize:(struct CGSize)arg1 anchorPoint:(struct CGPoint)arg2 isRound:(BOOL)arg3;
 - (void)setSortKey:(int)arg1;
 - (void)setStyleAttributes:(id)arg1;
 - (void)setText:(id)arg1 locale:(id)arg2;
+- (void)setTextDisplayMode:(unsigned char)arg1;
+- (void)setVenueBuildingID:(unsigned long long)arg1;
+- (void)setVenueComponentID:(unsigned long long)arg1;
+- (void)setVenueFloorOrdinal:(short)arg1;
+- (void)setVenueID:(unsigned long long)arg1;
+- (void)setVenueLevelID:(unsigned long long)arg1;
 - (id)styleAttributes;
+- (unsigned long long)venueBuildingID;
+- (unsigned long long)venueComponentID;
+- (short)venueFloorOrdinal;
+- (unsigned long long)venueID;
+- (unsigned long long)venueLevelID;
 
 @end
 

@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableSet, NSString, _OSLogCollectionReference;
+@class NSMutableArray, NSString, _OSLogCollectionReference, _OSLogEventStoreMetadata;
 
 __attribute__((visibility("hidden")))
 @interface _OSLogIndex : NSObject
 {
     NSMutableArray *_fileq;
-    NSMutableSet *_oversizeChunks;
     _OSLogCollectionReference *_lcr;
     NSString *_file;
     NSMutableArray *_files;
-    CDStruct_b8fedf57 _metadata;
+    CDStruct_1936c231 _metadata;
     BOOL _metadataValid;
+    _OSLogEventStoreMetadata *_metadata2;
     struct _os_timesync_db_s *_tsdb;
 }
 
@@ -33,15 +33,19 @@ __attribute__((visibility("hidden")))
 - (void)_enumerateEntriesInRange:(struct os_timesync_range_s *)arg1 options:(unsigned int)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (BOOL)_openTimesyncDatabase:(id *)arg1;
 - (BOOL)_readArchiveMetadata:(id *)arg1;
-- (void)_storeOversizeChunk:(id)arg1;
+- (BOOL)addReferenceToIndex:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (void)enumerateEntriesFrom:(unsigned long long)arg1 to:(unsigned long long)arg2 options:(unsigned int)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)enumerateEntriesFromLastBootWithOptions:(unsigned int)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateEntriesInRange:(struct os_timesync_range_s *)arg1 options:(unsigned int)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateEntriesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateFilesUsingBlock:(CDUnknownBlockType)arg1;
+- (id)init;
 - (id)initWithCollection:(id)arg1 buildLocalIndex:(BOOL)arg2 error:(id *)arg3;
 - (id)initWithCollection:(id)arg1 error:(id *)arg2;
+- (id)initWithCollection:(id)arg1 timesync:(struct _os_timesync_db_s *)arg2 metadata:(id)arg3;
 - (void)insertChunkStore:(id)arg1;
+- (void)insertIndexFile:(id)arg1;
 
 @end
 

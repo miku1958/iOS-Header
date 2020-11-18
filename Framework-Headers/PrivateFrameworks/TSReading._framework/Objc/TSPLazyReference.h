@@ -39,7 +39,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithDelegate:(id)arg1 identifier:(long long)arg2 isWeak:(BOOL)arg3 allowUnknownObject:(BOOL)arg4;
-- (id)initWithObject:(id)arg1;
+- (id)initWithTSPObject:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToLazyReference:(id)arg1;
 - (BOOL)referencesObject:(id)arg1;

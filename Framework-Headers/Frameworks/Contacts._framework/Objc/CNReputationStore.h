@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CNReputationContactsAdapter, CNReputationCoreRecentsAdapter, CNReputationLogger;
 @protocol CNSchedulerProvider;
@@ -22,8 +22,6 @@
 @property (readonly, nonatomic) CNReputationLogger *logger; // @synthesize logger=_logger;
 @property (readonly, nonatomic) id<CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
 
-+ (id)conflatedDomains;
-+ (id)queryHandlesForHandle:(id)arg1;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithCoreRecentsAdapter:(id)arg1 contactsAdapter:(id)arg2 logger:(id)arg3 schedulerProvider:(id)arg4;

@@ -26,6 +26,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasLoadedRadioAvailability;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isRadioAvailable) BOOL radioAvailable;
 @property (readonly) Class superclass;

@@ -8,12 +8,13 @@
 
 #import <CloudDocsDaemon/BRCForegroundClient-Protocol.h>
 #import <CloudDocsDaemon/BRCOperationSubclass-Protocol.h>
+#import <CloudDocsDaemon/LSOpenResourceOperationDelegate-Protocol.h>
 
-@class BRCAcceptShareOperation, BRCAccountSession, BRCAppLibrary, BRCItemID, BRCPrivateAppLibrary, BRCXPCClient, CKRecordID, CKShare, CKShareMetadata, NSArray, NSObject, NSString, NSURL;
+@class BRCAccountSession, BRCAppLibrary, BRCClientZone, BRCItemID, BRCXPCClient, CKRecordID, CKShare, CKShareMetadata, NSArray, NSObject, NSString, NSURL;
 @protocol BRCUserNotifier, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface BRCSharingAcceptFlowOperation : _BRCOperation <BRCForegroundClient, BRCOperationSubclass>
+@interface BRCSharingAcceptFlowOperation : _BRCOperation <LSOpenResourceOperationDelegate, BRCForegroundClient, BRCOperationSubclass>
 {
     id<BRCUserNotifier> _userNotification;
     BRCAccountSession *_session;
@@ -25,14 +26,12 @@ __attribute__((visibility("hidden")))
     CKShare *_share;
     BRCItemID *_sharedItemID;
     NSString *_unsaltedBookmarkData;
-    BRCAppLibrary *_localAppLibrary;
-    BRCPrivateAppLibrary *_aliasAppLibrary;
+    BRCClientZone *_clientZone;
+    BRCAppLibrary *_appLibrary;
+    BOOL _needsZoneAndAppLibraryActivation;
     NSURL *_shareDocumentURL;
-    NSURL *_aliasURL;
     NSString *_documentName;
-    NSString *_shareDocumentFileProviderString;
     BRCXPCClient *_xpcClient;
-    BRCAcceptShareOperation *_acceptShareOpBlockingSyncDown;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
@@ -49,16 +48,15 @@ __attribute__((visibility("hidden")))
 + (Class)userNotificationClass;
 - (void).cxx_destruct;
 - (void)_acceptShareURL;
+- (void)_activateSharedZoneIfNeeded;
 - (void)_captureOpenInfoFromDocument:(id)arg1;
 - (void)_checkIfShouldWaitUntilDownloadCompletion;
-- (id)_createAcceptShareOperation;
-- (void)_createAliasInAppLibrary:(id)arg1 target:(id)arg2;
 - (void)_createSideFaultOnDisk;
 - (void)_endAcceptationFlow;
-- (void)_fetchShareMetadata;
 - (void)_isAccountRestricted;
 - (void)_isAppInstalled;
-- (void)_isDocumentSharingSupported;
+- (BOOL)_isFolderShare;
+- (void)_isFolderSharingSupported;
 - (BOOL)_isOwner;
 - (BOOL)_isOwnerOrShareAlreadyAccepted;
 - (void)_isURLWellFormed;
@@ -66,9 +64,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isiWorkShare;
 - (void)_jumpToSelector:(SEL)arg1;
 - (void)_jumpToSelectorInQueue:(SEL)arg1;
-- (void)_openSharedDownloadedDocumentIfStillNeeded;
+- (void)_locateSharedItemOnDisk;
+- (void)_openDocumentInDocumentsAppIfInstalled:(id)arg1;
+- (void)_openSharedItemIfStillNeeded;
 - (void)_openSharedSideFaultFile;
-- (BOOL)_openiWorkAppPreemptively;
+- (void)_openiWorkAppPreemptively;
 - (void)_parseShareMetadata;
 - (void)_performNextStep;
 - (void)_performNextStepInQueue;
@@ -76,17 +76,17 @@ __attribute__((visibility("hidden")))
 - (void)_showGenericErrorAndFinish:(id)arg1;
 - (void)_showSharingJoinDialog;
 - (id)_stepNameAtIndex:(unsigned long long)arg1 withPrefix:(id)arg2;
-- (void)_waitForFaultToBeOnDiskOnOwner;
-- (void)_waitForFaultToBeOnDiskOnRecipient;
+- (void)_waitForSharedItemToBeOnDiskOnOwner;
+- (void)_waitForSharedItemToBeOnDiskOnRecipient;
 - (void)_waitForSharedItemToSyncDownOnOwner;
 - (void)_waitForSharedItemToSyncDownOnRecipient;
 - (id)createActivity;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithShareMetadata:(id)arg1 client:(id)arg2 session:(id)arg3;
-- (id)initWithShareURL:(id)arg1 client:(id)arg2 session:(id)arg3;
-- (id)localClientZone;
 - (void)main;
 - (void)moveDialogToFront;
+- (void)openResourceOperation:(id)arg1 didFailWithError:(id)arg2;
+- (void)openResourceOperationDidComplete:(id)arg1;
 - (BOOL)shouldRetryForError:(id)arg1;
 - (id)subclassableDescriptionWithContext:(id)arg1;
 

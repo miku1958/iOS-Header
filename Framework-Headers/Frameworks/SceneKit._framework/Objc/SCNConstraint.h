@@ -10,36 +10,45 @@
 #import <SceneKit/NSSecureCoding-Protocol.h>
 #import <SceneKit/SCNAnimatable-Protocol.h>
 
-@class NSArray, NSString, SCNOrderedDictionary;
+@class NSArray, NSMutableDictionary, NSString, SCNOrderedDictionary;
 
 @interface SCNConstraint : NSObject <NSCopying, NSSecureCoding, SCNAnimatable>
 {
     struct __C3DConstraint *_constraintRef;
     SCNOrderedDictionary *_animations;
+    NSMutableDictionary *_bindings;
     BOOL _enabled;
+    BOOL _incremental;
     double _influenceFactor;
 }
 
 @property (readonly) NSArray *animationKeys;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isIncremental) BOOL incremental;
 @property (nonatomic) double influenceFactor;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (const void *)__CFObject;
 - (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
-- (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2;
+- (void)_copyAnimationsFrom:(id)arg1;
+- (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2 pausedByNode:(BOOL)arg3;
+- (id)_scnAnimationForKey:(id)arg1;
+- (id)_scnBindings;
 - (void)_syncObjCAnimations;
 - (void)addAnimation:(id)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
+- (void)addAnimationPlayer:(id)arg1 forKey:(id)arg2;
 - (id)animationForKey:(id)arg1;
 - (struct __C3DAnimationManager *)animationManager;
+- (id)animationPlayerForKey:(id)arg1;
 - (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (struct __C3DConstraint *)constraintRef;
 - (id)copy;
-- (struct __C3DAnimationChannel *)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
+- (id)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -48,18 +57,17 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isAnimationForKeyPaused:(id)arg1;
-- (BOOL)isEnabled;
 - (BOOL)isPausedOrPausedByInheritance;
 - (id)name;
 - (void)pauseAnimationForKey:(id)arg1;
 - (void)removeAllAnimations;
 - (void)removeAnimationForKey:(id)arg1;
+- (void)removeAnimationForKey:(id)arg1 blendOutDuration:(double)arg2;
 - (void)removeAnimationForKey:(id)arg1 fadeOutDuration:(double)arg2;
 - (void)resumeAnimationForKey:(id)arg1;
 - (id)scene;
 - (struct __C3DScene *)sceneRef;
 - (void)setConstraintRef:(struct __C3DConstraint *)arg1;
-- (void)setEnabled:(BOOL)arg1;
 - (void)setName:(id)arg1;
 - (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
 - (void)unbindAnimatablePath:(id)arg1;

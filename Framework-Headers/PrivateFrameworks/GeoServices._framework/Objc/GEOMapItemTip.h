@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOPDTip, NSString;
 
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *tipId;
 @property (readonly, nonatomic) double tipTime;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithGEOPDTip:(id)arg1;
 
 @end

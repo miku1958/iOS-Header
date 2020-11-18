@@ -14,8 +14,10 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)_axFullScreenEffectElement;
 - (void)_axUpdateCloseButton;
 - (void)_axUpdateScrollView;
+- (void)_setAXFullScreenEffectElement:(id)arg1;
 - (void)_touchUpInsideDotButton:(id)arg1;
 - (id)accessibilityElements;
 - (BOOL)accessibilityScroll:(long long)arg1;

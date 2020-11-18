@@ -15,7 +15,6 @@
 + (id)safeCategoryTargetClassName;
 - (id)_axDetailScrollView;
 - (void)accessibilityDecrement;
-- (struct CGRect)accessibilityFrame;
 - (void)accessibilityIncrement;
 - (unsigned long long)accessibilityTraits;
 

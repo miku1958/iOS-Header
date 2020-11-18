@@ -13,6 +13,7 @@
 @interface GEOPDReverseGeocodingParameters : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    NSMutableArray *_extendedLocations;
     NSMutableArray *_locations;
     int _placeTypeLimit;
     BOOL _preserveOriginalLocation;
@@ -22,6 +23,7 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSMutableArray *extendedLocations; // @synthesize extendedLocations=_extendedLocations;
 @property (nonatomic) BOOL hasPlaceTypeLimit;
 @property (nonatomic) BOOL hasPreserveOriginalLocation;
 @property (strong, nonatomic) NSMutableArray *locations; // @synthesize locations=_locations;
@@ -29,15 +31,20 @@
 @property (nonatomic) BOOL preserveOriginalLocation; // @synthesize preserveOriginalLocation=_preserveOriginalLocation;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)extendedLocationType;
 + (Class)locationType;
+- (void).cxx_destruct;
 - (int)StringAsPlaceTypeLimit:(id)arg1;
+- (void)addExtendedLocation:(id)arg1;
 - (void)addLocation:(id)arg1;
+- (void)clearExtendedLocations;
 - (void)clearLocations;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)extendedLocationAtIndex:(unsigned long long)arg1;
+- (unsigned long long)extendedLocationsCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (id)locationAtIndex:(unsigned long long)arg1;

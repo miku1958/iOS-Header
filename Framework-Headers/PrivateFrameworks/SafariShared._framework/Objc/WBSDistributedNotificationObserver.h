@@ -33,6 +33,7 @@
 - (id)init;
 - (id)initWithNotificationName:(id)arg1;
 - (id)initWithNotificationName:(id)arg1 type:(long long)arg2;
+- (void)stopWaiting;
 - (void)waitWithTimeout:(double)arg1;
 
 @end

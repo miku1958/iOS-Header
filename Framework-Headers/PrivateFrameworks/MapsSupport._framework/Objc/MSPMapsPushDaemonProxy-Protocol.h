@@ -6,13 +6,15 @@
 
 #import <MapsSupport/MSPRemoteModelAccess-Protocol.h>
 
-@class GEOAnnouncement, NSData, NSString, NSURL, RTVehicleEvent;
+@class GEOAnnouncement, MNCommuteNotificationDetails, MSPLowFuelDetails, NSData, NSString, NSURL, RTVehicleEvent;
 
 @protocol MSPMapsPushDaemonProxy <MSPRemoteModelAccess>
 - (void)checkin;
 - (void)clearBulletinWithRecordID:(NSString *)arg1;
 - (void)clearCurrentAnnouncement;
+- (void)clearLowFuelAlertBulletin;
 - (void)clearParkedCarBulletin;
+- (void)clearPredictedRouteTrafficIncidentBulletin;
 - (void)clearTrafficConditionsBulletin;
 - (void)clearTrafficIncidentBulletinWithAlertID:(NSData *)arg1;
 - (void)clearTrafficIncidentsBulletin;
@@ -22,16 +24,21 @@
 - (void)fetchDevicePushToken:(void (^)(NSData *))arg1;
 - (void)fetchProblemStatus;
 - (void)fetchUserRoutingPreferencesWithCompletion:(void (^)(MSPUserRoutingPreferences *, NSError *))arg1;
+- (void)handleMapsApplicationRemoval:(void (^)(NSError *))arg1;
+- (void)mapsLocationAuthorizationStatusChanged;
 - (void)problemStatusResponseWithNotificationID:(NSString *)arg1 completion:(void (^)(GEORPProblemStatusResponse *))arg2;
 - (void)registerForTopic;
 - (void)removeProblemStatusResponseWithNotificationID:(NSString *)arg1;
 - (void)resetShownAnnouncements;
 - (void)setShouldUseDevAPNS:(BOOL)arg1;
 - (void)shouldUseDevAPNS:(void (^)(BOOL))arg1;
+- (void)showLowFuelAlertBulletinForLowFuelDetails:(MSPLowFuelDetails *)arg1;
 - (void)showParkedCarBulletinForEvent:(RTVehicleEvent *)arg1;
 - (void)showParkedCarBulletinForEvent:(RTVehicleEvent *)arg1 afterDelay:(double)arg2;
 - (void)showParkedCarReplacementBulletinForEvent:(RTVehicleEvent *)arg1 replacingEvent:(RTVehicleEvent *)arg2;
 - (void)showParkedCarReplacementBulletinForEvent:(RTVehicleEvent *)arg1 replacingEvent:(RTVehicleEvent *)arg2 afterDelay:(double)arg3;
+- (void)showPredictedRouteTrafficIncidentBulletinForCommuteDetails:(MNCommuteNotificationDetails *)arg1;
+- (void)showPredictedRouteTrafficIncidentBulletinForCommuteDetails:(MNCommuteNotificationDetails *)arg1 afterDelay:(double)arg2;
 - (void)showTrafficConditionsBulletinWithTitle:(NSString *)arg1 message:(NSString *)arg2 actionURL:(NSURL *)arg3;
 - (void)showTrafficIncidentAlertWithID:(NSData *)arg1 type:(unsigned long long)arg2 title:(NSString *)arg3 description:(NSString *)arg4;
 - (void)showTransitAlightAlertWithTitle:(NSString *)arg1 message:(NSString *)arg2;

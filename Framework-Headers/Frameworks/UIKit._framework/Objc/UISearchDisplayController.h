@@ -6,12 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-#import <UIKit/_UIScrollNotification-Protocol.h>
+#import <UIKit/_UIScrollViewScrollObserver_Internal-Protocol.h>
 
 @class NSArray, NSString, UIButton, UIColor, UILabel, UINavigationItem, UIPopoverController, UIScrollView, UISearchBar, UISearchDisplayControllerContainerView, UITableView, UIView, UIViewController, _UINavigationControllerPalette, _UISearchControllerDidScrollDelegate;
 @protocol UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate;
 
-@interface UISearchDisplayController : NSObject <_UIScrollNotification>
+@interface UISearchDisplayController : NSObject <_UIScrollViewScrollObserver_Internal>
 {
     UIViewController *_viewController;
     UITableView *_tableView;
@@ -108,7 +108,6 @@
 - (id)_containingViewOfClass:(Class)arg1;
 - (id)_createPopoverController;
 - (void)_destroyManagedTableView;
-- (void)_didScroll;
 - (id)_dimmingOverlayColor;
 - (double)_dimmingViewAlpha;
 - (id)_dimmingViewColor;
@@ -122,6 +121,7 @@
 - (void)_keyboardWillShow:(id)arg1;
 - (void)_managedTableViewDidScroll;
 - (id)_noResultsMessageLabel;
+- (void)_observeScrollViewDidScroll:(id)arg1;
 - (void)_popoverClearButtonPressed:(id)arg1;
 - (void)_popoverKeyboardDidHide:(id)arg1;
 - (void)_popoverKeyboardDidShow:(id)arg1;
@@ -142,7 +142,6 @@
 - (double)_statusBarHeight;
 - (struct UIEdgeInsets)_tableViewContentInsets;
 - (id)_topShadowView;
-- (void)_updateBackdropMaskViewsInScrollView:(id)arg1;
 - (double)_updateNavigationPalette;
 - (void)_updateNoSearchResultsMessageVisiblity;
 - (void)_updatePinnedSearchBar;

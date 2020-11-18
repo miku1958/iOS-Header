@@ -31,6 +31,7 @@
 @property (readonly, nonatomic, getter=_isStreaming) BOOL streaming;
 
 - (id)SHA1Digest;
+- (id)_assetAnalysisMessages;
 - (BOOL)_hasQTSaveRestriction;
 - (id)_instanceIdentifier;
 - (id)_mediaSelectionGroupDictionaries;
@@ -38,6 +39,7 @@
 - (void *)_valueAsCFTypeForProperty:(struct __CFString *)arg1;
 - (id)alternateTrackGroups;
 - (id)availableMetadataFormats;
+- (id)availableVideoDynamicRanges;
 - (BOOL)canContainFragments;
 - (id)commonMetadata;
 - (BOOL)containsFragments;
@@ -57,6 +59,7 @@
 - (BOOL)isPlayable;
 - (BOOL)isReadable;
 - (id)lyrics;
+- (struct CGSize)maximumVideoResolution;
 - (id)metadataForFormat:(id)arg1;
 - (struct CGSize)naturalSize;
 - (int)naturalTimeScale;
@@ -67,6 +70,7 @@
 - (float)preferredVolume;
 - (id)propertyListForProxy;
 - (BOOL)providesPreciseDurationAndTiming;
+- (BOOL)supportsAnalysisReporting;
 - (long long)trackCount;
 - (id)trackReferences;
 

@@ -7,10 +7,17 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (HKAdditions)
+- (void)_updateForCurrentSizeCategory;
 - (id)hk_addConstraintsWithFormat:(id)arg1 options:(unsigned long long)arg2 metrics:(id)arg3 views:(id)arg4;
 - (id)hk_addConstraintsWithFormat:(id)arg1 options:(unsigned long long)arg2 views:(id)arg3;
 - (id)hk_addEqualsConstraintWithItem:(id)arg1 attribute:(long long)arg2 relatedTo:(id)arg3 attribute:(long long)arg4 constant:(double)arg5;
 - (id)hk_addEqualsConstraintWithItem:(id)arg1 attribute:(long long)arg2 relatedTo:(id)arg3 constant:(double)arg4;
+- (void)hk_alignCenterConstraintsWithView:(id)arg1;
+- (void)hk_alignConstraintsWithView:(id)arg1;
+- (void)hk_alignConstraintsWithViewController:(id)arg1;
+- (void)hk_alignHorizontalConstraintsWithView:(id)arg1 margin:(double)arg2;
+- (void)hk_alignVerticalConstraintsWithView:(id)arg1 margin:(double)arg2;
 - (BOOL)hk_isLeftToRight;
+- (double)hk_layoutHeightFittingWidth:(double)arg1;
 @end
 

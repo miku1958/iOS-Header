@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOTransitDepartureSequence-Protocol.h>
 
@@ -34,8 +34,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *operatingHours;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_enumerateDeparturesValidForDate:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (id)departuresValidForDate:(id)arg1;
 - (id)firstDepartureAfterDate:(id)arg1;
 - (id)firstDepartureFrequencyOnOrAfterDate:(id)arg1;

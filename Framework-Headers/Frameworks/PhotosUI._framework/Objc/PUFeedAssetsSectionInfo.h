@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)captionForItemAtIndex:(long long)arg1;
 - (id)cloudFeedAssetsEntry;
 - (BOOL)containsAsset:(id)arg1;
+- (id)countsByAssetDisplayType;
 - (void)getPhotoCount:(out unsigned long long *)arg1 videoCount:(out unsigned long long *)arg2;
 - (BOOL)hasPlayableAssetForItemAtIndex:(long long)arg1;
 - (long long)indexOfItemWithAsset:(id)arg1;

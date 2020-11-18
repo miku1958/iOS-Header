@@ -10,12 +10,14 @@
 {
 }
 
+@property (nonatomic) BOOL forceWakeToMaps; // @dynamic forceWakeToMaps;
 @property (nonatomic) BOOL limitFeaturesForRemoteLock; // @dynamic limitFeaturesForRemoteLock;
-@property (readonly, nonatomic) BOOL lostModeDisableDashBoard; // @dynamic lostModeDisableDashBoard;
+@property (nonatomic) double nowPlayingTimeout; // @dynamic nowPlayingTimeout;
 @property (nonatomic) BOOL showAuthenticationEngineeringUI; // @dynamic showAuthenticationEngineeringUI;
 @property (readonly, nonatomic) BOOL showLegalText; // @dynamic showLegalText;
+@property (nonatomic) BOOL showQuickNoteFingerGestureRecognizer; // @dynamic showQuickNoteFingerGestureRecognizer;
 @property (nonatomic) BOOL showSupervisionText; // @dynamic showSupervisionText;
-@property (nonatomic) BOOL useDashBoard; // @dynamic useDashBoard;
+@property (nonatomic) BOOL weDontNeedNoEducation; // @dynamic weDontNeedNoEducation;
 
 - (void)_bindAndRegisterDefaults;
 

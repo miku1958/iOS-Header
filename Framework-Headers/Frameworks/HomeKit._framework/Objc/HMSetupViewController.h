@@ -38,6 +38,8 @@
 - (void)_finishSetupWithError:(id)arg1;
 - (void)_presentAsTopmostViewController;
 - (void)_requestRemoteViewController;
+- (void)accessorySetupDidBeginPairing;
+- (void)accessorySetupDidFinishPairing;
 - (void)accessorySetupDidFinishWithError:(id)arg1;
 - (void)accessorySetupDidLoad;
 - (id)init;

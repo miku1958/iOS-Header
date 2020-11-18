@@ -14,6 +14,8 @@
 @interface _HKSleepQueryResult : NSObject <_HKDateBounded, NSSecureCoding>
 {
     NSDictionary *_resultsByCategoryValue;
+    NSDictionary *_samplesBySource;
+    NSDateInterval *_dateInterval;
     NSDateInterval *_resultInterval;
 }
 
@@ -24,15 +26,18 @@
 @property (readonly) Class superclass;
 
 + (id)_preferredSourceFromSources:(id)arg1 sourceOrder:(id)arg2;
++ (id)dateIntervalForSamples:(id)arg1;
++ (id)samplesForSamplesBySource:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_calculatePreferredDuration:(double *)arg1 categoryValue:(long long *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)dateInterval;
 - (id)dateIntervalsForCategoryValue:(long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)endDate;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithResultInterval:(id)arg1 dateIntervalsByCategoryValue:(id)arg2;
+- (id)initWithResultInterval:(id)arg1 dateIntervalsByCategoryValue:(id)arg2 samplesBySource:(id)arg3;
 - (id)preferredDateIntervals;
 - (id)startDate;
 

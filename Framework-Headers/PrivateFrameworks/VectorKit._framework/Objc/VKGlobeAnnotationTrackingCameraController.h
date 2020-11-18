@@ -11,7 +11,13 @@ __attribute__((visibility("hidden")))
 {
     struct GlobeView *_globeView;
     struct Anchor {
-        CDUnknownFunctionPointerType *;
+        int;
+        struct Coordinate2D<Radians, double>;
+        Geocentric_d8fde6f2;
+        double;
+        struct MercatorTile;
+        struct shared_ptr<altitude::AnchorManager>;
+        BOOL;
     } *_anchor;
     CDStruct_071ac149 _currentAnimationStartCoordinate;
     CDStruct_2c43369c _currentAnimationPresentationStartCoordinate;

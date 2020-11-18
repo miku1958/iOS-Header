@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class IDSService, _HMDIDSProxyLinkPreferenceAssertion;
+@class IDSService, NSObject, _HMDIDSProxyLinkPreferenceAssertion;
 @protocol OS_dispatch_queue;
 
-@interface HMDIDSServiceManager : NSObject
+@interface HMDIDSServiceManager : HMFObject
 {
     IDSService *_proxyService;
     IDSService *_streamService;

@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface GEOPowerAssertion : NSObject
 {
     NSString *_identifier;
@@ -16,6 +15,7 @@ __attribute__((visibility("hidden")))
     unsigned int _assertion;
 }
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (id)initWithIdentifier:(id)arg1 timeout:(double)arg2;

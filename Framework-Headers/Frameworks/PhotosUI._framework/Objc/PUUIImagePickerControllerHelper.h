@@ -6,16 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class PUPhotosGridDownloadHelper, PUPhotosGridViewController;
+@class PUPhotosGridDownloadHelper, PUPhotosGridViewController, PUUIAlbumListViewController;
+@protocol OS_dispatch_group, PUPhotoPicker;
 
 __attribute__((visibility("hidden")))
 @interface PUUIImagePickerControllerHelper : NSObject
 {
     PUPhotosGridDownloadHelper *_downloadHelper;
+    BOOL _didHandleSelectionOfAssets;
     PUPhotosGridViewController *_gridViewController;
+    PUUIAlbumListViewController *_albumListViewController;
+    id<PUPhotoPicker> _photoPicker;
+    NSObject<OS_dispatch_group> *_multiSelectionGroup;
 }
 
+@property (readonly, weak, nonatomic) PUUIAlbumListViewController *albumListViewController; // @synthesize albumListViewController=_albumListViewController;
+@property (readonly, nonatomic) BOOL allowsMultipleSelection;
+@property (nonatomic) BOOL didHandleSelectionOfAssets; // @synthesize didHandleSelectionOfAssets=_didHandleSelectionOfAssets;
 @property (readonly, weak, nonatomic) PUPhotosGridViewController *gridViewController; // @synthesize gridViewController=_gridViewController;
+@property (strong, nonatomic) NSObject<OS_dispatch_group> *multiSelectionGroup; // @synthesize multiSelectionGroup=_multiSelectionGroup;
+@property (readonly, weak, nonatomic) id<PUPhotoPicker> photoPicker; // @synthesize photoPicker=_photoPicker;
 
 + (int)albumFilterForMediaTypes:(id)arg1;
 + (id)albumListViewControllerSpec;
@@ -25,14 +35,26 @@ __attribute__((visibility("hidden")))
 + (id)imagePickerControllerForViewController:(id)arg1;
 + (unsigned long long)imagePickerTypesForMediaTypes:(id)arg1;
 - (void).cxx_destruct;
+- (void)_handleSelectionOfDownloadedAssets:(id)arg1;
+- (id)_imagePickerController;
+- (BOOL)_isPhotosPickerExtensionAvailable;
+- (id)_mediaTypes;
 - (void)_notifyImagePickerOfAssetAvailability:(id)arg1;
+- (id)_pickerProperties;
 - (void)_pushImageViewControllerForAsset:(id)arg1 allowEditing:(BOOL)arg2 expectsLivePhoto:(BOOL)arg3;
 - (void)_selectAsset:(id)arg1 withHintCollection:(id)arg2 hintIndexPath:(id)arg3;
-- (void)cancelCurrentAssetDownload;
+- (void)_showImageViewController:(id)arg1;
+- (void)cancelPhotoPicker;
 - (BOOL)clientSuppressesForchTouch;
+- (void)handleKeyboardAvoidanceIfNeeded:(id)arg1;
 - (void)handleSelectionOfAsset:(id)arg1 inCollection:(id)arg2;
+- (void)handleSelectionOfAssets:(id)arg1;
 - (void)handleToggleSelectionOfItemAtIndexPath:(id)arg1;
-- (id)initWithGridViewController:(id)arg1;
+- (id)initWithAlbumListViewController:(id)arg1 photoPickerServices:(id)arg2;
+- (id)initWithGridViewController:(id)arg1 photoPickerServices:(id)arg2;
+- (unsigned long long)multipleSelectionLimit;
+- (BOOL)showsPrompt;
+- (void)updatePhotoPickerAppearance;
 - (void)updateSessionInfo;
 
 @end

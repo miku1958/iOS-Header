@@ -6,13 +6,20 @@
 
 #import <EventKitUI/EKEventEditItem.h>
 
-@class EKEventNotesInlineEditItem, EKEventURLInlineEditItem;
+#import <EventKitUI/EKCalendarItemInlineEditItem-Protocol.h>
 
-@interface EKEventURLAndNotesInlineEditItem : EKEventEditItem
+@class EKEventNotesInlineEditItem, EKEventURLInlineEditItem, NSString;
+
+@interface EKEventURLAndNotesInlineEditItem : EKEventEditItem <EKCalendarItemInlineEditItem>
 {
     EKEventURLInlineEditItem *_urlEditItem;
     EKEventNotesInlineEditItem *_notesEditItem;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryChanged;
@@ -21,9 +28,11 @@
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (id)init;
 - (BOOL)isInline;
+- (BOOL)isSaveable;
 - (unsigned long long)numberOfSubitems;
 - (void)reset;
 - (BOOL)saveAndDismissWithForce:(BOOL)arg1;
+- (id)searchStringForEventAutocomplete;
 - (void)setCalendarItem:(id)arg1 store:(id)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)setSelectedResponder:(id)arg1;

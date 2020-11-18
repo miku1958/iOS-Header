@@ -29,7 +29,6 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_cancelPendingWriteSynchronouslyLeavingSuddenTerminationIntact;
-- (id)_dataFromDataSource;
 - (id)_initWithName:(id)arg1 fileURL:(id)arg2 writerBlock:(CDUnknownBlockType)arg3 dataSourceBlock:(CDUnknownBlockType)arg4;
 - (void)_invalidateTimer;
 - (void)_scheduleTimer;
@@ -37,6 +36,7 @@
 - (void)_waitForWriteCompletion;
 - (void)_writeData:(id)arg1;
 - (void)_writeDataAsynchronously:(id)arg1;
+- (void)_writeDataFromDataSourceAsynchronously;
 - (void)cancelPendingWriteSynchronously;
 - (void)completePendingWriteSynchronously;
 - (void)dealloc;

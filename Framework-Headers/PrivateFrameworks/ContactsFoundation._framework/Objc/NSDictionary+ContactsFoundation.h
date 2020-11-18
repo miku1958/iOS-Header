@@ -7,6 +7,7 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (ContactsFoundation)
+- (id)_cn_diff:(id)arg1;
 - (void)_cn_each:(CDUnknownBlockType)arg1;
 - (id)_cn_filter:(CDUnknownBlockType)arg1;
 - (id)_cn_keysAndValues;

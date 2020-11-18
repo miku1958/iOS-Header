@@ -6,21 +6,25 @@
 
 #import <Foundation/NSObject.h>
 
-@class MTLStructType, NSString;
+@class MTLPointerType, MTLStructType, NSString;
 
 @interface MTLArgument : NSObject
 {
-    unsigned long long _arrayLength;
 }
 
 @property (readonly) unsigned long long access; // @dynamic access;
 @property (readonly, getter=isActive) BOOL active; // @dynamic active;
-@property (readonly) unsigned long long arrayLength; // @synthesize arrayLength=_arrayLength;
+@property (readonly) unsigned long long arrayLength; // @dynamic arrayLength;
 @property (readonly) unsigned long long bufferAlignment; // @dynamic bufferAlignment;
 @property (readonly) unsigned long long bufferDataSize; // @dynamic bufferDataSize;
 @property (readonly) unsigned long long bufferDataType; // @dynamic bufferDataType;
+@property (readonly) MTLArgument *bufferIndirectArgumentType; // @dynamic bufferIndirectArgumentType;
+@property (readonly) MTLPointerType *bufferPointerType; // @dynamic bufferPointerType;
 @property (readonly) MTLStructType *bufferStructType; // @dynamic bufferStructType;
 @property (readonly) unsigned long long index; // @dynamic index;
+@property (readonly) unsigned long long indirectConstantAlignment; // @dynamic indirectConstantAlignment;
+@property (readonly) unsigned long long indirectConstantDataSize; // @dynamic indirectConstantDataSize;
+@property (readonly) unsigned long long indirectConstantDataType; // @dynamic indirectConstantDataType;
 @property (readonly) BOOL isDepthTexture; // @dynamic isDepthTexture;
 @property (readonly) NSString *name; // @dynamic name;
 @property (readonly) unsigned long long textureDataType; // @dynamic textureDataType;

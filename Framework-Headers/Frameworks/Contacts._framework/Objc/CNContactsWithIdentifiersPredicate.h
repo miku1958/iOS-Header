@@ -24,12 +24,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (BOOL)cn_supportsNativeSorting;
-- (void)dealloc;
+- (id)contactsFromDonationStore:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifiers:(id)arg1;
 - (id)internalIdentifiersForStoreWithIdentifier:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)suggestionsWithSortOrder:(long long)arg1 mutableObjects:(BOOL)arg2 service:(id)arg3 error:(id *)arg4;
 
 @end

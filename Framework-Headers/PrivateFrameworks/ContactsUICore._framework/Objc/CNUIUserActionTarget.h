@@ -26,6 +26,7 @@
 
 + (id)descriptorForRequiredKeysForActionDiscovering;
 + (id)targetForEmailWithMail;
++ (id)targetForPayWithWallet;
 + (id)targetForSendMessageIntentWithAppProxy:(id)arg1;
 + (id)targetForStartAudioCallIntentWithAppProxy:(id)arg1;
 + (id)targetForStartVideoCallIntentWithAppProxy:(id)arg1;

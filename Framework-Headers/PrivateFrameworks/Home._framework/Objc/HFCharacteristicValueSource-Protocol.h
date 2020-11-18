@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Home/NSObject-Protocol.h>
+#import <Home/HFCharacteristicValueOperationBatching-Protocol.h>
+#import <Home/NAIdentifiable-Protocol.h>
 
 @class HFCharacteristicValueSet, HMActionSet, HMCharacteristic, NAFuture, NSError, NSSet;
 @protocol HFCharacteristicOperationContextProviding;
 
-@protocol HFCharacteristicValueSource <NSObject>
+@protocol HFCharacteristicValueSource <HFCharacteristicValueOperationBatching, NAIdentifiable>
 
 @property (readonly, nonatomic) id<HFCharacteristicOperationContextProviding> contextProvider;
 

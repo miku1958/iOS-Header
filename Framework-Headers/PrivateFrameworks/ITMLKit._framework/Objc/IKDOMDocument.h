@@ -19,8 +19,10 @@
 {
     id<IKJSDOMDocumentAppBridge> _appBridge;
     unsigned long long _itmlIDSequence;
+    NSString *__documentURI;
 }
 
+@property (strong, nonatomic, setter=_setDocumentURI:) NSString *_documentURI; // @synthesize _documentURI=__documentURI;
 @property (weak, nonatomic) id<IKJSDOMDocumentAppBridge> appBridge; // @synthesize appBridge=_appBridge;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

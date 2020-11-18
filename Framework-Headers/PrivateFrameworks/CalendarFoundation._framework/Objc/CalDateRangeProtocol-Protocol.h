@@ -9,7 +9,9 @@
 @class NSDate;
 
 @protocol CalDateRangeProtocol <NSObject>
-- (NSDate *)endDate;
-- (NSDate *)startDate;
+
+@property (readonly, nonatomic) NSDate *endDate;
+@property (readonly, nonatomic) NSDate *startDate;
+
 @end
 

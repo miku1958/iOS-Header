@@ -23,8 +23,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (struct __CFArray *)cn_copyContainersInAddressBook:(void *)arg1 error:(struct __CFError **)arg2;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)includesDisabledContainers;
 - (id)initWithAccountIdentifier:(id)arg1;

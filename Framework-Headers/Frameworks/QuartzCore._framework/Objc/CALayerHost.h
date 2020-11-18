@@ -12,6 +12,7 @@
 
 @property unsigned int contextId;
 @property BOOL inheritsSecurity;
+@property BOOL rendersAsynchronously;
 
 + (BOOL)CA_automaticallyNotifiesObservers:(Class)arg1;
 + (BOOL)_hasRenderLayerSubclass;

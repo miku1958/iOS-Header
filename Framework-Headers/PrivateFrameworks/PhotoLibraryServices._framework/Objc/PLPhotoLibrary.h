@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSCalendar, NSMutableArray, NSMutableDictionary, NSSet, NSString, PLFetchingAlbum, PLGenericAlbum, PLManagedAlbum, PLManagedAlbumList, PLManagedFolder, PLManagedObjectContext;
 @protocol PLAlbumProtocol;
@@ -60,26 +60,37 @@
 + (void)_assetsLibrary_disableSharedPhotoStreamsSupport;
 + (BOOL)_assetsLibrary_isSharedPhotoStreamsSupportEnabled;
 + (BOOL)_assetsdQueueingMode;
++ (BOOL)_canSetPauseMarkerWithUnpauseTime:(id)arg1 onPauseData:(id)arg2;
++ (void)_createPauseMarkerForReason:(short)arg1 withUnpauseTime:(id)arg2 withPath:(id)arg3;
 + (id)_dataMigratorFinishedFilePath;
 + (id)_dataProtectionIndicatorFilePath;
 + (void)_doFilesystemImportIfNeededWithMOC:(id)arg1 reason:(id)arg2;
 + (void)_enqeueRecoveryJob:(id)arg1;
 + (void)_enqueueOperationWithName:(id)arg1 priority:(long long)arg2 block:(CDUnknownBlockType)arg3;
 + (void)_inq_createPhotoStreamAlbumStreamID:(id)arg1 inLibrary:(id)arg2;
++ (BOOL)_isRebuildingPersons;
++ (void)_loadFileExtensionInformation;
 + (id)_operationQueueForPriority:(long long)arg1;
++ (id)_pauseDataOnPath:(id)arg1;
++ (id)_rebuildingPersonsIndicatorFilePath;
++ (void)_setIsRebuildingPersons:(BOOL)arg1;
 + (id)_statusDescriptionForQueue:(id)arg1;
 + (void)_updateAssetCountKeyPath:(id)arg1 withPendingCountKeyPath:(id)arg2 inContext:(id)arg3;
++ (void)_updateMemoryCountKeyPath:(id)arg1 withPendingCountKeyPath:(id)arg2 inContext:(id)arg3;
 + (id)allPersistedDirectoryURLs;
 + (BOOL)areOpportunisticTasksDisabled;
 + (id)assetsDataDirectory;
 + (BOOL)canSaveVideoToCameraRoll:(id)arg1;
++ (BOOL)clearPauseMarkerForReason:(short)arg1;
 + (id)cplAssetsDirectoryURL;
 + (id)cplDownloadFinishedMarkerFilePath;
 + (id)cplEnableMarkerFilePath;
 + (id)crashRecoveryIndicatorFilePaths:(BOOL)arg1;
++ (void)createPauseMarkerWithUnpauseTime:(id)arg1 reason:(short)arg2;
 + (void)createPhotoStreamAlbumWithStreamID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)createPhotoStreamAlbumWithStreamID:(id)arg1 inLibrary:(id)arg2;
 + (BOOL)createSqliteErrorIndicatorFile;
++ (short)currentPauseReason;
 + (id)dcimDirectory;
 + (id)dcimDirectoryURL;
 + (unsigned long long)defaultUnverifiedFaceCountThreshold;
@@ -103,6 +114,7 @@
 + (void)initializeGraphicsServices;
 + (BOOL)isAlbumSynced:(id)arg1;
 + (BOOL)isApplicationWildcat;
++ (BOOL)isAudioFileExtension:(id)arg1;
 + (BOOL)isDataMigratorFinished;
 + (BOOL)isDataProtectionComplete;
 + (BOOL)isDisableICloudPhotos;
@@ -110,10 +122,15 @@
 + (BOOL)isEnableICloudPhotos;
 + (BOOL)isForceSoftResetSync;
 + (BOOL)isICloudPhotosPaused;
++ (BOOL)isImageFileExtension:(id)arg1;
 + (BOOL)isMomentAnalysisNeeded;
++ (BOOL)isNonRawImageFileExtension:(id)arg1;
++ (BOOL)isRawImageFileExtension:(id)arg1;
 + (BOOL)isRunningInStoreDemoMode;
 + (BOOL)isSafeToRecoverAfterCrash;
 + (BOOL)isStreamsLibraryUpdatingExpired;
++ (BOOL)isUserPause;
++ (BOOL)isVideoFileExtension:(id)arg1;
 + (id)libraryAvailableIndicatorFilePath;
 + (BOOL)libraryAvailableIndicatorState;
 + (id)lightweightReimportPhotoCloudSharingAssetDirectoryForAlbumWithCloudGUID:(id)arg1 cloudPersonID:(id)arg2;
@@ -125,7 +142,6 @@
 + (id)opportunisticTaskIsolationQueue;
 + (id)pathToAssetsToAlbumsMapping;
 + (id)pauseICloudPhotosFilePath;
-+ (id)pauseTime;
 + (void)performAndWaitOnTransientLibraryWithName:(const char *)arg1 block:(CDUnknownBlockType)arg2;
 + (void)performOnTransientLibraryWithPriority:(long long)arg1 name:(const char *)arg2 block:(CDUnknownBlockType)arg3;
 + (void)performOnTransientLibraryWithPriority:(long long)arg1 name:(const char *)arg2 block:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -150,6 +166,7 @@
 + (id)photoOutboundSharingTmpDirectoryURL;
 + (id)photoStreamsDataDirectory;
 + (void)postGlobalPhotoLibraryAvailableNotification;
++ (int)priorityForFileExtension:(id)arg1;
 + (BOOL)processCanReadSandboxForPath:(id)arg1;
 + (BOOL)processCanWriteSandboxForPath:(id)arg1;
 + (BOOL)processWithID:(int)arg1 canReadSandboxForPath:(id)arg2;
@@ -175,9 +192,8 @@
 + (void)setLibraryAvailableIndicatorState:(BOOL)arg1;
 + (void)setMigratorIsBusy:(BOOL)arg1;
 + (void)setMomentAnalysisNeeded:(BOOL)arg1;
-+ (void)setPauseMarker:(BOOL)arg1;
 + (void)setPhotoStreamEnabled:(BOOL)arg1;
-+ (void)setSqliteErrorAndExitIfNecessary;
++ (void)setSqliteErrorAndExitIfNecessaryForSimulatedCorruption:(BOOL)arg1;
 + (void)setStreamsLibraryUpdatingExpired:(BOOL)arg1;
 + (void)setTakingPhotoIsBusy:(BOOL)arg1;
 + (void)setUnverifiedFaceCountThreshold:(unsigned long long)arg1;
@@ -191,14 +207,19 @@
 + (id)syncedAlbumSubtitleStringFormat;
 + (id)takingPhotoIndicatorFilePath;
 + (id)takingVideoIndicatorFilePath;
++ (id)tmpDragAndDropDirectoryURL;
++ (id)unpauseTime;
 + (unsigned long long)unverifiedFaceCountThreshold;
 + (void)updateAlbumKeyAssetsInContext:(id)arg1 withPredicate:(id)arg2;
 + (void)updateAssetPlayShareViewCountsInContext:(id)arg1;
 + (void)updateICloudPhotosMarkerForEnable:(BOOL)arg1;
++ (void)updateMemoryPlayShareViewCountsInContext:(id)arg1;
 + (void)updateUnverifiedFaceCountThreshold;
 + (id)videosPath;
 - (void).cxx_destruct;
 - (id)_allAssetsForDeletion:(id)arg1;
+- (void)_applyAdjustmentFileInfo:(id)arg1 renderedContentFileInfo:(id)arg2 renderedVideoComplementFileInfo:(id)arg3 toAsset:(id)arg4 withMainFileURL:(id)arg5;
+- (void)_applySideCarFiles:(id)arg1 toAsset:(id)arg2 withMainFileURL:(id)arg3;
 - (void)_batchDeleteAssets:(id)arg1 inManagedObjectContext:(id)arg2 withReason:(id)arg3;
 - (void)_calculatePendingItemCountsAfterOTARestoreWithMangedObjectContext:(id)arg1;
 - (BOOL)_checkMomentAnalysisCompletion;
@@ -213,10 +234,12 @@
 - (BOOL)_hasIncompleteAsset;
 - (BOOL)_hasPendingAssetsIgnoreiTunes:(BOOL)arg1;
 - (id)_init;
+- (BOOL)_isHeifUTI:(struct __CFString *)arg1;
 - (BOOL)_isOTARestoreFinished;
 - (void)_linkAsideAlbumMetadataForOTARestore;
 - (void)_loadDatabase:(const char *)arg1;
-- (void)_loadFileExtensionInformation;
+- (void)_photoLibraryCorruptNotification;
+- (void)_photoLibraryForceClientExitNotification;
 - (void)_processPhotoIrisSidecarIfNecessary:(id)arg1 forAsset:(id)arg2;
 - (void)_recreateItemsFromMetadataAtDirectoryURLs:(id)arg1;
 - (void)_removeOldFaceMetadataAsync;
@@ -231,9 +254,7 @@
 - (void)_userDeleteAssets:(id)arg1 withReason:(id)arg2;
 - (void)_withDispatchGroup:(id)arg1 synchronously:(BOOL)arg2 priority:(long long)arg3 name:(id)arg4 shouldSave:(BOOL)arg5 performTransaction:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)addCompletionHandlerToCurrentTransaction:(CDUnknownBlockType)arg1;
-- (id)addDCIMEntryAtFileURL:(id)arg1 toEvent:(struct NSObject *)arg2 sidecarFileInfo:(id)arg3 progress:(id)arg4 importSessionIdentifier:(id)arg5 isImported:(BOOL)arg6 previewImage:(id)arg7 thumbnailImage:(id)arg8 savedAssetType:(short)arg9 replacementUUID:(id)arg10 publicGlobalUUID:(id)arg11 extendedInfo:(id)arg12 thumbnailsData:(struct __CFDictionary *)arg13 withUUID:(id)arg14 ignoreEmbeddedMetadata:(BOOL)arg15 isPlaceholder:(BOOL)arg16;
-- (void)addSidecarFileInfo:(id)arg1 toAsset:(id)arg2 atIndex:(unsigned long long)arg3;
-- (BOOL)addSidecarFileToAsset:(id)arg1 atIndex:(unsigned long long)arg2 sidecarURL:(id)arg3 withFilename:(id)arg4 originalFilename:(id)arg5 compressedSize:(id)arg6 captureDate:(id)arg7 modificationDate:(id)arg8 uniformTypeIdentifier:(id)arg9;
+- (id)addDCIMEntryAtFileURL:(id)arg1 toEvent:(struct NSObject *)arg2 sidecarFileInfo:(id)arg3 progress:(id)arg4 importSessionIdentifier:(id)arg5 isImported:(BOOL)arg6 previewImage:(id)arg7 thumbnailImage:(id)arg8 savedAssetType:(short)arg9 replacementUUID:(id)arg10 publicGlobalUUID:(id)arg11 extendedInfo:(id)arg12 withUUID:(id)arg13 ignoreEmbeddedMetadata:(BOOL)arg14 isPlaceholder:(BOOL)arg15;
 - (void)addToKnownPhotoStreamAlbums:(id)arg1;
 - (struct NSObject *)albumFromGroupURL:(id)arg1;
 - (id)albumListForAlbumOfKind:(int)arg1;
@@ -258,7 +279,6 @@
 - (unsigned long long)concurrencyType;
 - (void)copyAssetToCameraRoll:(id)arg1;
 - (unsigned long long)countOfLocalAlbumsContainingAssets:(id)arg1 assetsInSomeAlbumCount:(long long *)arg2;
-- (id)dataForPhoto:(id)arg1 format:(int)arg2 width:(int *)arg3 height:(int *)arg4 bytesPerRow:(int *)arg5 dataWidth:(int *)arg6 dataHeight:(int *)arg7 imageDataOffset:(int *)arg8;
 - (void)dealloc;
 - (BOOL)deleteAllDiagnosticFiles:(id *)arg1;
 - (void)deleteAllImages;
@@ -292,22 +312,16 @@
 - (id)init;
 - (id)initWithName:(const char *)arg1;
 - (id)initWithTransientContext:(BOOL)arg1 name:(const char *)arg2;
-- (BOOL)isAudioFileExtension:(id)arg1;
-- (BOOL)isImageFileExtension:(id)arg1;
-- (BOOL)isNonRawImageFileExtension:(id)arg1;
-- (BOOL)isRawImageFileExtension:(id)arg1;
 - (BOOL)isReadyForCloudPhotoLibrary;
 - (BOOL)isTransient;
-- (BOOL)isVideoFileExtension:(id)arg1;
 - (id)lastImportSessionUUID;
 - (id)lastImportedPhotosAlbum;
 - (id)lastImportedPhotosAlbumCreateIfNeeded:(BOOL)arg1;
 - (id)librarySizes;
+- (id)librarySizesFromDB;
 - (id)managedObjectContextStoreUUID;
 - (id)managedObjectWithObjectID:(id)arg1;
-- (id)masterFilenameFromSidecarFileInfo:(id)arg1;
 - (id)masterURLFromSidecarURLs:(id)arg1;
-- (id)memoryWithUuid:(id)arg1;
 - (void)modifyDCIMEntryForPhoto:(id)arg1;
 - (id)name;
 - (BOOL)needsMigration;
@@ -329,13 +343,12 @@
 - (void)performTransaction:(CDUnknownBlockType)arg1 withPriority:(long long)arg2;
 - (void)performTransactionAndWait:(CDUnknownBlockType)arg1;
 - (void)performTransactionAndWait:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)performTransactionAndWaitWithName:(id)arg1 transaction:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)photoFromAssetURL:(id)arg1;
-- (void)photoLibraryCorruptNotification;
 - (void)prepareDatabaseForOTAAssetsPhase;
-- (int)priorityForFileExtension:(id)arg1;
 - (void)processSyncSaveJob:(id)arg1 albumMap:(id)arg2;
-- (void)recreateAlbumsFromMetadata;
-- (void)recreateFacesFromMetadata;
+- (void)recreateAlbumsAndPersonsFromMetadata;
+- (void)recreatePersonsFromMetadata;
 - (void)removeFromKnownPhotoStreamAlbums:(id)arg1;
 - (void)resetCachedImportAlbumsIfNeededForAlbum:(id)arg1;
 - (void)setGlobalValue:(id)arg1 forKey:(id)arg2;

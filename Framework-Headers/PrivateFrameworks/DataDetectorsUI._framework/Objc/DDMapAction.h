@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSString *_addressString;
 }
 
++ (BOOL)actionAvailableForContact:(id)arg1;
 + (BOOL)handlesUrl:(id)arg1 result:(struct __DDResult *)arg2;
 + (id)viewControllerProviderClass;
 - (void).cxx_destruct;

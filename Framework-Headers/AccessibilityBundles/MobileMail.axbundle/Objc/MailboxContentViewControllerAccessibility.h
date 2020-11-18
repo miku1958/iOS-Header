@@ -13,7 +13,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityIsDraftsMailbox;
+- (BOOL)_accessibilityIsOutbox;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)_accessibilityMallSources;
+- (void)_updateBackButtonImage;
 - (void)setTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 

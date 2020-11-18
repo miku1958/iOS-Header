@@ -22,12 +22,19 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)requestActiveRouteDetailsData;
 - (void)requestGuidanceState;
+- (void)requestNavigationVoiceVolume;
+- (void)requestPositionFromDestination;
+- (void)requestPositionFromManeuver;
+- (void)requestPositionFromSign;
 - (void)requestRideSelections;
 - (void)requestRouteSummary;
 - (void)requestStepIndex;
+- (void)requestStepNameInfo;
+- (void)requestTrafficIncidentDetailsData;
 - (void)requestTransitSummary;
 - (void)requestUpdates;
 

@@ -30,7 +30,7 @@
 - (void).cxx_destruct;
 - (unsigned long long)_indexOfRequestMatchingRequest:(id)arg1;
 - (unsigned long long)_insertionIndexForNotificationRequest:(id)arg1;
-- (id)_matchIdentifierForNotificationRequest:(id)arg1;
+- (BOOL)_isNotificationRequest:(id)arg1 matchingRequest:(id)arg2;
 - (unsigned long long)addNotificationRequest:(id)arg1;
 - (id)allNotificationRequests;
 - (BOOL)containsNotificationRequestMatchingRequest:(id)arg1;

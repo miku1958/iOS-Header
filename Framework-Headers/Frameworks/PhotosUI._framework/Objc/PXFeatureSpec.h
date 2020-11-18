@@ -22,6 +22,8 @@
     PXExtendedTraitCollection *__extendedTraitCollection;
     PXLayoutMetricInterpolator *__horizontalContentGuideInsetsInterpolator;
     struct CGSize __layoutReferenceSize;
+    struct UIEdgeInsets _safeAreaInsets;
+    struct UIEdgeInsets _layoutMargins;
 }
 
 @property (readonly, nonatomic) double _displayScale; // @synthesize _displayScale=__displayScale;
@@ -36,7 +38,10 @@
 @property (readonly, nonatomic) UIColor *defaultBackgroundColor;
 @property (readonly, nonatomic) double defaultCornerRadius;
 @property (readonly, nonatomic) UIColor *defaultPlaceholderColor;
+@property (readonly, nonatomic) UIColor *defaultPlacesPlaceholderColor;
+@property (readonly, nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
 @property (readonly, nonatomic) long long localizedLeadingTextAlignment;
+@property (readonly, nonatomic) struct UIEdgeInsets safeAreaInsets; // @synthesize safeAreaInsets=_safeAreaInsets;
 @property (readonly, nonatomic) BOOL shouldInsetAllPhotoDetailsContent; // @synthesize shouldInsetAllPhotoDetailsContent=_shouldInsetAllPhotoDetailsContent;
 @property (readonly, nonatomic) long long sizeClass; // @synthesize sizeClass=_sizeClass;
 @property (readonly, nonatomic) long long userInterfaceFeature; // @synthesize userInterfaceFeature=_userInterfaceFeature;

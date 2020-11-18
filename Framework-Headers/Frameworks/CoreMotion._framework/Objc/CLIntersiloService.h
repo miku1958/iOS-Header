@@ -7,13 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <CoreMotion/CLIntersiloServiceProtocol-Protocol.h>
+#import <CoreMotion/CLIntersiloUniverse-Protocol.h>
 
-@class CLIntersiloInterface, CLSilo, NSString;
+@class CLIntersiloInterface, CLServiceVendor, CLSilo, NSString;
+@protocol CLIntersiloUniverse;
 
-@interface CLIntersiloService : NSObject <CLIntersiloServiceProtocol>
+@interface CLIntersiloService : NSObject <CLIntersiloServiceProtocol, CLIntersiloUniverse>
 {
-    BOOL _valid;
     CLSilo *_silo;
+    CLServiceVendor *_vendor;
+    BOOL _valid;
     CLIntersiloInterface *_inboundInterface;
     CLIntersiloInterface *_outboundInterface;
 }
@@ -25,17 +28,20 @@
 @property (readonly, nonatomic) CLIntersiloInterface *outboundInterface; // @synthesize outboundInterface=_outboundInterface;
 @property (readonly, nonatomic) CLSilo *silo; // @synthesize silo=_silo;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id<CLIntersiloUniverse> universe;
 @property (nonatomic) BOOL valid; // @synthesize valid=_valid;
+@property (readonly, nonatomic) CLServiceVendor *vendor; // @synthesize vendor=_vendor;
 
-+ (void)becameFatallyBlocked:(id)arg1;
++ (void)becameFatallyBlocked:(id)arg1 index:(unsigned long long)arg2;
 + (id)getSilo;
 + (BOOL)isSupported;
 + (void)performSyncOnSilo:(id)arg1 invoker:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (id)init;
-- (id)initInSilo:(id)arg1;
-- (id)initWithInboundProtocol:(id)arg1 outboundProtocol:(id)arg2 andSilo:(id)arg3;
+- (id)initWithInboundProtocol:(id)arg1 outboundProtocol:(id)arg2;
 - (BOOL)isHydrated;
+- (void)setSilo:(id)arg1;
+- (void)setVendor:(id)arg1;
 
 @end
 

@@ -38,6 +38,7 @@
 
 - (void).cxx_destruct;
 - (void)_handlePinchGesture:(id)arg1;
+- (id)descriptionText;
 - (id)descriptionTextStyle;
 - (void)finalizeZoomingImageTransitionWithContext:(id)arg1 transitionFinished:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -58,8 +59,11 @@
 - (void)setThumbnailOverlayImage:(id)arg1;
 - (void)setTitleText:(id)arg1;
 - (void)setZoomingImageTransitionIdentifier:(id)arg1;
+- (id)subtitleText;
 - (id)subtitleTextStyle;
 - (id)thumbnailImage;
+- (struct CGSize)thumbnailMaxSize;
+- (id)titleText;
 - (id)titleTextStyle;
 - (void)updateConstraints;
 

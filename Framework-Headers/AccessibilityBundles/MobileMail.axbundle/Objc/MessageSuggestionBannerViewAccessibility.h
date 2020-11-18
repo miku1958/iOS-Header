@@ -15,8 +15,9 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_dismissButtonTapped:(id)arg1;
-- (void)_setupSubviews;
+- (id)accessibilityIdentifier;
 - (long long)accessibilityNavigationStyle;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)shouldGroupAccessibilityChildren;
 - (void)updateAccessoryViewWithType:(long long)arg1;
 

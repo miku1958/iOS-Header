@@ -10,7 +10,7 @@
 #import <PhotosUI/UICollectionViewDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSIndexPath, NSString, PUHorizontalCollectionViewLayout, UICollectionView, UIImageView, UITapGestureRecognizer, _UIBackdropView, _UIFeedbackImpactBehavior;
+@class NSIndexPath, NSString, PUHorizontalCollectionViewLayout, UICollectionView, UIImageView, UIImpactFeedbackGenerator, UITapGestureRecognizer, _UIBackdropView;
 @protocol PUReviewScrubberDataSource, PUReviewScrubberDelegate;
 
 __attribute__((visibility("hidden")))
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
     PUHorizontalCollectionViewLayout *__collectionViewLayout;
     UICollectionView *__collectionView;
     UITapGestureRecognizer *__tapGestureRecognizer;
-    _UIFeedbackImpactBehavior *__impactFeedbackBehavior;
+    UIImpactFeedbackGenerator *__impactFeedbackBehavior;
     NSIndexPath *__indexPathForPreviousFeedbackQuery;
 }
 
@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UICollectionView *_collectionView; // @synthesize _collectionView=__collectionView;
 @property (readonly, nonatomic) PUHorizontalCollectionViewLayout *_collectionViewLayout; // @synthesize _collectionViewLayout=__collectionViewLayout;
 @property (readonly, nonatomic) BOOL _ignoreScrollViewDidScrollUpdate; // @synthesize _ignoreScrollViewDidScrollUpdate=__ignoreScrollViewDidScrollUpdate;
-@property (readonly, nonatomic) _UIFeedbackImpactBehavior *_impactFeedbackBehavior; // @synthesize _impactFeedbackBehavior=__impactFeedbackBehavior;
+@property (readonly, nonatomic) UIImpactFeedbackGenerator *_impactFeedbackBehavior; // @synthesize _impactFeedbackBehavior=__impactFeedbackBehavior;
 @property (strong, nonatomic, setter=_setIndexPathForPreviousFeedbackQuery:) NSIndexPath *_indexPathForPreviousFeedbackQuery; // @synthesize _indexPathForPreviousFeedbackQuery=__indexPathForPreviousFeedbackQuery;
 @property (readonly, nonatomic) unsigned long long _numberOfPhotos; // @synthesize _numberOfPhotos=__numberOfPhotos;
 @property (readonly, nonatomic) BOOL _performingInteractiveUpdate; // @synthesize _performingInteractiveUpdate=__performingInteractiveUpdate;
@@ -72,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)finishInteractiveUpdate;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isMinibar;

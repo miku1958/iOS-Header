@@ -6,43 +6,61 @@
 
 #import <UIKit/UIView.h>
 
-#import <UserNotificationsUIKit/NCContentSizeCategoryAdjusting-Protocol.h>
+#import <UserNotificationsUIKit/MTContentSizeCategoryAdjusting-Protocol.h>
 
-@class NSString, UIStackView;
+@class NCNotificationListCellActionButton, NSString, UIStackView, _UIStatesFeedbackGenerator;
 
-@interface NCNotificationListCellActionButtonsView : UIView <NCContentSizeCategoryAdjusting>
+@interface NCNotificationListCellActionButtonsView : UIView <MTContentSizeCategoryAdjusting>
 {
     BOOL _adjustsFontForContentSizeCategory;
-    BOOL _backgroundBlurred;
+    BOOL _highlightDefaultActionButton;
+    BOOL _didPlayHaptic;
     double _stretchedWidth;
     double _defaultWidth;
+    NSString *_backgroundGroupName;
     UIView *_clippingView;
     UIStackView *_buttonsStackView;
+    NCNotificationListCellActionButton *_defaultActionButton;
+    _UIStatesFeedbackGenerator *_defaultActionFeedbackGenerator;
 }
 
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
-@property (nonatomic, getter=isBackgroundBlurred) BOOL backgroundBlurred; // @synthesize backgroundBlurred=_backgroundBlurred;
+@property (copy, nonatomic) NSString *backgroundGroupName; // @synthesize backgroundGroupName=_backgroundGroupName;
 @property (strong, nonatomic) UIStackView *buttonsStackView; // @synthesize buttonsStackView=_buttonsStackView;
 @property (strong, nonatomic) UIView *clippingView; // @synthesize clippingView=_clippingView;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) NCNotificationListCellActionButton *defaultActionButton; // @synthesize defaultActionButton=_defaultActionButton;
+@property (strong, nonatomic) _UIStatesFeedbackGenerator *defaultActionFeedbackGenerator; // @synthesize defaultActionFeedbackGenerator=_defaultActionFeedbackGenerator;
 @property (readonly, nonatomic) double defaultWidth; // @synthesize defaultWidth=_defaultWidth;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didPlayHaptic; // @synthesize didPlayHaptic=_didPlayHaptic;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL highlightDefaultActionButton; // @synthesize highlightDefaultActionButton=_highlightDefaultActionButton;
 @property (copy, nonatomic) NSString *preferredContentSizeCategory;
+@property (readonly, nonatomic) BOOL shouldPerformDefaultAction;
 @property (nonatomic) double stretchedWidth; // @synthesize stretchedWidth=_stretchedWidth;
 @property (readonly) Class superclass;
 
 + (id)_actionButtonDescriptionsForNotificationRequest:(id)arg1 cell:(id)arg2;
++ (id)_openButtonDescriptionForNotificationRequest:(id)arg1 cell:(id)arg2;
 + (unsigned long long)numberOfActionButtonsForNotificationRequest:(id)arg1 cell:(id)arg2;
 - (void).cxx_destruct;
+- (void)_actuateFeedbackForDefaultActionLockedIfNecessary;
+- (void)_actuateFeedbackForDefaultActionUnlockedIfNecessary;
+- (void)_configureActionButtonsForActionButtonDescriptions:(id)arg1 cell:(id)arg2;
 - (void)_configureButtonsStackViewIfNecessary;
 - (void)_configureClippingViewIfNecessary;
+- (void)_configureDefaultActionFeedbackIfNecessary;
 - (void)_configureDefaultWidth;
+- (void)_hideNonDefaultActionButtons;
 - (void)_layoutButtonsStackView;
 - (void)_layoutClippingView;
 - (double)_maxAllowedButtonWidth;
+- (void)_performNonDefaultActionButtonsHideRevealAnimation:(CDUnknownBlockType)arg1;
+- (void)_revealNonDefaultActionButtons;
 - (BOOL)adjustForContentSizeCategoryChange;
 - (void)configureCellActionButtonsForNotificationRequest:(id)arg1 cell:(id)arg2;
+- (void)configureOpenActionButtonForNotificationRequest:(id)arg1 cell:(id)arg2;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

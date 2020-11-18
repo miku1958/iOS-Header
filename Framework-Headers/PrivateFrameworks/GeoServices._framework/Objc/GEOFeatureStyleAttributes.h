@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/NSCopying-Protocol.h>
 #import <GeoServices/NSSecureCoding-Protocol.h>
@@ -19,10 +19,28 @@
     BOOL featureType;
 }
 
++ (id)airportStyleAttributes;
++ (id)calendarEventStyleAttributes;
++ (id)carRentalStyleAttributes;
++ (id)evChargerStyleAttributes;
++ (id)frequentLocationStyleAttributes;
++ (id)gasStationStyleAttributes;
++ (id)homeStyleAttributes;
++ (id)hotelStyleAttributes;
++ (id)inviteStyleAttributes;
++ (id)parkedCarStyleAttributes;
++ (id)restaurantStyleAttributes;
++ (id)searchResultStyleAttributes;
++ (id)styleAttributesForPlace:(id)arg1;
 + (BOOL)supportsSecureCoding;
++ (id)ticketedEventStyleAttributes;
++ (id)workStyleAttributes;
+- (void).cxx_destruct;
+- (id)copyWithAirportStyleAttributes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)dictionaryRepresentation;
 - (int)drivingSide;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)featureType;
@@ -41,12 +59,17 @@
 - (BOOL)isDrivable;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isFreeway;
+- (BOOL)isLabelPOI;
+- (BOOL)isLandmarkPOI;
 - (BOOL)isRailway;
 - (BOOL)isRamp;
+- (BOOL)isSearchResult;
 - (BOOL)isSuperset:(id)arg1;
+- (BOOL)isTransit;
 - (BOOL)isTunnel;
 - (BOOL)isWalkable;
 - (unsigned int)lineType;
+- (int)poiType;
 - (int)rampDirection;
 - (int)rampType;
 - (void)removeKey:(unsigned int)arg1;

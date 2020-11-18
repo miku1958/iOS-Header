@@ -17,24 +17,25 @@
     NSObject<OS_nw_object> *callback_context;
     NSObject<OS_nw_endpoint> *endpoint;
     NSObject<OS_nw_parameters> *parameters;
-    BOOL dry_run;
     NSObject<OS_nw_path_evaluator> *path_evaluator;
     NSObject<OS_nw_path> *current_path;
     NWConcrete_nw_endpoint_handler *parent_handler;
     NSObject<OS_xpc_object> *inactive_agent_uuids;
     NSObject<OS_xpc_object> *inactive_agent_dictionaries;
     NSObject<OS_xpc_object> *triggered_agent_uuids;
-    BOOL triggering_voluntary_agents;
+    struct os_unfair_lock_s lock;
     int mode;
     int state;
     NSObject<OS_dispatch_queue> *tls_client_queue;
     CDUnknownBlockType tls_prepare_block;
     CDUnknownBlockType tls_message_block;
-    BOOL tls_server;
     unsigned short id_chain[16];
     int last_child_id;
     char id_str[96];
     NSObject<NWConcrete_nw_endpoint_mode_handler> *mode_handler;
+    unsigned int dry_run:1;
+    unsigned int triggering_voluntary_agents:1;
+    unsigned int reuse_path_evaluator:1;
 }
 
 @property (readonly, copy) NSString *debugDescription;

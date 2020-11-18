@@ -10,7 +10,7 @@
 #import <SafariServices/UITableViewDelegate-Protocol.h>
 #import <SafariServices/_SFBookmarkTextEntryTableViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, SFBookmarkTextEntryTableViewCell, UITextField, WebBookmark, WebBookmarkCollection, _SFSiteIconView;
+@class NSArray, NSString, UITextField, WebBookmark, WebBookmarkCollection, _SFBookmarkTextEntryTableViewCell, _SFSiteIconView;
 @protocol _SFBookmarkInfoViewControllerDelegate;
 
 @interface _SFBookmarkInfoViewController : _SFPopoverSizingTableViewController <_SFBookmarkTextEntryTableViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -19,8 +19,8 @@
     WebBookmark *_parentBookmark;
     BOOL _addingBookmark;
     BOOL _saveWhenDismissed;
-    SFBookmarkTextEntryTableViewCell *_titleCell;
-    SFBookmarkTextEntryTableViewCell *_addressCell;
+    _SFBookmarkTextEntryTableViewCell *_titleCell;
+    _SFBookmarkTextEntryTableViewCell *_addressCell;
     _SFSiteIconView *_iconImageView;
     unsigned long long _editingField;
     BOOL _didSelectFolder;
@@ -44,11 +44,13 @@
 - (void)_addActionsForTextFields;
 - (void)_bookmarksDidReload:(id)arg1;
 - (BOOL)_canEditFieldsInCurrentViewController;
+- (struct UIEdgeInsets)_cellInset;
 - (struct CGPoint)_centerForIconView;
 - (void)_createCellsIfNeeded;
 - (void)_didBeginEditingTextField:(id)arg1;
 - (void)_didChangeEditingTextField:(id)arg1;
 - (void)_editField:(unsigned long long)arg1;
+- (id)_iconForViewCellGivenBookmark:(id)arg1;
 - (void)_reloadFolderInfoForced:(BOOL)arg1;
 - (void)_removeActionsForTextFields;
 - (void)_returnWasPressedInTextField:(id)arg1;

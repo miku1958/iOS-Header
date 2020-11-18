@@ -26,6 +26,7 @@
     NSObject<OS_dispatch_queue> *_connectionStatusQueue;
     unsigned long long _simConnectionState;
     id _simConnectionStateHandlerToken;
+    BOOL _pairedDeviceReady;
     NSObject<OS_dispatch_queue> *_clientQueue;
     unsigned long long _lastKnownConnectionStatus;
     id<BLTAbstractIDSService> _service;
@@ -37,6 +38,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long lastKnownConnectionStatus; // @synthesize lastKnownConnectionStatus=_lastKnownConnectionStatus;
+@property (getter=isPairedDeviceReady) BOOL pairedDeviceReady; // @synthesize pairedDeviceReady=_pairedDeviceReady;
 @property (readonly, nonatomic) BLTPBProtobufSequenceNumberManager *sequenceNumberManager; // @synthesize sequenceNumberManager=_sequenceNumberManager;
 @property (readonly, nonatomic) id<BLTAbstractIDSService> service; // @synthesize service=_service;
 @property (readonly) Class superclass;

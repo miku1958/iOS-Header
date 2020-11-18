@@ -15,7 +15,7 @@
 {
     double _distance;
     id<GEOServerFormattedString> _distanceFormat;
-    id<GEOServerFormattedString> _instructionFormat;
+    NSArray *_instructionFormats;
     int _maneuverType;
     int _transportType;
     NSString *_intersectionName;
@@ -27,66 +27,31 @@
     BOOL _toFreeway;
     BOOL _suppressNames;
     BOOL _suppressFallback;
+    NSString *_roadName;
     GEOComposedWaypoint *_destination;
 }
 
-@property (strong, nonatomic) NSArray *branchNames; // @synthesize branchNames=_branchNames;
 @property (readonly, nonatomic) long long context;
 @property (strong, nonatomic) GEOComposedWaypoint *destination; // @synthesize destination=_destination;
 @property (strong, nonatomic) NSString *destinationName; // @synthesize destinationName=_destinationName;
 @property (nonatomic) double distance; // @synthesize distance=_distance;
 @property (strong, nonatomic) id<GEOServerFormattedString> distanceFormat; // @synthesize distanceFormat=_distanceFormat;
-@property (strong, nonatomic) NSString *exitNumber; // @synthesize exitNumber=_exitNumber;
-@property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasServerContent;
-@property (strong, nonatomic) id<GEOServerFormattedString> instructionFormat; // @synthesize instructionFormat=_instructionFormat;
-@property (strong, nonatomic) NSString *intersectionName; // @synthesize intersectionName=_intersectionName;
-@property (readonly, nonatomic) BOOL isExitManeuver;
-@property (nonatomic) int junctionAngle; // @synthesize junctionAngle=_junctionAngle;
-@property (nonatomic) int maneuverType; // @synthesize maneuverType=_maneuverType;
-@property (readonly, nonatomic) NSString *primaryName;
-@property (strong, nonatomic) NSString *roadName;
+@property (strong, nonatomic) NSArray *instructionFormats; // @synthesize instructionFormats=_instructionFormats;
+@property (strong, nonatomic) NSString *roadName; // @synthesize roadName=_roadName;
 @property (nonatomic) BOOL suppressFallback; // @synthesize suppressFallback=_suppressFallback;
 @property (nonatomic) BOOL suppressNames; // @synthesize suppressNames=_suppressNames;
-@property (nonatomic) BOOL toFreeway; // @synthesize toFreeway=_toFreeway;
-@property (strong, nonatomic) NSArray *towardNames; // @synthesize towardNames=_towardNames;
 @property (nonatomic) int transportType; // @synthesize transportType=_transportType;
-@property (readonly, nonatomic) BOOL useDestinationName;
-@property (readonly, nonatomic) BOOL useIntersectionName;
-@property (readonly, nonatomic) BOOL useRoadName;
-@property (readonly, nonatomic) BOOL useTowardNames;
 
-+ (id)contentsWithManeuverType:(int)arg1 transportType:(int)arg2;
 + (id)contentsWithStep:(id)arg1 transportType:(int)arg2;
-+ (id)contentsWithSubstep:(id)arg1 transportType:(int)arg2;
 - (void).cxx_destruct;
-- (id)_exitNumberFromNameInfo:(id)arg1;
-- (id)_instructionForArrival;
-- (id)_instructionForBranch;
-- (id)_instructionForChangeHighway;
-- (id)_instructionForContinue;
-- (id)_instructionForExit;
-- (id)_instructionForFerry;
-- (id)_instructionForRoundabout;
-- (id)_instructionForStart;
-- (id)_instructionForTurn;
-- (id)_instructionForUTurn;
-- (id)_instructionsForSigns;
+- (id)_instructionsForFormats:(id)arg1;
 - (void)_populateFromStep:(id)arg1;
-- (void)_populateFromSubstep:(id)arg1;
-- (void)_setName:(id)arg1 signposts:(id)arg2;
-- (id)_stringFromNameInfo:(id)arg1;
-- (id)_walkingInstructionForContinue;
-- (id)_walkingInstructionForRoundabout;
-- (id)_walkingInstructionForStart;
-- (id)_walkingInstructionForTurn;
-- (id)_walkingInstructionForUTurn;
 - (id)description;
 - (id)init;
 - (id)instruction;
 - (id)instructionForStage:(unsigned long long)arg1 distance:(double)arg2;
 - (id)instructionWithShorterAlternatives;
-- (id)instructionWithShorterAlternatives:(id *)arg1;
 - (id)stringForDistance:(double)arg1;
 
 @end

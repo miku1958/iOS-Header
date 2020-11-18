@@ -4,24 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface TUCallGroup : NSObject
 {
     NSArray *_calls;
 }
 
-@property (strong) NSArray *calls; // @synthesize calls=_calls;
+@property (readonly, copy, nonatomic) NSArray *calls; // @synthesize calls=_calls;
+@property (readonly, copy, nonatomic) NSString *displayName;
+@property (readonly, nonatomic) int status;
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)displayName;
 - (void)forwardInvocation:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCall:(id)arg1;
+- (id)initWithCalls:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToCallGroup:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
-- (int)status;
 
 @end
 

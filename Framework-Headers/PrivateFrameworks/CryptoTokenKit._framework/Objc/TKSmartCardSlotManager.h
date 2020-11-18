@@ -26,6 +26,7 @@
 - (void)getSlotWithName:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)setSlotWithName:(id)arg1 endpoint:(id)arg2 type:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (id)slotNamed:(id)arg1;
 
 @end
 

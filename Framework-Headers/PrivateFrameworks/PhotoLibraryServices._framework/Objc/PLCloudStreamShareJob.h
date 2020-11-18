@@ -27,6 +27,7 @@
 + (void)publishMediaFromSources:(id)arg1 toSharedAlbum:(id)arg2 withCommentText:(id)arg3;
 - (void)addInfosForRecipients:(id)arg1;
 - (long long)daemonOperation;
+- (void)dealloc;
 - (id)description;
 - (void)encodeToXPCObject:(id)arg1;
 - (void)executeDaemonOperation;

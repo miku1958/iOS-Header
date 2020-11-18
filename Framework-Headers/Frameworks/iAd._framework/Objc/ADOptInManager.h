@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/ADAdSheetConnectionDelegate-Protocol.h>
 #import <iAd/ADAdSheetProxyDelegate-Protocol.h>
@@ -27,6 +27,7 @@
 - (id)adSheetMachServiceName;
 - (id)additionalAdSheetLaunchOptions;
 - (void)configureConnection:(id)arg1;
+- (void)dealloc;
 - (void)getiAdIDsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleAccountChange;
 - (void)handlePushNotification:(id)arg1;

@@ -25,11 +25,19 @@
 @property (readonly, nonatomic) double scaleOffset; // @synthesize scaleOffset=_scaleOffset;
 @property (readonly) NSString *unitString;
 
++ (id)_countPerMinuteUnit;
++ (id)_countPerSecondUnit;
 + (id)_distanceUnitForLocale:(id)arg1;
 + (id)_foodEnergyUnitForLocale:(id)arg1;
++ (id)_foundationBaseUnits;
 + (id)_heightUnitForLocale:(id)arg1;
++ (id)_internationalUnitWithMassEquivalent;
++ (id)_internationalUnitWithMassEquivalent:(double)arg1;
++ (id)_internationalUnitWithMetricPrefix:(long long)arg1 massEquivalent:(double)arg2;
++ (id)_internationalUnitWithMetricPrefix:(long long)arg1 volumeEquivalent:(double)arg2;
++ (id)_internationalUnitWithVolumeEquivalent;
++ (id)_internationalUnitWithVolumeEquivalent:(double)arg1;
 + (BOOL)_isValidUnitString:(id)arg1;
-+ (id)_moles;
 + (id)_nullUnit;
 + (id)_personMassUnitForLocale:(id)arg1;
 + (id)_prefixStringForMetricPrefix:(long long)arg1;
@@ -44,6 +52,8 @@
 + (id)degreeCelsiusUnit;
 + (id)degreeFahrenheitUnit;
 + (long long)energyFormatterUnitFromUnit:(id)arg1;
++ (id)equivalentsUnit;
++ (id)equivalentsUnitWithMolarMass:(double)arg1 valence:(long long)arg2;
 + (id)fluidOunceImperialUnit;
 + (id)fluidOunceUSUnit;
 + (id)footUnit;
@@ -51,11 +61,13 @@
 + (id)gramUnitWithMetricPrefix:(long long)arg1;
 + (id)hourUnit;
 + (id)inchUnit;
++ (id)internationalUnit;
 + (id)jouleUnit;
 + (id)jouleUnitWithMetricPrefix:(long long)arg1;
 + (id)kelvinUnit;
 + (id)kilocalorieUnit;
 + (id)kilojoulesUnit;
++ (id)largeCalorieUnit;
 + (long long)lengthFormatterUnitFromUnit:(id)arg1;
 + (id)literUnit;
 + (id)literUnitWithMetricPrefix:(long long)arg1;
@@ -68,9 +80,11 @@
 + (id)minuteUnit;
 + (id)moleUnitWithMetricPrefix:(long long)arg1 molarMass:(double)arg2;
 + (id)moleUnitWithMolarMass:(double)arg1;
++ (id)moles;
 + (id)ounceUnit;
 + (id)pascalUnit;
 + (id)pascalUnitWithMetricPrefix:(long long)arg1;
++ (id)perMilleUnit;
 + (id)percentUnit;
 + (id)pintImperialUnit;
 + (id)pintUSUnit;
@@ -79,8 +93,10 @@
 + (id)secondUnitWithMetricPrefix:(long long)arg1;
 + (id)siemenUnit;
 + (id)siemenUnitWithMetricPrefix:(long long)arg1;
++ (id)smallCalorieUnit;
 + (id)stoneUnit;
 + (BOOL)supportsSecureCoding;
++ (id)titerUnit;
 + (id)unitFromEnergyFormatterUnit:(long long)arg1;
 + (id)unitFromLengthFormatterUnit:(long long)arg1;
 + (id)unitFromMassFormatterUnit:(long long)arg1;

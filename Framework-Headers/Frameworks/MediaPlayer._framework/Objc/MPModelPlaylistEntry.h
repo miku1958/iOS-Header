@@ -38,7 +38,6 @@
 + (id)__song__KEY;
 + (id)__tvEpisode__KEY;
 + (id)kindWithKinds:(id)arg1;
-+ (id)mqf_requiredPlaybackProperties;
 + (id)requiredKeepLocalStatusObservationProperties;
 + (id)requiredLibraryAddStatusObservationProperties;
 + (id)requiredLibraryRemovalProperties;
@@ -50,13 +49,13 @@
 - (struct MPLibraryAddStatusObserverConfiguration)libraryAddStatusObserverConfiguration;
 - (long long)libraryRemovalSupportedOptions;
 - (id)mediaItemPropertyValues;
-- (void)mqf_configurePlaybackItemMetadata:(id)arg1;
-- (id)mqf_newPlaybackItemMetadata;
-- (id)mqf_playbackItemMetadataModelObject;
 - (id)newKeepLocalStatusObserverConfiguration;
 - (id)objectWithStoreLibraryPersonalizationRelativeModelObject:(id)arg1;
 - (id)personalizationScopedPropertiesForProperties:(id)arg1;
 - (id)relativeModelObjectForStoreLibraryPersonalization;
+- (id)storeItemMetadataRequestItemIdentifier;
+- (BOOL)storeItemMetadataRequestNeedsPersonalization;
+- (long long)type;
 
 @end
 

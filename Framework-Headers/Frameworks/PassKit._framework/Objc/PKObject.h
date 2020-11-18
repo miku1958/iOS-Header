@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
@@ -13,7 +13,7 @@
 
 @interface PKObject : NSObject <NSCopying, NSSecureCoding>
 {
-    PKImageSet *_imageSets[6];
+    PKImageSet *_imageSets[7];
     NSLock *_imageSetLock;
     BOOL _initializedViaInitWithCoder;
     PKContent *_content;

@@ -25,7 +25,9 @@
 
 + (id)_invocationWithMethodSignature:(id)arg1 frame:(void *)arg2;
 + (id)invocationWithMethodSignature:(id)arg1;
++ (unsigned long long)requiredStackSizeForSignature:(id)arg1;
 - (void)_addAttachedObject:(id)arg1;
+- (id)_initWithMethodSignature:(id)arg1 frame:(void *)arg2 buffer:(void *)arg3 size:(unsigned long long)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)getArgument:(void *)arg1 atIndex:(long long)arg2;

@@ -26,8 +26,8 @@
 @property (nonatomic, setter=_setDuplicateAllowsReadAccess:) BOOL duplicateAllowsReadAccess; // @synthesize duplicateAllowsReadAccess=_duplicateAllowsReadAccess;
 @property (readonly, nonatomic) BOOL isLibraryAssetResource; // @synthesize isLibraryAssetResource=_isLibraryAssetResource;
 
-+ (unsigned long long)_probableCPLResourceTypeFromAssetResourceType:(long long)arg1;
 + (id)assetResourceForDuplicatingAssetResource:(id)arg1 asData:(BOOL)arg2 error:(id *)arg3;
++ (unsigned long long)probableCPLResourceTypeFromAssetResourceType:(long long)arg1;
 - (void).cxx_destruct;
 - (id)initWithPropertyListRepresentation:(id)arg1;
 - (id)initWithResourceType:(long long)arg1;

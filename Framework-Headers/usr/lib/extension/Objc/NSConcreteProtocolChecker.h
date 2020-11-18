@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSProtocolChecker.h>
+#import <Foundation/NSProtocolChecker.h>
 
 @class NSObject, Protocol;
 

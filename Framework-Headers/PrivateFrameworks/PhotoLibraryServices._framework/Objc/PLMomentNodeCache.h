@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary;
+@class NSMutableDictionary;
 
 @interface PLMomentNodeCache : NSObject
 {
     NSMutableDictionary *__nodesByObjectID;
     NSMutableDictionary *__nodesByUserTag;
-    NSMutableArray *__nodesByRowID;
+    NSMutableDictionary *__nodesByRowID;
     struct sqlite3 *__momentsDatabase;
     struct sqlite3_stmt *__spatialInsertStatement;
     struct sqlite3_stmt *__temporalInsertStatement;
@@ -22,7 +22,7 @@
 
 @property (readonly, nonatomic) struct sqlite3 *_momentsDatabase; // @synthesize _momentsDatabase=__momentsDatabase;
 @property (readonly, nonatomic) NSMutableDictionary *_nodesByObjectID; // @synthesize _nodesByObjectID=__nodesByObjectID;
-@property (readonly, nonatomic) NSMutableArray *_nodesByRowID; // @synthesize _nodesByRowID=__nodesByRowID;
+@property (readonly, nonatomic) NSMutableDictionary *_nodesByRowID; // @synthesize _nodesByRowID=__nodesByRowID;
 @property (readonly, nonatomic) NSMutableDictionary *_nodesByUserTag; // @synthesize _nodesByUserTag=__nodesByUserTag;
 @property (readonly, nonatomic) struct sqlite3_stmt *_spatialInsertStatement; // @synthesize _spatialInsertStatement=__spatialInsertStatement;
 @property (readonly, nonatomic) struct sqlite3_stmt *_spatialSelectStatement; // @synthesize _spatialSelectStatement=__spatialSelectStatement;

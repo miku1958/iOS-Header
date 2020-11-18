@@ -9,7 +9,7 @@
 #import <Celestial/NSCopying-Protocol.h>
 #import <Celestial/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @interface FigCaptureStillImageSettings : NSObject <NSSecureCoding, NSCopying>
 {
@@ -17,7 +17,9 @@
     int _payloadType;
     int _settingsProvider;
     unsigned int _outputFormat;
+    int _outputFileType;
     unsigned int _rawOutputFormat;
+    int _rawOutputFileType;
     unsigned int _outputWidth;
     unsigned int _outputHeight;
     BOOL _squareCropEnabled;
@@ -29,14 +31,26 @@
     unsigned int _previewHeight;
     BOOL _previewMirroring;
     int _previewOrientation;
+    BOOL _thumbnailEnabled;
+    unsigned int _thumbnailFormat;
+    unsigned int _thumbnailWidth;
+    unsigned int _thumbnailHeight;
     BOOL _noiseReductionEnabled;
+    BOOL _burstQualityCaptureEnabled;
     float _scaleFactor;
     unsigned int _shutterSound;
     int _flashMode;
     int _wideColorMode;
     int _HDRMode;
-    BOOL _autoShallowDepthOfFieldEffectEnabled;
+    BOOL _depthDataDeliveryEnabled;
+    BOOL _embedsDepthDataInImage;
+    BOOL _depthDataFiltered;
+    BOOL _cameraCalibrationDataDeliveryEnabled;
+    NSDictionary *_metadata;
+    NSArray *_originalImageFilters;
+    NSArray *_processedImageFilters;
     BOOL _providesOriginalImage;
+    BOOL _bravoDualImageDeliveryEnabled;
     int _SISMode;
     int _bravoImageFusionMode;
     NSDictionary *_vtCompressionProperties;
@@ -52,21 +66,32 @@
     long long _stillImageCaptureStartTime;
     double _stillImageCaptureAbsoluteStartTime;
     NSString *_imageGroupIdentifier;
+    BOOL _clientInitiatedPrepareSettings;
+    BOOL _userInitiatedRequestSettings;
 }
 
 @property (nonatomic) int HDRMode; // @synthesize HDRMode=_HDRMode;
 @property (readonly, nonatomic) float *ISOs; // @synthesize ISOs=_ISOs;
 @property (nonatomic) int SISMode; // @synthesize SISMode=_SISMode;
-@property (nonatomic) BOOL autoShallowDepthOfFieldEffectEnabled; // @synthesize autoShallowDepthOfFieldEffectEnabled=_autoShallowDepthOfFieldEffectEnabled;
 @property (readonly, nonatomic) unsigned int bracketImageCount; // @synthesize bracketImageCount=_bracketImageCount;
 @property (readonly, nonatomic) int bracketType; // @synthesize bracketType=_bracketType;
+@property (nonatomic) BOOL bravoDualImageDeliveryEnabled; // @synthesize bravoDualImageDeliveryEnabled=_bravoDualImageDeliveryEnabled;
 @property (nonatomic) int bravoImageFusionMode; // @synthesize bravoImageFusionMode=_bravoImageFusionMode;
+@property (nonatomic) BOOL burstQualityCaptureEnabled; // @synthesize burstQualityCaptureEnabled=_burstQualityCaptureEnabled;
+@property (nonatomic) BOOL cameraCalibrationDataDeliveryEnabled; // @synthesize cameraCalibrationDataDeliveryEnabled=_cameraCalibrationDataDeliveryEnabled;
+@property (nonatomic, getter=isClientInitiatedPrepareSettings) BOOL clientInitiatedPrepareSettings; // @synthesize clientInitiatedPrepareSettings=_clientInitiatedPrepareSettings;
+@property (nonatomic) BOOL depthDataDeliveryEnabled; // @synthesize depthDataDeliveryEnabled=_depthDataDeliveryEnabled;
+@property (nonatomic) BOOL depthDataFiltered; // @synthesize depthDataFiltered=_depthDataFiltered;
+@property (nonatomic) BOOL embedsDepthDataInImage; // @synthesize embedsDepthDataInImage=_embedsDepthDataInImage;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 *exposureDurations; // @synthesize exposureDurations=_exposureDurations;
 @property (readonly, nonatomic) float *exposureTargetBiases; // @synthesize exposureTargetBiases=_exposureTargetBiases;
 @property (nonatomic) int flashMode; // @synthesize flashMode=_flashMode;
 @property (readonly, nonatomic) NSString *imageGroupIdentifier;
 @property (nonatomic) BOOL lensStabilizationDuringBracketEnabled; // @synthesize lensStabilizationDuringBracketEnabled=_lensStabilizationDuringBracketEnabled;
+@property (copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (nonatomic) BOOL noiseReductionEnabled; // @synthesize noiseReductionEnabled=_noiseReductionEnabled;
+@property (copy, nonatomic) NSArray *originalImageFilters; // @synthesize originalImageFilters=_originalImageFilters;
+@property (nonatomic) int outputFileType; // @synthesize outputFileType=_outputFileType;
 @property (nonatomic) unsigned int outputFormat; // @synthesize outputFormat=_outputFormat;
 @property (nonatomic) unsigned int outputHeight; // @synthesize outputHeight=_outputHeight;
 @property (nonatomic) BOOL outputMirroring; // @synthesize outputMirroring=_outputMirroring;
@@ -81,7 +106,9 @@
 @property (nonatomic) int previewOrientation; // @synthesize previewOrientation=_previewOrientation;
 @property (readonly, nonatomic) NSDictionary *previewPixelBufferAttributes;
 @property (nonatomic) unsigned int previewWidth; // @synthesize previewWidth=_previewWidth;
+@property (copy, nonatomic) NSArray *processedImageFilters; // @synthesize processedImageFilters=_processedImageFilters;
 @property (nonatomic) BOOL providesOriginalImage; // @synthesize providesOriginalImage=_providesOriginalImage;
+@property (nonatomic) int rawOutputFileType; // @synthesize rawOutputFileType=_rawOutputFileType;
 @property (nonatomic) unsigned int rawOutputFormat; // @synthesize rawOutputFormat=_rawOutputFormat;
 @property (nonatomic) float scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property (nonatomic) long long settingsID; // @synthesize settingsID=_settingsID;
@@ -93,6 +120,11 @@
 @property (nonatomic) long long stillImageRequestTime; // @synthesize stillImageRequestTime=_stillImageRequestTime;
 @property (nonatomic) CDStruct_1b6d18a9 stillImageUserInitiatedRequestPTS; // @synthesize stillImageUserInitiatedRequestPTS=_stillImageUserInitiatedRequestPTS;
 @property (nonatomic) unsigned long long stillImageUserInitiatedRequestTime; // @synthesize stillImageUserInitiatedRequestTime=_stillImageUserInitiatedRequestTime;
+@property (nonatomic) BOOL thumbnailEnabled; // @synthesize thumbnailEnabled=_thumbnailEnabled;
+@property (nonatomic) unsigned int thumbnailFormat; // @synthesize thumbnailFormat=_thumbnailFormat;
+@property (nonatomic) unsigned int thumbnailHeight; // @synthesize thumbnailHeight=_thumbnailHeight;
+@property (nonatomic) unsigned int thumbnailWidth; // @synthesize thumbnailWidth=_thumbnailWidth;
+@property (nonatomic, getter=isUserInitiatedRequestSettings) BOOL userInitiatedRequestSettings; // @synthesize userInitiatedRequestSettings=_userInitiatedRequestSettings;
 @property (copy, nonatomic) NSDictionary *vtCompressionProperties; // @synthesize vtCompressionProperties=_vtCompressionProperties;
 @property (nonatomic) int wideColorMode; // @synthesize wideColorMode=_wideColorMode;
 

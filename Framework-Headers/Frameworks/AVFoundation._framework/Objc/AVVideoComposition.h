@@ -37,6 +37,7 @@
 - (void)_bumpChangeSeed;
 - (unsigned long long)_changeSeed;
 - (BOOL)_copyFigVideoCompositor:(const void **)arg1 andSession:(id *)arg2 recyclingSession:(id)arg3 forFigRemaker:(BOOL)arg4 error:(id *)arg5;
+- (id)_deepCopy;
 - (BOOL)_hasLayerAsAuxiliaryTrack;
 - (BOOL)_hasPostProcessingLayers;
 - (BOOL)_isValidReturningExceptionReason:(id *)arg1;
@@ -44,7 +45,7 @@
 - (id)_postProcessingVideoLayer;
 - (id)_postProcessingVideoLayers;
 - (id)_serializableInstructions;
-- (void)_setFrameDurationForFrameRate:(float)arg1;
+- (void)_setFrameDurationForFrameRate:(float)arg1 sourceTrackIDForFrameTiming:(int)arg2;
 - (id)builtInCompositorName;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

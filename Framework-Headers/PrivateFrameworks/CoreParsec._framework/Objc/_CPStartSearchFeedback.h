@@ -6,44 +6,59 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreParsec/NSCopying-Protocol.h>
+#import <CoreParsec/NSSecureCoding-Protocol.h>
+#import <CoreParsec/_CPFeedbackUUID-Protocol.h>
+#import <CoreParsec/_CPProcessableFeedback-Protocol.h>
+#import <CoreParsec/_CPStartSearchFeedback-Protocol.h>
 
-@class NSString;
+@class NSData, NSDictionary, NSString;
 
-@interface _CPStartSearchFeedback : PBCodable <NSCopying>
+@interface _CPStartSearchFeedback : PBCodable <_CPProcessableFeedback, _CPFeedbackUUID, _CPStartSearchFeedback, NSSecureCoding>
 {
-    unsigned long long _queryId;
+    struct {
+        unsigned int timestamp:1;
+        unsigned int triggerEvent:1;
+        unsigned int queryId:1;
+    } _has;
+    int _triggerEvent;
     unsigned long long _timestamp;
     NSString *_input;
-    int _triggerEvent;
     NSString *_uuid;
-    struct {
-        unsigned int queryId:1;
-        unsigned int triggerEvent:1;
-    } _has;
+    unsigned long long _queryId;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly, nonatomic) id feedbackJSON;
 @property (readonly, nonatomic) BOOL hasInput;
-@property (nonatomic) BOOL hasQueryId;
-@property (nonatomic) BOOL hasTriggerEvent;
+@property (readonly, nonatomic) BOOL hasQueryId;
+@property (readonly, nonatomic) BOOL hasTimestamp;
+@property (readonly, nonatomic) BOOL hasTriggerEvent;
 @property (readonly, nonatomic) BOOL hasUuid;
-@property (strong, nonatomic) NSString *input; // @synthesize input=_input;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *input; // @synthesize input=_input;
+@property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (readonly, nonatomic) BOOL requiresQueryId;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
-@property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
+@property (readonly, copy, nonatomic) NSString *uuid;
+@property (copy, nonatomic) NSString *uuid;
 
 - (void).cxx_destruct;
-- (int)StringAsTriggerEvent:(id)arg1;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)init;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithFacade:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)triggerEventAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

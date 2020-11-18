@@ -18,24 +18,32 @@
     BOOL _isZipStreamable;
     NSString *_assetType;
     NSString *_assetURL;
+    NSNumber *_bytesTotal;
     NSData *_dPInfo;
+    NSNumber *_expectedDiskspace;
     NSData *_hashArrayData;
+    NSNumber *_hashType;
     NSNumber *_initialODRSize;
     NSNumber *_numberOfBytesToHash;
     NSData *_sinfs;
+    NSString *_storeDownloadKey;
     NSString *_variantID;
 }
 
 @property (copy, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;
 @property (copy, nonatomic) NSString *assetURL; // @synthesize assetURL=_assetURL;
+@property (copy, nonatomic) NSNumber *bytesTotal; // @synthesize bytesTotal=_bytesTotal;
 @property (copy, nonatomic) NSData *dPInfo; // @synthesize dPInfo=_dPInfo;
+@property (copy, nonatomic) NSNumber *expectedDiskspace; // @synthesize expectedDiskspace=_expectedDiskspace;
 @property (copy, nonatomic) NSData *hashArrayData; // @synthesize hashArrayData=_hashArrayData;
+@property (copy, nonatomic) NSNumber *hashType; // @synthesize hashType=_hashType;
 @property (copy, nonatomic) NSNumber *initialODRSize; // @synthesize initialODRSize=_initialODRSize;
 @property (nonatomic) BOOL isExternal; // @synthesize isExternal=_isExternal;
 @property (nonatomic) BOOL isLocallyCacheable; // @synthesize isLocallyCacheable=_isLocallyCacheable;
 @property (nonatomic) BOOL isZipStreamable; // @synthesize isZipStreamable=_isZipStreamable;
 @property (copy, nonatomic) NSNumber *numberOfBytesToHash; // @synthesize numberOfBytesToHash=_numberOfBytesToHash;
 @property (copy, nonatomic) NSData *sinfs; // @synthesize sinfs=_sinfs;
+@property (copy, nonatomic) NSString *storeDownloadKey; // @synthesize storeDownloadKey=_storeDownloadKey;
 @property (copy, nonatomic) NSString *variantID; // @synthesize variantID=_variantID;
 
 + (BOOL)supportsSecureCoding;

@@ -39,7 +39,8 @@
 - (id)initWithInstructionText:(id)arg1 title:(id)arg2 contentViewControllerClass:(Class)arg3 onboardingDelegate:(id)arg4;
 - (void)nextButtonPressed;
 - (void)setShouldShowRightNavigationBarActivitySpinner:(BOOL)arg1;
-- (void)viewDidLayoutSubviews;
+- (BOOL)shouldHideHeaderAboveSection:(long long)arg1;
+- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

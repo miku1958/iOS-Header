@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSDate, NSMutableDictionary;
 
 @interface MFMailMessageStoreSearchResult : NSObject
 {
+    NSDate *_continueOffset;
     NSMutableDictionary *_mailboxToRemoteIdDictionary;
 }
 
+@property (strong, nonatomic) NSDate *continueOffset; // @synthesize continueOffset=_continueOffset;
 @property (readonly, nonatomic) unsigned long long count;
 @property (strong, nonatomic) NSMutableDictionary *mailboxToRemoteIdDictionary; // @synthesize mailboxToRemoteIdDictionary=_mailboxToRemoteIdDictionary;
 

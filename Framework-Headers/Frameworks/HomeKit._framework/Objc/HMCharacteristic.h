@@ -71,6 +71,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)mapHAPProperties:(long long)arg1;
 - (void)readValueWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setValueUpdateTime:(id)arg1;

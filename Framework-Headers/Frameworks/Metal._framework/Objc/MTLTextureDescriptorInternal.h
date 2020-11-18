@@ -9,13 +9,13 @@
 __attribute__((visibility("hidden")))
 @interface MTLTextureDescriptorInternal : MTLTextureDescriptor
 {
-    struct MTLTextureDescriptorPrivate *_private;
+    struct MTLTextureDescriptorPrivate _private;
 }
 
 - (unsigned long long)arrayLength;
+- (unsigned long long)compressionMode;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)cpuCacheMode;
-- (void)dealloc;
 - (unsigned long long)depth;
 - (id)description;
 - (const struct MTLTextureDescriptorPrivate *)descriptorPrivate;
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)rotation;
 - (unsigned long long)sampleCount;
 - (void)setArrayLength:(unsigned long long)arg1;
+- (void)setCompressionMode:(unsigned long long)arg1;
 - (void)setCpuCacheMode:(unsigned long long)arg1;
 - (void)setDepth:(unsigned long long)arg1;
 - (void)setFramebufferOnly:(BOOL)arg1;

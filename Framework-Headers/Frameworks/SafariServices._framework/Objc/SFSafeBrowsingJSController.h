@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (void)goBackSelected;
 - (void)ignoreWarningSelected;
 - (id)initWithSafeBrowsingController:(id)arg1;
-- (BOOL)isRTL;
 - (id)learnMoreAboutPhishingURL:(id)arg1;
 - (void)loaded;
 - (id)malwareDetailsURL:(id)arg1;

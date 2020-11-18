@@ -7,6 +7,7 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (AppleAccountUI)
+- (id)aaui_dayComponentsWithCalendar:(id)arg1;
 - (BOOL)aaui_isTodayWithCalendar:(id)arg1;
 @end
 

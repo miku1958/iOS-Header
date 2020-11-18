@@ -7,17 +7,20 @@
 #import <UIKit/UIViewController.h>
 
 #import <Messages/MSConversationDelegate-Protocol.h>
-#import <Messages/MSMessagePayloadProvider-Protocol.h>
+#import <Messages/MSMessagesAppTranscriptPresentation-Protocol.h>
 
 @class MSConversation, NSString;
+@protocol _MSMessageComposeExtensionImplProtocol;
 
-@interface MSMessagesAppViewController : UIViewController <MSMessagePayloadProvider, MSConversationDelegate>
+@interface MSMessagesAppViewController : UIViewController <MSConversationDelegate, MSMessagesAppTranscriptPresentation>
 {
     BOOL _isReadyForDisplay;
     MSConversation *_activeConversation;
+    id<_MSMessageComposeExtensionImplProtocol> _appContext;
 }
 
 @property (strong, nonatomic) MSConversation *activeConversation; // @synthesize activeConversation=_activeConversation;
+@property (strong, nonatomic) id<_MSMessageComposeExtensionImplProtocol> appContext; // @synthesize appContext=_appContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -26,9 +29,14 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (struct CGSize)_contentSizeThatFits:(struct CGSize)arg1 presentationStyle:(unsigned long long)arg2;
 - (void)_conversation:(id)arg1 didSelectMessage:(id)arg2;
 - (void)_conversation:(id)arg1 willSelectMessage:(id)arg2;
+- (BOOL)_handleTextInputPayload:(id)arg1 withPayloadID:(id)arg2;
 - (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;
+- (void)_validateMessageForSending:(id)arg1 conversation:(id)arg2 associatedText:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_validateMessageForSending:(id)arg1 conversation:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (struct CGSize)contentSizeThatFits:(struct CGSize)arg1;
 - (void)dealloc;
 - (void)didBecomeActiveWithConversation:(id)arg1;
 - (void)didCancelSendingMessage:(id)arg1 conversation:(id)arg2;
@@ -40,6 +48,7 @@
 - (void)dismiss;
 - (BOOL)displaysAfterAppearance;
 - (void)requestPresentationStyle:(unsigned long long)arg1;
+- (void)requestResize;
 - (void)setReadyForDisplay;
 - (void)updateSnapshotWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

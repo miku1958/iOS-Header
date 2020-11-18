@@ -20,15 +20,16 @@
 @property (copy, nonatomic) NSString *input; // @synthesize input=_input;
 
 + (id)candidateWithCandidate:(id)arg1 forInput:(id)arg2;
++ (id)candidateWithCandidate:(id)arg1 forInput:(id)arg2 customInfoType:(unsigned long long)arg3;
 + (id)candidateWithCandidate:(id)arg1 forInput:(id)arg2 extensionCandidate:(BOOL)arg3;
 + (id)candidateWithUnchangedInput:(id)arg1;
 + (id)secureCandidateForInput:(id)arg1 slotID:(unsigned int)arg2;
++ (id)secureCandidateForInput:(id)arg1 slotID:(unsigned int)arg2 customInfoType:(unsigned long long)arg3;
 + (BOOL)supportsSecureCoding;
 + (int)type;
 - (id)candidateByReplacingWithCandidate:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)description;
 - (void)encodeWithCandidateResultSetCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCandidate:(id)arg1;

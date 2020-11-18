@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSError, NSMutableOrderedSet, NSOrderedSet, PUActivityViewController;
+@class NSArray, NSError, NSMutableOrderedSet, NSOrderedSet, NSString, PUActivityViewController;
 
 @interface PUActivityItemSourceController : NSObject
 {
@@ -17,10 +17,12 @@
     CDUnknownBlockType _progressHandler;
     NSArray *__activeItemSources;
     NSError *__error;
+    NSString *_activeActivityType;
 }
 
 @property (strong, setter=_setActiveItemSources:) NSArray *_activeItemSources; // @synthesize _activeItemSources=__activeItemSources;
 @property (strong, setter=_setError:) NSError *_error; // @synthesize _error=__error;
+@property (strong) NSString *activeActivityType; // @synthesize activeActivityType=_activeActivityType;
 @property (weak, nonatomic) PUActivityViewController *activityViewController; // @synthesize activityViewController=_activityViewController;
 @property (readonly, copy, nonatomic) NSOrderedSet *assetItemSources;
 @property (copy, nonatomic) NSOrderedSet *assetItems; // @synthesize assetItems=_assetItems;
@@ -31,7 +33,9 @@
 - (id)activityItemSourceForAsset:(id)arg1;
 - (void)addAssetItem:(id)arg1;
 - (void)cancel;
-- (long long)countOfAssetType:(long long)arg1;
+- (long long)countOfImagesToShare;
+- (long long)countOfLoopsToShare;
+- (long long)countOfVideosToShare;
 - (void)removeAssetItem:(id)arg1;
 - (void)runExplicitly:(BOOL)arg1 withActivityType:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 

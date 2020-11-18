@@ -29,6 +29,7 @@
 - (id)futureLocalizedDistanceFromLocation:(id)arg1 toLocation:(id)arg2;
 - (id)init;
 - (id)initWithDefaultsSuiteName:(id)arg1;
+- (id)initWithDefaultsSuiteName:(id)arg1 locale:(id)arg2;
 - (id)localizedDistanceFromLocation:(id)arg1 toLocation:(id)arg2;
 
 @end

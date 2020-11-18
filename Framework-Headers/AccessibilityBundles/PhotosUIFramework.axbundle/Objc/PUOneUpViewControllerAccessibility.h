@@ -14,10 +14,16 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (BOOL)_axDetailsVisible;
-- (void)_setAXDetailsVisible:(BOOL)arg1;
-- (void)_toggleDetailsVisibility;
+- (void)_axApplyCustomActionsToTileControllers;
+- (void)_axExecuteBlockOnTileViewControllers:(CDUnknownBlockType)arg1;
+- (void)_axShowAccessory;
+- (void)_setAccessoryVisible:(BOOL)arg1;
+- (void)_updateBarsControllerIfNeeded;
+- (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityScroll:(long long)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewModel:(id)arg1 didChange:(id)arg2;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

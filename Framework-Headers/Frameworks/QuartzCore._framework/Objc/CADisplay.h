@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class CADisplayMode, NSArray, NSString;
+@class CADisplayAttributes, CADisplayMode, NSArray, NSString;
 
 @interface CADisplay : NSObject
 {
@@ -25,10 +25,12 @@
 @property (readonly, nonatomic) NSString *deviceName;
 @property (readonly) unsigned int displayId;
 @property (readonly, getter=isExternal) BOOL external;
+@property (readonly) CADisplayAttributes *externalDisplayAttributes;
 @property (readonly, nonatomic) struct CGRect frame;
 @property (readonly) double heartbeatRate;
 @property (readonly) long long minimumFrameDuration;
 @property (readonly, nonatomic) NSString *name;
+@property (readonly) NSString *nativeOrientation;
 @property (copy, nonatomic) NSString *overscanAdjustment;
 @property (readonly) double overscanAmount;
 @property (readonly) struct CGSize overscanAmounts;

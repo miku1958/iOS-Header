@@ -11,6 +11,7 @@
 }
 
 + (id)_sharedLongLivedProxyForContext:(id)arg1;
++ (void)clearCachedLongLivedProxies;
 + (id)longLivedProxyWithContext:(id)arg1;
 + (id)sharedLongLivedProxies;
 - (id)CKPropertiesDescription;
@@ -25,7 +26,6 @@
 - (id)bundleIdentifier;
 - (BOOL)darkWakeEnabledEntitlement;
 - (id)description;
-- (BOOL)hasAllowAccessBeforeFirstUnlockSinceBootEntitlement;
 - (BOOL)hasAllowAccessDuringBuddyEntitlement;
 - (BOOL)hasCloudKitSystemServiceEntitlement;
 - (BOOL)hasDarkWakeNetworkReachabilityEnabledEntitlement;
@@ -37,10 +37,11 @@
 - (BOOL)hasParticipantPIIEntitlement;
 - (BOOL)hasProtectionDataEntitlement;
 - (BOOL)hasTCCAuthorization;
+- (BOOL)hasZoneProtectionDataEntitlement;
 - (id)initWithClientContext:(id)arg1;
 - (BOOL)isLongLived;
+- (id)serviceNameForContainerMapEntitlement;
 - (id)sourceApplicationBundleIdentifier;
-- (BOOL)usePublicTokenEntitlement;
 
 @end
 

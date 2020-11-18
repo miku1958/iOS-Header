@@ -9,6 +9,7 @@
 #import <SAObjects/SAServerBoundCommand-Protocol.h>
 
 @class NSString;
+@protocol SAAceSerializable;
 
 @interface SAStartBackgroundActionRequest : SABaseCommand <SAServerBoundCommand>
 {
@@ -16,6 +17,7 @@
 
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
 @property (copy, nonatomic) NSString *backgroundAction;
+@property (strong, nonatomic) id<SAAceSerializable> backgroundActionPayload;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -26,6 +28,7 @@
 + (id)startBackgroundActionRequestWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)requiresResponse;
 
 @end
 

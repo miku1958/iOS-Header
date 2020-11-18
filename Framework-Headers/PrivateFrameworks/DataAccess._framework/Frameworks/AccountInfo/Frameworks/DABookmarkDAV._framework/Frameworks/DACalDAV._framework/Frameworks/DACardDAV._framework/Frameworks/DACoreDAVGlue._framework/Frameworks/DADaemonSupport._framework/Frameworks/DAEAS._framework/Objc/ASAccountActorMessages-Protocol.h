@@ -59,6 +59,7 @@
 - (int)supportsEmailFlagging;
 - (int)supportsMailboxSearch;
 - (int)supportsSmartForwardReply;
+- (int)supportsUniqueServerId;
 - (NSString *)unactionableICSRepresentationForMetaData:(NSData *)arg1 inFolderWithId:(NSString *)arg2 outSummary:(id *)arg3;
 @end
 

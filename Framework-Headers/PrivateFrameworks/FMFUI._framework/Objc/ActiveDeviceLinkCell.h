@@ -6,12 +6,27 @@
 
 #import <Preferences/PSTableCell.h>
 
+@class NSLayoutConstraint, UILabel;
+
 @interface ActiveDeviceLinkCell : PSTableCell
 {
+    UILabel *_fromLabel;
+    UILabel *_deviceNameLabel;
+    UILabel *_detailsLabel;
+    NSLayoutConstraint *_detailsHeightContraint;
 }
 
+@property (strong, nonatomic) NSLayoutConstraint *detailsHeightContraint; // @synthesize detailsHeightContraint=_detailsHeightContraint;
+@property (strong, nonatomic) UILabel *detailsLabel; // @synthesize detailsLabel=_detailsLabel;
+@property (strong, nonatomic) UILabel *deviceNameLabel; // @synthesize deviceNameLabel=_deviceNameLabel;
+@property (strong, nonatomic) UILabel *fromLabel; // @synthesize fromLabel=_fromLabel;
+
 + (long long)cellStyle;
+- (void).cxx_destruct;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
+- (void)setupConstraints;
+- (void)setupSubviews;
 
 @end
 

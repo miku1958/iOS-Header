@@ -6,12 +6,13 @@
 
 #import <QuickLook/NSObject-Protocol.h>
 
-@class NSData, NSURL;
+@class NSData, NSString, NSURL, UIColor;
 @protocol QLPrintingProtocol;
 
 @protocol QLPreviewControllerStateProtocol <NSObject>
 - (void)beginInteractiveTransition;
-- (void)expandContentOfCurrentItem;
+- (void)currentPreviewItemViewControllerHasUnsavedEdits:(BOOL)arg1;
+- (void)expandContentOfURL:(NSURL *)arg1;
 - (void)openURLIfAllowed:(NSURL *)arg1;
 - (void)presentAlertControllerForScenario:(long long)arg1;
 - (void)previewCollectionPrefersWhitePointAdaptivityStyle:(long long)arg1;
@@ -19,12 +20,14 @@
 - (void)setAccessoryViewVisible:(BOOL)arg1;
 - (void)setCanChangeCurrentPage:(BOOL)arg1;
 - (void)setFullScreen:(BOOL)arg1;
+- (void)setFullscreenBackgroundColor:(UIColor *)arg1;
 - (void)setPrinter:(id<QLPrintingProtocol>)arg1;
-- (void)setRotationEnabled:(BOOL)arg1;
 - (void)setToolbarCanBeVisible:(BOOL)arg1;
+- (void)showShareSheet;
 - (void)updateKeyCommands;
 - (void)updateOverlayButtons:(BOOL)arg1;
 - (void)updatePreferredContentSize:(struct CGSize)arg1;
-- (void)updatePreviewItemAtIndex:(unsigned long long)arg1 updatedContentsURL:(NSURL *)arg2 sandboxExtension:(NSData *)arg3;
+- (void)updatePreviewItemAtIndex:(unsigned long long)arg1 updatedContentsURL:(NSURL *)arg2 sandboxExtension:(NSData *)arg3 completionHandler:(void (^)(void))arg4;
+- (void)updateTitle:(NSString *)arg1;
 @end
 

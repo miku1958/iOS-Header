@@ -6,47 +6,39 @@
 
 #import <objc/NSObject.h>
 
-#import <AuthKit/NSURLSessionDataDelegate-Protocol.h>
-#import <AuthKit/NSURLSessionDelegate-Protocol.h>
+@class NSString, NSURL;
+@protocol AKURLBagDictionaryProvider;
 
-@class AKURLSession, NSDate, NSDictionary, NSString, NSURL;
-@protocol OS_dispatch_queue;
-
-@interface AKURLBag : NSObject <NSURLSessionDelegate, NSURLSessionDataDelegate>
+@interface AKURLBag : NSObject
 {
-    NSDictionary *_URLsByIdentifier;
-    NSDictionary *_environments;
-    NSDictionary *_configurations;
-    NSDate *_lastFetchedDate;
-    AKURLSession *_URLSession;
-    NSObject<OS_dispatch_queue> *_bagFetchQueue;
+    id<AKURLBagDictionaryProvider> _bagProvider;
 }
 
 @property (readonly, nonatomic) NSString *APSEnvironment;
 @property (readonly, nonatomic) unsigned long long IDMSEnvironment;
 @property (readonly, nonatomic) NSURL *absintheCertURL;
 @property (readonly, nonatomic) NSURL *absintheSessionURL;
+@property (strong, nonatomic) id<AKURLBagDictionaryProvider> bagProvider; // @synthesize bagProvider=_bagProvider;
 @property (readonly, nonatomic) NSURL *basicAuthURL;
 @property (readonly, nonatomic) NSURL *changePasswordURL;
 @property (readonly, nonatomic) NSURL *checkInURL;
 @property (readonly, nonatomic) NSURL *circleURL;
 @property (readonly, nonatomic) NSURL *configurationInfoURL;
 @property (readonly, nonatomic) NSURL *createAppleIDURL;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSURL *deviceListURL;
 @property (readonly, nonatomic) NSURL *endProvisioningURL;
 @property (readonly, nonatomic) NSURL *escapeHatchURL;
 @property (readonly, nonatomic) NSURL *fetchConfigDataURL;
-@property (readonly, nonatomic) NSURL *fetchEmailsURL;
 @property (readonly, nonatomic) NSURL *fetchFollowUps;
 @property (readonly, nonatomic) NSURL *fetchUserInfoURL;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSURL *iForgotContinuationURL;
 @property (readonly, nonatomic) NSURL *iForgotURL;
+@property (readonly, nonatomic) unsigned long long lastKnownIDMSEnvironment;
 @property (readonly, nonatomic) NSURL *notificationAckURL;
+@property (readonly, nonatomic, getter=isPhoneNumberSupportedConfig) BOOL phoneNumberSupportedConfig;
 @property (readonly, nonatomic) NSURL *renewRecoveryTokenURL;
 @property (readonly, nonatomic) NSURL *startProvisioningURL;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSURL *storeModernRecoveryURL;
 @property (readonly, nonatomic) NSURL *syncAnisetteURL;
 @property (readonly, nonatomic) NSURL *tokenUpgradeURL;
 @property (readonly, nonatomic) NSURL *trustedDevicesSummaryURL;
@@ -56,17 +48,21 @@
 @property (readonly, nonatomic) NSURL *validateCodeURL;
 @property (readonly, nonatomic) NSURL *validateVettingTokenURL;
 
-+ (id)_newBagURLRequest;
++ (unsigned long long)IDMSEnvironmentFromBag:(id)arg1;
++ (unsigned long long)_IDMSEnvironmentFromString:(id)arg1;
++ (id)_requestEnvironmentsWithBag:(id)arg1;
 + (id)keyForEscapeHatchURL;
 + (BOOL)looksLikeiForgotURLKey:(id)arg1;
 + (id)sharedBag;
 - (void).cxx_destruct;
-- (void)_handleURLBagResponseWithData:(id)arg1 error:(id)arg2;
-- (void)_requestNewURLBagIfNecessary;
+- (void)_fetchURLBagWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_requestConfigurationsWithError:(id *)arg1;
+- (id)_requestEnvironmentsWithError:(id *)arg1;
+- (id)_requestNewURLBagIfNecessaryWithError:(id *)arg1;
 - (id)_urlAtKey:(id)arg1;
+- (id)_urlBag:(id *)arg1;
 - (id)configurationAtKey:(id)arg1;
-- (id)init;
-- (void)refresh;
+- (void)requestNewURLBagIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)requestNewURLBagIfNecessaryWithError:(id *)arg1;
 - (id)urlAtKey:(id)arg1;
 

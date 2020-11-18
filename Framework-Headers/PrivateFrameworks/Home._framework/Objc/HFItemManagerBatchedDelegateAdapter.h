@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 @class HFItemManager, NAFuture, NSMutableSet;
+@protocol HFCharacteristicReadPolicy;
 
 @interface HFItemManagerBatchedDelegateAdapter : NSObject
 {
     HFItemManager *_itemManager;
-    CDUnknownBlockType _readValidator;
+    id<HFCharacteristicReadPolicy> _readPolicy;
     NSMutableSet *_uncommittedBatchingReasons;
     NSMutableSet *_batchedItemsToUpdate;
     NSMutableSet *_batchedItemProviderInvalidationReasons;
@@ -25,7 +26,7 @@
 @property (nonatomic) SEL batchedSenderSelector; // @synthesize batchedSenderSelector=_batchedSenderSelector;
 @property (strong, nonatomic) NAFuture *finishExecutingBatchFuture; // @synthesize finishExecutingBatchFuture=_finishExecutingBatchFuture;
 @property (readonly, weak, nonatomic) HFItemManager *itemManager; // @synthesize itemManager=_itemManager;
-@property (readonly, copy, nonatomic) CDUnknownBlockType readValidator; // @synthesize readValidator=_readValidator;
+@property (strong, nonatomic) id<HFCharacteristicReadPolicy> readPolicy; // @synthesize readPolicy=_readPolicy;
 @property (strong, nonatomic) NAFuture *startExecutingBatchFuture; // @synthesize startExecutingBatchFuture=_startExecutingBatchFuture;
 @property (strong, nonatomic) NSMutableSet *uncommittedBatchingReasons; // @synthesize uncommittedBatchingReasons=_uncommittedBatchingReasons;
 
@@ -35,7 +36,7 @@
 - (void)_reset;
 - (void)beginBatchWithReason:(id)arg1;
 - (id)commitBatchWithReason:(id)arg1 senderSelector:(SEL)arg2;
-- (id)initWithItemManager:(id)arg1 readValidator:(CDUnknownBlockType)arg2;
+- (id)initWithItemManager:(id)arg1 readPolicy:(id)arg2;
 - (id)requestUpdateForItems:(id)arg1 itemProviderInvalidationReasons:(id)arg2 modifiedHome:(id)arg3 senderSelector:(SEL)arg4;
 
 @end

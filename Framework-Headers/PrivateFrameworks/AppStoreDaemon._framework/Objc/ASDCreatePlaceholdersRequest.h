@@ -4,18 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppStoreDaemon/ASDRequest.h>
+#import <AppStoreDaemon/ASDEphemeralRequest.h>
 
-@class ASDCreatePlaceholdersRequestOptions;
-
-@interface ASDCreatePlaceholdersRequest : ASDRequest
+@interface ASDCreatePlaceholdersRequest : ASDEphemeralRequest
 {
-    CDUnknownBlockType _completionBlock;
-    ASDCreatePlaceholdersRequestOptions *_options;
 }
 
-- (void).cxx_destruct;
-- (void)_handleResponse:(id)arg1 error:(id)arg2;
++ (long long)requestType;
 - (id)initWithOptions:(id)arg1;
 - (void)startWithCompletionBlock:(CDUnknownBlockType)arg1;
 

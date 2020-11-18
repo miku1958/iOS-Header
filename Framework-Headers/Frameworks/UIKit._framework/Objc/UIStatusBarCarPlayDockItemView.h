@@ -46,9 +46,9 @@ __attribute__((visibility("hidden")))
 - (double)extraRightPadding;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (double)neededSizeForImageSet:(id)arg1;
 - (id)preferredFocusEnvironments;
-- (void)updateConstraints;
 - (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;
 - (void)updateForNewStyle:(id)arg1;
 

@@ -14,17 +14,20 @@ __attribute__((visibility("hidden")))
 @interface CKDPAssetUploadTokenRetrieveRequest : PBRequest <NSCopying>
 {
     NSMutableArray *_assets;
+    NSData *_authCopyRequest;
     NSData *_authPutRequest;
-    NSMutableArray *_authPutRequestHeaders;
+    NSMutableArray *_contentRequestHeaders;
     CKDPRecordFieldIdentifier *_field;
     CKDPRecordType *_type;
     NSMutableArray *_uploads;
 }
 
 @property (strong, nonatomic) NSMutableArray *assets; // @synthesize assets=_assets;
+@property (strong, nonatomic) NSData *authCopyRequest; // @synthesize authCopyRequest=_authCopyRequest;
 @property (strong, nonatomic) NSData *authPutRequest; // @synthesize authPutRequest=_authPutRequest;
-@property (strong, nonatomic) NSMutableArray *authPutRequestHeaders; // @synthesize authPutRequestHeaders=_authPutRequestHeaders;
+@property (strong, nonatomic) NSMutableArray *contentRequestHeaders; // @synthesize contentRequestHeaders=_contentRequestHeaders;
 @property (strong, nonatomic) CKDPRecordFieldIdentifier *field; // @synthesize field=_field;
+@property (readonly, nonatomic) BOOL hasAuthCopyRequest;
 @property (readonly, nonatomic) BOOL hasAuthPutRequest;
 @property (readonly, nonatomic) BOOL hasField;
 @property (readonly, nonatomic) BOOL hasType;
@@ -32,20 +35,20 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *uploads; // @synthesize uploads=_uploads;
 
 + (Class)assetsType;
-+ (Class)authPutRequestHeadersType;
++ (Class)contentRequestHeadersType;
 + (id)options;
 + (Class)uploadsType;
 - (void).cxx_destruct;
 - (void)addAssets:(id)arg1;
-- (void)addAuthPutRequestHeaders:(id)arg1;
+- (void)addContentRequestHeaders:(id)arg1;
 - (void)addUploads:(id)arg1;
 - (id)assetsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)assetsCount;
-- (id)authPutRequestHeadersAtIndex:(unsigned long long)arg1;
-- (unsigned long long)authPutRequestHeadersCount;
 - (void)clearAssets;
-- (void)clearAuthPutRequestHeaders;
+- (void)clearContentRequestHeaders;
 - (void)clearUploads;
+- (id)contentRequestHeadersAtIndex:(unsigned long long)arg1;
+- (unsigned long long)contentRequestHeadersCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

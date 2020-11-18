@@ -19,7 +19,6 @@
 - (void).cxx_destruct;
 - (id)_combinedProgramSpecifiers;
 - (id)_leftProgramSpecifiers;
-- (id)_mergeLeftAndRightPrograms;
 - (id)_programSpecifiers;
 - (void)_reloadProgramSpecifiers;
 - (id)_rightProgramSpecifiers;
@@ -34,6 +33,7 @@
 - (id)programSpecsFromAvailablePrograms:(id)arg1 withGroupSpec:(id)arg2 forEar:(int)arg3;
 - (struct _NSRange)programsRange;
 - (void)selectCommonProgramsForLeftAndRightDevices;
+- (BOOL)shouldShowCombinedStreamingVolume;
 - (id)specifierForKey:(id)arg1;
 - (id)specifiers;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

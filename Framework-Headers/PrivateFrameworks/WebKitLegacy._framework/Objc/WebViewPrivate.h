@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMutableSet, NSString, NSURL, WAKWindow, WebFixedPositionContent, WebIndicateLayer, WebInspector, WebNodeHighlight, WebPreferences, WebVideoFullscreenController;
-@protocol WebCaretChangeListener, WebDeviceOrientationProvider, WebFormDelegate, WebGeolocationProvider, WebNotificationProvider;
+@protocol WebCaretChangeListener, WebDeviceOrientationProvider, WebFormDelegate, WebGeolocationProvider, WebNotificationProvider, WebUserMediaClient;
 
 __attribute__((visibility("hidden")))
 @interface WebViewPrivate : NSObject
@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
     struct WebHistoryDelegateImplementationCache historyDelegateImplementations;
     BOOL closed;
     BOOL closing;
+    unsigned long long deviceOrientation;
     BOOL shouldCloseWithWindow;
     BOOL mainFrameDocumentReady;
     BOOL drawsBackground;
@@ -73,11 +74,16 @@ __attribute__((visibility("hidden")))
     int didDrawTiles;
     struct Lock pendingFixedPositionLayoutRectMutex;
     struct CGRect pendingFixedPositionLayoutRect;
+    struct RetainPtr<WebUITextIndicatorData> textIndicatorData;
+    struct RetainPtr<WebUITextIndicatorData> dataOperationTextIndicator;
+    struct CGRect draggedElementBounds;
+    unsigned long long dragSourceAction;
+    struct RetainPtr<NSURL> draggedLinkURL;
+    struct RetainPtr<NSString> draggedLinkTitle;
     struct HashMap<unsigned long, WTF::RetainPtr<id>, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::RetainPtr<id>>> identifierMap;
     BOOL _keyboardUIModeAccessed;
     int _keyboardUIMode;
     BOOL shouldUpdateWhileOffscreen;
-    BOOL includesFlattenedCompositingLayersWhenDrawingToBitmap;
     BOOL needsOneShotDrawingSynchronization;
     BOOL postsAcceleratedCompositingNotifications;
     struct RefPtr<LayerFlushController> layerFlushController;
@@ -87,6 +93,7 @@ __attribute__((visibility("hidden")))
     id<WebGeolocationProvider> _geolocationProvider;
     id<WebDeviceOrientationProvider> m_deviceOrientationProvider;
     id<WebNotificationProvider> _notificationProvider;
+    id<WebUserMediaClient> m_userMediaClient;
     struct RefPtr<WebCore::HistoryItem> _globalHistoryItem;
     BOOL interactiveFormValidationEnabled;
     int validationMessageTimerMagnification;

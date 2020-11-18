@@ -16,6 +16,7 @@
 }
 
 @property (copy, nonatomic) NSString *data;
+@property (copy, nonatomic) NSString *dataType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *displayText;

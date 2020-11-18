@@ -6,7 +6,7 @@
 
 #import <MediaPlaybackCore/MPCPlayerEntity.h>
 
-@class MPModelGenericObject, NSArray, NSString;
+@class MPModelGenericObject, NSString;
 
 @interface MPCPlayerItem : MPCPlayerEntity
 {
@@ -14,19 +14,19 @@
     NSString *_artistName;
     NSString *_composerName;
     MPModelGenericObject *_modelGenericObjectRepresentation;
-    CDStruct_45e4ec31 _durationSnapshot;
+    CDStruct_fce57115 _durationSnapshot;
 }
 
 @property (copy, nonatomic) NSString *albumName; // @synthesize albumName=_albumName;
 @property (copy, nonatomic) NSString *artistName; // @synthesize artistName=_artistName;
 @property (copy, nonatomic) NSString *composerName; // @synthesize composerName=_composerName;
-@property (readonly, nonatomic) CDStruct_45e4ec31 durationSnapshot; // @synthesize durationSnapshot=_durationSnapshot;
+@property (readonly, nonatomic) CDStruct_fce57115 durationSnapshot; // @synthesize durationSnapshot=_durationSnapshot;
 @property (readonly, nonatomic) MPModelGenericObject *modelGenericObjectRepresentation; // @synthesize modelGenericObjectRepresentation=_modelGenericObjectRepresentation;
-@property (copy, nonatomic) NSArray *representations;
 
 - (void).cxx_destruct;
 - (long long)comparePlaybackOrder:(id)arg1;
 - (id)initWithAVItem:(id)arg1;
+- (void)setRepresentations:(id)arg1;
 
 @end
 

@@ -11,7 +11,6 @@
 @interface MCDTransportControlView : UIView
 {
     BOOL _progressActive;
-    int _mode;
     UIButton *_leftButton;
     UIButton *_playPauseButton;
     UIButton *_fastForwardButton;
@@ -25,7 +24,6 @@
 @property (strong, nonatomic) UIImage *defaultLeftButtonImage; // @synthesize defaultLeftButtonImage=_defaultLeftButtonImage;
 @property (readonly, nonatomic) UIButton *fastForwardButton; // @synthesize fastForwardButton=_fastForwardButton;
 @property (readonly, nonatomic) UIButton *leftButton; // @synthesize leftButton=_leftButton;
-@property (nonatomic) int mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) UIImage *pauseImage; // @synthesize pauseImage=_pauseImage;
 @property (strong, nonatomic) UIImage *playImage; // @synthesize playImage=_playImage;
 @property (readonly, nonatomic) UIButton *playPauseButton; // @synthesize playPauseButton=_playPauseButton;

@@ -8,6 +8,7 @@
 
 @interface UIColor (HUAdditions)
 + (id)hu_keyColor;
++ (id)hu_tableViewGroupedBackgroundColor;
 + (id)hu_vibrantGreenTextColor;
 + (id)hu_vibrantRedTextColor;
 @end

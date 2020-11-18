@@ -8,7 +8,7 @@
 
 #import <CloudDocsDaemon/BRCModule-Protocol.h>
 
-@class BRCAccountSession, BRCClientRanksPersistedState, BRCXPCClient, BRNotificationQueue, NSHashTable, NSMutableDictionary, NSMutableSet, NSString;
+@class BRCAccountSession, BRCClientRanksPersistedState, BRCXPCClient, BRNotificationQueue, NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -24,6 +24,9 @@ __attribute__((visibility("hidden")))
     BRCXPCClient *_client;
     _Atomic unsigned long long _activeAliasQueries;
     NSMutableSet *_additionalUpdatesItemRowID;
+    unsigned long long _previousMaxRank;
+    NSMutableDictionary *_watchersByFileObjectID;
+    NSMapTable *_fileObjectIDByWatcher;
     BOOL _isCancelled;
 }
 
@@ -36,12 +39,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_dispatchUpdatesToPipes;
+- (void)_dispatchUpdatesToPipesWithRank:(unsigned long long)arg1;
 - (void)_queueAdditionalUpdates;
 - (void)cancel;
 - (void)close;
-- (void)flushUpdates;
+- (void)fetchLastFlushedRankWithReply:(CDUnknownBlockType)arg1;
+- (void)flushUpdatesWithRank:(unsigned long long)arg1;
 - (void)getPipeWithXPCReceiver:(id)arg1 client:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (BOOL)hasWatcherForDocumentID:(id)arg1;
 - (id)initWithAccountSession:(id)arg1;
 - (void)invalidatePipeReceiversWatchingAppLibraryIDs:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)invalidatePipesWatchingAppLibraryIDs:(id)arg1;
@@ -51,9 +56,11 @@ __attribute__((visibility("hidden")))
 - (void)queueUpdate:(id)arg1;
 - (void)queueUpdateForItemAtRowID:(unsigned long long)arg1;
 - (void)registerAppLibraries:(id)arg1 forFlags:(unsigned long long)arg2;
+- (void)registerPipe:(id)arg1 asWatcherForFileObjectID:(id)arg2;
 - (void)resume;
 - (void)suspend;
 - (void)unregisterAppLibraries:(id)arg1 forFlags:(unsigned long long)arg2;
+- (void)unregisterPipeAsWatcher:(id)arg1;
 
 @end
 

@@ -26,6 +26,7 @@
 - (BOOL)boolForKey:(id)arg1;
 - (id)init;
 - (long long)integerForKey:(id)arg1;
+- (id)localSharedDefaults;
 - (id)objectForKey:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (void)removeObjectForKey:(id)arg1;

@@ -25,9 +25,15 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
++ (id)na_identity;
 - (void).cxx_destruct;
 - (id)allCharacteristicsForCharacteristicType:(id)arg1;
+- (void)beginTransactionWithReason:(id)arg1 readPolicy:(id)arg2 logger:(id)arg3;
+- (void)commitTransactionWithReason:(id)arg1;
+- (id)copyWithValueSource:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithValueSource:(id)arg1 characteristics:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 - (id)metadataForCharacteristicType:(id)arg1;
 - (id)readValuesForCharacteristicTypes:(id)arg1;
 - (id)writeValuesForCharacteristicTypes:(id)arg1;

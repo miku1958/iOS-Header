@@ -4,33 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <GeoServices/GEOAbstractRequestResponseTicket.h>
 
 #import <GeoServices/GEOMapServiceCategoriesTicket-Protocol.h>
 
-@class GEOMapServiceTraits, GEOPDPlaceRequest, GEOPDPlaceResponse, NSDictionary, NSString;
+@class GEOMapServiceTraits, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOPlaceSearchCategoryTicket : NSObject <GEOMapServiceCategoriesTicket>
+@interface _GEOPlaceSearchCategoryTicket : GEOAbstractRequestResponseTicket <GEOMapServiceCategoriesTicket>
 {
-    GEOPDPlaceRequest *_request;
-    GEOPDPlaceResponse *_response;
-    NSDictionary *_userInfo;
-    GEOMapServiceTraits *_traits;
-    BOOL _canceled;
 }
 
-@property (readonly, nonatomic, getter=isCanceled) BOOL canceled; // @synthesize canceled=_canceled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSDictionary *responseUserInfo;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) GEOMapServiceTraits *traits; // @synthesize traits=_traits;
+@property (readonly, nonatomic) GEOMapServiceTraits *traits;
 
-- (void)cancel;
-- (void)dealloc;
-- (id)initWithRequest:(id)arg1 traits:(id)arg2;
+- (void)submitWithHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 networkActivity:(CDUnknownBlockType)arg3;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
 
 @end

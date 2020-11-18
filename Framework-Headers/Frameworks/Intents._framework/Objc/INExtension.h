@@ -22,7 +22,6 @@
 @property (readonly) Class superclass;
 
 + (void)initialize;
-+ (void)load;
 - (void)beginRequestWithExtensionContext:(id)arg1;
 - (id)currentApplicationContext;
 - (id)handlerForIntent:(id)arg1;

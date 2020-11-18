@@ -10,10 +10,11 @@
 
 @property (readonly, nonatomic) double centerX;
 @property (readonly, nonatomic) double centerY;
-@property (readonly, nonatomic) int faceAlgorithmVersion;
+@property (readonly, nonatomic) int cloudNameSource;
+@property (readonly, nonatomic, getter=isClusterRejected) BOOL clusterRejected;
 @property (readonly, nonatomic, getter=isHidden) BOOL hidden;
 @property (readonly, nonatomic, getter=isManual) BOOL manual;
-@property (readonly, nonatomic, getter=isNameSourceAuto) BOOL nameSourceAuto;
+@property (readonly, nonatomic) int nameSource;
 @property (readonly, nonatomic, getter=isRepresentative) BOOL representative;
 @property (readonly, nonatomic) double size;
 

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSData;
 
-@interface HAPFragmentationPacket : NSObject
+@interface HAPFragmentationPacket : HMFObject
 {
     unsigned short _transactionIdentifier;
     unsigned int _length;

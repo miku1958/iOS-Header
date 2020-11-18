@@ -6,26 +6,30 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class NSHashTable, NSMapTable, NSMutableArray;
+#import <HomeUI/HUResizableCellDelegate-Protocol.h>
 
-@interface HUTableViewController : UITableViewController
+@class NSHashTable, NSMapTable, NSString;
+
+@interface HUTableViewController : UITableViewController <HUResizableCellDelegate>
 {
-    BOOL _isUpdatingTableView;
+    BOOL _viewLayingOut;
     NSHashTable *_childViewControllersAtViewWillAppearTime;
     NSHashTable *_childViewControllersAtViewWillDisappearTime;
     NSMapTable *_installedChildViewControllersKeyedByCell;
-    NSMutableArray *_tableViewUpdateRequestQueue;
 }
 
 @property (strong, nonatomic) NSHashTable *childViewControllersAtViewWillAppearTime; // @synthesize childViewControllersAtViewWillAppearTime=_childViewControllersAtViewWillAppearTime;
 @property (strong, nonatomic) NSHashTable *childViewControllersAtViewWillDisappearTime; // @synthesize childViewControllersAtViewWillDisappearTime=_childViewControllersAtViewWillDisappearTime;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMapTable *installedChildViewControllersKeyedByCell; // @synthesize installedChildViewControllersKeyedByCell=_installedChildViewControllersKeyedByCell;
-@property (nonatomic) BOOL isUpdatingTableView; // @synthesize isUpdatingTableView=_isUpdatingTableView;
-@property (strong, nonatomic) NSMutableArray *tableViewUpdateRequestQueue; // @synthesize tableViewUpdateRequestQueue=_tableViewUpdateRequestQueue;
+@property (readonly) Class superclass;
+@property (nonatomic, getter=isViewLayingOut) BOOL viewLayingOut; // @synthesize viewLayingOut=_viewLayingOut;
 
 - (void).cxx_destruct;
-- (void)_performTableViewUpdateBlock:(CDUnknownBlockType)arg1;
-- (void)_performTableViewUpdateWithRequest:(id)arg1;
+- (void)contentSizeCategoryDidChange;
+- (void)didUpdateRequiredHeightForCell:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithStyle:(long long)arg1;
@@ -35,9 +39,11 @@
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

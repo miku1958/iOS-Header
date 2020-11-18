@@ -22,7 +22,7 @@
 @property (strong, nonatomic) CoreDAVItemWithNoChildren *propName; // @synthesize propName=_propName;
 
 + (id)copyParseRules;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 

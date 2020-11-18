@@ -7,11 +7,14 @@
 #import <objc/NSObject.h>
 
 @class HKHealthStore, HKSource, NSArray, NSDictionary, NSMutableSet, NSSet;
+@protocol HKSourceAuthorizationControllerDelegate;
 
 @interface HKSourceAuthorizationController : NSObject
 {
+    BOOL _isUpdatingAllTypes;
     HKHealthStore *_healthStore;
     HKSource *_source;
+    id<HKSourceAuthorizationControllerDelegate> _delegate;
     NSArray *_orderedTypesForSharing;
     NSArray *_orderedTypesForReading;
     NSMutableSet *_typesEnabledForSharing;
@@ -21,7 +24,9 @@
     NSDictionary *_requestedDocumentAuths;
 }
 
+@property (weak, nonatomic) id<HKSourceAuthorizationControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
+@property (nonatomic) BOOL isUpdatingAllTypes; // @synthesize isUpdatingAllTypes=_isUpdatingAllTypes;
 @property (strong, nonatomic) NSArray *orderedTypesForReading; // @synthesize orderedTypesForReading=_orderedTypesForReading;
 @property (strong, nonatomic) NSArray *orderedTypesForSharing; // @synthesize orderedTypesForSharing=_orderedTypesForSharing;
 @property (strong, nonatomic) NSDictionary *requestedDocumentAuths; // @synthesize requestedDocumentAuths=_requestedDocumentAuths;
@@ -33,10 +38,13 @@
 
 - (void).cxx_destruct;
 - (long long)_authorizationStatusWithType:(id)arg1;
+- (id)_enabledSubTypesForType:(id)arg1 inSection:(long long)arg2;
 - (id)_enabledTypesInSection:(long long)arg1;
+- (BOOL)_parentTypeDisabledForType:(id)arg1 inSection:(long long)arg2;
 - (void)_reloadDocumentAuthorizationRecords;
 - (void)_reloadTypeAuthorizationRecords;
 - (void)_setAuthorizationStatuses:(id)arg1;
+- (id)_sortedTypes:(id)arg1;
 - (void)_updateAuthorizationStatusWithTypes:(id)arg1;
 - (BOOL)allTypesEnabled;
 - (BOOL)anyTypeEnabled;

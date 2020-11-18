@@ -18,16 +18,18 @@
     NSMutableArray *subtrees;
     NSMutableDictionary *cache;
     NSString *layoutTag;
+    NSString *effectiveLayoutTag;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *cache; // @synthesize cache;
+@property (strong, nonatomic) NSString *effectiveLayoutTag; // @synthesize effectiveLayoutTag;
 @property (strong, nonatomic) NSString *layoutTag; // @synthesize layoutTag;
 @property (strong, nonatomic) NSString *name; // @synthesize name;
 @property (strong, nonatomic) NSMutableDictionary *properties; // @synthesize properties;
 @property (strong, nonatomic) NSMutableArray *subtrees; // @synthesize subtrees;
 @property (nonatomic) int type; // @synthesize type;
 
-+ (long long)extraIdiomForVisualStyling:(CDStruct_961fb75c)arg1 width:(double)arg2;
++ (long long)extraIdiomForVisualStyling:(CDStruct_227bb23d)arg1 width:(double)arg2;
 + (id)key;
 + (id)keyboard;
 + (id)mergeStringForKeyName:(id)arg1;
@@ -46,7 +48,10 @@
 - (int)_variantType;
 - (id)activeGeometriesList;
 - (id)activeShapesFromOutputShapes:(id)arg1 inputShapes:(id)arg2;
-- (void)addMessagesWriteboardKey;
+- (BOOL)addMessagesWriteboardKey;
+- (BOOL)addMessagesWriteboardKeyIfDismissKey;
+- (BOOL)addMessagesWriteboardKeyIfNoDismissKey;
+- (void)addWriteboardKeyToCachedKeyListWithShape:(id)arg1 rendering:(int)arg2;
 - (void)addkeyToCachedKeyList:(id)arg1;
 - (BOOL)allowRetestAfterCommittingDownActions;
 - (id)alternateKeyplaneName;
@@ -58,6 +63,7 @@
 - (BOOL)boolForProperty:(id)arg1;
 - (id)cacheDisplayString;
 - (void)cacheKey:(id)arg1;
+- (void)cacheNativeIdiomIfNecessary;
 - (id)cacheSecondaryDisplayString;
 - (id)cachedGestureLayout;
 - (id)cachedKeysByKeyName:(id)arg1;
@@ -80,6 +86,7 @@
 - (int)dragThreshold;
 - (BOOL)dynamicDisplayTypeHint;
 - (void)elaborateLayoutWithSize:(struct CGSize)arg1 scale:(double)arg2;
+- (void)elaborateLayoutWithSize:(struct CGSize)arg1 scale:(double)arg2 origin:(struct CGPoint)arg3;
 - (id)findLeftMoreKey;
 - (id)firstCachedKeyWithName:(id)arg1;
 - (id)firstKeyplaneSwitchKey;
@@ -96,7 +103,6 @@
 - (id)gestureKey;
 - (id)gestureKeyplaneName;
 - (BOOL)ghost;
-- (long long)handBias;
 - (BOOL)hasLayoutTag:(id)arg1;
 - (long long)highlightedVariantIndex;
 - (id)highlightedVariantsList;
@@ -122,6 +128,7 @@
 - (id)keyAttributes;
 - (id)keyForString:(id)arg1;
 - (id)keySet;
+- (struct CGRect)keyUnionFrame;
 - (id)keyplaneForKey:(id)arg1;
 - (id)keys;
 - (id)keysByKeyName:(id)arg1;
@@ -134,12 +141,14 @@
 - (id)layoutName;
 - (id)listShapes;
 - (id)localizationKey;
+- (BOOL)looksExactlyLikeShiftAlternate;
 - (BOOL)looksLike:(id)arg1;
 - (BOOL)looksLikeShiftAlternate;
 - (id)mergeKeyNames:(id)arg1;
 - (void)mergeReturnKey:(id)arg1 withReturnKey:(id)arg2;
 - (BOOL)modifiesKeyplane;
 - (id)nameFromAttributes;
+- (long long)nativeIdiom;
 - (struct CGPoint)navigationPointOfKey;
 - (BOOL)noLanguageIndicator;
 - (BOOL)notUseCandidateSelection;
@@ -180,6 +189,7 @@
 - (void)setHighlightedVariantsList:(id)arg1;
 - (void)setInteractionType:(int)arg1;
 - (void)setIsGenerated:(BOOL)arg1;
+- (void)setLayoutTag:(id)arg1 passingKeyTest:(CDUnknownBlockType)arg2;
 - (BOOL)setObject:(id)arg1 forProperty:(id)arg2;
 - (void)setOverrideDisplayString:(id)arg1;
 - (void)setPaddedFrame:(struct CGRect)arg1;
@@ -197,17 +207,18 @@
 - (void)setVariantType:(int)arg1;
 - (void)setVisible:(BOOL)arg1;
 - (void)setVisualStyle:(int)arg1;
-- (void)setVisualStyling:(CDStruct_961fb75c)arg1;
+- (void)setVisualStyling:(CDStruct_227bb23d)arg1;
 - (id)shape;
 - (id)shapeFromFrame:(struct CGRect)arg1 leftPadding:(double)arg2 rightPadding:(double)arg3;
 - (id)shiftAlternateKeyplaneName;
 - (BOOL)shouldCacheKey;
 - (BOOL)shouldSkipCandidateSelection;
 - (BOOL)shouldSkipCandidateSelectionForVariants;
+- (BOOL)shouldSuppressDragRetest;
 - (int)splitMode;
 - (int)state;
 - (id)stringForProperty:(id)arg1;
-- (CDStruct_961fb75c)stylingFromVisualStyle;
+- (CDStruct_227bb23d)stylingFromVisualStyle;
 - (void)subsumeDisappearingKeyName:(id)arg1 intoKeyName:(id)arg2 factors:(id)arg3;
 - (id)subtreeWithName:(id)arg1;
 - (id)subtreeWithName:(id)arg1 rows:(id)arg2;
@@ -229,7 +240,7 @@
 - (int)variantType;
 - (BOOL)visible;
 - (int)visualStyle;
-- (CDStruct_961fb75c)visualStyling;
+- (CDStruct_227bb23d)visualStyling;
 - (void)zipAttributes;
 - (void)zipGeometries:(BOOL)arg1 attributes:(BOOL)arg2;
 - (void)zipGeometrySet;

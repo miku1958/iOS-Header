@@ -28,6 +28,8 @@
 @property (readonly, nonatomic) NSString *carrierName;
 @property (readonly, nonatomic) NSArray *dataUsage;
 @property (readonly, nonatomic) NSString *iccid;
+@property (readonly, nonatomic) BOOL isDeleteNotAllowed;
+@property (readonly, nonatomic) BOOL isDisableNotAllowed;
 @property (nonatomic) BOOL isHomePlan; // @synthesize isHomePlan=_isHomePlan;
 @property (readonly, nonatomic) BOOL isSelectable;
 @property (readonly, nonatomic) BOOL isSelected;

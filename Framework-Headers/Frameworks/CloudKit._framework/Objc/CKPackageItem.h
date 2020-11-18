@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSNumber, NSURL;
+@class NSData, NSNumber, NSString, NSURL;
 
 @interface CKPackageItem : NSObject
 {
@@ -21,6 +21,7 @@
     NSNumber *_fileID;
     NSNumber *_generationID;
     NSData *_wrappedAssetKey;
+    NSString *_itemTypeHint;
 }
 
 @property (strong, nonatomic) NSNumber *deviceID; // @synthesize deviceID=_deviceID;
@@ -28,6 +29,7 @@
 @property (strong, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property (strong, nonatomic) NSNumber *generationID; // @synthesize generationID=_generationID;
 @property (nonatomic) unsigned long long itemID; // @synthesize itemID=_itemID;
+@property (strong, nonatomic) NSString *itemTypeHint; // @synthesize itemTypeHint=_itemTypeHint;
 @property (nonatomic) long long offset; // @synthesize offset=_offset;
 @property (nonatomic) long long packageIndex; // @synthesize packageIndex=_packageIndex;
 @property (nonatomic) int sectionIndex; // @synthesize sectionIndex=_sectionIndex;

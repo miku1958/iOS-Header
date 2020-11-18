@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FMCoreUI/FMTitleView.h>
+#import <UIKit/UIView.h>
 
 @class FMFLocation, NSLayoutConstraint, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface FMFTitleView : FMTitleView
+@interface FMFTitleView : UIView
 {
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;

@@ -35,6 +35,7 @@
 @property (strong, nonatomic) CIFilter *vintageFilter; // @synthesize vintageFilter=_vintageFilter;
 @property (strong, nonatomic) CIFilter *warmAndCoolFilter; // @synthesize warmAndCoolFilter=_warmAndCoolFilter;
 
+- (void).cxx_destruct;
 - (BOOL)canRenderCIImageWithGroupIndex:(int)arg1 amount:(float)arg2 withOptionsObject:(id)arg3;
 - (id)ciImageProcessFX_CI:(id)arg1 groupIndex:(int)arg2 amount:(float)arg3 withOptionsObject:(id)arg4 analysisDictionary:(id)arg5 destRect:(struct CGRect)arg6 padding:(double)arg7;
 - (id)ciImageWithGroupIndex:(int)arg1 amount:(float)arg2 withOptionsObject:(id)arg3 analysisDictionary:(id)arg4 destRect:(struct CGRect)arg5 padding:(double)arg6;

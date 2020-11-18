@@ -17,6 +17,7 @@
 - (BOOL)accessibilityActivate;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 
 @end

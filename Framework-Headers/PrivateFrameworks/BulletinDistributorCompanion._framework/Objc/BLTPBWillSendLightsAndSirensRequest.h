@@ -15,14 +15,20 @@
     NSString *_publisherBulletinID;
     NSString *_recordID;
     NSString *_sectionID;
+    BOOL _systemApp;
+    struct {
+        unsigned int systemApp:1;
+    } _has;
 }
 
 @property (readonly, nonatomic) BOOL hasPublisherBulletinID;
 @property (readonly, nonatomic) BOOL hasRecordID;
 @property (readonly, nonatomic) BOOL hasSectionID;
+@property (nonatomic) BOOL hasSystemApp;
 @property (strong, nonatomic) NSString *publisherBulletinID; // @synthesize publisherBulletinID=_publisherBulletinID;
 @property (strong, nonatomic) NSString *recordID; // @synthesize recordID=_recordID;
 @property (strong, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
+@property (nonatomic) BOOL systemApp; // @synthesize systemApp=_systemApp;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

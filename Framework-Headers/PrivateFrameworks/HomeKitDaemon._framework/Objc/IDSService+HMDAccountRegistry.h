@@ -8,7 +8,7 @@
 
 @interface IDSService (HMDAccountRegistry)
 
-@property (readonly, nonatomic, getter=isActive) BOOL isActive;
+@property (readonly, nonatomic, getter=hmd_isActive) BOOL hmd_active;
 
 @end
 

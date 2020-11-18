@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol GEOCategorySuggestionsManagerServerProxy;
 
@@ -15,9 +15,9 @@
 
 + (void)setUseLocalProxy:(BOOL)arg1;
 + (id)sharedManager;
+- (void).cxx_destruct;
 - (id)_categorySuggestionsForSuggestionsResult:(id)arg1 dayOfWeek:(long long)arg2 hourOfDay:(long long)arg3;
 - (id)_spotlightCategorySuggestionsForResponse:(id)arg1;
-- (void)dealloc;
 - (void)fetchSpotlightCategorySuggestions:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)updateCachedSpotlightCategorySuggestions:(CDUnknownBlockType)arg1;

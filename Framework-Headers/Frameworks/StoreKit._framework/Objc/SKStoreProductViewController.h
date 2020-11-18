@@ -56,6 +56,7 @@
 - (void)_forceOrientationBackToSupportedOrientation;
 - (BOOL)_isPeeking;
 - (void)_loadDidFinishWithResult:(BOOL)arg1 error:(id)arg2;
+- (int)_preferredStatusBarVisibility;
 - (void)_presentPageWithRequest:(id)arg1 animated:(BOOL)arg2;
 - (void)_requestRemoteViewController;
 - (void)_resetRemoteViewController;

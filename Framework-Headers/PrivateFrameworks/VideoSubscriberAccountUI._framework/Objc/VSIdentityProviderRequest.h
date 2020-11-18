@@ -6,33 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, VSAccount, VSAccountStore, VSOptional;
+@class NSString, VSAccount, VSOptional, VSPersistentStorage;
 
-__attribute__((visibility("hidden")))
 @interface VSIdentityProviderRequest : NSObject
 {
     long long _type;
     NSString *_requestingAppDisplayName;
+    NSString *_requestingAppAdamID;
     VSAccount *_account;
-    VSAccountStore *_accountStore;
+    VSPersistentStorage *_storage;
     VSOptional *_accountMetadataRequest;
 }
 
 @property (strong, nonatomic) VSAccount *account; // @synthesize account=_account;
 @property (strong, nonatomic) VSOptional *accountMetadataRequest; // @synthesize accountMetadataRequest=_accountMetadataRequest;
-@property (strong, nonatomic) VSAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (readonly, nonatomic) BOOL allowsUI;
 @property (readonly, nonatomic) BOOL forceAuthentication;
+@property (copy, nonatomic) NSString *requestingAppAdamID; // @synthesize requestingAppAdamID=_requestingAppAdamID;
 @property (copy, nonatomic) NSString *requestingAppDisplayName; // @synthesize requestingAppDisplayName=_requestingAppDisplayName;
 @property (readonly, nonatomic) BOOL requiresUI;
+@property (strong, nonatomic) VSPersistentStorage *storage; // @synthesize storage=_storage;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
-+ (id)accountMetadataRequestWithAccount:(id)arg1 accountStore:(id)arg2 accountMetadataRequest:(id)arg3 requestingAppDisplayName:(id)arg4;
-+ (id)deleteAccountRequestWithAccount:(id)arg1 accountStore:(id)arg2;
-+ (id)editAccountRequestWithAccount:(id)arg1 accountStore:(id)arg2;
-+ (id)makeAccountRequestWithAccountStore:(id)arg1;
++ (id)accountMetadataRequestWithAccount:(id)arg1 storage:(id)arg2 accountMetadataRequest:(id)arg3 requestingAppDisplayName:(id)arg4 requestingAppAdamID:(id)arg5;
++ (id)deleteAccountRequestWithAccount:(id)arg1 storage:(id)arg2;
++ (id)makeAccountRequestWithStorage:(id)arg1;
 - (void).cxx_destruct;
-- (id)_initWithRequestType:(long long)arg1 account:(id)arg2 accountStore:(id)arg3;
+- (id)_initWithRequestType:(long long)arg1 account:(id)arg2 storage:(id)arg3;
 - (id)description;
 - (id)init;
 

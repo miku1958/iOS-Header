@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CPLChangeBatch;
 
@@ -12,6 +12,7 @@
 {
     BOOL _wasSplit;
     BOOL _reachedMinSplit;
+    BOOL _wasFixed;
     CPLChangeBatch *_batch;
     unsigned long long _retryCount;
 }
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) CPLChangeBatch *batch; // @synthesize batch=_batch;
 @property (nonatomic) BOOL reachedMinSplit; // @synthesize reachedMinSplit=_reachedMinSplit;
 @property (nonatomic) unsigned long long retryCount; // @synthesize retryCount=_retryCount;
+@property (nonatomic) BOOL wasFixed; // @synthesize wasFixed=_wasFixed;
 @property (nonatomic) BOOL wasSplit; // @synthesize wasSplit=_wasSplit;
 
 - (void)addRecord:(id)arg1;

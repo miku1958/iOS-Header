@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@protocol OS_dispatch_queue, RadiosPreferencesDelegate;
+@protocol OS_dispatch_queue, OS_os_log, RadiosPreferencesDelegate;
 
 @interface RadiosPreferences : NSObject
 {
@@ -16,6 +16,7 @@
     BOOL _isCachedAirplaneModeValid;
     BOOL _cachedAirplaneMode;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    NSObject<OS_os_log> *radios_prefs_log;
     BOOL notifyForExternalChangeOnly;
 }
 
@@ -26,6 +27,7 @@
 + (BOOL)shouldMirrorAirplaneMode;
 - (void)dealloc;
 - (void *)getValueForKey:(id)arg1;
+- (void *)getValueWithLockForKey:(id)arg1;
 - (id)init;
 - (id)initWithQueue:(id)arg1;
 - (void)initializeSCPrefs:(id)arg1;
@@ -34,8 +36,10 @@
 - (oneway void)release;
 - (void)setAirplaneModeWithoutMirroring:(BOOL)arg1;
 - (void)setCallback:(CDUnknownFunctionPointerType)arg1 withContext:(CDStruct_e097db04 *)arg2;
+- (void)setTelephonyState:(BOOL)arg1 fromBundleID:(id)arg2;
 - (void)setValue:(void *)arg1 forKey:(id)arg2;
 - (void)synchronize;
+- (BOOL)telephonyStateWithBundleIdentifierOut:(id *)arg1;
 
 @end
 

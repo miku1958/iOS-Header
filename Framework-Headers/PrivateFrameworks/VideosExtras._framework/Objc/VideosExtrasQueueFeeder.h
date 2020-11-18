@@ -25,6 +25,7 @@
 - (unsigned long long)itemCount;
 - (long long)itemTypeForIndex:(unsigned long long)arg1;
 - (id)playbackInfoAtIndex:(unsigned long long)arg1;
+- (id)playbackInfoForIdentifier:(id)arg1;
 - (BOOL)player:(id)arg1 shouldContinuePlaybackForNetworkType:(long long)arg2 returningError:(id *)arg3;
 - (void)reloadWithPlaybackContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (long long)repeatType;

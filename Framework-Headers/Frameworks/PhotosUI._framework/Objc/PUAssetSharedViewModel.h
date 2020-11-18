@@ -6,7 +6,7 @@
 
 #import <PhotosUI/PUViewModel.h>
 
-@class PUAssetSharedViewModelChange, PUOperationStatus;
+@class NSProgress, PUAssetSharedViewModelChange, PUOperationStatus;
 @protocol PUDisplayAsset;
 
 __attribute__((visibility("hidden")))
@@ -14,11 +14,15 @@ __attribute__((visibility("hidden")))
 {
     id<PUDisplayAsset> _asset;
     PUOperationStatus *_loadingStatus;
+    NSProgress *_saveProgress;
+    long long _saveState;
 }
 
 @property (readonly, nonatomic) id<PUDisplayAsset> asset; // @synthesize asset=_asset;
 @property (readonly, nonatomic) PUAssetSharedViewModelChange *currentChange;
 @property (strong, nonatomic) PUOperationStatus *loadingStatus; // @synthesize loadingStatus=_loadingStatus;
+@property (strong, nonatomic) NSProgress *saveProgress; // @synthesize saveProgress=_saveProgress;
+@property (nonatomic) long long saveState; // @synthesize saveState=_saveState;
 
 - (void).cxx_destruct;
 - (id)init;

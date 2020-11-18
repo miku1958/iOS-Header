@@ -8,7 +8,7 @@
 
 #import <NanoTimeKitCompanion/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, NTKCharacterTimeView, NTKUtilityComplicationFactory, UITapGestureRecognizer, UIView;
+@class NSString, NTKCharacterTimeView, NTKUtilityComplicationFactory, UIColor, UITapGestureRecognizer, UIView;
 
 @interface NTKCharacterFaceView : NTKFaceView <UIGestureRecognizerDelegate>
 {
@@ -19,6 +19,9 @@
     UITapGestureRecognizer *_timeTapRecognizer;
     unsigned int _isContentLoaded:1;
     long long _prevDataMode;
+    unsigned long long _optionCharacter;
+    UIColor *_optionClothingColor;
+    double _optionClothingDesaturation;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -29,7 +32,6 @@
 + (void)_prewarm;
 + (id)_swatchColorForColorOption:(id)arg1;
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1;
-+ (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void).cxx_destruct;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyDataMode;
@@ -64,6 +66,7 @@
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
 - (void)_startScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)_supportsTimeScrubbing;
+- (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (struct CGRect)_tapToSpeakRect;
 - (void)_unloadSnapshotContentViews;
 - (BOOL)_usesCustomZoom;

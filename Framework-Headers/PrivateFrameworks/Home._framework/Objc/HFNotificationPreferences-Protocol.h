@@ -6,13 +6,15 @@
 
 #import <Home/NSObject-Protocol.h>
 
-@class NAFuture;
+@class NAFuture, NSPredicate;
 
 @protocol HFNotificationPreferences <NSObject>
 
 @property (readonly, nonatomic) BOOL hf_isShowNotificationsStatus;
+@property (readonly, nonatomic) NSPredicate *hf_notificationsCondition;
 @property (readonly, nonatomic) BOOL hf_supportsNotifications;
 
+- (NAFuture *)hf_updateNotificationsCondition:(NSPredicate *)arg1;
 - (NAFuture *)hf_updateShowNotificationsStatus:(BOOL)arg1;
 @end
 

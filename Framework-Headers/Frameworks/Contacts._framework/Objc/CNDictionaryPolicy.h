@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
     NSDictionary *_policyDictionary;
 }
 
+- (void).cxx_destruct;
 - (id)contactRestrictionsForLabeledProperty:(id)arg1;
-- (void)dealloc;
 - (id)initWithDictionary:(id)arg1;
 - (BOOL)isContactPropertySupported:(id)arg1;
 - (unsigned long long)maximumCountOfValuesForContactProperty:(id)arg1;

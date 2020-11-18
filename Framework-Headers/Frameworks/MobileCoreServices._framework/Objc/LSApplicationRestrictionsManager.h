@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSSet *blacklistedBundleIDs;
 @property (readonly) NSNumber *maximumRating;
 @property (readonly, getter=isOpenInRestrictionInEffect) BOOL openInRestrictionInEffect;
-@property (readonly) NSSet *removedSystemApplications;
 @property (readonly) NSSet *restrictedBundleIDs;
+@property (readonly, getter=isSystemAppDeletionEnabled) BOOL systemAppDeletionEnabled;
 @property (readonly, getter=isWhitelistEnabled) BOOL whitelistEnabled;
 @property (readonly) NSSet *whitelistedBundleIDs;
 
@@ -26,14 +26,14 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (id)allowedOpenInAppBundleIDsAfterApplyingFilterToAppBundleIDs:(id)arg1 originatingAppBundleID:(id)arg2 originatingAccountIsManaged:(BOOL)arg3;
 - (void)beginListeningForChanges;
+- (BOOL)cleanRemovedSystemApplicationsList;
 - (void)effectiveSettingsChanged;
 - (id)identifierForRemovedAppPrompt:(id)arg1;
 - (BOOL)isAppExtensionRestricted:(id)arg1;
-- (BOOL)isApplicationRemoved:(id)arg1;
 - (BOOL)isApplicationRestricted:(id)arg1;
 - (BOOL)isApplicationRestricted:(id)arg1 checkFeatureRestrictions:(BOOL)arg2;
+- (BOOL)isApplicationRestricted:(id)arg1 checkFlags:(unsigned long long)arg2;
 - (BOOL)isRatingAllowed:(id)arg1;
-- (void)removedSystemAppsChanged;
 - (BOOL)setApplication:(id)arg1 removed:(BOOL)arg2;
 
 @end

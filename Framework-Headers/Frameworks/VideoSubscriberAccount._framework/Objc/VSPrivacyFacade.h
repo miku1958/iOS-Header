@@ -8,10 +8,11 @@
 
 #import <VideoSubscriberAccount/VSPrivacyServiceProtocol-Protocol.h>
 
-@class NSArray, NSOperationQueue, NSString;
+@class NSArray, NSOperationQueue, NSString, VSPrivacyVoucherLockbox;
 
 @interface VSPrivacyFacade : NSObject <VSPrivacyServiceProtocol>
 {
+    VSPrivacyVoucherLockbox *_voucherLockbox;
     NSString *_service;
     NSOperationQueue *_privateQueue;
 }
@@ -23,15 +24,18 @@
 @property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property (copy, nonatomic) NSString *service; // @synthesize service=_service;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) VSPrivacyVoucherLockbox *voucherLockbox; // @synthesize voucherLockbox=_voucherLockbox;
 
-+ (id)sharedPrivacyFacade;
 - (void).cxx_destruct;
+- (void)_promptForAccessUsingAuditToken:(CDStruct_4c969caf)arg1 processIdentifier:(int)arg2 identityProviderDisplayName:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)_voucherForProcess:(int)arg1 providerID:(id)arg2;
 - (id)init;
-- (id)initWithService:(id)arg1;
+- (id)initWithService:(id)arg1 voucherLockbox:(id)arg2;
+- (id)initWithVoucherLockbox:(id)arg1;
 - (BOOL)isAccessGrantedForAuditToken:(CDStruct_4c969caf)arg1;
 - (BOOL)isAccessGrantedForBundle:(struct __CFBundle *)arg1;
 - (void)preflightCheckForProcessIdentifier:(int)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)requestAccessForAuditToken:(CDStruct_4c969caf)arg1 processIdentifier:(int)arg2 identityProviderDisplayName:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)requestAccessForAuditToken:(CDStruct_4c969caf)arg1 processIdentifier:(int)arg2 identityProviderDisplayName:(id)arg3 identityProviderID:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (BOOL)reset;
 - (BOOL)setAccessGranted:(BOOL)arg1 forAuditToken:(CDStruct_4c969caf)arg2;
 - (BOOL)setAccessGranted:(BOOL)arg1 forBundle:(struct __CFBundle *)arg2;

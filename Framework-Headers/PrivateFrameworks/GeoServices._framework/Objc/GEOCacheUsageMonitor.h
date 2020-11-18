@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSLock, NSMutableDictionary;
 @protocol OS_dispatch_source;
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedMonitor;
+- (void).cxx_destruct;
 - (void)_startTimerIfNecessary;
 - (void)dealloc;
 - (void)flush;

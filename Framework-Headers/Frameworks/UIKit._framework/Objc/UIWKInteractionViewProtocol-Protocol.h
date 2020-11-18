@@ -15,10 +15,10 @@
 - (BOOL)hasMarkedText;
 - (BOOL)hasSelectablePositionAtPoint:(struct CGPoint)arg1;
 - (NSString *)markedText;
-- (BOOL)pointIsInAssistedNode:(struct CGPoint)arg1;
 - (void)requestAutocorrectionContextWithCompletionHandler:(void (^)(UIWKAutocorrectionContext *))arg1;
 - (void)requestAutocorrectionRectsForString:(NSString *)arg1 withCompletionHandler:(void (^)(UIWKAutocorrectionRects *))arg2;
 - (struct CGRect)textFirstRect;
+- (BOOL)textInteractionGesture:(long long)arg1 shouldBeginAtPoint:(struct CGPoint)arg2;
 - (struct CGRect)textLastRect;
 - (NSArray *)webSelectionRects;
 
@@ -31,6 +31,7 @@
 - (BOOL)isReplaceAllowed;
 - (void)moveByOffset:(long long)arg1;
 - (void)moveSelectionAtBoundary:(id)arg1 inDirection:(long long)arg2 completionHandler:(void (^)(void))arg3;
+- (BOOL)pointIsInAssistedNode:(struct CGPoint)arg1;
 - (BOOL)pointIsNearMarkedText:(struct CGPoint)arg1;
 - (void)replaceDictatedText:(NSString *)arg1 withText:(NSString *)arg2;
 - (void)replaceText:(NSString *)arg1 withText:(NSString *)arg2;

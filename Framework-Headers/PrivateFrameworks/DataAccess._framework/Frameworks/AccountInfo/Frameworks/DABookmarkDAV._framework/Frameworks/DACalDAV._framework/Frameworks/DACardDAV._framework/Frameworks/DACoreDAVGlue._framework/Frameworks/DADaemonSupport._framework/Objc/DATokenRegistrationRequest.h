@@ -6,50 +6,55 @@
 
 #import <Foundation/NSObject.h>
 
-#import <DADaemonSupport/NSURLConnectionDelegate-Protocol.h>
+#import <DADaemonSupport/NSURLSessionDataDelegate-Protocol.h>
+#import <DADaemonSupport/NSURLSessionDelegate-Protocol.h>
+#import <DADaemonSupport/NSURLSessionTaskDelegate-Protocol.h>
 
-@class AKAppleIDSession, DARefreshWrapper, NSData, NSMutableURLRequest, NSString, NSURLConnection;
+@class AKAppleIDSession, DARefreshWrapper, NSData, NSMutableURLRequest, NSString, NSURLSession, NSURLSessionDataTask;
 @protocol DATokenRegistrationDelegate;
 
-@interface DATokenRegistrationRequest : NSObject <NSURLConnectionDelegate>
+@interface DATokenRegistrationRequest : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate>
 {
-    BOOL _shouldRetry;
+    BOOL _finished;
     id<DATokenRegistrationDelegate> _delegate;
     DARefreshWrapper *_wrapper;
     NSString *_onBehalfOfBundleIdentifier;
     NSData *_token;
     NSString *_pushKey;
     NSMutableURLRequest *_request;
-    NSURLConnection *_connection;
+    NSURLSession *_session;
+    NSURLSessionDataTask *_task;
     AKAppleIDSession *_hsa2Session;
 }
 
-@property (strong, nonatomic) NSURLConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<DATokenRegistrationDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL finished; // @synthesize finished=_finished;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) AKAppleIDSession *hsa2Session; // @synthesize hsa2Session=_hsa2Session;
 @property (strong, nonatomic) NSString *onBehalfOfBundleIdentifier; // @synthesize onBehalfOfBundleIdentifier=_onBehalfOfBundleIdentifier;
 @property (weak, nonatomic) NSString *pushKey; // @synthesize pushKey=_pushKey;
 @property (strong, nonatomic) NSMutableURLRequest *request; // @synthesize request=_request;
-@property (nonatomic) BOOL shouldRetry; // @synthesize shouldRetry=_shouldRetry;
+@property (strong, nonatomic) NSURLSession *session; // @synthesize session=_session;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSURLSessionDataTask *task; // @synthesize task=_task;
 @property (weak, nonatomic) NSData *token; // @synthesize token=_token;
 @property (weak, nonatomic) DARefreshWrapper *wrapper; // @synthesize wrapper=_wrapper;
 
 + (id)requestWithToken:(id)arg1 pushKey:(id)arg2 wrapper:(id)arg3 onBehalfOf:(id)arg4;
 - (void).cxx_destruct;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
+- (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (BOOL)_canAuthenticateAgainstProtectionSpace:(id)arg1;
+- (void)_handleAuthenticationChallenge:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_reallyHandleAuthenticationChallenge:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cancel;
-- (BOOL)connection:(id)arg1 canAuthenticateAgainstProtectionSpace:(id)arg2;
-- (void)connection:(id)arg1 didFailWithError:(id)arg2;
-- (void)connection:(id)arg1 didReceiveAuthenticationChallenge:(id)arg2;
-- (void)connection:(id)arg1 didReceiveData:(id)arg2;
-- (void)connection:(id)arg1 didReceiveResponse:(id)arg2;
-- (void)connection:(id)arg1 willSendRequestForAuthenticationChallenge:(id)arg2;
-- (void)connectionDidFinishLoading:(id)arg1;
 - (id)initWithToken:(id)arg1 pushKey:(id)arg2 wrapper:(id)arg3 onBehalfOf:(id)arg4;
-- (void)retryRegistrationRequest;
 - (void)sendRegistrationRequestForAccount:(id)arg1;
 
 @end

@@ -32,6 +32,7 @@
 + (void)_removeAnalysisRecordsWithPredicate:(id)arg1;
 + (id)_sanitizeChanges:(id)arg1;
 + (id)_subArrayOfChanges:(id)arg1 toRetryWithConflicts:(id)arg2;
++ (id)analysisCountsForWorkerType:(short)arg1;
 + (BOOL)applyAnalysisStateChanges:(id)arg1 assetUUID:(id)arg2 allowUnsafeSetProcessed:(BOOL)arg3 error:(id *)arg4;
 + (BOOL)cleanupInvalidIgnoreUntilDatesWithError:(id *)arg1;
 + (int)defaultWorkerFlagsForWorkerType:(short)arg1;
@@ -48,8 +49,8 @@
 + (void)requestCountOfAnalysisRecordsForDeletedAssetsWithCompletion:(CDUnknownBlockType)arg1;
 + (void)requestTotalProgressCountsForWorkerType:(short)arg1 states:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (BOOL)resetPendingStatesWithError:(id *)arg1;
-+ (id)supportedWorkerTypes;
 + (id)workInfoForAnalysisWithWorkerType:(short)arg1 additionalStatesToExclude:(id)arg2 fetchLimit:(unsigned long long)arg3 inLibrary:(id)arg4 error:(id *)arg5;
++ (id)workerTypesPersistingAnalysisState;
 - (id)debugLogDescription;
 - (id)mutableKeyPathDictionary;
 - (void)unionWorkerFlags:(int)arg1;

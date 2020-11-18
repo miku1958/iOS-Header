@@ -11,6 +11,7 @@
 #import <UIKit/_UILegacyFocusRegion-Protocol.h>
 
 @class NSArray, NSString, UIView;
+@protocol UIFocusEnvironment;
 
 @interface UIFocusGuide : UILayoutGuide <_UILegacyFocusRegion, _UIFocusRegionContainer, _UIFocusGuideRegionDelegate>
 {
@@ -25,34 +26,43 @@
 @property (nonatomic, getter=_automaticallyPreferOwningView, setter=_setAutomaticallyPreferOwningView:) BOOL automaticallyPreferOwningView; // @synthesize automaticallyPreferOwningView=_automaticallyPreferOwningView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
+@property (readonly, weak, nonatomic, getter=_parentFocusEnvironment) id<UIFocusEnvironment> parentFocusEnvironment;
 @property (copy, nonatomic) NSArray *preferredFocusEnvironments; // @synthesize preferredFocusEnvironments=_preferredFocusEnvironments;
+@property (readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;
 @property (weak, nonatomic) UIView *preferredFocusedView;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_childFocusRegions;
-- (id)_childFocusRegionsInRect:(struct CGRect)arg1;
+- (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
 - (void)_didUpdateFocusToPreferredFocusedView;
 - (id)_encodablePreferredFocusEnvironments;
 - (id)_focusDebugOverlayParentView;
-- (BOOL)_focusRegionCanBecomeFocused;
+- (id)_focusRegionFocusSystem;
 - (struct CGRect)_focusRegionFrame;
 - (id)_focusRegionGuides;
-- (BOOL)_focusRegionIsEligibleForFocus;
-- (id)_focusRegionItem;
 - (id)_focusRegionView;
 - (id)_fulfillPromisedFocusRegion;
 - (BOOL)_isPromiseFocusRegion;
 - (BOOL)_isTransparentFocusRegion;
+- (BOOL)_legacy_isEligibleForFocusInteraction;
+- (id)_preferredFocusRegionCoordinateSpace;
+- (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
-- (BOOL)_shouldSearchForFocusRegionsInContext:(id)arg1;
+- (BOOL)_uili_isFocusGuide;
+- (BOOL)canBecomeFocused;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
-- (id)focusGuideRegion:(id)arg1 preferredFocusEnvironmentsForMovement:(id)arg2;
+- (id)focusGuideRegion:(id)arg1 preferredFocusEnvironmentsForMovementRequest:(id)arg2;
 - (void)focusGuideRegion:(id)arg1 willParticipateAsDestinationRegionInFocusUpdate:(id)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (void)setNeedsFocusUpdate;
+- (BOOL)shouldUpdateFocusInContext:(id)arg1;
+- (void)updateFocusIfNeeded;
 
 @end
 

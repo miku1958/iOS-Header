@@ -16,5 +16,6 @@
 @optional
 - (UIImage *)fetchImage;
 - (NSData *)fetchImageData:(out struct CGAffineTransform *)arg1;
+- (void)invalidateImage;
 @end
 

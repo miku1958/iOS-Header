@@ -17,9 +17,10 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) CNiOSABContactsUserDefaultsABWrapper *abWrapper; // @synthesize abWrapper=_abWrapper;
-@property (copy, nonatomic) NSMutableDictionary *observerCountPerKey; // @synthesize observerCountPerKey=_observerCountPerKey;
+@property (strong, nonatomic) NSMutableDictionary *observerCountPerKey; // @synthesize observerCountPerKey=_observerCountPerKey;
 @property (strong, nonatomic) NSCache *valueCache; // @synthesize valueCache=_valueCache;
 
+- (void).cxx_destruct;
 - (void)_registerObserverForKey:(id)arg1;
 - (void)_unregisterObserverForKey:(id)arg1;
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;

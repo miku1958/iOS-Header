@@ -6,9 +6,12 @@
 
 #import <IntentsUI/NSObject-Protocol.h>
 
-@class INInteraction;
+@class INInteraction, NSSet;
 
 @protocol INUIHostedViewControlling <NSObject>
+
+@optional
+- (void)configureViewForParameters:(NSSet *)arg1 ofInteraction:(INInteraction *)arg2 interactiveBehavior:(unsigned long long)arg3 context:(unsigned long long)arg4 completion:(void (^)(BOOL, NSSet *, struct CGSize))arg5;
 - (void)configureWithInteraction:(INInteraction *)arg1 context:(unsigned long long)arg2 completion:(void (^)(struct CGSize))arg3;
 @end
 

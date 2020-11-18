@@ -12,42 +12,51 @@
 
 @interface GEOLogMessage : PBCodable <NSCopying>
 {
-    int _logMessageSubType;
+    unsigned int _groupRetryCount;
     int _logMessageType;
     NSMutableArray *_logMsgEvents;
     struct {
-        unsigned int logMessageSubType:1;
+        unsigned int groupRetryCount:1;
         unsigned int logMessageType:1;
     } _has;
 }
 
-@property (nonatomic) BOOL hasLogMessageSubType;
+@property (nonatomic) unsigned int groupRetryCount;
+@property (nonatomic) BOOL hasGroupRetryCount;
 @property (nonatomic) BOOL hasLogMessageType;
-@property (nonatomic) int logMessageSubType; // @synthesize logMessageSubType=_logMessageSubType;
 @property (nonatomic) int logMessageType; // @synthesize logMessageType=_logMessageType;
 @property (strong, nonatomic) NSMutableArray *logMsgEvents; // @synthesize logMsgEvents=_logMsgEvents;
 
 + (id)acceptedLogMsgEvents;
 + (id)acceptedLogMsgEventsForLogMessageType:(int)arg1;
-+ (void)initializeAcceptedLogMsgEventTypes;
++ (id)allowedSessionTypes;
++ (BOOL)disallowedStateWithStateType:(int)arg1 logMsgEvent:(id)arg2 logMessage:(id)arg3;
++ (id)disallowedStatesForLogMsgEvent:(id)arg1 logMessage:(id)arg2;
 + (BOOL)logMessageType:(int)arg1 acceptsLogMsgEventType:(int)arg2;
 + (id)logMessagesForEvent:(id)arg1;
 + (Class)logMsgEventType;
-- (int)StringAsLogMessageSubType:(id)arg1;
++ (BOOL)supportsCohortSessionForLogMsgEvent:(id)arg1;
+- (void).cxx_destruct;
 - (int)StringAsLogMessageType:(id)arg1;
-- (BOOL)acceptsLogMsgEventType:(int)arg1;
+- (BOOL)acceptsLogMsgEvent:(id)arg1;
 - (void)addLogMsgEvent:(id)arg1;
+- (unsigned long long)allowedSessionType;
 - (void)clearLogMsgEvents;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)groupIdentifier;
+- (unsigned int)groupItemCount;
+- (unsigned int)groupItemIdHash;
+- (long long)groupItemQueuedTime;
 - (unsigned int)groupSequenceNumber;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (id)logMessageSubTypeAsString:(int)arg1;
+- (BOOL)isFullCarPlayStateAllowed;
+- (BOOL)isFullExperimentsStateAllowed;
+- (BOOL)isNavigationSessionAllowed;
+- (BOOL)isStateAllowed:(id)arg1;
 - (id)logMessageTypeAsString:(int)arg1;
 - (id)logMsgEventAtIndex:(unsigned long long)arg1;
 - (unsigned long long)logMsgEventsCount;

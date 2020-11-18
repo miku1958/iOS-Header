@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE, NSMutableIndexSet, NSOrderedSet, SCNAuthoringEnvironment, SCNNode;
 
-__attribute__((visibility("hidden")))
 @interface SCNManipulator : NSObject
 {
     SCNAuthoringEnvironment *_authoringEnvironment;
@@ -30,7 +29,7 @@ __attribute__((visibility("hidden")))
             unsigned short selectedAxis;
             struct CGPoint originalMouseLocation;
             float rotationSign;
-            struct __C3DQuaternion originalRotation;
+            MISSING_TYPE *originalRotation;
         } axisRotate;
     } _actionData;
     BOOL _isMouseDown;
@@ -38,16 +37,16 @@ __attribute__((visibility("hidden")))
     unsigned short _action;
     struct {
         void *positions;
-        struct __C3DQuaternion *orientations;
+        void *orientations;
         struct SCNMatrix4 *originalLocalMatrix;
     } _originalData;
     unsigned int _originalDataCount;
     union C3DMatrix4x4 _worldInitialMatrix;
     union C3DMatrix4x4 _worldMatrix;
     long long _snapToAlignCount;
-    CDStruct_62d14fc2 *_snapToAlignOnX;
-    CDStruct_62d14fc2 *_snapToAlignOnY;
-    CDStruct_62d14fc2 *_snapToAlignOnZ;
+    CDStruct_962da47d *_snapToAlignOnX;
+    CDStruct_962da47d *_snapToAlignOnY;
+    CDStruct_962da47d *_snapToAlignOnZ;
     NSMutableIndexSet *_snapXIndexes;
     NSMutableIndexSet *_snapYIndexes;
     NSMutableIndexSet *_snapZIndexes;
@@ -73,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)_saveOriginalData;
 - (void)_setAuthoringEnvironment:(id)arg1;
 - (MISSING_TYPE *)_snapPositionToAlign:(struct SCNVector3)arg1 original:(double)arg2 unit:(BOOL)arg3 axisMove:(BOOL *)arg4 rayStart:(long long *)arg5 rayDir:didSnap:snapIndexes: /* Error: Ran out of types for this method. */;
+- (void)_updateActionWithEvent:(CDStruct_edec59f9)arg1;
 - (void)_updateCloneStateWithEvent:(CDStruct_edec59f9)arg1;
 - (void)addClonesToScene;
 - (void)clearSnapIndexes;
@@ -91,10 +91,10 @@ __attribute__((visibility("hidden")))
 - (void)removeClonesFromScene;
 - (id)scene;
 - (id)setupClones;
-- (id)snapGuideIndexesOnAxis:(long long)arg1;
-- (const CDStruct_62d14fc2 *)snapInfoAtIndex:(unsigned long long)arg1 axis:(long long)arg2;
+- (id)snapGuideIndexesOnAxis:(unsigned long long)arg1;
+- (const CDStruct_962da47d *)snapInfoAtIndex:(unsigned long long)arg1 axis:(unsigned long long)arg2;
 - (void)updateItemsPosition;
-- (void)updateItemsRotation:(struct __C3DQuaternion)arg1;
+- (void)updateItemsRotation: /* Error: Ran out of types for this method. */;
 - (void)validateClones;
 
 @end

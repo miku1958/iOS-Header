@@ -16,7 +16,9 @@ __attribute__((visibility("hidden")))
 {
     CUPairingDaemon *_daemon;
     BOOL _pmEntitledDeleteIdentity;
+    BOOL _pmEntitledHomeKit;
     BOOL _pmEntitledRead;
+    BOOL _pmEntitledRemoveAdmin;
     BOOL _pmEntitledRemovePeer;
     BOOL _pmEntitledWrite;
     NSObject<OS_dispatch_queue> *_dispatchQueue;

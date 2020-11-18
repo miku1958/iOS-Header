@@ -26,6 +26,8 @@
     NSDate *_date;
     NSString *_title;
     BOOL _fromForwardedMessage;
+    NSString *_localizedApplicationName;
+    NSString *_teamId;
 }
 
 @property (readonly, nonatomic) NSArray *bcc; // @synthesize bcc=_bcc;
@@ -38,7 +40,9 @@
 @property (readonly, nonatomic) SGSimpleNamedEmailAddress *from;
 @property (readonly, getter=isFromForwardedMessage) BOOL fromForwardedMessage; // @synthesize fromForwardedMessage=_fromForwardedMessage;
 @property (readonly, nonatomic) CSPerson *fromPerson; // @synthesize fromPerson=_fromPerson;
+@property (readonly, nonatomic) NSString *localizedApplicationName; // @synthesize localizedApplicationName=_localizedApplicationName;
 @property (readonly, nonatomic) NSString *sourceKey; // @synthesize sourceKey=_sourceKey;
+@property (readonly, nonatomic) NSString *teamId; // @synthesize teamId=_teamId;
 @property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) NSArray *to; // @synthesize to=_to;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
@@ -48,6 +52,7 @@
 + (id)originWithType:(unsigned long long)arg1 sourceKey:(id)arg2 externalKey:(id)arg3 fromForwardedMessage:(BOOL)arg4;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_resolveAppName;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

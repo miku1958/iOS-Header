@@ -11,10 +11,12 @@
 
 @protocol MTLTextureSPI <MTLTexture, MTLResourceSPI>
 
+@property (readonly) BOOL isCompressed;
 @property (readonly) BOOL isDrawable;
 @property (readonly) unsigned long long numFaces;
 @property (readonly) unsigned long long rotation;
 @property unsigned long long swizzle;
+@property (readonly) unsigned long long uniqueIdentifier;
 
 - (id<MTLTexture>)newTextureViewWithPixelFormat:(unsigned long long)arg1 textureType:(unsigned long long)arg2 levels:(struct _NSRange)arg3 slices:(struct _NSRange)arg4 swizzle:(unsigned long long)arg5;
 

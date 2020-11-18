@@ -20,10 +20,11 @@ __attribute__((visibility("hidden")))
 - (id)defaultKeyDividerColorName;
 - (id)initWithRenderingContext:(id)arg1;
 - (long long)lightHighQualityEnabledBlendForm;
-- (id)traitsForCellSize:(struct CGSize)arg1 highlighted:(BOOL)arg2 edges:(BOOL)arg3;
+- (id)traitsForCellSize:(struct CGSize)arg1 highlighted:(BOOL)arg2 edges:(unsigned long long)arg3;
 - (id)traitsForEdgeGradientWithSize:(struct CGSize)arg1;
 - (id)traitsForEmptyExtendedPane:(struct CGSize)arg1 rowHeight:(double)arg2 idiomPad:(BOOL)arg3 clipCorners:(BOOL)arg4;
 - (id)traitsForExtendedCellSize:(struct CGSize)arg1 highlighted:(BOOL)arg2 groupHeader:(BOOL)arg3 edges:(unsigned long long)arg4;
+- (id)traitsForExtendedView;
 - (id)traitsForHWRCellSize:(struct CGSize)arg1 highlighted:(BOOL)arg2;
 - (id)traitsForSortControlBackgroundWithSize:(struct CGSize)arg1 edges:(unsigned long long)arg2;
 - (id)traitsForToggleButtonWithSize:(struct CGSize)arg1 highlighted:(BOOL)arg2 edges:(unsigned long long)arg3;

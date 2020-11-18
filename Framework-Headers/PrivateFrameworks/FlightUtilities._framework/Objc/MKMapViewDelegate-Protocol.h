@@ -6,7 +6,7 @@
 
 #import <FlightUtilities/NSObject-Protocol.h>
 
-@class MKAnnotationView, MKMapView, MKOverlayRenderer, MKOverlayView, MKUserLocation, NSArray, NSError, UIControl;
+@class MKAnnotationView, MKClusterAnnotation, MKMapView, MKOverlayRenderer, MKOverlayView, MKUserLocation, NSArray, NSError, UIControl;
 @protocol MKAnnotation, MKOverlay;
 
 @protocol MKMapViewDelegate <NSObject>
@@ -14,6 +14,7 @@
 @optional
 - (void)mapView:(MKMapView *)arg1 annotationView:(MKAnnotationView *)arg2 calloutAccessoryControlTapped:(UIControl *)arg3;
 - (void)mapView:(MKMapView *)arg1 annotationView:(MKAnnotationView *)arg2 didChangeDragState:(unsigned long long)arg3 fromOldState:(unsigned long long)arg4;
+- (MKClusterAnnotation *)mapView:(MKMapView *)arg1 clusterAnnotationForMemberAnnotations:(NSArray *)arg2;
 - (void)mapView:(MKMapView *)arg1 didAddAnnotationViews:(NSArray *)arg2;
 - (void)mapView:(MKMapView *)arg1 didAddOverlayRenderers:(NSArray *)arg2;
 - (void)mapView:(MKMapView *)arg1 didAddOverlayViews:(NSArray *)arg2;

@@ -38,11 +38,14 @@
 - (void)_handleGesture:(id)arg1;
 - (void)_setupConstraints;
 - (void)_updateSegmentSelectionStateAnimated:(BOOL)arg1;
+- (void)_updateSegmentViewsForUILayoutDirection;
+- (void)ensureCorrectHeaderViewOrientation;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithSegments:(id)arg1;
-- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (BOOL)preferVerticalLayout;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

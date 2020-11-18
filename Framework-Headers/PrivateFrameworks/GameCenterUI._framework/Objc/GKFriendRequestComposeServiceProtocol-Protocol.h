@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameCenterUI/GKRemoteViewControllerDelegate-Protocol.h>
+#import <GameCenterUI/GKExtensionProtocol-Protocol.h>
 
 @class NSArray, NSString;
 
-@protocol GKFriendRequestComposeServiceProtocol <GKRemoteViewControllerDelegate>
+@protocol GKFriendRequestComposeServiceProtocol <GKExtensionProtocol>
 - (void)addRecipientPlayerInternals:(NSArray *)arg1;
 - (void)addRecipientsWithEmailAddresses:(NSArray *)arg1;
 - (void)setDefaultMessage:(NSString *)arg1;

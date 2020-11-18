@@ -7,10 +7,14 @@
 #import <NanoRegistry/NRDevice.h>
 
 @interface NRDevice (VersionFactories)
-+ (BOOL)_activePairedDeviceSupportIsGreaterEqualVersion:(unsigned long long)arg1;
++ (BOOL)_activePairedDeviceSupportIsGreaterEqualVersion:(unsigned int)arg1;
++ (BOOL)activePairedDeviceSupportsAddBulletinReplyToken;
 + (BOOL)activePairedDeviceSupportsAttachmentFiles;
++ (BOOL)activePairedDeviceSupportsDNDAssertionSync;
 + (BOOL)activePairedDeviceSupportsFileBulletinAdd;
 + (BOOL)activePairedDeviceSupportsFileSettingSync;
++ (BOOL)activePairedDeviceSupportsMultiplteAttachments;
++ (BOOL)activePairedDeviceSupportsNSNullPListExtenion;
 - (unsigned long long)bltVersion;
 @end
 

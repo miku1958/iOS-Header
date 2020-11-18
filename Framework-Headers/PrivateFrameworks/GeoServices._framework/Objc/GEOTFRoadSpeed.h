@@ -57,6 +57,7 @@
 @property (strong, nonatomic) NSData *zilch; // @synthesize zilch=_zilch;
 
 + (Class)predictedSpeedType;
+- (void).cxx_destruct;
 - (int)StringAsColor:(id)arg1;
 - (void)addGeoIds:(long long)arg1;
 - (void)addLatitudeCoordinates:(float)arg1;

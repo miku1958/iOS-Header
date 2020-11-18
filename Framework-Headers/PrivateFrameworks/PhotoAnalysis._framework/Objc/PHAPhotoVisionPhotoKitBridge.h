@@ -13,12 +13,15 @@
 + (void)assignPropertiesOfPVFace:(id)arg1 toPHFaceChangeRequest:(id)arg2;
 + (id)newAllFacesFetchOptionsWithPhotoLibrary:(id)arg1;
 + (id)newAllPersonsFetchOptionsWithPhotoLibrary:(id)arg1;
++ (id)newAllPersonsWithAtLeastOneFaceFetchOptionsWithPhotoLibrary:(id)arg1;
 + (id)newAssetFetchOptionsWithPhotoLibrary:(id)arg1;
 + (id)newFaceCropsFetchOptionsWithPhotoLibrary:(id)arg1;
 + (id)newFaceGroupsFetchOptionsWithPhotoLibrary:(id)arg1;
++ (id)newFacesDeterministicOrderFetchOptionsWithPhotoLibrary:(id)arg1;
 + (id)newFacesRequiringFaceCropGenerationFetchOptionsWithPhotoLibrary:(id)arg1;
 + (id)newObjectFetchOptionsWithPhotoLibrary:(id)arg1;
 + (id)newVerifiedPersonsFetchOptionsWithPhotoLibrary:(id)arg1;
++ (id)newVerifiedPersonsWithAtLeastOneFaceFetchOptionsWithPhotoLibrary:(id)arg1;
 + (id)newVisibleFacesFetchOptionsWithPhotoLibrary:(id)arg1;
 + (id)phFaceCropFromPVFaceCrop:(id)arg1 withFetchOptions:(id)arg2;
 + (id)phFaceCropsFromPVFaceCrops:(id)arg1 withFetchOptions:(id)arg2;

@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HAPOSTransaction, NSDate, NSNumber, NSString;
+@class HMFOSTransaction, NSDate, NSNumber, NSString;
 
-@interface HMDSnapshotFile : NSObject <HMFLogging>
+@interface HMDSnapshotFile : HMFObject <HMFLogging>
 {
     BOOL _externalFilePath;
     NSString *_directory;
@@ -18,7 +18,7 @@
     NSDate *_snapshotTimestamp;
     NSNumber *_slotIdentifier;
     NSNumber *_aspectRatio;
-    HAPOSTransaction *_snapshotCATransaction;
+    HMFOSTransaction *_snapshotCATransaction;
 }
 
 @property (readonly, nonatomic) NSNumber *aspectRatio; // @synthesize aspectRatio=_aspectRatio;
@@ -29,7 +29,7 @@
 @property (readonly, nonatomic) NSString *filePath; // @synthesize filePath=_filePath;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSNumber *slotIdentifier; // @synthesize slotIdentifier=_slotIdentifier;
-@property (strong, nonatomic) HAPOSTransaction *snapshotCATransaction; // @synthesize snapshotCATransaction=_snapshotCATransaction;
+@property (strong, nonatomic) HMFOSTransaction *snapshotCATransaction; // @synthesize snapshotCATransaction=_snapshotCATransaction;
 @property (readonly, nonatomic) NSDate *snapshotTimestamp; // @synthesize snapshotTimestamp=_snapshotTimestamp;
 @property (readonly) Class superclass;
 

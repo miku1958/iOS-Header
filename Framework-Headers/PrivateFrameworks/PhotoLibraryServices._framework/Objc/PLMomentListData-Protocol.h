@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSOrderedSet *moments;
 @property (strong, nonatomic) NSDate *representativeDate;
 @property (strong, nonatomic) NSData *reverseLocationData;
+@property (nonatomic) BOOL reverseLocationDataContainsLocation;
 @property (nonatomic) BOOL reverseLocationDataIsValid;
 @property (nonatomic) int sortIndex;
 @property (strong, nonatomic) NSDate *startDate;

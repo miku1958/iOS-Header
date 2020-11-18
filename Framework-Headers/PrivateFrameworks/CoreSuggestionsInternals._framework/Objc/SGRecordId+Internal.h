@@ -11,7 +11,6 @@
 + (id)recordIdForContactWithRowId:(long long)arg1;
 + (id)recordIdForEmailWithRowId:(long long)arg1;
 + (id)recordIdForEventWithRowId:(long long)arg1;
-+ (id)recordIdForForeignStringValue:(id)arg1 origin:(id)arg2 foreignUniqueContactString:(id)arg3;
 + (id)recordIdWithTableId:(unsigned char)arg1 rowId:(long long)arg2;
 - (long long)rowId;
 - (unsigned char)tableId;

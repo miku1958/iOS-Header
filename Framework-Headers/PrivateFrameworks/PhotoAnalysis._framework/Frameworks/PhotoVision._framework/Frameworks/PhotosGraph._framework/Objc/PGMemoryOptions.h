@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocation, NSArray, NSDate, NSDictionary;
+@class CLLocation, NSArray, NSDate, NSDictionary, NSSet;
 
 @interface PGMemoryOptions : NSObject
 {
@@ -16,17 +16,21 @@
     NSArray *_peopleNames;
     NSArray *_existingMemories;
     NSArray *_blacklistedMemories;
+    NSSet *_blacklistedFeatures;
     unsigned long long _precision;
     NSDate *_lastMemoryCreationUniversalDate;
     NSDate *_baseMemoryCreationUniversalDate;
     NSDictionary *_extraParameters;
     unsigned long long _randomSeed;
+    double _forcedBeta;
 }
 
 @property (strong, nonatomic) NSDate *baseMemoryCreationUniversalDate; // @synthesize baseMemoryCreationUniversalDate=_baseMemoryCreationUniversalDate;
+@property (strong, nonatomic) NSSet *blacklistedFeatures; // @synthesize blacklistedFeatures=_blacklistedFeatures;
 @property (strong, nonatomic) NSArray *blacklistedMemories; // @synthesize blacklistedMemories=_blacklistedMemories;
 @property (strong, nonatomic) NSArray *existingMemories; // @synthesize existingMemories=_existingMemories;
 @property (strong, nonatomic) NSDictionary *extraParameters; // @synthesize extraParameters=_extraParameters;
+@property (nonatomic) double forcedBeta; // @synthesize forcedBeta=_forcedBeta;
 @property (strong, nonatomic) NSDate *lastMemoryCreationUniversalDate; // @synthesize lastMemoryCreationUniversalDate=_lastMemoryCreationUniversalDate;
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (strong, nonatomic) NSArray *peopleNames; // @synthesize peopleNames=_peopleNames;

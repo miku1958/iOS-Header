@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDApplicationData, HMDHome, HMFMessageDispatcher, NSString, NSUUID;
+@class HMDApplicationData, HMDHome, HMFMessageDispatcher, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDRoom : NSObject <HMFMessageReceiver, HMFDumpState, NSSecureCoding>
+@interface HMDRoom : HMFObject <HMFMessageReceiver, HMFDumpState, NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
     NSString *_name;
     NSUUID *_uuid;
@@ -39,10 +40,14 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_handleRemoveAppDataModel:(id)arg1 message:(id)arg2;
 - (void)_handleRenameRequest:(id)arg1;
+- (void)_handleUpdateAppDataModel:(id)arg1 message:(id)arg2;
+- (void)_handleUpdateRoomModel:(id)arg1 message:(id)arg2;
 - (void)_logDuetEvent:(id)arg1;
 - (void)_registerForMessages;
 - (id)assistantObject;
+- (id)backingStoreObjects:(long long)arg1;
 - (void)configure:(id)arg1 queue:(id)arg2;
 - (void)dealloc;
 - (id)dumpState;
@@ -50,6 +55,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 uuid:(id)arg2 home:(id)arg3;
 - (void)logDuetEvent;
+- (id)messageDestination;
+- (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
+- (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)url;
 
 @end

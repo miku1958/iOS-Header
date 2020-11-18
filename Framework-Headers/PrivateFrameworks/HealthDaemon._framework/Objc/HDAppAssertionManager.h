@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class HDDaemon, NSMutableArray, NSMutableDictionary, NSMutableSet;
+@class HDProfile, NSMutableArray, NSMutableDictionary, NSMutableSet;
 @protocol OS_dispatch_queue;
 
 @interface HDAppAssertionManager : NSObject
 {
-    HDDaemon *_daemon;
+    HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_appAssertions;
     NSMutableSet *_activeAssertions;
@@ -20,21 +20,21 @@
 
 @property (strong, nonatomic) NSMutableSet *activeAssertions; // @synthesize activeAssertions=_activeAssertions;
 @property (strong, nonatomic) NSMutableDictionary *appAssertions; // @synthesize appAssertions=_appAssertions;
-@property (weak, nonatomic) HDDaemon *daemon; // @synthesize daemon=_daemon;
 @property (strong, nonatomic) NSMutableArray *pendingAssertions; // @synthesize pendingAssertions=_pendingAssertions;
+@property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 - (void).cxx_destruct;
 - (void)_queue_assertionDidFinish:(id)arg1;
 - (void)_queue_considerLaunchingApp;
-- (void)_queue_extendAssertionWithBundleID:(id)arg1 dataCode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_queue_invalidateAssertionWithBundleID:(id)arg1 dataCode:(long long)arg2;
+- (void)_queue_extendAssertionWithBundleID:(id)arg1 dataCode:(long long)arg2 anchor:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_queue_invalidateAssertionWithBundleID:(id)arg1 dataCode:(long long)arg2 anchor:(id)arg3;
 - (id)_queue_pendingAssertionsReadyForLaunch;
 - (void)_queue_retryAppLaunchForAssertion:(id)arg1;
-- (void)extendAssertionWithBundleID:(id)arg1 dataCode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)extendAssertionWithBundleID:(id)arg1 dataCode:(long long)arg2 anchor:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)init;
-- (id)initWithDaemon:(id)arg1;
-- (void)invalidateAssertionWithBundleID:(id)arg1 dataCode:(long long)arg2;
+- (id)initWithProfile:(id)arg1;
+- (void)invalidateAssertionWithBundleID:(id)arg1 dataCode:(long long)arg2 anchor:(id)arg3;
 
 @end
 

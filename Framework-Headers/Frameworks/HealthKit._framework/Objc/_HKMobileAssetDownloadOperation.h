@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)_handleDownloadProgressWithState:(id)arg1 error:(id)arg2;
 - (void)_queue_assetStateUpdated;
 - (void)_queue_assignDownloadHandlerForAsset;
 - (void)_queue_callCompletionWithSuccess:(BOOL)arg1 error:(id)arg2;

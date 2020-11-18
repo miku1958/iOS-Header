@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSDictionary, NSString, _UIKeyboardChangedInformation;
+@class BKSAnimationFenceHandle, NSArray, NSDictionary, NSString, _UIKeyboardChangedInformation;
 
 @protocol _UIKeyboardArbitration
 - (void)applicationShouldFocusWithBundle:(NSString *)arg1 onCompletion:(void (^)(BOOL))arg2;
 - (void)notifyHostedPIDsOfSuppression:(BOOL)arg1;
 - (void)retrieveDebugInformation:(void (^)(NSString *))arg1;
 - (void)retrieveMoreDebugInformationWithCompletion:(void (^)(NSArray *))arg1;
+- (void)setKeyboardTotalDisable:(BOOL)arg1 withFence:(BKSAnimationFenceHandle *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)setWantsFencing:(BOOL)arg1;
 - (void)setWindowContextID:(unsigned int)arg1 sceneIdentifier:(NSString *)arg2 forKeyboard:(BOOL)arg3 withLevel:(double)arg4;
 - (void)setWindowHostingPID:(int)arg1 active:(BOOL)arg2;
 - (void)signalKeyboardChangeComplete;
 - (void)signalKeyboardChanged:(_UIKeyboardChangedInformation *)arg1 onCompletion:(void (^)(void))arg2;
-- (void)startArbitrationWithExpectedState:(_UIKeyboardChangedInformation *)arg1 hostingPIDs:(NSArray *)arg2 withSuppression:(int)arg3 onConnected:(void (^)(_UIKeyboardChangedInformation *))arg4;
+- (void)startArbitrationWithExpectedState:(_UIKeyboardChangedInformation *)arg1 hostingPIDs:(NSArray *)arg2 usingFence:(BOOL)arg3 withSuppression:(int)arg4 onConnected:(void (^)(_UIKeyboardChangedInformation *, BOOL))arg5;
 - (void)transition:(NSString *)arg1 eventStage:(unsigned long long)arg2 withInfo:(NSDictionary *)arg3;
 @end
 

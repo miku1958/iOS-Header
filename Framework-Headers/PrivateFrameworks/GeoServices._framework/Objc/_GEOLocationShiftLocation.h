@@ -4,33 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
+@class GEOApplicationAuditToken, GEOLatLng;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface _GEOLocationShiftLocation : NSObject
 {
-    CDStruct_2c43369c _coordinate;
+    GEOLatLng *_latLng;
+    GEOApplicationAuditToken *_auditToken;
     double _accuracy;
     CDUnknownBlockType _completionHandler;
     CDUnknownBlockType _errorHandler;
     CDUnknownBlockType _mustGoToNetworkCallback;
     CDUnknownBlockType _functionHandler;
     struct __CFRunLoop *_runLoop;
-    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_callbackQueue;
     BOOL _recordCacheInfo;
 }
 
 @property (readonly, nonatomic) double accuracy; // @synthesize accuracy=_accuracy;
-@property (readonly, nonatomic) CDStruct_c3b9c2ee coordinate; // @synthesize coordinate=_coordinate;
+@property (readonly, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
+@property (readonly, nonatomic) GEOLatLng *latLng; // @synthesize latLng=_latLng;
 
-- (id)_initWithCoordinate:(CDStruct_c3b9c2ee)arg1 accuracy:(double)arg2 completionHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4 mustGoToNetworkCallback:(CDUnknownBlockType)arg5;
+- (void).cxx_destruct;
+- (id)_initWithLatLng:(id)arg1 accuracy:(double)arg2 completionHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4 mustGoToNetworkCallback:(CDUnknownBlockType)arg5;
 - (void)_performOnCallbackQueue:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (id)initWithCoordinate:(CDStruct_c3b9c2ee)arg1 accuracy:(double)arg2 completionHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4 mustGoToNetworkCallback:(CDUnknownBlockType)arg5 callbackQueue:(id)arg6;
-- (id)initWithCoordinate:(CDStruct_c3b9c2ee)arg1 accuracy:(double)arg2 completionHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4 mustGoToNetworkCallback:(CDUnknownBlockType)arg5 callbackRunLoop:(struct __CFRunLoop *)arg6;
-- (id)initWithCoordinate:(CDStruct_c3b9c2ee)arg1 functionHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3 callbackQueue:(id)arg4;
+- (id)initWithLatLng:(id)arg1 accuracy:(double)arg2 completionHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4 mustGoToNetworkCallback:(CDUnknownBlockType)arg5 callbackQueue:(id)arg6;
+- (id)initWithLatLng:(id)arg1 accuracy:(double)arg2 completionHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4 mustGoToNetworkCallback:(CDUnknownBlockType)arg5 callbackQueue:(id)arg6 auditToken:(id)arg7;
+- (id)initWithLatLng:(id)arg1 accuracy:(double)arg2 completionHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4 mustGoToNetworkCallback:(CDUnknownBlockType)arg5 callbackRunLoop:(struct __CFRunLoop *)arg6;
+- (id)initWithLatLng:(id)arg1 auditToken:(id)arg2 functionHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4 callbackQueue:(id)arg5;
 - (void)performCompletionHandlerWithShiftedCoordinate:(CDStruct_c3b9c2ee)arg1 accuracy:(double)arg2 function:(id)arg3 wasFunctionCached:(BOOL)arg4;
 - (void)performErrorHandler:(id)arg1;
 - (void)performMustGoToNetwork;

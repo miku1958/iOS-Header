@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class HKHealthStore, NSMutableDictionary;
 
 @interface FIUIUnitManager : NSObject
 {
     NSMutableDictionary *_preferredUnits;
+    HKHealthStore *_healthStore;
 }
 
-+ (void)setHealthStore:(id)arg1;
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (id)_loadPreferredUnitsFromDefaults;
@@ -25,24 +25,23 @@
 - (void)_updatePreferredUnits;
 - (void)_userPreferencesDidChange:(id)arg1;
 - (void)dealloc;
-- (id)healthStore;
-- (id)init;
+- (id)initWithHealthStore:(id)arg1;
 - (void)setPreferredUnitsForTesting:(id)arg1;
 - (void)setUserActiveEnergyBurnedUnit:(id)arg1;
 - (void)setUserBasalEnergyBurnedUnit:(id)arg1;
-- (void)setUserDistanceCyclingUnit:(long long)arg1;
-- (void)setUserDistanceUnit:(long long)arg1 forDistanceType:(long long)arg2;
-- (void)setUserDistanceWalkingRunningUnit:(long long)arg1;
+- (void)setUserDistanceCyclingUnit:(unsigned long long)arg1;
+- (void)setUserDistanceUnit:(unsigned long long)arg1 forDistanceType:(unsigned long long)arg2;
+- (void)setUserDistanceWalkingRunningUnit:(unsigned long long)arg1;
 - (id)userActiveEnergyBurnedUnit;
 - (id)userBasalEnergyBurnedUnit;
 - (id)userDistanceCyclingHKUnit;
-- (long long)userDistanceCyclingUnit;
+- (unsigned long long)userDistanceCyclingUnit;
 - (id)userDistanceElevationHKUnit;
-- (long long)userDistanceElevationUnit;
-- (id)userDistanceHKUnitForDistanceType:(long long)arg1;
-- (long long)userDistanceUnitForDistanceType:(long long)arg1;
+- (unsigned long long)userDistanceElevationUnit;
+- (id)userDistanceHKUnitForDistanceType:(unsigned long long)arg1;
+- (unsigned long long)userDistanceUnitForDistanceType:(unsigned long long)arg1;
 - (id)userDistanceWalkingRunningHKUnit;
-- (long long)userDistanceWalkingRunningUnit;
+- (unsigned long long)userDistanceWalkingRunningUnit;
 - (id)userLapLengthHKUnit;
 
 @end

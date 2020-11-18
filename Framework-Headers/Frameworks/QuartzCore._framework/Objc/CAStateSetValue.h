@@ -17,6 +17,7 @@
 @property (copy, nonatomic) NSString *keyPath; // @synthesize keyPath=_keyPath;
 @property (strong, nonatomic) id value;
 
++ (BOOL)supportsSecureCoding;
 - (id)CAMLTypeForKey:(id)arg1;
 - (void)apply:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

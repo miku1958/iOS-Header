@@ -6,15 +6,15 @@
 
 #import <HealthDaemon/HDSyncEntity-Protocol.h>
 
-@class HDNanoSyncSession, HDSQLitePredicate, NSSet;
+@class HDNanoSyncSession, HDProfile, HDSQLitePredicate;
 
 @protocol HDNanoSyncEntity <HDSyncEntity>
 + (int)nanoSyncObjectType;
 + (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;
 
 @optional
++ (BOOL)companionDidChangeForProfile:(HDProfile *)arg1 error:(id *)arg2;
 + (HDSQLitePredicate *)nanoSyncPredicateForSession:(HDNanoSyncSession *)arg1;
 + (BOOL)supportsSpeculativeNanoSyncChanges;
-+ (NSSet *)syncEntityDependenciesForNanoSyncProtocolVersion:(int)arg1;
 @end
 

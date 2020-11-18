@@ -20,6 +20,7 @@
 @property (nonatomic) BOOL sessionIsLoginSession;
 
 + (id)server;
+- (void).cxx_destruct;
 - (void)_didConnectToServer;
 - (id)_handleEventListener:(id)arg1;
 - (id)_handleZoomAttributesListener:(id)arg1;
@@ -38,9 +39,11 @@
 - (struct CGRect)convertFrame:(struct CGRect)arg1 fromContextId:(unsigned int)arg2;
 - (struct CGRect)convertFrame:(struct CGRect)arg1 fromContextId:(unsigned int)arg2 toContextId:(unsigned int)arg3;
 - (struct CGRect)convertFrame:(struct CGRect)arg1 toContextId:(unsigned int)arg2;
+- (unsigned long long)currentGuidedAccessModeAndSessionApp:(id *)arg1;
 - (void)dealloc;
 - (void)disableBrightnessFilters;
 - (unsigned long long)guidedAccessAvailability;
+- (id)guidedAccessEffectiveAppBundleIdentifier;
 - (id)guidedAccessIgnoredRegions;
 - (void)homeClickSwallowedForGuidedAccess;
 - (id)init;
@@ -58,13 +61,15 @@
 - (void)registerGestureConflictWithZoom:(id)arg1;
 - (void)registerSiriViewServicePID:(int)arg1;
 - (void)registerZoomAttributesChangeHandler:(CDUnknownBlockType)arg1;
-- (void)requestGuidedAccessSession:(BOOL)arg1 appID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)requestGuidedAccessSessionEndWithCompletion:(CDUnknownBlockType)arg1;
+- (void)requestGuidedAccessSessionStartWithConfigurationDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resetAccessibilityFeatures;
 - (void)restoreCachedBrightnessFilters;
 - (void)setAccessibilityPreferenceAsMobile:(id)arg1 value:(id)arg2 notification:(id)arg3;
 - (void)setCapsLockLightOn:(BOOL)arg1;
 - (void)setHearingAidControlIsVisible:(BOOL)arg1;
 - (void)setLockScreenDimTimerEnabled:(BOOL)arg1;
+- (void)setSwitchControlHasScreenSwitch:(BOOL)arg1;
 - (void)setSwitchControlRendersDeviceUnusable:(BOOL)arg1;
 - (void)setVoiceOverItemChooserVisible:(BOOL)arg1;
 - (void)setZoomInitialFocusRect:(struct CGRect)arg1 fromContext:(unsigned int)arg2;

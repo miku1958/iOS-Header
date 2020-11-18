@@ -7,11 +7,11 @@
 #import <objc/NSObject.h>
 
 @interface NSObject (AXAutoscrolling)
-- (void)_accessibilityAutoscrollInDirection:(int)arg1;
+- (void)_accessibilityAutoscrollInDirection:(unsigned long long)arg1;
 - (void)_accessibilityAutoscrollScrollToBottom;
 - (void)_accessibilityAutoscrollScrollToTop;
 - (id)_accessibilityAutoscrollTarget;
-- (int)_accessibilityAvailableAutoscrollDirections;
+- (unsigned long long)_accessibilityAvailableAutoscrollDirections;
 - (void)_accessibilityDecreaseAutoscrollSpeed;
 - (void)_accessibilityIncreaseAutoscrollSpeed;
 - (BOOL)_accessibilityIsAutoscrolling;

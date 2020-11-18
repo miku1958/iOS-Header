@@ -17,11 +17,11 @@
 
 @property (readonly, nonatomic) unsigned short mappedStreamID; // @synthesize mappedStreamID=_mappedStreamID;
 @property (readonly, nonatomic) unsigned char reason; // @synthesize reason=_reason;
-@property (readonly, strong, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
+@property (readonly, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 
+- (void).cxx_destruct;
 - (id)_nonHeaderData;
 - (unsigned char)command;
-- (void)dealloc;
 - (id)initWithCommand:(unsigned char)arg1 underlyingData:(id)arg2;
 - (id)initWithReason:(unsigned char)arg1 mappedStreamID:(unsigned short)arg2 serviceName:(id)arg3;
 

@@ -16,12 +16,12 @@
     NSMutableArray *_connectedAccessories;
     NSMutableArray *_sequesteredAccessories;
     NSString *_selectedBluetoothAddress;
-    EABluetoothAccessoryPicker *_picker;
     CDUnknownBlockType _pickerCompletion;
     BOOL _sequesterNewAccessories;
     NSTimer *_pickerTimer;
     NSRecursiveLock *_pickerLock;
     NSObject<OS_dispatch_queue> *_connectionQueue;
+    EABluetoothAccessoryPicker *_picker;
 }
 
 @property (readonly, nonatomic) NSArray *connectedAccessories;
@@ -32,6 +32,7 @@
 
 + (void)accessibilityStartListening;
 + (void)accessibilityStopListening;
++ (id)accessoryDictionaryForLogging:(id)arg1;
 + (BOOL)isLoggingEnabled;
 + (void)registerCapabilities:(unsigned int)arg1;
 + (id)sharedAccessoryManager;
@@ -60,7 +61,7 @@
 - (void)_nmeaFilteringSupportChanged:(id)arg1;
 - (void)_notifyObserversThatAccessoryDisconnectedWithUserInfo:(id)arg1;
 - (void)_pointOfInterestStatusReceived:(id)arg1;
-- (void)_removeAllAccessoriesFromArray:(id)arg1 notifyClients:(BOOL)arg2;
+- (void)_removeAlliAPAccessoriesFromArray:(id)arg1 notifyClients:(BOOL)arg2;
 - (void)_timeSyncInfoUpdated:(id)arg1;
 - (void)_vehicleDataUpdated:(id)arg1;
 - (void)accessibilityAction:(id)arg1;
@@ -68,18 +69,37 @@
 - (void)accessibilityItemPropertyRequest:(id)arg1;
 - (void)accessibilitySystemPropertyChange:(id)arg1;
 - (void)accessibilitySystemPropertyRequest:(id)arg1;
+- (void)accessoryClosedEASession:(id)arg1;
 - (BOOL)appDeclaresProtocol:(id)arg1;
 - (BOOL)areLocationAccessoriesEnabled;
+- (id)authCertForLegacyConnectionID:(unsigned int)arg1;
+- (id)authCertSerialNumberForLegacyConnectionID:(unsigned int)arg1;
 - (id)availableAccessories;
+- (void)closeEASessionForEASessionUUID:(id)arg1;
+- (void)closeInputStreamForEASessionUUID:(id)arg1;
+- (void)createEASessionForProtocol:(id)arg1 accessoryUUID:(id)arg2 withReply:(CDUnknownBlockType)arg3;
+- (id)currentVehicleInformation:(id)arg1;
 - (void)dealloc;
+- (BOOL)destinationInformation:(id)arg1 forAccessoryUUID:(id)arg2;
 - (void)devicePicker:(id)arg1 didSelectAddress:(id)arg2 errorCode:(long long)arg3;
 - (void)disconnectIPAccessory:(id)arg1;
 - (void)endSession:(unsigned int)arg1 forConnectionID:(unsigned int)arg2;
+- (void)handleIncomingExternalAccessoryData:(id)arg1 forEASessionIdentifier:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)initiateConnectionToIPAccessory:(id)arg1;
 - (void)openCompleteForSession:(unsigned int)arg1 connectionID:(unsigned int)arg2;
+- (void)openSessionFromAccessoryToApp:(id)arg1;
+- (void)openSessionFromAppToAccessory:(id)arg1;
 - (void)pointOfInterestSelection:(id)arg1;
+- (BOOL)processIDIsUsingAccessory:(struct __CFString *)arg1;
 - (void)registerForLocalNotifications;
+- (void)requestIAPAccessoryWiFiCredentials:(id)arg1;
+- (void)resumeEASessionData:(id)arg1;
+- (void)saveEASession:(id)arg1 forEASessionUUID:(id)arg2;
+- (void)sendDeviceIdentifierNotification:(id)arg1 usbIdentifier:(id)arg2 forUUID:(id)arg3;
+- (void)sendGPRMCDataStatus:(BOOL)arg1 ValueV:(BOOL)arg2 ValueX:(BOOL)arg3 forUUID:(id)arg4;
+- (void)sendNMEAFilterList:(id)arg1 forUUID:(id)arg2;
+- (void)sendOutgoingEAData:(id)arg1 forSessionUUID:(id)arg2;
 - (void)setAreLocationAccessoriesEnabled:(BOOL)arg1;
 - (void)setShouldAllowCppRuntime:(BOOL)arg1;
 - (void)setShouldAllowInternalProtocols:(BOOL)arg1;
@@ -87,7 +107,9 @@
 - (BOOL)shouldAllowInternalProtocols;
 - (void)showBluetoothAccessoryPickerWithNameFilter:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startIPAccessoryDiscovery;
+- (void)startLocationForConnectedAccessories;
 - (void)stopIPAccessoryDiscovery;
+- (void)stopLocationForConnectedAccessories;
 - (void)unregisterForLocalNotifications;
 - (void)wakeAccessoryWithToken:(id)arg1;
 

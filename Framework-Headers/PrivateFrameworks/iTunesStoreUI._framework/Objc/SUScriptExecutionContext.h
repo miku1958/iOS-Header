@@ -9,7 +9,7 @@
 #import <iTunesStoreUI/ISStoreURLOperationDelegate-Protocol.h>
 #import <iTunesStoreUI/SUWebViewDelegate-Protocol.h>
 
-@class ISStoreURLOperation, NSString, SUWebView;
+@class ISStoreURLOperation, NSNumber, NSString, SUWebView;
 
 @interface SUScriptExecutionContext : NSObject <ISStoreURLOperationDelegate, SUWebViewDelegate>
 {
@@ -21,6 +21,9 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct OpaqueJSContext *globalExecutionContext;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentage;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSessionDuration;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id windowScriptObject;
 

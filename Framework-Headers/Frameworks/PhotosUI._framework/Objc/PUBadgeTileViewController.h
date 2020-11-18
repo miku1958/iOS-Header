@@ -7,11 +7,12 @@
 #import <PhotosUI/PUTileViewController.h>
 
 #import <PhotosUI/PUAssetViewModelChangeObserver-Protocol.h>
+#import <PhotosUI/PXUIAssetBadgeViewDelegate-Protocol.h>
 
 @class NSString, PUAssetViewModel, PXUIAssetBadgeView;
 
 __attribute__((visibility("hidden")))
-@interface PUBadgeTileViewController : PUTileViewController <PUAssetViewModelChangeObserver>
+@interface PUBadgeTileViewController : PUTileViewController <PUAssetViewModelChangeObserver, PXUIAssetBadgeViewDelegate>
 {
     BOOL __needsUpdateBadgeInfo;
     BOOL __needsUpdateBadgeView;
@@ -34,19 +35,20 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (struct PXAssetBadgeInfo)_badgeInfoForAssetViewModel:(id)arg1;
 + (struct CGSize)_badgeTileSizeForBadgeInfo:(struct PXAssetBadgeInfo)arg1;
-+ (void)_configureBadgeView:(id)arg1 withBadgeInfo:(struct PXAssetBadgeInfo)arg2 isOverContent:(BOOL)arg3 hideLivePhotoBadge:(BOOL)arg4 animated:(BOOL)arg5;
++ (void)_configureBadgeView:(id)arg1 withBadgeInfo:(struct PXAssetBadgeInfo)arg2 isOverContent:(BOOL)arg3 animated:(BOOL)arg4;
 + (struct CGSize)badgeTileSizeForAssetViewModel:(id)arg1;
 - (void).cxx_destruct;
 - (void)_invalidateBadgeInfo;
 - (void)_invalidateBadgeView;
 - (BOOL)_needsUpdate;
 - (void)_setNeedsUpdate;
+- (void)_updateBadge;
 - (void)_updateBadgeInfoIfNeeded;
 - (void)_updateBadgeViewIfNeeded;
 - (void)_updateIfNeeded;
 - (void)applyLayoutInfo:(id)arg1;
+- (void)assetBadgeView:(id)arg1 userDidSelectBadges:(unsigned long long)arg2;
 - (void)becomeReusable;
 - (id)loadView;
 - (void)prepareForReuse;

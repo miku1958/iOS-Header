@@ -32,10 +32,10 @@
 - (void)managedSystemConfigurationServiceIDsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)managedWiFiNetworkNamesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)markStoredProfileForPurposeAsInstalled:(int)arg1 completion:(void (^)(NSError *))arg2;
-- (void)mayShareToAirDropAndOriginatingAccountIsManaged:(BOOL)arg1 completion:(void (^)(BOOL, NSError *))arg2;
-- (void)mayShareToMessagesAndOriginatingAccountIsManaged:(BOOL)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)mayShareToAirDropForOriginatingAppBundleID:(NSString *)arg1 originatingAccountIsManaged:(BOOL)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)mayShareToMessagesForOriginatingAppBundleID:(NSString *)arg1 originatingAccountIsManaged:(BOOL)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)migratePostMDMDataMigratorWithContext:(int)arg1 completion:(void (^)(NSError *))arg2;
-- (void)migrateWithContext:(int)arg1 passcodeWasSetInBackup:(BOOL)arg2 forceAllowHostPairing:(BOOL)arg3 completion:(void (^)(NSError *))arg4;
+- (void)migrateWithContext:(int)arg1 passcodeWasSetInBackup:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
 - (void)notifyDeviceUnlockedWithCompletion:(void (^)(NSError *))arg1;
 - (void)notifyHaveSeenComplianceMessageWithLastLockDate:(NSDate *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)notifyStartComplianceTimer:(NSDate *)arg1 completion:(void (^)(NSError *))arg2;
@@ -50,6 +50,7 @@
 - (void)removeExpiredProfilesWithCompletion:(void (^)(NSError *))arg1;
 - (void)removeOrphanedClientRestrictionsWithCompletion:(void (^)(NSError *))arg1;
 - (void)removeProfileWithIdentifier:(NSString *)arg1 installationType:(long long)arg2 completion:(void (^)(NSError *))arg3;
+- (void)removeProtectedProfileWithIdentifier:(NSString *)arg1 installationType:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)removeProvisioningProfileWithUUID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)removeValueSetting:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)removeWebContentFilterUserBlacklistedURLString:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
@@ -59,8 +60,9 @@
 - (void)setAutoCorrectionAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setDictationAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setKeyboardShortcutsAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
-- (void)setParametersForSettingsByType:(NSDictionary *)arg1 configurationUUID:(NSString *)arg2 toSystem:(BOOL)arg3 user:(BOOL)arg4 passcode:(NSString *)arg5 completion:(void (^)(NSError *))arg6;
+- (void)setParametersForSettingsByType:(NSDictionary *)arg1 configurationUUID:(NSString *)arg2 toSystem:(BOOL)arg3 user:(BOOL)arg4 passcode:(NSString *)arg5 credentialSet:(NSData *)arg6 completion:(void (^)(NSError *))arg7;
 - (void)setPredictiveKeyboardAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
+- (void)setSmartPunctuationAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setSpellCheckAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setUserBookmarks:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setUserInfo:(NSDictionary *)arg1 forClientUUID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;

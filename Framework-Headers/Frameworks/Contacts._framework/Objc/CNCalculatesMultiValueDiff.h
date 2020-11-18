@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray, NSMutableOrderedSet, NSOrderedSet;
 
@@ -23,12 +23,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)diffMultiValue:(id)arg1 toMultiValue:(id)arg2;
+- (void).cxx_destruct;
 - (void)appendAddUpdates;
 - (void)appendRemoveUpdates;
 - (void)appendReorderUpdates;
 - (void)appendReplaceUpdates;
 - (void)calculateDiff;
-- (void)dealloc;
 - (id)initWithMultiValue1:(id)arg1 multiValue2:(id)arg2;
 - (void)setupAddedIdentifiers;
 - (void)setupCalculatedFinalIdentifiers;

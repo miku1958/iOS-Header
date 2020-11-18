@@ -34,8 +34,6 @@
     double _handledTime;
     NSArray *_channels;
     void *_clientContext;
-    NSURL *_resourceListURL;
-    NSURL *_resourceSearchPathURL;
     NSString *_originalString;
     NSMutableArray *_originalWordRanges;
     NSMutableArray *_processedWordRanges;
@@ -62,8 +60,6 @@
 @property (strong, nonatomic) NSMutableArray *processedWordRanges; // @synthesize processedWordRanges=_processedWordRanges;
 @property (nonatomic) double rate; // @synthesize rate=_rate;
 @property (strong, nonatomic) NSMutableArray *replacedWords; // @synthesize replacedWords=_replacedWords;
-@property (copy, nonatomic) NSURL *resourceListURL; // @synthesize resourceListURL=_resourceListURL;
-@property (copy, nonatomic) NSURL *resourceSearchPathURL; // @synthesize resourceSearchPathURL=_resourceSearchPathURL;
 @property (strong, nonatomic) TTSSpeechChannel *speechChannel; // @synthesize speechChannel=_speechChannel;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (nonatomic) BOOL useMonarchStyleRate; // @synthesize useMonarchStyleRate=_useMonarchStyleRate;

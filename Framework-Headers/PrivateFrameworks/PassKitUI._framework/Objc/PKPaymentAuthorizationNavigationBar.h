@@ -6,33 +6,18 @@
 
 #import <UIKit/UINavigationBar.h>
 
-@class NSLayoutConstraint, PKPaymentAuthorizationLayout, UIButton, UIImageView, UILabel, UIView;
+@class UILabel;
 
 @interface PKPaymentAuthorizationNavigationBar : UINavigationBar
 {
-    UIImageView *_logoView;
     UILabel *_environmentLabel;
-    UIButton *_customButton;
-    UIView *_separatorView;
-    NSLayoutConstraint *_separatorLeftConstraint;
-    long long _style;
-    PKPaymentAuthorizationLayout *_layout;
 }
 
-@property (nonatomic) PKPaymentAuthorizationLayout *layout; // @synthesize layout=_layout;
-@property (nonatomic) long long style; // @synthesize style=_style;
-
++ (id)applePayBarButtonItem;
++ (id)cardOnFileBarButtonItemForRequestor:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (id)_buttonAttributedStringWithString:(id)arg1;
-- (void)_createSubviewsWithFrame:(struct CGRect)arg1;
-- (void)_prepareConstraints;
-- (id)_titleAttributedStringWithString:(id)arg1 color:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)setCustomButtonHidden:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setCustomButtonTitle:(id)arg1 target:(id)arg2 action:(SEL)arg3;
-- (void)setLogoHidden:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setSeparatorHidden:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)updateConstraints;
+- (void)layoutSubviews;
 
 @end
 

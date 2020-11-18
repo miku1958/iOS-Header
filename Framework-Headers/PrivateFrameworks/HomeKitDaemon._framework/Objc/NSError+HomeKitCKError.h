@@ -8,6 +8,8 @@
 
 @interface NSError (HomeKitCKError)
 - (id)conciseCKError;
+- (id)convertToCKError;
 - (id)hmErrorFromCKError;
+- (BOOL)isCKError;
 @end
 

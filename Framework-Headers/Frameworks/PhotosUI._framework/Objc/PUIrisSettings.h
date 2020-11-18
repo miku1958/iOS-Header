@@ -4,50 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUSettings.h>
+#import <PhotosUICore/PXSettings.h>
 
-@interface PUIrisSettings : PUSettings
+@interface PUIrisSettings : PXSettings
 {
     BOOL _showStatusBorder;
-    BOOL _audioEnabled;
     BOOL _vitalityAllowed;
-    BOOL _useVitalityBuffer;
     BOOL _shouldAlwaysBadge;
-    BOOL _useTransition;
-    BOOL _useForceTouchInitiatedPlayback;
-    BOOL _showDebugInfo;
-    BOOL _showVideoBorder;
-    BOOL _showCrossfadeBorder;
-    float _playbackPreDuration;
-    float _playbackPostDuration;
-    float _transitionBlurRadius;
-    float _transitionScale;
-    double _transitionDuration;
-    double _playbackTransitionCrossfadeDelay;
-    double _settleTransitionDuration;
 }
 
-@property (nonatomic, getter=isAudioEnabled) BOOL audioEnabled; // @synthesize audioEnabled=_audioEnabled;
-@property (nonatomic) float playbackPostDuration; // @synthesize playbackPostDuration=_playbackPostDuration;
-@property (nonatomic) float playbackPreDuration; // @synthesize playbackPreDuration=_playbackPreDuration;
-@property (nonatomic) double playbackTransitionCrossfadeDelay; // @synthesize playbackTransitionCrossfadeDelay=_playbackTransitionCrossfadeDelay;
-@property (nonatomic) double settleTransitionDuration; // @synthesize settleTransitionDuration=_settleTransitionDuration;
 @property (nonatomic) BOOL shouldAlwaysBadge; // @synthesize shouldAlwaysBadge=_shouldAlwaysBadge;
-@property (nonatomic) BOOL showCrossfadeBorder; // @synthesize showCrossfadeBorder=_showCrossfadeBorder;
-@property (nonatomic) BOOL showDebugInfo; // @synthesize showDebugInfo=_showDebugInfo;
 @property (nonatomic, getter=showStatusBorder) BOOL showStatusBorder; // @synthesize showStatusBorder=_showStatusBorder;
-@property (nonatomic) BOOL showVideoBorder; // @synthesize showVideoBorder=_showVideoBorder;
-@property (nonatomic) float transitionBlurRadius; // @synthesize transitionBlurRadius=_transitionBlurRadius;
-@property (nonatomic) double transitionDuration; // @synthesize transitionDuration=_transitionDuration;
-@property (nonatomic) float transitionScale; // @synthesize transitionScale=_transitionScale;
-@property (nonatomic) BOOL useForceTouchInitiatedPlayback; // @synthesize useForceTouchInitiatedPlayback=_useForceTouchInitiatedPlayback;
-@property (nonatomic) BOOL useTransition; // @synthesize useTransition=_useTransition;
-@property (nonatomic) BOOL useVitalityBuffer; // @synthesize useVitalityBuffer=_useVitalityBuffer;
 @property (nonatomic, getter=isVitalityAllowed) BOOL vitalityAllowed; // @synthesize vitalityAllowed=_vitalityAllowed;
 
 + (id)_photosPlayerRootSettings;
 + (id)settingsControllerModule;
 + (id)sharedInstance;
+- (id)parentSettings;
 - (void)performPostSaveActions;
 - (void)restoreDefaultValues;
 - (void)setDefaultValues;

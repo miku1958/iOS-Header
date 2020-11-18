@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSPointerFunctions.h>
+#import <Foundation/NSPointerFunctions.h>
 
 __attribute__((visibility("hidden")))
 @interface NSConcretePointerFunctions : NSPointerFunctions

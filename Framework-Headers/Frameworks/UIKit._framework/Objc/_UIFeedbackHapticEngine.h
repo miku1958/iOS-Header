@@ -6,7 +6,7 @@
 
 #import <UIKit/_UIFeedbackEngine.h>
 
-@class AVHapticPlayer, NSMutableIndexSet, NSMutableSet;
+@class AVHapticPlayer, NSMutableIndexSet, NSMutableSet, NSTimer;
 
 __attribute__((visibility("hidden")))
 @interface _UIFeedbackHapticEngine : _UIFeedbackEngine
@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_playersInUse;
     BOOL _serverDown;
     AVHapticPlayer *_feedbackPlayer;
+    NSTimer *_finishTimeoutTimer;
 }
 
 @property (strong, nonatomic) AVHapticPlayer *feedbackPlayer; // @synthesize feedbackPlayer=_feedbackPlayer;
+@property (strong, nonatomic) NSTimer *finishTimeoutTimer; // @synthesize finishTimeoutTimer=_finishTimeoutTimer;
 @property (nonatomic) BOOL serverDown; // @synthesize serverDown=_serverDown;
 
 + (void)_setHapticPlayerCreationBlock:(CDUnknownBlockType)arg1;
@@ -26,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_activateUnderlyingPlayerWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_cooldownUnderlyingPlayerIfPossible;
+- (id)_createFeedbackPlayer;
 - (void)_dequeueReusableFeedbackPlayerWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)_feedbackPlayerDidFail:(id)arg1;
 - (void)_finishAndRecyclePlayers;

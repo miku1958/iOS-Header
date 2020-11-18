@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
     long long _exportCount;
 }
 
-@property long long exportCount; // @synthesize exportCount=_exportCount;
-@property (strong) NSXPCInterface *exportedInterface; // @synthesize exportedInterface=_exportedInterface;
-@property (strong) id exportedObject; // @synthesize exportedObject=_exportedObject;
+@property (nonatomic) long long exportCount; // @synthesize exportCount=_exportCount;
+@property (strong, nonatomic) NSXPCInterface *exportedInterface; // @synthesize exportedInterface=_exportedInterface;
+@property (strong, nonatomic) id exportedObject; // @synthesize exportedObject=_exportedObject;
 
 - (void)dealloc;
 - (id)description;

@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) BOOL requestsAllDataToEndOfResource;
 
 - (id)_loadingRequest;
+- (struct __CFDictionary *)_requestInfo;
 - (void)dealloc;
 - (id)description;
 - (void)finalize;

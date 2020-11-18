@@ -18,10 +18,11 @@
 - (id)defaultTextLabelFontForCell:(id)arg1;
 - (double)defaultTextLabelFontSizeForCell:(id)arg1;
 - (id)detailTextLabelForCell:(id)arg1;
-- (void)getTextLabelRect:(struct CGRect *)arg1 detailTextLabelRect:(struct CGRect *)arg2 forCell:(id)arg3 rowWidth:(double)arg4;
+- (void)getTextLabelRect:(struct CGRect *)arg1 detailTextLabelRect:(struct CGRect *)arg2 forCell:(id)arg3 rowWidth:(double)arg4 forSizing:(BOOL)arg5;
 - (id)initWithCellStyle:(long long)arg1;
+- (struct CGSize)intrinsicContentSizeForCell:(id)arg1 rowWidth:(double)arg2;
 - (BOOL)rect:(struct CGRect)arg1 trailsOtherRect:(struct CGRect)arg2 byDistance:(double *)arg3;
-- (struct CGRect)textRectForCell:(id)arg1;
+- (struct CGRect)textRectForCell:(id)arg1 rowWidth:(double)arg2 forSizing:(BOOL)arg3;
 
 @end
 

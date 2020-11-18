@@ -6,23 +6,25 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableDictionary;
-@protocol OS_dispatch_queue;
+@class MRTransactionPacketizer, NSMutableArray;
+@protocol MRTransactionSourceDelegate;
 
 @interface MRTransactionSource : NSObject
 {
-    NSMutableDictionary *_originSources;
-    NSObject<OS_dispatch_queue> *_queue;
     unsigned long long _name;
+    MRTransactionPacketizer *_packetizer;
+    NSMutableArray *_packets;
+    void *_playerPath;
+    id<MRTransactionSourceDelegate> _delegate;
 }
 
-@property (readonly, nonatomic, getter=isActive) BOOL active;
 @property (readonly, nonatomic) unsigned long long name; // @synthesize name=_name;
+@property (readonly, nonatomic) void *playerPath; // @synthesize playerPath=_playerPath;
 
+- (void)_begin;
+- (void)_processMessage:(id)arg1;
 - (void)dealloc;
-- (id)initWithName:(unsigned long long)arg1;
-- (void)removeOrigin:(struct _MROrigin *)arg1;
-- (void)sendPackets:(id)arg1 forOrigin:(struct _MROrigin *)arg2;
+- (id)initWithName:(unsigned long long)arg1 playerPath:(void *)arg2 packets:(id)arg3 delegate:(id)arg4;
 
 @end
 

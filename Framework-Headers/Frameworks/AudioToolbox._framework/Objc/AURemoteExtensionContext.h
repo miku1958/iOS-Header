@@ -53,11 +53,14 @@
 - (void)removePropertyObserver:(id)arg1 context:(unsigned long long)arg2;
 - (void)requestViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)reset;
+- (void)selectViewConfiguration:(id)arg1;
 - (void)setBusCount:(unsigned long long)arg1 scope:(unsigned int)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)setBusFormat:(unsigned int)arg1 scope:(unsigned int)arg2 format:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)setBusName:(unsigned int)arg1 scope:(unsigned int)arg2 name:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)setValue:(id)arg1 forKey:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)setValue:(id)arg1 forProperty:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)setWorkIntervalPort:(id)arg1;
+- (void)supportedViewConfigurations:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)syncParameter:(unsigned long long)arg1 value:(float)arg2 extOriginator:(unsigned long long)arg3 hostTime:(unsigned long long)arg4 eventType:(unsigned int)arg5;
 - (void)uninitialize:(CDUnknownBlockType)arg1;
 - (void)valueForKey:(id)arg1 reply:(CDUnknownBlockType)arg2;

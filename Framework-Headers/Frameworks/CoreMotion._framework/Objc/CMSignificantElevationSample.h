@@ -34,6 +34,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithFilteredElevation:(const struct CLElevationChangeEntry *)arg1;
 - (id)initWithRecordId:(unsigned long long)arg1 sourceId:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 elevationAscended:(id)arg5 elevationDescended:(id)arg6;
 - (id)initWithSignificantElevation:(const struct CLSignificantElevation *)arg1;
 

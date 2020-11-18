@@ -18,6 +18,8 @@
 + (void)naui_prepareToAutolayoutProperDescendantsOfView:(id)arg1 inConstraints:(id)arg2;
 - (id)_naui_constraintsByNameDictionary:(BOOL)arg1;
 - (id)_naui_constraintsNamed:(id)arg1;
+- (void)naui_addAutoLayoutSubview:(id)arg1;
+- (void)naui_addAutoLayoutSubviews:(id)arg1;
 - (void)naui_addConstraint:(id)arg1;
 - (void)naui_addConstraints:(id)arg1;
 - (BOOL)naui_canAnimate;

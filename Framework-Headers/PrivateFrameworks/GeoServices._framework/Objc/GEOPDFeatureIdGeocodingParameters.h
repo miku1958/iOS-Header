@@ -15,9 +15,7 @@
     PBUnknownFields *_unknownFields;
     unsigned long long _featureId;
     GEOLatLng *_location;
-    struct {
-        unsigned int featureId:1;
-    } _has;
+    CDStruct_b1448a5c _has;
 }
 
 @property (nonatomic) unsigned long long featureId; // @synthesize featureId=_featureId;
@@ -26,9 +24,9 @@
 @property (strong, nonatomic) GEOLatLng *location; // @synthesize location=_location;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

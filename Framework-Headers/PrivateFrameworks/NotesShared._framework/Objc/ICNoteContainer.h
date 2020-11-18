@@ -21,6 +21,7 @@
 @property (nonatomic) BOOL isAllNotesContainer; // @dynamic isAllNotesContainer;
 @property (nonatomic) BOOL isHiddenNoteContainer; // @dynamic isHiddenNoteContainer;
 @property (strong, nonatomic) NSString *nestedTitleForSorting; // @dynamic nestedTitleForSorting;
+@property (readonly, nonatomic) ICAccount *noteContainerAccount;
 @property (strong, nonatomic) ICAccount *owner; // @dynamic owner;
 @property (nonatomic) int sortOrder; // @dynamic sortOrder;
 @property (readonly) Class superclass;
@@ -28,9 +29,9 @@
 + (id)keyPathsForValuesAffectingCloudAccount;
 - (id)accountName;
 - (id)cloudAccount;
-- (id)noteContainerAccount;
 - (BOOL)noteIsVisible:(id)arg1;
 - (id)noteVisibilityTestingForSearchingAccount;
+- (id)predicateForPinnedNotes;
 - (id)predicateForSearchableAttachments;
 - (id)predicateForSearchableNotes;
 - (id)predicateForVisibleNotes;

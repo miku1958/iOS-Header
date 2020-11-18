@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreDAV/CoreDAVAccountInfoProvider-Protocol.h>
 
@@ -54,12 +54,12 @@
 @property (strong, nonatomic) NSString *user; // @synthesize user=_user;
 @property (strong, nonatomic) NSString *userAgentHeader; // @synthesize userAgentHeader=_userAgentHeader;
 
+- (void).cxx_destruct;
 - (id)additionalHeaderValues;
 - (id)clientCertificateInfoProvider;
 - (id)clientToken;
 - (void)clientTokenRequestedByServer;
 - (struct __CFURLStorageSession *)copyStorageSession;
-- (void)dealloc;
 - (BOOL)handleAuthenticateAgainstProtectionSpace:(id)arg1;
 - (BOOL)handleAuthenticateAgainstProtectionSpace:(id)arg1 withConnection:(id)arg2;
 - (BOOL)handleCertificateError:(id)arg1;

@@ -9,7 +9,7 @@
 #import <CallKit/CXCallDirectoryManagerDefaultHostProtocol-Protocol.h>
 #import <CallKit/CXCallDirectoryManagerMaintenanceHostProtocol-Protocol.h>
 
-@class NSString, NSXPCListener;
+@class NSString;
 @protocol CXCallDirectoryHostDelegate, OS_dispatch_queue;
 
 @interface CXCallDirectoryHost : NSObject <CXCallDirectoryManagerDefaultHostProtocol, CXCallDirectoryManagerMaintenanceHostProtocol>
@@ -17,7 +17,6 @@
     NSObject<OS_dispatch_queue> *_queue;
     id<CXCallDirectoryHostDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
-    NSXPCListener *_xpcListener;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,7 +26,6 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSXPCListener *xpcListener; // @synthesize xpcListener=_xpcListener;
 
 - (void).cxx_destruct;
 - (BOOL)_connectionContainsCallDirectoryHostEntitlementCapability:(id)arg1;

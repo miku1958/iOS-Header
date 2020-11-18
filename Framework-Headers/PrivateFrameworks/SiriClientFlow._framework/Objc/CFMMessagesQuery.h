@@ -6,16 +6,29 @@
 
 #import <SAObjects/SABaseClientBoundCommand.h>
 
-@interface CFMMessagesQuery : SABaseClientBoundCommand
+#import <SiriClientFlow/CFLocalAceHandling-Protocol.h>
+
+@class NSString;
+
+@interface CFMMessagesQuery : SABaseClientBoundCommand <CFLocalAceHandling>
 {
 }
 
-@property (nonatomic) long long messageIdentifier;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *guid;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
 
 + (id)messagesQuery;
 + (id)messagesQueryWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (void)handleWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)requiresResponse;
 
 @end

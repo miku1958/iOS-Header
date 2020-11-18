@@ -35,9 +35,13 @@
 @property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 
++ (void)clearImageCache;
 - (void).cxx_destruct;
 - (id)_integerNumberFormatter;
 - (id)_reusedImageForDateIndex:(long long)arg1 color:(id)arg2;
+- (double)_roundedRectCornerRadius;
+- (struct CGSize)_roundedRectSizeForDayNumberString:(id)arg1;
+- (struct CGSize)circleSize;
 - (id)debugDescription;
 - (id)init;
 - (id)initWithDateCache:(id)arg1;

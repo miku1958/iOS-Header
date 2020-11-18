@@ -130,7 +130,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateReviewScrubberFromContentOffset;
 - (void)assetContainerDidChange:(id)arg1;
 - (id)assetsInAssetCollection:(id)arg1;
-- (BOOL)automaticallyAdjustsScrollViewInsets;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;

@@ -30,6 +30,7 @@
 @property (nonatomic) int maxResults; // @synthesize maxResults=_maxResults;
 @property (nonatomic) int radius; // @synthesize radius=_radius;
 
+- (void).cxx_destruct;
 - (int)StringAsCategorys:(id)arg1;
 - (void)addCategory:(int)arg1;
 - (int)categoryAtIndex:(unsigned long long)arg1;

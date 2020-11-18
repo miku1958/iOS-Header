@@ -6,13 +6,19 @@
 
 #import <UIKit/UIView.h>
 
-@class FUFlight, FULabel, UIButton;
+@class FUFlight, FUFlightLeg, FULabel, FUSeparator, FUStyleProvider, NSLayoutConstraint, UIButton;
 @protocol FUFlightInfoViewProtocol;
 
 __attribute__((visibility("hidden")))
 @interface FUFlightInfoView : UIView
 {
+    unsigned long long _displayedLegId;
+    unsigned long long _style;
+    FUStyleProvider *_styleProvider;
+    BOOL _awake;
+    BOOL _multiFlights;
     FUFlight *_flight;
+    FUFlightLeg *_leg;
     id<FUFlightInfoViewProtocol> _delegate;
     long long _currentFocus;
     FULabel *_labelAirlineName;
@@ -29,19 +35,45 @@ __attribute__((visibility("hidden")))
     FULabel *_labelArrivalInfo2;
     FULabel *_labelDepartureTitle;
     FULabel *_labelDepartureDate;
+    FULabel *_labelDepartureTime;
     FULabel *_labelDepartureDelay;
     FULabel *_labelArrivalTitle;
     FULabel *_labelArrivalDate;
+    FULabel *_labelArrivalTime;
     FULabel *_labelArrivalDelay;
+    FULabel *_labelDurationTitle;
+    FULabel *_labelDurationValue;
+    FULabel *_labelDurationComplete;
+    FULabel *_labelBaggageClaimTitle;
+    FULabel *_labelBaggageClaimValue;
+    FUSeparator *_sep1;
+    FUSeparator *_sep2;
+    FUSeparator *_sep3;
+    FUSeparator *_sep4;
+    FUSeparator *_sep5;
+    NSLayoutConstraint *_leadingInset;
+    NSLayoutConstraint *_trailingInset;
+    NSLayoutConstraint *_bottomMargin;
+    NSLayoutConstraint *_departureDelayConstraint;
+    NSLayoutConstraint *_departureTerminalConstraint;
+    NSLayoutConstraint *_departureGateConstraint;
+    NSLayoutConstraint *_arrivalDelayConstraint;
+    NSLayoutConstraint *_arrivalTerminalConstraint;
+    NSLayoutConstraint *_arrivalGateConstraint;
     UIButton *_flightButton;
-    unsigned long long _flightTimeDisplay;
 }
 
+@property (strong, nonatomic) NSLayoutConstraint *arrivalDelayConstraint; // @synthesize arrivalDelayConstraint=_arrivalDelayConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *arrivalGateConstraint; // @synthesize arrivalGateConstraint=_arrivalGateConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *arrivalTerminalConstraint; // @synthesize arrivalTerminalConstraint=_arrivalTerminalConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *bottomMargin; // @synthesize bottomMargin=_bottomMargin;
 @property long long currentFocus; // @synthesize currentFocus=_currentFocus;
 @property (weak) id<FUFlightInfoViewProtocol> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) FUFlight *flight; // @synthesize flight=_flight;
+@property (strong, nonatomic) NSLayoutConstraint *departureDelayConstraint; // @synthesize departureDelayConstraint=_departureDelayConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *departureGateConstraint; // @synthesize departureGateConstraint=_departureGateConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *departureTerminalConstraint; // @synthesize departureTerminalConstraint=_departureTerminalConstraint;
+@property (readonly, nonatomic) FUFlight *flight; // @synthesize flight=_flight;
 @property (weak) UIButton *flightButton; // @synthesize flightButton=_flightButton;
-@property (nonatomic) unsigned long long flightTimeDisplay; // @synthesize flightTimeDisplay=_flightTimeDisplay;
 @property (weak) FULabel *labelAirlineName; // @synthesize labelAirlineName=_labelAirlineName;
 @property (weak) FULabel *labelArrivalCity; // @synthesize labelArrivalCity=_labelArrivalCity;
 @property (weak) FULabel *labelArrivalCode; // @synthesize labelArrivalCode=_labelArrivalCode;
@@ -49,34 +81,56 @@ __attribute__((visibility("hidden")))
 @property (weak) FULabel *labelArrivalDelay; // @synthesize labelArrivalDelay=_labelArrivalDelay;
 @property (weak) FULabel *labelArrivalInfo1; // @synthesize labelArrivalInfo1=_labelArrivalInfo1;
 @property (weak) FULabel *labelArrivalInfo2; // @synthesize labelArrivalInfo2=_labelArrivalInfo2;
+@property (weak) FULabel *labelArrivalTime; // @synthesize labelArrivalTime=_labelArrivalTime;
 @property (weak) FULabel *labelArrivalTitle; // @synthesize labelArrivalTitle=_labelArrivalTitle;
+@property (weak) FULabel *labelBaggageClaimTitle; // @synthesize labelBaggageClaimTitle=_labelBaggageClaimTitle;
+@property (weak) FULabel *labelBaggageClaimValue; // @synthesize labelBaggageClaimValue=_labelBaggageClaimValue;
 @property (weak) FULabel *labelDepartureCity; // @synthesize labelDepartureCity=_labelDepartureCity;
 @property (weak) FULabel *labelDepartureCode; // @synthesize labelDepartureCode=_labelDepartureCode;
 @property (weak) FULabel *labelDepartureDate; // @synthesize labelDepartureDate=_labelDepartureDate;
 @property (weak) FULabel *labelDepartureDelay; // @synthesize labelDepartureDelay=_labelDepartureDelay;
 @property (weak) FULabel *labelDepartureInfo1; // @synthesize labelDepartureInfo1=_labelDepartureInfo1;
 @property (weak) FULabel *labelDepartureInfo2; // @synthesize labelDepartureInfo2=_labelDepartureInfo2;
+@property (weak) FULabel *labelDepartureTime; // @synthesize labelDepartureTime=_labelDepartureTime;
 @property (weak) FULabel *labelDepartureTitle; // @synthesize labelDepartureTitle=_labelDepartureTitle;
+@property (weak) FULabel *labelDurationComplete; // @synthesize labelDurationComplete=_labelDurationComplete;
+@property (weak) FULabel *labelDurationTitle; // @synthesize labelDurationTitle=_labelDurationTitle;
+@property (weak) FULabel *labelDurationValue; // @synthesize labelDurationValue=_labelDurationValue;
 @property (weak) FULabel *labelFlightCode; // @synthesize labelFlightCode=_labelFlightCode;
 @property (weak) FULabel *labelStatus; // @synthesize labelStatus=_labelStatus;
 @property (weak) FULabel *labelStatusTitle; // @synthesize labelStatusTitle=_labelStatusTitle;
+@property (strong, nonatomic) NSLayoutConstraint *leadingInset; // @synthesize leadingInset=_leadingInset;
+@property (readonly, nonatomic) FUFlightLeg *leg; // @synthesize leg=_leg;
+@property (weak) FUSeparator *sep1; // @synthesize sep1=_sep1;
+@property (weak) FUSeparator *sep2; // @synthesize sep2=_sep2;
+@property (weak) FUSeparator *sep3; // @synthesize sep3=_sep3;
+@property (weak) FUSeparator *sep4; // @synthesize sep4=_sep4;
+@property (weak) FUSeparator *sep5; // @synthesize sep5=_sep5;
+@property (nonatomic) unsigned long long style; // @synthesize style=_style;
+@property (strong, nonatomic) NSLayoutConstraint *trailingInset; // @synthesize trailingInset=_trailingInset;
 
-+ (id)flightView;
++ (id)flightViewForStyle:(unsigned long long)arg1 compact:(BOOL)arg2;
 - (void).cxx_destruct;
+- (void)addDateTimeAttributesToString:(id)arg1 striked:(BOOL)arg2 alignment:(long long)arg3;
 - (void)awakeFromNib;
 - (void)dealloc;
-- (id)displayStringForDate:(id)arg1 locale:(id)arg2 late:(BOOL)arg3 timeZone:(id)arg4;
+- (BOOL)deviceSupportsRotation;
 - (void)flightButtonTapped:(id)arg1;
-- (BOOL)knownStatus;
-- (void)setupLabelStyles;
-- (void)toggleTimeDisplay:(id)arg1;
+- (id)formattedDurationForDuration:(double)arg1;
+- (void)setFlight:(id)arg1 legIndex:(unsigned long long)arg2 multiFlights:(BOOL)arg3 spotlightMode:(BOOL)arg4;
+- (void)setupLabelStylesWithStyle:(unsigned long long)arg1;
+- (double)standardTableCellContentInset;
 - (void)updateAirlineInformation;
+- (void)updateDateTimeForDeparture:(BOOL)arg1;
 - (void)updateDelayInfo;
+- (void)updateFlightButtonIcon;
 - (void)updateFlightDates;
 - (void)updateFlightStatus;
 - (void)updateFlightTerminalInfo;
+- (void)updateForFollowupContent:(BOOL)arg1;
+- (void)updateLabelVisibility:(id)arg1 constraint:(id)arg2;
 - (void)updateLocationInfo;
-- (void)updateTimeLabel:(id)arg1 withString:(id)arg2;
+- (void)updateTimeLabel:(id)arg1 constraint:(id)arg2 withString:(id)arg3;
 
 @end
 

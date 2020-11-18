@@ -17,6 +17,7 @@
 + (id)_snapshotKeyForValue:(unsigned long long)arg1;
 + (id)optionWithDensity:(unsigned long long)arg1;
 - (id)_valueToFaceBundleStringDict;
+- (long long)swatchStyle;
 
 @end
 

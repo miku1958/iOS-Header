@@ -9,6 +9,7 @@
 #import <HomeUI/HUCellProtocol-Protocol.h>
 
 @class HFItem, HULinkedApplicationView, NSString;
+@protocol HUResizableCellDelegate;
 
 @interface HULinkedApplicationTableViewCell : UITableViewCell <HUCellProtocol>
 {
@@ -20,6 +21,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HFItem *item;
 @property (strong, nonatomic) HULinkedApplicationView *linkedApplicationView; // @synthesize linkedApplicationView=_linkedApplicationView;
+@property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

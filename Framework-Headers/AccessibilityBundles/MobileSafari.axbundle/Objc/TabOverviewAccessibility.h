@@ -13,11 +13,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (struct CGPoint)_accessibilityAdjustedScrollOffset:(struct CGPoint)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityScrollStatus;
 - (id)_accessibilityScrollStatusFormatString;
 - (void)_accessibilityThumbnailApplyScrollOffset:(struct CGPoint)arg1;
 - (struct CGPoint)_accessibilityThumbnailOffset;
+- (BOOL)_isClosingLastItem;
 - (void)_setDismissing:(BOOL)arg1;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (id)initWithFrame:(id)arg1;

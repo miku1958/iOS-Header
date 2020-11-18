@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) double end;
 @property (readonly, nonatomic) BOOL hasSpaceAfter;
 @property (readonly, nonatomic) BOOL hasSpaceBefore;
+@property (readonly, nonatomic) NSString *phoneSequence;
 @property (readonly, nonatomic) struct Token quasarToken; // @synthesize quasarToken=_quasarToken;
 @property (readonly, nonatomic) double silenceStart;
 @property (readonly, nonatomic) double start;
@@ -30,7 +31,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithTokenName:(id)arg1 start:(double)arg2 end:(double)arg3 silenceStart:(double)arg4 confidence:(double)arg5 hasSpaceAfter:(BOOL)arg6 hasSpaceBefore:(BOOL)arg7 phoneSeq:(id)arg8;
+- (id)initWithTokenName:(id)arg1 start:(double)arg2 end:(double)arg3 silenceStart:(double)arg4 confidence:(double)arg5 hasSpaceAfter:(BOOL)arg6 hasSpaceBefore:(BOOL)arg7 phoneSequence:(id)arg8;
 - (BOOL)isEqual:(id)arg1;
 
 @end

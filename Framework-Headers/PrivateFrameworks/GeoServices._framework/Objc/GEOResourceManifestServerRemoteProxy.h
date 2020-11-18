@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOResourceManifestServerProxy-Protocol.h>
 
@@ -31,24 +31,26 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) GEOActiveTileGroup *activeTileGroup;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<GEOResourceManifestServerProxyDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<GEOResourceManifestServerProxyDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_handleMessage:(id)arg1 xpcMessage:(id)arg2;
 - (void)_setupConnection;
 - (void)activateResourceScale:(int)arg1;
 - (void)activateResourceScenario:(int)arg1;
 - (id)authToken;
+- (void)cancelCurrentManifestUpdate;
 - (void)closeConnection;
 - (id)configuration;
 - (void)deactivateResourceScale:(int)arg1;
 - (void)deactivateResourceScenario:(int)arg1;
 - (void)dealloc;
-- (void)forceUpdate:(CDUnknownBlockType)arg1;
+- (void)forceUpdate:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getResourceManifestWithHandler:(CDUnknownBlockType)arg1;
-- (id)initWithDelegate:(id)arg1 configuration:(id)arg2;
+- (id)initWithDelegate:(id)arg1 configuration:(id)arg2 additionalMigrationTaskClasses:(id)arg3;
 - (void)openConnection;
 - (void)performOpportunisticResourceLoading;
 - (oneway void)resetActiveTileGroup;
@@ -56,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (oneway void)setActiveTileGroupIdentifier:(id)arg1;
 - (void)setManifestToken:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateIfNecessary:(CDUnknownBlockType)arg1;
+- (id)updateProgress;
 
 @end
 

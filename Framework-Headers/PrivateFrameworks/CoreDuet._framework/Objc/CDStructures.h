@@ -14,10 +14,48 @@ struct NSArray {
     Class _field1;
 };
 
+struct XSPerfCollection {
+    id _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    struct XSPerfCounter *_field4;
+    struct XSPerfMetric *_field5;
+    char *_field6;
+};
+
+struct XSPerfCounter {
+    _Atomic unsigned long long _field1;
+};
+
+struct XSPerfMetric {
+    unsigned long long _field1[32];
+};
+
 struct _cdp_prediction_result {
     int _field1;
     float _field2;
     int _field3;
     int _field4;
 };
+
+struct cdpm_shared_memory_region_s {
+    char _field1;
+    char _field2[1024];
+    struct cdpm_shared_memory_slot_s _field3[256];
+};
+
+struct cdpm_shared_memory_slot_s {
+    char _field1[32];
+    struct XSPerfCounter _field2[8];
+    struct XSPerfMetric _field3[1];
+};
+
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
 

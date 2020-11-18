@@ -19,6 +19,7 @@
 - (void)connection:(CATRemoteConnection *)arg1 didReceiveStreamData:(NSData *)arg2 moreComing:(BOOL)arg3;
 - (void)connection:(CATRemoteConnection *)arg1 didSendData:(NSData *)arg2 userInfo:(id)arg3;
 - (void)connection:(CATRemoteConnection *)arg1 didSendDataWithStream:(NSInputStream *)arg2 userInfo:(id)arg3;
+- (void)connection:(CATRemoteConnection *)arg1 didWriteDataFromStream:(NSInputStream *)arg2 totalBytesWritten:(unsigned long long)arg3 totalBytesExpectedToWrite:(unsigned long long)arg4 userInfo:(id)arg5;
 - (void)connection:(CATRemoteConnection *)arg1 encounteredTrustDecisionWhileTryingToSecure:(CATRemoteConnectionTrustDecision *)arg2;
 - (void)connectionDidClose:(CATRemoteConnection *)arg1;
 - (void)connectionDidOpen:(CATRemoteConnection *)arg1;

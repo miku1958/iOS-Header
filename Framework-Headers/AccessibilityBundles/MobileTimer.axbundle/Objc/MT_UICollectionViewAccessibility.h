@@ -13,10 +13,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_axIsFullScreenAlarmController;
-- (BOOL)accessibilityCollectionViewBehavesLikeUIViewAccessibility;
-- (id)accessibilityElements;
-- (BOOL)accessibilityViewIsModal;
 - (void)moveItemAtIndexPath:(id)arg1 toIndexPath:(id)arg2;
 
 @end

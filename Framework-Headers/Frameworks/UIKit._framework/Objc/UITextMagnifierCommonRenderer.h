@@ -4,31 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITextMagnifierRenderer.h>
+#import <UIKit/UIView.h>
 
-@class UIImage;
+@class CALayer, NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface UITextMagnifierCommonRenderer : UITextMagnifierRenderer
+@interface UITextMagnifierCommonRenderer : UIView
 {
     BOOL m_loaded;
-    UIImage *m_loImageHorizontal;
-    UIImage *m_maskImageHorizontal;
-    UIImage *m_hiImageHorizontal;
-    UIImage *m_loImageVertical;
-    UIImage *m_maskImageVertical;
-    UIImage *m_hiImageVertical;
+    NSDictionary *m_images;
+    NSDictionary *m_offsets;
+    CALayer *m_back;
+    CALayer *m_mask;
+    CALayer *m_content;
+    CALayer *m_front;
+    BOOL _isRegisteredForGeometryChanges;
 }
 
 - (void).cxx_destruct;
-- (struct CGPoint)calculateCompositePointWithOrientation:(BOOL)arg1;
-- (struct CGPoint)calculateFinalCompositionPointForCompositePoint:(struct CGPoint)arg1;
-- (struct CGImage *)captureSnapshotAtRect:(struct CGRect)arg1 forMagnifier:(id)arg2 withRotation:(double)arg3 onlyTarget:(BOOL)arg4 outTransform:(struct CGAffineTransform *)arg5;
-- (void)drawMagnifier:(struct CGRect)arg1;
-- (id)filenamesForMagnifier;
+- (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
+- (id)backgroundColourIfNecessary;
+- (void)didMoveToSuperview;
 - (void)loadImages;
-- (double)offsetForMagnifier:(id)arg1;
-- (void)performOperations:(CDUnknownBlockType)arg1 forMagnifier:(id)arg2;
+- (id)magnifier;
+- (void)performOperations:(CDUnknownBlockType)arg1;
+- (void)update;
+- (id)visualsForMagnifier;
 
 @end
 

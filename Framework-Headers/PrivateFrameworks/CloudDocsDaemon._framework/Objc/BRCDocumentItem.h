@@ -6,9 +6,11 @@
 
 #import <CloudDocsDaemon/BRCLocalItem.h>
 
+#import <CloudDocsDaemon/BRCTopLevelShareable-Protocol.h>
+
 @class BRCAliasItem, BRCDesiredVersion, BRCDirectoryItem, BRCLocalVersion, NSData, NSDictionary, NSError, NSMutableSet, NSSet, NSString;
 
-@interface BRCDocumentItem : BRCLocalItem
+@interface BRCDocumentItem : BRCLocalItem <BRCTopLevelShareable>
 {
     BRCLocalVersion *_currentVersion;
     BRCDesiredVersion *_desiredVersion;
@@ -29,7 +31,6 @@
 @property (readonly, nonatomic) BOOL isAutomaticallyEvictable;
 @property (readonly, nonatomic) BOOL isDownloadRequested;
 @property (readonly, nonatomic) BOOL isEvictable;
-@property (readonly, nonatomic) BOOL isSharedDocument;
 @property (readonly, nonatomic) BOOL isVisibleIniCloudDrive;
 @property (strong, nonatomic) NSSet *liveConflictLoserEtags; // @synthesize liveConflictLoserEtags=_liveConflictLoserEtags;
 @property (strong, nonatomic) NSData *liveThumbnailSignature; // @synthesize liveThumbnailSignature=_liveThumbnailSignature;
@@ -39,28 +40,22 @@
 @property (readonly, nonatomic) BOOL shouldBeGreedy;
 @property (readonly, nonatomic) BOOL shouldHaveThumbnail;
 @property (readonly, nonatomic) BOOL shouldTransferThumbnail;
-@property (readonly, nonatomic) NSString *unsaltedBookmarkData;
+@property (readonly, nonatomic) NSString *unsaltedBookmarkData; // @dynamic unsaltedBookmarkData;
 @property (readonly, nonatomic) NSError *uploadError;
 
-+ (BOOL)_shouldIndexAtURL:(id)arg1 forItem:(id)arg2;
 + (id)anyReverseAliasInAppLibrary:(id)arg1 toRelativePath:(id)arg2;
 + (id)anyReverseAliasWithUnsaltedBookmarkData:(id)arg1 inAppLibrary:(id)arg2;
-+ (id)bookmarkDataWithRelativePath:(id)arg1;
 + (BOOL)isDocumentAutomaticallyEvictableWithExtension:(id)arg1;
 + (BOOL)isDocumentAutomaticallyEvictableWithName:(id)arg1;
-+ (id)itemResolutionStringWithRelativePath:(id)arg1;
-+ (BOOL)parseBookmarkData:(id)arg1 inAccountSession:(id)arg2 docID:(id *)arg3 itemID:(id *)arg4 mangledID:(id *)arg5 unsaltedBookmarkData:(id *)arg6 error:(id *)arg7;
 + (struct PQLResultSet *)reverseAliasEnumeratorWithRelativePath:(id)arg1;
 + (struct PQLResultSet *)reverseAliasEnumeratorWithUnsaltedBookmarkData:(id)arg1 session:(id)arg2;
-+ (BOOL)shouldIndexDocument:(id)arg1;
 + (BOOL)supportsSecureCoding;
-+ (id)unsaltedBookmarkDataWithItemResolutionString:(id)arg1 serverZone:(id)arg2;
-+ (id)unsaltedBookmarkDataWithRelativePath:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_deleteFromDB:(id)arg1 keepAliases:(BOOL)arg2;
+- (id)_filenameOverrideForPath:(id)arg1;
 - (id)_initFromPQLResultSet:(id)arg1 session:(id)arg2 db:(id)arg3 error:(id *)arg4;
 - (id)_initWithLocalItem:(id)arg1;
-- (id)_initWithRelativePath:(id)arg1 parentID:(id)arg2;
+- (id)_initWithRelativePath:(id)arg1 parentGlobalID:(id)arg2;
 - (id)_initWithServerItem:(id)arg1 dbRowID:(unsigned long long)arg2;
 - (BOOL)_insertInDB:(id)arg1 dbRowID:(unsigned long long)arg2;
 - (BOOL)_isInterestingUpdateForNotifs;
@@ -70,11 +65,12 @@
 - (void)_updateLiveConflictLoserFromFSAtPath:(id)arg1;
 - (void)_updateReadThrottleIfNeededForRowID:(unsigned long long)arg1 forCreation:(BOOL)arg2;
 - (void)_updateRecursivePropertiesInDB:(id)arg1 dbRowID:(unsigned long long)arg2 diffs:(unsigned long long)arg3;
-- (void)_updateUploadThrottleIfNeededWithDiffs:(unsigned long long)arg1;
+- (void)_updateUploadJobIfNeededWithDiffs:(unsigned long long)arg1;
 - (void)addResolvedConflictLoserEtag:(id)arg1;
 - (id)aliasItemID;
 - (id)anyReverseAliasInAppLibrary:(id)arg1;
 - (void)appDidResolveConflictLoserWithEtag:(id)arg1;
+- (id)asShareableItem;
 - (id)baseContentsRecord;
 - (BOOL)changedAtRelativePath:(id)arg1 scanPackage:(BOOL)arg2;
 - (void)clearDesiredVersion;
@@ -94,35 +90,32 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isDocument;
 - (BOOL)isFault;
-- (BOOL)isOwnedByMe;
 - (BOOL)isPackage;
-- (BOOL)isSharedByMe;
 - (void)learnItemID:(id)arg1 ownerKey:(id)arg2 path:(id)arg3 markLost:(BOOL)arg4;
 - (void)learnThumbnailSignatureFromLiveVersion:(id)arg1;
 - (void)markDead;
 - (void)markForceNeedsSyncUp;
 - (void)markForceUpload;
-- (void)markLatestRequestAcknowledged;
-- (void)markLatestSyncRequestRejected;
-- (void)markLiveFromStageWithAppLibrary:(id)arg1;
+- (void)markItemForgottenByServer;
+- (void)markLatestRequestAcknowledgedInZone:(id)arg1;
+- (void)markLatestSyncRequestRejectedInZone:(id)arg1;
+- (void)markLiveFromStageWithPath:(id)arg1;
 - (void)markNeedsReading;
 - (void)markNeedsUploadOrSyncingUp;
 - (void)markOverQuotaWithError:(id)arg1;
 - (void)markUploadedWithRecord:(id)arg1;
-- (float)prepareDeletionSyncUpWithOperation:(id)arg1 defaults:(id)arg2;
-- (float)prepareEditSyncUpWithOperation:(id)arg1 defaults:(id)arg2;
 - (void)removeLiveConflictLoserEtag:(id)arg1;
 - (struct PQLResultSet *)reverseAliasEnumerator;
 - (id)setOfAppLibraryIDsWithReverseAliases;
-- (int)setVersionToStage:(id)arg1 diffsWithServerItem:(unsigned long long)arg2 options:(unsigned int)arg3 needsSave:(BOOL *)arg4;
-- (int)setVersionToStage:(id)arg1 options:(unsigned int)arg2 needsSave:(BOOL *)arg3;
-- (id)spotlightUniqueIdentifier;
 - (void)stageFaultForCreation:(BOOL)arg1 name:(id)arg2 size:(id)arg3 isPackage:(BOOL)arg4;
 - (void)stageFaultForCreation:(BOOL)arg1 serverItem:(id)arg2;
 - (BOOL)startDownloadInTask:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
+- (id)syncContextUsedForTransfers;
 - (void)updateContentsCKInfoAndDeviceIDFromServerItem:(id)arg1;
-- (BOOL)updateFromFSAtPath:(id)arg1 parentID:(id)arg2;
-- (BOOL)updateLocationAndMetaFromFSAtPath:(id)arg1 parentID:(id)arg2;
+- (int)updateDesiredVersionWithServerItem:(id)arg1 diffs:(unsigned long long)arg2 options:(unsigned int)arg3 needsSave:(BOOL *)arg4;
+- (int)updateDesiredVersionWithServerItem:(id)arg1 options:(unsigned int)arg2 needsSave:(BOOL *)arg3;
+- (BOOL)updateFromFSAtPath:(id)arg1 parentGlobalID:(id)arg2;
+- (BOOL)updateLocationAndMetaFromFSAtPath:(id)arg1 parentGlobalID:(id)arg2;
 - (void)updateVersionMetadataFromServerItem:(id)arg1 preventVersionDiffs:(BOOL)arg2;
 - (BOOL)updateXattrInfoFromPath:(id)arg1 error:(id *)arg2;
 - (BOOL)validateLoggingToFile:(struct __sFILE *)arg1;

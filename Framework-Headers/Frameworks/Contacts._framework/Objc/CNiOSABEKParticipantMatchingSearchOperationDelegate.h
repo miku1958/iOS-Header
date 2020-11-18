@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Contacts/ABPredicateDelegate-Protocol.h>
 
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (BOOL)predicateShouldContinue:(id)arg1;
 - (BOOL)predicateShouldContinue:(id)arg1 afterFindingRecord:(void *)arg2;
 

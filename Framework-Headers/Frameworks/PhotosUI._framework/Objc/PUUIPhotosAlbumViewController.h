@@ -6,27 +6,47 @@
 
 #import <PhotosUI/PUPhotosAlbumViewController.h>
 
-@class NSArray, PUUIImagePickerControllerHelper, UIBarButtonItem;
+#import <PhotosUI/PUPhotoPickerSelectionHandler-Protocol.h>
+#import <PhotosUI/PUPhotoPickerServicesConsumer-Protocol.h>
+
+@class NSArray, NSString, PUUIImagePickerControllerHelper, UIBarButtonItem;
+@protocol PUPhotoPicker;
 
 __attribute__((visibility("hidden")))
-@interface PUUIPhotosAlbumViewController : PUPhotosAlbumViewController
+@interface PUUIPhotosAlbumViewController : PUPhotosAlbumViewController <PUPhotoPickerServicesConsumer, PUPhotoPickerSelectionHandler>
 {
     UIBarButtonItem *_imagePickerCancelButton;
     UIBarButtonItem *_imagePickerMultipleSelectionDoneButton;
-    int __albumFilter;
     PUUIImagePickerControllerHelper *__imagePickerControllerHelper;
+    BOOL _didDisappear;
+    int __albumFilter;
+    id<PUPhotoPicker> _photoPicker;
     NSArray *__imagePickerMediaTypes;
+    double _lastKnownWidth;
+    struct UIEdgeInsets _lastKnownSafeAreaInsets;
 }
 
 @property (nonatomic, setter=_setAlbumFilter:) int _albumFilter; // @synthesize _albumFilter=__albumFilter;
-@property (readonly) PUUIImagePickerControllerHelper *_imagePickerControllerHelper; // @synthesize _imagePickerControllerHelper=__imagePickerControllerHelper;
+@property (readonly) PUUIImagePickerControllerHelper *_imagePickerControllerHelper;
 @property (copy, nonatomic, setter=_setImagePickerMediaTypes:) NSArray *_imagePickerMediaTypes; // @synthesize _imagePickerMediaTypes=__imagePickerMediaTypes;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didDisappear; // @synthesize didDisappear=_didDisappear;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) struct UIEdgeInsets lastKnownSafeAreaInsets; // @synthesize lastKnownSafeAreaInsets=_lastKnownSafeAreaInsets;
+@property (nonatomic) double lastKnownWidth; // @synthesize lastKnownWidth=_lastKnownWidth;
+@property (weak, nonatomic) id<PUPhotoPicker> photoPicker; // @synthesize photoPicker=_photoPicker;
+@property (readonly, nonatomic) BOOL referenceValuesDidChange;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_handleImagePickerCancel:(id)arg1;
 - (void)_handleImagePickerMultipleSelectionDone:(id)arg1;
+- (void)_scrollToBottomIfNeeded;
 - (BOOL)allowsPeeking;
 - (BOOL)canBeginStackCollapseTransition;
+- (BOOL)canDragIn;
+- (BOOL)canDragOut;
 - (BOOL)canNavigateToPhotoInteractively:(BOOL)arg1;
 - (id)filterPredicateForAlbum:(struct NSObject *)arg1;
 - (void)getTitle:(out id *)arg1 prompt:(out id *)arg2 shouldHideBackButton:(out BOOL *)arg3 leftBarButtonItems:(out id *)arg4 rightBarButtonItems:(out id *)arg5;
@@ -35,11 +55,19 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithSpec:(id)arg1;
 - (void)loadView;
+- (void)performPhotoPickerSelection;
 - (BOOL)pu_wantsNavigationBarVisible;
 - (void)setAlbum:(id)arg1 existingFetchResult:(id)arg2;
+- (void)setPhotoPickerMediaTypes:(id)arg1;
 - (BOOL)shouldShowMenu;
 - (BOOL)shouldShowSectionHeaders;
+- (double)topMarginForPhotosGlobalFooterView:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
+- (BOOL)wantsGlobalFooter;
 
 @end
 

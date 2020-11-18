@@ -10,5 +10,6 @@
 - (void)_remote_requestPrivacyViewController;
 - (void)_remote_requestPrivacyViewControllerWithTransparencyDetails:(NSString *)arg1;
 - (void)_remote_requestPrivacyViewControllerWithTransparencyDetailsDictionary:(NSDictionary *)arg1;
+- (void)_remote_setClientIsExtension:(BOOL)arg1;
 @end
 

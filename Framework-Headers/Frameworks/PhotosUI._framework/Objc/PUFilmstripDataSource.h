@@ -6,7 +6,7 @@
 
 #import <PhotosUI/PUTilingDataSource.h>
 
-@class AVAsset, NSMapTable, NSMutableDictionary;
+@class AVAsset, NSArray, NSMapTable, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface PUFilmstripDataSource : PUTilingDataSource
@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
     NSMapTable *_indexPathByAsset;
     AVAsset *_asset;
     long long _numberOfIndexes;
+    NSArray *_indicatorInfos;
 }
 
 @property (readonly, nonatomic) AVAsset *asset; // @synthesize asset=_asset;
+@property (copy, nonatomic) NSArray *indicatorInfos; // @synthesize indicatorInfos=_indicatorInfos;
 @property (readonly, nonatomic) long long numberOfIndexes; // @synthesize numberOfIndexes=_numberOfIndexes;
 
 - (void).cxx_destruct;
@@ -25,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)assetAtIndexPath:(id)arg1;
 - (id)indexPathForAsset:(id)arg1;
 - (id)init;
-- (id)initWithAsset:(id)arg1 numberOfIndexes:(long long)arg2;
+- (id)initWithAsset:(id)arg1 numberOfIndexes:(long long)arg2 indicatorInfos:(id)arg3;
 - (long long)numberOfSubItemsAtIndexPath:(id)arg1;
 
 @end

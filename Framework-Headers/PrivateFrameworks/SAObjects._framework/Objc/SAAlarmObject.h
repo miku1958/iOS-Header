@@ -13,6 +13,7 @@
 }
 
 @property (copy, nonatomic) NSNumber *enabled;
+@property (copy, nonatomic) NSNumber *firing;
 @property (copy, nonatomic) NSArray *frequency;
 @property (copy, nonatomic) NSNumber *hour;
 @property (copy, nonatomic) NSString *label;

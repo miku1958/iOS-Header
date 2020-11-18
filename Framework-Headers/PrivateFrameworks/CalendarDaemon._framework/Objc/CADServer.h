@@ -6,13 +6,14 @@
 
 #import <Foundation/NSObject.h>
 
+#import <CalendarDaemon/CalActivatable-Protocol.h>
 #import <CalendarDaemon/ClientConnectionDelegate-Protocol.h>
 #import <CalendarDaemon/NSXPCListenerDelegate-Protocol.h>
 
 @class BirthdayCalendarManager, CDBDataProtectionObserver, LocalAttachmentCleanUpSupport, NSArray, NSLock, NSMutableSet, NSString, NSXPCListener;
 @protocol OS_dispatch_queue, OS_xpc_object;
 
-@interface CADServer : NSObject <NSXPCListenerDelegate, ClientConnectionDelegate>
+@interface CADServer : NSObject <NSXPCListenerDelegate, ClientConnectionDelegate, CalActivatable>
 {
     NSObject<OS_dispatch_queue> *_notificationQueue;
     int _backgroundTaskCount;
@@ -25,21 +26,26 @@
     NSLock *_connectionLock;
     unsigned long long _birthdayManagerGeneration;
     NSArray *_signalSensors;
-    BOOL _running;
-    NSObject<OS_dispatch_queue> *_serverQueue;
-    NSObject *_bbProvider;
+    BOOL _active;
     CDBDataProtectionObserver *_dataProtectionObserver;
+    NSArray *_modules;
+    NSObject<OS_dispatch_queue> *_workQueue;
 }
 
+@property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
 @property (strong, nonatomic) CDBDataProtectionObserver *dataProtectionObserver; // @synthesize dataProtectionObserver=_dataProtectionObserver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSArray *modules; // @synthesize modules=_modules;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 - (void).cxx_destruct;
+- (void)_deactivateAndExitWithStatus:(int)arg1;
 - (void)_dumpState;
 - (void)_exitWithStatus:(int)arg1;
+- (void)_finishInitializationWithDataAvailable;
 - (void)_handleXPCConnection:(id)arg1;
 - (void)_protectedDataDidBecomeAvailable;
 - (void)_registerForIdentityOrphanCleanup;
@@ -52,14 +58,15 @@
 - (void)_tearDownSignalHandlers;
 - (BOOL)_trimAndExtendOccurrenceCache;
 - (void)_updateOccurrenceCacheTimeZone;
+- (void)activate;
 - (void)clientConnectionDied:(id)arg1;
+- (void)deactivate;
 - (void)dealloc;
 - (void)identityOrphanCleanupDatabase:(struct CalDatabase *)arg1;
 - (void)idleChangeTrackingClientCleanupDatabase:(struct CalDatabase *)arg1;
 - (id)init;
+- (id)initWithModules:(id)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (void)run;
-- (void)shutDown;
 
 @end
 

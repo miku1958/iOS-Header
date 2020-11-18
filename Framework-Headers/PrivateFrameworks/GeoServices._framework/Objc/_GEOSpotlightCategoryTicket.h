@@ -4,17 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <GeoServices/GEOAbstractTicket.h>
 
 #import <GeoServices/GEOMapServiceCategoriesTicket-Protocol.h>
 
 @class GEOMapServiceTraits, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOSpotlightCategoryTicket : NSObject <GEOMapServiceCategoriesTicket>
+@interface _GEOSpotlightCategoryTicket : GEOAbstractTicket <GEOMapServiceCategoriesTicket>
 {
-    GEOMapServiceTraits *_traits;
-    BOOL _canceled;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,9 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) GEOMapServiceTraits *traits;
 
-- (void)cancel;
-- (void)dealloc;
-- (id)initWithTraits:(id)arg1;
+- (void)submitWithHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 networkActivity:(CDUnknownBlockType)arg3;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
 
 @end

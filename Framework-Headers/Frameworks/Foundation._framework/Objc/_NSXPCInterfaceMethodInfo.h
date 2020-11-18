@@ -6,25 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class NSArray, NSMethodSignature;
 
 __attribute__((visibility("hidden")))
 @interface _NSXPCInterfaceMethodInfo : NSObject
 {
-    char *_replySignature;
+    NSMethodSignature *_replyMethodSignature;
     int _replyPosition;
-    NSMutableArray *_replyArguments;
-    NSMutableArray *_arguments;
+    NSArray *_replyArguments;
+    NSArray *_arguments;
+    unsigned long long _version;
+    Class _returnClass;
+    BOOL _sendsProxyInArgument;
+    BOOL _receivesProxyInReply;
 }
 
-@property (strong) NSMutableArray *arguments; // @synthesize arguments=_arguments;
-@property (strong) NSMutableArray *replyArguments; // @synthesize replyArguments=_replyArguments;
+@property (copy) NSArray *arguments; // @synthesize arguments=_arguments;
+@property BOOL receivesProxyInReply; // @synthesize receivesProxyInReply=_receivesProxyInReply;
+@property (copy) NSArray *replyArguments; // @synthesize replyArguments=_replyArguments;
+@property (strong) NSMethodSignature *replyMethodSignature; // @synthesize replyMethodSignature=_replyMethodSignature;
 @property int replyPosition; // @synthesize replyPosition=_replyPosition;
+@property Class returnClass; // @synthesize returnClass=_returnClass;
+@property BOOL sendsProxyInArgument; // @synthesize sendsProxyInArgument=_sendsProxyInArgument;
+@property unsigned long long version; // @synthesize version=_version;
 
 - (void)dealloc;
 - (id)init;
-- (const char *)replySignature;
-- (void)setReplySignature:(id)arg1;
 
 @end
 

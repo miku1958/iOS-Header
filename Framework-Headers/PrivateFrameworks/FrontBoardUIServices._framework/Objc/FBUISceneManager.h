@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <FrontBoardUIServices/FBUISceneManager-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class FBSDisplayMonitor, NSMutableDictionary, NSString;
 
 @interface FBUISceneManager : NSObject <FBUISceneManager>
 {
     NSMutableDictionary *_workspacesByID;
     NSMutableDictionary *_sceneHostsByID;
+    FBSDisplayMonitor *_displayMonitor;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,8 +27,8 @@
 - (void)invalidateSceneWorkspace:(id)arg1;
 - (void)registerSceneWorkspace:(id)arg1;
 - (void)workspace:(id)arg1 createSceneWithName:(id)arg2 specification:(id)arg3;
-- (void)workspace:(id)arg1 destroySceneWithIdentity:(id)arg2;
-- (id)workspace:(id)arg1 identityForSceneWithName:(id)arg2 specification:(id)arg3;
+- (void)workspace:(id)arg1 destroySceneWithIdentifier:(id)arg2;
+- (id)workspace:(id)arg1 sceneIdentifierForName:(id)arg2;
 
 @end
 

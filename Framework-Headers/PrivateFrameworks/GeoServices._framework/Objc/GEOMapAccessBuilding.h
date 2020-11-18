@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOMapBuilding-Protocol.h>
 
@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface GEOMapAccessBuilding : NSObject <GEOMapBuilding>
 {
-    CDStruct_2a80a239 *_buildingFeature;
+    CDStruct_8e575d68 *_buildingFeature;
     NSArray *_sections;
 }
 
@@ -23,8 +23,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithBuildingFeature:(CDStruct_2a80a239 *)arg1;
+- (id)initWithBuildingFeature:(CDStruct_8e575d68 *)arg1;
 
 @end
 

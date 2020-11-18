@@ -13,12 +13,14 @@
 @interface _MFDAMSSearchResponseConsumer : _MFDAMSBasicConsumer <DASearchQueryConsumer>
 {
     NSDate *latestDateToAdd;
+    NSDate *earliestDateAdded;
     MFConditionLock *doneCondition;
     double timeReceivedLastResponse;
     unsigned int totalCount;
     MFMailMessageStoreSearchResult *searchResult;
 }
 
+@property (readonly, strong, nonatomic) NSDate *earliestDateAdded; // @synthesize earliestDateAdded;
 @property (strong, nonatomic) NSDate *latestDateToAdd; // @synthesize latestDateToAdd;
 @property (readonly, strong, nonatomic) MFMailMessageStoreSearchResult *searchResult; // @synthesize searchResult;
 

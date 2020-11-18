@@ -10,7 +10,7 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMDelegateCaller, HMFMessageDispatcher, HMHome, HMThreadSafeMutableArrayCollection, NSArray, NSDate, NSString, NSUUID;
+@class HMDelegateCaller, HMDevice, HMFMessageDispatcher, HMHome, HMThreadSafeMutableArrayCollection, HMUser, NSArray, NSDate, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMTrigger : NSObject <HMFMessageReceiver, NSSecureCoding, HMObjectMerge>
@@ -21,6 +21,8 @@
     NSDate *_lastFireDate;
     NSUUID *_uuid;
     HMHome *_home;
+    HMDevice *_ownerDevice;
+    HMUser *_owner;
     HMThreadSafeMutableArrayCollection *_currentActionSets;
     HMFMessageDispatcher *_msgDispatcher;
     NSObject<OS_dispatch_queue> *_clientQueue;
@@ -42,6 +44,8 @@
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (weak, nonatomic) HMUser *owner; // @synthesize owner=_owner;
+@property (strong, nonatomic) HMDevice *ownerDevice; // @synthesize ownerDevice=_ownerDevice;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -68,6 +72,9 @@
 - (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addActionSetWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (BOOL)compatibleWithApp;
+- (id)creator;
+- (id)creatorDevice;
 - (void)dealloc;
 - (void)enable:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)encodeWithCoder:(id)arg1;

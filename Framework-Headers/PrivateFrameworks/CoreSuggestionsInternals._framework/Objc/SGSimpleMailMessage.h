@@ -45,6 +45,7 @@
 + (id)subjectByCleaningPrefixesInSubject:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)allRecipients;
 - (id)asDictionary;
 - (unsigned long long)contentLength;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -61,6 +62,8 @@
 - (id)searchableItem;
 - (id)searchableItemWithSource:(id)arg1;
 - (void)setHeaders:(id)arg1;
+- (id)spotlightBundleIdentifier;
+- (id)spotlightUniqueIdentifier;
 - (id)textContent;
 - (id)uniqueIdentifier;
 

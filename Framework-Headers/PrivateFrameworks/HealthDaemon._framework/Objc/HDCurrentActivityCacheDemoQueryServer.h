@@ -13,6 +13,7 @@
 - (id)_demoStatisticsForDataTypeIdentifier:(id)arg1 unit:(id)arg2;
 - (id)_demoStatisticsForStandHours;
 - (void)_queue_start;
+- (BOOL)_shouldExecuteWhenProtectedDataIsUnavailable;
 
 @end
 

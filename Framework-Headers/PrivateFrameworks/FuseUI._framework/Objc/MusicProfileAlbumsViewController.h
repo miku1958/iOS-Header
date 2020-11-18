@@ -6,13 +6,12 @@
 
 #import <FuseUI/MusicProductTracklistTableViewController.h>
 
-@class MPAVController, MusicLibraryAlbumsViewConfiguration;
+@class MusicLibraryAlbumsViewConfiguration;
 
 @interface MusicProfileAlbumsViewController : MusicProductTracklistTableViewController
 {
     BOOL _collapseSections;
     MusicLibraryAlbumsViewConfiguration *_libraryAlbumsViewConfiguration;
-    MPAVController *_player;
 }
 
 @property (readonly, nonatomic) MusicLibraryAlbumsViewConfiguration *libraryAlbumsViewConfiguration;
@@ -21,7 +20,6 @@
 - (void)_setCollapseSections:(BOOL)arg1;
 - (void)_updateCollapseSections;
 - (long long)handleSelectionOfSectionHeaderForSectionEntityValueContext:(id)arg1;
-- (id)initWithLibraryViewConfiguration:(id)arg1;
 - (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
 - (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;

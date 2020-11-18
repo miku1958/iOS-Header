@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDictionary, NSMapTable, NSMutableArray, NSString;
+@class NSArray, NSData, NSDate, NSDictionary, NSMapTable, NSMutableArray, NSSet, NSString;
 
 @interface _IDSAccount : NSObject <IDSDaemonListenerProtocol>
 {
@@ -28,38 +28,43 @@
 @property (nonatomic, setter=_setIsEnabled:) BOOL _isEnabled;
 @property (strong, nonatomic) NSDictionary *accountInfo;
 @property (readonly, nonatomic) int accountType;
-@property (readonly, strong, nonatomic) NSArray *aliasStrings;
-@property (readonly, strong, nonatomic) NSArray *aliases;
+@property (readonly, nonatomic) NSSet *activeAliases;
+@property (readonly, nonatomic) NSArray *aliasStrings;
+@property (readonly, nonatomic) NSArray *aliases;
 @property (readonly, nonatomic) BOOL canSend;
-@property (readonly, nonatomic) NSDate *dateRegistered;
+@property (readonly, weak, nonatomic) NSDate *dateRegistered;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, strong, nonatomic) NSArray *devices;
-@property (readonly, strong, nonatomic) NSString *displayName;
+@property (readonly, nonatomic) NSArray *devices;
+@property (readonly, nonatomic) NSString *displayName;
+@property (readonly, nonatomic) NSArray *handles;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isActive;
 @property (readonly, nonatomic) BOOL isInTransientRegistrationState;
+@property (readonly, nonatomic) BOOL isTransientCloudPairingAccount;
+@property (readonly, nonatomic) BOOL isUsableForOuterMessaging;
 @property (readonly, nonatomic) BOOL isUserDisabled;
 @property (strong, nonatomic) NSString *loginID;
-@property (readonly, strong, nonatomic) NSArray *nearbyDevices;
-@property (readonly, nonatomic) NSDate *nextRegistrationDate;
-@property (readonly, strong, nonatomic) NSString *primaryServiceName;
-@property (readonly, nonatomic) NSString *profileID;
-@property (readonly, strong, nonatomic) NSDictionary *profileInfo;
-@property (readonly, nonatomic) NSData *pushToken;
-@property (readonly, strong, nonatomic) NSString *pushTopic;
-@property (readonly, nonatomic) NSString *regionBasePhoneNumber;
-@property (readonly, nonatomic) NSString *regionID;
-@property (readonly, nonatomic) NSDictionary *regionServerContext;
-@property (readonly, nonatomic) NSArray *registeredURIs;
-@property (readonly, nonatomic) NSData *registrationCertificate;
+@property (readonly, nonatomic) NSArray *nearbyDevices;
+@property (readonly, weak, nonatomic) NSDate *nextRegistrationDate;
+@property (readonly, nonatomic) NSString *primaryServiceName;
+@property (readonly, weak, nonatomic) NSString *profileID;
+@property (readonly, nonatomic) NSDictionary *profileInfo;
+@property (readonly, weak, nonatomic) NSData *pushToken;
+@property (readonly, nonatomic) NSString *pushTopic;
+@property (readonly, weak, nonatomic) NSString *regionBasePhoneNumber;
+@property (readonly, weak, nonatomic) NSString *regionID;
+@property (readonly, weak, nonatomic) NSDictionary *regionServerContext;
+@property (readonly, weak, nonatomic) NSArray *registeredURIs;
+@property (readonly, weak, nonatomic) NSData *registrationCertificate;
 @property (readonly, nonatomic) int registrationStatus;
-@property (readonly, strong, nonatomic) NSString *serviceName;
+@property (readonly, nonatomic) NSString *serviceName;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) NSArray *suppressedDevices;
-@property (readonly, strong, nonatomic) NSString *uniqueID;
-@property (readonly, strong, nonatomic) NSArray *vettedAliases;
+@property (readonly, nonatomic) NSArray *suppressedDevices;
+@property (readonly, nonatomic) NSString *uniqueID;
+@property (readonly, nonatomic) NSArray *vettedAliases;
 
+- (void).cxx_destruct;
 - (void)_callCloudConnectedDevicesChanged;
 - (void)_callConnectedDevicesChanged;
 - (void)_callDelegatesRespondingToSelector:(SEL)arg1 withPreCallbacksBlock:(CDUnknownBlockType)arg2 callbackBlock:(CDUnknownBlockType)arg3 postCallbacksBlock:(CDUnknownBlockType)arg4;
@@ -70,6 +75,7 @@
 - (void)_callNearbyDevicesChanged;
 - (void)_callRegistrationDelegatesWithBlock:(CDUnknownBlockType)arg1;
 - (void)_connect;
+- (BOOL)_isInvisibleAlias:(id)arg1;
 - (BOOL)_isiCloudPairingService;
 - (id)_keychainRegistration;
 - (void)_loadCachedDevices;
@@ -89,11 +95,13 @@
 - (void)account:(id)arg1 profileChanged:(id)arg2;
 - (void)account:(id)arg1 registrationStatusInfoChanged:(id)arg2;
 - (void)account:(id)arg1 vettedAliasesChanged:(id)arg2;
+- (void)activateAlias:(id)arg1;
 - (void)addAliases:(id)arg1;
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
 - (void)addRegistrationDelegate:(id)arg1 queue:(id)arg2;
 - (void)authenticateAccount;
 - (id)connectedDevices;
+- (void)deactivateAlias:(id)arg1;
 - (void)deactivateAndPurgeIdentify;
 - (void)dealloc;
 - (id)initWithDictionary:(id)arg1 uniqueID:(id)arg2 serviceName:(id)arg3 delegateContext:(id)arg4;

@@ -8,10 +8,22 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 @interface GEOPDResultSnippetFilter : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
+    int _maxChildPlaces;
+    struct {
+        unsigned int maxChildPlaces:1;
+    } _has;
 }
 
+@property (nonatomic) BOOL hasMaxChildPlaces;
+@property (nonatomic) int maxChildPlaces; // @synthesize maxChildPlaces=_maxChildPlaces;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

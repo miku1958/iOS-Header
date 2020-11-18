@@ -7,6 +7,7 @@
 #import <EventKitUI/EKEventDetailCell.h>
 
 @class UILabel, UITextView;
+@protocol EKEventDetailNotesCellDelegate;
 
 __attribute__((visibility("hidden")))
 @interface EKEventDetailNotesCell : EKEventDetailCell
@@ -14,14 +15,17 @@ __attribute__((visibility("hidden")))
     UILabel *_notesTitleView;
     UITextView *_notesView;
     BOOL _isTruncatingNotes;
+    id<EKEventDetailNotesCellDelegate> _noteDelegate;
 }
 
 @property (readonly, nonatomic) BOOL isTruncatingNotes; // @synthesize isTruncatingNotes=_isTruncatingNotes;
+@property (weak, nonatomic) id<EKEventDetailNotesCellDelegate> noteDelegate; // @synthesize noteDelegate=_noteDelegate;
 
 - (void).cxx_destruct;
 - (id)_notesTitleView;
 - (id)_notesView;
 - (void)layoutForWidth:(double)arg1 position:(int)arg2;
+- (void)setIsTruncatingNotes:(BOOL)arg1;
 - (BOOL)update;
 
 @end

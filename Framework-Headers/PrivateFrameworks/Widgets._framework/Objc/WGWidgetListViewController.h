@@ -11,24 +11,22 @@
 #import <Widgets/WGWidgetDiscoveryObserving-Protocol.h>
 #import <Widgets/WGWidgetExtensionVisibilityProviding-Protocol.h>
 #import <Widgets/WGWidgetHostingViewControllerDelegate-Protocol.h>
+#import <Widgets/WGWidgetListItemViewControllerDelegate-Protocol.h>
 
-@class MTMaterialSettings, NSArray, NSMutableDictionary, NSString, UIScrollView, UIStackView, WGWidgetDiscoveryController, WGWidgetShortLookView;
+@class NSArray, NSMutableDictionary, NSString, UIScrollView, UIStackView, WGWidgetDiscoveryController;
 @protocol WGWidgetListViewControllerDelegate, WGWidgetListViewControllerDelegatePrivate;
 
-@interface WGWidgetListViewController : UIViewController <WGWidgetDebugging, UIScrollViewDelegate, WGWidgetDiscoveryObserving, WGWidgetHostingViewControllerDelegate, WGWidgetExtensionVisibilityProviding>
+@interface WGWidgetListViewController : UIViewController <WGWidgetDebugging, UIScrollViewDelegate, WGWidgetDiscoveryObserving, WGWidgetHostingViewControllerDelegate, WGWidgetListItemViewControllerDelegate, WGWidgetExtensionVisibilityProviding>
 {
     WGWidgetDiscoveryController *_discoveryController;
     UIStackView *_stackView;
     NSMutableDictionary *_cancelTouchesAssertionsByWidgetID;
-    NSMutableDictionary *_shortLookViewsByWidgetID;
-    WGWidgetShortLookView *_shortLookViewForMeasuring;
-    MTMaterialSettings *_materialSettings;
+    NSMutableDictionary *_widgetIDsToItemVCs;
     BOOL _shouldBlurContent;
     id<WGWidgetListViewControllerDelegate> _delegate;
     NSArray *_previouslyVisibleWidgetIDs;
 }
 
-@property (readonly, nonatomic, getter=_activeColumnMode) long long activeColumnMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WGWidgetListViewControllerDelegatePrivate> delegate;
@@ -46,29 +44,26 @@
 @property (readonly, nonatomic) UIScrollView *widgetListView;
 
 - (void).cxx_destruct;
-- (CDUnknownBlockType)_beginInsertion:(BOOL)arg1 ofWidgetView:(id)arg2 forWidgetWithIdentifier:(id)arg3 withOrderedIdentifiers:(id)arg4 removingViewIfPossible:(BOOL)arg5;
+- (CDUnknownBlockType)_beginInsertion:(BOOL)arg1 ofListItem:(id)arg2 withOrderedIdentifiers:(id)arg3 removingViewIfPossible:(BOOL)arg4;
 - (void)_cancelTouchesForHitWidgetIfNecessary;
 - (void)_cancelTouchesForWidget:(id)arg1;
 - (void)_configureStackView;
-- (void)_contentSizeCategoryDidChange:(id)arg1;
-- (CDUnknownBlockType)_insert:(BOOL)arg1 widgetView:(id)arg2 forWidgetWithIdentifier:(id)arg3 withOrderedIdentifiers:(id)arg4 animated:(BOOL)arg5;
-- (unsigned long long)_insertionIndexOfWidgetView:(id)arg1 forWidgetWithIdentifier:(id)arg2 intoWidgetViews:(id)arg3 withOrderedIdentifiers:(id)arg4;
+- (CDUnknownBlockType)_insert:(BOOL)arg1 listItem:(id)arg2 withOrderedIdentifiers:(id)arg3 animated:(BOOL)arg4;
+- (unsigned long long)_insertionIndexofListItem:(id)arg1 intoWidgetViews:(id)arg2 withOrderedIdentifiers:(id)arg3;
 - (void)_invalidateAllCancelTouchesAssertions;
-- (void)_invokeBlock:(CDUnknownBlockType)arg1 withShortLookViewsPassingTest:(CDUnknownBlockType)arg2;
-- (void)_invokeBlockWithShortLookViewsVisibleInBounds:(CDUnknownBlockType)arg1;
-- (void)_invokeBlockWithShortLookViewsVisibleInRect:(struct CGRect)arg1 block:(CDUnknownBlockType)arg2;
-- (void)_repopulateStackViewForColumnMode:(long long)arg1;
-- (id)_repopulateStackViewWithWidgetIdentifiers:(id)arg1 forColumnMode:(long long)arg2;
+- (void)_invokeBlock:(CDUnknownBlockType)arg1 withPlatterViewsPassingTest:(CDUnknownBlockType)arg2;
+- (void)_invokeBlockWithPlatterViewsVisibleInBounds:(CDUnknownBlockType)arg1;
+- (void)_invokeBlockWithPlatterViewsVisibleInRect:(struct CGRect)arg1 block:(CDUnknownBlockType)arg2;
+- (id)_listItemViewControllerForWidgetWithIdentifier:(id)arg1 creatingIfNecessary:(BOOL)arg2;
+- (id)_platterViewAtLocation:(struct CGPoint)arg1;
+- (id)_platterViewForWidgetWithIdentifier:(id)arg1 creatingIfNecessary:(BOOL)arg2;
+- (void)_repopulateStackView;
+- (id)_repopulateStackViewWithWidgetIdentifiers:(id)arg1;
 - (id)_scrollViewIfLoaded;
 - (id)_scrollViewLoadingIfNecessary:(BOOL)arg1;
-- (id)_shortLookViewAtLocation:(struct CGPoint)arg1;
-- (id)_shortLookViewForMeasuring;
-- (id)_shortLookViewForWidget:(id)arg1;
-- (id)_shortLookViewForWidgetWithIdentifier:(id)arg1 creatingIfNecessary:(BOOL)arg2;
-- (void)_updateBackgroundViewForShortLookView:(id)arg1;
+- (void)_updateBackgroundViewForPlatter:(id)arg1;
 - (void)_updateWidgetViewStateWithPreviouslyVisibleWidgetIdentifiers:(id)arg1;
-- (void)_validateWidgetHostStateForShortLook:(id)arg1;
-- (id)_widgetIdentifiersForShortLookViewsVisibleInBounds;
+- (id)_widgetIdentifiersForPlatterViewsVisibleInBounds;
 - (void)brokenViewDidAppearForWidget:(id)arg1;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
@@ -76,6 +71,7 @@
 - (BOOL)isWidgetExtensionVisible:(id)arg1;
 - (void)loadView;
 - (void)makeVisibleWidgetWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)managingContainerIsVisibleForWidget:(id)arg1;
 - (struct UIEdgeInsets)marginInsetsForWidget:(id)arg1;
 - (struct CGSize)maxSizeForWidget:(id)arg1 forDisplayMode:(long long)arg2;
 - (void)orderOfVisibleWidgetsDidChange:(id)arg1;
@@ -100,9 +96,9 @@
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-- (id)visibleWidgetIdentifiersForColumnMode:(long long)arg1;
+- (id)visibleWidgetIdentifiers;
 - (void)widget:(id)arg1 didChangeLargestSupportedDisplayMode:(long long)arg2;
-- (CDUnknownBlockType)widget:(id)arg1 didUpdatePreferredHeight:(double)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)widgetListItemViewController:(id)arg1 widgetHostWithIdentifier:(id)arg2;
 
 @end
 

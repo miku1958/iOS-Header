@@ -22,6 +22,7 @@
 @property (readonly, copy, nonatomic) NSDictionary *payload; // @synthesize payload=_payload;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
++ (void)deserializeCacheItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)deserializeCacheItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)serializeCacheableObjects:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (BOOL)supportsSecureCoding;

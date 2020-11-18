@@ -13,11 +13,13 @@
     long long _authorizationRequest;
     long long _authorizationStatus;
     double _modificationDate;
+    long long _modificationEpoch;
     long long _objectType;
     struct {
         unsigned int authorizationRequest:1;
         unsigned int authorizationStatus:1;
         unsigned int modificationDate:1;
+        unsigned int modificationEpoch:1;
         unsigned int objectType:1;
     } _has;
 }
@@ -27,8 +29,10 @@
 @property (nonatomic) BOOL hasAuthorizationRequest;
 @property (nonatomic) BOOL hasAuthorizationStatus;
 @property (nonatomic) BOOL hasModificationDate;
+@property (nonatomic) BOOL hasModificationEpoch;
 @property (nonatomic) BOOL hasObjectType;
 @property (nonatomic) double modificationDate; // @synthesize modificationDate=_modificationDate;
+@property (nonatomic) long long modificationEpoch; // @synthesize modificationEpoch=_modificationEpoch;
 @property (nonatomic) long long objectType; // @synthesize objectType=_objectType;
 
 - (long long)_authorizationRequest;

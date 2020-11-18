@@ -8,6 +8,7 @@
 
 @class MNNavigationAudioSession, NSBundle, NSHashTable, NSLocale, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MNVoiceController : NSObject
 {
     MNNavigationAudioSession *_activeNavigationSession;
@@ -40,11 +41,10 @@
 - (void)_defaultsDidChange;
 - (id)_localizedStringForKey:(id)arg1;
 - (void)_setGender;
-- (void)_setLoggingEnabled:(BOOL)arg1;
 - (void)_setMaintainInactivePersistentConnection:(BOOL)arg1;
 - (void)_updateCurrentVoiceLanguage;
 - (void)addObserver:(id)arg1;
-- (void)beepIfNecessaryForShortPromptType:(unsigned long long)arg1;
+- (void)beepIfNecessaryForShortPromptType:(unsigned long long)arg1 textToSpeak:(id)arg2;
 - (void)clearAllEvents;
 - (void)dealloc;
 - (double)durationToSpeak:(id)arg1;

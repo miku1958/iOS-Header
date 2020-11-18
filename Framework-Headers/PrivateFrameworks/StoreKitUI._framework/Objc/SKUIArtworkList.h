@@ -27,6 +27,7 @@
 
 + (id)artworkForSize:(long long)arg1 artworkDictionaries:(id)arg2;
 + (BOOL)canHandleArtworkFormat:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)artworkForSize:(long long)arg1;
 - (id)artworkURLForSize:(long long)arg1;
@@ -34,9 +35,11 @@
 - (id)bestArtworkForScaledSize:(struct CGSize)arg1;
 - (id)bestArtworkForSize:(struct CGSize)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasArtwork;
 - (id)initWithArtworkListArray:(id)arg1;
 - (id)initWithCacheRepresentation:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithLookupArray:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)preferredExactArtworkForSize:(struct CGSize)arg1;

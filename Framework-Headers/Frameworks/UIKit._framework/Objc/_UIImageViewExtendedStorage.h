@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     UIImage *_displayedImage;
     UIImage *_displayedHighlightedImage;
     CIContext *_CIContext;
+    BOOL _adjustsImageSizeForAccessibilityContentSizeCategory;
 }
 
 @property (readonly, copy) NSString *debugDescription;

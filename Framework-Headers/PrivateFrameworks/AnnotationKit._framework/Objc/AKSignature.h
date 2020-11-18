@@ -8,10 +8,11 @@
 
 #import <AnnotationKit/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSUUID;
+@class NSDate, NSUUID, PKDrawing;
 
 @interface AKSignature : NSObject <NSSecureCoding>
 {
+    PKDrawing *_drawing;
     struct CGPath *_path;
     struct CGRect _strokesBounds;
     BOOL _shouldPersist;
@@ -22,6 +23,7 @@
 
 @property double baselineOffset; // @synthesize baselineOffset=_baselineOffset;
 @property (strong) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (readonly) PKDrawing *drawing;
 @property (readonly) struct CGPath *path;
 @property (readonly) struct CGRect pathBounds;
 @property BOOL shouldPersist; // @synthesize shouldPersist=_shouldPersist;
@@ -32,9 +34,11 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
+- (id)initForTesting;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithPath:(struct CGPath *)arg1 baselineOffset:(double)arg2;
-- (id)initWithPath:(struct CGPath *)arg1 baselineOffset:(double)arg2 creationDate:(id)arg3;
+- (id)initWithDrawing:(id)arg1 path:(struct CGPath *)arg2 baselineOffset:(double)arg3;
+- (id)initWithDrawing:(id)arg1 path:(struct CGPath *)arg2 baselineOffset:(double)arg3 creationDate:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (void)setPath:(struct CGPath *)arg1;
 

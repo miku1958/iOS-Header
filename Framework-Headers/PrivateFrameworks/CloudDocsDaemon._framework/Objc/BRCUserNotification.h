@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_hideCurrentDialog;
 - (id)_localizationKey:(id)arg1 forDocumentKindOfApplication:(id)arg2;
 - (id)_localizationKey:(id)arg1 forOSAndDocumentKindOfApplication:(id)arg2;
+- (id)_localizationKeyForOS:(id)arg1;
 - (CDUnknownBlockType)_logWrapUserReplyBlock:(CDUnknownBlockType)arg1;
 - (void)_updateDialogWithType:(unsigned long long)arg1 dict:(id)arg2;
 - (void)_updateDialogWithType:(unsigned long long)arg1 dict:(id)arg2 userReplyBlock:(CDUnknownBlockType)arg3;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)moveToFront;
 - (void)showErrorDeviceOfflineForShareURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)showErrorDocumentsAppNotVisibleForShareURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)showErrorInstallNativeAppForShareMetadata:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)showErrorItemUnavailableOrAccessRestrictedForShareURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)showErrorNativeAppDisabledByProfileForShareMetadata:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -49,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (void)showErrorServerNotReachableForShareURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)showErrorSignInToiCloudForShareMetadata:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)showErrorTurnOniCloudDriveForShareMetadata:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)showErroriCloudDriveAppNotVisibleForShareURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)showJoinDialogForShareMetadata:(id)arg1 session:(id)arg2 reply:(CDUnknownBlockType)arg3;
 
 @end

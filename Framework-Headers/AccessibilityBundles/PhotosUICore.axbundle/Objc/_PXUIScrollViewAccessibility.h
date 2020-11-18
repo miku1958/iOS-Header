@@ -15,8 +15,6 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySortedElementsWithin;
 - (long long)_axCompareView:(id)arg1 toView:(id)arg2;
-- (void)_axSetSortedTileDescendants:(id)arg1;
-- (id)_axSortedTileDescendants;
 - (BOOL)isAccessibilityOpaqueElementProvider;
 
 @end

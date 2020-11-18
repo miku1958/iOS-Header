@@ -6,26 +6,31 @@
 
 #import <Foundation/NSObject.h>
 
+#import <MobileCoreServices/NSCopying-Protocol.h>
+
 @class NSDictionary, NSSet;
 
-@interface LSBundleInfoCachedValues : NSObject
+@interface LSBundleInfoCachedValues : NSObject <NSCopying>
 {
     NSSet *_keys;
     NSDictionary *_values;
 }
 
+@property (readonly, nonatomic) NSSet *allKeys; // @synthesize allKeys=_keys;
+@property (readonly, nonatomic) NSDictionary *rawValues; // @synthesize rawValues=_values;
+
 - (id)URLForKey:(id)arg1;
 - (id)_initWithKeys:(id)arg1 forDictionary:(id)arg2;
 - (id)arrayForKey:(id)arg1;
+- (id)arrayForKey:(id)arg1 withValuesOfClass:(Class)arg2;
 - (BOOL)boolForKey:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)description;
 - (id)dictionaryForKey:(id)arg1;
 - (id)init;
 - (id)numberForKey:(id)arg1;
 - (id)objectForKey:(id)arg1;
 - (id)objectForKey:(id)arg1 ofType:(Class)arg2;
-- (id)rawValues;
 - (id)stringForKey:(id)arg1;
 
 @end

@@ -4,24 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessory, HMDUser, NSData, NSUUID;
+@class HMDHAPAccessory, HMDUser, NSData, NSUUID;
 
-@interface HMDRelayAccessToken : NSObject <NSSecureCoding>
+@interface HMDRelayAccessToken : HMFObject <NSSecureCoding>
 {
     NSUUID *_accessoryIdentifier;
     NSUUID *_userIdentifier;
     NSUUID *_identifier;
-    HMDAccessory *_accessory;
+    HMDHAPAccessory *_accessory;
     HMDUser *_user;
     NSData *_accessToken;
 }
 
 @property (readonly, copy, nonatomic) NSData *accessToken; // @synthesize accessToken=_accessToken;
-@property (weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
+@property (weak, nonatomic) HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
 @property (readonly, nonatomic) NSUUID *accessoryIdentifier; // @synthesize accessoryIdentifier=_accessoryIdentifier;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (weak, nonatomic) HMDUser *user; // @synthesize user=_user;
@@ -30,12 +30,14 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)configureWithHome:(id)arg1;
+- (id)dictionaryEncoding;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithAccessToken:(id)arg1 consentToken:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (void)updateWithDictionary:(id)arg1 home:(id)arg2;
 
 @end
 

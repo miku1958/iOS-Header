@@ -11,14 +11,15 @@
 - (BOOL)_accessibilityIsScannerElement;
 - (BOOL)_accessibilityIsScannerGroup;
 - (void)_accessibilityProcessScannerGroupElementPieces:(id)arg1;
-- (int)_accessibilityScannerActivateBehavior;
+- (long long)_accessibilityScannerActivateBehavior;
 - (id)_accessibilityScannerGroupElements;
-- (int)_accessibilityScannerGroupTraits;
-- (int)_accessibilityScanningBehaviorTraits;
+- (unsigned long long)_accessibilityScannerGroupTraits;
+- (unsigned long long)_accessibilityScanningBehaviorTraits;
 - (void)_accessibilitySetIsScannerElement:(BOOL)arg1;
 - (void)_accessibilitySetIsScannerGroup:(BOOL)arg1;
-- (void)_accessibilitySetScannerActivateBehavior:(int)arg1;
-- (void)_accessibilitySetScannerGroupTraits:(int)arg1;
+- (void)_accessibilitySetScannerActivateBehavior:(long long)arg1;
+- (void)_accessibilitySetScannerGroupTraits:(unsigned long long)arg1;
+- (BOOL)_accessibilityShouldBeScannedIfAncestorCanScroll;
 - (BOOL)_accessibilityTreatCollectionViewRowsAsScannerGroups;
 @end
 

@@ -13,11 +13,16 @@
     void *_priv;
 }
 
+@property (nonatomic) BOOL canReduceOutputChannels;
 @property (readonly) NSString *name;
+@property (nonatomic) BOOL perservesAlpha;
+@property (nonatomic) BOOL preservesRange;
 
 + (id)betterString:(id)arg1;
 + (id)colorMatrixBiasKernel;
 + (id)hashForString:(id)arg1;
++ (id)kernelWithFunctionName:(id)arg1 fromMetalLibraryData:(id)arg2 error:(id *)arg3;
++ (id)kernelWithFunctionName:(id)arg1 fromMetalLibraryData:(id)arg2 outputPixelFormat:(int)arg3 error:(id *)arg4;
 + (id)kernelWithString:(id)arg1;
 + (id)kernelsWithString:(id)arg1;
 + (id)kernelsWithString:(id)arg1 messageLog:(id)arg2;

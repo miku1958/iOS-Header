@@ -38,7 +38,6 @@
     NSString *_wantsDisclosureIndicatorProperty;
     NSString *_explicitBadgeProperty;
     NSString *_wantsAddButtonProperty;
-    NSString *_wantsContextualActionsButtonProperty;
     NSString *_wantsBuyButtonProperty;
     NSString *_storeDownloadIDProperty;
     NSString *_storeOffersProperty;
@@ -71,7 +70,6 @@
 @property (copy, nonatomic) NSArray *textDescriptors; // @synthesize textDescriptors=_textDescriptors;
 @property (copy, nonatomic) NSString *wantsAddButtonProperty; // @synthesize wantsAddButtonProperty=_wantsAddButtonProperty;
 @property (copy, nonatomic) NSString *wantsBuyButtonProperty; // @synthesize wantsBuyButtonProperty=_wantsBuyButtonProperty;
-@property (copy, nonatomic) NSString *wantsContextualActionsButtonProperty; // @synthesize wantsContextualActionsButtonProperty=_wantsContextualActionsButtonProperty;
 @property (copy, nonatomic) NSString *wantsDisclosureIndicatorProperty; // @synthesize wantsDisclosureIndicatorProperty=_wantsDisclosureIndicatorProperty;
 @property (nonatomic) BOOL wantsDownloadProgress; // @synthesize wantsDownloadProgress=_wantsDownloadProgress;
 @property (copy, nonatomic) NSString *wantsPlayButtonProperty; // @synthesize wantsPlayButtonProperty=_wantsPlayButtonProperty;

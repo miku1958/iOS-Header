@@ -16,10 +16,12 @@
     unsigned int _playerIndex;
     int _profile;
     NSString *_vendorName;
+    BOOL _supportsExtendedMotion;
     struct {
         unsigned int buttonAUpDelay:1;
         unsigned int playerIndex:1;
         unsigned int profile:1;
+        unsigned int supportsExtendedMotion:1;
     } _has;
 }
 
@@ -27,9 +29,11 @@
 @property (nonatomic) BOOL hasButtonAUpDelay;
 @property (nonatomic) BOOL hasPlayerIndex;
 @property (nonatomic) BOOL hasProfile;
+@property (nonatomic) BOOL hasSupportsExtendedMotion;
 @property (readonly, nonatomic) BOOL hasVendorName;
 @property (nonatomic) unsigned int playerIndex; // @synthesize playerIndex=_playerIndex;
 @property (nonatomic) int profile; // @synthesize profile=_profile;
+@property (nonatomic) BOOL supportsExtendedMotion; // @synthesize supportsExtendedMotion=_supportsExtendedMotion;
 @property (strong, nonatomic) NSString *vendorName; // @synthesize vendorName=_vendorName;
 
 - (int)StringAsProfile:(id)arg1;

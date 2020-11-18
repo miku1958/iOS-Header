@@ -41,7 +41,6 @@
 @property (nonatomic) unsigned long long unsupportedReason; // @synthesize unsupportedReason=_unsupportedReason;
 
 + (id)_dataForResolutionMethodUnimplemented;
-+ (id)callerToResolve;
 + (id)needsValue;
 + (id)notRequired;
 + (id)resolutionResultConfirmationRequiredWithItemToConfirm:(id)arg1;
@@ -58,10 +57,12 @@
 - (void).cxx_destruct;
 - (id)_buildIntentSlotResolutionResultWithIntentSlotDescription:(id)arg1;
 - (id)_dataForIntentSlotDescription:(id)arg1;
+- (id)_initWithResolutionResult:(id)arg1;
 - (id)_initWithResultCode:(long long)arg1;
 - (id)_intentSlotValueForObject:(id)arg1 slotDescription:(id)arg2;
 - (id)_stringForResultCode:(long long)arg1;
 - (id)_vocabularyValueForObject:(id)arg1 slotDescription:(id)arg2;
+- (id)descriptionAtIndent:(unsigned long long)arg1;
 - (id)dictionaryRepresentation;
 - (id)resolutionResultDataForIntent:(id)arg1 intentSlotDescription:(id)arg2;
 

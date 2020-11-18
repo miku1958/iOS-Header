@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MessageUI/MFMailComposeRecipientView.h>
+#import <MessageUI/MFComposeRecipientTextView.h>
 
 @class MFComposeSMIMELockButton;
 @protocol MFMailComposeToFieldDelegate;
 
-@interface MFMailComposeToField : MFMailComposeRecipientView
+@interface MFMailComposeToField : MFComposeRecipientTextView
 {
     MFComposeSMIMELockButton *_smimeButton;
+    BOOL _wantsEncryption;
+    BOOL _canEncrypt;
     BOOL _smimeButtonVisible;
     BOOL _smimeButtonEnabled;
     id<MFMailComposeToFieldDelegate> _toFieldDelegate;

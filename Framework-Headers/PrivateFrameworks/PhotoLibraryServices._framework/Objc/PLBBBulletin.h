@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSDate, NSDictionary, NSMutableSet, NSString;
 
@@ -35,6 +35,9 @@
     BOOL _allMultipleAssetIsMine;
     BOOL _isMixedType;
     BOOL _offerToReportAsJunk;
+    NSString *_interestingMemoryUUID;
+    NSString *_interestingMemoryNotificationTitle;
+    NSString *_interestingMemoryNotificationSubtitle;
     unsigned long long _recordID;
     unsigned long long _replacedBulletinRecordID;
     unsigned long long _originalRecordID;
@@ -43,6 +46,7 @@
     NSDate *_date;
     NSDate *_originalDate;
     NSDate *_expirationDate;
+    NSDate *_importantMemoryNotificationDeliveryDate;
 }
 
 @property (readonly, copy) NSString *albumCloudGUID; // @synthesize albumCloudGUID=_albumCloudGUID;
@@ -56,6 +60,7 @@
 @property (readonly) NSDictionary *dictionaryRepresentation;
 @property (readonly, copy) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly) BOOL hasThumbnail;
+@property (copy) NSDate *importantMemoryNotificationDeliveryDate; // @synthesize importantMemoryNotificationDeliveryDate=_importantMemoryNotificationDeliveryDate;
 @property (readonly, copy) NSString *mainAssetUUID; // @synthesize mainAssetUUID=_mainAssetUUID;
 @property (readonly) NSString *message;
 @property (copy) NSDate *originalDate; // @synthesize originalDate=_originalDate;
@@ -82,6 +87,7 @@
 - (id)init;
 - (id)initWithAssetAdded:(id)arg1 atIndex:(unsigned long long)arg2 toAlbum:(id)arg3;
 - (id)initWithCommentAdded:(id)arg1;
+- (id)initWithInterestingMemoryNotificationWithMemoryUUID:(id)arg1 keyAssetUUID:(id)arg2 notificationTitle:(id)arg3 notificationSubtitle:(id)arg4;
 - (id)initWithInvitationAlbum:(id)arg1;
 - (id)initWithInvitationRecordStatusChanged:(id)arg1;
 - (id)initWithLikeAdded:(id)arg1;

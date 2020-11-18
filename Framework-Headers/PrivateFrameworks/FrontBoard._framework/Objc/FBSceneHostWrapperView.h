@@ -12,7 +12,7 @@
 #import <FrontBoard/FBSceneLayerManagerObserver-Protocol.h>
 #import <FrontBoard/_FBSceneGeometryObserver-Protocol.h>
 
-@class FBScene, FBSceneHostManager, FBSceneLayerHostContainerView, FBSceneLayerManager, NSMutableSet, NSSet, NSString, UIColor;
+@class FBScene, FBSceneHostManager, FBSceneLayerHostContainerView, FBSceneLayerManager, NSMapTable, NSMutableSet, NSSet, NSString, UIColor;
 @protocol FBSceneHostViewDelegate;
 
 @interface FBSceneHostWrapperView : UIView <_FBSceneGeometryObserver, FBSceneLayerManagerObserver, FBSceneLayerHostContainerViewDataSource, BSDescriptionProviding, FBSceneHostView>
@@ -22,12 +22,17 @@
     FBSceneLayerManager *_layerManager;
     FBSceneHostManager *_manager;
     FBSceneLayerHostContainerView *_hostContainerView;
+    NSMapTable *_layerAlphaMapTable;
     NSMutableSet *_hiddenLayers;
     unsigned long long _appearanceStyle;
     UIColor *_backgroundColorWhileNotHosting;
     UIColor *_backgroundColorWhileHosting;
     unsigned long long _hostedLayerTypes;
     BOOL _usingDefaultLayerTypes;
+    unsigned long long _renderingMode;
+    BOOL _usingDefaultRenderingMode;
+    NSString *_minificationFilterName;
+    BOOL _usingDefaultMinificationFilterName;
     BOOL _clippingDisabled;
     id<FBSceneHostViewDelegate> _delegate;
 }
@@ -36,7 +41,6 @@
 @property (strong, nonatomic) UIColor *backgroundColorWhileHosting;
 @property (strong, nonatomic) UIColor *backgroundColorWhileNotHosting;
 @property (nonatomic, getter=isClippingDisabled) BOOL clippingDisabled; // @synthesize clippingDisabled=_clippingDisabled;
-@property (readonly, nonatomic, getter=isContextHosted) BOOL contextHosted;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<FBSceneHostViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -47,7 +51,9 @@
 @property (readonly, nonatomic, getter=isHosting) BOOL hosting;
 @property (readonly, strong, nonatomic) NSSet *hostingDisabledLayers;
 @property (readonly, nonatomic) double level;
+@property (copy, nonatomic) NSString *minificationFilterName; // @synthesize minificationFilterName=_minificationFilterName;
 @property (readonly, nonatomic) struct CGRect referenceFrame;
+@property (nonatomic) unsigned long long renderingMode; // @synthesize renderingMode=_renderingMode;
 @property (readonly, copy, nonatomic) NSString *requester; // @synthesize requester=_requester;
 @property (readonly, strong, nonatomic) FBScene *scene; // @synthesize scene=_scene;
 @property (readonly) Class superclass;
@@ -62,14 +68,20 @@
 - (void)_setAppearanceStyle:(unsigned long long)arg1 force:(BOOL)arg2;
 - (id)_stringForAppearanceStyle;
 - (void)_toggleBackgroundColorIfNecessary;
+- (unsigned long long)contextHostRenderingModeForHostContainerView:(id)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (double)hostContainerView:(id)arg1 alphaForLayer:(id)arg2;
 - (id)initWithScene:(id)arg1 requester:(id)arg2;
 - (void)invalidate;
+- (id)layerMinificationFilterNameForHostContainerView:(id)arg1;
 - (id)layersForHostContainerView:(id)arg1;
 - (void)sceneLayerManager:(id)arg1 didRepositionLayer:(id)arg2 fromIndex:(unsigned long long)arg3 toIndex:(unsigned long long)arg4;
 - (void)setDefaultHostedLayerTypes:(unsigned long long)arg1;
+- (void)setDefaultMinificationFilterName:(id)arg1;
+- (void)setDefaultRenderingMode:(unsigned long long)arg1;
+- (void)setLayer:(id)arg1 alpha:(double)arg2;
 - (void)setLayer:(id)arg1 hidden:(BOOL)arg2;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

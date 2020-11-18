@@ -6,46 +6,79 @@
 
 #import <UIKit/UIView.h>
 
-#import <MaterialKit/_UISettingsKeyObserver-Protocol.h>
+#import <MaterialKit/MTMaterialSettingsObserving-Protocol.h>
 
-@class MTMaterialSettings, NSString, _UIBackdropView;
+@class MTVibrantStylingProvider, NSString;
+@protocol MTMaterialSettings, MTMaterialSettings><MTMaterialSettingsObservable;
 
-@interface MTMaterialView : UIView <_UISettingsKeyObserver>
+@interface MTMaterialView : UIView <MTMaterialSettingsObserving>
 {
-    unsigned long long _styleOptions;
-    _UIBackdropView *_backdropView;
-    UIView *_lightOverlayView;
-    UIView *_whiteOverlayView;
-    UIView *_cutoutOverlayView;
-    MTMaterialSettings *_settings;
+    id<MTMaterialSettings> _settings;
+    unsigned long long _options;
+    UIView *_backdropView;
+    UIView *_primaryOverlayView;
+    UIView *_secondaryOverlayView;
     BOOL _cornerRadiusIsContinuous;
-    BOOL _captureOnly;
-    double _subviewsContinuousCornerRadius;
+    BOOL _isConfiguredAsOverlay;
+    BOOL _isInitialWeighting;
+    BOOL _highlighted;
+    BOOL _shouldCrossfadeIfNecessary;
+    BOOL _forceCrossfadeIfNecessary;
+    NSString *_groupName;
+    double _weighting;
+    CDUnknownBlockType _backdropScaleAdjustment;
 }
 
-@property (nonatomic) double cornerRadius;
+@property (nonatomic) BOOL allowsInPlaceFiltering;
+@property (copy, nonatomic) CDUnknownBlockType backdropScaleAdjustment;
+@property (copy, nonatomic) CDUnknownBlockType backdropScaleAdjustment; // @synthesize backdropScaleAdjustment=_backdropScaleAdjustment;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) double grayscaleValue;
-@property (copy, nonatomic) NSString *groupName;
+@property (nonatomic) BOOL forceCrossfadeIfNecessary;
+@property (nonatomic) BOOL forceCrossfadeIfNecessary; // @synthesize forceCrossfadeIfNecessary=_forceCrossfadeIfNecessary;
+@property (copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, getter=_subviewsContinuousCornerRadius, setter=_setSubviewsContinuousCornerRadius:) double subviewsContinuousCornerRadius; // @synthesize subviewsContinuousCornerRadius=_subviewsContinuousCornerRadius;
+@property (nonatomic, getter=isHighlighted) BOOL highlighted;
+@property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
+@property (readonly, nonatomic) id<MTMaterialSettings><MTMaterialSettingsObservable> materialSettings;
+@property (nonatomic) BOOL shouldCrossfadeIfNecessary;
+@property (nonatomic) BOOL shouldCrossfadeIfNecessary; // @synthesize shouldCrossfadeIfNecessary=_shouldCrossfadeIfNecessary;
 @property (readonly) Class superclass;
+@property (readonly, weak, nonatomic) MTVibrantStylingProvider *vibrantStylingProvider;
+@property (nonatomic) double weighting; // @synthesize weighting=_weighting;
 
-+ (id)materialViewWithStyleOptions:(unsigned long long)arg1;
-+ (id)materialViewWithStyleOptions:(unsigned long long)arg1 materialSettings:(id)arg2;
-+ (id)materialViewWithStyleOptions:(unsigned long long)arg1 materialSettings:(id)arg2 captureOnly:(BOOL)arg3;
++ (void)_validateRecipe:(long long *)arg1 andOptions:(unsigned long long *)arg2;
++ (void)initialize;
++ (id)materialViewWithRecipe:(long long)arg1 options:(unsigned long long)arg2;
++ (id)materialViewWithRecipe:(long long)arg1 options:(unsigned long long)arg2 initialWeighting:(double)arg3;
++ (id)materialViewWithRecipe:(long long)arg1 options:(unsigned long long)arg2 initialWeighting:(double)arg3 scaleAdjustment:(CDUnknownBlockType)arg4;
++ (id)materialViewWithSettings:(id)arg1 options:(unsigned long long)arg2 initialWeighting:(double)arg3 scaleAdjustment:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
-- (void)_configureBackdropViewIfNecessary;
-- (void)_configureCutoutOverlayViewIfNecessary;
-- (void)_configureIfNecessary;
-- (void)_configureLightOverlayViewIfNecessary;
-- (void)_configureWhiteOverlayViewIfNecessary;
+- (void)_adjustScaleOfBackdropView:(id)arg1 ifNecessaryWithWeighting:(double)arg2;
+- (id)_backdropLayer;
+- (id)_backdropViewSettingsForMaterialSettings:(id)arg1 options:(unsigned long long)arg2;
+- (id)_basicOverlaySettings;
+- (void)_configureBackdropViewIfNecessaryWithWeighting:(double)arg1;
+- (void)_configureIfNecessaryWithWeighting:(double)arg1;
+- (void)_configureMTBackdropView:(id)arg1 withWeighting:(double)arg2;
+- (id)_configureOverlayView:(id *)arg1 ofClass:(Class)arg2 withOptions:(unsigned long long)arg3 color:(id)arg4 alpha:(double)arg5 weighting:(double)arg6;
+- (void)_configureOverlayView:(id)arg1 withColor:(id)arg2 alpha:(double)arg3 weighting:(double)arg4;
+- (id)_configureOverlayView:(id *)arg1 withOptions:(unsigned long long)arg2 color:(id)arg3 alpha:(double)arg4 weighting:(double)arg5;
+- (void)_configurePrimaryOverlayViewIfNecessaryWithWeighting:(double)arg1;
+- (void)_configureSecondaryOverlayViewIfNecessaryWithWeighting:(double)arg1;
 - (double)_continuousCornerRadius;
+- (BOOL)_isCrossfadeNecessary;
+- (id)_luminanceOverlaySettings;
+- (id)_mtBackdropView;
+- (id)_observableSettings;
 - (void)_reduceTransparencyStatusDidChange;
 - (void)_setContinuousCornerRadius:(double)arg1;
+- (void)_setCornerRadius:(double)arg1;
+- (BOOL)_supportsVariableWeighting;
+- (void)_transitionToSettings:(id)arg1 options:(unsigned long long)arg2;
+- (double)cornerRadius;
 - (void)dealloc;
-- (id)initWithStyleOptions:(unsigned long long)arg1 materialSettings:(id)arg2 captureOnly:(BOOL)arg3;
+- (id)initWithSettings:(id)arg1 options:(unsigned long long)arg2 initialWeighting:(double)arg3 scaleAdjustment:(CDUnknownBlockType)arg4;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 
 @end

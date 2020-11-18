@@ -30,7 +30,6 @@
 - (void)loadBasicThemePart;
 - (void)loadColorNames;
 - (void)loadColorStatuses;
-- (void)loadDefaultFontCustomizations;
 - (void)loadEffectConstants;
 - (void)loadIterationTypes;
 - (void)loadMetafontSelectors;

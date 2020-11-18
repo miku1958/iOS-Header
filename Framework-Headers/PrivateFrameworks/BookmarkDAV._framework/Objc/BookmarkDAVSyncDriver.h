@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BookmarkDAV/CoreDAVContainerInfoTaskGroupDelegate-Protocol.h>
 #import <BookmarkDAV/CoreDAVDeleteTaskDelegate-Protocol.h>
 #import <BookmarkDAV/CoreDAVGetAccountPropertiesTaskGroupDelegate-Protocol.h>
 #import <BookmarkDAV/CoreDAVLocalDBTreeInfoProvider-Protocol.h>
 
-@class BookmarkDAVSyncData, NSDictionary, NSMutableSet, NSString, NSURL;
+@class BookmarkDAVSyncData, NSDictionary, NSMutableDictionary, NSMutableSet, NSString, NSURL;
 @protocol CoreDAVAccountInfoProvider, CoreDAVTaskManager;
 
 @interface BookmarkDAVSyncDriver : NSObject <CoreDAVLocalDBTreeInfoProvider, CoreDAVDeleteTaskDelegate, CoreDAVGetAccountPropertiesTaskGroupDelegate, CoreDAVContainerInfoTaskGroupDelegate>
@@ -33,6 +33,10 @@
     CDUnknownBlockType _registerForPush;
     BOOL _forceSafariOrdering;
     BOOL _forceSave;
+    BOOL _inboundOnlySyncRequested;
+    NSMutableSet *_serverIDsAddedUponInboundOnlySync;
+    NSMutableSet *_serverIDsRemovedUponInboundOnlySync;
+    NSMutableDictionary *_inboundMovedBookmarkServerIDMap;
     unsigned long long _accountPropertyFetchAttempt;
 }
 

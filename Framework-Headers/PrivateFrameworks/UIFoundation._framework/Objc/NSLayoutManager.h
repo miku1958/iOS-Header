@@ -74,16 +74,15 @@
 
 @property (nonatomic) BOOL allowsNonContiguousLayout;
 @property BOOL allowsOriginalFontMetricsOverride;
-@property (nonatomic) id<NSLayoutManagerDelegate> delegate;
+@property (weak, nonatomic) id<NSLayoutManagerDelegate> delegate;
 @property (readonly, nonatomic) struct CGRect extraLineFragmentRect;
 @property (readonly, nonatomic) NSTextContainer *extraLineFragmentTextContainer;
 @property (readonly, nonatomic) struct CGRect extraLineFragmentUsedRect;
-@property (readonly, nonatomic) unsigned long long firstUnlaidCharacterIndex;
-@property (readonly, nonatomic) unsigned long long firstUnlaidGlyphIndex;
 @property (readonly, nonatomic) BOOL hasNonContiguousLayout;
 @property (nonatomic) double hyphenationFactor;
 @property (readonly, nonatomic) unsigned long long numberOfGlyphs;
 @property (strong) NSParagraphArbitrator *paragraphArbitrator;
+@property (readonly, getter=isScrolling) BOOL scrolling;
 @property (nonatomic) BOOL showsControlCharacters;
 @property (nonatomic) BOOL showsInvisibleCharacters;
 @property (copy) CUIStyleEffectConfiguration *styleEffectConfiguration;
@@ -221,6 +220,7 @@
 - (BOOL)backgroundColorProvidesOpaqueSurface;
 - (BOOL)backgroundLayoutEnabled;
 - (double)baselineOffsetForGlyphAtIndex:(unsigned long long)arg1;
+- (void)beginScrollingForView:(id)arg1 textContainer:(id)arg2;
 - (struct CGRect)boundingRectForGlyphRange:(struct _NSRange)arg1 inTextContainer:(id)arg2;
 - (struct CGRect)boundsRectForTextBlock:(id)arg1 atIndex:(unsigned long long)arg2 effectiveRange:(struct _NSRange *)arg3;
 - (struct CGRect)boundsRectForTextBlock:(id)arg1 glyphRange:(struct _NSRange)arg2;
@@ -234,6 +234,7 @@
 - (double)defaultLineHeightForFont:(id)arg1;
 - (void)deleteGlyphsInRange:(struct _NSRange)arg1;
 - (id)description;
+- (id)destinationTextContainerForRange:(struct _NSRange)arg1 inTextContainer:(id)arg2;
 - (void)drawBackgroundForGlyphRange:(struct _NSRange)arg1 atPoint:(struct CGPoint)arg2;
 - (void)drawGlyphsForGlyphRange:(struct _NSRange)arg1 atPoint:(struct CGPoint)arg2;
 - (void)drawSpellingUnderlineForGlyphRange:(struct _NSRange)arg1 spellingState:(long long)arg2 inGlyphRange:(struct _NSRange)arg3 lineFragmentRect:(struct CGRect)arg4 lineFragmentGlyphRange:(struct _NSRange)arg5 containerOrigin:(struct CGPoint)arg6;
@@ -241,6 +242,7 @@
 - (void)drawUnderlineForGlyphRange:(struct _NSRange)arg1 underlineType:(long long)arg2 baselineOffset:(double)arg3 lineFragmentRect:(struct CGRect)arg4 lineFragmentGlyphRange:(struct _NSRange)arg5 containerOrigin:(struct CGPoint)arg6;
 - (BOOL)drawsOutsideLineFragmentForGlyphAtIndex:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)endScrollingForView:(id)arg1 textContainer:(id)arg2;
 - (void)ensureGlyphsForCharacterRange:(struct _NSRange)arg1;
 - (void)ensureGlyphsForGlyphRange:(struct _NSRange)arg1;
 - (void)ensureLayoutForBoundingRect:(struct CGRect)arg1 inTextContainer:(id)arg2;
@@ -252,6 +254,8 @@
 - (void)enumerateLineFragmentsForGlyphRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)fillBackgroundRectArray:(const struct CGRect *)arg1 count:(unsigned long long)arg2 forCharacterRange:(struct _NSRange)arg3 color:(id)arg4;
 - (void)finalize;
+- (unsigned long long)firstUnlaidCharacterIndex;
+- (unsigned long long)firstUnlaidGlyphIndex;
 - (BOOL)flipsIfNeeded;
 - (double)fractionOfDistanceThroughGlyphForPoint:(struct CGPoint)arg1 inTextContainer:(id)arg2;
 - (void)getFirstUnlaidCharacterIndex:(unsigned long long *)arg1 glyphIndex:(unsigned long long *)arg2;
@@ -286,6 +290,7 @@
 - (void)invalidateLayoutForCharacterRange:(struct _NSRange)arg1 actualCharacterRange:(struct _NSRange *)arg2;
 - (void)invalidateLayoutForCharacterRange:(struct _NSRange)arg1 isSoft:(BOOL)arg2 actualCharacterRange:(struct _NSRange *)arg3;
 - (BOOL)isValidGlyphIndex:(unsigned long long)arg1;
+- (id)layoutFragmentsForReplacingCharactersInRange:(struct _NSRange)arg1 withAttributedString:(id)arg2 rect:(struct CGRect)arg3 textContainer:(id)arg4;
 - (unsigned long long)layoutOptions;
 - (struct CGRect)layoutRectForTextBlock:(id)arg1 atIndex:(unsigned long long)arg2 effectiveRange:(struct _NSRange *)arg3;
 - (struct CGRect)layoutRectForTextBlock:(id)arg1 glyphRange:(struct _NSRange)arg2;
@@ -297,6 +302,7 @@
 - (id)linkAttributesForLink:(id)arg1 forCharacterAtIndex:(unsigned long long)arg2;
 - (struct CGPoint)locationForGlyphAtIndex:(unsigned long long)arg1;
 - (BOOL)notShownAttributeForGlyphAtIndex:(unsigned long long)arg1;
+- (struct CGRect)prepareLayoutForBoundingRect:(struct CGRect)arg1 textContainer:(id)arg2;
 - (void)processEditingForTextStorage:(id)arg1 edited:(unsigned long long)arg2 range:(struct _NSRange)arg3 changeInLength:(long long)arg4 invalidatedRange:(struct _NSRange)arg5;
 - (long long)propertyForGlyphAtIndex:(unsigned long long)arg1;
 - (struct _NSRange)rangeOfCharacterClusterAtIndex:(unsigned long long)arg1 type:(long long)arg2;
@@ -334,7 +340,10 @@
 - (void)setTextContainer:(id)arg1 forGlyphRange:(struct _NSRange)arg2;
 - (void)setTypesetter:(id)arg1;
 - (void)setTypesetterBehavior:(long long)arg1;
+- (void)setUnderlineColorForSpelling:(id)arg1;
+- (void)setUnderlineColorForTextAlternatives:(id)arg1;
 - (void)setUsesScreenFonts:(BOOL)arg1;
+- (void)setViewProvider:(id)arg1 forTextAttachment:(id)arg2 characterIndex:(unsigned long long)arg3;
 - (void)showAttachment:(id)arg1 inRect:(struct CGRect)arg2 textContainer:(id)arg3 characterIndex:(unsigned long long)arg4;
 - (void)showAttachmentCell:(id)arg1 inRect:(struct CGRect)arg2 characterIndex:(unsigned long long)arg3;
 - (void)showCGGlyphs:(const unsigned short *)arg1 positions:(const struct CGPoint *)arg2 count:(unsigned long long)arg3 font:(id)arg4 matrix:(struct CGAffineTransform)arg5 attributes:(id)arg6 inContext:(struct CGContext *)arg7;
@@ -354,9 +363,12 @@
 - (struct _NSRange)truncatedGlyphRangeInLineFragmentForGlyphAtIndex:(unsigned long long)arg1;
 - (id)typesetter;
 - (long long)typesetterBehavior;
+- (id)underlineColorForSpelling;
+- (id)underlineColorForTextAlternatives;
 - (void)underlineGlyphRange:(struct _NSRange)arg1 underlineType:(long long)arg2 lineFragmentRect:(struct CGRect)arg3 lineFragmentGlyphRange:(struct _NSRange)arg4 containerOrigin:(struct CGPoint)arg5;
 - (struct CGRect)usedRectForTextContainer:(id)arg1;
 - (BOOL)usesScreenFonts;
+- (id)viewProviderForTextAttachment:(id)arg1 characterIndex:(unsigned long long)arg2;
 
 @end
 

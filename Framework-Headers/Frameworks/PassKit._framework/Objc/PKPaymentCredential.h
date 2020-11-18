@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSString, PKPaymentEligibilityResponse, PKPaymentRequirementsResponse;
 
@@ -30,11 +30,11 @@
 - (id)contactlessProductCredential;
 - (BOOL)isContactlessProductCredential;
 - (BOOL)isLocalPassCredential;
+- (BOOL)isPeerPaymentCredential;
 - (BOOL)isRemoteCredential;
-- (BOOL)isRemotePassCredential;
 - (id)localPassCredential;
+- (id)peerPaymentCredential;
 - (id)remoteCredential;
-- (id)remotePassCredential;
 
 @end
 

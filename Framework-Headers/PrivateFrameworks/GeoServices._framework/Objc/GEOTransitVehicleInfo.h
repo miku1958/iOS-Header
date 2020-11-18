@@ -53,6 +53,7 @@
 @property (nonatomic) unsigned long long tripMuid; // @synthesize tripMuid=_tripMuid;
 @property (strong, nonatomic) NSString *vehicleNumber; // @synthesize vehicleNumber=_vehicleNumber;
 
+- (void).cxx_destruct;
 - (int)StringAsPickupDropoffType:(id)arg1;
 - (void)addClusteredRouteLineArtworkIndex:(unsigned int)arg1;
 - (void)clearClusteredRouteLineArtworkIndexs;

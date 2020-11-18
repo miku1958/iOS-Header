@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, weak, nonatomic) _UIFocusMapSearchInfo *focusMapSearchInfo; // @synthesize focusMapSearchInfo=_focusMapSearchInfo;
 @property (readonly, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (readonly, nonatomic) struct CGPoint imageAnchorPoint; // @synthesize imageAnchorPoint=_imageAnchorPoint;
-@property (readonly, copy, nonatomic) _UIFocusMapSnapshot *snapshot; // @synthesize snapshot=_snapshot;
+@property (readonly, nonatomic) _UIFocusMapSnapshot *snapshot; // @synthesize snapshot=_snapshot;
 
 + (id)_summaryImageForDebugInfoArray:(id)arg1 forFocusMovementWithInfo:(id)arg2 scaleFactor:(double)arg3;
 - (void).cxx_destruct;

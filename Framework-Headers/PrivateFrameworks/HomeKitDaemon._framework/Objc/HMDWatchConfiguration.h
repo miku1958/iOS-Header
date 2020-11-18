@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSDictionary, NSString, NSUUID;
 
-@interface HMDWatchConfiguration : NSObject
+@interface HMDWatchConfiguration : HMFObject
 {
     NSString *_uniqueId;
     NSDictionary *_metadataConfig;

@@ -9,7 +9,7 @@
 #import <HealthDaemon/HDActivityCacheStatisticsBuilderSourceOrderDelegate-Protocol.h>
 #import <HealthDaemon/HDDataObserver-Protocol.h>
 
-@class HDActivityCacheStatisticsBuilder, HDProfile, HKCategoryType, HKWorkoutType, NSSet, NSString, _HKDelayedOperation, _HKTimePeriod;
+@class HDActivityCacheHeartRateStatisticsBuilder, HDActivityCacheStatisticsBuilder, HDProfile, HKCategoryType, HKWorkoutType, NSDateInterval, NSSet, NSString, _HKDelayedOperation;
 @protocol OS_dispatch_queue;
 
 @interface HDActivityCacheDataSource : NSObject <HDActivityCacheStatisticsBuilderSourceOrderDelegate, HDDataObserver>
@@ -32,8 +32,12 @@
     HDProfile *_profile;
     HDActivityCacheStatisticsBuilder *_targetDayStatisticsBuilder;
     HDActivityCacheStatisticsBuilder *_previousDayStatisticsBuilder;
-    _HKTimePeriod *_targetDayDateRange;
-    _HKTimePeriod *_previousDayDateRange;
+    HDActivityCacheHeartRateStatisticsBuilder *_targetDayHeartRateStatisticsBuilder;
+    HDActivityCacheHeartRateStatisticsBuilder *_previousDayHeartRateStatisticsBuilder;
+    NSDateInterval *_targetDayDateInterval;
+    NSDateInterval *_previousDayDateInterval;
+    long long _targetDayCacheIndex;
+    long long _previousDayCacheIndex;
     NSString *_targetDayStatisticsBuilderTag;
     NSString *_previousDayStatisticsBuilderTag;
 }
@@ -42,25 +46,30 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSSet *observedQuantityTypes; // @synthesize observedQuantityTypes=_observedQuantityTypes;
-@property (strong, nonatomic) _HKTimePeriod *previousDayDateRange; // @synthesize previousDayDateRange=_previousDayDateRange;
+@property (nonatomic) long long previousDayCacheIndex; // @synthesize previousDayCacheIndex=_previousDayCacheIndex;
+@property (strong, nonatomic) NSDateInterval *previousDayDateInterval; // @synthesize previousDayDateInterval=_previousDayDateInterval;
+@property (readonly, nonatomic) HDActivityCacheHeartRateStatisticsBuilder *previousDayHeartRateStatisticsBuilder; // @synthesize previousDayHeartRateStatisticsBuilder=_previousDayHeartRateStatisticsBuilder;
 @property (readonly, nonatomic) HDActivityCacheStatisticsBuilder *previousDayStatisticsBuilder; // @synthesize previousDayStatisticsBuilder=_previousDayStatisticsBuilder;
 @property (strong, nonatomic) NSString *previousDayStatisticsBuilderTag; // @synthesize previousDayStatisticsBuilderTag=_previousDayStatisticsBuilderTag;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) _HKTimePeriod *targetDayDateRange; // @synthesize targetDayDateRange=_targetDayDateRange;
+@property (nonatomic) long long targetDayCacheIndex; // @synthesize targetDayCacheIndex=_targetDayCacheIndex;
+@property (strong, nonatomic) NSDateInterval *targetDayDateInterval; // @synthesize targetDayDateInterval=_targetDayDateInterval;
+@property (readonly, nonatomic) HDActivityCacheHeartRateStatisticsBuilder *targetDayHeartRateStatisticsBuilder; // @synthesize targetDayHeartRateStatisticsBuilder=_targetDayHeartRateStatisticsBuilder;
 @property (readonly, nonatomic) HDActivityCacheStatisticsBuilder *targetDayStatisticsBuilder; // @synthesize targetDayStatisticsBuilder=_targetDayStatisticsBuilder;
 @property (strong, nonatomic) NSString *targetDayStatisticsBuilderTag; // @synthesize targetDayStatisticsBuilderTag=_targetDayStatisticsBuilderTag;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (BOOL)_dateIntervalsAreSet;
 - (BOOL)_nonQuantitySampleRequiresWatchSource:(long long)arg1;
 - (id)_nonQuantitySamplesQueryStringWithSampleTypes:(id)arg1;
-- (id)_overallTimePeriod;
+- (id)_overallDateInterval;
 - (id)_parameterStringWithCount:(long long)arg1;
 - (BOOL)_primeNonQuantitySamplesWithError:(id *)arg1;
 - (BOOL)_primePreviousActivationLogEntryWithError:(id *)arg1;
 - (BOOL)_primeQuantitySamplesWithError:(id *)arg1;
 - (BOOL)_quantitySampleIsValidWithTypeCode:(long long)arg1 workoutSourceIdentifier:(long long)arg2 isWatchSource:(BOOL)arg3;
-- (id)_quantitySamplesQueryStringWithQuatityTypes:(id)arg1;
+- (id)_quantitySamplesQueryStringWithQuantityTypes:(id)arg1;
 - (BOOL)_quantityTypeRequiresWatchSource:(long long)arg1;
 - (void)_queue_deregisterForSamplesAdded;
 - (void)_queue_registerForSamplesAdded;
@@ -70,7 +79,6 @@
 - (void)_resetPreviousWatchActivationLogEntries;
 - (void)_resetStatisticsBuilders;
 - (void)_samplesAddedToWorkoutNotification:(id)arg1;
-- (BOOL)_timePeriodsAreSet;
 - (BOOL)_typeIsValidFromCompanionWithoutWorkout:(long long)arg1;
 - (BOOL)_updateStatisticsBuildersWithError:(id *)arg1;
 - (id)activityCacheStatisticsBuilder:(id)arg1 sourceOrderForObjectType:(id)arg2;

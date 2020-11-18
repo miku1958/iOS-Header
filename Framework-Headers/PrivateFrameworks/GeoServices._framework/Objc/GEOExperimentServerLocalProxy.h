@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOExperimentServerProxy-Protocol.h>
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
@@ -28,6 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_debug_fetchAllAvailableExperiments:(CDUnknownBlockType)arg1;
 - (void)_debug_setActiveExperimentBranchDictionaryRepresentation:(id)arg1;
 - (void)_debug_setBucketIdDictionaryRepresentation:(id)arg1;
@@ -40,6 +41,7 @@
 - (void)_setupRefreshActivity;
 - (void)_updateIfNecessary;
 - (void)_writeExperimentInfoToDisk:(id)arg1;
+- (void)abAssignUUIDWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)forceUpdate;
 - (id)initWithDelegate:(id)arg1;

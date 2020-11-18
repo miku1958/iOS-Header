@@ -37,6 +37,7 @@
     BOOL _inserted;
     BOOL _needsSyncUpdate;
     unsigned long long _modifiedAttributes;
+    BOOL _usedForInMemoryChangeTracking;
 }
 
 @property (readonly, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
@@ -52,6 +53,7 @@
 @property (strong, nonatomic) NSDictionary *extraAttributes; // @synthesize extraAttributes=_extraAttributes;
 @property (nonatomic) BOOL fetchedIconData; // @synthesize fetchedIconData=_fetchedIconData;
 @property (readonly, nonatomic, getter=isFolder) BOOL folder; // @synthesize folder=_folder;
+@property (nonatomic) BOOL hasFetchedMetadata;
 @property (readonly, nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (strong, nonatomic) NSData *iconData; // @synthesize iconData=_iconData;
 @property (readonly, nonatomic) int identifier; // @synthesize identifier=_id;
@@ -64,10 +66,10 @@
 @property (strong, nonatomic) NSDictionary *nextPageURLs;
 @property (readonly, nonatomic) int parentID; // @synthesize parentID=_parentID;
 @property (strong, nonatomic) NSString *previewText;
+@property (strong, nonatomic) NSString *readingListIconURL;
+@property (strong, nonatomic) NSString *readingListIconUUID;
 @property (strong, nonatomic) NSString *serverID;
-@property (strong, nonatomic) NSString *siteName;
-@property (strong, nonatomic) NSString *sourceBundleID;
-@property (strong, nonatomic) NSString *sourceLocalizedAppName;
+@property (nonatomic) BOOL shouldArchive;
 @property (readonly, nonatomic) int specialID; // @synthesize specialID=_specialID;
 @property (strong, nonatomic) NSData *syncData;
 @property (strong, nonatomic) NSString *syncKey;
@@ -95,8 +97,10 @@
 - (void)_setParentID:(int)arg1;
 - (void)_setSyncable:(BOOL)arg1;
 - (void)_setUUID:(id)arg1;
+- (void)_setUsedForInMemoryChangeTracking:(BOOL)arg1;
 - (unsigned long long)_sizeForFileOrDirectory:(id)arg1 withAttributes:(id)arg2;
 - (id)_suggestedFileNameForWebView:(id)arg1;
+- (BOOL)_usedForInMemoryChangeTracking;
 - (unsigned long long)archiveSize;
 - (void)cleanupRedundantPreviewText;
 - (void)clearArchive;
@@ -124,7 +128,7 @@
 - (id)localizedTitle;
 - (void)setTitle:(id)arg1 previewText:(id)arg2 dateLastFetched:(id)arg3;
 - (id)shortTypeDescription;
-- (BOOL)shouldReattemptArchive;
+- (BOOL)shouldReattemptArchiveWithAutomaticArchivingEnabled:(BOOL)arg1;
 - (id)webarchivePathForNextPageURL:(id)arg1;
 - (id)webarchivePathInReaderForm:(BOOL)arg1 fileExists:(BOOL *)arg2;
 - (BOOL)writeOfflineWebView:(id)arg1 asArchive:(BOOL)arg2 inReaderForm:(BOOL)arg3;

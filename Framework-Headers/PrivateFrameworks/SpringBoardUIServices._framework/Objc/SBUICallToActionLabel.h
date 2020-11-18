@@ -37,14 +37,15 @@
 - (void).cxx_destruct;
 - (void)_actuallyRunGradientAnimation;
 - (void)_addAnimationCompletionBlockIfNecessary:(CDUnknownBlockType)arg1;
+- (id)_callToActionFont;
 - (void)_createGradientLayer;
 - (void)_createLabel;
 - (void)_executePostAnimationCompletionBlocks;
-- (void)_fadeInImmediately:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_fontWithTextStyle:(id)arg1 symbolicTraits:(unsigned int)arg2 withMaximumFontSizeCategory:(id)arg3;
 - (void)_invalidateGradientAnimationTimer;
 - (void)_preferredTextSizeChanged:(id)arg1;
 - (void)_resetGradientAndLabelBefore:(BOOL)arg1;
-- (void)_runFadeAnimationForFadingOut:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_runFadeAnimationForFadingOut:(BOOL)arg1 duration:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_runGradientAnimation:(BOOL)arg1;
 - (void)_timerTriggered;
 - (void)_updateLabelTextWithLanguage:(id)arg1;
@@ -54,7 +55,9 @@
 - (void)cancelFadeInTimerIfNecessary;
 - (void)fadeIn;
 - (void)fadeInImmediately:(BOOL)arg1;
+- (void)fadeInImmediately:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fadeOut;
+- (void)fadeOutWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setText:(id)arg1 forLanguage:(id)arg2 animated:(BOOL)arg3;

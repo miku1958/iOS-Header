@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class ALAssetRepresentationPrivate;
 
@@ -19,7 +19,7 @@
 
 + (void)_enableImageDataUsesMap;
 - (struct CGImage *)CGImageWithOptions:(id)arg1;
-- (struct CGImage *)CGImageWithOptions:(id)arg1 format:(int)arg2 bakeInOrientation:(int)arg3;
+- (struct CGImage *)CGImageWithOptions:(id)arg1 format:(int)arg2;
 - (id)UTI;
 - (int)_fileDescriptor;
 - (id)_imageData;

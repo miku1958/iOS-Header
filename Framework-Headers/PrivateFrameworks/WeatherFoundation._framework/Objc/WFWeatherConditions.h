@@ -13,12 +13,14 @@
 
 @interface WFWeatherConditions : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _nightForecast;
     WFLocation *_location;
     NSMutableDictionary *_components;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *components; // @synthesize components=_components;
 @property (strong) WFLocation *location; // @synthesize location=_location;
+@property (getter=isNightForecast) BOOL nightForecast; // @synthesize nightForecast=_nightForecast;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

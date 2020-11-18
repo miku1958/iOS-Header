@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class ICLRUCache, NSMapTable;
+@protocol OS_dispatch_source;
 
 @interface ICImageLRUCache : NSObject
 {
@@ -16,11 +17,13 @@
     ICLRUCache *_bigImageCache;
     ICLRUCache *_smallImageCache;
     NSMapTable *_weakImageMap;
+    NSObject<OS_dispatch_source> *_memoryWarningEventSource;
 }
 
 @property (readonly) ICLRUCache *bigImageCache; // @synthesize bigImageCache=_bigImageCache;
 @property (readonly, nonatomic) unsigned long long bigImageCacheCount; // @synthesize bigImageCacheCount=_bigImageCacheCount;
 @property (readonly, nonatomic) unsigned long long imagePixelThreshold; // @synthesize imagePixelThreshold=_imagePixelThreshold;
+@property (strong, nonatomic) NSObject<OS_dispatch_source> *memoryWarningEventSource; // @synthesize memoryWarningEventSource=_memoryWarningEventSource;
 @property (readonly) ICLRUCache *smallImageCache; // @synthesize smallImageCache=_smallImageCache;
 @property (readonly, nonatomic) unsigned long long smallImageCacheCount; // @synthesize smallImageCacheCount=_smallImageCacheCount;
 @property (readonly) NSMapTable *weakImageMap; // @synthesize weakImageMap=_weakImageMap;
@@ -29,10 +32,12 @@
 - (void)dealloc;
 - (id)initWithBigImageCount:(unsigned long long)arg1 smallImageCount:(unsigned long long)arg2 pixelThreshold:(unsigned long long)arg3;
 - (struct UIImage *)objectForKey:(id)arg1;
-- (void)receivedMemoryWarning:(id)arg1;
+- (void)receivedMemoryWarning;
+- (void)registerForMemoryWarnings;
 - (void)removeAllObjects;
 - (void)removeObjectForKey:(id)arg1;
 - (void)setObject:(struct UIImage *)arg1 forKey:(id)arg2;
+- (void)unregisterForMemoryWarnings;
 
 @end
 

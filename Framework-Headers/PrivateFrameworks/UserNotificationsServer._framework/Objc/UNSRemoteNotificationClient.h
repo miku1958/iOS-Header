@@ -8,29 +8,19 @@
 
 #import <UserNotificationsServer/NSCoding-Protocol.h>
 
-@class NSData, NSDate, NSString;
+@class NSData, NSString;
 
 @interface UNSRemoteNotificationClient : NSObject <NSCoding>
 {
-    NSString *_bundleIdentifier;
     NSString *_tokenIdentifier;
     NSString *_environment;
     NSData *_lastKnownDeviceToken;
-    NSDate *_missingDate;
-    BOOL _backgroundDeliveryDisabled;
-    long long _dayOfLastNewsstandPush;
-    unsigned long long _dailyCountOfNewsstandPushes;
     BOOL _wantsPush;
     NSString *_pushDisabledReason;
 }
 
-@property (nonatomic) BOOL backgroundDeliveryDisabled; // @synthesize backgroundDeliveryDisabled=_backgroundDeliveryDisabled;
-@property (readonly, strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (nonatomic) unsigned long long dailyCountOfNewsstandPushes; // @synthesize dailyCountOfNewsstandPushes=_dailyCountOfNewsstandPushes;
-@property (nonatomic) long long dayOfLastNewsstandPush; // @synthesize dayOfLastNewsstandPush=_dayOfLastNewsstandPush;
 @property (strong, nonatomic) NSString *environment; // @synthesize environment=_environment;
 @property (strong, nonatomic) NSData *lastKnownDeviceToken; // @synthesize lastKnownDeviceToken=_lastKnownDeviceToken;
-@property (strong, nonatomic) NSDate *missingDate; // @synthesize missingDate=_missingDate;
 @property (strong, nonatomic) NSString *pushDisabledReason; // @synthesize pushDisabledReason=_pushDisabledReason;
 @property (readonly, strong, nonatomic) NSString *tokenIdentifier; // @synthesize tokenIdentifier=_tokenIdentifier;
 @property (nonatomic, getter=doesWantPush) BOOL wantsPush; // @synthesize wantsPush=_wantsPush;
@@ -39,7 +29,7 @@
 + (id)validEnvironmentFromEnvironment:(id)arg1;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithBundleIdentifier:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)wantsPushWithCoder:(id)arg1;
 

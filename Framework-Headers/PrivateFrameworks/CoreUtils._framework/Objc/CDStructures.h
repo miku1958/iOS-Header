@@ -33,6 +33,10 @@ struct LogCategoryPrivate;
 
 struct LogOutput;
 
+struct NSMutableArray {
+    Class _field1;
+};
+
 struct NSMutableDictionary {
     Class _field1;
 };
@@ -44,6 +48,15 @@ struct NSMutableSet {
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;
+};
+
+struct __SecKey {
+    struct __CFRuntimeBase {
+        unsigned long long _field1;
+        _Atomic unsigned long long _field2;
+    } _field1;
+    struct __SecKeyDescriptor *_field2;
+    void *_field3;
 };
 
 struct __sbuf {
@@ -68,6 +81,11 @@ struct in6_addr {
 
 struct in_addr {
     unsigned int s_addr;
+};
+
+struct iovec {
+    void *iov_base;
+    unsigned long long iov_len;
 };
 
 struct os_state_data_decoder_s {
@@ -108,4 +126,18 @@ struct sockaddr_in6 {
     struct in6_addr sin6_addr;
     unsigned int sin6_scope_id;
 };
+
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned char bytes[6];
+} CDStruct_83abfce7;
+
+#pragma mark Typedef'd Unions
+
+typedef union {
+    struct sockaddr sa;
+    struct sockaddr_in v4;
+    struct sockaddr_in6 v6;
+} CDUnion_fab80606;
 

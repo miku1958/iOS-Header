@@ -35,7 +35,7 @@
 - (void)_setupObjCModelFrom:(id)arg1;
 - (void)_syncObjCModel:(struct __C3DParametricGeometry *)arg1;
 - (id)copy;
-- (struct __C3DAnimationChannel *)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
+- (id)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

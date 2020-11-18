@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString;
+@class NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, WFServiceConnection;
 @protocol OS_dispatch_queue;
 
 @interface WAForecastModelController : NSObject
@@ -16,12 +16,16 @@
     NSObject<OS_dispatch_queue> *_completionHandlerQueue;
     NSMutableSet *_updatingCities;
     NSMutableDictionary *_completionHandlersForCity;
+    WFServiceConnection *_connection;
+    struct ct_green_tea_logger_s *_greenTeaLogger;
     NSString *_trackingParameter;
 }
 
 @property (strong) NSObject<OS_dispatch_queue> *completionHandlerQueue; // @synthesize completionHandlerQueue=_completionHandlerQueue;
 @property (strong) NSMutableDictionary *completionHandlersForCity; // @synthesize completionHandlersForCity=_completionHandlersForCity;
+@property (strong, nonatomic) WFServiceConnection *connection; // @synthesize connection=_connection;
 @property (strong) NSOperationQueue *forecastOperationQueue; // @synthesize forecastOperationQueue=_forecastOperationQueue;
+@property (nonatomic) struct ct_green_tea_logger_s *greenTeaLogger; // @synthesize greenTeaLogger=_greenTeaLogger;
 @property (strong) NSObject<OS_dispatch_queue> *incomingRequestQueue; // @synthesize incomingRequestQueue=_incomingRequestQueue;
 @property (copy) NSString *trackingParameter; // @synthesize trackingParameter=_trackingParameter;
 @property (strong) NSMutableSet *updatingCities; // @synthesize updatingCities=_updatingCities;
@@ -31,6 +35,7 @@
 - (void)_handleForecastOperationCompletion:(id)arg1;
 - (id)_queue_executeFetchForCity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cancelAllFetchRequests;
+- (void)dealloc;
 - (BOOL)fetchForecastForCities:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)fetchForecastForCity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;

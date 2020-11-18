@@ -13,22 +13,29 @@
 @protocol PUDisplayAsset <NSObject, NSCopying>
 
 @property (readonly, nonatomic) double aspectRatio;
+@property (readonly, nonatomic) BOOL canPlayLoopingVideo;
 @property (readonly, nonatomic) BOOL canPlayPhotoIris;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
-@property (readonly, nonatomic) unsigned long long fullsizeDataFormat;
 @property (readonly, nonatomic) BOOL hasPhotoColorAdjustments;
+@property (readonly, nonatomic) BOOL isAnimatedImage;
 @property (readonly, nonatomic) BOOL isPhotoIrisPlaceholder;
 @property (readonly, nonatomic) BOOL isTemporaryPlaceholder;
+@property (readonly, nonatomic, getter=isLivePhoto) BOOL livePhoto;
 @property (readonly, nonatomic) NSString *localizedGeoDescription;
 @property (readonly, nonatomic) CLLocation *location;
+@property (readonly, nonatomic) unsigned long long mediaSubtypes;
 @property (readonly, nonatomic) unsigned long long mediaType;
 @property (readonly, nonatomic) NSDate *modificationDate;
+@property (readonly, nonatomic) unsigned long long originalFilesize;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 photoIrisStillDisplayTime;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 photoIrisVideoDuration;
 @property (readonly, nonatomic) unsigned long long pixelHeight;
 @property (readonly, nonatomic) unsigned long long pixelWidth;
+@property (readonly, nonatomic) long long playbackStyle;
+@property (readonly, nonatomic) long long playbackVariation;
+@property (readonly, nonatomic) NSString *uniformTypeIdentifier;
 @property (readonly, nonatomic) NSString *uuid;
 
 - (unsigned long long)isContentEqualTo:(id<PUDisplayAsset>)arg1;

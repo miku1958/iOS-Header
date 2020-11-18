@@ -8,7 +8,7 @@
 
 #import <Metal/MTLFunctionSPI-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class MTLType, NSArray, NSDictionary, NSString;
 @protocol MTLDevice, OS_dispatch_data;
 
 @interface _MTLFunction : NSObject <MTLFunctionSPI>
@@ -21,13 +21,14 @@
     NSArray *_vertexAttributes;
     NSArray *_functionConstants;
     NSDictionary *_functionConstantDictionary;
-    NSObject<OS_dispatch_data> *_constantData;
     NSString *_label;
+    MTLType *_returnType;
+    NSArray *_arguments;
 }
 
+@property NSArray *arguments; // @dynamic arguments;
 @property (readonly) unsigned long long bitCodeOffset; // @dynamic bitCodeOffset;
 @property (readonly) unsigned char bitcodeType; // @dynamic bitcodeType;
-@property (readonly) NSObject<OS_dispatch_data> *constantData; // @dynamic constantData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device; // @synthesize device=_device;
@@ -44,6 +45,7 @@
 @property (readonly) BOOL needsFunctionConstantValues; // @dynamic needsFunctionConstantValues;
 @property (readonly) long long patchControlPointCount; // @dynamic patchControlPointCount;
 @property (readonly) unsigned long long patchType; // @dynamic patchType;
+@property MTLType *returnType; // @dynamic returnType;
 @property (readonly) NSArray *stageInputAttributes; // @dynamic stageInputAttributes;
 @property (readonly) Class superclass;
 @property (readonly) id vendorPrivate; // @synthesize vendorPrivate=_vendorPrivate;
@@ -54,8 +56,13 @@
 - (void)dealloc;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)initWithName:(id)arg1 type:(unsigned long long)arg2 libraryData:(struct MTLLibraryData *)arg3 device:(id)arg4;
-- (void)newSpecializedFunctionWithConstants:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)newSpecializedFunctionWithConstants:(id)arg1 error:(id *)arg2;
+- (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
+- (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2;
+- (id)newIndirectArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
+- (id)newIndirectArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2;
+- (id)newSerializedVertexDataWithVertexDescriptor:(id)arg1;
+- (id)reflectionWithOptions:(unsigned long long)arg1;
+- (void)reflectionWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setVendorPrivate:(id)arg1;
 
 @end

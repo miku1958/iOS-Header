@@ -37,6 +37,7 @@
 - (BOOL)deleteObjectWithUniqueId:(id)arg1 error:(id *)arg2 save:(BOOL)arg3;
 - (BOOL)deleteObjectsWithUniqueIds:(id)arg1;
 - (BOOL)deleteObjectsWithUniqueIds:(id)arg1 error:(id *)arg2;
+- (id)deleteWithPredicate:(id)arg1;
 - (id)fetchAll;
 - (id)fetchAllNoLimit;
 - (id)fetchAllObjectsWithUniqueId:(id)arg1;

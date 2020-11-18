@@ -40,12 +40,15 @@
 + (BOOL)supportsSecureCoding;
 - (id)_cachedDocumentationDataForURL:(id)arg1;
 - (void)_clearTransientDocumentationData;
+- (id)_getSUImage:(id)arg1;
 - (id)_localizedResourceURLForDocumentationAsset:(id)arg1 resource:(id)arg2;
 - (void)_resetIfNecessary;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)getFullWidthImage;
+- (id)getIconImage;
 - (BOOL)hasAnyDocumentation;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -54,6 +57,7 @@
 - (id)localizedDocumentationStringFromBundle:(struct __CFBundle *)arg1 key:(id)arg2;
 - (id)localizedStringFromBundle:(struct __CFBundle *)arg1 key:(id)arg2;
 - (id)localizedURLFromBundle:(struct __CFBundle *)arg1 resource:(id)arg2;
+- (id)pngImageDataFromBundle:(struct __CFBundle *)arg1 fileName:(id)arg2;
 - (id)releaseNotes;
 - (id)releaseNotesSummary;
 

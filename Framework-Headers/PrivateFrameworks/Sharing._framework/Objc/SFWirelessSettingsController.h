@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue, OS_dispatch_semaphore, SFWirelessSettingsControllerDelegate;
+@protocol SFWirelessSettingsControllerDelegate;
 
 @interface SFWirelessSettingsController : NSObject
 {
@@ -18,8 +18,6 @@
     BOOL _wirelessCarPlayEnabled;
     BOOL _wirelessAccessPointEnabled;
     struct __SFOperation *_information;
-    NSObject<OS_dispatch_queue> *_informationQueue;
-    NSObject<OS_dispatch_semaphore> *_firstCallBackSemaphore;
 }
 
 @property (getter=isBluetoothEnabled) BOOL bluetoothEnabled;
@@ -33,6 +31,7 @@
 - (void)dealloc;
 - (void)handleOperationCallback:(struct __SFOperation *)arg1 event:(long long)arg2 withResults:(id)arg3;
 - (id)init;
+- (void)invalidate;
 
 @end
 

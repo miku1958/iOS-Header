@@ -29,6 +29,12 @@
     double _rotationAmount;
     struct CGPoint _translationOffset;
     double _maximumParallaxDepth;
+    BOOL _nonOpaqueShadow;
+    BOOL _singleLayerNoMask;
+    BOOL _layerStackSupportsInflation;
+    BOOL _layerStackInflated;
+    unsigned long long _layerStackInflationSeed;
+    BOOL _deferredInflationPending;
     id _flatImage;
     NSArray *_parallaxImages;
     NSArray *_parallaxLayerDepths;
@@ -51,6 +57,8 @@
     CATransformLayer *_imageRotationTransformLayer;
     CATransformLayer *_maskPerspectiveTransformLayer;
     CATransformLayer *_maskRotationTransformLayer;
+    CATransformLayer *_unmaskedOverlayPerspectiveTransformLayer;
+    CATransformLayer *_unmaskedOverlayRotationTransformLayer;
     CATransformLayer *_cursorRotationTransformLayer;
     CALayer *_frontmostPerspectiveTransformLayer;
     CATransformLayer *_frontmostRotationTransformLayer;
@@ -76,9 +84,12 @@
 + (id)_layerStackObservingKeys;
 + (struct CGSize)_scaledSizeForSize:(struct CGSize)arg1 focusSizeIncrease:(double)arg2 selectionStyle:(long long)arg3;
 - (void).cxx_destruct;
-- (id)_TVTraitCollection;
 - (void)_applyFocusDirectionTransform;
 - (void)_applyFocusDirectionTransformWithAnimationCoordinator:(id)arg1;
+- (BOOL)_aspectMatchesLayerStack;
+- (struct CGImage *)_cgImageForLayeredImage:(id)arg1;
+- (BOOL)_configuredForNonOpaqueShadow;
+- (id)_contentLayers;
 - (struct CGRect)_cursorBounds;
 - (void)_deselect;
 - (struct CGRect)_displayFrameForModelFrame:(struct CGRect)arg1;
@@ -100,6 +111,7 @@
 - (id)_layerBelowTitles;
 - (struct CGPoint)_layerStackToDisplayScaleFactor;
 - (void)_layoutRadiosityLayer;
+- (id)_overlayLayer;
 - (id)_parallaxLayerDepths;
 - (struct CATransform3D)_perspectiveTransformForCurrentState;
 - (struct CGRect)_positionAndSizeForLayerImage:(id)arg1;
@@ -107,6 +119,7 @@
 - (unsigned long long)_primaryControlStateForState:(unsigned long long)arg1;
 - (BOOL)_radiosityEnabled;
 - (id)_randomImage;
+- (void)_removeLayerFromSuperlayer:(id)arg1;
 - (void)_resetAnimatingToNormalState;
 - (struct CATransform3D)_rotationTransformForCurrentFocusDirection;
 - (struct CGSize)_roundedBoundsSize;
@@ -119,6 +132,7 @@
 - (void)_setFocusDirection:(struct CGPoint)arg1 duration:(double)arg2;
 - (void)_setIdleModeFocusSizeOffset:(double)arg1;
 - (void)_setImageStackContentsGravity:(id)arg1;
+- (void)_setLayerStackInflated:(BOOL)arg1 seed:(unsigned long long)arg2;
 - (void)_setOverlayLayer:(id)arg1;
 - (void)_setParallaxImages:(id)arg1;
 - (void)_setParallaxLayerDepths:(id)arg1;
@@ -127,7 +141,9 @@
 - (void)_setupFrontmostTransformLayers;
 - (id)_shadowLayer;
 - (void)_showImageLayers;
+- (struct CATransform3D)_specularTransformForCurrentState;
 - (double)_unfocusedShadowRadius;
+- (id)_unmaskedOverlayLayer;
 - (void)_updateCornerRadiusFromConfig;
 - (void)_updateFocusKeylineStrokeScale;
 - (void)_updateFocusKeylineStrokeTranslation:(struct CGPoint)arg1;
@@ -136,14 +152,19 @@
 - (void)_updateImageLayerFilterValues;
 - (void)_updateLayerForSelection;
 - (void)_updateLayerForSelectionWithAnimationCoordinator:(id)arg1;
+- (void)_updateNonOpaqueShadowStateFromLayerStack;
 - (void)_updateNormalImageLayers;
+- (void)_updateOverlayContainerLayerHierarchy:(BOOL)arg1;
 - (void)_updatePerspective;
 - (void)_updateRadiosityFromLayerStack;
 - (void)_updateRotationAndTranslation:(id)arg1;
 - (void)_updateShadowBounds;
 - (void)_updateShadowPositionWithOffset:(struct CGPoint)arg1;
 - (void)_updateShadowWithAnimationCoordinator:(id)arg1;
+- (void)_updateSingleLayerNoMaskFromLayerStack;
+- (void)_updateSpecularLayerContents;
 - (void)_updateSpecularLayerContentsRect;
+- (void)_wrapLayerInView:(id)arg1;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)dealloc;
 - (id)init;
@@ -151,11 +172,13 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)removeAllAnimations;
 - (void)setBounds:(struct CGRect)arg1;
+- (void)setContentsScale:(double)arg1;
 - (void)setControlState:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)setControlState:(unsigned long long)arg1 animated:(BOOL)arg2 focusAnimationCoordinator:(id)arg3;
 - (void)setFocusDirection:(struct CGPoint)arg1 animated:(BOOL)arg2;
 - (void)setPressed:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setPressed:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setRasterizationScale:(double)arg1;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2 focusAnimationCoordinator:(id)arg3;
 

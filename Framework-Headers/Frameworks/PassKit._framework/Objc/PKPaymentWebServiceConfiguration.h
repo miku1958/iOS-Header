@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -40,6 +40,8 @@
 - (id)initWithConfiguration:(id)arg1 url:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)manualProvisioningEnabledForRegion:(id)arg1;
+- (id)maxRefreshIntervalForRegion:(id)arg1;
+- (id)maxRefreshIntervalForUnsupportedRegion;
 - (id)paymentServicesMerchantURLForRegion:(id)arg1;
 - (id)paymentServicesURLForRegion:(id)arg1;
 - (id)paymentSetupBrowsableProductTypesForRegion:(id)arg1;

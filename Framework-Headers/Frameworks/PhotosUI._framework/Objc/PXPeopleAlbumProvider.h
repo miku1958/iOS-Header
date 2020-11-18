@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUICore/PXPeopleDataSourceDelegate-Protocol.h>
+#import <PhotosUICore/PXPeopleSectionedDataSourceChangeObserver-Protocol.h>
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
-@class NSMutableDictionary, NSString, PHPhotoLibrary, PXPeoplePersonDataSource, PXPeopleProgressManager;
+@class NSMutableDictionary, NSString, PHPhotoLibrary, PXPeopleProgressManager, PXPeopleSectionedDataSource;
 @protocol OS_dispatch_queue;
 
-@interface PXPeopleAlbumProvider : NSObject <PXPeopleDataSourceDelegate, PXPhotoLibraryUIChangeObserver>
+@interface PXPeopleAlbumProvider : NSObject <PXPeopleSectionedDataSourceChangeObserver, PXPhotoLibraryUIChangeObserver>
 {
     BOOL _didInitiateReCacheRequest;
     BOOL _didInitiatePeopleCountFetchRequest;
@@ -22,8 +22,7 @@
     NSObject<OS_dispatch_queue> *_backgroundQueue;
     PHPhotoLibrary *_photoLibrary;
     _Atomic int _currentRequestId;
-    PXPeoplePersonDataSource *_favoriteDS;
-    PXPeoplePersonDataSource *_otherDS;
+    PXPeopleSectionedDataSource *_peopleDataSource;
     PXPeopleProgressManager *_progressMgr;
     CDUnknownBlockType _requestCompletion;
     long long _cachedPeopleCount;
@@ -36,12 +35,11 @@
 @property _Atomic int currentRequestId; // @synthesize currentRequestId=_currentRequestId;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) PXPeoplePersonDataSource *favoriteDS; // @synthesize favoriteDS=_favoriteDS;
 @property (readonly) unsigned long long hash;
 @property (strong) NSMutableDictionary *imageCache; // @synthesize imageCache=_imageCache;
 @property (nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
-@property (strong, nonatomic) PXPeoplePersonDataSource *otherDS; // @synthesize otherDS=_otherDS;
 @property (readonly, nonatomic) long long peopleCount;
+@property (readonly, nonatomic) PXPeopleSectionedDataSource *peopleDataSource; // @synthesize peopleDataSource=_peopleDataSource;
 @property (strong, nonatomic) PXPeopleProgressManager *progressMgr; // @synthesize progressMgr=_progressMgr;
 @property (copy, nonatomic) CDUnknownBlockType requestCompletion; // @synthesize requestCompletion=_requestCompletion;
 @property (readonly) Class superclass;
@@ -59,8 +57,8 @@
 - (void)dealloc;
 - (void)imageCacheDidChanged:(id)arg1;
 - (id)init;
-- (void)peopleDataSource:(id)arg1 didApplyIncrementalChanges:(id)arg2;
-- (void)peopleDataSourceMembersChanged:(id)arg1;
+- (void)peopleSectionedDataSource:(id)arg1 didApplyIncrementalChanges:(id)arg2;
+- (void)peopleSectionedDataSourceMembersChanged:(id)arg1;
 - (id)peopleViewController;
 - (void)requestAlbumImagesWithSize:(struct CGSize)arg1 completion:(CDUnknownBlockType)arg2;
 

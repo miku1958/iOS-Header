@@ -22,13 +22,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasBookedTableSessionId;
 
 + (Class)bookedTableType;
+- (void).cxx_destruct;
 - (void)addBookedTable:(id)arg1;
 - (id)bookedTableAtIndex:(unsigned long long)arg1;
 - (unsigned long long)bookedTablesCount;
 - (void)clearBookedTables;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

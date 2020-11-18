@@ -41,6 +41,7 @@
 @property (readonly, nonatomic) NSArray *videosSources; // @synthesize videosSources=_videosSources;
 @property (readonly, nonatomic) NSDictionary *videosSourcesSharingInfo; // @synthesize videosSourcesSharingInfo=_videosSourcesSharingInfo;
 
++ (BOOL)areVideoSourcesStreamShareSources:(id)arg1;
 - (void).cxx_destruct;
 - (void)_dequeueTrimmingControl;
 - (void)_sendDidFinish;
@@ -48,6 +49,7 @@
 - (void)_showTrimViewControllerForSource:(id)arg1;
 - (void)_trimVideoSource:(id)arg1;
 - (id)_videoTooLongAlertController;
+- (void)cleanupResources;
 - (void)editVideoViewController:(id)arg1 didTrimVideoWithOptions:(id)arg2;
 - (void)editVideoViewControllerDidCancel:(id)arg1;
 - (id)initWithViewController:(id)arg1 videoSources:(id)arg2 videoSourcesSharingInfo:(id)arg3 album:(id)arg4;

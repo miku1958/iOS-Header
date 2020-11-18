@@ -10,17 +10,22 @@
 {
 }
 
++ (unsigned long long)_currentSplashScreenVersion;
 + (BOOL)areApplicationBadgesSupported;
 + (BOOL)areContextualRemindersSupported;
 + (BOOL)areQuickActionsSupported;
 + (BOOL)areVehicleTriggersEnabled;
++ (BOOL)automaticGeocodingEnabled;
 + (BOOL)calendarListViewCellsFeaturesAttendeeInformation;
 + (BOOL)calendarListViewCellsFeaturesExtraContent;
 + (BOOL)eventDetailsDayPreviewEnabled;
++ (BOOL)eventsFoundInAppsEnabled;
 + (BOOL)isConservativeEntryEnabled;
 + (BOOL)isContinuitySupported;
 + (BOOL)isSuggestionsEnabled;
 + (BOOL)isTravelAdvisorySupported;
++ (BOOL)mustDisplaySplashScreenToUser;
++ (void)userAcknowledgedSplashScreen;
 
 @end
 

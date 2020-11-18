@@ -60,7 +60,7 @@
 - (struct _NSRange)selectionRangeInField:(id)arg1 inFrame:(id)arg2;
 - (void)setFormControls:(id)arg1 inFrame:(id)arg2 asAutoFilled:(BOOL)arg3;
 - (BOOL)shouldAttemptToClassifyFormsWithoutAPasswordFieldAsLoginForms;
-- (BOOL)shouldIncludeUnannotatedControls;
+- (BOOL)shouldIncludeNonEmptyFields;
 - (void)textFieldBlurred:(id)arg1 inFrame:(id)arg2 page:(id)arg3 textFieldMetadata:(id)arg4 formMetadata:(id)arg5;
 - (void)textFieldFocused:(id)arg1 inFrame:(id)arg2;
 - (id)uniqueIDForTextField:(id)arg1 inFrame:(id)arg2;

@@ -6,50 +6,67 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreParsec/NSCopying-Protocol.h>
+#import <CoreParsec/NSSecureCoding-Protocol.h>
+#import <CoreParsec/_CPProcessableFeedback-Protocol.h>
+#import <CoreParsec/_CPStoreCardSectionEngagementFeedback-Protocol.h>
 
-@class _CPCardSectionForFeedback, _CPPunchoutForFeedback;
+@class NSData, NSDictionary, NSString, _CPCardSectionForFeedback, _CPPunchoutForFeedback;
 
-@interface _CPStoreCardSectionEngagementFeedback : PBCodable <NSCopying>
+@interface _CPStoreCardSectionEngagementFeedback : PBCodable <_CPProcessableFeedback, _CPStoreCardSectionEngagementFeedback, NSSecureCoding>
 {
-    unsigned long long _timestamp;
-    int _actionCardType;
-    _CPCardSectionForFeedback *_cardSection;
-    _CPPunchoutForFeedback *_destination;
-    int _productPageResult;
-    int _triggerEvent;
     struct {
+        unsigned int timestamp:1;
+        unsigned int triggerEvent:1;
         unsigned int actionCardType:1;
         unsigned int productPageResult:1;
-        unsigned int triggerEvent:1;
     } _has;
+    int _triggerEvent;
+    int _actionCardType;
+    int _productPageResult;
+    unsigned long long _timestamp;
+    _CPPunchoutForFeedback *_destination;
+    _CPCardSectionForFeedback *_cardSection;
+    NSString *_cardSectionId;
+    NSString *_resultId;
 }
 
 @property (nonatomic) int actionCardType; // @synthesize actionCardType=_actionCardType;
 @property (strong, nonatomic) _CPCardSectionForFeedback *cardSection; // @synthesize cardSection=_cardSection;
+@property (copy, nonatomic) NSString *cardSectionId; // @synthesize cardSectionId=_cardSectionId;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _CPPunchoutForFeedback *destination; // @synthesize destination=_destination;
-@property (nonatomic) BOOL hasActionCardType;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly, nonatomic) id feedbackJSON;
+@property (readonly, nonatomic) BOOL hasActionCardType;
 @property (readonly, nonatomic) BOOL hasCardSection;
+@property (readonly, nonatomic) BOOL hasCardSectionId;
 @property (readonly, nonatomic) BOOL hasDestination;
-@property (nonatomic) BOOL hasProductPageResult;
-@property (nonatomic) BOOL hasTriggerEvent;
+@property (readonly, nonatomic) BOOL hasProductPageResult;
+@property (readonly, nonatomic) BOOL hasResultId;
+@property (readonly, nonatomic) BOOL hasTimestamp;
+@property (readonly, nonatomic) BOOL hasTriggerEvent;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int productPageResult; // @synthesize productPageResult=_productPageResult;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (readonly, nonatomic) BOOL requiresQueryId;
+@property (copy, nonatomic) NSString *resultId; // @synthesize resultId=_resultId;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 
 - (void).cxx_destruct;
-- (int)StringAsActionCardType:(id)arg1;
-- (int)StringAsTriggerEvent:(id)arg1;
-- (id)actionCardTypeAsString:(int)arg1;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)init;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithFacade:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)triggerEventAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

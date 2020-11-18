@@ -6,16 +6,19 @@
 
 #import <PhotoLibraryServices/PLPhotoEditModel.h>
 
-@class NSArray, NSDictionary, NSString, _UIDynamicValueAnimation;
+@class NSArray, NSDictionary, NSNumber, NSString, _UIDynamicValueAnimation;
 
 @interface PLPhotoEditMutableModel : PLPhotoEditModel
 {
     long long _transactionDepth;
+    PLPhotoEditModel *_modelBeforeChanges;
     _UIDynamicValueAnimation *_currentCopyAnimation;
 }
 
-@property (nonatomic) long long appliedOrientation; // @dynamic appliedOrientation;
 @property (nonatomic, getter=isAutoCropped) BOOL autoCropped; // @dynamic autoCropped;
+@property (nonatomic, getter=isAutoLoopEnabled) BOOL autoLoopEnabled; // @dynamic autoLoopEnabled;
+@property (copy, nonatomic) NSString *autoLoopFlavor; // @dynamic autoLoopFlavor;
+@property (copy, nonatomic) NSDictionary *autoLoopRecipe; // @dynamic autoLoopRecipe;
 @property (copy, nonatomic) NSArray *autoRedEyeCorrections; // @dynamic autoRedEyeCorrections;
 @property (copy, nonatomic) NSString *autoSmartColorIdentifier; // @dynamic autoSmartColorIdentifier;
 @property (nonatomic) double autoSmartColorLevel; // @dynamic autoSmartColorLevel;
@@ -34,14 +37,25 @@
 @property (nonatomic) double colorContrastLevelOffset; // @dynamic colorContrastLevelOffset;
 @property (nonatomic) double colorVibrancyLevelOffset; // @dynamic colorVibrancyLevelOffset;
 @property (nonatomic) double contrastLevelOffset; // @dynamic contrastLevelOffset;
+@property (nonatomic) struct CGRect cropRect; // @dynamic cropRect;
+@property (nonatomic, getter=isDepthEffectEnabled) BOOL depthEffectEnabled; // @dynamic depthEffectEnabled;
+@property (copy, nonatomic) NSDictionary *depthEffectSettings; // @dynamic depthEffectSettings;
 @property (copy, nonatomic) NSString *effectFilterName; // @dynamic effectFilterName;
 @property (nonatomic) long long effectFilterVersion; // @dynamic effectFilterVersion;
 @property (nonatomic) double exposureLevelOffset; // @dynamic exposureLevelOffset;
+@property (nonatomic, getter=isFusionEnabled) BOOL fusionEnabled; // @dynamic fusionEnabled;
+@property (copy, nonatomic) NSDictionary *fusionParameters; // @dynamic fusionParameters;
 @property (nonatomic) double highlightsLevelOffset; // @dynamic highlightsLevelOffset;
+@property (nonatomic) long long inputOrientation; // @dynamic inputOrientation;
+@property (nonatomic) struct CGSize inputSize; // @dynamic inputSize;
 @property (copy, nonatomic) NSArray *legacyAutoEnhanceFilters; // @dynamic legacyAutoEnhanceFilters;
 @property (nonatomic) BOOL legacyAutoEnhanceIsOn; // @dynamic legacyAutoEnhanceIsOn;
 @property (nonatomic) double localLightLevelOffset; // @dynamic localLightLevelOffset;
-@property (nonatomic) struct CGRect normalizedCropRect; // @dynamic normalizedCropRect;
+@property (strong, nonatomic) NSNumber *muted; // @dynamic muted;
+@property (nonatomic, getter=isPortraitEffectEnabled) BOOL portraitEffectEnabled; // @dynamic portraitEffectEnabled;
+@property (copy, nonatomic) NSString *portraitEffectFilterName; // @dynamic portraitEffectFilterName;
+@property (nonatomic) long long portraitEffectFilterVersion; // @dynamic portraitEffectFilterVersion;
+@property (copy, nonatomic) NSDictionary *portraitEffectSettings; // @dynamic portraitEffectSettings;
 @property (copy, nonatomic) NSArray *redEyeCorrections; // @dynamic redEyeCorrections;
 @property (nonatomic) double shadowsLevelOffset; // @dynamic shadowsLevelOffset;
 @property (nonatomic, getter=isSmartBWEnabled) BOOL smartBWEnabled; // @dynamic smartBWEnabled;
@@ -53,24 +67,27 @@
 @property (nonatomic, getter=isSmartToneEnabled) BOOL smartToneEnabled; // @dynamic smartToneEnabled;
 @property (nonatomic) double smartToneLevel; // @dynamic smartToneLevel;
 @property (copy, nonatomic) NSDictionary *smartToneStatistics; // @dynamic smartToneStatistics;
-@property (nonatomic) double straightenAngle; // @dynamic straightenAngle;
-@property (nonatomic) CDStruct_1b6d18a9 trimEndTimeOffset; // @dynamic trimEndTimeOffset;
-@property (nonatomic) CDStruct_1b6d18a9 trimStartTimeOffset; // @dynamic trimStartTimeOffset;
+@property (nonatomic) CDStruct_1b6d18a9 stillPhotoTime; // @dynamic stillPhotoTime;
+@property (nonatomic) double straightenAngleRadiansCW; // @dynamic straightenAngleRadiansCW;
+@property (nonatomic, getter=isTrimEnabled) BOOL trimEnabled; // @dynamic trimEnabled;
+@property (nonatomic) CDStruct_1b6d18a9 trimEndTime; // @dynamic trimEndTime;
+@property (nonatomic) CDStruct_1b6d18a9 trimStartTime; // @dynamic trimStartTime;
+@property (nonatomic) long long userOrientation; // @dynamic userOrientation;
 @property (nonatomic, getter=isWhiteBalanceEnabled) BOOL whiteBalanceEnabled; // @dynamic whiteBalanceEnabled;
 @property (nonatomic) double whiteBalanceFaceI; // @dynamic whiteBalanceFaceI;
 @property (nonatomic) double whiteBalanceFaceQ; // @dynamic whiteBalanceFaceQ;
 @property (nonatomic) double whiteBalanceFaceStrength; // @dynamic whiteBalanceFaceStrength;
 @property (nonatomic) double whiteBalanceFaceWarmth; // @dynamic whiteBalanceFaceWarmth;
 
+- (void).cxx_destruct;
 - (id)_newModelChangeAnimation;
 - (void)_setLevelInstanceVariable:(double *)arg1 toValue:(double)arg2;
 - (void)addRedEyeCorrections:(id)arg1;
+- (BOOL)canRenderPortraitEffect;
 - (void)copyValuesFromModel:(id)arg1 animated:(BOOL)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)performChangesWithBlock:(CDUnknownBlockType)arg1;
-- (void)pl_setCropConstraintForDataConstraint:(struct CGSize)arg1 imageGeometry:(id)arg2;
-- (void)pl_setNormalizedCropRectForDataCrop:(struct CGRect)arg1 straightenAngle:(double)arg2 imageGeometry:(id)arg3;
 - (void)removeRedEyeCorrections:(id)arg1;
 - (void)setCropConstraintWidth:(long long)arg1 height:(long long)arg2;
 

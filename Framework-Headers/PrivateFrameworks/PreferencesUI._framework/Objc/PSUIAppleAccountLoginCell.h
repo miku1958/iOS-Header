@@ -11,7 +11,9 @@
 }
 
 + (long long)cellStyle;
+- (void)layoutSubviews;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

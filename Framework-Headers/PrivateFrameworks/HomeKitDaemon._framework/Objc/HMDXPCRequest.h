@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSDate, NSString;
 
-@interface HMDXPCRequest : NSObject
+@interface HMDXPCRequest : HMFObject
 {
     NSDate *_startTime;
     NSString *_messageName;

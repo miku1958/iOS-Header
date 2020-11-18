@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <StoreKit/NSCopying-Protocol.h>
 
@@ -20,6 +20,7 @@
     NSData *_requestData;
     NSDictionary *_requestParameters;
     BOOL _simulatesAskToBuyInSandbox;
+    BOOL _isStoreOriginated;
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

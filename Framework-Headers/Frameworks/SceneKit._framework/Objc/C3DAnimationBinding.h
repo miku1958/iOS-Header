@@ -6,7 +6,6 @@
 
 #import <Foundation/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface C3DAnimationBinding : NSObject
 {
     void *_owner;

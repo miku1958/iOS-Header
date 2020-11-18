@@ -7,7 +7,5 @@
 #import <MapsSupport/NSObject-Protocol.h>
 
 @protocol MSPRemoteModelAccessDelegate <NSObject>
-- (void)favoritesDidChange;
-- (void)historyDidChange;
 @end
 

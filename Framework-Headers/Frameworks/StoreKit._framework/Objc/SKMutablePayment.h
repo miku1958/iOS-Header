@@ -13,6 +13,7 @@
 }
 
 @property (copy, nonatomic) NSString *applicationUsername; // @dynamic applicationUsername;
+@property (nonatomic) BOOL isStoreOriginated; // @dynamic isStoreOriginated;
 @property (copy, nonatomic) NSString *partnerIdentifier; // @dynamic partnerIdentifier;
 @property (copy, nonatomic) NSString *partnerTransactionIdentifier; // @dynamic partnerTransactionIdentifier;
 @property (copy, nonatomic) NSString *productIdentifier; // @dynamic productIdentifier;

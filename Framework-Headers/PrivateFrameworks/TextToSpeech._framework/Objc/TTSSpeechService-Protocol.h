@@ -25,6 +25,8 @@
 - (NSSet *)supportedIPAPhonemeLanguages;
 
 @optional
+- (NSString *)embeddedPitchMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 pitch:(double)arg3;
+- (NSString *)embeddedRateMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 rate:(double)arg3;
 - (BOOL)employSpeechMarkupForType:(long long)arg1 language:(NSString *)arg2;
 - (NSString *)enclosedStringWithPhonemes:(NSString *)arg1;
 - (NSString *)lhPhonemesFromIPA:(NSString *)arg1 language:(NSString *)arg2;

@@ -6,7 +6,7 @@
 
 #import <CloudDocsDaemon/BRCPersistedState.h>
 
-@class CKServerChangeToken, NSDate;
+@class CKOperationGroup, CKServerChangeToken, NSDate;
 
 __attribute__((visibility("hidden")))
 @interface BRCZoneHealthSyncPersistedState : BRCPersistedState
@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
     NSDate *_lastSyncDownDate;
     CKServerChangeToken *_changeToken;
     unsigned long long _requestID;
+    CKOperationGroup *_ckGroup;
 }
 
 @property (readonly, nonatomic) CKServerChangeToken *changeToken; // @synthesize changeToken=_changeToken;
+@property (strong, nonatomic) CKOperationGroup *ckGroup; // @synthesize ckGroup=_ckGroup;
 @property (readonly) NSDate *lastSyncDownDate; // @synthesize lastSyncDownDate=_lastSyncDownDate;
 @property (nonatomic) BOOL needsSyncDown; // @synthesize needsSyncDown=_needsSyncDown;
 @property (readonly, nonatomic) unsigned long long requestID; // @synthesize requestID=_requestID;

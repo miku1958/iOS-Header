@@ -6,37 +6,40 @@
 
 #import <objc/NSObject.h>
 
+#import <CameraUI/CAMNebulaDaemonBundleIdentifierProtocol-Protocol.h>
 #import <CameraUI/CAMNebulaDaemonClientProtocol-Protocol.h>
 #import <CameraUI/NSXPCConnectionDelegate-Protocol.h>
 
 @class NSMutableArray, NSMutableDictionary, NSString, NSXPCConnection, Protocol;
 @protocol CAMNebulaDaemonConnectionManagerDelegate, OS_dispatch_queue;
 
-@interface CAMNebulaDaemonConnectionManager : NSObject <NSXPCConnectionDelegate, CAMNebulaDaemonClientProtocol>
+@interface CAMNebulaDaemonConnectionManager : NSObject <NSXPCConnectionDelegate, CAMNebulaDaemonClientProtocol, CAMNebulaDaemonBundleIdentifierProtocol>
 {
-    NSString *_identifier;
     id<CAMNebulaDaemonConnectionManagerDelegate> _delegate;
+    NSString *_clientAccess;
+    Protocol *_allowedProtocol;
+    NSString *_bundleIdentifier;
     NSXPCConnection *__connection;
     NSString *__name;
     NSObject<OS_dispatch_queue> *__queue;
-    Protocol *__allowedProtocol;
     NSMutableDictionary *__tasksPerIdentifier;
     NSMutableArray *__registeredTargets;
     NSMutableArray *__registeredProtocols;
 }
 
-@property (readonly, nonatomic) Protocol *_allowedProtocol; // @synthesize _allowedProtocol=__allowedProtocol;
 @property (readonly, nonatomic) NSXPCConnection *_connection; // @synthesize _connection=__connection;
 @property (readonly, copy, nonatomic) NSString *_name; // @synthesize _name=__name;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_queue; // @synthesize _queue=__queue;
 @property (readonly, nonatomic) NSMutableArray *_registeredProtocols; // @synthesize _registeredProtocols=__registeredProtocols;
 @property (readonly, nonatomic) NSMutableArray *_registeredTargets; // @synthesize _registeredTargets=__registeredTargets;
 @property (readonly, nonatomic) NSMutableDictionary *_tasksPerIdentifier; // @synthesize _tasksPerIdentifier=__tasksPerIdentifier;
+@property (readonly, copy, nonatomic) Protocol *allowedProtocol; // @synthesize allowedProtocol=_allowedProtocol;
+@property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (readonly, copy, nonatomic) NSString *clientAccess; // @synthesize clientAccess=_clientAccess;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CAMNebulaDaemonConnectionManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly) Class superclass;
 
 + (id)_clientProtocolInterface;
@@ -47,7 +50,9 @@
 - (void)addTarget:(id)arg1 forProtocol:(id)arg2;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(BOOL)arg3;
 - (void)forceStopTimelapseCaptureWithReasons:(long long)arg1;
-- (id)initWithConnection:(id)arg1 name:(id)arg2 identifier:(id)arg3 queue:(id)arg4 allowedProtocol:(id)arg5;
+- (id)initWithConnection:(id)arg1 name:(id)arg2 bundleIdentifier:(id)arg3 queue:(id)arg4 clientAccess:(id)arg5 allowedProtocol:(id)arg6;
+- (void)nebulaDaemonDidCompleteLocalVideoPersistenceWithResult:(id)arg1;
+- (void)pingAfterInterruption;
 
 @end
 

@@ -19,9 +19,11 @@
 @property (strong, nonatomic) NSArray *attachmentItems; // @synthesize attachmentItems=_attachmentItems;
 @property (strong, nonatomic) NSURL *rootURL; // @synthesize rootURL=_rootURL;
 
++ (id)createWithName:(id)arg1 rootURL:(id)arg2;
 + (id)createWithName:(id)arg1 rootURL:(id)arg2 attachmentItems:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)attachToDestinationDir:(id)arg1;
 - (id)attachWithDestinationDir:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

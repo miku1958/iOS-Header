@@ -10,7 +10,7 @@
 #import <MediaPlaybackCore/NSMutableCopying-Protocol.h>
 #import <MediaPlaybackCore/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString, RadioArtworkCollection, RadioStation;
+@class NSDictionary, NSString, NSURL, RadioArtworkCollection, RadioStation;
 
 @interface MPCRadioStationPlaybackMetadata : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
@@ -26,6 +26,7 @@
     long long _stationID;
     NSString *_stationName;
     NSString *_stationStringID;
+    NSURL *_stationURL;
 }
 
 @property (readonly, nonatomic) RadioArtworkCollection *artworkCollection;
@@ -35,6 +36,7 @@
 @property (readonly, nonatomic) long long stationID;
 @property (readonly, copy, nonatomic) NSString *stationName;
 @property (readonly, copy, nonatomic) NSString *stationStringID;
+@property (readonly, copy, nonatomic) NSURL *stationURL; // @synthesize stationURL=_stationURL;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

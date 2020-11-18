@@ -10,6 +10,8 @@
 
 @property (copy, nonatomic) UIColor *separatorColor;
 @property (strong, nonatomic) UIVisualEffect *separatorEffect;
+@property (nonatomic) struct UIEdgeInsets separatorInset;
+@property (nonatomic) BOOL separatorInsetIsRelativeToCellEdges;
 @property (nonatomic) long long separatorStyle;
 
 @end

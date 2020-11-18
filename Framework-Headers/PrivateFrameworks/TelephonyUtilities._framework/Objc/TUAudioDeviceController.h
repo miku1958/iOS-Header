@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TelephonyUtilities/TUAudioDeviceControllerActions-Protocol.h>
 
@@ -39,8 +39,8 @@
 - (id)init;
 - (id)initWithActionsDelegate:(id)arg1 serialQueue:(id)arg2;
 - (void)removeDelegate:(id)arg1;
-- (void)setCurrentInputDeviceToDeviceWithUID:(id)arg1;
-- (void)setCurrentOutputDeviceToDeviceWithUID:(id)arg1;
+- (oneway void)setCurrentAudioInputDeviceToDeviceWithUID:(id)arg1;
+- (oneway void)setCurrentAudioOutputDeviceToDeviceWithUID:(id)arg1;
 
 @end
 

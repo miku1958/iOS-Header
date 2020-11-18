@@ -131,11 +131,14 @@
 + (id)requiredLibraryAddStatusObservationProperties;
 + (id)requiredLibraryRemovalProperties;
 + (id)requiredStoreLibraryPersonalizationProperties;
++ (id)storeItemMetadataRequestItemIdentifierForIdentifiers:(id)arg1;
++ (BOOL)storeItemMetadataRequestNeedsPersonalizationForIdentifiers:(id)arg1;
 + (BOOL)supportsKeepLocalStatusObservation;
 + (BOOL)supportsLibraryAddStatusObservation;
 + (BOOL)supportsLibraryRemoval;
 - (void).cxx_destruct;
 - (id)artworkCatalog;
+- (id)contentItemCollectionInfo;
 - (id)descriptionWithType:(long long)arg1;
 - (id)editorialArtworkCatalog;
 - (struct MPLibraryAddStatusObserverConfiguration)libraryAddStatusObserverConfiguration;

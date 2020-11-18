@@ -19,6 +19,7 @@
 @property (readonly) NSArray *availableChapterLocales;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 duration;
 @property (readonly, nonatomic) BOOL isProxy;
+@property (readonly, nonatomic) long long moovAtomSize;
 @property (readonly, nonatomic) struct CGSize naturalSize;
 @property (readonly, nonatomic) float preferredRate;
 @property (readonly, nonatomic) struct CGAffineTransform preferredTransform;
@@ -29,11 +30,14 @@
 + (id)assetWithData:(id)arg1 contentType:(id)arg2 options:(id)arg3;
 + (id)assetWithURL:(id)arg1;
 + (id)assetWithURL:(id)arg1 figPlaybackItem:(struct OpaqueFigPlaybackItem *)arg2 trackIDs:(id)arg3 dynamicBehavior:(BOOL)arg4;
++ (BOOL)expectsPropertyRevisedNotifications;
++ (BOOL)supportsPlayerItems;
 - (id)_ID3Metadata;
 - (id)_URLSessionDataDelegate;
 - (id)_URLSessionOperationQueue;
 - (id)_absoluteURL;
 - (unsigned long long)_addChapterMetadataItem:(id)arg1 timeRange:(CDStruct_e83c9415)arg2 toChapters:(id)arg3 fromIndex:(unsigned long long)arg4;
+- (id)_assetAnalysisMessages;
 - (id)_assetInspector;
 - (id)_assetInspectorLoader;
 - (id)_availableCanonicalizedChapterLanguages;
@@ -67,11 +71,13 @@
 - (void)_tracksDidChange;
 - (id)_tracksWithClass:(Class)arg1;
 - (id)_weakReference;
+- (id)allMediaSelections;
 - (id)alternateTrackGroups;
 - (id)audioAlternatesTrackGroup;
 - (id)availableChapterLanguages;
 - (id)availableMediaCharacteristicsWithMediaSelectionOptions;
 - (id)availableMetadataFormats;
+- (id)availableVideoDynamicRanges;
 - (BOOL)canContainFragments;
 - (void)cancelLoading;
 - (id)chapterMetadataGroupsBestMatchingPreferredLanguages:(id)arg1;
@@ -98,6 +104,7 @@
 - (void)loadValuesAsynchronouslyForKeys:(id)arg1 keysForCollectionKeys:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)lyrics;
 - (id)makePropertyListForProxyWithOptions:(id)arg1;
+- (struct CGSize)maximumVideoResolution;
 - (id)mediaSelectionGroupForMediaCharacteristic:(id)arg1;
 - (id)mediaSelectionGroupForPropertyList:(id)arg1 mediaSelectionOption:(id *)arg2;
 - (id)metadata;
@@ -111,6 +118,7 @@
 - (long long)statusOfValueForKey:(id)arg1;
 - (long long)statusOfValueForKey:(id)arg1 error:(id *)arg2;
 - (id)subtitleAlternatesTrackGroup;
+- (BOOL)supportsAnalysisReporting;
 - (id)trackGroups;
 - (id)trackReferences;
 - (id)trackWithTrackID:(int)arg1;

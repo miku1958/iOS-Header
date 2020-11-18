@@ -8,35 +8,28 @@
 
 #import <HomeUI/HUViewControllerCell-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSString, UIViewController;
+@class NSString, UIViewController;
 
 @interface HUViewControllerTableViewCell : UITableViewCell <HUViewControllerCell>
 {
-    BOOL _hasValidHeight;
     UIViewController *_viewController;
     UIViewController *_parentViewController;
-    NSArray *_viewControllerConstraints;
-    NSLayoutConstraint *_viewControllerHeightConstraint;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL hasValidHeight; // @synthesize hasValidHeight=_hasValidHeight;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
-@property (strong, nonatomic) NSArray *viewControllerConstraints; // @synthesize viewControllerConstraints=_viewControllerConstraints;
-@property (strong, nonatomic) NSLayoutConstraint *viewControllerHeightConstraint; // @synthesize viewControllerHeightConstraint=_viewControllerHeightConstraint;
 
-+ (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (void)_removeFromParentViewControllerAndClearProperty:(BOOL)arg1;
-- (void)_updateHeightConstraint;
 - (void)addToParentViewController:(id)arg1;
+- (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)removeFromParentViewController;
-- (void)updateConstraints;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 
 @end
 

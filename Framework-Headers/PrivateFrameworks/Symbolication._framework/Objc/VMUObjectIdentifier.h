@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, VMUClassInfoMap, VMUNonOverlappingRangeArray;
+@class NSArray, NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, NSString, VMUClassInfoMap, VMUNonOverlappingRangeArray, VMUTaskMemoryScanner;
 
 @interface VMUObjectIdentifier : NSObject
 {
@@ -14,9 +14,12 @@
     struct _CSTypeRef _symbolicator;
     BOOL _targetUsesObjc2runtime;
     CDUnknownBlockType _memoryReader;
+    VMUTaskMemoryScanner *_scanner;
     struct libSwiftRemoteMirrorWrapper *_swiftMirror;
+    NSString *_libSwiftRemoteMirrorPath;
     void *_libSwiftRemoteMirrorHandle;
     NSArray *_swiftMirrorMachOSections;
+    struct _CSTypeRef _swiftCoreSymbolOwner;
     VMUClassInfoMap *_realizedIsaToClassInfo;
     VMUClassInfoMap *_unrealizedClassInfos;
     VMUClassInfoMap *_cfTypeIDToClassInfo;
@@ -29,7 +32,8 @@
     BOOL _fragileNonPointerIsas;
     NSMapTable *_isaToObjectLabelHandlerMap;
     NSMapTable *_itemCountToLabelStringUniquingMap;
-    struct VMULabelUniquingDataForStringType *_stringToLabelStringUniquingData;
+    id *_labelStringUniquingMaps;
+    id *_stringTypeDescriptions;
     NSMutableSet *_stringUniquingSet;
     NSHashTable *_objcRuntimeMallocBlocksHash;
     VMUNonOverlappingRangeArray *_targetProcessVMranges;
@@ -39,7 +43,10 @@
 
 @property (readonly, nonatomic) CDUnknownBlockType memoryReader; // @synthesize memoryReader=_memoryReader;
 @property (readonly, nonatomic) VMUClassInfoMap *realizedClasses; // @synthesize realizedClasses=_realizedIsaToClassInfo;
+@property (readonly, nonatomic) NSString *swiftCoreSymbolOwnerPath;
+@property (readonly, nonatomic) struct libSwiftRemoteMirrorWrapper *swiftMirror; // @synthesize swiftMirror=_swiftMirror;
 
+- (void).cxx_destruct;
 - (unsigned long long)CFTypeCount;
 - (unsigned long long)ObjCclassCount;
 - (unsigned long long)SwiftClassCount;
@@ -48,9 +55,12 @@
 - (void *)_dlopenLibSwiftRemoteMirrorNearLibSwiftCoreWithSymbolicator:(struct _CSTypeRef)arg1 avoidSystem:(BOOL)arg2;
 - (void *)_dlopenLibSwiftRemoteMirrorWithSymbolicator:(struct _CSTypeRef)arg1;
 - (void)_faultClass:(unsigned long long)arg1 ofType:(int)arg2;
-- (int)_populateSwiftReflectionInfo:(struct libSwiftRemoteMirrorWrapper *)arg1 withTask:(unsigned int)arg2;
+- (void)_populateSwiftDebugVariables:(struct libSwiftRemoteMirrorWrapper *)arg1;
+- (int)_populateSwiftReflectionInfo:(struct libSwiftRemoteMirrorWrapper *)arg1;
 - (id)_returnFaultedClass:(unsigned long long)arg1 ofType:(int)arg2;
+- (id)_scanner;
 - (struct _CSTypeRef)_symbolicator;
+- (unsigned short)_targetProcessSwiftReflectionVersion;
 - (unsigned long long)addressOfSymbol:(const char *)arg1 inLibrary:(const char *)arg2;
 - (void)buildIsaToObjectLabelHandlerMap;
 - (id)classInfoForMemory:(void *)arg1 length:(unsigned long long)arg2;
@@ -64,39 +74,41 @@
 - (void)findObjCclasses;
 - (id)initWithTask:(unsigned int)arg1;
 - (id)initWithTask:(unsigned int)arg1 symbolicator:(struct _CSTypeRef)arg2;
+- (id)initWithTask:(unsigned int)arg1 symbolicator:(struct _CSTypeRef)arg2 scanner:(id)arg3;
 - (id)labelForItemCount:(long long)arg1;
 - (id)labelForMallocBlock:(struct _VMURange)arg1;
 - (id)labelForMallocBlock:(struct _VMURange)arg1 usingHandlerBlock:(CDUnknownBlockType)arg2;
 - (id)labelForMemory:(void *)arg1 length:(unsigned long long)arg2;
 - (id)labelForMemory:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelForMemory:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3 usingHandlerBlock:(CDUnknownBlockType)arg4;
-- (id)labelForNSArray:(id)arg1;
-- (id)labelForNSCFDictionary:(id)arg1;
-- (id)labelForNSCFSet:(id)arg1;
+- (id)labelForNSArray:(void *)arg1;
+- (id)labelForNSCFDictionary:(void *)arg1;
+- (id)labelForNSCFSet:(void *)arg1;
 - (id)labelForNSCFStringAtRemoteAddress:(unsigned long long)arg1 printDetail:(BOOL)arg2;
-- (id)labelForNSConcreteAttributedString:(id)arg1;
-- (id)labelForNSConcreteData:(id)arg1;
-- (id)labelForNSConcreteHashTable:(id)arg1;
-- (id)labelForNSConcreteMutableData:(id)arg1;
-- (id)labelForNSData:(id)arg1;
-- (id)labelForNSDate:(id)arg1;
-- (id)labelForNSDictionary:(id)arg1;
-- (id)labelForNSInlineData:(id)arg1;
-- (id)labelForNSNumber:(id)arg1;
-- (id)labelForNSPathStore2:(id)arg1;
-- (id)labelForNSSet:(id)arg1;
-- (id)labelForNSString:(id)arg1;
-- (id)labelForNSString:(id)arg1 mappedSize:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3 printDetail:(BOOL)arg4;
-- (id)labelForNSURL:(id)arg1;
-- (id)labelForNSXPCConnection:(id)arg1;
-- (id)labelForNSXPCInterface:(id)arg1;
-- (id)labelForOSDispatchMach:(id)arg1;
-- (id)labelForOSDispatchQueue:(id)arg1;
-- (id)labelForOSTransaction:(id)arg1;
-- (id)labelForOSXPCConnection:(id)arg1;
-- (id)labelForProtocol:(id)arg1;
+- (id)labelForNSConcreteAttributedString:(void *)arg1;
+- (id)labelForNSConcreteData:(void *)arg1;
+- (id)labelForNSConcreteHashTable:(void *)arg1;
+- (id)labelForNSConcreteMutableData:(void *)arg1;
+- (id)labelForNSData:(void *)arg1;
+- (id)labelForNSDate:(void *)arg1;
+- (id)labelForNSDictionary:(void *)arg1;
+- (id)labelForNSInlineData:(void *)arg1;
+- (id)labelForNSNumber:(void *)arg1;
+- (id)labelForNSPathStore2:(void *)arg1;
+- (id)labelForNSSet:(void *)arg1;
+- (id)labelForNSString:(void *)arg1;
+- (id)labelForNSString:(void *)arg1 mappedSize:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3 printDetail:(BOOL)arg4;
+- (id)labelForNSURL:(void *)arg1;
+- (id)labelForNSXPCConnection:(void *)arg1;
+- (id)labelForNSXPCInterface:(void *)arg1;
+- (id)labelForOSDispatchMach:(void *)arg1;
+- (id)labelForOSDispatchQueue:(void *)arg1;
+- (id)labelForOSTransaction:(void *)arg1;
+- (id)labelForOSXPCConnection:(void *)arg1;
+- (id)labelForProtocol:(void *)arg1;
 - (id)labelForTaggedPointer:(void *)arg1;
-- (id)labelFor__NSMallocBlock__:(id)arg1;
+- (id)labelFor__NSMallocBlock__:(void *)arg1;
+- (void)loadSwiftReflectionLibrary;
 - (id)objcRuntimeMallocBlocksHash;
 - (id)objectLabelHandlerForRemoteIsa:(unsigned long long)arg1;
 - (id)osMajorMinorVersionString;

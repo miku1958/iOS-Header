@@ -20,6 +20,7 @@
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)keyPathWithRootObject:(id)arg1 path:(const char *)arg2;
 + (id)newKeyPathWithRootObject:(id)arg1 keyPathString:(id)arg2;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

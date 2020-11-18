@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSLayoutConstraint, UIToolbar, UIView, _UIToolbarConfiguration;
+@class NSLayoutConstraint, UIColor, UIToolbar, UIView, _UIToolbarConfiguration;
 
 __attribute__((visibility("hidden")))
 @interface QLToolbarController : NSObject
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     UIView *_clippingExtensionContainer;
     UIView *_accessoryViewContainer;
     _UIToolbarConfiguration *_originalToolbarConfiguration;
+    _UIToolbarConfiguration *_customToolbarConfiguration;
     double _derivedToolbarExtensionHeight;
     BOOL _accessoryViewHidden;
     BOOL _originalToolbarHidden;
@@ -32,13 +33,16 @@ __attribute__((visibility("hidden")))
     double _originalToolbarAlpha;
     double _accessoryViewAlpha;
     double _hiddenProgress;
+    UIColor *_barTintColor;
     UIView *_preferredSuperview;
+    UIView *_preferredParentViewForSafeAreaInset;
 }
 
 @property (weak, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
 @property (nonatomic) double accessoryViewAlpha; // @synthesize accessoryViewAlpha=_accessoryViewAlpha;
 @property (nonatomic, getter=isAccessoryViewHidden) BOOL accessoryViewHidden; // @synthesize accessoryViewHidden=_accessoryViewHidden;
 @property (nonatomic) double accessoryViewHiddenProgress; // @synthesize accessoryViewHiddenProgress=_accessoryViewHiddenProgress;
+@property (strong, nonatomic) UIColor *barTintColor; // @synthesize barTintColor=_barTintColor;
 @property (readonly) UIToolbar *customToolbar; // @synthesize customToolbar=_customToolbar;
 @property (nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (nonatomic) double hiddenProgress; // @synthesize hiddenProgress=_hiddenProgress;
@@ -46,12 +50,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double originalToolbarAlpha; // @synthesize originalToolbarAlpha=_originalToolbarAlpha;
 @property (nonatomic, getter=isOriginalToolbarHidden) BOOL originalToolbarHidden; // @synthesize originalToolbarHidden=_originalToolbarHidden;
 @property (nonatomic) double preferredAccesoryViewHeight; // @synthesize preferredAccesoryViewHeight=_preferredAccesoryViewHeight;
-@property (weak, nonatomic) UIView *preferredSuperview; // @synthesize preferredSuperview=_preferredSuperview;
+@property (readonly, weak, nonatomic) UIView *preferredParentViewForSafeAreaInset; // @synthesize preferredParentViewForSafeAreaInset=_preferredParentViewForSafeAreaInset;
+@property (readonly, weak, nonatomic) UIView *preferredSuperview; // @synthesize preferredSuperview=_preferredSuperview;
 @property (nonatomic) double toolbarAlpha; // @synthesize toolbarAlpha=_toolbarAlpha;
 
 - (void).cxx_destruct;
 - (void)_embedAccessoryView;
 - (void)_layoutAccessoryView:(id)arg1;
+- (double)_originalToolbarHeightIncludingSafeAreaBottomInset:(BOOL)arg1;
 - (double)_toolbarExtensionHeight;
 - (double)_totalHeight;
 - (BOOL)_tryToSetUp:(BOOL)arg1;
@@ -59,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)restoreOriginalConfiguration;
 - (void)restoreOriginalToolbar;
 - (void)setAccessoryView:(id)arg1 animated:(BOOL)arg2;
+- (void)setPreferredSuperview:(id)arg1 preferredParentViewForSafeAreaInset:(id)arg2;
 - (void)updateLayout;
 
 @end

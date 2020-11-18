@@ -9,7 +9,7 @@
 #import <Celestial/FigXPCCoding-Protocol.h>
 #import <Celestial/NSCopying-Protocol.h>
 
-@class FigCaptureSourceFormat, NSDictionary, NSString;
+@class FigCaptureSourceDepthDataFormat, FigCaptureSourceVideoFormat, NSDictionary, NSString;
 
 @interface FigCaptureSourceConfiguration : NSObject <FigXPCCoding, NSCopying>
 {
@@ -17,7 +17,7 @@
     struct OpaqueFigCaptureSource *_source;
     int _sourceType;
     NSDictionary *_sourceAttributes;
-    FigCaptureSourceFormat *_requiredFormat;
+    FigCaptureSourceVideoFormat *_requiredFormat;
     float _requiredMaxFrameRate;
     float _requiredMinFrameRate;
     BOOL _hasSetVideoZoomFactorOnCaptureSource;
@@ -29,20 +29,22 @@
     NSDictionary *_faceDetectionConfiguration;
     BOOL _sensorHDREnabled;
     int _colorSpace;
-    BOOL _autoShallowDepthOfFieldEffectEnabled;
+    BOOL _depthDataDeliveryEnabled;
+    FigCaptureSourceDepthDataFormat *_depthDataFormat;
 }
 
 @property (nonatomic) BOOL applyMaxIntegrationTimeOverrideWhenAvailable; // @synthesize applyMaxIntegrationTimeOverrideWhenAvailable=_applyMaxIntegrationTimeOverrideWhenAvailable;
-@property (nonatomic) BOOL autoShallowDepthOfFieldEffectEnabled; // @synthesize autoShallowDepthOfFieldEffectEnabled=_autoShallowDepthOfFieldEffectEnabled;
 @property (nonatomic) BOOL automaticallyEnablesLowLightBoostWhenAvailable; // @synthesize automaticallyEnablesLowLightBoostWhenAvailable=_automaticallyEnablesLowLightBoostWhenAvailable;
 @property (nonatomic) int colorSpace; // @synthesize colorSpace=_colorSpace;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) BOOL depthDataDeliveryEnabled; // @synthesize depthDataDeliveryEnabled=_depthDataDeliveryEnabled;
+@property (strong, nonatomic) FigCaptureSourceDepthDataFormat *depthDataFormat; // @synthesize depthDataFormat=_depthDataFormat;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSDictionary *faceDetectionConfiguration; // @synthesize faceDetectionConfiguration=_faceDetectionConfiguration;
 @property (nonatomic) BOOL hasSetVideoZoomFactorOnCaptureSource; // @synthesize hasSetVideoZoomFactorOnCaptureSource=_hasSetVideoZoomFactorOnCaptureSource;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int imageControlMode; // @synthesize imageControlMode=_imageControlMode;
-@property (strong, nonatomic) FigCaptureSourceFormat *requiredFormat; // @synthesize requiredFormat=_requiredFormat;
+@property (strong, nonatomic) FigCaptureSourceVideoFormat *requiredFormat; // @synthesize requiredFormat=_requiredFormat;
 @property (nonatomic) float requiredMaxFrameRate; // @synthesize requiredMaxFrameRate=_requiredMaxFrameRate;
 @property (nonatomic) float requiredMinFrameRate; // @synthesize requiredMinFrameRate=_requiredMinFrameRate;
 @property (nonatomic) BOOL sensorHDREnabled; // @synthesize sensorHDREnabled=_sensorHDREnabled;
@@ -54,9 +56,9 @@
 @property (nonatomic) float videoZoomFactor; // @synthesize videoZoomFactor=_videoZoomFactor;
 @property (nonatomic) float videoZoomRampAcceleration; // @synthesize videoZoomRampAcceleration=_videoZoomRampAcceleration;
 
-+ (void)initialize;
 + (int)sourceTypeForString:(id)arg1;
 + (id)stringForSourceType:(int)arg1;
+- (int)_deviceType;
 - (BOOL)_isCameraSource;
 - (id)_sourceAttributes;
 - (int)_sourceToken;

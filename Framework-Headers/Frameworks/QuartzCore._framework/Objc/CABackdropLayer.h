@@ -13,6 +13,7 @@
 {
 }
 
+@property BOOL allowsInPlaceFiltering;
 @property struct CGRect backdropRect;
 @property BOOL captureOnly;
 @property (weak) id<CABackdropLayerDelegate><CALayerDelegate> delegate; // @dynamic delegate;
@@ -23,6 +24,7 @@
 @property double scale;
 @property double statisticsInterval;
 @property (copy) NSString *statisticsType;
+@property BOOL usesGlobalGroupNamespace;
 
 + (BOOL)CA_automaticallyNotifiesObservers:(Class)arg1;
 + (BOOL)_hasRenderLayerSubclass;

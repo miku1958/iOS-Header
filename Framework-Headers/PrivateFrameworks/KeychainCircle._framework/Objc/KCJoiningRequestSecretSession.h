@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class KCAESGCMDuplexSession, KCSRPClientContext, NSData;
+@class KCAESGCMDuplexSession, KCSRPClientContext, NSData, NSString;
 @protocol KCJoiningRequestSecretDelegate;
 
 @interface KCJoiningRequestSecretSession : NSObject
@@ -16,6 +16,8 @@
     NSObject<KCJoiningRequestSecretDelegate> *_secretDelegate;
     KCSRPClientContext *_context;
     unsigned long long _dsid;
+    NSString *_piggy_uuid;
+    unsigned long long _piggy_version;
     NSData *_challenge;
     NSData *_salt;
 }
@@ -23,6 +25,8 @@
 @property (strong) NSData *challenge; // @synthesize challenge=_challenge;
 @property (readonly) KCSRPClientContext *context; // @synthesize context=_context;
 @property (readonly) unsigned long long dsid; // @synthesize dsid=_dsid;
+@property (strong) NSString *piggy_uuid; // @synthesize piggy_uuid=_piggy_uuid;
+@property unsigned long long piggy_version; // @synthesize piggy_version=_piggy_version;
 @property (strong) NSData *salt; // @synthesize salt=_salt;
 @property (readonly) NSObject<KCJoiningRequestSecretDelegate> *secretDelegate; // @synthesize secretDelegate=_secretDelegate;
 @property (readonly) KCAESGCMDuplexSession *session; // @synthesize session=_session;

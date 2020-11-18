@@ -6,13 +6,13 @@
 
 #import <UIKit/UIActivity.h>
 
-#import <UIKit/_UICloudSharingControllerDelegate_Private-Protocol.h>
+#import <UIKit/_UICloudSharingControllerDelegate_Internal-Protocol.h>
 #import <UIKit/_UIDocumentSharingControllerDelegate_Private-Protocol.h>
 
 @class NSString, UIImage, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface _UICloudSharingActivity : UIActivity <_UICloudSharingControllerDelegate_Private, _UIDocumentSharingControllerDelegate_Private>
+@interface _UICloudSharingActivity : UIActivity <_UICloudSharingControllerDelegate_Internal, _UIDocumentSharingControllerDelegate_Private>
 {
     NSString *_activityTitle;
     UIViewController *_activityViewController;
@@ -28,6 +28,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (BOOL)_allowDocumentSharing;
++ (BOOL)_allowFolderSharing;
++ (unsigned long long)_xpcAttributes;
 + (long long)activityCategory;
 - (void).cxx_destruct;
 - (BOOL)_activitySupportsPromiseURLs;

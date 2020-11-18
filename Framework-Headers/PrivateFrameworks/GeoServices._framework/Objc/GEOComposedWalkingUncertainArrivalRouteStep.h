@@ -15,9 +15,9 @@
     unsigned int _aggregatedStepsDuration;
 }
 
+- (void).cxx_destruct;
 - (unsigned int)_calculateAggregatedStepsDistance;
 - (unsigned int)_calculateAggregatedStepsDuration;
-- (void)dealloc;
 - (unsigned int)distance;
 - (unsigned int)duration;
 - (id)initWithComposedRoute:(id)arg1 aggregatedGEOSteps:(id)arg2 stepIndex:(unsigned long long)arg3 pointRange:(struct _NSRange)arg4 maneuverPointRange:(struct _NSRange)arg5;

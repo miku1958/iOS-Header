@@ -62,6 +62,7 @@
 @property (readonly, nonatomic) NSArray *value3s;
 
 + (Class)timestampDataType;
+- (void).cxx_destruct;
 - (int)StringAsFormat:(id)arg1;
 - (void)addTimestampData:(id)arg1;
 - (void)addValInt3:(unsigned int)arg1;

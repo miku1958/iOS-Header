@@ -6,44 +6,32 @@
 
 #import <EventKit/EKPersistentObject.h>
 
-#import <EventKit/NSCopying-Protocol.h>
-
-@class EKPersistentCalendarItem, EKRecurrenceEnd, NSArray, NSDate, NSString;
-
-@interface EKPersistentRecurrenceRule : EKPersistentObject <NSCopying>
+@interface EKPersistentRecurrenceRule : EKPersistentObject
 {
-    id _helper;
-    EKRecurrenceEnd *_recurrenceEnd;
 }
-
-@property (readonly, nonatomic) NSString *UUID;
-@property (readonly, nonatomic) NSDate *cachedEndDate;
-@property (readonly, nonatomic) NSString *calendarIdentifier;
-@property (nonatomic) unsigned long long count;
-@property (copy, nonatomic) NSArray *daysOfTheMonth;
-@property (copy, nonatomic) NSArray *daysOfTheWeek;
-@property (copy, nonatomic) NSArray *daysOfTheYear;
-@property (copy, nonatomic) NSDate *endDate;
-@property (nonatomic) long long firstDayOfTheWeek;
-@property (nonatomic) long long frequency;
-@property (nonatomic) long long interval;
-@property (copy, nonatomic) NSArray *monthsOfTheYear;
-@property (strong, nonatomic) EKPersistentCalendarItem *owner;
-@property (copy, nonatomic) NSArray *setPositions;
-@property (readonly, nonatomic) BOOL shouldPinMonthDays;
-@property (copy, nonatomic) NSArray *weeksOfTheYear;
 
 + (id)defaultPropertiesToLoad;
 + (id)relations;
-- (void).cxx_destruct;
-- (id)_helper;
+- (id)UUID;
+- (id)cachedEndDate;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)count;
 - (id)description;
+- (id)endDate;
 - (int)entityType;
-- (CDStruct_6e43267c)gregorianUnits;
-- (id)init;
-- (BOOL)isDirty;
-- (BOOL)validate:(id *)arg1;
+- (long long)firstDayOfTheWeek;
+- (int)frequency;
+- (long long)interval;
+- (id)owner;
+- (void)setCount:(unsigned long long)arg1;
+- (void)setEndDate:(id)arg1;
+- (void)setFirstDayOfTheWeek:(long long)arg1;
+- (void)setFrequency:(int)arg1;
+- (void)setInterval:(long long)arg1;
+- (void)setOwner:(id)arg1;
+- (void)setSpecifier:(id)arg1;
+- (void)setUUID:(id)arg1;
+- (id)specifier;
 
 @end
 

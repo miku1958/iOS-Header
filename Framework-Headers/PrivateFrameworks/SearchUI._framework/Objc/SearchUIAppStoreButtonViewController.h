@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (void)buttonPressed;
 - (id)setupViewWithStyle:(unsigned long long)arg1;
+- (BOOL)shouldTopAlignForAccessibilityContentSizes;
 - (void)updateWithResult:(id)arg1;
 
 @end

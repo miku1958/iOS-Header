@@ -27,6 +27,7 @@
 @property (readonly, nonatomic) struct CGRect rightEyeRect; // @synthesize rightEyeRect=_rightEyeRect;
 @property (readonly, nonatomic) NSString *shirtColor; // @synthesize shirtColor=_shirtColor;
 
+- (void).cxx_destruct;
 - (id)initWithCIFaceFeature:(id)arg1 ofSize:(int)arg2 andLocation:(int)arg3 andShirtColor:(id)arg4;
 
 @end

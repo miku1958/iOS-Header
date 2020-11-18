@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableCharacterSet, NSNumberFormatter;
 
@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
     NSMutableCharacterSet *_risonEscapes;
 }
 
+- (void).cxx_destruct;
 - (id)arrayWithReaderInfo:(CDStruct_8bf61218 *)arg1;
 - (id)boolWithReaderInfo:(CDStruct_8bf61218 *)arg1;
-- (void)dealloc;
 - (id)dictionaryWithReaderInfo:(CDStruct_8bf61218 *)arg1;
 - (id)init;
 - (id)keyWithReaderInfo:(CDStruct_8bf61218 *)arg1;

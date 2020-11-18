@@ -12,11 +12,9 @@
 
 - (id)localeIdentifier;
 - (id)navAnnouncementAddress;
-- (id)navAnnouncementNameWithSpecialContacts:(BOOL)arg1;
+- (id)navAnnouncementName;
 - (id)navDisplayAddress;
 - (id)navDisplayName;
 - (id)navDisplayNameWithSpecialContacts:(BOOL)arg1;
-- (id)navSpokenAnnouncementAtArrival:(BOOL)arg1;
-- (id)navSpokenAnnouncementAtStartForTransportType:(int)arg1;
 @end
 

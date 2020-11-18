@@ -8,7 +8,6 @@
 
 @class SCNNode, SCNOffscreenRenderer, SCNScene, SKTransition;
 
-__attribute__((visibility("hidden")))
 @interface SCNRendererTransitionContext : NSObject
 {
     double _transitionStartTime;
@@ -25,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) SKTransition *transition; // @synthesize transition=_transition;
 @property (nonatomic) double transitionStartTime; // @synthesize transitionStartTime=_transitionStartTime;
 
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)prepareRendererAtIndex:(int)arg1 withScene:(id)arg2 renderSize:(struct CGSize)arg3 pointOfView:(id)arg4 parentRenderer:(id)arg5;
 - (struct __C3DFXPass *)transitionPass;

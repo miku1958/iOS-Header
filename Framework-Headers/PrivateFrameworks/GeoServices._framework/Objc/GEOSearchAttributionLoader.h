@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOSearchAttributionManifest;
 
@@ -14,9 +14,9 @@ __attribute__((visibility("hidden")))
     GEOSearchAttributionManifest *_attributionManifest;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithAttributionManifest:(id)arg1;
-- (void)loadAttributionInfoForIdentifier:(id)arg1 version:(unsigned int)arg2 allowNetwork:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)loadAttributionInfoForIdentifier:(id)arg1 allowNetwork:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

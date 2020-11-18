@@ -15,8 +15,8 @@
 @interface CXCallSource : NSObject <CXProviderHostProtocol, CXProviderVendorProtocol>
 {
     BOOL _connected;
-    NSObject<OS_dispatch_queue> *_queue;
     id<CXCallSourceDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (readonly, copy, nonatomic) NSBundle *bundle;

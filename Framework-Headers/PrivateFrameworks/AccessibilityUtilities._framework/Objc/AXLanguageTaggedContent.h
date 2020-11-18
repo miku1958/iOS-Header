@@ -30,10 +30,11 @@
 @property (strong, nonatomic) NSMutableOrderedSet *unpredictedAmbiguousLangMaps; // @synthesize unpredictedAmbiguousLangMaps=_unpredictedAmbiguousLangMaps;
 @property (copy, nonatomic) NSString *userPreferredLangID; // @synthesize userPreferredLangID=_userPreferredLangID;
 
+- (void).cxx_destruct;
 - (void)_addTag;
+- (BOOL)_isStringCombinationOfCommonAndEmoji:(id)arg1;
 - (void)_manuallyProcessContentWithRange:(struct _NSRange)arg1;
 - (id)ambiguousLangMaps;
-- (void)dealloc;
 - (id)description;
 - (void)enumeratePredictedTags:(CDUnknownBlockType)arg1;
 - (void)enumerateUnpredictedTags:(CDUnknownBlockType)arg1;

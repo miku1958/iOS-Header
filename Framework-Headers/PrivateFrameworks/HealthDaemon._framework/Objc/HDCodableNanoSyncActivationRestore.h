@@ -10,14 +10,13 @@
 #import <HealthDaemon/HDNanoSyncPersistentUserInfoCopying-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString;
+@class NSData, NSString;
 
 @interface HDCodableNanoSyncActivationRestore : PBCodable <HDNanoSyncDescription, HDNanoSyncPersistentUserInfoCopying, NSCopying>
 {
     long long _sequenceNumber;
     NSString *_defaultSourceBundleIdentifier;
     NSData *_restoreIdentifier;
-    NSMutableArray *_restores;
     int _statusCode;
     struct {
         unsigned int sequenceNumber:1;
@@ -37,7 +36,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSData *restoreIdentifier; // @synthesize restoreIdentifier=_restoreIdentifier;
-@property (strong, nonatomic) NSMutableArray *restores; // @synthesize restores=_restores;
 @property (nonatomic) long long sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
 @property (readonly) Class superclass;
@@ -47,9 +45,8 @@
 + (id)persistentUserInfoKey;
 + (id)retreiveFromPersistentUserInfo:(id)arg1;
 - (void).cxx_destruct;
-- (void)addRestores:(id)arg1;
+- (int)StringAsStatusCode:(id)arg1;
 - (void)addToPersistentUserInfo:(id)arg1;
-- (void)clearRestores;
 - (id)copyForPersistentUserInfo;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -60,8 +57,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)nanoSyncDescription;
 - (BOOL)readFrom:(id)arg1;
-- (id)restoresAtIndex:(unsigned long long)arg1;
-- (unsigned long long)restoresCount;
+- (id)statusCodeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

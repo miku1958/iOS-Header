@@ -82,6 +82,8 @@
 - (void)copyParticlePropertiesToNode:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)debugHierarchyPropertyDescriptions;
+- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (BOOL)densityBased;
 - (id)description;
 - (double)emissionDistance;

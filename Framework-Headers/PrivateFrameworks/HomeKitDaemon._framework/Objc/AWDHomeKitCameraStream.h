@@ -13,7 +13,6 @@
 @interface AWDHomeKitCameraStream : PBCodable <NSCopying>
 {
     unsigned long long _duration;
-    unsigned long long _receivedFirstFrame;
     unsigned long long _startupDelay;
     unsigned long long _timestamp;
     AWDHomeKitCameraStreamMessaging *_controllerMessaging;
@@ -21,6 +20,7 @@
     AWDHomeKitCameraIDSSessionSetup *_idsSessionSetup;
     AWDHomeKitCameraStreamConfigure *_initialConfiguration;
     AWDHomeKitCameraStreamIDSConnSetup *_phoneIDSConnectionSetup;
+    unsigned int _receivedFirstFrame;
     NSMutableArray *_reconfigurations;
     AWDHomeKitCameraStreamMessaging *_residentMessaging;
     NSMutableArray *_resolutionCounts;
@@ -35,10 +35,10 @@
     BOOL _isStreamStarted;
     struct {
         unsigned int duration:1;
-        unsigned int receivedFirstFrame:1;
         unsigned int startupDelay:1;
         unsigned int timestamp:1;
         unsigned int errorCode:1;
+        unsigned int receivedFirstFrame:1;
         unsigned int resolutionOnClose:1;
         unsigned int underlyingErrorCode:1;
         unsigned int isLocal:1;
@@ -73,7 +73,7 @@
 @property (nonatomic) BOOL isLocal; // @synthesize isLocal=_isLocal;
 @property (nonatomic) BOOL isStreamStarted; // @synthesize isStreamStarted=_isStreamStarted;
 @property (strong, nonatomic) AWDHomeKitCameraStreamIDSConnSetup *phoneIDSConnectionSetup; // @synthesize phoneIDSConnectionSetup=_phoneIDSConnectionSetup;
-@property (nonatomic) unsigned long long receivedFirstFrame; // @synthesize receivedFirstFrame=_receivedFirstFrame;
+@property (nonatomic) unsigned int receivedFirstFrame; // @synthesize receivedFirstFrame=_receivedFirstFrame;
 @property (strong, nonatomic) NSMutableArray *reconfigurations; // @synthesize reconfigurations=_reconfigurations;
 @property (strong, nonatomic) AWDHomeKitCameraStreamMessaging *residentMessaging; // @synthesize residentMessaging=_residentMessaging;
 @property (strong, nonatomic) NSMutableArray *resolutionCounts; // @synthesize resolutionCounts=_resolutionCounts;

@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng;
+@class GEOLatLng, PBUnknownFields;
 
 @interface GEORoadAccessPoint : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     int _drivingDirection;
     GEOLatLng *_location;
     int _walkingDirection;
@@ -30,13 +31,14 @@
 @property (nonatomic) BOOL hasWalkingDirection;
 @property (nonatomic) BOOL isApproximate; // @synthesize isApproximate=_isApproximate;
 @property (strong, nonatomic) GEOLatLng *location; // @synthesize location=_location;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (nonatomic) int walkingDirection; // @synthesize walkingDirection=_walkingDirection;
 
+- (void).cxx_destruct;
 - (int)StringAsDrivingDirection:(id)arg1;
 - (int)StringAsWalkingDirection:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)drivingDirectionAsString:(int)arg1;

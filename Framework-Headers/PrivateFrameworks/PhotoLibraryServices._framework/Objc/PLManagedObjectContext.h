@@ -23,7 +23,6 @@
     PLDelayedFiledSystemDeletions *_delayedDeletions;
     NSMutableSet *_avalancheUUIDsForUpdate;
     NSMutableDictionary *_uuidsForCloudDeletion;
-    NSMutableSet *_assetObjectIDsWithCloudGUIDChange;
     BOOL _syncChangeMarker;
     NSMutableDictionary *_updatedObjectsAttributes;
     NSMutableDictionary *_updatedObjectsRelationships;
@@ -31,12 +30,10 @@
     id<PLManagedObjectContextPTPNotificationDelegate> _ptpNotificationDelegate;
     PLDelayedSaveActions *_delayedSaveActions;
     BOOL _regenerateVideoThumbnails;
-    BOOL __hiddenFaceStateChanged;
     int _changeSource;
     NSObject<OS_xpc_object> *changeHubConnection;
 }
 
-@property (nonatomic, setter=_setHiddenFaceStateChanged:) BOOL _hiddenFaceStateChanged; // @synthesize _hiddenFaceStateChanged=__hiddenFaceStateChanged;
 @property (nonatomic) NSObject<OS_xpc_object> *changeHubConnection; // @synthesize changeHubConnection;
 @property (nonatomic) int changeSource; // @synthesize changeSource=_changeSource;
 @property (strong, nonatomic) PLDelayedFiledSystemDeletions *delayedDeletions; // @synthesize delayedDeletions=_delayedDeletions;
@@ -55,7 +52,6 @@
 + (void)__prepareEntityPropertyLookups;
 + (id)_asideDatabasePath;
 + (id)_attributeNamesByIndexByEntityNames;
-+ (id)_changeNotificationKeys;
 + (void)_configurePersistentStoreCoordinator:(id)arg1;
 + (BOOL)_destroyPhotosDatabaseAndMoveOldStoreAside:(BOOL)arg1;
 + (void)_getStoreURL:(id *)arg1 options:(id *)arg2 enableNotifications:(BOOL)arg3;
@@ -73,6 +69,10 @@
 + (BOOL)assetsLibraryLoggingEnabled;
 + (id)attributeNamesForIndexValues:(unsigned long long)arg1 entity:(id)arg2;
 + (BOOL)canMergeRemoteChanges;
++ (id)changeNotificationObjectIDKeys;
++ (id)changeNotificationObjectIDMutationKeys;
++ (id)changeNotificationObjectKeys;
++ (id)changeNotificationObjectMutationKeys;
 + (id)contextForDatabaseCreation:(const char *)arg1;
 + (id)contextForPhotoLibrary:(id)arg1 name:(const char *)arg2;
 + (BOOL)databaseIsMissing;
@@ -96,19 +96,18 @@
 + (id)sharedPersistentStoreCoordinator;
 + (BOOL)shouldUseXPCPhotoLibraryStore;
 + (BOOL)storeIsOldEnough;
+- (BOOL)_adjustmentTimestampChangedChangedAttribute:(id)arg1 from:(id)arg2;
 - (void)_contextObjectsDidChange:(id)arg1;
 - (void)_createDelayedSaveActionsWithTransaction:(id)arg1;
 - (id)_deletionKeyForObjectWithID:(id)arg1;
 - (void)_destroyDelayedSaveActions;
-- (void)_getInsertedIDs:(id)arg1 deletedIDs:(id)arg2 changedIDs:(id)arg3 ofEntityKind:(id)arg4 fromRemoteContextDidSaveNotification:(id)arg5;
+- (void)_getInsertedIDs:(id)arg1 deletedIDs:(id)arg2 changedIDs:(id)arg3 adjustedIDs:(id)arg4 ofEntityKind:(id)arg5 fromRemoteContextDidSaveObjectIDsNotification:(id)arg6;
 - (void)_informPTPDelegateAboutChangesFromRemoteContextSaveNotification:(id)arg1;
 - (void)_mergeChangesFromDidSaveDictionary:(id)arg1 usingObjectIDs:(BOOL)arg2;
 - (void)_notifyALAssetsLibraryWithChanges:(id)arg1 usingObjectIDs:(BOOL)arg2;
-- (void)_recordChangedKeys:(id)arg1 forObject:(id)arg2;
+- (void)_recordChangedKeys:(id)arg1 forObjectID:(id)arg2;
 - (BOOL)_tooManyAssetChangesToHandle:(unsigned long long)arg1;
-- (void)_writeHiddenFaceMetadata;
 - (void)connectToChangeHub;
-- (long long)context:(id)arg1 shouldHandleInaccessibleFault:(id)arg2 forObjectID:(id)arg3 andTrigger:(id)arg4;
 - (unsigned long long)countForFetchRequest:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (void)disconnectFromChangeHub;
@@ -125,15 +124,11 @@
 - (BOOL)obtainPermanentIDsForObjects:(id)arg1 error:(id *)arg2;
 - (id)pl_fetchObjectsWithIDs:(id)arg1;
 - (id)pl_fetchObjectsWithIDs:(id)arg1 rootEntity:(id)arg2;
-- (void)recordAssetWithCloudGUIDChange:(id)arg1;
 - (void)recordAvalancheUUIDForUpdate:(id)arg1;
+- (void)recordChangesFromTriggerModifiedObjectIDs:(id)arg1;
 - (void)recordCloudDeletionForObjectWithID:(id)arg1 withCloudUUID:(id)arg2;
-- (void)recordHiddenFaceStateChanged;
 - (void)recordManagedObjectWillSave:(id)arg1;
 - (void)recordSyncChangeMarker;
-- (void)recordTriggerChangesFromUserInfo:(id)arg1;
-- (void)refreshAssetsWithCloudGUIDChangePersistenceIfNeeded;
-- (void)refreshHiddenFaceStatePersistenceIfNeeded;
 - (void)registerFilesystemDeletionInfo:(id)arg1;
 - (BOOL)save:(id *)arg1;
 - (void)setGlobalValue:(id)arg1 forKey:(id)arg2;

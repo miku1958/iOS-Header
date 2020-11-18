@@ -21,6 +21,7 @@
 - (id)_actionManagerForAsset:(id)arg1;
 - (id)_actionManagerForAssets:(id)arg1;
 - (id)_actionManagerForAssetsByAssetCollection:(id)arg1;
+- (id)actionPerformerForDuplicatingAssetsByAssetCollection:(id)arg1 withNewStillImageTime:(CDStruct_1b6d18a9)arg2;
 - (id)actionPerformerForSettingFavoriteTo:(BOOL)arg1 onAssetsByAssetCollection:(id)arg2;
 - (id)actionPerformerForSimpleActionType:(unsigned long long)arg1 onAssetsByAssetCollection:(id)arg2;
 - (BOOL)canPerformAction:(unsigned long long)arg1 onAllAssetsByAssetCollection:(id)arg2;

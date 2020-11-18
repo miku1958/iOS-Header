@@ -6,15 +6,15 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NUIContainerStackView;
+@class NSArray, NUIContainerGridView;
 @protocol NUIWidgetGridViewDataSource, NUIWidgetGridViewDelegate;
 
 @interface NUIWidgetGridView : UIView
 {
-    NUIContainerStackView *_stackView;
+    NUIContainerGridView *_gridView;
     NSArray *_itemViews;
-    unsigned long long _visibleCount;
-    struct CGSize _labelSizes[6];
+    struct CGSize _labelSizes[8];
+    unsigned long long _currentLayout;
     id<NUIWidgetGridViewDataSource> _dataSource;
     id<NUIWidgetGridViewDelegate> _delegate;
     long long _imageStyle;
@@ -35,12 +35,20 @@
 + (double)itemWidth;
 + (unsigned long long)maxNumberOfItems;
 - (void).cxx_destruct;
-- (void)_createStackViewIfNeeded;
+- (void)_createGridViewIfNeeded;
 - (CDStruct_a157df34)borrowableSpaceForCellAtIndex:(unsigned long long)arg1;
 - (id)cellForGridViewItemAtIndex:(long long)arg1;
+- (void)contentSizeDidChange;
+- (long long)currentLayout;
 - (CDStruct_a157df34)entitledExtraSpaceForCellAtIndex:(unsigned long long)arg1;
+- (void)generateItems;
+- (double)horizontalMargin;
 - (id)initWithDataSource:(id)arg1 delegate:(id)arg2;
+- (unsigned long long)itemsPerRow;
+- (double)labelMinSpacing;
+- (double)labelOutset;
 - (void)layoutSubviews;
+- (unsigned long long)maxNumberOfItems;
 - (void)reloadData;
 
 @end

@@ -12,6 +12,7 @@
 {
     float _turbidity;
     float _sunElevation;
+    float _sunAzimuth;
     float _upperAtmosphereScattering;
     float _groundAlbedo;
     float _gamma;
@@ -35,11 +36,13 @@
 @property (nonatomic) MISSING_TYPE *highDynamicRangeCompression; // @synthesize highDynamicRangeCompression=_highDynamicRangeCompression;
 @property (nonatomic) float horizonElevation; // @synthesize horizonElevation=_horizonElevation;
 @property (nonatomic) float saturation; // @synthesize saturation=_saturation;
+@property (nonatomic) float sunAzimuth; // @synthesize sunAzimuth=_sunAzimuth;
 @property (nonatomic) float sunElevation; // @synthesize sunElevation=_sunElevation;
 @property (nonatomic) float turbidity; // @synthesize turbidity=_turbidity;
 @property (nonatomic) float upperAtmosphereScattering; // @synthesize upperAtmosphereScattering=_upperAtmosphereScattering;
 
 - (void)dealloc;
+- (id)initWithName:(id)arg1 channelEncoding:(long long)arg2 textureDimensions:(float)arg3 turbidity:(float)arg4 sunElevation:(float)arg5 sunAzimuth:(float)arg6 upperAtmosphereScattering:(float)arg7 groundAlbedo: /* Error: Ran out of types for this method. */;
 - (id)initWithName:(id)arg1 channelEncoding:(long long)arg2 textureDimensions:(float)arg3 turbidity:(float)arg4 sunElevation:(float)arg5 upperAtmosphereScattering:(float)arg6 groundAlbedo: /* Error: Ran out of types for this method. */;
 - (void)updateTexture;
 

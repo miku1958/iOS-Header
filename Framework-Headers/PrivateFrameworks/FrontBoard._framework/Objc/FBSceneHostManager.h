@@ -7,22 +7,24 @@
 #import <Foundation/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
-#import <FrontBoard/FBSceneLayerHostContainerViewDelegate-Protocol.h>
 
 @class FBOrderedRequesters, FBScene, FBSceneHostWrapperView, FBSceneLayerHostContainerView, FBSceneLayerManager, NSHashTable, NSMutableDictionary, NSMutableSet, NSString, UIColor;
 @protocol FBSceneHostManagerDelegate;
 
-@interface FBSceneHostManager : NSObject <FBSceneLayerHostContainerViewDelegate, BSDescriptionProviding>
+@interface FBSceneHostManager : NSObject <BSDescriptionProviding>
 {
     FBSceneLayerManager *_layerManager;
     FBScene *_scene;
     NSString *_identifier;
+    long long _contentState;
+    BOOL _contentStateIsChanging;
     UIColor *_defaultBackgroundColorWhileHosting;
     UIColor *_defaultBackgroundColorWhileNotHosting;
     unsigned long long _defaultHostedLayerTypes;
+    unsigned long long _defaultRenderingMode;
+    NSString *_defaultMinificationFilterName;
     FBSceneLayerHostContainerView *_hostView;
     FBSceneHostWrapperView *_activeWrapperView;
-    BOOL _suspended;
     BOOL _invalidated;
     FBOrderedRequesters *_hostRequesters;
     NSMutableDictionary *_hostWrapperViewsByRequester;
@@ -31,16 +33,17 @@
     id<FBSceneHostManagerDelegate> _delegate;
     struct {
         unsigned int delegateOverrideRequester:1;
-        unsigned int DEPRECATED_delegateOverrideRequester:1;
-        unsigned int delegateShouldEnableContextHostingForRequester:1;
-        unsigned int DEPRECATED_delegateShouldEnableContextHostingForRequester:1;
+        unsigned int delegateShouldEnableHostingForRequester:1;
     } _flags;
 }
 
+@property (readonly, nonatomic) long long contentState; // @synthesize contentState=_contentState;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) UIColor *defaultBackgroundColorWhileHosting;
 @property (copy, nonatomic) UIColor *defaultBackgroundColorWhileNotHosting;
 @property (nonatomic) unsigned long long defaultHostedLayerTypes; // @synthesize defaultHostedLayerTypes=_defaultHostedLayerTypes;
+@property (copy, nonatomic) NSString *defaultMinificationFilterName; // @synthesize defaultMinificationFilterName=_defaultMinificationFilterName;
+@property (nonatomic) unsigned long long defaultRenderingMode; // @synthesize defaultRenderingMode=_defaultRenderingMode;
 @property (nonatomic) id<FBSceneHostManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -48,13 +51,14 @@
 @property (readonly, nonatomic, getter=isInvalidated) BOOL invalidated; // @synthesize invalidated=_invalidated;
 @property (readonly, strong, nonatomic) FBScene *scene; // @synthesize scene=_scene;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic, getter=isSuspended) BOOL suspended; // @synthesize suspended=_suspended;
 
 - (void)_activateRequester:(id)arg1;
 - (id)_activeHostRequester;
+- (void)_callOutToObservers:(CDUnknownBlockType)arg1;
 - (id)_hostViewForRequester:(id)arg1;
 - (id)_hostViewForRequester:(id)arg1 enableAndOrderFront:(BOOL)arg2;
 - (id)_overrideRequesterIfNecessary:(id)arg1;
+- (void)_setContentState:(long long)arg1;
 - (id)_snapshotContextForFrame:(struct CGRect)arg1 excludedContextIDs:(id)arg2 opaque:(BOOL)arg3 outTransform:(struct CGAffineTransform *)arg4;
 - (id)_snapshotContextForFrame:(struct CGRect)arg1 excludedLayers:(id)arg2 opaque:(BOOL)arg3;
 - (void)_updateActiveHostRequester;
@@ -75,9 +79,8 @@
 - (void)invalidate;
 - (void)orderRequesterFront:(id)arg1;
 - (void)removeObserver:(id)arg1;
-- (void)resumeLayerHosting;
-- (void)sceneLayerHostContainerViewHostedLayersDidChange:(id)arg1;
 - (void)setContextId:(unsigned int)arg1 hidden:(BOOL)arg2 forRequester:(id)arg3;
+- (void)setLayer:(id)arg1 alpha:(double)arg2 forRequester:(id)arg3;
 - (void)setLayer:(id)arg1 hidden:(BOOL)arg2 forRequester:(id)arg3;
 - (struct CGImage *)snapshotCGImageRefForFrame:(struct CGRect)arg1 excludingContexts:(id)arg2 opaque:(BOOL)arg3 outTransform:(struct CGAffineTransform *)arg4;
 - (id)snapshotContextForRequester:(id)arg1;
@@ -87,10 +90,6 @@
 - (id)snapshotViewWithFrame:(struct CGRect)arg1 excludingContexts:(id)arg2 opaque:(BOOL)arg3;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
-- (void)suspendLayerHosting;
-- (id)visibleContexts;
-- (id)visibleLayers;
-- (id)visibleLayersForRequester:(id)arg1;
 
 @end
 

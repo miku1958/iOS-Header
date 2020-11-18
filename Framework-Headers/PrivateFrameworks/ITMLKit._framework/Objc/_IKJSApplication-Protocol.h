@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <ITMLKit/IKJSApplication-Protocol.h>
 #import <ITMLKit/JSExport-Protocol.h>
 
-@class NSDictionary;
-
-@protocol _IKJSApplication <JSExport>
-
-@property (readonly, nonatomic) NSDictionary *traitCollection;
-
+@protocol _IKJSApplication <IKJSApplication, JSExport>
 - (void)update;
 @end
 

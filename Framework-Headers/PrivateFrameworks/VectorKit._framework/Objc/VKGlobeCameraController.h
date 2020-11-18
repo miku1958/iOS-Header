@@ -20,21 +20,22 @@ __attribute__((visibility("hidden")))
     BOOL _isRotating;
     BOOL _wasPitched;
     BOOL _couldEnter3DMode;
-    int _flyoverMode;
     double _currentZoomLevel;
     double _maxZoomLevel;
     double _lastRotation;
     struct CGPoint _panStartScreenPoint;
     struct CGPoint _panLastScreenPoint;
     double _beganDoublePanPitch;
+    shared_ptr_e963992e _taskContext;
+    BOOL _tourShouldResumeWhenDoneGesturing;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) int flyoverMode; // @synthesize flyoverMode=_flyoverMode;
 @property (nonatomic) struct GlobeView *globeView; // @synthesize globeView=_globeView;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL tourShouldResumeWhenDoneGesturing; // @synthesize tourShouldResumeWhenDoneGesturing=_tourShouldResumeWhenDoneGesturing;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -45,10 +46,10 @@ __attribute__((visibility("hidden")))
 - (void)_updateIsPitched;
 - (void)adjustLoadingForAnimation:(float)arg1 progressFactor:(float)arg2;
 - (double)altitude;
-- (struct PositionGeo3d)cameraPosition;
+- (Geocentric_d8fde6f2)cameraPosition;
 - (BOOL)canEnter3DMode;
 - (CDStruct_c3b9c2ee)centerCoordinate;
-- (CDUnknownBlockType)createMoveToZoomOutZoomInFrameFunction:(struct FrameLatLon)arg1 toLatLon:(struct FrameLatLon)arg2;
+- (CDUnknownBlockType)createMoveToZoomOutZoomInFrameFunction:(CameraFrame_406dbd31)arg1 toLatLon:(CameraFrame_406dbd31)arg2;
 - (double)currentZoomLevel;
 - (void)dealloc;
 - (double)distanceFromCenterCoordinate;
@@ -58,10 +59,9 @@ __attribute__((visibility("hidden")))
 - (void)exit3DMode;
 - (void)flyoverTourAnimation:(id)arg1 animateToStart:(BOOL)arg2 labelChanged:(CDUnknownBlockType)arg3 stateChange:(CDUnknownBlockType)arg4;
 - (double)geocAngleBetween:(CDStruct_c3b9c2ee)arg1 andCoordinate:(CDStruct_c3b9c2ee)arg2;
-- (Matrix_6e1d3589)geocentricFromPosition:(struct PositionLatLonAlt)arg1;
-- (double)greatCircleMidPointLatitude:(double)arg1 deltaLongitude:(double)arg2;
+- (double)greatCircleMidPointLatitude:(double)arg1 fromLongitude:(double)arg2 toLongitude:(double)arg3;
 - (double)heading;
-- (id)init;
+- (id)initWithTaskContext:(shared_ptr_e963992e)arg1;
 - (void)interruptFlyoverTourAnimation;
 - (BOOL)isFlyoverTourStarted;
 - (BOOL)isFullyPitched;
@@ -99,9 +99,7 @@ __attribute__((visibility("hidden")))
 - (long long)tileSize;
 - (void)tiltTo:(double)arg1 animated:(BOOL)arg2 exaggerate:(BOOL)arg3;
 - (double)topDownMinimumZoomLevel;
-- (void)transitionToFlyoverMode:(int)arg1 animated:(BOOL)arg2;
 - (void)updateCameraManager;
-- (void)updateFlyoverMode;
 - (void)updatePinchWithFocusPoint:(struct CGPoint)arg1 oldFactor:(double)arg2 newFactor:(double)arg3;
 - (void)updateState;
 - (id)viewportInfo;

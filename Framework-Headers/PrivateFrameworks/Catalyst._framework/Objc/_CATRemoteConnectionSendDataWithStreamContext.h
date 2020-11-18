@@ -24,6 +24,7 @@
 
 @property (readonly, nonatomic) unsigned long long bufferSize; // @synthesize bufferSize=_bufferSize;
 @property (nonatomic) unsigned long long bytesWritten; // @synthesize bytesWritten=_bytesWritten;
+@property (readonly, nonatomic) unsigned long long clientBytesWritten;
 @property (readonly, nonatomic) unsigned long long dataLength; // @synthesize dataLength=_dataLength;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

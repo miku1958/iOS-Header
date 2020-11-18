@@ -34,10 +34,12 @@
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
++ (Class)anchorsType;
 + (id)persistentUserInfoKey;
 + (id)retreiveFromPersistentUserInfo:(id)arg1;
 + (id)statusWithStatusCode:(int)arg1;
 - (void).cxx_destruct;
+- (int)StringAsStatusCode:(id)arg1;
 - (void)addAnchors:(id)arg1;
 - (void)addToPersistentUserInfo:(id)arg1;
 - (unsigned long long)anchorCount;
@@ -55,6 +57,7 @@
 - (id)nanoSyncDescription;
 - (BOOL)readFrom:(id)arg1;
 - (void)setAnchor:(long long)arg1 forSyncEntity:(Class)arg2;
+- (id)statusCodeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

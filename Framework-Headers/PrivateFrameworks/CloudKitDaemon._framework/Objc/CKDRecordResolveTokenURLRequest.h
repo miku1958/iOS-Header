@@ -25,12 +25,12 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType tokenResolveBlock; // @synthesize tokenResolveBlock=_tokenResolveBlock;
 
 - (void).cxx_destruct;
+- (id)generateRequestOperations;
 - (id)initWithShortTokenLookupInfos:(id)arg1;
 - (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 - (id)sourceApplicationBundleIdentifier;
 
 @end

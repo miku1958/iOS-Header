@@ -6,7 +6,6 @@
 
 #import <CloudDocsUI/_UIDocumentPickerURLContainerModel.h>
 
-__attribute__((visibility("hidden")))
 @interface _UIDocumentPickerRootContainerModel : _UIDocumentPickerURLContainerModel
 {
     BOOL _isObservingContainers;

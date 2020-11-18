@@ -17,11 +17,13 @@ __attribute__((visibility("hidden")))
     NSString *_linkTitle;
     NSString *_recentsTitle;
     NSString *_recentsMessage;
+    NSString *_additionalMessage;
     VSExpressionEvaluator *_buttonExpressionEvaluator;
     NSString *_originalUsername;
     NSString *_originalPassword;
 }
 
+@property (copy, nonatomic) NSString *additionalMessage; // @synthesize additionalMessage=_additionalMessage;
 @property (strong, nonatomic) VSExpressionEvaluator *buttonExpressionEvaluator; // @synthesize buttonExpressionEvaluator=_buttonExpressionEvaluator;
 @property (copy, nonatomic) NSString *linkTitle; // @synthesize linkTitle=_linkTitle;
 @property (copy, nonatomic) NSURL *linkURL; // @synthesize linkURL=_linkURL;
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_bindField:(id)arg1;
 - (void)_unbindField:(id)arg1;
+- (void)configureWithRequest:(id)arg1;
 - (id)init;
 
 @end

@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic, getter=_navigation_courseAccuracy) double courseAccuracy;
 @property (readonly, nonatomic, getter=_navigation_detailedMatchInfo) GEONavigationMatchInfo *detailedMatchInfo;
+@property (nonatomic, getter=_navigation_gtLog, setter=_navigation_setGtLog:) BOOL gtLog;
 @property (readonly, nonatomic, getter=_navigation_hasMatch) BOOL hasMatch;
 @property (readonly, nonatomic, getter=_navigation_hasValidCourse) BOOL hasValidCourse;
 @property (readonly, nonatomic, getter=_navigation_isStale) BOOL isStale;
@@ -20,7 +21,6 @@
 @property (readonly, nonatomic, getter=_navigation_routeMatch) GEORouteMatch *routeMatch;
 
 + (id)_navigation_stringWithType:(int)arg1;
-- (int)_navigation_clLocationTypeForGEOLocationType:(int)arg1;
 - (BOOL)_navigation_isEqualToLocationCoordinate:(struct CLLocationCoordinate2D)arg1;
 - (double)_navigation_speedAccuracy;
 - (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1 rawCoordinate:(struct CLLocationCoordinate2D)arg2 course:(double)arg3 rawCourse:(double)arg4 courseAccuracy:(double)arg5 speed:(double)arg6 speedAccuracy:(double)arg7 altitude:(double)arg8 timestamp:(double)arg9 horizontalAccuracy:(double)arg10 verticalAccuracy:(double)arg11 type:(int)arg12 referenceFrame:(int)arg13;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKit/UIApplicationRotationFollowingController.h>
 
 @class UIWindow, _UIFallbackPresentationWindow;
 
-@interface _UIFallbackPresentationViewController : UIViewController
+@interface _UIFallbackPresentationViewController : UIApplicationRotationFollowingController
 {
     _UIFallbackPresentationWindow *_presentationWindow;
     BOOL _hasPreservedKeyboardInputViews;
@@ -28,9 +28,6 @@
 - (void)_presentViewController:(id)arg1 sendingView:(id)arg2 animated:(BOOL)arg3;
 - (void)_preserveInputViewsAnimated:(BOOL)arg1;
 - (void)_restoreInputViewsAnimated:(BOOL)arg1;
-- (BOOL)shouldAutorotate;
-- (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
-- (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidLoad;
 
 @end

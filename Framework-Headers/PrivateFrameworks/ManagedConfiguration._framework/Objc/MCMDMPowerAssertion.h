@@ -6,18 +6,26 @@
 
 #import <ManagedConfiguration/MCPowerAssertion.h>
 
-@class UMUserSwitchBlockingTask;
+@class NSDate, NSString, UMUserSwitchBlockingTask;
 
 @interface MCMDMPowerAssertion : MCPowerAssertion
 {
+    NSString *_reason;
+    NSDate *_creationDate;
     UMUserSwitchBlockingTask *_blockingTask;
 }
 
 @property (strong, nonatomic) UMUserSwitchBlockingTask *blockingTask; // @synthesize blockingTask=_blockingTask;
+@property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (readonly, nonatomic) NSString *reason; // @synthesize reason=_reason;
 
++ (id)_currentAssertions;
++ (id)_dateFormatter;
++ (id)assertionDescriptions;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)init;
+- (id)description;
+- (id)initWithReason:(id)arg1;
 
 @end
 

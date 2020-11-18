@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)applicationIconDidChange:(id)arg1;
 - (void)applicationInstallsArePrioritized:(id)arg1 arePaused:(id)arg2;
 - (void)applicationInstallsDidCancel:(id)arg1;
@@ -39,7 +40,6 @@
 - (void)applicationsDidUninstall:(id)arg1;
 - (void)applicationsWillInstall:(id)arg1;
 - (void)applicationsWillUninstall:(id)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

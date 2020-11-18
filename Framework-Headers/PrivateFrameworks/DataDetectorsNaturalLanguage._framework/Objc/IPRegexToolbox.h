@@ -10,6 +10,7 @@
 {
 }
 
++ (id)emailSubjectPrefixRegex;
 + (id)firstMatchingKeywordForRegex:(id)arg1 inString:(id)arg2 needsToLowercase:(BOOL)arg3;
 + (BOOL)isRangeInsideQuotationMarks:(struct _NSRange)arg1 text:(id)arg2 limitToSurroundingText:(BOOL)arg3;
 + (BOOL)isRangeNearbyExclusionKeyword:(struct _NSRange)arg1 text:(id)arg2 limitToSurroundingText:(BOOL)arg3 language:(id)arg4;

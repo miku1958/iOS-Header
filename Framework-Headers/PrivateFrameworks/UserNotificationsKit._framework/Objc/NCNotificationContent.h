@@ -18,12 +18,13 @@
     NSString *_title;
     NSString *_subtitle;
     NSString *_message;
-    NSString *_topic;
+    NSString *_hiddenPreviewsBodyPlaceholder;
     UIImage *_icon;
     UIImage *_attachmentImage;
     NSDate *_date;
     BOOL _dateAllDay;
     NSTimeZone *_timeZone;
+    NSString *_topic;
 }
 
 @property (readonly, nonatomic) UIImage *attachmentImage; // @synthesize attachmentImage=_attachmentImage;
@@ -33,6 +34,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *header; // @synthesize header=_header;
+@property (readonly, copy, nonatomic) NSString *hiddenPreviewsBodyPlaceholder; // @synthesize hiddenPreviewsBodyPlaceholder=_hiddenPreviewsBodyPlaceholder;
 @property (readonly, nonatomic) UIImage *icon; // @synthesize icon=_icon;
 @property (readonly, copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;

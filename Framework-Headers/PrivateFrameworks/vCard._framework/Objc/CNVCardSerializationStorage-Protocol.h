@@ -6,9 +6,10 @@
 
 #import <vCard/NSObject-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 @protocol CNVCardSerializationStorage <NSObject>
+- (void)appendData:(NSData *)arg1;
 - (void)appendFormat:(NSString *)arg1;
 - (void)appendString:(NSString *)arg1;
 - (void)appendString:(NSString *)arg1 usingEncoding:(unsigned long long)arg2;

@@ -6,35 +6,53 @@
 
 #import <Foundation/NSObject.h>
 
-@class ICCameraFile, NSDictionary, NSString;
+@class ICCameraFile, NSDictionary, NSString, UIImage;
 
 @interface PLCameraImportItemRepresentation : NSObject
 {
-    ICCameraFile *_cameraFile;
-    NSDictionary *_metadata;
+    BOOL _inLibrary;
     BOOL _canRequestMetadata;
     BOOL _canRequestThumbnail;
+    BOOL _isRender;
+    ICCameraFile *_cameraFile;
+    NSDictionary *_metadata;
     NSString *_path;
-    BOOL _inDatabase;
+    NSString *_name;
+    NSString *_fileExtension;
+    UIImage *_thumbnail;
 }
 
-@property (strong, nonatomic) ICCameraFile *cameraFile; // @synthesize cameraFile=_cameraFile;
+@property (readonly, nonatomic) ICCameraFile *cameraFile; // @synthesize cameraFile=_cameraFile;
 @property (nonatomic) BOOL canRequestMetadata; // @synthesize canRequestMetadata=_canRequestMetadata;
 @property (nonatomic) BOOL canRequestThumbnail; // @synthesize canRequestThumbnail=_canRequestThumbnail;
-@property (nonatomic) BOOL inDatabase; // @synthesize inDatabase=_inDatabase;
+@property (readonly, copy, nonatomic) NSString *fileExtension; // @synthesize fileExtension=_fileExtension;
+@property (readonly, nonatomic) BOOL isAudio;
+@property (readonly, nonatomic) BOOL isImage;
+@property (readonly, nonatomic) BOOL isMovie;
+@property (readonly, nonatomic) BOOL isRaw;
+@property (readonly, nonatomic) BOOL isRender; // @synthesize isRender=_isRender;
 @property (strong, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
+@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *path; // @synthesize path=_path;
+@property (readonly, nonatomic) UIImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 
-- (void)dealloc;
++ (CDUnknownBlockType)_fileTypeComparator;
++ (CDUnknownBlockType)_originalFirstComparator;
++ (CDUnknownBlockType)_renderFirstComparator;
++ (CDUnknownBlockType)importComparator;
++ (CDUnknownBlockType)itemComparator;
+- (void).cxx_destruct;
+- (BOOL)_checkIfIsInLibrary;
+- (long long)_fileTypeSortOrder;
+- (BOOL)_utiConformsTo:(struct __CFString *)arg1;
+- (void)clearThumbnail;
 - (id)description;
-- (id)fileExtension;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithCameraFile:(id)arg1;
-- (BOOL)isAudio;
-- (BOOL)isInDatabaseForce:(BOOL)arg1;
-- (BOOL)isJPEG;
-- (BOOL)isMovie;
-- (BOOL)isRaw;
+- (BOOL)isInLibraryForce:(BOOL)arg1;
+- (void)markAsInDatabase;
+- (void)requestThumbnail;
+- (void)setThumbnailWithImageRef:(struct CGImage *)arg1;
 
 @end
 

@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSString *credentialType; // @dynamic credentialType;
 @property (strong, nonatomic) NSNumber *encryptAccountProperties; // @dynamic encryptAccountProperties;
 @property (strong, nonatomic) NSString *identifier; // @dynamic identifier;
+@property (strong, nonatomic) NSNumber *obsolete; // @dynamic obsolete;
 @property (strong, nonatomic) NSString *owningBundleID; // @dynamic owningBundleID;
 @property (strong, nonatomic) NSSet *permission; // @dynamic permission;
 @property (strong, nonatomic) NSSet *supportedDataclasses; // @dynamic supportedDataclasses;

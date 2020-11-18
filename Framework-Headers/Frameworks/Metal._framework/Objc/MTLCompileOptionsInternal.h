@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface MTLCompileOptionsInternal : MTLCompileOptions
 {
+    BOOL _userSetLanguageVersion;
     NSDictionary *_preprocessorMacros;
     BOOL _fastMathEnabled;
     BOOL _glBufferBindPoints;

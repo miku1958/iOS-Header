@@ -20,9 +20,9 @@ __attribute__((visibility("hidden")))
 + (BOOL)_shouldUseAKAnnotation:(id)arg1 toRepresentCGPDFAnnotation:(struct CGPDFAnnotation *)arg2;
 + (id)_tokenizeAppearanceString:(id)arg1;
 + (void)addAKAnnotation:(id)arg1 toAnnotationDictionary:(struct __CFDictionary *)arg2;
-+ (void)addAppearanceStreamOfAnnotation:(id)arg1 toDictionary:(id)arg2;
++ (void)addAppearanceStreamOfAnnotation:(id)arg1 forPage:(struct CGPDFPage *)arg2 toDictionary:(id)arg3;
 + (void)addBorderStyleOfAnnotation:(id)arg1 toDictionary:(id)arg2;
-+ (void)addBoundsOfAnnotation:(id)arg1 toDictionary:(id)arg2;
++ (void)addBoundsOfAnnotation:(id)arg1 forPage:(struct CGPDFPage *)arg2 toDictionary:(id)arg3;
 + (void)addContentsStringOfAnnotation:(id)arg1 toDictionary:(id)arg2;
 + (void)addDefaultAppearanceStreamOfAnnotation:(id)arg1 toDictionary:(id)arg2;
 + (void)addFlagsOfAnnotation:(id)arg1 toDictionary:(id)arg2;

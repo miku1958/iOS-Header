@@ -23,6 +23,7 @@
 @property (strong, nonatomic) id<MTLTexture> resolveTexture; // @dynamic resolveTexture;
 @property (nonatomic) unsigned long long slice; // @dynamic slice;
 @property (nonatomic) unsigned long long storeAction; // @dynamic storeAction;
+@property (nonatomic) unsigned long long storeActionOptions; // @dynamic storeActionOptions;
 @property (strong, nonatomic) id<MTLTexture> texture; // @dynamic texture;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

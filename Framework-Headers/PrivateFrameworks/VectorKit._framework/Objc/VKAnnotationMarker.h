@@ -4,35 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VectorKit/VKAnnotationMarkerLayer.h>
+#import <objc/NSObject.h>
 
-#import <VectorKit/VKTrackableAnnotationPresentation-Protocol.h>
-
-@class NSString;
-@protocol VKAnnotation;
-
-@interface VKAnnotationMarker : VKAnnotationMarkerLayer <VKTrackableAnnotationPresentation>
+@interface VKAnnotationMarker : NSObject
 {
-    id<VKAnnotation> _annotation;
-    BOOL _tracking;
-    BOOL _animatingToCoordinate;
     CDStruct_2c43369c _presentationCoordinate;
-    CDStruct_6bdb9208 _styleTransitionState;
 }
 
-@property (nonatomic) BOOL animatingToCoordinate; // @synthesize animatingToCoordinate=_animatingToCoordinate;
-@property (strong, nonatomic) id<VKAnnotation> annotation; // @synthesize annotation=_annotation;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (nonatomic) CDStruct_c3b9c2ee presentationCoordinate;
-@property (nonatomic) CDStruct_6bdb9208 styleTransitionState; // @synthesize styleTransitionState=_styleTransitionState;
-@property (readonly) Class superclass;
-@property (nonatomic, getter=isTracking) BOOL tracking;
+@property (nonatomic) CDStruct_c3b9c2ee presentationCoordinate; // @synthesize presentationCoordinate=_presentationCoordinate;
 
-- (void)dealloc;
-- (id)init;
-- (id)initWithAnnotation:(id)arg1;
 
 @end
 

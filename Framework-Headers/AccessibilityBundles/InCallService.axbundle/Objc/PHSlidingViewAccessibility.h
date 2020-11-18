@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)show:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)showSlidingViewModel:(id)arg1 animatedSliderCompletion:(CDUnknownBlockType)arg2 medicalIDSliderCompletion:(CDUnknownBlockType)arg3;
 
 @end
 

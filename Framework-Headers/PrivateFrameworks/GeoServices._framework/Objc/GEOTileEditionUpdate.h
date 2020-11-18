@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray;
 
@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL flushEverything; // @synthesize flushEverything=_flushEverything;
 @property (nonatomic) BOOL invalidateEverything; // @synthesize invalidateEverything=_invalidateEverything;
 
+- (void).cxx_destruct;
 - (void)addTileset:(unsigned int)arg1 edition:(unsigned int)arg2 provider:(unsigned int)arg3 invalidateOnly:(BOOL)arg4;
-- (void)dealloc;
 - (id)init;
 - (void)tileset:(unsigned int *)arg1 edition:(unsigned int *)arg2 provider:(unsigned int *)arg3 invalidateOnly:(BOOL *)arg4 atIndex:(unsigned long long)arg5;
 - (unsigned long long)tilesetCount;

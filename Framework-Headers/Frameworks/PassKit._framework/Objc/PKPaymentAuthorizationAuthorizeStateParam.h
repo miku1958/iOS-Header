@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSData *credential; // @synthesize credential=_credential;
 @property (strong, nonatomic) NSData *nonceData; // @synthesize nonceData=_nonceData;
 
++ (id)paramWithCredential:(id)arg1;
 + (id)paramWithCredential:(id)arg1 nonce:(id)arg2;
 - (void).cxx_destruct;
 - (id)description;

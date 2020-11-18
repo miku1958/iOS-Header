@@ -26,7 +26,6 @@
 @property (nonatomic) BOOL hideInlineDayViewInEventDetails;
 @property (nonatomic) BOOL immediateAlarmCreation;
 @property (nonatomic) BOOL largeListViewDisclosingEventDetails;
-@property (strong, nonatomic) NSNumber *lastConfirmedSplashScreenVersionViewed;
 @property (strong, nonatomic) NSNumber *lastSuspendTime;
 @property (strong, nonatomic) NSNumber *lastViewMode;
 @property (strong, nonatomic) NSNumber *lastViewedDate;

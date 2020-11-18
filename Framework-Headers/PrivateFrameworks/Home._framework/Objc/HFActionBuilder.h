@@ -13,10 +13,13 @@
 }
 
 @property (readonly, nonatomic) HMAction *action;
+@property (readonly, nonatomic, getter=isAffectedByEndEvents) BOOL affectedByEndEvents;
 @property (readonly, nonatomic) BOOL requiresDeviceUnlock;
 
 + (id)actionBuilderForAction:(id)arg1 inHome:(id)arg2;
 + (Class)homeKitRepresentationClass;
+- (id)copyForCreatingNewAction;
+- (id)createNewAction;
 - (void)setAction:(id)arg1;
 - (BOOL)updateWithActionBuilder:(id)arg1;
 

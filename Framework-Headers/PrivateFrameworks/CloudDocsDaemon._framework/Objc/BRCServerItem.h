@@ -8,26 +8,31 @@
 
 #import <CloudDocsDaemon/BRCItem-Protocol.h>
 
-@class BRCAccountSession, BRCClientZone, BRCItemID, BRCServerZone, BRCStatInfo, BRCVersion, NSNumber, NSString;
+@class BRCAccountSession, BRCClientZone, BRCItemID, BRCPQLConnection, BRCServerStatInfo, BRCServerZone, BRCSharedServerItem, BRCVersion, NSNumber, NSString;
 
 @interface BRCServerItem : NSObject <BRCItem>
 {
     BRCAccountSession *_session;
     BRCServerZone *_zone;
     unsigned long long _sharingOptions;
+    BRCPQLConnection *_db;
     BOOL _needsInsert;
+    unsigned int _pcsChainState;
     NSString *_symlinkTarget;
     NSNumber *_ownerKey;
     BRCItemID *_itemID;
     NSString *_originalName;
     long long _rank;
-    BRCStatInfo *_st;
+    BRCServerStatInfo *_st;
     BRCVersion *_latestVersion;
     BRCServerZone *_serverZone;
     BRCClientZone *_clientZone;
+    long long _directoryMtime;
 }
 
+@property (readonly, nonatomic) BRCSharedServerItem *asSharedItem;
 @property (readonly, nonatomic) BRCClientZone *clientZone; // @synthesize clientZone=_clientZone;
+@property (readonly, nonatomic) long long directoryMtime; // @synthesize directoryMtime=_directoryMtime;
 @property (readonly, nonatomic) BOOL isBRAlias;
 @property (readonly, nonatomic) BOOL isDead;
 @property (readonly, nonatomic) BOOL isDirectory;
@@ -36,6 +41,9 @@
 @property (readonly, nonatomic) BOOL isFinderBookmark;
 @property (readonly, nonatomic) BOOL isLive;
 @property (readonly, nonatomic) BOOL isPackage;
+@property (readonly, nonatomic) BOOL isSharedItem;
+@property (readonly, nonatomic) BOOL isSharedToMeChildItem;
+@property (readonly, nonatomic) BOOL isSharedToMeTopLevelItem;
 @property (readonly, nonatomic) BOOL isSymLink;
 @property (readonly, nonatomic) BOOL isZoneRoot;
 @property (readonly, nonatomic) BRCItemID *itemID; // @synthesize itemID=_itemID;
@@ -46,12 +54,14 @@
 @property (readonly, nonatomic) BRCServerZone *serverZone; // @synthesize serverZone=_serverZone;
 @property (readonly, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
 @property (nonatomic) unsigned long long sharingOptions; // @synthesize sharingOptions=_sharingOptions;
-@property (readonly, nonatomic) BRCStatInfo *st; // @synthesize st=_st;
+@property (readonly, nonatomic) BRCServerStatInfo *st; // @synthesize st=_st;
 @property (readonly, nonatomic) NSString *symlinkTarget; // @synthesize symlinkTarget=_symlinkTarget;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (unsigned int)_t_pcsChainState;
+- (id)aliasTargetAppLibrary;
+- (id)aliasTargetClientZone;
+- (id)aliasTargetItemID;
 - (id)appLibraryForRootItem;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -59,10 +69,15 @@
 - (unsigned long long)diffAgainstServerItem:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initFromPQLResultSet:(id)arg1 serverZone:(id)arg2 error:(id *)arg3;
-- (id)initFromPQLResultSet:(id)arg1 session:(id)arg2 error:(id *)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithServerItem:(id)arg1;
 - (id)newLocalItemWithServerZone:(id)arg1 dbRowID:(unsigned long long)arg2;
+- (id)parentItemIDOnFS;
+- (id)parentItemIDOnServer;
+- (id)parentItemOnFS;
+- (id)parentLocalItemOnFS;
+- (id)parentZoneOnFS;
+- (unsigned int)pcsChainState;
 - (BOOL)validateLoggingToFile:(struct __sFILE *)arg1;
 
 @end

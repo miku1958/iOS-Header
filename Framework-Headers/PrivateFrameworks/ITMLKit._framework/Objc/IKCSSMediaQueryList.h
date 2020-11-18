@@ -12,6 +12,7 @@
 
 - (unsigned long long)count;
 - (BOOL)evaluate;
+- (id)expressionAsString;
 - (id)subQueryAtIndex:(unsigned long long)arg1;
 
 @end

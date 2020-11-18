@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TelephonyUtilities/TUNotifyObserver-Protocol.h>
 
@@ -26,6 +26,7 @@
 @property (copy, nonatomic) NSString *notificationName; // @synthesize notificationName=_notificationName;
 @property (readonly, nonatomic, getter=isObserving) BOOL observing;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly, nonatomic) unsigned long long state;
 @property (readonly) Class superclass;
 @property (nonatomic) int token; // @synthesize token=_token;
 

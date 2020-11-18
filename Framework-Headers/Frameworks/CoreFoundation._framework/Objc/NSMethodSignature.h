@@ -9,7 +9,8 @@
 @interface NSMethodSignature : NSObject
 {
     void *_private;
-    void *_reserved[6];
+    void *_reserved[5];
+    unsigned long long _flags;
 }
 
 @property (readonly) unsigned long long frameLength;
@@ -21,6 +22,7 @@
 - (struct NSMethodFrameArgInfo *)_argInfo:(long long)arg1;
 - (Class)_classForObjectAtArgumentIndex:(long long)arg1;
 - (CDStruct_52991635 *)_frameDescriptor;
+- (BOOL)_isAllObjects;
 - (BOOL)_isHiddenStructRet;
 - (id)_protocolsForObjectAtArgumentIndex:(long long)arg1;
 - (id)_signatureForBlockAtArgumentIndex:(long long)arg1;

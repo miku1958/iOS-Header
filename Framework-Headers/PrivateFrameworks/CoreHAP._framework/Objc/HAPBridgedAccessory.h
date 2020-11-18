@@ -12,34 +12,28 @@
 
 @interface HAPBridgedAccessory : HAPAccessory <HAPAccessoryServerInternalDelegate>
 {
-    BOOL _discoveredBridgeableAccessory;
     HAPCharacteristic *_reachabilityCharacteristic;
-    HAPCharacteristic *_categoryCharacteristic;
 }
 
-@property (weak, nonatomic) HAPCharacteristic *categoryCharacteristic; // @synthesize categoryCharacteristic=_categoryCharacteristic;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL discoveredBridgeableAccessory; // @synthesize discoveredBridgeableAccessory=_discoveredBridgeableAccessory;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HAPCharacteristic *reachabilityCharacteristic; // @synthesize reachabilityCharacteristic=_reachabilityCharacteristic;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)__category;
 - (BOOL)__isReachable;
 - (BOOL)__parseBridgeService:(id)arg1;
 - (BOOL)__parseServices;
-- (id)_initWithServer:(id)arg1 instanceID:(id)arg2 parsedServices:(id)arg3 discoveredBridgeableAccessory:(BOOL)arg4;
 - (void)accessoryServer:(id)arg1 didUpdateValueForCharacteristic:(id)arg2;
 - (id)accessoryServerDidRequestCharacteristicsToRegisterForNotifications:(id)arg1;
-- (id)category;
 - (id)initWithServer:(id)arg1 instanceID:(id)arg2 parsedServices:(id)arg3;
 - (BOOL)isPrimary;
+- (BOOL)mergeObject:(id)arg1;
 - (BOOL)mergeWithAccessory:(id)arg1;
-- (void)setCategory:(id)arg1;
 - (void)setReachable:(BOOL)arg1;
 - (id)shortDescription;
+- (BOOL)shouldMergeObject:(id)arg1;
 
 @end
 

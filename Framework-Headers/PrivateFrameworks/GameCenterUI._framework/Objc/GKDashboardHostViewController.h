@@ -26,8 +26,11 @@
 
 + (id)dashboardExtension;
 + (BOOL)dismissAutomaticallyAfterExtensionCompletion;
-- (id)contextForRequestIdentifier;
 - (void)dealloc;
+- (void)extensionIsCanceling;
+- (void)extensionIsFinishing;
+- (id)extensionObjectProxy;
+- (void)finishWithMatch:(id)arg1;
 - (void)hostDidChangeLeaderboardIdentifier:(id)arg1;
 - (void)hostDidChangeLeaderboardTimeScope:(id)arg1;
 - (void)hostDidChangeViewState:(id)arg1;
@@ -35,8 +38,9 @@
 - (void)hostSupportsShowingPlayForTurnBasedMatch:(BOOL)arg1;
 - (void)hostSupportsShowingQuitForTurnBasedMatch:(BOOL)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)remoteViewControllerIsCanceling;
-- (void)remoteViewControllerIsFinishing;
+- (void)messageFromExtension:(id)arg1;
+- (void)playPressedForChallenge:(id)arg1;
+- (void)playerQuitMatch:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

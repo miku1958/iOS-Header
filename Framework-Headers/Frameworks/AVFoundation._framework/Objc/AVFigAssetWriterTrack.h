@@ -55,6 +55,7 @@
 - (void)setLanguageCode:(id)arg1;
 - (void)setLayer:(long long)arg1;
 - (void)setMarksOutputTrackAsEnabled:(BOOL)arg1;
+- (void)setMediaDataLocation:(id)arg1;
 - (void)setMediaTimeScale:(int)arg1;
 - (void)setPreferredChunkAlignment:(long long)arg1;
 - (void)setPreferredChunkDuration:(CDStruct_1b6d18a9)arg1;
@@ -62,7 +63,6 @@
 - (void)setProvisionalAlternateGroupID:(short)arg1;
 - (void)setSampleReferenceBaseURL:(id)arg1;
 - (void)setTrackVolume:(float)arg1;
-- (void)setWritesMediaDataToBeginningOfFile:(BOOL)arg1;
 
 @end
 

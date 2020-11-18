@@ -23,6 +23,7 @@
 
 @property (nonatomic) unsigned long long options; // @synthesize options=_options;
 
++ (BOOL)cacheRetainsNodes;
 + (BOOL)isLinebreakImpliedAfterTagName:(id)arg1;
 + (BOOL)isLinebreakImpliedBeforeTagName:(id)arg1;
 - (void)addSubparser:(id)arg1;

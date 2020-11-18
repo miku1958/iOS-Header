@@ -7,26 +7,22 @@
 #import <Home/HFTriggerBuilder.h>
 
 @class NSMutableSet, NSSet;
-@protocol NSCopying;
 
 @interface HFCharacteristicTriggerBuilder : HFTriggerBuilder
 {
     BOOL _markTriggerAsHomeAppCreated;
-    NSMutableSet *_characteristicEvents;
+    NSMutableSet *_triggerEvents;
 }
 
-@property (strong, nonatomic) NSMutableSet *characteristicEvents; // @synthesize characteristicEvents=_characteristicEvents;
 @property (readonly, nonatomic) NSSet *characteristics;
 @property (nonatomic) BOOL markTriggerAsHomeAppCreated; // @synthesize markTriggerAsHomeAppCreated=_markTriggerAsHomeAppCreated;
-@property (readonly, nonatomic) id<NSCopying> mostCommonTriggerValue;
-@property (readonly, nonatomic) NSSet *triggerValues;
+@property (strong, nonatomic) NSMutableSet *triggerEvents; // @synthesize triggerEvents=_triggerEvents;
 
-+ (BOOL)supportsConditions;
 - (void).cxx_destruct;
 - (id)_allTriggerValuesForCharacteristic:(id)arg1 similarToValue:(id)arg2;
+- (id)_existingEventsForCharacteristic:(id)arg1;
 - (id)_lazilyMarkTriggerAsHomeAppCreated;
 - (id)_performValidation;
-- (id)_triggerEventForCharacteristic:(id)arg1;
 - (id)_updateEvents;
 - (id)commitCreateTrigger;
 - (id)commitEditTrigger;
@@ -36,10 +32,11 @@
 - (id)naturalLanguageNameOfType:(unsigned long long)arg1;
 - (void)removeAllCharacteristics;
 - (void)removeCharacteristic:(id)arg1;
-- (void)removeCharacteristics:(id)arg1;
-- (void)reset;
 - (void)setCharacteristic:(id)arg1 triggerValue:(id)arg2;
-- (void)setCharacteristics:(id)arg1 triggerValue:(id)arg2;
+- (void)setCharacteristic:(id)arg1 triggerValueRange:(id)arg2;
+- (BOOL)supportsConditions;
+- (BOOL)supportsEndEvents;
+- (BOOL)wouldFireForCharacteristic:(id)arg1 value:(id)arg2;
 
 @end
 

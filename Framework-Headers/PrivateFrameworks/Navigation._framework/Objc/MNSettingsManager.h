@@ -6,12 +6,22 @@
 
 #import <objc/NSObject.h>
 
+@class MNObserverHashTable, MNSettings;
+
 __attribute__((visibility("hidden")))
 @interface MNSettingsManager : NSObject
 {
+    MNSettings *_settings;
+    MNObserverHashTable *_observers;
 }
 
+@property (readonly, nonatomic) MNSettings *settings; // @synthesize settings=_settings;
+
++ (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_setVolumeFromDefaults;
+- (void)addObserver:(id)arg1;
+- (void)removeObserver:(id)arg1;
 - (void)updateForSettings:(id)arg1;
 
 @end

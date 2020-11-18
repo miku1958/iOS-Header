@@ -19,6 +19,8 @@
     NSData *_dateReceived;
     NSData *_dateSent;
     NSString *_from;
+    unsigned int _isSpecialMailboxSpecific;
+    NSString *_mailboxId;
     NSString *_messageId;
     NSString *_messageIdHeader;
     NSString *_notificationMessageId;
@@ -26,8 +28,11 @@
     unsigned int _status;
     NSString *_subject;
     NSMutableArray *_tos;
+    BOOL _isThreadSpecific;
     struct {
+        unsigned int isSpecialMailboxSpecific:1;
         unsigned int status:1;
+        unsigned int isThreadSpecific:1;
     } _has;
 }
 
@@ -43,12 +48,18 @@
 @property (readonly, nonatomic) BOOL hasDateReceived;
 @property (readonly, nonatomic) BOOL hasDateSent;
 @property (readonly, nonatomic) BOOL hasFrom;
+@property (nonatomic) BOOL hasIsSpecialMailboxSpecific;
+@property (nonatomic) BOOL hasIsThreadSpecific;
+@property (readonly, nonatomic) BOOL hasMailboxId;
 @property (readonly, nonatomic) BOOL hasMessageId;
 @property (readonly, nonatomic) BOOL hasMessageIdHeader;
 @property (readonly, nonatomic) BOOL hasNotificationMessageId;
 @property (readonly, nonatomic) BOOL hasRemoteId;
 @property (nonatomic) BOOL hasStatus;
 @property (readonly, nonatomic) BOOL hasSubject;
+@property (nonatomic) unsigned int isSpecialMailboxSpecific; // @synthesize isSpecialMailboxSpecific=_isSpecialMailboxSpecific;
+@property (nonatomic) BOOL isThreadSpecific; // @synthesize isThreadSpecific=_isThreadSpecific;
+@property (strong, nonatomic) NSString *mailboxId; // @synthesize mailboxId=_mailboxId;
 @property (strong, nonatomic) NSString *messageId; // @synthesize messageId=_messageId;
 @property (strong, nonatomic) NSString *messageIdHeader; // @synthesize messageIdHeader=_messageIdHeader;
 @property (strong, nonatomic) NSString *notificationMessageId; // @synthesize notificationMessageId=_notificationMessageId;
@@ -57,6 +68,10 @@
 @property (strong, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property (strong, nonatomic) NSMutableArray *tos; // @synthesize tos=_tos;
 
++ (Class)bccType;
++ (Class)ccType;
++ (id)protoMessageFromMessage:(id)arg1 organizedByThread:(BOOL)arg2 sanitizeMessageId:(BOOL)arg3;
++ (Class)toType;
 - (void).cxx_destruct;
 - (void)addBcc:(id)arg1;
 - (void)addCc:(id)arg1;

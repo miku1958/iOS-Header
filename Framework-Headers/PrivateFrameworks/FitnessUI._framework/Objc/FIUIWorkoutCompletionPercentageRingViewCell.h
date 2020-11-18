@@ -6,28 +6,32 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class HKRingsView, HKWorkout, UILabel, UIView;
+@class HKRingsView, HKWorkout, UIImageView, UILabel, UIView;
 
 @interface FIUIWorkoutCompletionPercentageRingViewCell : UITableViewCell
 {
     HKWorkout *_workout;
+    double _currentCompletionFactor;
     HKRingsView *_ringsView;
+    UIImageView *_iconImageView;
     UILabel *_typeLabel;
-    UILabel *_percentCompleteLabel;
+    UILabel *_secondaryLabel;
     UIView *_separatorView;
 }
 
-@property (strong, nonatomic) UILabel *percentCompleteLabel; // @synthesize percentCompleteLabel=_percentCompleteLabel;
+@property (nonatomic) double currentCompletionFactor; // @synthesize currentCompletionFactor=_currentCompletionFactor;
+@property (strong, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property (strong, nonatomic) HKRingsView *ringsView; // @synthesize ringsView=_ringsView;
+@property (strong, nonatomic) UILabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
 @property (strong, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
 @property (strong, nonatomic) UILabel *typeLabel; // @synthesize typeLabel=_typeLabel;
 @property (strong, nonatomic) HKWorkout *workout; // @synthesize workout=_workout;
 
-+ (double)_bottomLabelToSeparatorSpacing;
 + (double)_ringDiameter;
 + (double)_ringToTypeSpacing;
 + (double)_ringTopPadding;
-+ (double)_typeToPercentageSpacing;
++ (double)_secondaryLabelToSeparatorSpacing;
++ (double)_typeToSecondaryLabelSpacing;
 + (double)rowHeightForWorkout:(id)arg1 width:(double)arg2;
 - (void).cxx_destruct;
 - (void)animateRingWithCompletion:(CDUnknownBlockType)arg1;

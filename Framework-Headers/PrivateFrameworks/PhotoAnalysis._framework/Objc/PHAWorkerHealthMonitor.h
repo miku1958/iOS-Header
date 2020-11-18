@@ -12,12 +12,18 @@
 {
     double _maxScoreRecentnessInterval;
     NSMutableDictionary *_scoresByWorkerType;
+    NSMutableDictionary *_cachedAverageScoresByWorkerType;
+    NSMutableDictionary *_lastTrimDateByWorkerType;
 }
 
+@property (readonly, nonatomic) NSMutableDictionary *cachedAverageScoresByWorkerType; // @synthesize cachedAverageScoresByWorkerType=_cachedAverageScoresByWorkerType;
+@property (readonly, nonatomic) NSMutableDictionary *lastTrimDateByWorkerType; // @synthesize lastTrimDateByWorkerType=_lastTrimDateByWorkerType;
 @property (nonatomic) double maxScoreRecentnessInterval; // @synthesize maxScoreRecentnessInterval=_maxScoreRecentnessInterval;
 @property (readonly, nonatomic) NSMutableDictionary *scoresByWorkerType; // @synthesize scoresByWorkerType=_scoresByWorkerType;
 
 - (void).cxx_destruct;
+- (float)_calculateAverageScoreForWorkerType:(short)arg1;
+- (BOOL)_needsTrimScoresForWorkerType:(short)arg1;
 - (id)_scoresForWorkerType:(short)arg1;
 - (void)_trimScoresForWorkerType:(short)arg1;
 - (float)averageScoreForWorkerType:(short)arg1;

@@ -14,15 +14,16 @@
 }
 
 - (void).cxx_destruct;
-- (void)clearAllSafariHistory;
-- (void)deleteAllSafariSecurityOrigins;
-- (void)deleteSafariPersistentURLCacheStorage;
-- (void)deleteSafariWebsiteDataRecord:(id)arg1;
+- (void)clearAllSafariHistoryWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)deleteAllSafariSecurityOriginsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)deleteSafariPersistentURLCacheStorageWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)deleteSafariWebsiteDataRecord:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getCurrentlySelectedSearchEngineWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getSafariDataUsageByteCountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getSafariWebDataUsageWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)scheduleBookmarksDatabaseMaintenance;
+- (void)scheduleBookmarksDatabaseMigrationTask;
 
 @end
 

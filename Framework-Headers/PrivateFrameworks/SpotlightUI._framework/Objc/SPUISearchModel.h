@@ -4,53 +4,60 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Search/SPSearchAgent.h>
+#import <objc/NSObject.h>
 
-#import <SpotlightUI/SPDaemonQueryDelegate-Protocol.h>
+#import <SpotlightUI/SPQueryTaskDelegate-Protocol.h>
 
-@class CPLRUDictionary, NSArray, NSObject, NSOperation, NSOperationQueue, NSString;
-@protocol OS_dispatch_semaphore;
+@class NSArray, NSString, SFResultSection, SPQueryResponse, SPQueryTask;
+@protocol SPSearchAgentDelegate;
 
-@interface SPUISearchModel : SPSearchAgent <SPDaemonQueryDelegate>
+@interface SPUISearchModel : NSObject <SPQueryTaskDelegate>
 {
-    CPLRUDictionary *_cachedResultImages;
-    NSObject<OS_dispatch_semaphore> *_cacheResultLock;
-    NSOperationQueue *_prefetchOperationQueue;
-    NSOperationQueue *_loadOperationQueue;
-    NSOperation *_waitOperation;
-    NSArray *_deferredResults;
-    BOOL _isDeferredQUeryComplete;
+    long long _updatesDisabled;
+    NSString *_lastQueryString;
     BOOL _springBoardIsActive;
+    BOOL _infinitePatience;
+    BOOL _queryComplete;
+    BOOL _queryDidFinish;
+    BOOL _forceStableResults;
+    SFResultSection *_searchThroughSection;
+    NSObject<SPSearchAgentDelegate> *_delegate;
+    SPQueryTask *_queryTask;
+    SPQueryResponse *_lastResponse;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (strong) NSObject<SPSearchAgentDelegate> *delegate; // @synthesize delegate=_delegate;
+@property BOOL forceStableResults; // @synthesize forceStableResults=_forceStableResults;
+@property BOOL infinitePatience; // @synthesize infinitePatience=_infinitePatience;
+@property (strong) SPQueryResponse *lastResponse; // @synthesize lastResponse=_lastResponse;
+@property BOOL queryComplete; // @synthesize queryComplete=_queryComplete;
+@property BOOL queryDidFinish; // @synthesize queryDidFinish=_queryDidFinish;
+@property (strong) SPQueryTask *queryTask; // @synthesize queryTask=_queryTask;
+@property (readonly) SFResultSection *searchThroughSection; // @synthesize searchThroughSection=_searchThroughSection;
+@property (readonly) NSArray *sections;
 @property BOOL springBoardIsActive; // @synthesize springBoardIsActive=_springBoardIsActive;
-@property (readonly) Class superclass;
+@property (readonly) BOOL wantsCompletions;
 
-+ (void)activate;
-+ (void)deactivate;
++ (void)preheat;
 + (void)retrieveFirstTimeExperienceTextWithReply:(CDUnknownBlockType)arg1;
 + (id)sharedFullZWKInstance;
 + (id)sharedGeneralInstance;
 + (id)sharedInstance;
-+ (id)sharedPartialZKWInstance;
 - (void).cxx_destruct;
-- (id)_customImageForPath:(id)arg1;
+- (BOOL)_suggestionsReadyForDisplay;
 - (void)activate;
-- (void)cachedZKWAvailable:(BOOL)arg1;
-- (long long)contentFilters;
-- (id)createZKWSearchQuery;
+- (void)clear;
 - (void)deactivate;
-- (void)dealloc;
-- (void)finishRanking:(id)arg1 blendingDuration:(double)arg2;
-- (void)handleOptionsForNewSections:(id)arg1;
-- (id)initForZKWLevel:(int)arg1;
+- (void)didReceiveResponse:(id)arg1;
+- (void)disableUpdates;
+- (void)enableUpdates;
+- (void)invalidate;
 - (void)invalidateCurrentQuery;
-- (BOOL)isWideScreen;
-- (BOOL)itemInLibrary:(id)arg1;
-- (void)transferZKWResults:(id)arg1 wasSimilar:(BOOL)arg2;
+- (void)invalidateQuery:(id)arg1;
+- (void)resultsDidBecomeInvalid:(id)arg1;
+- (void)updateWithResponse:(id)arg1;
+- (void)updatesDispabled;
+- (void)updatesEnabled;
 
 @end
 

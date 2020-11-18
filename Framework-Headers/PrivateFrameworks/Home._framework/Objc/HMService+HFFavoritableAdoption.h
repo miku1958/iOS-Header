@@ -17,6 +17,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hf_hasSetFavorite;
 @property (readonly, nonatomic) BOOL hf_isFavorite;
+@property (readonly, nonatomic) BOOL hf_shouldShowInFavorites;
 @property (readonly) Class superclass;
 
 - (id)hf_updateIsFavorite:(BOOL)arg1;

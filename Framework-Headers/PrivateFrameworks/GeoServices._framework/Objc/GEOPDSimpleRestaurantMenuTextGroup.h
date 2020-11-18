@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPDSimpleRestaurantMenuTextGroup : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_menuItems;
     NSString *_title;
 }
@@ -19,13 +20,14 @@
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (strong, nonatomic) NSMutableArray *menuItems; // @synthesize menuItems=_menuItems;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)menuItemType;
+- (void).cxx_destruct;
 - (void)addMenuItem:(id)arg1;
 - (void)clearMenuItems;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -27,7 +27,7 @@
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (id)recipeWithDictionaryRepresentation:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)init;

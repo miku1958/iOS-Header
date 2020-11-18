@@ -20,29 +20,43 @@
 @property (readonly, nonatomic) NSPredicate *contactPredicate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) NSString *emailAddress;
+@property (readonly, nonatomic) NSString *emailAddress;
 @property (copy, nonatomic) NSString *externalID;
 @property (copy, nonatomic) NSString *firstName;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *lastName;
 @property (copy, nonatomic) NSString *name;
 @property (readonly, nonatomic) EKCalendar *owner;
+@property (readonly, nonatomic) NSString *phoneNumber;
 @property (nonatomic) unsigned long long shareeAccessLevel;
 @property (nonatomic) unsigned long long shareeStatus;
 @property (readonly) Class superclass;
 
-+ (id)shareeWithEmailAddress:(id)arg1 name:(id)arg2;
-+ (id)shareeWithName:(id)arg1 emailAddress:(id)arg2 externalID:(id)arg3;
++ (int)_calShareeAccessLevelFromEKShareeAccessLevel:(unsigned long long)arg1;
++ (int)_calShareeStatusFromEKShareeStatus:(unsigned long long)arg1;
++ (unsigned long long)_ekShareeAccessLevelFromCalShareeAccessLevel:(int)arg1;
++ (unsigned long long)_ekShareeStatusFromCalShareeStatus:(int)arg1;
++ (id)_urlForEmailAddress:(id)arg1 andPhoneNumber:(id)arg2;
++ (Class)frozenClass;
++ (id)shareeWithName:(id)arg1 emailAddress:(id)arg2;
++ (id)shareeWithName:(id)arg1 emailAddress:(id)arg2 phoneNumber:(id)arg3;
++ (id)shareeWithName:(id)arg1 emailAddress:(id)arg2 phoneNumber:(id)arg3 externalID:(id)arg4;
++ (id)shareeWithName:(id)arg1 phoneNumber:(id)arg2;
++ (id)shareeWithName:(id)arg1 url:(id)arg2;
 + (unsigned long long)statusEnumFromString:(id)arg1;
 + (id)statusStringFromEnum:(unsigned long long)arg1;
-- (void *)ABRecordWithAddressBook:(void *)arg1;
-- (id)_persistentSharee;
+- (id)URL;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithEmailAddress:(id)arg1 name:(id)arg2;
-- (id)initWithName:(id)arg1 emailAddress:(id)arg2 externalID:(id)arg3;
-- (BOOL)isEqual:(id)arg1;
-- (id)lazyLoadRelationForKey:(id)arg1;
+- (id)initWithName:(id)arg1 url:(id)arg2;
+- (id)initWithName:(id)arg1 url:(id)arg2 externalID:(id)arg3;
+- (void)setEmailAddress:(id)arg1;
+- (void)setPhoneNumber:(id)arg1;
+- (void)setShareeAccessLevelRaw:(int)arg1;
+- (void)setShareeStatusRaw:(int)arg1;
+- (void)setUUID:(id)arg1;
+- (int)shareeAccessLevelRaw;
+- (int)shareeStatusRaw;
 
 @end
 

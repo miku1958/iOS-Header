@@ -9,10 +9,11 @@
 #import <HealthUI/HKGraphSeriesBlockCoordinate-Protocol.h>
 
 @class NSString;
+@protocol HKGraphSeriesBlockCoordinateInfo;
 
 @interface _HKActivityGoalSeriesBlockCoordinate : NSObject <HKGraphSeriesBlockCoordinate>
 {
-    id _userInfo;
+    id<HKGraphSeriesBlockCoordinateInfo> _userInfo;
     struct CGPoint _coordinate;
 }
 
@@ -23,7 +24,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double startXValue;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) id userInfo;
+@property (readonly, nonatomic) id<HKGraphSeriesBlockCoordinateInfo> userInfo;
 
 - (void).cxx_destruct;
 - (id)copyWithTransform:(struct CGAffineTransform)arg1 roundToViewScale:(BOOL)arg2;

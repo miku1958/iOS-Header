@@ -30,14 +30,13 @@
 
 + (Class)immutableObjectClass;
 + (id)immutableObjectProtocol;
-+ (void)initialize;
 + (id)mutableHistoryEntryForStorage:(id)arg1;
 + (Class)mutableObjectClass;
 + (id)mutableObjectProtocol;
 - (void).cxx_destruct;
-- (void)_assertNotImmutable;
 - (BOOL)_isUserVisibleDuplicateOfSameClassObject:(id)arg1;
 - (void)_markImmutable;
+- (void)_noteWillMutate;
 - (id)copyIfValidWithError:(out id *)arg1;
 - (void)ifMutableSearch:(CDUnknownBlockType)arg1 ifMutableRoute:(CDUnknownBlockType)arg2 ifMutablePlaceDisplay:(CDUnknownBlockType)arg3 ifMutableTransitLineItem:(CDUnknownBlockType)arg4;
 - (void)ifSearch:(CDUnknownBlockType)arg1 ifRoute:(CDUnknownBlockType)arg2 ifPlaceDisplay:(CDUnknownBlockType)arg3 ifTransitLineItem:(CDUnknownBlockType)arg4;

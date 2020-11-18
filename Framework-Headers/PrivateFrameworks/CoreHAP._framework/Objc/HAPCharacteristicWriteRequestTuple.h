@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HAPCharacteristic, NSData, NSNumber;
 
-@interface HAPCharacteristicWriteRequestTuple : NSObject
+@interface HAPCharacteristicWriteRequestTuple : HMFObject
 {
     BOOL _timedWrite;
+    BOOL _writeResponse;
     HAPCharacteristic *_characteristic;
     id _value;
     NSData *_authorizationData;
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) NSNumber *enableEvents; // @synthesize enableEvents=_enableEvents;
 @property (nonatomic) BOOL timedWrite; // @synthesize timedWrite=_timedWrite;
 @property (strong, nonatomic) id value; // @synthesize value=_value;
+@property (nonatomic) BOOL writeResponse; // @synthesize writeResponse=_writeResponse;
 
 + (id)writeRequestTupleForCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 timedWrite:(BOOL)arg4;
 - (void).cxx_destruct;

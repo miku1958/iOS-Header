@@ -21,7 +21,7 @@
     int _surfacedByChannelIDRef;
     int _surfacedBySectionIDRef;
     int _surfacedByTopicIDRef;
-    BOOL _isTopStory;
+    int _topStoryType;
     BOOL _usesImageOnTopLayout;
     struct {
         unsigned int tileProminenceScore:1;
@@ -30,7 +30,7 @@
         unsigned int surfacedByChannelIDRef:1;
         unsigned int surfacedBySectionIDRef:1;
         unsigned int surfacedByTopicIDRef:1;
-        unsigned int isTopStory:1;
+        unsigned int topStoryType:1;
         unsigned int usesImageOnTopLayout:1;
     } _has;
 }
@@ -41,21 +41,21 @@
 @property (readonly, nonatomic) BOOL hasArticleID;
 @property (readonly, nonatomic) BOOL hasClusterID;
 @property (readonly, nonatomic) BOOL hasDisplayDate;
-@property (nonatomic) BOOL hasIsTopStory;
 @property (nonatomic) BOOL hasStoryType;
 @property (nonatomic) BOOL hasSurfacedByBinIDRef;
 @property (nonatomic) BOOL hasSurfacedByChannelIDRef;
 @property (nonatomic) BOOL hasSurfacedBySectionIDRef;
 @property (nonatomic) BOOL hasSurfacedByTopicIDRef;
 @property (nonatomic) BOOL hasTileProminenceScore;
+@property (nonatomic) BOOL hasTopStoryType;
 @property (nonatomic) BOOL hasUsesImageOnTopLayout;
-@property (nonatomic) BOOL isTopStory; // @synthesize isTopStory=_isTopStory;
 @property (nonatomic) int storyType; // @synthesize storyType=_storyType;
 @property (nonatomic) int surfacedByBinIDRef; // @synthesize surfacedByBinIDRef=_surfacedByBinIDRef;
 @property (nonatomic) int surfacedByChannelIDRef; // @synthesize surfacedByChannelIDRef=_surfacedByChannelIDRef;
 @property (nonatomic) int surfacedBySectionIDRef; // @synthesize surfacedBySectionIDRef=_surfacedBySectionIDRef;
 @property (nonatomic) int surfacedByTopicIDRef; // @synthesize surfacedByTopicIDRef=_surfacedByTopicIDRef;
 @property (nonatomic) double tileProminenceScore; // @synthesize tileProminenceScore=_tileProminenceScore;
+@property (nonatomic) int topStoryType; // @synthesize topStoryType=_topStoryType;
 @property (nonatomic) BOOL usesImageOnTopLayout; // @synthesize usesImageOnTopLayout=_usesImageOnTopLayout;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

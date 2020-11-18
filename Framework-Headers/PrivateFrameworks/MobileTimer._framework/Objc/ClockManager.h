@@ -40,11 +40,14 @@
 - (void).cxx_destruct;
 - (void)_refreshScheduledLocalNotificationsCacheWithNotifications:(id)arg1;
 - (void)addNotificationObserver:(id)arg1;
+- (void)cancelAllNotifications;
 - (void)cancelLocalNotification:(id)arg1;
 - (void)cancelLocalNotifications:(id)arg1;
+- (BOOL)containsRemovedNotification:(id)arg1;
 - (BOOL)discardOldVersion;
 - (id)init;
 - (void)notificationScheduler:(id)arg1 didChangeScheduledLocalNotifications:(id)arg2;
+- (void)notificationScheduler:(id)arg1 didFireLocalNotifications:(id)arg2;
 - (void)postUserPreferencesChangedNotification;
 - (void)refreshScheduledLocalNotificationsCache;
 - (void)refreshScheduledLocalNotificationsCacheAsynchronouslyWithCompletion:(CDUnknownBlockType)arg1;

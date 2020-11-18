@@ -16,6 +16,7 @@
     IKAppMediaItemBridge *_bridge;
 }
 
+@property (strong, nonatomic) NSString *artworkImageSrcset;
 @property (strong, nonatomic) NSString *artworkImageURL;
 @property (readonly, nonatomic) IKAppMediaItemBridge *bridge; // @synthesize bridge=_bridge;
 @property (strong, nonatomic) NSString *contentRatingDomain;

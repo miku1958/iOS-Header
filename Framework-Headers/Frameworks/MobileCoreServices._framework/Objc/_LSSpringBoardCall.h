@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 {
     NSString *_schemeIfNotFileURL;
     BOOL _callCompletionHandlerWhenFullyComplete;
-    BOOL _promptForSchemeApprovalIfNeeded;
     NSDictionary *_launchOptions;
     NSString *_applicationIdentifier;
     NSXPCConnection *_clientXPCConnection;
@@ -25,7 +24,6 @@ __attribute__((visibility("hidden")))
 @property BOOL callCompletionHandlerWhenFullyComplete; // @synthesize callCompletionHandlerWhenFullyComplete=_callCompletionHandlerWhenFullyComplete;
 @property (strong) NSXPCConnection *clientXPCConnection; // @synthesize clientXPCConnection=_clientXPCConnection;
 @property (copy) NSDictionary *launchOptions; // @synthesize launchOptions=_launchOptions;
-@property BOOL promptForSchemeApprovalIfNeeded; // @synthesize promptForSchemeApprovalIfNeeded=_promptForSchemeApprovalIfNeeded;
 
 + (id)springBoardQueue;
 - (void)callSpringBoardWithCompletionHandler:(CDUnknownBlockType)arg1;

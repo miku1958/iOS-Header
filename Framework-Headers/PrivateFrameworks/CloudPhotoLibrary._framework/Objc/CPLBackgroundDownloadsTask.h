@@ -12,7 +12,7 @@
 @interface CPLBackgroundDownloadsTask : CPLEngineSyncTask
 {
     NSObject<OS_dispatch_queue> *_lock;
-    NSMutableArray *_downloadTaskGroups;
+    NSMutableArray *_transportTasks;
     BOOL _shouldStop;
     NSError *_badError;
     NSError *_stopError;
@@ -20,16 +20,18 @@
     unsigned long long _successfullyDownloadedResourcesCount;
     unsigned long long _failedDownloadedResourcesCount;
     unsigned long long _total;
-    unsigned long long _activeDownloadTaskCount;
-    unsigned long long _downloadTaskGroupsCount;
+    unsigned long long _activeTransferTaskCount;
+    unsigned long long _transportTaskCount;
 }
 
 - (void).cxx_destruct;
-- (void)_downloadTask:(id)arg1 didFinishWithError:(id)arg2;
-- (id)_downloadTasksSortedForBatching:(id)arg1;
+- (void)_completeBackgroundDownloadForResource:(id)arg1 error:(id)arg2 withTransaction:(id)arg3;
+- (void)_downloadTask:(id)arg1 didFinishWithErrorLocked:(id)arg2;
 - (void)_enqueueTasksLocked;
 - (void)_finishTaskLocked;
+- (BOOL)_isErrorCountingForARetry:(id)arg1;
 - (void)_launchNecessaryDownloadTasksWithTransaction:(id)arg1;
+- (void)_transportTaskDidFinish:(id)arg1;
 - (void)_updateActiveDownloadTaskCount;
 - (void)cancel;
 - (id)description;

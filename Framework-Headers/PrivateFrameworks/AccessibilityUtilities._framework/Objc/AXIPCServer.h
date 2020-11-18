@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <AccessibilityUtilities/AXIPCServerClientRegistrationDelegate-Protocol.h>
+
 @class NSMutableDictionary, NSMutableSet, NSString;
 
-@interface AXIPCServer : NSObject
+@interface AXIPCServer : NSObject <AXIPCServerClientRegistrationDelegate>
 {
     CDUnknownBlockType _defaultHandler;
     struct __CFRunLoopSource *_serverRunLoopSource;
-    struct __CFRunLoopSource *_clientInvalidationSource;
     unsigned int _serverPort;
-    unsigned int _clientInvalidationPort;
     NSMutableDictionary *_validSecurityTokens;
     NSMutableSet *_connectedClients;
     CDUnknownBlockType _clientInvalidationHandler;
@@ -28,13 +28,19 @@
 }
 
 @property (copy, nonatomic) CDUnknownBlockType clientInvalidationCallback;
+@property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) CDUnknownBlockType defaultHandler;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableDictionary *handlers; // @synthesize handlers=_handlers;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned int machPort; // @synthesize machPort=_serverPort;
 @property (nonatomic) BOOL perPidService; // @synthesize perPidService=_perPidService;
 @property (nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
 @property (strong, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
+@property (readonly) Class superclass;
 
+- (void).cxx_destruct;
+- (BOOL)__slowpath__clientWithAuditToken:(CDStruct_4c969caf)arg1 hasRequiredEntitlementFromSet:(id)arg2;
 - (void)_addPossibleRequiredEntitlementsToMessageWithKey:(int)arg1 first:(id)arg2 vothers:(struct __va_list_tag [1])arg3;
 - (void)_applyCustomQueueSize;
 - (id)_clientIdentificationForAuditToken:(CDStruct_4c969caf)arg1;
@@ -47,12 +53,12 @@
 - (void)_startServerThread;
 - (void)addPossibleRequiredEntitlement:(id)arg1 forMessageWithKey:(int)arg2;
 - (void)dealloc;
-- (id)description;
 - (id)initWithPort:(unsigned int)arg1 serviceRunLoopSource:(struct __CFRunLoopSource *)arg2;
 - (id)initWithServiceName:(id)arg1 perPidService:(BOOL)arg2;
 - (void)removeAllHandlersForTarget:(id)arg1;
 - (void)removeHandlerForKey:(int)arg1;
 - (void)removePossibleRequiredEntitlement:(id)arg1 forMessageWithKey:(int)arg2;
+- (void)serverClientRegistrationInvalidated:(id)arg1;
 - (void)setHandler:(CDUnknownBlockType)arg1 forKey:(int)arg2;
 - (void)setHandlerWithTarget:(id)arg1 selector:(SEL)arg2 async:(BOOL)arg3 forKey:(int)arg4;
 - (void)setHandlerWithTarget:(id)arg1 selector:(SEL)arg2 async:(BOOL)arg3 forKey:(int)arg4 possibleRequiredEntitlements:(id)arg5;

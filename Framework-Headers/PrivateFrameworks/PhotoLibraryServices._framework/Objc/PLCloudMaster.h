@@ -6,9 +6,11 @@
 
 #import <PhotoLibraryServices/PLManagedObject.h>
 
+#import <PhotoLibraryServices/PLSyncableObject-Protocol.h>
+
 @class NSDate, NSManagedObject, NSSet, NSString;
 
-@interface PLCloudMaster : PLManagedObject
+@interface PLCloudMaster : PLManagedObject <PLSyncableObject>
 {
 }
 
@@ -16,17 +18,23 @@
 @property (nonatomic) short cloudLocalState; // @dynamic cloudLocalState;
 @property (strong, nonatomic) NSString *cloudMasterGUID; // @dynamic cloudMasterGUID;
 @property (strong, nonatomic) NSDate *creationDate; // @dynamic creationDate;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) short fullSizeJPEGSource; // @dynamic fullSizeJPEGSource;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDate *importDate; // @dynamic importDate;
 @property (strong, nonatomic) NSString *importSessionID; // @dynamic importSessionID;
+@property (readonly, strong, nonatomic) id localID;
 @property (strong, nonatomic) NSManagedObject *mediaMetadata; // @dynamic mediaMetadata;
 @property (strong, nonatomic) NSString *mediaMetadataType; // @dynamic mediaMetadataType;
 @property (strong, nonatomic) NSString *originalFilename; // @dynamic originalFilename;
 @property (nonatomic) short originalOrientation; // @dynamic originalOrientation;
 @property (copy, nonatomic) NSString *originatingAssetIdentifier; // @dynamic originatingAssetIdentifier;
 @property (strong, nonatomic) NSSet *resources; // @dynamic resources;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *uniformTypeIdentifier; // @dynamic uniformTypeIdentifier;
 
++ (id)_originalTypes;
 + (id)cloudMasterWithGUID:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)cloudMastersByGUID:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)cloudMastersWithGUIDs:(id)arg1 inManagedObjectContext:(id)arg2;
@@ -34,16 +42,18 @@
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)insertIntoPhotoLibrary:(id)arg1 withCloudMasterGUID:(id)arg2;
-+ (void)resetCloudMastersStateInManagedObjectContext:(id)arg1;
++ (void)resetCloudMastersStateInManagedObjectContext:(id)arg1 hardReset:(BOOL)arg2;
+- (BOOL)allOriginalsAreLocallyAvailableForAssetUuid:(id)arg1;
+- (BOOL)allOriginalsAreUploaded;
 - (void)applyPropertiesFromCPLMasterChange:(id)arg1;
 - (void)applyResourcesFromCPLMasterChange:(id)arg1 inPhotoLibrary:(id)arg2;
 - (id)assetUUIDToCloudResources;
 - (void)awakeFromInsert;
 - (id)cloudResourceForResourceType:(unsigned long long)arg1 forAssetUuid:(id)arg2;
 - (id)cloudResourcesForResourceType:(unsigned long long)arg1;
+- (id)cplFullRecord;
 - (id)cplResourceForResourceType:(unsigned long long)arg1 forAssetUuid:(id)arg2;
 - (void)deleteAllResourcesForAssetUuid:(id)arg1;
-- (id)description;
 - (unsigned long long)sizeOfOriginal;
 
 @end

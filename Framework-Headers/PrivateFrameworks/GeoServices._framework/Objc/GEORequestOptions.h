@@ -29,11 +29,11 @@
 @property (readonly, nonatomic) NSArray *surchargeTypes;
 
 + (Class)requestOptionType;
+- (void).cxx_destruct;
 - (void)addRequestOption:(id)arg1;
 - (void)clearRequestOptions;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

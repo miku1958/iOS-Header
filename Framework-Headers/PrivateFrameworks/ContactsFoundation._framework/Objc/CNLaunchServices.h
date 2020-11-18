@@ -6,11 +6,24 @@
 
 #import <Foundation/NSObject.h>
 
+@protocol CNLaunchServicesAdapter, OS_os_log;
+
 @interface CNLaunchServices : NSObject
 {
+    id<CNLaunchServicesAdapter> _adapter;
+    NSObject<OS_os_log> *_log;
 }
 
-+ (id)applicationProxyForBundleIdentifier:(id)arg1;
+@property (strong, nonatomic) id<CNLaunchServicesAdapter> adapter; // @synthesize adapter=_adapter;
+@property (strong, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
+
+- (void).cxx_destruct;
+- (id)applicationForBundleIdentifier:(id)arg1;
+- (id)applicationsAvailableForHandlingURLScheme:(id)arg1;
+- (id)applicationsForUserActivityType:(id)arg1;
+- (id)init;
+- (id)initWithAdapter:(id)arg1;
+- (void)openUserActivityData:(id)arg1 inApplication:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

@@ -22,7 +22,6 @@
 }
 
 @property (strong) NSError *error; // @synthesize error=_error;
-@property NSObject<OS_dispatch_group> *group; // @synthesize group=_group;
 @property (nonatomic, getter=isLoggingEnabled) BOOL loggingEnabled; // @synthesize loggingEnabled=_loggingEnabled;
 @property (strong) id result; // @synthesize result=_result;
 

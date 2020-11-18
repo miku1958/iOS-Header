@@ -13,7 +13,8 @@
 }
 
 @property (nonatomic) double progress;
-@property (readonly, nonatomic) UIColor *progressColor;
+@property (strong, nonatomic) UIColor *progressBackgroundColor;
+@property (strong, nonatomic) UIColor *progressColor;
 @property (nonatomic) double progressLineWidth;
 @property (nonatomic) long long progressStartPoint;
 @property (nonatomic) BOOL showProgressTray;
@@ -25,7 +26,6 @@
 - (double)progressPresentationValue;
 - (void)setProgress:(double)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setProgress:(double)arg1 animated:(BOOL)arg2 forced:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)setProgressColor:(id)arg1;
 
 @end
 

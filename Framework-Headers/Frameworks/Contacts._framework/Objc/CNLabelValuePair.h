@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Contacts/NSCopying-Protocol.h>
 
@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) id value; // @synthesize value=_value;
 
 + (id)labeledValueWithLabel:(id)arg1 value:(id)arg2;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithLabel:(id)arg1 value:(id)arg2;

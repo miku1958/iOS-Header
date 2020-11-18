@@ -10,6 +10,7 @@
 {
 }
 
++ (unsigned long long)_xpcAttributes;
 - (id)_activityImage;
 - (id)activityTitle;
 - (id)activityType;

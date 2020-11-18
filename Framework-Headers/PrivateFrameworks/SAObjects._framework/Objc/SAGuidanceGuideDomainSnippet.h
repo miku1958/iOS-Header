@@ -16,6 +16,8 @@
 @property (copy, nonatomic) NSString *domainDisplayName;
 @property (copy, nonatomic) NSURL *domainIconURI;
 @property (copy, nonatomic) NSString *domainName;
+@property (nonatomic) BOOL enabledInOfflineMode;
+@property (nonatomic) BOOL enabledInOnlineMode;
 @property (copy, nonatomic) NSArray *guideSections;
 @property (copy, nonatomic) NSString *iconDisplayIdentifier;
 @property (nonatomic) BOOL iconNeedsProcessing;

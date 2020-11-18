@@ -6,50 +6,65 @@
 
 #import <HomeUI/HUTableViewController.h>
 
+#import <HomeUI/HFExecutionEnvironmentObserver-Protocol.h>
 #import <HomeUI/HFItemManagerDelegate-Protocol.h>
 #import <HomeUI/HUItemManagerContainer-Protocol.h>
+#import <HomeUI/HUItemPresentationContainer-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
 
-@class HFItemManager, HUGridLayoutOptions, NSMapTable, NSString;
+@class HFItem, HFItemManager, HUGridLayoutOptions, NSMapTable, NSMutableArray, NSMutableSet, NSString;
+@protocol NACancelable;
 
-@interface HUItemTableViewController : HUTableViewController <HFItemManagerDelegate, HUItemManagerContainer, HUPreloadableViewController>
+@interface HUItemTableViewController : HUTableViewController <HFExecutionEnvironmentObserver, HFItemManagerDelegate, HUItemManagerContainer, HUItemPresentationContainer, HUPreloadableViewController>
 {
     BOOL _wantsPreferredContentSize;
     BOOL _hasFinishedInitialLoad;
+    BOOL _visibilityUpdatesEnabled;
     HFItemManager *_itemManager;
+    NSMutableArray *_foregroundUpdateFutures;
+    NSMutableSet *_registeredCellClasses;
+    id<NACancelable> _deferredVisibilityUpdate;
     NSMapTable *_textFieldToIndexPathMap;
     NSMapTable *_indexPathToTextFieldMap;
     HUGridLayoutOptions *_gridLayoutOptions;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) id<NACancelable> deferredVisibilityUpdate; // @synthesize deferredVisibilityUpdate=_deferredVisibilityUpdate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSMutableArray *foregroundUpdateFutures; // @synthesize foregroundUpdateFutures=_foregroundUpdateFutures;
 @property (strong, nonatomic) HUGridLayoutOptions *gridLayoutOptions; // @synthesize gridLayoutOptions=_gridLayoutOptions;
 @property (nonatomic) BOOL hasFinishedInitialLoad; // @synthesize hasFinishedInitialLoad=_hasFinishedInitialLoad;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HFItem *hu_presentedItem;
 @property (readonly, nonatomic) NSMapTable *indexPathToTextFieldMap; // @synthesize indexPathToTextFieldMap=_indexPathToTextFieldMap;
 @property (strong, nonatomic) HFItemManager *itemManager; // @synthesize itemManager=_itemManager;
+@property (readonly, nonatomic) NSMutableSet *registeredCellClasses; // @synthesize registeredCellClasses=_registeredCellClasses;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSMapTable *textFieldToIndexPathMap; // @synthesize textFieldToIndexPathMap=_textFieldToIndexPathMap;
+@property (nonatomic) BOOL visibilityUpdatesEnabled; // @synthesize visibilityUpdatesEnabled=_visibilityUpdatesEnabled;
 @property (nonatomic) BOOL wantsPreferredContentSize; // @synthesize wantsPreferredContentSize=_wantsPreferredContentSize;
 
 + (BOOL)adoptsDefaultGridLayoutMargins;
 + (unsigned long long)updateMode;
 - (void).cxx_destruct;
+- (void)_dispatchUpdateForCell:(id)arg1 item:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
 - (id)_itemForTextField:(id)arg1;
+- (void)_performCommonUpdateForCell:(id)arg1 item:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
+- (long long)_rowAnimationForOperationType:(unsigned long long)arg1 item:(id)arg2;
 - (BOOL)_shouldHideFooterForSection:(long long)arg1;
 - (BOOL)_shouldHideHeaderForSection:(long long)arg1;
 - (void)_updateLayoutMarginsForCells:(id)arg1;
 - (void)_updateTableHeaderAndFooter;
 - (void)_updateTitle;
 - (id)_visibleCellForItem:(id)arg1;
-- (id)allCellClasses;
 - (unsigned long long)automaticDisablingReasonsForItem:(id)arg1;
 - (BOOL)automaticallyUpdatesViewControllerTitle;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)childViewControllersToPreload;
 - (id)currentTextForTextField:(id)arg1 item:(id)arg2;
 - (id)defaultTextForTextField:(id)arg1 item:(id)arg2;
+- (void)executionEnvironmentRunningStateDidChange:(id)arg1;
 - (void)highlightItemAnimated:(id)arg1;
 - (void)highlightItemAnimated:(id)arg1 duration:(double)arg2;
 - (id)hu_preloadContent;
@@ -65,11 +80,14 @@
 - (void)itemManager:(id)arg1 didRemoveSections:(id)arg2;
 - (void)itemManager:(id)arg1 didUpdateResultsForItem:(id)arg2 atIndexPath:(id)arg3;
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
-- (BOOL)itemManager:(id)arg1 performBatchUpdateBlock:(CDUnknownBlockType)arg2;
+- (id)itemManager:(id)arg1 futureToUpdateItems:(id)arg2 itemUpdateOptions:(id)arg3;
+- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
+- (id)itemModuleControllers;
 - (id)itemTableFooterMessage;
 - (id)itemTableFooterView;
 - (id)itemTableHeaderMessage;
 - (id)itemTableHeaderView;
+- (id)moduleControllerForItem:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)placeholderTextForTextField:(id)arg1 item:(id)arg2;
 - (void)recursivelyDisableItemUpdates:(BOOL)arg1 withReason:(id)arg2;
@@ -79,12 +97,14 @@
 - (BOOL)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
 - (BOOL)shouldManageTextFieldForItem:(id)arg1;
 - (id)subclass_preloadContent;
+- (void)tableView:(id)arg1 accessoryButtonTappedForRowWithIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
-- (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
@@ -103,7 +123,6 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
-- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;

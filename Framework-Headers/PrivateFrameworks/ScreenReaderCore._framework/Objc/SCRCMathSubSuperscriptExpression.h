@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) SCRCMathExpression *subscript; // @synthesize subscript=_subscript;
 @property (strong, nonatomic) SCRCMathExpression *superscript; // @synthesize superscript=_superscript;
 
+- (void).cxx_destruct;
 - (id)_stringToAddForSuperscript:(id)arg1 withPriorDescription:(id)arg2 updatedDescription:(id *)arg3;
-- (void)dealloc;
 - (id)description;
 - (id)dollarCodeDescriptionWithNumberOfOuterRadicals:(unsigned long long)arg1 treePosition:(id)arg2;
 - (unsigned long long)fractionLevel;

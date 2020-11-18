@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Navigation/MNGuidanceManager.h>
+#import <Navigation/MNClassicGuidanceManager.h>
 
-@interface MNWalkGuidanceManager : MNGuidanceManager
+__attribute__((visibility("hidden")))
+@interface MNWalkGuidanceManager : MNClassicGuidanceManager
 {
 }
 

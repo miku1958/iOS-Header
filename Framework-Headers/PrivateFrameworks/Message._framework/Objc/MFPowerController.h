@@ -8,8 +8,8 @@
 
 #import <Message/MFDiagnosticsGenerator-Protocol.h>
 
-@class BKSApplicationStateMonitor, NSCountedSet, NSString;
-@protocol OS_dispatch_queue;
+@class MFObservable, NSCountedSet, NSString;
+@protocol MFCancelable, OS_dispatch_queue;
 
 @interface MFPowerController : NSObject <MFDiagnosticsGenerator>
 {
@@ -17,21 +17,25 @@
     NSObject<OS_dispatch_queue> *_powerQueue;
     int _pluggedIn;
     int _powerToken;
-    unsigned int _appState;
-    BKSApplicationStateMonitor *_appStateMonitor;
     NSCountedSet *_identifiers;
+    id<MFCancelable> _appStateCancelable;
+    BOOL _isForeground;
 }
 
+@property (readonly, getter=isBatterySaverModeEnabled) BOOL batterySaverModeEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, getter=isHoldingAssertion) BOOL holdingAssertion;
+@property (readonly, nonatomic) MFObservable *lowPowerModeObservable;
+@property (readonly, getter=isPluggedIn) BOOL pluggedIn;
+@property (readonly, nonatomic) MFObservable *pluggedInObservable;
 @property (readonly) Class superclass;
 
 + (void)powerlog:(id)arg1 eventData:(id)arg2;
 + (id)sharedInstance;
-- (void)_applicationStateChanged:(id)arg1;
+- (void)_applicationForegroundStateChanged:(BOOL)arg1;
 - (double)_assertionTimeout;
-- (id)_bundleIdentifier;
 - (void)_deleteDuetAttributesForAccountWithUniqueId:(id)arg1;
 - (void)_initDuet;
 - (void)_lowPowerModeChangedNotification:(id)arg1;
@@ -43,9 +47,7 @@
 - (void)dealloc;
 - (id)duetIdentifier;
 - (id)init;
-- (BOOL)isBatterySaverModeEnabled;
-- (BOOL)isHoldingAssertion;
-- (BOOL)isPluggedIn;
+- (id)powerObservable;
 - (void)recordDuetEventForAccount:(id)arg1 event:(id)arg2;
 - (void)releaseAssertionWithIdentifier:(id)arg1;
 - (void)retainAssertionWithIdentifier:(id)arg1;

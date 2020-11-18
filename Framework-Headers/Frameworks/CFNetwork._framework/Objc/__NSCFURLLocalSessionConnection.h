@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void)_ackBytes:(long long)arg1;
+- (void)_captureTCPIOConnection:(shared_ptr_f0c1381f)arg1;
 - (void)_capturedSocketInputStream:(id)arg1 outputStream:(id)arg2;
 - (void)_cleanup;
 - (void)_conditionalRequirementsChanged:(BOOL)arg1;
@@ -54,9 +55,11 @@ __attribute__((visibility("hidden")))
 - (void)_didReceiveData:(id)arg1;
 - (void)_didReceiveResponse:(id)arg1 sniff:(BOOL)arg2;
 - (void)_didSendBodyData:(struct UploadProgressInfo)arg1;
+- (void)_didSendMetrics;
 - (void)_immediatePostDelegateTick;
 - (void)_needConnectedSocketToHost:(id)arg1 port:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_needNewBodyStream;
+- (BOOL)_needSendingMetrics;
 - (void)_redirectRequest:(id)arg1 redirectResponse:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_task_sendFinish;
 - (void)_tick;

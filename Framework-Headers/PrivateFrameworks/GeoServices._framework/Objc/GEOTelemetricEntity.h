@@ -28,10 +28,10 @@
 @property (nonatomic) BOOL hasEventKey;
 @property (nonatomic) BOOL hasEventValue;
 
+- (void).cxx_destruct;
 - (int)StringAsEventKey:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)eventKeyAsString:(int)arg1;

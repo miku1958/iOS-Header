@@ -39,6 +39,7 @@
 + (id)_cacheKeyForContact:(id)arg1;
 + (id)descriptorForRequiredKeys;
 - (void).cxx_destruct;
+- (id)basicMonogramObservableFromString:(id)arg1;
 - (void)dealloc;
 - (void)emptyCache:(id)arg1;
 - (id)initWithContactStore:(id)arg1 personaStore:(id)arg2 scheduler:(id)arg3;

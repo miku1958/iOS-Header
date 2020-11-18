@@ -9,7 +9,7 @@
 #import <network/OS_nw_connection-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_queue, OS_nw_endpoint, OS_nw_endpoint_handler, OS_nw_parameters;
+@protocol OS_dispatch_queue, OS_nw_array, OS_nw_endpoint, OS_nw_endpoint_handler, OS_nw_parameters, OS_nw_write_request;
 
 @interface NWConcrete_nw_connection : NSObject <OS_nw_connection>
 {
@@ -23,13 +23,16 @@
     unsigned int stats_reported:1;
     unsigned int should_report_generic_stats:1;
     unsigned int generic_stats_reported:1;
-    unsigned int initial_payload_sent:1;
+    unsigned int better_path_available:1;
+    unsigned int cancelled:1;
+    struct os_unfair_lock_s lock;
     NSObject<OS_nw_endpoint_handler> *parent_endpoint_handler;
     NSObject<OS_nw_endpoint_handler> *connected_endpoint_handler;
-    NSObject<OS_nw_endpoint_handler> *candidate_endpoint_handler;
+    NSObject<OS_nw_array> *candidate_endpoint_handlers;
+    NSObject<OS_nw_endpoint_handler> *transport_endpoint_handler;
+    NSObject<OS_nw_write_request> *initial_write_requests;
     NSObject<OS_nw_endpoint_handler> *dry_run_endpoint_handler;
     NSObject<OS_nw_endpoint_handler> *ready_dry_run_endpoint_handler;
-    BOOL better_path_available;
     NSObject<OS_dispatch_queue> *client_queue;
     CDUnknownBlockType client_handler;
     CDUnknownBlockType cancel_handler;
@@ -48,6 +51,7 @@
     struct nw_connection_timestamp_s *timestamps;
     unsigned short num_timestamps;
     unsigned short used_timestamps;
+    NSObject<OS_nw_array> *attempted_endpoints;
     struct nw_connection_throughput_monitor_s throughput_monitor;
     CDUnknownBlockType low_throughput_handler;
     struct __CFArray *errors;

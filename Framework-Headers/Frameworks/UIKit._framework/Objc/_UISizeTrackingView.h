@@ -30,8 +30,7 @@ __attribute__((visibility("hidden")))
 
 + (id)viewWithRemoteViewController:(id)arg1 viewControllerOperatorProxy:(id)arg2 textEffectsOperatorProxy:(id)arg3;
 - (void).cxx_destruct;
-- (id)_childFocusRegions;
-- (id)_childFocusRegionsInRect:(struct CGRect)arg1;
+- (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
 - (long long)_interfaceOrientationForScene:(id)arg1;

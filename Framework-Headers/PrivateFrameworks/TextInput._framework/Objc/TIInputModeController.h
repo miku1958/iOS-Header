@@ -16,12 +16,14 @@
     NSArray *preferredLanguages;
     NSArray *enabledInputModes;
     NSArray *defaultInputModes;
+    NSArray *inputModesForTesting;
 }
 
 @property (copy, nonatomic) NSString *currentLocale; // @synthesize currentLocale;
 @property (copy, nonatomic) NSArray *defaultInputModes; // @synthesize defaultInputModes;
 @property (readonly) NSArray *enabledInputModeIdentifiers;
 @property (copy, nonatomic) NSArray *enabledInputModes; // @synthesize enabledInputModes;
+@property (copy, nonatomic) NSArray *inputModesForTesting; // @synthesize inputModesForTesting;
 @property (copy, nonatomic) NSArray *preferredLanguages; // @synthesize preferredLanguages;
 @property (readonly) NSArray *supportedInputModeIdentifiers;
 @property (readonly) NSArray *supportedInputModeLanguageAndRegions;
@@ -29,8 +31,12 @@
 + (id)_inputModesForLocale:(id)arg1 language:(id)arg2 modeFetcher:(CDUnknownBlockType)arg3;
 + (id)sharedInputModeController;
 - (void)dealloc;
+- (id)defaultDictationLanguagesForKeyboardLanguage:(id)arg1;
 - (id)defaultEnabledInputModesForCurrentLocale;
 - (BOOL)identifierIsValidSystemInputMode:(id)arg1;
+- (id)keyboardLanguageForDictationLanguage:(id)arg1;
+- (void)setInputModeIdentifiersForTesting:(id)arg1;
+- (id)suggestedDictationLanguageForDeviceLanguage;
 
 @end
 

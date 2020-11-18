@@ -11,7 +11,7 @@
 #import <NetworkExtension/NSCopying-Protocol.h>
 #import <NetworkExtension/NSSecureCoding-Protocol.h>
 
-@class NEAOVPN, NEContentFilter, NEPathController, NEProfileIngestionPayloadInfo, NEVPN, NEVPNApp, NSString, NSUUID;
+@class NEAOVPN, NEContentFilter, NEDNSProxy, NEPathController, NEProfileIngestionPayloadInfo, NEVPN, NEVPNApp, NSString, NSUUID;
 
 @interface NEConfiguration : NSObject <NEProfilePayloadHandlerDelegate, NEConfigurationValidating, NSSecureCoding, NSCopying>
 {
@@ -28,6 +28,7 @@
     NEContentFilter *_contentFilter;
     NEProfileIngestionPayloadInfo *_payloadInfo;
     NEPathController *_pathController;
+    NEDNSProxy *_dnsProxy;
 }
 
 @property (copy) NEVPN *VPN; // @synthesize VPN=_VPN;
@@ -37,6 +38,7 @@
 @property (copy) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property (copy) NSString *applicationName; // @synthesize applicationName=_applicationName;
 @property (copy) NEContentFilter *contentFilter; // @synthesize contentFilter=_contentFilter;
+@property (copy) NEDNSProxy *dnsProxy; // @synthesize dnsProxy=_dnsProxy;
 @property (copy) NSString *externalIdentifier; // @synthesize externalIdentifier=_externalIdentifier;
 @property (readonly) long long grade; // @synthesize grade=_grade;
 @property (readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
@@ -97,6 +99,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithContentFilterPayload:(id)arg1 configurationName:(id)arg2 grade:(long long)arg3;
+- (id)initWithDNSProxyPayload:(id)arg1 configurationName:(id)arg2 grade:(long long)arg3;
 - (id)initWithIdentifier:(id)arg1;
 - (id)initWithName:(id)arg1 grade:(long long)arg2;
 - (id)initWithPathControllerPayload:(id)arg1 configurationName:(id)arg2 grade:(long long)arg3;

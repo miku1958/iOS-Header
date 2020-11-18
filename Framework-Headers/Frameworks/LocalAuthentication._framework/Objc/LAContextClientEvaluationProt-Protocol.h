@@ -11,7 +11,6 @@
 - (void)evaluateACL:(NSData *)arg1 operation:(long long)arg2 options:(NSDictionary *)arg3 uiDelegate:(id<LAUIDelegate>)arg4 reply:(void (^)(NSDictionary *, NSError *))arg5;
 - (void)evaluatePolicy:(long long)arg1 options:(NSDictionary *)arg2 uiDelegate:(id<LAUIDelegate>)arg3 reply:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)isCredentialSet:(long long)arg1 reply:(void (^)(BOOL, NSError *))arg2;
-- (void)resetWithReply:(void (^)(BOOL, NSError *))arg1;
 - (void)setCredential:(NSData *)arg1 type:(long long)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 @end
 

@@ -17,7 +17,7 @@
 @property (readonly, nonatomic) int absoluteOrder; // @synthesize absoluteOrder=_absoluteOrder;
 @property (strong, nonatomic) NSURL *priorURL; // @synthesize priorURL=_priorURL;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithAction:(int)arg1 context:(id)arg2 absoluteOrder:(int)arg3;
 

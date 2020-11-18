@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPDTransitInfoSnippet : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_artworks;
     NSMutableArray *_labels;
     NSString *_searchDisplayName;
@@ -23,11 +24,13 @@
 @property (strong, nonatomic) NSMutableArray *labels; // @synthesize labels=_labels;
 @property (strong, nonatomic) NSString *searchDisplayName; // @synthesize searchDisplayName=_searchDisplayName;
 @property (strong, nonatomic) NSMutableArray *systemNames; // @synthesize systemNames=_systemNames;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)artworkType;
 + (Class)labelType;
 + (Class)systemNameType;
 + (id)transitInfoSnippetForPlaceData:(id)arg1;
+- (void).cxx_destruct;
 - (void)addArtwork:(id)arg1;
 - (void)addLabel:(id)arg1;
 - (void)addSystemName:(id)arg1;
@@ -38,7 +41,6 @@
 - (void)clearSystemNames;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

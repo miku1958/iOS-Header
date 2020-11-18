@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     CIImage *inputImage;
     NSNumber *inputCubeDimension;
     NSData *inputCubeData;
+    CIImage *_cubeImage;
 }
 
 @property (copy, nonatomic) NSData *inputCubeData; // @synthesize inputCubeData;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)_kernel;
 - (id)_kernelOpaque;
 - (id)cubeImage;
+- (void)dealloc;
 - (id)outputImage;
 
 @end

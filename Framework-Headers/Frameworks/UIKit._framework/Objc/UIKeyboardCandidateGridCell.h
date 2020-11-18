@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _edges;
     double _rowHeight;
     double _rightPadding;
-    CDStruct_961fb75c _visualStyling;
+    CDStruct_227bb23d _visualStyling;
     long long _textAlignment;
     double _cellPadding;
     double _minimumWidth;
@@ -66,18 +66,18 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property (nonatomic) BOOL usesGroupHeaderAppearance; // @synthesize usesGroupHeaderAppearance=_usesGroupHeaderAppearance;
 @property (nonatomic) struct CGRect visibleBounds; // @synthesize visibleBounds=_visibleBounds;
-@property (nonatomic) CDStruct_961fb75c visualStyling; // @synthesize visualStyling=_visualStyling;
+@property (nonatomic) CDStruct_227bb23d visualStyling; // @synthesize visualStyling=_visualStyling;
 
 + (BOOL)drawsSideBorders;
-+ (struct CGColor *)legacy_outlineColorForVisualStyling:(CDStruct_961fb75c)arg1 candidatesVisualStyle:(int)arg2;
-+ (struct CGColor *)legacy_outlineShadowColorForVisualStyling:(CDStruct_961fb75c)arg1 candidatesVisualStyle:(int)arg2;
++ (struct CGColor *)legacy_outlineColorForVisualStyling:(CDStruct_227bb23d)arg1 candidatesVisualStyle:(int)arg2;
++ (struct CGColor *)legacy_outlineShadowColorForVisualStyling:(CDStruct_227bb23d)arg1 candidatesVisualStyle:(int)arg2;
 + (id)reuseIdentifier;
 + (double)rightPaddingForIndex;
 + (BOOL)shouldShowImageForGroupTitle:(id)arg1;
 + (struct CGSize)sizeForGroupHeader:(id)arg1 visualStyle:(int)arg2;
 + (double)widthForCandidate:(id)arg1 candidateNumber:(unsigned long long)arg2 visualStyle:(int)arg3;
+- (void).cxx_destruct;
 - (void)applyLayoutAttributes:(id)arg1;
-- (void)dealloc;
 - (void)drawBackgroundAndBorders;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

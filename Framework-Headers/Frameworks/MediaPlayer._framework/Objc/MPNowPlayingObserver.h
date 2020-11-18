@@ -30,7 +30,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) MPAVController *player; // @synthesize player=_player;
+@property (weak, nonatomic) MPAVController *player; // @synthesize player=_player;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -49,14 +49,12 @@
 - (void)_crossedTimeMarkerNotification:(id)arg1;
 - (BOOL)_hasProperConditionsToLoadArtwork;
 - (void)_itemDidChangeNotification:(id)arg1;
-- (void)_itemDidFinishLoadingNotification:(id)arg1;
 - (BOOL)_itemNotificationIsRelevantToObservedPlayer:(id)arg1;
 - (void)_mediaLibraryDisplayValuesDidChangeNotification:(id)arg1;
 - (void)_playbackErrorNotification:(id)arg1;
 - (void)_playbackStateDidChangeNotification:(id)arg1;
 - (void)_postNowPlayingInfo;
 - (void)_postNowPlayingInfoForItem:(id)arg1;
-- (void)_prefetchArtworkForNextItem;
 - (void)_rateDidChangeNotification:(id)arg1;
 - (void)_registerForNotificationsForPlayer:(id)arg1;
 - (BOOL)_reloadArtworkIfPossible;

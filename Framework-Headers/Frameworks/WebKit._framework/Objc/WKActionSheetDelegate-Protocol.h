@@ -9,6 +9,8 @@
 @protocol WKActionSheetDelegate
 - (UIView *)hostViewForSheet;
 - (struct CGRect)initialPresentationRectInHostViewForSheet;
+- (struct CGRect)presentationRectForElementUsingClosestIndicatedRect;
+- (struct CGRect)presentationRectForIndicatedElement;
 - (struct CGRect)presentationRectInHostViewForSheet;
 - (void)updatePositionInformation;
 @end

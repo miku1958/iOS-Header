@@ -14,6 +14,8 @@
 {
     BOOL _showGridLines;
     HKStrokeStyle *_gridLineStyle;
+    HKStrokeStyle *_minorGridLineStyle;
+    HKStrokeStyle *_referenceGridLineStyle;
     HKStrokeStyle *_axisLineStyle;
     HKTickStyle *_tickStyle;
     HKAxisLabelStyle *_labelStyle;
@@ -22,17 +24,21 @@
     HKFillStyle *_fillStyle;
     double _fillInnerPadding;
     double _fillOuterPadding;
+    HKStrokeStyle *_borderStyleForFill;
     long long _location;
 }
 
 @property (nonatomic) unsigned long long axisLabelPosition; // @synthesize axisLabelPosition=_axisLabelPosition;
 @property (strong, nonatomic) HKStrokeStyle *axisLineStyle; // @synthesize axisLineStyle=_axisLineStyle;
+@property (strong, nonatomic) HKStrokeStyle *borderStyleForFill; // @synthesize borderStyleForFill=_borderStyleForFill;
 @property (nonatomic) double fillInnerPadding; // @synthesize fillInnerPadding=_fillInnerPadding;
 @property (nonatomic) double fillOuterPadding; // @synthesize fillOuterPadding=_fillOuterPadding;
 @property (strong, nonatomic) HKFillStyle *fillStyle; // @synthesize fillStyle=_fillStyle;
 @property (strong, nonatomic) HKStrokeStyle *gridLineStyle; // @synthesize gridLineStyle=_gridLineStyle;
 @property (strong, nonatomic) HKAxisLabelStyle *labelStyle; // @synthesize labelStyle=_labelStyle;
 @property (nonatomic) long long location; // @synthesize location=_location;
+@property (strong, nonatomic) HKStrokeStyle *minorGridLineStyle; // @synthesize minorGridLineStyle=_minorGridLineStyle;
+@property (strong, nonatomic) HKStrokeStyle *referenceGridLineStyle; // @synthesize referenceGridLineStyle=_referenceGridLineStyle;
 @property (nonatomic) BOOL showGridLines; // @synthesize showGridLines=_showGridLines;
 @property (nonatomic) unsigned long long tickPositions; // @synthesize tickPositions=_tickPositions;
 @property (strong, nonatomic) HKTickStyle *tickStyle; // @synthesize tickStyle=_tickStyle;

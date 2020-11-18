@@ -8,26 +8,32 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDPlaceRefinementParameters;
+@class GEOMapItemInitialRequestData, GEOPDPlaceRefinementParameters, NSData;
 
 @interface GEOMapItemHandle : PBCodable <NSCopying>
 {
+    NSData *_compressedMapItemStorage;
     int _handleType;
     GEOPDPlaceRefinementParameters *_placeRefinementParameters;
+    GEOMapItemInitialRequestData *_placeRequestData;
     struct {
         unsigned int handleType:1;
     } _has;
 }
 
+@property (strong, nonatomic) NSData *compressedMapItemStorage; // @synthesize compressedMapItemStorage=_compressedMapItemStorage;
 @property (nonatomic) int handleType; // @synthesize handleType=_handleType;
+@property (readonly, nonatomic) BOOL hasCompressedMapItemStorage;
 @property (nonatomic) BOOL hasHandleType;
 @property (readonly, nonatomic) BOOL hasPlaceRefinementParameters;
+@property (readonly, nonatomic) BOOL hasPlaceRequestData;
 @property (strong, nonatomic) GEOPDPlaceRefinementParameters *placeRefinementParameters; // @synthesize placeRefinementParameters=_placeRefinementParameters;
+@property (strong, nonatomic) GEOMapItemInitialRequestData *placeRequestData; // @synthesize placeRequestData=_placeRequestData;
 
+- (void).cxx_destruct;
 - (int)StringAsHandleType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)handleTypeAsString:(int)arg1;

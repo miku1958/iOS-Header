@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityDidLoadAccessibilityInformation;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityPresentsAsPopup;
 - (id)_accessibilitySpeakThisElementsAndStrings;
@@ -22,6 +23,7 @@
 - (id)_accessibilityUserTestingViewControllerInfo;
 - (void)_presentViewController:(id)arg1 modalSourceViewController:(id)arg2 presentationController:(id)arg3 animationController:(id)arg4 interactionController:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_primitiveSetNavigationControllerContentInsetAdjustment:(struct UIEdgeInsets)arg1;
+- (void)_setAccessibilityDidLoadAccessibilityInformation:(BOOL)arg1;
 - (void)_setNavigationControllerContentInsetAdjustment:(struct UIEdgeInsets)arg1;
 - (BOOL)accessibilityPostScreenChangedForChildViewController:(id)arg1 isAddition:(BOOL)arg2;
 - (BOOL)accessibilityScroll:(long long)arg1;
@@ -34,6 +36,7 @@
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLoad;
 
 @end
 

@@ -15,6 +15,7 @@
     MCDPlayModeButton *_moreButton;
     MCDPlayModeButton *_shuffleButton;
     MCDPlayModeButton *_addToLibraryButton;
+    MCDPlayModeButton *_playbackRateButton;
     NSArray *_activeButtonLayoutConstraints;
 }
 
@@ -22,12 +23,14 @@
 @property (readonly, nonatomic) MCDPlayModeButton *addToLibraryButton; // @synthesize addToLibraryButton=_addToLibraryButton;
 @property (nonatomic) BOOL fuseSubscriberLayout; // @synthesize fuseSubscriberLayout=_fuseSubscriberLayout;
 @property (readonly, nonatomic) MCDPlayModeButton *moreButton; // @synthesize moreButton=_moreButton;
+@property (readonly, nonatomic) MCDPlayModeButton *playbackRateButton; // @synthesize playbackRateButton=_playbackRateButton;
 @property (readonly, nonatomic) MCDRepeatButton *repeatButton; // @synthesize repeatButton=_repeatButton;
 @property (readonly, nonatomic) MCDPlayModeButton *shuffleButton; // @synthesize shuffleButton=_shuffleButton;
 
 - (void).cxx_destruct;
 - (void)_addConstraints;
 - (void)_updateButtonLayouts;
+- (void)addSizeConstraintsForButton:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;

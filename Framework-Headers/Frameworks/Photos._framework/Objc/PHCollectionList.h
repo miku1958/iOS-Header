@@ -68,6 +68,7 @@
 - (unsigned long long)collectionFixedOrderPriority;
 - (BOOL)collectionHasFixedOrder;
 - (id)description;
+- (BOOL)hasLocationInfo;
 - (id)initTransientWithCollections:(id)arg1 orQuery:(id)arg2 title:(id)arg3 identifier:(id)arg4;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (id)localizedTitle;

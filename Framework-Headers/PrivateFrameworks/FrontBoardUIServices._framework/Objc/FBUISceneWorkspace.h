@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <FrontBoardUIServices/BSDescriptionProviding-Protocol.h>
 #import <FrontBoardUIServices/FBUISceneWorkspace-Protocol.h>
 
-@class FBSScene, NSMutableDictionary, NSSet, NSString;
+@class NSMutableDictionary, NSSet, NSString;
 
 @interface FBUISceneWorkspace : NSObject <BSDescriptionProviding, FBUISceneWorkspace>
 {
     BOOL _valid;
-    FBSScene *_parentScene;
     NSString *_identifier;
-    NSMutableDictionary *_scenes;
+    NSMutableDictionary *_scenesByName;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,6 +25,7 @@
 @property (readonly, copy, nonatomic) NSSet *scenes;
 @property (readonly) Class superclass;
 
+- (id)_initWithIdentifier:(id)arg1;
 - (void)activateScene:(id)arg1 withTransitionContext:(id)arg2;
 - (id)callOutQueue;
 - (id)createSceneWithName:(id)arg1 specification:(id)arg2;
@@ -34,12 +34,10 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)destroyScene:(id)arg1;
-- (id)display;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 parentScene:(id)arg2;
 - (void)invalidate;
-- (id)sceneManager:(id)arg1 surrogateForSceneWithIdentity:(id)arg2;
+- (id)sceneManager:(id)arg1 surrogateForSceneWithIdentifier:(id)arg2;
 - (id)sceneWithName:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

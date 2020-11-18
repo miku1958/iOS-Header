@@ -18,6 +18,8 @@
 
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
 
++ (double)selectionBarWidth;
++ (double)selectionKnobRadius;
 - (void).cxx_destruct;
 - (void)_loadWithColor:(id)arg1 selectionExtentIncludingKnobs:(double)arg2 topKnob:(BOOL)arg3 bottomKnob:(BOOL)arg4;
 - (id)barComponents;

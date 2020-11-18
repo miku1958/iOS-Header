@@ -17,7 +17,11 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityIndexPath;
 - (BOOL)_accessibilityIsOutsideParentBounds;
+- (id)_accessibilityParentCollectionView;
+- (id)_accessibilityParentScrollView;
 - (void)accessibilityClearInternalData;
+- (id)accessibilityDragSourceDescriptors;
+- (id)accessibilityDropPointDescriptors;
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;
 - (void)accessibilityReuseChildren:(id)arg1 forMockParent:(id)arg2;

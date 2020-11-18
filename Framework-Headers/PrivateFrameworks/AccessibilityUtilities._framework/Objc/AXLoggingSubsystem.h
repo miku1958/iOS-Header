@@ -8,7 +8,10 @@
 
 @interface AXLoggingSubsystem : NSObject
 {
+    BOOL _ignoreLogging;
 }
+
+@property (nonatomic) BOOL ignoreLogging;
 
 + (id)_errorWithMessage:(id)arg1 underlyingError:(id)arg2;
 + (int)defaultLogLevel;
@@ -16,6 +19,7 @@
 + (id)identifier;
 + (void)initialize;
 + (void)initializeSubsytem;
++ (id)sharedInstance;
 + (BOOL)shouldIncludeBacktraceInLogs;
 + (BOOL)shouldIncludeFileLineAndFunctionInLogs;
 + (BOOL)shouldProcessMessageForLogs;

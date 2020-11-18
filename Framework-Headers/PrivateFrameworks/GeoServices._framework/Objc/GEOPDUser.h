@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDPhoto, NSString;
+@class GEOPDPhoto, NSString, PBUnknownFields;
 
 @interface GEOPDUser : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     GEOPDPhoto *_image;
     NSString *_name;
 }
@@ -20,10 +21,11 @@
 @property (readonly, nonatomic) BOOL hasName;
 @property (strong, nonatomic) GEOPDPhoto *image; // @synthesize image=_image;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

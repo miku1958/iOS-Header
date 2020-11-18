@@ -26,13 +26,13 @@
     long long _state;
     NSData *_archiverInfo;
     CKSQLite *_sqlite;
-    long long _packageID;
     unsigned long long _nextItemIndex;
     NSObject<OS_dispatch_queue> *_queue;
     NSString *_UUID;
     unsigned long long _size;
     long long _storageGroupingPolicy;
     long long _uploadRank;
+    long long _packageID;
     NSArray *_assets;
     CKRecord *_record;
     NSString *_recordKey;
@@ -66,6 +66,7 @@
 @property (nonatomic) BOOL uploaded; // @synthesize uploaded=_uploaded;
 @property (nonatomic) BOOL wasCached; // @synthesize wasCached=_wasCached;
 
++ (id)_createPackageDBWithPath:(id)arg1;
 + (id)_packageDatabaseDirectoryWithBasePath:(id)arg1 state:(long long)arg2;
 + (id)_packageDatabasePathWithBasePath:(id)arg1 UUID:(id)arg2 state:(long long)arg3;
 + (id)_packagesBasePathForBundleID:(id)arg1;
@@ -93,6 +94,7 @@
 - (BOOL)claimOwnershipWithError:(id *)arg1;
 - (void)close;
 - (void)dealloc;
+- (double)earliestUploadReceiptExpiration;
 - (void)encodeWithCoder:(id)arg1;
 - (void)endTransaction;
 - (void)handleChangeStateAction:(long long)arg1;

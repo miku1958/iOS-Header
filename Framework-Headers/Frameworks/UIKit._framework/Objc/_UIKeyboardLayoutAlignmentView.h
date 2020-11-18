@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL automaticKeyboardFrameTrackingDisabled; // @synthesize automaticKeyboardFrameTrackingDisabled=_automaticKeyboardFrameTrackingDisabled;
 
 - (void).cxx_destruct;
-- (void)_addConstraints;
+- (void)_createConstraints;
 - (struct CGRect)_frameInBoundsForKeyboardFrame:(struct CGRect)arg1;
 - (void)_keyboardChanged:(id)arg1;
 - (void)_matchInitialKeyboardFrame;

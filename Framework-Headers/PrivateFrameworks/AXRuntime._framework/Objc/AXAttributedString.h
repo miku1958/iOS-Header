@@ -21,6 +21,7 @@
 - (void)appendStringOrAXAttributedString:(id)arg1;
 - (id)attribute:(id)arg1 atIndex:(unsigned long long)arg2 effectiveRange:(struct _NSRange *)arg3;
 - (id)attributeValueForKey:(id)arg1;
+- (id)attributedString;
 - (id)attributedSubstringFromRange:(struct _NSRange)arg1;
 - (id)attributesAtIndex:(long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (id)axAttributedStringByReplacingOccurrencesOfString:(id)arg1 withString:(id)arg2;
@@ -36,10 +37,12 @@
 - (id)description;
 - (void)enumerateAttribute:(id)arg1 inRange:(struct _NSRange)arg2 options:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)enumerateAttributesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)getCharacters:(unsigned short *)arg1 range:(struct _NSRange)arg2;
 - (BOOL)hasAttribute:(id)arg1;
 - (BOOL)hasAttributes;
 - (id)initWithCFAttributedString:(struct __CFAttributedString *)arg1;
 - (id)initWithString:(id)arg1;
+- (id)initWithStringOrAttributedString:(id)arg1;
 - (BOOL)isAXAttributedString;
 - (unsigned long long)length;
 - (id)lowercaseString;

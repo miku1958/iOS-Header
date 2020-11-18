@@ -8,6 +8,7 @@
 
 @protocol AAFollowUpProtocol
 - (void)dismissFollowUpWithIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)pendingFollowUpWithIdentifier:(NSString *)arg1 completion:(void (^)(FLFollowUpItem *, NSError *))arg2;
 - (void)postFollowUpWithIdentifier:(NSString *)arg1 userInfo:(NSDictionary *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 @end
 

@@ -4,24 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionReusableView.h>
+#import <UIKit/UIView.h>
 
 @class UILabel;
 
-@interface PXPeopleProgressFooterView : UICollectionReusableView
+@interface PXPeopleProgressFooterView : UIView
 {
+    BOOL _usesEmphasizedTitle;
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
 }
 
 @property (strong, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (nonatomic) BOOL usesEmphasizedTitle; // @synthesize usesEmphasizedTitle=_usesEmphasizedTitle;
 
-+ (id)kind;
 - (void).cxx_destruct;
 - (void)_setupConstraints;
 - (void)_setupViews;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (double)preferredHeightForWidth:(double)arg1;
 
 @end
 

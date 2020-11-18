@@ -58,22 +58,27 @@
 + (id)authenticatorForPlayerWithUsername:(id)arg1 password:(id)arg2;
 + (id)authenticatorForPlayerWithUsername:(id)arg1 password:(id)arg2 withPresentingViewController:(id)arg3;
 + (void)postURL:(id)arg1 postBody:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_authenticateUsingAuthUI:(BOOL)arg1 usernameEditable:(BOOL)arg2 authUIDismissHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_authenticateUsingAuthUI:(BOOL)arg1 authenticationResults:(id)arg2 usernameEditable:(BOOL)arg3 authUIDismissHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_handleAuthResponse:(id)arg1 error:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)applicationDidEnterBackground:(id)arg1;
 - (void)authenticateExistingUserAuthUIWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)authenticateFromExternalServiceWithAuthenticationResults:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)authenticateUsingAuthUIAllowingAppleIDCreation:(BOOL)arg1 usernameEditable:(BOOL)arg2 dismissHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)authenticateUsingAuthUIWithAuthUIDismissHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)authenticateUsingAuthUIWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)authenticateWithAuthKitResults:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)authenticateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)authenticationDidComplete;
+- (void)cancelAuthDueToAuthKitErrorWithHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (void)handleAuthKitResultsForUnder13WithContinuationData:(id)arg1 altDSID:(id)arg2 password:(id)arg3;
 - (id)init;
 - (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
 - (BOOL)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3;
 - (void)remoteUIControllerDidDismiss:(id)arg1;
 - (void)reset;
+- (BOOL)shouldAuthenticateForGameCenter;
 
 @end
 

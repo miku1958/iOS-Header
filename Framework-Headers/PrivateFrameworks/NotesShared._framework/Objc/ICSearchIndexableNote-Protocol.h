@@ -9,8 +9,13 @@
 @class NSArray, NSDate, NSString;
 
 @protocol ICSearchIndexableNote <ICSearchIndexable>
+
+@property (readonly, nonatomic) BOOL isModernNote;
+
+- (NSString *)accountName;
 - (NSString *)contentInfoText;
 - (NSDate *)dateForCurrentSortType;
+- (NSString *)folderName;
 - (BOOL)isPasswordProtected;
 - (BOOL)isSharedViaICloud;
 - (NSString *)noteAsPlainTextWithoutTitle;

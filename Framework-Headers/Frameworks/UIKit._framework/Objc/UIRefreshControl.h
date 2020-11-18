@@ -6,26 +6,27 @@
 
 #import <UIKit/UIControl.h>
 
-@class NSAttributedString, UIColor, UIScrollView, _UIRefreshControlContentView;
+@class NSAttributedString, UIColor, _UIRefreshControlContentView;
+@protocol _UIRefreshControlHosting;
 
 @interface UIRefreshControl : UIControl
 {
     long long _style;
     _UIRefreshControlContentView *_contentView;
-    UIScrollView *_scrollView;
     double _refreshControlHeight;
     double _visibleHeight;
     double _snappingHeight;
     double _additionalTopInset;
     BOOL _insetsApplied;
     BOOL _adjustingInsets;
-    BOOL _automaticContentOffsetAdjustmentEnabledWhenLastIdle;
-    BOOL _automaticContentOffsetAdjustmentEnabledNeedsReset;
     struct UIEdgeInsets _appliedInsets;
+    id<_UIRefreshControlHosting> _host;
     long long _refreshControlState;
 }
 
 @property (readonly, nonatomic) BOOL _areInsetsBeingApplied;
+@property (weak, nonatomic, getter=_host, setter=_setHost:) id<_UIRefreshControlHosting> _host;
+@property (readonly, nonatomic) BOOL _hostAdjustsContentOffset;
 @property (readonly, nonatomic) double _refreshControlHeight;
 @property (readonly, nonatomic) double _snappingHeight;
 @property (readonly, nonatomic) double _visibleHeight;
@@ -46,6 +47,7 @@
 - (id)_contentView;
 - (unsigned long long)_controlEventsForActionTriggered;
 - (void)_didScroll;
+- (void)_endRefreshingAnimated:(BOOL)arg1;
 - (double)_impactIntensityForVelocity:(double)arg1;
 - (BOOL)_isApplyingInsets;
 - (struct CGPoint)_originForContentOffset:(struct CGPoint)arg1;
@@ -83,7 +85,6 @@
 - (void)setRefreshControlState:(long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)sizeToFit;
-- (void)willMoveToSuperview:(id)arg1;
 
 @end
 

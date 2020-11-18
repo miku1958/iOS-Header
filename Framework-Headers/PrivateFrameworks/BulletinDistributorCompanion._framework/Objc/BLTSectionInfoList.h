@@ -8,12 +8,13 @@
 
 #import <BulletinDistributorCompanion/BLTSectionInfoListProviderDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 @protocol BLTSectionInfoListDelegate, BLTSectionInfoListProvider;
 
 @interface BLTSectionInfoList : NSObject <BLTSectionInfoListProviderDelegate>
 {
     NSMutableDictionary *_sectionInfoListItemsBySectionID;
+    NSMutableSet *_sectionInfoSectionIDs;
     struct _opaque_pthread_mutex_t _lock;
     NSMutableArray *_loadingCompletionHandlers;
     BOOL _loading;
@@ -34,6 +35,7 @@
 
 - (void).cxx_destruct;
 - (void)_migrateFromExternalDeviceSwitchToOverrides:(id)arg1;
+- (id)bbSectionInfoForSectionID:(id)arg1;
 - (void)dealloc;
 - (id)effectiveSectionInfoForSectionID:(id)arg1;
 - (id)init;
@@ -44,6 +46,8 @@
 - (void)reloadWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removedSectionWithSectionID:(id)arg1;
 - (id)sectionIDs;
+- (id)sectionOverrideOnlyForSectionID:(id)arg1;
+- (id)sectionOverridesOnly;
 - (id)universalSectionIDForSectionID:(id)arg1;
 - (void)updateOverrides:(id)arg1 forSectionID:(id)arg2;
 - (void)updateSectionInfo:(id)arg1 withUniversalSectionID:(id)arg2 displayName:(id)arg3;

@@ -25,7 +25,6 @@
 
 - (void).cxx_destruct;
 - (id)initWithTemplateViewElement:(id)arg1 clientContext:(id)arg2 extraInfo:(id)arg3;
-- (void)presentContextualActionsWithModalController:(id)arg1 productEntityValueProviderData:(id)arg2 modalSourceViewProvider:(id)arg3;
 
 @end
 

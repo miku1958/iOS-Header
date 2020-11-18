@@ -8,12 +8,14 @@
 
 @interface CAMURLConfigurationRequest : NSObject
 {
+    BOOL _wantsQRCodeForSession;
     long long _requestedCaptureMode;
     long long _requestedCaptureDevice;
 }
 
 @property (readonly, nonatomic) long long requestedCaptureDevice; // @synthesize requestedCaptureDevice=_requestedCaptureDevice;
 @property (readonly, nonatomic) long long requestedCaptureMode; // @synthesize requestedCaptureMode=_requestedCaptureMode;
+@property (readonly, nonatomic) BOOL wantsQRCodeForSession; // @synthesize wantsQRCodeForSession=_wantsQRCodeForSession;
 
 - (long long)_captureDeviceFromString:(id)arg1 outCaptureDevice:(long long *)arg2;
 - (BOOL)_captureModeFromString:(id)arg1 outCaptureMode:(long long *)arg2;

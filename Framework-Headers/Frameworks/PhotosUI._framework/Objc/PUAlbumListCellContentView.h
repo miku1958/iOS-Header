@@ -80,6 +80,7 @@
 - (void)setEnabled:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setShowsTitle:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSubtitle:(id)arg1 animated:(BOOL)arg2;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (void)textFieldDidEndEditing:(id)arg1;
 - (BOOL)textFieldShouldBeginEditing:(id)arg1;

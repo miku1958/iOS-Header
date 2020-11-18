@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebCore/WebScriptObject.h>
+#import <WebKit/WebScriptObject.h>
 
 @interface WebScriptObject (SUScriptAdditions)
 - (id)copyArrayOrDictionaryWithContext:(struct OpaqueJSContext *)arg1;

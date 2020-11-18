@@ -23,9 +23,11 @@
 + (void)commit;
 + (double)commitTime;
 + (CDUnknownBlockType)completionBlock;
++ (int)currentPhase;
 + (unsigned int)currentState;
 + (BOOL)disableActions;
 + (BOOL)disableRunLoopObserverCommits;
++ (double)earliestAutomaticCommitTime;
 + (void)flush;
 + (unsigned int)generateSeed;
 + (double)inputTime;
@@ -41,6 +43,7 @@
 + (void)setCompletionBlock:(CDUnknownBlockType)arg1;
 + (void)setDisableActions:(BOOL)arg1;
 + (void)setDisableRunLoopObserverCommits:(BOOL)arg1;
++ (void)setEarliestAutomaticCommitTime:(double)arg1;
 + (void)setInputTime:(double)arg1;
 + (void)setLowLatency:(BOOL)arg1;
 + (void)setPresentationHandler:(CDUnknownBlockType)arg1 queue:(id)arg2;

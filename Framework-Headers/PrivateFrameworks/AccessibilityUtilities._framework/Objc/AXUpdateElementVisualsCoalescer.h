@@ -27,6 +27,7 @@
 @property (copy, nonatomic) CDUnknownBlockType updateVisualsSequenceDidFinishHandler; // @synthesize updateVisualsSequenceDidFinishHandler=_updateVisualsSequenceDidFinishHandler;
 @property (copy, nonatomic) CDUnknownBlockType updateVisualsSequenceInProgressHandler; // @synthesize updateVisualsSequenceInProgressHandler=_updateVisualsSequenceInProgressHandler;
 
+- (void).cxx_destruct;
 - (void)_timerDidFire:(id)arg1;
 - (void)dealloc;
 - (id)init;

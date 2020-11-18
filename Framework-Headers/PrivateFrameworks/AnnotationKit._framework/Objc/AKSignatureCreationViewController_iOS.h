@@ -8,7 +8,7 @@
 
 #import <AnnotationKit/UINavigationBarDelegate-Protocol.h>
 
-@class AKController, AKSignatureBaselineView, AKSignatureView, AKSmoothPathView, NSString, UILabel, UINavigationBar;
+@class AKController, AKInkSignatureView, AKSignatureBaselineView, AKSmoothPathView, NSString, UILabel, UINavigationBar;
 @protocol AKSignatureCreationControllerDelegate;
 
 @interface AKSignatureCreationViewController_iOS : UIViewController <UINavigationBarDelegate>
@@ -16,7 +16,7 @@
     id<AKSignatureCreationControllerDelegate> _delegate;
     UINavigationBar *_navBar;
     AKSmoothPathView *_pathView;
-    AKSignatureView *_signatureView;
+    AKInkSignatureView *_signatureView;
     AKSignatureBaselineView *_baselineView;
     UILabel *_label;
     AKController *_controller;
@@ -31,7 +31,7 @@
 @property (strong, nonatomic) UILabel *label; // @synthesize label=_label;
 @property (strong, nonatomic) UINavigationBar *navBar; // @synthesize navBar=_navBar;
 @property (strong, nonatomic) AKSmoothPathView *pathView; // @synthesize pathView=_pathView;
-@property (strong, nonatomic) AKSignatureView *signatureView; // @synthesize signatureView=_signatureView;
+@property (strong, nonatomic) AKInkSignatureView *signatureView; // @synthesize signatureView=_signatureView;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -44,8 +44,8 @@
 - (void)loadView;
 - (long long)positionForBar:(id)arg1;
 - (BOOL)prefersStatusBarHidden;
-- (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidLoad;
+- (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

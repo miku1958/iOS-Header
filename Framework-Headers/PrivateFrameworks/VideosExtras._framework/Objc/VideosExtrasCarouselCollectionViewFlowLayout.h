@@ -16,7 +16,6 @@
 - (double)itemWidth;
 - (void)setIndexOfVisibleItem:(unsigned long long)arg1;
 - (void)setIndexOfVisibleItem:(unsigned long long)arg1 animated:(BOOL)arg2;
-- (struct CGPoint)targetContentOffsetForProposedContentOffset:(struct CGPoint)arg1 withScrollingVelocity:(struct CGPoint)arg2;
 
 @end
 

@@ -14,7 +14,6 @@
 - (void)getActiveAlertBehaviorOverridesWithHandler:(void (^)(NSNumber *, NSError *))arg1;
 - (void)getAspectRatioForAttachmentUUID:(NSUUID *)arg1 bulletinID:(NSString *)arg2 isPrimary:(BOOL)arg3 withHandler:(void (^)(float, NSError *))arg4;
 - (void)getBulletinsForPublisherMatchIDs:(NSArray *)arg1 sectionID:(NSString *)arg2 withHandler:(void (^)(NSArray *, NSError *))arg3;
-- (void)getBulletinsPublishedAfterDate:(NSDate *)arg1 withHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)getBulletinsWithHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)getDataForAttachmentUUID:(NSUUID *)arg1 bulletinID:(NSString *)arg2 isPrimary:(BOOL)arg3 withHandler:(void (^)(NSData *, NSError *))arg4;
 - (void)getPNGDataForAttachmentUUID:(NSUUID *)arg1 bulletinID:(NSString *)arg2 isPrimary:(BOOL)arg3 sizeConstraints:(BBThumbnailSizeConstraints *)arg4 withHandler:(void (^)(NSData *, NSError *))arg5;

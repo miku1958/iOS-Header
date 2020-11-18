@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class DOMNode;
 
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long startOffset; // @synthesize startOffset=_startOffset;
 
 + (id)rangeWithDOMRange:(id)arg1;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (id)initWithDOMRange:(id)arg1;

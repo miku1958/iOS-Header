@@ -19,6 +19,7 @@
     BOOL _forceAuthentication;
     NSString *_channelIdentifier;
     NSArray *_supportedAccountProviderIdentifiers;
+    NSArray *_featuredAccountProviderIdentifiers;
     NSString *_verificationToken;
     NSString *_localizedVideoTitle;
     NSArray *_attributeNames;
@@ -27,6 +28,7 @@
 
 @property (copy, nonatomic) NSArray *attributeNames; // @synthesize attributeNames=_attributeNames;
 @property (copy, nonatomic) NSString *channelIdentifier; // @synthesize channelIdentifier=_channelIdentifier;
+@property (copy, nonatomic) NSArray *featuredAccountProviderIdentifiers; // @synthesize featuredAccountProviderIdentifiers=_featuredAccountProviderIdentifiers;
 @property (nonatomic) BOOL forceAuthentication; // @synthesize forceAuthentication=_forceAuthentication;
 @property (nonatomic) BOOL includeAccountProviderIdentifier; // @synthesize includeAccountProviderIdentifier=_includeAccountProviderIdentifier;
 @property (nonatomic) BOOL includeAuthenticationExpirationDate; // @synthesize includeAuthenticationExpirationDate=_includeAuthenticationExpirationDate;

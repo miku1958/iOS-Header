@@ -19,6 +19,7 @@
 
 @property (strong, nonatomic) HFMutableSetDiff *actionBuilders; // @synthesize actionBuilders=_actionBuilders;
 @property (readonly, nonatomic) NSArray *actions; // @synthesize actions=_actions;
+@property (readonly, nonatomic, getter=isAffectedByEndEvents) BOOL affectedByEndEvents;
 @property (strong, nonatomic) HMTrigger *containingTrigger; // @synthesize containingTrigger=_containingTrigger;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

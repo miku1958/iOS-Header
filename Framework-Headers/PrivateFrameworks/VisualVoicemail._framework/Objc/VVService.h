@@ -6,9 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSError, NSRecursiveLock, NSString, VMVoicemailTranscriptionTask;
+#import <VisualVoicemail/VMTranscriptionService-Protocol.h>
 
-@interface VVService : NSObject
+@class NSArray, NSError, NSRecursiveLock, NSString, VMVoicemailTranscriptionController, VMVoicemailTranscriptionTask;
+
+@interface VVService : NSObject <VMTranscriptionService>
 {
     NSRecursiveLock *_lock;
     long long _capabilities;
@@ -35,16 +37,23 @@
         unsigned int capabilitiesLoaded:1;
     } _serviceFlags;
     NSString *_serviceIdentifier;
+    VMVoicemailTranscriptionController *_transcriptionController;
     VMVoicemailTranscriptionTask *_transcriptionTask;
-    NSString *_retranscriptionTaskIdentifier;
     unsigned long long _numFailedAttemptsToSyncOverWifi;
     struct __CFString *_lastConnectionTypeUsed;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) struct __CFString *lastConnectionTypeUsed; // @synthesize lastConnectionTypeUsed=_lastConnectionTypeUsed;
 @property (nonatomic) unsigned long long numFailedAttemptsToSyncOverWifi; // @synthesize numFailedAttemptsToSyncOverWifi=_numFailedAttemptsToSyncOverWifi;
-@property (readonly, copy, nonatomic) NSString *retranscriptionTaskIdentifier; // @synthesize retranscriptionTaskIdentifier=_retranscriptionTaskIdentifier;
 @property (strong, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic, getter=isTranscriptionAvailable) BOOL transcriptionAvailable;
+@property (strong, nonatomic) VMVoicemailTranscriptionController *transcriptionController; // @dynamic transcriptionController;
+@property (strong, nonatomic) VMVoicemailTranscriptionController *transcriptionController; // @synthesize transcriptionController=_transcriptionController;
+@property (strong, nonatomic) VMVoicemailTranscriptionTask *transcriptionTask; // @dynamic transcriptionTask;
 @property (strong, nonatomic) VMVoicemailTranscriptionTask *transcriptionTask; // @synthesize transcriptionTask=_transcriptionTask;
 
 + (struct __CTServerConnection *)CTServerConnection;
@@ -61,25 +70,23 @@
 + (void)releaseInsomniaAssertion;
 + (id)sharedService;
 + (BOOL)sharedServiceIsSubscribed;
++ (id)transcriptionLanguageCodes;
 - (void).cxx_destruct;
 - (void)_attemptDelayedSynchronize;
 - (void)_attemptScheduledTrashCompaction:(id)arg1;
 - (void)_callStatusChanged;
 - (void)_cancelAutomatedTrashCompaction;
 - (void)_cancelIndicatorAction;
+- (void)_carrierBundleChanged;
 - (void)_contextActivationSucceeded:(id)arg1;
 - (void)_dataAvailabilityChanged;
 - (void)_dataRoamingStatusChanged;
 - (void)_deliverFallbackNotification;
 - (void)_enterFallbackMode;
-- (void)_handleDataAvailableNotificationForDictation:(id)arg1;
-- (void)_handleDataAvailableNotificationForMetricCollection:(id)arg1;
 - (void)_handleIndicatorNotification:(struct __CFDictionary *)arg1;
 - (void)_handleSMSCAvailable;
 - (void)_handleSMSReady:(BOOL)arg1;
 - (BOOL)_isOfflineDueToRoamingWithDataStatusDict:(struct __CFDictionary *)arg1;
-- (void)_processTranscriptForRecord:(void *)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_processTranscriptForRecord:(void *)arg1 priority:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_reactToIndicator;
 - (void)_reportReachabilityChange:(id)arg1;
 - (void)_scheduleAutomatedTrashCompaction;
@@ -92,7 +99,6 @@
 - (void)cancelDelayedSynchronize;
 - (void)cancelNotificationFallback;
 - (void)cancelPasswordRequest;
-- (void)cancelRetranscriptionTaskActivity;
 - (long long)capabilities;
 - (id)carrierParameterValueForKey:(id)arg1;
 - (void)changePassword:(id)arg1 fromPassword:(id)arg2;
@@ -107,8 +113,10 @@
 - (BOOL)doesClientManageTrashCompaction;
 - (BOOL)greetingAvailable;
 - (BOOL)greetingFetchExistsProgressiveLoadInProgress:(BOOL *)arg1;
+- (void)handleAFLanguageCodeDidChangeNotification:(id)arg1;
 - (void)handleNotification:(id)arg1 isMWI:(BOOL)arg2;
 - (void)handlePasswordRequestCancellation;
+- (void)handleVVServiceDataAvailableNotification:(id)arg1;
 - (BOOL)headerChangesPending;
 - (id)init;
 - (BOOL)isInSync;
@@ -117,10 +125,12 @@
 - (BOOL)isOnline;
 - (BOOL)isPasswordReady;
 - (BOOL)isSubscribed;
+- (BOOL)isSupportedTranscriptionLanguageCode:(id)arg1;
 - (BOOL)isSyncInProgress;
 - (BOOL)isVVMAvailableOverWiFi;
 - (void)kill;
 - (BOOL)lastUsedConnectionTypeWasCellular;
+- (void)loadTranscriptionService;
 - (long long)mailboxGreetingType;
 - (id)mailboxName;
 - (BOOL)mailboxRequiresSetup;
@@ -129,12 +139,13 @@
 - (int)maximumPasswordLength;
 - (int)maximumRecordedNameDuration;
 - (int)minimumPasswordLength;
-- (void)moveRecordFromTrash:(void *)arg1;
-- (void)moveRecordToTrash:(void *)arg1;
+- (void)moveRecordsWithIdentifiersToInbox:(id)arg1;
+- (void)moveRecordsWithIdentifiersToTrash:(id)arg1;
 - (Class)notificationInterpreterClass;
 - (id)password;
 - (BOOL)passwordChangeRequiresEnteringOldPassword;
 - (id)passwordIgnoringSubscription:(BOOL)arg1;
+- (void)processTranscriptForRecord:(const void *)arg1 priority:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)progressiveDataLengthsForRecord:(void *)arg1 expected:(unsigned int *)arg2 current:(unsigned int *)arg3;
 - (id)provisionalPassword;
 - (void)removeAllNonDetachedRecords;
@@ -142,8 +153,8 @@
 - (void)reportError:(id)arg1;
 - (void)reportFailedToSyncOverWifi;
 - (void)reportSucessfulSync;
-- (void)reportTranscriptionProblemForRecord:(void *)arg1;
-- (void)reportTranscriptionRatedAccurate:(BOOL)arg1 forRecord:(void *)arg2;
+- (void)reportTranscriptionProblemForRecord:(const void *)arg1;
+- (void)reportTranscriptionRatedAccurate:(BOOL)arg1 forRecord:(const void *)arg2;
 - (void)resetCounts;
 - (void)resetDelayedSynchronizationAttemptCount;
 - (BOOL)respectsMWINotifications;
@@ -154,7 +165,6 @@
 - (void)scheduleAutomatedTrashCompaction;
 - (void)scheduleDelayedSynchronize;
 - (void)scheduleImmediateSynchronizeRetryOverCellular;
-- (void)scheduleRetranscriptionTaskActivity;
 - (void)setGreetingType:(long long)arg1 withData:(id)arg2 duration:(unsigned long long)arg3;
 - (void)setLastUsedConnectionType:(struct __CFString *)arg1;
 - (void)setMailboxRequiresSetup:(BOOL)arg1;
@@ -175,6 +185,7 @@
 - (BOOL)taskOfTypeExists:(long long)arg1;
 - (double)trashCompactionAge;
 - (unsigned int)trashedCount;
+- (void)unloadTranscriptionService;
 - (unsigned int)unreadCount;
 - (void)updateCountsForChangedFlags:(unsigned int)arg1 currentRecordFlags:(unsigned int)arg2;
 - (void)updateLoggingSettings;

@@ -34,9 +34,9 @@
 - (id)propertiesDescription;
 - (id)relatedIdentifier;
 - (void)setRelatedIdentifier:(id)arg1;
-- (BOOL)supportsDeletion;
 - (id)translateToClientChangeUsingIDMapping:(id)arg1 error:(id *)arg2;
 - (id)translateToCloudChangeUsingIDMapping:(id)arg1 error:(id *)arg2;
+- (BOOL)validateRecordForTracker:(id)arg1;
 
 @end
 

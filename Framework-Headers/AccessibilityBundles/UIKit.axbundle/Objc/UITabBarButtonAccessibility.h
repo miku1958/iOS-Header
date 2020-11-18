@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_axIsSelected;
+- (BOOL)_axIsSelected:(id)arg1;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (struct _NSRange)accessibilityRowRange;

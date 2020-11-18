@@ -6,10 +6,15 @@
 
 #import <UIKit/UITableViewCell.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface PUPhotoStreamAlbumTableViewCell : UITableViewCell
 {
 }
+
+@property (strong, nonatomic) NSString *detailText;
+@property (strong, nonatomic) NSString *text;
 
 + (double)cellHeight;
 + (double)labelHorizontalInset;

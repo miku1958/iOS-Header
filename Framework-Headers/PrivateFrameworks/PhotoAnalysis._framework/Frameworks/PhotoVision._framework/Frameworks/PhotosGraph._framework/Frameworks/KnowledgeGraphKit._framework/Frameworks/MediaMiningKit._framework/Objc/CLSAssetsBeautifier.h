@@ -37,6 +37,7 @@
 - (id)_naturalClusteringBestItemFromDataset:(id)arg1;
 - (id)_naturalClusteringFromDataset:(id)arg1 withThreshold:(double)arg2 timestampSupport:(BOOL)arg3;
 - (id)bestItemInArray:(id)arg1;
+- (id)deduplicateItems:(id)arg1;
 - (CDUnknownBlockType)hierarchicalClusteringDistanceBlock;
 - (id)init;
 - (id)performWithDataset:(id)arg1 maximumNumberOfItems:(unsigned long long)arg2 progressBlock:(CDUnknownBlockType)arg3;

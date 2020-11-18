@@ -12,7 +12,6 @@
 
 @interface MPCPlayer : NSObject <MPCMediaRemoteMuxerDelegate>
 {
-    NSPointerArray *_nowPlayingInfoHandlers;
     NSPointerArray *_playbackErrorObservers;
     NSPointerArray *_playbackIntentObservers;
     BOOL _shouldRestorePlaybackState;
@@ -36,7 +35,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) MPCMediaRemoteMuxer *mediaRemoteMuxer; // @synthesize mediaRemoteMuxer=_mediaRemoteMuxer;
-@property (readonly, copy, nonatomic) NSArray *nowPlayingInfoHandlers;
 @property (copy, nonatomic) NSString *parentAppBundleID; // @synthesize parentAppBundleID=_parentAppBundleID;
 @property (readonly, copy, nonatomic) NSArray *playbackErrorObservers;
 @property (readonly, copy, nonatomic) NSArray *playbackIntentObservers;
@@ -53,16 +51,12 @@
 - (void)clearPlaybackQueueWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)performCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)preservePlaybackStateImmediately;
 - (void)recordLyricsViewEvent:(id)arg1;
-- (void)registerNowPlayingInfoHandler:(id)arg1;
 - (void)registerPlaybackErrorObserver:(id)arg1;
 - (void)registerPlaybackIntentObserver:(id)arg1;
 - (void)restorePlaybackStateCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)schedulePlaybackStatePreservation;
 - (void)startSyncingNowPlayingInfo;
 - (void)stopSyncingNowPlayingInfo;
-- (void)unregisterNowPlayingInfoHandler:(id)arg1;
 - (void)unregisterPlaybackErrorObserver:(id)arg1;
 - (void)unregisterPlaybackIntentObserver:(id)arg1;
 - (void)updateSupportedCommandsForCommandCenter:(id)arg1 muxer:(id)arg2 action:(SEL)arg3;

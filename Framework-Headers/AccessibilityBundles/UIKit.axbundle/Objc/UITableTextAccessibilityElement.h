@@ -17,6 +17,8 @@
 @property (weak, nonatomic) id textDelegate; // @synthesize textDelegate;
 
 - (void).cxx_destruct;
+- (id)_accessibilityAllDragSourceDescriptors;
+- (id)_accessibilityAllDropPointDescriptors;
 - (double)_accessibilityDelayBeforeUpdatingOnActivation;
 - (id)_accessibilityEquivalenceTag;
 - (struct _NSRange)_accessibilityIndexPathAsRange;
@@ -25,8 +27,8 @@
 - (BOOL)_accessibilityIsScannerElement;
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (BOOL)_accessibilityRetainsCustomRotorActionSetting;
-- (int)_accessibilityScannerActivateBehavior;
-- (int)_accessibilityScanningBehaviorTraits;
+- (long long)_accessibilityScannerActivateBehavior;
+- (unsigned long long)_accessibilityScanningBehaviorTraits;
 - (id)_accessibilityScrollStatus;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
@@ -44,6 +46,10 @@
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (id)accessibilityLanguage;
+- (id)accessibilityLocalizationBundleID;
+- (id)accessibilityLocalizationBundlePath;
+- (id)accessibilityLocalizedStringKey;
+- (id)accessibilityLocalizedStringTableName;
 - (struct _NSRange)accessibilityRowRange;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

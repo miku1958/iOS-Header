@@ -8,21 +8,23 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray;
+@class NSData;
 
 @interface GEOStepFeedback : PBCodable <NSCopying>
 {
     double _completionTimeStamp;
-    NSMutableArray *_instructionErrors;
     NSData *_routeID;
     unsigned int _routeIndex;
     unsigned int _stepID;
+    NSData *_tripID;
     BOOL _completedStep;
+    BOOL _lightGuidance;
     struct {
         unsigned int completionTimeStamp:1;
         unsigned int routeIndex:1;
         unsigned int stepID:1;
         unsigned int completedStep:1;
+        unsigned int lightGuidance:1;
     } _has;
 }
 
@@ -30,25 +32,23 @@
 @property (nonatomic) double completionTimeStamp; // @synthesize completionTimeStamp=_completionTimeStamp;
 @property (nonatomic) BOOL hasCompletedStep;
 @property (nonatomic) BOOL hasCompletionTimeStamp;
+@property (nonatomic) BOOL hasLightGuidance;
 @property (readonly, nonatomic) BOOL hasRouteID;
 @property (nonatomic) BOOL hasRouteIndex;
 @property (nonatomic) BOOL hasStepID;
-@property (strong, nonatomic) NSMutableArray *instructionErrors; // @synthesize instructionErrors=_instructionErrors;
+@property (readonly, nonatomic) BOOL hasTripID;
+@property (nonatomic) BOOL lightGuidance; // @synthesize lightGuidance=_lightGuidance;
 @property (strong, nonatomic) NSData *routeID; // @synthesize routeID=_routeID;
 @property (nonatomic) unsigned int routeIndex; // @synthesize routeIndex=_routeIndex;
 @property (nonatomic) unsigned int stepID; // @synthesize stepID=_stepID;
+@property (strong, nonatomic) NSData *tripID; // @synthesize tripID=_tripID;
 
-+ (Class)instructionErrorType;
-- (void)addInstructionError:(id)arg1;
-- (void)clearInstructionErrors;
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
-- (id)instructionErrorAtIndex:(unsigned long long)arg1;
-- (unsigned long long)instructionErrorsCount;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

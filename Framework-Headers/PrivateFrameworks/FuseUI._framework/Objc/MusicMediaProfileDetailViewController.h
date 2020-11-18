@@ -98,7 +98,6 @@
 - (void)jsProfileNativeViewController:(id)arg1 setVisibleSegments:(id)arg2;
 - (BOOL)jsProfileNativeViewControllerSupportsRelatedContentDocument:(id)arg1;
 - (id)loadJSNativeViewControllerWithAppContext:(id)arg1;
-- (void)mediaProfileHeaderContentViewController:(id)arg1 didSelectContextualActionsButton:(id)arg2;
 - (void)mediaProfileHeaderContentViewController:(id)arg1 didSelectEditButton:(id)arg2;
 - (void)mediaProfileHeaderContentViewController:(id)arg1 didSelectShareButton:(id)arg2;
 - (void)mediaProfileHeaderContentViewController:(id)arg1 didUpdateFollowingState:(BOOL)arg2 forStoreID:(long long)arg3;

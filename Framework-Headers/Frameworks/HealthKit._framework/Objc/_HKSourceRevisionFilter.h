@@ -19,6 +19,7 @@
 
 + (id)_filterForComparisonWithKeyPath:(id)arg1 value:(id)arg2 operatorType:(unsigned long long)arg3 dataTypes:(id)arg4;
 + (id)_filterForInOperatorWithKeyPath:(id)arg1 value:(id)arg2 dataTypes:(id)arg3;
++ (BOOL)exactMatchRequired;
 + (id)filterForKeyPath:(id)arg1 predicateOperatorType:(unsigned long long)arg2 value:(id)arg3 dataTypes:(id)arg4;
 + (id)filterWithSourceRevisions:(id)arg1 operatorType:(unsigned long long)arg2;
 + (BOOL)supportsSecureCoding;

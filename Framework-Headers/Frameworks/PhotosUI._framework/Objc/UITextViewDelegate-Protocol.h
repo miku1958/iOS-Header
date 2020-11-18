@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/NSObject-Protocol.h>
-#import <PhotosUI/UIScrollViewDelegate-Protocol.h>
+#import <PhotosUICore/NSObject-Protocol.h>
+#import <PhotosUICore/UIScrollViewDelegate-Protocol.h>
 
 @class NSString, NSTextAttachment, NSURL, UITextView;
 

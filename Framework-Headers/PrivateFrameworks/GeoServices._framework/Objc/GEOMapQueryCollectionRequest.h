@@ -18,11 +18,11 @@
 @property (strong, nonatomic) NSMutableArray *requestElements; // @synthesize requestElements=_requestElements;
 
 + (Class)requestElementsType;
+- (void).cxx_destruct;
 - (void)addRequestElements:(id)arg1;
 - (void)clearRequestElements;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

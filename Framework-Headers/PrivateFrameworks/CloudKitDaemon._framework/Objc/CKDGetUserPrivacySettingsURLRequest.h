@@ -17,10 +17,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKDPUserPrivacySettings *userPrivacySettings; // @synthesize userPrivacySettings=_userPrivacySettings;
 
 - (void).cxx_destruct;
+- (long long)databaseScope;
+- (id)generateRequestOperations;
 - (int)operationType;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 
 @end
 

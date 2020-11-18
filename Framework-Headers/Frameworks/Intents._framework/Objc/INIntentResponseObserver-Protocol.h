@@ -4,9 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class INIntentResponse;
+#import <Intents/NSObject-Protocol.h>
 
-@protocol INIntentResponseObserver
+@class INIntentResponse, NSSet;
+
+@protocol INIntentResponseObserver <NSObject>
+- (void)intentResponseDidUpdate:(INIntentResponse *)arg1 withSerializedCacheItems:(NSSet *)arg2;
+
+@optional
 - (void)intentResponseDidUpdate:(INIntentResponse *)arg1;
 @end
 

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HMDCameraMetricsStreamLogEvent, NSError;
 
-@interface HMDCameraStreamMetrics : NSObject
+@interface HMDCameraStreamMetrics : HMFObject
 {
     HMDCameraMetricsStreamLogEvent *_cameraStreamMetricsLogEvent;
     NSError *_error;

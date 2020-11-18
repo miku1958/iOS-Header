@@ -13,6 +13,7 @@
 }
 
 @property (readonly) NSArray *fragmentArguments; // @dynamic fragmentArguments;
+@property (readonly) NSArray *tileArguments; // @dynamic tileArguments;
 @property (readonly) NSArray *vertexArguments; // @dynamic vertexArguments;
 
 + (id)alloc;

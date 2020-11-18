@@ -15,6 +15,7 @@
 
 + (id)writeRequestWithCharacteristic:(id)arg1 value:(id)arg2;
 - (void).cxx_destruct;
+- (unsigned long long)hash;
 - (id)initWithCharacteristic:(id)arg1 value:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 

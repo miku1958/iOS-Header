@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <AssertionServices/BKSProcessClientDelegate-Protocol.h>
 #import <AssertionServices/BSDescriptionProviding-Protocol.h>
@@ -31,10 +31,8 @@
     long long _taskState;
     BSProcessHandle *_handle;
     long long _terminationReason;
-    NSString *_activationReason;
 }
 
-@property (copy, nonatomic) NSString *activationReason; // @synthesize activationReason=_activationReason;
 @property (readonly, nonatomic) double backgroundTimeRemaining;
 @property (nonatomic) BOOL connectedToExternalAccessories; // @synthesize connectedToExternalAccessories=_connectedToExternalAccessories;
 @property (readonly, copy) NSString *debugDescription;

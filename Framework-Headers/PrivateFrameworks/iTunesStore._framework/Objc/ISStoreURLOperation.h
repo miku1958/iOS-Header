@@ -8,7 +8,7 @@
 
 #import <iTunesStore/ISBiometricSessionDelegate-Protocol.h>
 
-@class ISBiometricAuthenticationContext, NSNumber, NSString, SSURLBagContext, SSVFairPlaySAPSession;
+@class NSNumber, NSString, SSBag, SSBiometricAuthenticationContext, SSURLBagContext, SSVFairPlaySAPSession;
 @protocol ISBiometricSessionDelegate, ISStoreURLOperationDelegate;
 
 @interface ISStoreURLOperation : ISURLOperation <ISBiometricSessionDelegate>
@@ -22,24 +22,28 @@
     BOOL _needsAuthentication;
     BOOL _needsURLBag;
     SSVFairPlaySAPSession *_sapSession;
+    BOOL _shouldAppendStorefrontToURL;
     BOOL _shouldSendXTokenHeader;
     BOOL _urlKnownToBeTrusted;
     BOOL _useUserSpecificURLBag;
     BOOL _needsTermsAndConditionsAcceptance;
+    BOOL _shouldSuppressUserInfo;
     BOOL _shouldSendDSIDHeader;
-    ISBiometricAuthenticationContext *_biometricAuthenticationContext;
+    SSBiometricAuthenticationContext *_biometricAuthenticationContext;
     id<ISBiometricSessionDelegate> _biometricSessionDelegate;
+    SSBag *_bag;
 }
 
 @property (strong) SSVFairPlaySAPSession *SAPSession;
 @property (readonly) SSURLBagContext *URLBagContext;
 @property (nonatomic, getter=isURLBagRequest) BOOL URLBagRequest; // @synthesize URLBagRequest=_isURLBagRequest;
 @property (strong) NSNumber *authenticatedDSID; // @synthesize authenticatedDSID=_authenticatedDSID;
-@property (strong) ISBiometricAuthenticationContext *biometricAuthenticationContext; // @synthesize biometricAuthenticationContext=_biometricAuthenticationContext;
-@property id<ISBiometricSessionDelegate> biometricSessionDelegate; // @synthesize biometricSessionDelegate=_biometricSessionDelegate;
+@property (strong, nonatomic) SSBag *bag; // @synthesize bag=_bag;
+@property (strong) SSBiometricAuthenticationContext *biometricAuthenticationContext; // @synthesize biometricAuthenticationContext=_biometricAuthenticationContext;
+@property (weak) id<ISBiometricSessionDelegate> biometricSessionDelegate; // @synthesize biometricSessionDelegate=_biometricSessionDelegate;
 @property BOOL canSendGUIDParameter;
 @property (readonly, copy) NSString *debugDescription;
-@property id<ISStoreURLOperationDelegate> delegate; // @dynamic delegate;
+@property (weak) id<ISStoreURLOperationDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL ignorePreexistingSecureToken;
@@ -48,16 +52,30 @@
 @property BOOL needsTermsAndConditionsAcceptance; // @synthesize needsTermsAndConditionsAcceptance=_needsTermsAndConditionsAcceptance;
 @property BOOL needsURLBag; // @synthesize needsURLBag=_needsURLBag;
 @property BOOL performsMachineDataActions;
+@property (nonatomic) BOOL shouldAppendStorefrontToURL; // @synthesize shouldAppendStorefrontToURL=_shouldAppendStorefrontToURL;
 @property BOOL shouldSendDSIDHeader; // @synthesize shouldSendDSIDHeader=_shouldSendDSIDHeader;
 @property BOOL shouldSendXTokenHeader;
+@property BOOL shouldSuppressUserInfo; // @synthesize shouldSuppressUserInfo=_shouldSuppressUserInfo;
 @property (readonly) Class superclass;
 @property BOOL urlKnownToBeTrusted; // @synthesize urlKnownToBeTrusted=_urlKnownToBeTrusted;
 @property BOOL useUserSpecificURLBag; // @synthesize useUserSpecificURLBag=_useUserSpecificURLBag;
 
-+ (void)_addITunesStoreHeadersToRequest:(id)arg1 withURLBag:(id)arg2 account:(id)arg3 clientBundleIdentifier:(id)arg4;
-+ (void)_addITunesStoreHeadersToRequest:(id)arg1 withURLBag:(id)arg2 accountIdentifier:(id)arg3 clientBundleIdentifier:(id)arg4;
++ (void)_addAccountDSID:(id)arg1 toRequest:(id)arg2;
++ (void)_addPrimaryiCloudDSIDToRequest:(id)arg1;
++ (void)_addiTunesStoreHeadersToRequest:(id)arg1 withAccount:(id)arg2 appendStorefrontToURL:(BOOL)arg3 clientBundleIdentifier:(id)arg4 extraHeaders:(id)arg5 storefrontSuffix:(id)arg6;
++ (void)_addiTunesStoreHeadersToRequest:(id)arg1 withSSBag:(id)arg2 account:(id)arg3 appendStorefrontToURL:(BOOL)arg4 clientBundleIdentifier:(id)arg5;
++ (void)_addiTunesStoreHeadersToRequest:(id)arg1 withSSBag:(id)arg2 accountIdentifier:(id)arg3 appendStorefrontToURL:(BOOL)arg4 clientBundleIdentifier:(id)arg5;
++ (void)_addiTunesStoreHeadersToRequest:(id)arg1 withURLBag:(id)arg2 account:(id)arg3 appendStorefrontToURL:(BOOL)arg4 clientBundleIdentifier:(id)arg5;
++ (void)_addiTunesStoreHeadersToRequest:(id)arg1 withURLBag:(id)arg2 accountIdentifier:(id)arg3 appendStorefrontToURL:(BOOL)arg4 clientBundleIdentifier:(id)arg5;
++ (void)_appendStorefront:(id)arg1 toRequestURL:(id)arg2;
 + (id)_authKitSession;
++ (void)_handleResponseHeaders:(id)arg1 response:(id)arg2 request:(id)arg3 account:(id)arg4 performsMachineDataActions:(BOOL)arg5 shouldRetry:(BOOL *)arg6;
++ (BOOL)_operationWaitsForPurchases:(id)arg1;
++ (void)_performMachineDataRequest:(id)arg1 requestProperties:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)_restrictionsHeaderValue;
++ (id)_ssBag_copyExtraHeadersForURL:(id)arg1 bag:(id)arg2;
++ (id)_ssBag_copyHeaderPatternsFromBag:(id)arg1;
++ (id)_storeFrontIdentifierForAccount:(id)arg1;
 + (void)addITunesStoreHeadersToRequest:(id)arg1 withAccountIdentifier:(id)arg2;
 + (void)handleITunesStoreResponseHeaders:(id)arg1 request:(id)arg2 withAccountIdentifier:(id)arg3 shouldRetry:(BOOL *)arg4;
 + (id)itemPingOperationWithIdentifier:(unsigned long long)arg1 urlBagKey:(id)arg2;
@@ -79,6 +97,9 @@
 - (void)_runURLOperation;
 - (void)_setStoreFrontIdentifier:(id)arg1 isTransient:(BOOL)arg2;
 - (BOOL)_shouldRetryForTouchIDChallengeWithError:(id)arg1;
+- (id)_ssBag_copyGUIDPatternsFromBag:(id)arg1;
+- (id)_ssBag_copyGUIDSchemesFromBag:(id)arg1;
+- (BOOL)_ssBag_shouldSendGUIDForURL:(id)arg1 withBag:(id)arg2;
 - (id)_urlBagForContext:(id)arg1;
 - (void)_willSendRequest:(id)arg1;
 - (id)authenticatedAccountDSID;

@@ -7,19 +7,24 @@
 #import <UIKit/UITableViewCell.h>
 
 #import <HomeUI/HUCellProtocol-Protocol.h>
+#import <HomeUI/HUDisableableCellProtocol-Protocol.h>
 
 @class HFItem, NSString, UIButton;
+@protocol HUResizableCellDelegate;
 
-@interface HUFootnoteButtonCell : UITableViewCell <HUCellProtocol>
+@interface HUFootnoteButtonCell : UITableViewCell <HUCellProtocol, HUDisableableCellProtocol>
 {
+    BOOL _disabled;
     HFItem *_item;
     UIButton *_titleButton;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isDisabled) BOOL disabled; // @synthesize disabled=_disabled;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
+@property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIButton *titleButton; // @synthesize titleButton=_titleButton;
 

@@ -6,7 +6,6 @@
 
 #import <UIKit/UIView.h>
 
-#import <WebKit/UIDocumentPasswordViewDelegate-Protocol.h>
 #import <WebKit/UIPDFAnnotationControllerDelegate-Protocol.h>
 #import <WebKit/UIPDFPageViewDelegate-Protocol.h>
 #import <WebKit/WKActionSheetAssistantDelegate-Protocol.h>
@@ -17,13 +16,12 @@
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface WKPDFView : UIView <_WKWebViewPrintProvider, WKWebViewContentProvider, UIPDFPageViewDelegate, UIPDFAnnotationControllerDelegate, WKActionSheetAssistantDelegate, UIDocumentPasswordViewDelegate>
+@interface WKPDFView : UIView <_WKWebViewPrintProvider, WKWebViewContentProvider, UIPDFPageViewDelegate, UIPDFAnnotationControllerDelegate, WKActionSheetAssistantDelegate>
 {
     struct RetainPtr<CGPDFDocument *> _cgPDFDocument;
     struct RetainPtr<UIPDFDocument> _pdfDocument;
     struct RetainPtr<NSString> _suggestedFilename;
     struct RetainPtr<WKPDFPageNumberIndicator> _pageNumberIndicator;
-    struct RetainPtr<UIDocumentPasswordView> _passwordView;
     struct Vector<PDFPageInfo, 0, WTF::CrashOnOverflow, 16> _pages;
     unsigned int _centerPageNumber;
     struct CGSize _minimumSize;
@@ -49,6 +47,8 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_findQueue;
     struct RetainPtr<UIWKSelectionAssistant> _webSelectionAssistant;
     struct unique_ptr<WebKit::ApplicationStateTracker, std::__1::default_delete<WebKit::ApplicationStateTracker>> _applicationStateTracker;
+    struct UIEdgeInsets _lastUnobscuredSafeAreaInset;
+    double _lastLayoutWidth;
 }
 
 @property (readonly, nonatomic) struct CGPDFDocument *_wk_printedDocument;
@@ -74,21 +74,17 @@ __attribute__((visibility("hidden")))
 - (void)_clearPages;
 - (void)_computeMatchesForString:(id)arg1 options:(unsigned long long)arg2 maxCount:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_computePageAndDocumentFrames;
-- (void)_didFailToUnlock;
 - (void)_didFindMatch:(id)arg1;
 - (void)_didLoadPDFDocument;
 - (void)_ensureViewForPage:(CDStruct_828c7fe1 *)arg1;
-- (void)_hidePasswordEntryField;
 - (void)_highlightLinkAnnotation:(id)arg1 forDuration:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_keyboardDidShow:(id)arg1;
 - (struct CGPoint)_offsetForPageNumberIndicator;
 - (void)_resetZoomAnimated:(BOOL)arg1;
 - (void)_revalidateViews;
 - (void)_scrollToFragment:(id)arg1;
 - (void)_showPasswordEntryField;
-- (BOOL)_tryToUnlockWithPassword:(id)arg1;
+- (void)_updateDocumentFrame;
 - (void)_updatePageNumberIndicator;
-- (void)_updatePasswordEntryField;
 - (unsigned long long)_wk_pageCountForPrintFormatter:(id)arg1;
 - (RetainPtr_f649c0c3)actionSheetAssistant:(id)arg1 decideActionsForElement:(id)arg2 defaultActions:(RetainPtr_f649c0c3)arg3;
 - (void)actionSheetAssistant:(id)arg1 openElementAtLocation:(struct CGPoint)arg2;
@@ -98,13 +94,10 @@ __attribute__((visibility("hidden")))
 - (void)annotation:(id)arg1 isBeingPressedAtPoint:(struct CGPoint)arg2 controller:(id)arg3;
 - (void)annotation:(id)arg1 wasTouchedAtPoint:(struct CGPoint)arg2 controller:(id)arg3;
 - (void)dealloc;
-- (void)didBeginEditingPassword:(id)arg1 inView:(id)arg2;
-- (void)didEndEditingPassword:(id)arg1 inView:(id)arg2;
 - (void)didMoveToWindow;
-- (const struct InteractionInformationAtPosition *)positionInformationForActionSheetAssistant:(id)arg1;
+- (optional_b0042d51)positionInformationForActionSheetAssistant:(id)arg1;
 - (void)resetZoom:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
-- (void)userDidEnterPassword:(id)arg1 forPasswordView:(id)arg2;
 - (void)web_computedContentInsetDidChange;
 - (void)web_countStringMatches:(id)arg1 options:(unsigned long long)arg2 maxCount:(unsigned long long)arg3;
 - (void)web_didSameDocumentNavigation:(unsigned int)arg1;

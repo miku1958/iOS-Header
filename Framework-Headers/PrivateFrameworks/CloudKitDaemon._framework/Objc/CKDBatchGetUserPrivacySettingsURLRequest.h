@@ -17,10 +17,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *containerPrivacySettings; // @synthesize containerPrivacySettings=_containerPrivacySettings;
 
 - (void).cxx_destruct;
+- (long long)databaseScope;
+- (id)generateRequestOperations;
 - (int)operationType;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 - (BOOL)requiresTokenRegistration;
 
 @end

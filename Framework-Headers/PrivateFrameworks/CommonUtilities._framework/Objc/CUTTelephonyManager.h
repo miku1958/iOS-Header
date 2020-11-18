@@ -13,21 +13,20 @@
     BOOL _registered;
     NSRecursiveLock *_lock;
     NSMutableSet *_disableFastDormancyTokens;
-    void *__suspendDormancyAssertion;
 }
 
-@property (nonatomic) void *_suspendDormancyAssertion; // @synthesize _suspendDormancyAssertion=__suspendDormancyAssertion;
+@property (readonly, nonatomic) BOOL disableFastDormancy;
 @property (strong, nonatomic) NSMutableSet *disableFastDormancyTokens; // @synthesize disableFastDormancyTokens=_disableFastDormancyTokens;
 @property (strong, nonatomic) NSRecursiveLock *lock; // @synthesize lock=_lock;
 @property (nonatomic) BOOL registered; // @synthesize registered=_registered;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)__adjustFastDormancyTokens;
 - (void)_adjustFastDormancyTokens;
 - (void)_setFastDormancySuspended:(BOOL)arg1;
 - (void)addFastDormancyDisableToken:(id)arg1;
 - (void)dealloc;
-- (BOOL)disableFastDormancy;
 - (id)init;
 - (void)removeFastDormancyDisableToken:(id)arg1;
 

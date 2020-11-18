@@ -34,9 +34,9 @@
 @property (strong, nonatomic) NSData *routeStepScreenshotImageData; // @synthesize routeStepScreenshotImageData=_routeStepScreenshotImageData;
 @property (nonatomic) unsigned int routeStepSubstepIndex; // @synthesize routeStepSubstepIndex=_routeStepSubstepIndex;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

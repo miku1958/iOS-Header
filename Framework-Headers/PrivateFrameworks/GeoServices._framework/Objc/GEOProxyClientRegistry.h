@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOProxyClient, NSLock, NSMutableSet;
 
@@ -16,9 +16,9 @@
 }
 
 + (id)sharedRegistry;
+- (void).cxx_destruct;
 - (void)_updateComposite;
 - (void)addClient:(id)arg1;
-- (void)dealloc;
 - (void)enableRegistry;
 - (void)removeClient:(id)arg1;
 

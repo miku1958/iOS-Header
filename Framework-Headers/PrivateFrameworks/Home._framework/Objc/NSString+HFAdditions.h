@@ -23,6 +23,9 @@
 - (unsigned int)hf_UTF8Length;
 - (BOOL)hf_isEmail;
 - (BOOL)hf_isPhoneNumber;
+- (id)hf_stringByCapitalizingFirstWord;
+- (id)hf_stringByLowercasingFirstWord;
+- (id)hf_stringByTransformingFirstWordUsingBlock:(CDUnknownBlockType)arg1;
 - (id)hf_toHexString:(char *)arg1 length:(unsigned int)arg2;
 - (BOOL)prefersDynamicString;
 - (id)stringWithAttributes:(id)arg1;

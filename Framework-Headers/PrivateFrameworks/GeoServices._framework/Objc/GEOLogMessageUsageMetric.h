@@ -39,10 +39,6 @@
 @property (nonatomic) unsigned int retryCount; // @synthesize retryCount=_retryCount;
 @property (nonatomic) struct GEOSessionID sessionId; // @synthesize sessionId=_sessionId;
 
-+ (id)logMessageUsageMetricForFailedMsgWithCount:(int)arg1;
-+ (id)logMessageUsageMetricForForcePurgeWithState:(int)arg1;
-+ (id)logMessageUsageMetricForNetworkWithState:(int)arg1 messageCount:(int)arg2 messageSize:(long long)arg3 retryCount:(int)arg4;
-+ (id)logMessageUsageMetricForPurgeWithState:(int)arg1 messageCount:(int)arg2;
 - (int)StringAsMetricState:(id)arg1;
 - (int)StringAsMetricType:(id)arg1;
 - (void)copyTo:(id)arg1;

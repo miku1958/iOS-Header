@@ -63,7 +63,6 @@
     BOOL _isAllDay;
     BOOL _isRecurring;
     BOOL _isBirthday;
-    BOOL _isFacebook;
     BOOL _tentative;
     BOOL _declined;
     BOOL _needsReply;
@@ -90,9 +89,7 @@
 @property (strong, nonatomic) UIColor *selectionTintColor; // @synthesize selectionTintColor=_selectionTintColor;
 
 + (id)_allDayLocalizedString;
-+ (id)_birthdayIcon;
 + (void)_clearCaches;
-+ (id)_facebookIcon;
 + (id)_needsReplyAngledStripeBackground;
 + (id)_needsReplyDot;
 + (id)_nowLocalizedString;
@@ -121,6 +118,7 @@
 + (BOOL)vibrant;
 - (void).cxx_destruct;
 - (void)_addVibrantSubview:(id)arg1 usingPrimaryEffect:(BOOL)arg2;
+- (id)_birthdayIcon;
 - (void)_countdownTimerFired;
 - (id)_createParentVisualEffectViewWithVisualEffect:(id)arg1;
 - (void)_createViews;
@@ -163,7 +161,6 @@
 - (BOOL)isBirthday;
 - (BOOL)isCancelled;
 - (BOOL)isDeclined;
-- (BOOL)isFacebook;
 - (BOOL)isPast;
 - (BOOL)isTentative;
 - (BOOL)needsReply;

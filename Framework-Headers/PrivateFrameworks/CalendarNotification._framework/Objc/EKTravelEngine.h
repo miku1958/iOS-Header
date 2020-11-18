@@ -47,11 +47,11 @@
 + (id)travelEligibleEvents:(id)arg1 fromStartDate:(id)arg2 untilEndDate:(id)arg3;
 - (void).cxx_destruct;
 - (BOOL)_authorizedToAcquireLocation;
-- (void)_automaticGeocodingAllowedChanged;
 - (void)_calDatabaseChangedNotificationReceived;
 - (void)_calSyncClientBeginningMultiSaveNotificationReceived;
 - (void)_calSyncClientFinishedMultiSaveNotificationReceived;
 - (void)_enableTravelAdvisoriesForAutomaticBehaviorNotificationReceived;
+- (void)_eventKitFeatureSetChanged;
 - (void)_installLocationManager;
 - (void)_installPeriodicRefreshTimer;
 - (void)_installSyncYieldTimer;

@@ -54,7 +54,6 @@
 - (id)initWithPasses:(id)arg1 passDataArray:(id)arg2 presentationSource:(unsigned long long)arg3;
 - (unsigned long long)numberOfGroups;
 - (void)passPersonalizationViewController:(id)arg1 didFinishPersonalizingPass:(id)arg2;
-- (BOOL)passesGrowWhenFlipped;
 - (void)reloadGroupsForGroupStackView:(id)arg1;
 - (unsigned long long)suppressedContent;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;

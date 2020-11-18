@@ -6,12 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-#import <QuartzCore/NSCoding-Protocol.h>
 #import <QuartzCore/NSCopying-Protocol.h>
+#import <QuartzCore/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface CAStateTransition : NSObject <NSCopying, NSCoding>
+@interface CAStateTransition : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_fromState;
     NSString *_toState;
@@ -23,6 +23,7 @@
 @property (copy, nonatomic) NSString *toState; // @synthesize toState=_toState;
 
 + (void)CAMLParserStartElement:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void)CAMLParser:(id)arg1 setValue:(id)arg2 forKey:(id)arg3;
 - (id)CAMLTypeForKey:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

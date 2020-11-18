@@ -31,7 +31,7 @@
 @property (readonly) Class superclass;
 
 + (BOOL)canHandleContentType:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithData:(id)arg1;
 - (id)initWithRootElementNameSpace:(id)arg1 name:(id)arg2 parseClass:(Class)arg3 baseURL:(id)arg4;
 - (BOOL)processData:(id)arg1 forTask:(id)arg2;

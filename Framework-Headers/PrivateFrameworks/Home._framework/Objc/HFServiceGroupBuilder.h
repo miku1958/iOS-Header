@@ -13,6 +13,10 @@
 
 @interface HFServiceGroupBuilder : HFItemBuilder <HFServiceLikeBuilder>
 {
+    BOOL isFavorite;
+    BOOL _hasSetRoom;
+    BOOL _hasSetIcon;
+    id<HFIconDescriptor> _iconDescriptor;
     NSString *_name;
     HFMutableSetDiff *_serviceUUIDs;
     HFRoomBuilder *_roomBuilder;
@@ -21,9 +25,11 @@
 @property (readonly, nonatomic) NSArray *availableIconDescriptors;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasSetIcon; // @synthesize hasSetIcon=_hasSetIcon;
+@property (nonatomic) BOOL hasSetRoom; // @synthesize hasSetRoom=_hasSetRoom;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) id<HFIconDescriptor> iconDescriptor;
-@property (nonatomic) BOOL isFavorite;
+@property (strong, nonatomic) id<HFIconDescriptor> iconDescriptor; // @synthesize iconDescriptor=_iconDescriptor;
+@property (nonatomic) BOOL isFavorite; // @synthesize isFavorite;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSString *originalName;
 @property (readonly, nonatomic) NSString *primaryServiceType;
@@ -38,14 +44,20 @@
 + (Class)homeKitRepresentationClass;
 - (void).cxx_destruct;
 - (id)_createServiceGroup;
+- (id)_mostCommonIconDescriptor;
 - (id)_performValidation;
 - (id)_rooms;
+- (BOOL)_supportsCustomIcons;
+- (id)_updateFavorite;
+- (id)_updateIcon;
 - (id)_updateName;
+- (id)_updateRooms;
 - (id)_updateServices;
 - (id)accessories;
 - (void)addService:(id)arg1;
 - (id)commitItem;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
+- (id)removeItemFromHome;
 - (void)removeService:(id)arg1;
 - (void)setServiceGroup:(id)arg1;
 - (BOOL)shouldAllowAddingService:(id)arg1;

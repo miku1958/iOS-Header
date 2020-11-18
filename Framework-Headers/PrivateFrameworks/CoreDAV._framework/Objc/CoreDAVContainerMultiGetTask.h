@@ -41,9 +41,9 @@
 @property (nonatomic) id<CoreDAVTaskManager> taskManager;
 @property (nonatomic) double timeoutInterval;
 
+- (void).cxx_destruct;
 - (id)copyAdditionalPropElements;
 - (id)copyDefaultParserForContentType:(id)arg1;
-- (void)dealloc;
 - (void)finishCoreDAVTaskWithError:(id)arg1;
 - (id)httpMethod;
 - (id)initWithURLs:(id)arg1 atContainerURL:(id)arg2 appSpecificDataItemClass:(Class)arg3;

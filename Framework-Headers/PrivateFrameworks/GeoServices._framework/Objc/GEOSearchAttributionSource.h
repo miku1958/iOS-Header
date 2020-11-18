@@ -40,6 +40,7 @@
 + (Class)attributionAppsType;
 + (Class)localizedAttributionType;
 + (Class)supportedComponentActionsType;
+- (void).cxx_destruct;
 - (int)StringAsAttributionRequirements:(id)arg1;
 - (void)addAttributionApps:(id)arg1;
 - (void)addAttributionRequirements:(int)arg1;

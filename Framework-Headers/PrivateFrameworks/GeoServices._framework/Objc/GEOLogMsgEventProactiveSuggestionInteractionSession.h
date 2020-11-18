@@ -32,12 +32,12 @@
 @property (strong, nonatomic) NSMutableArray *proactiveItems; // @synthesize proactiveItems=_proactiveItems;
 
 + (Class)proactiveItemType;
+- (void).cxx_destruct;
 - (int)StringAsListType:(id)arg1;
 - (void)addProactiveItem:(id)arg1;
 - (void)clearProactiveItems;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

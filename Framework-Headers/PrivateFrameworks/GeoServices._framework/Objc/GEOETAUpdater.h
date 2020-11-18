@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class GEOCommonOptions, GEOComposedRoute, GEOComposedWaypoint, GEOETATrafficUpdateRequest, GEOLocation, GEORouteAttributes, GEORouteMatch, NSData, NSTimer;
+@class GEOApplicationAuditToken, GEOCommonOptions, GEOComposedRoute, GEOComposedWaypoint, GEOETATrafficUpdateRequest, GEOLocation, GEORouteAttributes, GEORouteMatch, NSData, NSString, NSTimer;
 @protocol GEOETAUpdaterDelegate;
 
 @interface GEOETAUpdater : NSObject
 {
     id<GEOETAUpdaterDelegate> _delegate;
+    NSString *_requestingAppIdentifier;
     GEOETATrafficUpdateRequest *_currentETARequest;
     GEOLocation *_userLocation;
     GEORouteMatch *_routeMatch;
@@ -26,16 +27,22 @@
     NSTimer *_etaIdleTimer;
     double _lastETARequestTime;
     double _debugTimeWindowDuration;
+    unsigned long long _maxAlternateRoutesCount;
     NSData *_directionsResponseID;
     GEOCommonOptions *_commonOptions;
+    GEOApplicationAuditToken *_auditToken;
 }
 
 @property (nonatomic) BOOL allowRequests; // @synthesize allowRequests=_allowRequests;
+@property (strong, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (nonatomic) double debugTimeWindowDuration; // @synthesize debugTimeWindowDuration=_debugTimeWindowDuration;
-@property (nonatomic) id<GEOETAUpdaterDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<GEOETAUpdaterDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) GEOComposedWaypoint *destination; // @synthesize destination=_destination;
 @property (strong, nonatomic) NSData *directionsResponseID; // @synthesize directionsResponseID=_directionsResponseID;
+@property (nonatomic) unsigned long long maxAlternateRoutesCount; // @synthesize maxAlternateRoutesCount=_maxAlternateRoutesCount;
+@property (readonly) BOOL requestInProgress;
 @property (nonatomic) double requestInterval; // @synthesize requestInterval=_requestInterval;
+@property (strong, nonatomic) NSString *requestingAppIdentifier; // @synthesize requestingAppIdentifier=_requestingAppIdentifier;
 @property (strong, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 @property (strong, nonatomic) GEORouteAttributes *routeAttributes; // @synthesize routeAttributes=_routeAttributes;
 @property (strong, nonatomic) GEORouteMatch *routeMatch; // @synthesize routeMatch=_routeMatch;
@@ -43,10 +50,11 @@
 @property (nonatomic) BOOL shouldUseConditionalRequest; // @synthesize shouldUseConditionalRequest=_shouldUseConditionalRequest;
 @property (strong, nonatomic) GEOLocation *userLocation; // @synthesize userLocation=_userLocation;
 
+- (void).cxx_destruct;
 - (double)_calculateNextTransitionTime;
 - (void)_clearTimer;
 - (void)_continueUpdateRequests;
-- (void)_sendRequest:(id)arg1;
+- (void)_sendRequest:(id)arg1 shouldCallWillSendCallback:(BOOL)arg2;
 - (BOOL)_shouldStartConditionalETARequest;
 - (void)_startConditionalConnectionETARequest;
 - (void)_startStateWaitingForBestTimeStart:(id)arg1;

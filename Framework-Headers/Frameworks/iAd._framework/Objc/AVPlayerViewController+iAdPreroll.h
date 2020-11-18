@@ -8,9 +8,7 @@
 
 @interface AVPlayerViewController (iAdPreroll)
 + (void)preparePrerollAds;
-- (id)_iAd_prerollController;
 - (void)cancelPreroll;
 - (void)playPrerollAdWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)set_iAd_prerollController:(id)arg1;
 @end
 

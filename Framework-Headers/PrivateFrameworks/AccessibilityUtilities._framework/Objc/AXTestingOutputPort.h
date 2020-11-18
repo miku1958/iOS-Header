@@ -21,8 +21,8 @@
 @property (strong) NSString *portType; // @synthesize portType;
 @property (strong) NSArray *ttsChannels; // @synthesize ttsChannels=_ttsChannels;
 
+- (void).cxx_destruct;
 - (id)channels;
-- (void)dealloc;
 
 @end
 

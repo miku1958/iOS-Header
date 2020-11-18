@@ -6,22 +6,21 @@
 
 #import <LinkPresentation/LPMetadataProviderSpecialization.h>
 
-@class LPSpecializationMetadata, LPiTunesMediaLookupTask, NSMutableSet, NSString, NSURLSession;
+@class LPSpecializationMetadata, LPiTunesMediaLookupTask, NSMutableArray, NSMutableSet, NSString, NSURLSession;
 @protocol LPiTunesMediaUnresolvedMetadata;
 
 __attribute__((visibility("hidden")))
 @interface LPiTunesMediaMetadataProviderSpecialization : LPMetadataProviderSpecialization
 {
     NSString *_identifier;
-    NSString *_storefrontIdentifier;
     NSString *_storefrontCountryCode;
     NSURLSession *_session;
     BOOL _canceled;
-    long long _type;
     LPiTunesMediaLookupTask *_lookupTask;
     LPSpecializationMetadata *_resolvedMetadata;
     id<LPiTunesMediaUnresolvedMetadata> _unresolvedMetadata;
     NSMutableSet *_assetsStillResolving;
+    NSMutableArray *_pendingResolvers;
 }
 
 + (id)assetArrayFromScreenshotArray:(id)arg1;
@@ -29,13 +28,15 @@ __attribute__((visibility("hidden")))
 + (id)assetArrayScreenshotArray:(id)arg1;
 + (long long)determineOrientationOfScreenshotsInArray:(id)arg1;
 + (id)extractOffers:(id)arg1;
++ (id)specializedMetadataProviderForMetadata:(id)arg1 URL:(id)arg2;
 + (id)specializedMetadataProviderForURL:(id)arg1;
 - (void).cxx_destruct;
 - (void)cancel;
+- (void)completed;
 - (void)done;
 - (void)fail;
-- (id)initWithIdentifier:(id)arg1 type:(long long)arg2 storefrontCountryCode:(id)arg3 forURL:(id)arg4;
-- (id)processResponseDictionary:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 storefrontCountryCode:(id)arg2 forURL:(id)arg3;
+- (id)processResponseDictionary:(id)arg1 withStorefrontIdentifier:(id)arg2;
 - (void)resolve;
 - (id)schema;
 - (void)start;

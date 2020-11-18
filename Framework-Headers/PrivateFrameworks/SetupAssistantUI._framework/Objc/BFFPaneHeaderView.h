@@ -14,6 +14,7 @@
     UIButton *_linkButton;
     CDUnknownBlockType _linkHandler;
     UIView *_bottomLine;
+    BOOL _useMinimumTopPadding;
     BOOL _textLabelAlignedByLastBaseline;
     UIImage *_icon;
     UILabel *_textLabel;
@@ -29,6 +30,7 @@
 @property (readonly, nonatomic) UILabel *subLabel; // @synthesize subLabel=_subLabel;
 @property (readonly, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property (nonatomic, getter=isTextLabelAlignedByLastBaseline) BOOL textLabelAlignedByLastBaseline; // @synthesize textLabelAlignedByLastBaseline=_textLabelAlignedByLastBaseline;
+@property (nonatomic) BOOL useMinimumTopPadding; // @synthesize useMinimumTopPadding=_useMinimumTopPadding;
 
 - (void).cxx_destruct;
 - (double)_labelsAndLinksBaselineOffsetForView:(id)arg1;

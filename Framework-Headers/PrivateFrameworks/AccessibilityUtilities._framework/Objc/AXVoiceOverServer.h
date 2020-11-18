@@ -19,8 +19,8 @@
 - (id)lastScreenChange;
 - (id)lastSoundsPlayed;
 - (id)lastSpokenPhrases;
-- (BOOL)triggerCommand:(int)arg1;
-- (BOOL)triggerCommand:(int)arg1 withArgument:(id)arg2;
+- (BOOL)triggerCommand:(long long)arg1;
+- (BOOL)triggerCommand:(long long)arg1 withArgument:(id)arg2;
 
 @end
 

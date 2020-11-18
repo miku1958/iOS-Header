@@ -28,6 +28,7 @@
     } _delegateRespondsTo;
     id _refreshResetNotification;
     BOOL _hasAppeared;
+    BOOL _hasKickedOffBatchGeneration;
     BOOL __requestingNewMemories;
     PXTilingController *_tilingController;
     PXMemoriesFeedDataSourceManager *_dataSourceManager;
@@ -39,7 +40,8 @@
     id<PXMemoriesFeedViewControllerHelperDelegate> _delegate;
     PXSectionedObjectReference *_highlightedMemoryReference;
     PXSectionedObjectReference *_activatedMemoryReference;
-    PXSectionedObjectReference *_actionPresentationMemoryReference;
+    PXSectionedObjectReference *_lastActionPresentationMemoryReference;
+    NSString *_scrollTargetMemoryUUID;
     NSDate *__lastUserMemoryGenerationRequestDate;
     PXSectionedObjectReference *__memoryReferenceToScrollToVisible;
     PXSectionedObjectReference *_anchorMemoryReference;
@@ -61,7 +63,6 @@
 @property (readonly, nonatomic) PXMemoriesFeedScrollFilter *_scrollFilter; // @synthesize _scrollFilter=__scrollFilter;
 @property (strong, nonatomic, setter=_setSpec:) PXMemoriesSpec *_spec; // @synthesize _spec=__spec;
 @property (readonly, nonatomic) PXMemoriesFeedTransitionAnimationCoordinator *_transitionAnimationCoordinator; // @synthesize _transitionAnimationCoordinator=__transitionAnimationCoordinator;
-@property (strong, nonatomic) PXSectionedObjectReference *actionPresentationMemoryReference; // @synthesize actionPresentationMemoryReference=_actionPresentationMemoryReference;
 @property (strong, nonatomic) PXSectionedObjectReference *activatedMemoryReference; // @synthesize activatedMemoryReference=_activatedMemoryReference;
 @property (nonatomic, setter=_setAnchorMemoryOrigin:) struct CGPoint anchorMemoryOrigin; // @synthesize anchorMemoryOrigin=_anchorMemoryOrigin;
 @property (strong, nonatomic, setter=_setAnchorMemoryReference:) PXSectionedObjectReference *anchorMemoryReference; // @synthesize anchorMemoryReference=_anchorMemoryReference;
@@ -72,7 +73,9 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PXSectionedObjectReference *highlightedMemoryReference; // @synthesize highlightedMemoryReference=_highlightedMemoryReference;
+@property (strong, nonatomic) PXSectionedObjectReference *lastActionPresentationMemoryReference; // @synthesize lastActionPresentationMemoryReference=_lastActionPresentationMemoryReference;
 @property (readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+@property (strong, nonatomic, setter=setScrollTargetMemoryUUID:) NSString *scrollTargetMemoryUUID; // @synthesize scrollTargetMemoryUUID=_scrollTargetMemoryUUID;
 @property (readonly, nonatomic) PXScrollViewController *scrollViewController; // @synthesize scrollViewController=_scrollViewController;
 @property (readonly, nonatomic) PXSectionedSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
 @property (readonly, nonatomic) PXMemoriesSpecManager *specManager; // @synthesize specManager=_specManager;
@@ -96,7 +99,7 @@
 - (void)_invalidateLayoutEngine;
 - (id)_memoryReferenceInsertedOnChangeToDataSource:(id)arg1 withChangeDetails:(id)arg2;
 - (BOOL)_needsUpdate;
-- (void)_scrollMemoryReferenceToVisible:(id)arg1 animated:(BOOL)arg2;
+- (void)_scrollToTargetMemoryUUIDWhenReady:(id)arg1;
 - (void)_startRefreshForReason:(unsigned long long)arg1;
 - (void)_updateHighlightedIndexPathInLayout;
 - (void)_updateHighlightedIndexPathInLayout:(id)arg1;
@@ -108,6 +111,7 @@
 - (BOOL)canRequestNewMemoriesForReason:(unsigned long long)arg1;
 - (void)didChangeTilingControllerLayout;
 - (void)feedViewControllerDidAppear;
+- (void)feedViewControllerDidDisappear;
 - (void)feedViewControllerWillLayoutSubviews;
 - (struct PXSimpleIndexPath)indexPathForMemoryInScrollViewAtPoint:(struct CGPoint)arg1;
 - (struct PXSimpleIndexPath)indexPathForMemoryObjectReference:(id)arg1;
@@ -128,6 +132,7 @@
 - (void)requestNewMemoriesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)saveAnchorMemory;
 - (void)scrollFilterShouldRequestAdditionalContent:(id)arg1;
+- (void)scrollMemoryReferenceToVisible:(id)arg1 animated:(BOOL)arg2;
 - (id)sectionedDataSourceManagerInterestingObjectReferences:(id)arg1;
 - (struct CGPoint)tilingController:(id)arg1 initialVisibleOriginForLayout:(id)arg2;
 - (void)tilingController:(id)arg1 prepareForChange:(id)arg2;

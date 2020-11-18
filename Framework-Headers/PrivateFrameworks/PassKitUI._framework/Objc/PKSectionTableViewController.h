@@ -28,11 +28,14 @@
 - (BOOL)recomputeMappedSections;
 - (BOOL)reloadData;
 - (void)reloadSection:(unsigned long long)arg1;
+- (void)reloadSections:(id)arg1;
 - (long long)rowAnimationForDeletingSection:(unsigned long long)arg1;
 - (long long)rowAnimationForInsertingSection:(unsigned long long)arg1;
 - (long long)rowAnimationForReloadingSection:(unsigned long long)arg1;
 - (unsigned long long)sectionForIndex:(unsigned long long)arg1;
 - (BOOL)shouldMapSection:(unsigned long long)arg1;
+- (void)updateSectionVisibilityAndReloadIfNecessaryForSection:(unsigned long long)arg1;
+- (void)updateSectionVisibilityAndReloadIfNecessaryForSections:(id)arg1;
 - (void)viewDidLoad;
 
 @end

@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
+
+#import <CoreHAP/HMFMerging-Protocol.h>
 
 @class CBCharacteristic, HAPCharacteristicMetadata, HAPService, NSDate, NSNumber, NSString;
 
-@interface HAPCharacteristic : NSObject
+@interface HAPCharacteristic : HMFObject <HMFMerging>
 {
     BOOL _eventNotificationsEnabled;
     BOOL _shouldValidateValueAfterReading;
@@ -25,13 +27,17 @@
 
 @property (readonly, nonatomic) HAPCharacteristicMetadata *accessoryMetadata; // @synthesize accessoryMetadata=_accessoryMetadata;
 @property (strong, nonatomic, setter=setCBCharacteristic:) CBCharacteristic *cbCharacteristic;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL eventNotificationsEnabled; // @synthesize eventNotificationsEnabled=_eventNotificationsEnabled;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
 @property (copy, nonatomic) HAPCharacteristicMetadata *metadata; // @synthesize metadata=_metadata;
 @property (nonatomic) unsigned long long properties; // @synthesize properties=_properties;
 @property (weak, nonatomic) HAPService *service; // @synthesize service=_service;
 @property (nonatomic) BOOL shouldValidateValueAfterReading; // @synthesize shouldValidateValueAfterReading=_shouldValidateValueAfterReading;
 @property (readonly, nonatomic) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsAdditionalAuthorizationData;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property (copy, nonatomic, setter=setValue:) id value; // @synthesize value=_value;
@@ -40,10 +46,12 @@
 - (void).cxx_destruct;
 - (id)_generateValidMetadata:(id)arg1;
 - (void)_updateMetadata:(id)arg1 withProvidedMetadata:(id)arg2;
-- (id)description;
 - (id)initWithType:(id)arg1 instanceID:(id)arg2 value:(id)arg3 stateNumber:(id)arg4 properties:(unsigned long long)arg5 eventNotificationsEnabled:(BOOL)arg6 metadata:(id)arg7;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToCharacteristic:(id)arg1;
+- (BOOL)mergeObject:(id)arg1;
 - (id)propertiesDescription;
+- (BOOL)shouldMergeObject:(id)arg1;
 - (id)validateValue:(id)arg1 outValue:(id *)arg2;
 
 @end

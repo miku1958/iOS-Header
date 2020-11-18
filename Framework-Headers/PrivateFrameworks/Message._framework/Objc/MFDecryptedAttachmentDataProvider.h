@@ -21,7 +21,7 @@
 @property (readonly) Class superclass;
 
 - (void)dealloc;
-- (void)fetchDataForAttachment:(id)arg1 withDataConsumer:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchDataForAttachment:(id)arg1 consumer:(id)arg2 progress:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)fetchLocalDataForAttachment:(id)arg1;
 - (id)initWithDecryptedMessage:(id)arg1;
 - (id)messageForAttachment:(id)arg1;

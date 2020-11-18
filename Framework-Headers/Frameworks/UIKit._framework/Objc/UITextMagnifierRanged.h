@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
     BOOL _isHorizontal;
     BOOL _isAnimating;
     long long _delayedAnimationType;
+    struct CGPoint _delayedAnimationPoint;
 }
 
 @property (nonatomic) BOOL isHorizontal; // @synthesize isHorizontal=_isHorizontal;
 
++ (id)activeRangedMagnifier;
 + (id)sharedRangedMagnifier;
 - (void)beginMagnifyingTarget:(id)arg1 text:(id)arg2 magnificationPoint:(struct CGPoint)arg3 offset:(struct CGPoint)arg4 animated:(BOOL)arg5;
 - (struct CGRect)caretRectClosestToPoint:(struct CGPoint)arg1;

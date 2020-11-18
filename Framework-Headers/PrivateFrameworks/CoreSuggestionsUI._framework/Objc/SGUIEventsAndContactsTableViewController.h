@@ -6,19 +6,16 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <CoreSuggestionsUI/CNContactViewControllerDelegate-Protocol.h>
-#import <CoreSuggestionsUI/EKEventEditViewDelegate-Protocol.h>
-#import <CoreSuggestionsUI/EKEventViewDelegate-Protocol.h>
 #import <CoreSuggestionsUI/SGUIAddAllTableViewCellDelegate-Protocol.h>
-#import <CoreSuggestionsUI/SGUIContactSuggestionTableViewCellDelegate-Protocol.h>
-#import <CoreSuggestionsUI/SGUIEventSuggestionTableViewCellDelegate-Protocol.h>
+#import <CoreSuggestionsUI/SGUISuggestionTableViewCellDelegate-Protocol.h>
 #import <CoreSuggestionsUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, SGUISuggestionConfirmationController;
 @protocol SGUIEventsAndContactsTableViewControllerDelegate;
 
-@interface SGUIEventsAndContactsTableViewController : UITableViewController <CNContactViewControllerDelegate, EKEventEditViewDelegate, EKEventViewDelegate, SGUIEventSuggestionTableViewCellDelegate, SGUIContactSuggestionTableViewCellDelegate, SGUIAddAllTableViewCellDelegate, UIPopoverPresentationControllerDelegate>
+@interface SGUIEventsAndContactsTableViewController : UITableViewController <SGUISuggestionTableViewCellDelegate, SGUIAddAllTableViewCellDelegate, UIPopoverPresentationControllerDelegate>
 {
+    SGUISuggestionConfirmationController *_confirmationController;
     NSMutableArray *_realtimeEvents;
     NSMutableArray *_realtimeContacts;
     id _presentedSuggestion;
@@ -32,20 +29,15 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_doneWithSuggestion:(id)arg1;
+- (void)_removeSuggestion:(id)arg1;
 - (void)addAllTableViewCellDidTapAddAll:(id)arg1;
-- (void)contactSuggestionCell:(id)arg1 didTapConfirmForContactSuggestion:(id)arg2;
-- (void)contactSuggestionCell:(id)arg1 didTapIgnoreForContactSuggestion:(id)arg2;
-- (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
 - (void)dealloc;
-- (void)eventEditViewController:(id)arg1 didCompleteWithAction:(long long)arg2;
-- (void)eventSuggestionCell:(id)arg1 didTapConfirmForEventSuggestion:(id)arg2;
-- (void)eventSuggestionCell:(id)arg1 didTapIgnoreForEventSuggestion:(id)arg2;
-- (void)eventViewController:(id)arg1 didCompleteWithAction:(long long)arg2;
 - (id)initWithRealtimeEvents:(id)arg1 realtimeContacts:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)presentViewControllerInCurrentContext:(id)arg1;
-- (void)removeSuggestion:(id)arg1;
+- (void)suggestionCell:(id)arg1 didTapConfirmForSuggestion:(id)arg2;
+- (void)suggestionCell:(id)arg1 didTapIgnoreForSuggestion:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;

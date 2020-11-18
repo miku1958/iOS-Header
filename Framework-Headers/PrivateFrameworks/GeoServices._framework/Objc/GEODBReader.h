@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 @protocol OS_dispatch_queue;
@@ -25,6 +25,7 @@
 
 @property BOOL closed;
 
+- (void).cxx_destruct;
 - (void)_closeDB;
 - (id)_dataForA:(unsigned int)arg1 andB:(unsigned int)arg2 andC:(unsigned int)arg3 andD:(unsigned int)arg4 isCurrent:(BOOL *)arg5 eTag:(id *)arg6;
 - (id)_dataForKey:(struct _GEOTileKey)arg1 isCurrent:(BOOL *)arg2 eTag:(id *)arg3;
@@ -35,7 +36,7 @@
 - (void)_openDB;
 - (void)dataForKey:(struct _GEOTileKey *)arg1 asyncHandler:(CDUnknownBlockType)arg2;
 - (id)dataForKey:(struct _GEOTileKey *)arg1 isCurrent:(BOOL *)arg2 eTag:(id *)arg3;
-- (void)dataForKeys:(struct GEOTileKeyList *)arg1 asyncHandler:(CDUnknownBlockType)arg2;
+- (void)dataForKeys:(struct GEOTileKeyList *)arg1 callbackQueue:(id)arg2 asyncHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1;
 - (void)setExpirationRecords:(CDStruct_e4886f83 *)arg1 count:(unsigned long long)arg2;

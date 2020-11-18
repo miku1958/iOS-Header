@@ -8,7 +8,7 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPIdentifier, CKDPLocale, NSData, NSString;
+@class CKDPIdentifier, CKDPLocale, NSData, NSMutableArray, NSString;
 
 @interface CKDPRequestOperationHeader : PBCodable <NSCopying>
 {
@@ -17,6 +17,7 @@
     unsigned long long _deviceFlowControlBudgetCap;
     unsigned long long _deviceProtocolVersion;
     unsigned long long _globalConfigVersion;
+    unsigned long long _operationGroupQuantity;
     NSString *_applicationBundle;
     NSString *_applicationContainer;
     int _applicationContainerEnvironment;
@@ -34,6 +35,8 @@
     int _isolationLevel;
     CKDPLocale *_locale;
     NSString *_mmcsProtocolVersion;
+    NSString *_operationGroupName;
+    NSMutableArray *_serviceIdentityKeyIDs;
     int _targetDatabase;
     NSString *_userIDContainerID;
     NSString *_userToken;
@@ -43,6 +46,7 @@
         unsigned int deviceFlowControlBudgetCap:1;
         unsigned int deviceProtocolVersion:1;
         unsigned int globalConfigVersion:1;
+        unsigned int operationGroupQuantity:1;
         unsigned int applicationContainerEnvironment:1;
         unsigned int deviceFlowControlRegeneration:1;
         unsigned int isolationLevel:1;
@@ -91,21 +95,32 @@
 @property (nonatomic) BOOL hasIsolationLevel;
 @property (readonly, nonatomic) BOOL hasLocale;
 @property (readonly, nonatomic) BOOL hasMmcsProtocolVersion;
+@property (readonly, nonatomic) BOOL hasOperationGroupName;
+@property (nonatomic) BOOL hasOperationGroupQuantity;
 @property (nonatomic) BOOL hasTargetDatabase;
 @property (readonly, nonatomic) BOOL hasUserIDContainerID;
 @property (readonly, nonatomic) BOOL hasUserToken;
 @property (nonatomic) int isolationLevel; // @synthesize isolationLevel=_isolationLevel;
 @property (strong, nonatomic) CKDPLocale *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) NSString *mmcsProtocolVersion; // @synthesize mmcsProtocolVersion=_mmcsProtocolVersion;
+@property (strong, nonatomic) NSString *operationGroupName; // @synthesize operationGroupName=_operationGroupName;
+@property (nonatomic) unsigned long long operationGroupQuantity; // @synthesize operationGroupQuantity=_operationGroupQuantity;
+@property (strong, nonatomic) NSMutableArray *serviceIdentityKeyIDs; // @synthesize serviceIdentityKeyIDs=_serviceIdentityKeyIDs;
 @property (nonatomic) int targetDatabase; // @synthesize targetDatabase=_targetDatabase;
 @property (strong, nonatomic) NSString *userIDContainerID; // @synthesize userIDContainerID=_userIDContainerID;
 @property (strong, nonatomic) NSString *userToken; // @synthesize userToken=_userToken;
 
++ (Class)serviceIdentityKeyIDsType;
 - (void).cxx_destruct;
 - (int)StringAsApplicationContainerEnvironment:(id)arg1;
 - (int)StringAsIsolationLevel:(id)arg1;
 - (int)StringAsTargetDatabase:(id)arg1;
+- (id)_applicationContainerEnvironmentCKLogValue;
+- (id)_isolationLevelCKLogValue;
+- (id)_targetDatabaseCKLogValue;
+- (void)addServiceIdentityKeyIDs:(id)arg1;
 - (id)applicationContainerEnvironmentAsString:(int)arg1;
+- (void)clearServiceIdentityKeyIDs;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -115,6 +130,8 @@
 - (id)isolationLevelAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)serviceIdentityKeyIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)serviceIdentityKeyIDsCount;
 - (id)targetDatabaseAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

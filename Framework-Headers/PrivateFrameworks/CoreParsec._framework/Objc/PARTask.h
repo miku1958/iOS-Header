@@ -12,12 +12,12 @@
 {
     CDUnknownBlockType _completionBlock;
     PARSession *_session;
-    long long _queryId;
+    unsigned long long _queryId;
     PARRequest *_request;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
-@property long long queryId; // @synthesize queryId=_queryId;
+@property unsigned long long queryId; // @synthesize queryId=_queryId;
 @property (strong, nonatomic) PARRequest *request; // @synthesize request=_request;
 @property (weak, nonatomic) PARSession *session; // @synthesize session=_session;
 

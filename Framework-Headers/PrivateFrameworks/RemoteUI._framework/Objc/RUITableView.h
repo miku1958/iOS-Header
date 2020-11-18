@@ -85,7 +85,7 @@
 - (void)hidePickerViewAnimated:(BOOL)arg1;
 - (id)indexPathForPreferredFocusedViewInTableView:(id)arg1;
 - (id)indexPathForRow:(id)arg1;
-- (id)init;
+- (id)initWithAttributes:(id)arg1 parent:(id)arg2;
 - (void)insertRow:(id)arg1 atIndexPath:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)objectModelRowForIndexPath:(id)arg1;
@@ -119,6 +119,7 @@
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didUpdateFocusInContext:(id)arg2 withAnimationCoordinator:(id)arg3;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;

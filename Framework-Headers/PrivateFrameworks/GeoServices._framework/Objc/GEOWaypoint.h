@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocation, GEOPlaceSearchRequest, NSMutableArray;
+@class GEOLocation, GEOPlaceSearchRequest, NSMutableArray, PBUnknownFields;
 
 @interface GEOWaypoint : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_entryPoints;
     GEOLocation *_location;
     GEOPlaceSearchRequest *_placeSearchRequest;
@@ -22,13 +23,14 @@
 @property (readonly, nonatomic) BOOL hasPlaceSearchRequest;
 @property (strong, nonatomic) GEOLocation *location; // @synthesize location=_location;
 @property (strong, nonatomic) GEOPlaceSearchRequest *placeSearchRequest; // @synthesize placeSearchRequest=_placeSearchRequest;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)entryPointType;
+- (void).cxx_destruct;
 - (void)addEntryPoint:(id)arg1;
 - (void)clearEntryPoints;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)entryPointAtIndex:(unsigned long long)arg1;

@@ -27,6 +27,7 @@
 - (struct CGRect)anchorRect;
 - (void)calculateDisplayRect;
 - (void)dealloc;
+- (void)deleteBackward;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
 - (void)dismissOverlayView;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUIStackView.h>
+#import <TemplateKit/TLKStackView.h>
 
 @class SFPunchout;
 
-@interface SearchUINowPlayingSingleMovieCard : SearchUIStackView
+@interface SearchUINowPlayingSingleMovieCard : TLKStackView
 {
     SFPunchout *_punchout;
 }

@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSExtension, NSString;
+@class NSExtension, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface _MDIndexExtension : NSObject
 {
     BOOL _entitlementVerified;
     NSObject<OS_dispatch_queue> *_queue;
-    NSString *_containerPath;
     NSString *_containerID;
+    NSSet *_identifiers;
     NSExtension *_extension;
+    NSString *_containerPath;
     NSString *_extensionID;
 }
 
@@ -25,6 +26,7 @@
 @property (nonatomic) BOOL entitlementVerified; // @synthesize entitlementVerified=_entitlementVerified;
 @property (strong, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
 @property (strong, nonatomic) NSString *extensionID; // @synthesize extensionID=_extensionID;
+@property (copy) NSSet *identifiers; // @synthesize identifiers=_identifiers;
 @property (readonly) BOOL isEnabled;
 @property (readonly) BOOL isInternal;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;

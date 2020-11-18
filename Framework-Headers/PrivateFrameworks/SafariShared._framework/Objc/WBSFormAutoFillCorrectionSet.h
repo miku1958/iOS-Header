@@ -8,19 +8,21 @@
 
 @class NSDictionary, NSString;
 
-__attribute__((visibility("hidden")))
 @interface WBSFormAutoFillCorrectionSet : NSObject
 {
     NSString *_domain;
     NSDictionary *_fingerprintsToClassifications;
+    NSDictionary *_fingerprintsToCorrections;
 }
 
 @property (readonly, nonatomic) NSString *domain; // @synthesize domain=_domain;
 @property (readonly, nonatomic) NSDictionary *fingerprintsToClassifications; // @synthesize fingerprintsToClassifications=_fingerprintsToClassifications;
+@property (readonly, nonatomic) NSDictionary *fingerprintsToCorrections; // @synthesize fingerprintsToCorrections=_fingerprintsToCorrections;
 
 - (void).cxx_destruct;
 - (unsigned long long)hash;
 - (id)initWithDomain:(id)arg1 fingerprintsToClassifications:(id)arg2;
+- (id)initWithDomain:(id)arg1 fingerprintsToCorrections:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

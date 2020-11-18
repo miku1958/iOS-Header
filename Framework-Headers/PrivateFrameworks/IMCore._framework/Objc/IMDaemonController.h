@@ -109,7 +109,6 @@
 - (void)setDaemonLogsOutWithoutStatusListeners:(BOOL)arg1;
 - (void)setDaemonTerminatesWithoutListeners:(BOOL)arg1;
 - (void)setMyPicture:(id)arg1 smallPictureData:(id)arg2;
-- (void)setMyProfile:(id)arg1;
 - (void)setMyStatus:(unsigned long long)arg1 message:(id)arg2;
 - (void)setMyStatus:(unsigned long long)arg1 message:(id)arg2 forAccount:(id)arg3;
 - (void)systemApplicationDidEnterBackground;

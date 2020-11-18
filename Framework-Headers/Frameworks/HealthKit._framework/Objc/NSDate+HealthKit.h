@@ -7,7 +7,12 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (HealthKit)
+- (id)hk_convertedToLocalTimeZone;
 - (BOOL)hk_isAfterDate:(id)arg1;
+- (BOOL)hk_isAfterOrEqualToDate:(id)arg1;
 - (BOOL)hk_isBeforeDate:(id)arg1;
+- (BOOL)hk_isBeforeOrEqualToDate:(id)arg1;
+- (id)hk_nearestDate:(id)arg1;
+- (id)hk_rfc3339String;
 @end
 

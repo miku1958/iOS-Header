@@ -6,70 +6,62 @@
 
 #import <EventKit/EKPersistentCalendarItem.h>
 
-@class EKPersistentSuggestedEventInfo, NSArray, NSDate, NSNumber, NSString, NSURL;
-
 @interface EKPersistentEvent : EKPersistentCalendarItem
 {
-    CDStruct_6e43267c _cachedDurationUnits;
 }
 
-@property (copy, nonatomic) NSURL *URL;
-@property (copy, nonatomic) NSArray *actions;
-@property (readonly, nonatomic) BOOL allowsParticipationStatusModifications;
-@property (nonatomic) long long availability;
-@property (readonly, nonatomic) int birthdayID;
-@property (readonly, nonatomic) double duration;
-@property (readonly, nonatomic) CDStruct_6e43267c durationUnits;
-@property (readonly, nonatomic, getter=isEditable) BOOL editable;
-@property (copy, nonatomic) NSDate *endDate;
-@property (readonly, nonatomic) NSString *eventIdentifier;
-@property (nonatomic) BOOL firedTTL;
-@property (readonly, nonatomic, getter=isFloating) BOOL floating;
-@property (readonly, nonatomic, getter=isInvitation) BOOL invitation;
-@property (readonly, nonatomic) unsigned int invitationChangedProperties;
-@property (nonatomic) unsigned long long invitationStatus;
-@property (nonatomic) unsigned long long junkStatus;
-@property (nonatomic) long long locationPredictionState;
-@property (readonly, nonatomic, getter=isMeeting) BOOL meeting;
-@property (nonatomic) BOOL needsOccurrenceCacheUpdate;
-@property (copy, nonatomic) NSDate *originalStartDate;
-@property (nonatomic) long long participationStatus;
-@property (readonly, nonatomic) long long pendingParticipationStatus;
-@property (nonatomic) long long privacyLevel;
-@property (copy, nonatomic) NSDate *proposedStartDate;
-@property (copy, nonatomic) NSString *responseComment;
-@property (nonatomic) long long status;
-@property (strong, nonatomic) EKPersistentSuggestedEventInfo *suggestedEventInfo;
-@property (nonatomic) long long travelAdvisoryBehavior;
-@property (copy, nonatomic) NSNumber *travelTime;
-
 + (id)defaultPropertiesToLoad;
-+ (id)generateUniqueIDWithEvent:(id)arg1 originalEvent:(id)arg2 calendar:(id)arg3;
++ (id)eventWithRandomUUID;
 + (id)relations;
-- (void)_adjustForNewCalendar;
-- (BOOL)_areDurationUnitsCached;
-- (BOOL)_hasExternalIDOrDeliverySource;
-- (void)_invalidateCachedDurationUnits;
-- (void)_updateSelfFromDetachedEventIfNeededForDelete;
-- (void)addAction:(id)arg1;
-- (long long)birthdayId;
+- (id)actions;
+- (long long)availability;
+- (id)birthdayID;
 - (BOOL)canForward;
-- (void)clearExceptionDatesAndUpdateDetachedOriginalDates;
-- (id)committedStartDate;
+- (id)conferenceURL;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)deleteFromOccurrenceDateOnward:(id)arg1;
 - (id)description;
 - (BOOL)disallowProposeNewTime;
+- (id)endDate;
 - (int)entityType;
-- (void)filterExceptionDates;
-- (BOOL)hasValidEventAction;
-- (id)initCommon;
+- (int)externalTrackingStatus;
+- (BOOL)firedTTL;
+- (unsigned int)invitationChangedProperties;
+- (unsigned long long)invitationStatus;
+- (unsigned long long)junkStatus;
+- (long long)locationPredictionState;
+- (BOOL)needsOccurrenceCacheUpdate;
 - (id)organizer;
-- (void)primitiveValueChangedForKey:(id)arg1;
-- (BOOL)refresh;
-- (void)removeAction:(id)arg1;
-- (BOOL)responseMustApplyToAll;
-- (BOOL)validate:(id *)arg1;
+- (id)originalStartDate;
+- (long long)privacyLevel;
+- (id)proposedStartDate;
+- (id)responseComment;
+- (void)setAvailability:(long long)arg1;
+- (void)setBirthdayID:(id)arg1;
+- (void)setCanForward:(BOOL)arg1;
+- (void)setConferenceURL:(id)arg1;
+- (void)setDisallowProposeNewTime:(BOOL)arg1;
+- (void)setEndDate:(id)arg1;
+- (void)setExternalTrackingStatus:(int)arg1;
+- (void)setFiredTTL:(BOOL)arg1;
+- (void)setInvitationChangedProperties:(unsigned int)arg1;
+- (void)setInvitationStatus:(unsigned long long)arg1;
+- (void)setJunkStatus:(unsigned long long)arg1;
+- (void)setLocationPredictionState:(long long)arg1;
+- (void)setNeedsOccurrenceCacheUpdate:(BOOL)arg1;
+- (void)setOriginalStartDate:(id)arg1;
+- (void)setPrivacyLevel:(long long)arg1;
+- (void)setProposedStartDate:(id)arg1;
+- (void)setResponseComment:(id)arg1;
+- (void)setStatus:(long long)arg1;
+- (void)setSuggestedEventInfo:(id)arg1;
+- (void)setSuggestionInfo:(id)arg1;
+- (void)setTravelAdvisoryBehavior:(long long)arg1;
+- (void)setTravelTime:(id)arg1;
+- (long long)status;
+- (id)suggestedEventInfo;
+- (id)suggestionInfo;
+- (long long)travelAdvisoryBehavior;
+- (id)travelTime;
 
 @end
 

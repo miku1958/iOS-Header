@@ -22,7 +22,7 @@
 - (id)glTextureCache;
 - (double)nextFrameTime;
 - (BOOL)prefersGL3;
-- (void)renderWithEngineContext:(struct __C3DEngineContext *)arg1 nextFrameTime:(double *)arg2;
+- (void)renderWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 - (struct __C3DRendererContext *)rendererContextForTextureSourceWithEngineContext:(struct __C3DEngineContext *)arg1;
 - (void)setGlTextureCache:(id)arg1;
 - (void)setMTLTextureCache:(id)arg1;

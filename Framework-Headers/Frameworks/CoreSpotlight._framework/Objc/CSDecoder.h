@@ -12,11 +12,13 @@
 
 @interface CSDecoder : NSObject <CSCoderData>
 {
-    const struct __CFAllocator *_contentDeallocator;
     NSData *_data;
+    id _backingStore;
+    const struct __CFAllocator *_contentDeallocator;
     CDStruct_b7fac349 _obj;
 }
 
+@property (strong, nonatomic) id backingStore; // @synthesize backingStore=_backingStore;
 @property (readonly, nonatomic) const struct __CFAllocator *contentDeallocator; // @synthesize contentDeallocator=_contentDeallocator;
 @property (readonly, nonatomic) NSData *data; // @synthesize data=_data;
 @property (readonly, nonatomic) CDStruct_b7fac349 obj; // @synthesize obj=_obj;
@@ -24,6 +26,7 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)debugDescription;
+- (id)decode;
 - (id)decodeObject:(CDStruct_b7fac349)arg1;
 - (id)decodeObjectNoCopy:(CDStruct_b7fac349)arg1;
 - (id)description;

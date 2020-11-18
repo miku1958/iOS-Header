@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/PLForegroundObserver-Protocol.h>
 
@@ -28,7 +28,8 @@
 - (void)_addBonusTime;
 - (void)_disableAutoFGAndUserFGConstraints;
 - (void)dealloc;
-- (void)foregroundMonitor:(id)arg1 changedStateToForeground:(BOOL)arg2 context:(id)arg3;
+- (void)foregroundMonitor:(id)arg1 changedStateToForeground:(BOOL)arg2 forBundleIdentifier:(id)arg3 context:(id)arg4;
+- (void)informCameraAppCameraViewControllerVisibilityChanged:(BOOL)arg1;
 - (void)informOpportunisticTasksAllowed:(BOOL)arg1;
 - (id)init;
 

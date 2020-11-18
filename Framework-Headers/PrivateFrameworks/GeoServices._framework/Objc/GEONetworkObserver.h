@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSLock;
 
@@ -20,6 +20,7 @@
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)sharedNetworkObserver;
+- (void).cxx_destruct;
 - (void)_networkObserversInitialize;
 - (void)_networkReachableCallBack:(unsigned int)arg1;
 - (void)_networkReachableFirstCallBack:(id)arg1;

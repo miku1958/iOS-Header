@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) NSData *SHA1Data;
 @property (readonly, nonatomic) NSString *SHA1HexString;
+@property (readonly, nonatomic) NSData *SHA256Data;
 
 @end
 

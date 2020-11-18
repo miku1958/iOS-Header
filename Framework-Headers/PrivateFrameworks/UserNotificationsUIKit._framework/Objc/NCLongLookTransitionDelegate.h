@@ -6,41 +6,31 @@
 
 #import <objc/NSObject.h>
 
-#import <UserNotificationsUIKit/NCLongLookAnimatorDelegate-Protocol.h>
-#import <UserNotificationsUIKit/NCViewControllerTransitioningDelegate-Protocol.h>
+#import <UserNotificationsUIKit/NCLongLookAnimatorObserving-Protocol.h>
+#import <UserNotificationsUIKit/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class NCLongLookPresentationController, NCNotificationViewController, NSString;
-@protocol NCLongLookAnimator, NCLongLookTransitionDelegateObserver;
+@class NSString, UIPresentationController;
+@protocol NCLongLookPresentationController;
 
-@interface NCLongLookTransitionDelegate : NSObject <NCLongLookAnimatorDelegate, NCViewControllerTransitioningDelegate>
+@interface NCLongLookTransitionDelegate : NSObject <NCLongLookAnimatorObserving, UIViewControllerTransitioningDelegate>
 {
-    NCNotificationViewController *_sourceShortLookVC;
-    NCLongLookPresentationController *_longLookPresentationController;
-    BOOL _interactive;
-    id<NCLongLookTransitionDelegateObserver> _transitioningDelegateObserver;
-    long long _transitionInitiator;
+    UIPresentationController<NCLongLookPresentationController> *_longLookPresentationController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic, getter=isInteractive) BOOL interactive; // @synthesize interactive=_interactive;
-@property (readonly, nonatomic) id<NCLongLookAnimator> longLookAnimator;
+@property (strong, nonatomic, getter=_longLookPresentationController, setter=_setLongLookPresentationController:) UIPresentationController<NCLongLookPresentationController> *longLookPresentationController; // @synthesize longLookPresentationController=_longLookPresentationController;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) long long transitionInitiator; // @synthesize transitionInitiator=_transitionInitiator;
-@property (weak, nonatomic) id<NCLongLookTransitionDelegateObserver> transitioningDelegateObserver; // @synthesize transitioningDelegateObserver=_transitioningDelegateObserver;
 
 - (void).cxx_destruct;
-- (id)_longLookPresentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
-- (void)_notifyObserverOfTransitionBegin:(BOOL)arg1 withAnimator:(id)arg2 completed:(BOOL)arg3;
+- (id)_longLookPresentationControllerOfClass:(Class)arg1 presentedController:(id)arg2 presentingController:(id)arg3 sourceController:(id)arg4;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
-- (id)initForInteractiveTransition:(BOOL)arg1 withInitiator:(long long)arg2 andSourceShortLookViewController:(id)arg3;
-- (id)interactionControllerForPresentation:(id)arg1;
-- (void)longLookAnimator:(id)arg1 animationEnded:(BOOL)arg2;
-- (void)longLookAnimatorAnimationBegan:(id)arg1;
+- (void)longLookAnimator:(id)arg1 willBeginDismissalAnimationWithTransitionContext:(id)arg2;
+- (void)longLookAnimator:(id)arg1 willBeginPresentationAnimationWithTransitionContext:(id)arg2;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
-- (void)transitionAnimator:(id)arg1 didCommitToTransitionWithCoordinator:(id)arg2;
+- (id)previewPresentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 
 @end
 

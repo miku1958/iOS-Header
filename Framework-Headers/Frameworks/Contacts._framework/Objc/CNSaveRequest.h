@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Contacts/CNObjectValidation-Protocol.h>
 #import <Contacts/NSSecureCoding-Protocol.h>
@@ -34,7 +34,7 @@
     NSMutableDictionary *_parentRecordsByIdentifier;
     BOOL _unsafeApplyChangesOnly;
     NSString *_saveRequestIdentifier;
-    NSString *_clientIdentifier;
+    NSString *_changeHistoryClientIdentifier;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *addedAccountContainersByParentContainerIdentifier;
@@ -50,7 +50,7 @@
 @property (readonly, copy, nonatomic) NSArray *allContainers;
 @property (readonly, copy, nonatomic) NSArray *allGroupIdentifiers;
 @property (readonly, copy, nonatomic) NSArray *allGroups;
-@property (copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property (copy, nonatomic) NSString *changeHistoryClientIdentifier; // @synthesize changeHistoryClientIdentifier=_changeHistoryClientIdentifier;
 @property (readonly, copy, nonatomic) NSArray *contactChangeRequests;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy, nonatomic) NSArray *deletedContacts;
@@ -72,6 +72,7 @@
 @property (readonly, copy, nonatomic) NSArray *updatedGroups;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_dictionaryOfArraysFromDictionaryOfDictionaries:(id)arg1;
 - (void)_insertContact:(id)arg1 intoDictionary:(id)arg2 complementDictionary:(id)arg3;
 - (void)addAccount:(id)arg1;
@@ -84,7 +85,6 @@
 - (id)allAccountIdentifiers;
 - (id)allContainerIdentifierStrings:(BOOL *)arg1;
 - (id)allContainerIdentifiers:(BOOL *)arg1;
-- (void)dealloc;
 - (void)deleteContact:(id)arg1;
 - (void)deleteContainer:(id)arg1;
 - (void)deleteGroup:(id)arg1;

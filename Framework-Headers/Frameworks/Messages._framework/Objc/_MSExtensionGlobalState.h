@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class _MSMessageAppExtensionContext;
+@protocol _MSMessageComposeExtensionImplProtocol;
 
 @interface _MSExtensionGlobalState : NSObject
 {
-    _MSMessageAppExtensionContext *_activeExtensionContext;
+    id<_MSMessageComposeExtensionImplProtocol> _activeExtensionContext;
 }
 
-@property (weak, nonatomic) _MSMessageAppExtensionContext *activeExtensionContext; // @synthesize activeExtensionContext=_activeExtensionContext;
+@property (strong, nonatomic) id<_MSMessageComposeExtensionImplProtocol> activeExtensionContext; // @synthesize activeExtensionContext=_activeExtensionContext;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;

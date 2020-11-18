@@ -13,7 +13,6 @@
 @property (strong, nonatomic) UIView *accessoryView;
 @property (copy, nonatomic) NSDate *date;
 @property (readonly, nonatomic, getter=isDateAllDay) BOOL dateAllDay;
-@property (copy, nonatomic) NSString *hintText;
 @property (strong, nonatomic) UIImage *icon;
 @property (strong, nonatomic) NSArray *interfaceActions;
 @property (nonatomic) unsigned long long messageNumberOfLines;

@@ -24,9 +24,11 @@
 
 + (id)buttonWithType:(long long)arg1 style:(long long)arg2;
 + (Class)layerClass;
++ (id)titleForType:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_createHighlightFilterIfNecessary;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
+- (void)applyAccessibilityValues;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

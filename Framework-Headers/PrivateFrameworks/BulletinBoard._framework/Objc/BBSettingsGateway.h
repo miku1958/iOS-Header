@@ -44,6 +44,9 @@
 - (void)getBehaviorOverridesEnabledAndEffectiveDateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getBehaviorOverridesEnabledWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getBehaviorOverridesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getEffectiveGlobalContentPreviewsSettingWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getEffectiveSectionInfoForSectionID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)getEffectiveSectionInfoForSectionIDs:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getPrivilegedSenderAddressBookGroupRecordIDAndNameWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getPrivilegedSenderTypesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getSectionInfoForActiveSectionsWithCompletion:(CDUnknownBlockType)arg1;
@@ -74,6 +77,7 @@
 - (void)setBehaviorOverridesEffectiveWhileUnlockedChangeHandler:(CDUnknownBlockType)arg1;
 - (void)setBehaviorOverridesEnabled:(BOOL)arg1;
 - (void)setBehaviorOverridesWithSourceChangeHandler:(CDUnknownBlockType)arg1;
+- (void)setEffectiveGlobalContentPreviewsSetting:(long long)arg1;
 - (void)setOrderedSectionIDs:(id)arg1;
 - (void)setPrivilegedSenderAddressBookGroupRecordID:(int)arg1 name:(id)arg2;
 - (void)setPrivilegedSenderAddressBookGroupRecordID:(int)arg1 name:(id)arg2 source:(unsigned long long)arg3;

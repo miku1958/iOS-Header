@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MIME/MFFuture-Protocol.h>
 #import <MIME/MFPromisePrivate-Protocol.h>
@@ -29,9 +29,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_join:(id)arg1 ignoreFailures:(BOOL)arg2;
 + (id)_recover:(id)arg1 withBlock:(CDUnknownBlockType)arg2 scheduler:(id)arg3;
 + (id)_then:(id)arg1 withBlock:(CDUnknownBlockType)arg2 scheduler:(id)arg3;
 + (id)chain:(id)arg1;
++ (id)combine:(id)arg1;
 + (id)futureWithBlock:(CDUnknownBlockType)arg1;
 + (id)futureWithError:(id)arg1;
 + (id)futureWithResult:(id)arg1;
@@ -39,6 +41,8 @@
 + (id)lazyFutureWithBlock:(CDUnknownBlockType)arg1;
 + (id)nullFuture;
 + (id)onScheduler:(id)arg1 futureWithBlock:(CDUnknownBlockType)arg2;
++ (id)onScheduler:(id)arg1 lazyFutureWithBlock:(CDUnknownBlockType)arg2;
++ (id)sequence:(id)arg1;
 - (void)_addCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)_finishWithFuture:(id)arg1;
 - (void)_flushCompletionBlocks;
@@ -55,6 +59,7 @@
 - (id)map:(CDUnknownBlockType)arg1;
 - (void)onScheduler:(id)arg1 addFailureBlock:(CDUnknownBlockType)arg2;
 - (void)onScheduler:(id)arg1 addSuccessBlock:(CDUnknownBlockType)arg2;
+- (id)onScheduler:(id)arg1 map:(CDUnknownBlockType)arg2;
 - (id)onScheduler:(id)arg1 recover:(CDUnknownBlockType)arg2;
 - (id)onScheduler:(id)arg1 then:(CDUnknownBlockType)arg2;
 - (id)recover:(CDUnknownBlockType)arg1;

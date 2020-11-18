@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface PLCloudPhotoLibraryHelper : NSObject
 {
 }
 
 + (void)enableCPL:(CDUnknownBlockType)arg1;
++ (void)setShouldSendOptimizeFeedbackOnce:(BOOL)arg1;
++ (BOOL)shouldSendOptimizeFeedbackOnce;
 
 @end
 

@@ -17,10 +17,10 @@
 @property (readonly, nonatomic) NSArray *coordinates;
 @property (readonly, nonatomic) long long numCoordinates;
 
-+ (id)coordinateListByCombiningSubCoordinates:(id)arg1 chartableDateRange:(id)arg2;
++ (id)coordinateListByCombiningSubCoordinates:(id)arg1 chartableValueRange:(id)arg2;
 + (id)coordinateListWithCoordinates:(id)arg1 blockPath:(CDStruct_6ca94699)arg2;
 - (id)_coordinatesInChartableRange:(id)arg1;
-- (void)_enumerateCoordinatesWithTransform:(struct CGAffineTransform)arg1 chartableDateRange:(id)arg2 roundToViewScale:(BOOL)arg3 block:(CDUnknownBlockType)arg4;
+- (void)_enumerateCoordinatesWithTransform:(struct CGAffineTransform)arg1 chartableValueRange:(id)arg2 roundToViewScale:(BOOL)arg3 block:(CDUnknownBlockType)arg4;
 - (long long)_numCoordinatesInChartableRange:(id)arg1;
 - (void)enumerateCoordinatesWithTransform:(struct CGAffineTransform)arg1 roundToViewScale:(BOOL)arg2 block:(CDUnknownBlockType)arg3;
 - (id)firstCoordinateWithTransform:(struct CGAffineTransform)arg1 roundToViewScale:(BOOL)arg2;

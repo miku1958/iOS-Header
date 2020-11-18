@@ -21,9 +21,9 @@
 @property (strong, nonatomic) NSURL *priorOrderedURL; // @synthesize priorOrderedURL=_priorOrderedURL;
 
 + (id)stringFromOverwriteValue:(int)arg1;
+- (void).cxx_destruct;
 - (void)_callBackToDelegateWithResponses:(id)arg1 error:(id)arg2;
 - (id)additionalHeaderValues;
-- (void)dealloc;
 - (id)description;
 - (void)finishCoreDAVTaskWithError:(id)arg1;
 - (id)initWithSourceURL:(id)arg1 destinationURL:(id)arg2;

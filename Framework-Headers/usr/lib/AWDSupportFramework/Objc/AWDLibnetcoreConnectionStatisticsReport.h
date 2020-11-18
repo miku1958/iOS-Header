@@ -25,6 +25,13 @@
     unsigned long long _dNSResolvedTimeMsecs;
     unsigned long long _flowDurationMsecs;
     unsigned long long _iPAddressAttemptCount;
+    unsigned long long _multipathBytesInCell;
+    unsigned long long _multipathBytesInInitial;
+    unsigned long long _multipathBytesInWiFi;
+    unsigned long long _multipathBytesOutCell;
+    unsigned long long _multipathBytesOutInitial;
+    unsigned long long _multipathBytesOutWiFi;
+    unsigned long long _multipathServiceType;
     unsigned long long _packetsDuplicate;
     unsigned long long _packetsIn;
     unsigned long long _packetsOut;
@@ -44,6 +51,7 @@
     BOOL _cellularRRCConnected;
     BOOL _connected;
     BOOL _dNSAnswersCached;
+    BOOL _firstParty;
     BOOL _kernelReportedStalls;
     BOOL _kernelReportingConnectionStalled;
     BOOL _kernelReportingReadStalled;
@@ -65,6 +73,13 @@
         unsigned int dNSResolvedTimeMsecs:1;
         unsigned int flowDurationMsecs:1;
         unsigned int iPAddressAttemptCount:1;
+        unsigned int multipathBytesInCell:1;
+        unsigned int multipathBytesInInitial:1;
+        unsigned int multipathBytesInWiFi:1;
+        unsigned int multipathBytesOutCell:1;
+        unsigned int multipathBytesOutInitial:1;
+        unsigned int multipathBytesOutWiFi:1;
+        unsigned int multipathServiceType:1;
         unsigned int packetsDuplicate:1;
         unsigned int packetsIn:1;
         unsigned int packetsOut:1;
@@ -84,6 +99,7 @@
         unsigned int cellularRRCConnected:1;
         unsigned int connected:1;
         unsigned int dNSAnswersCached:1;
+        unsigned int firstParty:1;
         unsigned int kernelReportedStalls:1;
         unsigned int kernelReportingConnectionStalled:1;
         unsigned int kernelReportingReadStalled:1;
@@ -110,6 +126,7 @@
 @property (nonatomic) unsigned long long currentRTTMsecs; // @synthesize currentRTTMsecs=_currentRTTMsecs;
 @property (nonatomic) BOOL dNSAnswersCached; // @synthesize dNSAnswersCached=_dNSAnswersCached;
 @property (nonatomic) unsigned long long dNSResolvedTimeMsecs; // @synthesize dNSResolvedTimeMsecs=_dNSResolvedTimeMsecs;
+@property (nonatomic) BOOL firstParty; // @synthesize firstParty=_firstParty;
 @property (nonatomic) unsigned long long flowDurationMsecs; // @synthesize flowDurationMsecs=_flowDurationMsecs;
 @property (nonatomic) BOOL hasAppDataStallTimerMsecs;
 @property (nonatomic) BOOL hasAppReportingDataStallCount;
@@ -129,6 +146,7 @@
 @property (nonatomic) BOOL hasCurrentRTTMsecs;
 @property (nonatomic) BOOL hasDNSAnswersCached;
 @property (nonatomic) BOOL hasDNSResolvedTimeMsecs;
+@property (nonatomic) BOOL hasFirstParty;
 @property (nonatomic) BOOL hasFlowDurationMsecs;
 @property (nonatomic) BOOL hasIPAddressAttemptCount;
 @property (nonatomic) BOOL hasInterfaceType;
@@ -136,6 +154,13 @@
 @property (nonatomic) BOOL hasKernelReportingConnectionStalled;
 @property (nonatomic) BOOL hasKernelReportingReadStalled;
 @property (nonatomic) BOOL hasKernelReportingWriteStalled;
+@property (nonatomic) BOOL hasMultipathBytesInCell;
+@property (nonatomic) BOOL hasMultipathBytesInInitial;
+@property (nonatomic) BOOL hasMultipathBytesInWiFi;
+@property (nonatomic) BOOL hasMultipathBytesOutCell;
+@property (nonatomic) BOOL hasMultipathBytesOutInitial;
+@property (nonatomic) BOOL hasMultipathBytesOutWiFi;
+@property (nonatomic) BOOL hasMultipathServiceType;
 @property (nonatomic) BOOL hasPacketsDuplicate;
 @property (nonatomic) BOOL hasPacketsIn;
 @property (nonatomic) BOOL hasPacketsOut;
@@ -156,6 +181,13 @@
 @property (nonatomic) BOOL kernelReportingConnectionStalled; // @synthesize kernelReportingConnectionStalled=_kernelReportingConnectionStalled;
 @property (nonatomic) BOOL kernelReportingReadStalled; // @synthesize kernelReportingReadStalled=_kernelReportingReadStalled;
 @property (nonatomic) BOOL kernelReportingWriteStalled; // @synthesize kernelReportingWriteStalled=_kernelReportingWriteStalled;
+@property (nonatomic) unsigned long long multipathBytesInCell; // @synthesize multipathBytesInCell=_multipathBytesInCell;
+@property (nonatomic) unsigned long long multipathBytesInInitial; // @synthesize multipathBytesInInitial=_multipathBytesInInitial;
+@property (nonatomic) unsigned long long multipathBytesInWiFi; // @synthesize multipathBytesInWiFi=_multipathBytesInWiFi;
+@property (nonatomic) unsigned long long multipathBytesOutCell; // @synthesize multipathBytesOutCell=_multipathBytesOutCell;
+@property (nonatomic) unsigned long long multipathBytesOutInitial; // @synthesize multipathBytesOutInitial=_multipathBytesOutInitial;
+@property (nonatomic) unsigned long long multipathBytesOutWiFi; // @synthesize multipathBytesOutWiFi=_multipathBytesOutWiFi;
+@property (nonatomic) unsigned long long multipathServiceType; // @synthesize multipathServiceType=_multipathServiceType;
 @property (nonatomic) unsigned long long packetsDuplicate; // @synthesize packetsDuplicate=_packetsDuplicate;
 @property (nonatomic) unsigned long long packetsIn; // @synthesize packetsIn=_packetsIn;
 @property (nonatomic) unsigned long long packetsOut; // @synthesize packetsOut=_packetsOut;

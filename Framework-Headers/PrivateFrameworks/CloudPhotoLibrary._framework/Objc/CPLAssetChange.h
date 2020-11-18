@@ -101,13 +101,15 @@
 + (BOOL)serverSupportsVision;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)addExpandedChangesToChangeBatch:(id)arg1 andApplyToClientCache:(id)arg2 error:(id *)arg3;
+- (BOOL)_canLowerQuota;
 - (id)allRelatedIdentifiers;
 - (void)awakeFromStorage;
 - (CDUnknownBlockType)checkDefaultValueBlockForPropertyWithSelector:(SEL)arg1;
 - (id)compactedChangeWithRelatedChanges:(id)arg1 isOnlyChange:(BOOL)arg2 fullRecord:(id)arg3 usingClientCache:(id)arg4;
 - (long long)dequeueOrder;
+- (unsigned long long)fullChangeTypeForFullRecord;
 - (id)identifiersForMapping;
+- (id)identifiersForQuarantine;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)prepareForStorage;
@@ -122,6 +124,7 @@
 - (id)translateToCloudChangeUsingIDMapping:(id)arg1 error:(id *)arg2;
 - (BOOL)validateChangeWithError:(id *)arg1;
 - (BOOL)validateFullRecord;
+- (BOOL)validateRecordForTracker:(id)arg1;
 
 @end
 

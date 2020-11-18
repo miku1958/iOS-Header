@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CNChangesNotifierProxy;
 
@@ -18,6 +18,7 @@
 + (void)flushSharedNotifier;
 + (id)sharedNotifier;
 + (id)sharedNotifierWithNotificationWrapper:(id)arg1 schedulerProvider:(id)arg2;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)didChangeMeContactSuccessfully:(BOOL)arg1 fromContactStore:(id)arg2 requestIdentifier:(id)arg3;
 - (void)didSaveChangesSuccessfully:(BOOL)arg1 fromContactStore:(id)arg2 requestIdentifier:(id)arg3;

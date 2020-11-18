@@ -23,7 +23,6 @@
 
 - (void).cxx_destruct;
 - (id)_enableAudioIfNecessaryForAudioControl:(id)arg1 minVolume:(float)arg2;
-- (CDUnknownBlockType)_readValidator;
 - (id)_readValuesForCharacteristics:(id)arg1;
 - (id)_updateAudioStreamSetting:(unsigned long long)arg1;
 - (id)_writeValuesForCharacteristics:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -14,7 +14,7 @@
 }
 
 + (id)sharedManager;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (BOOL)isEnabledForSubTestWithName:(id)arg1;
 - (void)reset;

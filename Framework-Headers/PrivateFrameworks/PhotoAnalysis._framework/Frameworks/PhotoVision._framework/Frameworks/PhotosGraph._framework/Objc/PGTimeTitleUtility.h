@@ -12,23 +12,24 @@
 
 + (id)_commonLocationLabelForLocationNodes:(id)arg1;
 + (unsigned long long)_dateIntervalFormatterTypeWithEventNodes:(id)arg1 allowedFormats:(unsigned long long)arg2;
-+ (id)_dateNodesFromEventNodes:(id)arg1;
++ (id)_dateNodesFromEventNodes:(id)arg1 eventsStartDate:(id *)arg2 eventsEndDate:(id *)arg3;
 + (void)_enumerateNeighborNodesOfEventNodes:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 + (BOOL)_eventNodes:(id)arg1 coverCompleteTimeWithEdgeLabel:(id)arg2;
 + (BOOL)_eventNodesCoverCompleteMonth:(id)arg1;
 + (BOOL)_eventNodesCoverCompleteYear:(id)arg1;
++ (BOOL)_hasReachedNumberVisitsPerMonth:(unsigned long long)arg1 inEvents:(id)arg2 withLocationNodes:(id)arg3 startDateNode:(id)arg4 endDateNode:(id)arg5;
++ (BOOL)_hasReachedNumberVisitsPerYear:(unsigned long long)arg1 inEvents:(id)arg2 withLocationNodes:(id)arg3 startDateNode:(id)arg4 endDateNode:(id)arg5;
++ (id)_locationNodesForTimeTitleFromLocationNodes:(id)arg1;
++ (id)_numberOfYearsAgoWithEventNodes:(id)arg1 relativeToDateComponents:(id)arg2;
 + (id)_significantDateNodesFromEventNodes:(id)arg1 dateFormatterType:(unsigned long long)arg2;
-+ (id)_splitTimeTitleWithLocalStartDate:(id)arg1 endDate:(id)arg2 startDateNode:(id)arg3 endDateNode:(id)arg4 allowedFormats:(unsigned long long)arg5;
-+ (BOOL)_visitedLocationInEvents:(id)arg1 multipleTimesPerMonthWithLocationNodes:(id)arg2 startDateNode:(id)arg3 endDateNode:(id)arg4;
-+ (BOOL)_visitedLocationInEvents:(id)arg1 multipleTimesPerYearWithLocationNodes:(id)arg2 startDateNode:(id)arg3 endDateNode:(id)arg4;
++ (id)_splitTimeTitleWithLocalStartDate:(id)arg1 endDate:(id)arg2 startDateNode:(id)arg3 endDateNode:(id)arg4 allowedFormats:(unsigned long long)arg5 locale:(id)arg6;
 + (BOOL)_yearIsNeededForDisplayingDate:(id)arg1;
++ (id)numberOfYearsAgoWithEventNodes:(id)arg1 relativeToDateComponents:(id)arg2 useOrdinal:(BOOL)arg3;
 + (id)peopleTimeTitleWithEventNodes:(id)arg1;
 + (id)splitTimeTitleWithDateInterval:(id)arg1 allowedFormats:(unsigned long long)arg2;
-+ (id)splitTimeTitleWithEventNodes:(id)arg1 allowedFormats:(unsigned long long)arg2;
++ (id)splitTimeTitleWithOptions:(id)arg1;
 + (id)timeTitleWithDateInterval:(id)arg1 allowedFormats:(unsigned long long)arg2;
-+ (id)timeTitleWithEventNode:(id)arg1 locationNodes:(id)arg2 allowedFormats:(unsigned long long)arg3 filterDates:(BOOL)arg4;
-+ (id)timeTitleWithEventNodes:(id)arg1 allowedFormats:(unsigned long long)arg2 filterDates:(BOOL)arg3;
-+ (id)timeTitleWithEventNodes:(id)arg1 locationNodes:(id)arg2 allowedFormats:(unsigned long long)arg3 filterDates:(BOOL)arg4;
++ (id)timeTitleWithOptions:(id)arg1;
 + (BOOL)yearIsNeededForDisplayingDate:(id)arg1;
 
 @end

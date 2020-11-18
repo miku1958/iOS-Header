@@ -15,7 +15,9 @@
 
 - (id)_initWithAsset:(id)arg1 trackID:(int)arg2 trackIndex:(long long)arg3;
 - (void)dealloc;
+- (int)decodabilityValidationResult;
 - (void)finalize;
+- (BOOL)isDecodable;
 - (BOOL)isPlayable;
 - (int)playabilityValidationResult;
 - (id)segmentForTrackTime:(CDStruct_1b6d18a9)arg1;

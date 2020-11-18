@@ -27,6 +27,7 @@
 @property (readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) BOOL success; // @synthesize success=_success;
 
++ (BOOL)canPerformBlacklistingOnAssetCollection:(id)arg1;
 - (void).cxx_destruct;
 - (void)_completeStateWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (void)_completeUnlockTaskWithSuccess:(BOOL)arg1 error:(id)arg2;

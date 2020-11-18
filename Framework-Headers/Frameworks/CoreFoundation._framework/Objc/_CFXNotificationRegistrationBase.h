@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) _CFXNotificationRegistrar *registrar;
 
 + (const CDStruct_90be15af *)keyCallbacks;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (id)initWithParent:(id)arg1;

@@ -37,10 +37,13 @@ __attribute__((visibility("hidden")))
     PUPhotosGridViewControllerSpec *_gridSpec;
     PUPhotosPickerViewControllerSpec *_photosPickerSpec;
     long long _promptStyle;
+    double _collectionViewContentInset;
+    double _standardSideMargins;
     struct CGSize _minimumVideoTileSize;
     struct CGSize _thumbnailSize;
 }
 
+@property (readonly, nonatomic) double collectionViewContentInset; // @synthesize collectionViewContentInset=_collectionViewContentInset;
 @property (readonly, nonatomic) PUPhotosGridViewControllerSpec *gridSpec; // @synthesize gridSpec=_gridSpec;
 @property (readonly, nonatomic) long long largeNumberOfSubjectsForLikes; // @synthesize largeNumberOfSubjectsForLikes=_largeNumberOfSubjectsForLikes;
 @property (readonly, nonatomic) struct CGSize minimumVideoTileSize; // @synthesize minimumVideoTileSize=_minimumVideoTileSize;
@@ -52,13 +55,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL shouldShowInvitationsInPopover; // @synthesize shouldShowInvitationsInPopover=_shouldShowInvitationsInPopover;
 @property (readonly, nonatomic) BOOL shouldUseAspectThumbnails; // @synthesize shouldUseAspectThumbnails=_shouldUseAspectThumbnails;
 @property (readonly, nonatomic) BOOL shouldUseFullscreenLayout; // @synthesize shouldUseFullscreenLayout=_shouldUseFullscreenLayout;
+@property (readonly, nonatomic) double standardSideMargins; // @synthesize standardSideMargins=_standardSideMargins;
 @property (readonly, nonatomic) struct CGSize thumbnailSize; // @synthesize thumbnailSize=_thumbnailSize;
 
 - (void).cxx_destruct;
 - (BOOL)canUseSimplePreheatManager;
+- (long long)configurationForSectionHeaderType:(long long)arg1 collectionViewType:(long long)arg2;
 - (void)configureCommentSeparatorMetrics:(inout struct PUFeedSeparatorMetrics *)arg1;
-- (void)configureFeedCollectionViewLayout:(id)arg1 forCollectionViewType:(long long)arg2 collectionViewSize:(struct CGSize)arg3 contentInset:(struct UIEdgeInsets)arg4;
-- (void)configureImageCell:(id)arg1 forSectionHeaderBackgroundInCollectionViewType:(long long)arg2;
+- (void)configureFeedCollectionViewLayout:(id)arg1 forCollectionViewType:(long long)arg2 collectionViewSize:(struct CGSize)arg3;
+- (void)configureGradientCell:(id)arg1 forSectionHeaderBackgroundInCollectionViewType:(long long)arg2;
 - (void)configureSeparatorMetrics:(inout struct PUFeedSeparatorMetrics *)arg1 betweenSectionWithInfo:(id)arg2 andSectionWithInfo:(id)arg3 joined:(BOOL)arg4 collectionViewType:(long long)arg5;
 - (void)configureTextCell:(id)arg1 forCaption:(id)arg2;
 - (void)configureTextCell:(id)arg1 forCommentWithDescriptionPhrase:(id)arg2;
@@ -67,18 +72,15 @@ __attribute__((visibility("hidden")))
 - (void)configureTextCell:(id)arg1 forSectionFooterWithActionText:(id)arg2 collectionViewType:(long long)arg3;
 - (void)configureTextCell:(id)arg1 forSectionFooterWithDateText:(id)arg2 collectionViewType:(long long)arg3;
 - (void)configureTextCell:(id)arg1 forSectionGroupHeaderWithText:(id)arg2 collectionViewType:(long long)arg3;
-- (void)configureTextCell:(id)arg1 forSectionHeaderWithDescriptionPhrase:(id)arg2 streamAffordanceLabel:(id)arg3 actionText:(id)arg4 buttonType:(long long)arg5 collectionViewType:(long long)arg6 animated:(BOOL)arg7;
+- (void)configureTextCell:(id)arg1 forSectionHeaderWithDescriptionPhrase:(id)arg2 streamDisclosureLabel:(id)arg3 actionText:(id)arg4 buttonType:(long long)arg5 collectionViewType:(long long)arg6 animated:(BOOL)arg7;
 - (struct UIEdgeInsets)contentInsetsForSectionType:(long long)arg1 collectionViewType:(long long)arg2;
+- (id)defaultSubTitleTextAttributesForCollectionViewType:(long long)arg1;
 - (id)defaultTextAttributesForCollectionViewType:(long long)arg1;
 - (id)emphasizedTextAttributesForCollectionViewType:(long long)arg1;
 - (void)getFastImageFormat:(out int *)arg1 qualityImageFormat:(out int *)arg2 forSourceSize:(struct CGSize)arg3 destinationSize:(struct CGSize)arg4 allowCrop:(BOOL)arg5;
 - (void)getReferenceMaximumLength:(double *)arg1 minimumNumberOfTilesToOmit:(long long *)arg2 forSectionType:(long long)arg3 collectionViewType:(long long)arg4;
 - (id)init;
 - (BOOL)shouldShowCommentBadgesInCollectionViewType:(long long)arg1;
-- (BOOL)shouldShowDatesInSectionFootersInCollectionViewType:(long long)arg1;
-- (BOOL)shouldShowLikeButtonForCollectionViewType:(long long)arg1;
-- (BOOL)shouldShowSeeAllInSectionFootersInCollectionViewType:(long long)arg1;
-- (BOOL)shouldShowStreamAffordanceInSectionHeaderWithCollectionViewType:(long long)arg1;
 - (double)spacingBetweenSectionWithInfo:(id)arg1 andHeaderWithGroupID:(id)arg2;
 - (struct CGSize)thumbnailSizeForImageSize:(struct CGSize)arg1;
 - (void)updateFormats;

@@ -10,9 +10,11 @@
 {
 }
 
++ (id)customLoader;
 + (unsigned long long)forceImageLoadingScaleFactor;
 + (BOOL)forceRTL;
 + (void)reset;
++ (void)setCustomLoader:(id)arg1;
 + (void)setForceImageLoadingScaleFactor:(unsigned long long)arg1;
 + (void)setForceRTL:(BOOL)arg1;
 

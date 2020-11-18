@@ -8,10 +8,11 @@
 
 #import <SafariServices/NSSecureCoding-Protocol.h>
 
-@class NSURL, SSBLookupResult;
+@class NSURL, SSBLookupResult, _SFSecurityManager;
 
 @interface _SFSecurityInfo : NSObject <NSSecureCoding>
 {
+    _SFSecurityManager *_securityManager;
     BOOL _hasWarnedUser;
     NSURL *_assessedURL;
     SSBLookupResult *_result;
@@ -23,6 +24,10 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_providerFromSSBProvider:(id)arg1;
+- (long long)_securityAssessmentFromServiceLookupResult:(id)arg1;
+- (id)_securityManager;
+- (id)_securityTypeDescriptionFromSecurityAssessment:(long long)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

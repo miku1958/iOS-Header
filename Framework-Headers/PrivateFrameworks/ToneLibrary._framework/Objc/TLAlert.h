@@ -7,10 +7,12 @@
 #import <objc/NSObject.h>
 
 @class NSString, TLAlertConfiguration;
+@protocol TLAlertPlaybackObserver;
 
 @interface TLAlert : NSObject
 {
     long long _instanceIndex;
+    id<TLAlertPlaybackObserver> _playbackObserver;
     TLAlertConfiguration *_configuration;
     long long _type;
     NSString *_toneIdentifier;
@@ -18,16 +20,16 @@
 }
 
 @property (readonly, nonatomic) TLAlertConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (weak, nonatomic) id<TLAlertPlaybackObserver> playbackObserver; // @synthesize playbackObserver=_playbackObserver;
 @property (readonly, nonatomic) NSString *toneIdentifier; // @synthesize toneIdentifier=_toneIdentifier;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, nonatomic) NSString *vibrationIdentifier; // @synthesize vibrationIdentifier=_vibrationIdentifier;
 
-+ (void)_playToneAndVibrationForType:(long long)arg1 toneIdentifier:(id)arg2 vibrationIdentifier:(id)arg3 shouldOverrideMasterSwitches:(BOOL)arg4;
-+ (void)_queueAudioEventBlockIfNecessary:(CDUnknownBlockType)arg1;
 + (void)_setWatchPrefersSalientToneAndVibration:(BOOL)arg1;
 + (BOOL)_stopAllAlerts;
 + (BOOL)_watchPrefersSalientToneAndVibration;
 + (id)alertWithConfiguration:(id)arg1;
++ (void)playAlertForType:(long long)arg1;
 + (void)playToneAndVibrationForType:(long long)arg1;
 - (void).cxx_destruct;
 - (id)_descriptionForDebugging:(BOOL)arg1;
@@ -38,12 +40,11 @@
 - (id)initWithType:(long long)arg1;
 - (id)initWithType:(long long)arg1 accountIdentifier:(id)arg2;
 - (id)initWithType:(long long)arg1 toneIdentifier:(id)arg2 vibrationIdentifier:(id)arg3;
+- (void)play;
 - (void)playWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)playWithCompletionHandler:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
-- (void)startPlayingRepeatedly;
 - (void)stop;
-- (void)stopPlayingRepeatedlyWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2 targetQueue:(id)arg3;
-- (void)stopWithOptions:(CDStruct_2418a849)arg1;
+- (void)stopWithOptions:(id)arg1;
 
 @end
 

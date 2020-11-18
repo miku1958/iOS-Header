@@ -34,6 +34,7 @@
 @property (readonly, nonatomic) int *userPaths;
 @property (readonly, nonatomic) unsigned long long userPathsCount;
 
+- (void).cxx_destruct;
 - (int)StringAsProblemType:(id)arg1;
 - (int)StringAsUserPaths:(id)arg1;
 - (void)addUserPath:(int)arg1;

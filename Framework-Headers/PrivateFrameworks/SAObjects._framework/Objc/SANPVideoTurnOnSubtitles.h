@@ -13,6 +13,7 @@
 }
 
 @property (copy, nonatomic) NSString *desiredOptionId;
+@property (copy, nonatomic) NSString *languageOptionChangeUserSetting;
 
 + (id)turnOnSubtitles;
 + (id)turnOnSubtitlesWithDictionary:(id)arg1 context:(id)arg2;

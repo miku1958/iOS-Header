@@ -6,24 +6,23 @@
 
 #import <UIKit/UIKBCandidateCollectionView.h>
 
-@class NSArray, UIKeyboardCandidateGridCollectionViewController, UITableViewIndex, UIView;
+@class NSArray, UIKeyboardCandidateGridCollectionViewController, UITableViewIndex;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateGridCollectionView : UIKBCandidateCollectionView
 {
-    double _indexMaximumHeight;
+    UITableViewIndex *_index;
     UIKeyboardCandidateGridCollectionViewController *_parentViewController;
     double _previousGroupBarStartingY;
-    UITableViewIndex *_index;
-    UIView *_headerView;
 }
 
-@property (strong, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
 @property (readonly, nonatomic) UITableViewIndex *index; // @synthesize index=_index;
 @property (strong, nonatomic) NSArray *indexTitles;
-@property (nonatomic) UIKeyboardCandidateGridCollectionViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
+@property (weak, nonatomic) UIKeyboardCandidateGridCollectionViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
 @property (nonatomic) double previousGroupBarStartingY; // @synthesize previousGroupBarStartingY=_previousGroupBarStartingY;
 
+- (void).cxx_destruct;
+- (BOOL)_canDrawContent;
 - (void)dealloc;
 - (void)delayUpdateIndex;
 - (void)drawRect:(struct CGRect)arg1;
@@ -37,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)scrollToTopWithAnimation:(BOOL)arg1;
 - (void)selectItemAtIndexPath:(id)arg1 animated:(BOOL)arg2 scrollPosition:(unsigned long long)arg3;
 - (void)setContentOffset:(struct CGPoint)arg1;
+- (BOOL)shouldDrawGroupBackground;
 - (BOOL)shouldShowIndex;
 - (void)showIndex:(BOOL)arg1;
 - (void)updateIndex;

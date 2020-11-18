@@ -71,12 +71,13 @@
 - (void)dealloc;
 - (BOOL)dismissModalFullScreenIfNeeded;
 - (void)gridViewControllerDidEndApplyingDynamicBackgrounds:(id)arg1;
+- (BOOL)gridViewControllerShouldUsePunchOutBackgrounds:(id)arg1;
 - (void)gridViewControllerWillBeginApplyingDynamicBackgrounds:(id)arg1;
 - (void)homeManager:(id)arg1 didUpdateAccessAllowedWhenLocked:(BOOL)arg2;
 - (void)homeManagerDidFinishInitialDatabaseLoad:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (BOOL)isDeviceUnlockedForGridViewController:(id)arg1;
-- (BOOL)itemManager:(id)arg1 performBatchUpdateBlock:(CDUnknownBlockType)arg2;
+- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (void)loadView;
 - (id)prepareForActionRequiringDeviceUnlockForGridViewController:(id)arg1;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;

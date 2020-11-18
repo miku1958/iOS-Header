@@ -31,6 +31,7 @@
 + (id)plateOverlayLayer;
 - (void).cxx_destruct;
 - (id)_initWithData:(id)arg1;
+- (BOOL)_renderTextInContext:(struct CGContext *)arg1 frame:(struct CGRect)arg2;
 - (void)_takeValuesFromDataRepresentation:(id)arg1;
 - (id)dataRepresentation;
 - (id)description;
@@ -38,6 +39,7 @@
 - (void)setFontIndexToUnsupportedValue;
 - (id)snapshotWithOptions:(id)arg1;
 - (id)snapshotWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
+- (id)stringAttributesForDiameter:(double)arg1;
 
 @end
 

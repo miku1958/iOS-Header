@@ -30,6 +30,7 @@
     BOOL fIsRunningInPrimaryProcess;
     BOOL fEnableLatencyAlert;
     BOOL fEnableAudioAlert;
+    int fLatencyAlertThreshold;
 }
 
 + (BOOL)hasSlowBootArgs;
@@ -44,11 +45,13 @@
 - (void)dealloc;
 - (id)init;
 - (void)invokeDelegateWithState:(long long)arg1;
+- (void)loadPreferences;
 - (void)onBacklightServiceUpdated:(unsigned int)arg1;
-- (void)onNotification:(id)arg1;
+- (void)onNotificationControl:(id)arg1;
 - (void)onPowerStateUpdated:(const struct Sample *)arg1;
 - (void)onWakeUpdated:(const struct Sample *)arg1;
 - (void)playAlert;
+- (void)reenableDetectedStateRecognition;
 - (BOOL)simulateGestureWithDelay:(double)arg1 Duration:(double)arg2;
 - (void)startWakeGestureUpdates;
 - (void)stopWakeGestureUpdates;

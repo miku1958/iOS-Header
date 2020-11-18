@@ -23,6 +23,7 @@
     GEOAddressObject *_addressObject;
 }
 
+- (void).cxx_destruct;
 - (id)_businessURL;
 - (BOOL)_hasMUID;
 - (BOOL)_hasResolvablePartialInformation;
@@ -30,11 +31,11 @@
 - (unsigned long long)_muid;
 - (float)_normalizedUserRatingScore;
 - (id)_place;
+- (BOOL)_responseStatusIsIncomplete;
 - (unsigned int)_sampleSizeForUserRatingScore;
 - (id)addressDictionary;
 - (id)addressObject;
 - (CDStruct_c3b9c2ee)coordinate;
-- (void)dealloc;
 - (id)description;
 - (id)geoAddress;
 - (id)initWithWithLocation:(id)arg1 addressDictionary:(id)arg2 name:(id)arg3 businessURL:(id)arg4 phoneNumber:(id)arg5 sessionID:(id)arg6 muid:(unsigned long long)arg7 attributionID:(id)arg8 sampleSizeForUserRatingScore:(unsigned int)arg9 normalizedUserRatingScore:(float)arg10;

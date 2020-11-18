@@ -11,9 +11,7 @@
 }
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
-- (void)generatePreviewsInOperation:(id)arg1;
-- (CDUnknownBlockType)genericBrickThumbnailCreator;
-- (CDUnknownBlockType)genericListThumbnailCreator;
+- (void)addLocation;
 - (BOOL)hasPreviews;
 - (BOOL)hasThumbnailImage;
 - (BOOL)showThumbnailInNoteList;

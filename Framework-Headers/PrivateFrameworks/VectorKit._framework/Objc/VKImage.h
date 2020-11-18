@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSString, VKResourceManager;
 
@@ -13,18 +13,21 @@
     struct CGImage *_imageRef;
     NSData *_data;
     NSString *_name;
-    struct CGSize _size;
-    double _scale;
-    BOOL _usedAsTextureAndImage;
     struct Texture2D *_gglTexture;
     struct CGRect _collisionRect;
     struct CGPoint _anchorPoint;
+    struct CGSize _size;
+    double _scale;
     BOOL _hasCollisionRect;
     BOOL _hasAnchorPoint;
+    BOOL _usedAsTextureAndImage;
+    BOOL _isTextureReady;
+    struct atomic<bool> _isImageReady;
     VKResourceManager *_resourceManager;
     unsigned char _imageHash[16];
 }
 
+- (void)_prepareImage;
 - (struct CGPoint)anchorPoint;
 - (struct CGRect)collisionRect;
 - (int)compareTo:(id)arg1;
@@ -36,6 +39,7 @@
 - (id)initWithData:(id)arg1 scale:(double)arg2;
 - (id)initWithData:(id)arg1 scale:(double)arg2 usedAsTextureAndImage:(BOOL)arg3;
 - (id)initWithName:(id)arg1 scale:(double)arg2 resourceManager:(id)arg3;
+- (void)prepareTexture;
 - (double)scale;
 - (void)setAnchorPoint:(struct CGPoint)arg1;
 - (void)setCollisionRect:(struct CGRect)arg1;

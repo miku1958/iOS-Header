@@ -4,29 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MIME/NSCacheDelegate-Protocol.h>
 
-@class MFWeakReferenceHolder, NSCache, NSRecursiveLock, NSString;
+@class NSCache, NSRecursiveLock, NSString;
 @protocol MFLazyCacheDelegate;
 
 @interface MFLazyCache : NSObject <NSCacheDelegate>
 {
     NSRecursiveLock *_lock;
     NSCache *_storage;
-    MFWeakReferenceHolder *_delegate;
     struct {
         unsigned int delegateRespondsToLazyCacheWillEvictObject:1;
     } _flags;
+    id<MFLazyCacheDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (weak) id<MFLazyCacheDelegate> delegate;
+@property (weak, nonatomic) id<MFLazyCacheDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_exchangeOriginalObject:(id)arg1 forKey:(id)arg2 withObject:(id)arg3;
 - (void)cache:(id)arg1 willEvictObject:(id)arg2;
 - (void)dealloc;

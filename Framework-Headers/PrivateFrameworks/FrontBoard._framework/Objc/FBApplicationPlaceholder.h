@@ -6,62 +6,69 @@
 
 #import <FrontBoard/FBBundleInfo.h>
 
-@class LSApplicationProxy, NSMutableSet, NSObject, NSProgress, NSString;
-@protocol OS_dispatch_queue;
+@class FBApplicationLibrary, FBApplicationPlaceholderProgress, LSApplicationProxy, NSMutableSet, NSObject;
+@protocol FBApplicationPlaceholderProgress, OS_dispatch_queue;
 
 @interface FBApplicationPlaceholder : FBBundleInfo
 {
     LSApplicationProxy *_proxy;
     NSObject<OS_dispatch_queue> *_queue;
-    BOOL _queue_isNewsstand;
-    BOOL _queue_isRestricted;
-    BOOL _queue_installType;
-    double _queue_cachedPercentComplete;
-    NSProgress *_queue_progress;
+    NSObject<OS_dispatch_queue> *_callOutQueue;
+    FBApplicationPlaceholderProgress *_queue_progress;
     NSMutableSet *_queue_observers;
+    FBApplicationLibrary *_appLibrary;
 }
 
+@property (weak, nonatomic) FBApplicationLibrary *appLibrary; // @synthesize appLibrary=_appLibrary;
 @property (readonly, nonatomic, getter=isCancellable) BOOL cancellable;
-@property (readonly, copy, nonatomic) NSString *displayName;
-@property (readonly, nonatomic) unsigned long long installPhase;
-@property (readonly, nonatomic) unsigned long long installState;
-@property (readonly, nonatomic) unsigned long long installType;
-@property (readonly, nonatomic, getter=isNewsstand) BOOL newsstand;
 @property (readonly, nonatomic, getter=isPausable) BOOL pausable;
 @property (readonly, nonatomic) double percentComplete;
 @property (readonly, nonatomic, getter=isPrioritizable) BOOL prioritizable;
+@property (readonly, strong, nonatomic) id<FBApplicationPlaceholderProgress> progress;
 @property (strong, nonatomic, getter=_proxy, setter=_setProxy:) LSApplicationProxy *proxy;
 @property (readonly, nonatomic, getter=isRestricted) BOOL restricted;
+@property (readonly, nonatomic, getter=isResumable) BOOL resumable;
 
-- (void)_dispatchToObservers:(id)arg1 block:(CDUnknownBlockType)arg2;
-- (id)_iconDictionary;
++ (id)_callOutQueue;
++ (id)_sharedQueue;
+- (void).cxx_destruct;
+- (BOOL)_canPerformAction:(unsigned long long)arg1;
+- (void)_cancelWithResult:(CDUnknownBlockType)arg1;
+- (void)_dispatchToObserversWithBlock:(CDUnknownBlockType)arg1;
 - (id)_initWithApplicationProxy:(id)arg1;
 - (id)_initWithBundleIdentifier:(id)arg1 url:(id)arg2;
 - (id)_initWithBundleProxy:(id)arg1 url:(id)arg2;
-- (double)_normalizedProgress:(double)arg1;
 - (void)_noteChangedSignificantly;
-- (id)_queue_observers;
-- (void)_queue_progressChanged;
-- (BOOL)_queue_setProgress:(id)arg1;
-- (void)_queue_startObservingProgress:(id)arg1;
-- (void)_queue_stopObservingProgress:(id)arg1;
-- (void)_sendToObserversCancellabilityDidChange:(id)arg1;
-- (void)_sendToObserversInstallPhaseDidChange:(id)arg1;
-- (void)_sendToObserversInstallStateDidChange:(id)arg1;
-- (void)_sendToObserversPausabilityDidChange:(id)arg1;
-- (void)_sendToObserversPercentCompleteDidChange:(id)arg1;
-- (void)_sendToObserversPlaceholderDidChangeSignificantly:(id)arg1;
-- (void)_sendToObserversPrioritizableDidChange:(id)arg1;
+- (void)_pauseWithResult:(CDUnknownBlockType)arg1;
+- (BOOL)_performAction:(unsigned long long)arg1 withResult:(CDUnknownBlockType)arg2;
+- (void)_prioritizeWithResult:(CDUnknownBlockType)arg1;
+- (BOOL)_queue_canPerformAction:(unsigned long long)arg1;
+- (BOOL)_queue_isCloudDemoted;
+- (void)_queue_noteChangedSignificantly:(id)arg1;
+- (void)_queue_setProxy:(id)arg1 force:(BOOL)arg2;
+- (unsigned long long)_queue_supportedActions;
+- (void)_reloadFromProxy:(id)arg1;
+- (void)_reloadProgress;
+- (void)_resumeWithResult:(CDUnknownBlockType)arg1;
+- (void)_sendToObserversPlaceholderDidChangeSignificantly;
+- (void)_sendToObserversPlaceholderProgressDidUpdate;
 - (void)_setProxy:(id)arg1 force:(BOOL)arg2;
 - (void)addObserver:(id)arg1;
-- (void)cancel;
+- (BOOL)cancel;
+- (BOOL)cancelWithResult:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (id)description;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)pause;
-- (void)prioritize;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (unsigned long long)installPhase;
+- (unsigned long long)installState;
+- (unsigned long long)installType;
+- (BOOL)pause;
+- (BOOL)pauseWithResult:(CDUnknownBlockType)arg1;
+- (BOOL)prioritize;
+- (BOOL)prioritizeWithResult:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1;
-- (void)resume;
+- (BOOL)resume;
+- (BOOL)resumeWithResult:(CDUnknownBlockType)arg1;
+- (id)succinctDescriptionBuilder;
 
 @end
 

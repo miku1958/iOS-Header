@@ -26,7 +26,6 @@
 - (void)accessibilityIncrement;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
-- (void)dealloc;
 - (BOOL)isAccessibilityElement;
 
 @end

@@ -11,6 +11,7 @@
 
 @protocol UITableConstants <NSObject>
 + (id)sharedConstants;
+- (double)defaultAlphaForDraggingCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (double)defaultAlphaForReorderingCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (UIColor *)defaultBackgroundColorForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (UIColor *)defaultBackgroundColorForTableViewStyle:(long long)arg1;
@@ -42,6 +43,8 @@
 - (UIColor *)defaultHeaderTextColorForView:(UITableViewHeaderFooterView *)arg1 inTableView:(id<UITable>)arg2;
 - (UIImage *)defaultInsertImageForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (struct UIEdgeInsets)defaultLayoutMarginsForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
+- (struct UIEdgeInsets)defaultLayoutMarginsForTableView:(id<UITable>)arg1;
+- (double)defaultLeadingCellMarginWidthForTableView:(id<UITable>)arg1;
 - (double)defaultMarginWidthForTableView:(id<UITable>)arg1;
 - (double)defaultMaskGradientHeightForTableView:(id<UITable>)arg1;
 - (UIImage *)defaultMultiSelectHighlightedImageForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
@@ -56,7 +59,6 @@
 - (BOOL)defaultRowHeightDependsOnCellStyle;
 - (double)defaultRowHeightForTableView:(id<UITable>)arg1;
 - (double)defaultRowHeightForTableView:(id<UITable>)arg1 cellStyle:(long long)arg2;
-- (double)defaultSectionContentMarginWidthForTableView:(id<UITable>)arg1;
 - (double)defaultSectionFooterHeightForTableView:(id<UITable>)arg1;
 - (double)defaultSectionHeaderHeightForTableView:(id<UITable>)arg1;
 - (UIColor *)defaultSelectionTintColorForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
@@ -66,6 +68,7 @@
 - (UIColor *)defaultTextColorForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (UIFont *)defaultTextLabelFontForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (double)defaultTextLabelFontSizeForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
+- (double)defaultTrailingCellMarginWidthForTableView:(id<UITable>)arg1;
 - (BOOL)imageViewOffsetByLayoutMarginsForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (BOOL)reorderingCellWantsShadows:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (BOOL)supportsUserInterfaceStyles;

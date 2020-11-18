@@ -40,8 +40,6 @@
 + (id)xpcManagerInterface;
 - (void).cxx_destruct;
 - (void)activityAdvertiserProxyForClient:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)addAirDropClientToManager:(id)arg1 withFailureHandler:(CDUnknownBlockType)arg2;
-- (void)airdropTransferDataProviderForClient:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)appleAccountSignedIn;
 - (void)appleAccountSignedOut;
 - (void)continuityScannerProxyForClient:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -56,8 +54,6 @@
 - (void)streamsForMessage:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)unlockManagerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)unregisterObserver:(id)arg1;
-- (void)userDidPerformActionWithType:(unsigned long long)arg1 andRecordID:(id)arg2;
-- (void)userDidSelectAppWithIndex:(id)arg1 forRecordID:(id)arg2;
 
 @end
 

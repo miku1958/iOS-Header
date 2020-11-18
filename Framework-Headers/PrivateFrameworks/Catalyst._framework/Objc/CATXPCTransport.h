@@ -32,7 +32,7 @@
 - (id)initWithXPCConnection:(id)arg1;
 - (void)invalidateConnection;
 - (id)operationToSendMessage:(id)arg1;
-- (void)processMessage:(id)arg1;
+- (void)processMessage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resumeConnection;
 - (void)setUpConnection;
 - (void)suspendConnection;

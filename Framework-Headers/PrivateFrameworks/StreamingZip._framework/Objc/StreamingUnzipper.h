@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <StreamingZip/StreamingUnzipProtocol-Protocol.h>
 
@@ -16,7 +16,7 @@
     long long _sandboxToken;
     void *_decompressionOutputBuffer;
     StreamingUnzipState *_currentState;
-    int _activeCallbacks;
+    int _activeDelegateMethods;
     double _lastExtractionProgressSent;
     NSXPCConnection *xpcConnection;
     id<StreamingUnzipDelegateProtocol> inProcessExtractorDelegate;
@@ -37,10 +37,11 @@
 - (void)dealloc;
 - (void)finishStreamWithReply:(CDUnknownBlockType)arg1;
 - (id)init;
-- (void)setActiveCallbacks:(int)arg1;
+- (void)setActiveDelegateMethods:(int)arg1;
 - (void)setupUnzipperWithOutputPath:(id)arg1 sandboxExtensionToken:(char *)arg2 options:(id)arg3 withReply:(CDUnknownBlockType)arg4;
 - (void)supplyBytes:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)suspendStreamWithReply:(CDUnknownBlockType)arg1;
+- (void)terminateStreamWithReply:(CDUnknownBlockType)arg1;
 
 @end
 

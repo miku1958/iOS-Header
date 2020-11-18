@@ -4,31 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TelephonyUtilities/TUCallServicesClient-Protocol.h>
 #import <TelephonyUtilities/TUCallServicesProtocol-Protocol.h>
 
 @class NSArray, NSMapTable, NSString, NSXPCConnection, TUCallCenter, TUCallNotificationManager, TUCallServicesClientCapabilities;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore, TUCallServicesDaemonDelegate;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore, TUCallContainerPrivate, TUCallServicesDaemonDelegate;
 
 @interface TUCallServicesInterface : NSObject <TUCallServicesClient, TUCallServicesProtocol>
 {
+    BOOL _hasRequestedInitialState;
     BOOL _hasDaemonDelegateLaunched;
     int _connectionRequestNotificationToken;
-    NSArray *_currentCalls;
     id<TUCallServicesDaemonDelegate> _daemonDelegate;
     TUCallServicesClientCapabilities *_callServicesClientCapabilities;
     TUCallCenter *_callCenter;
     NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_xpcConnection;
     NSObject<OS_dispatch_semaphore> *_initialStateSemaphore;
+    NSArray *_currentCalls;
     NSMapTable *_uniqueProxyIdentifierToProxyCall;
     TUCallNotificationManager *_callNotificationManager;
     NSArray *_localProxyCalls;
 }
 
 @property (weak, nonatomic) TUCallCenter *callCenter; // @synthesize callCenter=_callCenter;
+@property (readonly, nonatomic) id<TUCallContainerPrivate> callContainer;
 @property (strong, nonatomic) TUCallNotificationManager *callNotificationManager; // @synthesize callNotificationManager=_callNotificationManager;
 @property (strong, nonatomic) TUCallServicesClientCapabilities *callServicesClientCapabilities; // @synthesize callServicesClientCapabilities=_callServicesClientCapabilities;
 @property (nonatomic) int connectionRequestNotificationToken; // @synthesize connectionRequestNotificationToken=_connectionRequestNotificationToken;
@@ -38,6 +40,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasDaemonDelegateLaunched; // @synthesize hasDaemonDelegateLaunched=_hasDaemonDelegateLaunched;
+@property (nonatomic) BOOL hasRequestedInitialState; // @synthesize hasRequestedInitialState=_hasRequestedInitialState;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *initialStateSemaphore; // @synthesize initialStateSemaphore=_initialStateSemaphore;
 @property (copy, nonatomic) NSArray *localProxyCalls; // @synthesize localProxyCalls=_localProxyCalls;
@@ -47,59 +50,63 @@
 @property (strong, nonatomic) NSMapTable *uniqueProxyIdentifierToProxyCall; // @synthesize uniqueProxyIdentifierToProxyCall=_uniqueProxyIdentifierToProxyCall;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
-+ (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_handleCurrentCallsChanged:(id)arg1 callsDisconnected:(id)arg2;
+- (oneway void)_handleCurrentCallsChanged:(id)arg1 callsDisconnected:(id)arg2;
 - (id)_proxyCallWithCall:(id)arg1;
 - (id)_proxyCallWithUniqueProxyIdentifier:(id)arg1;
+- (void)_registerCall:(id)arg1;
 - (void)_setUpXPCConnection;
 - (void)_tearDownXPCConnection;
-- (void)_tearDownXPCConnectionAndReconnectIfNecessary;
+- (void)_updateCurrentCalls:(id)arg1;
+- (void)_updateCurrentCalls:(id)arg1 withNotificationsUsingUpdatedCalls:(id)arg2;
 - (void)_updateCurrentCallsWithoutNotifications:(id)arg1;
-- (void)_updateLocalProxyCallsWithCalls:(id)arg1;
-- (void)answerCallWithRequest:(id)arg1;
+- (oneway void)answerCallWithRequest:(id)arg1;
+- (void)cleanUpAllCallsForUnexpectedServerDisconnect;
 - (id)daemonDelegateWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)dialWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)disconnectAllCalls;
-- (void)disconnectCallWithUniqueProxyIdentifier:(id)arg1;
-- (void)disconnectCurrentCallAndActivateHeld;
-- (void)enteredBackgroundForAllCalls;
-- (void)enteredForegroundForCallWithUniqueProxyIdentifier:(id)arg1;
-- (void)groupCallWithUniqueProxyIdentifier:(id)arg1 withOtherCallWithUniqueProxyIdentifier:(id)arg2;
-- (void)handleCurrentCallsChanged:(id)arg1 callDisconnected:(id)arg2;
-- (void)handleFrequencyChangedTo:(id)arg1 inDirection:(int)arg2 forCallsWithUniqueProxyIdentifiers:(id)arg3;
-- (void)handleNotificationName:(id)arg1 forCallWithUniqueProxyIdentifier:(id)arg2 userInfo:(id)arg3;
-- (void)holdCallWithUniqueProxyIdentifier:(id)arg1;
+- (oneway void)disconnectAllCalls;
+- (oneway void)disconnectCallWithUniqueProxyIdentifier:(id)arg1;
+- (oneway void)disconnectCurrentCallAndActivateHeld;
+- (oneway void)enteredBackgroundForAllCalls;
+- (oneway void)enteredForegroundForCallWithUniqueProxyIdentifier:(id)arg1;
+- (oneway void)groupCallWithUniqueProxyIdentifier:(id)arg1 withOtherCallWithUniqueProxyIdentifier:(id)arg2;
+- (oneway void)handleCurrentCallsChanged:(id)arg1 callDisconnected:(id)arg2;
+- (oneway void)handleFrequencyChangedTo:(id)arg1 inDirection:(int)arg2 forCallsWithUniqueProxyIdentifiers:(id)arg3;
+- (oneway void)handleNotificationName:(id)arg1 forCallWithUniqueProxyIdentifier:(id)arg2 userInfo:(id)arg3;
+- (oneway void)holdCallWithUniqueProxyIdentifier:(id)arg1;
 - (id)init;
 - (id)initWithQueue:(id)arg1 callCenter:(id)arg2;
+- (oneway void)joinConversationWithRequest:(id)arg1;
 - (void)performBlockOnQueue:(CDUnknownBlockType)arg1;
 - (void)performBlockOnQueue:(CDUnknownBlockType)arg1 andWait:(BOOL)arg2;
-- (void)playDTMFToneForCallWithUniqueProxyIdentifier:(id)arg1 key:(unsigned char)arg2;
-- (void)pullCallFromClientUsingHandoffActivityUserInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)pullHostedCallsFromPairedHostDevice;
-- (void)pullRelayingCallsFromClient;
-- (void)pushHostedCallsToPairedClientDevice;
-- (void)pushRelayingCallsToHostWithSourceIdentifier:(id)arg1;
+- (oneway void)playDTMFToneForCallWithUniqueProxyIdentifier:(id)arg1 key:(unsigned char)arg2;
+- (oneway void)pullCallFromClientUsingHandoffActivityUserInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)pullHostedCallsFromPairedHostDevice;
+- (oneway void)pullRelayingCallsFromClient;
+- (oneway void)pushHostedCallsToPairedClientDevice;
+- (oneway void)pushRelayingCallsToHostWithSourceIdentifier:(id)arg1;
 - (void)registerCall:(id)arg1;
 - (void)requestCurrentStateWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)resetCallProvisionalStates;
-- (void)sendHardPauseDigitsForCallWithUniqueProxyIdentifier:(id)arg1;
-- (void)sendMMIOrUSSDCodeWithRequest:(id)arg1;
-- (void)sendTelephonyDigits:(id)arg1;
-- (void)setClientCapabilities:(id)arg1;
-- (void)setCurrentInputDeviceToDeviceWithUID:(id)arg1;
-- (void)setCurrentOutputDeviceToDeviceWithUID:(id)arg1;
-- (void)setDownlinkMuted:(BOOL)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
-- (void)setRemoteVideoPresentationSizeForCallWithUniqueProxyIdentifier:(id)arg1 size:(struct CGSize)arg2;
-- (void)setRemoteVideoPresentationStateForCallWithUniqueProxyIdentifier:(id)arg1 presentationState:(int)arg2;
-- (void)setUplinkMuted:(BOOL)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
-- (void)swapCalls;
+- (oneway void)resetCallProvisionalStates;
+- (oneway void)sendHardPauseDigitsForCallWithUniqueProxyIdentifier:(id)arg1;
+- (oneway void)sendMMIOrUSSDCodeWithRequest:(id)arg1;
+- (oneway void)setClientCapabilities:(id)arg1;
+- (oneway void)setCurrentAudioInputDeviceToDeviceWithUID:(id)arg1;
+- (oneway void)setCurrentAudioOutputDeviceToDeviceWithUID:(id)arg1;
+- (oneway void)setDownlinkMuted:(BOOL)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
+- (oneway void)setRemoteVideoPresentationSizeForCallWithUniqueProxyIdentifier:(id)arg1 size:(struct CGSize)arg2;
+- (oneway void)setRemoteVideoPresentationStateForCallWithUniqueProxyIdentifier:(id)arg1 presentationState:(int)arg2;
+- (oneway void)setTTYType:(int)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
+- (oneway void)setUplinkMuted:(BOOL)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
+- (oneway void)swapCalls;
 - (id)synchronousDaemonDelegateWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)tearDownXPCConnection;
-- (void)ungroupCallWithUniqueProxyIdentifier:(id)arg1;
-- (void)unholdCallWithUniqueProxyIdentifier:(id)arg1;
-- (void)updateCallWithProxy:(id)arg1;
+- (oneway void)ungroupCallWithUniqueProxyIdentifier:(id)arg1;
+- (oneway void)unholdCallWithUniqueProxyIdentifier:(id)arg1;
+- (oneway void)updateCallWithProxy:(id)arg1;
+- (void)waitForInitialStateIfNecessary;
+- (oneway void)willEnterBackgroundForAllCalls;
 
 @end
 

@@ -13,8 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_axSafariAccessibilityLabelForResult:(id)arg1;
-- (id)_axScoreStringForType:(id)arg1 withLeftTeamName:(id)arg2 score:(id)arg3 rightTeamName:(id)arg4 score:(id)arg5;
+- (id)_axRecordStringWithLeftTeamName:(id)arg1 score:(id)arg2 rightTeamName:(id)arg3 score:(id)arg4;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
 

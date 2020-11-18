@@ -18,10 +18,14 @@
     long long _intValue;
     long long _workActivityType;
     NSString *_definitionIdentifier;
-    NSData *_extraData;
     NSData *_friendUUID;
     HDCodableSample *_sample;
-    CDStruct_38df8e94 _has;
+    struct {
+        unsigned int completedDate:1;
+        unsigned int doubleValue:1;
+        unsigned int intValue:1;
+        unsigned int workActivityType:1;
+    } _has;
 }
 
 @property (nonatomic) double completedDate; // @synthesize completedDate=_completedDate;
@@ -29,12 +33,10 @@
 @property (strong, nonatomic) NSString *definitionIdentifier; // @synthesize definitionIdentifier=_definitionIdentifier;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double doubleValue; // @synthesize doubleValue=_doubleValue;
-@property (strong, nonatomic) NSData *extraData; // @synthesize extraData=_extraData;
 @property (strong, nonatomic) NSData *friendUUID; // @synthesize friendUUID=_friendUUID;
 @property (nonatomic) BOOL hasCompletedDate;
 @property (readonly, nonatomic) BOOL hasDefinitionIdentifier;
 @property (nonatomic) BOOL hasDoubleValue;
-@property (readonly, nonatomic) BOOL hasExtraData;
 @property (readonly, nonatomic) BOOL hasFriendUUID;
 @property (nonatomic) BOOL hasIntValue;
 @property (readonly, nonatomic) BOOL hasSample;

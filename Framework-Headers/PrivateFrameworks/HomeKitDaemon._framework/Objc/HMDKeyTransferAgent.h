@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDHomeManager, NSString, NSUUID;
+@class HMDHomeManager, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDKeyTransferAgent : NSObject <HMFLogging, HMFMessageReceiver>
+@interface HMDKeyTransferAgent : HMFObject <HMFLogging, HMFMessageReceiver>
 {
     BOOL _inProgress;
     unsigned long long _residentProvisioningStatus;
@@ -34,7 +34,6 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)logCategory;
-+ (id)minimumSupportedKeyTransferHomeKitVersion;
 - (void).cxx_destruct;
 - (void)beginPairingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithHomeManager:(id)arg1;

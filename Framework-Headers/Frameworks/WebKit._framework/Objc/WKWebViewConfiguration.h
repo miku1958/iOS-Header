@@ -9,7 +9,7 @@
 #import <WebKit/NSCoding-Protocol.h>
 #import <WebKit/NSCopying-Protocol.h>
 
-@class NSString, WKPreferences, WKProcessPool, WKUserContentController, WKWebView, WKWebViewContentProviderRegistry, WKWebsiteDataStore, _WKVisitedLinkStore, _WKWebsiteDataStore;
+@class NSMutableDictionary, NSString, WKPreferences, WKProcessPool, WKUserContentController, WKWebView, WKWebViewContentProviderRegistry, WKWebsiteDataStore, _WKVisitedLinkStore, _WKWebsiteDataStore;
 
 @interface WKWebViewConfiguration : NSObject <NSCoding, NSCopying>
 {
@@ -22,6 +22,7 @@
     struct WeakObjCPtr<WKWebView> _alternateWebViewForNavigationGestures;
     struct RetainPtr<NSString> _groupIdentifier;
     struct LazyInitialized<WTF::RetainPtr<NSString>> _applicationNameForUserAgent;
+    struct LazyInitialized<WTF::RetainPtr<NSMutableDictionary<NSString *, id<WKURLSchemeHandler>>>> _urlSchemeHandlers;
     double _incrementalRenderingSuppressionTimeout;
     BOOL _treatsSHA1SignedCertificatesAsInsecure;
     BOOL _respectsImageOrientation;
@@ -35,6 +36,8 @@
     BOOL _allowsInlineMediaPlayback;
     BOOL _inlineMediaPlaybackRequiresPlaysInlineAttribute;
     BOOL _allowsInlineMediaPlaybackAfterFullscreen;
+    BOOL _allowsBlockSelection;
+    unsigned long long _dragLiftDelay;
     BOOL _invisibleAutoplayNotPermitted;
     BOOL _mediaDataLoadsAutomatically;
     BOOL _attachmentElementEnabled;
@@ -44,7 +47,10 @@
     BOOL _controlledByAutomation;
     BOOL _applePayEnabled;
     BOOL _needsStorageAccessFromFileURLsQuirk;
-    NSString *_overrideContentSecurityPolicy;
+    BOOL _legacyEncryptedMediaAPIEnabled;
+    BOOL _allowMediaContentTypesRequiringHardwareSupportAsFallback;
+    struct RetainPtr<NSString> _overrideContentSecurityPolicy;
+    struct RetainPtr<NSString> _mediaContentTypesRequiringHardwareSupport;
     BOOL _suppressesIncrementalRendering;
     BOOL _allowsAirPlayForMediaPlayback;
     BOOL _allowsPictureInPictureMediaPlayback;
@@ -54,7 +60,9 @@
     unsigned long long _dataDetectorTypes;
 }
 
+@property (nonatomic, setter=_setAllowMediaContentTypesRequiringHardwareSupportAsFallback:) BOOL _allowMediaContentTypesRequiringHardwareSupportAsFallback;
 @property (nonatomic, setter=_setAllowUniversalAccessFromFileURLs:) BOOL _allowUniversalAccessFromFileURLs;
+@property (nonatomic, setter=_setAllowsBlockSelection:) BOOL _allowsBlockSelection;
 @property (nonatomic, setter=_setAllowsInlineMediaPlaybackAfterFullscreen:) BOOL _allowsInlineMediaPlaybackAfterFullscreen;
 @property (nonatomic, setter=_setAllowsJavaScriptMarkup:) BOOL _allowsJavaScriptMarkup;
 @property (nonatomic, setter=_setAllowsMetaRefresh:) BOOL _allowsMetaRefresh;
@@ -65,12 +73,15 @@
 @property (nonatomic, setter=_setContentProviderRegistry:) WKWebViewContentProviderRegistry *_contentProviderRegistry;
 @property (nonatomic, getter=_isControlledByAutomation, setter=_setControlledByAutomation:) BOOL _controlledByAutomation;
 @property (nonatomic, setter=_setConvertsPositionStyleOnCopy:) BOOL _convertsPositionStyleOnCopy;
+@property (nonatomic, setter=_setDragLiftDelay:) unsigned long long _dragLiftDelay;
 @property (copy, nonatomic, setter=_setGroupIdentifier:) NSString *_groupIdentifier;
 @property (nonatomic, setter=_setIncrementalRenderingSuppressionTimeout:) double _incrementalRenderingSuppressionTimeout;
 @property (nonatomic, setter=_setInitialCapitalizationEnabled:) BOOL _initialCapitalizationEnabled;
 @property (nonatomic, setter=_setInlineMediaPlaybackRequiresPlaysInlineAttribute:) BOOL _inlineMediaPlaybackRequiresPlaysInlineAttribute;
 @property (nonatomic, setter=_setInvisibleAutoplayNotPermitted:) BOOL _invisibleAutoplayNotPermitted;
+@property (nonatomic, setter=_setLegacyEncryptedMediaAPIEnabled:) BOOL _legacyEncryptedMediaAPIEnabled;
 @property (nonatomic, setter=_setMainContentUserGestureOverrideEnabled:) BOOL _mainContentUserGestureOverrideEnabled;
+@property (nonatomic, setter=_setMediaContentTypesRequiringHardwareSupport:) NSString *_mediaContentTypesRequiringHardwareSupport;
 @property (nonatomic, setter=_setMediaDataLoadsAutomatically:) BOOL _mediaDataLoadsAutomatically;
 @property (nonatomic, setter=_setNeedsStorageAccessFromFileURLsQuirk:) BOOL _needsStorageAccessFromFileURLsQuirk;
 @property (nonatomic, setter=_setOverrideContentSecurityPolicy:) NSString *_overrideContentSecurityPolicy;
@@ -80,6 +91,7 @@
 @property (nonatomic, setter=_setRequiresUserActionForVideoPlayback:) BOOL _requiresUserActionForVideoPlayback;
 @property (nonatomic, setter=_setRespectsImageOrientation:) BOOL _respectsImageOrientation;
 @property (nonatomic, setter=_setTreatsSHA1SignedCertificatesAsInsecure:) BOOL _treatsSHA1SignedCertificatesAsInsecure;
+@property (readonly, nonatomic) NSMutableDictionary *_urlSchemeHandlers;
 @property (strong, nonatomic, setter=_setVisitedLinkStore:) _WKVisitedLinkStore *_visitedLinkStore;
 @property (nonatomic, setter=_setWaitsForPaintAfterViewDidMoveToWindow:) BOOL _waitsForPaintAfterViewDidMoveToWindow;
 @property (strong, nonatomic, setter=_setWebsiteDataStore:) _WKWebsiteDataStore *_websiteDataStore;
@@ -110,6 +122,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (void)setURLSchemeHandler:(id)arg1 forURLScheme:(id)arg2;
+- (id)urlSchemeHandlerForURLScheme:(id)arg1;
 
 @end
 

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     int _fd;
 }
 
+- (void).cxx_destruct;
 - (BOOL)_lockBlocking:(BOOL)arg1;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;

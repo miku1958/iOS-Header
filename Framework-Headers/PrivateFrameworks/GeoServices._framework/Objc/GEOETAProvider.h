@@ -4,17 +4,47 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <GeoServices/GEOProtobufSessionTaskDelegate-Protocol.h>
+
+@class GEOApplicationAuditToken, GEOETATrafficUpdateRequest, GEOProtobufSession, GEOProtobufSessionTask, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEOETAProvider : NSObject
+@interface GEOETAProvider : NSObject <GEOProtobufSessionTaskDelegate>
 {
+    GEOProtobufSession *_protobufSession;
+    GEOProtobufSessionTask *_task;
+    GEOETATrafficUpdateRequest *_currentRequest;
+    CDUnknownBlockType _errorHandler;
+    CDUnknownBlockType _finishedHandler;
+    CDUnknownBlockType _willSendRequestHandler;
+    GEOApplicationAuditToken *_auditToken;
+    BOOL _cancelled;
+    struct GEOOnce_s _didStart;
 }
 
+@property (strong) GEOETATrafficUpdateRequest *currentRequest; // @synthesize currentRequest=_currentRequest;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
+@property (copy, nonatomic) CDUnknownBlockType finishedHandler; // @synthesize finishedHandler=_finishedHandler;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) GEOProtobufSession *protobufSession; // @synthesize protobufSession=_protobufSession;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) GEOProtobufSessionTask *task; // @synthesize task=_task;
+@property (copy, nonatomic) CDUnknownBlockType willSendRequestHandler; // @synthesize willSendRequestHandler=_willSendRequestHandler;
+
+- (void).cxx_destruct;
+- (void)_startRequest:(id)arg1 connectionProperties:(id)arg2 willSendRequest:(CDUnknownBlockType)arg3 finished:(CDUnknownBlockType)arg4 error:(CDUnknownBlockType)arg5;
 - (void)cancelRequest;
-- (void)startRequest:(id)arg1 connectionProperties:(const CDStruct_e05fddca *)arg2 willSendRequest:(CDUnknownBlockType)arg3 finished:(CDUnknownBlockType)arg4 error:(CDUnknownBlockType)arg5;
+- (void)didCompleteTask;
+- (id)init;
+- (id)initWithAuditToken:(id)arg1;
+- (void)protobufSession:(id)arg1 didCompleteTask:(id)arg2;
+- (void)protobufSession:(id)arg1 willSendRequestForTask:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)startRequest:(id)arg1 connectionProperties:(id)arg2 willSendRequest:(CDUnknownBlockType)arg3 finished:(CDUnknownBlockType)arg4 error:(CDUnknownBlockType)arg5;
 - (void)startRequest:(id)arg1 finished:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
-- (void)startSimpleETARequest:(id)arg1 finished:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
 - (void)updateRequest:(id)arg1 finished:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
 
 @end

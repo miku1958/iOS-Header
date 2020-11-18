@@ -8,16 +8,23 @@
 
 #import <PhotosUICore/PXPerson-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString;
 
 @interface PHPerson (PXPerson) <PXPerson>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) BOOL isPersonModel;
+@property (readonly) BOOL isVerified;
+@property (readonly) NSString *name;
+@property (readonly) unsigned long long numberOfAssets;
+@property (readonly) NSString *px_displayName;
+@property (readonly) NSDate *px_keyPhotoDate;
+@property (readonly) NSString *px_localIdentifier;
 @property (readonly) Class superclass;
 
-- (unsigned long long)numberOfAssets;
-- (void)requestFaceTileImageWithTargetSize:(struct CGSize)arg1 cropFactor:(unsigned long long)arg2 round:(BOOL)arg3 cacheResult:(BOOL)arg4 completionBlock:(CDUnknownBlockType)arg5;
++ (void)px_loadRepresentativeFacesForPersons:(id)arg1;
+- (void)requestFaceTileImageWithTargetSize:(struct CGSize)arg1 cropFactor:(unsigned long long)arg2 round:(BOOL)arg3 cacheResult:(BOOL)arg4 boundFaceRect:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
 @end
 

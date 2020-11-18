@@ -17,7 +17,7 @@
 - (id)_axAKOverlayView;
 - (void)_axHighlightPopoverDismissed;
 - (void)_axHighlightPopoverPresentedForAnnotation:(id)arg1 withHighlightController:(id)arg2 pullFocus:(BOOL)arg3;
-- (void)_installOverlayForPageView:(id)arg1 ofPage:(id)arg2 atIndex:(unsigned long long)arg3;
+- (void)loadContentWithCompletionBlock:(CDUnknownBlockType)arg1;
 
 @end
 

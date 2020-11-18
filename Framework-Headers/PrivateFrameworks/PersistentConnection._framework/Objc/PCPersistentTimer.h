@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <PersistentConnection/CUTPowerMonitorDelegate-Protocol.h>
-#import <PersistentConnection/PCLoggingDelegate-Protocol.h>
 
 @class NSString, PCSimpleTimer;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_os_log;
 
-@interface PCPersistentTimer : NSObject <PCLoggingDelegate, CUTPowerMonitorDelegate>
+@interface PCPersistentTimer : NSObject <CUTPowerMonitorDelegate>
 {
     double _fireTime;
     double _startTime;
@@ -27,6 +26,7 @@
     id _userInfo;
     PCSimpleTimer *_simpleTimer;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_os_log> *_logObject;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -34,7 +34,6 @@
 @property (nonatomic) BOOL disableSystemWaking; // @synthesize disableSystemWaking=_disableSystemWaking;
 @property (readonly, nonatomic) double fireTime;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *loggingIdentifier; // @synthesize loggingIdentifier=_serviceIdentifier;
 @property (nonatomic) double minimumEarlyFireProportion; // @synthesize minimumEarlyFireProportion=_minimumEarlyFireProportion;
 @property (readonly, nonatomic) double startTime;
 @property (readonly) Class superclass;
@@ -45,6 +44,7 @@
 + (void)_updateTime:(double)arg1 forGuidancePriority:(unsigned long long)arg2;
 + (double)currentMachTimeInterval;
 + (id)lastSystemWakeDate;
+- (void).cxx_destruct;
 - (double)_earlyFireTime;
 - (void)_fireTimerFired;
 - (id)_initWithAbsoluteTime:(double)arg1 serviceIdentifier:(id)arg2 guidancePriority:(unsigned long long)arg3 target:(id)arg4 selector:(SEL)arg5 userInfo:(id)arg6 triggerOnGMTChange:(BOOL)arg7;

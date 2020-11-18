@@ -22,7 +22,7 @@
 - (BOOL)_axSetAdjustsMin;
 - (void)_axSetShouldAdjustSecondary:(BOOL)arg1;
 - (BOOL)_axShouldAdjustSecondary;
-- (void)_axUpdateControlValue:(double)arg1;
+- (void)_axUpdateControlValue:(double)arg1 incrementing:(BOOL)arg2;
 - (id)accessibilityCustomActions;
 - (void)accessibilityDecrement;
 - (struct CGRect)accessibilityFrame;

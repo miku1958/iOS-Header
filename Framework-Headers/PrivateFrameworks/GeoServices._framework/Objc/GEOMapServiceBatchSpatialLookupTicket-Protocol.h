@@ -6,7 +6,7 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOMapServiceTraits, GEOSpatialLookupParameters, NSArray, NSObject;
+@class GEOApplicationAuditToken, GEOMapServiceTraits, GEOSpatialLookupParameters, NSArray, NSObject;
 @protocol OS_dispatch_queue;
 
 @protocol GEOMapServiceBatchSpatialLookupTicket <NSObject>
@@ -15,6 +15,8 @@
 
 - (void)cancel;
 - (NSArray *)mapItemsForParameters:(GEOSpatialLookupParameters *)arg1;
+- (void)submitWithHandler:(void (^)(NSError *))arg1 auditToken:(GEOApplicationAuditToken *)arg2 networkActivity:(void (^)(BOOL))arg3;
+- (void)submitWithHandler:(void (^)(NSError *))arg1 auditToken:(GEOApplicationAuditToken *)arg2 networkActivity:(void (^)(BOOL))arg3 queue:(NSObject<OS_dispatch_queue> *)arg4;
 - (void)submitWithHandler:(void (^)(NSError *))arg1 networkActivity:(void (^)(BOOL))arg2;
 - (void)submitWithHandler:(void (^)(NSError *))arg1 networkActivity:(void (^)(BOOL))arg2 queue:(NSObject<OS_dispatch_queue> *)arg3;
 @end

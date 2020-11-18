@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CommunicationsSetupUI/AKInlineSignInViewControllerDelegate-Protocol.h>
+#import <CommunicationsSetupUI/AKSignInViewControllerDelegate-Protocol.h>
 
 @class AKTapToSignInViewController, NSDictionary, NSError;
 
-@protocol AKTapToSignInViewControllerDelegate <AKInlineSignInViewControllerDelegate>
+@protocol AKTapToSignInViewControllerDelegate <AKSignInViewControllerDelegate>
 - (void)tapToSignInViewController:(AKTapToSignInViewController *)arg1 didAuthenticateWithResults:(NSDictionary *)arg2 error:(NSError *)arg3;
 @end
 

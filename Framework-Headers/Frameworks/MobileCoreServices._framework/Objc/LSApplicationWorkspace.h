@@ -6,35 +6,30 @@
 
 #import <Foundation/NSObject.h>
 
-@class LSApplicationWorkspaceRemoteObserver, LSInstallProgressDelegate, LSInstallProgressList, NSMutableDictionary, NSXPCConnection;
+@class LSInstallProgressList, NSMutableDictionary;
 
 @interface LSApplicationWorkspace : NSObject
 {
-    BOOL _enhancedAppValidationEnabled;
-    LSApplicationWorkspaceRemoteObserver *_remoteObserver;
     NSMutableDictionary *_createdInstallProgresses;
     LSInstallProgressList *_observedInstallProgresses;
-    LSInstallProgressDelegate *_delegateProxy;
-    NSXPCConnection *_connection;
 }
 
-@property (readonly) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly) NSMutableDictionary *createdInstallProgresses; // @synthesize createdInstallProgresses=_createdInstallProgresses;
-@property (readonly) LSInstallProgressDelegate *delegateProxy; // @synthesize delegateProxy=_delegateProxy;
 @property (readonly) LSInstallProgressList *observedInstallProgresses; // @synthesize observedInstallProgresses=_observedInstallProgresses;
-@property (readonly) LSApplicationWorkspaceRemoteObserver *remoteObserver; // @synthesize remoteObserver=_remoteObserver;
 
++ (id)_remoteObserver;
 + (id)activeManagedConfigurationRestrictionUUIDs;
 + (id)callbackQueue;
 + (id)defaultWorkspace;
++ (id)progressQueue;
++ (id)workspaceObserverProxy;
 - (id)URLOverrideForURL:(id)arg1;
-- (id)URLSchemesOfType:(long long)arg1;
 - (void)_LSClearSchemaCaches;
 - (void)_LSFailedToOpenURL:(id)arg1 withBundle:(id)arg2;
 - (BOOL)_LSPrivateDatabaseNeedsRebuild;
 - (BOOL)_LSPrivateRebuildApplicationDatabasesForSystemApps:(BOOL)arg1 internal:(BOOL)arg2 user:(BOOL)arg3;
 - (void)_LSPrivateSyncWithMobileInstallation;
-- (void)_LSSendApplicationIconDidChangeForBundleID:(id)arg1;
+- (void)_LSPrivateUpdateAppRemovalRestrictions;
 - (void)addObserver:(id)arg1;
 - (id)allApplications;
 - (id)allInstalledApplications;
@@ -63,7 +58,6 @@
 - (id)deviceIdentifierForVendor;
 - (id)directionsApplications;
 - (BOOL)downgradeApplicationToPlaceholder:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;
-- (BOOL)enhancedAppLoggingEnabled;
 - (void)enumerateApplicationsForSiriWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateApplicationsOfType:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (void)enumerateApplicationsOfType:(unsigned long long)arg1 legacySPI:(BOOL)arg2 block:(CDUnknownBlockType)arg3;
@@ -74,7 +68,7 @@
 - (BOOL)establishConnection;
 - (BOOL)getClaimedActivityTypes:(id *)arg1 domains:(id *)arg2;
 - (void)getKnowledgeUUID:(id *)arg1 andSequenceNumber:(id *)arg2;
-- (id)init;
+- (BOOL)initiateProgressForApp:(id)arg1 withType:(unsigned long long)arg2;
 - (BOOL)installApplication:(id)arg1 withOptions:(id)arg2;
 - (BOOL)installApplication:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;
 - (BOOL)installApplication:(id)arg1 withOptions:(id)arg2 error:(id *)arg3 usingBlock:(CDUnknownBlockType)arg4;
@@ -87,7 +81,11 @@
 - (BOOL)isApplicationAvailableToOpenURL:(id)arg1 includePrivateURLSchemes:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)isApplicationAvailableToOpenURLCommon:(id)arg1 includePrivateURLSchemes:(BOOL)arg2 error:(id *)arg3;
 - (id)legacyApplicationProxiesListWithType:(unsigned long long)arg1;
+- (BOOL)ls_injectUTTypeWithDeclaration:(id)arg1 inDatabase:(void *)arg2 error:(id *)arg3;
+- (void)ls_resetTestingDatabase;
+- (void *)ls_testWithCleanDatabaseWithError:(id *)arg1;
 - (id)machOUUIDsForBundleIdentifiers:(id)arg1 error:(id *)arg2;
+- (id)observerProxy;
 - (BOOL)openApplicationWithBundleID:(id)arg1;
 - (BOOL)openSensitiveURL:(id)arg1 withOptions:(id)arg2;
 - (BOOL)openSensitiveURL:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;
@@ -102,6 +100,7 @@
 - (id)operationToOpenResource:(id)arg1 usingApplication:(id)arg2 uniqueDocumentIdentifier:(id)arg3 userInfo:(id)arg4 delegate:(id)arg5;
 - (id)operationToOpenResource:(id)arg1 usingApplication:(id)arg2 userInfo:(id)arg3;
 - (id)placeholderApplications;
+- (void)placeholderInstalledForIdentifier:(id)arg1 filterDowngrades:(BOOL)arg2;
 - (id)pluginsMatchingQuery:(id)arg1 applyFilter:(CDUnknownBlockType)arg2;
 - (id)pluginsWithIdentifiers:(id)arg1 protocols:(id)arg2 version:(id)arg3;
 - (id)pluginsWithIdentifiers:(id)arg1 protocols:(id)arg2 version:(id)arg3 applyFilter:(CDUnknownBlockType)arg4;
@@ -111,23 +110,22 @@
 - (BOOL)registerApplication:(id)arg1;
 - (BOOL)registerApplicationDictionary:(id)arg1;
 - (BOOL)registerApplicationDictionary:(id)arg1 withObserverNotification:(int)arg2;
+- (BOOL)registerBundleWithInfo:(id)arg1 options:(id)arg2 type:(unsigned long long)arg3 progress:(id)arg4;
 - (BOOL)registerPlugin:(id)arg1;
+- (id)remoteObserver;
 - (void)removeDeviceIdentifierForVendorName:(id)arg1 bundleIdentifier:(id)arg2;
-- (void)removeInstallProgressForBundleID:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (id)removedSystemApplications;
 - (BOOL)restoreSystemApplication:(id)arg1;
-- (void)sendInstallNotificationForApp:(id)arg1 withPlugins:(id)arg2;
-- (void)sendNotificationForApp:(id)arg1 withExtensions:(id)arg2 OperationType:(unsigned long long)arg3 success:(BOOL)arg4;
-- (void)sendUninstallNotificationForApp:(id)arg1 withPlugins:(id)arg2;
+- (id)syncObserverProxy;
 - (BOOL)uninstallApplication:(id)arg1 withOptions:(id)arg2;
 - (BOOL)uninstallApplication:(id)arg1 withOptions:(id)arg2 error:(id *)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (BOOL)uninstallApplication:(id)arg1 withOptions:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (BOOL)uninstallSystemApplication:(id)arg1 withOptions:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (BOOL)unregisterApplication:(id)arg1;
 - (BOOL)unregisterPlugin:(id)arg1;
 - (id)unrestrictedApplications;
-- (BOOL)updateRecordForApp:(id)arg1 withSINF:(id)arg2 iTunesMetadata:(id)arg3 error:(id *)arg4;
+- (BOOL)updatePlaceholderMetadataForApp:(id)arg1 installType:(unsigned long long)arg2 failure:(unsigned long long)arg3 underlyingError:(id)arg4 source:(unsigned long long)arg5 outError:(id *)arg6;
+- (BOOL)updateRecordForApp:(id)arg1 withSINF:(id)arg2 iTunesMetadata:(id)arg3 placeholderMetadata:(id)arg4 sendNotification:(int)arg5 error:(id *)arg6;
 - (BOOL)updateSINFWithData:(id)arg1 forApplication:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (BOOL)updateiTunesMetadataWithData:(id)arg1 forApplication:(id)arg2 options:(id)arg3 error:(id *)arg4;
 

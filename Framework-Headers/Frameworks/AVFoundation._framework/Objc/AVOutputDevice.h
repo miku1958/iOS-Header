@@ -6,35 +6,54 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVOutputDeviceInternal, NSDictionary, NSString;
+@class AVOutputDeviceInternal, NSData, NSString;
 
 @interface AVOutputDevice : NSObject
 {
     AVOutputDeviceInternal *_outputDevice;
 }
 
-@property (readonly, nonatomic) NSString *ID;
-@property (readonly, nonatomic) float batteryLevel;
+@property (readonly, nonatomic) NSString *deviceID;
+@property (readonly, nonatomic) long long deviceSubType;
 @property (readonly, nonatomic) long long deviceType;
-@property (readonly, nonatomic) BOOL hasBatteryLevel;
+@property (readonly, nonatomic) NSData *identifyingMACAddress;
 @property (readonly, nonatomic) NSString *modelID;
-@property (readonly, nonatomic) NSDictionary *modelSpecificInformation;
 @property (readonly, nonatomic) NSString *name;
 
++ (void)initialize;
++ (id)outputDeviceWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1;
 + (id)sharedLocalDevice;
-- (id)_figEndpointPropertyValueForKey:(struct __CFString *)arg1;
-- (id)_weakReference;
+- (id)ID;
+- (float)batteryLevel;
+- (BOOL)canAccessRemoteAssets;
+- (BOOL)canBeGroupLeader;
+- (BOOL)canBeGrouped;
+- (BOOL)canSetVolume;
+- (id)connectedPairedDevices;
 - (void)dealloc;
 - (id)description;
-- (struct OpaqueFigEndpoint *)figEndpoint;
-- (void)finalize;
+- (unsigned long long)deviceFeatures;
+- (id)figEndpointOutputImpl;
 - (double)frecencyScore;
+- (BOOL)groupContainsGroupLeader;
+- (id)groupID;
+- (BOOL)hasBatteryLevel;
 - (unsigned long long)hash;
+- (id)impl;
 - (id)init;
-- (id)initWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1;
+- (id)initWithOutputDeviceImpl:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isGroupLeader;
+- (BOOL)isInUseByPairedDevice;
+- (id)modelSpecificInformation;
+- (void)outputDeviceImplDidChangeCanChangeVolume:(id)arg1;
+- (void)outputDeviceImplDidChangeVolume:(id)arg1;
+- (BOOL)requiresAuthorization;
+- (void)setAdministrativeConfiguration:(id)arg1 administrationPassword:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setSecondDisplayEnabled:(BOOL)arg1;
+- (void)setVolume:(float)arg1;
 - (void)updateFrecencyScore;
+- (float)volume;
 
 @end
 

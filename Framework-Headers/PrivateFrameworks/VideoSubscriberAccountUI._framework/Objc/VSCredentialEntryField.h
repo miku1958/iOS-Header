@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSString *_text;
     long long _autocapitalizationType;
     long long _autocorrectionType;
+    long long _returnKeyType;
     NSString *_recentsTitle;
     NSString *_recentsMessage;
 }
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *placeholder; // @synthesize placeholder=_placeholder;
 @property (copy, nonatomic) NSString *recentsMessage; // @synthesize recentsMessage=_recentsMessage;
 @property (copy, nonatomic) NSString *recentsTitle; // @synthesize recentsTitle=_recentsTitle;
+@property (nonatomic) long long returnKeyType; // @synthesize returnKeyType=_returnKeyType;
 @property (nonatomic, getter=isSecure) BOOL secure; // @synthesize secure=_secure;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;

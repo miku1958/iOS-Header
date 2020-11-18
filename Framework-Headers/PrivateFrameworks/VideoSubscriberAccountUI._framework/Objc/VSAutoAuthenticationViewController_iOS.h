@@ -8,7 +8,7 @@
 
 #import <VideoSubscriberAccountUI/VSAutoAuthenticationViewController-Protocol.h>
 
-@class NSString, UIBarButtonItem, UIButton, UILabel, UIScrollView, VSAutoAuthenticationViewModel, VSIdentityProviderLogoView, VSViewModel;
+@class NSString, UIButton, UILabel, UIScrollView, VSAutoAuthenticationViewModel, VSFontCenter, VSIdentityProviderLogoView, VSViewModel;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -25,18 +25,15 @@ __attribute__((visibility("hidden")))
     UILabel *_noticeLabel;
     UILabel *_manualSignInTitleLabel;
     UIButton *_manualSignInButton;
-    UIBarButtonItem *_signInButtonItem;
-    UIBarButtonItem *_cancelButtonItem;
-    id _contentSizeCategoryObserver;
+    VSFontCenter *_fontCenter;
 }
 
 @property (strong, nonatomic) UILabel *accountNameLabel; // @synthesize accountNameLabel=_accountNameLabel;
-@property (strong, nonatomic) UIBarButtonItem *cancelButtonItem; // @synthesize cancelButtonItem=_cancelButtonItem;
 @property (nonatomic, getter=isCancellationAllowed) BOOL cancellationAllowed; // @synthesize cancellationAllowed=_cancellationAllowed;
-@property (weak, nonatomic) id contentSizeCategoryObserver; // @synthesize contentSizeCategoryObserver=_contentSizeCategoryObserver;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VSAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) VSFontCenter *fontCenter; // @synthesize fontCenter=_fontCenter;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VSIdentityProviderLogoView *logoView; // @synthesize logoView=_logoView;
 @property (strong, nonatomic) UIButton *manualSignInButton; // @synthesize manualSignInButton=_manualSignInButton;
@@ -46,27 +43,19 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UILabel *noticeLabel; // @synthesize noticeLabel=_noticeLabel;
 @property (readonly, nonatomic) struct CGSize preferredLogoSize;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
-@property (strong, nonatomic) UIBarButtonItem *signInButtonItem; // @synthesize signInButtonItem=_signInButtonItem;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) VSViewModel *viewModel;
 
 - (void).cxx_destruct;
-- (void)_cancelButtonPressed:(id)arg1;
-- (void)_hideNavigationBarButtons;
 - (void)_manualSignInButtonPressed:(id)arg1;
-- (void)_showNavigationBarButtons;
-- (void)_showValidationAlertForError:(id)arg1;
-- (void)_signInButtonPressed:(id)arg1;
 - (void)_startObservingViewModel:(id)arg1;
-- (void)_startValidation;
 - (void)_stopObservingViewModel:(id)arg1;
-- (void)_stopValidationAndShowButtons:(BOOL)arg1;
-- (void)_updateFonts;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setViewModel:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

@@ -6,11 +6,12 @@
 
 #import <CoreSuggestions/NSObject-Protocol.h>
 
-@class SFCardSectionEngagementFeedback, SFCardViewDisappearFeedback, SFClearInputFeedback, SFCustomFeedback, SFDidGoToSearchFeedback, SFDidGoToSiteFeedback, SFEndSearchFeedback, SFErrorFeedback, SFLateSectionsAppendedFeedback, SFRankingFeedback, SFResultEngagementFeedback, SFResultGradingFeedback, SFResultsReceivedAfterTimeoutFeedback, SFSearchViewAppearFeedback, SFSearchViewDisappearFeedback, SFSectionEngagementFeedback, SFStartSearchFeedback, SFSuggestionEngagementFeedback, SFVisibleResultsFeedback, SFVisibleSectionHeaderFeedback, SFVisibleSuggestionsFeedback;
+@class SFCardSectionEngagementFeedback, SFCardViewAppearFeedback, SFCardViewDisappearFeedback, SFClearInputFeedback, SFCustomFeedback, SFDidGoToSearchFeedback, SFDidGoToSiteFeedback, SFEndSearchFeedback, SFErrorFeedback, SFFeedback, SFLateSectionsAppendedFeedback, SFLookupHintRelevancyFeedback, SFRankingFeedback, SFResultEngagementFeedback, SFResultGradingFeedback, SFResultsReceivedAfterTimeoutFeedback, SFSearchViewAppearFeedback, SFSearchViewDisappearFeedback, SFSectionEngagementFeedback, SFStartSearchFeedback, SFSuggestionEngagementFeedback, SFVisibleResultsFeedback, SFVisibleSectionHeaderFeedback, SFVisibleSuggestionsFeedback;
 
 @protocol SFFeedbackListener <NSObject>
 
 @optional
+- (void)cardViewDidAppear:(SFCardViewAppearFeedback *)arg1;
 - (void)cardViewDidDisappear:(SFCardViewDisappearFeedback *)arg1;
 - (void)didAppendLateSections:(SFLateSectionsAppendedFeedback *)arg1;
 - (void)didClearInput:(SFClearInputFeedback *)arg1;
@@ -22,10 +23,12 @@
 - (void)didErrorOccur:(SFErrorFeedback *)arg1;
 - (void)didGoToSearch:(SFDidGoToSearchFeedback *)arg1;
 - (void)didGoToSite:(SFDidGoToSiteFeedback *)arg1;
+- (void)didGradeLookupHintRelevancy:(SFLookupHintRelevancyFeedback *)arg1;
 - (void)didGradeResultRelevancy:(SFResultGradingFeedback *)arg1;
 - (void)didRankSections:(SFRankingFeedback *)arg1;
 - (void)didReceiveResultsAfterTimeout:(SFResultsReceivedAfterTimeoutFeedback *)arg1;
 - (void)didStartSearch:(SFStartSearchFeedback *)arg1;
+- (void)reportFeedback:(SFFeedback *)arg1 queryId:(long long)arg2;
 - (void)resultsDidBecomeVisible:(SFVisibleResultsFeedback *)arg1;
 - (void)searchViewDidAppear:(SFSearchViewAppearFeedback *)arg1;
 - (void)searchViewDidDisappear:(SFSearchViewDisappearFeedback *)arg1;

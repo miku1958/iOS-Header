@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *nameSpace;
 @property (readonly, nonatomic) NSObject<GSAdditionStoring> *storage;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (BOOL)generationsRemove:(id)arg1 error:(id *)arg2;
 - (id)initWithURL:(id)arg1 error:(id *)arg2;
 

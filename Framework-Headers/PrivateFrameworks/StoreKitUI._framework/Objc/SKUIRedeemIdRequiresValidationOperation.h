@@ -8,16 +8,18 @@
 
 #import <StoreKitUI/ISDialogOperationDelegate-Protocol.h>
 
-@class NSString;
+@class NSString, SKUIRedeemViewController;
 
 @interface SKUIRedeemIdRequiresValidationOperation : ISOperation <ISDialogOperationDelegate>
 {
     CDUnknownBlockType _resultBlock;
+    SKUIRedeemViewController *_redeemViewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) SKUIRedeemViewController *redeemViewController; // @synthesize redeemViewController=_redeemViewController;
 @property (copy) CDUnknownBlockType resultBlock; // @synthesize resultBlock=_resultBlock;
 @property (readonly) Class superclass;
 

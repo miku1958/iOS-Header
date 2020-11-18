@@ -94,12 +94,15 @@
 - (BOOL)_saveModifiedPrincipalsOnBackingAccount;
 - (BOOL)_saveModifiedSubscribedCalendarsOnBackingAccount;
 - (void)_setSpinning:(BOOL)arg1;
+- (void)_syncEndedWithError:(id)arg1;
+- (void)_syncStarted;
 - (void)_updateCalendarStore:(BOOL)arg1;
 - (BOOL)_updateCalendarStoreNoDBOpen:(BOOL)arg1;
 - (BOOL)_updateCalendarStoreProperties:(void *)arg1;
 - (BOOL)accountHasSignificantPropertyChangesFromOldAccountInfo:(id)arg1;
 - (void)addCalendar:(id)arg1;
 - (void)addPrincipal:(id)arg1;
+- (void)addToCoreDAVLoggingDelegates;
 - (void)cancelRefreshWithCompletion:(CDUnknownBlockType)arg1;
 - (void *)copyCalStore;
 - (void)coreDAVLogDiagnosticMessage:(id)arg1 atLevel:(long long)arg2;
@@ -129,6 +132,7 @@
 - (void)reloadCalendars;
 - (void)removeCalendar:(id)arg1;
 - (void)removeCalendarWithURL:(id)arg1;
+- (void)removeFromCoreDAVLoggingDelegates;
 - (void)removePrincipal:(id)arg1;
 - (void)retainPowerAssertion;
 - (BOOL)saveModifiedPropertiesOnBackingAccount;

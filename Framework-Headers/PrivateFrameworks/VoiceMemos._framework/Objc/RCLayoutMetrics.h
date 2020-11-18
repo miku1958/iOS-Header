@@ -12,7 +12,7 @@
 
 @interface RCLayoutMetrics : NSObject <NSCopying>
 {
-    CDStruct_66e6f92a _metricInfo;
+    CDStruct_76b83881 _metricInfo;
     NSString *_label;
     double _hPresentedRecordMemoHeight;
 }
@@ -29,8 +29,6 @@
 @property (readonly, nonatomic) double vDeltaControlsTopToNavigationBottom;
 @property (readonly, nonatomic) double vDeltaDateBaselineToControlsTop;
 @property (readonly, nonatomic) double vDeltaLockAbsoluteTopToWaveformTop;
-@property (readonly, nonatomic) double vDeltaLockNotificationListBottom;
-@property (readonly, nonatomic) double vDeltaLockNotificationListBottomToRecordingTimeBaseline;
 @property (readonly, nonatomic) double vDeltaTimeBaselineToTitleBaseline;
 @property (readonly, nonatomic) double vDeltaTitleBaselineToDateBaseline;
 @property (readonly, nonatomic) double vDeltaWaveformToTimeBaseline;
@@ -38,14 +36,12 @@
 + (id)defaultMetrics;
 + (id)largeHorizontalMetrics;
 + (id)largeVerticalMetrics;
-+ (id)normalVerticalMetrcis;
++ (id)normalVerticalMetrics;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithLabel:(id)arg1;
-- (void)setMetricInfo:(CDStruct_66e6f92a)arg1;
-- (double)vDeltaLockNotificationListTop;
-- (double)vDeltaLockNotificationListTopToRecordingTextBaseline;
+- (void)setMetricInfo:(CDStruct_76b83881)arg1;
 
 @end
 

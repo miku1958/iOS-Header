@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableData;
 
@@ -17,6 +17,7 @@
     unsigned long long _offset;
 }
 
+- (void).cxx_destruct;
 - (id)allData;
 - (void)appendNetworkData:(id)arg1;
 - (void)dealloc;

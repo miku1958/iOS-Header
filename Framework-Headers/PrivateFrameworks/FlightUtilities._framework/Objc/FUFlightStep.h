@@ -6,30 +6,33 @@
 
 #import <objc/NSObject.h>
 
+#import <FlightUtilities/NSCopying-Protocol.h>
 #import <FlightUtilities/NSSecureCoding-Protocol.h>
 
 @class FUAirport, FUStepTime, NSNumber, NSString;
 
-@interface FUFlightStep : NSObject <NSSecureCoding>
+@interface FUFlightStep : NSObject <NSSecureCoding, NSCopying>
 {
+    NSNumber *_delayFromSchedule;
     FUAirport *_airport;
     NSString *_gate;
     NSString *_terminal;
     long long _legStatus;
-    NSNumber *_delayFromSchedule;
     FUStepTime *_actualTime;
     FUStepTime *_scheduledTime;
     FUStepTime *_plannedTime;
     FUStepTime *_estimatedTime;
+    FUStepTime *_runwayTime;
 }
 
 @property (strong) FUStepTime *actualTime; // @synthesize actualTime=_actualTime;
 @property (strong) FUAirport *airport; // @synthesize airport=_airport;
-@property (strong, nonatomic) NSNumber *delayFromSchedule; // @synthesize delayFromSchedule=_delayFromSchedule;
+@property (strong, nonatomic) NSNumber *delayFromSchedule;
 @property (strong) FUStepTime *estimatedTime; // @synthesize estimatedTime=_estimatedTime;
 @property (strong) NSString *gate; // @synthesize gate=_gate;
 @property long long legStatus; // @synthesize legStatus=_legStatus;
 @property (strong) FUStepTime *plannedTime; // @synthesize plannedTime=_plannedTime;
+@property (strong) FUStepTime *runwayTime; // @synthesize runwayTime=_runwayTime;
 @property (strong) FUStepTime *scheduledTime; // @synthesize scheduledTime=_scheduledTime;
 @property (readonly, nonatomic) unsigned long long status;
 @property (strong) NSString *terminal; // @synthesize terminal=_terminal;

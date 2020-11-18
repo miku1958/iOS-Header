@@ -7,12 +7,12 @@
 #import <Foundation/NSObject.h>
 
 #import <IMSharedUtilities/IMRemoteObjectCoding-Protocol.h>
-#import <IMSharedUtilities/NSCoding-Protocol.h>
 #import <IMSharedUtilities/NSCopying-Protocol.h>
+#import <IMSharedUtilities/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSString;
+@class NSData, NSDate, NSDictionary, NSString;
 
-@interface IMItem : NSObject <NSCoding, NSCopying, IMRemoteObjectCoding>
+@interface IMItem : NSObject <NSSecureCoding, NSCopying, IMRemoteObjectCoding>
 {
     NSString *_handle;
     NSString *_service;
@@ -28,18 +28,33 @@
     id _context;
     long long _type;
     NSString *_balloonBundleID;
+    NSString *_destinationCallerID;
+    NSDate *_clientSendTime;
+    long long _cloudKitSyncState;
+    NSString *_cloudKitRecordID;
+    NSData *_cloudKitServerChangeTokenBlob;
+    NSString *_cloudKitRecordChangeTag;
+    NSString *_parentChatID;
 }
 
 @property (strong, nonatomic) NSString *account; // @synthesize account=_account;
 @property (strong, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
 @property (strong, nonatomic) NSString *balloonBundleID; // @synthesize balloonBundleID=_balloonBundleID;
+@property (strong, nonatomic) NSDate *clientSendTime; // @synthesize clientSendTime=_clientSendTime;
+@property (copy, nonatomic) NSString *cloudKitRecordChangeTag; // @synthesize cloudKitRecordChangeTag=_cloudKitRecordChangeTag;
+@property (copy, nonatomic) NSString *cloudKitRecordID; // @synthesize cloudKitRecordID=_cloudKitRecordID;
+@property (copy, nonatomic) NSData *cloudKitServerChangeTokenBlob; // @synthesize cloudKitServerChangeTokenBlob=_cloudKitServerChangeTokenBlob;
+@property (nonatomic) long long cloudKitSyncState; // @synthesize cloudKitSyncState=_cloudKitSyncState;
 @property (strong, nonatomic) id context; // @synthesize context=_context;
 @property (strong, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property (strong, nonatomic) NSString *destinationCallerID; // @synthesize destinationCallerID=_destinationCallerID;
 @property (strong, nonatomic) NSString *guid; // @synthesize guid=_guid;
 @property (strong, nonatomic) NSString *handle; // @synthesize handle=_handle;
+@property (readonly, nonatomic) BOOL isFirstMessageCandidate;
 @property (readonly, nonatomic) BOOL isFromMe;
 @property (readonly, nonatomic) BOOL isLastMessageCandidate;
 @property (nonatomic, setter=_setMessageID:) long long messageID; // @synthesize messageID=_messageID;
+@property (copy, nonatomic) NSString *parentChatID; // @synthesize parentChatID=_parentChatID;
 @property (strong, nonatomic) NSString *roomName; // @synthesize roomName=_roomName;
 @property (strong, nonatomic) NSString *sender;
 @property (strong, nonatomic) NSDictionary *senderInfo; // @synthesize senderInfo=_senderInfo;
@@ -50,6 +65,7 @@
 
 + (Class)classForIMItemType:(long long)arg1;
 + (Class)classForMessageItemDictionary:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (id)associatedMessageGUID;
 - (struct _NSRange)associatedMessageRange;
 - (long long)associatedMessageType;
@@ -72,6 +88,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isMessageAcknowledgment;
 - (BOOL)isMessageEdit;
+- (BOOL)isOlderThanItem:(id)arg1;
 - (BOOL)isSticker;
 - (id)pluginSessionGUID;
 

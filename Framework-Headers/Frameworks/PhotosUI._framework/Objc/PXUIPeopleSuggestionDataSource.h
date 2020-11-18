@@ -6,26 +6,39 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotosUICore/PHPhotoLibraryChangeObserver-Protocol.h>
 #import <PhotosUICore/PXPeopleSuggestionManagerDataSource-Protocol.h>
 
-@class NSMutableSet, NSString;
+@class NSArray, NSString, PHFetchResult;
 
-@interface PXUIPeopleSuggestionDataSource : NSObject <PXPeopleSuggestionManagerDataSource>
+@interface PXUIPeopleSuggestionDataSource : NSObject <PHPhotoLibraryChangeObserver, PXPeopleSuggestionManagerDataSource>
 {
-    NSMutableSet *_cancelledTokens;
+    unsigned long long _initialPageLimit;
+    unsigned long long _suggestionFetchType;
+    unsigned long long _flowType;
+    NSArray *_mergeCandidates;
+    PHFetchResult *_mergeCandidateFetchResult;
 }
 
-@property (strong, nonatomic) NSMutableSet *cancelledTokens; // @synthesize cancelledTokens=_cancelledTokens;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) unsigned long long flowType; // @synthesize flowType=_flowType;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long initialPageLimit; // @synthesize initialPageLimit=_initialPageLimit;
+@property (copy, nonatomic) PHFetchResult *mergeCandidateFetchResult; // @synthesize mergeCandidateFetchResult=_mergeCandidateFetchResult;
+@property (copy, nonatomic) NSArray *mergeCandidates; // @synthesize mergeCandidates=_mergeCandidates;
+@property (nonatomic) unsigned long long suggestionFetchType; // @synthesize suggestionFetchType=_suggestionFetchType;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)cancelSuggestionForPerson:(id)arg1 withToken:(long long)arg2 error:(id *)arg3;
-- (void)commitSuggestionsForPerson:(id)arg1 withConfirmedSuggestions:(id)arg2 andRejectedSuggestions:(id)arg3;
-- (id)init;
-- (long long)suggestionsForPerson:(id)arg1 withConfirmedSuggestions:(id)arg2 andRejectedSuggestions:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)cancelSuggestionForPerson:(id)arg1 withToken:(id)arg2 error:(id *)arg3;
+- (id)commitSuggestionsForPerson:(id)arg1 withConfirmedSuggestions:(id)arg2 andRejectedSuggestions:(id)arg3;
+- (id)fetchAndCacheMergeCandidatesForPerson:(id)arg1;
+- (id)initWithFlowType:(unsigned long long)arg1;
+- (void)photoLibraryDidChange:(id)arg1;
+- (void)startListeningForLibraryChanges;
+- (void)stopListeningForLibraryChanges;
+- (id)suggestionsForPerson:(id)arg1 withConfirmedSuggestions:(id)arg2 andRejectedSuggestions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

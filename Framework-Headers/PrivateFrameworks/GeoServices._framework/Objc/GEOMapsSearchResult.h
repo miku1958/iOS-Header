@@ -8,23 +8,26 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAddress;
+@class GEOAddress, GEOPlaceActionDetails;
 
 @interface GEOMapsSearchResult : PBCodable <NSCopying>
 {
     unsigned long long _muid;
     GEOAddress *_address;
+    GEOPlaceActionDetails *_placeActionDetails;
     CDStruct_e99c65f7 _has;
 }
 
 @property (strong, nonatomic) GEOAddress *address; // @synthesize address=_address;
 @property (readonly, nonatomic) BOOL hasAddress;
 @property (nonatomic) BOOL hasMuid;
+@property (readonly, nonatomic) BOOL hasPlaceActionDetails;
 @property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
+@property (strong, nonatomic) GEOPlaceActionDetails *placeActionDetails; // @synthesize placeActionDetails=_placeActionDetails;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

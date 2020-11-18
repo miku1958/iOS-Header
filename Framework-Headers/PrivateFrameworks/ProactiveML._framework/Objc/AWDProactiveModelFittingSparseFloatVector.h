@@ -10,16 +10,8 @@
 
 @interface AWDProactiveModelFittingSparseFloatVector : PBCodable <NSCopying>
 {
-    struct {
-        unsigned long long *list;
-        unsigned long long count;
-        unsigned long long size;
-    } _indices;
-    struct {
-        float *list;
-        unsigned long long count;
-        unsigned long long size;
-    } _values;
+    CDStruct_62a50c50 _indices;
+    CDStruct_fae3dc92 _values;
     unsigned long long _length;
     struct {
         unsigned int length:1;
@@ -33,7 +25,8 @@
 @property (readonly, nonatomic) float *values;
 @property (readonly, nonatomic) unsigned long long valuesCount;
 
-+ (id)sparseFloatVectorFromCovariates:(id)arg1;
++ (id)sparseFloatVectorFromModelWeights:(id)arg1;
++ (id)sparseFloatVectorFromSparseVector:(id)arg1;
 - (void)addIndices:(unsigned long long)arg1;
 - (void)addValues:(float)arg1;
 - (void)clearIndices;
@@ -50,6 +43,7 @@
 - (BOOL)readFrom:(id)arg1;
 - (void)setIndices:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (void)setValues:(float *)arg1 count:(unsigned long long)arg2;
+- (float)valueAtIndex:(unsigned long long)arg1;
 - (float)valuesAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 

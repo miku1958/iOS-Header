@@ -21,7 +21,7 @@
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (id)_init;
-- (void)_updateFuseSubscription;
+- (void)_updateAppleMusicSubscription;
 - (void)_updateThirdPartySubscriptionsWithBundleIdentifierWhitelist:(id)arg1 domainWhitelist:(id)arg2 maximumExpirationLimit:(double)arg3;
 - (id)init;
 - (void)registerSubscriptionServiceForURL:(id)arg1 withSubscriptionInfo:(id)arg2;

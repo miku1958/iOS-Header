@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/_NSBundleODRDataCommon.h>
+#import <Foundation/_NSBundleODRDataCommon.h>
 
-#import <extension/NSXPCListenerDelegate-Protocol.h>
-#import <extension/_NSBundleResourceRequestAppExtensionProtocol-Protocol.h>
+#import <Foundation/NSXPCListenerDelegate-Protocol.h>
+#import <Foundation/_NSBundleResourceRequestAppExtensionProtocol-Protocol.h>
 
 @class NSString, NSXPCConnection;
 

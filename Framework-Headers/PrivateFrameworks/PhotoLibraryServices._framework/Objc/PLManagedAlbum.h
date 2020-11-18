@@ -13,7 +13,6 @@
 
 @interface PLManagedAlbum : _PLManagedAlbum <PLSearchableAssetCollection, PLUserEditableAlbumProtocol>
 {
-    BOOL _resolvingConflicts;
     BOOL _albumShouldBeAutomaticallyDeleted;
     BOOL _needsPersistenceUpdate;
 }
@@ -65,7 +64,6 @@
 @property (nonatomic) int pendingItemsType;
 @property (readonly, nonatomic) unsigned long long photosCount;
 @property (readonly, strong, nonatomic) UIImage *posterImage;
-@property (nonatomic) BOOL resolvingConflicts; // @synthesize resolvingConflicts=_resolvingConflicts;
 @property (strong, nonatomic) PLManagedAsset *secondaryKeyAsset;
 @property (readonly, nonatomic) BOOL shouldDeleteWhenEmpty;
 @property (strong, nonatomic) NSDictionary *slideshowSettings;
@@ -94,7 +92,6 @@
 - (id)_expectedKeyAssets:(id)arg1;
 - (id)_keysToBeObserved;
 - (id)_orderComparisonValueForAsset:(id)arg1 iTunesLookupOrder:(id)arg2;
-- (void)_recalculateCachedCounts;
 - (BOOL)_shouldCopyAssetToCameraRollBeforeAdding:(id)arg1;
 - (void)_updateKeyAssetsIfNeeded:(id)arg1;
 - (void)addAssetUsingiTunesAlbumOrder:(id)arg1;
@@ -116,6 +113,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)persistMetadataToFileSystem;
 - (void)prepareForDeletion;
+- (void)recalculateCachedCounts;
 - (void)refreshAssets;
 - (void)registerForChanges;
 - (void)removeAssetsAtIndexes:(id)arg1;

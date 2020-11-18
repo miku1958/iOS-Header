@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
@@ -31,19 +31,19 @@
     NSString *_trafficDensityDescription;
 }
 
-@property (readonly, strong, nonatomic) NSDate *aggressiveDepartureDate; // @synthesize aggressiveDepartureDate=_aggressiveDepartureDate;
+@property (readonly, nonatomic) NSDate *aggressiveDepartureDate; // @synthesize aggressiveDepartureDate=_aggressiveDepartureDate;
 @property (readonly, nonatomic) double aggressiveTravelTime; // @synthesize aggressiveTravelTime=_aggressiveTravelTime;
-@property (readonly, strong, nonatomic) NSDate *conservativeDepartureDate; // @synthesize conservativeDepartureDate=_conservativeDepartureDate;
+@property (readonly, nonatomic) NSDate *conservativeDepartureDate; // @synthesize conservativeDepartureDate=_conservativeDepartureDate;
 @property (readonly, nonatomic) double conservativeTravelTime; // @synthesize conservativeTravelTime=_conservativeTravelTime;
 @property (readonly, nonatomic) unsigned long long currentTrafficDensity; // @synthesize currentTrafficDensity=_currentTrafficDensity;
-@property (readonly, strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) double estimatedTravelTime; // @synthesize estimatedTravelTime=_estimatedTravelTime;
-@property (readonly, strong, nonatomic) NSDate *generationDate; // @synthesize generationDate=_generationDate;
+@property (readonly, nonatomic) NSDate *generationDate; // @synthesize generationDate=_generationDate;
 @property (readonly, nonatomic) unsigned long long historicTrafficDensity; // @synthesize historicTrafficDensity=_historicTrafficDensity;
-@property (readonly, strong, nonatomic) GEOLocation *lastLocation; // @synthesize lastLocation=_lastLocation;
-@property (readonly, strong, nonatomic) GEORouteHypothesisIncident *mostRelevantIncident; // @synthesize mostRelevantIncident=_mostRelevantIncident;
+@property (readonly, nonatomic) GEOLocation *lastLocation; // @synthesize lastLocation=_lastLocation;
+@property (readonly, nonatomic) GEORouteHypothesisIncident *mostRelevantIncident; // @synthesize mostRelevantIncident=_mostRelevantIncident;
 @property (readonly, copy, nonatomic) NSString *routeName; // @synthesize routeName=_routeName;
-@property (readonly, strong, nonatomic) NSDate *suggestedDepartureDate; // @synthesize suggestedDepartureDate=_suggestedDepartureDate;
+@property (readonly, nonatomic) NSDate *suggestedDepartureDate; // @synthesize suggestedDepartureDate=_suggestedDepartureDate;
 @property (readonly, nonatomic) BOOL supportsLiveTraffic; // @synthesize supportsLiveTraffic=_supportsLiveTraffic;
 @property (readonly, nonatomic) NSString *trafficDensityDescription;
 @property (readonly, nonatomic) int transportType; // @synthesize transportType=_transportType;
@@ -52,6 +52,7 @@
 + (id)_routeHypothesisErrorWithUnderlyingError:(id)arg1;
 + (BOOL)supportsSecureCoding;
 + (BOOL)supportsTravelState:(long long)arg1 forTransportType:(int)arg2;
+- (void).cxx_destruct;
 - (void)_clearHypothesisAndSetErrorWithCode:(long long)arg1;
 - (void)_setError:(id)arg1;
 - (void)_updateCurrentTrafficDensity:(double)arg1 staticTravelTime:(double)arg2;

@@ -44,7 +44,7 @@
 - (void)_updateButtonTitle;
 - (void)becomeReusable;
 - (void)didApplyGeometry:(struct PXTileGeometry)arg1 withUserData:(id)arg2;
-- (void)handleButtonTap:(id)arg1;
+- (void)handleButtonTap:(id)arg1 forEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)prepareForReuse;
 - (void)tintColorDidChange;

@@ -23,10 +23,12 @@
     CKDPRecordReference *_referenceValue;
     NSString *_stringValue;
     int _type;
+    BOOL _isEncrypted;
     struct {
         unsigned int doubleValue:1;
         unsigned int signedValue:1;
         unsigned int type:1;
+        unsigned int isEncrypted:1;
     } _has;
 }
 
@@ -38,12 +40,14 @@
 @property (readonly, nonatomic) BOOL hasBytesValue;
 @property (readonly, nonatomic) BOOL hasDateValue;
 @property (nonatomic) BOOL hasDoubleValue;
+@property (nonatomic) BOOL hasIsEncrypted;
 @property (readonly, nonatomic) BOOL hasLocationValue;
 @property (readonly, nonatomic) BOOL hasPackageValue;
 @property (readonly, nonatomic) BOOL hasReferenceValue;
 @property (nonatomic) BOOL hasSignedValue;
 @property (readonly, nonatomic) BOOL hasStringValue;
 @property (nonatomic) BOOL hasType;
+@property (nonatomic) BOOL isEncrypted; // @synthesize isEncrypted=_isEncrypted;
 @property (strong, nonatomic) NSMutableArray *listValues; // @synthesize listValues=_listValues;
 @property (strong, nonatomic) CKDPLocationCoordinate *locationValue; // @synthesize locationValue=_locationValue;
 @property (strong, nonatomic) CKDPPackage *packageValue; // @synthesize packageValue=_packageValue;
@@ -55,6 +59,7 @@
 + (Class)listValueType;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
+- (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
 - (void)addListValue:(id)arg1;
 - (void)clearListValues;
 - (void)copyTo:(id)arg1;

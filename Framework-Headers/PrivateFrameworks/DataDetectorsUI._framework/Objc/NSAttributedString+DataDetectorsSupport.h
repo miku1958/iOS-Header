@@ -7,6 +7,7 @@
 #import <Foundation/NSAttributedString.h>
 
 @interface NSAttributedString (DataDetectorsSupport)
++ (BOOL)dd_isTransientAttribute:(id)arg1;
 - (id)dd_contextAtLocation:(long long)arg1;
 - (struct __DDResult *)dd_resultAtLocation:(long long)arg1;
 @end

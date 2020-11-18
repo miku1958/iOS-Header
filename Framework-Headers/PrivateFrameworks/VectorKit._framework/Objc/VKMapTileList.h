@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface VKMapTileList : NSObject
@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)addTileToList:(id)arg1;
 - (void)clearList;
-- (void)consolidateList;
 - (id)init;
 
 @end

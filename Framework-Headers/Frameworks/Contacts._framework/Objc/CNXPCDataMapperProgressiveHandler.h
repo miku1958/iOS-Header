@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Contacts/ProgressiveResultsHandlerProtocol-Protocol.h>
 
@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _completionBlock;
 }
 
+- (void).cxx_destruct;
 - (void)completedWithError:(id)arg1;
-- (void)dealloc;
 - (id)initWithProgressBlock:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)receiveProgressiveContacts:(id)arg1 matchInfos:(id)arg2;
 

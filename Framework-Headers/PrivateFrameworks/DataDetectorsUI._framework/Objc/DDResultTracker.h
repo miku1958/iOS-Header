@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray;
 
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property unsigned long long maximumDistanceForEmails; // @synthesize maximumDistanceForEmails;
 @property (readonly) unsigned int totalCountRemaining; // @synthesize totalCountRemaining;
 
+- (void).cxx_destruct;
 - (BOOL)addResultIfAppropriate:(struct __DDResult *)arg1;
 - (void)dealloc;
 - (id)initWithReferenceResult:(struct __DDResult *)arg1;

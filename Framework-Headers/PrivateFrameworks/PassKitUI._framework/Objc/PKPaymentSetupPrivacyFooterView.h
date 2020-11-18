@@ -14,8 +14,11 @@
 @interface PKPaymentSetupPrivacyFooterView : UIView <UITextViewDelegate>
 {
     long long _context;
+    NSString *_paymentNetwork;
+    NSString *_deviceTypeName;
     UITextView *_messageView;
     id<PKPaymentSetupPrivacyFooterViewDelegate> _delegate;
+    NSString *_privacyText;
     UIColor *_messageColor;
     UIColor *_linkColor;
 }
@@ -26,6 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) UIColor *linkColor; // @synthesize linkColor=_linkColor;
 @property (copy, nonatomic) UIColor *messageColor; // @synthesize messageColor=_messageColor;
+@property (copy, nonatomic) NSString *privacyText; // @synthesize privacyText=_privacyText;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -38,11 +42,13 @@
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2 paymentNetwork:(id)arg3 deviceTypeName:(id)arg4;
 - (void)layoutSubviews;
 - (void)pk_applyAppearance:(id)arg1;
 - (id)pk_childrenForAppearance;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

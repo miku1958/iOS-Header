@@ -15,7 +15,6 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_endDateCell;
-- (void)dealloc;
 - (void)editor:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
 
 @end

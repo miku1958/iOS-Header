@@ -60,6 +60,7 @@
 + (id)_boldFontForOrientation:(long long)arg1;
 + (void)_calculateWidthForOrientation:(long long)arg1 excludeCurrentTime:(BOOL)arg2;
 + (double)_dynamicFontSizeForOrientation:(long long)arg1;
++ (id)_hourFontForOrientation:(long long)arg1;
 + (void)_invalidateCachedValues;
 + (void)_invalidateWidth;
 + (id)_noonLocalizedString;

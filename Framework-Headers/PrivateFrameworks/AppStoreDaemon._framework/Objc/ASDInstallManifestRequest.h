@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppStoreDaemon/ASDRequest.h>
+#import <AppStoreDaemon/ASDEphemeralRequest.h>
 
 @class ASDInstallManifestRequestOptions;
 
-@interface ASDInstallManifestRequest : ASDRequest
+@interface ASDInstallManifestRequest : ASDEphemeralRequest
 {
-    CDUnknownBlockType _block;
-    ASDInstallManifestRequestOptions *_options;
 }
 
-- (void).cxx_destruct;
-- (void)_handleResponse:(id)arg1 error:(id)arg2;
-- (id)init;
+@property (readonly, copy, nonatomic) ASDInstallManifestRequestOptions *options; // @dynamic options;
+
++ (long long)requestType;
 - (id)initWithOptions:(id)arg1;
 - (void)startWithCompletionBlock:(CDUnknownBlockType)arg1;
 

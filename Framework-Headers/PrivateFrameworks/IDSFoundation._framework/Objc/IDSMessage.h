@@ -21,8 +21,8 @@
 @property (copy) NSNumber *version; // @synthesize version=_version;
 @property (copy) NSNumber *wantsDeliveryStatus; // @synthesize wantsDeliveryStatus=_wantsDeliveryStatus;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)messageBody;
 - (id)userAgentHeaderString;

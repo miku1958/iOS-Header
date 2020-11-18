@@ -6,9 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSData, NSDictionary, NSOperationQueue, NSURL;
+#import <SceneKit/NSKeyedUnarchiverDelegate-Protocol.h>
 
-@interface SCNSceneSource : NSObject
+@class NSData, NSDictionary, NSOperationQueue, NSString, NSURL;
+
+@interface SCNSceneSource : NSObject <NSKeyedUnarchiverDelegate>
 {
     struct __C3DSceneSource *_sceneSource;
     struct __C3DScene *_lastLoadedScene;
@@ -19,6 +21,10 @@
 }
 
 @property (readonly) NSData *data;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly) NSURL *url;
 
 + (void)_cacheSceneSource:(id)arg1 forURL:(id)arg2 options:(id)arg3;
@@ -39,7 +45,6 @@
 - (void)dealloc;
 - (id)debugQuickLookData;
 - (id)debugQuickLookObject;
-- (id)description;
 - (id)entriesPassingTest:(CDUnknownBlockType)arg1;
 - (id)entryWithID:(id)arg1 withClass:(Class)arg2;
 - (id)entryWithIdentifier:(id)arg1 withClass:(Class)arg2;
@@ -59,6 +64,7 @@
 - (id)sceneWithOptions:(id)arg1 error:(id *)arg2;
 - (id)sceneWithOptions:(id)arg1 statusHandler:(CDUnknownBlockType)arg2;
 - (long long)sourceStatus;
+- (Class)unarchiver:(id)arg1 cannotDecodeObjectOfClassName:(id)arg2 originalClasses:(id)arg3;
 
 @end
 

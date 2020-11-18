@@ -7,38 +7,40 @@
 #import <objc/NSObject.h>
 
 @class NSTimer;
-@protocol PXPeopleProgressDatasource;
+@protocol PXPeopleProgressDataSource;
 
 @interface PXPeopleProgressManager : NSObject
 {
     BOOL _monitoringProgress;
-    id<PXPeopleProgressDatasource> _datasource;
+    BOOL _processingComplete;
+    id<PXPeopleProgressDataSource> _dataSource;
     double _updateInterval;
     double _progress;
     unsigned long long _processingStatus;
     NSTimer *_statusTimer;
 }
 
-@property (strong, nonatomic) id<PXPeopleProgressDatasource> datasource; // @synthesize datasource=_datasource;
+@property (strong, nonatomic) id<PXPeopleProgressDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (readonly) BOOL featureUnlocked;
+@property (readonly) BOOL hasFaceProcessingTodo;
 @property (nonatomic, getter=isMonitoringProgress) BOOL monitoringProgress; // @synthesize monitoringProgress=_monitoringProgress;
-@property (readonly) BOOL processingComplete;
-@property unsigned long long processingStatus; // @synthesize processingStatus=_processingStatus;
+@property (readonly) BOOL processingComplete; // @synthesize processingComplete=_processingComplete;
+@property (nonatomic) unsigned long long processingStatus; // @synthesize processingStatus=_processingStatus;
 @property double progress; // @synthesize progress=_progress;
+@property (readonly) BOOL shouldUseInterstitial;
+@property (readonly) BOOL shouldUseProgressFooter;
 @property (strong, nonatomic) NSTimer *statusTimer; // @synthesize statusTimer=_statusTimer;
 @property (nonatomic) double updateInterval; // @synthesize updateInterval=_updateInterval;
 
 - (void).cxx_destruct;
-- (void)_handleMonitorUpdateWithProgress:(double)arg1;
-- (unsigned long long)_homeAndPlusCount:(unsigned long long)arg1;
-- (BOOL)_homeMeetsThresholdForProgress:(double)arg1;
 - (BOOL)_progressComplete:(double)arg1;
-- (void)_updateProgress;
+- (void)_scheduleNextUpdate;
 - (void)_updateStatusForProgress:(double)arg1 processCount:(unsigned long long)arg2;
 - (void)_updateWithStatus:(unsigned long long)arg1 progress:(double)arg2;
-- (BOOL)featureUnlocked;
-- (BOOL)hasSubstantialProcessingTodo;
+- (BOOL)hasSubstantialProcessingUsingMinAssetCount:(BOOL)arg1;
 - (id)init;
-- (id)initWithDatasource:(id)arg1;
+- (id)initWithDataSource:(id)arg1;
+- (void)updateProgressWithForce:(BOOL)arg1;
 
 @end
 

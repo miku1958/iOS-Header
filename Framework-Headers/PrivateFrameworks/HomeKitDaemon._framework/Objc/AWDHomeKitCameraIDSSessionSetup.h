@@ -10,10 +10,10 @@
 
 @interface AWDHomeKitCameraIDSSessionSetup : PBCodable <NSCopying>
 {
-    unsigned long long _idsSessionInvitationReceived;
-    unsigned long long _idsSessionInvitationSent;
-    unsigned long long _idsSessionStartedOnReceiver;
-    unsigned long long _idsSessionStartedOnResident;
+    unsigned int _idsSessionInvitationReceived;
+    unsigned int _idsSessionInvitationSent;
+    unsigned int _idsSessionStartedOnReceiver;
+    unsigned int _idsSessionStartedOnResident;
     struct {
         unsigned int idsSessionInvitationReceived:1;
         unsigned int idsSessionInvitationSent:1;
@@ -26,10 +26,10 @@
 @property (nonatomic) BOOL hasIdsSessionInvitationSent;
 @property (nonatomic) BOOL hasIdsSessionStartedOnReceiver;
 @property (nonatomic) BOOL hasIdsSessionStartedOnResident;
-@property (nonatomic) unsigned long long idsSessionInvitationReceived; // @synthesize idsSessionInvitationReceived=_idsSessionInvitationReceived;
-@property (nonatomic) unsigned long long idsSessionInvitationSent; // @synthesize idsSessionInvitationSent=_idsSessionInvitationSent;
-@property (nonatomic) unsigned long long idsSessionStartedOnReceiver; // @synthesize idsSessionStartedOnReceiver=_idsSessionStartedOnReceiver;
-@property (nonatomic) unsigned long long idsSessionStartedOnResident; // @synthesize idsSessionStartedOnResident=_idsSessionStartedOnResident;
+@property (nonatomic) unsigned int idsSessionInvitationReceived; // @synthesize idsSessionInvitationReceived=_idsSessionInvitationReceived;
+@property (nonatomic) unsigned int idsSessionInvitationSent; // @synthesize idsSessionInvitationSent=_idsSessionInvitationSent;
+@property (nonatomic) unsigned int idsSessionStartedOnReceiver; // @synthesize idsSessionStartedOnReceiver=_idsSessionStartedOnReceiver;
+@property (nonatomic) unsigned int idsSessionStartedOnResident; // @synthesize idsSessionStartedOnResident=_idsSessionStartedOnResident;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

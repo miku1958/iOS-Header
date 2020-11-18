@@ -6,9 +6,14 @@
 
 #import <Home/HFControlItem.h>
 
+@protocol HFColorProfile;
+
 @interface HFColorControlItem : HFControlItem
 {
 }
+
+@property (readonly, nonatomic) id<HFColorProfile> colorProfile;
+@property (readonly, nonatomic) BOOL supportsRGBColor;
 
 + (id)colorCharacteristicTypes;
 + (Class)valueClass;
@@ -17,6 +22,8 @@
 - (id)copyWithCharacteristicTypes:(id)arg1 valueSource:(id)arg2;
 - (id)initWithValueSource:(id)arg1 characteristicTypes:(id)arg2 displayResults:(id)arg3;
 - (id)initWithValueSource:(id)arg1 displayResults:(id)arg2;
+- (BOOL)supportsItemRepresentingServices:(id)arg1;
+- (id)valueForCharacteristicType:(id)arg1 inBatchReadResponse:(id)arg2;
 - (id)valueForCharacteristicValues:(id)arg1;
 - (id)writeValue:(id)arg1;
 

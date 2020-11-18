@@ -22,6 +22,7 @@
     WAKView *_responderView;
     WAKView *_nextResponder;
     BOOL _visible;
+    BOOL _isInSnapshottingPaint;
     BOOL _useOrientationDependentFontAntialiasing;
     BOOL _entireWindowVisibleForTesting;
     struct Lock _exposedScrollViewRectLock;
@@ -59,6 +60,7 @@
 - (id)hostLayer;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithLayer:(id)arg1;
+- (BOOL)isInSnapshottingPaint;
 - (BOOL)isKeyWindow;
 - (BOOL)isVisible;
 - (BOOL)keepsZoomedOutTiles;
@@ -86,6 +88,7 @@
 - (void)setEntireWindowVisibleForTesting:(BOOL)arg1;
 - (void)setExposedScrollViewRect:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1 display:(BOOL)arg2;
+- (void)setIsInSnapshottingPaint:(BOOL)arg1;
 - (void)setKeepsZoomedOutTiles:(BOOL)arg1;
 - (void)setNeedsDisplay;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;

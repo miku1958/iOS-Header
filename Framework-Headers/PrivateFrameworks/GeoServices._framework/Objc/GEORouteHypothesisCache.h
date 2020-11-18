@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEONavdCachePersistenceManager;
 
@@ -13,6 +13,7 @@
     GEONavdCachePersistenceManager *_persistenceManager;
 }
 
+- (void).cxx_destruct;
 - (void)_protectedDataDidBecomeAvailable;
 - (void)_removeAllEntries;
 - (void)dealloc;

@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
     struct __CFRunLoop *_runLoop;
     NSOperationQueue *_queryQueue;
     _Atomic int _disableCount;
+    int _receiverDisableCount;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -71,7 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)_runQuery;
 - (void)_sendHasUpdateNotificationIfNeeded;
 - (void)_setQueryState:(int)arg1;
-- (void)_startReceiver;
+- (void)_watchScopes;
 - (id)attributeValueForName:(id)arg1 forResultAtIndex:(long long)arg2;
 - (unsigned long long)countOfResultsForAttributeName:(id)arg1 value:(id)arg2;
 - (void)dealloc;

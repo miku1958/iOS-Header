@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, NSString, PGTitleGeneratorDateMatching, PHAsset, PHAssetCollection;
+@class NSLocale, NSSet, PGTitle, PGTitleGeneratorDateMatching, PHAsset, PHAssetCollection;
 
 @interface PGTitleGenerator : NSObject
 {
@@ -15,24 +15,22 @@
     PHAsset *_keyAsset;
     PHAssetCollection *_curatedAssetCollection;
     PHAssetCollection *_assetCollection;
-    NSString *_title;
-    NSString *_subtitle;
-    long long _category;
+    PGTitle *_title;
+    PGTitle *_subtitle;
     NSSet *_usedLocationNodes;
+    NSLocale *_locale;
 }
 
 @property (readonly, nonatomic) PHAssetCollection *assetCollection; // @synthesize assetCollection=_assetCollection;
-@property (readonly, nonatomic) long long category; // @synthesize category=_category;
 @property (readonly, nonatomic) PHAssetCollection *curatedAssetCollection; // @synthesize curatedAssetCollection=_curatedAssetCollection;
 @property (readonly, nonatomic) PGTitleGeneratorDateMatching *dateMatching; // @synthesize dateMatching=_dateMatching;
 @property (readonly, nonatomic) PHAsset *keyAsset; // @synthesize keyAsset=_keyAsset;
+@property (strong, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (readonly, nonatomic) NSSet *momentNodes; // @synthesize momentNodes=_momentNodes;
-@property (readonly, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
-@property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
+@property (readonly, nonatomic) PGTitle *subtitle; // @synthesize subtitle=_subtitle;
+@property (readonly, nonatomic) PGTitle *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSSet *usedLocationNodes; // @synthesize usedLocationNodes=_usedLocationNodes;
 
-+ (id)_closestAddressNodeFromMomentNodes:(id)arg1 toLocation:(id)arg2 withMaximumDistance:(double)arg3;
-+ (id)_closestAssetLocationForAsset:(id)arg1 inAssetCollection:(id)arg2;
 - (void).cxx_destruct;
 - (id)_addressNodeFromKeyAsset;
 - (id)_addressNodesFromCuratedAssetCollection;

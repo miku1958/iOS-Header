@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOABAssignmentResponse, GEOPDPlace, GEOPlace, GEORPCurrentEnvironmentManifestURLs, GEORPMapLocation, GEORPPlaceInfo, GEORPTransitLineTileInfo, NSMutableArray, NSString;
+@class GEOABAssignmentResponse, GEOPDPlace, GEOPlace, GEORPCurrentEnvironmentManifestURLs, GEORPMapLocation, GEORPNavigationSettings, GEORPPersonalizedMaps, GEORPPlaceInfo, GEORPTransitLineTileInfo, GEOServicesState, NSMutableArray, NSString;
 
 @interface GEORPProblemContext : PBCodable <NSCopying>
 {
@@ -26,10 +26,13 @@
     NSString *_lastSearchString;
     NSString *_lastUserTypedSearchString;
     GEORPMapLocation *_mapLocation;
+    GEORPNavigationSettings *_navigationSettings;
     GEOPlace *_originalPlace;
+    GEORPPersonalizedMaps *_personalizedMaps;
     int _pinType;
     GEOPDPlace *_place;
     GEORPPlaceInfo *_placeInfo;
+    GEOServicesState *_servicesState;
     NSString *_tileStateLog;
     GEORPTransitLineTileInfo *_transitLineTileInfo;
     NSMutableArray *_visibleTileSets;
@@ -58,22 +61,28 @@
 @property (readonly, nonatomic) BOOL hasLastSearchString;
 @property (readonly, nonatomic) BOOL hasLastUserTypedSearchString;
 @property (readonly, nonatomic) BOOL hasMapLocation;
+@property (readonly, nonatomic) BOOL hasNavigationSettings;
 @property (readonly, nonatomic) BOOL hasOriginalPlace;
 @property (nonatomic) BOOL hasOriginatingAuxiliaryControlIndex;
+@property (readonly, nonatomic) BOOL hasPersonalizedMaps;
 @property (nonatomic) BOOL hasPinType;
 @property (readonly, nonatomic) BOOL hasPlace;
 @property (readonly, nonatomic) BOOL hasPlaceInfo;
+@property (readonly, nonatomic) BOOL hasServicesState;
 @property (nonatomic) BOOL hasSessionId;
 @property (readonly, nonatomic) BOOL hasTileStateLog;
 @property (readonly, nonatomic) BOOL hasTransitLineTileInfo;
 @property (strong, nonatomic) NSString *lastSearchString; // @synthesize lastSearchString=_lastSearchString;
 @property (strong, nonatomic) NSString *lastUserTypedSearchString; // @synthesize lastUserTypedSearchString=_lastUserTypedSearchString;
 @property (strong, nonatomic) GEORPMapLocation *mapLocation; // @synthesize mapLocation=_mapLocation;
+@property (strong, nonatomic) GEORPNavigationSettings *navigationSettings; // @synthesize navigationSettings=_navigationSettings;
 @property (strong, nonatomic) GEOPlace *originalPlace; // @synthesize originalPlace=_originalPlace;
 @property (nonatomic) unsigned long long originatingAuxiliaryControlIndex; // @synthesize originatingAuxiliaryControlIndex=_originatingAuxiliaryControlIndex;
+@property (strong, nonatomic) GEORPPersonalizedMaps *personalizedMaps; // @synthesize personalizedMaps=_personalizedMaps;
 @property (nonatomic) int pinType; // @synthesize pinType=_pinType;
 @property (strong, nonatomic) GEOPDPlace *place; // @synthesize place=_place;
 @property (strong, nonatomic) GEORPPlaceInfo *placeInfo; // @synthesize placeInfo=_placeInfo;
+@property (strong, nonatomic) GEOServicesState *servicesState; // @synthesize servicesState=_servicesState;
 @property (nonatomic) struct GEOSessionID sessionId; // @synthesize sessionId=_sessionId;
 @property (strong, nonatomic) NSString *tileStateLog; // @synthesize tileStateLog=_tileStateLog;
 @property (strong, nonatomic) GEORPTransitLineTileInfo *transitLineTileInfo; // @synthesize transitLineTileInfo=_transitLineTileInfo;
@@ -85,6 +94,7 @@
 + (Class)directionsResponseType;
 + (Class)directionsWaypointPlaceInfoType;
 + (Class)visibleTileSetType;
+- (void).cxx_destruct;
 - (int)StringAsPinType:(id)arg1;
 - (void)addAutocompleteSuggestionList:(id)arg1;
 - (void)addAuxiliaryControl:(id)arg1;
@@ -104,7 +114,6 @@
 - (void)clearVisibleTileSets;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)directionsRequestAtIndex:(unsigned long long)arg1;

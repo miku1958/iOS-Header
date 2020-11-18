@@ -9,6 +9,7 @@
 @interface NSArray (NSArray)
 + (id)arrayWithContentsOfFile:(id)arg1;
 + (id)arrayWithContentsOfURL:(id)arg1;
++ (id)arrayWithContentsOfURL:(id)arg1 error:(id *)arg2;
 + (id)newWithContentsOf:(id)arg1 immutable:(BOOL)arg2;
 - (id)_stringToWrite;
 - (Class)classForCoder;
@@ -17,10 +18,12 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContentsOfFile:(id)arg1;
 - (id)initWithContentsOfURL:(id)arg1;
+- (id)initWithContentsOfURL:(id)arg1 error:(id *)arg2;
 - (id)sortedArrayHint;
 - (id)sortedArrayUsingFunction:(CDUnknownFunctionPointerType)arg1 context:(void *)arg2 hint:(id)arg3;
 - (id)sortedArrayUsingSelector:(SEL)arg1 hint:(id)arg2;
 - (BOOL)writeToFile:(id)arg1 atomically:(BOOL)arg2;
 - (BOOL)writeToURL:(id)arg1 atomically:(BOOL)arg2;
+- (BOOL)writeToURL:(id)arg1 error:(id *)arg2;
 @end
 

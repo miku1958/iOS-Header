@@ -10,13 +10,14 @@
 #import <SceneKit/NSSecureCoding-Protocol.h>
 #import <SceneKit/SCNAnimatable-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, SCNGeometry, SCNOrderedDictionary, UIColor;
+@class NSArray, NSDictionary, NSMutableDictionary, NSString, SCNGeometry, SCNOrderedDictionary, UIColor;
 
 @interface SCNParticleSystem : NSObject <NSCopying, NSSecureCoding, SCNAnimatable>
 {
     struct __C3DParticleSystem *_particleSystem;
     unsigned int _isPresentationInstance:1;
     SCNOrderedDictionary *_animations;
+    NSMutableDictionary *_bindings;
     NSString *_name;
     double _emissionDuration;
     double _emissionDurationVariation;
@@ -29,6 +30,7 @@
     long long _birthLocation;
     long long _birthDirection;
     struct SCNVector3 _emittingDirection;
+    struct SCNVector3 _orientationDirection;
     struct SCNVector3 _acceleration;
     double _spreadingAngle;
     BOOL _loops;
@@ -62,6 +64,8 @@
     SCNParticleSystem *_systemSpawnedOnLiving;
     double _particleSize;
     double _particleSizeVariation;
+    double _particleIntensity;
+    double _particleIntensityVariation;
     long long _seed;
     long long _blendMode;
     long long _renderingMode;
@@ -119,6 +123,7 @@
 @property (nonatomic, getter=isLightingEnabled) BOOL lightingEnabled;
 @property (nonatomic, getter=isLocal) BOOL local;
 @property (nonatomic) BOOL loops;
+@property (nonatomic) struct SCNVector3 orientationDirection;
 @property (nonatomic) long long orientationMode;
 @property (nonatomic) double particleAngle;
 @property (nonatomic) double particleAngleVariation;
@@ -134,6 +139,8 @@
 @property (nonatomic) double particleFriction;
 @property (nonatomic) double particleFrictionVariation;
 @property (strong, nonatomic) id particleImage;
+@property (nonatomic) double particleIntensity;
+@property (nonatomic) double particleIntensityVariation;
 @property (nonatomic) double particleLifeSpan;
 @property (nonatomic) double particleLifeSpanVariation;
 @property (nonatomic) double particleMass;
@@ -159,18 +166,25 @@
 + (BOOL)supportsSecureCoding;
 - (const void *)__CFObject;
 - (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
+- (void)_copyAnimationsFrom:(id)arg1;
 - (void)_customDecodingOfSCNParticleSystem:(id)arg1;
 - (void)_customEncodingOfSCNParticleSystem:(id)arg1;
 - (BOOL)_isAReference;
-- (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2;
+- (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2 pausedByNode:(BOOL)arg3;
+- (id)_scnAnimationForKey:(id)arg1;
+- (id)_scnBindings;
+- (void)_setParticleImagePath:(id)arg1 withResolvedPath:(id)arg2;
 - (void)_syncEntityObjCModel;
 - (void)_syncObjCAnimations;
 - (void)_syncObjCModel;
+- (void)_updateParticleC3DImage:(id)arg1;
 - (void)addAnimation:(id)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
+- (void)addAnimationPlayer:(id)arg1 forKey:(id)arg2;
 - (void)addModifierForProperties:(id)arg1 atStage:(long long)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (id)animationForKey:(id)arg1;
 - (struct __C3DAnimationManager *)animationManager;
+- (id)animationPlayerForKey:(id)arg1;
 - (BOOL)areSoftParticlesEnabled;
 - (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (BOOL)blackPassEnabled;
@@ -198,6 +212,7 @@
 - (void)removeAllAnimations;
 - (void)removeAllModifiers;
 - (void)removeAnimationForKey:(id)arg1;
+- (void)removeAnimationForKey:(id)arg1 blendOutDuration:(double)arg2;
 - (void)removeAnimationForKey:(id)arg1 fadeOutDuration:(double)arg2;
 - (void)removeModifiersOfStage:(long long)arg1;
 - (long long)renderingMode;

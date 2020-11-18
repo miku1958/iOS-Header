@@ -23,6 +23,7 @@
 - (void)_handleDaemonEvent:(id)arg1;
 - (void)_handleDaemonResponse:(id)arg1;
 - (void)_registerForWorkoutEvents;
+- (void)_setSuggestedStopTimeout:(double)arg1;
 - (void)_startWatchdogCheckins;
 - (void)_startWorkout:(id)arg1;
 - (void)_stopWatchdogCheckins;
@@ -31,7 +32,6 @@
 - (void)_unregisterForWorkoutEvents;
 - (void)dealloc;
 - (id)init;
-- (id)swimWorkoutInstance:(id)arg1;
 
 @end
 

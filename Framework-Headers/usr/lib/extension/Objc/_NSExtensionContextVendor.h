@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSXPCListenerDelegate-Protocol.h>
-#import <extension/_NSExtensionContextVending-Protocol.h>
+#import <Foundation/NSXPCListenerDelegate-Protocol.h>
+#import <Foundation/_NSExtensionContextVending-Protocol.h>
 
 @class NSMutableDictionary, NSString;
 

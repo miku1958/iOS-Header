@@ -16,6 +16,7 @@
 - (BOOL)_accessibilitySupportsActivateAction;
 - (id)_axDigitalTouchDescription;
 - (BOOL)_axIsDigitalTouch;
+- (BOOL)_axIsJellyfishVideo;
 - (BOOL)_axIsLocating;
 - (BOOL)_axIsLocation;
 - (BOOL)_axIsPhoto;

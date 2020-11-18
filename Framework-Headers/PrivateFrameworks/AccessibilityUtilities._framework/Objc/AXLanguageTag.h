@@ -20,23 +20,23 @@
 }
 
 @property (strong, nonatomic) NSMutableOrderedSet *ambiguousDialects; // @synthesize ambiguousDialects=_ambiguousDialects;
-@property (nonatomic) NSString *content; // @synthesize content=_content;
-@property (readonly, nonatomic) NSString *contentSubstring;
-@property (readonly, nonatomic) AXDialectMap *dialect;
-@property (readonly, nonatomic) AXDialectMap *preferredAmbiguousDialect;
-@property (readonly, nonatomic) AXDialectMap *preferredUnambiguousDialect;
+@property (weak, nonatomic) NSString *content; // @synthesize content=_content;
+@property (readonly, weak, nonatomic) NSString *contentSubstring;
+@property (readonly, weak, nonatomic) AXDialectMap *dialect;
+@property (readonly, weak, nonatomic) AXDialectMap *preferredAmbiguousDialect;
+@property (readonly, weak, nonatomic) AXDialectMap *preferredUnambiguousDialect;
 @property (nonatomic) struct _NSRange range; // @synthesize range=_range;
 @property (strong, nonatomic) NSMutableOrderedSet *unambiguousDialects; // @synthesize unambiguousDialects=_unambiguousDialects;
 @property (nonatomic) BOOL wasPredicted; // @synthesize wasPredicted=_wasPredicted;
 
 + (id)tagWithDialects:(id)arg1 range:(struct _NSRange)arg2 content:(id)arg3 predictedByTagger:(BOOL)arg4;
+- (void).cxx_destruct;
 - (void)addAmbiguousDialect:(id)arg1;
 - (void)addAmbiguousDialects:(id)arg1;
 - (void)addUnambiguousDialect:(id)arg1;
 - (BOOL)canBeSpokenByDialect:(id)arg1;
 - (BOOL)canBeSpokenByLanguage:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (BOOL)hasAmbigiousDialects;
 

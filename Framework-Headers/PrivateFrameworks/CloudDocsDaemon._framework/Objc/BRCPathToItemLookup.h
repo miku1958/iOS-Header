@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BRCDocumentItem, BRCItemID, BRCLocalItem, BRCPackageItem, BRCRelativePath, BRCServerItem;
+@class BRCClientZone, BRCDocumentItem, BRCLocalItem, BRCPQLConnection, BRCPackageItem, BRCRelativePath, BRCServerItem;
 
 @interface BRCPathToItemLookup : NSObject
 {
@@ -15,21 +15,23 @@
     BRCLocalItem *_matchByFileID;
     BRCDocumentItem *_matchByDocumentID;
     BRCLocalItem *_matchByPath;
-    BRCServerItem *_serverItem;
     BRCServerItem *_serverByPath;
     BRCPackageItem *_packageItem;
-    BRCItemID *_parentID;
+    BRCLocalItem *_parentItem;
     BRCLocalItem *_matchByFileIDGlobally;
     BRCDocumentItem *_matchByDocumentIDGlobally;
+    BRCClientZone *_clientZone;
     struct {
         unsigned int byFileID:1;
         unsigned int byDocumentID:1;
         unsigned int byPath:1;
-        unsigned int parentID:1;
+        unsigned int parentItem:1;
         unsigned int serverItem:1;
         unsigned int serverByPath:1;
         unsigned int packageItem:1;
+        unsigned int clientZone:1;
     } _fetched;
+    BRCPQLConnection *_db;
 }
 
 @property (strong, nonatomic) BRCDocumentItem *byDocumentID;
@@ -37,7 +39,9 @@
 @property (strong, nonatomic) BRCLocalItem *byFileID;
 @property (readonly, strong) BRCLocalItem *byFileIDGlobally;
 @property (readonly, nonatomic) BRCLocalItem *byPath;
-@property (readonly, nonatomic) BRCItemID *parentID;
+@property (readonly, nonatomic) BRCClientZone *clientZone;
+@property (readonly, nonatomic) BRCPQLConnection *db; // @synthesize db=_db;
+@property (readonly, nonatomic) BRCLocalItem *parentItem;
 @property (readonly, nonatomic) BRCRelativePath *relpathOfFSEvent; // @synthesize relpathOfFSEvent=_relpathOfFSEvent;
 @property (readonly, nonatomic) BRCRelativePath *relpathOfItem; // @synthesize relpathOfItem=_pathOfItem;
 @property (readonly, nonatomic) BRCServerItem *serverByPath;
@@ -48,9 +52,13 @@
 - (BOOL)_fetchByDocumentID:(BOOL)arg1;
 - (BOOL)_fetchByFileID:(BOOL)arg1;
 - (BOOL)_fetchByPath;
+- (BOOL)_fetchClientZone;
+- (id)_resolveClientZoneWhileFetchingFileID:(BOOL)arg1 fetchindDocID:(BOOL)arg2;
+- (BOOL)_shareIDMatchesParent:(id)arg1;
 - (id)byPathWithLastPathComponent:(id)arg1;
 - (id)description;
 - (id)initWithRelativePath:(id)arg1;
+- (id)initWithRelativePath:(id)arg1 db:(id)arg2;
 
 @end
 

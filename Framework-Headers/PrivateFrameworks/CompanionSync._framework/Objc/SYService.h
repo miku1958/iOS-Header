@@ -50,6 +50,7 @@
         unsigned int assignedEngineType:3;
         unsigned int suspendedForQWS:1;
     } _flags;
+    NSString *_peerID;
     double _defaultMessageTimeout;
     double _sessionStalenessInterval;
     long long _engineType;
@@ -69,6 +70,7 @@
 @property (readonly, nonatomic) BOOL isMasterStore;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_serviceName;
 @property (strong, nonatomic) NSDictionary *options; // @synthesize options=_defaultOptions;
+@property (readonly, nonatomic) NSString *peerID; // @synthesize peerID=_peerID;
 @property (readonly, nonatomic) SYPersistentStore *persistentStore; // @synthesize persistentStore=_persistentStore;
 @property (nonatomic) long long priority; // @synthesize priority=_defaultPriority;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;

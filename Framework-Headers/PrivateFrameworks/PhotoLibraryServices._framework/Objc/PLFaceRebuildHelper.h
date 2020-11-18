@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSManagedObjectContext;
 
@@ -14,6 +14,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)_updateAnalysisStateForAsset:(id)arg1;
 - (id)findExistingDetectedFaceForRebuildFace:(id)arg1 onAsset:(id)arg2;
 - (id)findOrInsertDetectedFaceForRebuildFace:(id)arg1 onAsset:(id)arg2;
 - (id)initWithContext:(id)arg1;

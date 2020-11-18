@@ -18,6 +18,7 @@
 @property (readonly, copy, nonatomic) NSArray *assets;
 @property (readonly, copy, nonatomic) NSString *buyParameters;
 @property (readonly, copy, nonatomic) NSString *formattedPrice;
+@property (readonly, copy, nonatomic) NSDictionary *lookupDictionary; // @synthesize lookupDictionary=_lookupDictionary;
 @property (readonly, copy, nonatomic) NSString *offerType;
 @property (readonly, copy, nonatomic) NSNumber *price;
 

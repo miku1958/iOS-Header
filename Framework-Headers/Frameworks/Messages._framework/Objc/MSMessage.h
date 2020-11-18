@@ -9,13 +9,14 @@
 #import <Messages/NSCopying-Protocol.h>
 #import <Messages/NSSecureCoding-Protocol.h>
 
-@class MSMessageLayout, MSSession, NSError, NSString, NSURL, NSUUID, UIImage;
-@protocol MSBalloonLayout;
+@class MSMessageLayout, MSSession, NSData, NSError, NSString, NSURL, NSUUID;
 
 @interface MSMessage : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _pending;
     BOOL _shouldExpire;
     BOOL _isFromMe;
+    BOOL _requiresValidation;
     MSSession *_session;
     NSUUID *_senderParticipantIdentifier;
     MSMessageLayout *_layout;
@@ -23,40 +24,39 @@
     NSString *_accessibilityLabel;
     NSString *_summaryText;
     NSError *_error;
-    NSString *_text;
+    NSData *__data;
     NSString *_statusText;
     NSString *_breadcrumbText;
 }
 
 @property (copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property (copy, nonatomic) NSData *_data; // @synthesize _data=__data;
 @property (copy, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
-@property (copy, nonatomic) id<MSBalloonLayout> balloonLayout;
 @property (copy, nonatomic) NSString *breadcrumbText; // @synthesize breadcrumbText=_breadcrumbText;
 @property (copy, nonatomic) NSError *error; // @synthesize error=_error;
-@property (readonly, copy, nonatomic) NSUUID *identifier;
-@property (strong, nonatomic) UIImage *image;
 @property (nonatomic) BOOL isFromMe; // @synthesize isFromMe=_isFromMe;
 @property (copy, nonatomic) MSMessageLayout *layout; // @synthesize layout=_layout;
-@property (copy, nonatomic) NSURL *mediaURL;
+@property (nonatomic, getter=isPending) BOOL pending; // @synthesize pending=_pending;
+@property (nonatomic) BOOL requiresValidation; // @synthesize requiresValidation=_requiresValidation;
 @property (strong, nonatomic) NSUUID *senderParticipantIdentifier; // @synthesize senderParticipantIdentifier=_senderParticipantIdentifier;
 @property (readonly, nonatomic) MSSession *session; // @synthesize session=_session;
 @property (nonatomic) BOOL shouldExpire; // @synthesize shouldExpire=_shouldExpire;
 @property (copy, nonatomic) NSString *statusText; // @synthesize statusText=_statusText;
 @property (copy, nonatomic) NSString *summaryText; // @synthesize summaryText=_summaryText;
-@property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_mergeSanitizedDataFromMessage:(id)arg1;
+- (void)_sanitize;
+- (id)_sanitizedCopy;
+- (id)_shallowCopy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1;
 - (id)initWithSession:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)sanitize;
-- (id)sanitizedCopy;
 
 @end
 

@@ -11,18 +11,22 @@
 
 @interface TKTokenDriver : NSObject
 {
+    NSMutableDictionary *_contexts;
     id<TKTokenDriverDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_tokens;
+    NSDictionary *_extensionAttributes;
 }
 
 @property (readonly) NSString *classID;
 @property (weak) id<TKTokenDriverDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly) NSDictionary *extensionAttributes;
+@property (strong) NSDictionary *extensionAttributes; // @synthesize extensionAttributes=_extensionAttributes;
 @property (readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong) NSMutableDictionary *tokens; // @synthesize tokens=_tokens;
 
++ (id)driver;
 - (void).cxx_destruct;
+- (void)addTokenDriverContext:(id)arg1;
 - (void)getTokenEndpointWithAttributes:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getTokenWithAttributes:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)init;

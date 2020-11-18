@@ -27,6 +27,7 @@
     NSDictionary *_dataCountBySource;
     HKQuantity *_sumQuantity;
     NSDictionary *_sumQuantityBySource;
+    NSDictionary *_sumQuantityBySourceID;
 }
 
 @property (strong, nonatomic) HKQuantity *averageQuantity; // @synthesize averageQuantity=_averageQuantity;
@@ -43,6 +44,7 @@
 @property (readonly) NSDate *startDate;
 @property (strong, nonatomic) HKQuantity *sumQuantity; // @synthesize sumQuantity=_sumQuantity;
 @property (strong, nonatomic) NSDictionary *sumQuantityBySource; // @synthesize sumQuantityBySource=_sumQuantityBySource;
+@property (strong, nonatomic) NSDictionary *sumQuantityBySourceID; // @synthesize sumQuantityBySourceID=_sumQuantityBySourceID;
 
 + (void)_validateOptions:(unsigned long long)arg1 forDataType:(id)arg2;
 + (BOOL)supportsSecureCoding;

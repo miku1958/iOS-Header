@@ -11,7 +11,7 @@
 #import <NanoTimeKitCompanion/NTKWellnessTimelineModelSubscriber-Protocol.h>
 
 @class NSDate, NSString, NTKActivityFaceTimeline, NTKUtilityComplicationFactory, NTKWellnessEntryModel;
-@protocol NTKActivityFaceViewFactoryDelegate;
+@protocol NTKActivityFaceViewFactoryDelegate, OS_dispatch_source;
 
 @interface NTKActivityFaceViewFactory : NSObject <NTKUtilityComplicationFactoryDelegate, NTKWellnessTimelineModelSubscriber, NTKComplicationTimelineDelegate>
 {
@@ -19,6 +19,7 @@
     BOOL _timeTravellingOutsideBounds;
     double _lastWristRaiseTime;
     double _wristRaiseTimoutDuration;
+    NSObject<OS_dispatch_source> *_memoryNotificationEventSource;
     BOOL _hasBeenLiveOrOnDeck;
     BOOL _isHistoricalDataLoaded;
     BOOL _isLoadingData;
@@ -65,6 +66,7 @@
 - (double)_keylinePaddingForState:(long long)arg1;
 - (double)_lisaGapForState:(long long)arg1;
 - (void)_loadCurrentEntry;
+- (void)_loadCurrentEntryForce:(BOOL)arg1;
 - (void)_nowEntryDidChangeFrom:(id)arg1 to:(id)arg2;
 - (void)_resetWristRaiseAnimationTimeout;
 - (void)_startExtendOperationIfNecessaryForWindow:(id)arg1 withDate:(id)arg2 minBuffer:(double)arg3;
@@ -75,6 +77,7 @@
 - (id)_utilityComplicationSlots;
 - (long long)_utilitySlotForSlot:(id)arg1;
 - (void)dealloc;
+- (id)debugStringForEntry:(id)arg1;
 - (void)endScrubbing;
 - (void)faceView:(id)arg1 configureComplicationView:(id)arg2 forSlot:(id)arg3;
 - (double)faceView:(id)arg1 keylineCornerRadiusForComplicationSlot:(id)arg2;

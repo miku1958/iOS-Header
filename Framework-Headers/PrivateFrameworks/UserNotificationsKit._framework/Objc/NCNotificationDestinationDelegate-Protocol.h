@@ -10,7 +10,7 @@
 @protocol NCNotificationDestination;
 
 @protocol NCNotificationDestinationDelegate <NCNotificationSectionSettingsProvider>
-- (void)destination:(id<NCNotificationDestination>)arg1 executeAction:(NCNotificationAction *)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withParameters:(NSDictionary *)arg4 completion:(void (^)(BOOL))arg5;
+- (void)destination:(id<NCNotificationDestination>)arg1 executeAction:(NCNotificationAction *)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 requestAuthentication:(BOOL)arg4 withParameters:(NSDictionary *)arg5 completion:(void (^)(BOOL, BOOL))arg6;
 - (void)destination:(id<NCNotificationDestination>)arg1 requestPermissionToExecuteAction:(NCNotificationAction *)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withParameters:(NSDictionary *)arg4 completion:(void (^)(BOOL))arg5;
 - (void)destination:(id<NCNotificationDestination>)arg1 requestsClearingNotificationRequests:(NSSet *)arg2;
 - (void)destination:(id<NCNotificationDestination>)arg1 requestsClearingNotificationRequests:(NSSet *)arg2 fromDestinations:(NSSet *)arg3;

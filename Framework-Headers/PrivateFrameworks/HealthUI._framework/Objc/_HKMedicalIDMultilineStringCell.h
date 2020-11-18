@@ -6,25 +6,24 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSString, UILabel, UITextView;
+@class UILabel;
 
 @interface _HKMedicalIDMultilineStringCell : UITableViewCell
 {
     UILabel *_titleLabel;
-    UITextView *_textLabel;
-    NSString *_stringValue;
+    UILabel *_detailLabel;
 }
 
-@property (nonatomic, getter=isBodyTextInteractive) BOOL bodyTextInteractive;
-@property (strong, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
-@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) UILabel *detailLabel; // @synthesize detailLabel=_detailLabel;
+@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
++ (id)defaultReuseIdentifier;
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
-- (void)dealloc;
+- (id)description;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)layoutSubviews;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)setUpConstraints;
+- (void)setUpSubViews;
 
 @end
 

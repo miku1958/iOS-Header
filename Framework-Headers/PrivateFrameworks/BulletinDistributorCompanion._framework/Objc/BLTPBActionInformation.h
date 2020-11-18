@@ -13,10 +13,13 @@
 @interface BLTPBActionInformation : PBCodable <NSCopying>
 {
     NSData *_context;
+    NSData *_contextNulls;
 }
 
 @property (strong, nonatomic) NSData *context; // @synthesize context=_context;
+@property (strong, nonatomic) NSData *contextNulls; // @synthesize contextNulls=_contextNulls;
 @property (readonly, nonatomic) BOOL hasContext;
+@property (readonly, nonatomic) BOOL hasContextNulls;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

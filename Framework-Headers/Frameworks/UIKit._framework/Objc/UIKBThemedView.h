@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     BOOL _lightKeyboard;
     BOOL _active;
     BOOL _usePersistentCaching;
+    BOOL _showsTopAndBottomBorders;
     BOOL _showsLeftBorder;
     BOOL _showsRightBorder;
     int _style;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL keepNonPersistent;
 @property (nonatomic) BOOL showsLeftBorder; // @synthesize showsLeftBorder=_showsLeftBorder;
 @property (nonatomic) BOOL showsRightBorder; // @synthesize showsRightBorder=_showsRightBorder;
+@property (nonatomic) BOOL showsTopAndBottomBorders; // @synthesize showsTopAndBottomBorders=_showsTopAndBottomBorders;
 @property (nonatomic) int style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usePersistentCaching; // @synthesize usePersistentCaching=_usePersistentCaching;

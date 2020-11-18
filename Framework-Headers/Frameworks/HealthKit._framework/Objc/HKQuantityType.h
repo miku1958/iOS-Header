@@ -13,7 +13,7 @@
     long long _aggregationStyle;
     NSString *_unitString;
     HKUnit *_canonicalUnit;
-    long long _canonicalUnitToken;
+    struct os_unfair_lock_s _canonicalUnitLock;
 }
 
 @property (readonly) long long aggregationStyle;
@@ -23,6 +23,7 @@
 + (id)_quantityTypeWithCode:(long long)arg1;
 - (void).cxx_destruct;
 - (id)_initWithDefinition:(CDStruct_6b208136 *)arg1;
+- (BOOL)_validateMetadata:(id)arg1 error:(id *)arg2;
 - (BOOL)isCompatibleWithUnit:(id)arg1;
 - (void)validateUnit:(id)arg1;
 - (void)validateUnitFromString:(id)arg1;

@@ -18,15 +18,13 @@
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property (readonly, nonatomic) BOOL hasAnyChanges;
 @property (readonly, nonatomic) NSSet *identifiersToDelete; // @synthesize identifiersToDelete=_identifiersToDelete;
 @property (readonly, nonatomic) NSSet *momentsToDelete; // @synthesize momentsToDelete=_momentsToDelete;
 @property (readonly, nonatomic) NSSet *momentsToInsert; // @synthesize momentsToInsert=_momentsToInsert;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 
-+ (id)updateRequestWithMomentsToInsert:(id)arg1 momentsToDelete:(id)arg2 indentifiersToDelete:(id)arg3;
++ (id)updateRequestWithMomentsToInsert:(id)arg1 momentsToDelete:(id)arg2 identifiersToDelete:(id)arg3;
 - (void).cxx_destruct;
-- (BOOL)isValid;
 
 @end
 

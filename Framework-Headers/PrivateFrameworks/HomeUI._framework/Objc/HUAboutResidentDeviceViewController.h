@@ -43,7 +43,6 @@
 + (double)iPadImageToTextBaselineConstantForViewSizeSubclass:(long long)arg1;
 + (double)scrollViewTopToATVImageConstant;
 + (double)subtitleBaselineToATVImageConstant;
-+ (double)titleToSubtitleBaselineConstant;
 - (void).cxx_destruct;
 - (id)_backgroundColor;
 - (void)_createSubviews;

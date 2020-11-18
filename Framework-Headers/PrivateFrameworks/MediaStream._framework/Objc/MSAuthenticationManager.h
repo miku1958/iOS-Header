@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class MSAlertManager;
+@class ACAccountStore, MSAlertManager;
 
 @interface MSAuthenticationManager : NSObject
 {
     int _state;
     MSAlertManager *_alertManager;
+    ACAccountStore *_acAccountStore;
     int _bagRefetchCount;
     BOOL _isListeningToKeybagChanges;
     int _keybagChangeNotifyToken;
@@ -23,9 +24,8 @@
 
 + (id)sharedManager;
 - (void).cxx_destruct;
-- (id)_accountForPersonID:(id)arg1;
 - (void)_didReceiveAccountConfigChangedNotification;
-- (void)_promptUserForAuthComplianceForAccount:(id)arg1 personID:(id)arg2;
+- (void)_renewCredentialsForAccount:(id)arg1;
 - (void)dealloc;
 - (void)didEncounterAuthenticationFailureForPersonID:(id)arg1;
 - (void)didEncounterAuthenticationSuccessForPersonID:(id)arg1;

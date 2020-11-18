@@ -6,13 +6,13 @@
 
 #import <SAObjects/SADomainCommand.h>
 
-@class NSNumber, NSString;
+@class NSArray, NSNumber;
 
 @interface SAMPLoadQP : SADomainCommand
 {
 }
 
-@property (copy, nonatomic) NSString *airplayRouteUID;
+@property (copy, nonatomic) NSArray *hashedRouteUIDs;
 @property (copy, nonatomic) NSNumber *startPlaying;
 
 + (id)loadQP;

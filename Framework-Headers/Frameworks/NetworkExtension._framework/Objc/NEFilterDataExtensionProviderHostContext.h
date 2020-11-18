@@ -28,10 +28,12 @@
 - (void).cxx_destruct;
 - (void)fetchCurrentRulesForFlow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchProviderConnectionWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getSourceAppInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleRulesChanged;
 - (void)provideRemediationMap:(id)arg1;
 - (void)provideURLAppendStringMap:(id)arg1;
 - (void)providerControlSocketFileHandle:(id)arg1;
+- (void)report:(id)arg1;
 - (void)sendBrowserContentFilterServerRequest;
 - (void)sendSocketContentFilterRequest;
 - (void)startedWithError:(id)arg1;

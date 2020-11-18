@@ -30,12 +30,13 @@
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canResignFirstResponder;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (BOOL)isFirstResponder;
 - (void)layoutSubviews;
 - (BOOL)resignFirstResponder;
+- (void)safeAreaInsetsDidChange;
 - (void)setButtonTitle:(id)arg1;
 - (void)setPlaceholder:(id)arg1;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

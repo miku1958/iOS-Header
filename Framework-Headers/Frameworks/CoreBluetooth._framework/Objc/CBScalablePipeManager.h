@@ -36,7 +36,10 @@
 - (id)pipeForName:(id)arg1 identifier:(id)arg2;
 - (void)registerEndpoint:(id)arg1 type:(long long)arg2 priority:(long long)arg3;
 - (void)registerEndpoint:(id)arg1 type:(long long)arg2 priority:(long long)arg3 transport:(long long)arg4;
+- (void)registerEndpoint:(id)arg1 type:(long long)arg2 priority:(long long)arg3 transport:(long long)arg4 requireEncryption:(BOOL)arg5;
 - (void)setLinkRequirementsForPeer:(id)arg1 packetsPerSecond:(unsigned int)arg2 inputBytesPerSecond:(unsigned int)arg3 outputBytesPerSecond:(unsigned int)arg4;
+- (void)setLinkRequirementsForPeerWithLatency:(id)arg1 latencyInMs:(unsigned int)arg2 inputBytesPerSecond:(unsigned int)arg3 outputBytesPerSecond:(unsigned int)arg4;
+- (id)sharedPairingAgent;
 - (void)unregisterAllEndpoints;
 - (void)unregisterEndpoint:(id)arg1;
 

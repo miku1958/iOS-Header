@@ -30,6 +30,7 @@
     NSString *_dynamicActivityType;
     NSString *_teamIdentifier;
     NSURL *_webpageURL;
+    NSURL *_referrerURL;
     NSDictionary *_options;
     NSError *_encodedUserInfoError;
     NSSet *_requiredUserInfoKeys;
@@ -67,6 +68,7 @@
 @property (getter=isPayloadRequested) BOOL payloadRequested; // @synthesize payloadRequested=_payloadRequested;
 @property (copy) NSDictionary *payloads;
 @property (strong) SFPeerDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
+@property (copy) NSURL *referrerURL; // @synthesize referrerURL=_referrerURL;
 @property (copy) NSSet *requiredUserInfoKeys; // @synthesize requiredUserInfoKeys=_requiredUserInfoKeys;
 @property (copy) NSString *teamIdentifier; // @synthesize teamIdentifier=_teamIdentifier;
 @property (copy) NSString *title; // @synthesize title=_title;

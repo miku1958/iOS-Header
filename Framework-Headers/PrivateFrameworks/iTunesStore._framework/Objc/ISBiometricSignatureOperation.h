@@ -6,27 +6,26 @@
 
 #import <iTunesStore/ISOperation.h>
 
-@class ISBiometricStore, ISTouchIDDialog, NSNumber, NSString;
+@class ISBiometricStore, ISDialog, ISTouchIDDialog, SSBiometricAuthenticationContext;
 
 @interface ISBiometricSignatureOperation : ISOperation
 {
-    NSNumber *_accountIdentifier;
-    NSString *_accountName;
     CDUnknownBlockType _outputBlock;
     ISBiometricStore *_biometricStore;
-    NSString *_challenge;
-    ISTouchIDDialog *_dialog;
+    SSBiometricAuthenticationContext *_context;
+    ISDialog *_fallbackDialog;
+    ISTouchIDDialog *_touchIDDialog;
 }
 
-@property (copy, nonatomic) NSNumber *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
-@property (copy, nonatomic) NSString *accountName; // @synthesize accountName=_accountName;
 @property (strong, nonatomic) ISBiometricStore *biometricStore; // @synthesize biometricStore=_biometricStore;
-@property (copy, nonatomic) NSString *challenge; // @synthesize challenge=_challenge;
-@property (strong, nonatomic) ISTouchIDDialog *dialog; // @synthesize dialog=_dialog;
+@property (strong) SSBiometricAuthenticationContext *context; // @synthesize context=_context;
+@property (strong, nonatomic) ISDialog *fallbackDialog; // @synthesize fallbackDialog=_fallbackDialog;
 @property (copy) CDUnknownBlockType outputBlock; // @synthesize outputBlock=_outputBlock;
+@property (strong, nonatomic) ISTouchIDDialog *touchIDDialog; // @synthesize touchIDDialog=_touchIDDialog;
 
 - (void).cxx_destruct;
-- (id)initWithChallenge:(id)arg1 dialog:(id)arg2;
+- (BOOL)_promptUserToAuthenticateForIdentityMapChangeWithAccountIdentifier:(id)arg1 accountName:(id)arg2;
+- (id)initWithBiometricAuthenticationContext:(id)arg1 touchIDDialog:(id)arg2 fallbackDialog:(id)arg3;
 - (void)run;
 
 @end

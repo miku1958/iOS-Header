@@ -6,9 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSProgressPublisher-Protocol.h>
+#import <Foundation/NSProgressPublisher-Protocol.h>
 
-@class NSDictionary, NSLock, NSMutableDictionary, NSMutableSet, NSString;
+@class NSDictionary, NSLock, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSURL;
 
 @interface NSProgress : NSObject <NSProgressPublisher>
 {
@@ -39,6 +39,12 @@
 @property long long completedUnitCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy) NSNumber *estimatedTimeRemaining;
+@property (copy) NSNumber *fileCompletedCount;
+@property (copy) NSString *fileOperationKind;
+@property (copy) NSNumber *fileTotalCount;
+@property (copy) NSURL *fileURL;
+@property (readonly, getter=isFinished) BOOL finished;
 @property (readonly) double fractionCompleted;
 @property (readonly) unsigned long long hash;
 @property (readonly, getter=isIndeterminate) BOOL indeterminate;
@@ -51,6 +57,7 @@
 @property (copy) CDUnknownBlockType pausingHandler;
 @property (copy) CDUnknownBlockType resumingHandler;
 @property (readonly) Class superclass;
+@property (copy) NSNumber *throughput;
 @property long long totalUnitCount;
 @property (readonly, copy) NSDictionary *userInfo;
 
@@ -72,6 +79,7 @@
 + (id)progressWithTotalUnitCount:(long long)arg1;
 + (id)progressWithTotalUnitCount:(long long)arg1 parent:(id)arg2 pendingUnitCount:(long long)arg3;
 + (void)removeSubscriber:(id)arg1;
+- (void).cxx_destruct;
 - (void)__notifyRemoteObserversOfValueForKey:(id)arg1 inUserInfo:(BOOL)arg2;
 - (CDUnknownBlockType)_acknowledgementHandlerForAppBundleIdentifier:(id)arg1;
 - (void)_addCompletedUnitCount:(long long)arg1;
@@ -100,24 +108,28 @@
 - (oneway void)appWithBundleID:(id)arg1 didAcknowledgeWithSuccess:(BOOL)arg2;
 - (void)becomeCurrentWithPendingUnitCount:(long long)arg1;
 - (void)becomeCurrentWithPendingUnitCount:(long long)arg1 inBlock:(CDUnknownBlockType)arg2;
+- (id)byteCompletedCount;
+- (id)byteTotalCount;
 - (void)cancel;
 - (void)dealloc;
 - (void)handleAcknowledgementByAppWithBundleIdentifer:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)handleAcknowledgementByAppWithBundleIdentifier:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithParent:(id)arg1 userInfo:(id)arg2;
-- (BOOL)isFinished;
 - (BOOL)isPrioritizable;
 - (unsigned long long)ownedDictionaryCount;
 - (id)ownedDictionaryKeyEnumerator;
 - (id)ownedDictionaryObjectForKey:(id)arg1;
 - (void)pause;
+- (void)performAsCurrentWithPendingUnitCount:(long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (CDUnknownBlockType)prioritizationHandler;
 - (oneway void)prioritize;
 - (void)publish;
 - (void)resignCurrent;
 - (void)resume;
 - (void)setAcknowledgementHandler:(CDUnknownBlockType)arg1 forAppBundleIdentifier:(id)arg2;
+- (void)setByteCompletedCount:(id)arg1;
+- (void)setByteTotalCount:(id)arg1;
 - (void)setPrioritizable:(BOOL)arg1;
 - (void)setPrioritizationHandler:(CDUnknownBlockType)arg1;
 - (void)setUserInfoObject:(id)arg1 forKey:(id)arg2;

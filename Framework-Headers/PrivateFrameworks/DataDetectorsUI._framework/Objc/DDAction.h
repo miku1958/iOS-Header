@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <DataDetectorsUI/NSCoding-Protocol.h>
 #import <DataDetectorsUI/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSURL, UIViewController;
+@class CNContact, NSDictionary, NSString, NSURL, UIViewController;
 @protocol DDActionDelegate;
 
 @interface DDAction : NSObject <NSCoding, NSSecureCoding>
@@ -17,41 +17,49 @@
     struct __DDResult *_result;
     struct __DDResult *_coalescedResult;
     struct __CFArray *_associatedResults;
+    CNContact *_contact;
+    NSString *_ics;
+    UIViewController *_viewController;
     NSDictionary *_context;
     NSURL *_url;
     BOOL _cachedCoalescedResult;
     BOOL _cachedAssociatedResults;
     BOOL _isDefaultAction;
     BOOL _companion;
-    id _delegate;
     int _hostApplication;
-    UIViewController *_viewController;
+    NSObject<DDActionDelegate> *_delegate;
 }
 
 @property (nonatomic) BOOL companion; // @synthesize companion=_companion;
-@property (readonly, nonatomic) DDAction *companionAction;
-@property (weak) NSObject<DDActionDelegate> *delegate; // @synthesize delegate=_delegate;
+@property (readonly, weak, nonatomic) DDAction *companionAction;
+@property (strong) CNContact *contact; // @synthesize contact=_contact;
+@property (weak, nonatomic) NSObject<DDActionDelegate> *delegate; // @synthesize delegate=_delegate;
 @property int hostApplication; // @synthesize hostApplication=_hostApplication;
 @property BOOL isDefaultAction; // @synthesize isDefaultAction=_isDefaultAction;
 @property (strong, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
++ (BOOL)actionAvailableForContact:(id)arg1;
 + (id)actionWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 + (id)actionsWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
++ (id)contextByAddingValue:(id)arg1 toKey:(id)arg2 inContext:(id)arg3;
 + (id)defaultActionWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 + (id)encodableContextWithContext:(id)arg1;
 + (BOOL)isAvailable;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_copyURL:(id)arg1;
 - (void)_copyURL:(id)arg1 andString:(id)arg2;
 - (void)_performFromView:(id)arg1 byOpeningURL:(id)arg2;
 - (void)adaptForPresentationInPopover:(BOOL)arg1;
 - (void)addToRecents;
-- (struct __CFArray *)associatedResults;
+- (const struct __CFArray *)associatedResults;
 - (BOOL)canBePerformedByOpeningURL;
+- (BOOL)canBePerformedWhenDeviceIsLocked;
 - (struct __DDResult *)coalescedResult;
 - (id)context;
 - (void)dealloc;
 - (id)description;
+- (id)displayNameForEmails:(id)arg1 phoneNumbers:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasUserInterface;
 - (id)initWithCoder:(id)arg1;
@@ -59,6 +67,9 @@
 - (int)interactionType;
 - (void)invalidate;
 - (id)localizedName;
+- (id)notificationIconBundleIdentifier;
+- (id)notificationTitle;
+- (id)notificationURL;
 - (void)perform;
 - (void)performFromView:(id)arg1;
 - (void)prepareViewControllerForActionController:(id)arg1;

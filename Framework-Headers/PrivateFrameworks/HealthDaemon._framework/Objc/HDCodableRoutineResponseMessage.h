@@ -32,6 +32,7 @@
 @property (nonatomic) int requestType; // @synthesize requestType=_requestType;
 
 - (void).cxx_destruct;
+- (int)StringAsRequestType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -40,6 +41,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)requestTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

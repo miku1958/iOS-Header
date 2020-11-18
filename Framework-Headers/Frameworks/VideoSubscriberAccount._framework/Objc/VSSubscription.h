@@ -18,19 +18,25 @@
     NSArray *_tierIdentifiers;
     NSDate *_creationDate;
     NSDate *_modificationDate;
-    NSString *_subscriptionInfo;
+    NSString *_derivedSubscriptionInfo;
+    NSString *_providedSubscriptionInfo;
     VSSubscriptionSource *_source;
+    NSString *_subscriberIdentifierHash;
 }
 
 @property (nonatomic) long long accessLevel; // @synthesize accessLevel=_accessLevel;
 @property (copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (copy, nonatomic) NSString *derivedSubscriptionInfo; // @synthesize derivedSubscriptionInfo=_derivedSubscriptionInfo;
 @property (copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (copy, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
+@property (copy, nonatomic) NSString *providedSubscriptionInfo; // @synthesize providedSubscriptionInfo=_providedSubscriptionInfo;
 @property (copy, nonatomic) VSSubscriptionSource *source; // @synthesize source=_source;
-@property (copy, nonatomic) NSString *subscriptionInfo; // @synthesize subscriptionInfo=_subscriptionInfo;
+@property (copy, nonatomic) NSString *subscriberIdentifierHash; // @synthesize subscriberIdentifierHash=_subscriberIdentifierHash;
+@property (copy, nonatomic) NSString *subscriptionInfo;
 @property (copy, nonatomic) NSArray *tierIdentifiers; // @synthesize tierIdentifiers=_tierIdentifiers;
 @property (readonly, copy, nonatomic) NSData *versionHash;
 
++ (id)keyPathsForValuesAffectingSubscriptionInfo;
 + (id)keyPathsForValuesAffectingVersionHash;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

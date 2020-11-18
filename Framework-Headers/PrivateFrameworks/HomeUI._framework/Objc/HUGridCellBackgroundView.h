@@ -16,13 +16,13 @@
     HFWallpaperSlice *_blurredWallpaperSlice;
     double _cornerRadius;
     UIVisualEffectView *_effectView;
-    UIView *_ccBaseMaterialView;
+    UIView *_ccMaterialView;
     struct CGRect _normalizedWallpaperRect;
 }
 
 @property (nonatomic) unsigned long long backgroundState; // @synthesize backgroundState=_backgroundState;
 @property (strong, nonatomic) HFWallpaperSlice *blurredWallpaperSlice; // @synthesize blurredWallpaperSlice=_blurredWallpaperSlice;
-@property (strong, nonatomic) UIView *ccBaseMaterialView; // @synthesize ccBaseMaterialView=_ccBaseMaterialView;
+@property (strong, nonatomic) UIView *ccMaterialView; // @synthesize ccMaterialView=_ccMaterialView;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (strong, nonatomic) HUGridCellBackgroundDisplayOptions *displayOptions; // @synthesize displayOptions=_displayOptions;
 @property (strong, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
@@ -30,13 +30,13 @@
 @property (nonatomic, getter=isPressed) BOOL pressed; // @synthesize pressed=_pressed;
 
 - (void).cxx_destruct;
-- (void)_createCCBaseMaterialViewIfNecessary;
+- (void)_createCCMaterialViewIfNecessary;
 - (void)_createEffectViewIfNecessary;
 - (id)_highlightedBackgroundColor;
 - (void)_invalidateStaticPunchOutMask;
 - (BOOL)_isUsingControlCenterDisplayStyle;
 - (id)_normalBackgroundColor;
-- (BOOL)_shouldUseCCDynamicPunchOutStyle;
+- (BOOL)_shouldUseCCMaterialView;
 - (BOOL)_shouldUseCCStaticPunchOutStyle;
 - (BOOL)_shouldUsePrecomputedWallpaperContents;
 - (BOOL)_shouldUseVisualEffectStyle;

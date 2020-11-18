@@ -10,11 +10,11 @@
 
 @class CLLocation, NSData, NSDate, NSString, NSURL, PHAdjustmentData;
 
-__attribute__((visibility("hidden")))
 @interface PUEditingInitialPayload : NSObject <NSSecureCoding>
 {
     long long _mediaType;
     unsigned long long _mediaSubtypes;
+    long long _playbackStyle;
     NSDate *_creationDate;
     CLLocation *_location;
     PHAdjustmentData *_adjustmentData;
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long mediaSubtypes; // @synthesize mediaSubtypes=_mediaSubtypes;
 @property (nonatomic) long long mediaType; // @synthesize mediaType=_mediaType;
 @property (strong, nonatomic) NSData *placeholderImageData; // @synthesize placeholderImageData=_placeholderImageData;
+@property (nonatomic) long long playbackStyle; // @synthesize playbackStyle=_playbackStyle;
 @property (strong, nonatomic) NSString *videoPathSandboxExtensionToken; // @synthesize videoPathSandboxExtensionToken=_videoPathSandboxExtensionToken;
 @property (strong, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 

@@ -19,11 +19,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL canMakeSpotlightChanges;
 @property (readonly) BOOL canModifyCalendarDatabase;
 @property (readonly) BOOL canModifySuggestedEventCalendar;
-@property (readonly) BOOL canSetAutomaticLocationGeocodingAllowedValue;
 @property (strong) ClientConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly) BOOL hasCalendarToolEntitlement;
 @property (readonly) BOOL hasContactsUIEntitlement;
+@property (readonly) BOOL hasMigrationEntitlement;
+@property (readonly) BOOL hasSyncClientEntitlement;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL internalAccessLevelGranted;
 @property (readonly) Class superclass;

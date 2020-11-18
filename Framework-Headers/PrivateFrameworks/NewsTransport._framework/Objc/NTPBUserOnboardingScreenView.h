@@ -12,6 +12,7 @@
 
 @interface NTPBUserOnboardingScreenView : PBCodable <NSCopying>
 {
+    int _channelPickerPresentationReason;
     int _countOfNotificationsSelected;
     int _onboardingScreenType;
     int _previouslyCompletedOnboardingOsVersion;
@@ -21,6 +22,7 @@
     NSString *_userActivityType;
     BOOL _fromPersonalizeNews;
     struct {
+        unsigned int channelPickerPresentationReason:1;
         unsigned int countOfNotificationsSelected:1;
         unsigned int onboardingScreenType:1;
         unsigned int previouslyCompletedOnboardingOsVersion:1;
@@ -29,8 +31,10 @@
     } _has;
 }
 
+@property (nonatomic) int channelPickerPresentationReason; // @synthesize channelPickerPresentationReason=_channelPickerPresentationReason;
 @property (nonatomic) int countOfNotificationsSelected; // @synthesize countOfNotificationsSelected=_countOfNotificationsSelected;
 @property (nonatomic) BOOL fromPersonalizeNews; // @synthesize fromPersonalizeNews=_fromPersonalizeNews;
+@property (nonatomic) BOOL hasChannelPickerPresentationReason;
 @property (nonatomic) BOOL hasCountOfNotificationsSelected;
 @property (nonatomic) BOOL hasFromPersonalizeNews;
 @property (nonatomic) BOOL hasOnboardingScreenType;
@@ -47,6 +51,8 @@
 @property (strong, nonatomic) NSString *userActivityType; // @synthesize userActivityType=_userActivityType;
 
 - (void).cxx_destruct;
+- (int)StringAsChannelPickerPresentationReason:(id)arg1;
+- (id)channelPickerPresentationReasonAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;

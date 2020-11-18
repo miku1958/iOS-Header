@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     } _u;
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)decodedObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

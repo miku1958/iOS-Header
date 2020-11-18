@@ -22,7 +22,6 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (id)modelGenericObject;
-- (id)mqf_playbackItemMetadataModelObject;
 - (void)setSong:(id)arg1;
 - (id)song;
 

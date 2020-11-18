@@ -20,6 +20,7 @@
     unsigned long long _version;
     NSMutableDictionary *_nodesByIdentifier;
     NSMutableDictionary *_nodesByLabel;
+    NSMutableDictionary *_nodesByDomain;
     NSMutableDictionary *_edgesByIdentifier;
     NSMutableDictionary *_edgesByLabel;
     NSMutableIndexSet *_fragmentedNodeIdentifiers;
@@ -44,6 +45,7 @@
 + (BOOL)destroyPersistentStoreAtURL:(id)arg1 error:(id *)arg2;
 + (Class)edgeClass;
 + (id)graph;
++ (id)graphJSONURLWithPath:(id)arg1 andName:(id)arg2;
 + (id)graphMLURLWithPath:(id)arg1 andName:(id)arg2;
 + (id)graphWithDefinitions:(id)arg1 constraints:(id)arg2 error:(id *)arg3;
 + (id)graphWithMergedGraphs:(id)arg1 strictNodes:(BOOL)arg2 strictEdges:(BOOL)arg3;
@@ -58,6 +60,7 @@
 + (BOOL)scanGraphElementOptionsString:(id)arg1 minimum:(unsigned long long *)arg2 maximum:(unsigned long long *)arg3 error:(id *)arg4;
 + (BOOL)scanGraphElementString:(id)arg1 type:(unsigned long long *)arg2 optionalName:(id *)arg3 label:(id *)arg4 optionalDomains:(id *)arg5 optionalProperties:(id *)arg6 error:(id *)arg7;
 + (BOOL)scanMatchString:(id)arg1 definitions:(id *)arg2 constaints:(id *)arg3 forCreation:(BOOL)arg4 error:(id *)arg5;
++ (BOOL)setMarkerAtURL:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addEdge:(id)arg1 withIdentifier:(unsigned int)arg2 saveToDatabase:(BOOL)arg3;
 - (id)_addEdgeFromBase:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 saveToDatabase:(BOOL)arg4;
@@ -70,14 +73,17 @@
 - (id)_constraintAbstractEdgesFromAbstractNode:(id)arg1 inConstraints:(id *)arg2;
 - (id)_edgesForLabel:(id)arg1;
 - (id)_graphDictionary;
+- (id)_graphJSONDictionary;
 - (id)_keyForLabelString:(id)arg1;
 - (unsigned short)_labelForString:(id)arg1 createIfNeeded:(BOOL)arg2;
 - (id)_labelStrings;
 - (void)_loadWithGraphDictionary:(id)arg1;
+- (void)_loadWithGraphJSONDictionary:(id)arg1;
 - (BOOL)_matchNode:(id)arg1 usingAbstractNode:(id)arg2 fromEdge:(id)arg3 atIteration:(unsigned long long)arg4 withDefinitions:(id)arg5 constraints:(id)arg6 unusedConstraints:(id)arg7 andSubGraph:(id)arg8 matchingNodeQueue:(id)arg9;
 - (unsigned long long)_memoryFootprint:(id)arg1;
 - (unsigned int)_nextEdgeIdentifier;
 - (unsigned int)_nextNodeIdentifier;
+- (id)_nodesForDomain:(unsigned long long)arg1;
 - (id)_nodesForLabel:(id)arg1;
 - (void)_prefetchPropertiesForElements:(id)arg1 forType:(id)arg2;
 - (void)_prepareFragmentedIdentifiers;
@@ -94,21 +100,27 @@
 - (id)addNodeWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
 - (id)addUniqueEdgeWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5 properties:(id)arg6;
 - (id)addUniqueNodeWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4 didCreate:(BOOL *)arg5;
+- (BOOL)conformsToGraphSchema:(id)arg1;
 - (id)dataRepresentation:(id *)arg1;
 - (void)dealloc;
 - (void)deleteMarker;
 - (id)edgeForIdentifier:(unsigned int)arg1;
+- (id)edgeSchemeWithLabel:(id)arg1 domain:(unsigned short)arg2 sourceNode:(id)arg3 targetNode:(id)arg4;
 - (unsigned long long)edgesCount;
 - (unsigned long long)edgesCountForLabel:(id)arg1;
+- (unsigned long long)edgesCountForLabel:(id)arg1 domain:(unsigned short)arg2;
+- (unsigned long long)edgesCountForLabel:(id)arg1 domain:(unsigned short)arg2 properties:(id)arg3;
 - (id)edgesForDomain:(unsigned short)arg1;
 - (id)edgesForDomains:(id)arg1;
 - (id)edgesForLabel:(id)arg1;
+- (id)edgesForLabel:(id)arg1 domain:(unsigned short)arg2;
 - (id)edgesForLabel:(id)arg1 domain:(unsigned short)arg2 properties:(id)arg3;
 - (id)edgesLabels;
 - (void)enterBatch;
 - (void)enumerateEdgesWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2 properties:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)enumerateEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateNodesInDomain:(unsigned short)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateNodesWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateNodesWithLabel:(id)arg1 domain:(unsigned short)arg2 properties:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)enumerateNodesWithLabel:(id)arg1 domain:(unsigned short)arg2 usingBlock:(CDUnknownBlockType)arg3;
@@ -117,6 +129,7 @@
 - (id)init;
 - (id)initWithDataRepresentation:(id)arg1;
 - (id)initWithDataURL:(id)arg1;
+- (id)initWithGraphJSONURL:(id)arg1;
 - (id)initWithGraphMLURL:(id)arg1;
 - (id)initWithPersistentStoreURL:(id)arg1;
 - (void)invalidateMemoryCaches;
@@ -131,12 +144,17 @@
 - (id)mergeWithGraph:(id)arg1 strictNodes:(BOOL)arg2 strictEdges:(BOOL)arg3 saveToDatabase:(BOOL)arg4;
 - (BOOL)migratePersistentStoreToURL:(id)arg1 error:(id *)arg2;
 - (id)nodeForIdentifier:(unsigned int)arg1;
+- (id)nodeSchemeWithLabel:(id)arg1 domain:(unsigned short)arg2;
 - (unsigned long long)nodesCount;
+- (unsigned long long)nodesCountForDomain:(unsigned short)arg1;
 - (unsigned long long)nodesCountForLabel:(id)arg1;
+- (unsigned long long)nodesCountForLabel:(id)arg1 domain:(unsigned short)arg2;
 - (unsigned long long)nodesCountForLabel:(id)arg1 domain:(unsigned short)arg2 properties:(id)arg3;
+- (id)nodesDomains;
 - (id)nodesForDomain:(unsigned short)arg1;
 - (id)nodesForDomains:(id)arg1;
 - (id)nodesForLabel:(id)arg1;
+- (id)nodesForLabel:(id)arg1 domain:(unsigned short)arg2;
 - (id)nodesForLabel:(id)arg1 domain:(unsigned short)arg2 properties:(id)arg3;
 - (id)nodesLabels;
 - (void)parser:(id)arg1 didEndElement:(id)arg2 namespaceURI:(id)arg3 qualifiedName:(id)arg4;
@@ -158,6 +176,7 @@
 - (void)removeNodes:(id)arg1;
 - (BOOL)savePersistentStore;
 - (void)savePersistentStoreWithCompletion:(CDUnknownBlockType)arg1;
+- (id)schema;
 - (id)selectBestRootNodeForPath:(id)arg1 withDefinitions:(id)arg2;
 - (void)setMarker;
 - (id)shortestPathBetweenStartNode:(id)arg1 andEndNode:(id)arg2 directed:(BOOL)arg3;
@@ -165,6 +184,7 @@
 - (void)traversingGraphDepthFirstFromNode:(id)arg1 directed:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)unregisterForPrefetchDomains:(unsigned short)arg1;
 - (BOOL)writeDataToURL:(id)arg1 error:(id *)arg2;
+- (BOOL)writeGraphJSONToURL:(id)arg1 error:(id *)arg2;
 
 @end
 

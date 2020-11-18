@@ -18,6 +18,7 @@
 @property (strong, nonatomic) ASClientAccount *account; // @synthesize account=_account;
 
 + (struct __CFRunLoop *)_actorRunLoop;
++ (BOOL)_actorRunLoopInitialized;
 + (void)_runActorThreadWithStartupLock:(id)arg1;
 - (void).cxx_destruct;
 - (oneway void)_daemonDiedNotification:(id)arg1;
@@ -74,6 +75,7 @@
 - (int)supportsEmailFlagging;
 - (int)supportsMailboxSearch;
 - (int)supportsSmartForwardReply;
+- (int)supportsUniqueServerId;
 - (id)unactionableICSRepresentationForMetaData:(id)arg1 inFolderWithId:(id)arg2 outSummary:(id *)arg3;
 
 @end

@@ -12,7 +12,7 @@
 {
 }
 
-@property (readonly, nonatomic) AUAudioUnit *AUAudioUnit;
+@property (readonly, nonatomic) AUAudioUnit *AUAudioUnit; // @dynamic AUAudioUnit;
 @property (readonly, nonatomic) struct AudioComponentDescription audioComponentDescription;
 @property (readonly, nonatomic) struct OpaqueAudioComponentInstance *audioUnit;
 @property (readonly, nonatomic) NSString *manufacturerName;

@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSString *pageTitle; // @synthesize pageTitle=_pageTitle;
 
 - (void).cxx_destruct;
+- (id)copyWithBindings:(id)arg1;
 - (id)debugDescription;
 
 @end

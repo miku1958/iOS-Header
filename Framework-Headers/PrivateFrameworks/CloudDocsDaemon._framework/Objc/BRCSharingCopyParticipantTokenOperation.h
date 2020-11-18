@@ -16,8 +16,10 @@ __attribute__((visibility("hidden")))
     CKRecordID *_shareID;
     CKRecordID *_contentRecordID;
     NSString *_participantKey;
+    NSString *_baseToken;
     NSError *_error;
-    BOOL _iworkShareable;
+    BOOL _iWorkShareable;
+    BOOL _isChildOfShare;
 }
 
 @property (readonly, copy) NSString *debugDescription;

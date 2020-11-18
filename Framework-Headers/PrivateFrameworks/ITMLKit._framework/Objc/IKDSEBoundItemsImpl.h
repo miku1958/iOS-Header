@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_usedPrototypesByType;
     NSDictionary *_childrenByItemID;
     NSMutableIndexSet *_visibleIndexSet;
-    NSMutableDictionary *_virtualChildrenByItemID;
+    NSMutableDictionary *_proxyChildrenByItemID;
 }
 
 @property (readonly, nonatomic) IKDOMBindingController *bindingController; // @synthesize bindingController=_bindingController;
@@ -37,15 +37,15 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) IKElementChangeSet *itemsChangeset; // @synthesize itemsChangeset=_itemsChangeset;
 @property (strong, nonatomic) NSArray *prototypes; // @synthesize prototypes=_prototypes;
+@property (strong, nonatomic) NSMutableDictionary *proxyChildrenByItemID; // @synthesize proxyChildrenByItemID=_proxyChildrenByItemID;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSDictionary *usedPrototypesByType; // @synthesize usedPrototypesByType=_usedPrototypesByType;
-@property (strong, nonatomic) NSMutableDictionary *virtualChildrenByItemID; // @synthesize virtualChildrenByItemID=_virtualChildrenByItemID;
 @property (strong, nonatomic) NSMutableIndexSet *visibleIndexSet; // @synthesize visibleIndexSet=_visibleIndexSet;
 
 + (BOOL)_isPrototypeDOMElement:(id)arg1 validForReuseWithID:(id)arg2;
 + (BOOL)areItemsBoundForBinding:(id)arg1;
 - (void).cxx_destruct;
-- (id)_appDataItemFromJSDataItem:(id)arg1;
+- (id)_appDataItemFromJSDataItem:(id)arg1 prototype:(id)arg2;
 - (void)_appendAutoHighlightedIndexesWithIndex:(long long)arg1;
 - (void)_appendUpdatedIndexesWithIndex:(long long)arg1;
 - (void)_appendVisibleIndexSetWithIndex:(long long)arg1;
@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (id)_instantiateItemAtIndex:(long long)arg1 domBindingController:(id)arg2;
 - (id)_itemsPropertyPath;
 - (id)_prototypeForType:(id)arg1;
+- (id)actualElementForProxyElement:(id)arg1;
 - (id)additionalKeysToResolveForDOMBindingController:(id)arg1;
 - (void)applyUpdatesWithImplementation:(id)arg1 usingUpdater:(CDUnknownBlockType)arg2;
 - (void)configureUpdatesWithImplementation:(id)arg1;
@@ -65,12 +66,14 @@ __attribute__((visibility("hidden")))
 - (void)domBindingController:(id)arg1 didResolveKeys:(id)arg2;
 - (BOOL)domBindingController:(id)arg1 doKeysAffectChildren:(id)arg2;
 - (BOOL)domBindingController:(id)arg1 doKeysAffectSubtree:(id)arg2;
-- (id)elementForItemAtIndex:(long long)arg1 loadIfNeeded:(BOOL)arg2;
+- (id)elementForItemAtIndex:(long long)arg1;
 - (long long)indexOfItemForChildElement:(id)arg1;
 - (id)initWithDataSourceElement:(id)arg1;
-- (void)initialize;
+- (void)initializeWithElementFactory:(id)arg1;
+- (void)loadIndex:(long long)arg1;
 - (long long)numberOfItems;
 - (id)prototypeForItemAtIndex:(long long)arg1;
+- (void)resetUpdates;
 - (void)teardown;
 - (void)unloadIndex:(long long)arg1;
 - (void)updateStylesUsingUpdater:(CDUnknownBlockType)arg1;

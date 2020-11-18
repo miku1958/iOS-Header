@@ -15,7 +15,11 @@
 - (void)documentListController:(_UIDocumentListController *)arg1 performAction:(long long)arg2 URL:(NSURL *)arg3 originatingView:(UIView *)arg4 completion:(void (^)(void))arg5;
 
 @optional
+- (void)documentListController:(_UIDocumentListController *)arg1 didHighlightItemAtURL:(NSURL *)arg2;
+- (void)documentListController:(_UIDocumentListController *)arg1 didUnhighlightItemAtURL:(NSURL *)arg2;
 - (void)documentListController:(_UIDocumentListController *)arg1 renameItemAtURL:(NSURL *)arg2 toName:(NSString *)arg3 completion:(void (^)(BOOL, BOOL))arg4;
+- (BOOL)documentListController:(_UIDocumentListController *)arg1 shouldHighlightItemAtURL:(NSURL *)arg2;
+- (BOOL)documentListController:(_UIDocumentListController *)arg1 shouldSelectItemAtURL:(NSURL *)arg2;
 - (UIViewController<_UIDocumentListControllerPreviewViewController> *)documentListController:(_UIDocumentListController *)arg1 viewControllerForPreviewingItemAtURL:(NSURL *)arg2;
 - (void)documentListControllerItemsChanged:(_UIDocumentListController *)arg1;
 - (void)documentListControllerURLWasRemoved:(_UIDocumentListController *)arg1;

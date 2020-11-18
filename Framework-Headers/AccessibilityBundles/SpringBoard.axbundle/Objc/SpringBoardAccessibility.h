@@ -27,7 +27,6 @@
 - (BOOL)_accessibilityIsAppSwitcherVisible;
 - (BOOL)_accessibilityIsBatteryLow;
 - (BOOL)_accessibilityIsBuddyRunning;
-- (BOOL)_accessibilityIsQuietModeEnabled;
 - (BOOL)_accessibilityIsSystemAppServer;
 - (BOOL)_accessibilityIsSystemLocked;
 - (BOOL)_accessibilityIsSystemSleeping;
@@ -42,7 +41,6 @@
 - (BOOL)_accessibilityShouldCallAXStatusChangedOnAppLaunchFinish;
 - (BOOL)_accessibilityShouldLoadAXInfoOnAppLaunchFinish;
 - (id)_accessibilitySideAppDividerElement;
-- (id)_accessibilitySoftwareMimicKeyboard;
 - (id)_accessibilitySpeakScreenGestureRecognizer;
 - (id)_accessibilityStatusBar;
 - (void)_accessibilityStatusChanged:(id)arg1;
@@ -51,18 +49,18 @@
 - (void)_accessibilityUpdateSpeakScreenGestureRecognizer;
 - (BOOL)_isDim;
 - (void)_keyboardOrCaseLatchWantsToAttemptUnlock:(int)arg1;
-- (void)_proximityChanged:(id)arg1;
 - (void)_updateRingerState:(int)arg1 withVisuals:(BOOL)arg2 updatePreferenceRegister:(BOOL)arg3;
-- (id)accessibilityAttributeValue:(int)arg1;
+- (id)accessibilityAttributeValue:(long long)arg1;
 - (void)accessibilityDisable;
 - (void)accessibilityInitialize;
 - (BOOL)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (BOOL)accessibilityStartStopToggle;
 - (void)applicationDidFinishLaunching:(id)arg1;
-- (BOOL)handleDoubleHeightStatusBarTap:(long long)arg1;
+- (BOOL)handleDoubleHeightStatusBarTapWithStyleOverride:(int)arg1;
 - (void)noteInterfaceOrientationChanged:(long long)arg1 duration:(double)arg2 updateMirroredDisplays:(BOOL)arg3 force:(BOOL)arg4 logMessage:(id)arg5;
 - (void)powerDownRequested:(id)arg1;
 - (void)restartManagerWillReboot:(id)arg1;
+- (void)takeScreenshotAndEdit:(BOOL)arg1;
 
 @end
 

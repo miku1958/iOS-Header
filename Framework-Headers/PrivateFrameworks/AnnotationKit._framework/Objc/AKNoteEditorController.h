@@ -9,17 +9,17 @@
 #import <AnnotationKit/AKNoteEditorViewControllerDelegate-Protocol.h>
 #import <AnnotationKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class AKNoteAnnotation, AKNoteEditorViewController, NSString;
+@class AKNoteEditorViewController, AKPopupAnnotation, NSString;
 @protocol AKNoteEditorControllerDelegate;
 
 @interface AKNoteEditorController : NSObject <AKNoteEditorViewControllerDelegate, UIPopoverPresentationControllerDelegate>
 {
-    AKNoteAnnotation *_annotation;
+    AKPopupAnnotation *_annotation;
     id<AKNoteEditorControllerDelegate> _delegate;
     AKNoteEditorViewController *_contentViewController;
 }
 
-@property (strong, nonatomic) AKNoteAnnotation *annotation; // @synthesize annotation=_annotation;
+@property (strong, nonatomic) AKPopupAnnotation *annotation; // @synthesize annotation=_annotation;
 @property (strong) AKNoteEditorViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AKNoteEditorControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -29,6 +29,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_popupBackgroundColorForPopupAnnotation:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
 - (void)beginEditing:(BOOL)arg1;
 - (void)finishEditing;

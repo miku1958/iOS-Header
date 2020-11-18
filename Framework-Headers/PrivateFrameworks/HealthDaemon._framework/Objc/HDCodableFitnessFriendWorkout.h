@@ -23,6 +23,8 @@
     double _totalEnergyBurnedInCanonicalUnit;
     long long _type;
     NSString *_bundleID;
+    NSString *_deviceManufacturer;
+    NSString *_deviceModel;
     NSData *_friendUUID;
     HDCodableSample *_sample;
     struct {
@@ -41,11 +43,15 @@
 @property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSString *deviceManufacturer; // @synthesize deviceManufacturer=_deviceManufacturer;
+@property (strong, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (strong, nonatomic) NSData *friendUUID; // @synthesize friendUUID=_friendUUID;
 @property (nonatomic) double goal; // @synthesize goal=_goal;
 @property (nonatomic) long long goalType; // @synthesize goalType=_goalType;
 @property (readonly, nonatomic) BOOL hasBundleID;
+@property (readonly, nonatomic) BOOL hasDeviceManufacturer;
+@property (readonly, nonatomic) BOOL hasDeviceModel;
 @property (nonatomic) BOOL hasDuration;
 @property (readonly, nonatomic) BOOL hasFriendUUID;
 @property (nonatomic) BOOL hasGoal;

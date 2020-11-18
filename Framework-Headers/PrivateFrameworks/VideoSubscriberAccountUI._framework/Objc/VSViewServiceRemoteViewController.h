@@ -28,10 +28,13 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_didCancelRequest:(id)arg1;
 - (void)_didChooseAdditionalProvidersForRequest:(id)arg1;
+- (void)_didChooseProviderWithIdentifier:(id)arg1 vetoHandler:(CDUnknownBlockType)arg2;
 - (void)_dismissViewController;
 - (void)_presentViewController;
 - (void)_request:(id)arg1 didFailWithError:(id)arg2;
 - (void)_request:(id)arg1 didFinishWithResponse:(id)arg2;
+- (void)dealloc;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 
 @end

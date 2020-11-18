@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCache:(shared_ptr_25027cf4)arg1;
 - (void)notifyCacheClientOfTimeRelativeResponses:(id)arg1;
 - (void)notifyCachedURLResponseBecameFileBacked:(id)arg1 filePath:(id)arg2 forUUID:(id)arg3;
+- (void)performSchemaCheckAndUpdate;
 - (void)setMaxSize:(long long)arg1;
 - (void)setMinSizeForVMCachedResource:(long long)arg1;
 

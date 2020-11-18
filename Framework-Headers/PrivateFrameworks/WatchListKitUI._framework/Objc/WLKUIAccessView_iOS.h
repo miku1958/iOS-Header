@@ -14,7 +14,7 @@
 {
     NSArray *_apps;
     UILayoutGuide *_titlePlacementGuide;
-    UIStackView *_contentStack;
+    UIStackView *_scrollStack;
     UILabel *_titleLabel;
     UIScrollView *_bodyScroll;
     UILabel *_bodyLabel;
@@ -41,6 +41,7 @@
 - (id)_buildLogoStack;
 - (id)_imageViewForIndex:(unsigned long long)arg1;
 - (id)allowButton;
+- (id)bodyScroll;
 - (id)carouselView:(id)arg1 cellForItemAtIndex:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)disallowButton;

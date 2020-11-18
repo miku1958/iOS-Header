@@ -32,6 +32,7 @@
 - (void)_annotationsWereAdded:(id)arg1 onPageController:(id)arg2;
 - (void)_annotationsWillBeRemoved:(id)arg1 onPageController:(id)arg2;
 - (void)_deleteAnnotationsFromModel:(id)arg1;
+- (void)_endEditingOfTextIfAnnotationsDeleted:(id)arg1;
 - (void)_registerUndoForSelectionOnPageModelController:(id)arg1;
 - (void)_setAnnotationProperties:(id)arg1;
 - (void)_startObservingAnnotations:(id)arg1;
@@ -39,6 +40,8 @@
 - (void)_undoActionForSelectionState:(id)arg1;
 - (void)dealloc;
 - (id)initWithController:(id)arg1;
+- (void)observePageControllerRequestsDisableRegistration:(id)arg1;
+- (void)observePageControllerRequestsEnableRegistration:(id)arg1;
 - (void)observeUndoManagerCheckpoint:(id)arg1;
 - (void)observeUndoManagerDetectedEdit:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

@@ -26,15 +26,17 @@
 + (id)layerWithSession:(id)arg1;
 + (id)layerWithSessionWithNoConnection:(id)arg1;
 - (BOOL)_automaticallyAdjustsMirroring;
+- (BOOL)_filtersAreOptimized:(id)arg1 exceptionReason:(id *)arg2;
 - (void)_handleNotification:(id)arg1 payload:(id)arg2;
 - (id)_initWithSession:(id)arg1 makeConnection:(BOOL)arg2;
 - (id)_input;
 - (BOOL)_isMirrored;
 - (long long)_orientation;
 - (void)_setSensorAndEstimatedPreviewSizes;
+- (BOOL)_setVideoPreviewFilters:(id)arg1 checkForExceptionalInput:(BOOL)arg2 exceptionReason:(id *)arg3;
 - (void)_updateCaptureDeviceTransform;
+- (void)_updateDepthDataDeliverySupported;
 - (void)_updatePreviewTransforms;
-- (id)activeConnections;
 - (id)addConnection:(id)arg1 error:(id *)arg2;
 - (void)attachToFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (void)bumpChangeSeed;
@@ -43,19 +45,22 @@
 - (void)centerSublayer:(long long)arg1;
 - (int)changeSeed;
 - (id)connectionMediaTypes;
-- (id)connections;
 - (void)dealloc;
 - (void)detachFromFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
+- (unsigned int)imageQueueSlot;
 - (id)init;
 - (id)initWithLayer:(id)arg1;
 - (id)initWithSession:(id)arg1;
 - (id)initWithSessionWithNoConnection:(id)arg1;
 - (BOOL)isChromaNoiseReductionEnabled;
 - (BOOL)isChromaNoiseReductionSupported;
+- (BOOL)isDepthDataDeliveryEnabled;
+- (BOOL)isDepthDataDeliverySupported;
+- (BOOL)isFilterRenderingEnabled;
 - (BOOL)isPaused;
+- (BOOL)isUnoptimizedFilterRenderingEnabled;
 - (void)layerDidBecomeVisible:(BOOL)arg1;
 - (void)layoutSublayers;
-- (id)liveConnections;
 - (struct CGRect)metadataOutputRectOfInterestForRect:(struct CGRect)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (struct CGPoint)pointForCaptureDevicePointOfInterest:(struct CGPoint)arg1;
@@ -64,11 +69,16 @@
 - (void)removeConnection:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setChromaNoiseReductionEnabled:(BOOL)arg1;
+- (void)setDepthDataDeliveryEnabled:(BOOL)arg1;
+- (void)setFilterRenderingEnabled:(BOOL)arg1;
 - (void)setPaused:(BOOL)arg1;
 - (void)setSessionWithNoConnection:(id)arg1;
 - (void)setSinkID:(id)arg1;
+- (void)setUnoptimizedFilterRenderingEnabled:(BOOL)arg1;
+- (void)setVideoPreviewFilters:(id)arg1;
 - (id)sinkID;
 - (id)transformedMetadataObjectForMetadataObject:(id)arg1;
+- (id)videoPreviewFilters;
 
 @end
 

@@ -18,7 +18,6 @@
 - (long long)_accessibilityMapType;
 - (id)_accessibilityScrollStatus;
 - (BOOL)_allowCustomActionHintSpeakOverride;
-- (id)_axAnnotationElements;
 - (CDStruct_aca18c62)_axBoundsOfElements;
 - (CDStruct_2c43369c)_axConvertScreenPointToCoordinate:(struct CGPoint)arg1;
 - (id)_axDirectionsManager;
@@ -34,7 +33,6 @@
 - (void)_axMapVisibleRegionDidChange;
 - (id)_axMapsDelegate;
 - (long long)_axOrientationOfElements;
-- (id)_axRouteForAnnotationMarker:(id)arg1;
 - (void)_axSetMapLabelLayoutTimer:(id)arg1;
 - (void)_axSetTrackingMode:(long long)arg1;
 - (BOOL)_axShouldSummarizeVisibleBounds;
@@ -58,16 +56,15 @@
 - (void)_axVoiceOverTouchEnabled;
 - (id)_axWindow;
 - (BOOL)accessibilityActivate;
-- (BOOL)accessibilityAnnotationMarkerIsAlternateRoute:(id)arg1;
 - (CDStruct_aca18c62)accessibilityBounds;
 - (id)accessibilityCalloutAnnotationView;
 - (CDStruct_2c43369c)accessibilityCenter;
 - (void)accessibilityClearVisibleAXBoundsFrame;
-- (id)accessibilityContainerElements;
 - (struct CGPoint)accessibilityConvertCoordinateToWindow:(CDStruct_2c43369c)arg1;
 - (void)accessibilityDecreaseTrackingDetail;
 - (float)accessibilityDistance:(struct CGPoint)arg1 forAngle:(float)arg2 toRoad:(id)arg3 withElement:(id)arg4;
 - (float)accessibilityDistanceToEndOfRoad:(struct CGPoint)arg1 forAngle:(float)arg2 withElement:(id)arg3;
+- (id)accessibilityElements;
 - (id)accessibilityHint;
 - (id)accessibilityIdentifier;
 - (void)accessibilityIncreaseTrackingDetail;
@@ -95,7 +92,7 @@
 - (float)accessibilityZoomLevel;
 - (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
 - (void)dealloc;
-- (id)initWithGlobe:(BOOL)arg1 shouldRasterize:(BOOL)arg2 inBackground:(BOOL)arg3 manifestConfiguration:(id)arg4 contentScale:(double)arg5;
+- (id)initShouldRasterize:(BOOL)arg1 inBackground:(BOOL)arg2 manifestConfiguration:(id)arg3 contentScale:(double)arg4;
 - (BOOL)isAccessibilityElement;
 - (void)map:(id)arg1 didChangeRegionAnimated:(BOOL)arg2;
 - (void)mapDidBecomeFullyDrawn:(id)arg1 hasFailedTiles:(BOOL)arg2;

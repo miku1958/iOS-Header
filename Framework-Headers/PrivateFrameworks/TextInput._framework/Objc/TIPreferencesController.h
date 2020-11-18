@@ -34,6 +34,7 @@
 @property (nonatomic) BOOL predictionEnabled;
 @property (readonly) Class superclass;
 
++ (void)registerPreferredLanguagesForInputModes:(id)arg1 replacingInputModes:(id)arg2;
 + (id)sharedPreferencesController;
 - (int)MCValueForManagedPreferenceKey:(id)arg1;
 - (void)_configureDomain:(id)arg1 notification:(id)arg2;
@@ -63,10 +64,14 @@
 - (void)synchronizeDomainIfNeedsGet:(id)arg1;
 - (void)synchronizePreferences;
 - (void)touchSynchronizePreferencesTimer;
+- (void)updateDidPerformFirstReachableKeyboardInteraction;
+- (void)updateEnabledDictationLanguages:(id)arg1;
+- (void)updateEnabledDictationLanguagesForInputModes:(id)arg1;
 - (void)updateInputModes:(id)arg1;
 - (void)updateKeyboardHandBias:(id)arg1;
 - (void)updateKeyboardIsFloating:(BOOL)arg1;
 - (void)updateKeyboardIsSplit:(BOOL)arg1 locked:(BOOL)arg2;
+- (void)updateLastUsedDictationLanguages:(id)arg1;
 - (void)updateLastUsedInputMode:(id)arg1;
 - (void)updateLastUsedKeyboards:(id)arg1;
 - (void)updateLastUsedLayout:(id)arg1;

@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class NSMapTable, NSString;
+@class NSMapTable, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDRemoteIdentityRegistry : NSObject <HMFLogging>
+@interface HMDRemoteIdentityRegistry : HMFObject <HMFLogging, HMFDumpState>
 {
     NSObject<OS_dispatch_queue> *_propertyQueue;
     NSMapTable *_accountIdentities;
@@ -30,6 +31,7 @@
 + (id)shortDescription;
 - (void).cxx_destruct;
 - (id)descriptionWithPointer:(BOOL)arg1;
+- (id)dumpState;
 - (id)init;
 - (id)pairingIdentityForAccount:(id)arg1;
 - (id)pairingIdentityForDevice:(id)arg1;

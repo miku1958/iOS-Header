@@ -9,10 +9,11 @@
 #import <GeoServices/GEOTransitNamedItem-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPBTransitArtwork, GEOStyleAttributes, NSString;
+@class GEOPBTransitArtwork, GEOStyleAttributes, NSString, PBUnknownFields;
 
 @interface GEOPBTransitSystem : PBCodable <GEOTransitNamedItem, NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     unsigned long long _muid;
     GEOPBTransitArtwork *_artwork;
     NSString *_nameDisplayString;
@@ -42,14 +43,16 @@
 @property (strong, nonatomic) GEOStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned int systemIndex; // @synthesize systemIndex=_systemIndex;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) NSString *website; // @synthesize website=_website;
 
+- (void).cxx_destruct;
 - (id)bestName;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)dictionaryRepresentation;
 - (id)geoTransitSystem;
+- (id)identifier;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

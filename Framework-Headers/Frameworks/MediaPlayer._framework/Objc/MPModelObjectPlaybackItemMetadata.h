@@ -47,7 +47,6 @@
 - (void)loadMediaItemWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)localNetworkContentURL;
 - (long long)mediaLibraryPersistentID;
-- (id)mqf_playbackItemMetadataModelObject;
 - (id)protectedContentSupportStorageURL;
 - (void)setCachedLocalPlaybackAssetFilePath:(id)arg1 protectionType:(unsigned long long)arg2 assetQuality:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)shouldRememberBookmarkTime;

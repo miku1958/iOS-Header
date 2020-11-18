@@ -11,7 +11,7 @@
 #import <HomeUI/HUEditableTextCellProtocol-Protocol.h>
 
 @class HFItem, HUIconButton, NSLayoutConstraint, NSString, UIFont, UITextField, UIView;
-@protocol HUNameAndIconEditorCellDelegate;
+@protocol HUNameAndIconEditorCellDelegate, HUResizableCellDelegate;
 
 @interface HUNameAndIconEditorCell : UITableViewCell <HUCellProtocol, HUEditableTextCellProtocol, HUDisableableCellProtocol>
 {
@@ -36,6 +36,7 @@
 @property (strong, nonatomic) HUIconButton *iconButton; // @synthesize iconButton=_iconButton;
 @property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
 @property (strong, nonatomic) NSLayoutConstraint *leftConstraint; // @synthesize leftConstraint=_leftConstraint;
+@property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;
 @property (strong, nonatomic) NSLayoutConstraint *rightConstraint; // @synthesize rightConstraint=_rightConstraint;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITextField *textField; // @synthesize textField=_textField;
@@ -44,6 +45,7 @@
 - (void).cxx_destruct;
 - (void)_handleIconButtonTap:(id)arg1;
 - (void)_setupConstraints;
+- (void)_updateFullWidthAppearance;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
 - (void)updateUIWithAnimation:(BOOL)arg1;

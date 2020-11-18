@@ -16,6 +16,7 @@
     CIImage *_ciImage;
 }
 
+- (void).cxx_destruct;
 - (id)ciImage;
 - (void)dealloc;
 - (id)initWithSize:(struct CGSize)arg1 colorManagement:(int)arg2;

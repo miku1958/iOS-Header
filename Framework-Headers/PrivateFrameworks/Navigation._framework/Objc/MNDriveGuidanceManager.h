@@ -4,28 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Navigation/MNGuidanceManager.h>
+#import <Navigation/MNClassicGuidanceManager.h>
 
-@class NSMutableArray;
-
-@interface MNDriveGuidanceManager : MNGuidanceManager
+__attribute__((visibility("hidden")))
+@interface MNDriveGuidanceManager : MNClassicGuidanceManager
 {
-    NSMutableArray *_substeps;
     int _currentContinuePhase;
 }
 
-- (void).cxx_destruct;
 - (const CDStruct_39925896 *)_announceSettings;
 - (int)_continuePhase;
 - (double)_distanceForSign;
-- (BOOL)_hasSubsteps;
 - (id)_nameInfoForContinueSign;
-- (id)_nextSubstep;
 - (void)_resetStepState;
 - (BOOL)_updateConsiderContinueAnnouncement:(id)arg1 location:(id)arg2;
 - (BOOL)_updateConsiderExecuteAnnouncement:(id)arg1 location:(id)arg2;
 - (BOOL)_updateConsiderPrepareAnnouncement:(id)arg1 withMatch:(id)arg2;
-- (BOOL)_updateConsiderSubstepAnnouncement:(id)arg1 location:(id)arg2;
 - (void)_updatePrepareForNextStep;
 - (int)transportType;
 

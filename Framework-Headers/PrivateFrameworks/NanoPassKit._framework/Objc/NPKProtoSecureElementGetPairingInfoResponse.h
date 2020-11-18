@@ -14,13 +14,20 @@
 {
     NSData *_challengeResponse;
     NSData *_cryptogram;
+    BOOL _authRandomSet;
     BOOL _pending;
     BOOL _success;
-    CDStruct_5ee4970e _has;
+    struct {
+        unsigned int authRandomSet:1;
+        unsigned int pending:1;
+        unsigned int success:1;
+    } _has;
 }
 
+@property (nonatomic) BOOL authRandomSet; // @synthesize authRandomSet=_authRandomSet;
 @property (strong, nonatomic) NSData *challengeResponse; // @synthesize challengeResponse=_challengeResponse;
 @property (strong, nonatomic) NSData *cryptogram; // @synthesize cryptogram=_cryptogram;
+@property (nonatomic) BOOL hasAuthRandomSet;
 @property (readonly, nonatomic) BOOL hasChallengeResponse;
 @property (readonly, nonatomic) BOOL hasCryptogram;
 @property (nonatomic) BOOL hasPending;

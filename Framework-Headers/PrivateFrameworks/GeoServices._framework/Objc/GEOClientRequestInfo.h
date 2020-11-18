@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSMutableDictionary, NSString;
 
@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *clientID; // @synthesize clientID=_clientID;
 @property (readonly, nonatomic) NSDictionary *requests; // @synthesize requests=_requests;
 
+- (void).cxx_destruct;
 - (unsigned long long)countForRequestType:(unsigned char)arg1;
-- (void)dealloc;
 - (void)incrementCountForRequestType:(unsigned char)arg1;
 - (id)init;
 - (id)initWithClientID:(id)arg1;

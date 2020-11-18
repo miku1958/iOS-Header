@@ -39,12 +39,12 @@
 @property (readonly, nonatomic) NSArray *transitLineOptions; // @synthesize transitLineOptions=_transitLineOptions;
 @property (readonly, nonatomic) id<GEOTransitSystem> transitSystem;
 
+- (void).cxx_destruct;
 - (void)_cacheStepData;
 - (BOOL)_needsStepData;
 - (id)actionSheetArtworkForRideOption:(unsigned long long)arg1;
 - (id)actionSheetDescriptionForRideOption:(unsigned long long)arg1;
 - (id)blockTransferStep;
-- (void)dealloc;
 - (id)initWithComposedRoute:(id)arg1 tripIndex:(unsigned long long)arg2 stepRange:(struct _NSRange)arg3 transitStepRange:(struct _NSRange)arg4 pointRange:(struct _NSRange)arg5;
 - (unsigned long long)numberOfTransitStops;
 - (id)routeDetailsPrimaryArtworkForRideOption:(unsigned long long)arg1;

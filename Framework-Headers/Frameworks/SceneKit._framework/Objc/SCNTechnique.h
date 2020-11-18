@@ -18,6 +18,7 @@
     struct __C3DFXTechnique *_technique;
     NSMutableDictionary *_valueForSymbol;
     SCNOrderedDictionary *_animations;
+    NSMutableDictionary *_bindings;
 }
 
 @property (readonly) NSArray *animationKeys;
@@ -33,19 +34,24 @@
 + (id)techniqueWithTechniqueRef:(struct __C3DFXTechnique *)arg1;
 - (const void *)__CFObject;
 - (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
+- (void)_copyAnimationsFrom:(id)arg1;
 - (void)_customDecodingOfSCNTechnique:(id)arg1;
 - (void)_customEncodingOfSCNTechnique:(id)arg1;
 - (void)_didInstallInEngineContext:(struct __C3DEngineContext *)arg1;
-- (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2;
+- (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2 pausedByNode:(BOOL)arg3;
+- (id)_scnAnimationForKey:(id)arg1;
+- (id)_scnBindings;
 - (id)_symbolsAssignedValues;
 - (void)_syncObjCAnimations;
 - (void)addAnimation:(id)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
+- (void)addAnimationPlayer:(id)arg1 forKey:(id)arg2;
 - (id)animationForKey:(id)arg1;
 - (struct __C3DAnimationManager *)animationManager;
+- (id)animationPlayerForKey:(id)arg1;
 - (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (id)copy;
-- (struct __C3DAnimationChannel *)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
+- (id)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
@@ -60,6 +66,7 @@
 - (id)presentationInstance;
 - (void)removeAllAnimations;
 - (void)removeAnimationForKey:(id)arg1;
+- (void)removeAnimationForKey:(id)arg1 blendOutDuration:(double)arg2;
 - (void)removeAnimationForKey:(id)arg1 fadeOutDuration:(double)arg2;
 - (void)resumeAnimationForKey:(id)arg1;
 - (id)scene;

@@ -4,34 +4,41 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, VKImage;
 
 __attribute__((visibility("hidden")))
 @interface VKIconArtwork : NSObject
 {
-    BOOL _hasIcon;
+    struct atomic<bool> _hasIcon;
     VKImage *_image;
     double _contentScale;
-    double _leftCapWidth;
-    double _rightCapWidth;
-    double _textOffsetY;
+    struct CGPoint _textCenterPosition;
+    struct Style _style;
+    struct ExtraStyle _extraStyle;
     NSMutableArray *_completionHandlers;
     struct CGColor *_fullBleedColor;
 }
 
 @property (readonly, nonatomic) double contentScale; // @synthesize contentScale=_contentScale;
 @property (nonatomic) struct CGColor *fullBleedColor; // @synthesize fullBleedColor=_fullBleedColor;
+@property (readonly, nonatomic) struct Style style; // @synthesize style=_style;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)_cleanUpAfterDrawing;
 - (id)_newImage;
 - (id)_newImageWithText:(id)arg1 fontName:(id)arg2;
+- (Matrix_8746f91e)anchorPoint;
 - (void)dealloc;
-- (void)getImage:(CDUnknownBlockType)arg1;
+- (void)getImage:(CDUnknownBlockType)arg1 queue:(id)arg2;
+- (BOOL)hasBounds;
 - (id)image;
 - (id)imageWithText:(id)arg1 fontName:(id)arg2;
 - (id)initWithImage:(struct CGImage *)arg1 contentScale:(double)arg2;
+- (Box_3fb92e00)localCollisionBounds;
+- (Box_55c4a776)localRenderBounds;
 
 @end
 

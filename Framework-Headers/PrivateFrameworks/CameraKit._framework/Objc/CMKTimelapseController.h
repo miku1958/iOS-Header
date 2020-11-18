@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <CameraKit/CMKStillImageCaptureRequestDelegate-Protocol.h>
-#import <CameraKit/UIAlertViewDelegate-Protocol.h>
 
-@class CMKLowDiskSpaceAlertView, CMKTimelapseState, NSCountedSet, NSDate, NSMutableSet, NSString;
+@class CMKLowDiskSpaceAlertController, CMKTimelapseState, NSCountedSet, NSDate, NSMutableSet, NSString;
 @protocol OS_dispatch_source;
 
-@interface CMKTimelapseController : NSObject <CMKStillImageCaptureRequestDelegate, UIAlertViewDelegate>
+@interface CMKTimelapseController : NSObject <CMKStillImageCaptureRequestDelegate>
 {
     BOOL __ignoringTimerCallbacksForTearDown;
     BOOL __ignoringTimerCallbacksWaitingForCaptureResponse;
@@ -22,12 +21,12 @@
     NSObject<OS_dispatch_source> *__captureTimer;
     NSCountedSet *__inFlightTimelapseUUIDs;
     NSMutableSet *__pendingCompletedStates;
-    CMKLowDiskSpaceAlertView *__diskSpaceAlert;
+    CMKLowDiskSpaceAlertController *__diskSpaceAlert;
 }
 
 @property (nonatomic, setter=_setBackendRecoveryNeeded:) BOOL _backendRecoveryNeeded; // @synthesize _backendRecoveryNeeded=__backendRecoveryNeeded;
 @property (readonly, nonatomic) NSObject<OS_dispatch_source> *_captureTimer; // @synthesize _captureTimer=__captureTimer;
-@property (readonly, nonatomic) CMKLowDiskSpaceAlertView *_diskSpaceAlert; // @synthesize _diskSpaceAlert=__diskSpaceAlert;
+@property (readonly, nonatomic) CMKLowDiskSpaceAlertController *_diskSpaceAlert; // @synthesize _diskSpaceAlert=__diskSpaceAlert;
 @property (readonly, nonatomic) BOOL _ignoringTimerCallbacksForTearDown; // @synthesize _ignoringTimerCallbacksForTearDown=__ignoringTimerCallbacksForTearDown;
 @property (readonly, nonatomic) BOOL _ignoringTimerCallbacksWaitingForCaptureResponse; // @synthesize _ignoringTimerCallbacksWaitingForCaptureResponse=__ignoringTimerCallbacksWaitingForCaptureResponse;
 @property (readonly, nonatomic) NSCountedSet *_inFlightTimelapseUUIDs; // @synthesize _inFlightTimelapseUUIDs=__inFlightTimelapseUUIDs;
@@ -75,7 +74,6 @@
 - (void)_updateFocusAndExposureForStopCapturing;
 - (void)_updateFocusLensPosition:(float)arg1 forTimelapseUUID:(id)arg2 forceUpdate:(BOOL)arg3;
 - (void)_updateLocationIfNecessary;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (void)captureController:(id)arg1 didFinishWriteForResponse:(id)arg2 forStillImageRequest:(id)arg3 error:(id)arg4;
 - (void)captureController:(id)arg1 didGenerateResponse:(id)arg2 forStillImageRequest:(id)arg3 error:(id)arg4;
 - (void)dealloc;

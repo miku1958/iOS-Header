@@ -16,6 +16,7 @@
 - (BOOL)anyPeerHasEnabledViewsInSet:(NSSet *)arg1 error:(id *)arg2;
 - (int)circleStatus:(id *)arg1;
 - (NSString *)generateRecoveryKeyWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
+- (NSDictionary *)generateVerifierWithRcoveryKey:(NSString *)arg1 error:(id *)arg2;
 - (BOOL)hasNonViewAwarePeers;
 - (id)initWithContext:(CDPContext *)arg1;
 - (BOOL)isLastBackupMakingPeer:(id *)arg1;
@@ -27,8 +28,10 @@
 - (BOOL)requestToJoinCircle:(id *)arg1;
 - (BOOL)requestToJoinCircleAfterRestore:(id *)arg1;
 - (BOOL)requestToResetCircle:(id *)arg1;
+- (BOOL)requestToResetCloudKitData:(id *)arg1;
 - (BOOL)setViewsWithEnableSet:(NSSet *)arg1 disableSet:(NSSet *)arg2;
 - (BOOL)synchronizeCircleViews;
 - (BOOL)viewMemberForAutofillPasswords:(id *)arg1;
+- (BOOL)viewMemberForPCSMaster:(id *)arg1;
 @end
 

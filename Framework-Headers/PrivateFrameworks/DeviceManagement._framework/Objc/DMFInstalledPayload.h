@@ -4,36 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <DeviceManagement/DMFProfilePayload.h>
 
-#import <DeviceManagement/NSSecureCoding-Protocol.h>
-
-@class NSString;
-
-@interface DMFInstalledPayload : NSObject <NSSecureCoding>
+@interface DMFInstalledPayload : DMFProfilePayload
 {
-    NSString *_type;
-    NSString *_identifier;
-    long long _payloadVersion;
-    NSString *_displayName;
-    NSString *_organization;
-    NSString *_payloadDescription;
 }
-
-@property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (copy, nonatomic) NSString *organization; // @synthesize organization=_organization;
-@property (copy, nonatomic) NSString *payloadDescription; // @synthesize payloadDescription=_payloadDescription;
-@property (nonatomic) long long payloadVersion; // @synthesize payloadVersion=_payloadVersion;
-@property (copy, nonatomic) NSString *type; // @synthesize type=_type;
-
-+ (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
-- (id)description;
-- (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
-- (id)initWithCoder:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
 
 @end
 

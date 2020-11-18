@@ -22,6 +22,7 @@
 }
 
 + (id)builderWithPerson:(id)arg1;
++ (unsigned long long)estimatedBytesAvailableForPhotoWithOptions:(id)arg1 serializer:(id)arg2;
 - (void).cxx_destruct;
 - (void)_addAttributesForCropRects:(id)arg1 imageHash:(id)arg2 toLine:(id)arg3;
 - (void)addActivityAlerts;

@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)barAppearance:(id)arg1 performBottomBarsMorphAnimationWithType:(long long)arg2;
 - (BOOL)barAppearanceIsStatusBarVisible:(id)arg1;
 
 @end

@@ -25,6 +25,7 @@
 + (id)tableChevronColor;
 + (id)tableChevronSelectedColor;
 + (id)tableOutlineColor;
++ (id)tableOutlineColorDarkenedIfNeeded;
 
 @end
 

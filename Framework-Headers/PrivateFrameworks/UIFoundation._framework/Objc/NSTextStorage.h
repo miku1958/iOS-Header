@@ -25,7 +25,7 @@
 }
 
 @property (readonly, nonatomic) long long changeInLength;
-@property (nonatomic) id<NSTextStorageDelegate> delegate;
+@property (weak, nonatomic) id<NSTextStorageDelegate> delegate;
 @property (readonly, nonatomic) unsigned long long editedMask;
 @property (readonly, nonatomic) struct _NSRange editedRange;
 @property (readonly, nonatomic) BOOL fixesAttributesLazily;

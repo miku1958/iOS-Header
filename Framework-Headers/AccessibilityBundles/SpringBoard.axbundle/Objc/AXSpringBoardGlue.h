@@ -12,7 +12,6 @@
 
 + (BOOL)_isSessionLoginSession;
 + (BOOL)_showingBuddyLockScreen;
-+ (void)_spotlightWillAppear:(id)arg1;
 + (void)accessibilityInitializeBundle;
 + (int)applicationOrientation;
 + (BOOL)canShowAXInfoPanel;

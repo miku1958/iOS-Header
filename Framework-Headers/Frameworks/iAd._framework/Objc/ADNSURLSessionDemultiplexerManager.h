@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMutableDictionary, NSURLSessionConfiguration;
 @protocol OS_dispatch_queue;
@@ -23,6 +23,7 @@
 @property (strong) NSMutableDictionary *sessionDemultiplexerForIdentifier; // @synthesize sessionDemultiplexerForIdentifier=_sessionDemultiplexerForIdentifier;
 
 + (id)sharedManager;
+- (void)dealloc;
 - (id)init;
 - (long long)pretapRequestCountForIdentifier:(id)arg1;
 - (id)sessionDemultiplexerForAdByIdentifier:(id)arg1 maximumRequestCount:(long long)arg2;

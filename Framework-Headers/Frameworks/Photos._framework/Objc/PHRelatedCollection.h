@@ -26,8 +26,8 @@
 
 + (id)_relatedCollectionsFromInfos:(id)arg1 relatedObject:(id)arg2;
 + (id)_transientCollectionListWithCollectionsRelatedToIdentifiers:(id)arg1 relationType:(unsigned long long)arg2 options:(id)arg3;
-+ (id)transientCollectionListWithCollectionsRelatedToFaceCollections:(id)arg1 relationType:(unsigned long long)arg2 options:(id)arg3;
 + (id)transientCollectionListWithCollectionsRelatedToObject:(id)arg1 relationType:(unsigned long long)arg2 options:(id)arg3;
++ (id)transientCollectionListWithCollectionsRelatedToPersonSuggestions:(id)arg1 relationType:(unsigned long long)arg2 options:(id)arg3;
 + (id)transientCollectionListWithCollectionsRelatedToPersons:(id)arg1 relationType:(unsigned long long)arg2 options:(id)arg3;
 - (void).cxx_destruct;
 - (BOOL)canPerformEditOperation:(long long)arg1;

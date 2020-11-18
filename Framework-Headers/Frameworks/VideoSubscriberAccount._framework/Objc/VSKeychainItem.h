@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)primitiveValueForKey:(id)arg1;
 - (void)setPrimitiveValue:(id)arg1 forKey:(id)arg2;
 - (void)willAccessValueForKey:(id)arg1;
+- (void)willChangeValueForKey:(id)arg1;
 
 @end
 

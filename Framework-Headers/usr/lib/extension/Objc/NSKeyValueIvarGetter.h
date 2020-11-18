@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSKeyValueGetter.h>
+#import <Foundation/NSKeyValueGetter.h>
 
 __attribute__((visibility("hidden")))
 @interface NSKeyValueIvarGetter : NSKeyValueGetter

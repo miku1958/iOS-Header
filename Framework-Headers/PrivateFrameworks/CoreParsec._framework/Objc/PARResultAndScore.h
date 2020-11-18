@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double totalScore; // @synthesize totalScore=_totalScore;
 
 - (void).cxx_destruct;
-- (id)description;
 
 @end
 

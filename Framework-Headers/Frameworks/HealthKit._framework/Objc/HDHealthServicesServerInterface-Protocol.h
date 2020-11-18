@@ -18,7 +18,7 @@
 - (void)remote_endHealthServiceSession:(unsigned long long)arg1;
 - (void)remote_fetchSupportedServiceIDsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)remote_getEnabledStatusForPeripheral:(NSUUID *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
-- (void)remote_getHealthServicePairingsWithHandler:(void (^)(NSArray *, NSError *))arg1;
+- (void)remote_getHealthPeripheralsWithFilter:(unsigned long long)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
 - (void)remote_getHealthServiceProperty:(NSString *)arg1 forSession:(unsigned long long)arg2 withHandler:(void (^)(id, NSError *))arg3;
 - (void)remote_getSupportedPropertyNamesWithHandler:(void (^)(id, NSError *))arg1;
 - (void)remote_performHealthServiceOperation:(NSString *)arg1 onSession:(unsigned long long)arg2 withParameters:(NSDictionary *)arg3 completion:(void (^)(NSString *, BOOL, NSError *))arg4;

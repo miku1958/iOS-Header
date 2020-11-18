@@ -16,6 +16,8 @@
     NSUserActivity *_getPaymentPassesUserActivity;
     NSUserActivity *_passListUserActivity;
     NSUserActivity *_individualPassUserActivity;
+    NSUserActivity *_setUpPeerPaymentUserActivity;
+    NSUserActivity *_viewPeerPaymentUserActivity;
     NSUserActivity *_currentUserActivity;
 }
 
@@ -25,6 +27,8 @@
 @property (strong, nonatomic) NSUserActivity *passListUserActivity; // @synthesize passListUserActivity=_passListUserActivity;
 @property (strong, nonatomic) NSUserActivity *provisionPassUserActivity; // @synthesize provisionPassUserActivity=_provisionPassUserActivity;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong, nonatomic) NSUserActivity *setUpPeerPaymentUserActivity; // @synthesize setUpPeerPaymentUserActivity=_setUpPeerPaymentUserActivity;
+@property (strong, nonatomic) NSUserActivity *viewPeerPaymentUserActivity; // @synthesize viewPeerPaymentUserActivity=_viewPeerPaymentUserActivity;
 
 + (id)sharedContinuityCoordinator;
 - (void).cxx_destruct;
@@ -37,6 +41,8 @@
 - (id)userActivityForPassWithUniqueID:(id)arg1;
 - (void)userNeedsPaymentPasses;
 - (void)userNeedsToProvisionPassWithUniqueID:(id)arg1;
+- (void)userNeedsToSetUpPeerPayment;
+- (void)userNeedsToViewPeerPaymentForHandle:(id)arg1;
 - (void)userViewingPassList;
 - (void)userViewingPassWithUniqueID:(id)arg1 isPaymentPass:(BOOL)arg2;
 

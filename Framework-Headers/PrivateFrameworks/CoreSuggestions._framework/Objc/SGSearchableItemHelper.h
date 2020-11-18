@@ -14,7 +14,7 @@
 + (id)deserializeAttributes:(id)arg1 andBody:(id)arg2;
 + (id)deserializeAttributesAndBody:(id)arg1;
 + (id)messageIdHeaderValues:(id)arg1;
-+ (BOOL)searchableItemIsEligibleForHarvesting:(id)arg1;
++ (BOOL)searchableItemIsEligibleForHarvesting:(id)arg1 isReimported:(BOOL)arg2;
 + (BOOL)searchableItemIsEmpty:(id)arg1;
 + (BOOL)searchableItemIsFromSupportedAccount:(id)arg1;
 + (BOOL)searchableItemIsInDrafts:(id)arg1;
@@ -30,6 +30,7 @@
 + (BOOL)searchableItemIsTooBig:(id)arg1;
 + (BOOL)searchableItemIsValid:(id)arg1;
 + (BOOL)searchableItemIsValid:(id)arg1 emailHeaders:(id)arg2 mailboxIdentifiers:(id)arg3;
++ (BOOL)searchableItemIsWhitelistedNonMessage:(id)arg1;
 + (id)serializeAttributes:(id)arg1;
 + (id)serializeAttributesAndBody:(id)arg1;
 

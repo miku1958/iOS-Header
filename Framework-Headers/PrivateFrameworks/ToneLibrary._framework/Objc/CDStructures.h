@@ -8,9 +8,36 @@
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
+#pragma mark Named Structures
+
+struct AudioBuffer {
+    unsigned int _field1;
+    unsigned int _field2;
+    void *_field3;
+};
+
+struct AudioBufferList {
+    unsigned int _field1;
+    struct AudioBuffer _field2[1];
+};
+
+struct AudioStreamBasicDescription {
+    double _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+    unsigned int _field9;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    double _field1;
-} CDStruct_2418a849;
+    BOOL shouldBypassLowPassFilter;
+    float volumeForLowPassFilterGlobalGain;
+    float effectMix;
+} CDStruct_4922f917;
 

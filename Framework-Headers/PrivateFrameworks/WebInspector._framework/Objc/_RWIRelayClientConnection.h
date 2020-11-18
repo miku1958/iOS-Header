@@ -15,11 +15,13 @@ __attribute__((visibility("hidden")))
 @interface _RWIRelayClientConnection : NSObject <_RWIRelayToClientMessageProxy>
 {
     BOOL _didReportClose;
+    BOOL _sleeping;
     id<_RWIRelayClientConnectionDelegate> _delegate;
     NSString *_tag;
 }
 
 @property (readonly, nonatomic) id<_RWIRelayClientConnectionDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) BOOL sleeping; // @synthesize sleeping=_sleeping;
 @property (copy, nonatomic) NSString *tag; // @synthesize tag=_tag;
 
 - (void)_dispatchMessage:(id)arg1;

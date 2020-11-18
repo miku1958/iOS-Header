@@ -11,7 +11,7 @@
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 #import <PassKitUI/WLCardViewDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, PKGroup, PKPassView, PKReusablePassViewQueue, UILongPressGestureRecognizer, UIMotionEffectGroup, UIPageControl, UIPanGestureRecognizer, UIScrollView;
+@class NSMutableDictionary, NSString, PKBarcodePassDetailViewController, PKGroup, PKPassView, PKReusablePassViewQueue, UILongPressGestureRecognizer, UIMotionEffectGroup, UIPageControl, UIPanGestureRecognizer, UIScrollView;
 @protocol PKPassGroupViewDelegate;
 
 @interface PKPassGroupView : UIView <WLCardViewDelegate, PKGroupDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate>
@@ -26,11 +26,9 @@
         unsigned int indeterminateState:1;
         unsigned int fanningEnabled:1;
         unsigned int overridePriorContentOffset:1;
-        unsigned int passesGrowCentered:1;
         unsigned int delegateOverridesFrontmostContentWhileStacked:1;
         unsigned int delegateOverridesFrontmostContentWhilePiled:1;
         unsigned int delegateOverridesAllowPanning:1;
-        unsigned int delegateOverridesGrowCenterWhileFlipped:1;
         struct CGPoint priorContentOffset;
         struct CGPoint instantaneousContentOffsetDelta;
         unsigned long long numberOfPasses;
@@ -47,9 +45,14 @@
     UIMotionEffectGroup *_motionEffectGroup;
     BOOL _isAuthenticating;
     id<PKPassGroupViewDelegate> _delegate;
+    PKBarcodePassDetailViewController *_detailsVC;
+    NSString *_passBeingPresented;
+    BOOL _groupWasMarkedDeleted;
+    BOOL _passBeingPresentedWasDeleted;
+    BOOL _modallyPresented;
     BOOL _pageControlHidden;
-    PKGroup *_group;
     PKPassView *_frontmostPassView;
+    PKGroup *_group;
     PKReusablePassViewQueue *_passViewQueue;
     double _verticalMotionRelativeValue;
     double _horizontalMotionRelativeValue;
@@ -62,6 +65,7 @@
 @property (readonly, nonatomic) PKGroup *group; // @synthesize group=_group;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double horizontalMotionRelativeValue; // @synthesize horizontalMotionRelativeValue=_horizontalMotionRelativeValue;
+@property (nonatomic, getter=isModallyPresented) BOOL modallyPresented; // @synthesize modallyPresented=_modallyPresented;
 @property (readonly, nonatomic) struct UIOffset offsetForFrontmostPassWhileStacked;
 @property (readonly, nonatomic) UIPageControl *pageControl;
 @property (nonatomic) BOOL pageControlHidden; // @synthesize pageControlHidden=_pageControlHidden;
@@ -97,9 +101,10 @@
 - (void)_updatePageControlWithDisplayIndex;
 - (void)applyContentModesAnimated:(BOOL)arg1;
 - (void)beginPinningFrontFaceContentMode;
+- (double)continuousShadowIndex;
 - (void)dealloc;
+- (void)dismissBackOfPassIfNecessaryForUniqueID:(id)arg1;
 - (void)endPinningFrontFaceContentMode;
-- (void)flipPassViewForPass:(id)arg1 animated:(BOOL)arg2 fromLeft:(BOOL)arg3;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
@@ -113,19 +118,17 @@
 - (void)layoutStackAnimated:(BOOL)arg1;
 - (void)layoutSubviews;
 - (void)layoutSubviewsAnimated:(BOOL)arg1;
+- (void)markGroupDeleted;
 - (BOOL)passView:(id)arg1 deleteButtonEnabledForPass:(id)arg2;
 - (void)passView:(id)arg1 deleteButtonPressedForPass:(id)arg2;
-- (void)passView:(id)arg1 flipButtonPressedForPass:(id)arg2;
-- (void)passView:(id)arg1 resizeButtonPressedForPass:(id)arg2;
-- (BOOL)passViewBackGrowsCentered:(id)arg1;
+- (void)passView:(id)arg1 didPresentPassDetailsViewController:(id)arg2;
+- (void)passView:(id)arg1 resizeButtonPressedForPass:(id)arg2 withBarcode:(BOOL)arg3;
+- (void)passView:(id)arg1 willPresentPassDetailsViewController:(id)arg2;
 - (void)passViewDidBeginAuthenticating:(id)arg1;
 - (void)passViewDidEndAuthenticating:(id)arg1;
-- (void)passViewDidFlip:(id)arg1 animated:(BOOL)arg2;
 - (void)passViewDidResize:(id)arg1 animated:(BOOL)arg2;
-- (BOOL)passViewShouldFlip:(id)arg1;
 - (BOOL)passViewShouldResize:(id)arg1;
 - (void)passViewTapped:(id)arg1;
-- (void)passViewWillFlip:(id)arg1 animated:(BOOL)arg2;
 - (void)presentDiff:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentPassWithUniqueID:(id)arg1;
 - (void)removeFromSuperview;

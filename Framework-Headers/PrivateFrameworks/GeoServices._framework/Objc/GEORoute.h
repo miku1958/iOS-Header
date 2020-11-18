@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORouteInformation, NSData, NSMutableArray, NSString;
+@class GEOAlertNonRecommendedRouteText, GEOLaunchAndGoCardText, GEORouteInformation, NSData, NSMutableArray, NSString;
 
 @interface GEORoute : PBCodable <NSCopying>
 {
@@ -18,6 +18,7 @@
     CDStruct_9f2792e4 _trafficColorOffsets;
     CDStruct_9f2792e4 _trafficColors;
     NSMutableArray *_advisoryNotices;
+    GEOAlertNonRecommendedRouteText *_alertNonRecommendedRouteText;
     NSData *_arrivalRouteID;
     unsigned int _arrivalStepID;
     NSData *_basicPoints;
@@ -26,8 +27,11 @@
     unsigned int _distance;
     int _drivingSide;
     NSMutableArray *_endingRouteInstructions;
+    NSMutableArray *_enrouteNotices;
     unsigned int _expectedTime;
+    NSMutableArray *_guidanceEvents;
     unsigned int _historicTravelTime;
+    GEOLaunchAndGoCardText *_launchAndGoCardText;
     NSString *_name;
     NSString *_phoneticName;
     NSMutableArray *_routeDescriptions;
@@ -69,6 +73,7 @@
 @property (strong, nonatomic) NSMutableArray *advisoryNotices; // @synthesize advisoryNotices=_advisoryNotices;
 @property (readonly, nonatomic) int *advisorys;
 @property (readonly, nonatomic) unsigned long long advisorysCount;
+@property (strong, nonatomic) GEOAlertNonRecommendedRouteText *alertNonRecommendedRouteText; // @synthesize alertNonRecommendedRouteText=_alertNonRecommendedRouteText;
 @property (strong, nonatomic) NSData *arrivalRouteID; // @synthesize arrivalRouteID=_arrivalRouteID;
 @property (nonatomic) unsigned int arrivalStepID; // @synthesize arrivalStepID=_arrivalStepID;
 @property (nonatomic) BOOL avoidsHighways; // @synthesize avoidsHighways=_avoidsHighways;
@@ -80,7 +85,10 @@
 @property (nonatomic) unsigned int distance; // @synthesize distance=_distance;
 @property (nonatomic) int drivingSide; // @synthesize drivingSide=_drivingSide;
 @property (strong, nonatomic) NSMutableArray *endingRouteInstructions; // @synthesize endingRouteInstructions=_endingRouteInstructions;
+@property (strong, nonatomic) NSMutableArray *enrouteNotices; // @synthesize enrouteNotices=_enrouteNotices;
 @property (nonatomic) unsigned int expectedTime; // @synthesize expectedTime=_expectedTime;
+@property (strong, nonatomic) NSMutableArray *guidanceEvents; // @synthesize guidanceEvents=_guidanceEvents;
+@property (readonly, nonatomic) BOOL hasAlertNonRecommendedRouteText;
 @property (readonly, nonatomic) BOOL hasArrivalRouteID;
 @property (nonatomic) BOOL hasArrivalStepID;
 @property (nonatomic) BOOL hasAvoidsHighways;
@@ -93,6 +101,7 @@
 @property (nonatomic) BOOL hasDrivingSide;
 @property (nonatomic) BOOL hasExpectedTime;
 @property (nonatomic) BOOL hasHistoricTravelTime;
+@property (readonly, nonatomic) BOOL hasLaunchAndGoCardText;
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasPhoneticName;
 @property (readonly, nonatomic) BOOL hasRouteID;
@@ -111,6 +120,7 @@
 @property (readonly, nonatomic) unsigned long long incidentEndOffsetsInRoutesCount;
 @property (readonly, nonatomic) unsigned int *incidentIndices;
 @property (readonly, nonatomic) unsigned long long incidentIndicesCount;
+@property (strong, nonatomic) GEOLaunchAndGoCardText *launchAndGoCardText; // @synthesize launchAndGoCardText=_launchAndGoCardText;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSString *phoneticName; // @synthesize phoneticName=_phoneticName;
 @property (readonly) unsigned int pointCount;
@@ -136,10 +146,13 @@
 
 + (Class)advisoryNoticeType;
 + (Class)endingRouteInstructionType;
++ (Class)enrouteNoticeType;
++ (Class)guidanceEventType;
 + (Class)routeDescriptionType;
 + (Class)routeNameType;
 + (Class)startingRouteInstructionType;
 + (Class)stepType;
+- (void).cxx_destruct;
 - (int)StringAsAdvisorys:(id)arg1;
 - (int)StringAsDrivingSide:(id)arg1;
 - (int)StringAsRouteType:(id)arg1;
@@ -147,6 +160,8 @@
 - (void)addAdvisory:(int)arg1;
 - (void)addAdvisoryNotice:(id)arg1;
 - (void)addEndingRouteInstruction:(id)arg1;
+- (void)addEnrouteNotice:(id)arg1;
+- (void)addGuidanceEvent:(id)arg1;
 - (void)addIncidentEndOffsetsInRoute:(unsigned int)arg1;
 - (void)addIncidentIndices:(unsigned int)arg1;
 - (void)addRouteDescription:(id)arg1;
@@ -162,6 +177,8 @@
 - (void)clearAdvisoryNotices;
 - (void)clearAdvisorys;
 - (void)clearEndingRouteInstructions;
+- (void)clearEnrouteNotices;
+- (void)clearGuidanceEvents;
 - (void)clearIncidentEndOffsetsInRoutes;
 - (void)clearIncidentIndices;
 - (void)clearRouteDescriptions;
@@ -182,6 +199,10 @@
 - (id)drivingSideAsString:(int)arg1;
 - (id)endingRouteInstructionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)endingRouteInstructionsCount;
+- (id)enrouteNoticeAtIndex:(unsigned long long)arg1;
+- (unsigned long long)enrouteNoticesCount;
+- (id)guidanceEventAtIndex:(unsigned long long)arg1;
+- (unsigned long long)guidanceEventsCount;
 - (unsigned long long)hash;
 - (unsigned int)incidentEndOffsetsInRouteAtIndex:(unsigned long long)arg1;
 - (unsigned int)incidentIndicesAtIndex:(unsigned long long)arg1;

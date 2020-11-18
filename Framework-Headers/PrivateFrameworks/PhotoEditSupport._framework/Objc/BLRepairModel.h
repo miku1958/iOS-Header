@@ -15,8 +15,8 @@
     NSLock *_lock;
 }
 
+- (void).cxx_destruct;
 - (void)buildLayerStackWithAnalysisImage:(id)arg1 andRepairImage:(id)arg2;
-- (void)dealloc;
 - (BOOL)hasLayerStack;
 - (BOOL)hasRedeye;
 - (BOOL)hasRepair;

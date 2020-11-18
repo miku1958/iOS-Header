@@ -6,28 +6,37 @@
 
 #import <UIKit/UIView.h>
 
-@class NSDecimalNumber, NSString, UILabel;
+@class NSDecimalNumber, NSNumberFormatter, NSString, UIActivityIndicatorView, UILabel;
 
 @interface PKEnterValueNewBalanceView : UIView
 {
-    NSString *_currencyCode;
     NSDecimalNumber *_additionalAmount;
+    BOOL _showSpinner;
+    NSNumberFormatter *_currentAmountFormatter;
     UILabel *_newBalancePrompt;
     UILabel *_newBalanceAmount;
+    UIActivityIndicatorView *_spinner;
+    NSString *_currencyCode;
     NSDecimalNumber *_cardBalance;
     NSDecimalNumber *_maxAmount;
+    NSDecimalNumber *_minAmount;
 }
 
 @property (copy, nonatomic) NSDecimalNumber *cardBalance; // @synthesize cardBalance=_cardBalance;
+@property (copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
 @property (copy, nonatomic) NSDecimalNumber *maxAmount; // @synthesize maxAmount=_maxAmount;
+@property (copy, nonatomic) NSDecimalNumber *minAmount; // @synthesize minAmount=_minAmount;
 
 - (void).cxx_destruct;
 - (void)_addSubviews;
+- (void)_createAmountFormatter;
+- (id)_formattedStringForAmount:(id)arg1;
 - (void)_updateBalanceText;
 - (void)addAmountToBalance:(id)arg1;
 - (id)init;
 - (id)initWithCurrencyCode:(id)arg1;
 - (void)layoutSubviews;
+- (void)showSpinner:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

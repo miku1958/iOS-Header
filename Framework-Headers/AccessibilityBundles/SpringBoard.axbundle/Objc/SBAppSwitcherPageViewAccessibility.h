@@ -14,24 +14,21 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityBundleIdentifier;
-- (BOOL)_accessibilityCanCloseApp;
-- (BOOL)_accessibilityCloseApp:(id)arg1;
 - (BOOL)_accessibilityElementVisibilityAffectsLayout;
 - (BOOL)_accessibilityFrameShouldIncludeExtraSpaceBelow;
+- (BOOL)_accessibilityIsControlCenterContainer;
 - (BOOL)_accessibilityIsNotFirstElement;
-- (int)_accessibilityPreferredScrollAction;
+- (id)_accessibilityPreferredScrollActions;
 - (BOOL)_accessibilityRetainsCustomRotorActionSetting;
 - (id)_accessibilityScrollStatus;
 - (BOOL)_accessibilityScrollToVisible;
 - (struct CGRect)_accessibilityVisibleFrame;
-- (id)accessibilityCustomActions;
 - (struct CGRect)accessibilityFrame;
-- (id)accessibilityHint;
 - (BOOL)accessibilityIsDismissing;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
 - (void)setAccessibilityIsDismissing:(BOOL)arg1;
-- (void)viewDismissing:(id)arg1 withInteraction:(BOOL)arg2 andInitialProgress:(double)arg3 forTransitionRequest:(id)arg4;
+- (void)viewDismissing:(id)arg1 forTransitionRequest:(id)arg2;
 
 @end
 

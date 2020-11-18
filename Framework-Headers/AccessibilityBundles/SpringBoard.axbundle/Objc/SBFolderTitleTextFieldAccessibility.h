@@ -14,12 +14,12 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityOverridesInstructionsHint;
+- (BOOL)_accessibilityServesAsFirstElement;
 - (BOOL)_accessibilitySupportsHandwriting;
 - (id)accessibilityHint;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
-- (id)accessibilityValue;
 
 @end
 

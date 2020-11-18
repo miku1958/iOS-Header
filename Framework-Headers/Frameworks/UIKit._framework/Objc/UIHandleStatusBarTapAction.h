@@ -11,10 +11,13 @@
 }
 
 @property (readonly, nonatomic) long long statusBarStyle;
+@property (readonly, nonatomic) int statusBarStyleOverride;
 
 - (long long)UIActionType;
 - (id)initWithInfo:(id)arg1 timeout:(double)arg2 forResponseOnQueue:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (id)initWithStatusBarStyle:(long long)arg1;
+- (id)initWithStatusBarStyle:(long long)arg1 andStatusBarStyleOverride:(int)arg2;
+- (id)initWithStatusBarStyleOverride:(int)arg1;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 
 @end

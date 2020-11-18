@@ -8,19 +8,22 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEORegionalResourceTileData : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_attributions;
     NSMutableArray *_icons;
 }
 
 @property (strong, nonatomic) NSMutableArray *attributions; // @synthesize attributions=_attributions;
 @property (strong, nonatomic) NSMutableArray *icons; // @synthesize icons=_icons;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)attributionType;
 + (Class)iconType;
+- (void).cxx_destruct;
 - (void)addAttribution:(id)arg1;
 - (void)addIcon:(id)arg1;
 - (id)attributionAtIndex:(unsigned long long)arg1;
@@ -29,7 +32,6 @@
 - (void)clearIcons;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

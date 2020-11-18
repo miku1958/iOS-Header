@@ -8,7 +8,7 @@
 
 #import <Sharing/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDictionary, NSMutableSet, NSUUID, SFDevice, SFSession;
+@class NSData, NSDictionary, NSSet, NSUUID, SFDevice, SFSession;
 
 @interface SFMessage : NSObject <NSSecureCoding>
 {
@@ -19,12 +19,12 @@
     CDUnknownBlockType _completionHandler;
     NSDictionary *_headerFields;
     SFSession *_session;
-    struct NSMutableSet *_deviceIDs;
+    struct NSSet *_deviceIDs;
 }
 
 @property (copy, nonatomic) NSData *bodyData; // @synthesize bodyData=_bodyData;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property (copy, nonatomic) NSMutableSet *deviceIDs; // @synthesize deviceIDs=_deviceIDs;
+@property (copy, nonatomic) NSSet *deviceIDs; // @synthesize deviceIDs=_deviceIDs;
 @property (nonatomic) BOOL expectsResponse; // @synthesize expectsResponse=_expectsResponse;
 @property (copy, nonatomic) NSDictionary *headerFields; // @synthesize headerFields=_headerFields;
 @property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;

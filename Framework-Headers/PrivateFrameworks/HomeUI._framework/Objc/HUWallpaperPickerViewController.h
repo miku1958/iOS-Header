@@ -38,6 +38,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)contentSizeCategoryDidChange;
 - (id)currentSectionIdentifiers;
 - (id)identifierForSection:(unsigned long long)arg1;
 - (id)initWithCollectionType:(long long)arg1 namedSectionTitle:(id)arg2 delegate:(id)arg3;

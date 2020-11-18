@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

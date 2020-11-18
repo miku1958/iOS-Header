@@ -8,12 +8,10 @@
 
 @interface MRRegisterGameControllerMessage : MRProtocolMessage
 {
-    void *_properties;
 }
 
 @property (readonly, nonatomic) void *properties;
 
-- (void)dealloc;
 - (id)initWithProperties:(void *)arg1;
 - (unsigned long long)type;
 

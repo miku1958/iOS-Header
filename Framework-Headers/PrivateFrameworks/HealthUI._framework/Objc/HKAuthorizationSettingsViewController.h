@@ -7,12 +7,13 @@
 #import <HealthUI/HKTableViewController.h>
 
 #import <HealthUI/HKDocumentPickerViewControllerDelegate-Protocol.h>
+#import <HealthUI/HKSourceAuthorizationControllerDelegate-Protocol.h>
 #import <HealthUI/HKSwitchTableViewCellDelegate-Protocol.h>
 
-@class HKDataCategoryController, HKHealthStore, HKSource, HKSourceAuthorizationController, NSArray, NSSet, NSString, UIBarButtonItem;
+@class HKDisplayCategoryController, HKHealthStore, HKSource, HKSourceAuthorizationController, NSArray, NSSet, NSString, UIBarButtonItem;
 @protocol HKAuthorizationSettingsViewControllerDelegate;
 
-@interface HKAuthorizationSettingsViewController : HKTableViewController <HKSwitchTableViewCellDelegate, HKDocumentPickerViewControllerDelegate>
+@interface HKAuthorizationSettingsViewController : HKTableViewController <HKSwitchTableViewCellDelegate, HKDocumentPickerViewControllerDelegate, HKSourceAuthorizationControllerDelegate>
 {
     NSArray *_documents;
     NSArray *_actualSections;
@@ -25,7 +26,7 @@
     NSString *_shareDescription;
     NSSet *_typesToShare;
     NSSet *_typesToRead;
-    HKDataCategoryController *_dataCategoryController;
+    HKDisplayCategoryController *_displayCategoryController;
     HKSourceAuthorizationController *_sourceAuthorizationController;
     UIBarButtonItem *_cancelButtonItem;
     UIBarButtonItem *_doneButtonItem;
@@ -33,10 +34,10 @@
 
 @property (strong) NSArray *actualSections; // @synthesize actualSections=_actualSections;
 @property (strong, nonatomic) UIBarButtonItem *cancelButtonItem; // @synthesize cancelButtonItem=_cancelButtonItem;
-@property (strong, nonatomic) HKDataCategoryController *dataCategoryController; // @synthesize dataCategoryController=_dataCategoryController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HKAuthorizationSettingsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) HKDisplayCategoryController *displayCategoryController; // @synthesize displayCategoryController=_displayCategoryController;
 @property (strong, nonatomic) UIBarButtonItem *doneButtonItem; // @synthesize doneButtonItem=_doneButtonItem;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
@@ -65,6 +66,8 @@
 - (id)_specialCellWithIdentifier:(id)arg1;
 - (id)_toggleAllCell;
 - (id)_typeForIndexPath:(id)arg1 section:(long long *)arg2;
+- (void)authorizationController:(id)arg1 parentTypeIsDisabled:(id)arg2 forType:(id)arg3 inSection:(long long)arg4;
+- (void)authorizationController:(id)arg1 subTypesEnabled:(id)arg2 forType:(id)arg3 inSection:(long long)arg4;
 - (long long)authorizationSectionForSection:(long long)arg1;
 - (void)documentPickerViewControllerDidFinish:(id)arg1 error:(id)arg2;
 - (id)init;

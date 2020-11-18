@@ -32,7 +32,8 @@
 + (BOOL)supportsSecureCoding;
 - (struct __C3DGeometry *)__createCFObject;
 - (void)_customDecodingOfSCNFloor:(id)arg1;
-- (struct __C3DAnimationChannel *)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
+- (void)_syncObjCModel;
+- (id)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
@@ -40,6 +41,7 @@
 - (double)height;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithFloorGeometryRef:(struct __C3DFloor *)arg1;
 - (double)reflectionFallOffEnd;
 - (double)reflectionFallOffStart;
 - (unsigned long long)reflectionSampleCount;

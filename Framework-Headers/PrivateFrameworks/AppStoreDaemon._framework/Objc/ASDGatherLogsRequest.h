@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppStoreDaemon/ASDRequest.h>
+#import <AppStoreDaemon/ASDEphemeralRequest.h>
 
 @class ASDGatherLogsRequestOptions, NSObject, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
-@interface ASDGatherLogsRequest : ASDRequest
+@interface ASDGatherLogsRequest : ASDEphemeralRequest
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;
@@ -17,6 +17,7 @@
     ASDGatherLogsRequestOptions *_options;
 }
 
++ (long long)requestType;
 - (void).cxx_destruct;
 - (id)_appstoredContainerPath;
 - (id)_combineAllLogs;

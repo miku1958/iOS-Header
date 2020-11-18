@@ -13,7 +13,7 @@
     BOOL _needsLabelUpdate;
     NSMutableArray *_dateLabels;
     HKDateIntervalCache *_dateIntervalCache;
-    double _roughGlyphWidth;
+    BOOL _blankDateLabelSlider;
     long long _granularity;
     NSDate *_leftDate;
     NSDate *_rightDate;
@@ -23,6 +23,7 @@
     struct UIEdgeInsets _dateRangeInsets;
 }
 
+@property (nonatomic) BOOL blankDateLabelSlider; // @synthesize blankDateLabelSlider=_blankDateLabelSlider;
 @property (nonatomic) struct UIEdgeInsets dateRangeInsets; // @synthesize dateRangeInsets=_dateRangeInsets;
 @property (nonatomic) long long granularity; // @synthesize granularity=_granularity;
 @property (strong, nonatomic) UIColor *labelColor; // @synthesize labelColor=_labelColor;
@@ -36,6 +37,7 @@
 - (id)_dateSpacingForGranularity:(long long)arg1;
 - (long long)_formatTemplateForGranularity:(long long)arg1;
 - (void)_layoutDateLabelsWithOffsetMultiple:(double)arg1;
+- (void)_setDate:(id)arg1 forLabel:(id)arg2 atIndex:(long long)arg3;
 - (void)_setNeedsLabelUpdate;
 - (void)_updateLabels;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface CNiOSABConversions : NSObject
@@ -21,10 +21,15 @@ __attribute__((visibility("hidden")))
 + (id)contactPropertiesByABPropertyID;
 + (id)containerFromABSource:(void *)arg1 remote:(BOOL)arg2 includeDisabledSources:(BOOL)arg3;
 + (id)containersFromABSources:(struct __CFArray *)arg1 remote:(BOOL)arg2 includeDisabledSources:(BOOL)arg3;
++ (id)dateFromABBytes:(char *)arg1 length:(unsigned long long)arg2;
 + (id)groupFromABGroup:(void *)arg1;
 + (id)groupsFromABGroups:(struct __CFArray *)arg1;
++ (void)initialize;
++ (id)numberFromIntegerABBytes:(char *)arg1 length:(unsigned long long)arg2;
 + (CDUnknownBlockType)personToContactTransformWithKeysToFetch:(id)arg1 mutable:(BOOL)arg2;
-+ (void)updateContact:(id)arg1 fromABPerson:(void *)arg2 keysToConvert:(id)arg3 availableKeys:(id *)arg4;
++ (const struct __CFSet *)requiredABPropertyIDSetForKeysToFetch:(id)arg1;
++ (id)stringFromABBytes:(char *)arg1 length:(unsigned long long)arg2;
++ (void)updateContact:(id)arg1 fromABPerson:(void *)arg2 keysToConvert:(id)arg3 availableKeyDescriptor:(id *)arg4;
 
 @end
 

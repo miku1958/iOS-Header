@@ -106,7 +106,7 @@
 - (void)didEndEditingPassword:(id)arg1 inView:(id)arg2;
 - (void)didReceiveMemoryWarning:(id)arg1;
 - (void)didScroll:(id)arg1;
-- (CDStruct_39925896)doubleTapScalesForSize:(struct CGSize)arg1;
+- (CDStruct_57d825b2)doubleTapScalesForSize:(struct CGSize)arg1;
 - (id)enclosingScrollView;
 - (void)ensureCorrectPagesAreInstalled:(BOOL)arg1;
 - (id)findOnPageHighlighter;
@@ -133,10 +133,10 @@
 - (void)revealSearchResult:(id)arg1 andZoomIn:(BOOL)arg2;
 - (void)rotateEnclosingScrollViewToFrame:(struct CGRect)arg1;
 - (void)saveStateToHistoryItem:(id)arg1 forWebView:(id)arg2;
-- (CDStruct_39925896)scalesForContainerSize:(struct CGSize)arg1;
+- (CDStruct_57d825b2)scalesForContainerSize:(struct CGSize)arg1;
 - (void)scrollToPageNumber:(long long)arg1 animate:(BOOL)arg2;
 - (id)searchControllerForHighlighter:(id)arg1;
-- (void)updateBoundariesOfScrollView:(id)arg1 withScales:(CDStruct_39925896)arg2;
+- (void)updateBoundariesOfScrollView:(id)arg1 withScales:(CDStruct_57d825b2)arg2;
 - (void)updatePageNumberLabelWithUserScrolling:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)updateViewHierarchyForDocumentViewLoadComplete:(id)arg1;
 - (void)updateViewHierarchyForDocumentViewNewLoad:(id)arg1;

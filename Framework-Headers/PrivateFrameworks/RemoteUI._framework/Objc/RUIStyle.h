@@ -26,6 +26,7 @@
     long long _subHeaderLabelAlignment;
     long long _footerLabelAlignment;
     long long _footerLinkAlignment;
+    UIColor *_tintColor;
 }
 
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
@@ -44,6 +45,7 @@
 @property (strong, nonatomic) UIColor *selectPageDetailTextColor; // @synthesize selectPageDetailTextColor=_selectPageDetailTextColor;
 @property (nonatomic) long long subHeaderLabelAlignment; // @synthesize subHeaderLabelAlignment=_subHeaderLabelAlignment;
 @property (strong, nonatomic) UIColor *subHeaderLabelTextColor; // @synthesize subHeaderLabelTextColor=_subHeaderLabelTextColor;
+@property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property (strong, nonatomic) UIColor *titleLabelTextColor; // @synthesize titleLabelTextColor=_titleLabelTextColor;
 
 + (id)defaultStyle;

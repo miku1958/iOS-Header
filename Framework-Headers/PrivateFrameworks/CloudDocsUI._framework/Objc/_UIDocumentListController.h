@@ -22,6 +22,7 @@
     id<_UIDocumentListControllerDelegate> _delegateIfNotDeferred;
     _UIDocumentSearchListController *_searchController;
     struct CGPoint _stateRestoredContentOffset;
+    BOOL _hideSearchField;
     BOOL _editing;
 }
 
@@ -32,6 +33,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL editing; // @synthesize editing=_editing;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hideSearchField; // @synthesize hideSearchField=_hideSearchField;
 @property (readonly, nonatomic) NSURL *presentedURL;
 @property (weak, nonatomic) _UIDocumentListController *rootListController; // @synthesize rootListController=_rootListController;
 @property (strong, nonatomic) NSArray *selectedItems;
@@ -46,8 +48,11 @@
 - (void)_performScrollTest:(id)arg1 iterations:(int)arg2 delta:(int)arg3 listMode:(long long)arg4;
 - (void)_setContainerViewController:(id)arg1;
 - (void)_updateScrollPositionForStateRestoration;
+- (void)createSearchControllerWithModel:(id)arg1;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
+- (void)didHighlightItem:(id)arg1;
 - (void)didSelectItem:(id)arg1;
+- (void)didUnhighlightItem:(id)arg1;
 - (long long)displayMode;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
 - (id)init;
@@ -62,8 +67,9 @@
 - (void)setDisplayMode:(long long)arg1;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSortOrder:(int)arg1;
+- (BOOL)shouldHighlightItem:(id)arg1;
+- (BOOL)shouldSelectItem:(id)arg1;
 - (BOOL)shouldShowAction:(long long)arg1;
-- (BOOL)shouldShowSearch;
 - (int)sortOrder;
 - (void)startSearchWithQueryString:(id)arg1 becomeFirstResponder:(BOOL)arg2;
 - (void)updateTitle;

@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class GEOComposedRoute, GEOETARoute, NSArray, NSData, NSDate;
+@class GEOComposedRoute, GEOETARoute, GEORouteIncident, NSArray, NSData, NSDate;
 
 @interface MNTrafficIncidentAlert : NSObject
 {
     NSData *_alertID;
+    NSData *_etaResponseID;
     unsigned long long _alertType;
     GEOETARoute *_oldETARoute;
     GEOComposedRoute *_originalRoute;
@@ -18,6 +19,7 @@
     CDStruct_3f2a7a20 _startValidCoordinateRange;
     CDStruct_3f2a7a20 _endValidCoordinateRange;
     CDStruct_3f2a7a20 _incidentCoordinate;
+    CDStruct_3f2a7a20 _alternateEndValidCoordinateRange;
     NSDate *_alertDate;
     double _distanceToIncident;
     NSDate *_eta;
@@ -30,16 +32,20 @@
 @property (readonly, nonatomic) NSData *alertID; // @synthesize alertID=_alertID;
 @property (readonly, nonatomic) NSArray *alertTitles;
 @property (readonly, nonatomic) unsigned long long alertType; // @synthesize alertType=_alertType;
+@property (readonly, nonatomic) CDStruct_3f2a7a20 alternateEndValidCoordinateRange; // @synthesize alternateEndValidCoordinateRange=_alternateEndValidCoordinateRange;
 @property (readonly, nonatomic) GEOComposedRoute *alternateRoute; // @synthesize alternateRoute=_alternateRoute;
-@property (readonly, nonatomic) double distanceToIncident; // @synthesize distanceToIncident=_distanceToIncident;
+@property (nonatomic) double distanceToIncident; // @synthesize distanceToIncident=_distanceToIncident;
 @property (readonly, nonatomic) CDStruct_3f2a7a20 endValidCoordinateRange; // @synthesize endValidCoordinateRange=_endValidCoordinateRange;
 @property (strong, nonatomic) NSDate *eta; // @synthesize eta=_eta;
+@property (readonly, nonatomic) NSData *etaResponseID; // @synthesize etaResponseID=_etaResponseID;
 @property (readonly, nonatomic) CDStruct_3f2a7a20 incidentCoordinate; // @synthesize incidentCoordinate=_incidentCoordinate;
 @property (readonly, nonatomic) BOOL isAutomaticReroute; // @synthesize isAutomaticReroute=_isAutomaticReroute;
 @property (readonly, nonatomic) double newEstimatedTime;
 @property (readonly, nonatomic) GEOETARoute *oldETARoute; // @synthesize oldETARoute=_oldETARoute;
+@property (readonly, nonatomic) GEORouteIncident *oldETARouteIncident;
 @property (readonly, nonatomic) double oldEstimatedTime;
 @property (readonly, nonatomic) GEOComposedRoute *originalRoute; // @synthesize originalRoute=_originalRoute;
+@property (readonly, nonatomic) unsigned long long secondsSaved;
 @property (readonly, nonatomic) NSArray *spokenTexts;
 @property (readonly, nonatomic) CDStruct_3f2a7a20 startValidCoordinateRange; // @synthesize startValidCoordinateRange=_startValidCoordinateRange;
 
@@ -49,9 +55,8 @@
 - (id)_dynamicStringValues;
 - (void)_findRouteDivergence;
 - (CDStruct_3f2a7a20)_routeCoordinateAtDuration:(double)arg1 beforeRouteCoordinate:(CDStruct_3f2a7a20)arg2;
-- (id)initWithRoute:(id)arg1 etaRoute:(id)arg2;
+- (id)initWithRoute:(id)arg1 etaRoute:(id)arg2 etaResponse:(id)arg3;
 - (id)initWithTrafficIncidentAlertDetails:(id)arg1;
-- (BOOL)isCoordinateInValidRange:(CDStruct_3f2a7a20)arg1;
 - (BOOL)isSimilarTo:(id)arg1;
 - (void)updateAlertIDWithAlert:(id)arg1;
 - (void)updateLocation:(id)arg1;

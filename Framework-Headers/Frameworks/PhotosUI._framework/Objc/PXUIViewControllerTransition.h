@@ -7,32 +7,37 @@
 #import <objc/NSObject.h>
 
 #import <PhotosUICore/UIViewControllerAnimatedTransitioning-Protocol.h>
-#import <PhotosUICore/UIViewControllerInteractiveTransitioning-Protocol.h>
 
-@class NSString, UIViewController;
+@class NSString, PXRegionOfInterest, UIPercentDrivenInteractiveTransition, UIViewController;
 
-@interface PXUIViewControllerTransition : NSObject <UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning>
+@interface PXUIViewControllerTransition : NSObject <UIViewControllerAnimatedTransitioning>
 {
     UIViewController *_internalMasterViewController;
     UIViewController *_internalDetailViewController;
+    CDUnknownBlockType _transitionAnimationStartHandler;
     CDUnknownBlockType _transitionAnimationCompletionHandler;
     BOOL _supportsEdgeSwipeBackGesture;
     BOOL _interactive;
+    BOOL _transitioningToDetail;
+    UIPercentDrivenInteractiveTransition *_interactionController;
+    long long _state;
     id __pauseToken;
+    PXRegionOfInterest *_masterRegionOfInterest;
 }
 
 @property (strong, nonatomic, setter=_setPauseToken:) id _pauseToken; // @synthesize _pauseToken=__pauseToken;
-@property (readonly, nonatomic) long long completionCurve;
-@property (readonly, nonatomic) double completionSpeed;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, weak, nonatomic) UIViewController *detailViewController;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UIPercentDrivenInteractiveTransition *interactionController; // @synthesize interactionController=_interactionController;
 @property (readonly, nonatomic, getter=isInteractive) BOOL interactive; // @synthesize interactive=_interactive;
+@property (strong, nonatomic) PXRegionOfInterest *masterRegionOfInterest; // @synthesize masterRegionOfInterest=_masterRegionOfInterest;
 @property (readonly, weak, nonatomic) UIViewController *masterViewController;
+@property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsEdgeSwipeBackGesture; // @synthesize supportsEdgeSwipeBackGesture=_supportsEdgeSwipeBackGesture;
-@property (readonly, nonatomic) BOOL wantsInteractiveStart;
+@property (nonatomic, getter=isTransitioningToDetail) BOOL transitioningToDetail; // @synthesize transitioningToDetail=_transitioningToDetail;
 
 + (BOOL)isTransitionSupportedWithMasterViewController:(id)arg1 detailViewController:(id)arg2;
 - (void).cxx_destruct;
@@ -41,7 +46,7 @@
 - (id)init;
 - (id)initWithMasterViewController:(id)arg1 detailViewController:(id)arg2;
 - (void)installTransitionAnimationCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)startInteractiveTransition:(id)arg1;
+- (void)installTransitionAnimationStartHandler:(CDUnknownBlockType)arg1;
 - (double)transitionDuration:(id)arg1;
 - (void)willEndTransition;
 - (void)willStartTransition;

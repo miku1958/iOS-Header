@@ -12,5 +12,6 @@
 
 @property (readonly, nonatomic) NSString *md5;
 
+- (id)ic_stringValue;
 @end
 

@@ -6,24 +6,23 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSOperationQueue, SFSpeechRecognizer, VMVoicemailSanitizeTranscriptionDatabaseOperation;
+@class NSOperationQueue, SFSpeechRecognizer, VMVoicemailTranscriptionSanitizeDatabaseOperation;
 
 @interface VMVoicemailTranscriptionController : NSObject
 {
     SFSpeechRecognizer *_recognizer;
     NSOperationQueue *_transcriptionQueue;
-    VMVoicemailSanitizeTranscriptionDatabaseOperation *_sanitizeOperation;
+    VMVoicemailTranscriptionSanitizeDatabaseOperation *_sanitizeOperation;
 }
 
-@property (strong, nonatomic) SFSpeechRecognizer *recognizer; // @synthesize recognizer=_recognizer;
-@property (strong, nonatomic) VMVoicemailSanitizeTranscriptionDatabaseOperation *sanitizeOperation; // @synthesize sanitizeOperation=_sanitizeOperation;
-@property (strong, nonatomic) NSOperationQueue *transcriptionQueue; // @synthesize transcriptionQueue=_transcriptionQueue;
+@property (readonly, nonatomic) SFSpeechRecognizer *recognizer; // @synthesize recognizer=_recognizer;
+@property (strong, nonatomic) VMVoicemailTranscriptionSanitizeDatabaseOperation *sanitizeOperation; // @synthesize sanitizeOperation=_sanitizeOperation;
+@property (readonly, nonatomic) NSOperationQueue *transcriptionQueue; // @synthesize transcriptionQueue=_transcriptionQueue;
 
-+ (id)sharedTranscriptionController;
 - (void).cxx_destruct;
-- (void)_afPrefsChanged:(id)arg1;
 - (void)_setupRecognizer;
 - (void)cancelQueuedTranscriptions;
+- (void)dealloc;
 - (void)enqueueTranscriptionOperationWithURL:(id)arg1 andHandler:(CDUnknownBlockType)arg2 priority:(long long)arg3 timeout:(double)arg4;
 - (id)init;
 - (void)reportDictationProblemForFileAtURL:(id)arg1;

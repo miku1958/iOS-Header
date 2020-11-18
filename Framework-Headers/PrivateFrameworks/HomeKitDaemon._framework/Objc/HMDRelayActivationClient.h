@@ -8,15 +8,17 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class NSObject, NSString;
+@class HMDAccessory, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMDRelayActivationClient : HAPRelayActivationClient <HMFLogging>
 {
+    HMDAccessory *_accessory;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSString *_challengeIdentifier;
 }
 
+@property (readonly, weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
 @property (strong, nonatomic) NSString *challengeIdentifier; // @synthesize challengeIdentifier=_challengeIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -28,7 +30,7 @@
 - (void).cxx_destruct;
 - (void)_closeWithError:(id)arg1;
 - (void)close;
-- (id)init;
+- (id)initWithAccessory:(id)arg1;
 - (void)open;
 - (void)requestCertificateWithPublicKey:(id)arg1 challengeCertificate:(id)arg2 challengeResponse:(id)arg3;
 - (void)requestChallenge;

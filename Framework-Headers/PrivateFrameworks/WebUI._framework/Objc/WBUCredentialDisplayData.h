@@ -19,6 +19,7 @@
 @property (readonly, copy, nonatomic) NSString *detail; // @synthesize detail=_detail;
 @property (readonly, nonatomic) WBSCredentialMatch *match; // @synthesize match=_match;
 
++ (id)descriptionForPasswordWithUser:(id)arg1 creationDate:(id)arg2;
 - (void).cxx_destruct;
 - (id)initWithMatch:(id)arg1 detail:(id)arg2 creationDate:(id)arg3;
 

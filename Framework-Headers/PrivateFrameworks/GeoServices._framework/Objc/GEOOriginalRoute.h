@@ -31,10 +31,10 @@
 @property (strong, nonatomic) NSData *routeHandle; // @synthesize routeHandle=_routeHandle;
 @property (nonatomic) unsigned int routeIndex; // @synthesize routeIndex=_routeIndex;
 
+- (void).cxx_destruct;
 - (int)StringAsOriginalRoutePurpose:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

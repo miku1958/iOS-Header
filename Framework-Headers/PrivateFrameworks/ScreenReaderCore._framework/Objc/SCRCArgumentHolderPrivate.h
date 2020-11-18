@@ -19,5 +19,7 @@ __attribute__((visibility("hidden")))
     BOOL isRequired;
 }
 
+- (void).cxx_destruct;
+
 @end
 

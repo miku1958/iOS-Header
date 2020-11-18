@@ -27,8 +27,10 @@
 @property (readonly, strong, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
 @property (readonly, strong, nonatomic) NSDictionary *defaultAccountSettings;
 @property (readonly, nonatomic) BOOL disallowDeactivation;
+@property (readonly, nonatomic, getter=isDiscontinued) BOOL discontinued;
 @property (readonly, strong, nonatomic) NSString *internalName;
 @property (readonly, nonatomic) BOOL isIDSBased;
+@property (readonly, nonatomic) BOOL isLegacy;
 @property (readonly, nonatomic) BOOL serviceChatsIgnoreLoginStatus;
 @property (readonly, strong, nonatomic) NSDictionary *serviceDefaults;
 @property (readonly, strong, nonatomic) NSDictionary *serviceDefaultsForSetup;
@@ -36,7 +38,7 @@
 @property (readonly, nonatomic) BOOL serviceIgnoresNetworkConnectivity;
 @property (readonly, nonatomic) BOOL serviceNeedsLogin;
 @property (readonly, nonatomic) BOOL serviceNeedsPassword;
-@property (readonly, strong, nonatomic) NSDictionary *serviceProperties; // @synthesize serviceProperties=_serviceProperties;
+@property (strong, nonatomic) NSDictionary *serviceProperties; // @synthesize serviceProperties=_serviceProperties;
 @property (readonly, nonatomic) long long serviceProtocolVersion;
 @property (readonly, nonatomic) BOOL serviceRequiresHost;
 @property (readonly, nonatomic) BOOL serviceRequiresSingleAccount;
@@ -60,6 +62,7 @@
 - (void)accountAdded:(id)arg1;
 - (void)accountRemoved:(id)arg1;
 - (BOOL)clearOneTimeImportAccounts;
+- (id)createDiscontinuedAccount;
 - (void)dealloc;
 - (void)delayedSaveSettings;
 - (id)description;
@@ -67,6 +70,7 @@
 - (void)enableAccount:(id)arg1;
 - (id)initWithBundle:(id)arg1;
 - (void)loadServiceBundle;
+- (id)mainService;
 - (id)newAccountWithAccountDefaults:(id)arg1 accountID:(id)arg2;
 - (id)oldInternalName;
 - (void)purgeMemoryCaches;

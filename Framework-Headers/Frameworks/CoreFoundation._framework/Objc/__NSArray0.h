@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)init;
 - (id)objectAtIndex:(unsigned long long)arg1;
+- (id)objectEnumerator;
 - (oneway void)release;
 - (id)retain;
 - (unsigned long long)retainCount;

@@ -29,12 +29,13 @@
 - (void)dealloc;
 - (void)fetchHistoricalSensorDataSinceDatum:(id)arg1 databaseIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)hkObjectsFromSensorData:(id)arg1 baseSensorDatum:(id)arg2 startDate:(id)arg3 endDate:(id)arg4;
-- (id)initWithPrimaryProfile:(id)arg1;
+- (id)initWithProfile:(id)arg1;
 - (id)pedometer;
 - (id)quantitySamplesFromPedometerData:(id)arg1 toPedometerData:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 containsWorkoutSamples:(BOOL)arg5;
 - (BOOL)queue_userConditionIsSet;
 - (BOOL)queue_userIsAbleBodied;
 - (void)setPedometer:(id)arg1;
+- (void)setUserCondition:(id)arg1;
 - (void)stopPerformingUpdatesWithErrorEncountered:(BOOL)arg1;
 - (void)userCharacteristicsManager:(id)arg1 didUpdateUserProfile:(id)arg2;
 

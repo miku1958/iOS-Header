@@ -12,7 +12,10 @@
 
 + (BOOL)areStatsAvailable;
 - (id)sendStatsDataToUrl:(id)arg1;
+- (void)sendStatsDataToUrl:(id)arg1 onCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)setStatsEnabled:(BOOL)arg1;
+- (void)setStatsEnabled:(BOOL)arg1 onCompletion:(CDUnknownBlockType)arg2;
+- (void)simulateFallEvent;
 
 @end
 

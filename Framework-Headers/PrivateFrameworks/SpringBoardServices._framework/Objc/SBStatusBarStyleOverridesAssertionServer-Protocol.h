@@ -6,11 +6,12 @@
 
 #import <SpringBoardServices/NSObject-Protocol.h>
 
-@class NSSet, NSString;
+@class NSNumber, NSSet, NSString;
 
 @protocol SBStatusBarStyleOverridesAssertionServer <NSObject>
 - (void)activateStatusBarStyleOverridesAssertions:(NSSet *)arg1 reply:(void (^)(NSDictionary *))arg2;
 - (void)deactivateStatusBarStyleOverridesAssertionsWithIdentifiers:(NSSet *)arg1;
+- (void)setRegisteredOverrides:(NSNumber *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)setStatusString:(NSString *)arg1 forAssertionWithIdentifier:(NSString *)arg2;
 @end
 

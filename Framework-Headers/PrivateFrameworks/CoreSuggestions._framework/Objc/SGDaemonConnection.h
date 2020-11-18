@@ -20,6 +20,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)_callAbortBlocks;
 - (void)_connectToServer;
 - (void)addConnectionInterruptedHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;

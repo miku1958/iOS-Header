@@ -28,8 +28,8 @@
 - (void).cxx_destruct;
 - (id)_clientSideContextForServerContext:(id)arg1;
 - (void)dismissBasicLoginUIForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)dismissICSCRecoveryUIForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dismissKeepUsingUIForContext:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)dismissNativeRecoveryUIForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dismissSecondFactorUIForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dismissServerProvidedUIForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)eraseAnisetteForContext:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -37,9 +37,9 @@
 - (id)initWithAuthenticationController:(id)arg1;
 - (void)legacyAnisetteDataForContext:(id)arg1 DSID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)presentBasicLoginUIForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)presentICSCRecoveryUIForContext:(id)arg1 withInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentKeepUsingUIForContext:(id)arg1 appleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentLoginAlertForContext:(id)arg1 withError:(id)arg2 title:(id)arg3 message:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)presentNativeRecoveryUIForContext:(id)arg1 recoveryContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentSecondFactorAlertForContext:(id)arg1 withError:(id)arg2 title:(id)arg3 message:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)presentSecondFactorUIForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentServerProvidedUIForContext:(id)arg1 URLRequest:(id)arg2 delegate:(id)arg3 completion:(CDUnknownBlockType)arg4;

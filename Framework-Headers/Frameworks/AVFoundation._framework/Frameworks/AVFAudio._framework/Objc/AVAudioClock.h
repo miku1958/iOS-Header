@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVAudioTime;
 
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (id)awaitIOCycle:(unsigned int *)arg1;
 - (struct AudioTimeStamp)currentAudioTimeStamp;
+- (long long)currentIONumberFrames;
 - (void)dealloc;
 - (id)init;
 - (id)initWithNode:(struct AVAudioNodeImplBase *)arg1;

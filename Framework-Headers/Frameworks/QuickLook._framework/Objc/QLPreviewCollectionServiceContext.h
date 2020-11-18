@@ -37,15 +37,18 @@
 - (void)invalidatePreviewCollection;
 - (void)keyCommandWasPerformed:(id)arg1;
 - (void)keyCommandsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)notifyFirstTimeAppearanceWithActions:(unsigned long long)arg1;
+- (void)prepareForActionSheetPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setAllowInteractiveTransitions:(BOOL)arg1;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (void)setCurrentPreviewItemIndex:(long long)arg1 animated:(BOOL)arg2;
 - (void)setLoadingString:(id)arg1;
 - (void)setNotificationCenter:(id)arg1;
+- (void)setSourceIsManaged:(BOOL)arg1;
 - (void)startTransitionWithSourceViewProvider:(id)arg1 transitionController:(id)arg2 presenting:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)tearDownTransition:(BOOL)arg1;
-- (void)toolbarButtonPressedWithIdentifier:(id)arg1;
-- (void)toolbarButtonsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)toolbarButtonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)toolbarButtonsForTraitCollection:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)updateTransitionWithProgress:(double)arg1;
 
 @end

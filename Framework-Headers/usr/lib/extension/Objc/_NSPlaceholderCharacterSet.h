@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSCharacterSet.h>
+#import <Foundation/NSCharacterSet.h>
 
 __attribute__((visibility("hidden")))
 @interface _NSPlaceholderCharacterSet : NSCharacterSet

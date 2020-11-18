@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) SCRCMathExpression *radicand; // @synthesize radicand=_radicand;
 @property (strong, nonatomic) SCRCMathExpression *rootIndex; // @synthesize rootIndex=_rootIndex;
 
+- (void).cxx_destruct;
 - (BOOL)_isCubeRoot;
 - (BOOL)_isSquareRoot;
-- (void)dealloc;
 - (id)description;
 - (id)dollarCodeDescriptionWithNumberOfOuterRadicals:(unsigned long long)arg1 treePosition:(id)arg2;
 - (unsigned long long)fractionLevel;

@@ -43,7 +43,7 @@
 - (void)_vendedBaselineViewDidMoveForFirst:(BOOL)arg1;
 - (void)_vendedBaselineViewParametersDidChange;
 - (void)addArrangedSubview:(id)arg1;
-- (void)dealloc;
+- (double)customSpacingAfterView:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithArrangedSubviews:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -52,6 +52,7 @@
 - (void)removeArrangedSubview:(id)arg1;
 - (void)setArrangedSubviews:(id)arg1;
 - (void)setBackgroundColor:(id)arg1;
+- (void)setCustomSpacing:(double)arg1 afterView:(id)arg2;
 - (void)setOpaque:(BOOL)arg1;
 - (void)setTranslatesAutoresizingMaskIntoConstraints:(BOOL)arg1;
 - (void)updateConstraints;

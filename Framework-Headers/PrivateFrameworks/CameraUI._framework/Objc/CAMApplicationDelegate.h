@@ -51,6 +51,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)_createSubsystemsWithLaunchOptions:(id)arg1;
+- (void)_updateShortcutItemsForApplication:(id)arg1;
 - (BOOL)application:(id)arg1 didFinishLaunchingWithOptions:(id)arg2;
 - (BOOL)application:(id)arg1 openURL:(id)arg2 options:(id)arg3;
 - (void)application:(id)arg1 performActionForShortcutItem:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

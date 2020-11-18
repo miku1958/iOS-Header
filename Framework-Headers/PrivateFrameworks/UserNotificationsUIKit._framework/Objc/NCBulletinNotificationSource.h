@@ -33,6 +33,7 @@
 - (void)_applicationIconChanged:(id)arg1;
 - (id)_bulletinsPerSectionIdForNotificationRequests:(id)arg1;
 - (id)_sectionInfoForBulletin:(id)arg1;
+- (unsigned long long)_updateFeedForCoverSheetDestination:(unsigned long long)arg1 storedFeed:(unsigned long long)arg2;
 - (void)dealloc;
 - (void)dispatcher:(id)arg1 requestsClearingNotificationRequests:(id)arg2;
 - (void)dispatcher:(id)arg1 requestsClearingNotificationRequests:(id)arg2 fromDestinations:(id)arg3;

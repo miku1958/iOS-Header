@@ -6,96 +6,111 @@
 
 #import <UIKit/UIView.h>
 
-#import <UserNotificationsUIKit/NCContentSizeCategoryAdjusting-Protocol.h>
+#import <UserNotificationsUIKit/MTContentSizeCategoryAdjusting-Protocol.h>
+#import <UserNotificationsUIKit/MTVibrantStylingProviderObserving-Protocol.h>
+#import <UserNotificationsUIKit/MTVibrantStylingRequiring-Protocol.h>
+#import <UserNotificationsUIKit/UITextViewDelegate-Protocol.h>
 
-@class NCLookViewFontProvider, NSMapTable, NSMutableDictionary, NSString, UIImage, UIImageView, UILabel;
+@class MTFontProvider, MTVibrantStylingProvider, NSMutableDictionary, NSString, NSStringDrawingContext, UIImage, UIImageView, UILabel, UITextView;
+@protocol NCNotificationContentViewDelegate;
 
-@interface NCNotificationContentView : UIView <NCContentSizeCategoryAdjusting>
+@interface NCNotificationContentView : UIView <UITextViewDelegate, MTVibrantStylingProviderObserving, MTVibrantStylingRequiring, MTContentSizeCategoryAdjusting>
 {
     long long _lookStyle;
     struct UIEdgeInsets _contentInsets;
-    NCLookViewFontProvider *_fontProvider;
     UIView *_contentView;
-    UILabel *_hintTextLabel;
     UIImageView *_thumbnailImageView;
-    NSMapTable *_labelsToDrawingContexts;
-    NSMutableDictionary *_secondaryLabelWidthToMeasuredNumLines;
+    NSMutableDictionary *_widthToFontToStringToMeasuredNumLines;
+    NSStringDrawingContext *_drawingContext;
     BOOL _adjustsFontForContentSizeCategory;
+    MTVibrantStylingProvider *_vibrantStylingProvider;
     NSString *_preferredContentSizeCategory;
+    id<NCNotificationContentViewDelegate> _delegate;
     UIView *_accessoryView;
+    MTFontProvider *_fontProvider;
     UILabel *_primaryLabel;
     UILabel *_outgoingPrimaryLabel;
     UILabel *_primarySubtitleLabel;
     UILabel *_outgoingPrimarySubtitleLabel;
-    UILabel *_secondaryLabel;
-    UILabel *_outgoingSecondaryLabel;
+    UITextView *_secondaryTextView;
+    UITextView *_outgoingSecondaryTextView;
 }
 
 @property (strong, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<NCNotificationContentViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic, getter=_fontProvider, setter=_setFontProvider:) MTFontProvider *fontProvider; // @synthesize fontProvider=_fontProvider;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *hintText;
 @property (nonatomic) unsigned long long messageNumberOfLines;
 @property (strong, nonatomic, getter=_outgoingPrimaryLabel, setter=_setOutgoingPrimaryLabel:) UILabel *outgoingPrimaryLabel; // @synthesize outgoingPrimaryLabel=_outgoingPrimaryLabel;
 @property (strong, nonatomic, getter=_outgoingPrimarySubtitleLabel, setter=_setOutgoingPrimarySubtitleLabel:) UILabel *outgoingPrimarySubtitleLabel; // @synthesize outgoingPrimarySubtitleLabel=_outgoingPrimarySubtitleLabel;
-@property (strong, nonatomic, getter=_outgoingSecondaryLabel, setter=_setOutgoingSecondaryLabel:) UILabel *outgoingSecondaryLabel; // @synthesize outgoingSecondaryLabel=_outgoingSecondaryLabel;
+@property (strong, nonatomic, getter=_outgoingSecondaryTextView, setter=_setOutgoingSecondaryTextView:) UITextView *outgoingSecondaryTextView; // @synthesize outgoingSecondaryTextView=_outgoingSecondaryTextView;
 @property (copy, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
 @property (strong, nonatomic, getter=_primaryLabel, setter=_setPrimaryLabel:) UILabel *primaryLabel; // @synthesize primaryLabel=_primaryLabel;
 @property (strong, nonatomic, getter=_primarySubtitleLabel, setter=_setPrimarySubtitleLabel:) UILabel *primarySubtitleLabel; // @synthesize primarySubtitleLabel=_primarySubtitleLabel;
 @property (strong, nonatomic) NSString *primarySubtitleText;
 @property (strong, nonatomic) NSString *primaryText;
-@property (strong, nonatomic, getter=_secondaryLabel, setter=_setSecondaryLabel:) UILabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
 @property (strong, nonatomic) NSString *secondaryText;
+@property (strong, nonatomic, getter=_secondaryTextView, setter=_setSecondaryTextView:) UITextView *secondaryTextView; // @synthesize secondaryTextView=_secondaryTextView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIImage *thumbnail;
+@property (strong, nonatomic) MTVibrantStylingProvider *vibrantStylingProvider; // @synthesize vibrantStylingProvider=_vibrantStylingProvider;
 
 - (void).cxx_destruct;
+- (long long)_cachedNumberOfMeasuredLinesForText:(id)arg1 withFont:(id)arg2 forWidth:(double)arg3;
+- (void)_clearCacheForFont:(id)arg1;
 - (struct UIEdgeInsets)_contentInsets;
 - (struct UIEdgeInsets)_contentInsetsForLongLook;
 - (struct UIEdgeInsets)_contentInsetsForShortLook;
 - (struct UIEdgeInsets)_contentInsetsForStyle:(long long)arg1;
-- (id)_fontProvider;
 - (struct CGRect)_frameForThumbnailInRect:(struct CGRect)arg1;
-- (double)_hintTextBaselineOffset;
-- (id)_hintTextLabel;
-- (struct CGRect)_hintTextLabelBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2;
-- (id)_lazyHintTextLabel;
+- (void)_invalidateNumberOfLinesCache;
 - (id)_lazyOutgoingPrimaryLabel;
 - (id)_lazyOutgoingPrimarySubtitleLabel;
-- (id)_lazyOutgoingSecondaryLabel;
+- (id)_lazyOutgoingSecondaryTextView;
 - (id)_lazyPrimaryLabel;
 - (id)_lazyPrimarySubtitleLabel;
-- (id)_lazySecondaryLabel;
+- (id)_lazySecondaryTextView;
 - (id)_lazyThumbnailImageView;
-- (id)_newHintTextLabel;
 - (id)_newPrimaryLabel;
-- (id)_newSecondaryLabel;
-- (long long)_numberOfLinesForLabel:(id)arg1 inRectWithSize:(struct CGSize)arg2;
-- (struct CGRect)_primaryLabelBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2;
-- (struct CGRect)_primarySubtitleLabelBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2;
+- (id)_newSecondaryTextView;
+- (long long)_numberOfMeasuredLinesForText:(id)arg1 withFont:(id)arg2 forSize:(struct CGSize)arg3;
+- (struct CGRect)_primaryLabelBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2 andNumberOfLines:(double)arg3;
+- (struct CGRect)_primarySubtitleLabelBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2 andNumberOfLines:(double)arg3;
 - (double)_primarySubtitleTextBaselineOffsetForCurrentStyle;
+- (long long)_primarySubtitleTextMeasuredNumberOfLinesForWidth:(double)arg1;
+- (long long)_primarySubtitleTextNumberOfLinesWithMeasuredNumberOfLines:(long long)arg1;
 - (double)_primaryTextBaselineOffsetWithBaseValue:(double)arg1;
-- (struct CGRect)_secondaryLabelBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2 andNumberOfLines:(double)arg3;
-- (long long)_secondaryLabelNumberOfLinesWithMeasuredNumberOfLines:(long long)arg1;
+- (long long)_primaryTextMeasuredNumberOfLinesForWidth:(double)arg1;
+- (long long)_primaryTextNumberOfLinesWithMeasuredNumberOfLines:(long long)arg1;
 - (double)_secondaryTextBaselineOffsetForCurrentStyle;
 - (double)_secondaryTextBaselineOffsetFromBottomWithBaseValue:(double)arg1;
 - (double)_secondaryTextBaselineOffsetWithBaseValue:(double)arg1;
 - (long long)_secondaryTextMeasuredNumberOfLinesForWidth:(double)arg1;
-- (void)_setFontProvider:(id)arg1;
+- (unsigned long long)_secondaryTextNumberOfLines;
+- (long long)_secondaryTextNumberOfLinesWithMeasuredNumberOfLines:(long long)arg1;
+- (struct CGRect)_secondaryTextViewBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2 andNumberOfLines:(double)arg3;
+- (void)_setSecondaryTextNumberOfLines:(unsigned long long)arg1;
 - (void)_setText:(id)arg1 withFinalLabel:(id)arg2 setter:(CDUnknownBlockType)arg3 andTransitionLabel:(id)arg4 setter:(CDUnknownBlockType)arg5;
+- (void)_setText:(id)arg1 withFinalTextDisplayingView:(id)arg2 setter:(CDUnknownBlockType)arg3 andTransitionTextDisplayingView:(id)arg4 setter:(CDUnknownBlockType)arg5;
+- (void)_setText:(id)arg1 withFinalTextView:(id)arg2 setter:(CDUnknownBlockType)arg3 andTransitionLabel:(id)arg4 setter:(CDUnknownBlockType)arg5;
 - (struct CGSize)_sizeThatFits:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2;
-- (void)_updateFontForHintTextLabel:(id)arg1 withStyle:(long long)arg2;
-- (void)_updateFontForPrimaryLabel:(id)arg1 withStyle:(long long)arg2;
-- (void)_updateFontForSecondaryLabel:(id)arg1 withStyle:(long long)arg2;
+- (void)_updateFontForSecondaryTextView:(id)arg1 withStyle:(long long)arg2;
+- (void)_updateStyleForPrimaryLabel:(id)arg1 withStyle:(long long)arg2;
+- (void)_updateStyleForSecondaryTextView:(id)arg1 withStyle:(long long)arg2;
+- (void)_updateTextAttributesForLabel:(id)arg1;
+- (void)_updateTextAttributesForPrimaryLabel:(id)arg1 withStyle:(long long)arg2;
 - (BOOL)adjustForContentSizeCategoryChange;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)initWithStyle:(long long)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)vibrantStylingDidChangeForProvider:(id)arg1;
 
 @end
 

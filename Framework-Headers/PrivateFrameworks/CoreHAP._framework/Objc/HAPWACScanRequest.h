@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <CoreHAP/NSCopying-Protocol.h>
 
 @class HAPWACScanFilter, NSUUID;
 
-@interface HAPWACScanRequest : NSObject <NSCopying>
+@interface HAPWACScanRequest : HMFObject <NSCopying>
 {
     NSUUID *_uuid;
     unsigned long long _filterMethod;

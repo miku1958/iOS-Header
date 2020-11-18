@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/CLLocationManagerDelegate-Protocol.h>
 
@@ -53,6 +53,7 @@
 - (id)rewrapDataWithDeviceIdentifier:(id)arg1 certificates:(id)arg2;
 - (void)setRegistrationRegionMap:(id)arg1 primaryRegionTopic:(id)arg2;
 - (void)signData:(id)arg1 signatureEntanglementMode:(unsigned long long)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (id)trustedDeviceEnrollmentInfo;
 
 @end
 

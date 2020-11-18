@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (id)cellForIndexPath:(id)arg1 reuseIfPossible:(BOOL)arg2;
 
 @end
 

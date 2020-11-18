@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@interface HAPBTLETransactionIdentifier : NSObject
+@interface HAPBTLETransactionIdentifier : HMFObject
 {
     unsigned char _unsignedCharValue;
 }

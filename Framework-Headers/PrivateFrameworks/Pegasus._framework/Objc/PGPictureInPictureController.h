@@ -23,6 +23,7 @@
     struct {
         unsigned int pictureInPictureController_didCreatePictureInPictureViewController:1;
         unsigned int pictureInPictureController_willDestroyPictureInPictureViewController:1;
+        unsigned int pictureInPictureController_willHidePictureInPictureViewController:1;
     } _delegateRespondsTo;
     BOOL _pictureInPictureActive;
     NSSet *_pictureInPictureApplications;
@@ -34,6 +35,7 @@
 @property (weak, nonatomic) id<PGPictureInPictureControllerDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isStartingStoppingOrCancellingPictureInPicture;
 @property (readonly, nonatomic, getter=isPictureInPictureActive) BOOL pictureInPictureActive; // @synthesize pictureInPictureActive=_pictureInPictureActive;
 @property (readonly, nonatomic) NSSet *pictureInPictureApplications; // @synthesize pictureInPictureApplications=_pictureInPictureApplications;
 @property (readonly) Class superclass;

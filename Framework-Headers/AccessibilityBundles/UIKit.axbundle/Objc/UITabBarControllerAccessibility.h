@@ -10,9 +10,11 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySpeakThisViewController;
+- (void)_updateOffscreenStatus:(BOOL)arg1;
 
 @end
 

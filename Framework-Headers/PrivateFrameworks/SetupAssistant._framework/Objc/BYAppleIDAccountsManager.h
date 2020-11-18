@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class AALoginPluginManager, AASetupAssistantService;
+@class AALoginPluginManager, AASetupAssistantService, AAStorableLoginContext;
 
 @interface BYAppleIDAccountsManager : NSObject
 {
     AALoginPluginManager *_appleIDLoginPluginManager;
+    AAStorableLoginContext *_storedLoginContext;
     AASetupAssistantService *_aaService;
 }
 
@@ -18,10 +19,13 @@
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (void)clearStoredLoginContext;
 - (void)enableDataClassesForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initForDelegateBundleIDs:(id)arg1;
-- (void)loginDelegateAccountsWithUsername:(id)arg1 password:(id)arg2 rawPassword:(id)arg3 skipiTunes:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)loginDelegateAccountsWithUsername:(id)arg1 password:(id)arg2 rawPassword:(id)arg3 skipiTunes:(BOOL)arg4 onlyAppleIDPlugin:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)runPostRestoreRenewCredentialsIfNeeded;
+- (id)storedLoginContext;
 
 @end
 

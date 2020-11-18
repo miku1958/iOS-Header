@@ -6,15 +6,21 @@
 
 #import <Metal/MTLRenderPipelineReflection.h>
 
-@class NSArray, NSDictionary;
+@class MTLArgument, NSArray, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface MTLRenderPipelineReflectionInternal : MTLRenderPipelineReflection
 {
-    CDStruct_fc7baa39 _flags;
+    CDStruct_7ce1aa5b _flags;
     NSArray *_vertexBuiltInArguments;
+    unsigned long long _postVertexDumpStride;
+    NSArray *_postVertexDumpOutputs;
+    NSArray *_inferredInputs;
     NSArray *_vertexArguments;
     NSArray *_fragmentArguments;
+    NSArray *_tileArguments;
+    NSArray *_tileBuiltInArguments;
+    MTLArgument *_imageBlockDataReturn;
     NSDictionary *_performanceStatistics;
 }
 
@@ -22,10 +28,18 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)fragmentArguments;
-- (id)initWithVertexData:(id)arg1 fragmentData:(id)arg2 serializedVertexDescriptor:(id)arg3 device:(id)arg4 options:(unsigned long long)arg5 flags:(CDStruct_fc7baa39)arg6;
+- (id)imageBlockDataReturn;
+- (id)inferredInputs;
+- (id)initWithTileArguments:(id *)arg1 argumentCount:(unsigned int)arg2 builtInArgumentCount:(unsigned int)arg3 imageBlockDataReturn:(id)arg4 device:(id)arg5 flags:(CDStruct_7ce1aa5b)arg6;
+- (id)initWithTileData:(id)arg1 device:(id)arg2 options:(unsigned long long)arg3 flags:(CDStruct_7ce1aa5b)arg4;
+- (id)initWithTileData:(id)arg1 functionType:(unsigned long long)arg2 device:(id)arg3 options:(unsigned long long)arg4 flags:(CDStruct_7ce1aa5b)arg5;
+- (id)initWithVertexData:(id)arg1 fragmentData:(id)arg2 serializedVertexDescriptor:(id)arg3 device:(id)arg4 options:(unsigned long long)arg5 flags:(CDStruct_7ce1aa5b)arg6;
 - (id)performanceStatistics;
+- (id)postVertexDumpOutputs;
+- (unsigned long long)postVertexDumpStride;
 - (void)setPerformanceStatistics:(id)arg1;
-- (CDStruct_fc7baa39)usageFlags;
+- (id)tileArguments;
+- (CDStruct_7ce1aa5b)usageFlags;
 - (id)vertexArguments;
 - (id)vertexBuiltInArguments;
 

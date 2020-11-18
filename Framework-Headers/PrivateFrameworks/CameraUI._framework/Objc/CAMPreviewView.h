@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class AVCaptureVideoPreviewLayer, CAMFocusIndicatorView, CAMGridView, CAMSubjectIndicatorView, CAMVideoPreviewView, NSDictionary, NSMutableDictionary, UILabel;
+@class AVCaptureVideoPreviewLayer, CAMFocusIndicatorView, CAMGridView, CAMLevelIndicatorView, CAMStageLightOverlayView, CAMSubjectIndicatorView, CAMVideoPreviewView, NSDictionary, NSMutableDictionary, UILabel;
 @protocol CAMPreviewViewSubjectIndicatorDelegate;
 
 @interface CAMPreviewView : UIView
@@ -17,8 +17,11 @@
     CAMFocusIndicatorView *_continuousIndicator;
     CAMFocusIndicatorView *_pointIndicator;
     CAMGridView *_gridView;
+    CAMLevelIndicatorView *_levelView;
     id<CAMPreviewViewSubjectIndicatorDelegate> _subjectIndicatorDelegate;
     CAMSubjectIndicatorView *_centeredSubjectIndicatorView;
+    CAMStageLightOverlayView *_stageLightOverlayView;
+    double _bottomContentInset;
     UILabel *__simulatorLabel;
     NSMutableDictionary *__internalTrackedSubjectIndicatorsByIdentifier;
     NSMutableDictionary *__faceIndicators;
@@ -28,12 +31,15 @@
 @property (readonly, nonatomic) NSMutableDictionary *_faceIndicators; // @synthesize _faceIndicators=__faceIndicators;
 @property (readonly, nonatomic) NSMutableDictionary *_internalTrackedSubjectIndicatorsByIdentifier; // @synthesize _internalTrackedSubjectIndicatorsByIdentifier=__internalTrackedSubjectIndicatorsByIdentifier;
 @property (readonly, nonatomic) UILabel *_simulatorLabel; // @synthesize _simulatorLabel=__simulatorLabel;
+@property (nonatomic) double bottomContentInset; // @synthesize bottomContentInset=_bottomContentInset;
 @property (strong, nonatomic) CAMSubjectIndicatorView *centeredSubjectIndicatorView; // @synthesize centeredSubjectIndicatorView=_centeredSubjectIndicatorView;
 @property (strong, nonatomic) CAMFocusIndicatorView *continuousIndicator; // @synthesize continuousIndicator=_continuousIndicator;
 @property (readonly, nonatomic) NSDictionary *faceIndicatorsByIdentifier;
 @property (nonatomic) CAMGridView *gridView; // @synthesize gridView=_gridView;
 @property (readonly, nonatomic) UIView *indicatorContainerView; // @synthesize indicatorContainerView=_indicatorContainerView;
+@property (nonatomic) CAMLevelIndicatorView *levelView; // @synthesize levelView=_levelView;
 @property (strong, nonatomic) CAMFocusIndicatorView *pointIndicator; // @synthesize pointIndicator=_pointIndicator;
+@property (strong, nonatomic) CAMStageLightOverlayView *stageLightOverlayView; // @synthesize stageLightOverlayView=_stageLightOverlayView;
 @property (nonatomic) id<CAMPreviewViewSubjectIndicatorDelegate> subjectIndicatorDelegate; // @synthesize subjectIndicatorDelegate=_subjectIndicatorDelegate;
 @property (readonly, nonatomic) NSDictionary *trackedSubjectIndicatorsByIdentifier;
 @property (strong, nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;

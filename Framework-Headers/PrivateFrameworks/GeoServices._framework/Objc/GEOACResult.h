@@ -10,17 +10,8 @@
 
 @interface GEOACResult : PBCodable <NSCopying>
 {
-    int _acType;
-    struct {
-        unsigned int acType:1;
-    } _has;
 }
 
-@property (nonatomic) int acType; // @synthesize acType=_acType;
-@property (nonatomic) BOOL hasAcType;
-
-- (int)StringAsAcType:(id)arg1;
-- (id)acTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

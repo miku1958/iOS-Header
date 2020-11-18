@@ -18,7 +18,9 @@
 @property (strong) CNContactStore *store; // @synthesize store=_store;
 
 + (id)defaultProvider;
++ (id)reputationForHandle:(id)arg1 inStore:(id)arg2;
 + (BOOL)shouldWhiteListOrganizerEmailFromJunkChecks:(id)arg1 inReputationStore:(id)arg2;
++ (BOOL)shouldWhiteListOrganizerPhoneNumberFromJunkChecks:(id)arg1 inReputationStore:(id)arg2;
 - (void).cxx_destruct;
 - (id)_meWithKeys:(id)arg1;
 - (void)contactDidChange:(id)arg1;
@@ -31,6 +33,7 @@
 - (id)myNameWithStyle:(long long)arg1;
 - (id)myShortDisplayName;
 - (BOOL)shouldWhiteListOrganizerEmailFromJunkChecks:(id)arg1;
+- (BOOL)shouldWhiteListOrganizerPhoneNumberFromJunkChecks:(id)arg1;
 - (id)unifiedContactWithIdentifier:(id)arg1 keysToFetch:(id)arg2;
 - (id)unifiedContactsMatchingPredicate:(id)arg1 keysToFetch:(id)arg2;
 

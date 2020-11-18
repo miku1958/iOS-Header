@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSURL;
 @protocol HAPRelayPairingClientDelegate;
 
-@interface HAPRelayPairingClient : NSObject
+@interface HAPRelayPairingClient : HMFObject
 {
     id<HAPRelayPairingClientDelegate> _delegate;
     NSURL *_accessoryBagURL;

@@ -6,45 +6,43 @@
 
 #import <VectorKit/VKVectorTile.h>
 
-@class NSArray, NSData, NSMutableArray, VKTileKeyMap;
+@class NSData, VKTileKeyMap;
 
 __attribute__((visibility("hidden")))
 @interface VKTrafficTile : VKVectorTile
 {
     struct unique_ptr<md::PilledTrafficLayer, std::__1::default_delete<md::PilledTrafficLayer>> _pilledTrafficLayer;
     struct unique_ptr<md::SolidTrafficLayer, std::__1::default_delete<md::SolidTrafficLayer>> _solidTrafficLayer;
+    struct unique_ptr<md::CasedTrafficLayer, std::__1::default_delete<md::CasedTrafficLayer>> _casedTrafficLayer;
     struct _GEOTileKey _dataKey;
     NSData *_data;
     VKTileKeyMap *_dynamicTiles;
     struct unique_ptr<md::TrafficStream, std::__1::default_delete<md::TrafficStream>> _trafficStream;
-    NSMutableArray *_incidents;
-    struct TrafficSkeletonTile _trafficData;
+    shared_ptr_7444c9fa _trafficData;
     struct TrafficMeshStyle _builtTrafficStyle;
     struct FeatureAttributeSet _styleAttributes;
 }
 
+@property (readonly, nonatomic) struct CasedTrafficLayer *casedTrafficLayer;
 @property (nonatomic) const struct _GEOTileKey *dataKey;
 @property (readonly, nonatomic) VKTileKeyMap *dynamicTiles; // @synthesize dynamicTiles=_dynamicTiles;
-@property (readonly, nonatomic) NSArray *incidents; // @synthesize incidents=_incidents;
 @property (readonly, nonatomic) struct PilledTrafficLayer *pilledTrafficLayer;
 @property (readonly, nonatomic) struct SolidTrafficLayer *solidTrafficLayer;
 @property (readonly, nonatomic) struct FeatureAttributeSet *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
+@property (readonly, nonatomic) const shared_ptr_7444c9fa *trafficSkeletonTile; // @synthesize trafficSkeletonTile=_trafficData;
 @property (readonly, nonatomic) const struct TrafficStream *trafficStream;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)_buildStartOffset:(float *)arg1 endOffset:(float *)arg2 forLine:(CDStruct_6ac9d495 *)arg3 forSkeleton:(const struct Record *)arg4 forRange:(struct _NSRange)arg5 forFlow:(const struct Flow *)arg6 forPoints:(Matrix_8746f91e *)arg7;
-- (void)buildIncidentsForDynamic:(id)arg1 withRoadData:(id)arg2;
 - (void)buildSkeletonMap;
-- (void)buildTrafficIncidentsWithRoadData:(id)arg1;
 - (void)buildTrafficMeshWithRoadData:(id)arg1 withLoader:(struct Loader *)arg2 trafficMeshStyle:(const struct TrafficMeshStyle *)arg3;
 - (void)buildTrafficStreamWithRoadData:(id)arg1 trafficMeshStyle:(const struct TrafficMeshStyle *)arg2;
 - (void)buildTrafficWithRoadData:(id)arg1 trafficMeshStyle:(const struct TrafficMeshStyle *)arg2 addSegment:(CDUnknownBlockType)arg3;
 - (BOOL)builtRenderingData;
 - (const struct TrafficMeshStyle *)builtTrafficStyle;
 - (void)dealloc;
-- (void)enumerateTrafficRoadPiecesForTile:(id)arg1 usingFunction:(const function_186234d7 *)arg2;
-- (id)initWithKey:(const struct VKTileKey *)arg1 downloadKey:(const struct _GEOTileKey *)arg2 data:(id)arg3 styleManager:(shared_ptr_a3c46825)arg4 sharedResources:(id)arg5 contentScale:(double)arg6 device:(Device_f0710f89 *)arg7;
+- (id)description;
+- (id)initWithKey:(const struct VKTileKey *)arg1 downloadKey:(const struct _GEOTileKey *)arg2 data:(id)arg3 styleManager:(shared_ptr_a3c46825)arg4 sharedResources:(id)arg5 contentScale:(double)arg6 device:(Device_9226c869 *)arg7;
 - (void)setupStyleAttributesWithRoadData:(id)arg1;
 
 @end

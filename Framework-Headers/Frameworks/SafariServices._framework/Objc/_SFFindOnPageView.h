@@ -45,6 +45,9 @@
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
 @property (nonatomic) BOOL shouldFocusTextField; // @synthesize shouldFocusTextField=_shouldFocusTextField;
+@property (nonatomic) long long smartDashesType;
+@property (nonatomic) long long smartInsertDeleteType;
+@property (nonatomic) long long smartQuotesType;
 @property (nonatomic) long long spellCheckingType;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *textContentType;

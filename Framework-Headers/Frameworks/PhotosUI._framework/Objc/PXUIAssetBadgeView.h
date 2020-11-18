@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class UILabel, _PXUIAssetBadgeImageView, _PXUIAssetBadgeTopLeftGroup;
+#import <PhotosUICore/PXUIExtensionBadgeViewDelegate-Protocol.h>
+
+@class NSString, PXUIExtensionBadgeView, UILabel, _PXUIAssetBadgeImageView, _PXUIAssetBadgeTopLeftGroup;
 @protocol PXUIAssetBadgeViewDelegate;
 
-@interface PXUIAssetBadgeView : UIView
+@interface PXUIAssetBadgeView : UIView <PXUIExtensionBadgeViewDelegate>
 {
     struct {
         BOOL userDidSelectBadges;
@@ -32,29 +34,25 @@
     BOOL _overContent;
     id<PXUIAssetBadgeViewDelegate> _delegate;
     long long _style;
+    PXUIExtensionBadgeView *__topLeftExtensionBadgeView;
     struct PXAssetBadgeInfo _badgeInfo;
 }
 
+@property (strong, nonatomic, setter=_setTopLeftExtensionBadgeView:) PXUIExtensionBadgeView *_topLeftExtensionBadgeView; // @synthesize _topLeftExtensionBadgeView=__topLeftExtensionBadgeView;
 @property (nonatomic) struct PXAssetBadgeInfo badgeInfo; // @synthesize badgeInfo=_badgeInfo;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXUIAssetBadgeViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isOverContent) BOOL overContent; // @synthesize overContent=_overContent;
 @property (nonatomic) long long style; // @synthesize style=_style;
+@property (readonly) Class superclass;
 
-+ (id)_burstBadgeImage;
-+ (id)_cloudBadgeImage;
-+ (id)_debugBackgroundImageWithBadges:(unsigned long long)arg1;
-+ (id)_favoriteBadgeImage;
-+ (id)_favoritesCollectionBadgeImage;
-+ (id)_gradientImage;
-+ (id)_livePhotoBadgeShadowedImage;
-+ (id)_livePhotoBadgeTemplateImage;
-+ (id)_livePhotoOffBadgeTemplateImage;
-+ (id)_panoramaBadgeImage;
-+ (id)_stackBadgeImage;
 + (double)preferredHeightForStyle:(long long)arg1;
 + (void)preloadResourcesForStyle:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_handleButton:(id)arg1;
+- (void)_installBadgeViewForType:(long long)arg1;
 - (void)_invalidate;
 - (void)_invalidateBackground;
 - (void)_invalidateBottomLabel;
@@ -66,6 +64,7 @@
 - (void)_layoutBottomLabel;
 - (void)_layoutTopLeftGroup:(id)arg1;
 - (BOOL)_needsUpdate;
+- (void)_removeViewsFromGroup:(id)arg1;
 - (void)_setBackgroundImage:(id)arg1;
 - (void)_setNeedsUpdate;
 - (void)_updateBackgroundIfNeeded;
@@ -76,9 +75,12 @@
 - (void)_updateIfNeeded;
 - (void)_updateTopLeftElementsIfNeeded;
 - (id)_updateTopLeftGroup:(id)arg1 withBadgeInfo:(struct PXAssetBadgeInfo)arg2 origin:(struct CGPoint)arg3;
+- (void)extensionBadgeView:(id)arg1 userDidSelectBadge:(unsigned long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)performChanges:(CDUnknownBlockType)arg1 animated:(BOOL)arg2;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)prepareForReuse;
 - (void)setFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

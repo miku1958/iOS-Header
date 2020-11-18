@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     NSDate *_lastSyncDownDate;
     long long _lastSyncDownStatus;
     CKServerChangeToken *_changeToken;
-    CKServerChangeToken *_pendingChangeToken;
     unsigned long long _clientRequestID;
 }
 
@@ -26,8 +25,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasNeverSyncedDown;
 @property (strong) NSDate *lastSyncDownDate; // @synthesize lastSyncDownDate=_lastSyncDownDate;
 @property (nonatomic) long long lastSyncDownStatus; // @synthesize lastSyncDownStatus=_lastSyncDownStatus;
-@property (readonly, nonatomic) CKServerChangeToken *nextSyncRequestChangeToken;
-@property (strong, nonatomic) CKServerChangeToken *pendingChangeToken; // @synthesize pendingChangeToken=_pendingChangeToken;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -37,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (void)forgetChangeTokens;
 - (void)forgetClientRequestID;
-- (void)forgetPendingChangeToken;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithServerSyncState:(id)arg1;
 - (BOOL)updateWithServerChangeToken:(id)arg1 clientRequestID:(unsigned long long)arg2 syncDownStatus:(long long)arg3;

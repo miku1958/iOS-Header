@@ -16,9 +16,10 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityMarkMainNavBar;
 - (void)_createNavInAirplaneMode:(BOOL)arg1;
-- (void)_updateAirportNextButton;
+- (void)_presentViewControllerForBuddyController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)accessibilityIdentifier;
 - (void)showModalWiFiSettings;
+- (void)updateNextButton;
 - (id)wifiController;
 
 @end

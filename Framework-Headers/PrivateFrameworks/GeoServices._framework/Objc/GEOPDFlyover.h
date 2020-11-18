@@ -38,6 +38,7 @@
 + (id)flyoverForPlaceData:(id)arg1;
 + (Class)labelType;
 + (Class)notificationMessageType;
+- (void).cxx_destruct;
 - (void)addCameraPath:(struct GEOPDCameraPathFrame)arg1;
 - (void)addLabel:(id)arg1;
 - (void)addLabelFrame:(struct GEOPDLabelFrame)arg1;

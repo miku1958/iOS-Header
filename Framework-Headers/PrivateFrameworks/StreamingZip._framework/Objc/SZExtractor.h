@@ -4,34 +4,75 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
-@class NSXPCConnection, SZExtractorInternalDelegate, StreamingUnzipper;
+#import <StreamingZip/NSCopying-Protocol.h>
+#import <StreamingZip/SZExtractor-Protocol.h>
+
+@class NSDictionary, NSError, NSString, NSXPCConnection, SZExtractorInternalDelegate, StreamingUnzipper;
 @protocol OS_dispatch_queue, SZExtractorDelegate;
 
-@interface SZExtractor : NSObject
+@interface SZExtractor : NSObject <SZExtractor, NSCopying>
 {
+    BOOL _isLocalExtractor;
+    BOOL _needsPreparation;
+    BOOL _hasHadPostSetupMethodsCalled;
+    NSString *_extractionPath;
+    NSDictionary *_options;
+    unsigned long long _lastResumptionOffset;
     NSXPCConnection *_unzipServiceConnection;
     StreamingUnzipper *_inProcessUnzipper;
     NSObject<OS_dispatch_queue> *_serialQueue;
-    SZExtractorInternalDelegate *_extractorDelegate;
-    BOOL _errorOccurred;
+    SZExtractorInternalDelegate *_internalExtractorDelegate;
+    NSError *_error;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SZExtractorDelegate> delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL doesConsumeExtractedData; // @dynamic doesConsumeExtractedData;
+@property (strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (copy, nonatomic) NSString *extractionPath; // @synthesize extractionPath=_extractionPath;
+@property (weak, nonatomic) id<SZExtractorDelegate> extractorDelegate;
+@property (nonatomic) BOOL hasHadPostSetupMethodsCalled; // @synthesize hasHadPostSetupMethodsCalled=_hasHadPostSetupMethodsCalled;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) StreamingUnzipper *inProcessUnzipper; // @synthesize inProcessUnzipper=_inProcessUnzipper;
+@property (readonly, nonatomic) SZExtractorInternalDelegate *internalExtractorDelegate; // @synthesize internalExtractorDelegate=_internalExtractorDelegate;
+@property (readonly, nonatomic) BOOL isLocalExtractor; // @synthesize isLocalExtractor=_isLocalExtractor;
+@property (nonatomic) unsigned long long lastResumptionOffset; // @synthesize lastResumptionOffset=_lastResumptionOffset;
+@property (nonatomic) BOOL needsPreparation; // @synthesize needsPreparation=_needsPreparation;
+@property (readonly, copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSXPCConnection *unzipServiceConnection; // @synthesize unzipServiceConnection=_unzipServiceConnection;
 
 + (void)enableDebugLogging;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_errorOccurred;
 - (void)_invalidateObject;
+- (void)_prepareForLocalExtraction:(CDUnknownBlockType)arg1;
+- (void)_prepareForRemoteExtraction:(CDUnknownBlockType)arg1;
+- (void)_setUpWithPath:(id)arg1 options:(id)arg2;
+- (BOOL)_synchronouslyPrepareForExtractionAtOffset:(unsigned long long *)arg1;
+- (BOOL)consumeExtractedDataIfNeeded;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (void)finishStreamWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)initForLocalExtractionWithPath:(id)arg1 options:(id)arg2 resumptionOffset:(unsigned long long *)arg3;
 - (id)initForRemoteExtractionWithPath:(id)arg1 options:(id)arg2 resumptionOffset:(unsigned long long *)arg3;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithOptions:(id)arg1;
 - (id)initWithPath:(id)arg1 md5Hashes:(id)arg2 hashedChunkSize:(unsigned long long)arg3 resumptionOffset:(unsigned long long *)arg4;
+- (id)initWithPath:(id)arg1 options:(id)arg2;
 - (id)initWithPath:(id)arg1 options:(id)arg2 resumptionOffset:(unsigned long long *)arg3;
 - (id)initWithPath:(id)arg1 resumptionOffset:(unsigned long long *)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (void)prepareForExtraction:(CDUnknownBlockType)arg1;
+- (void)prepareForExtractionToPath:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)setActiveExtractorDelegateMethods:(int)arg1;
 - (void)supplyBytes:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)suspendStreamWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)terminateStreamWithError:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 
 @end
 

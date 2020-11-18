@@ -27,10 +27,10 @@
 @property (readonly) Class superclass;
 
 + (id)sharedCameraImportManager;
+- (void).cxx_destruct;
 - (void)_cameraImporterDidFinishImporting:(id)arg1;
 - (void)_stopListening;
 - (void)addImporter:(id)arg1;
-- (void)dealloc;
 - (void)deviceBrowser:(id)arg1 didAddDevice:(id)arg2 moreComing:(BOOL)arg3;
 - (void)deviceBrowser:(id)arg1 didRemoveDevice:(id)arg2 moreGoing:(BOOL)arg3;
 - (void)ejectCameras;

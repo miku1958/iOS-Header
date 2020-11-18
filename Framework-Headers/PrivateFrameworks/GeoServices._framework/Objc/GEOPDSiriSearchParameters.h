@@ -56,6 +56,7 @@
 
 + (Class)businessCategoryFilterType;
 + (Class)searchSubstringDescriptorType;
+- (void).cxx_destruct;
 - (int)StringAsSortOrder:(id)arg1;
 - (void)addBusinessCategoryFilter:(id)arg1;
 - (void)addSearchSubstringDescriptor:(id)arg1;
@@ -65,7 +66,6 @@
 - (void)clearSearchSubstringDescriptors;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

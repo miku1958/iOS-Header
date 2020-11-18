@@ -4,35 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
+@class TURepeatingAction;
 @protocol OS_dispatch_queue;
 
 @interface TURepeatingActor : NSObject
 {
-    BOOL _running;
     BOOL _stopped;
     BOOL _currentlyPerformingAction;
     NSObject<OS_dispatch_queue> *_queue;
-    unsigned long long _iterationsRemaining;
-    double _pauseDuration;
-    CDUnknownBlockType _action;
-    CDUnknownBlockType _completionBlock;
+    TURepeatingAction *_currentRepeatingAction;
+    TURepeatingAction *_pendingRepeatingAction;
     CDUnknownBlockType _attemptNextIterationBlock;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType action; // @synthesize action=_action;
-@property (weak, nonatomic) CDUnknownBlockType attemptNextIterationBlock; // @synthesize attemptNextIterationBlock=_attemptNextIterationBlock;
-@property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
+@property (copy, nonatomic) CDUnknownBlockType attemptNextIterationBlock; // @synthesize attemptNextIterationBlock=_attemptNextIterationBlock;
+@property (strong, nonatomic) TURepeatingAction *currentRepeatingAction; // @synthesize currentRepeatingAction=_currentRepeatingAction;
 @property (nonatomic, getter=isCurrentlyPerformingAction) BOOL currentlyPerformingAction; // @synthesize currentlyPerformingAction=_currentlyPerformingAction;
-@property (nonatomic) unsigned long long iterationsRemaining; // @synthesize iterationsRemaining=_iterationsRemaining;
-@property (nonatomic) double pauseDuration; // @synthesize pauseDuration=_pauseDuration;
+@property (strong, nonatomic) TURepeatingAction *pendingRepeatingAction; // @synthesize pendingRepeatingAction=_pendingRepeatingAction;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
+@property (readonly, nonatomic, getter=isRunning) BOOL running;
 @property (nonatomic, getter=isStopped) BOOL stopped; // @synthesize stopped=_stopped;
 
 - (void).cxx_destruct;
 - (void)_attemptNextIteration;
+- (void)_beginRepeatingAction:(id)arg1;
 - (void)_completeWithDidFinish:(BOOL)arg1;
 - (BOOL)_hasIterationsRemaining;
 - (void)_stopWithDidFinish:(BOOL)arg1;

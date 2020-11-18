@@ -29,11 +29,11 @@
 @property (copy, nonatomic) NSString *generalLanguageID; // @synthesize generalLanguageID=_generalLanguageID;
 @property (nonatomic, getter=isRTL) BOOL rtl; // @synthesize rtl=_rtl;
 @property (readonly, nonatomic) AXDialectMap *userLocaleDialect; // @synthesize userLocaleDialect;
-@property (nonatomic) AXDialectMap *userPreferredDialect; // @synthesize userPreferredDialect=_userPreferredDialect;
+@property (weak, nonatomic) AXDialectMap *userPreferredDialect; // @synthesize userPreferredDialect=_userPreferredDialect;
 @property (nonatomic, getter=isWestern) BOOL western; // @synthesize western=_western;
 
+- (void).cxx_destruct;
 - (id)basicDescription;
-- (void)dealloc;
 - (id)debugDescription;
 - (id)description;
 - (id)dialectWithLocaleIdentifier:(id)arg1;

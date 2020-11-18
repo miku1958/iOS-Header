@@ -35,6 +35,7 @@
 @property (readonly, nonatomic) CDStruct_1b6d18a9 irisStillDisplayTime;
 @property (readonly, nonatomic) NSString *irisStillImageUUID;
 @property (readonly, nonatomic) NSURL *irisVideoPersistenceURL;
+@property (readonly, nonatomic) unsigned long long mediaSubtypes;
 @property (readonly, nonatomic) unsigned long long mediaType;
 @property (readonly, nonatomic) unsigned long long numberOfRepresentedAssets;
 @property (readonly, copy, nonatomic) NSURL *persistenceURL;

@@ -6,16 +6,21 @@
 
 #import <MediaPlayer/MPRemoteCommand.h>
 
+@class NSArray;
+
 @interface MPChangeRepeatModeCommand : MPRemoteCommand
 {
+    NSArray *_supportedRepeatTypes;
     long long _currentRepeatType;
 }
 
 @property (nonatomic) long long currentRepeatType; // @synthesize currentRepeatType=_currentRepeatType;
 
+- (void).cxx_destruct;
 - (id)_mediaRemoteCommandInfoOptions;
 - (id)newCommandEventWithType:(long long)arg1;
 - (id)newCommandEventWithType:(long long)arg1 preservesRepeatMode:(BOOL)arg2;
+- (void)setSupportedRepeatTypes:(id)arg1;
 
 @end
 

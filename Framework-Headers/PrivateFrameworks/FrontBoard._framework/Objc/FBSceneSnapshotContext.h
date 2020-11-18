@@ -15,11 +15,11 @@
     NSString *_sceneID;
     struct CGRect _frame;
     BOOL _opaque;
-    double _scale;
     NSSet *_layersToExclude;
     FBSSceneSettings *_settings;
     long long _orientation;
     NSDate *_expirationDate;
+    double _scale;
 }
 
 @property (readonly, copy) NSString *debugDescription;

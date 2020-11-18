@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <FrontBoardUIServices/FBUISceneContentManager-Protocol.h>
-#import <FrontBoardUIServices/FBUISceneIdentity-Protocol.h>
 #import <FrontBoardUIServices/FBUISceneSurrogate-Protocol.h>
 
-@class FBSSceneClientSettings, FBSSceneSettings, FBSSceneSpecification, FBUISceneIdentity, FBUISceneWorkspace, NSMutableArray, NSString, UIView;
+@class FBSSceneClientSettings, FBSSceneSettings, FBSSceneSpecification, FBUISceneWorkspace, NSMutableArray, NSString, UIView;
 @protocol FBUISceneClientProxy, FBUISceneContentManager, FBUISceneDelegate, FBUISceneHostProxy, FBUISceneUpdater;
 
-@interface FBUIScene : NSObject <FBUISceneContentManager, FBUISceneSurrogate, FBUISceneIdentity>
+@interface FBUIScene : NSObject <FBUISceneContentManager, FBUISceneSurrogate>
 {
     NSString *_name;
-    FBUISceneIdentity *_identity;
+    NSString *_identifier;
     FBSSceneSpecification *_specification;
     FBSSceneSettings *_settings;
     FBSSceneClientSettings *_clientSettings;
@@ -41,12 +40,11 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasContent;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) FBUISceneIdentity *identity; // @synthesize identity=_identity;
+@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic, getter=isInvalidated) BOOL invalidated; // @synthesize invalidated=_invalidated;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong) id<FBUISceneClientProxy> sceneClient; // @synthesize sceneClient=_sceneClient;
 @property (weak) id<FBUISceneHostProxy> sceneHost; // @synthesize sceneHost=_sceneHost;
-@property (readonly, copy, nonatomic) NSString *sceneIdentifier;
 @property (copy, nonatomic) FBSSceneSettings *settings; // @synthesize settings=_settings;
 @property (readonly, copy, nonatomic) FBSSceneSpecification *specification; // @synthesize specification=_specification;
 @property (readonly) Class superclass;
@@ -57,7 +55,7 @@
 - (void)_performPendingUpdates;
 - (void)_performSceneUpdate:(CDUnknownBlockType)arg1;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
-- (id)configureWithSceneIdentity:(id)arg1;
+- (id)configure;
 - (id)contentView;
 - (void)deactivate;
 - (void)dealloc;
@@ -66,7 +64,7 @@
 - (void)didInvalidateSceneClient:(id)arg1;
 - (void)didInvalidateSceneHost:(id)arg1;
 - (id)init;
-- (id)initWithName:(id)arg1 identity:(id)arg2 specification:(id)arg3;
+- (id)initWithName:(id)arg1 identifier:(id)arg2 specification:(id)arg3;
 - (void)invalidate;
 - (void)registerSceneUpdater:(id)arg1;
 - (void)sceneClient:(id)arg1 didAttachLayer:(id)arg2;
@@ -78,6 +76,8 @@
 - (void)sceneHost:(id)arg1 didReceiveActions:(id)arg2;
 - (void)sceneHost:(id)arg1 didUpdateSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)sceneHost:(id)arg1 registerSceneClient:(id)arg2 withInitialParameters:(id)arg3;
+- (id)sceneIdentifier;
+- (id)sceneSpecification;
 - (void)sendActions:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

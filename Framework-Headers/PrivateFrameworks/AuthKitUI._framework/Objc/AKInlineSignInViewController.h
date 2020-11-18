@@ -4,26 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <AuthKitUI/AKBaseSignInViewController.h>
 
 #import <AuthKitUI/UITextFieldDelegate-Protocol.h>
 
-@class AKAppleIDAuthenticationController, AKAppleIDAuthenticationInAppContext, AKTextField, NSString, UIActivityIndicatorView, UIButton, UIView;
-@protocol AKInlineSignInViewControllerDelegate;
+@class AKAppleIDAuthenticationInAppContext, AKTextField, NSString, UIActivityIndicatorView, UIButton, UIView;
 
-@interface AKInlineSignInViewController : UIViewController <UITextFieldDelegate>
+@interface AKInlineSignInViewController : AKBaseSignInViewController <UITextFieldDelegate>
 {
     BOOL _usesDarkMode;
-    BOOL _isAuthInProgress;
     BOOL _usesVibrancy;
     long long _blurEffectStyle;
-    AKAppleIDAuthenticationController *_authenticationController;
     NSString *_secondaryButtonTitle;
     NSString *_tertiaryButtonTitle;
     AKAppleIDAuthenticationInAppContext *_context;
     BOOL _wantsAuthenticationProgress;
     NSString *_primaryButtonTitle;
-    id<AKInlineSignInViewControllerDelegate> _delegate;
     UIView *_loginFieldsContainer;
     AKTextField *_appleIDField;
     AKTextField *_passwordField;
@@ -34,12 +30,9 @@
 }
 
 @property (strong) AKTextField *appleIDField; // @synthesize appleIDField=_appleIDField;
-@property (readonly) AKAppleIDAuthenticationController *authenticationController;
 @property (nonatomic) long long blurEffectStyle;
-@property (strong) AKAppleIDAuthenticationInAppContext *context;
 @property (strong) UIButton *createAppleIDButton; // @synthesize createAppleIDButton=_createAppleIDButton;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak) id<AKInlineSignInViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong) UIButton *iforgotButton; // @synthesize iforgotButton=_iforgotButton;
@@ -51,34 +44,34 @@
 @property (strong) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
 @property (readonly) Class superclass;
 @property (copy) NSString *tertiaryButtonTitle;
-@property (nonatomic) BOOL usesDarkMode; // @dynamic usesDarkMode;
 @property (nonatomic) BOOL usesVibrancy;
 @property BOOL wantsAuthenticationProgress; // @synthesize wantsAuthenticationProgress=_wantsAuthenticationProgress;
 
 - (void).cxx_destruct;
 - (void)_appleIDTextFieldDidChange:(id)arg1;
 - (void)_beginAuthenticationIfPossibleWithOption:(unsigned long long)arg1;
-- (BOOL)_canBeginAuthenticationWithOption:(unsigned long long)arg1;
 - (void)_hidebusyWorkUI;
-- (BOOL)_isAccountModificationRestricted;
-- (BOOL)_isSignInAllowed;
 - (void)_passwordTextFieldDidChange:(id)arg1;
 - (void)_prefillAuthFields;
 - (void)_startBusyWorkUI;
 - (void)_updateFonts:(id)arg1;
+- (void)_updatePlaceholderIfNeeded;
 - (void)_updateSignInButtonState;
 - (void)_updateSignInFieldStatuses;
 - (void)_updateVibrancyAndBlurInTextFields;
+- (id)context;
 - (void)createAppleIDButtonWasTapped:(id)arg1;
 - (void)dealloc;
 - (void)iForgotButtonWasTapped:(id)arg1;
 - (id)init;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)provideDelegateWithAuthResults:(id)arg1 error:(id)arg2;
+- (void)setContext:(id)arg1;
 - (void)setSecondaryButtonTarget:(id)arg1 action:(SEL)arg2;
 - (void)setTertiaryButtonTarget:(id)arg1 action:(SEL)arg2;
+- (void)setUsesDarkMode:(BOOL)arg1;
 - (void)signInButtonWasTapped:(id)arg1;
 - (BOOL)textFieldShouldReturn:(id)arg1;
+- (BOOL)usesDarkMode;
 - (void)viewDidLoad;
 
 @end

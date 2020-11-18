@@ -46,6 +46,7 @@
 @property (nonatomic) BOOL usesAppLaunchStats;
 
 + (void)_blockingXPCCallWithArgumentBlock:(CDUnknownBlockType)arg1 resultHandler:(CDUnknownBlockType)arg2;
++ (void)_flushIdentityCache;
 + (void)_safelyCancelAndReleaseAfterBarrierConnection:(id)arg1;
 + (void)_safelyCancelAndReleaseConnection:(id)arg1;
 + (void)_setTokenState;
@@ -77,6 +78,7 @@
 - (void)_disconnect;
 - (void)_disconnectFromDealloc;
 - (void)_disconnectOnIvarQueue;
+- (void)_dispatch_async_to_ivarQueue:(CDUnknownBlockType)arg1;
 - (void)_handleEvent:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (id)_listForIdentifierOnIvarQueue:(unsigned long long)arg1;
 - (void)_noteDisconnectedFromDaemonOnIvarQueue;

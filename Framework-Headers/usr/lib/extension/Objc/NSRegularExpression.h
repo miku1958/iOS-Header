@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSCopying-Protocol.h>
-#import <extension/NSSecureCoding-Protocol.h>
+#import <Foundation/NSCopying-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
@@ -30,6 +30,7 @@
 + (void)initialize;
 + (id)regularExpressionWithPattern:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 + (BOOL)supportsSecureCoding;
+- (unsigned long long)_captureGroupNumberWithName:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

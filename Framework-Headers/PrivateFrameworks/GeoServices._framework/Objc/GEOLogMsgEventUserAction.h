@@ -27,10 +27,10 @@
 @property (nonatomic) int userActionEventTarget; // @synthesize userActionEventTarget=_userActionEventTarget;
 @property (strong, nonatomic) NSString *userActionEventValue; // @synthesize userActionEventValue=_userActionEventValue;
 
+- (void).cxx_destruct;
 - (int)StringAsUserActionEventTarget:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

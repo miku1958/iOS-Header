@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEOHours : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _days;
     NSMutableArray *_timeRanges;
 }
@@ -19,8 +20,10 @@
 @property (readonly, nonatomic) int *days;
 @property (readonly, nonatomic) unsigned long long daysCount;
 @property (strong, nonatomic) NSMutableArray *timeRanges; // @synthesize timeRanges=_timeRanges;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)timeRangeType;
+- (void).cxx_destruct;
 - (int)StringAsDays:(id)arg1;
 - (void)addDay:(int)arg1;
 - (void)addTimeRange:(id)arg1;

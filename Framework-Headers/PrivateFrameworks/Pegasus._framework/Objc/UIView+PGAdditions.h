@@ -18,7 +18,6 @@
 + (void)PG_animateUsingDefaultTimingWithAnimations:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)PG_animateUsingDefaultTimingWithOptions:(unsigned long long)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)PG_performWithoutAnimation:(CDUnknownBlockType)arg1;
-+ (void)PG_transitionViews:(id)arg1 hidden:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)PG_setHasRoundedCorners:(BOOL)arg1 animated:(BOOL)arg2;
 @end
 

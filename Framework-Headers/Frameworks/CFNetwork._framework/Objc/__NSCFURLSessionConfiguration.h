@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     double _timeoutIntervalForResource;
     unsigned long long _networkServiceType;
     BOOL _allowsCellularAccess;
+    BOOL _waitsForConnectivity;
     BOOL _discretionary;
     NSString *_sharedContainerIdentifier;
     BOOL _sessionSendsLaunchEvents;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
     long long _HTTPMaximumConnectionsPerHost;
     BOOL _shouldUseExtendedBackgroundIdleMode;
     id _protocolClasses;
+    long long _multipathServiceType;
     BOOL _requiresPowerPluggedIn;
     NSURL *_directoryForDownloadedFiles;
     NSString *_sourceApplicationBundleIdentifier;
@@ -57,6 +59,7 @@ __attribute__((visibility("hidden")))
     double _longLivedConnectionCacheCellPurgeTimeout;
     BOOL _allowsRetryForBackgroundDataTasks;
     BOOL _onBehalfOfPairedDevice;
+    BOOL _clientIsNotExplicitlyDiscretionary;
     BOOL _respectsAllowsCellularAccessForDiscretionaryTasks;
     BOOL _overridesBackgroundSessionAutoRedirect;
     BOOL _performsEVCertCheck;
@@ -70,11 +73,15 @@ __attribute__((visibility("hidden")))
     BOOL _allowsTCPFastOpen;
     BOOL _allowsTLSSessionTickets;
     BOOL _allowsTLSSessionResumption;
+    NSString *_tlsTrustPinningPolicyName;
     BOOL _preventsDirectWiFiAccess;
     BOOL _allowTCPIOConnectionStreamTask;
     unsigned long long _customReadBufferSize;
     double _customReadBufferTimeout;
     BOOL _preventsSystemHTTPProxyAuthentication;
+    BOOL _duetPreauthorized;
+    BOOL _requiresSustainedDataDelivery;
+    BOOL _ignoreDidReceiveResponseDisposition;
     BOOL _backgroundSession;
     NSString *_disposition;
     NSURLCredentialStorage *_phskip_credStorage;
@@ -110,6 +117,7 @@ __attribute__((visibility("hidden")))
     NSString *_watchExtensionBundleIdentifier;
     unsigned long long _forcedNetworkServiceType;
     NSDictionary *_overriddenDelegateOptions;
+    NSArray *_suppressedHTTPHeaders;
 }
 
 + (BOOL)supportsSecureCoding;
@@ -139,6 +147,7 @@ __attribute__((visibility("hidden")))
 - (id)_appleIDContext;
 - (id)_atsContext;
 - (id)_authenticatorStatusCodes;
+- (BOOL)_clientIsNotExplicitlyDiscretionary;
 - (BOOL)_collectsTimingData;
 - (id)_companionAppBundleIdentifier;
 - (double)_connectionCacheCellPurgeTimeout;
@@ -153,8 +162,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)_disablesOutOfProcessDirectWiFiUsage;
 - (BOOL)_disablesUseOfProxySession;
 - (BOOL)_disallowsSPDY;
+- (BOOL)_duetPreauthorized;
 - (unsigned long long)_forcedNetworkServiceType;
 - (BOOL)_forcesNewConnections;
+- (BOOL)_ignoreDidReceiveResponseDisposition;
 - (BOOL)_infersDiscretionaryFromOriginatingClient;
 - (BOOL)_isProxySession;
 - (id)_ledBellyServiceIdentifier;
@@ -179,6 +190,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_preventsSystemHTTPProxyAuthentication;
 - (BOOL)_requiresClientToOpenFiles;
 - (BOOL)_requiresPowerPluggedIn;
+- (BOOL)_requiresSustainedDataDelivery;
 - (BOOL)_respectsAllowsCellularAccessForDiscretionaryTasks;
 - (BOOL)_sessionSendsLaunchOnDemandEvents;
 - (BOOL)_shouldPreserveBackgroundSessionDisposition;
@@ -188,8 +200,10 @@ __attribute__((visibility("hidden")))
 - (id)_sourceApplicationBundleIdentifier;
 - (id)_sourceApplicationSecondaryIdentifier;
 - (BOOL)_supportsAVAssetDownloads;
+- (id)_suppressedHTTPHeaders;
 - (id)_tcpConnectionPoolName;
 - (long long)_timingDataOptions;
+- (id)_tlsTrustPinningPolicyName;
 - (BOOL)_usePipeliningHeuristics;
 - (id)_watchAppBundleIdentifier;
 - (id)_watchExtensionBundleIdentifier;
@@ -209,6 +223,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isDiscretionary;
 - (BOOL)isEqual:(id)arg1;
 - (long long)minimumFastLanePriority;
+- (long long)multipathServiceType;
 - (unsigned long long)networkServiceType;
 - (long long)numFastLanes;
 - (long long)numPriorityLevels;
@@ -231,6 +246,7 @@ __attribute__((visibility("hidden")))
 - (void)setHTTPShouldUsePipelining:(BOOL)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setMinimumFastLanePriority:(long long)arg1;
+- (void)setMultipathServiceType:(long long)arg1;
 - (void)setNetworkServiceType:(unsigned long long)arg1;
 - (void)setNumFastLanes:(long long)arg1;
 - (void)setNumPriorityLevels:(long long)arg1;
@@ -248,6 +264,7 @@ __attribute__((visibility("hidden")))
 - (void)setTimeoutIntervalForResource:(double)arg1;
 - (void)setURLCache:(id)arg1;
 - (void)setURLCredentialStorage:(id)arg1;
+- (void)setWaitsForConnectivity:(BOOL)arg1;
 - (void)set_CTDataConnectionServiceType:(id)arg1;
 - (void)set_TCPAdaptiveReadTimeout:(unsigned long long)arg1;
 - (void)set_TCPAdaptiveWriteTimeout:(unsigned long long)arg1;
@@ -264,6 +281,7 @@ __attribute__((visibility("hidden")))
 - (void)set_appleIDContext:(id)arg1;
 - (void)set_atsContext:(id)arg1;
 - (void)set_authenticatorStatusCodes:(id)arg1;
+- (void)set_clientIsNotExplicitlyDiscretionary:(BOOL)arg1;
 - (void)set_collectsTimingData:(BOOL)arg1;
 - (void)set_companionAppBundleIdentifier:(id)arg1;
 - (void)set_connectionCacheCellPurgeTimeout:(double)arg1;
@@ -276,8 +294,10 @@ __attribute__((visibility("hidden")))
 - (void)set_disablesOutOfProcessDirectWiFiUsage:(BOOL)arg1;
 - (void)set_disablesUseOfProxySession:(BOOL)arg1;
 - (void)set_disallowsSPDY:(BOOL)arg1;
+- (void)set_duetPreauthorized:(BOOL)arg1;
 - (void)set_forcedNetworkServiceType:(unsigned long long)arg1;
 - (void)set_forcesNewConnections:(BOOL)arg1;
+- (void)set_ignoreDidReceiveResponseDisposition:(BOOL)arg1;
 - (void)set_infersDiscretionaryFromOriginatingClient:(BOOL)arg1;
 - (void)set_ledBellyServiceIdentifier:(id)arg1;
 - (void)set_longLivedConnectionCacheCellPurgeTimeout:(double)arg1;
@@ -302,6 +322,7 @@ __attribute__((visibility("hidden")))
 - (void)set_proxySession:(BOOL)arg1;
 - (void)set_requiresClientToOpenFiles:(BOOL)arg1;
 - (void)set_requiresPowerPluggedIn:(BOOL)arg1;
+- (void)set_requiresSustainedDataDelivery:(BOOL)arg1;
 - (void)set_respectsAllowsCellularAccessForDiscretionaryTasks:(BOOL)arg1;
 - (void)set_sessionSendsLaunchOnDemandEvents:(BOOL)arg1;
 - (void)set_shouldPreserveBackgroundSessionDisposition:(BOOL)arg1;
@@ -311,8 +332,10 @@ __attribute__((visibility("hidden")))
 - (void)set_sourceApplicationBundleIdentifier:(id)arg1;
 - (void)set_sourceApplicationSecondaryIdentifier:(id)arg1;
 - (void)set_supportsAVAssetDownloads:(BOOL)arg1;
+- (void)set_suppressedHTTPHeaders:(id)arg1;
 - (void)set_tcpConnectionPoolName:(id)arg1;
 - (void)set_timingDataOptions:(long long)arg1;
+- (void)set_tlsTrustPinningPolicyName:(id)arg1;
 - (void)set_usePipeliningHeuristics:(BOOL)arg1;
 - (void)set_watchAppBundleIdentifier:(id)arg1;
 - (void)set_watchExtensionBundleIdentifier:(id)arg1;
@@ -321,6 +344,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)skip_download_unlink;
 - (double)timeoutIntervalForRequest;
 - (double)timeoutIntervalForResource;
+- (BOOL)waitsForConnectivity;
 
 @end
 

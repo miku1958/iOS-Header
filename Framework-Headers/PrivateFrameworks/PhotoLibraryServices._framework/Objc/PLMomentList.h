@@ -32,6 +32,7 @@
 @property (strong, nonatomic) NSOrderedSet *momentsForYear; // @dynamic momentsForYear;
 @property (strong, nonatomic) NSDate *representativeDate; // @dynamic representativeDate;
 @property (strong, nonatomic) NSData *reverseLocationData; // @dynamic reverseLocationData;
+@property (nonatomic) BOOL reverseLocationDataContainsLocation; // @dynamic reverseLocationDataContainsLocation;
 @property (nonatomic) BOOL reverseLocationDataIsValid; // @dynamic reverseLocationDataIsValid;
 @property (nonatomic) int sortIndex; // @dynamic sortIndex;
 @property (strong, nonatomic) NSDate *startDate; // @dynamic startDate;

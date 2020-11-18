@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TUSoundPlayer;
 
@@ -19,6 +19,8 @@
 @property (readonly, nonatomic, getter=isPlaying) BOOL playing;
 
 - (void).cxx_destruct;
+- (BOOL)attemptToPlayDescriptor:(id)arg1;
+- (BOOL)attemptToPlayDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)attemptToPlaySoundType:(long long)arg1 forCall:(id)arg2;
 - (BOOL)attemptToPlaySoundType:(long long)arg1 forCall:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;

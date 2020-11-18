@@ -4,27 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchFoundation/SFImage.h>
+#import <SearchFoundation/SFURLImage.h>
 
-@class NSString, NSURL, NSXPCListenerEndpoint;
+@class NSURL, NSXPCListenerEndpoint;
 
-@interface PARImage : SFImage
+@interface PARImage : SFURLImage
 {
-    NSXPCListenerEndpoint *_endpoint;
-    NSString *_identifier;
-    NSURL *_url;
 }
 
-@property (strong, nonatomic) NSXPCListenerEndpoint *endpoint; // @synthesize endpoint=_endpoint;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
+@property (strong, nonatomic) NSXPCListenerEndpoint *endpoint;
+@property (strong, nonatomic) NSURL *url;
 
 + (id)imageWithData:(id)arg1;
 + (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)loadImageDataWithCompletionAndErrorHandler:(CDUnknownBlockType)arg1;
 
 @end
 

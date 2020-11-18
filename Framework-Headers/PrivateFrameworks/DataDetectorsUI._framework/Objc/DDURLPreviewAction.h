@@ -20,7 +20,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)ddPreviewActionItemsForSimpleDDActions:(id)arg1;
++ (id)ddPreviewActionItemsForWebURL:(id)arg1;
 + (BOOL)handlesUrl:(id)arg1 result:(struct __DDResult *)arg2;
++ (id)previewActionsWithURL:(id)arg1 validatedURL:(id)arg2 result:(struct __DDResult *)arg3 context:(id)arg4;
 + (id)validatedURLWithURL:(id)arg1 result:(struct __DDResult *)arg2;
 - (id)commitURL;
 - (id)createViewController;

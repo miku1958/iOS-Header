@@ -4,38 +4,45 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuickLookThumbnailing/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSString;
+@class NSData, NSDate, NSString;
 
-__attribute__((visibility("hidden")))
 @interface QLThumbnailVersion : NSObject <NSSecureCoding>
 {
     NSDate *_modificationDate;
     unsigned long long _fileSize;
     NSString *_generatorID;
     NSString *_generatorVersion;
+    NSData *_versionIdentifier;
 }
 
 @property (readonly, getter=isAutomaticallyGenerated) BOOL automaticallyGenerated;
+@property (readonly, getter=isDefaultVersion) BOOL defaultVersion;
 @property unsigned long long fileSize; // @synthesize fileSize=_fileSize;
 @property (copy) NSString *generatorID; // @synthesize generatorID=_generatorID;
 @property (copy) NSString *generatorVersion; // @synthesize generatorVersion=_generatorVersion;
 @property (copy) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
+@property (copy) NSData *versionIdentifier; // @synthesize versionIdentifier=_versionIdentifier;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
+- (void)getGeneratorID:(id *)arg1 version:(id *)arg2 forContentType:(id)arg3;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionaryRepresentation:(id)arg1;
+- (id)initWithFPItem:(id)arg1 automaticallyGenerated:(BOOL)arg2;
+- (id)initWithFPItem:(id)arg1 generatorID:(id)arg2 generatorVersion:(id)arg3;
 - (id)initWithFileURL:(id)arg1 automaticallyGenerated:(BOOL)arg2;
 - (id)initWithFileURL:(id)arg1 generatorID:(id)arg2 generatorVersion:(id)arg3;
-- (id)initWithModificationDate:(id)arg1 fileSize:(unsigned long long)arg2 generatorID:(id)arg3 generatorVersion:(id)arg4;
+- (id)initWithModificationDate:(id)arg1 fileSize:(unsigned long long)arg2 versionIdentifier:(id)arg3 generatorID:(id)arg4 generatorVersion:(id)arg5;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)shouldBeInvalidatedByThumbnailWithVersion:(id)arg1;
 
 @end

@@ -27,6 +27,7 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithSerializedData:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isOpaque;
 - (BOOL)isValid;
 

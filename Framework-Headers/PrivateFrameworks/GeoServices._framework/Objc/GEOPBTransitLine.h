@@ -9,14 +9,16 @@
 #import <GeoServices/GEOTransitNamedItem-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPBTransitArtwork, GEOPBTransitLineDisplayHints, GEOStyleAttributes, NSString;
+@class GEOPBTransitArtwork, GEOPBTransitLineDisplayHints, GEOStyleAttributes, NSString, PBUnknownFields;
 
 @interface GEOPBTransitLine : PBCodable <GEOTransitNamedItem, NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     unsigned long long _muid;
     struct GEOPBTransitTimeRange *_operatingHours;
     unsigned long long _operatingHoursCount;
     unsigned long long _operatingHoursSpace;
+    GEOPBTransitArtwork *_alternateArtwork;
     GEOPBTransitArtwork *_artwork;
     GEOPBTransitLineDisplayHints *_displayHints;
     int _guidanceSnappingType;
@@ -40,11 +42,13 @@
     } _has;
 }
 
+@property (strong, nonatomic) GEOPBTransitArtwork *alternateArtwork; // @synthesize alternateArtwork=_alternateArtwork;
 @property (strong, nonatomic) GEOPBTransitArtwork *artwork; // @synthesize artwork=_artwork;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) GEOPBTransitLineDisplayHints *displayHints; // @synthesize displayHints=_displayHints;
 @property (nonatomic) int guidanceSnappingType; // @synthesize guidanceSnappingType=_guidanceSnappingType;
+@property (readonly, nonatomic) BOOL hasAlternateArtwork;
 @property (readonly, nonatomic) BOOL hasArtwork;
 @property (readonly, nonatomic) BOOL hasDisplayHints;
 @property (nonatomic) BOOL hasGuidanceSnappingType;
@@ -74,7 +78,9 @@
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned int systemIndex; // @synthesize systemIndex=_systemIndex;
 @property (nonatomic) int transitType; // @synthesize transitType=_transitType;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (int)StringAsGuidanceSnappingType:(id)arg1;
 - (int)StringAsPlaceDisplayStyle:(id)arg1;
 - (int)StringAsPreferredDepartureTimeStyle:(id)arg1;
@@ -87,6 +93,7 @@
 - (id)dictionaryRepresentation;
 - (id)geoTransitLineWithSystem:(id)arg1;
 - (id)guidanceSnappingTypeAsString:(int)arg1;
+- (id)identifier;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (struct GEOPBTransitTimeRange)operatingHoursAtIndex:(unsigned long long)arg1;

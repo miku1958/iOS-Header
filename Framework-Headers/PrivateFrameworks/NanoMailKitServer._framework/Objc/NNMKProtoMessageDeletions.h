@@ -8,22 +8,29 @@
 
 #import <NanoMailKitServer/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray;
+@class NSData, NSMutableArray, NSString;
 
 @interface NNMKProtoMessageDeletions : PBCodable <NSCopying>
 {
     NSData *_dateSynced;
     unsigned int _fullSyncVersion;
+    NSString *_mailboxId;
+    unsigned int _mailboxSyncVersion;
     NSMutableArray *_messageDeletions;
-    CDStruct_a125a100 _has;
+    CDStruct_8d07e858 _has;
 }
 
 @property (strong, nonatomic) NSData *dateSynced; // @synthesize dateSynced=_dateSynced;
 @property (nonatomic) unsigned int fullSyncVersion; // @synthesize fullSyncVersion=_fullSyncVersion;
 @property (readonly, nonatomic) BOOL hasDateSynced;
 @property (nonatomic) BOOL hasFullSyncVersion;
+@property (readonly, nonatomic) BOOL hasMailboxId;
+@property (nonatomic) BOOL hasMailboxSyncVersion;
+@property (strong, nonatomic) NSString *mailboxId; // @synthesize mailboxId=_mailboxId;
+@property (nonatomic) unsigned int mailboxSyncVersion; // @synthesize mailboxSyncVersion=_mailboxSyncVersion;
 @property (strong, nonatomic) NSMutableArray *messageDeletions; // @synthesize messageDeletions=_messageDeletions;
 
++ (Class)messageDeletionType;
 - (void).cxx_destruct;
 - (void)addMessageDeletion:(id)arg1;
 - (void)clearMessageDeletions;

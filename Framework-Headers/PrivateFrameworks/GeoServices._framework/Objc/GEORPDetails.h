@@ -44,6 +44,7 @@
 @property (strong, nonatomic) NSMutableArray *places; // @synthesize places=_places;
 
 + (Class)placeType;
+- (void).cxx_destruct;
 - (int)StringAsDirectionsType:(id)arg1;
 - (int)StringAsDisplayStyle:(id)arg1;
 - (int)StringAsMapType:(id)arg1;
@@ -51,7 +52,6 @@
 - (void)clearPlaces;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)directionsTypeAsString:(int)arg1;

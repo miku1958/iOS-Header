@@ -117,7 +117,7 @@
 - (void)ppt_dismissShareSheetWithCompletion:(CDUnknownBlockType)arg1;
 - (void)ppt_presentPhotoEditor;
 - (void)ppt_presentShareSheetWithCompletion:(CDUnknownBlockType)arg1;
-- (void)ppt_shareUsing:(id)arg1;
+- (void)ppt_shareUsingActivityOfType:(id)arg1;
 - (void)ppt_tapNextButton:(CDUnknownBlockType)arg1;
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
 - (BOOL)presentViewController:(id)arg1 animated:(BOOL)arg2;

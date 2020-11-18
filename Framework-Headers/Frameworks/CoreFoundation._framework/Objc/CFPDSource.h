@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
     BOOL _dirty;
     BOOL _byHost;
     BOOL _managed;
+    BOOL _managedUsesContainer;
     BOOL _neverCache;
     BOOL _checkedForNonPrefsPlist;
     BOOL _hasDrainedPendingChangesSinceLastReplyToOwner;
@@ -40,10 +41,11 @@ __attribute__((visibility("hidden")))
     BOOL _hasPreviouslyBeenUnableToDetermineSandboxAccess;
 }
 
++ (void)removeObservationConnectionsForIdentifier:(unsigned long long)arg1;
 - (void)_writeToDisk:(BOOL)arg1;
 - (id)acceptMessage:(id)arg1;
 - (void)addOwner:(id)arg1;
-- (void)asyncNotifyObserversOfChanges;
+- (void)asyncNotifyObserversOfWriteFromConnection:(id)arg1;
 - (void)asyncWriteToDisk;
 - (void)attachSizeWarningsToReply:(id)arg1 forByteCount:(unsigned long long)arg2;
 - (void)beginHandlingRequest;
@@ -55,8 +57,8 @@ __attribute__((visibility("hidden")))
 - (struct __CFString *)cloudConfigurationPath;
 - (struct __CFString *)container;
 - (id)copyCachedObservationConnectionForMessage:(id)arg1;
-- (id)copyPropertyList;
-- (id)copyPropertyListWithoutDrainingPendingChanges;
+- (id)copyPropertyListValidatingPlist:(BOOL)arg1;
+- (id)copyPropertyListWithoutDrainingPendingChangesValidatingPlist:(BOOL)arg1;
 - (struct __CFString *)copyUncanonicalizedPath;
 - (void)dealloc;
 - (struct __CFString *)debugDump;
@@ -72,7 +74,6 @@ __attribute__((visibility("hidden")))
 - (void)handleNeverCache;
 - (void)handleNoPlistFound;
 - (void)handleOpenForWritingFailureWithErrno:(int)arg1;
-- (void)handleRootWrite;
 - (void)handleSynchronous;
 - (BOOL)hasEverHadMultipleOwners;
 - (BOOL)hasObservers;
@@ -87,11 +88,12 @@ __attribute__((visibility("hidden")))
 - (void)removeOwner;
 - (void)respondToFileWrittenToBehindOurBack;
 - (void)setDirty:(BOOL)arg1;
+- (void)setManagedPreferencesUseContainer:(BOOL)arg1;
 - (void)setObserved:(BOOL)arg1 bySenderOfMessage:(id)arg2;
 - (void)setPlist:(id)arg1;
 - (short)shmemIndex;
 - (BOOL)shouldBePurgable;
-- (void)stopNotifyingObserver:(long long)arg1;
+- (void)stopNotifyingObserver:(id)arg1;
 - (void)syncWriteToDisk;
 - (void)syncWriteToDiskAndFlushCache;
 - (void)transitionToMultiOwner;

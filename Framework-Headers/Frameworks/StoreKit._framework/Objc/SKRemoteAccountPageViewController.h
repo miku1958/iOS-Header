@@ -25,7 +25,9 @@ __attribute__((visibility("hidden")))
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 - (void)didPrepareWithResult:(id)arg1 error:(id)arg2;
-- (void)dismissViewController;
+- (void)dismissViewControllerWithResult:(id)arg1 error:(id)arg2;
+- (void)overrideCreditCardPresentationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)overrideRedeemCameraWithCompletion:(CDUnknownBlockType)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 
 @end

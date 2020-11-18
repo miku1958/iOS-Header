@@ -9,6 +9,7 @@
 @interface NSError (BRAdditions)
 + (id)br_errorFromErrno;
 + (id)br_errorWithDomain:(id)arg1 code:(long long)arg2 description:(id)arg3;
++ (id)br_errorWithDomain:(id)arg1 code:(long long)arg2 userInfo:(id)arg3 description:(id)arg4;
 + (id)br_errorWithPOSIXCode:(int)arg1;
 + (id)br_errorWithPOSIXCode:(int)arg1 description:(id)arg2;
 + (id)brc_addPartialError:(id)arg1 forURL:(id)arg2 toError:(id)arg3;
@@ -24,10 +25,14 @@
 + (id)brc_errorDocumentIsNotSharedAtURL:(id)arg1;
 + (id)brc_errorDocumentWithFilename:(id)arg1 size:(long long)arg2 isTooLargeToUpload:(long long)arg3;
 + (id)brc_errorDriveDisabledOrAppLibraryDisabled;
++ (id)brc_errorFolderHasSharedSubitems;
 + (id)brc_errorInvalidParameter:(id)arg1 value:(id)arg2;
++ (id)brc_errorItemAlreadyPartOfAShare;
++ (id)brc_errorItemChanged;
++ (id)brc_errorItemInTrash;
 + (id)brc_errorItemNotFound:(id)arg1;
 + (id)brc_errorLoggedOut;
-+ (id)brc_errorMethodNotImplemented:(const char *)arg1;
++ (id)brc_errorMethodNotImplemented:(SEL)arg1;
 + (id)brc_errorNoAppLibraryForBundle:(id)arg1;
 + (id)brc_errorNoDocumentAtURL:(id)arg1 underlyingPOSIXError:(int)arg2;
 + (id)brc_errorNoSuitableClientApp;
@@ -37,6 +42,7 @@
 + (id)brc_errorPathOutsideAnyCloudDocsAppLibraryAtURL:(id)arg1;
 + (id)brc_errorPermissionError:(id)arg1;
 + (id)brc_errorPermissionErrorAtURL:(id)arg1;
++ (id)brc_errorSyncBlocked;
 + (id)brc_errorSyncDisabled:(id)arg1;
 + (id)brc_errorUnknownKey:(id)arg1;
 - (BOOL)br_isCloudDocsErrorCode:(long long)arg1;

@@ -6,12 +6,17 @@
 
 #import <objc/NSObject.h>
 
+@class MNActiveRouteInfo, MNLocation, NSArray, NSTimer;
 @protocol MNTimeAndDistanceUpdaterDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MNTimeAndDistanceUpdater : NSObject
 {
     id<MNTimeAndDistanceUpdaterDelegate> _delegate;
+    MNLocation *_location;
+    NSArray *_routes;
+    NSTimer *_minuteTimer;
+    MNActiveRouteInfo *_mainRoute;
     double _remainingTime;
     double _remainingDistance;
     double _distanceToManeuverStart;
@@ -25,7 +30,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double remainingTime; // @synthesize remainingTime=_remainingTime;
 
 - (void).cxx_destruct;
-- (void)updateForLocation:(id)arg1 route:(id)arg2 etaRoute:(id)arg3;
+- (void)_startTimerToNextMinute;
+- (void)dealloc;
+- (void)setLocation:(id)arg1;
+- (void)setRoutes:(id)arg1;
+- (void)startUpdating;
+- (void)stopUpdating;
+- (void)updateDisplayETAForRoute:(id)arg1 shouldNotifyDelegate:(BOOL)arg2;
 
 @end
 

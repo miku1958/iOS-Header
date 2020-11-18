@@ -16,8 +16,6 @@
 - (BOOL)_accessibilityIsTouchContainer;
 - (id)accessibilityElements;
 - (id)accessibilityIdentifier;
-- (id)podcastLockupViewAccessibilityElements;
-- (void)setPodcastLockupViewAccessibilityElements:(id)arg1;
 
 @end
 

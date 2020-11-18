@@ -6,11 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class MPAVRoute, NSArray, NSMutableArray, NSString;
-@protocol MPAVRoutingControllerDelegate;
+@class MPAVRoute, MPAVRoutingDataSource, NSArray, NSMutableArray, NSString;
+@protocol MPAVRoutingControllerDelegate, OS_dispatch_queue;
 
 @interface MPAVRoutingController : NSObject
 {
+    NSObject<OS_dispatch_queue> *_serialQueue;
     NSArray *_cachedRoutes;
     MPAVRoute *_cachedPickedRoute;
     MPAVRoute *_legacyCachedRoute;
@@ -19,40 +20,52 @@
     long long _externalScreenType;
     BOOL _hasExternalScreenType;
     BOOL _scheduledSendDelegateRoutesChanged;
-    BOOL _pickedRouteHasVolumeControl;
-    BOOL _hasVolumeControlInfoForPickedRoute;
+    unsigned long long _volumeControlStateForPickedRoute;
     int _deviceAvailabilityNotifyToken;
     BOOL _deviceAvailabilityOverrideState;
     id<MPAVRoutingControllerDelegate> _delegate;
+    MPAVRoutingDataSource *_dataSource;
     NSString *_name;
     long long _discoveryMode;
     NSString *_category;
+    long long _routeTypes;
     MPAVRoute *_pendingPickedRoute;
 }
 
 @property (readonly, copy, nonatomic) NSArray *availableRoutes;
 @property (copy, nonatomic) NSString *category; // @synthesize category=_category;
+@property (readonly, nonatomic) MPAVRoutingDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (weak, nonatomic) id<MPAVRoutingControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long discoveryMode; // @synthesize discoveryMode=_discoveryMode;
 @property (readonly, nonatomic) long long externalScreenType;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) MPAVRoute *pendingPickedRoute; // @synthesize pendingPickedRoute=_pendingPickedRoute;
 @property (readonly, nonatomic) MPAVRoute *pickedRoute;
+@property (nonatomic) long long routeTypes; // @synthesize routeTypes=_routeTypes;
 @property (readonly, nonatomic) BOOL volumeControlIsAvailable;
 
++ (id)_currentDeviceRoutingIconImage;
++ (id)_currentDeviceRoutingIconImageName;
++ (id)_iconImageForRoute:(id)arg1;
 - (void).cxx_destruct;
 - (void)_activeAudioRouteDidChangeNotification:(id)arg1;
+- (BOOL)_deviceAvailabilityOverrideState;
+- (long long)_externalScreenType:(BOOL *)arg1;
 - (void)_externalScreenTypeDidChangeNotification:(id)arg1;
 - (void)_mediaServerDiedNotification:(id)arg1;
-- (id)_parseAVRouteDescriptions:(id)arg1;
+- (void)_onQueueClearCachedRoutes;
+- (void)_onQueueSetExternalScreenType:(long long)arg1;
 - (void)_pickableRoutesDidChangeNotification:(id)arg1;
 - (id)_pickedRouteInArray:(id)arg1;
 - (void)_registerNotifications;
 - (void)_routeStatusDidChangeNotification:(id)arg1;
 - (void)_scheduleSendDelegateRoutesChanged;
 - (void)_setExternalScreenType:(long long)arg1;
+- (void)_setVolumeControlStateForPickedRoute:(unsigned long long)arg1;
 - (void)_unregisterNotifications;
 - (void)_updateCachedRoutes;
+- (void)_volumeControlAvailabilityDidChangeNotification:(id)arg1;
+- (unsigned long long)_volumeControlStateForPickedRoute;
 - (BOOL)airtunesRouteIsPicked;
 - (void)clearCachedRoutes;
 - (void)dealloc;
@@ -60,6 +73,7 @@
 - (void)fetchAvailableRoutesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)handsetRouteIsPicked;
 - (id)init;
+- (id)initWithDataSource:(id)arg1 name:(id)arg2;
 - (id)initWithName:(id)arg1;
 - (void)logCurrentRoutes;
 - (BOOL)pickBestDeviceRoute;

@@ -4,29 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
 @interface PLPhotoEffect : NSObject
 {
+    BOOL _isPortrait;
+    BOOL _isLegacy;
     NSString *_filterIdentifier;
     NSString *_displayName;
     NSString *_CIFilterName;
+    long long _lightingType;
 }
 
 @property (readonly, copy, nonatomic) NSString *CIFilterName; // @synthesize CIFilterName=_CIFilterName;
 @property (readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, copy, nonatomic) NSString *filterIdentifier; // @synthesize filterIdentifier=_filterIdentifier;
+@property (readonly, nonatomic) BOOL isLegacy; // @synthesize isLegacy=_isLegacy;
+@property (readonly, nonatomic) BOOL isPortrait; // @synthesize isPortrait=_isPortrait;
 @property (readonly, nonatomic) long long latestVersion;
+@property (readonly, nonatomic) long long lightingType; // @synthesize lightingType=_lightingType;
 
 + (id)_effectWithIdentifier:(id)arg1 CIFilterName:(id)arg2 displayName:(id)arg3;
++ (id)_effectWithIdentifier:(id)arg1 CIFilterName:(id)arg2 displayName:(id)arg3 type:(long long)arg4;
++ (id)_effectWithIdentifier:(id)arg1 CIFilterName:(id)arg2 displayName:(id)arg3 type:(long long)arg4 isLegacy:(BOOL)arg5;
++ (id)_legacyEffectWithIdentifier:(id)arg1 CIFilterName:(id)arg2;
 + (id)allEffects;
++ (id)allSupportedEffects;
 + (id)effectWithCIFilterName:(id)arg1;
 + (id)effectWithIdentifier:(id)arg1;
++ (id)effectWithType:(long long)arg1;
 + (unsigned long long)indexOfEffectWithIdentifier:(id)arg1;
++ (unsigned long long)indexOfEffectWithLightingType:(long long)arg1;
 + (BOOL)isEffectNoneForIdentifier:(id)arg1;
 + (BOOL)isEffectWithIdentifier:(id)arg1 equalToEffectWithIdentifier:(id)arg2;
++ (id)standardSupportedEffects;
+- (void)dealloc;
 - (id)description;
 - (id)newEffectFilter;
 

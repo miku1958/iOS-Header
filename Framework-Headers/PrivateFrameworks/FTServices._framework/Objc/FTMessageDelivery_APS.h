@@ -9,15 +9,13 @@
 #import <FTServices/APSConnectionDelegate-Protocol.h>
 #import <FTServices/FTMessageQueueDelegate-Protocol.h>
 
-@class APSConnection, NSMutableArray, NSMutableDictionary, NSString;
+@class NSMutableArray, NSMutableDictionary, NSString;
+@protocol FTMessageDeliveryAPSConnection;
 
 @interface FTMessageDelivery_APS : FTMessageDelivery <FTMessageQueueDelegate, APSConnectionDelegate>
 {
-    Class _APSConnectionClass;
+    id<FTMessageDeliveryAPSConnection> _connection;
     Class _APSOutgoingMessageClass;
-    APSConnection *_connection;
-    long long _messageSize;
-    long long _largeMessageSize;
     NSMutableArray *_enabledTopics;
     NSMutableDictionary *_ftMessageMap;
     NSMutableDictionary *_startDateMap;
@@ -34,6 +32,7 @@
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)_apsMessageBodyForMessage:(id)arg1;
 - (id)_apsMessageForMessage:(id)arg1 body:(id)arg2;
 - (id)_apsOutgoingMessageForFTMessage:(id)arg1;
@@ -56,7 +55,7 @@
 - (void)_noteMessageFailed:(id)arg1 ftMessage:(id)arg2 allowRetry:(BOOL)arg3 error:(id)arg4;
 - (void)_noteMessageSent:(id)arg1 ftMessage:(id)arg2 body:(id)arg3;
 - (void)_noteMessageSucceeded:(id)arg1 ftMessage:(id)arg2 error:(id)arg3 result:(id)arg4 resultCode:(long long)arg5;
-- (void)_notifyDelegateAboutError:(id)arg1 forMessage:(id)arg2;
+- (void)_notifyDelegateAboutError:(id)arg1 resultCode:(long long)arg2 forMessage:(id)arg3;
 - (void)_powerLogEvent:(id)arg1 dictionary:(id)arg2;
 - (id)_requiredTopics;
 - (long long)_retryCountForMessage:(id)arg1;
@@ -77,6 +76,7 @@
 - (void)connection:(id)arg1 didSendOutgoingMessage:(id)arg2;
 - (void)dealloc;
 - (id)init;
+- (id)initWithAPSConnection:(id)arg1;
 - (void)invalidate;
 - (long long)maxLargeMessageSize;
 - (long long)maxMessageSize;

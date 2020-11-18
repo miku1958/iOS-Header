@@ -15,10 +15,12 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _shareParticipantKeyFetchedBlock;
     NSMutableArray *_shareIDs;
     NSDictionary *_baseTokensByShareID;
+    NSDictionary *_childRecordIDsByShareID;
     NSMutableDictionary *_sharesNeedingUpdateByID;
 }
 
 @property (strong, nonatomic) NSDictionary *baseTokensByShareID; // @synthesize baseTokensByShareID=_baseTokensByShareID;
+@property (strong, nonatomic) NSDictionary *childRecordIDsByShareID; // @synthesize childRecordIDsByShareID=_childRecordIDsByShareID;
 @property (nonatomic) BOOL hasAttemptedShareUpdate; // @synthesize hasAttemptedShareUpdate=_hasAttemptedShareUpdate;
 @property (strong, nonatomic) NSMutableArray *shareIDs; // @synthesize shareIDs=_shareIDs;
 @property (copy, nonatomic) CDUnknownBlockType shareParticipantKeyFetchedBlock; // @synthesize shareParticipantKeyFetchedBlock=_shareParticipantKeyFetchedBlock;

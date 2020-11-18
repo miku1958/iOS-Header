@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/_NSNegateBooleanTransformer.h>
+#import <Foundation/_NSNegateBooleanTransformer.h>
 
 __attribute__((visibility("hidden")))
 @interface _NSIsNilTransformer : _NSNegateBooleanTransformer

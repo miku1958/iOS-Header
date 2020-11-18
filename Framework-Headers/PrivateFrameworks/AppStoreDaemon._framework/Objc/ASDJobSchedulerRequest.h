@@ -4,18 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppStoreDaemon/ASDRequest.h>
+#import <AppStoreDaemon/ASDEphemeralRequest.h>
 
-@class ASDJobSchedulerRequestOptions;
-
-@interface ASDJobSchedulerRequest : ASDRequest
+@interface ASDJobSchedulerRequest : ASDEphemeralRequest
 {
-    CDUnknownBlockType _completionBlock;
-    ASDJobSchedulerRequestOptions *_options;
 }
 
-- (void).cxx_destruct;
-- (void)_handleResponse:(id)arg1 error:(id)arg2;
++ (long long)requestType;
 - (void)findNextJobsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)initWithOptions:(id)arg1;
 

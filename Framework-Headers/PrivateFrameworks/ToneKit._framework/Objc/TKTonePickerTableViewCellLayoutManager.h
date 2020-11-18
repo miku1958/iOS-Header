@@ -14,8 +14,7 @@
 @property (nonatomic) double minimumTextIndentation; // @synthesize minimumTextIndentation=_minimumTextIndentation;
 
 - (struct CGRect)_adjustedTextFrameWithOriginalTextFrame:(struct CGRect)arg1 forCell:(id)arg2;
-- (struct CGRect)textRectForCell:(id)arg1;
-- (struct CGRect)textRectForCell:(id)arg1 rowWidth:(double)arg2;
+- (struct CGRect)textRectForCell:(id)arg1 rowWidth:(double)arg2 forSizing:(BOOL)arg3;
 
 @end
 

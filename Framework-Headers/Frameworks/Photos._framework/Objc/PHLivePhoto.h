@@ -56,11 +56,15 @@
 @property (readonly, nonatomic) PHSandboxExtensionWrapper *videoURLSandboxExtensionWrapper; // @synthesize videoURLSandboxExtensionWrapper=_videoURLSandboxExtensionWrapper;
 
 + (BOOL)_canCreateLivePhotoWithURLs:(id)arg1 outError:(id *)arg2;
++ (BOOL)_canCreateLoopingLivePhotoWithURLs:(id)arg1 outError:(id *)arg2;
 + (BOOL)_identifyResourceURLs:(id)arg1 outImageURL:(id *)arg2 outVideoURL:(id *)arg3 error:(id *)arg4;
 + (CDStruct_1b6d18a9)_photoTimeForLivePhotoWithImageURL:(id)arg1 videoURL:(id)arg2;
++ (BOOL)_validateFileURLs:(id)arg1 withValidationOptions:(unsigned long long)arg2 outError:(id *)arg3;
 + (void)cancelLivePhotoRequestWithRequestID:(int)arg1;
 + (id)livePhotoWithResourceFileURLs:(id)arg1 error:(id *)arg2;
 + (id)livePhotoWithResourceFileURLs:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 error:(id *)arg4;
++ (id)livePhotoWithResourceFileURLs:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 isLooping:(BOOL)arg4 error:(id *)arg5;
++ (id)loopingLivePhotoWithResourceFileURLs:(id)arg1 error:(id *)arg2;
 + (int)requestLivePhotoWithResourceFileURLs:(id)arg1 placeholderImage:(id)arg2 targetSize:(struct CGSize)arg3 contentMode:(long long)arg4 resultHandler:(CDUnknownBlockType)arg5;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

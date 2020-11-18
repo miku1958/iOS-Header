@@ -33,7 +33,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_cacheSettingsFileURL;
-- (void)_didLoadImage:(id)arg1 forKeyString:(id)arg2;
+- (void)_didLoadImage:(id)arg1 forKeyString:(id)arg2 fromDisk:(BOOL)arg3;
 - (id)_diskAccessQueueName;
 - (void)_dispatchDiskAccessBlock:(CDUnknownBlockType)arg1;
 - (void)_emptyCacheDirectory;
@@ -42,7 +42,6 @@
 - (id)_internalImageForKeyString:(id)arg1;
 - (long long)_internalImageStateForKeyString:(id)arg1;
 - (void)_internalPurgeUnneededImages;
-- (void)_internalQueueDispatchAsync:(CDUnknownBlockType)arg1;
 - (void)_internalQueueDispatchBarrierAsync:(CDUnknownBlockType)arg1;
 - (void)_internalQueueDispatchSync:(CDUnknownBlockType)arg1;
 - (id)_internalQueueName;
@@ -76,6 +75,7 @@
 - (void)retainImagesForKeyStrings:(id)arg1;
 - (void)saveImageToDisk:(id)arg1 forKeyString:(id)arg2;
 - (void)savePendingChangesBeforeTermination;
+- (void)setImage:(id)arg1 forKeyString:(id)arg2;
 - (void)setImageState:(long long)arg1 forKeyString:(id)arg2;
 - (void)setSetting:(id)arg1 forKey:(id)arg2;
 - (void)setUpImageCache;

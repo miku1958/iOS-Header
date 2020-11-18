@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBUnknownFields;
 
 @interface GEOMapItemAddressBookAttributes : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSString *_addressIdentifier;
     int _addressType;
     NSString *_name;
@@ -33,12 +34,13 @@
 @property (nonatomic) BOOL isMe; // @synthesize isMe=_isMe;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSString *spokenName; // @synthesize spokenName=_spokenName;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (int)StringAsAddressType:(id)arg1;
 - (id)addressTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

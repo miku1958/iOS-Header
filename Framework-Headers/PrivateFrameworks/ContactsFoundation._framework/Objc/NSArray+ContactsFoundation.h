@@ -7,10 +7,13 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (ContactsFoundation)
++ (id)_cn_arrayWithObject:(id)arg1 count:(unsigned long long)arg2;
 - (BOOL)_cn_all:(CDUnknownBlockType)arg1;
 - (BOOL)_cn_any:(CDUnknownBlockType)arg1;
+- (id)_cn_arrayByRotatingRange:(struct _NSRange)arg1 by:(long long)arg2;
 - (id)_cn_distinctObjects;
 - (void)_cn_each:(CDUnknownBlockType)arg1;
+- (void)_cn_each:(CDUnknownBlockType)arg1 until:(CDUnknownBlockType)arg2;
 - (void)_cn_each:(CDUnknownBlockType)arg1 untilCancelled:(id)arg2;
 - (void)_cn_each_reverse:(CDUnknownBlockType)arg1;
 - (id)_cn_filter:(CDUnknownBlockType)arg1;
@@ -26,9 +29,11 @@
 - (id)_cn_join:(id)arg1;
 - (id)_cn_joinWithBlock:(CDUnknownBlockType)arg1;
 - (id)_cn_map:(CDUnknownBlockType)arg1;
+- (BOOL)_cn_none:(CDUnknownBlockType)arg1;
 - (id)_cn_partition:(CDUnknownBlockType)arg1;
 - (id)_cn_reduce:(CDUnknownBlockType)arg1;
 - (id)_cn_reduce:(CDUnknownBlockType)arg1 initialValue:(id)arg2;
+- (id)_cn_reversed;
 - (id)_cn_safeSortedArrayUsingComparator:(CDUnknownBlockType)arg1;
 - (id)_cn_skip:(unsigned long long)arg1;
 - (id)_cn_skipLast:(unsigned long long)arg1;

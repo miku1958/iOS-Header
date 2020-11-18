@@ -40,7 +40,8 @@
 - (void)clearCallerID;
 - (void)clearCallerIDForAccount:(id)arg1;
 - (void)dealloc;
-- (id)idsAccountForURI:(id)arg1;
+- (id)idsAccountForFromURI:(id)arg1 toURI:(id)arg2;
+- (id)idsAccountForURI:(id)arg1 IDSServiceName:(id)arg2;
 - (id)imdAccountForIDSAccount:(id)arg1;
 - (id)initWithAccount:(id)arg1 service:(id)arg2;
 - (void)loginServiceSessionWithAccount:(id)arg1;

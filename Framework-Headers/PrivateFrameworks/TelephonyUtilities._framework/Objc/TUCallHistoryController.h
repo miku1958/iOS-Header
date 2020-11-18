@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TelephonyUtilities/TUCallProviderManagerDelegate-Protocol.h>
 
@@ -12,7 +12,7 @@
 
 @interface TUCallHistoryController : NSObject <TUCallProviderManagerDelegate>
 {
-    NSString *_coalescingStrategy;
+    unsigned long long _coalescingStrategy;
     unsigned long long _options;
     NSArray *_recentCalls;
     unsigned long long _unreadCallCount;
@@ -27,7 +27,7 @@
 
 @property (strong, nonatomic) CHManager *callHistoryManager; // @synthesize callHistoryManager=_callHistoryManager;
 @property (strong, nonatomic) TUCallProviderManager *callProviderManager; // @synthesize callProviderManager=_callProviderManager;
-@property (copy, nonatomic) NSString *coalescingStrategy; // @synthesize coalescingStrategy=_coalescingStrategy;
+@property (nonatomic) unsigned long long coalescingStrategy; // @synthesize coalescingStrategy=_coalescingStrategy;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) TUDispatcher *dispatcher; // @synthesize dispatcher=_dispatcher;
@@ -41,22 +41,25 @@
 @property (nonatomic) unsigned long long unreadCallCount; // @synthesize unreadCallCount=_unreadCallCount;
 @property (nonatomic) unsigned long long unreadVideoCallCount; // @synthesize unreadVideoCallCount=_unreadVideoCallCount;
 
-+ (id)callHistoryControllerWithCoalescingStrategy:(id)arg1 options:(unsigned long long)arg2;
++ (id)callHistoryControllerWithCoalescingStrategy:(unsigned long long)arg1 options:(unsigned long long)arg2;
 + (id)sharedController;
-+ (id)sharedControllerWithCoalescingStrategy:(id)arg1 options:(unsigned long long)arg2;
++ (id)sharedControllerWithCoalescingStrategy:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (void).cxx_destruct;
+- (id)_callHistoryCoalescingStrategyForCoalescingStrategy:(unsigned long long)arg1;
 - (void)_updateCallHistoryManagerUsingCurrentOptions;
 - (void)boostQualityOfService;
 - (void)callHistoryDatabaseChanged:(id)arg1;
 - (CDUnknownBlockType)callHistoryManagerInitializationDispatchBlock;
 - (CDUnknownBlockType)callHistoryManagerRecentCallsDispatchBlock;
+- (BOOL)canCoalesceCall:(id)arg1 withCall:(id)arg2;
+- (BOOL)coalesceCall:(id)arg1 withCall:(id)arg2;
 - (void)dealloc;
 - (void)deleteAllRecentCalls;
 - (void)deleteRecentCall:(id)arg1;
 - (void)deleteRecentCalls:(id)arg1;
 - (void)dispatcherDidFinishBoost:(id)arg1;
 - (id)init;
-- (id)initWithCoalescingStrategy:(id)arg1 options:(unsigned long long)arg2;
+- (id)initWithCoalescingStrategy:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (void)loadDispatchQueue;
 - (void)markRecentAudioCallsAsRead;
 - (void)markRecentCallsAsRead;

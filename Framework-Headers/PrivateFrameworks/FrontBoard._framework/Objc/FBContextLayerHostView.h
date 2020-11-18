@@ -10,8 +10,10 @@
 {
 }
 
+@property (nonatomic) unsigned long long renderingMode;
+
 + (Class)layerClass;
-- (id)initWithSceneLayer:(struct FBSceneLayer *)arg1;
+- (id)initWithSceneLayer:(id)arg1;
 - (id)layer;
 
 @end

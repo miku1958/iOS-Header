@@ -18,6 +18,8 @@
 + (id)typeQueryWithIdentifier:(id)arg1;
 + (id)typeQueryWithTag:(id)arg1 ofClass:(id)arg2 conformsTo:(id)arg3;
 + (id)typeQueryWithTag:(id)arg1 ofClass:(id)arg2 conformsTo:(id)arg3 limit:(long long)arg4;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
 - (id)resolve;
 
 @end

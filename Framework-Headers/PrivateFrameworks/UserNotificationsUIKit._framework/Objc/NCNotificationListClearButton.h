@@ -10,13 +10,13 @@
 #import <UserNotificationsUIKit/SBUIIconForceTouchControllerDelegate-Protocol.h>
 #import <UserNotificationsUIKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, SBUIForceTouchGestureRecognizer, SBUIIconForceTouchController, UIImageView, UIView;
+@class MTMaterialView, NSMutableArray, NSString, SBUIForceTouchGestureRecognizer, SBUIIconForceTouchController, UIImageView, UIView;
 @protocol NCNotificationListClearButtonDelegate;
 
 @interface NCNotificationListClearButton : UIControl <UIGestureRecognizerDelegate, SBUIIconForceTouchControllerDelegate, SBUIIconForceTouchControllerDataSource>
 {
     NSString *_title;
-    UIImageView *_circleImageView;
+    MTMaterialView *_circleMaterialView;
     UIImageView *_xImageView;
     UIView *_highlightView;
     NSMutableArray *_glyphImageViews;
@@ -26,9 +26,11 @@
     SBUIForceTouchGestureRecognizer *_forceTouchGestureRecognizer;
     long long _clearButtonState;
     CDUnknownBlockType _clearAllHandler;
+    NSString *_backgroundGroupName;
     id<NCNotificationListClearButtonDelegate> _delegate;
 }
 
+@property (copy, nonatomic) NSString *backgroundGroupName; // @synthesize backgroundGroupName=_backgroundGroupName;
 @property (copy, nonatomic) CDUnknownBlockType clearAllHandler; // @synthesize clearAllHandler=_clearAllHandler;
 @property (readonly, nonatomic) long long clearButtonState; // @synthesize clearButtonState=_clearButtonState;
 @property (readonly, copy) NSString *debugDescription;
@@ -37,9 +39,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (struct CGSize)_circleBoundingSize;
++ (double)_circleHorizontalPadding;
 + (id)_circleImageWithGraphicsQuality:(long long)arg1;
++ (double)_circleRadius;
++ (void)_clearImageCache;
++ (void)_observeContentSizeChange;
 + (double)_screenScale;
 + (id)_textColor;
++ (double)_xCrossLength;
 + (id)_xImageWithGraphicsQuality:(long long)arg1;
 - (void).cxx_destruct;
 - (struct CGRect)_circleBoundsForState:(long long)arg1;
@@ -48,6 +56,7 @@
 - (id)_glyphFramesWithCircleFrame:(struct CGRect)arg1 forState:(long long)arg2;
 - (id)_glyphImagesFromAttributedString:(id)arg1;
 - (void)_layoutSubviewsForState:(long long)arg1;
+- (BOOL)_shouldLayoutOnTheLeft;
 - (struct CGRect)_unrolledCircleBounds;
 - (struct CGRect)_xFrameWithCircleFrame:(struct CGRect)arg1 forState:(long long)arg2;
 - (id)_xImage;

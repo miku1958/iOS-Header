@@ -6,40 +6,45 @@
 
 #import <EventKit/EKPersistentObject.h>
 
-#import <EventKit/NSCopying-Protocol.h>
-
-@class EKPersistentLocation, NSData, NSDate, NSSet, NSString, NSTimeZone;
-
-@interface EKPersistentAlarm : EKPersistentObject <NSCopying>
+@interface EKPersistentAlarm : EKPersistentObject
 {
 }
 
-@property (readonly, nonatomic) NSString *UUID;
-@property (copy, nonatomic) NSDate *absoluteDate;
-@property (copy, nonatomic) NSDate *acknowledgedDate;
-@property (nonatomic) long long alarmType;
-@property (nonatomic, getter=isDefaultAlarm) BOOL defaultAlarm;
-@property (copy, nonatomic) NSData *externalData;
-@property (copy, nonatomic) NSString *externalID;
-@property (readonly, nonatomic) BOOL isAbsolute;
-@property (copy, nonatomic) EKPersistentLocation *location;
-@property (strong, nonatomic) EKPersistentAlarm *originalAlarm;
-@property (nonatomic) long long proximity;
-@property (nonatomic) double relativeOffset;
-@property (copy, nonatomic) NSSet *snoozedAlarms;
-@property (copy, nonatomic) NSTimeZone *timeZone;
-
 + (id)defaultPropertiesToLoad;
 + (id)relations;
+- (id)UUID;
+- (id)absoluteDate;
+- (id)acknowledgedDate;
+- (long long)alarmType;
 - (id)calendarItemOwner;
 - (id)calendarOwner;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (int)entityType;
-- (id)init;
+- (id)externalData;
+- (id)externalID;
+- (BOOL)isDefaultAlarm;
+- (id)location;
+- (id)originalAlarm;
+- (long long)proximity;
+- (id)relativeOffset;
+- (void)setAbsoluteDate:(id)arg1;
+- (void)setAcknowledgedDate:(id)arg1;
+- (void)setAlarmType:(long long)arg1;
 - (void)setCalendarItemOwner:(id)arg1;
 - (void)setCalendarOwner:(id)arg1;
-- (BOOL)validate:(id *)arg1;
+- (void)setDefaultAlarm:(BOOL)arg1;
+- (void)setExternalData:(id)arg1;
+- (void)setExternalID:(id)arg1;
+- (void)setLocation:(id)arg1;
+- (void)setOriginalAlarm:(id)arg1;
+- (void)setProximity:(long long)arg1;
+- (void)setRelativeOffset:(id)arg1;
+- (void)setSnoozedAlarms:(id)arg1;
+- (void)setStructuredLocation:(id)arg1;
+- (void)setUUID:(id)arg1;
+- (id)snoozedAlarms;
+- (id)structuredLocation;
 
 @end
 

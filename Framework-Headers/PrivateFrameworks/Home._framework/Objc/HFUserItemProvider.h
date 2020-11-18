@@ -6,16 +6,24 @@
 
 #import <Home/HFItemProvider.h>
 
-@class NSMutableSet;
+@class HMHome, NSMutableSet;
 
 @interface HFUserItemProvider : HFItemProvider
 {
-    NSMutableSet *_users;
+    BOOL _includeCurrentUser;
+    unsigned long long _nameStyle;
+    HMHome *_home;
+    NSMutableSet *_userItems;
 }
 
-@property (strong, nonatomic) NSMutableSet *users; // @synthesize users=_users;
+@property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
+@property (nonatomic) BOOL includeCurrentUser; // @synthesize includeCurrentUser=_includeCurrentUser;
+@property (nonatomic) unsigned long long nameStyle; // @synthesize nameStyle=_nameStyle;
+@property (strong, nonatomic) NSMutableSet *userItems; // @synthesize userItems=_userItems;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 - (id)initWithHome:(id)arg1;
 - (id)invalidationReasons;
 - (id)items;

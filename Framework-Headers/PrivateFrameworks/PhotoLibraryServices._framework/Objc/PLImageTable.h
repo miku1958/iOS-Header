@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/PLThumbPersistenceManager-Protocol.h>
 
-@class NSDictionary, NSMutableArray, NSMutableIndexSet, NSString, PLImageFormat;
-@protocol OS_dispatch_queue;
+@class NSMutableArray, NSString;
 
 @interface PLImageTable : NSObject <PLThumbPersistenceManager>
 {
-    PLImageFormat *_format;
     NSString *_path;
-    struct CGSize _thumbnailSize;
+    int _sideLength;
+    BOOL _squareCropped;
     int _imageRowBytes;
     int _imageLength;
     int _entryLength;
@@ -27,36 +26,22 @@
     unsigned long long _segmentLength;
     long long _segmentCount;
     NSMutableArray *_allSegments;
-    NSMutableIndexSet *_preheatIndexes;
-    NSObject<OS_dispatch_queue> *_preheatIndexIsolation;
-    NSObject<OS_dispatch_queue> *_preheatQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) int imageFormat;
-@property (readonly, nonatomic) int imageHeight;
-@property (readonly, nonatomic) int imageLength; // @synthesize imageLength=_imageLength;
-@property (readonly, nonatomic) int imageRowBytes; // @synthesize imageRowBytes=_imageRowBytes;
-@property (readonly, nonatomic) struct CGSize imageSize;
-@property (readonly, nonatomic) int imageWidth;
 @property (readonly, nonatomic) BOOL isReadOnly;
 @property (readonly, nonatomic) NSString *path; // @synthesize path=_path;
-@property (readonly, nonatomic) NSDictionary *photoUUIDToIndexMap;
 @property (readonly) Class superclass;
 
 + (void)releaseSegmentCache;
-+ (void)writeImage:(id)arg1 toData:(id *)arg2 thumbnailFormat:(id)arg3 videoDuration:(id)arg4 width:(int *)arg5 height:(int *)arg6 bytesPerRow:(int *)arg7 dataWidth:(int *)arg8 dataHeight:(int *)arg9 dataOffset:(int *)arg10;
 - (void)_addEntriesIfNecessaryForIndex:(long long)arg1;
-- (void)_adviseWillNeedEntriesInRange:(struct _NSRange)arg1;
 - (BOOL)_compactWithOccupiedIndexes:(id)arg1 outPhotoUUIDToIndexMap:(id *)arg2;
 - (id)_debugDescription;
-- (void)_doPreheatWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (int)_fileDescriptor;
 - (void)_flushEntryAtAddress:(void *)arg1;
 - (void)_flushEntryAtAddress:(void *)arg1 count:(int)arg2;
-- (id)_getAndClearPreheatIndexes;
 - (void)_releaseSegment:(id)arg1;
 - (void)_releaseSegmentAtIndex:(long long)arg1;
 - (void)_reloadSegmentAtIndex:(long long)arg1;
@@ -67,25 +52,21 @@
 - (void)_verifyThumbnailDataForIndex:(unsigned long long)arg1 uuid:(id)arg2;
 - (id)beginThumbnailSafePropertyUpdatesOnAsset:(id)arg1;
 - (void)compactWithOccupiedIndexes:(id)arg1;
-- (BOOL)copyEntryFromOriginalAsset:(id)arg1 toAsset:(id)arg2;
+- (struct CGImage *)createImageWithIdentifier:(id)arg1 orIndex:(unsigned long long)arg2 decodeSession:(void *)arg3;
 - (id)dataForEntryAtIndex:(unsigned long long)arg1 createIfNeeded:(BOOL)arg2;
 - (void)dealloc;
 - (void)deleteEntryWithIdentifier:(id)arg1 orIndex:(unsigned long long)arg2 uuid:(id)arg3;
 - (void)endThumbnailSafePropertyUpdatesOnAsset:(id)arg1 withToken:(id)arg2;
 - (long long)entryCount;
-- (void)finishUnicornEntryAtIndex:(unsigned long long)arg1 withImageData:(id)arg2 imageSize:(struct CGSize)arg3 assetUUID:(id)arg4;
-- (id)imageDataAtIndex:(unsigned long long)arg1 width:(int *)arg2 height:(int *)arg3 bytesPerRow:(int *)arg4 dataWidth:(int *)arg5 dataHeight:(int *)arg6 dataOffset:(int *)arg7;
+- (void)finishEntryAtIndex:(unsigned long long)arg1 withImageData:(id)arg2 sourceImageSize:(struct CGSize)arg3 assetUUID:(id)arg4;
 - (id)imageDataWithIdentifier:(id)arg1 orIndex:(unsigned long long)arg2 width:(int *)arg3 height:(int *)arg4 bytesPerRow:(int *)arg5 dataWidth:(int *)arg6 dataHeight:(int *)arg7 dataOffset:(int *)arg8;
-- (id)initWithPath:(id)arg1 imageFormat:(int)arg2;
-- (id)initWithPath:(id)arg1 imageFormat:(int)arg2 readOnly:(BOOL)arg3;
-- (id)originalPreheatItemForAsset:(id)arg1 optimalSourcePixelSize:(struct CGSize)arg2 options:(unsigned int)arg3;
+- (struct CGSize)imageSize;
+- (id)initWithPath:(id)arg1 readOnly:(BOOL)arg2 sideLengthInPixels:(int)arg3 squareCropped:(BOOL)arg4;
 - (id)preflightCompactionWithOccupiedIndexes:(id)arg1;
-- (void)preheatImageDataAtIndex:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)preheatImageDataAtIndexes:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)preheatItemForAsset:(id)arg1 format:(int)arg2 optimalSourcePixelSize:(struct CGSize)arg3 options:(unsigned int)arg4;
-- (void)setImageDataForEntry:(const void *)arg1 withIdentifier:(id)arg2 orIndex:(unsigned long long)arg3 asset:(id)arg4;
-- (void)setImageForEntry:(id)arg1 withIdentifier:(id)arg2 orIndex:(unsigned long long)arg3 videoDuration:(id)arg4 photoUUID:(id)arg5;
+- (void)setImageForEntry:(id)arg1 withIdentifier:(id)arg2 orIndex:(unsigned long long)arg3 photoUUID:(id)arg4 options:(id)arg5;
+- (void)touchEntriesInRange:(struct _NSRange)arg1;
 - (BOOL)usesThumbIdentifiers;
+- (BOOL)validateData:(id)arg1 withToken:(id)arg2;
 
 @end
 

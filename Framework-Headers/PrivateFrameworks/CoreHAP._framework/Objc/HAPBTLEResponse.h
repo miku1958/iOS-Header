@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HAPBTLERequest, HAPBTLETransactionIdentifier, NSData, NSMutableData;
 
-@interface HAPBTLEResponse : NSObject
+@interface HAPBTLEResponse : HMFObject
 {
     BOOL _headerComplete;
     unsigned char _statusCode;

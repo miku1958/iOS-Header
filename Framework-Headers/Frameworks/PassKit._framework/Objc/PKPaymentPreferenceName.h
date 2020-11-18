@@ -8,7 +8,11 @@
 
 @interface PKPaymentPreferenceName : PKPaymentPreference
 {
+    BOOL _showPhoneticName;
 }
+
+@property (nonatomic) BOOL showPhoneticName; // @synthesize showPhoneticName=_showPhoneticName;
+
 
 @end
 

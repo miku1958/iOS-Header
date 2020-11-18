@@ -6,10 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMapTable, NSMutableArray, NSOperationQueue;
+#import <MediaPlayer/ICEnvironmentMonitorObserver-Protocol.h>
+
+@class NSMapTable, NSMutableArray, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue;
 
-@interface MPStreamingDownloadSessionController : NSObject
+@interface MPStreamingDownloadSessionController : NSObject <ICEnvironmentMonitorObserver>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSMapTable *_assetDownloadSessionToDownloadSession;
@@ -19,6 +21,11 @@
     struct vector<unsigned long long, std::__1::allocator<unsigned long long>> _prioritizedDownloadTokens;
     NSOperationQueue *_streamingOperationQueue;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)sharedDownloadSessionController;
 - (id).cxx_construct;
@@ -34,7 +41,6 @@
 - (void)_getNetworkConstraintsForPlaybackItemMetadata:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleNewDownloadSession:(id)arg1 withAssetDownloadSession:(id)arg2 forPlaybackItemMetadata:(id)arg3;
 - (void)_handlePrioritizationForFinishingAssetDownloadSession:(id)arg1;
-- (void)_networkTypeDidChangeNotification:(id)arg1;
 - (id)_newDownloadSessionForRequest:(id)arg1 sourceURL:(id)arg2 downloadKey:(id)arg3 sinfs:(id)arg4 pathExtension:(id)arg5 assetFlavor:(id)arg6 allowAssetCaching:(BOOL)arg7 allowITunesContentConfiguration:(BOOL)arg8 protectionType:(unsigned long long)arg9 returningAssetDownloadSession:(id *)arg10;
 - (void)_playbackItemMetadataNetworkConstraintsDidChangeNotification:(id)arg1;
 - (void)_postFailedForDownloadSession:(id)arg1;
@@ -53,6 +59,7 @@
 - (void)dealloc;
 - (void)endPausingAllDownloadSessions;
 - (void)endPrioritizingDownloadSession:(id)arg1;
+- (void)environmentMonitorDidChangeNetworkType:(id)arg1;
 - (id)init;
 - (void)releaseDownloadSession:(id)arg1;
 - (void)startDownloadSession:(id)arg1;

@@ -13,7 +13,7 @@
 - (id<CNVCardParameterLine>)arrayLineWithName:(NSString *)arg1 value:(NSArray *)arg2;
 - (id<CNVCardParameterLine>)arrayLineWithName:(NSString *)arg1 value:(NSArray *)arg2 itemSeparator:(NSString *)arg3;
 - (id<CNVCardParameterLine>)dataLineWithName:(NSString *)arg1 value:(NSData *)arg2;
-- (id<CNVCardLine>)lineWithLiteralValue:(NSString *)arg1;
+- (id<CNVCardLine>)lineWithLiteralValue:(NSData *)arg1;
 - (id<CNVCardParameterLine>)stringLineWithName:(NSString *)arg1 value:(NSString *)arg2;
 - (id<CNVCardLine>)versionPlaceholderLine;
 @end

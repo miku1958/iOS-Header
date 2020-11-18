@@ -16,8 +16,9 @@
 @property (readonly, nonatomic) NSArray *refinementRules; // @synthesize refinementRules=_rules;
 
 + (id)defaultOverlay;
++ (id)defaultOverlayWithScanner:(id)arg1;
+- (void).cxx_destruct;
 - (void)addMetadataRefinementRule:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

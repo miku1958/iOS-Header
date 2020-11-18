@@ -7,23 +7,18 @@
 #import <Foundation/NSObject.h>
 
 #import <GameCenterPrivateUI/UINavigationControllerDelegate-Protocol.h>
-#import <GameCenterPrivateUI/UITabBarControllerDelegate-Protocol.h>
 
 @class GKBubbleSet, NSString;
 
-@interface GKBubbleFlowAnimator : NSObject <UINavigationControllerDelegate, UITabBarControllerDelegate>
+@interface GKBubbleFlowAnimator : NSObject <UINavigationControllerDelegate>
 {
     GKBubbleSet *_mostRecentOverlayBubbleSet;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) GKBubbleSet *mostRecentOverlayBubbleSet; // @synthesize mostRecentOverlayBubbleSet=_mostRecentOverlayBubbleSet;
-@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 + (id)sharedAnimator;
@@ -61,7 +56,6 @@
 - (void)overlayViewNeedsUpdateForRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (union _GLKVector3)restingWorldPositionForBubble:(id)arg1 viewController:(id)arg2 forTransitionWithInfo:(id)arg3 getFrame:(struct CGRect *)arg4;
 - (long long)syncOverlayViewBubbles:(id)arg1 withViewController:(id)arg2;
-- (id)tabBarController:(id)arg1 animatorForFromViewController:(id)arg2 toViewController:(id)arg3;
 - (id)transitionInfoForBubbleFlowTransitionFromViewController:(id)arg1 toViewController:(id)arg2;
 
 @end

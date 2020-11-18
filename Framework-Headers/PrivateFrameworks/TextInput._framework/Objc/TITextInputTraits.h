@@ -25,6 +25,9 @@
             unsigned int textScriptType:4;
             unsigned int enablesReturnKeyAutomatically:1;
             unsigned int secureTextEntry:1;
+            unsigned int smartInsertDeleteEnabled:1;
+            unsigned int smartQuotesEnabled:1;
+            unsigned int smartDashesEnabled:1;
             unsigned int disablePrediction:1;
         } fields;
     } _mask;
@@ -41,6 +44,9 @@
 @property (copy, nonatomic) NSString *recentInputIdentifier; // @synthesize recentInputIdentifier=_recentInputIdentifier;
 @property (nonatomic) unsigned long long returnKeyType;
 @property (nonatomic) BOOL secureTextEntry;
+@property (nonatomic) BOOL smartDashesEnabled;
+@property (nonatomic) BOOL smartInsertDeleteEnabled;
+@property (nonatomic) BOOL smartQuotesEnabled;
 @property (nonatomic) unsigned long long spellCheckingType;
 @property (copy, nonatomic) NSString *textContentType; // @synthesize textContentType=_textContentType;
 @property (nonatomic) unsigned long long textScriptType;

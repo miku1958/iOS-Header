@@ -21,7 +21,8 @@
     BOOL _isHandlingTransactionEnd;
     NSMutableArray *_onCommitBlocks;
     NSMutableArray *_onRollbackBlocks;
-    BOOL _isWriter;
+    BOOL _writer;
+    BOOL _secureDeleteEnabled;
     BOOL _checkpointRequired;
     NSURL *_fileURL;
     id<HDSQLiteDatabaseDelegate> _delegate;
@@ -30,12 +31,14 @@
 @property (nonatomic) BOOL checkpointRequired; // @synthesize checkpointRequired=_checkpointRequired;
 @property (weak, nonatomic) id<HDSQLiteDatabaseDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
-@property (nonatomic) BOOL isWriter; // @synthesize isWriter=_isWriter;
+@property (readonly, nonatomic, getter=isOpen) BOOL open;
+@property (nonatomic) BOOL secureDeleteEnabled; // @synthesize secureDeleteEnabled=_secureDeleteEnabled;
+@property (nonatomic, getter=isWriter) BOOL writer; // @synthesize writer=_writer;
 
 + (BOOL)_stepStatement:(struct sqlite3_stmt *)arg1 hasRow:(BOOL *)arg2 resultCode:(int *)arg3 error:(id *)arg4;
-+ (id)highFrequencyDatabaseURLWithHomeDirectoryPath:(id)arg1;
-+ (id)mainDatabaseURLWithHomeDirectoryPath:(id)arg1;
-+ (id)protectedDatabaseURLWithHomeDirectoryPath:(id)arg1;
++ (id)highFrequencyDatabaseURLWithProfileDirectoryPath:(id)arg1;
++ (id)mainDatabaseURLWithProfileDirectoryPath:(id)arg1;
++ (id)protectedDatabaseURLWithProfileDirectoryPath:(id)arg1;
 + (id)virtualFilesystemModule;
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -51,7 +54,8 @@
 - (id)_schemaForIndexWithName:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (id)_schemaForTableWithName:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (BOOL)_setPragma:(id)arg1 integerValue:(long long)arg2 withDatabaseName:(id)arg3 error:(id *)arg4;
-- (struct sqlite3_stmt *)_statementForSQL:(id)arg1 cache:(BOOL)arg2 error:(id *)arg3;
+- (struct sqlite3_stmt *)_statementForSQL:(id)arg1 shouldCache:(BOOL)arg2 didUseCache:(BOOL *)arg3 error:(id *)arg4;
+- (id)_tableNamesForDatabaseWithName:(id)arg1 error:(id *)arg2;
 - (BOOL)_verifyDatabaseOpenAndReturnError:(id *)arg1;
 - (void)accessDatabaseUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)accessHFDForReadingWithError:(id *)arg1 block:(CDUnknownBlockType)arg2;
@@ -60,7 +64,10 @@
 - (BOOL)attachProtectedDatabaseWithURL:(id)arg1 error:(id *)arg2;
 - (void)close;
 - (BOOL)columnIsNullable:(id)arg1 inTable:(id)arg2 error:(id *)arg3;
+- (BOOL)correlationCountForDataEntitySubclassTable:(id)arg1 count:(long long *)arg2 error:(id *)arg3;
 - (void)dealloc;
+- (BOOL)deleteDataEntitySubclassTable:(id)arg1 intermediateTables:(id)arg2 error:(id *)arg3;
+- (BOOL)deleteRowsFromDataEntitySubclassTable:(id)arg1 intermediateTables:(id)arg2 error:(id *)arg3;
 - (BOOL)detachDatabaseWithName:(id)arg1 error:(id *)arg2;
 - (BOOL)detachProtectedDatabaseWithError:(id *)arg1;
 - (id)dumpSchemaWithError:(id *)arg1;
@@ -68,9 +75,11 @@
 - (BOOL)executeSQL:(id)arg1 error:(id *)arg2 bindingHandler:(CDUnknownBlockType)arg3 enumerationHandler:(CDUnknownBlockType)arg4;
 - (BOOL)executeUncachedSQL:(id)arg1 error:(id *)arg2 bindingHandler:(CDUnknownBlockType)arg3 enumerationHandler:(CDUnknownBlockType)arg4;
 - (BOOL)foreignKeyExistsFromTable:(id)arg1 column:(id)arg2 toTable:(id)arg3 column:(id)arg4 error:(id *)arg5;
+- (int)getChangesCount;
 - (id)getLastErrorWithResultCode:(int)arg1;
-- (id)highFrequenceDatabaseURL;
+- (id)highFrequencyDatabaseURL;
 - (BOOL)incrementalVacuumDatabaseIfNeeded:(id)arg1 error:(id *)arg2;
+- (id)initMemoryDatabaseWithDelegate:(id)arg1;
 - (id)initWithDatabaseURL:(id)arg1 delegate:(id)arg2;
 - (BOOL)isDatabaseWithNameAttached:(id)arg1;
 - (BOOL)isProtectedDatabaseAttached;
@@ -78,13 +87,15 @@
 - (void)onCommit:(CDUnknownBlockType)arg1 orRollback:(CDUnknownBlockType)arg2;
 - (int)openForReadingWithError:(id *)arg1;
 - (int)openWithError:(id *)arg1;
+- (BOOL)performIntegrityCheckWithError:(id *)arg1 integrityErrorHandler:(CDUnknownBlockType)arg2;
 - (BOOL)performTransactionWithType:(long long)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)requireRollback;
 - (BOOL)setUserVersion:(long long)arg1 withDatabaseName:(id)arg2 error:(id *)arg3;
+- (id)statementsForDeleteRowsFromDataEntitySubclassTable:(id)arg1 intermediateTables:(id)arg2 error:(id *)arg3;
 - (BOOL)table:(id)arg1 hasColumnWithName:(id)arg2 error:(id *)arg3;
 - (id)typeOfColumn:(id)arg1 inTable:(id)arg2 error:(id *)arg3;
 - (long long)userVersionWithDatabaseName:(id)arg1 error:(id *)arg2;
-- (BOOL)validateForeignKeysForTable:(id)arg1 databaseName:(id)arg2 error:(id *)arg3;
+- (long long)validateForeignKeysForTable:(id)arg1 databaseName:(id)arg2 error:(id *)arg3;
 
 @end
 

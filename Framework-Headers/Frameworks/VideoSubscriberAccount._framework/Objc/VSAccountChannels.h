@@ -27,8 +27,11 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (unsigned long long)hash;
 - (id)init;
+- (BOOL)isEqual:(id)arg1;
 - (id)serializationResult;
+- (id)serializationResultWithFormat:(unsigned long long)arg1;
 
 @end
 

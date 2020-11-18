@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/PKPaymentWebServiceArchiver-Protocol.h>
 #import <PassKitCore/PKPaymentWebServiceTargetDeviceProtocol-Protocol.h>
@@ -31,6 +31,7 @@
 - (void)archiveBackgroundContext:(id)arg1;
 - (void)archiveContext:(id)arg1;
 - (id)bridgedClientInfo;
+- (BOOL)claimSecureElementForCurrentUser;
 - (id)context;
 - (void)contextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
@@ -63,6 +64,7 @@
 - (void)paymentWebService:(id)arg1 validateTransferPreconditionsWithCompletion:(CDUnknownBlockType)arg2;
 - (void)paymentWebServiceDidUpdateConfiguration:(id)arg1;
 - (id)secureElementIdentifiers;
+- (unsigned long long)secureElementOwnershipStateForCurrentUser;
 - (BOOL)supportsAutomaticPassPresentation;
 
 @end

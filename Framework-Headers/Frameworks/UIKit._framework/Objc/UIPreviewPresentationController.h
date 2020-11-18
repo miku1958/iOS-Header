@@ -6,27 +6,43 @@
 
 #import <UIKit/UIPresentationController.h>
 
-@class NSArray, NSHashTable, UIResponder, UIView, UIVisualEffectView, UIWindow;
-@protocol UIPreviewInteractionAnimating;
+#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@interface UIPreviewPresentationController : UIPresentationController
+@class NSArray, NSHashTable, NSString, UIResponder, UITapGestureRecognizer, UIView, UIVisualEffectView, UIWindow;
+@protocol UIPreviewPresentationControllerDelegate;
+
+@interface UIPreviewPresentationController : UIPresentationController <UIGestureRecognizerDelegate>
 {
-    id<UIPreviewInteractionAnimating> _previewInteractionAnimator;
+    BOOL _appliesVisualEffectsToPresentingView;
+    id<UIPreviewPresentationControllerDelegate> _previewPresentationDelegate;
+    UITapGestureRecognizer *_dismissGestureRecognizer;
     UIVisualEffectView *_presentationContainerEffectView;
     UIWindow *_statusBarWindow;
     UIView *_statusBarSnapshotView;
     NSArray *_keyboardSnapshotViews;
     NSHashTable *_keyboardWindows;
     UIResponder *_currentPinnedResponder;
+    UIWindow *_presentationWindow;
+    CDUnknownBlockType _containerSuperviewFactoryBlock;
+    CDUnknownBlockType _containerViewConfigurationBlock;
 }
 
+@property (nonatomic) BOOL appliesVisualEffectsToPresentingView; // @synthesize appliesVisualEffectsToPresentingView=_appliesVisualEffectsToPresentingView;
+@property (copy, nonatomic) CDUnknownBlockType containerSuperviewFactoryBlock; // @synthesize containerSuperviewFactoryBlock=_containerSuperviewFactoryBlock;
+@property (copy, nonatomic) CDUnknownBlockType containerViewConfigurationBlock; // @synthesize containerViewConfigurationBlock=_containerViewConfigurationBlock;
 @property (weak, nonatomic) UIResponder *currentPinnedResponder; // @synthesize currentPinnedResponder=_currentPinnedResponder;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UITapGestureRecognizer *dismissGestureRecognizer; // @synthesize dismissGestureRecognizer=_dismissGestureRecognizer;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *keyboardSnapshotViews; // @synthesize keyboardSnapshotViews=_keyboardSnapshotViews;
 @property (copy, nonatomic) NSHashTable *keyboardWindows; // @synthesize keyboardWindows=_keyboardWindows;
 @property (strong, nonatomic) UIVisualEffectView *presentationContainerEffectView; // @synthesize presentationContainerEffectView=_presentationContainerEffectView;
-@property (strong, nonatomic) id<UIPreviewInteractionAnimating> previewInteractionAnimator; // @synthesize previewInteractionAnimator=_previewInteractionAnimator;
+@property (weak, nonatomic) UIWindow *presentationWindow; // @synthesize presentationWindow=_presentationWindow;
+@property (weak, nonatomic) id<UIPreviewPresentationControllerDelegate> previewPresentationDelegate; // @synthesize previewPresentationDelegate=_previewPresentationDelegate;
 @property (strong, nonatomic) UIView *statusBarSnapshotView; // @synthesize statusBarSnapshotView=_statusBarSnapshotView;
 @property (strong, nonatomic) UIWindow *statusBarWindow; // @synthesize statusBarWindow=_statusBarWindow;
+@property (readonly) Class superclass;
 
 + (id)_backgroundEffectForTraitCollection:(id)arg1 interactive:(BOOL)arg2;
 + (BOOL)_shouldApplyVisualEffectsToPresentingView;
@@ -34,8 +50,10 @@
 - (void)_animatePreviewTransitionIfNeeded:(id)arg1;
 - (void)_applyVisualEffectsForPresentationPhase:(unsigned long long)arg1;
 - (void)_cancelTransitionDidEnd:(BOOL)arg1;
-- (void)_finalizeAfterDismissTransition;
+- (void)_finalizeAfterDismissalTransition;
 - (struct CGRect)_frameForTransitionViewInPresentationSuperview:(id)arg1;
+- (id)_fullscreenPresentationSuperview;
+- (void)_handleDismissGestureRecognizer:(id)arg1;
 - (void)_interactiveHighlightTransitionDidEnd:(BOOL)arg1;
 - (BOOL)_keyboardShouldAnimateAlongsideForInteractiveTransitions;
 - (void)_layoutForCancel;
@@ -43,7 +61,7 @@
 - (void)_layoutForPreview;
 - (void)_prepareContainerViewForPresentationTransition;
 - (void)_prepareDismissAnimationsForTransitionCoordinator:(id)arg1;
-- (void)_prepareForPreviewInteractionAnimator:(id)arg1;
+- (void)_prepareDismissGestureRecognizersIfNeeded;
 - (void)_prepareKeyboardForPresentationTransition;
 - (void)_preparePresentationAnimationsForTransitionCoordinator:(id)arg1;
 - (void)_prepareStatusBarForPresentationTransition;
@@ -56,7 +74,8 @@
 - (BOOL)_shouldSavePresentedViewControllerForStateRestoration;
 - (void)dismissalTransitionDidEnd:(BOOL)arg1;
 - (void)dismissalTransitionWillBegin;
-- (id)initWithPresentedViewController:(id)arg1 presentingViewController:(id)arg2 animator:(id)arg3;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (id)initWithPresentedViewController:(id)arg1 presentingViewController:(id)arg2;
 - (void)presentationTransitionDidEnd:(BOOL)arg1;
 - (void)presentationTransitionWillBegin;
 

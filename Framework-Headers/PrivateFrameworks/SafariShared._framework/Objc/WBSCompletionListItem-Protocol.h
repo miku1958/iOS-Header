@@ -6,7 +6,7 @@
 
 #import <SafariShared/NSObject-Protocol.h>
 
-@class NSString, SFSearchResult;
+@class NSString, SFSearchResult, WBSQuerySuggestion;
 
 @protocol WBSCompletionListItem <NSObject>
 
@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) NSString *lastSearchQuery;
 @property (readonly, nonatomic) NSString *parsecDomainIdentifier;
 @property (readonly, nonatomic) SFSearchResult *sfSearchResultValue;
+@property (strong, nonatomic) WBSQuerySuggestion *siriSuggestion;
 
 
 @optional

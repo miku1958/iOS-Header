@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSTimeZone;
+@class NSArray;
 @protocol GEOServerFormattedString;
 
 @interface MNTransitInstruction : NSObject
@@ -25,7 +25,6 @@
 @property (copy) NSArray *majorFormattedInstruction; // @synthesize majorFormattedInstruction=_majorFormattedInstruction;
 @property (copy) NSArray *minorFormattedInstruction; // @synthesize minorFormattedInstruction=_minorFormattedInstruction;
 @property (copy) NSArray *tertiaryFormattedInstruction; // @synthesize tertiaryFormattedInstruction=_tertiaryFormattedInstruction;
-@property (readonly, nonatomic) NSTimeZone *timeZoneForFormattedString;
 
 + (id)instructionForUncertainArrivalToStationStep:(id)arg1 context:(long long)arg2;
 - (void).cxx_destruct;

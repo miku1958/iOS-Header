@@ -7,7 +7,7 @@
 #import <Home/HFAccessoryVendor-Protocol.h>
 #import <Home/NSObject-Protocol.h>
 
-@class HFRoomBuilder, NSArray, NSString;
+@class HFRoomBuilder, NAFuture, NSArray, NSString;
 @protocol HFIconDescriptor;
 
 @protocol HFServiceLikeBuilder <HFAccessoryVendor, NSObject>
@@ -20,6 +20,7 @@
 @property (strong, nonatomic) HFRoomBuilder *room;
 @property (readonly, nonatomic) BOOL supportsFavoriting;
 
+- (NAFuture *)removeItemFromHome;
 
 @optional
 @end

@@ -8,7 +8,7 @@
 
 #import <iTunesStore/NSCopying-Protocol.h>
 
-@class ISBiometricAuthenticationContext;
+@class SSBiometricAuthenticationContext;
 
 @interface ISProtocolDataProvider : ISDataProvider <NSCopying>
 {
@@ -16,16 +16,18 @@
     BOOL _shouldProcessAccount;
     BOOL _shouldProcessAuthenticationDialogs;
     BOOL _shouldProcessDialogs;
+    BOOL _shouldProcessDialogsOutsideDaemon;
     BOOL _shouldProcessProtocol;
     BOOL _shouldProcessTouchIDDialogs;
     BOOL _shouldTriggerDownloads;
-    ISBiometricAuthenticationContext *_biometricAuthenticationContext;
+    SSBiometricAuthenticationContext *_biometricAuthenticationContext;
 }
 
 @property BOOL shouldPostFooterSectionChanged; // @synthesize shouldPostFooterSectionChanged=_shouldPostFooterSectionChanged;
 @property BOOL shouldProcessAccount; // @synthesize shouldProcessAccount=_shouldProcessAccount;
 @property BOOL shouldProcessAuthenticationDialogs; // @synthesize shouldProcessAuthenticationDialogs=_shouldProcessAuthenticationDialogs;
 @property BOOL shouldProcessDialogs; // @synthesize shouldProcessDialogs=_shouldProcessDialogs;
+@property BOOL shouldProcessDialogsOutsideDaemon; // @synthesize shouldProcessDialogsOutsideDaemon=_shouldProcessDialogsOutsideDaemon;
 @property BOOL shouldProcessProtocol; // @synthesize shouldProcessProtocol=_shouldProcessProtocol;
 @property (readonly) BOOL shouldProcessTouchIDDialogs;
 @property BOOL shouldTriggerDownloads; // @synthesize shouldTriggerDownloads=_shouldTriggerDownloads;
@@ -33,6 +35,7 @@
 - (void).cxx_destruct;
 - (void)_checkDownloadQueues;
 - (void)_checkInAppPurchaseQueueForAction:(id)arg1;
+- (id)_metricsDictionaryForResponse:(id)arg1;
 - (void)_performActionsForResponse:(id)arg1;
 - (void)_presentDialog:(id)arg1;
 - (BOOL)_processFailureTypeFromDictionary:(id)arg1 error:(id *)arg2;

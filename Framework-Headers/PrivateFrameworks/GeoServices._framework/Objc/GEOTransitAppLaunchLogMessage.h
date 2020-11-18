@@ -8,29 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, NSString;
-
 @interface GEOTransitAppLaunchLogMessage : PBCodable <NSCopying>
 {
-    double _timestamp;
-    NSString *_bundleIdentifier;
-    GEOLatLng *_destination;
-    GEOLatLng *_source;
-    CDStruct_b5306035 _has;
 }
-
-@property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (strong, nonatomic) GEOLatLng *destination; // @synthesize destination=_destination;
-@property (readonly, nonatomic) BOOL hasBundleIdentifier;
-@property (readonly, nonatomic) BOOL hasDestination;
-@property (readonly, nonatomic) BOOL hasSource;
-@property (nonatomic) BOOL hasTimestamp;
-@property (strong, nonatomic) GEOLatLng *source; // @synthesize source=_source;
-@property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

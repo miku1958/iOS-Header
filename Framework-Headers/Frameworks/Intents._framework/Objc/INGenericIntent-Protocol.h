@@ -16,5 +16,6 @@
 @property (copy, nonatomic) NSDictionary *parametersByName;
 @property (copy, nonatomic) NSString *verb;
 
+- (BOOL)isGenericIntent;
 @end
 

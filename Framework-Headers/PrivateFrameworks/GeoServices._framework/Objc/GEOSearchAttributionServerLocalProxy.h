@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
+#import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <GeoServices/GEOSearchAttributionServerProxy-Protocol.h>
 
 @class GEOSearchAttributionManifest, NSLock, NSMapTable, NSMutableArray, NSString;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface GEOSearchAttributionServerLocalProxy : NSObject <GEOSearchAttributionServerProxy>
+@interface GEOSearchAttributionServerLocalProxy : NSObject <GEOResourceManifestTileGroupObserver, GEOSearchAttributionServerProxy>
 {
     NSMapTable *_listeners;
     NSLock *_listenersLock;
@@ -20,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_updateManifestErrorHandlers;
     GEOSearchAttributionManifest *_attributionManifest;
     NSLock *_attributionManifestLock;
+    NSObject<OS_dispatch_queue> *_isolationQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,15 +30,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_attributionManifest;
-- (void)_loadAttributionInfoForListener:(id)arg1 hasUpdatedManifest:(BOOL)arg2;
-- (void)_pruneOldAttributionLogos;
+- (void)_loadAttributionInfoForListener:(id)arg1;
 - (void)_sendError:(id)arg1 toListener:(id)arg2;
-- (void)_sendInfo:(id)arg1 updatedManifest:(BOOL)arg2 toListener:(id)arg3;
-- (void)_updateManifestWithCompletionHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
-- (void)dealloc;
+- (void)_sendInfo:(id)arg1 toListener:(id)arg2;
 - (id)init;
-- (void)loadAttributionInfoForIdentifier:(id)arg1 version:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4;
+- (void)loadAttributionInfoForIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
 
 @end
 

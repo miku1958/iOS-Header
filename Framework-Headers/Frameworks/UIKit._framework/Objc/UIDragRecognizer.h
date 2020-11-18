@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGPoint startPosition; // @synthesize startPosition=_startPosition;
 @property (strong, nonatomic) UITouch *touch; // @synthesize touch=_touch;
 
++ (BOOL)_shouldDefaultToTouches;
 - (void).cxx_destruct;
 - (void)_resetGestureRecognizer;
 - (void)clearIgnoreTouch;

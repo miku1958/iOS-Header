@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/NSURLSessionDelegate-Protocol.h>
 
-@class NSDictionary, NSString, NSURL, NSURLSession;
+@class NSDictionary, NSObject, NSString, NSURL, NSURLSession;
 @protocol OS_dispatch_queue;
 
-@interface HMDServerBag : NSObject <NSURLSessionDelegate>
+@interface HMDServerBag : HMFObject <NSURLSessionDelegate>
 {
     BOOL _refreshing;
     NSDictionary *_dictionaryRepresentation;

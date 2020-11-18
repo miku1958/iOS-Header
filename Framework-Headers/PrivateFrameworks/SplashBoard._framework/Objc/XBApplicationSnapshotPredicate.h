@@ -32,10 +32,10 @@
 @property (readonly) Class superclass;
 
 + (id)predicate;
+- (void).cxx_destruct;
 - (id)_clientObjectForKey:(unsigned long long)arg1;
 - (BOOL)_hasClientObjectForKey:(unsigned long long)arg1;
 - (void)_setClientObject:(id)arg1 forKey:(unsigned long long)arg2;
-- (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (BOOL)evaluateWithObject:(id)arg1;

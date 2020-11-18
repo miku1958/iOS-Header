@@ -38,6 +38,7 @@
 @property (readonly) BOOL thumbnailWasJustAutomaticallyGenerated; // @synthesize thumbnailWasJustAutomaticallyGenerated=_thumbnailWasJustAutomaticallyGenerated;
 
 + (BOOL)canMostRecentClientsGenerateThumbnailsForUTI:(id)arg1;
+- (void).cxx_destruct;
 - (void)_afterThumbnailIsGenerated;
 - (void)_finishBecauseGenerationFailedWithUnderlyingError:(id)arg1;
 - (BOOL)_finishIfCancelled;
@@ -45,7 +46,6 @@
 - (void)_generateThumbnail;
 - (void)afterThumbnailIsPutInGenstore;
 - (void)cancel;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)initWithDocumentAtURL:(id)arg1;

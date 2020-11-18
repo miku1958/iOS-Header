@@ -22,10 +22,12 @@
     unsigned int _handIdentity;
     unsigned int _handIndex;
     unsigned int _handEventMask;
+    unsigned int _additionalHandEventFlagsForGeneratedEvents;
     NSArray *_paths;
     struct CGPoint _handPosition;
 }
 
+@property (nonatomic) unsigned int additionalHandEventFlagsForGeneratedEvents; // @synthesize additionalHandEventFlagsForGeneratedEvents=_additionalHandEventFlagsForGeneratedEvents;
 @property (nonatomic) unsigned short currentFingerCount; // @synthesize currentFingerCount=_currentFingerCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -44,9 +46,9 @@
 
 + (id)representationWithHandInfo:(CDStruct_f2c5c900 *)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)accessibilityEventRepresentationTabularDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)writeToHandInfo:(CDStruct_f2c5c900 *)arg1;

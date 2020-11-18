@@ -10,19 +10,34 @@
 {
 }
 
++ (id)_daysDictionary;
++ (BOOL)_hasRecentlyHandledBootstrapForPerson:(id)arg1;
++ (CDUnknownBlockType)_manualOrderComparator;
++ (CDUnknownBlockType)_otherPeopleComparator;
++ (id)_peopleHomeFetchResultForPersonType:(long long)arg1;
++ (void)_setDaysDictionary:(id)arg1;
++ (id)alertControllerForRemovingNumberOfPeople:(long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
++ (id)alertControllerForResettingPeopleWithCompletion:(CDUnknownBlockType)arg1;
 + (id)assetCollectionListFetchResultForPerson:(id)arg1;
-+ (void)changePeople:(id)arg1 toPersonType:(long long)arg2 error:(id *)arg3;
++ (id)bootstrapViewControllerForContext:(id)arg1 delegate:(id)arg2;
++ (BOOL)changePeople:(id)arg1 toPersonType:(long long)arg2 error:(id *)arg3;
 + (id)changePerson:(id)arg1 toPersonType:(long long)arg2;
-+ (id)dataSourceArrayForHomeViewController;
++ (CDUnknownBlockType)comparatorForFetchType:(unsigned long long)arg1;
++ (id)createDetailsForPerson:(id)arg1;
 + (BOOL)facesSyncFeatureEnabled;
 + (id)identifiersForPeople:(id)arg1;
++ (BOOL)isPersonHiddenFromPeopleHome:(id)arg1;
++ (long long)manualOrderForInsertingAtEndOfSectionWithType:(long long)arg1;
++ (void)markHandledBootstrapForPerson:(id)arg1;
 + (void)mergePersons:(id)arg1 withPerson:(id)arg2;
-+ (long long)personTypeForDataSource:(id)arg1;
++ (id)modelObjectsFromPersonItemArray:(id)arg1;
++ (id)personWithLocalIdentifier:(id)arg1;
 + (id)personWithPersonUri:(id)arg1;
-+ (void)reSequenceFavorites:(id)arg1 afterMovingModels:(id)arg2 toType:(long long)arg3;
-+ (void)reSequenceManualOrderForPersonChangeRequests:(id)arg1;
 + (id)sharedContactStore;
-+ (id)showDetailsForPerson:(id)arg1;
++ (BOOL)shouldShowBootstrapForPerson:(id)arg1;
++ (BOOL)showBootstrapIfNeededWithContext:(id)arg1 fromParentVC:(id)arg2;
++ (BOOL)showBootstrapIfNeededWithContext:(id)arg1 fromParentVC:(id)arg2 delegate:(id)arg3;
++ (BOOL)showBootstrapIfNeededWithContext:(id)arg1 fromParentVC:(id)arg2 force:(BOOL)arg3 delegate:(id)arg4;
 
 @end
 

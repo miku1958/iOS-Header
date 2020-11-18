@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/CLLocationManagerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class CLLocationManager, HMFMessageDispatcher, NSHashTable, NSMapTable, NSString;
+@class CLLocationManager, HMFMessageDispatcher, HMFTimer, NSDate, NSHashTable, NSMapTable, NSMutableArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDLocation : NSObject <CLLocationManagerDelegate>
+@interface HMDLocation : HMFObject <HMFTimerDelegate, CLLocationManagerDelegate>
 {
     BOOL _beingConfigured;
     int _locationAuthorized;
@@ -23,14 +24,22 @@
     NSMapTable *_regionStateCallbacks;
     NSMapTable *_pendingRegionMonitoringRequests;
     NSMapTable *_pendingRegionCallbacks;
+    unsigned long long _extractStatus;
+    NSMutableArray *_batchLocations;
+    HMFTimer *_extractBatchLocationsTimer;
+    NSDate *_lastFetchBatchLocationsTime;
 }
 
 @property (nonatomic) int authStatus; // @synthesize authStatus=_authStatus;
+@property (strong, nonatomic) NSMutableArray *batchLocations; // @synthesize batchLocations=_batchLocations;
 @property (nonatomic) BOOL beingConfigured; // @synthesize beingConfigured=_beingConfigured;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) HMFTimer *extractBatchLocationsTimer; // @synthesize extractBatchLocationsTimer=_extractBatchLocationsTimer;
+@property (nonatomic) unsigned long long extractStatus; // @synthesize extractStatus=_extractStatus;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *handlerQueue; // @synthesize handlerQueue=_handlerQueue;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSDate *lastFetchBatchLocationsTime; // @synthesize lastFetchBatchLocationsTime=_lastFetchBatchLocationsTime;
 @property (nonatomic) int locationAuthorized; // @synthesize locationAuthorized=_locationAuthorized;
 @property (strong, nonatomic) NSHashTable *locationCallbacks; // @synthesize locationCallbacks=_locationCallbacks;
 @property (strong, nonatomic) CLLocationManager *locationManager; // @synthesize locationManager=_locationManager;
@@ -43,6 +52,7 @@
 + (id)_getAlmanacWithLocation:(id)arg1;
 + (id)_getAlmanacWithLocation:(id)arg1 date:(id)arg2;
 + (id)findEvent:(id)arg1 withGeo:(id)arg2;
++ (BOOL)isValidLocation:(id)arg1;
 + (id)nextSunriseTimeForLocation:(id)arg1 date:(id)arg2;
 + (id)nextSunsetTimeForLocation:(id)arg1 date:(id)arg2;
 + (id)sharedManager;
@@ -52,6 +62,7 @@
 - (void).cxx_destruct;
 - (void)_callDelegate:(id)arg1 withLocation:(id)arg2;
 - (id)_delegateforRegion:(id)arg1;
+- (void)_extractLocationWithDelegate:(id)arg1 extractStatus:(unsigned long long)arg2;
 - (void)_updateEntryForRegion:(id)arg1;
 - (void)_updateExitForRegion:(id)arg1;
 - (void)_updateRegionState:(long long)arg1 forRegion:(id)arg2;
@@ -60,7 +71,6 @@
 - (void)beingConfigured:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)deregisterForRegionUpdate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)extractLocationWithDelegate:(id)arg1;
 - (id)init;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didEnterRegion:(id)arg2;
@@ -68,6 +78,10 @@
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)registerForRegionUpdate:(id)arg1 withDelegate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)startExtractingBatchLocationsWithDelegate:(id)arg1;
+- (void)startExtractingSingleLocationWithDelegate:(id)arg1;
+- (void)stopExtractingBatchLocations;
+- (void)timerDidFire:(id)arg1;
 
 @end
 

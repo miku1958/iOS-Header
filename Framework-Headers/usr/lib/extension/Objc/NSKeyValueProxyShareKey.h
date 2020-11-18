@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSKeyValueProxyCaching-Protocol.h>
+#import <Foundation/NSKeyValueProxyCaching-Protocol.h>
 
 @class NSString;
 

@@ -9,7 +9,7 @@
 #import <AnnotationKit/NSCopying-Protocol.h>
 #import <AnnotationKit/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString;
 
 @interface AKAnnotation : NSObject <NSSecureCoding, NSCopying>
 {
@@ -31,6 +31,8 @@
     NSString *_customPlaceholderText;
     double _originalModelBaseScaleFactor;
     long long _originalExifOrientation;
+    NSDate *_modificationDate;
+    NSString *_author;
     long long _akSerializationVersion;
     long long _akSerializationPlatform;
     AKAnnotation *_parentAnnotation;
@@ -42,6 +44,7 @@
 @property long long akSerializationPlatform; // @synthesize akSerializationPlatform=_akSerializationPlatform;
 @property long long akSerializationVersion; // @synthesize akSerializationVersion=_akSerializationVersion;
 @property (copy) CDUnknownBlockType appearanceOverride;
+@property (copy) NSString *author; // @synthesize author=_author;
 @property (weak) AKAnnotation *childAnnotation; // @synthesize childAnnotation=_childAnnotation;
 @property (copy) NSString *customPlaceholderText; // @synthesize customPlaceholderText=_customPlaceholderText;
 @property (readonly) NSString *displayName;
@@ -55,9 +58,11 @@
 @property BOOL isEditingText; // @synthesize isEditingText=_isEditingText;
 @property BOOL isTranslating; // @synthesize isTranslating=_isTranslating;
 @property (readonly) BOOL isUsingAppearanceOverride;
+@property (strong) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (nonatomic) long long originalExifOrientation; // @synthesize originalExifOrientation=_originalExifOrientation;
 @property (nonatomic) double originalModelBaseScaleFactor; // @synthesize originalModelBaseScaleFactor=_originalModelBaseScaleFactor;
 @property (weak) AKAnnotation *parentAnnotation; // @synthesize parentAnnotation=_parentAnnotation;
+@property (readonly) BOOL shouldBurnIn;
 @property BOOL shouldObserveEdits;
 @property BOOL shouldUseAppearanceOverride;
 @property BOOL shouldUsePlaceholderText; // @synthesize shouldUsePlaceholderText=_shouldUsePlaceholderText;

@@ -8,10 +8,11 @@
 
 #import <TextInput/NSSecureCoding-Protocol.h>
 
-@class NSIndexSet, NSString, TIKeyboardCandidate;
+@class NSIndexSet, NSMutableDictionary, NSString, TIKeyboardCandidate;
 
 @interface TIKeyboardOutput : NSObject <NSSecureCoding>
 {
+    BOOL _unmarkIfNecessary;
     BOOL _shouldSendCurrentLocation;
     TIKeyboardCandidate *_acceptedCandidate;
     NSString *_textToCommit;
@@ -21,9 +22,11 @@
     NSString *_insertionTextAfterSelection;
     TIKeyboardCandidate *_shortcutConversion;
     NSIndexSet *_handwritingStrokesToDelete;
+    NSMutableDictionary *_customInfo;
 }
 
 @property (strong, nonatomic) TIKeyboardCandidate *acceptedCandidate; // @synthesize acceptedCandidate=_acceptedCandidate;
+@property (strong, nonatomic) NSMutableDictionary *customInfo; // @synthesize customInfo=_customInfo;
 @property (nonatomic) unsigned long long deletionCount; // @synthesize deletionCount=_deletionCount;
 @property (nonatomic) unsigned long long forwardDeletionCount; // @synthesize forwardDeletionCount=_forwardDeletionCount;
 @property (copy, nonatomic) NSIndexSet *handwritingStrokesToDelete; // @synthesize handwritingStrokesToDelete=_handwritingStrokesToDelete;
@@ -32,6 +35,7 @@
 @property (strong, nonatomic) TIKeyboardCandidate *shortcutConversion; // @synthesize shortcutConversion=_shortcutConversion;
 @property (nonatomic) BOOL shouldSendCurrentLocation; // @synthesize shouldSendCurrentLocation=_shouldSendCurrentLocation;
 @property (copy, nonatomic) NSString *textToCommit; // @synthesize textToCommit=_textToCommit;
+@property (nonatomic) BOOL unmarkIfNecessary; // @synthesize unmarkIfNecessary=_unmarkIfNecessary;
 
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;

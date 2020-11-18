@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class NSString;
+@class NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HAPBTLEReachabilityScanTuple : NSObject
+@interface HAPBTLEReachabilityScanTuple : HMFObject
 {
     CDUnknownBlockType _completion;
     NSObject<OS_dispatch_queue> *_queue;

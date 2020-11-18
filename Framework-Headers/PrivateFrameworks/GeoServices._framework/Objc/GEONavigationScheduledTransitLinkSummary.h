@@ -35,9 +35,9 @@
 @property (strong, nonatomic) GEONavigationTransitStopSummary *stopFrom; // @synthesize stopFrom=_stopFrom;
 @property (strong, nonatomic) GEONavigationTransitStopSummary *stopTo; // @synthesize stopTo=_stopTo;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

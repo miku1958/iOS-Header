@@ -41,6 +41,7 @@
 - (void).cxx_destruct;
 - (CDStruct_c3b9c2ee)_permittedValueRange;
 - (id)initWithProfile:(id)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 
 @end

@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDSnapshotRequestHandlerProtocol-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDSnapshotCacheRequestHandler : NSObject <HMFLogging, HMFTimerDelegate, HMDSnapshotRequestHandlerProtocol>
+@interface HMDSnapshotCacheRequestHandler : HMFObject <HMFLogging, HMFTimerDelegate, HMDSnapshotRequestHandlerProtocol>
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     NSString *_logString;

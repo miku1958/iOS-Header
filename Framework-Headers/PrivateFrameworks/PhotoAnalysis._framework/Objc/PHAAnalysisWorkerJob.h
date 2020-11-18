@@ -10,6 +10,7 @@
 
 @interface PHAAnalysisWorkerJob : PHAAssetProcessingJob
 {
+    BOOL _persistsAnalysisState;
     BOOL _canUseNetwork;
     BOOL _shouldBackoffForFailedNoResourceErrors;
     NSDictionary *_workerFlagsByAssetLocalIdentifier;
@@ -18,6 +19,7 @@
 
 @property (readonly, nonatomic) BOOL canUseNetwork; // @synthesize canUseNetwork=_canUseNetwork;
 @property (readonly, nonatomic) NSMutableDictionary *ignoreUntilDatesByAssetLocalIdentifier; // @synthesize ignoreUntilDatesByAssetLocalIdentifier=_ignoreUntilDatesByAssetLocalIdentifier;
+@property (nonatomic) BOOL persistsAnalysisState; // @synthesize persistsAnalysisState=_persistsAnalysisState;
 @property (readonly, nonatomic) BOOL shouldBackoffForFailedNoResourceErrors; // @synthesize shouldBackoffForFailedNoResourceErrors=_shouldBackoffForFailedNoResourceErrors;
 @property (readonly, nonatomic) NSDictionary *workerFlagsByAssetLocalIdentifier; // @synthesize workerFlagsByAssetLocalIdentifier=_workerFlagsByAssetLocalIdentifier;
 

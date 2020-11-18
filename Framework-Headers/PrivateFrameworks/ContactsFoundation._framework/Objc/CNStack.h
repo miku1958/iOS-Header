@@ -16,12 +16,14 @@
 @property (readonly, nonatomic) unsigned long long count;
 @property (readonly, nonatomic) id peek;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)pop;
+- (id)popAll;
 - (void)popAllWithHandler:(CDUnknownBlockType)arg1;
 - (void)popWithHandler:(CDUnknownBlockType)arg1;
 - (void)push:(id)arg1;
+- (void)removeObject:(id)arg1;
 
 @end
 

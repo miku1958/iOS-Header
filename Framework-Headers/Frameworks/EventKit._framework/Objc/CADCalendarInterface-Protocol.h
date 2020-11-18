@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray;
+@class CADObjectID, NSArray;
 
 @protocol CADCalendarInterface
-- (void)CADCalendar:(CDStruct_f683c4ba)arg1 hasEvents:(void (^)(int, BOOL))arg2;
-- (void)CADCalendar:(CDStruct_f683c4ba)arg1 hasReminders:(void (^)(int, BOOL))arg2;
-- (void)CADDatabaseDeleteCalendar:(CDStruct_f683c4ba)arg1 forEntityType:(int)arg2 error:(void (^)(int))arg3;
+- (void)CADCalendar:(CADObjectID *)arg1 hasEvents:(void (^)(int, BOOL))arg2;
+- (void)CADCalendar:(CADObjectID *)arg1 hasReminders:(void (^)(int, BOOL))arg2;
 - (void)CADDatabaseGetCalendarsWithFaultedProperties:(NSArray *)arg1 reply:(void (^)(int, NSArray *, NSArray *))arg2;
 @end
 

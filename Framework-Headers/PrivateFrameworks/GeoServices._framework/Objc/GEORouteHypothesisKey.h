@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/NSCopying-Protocol.h>
 #import <GeoServices/NSSecureCoding-Protocol.h>
@@ -16,12 +16,12 @@
     GEORouteHypothesisRequest *_request;
 }
 
-@property (readonly, strong, nonatomic) GEORouteHypothesisRequest *request; // @synthesize request=_request;
+@property (readonly, nonatomic) GEORouteHypothesisRequest *request; // @synthesize request=_request;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (BOOL)_isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

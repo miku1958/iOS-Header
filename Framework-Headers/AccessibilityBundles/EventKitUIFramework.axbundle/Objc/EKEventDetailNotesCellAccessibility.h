@@ -16,8 +16,10 @@
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
 - (struct CGRect)_accessibilityChargedLineBoundsForRange:(struct _NSRange)arg1;
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;
+- (id)_accessibilityInternalTextLinks;
 - (id)_accessibilityLineNumberAndColumnForPoint:(struct CGPoint)arg1;
 - (struct _NSRange)_accessibilityRangeForLineNumberAndColumn:(id)arg1;
+- (id)accessibilityCustomRotors;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

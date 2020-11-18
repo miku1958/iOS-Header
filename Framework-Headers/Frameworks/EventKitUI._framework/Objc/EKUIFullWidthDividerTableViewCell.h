@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <EventKitUI/EKUIConstrainedFontsTableViewCell.h>
+#import <EventKitUI/EKUITableViewCell.h>
 
-@interface EKUIFullWidthDividerTableViewCell : EKUIConstrainedFontsTableViewCell
+@interface EKUIFullWidthDividerTableViewCell : EKUITableViewCell
 {
 }
 

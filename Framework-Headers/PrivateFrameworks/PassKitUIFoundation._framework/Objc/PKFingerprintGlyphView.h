@@ -76,6 +76,7 @@
 - (void)setPathState:(id)arg1 forLayer:(id)arg2;
 - (void)setPrimaryColor:(struct UIColor *)arg1 animated:(BOOL)arg2;
 - (void)setProgress:(double)arg1 withDuration:(double)arg2;
+- (void)setRecognizedIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setSecondaryColor:(struct UIColor *)arg1 animated:(BOOL)arg2;
 - (void)setState:(long long)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 

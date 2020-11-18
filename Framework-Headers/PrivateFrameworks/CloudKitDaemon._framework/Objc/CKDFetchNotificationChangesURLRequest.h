@@ -27,11 +27,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL wantsChanges; // @synthesize wantsChanges=_wantsChanges;
 
 - (void).cxx_destruct;
+- (id)generateRequestOperations;
 - (id)initWithServerChangeTokenData:(id)arg1;
 - (int)operationType;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 
 @end
 

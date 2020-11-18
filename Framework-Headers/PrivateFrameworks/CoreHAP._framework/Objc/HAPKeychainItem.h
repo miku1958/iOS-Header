@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class NSData, NSNumber, NSString;
+@class NSData, NSDate, NSNumber, NSString;
 
-@interface HAPKeychainItem : NSObject
+@interface HAPKeychainItem : HMFObject
 {
     BOOL _syncable;
     BOOL _invisible;
@@ -21,10 +21,12 @@
     void *_platformReference;
     NSData *_genericData;
     NSString *_viewHint;
+    NSDate *_creationDate;
 }
 
 @property (strong, nonatomic) NSString *accessGroup; // @synthesize accessGroup=_accessGroup;
 @property (strong, nonatomic) NSString *account; // @synthesize account=_account;
+@property (strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (strong, nonatomic) NSData *genericData; // @synthesize genericData=_genericData;
 @property (readonly, nonatomic, getter=isInvisible) BOOL invisible; // @synthesize invisible=_invisible;
 @property (strong, nonatomic) NSString *itemDescription; // @synthesize itemDescription=_itemDescription;

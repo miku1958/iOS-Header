@@ -8,26 +8,26 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEODataSetDescription : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSString *_dataSetDescription;
     unsigned int _identifier;
-    struct {
-        unsigned int identifier:1;
-    } _has;
+    CDStruct_1dc6d826 _has;
 }
 
 @property (strong, nonatomic) NSString *dataSetDescription; // @synthesize dataSetDescription=_dataSetDescription;
 @property (readonly, nonatomic) BOOL hasDataSetDescription;
 @property (nonatomic) BOOL hasIdentifier;
 @property (nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

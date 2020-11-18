@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <Message/MFPubliclyDescribable-Protocol.h>
+
 @class ACAccount, NSDictionary, NSMutableDictionary, NSString;
 
-@interface MFAccount : NSObject
+@interface MFAccount : NSObject <MFPubliclyDescribable>
 {
     ACAccount *_persistentAccount;
     struct os_unfair_lock_s _persistentAccountLock;
@@ -17,15 +19,20 @@
 }
 
 @property (readonly) ACAccount *accountForRenewingCredentials;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSString *displayName;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *hostname;
 @property (readonly) NSString *identifier;
 @property (readonly) NSString *managedTag;
+@property (readonly, copy, nonatomic) NSString *mf_publicDescription;
 @property (readonly) ACAccount *parentAccount;
 @property (readonly) NSString *parentAccountIdentifier;
 @property (readonly) ACAccount *persistentAccount;
 @property (readonly) NSDictionary *properties;
 @property (copy, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
+@property (readonly) Class superclass;
 @property (readonly) NSString *syncStoreIdentifier;
 @property (readonly) NSString *type;
 @property (readonly) NSString *uniqueId;
@@ -69,6 +76,7 @@
 - (id)_objectForAccountInfoKey:(id)arg1;
 - (id)_password;
 - (id)_passwordWithError:(id *)arg1;
+- (id)_privacySafeDescription;
 - (void)_queueAccountInfoDidChange;
 - (BOOL)_renewCredentialsWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_setAccountProperties:(id)arg1;
@@ -99,7 +107,6 @@
 - (BOOL)enableAccount;
 - (id)enabledDataclasses;
 - (BOOL)fetchTokensIfNecessary:(id *)arg1;
-- (unsigned long long)hash;
 - (id)inaccessiblePasswordErrorWithTitle:(id)arg1;
 - (id)init;
 - (id)initWithPersistentAccount:(id)arg1;
@@ -125,7 +132,7 @@
 - (void)removeAccountPropertyForKey:(id)arg1;
 - (void)removePersistentAccount;
 - (void)removeValueInAccountPropertiesForKey:(id)arg1;
-- (BOOL)renewCredentialsWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)renewCredentialsWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)reportAuthenticationError:(id)arg1 authScheme:(id)arg2;
 - (BOOL)requiresAuthentication;
 - (void)savePersistentAccount;
@@ -151,7 +158,6 @@
 - (BOOL)shouldFetchACEDBInfoForError:(id)arg1;
 - (BOOL)supportsMailDrop;
 - (BOOL)usesSSL;
-- (void)validateConnections;
 - (id)valueInAccountPropertiesForKey:(id)arg1;
 
 @end

@@ -59,6 +59,7 @@
 - (void)connect;
 - (void)createPrograms;
 - (void)dealloc;
+- (BOOL)deviceSupportsProperty:(unsigned long long)arg1;
 - (BOOL)didLoadBasicProperties;
 - (BOOL)didLoadRequiredProperties;
 - (void)disconnect;

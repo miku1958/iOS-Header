@@ -27,6 +27,7 @@
     double _contentScale;
     double _activityViewsAlpha;
     BOOL _wristRaiseAnimationPending;
+    BOOL _snapshotContentViewsLoaded;
     double _lastEnergyPercentage;
     double _lastBriskPercentage;
     double _lastSedentaryPercentage;
@@ -37,13 +38,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_additionalPrelaunchApplicationIdentifiers;
 + (void)_prewarm;
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1;
-+ (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void).cxx_destruct;
 - (id)_accentColorForFaceColor:(unsigned long long)arg1;
 - (void)_addOrRemoveChronoViewsIfNecessary;
+- (id)_additionalPrelaunchApplicationIdentifiers;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyCurrentEntryModelAnimated:(BOOL)arg1;
 - (void)_applyCurrentEntryModelByFraction:(double)arg1 updateLabels:(BOOL)arg2 animated:(BOOL)arg3;
@@ -91,10 +91,10 @@
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
 - (void)_showChronoDetailByFraction:(double)arg1 fillRings:(BOOL)arg2;
 - (void)_startScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (struct CGPoint)_timeTravelStatusModuleCenter;
 - (void)_unloadSnapshotContentViews;
 - (double)_verticalPaddingForStatusBar;
-- (id)_viewsToSuppressLayoutOnBoundsChange;
 - (void)applyEntryModel:(id)arg1 animated:(BOOL)arg2;
 - (void)applyEntryModelWithUnfilledRings:(id)arg1;
 - (void)dealloc;

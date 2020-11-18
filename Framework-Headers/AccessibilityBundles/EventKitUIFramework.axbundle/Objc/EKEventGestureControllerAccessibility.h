@@ -13,9 +13,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_createTemporaryView:(id)arg1 animated:(BOOL)arg2;
-- (BOOL)_flingOrCancelDraggingViewIfNeeded;
+- (void)_commit;
+- (id)_createTemporaryView:(id)arg1 animated:(BOOL)arg2;
 - (void)_longPress:(id)arg1;
+- (void)_speakNotificationIfNecessary:(id)arg1 shouldSpeakWithoutInterruption:(BOOL)arg2 shouldSpeakOnlyIfNotSpeaking:(BOOL)arg3;
+- (void)_update;
 
 @end
 

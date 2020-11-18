@@ -12,8 +12,10 @@
 @interface AVFigAssetTrackInspector : AVAssetTrackInspector
 {
     struct OpaqueFigAsset *_figAsset;
-    struct OpaqueFigFormatReader *_figFormatReader;
     struct OpaqueFigAssetTrack *_figAssetTrack;
+    long long _copyFigFormatReaderOnce;
+    struct OpaqueFigFormatReader *_figFormatReader;
+    long long _copyFigTrackReaderOnce;
     struct OpaqueFigTrackReader *_figTrackReader;
     struct OpaqueFigSimpleMutex *_loadingMutex;
     NSObject<OS_dispatch_queue> *_completionHandlerQueue;
@@ -25,6 +27,7 @@
 - (void)_addFigNotifications;
 - (void)_ensureAllDependenciesOfKeyAreLoaded:(id)arg1;
 - (struct OpaqueFigAssetTrack *)_figAssetTrack;
+- (struct OpaqueFigFormatReader *)_figFormatReader;
 - (unsigned int)_figMediaType;
 - (struct OpaqueFigTrackReader *)_figTrackReader;
 - (id)_initWithAsset:(id)arg1 trackID:(int)arg2 trackIndex:(long long)arg3;
@@ -40,6 +43,7 @@
 - (id)availableMetadataFormats;
 - (id)commonMetadata;
 - (void)dealloc;
+- (int)decodabilityValidationResult;
 - (long long)defaultAlternateGroupID;
 - (struct CGSize)dimensions;
 - (float)estimatedDataRate;
@@ -48,6 +52,7 @@
 - (id)formatDescriptions;
 - (BOOL)hasProtectedContent;
 - (unsigned long long)hash;
+- (BOOL)isDecodable;
 - (BOOL)isEnabled;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isExcludedFromAutoselectionInTrackGroup;

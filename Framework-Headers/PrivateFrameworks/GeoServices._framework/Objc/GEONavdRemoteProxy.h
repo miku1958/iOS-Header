@@ -20,8 +20,9 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (readonly, strong, nonatomic) id<GEONavdXPCInterface> remoteObjectProxyThreadUnsafe;
+@property (readonly, nonatomic) id<GEONavdXPCInterface> remoteObjectProxyThreadUnsafe;
 
+- (void).cxx_destruct;
 - (void)_connectToDaemonIfNeededThreadUnsafe;
 - (void)addObserver:(id)arg1;
 - (void)close;

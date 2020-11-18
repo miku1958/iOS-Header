@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVAudioFormat, NSDictionary, NSString;
-@protocol AVVoiceControllerPlaybackDelegate, AVVoiceControllerRecordDelegate, Endpointer;
+@class AVAudioFormat, NSDictionary, NSString, NSXPCConnection;
+@protocol AVVoiceControllerPlaybackDelegate, AVVoiceControllerRecordDelegate, AVVoiceControllerVoiceTriggerDelegate, Endpointer;
 
 @interface AVVoiceController : NSObject
 {
@@ -18,9 +18,11 @@
 @property (readonly) unsigned long long alertStartTime; // @synthesize alertStartTime=_alertStartTime;
 @property float alertVolume;
 @property (getter=isBargeInDetectEnabled) BOOL bargeInDetectEnabled;
+@property (setter=setDuckOthersOption:) BOOL duckOthersOption;
 @property (strong) id<Endpointer> endpointerDelegate;
 @property (readonly) unsigned long long lastRecordStartTime;
 @property (getter=isMeteringEnabled) BOOL meteringEnabled;
+@property (readonly) NSDictionary *metrics;
 @property (readonly) AVAudioFormat *pcmRecordBufferFormat;
 @property id<AVVoiceControllerPlaybackDelegate> playbackDelegate; // @dynamic playbackDelegate;
 @property (readonly, copy) NSString *playbackRoute;
@@ -38,8 +40,13 @@
 @property (getter=isStopOnBargeInEnabled) BOOL stopOnBargeInEnabled;
 @property (getter=isStopOnEndpointEnabled) BOOL stopOnEndpointEnabled;
 @property (getter=isSynchronousCallbackEnabled) BOOL synchronousCallbackEnabled;
+@property id<AVVoiceControllerVoiceTriggerDelegate> voiceTriggerDelegate;
 @property (readonly) NSDictionary *voiceTriggerInfo;
+@property (readonly) unsigned long long voiceTriggerPastDataFramesAvailable;
+@property (readonly, strong) NSXPCConnection *voiceTriggerServerConnection; // @dynamic voiceTriggerServerConnection;
 
+- (BOOL)IsDeviceAvailableInLocalRoute:(id)arg1 error:(id *)arg2;
+- (void)avAudioPCMRecordBufferReceived:(id)arg1 atTime:(unsigned long long)arg2;
 - (float)averagePowerForChannel:(unsigned long long)arg1;
 - (void)beganPlaying;
 - (void)beganRecording;
@@ -49,6 +56,7 @@
 - (void)dealloc;
 - (void)decodeError;
 - (int)doStartRecordingAtTime:(unsigned long long)arg1 behavior:(id)arg2;
+- (void)enableVoiceTriggerListening:(BOOL)arg1;
 - (void)encodeError;
 - (void)endPlaybackInterruption;
 - (void)endRecordInterruption;
@@ -70,6 +78,7 @@
 - (void)lpcmRecordBufferReceived:(struct AudioQueueBuffer *)arg1 atTime:(unsigned long long)arg2;
 - (float)peakPowerForChannel:(unsigned long long)arg1;
 - (BOOL)playAlertSoundForType:(int)arg1;
+- (BOOL)playAlertSoundForType:(int)arg1 overrideMode:(long long)arg2;
 - (BOOL)playRecordStartingAlertAndResetEndpointer;
 - (void)playbackBufferReceived:(struct MyAudioQueueBuffer *)arg1;
 - (BOOL)preparePlaybackFromURL:(id)arg1 error:(id *)arg2;
@@ -81,11 +90,13 @@
 - (void)releaseAudioSession:(unsigned long long)arg1;
 - (void)removeSessionNotifications;
 - (void)resetEndpointer;
+- (void)sendRemoteConnectionMessage:(id)arg1;
 - (BOOL)setAlertSoundFromURL:(id)arg1 forType:(int)arg2;
 - (BOOL)setCurrentContext:(id)arg1 error:(id *)arg2;
 - (BOOL)setPlaybackBufferDuration:(double)arg1;
 - (BOOL)setRecordBufferDuration:(double)arg1;
 - (void)setSessionNotifications;
+- (void)setupAlertBehavior:(id)arg1;
 - (BOOL)startPlaying;
 - (BOOL)startRecording;
 - (BOOL)startRecording:(id *)arg1;
@@ -95,6 +106,8 @@
 - (void)stopPlaying;
 - (void)stopRecording;
 - (void)updateMeters;
+- (void)updateVoiceTriggerConfiguration:(id)arg1;
+- (void)voiceTriggerNotification:(id)arg1;
 - (BOOL)willAcceptContext:(id)arg1;
 
 @end

@@ -23,13 +23,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSError *error;
-@property (readonly, nonatomic) NSError *error;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL outputObscuredDueToInsufficientExternalProtection;
 @property (readonly, getter=isReadyForMoreMediaData) BOOL readyForMoreMediaData;
-@property (readonly, getter=isReadyForMoreMediaData) BOOL readyForMoreMediaData;
-@property (readonly, nonatomic) long long status;
 @property (readonly, nonatomic) long long status;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;

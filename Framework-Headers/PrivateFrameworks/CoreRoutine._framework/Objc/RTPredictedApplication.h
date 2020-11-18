@@ -26,15 +26,16 @@
 @property (readonly, nonatomic) long long reason; // @synthesize reason=_reason;
 @property (strong, nonatomic) RTSource *source; // @synthesize source=_source;
 
-+ (id)allowedKeys;
 + (id)reasonToString:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithApplication:(id)arg1 reason:(long long)arg2 confidence:(double)arg3 source:(id)arg4 identifier:(id)arg5;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

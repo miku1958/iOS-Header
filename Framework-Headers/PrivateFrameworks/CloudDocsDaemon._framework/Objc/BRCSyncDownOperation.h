@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_startSyncDown;
 - (id)createActivity;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
+- (BOOL)handleZoneNotFoundIfSyncingDownForTheFirstTime:(id)arg1;
 - (id)initWithServerZone:(id)arg1;
 - (void)main;
 - (BOOL)shouldRetryForError:(id)arg1;

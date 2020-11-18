@@ -6,20 +6,25 @@
 
 #import <objc/NSObject.h>
 
+@class FBSDisplayConfiguration;
+
 @interface XBApplicationController : NSObject
 {
+    FBSDisplayConfiguration *_mainDisplayConfiguration;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)_allApplications;
 - (id)_allApplicationsFilteredBySystem:(BOOL)arg1 bySplashBoard:(BOOL)arg2;
-- (void)_captureLaunchImageForApplication:(id)arg1 withCompatibilityInfo:(id)arg2 firstImageIsReady:(CDUnknownBlockType)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)_captureOrUpdateLaunchImagesForApplications:(id)arg1 firstImageIsReady:(CDUnknownBlockType)arg2;
+- (void)_captureOrUpdateLaunchImagesForApplications:(id)arg1 firstImageIsReady:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_migrateDataIfNeeded;
 - (void)_removeCachedLaunchImagesForApplications:(id)arg1 forgettingApps:(BOOL)arg2;
 - (void)_removeLaunchImagesMatchingPredicate:(id)arg1 forApplications:(id)arg2 forgettingApps:(BOOL)arg3;
 - (id)allSplashBoardApplications;
 - (id)allSplashBoardSystemApplications;
+- (id)init;
 - (id)launchRequestsForApplication:(id)arg1 withCompatibilityInfo:(id)arg2;
 - (void)removeAllGeneratedLaunchImages;
 - (void)removeAllGeneratedLaunchImagesAndSnapshots;

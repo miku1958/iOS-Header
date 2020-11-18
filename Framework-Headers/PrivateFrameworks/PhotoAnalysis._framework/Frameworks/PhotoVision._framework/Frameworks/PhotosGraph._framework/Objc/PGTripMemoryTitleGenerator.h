@@ -15,7 +15,6 @@
 
 - (void)_generateTitleAndSubtitleWithResult:(CDUnknownBlockType)arg1;
 - (id)_locationTitle;
-- (id)_timeTitleForSpecialEvent;
 - (id)_timeTitleForTrip;
 - (id)_timeTitleForTripAndWeekend;
 - (id)_timeTitleForWeekend;

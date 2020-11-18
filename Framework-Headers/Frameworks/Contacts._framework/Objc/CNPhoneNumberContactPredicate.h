@@ -15,20 +15,23 @@ __attribute__((visibility("hidden")))
 {
     BOOL _returnsMultipleResults;
     CNPhoneNumber *_phoneNumber;
+    NSString *_prefixHint;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) CNPhoneNumber *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
+@property (readonly, copy, nonatomic) NSString *prefixHint; // @synthesize prefixHint=_prefixHint;
 @property (readonly, nonatomic) BOOL returnsMultipleResults; // @synthesize returnsMultipleResults=_returnsMultipleResults;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPhoneNumber:(id)arg1 returnMultipleResults:(BOOL)arg2;
+- (id)initWithPhoneNumber:(id)arg1 returnMultipleResults:(BOOL)arg2 prefixHint:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)sgContactMatchesWithSortOrder:(long long)arg1 mutableObjects:(BOOL)arg2 service:(id)arg3 error:(id *)arg4;
 

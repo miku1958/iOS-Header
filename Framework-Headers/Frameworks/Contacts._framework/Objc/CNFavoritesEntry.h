@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Contacts/CNContactChangesObserver-Protocol.h>
 
@@ -14,6 +14,7 @@
 {
     NSString *_name;
     BOOL _dirty;
+    BOOL _autoUpdating;
     int _abUid;
     int _abIdentifier;
     NSString *_actionType;
@@ -33,6 +34,7 @@
 @property (nonatomic) int abIdentifier; // @synthesize abIdentifier=_abIdentifier;
 @property (nonatomic) int abUid; // @synthesize abUid=_abUid;
 @property (strong, nonatomic) NSString *actionType; // @synthesize actionType=_actionType;
+@property (readonly, nonatomic) BOOL autoUpdating; // @synthesize autoUpdating=_autoUpdating;
 @property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property (readonly, nonatomic) CNContactProperty *contactProperty;
@@ -55,8 +57,11 @@
 + (id)createLabeledValueForFavoritesEntryValue:(id)arg1 label:(id)arg2 iOSLegacyIdentifier:(int)arg3 propertyKey:(id)arg4;
 + (id)descriptorsForRequiredKeysForPropertyKey:(id)arg1;
 + (id)favoritesEntryValueForLabeledValueValue:(id)arg1 propertyKey:(id)arg2;
++ (BOOL)favoritesEntryValueForLabeledValueValue:(id)arg1 propertyKey:(id)arg2 isEqualToValue:(id)arg3;
++ (void)initialize;
 + (id)instantMessageAddressForFavoritesEntryValue:(id)arg1;
 + (id)labeledValueValueForFavoritesEntryValue:(id)arg1 propertyKey:(id)arg2;
++ (id)rematchEntrySnapshot:(id)arg1 withStore:(id)arg2 noMatchFound:(BOOL *)arg3;
 + (id)sharedContactStore;
 + (id)socialProfileForFavoritesEntryValue:(id)arg1;
 + (id)valueStringFromInstantMessageAddress:(id)arg1;
@@ -77,7 +82,7 @@
 - (id)initWithContact:(id)arg1 propertyKey:(id)arg2 identifier:(id)arg3 type:(long long)arg4;
 - (id)initWithContact:(id)arg1 propertyKey:(id)arg2 identifier:(id)arg3 type:(long long)arg4 store:(id)arg5;
 - (id)initWithContact:(id)arg1 propertyKey:(id)arg2 labeledValueIdentifier:(id)arg3 actionType:(id)arg4 bundleIdentifier:(id)arg5 store:(id)arg6;
-- (id)initWithDictionaryRepresentation:(id)arg1 store:(id)arg2;
+- (id)initWithDictionaryRepresentation:(id)arg1 store:(id)arg2 autoUpdating:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (void)recheckContactStore;
 

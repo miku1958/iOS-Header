@@ -19,12 +19,14 @@
     PARTask *_task;
     double _scale;
     NSString *_geoSessionEntityString;
+    NSArray *_localSuggestions;
 }
 
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
 @property (copy, nonatomic) NSString *geoSessionEntityString; // @synthesize geoSessionEntityString=_geoSessionEntityString;
 @property (strong, nonatomic) NSURLRequest *httpRequest; // @synthesize httpRequest=_httpRequest;
 @property (strong, nonatomic) NSURLResponse *httpResponse; // @synthesize httpResponse=_httpResponse;
+@property (strong, nonatomic) NSArray *localSuggestions; // @synthesize localSuggestions=_localSuggestions;
 @property (strong, nonatomic) NSArray *rawResponse;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 @property (weak, nonatomic) PARTask *task; // @synthesize task=_task;

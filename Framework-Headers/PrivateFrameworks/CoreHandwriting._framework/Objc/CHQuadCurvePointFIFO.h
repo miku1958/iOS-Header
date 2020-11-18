@@ -7,6 +7,7 @@
 #import <CoreHandwriting/CHPointFIFO.h>
 
 @class MISSING_TYPE, UIView;
+@protocol CHPointFIFODrawingTarget;
 
 @interface CHQuadCurvePointFIFO : CHPointFIFO
 {
@@ -15,6 +16,7 @@
     CDUnknownBlockType _emissionHandler;
     struct CGPath *_path;
     double _lineWidth;
+    id<CHPointFIFODrawingTarget> _drawingTarget;
     UIView *_view;
     MISSING_TYPE *_lastPoint;
     vector_92aa34b2 _prevPoints;
@@ -23,6 +25,7 @@
 }
 
 @property (nonatomic) vector_37c07815 controlPoints; // @synthesize controlPoints=_controlPoints;
+@property (strong, nonatomic) id<CHPointFIFODrawingTarget> drawingTarget; // @synthesize drawingTarget=_drawingTarget;
 @property (copy) CDUnknownBlockType emissionHandler; // @synthesize emissionHandler=_emissionHandler;
 @property (nonatomic) BOOL emitInterpolatedPoints; // @synthesize emitInterpolatedPoints=_emitInterpolatedPoints;
 @property (nonatomic) MISSING_TYPE *lastPoint; // @synthesize lastPoint=_lastPoint;
@@ -41,6 +44,7 @@
 - (void)dealloc;
 - (void)flush;
 - (id)initWithFIFO:(id)arg1;
+- (id)initWithFIFO:(id)arg1 drawingTarget:(id)arg2;
 - (id)initWithFIFO:(id)arg1 strokeView:(id)arg2;
 - (void)setUnitScaleForViewSize:(struct CGSize)arg1 normalizedSize:(struct CGSize)arg2 contentScaleFactor:(double)arg3;
 

@@ -18,7 +18,6 @@
     NSString *_displayName;
     UIImage *_icon;
     UIImage *_outlineIcon;
-    UIImage *_settingsIcon;
     struct CGSize _preferredContentSize;
 }
 
@@ -31,13 +30,12 @@
 @property (strong, nonatomic, setter=_setOutlineIcon:) UIImage *outlineIcon; // @synthesize outlineIcon=_outlineIcon;
 @property (nonatomic) struct CGSize preferredContentSize; // @synthesize preferredContentSize=_preferredContentSize;
 @property (readonly, copy, nonatomic, getter=_sdkVersion) NSString *sdkVersion; // @synthesize sdkVersion=_sdkVersion;
-@property (strong, nonatomic, setter=_setSettingsIcon:) UIImage *settingsIcon; // @synthesize settingsIcon=_settingsIcon;
+@property (readonly, nonatomic) UIImage *settingsIcon;
 @property (readonly, copy, nonatomic) NSString *widgetIdentifier;
 
 + (id)_productVersion;
 + (void)_updateRowHeightForContentSizeCategory;
 + (double)maximumContentHeightForCompactDisplayMode;
-+ (double)rowHeight;
 + (id)widgetInfoWithExtension:(id)arg1;
 - (void).cxx_destruct;
 - (id)_iconFromWidgetBundle;

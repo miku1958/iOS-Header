@@ -6,10 +6,13 @@
 
 #import <SAObjects/SADomainCommand.h>
 
+@class NSArray;
+
 @interface SANPSetPlaybackSpeed : SADomainCommand
 {
 }
 
+@property (copy, nonatomic) NSArray *hashedRouteUIDs;
 @property (nonatomic) double scalingFactor;
 
 + (id)setPlaybackSpeed;

@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <BulletinDistributorCompanion/BLTSettingSyncing-Protocol.h>
+#import <BulletinDistributorCompanion/BLTSettingSyncingClient-Protocol.h>
 
-@class BBSettingsGateway, BLTDNDSync, BLTSectionConfiguration, BLTSettingSyncServer, BLTWristStateObserver, NSString;
+@class BBSettingsGateway, BLTDNDSync, BLTMuteSync, BLTSectionConfiguration, BLTSettingSyncServer, BLTWristStateObserver, NSString;
 
-@interface BLTSettingSyncInternal : NSObject <BLTSettingSyncing>
+@interface BLTSettingSyncInternal : NSObject <BLTSettingSyncingClient>
 {
     BLTWristStateObserver *_wristStateObserver;
     BBSettingsGateway *_settingsGateway;
     BLTDNDSync *_dndSync;
+    BLTMuteSync *_muteSync;
     BLTSettingSyncServer *_connection;
     BLTSectionConfiguration *_sectionConfiguration;
 }
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) BLTDNDSync *dndSync; // @synthesize dndSync=_dndSync;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isWristDetectDisabled;
+@property (strong, nonatomic) BLTMuteSync *muteSync; // @synthesize muteSync=_muteSync;
 @property (readonly, nonatomic) BLTSectionConfiguration *sectionConfiguration; // @synthesize sectionConfiguration=_sectionConfiguration;
 @property (strong, nonatomic) BBSettingsGateway *settingsGateway; // @synthesize settingsGateway=_settingsGateway;
 @property (readonly) Class superclass;
@@ -33,12 +35,16 @@
 - (id)_overriddenSectionInfoForSectionID:(id)arg1;
 - (void)dealloc;
 - (void)disableStandaloneTestMode;
+- (void)enableNotifications:(BOOL)arg1 sectionID:(id)arg2 mirror:(BOOL)arg3;
+- (void)enableNotifications:(BOOL)arg1 sectionID:(id)arg2 mirror:(BOOL)arg3 fromRemote:(BOOL)arg4;
 - (void)enableStandaloneTestModeWithMinimumSendDelay:(unsigned long long)arg1 maximumSendDelay:(unsigned long long)arg2 minimumResponseDelay:(unsigned long long)arg3 maximumResponseDelay:(unsigned long long)arg4;
-- (id)initWithSectionConfiguration:(id)arg1;
+- (id)init;
+- (id)initWithSectionConfiguration:(id)arg1 queue:(id)arg2;
 - (void)removeSectionWithSectionID:(id)arg1;
 - (void)setSectionInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setSectionSubtypeParametersIcon:(id)arg1 forSectionID:(id)arg2 forSubtypeID:(long long)arg3;
 - (unsigned long long)willNanoPresentNotificationForSectionID:(id)arg1 subsectionIDs:(id)arg2 subtype:(long long)arg3;
+- (unsigned long long)willNanoPresentNotificationForSectionID:(id)arg1 subsectionIDs:(id)arg2 subtype:(long long)arg3 category:(id)arg4;
 
 @end
 

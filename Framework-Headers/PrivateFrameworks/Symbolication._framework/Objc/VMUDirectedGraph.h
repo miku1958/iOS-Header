@@ -43,6 +43,7 @@
 + (void *)_copyUnarchived:(id)arg1 length:(unsigned long long *)arg2 options:(unsigned long long)arg3;
 + (id)_unarchivedObject:(id)arg1 ofClass:(Class)arg2 options:(unsigned long long)arg3;
 + (id)directedGraphWithData:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 - (BOOL)_adjustAdjacencyMap;
 - (void)_bfsCore:(unsigned int)arg1 colors:(char *)arg2 visitBlock:(CDUnknownBlockType)arg3 examineBlock:(CDUnknownBlockType)arg4;
 - (void *)_deadNodeMap;
@@ -64,6 +65,7 @@
 - (void)breadthFirstSearch:(unsigned int)arg1 nodeVisitBlock:(CDUnknownBlockType)arg2 edgeVisitBlock:(CDUnknownBlockType)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)decapsulateIPSheaderInData:(id)arg1 error:(id *)arg2;
 - (void)depthFirstSearch:(unsigned int)arg1 nodeVisitBlock:(CDUnknownBlockType)arg2 edgeVisitBlock:(CDUnknownBlockType)arg3;
 - (unsigned int)enumerateEdgesOfNode:(unsigned int)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (unsigned int)enumerateEdgesWithBlock:(CDUnknownBlockType)arg1;
@@ -72,6 +74,7 @@
 - (id)initWithArchived:(id)arg1 version:(long long)arg2 options:(unsigned long long)arg3;
 - (id)initWithNodes:(unsigned int)arg1;
 - (id)initWithPlistRepresentation:(id)arg1;
+- (id)initWithPlistRepresentation:(id)arg1 error:(id *)arg2;
 - (void)invertEdges;
 - (id)invertedGraph;
 - (BOOL)isNodePresent:(unsigned int)arg1;

@@ -35,39 +35,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL suppressFallback;
 @property (nonatomic) BOOL suppressNames;
 
-+ (id)contentsWithManeuverType:(int)arg1 transportType:(int)arg2 context:(long long)arg3;
-+ (id)contentsWithStep:(id)arg1 transportType:(int)arg2 context:(long long)arg3 isSecondary:(BOOL)arg4;
 + (id)contentsWithStep:(id)arg1 transportType:(int)arg2 destination:(id)arg3 options:(CDStruct_61a83fd4 *)arg4 isSecondary:(BOOL)arg5;
-+ (id)contentsWithSubstep:(id)arg1 transportType:(int)arg2 context:(long long)arg3;
 - (void).cxx_destruct;
-- (id)_exitNumberFromNameInfo:(id)arg1;
 - (id)_instructionsForFormats:(id)arg1 distance:(double)arg2;
 - (void)_populateFromStep:(id)arg1;
-- (id)_spokenInstructionForArrival;
-- (id)_spokenInstructionForBranch;
-- (id)_spokenInstructionForChangeHighways;
-- (id)_spokenInstructionForContinue;
-- (id)_spokenInstructionForExit;
-- (id)_spokenInstructionForFerry;
-- (id)_spokenInstructionForRoundabout;
-- (id)_spokenInstructionForStart;
-- (id)_spokenInstructionForTurn;
-- (id)_spokenInstructionForUTurn;
-- (id)_spokenInstructionFromSignposts;
-- (id)_spokenWalkingInstructionForContinue;
-- (id)_spokenWalkingInstructionForRoundabout;
-- (id)_spokenWalkingInstructionForStart;
-- (id)_spokenWalkingInstructionForTurn;
-- (id)_spokenWalkingInstructionForUTurn;
-- (id)_stringFromNameInfo:(id)arg1;
 - (id)description;
 - (id)init;
 - (id)instructionForStage:(unsigned long long)arg1 distance:(double)arg2;
 - (id)instructionWithShorterAlternatives:(id *)arg1;
-- (BOOL)useDestinationName;
-- (BOOL)useIntersectionName;
-- (BOOL)useRoadName;
-- (BOOL)useTowardNames;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class IDSWRMMetricContainer;
 @protocol OS_dispatch_queue, OS_xpc_object;
@@ -24,12 +24,15 @@
     unsigned short _connectCount;
     unsigned long long _nearbyOverWiFi;
     BOOL _isPaired;
+    BOOL _isNearby;
+    BOOL _isConnected;
     int _isPairedNotifyToken;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     CDUnknownBlockType _delegateBlock;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_dispatchAfter:(double)arg1 block:(CDUnknownBlockType)arg2;
 - (BOOL)_isXPCDictionary:(id)arg1;
 - (id)_newMetricReportMessage;
@@ -37,6 +40,7 @@
 - (id)_newRegisterMessage;
 - (id)_newSubscribeMessage;
 - (id)_newSubscribeStatusUpdateMessage;
+- (id)_newSubscribeStatusUpdateMessage:(BOOL)arg1 nearby:(BOOL)arg2;
 - (id)_newUnsubscribeMessage;
 - (void)_notifyDelegate;
 - (BOOL)_processLinkPreferenceNotificationEvent:(id)arg1;

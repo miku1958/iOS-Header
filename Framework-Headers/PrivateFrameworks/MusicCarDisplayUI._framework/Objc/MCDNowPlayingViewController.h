@@ -22,7 +22,6 @@
     BOOL _navbarHidesShadow;
     BOOL _viewHasShifted;
     BOOL _handledWillAppear;
-    BOOL _titleUpdated;
     MCDTransportControlView *_transportControlView;
     MCDPlayModeControlView *_playModeControlView;
     MCDTitleView *_titleView;
@@ -41,6 +40,7 @@
     UIFocusContainerGuide *_controlsFocusContainerGuide;
     NSString *_previousTransportButtonImageIdentifier;
     NSString *_forwardTransportButtonImageIdentifier;
+    NSString *_playPauseTransportButtonImageIdentifier;
     NSLayoutConstraint *_artistAlbumLabelConstraint;
 }
 
@@ -57,11 +57,11 @@
 @property (strong, nonatomic) UILongPressGestureRecognizer *leftNudgeLongPressRecognizer; // @synthesize leftNudgeLongPressRecognizer=_leftNudgeLongPressRecognizer;
 @property (strong, nonatomic) UITapGestureRecognizer *leftNudgePressRecognizer; // @synthesize leftNudgePressRecognizer=_leftNudgePressRecognizer;
 @property (readonly, nonatomic) MCDPlayModeControlView *playModeControlView; // @synthesize playModeControlView=_playModeControlView;
+@property (strong, nonatomic) NSString *playPauseTransportButtonImageIdentifier; // @synthesize playPauseTransportButtonImageIdentifier=_playPauseTransportButtonImageIdentifier;
 @property (strong, nonatomic) NSString *previousTransportButtonImageIdentifier; // @synthesize previousTransportButtonImageIdentifier=_previousTransportButtonImageIdentifier;
 @property (readonly, nonatomic) MCDProgressView *progressView; // @synthesize progressView=_progressView;
 @property (strong, nonatomic) UILongPressGestureRecognizer *rightNudgeLongPressRecognizer; // @synthesize rightNudgeLongPressRecognizer=_rightNudgeLongPressRecognizer;
 @property (strong, nonatomic) UITapGestureRecognizer *rightNudgePressRecognizer; // @synthesize rightNudgePressRecognizer=_rightNudgePressRecognizer;
-@property (nonatomic) BOOL titleUpdated; // @synthesize titleUpdated=_titleUpdated;
 @property (readonly, nonatomic) MCDTitleView *titleView; // @synthesize titleView=_titleView;
 @property (readonly, nonatomic) MCDTransportControlView *transportControlView; // @synthesize transportControlView=_transportControlView;
 
@@ -73,13 +73,13 @@
 - (void)_fastForwardButtonTouchUp:(id)arg1;
 - (void)_handleWillAppear;
 - (void)_initializeTransportControls;
-- (void)_itemChanged:(id)arg1;
 - (void)_leftButtonLongPress:(id)arg1;
 - (void)_leftButtonTouchDown:(id)arg1;
 - (void)_leftButtonTouchUp:(id)arg1;
 - (void)_leftNudgePress:(id)arg1;
 - (void)_moreButtonTouchUp:(id)arg1;
 - (void)_playPauseButtonTouchUp:(id)arg1;
+- (void)_playbackButtonTouchUp:(id)arg1;
 - (void)_repeatButtonTouchUp:(id)arg1;
 - (void)_respondToHeldAction;
 - (void)_rightNudgePress:(id)arg1;
@@ -87,11 +87,11 @@
 - (void)_sendHeldAction;
 - (void)_shuffleButtonTouchUp:(id)arg1;
 - (void)_updatePlayModesState;
+- (void)_updatePlaybackRate;
 - (void)_updateRepeatStateWithType:(long long)arg1;
 - (void)_updateShuffleStateWithType:(long long)arg1;
 - (void)_updateTransportControl:(id)arg1 withDefaultImage:(id)arg2 actionType:(long long)arg3;
 - (void)albumArtistButtonTapped:(id)arg1;
-- (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
@@ -99,7 +99,7 @@
 - (void)pressesChanged:(id)arg1 withEvent:(id)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)reloadData;
-- (void)updatePlayControlsWithElapsedTime:(double)arg1;
+- (void)updatePlayControls;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

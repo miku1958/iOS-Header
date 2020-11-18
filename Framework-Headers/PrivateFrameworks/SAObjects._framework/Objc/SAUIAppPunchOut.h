@@ -27,11 +27,13 @@
 @property (copy, nonatomic) NSString *punchOutName;
 @property (copy, nonatomic) NSURL *punchOutUri;
 @property (copy, nonatomic) NSString *subtitle;
+@property (copy, nonatomic) NSArray *themeIcons;
 
 + (id)appPunchOut;
 + (id)appPunchOutWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)mutatingCommand;
 - (BOOL)requiresResponse;
 
 @end

@@ -59,6 +59,7 @@
 - (void)activationTimeout:(id)arg1;
 - (void)beganAwaitingAbilityToActivate;
 - (void)companionBecameAvailableWantsConfirmation:(id)arg1;
+- (void)companionDidSendLanguageAndLocale:(id)arg1;
 - (id)customDescriptionOfMessageType:(unsigned short)arg1;
 - (void)doInitialSyncPrep:(id)arg1;
 - (void)enableSiriForGizmoWithCompletion:(CDUnknownBlockType)arg1;
@@ -97,6 +98,7 @@
 - (void)tellCompanionThatGizmoFinishedSettingPasscode:(BOOL)arg1 isLong:(BOOL)arg2;
 - (void)tellCompanionThatGizmoFinishedUnlockPairing:(BOOL)arg1;
 - (void)tellCompanionThatGizmoStartedUnlockPairing;
+- (BOOL)tellCompanionThatLanguageAndLanguageCompletedWithStatus:(unsigned short)arg1;
 - (void)transportBecameReachable;
 - (void)transportBecameUnreachable;
 - (BOOL)updateLanguageIdentifierWithCompletion:(CDUnknownBlockType)arg1;

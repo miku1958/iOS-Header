@@ -14,6 +14,8 @@
 @interface WFWeatherStoreService : NSObject <WFWeatherStore>
 {
     WFWeatherStoreServiceConfiguration *_configuration;
+    CDUnknownBlockType _forecastRequestStartingCallback;
+    CDUnknownBlockType _locationGeocodeForCoordinateRequestStartingCallback;
     NSObject<OS_dispatch_queue> *_incomingRequestQueue;
     NSObject<OS_dispatch_queue> *_parseQueue;
     NSObject<OS_dispatch_queue> *_mapQueue;
@@ -32,8 +34,10 @@
 @property (copy, nonatomic) WFWeatherStoreServiceConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) CDUnknownBlockType forecastRequestStartingCallback; // @synthesize forecastRequestStartingCallback=_forecastRequestStartingCallback;
 @property (readonly) unsigned long long hash;
 @property (strong) NSObject<OS_dispatch_queue> *incomingRequestQueue; // @synthesize incomingRequestQueue=_incomingRequestQueue;
+@property (copy, nonatomic) CDUnknownBlockType locationGeocodeForCoordinateRequestStartingCallback; // @synthesize locationGeocodeForCoordinateRequestStartingCallback=_locationGeocodeForCoordinateRequestStartingCallback;
 @property (strong) NSObject<OS_dispatch_queue> *mapQueue; // @synthesize mapQueue=_mapQueue;
 @property (strong) NSObject<OS_dispatch_queue> *parseQueue; // @synthesize parseQueue=_parseQueue;
 @property (readonly) Class superclass;
@@ -56,6 +60,7 @@
 - (id)init;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 error:(id *)arg2;
+- (void)invalidateCacheWithIdentifier:(id)arg1;
 
 @end
 

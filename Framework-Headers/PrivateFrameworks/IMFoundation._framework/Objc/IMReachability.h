@@ -19,9 +19,9 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (nonatomic) NSObject<OS_dispatch_queue> *_queue; // @synthesize _queue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *_queue; // @synthesize _queue;
 @property (readonly, nonatomic) BOOL connectionRequired;
-@property (nonatomic) id<IMReachabilityDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<IMReachabilityDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) unsigned long long flags; // @synthesize flags=_flags;
 @property (nonatomic) BOOL gettingFlags; // @synthesize gettingFlags=_gettingFlags;
 @property (strong, nonatomic) NSString *reachabilityDescription; // @synthesize reachabilityDescription=_description;
@@ -30,6 +30,7 @@
 + (id)reachabilityWithHostName:(id)arg1;
 + (id)reachabilityWithLocalAddress:(id)arg1 remoteAddress:(id)arg2;
 + (id)reachabilityWithRemoteAddress:(id)arg1;
+- (void).cxx_destruct;
 - (void)_forceGetFlagsIfNecessary;
 - (void)_handleCallbackForSCNetworkReachability:(struct __SCNetworkReachability *)arg1;
 - (id)_initWithReachabilityRef:(struct __SCNetworkReachability *)arg1 description:(id)arg2 delegate:(id)arg3;

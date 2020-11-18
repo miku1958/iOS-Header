@@ -10,12 +10,12 @@
 
 @interface IKViewElementStyleFactory : NSObject
 {
-    IKStyleFactory *_styleFactory;
     IKTemplateStyleSheet *_styleSheet;
+    IKStyleFactory *_styleFactory;
 }
 
 @property (readonly, strong, nonatomic) IKStyleFactory *styleFactory; // @synthesize styleFactory=_styleFactory;
-@property (readonly, strong, nonatomic) IKTemplateStyleSheet *styleSheet; // @synthesize styleSheet=_styleSheet;
+@property (readonly, nonatomic) IKTemplateStyleSheet *styleSheet; // @synthesize styleSheet=_styleSheet;
 
 + (id)styleFactoryWithMarkup:(id)arg1 styleSheet:(id)arg2;
 - (void).cxx_destruct;

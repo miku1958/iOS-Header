@@ -6,7 +6,7 @@
 
 #import <iTunesStoreUI/SUStorePageViewController.h>
 
-@class NSString, SUMescalSession;
+@class NSString, NSURL, SUMescalSession;
 
 @interface SUAccountViewController : SUStorePageViewController
 {
@@ -15,25 +15,28 @@
     SUMescalSession *_mescalSession;
     long long _mescalState;
     NSString *_primingSignature;
+    NSURL *_accountURL;
 }
 
 @property (readonly, nonatomic, getter=_mescalSession) SUMescalSession *_mescalSession; // @synthesize _mescalSession;
 @property (nonatomic) long long style; // @synthesize style=_style;
 
 + (id)_latestAccountViewController;
+- (void).cxx_destruct;
 - (id)_authenticationQueryParametersForStyle:(long long)arg1;
 - (id)_bagKeyForStyle:(long long)arg1;
 - (void)_closeMescalSession;
 - (void)_forceOrientationBackToSupportedOrientation;
 - (void)_mescalDidOpenWithSession:(id)arg1 error:(id)arg2;
+- (BOOL)_shouldUseWebViewFastPath;
 - (id)copyArchivableContext;
-- (void)dealloc;
 - (void)enqueueFetchOperation;
 - (void)handleFailureWithError:(id)arg1;
 - (id)init;
 - (id)initWithExternalAccountURL:(id)arg1;
 - (id)newFetchOperation;
 - (id)newViewControllerForPage:(id)arg1 ofType:(long long)arg2 returningError:(id *)arg3;
+- (BOOL)shouldSignRequests;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

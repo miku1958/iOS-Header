@@ -21,14 +21,16 @@
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long mediaSubtypes;
-@property (readonly, nonatomic) unsigned long long mediaType;
+@property (readonly, nonatomic) long long mediaType;
+@property (readonly, nonatomic) long long playbackStyle;
+@property (readonly, nonatomic) long long playbackVariation;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithURL:(id)arg1;
-- (unsigned long long)isContentEqualTo:(id)arg1;
+- (long long)isContentEqualTo:(id)arg1;
 
 @end
 

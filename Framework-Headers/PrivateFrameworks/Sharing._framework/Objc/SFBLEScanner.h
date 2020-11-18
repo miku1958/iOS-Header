@@ -8,19 +8,18 @@
 
 #import <Sharing/CBCentralManagerDelegate-Protocol.h>
 
-@class CBCentralManager, CUBitCoder, CURetrier, NSArray, NSData, NSString;
+@class CBCentralManager, CURetrier, NSArray, NSData, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFBLEScanner : NSObject <CBCentralManagerDelegate>
 {
     BOOL _activateCalled;
+    BOOL _activated;
     BOOL _activeScan;
     CBCentralManager *_centralManager;
     struct NSMutableDictionary *_devices;
     BOOL _invalidateCalled;
     BOOL _needDups;
-    NSData *_payloadFilterData;
-    NSData *_payloadFilterMask;
     long long _payloadType;
     NSObject<OS_dispatch_source> *_rescanTimer;
     struct __sFILE {
@@ -49,8 +48,10 @@
     CURetrier *_startRetrier;
     BOOL _timeoutFired;
     NSObject<OS_dispatch_source> *_timeoutTimer;
+    BOOL _updating;
     struct LogCategory *_ucat;
     BOOL _rssiLog;
+    BOOL _rssiLogStdOut;
     BOOL _scanCache;
     unsigned int _changeFlags;
     CDUnknownBlockType _bluetoothStateChangedHandler;
@@ -60,7 +61,8 @@
     CDUnknownBlockType _deviceChangedHandler;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _invalidationHandler;
-    CUBitCoder *_payloadCoder;
+    NSData *_payloadFilterData;
+    NSData *_payloadFilterMask;
     double _rescanInterval;
     long long _rssiThreshold;
     long long _scanInterval;
@@ -83,9 +85,11 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
-@property (strong, nonatomic) CUBitCoder *payloadCoder; // @synthesize payloadCoder=_payloadCoder;
+@property (readonly, copy, nonatomic) NSData *payloadFilterData; // @synthesize payloadFilterData=_payloadFilterData;
+@property (readonly, copy, nonatomic) NSData *payloadFilterMask; // @synthesize payloadFilterMask=_payloadFilterMask;
 @property (nonatomic) double rescanInterval; // @synthesize rescanInterval=_rescanInterval;
 @property (nonatomic) BOOL rssiLog; // @synthesize rssiLog=_rssiLog;
+@property (nonatomic) BOOL rssiLogStdOut; // @synthesize rssiLogStdOut=_rssiLogStdOut;
 @property (nonatomic) long long rssiThreshold; // @synthesize rssiThreshold=_rssiThreshold;
 @property (nonatomic) BOOL scanCache; // @synthesize scanCache=_scanCache;
 @property (nonatomic) long long scanInterval; // @synthesize scanInterval=_scanInterval;
@@ -113,6 +117,7 @@
 - (void)_timeoutTimerFired;
 - (BOOL)_updateCounterpart:(id)arg1;
 - (void)_updateRescanTimer;
+- (void)_watchSetupParseName:(id)arg1 fields:(id)arg2;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)centralManager:(id)arg1 didDiscoverPeripheral:(id)arg2 advertisementData:(id)arg3 RSSI:(id)arg4;
 - (void)centralManagerDidUpdateState:(id)arg1;
@@ -120,6 +125,7 @@
 - (id)init;
 - (id)initWithType:(long long)arg1;
 - (void)invalidate;
+- (void)performUpdate:(CDUnknownBlockType)arg1;
 - (void)setPayloadFilterData:(id)arg1 mask:(id)arg2;
 
 @end

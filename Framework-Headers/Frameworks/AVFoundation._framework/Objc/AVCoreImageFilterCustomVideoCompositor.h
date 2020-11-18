@@ -15,7 +15,6 @@
 {
     NSObject<OS_dispatch_group> *_filteringRequestsInFlight;
     BOOL _shouldCancelAllRequests;
-    struct CGColorSpace *_dstColorSpace;
     NSObject<OS_dispatch_queue> *_defaultCIContextThreadSafety;
     CIContext *_defaultCIContext;
 }

@@ -6,17 +6,29 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSCopying-Protocol.h>
-#import <extension/NSMutableCopying-Protocol.h>
-#import <extension/NSSecureCoding-Protocol.h>
+#import <Foundation/NSCopying-Protocol.h>
+#import <Foundation/NSItemProviderReading-Protocol.h>
+#import <Foundation/NSItemProviderWriting-Protocol.h>
+#import <Foundation/NSMutableCopying-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
-@interface NSString : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
+@class NSArray;
+
+@interface NSString : NSObject <NSItemProviderReading, NSItemProviderWriting, NSCopying, NSMutableCopying, NSSecureCoding>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long length;
 @property (readonly, copy) NSString *stringByRemovingPercentEncoding;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
 
++ (id)_newZStringWithCharacters:(const unsigned short *)arg1 length:(unsigned long long)arg2;
++ (id)_newZStringWithString:(id)arg1;
++ (id)_newZStringWithUTF8String:(const char *)arg1;
 + (id)_web_stringRepresentationForBytes:(long long)arg1;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (const unsigned long long *)availableStringEncodings;
@@ -24,7 +36,10 @@
 + (void)initialize;
 + (id)localizedNameOfStringEncoding:(unsigned long long)arg1;
 + (id)localizedStringWithFormat:(id)arg1;
++ (id)localizedStringWithValidatedFormat:(id)arg1 validFormatSpecifiers:(id)arg2 error:(id *)arg3;
++ (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 + (id)pathWithComponents:(id)arg1;
++ (id)readableTypeIdentifiersForItemProvider;
 + (id)string;
 + (unsigned long long)stringEncodingForData:(id)arg1 encodingOptions:(id)arg2 convertedString:(id *)arg3 usedLossyConversion:(BOOL *)arg4;
 + (id)stringWithBytes:(const void *)arg1 length:(unsigned long long)arg2 encoding:(unsigned long long)arg3;
@@ -42,7 +57,9 @@
 + (id)stringWithFormat:(id)arg1 locale:(id)arg2;
 + (id)stringWithString:(id)arg1;
 + (id)stringWithUTF8String:(const char *)arg1;
++ (id)stringWithValidatedFormat:(id)arg1 validFormatSpecifiers:(id)arg2 error:(id *)arg3;
 + (BOOL)supportsSecureCoding;
++ (id)writableTypeIdentifiersForItemProvider;
 - (const char *)UTF8String;
 - (id)__escapeString5991;
 - (unsigned long long)__graphemeCount;
@@ -124,7 +141,6 @@
 - (CDStruct_5fe7aead)decimalValue;
 - (id)decomposedStringWithCanonicalMapping;
 - (id)decomposedStringWithCompatibilityMapping;
-- (id)description;
 - (id)displayableString;
 - (double)doubleValue;
 - (void)encodeWithCoder:(id)arg1;
@@ -149,7 +165,6 @@
 - (void)getParagraphStart:(unsigned long long *)arg1 end:(unsigned long long *)arg2 contentsEnd:(unsigned long long *)arg3 forRange:(struct _NSRange)arg4;
 - (BOOL)hasPrefix:(id)arg1;
 - (BOOL)hasSuffix:(id)arg1;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 encoding:(unsigned long long)arg3 freeWhenDone:(BOOL)arg4;
 - (id)initWithCString:(const char *)arg1;
@@ -173,6 +188,7 @@
 - (id)initWithFormat:(id)arg1 locale:(id)arg2 arguments:(struct __va_list_tag [1])arg3;
 - (id)initWithString:(id)arg1;
 - (id)initWithUTF8String:(const char *)arg1;
+- (id)initWithValidatedFormat:(id)arg1 validFormatSpecifiers:(id)arg2 locale:(id)arg3 arguments:(struct __va_list_tag [1])arg4 error:(id *)arg5;
 - (int)intValue;
 - (long long)integerValue;
 - (BOOL)isAbsolutePath;
@@ -183,6 +199,7 @@
 - (unsigned long long)lengthOfBytesUsingEncoding:(unsigned long long)arg1;
 - (struct _NSRange)lineRangeForRange:(struct _NSRange)arg1;
 - (id)linguisticTagsInRange:(struct _NSRange)arg1 scheme:(id)arg2 options:(unsigned long long)arg3 orthography:(id)arg4 tokenRanges:(id *)arg5;
+- (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)localizedCapitalizedString;
 - (long long)localizedCaseInsensitiveCompare:(id)arg1;
 - (BOOL)localizedCaseInsensitiveContainsString:(id)arg1;

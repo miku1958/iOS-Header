@@ -17,10 +17,10 @@
 
 @property (strong, nonatomic) NSMutableData *bitmapData; // @synthesize bitmapData=_bitmapData;
 
+- (void).cxx_destruct;
 - (void)accessPixelsByAddressInBlock:(CDUnknownBlockType)arg1;
 - (void)accessPixelsByContextInBlock:(CDUnknownBlockType)arg1;
 - (id)ciImage;
-- (void)dealloc;
 - (id)initWithSize:(struct CGSize)arg1 colorManagement:(int)arg2;
 - (void)readPixelsByAddressInBlock:(CDUnknownBlockType)arg1;
 - (void)renderCIImage:(id)arg1;

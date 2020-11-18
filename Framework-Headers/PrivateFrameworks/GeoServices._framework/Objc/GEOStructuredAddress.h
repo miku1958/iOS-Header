@@ -9,10 +9,11 @@
 #import <GeoServices/GEOURLSerializable-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOStructuredAddress : PBCodable <GEOURLSerializable, NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     CDStruct_5df41632 _geoIds;
     NSString *_administrativeArea;
     NSString *_administrativeAreaCode;
@@ -79,10 +80,12 @@
 @property (strong, nonatomic) NSString *subThoroughfare; // @synthesize subThoroughfare=_subThoroughfare;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *thoroughfare; // @synthesize thoroughfare=_thoroughfare;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)areaOfInterestType;
 + (Class)dependentLocalityType;
 + (Class)subPremiseType;
+- (void).cxx_destruct;
 - (BOOL)_isEquivalentURLRepresentationTo:(id)arg1;
 - (void)addAreaOfInterest:(id)arg1;
 - (void)addDependentLocality:(id)arg1;

@@ -6,11 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSMutableOrderedSet, NSString, NSTimer, SiriUIAcousticIDSpinner, UIColor, UILabel;
+@class NSArray, NSMutableOrderedSet, NSTimer, SiriUIAcousticIDSpinner, SiriUISuggestionsHeaderText, UIColor, UILabel;
 @protocol SiriUISuggestionsViewDelegate;
 
 @interface SiriUISuggestionsView : UIView
 {
+    UIView *_contentView;
     UILabel *_headerLabel;
     UILabel *_oldHeaderLabel;
     UILabel *_subheaderLabel;
@@ -22,9 +23,11 @@
     NSMutableOrderedSet *_pendedSuggestions;
     SiriUIAcousticIDSpinner *_acousticIDSpinner;
     unsigned long long _numberOfSuggestions;
-    NSString *_headerText;
-    NSString *_subheaderText;
-    NSString *_largeSubheaderText;
+    struct NSDirectionalEdgeInsets _edgeInsets;
+    UIView *_guideView;
+    SiriUISuggestionsHeaderText *_headerText;
+    SiriUISuggestionsHeaderText *_subheaderText;
+    SiriUISuggestionsHeaderText *_largeSubheaderText;
     UIColor *_textColor;
     id<SiriUISuggestionsViewDelegate> _delegate;
     long long _orientation;
@@ -33,10 +36,12 @@
 
 @property (nonatomic) struct CGPoint contentOffset; // @synthesize contentOffset=_contentOffset;
 @property (weak, nonatomic) id<SiriUISuggestionsViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property (copy, nonatomic) NSString *headerText; // @synthesize headerText=_headerText;
-@property (copy, nonatomic) NSString *largeSubheaderText; // @synthesize largeSubheaderText=_largeSubheaderText;
+@property (nonatomic, getter=isGuideHidden) BOOL guideHidden;
+@property (strong, nonatomic) UIView *guideView; // @synthesize guideView=_guideView;
+@property (copy, nonatomic) SiriUISuggestionsHeaderText *headerText; // @synthesize headerText=_headerText;
+@property (copy, nonatomic) SiriUISuggestionsHeaderText *largeSubheaderText; // @synthesize largeSubheaderText=_largeSubheaderText;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
-@property (copy, nonatomic) NSString *subheaderText; // @synthesize subheaderText=_subheaderText;
+@property (copy, nonatomic) SiriUISuggestionsHeaderText *subheaderText; // @synthesize subheaderText=_subheaderText;
 @property (copy, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 
 - (void).cxx_destruct;
@@ -44,20 +49,21 @@
 - (void)_animateHeaderOut;
 - (void)_animateInSuggestionAtIndex:(unsigned long long)arg1;
 - (void)_animateOutSuggestionAtIndex:(unsigned long long)arg1;
-- (double)_headerFontSize;
+- (id)_createSpringAnimation:(double)arg1;
 - (double)_headerToLargeSubheaderOffset;
 - (double)_headerToSubheaderOffset;
 - (int)_heightType;
 - (BOOL)_isPadHeightType;
 - (BOOL)_isPortrait;
-- (double)_largeSubheaderFontSize;
 - (void)_loadLargeSubheaderViewIfNeeded;
 - (void)_loadSubheaderViewIfNeeded;
 - (void)_loadSuggestionsViewsIfNeeded;
 - (unsigned long long)_numberOfSuggestionsToDisplay;
 - (void)_reallyShowAcousticIDSpinner;
+- (void)_setHeaderText:(id)arg1;
+- (void)_setLargeSubheaderText:(id)arg1;
+- (void)_setSubheaderText:(id)arg1;
 - (void)_setSuggestionTexts:(id)arg1;
-- (double)_subheaderFontSize;
 - (double)_suggestionFontSize;
 - (double)_suggestionSpacing;
 - (void)_updateSuggestions;
@@ -69,6 +75,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isShowingSuggestions;
 - (void)layoutSubviews;
+- (void)setGuideHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)showAcousticIDSpinner;
 - (void)startSuggesting;
 - (void)stopSuggesting;

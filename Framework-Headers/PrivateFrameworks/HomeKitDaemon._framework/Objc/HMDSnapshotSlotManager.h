@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAccessory, HMDNotificationRegistration, HMDSnapshotFile, HMFMessageDispatcher, NSMapTable, NSMutableArray, NSString, NSUUID;
+@class HMDAccessory, HMDNotificationRegistration, HMDSnapshotFile, HMFMessageDispatcher, NSMapTable, NSMutableArray, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDSnapshotSlotManager : NSObject <HMFLogging>
+@interface HMDSnapshotSlotManager : HMFObject <HMFLogging>
 {
     NSUUID *_uniqueIdentifier;
     HMDSnapshotFile *_mostRecentSnapshot;
@@ -47,6 +47,7 @@
 - (void).cxx_destruct;
 - (void)_updateMostRecentSnapshot:(id)arg1 updateGenerationCounter:(BOOL)arg2;
 - (id)addReferenceToMostRecentSnapshotFileForMessage:(id)arg1;
+- (void)backboardServicesRelaunched:(id)arg1;
 - (id)createSlotForSnapshotFile:(id)arg1 requestMessages:(id)arg2 updateGenerationCounter:(BOOL)arg3;
 - (void)dealloc;
 - (void)findMostRecentSnapshot;

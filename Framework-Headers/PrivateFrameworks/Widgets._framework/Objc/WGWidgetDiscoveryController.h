@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Widgets/NCWidgetDataSourceObserver-Protocol.h>
+#import <Widgets/WGWidgetDataSourceObserver-Protocol.h>
 #import <Widgets/WGWidgetListEditViewControllerDataSource-Protocol.h>
 #import <Widgets/WGWidgetListEditViewControllerDelegate-Protocol.h>
 #import <Widgets/WGWidgetViewControllerDelegate-Protocol.h>
@@ -14,7 +14,7 @@
 @class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSPointerArray, NSString, WGWidgetListEditViewController, WGWidgetPersistentStateController;
 @protocol OS_dispatch_queue, WGWidgetDebugging, WGWidgetDiscoveryControllerDelegate;
 
-@interface WGWidgetDiscoveryController : NSObject <WGWidgetViewControllerDelegate, NCWidgetDataSourceObserver, WGWidgetListEditViewControllerDataSource, WGWidgetListEditViewControllerDelegate>
+@interface WGWidgetDiscoveryController : NSObject <WGWidgetViewControllerDelegate, WGWidgetDataSourceObserver, WGWidgetListEditViewControllerDataSource, WGWidgetListEditViewControllerDelegate>
 {
     struct NSMutableDictionary *_archive;
     NSObject<OS_dispatch_queue> *_archiveWriteQueue;
@@ -23,7 +23,7 @@
     NSMutableDictionary *_identifiersToDatums;
     NSMutableDictionary *_dataSourceIdentifiersToDatumIdentifiers;
     NSMutableDictionary *_identifiersToWidgetInfos;
-    NSMutableDictionary *_requesterIDsToWidgetIDsToWidgets;
+    NSMutableDictionary *_widgetIDsToWidgets;
     NSMutableArray *_orderedEnabledTodayIdentifiers;
     NSArray *_orderedVisibleTodayIdentifiers;
     NSMutableArray *_orderedEnabledWidgetsIdentifiers;
@@ -34,7 +34,6 @@
     BOOL _shouldPurgeNonCAMLSnapshots;
     BOOL _shouldPurgeNonASTCSnapshots;
     id<WGWidgetDiscoveryControllerDelegate> _delegate;
-    long long _columnModes;
     NSMutableDictionary *_widgetIDsToPendingTestCompletions;
     NSMutableDictionary *_widgetIDsToPendingTestTearDowns;
     id<WGWidgetDebugging> _debuggingHandler;
@@ -42,7 +41,6 @@
     id _presentedEditViewControllerStatusBarAssertion;
 }
 
-@property (nonatomic) long long columnModes; // @synthesize columnModes=_columnModes;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WGWidgetDebugging> debuggingHandler; // @synthesize debuggingHandler=_debuggingHandler;
@@ -74,7 +72,6 @@
 - (void)_invalidateWidgetListEditViewControllerStatusBarAssertion:(id)arg1;
 - (BOOL)_isElementWithIdentifierEnabled:(id)arg1;
 - (BOOL)_isElementWithIdentifierKnown:(id)arg1;
-- (BOOL)_managesTwoColumns;
 - (id)_newWidgetListEditViewController;
 - (id)_newWidgetListEditViewControllerStatusBarAssertion;
 - (id)_newWidgetWithIdentifier:(id)arg1 delegate:(id)arg2;
@@ -91,6 +88,7 @@
 - (BOOL)_setEnabled:(BOOL)arg1 forElementWithIdentifier:(id)arg2;
 - (id)_updatePublicationStateOfDatumWithIdentifier:(id)arg1 visibilityChanged:(BOOL)arg2 contentStateChanged:(BOOL)arg3 insertAtTop:(BOOL)arg4 notifyingObservers:(BOOL)arg5;
 - (void)_widget:(id)arg1 withIdentifier:(id)arg2 didRemoveSnapshotAtURL:(id)arg3;
+- (void)_widgetListEditViewControllerWillDisappear:(id)arg1;
 - (void)_widgetViewControllerDidRemoveSnapshot:(id)arg1;
 - (void)_widgetViewControllerRequestsAdd:(id)arg1;
 - (id)_widgetViewControllerWithBundleID:(id)arg1 containingBundleID:(id)arg2 didConnect:(CDUnknownBlockType)arg3 canTearDown:(CDUnknownBlockType)arg4;
@@ -104,7 +102,6 @@
 - (id)enabledWidgetIdentifiersForAllGroups;
 - (id)groupsForWidgetListEditViewController:(id)arg1;
 - (id)init;
-- (id)initWithColumnModes:(long long)arg1;
 - (long long)largestAvailableDisplayModeForWidget:(id)arg1;
 - (long long)largestAvailableDisplayModeForWidgetWithIdentifier:(id)arg1;
 - (long long)layoutModeForWidgetListEditViewController:(id)arg1;

@@ -19,10 +19,12 @@
 @property (copy, nonatomic) NSArray *occlusions; // @dynamic occlusions;
 
 + (BOOL)_isMutable;
+- (void)_setDisplayConfiguration:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)ignoreOcclusionReasons;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)otherSettings;
+- (void)setDisplayConfiguration:(id)arg1;
 - (id)transientLocalSettings;
 
 @end

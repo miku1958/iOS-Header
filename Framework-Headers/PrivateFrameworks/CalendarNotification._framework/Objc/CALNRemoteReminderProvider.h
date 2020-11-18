@@ -17,6 +17,7 @@
 
 @property (strong) SBSApplicationShortcutService *sbApplicationShortcutService; // @synthesize sbApplicationShortcutService=_sbApplicationShortcutService;
 
++ (id)logHandle;
 - (void).cxx_destruct;
 - (id)_bulletinRequestForReminder:(id)arg1;
 - (id)_formattedPhoneNumberFromPhoneNumber:(id)arg1;
@@ -30,6 +31,7 @@
 - (void)acknowledgeLocationAlertWithURL:(id)arg1 entityID:(id)arg2;
 - (id)actionButtonColorForAlertInfo:(id)arg1;
 - (id)actionButtonTitleForAlertInfo:(id)arg1;
+- (void)activate;
 - (void)alertInfosFired:(id)arg1;
 - (BOOL)allowsLocationAlerts;
 - (void)bulletinAcknowledgedWithResponse:(id)arg1 acknowledgeAlarm:(BOOL)arg2 extraActions:(CDUnknownBlockType)arg3;
@@ -50,12 +52,11 @@
 - (id)initWithNotificationFetchBlock:(CDUnknownBlockType)arg1;
 - (id)markAsCompletedActionWithAlertInfo:(id)arg1;
 - (id)messageStringForAlertInfo:(id)arg1;
-- (id)modalMessageForAlertInfo:(id)arg1;
-- (id)modalSubtitleForAlertInfo:(id)arg1;
-- (id)modalTitleForAlertInfo:(id)arg1;
 - (void)protectedAcknowledgeAlarm:(BOOL)arg1 forBulletinWithEntityID:(id)arg2 externalID:(id)arg3 extraActions:(CDUnknownBlockType)arg4;
 - (id)protectedItemForBulletinRecordID:(id)arg1;
 - (void)receiveMessageWithName:(id)arg1 userInfo:(id)arg2;
+- (id)sectionDisplayName;
+- (id)sectionIcon;
 - (id)sectionIdentifier;
 - (id)sectionParameters;
 - (BOOL)shouldCompleteReminderWhenCustomActionExecuted:(id)arg1;
@@ -66,6 +67,7 @@
 - (id)supplementaryActionsForAlertInfo:(id)arg1 bulletin:(id)arg2 compactLayout:(BOOL)arg3;
 - (id)titleStringForAlertInfo:(id)arg1;
 - (id)universalSectionIdentifier;
+- (void)updateQuickActions;
 - (id)viewActionForAlertInfo:(id)arg1;
 - (void)willPostBulletinForAlertInfo:(id)arg1;
 

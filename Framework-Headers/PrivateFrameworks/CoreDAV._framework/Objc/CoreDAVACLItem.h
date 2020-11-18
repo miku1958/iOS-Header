@@ -16,8 +16,8 @@
 @property (strong, nonatomic) NSMutableSet *accessControlEntities; // @synthesize accessControlEntities=_accessControlEntities;
 
 + (id)copyParseRules;
+- (void).cxx_destruct;
 - (void)addACE:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)liveACEs;

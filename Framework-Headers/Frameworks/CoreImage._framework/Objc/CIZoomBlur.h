@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)_blur:(id)arg1 pass:(int)arg2 weightsFactor:(float)arg3;
 - (BOOL)_isIdentity;
 - (id)_kernel;
+- (id)_kernelNew;
 - (id)outputImage;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (id)valueForUndefinedKey:(id)arg1;

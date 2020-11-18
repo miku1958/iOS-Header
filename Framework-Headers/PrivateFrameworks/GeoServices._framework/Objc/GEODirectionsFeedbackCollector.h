@@ -4,27 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class GEODirectionsFeedback, GEODirectionsFeedbackLogMessage, NSMutableSet;
+@class GEODirectionsFeedback, GEODirectionsFeedbackLogMessage, NSMutableArray, NSMutableSet;
 
 @interface GEODirectionsFeedbackCollector : NSObject
 {
     GEODirectionsFeedback *_currentDirectionsFeedback;
     GEODirectionsFeedbackLogMessage *_currentFeedbackLogMessage;
     NSMutableSet *_routeIDs;
-    double _currentDirectionsNavigationStartTime;
-    double _currentDirectionsNavigationEndTime;
+    double _currentDirectionsModeStartTime;
+    NSMutableArray *_navigationModes;
 }
 
 @property (strong, nonatomic) GEODirectionsFeedback *currentDirectionsFeedback; // @synthesize currentDirectionsFeedback=_currentDirectionsFeedback;
 @property (strong, nonatomic) GEODirectionsFeedbackLogMessage *currentFeedbackLogMessage; // @synthesize currentFeedbackLogMessage=_currentFeedbackLogMessage;
 @property (strong, nonatomic) NSMutableSet *routeIDs; // @synthesize routeIDs=_routeIDs;
 
+- (void).cxx_destruct;
 - (void)_updateFeedbackSessionWithResponseID:(id)arg1;
 - (void)addAlightNotificationFeedback:(id)arg1;
+- (void)addGuidanceEventFeedback:(id)arg1;
 - (void)addRouteID:(id)arg1 routeIndex:(unsigned int)arg2 stepID:(unsigned int)arg3 completeStep:(BOOL)arg4;
+- (void)addStepFeedback:(id)arg1;
 - (void)addTrafficRerouteFeedback:(id)arg1;
+- (void)changeNavigationType:(int)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)endFeedbackSessionWithTracePath:(id)arg1;
@@ -32,8 +36,7 @@
 - (void)setAudioFeedback:(struct GEONavigationAudioFeedback *)arg1;
 - (void)setFinalLocation:(id)arg1 asArrival:(BOOL)arg2;
 - (void)setupFeedbackSessionWithResponseID:(id)arg1;
-- (void)startFeedbackSession;
-- (void)startFeedbackSessionForResponseID:(id)arg1;
+- (void)startFeedbackSessionForResponseID:(id)arg1 withNavigationType:(int)arg2;
 
 @end
 

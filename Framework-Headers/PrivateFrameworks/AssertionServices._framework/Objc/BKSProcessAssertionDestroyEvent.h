@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AssertionServices/BKSProcessAssertionEvent.h>
+#import <AssertionServices/BKSAssertionDestroyEvent.h>
 
-@interface BKSProcessAssertionDestroyEvent : BKSProcessAssertionEvent
+@interface BKSProcessAssertionDestroyEvent : BKSAssertionDestroyEvent
 {
 }
 

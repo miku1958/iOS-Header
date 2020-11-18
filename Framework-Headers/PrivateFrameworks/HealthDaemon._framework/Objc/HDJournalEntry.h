@@ -10,7 +10,10 @@
 
 @interface HDJournalEntry : NSObject <NSSecureCoding>
 {
+    BOOL _requiresSecureDelete;
 }
+
+@property (nonatomic) BOOL requiresSecureDelete; // @synthesize requiresSecureDelete=_requiresSecureDelete;
 
 + (void)applyEntries:(id)arg1 withProfile:(id)arg2;
 + (BOOL)supportsSecureCoding;

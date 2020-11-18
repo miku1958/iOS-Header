@@ -7,10 +7,16 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (NUISubclassHelpers)
+
+@property (nonatomic) BOOL neverCacheContentLayoutSize;
+
+- (long long)_nui_isUIButtonType;
+- (id)contentLayoutSizeCacheDescription;
 - (struct UIEdgeInsets)effectiveAlignmentRectInsets;
 - (double)effectiveBaselineOffsetFromContentBottom;
 - (double)effectiveFirstBaselineOffsetFromContentTop;
 - (struct CGSize)effectiveLayoutSizeFittingSize:(struct CGSize)arg1;
-- (BOOL)isLayoutSizeDependentOnPerpendicularAxis;
+- (double)systemSpacingToAdjecentSiblingView:(id)arg1 axis:(long long)arg2 baselineRelative:(BOOL)arg3 multiplier:(double)arg4;
+- (double)systemSpacingToContainerView:(id)arg1 edge:(unsigned long long)arg2 baselineRelative:(BOOL)arg3 multiplier:(double)arg4;
 @end
 

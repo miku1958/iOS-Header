@@ -6,25 +6,41 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class UILabel, UISlider;
+#import <HomeUI/HUDisableableCellProtocol-Protocol.h>
+
+@class NSArray, NSString, UIImage, UILabel, UISlider;
 @protocol HUSliderValueTableViewCellDelegate;
 
-@interface HUSliderValueTableViewCell : UITableViewCell
+@interface HUSliderValueTableViewCell : UITableViewCell <HUDisableableCellProtocol>
 {
+    BOOL _showValue;
     id<HUSliderValueTableViewCellDelegate> _delegate;
     UISlider *_slider;
     UILabel *_valueLabel;
+    NSArray *_constraints;
 }
 
+@property (strong, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
+@property (nonatomic, getter=isContinuous) BOOL continuous;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUSliderValueTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isDisabled) BOOL disabled;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) double maximumValue;
+@property (strong, nonatomic) UIImage *maximumValueImage;
 @property (nonatomic) double minimumValue;
+@property (strong, nonatomic) UIImage *minimumValueImage;
+@property (nonatomic) BOOL showValue; // @synthesize showValue=_showValue;
 @property (strong, nonatomic) UISlider *slider; // @synthesize slider=_slider;
+@property (readonly) Class superclass;
 @property (nonatomic) double value;
 @property (strong, nonatomic) UILabel *valueLabel; // @synthesize valueLabel=_valueLabel;
 
 - (void).cxx_destruct;
+- (void)_setupAutoLayoutConstraints;
 - (void)_sliderChanged:(id)arg1;
+- (void)didMoveToSuperview;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;

@@ -10,9 +10,9 @@
 
 @interface AWDHomeKitCameraSnapshotMessaging : PBCodable <NSCopying>
 {
-    unsigned long long _receivedSnapshotRequest;
-    unsigned long long _sentSnapshotRequest;
-    unsigned long long _sentSnapshotResponse;
+    unsigned int _receivedSnapshotRequest;
+    unsigned int _sentSnapshotRequest;
+    unsigned int _sentSnapshotResponse;
     struct {
         unsigned int receivedSnapshotRequest:1;
         unsigned int sentSnapshotRequest:1;
@@ -23,9 +23,9 @@
 @property (nonatomic) BOOL hasReceivedSnapshotRequest;
 @property (nonatomic) BOOL hasSentSnapshotRequest;
 @property (nonatomic) BOOL hasSentSnapshotResponse;
-@property (nonatomic) unsigned long long receivedSnapshotRequest; // @synthesize receivedSnapshotRequest=_receivedSnapshotRequest;
-@property (nonatomic) unsigned long long sentSnapshotRequest; // @synthesize sentSnapshotRequest=_sentSnapshotRequest;
-@property (nonatomic) unsigned long long sentSnapshotResponse; // @synthesize sentSnapshotResponse=_sentSnapshotResponse;
+@property (nonatomic) unsigned int receivedSnapshotRequest; // @synthesize receivedSnapshotRequest=_receivedSnapshotRequest;
+@property (nonatomic) unsigned int sentSnapshotRequest; // @synthesize sentSnapshotRequest=_sentSnapshotRequest;
+@property (nonatomic) unsigned int sentSnapshotResponse; // @synthesize sentSnapshotResponse=_sentSnapshotResponse;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -18,6 +18,8 @@
 - (id)_FZIDFromPhoneNumber;
 - (long long)_FZIDType;
 - (id)_IDFromFZIDType:(long long)arg1;
+- (id)_URIFromBusinessID;
+- (id)_URIFromCanonicalizedBusinessID;
 - (id)_URIFromCanonicalizedDSID;
 - (id)_URIFromCanonicalizedEmail;
 - (id)_URIFromCanonicalizedFZIDType:(long long)arg1;
@@ -29,6 +31,7 @@
 - (struct _NSRange)__rangeOfNewlineInRange:(struct _NSRange)arg1;
 - (id)__stringByStrippingAttachmentAndControlCharacters;
 - (id)__stringByStrippingControlCharacters;
+- (BOOL)_appearsToBeBusinessID;
 - (BOOL)_appearsToBeDSID;
 - (BOOL)_appearsToBeEmail;
 - (BOOL)_appearsToBePhoneNumber;

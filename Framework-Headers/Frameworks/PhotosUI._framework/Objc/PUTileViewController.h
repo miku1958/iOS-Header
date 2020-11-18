@@ -38,11 +38,13 @@
 @property (nonatomic, setter=_setReadyForDisplay:) BOOL isReadyForDisplay; // @synthesize isReadyForDisplay=_isReadyForDisplay;
 @property (readonly, nonatomic) BOOL isViewLoaded;
 @property (strong, nonatomic, setter=_setLoadedView:) UIView *loadedView; // @synthesize loadedView=_loadedView;
+@property (readonly, nonatomic) UIView *originalView;
 @property (strong, nonatomic, setter=_setView:) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
 - (void)_handleReadinessForced:(BOOL)arg1;
 - (void)_invalidateTintView;
+- (void)_updateDynamicStateDebugging;
 - (void)_updateTintView;
 - (void)_updateVisibleRectView;
 - (void)addToTilingView:(id)arg1;

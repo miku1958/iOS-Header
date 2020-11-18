@@ -4,21 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
+@class NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface CoreDAVLogging : NSObject
 {
-    struct __CFDictionary *_logDelegates;
+    NSMutableDictionary *_logDelegates;
     NSObject<OS_dispatch_queue> *_delegateMuckingQueue;
 }
 
 + (id)sharedLogging;
+- (void).cxx_destruct;
 - (id)_delegatesToLogForProvider:(id)arg1;
 - (BOOL)_shouldOutputAtLevel:(long long)arg1 forAccountInfoProvider:(id)arg2;
 - (void)addLogDelegate:(id)arg1 forAccountInfoProvider:(id)arg2;
-- (void)dealloc;
 - (id)delegatesToLogTransmittedDataForAccountInfoProvider:(id)arg1;
 - (id)init;
 - (void)logDiagnosticForProvider:(id)arg1 withLevel:(long long)arg2 format:(id)arg3 args:(struct __va_list_tag [1])arg4;

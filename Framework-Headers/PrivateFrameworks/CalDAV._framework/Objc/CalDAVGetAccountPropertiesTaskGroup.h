@@ -13,7 +13,7 @@
     BOOL _supportsCalendarUserSearch;
     NSURL *_delegatePrincipalURL;
     NSSet *_calendarHomes;
-    NSSet *_userAddresses;
+    NSSet *_preferredUserAddresses;
     NSURL *_inboxURL;
     NSURL *_outboxURL;
     NSURL *_dropboxURL;
@@ -28,10 +28,10 @@
 @property (readonly, nonatomic) NSURL *inboxURL; // @synthesize inboxURL=_inboxURL;
 @property (readonly, nonatomic) NSURL *notificationURL; // @synthesize notificationURL=_notificationURL;
 @property (readonly, nonatomic) NSURL *outboxURL; // @synthesize outboxURL=_outboxURL;
+@property (readonly, nonatomic) NSSet *preferredUserAddresses; // @synthesize preferredUserAddresses=_preferredUserAddresses;
 @property (readonly, nonatomic) CalDAVServerVersion *serverVersion; // @synthesize serverVersion=_serverVersion;
 @property (readonly, nonatomic) BOOL supportsCalendarUserSearch; // @synthesize supportsCalendarUserSearch=_supportsCalendarUserSearch;
 @property (readonly, nonatomic) NSURL *updatedPrincipalURL; // @synthesize updatedPrincipalURL=_updatedPrincipalURL;
-@property (readonly, nonatomic) NSSet *userAddresses; // @synthesize userAddresses=_userAddresses;
 
 - (void).cxx_destruct;
 - (id)_copyAccountPropertiesPropFindElements;
@@ -41,6 +41,7 @@
 - (id)homeSet;
 - (void)processPrincipalHeaders:(id)arg1;
 - (void)startTaskGroup;
+- (id)userAddresses;
 
 @end
 

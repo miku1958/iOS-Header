@@ -28,6 +28,7 @@
 - (void).cxx_destruct;
 - (void)_cacheRepresentation:(id)arg1 forCatalog:(id)arg2;
 - (id)_cachedRepresentationForCatalog:(id)arg1;
+- (id)_existingRepresentationForArtworkCatalog:(id)arg1 fromCacheOnly:(BOOL)arg2;
 - (BOOL)_isRepresentation:(id)arg1 validForCatalog:(id)arg2;
 - (BOOL)_isRepresentationSize:(struct CGSize)arg1 validForFittingSize:(struct CGSize)arg2;
 - (id)_representationAtSize:(struct CGSize)arg1 forCatalog:(id)arg2;

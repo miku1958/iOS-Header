@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @protocol OS_dispatch_queue;
 
@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (void)invalidateSession;
+- (void)invalidateSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)isFirstInQueue;
 
 @end

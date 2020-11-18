@@ -4,41 +4,42 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthUI/HKViewController.h>
+#import <UIKit/UITableViewController.h>
 
 #import <HealthUI/HKEmergencyCardDeletionDelegate-Protocol.h>
-#import <HealthUI/HKEmergencyCardLastUpdatedTableItemDelegate-Protocol.h>
 #import <HealthUI/HKEmergencyCardRowHeightChangeDelegate-Protocol.h>
 #import <HealthUI/HKMedicalIDViewControllerDelegate-Protocol.h>
 #import <HealthUI/UITableViewDataSource-Protocol.h>
 #import <HealthUI/UITableViewDelegate-Protocol.h>
 
-@class HKEmergencyCardContactsTableItem, HKEmergencyCardGroupTableItem, HKEmergencyCardNameAndPictureTableItem, HKHealthStore, NSArray, NSString, UITableView, _HKMedicalIDData;
+@class HKEmergencyCardContactsTableItem, HKEmergencyCardGroupTableItem, HKEmergencyCardNameAndPictureTableItem, HKHealthStore, HKNavigationController, NSArray, NSString, _HKMedicalIDData;
 @protocol HKMedicalIDViewControllerDelegate;
 
-@interface HKMedicalIDViewController : HKViewController <UITableViewDataSource, UITableViewDelegate, HKMedicalIDViewControllerDelegate, HKEmergencyCardDeletionDelegate, HKEmergencyCardRowHeightChangeDelegate, HKEmergencyCardLastUpdatedTableItemDelegate>
+@interface HKMedicalIDViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, HKMedicalIDViewControllerDelegate, HKEmergencyCardDeletionDelegate, HKEmergencyCardRowHeightChangeDelegate>
 {
-    NSArray *_tableItems;
     NSArray *_presentableTableItems;
     NSArray *_footers;
     HKEmergencyCardGroupTableItem *_groupItem;
     HKEmergencyCardNameAndPictureTableItem *_nameAndPictureItem;
     HKEmergencyCardContactsTableItem *_contactsItem;
     long long _tableViewStyle;
-    BOOL _inEditMode;
     BOOL _inBuddy;
     NSArray *_localeItems;
     NSArray *_accumulatedNumberOfRowsForItems;
+    int _medicalIDChangedToken;
+    HKNavigationController *_medicalIDEditor;
     NSArray *_organDonationItems;
     BOOL _organDonationSignupAvailable;
-    int _emergencyContactsNotificationToken;
     BOOL _allowsEditing;
     BOOL _showsDismissButton;
     BOOL _showsDeleteButton;
+    BOOL _modernAppearance;
+    BOOL _shouldShowHints;
+    BOOL _inEditMode;
     _HKMedicalIDData *_medicalID;
     HKHealthStore *_healthStore;
     id<HKMedicalIDViewControllerDelegate> _delegate;
-    UITableView *_tableView;
+    NSArray *_tableItems;
 }
 
 @property (nonatomic) BOOL allowsEditing; // @synthesize allowsEditing=_allowsEditing;
@@ -47,32 +48,37 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
+@property (nonatomic) BOOL inEditMode; // @synthesize inEditMode=_inEditMode;
 @property (strong, nonatomic) _HKMedicalIDData *medicalID; // @synthesize medicalID=_medicalID;
+@property (nonatomic) BOOL modernAppearance; // @synthesize modernAppearance=_modernAppearance;
+@property (nonatomic) BOOL shouldShowHints; // @synthesize shouldShowHints=_shouldShowHints;
 @property (nonatomic) BOOL showsDeleteButton; // @synthesize showsDeleteButton=_showsDeleteButton;
 @property (nonatomic) BOOL showsDismissButton; // @synthesize showsDismissButton=_showsDismissButton;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
+@property (strong, nonatomic) NSArray *tableItems; // @synthesize tableItems=_tableItems;
 
 + (BOOL)isSupportedOnThisDevice;
 - (void).cxx_destruct;
 - (void)_adjustTableViewContentOffsetForVisibleView:(id)arg1 visibleRect:(struct CGRect)arg2 animated:(BOOL)arg3;
+- (void)_buildEditModeTableItems;
 - (void)_buildPresentableTableItems;
 - (void)_buildTableItems;
+- (void)_buildViewModeTableItems;
 - (void)_cancelEditingTapped:(id)arg1;
 - (void)_contactStoreDidChange:(id)arg1;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
+- (void)_dismissMedicalIDEditor;
 - (void)_doneEditingTapped:(id)arg1;
 - (void)_doneTapped:(id)arg1;
-- (void)_editTapped:(id)arg1;
 - (BOOL)_editable;
 - (id)_fetchMedicalIDDataSynchronously:(BOOL *)arg1;
 - (void)_fetchName;
-- (void)_keyboardFrameWillChange:(id)arg1;
+- (void)_forceDisableBiometricIfDeviceLocked;
 - (id)_newViewForFooterInSection:(long long)arg1;
 - (void)_nextButtonTapped:(id)arg1;
-- (void)_organDonationTapped:(id)arg1;
 - (long long)_preferredOrganDonationOrganization;
 - (void)_refreshEmergencyContactsAndReload:(BOOL)arg1;
+- (void)_reloadTableWithMedicalIDData:(id)arg1;
 - (long long)_rowIndexForTableItem:(id)arg1 atIndexPath:(id)arg2;
 - (BOOL)_shouldShowOrganDonation;
 - (void)_showMedicalIDPreviewAsNext;
@@ -80,18 +86,20 @@
 - (void)_updateMedicalIDNameWithDemographicsInformation:(id)arg1;
 - (void)dealloc;
 - (void)deletionTableItemDidTapDelete:(id)arg1;
+- (void)editButtonTapped:(id)arg1;
+- (void)editMedicalID:(id)arg1;
+- (void)editOrganDonation:(id)arg1;
 - (id)initInEditMode:(BOOL)arg1;
 - (id)initInEditMode:(BOOL)arg1 inBuddy:(BOOL)arg2 organDonationSignupAvailable:(BOOL)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)lastUpdatedTableItemDidTapEditButton:(id)arg1;
+- (id)initWithStyle:(long long)arg1;
 - (void)localeDidChange:(id)arg1;
 - (void)medicalIDViewControllerDidCancel:(id)arg1;
 - (void)medicalIDViewControllerDidDelete:(id)arg1;
 - (void)medicalIDViewControllerDidSave:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (long long)preferredStatusBarStyle;
-- (void)reloadMedicalIDDataAndView;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)tableItem:(id)arg1 heightDidChangeForRowIndex:(long long)arg2 keepRectVisible:(struct CGRect)arg3 inView:(id)arg4;
 - (void)tableItemDidBeginEditing:(id)arg1 keepRectVisible:(struct CGRect)arg2 inView:(id)arg3;
@@ -106,10 +114,12 @@
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)timeZoneDidChange:(id)arg1;
+- (void)updateNavigationBar;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

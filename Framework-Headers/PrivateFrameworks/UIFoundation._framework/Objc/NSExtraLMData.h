@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class CUIStyleEffectConfiguration, NSLayoutManagerTextBlockRowArrayCache, NSLock, NSMutableArray, NSParagraphArbitrator, NSRunStorage, NSTextContainer;
+@class CUIStyleEffectConfiguration, NSLayoutManagerTextBlockRowArrayCache, NSLock, NSMutableArray, NSMutableSet, NSParagraphArbitrator, NSRunStorage, NSTextContainer;
 
 @interface NSExtraLMData : NSObject
 {
@@ -38,6 +38,7 @@
     NSLayoutManagerTextBlockRowArrayCache *_rowArrayCache;
     NSParagraphArbitrator *_paragraphArbitrator;
     CUIStyleEffectConfiguration *_styleEffectConfig;
+    NSMutableSet *_viewProviders;
     struct __lmFlags2 {
         unsigned int glyphCause:6;
         unsigned int layoutCause:6;
@@ -50,8 +51,12 @@
         unsigned int drawsDebugBaselines:1;
         unsigned int mirrorsTextAlignment:1;
         unsigned int forcesTrackingFloor:1;
-        unsigned int reserved:11;
+        unsigned int isLiveScrolling:1;
+        unsigned int hasCustomUnderlineColor:1;
+        unsigned int reserved:9;
     } _lmFlags2;
+    struct _NSGlyphIndexForPointCache _glyphIndexForPointCache;
+    long long _currentChangeInLength;
 }
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 @protocol OS_dispatch_queue;
@@ -16,7 +16,8 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_usageDictionary;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
+- (void)cleanUp;
 - (void)decodedTileWithKey:(const struct _GEOTileKey *)arg1 withStartTime:(double)arg2 andTileSize:(unsigned long long)arg3;
 - (void)finishedUsageForTileWithKey:(const struct _GEOTileKey *)arg1 withUserInfo:(id)arg2;
 - (id)init;

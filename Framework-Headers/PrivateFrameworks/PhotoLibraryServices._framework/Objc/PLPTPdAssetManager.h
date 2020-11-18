@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/PLManagedObjectContextPTPNotificationDelegate-Protocol.h>
 
-@class NSFileManager, NSMutableSet, NSSet, NSString, PLManagedObjectContext, PLPhotoLibrary;
+@class NSFileManager, NSMutableSet, NSSet, NSString, PFMediaCapabilities, PLManagedObjectContext, PLPTPdFormatConversionManager, PLPhotoLibrary;
 @protocol OS_dispatch_queue, PhotoLibraryPTPDelegate;
 
 @interface PLPTPdAssetManager : NSObject <PLManagedObjectContextPTPNotificationDelegate>
 {
     NSObject<PhotoLibraryPTPDelegate> *_delegate;
+    PLPTPdFormatConversionManager *_formatConversionManager;
     NSString *_firstDCIMFolderServiced;
     NSSet *_availableAssetIDs;
     PLPhotoLibrary *_photoLibrary;
@@ -21,28 +22,42 @@
     NSMutableSet *_ptpDeletedAssets;
     NSObject<OS_dispatch_queue> *availableAssetsQueue;
     NSFileManager *fileManager;
-    PLManagedObjectContext *_managedObjectContext;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) NSObject<PhotoLibraryPTPDelegate> *delegate;
+@property (weak, nonatomic) NSObject<PhotoLibraryPTPDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSFileManager *fileManager; // @synthesize fileManager;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong) PLManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
+@property (readonly, strong) PLManagedObjectContext *managedObjectContext;
+@property (strong) PFMediaCapabilities *peerMediaCapabilities;
 @property (readonly, strong, nonatomic) PLPhotoLibrary *photoLibrary;
 @property (readonly) Class superclass;
 
 - (id)_allAssetObjectIDs;
+- (void)_expungeAsset:(id)arg1 withReason:(id)arg2;
+- (id)_generateThumbnailForAsset:(id)arg1 imagePath:(id)arg2 size:(struct CGSize)arg3 compressionQuality:(float)arg4;
 - (void)_performBlockAndWait:(CDUnknownBlockType)arg1;
+- (id)_performResultBlockAndWait:(CDUnknownBlockType)arg1;
+- (id)_performResultTransactionAndWait:(CDUnknownBlockType)arg1;
 - (void)_performTransactionAndWait:(CDUnknownBlockType)arg1;
+- (id)_ptpAssetEnumeratorAllAssets;
+- (id)_ptpAssetsForAssetWithID:(id)arg1;
+- (BOOL)_ptpDeletePhotoWithAssetID:(id)arg1 andExtension:(id)arg2;
 - (id)_ptpInformationForAllAssets;
+- (id)_ptpInformationForPhotoWithObjectID:(id)arg1;
+- (id)_ptpOriginalExifDataForAssetWithID:(id)arg1;
+- (id)_ptpThumbnailForFullSizeRenderWithAssetID:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
+- (id)_ptpThumbnailForOriginalWithAssetID:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
 - (struct CGSize)_validateSize:(struct CGSize)arg1;
 - (id)albumHandles;
+- (id)assetReaderForFormatConvertedPTPAsset:(id)arg1 ofManagedAsset:(id)arg2 path:(id)arg3;
 - (id)assetsInAssociation:(struct NSObject *)arg1;
 - (id)associationsInAlbum:(struct NSObject *)arg1;
+- (id)dataByJPEGCompressingCGImage:(struct CGImage *)arg1 toLengthLimit:(long long)arg2 initialCompressionQuality:(float)arg3 size:(struct CGSize)arg4 orientation:(long long)arg5;
+- (id)dataForThumbnailFileAtPath:(id)arg1 rotatedToOrientation:(long long)arg2 size:(struct CGSize)arg3 compressionQuality:(float)arg4;
 - (void)dealloc;
-- (void)deleteAsset:(struct NSObject *)arg1;
+- (void)deleteAsset:(id)arg1;
 - (void)enumeratePTPInformationForFilesInDirectory:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)fetchObjectIDsForAssetsExposedToPTPFromObjectIDs:(id)arg1;
 - (void)handlePhotoLibraryAvailableNotification;
@@ -50,15 +65,22 @@
 - (id)infoForAsset:(struct NSObject *)arg1;
 - (id)init;
 - (BOOL)libraryIsAvailable;
-- (void)managedObjectContext:(id)arg1 libraryChangedWithInsertedAssetIDs:(id)arg2 deletedAssetIDs:(id)arg3 changedAssetIDs:(id)arg4;
+- (void)managedObjectContext:(id)arg1 libraryChangedWithInsertedAssetIDs:(id)arg2 deletedAssetIDs:(id)arg3 changedAssetIDs:(id)arg4 adjustedAssetIDs:(id)arg5;
+- (void)markSignpostForAsset:(id)arg1 endMarker:(BOOL)arg2 adjusted:(BOOL)arg3 arg4:(unsigned long long)arg4;
+- (id)ptpAssetReaderForAssetHandle:(id)arg1;
 - (BOOL)ptpCanDeleteFiles;
-- (BOOL)ptpDeletePhotoWithKey:(struct NSObject *)arg1 andExtension:(id)arg2;
-- (id)ptpExifDataForPhotoWithKey:(struct NSObject *)arg1;
+- (BOOL)ptpDeletePhotoForAssetHandle:(id)arg1;
+- (BOOL)ptpDeletePhotoWithKey:(id)arg1 andExtension:(id)arg2;
+- (void)ptpEnumerateAllAssetsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)ptpEnumerateAssetsWithPrimaryKeys:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)ptpExifDataForAssetHandle:(id)arg1;
+- (id)ptpExifDataForPhotoWithKey:(id)arg1;
+- (id)ptpImagePropertiesForAssetHandle:(id)arg1;
 - (id)ptpInformationForFilesInDirectory:(id)arg1;
-- (id)ptpInformationForPhotoWithObjectID:(id)arg1;
 - (id)ptpInformationForPhotosWithPrimaryKeys:(id)arg1;
-- (id)ptpThumbnailForPhotoWithKey:(struct NSObject *)arg1;
-- (id)ptpThumbnailForPhotoWithKey:(struct NSObject *)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
+- (id)ptpThumbnailForAssetHandle:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
+- (id)ptpThumbnailForPhotoWithKey:(id)arg1;
+- (id)ptpThumbnailForPhotoWithKey:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
 - (void)setPtpDelegate:(id)arg1;
 
 @end

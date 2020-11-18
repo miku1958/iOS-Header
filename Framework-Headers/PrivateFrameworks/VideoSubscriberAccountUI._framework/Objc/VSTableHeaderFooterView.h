@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class UIButton, UILabel, UIStackView;
+@class UIButton, UILabel, UIStackView, VSFontCenter;
 @protocol VSTableHeaderFooterViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -17,16 +17,19 @@ __attribute__((visibility("hidden")))
     UIButton *_button;
     UILabel *_textLabel;
     UIStackView *_stackView;
+    VSFontCenter *_fontCenter;
 }
 
 @property (strong, nonatomic) UIButton *button; // @synthesize button=_button;
 @property (weak, nonatomic) id<VSTableHeaderFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) VSFontCenter *fontCenter; // @synthesize fontCenter=_fontCenter;
 @property (nonatomic) long long kind; // @synthesize kind=_kind;
 @property (strong, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property (strong, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 
 - (void).cxx_destruct;
 - (void)_didInvalidateIntrinsicContentSize;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;

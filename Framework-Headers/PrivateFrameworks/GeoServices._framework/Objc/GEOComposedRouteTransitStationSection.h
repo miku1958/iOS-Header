@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) CDStruct_79c5c966 toNodeID; // @synthesize toNodeID=_toNodeID;
 @property (readonly, nonatomic) int toNodeSignificance; // @synthesize toNodeSignificance=_toNodeSignificance;
 
+- (BOOL)_MapsCarPlay_isEqual:(id)arg1;
 - (id)initWithRoute:(id)arg1 startPoint:(unsigned int)arg2 pointCount:(unsigned int)arg3 step:(id)arg4 toNodeSignificance:(int)arg5 startDistance:(double)arg6 lengthScaleFactor:(double)arg7;
 
 @end

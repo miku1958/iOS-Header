@@ -17,9 +17,7 @@
 - (id)_accessibilityUserTestingChildren;
 - (id)_privateAccessibilityCustomActions;
 - (id)accessibilityLabel;
-- (void)accessibilityPerformMoreActions:(id)arg1;
-- (id)lockupCustomActions;
-- (void)setLockupCustomActions:(id)arg1;
+- (BOOL)accessibilityPerformMoreActions:(id)arg1;
 - (BOOL)updateIsCurrentPlayerItemState;
 
 @end

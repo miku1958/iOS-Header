@@ -14,23 +14,34 @@
 {
     NSData *_deviceUUID;
     NSString *_originBuild;
-    NSString *_originDevice;
+    int _originMajorVersion;
+    int _originMinorVersion;
+    int _originPatchVersion;
     NSString *_originProductType;
     NSData *_sourceUUID;
     NSString *_sourceVersion;
     NSString *_timeZoneName;
+    struct {
+        unsigned int originMajorVersion:1;
+        unsigned int originMinorVersion:1;
+        unsigned int originPatchVersion:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSData *deviceUUID; // @synthesize deviceUUID=_deviceUUID;
 @property (readonly, nonatomic) BOOL hasDeviceUUID;
 @property (readonly, nonatomic) BOOL hasOriginBuild;
-@property (readonly, nonatomic) BOOL hasOriginDevice;
+@property (nonatomic) BOOL hasOriginMajorVersion;
+@property (nonatomic) BOOL hasOriginMinorVersion;
+@property (nonatomic) BOOL hasOriginPatchVersion;
 @property (readonly, nonatomic) BOOL hasOriginProductType;
 @property (readonly, nonatomic) BOOL hasSourceUUID;
 @property (readonly, nonatomic) BOOL hasSourceVersion;
 @property (readonly, nonatomic) BOOL hasTimeZoneName;
 @property (strong, nonatomic) NSString *originBuild; // @synthesize originBuild=_originBuild;
-@property (strong, nonatomic) NSString *originDevice; // @synthesize originDevice=_originDevice;
+@property (nonatomic) int originMajorVersion; // @synthesize originMajorVersion=_originMajorVersion;
+@property (nonatomic) int originMinorVersion; // @synthesize originMinorVersion=_originMinorVersion;
+@property (nonatomic) int originPatchVersion; // @synthesize originPatchVersion=_originPatchVersion;
 @property (strong, nonatomic) NSString *originProductType; // @synthesize originProductType=_originProductType;
 @property (strong, nonatomic) NSData *sourceUUID; // @synthesize sourceUUID=_sourceUUID;
 @property (strong, nonatomic) NSString *sourceVersion; // @synthesize sourceVersion=_sourceVersion;

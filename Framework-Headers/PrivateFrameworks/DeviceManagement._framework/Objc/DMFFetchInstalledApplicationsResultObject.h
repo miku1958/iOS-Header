@@ -4,22 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskResultObject.h>
+#import <DeviceManagement/DMFFetchApplicationsResultObject.h>
 
-@class NSDictionary;
-
-@interface DMFFetchInstalledApplicationsResultObject : CATTaskResultObject
+@interface DMFFetchInstalledApplicationsResultObject : DMFFetchApplicationsResultObject
 {
-    NSDictionary *_applicationsByIdentifier;
 }
-
-@property (copy, nonatomic) NSDictionary *applicationsByIdentifier; // @synthesize applicationsByIdentifier=_applicationsByIdentifier;
-
-+ (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithApplicationsByIdentifier:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 
 @end
 

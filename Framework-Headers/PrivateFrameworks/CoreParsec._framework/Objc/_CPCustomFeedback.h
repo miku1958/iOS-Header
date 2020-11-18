@@ -6,36 +6,49 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreParsec/NSCopying-Protocol.h>
+#import <CoreParsec/NSSecureCoding-Protocol.h>
+#import <CoreParsec/_CPCustomFeedback-Protocol.h>
+#import <CoreParsec/_CPProcessableFeedback-Protocol.h>
 
-@class NSData;
+@class NSData, NSDictionary, NSString;
 
-@interface _CPCustomFeedback : PBCodable <NSCopying>
+@interface _CPCustomFeedback : PBCodable <_CPProcessableFeedback, _CPCustomFeedback, NSSecureCoding>
 {
-    unsigned long long _timestamp;
-    int _feedbackType;
-    NSData *_jsonFeedback;
     struct {
+        unsigned int timestamp:1;
         unsigned int feedbackType:1;
     } _has;
+    int _feedbackType;
+    unsigned long long _timestamp;
+    NSData *_jsonFeedback;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly, nonatomic) id feedbackJSON;
 @property (nonatomic) int feedbackType; // @synthesize feedbackType=_feedbackType;
-@property (nonatomic) BOOL hasFeedbackType;
+@property (readonly, nonatomic) BOOL hasFeedbackType;
 @property (readonly, nonatomic) BOOL hasJsonFeedback;
-@property (strong, nonatomic) NSData *jsonFeedback; // @synthesize jsonFeedback=_jsonFeedback;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (readonly, nonatomic) BOOL hasTimestamp;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSData *jsonFeedback; // @synthesize jsonFeedback=_jsonFeedback;
+@property (readonly, nonatomic) BOOL requiresQueryId;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 
 - (void).cxx_destruct;
-- (int)StringAsFeedbackType:(id)arg1;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (id)dictionaryRepresentation;
-- (id)feedbackTypeAsString:(int)arg1;
-- (unsigned long long)hash;
+- (id)init;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithFacade:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

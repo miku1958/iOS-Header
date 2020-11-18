@@ -6,31 +6,35 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class NSOperationQueue, NSString, SSLookupRequest, VSOptional;
+@class NSOperationQueue, NSSet, SSLookupRequest, VSAuditToken, VSOptional;
 
-__attribute__((visibility("hidden")))
 @interface VSAppDescriptionFetchOperation : VSAsyncOperation
 {
-    NSString *_appAdamID;
+    BOOL _shouldPrecomposeIcon;
+    NSSet *_appAdamIDs;
+    VSAuditToken *_auditToken;
     VSOptional *_result;
     SSLookupRequest *_lookupRequest;
-    NSOperationQueue *_privateQueue;
+    NSOperationQueue *_imageLoadingQueue;
     struct CGSize _preferredArtworkSize;
 }
 
-@property (copy, nonatomic) NSString *appAdamID; // @synthesize appAdamID=_appAdamID;
+@property (copy, nonatomic) NSSet *appAdamIDs; // @synthesize appAdamIDs=_appAdamIDs;
+@property (strong, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
+@property (strong, nonatomic) NSOperationQueue *imageLoadingQueue; // @synthesize imageLoadingQueue=_imageLoadingQueue;
 @property (strong, nonatomic) SSLookupRequest *lookupRequest; // @synthesize lookupRequest=_lookupRequest;
 @property (nonatomic) struct CGSize preferredArtworkSize; // @synthesize preferredArtworkSize=_preferredArtworkSize;
-@property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;
+@property (nonatomic) BOOL shouldPrecomposeIcon; // @synthesize shouldPrecomposeIcon=_shouldPrecomposeIcon;
 
 - (void).cxx_destruct;
-- (id)_appDescriptionFromLookupResponse:(id)arg1 artworkImage:(id)arg2;
+- (id)_appDescriptionFromLookupResponse:(id)arg1 appAdamID:(id)arg2;
 - (void)_handleLookupResponse:(id)arg1;
 - (void)cancel;
 - (void)executionDidBegin;
 - (id)init;
-- (id)initWithAppAdamID:(id)arg1 preferredArtworkSize:(struct CGSize)arg2;
+- (id)initWithAppAdamIDs:(id)arg1;
+- (id)initWithAppAdamIDs:(id)arg1 preferredArtworkSize:(struct CGSize)arg2;
 
 @end
 

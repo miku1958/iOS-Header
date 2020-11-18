@@ -13,6 +13,7 @@
 @interface GEOPDClientMetadata : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    CDStruct_95bda58d _knownClientResolvedTypes;
     GEOABSecondPartyPlaceRequestClientMetaData *_abClientMetadata;
     GEOAdditionalEnabledMarkets *_additionalEnabledMarkets;
     unsigned int _dayOfWeek;
@@ -27,12 +28,14 @@
     int _requiredVersion;
     int _resultListAttributionSupport;
     unsigned int _timeSinceMapEnteredForeground;
+    BOOL _enablePreflightVenues;
     struct {
         unsigned int dayOfWeek:1;
         unsigned int hourOfDay:1;
         unsigned int requiredVersion:1;
         unsigned int resultListAttributionSupport:1;
         unsigned int timeSinceMapEnteredForeground:1;
+        unsigned int enablePreflightVenues:1;
     } _has;
 }
 
@@ -46,6 +49,7 @@
 @property (strong, nonatomic) NSMutableArray *deviceHistoricalLocations; // @synthesize deviceHistoricalLocations=_deviceHistoricalLocations;
 @property (strong, nonatomic) NSString *deviceKeyboardLanguage; // @synthesize deviceKeyboardLanguage=_deviceKeyboardLanguage;
 @property (strong, nonatomic) NSString *deviceSpokenLanguage; // @synthesize deviceSpokenLanguage=_deviceSpokenLanguage;
+@property (nonatomic) BOOL enablePreflightVenues; // @synthesize enablePreflightVenues=_enablePreflightVenues;
 @property (readonly, nonatomic) BOOL hasAbClientMetadata;
 @property (readonly, nonatomic) BOOL hasAdditionalEnabledMarkets;
 @property (nonatomic) BOOL hasDayOfWeek;
@@ -55,21 +59,28 @@
 @property (readonly, nonatomic) BOOL hasDeviceExtendedLocation;
 @property (readonly, nonatomic) BOOL hasDeviceKeyboardLanguage;
 @property (readonly, nonatomic) BOOL hasDeviceSpokenLanguage;
+@property (nonatomic) BOOL hasEnablePreflightVenues;
 @property (nonatomic) BOOL hasHourOfDay;
 @property (nonatomic) BOOL hasRequiredVersion;
 @property (nonatomic) BOOL hasResultListAttributionSupport;
 @property (nonatomic) BOOL hasTimeSinceMapEnteredForeground;
 @property (nonatomic) unsigned int hourOfDay; // @synthesize hourOfDay=_hourOfDay;
+@property (readonly, nonatomic) int *knownClientResolvedTypes;
+@property (readonly, nonatomic) unsigned long long knownClientResolvedTypesCount;
 @property (nonatomic) int requiredVersion; // @synthesize requiredVersion=_requiredVersion;
 @property (nonatomic) int resultListAttributionSupport; // @synthesize resultListAttributionSupport=_resultListAttributionSupport;
 @property (nonatomic) unsigned int timeSinceMapEnteredForeground; // @synthesize timeSinceMapEnteredForeground=_timeSinceMapEnteredForeground;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)deviceHistoricalLocationType;
+- (void).cxx_destruct;
+- (int)StringAsKnownClientResolvedTypes:(id)arg1;
 - (int)StringAsRequiredVersion:(id)arg1;
 - (int)StringAsResultListAttributionSupport:(id)arg1;
 - (void)addDeviceHistoricalLocation:(id)arg1;
+- (void)addKnownClientResolvedType:(int)arg1;
 - (void)clearDeviceHistoricalLocations;
+- (void)clearKnownClientResolvedTypes;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -80,10 +91,13 @@
 - (unsigned long long)hash;
 - (id)initWithTraits:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (int)knownClientResolvedTypeAtIndex:(unsigned long long)arg1;
+- (id)knownClientResolvedTypesAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)requiredVersionAsString:(int)arg1;
 - (id)resultListAttributionSupportAsString:(int)arg1;
+- (void)setKnownClientResolvedTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

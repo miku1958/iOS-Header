@@ -13,8 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityFinishSetupIfAppropriate;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)accessibilityLabel;
+- (BOOL)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 
 @end
 

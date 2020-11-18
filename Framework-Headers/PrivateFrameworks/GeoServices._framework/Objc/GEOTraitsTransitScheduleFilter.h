@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOTraitsTransitScheduleModeFilter, GEOTraitsTransitScheduleTimeRange;
+@class GEOTraitsTransitScheduleModeFilter, GEOTraitsTransitScheduleTimeRange, PBUnknownFields;
 
 @interface GEOTraitsTransitScheduleFilter : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     GEOTraitsTransitScheduleModeFilter *_highFrequencyFilter;
     GEOTraitsTransitScheduleModeFilter *_lowFrequencyFilter;
     GEOTraitsTransitScheduleTimeRange *_operatingHoursRange;
@@ -23,10 +24,11 @@
 @property (strong, nonatomic) GEOTraitsTransitScheduleModeFilter *highFrequencyFilter; // @synthesize highFrequencyFilter=_highFrequencyFilter;
 @property (strong, nonatomic) GEOTraitsTransitScheduleModeFilter *lowFrequencyFilter; // @synthesize lowFrequencyFilter=_lowFrequencyFilter;
 @property (strong, nonatomic) GEOTraitsTransitScheduleTimeRange *operatingHoursRange; // @synthesize operatingHoursRange=_operatingHoursRange;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

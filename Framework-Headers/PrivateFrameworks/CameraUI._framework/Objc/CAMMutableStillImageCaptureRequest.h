@@ -6,18 +6,24 @@
 
 #import <CameraUI/CAMStillImageCaptureRequest.h>
 
+#import <CameraUI/CAMMutableCaptureRequestEncodingBehavior-Protocol.h>
 #import <CameraUI/CAMMutableCaptureRequestLocation-Protocol.h>
 #import <CameraUI/CAMMutableCaptureRequestOrigin-Protocol.h>
 #import <CameraUI/CAMMutableCaptureRequestPersistence-Protocol.h>
 #import <CameraUI/CAMMutableCaptureRequestPower-Protocol.h>
 
-@class CLLocation, NSString, NSURL;
+@class CLHeading, CLLocation, NSArray, NSString, NSURL;
 @protocol CAMStillImageCaptureRequestDelegate;
 
-@interface CAMMutableStillImageCaptureRequest : CAMStillImageCaptureRequest <CAMMutableCaptureRequestPersistence, CAMMutableCaptureRequestLocation, CAMMutableCaptureRequestPower, CAMMutableCaptureRequestOrigin>
+@interface CAMMutableStillImageCaptureRequest : CAMStillImageCaptureRequest <CAMMutableCaptureRequestPersistence, CAMMutableCaptureRequestLocation, CAMMutableCaptureRequestPower, CAMMutableCaptureRequestOrigin, CAMMutableCaptureRequestEncodingBehavior>
 {
 }
 
+@property (copy, nonatomic) NSString *EV0IrisIdentifier; // @dynamic EV0IrisIdentifier;
+@property (copy, nonatomic) NSURL *EV0LocalVideoDestinationURL; // @dynamic EV0LocalVideoDestinationURL;
+@property (copy, nonatomic) NSString *EV0PersistenceUUID; // @dynamic EV0PersistenceUUID;
+@property (copy, nonatomic) NSString *EV0VideoPersistenceUUID; // @dynamic EV0VideoPersistenceUUID;
+@property (strong, nonatomic) NSArray *adjustmentFilters; // @dynamic adjustmentFilters;
 @property (nonatomic) unsigned int assertionIdentifier;
 @property (copy, nonatomic) NSString *burstIdentifier; // @dynamic burstIdentifier;
 @property (nonatomic) long long captureDevice; // @dynamic captureDevice;
@@ -32,21 +38,21 @@
 @property (nonatomic) long long flashMode; // @dynamic flashMode;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long hdrMode; // @dynamic hdrMode;
+@property (strong, nonatomic) CLHeading *heading;
 @property (copy, nonatomic) NSString *irisIdentifier; // @dynamic irisIdentifier;
 @property (nonatomic) long long irisMode; // @dynamic irisMode;
+@property (nonatomic) long long lightingEffectType; // @dynamic lightingEffectType;
 @property (copy, nonatomic) NSURL *localDestinationURL;
 @property (copy, nonatomic) NSURL *localVideoDestinationURL; // @dynamic localVideoDestinationURL;
 @property (strong, nonatomic) CLLocation *location;
 @property (nonatomic) double loggingVideoZoomFactor; // @dynamic loggingVideoZoomFactor;
 @property (nonatomic) unsigned long long maximumBurstLength; // @dynamic maximumBurstLength;
 @property (nonatomic) long long origin;
-@property (copy, nonatomic) NSString *originalIrisIdentifier; // @dynamic originalIrisIdentifier;
-@property (copy, nonatomic) NSURL *originalLocalVideoDestinationURL; // @dynamic originalLocalVideoDestinationURL;
-@property (copy, nonatomic) NSString *originalPersistenceUUID; // @dynamic originalPersistenceUUID;
-@property (copy, nonatomic) NSString *originalVideoPersistenceUUID; // @dynamic originalVideoPersistenceUUID;
+@property (strong, nonatomic) NSArray *originalFilters; // @dynamic originalFilters;
 @property (nonatomic) long long persistenceOptions;
 @property (copy, nonatomic) NSString *persistenceUUID;
-@property (nonatomic) long long physicalButtonType; // @dynamic physicalButtonType;
+@property (nonatomic) long long photoEncodingBehavior;
+@property (nonatomic) long long pressType; // @dynamic pressType;
 @property (nonatomic) unsigned short sessionIdentifier; // @dynamic sessionIdentifier;
 @property (nonatomic) BOOL shouldDelayRemotePersistence;
 @property (nonatomic) BOOL shouldExtractDiagnosticsFromMetadata;
@@ -56,6 +62,7 @@
 @property (copy, nonatomic) NSString *timelapseIdentifier; // @dynamic timelapseIdentifier;
 @property (nonatomic) unsigned long long userInitiationTime; // @dynamic userInitiationTime;
 @property (nonatomic) BOOL usesStillImageStabilization; // @dynamic usesStillImageStabilization;
+@property (nonatomic) long long videoEncodingBehavior;
 @property (copy, nonatomic) NSString *videoPersistenceUUID; // @dynamic videoPersistenceUUID;
 @property (nonatomic) BOOL wantsAudioForCapture; // @dynamic wantsAudioForCapture;
 @property (nonatomic) BOOL wantsAutoDualCameraFusion; // @dynamic wantsAutoDualCameraFusion;

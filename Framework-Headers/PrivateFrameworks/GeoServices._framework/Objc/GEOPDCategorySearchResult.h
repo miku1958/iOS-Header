@@ -13,19 +13,27 @@
 @interface GEOPDCategorySearchResult : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    NSMutableArray *_browseCategorys;
     GEOPDRelatedSearchSuggestion *_defaultRelatedSearchSuggestion;
     GEOMapRegion *_displayMapRegion;
     NSMutableArray *_relatedSearchSuggestions;
     NSMutableArray *_resultDetourInfos;
     GEOPDSearchClientBehavior *_searchClientBehavior;
+    BOOL _enablePartialClientization;
     BOOL _isChainResultSet;
-    CDStruct_5984ff81 _has;
+    struct {
+        unsigned int enablePartialClientization:1;
+        unsigned int isChainResultSet:1;
+    } _has;
 }
 
+@property (strong, nonatomic) NSMutableArray *browseCategorys; // @synthesize browseCategorys=_browseCategorys;
 @property (strong, nonatomic) GEOPDRelatedSearchSuggestion *defaultRelatedSearchSuggestion; // @synthesize defaultRelatedSearchSuggestion=_defaultRelatedSearchSuggestion;
 @property (strong, nonatomic) GEOMapRegion *displayMapRegion; // @synthesize displayMapRegion=_displayMapRegion;
+@property (nonatomic) BOOL enablePartialClientization; // @synthesize enablePartialClientization=_enablePartialClientization;
 @property (readonly, nonatomic) BOOL hasDefaultRelatedSearchSuggestion;
 @property (readonly, nonatomic) BOOL hasDisplayMapRegion;
+@property (nonatomic) BOOL hasEnablePartialClientization;
 @property (nonatomic) BOOL hasIsChainResultSet;
 @property (readonly, nonatomic) BOOL hasSearchClientBehavior;
 @property (nonatomic) BOOL isChainResultSet; // @synthesize isChainResultSet=_isChainResultSet;
@@ -34,15 +42,20 @@
 @property (strong, nonatomic) GEOPDSearchClientBehavior *searchClientBehavior; // @synthesize searchClientBehavior=_searchClientBehavior;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)browseCategoryType;
 + (Class)relatedSearchSuggestionType;
 + (Class)resultDetourInfoType;
+- (void).cxx_destruct;
+- (void)addBrowseCategory:(id)arg1;
 - (void)addRelatedSearchSuggestion:(id)arg1;
 - (void)addResultDetourInfo:(id)arg1;
+- (id)browseCategoryAtIndex:(unsigned long long)arg1;
+- (unsigned long long)browseCategorysCount;
+- (void)clearBrowseCategorys;
 - (void)clearRelatedSearchSuggestions;
 - (void)clearResultDetourInfos;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -32,8 +32,8 @@
 - (BOOL)performLatestSummaryQueryPPTTest:(id)arg1 date:(id)arg2;
 - (BOOL)performPPTTest:(id)arg1 anchoredQueryForType:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 withLimit:(long long)arg5 anchor:(long long)arg6;
 - (BOOL)performPPTTest:(id)arg1 collectionQueryForType:(id)arg2 anchorDate:(id)arg3 startDate:(id)arg4 endDate:(id)arg5 dateIntervalsString:(id)arg6 separateBySource:(BOOL)arg7 average:(BOOL)arg8 minimum:(BOOL)arg9 maximum:(BOOL)arg10 sum:(BOOL)arg11;
-- (BOOL)performPPTTest:(id)arg1 enumerateLocationSeriesWithDatumCount:(long long)arg2;
-- (BOOL)performPPTTest:(id)arg1 insertLocationSeriesWithDatumCount:(long long)arg2 batched:(BOOL)arg3;
+- (BOOL)performPPTTest:(id)arg1 enumerateWorkoutRouteWithDatumCount:(long long)arg2;
+- (BOOL)performPPTTest:(id)arg1 insertWorkoutRouteWithDatumCount:(long long)arg2 batched:(BOOL)arg3;
 - (BOOL)performPPTTest:(id)arg1 preflightHealthDirectory:(id)arg2 sampleTypes:(id)arg3 killHealthd:(BOOL)arg4;
 - (BOOL)performPPTTest:(id)arg1 sampleQueryForType:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 withLimit:(long long)arg5;
 - (BOOL)performPPTTest:(id)arg1 saveDataWithCount:(long long)arg2;

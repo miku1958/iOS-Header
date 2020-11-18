@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class PKContact, PKPaymentToken, PKShippingMethod;
+@class NSData, NSMutableDictionary, PKContact, PKPaymentToken, PKShippingMethod;
 
 @interface PKPayment : NSObject <NSSecureCoding>
 {
@@ -16,10 +16,16 @@
     PKContact *_billingContact;
     PKContact *_shippingContact;
     PKShippingMethod *_shippingMethod;
+    NSData *_credential;
+    NSMutableDictionary *_authKitAuthenticationResults;
+    long long _biometricAuthorizationAttempts;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *authKitAuthenticationResults; // @synthesize authKitAuthenticationResults=_authKitAuthenticationResults;
 @property (readonly, nonatomic) const void *billingAddress;
 @property (strong, nonatomic) PKContact *billingContact; // @synthesize billingContact=_billingContact;
+@property (nonatomic) long long biometricAuthorizationAttempts; // @synthesize biometricAuthorizationAttempts=_biometricAuthorizationAttempts;
+@property (strong, nonatomic) NSData *credential; // @synthesize credential=_credential;
 @property (readonly, nonatomic) const void *shippingAddress;
 @property (strong, nonatomic) PKContact *shippingContact; // @synthesize shippingContact=_shippingContact;
 @property (strong, nonatomic) PKShippingMethod *shippingMethod; // @synthesize shippingMethod=_shippingMethod;

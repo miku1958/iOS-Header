@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOAddressObjectProtocol-Protocol.h>
 
-@class NSString;
-@protocol GEOAddressObjectProtocol;
+@class NSString, _GEOAddressObject;
 
 @interface GEOAddressObject : NSObject <GEOAddressObjectProtocol>
 {
-    id<GEOAddressObjectProtocol> _implementations[2];
+    _GEOAddressObject *_pimpl;
+    int *_knownAccuracy;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,22 +23,25 @@
 @property (readonly, nonatomic) int knownAccuracy;
 @property (readonly) Class superclass;
 
-+ (unsigned char)_implementionType;
 + (id)addressObjectForPlaceData:(id)arg1;
 + (id)addressObjectWithPlaceDataAddressObject:(id)arg1 placeDataAddress:(id)arg2 placeDataInfo:(id)arg3 placeDataEntity:(id)arg4;
++ (BOOL)isLoggingDebug;
 + (BOOL)isMarkingMMStrings;
-+ (BOOL)isUsingMM;
-+ (BOOL)isUsingV1Behavior;
 + (id)libraryVersion;
 + (void)markMMStrings:(BOOL)arg1;
-+ (void)useMM:(BOOL)arg1;
-+ (void)useV1Behavior:(BOOL)arg1;
-- (id)_implemention;
++ (void)setLoggingDebug:(BOOL)arg1;
+- (void).cxx_destruct;
 - (id)address;
 - (id)addressDictionary;
 - (id)cityDisplayNameWithFallback:(BOOL)arg1;
+- (id)cnPostalAddress;
 - (void)dealloc;
+- (id)fullAddressNoCurrentCountryWithMultiline:(BOOL)arg1;
 - (id)fullAddressWithMultiline:(BOOL)arg1;
+- (id)fullAddressWithMultiline:(BOOL)arg1 relative:(id)arg2;
+- (id)initWithCNPostalAddress:(id)arg1 langauge:(id)arg2 country:(id)arg3 phoneticLocale:(id)arg4;
+- (id)initWithContactAddressDictionary:(id)arg1 langauge:(id)arg2 country:(id)arg3 phoneticLocale:(id)arg4;
+- (id)initWithCurrentCountry;
 - (id)initWithPlaceDataAddressObject:(id)arg1 placeDataAddress:(id)arg2 placeDataInfo:(id)arg3 placeDataEntity:(id)arg4 language:(id)arg5 country:(id)arg6 phoneticLocale:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (id)name;
@@ -53,6 +56,10 @@
 - (id)spokenName;
 - (id)spokenStructuredAddress;
 - (id)titlesForMapRect:(CDStruct_90e2a262)arg1;
+- (id)venueLabel;
+- (id)venueLabel:(long long)arg1;
+- (id)venueLevel;
+- (id)venueShortAddress;
 - (id)weatherDisplayName;
 
 @end

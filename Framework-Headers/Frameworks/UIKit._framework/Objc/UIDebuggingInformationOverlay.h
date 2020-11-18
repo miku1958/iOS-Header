@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
 + (void)prepareDebuggingOverlay;
 + (void)pushDisableApplyingConfigurations;
 - (void).cxx_destruct;
-- (void)_handleActivationGesture:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;

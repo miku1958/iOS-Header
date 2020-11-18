@@ -11,8 +11,8 @@
 #import <PhotosUICore/PXWidget-Protocol.h>
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, PXPeopleStripCollectionViewController, PXPeopleWidgetDataSource, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXUITapGestureRecognizer, PXWidgetSpec, UIFont, UIView;
-@protocol PXAnonymousView, PXWidgetDelegate;
+@class NSString, PXPeopleStripCollectionViewController, PXPeopleWidgetDataSource, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXUITapGestureRecognizer, PXWidgetSpec;
+@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate;
 
 @interface PXPeopleRelatedWidget : NSObject <PXPeopleStripCollectionViewControllerDelegate, PXPeopleDataSourceDelegate, UIGestureRecognizerDelegate, PXWidget>
 {
@@ -20,16 +20,16 @@
     BOOL _isSummaryMode;
     BOOL _showFooter;
     BOOL _startedLoadingDataSource;
+    BOOL _hasLoadedContentData;
     id<PXWidgetDelegate> _widgetDelegate;
     PXPhotosDetailsContext *_context;
     PXWidgetSpec *_spec;
     long long _contentViewAnchoringType;
-    UIView *_containerView;
+    id<PXWidgetUnlockDelegate> _widgetUnlockDelegate;
     PXPeopleStripCollectionViewController *_collectionViewController;
     double _cellMinInteritemSpacing;
     double _cellMinLineSpacing;
     PXPeopleWidgetDataSource *_dataSource;
-    UIFont *_currentLabelFont;
     unsigned long long _viewType;
     PXUITapGestureRecognizer *__tapRecognizer;
     double _targetPrefetchWidth;
@@ -43,20 +43,18 @@
 @property (nonatomic) double cellMinLineSpacing; // @synthesize cellMinLineSpacing=_cellMinLineSpacing;
 @property (nonatomic) struct CGSize cellSize; // @synthesize cellSize=_cellSize;
 @property (strong, nonatomic) PXPeopleStripCollectionViewController *collectionViewController; // @synthesize collectionViewController=_collectionViewController;
-@property (strong, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property (readonly, nonatomic) long long contentLayoutStyle;
 @property (nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property (readonly, nonatomic) PXTilingController *contentTilingController;
 @property (readonly, nonatomic) NSObject<PXAnonymousView> *contentView;
 @property (readonly, nonatomic) long long contentViewAnchoringType; // @synthesize contentViewAnchoringType=_contentViewAnchoringType;
 @property (strong, nonatomic) PXPhotosDetailsContext *context; // @synthesize context=_context;
-@property (strong, nonatomic) UIFont *currentLabelFont; // @synthesize currentLabelFont=_currentLabelFont;
 @property (strong, nonatomic) PXPeopleWidgetDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isFaceModeEnabled) BOOL faceModeEnabled;
 @property (readonly, nonatomic) BOOL hasContentForCurrentInput;
-@property (readonly, nonatomic) BOOL hasLoadedContentData;
+@property (nonatomic, setter=_setHasLoadedContentData:) BOOL hasLoadedContentData; // @synthesize hasLoadedContentData=_hasLoadedContentData;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isSummaryMode; // @synthesize isSummaryMode=_isSummaryMode;
 @property (readonly, nonatomic) NSString *localizedCaption;
@@ -75,30 +73,24 @@
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
 @property (nonatomic) unsigned long long viewType; // @synthesize viewType=_viewType;
 @property (weak, nonatomic) id<PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
+@property (weak, nonatomic) id<PXWidgetUnlockDelegate> widgetUnlockDelegate; // @synthesize widgetUnlockDelegate=_widgetUnlockDelegate;
 
 - (void).cxx_destruct;
 - (BOOL)_calculateLayoutInfosForWidth:(double)arg1 cellSize:(struct CGSize *)arg2 interitemSpacing:(double *)arg3;
-- (BOOL)_canFitToHeight:(double)arg1 width:(double)arg2 textLabel:(id)arg3;
-- (struct CGRect)_collectionViewFrameFromContentFrame:(struct CGRect)arg1;
 - (void)_handleTap:(id)arg1;
 - (void)_loadContainerView;
-- (double)_maxLabelHeightForWidth:(double)arg1;
-- (id)_nameStringForPeople:(id)arg1 font:(id)arg2 width:(double)arg3;
 - (unsigned long long)_numberOfVisibleFacesForWidth:(double)arg1;
 - (void)_prepareDataSource;
 - (struct UIEdgeInsets)_realContentInset;
 - (void)_resetControllerLayoutInfosForWidth:(double)arg1;
 - (struct CGSize)_sizeForItemWithWidth:(double)arg1 withInterItemSpacing:(double)arg2;
 - (void)contentSizeCategoryChanged:(id)arg1;
-- (void)contentViewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-- (id)currentNameLabelFont;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithViewType:(unsigned long long)arg1;
 - (void)loadContentData;
 - (void)memberTappedAtIndexPath:(id)arg1 forPeopleStripController:(id)arg2;
 - (double)minimumInteritemSpacing;
 - (double)minimumLineSpacing;
-- (id)nameStringForPeople:(id)arg1 font:(id)arg2 width:(double)arg3 outHeight:(double *)arg4;
 - (void)peopleDataSource:(id)arg1 didAddMembersAtIndexPaths:(id)arg2;
 - (void)peopleDataSource:(id)arg1 didApplyIncrementalChanges:(id)arg2;
 - (void)peopleDataSource:(id)arg1 didRemoveMembersAtIndexPaths:(id)arg2;
@@ -109,7 +101,6 @@
 - (struct CGSize)sizeForItem;
 - (id)traitCollection;
 - (void)unloadContentData;
-- (double)verticalSpacingForFaceAndText;
 
 @end
 

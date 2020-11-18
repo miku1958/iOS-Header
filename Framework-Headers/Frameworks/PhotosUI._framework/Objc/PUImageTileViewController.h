@@ -9,15 +9,18 @@
 #import <PhotosUI/PUAssetViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PUImageRequesterObserver-Protocol.h>
 
-@class NSData, NSDate, NSString, PLTiledLayer, PUAssetViewModel, PUImageRequester, PUMediaProvider, UIColor, UIImage, UIImageView;
-@protocol PUDisplayAsset;
+@class CALayer, NSData, NSDate, NSString, NSURL, PUAssetViewModel, PUImageRequester, PUMediaProvider, PXImageLayerModulator, PXImageModulationManager, UIColor, UIImage, UIImageView;
+@protocol PLTileableLayer, PUDisplayAsset;
 
 __attribute__((visibility("hidden")))
 @interface PUImageTileViewController : PUTileViewController <PUImageRequesterObserver, PUAssetViewModelChangeObserver>
 {
     BOOL _animatesImageAppearance;
-    BOOL _shouldUseFullsizeJPEG;
+    BOOL _shouldUseFullsizeImageData;
+    BOOL _imageIsFullQuality;
     BOOL __needsUpdateImage;
+    BOOL __needsUpdateImageLayerModulator;
+    BOOL __needsUpdateImageLayerModulatorInput;
     BOOL __needsUpdateImageView;
     BOOL __needsUpdateFullsizeImageMetadata;
     BOOL __needsUpdateFullsizeTiledLayer;
@@ -25,14 +28,17 @@ __attribute__((visibility("hidden")))
     PUAssetViewModel *_assetViewModel;
     id<PUDisplayAsset> _asset;
     PUMediaProvider *_mediaProvider;
+    PXImageModulationManager *_imageModulationManager;
     UIColor *_placeholderColor;
     UIImageView *__imageView;
-    NSData *__fullsizeJPEGData;
+    NSData *__fullsizeImageData;
+    NSURL *__fullsizeImageURL;
     long long __fullsizeImageOrientation;
-    PLTiledLayer *__fullsizeTiledLayer;
+    CALayer<PLTileableLayer> *__fullsizeTiledLayer;
     long long __assetLoadingStage;
     NSDate *__assetLoadingStartDate;
     PUImageRequester *__imageRequester;
+    PXImageLayerModulator *_imageLayerModulator;
     UIImage *_image;
     struct CGSize __targetSize;
     struct CGSize __fullsizeImageUntransformedSize;
@@ -41,17 +47,20 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic, setter=_setAssetLoadingStage:) long long _assetLoadingStage; // @synthesize _assetLoadingStage=__assetLoadingStage;
 @property (strong, nonatomic, setter=_setAssetLoadingStartDate:) NSDate *_assetLoadingStartDate; // @synthesize _assetLoadingStartDate=__assetLoadingStartDate;
+@property (strong, nonatomic, setter=_setFullsizeImageData:) NSData *_fullsizeImageData; // @synthesize _fullsizeImageData=__fullsizeImageData;
 @property (nonatomic, setter=_setFullsizeImageOrientation:) long long _fullsizeImageOrientation; // @synthesize _fullsizeImageOrientation=__fullsizeImageOrientation;
 @property (nonatomic, setter=_setFullsizeImageSize:) struct CGSize _fullsizeImageSize; // @synthesize _fullsizeImageSize=__fullsizeImageSize;
+@property (strong, nonatomic, setter=_setFullsizeImageURL:) NSURL *_fullsizeImageURL; // @synthesize _fullsizeImageURL=__fullsizeImageURL;
 @property (nonatomic, setter=_setFullsizeImageUntransformedSize:) struct CGSize _fullsizeImageUntransformedSize; // @synthesize _fullsizeImageUntransformedSize=__fullsizeImageUntransformedSize;
-@property (strong, nonatomic, setter=_setFullsizeJPEGData:) NSData *_fullsizeJPEGData; // @synthesize _fullsizeJPEGData=__fullsizeJPEGData;
-@property (strong, nonatomic, setter=_setFullsizeTiledLayer:) PLTiledLayer *_fullsizeTiledLayer; // @synthesize _fullsizeTiledLayer=__fullsizeTiledLayer;
+@property (strong, nonatomic, setter=_setFullsizeTiledLayer:) CALayer<PLTileableLayer> *_fullsizeTiledLayer; // @synthesize _fullsizeTiledLayer=__fullsizeTiledLayer;
 @property (strong, nonatomic, setter=_setImageRequester:) PUImageRequester *_imageRequester; // @synthesize _imageRequester=__imageRequester;
 @property (readonly, nonatomic) UIImageView *_imageView; // @synthesize _imageView=__imageView;
 @property (nonatomic, setter=_setDisplayingFullQualityImage:) BOOL _isDisplayingFullQualityImage; // @synthesize _isDisplayingFullQualityImage=__isDisplayingFullQualityImage;
 @property (nonatomic, setter=_setNeedsUpdateFullsizeImageMetadata:) BOOL _needsUpdateFullsizeImageMetadata; // @synthesize _needsUpdateFullsizeImageMetadata=__needsUpdateFullsizeImageMetadata;
 @property (nonatomic, setter=_setNeedsUpdateFullsizeTiledLayer:) BOOL _needsUpdateFullsizeTiledLayer; // @synthesize _needsUpdateFullsizeTiledLayer=__needsUpdateFullsizeTiledLayer;
 @property (nonatomic, setter=_setNeedsUpdateImage:) BOOL _needsUpdateImage; // @synthesize _needsUpdateImage=__needsUpdateImage;
+@property (nonatomic, setter=_setNeedsUpdateImageLayerModulator:) BOOL _needsUpdateImageLayerModulator; // @synthesize _needsUpdateImageLayerModulator=__needsUpdateImageLayerModulator;
+@property (nonatomic, setter=_setNeedsUpdateImageLayerModulatorInput:) BOOL _needsUpdateImageLayerModulatorInput; // @synthesize _needsUpdateImageLayerModulatorInput=__needsUpdateImageLayerModulatorInput;
 @property (nonatomic, setter=_setNeedsUpdateImageView:) BOOL _needsUpdateImageView; // @synthesize _needsUpdateImageView=__needsUpdateImageView;
 @property (nonatomic, setter=_setTargetSize:) struct CGSize _targetSize; // @synthesize _targetSize=__targetSize;
 @property (nonatomic) BOOL animatesImageAppearance; // @synthesize animatesImageAppearance=_animatesImageAppearance;
@@ -60,12 +69,16 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (readonly, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (readonly, nonatomic) BOOL imageIsFullQuality; // @synthesize imageIsFullQuality=_imageIsFullQuality;
+@property (strong, nonatomic) PXImageLayerModulator *imageLayerModulator; // @synthesize imageLayerModulator=_imageLayerModulator;
+@property (strong, nonatomic) PXImageModulationManager *imageModulationManager; // @synthesize imageModulationManager=_imageModulationManager;
 @property (strong, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (copy, nonatomic) UIColor *placeholderColor; // @synthesize placeholderColor=_placeholderColor;
-@property (nonatomic) BOOL shouldUseFullsizeJPEG; // @synthesize shouldUseFullsizeJPEG=_shouldUseFullsizeJPEG;
+@property (nonatomic) BOOL shouldUseFullsizeImageData; // @synthesize shouldUseFullsizeImageData=_shouldUseFullsizeImageData;
 @property (readonly) Class superclass;
 
++ (id)_supportedZoomImageFormats;
 - (void).cxx_destruct;
 - (void)_cancelAllImageRequests;
 - (void)_handleAssetViewModel:(id)arg1 didChange:(id)arg2;
@@ -73,14 +86,19 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateFullsizeImageMetadata;
 - (void)_invalidateFullsizeTiledLayer;
 - (void)_invalidateImage;
+- (void)_invalidateImageLayerModulator;
+- (void)_invalidateImageLayerModulatorInput;
 - (void)_invalidateImageView;
 - (BOOL)_needsUpdate;
+- (void)_setImage:(id)arg1 isFullQuality:(BOOL)arg2;
 - (void)_setNeedsUpdate;
 - (void)_updateAssetLoadingStage;
 - (void)_updateFullsizeImageMetadataIfNeeded;
 - (void)_updateFullsizeTiledLayerIfNeeded;
 - (void)_updateIfNeeded;
 - (void)_updateImageIfNeeded;
+- (void)_updateImageLayerModulatorIfNeeded;
+- (void)_updateImageLayerModulatorInputIfNeeded;
 - (void)_updateImageViewIfNeeded;
 - (void)_updateReadyForDisplay;
 - (void)applyLayoutInfo:(id)arg1;
@@ -96,6 +114,8 @@ __attribute__((visibility("hidden")))
 - (void)mediaProviderDidChange;
 - (void)setEdgeAntialiasingEnabled:(BOOL)arg1;
 - (void)setPreloadedImage:(id)arg1;
+- (BOOL)shouldAvoidInPlaceSnapshottedFadeOut;
+- (void)updateMutableImageLayerModulator:(id)arg1;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 - (BOOL)wantsVisibleRectChanges;
 

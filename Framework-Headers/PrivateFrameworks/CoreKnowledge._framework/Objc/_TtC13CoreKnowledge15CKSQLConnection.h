@@ -6,14 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSString, _TtC13CoreKnowledge8CKLogger;
+@class MISSING_TYPE, NSString;
 
 @interface _TtC13CoreKnowledge15CKSQLConnection : NSObject
 {
     MISSING_TYPE *_handle;
-    MISSING_TYPE *name;
     MISSING_TYPE *path;
-    MISSING_TYPE *log;
     MISSING_TYPE *queue;
     MISSING_TYPE *queueContext.storage;
 }
@@ -21,8 +19,6 @@
 @property (nonatomic, readonly) long long changes;
 @property (nonatomic, readonly) NSString *description;
 @property (nonatomic, readonly) void *handle;
-@property (nonatomic, readonly) _TtC13CoreKnowledge8CKLogger *log; // @synthesize log;
-@property (nonatomic, readonly) NSString *name; // @synthesize name;
 @property (nonatomic, readonly) NSString *path; // @synthesize path;
 @property (nonatomic, readonly) BOOL readonly;
 @property (nonatomic, readonly) long long totalChanges;

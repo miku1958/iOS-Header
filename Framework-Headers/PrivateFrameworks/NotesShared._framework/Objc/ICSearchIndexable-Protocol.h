@@ -6,29 +6,27 @@
 
 #import <NotesShared/NSObject-Protocol.h>
 
-@class CSSearchableItemAttributeSet, ICGenerateSearchIndexStringsOperation, NSArray, NSDate, NSDictionary, NSManagedObjectContext, NSManagedObjectID, NSString;
+@class CSSearchableItemAttributeSet, NSArray, NSData, NSDate, NSManagedObjectContext, NSManagedObjectID, NSString, NSURL;
 
 @protocol ICSearchIndexable <NSObject>
 - (NSArray *)authorsExcludingCurrentUser;
+- (NSDate *)creationDate;
 - (NSString *)identifier;
 - (BOOL)isHiddenFromSearch;
 - (NSManagedObjectContext *)managedObjectContext;
 - (NSDate *)modificationDate;
 - (NSManagedObjectID *)objectID;
-- (NSString *)objectIdentifier;
 - (NSString *)searchDomainIdentifier;
-- (NSArray *)searchIndexStringsOutHasAdditionalStrings:(BOOL *)arg1;
-- (NSString *)searchIndexableTitleUsingContentTextIfNecessary:(NSString *)arg1;
 - (BOOL)searchResultCanBeDeletedFromNoteContext;
+- (unsigned long long)searchResultType;
 - (unsigned long long)searchResultsSection;
 - (CSSearchableItemAttributeSet *)searchableItemAttributeSet;
 - (NSString *)searchableItemIdentifier;
-- (BOOL)shouldUpdateIndexForChangedValues:(NSDictionary *)arg1;
 - (long long)visibilityTestingType;
 
 @optional
-- (ICGenerateSearchIndexStringsOperation *)generateSearchIndexStringsOperation;
+- (NSData *)dataForTypeIdentifier:(NSString *)arg1;
+- (NSURL *)fileURLForTypeIdentifier:(NSString *)arg1;
 - (BOOL)ignoreInSearchIndexer;
-- (void)releaseMemoryForIndexing;
 @end
 

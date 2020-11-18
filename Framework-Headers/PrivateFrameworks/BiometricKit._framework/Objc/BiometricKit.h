@@ -39,6 +39,7 @@
 - (void)dealloc;
 - (void)delegateStatusMessage:(unsigned int)arg1;
 - (int)detectFingerWithOptions:(id)arg1;
+- (int)detectPresenceWithOptions:(id)arg1;
 - (int)diagnostics:(int)arg1 withOptions:(id)arg2 passed:(BOOL *)arg3 withDetails:(id *)arg4;
 - (int)dropUnlockToken;
 - (int)enableBackgroundFdet:(BOOL)arg1;

@@ -8,13 +8,16 @@
 
 #import <PreferencesUI/AAUISignInControllerDelegate-Protocol.h>
 #import <PreferencesUI/DevicePINControllerDelegate-Protocol.h>
-#import <PreferencesUI/PSSearchControllerDelegate-Protocol.h>
+#import <PreferencesUI/PSSpotlightSearchResultsControllerDelegate-Protocol.h>
 #import <PreferencesUI/RadiosPreferencesDelegate-Protocol.h>
+#import <PreferencesUI/UISearchBarDelegate-Protocol.h>
+#import <PreferencesUI/UISearchControllerDelegate-Protocol.h>
+#import <PreferencesUI/UISearchResultsUpdating-Protocol.h>
 
-@class AAUIProfilePictureStore, ACAccountStore, EAAccessory, NSArray, NSDictionary, NSObject, NSSet, NSString, PSSearchController, PSSpecifier, PSUIClassroomVisibilityArbitrator, PSUIHomeKitVisibilityArbitrator, UIViewController, VSAccountStore;
+@class AAUIProfilePictureStore, ACAccountStore, AIDAServiceOwnersManager, CSSearchQuery, EAAccessory, HFHomeSettingsVisibilityArbitrator, NSArray, NSDictionary, NSObject, NSSet, NSString, PSKeyboardNavigationSearchController, PSSpecifier, PSSpotlightSearchResultsController, PSUIClassroomVisibilityArbitrator, PSUIHealthKitVisibilityArbitrator, UIViewController, VSAccountStore;
 @protocol OS_dispatch_queue, PSController;
 
-@interface PSUIPrefsListController : PSListController <PSSearchControllerDelegate, AAUISignInControllerDelegate, RadiosPreferencesDelegate, DevicePINControllerDelegate>
+@interface PSUIPrefsListController : PSListController <AAUISignInControllerDelegate, UISearchResultsUpdating, PSSpotlightSearchResultsControllerDelegate, UISearchBarDelegate, UISearchControllerDelegate, RadiosPreferencesDelegate, DevicePINControllerDelegate>
 {
     BOOL _didFirstLoad;
     EAAccessory *_speakerAccessory;
@@ -28,12 +31,7 @@
     PSSpecifier *_wallpaperSpecifier;
     PSSpecifier *_passcodeSpecifier;
     PSSpecifier *_appleAccountSpecifier;
-    PSSpecifier *_twitterSpecifier;
-    PSSpecifier *_facebookSpecifier;
-    PSSpecifier *_flickrSpecifier;
-    PSSpecifier *_vimeoSpecifier;
-    PSSpecifier *_weiboSpecifier;
-    PSSpecifier *_tencentweiboSpecifier;
+    PSSpecifier *_videoSubscriberGroupSpecifier;
     PSSpecifier *_videoSubscriberSpecifier;
     PSSpecifier *_messagesSpecifier;
     PSSpecifier *_faceTimeSpecifier;
@@ -43,6 +41,7 @@
     PSSpecifier *_personalHotspotSpecifier;
     PSSpecifier *_classroomSpecifier;
     PSSpecifier *_homeKitSpecifier;
+    PSSpecifier *_healthKitSpecifier;
     BOOL _wifiValueIsClean;
     BOOL _bluetoothValueIsClean;
     NSArray *_originalSpecifiers;
@@ -52,14 +51,18 @@
     ACAccountStore *_accountStore;
     NSString *_pendingOffsetItemName;
     PSUIClassroomVisibilityArbitrator *_classroomVisibilityArbitrator;
-    PSUIHomeKitVisibilityArbitrator *_homeKitVisibilityArbitrator;
+    HFHomeSettingsVisibilityArbitrator *_homeKitVisibilityArbitrator;
+    PSUIHealthKitVisibilityArbitrator *_healthKitVisibilityArbitrator;
     VSAccountStore *_videoSubscriberAccountStore;
+    AIDAServiceOwnersManager *_serviceOwnersManager;
     AAUIProfilePictureStore *_profilePictureStore;
+    PSSpecifier *_specifierToSelect;
     BOOL _skipSelectingGeneralOnLaunch;
-    PSSearchController *_searchController;
-    NSString *_searchText;
     NSString *_wifiString;
     NSString *_bluetoothString;
+    PSKeyboardNavigationSearchController *_spotlightSearchController;
+    PSSpotlightSearchResultsController *_spotlightResultsController;
+    CSSearchQuery *_searchQuery;
 }
 
 @property (copy, nonatomic) NSString *bluetoothString; // @synthesize bluetoothString=_bluetoothString;
@@ -67,20 +70,21 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) PSSearchController *searchController; // @synthesize searchController=_searchController;
-@property (copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
+@property (strong, nonatomic) CSSearchQuery *searchQuery; // @synthesize searchQuery=_searchQuery;
 @property (nonatomic) BOOL skipSelectingGeneralOnLaunch; // @synthesize skipSelectingGeneralOnLaunch=_skipSelectingGeneralOnLaunch;
+@property (strong, nonatomic) PSSpotlightSearchResultsController *spotlightResultsController; // @synthesize spotlightResultsController=_spotlightResultsController;
+@property (strong, nonatomic) PSKeyboardNavigationSearchController *spotlightSearchController; // @synthesize spotlightSearchController=_spotlightSearchController;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *wifiString; // @synthesize wifiString=_wifiString;
 
 + (BOOL)airplaneMode;
-+ (void)formatSearchEntries:(id)arg1 parent:(id)arg2;
 + (id)radiosPreferences;
 + (void)setAirplaneMode:(BOOL)arg1;
 - (void).cxx_destruct;
 - (id)_accountStore;
 - (void)_beginObservingAccountStoreDidChangeNotification;
-- (void)_beginObservingVideoSubscriberAccountStoreDidChangeNotification;
+- (BOOL)_canSelectSpecifierAtIndexPath:(id)arg1;
+- (void)_downArrowKeyPressed;
 - (void)_insertOrRemovePaymentSpecifierAsNeededCompletion:(CDUnknownBlockType)arg1;
 - (void)_loadThirdPartySpecifiersIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_loadThirdPartySpecifiersWithCompletion:(CDUnknownBlockType)arg1;
@@ -90,6 +94,7 @@
 - (id)_primarySpecifierOrdering;
 - (id)_profilePictureStore;
 - (void)_reallyLoadThirdPartySpecifiersForApps:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)_serviceOwnersManager;
 - (void)_setAirplaneMode:(BOOL)arg1;
 - (void)_setupAppleAccountSpecifier:(id)arg1;
 - (void)_setupAppleAccountSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -97,10 +102,13 @@
 - (BOOL)_showCarrier;
 - (void)_showControllerFromSpecifier:(id)arg1;
 - (void)_showDetailTargetDidChange:(id)arg1;
+- (BOOL)_showSOS;
 - (id)_sidebarSpecifierForCategoryController;
 - (void)_simStatusChanged:(struct __CFString *)arg1;
 - (id)_specifierDictionaryForBundlePath:(id)arg1 identifier:(id)arg2 internalIcon:(BOOL)arg3 searchPlist:(id)arg4;
 - (id)_specifierDictionaryForDeveloperBundlePath:(id)arg1 identifier:(id)arg2;
+- (void)_tabKeyPressed;
+- (void)_upArrowKeyPressed;
 - (void)_videoSubscriberAccountAvailabilityDidChange:(id)arg1;
 - (void)_videoSubscriberAccountStoreDidChange:(id)arg1;
 - (void)airplaneModeChanged;
@@ -108,6 +116,7 @@
 - (void)bluetoothPowerChanged:(id)arg1;
 - (id)bluetoothValue:(id)arg1;
 - (void)bluetoothValueFetch:(id)arg1;
+- (BOOL)canBecomeFirstResponder;
 - (id)cellularDataStatusForSpecifier:(id)arg1;
 - (id)cellularDisabledStatusForSpecifier:(id)arg1;
 - (void)checkDeveloperSettingsState;
@@ -120,6 +129,8 @@
 - (BOOL)deviceSupportsApplePay;
 - (void)didAcceptEnteredPIN:(id)arg1;
 - (void)didCancelEnteringPIN;
+- (void)didDismissSearchController:(id)arg1;
+- (void)dismissPopover;
 - (void)displayIdentifiersChanged;
 - (id)dndGlobalState:(id)arg1;
 - (id)generalViewController;
@@ -128,14 +139,19 @@
 - (BOOL)handlePendingURL;
 - (void)iMessageSupportMayHaveChanged;
 - (id)identifierForSelectedIndex;
+- (void)indexIfNeeded;
 - (id)init;
 - (void)insertMovedThirdPartySpecifiersAnimated:(BOOL)arg1;
 - (void)insertOrderedSpecifier:(id)arg1 animated:(BOOL)arg2;
+- (long long)insertionIndexForSpecifier:(id)arg1 inSpecifiers:(id)arg2;
 - (BOOL)isBundleIDHiddenDueToRestrictions:(id)arg1;
 - (BOOL)isSpecifierHiddenDueToRestrictions:(id)arg1;
+- (id)keyCommands;
 - (void)lazyLoadSpecialBundleForSpecifier:(id)arg1;
 - (void)loadPPTTestSpecifiers:(int)arg1;
 - (void)loadThirdPartySpecifierIfNeededForBundleID:(id)arg1;
+- (void)loadView;
+- (long long)navigationItemLargeTitleDisplayMode;
 - (void)networkChanged;
 - (id)passbookSpecifier;
 - (id)phoneStatusForSpecifier:(id)arg1;
@@ -145,8 +161,11 @@
 - (void)reloadSpecifiers;
 - (void)removeAndReload3rdPartyBundles;
 - (void)rerootNavigationController;
-- (id)rootSpecifiersForSearchController:(id)arg1;
-- (void)searchController:(id)arg1 openURL:(id)arg2;
+- (BOOL)searchBarShouldEndEditing:(id)arg1;
+- (void)searchBarTextDidEndEditing:(id)arg1;
+- (void)searchResultsController:(id)arg1 didSelectURL:(id)arg2;
+- (id)searchResultsController:(id)arg1 iconForCategory:(id)arg2;
+- (long long)searchResultsController:(id)arg1 sortCategory1:(id)arg2 sortCategory2:(id)arg3;
 - (void)selectGeneralCategory;
 - (void)selectGeneralCategoryForced:(BOOL)arg1;
 - (void)selectGeneralCategoryForced:(BOOL)arg1 showController:(BOOL)arg2;
@@ -155,10 +174,10 @@
 - (void)setShowsCarrierSettingsMenu:(BOOL)arg1;
 - (void)setSpeakerAccessory:(id)arg1 eqAvailable:(BOOL)arg2;
 - (void)setupPrimaryAppleAccountGroup:(id)arg1;
-- (void)setupSearchBar;
 - (BOOL)shouldDeferPushForSpecifierID:(id)arg1;
 - (BOOL)shouldReloadSpecifiersOnResume;
 - (BOOL)shouldShowEthernetSpecifier;
+- (void)showDeviceSupervisionInfo;
 - (void)showPINSheet:(id)arg1;
 - (void)signInController:(id)arg1 didCompleteWithSuccess:(BOOL)arg2 error:(id)arg3;
 - (void)signInControllerDidCancel:(id)arg1;
@@ -172,15 +191,15 @@
 - (void)updateAccountSpecifiers;
 - (void)updateClassroomSpecifier;
 - (void)updateEthernet;
+- (void)updateHealthKitSpecifier;
 - (void)updateHomeKitSpecifier;
 - (void)updateRestrictedSettings;
+- (void)updateSearchResultsForSearchController:(id)arg1;
 - (void)updateShowsCarrierSettingsMenuVisibility;
-- (void)updateWeiboState;
 - (void)updateWifi;
 - (id)videoSubscriberAccountValue:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidDisappear:(BOOL)arg1;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)wifiGetCurrentWiFiNetwork:(id)arg1;
 - (id)wifiNetwork:(id)arg1;
 - (void)wifiNetworkFetch:(id)arg1;
 - (void)willBecomeActive;

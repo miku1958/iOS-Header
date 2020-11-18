@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFLogOutUserRequest.h>
 
-@interface DMFLogoutUserRequest : CATTaskRequest
+@interface DMFLogoutUserRequest : DMFLogOutUserRequest
 {
 }
 

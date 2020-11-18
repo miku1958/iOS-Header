@@ -18,9 +18,9 @@
 }
 
 @property (strong, nonatomic) NSCharacterSet *commonCharacters; // @synthesize commonCharacters=_commonCharacters;
-@property (nonatomic) AXDialectMap *dialectForCurrentLocale;
-@property (nonatomic) AXDialectMap *dialectForSystemLanguage;
-@property (readonly, nonatomic) AXDialectMap *dialectForUserLocale;
+@property (weak, nonatomic) AXDialectMap *dialectForCurrentLocale;
+@property (weak, nonatomic) AXDialectMap *dialectForSystemLanguage;
+@property (readonly, weak, nonatomic) AXDialectMap *dialectForUserLocale;
 @property (strong, nonatomic) NSArray *langMaps; // @synthesize langMaps=_langMaps;
 @property (readonly, nonatomic) NSString *systemLanguageID;
 @property (copy, nonatomic) NSLocale *userLocale; // @synthesize userLocale=_userLocale;
@@ -33,6 +33,7 @@
 + (id)sharedInstance;
 + (id)stringByReplacingEmojiCharactersWithEmojiDescriptions:(id)arg1;
 + (id)stringByReplacingFatWidthCharactersWithBasicCharacters:(id)arg1;
+- (void).cxx_destruct;
 - (void)_handleUserLocaleDidChange:(id)arg1;
 - (id)_loadLangMaps;
 - (id)_preferredLanguageIDsFromUserSelectedKeyboards;

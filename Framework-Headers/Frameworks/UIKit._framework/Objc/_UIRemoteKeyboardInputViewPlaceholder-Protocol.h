@@ -8,6 +8,8 @@
 
 @protocol _UIRemoteKeyboardInputViewPlaceholder
 
+@property (strong, nonatomic) UIView *associatedView;
+@property (strong, nonatomic) UIView *fallbackView;
 @property (nonatomic) struct CGSize fixedSize;
 @property (readonly, strong) UIView *placeheldView;
 

@@ -12,15 +12,16 @@
 {
     CDUnknownBlockType _assertionWasAcquiredHandler;
     CDUnknownBlockType _assertionWasReleasedHandler;
-    NSMutableDictionary *_healdAssertionMap;
+    NSMutableDictionary *_heldAssertionMap;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType assertionWasAcquiredHandler; // @synthesize assertionWasAcquiredHandler=_assertionWasAcquiredHandler;
 @property (copy, nonatomic) CDUnknownBlockType assertionWasReleasedHandler; // @synthesize assertionWasReleasedHandler=_assertionWasReleasedHandler;
-@property (strong, nonatomic) NSMutableDictionary *healdAssertionMap; // @synthesize healdAssertionMap=_healdAssertionMap;
+@property (strong, nonatomic) NSMutableDictionary *heldAssertionMap; // @synthesize heldAssertionMap=_heldAssertionMap;
 
+- (void).cxx_destruct;
 - (void)addHeldAssertionOfType:(id)arg1 byClient:(id)arg2;
-- (void)dealloc;
+- (id)clientsHoldingAssertionOfType:(id)arg1;
 - (id)description;
 - (id)init;
 - (void)removeHeldAssertionOfType:(id)arg1 byClient:(id)arg2;

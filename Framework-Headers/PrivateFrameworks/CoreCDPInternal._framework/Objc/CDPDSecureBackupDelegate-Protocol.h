@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CDPDSecureBackupController, NSString;
+@class CDPDSecureBackupContext, CDPDSecureBackupController, NSString;
 
 @protocol CDPDSecureBackupDelegate
 - (NSString *)circlePeerIDForSecureBackupController:(CDPDSecureBackupController *)arg1;
-- (void)promotForLocalSecretWithCompletion:(void (^)(NSString *, unsigned long long, NSError *))arg1;
 - (void)promptForAdoptionOfMultipleICSCWithCompletion:(void (^)(BOOL, NSError *))arg1;
-- (BOOL)synchronizeCircleViewsForSecureBackupController:(CDPDSecureBackupController *)arg1;
+- (void)promptForLocalSecretWithCompletion:(void (^)(NSString *, unsigned long long, NSError *))arg1;
+- (BOOL)synchronizeCircleViewsForSecureBackupContext:(CDPDSecureBackupContext *)arg1;
 @end
 

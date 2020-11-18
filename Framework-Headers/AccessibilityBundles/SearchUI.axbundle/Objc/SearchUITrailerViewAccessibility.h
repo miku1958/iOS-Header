@@ -17,7 +17,7 @@
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
-- (id)initWithMediaItem:(id)arg1 controller:(id)arg2 section:(id)arg3;
+- (id)initWithMediaItem:(id)arg1 cardSectionView:(id)arg2;
 - (BOOL)isAccessibilityElement;
 
 @end

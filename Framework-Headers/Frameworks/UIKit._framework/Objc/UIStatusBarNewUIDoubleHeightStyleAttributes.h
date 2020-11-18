@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIStatusBarNewUIStyleAttributes.h>
+#import <UIKit/UIStatusBarNewUIActionableStyleAttributes.h>
 
 __attribute__((visibility("hidden")))
-@interface UIStatusBarNewUIDoubleHeightStyleAttributes : UIStatusBarNewUIStyleAttributes
+@interface UIStatusBarNewUIDoubleHeightStyleAttributes : UIStatusBarNewUIActionableStyleAttributes
 {
 }
 
 - (double)heightForMetrics:(long long)arg1;
-- (id)initWithRequest:(id)arg1 backgroundColor:(id)arg2 foregroundColor:(id)arg3 hasBusyBackground:(BOOL)arg4;
 - (BOOL)isDoubleHeight;
 
 @end

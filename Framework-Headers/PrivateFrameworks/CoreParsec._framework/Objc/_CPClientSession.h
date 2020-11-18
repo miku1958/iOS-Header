@@ -6,65 +6,70 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreParsec/NSCopying-Protocol.h>
+#import <CoreParsec/NSSecureCoding-Protocol.h>
+#import <CoreParsec/_CPClientSession-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSArray, NSData, NSDictionary, NSString;
 
-@interface _CPClientSession : PBCodable <NSCopying>
+@interface _CPClientSession : PBCodable <_CPClientSession, NSSecureCoding>
 {
-    double _sessionStartSince1970;
-    NSString *_agent;
-    NSMutableArray *_cpResourceVersions;
-    int _previousSessionEndReason;
-    NSMutableArray *_sessionFeedbacks;
-    NSString *_userGuidString;
-    NSString *_version;
-    BOOL _firstUseOfTheDay;
-    BOOL _removeTimestamps;
     struct {
-        unsigned int sessionStartSince1970:1;
+        unsigned int sessionStart:1;
+        unsigned int previousSessionEndReason:1;
         unsigned int firstUseOfTheDay:1;
+        unsigned int firstUseDate:1;
         unsigned int removeTimestamps:1;
     } _has;
+    BOOL _firstUseOfTheDay;
+    BOOL _removeTimestamps;
+    int _previousSessionEndReason;
+    NSString *_agent;
+    NSString *_userGuidString;
+    NSDictionary *_resourceVersions;
+    double _sessionStart;
+    double _firstUseDate;
+    NSString *_version;
+    NSArray *_feedbacks;
 }
 
-@property (strong, nonatomic) NSString *agent; // @synthesize agent=_agent;
-@property (strong, nonatomic) NSMutableArray *cpResourceVersions; // @synthesize cpResourceVersions=_cpResourceVersions;
+@property (copy, nonatomic) NSString *agent; // @synthesize agent=_agent;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSArray *feedbacks; // @synthesize feedbacks=_feedbacks;
+@property (nonatomic) double firstUseDate; // @synthesize firstUseDate=_firstUseDate;
 @property (nonatomic) BOOL firstUseOfTheDay; // @synthesize firstUseOfTheDay=_firstUseOfTheDay;
 @property (readonly, nonatomic) BOOL hasAgent;
-@property (nonatomic) BOOL hasFirstUseOfTheDay;
-@property (nonatomic) BOOL hasRemoveTimestamps;
-@property (nonatomic) BOOL hasSessionStartSince1970;
+@property (readonly, nonatomic) BOOL hasFirstUseDate;
+@property (readonly, nonatomic) BOOL hasFirstUseOfTheDay;
+@property (readonly, nonatomic) BOOL hasPreviousSessionEndReason;
+@property (readonly, nonatomic) BOOL hasRemoveTimestamps;
+@property (readonly, nonatomic) BOOL hasSessionStart;
 @property (readonly, nonatomic) BOOL hasUserGuidString;
 @property (readonly, nonatomic) BOOL hasVersion;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int previousSessionEndReason; // @synthesize previousSessionEndReason=_previousSessionEndReason;
 @property (nonatomic) BOOL removeTimestamps; // @synthesize removeTimestamps=_removeTimestamps;
-@property (strong, nonatomic) NSMutableArray *sessionFeedbacks; // @synthesize sessionFeedbacks=_sessionFeedbacks;
-@property (nonatomic) double sessionStartSince1970; // @synthesize sessionStartSince1970=_sessionStartSince1970;
-@property (strong, nonatomic) NSString *userGuidString; // @synthesize userGuidString=_userGuidString;
-@property (strong, nonatomic) NSString *version; // @synthesize version=_version;
+@property (copy, nonatomic) NSDictionary *resourceVersions; // @synthesize resourceVersions=_resourceVersions;
+@property (nonatomic) double sessionStart; // @synthesize sessionStart=_sessionStart;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *userGuidString; // @synthesize userGuidString=_userGuidString;
+@property (copy, nonatomic) NSString *version; // @synthesize version=_version;
 
-+ (Class)cpResourceVersionType;
-+ (Class)sessionFeedbacksType;
 - (void).cxx_destruct;
-- (int)StringAsPreviousSessionEndReason:(id)arg1;
-- (void)addCpResourceVersion:(id)arg1;
-- (void)addSessionFeedbacks:(id)arg1;
-- (void)clearCpResourceVersions;
-- (void)clearSessionFeedbacks;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)cpResourceVersionAtIndex:(unsigned long long)arg1;
-- (unsigned long long)cpResourceVersionsCount;
-- (id)description;
+- (void)addFeedback:(id)arg1;
+- (void)clearFeedback;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)feedbackAtIndex:(unsigned long long)arg1;
+- (unsigned long long)feedbackCount;
+- (BOOL)getResourceVersions:(id *)arg1 forKey:(id)arg2;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
-- (id)previousSessionEndReasonAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)sessionFeedbacksAtIndex:(unsigned long long)arg1;
-- (unsigned long long)sessionFeedbacksCount;
+- (BOOL)requiresQueryId;
+- (void)setFeedback:(id)arg1;
+- (void)setResourceVersions:(id)arg1 forKey:(id)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

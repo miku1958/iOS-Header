@@ -7,13 +7,11 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (PhotosUI)
-
-@property (readonly, nonatomic) BOOL pu_hasHiddenAncestor;
-
 + (void)_pu_animateWithDuration:(double)arg1 enforced:(BOOL)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)pu_animateWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2;
 + (void)pu_animateWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)pu_animateWithEnforcedDuration:(double)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
++ (double)pu_layoutMarginWidthForCurrentScreenSize;
 + (double)pu_springOscillationRootAtIndex:(long long)arg1 forMass:(double)arg2 stiffness:(double)arg3 damping:(double)arg4 initialVelocity:(double)arg5;
 + (void)pu_transitionWithView:(id)arg1 duration:(double)arg2 options:(unsigned long long)arg3 animations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)_pu_ancestorSharedWithView:(id)arg1;

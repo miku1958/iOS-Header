@@ -6,28 +6,20 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class NSArray, NSString, PXRoundedCornerOverlayView, UILabel;
-@protocol PXPeopleStripCollectionViewCellDataSource;
+@class NSArray, PXRoundedCornerOverlayView;
 
 @interface PXPeopleStripCollectionViewCell : UICollectionViewCell
 {
-    NSString *_nameString;
     NSArray *_people;
-    id<PXPeopleStripCollectionViewCellDataSource> _dataSource;
     NSArray *_groupAvatarViews;
-    UILabel *_avatarLabel;
     PXRoundedCornerOverlayView *_roundCornerOverlay;
 }
 
-@property (strong, nonatomic) UILabel *avatarLabel; // @synthesize avatarLabel=_avatarLabel;
-@property (weak, nonatomic) id<PXPeopleStripCollectionViewCellDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (strong, nonatomic) NSArray *groupAvatarViews; // @synthesize groupAvatarViews=_groupAvatarViews;
-@property (copy, nonatomic) NSString *nameString; // @synthesize nameString=_nameString;
 @property (strong, nonatomic) NSArray *people; // @synthesize people=_people;
 @property (strong, nonatomic) PXRoundedCornerOverlayView *roundCornerOverlay; // @synthesize roundCornerOverlay=_roundCornerOverlay;
 
 - (void).cxx_destruct;
-- (id)_borderedImageFromImage:(id)arg1;
 - (void)_layoutAvatarViewsInFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

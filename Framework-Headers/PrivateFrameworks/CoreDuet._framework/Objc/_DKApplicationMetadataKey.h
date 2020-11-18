@@ -11,6 +11,8 @@
 }
 
 + (id)backboardState;
++ (id)extensionContainingBundleIdentifier;
++ (id)extensionHostIdentifier;
 + (id)launchReason;
 + (id)processIdentifier;
 

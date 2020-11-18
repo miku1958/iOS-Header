@@ -4,37 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <ProactiveSupport/_PASDeviceState.h>
 
-#import <ProactiveSupportStubs/_PASDeviceStateProtocol-Protocol.h>
-
-@class NSString;
-
-@interface _PASDeviceStateStub : NSObject <_PASDeviceStateProtocol>
+@interface _PASDeviceStateStub : _PASDeviceState
 {
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
-+ (void)blockUntilFirstUnlock;
-+ (id)currentOsBuild;
-+ (BOOL)isClassCLocked;
-+ (BOOL)isConstrainedDevice;
-+ (BOOL)isDeviceFormattedForProtection;
-+ (BOOL)isUnlocked;
-+ (int)lockState;
-+ (id)registerForLockStateChangeNotifications:(CDUnknownBlockType)arg1;
-+ (void)runBlockWhenDeviceIsClassCUnlocked:(CDUnknownBlockType)arg1;
-+ (void)runLockStateChangeBlocks;
 + (void)setClassCLocked:(BOOL)arg1;
 + (void)setCurrentOsBuild:(id)arg1;
 + (void)setDeviceFormattedForProtection:(BOOL)arg1;
 + (void)setIsConstrainedDevice:(BOOL)arg1;
 + (void)setLockState:(int)arg1;
-+ (void)unregisterForLockStateChangeNotifications:(id)arg1;
++ (void)startMockingSystem;
++ (void)stopMockingSystem;
 
 @end
 

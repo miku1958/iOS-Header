@@ -21,7 +21,7 @@
 
 @property (strong, nonatomic) UIImage *analysisImage; // @synthesize analysisImage=_analysisImage;
 @property (nonatomic) int mode; // @synthesize mode=_mode;
-@property (nonatomic) UIImage *redEyeRepairedImage;
+@property (weak, nonatomic) UIImage *redEyeRepairedImage;
 @property (strong, nonatomic) UIImage *redEyeSourceImage; // @synthesize redEyeSourceImage=_redEyeSourceImage;
 @property (nonatomic) struct CGSize redEyeSourceSize; // @synthesize redEyeSourceSize=_redEyeSourceSize;
 @property (strong, nonatomic) UIImage *repairSourceImage; // @synthesize repairSourceImage=_repairSourceImage;
@@ -31,6 +31,7 @@
 + (id)addAutoRedEyeCorrection:(id)arg1 toCurrentStrokesDataDictionary:(id)arg2 forSourceSize:(struct CGSize)arg3;
 + (id)layerStack;
 + (int)maxEdgeSize;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (BOOL)hasRedEye;
 - (BOOL)hasRepair;

@@ -17,7 +17,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy, nonatomic) NSArray *eventRules; // @synthesize eventRules=_eventRules;
+@property (strong, nonatomic) NSArray *eventRules; // @synthesize eventRules=_eventRules;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

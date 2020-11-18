@@ -8,32 +8,38 @@
 
 #import <HomeUI/HUCellProtocol-Protocol.h>
 
-@class HFItem, HUGridLayoutOptions, NSLayoutConstraint, NSString, UILabel, UIView;
+@class HFItem, HUGridLayoutOptions, NSArray, NSLayoutConstraint, NSString, UILabel, UIView;
+@protocol HUResizableCellDelegate;
 
 @interface HUStatusItemCell : UITableViewCell <HUCellProtocol>
 {
     HFItem *_item;
     HUGridLayoutOptions *_gridLayoutOptions;
     UILabel *_titleLabel;
-    NSLayoutConstraint *_bottomConstraint;
+    NSLayoutConstraint *_firstBaselineToTopAnchorConstraint;
+    NSArray *_staticConstraints;
     UIView *_titleLabelSnapshot;
 }
 
-@property (strong, nonatomic) NSLayoutConstraint *bottomConstraint; // @synthesize bottomConstraint=_bottomConstraint;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSLayoutConstraint *firstBaselineToTopAnchorConstraint; // @synthesize firstBaselineToTopAnchorConstraint=_firstBaselineToTopAnchorConstraint;
 @property (strong, nonatomic) HUGridLayoutOptions *gridLayoutOptions; // @synthesize gridLayoutOptions=_gridLayoutOptions;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
+@property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;
+@property (strong, nonatomic) NSArray *staticConstraints; // @synthesize staticConstraints=_staticConstraints;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) UIView *titleLabelSnapshot; // @synthesize titleLabelSnapshot=_titleLabelSnapshot;
 
++ (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (void)_updateTitleLabel;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)updateConstraints;
 - (void)updateUIWithAnimation:(BOOL)arg1;
 
 @end

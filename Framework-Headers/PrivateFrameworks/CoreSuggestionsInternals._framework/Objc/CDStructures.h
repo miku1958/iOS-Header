@@ -16,10 +16,6 @@ struct NSArray {
     Class _field1;
 };
 
-struct NSDictionary {
-    Class _field1;
-};
-
 struct Options {
     int _field1;
     BOOL _field2;
@@ -95,6 +91,14 @@ struct SGMEventICSSourceType_ {
     unsigned long long _field1;
 };
 
+struct SGMFoundInMailModelType_ {
+    unsigned long long _field1;
+};
+
+struct SGMSelfIdModelType_ {
+    unsigned long long _field1;
+};
+
 struct SGMutexSynchronizedObject<SGHistorySharedData> {
     struct SGHistorySharedData *_field1;
     struct _opaque_pthread_mutex_t _field2;
@@ -102,10 +106,6 @@ struct SGMutexSynchronizedObject<SGHistorySharedData> {
 
 struct SGMutexSynchronizedPtr<SGHistorySharedData> {
     struct SGMutexSynchronizedObject<SGHistorySharedData> *_field1;
-};
-
-struct SGTuple3 {
-    Class _field1;
 };
 
 struct SGUnixTimestamp_ {
@@ -120,6 +120,38 @@ struct StringPiece {
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;
+};
+
+struct _PASTuple3 {
+    Class _field1;
+};
+
+struct __CFString;
+
+struct __DDQueryOffset {
+    unsigned int :32;
+    unsigned int :32;
+};
+
+struct __DDResult {
+    struct __CFRuntimeBase {
+        unsigned long long _field1;
+        _Atomic unsigned long long _field2;
+    } _field1;
+    struct __DDQueryRange {
+        struct __DDQueryOffset _field1;
+        struct __DDQueryOffset _field2;
+    } _field2;
+    CDStruct_627e0f85 _field3;
+    long long _field4;
+    struct __CFArray *_field5;
+    struct __CFString *_field6;
+    struct __CFString *_field7;
+    void *_field8;
+    struct __CFDictionary *_field9;
+    long long _field10;
+    unsigned char _field11;
+    float _field12;
 };
 
 struct _opaque_pthread_mutex_t {
@@ -171,11 +203,6 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
     } _field1;
 };
 
-struct entry_s {
-    unsigned int _field1;
-    unsigned int _field2;
-};
-
 struct graph_t {
     unsigned int _field1;
     unsigned int _field2;
@@ -185,14 +212,6 @@ struct graph_t {
 struct map<int, std::__1::basic_string<char>, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, std::__1::basic_string<char>>>>;
 
 struct map<std::__1::basic_string<char>, int, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, int>>>;
-
-struct vector<bool, std::__1::allocator<bool>> {
-    unsigned long long *__begin_;
-    unsigned long long __size_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<unsigned long>> {
-        unsigned long long __first_;
-    } __cap_alloc_;
-};
 
 #pragma mark Typedef'd Structures
 
@@ -225,6 +244,11 @@ typedef struct {
 } CDStruct_beb4cc23;
 
 typedef struct {
+    long long location;
+    long long length;
+} CDStruct_627e0f85;
+
+typedef struct {
     struct {
         unsigned short bom;
         unsigned short tag;
@@ -235,6 +259,28 @@ typedef struct {
     BOOL inhumanBody;
     BOOL isTemplate;
 } CDStruct_f96224e3;
+
+typedef struct {
+    struct {
+        unsigned short _field1;
+        unsigned short _field2;
+    } _field1;
+    int _field2;
+    int _field3;
+    int _field4;
+    BOOL _field5;
+    BOOL _field6;
+    BOOL _field7;
+    BOOL _field8;
+    BOOL _field9;
+    float _field10;
+    int _field11;
+    int _field12;
+    int _field13;
+    int _field14;
+    int _field15;
+    BOOL _field16;
+} CDStruct_df2c591a;
 
 // Ambiguous groups
 typedef struct {

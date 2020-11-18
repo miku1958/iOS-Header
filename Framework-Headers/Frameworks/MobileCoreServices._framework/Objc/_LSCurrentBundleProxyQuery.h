@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileCoreServices/_LSQuery.h>
+#import <MobileCoreServices/_LSBundleQuery.h>
 
 __attribute__((visibility("hidden")))
-@interface _LSCurrentBundleProxyQuery : _LSQuery
+@interface _LSCurrentBundleProxyQuery : _LSBundleQuery
 {
 }
 
++ (double)cacheInterval;
 + (id)currentBundleProxyQuery;
 + (BOOL)supportsSecureCoding;
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(CDUnknownBlockType)arg2;

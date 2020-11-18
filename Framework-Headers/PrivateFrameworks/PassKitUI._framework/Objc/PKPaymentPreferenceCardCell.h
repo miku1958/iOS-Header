@@ -6,14 +6,14 @@
 
 #import <PassKitUI/PKPaymentPreferenceCell.h>
 
-@class NSString, PKPassSnapshotter, PKPaymentPass, UIColor, UIImageView, UILabel;
+@class NSString, PKPassSnapshotter, PKPaymentPass, UIColor, UIImageView, UILabel, UIStackView;
 
 @interface PKPaymentPreferenceCardCell : PKPaymentPreferenceCell
 {
     BOOL _isRightToLeft;
     UILabel *_displayLabel;
-    UILabel *_censoredPANLabel;
     UIImageView *_cardArtView;
+    UIStackView *_stackView;
     BOOL _showBillingAddress;
     BOOL _showAvailability;
     BOOL _dimCardArt;
@@ -23,10 +23,12 @@
     UIColor *_subTextLabelColor;
     UIColor *_disabledMainLabelColor;
     UIColor *_disabledSubTextLabelColor;
+    UILabel *_censoredPANLabel;
     NSString *_availabilityStringPrefix;
 }
 
 @property (copy, nonatomic) NSString *availabilityStringPrefix; // @synthesize availabilityStringPrefix=_availabilityStringPrefix;
+@property (readonly, nonatomic) UILabel *censoredPANLabel; // @synthesize censoredPANLabel=_censoredPANLabel;
 @property (nonatomic) BOOL dimCardArt; // @synthesize dimCardArt=_dimCardArt;
 @property (strong, nonatomic) UIColor *disabledMainLabelColor; // @synthesize disabledMainLabelColor=_disabledMainLabelColor;
 @property (strong, nonatomic) UIColor *disabledSubTextLabelColor; // @synthesize disabledSubTextLabelColor=_disabledSubTextLabelColor;
@@ -37,18 +39,18 @@
 @property (nonatomic) BOOL showBillingAddress; // @synthesize showBillingAddress=_showBillingAddress;
 @property (strong, nonatomic) UIColor *subTextLabelColor; // @synthesize subTextLabelColor=_subTextLabelColor;
 
++ (double)textOffset;
 - (void).cxx_destruct;
-- (struct CGRect)_cardArtFrame;
-- (struct CGRect)_censoredPANLabelFrame;
-- (struct CGRect)_displayLabelFrame;
 - (id)_passAvailabilityString;
+- (void)_setupConstraints;
 - (void)_updateCellContent;
 - (void)_updateLabelTextColors;
-- (void)dealloc;
 - (id)initWithReuseIdentifier:(id)arg1;
-- (void)layoutSubviews;
 - (void)pk_applyAppearance:(id)arg1;
-- (void)setUserInteractionEnabled:(BOOL)arg1;
+- (void)prepareForReuse;
+- (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setEnabled:(BOOL)arg1;
+- (void)setHasError:(BOOL)arg1;
 
 @end
 

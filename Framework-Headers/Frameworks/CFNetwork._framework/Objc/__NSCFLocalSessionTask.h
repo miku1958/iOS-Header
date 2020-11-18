@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _suspendCount;
     CDUnknownBlockType _async_initialization;
     NSObject<OS_dispatch_source> *_resourceTimeout;
+    BOOL _didIssueWaitingForConnectivity;
     BOOL _didIssueDidFinish;
     BOOL _suspendedForDisposition;
     NSNumber *_connectedSocket;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_source> *_willSendRequestTimer;
     NSInputStream *_socketReadStreamForUpgrade;
     NSOutputStream *_socketWriteStreamForUpgrade;
+    shared_ptr_f0c1381f _connectionForUpgrade;
     NSOperationQueue *_connectionWorkQueue;
     int _connectionWorkQueueSuspensionCount;
     BOOL _didCheckMixedReplace;
@@ -50,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property BOOL didIssueDidFinish; // @synthesize didIssueDidFinish=_didIssueDidFinish;
+@property BOOL didIssueWaitingForConnectivity; // @synthesize didIssueWaitingForConnectivity=_didIssueWaitingForConnectivity;
 @property (readonly) unsigned long long hash;
 @property (strong) __NSURLSessionLocal *localSession; // @synthesize localSession=_localSession;
 @property BOOL pendingResponseDisposition; // @synthesize pendingResponseDisposition=_pendingResponseDisposition;
@@ -58,6 +61,8 @@ __attribute__((visibility("hidden")))
 @property unsigned long long suspendCount; // @synthesize suspendCount=_suspendCount;
 @property (strong) NSURL *uploadFile; // @synthesize uploadFile=_uploadFile;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)_askForConnectedSocketLater;
 - (void)_finishAllow;
 - (void)_finishBecomeDownload:(id)arg1;
@@ -109,6 +114,7 @@ __attribute__((visibility("hidden")))
 - (void)connection:(id)arg1 didReceiveData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didReceiveResponse:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didReceiveSocketInputStream:(id)arg2 outputStream:(id)arg3;
+- (void)connection:(id)arg1 didReceiveTCPConnection:(shared_ptr_f0c1381f)arg2;
 - (void)connection:(id)arg1 needConnectedSocketToHost:(id)arg2 port:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)connection:(id)arg1 request:(id)arg2 needsNewBodyStreamCallback:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 sentBodyBytes:(id)arg2 totalBytes:(id)arg3 expectedBytes:(id)arg4;

@@ -86,6 +86,7 @@
 - (long long)fetchMobileSynchronously:(unsigned long long)arg1 preservingUID:(id)arg2 options:(unsigned long long)arg3;
 - (long long)fetchNumMessages:(unsigned long long)arg1 preservingUID:(id)arg2 options:(unsigned long long)arg3;
 - (unsigned long long)fetchWindow;
+- (unsigned long long)fetchWindowCap;
 - (id)finishRoutingMessages:(id)arg1 routed:(id)arg2;
 - (unsigned long long)growFetchWindow;
 - (BOOL)hasCachedDataForMimePart:(id)arg1;
@@ -121,6 +122,7 @@
 - (void)purgeMessagesBeyondLimit:(unsigned long long)arg1 keepingMessage:(id)arg2;
 - (id)remoteIDsFromUniqueRemoteIDs:(id)arg1;
 - (unsigned long long)serverMessageCount;
+- (unsigned long long)serverNonDeletedCount;
 - (unsigned long long)serverUnreadCount;
 - (unsigned long long)serverUnreadOnlyOnServerCount;
 - (void)setFlag:(id)arg1 state:(BOOL)arg2 forMessages:(id)arg3;
@@ -140,8 +142,8 @@
 - (id)status;
 - (id)storeData:(id)arg1 forMimePart:(id)arg2 isComplete:(BOOL)arg3;
 - (id)storePathRelativeToAccount;
-- (id)storeSearchResultMatchingCriterion:(id)arg1 limit:(unsigned int)arg2 error:(id *)arg3;
-- (id)storeSearchResultMatchingSearchText:(id)arg1 criterion:(id)arg2 limit:(unsigned int)arg3 error:(id *)arg4;
+- (id)storeSearchResultMatchingCriterion:(id)arg1 limit:(unsigned int)arg2 offset:(id)arg3 error:(id *)arg4;
+- (id)storeSearchResultMatchingSearchText:(id)arg1 criterion:(id)arg2 limit:(unsigned int)arg3 offset:(id)arg4 error:(id *)arg5;
 - (void)structureDidChange;
 - (BOOL)supportsArchiving;
 - (unsigned long long)totalCount;

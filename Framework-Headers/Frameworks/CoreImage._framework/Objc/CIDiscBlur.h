@@ -6,20 +6,20 @@
 
 #import <CoreImage/CIFilter.h>
 
-@class CIImage, NSNumber;
+@class CIImage, NSMutableArray, NSNumber;
 
 __attribute__((visibility("hidden")))
 @interface CIDiscBlur : CIFilter
 {
     CIImage *inputImage;
     NSNumber *inputRadius;
+    NSMutableArray *_recipe;
 }
 
 + (id)customAttributes;
-- (id)_CICombine_results;
+- (void)dealloc;
 - (id)outputImage;
-- (id)outputImageEnhanced;
-- (id)outputImageOriginal;
+- (void)setValue:(id)arg1 forKey:(id)arg2;
 
 @end
 

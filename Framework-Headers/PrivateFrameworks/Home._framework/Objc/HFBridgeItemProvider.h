@@ -6,16 +6,18 @@
 
 #import <Home/HFItemProvider.h>
 
-@class NSMutableSet;
+@class HMHome, NSMutableSet;
 
 @interface HFBridgeItemProvider : HFItemProvider
 {
     CDUnknownBlockType _filter;
-    NSMutableSet *_bridgeItems;
+    HMHome *_home;
+    NSMutableSet *_accessoryItems;
 }
 
-@property (strong, nonatomic) NSMutableSet *bridgeItems; // @synthesize bridgeItems=_bridgeItems;
+@property (strong, nonatomic) NSMutableSet *accessoryItems; // @synthesize accessoryItems=_accessoryItems;
 @property (copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
+@property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 
 - (void).cxx_destruct;
 - (id)initWithHome:(id)arg1;

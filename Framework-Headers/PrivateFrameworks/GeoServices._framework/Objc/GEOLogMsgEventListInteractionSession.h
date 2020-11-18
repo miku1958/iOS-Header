@@ -27,12 +27,12 @@
 @property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 
 + (Class)listResultItemType;
+- (void).cxx_destruct;
 - (int)StringAsListType:(id)arg1;
 - (void)addListResultItem:(id)arg1;
 - (void)clearListResultItems;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

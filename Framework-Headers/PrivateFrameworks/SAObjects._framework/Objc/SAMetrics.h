@@ -30,6 +30,7 @@
 - (id)_descriptionHint;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)requiresResponse;
 
 @end
 

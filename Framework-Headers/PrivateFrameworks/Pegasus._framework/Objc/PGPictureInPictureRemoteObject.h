@@ -46,6 +46,7 @@
 @property (weak, nonatomic) id<PGPictureInPictureRemoteObjectDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isStartingStoppingOrCancellingPictureInPicture;
 @property (readonly, nonatomic) PGPictureInPictureApplication *pictureInPictureApplication; // @synthesize pictureInPictureApplication=_pictureInPictureApplication;
 @property (nonatomic, getter=isPictureInPicturePossible) BOOL pictureInPicturePossible;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;

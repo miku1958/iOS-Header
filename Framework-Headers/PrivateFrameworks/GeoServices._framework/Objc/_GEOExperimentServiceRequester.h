@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (unsigned long long)_urlType;
 + (id)sharedInstance;
 - (void)cancelRequest:(id)arg1;
 - (void)startWithRequest:(id)arg1 traits:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSTimer;
+@class MNTracePlayerTimelineStream, NSMutableArray, NSTimer;
 @protocol MNTracePlayerSchedulerDelegate;
 
 @interface MNTracePlayerScheduler : NSObject
@@ -17,6 +17,7 @@
     double _speedMultiplier;
     NSMutableArray *_timelineStreams;
     double _position;
+    MNTracePlayerTimelineStream *_nextTimelineStream;
 }
 
 @property (weak, nonatomic) id<MNTracePlayerSchedulerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -24,7 +25,6 @@
 @property (nonatomic) double speedMultiplier; // @synthesize speedMultiplier=_speedMultiplier;
 
 - (void).cxx_destruct;
-- (void)_restartTimer;
 - (void)_timerUpdated:(id)arg1;
 - (void)_update;
 - (void)addTimelineStream:(id)arg1;
@@ -34,7 +34,6 @@
 - (void)removeAllTimelineStreams;
 - (void)removeTimelineStream:(id)arg1;
 - (void)resume;
-- (void)updateForPlaybackSpeedChanged;
 
 @end
 

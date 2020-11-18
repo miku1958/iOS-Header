@@ -11,15 +11,17 @@ __attribute__((visibility("hidden")))
 {
     struct LegacyTileGrid *_tileGrid;
     unsigned int _paintCount;
+    BOOL _isRenderingInContext;
 }
 
+@property (readonly, nonatomic) BOOL isRenderingInContext; // @synthesize isRenderingInContext=_isRenderingInContext;
 @property (nonatomic) unsigned int paintCount; // @synthesize paintCount=_paintCount;
 @property (nonatomic) struct LegacyTileGrid *tileGrid; // @synthesize tileGrid=_tileGrid;
 
-+ (id)layerBeingPainted;
 - (id)actionForKey:(id)arg1;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)layoutSublayers;
+- (void)renderInContext:(struct CGContext *)arg1;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 
 @end

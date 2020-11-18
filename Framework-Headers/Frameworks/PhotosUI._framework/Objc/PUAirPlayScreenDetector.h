@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)_tearDownScreenNotifications;
 - (void)dealloc;
 - (id)init;
+- (BOOL)shouldIgnoreScreen:(id)arg1;
 
 @end
 

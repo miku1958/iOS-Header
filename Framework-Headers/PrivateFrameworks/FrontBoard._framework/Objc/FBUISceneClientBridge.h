@@ -9,12 +9,13 @@
 #import <FrontBoard/FBSceneHost-Protocol.h>
 #import <FrontBoard/FBUISceneClient-Protocol.h>
 
-@class FBSDisplay, FBUISceneIdentity, NSString;
+@class FBSSceneSpecification, NSString;
 @protocol FBSceneClient, FBUISceneClientDelegate, FBUISceneHostProxy;
 
 @interface FBUISceneClientBridge : NSObject <FBUISceneClient, FBSceneHost>
 {
-    FBUISceneIdentity *_identity;
+    NSString *_identifier;
+    FBSSceneSpecification *_specification;
     id<FBUISceneHostProxy> _sceneHost;
     id<FBSceneClient> _legacyClient;
     id<FBUISceneClientDelegate> _delegate;
@@ -22,13 +23,13 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, strong, nonatomic) FBSDisplay *display;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier;
-@property (readonly, copy, nonatomic) FBUISceneIdentity *identity; // @synthesize identity=_identity;
 @property (strong) id<FBSceneClient> legacyClient; // @synthesize legacyClient=_legacyClient;
 @property (weak) id<FBUISceneHostProxy> sceneHost; // @synthesize sceneHost=_sceneHost;
-@property (readonly, copy, nonatomic) NSString *sceneIdentifier;
+@property (readonly, copy, nonatomic) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_identifier;
+@property (readonly, copy, nonatomic) FBSSceneSpecification *sceneSpecification; // @synthesize sceneSpecification=_specification;
+@property (readonly, copy, nonatomic) FBSSceneSpecification *specification;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -42,7 +43,7 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)didInvalidateSceneHost:(id)arg1;
-- (id)initWithSceneIdentity:(id)arg1 legacyClient:(id)arg2;
+- (id)initWithSceneIdentifier:(id)arg1 specification:(id)arg2 legacyClient:(id)arg3;
 - (void)registerWithDelegate:(id)arg1;
 - (void)sceneHost:(id)arg1 destroySceneWithTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sceneHost:(id)arg1 didReceiveActions:(id)arg2;

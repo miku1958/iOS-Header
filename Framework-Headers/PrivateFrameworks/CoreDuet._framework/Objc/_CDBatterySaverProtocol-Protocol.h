@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class NSString;
+
 @protocol _CDBatterySaverProtocol
-- (void)setMode:(long long)arg1 reply:(void (^)(long long))arg2;
+- (void)setPowerMode:(long long)arg1 fromSource:(NSString *)arg2 withCompletion:(void (^)(BOOL, NSError *))arg3;
 @end
 

@@ -10,7 +10,6 @@
 {
 }
 
-- (void)_getStackSize:(struct CGSize *)arg1 edgeInset:(double *)arg2 forLayoutReferenceSize:(struct CGSize)arg3;
 - (id)_nameOfAddSharedAlbumPlaceholderImage;
 - (id)_nameOfEmptyAlbumPlaceholderImage;
 - (id)_nameOfEmptySharedAlbumPlaceholderImage;
@@ -19,19 +18,19 @@
 - (BOOL)canShowVirtualCollections;
 - (long long)cellContentViewLayout;
 - (struct CGSize)cellSizeForStackSize:(struct CGSize)arg1;
-- (void)configureGridLayout:(id)arg1 forLayoutReferenceSize:(struct CGSize)arg2;
+- (void)configureGridLayout:(id)arg1 forLayoutReferenceSize:(struct CGSize)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
 - (void)configureStackViewWithGridStyle:(id)arg1;
 - (id)emptyAlbumPlaceholderImage;
 - (unsigned long long)folderStackViewStyle;
 - (struct CGSize)imageSize;
-- (struct CGSize)imageSizeForLayoutReferenceSize:(struct CGSize)arg1;
+- (struct CGSize)imageSizeForLayoutReferenceSize:(struct CGSize)arg1 safeAreaInsets:(struct UIEdgeInsets)arg2;
 - (double)sectionFooterHeight;
 - (double)sectionHeaderHeight;
-- (struct UIEdgeInsets)sectionInsetsForLayoutReferenceSize:(struct CGSize)arg1;
+- (struct UIEdgeInsets)sectionInsetsForLayoutReferenceSize:(struct CGSize)arg1 safeAreaInsets:(struct UIEdgeInsets)arg2;
 - (BOOL)shouldShowSectionHeaders;
 - (BOOL)shouldUseTableView;
 - (struct CGSize)stackSize;
-- (struct CGSize)stackSizeForLayoutReferenceSize:(struct CGSize)arg1;
+- (struct CGSize)stackSizeForLayoutReferenceSize:(struct CGSize)arg1 safeAreaInsets:(struct UIEdgeInsets)arg2;
 - (unsigned long long)stackViewStyle;
 
 @end

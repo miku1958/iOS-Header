@@ -29,14 +29,10 @@
     NSArray *_uncoalescedRecentCalls;
     NSArray *_uncoalescedUnFilteredRecentCalls;
     NSNumber *_unreadCallCount;
-    id _databaseChangedNotificationRef;
-    id _addressBookChangedNotificationRef;
 }
 
-@property (strong) id addressBookChangedNotificationRef; // @synthesize addressBookChangedNotificationRef=_addressBookChangedNotificationRef;
 @property BOOL cacheIsDirty; // @synthesize cacheIsDirty=_cacheIsDirty;
 @property (copy, nonatomic) NSString *coalescingStrategy; // @synthesize coalescingStrategy=_coalescingStrategy;
-@property (strong) id databaseChangedNotificationRef; // @synthesize databaseChangedNotificationRef=_databaseChangedNotificationRef;
 @property BOOL generateSyncTransactions; // @synthesize generateSyncTransactions=_generateSyncTransactions;
 @property (copy, nonatomic) NSArray *limitingCallKinds; // @synthesize limitingCallKinds=_limitingCallKinds;
 @property (nonatomic) unsigned int limitingCallTypes; // @synthesize limitingCallTypes=_limitingCallTypes;
@@ -69,6 +65,7 @@
 - (id)coalesceCalls:(id)arg1;
 - (unsigned long long)countCallsWithPredicate:(id)arg1;
 - (unsigned long long)countCallsWithPredicateSync:(id)arg1;
+- (void)currentLocaleChanged:(id)arg1;
 - (void)databaseChanged:(id)arg1;
 - (void)dealloc;
 - (void)deleteAllCalls;
@@ -92,7 +89,6 @@
 - (void)setLimitingCallKindsSync:(id)arg1;
 - (void)setLimitingCallTypesSync:(unsigned int)arg1;
 - (id)unCoalesceCall:(id)arg1;
-- (void)unRegisterForNotifications;
 - (void)updateBytesOfDataUsedFor:(id)arg1 with:(id)arg2;
 
 @end

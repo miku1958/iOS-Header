@@ -29,11 +29,13 @@
     long long _locationStatus;
     BOOL _rejectionReasonCell;
     BOOL _hasMapItemLaunchOptionFromTimeToLeaveNotification;
+    BOOL _showingInlineDayView;
     NSObject<EKEventDetailTitleCellDelegate> *_delegate;
 }
 
 @property (weak, nonatomic) NSObject<EKEventDetailTitleCellDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL hasMapItemLaunchOptionFromTimeToLeaveNotification; // @synthesize hasMapItemLaunchOptionFromTimeToLeaveNotification=_hasMapItemLaunchOptionFromTimeToLeaveNotification;
+@property (nonatomic) BOOL showingInlineDayView; // @synthesize showingInlineDayView=_showingInlineDayView;
 
 + (void)_geocodeEventIfNeeded:(id)arg1;
 + (void)_invalidateCachedFonts;
@@ -46,7 +48,6 @@
 - (void).cxx_destruct;
 - (id)_dateTimeViewForLine:(unsigned long long)arg1;
 - (id)_editButton;
-- (id)_locationStatusView;
 - (id)_locationView;
 - (id)_predictedLocationView;
 - (void)_promptForSpanWithCompletionBlock:(CDUnknownBlockType)arg1;
@@ -71,6 +72,7 @@
 - (void)setStatusString:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setTravelTimeString:(id)arg1;
+- (double)titleHeight;
 - (BOOL)update;
 
 @end

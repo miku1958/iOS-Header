@@ -6,22 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSURL;
+@class NSData, NSString, NSURL;
 
 @interface BLTAttachmentHashCacheItem : NSObject
 {
+    NSData *_MD5;
+    NSString *_attachmentIdentifier;
     NSData *_data;
     NSURL *_url;
 }
 
+@property (copy, nonatomic) NSString *attachmentIdentifier; // @synthesize attachmentIdentifier=_attachmentIdentifier;
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
 @property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
 
-+ (id)attachmentHashCacheItemWithData:(id)arg1;
-+ (id)attachmentHashCacheItemWithURL:(id)arg1;
++ (id)attachmentHashCacheItemWithData:(id)arg1 URL:(id)arg2 attachmentIdentifier:(id)arg3;
 - (void).cxx_destruct;
-- (BOOL)MD5:(unsigned char [16])arg1;
-- (id)initWithURL:(id)arg1 data:(id)arg2;
+- (id)MD5;
+- (unsigned long long)hash;
+- (id)initWithURL:(id)arg1 data:(id)arg2 attachmentIdentifier:(id)arg3;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToItem:(id)arg1;
 
 @end

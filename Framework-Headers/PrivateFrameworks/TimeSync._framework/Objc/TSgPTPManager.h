@@ -23,6 +23,7 @@
 + (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
 + (id)gPTPManager;
 + (id)sharedgPTPManager;
++ (id)sharedgPTPManagerSyncWithTimeout:(unsigned long long)arg1;
 - (BOOL)addDomain:(unsigned long long *)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)init;

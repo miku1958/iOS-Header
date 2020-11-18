@@ -11,19 +11,20 @@
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateGridHeader : UIView
 {
-    UILabel *_inlineTextLabel;
     double _inlineTextRightMargin;
     UIButton *_toggleButton;
+    UILabel *_inlineTextLabel;
     UIKBBackdropView *_backdropView;
 }
 
+@property (copy, nonatomic) NSString *arrowDirection;
 @property (strong, nonatomic) UIKBBackdropView *backdropView; // @synthesize backdropView=_backdropView;
 @property (copy, nonatomic) NSString *inlineText;
 @property (strong, nonatomic) UILabel *inlineTextLabel; // @synthesize inlineTextLabel=_inlineTextLabel;
 @property (nonatomic) double inlineTextRightMargin; // @synthesize inlineTextRightMargin=_inlineTextRightMargin;
 @property (strong, nonatomic) UIButton *toggleButton; // @synthesize toggleButton=_toggleButton;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 

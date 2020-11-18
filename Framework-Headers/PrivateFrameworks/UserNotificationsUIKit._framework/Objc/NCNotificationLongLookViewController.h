@@ -7,27 +7,33 @@
 #import <UserNotificationsUIKit/NCNotificationViewController.h>
 
 #import <UserNotificationsUIKit/NCLongLookPresentationControllerDelegate-Protocol.h>
-#import <UserNotificationsUIKit/NCLongLookTransitionDelegateObserver-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationCustomContentDelegate-Protocol.h>
+#import <UserNotificationsUIKit/NCNotificationLongLookViewDelegate-Protocol.h>
 
-@class NCLongLookTransitionDelegate, NCNotificationShortLookViewController, NSString;
+@class NCLongLookTransitionDelegate, NCNotificationShortLookViewController, NSString, UINotificationFeedbackGenerator;
 
-@interface NCNotificationLongLookViewController : NCNotificationViewController <NCLongLookPresentationControllerDelegate, NCLongLookTransitionDelegateObserver, NCNotificationCustomContentDelegate>
+@interface NCNotificationLongLookViewController : NCNotificationViewController <NCNotificationLongLookViewDelegate, NCLongLookPresentationControllerDelegate, NCNotificationCustomContentDelegate>
 {
-    NCNotificationShortLookViewController *_presentingNotificationViewController;
     NCLongLookTransitionDelegate *_longLookTransitionDelegate;
+    UINotificationFeedbackGenerator *_homeAffordanceFeedbackGenerator;
+    NCNotificationShortLookViewController *_presentingNotificationViewController;
+    CDUnknownBlockType _notificationTapBlock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic, getter=_notificationTapBlock, setter=_setNotificationTapBlock:) CDUnknownBlockType notificationTapBlock; // @synthesize notificationTapBlock=_notificationTapBlock;
+@property (weak, nonatomic) NCNotificationShortLookViewController *presentingNotificationViewController; // @synthesize presentingNotificationViewController=_presentingNotificationViewController;
 @property (readonly) Class superclass;
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (void)_configureScrollViewIfNecessary;
 - (id)_extensionIdentifier;
 - (void)_handleBackgroundTap:(id)arg1;
 - (void)_handleCloseButton:(id)arg1;
+- (void)_handleCustomContentHomeAffordancePan:(id)arg1;
 - (void)_handleIconButton:(id)arg1;
 - (void)_handleNotificationTap:(id)arg1;
 - (id)_initWithNotificationRequest:(id)arg1 andPresentingNotificationViewController:(id)arg2 revealingAdditionalContentOnPresentation:(BOOL)arg3;
@@ -35,7 +41,7 @@
 - (void)_loadLookView;
 - (void)_notificationViewControllerViewDidLoad;
 - (struct CGSize)_preferredCustomContentSizeForSize:(struct CGSize)arg1 parentContentContainerBounds:(struct CGRect)arg2;
-- (id)_presentingNotificationViewController;
+- (id)_presentedLongLookViewController;
 - (void)_setPreferredCustomContentSize:(struct CGSize)arg1;
 - (BOOL)_shouldPadScrollViewContentSizeHeight;
 - (double)_translationWithVelocity:(double)arg1 acceleration:(double)arg2;
@@ -46,25 +52,29 @@
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canResignFirstResponder;
 - (void)contentProviderDismissCustomContent:(id)arg1 animated:(BOOL)arg2;
+- (void)customContentDidLoadExtension:(id)arg1;
 - (void)customContentDidUpdateTitle:(id)arg1;
 - (BOOL)dismissPresentedViewControllerAndClearNotification:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)hideHomeAffordanceAnimationSettingsForLongLookPresentationController:(id)arg1;
 - (BOOL)isContentExtensionVisible:(id)arg1;
 - (BOOL)isLookStyleLongLook;
 - (struct CGRect)longLookPresentationController:(id)arg1 frameForTransitionViewInPresentationSuperview:(id)arg2;
-- (unsigned long long)longLookPresentationControllerDismissalEdge:(id)arg1;
-- (BOOL)longLookPresentationControllerPreviewShouldIncludeShadow:(id)arg1;
 - (BOOL)longLookPresentationControllerShouldAllowKeyboardOnAppearance:(id)arg1;
-- (BOOL)longLookPresentationControllerShouldIncludePreview:(id)arg1;
-- (BOOL)longLookPresentationControllerShouldRestoreSourceView:(id)arg1;
-- (void)longLookTransitionDelegate:(id)arg1 didBeginTransitionWithAnimator:(id)arg2;
-- (void)longLookTransitionDelegate:(id)arg1 didEndTransitionWithAnimator:(id)arg2 completed:(BOOL)arg3;
+- (long long)longLookTransitionTypeForTransitionDelegate:(id)arg1;
+- (void)notificationLongLookView:(id)arg1 willInteractWithURL:(id)arg2;
+- (void)presentLongLookAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)preserveInputViews;
 - (BOOL)resignFirstResponder;
 - (BOOL)restoreInputViews;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)setCustomContentHomeAffordanceGestureRecognizer:(id)arg1;
+- (void)setCustomContentHomeAffordanceVisible:(BOOL)arg1;
 - (void)setNotificationRequest:(id)arg1;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
+- (id)unhideHomeAffordanceAnimationSettingsForLongLookPresentationController:(id)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

@@ -8,7 +8,10 @@
 
 @interface AKRectangularAnnotationEventHandler : AKAnnotationEventHandler
 {
+    struct CGPoint _lastMungedPositionInModel;
 }
+
+@property struct CGPoint lastMungedPositionInModel; // @synthesize lastMungedPositionInModel=_lastMungedPositionInModel;
 
 - (struct CGRect)_rectForModifiedRotatedRect:(struct CGRect)arg1 withOriginal:(struct CGRect)arg2 andRotation:(double)arg3;
 - (void)_updateModelFlippednessWithCurrentPoint:(struct CGPoint)arg1;

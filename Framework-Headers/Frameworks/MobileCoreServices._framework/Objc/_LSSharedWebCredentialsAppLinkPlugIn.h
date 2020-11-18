@@ -6,25 +6,17 @@
 
 #import <MobileCoreServices/_LSAppLinkPlugIn.h>
 
-@class NSString;
-
 __attribute__((visibility("hidden")))
 @interface _LSSharedWebCredentialsAppLinkPlugIn : _LSAppLinkPlugIn
 {
-    BOOL _usesDetailsDictionary;
-    BOOL _requiresApproval;
-    NSString *_SWCServiceName;
 }
 
-@property (copy) NSString *SWCServiceName; // @synthesize SWCServiceName=_SWCServiceName;
-@property BOOL requiresApproval; // @synthesize requiresApproval=_requiresApproval;
-@property BOOL usesDetailsDictionary; // @synthesize usesDetailsDictionary=_usesDetailsDictionary;
-
 - (BOOL)appHasApproval:(id)arg1;
+- (id)appLinksForSWCResults:(id)arg1 useDetailsDictionary:(BOOL)arg2;
+- (id)applicationProxiesForSWCResults:(id)arg1 useDetailsDictionary:(BOOL)arg2;
 - (id)callingBundleIdentifier;
-- (void)dealloc;
-- (void)getAppLinkWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (BOOL)getApplicationProxy:(id *)arg1 forSWCResults:(id)arg2;
+- (void)getAppLinksForServiceAtIndex:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getAppLinksWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 
 @end

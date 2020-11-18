@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 
-@class NSObject, NSString, UIButton;
+@class NSArray, NSObject, NSString, UIButton;
 @protocol OS_dispatch_group, PKPaymentSetupViewControllerDelegate;
 
 @interface PKPaymentSetupAssistantRegistrationViewController : PKPaymentSetupViewController <PKPaymentSetupViewControllerDelegate>
@@ -22,6 +22,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSArray *requiredPaymentSetupFileURLs;
 @property (readonly) Class superclass;
 
 + (BOOL)bridgeSetupAssistantNeedsToRunReturningRequirements:(unsigned long long *)arg1;
@@ -34,7 +35,6 @@
 - (id)delegate;
 - (id)initWithPaymentWebService:(id)arg1 context:(long long)arg2 delegate:(id)arg3;
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
-- (void)privacyButtonTouched:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)viewController:(id)arg1 didShowProvisioningError:(id)arg2;
 - (void)viewControllerDidShowEligibilityIssue:(id)arg1;

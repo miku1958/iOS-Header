@@ -12,15 +12,15 @@
 
 @interface AWDHomeKitCameraSnapshot : PBCodable <NSCopying>
 {
-    unsigned long long _receivedSnapshotFromAccessory;
-    unsigned long long _sentSnapshotRequestToAccessory;
     unsigned long long _timestamp;
     AWDHomeKitCameraSnapshotMessaging *_controllerMessaging;
     unsigned int _errorCode;
     AWDHomeKitCameraIDSSessionSetup *_idsSessionSetup;
     AWDHomeKitCameraSnapshotIDSTransfer *_phoneToWatch;
+    unsigned int _receivedSnapshotFromAccessory;
     AWDHomeKitCameraSnapshotMessaging *_residentMessaging;
     AWDHomeKitCameraSnapshotIDSTransfer *_residentToPhone;
+    unsigned int _sentSnapshotRequestToAccessory;
     NSString *_sessionID;
     unsigned int _underlyingErrorCode;
     NSString *_underlyingErrorDomain;
@@ -29,10 +29,10 @@
     BOOL _forNotification;
     BOOL _isLocal;
     struct {
-        unsigned int receivedSnapshotFromAccessory:1;
-        unsigned int sentSnapshotRequestToAccessory:1;
         unsigned int timestamp:1;
         unsigned int errorCode:1;
+        unsigned int receivedSnapshotFromAccessory:1;
+        unsigned int sentSnapshotRequestToAccessory:1;
         unsigned int underlyingErrorCode:1;
         unsigned int forNotification:1;
         unsigned int isLocal:1;
@@ -61,10 +61,10 @@
 @property (strong, nonatomic) AWDHomeKitCameraIDSSessionSetup *idsSessionSetup; // @synthesize idsSessionSetup=_idsSessionSetup;
 @property (nonatomic) BOOL isLocal; // @synthesize isLocal=_isLocal;
 @property (strong, nonatomic) AWDHomeKitCameraSnapshotIDSTransfer *phoneToWatch; // @synthesize phoneToWatch=_phoneToWatch;
-@property (nonatomic) unsigned long long receivedSnapshotFromAccessory; // @synthesize receivedSnapshotFromAccessory=_receivedSnapshotFromAccessory;
+@property (nonatomic) unsigned int receivedSnapshotFromAccessory; // @synthesize receivedSnapshotFromAccessory=_receivedSnapshotFromAccessory;
 @property (strong, nonatomic) AWDHomeKitCameraSnapshotMessaging *residentMessaging; // @synthesize residentMessaging=_residentMessaging;
 @property (strong, nonatomic) AWDHomeKitCameraSnapshotIDSTransfer *residentToPhone; // @synthesize residentToPhone=_residentToPhone;
-@property (nonatomic) unsigned long long sentSnapshotRequestToAccessory; // @synthesize sentSnapshotRequestToAccessory=_sentSnapshotRequestToAccessory;
+@property (nonatomic) unsigned int sentSnapshotRequestToAccessory; // @synthesize sentSnapshotRequestToAccessory=_sentSnapshotRequestToAccessory;
 @property (strong, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) unsigned int underlyingErrorCode; // @synthesize underlyingErrorCode=_underlyingErrorCode;

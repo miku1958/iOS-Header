@@ -45,6 +45,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, weak, nonatomic) CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSError *lastError;
 @property (readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
 @property (nonatomic) BOOL shouldTryToMingleImmediately; // @synthesize shouldTryToMingleImmediately=_shouldTryToMingleImmediately;
 @property (nonatomic, setter=_setState:) unsigned long long state; // @synthesize state=_state;
@@ -55,6 +56,7 @@
 + (id)shortDescriptionForState:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_advanceToNextStateLocked;
+- (void)_advanceToNextStateLockedMinimalState:(unsigned long long)arg1;
 - (void)_cancelAllTasksForBackgroundDownloads;
 - (void)_cancelAllTasksForPrePush;
 - (void)_cancelAllTasksForPull;
@@ -112,7 +114,6 @@
 - (id)task:(id)arg1 wantsToDownloadBatchesFromSyncAnchor:(id)arg2 progressHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)task:(id)arg1 wantsToPushBatch:(id)arg2 progressBlock:(CDUnknownBlockType)arg3 continuationBlock:(CDUnknownBlockType)arg4;
 - (id)task:(id)arg1 wantsToQueryTaskForCursor:(id)arg2 class:(Class)arg3 progressHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (BOOL)taskSupportsBatchDownloadPipelining:(id)arg1;
 
 @end
 

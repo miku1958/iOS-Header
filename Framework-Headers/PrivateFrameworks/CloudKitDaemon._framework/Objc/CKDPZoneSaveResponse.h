@@ -8,11 +8,18 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
+@class CKDPZoneCapabilities;
+
 __attribute__((visibility("hidden")))
 @interface CKDPZoneSaveResponse : PBCodable <NSCopying>
 {
+    CKDPZoneCapabilities *_capabilities;
 }
 
+@property (strong, nonatomic) CKDPZoneCapabilities *capabilities; // @synthesize capabilities=_capabilities;
+@property (readonly, nonatomic) BOOL hasCapabilities;
+
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

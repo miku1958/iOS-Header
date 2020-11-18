@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSString;
 
-@interface HMDAssistantColorCharacteristic : NSObject
+@interface HMDAssistantColorCharacteristic : HMFObject
 {
     BOOL _mandatory;
     NSString *_readCharacteristicType;

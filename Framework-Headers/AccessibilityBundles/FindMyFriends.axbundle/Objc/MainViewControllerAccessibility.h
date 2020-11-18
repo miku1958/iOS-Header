@@ -13,13 +13,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityHideFloatingToolbar;
 - (void)_accessibilityHideMapInfoButton;
-- (void)_accessibilitySetFloatingToolbarHidden:(BOOL)arg1;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilitySetMapInfoButtonHidden:(BOOL)arg1;
-- (void)_accessibilityShowFloatingToolbar;
 - (void)_accessibilityShowMapInfoButton;
-- (void)addFloatingToolbar;
+- (void)didSelectPerson:(id)arg1 sender:(id)arg2;
+- (void)viewDidLoad;
 
 @end
 

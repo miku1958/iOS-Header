@@ -17,7 +17,8 @@
     unsigned int _height;
     unsigned long long _rowbytes;
     BOOL _allowsMultiPassEncoding;
-    BOOL _allowsOptimalPacking;
+    BOOL _allowsOptimalRowbytesPacking;
+    BOOL _allowsCompactCompression;
     BOOL _flipped;
     struct CGImage *_sourceImage;
     long long _texturePixelFormat;
@@ -29,8 +30,9 @@
     int _exifOrientation;
 }
 
+@property BOOL allowsCompactCompression;
 @property BOOL allowsMultiPassEncoding; // @synthesize allowsMultiPassEncoding=_allowsMultiPassEncoding;
-@property BOOL allowsOptimalPacking; // @synthesize allowsOptimalPacking=_allowsOptimalPacking;
+@property BOOL allowsOptimalRowbytesPacking; // @synthesize allowsOptimalRowbytesPacking=_allowsOptimalRowbytesPacking;
 @property (nonatomic) unsigned long long colorSpaceID; // @synthesize colorSpaceID=_colorSpaceID;
 @property (nonatomic) double compressionQuality; // @synthesize compressionQuality=_compressionQuality;
 @property long long compressionType; // @synthesize compressionType=_compressionType;

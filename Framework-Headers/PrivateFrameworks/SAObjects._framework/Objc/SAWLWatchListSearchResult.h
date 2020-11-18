@@ -18,8 +18,10 @@
 @property (copy, nonatomic) NSString *contentType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) SAUIImageResource *evodFeaturingImage;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SAUIImageResource *image;
+@property (nonatomic) BOOL isEvod;
 @property (copy, nonatomic) NSString *network;
 @property (copy, nonatomic) NSDate *releaseDate;
 @property (copy, nonatomic) NSString *shelfType;

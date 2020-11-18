@@ -14,7 +14,7 @@
     NSMutableDictionary *_voiceNameMap;
 }
 
-@property (readonly, nonatomic) NSSet *supportedSiriLanguages;
+@property (readonly, copy, nonatomic) NSSet *supportedSiriLanguages;
 @property (strong, nonatomic) NSDictionary *voiceClassesMap; // @synthesize voiceClassesMap=_voiceClassesMap;
 @property (strong, nonatomic) NSMutableDictionary *voiceNameMap; // @synthesize voiceNameMap=_voiceNameMap;
 
@@ -23,14 +23,15 @@
 + (id)sharedInstance;
 + (BOOL)supportsAlex;
 + (BOOL)supportsSiri;
+- (void).cxx_destruct;
 - (id)_siriBaseIdentifierFromIdentifier:(id)arg1;
 - (id)_siriIdentifierFromBaseIdentifier:(id)arg1 language:(id)arg2 quality:(long long)arg3;
 - (BOOL)_siriSupportsLanguage:(id)arg1;
 - (id)alternativeVoiceIdentifiersForLangauge:(id)arg1;
-- (void)dealloc;
 - (BOOL)isAlexAvailableForLanguage:(id)arg1;
 - (BOOL)isAlternativeVoice:(id)arg1;
 - (BOOL)isAlternativeVoiceIdentifier:(id)arg1 forLanguage:(id)arg2;
+- (BOOL)isOldSiriVoiceIdentifier:(id)arg1;
 - (BOOL)isSiriVoiceIdentifier:(id)arg1;
 - (id)nameForVoiceIdentifier:(id)arg1;
 - (id)voiceForVoiceIdentifier:(id)arg1 forLanguage:(id)arg2;

@@ -135,7 +135,9 @@
 
 + (struct _ipp_s *)getAttributes:(const char **)arg1 count:(int)arg2 fromURI:(id)arg3;
 + (id)hardcodedURIs;
++ (BOOL)ippsIsRequired;
 + (void)listenForPrinterNotifications;
++ (BOOL)mcProfilePrintersOnlyAllowed;
 + (id)nameForHardcodedURI:(id)arg1;
 + (BOOL)printerLookupWithName:(id)arg1 andTimeout:(double)arg2;
 + (id)printerWithName:(id)arg1;
@@ -143,6 +145,7 @@
 + (id)requiredPDL;
 + (BOOL)supportsSecureCoding;
 + (BOOL)urfIsOptional;
++ (BOOL)uriMatchesMCProfileAdded:(id)arg1;
 - (id)TXTRecordWithTimeout:(int)arg1;
 - (long long)abortJob;
 - (void)addRSSIValue:(id)arg1;
@@ -175,6 +178,7 @@
 - (id)localName;
 - (id)localizedPrinterWarnings;
 - (id)location;
+- (struct http_addrlist_s *)lookup;
 - (id)makeAndModel;
 - (id)matchedPaper:(id)arg1 preferBorderless:(BOOL)arg2 withDuplexMode:(id)arg3 didMatch:(BOOL *)arg4;
 - (id)paperListForDuplexMode:(id)arg1;

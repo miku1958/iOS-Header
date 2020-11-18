@@ -20,10 +20,10 @@
     NSObject<OS_xpc_object> *_daemonConnection;
     NSObject<OS_xpc_object> *_observationConnection;
     unsigned int _launchdUID;
-    _Atomic unsigned int _lastEUID;
+    unsigned int _euid;
 }
 
-+ (id)defaultPreferences;
++ (id)copyDefaultPreferences;
 - (id)_copyDaemonConnectionSettingUpIfNecessaryForRole:(int)arg1;
 - (void)addSuitePreferences:(struct __CFString *)arg1 toAppIdentifier:(struct __CFString *)arg2 container:(struct __CFString *)arg3;
 - (void)alreadylocked_withNamedVolatileSources:(CDUnknownBlockType)arg1;
@@ -40,18 +40,20 @@
 - (struct __CFDictionary *)copyDictionaryForSourceWithIdentifier:(struct __CFString *)arg1;
 - (struct __CFDictionary *)copyDictionaryForVolatileSourceWithName:(struct __CFString *)arg1;
 - (struct __CFArray *)copyKeyListForIdentifier:(struct __CFString *)arg1 user:(struct __CFString *)arg2 host:(struct __CFString *)arg3 container:(struct __CFString *)arg4;
+- (struct __CFDictionary *)copyManagedValuesForKeys:(struct __CFArray *)arg1 identifier:(struct __CFString *)arg2 useSystemContainer:(BOOL)arg3;
 - (id)copyObservationConnection;
 - (void *)copyValueForKey:(struct __CFString *)arg1 identifier:(struct __CFString *)arg2 user:(struct __CFString *)arg3 host:(struct __CFString *)arg4 container:(struct __CFString *)arg5;
 - (struct __CFDictionary *)copyValuesForKeys:(struct __CFArray *)arg1 identifier:(struct __CFString *)arg2 user:(struct __CFString *)arg3 host:(struct __CFString *)arg4 container:(struct __CFString *)arg5;
 - (void)dealloc;
 - (void)destroyConnections;
+- (unsigned int)euid;
 - (void)flushCachesForAppIdentifier:(struct __CFString *)arg1 user:(struct __CFString *)arg2;
 - (void)flushManagedSources;
 - (void)fullCloudSynchronizeForAppIdentifier:(struct __CFString *)arg1 container:(struct __CFString *)arg2 configurationURL:(struct __CFURL *)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)hasCloudValueForKey:(struct __CFString *)arg1 appIdentifier:(struct __CFString *)arg2 container:(struct __CFString *)arg3 configurationURL:(struct __CFURL *)arg4;
 - (BOOL)hasNonRegisteredValueForKey:(struct __CFString *)arg1 appIdentifier:(struct __CFString *)arg2 container:(struct __CFString *)arg3 configurationURL:(struct __CFURL *)arg4;
+- (void)ingestVolatileStateFromPreferences:(id)arg1;
 - (id)init;
-- (unsigned int)lastEUID;
 - (void)notifyOfImpendingDeletionOfUser:(struct __CFString *)arg1;
 - (void)registerDefaultValues:(struct __CFDictionary *)arg1;
 - (void)registerUserDefaultsInstance:(id)arg1 configurationURL:(struct __CFURL *)arg2;
@@ -69,6 +71,7 @@
 - (void)setValue:(void *)arg1 forKey:(struct __CFString *)arg2 identifier:(struct __CFString *)arg3 user:(struct __CFString *)arg4 host:(struct __CFString *)arg5 container:(struct __CFString *)arg6;
 - (void)setValuesForKeys:(struct __CFDictionary *)arg1 removingValuesForKeys:(struct __CFArray *)arg2 identifier:(struct __CFString *)arg3 user:(struct __CFString *)arg4 host:(struct __CFString *)arg5 container:(struct __CFString *)arg6;
 - (CDUnion_f9025cb3 *)shmemForRole:(int)arg1 name:(const char *)arg2;
+- (void)synchronizeEverything;
 - (unsigned char)synchronizeIdentifier:(struct __CFString *)arg1 user:(struct __CFString *)arg2 host:(struct __CFString *)arg3 container:(struct __CFString *)arg4;
 - (void)unregisterUserDefaultsInstance:(id)arg1;
 - (void)updateSearchListsForIdentifier:(struct __CFString *)arg1;

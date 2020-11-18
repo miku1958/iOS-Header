@@ -24,7 +24,11 @@ __attribute__((visibility("hidden")))
 - (int)interactionType;
 - (id)localizedName;
 - (void)messageComposeViewController:(id)arg1 didFinishWithResult:(long long)arg2;
+- (id)notificationIconBundleIdentifier;
+- (id)notificationTitle;
+- (id)notificationURL;
 - (void)performFromView:(id)arg1;
+- (BOOL)prefersOpenToCreate;
 - (id)viewController;
 
 @end

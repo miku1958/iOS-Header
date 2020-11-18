@@ -12,14 +12,17 @@
 {
     NSArray *_prelude;
     IKCSSParseBlock *_block;
+    struct _NSRange __endRange;
 }
 
+@property (nonatomic, setter=_setEndRange:) struct _NSRange _endRange; // @synthesize _endRange=__endRange;
 @property (strong, nonatomic) IKCSSParseBlock *block; // @synthesize block=_block;
 @property (strong, nonatomic) NSArray *prelude; // @synthesize prelude=_prelude;
 
 - (void).cxx_destruct;
 - (id)description;
 - (id)init;
+- (struct _NSRange)range;
 
 @end
 

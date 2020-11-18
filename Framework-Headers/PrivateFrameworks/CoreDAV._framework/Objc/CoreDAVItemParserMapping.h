@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -19,7 +19,7 @@
 @property (strong, nonatomic) NSString *nameSpace; // @synthesize nameSpace=_nameSpace;
 @property (nonatomic) Class parseClass; // @synthesize parseClass=_parseClass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithNameSpace:(id)arg1 name:(id)arg2 parseClass:(Class)arg3;
 

@@ -50,7 +50,6 @@
 - (id)initWithName:(id)arg1 number:(int)arg2 directory:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValid;
-- (BOOL)isValidImage;
 - (BOOL)isWritePending;
 - (id)lowResolutionFilename;
 - (id)pathForContainingDirectory;

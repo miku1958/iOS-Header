@@ -11,6 +11,7 @@
 @protocol HFActionSetBuilderProtocol <NSObject>
 
 @property (readonly, nonatomic) NSArray *actions;
+@property (readonly, nonatomic, getter=isAffectedByEndEvents) BOOL affectedByEndEvents;
 @property (readonly, nonatomic) BOOL requiresDeviceUnlock;
 
 - (void)addAction:(HFActionBuilder *)arg1;

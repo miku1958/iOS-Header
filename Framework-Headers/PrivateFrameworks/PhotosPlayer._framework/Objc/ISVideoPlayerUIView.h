@@ -17,8 +17,10 @@
 @property (strong, nonatomic) ISWrappedAVPlayer *videoPlayer; // @synthesize videoPlayer=_videoPlayer;
 
 - (void).cxx_destruct;
+- (void)_ISVideoPlayerUIView_commonInitialization;
 - (void)_updateVideoGravity;
-- (id)init;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)setContentMode:(long long)arg1;
 
 @end

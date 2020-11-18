@@ -25,7 +25,7 @@
     NSString *_web_fbq;
 }
 
-@property (weak, nonatomic) id<SPDaemonQueryDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, weak, nonatomic) id<SPDaemonQueryDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL didReissue; // @synthesize didReissue=_didReissue;
 @property (readonly) NSString *fbq; // @synthesize fbq=_fbq;
 @property (readonly, nonatomic) BOOL gotQueryComplete; // @synthesize gotQueryComplete=_gotQueryComplete;
@@ -41,8 +41,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)handleLocalQueryWithResultSet:(id)arg1;
 - (void)handleMessage:(id)arg1;
-- (id)initWithQuery:(id)arg1;
-- (id)initWithQuery:(id)arg1 queue:(id)arg2;
+- (id)initWithQuery:(id)arg1 queue:(id)arg2 delegate:(id)arg3;
 - (void)queryDidComplete;
 
 @end

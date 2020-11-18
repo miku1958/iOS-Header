@@ -6,11 +6,9 @@
 
 #import <ITMLKit/IKViewElement.h>
 
-#import <ITMLKit/IKAppDocumentStyleChangeObserving-Protocol.h>
+@class NSArray, NSDictionary, NSURL, UIColor;
 
-@class NSArray, NSDictionary, NSString, NSURL, UIColor;
-
-@interface IKImageElement : IKViewElement <IKAppDocumentStyleChangeObserving>
+@interface IKImageElement : IKViewElement
 {
     double _srcWidth;
     double _srcHeight;
@@ -21,10 +19,7 @@
 }
 
 @property (readonly, nonatomic) UIColor *borderColor;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long fill;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double height;
 @property (readonly, nonatomic) unsigned long long imageType; // @synthesize imageType=_imageType;
 @property (readonly, strong, nonatomic) NSURL *placeholderURL;
@@ -33,7 +28,6 @@
 @property (strong, nonatomic) NSURL *resolvedURL; // @synthesize resolvedURL=_resolvedURL;
 @property (readonly, strong, nonatomic) NSDictionary *srcset; // @synthesize srcset=_srcset;
 @property (strong, nonatomic) NSArray *srcsetRules; // @synthesize srcsetRules=_srcsetRules;
-@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSURL *url;
 @property (readonly, nonatomic) double width;
 

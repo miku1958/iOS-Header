@@ -17,6 +17,7 @@
     NSMutableDictionary *_bookmarkIDToChanges;
     NSMutableDictionary *_folderIDToDeletedChildrenChanges;
     NSMutableDictionary *_folderIDToAddedChildrenChanges;
+    NSMutableDictionary *_folderIDToModifiedChildrenChanges;
     NSURL *_fileURL;
 }
 
@@ -36,6 +37,7 @@
 - (id)init;
 - (id)initWithFileURL:(id)arg1;
 - (BOOL)isBookmarkDeleted:(int)arg1;
+- (id)modifiedBookmarksInBookmarkFolder:(int)arg1;
 - (int)nextBookmarkIDForAddingBookmarkInMemory;
 - (unsigned long long)numberOfAddedBookmarksInBookmarkFolder:(int)arg1;
 - (void)persistChangesWithCompletion:(CDUnknownBlockType)arg1;

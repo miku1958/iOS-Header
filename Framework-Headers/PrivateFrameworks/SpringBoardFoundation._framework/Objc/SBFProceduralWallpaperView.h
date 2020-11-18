@@ -27,6 +27,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
+@property (readonly, nonatomic) id<SBFProceduralWallpaper> proceduralWallpaper; // @synthesize proceduralWallpaper=_proceduralWallpaper;
 @property (readonly) Class superclass;
 
 + (BOOL)_allowsParallax;
@@ -39,6 +41,7 @@
 - (void)_handleVariantChange;
 - (void)_handleVisibilityChange;
 - (BOOL)_isVisible;
+- (BOOL)_needsFallbackImageForBackdropGeneratedImage:(id)arg1;
 - (id)_newImageFromBlurSurface:(void *)arg1 rect:(struct CGRect)arg2;
 - (void)_sample;
 - (BOOL)_shouldSampleContinuously;
@@ -49,12 +52,11 @@
 - (void)dealloc;
 - (BOOL)hasBeenInvalidated;
 - (BOOL)hasContentOutsideVisibleBounds;
-- (id)initWithFrame:(struct CGRect)arg1 proceduralWallpaper:(id)arg2 options:(id)arg3 variant:(long long)arg4;
+- (id)initWithFrame:(struct CGRect)arg1 proceduralWallpaper:(id)arg2 options:(id)arg3 variant:(long long)arg4 wallpaperSettingsProvider:(id)arg5;
 - (void)invalidate;
 - (BOOL)isDisplayingWallpaperWithConfiguration:(id)arg1 forVariant:(long long)arg2;
 - (void)layoutSubviews;
 - (BOOL)needsImmediateLayoutBeforeRotation;
-- (id)options;
 - (void)prepareToAppear;
 - (void)prepareToDisappear;
 - (void)setContinuousColorSamplingEnabled:(BOOL)arg1;

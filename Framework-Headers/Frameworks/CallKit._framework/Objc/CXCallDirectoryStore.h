@@ -14,11 +14,15 @@
     CXDatabase *_database;
     long long _lastAddBlockingEntriesCount;
     NSString *_addBlockingEntriesInsertPhoneNumberBlockingEntrySQL;
+    long long _lastRemoveBlockingEntriesCount;
+    NSString *_removeBlockingEntriesSQL;
     long long _lastAddIdentificationEntriesCount;
     NSString *_addIdentificationEntriesInsertLabelsSQL;
     NSString *_addIdentificationEntriesInsertPhoneNumberIdentificationEntrySQL;
     long long _lastAddPhoneNumbersCount;
     NSString *_addPhoneNumbersSQL;
+    long long _lastRemoveIdentificationEntriesCount;
+    NSString *_removeIdentificationEntriesSQL;
 }
 
 @property (copy, nonatomic) NSString *addBlockingEntriesInsertPhoneNumberBlockingEntrySQL; // @synthesize addBlockingEntriesInsertPhoneNumberBlockingEntrySQL=_addBlockingEntriesInsertPhoneNumberBlockingEntrySQL;
@@ -30,6 +34,10 @@
 @property (nonatomic) long long lastAddBlockingEntriesCount; // @synthesize lastAddBlockingEntriesCount=_lastAddBlockingEntriesCount;
 @property (nonatomic) long long lastAddIdentificationEntriesCount; // @synthesize lastAddIdentificationEntriesCount=_lastAddIdentificationEntriesCount;
 @property (nonatomic) long long lastAddPhoneNumbersCount; // @synthesize lastAddPhoneNumbersCount=_lastAddPhoneNumbersCount;
+@property (nonatomic) long long lastRemoveBlockingEntriesCount; // @synthesize lastRemoveBlockingEntriesCount=_lastRemoveBlockingEntriesCount;
+@property (nonatomic) long long lastRemoveIdentificationEntriesCount; // @synthesize lastRemoveIdentificationEntriesCount=_lastRemoveIdentificationEntriesCount;
+@property (copy, nonatomic) NSString *removeBlockingEntriesSQL; // @synthesize removeBlockingEntriesSQL=_removeBlockingEntriesSQL;
+@property (copy, nonatomic) NSString *removeIdentificationEntriesSQL; // @synthesize removeIdentificationEntriesSQL=_removeIdentificationEntriesSQL;
 @property (readonly, nonatomic) long long schemaVersion;
 @property (nonatomic, getter=isTemporary) BOOL temporary; // @synthesize temporary=_temporary;
 @property (readonly, nonatomic) NSURL *url;
@@ -47,6 +55,8 @@
 - (id)_firstIdentificationEntryForSQL:(id)arg1 bindings:(id)arg2 error:(id *)arg3;
 - (BOOL)_parseFirstIdentificationEntriesForSQL:(id)arg1 bindings:(id)arg2 handler:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (BOOL)_parseIdentificationEntriesForSQL:(id)arg1 bindings:(id)arg2 handler:(CDUnknownBlockType)arg3 error:(id *)arg4;
+- (BOOL)_removeBlockingEntriesWithData:(id)arg1 startIndex:(unsigned long long)arg2 count:(unsigned long long)arg3 extensionID:(long long)arg4 error:(id *)arg5;
+- (BOOL)_removeIdentificationEntriesWithData:(id)arg1 startIndex:(unsigned long long)arg2 count:(unsigned long long)arg3 extensionID:(long long)arg4 error:(id *)arg5;
 - (BOOL)_removeUnreferencedLabelsWithError:(id *)arg1;
 - (BOOL)_removeUnreferencedPhoneNumbersWithError:(id *)arg1;
 - (id)_sqlBindingsForPrioritizedExtensionIdentifiers:(id)arg1 withPriorityOffset:(long long)arg2;
@@ -85,14 +95,17 @@
 - (id)prioritizedExtensionIdentifiersWithError:(id *)arg1;
 - (id)prioritizedExtensionsWithError:(id *)arg1;
 - (BOOL)removeBlockingEntriesForExtensionWithID:(long long)arg1 error:(id *)arg2;
+- (BOOL)removeBlockingEntriesWithData:(id)arg1 extensionID:(long long)arg2 error:(id *)arg3;
 - (BOOL)removeExtensionWithIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)removeIdentificationEntriesForExtensionWithID:(long long)arg1 error:(id *)arg2;
+- (BOOL)removeIdentificationEntriesWithData:(id)arg1 extensionID:(long long)arg2 error:(id *)arg3;
 - (BOOL)removeUnreferencedRecordsWithError:(id *)arg1;
 - (long long)schemaVersionWithError:(id *)arg1;
 - (BOOL)setPrioritizedExtensionIdentifiers:(id)arg1 error:(id *)arg2;
 - (BOOL)setState:(long long)arg1 forExtensionWithID:(long long)arg2 error:(id *)arg3;
 - (BOOL)setState:(long long)arg1 forExtensionWithIdentifier:(id)arg2 error:(id *)arg3;
 - (BOOL)setStateForAllExtensions:(long long)arg1 error:(id *)arg2;
+- (BOOL)setStateLastModifiedDate:(id)arg1 forExtensionWithID:(long long)arg2 error:(id *)arg3;
 - (BOOL)vacuumWithError:(id *)arg1;
 
 @end

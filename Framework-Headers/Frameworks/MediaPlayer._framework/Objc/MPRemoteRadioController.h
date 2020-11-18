@@ -22,11 +22,11 @@
     RadioRecentStationsController *_recentStationsController;
 }
 
-@property (strong, nonatomic) RadioAvailabilityController *availabilityController; // @synthesize availabilityController=_availabilityController;
+@property (readonly, nonatomic) RadioAvailabilityController *availabilityController; // @synthesize availabilityController=_availabilityController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) RadioRecentStationsController *recentStationsController; // @synthesize recentStationsController=_recentStationsController;
+@property (readonly, nonatomic) RadioRecentStationsController *recentStationsController; // @synthesize recentStationsController=_recentStationsController;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

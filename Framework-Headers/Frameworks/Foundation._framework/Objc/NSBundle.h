@@ -71,6 +71,7 @@
 - (id)URLsForResourcesWithExtension:(id)arg1 subdirectory:(id)arg2 localization:(id)arg3;
 - (void)__static;
 - (struct __CFBundle *)_cfBundle;
+- (struct __CFBundle *)_cfBundleIfPresent;
 - (id)_pathForResource:(id)arg1 ofType:(id)arg2 inDirectory:(id)arg3 forRegion:(id)arg4;
 - (id)_pathsForResourcesOfType:(id)arg1 inDirectory:(id)arg2 forRegion:(id)arg3;
 - (id)_regionsArray;

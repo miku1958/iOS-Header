@@ -12,13 +12,12 @@
 {
     JSVirtualMachine *m_virtualMachine;
     struct OpaqueJSContext *m_context;
-    JSWrapperMap *m_wrapperMap;
     struct Strong<JSC::JSObject> m_exception;
-    CDUnknownBlockType exceptionHandler;
+    CDUnknownBlockType _exceptionHandler;
 }
 
 @property (strong) JSValue *exception;
-@property (copy) CDUnknownBlockType exceptionHandler; // @synthesize exceptionHandler;
+@property (copy) CDUnknownBlockType exceptionHandler; // @synthesize exceptionHandler=_exceptionHandler;
 @property (readonly) JSValue *globalObject;
 @property (copy) NSString *name;
 @property (readonly) JSVirtualMachine *virtualMachine;
@@ -42,6 +41,7 @@
 - (BOOL)boolFromNotifyException:(struct OpaqueJSValue *)arg1;
 - (void)dealloc;
 - (void)endCallbackWithData:(struct CallbackData *)arg1;
+- (void)ensureWrapperMap;
 - (id)evaluateScript:(id)arg1;
 - (id)evaluateScript:(id)arg1 withSourceURL:(id)arg2;
 - (id)init;

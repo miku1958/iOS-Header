@@ -6,7 +6,7 @@
 
 #import <SAObjects/SAMPMediaEntity.h>
 
-@class NSString, SACalendar, SAMPPlaybackInfo, SAMPReleaseInfo;
+@class NSNumber, NSString, SACalendar, SAMPPlaybackInfo, SAMPReleaseInfo;
 
 @interface SAMPMediaItem : SAMPMediaEntity
 {
@@ -17,6 +17,7 @@
 @property (strong, nonatomic) SACalendar *dateAdded;
 @property (strong, nonatomic) SACalendar *datePurchased;
 @property (copy, nonatomic) NSString *genre;
+@property (copy, nonatomic) NSNumber *perceivableStartTimeInSeconds;
 @property (strong, nonatomic) SAMPPlaybackInfo *playbackInfo;
 @property (strong, nonatomic) SAMPReleaseInfo *releaseInfo;
 @property (copy, nonatomic) NSString *sortAlbum;

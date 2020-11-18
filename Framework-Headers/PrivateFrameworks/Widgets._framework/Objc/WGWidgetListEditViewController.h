@@ -24,6 +24,7 @@
     BOOL _dismissingDueToInterfaceAction;
     id<WGWidgetListEditViewControllerDataSource> _dataSource;
     id<WGWidgetListEditViewControllerDelegate> _delegate;
+    id _statusBarColorAssertion;
 }
 
 @property (weak, nonatomic) id<WGWidgetListEditViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
@@ -32,6 +33,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=_isDismissingDueToInterfaceAction, setter=_setDismissingDueToInterfaceAction:) BOOL dismissingDueToInterfaceAction; // @synthesize dismissingDueToInterfaceAction=_dismissingDueToInterfaceAction;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic, getter=_statusBarColorAssertion, setter=_setStatusBarColorAssertion:) id statusBarColorAssertion; // @synthesize statusBarColorAssertion=_statusBarColorAssertion;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -73,8 +75,11 @@
 - (id)tableView:(id)arg1 titleForDeleteConfirmationButtonForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 
 @end

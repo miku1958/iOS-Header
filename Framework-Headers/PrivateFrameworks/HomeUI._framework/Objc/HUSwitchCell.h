@@ -10,12 +10,11 @@
 #import <HomeUI/HUDisableableCellProtocol-Protocol.h>
 
 @class HFItem, NSString;
-@protocol HUSwitchCellDelegate;
+@protocol HUResizableCellDelegate, HUSwitchCellDelegate;
 
 @interface HUSwitchCell : UITableViewCell <HUCellProtocol, HUDisableableCellProtocol>
 {
     BOOL _disabled;
-    BOOL _on;
     HFItem *_item;
     id<HUSwitchCellDelegate> _delegate;
 }
@@ -26,7 +25,8 @@
 @property (nonatomic, getter=isDisabled) BOOL disabled; // @synthesize disabled=_disabled;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
-@property (nonatomic, getter=isOn) BOOL on; // @synthesize on=_on;
+@property (nonatomic, getter=isOn) BOOL on;
+@property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

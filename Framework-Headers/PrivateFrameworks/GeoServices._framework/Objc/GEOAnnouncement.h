@@ -57,12 +57,12 @@
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSString *userMessage; // @synthesize userMessage=_userMessage;
 
+- (void).cxx_destruct;
 - (int)StringAsAnnouncementType:(id)arg1;
 - (int)StringAsReleasePhase:(id)arg1;
 - (id)announcementTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -35,6 +35,7 @@
 @property (readonly, nonatomic) NSMutableArray *touchPhases;
 @property (readonly, nonatomic) int type;
 
++ (BOOL)_shouldDefaultToTouches;
 + (void)initialize;
 - (void).cxx_destruct;
 - (void)_processTouches:(id)arg1 withEvent:(id)arg2 type:(int)arg3;

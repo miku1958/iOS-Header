@@ -51,7 +51,6 @@
 @property (strong, nonatomic) CalDiagCalendarCollectionSync *calendarCollectionSyncDiagnostics; // @synthesize calendarCollectionSyncDiagnostics=_calendarCollectionSyncDiagnostics;
 @property (strong, nonatomic) NSURL *calendarURL;
 @property (strong, nonatomic) NSString *calendarURLString; // @synthesize calendarURLString=_calendarURLString;
-@property (strong, nonatomic) NSSet *calendarUserAddresses;
 @property (nonatomic) BOOL canBePublished;
 @property (nonatomic) BOOL canBeShared;
 @property (strong, nonatomic) NSString *color;
@@ -96,7 +95,9 @@
 @property (strong, nonatomic) NSURL *owner;
 @property (strong, nonatomic) NSString *ownerDisplayName;
 @property (readonly, nonatomic) NSString *ownerEmailAddress;
+@property (readonly, nonatomic) NSString *ownerPhoneNumber;
 @property (strong, nonatomic) NSURL *prePublishURL;
+@property (strong, nonatomic) NSSet *preferredCalendarUserAddresses;
 @property (weak, nonatomic) id<CalDAVPrincipal> principal;
 @property (strong, nonatomic) NSURL *publishURL;
 @property (strong, nonatomic) NSString *pushKey;
@@ -143,11 +144,13 @@
 - (int)_gatherModifiedTasksInArray:(id)arg1;
 - (BOOL)_isItemJunk:(void *)arg1;
 - (id)_itemPropertyDictForItemAtIndex:(long long)arg1 withChangedIDs:(struct __CFArray *)arg2 withChangedRowids:(struct __CFArray *)arg3 withExternalIDs:(struct __CFArray *)arg4 uniqueIdentifiers:(struct __CFArray *)arg5 significantAttributeChanges:(struct __CFArray *)arg6 oldCalendarIDs:(struct __CFArray *)arg7 entityType:(int)arg8;
+- (id)_preferredAddress;
 - (BOOL)_removeCalendarItemWithURL:(id)arg1;
 - (id)_resourceURLsForJunkItemsInModifiedItems:(id)arg1 alreadySentItems:(id)arg2;
 - (void)_setSupportsEvents:(BOOL)arg1 supportsTodos:(BOOL)arg2;
 - (BOOL)_updateCalendarOwnerInfo;
 - (Class)appSpecificCalendarItemClass;
+- (id)calendarUserAddresses;
 - (void)clearEventChanges;
 - (void)clearShareeActions;
 - (id)copyAddedItems;

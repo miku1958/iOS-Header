@@ -17,7 +17,10 @@
 @property (readonly, nonatomic) NSString *phone;
 
 + (long long)dataType;
+- (id)errors;
+- (id)errorsForContactFields:(id)arg1;
 - (BOOL)isValidWithError:(id *)arg1;
+- (id)requiredContactFields;
 
 @end
 

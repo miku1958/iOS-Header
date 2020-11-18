@@ -34,10 +34,11 @@
 @property (nonatomic) unsigned long long totalLength; // @synthesize totalLength=_totalLength;
 @property (nonatomic) unsigned long long totalWritePosition; // @synthesize totalWritePosition=_totalWritePosition;
 
++ (void)initialize;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)customDictionaryRepresentation;
 - (void)dealloc;
-- (id)description;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

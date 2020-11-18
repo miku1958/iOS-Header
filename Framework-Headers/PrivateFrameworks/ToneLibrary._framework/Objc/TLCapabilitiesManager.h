@@ -22,12 +22,14 @@
 @property (readonly, nonatomic) BOOL hasVibratorCapability;
 @property (readonly, nonatomic, getter=isRingtoneStoreAvailable) BOOL ringtoneStoreAvailable;
 @property (readonly, nonatomic) NSString *simplifiedDeviceCodeName;
+@property (readonly, nonatomic) BOOL wantsModernDefaultRingtone;
 
 + (id)sharedCapabilitiesManager;
 - (void).cxx_destruct;
 - (void)_checkRingtoneStoreAvailability;
 - (void)_handleStoreAvailableItemKindsChangedNotification:(id)arg1;
 - (BOOL)_hasTelephonyCapability;
+- (void)_updateRingtoneStoreAvailabilityWithAvailableKinds:(id)arg1 error:(id)arg2;
 - (void)dealloc;
 - (id)init;
 

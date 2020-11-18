@@ -34,11 +34,13 @@
     AXElementGroup *_keyboardGroupCache;
     NSMutableDictionary *_postFetchFilters;
     AXVisualElementGrouper *_visualElementGrouper;
+    NSArray *_customCurrentApps;
 }
 
 @property (nonatomic) unsigned long long activeFetchEvents; // @synthesize activeFetchEvents=_activeFetchEvents;
 @property (readonly, nonatomic) NSArray *availableElements;
 @property (strong, nonatomic) NSArray *currentApps; // @synthesize currentApps=_currentApps;
+@property (strong, nonatomic) NSArray *customCurrentApps; // @synthesize customCurrentApps=_customCurrentApps;
 @property (nonatomic) id<AXElementFetcherDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL didSendFakeScreenChangeOnLastFetch; // @synthesize didSendFakeScreenChangeOnLastFetch=_didSendFakeScreenChangeOnLastFetch;
 @property (strong, nonatomic) NSArray *elementCache; // @synthesize elementCache=_elementCache;
@@ -63,6 +65,7 @@
 
 + (id)springBoardElement;
 + (id)systemWideElement;
+- (void).cxx_destruct;
 - (id)_axNotificationsForManagedEvents;
 - (void)_debugLogElementCache;
 - (id)_debugStringForFetchEvents:(unsigned long long)arg1;
@@ -79,28 +82,32 @@
 - (id)_findGroupableMatchingBlock:(CDUnknownBlockType)arg1 inElementGroup:(id)arg2;
 - (id)_findGroupableMatchingGroupable:(id)arg1 inElementGroup:(id)arg2;
 - (id)_groupWithDictionary:(id)arg1 currentPid:(int)arg2;
-- (id)_groupWithItems:(id)arg1 groupTraits:(int)arg2 scanningBehaviorTraits:(int)arg3 label:(id)arg4 currentPid:(int)arg5;
+- (id)_groupWithItems:(id)arg1 groupTraits:(unsigned long long)arg2 scanningBehaviorTraits:(unsigned long long)arg3 label:(id)arg4 currentPid:(int)arg5;
 - (void)_handleApplicationWasActivated:(id)arg1;
 - (void)_handleMediaDidBegin:(struct __CFData *)arg1;
 - (void)_handleNativeFocusItemDidChange:(struct __CFData *)arg1;
+- (void)_handleScreenWillChange:(struct __CFData *)arg1;
 - (void)_handleUpdateElementVisuals:(struct __CFData *)arg1;
 - (void)_notifyObserversApplicationWasActivated:(id)arg1;
 - (void)_notifyObserversDidFetchElementsForEvent:(unsigned long long)arg1 foundNewElements:(BOOL)arg2;
 - (void)_notifyObserversDidScheduleFetchEvent:(unsigned long long)arg1;
 - (void)_notifyObserversMediaDidBegin:(struct __CFData *)arg1;
 - (void)_notifyObserversNativeFocusElementDidChange:(id)arg1;
+- (void)_notifyObserversScreenWillChange:(struct __CFData *)arg1;
 - (void)_notifyObserversUpdateElementVisuals:(id)arg1;
 - (void)_notifyObserversWillFetchElementsForEvent:(unsigned long long)arg1;
 - (long long)_priorityForFetchEvent:(unsigned long long)arg1;
 - (id)_processAppGroup:(id)arg1 keyboardGroup:(id *)arg2;
 - (void)_scheduleFetchEvent:(unsigned long long)arg1;
 - (void)_sendFakeScreenChangeIfNecessaryForGroups:(id)arg1 orElements:(id)arg2 appsDidChange:(BOOL)arg3;
+- (void)_setCurrentApplications:(id)arg1;
 - (BOOL)_shouldConsiderCacheAsInvalid;
 - (id)_siblingOfGroupable:(id)arg1 forDirection:(BOOL)arg2 didWrap:(BOOL *)arg3;
 - (void)_tearDownEventCoalesceTimer;
 - (BOOL)_updateCurrentApps;
 - (void)addFetchEvents:(unsigned long long)arg1;
 - (void)addPostFetchFilter:(CDUnknownBlockType)arg1 withIdentifier:(id)arg2;
+- (void)clearCache;
 - (id)closestElementToElement:(id)arg1;
 - (id)closestElementToPoint:(struct CGPoint)arg1;
 - (void)dealloc;

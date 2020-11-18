@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)_clearProtectionDataForRecordInfo:(id)arg1;
 - (void)_decryptRecordInfo:(id)arg1;
 - (void)_decryptRecordInfo:(id)arg1 usingWebSharingIdentityData:(id)arg2;
+- (void)_decryptRecordInfo:(id)arg1 usingZonePCS:(id)arg2;
 - (id)_decryptRecordPCSForRecord:(id)arg1 usingChainPCS:(id)arg2;
 - (id)_decryptRecordPCSForRecord:(id)arg1 usingSharePCS:(id)arg2;
 - (void)_finishDecryptOperation;
@@ -42,10 +43,12 @@ __attribute__((visibility("hidden")))
 - (void)_handleProtectionDataForRecordInfo:(id)arg1;
 - (void)_handleShareProtectionDataForRecordInfo:(id)arg1;
 - (void)_handleZoneProtectionDataForRecordInfo:(id)arg1;
+- (id)_possiblyWrapError:(id)arg1 withCode:(long long)arg2 format:(id)arg3;
 - (void)_recordInfoWasDecrypted:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (id)_unwrapAssetKey:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2;
+- (id)_unwrapAssetKeyForAsset:(id)arg1 inRecordWithID:(id)arg2 forField:(id)arg3 withPCS:(struct _OpaquePCSShareProtection *)arg4;
+- (id)_unwrapEncryptedPropertiesForRecordValueStore:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2;
 - (id)_unwrapEncryptedPropertiesOnRecord:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2;
-- (id)_unwrapPackageAssets:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2;
+- (id)_unwrapPackageAssets:(id)arg1 inRecordWithID:(id)arg2 forField:(id)arg3 withPCS:(struct _OpaquePCSShareProtection *)arg4;
 - (id)activityCreate;
 - (void)decryptRecord:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)finishDecryption;

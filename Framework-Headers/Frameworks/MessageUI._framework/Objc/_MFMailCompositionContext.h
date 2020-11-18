@@ -6,7 +6,8 @@
 
 #import <Foundation/NSObject.h>
 
-@class MFAttachmentCompositionContext, MFComposeBodyField, MFMailMessage, MFMessageLoadingContext, NSArray, NSMutableArray, NSString;
+@class MFAttachmentCompositionContext, MFMailMessage, MFMessageLoadingContext, NSArray, NSMutableArray, NSString, UIView;
+@protocol MFComposeBodyField;
 
 @interface _MFMailCompositionContext : NSObject
 {
@@ -34,14 +35,14 @@
     int _sourceAccountManagement;
     unsigned long long _caretPosition;
     NSString *_originatingBundleID;
-    MFComposeBodyField *_bodyField;
+    UIView<MFComposeBodyField> *_bodyField;
 }
 
 @property (readonly, nonatomic) MFAttachmentCompositionContext *attachmentContext; // @synthesize attachmentContext=_attachmentContext;
 @property (strong, nonatomic) NSString *attachmentToMarkupContentID; // @synthesize attachmentToMarkupContentID=_attachmentToMarkupContentID;
 @property (readonly, nonatomic) id autosaveIdentifier; // @synthesize autosaveIdentifier=_autosaveIdentifier;
 @property (copy, nonatomic) NSArray *bccRecipients; // @synthesize bccRecipients=_bccRecipients;
-@property MFComposeBodyField *bodyField; // @synthesize bodyField=_bodyField;
+@property UIView<MFComposeBodyField> *bodyField; // @synthesize bodyField=_bodyField;
 @property (nonatomic) unsigned long long caretPosition; // @synthesize caretPosition=_caretPosition;
 @property (copy, nonatomic) NSArray *ccRecipients; // @synthesize ccRecipients=_ccRecipients;
 @property (readonly, nonatomic) int composeType; // @synthesize composeType=_composeType;
@@ -88,6 +89,7 @@
 - (void)recordUndoAttachmentsForURLs:(id)arg1;
 - (void)removeAttachment:(id)arg1;
 - (void)setMessageBody:(id)arg1 isHTML:(BOOL)arg2;
+- (void)switchToReplyAllWithDelegate:(id)arg1;
 
 @end
 

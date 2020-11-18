@@ -25,6 +25,7 @@
 @property (nonatomic) long long progress; // @synthesize progress=_progress;
 @property (strong, nonatomic) NSDictionary *renderedImage; // @synthesize renderedImage=_renderedImage;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 

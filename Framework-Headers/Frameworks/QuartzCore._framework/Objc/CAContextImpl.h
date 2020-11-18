@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 
 - (BOOL)colorMatchUntaggedContent;
 - (struct CGColorSpace *)colorSpace;
+- (unsigned int)commitPriority;
 - (id)contentsFormat;
 - (unsigned int)contextId;
 - (unsigned int)createFencePort;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)createSlot;
 - (void)dealloc;
 - (void)deleteSlot:(unsigned int)arg1;
+- (float)desiredDynamicRange;
 - (id)initRemoteWithOptions:(id)arg1;
 - (id)initWithOptions:(id)arg1 localContext:(BOOL)arg2;
 - (void)invalidate;
@@ -35,7 +37,9 @@ __attribute__((visibility("hidden")))
 - (struct Context *)renderContext;
 - (void)setColorMatchUntaggedContent:(BOOL)arg1;
 - (void)setColorSpace:(struct CGColorSpace *)arg1;
+- (void)setCommitPriority:(unsigned int)arg1;
 - (void)setContentsFormat:(id)arg1;
+- (void)setDesiredDynamicRange:(float)arg1;
 - (void)setFence:(unsigned int)arg1 count:(unsigned int)arg2;
 - (void)setFencePort:(unsigned int)arg1;
 - (void)setFencePort:(unsigned int)arg1 commitHandler:(CDUnknownBlockType)arg2;

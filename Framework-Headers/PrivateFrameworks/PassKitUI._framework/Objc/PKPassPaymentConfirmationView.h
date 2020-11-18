@@ -9,24 +9,26 @@
 #import <PassKitUI/PKPassPaymentPayStateViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 
-@class NSDate, NSObject, NSString, PKFooterTransactionView, PKPassPaymentPayStateView, PKPaymentService;
-@protocol OS_dispatch_source;
+@class NSDate, NSObject, NSString, PKExpressTransactionState, PKFooterTransactionView, PKPassPaymentPayStateView, PKPaymentService;
+@protocol NSObject, OS_dispatch_source;
 
 @interface PKPassPaymentConfirmationView : PKPassFooterContentView <PKPassPaymentPayStateViewDelegate, PKPaymentServiceDelegate>
 {
     PKFooterTransactionView *_transactionView;
     PKPassPaymentPayStateView *_payStateView;
     BOOL _animated;
-    unsigned long long _expressState;
+    PKExpressTransactionState *_expressState;
     BOOL _receivedTransaction;
     BOOL _receivedExit;
     BOOL _needsResolution;
-    BOOL _showingCheckmark;
-    BOOL _animatingCheckmark;
+    BOOL _showingResolution;
+    BOOL _animatingResolution;
     NSObject<OS_dispatch_source> *_activityResolutionTimer;
     NSDate *_visibleDate;
-    int _expressTimeoutNotifyToken;
-    int _expressFinishNotifyToken;
+    id<NSObject> _expressTransactionStartedObserver;
+    id<NSObject> _expressTransactionTimeoutObserver;
+    id<NSObject> _expressTransactionEndedObserver;
+    id<NSObject> _expressExitObserver;
     PKPaymentService *_paymentService;
 }
 
@@ -36,11 +38,12 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_handleNotifyToken:(int)arg1;
-- (BOOL)_isRegisteredForAllExpressFelicaTransitNotifications;
-- (BOOL)_isRegisteredForAnyExpressFelicaTransitNotifications;
+- (void)_handleExpressNotification:(id)arg1;
+- (BOOL)_isExpressOutstanding;
+- (BOOL)_isRegisteredForAllExpressTransactionNotifications;
+- (BOOL)_isRegisteredForAnyExpressTransactionNotifications;
 - (void)_presentCheckmarkIfNecessary;
-- (void)_registerForExpressFelicaTransitNotifications:(BOOL)arg1;
+- (void)_registerForExpressTransactionNotifications:(BOOL)arg1;
 - (void)_resolveActivityIfNecessary;
 - (void)_updateContentViewsWithFelicaProperties:(id)arg1;
 - (void)_updateContentViewsWithTransaction:(id)arg1;

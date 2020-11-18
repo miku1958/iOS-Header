@@ -8,5 +8,7 @@
 
 @interface PKImage (NanoPassKit)
 - (id)resizedImageToCover:(struct CGSize)arg1;
+- (id)resizedImageToFit:(struct CGSize)arg1;
+- (id)resizedImageWithSize:(struct CGSize)arg1 shouldCover:(BOOL)arg2;
 @end
 

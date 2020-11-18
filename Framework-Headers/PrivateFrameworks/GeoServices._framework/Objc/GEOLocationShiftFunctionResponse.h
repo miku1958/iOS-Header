@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
@@ -14,15 +14,17 @@
     double _params[9];
     double _radius;
     BOOL _shouldUsePolyShiftFunction;
+    unsigned int _version;
 }
 
 @property (readonly, nonatomic) CDStruct_c3b9c2ee originalCoordinate; // @synthesize originalCoordinate=_originalCoordinate;
 @property (readonly, nonatomic) double radius; // @synthesize radius=_radius;
+@property (readonly, nonatomic) unsigned int version; // @synthesize version=_version;
 
 + (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithPolyLocationShiftResponse:(id)arg1 originalCoordinate:(CDStruct_c3b9c2ee)arg2;
+- (id)initWithPolyLocationShiftResponse:(id)arg1 originalCoordinate:(CDStruct_c3b9c2ee)arg2 version:(unsigned int)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValidForCoordinate:(CDStruct_c3b9c2ee)arg1;
 - (CDStruct_c3b9c2ee)shiftedCoordinateForCoordinate:(CDStruct_c3b9c2ee)arg1 accuracy:(double *)arg2;

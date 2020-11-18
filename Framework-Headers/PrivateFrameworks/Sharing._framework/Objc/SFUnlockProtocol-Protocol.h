@@ -13,6 +13,7 @@
 
 @optional
 - (void)attemptAutoUnlockWithClientProxy:(id<SFUnlockClientProtocol>)arg1;
+- (void)authPromptInfoWithCompletionHandler:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)autoUnlockStateWithCompletionHandler:(void (^)(NSNumber *, NSError *))arg1;
 - (void)cancelAutoUnlock;
 - (void)cancelEnablingAutoUnlockForDevice:(SFAutoUnlockDevice *)arg1;

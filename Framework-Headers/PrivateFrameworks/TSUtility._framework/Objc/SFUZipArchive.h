@@ -7,7 +7,7 @@
 #import <Foundation/NSObject.h>
 
 @class NSData, NSMutableDictionary, NSString, SFUCryptoKey, SFUDataRepresentation;
-@protocol SFUZipArchiveDataRepresentation;
+@protocol SFUZipArchiveDataRepresentation, SFUZipArchiveDelegate;
 
 @interface SFUZipArchive : NSObject
 {
@@ -17,7 +17,10 @@
     NSString *mPassphraseHint;
     SFUCryptoKey *mCryptoKey;
     NSData *mEncryptedDocumentUuid;
+    id<SFUZipArchiveDelegate> _delegate;
 }
+
+@property (nonatomic) id<SFUZipArchiveDelegate> delegate; // @synthesize delegate=_delegate;
 
 + (BOOL)isZipArchiveAtPath:(id)arg1;
 - (id)allEntryNames;

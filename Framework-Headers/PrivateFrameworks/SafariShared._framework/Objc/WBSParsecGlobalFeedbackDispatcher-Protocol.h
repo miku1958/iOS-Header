@@ -18,7 +18,7 @@
 - (void)sendMapsPlaceCardEngagementFeedbackOfType:(int)arg1;
 - (void)sendNewTabFeedback;
 - (void)sendNewWindowFeedback;
-- (void)sendSmartSearchFieldClickedFeedback;
+- (void)sendSmartSearchFieldClickedFeedbackWithReaderAvailable:(BOOL)arg1;
 - (void)sendWindowCloseByKeyboardFeedback;
 - (void)sendWindowCloseByMouseFeedback;
 - (void)sendWindowMiniaturizeByKeyboardFeedback;

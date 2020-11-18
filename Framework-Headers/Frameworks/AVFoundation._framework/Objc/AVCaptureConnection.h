@@ -17,6 +17,8 @@
 @property (readonly, nonatomic) long long activeVideoStabilizationMode;
 @property (readonly, nonatomic) NSArray *audioChannels;
 @property (nonatomic) BOOL automaticallyAdjustsVideoMirroring;
+@property (nonatomic, getter=isCameraIntrinsicMatrixDeliveryEnabled) BOOL cameraIntrinsicMatrixDeliveryEnabled;
+@property (readonly, nonatomic, getter=isCameraIntrinsicMatrixDeliverySupported) BOOL cameraIntrinsicMatrixDeliverySupported;
 @property (nonatomic, getter=isEnabled) BOOL enabled;
 @property (nonatomic) BOOL enablesVideoStabilizationWhenAvailable;
 @property (readonly, nonatomic) NSArray *inputPorts;
@@ -44,6 +46,7 @@
 - (void)_setVideoMinFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (void)_setVideoMirrored:(BOOL)arg1;
 - (void)_updateActiveVideoStabilizationMode:(long long)arg1 bumpChangeSeed:(BOOL)arg2;
+- (void)_updateCameraIntrinsicMatrixDeliverySupported;
 - (void)_updateMaxScaleAndCropFactorForFormat:(id)arg1;
 - (void)_updatePropertiesForFormat:(id)arg1;
 - (CDStruct_1b6d18a9)_videoMaxFrameDuration;

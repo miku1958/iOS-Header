@@ -22,6 +22,7 @@
 - (BOOL)isICDPEnabledForDSID:(id)arg1 checkWithServer:(BOOL)arg2;
 - (id)primaryAccountAltDSID;
 - (id)primaryAccountDSID;
+- (unsigned long long)primaryAccountSecurityLevel;
 - (id)primaryAccountUsername;
 - (id)sharedAccountStore;
 

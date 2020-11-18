@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOComposedRoute, GEODirectionsRequest, GEODirectionsResponse, GEORouteSet, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
-@protocol GEOTransitRoutingIncidentMessage;
 
 __attribute__((visibility("hidden")))
 @interface GEORouteSetPage : NSObject
@@ -16,7 +15,6 @@ __attribute__((visibility("hidden")))
     GEODirectionsResponse *_response;
     GEORouteSet *_routeSet;
     NSArray *_routes;
-    NSArray *_routesAndGaps;
     NSArray *_routesAndContingencies;
     NSMutableDictionary *_composedRoutesDict;
     NSMutableDictionary *_routesDict;
@@ -28,13 +26,11 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_contingentMiddleRoutes;
     NSMutableArray *_contingentRoutes;
     GEOComposedRoute *_preferredRoute;
-    id<GEOTransitRoutingIncidentMessage> _transitRoutingIncidentMessage;
     BOOL _isNavigable;
     BOOL _lazyLoadingEnabled;
     long long _selectedRouteIndex;
 }
 
-@property (readonly, nonatomic) BOOL allTransitRoutesBlockedByIncident;
 @property (readonly, nonatomic) NSDictionary *alternateStartRoutesLookup;
 @property (readonly, nonatomic) BOOL isNavigable; // @synthesize isNavigable=_isNavigable;
 @property (readonly, weak, nonatomic) GEOComposedRoute *preferredRoute; // @synthesize preferredRoute=_preferredRoute;
@@ -43,21 +39,17 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) GEORouteSet *routeSet; // @synthesize routeSet=_routeSet;
 @property (readonly, nonatomic) NSArray *routes; // @synthesize routes=_routes;
 @property (readonly, nonatomic) NSArray *routesAndContingencies;
-@property (readonly, nonatomic) NSArray *routesAndGaps; // @synthesize routesAndGaps=_routesAndGaps;
-@property (readonly, nonatomic) BOOL transitModePreferencesIgnored;
-@property (readonly, nonatomic) id<GEOTransitRoutingIncidentMessage> transitRoutingIncidentMessage; // @synthesize transitRoutingIncidentMessage=_transitRoutingIncidentMessage;
 
+- (void).cxx_destruct;
 - (void)_attachAlternateStartRoute:(id)arg1 toRouteID:(id)arg2;
 - (void)_buildAllRouteTypes:(id)arg1;
-- (void)_buildRoutesAndGapsForResponse:(id)arg1;
 - (id)_composedRouteForRoute:(id)arg1;
 - (void)_createAlternateStartRoutesLookup;
-- (void)_createIncidentsOnRoute:(id)arg1;
+- (void)_debugAddGuidanceEventsForRoute:(id)arg1 response:(id)arg2;
 - (id)_lazyRoutesAtIndex:(unsigned long long)arg1 partial:(BOOL)arg2;
 - (void)_setupDriveWalkRoutesForResponse:(id)arg1;
 - (void)_setupTransitRoutesForResponse:(id)arg1;
 - (void)_stitchRoutesFromArray:(id)arg1 addToRoutes:(id)arg2 includeDepartureRoutes:(BOOL)arg3;
-- (void)dealloc;
 - (unsigned long long)indexOfFullRoute:(id)arg1;
 - (id)initWithRequest:(id)arg1 response:(id)arg2 routeSet:(id)arg3 shouldLazyLoad:(BOOL)arg4 selectedRouteIndex:(long long)arg5;
 - (id)initWithReroute:(id)arg1 request:(id)arg2 response:(id)arg3 shouldLazyLoad:(BOOL)arg4;

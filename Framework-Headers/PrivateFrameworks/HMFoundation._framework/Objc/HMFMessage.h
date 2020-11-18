@@ -4,52 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HMFoundation/NSCopying-Protocol.h>
 #import <HMFoundation/NSMutableCopying-Protocol.h>
 
 @class HMFMessageDestination, HMFMessageInternal, HMFMessageTransport, NSDictionary, NSString, NSUUID;
 
-@interface HMFMessage : NSObject <NSCopying, NSMutableCopying>
+@interface HMFMessage : HMFObject <NSCopying, NSMutableCopying>
 {
-    BOOL _remoteSource;
-    BOOL _internalMessage;
-    BOOL _entitledMessage;
-    BOOL _locationAuthorizedMessage;
     HMFMessageInternal *_internal;
 }
 
 @property (strong, nonatomic) HMFMessageDestination *destination;
-@property (readonly, nonatomic, getter=isEntitledMessage) BOOL entitledMessage; // @synthesize entitledMessage=_entitledMessage;
+@property (readonly, copy, nonatomic) NSDictionary *headers;
 @property (copy, nonatomic) NSUUID *identifier;
 @property (readonly, nonatomic) HMFMessageInternal *internal; // @synthesize internal=_internal;
-@property (readonly, nonatomic, getter=isInternalMessage) BOOL internalMessage; // @synthesize internalMessage=_internalMessage;
-@property (readonly, nonatomic, getter=isLocationAuthorizedMessage) BOOL locationAuthorizedMessage; // @synthesize locationAuthorizedMessage=_locationAuthorizedMessage;
 @property (copy, nonatomic) NSDictionary *messagePayload;
 @property (readonly, copy, nonatomic) NSString *name;
-@property (readonly, nonatomic, getter=isRemoteSource) BOOL remoteSource; // @synthesize remoteSource=_remoteSource;
+@property (readonly, nonatomic) long long qualityOfService;
 @property (copy, nonatomic) CDUnknownBlockType responseHandler;
 @property (readonly, weak, nonatomic) HMFMessageTransport *transport;
+@property (readonly, copy, nonatomic) NSDictionary *userInfo;
 
-+ (id)entitledMessageWithName:(id)arg1 identifier:(id)arg2 messagePayload:(id)arg3;
-+ (id)entitledMessageWithName:(id)arg1 messagePayload:(id)arg2;
-+ (id)internalMessageWithName:(id)arg1 destination:(id)arg2 messagePayload:(id)arg3;
-+ (id)internalMessageWithName:(id)arg1 messagePayload:(id)arg2;
-+ (id)internalMessageWithName:(id)arg1 messagePayload:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
-+ (id)locationAuthorizedMessageWithName:(id)arg1 messagePayload:(id)arg2;
 + (id)messageWithMessage:(id)arg1 messagePayload:(id)arg2;
 + (id)messageWithMessage:(id)arg1 messagePayload:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 + (id)messageWithName:(id)arg1 destination:(id)arg2 payload:(id)arg3;
 + (id)messageWithName:(id)arg1 identifier:(id)arg2 messagePayload:(id)arg3;
-+ (id)messageWithName:(id)arg1 identifier:(id)arg2 messagePayload:(id)arg3 remoteSource:(BOOL)arg4;
-+ (id)messageWithName:(id)arg1 identifier:(id)arg2 messagePayload:(id)arg3 remoteSource:(BOOL)arg4 responseHandler:(CDUnknownBlockType)arg5;
-+ (id)messageWithName:(id)arg1 identifier:(id)arg2 messagePayload:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
-+ (id)messageWithName:(id)arg1 identifier:(id)arg2 messagePayload:(id)arg3 transport:(id)arg4;
-+ (id)messageWithName:(id)arg1 identifier:(id)arg2 messagePayload:(id)arg3 transport:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
 + (id)messageWithName:(id)arg1 messagePayload:(id)arg2;
 + (id)messageWithName:(id)arg1 messagePayload:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
-+ (id)messageWithName:(id)arg1 messagePayload:(id)arg2 transport:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
++ (id)messageWithName:(id)arg1 qualityOfService:(long long)arg2 destination:(id)arg3 payload:(id)arg4;
 + (id)shortDescription;
 - (void).cxx_destruct;
 - (void)__initWithInternalMessage:(id)arg1;
@@ -70,20 +54,18 @@
 - (id)init;
 - (id)initWithInternalMessage:(id)arg1;
 - (id)initWithName:(id)arg1 destination:(id)arg2 payload:(id)arg3;
-- (id)initWithName:(id)arg1 identifier:(id)arg2 messagePayload:(id)arg3 transport:(id)arg4 responseHandler:(CDUnknownBlockType)arg5 remoteSource:(BOOL)arg6 internalMessage:(BOOL)arg7 entitledMessage:(BOOL)arg8 locationAuthorizedMessage:(BOOL)arg9;
+- (id)initWithName:(id)arg1 identifier:(id)arg2 messagePayload:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
+- (id)initWithName:(id)arg1 qualityOfService:(long long)arg2 destination:(id)arg3 payload:(id)arg4;
+- (id)initWithName:(id)arg1 qualityOfService:(long long)arg2 destination:(id)arg3 userInfo:(id)arg4 headers:(id)arg5 payload:(id)arg6;
 - (id)locationForKey:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)nullForKey:(id)arg1;
 - (id)numberForKey:(id)arg1;
 - (id)predicateForKey:(id)arg1;
-- (void)setEntitledMessage:(BOOL)arg1;
-- (void)setInternalMessage:(BOOL)arg1;
-- (void)setLocationAuthorizedMessage:(BOOL)arg1;
 - (id)shortDescription;
 - (id)stringForKey:(id)arg1;
 - (id)timeZoneForKey:(id)arg1;
 - (id)uuidForKey:(id)arg1;
-- (id)uuidFromRemoteMessageForKey:(id)arg1;
 
 @end
 

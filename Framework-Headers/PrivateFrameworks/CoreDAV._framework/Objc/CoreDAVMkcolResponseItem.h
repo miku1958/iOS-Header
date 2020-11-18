@@ -16,8 +16,8 @@
 @property (strong, nonatomic) NSMutableSet *propStats; // @synthesize propStats=_propStats;
 
 + (id)copyParseRules;
+- (void).cxx_destruct;
 - (void)addPropStat:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (BOOL)hasPropertyError;
 - (id)init;

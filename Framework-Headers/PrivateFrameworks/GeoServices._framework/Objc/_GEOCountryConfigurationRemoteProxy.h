@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/_GEOCountryConfigurationServerProxy-Protocol.h>
 
@@ -21,11 +21,12 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<_GEOCountryConfigurationServerProxyDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<_GEOCountryConfigurationServerProxyDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (void)updateCountryCode:(CDUnknownBlockType)arg1;

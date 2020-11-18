@@ -24,7 +24,6 @@
 - (void)addManagedReference:(id)arg1 withOwner:(id)arg2;
 - (id)contextForGlobalContextRef:(struct OpaqueJSContext *)arg1;
 - (void)dealloc;
-- (void)enableSigillCrashAnalyzer;
 - (struct Lock *)externalDataMutex;
 - (id)externalObjectGraph;
 - (id)externalRememberedSet;

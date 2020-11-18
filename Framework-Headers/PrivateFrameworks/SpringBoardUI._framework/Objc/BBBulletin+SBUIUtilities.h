@@ -7,24 +7,17 @@
 #import <BulletinBoard/BBBulletin.h>
 
 @interface BBBulletin (SBUIUtilities)
-+ (void)killSounds;
 - (id)_defaultActionWithFilter:(CDUnknownBlockType)arg1;
-- (BOOL)_isPushOrLocalNotification;
 - (id)_launchURLForAction:(id)arg1 context:(id)arg2;
 - (id)_responseForAction:(id)arg1 withOrigin:(int)arg2 context:(id)arg3;
-- (CDUnknownBlockType)actionBlockForAction:(id)arg1;
 - (CDUnknownBlockType)actionBlockForAction:(id)arg1 withOrigin:(int)arg2;
 - (CDUnknownBlockType)actionBlockForAction:(id)arg1 withOrigin:(int)arg2 context:(id)arg3;
 - (CDUnknownBlockType)actionBlockForButton:(id)arg1;
 - (BOOL)bulletinAlertShouldOverridePocketMode;
 - (BOOL)bulletinAlertShouldOverrideQuietMode;
-- (BOOL)isPlayingSound;
 - (void)killSound;
 - (BOOL)playSound;
-- (BOOL)sb_hasCustomSecondaryContent;
 - (id)sb_minimalSupplementaryActions;
 - (id)sb_nonPluginDefaultAction;
-- (BOOL)sb_shouldSuppressMessageForPrivacy;
-- (BOOL)sb_supportsRaiseAction;
 @end
 

@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithIdentifier:(id)arg1 storefrontCountryCode:(id)arg2 type:(long long)arg3;
+- (id)initWithIdentifier:(id)arg1 storefrontCountryCode:(id)arg2;
 - (void)start:(CDUnknownBlockType)arg1;
 
 @end

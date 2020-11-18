@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     UIKBCandidateCollectionView *_candidatesCollectionView;
     UIKeyboardCandidatePocketShadow *_pocketShadow;
     UIKeyboardCandidatePocketShadow *_leftBorder;
-    CDStruct_961fb75c _visualStyling;
+    CDStruct_227bb23d _visualStyling;
     UIKeyboardCandidateLogButton *_logButton;
     unsigned long long _dummyCellCount;
     double _dummyCellWidth;
@@ -41,9 +41,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKeyboardCandidateLogButton *logButton; // @synthesize logButton=_logButton;
 @property (strong, nonatomic) UIKeyboardCandidatePocketShadow *pocketShadow; // @synthesize pocketShadow=_pocketShadow;
 @property (readonly) Class superclass;
-@property (nonatomic) CDStruct_961fb75c visualStyling; // @synthesize visualStyling=_visualStyling;
+@property (nonatomic) CDStruct_227bb23d visualStyling; // @synthesize visualStyling=_visualStyling;
 
 + (Class)cellClass;
++ (double)shadowYForBounds:(struct CGRect)arg1 shadowHeight:(double)arg2;
 - (void).cxx_destruct;
 - (id)_inheritedRenderConfig;
 - (void)_setRenderConfig:(id)arg1;
@@ -57,12 +58,12 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)currentIndex;
 - (void)dealloc;
 - (void)displayLayer:(id)arg1;
+- (BOOL)hasCandidateInForwardDirection:(BOOL)arg1 granularity:(int)arg2;
 - (BOOL)hasCandidates;
-- (BOOL)hasNextPage;
-- (BOOL)hasPreviousPage;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 - (BOOL)isExtendedList;
+- (BOOL)isFloatingList;
 - (void)jumpToCompositions;
 - (id)keyboardBehaviors;
 - (unsigned long long)maxNumberOfProactiveCells;
@@ -76,12 +77,8 @@ __attribute__((visibility("hidden")))
 - (void)setUIKeyboardCandidateListDelegate:(id)arg1;
 - (BOOL)showCandidate:(id)arg1;
 - (void)showCandidateAtIndex:(unsigned long long)arg1;
-- (void)showNextCandidate;
+- (void)showCandidateInForwardDirection:(BOOL)arg1 granularity:(int)arg2;
 - (void)showNextPage;
-- (void)showNextRow;
-- (void)showPreviousCandidate;
-- (void)showPreviousPage;
-- (void)showPreviousRow;
 - (double)singleCellWidthForProactiveCellCount:(unsigned long long)arg1;
 - (id)statisticsIdentifier;
 - (void)updateForKeyplane:(id)arg1 key:(id)arg2;

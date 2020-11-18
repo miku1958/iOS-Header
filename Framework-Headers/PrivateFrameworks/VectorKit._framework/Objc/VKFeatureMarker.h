@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOFeatureStyleAttributes, NSString;
 
@@ -16,7 +16,9 @@
 @property (readonly) const shared_ptr_430519ce *actualFeatureMarker;
 @property (readonly, nonatomic) unsigned long long featureID;
 @property (readonly, nonatomic) NSString *name;
+@property (readonly, nonatomic) NSString *shortName;
 @property (readonly, nonatomic) GEOFeatureStyleAttributes *styleAttributes;
+@property (readonly, nonatomic) unsigned long long venueID;
 
 + (id)markerWithFeatureMarker:(const shared_ptr_430519ce *)arg1;
 - (id).cxx_construct;

@@ -56,7 +56,10 @@
 @property (readonly, nonatomic) struct HDSyncAnchorRange syncAnchorRange;
 
 + (id)changeWithNanoSyncEntityClass:(Class)arg1;
++ (Class)objectDataType;
++ (Class)requiredAnchorsType;
 - (void).cxx_destruct;
+- (int)StringAsObjectType:(id)arg1;
 - (Class)_syncEntityClass;
 - (void)addObjectData:(id)arg1;
 - (void)addRequiredAnchors:(id)arg1;
@@ -72,6 +75,7 @@
 - (Class)nanoSyncEntityClass;
 - (id)objectDataAtIndex:(unsigned long long)arg1;
 - (unsigned long long)objectDatasCount;
+- (id)objectTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)requiredAnchorMapWithError:(id *)arg1;
 - (id)requiredAnchorsAtIndex:(unsigned long long)arg1;

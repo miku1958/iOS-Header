@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySectionNameForIcon;
-- (id)sectionIconImageWithFormat:(int)arg1;
 
 @end
 

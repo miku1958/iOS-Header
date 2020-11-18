@@ -12,12 +12,12 @@
 {
 }
 
-@property (nonatomic) unsigned long long changedFields;
-@property (nonatomic) BOOL changesAcknowledged;
-@property (copy, nonatomic) NSString *opaqueKey;
-@property (nonatomic) EKPersistentEvent *owner;
-@property (copy, nonatomic) NSDate *timestamp;
-@property (copy, nonatomic) NSString *uniqueKey;
+@property (nonatomic) unsigned long long changedFields; // @dynamic changedFields;
+@property (nonatomic) BOOL changesAcknowledged; // @dynamic changesAcknowledged;
+@property (copy, nonatomic) NSString *opaqueKey; // @dynamic opaqueKey;
+@property (nonatomic) EKPersistentEvent *owner; // @dynamic owner;
+@property (copy, nonatomic) NSDate *timestamp; // @dynamic timestamp;
+@property (copy, nonatomic) NSString *uniqueKey; // @dynamic uniqueKey;
 
 + (id)relations;
 + (id)suggestedEventInfoWithOpaqueKey:(id)arg1 uniqueKey:(id)arg2;

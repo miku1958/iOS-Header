@@ -16,6 +16,7 @@
 - (void)deleteAllResponses;
 - (void)deleteResponseForRequestWithKey:(NSString *)arg1 completionHandler:(void (^)(BOOL))arg2;
 - (void)deleteResponsesSinceDate:(NSDate *)arg1;
+- (void)performSchemaCheckAndUpdate;
 - (void)setMaxSize:(long long)arg1;
 - (void)setMinSizeForVMCachedResource:(long long)arg1;
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSMutableDictionary, NSNumber, PKCatalogGroup;
 @protocol PKGroupDelegate;
@@ -40,6 +40,7 @@
 - (id)passAtIndex:(unsigned long long)arg1;
 - (unsigned long long)passCount;
 - (id)passWithUniqueID:(id)arg1;
+- (id)passes;
 - (void)updateWithCatalogGroup:(id)arg1 passes:(id)arg2 notify:(BOOL)arg3;
 
 @end

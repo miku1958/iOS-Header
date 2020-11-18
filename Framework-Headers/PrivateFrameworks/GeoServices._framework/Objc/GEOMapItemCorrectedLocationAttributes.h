@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAddress, GEOLatLng, NSString;
+@class GEOAddress, GEOLatLng, NSString, PBUnknownFields;
 
 @interface GEOMapItemCorrectedLocationAttributes : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     double _lastUpdateDate;
     GEOAddress *_correctedAddress;
     NSString *_correctedAddressSecondaryStreetLine;
@@ -36,10 +37,11 @@
 @property (nonatomic) BOOL hasLastUpdateDate;
 @property (nonatomic) BOOL hasSubmittedRAP; // @synthesize hasSubmittedRAP=_hasSubmittedRAP;
 @property (nonatomic) double lastUpdateDate; // @synthesize lastUpdateDate=_lastUpdateDate;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

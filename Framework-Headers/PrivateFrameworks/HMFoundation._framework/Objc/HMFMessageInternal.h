@@ -4,39 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HMFoundation/NSCopying-Protocol.h>
 
 @class HMFMessageDestination, HMFMessageTransport, NSDictionary, NSString, NSUUID;
 
-@interface HMFMessageInternal : NSObject <NSCopying>
+@interface HMFMessageInternal : HMFObject <NSCopying>
 {
-    BOOL _remoteSource;
-    BOOL _internalMessage;
-    BOOL _entitledMessage;
-    BOOL _locationAuthorizedMessage;
     NSUUID *_identifier;
     NSString *_name;
+    long long _qualityOfService;
     HMFMessageDestination *_destination;
+    HMFMessageTransport *_transport;
+    NSDictionary *_userInfo;
+    NSDictionary *_headers;
     NSDictionary *_messagePayload;
     CDUnknownBlockType _responseHandler;
-    HMFMessageTransport *_transport;
 }
 
 @property (strong, nonatomic) HMFMessageDestination *destination; // @synthesize destination=_destination;
-@property (nonatomic, getter=isEntitledMessage) BOOL entitledMessage; // @synthesize entitledMessage=_entitledMessage;
+@property (copy, nonatomic) NSDictionary *headers; // @synthesize headers=_headers;
 @property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (nonatomic, getter=isInternalMessage) BOOL internalMessage; // @synthesize internalMessage=_internalMessage;
-@property (nonatomic, getter=isLocationAuthorizedMessage) BOOL locationAuthorizedMessage; // @synthesize locationAuthorizedMessage=_locationAuthorizedMessage;
 @property (copy, nonatomic) NSDictionary *messagePayload; // @synthesize messagePayload=_messagePayload;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (nonatomic, getter=isRemoteSource) BOOL remoteSource; // @synthesize remoteSource=_remoteSource;
+@property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property (copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property (weak, nonatomic) HMFMessageTransport *transport; // @synthesize transport=_transport;
+@property (copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 
 @end
 

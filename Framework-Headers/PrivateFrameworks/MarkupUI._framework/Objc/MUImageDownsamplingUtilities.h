@@ -12,6 +12,7 @@
 
 + (id)_flattenEXIFOrientation:(BOOL)arg1 withDownsampling:(BOOL)arg2 sourceContent:(id)arg3 withUTI:(id)arg4;
 + (BOOL)_flattenEXIFOrientationOfImage:(id)arg1 toDestination:(id)arg2;
++ (id)_flattenRotation:(BOOL)arg1 withDownsampling:(BOOL)arg2 sourceImage:(id)arg3;
 + (double)_maxDimensionOfSize:(struct CGSize)arg1 fittingToArea:(double)arg2;
 + (struct CGImageSource *)_newImageSourceWithSourceContent:(id)arg1;
 + (id)_preferredFileDisplayNameForSourceContent:(id)arg1;

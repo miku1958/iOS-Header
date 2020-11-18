@@ -39,6 +39,8 @@
 - (void)_requestSessionForMessage:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 - (void)_respondToRequest:(id)arg1 withError:(id)arg2;
 - (id)init;
+- (void)pauseAdvertising;
+- (void)resumeAdvertising;
 - (void)startAdvertisingWithService:(unsigned long long)arg1;
 - (void)stopAdvertising;
 

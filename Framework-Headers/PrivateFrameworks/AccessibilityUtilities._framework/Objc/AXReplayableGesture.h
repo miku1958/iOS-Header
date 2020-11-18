@@ -17,8 +17,8 @@
 }
 
 + (id)tapGestureForInterfaceOrientedPoint:(struct CGPoint)arg1;
+- (void).cxx_destruct;
 - (BOOL)arePointsDeviceRelative;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)fingerIdentifiersAtEventIndex:(unsigned long long)arg1;

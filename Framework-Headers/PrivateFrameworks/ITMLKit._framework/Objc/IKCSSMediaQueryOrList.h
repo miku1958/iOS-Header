@@ -18,6 +18,7 @@
 - (unsigned long long)count;
 - (id)description;
 - (BOOL)evaluate;
+- (id)expressionAsString;
 - (id)init;
 - (id)subQueryAtIndex:(unsigned long long)arg1;
 - (id)subQueryList;

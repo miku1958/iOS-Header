@@ -27,9 +27,9 @@
 @property (strong, nonatomic) NSString *headsign; // @synthesize headsign=_headsign;
 @property (nonatomic) unsigned long long lineId; // @synthesize lineId=_lineId;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

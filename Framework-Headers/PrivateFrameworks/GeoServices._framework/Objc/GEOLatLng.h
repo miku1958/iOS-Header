@@ -8,16 +8,27 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 @interface GEOLatLng : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     double _lat;
     double _lng;
+    BOOL _gtLog;
+    struct {
+        unsigned int gtLog:1;
+    } _has;
 }
 
 @property (readonly, nonatomic) CDStruct_c3b9c2ee coordinate;
+@property (nonatomic) BOOL gtLog;
+@property (nonatomic) BOOL hasGtLog;
 @property (nonatomic) double lat; // @synthesize lat=_lat;
 @property (nonatomic) double lng; // @synthesize lng=_lng;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

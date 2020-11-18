@@ -20,8 +20,8 @@
 @property (copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
 
 - (void).cxx_destruct;
+- (id)init;
 - (id)initWithAccessoryBrowsingManager:(id)arg1;
-- (id)initWithHome:(id)arg1;
 - (id)invalidationReasons;
 - (id)items;
 - (id)reloadItems;

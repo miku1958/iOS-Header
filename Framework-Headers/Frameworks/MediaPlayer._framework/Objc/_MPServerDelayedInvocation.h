@@ -21,6 +21,7 @@
 @property (strong, nonatomic) id context; // @synthesize context=_context;
 @property (strong, nonatomic) NSInvocation *invocation; // @synthesize invocation=_invocation;
 
+- (void)dealloc;
 
 @end
 

@@ -10,12 +10,12 @@
 
 @interface MFLibrarySearchableIndexUpdates : NSObject
 {
-    NSArray *_addedIndexItems;
+    NSArray *_itemsRequiringIndexing;
     NSArray *_removedIdentifiers;
     NSArray *_removedDomainIdentifiers;
 }
 
-@property (copy, nonatomic) NSArray *addedIndexItems; // @synthesize addedIndexItems=_addedIndexItems;
+@property (copy, nonatomic) NSArray *itemsRequiringIndexing; // @synthesize itemsRequiringIndexing=_itemsRequiringIndexing;
 @property (copy, nonatomic) NSArray *removedDomainIdentifiers; // @synthesize removedDomainIdentifiers=_removedDomainIdentifiers;
 @property (copy, nonatomic) NSArray *removedIdentifiers; // @synthesize removedIdentifiers=_removedIdentifiers;
 

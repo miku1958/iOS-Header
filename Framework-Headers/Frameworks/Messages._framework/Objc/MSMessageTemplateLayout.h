@@ -22,7 +22,6 @@
     NSString *_mediaType;
     NSString *_imageTitle;
     NSString *_imageSubtitle;
-    long long _tapAction;
 }
 
 @property (copy, nonatomic) NSString *caption; // @synthesize caption=_caption;
@@ -33,7 +32,6 @@
 @property (copy, nonatomic) NSURL *mediaFileURL; // @synthesize mediaFileURL=_mediaFileURL;
 @property (strong, nonatomic) NSString *mediaType; // @synthesize mediaType=_mediaType;
 @property (copy, nonatomic) NSString *subcaption; // @synthesize subcaption=_subcaption;
-@property (nonatomic) long long tapAction; // @synthesize tapAction=_tapAction;
 @property (copy, nonatomic) NSString *trailingCaption; // @synthesize trailingCaption=_trailingCaption;
 @property (copy, nonatomic) NSString *trailingSubcaption; // @synthesize trailingSubcaption=_trailingSubcaption;
 

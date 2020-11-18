@@ -19,10 +19,7 @@
         struct __CFString *theString;
         unsigned short *directUniCharBuffer;
         char *directCStringBuffer;
-        struct {
-            long long location;
-            long long length;
-        } rangeToBuffer;
+        CDStruct_627e0f85 rangeToBuffer;
         long long bufferedRangeStart;
         long long bufferedRangeEnd;
     } _ib;

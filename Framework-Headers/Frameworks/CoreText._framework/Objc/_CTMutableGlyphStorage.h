@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)insertGlyphsAtRange:(CDStruct_912cb5d2)arg1;
 - (void)moveGlyphsFromRange:(CDStruct_912cb5d2)arg1 toIndex:(long long)arg2;
 - (struct CGPoint)originAtIndex:(long long)arg1;
+- (const struct CGPoint *)origins;
 - (void)popGlyphAtIndex:(long long)arg1;
 - (void)puntStringIndicesInRange:(CDStruct_912cb5d2)arg1 by:(long long)arg2;
 - (void)pushGlyphAtIndex:(long long)arg1;

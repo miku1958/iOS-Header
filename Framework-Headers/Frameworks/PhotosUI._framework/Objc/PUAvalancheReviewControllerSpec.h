@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGSize selectionBadgeSize;
 
 - (BOOL)allowsInterfaceRotation;
-- (struct UIEdgeInsets)collectionViewLayoutContentInsetForOrientation:(long long)arg1;
 
 @end
 

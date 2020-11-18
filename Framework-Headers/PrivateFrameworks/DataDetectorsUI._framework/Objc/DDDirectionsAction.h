@@ -11,9 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)actionWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
++ (BOOL)actionAvailableForCachedEvent:(id)arg1;
++ (BOOL)actionAvailableForContact:(id)arg1;
 - (BOOL)canBePerformedByOpeningURL;
 - (id)localizedName;
+- (id)notificationIconBundleIdentifier;
+- (id)notificationTitle;
+- (id)notificationURL;
 - (void)performFromView:(id)arg1;
 
 @end

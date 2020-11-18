@@ -10,11 +10,11 @@
 
 @interface _MPStoreFollow : NSObject
 {
-    NSNumber *_targetEntityId;
+    NSNumber *_targetEntityID;
     long long _targetEntityType;
 }
 
-@property (strong, nonatomic) NSNumber *targetEntityId; // @synthesize targetEntityId=_targetEntityId;
+@property (strong, nonatomic) NSNumber *targetEntityID; // @synthesize targetEntityID=_targetEntityID;
 @property (nonatomic) long long targetEntityType; // @synthesize targetEntityType=_targetEntityType;
 
 + (id)followWithPerson:(id)arg1;

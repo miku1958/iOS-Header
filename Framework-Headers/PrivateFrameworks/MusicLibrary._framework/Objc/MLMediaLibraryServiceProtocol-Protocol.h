@@ -20,6 +20,7 @@
 - (void)lockDatabaseForReason:(NSString *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
 - (void)performBackupOfDatabaseAtPath:(NSString *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
 - (void)performDatabaseOperation:(unsigned long long)arg1 withAttributes:(NSDictionary *)arg2 options:(NSDictionary *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
+- (void)performDiagnosticWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
 - (void)performImport:(ML3DatabaseImport *)arg1 fromSource:(unsigned long long)arg2 withUUID:(NSUUID *)arg3 completionHandler:(void (^)(BOOL, NSError *, NSData *))arg4;
 - (void)performMaintenanceTasksForDatabaseAtPath:(NSString *)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)performRestoreOfLatestBackupForDatabaseAtPath:(NSString *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;

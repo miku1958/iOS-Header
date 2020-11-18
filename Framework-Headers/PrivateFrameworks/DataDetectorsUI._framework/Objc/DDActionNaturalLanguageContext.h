@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSString;
 
@@ -21,6 +21,7 @@
 @property (strong) struct __DDResult *result; // @synthesize result=_result;
 @property (strong) NSString *trailingText; // @synthesize trailingText=_trailingText;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 
 @end

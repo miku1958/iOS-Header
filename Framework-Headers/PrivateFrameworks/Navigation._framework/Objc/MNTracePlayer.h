@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <Navigation/MNTimeProvider-Protocol.h>
 #import <Navigation/MNTracePlayerSchedulerDelegate-Protocol.h>
-#import <Navigation/MNTracePlayerTimelineStreamDelegate-Protocol.h>
 
 @class GEOETAUpdater, MNLocation, MNTrace, MNTracePlayerETAUpdater, MNTracePlayerScheduler, MNTracePlayerTimelineStream, NSData, NSDate, NSHashTable, NSString;
 
-@interface MNTracePlayer : NSObject <MNTracePlayerSchedulerDelegate, MNTracePlayerTimelineStreamDelegate>
+@interface MNTracePlayer : NSObject <MNTracePlayerSchedulerDelegate, MNTimeProvider>
 {
     MNTrace *_trace;
+    double _traceStartTimestamp;
     NSHashTable *_observers;
     MNTracePlayerScheduler *_scheduler;
     MNTracePlayerTimelineStream *_locationStream;
@@ -31,6 +32,7 @@
 }
 
 @property (readonly, nonatomic) NSDate *currentLocationDate;
+@property (readonly, nonatomic) double currentTime;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
@@ -55,6 +57,7 @@
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1;
+- (id)initWithPath:(id)arg1 outError:(id *)arg2;
 - (id)initWithTrace:(id)arg1;
 - (void)jumpToBookmarkAtIndex:(unsigned long long)arg1;
 - (void)jumpToLocationAtIndex:(unsigned long long)arg1;

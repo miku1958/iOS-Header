@@ -12,6 +12,7 @@
 - (void)ph_loadTransitionSourcePlaceholderViewUsingFactory:(CDUnknownBlockType)arg1;
 - (void)ph_prepareForTransition;
 - (struct CGRect)ph_rectOfInterestForTransitionInCoordinateSpace:(id)arg1;
+- (struct CGRect)ph_rectOfInterestForTransitionInCoordinateSpace:(id)arg1 withInfo:(id)arg2;
 - (BOOL)ph_viewContainsTransitionSourcePlaceholderView;
 @end
 

@@ -9,7 +9,7 @@
 #import <ContactsUICore/CNUIUserActionDiscoveringEnvironment-Protocol.h>
 
 @class CNContactStore, CNUIIDSContactPropertyResolver, NSString;
-@protocol CNCapabilities, CNLSApplicationWorkspace, CNMCProfileConnection, CNSchedulerProvider, CNTUCallProviderManager;
+@protocol CNCapabilities, CNLSApplicationWorkspace, CNMCProfileConnection, CNSchedulerProvider, CNTUCallProviderManager, CNUIDefaultUserActionFetcher;
 
 @interface CNUIUserActionDiscoveringEnvironment : NSObject <CNUIUserActionDiscoveringEnvironment>
 {
@@ -21,6 +21,7 @@
     CNContactStore *_contactStore;
     id<CNSchedulerProvider> _schedulerProvider;
     id<CNSchedulerProvider> _highLatencySchedulerProvider;
+    id<CNUIDefaultUserActionFetcher> _defaultUserActionFetcher;
 }
 
 @property (strong, nonatomic) id<CNLSApplicationWorkspace> applicationWorkspace; // @synthesize applicationWorkspace=_applicationWorkspace;
@@ -28,6 +29,7 @@
 @property (strong, nonatomic) id<CNCapabilities> capabilities; // @synthesize capabilities=_capabilities;
 @property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) id<CNUIDefaultUserActionFetcher> defaultUserActionFetcher; // @synthesize defaultUserActionFetcher=_defaultUserActionFetcher;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<CNSchedulerProvider> highLatencySchedulerProvider; // @synthesize highLatencySchedulerProvider=_highLatencySchedulerProvider;
@@ -39,8 +41,8 @@
 - (void).cxx_destruct;
 - (id)copyWithContactStore:(id)arg1;
 - (id)init;
-- (id)initWithApplicationWorkspace:(id)arg1 callProviderManager:(id)arg2 idsContactPropertyResolver:(id)arg3 profileConnection:(id)arg4 contactStore:(id)arg5 schedulerProvider:(id)arg6 highLatencySchedulerProvider:(id)arg7 capabilities:(id)arg8;
-- (id)initWithIDSAvailablilityProvider:(id)arg1 schedulerProvider:(id)arg2;
+- (id)initWithApplicationWorkspace:(id)arg1 callProviderManager:(id)arg2 idsContactPropertyResolver:(id)arg3 profileConnection:(id)arg4 contactStore:(id)arg5 schedulerProvider:(id)arg6 highLatencySchedulerProvider:(id)arg7 capabilities:(id)arg8 defaultUserActionFetcher:(id)arg9;
+- (id)initWithIDSAvailablilityProvider:(id)arg1 schedulerProvider:(id)arg2 capabilities:(id)arg3 defaultUserActionFetcher:(id)arg4;
 
 @end
 

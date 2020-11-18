@@ -16,6 +16,7 @@
 @property (readonly, copy, nonatomic) NSArray *activeTransactions;
 @property (readonly, nonatomic) unsigned long long connectionCount;
 @property (readonly, nonatomic) unsigned long long databaseUpdaterState;
+@property (readonly, nonatomic) NSArray *databaseUpdatersStatuses;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly) int processIdentifier;
 

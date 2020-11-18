@@ -15,12 +15,15 @@
 @property (readonly, nonatomic) struct CGVector CGVectorValue;
 @property (readonly, nonatomic) struct UIEdgeInsets UIEdgeInsetsValue;
 @property (readonly, nonatomic) struct UIOffset UIOffsetValue;
+@property (readonly, nonatomic) struct NSDirectionalEdgeInsets directionalEdgeInsetsValue;
 
 + (id)valueWithCGAffineTransform:(struct CGAffineTransform)arg1;
 + (id)valueWithCGPoint:(struct CGPoint)arg1;
 + (id)valueWithCGRect:(struct CGRect)arg1;
 + (id)valueWithCGSize:(struct CGSize)arg1;
 + (id)valueWithCGVector:(struct CGVector)arg1;
++ (id)valueWithDirectionalEdgeInsets:(struct NSDirectionalEdgeInsets)arg1;
++ (id)valueWithNSDirectionalEdgeInsets:(struct NSDirectionalEdgeInsets)arg1;
 + (id)valueWithUIEdgeInsets:(struct UIEdgeInsets)arg1;
 + (id)valueWithUIOffset:(struct UIOffset)arg1;
 @end

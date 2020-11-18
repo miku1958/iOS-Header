@@ -14,9 +14,10 @@
 + (void)_cacheImage:(id)arg1 forKey:(id)arg2;
 + (id)_cachePath;
 + (id)_cachedImageForKey:(id)arg1;
-+ (id)_imageURLForChannel:(id)arg1 size:(struct CGSize)arg2;
-+ (id)_keyForChannel:(id)arg1 size:(struct CGSize)arg2;
-+ (void)fetchIconForChannel:(id)arg1 size:(struct CGSize)arg2 completion:(CDUnknownBlockType)arg3;
++ (id)_imageURLForInstallable:(id)arg1 size:(struct CGSize)arg2;
++ (id)_keyForInstallable:(id)arg1 size:(struct CGSize)arg2;
++ (void)fetchIconForInstallable:(id)arg1 size:(struct CGSize)arg2 completion:(CDUnknownBlockType)arg3;
++ (double)iconCornerRadiusForSize:(struct CGSize)arg1;
 
 @end
 

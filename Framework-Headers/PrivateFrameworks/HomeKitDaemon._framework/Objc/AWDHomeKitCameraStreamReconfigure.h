@@ -10,7 +10,7 @@
 
 @interface AWDHomeKitCameraStreamReconfigure : PBCodable <NSCopying>
 {
-    unsigned long long _reconfigurationTimestamp;
+    unsigned int _reconfigurationTimestamp;
     int _resolution;
     struct {
         unsigned int reconfigurationTimestamp:1;
@@ -20,7 +20,7 @@
 
 @property (nonatomic) BOOL hasReconfigurationTimestamp;
 @property (nonatomic) BOOL hasResolution;
-@property (nonatomic) unsigned long long reconfigurationTimestamp; // @synthesize reconfigurationTimestamp=_reconfigurationTimestamp;
+@property (nonatomic) unsigned int reconfigurationTimestamp; // @synthesize reconfigurationTimestamp=_reconfigurationTimestamp;
 @property (nonatomic) int resolution; // @synthesize resolution=_resolution;
 
 - (int)StringAsResolution:(id)arg1;

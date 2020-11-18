@@ -8,25 +8,27 @@
 
 #import <SafariServices/UITextFieldDelegate-Protocol.h>
 
-@class NSArray, NSString, SFDialogTextField, SFDialogTextView, UIButton, UIStackView, _SFDialogView;
+@class NSArray, NSString, SFDialogTextField, SFDialogTextView, UIStackView, _SFDialogView;
 
 __attribute__((visibility("hidden")))
 @interface SFDialogContentView : UIView <UITextFieldDelegate>
 {
-    SFDialogTextView *_messageTextView;
+    NSArray *_actionButtons;
+    UIStackView *_actionButtonsView;
+    unsigned long long _actionIndexTriggeredByEscapeKey;
+    unsigned long long _actionIndexTriggeredByReturnKey;
+    BOOL _hasAttemptedHardwareKeyboardFocus;
     SFDialogTextField *_inputTextField;
-    SFDialogTextField *_passwordTextField;
     NSArray *_layoutConstraintsWhenInputIsVisible;
     NSArray *_layoutConstraintsWhenPasswordIsVisible;
     NSArray *_layoutConstraintsWhenInputAndPasswordAreVisible;
-    UIView *_separatorView;
-    UIStackView *_actionButtonsView;
-    UIButton *_primaryActionButton;
-    UIButton *_secondaryActionButton;
-    BOOL _hasSecondaryAction;
+    SFDialogTextView *_messageTextView;
+    SFDialogTextField *_passwordTextField;
     _SFDialogView *_dialogView;
+    NSArray *_actions;
 }
 
+@property (copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) _SFDialogView *dialogView; // @synthesize dialogView=_dialogView;
@@ -34,14 +36,18 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_actionTriggered:(id)arg1;
+- (void)_escapeAction:(id)arg1;
 - (void)_focusInputTextField:(id)arg1;
-- (void)_invokeDelegateWithPrimaryAction:(BOOL)arg1;
-- (void)_primaryAction:(id)arg1;
-- (void)_secondaryAction:(id)arg1;
+- (void)_invokeDelegateWithSelectedIndex:(unsigned long long)arg1;
+- (void)_returnAction:(id)arg1;
 - (void)_setText:(id)arg1 placeholder:(id)arg2 forTextField:(id)arg3;
+- (void)_updateActionButtons;
 - (BOOL)_usesLoginFormAppearance;
+- (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (void)didAppear;
 - (void)endEditing;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -50,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)setInputText:(id)arg1 placeholder:(id)arg2;
 - (void)setMessageText:(id)arg1;
 - (void)setPasswordText:(id)arg1 placeholder:(id)arg2;
-- (void)setPrimaryActionTitle:(id)arg1 secondaryActionTitle:(id)arg2;
+- (void)setTitleText:(id)arg1;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;

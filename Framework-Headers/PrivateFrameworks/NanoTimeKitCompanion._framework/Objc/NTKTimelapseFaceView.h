@@ -19,11 +19,10 @@
     UIView *_topGradientView;
     UIView *_bottomGradientView;
     unsigned int _isUsingLegibility:1;
+    unsigned int _isComplicationColorApplied:1;
 }
 
-+ (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void).cxx_destruct;
-- (void)_addSubviewInOrder:(id)arg1;
 - (void)_applyComplicationContentSpecificAttributesAnimated:(BOOL)arg1;
 - (void)_applyDataMode;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
@@ -46,6 +45,7 @@
 - (id)_nextListing;
 - (id)_onDeckPosterImageView;
 - (id)_onDeckPosterImageViewWithTheme:(unsigned long long)arg1;
+- (void)_performPreloadVideoTask;
 - (void)_playQueuedUpVideo;
 - (id)_posterImageView;
 - (id)_posterImageViewWithTheme:(unsigned long long)arg1;
@@ -53,10 +53,12 @@
 - (void)_resetVideoForListing;
 - (void)_setDateAttributes:(id)arg1 animated:(BOOL)arg2;
 - (void)_startScrubbingAnimationFromUIViewAnimateWithDuration;
+- (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void)_unloadSnapshotContentViews;
 - (long long)_utilitySlotForSlot:(id)arg1;
 - (id)_viewForEditOption:(id)arg1;
 - (void)dealloc;
+- (void)didAddSubview:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)videoPlayerViewDidBeginPlaying:(id)arg1;

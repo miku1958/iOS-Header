@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-#import <HomeKitDaemon/HMDMerging-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMFMerging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSMutableSet, NSString, NSUUID;
+@class NSArray, NSMutableSet, NSObject, NSString, NSUUID;
 @protocol HMDAccountDelegate, OS_dispatch_queue;
 
-@interface HMDAccount : NSObject <HMFLogging, HMDMerging, NSSecureCoding>
+@interface HMDAccount : HMFObject <HMFLogging, HMFMerging, NSSecureCoding>
 {
     NSMutableSet *_devices;
     id<HMDAccountDelegate> _delegate;

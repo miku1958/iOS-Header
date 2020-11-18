@@ -42,6 +42,7 @@
 + (void)printLayout:(id)arg1 numOfColumns:(unsigned long long)arg2;
 + (void)printPossibleFrames:(unsigned long long)arg1 cellAspectRatio:(double)arg2 maxAspectRatio:(double)arg3 minAspectRato:(double)arg4;
 - (void).cxx_destruct;
+- (double)_aspectRatioOfInput:(id)arg1;
 - (long long)_availableFrames:(id *)arg1 maxReturnCount:(unsigned long long)arg2 forAspectRatio:(double)arg3 weight:(double)arg4 maxWidth:(unsigned long long)arg5;
 - (void)_findNextChunkWithInputs:(id)arg1 fromIndex:(unsigned long long)arg2 outArray:(id)arg3;
 - (BOOL)_findNextTileWithInputs:(id)arg1 atIndex:(unsigned long long)arg2 baseIndex:(unsigned long long)arg3 coordinator:(id)arg4;
@@ -50,6 +51,7 @@
 - (id)_generateTilesWithInputs:(id)arg1;
 - (BOOL)_generateTilesWithInputs:(id)arg1 atIndex:(unsigned long long)arg2 forMaxY:(unsigned long long)arg3 reserveNumberForPadding:(unsigned long long)arg4 outArray:(id)arg5;
 - (id)_getAllFramesInOrder;
+- (void)_getFrames:(struct CGRect *)arg1 magazineRects:(struct PXMagazineRect *)arg2 withInputs:(id)arg3;
 - (double *)_normalizeWeightsByInputs:(id)arg1;
 - (unsigned long long)_numberOfInputsForLastPadding;
 - (void)_resetWithNumberOfAssets:(unsigned long long)arg1;
@@ -59,6 +61,7 @@
 - (void)dealloc;
 - (id)description;
 - (void)getFrames:(struct CGRect *)arg1 withInputs:(id)arg2;
+- (unsigned long long)getMagazineRects:(struct PXMagazineRect *)arg1 withInputs:(id)arg2;
 - (id)initWithReferenceSize:(struct CGSize)arg1 numberOfColumns:(unsigned long long)arg2;
 
 @end

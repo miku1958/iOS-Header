@@ -31,9 +31,11 @@
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTitle:(id)arg1 price:(id)arg2 currencyCode:(id)arg3;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

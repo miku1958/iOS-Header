@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAccessory, HMDCameraSessionID, HMDCameraStreamMetrics, HMDCameraStreamSnapshotHandler, HMDService, NSNumber, NSString;
+@class HMDAccessory, HMDCameraSessionID, HMDCameraStreamMetrics, HMDCameraStreamSnapshotHandler, HMDService, NSNumber, NSObject, NSString;
 @protocol HMDCameraStreamControlManagerDelegate, OS_dispatch_queue;
 
-@interface HMDCameraStreamControlManager : NSObject <HMFLogging>
+@interface HMDCameraStreamControlManager : HMFObject <HMFLogging>
 {
     id<HMDCameraStreamControlManagerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GSAddition, NSDictionary, NSURL, QLThumbnailVersion;
 
@@ -38,6 +38,7 @@
 + (BOOL)associateThumbnailsForDocumentAtURL:(id)arg1 withDocumentAtURL:(id)arg2 error:(id *)arg3;
 + (BOOL)associateThumbnailsForDocumentAtURL:(id)arg1 withImmutableDocument:(BOOL)arg2 atURL:(id)arg3 error:(id *)arg4;
 + (void)downloadOrGenerateThumbnailAtPhysicalURL:(id)arg1;
++ (void)downloadOrGenerateThumbnailAtTaggedURL:(id)arg1;
 + (void)downloadOrGenerateThumbnailAtURL:(id)arg1;
 + (void)generateThumbnailIfPossibleAtLogicalURL:(id)arg1;
 + (void)generateThumbnailIfPossibleAtLogicalURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -62,6 +63,7 @@
 + (unsigned long long)sizeOfAdditionsPresentOnURL:(id)arg1;
 + (BOOL)storeThumbnailDataDictionary:(id)arg1 metadata:(id)arg2 asExtendedAttributeOnURL:(id)arg3 error:(id *)arg4;
 + (id)thumbnailsDictionaryForURL:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 - (BOOL)_initWithAdditionsPresentOnURLDirectly:(id)arg1 error:(id *)arg2;
 - (BOOL)_initWithAdditionsPresentOnURLUsingDaemon:(id)arg1 error:(id *)arg2;
 - (BOOL)_initWithXattrsPresentOnURL:(id)arg1 error:(id *)arg2;
@@ -69,6 +71,7 @@
 - (void)dealloc;
 - (id)initWithAdditionsPresentOnURL:(id)arg1 error:(id *)arg2;
 - (id)initWithAdditionsPresentOnURL:(id)arg1 includingExtendedAttributes:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)shouldBeInvalidatedByThumbnailVersion:(id)arg1;
 - (id)thumbnailDataForKey:(id)arg1;
 - (id)thumbnailURLForKey:(id)arg1;
 - (struct CGImage *)thumbnailWithMaximumDimension:(double)arg1 contentRect:(struct CGRect *)arg2 properties:(id *)arg3;

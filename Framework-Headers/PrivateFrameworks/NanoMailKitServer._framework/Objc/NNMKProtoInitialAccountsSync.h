@@ -8,15 +8,26 @@
 
 #import <NanoMailKitServer/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSData, NSMutableArray, NSString;
 
 @interface NNMKProtoInitialAccountsSync : PBCodable <NSCopying>
 {
+    NSData *_dateSynced;
+    unsigned int _fullSyncVersion;
     NSMutableArray *_initialAccounts;
+    NSString *_initialSyncVersion;
+    CDStruct_a125a100 _has;
 }
 
+@property (strong, nonatomic) NSData *dateSynced; // @synthesize dateSynced=_dateSynced;
+@property (nonatomic) unsigned int fullSyncVersion; // @synthesize fullSyncVersion=_fullSyncVersion;
+@property (readonly, nonatomic) BOOL hasDateSynced;
+@property (nonatomic) BOOL hasFullSyncVersion;
+@property (readonly, nonatomic) BOOL hasInitialSyncVersion;
 @property (strong, nonatomic) NSMutableArray *initialAccounts; // @synthesize initialAccounts=_initialAccounts;
+@property (strong, nonatomic) NSString *initialSyncVersion; // @synthesize initialSyncVersion=_initialSyncVersion;
 
++ (Class)initialAccountType;
 - (void).cxx_destruct;
 - (void)addInitialAccount:(id)arg1;
 - (void)clearInitialAccounts;

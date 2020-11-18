@@ -6,11 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
-#import <QuartzCore/NSCoding-Protocol.h>
+#import <QuartzCore/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface CAValueFunction : NSObject <NSCoding>
+@interface CAValueFunction : NSObject <NSSecureCoding>
 {
     NSString *_string;
     void *_impl;
@@ -21,6 +21,7 @@
 + (void)CAMLParserEndElement:(id)arg1 content:(id)arg2;
 + (void)CAMLParserStartElement:(id)arg1;
 + (id)functionWithName:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (struct Object *)CA_copyRenderValue;
 - (id)_initWithName:(int)arg1;
 - (BOOL)apply:(const double *)arg1 result:(double *)arg2;

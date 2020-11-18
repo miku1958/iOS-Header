@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/NSCopying-Protocol.h>
 
-@class NSArray, NSMutableDictionary;
+@class NSArray, NSDate, NSMutableDictionary;
 
 @interface MPStoreItemMetadataResponse : NSObject <NSCopying>
 {
@@ -16,6 +16,8 @@
     BOOL _finalResponse;
 }
 
+@property (readonly, copy, nonatomic) NSDate *earliestExpirationDate;
+@property (readonly, nonatomic, getter=isExpired) BOOL expired;
 @property (nonatomic, getter=isFinalResponse) BOOL finalResponse; // @synthesize finalResponse=_finalResponse;
 @property (readonly, copy, nonatomic) NSArray *itemIdentifiers;
 

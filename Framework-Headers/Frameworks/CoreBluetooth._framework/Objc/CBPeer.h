@@ -8,7 +8,7 @@
 
 #import <CoreBluetooth/NSCopying-Protocol.h>
 
-@class NSUUID;
+@class CBManager, NSUUID;
 
 @interface CBPeer : NSObject <NSCopying>
 {
@@ -18,11 +18,13 @@
     long long _pairingState;
     long long _hostState;
     long long _role;
+    CBManager *_manager;
 }
 
 @property (nonatomic) long long hostState; // @synthesize hostState=_hostState;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL isLinkEncrypted; // @synthesize isLinkEncrypted=_isLinkEncrypted;
+@property (weak, nonatomic) CBManager *manager; // @synthesize manager=_manager;
 @property (nonatomic) unsigned long long mtuLength; // @synthesize mtuLength=_mtuLength;
 @property (nonatomic) long long pairingState; // @synthesize pairingState=_pairingState;
 @property (nonatomic) long long role; // @synthesize role=_role;
@@ -33,7 +35,7 @@
 - (void)handleLinkEncryptionChanged:(id)arg1;
 - (void)handleMTUChanged:(id)arg1;
 - (void)handleMsg:(int)arg1 args:(id)arg2;
-- (id)initWithInfo:(id)arg1;
+- (id)initWithInfo:(id)arg1 manager:(id)arg2;
 
 @end
 

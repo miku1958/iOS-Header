@@ -18,12 +18,14 @@
 @property (nonatomic) double timestamp;
 @property (copy, nonatomic) NSString *uniqueKey;
 
-- (id)_persistentInfo;
++ (Class)frozenClass;
 - (id)copy;
 - (id)description;
 - (id)initWithEventStore:(id)arg1 opaqueKey:(id)arg2 uniqueKey:(id)arg3;
-- (id)lazyLoadRelationForKey:(id)arg1;
+- (id)initWithOpaqueKey:(id)arg1 uniqueKey:(id)arg2;
 - (id)relatedEvent;
+- (void)setTimestampAsDate:(id)arg1;
+- (id)timestampAsDate;
 
 @end
 

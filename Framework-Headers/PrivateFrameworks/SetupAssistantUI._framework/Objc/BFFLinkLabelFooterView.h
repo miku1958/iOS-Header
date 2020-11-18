@@ -6,19 +6,22 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray, NSString, UIColor, UILabel;
+@class NSAttributedString, NSMutableArray, NSString, UIColor, UILabel;
 
 @interface BFFLinkLabelFooterView : UIView
 {
     UILabel *_label;
+    UILabel *_subtitleLabel;
     NSMutableArray *_linkHandlers;
     UIView *_topLine;
     BOOL _wantsSideBySideLayout;
     BOOL _wantsFromBottomLayout;
     double _flexibleHeight;
+    NSAttributedString *_attributedSubtitleText;
     struct UIEdgeInsets _margins;
 }
 
+@property (strong, nonatomic) NSAttributedString *attributedSubtitleText; // @synthesize attributedSubtitleText=_attributedSubtitleText;
 @property (nonatomic) double flexibleHeight; // @synthesize flexibleHeight=_flexibleHeight;
 @property (strong, nonatomic) NSString *labelText;
 @property (nonatomic) struct UIEdgeInsets margins; // @synthesize margins=_margins;

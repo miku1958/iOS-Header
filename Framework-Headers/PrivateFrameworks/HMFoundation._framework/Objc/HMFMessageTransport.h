@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @protocol HMFMessageTransportDelegate;
 
-@interface HMFMessageTransport : NSObject
+@interface HMFMessageTransport : HMFObject
 {
     id<HMFMessageTransportDelegate> _delegate;
 }

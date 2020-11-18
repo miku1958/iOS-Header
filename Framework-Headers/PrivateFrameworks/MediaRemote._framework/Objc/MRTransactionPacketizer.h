@@ -14,9 +14,8 @@
     NSMutableDictionary *_incomingPackets;
 }
 
-@property (readonly, nonatomic, getter=isEmpty) BOOL empty;
-
 - (void)dealloc;
+- (BOOL)isEmpty;
 - (void)packetize:(id)arg1 packageSize:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)unpacketize:(id)arg1 completion:(CDUnknownBlockType)arg2;
 

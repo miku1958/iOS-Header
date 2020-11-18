@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <GeoServices/NSXMLParserDelegate-Protocol.h>
@@ -22,6 +22,7 @@
 @property (readonly) Class superclass;
 
 + (id)sharedManager;
+- (void).cxx_destruct;
 - (void)_reloadManifest;
 - (id)availableRegions;
 - (void)commonInit;

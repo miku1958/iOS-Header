@@ -33,6 +33,8 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithLocale:(id)arg1 ignoreWhitelist:(BOOL)arg2;
+- (BOOL)isDateInFuture:(id)arg1;
+- (BOOL)isDateInToday:(id)arg1;
 - (id)stringFromDate:(id)arg1;
 
 @end

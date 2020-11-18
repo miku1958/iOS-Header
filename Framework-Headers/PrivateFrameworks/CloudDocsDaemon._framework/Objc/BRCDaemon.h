@@ -10,7 +10,7 @@
 #import <CloudDocsDaemon/BRCReachabilityDelegate-Protocol.h>
 #import <CloudDocsDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class BRCAccountHandler, BRCAccountSession, BRCVersionsFileProvider, NSArray, NSDate, NSError, NSMutableDictionary, NSOperationQueue, NSString, NSXPCListener, NSXPCListenerEndpoint;
+@class BRCAccountHandler, BRCAccountSession, BRCVersionsFileProvider, NSDate, NSError, NSMutableDictionary, NSOperationQueue, NSString, NSXPCListener, NSXPCListenerEndpoint;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface BRCDaemon : NSObject <BRCReachabilityDelegate, NSXPCListenerDelegate, BRCAccountHandlerDelegate>
@@ -31,7 +31,6 @@
     NSObject<OS_dispatch_queue> *_startupQueue;
     int _serverAvailabilityNotifyToken;
     NSObject<OS_dispatch_queue> *_accountLoaderQueue;
-    NSArray *_fileProviders;
     NSMutableDictionary *_dirPaths;
     BRCVersionsFileProvider *_versionsProvider;
     NSMutableDictionary *_shareAcceptOperationsByURL;
@@ -69,7 +68,9 @@
 @property (readonly, nonatomic) NSString *ubiquityTokenSalt; // @synthesize ubiquityTokenSalt=_ubiquityTokenSalt;
 @property (readonly, nonatomic) BRCVersionsFileProvider *versionsProvider; // @synthesize versionsProvider=_versionsProvider;
 
++ (id)UTIForExtension:(id)arg1;
 + (id)daemon;
++ (BOOL)isDaemonRunning;
 - (void).cxx_destruct;
 - (void)_finishStartup;
 - (BOOL)_haveRequiredKernelFeatures;
@@ -77,6 +78,7 @@
 - (void)_loadAccountIfNeeded;
 - (void)_resumeAccount;
 - (void)_setupCacheDelete;
+- (void)_setupVNodeRapidAging;
 - (BOOL)_shouldCacheDeleteForVolume:(id)arg1;
 - (void)_startXPCListeners;
 - (void)_startupAndLoadAccount;
@@ -86,8 +88,6 @@
 - (id)dirPathForSyncedFolderType:(unsigned long long)arg1;
 - (void)dumpToContext:(id)arg1;
 - (void)exitWithCode:(int)arg1;
-- (id)fileProviderForSyncedFolderType:(unsigned long long)arg1;
-- (id)fileProviderForURL:(id)arg1;
 - (void)handleExitSignal:(int)arg1;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
@@ -97,14 +97,12 @@
 - (void)networkReachabilityFlagsChanged:(unsigned int)arg1;
 - (id)registerShareAcceptOperation:(id)arg1 forURL:(id)arg2;
 - (void)restart;
-- (void)resumeFileProviderForSyncedFolderType:(unsigned long long)arg1;
 - (void)resumeIPCAcceptation;
 - (BOOL)selfCheck:(struct __sFILE *)arg1;
 - (void)setDirPath:(id)arg1 forSyncedFolderType:(unsigned long long)arg2;
 - (void)setUpAnonymousListener;
 - (void)setUpSandbox;
 - (void)start;
-- (void)suspendFileProviderForSyncedFolderType:(unsigned long long)arg1;
 - (void)suspendIPCAcceptation;
 - (void)waitForConfiguration;
 - (void)waitOnAccountResumedQueue;

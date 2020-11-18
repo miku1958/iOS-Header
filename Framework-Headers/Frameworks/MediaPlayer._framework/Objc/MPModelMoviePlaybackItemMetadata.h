@@ -30,7 +30,6 @@
 - (id)localFileAsset;
 - (id)mediaItem;
 - (id)modelGenericObject;
-- (id)mqf_playbackItemMetadataModelObject;
 - (id)playbackPosition;
 - (long long)storeAdamID;
 - (id)storeAsset;

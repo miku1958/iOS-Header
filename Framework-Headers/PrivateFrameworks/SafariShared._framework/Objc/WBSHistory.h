@@ -8,8 +8,8 @@
 
 #import <SafariShared/WBSHistoryStoreDelegate-Protocol.h>
 
-@class NSArray, NSCountedSet, NSData, NSMutableDictionary, NSString, WBSHistorySQLiteStore;
-@protocol OS_dispatch_queue;
+@class NSArray, NSCountedSet, NSData, NSMutableDictionary, NSString;
+@protocol OS_dispatch_queue, WBSHistoryStore;
 
 @interface WBSHistory : NSObject <WBSHistoryStoreDelegate>
 {
@@ -19,7 +19,7 @@
     double _historyAgeLimit;
     BOOL _hasStartedLoadingHistory;
     NSObject<OS_dispatch_queue> *_waitUntilHistoryHasLoadedQueue;
-    WBSHistorySQLiteStore *_historyStore;
+    id<WBSHistoryStore> _historyStore;
 }
 
 @property (readonly, nonatomic) NSArray *allItems;
@@ -48,9 +48,9 @@
 - (void)_addVisitedLinksForItemsIfNeeded:(id)arg1;
 - (id)_createHistoryStore;
 - (void)_dispatchHistoryCleared:(id)arg1;
-- (void)_dispatchHistoryItemDidChange:(id)arg1;
+- (void)_dispatchHistoryItemDidChange:(id)arg1 byUserInitiatedAction:(BOOL)arg2;
 - (void)_dispatchHistoryItemWillChange:(id)arg1;
-- (void)_dispatchHistoryItemsAdded:(id)arg1;
+- (void)_dispatchHistoryItemsAdded:(id)arg1 byUserInitiatedAction:(BOOL)arg2;
 - (void)_dispatchHistoryItemsLoaded:(id)arg1;
 - (void)_dispatchHistoryItemsRemoved:(id)arg1;
 - (void)_dispatchHistoryItemsRemovedDuringLoading:(id)arg1;
@@ -67,6 +67,7 @@
 - (void)_removeItemsInResponseToUserAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_sendNotification:(id)arg1 withItems:(id)arg2;
 - (void)_setAttributes:(unsigned long long)arg1 forVisit:(id)arg2;
+- (void)_startLoading;
 - (void)_waitUntilHistoryHasLoadedMainThread;
 - (void)addAttributes:(unsigned long long)arg1 toVisit:(id)arg2;
 - (void)addAutocompleteTrigger:(id)arg1 forURLString:(id)arg2;
@@ -76,7 +77,6 @@
 - (void)clearHistoryVisitsAddedAfterDate:(id)arg1 beforeDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)clearHistoryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)close;
-- (void)dealloc;
 - (void)enumerateItemsAsynchronouslyUsingBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)enumerateItemsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)getAllTombstonesWithCompletion:(CDUnknownBlockType)arg1;
@@ -85,7 +85,6 @@
 - (void)getVisitsCreatedAfterDate:(id)arg1 beforeDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)historyLoader:(id)arg1 didLoadItems:(id)arg2 discardedItems:(id)arg3 stringsForUserTypeDomainExpansion:(id)arg4;
 - (void)historyLoaderDidFinishLoading:(id)arg1;
-- (id)historyStore;
 - (void)historyStore:(id)arg1 didPrepareToDeleteWithDeletionPlan:(id)arg2;
 - (void)historyStore:(id)arg1 didRemoveItems:(id)arg2;
 - (void)historyStore:(id)arg1 didRemoveVisits:(id)arg2;

@@ -11,7 +11,7 @@
 #import <MessageUI/UITableViewDataSource-Protocol.h>
 #import <MessageUI/UITableViewDelegate-Protocol.h>
 
-@class MFAttachment, MFFromAddressTableView, MFMailAccountProxy, MFMailPopoverManager, NSArray, NSString, UIPickerView, UIViewController, _MFMailCompositionContext;
+@class MFAttachment, MFFromAddressTableView, MFMailAccountProxy, MFMailComposeView, MFMailPopoverManager, NSArray, NSString, UIPickerView, UIViewController, _MFMailCompositionContext;
 
 @protocol MFMailComposeViewDelegate <UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource, UIDocumentPickerDelegate, UIPopoverPresentationControllerDelegate, MFMailMarkupDelegate>
 - (BOOL)bccAddressesDirtied;
@@ -27,6 +27,7 @@
 - (NSArray *)emailAddresses;
 - (BOOL)hasAttachments;
 - (void)importDocument;
+- (void)insertDrawing;
 - (void)insertPhotoOrVideo;
 - (void)markupAttachment:(MFAttachment *)arg1;
 - (MFMailPopoverManager *)popoverManager;
@@ -43,5 +44,6 @@
 
 @optional
 - (void)composeBodyFieldDidFinishLoad;
+- (void)composeViewBodyTextChanged:(MFMailComposeView *)arg1;
 @end
 

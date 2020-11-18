@@ -6,40 +6,43 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class UIImageView, UILabel, UISwitch;
+@class NSString, UILabel, UISwitch;
 @protocol HKSwitchTableViewCellDelegate;
 
 @interface HKSwitchTableViewCell : UITableViewCell
 {
-    UILabel *_displayLabel;
     UILabel *_countLabel;
-    UIImageView *_iconImageView;
     UISwitch *_switch;
     BOOL _shouldHideSwitch;
     BOOL _enabled;
     BOOL _centersIcon;
     id<HKSwitchTableViewCellDelegate> _delegate;
+    NSString *_displayText;
 }
 
 @property (nonatomic) BOOL adjustsFontSizeToFitWidth;
 @property (nonatomic) BOOL centersIcon; // @synthesize centersIcon=_centersIcon;
 @property (weak, nonatomic) id<HKSwitchTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) NSString *displayText; // @synthesize displayText=_displayText;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) struct CGSize iconSize;
 @property (nonatomic, getter=isOn) BOOL on;
 @property (nonatomic) BOOL shouldHideSwitch; // @synthesize shouldHideSwitch=_shouldHideSwitch;
 
++ (id)reuseIdentifier;
 - (void).cxx_destruct;
 - (void)_contextSizeCategoryChanged;
 - (id)_displayLabelFont;
 - (void)_setupUI;
+- (void)_updateFont;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)setCountText:(id)arg1;
-- (void)setDisplayText:(id)arg1;
 - (void)setIconImage:(id)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)switchValueChanged:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

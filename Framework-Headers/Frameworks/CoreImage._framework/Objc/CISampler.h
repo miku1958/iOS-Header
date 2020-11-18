@@ -23,7 +23,7 @@
 + (id)samplerWithImage:(id)arg1 options:(id)arg2;
 - (id)_initWithImage:(id)arg1 key0:(id)arg2 vargs:(struct __va_list_tag [1])arg3;
 - (void *)_internalRepresentation;
-- (void *)colorSpace;
+- (const void *)colorSpace;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)debugDescription;

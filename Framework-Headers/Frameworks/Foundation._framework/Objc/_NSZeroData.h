@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 + (id)data;
 - (id)_dispatchData;
 - (BOOL)_isCompact;
+- (BOOL)_providesConcreteBacking;
 - (const void *)bytes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithBytes:(void *)arg1 length:(unsigned long long)arg2 copy:(BOOL)arg3 deallocator:(CDUnknownBlockType)arg4;

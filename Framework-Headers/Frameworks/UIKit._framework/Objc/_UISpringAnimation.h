@@ -16,6 +16,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UISpringAnimationDelegate *delegate; // @dynamic delegate;
 
 + (double)defaultAnimationDuration;
++ (double)defaultDamping;
++ (double)defaultStiffness;
++ (void)setDefaultDamping:(double)arg1;
++ (void)setDefaultStiffness:(double)arg1;
 + (id)springAnimationWithKeyPath:(id)arg1 toLayer:(id)arg2 fromValue:(id)arg3 toValue:(id)arg4;
 - (void)addCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)init;

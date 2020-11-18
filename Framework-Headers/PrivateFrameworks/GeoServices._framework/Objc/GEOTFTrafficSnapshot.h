@@ -18,6 +18,7 @@
     NSString *_feedId;
     NSMutableArray *_incidents;
     NSMutableArray *_regions;
+    NSString *_snapshotId;
     NSMutableArray *_speeds;
     unsigned int _trafficVersion;
     struct {
@@ -34,9 +35,11 @@
 @property (readonly, nonatomic) BOOL hasFeedId;
 @property (nonatomic) BOOL hasFeedPublishTime;
 @property (nonatomic) BOOL hasFeedUpdateTime;
+@property (readonly, nonatomic) BOOL hasSnapshotId;
 @property (nonatomic) BOOL hasTrafficVersion;
 @property (strong, nonatomic) NSMutableArray *incidents; // @synthesize incidents=_incidents;
 @property (strong, nonatomic) NSMutableArray *regions; // @synthesize regions=_regions;
+@property (strong, nonatomic) NSString *snapshotId; // @synthesize snapshotId=_snapshotId;
 @property (strong, nonatomic) NSMutableArray *speeds; // @synthesize speeds=_speeds;
 @property (nonatomic) unsigned int trafficVersion; // @synthesize trafficVersion=_trafficVersion;
 
@@ -44,6 +47,7 @@
 + (Class)incidentsType;
 + (Class)regionType;
 + (Class)speedsType;
+- (void).cxx_destruct;
 - (void)addCompactSpeeds:(id)arg1;
 - (void)addIncidents:(id)arg1;
 - (void)addRegion:(id)arg1;
@@ -56,7 +60,6 @@
 - (unsigned long long)compactSpeedsCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -4,13 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSObject;
-@protocol NRDiffProtocol, NRMutableStateProtocol, OS_dispatch_queue;
+@protocol NRDiffProtocol, NRMutableStateProtocol;
 
 @protocol NRMutableStateParentDelegate
-
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
-
 - (void)child:(id<NRMutableStateProtocol>)arg1 didApplyDiff:(id<NRDiffProtocol>)arg2;
 @end
 

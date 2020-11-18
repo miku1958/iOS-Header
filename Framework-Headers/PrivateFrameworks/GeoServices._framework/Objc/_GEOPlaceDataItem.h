@@ -4,25 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOMapItem-Protocol.h>
 
-@class GEOAddress, GEOAddressObject, GEOAssociatedApp, GEOFeatureStyleAttributes, GEOMapItemClientAttributes, GEOMapItemDetourInfo, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOPDBusinessClaim, GEOPDFlyover, GEOPDMultiLocalizedString, GEOPDPlace, GEOPlace, GEORestaurantFeaturesLink, NSArray, NSData, NSDate, NSDictionary, NSMapTable, NSString, NSTimeZone, NSURL, _GEOEncyclopedicInfo;
-@protocol GEOEncyclopedicInfo, GEOMapItemTransitInfo, GEOTransitAttribution;
+@class GEOAddress, GEOAddressObject, GEOAssociatedApp, GEOFeatureStyleAttributes, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOMessageLink, GEOPDBusinessClaim, GEOPDFlyover, GEOPDMultiLocalizedString, GEOPDPlace, GEOPlace, GEOPriceDescription, GEORestaurantFeaturesLink, NSArray, NSData, NSDate, NSDictionary, NSMapTable, NSString, NSTimeZone, NSURL, _GEOEncyclopedicInfo;
+@protocol GEOEncyclopedicInfo, GEOMapItemTransitInfo, GEOMapItemVenueInfo, GEOTransitAttribution;
 
 __attribute__((visibility("hidden")))
 @interface _GEOPlaceDataItem : NSObject <GEOMapItem>
 {
+    GEOMapItemIdentifier *_identifier;
     GEOPDPlace *_placeData;
     GEOPlace *_place;
     NSMapTable *_attributionMap;
     GEOPDMultiLocalizedString *_disambiguationLabel;
     GEOMapItemDetourInfo *_detourInfo;
     _GEOEncyclopedicInfo *_encyclopedicInfo;
+    id<GEOMapItemVenueInfo> _venueInfo;
     GEOAddressObject *_addressObject;
     NSString *_name;
     NSData *_externalTransitStationCode;
+    NSArray *_currentOperatingHours;
+    BOOL _isTransitDisplayFeature;
 }
 
 @property (readonly, nonatomic, getter=_acceptsApplePay) BOOL acceptsApplePay;
@@ -33,15 +37,18 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *areasOfInterest;
 @property (readonly, nonatomic, getter=_associatedApp) GEOAssociatedApp *associatedApp;
 @property (readonly, nonatomic, getter=_attribution) GEOMapItemPlaceAttribution *attribution;
+@property (readonly, nonatomic, getter=_browseCategories) NSArray *browseCategories;
 @property (readonly, nonatomic, getter=_businessClaim) GEOPDBusinessClaim *businessClaim;
 @property (readonly, nonatomic, getter=_businessURL) NSString *businessURL;
 @property (readonly, nonatomic) CDStruct_c3b9c2ee centerCoordinate;
+@property (readonly, nonatomic, getter=_childPlaces) NSArray *childPlaces;
 @property (readonly, nonatomic, getter=_clientAttributes) GEOMapItemClientAttributes *clientAttributes;
 @property (readonly, nonatomic, getter=_completeOperatingHours) NSArray *completeOperatingHours;
 @property (readonly, nonatomic) int contactAddressType;
 @property (readonly, nonatomic) BOOL contactIsMe;
 @property (readonly, nonatomic) NSString *contactName;
 @property (readonly, nonatomic) NSString *contactSpokenName;
+@property (readonly, nonatomic, getter=_containedPlace) GEOMapItemContainedPlace *containedPlace;
 @property (readonly, nonatomic) CDStruct_c3b9c2ee coordinate;
 @property (readonly, nonatomic, getter=_customIconID) unsigned long long customIconID;
 @property (readonly, copy) NSString *debugDescription;
@@ -50,6 +57,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=_disambiguationName) NSString *disambiguationName;
 @property (readonly, nonatomic) GEOMapRegion *displayMapRegion;
 @property (readonly, nonatomic) GEOMapRegion *displayMapRegionOrNil;
+@property (readonly, nonatomic) float displayMaxZoom;
+@property (readonly, nonatomic) float displayMinZoom;
 @property (readonly, nonatomic, getter=isDisputed) BOOL disputed;
 @property (readonly, nonatomic) NSData *encodedData;
 @property (readonly, nonatomic, getter=_encyclopedicInfo) id<GEOEncyclopedicInfo> encyclopedicInfo;
@@ -69,6 +78,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=_hasCurrentOperatingHours) BOOL hasCurrentOperatingHours;
 @property (readonly, nonatomic, getter=_hasDelivery) BOOL hasDelivery;
 @property (readonly, nonatomic, getter=_hasDeliveryAmenity) BOOL hasDeliveryAmenity;
+@property (readonly, nonatomic) BOOL hasDisplayMaxZoom;
+@property (readonly, nonatomic) BOOL hasDisplayMinZoom;
 @property (readonly, nonatomic, getter=_hasEncyclopedicInfo) BOOL hasEncyclopedicInfo;
 @property (readonly, nonatomic) BOOL hasExpiredComponents;
 @property (readonly, nonatomic, getter=_hasFeatureLink) BOOL hasFeatureLink;
@@ -83,8 +94,17 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=_hasTelephone) BOOL hasTelephone;
 @property (readonly, nonatomic, getter=_hasTransit) BOOL hasTransit;
 @property (readonly, nonatomic, getter=_hasUserRatingScore) BOOL hasUserRatingScore;
+@property (readonly, nonatomic, getter=_hasVenueFeatureType) BOOL hasVenueFeatureType;
+@property (readonly, nonatomic, getter=_hasWifiFingerprintConfidence) BOOL hasWifiFingerprintConfidence;
+@property (readonly, nonatomic, getter=_hasWifiFingerprintLabelStatusCode) BOOL hasWifiFingerprintLabelStatusCode;
+@property (readonly, nonatomic, getter=_hasWifiFingerprintLabelType) BOOL hasWifiFingerprintLabelType;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=_identifier) GEOMapItemIdentifier *identifier;
+@property (readonly, nonatomic, getter=_isInLinkedPlaceRelationship) BOOL inLinkedPlaceRelationship;
 @property (readonly, nonatomic) BOOL isEventAllDay;
+@property (readonly, nonatomic, getter=_isStandaloneBrand) BOOL isStandAloneBrand;
+@property (readonly, nonatomic, getter=_isTransitDisplayFeature) BOOL isTransitDisplayFeature;
+@property (readonly, nonatomic, getter=_messageLink) GEOMessageLink *messageLink;
 @property (readonly, nonatomic, getter=_muid) unsigned long long muid;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic, getter=_needsAttribution) BOOL needsAttribution;
@@ -92,17 +112,23 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=_openingHoursOptions) unsigned long long openingHoursOptions;
 @property (readonly, nonatomic, getter=_operatingHours) NSArray *operatingHours;
 @property (readonly, nonatomic, getter=_optsOutOfTelephoneAds) BOOL optsOutOfTelephoneAds;
+@property (readonly, nonatomic, getter=_parsecSectionType) int parsecSectionType;
 @property (readonly, nonatomic, getter=_photos) NSArray *photos;
 @property (readonly, nonatomic, getter=_photosAttribution) GEOMapItemPhotosAttribution *photosAttribution;
 @property (readonly, nonatomic, getter=_place) GEOPlace *place;
 @property (readonly, nonatomic, getter=_placeData) GEOPDPlace *placeData;
 @property (readonly, nonatomic, getter=_placeDataAsData) NSData *placeDataAsData;
+@property (readonly, nonatomic, getter=_placeDisplayStyle) int placeDisplayStyle;
+@property (readonly, nonatomic, getter=_placeDisplayType) int placeDisplayType;
 @property (readonly, nonatomic, getter=_placeType) int placeType;
 @property (readonly, nonatomic, getter=_poiPinpointURLString) NSString *poiPinpointURLString;
 @property (readonly, nonatomic, getter=_poiSurveyURLString) NSString *poiSurveyURLString;
+@property (readonly, nonatomic, getter=_priceDescription) GEOPriceDescription *priceDescription;
 @property (readonly, nonatomic, getter=_priceRange) unsigned int priceRange;
 @property (readonly, copy, nonatomic, getter=_providerURL) NSURL *providerURL;
+@property (readonly, nonatomic, getter=_quickLinks) NSArray *quickLinks;
 @property (readonly, nonatomic) int referenceFrame;
+@property (readonly, nonatomic, getter=_responseStatusIsIncomplete) BOOL responseStatusIncomplete;
 @property (readonly, nonatomic, getter=_resultProviderID) int resultProviderID;
 @property (readonly, nonatomic, getter=_resultSnippetDistanceDisplayThreshold) unsigned int resultSnippetDistanceDisplayThreshold;
 @property (readonly, nonatomic, getter=_resultSnippetLocationString) NSString *resultSnippetLocationString;
@@ -121,31 +147,36 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=_transitInfo) id<GEOMapItemTransitInfo> transitInfo;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 @property (readonly, copy, nonatomic, getter=_vendorID) NSString *vendorID;
+@property (readonly, nonatomic, getter=_venueFeatureType) int venueFeatureType;
+@property (readonly, nonatomic, getter=_venueInfo) id<GEOMapItemVenueInfo> venueInfo;
 @property (readonly, copy, nonatomic, getter=_webURL) NSURL *webURL;
+@property (readonly, nonatomic, getter=_wifiFingerprintConfidence) unsigned int wifiFingerprintConfidence;
+@property (readonly, nonatomic, getter=_wifiFingerprintLabelStatusCode) int wifiFingerprintLabelStatusCode;
+@property (readonly, nonatomic, getter=_wifiFingerprintLabelType) int wifiFingerprintLabelType;
 
+- (void).cxx_destruct;
 - (id)_arrivalMapRegionForTransportType:(int)arg1;
 - (id)_asPlaceInfo;
 - (id)_attributionInfoForAttribution:(id)arg1 requirement:(int)arg2;
+- (id)_bestBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
 - (id)_displayNameForAttribution:(id)arg1 requirement:(int)arg2;
 - (BOOL)_hasLocalizedCategoryNamesForType:(unsigned int)arg1;
 - (BOOL)_hasMoreForAttribution:(id)arg1 requirement:(int)arg2;
-- (BOOL)_hasTravelTimeForTransportType:(int)arg1;
 - (id)_localizedCategoryNamesForType:(unsigned int)arg1;
 - (id)_logoPathForAttribution:(id)arg1 requirement:(int)arg2 scale:(double)arg3;
+- (id)_mapItemBySettingIsTransitDisplayFeature:(BOOL)arg1;
 - (id)_mapItemByStrippingOptionalData;
 - (id)_placeDataStyleAttributes;
-- (int)_recommendedTransportType;
 - (BOOL)_showAddForAttribution:(id)arg1 requirement:(int)arg2;
 - (BOOL)_showAttributionForAttribution:(id)arg1 requirement:(int)arg2;
 - (id)_spokenAddressForLocale:(id)arg1;
-- (unsigned int)_travelDistanceForTransportType:(int)arg1;
-- (unsigned int)_travelTimeForTransportType:(int)arg1;
+- (id)_wifiFingerprintComponent;
 - (id)addressObject;
-- (void)dealloc;
 - (id)initWithPlaceData:(id)arg1;
 - (id)initWithPlaceData:(id)arg1 attributionMap:(id)arg2 disambiguationLabel:(id)arg3 detourInfo:(id)arg4 externalTransitStationCode:(id)arg5;
 - (id)initWithPlaceData:(id)arg1 detourInfo:(id)arg2;
 - (BOOL)isEqualToMapItem:(id)arg1;
+- (id)shortAddress;
 - (id)spokenNameForLocale:(id)arg1;
 - (id)weatherDisplayName;
 

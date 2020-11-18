@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOTileCache;
 @protocol OS_dispatch_source;
@@ -26,7 +26,6 @@
 - (void)_enteredBackground:(id)arg1;
 - (void)_receivedMemoryNotification;
 - (BOOL)containsKey:(const struct _GEOTileKey *)arg1 cost:(unsigned long long *)arg2;
-- (void)dealloc;
 - (void)enumerate:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithSideCacheEnabled:(BOOL)arg1;

@@ -9,7 +9,7 @@
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
 #import <CloudPhotoLibrary/CPLEngineComponent-Protocol.h>
 
-@class CPLEngineLibrary, CPLPlatformObject, NSCountedSet, NSDate, NSSet, NSString;
+@class CPLEngineLibrary, CPLPlatformObject, NSCountedSet, NSDate, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CPLEngineScheduler : NSObject <CPLAbstractObject, CPLEngineComponent>
@@ -25,12 +25,17 @@
     NSDate *_unavailabilityLimitDate;
     unsigned long long _foregroundCalls;
     NSCountedSet *_disablingReasons;
+    NSCountedSet *_blockingElements;
+    NSMutableDictionary *_blockedElements;
+    NSMutableSet *_blockWaiters;
+    NSCountedSet *_unblockOnceElements;
+    NSObject<OS_dispatch_queue> *_blockingLock;
     unsigned long long _significantWorkCalls;
     unsigned long long _disablingMinglingCount;
     NSDate *_lastSyncSessionDateCausedByForeground;
     BOOL _didStartFirstSync;
-    unsigned long long _rejectedRecordsRetries;
-    NSSet *_rejectedRecordIdentifiers;
+    BOOL _didWriteFirstSyncMarker;
+    BOOL _delayedFirstSyncBecauseOfRapidLaunch;
     BOOL _needsPrePush;
     CPLPlatformObject *_platformObject;
     CPLEngineLibrary *_engineLibrary;
@@ -49,13 +54,13 @@
 @property (readonly) Class superclass;
 
 + (id)platformImplementationProtocol;
++ (id)validElements;
 - (void).cxx_destruct;
 - (void)_backOff;
 - (void)_disableRetryAfterLocked;
 - (void)_disableSynchronizationWithReasonLocked:(id)arg1;
 - (void)_enableSynchronizationWithReasonLocked:(id)arg1;
 - (void)_handleResetAnchorWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_handleResetClientCacheAndQuarantineRecords:(id)arg1 completionHAndler:(CDUnknownBlockType)arg2;
 - (void)_handleResetClientCacheWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleResetCloudCacheWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_minimalDateForFirstSync;
@@ -64,6 +69,7 @@
 - (id)_pathToFirstSynchronizationMarker;
 - (void)_reallyStartSyncSession;
 - (void)_reallyUnscheduleSession;
+- (void)_resetFirstSynchronizationMarker;
 - (void)_scheduleNextSyncSession;
 - (void)_setRequiredFirstState:(unsigned long long)arg1;
 - (void)_startRequiredSyncSession;
@@ -71,6 +77,7 @@
 - (BOOL)_syncSessionIsPossible;
 - (void)_unscheduleNextSyncSession;
 - (void)_writeFirstSynchronizationMarker;
+- (void)blockEngineElement:(id)arg1;
 - (void)closeAndDeactivate:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)componentName;
 - (void)disableMingling;
@@ -79,7 +86,6 @@
 - (void)enableSynchronizationWithReason:(id)arg1;
 - (void)getStatusDictionaryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (BOOL)hasOngoingDownloadOperations;
 - (id)initWithEngineLibrary:(id)arg1;
 - (BOOL)isClientInForeground;
 - (BOOL)isMinglingEnabled;
@@ -105,6 +111,10 @@
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)resetBackoffInterval;
 - (void)startRequiredSyncSessionNow;
+- (void)unblockEngineElement:(id)arg1;
+- (void)unblockEngineElementOnce:(id)arg1;
+- (void)waitForEngineElementToBeBlocked:(id)arg1;
+- (void)willRunEngineElement:(id)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSDate;
 
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSData *data; // @synthesize data=_data;
 @property (readonly, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithTimestamp:(id)arg1 data:(id)arg2;
 
 @end

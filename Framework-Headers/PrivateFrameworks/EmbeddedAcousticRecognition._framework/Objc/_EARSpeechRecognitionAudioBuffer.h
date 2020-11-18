@@ -25,7 +25,6 @@
 - (void)addAudioSampleData:(id)arg1;
 - (void)addAudioSamples:(const short *)arg1 count:(unsigned long long)arg2;
 - (void)cancelRecognition;
-- (void)dealloc;
 - (void)endAudio;
 
 @end

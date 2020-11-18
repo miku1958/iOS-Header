@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) BOOL shouldRespondToTextHyperlinks;
 @property (readonly) Class superclass;
 
+- (id)_repsForStorage:(id)arg1;
 - (id)beginEditingRepForInfo:(id)arg1;
 - (BOOL)canHandleGesture:(id)arg1;
 - (BOOL)cellCommentsAllowedForTableInfo:(id)arg1;

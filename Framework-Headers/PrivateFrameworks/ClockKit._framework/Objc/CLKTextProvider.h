@@ -23,12 +23,14 @@
     struct NSNumber *_30fpsTimerToken;
     BOOL _finalized;
     BOOL _paused;
+    BOOL _italicized;
     BOOL _useMonospacedNumbersForTimeTravel;
     UIColor *_tintColor;
     long long _shrinkTextPreference;
     long long _timeTravelUpdateFrequency;
 }
 
+@property (nonatomic) BOOL italicized; // @synthesize italicized=_italicized;
 @property (nonatomic) BOOL paused; // @synthesize paused=_paused;
 @property (nonatomic) long long shrinkTextPreference; // @synthesize shrinkTextPreference=_shrinkTextPreference;
 @property (nonatomic) long long timeTravelUpdateFrequency; // @synthesize timeTravelUpdateFrequency=_timeTravelUpdateFrequency;
@@ -50,6 +52,7 @@
 - (id)_description;
 - (void)_endSession;
 - (id)_initWithJSONObjectRepresentation:(id)arg1;
+- (id)_italicize:(id)arg1;
 - (void)_localeChanged;
 - (id)_localizedTextProviderWithBundle:(id)arg1 forLocalization:(id)arg2;
 - (void)_maybeStartOrStopUpdates;
@@ -76,6 +79,7 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)localizedTextProviderWithBundle:(id)arg1 forLocalization:(id)arg2;
+- (struct CGSize)minimumSizeWithStyle:(id)arg1 now:(id)arg2;
 - (id)sessionAttributedTextForIndex:(unsigned long long)arg1 withStyle:(id)arg2;
 - (struct NSNumber *)startUpdatesWithHandler:(CDUnknownBlockType)arg1;
 - (void)stopUpdatesForToken:(struct NSNumber *)arg1;

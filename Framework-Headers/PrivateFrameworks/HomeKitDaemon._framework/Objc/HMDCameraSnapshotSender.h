@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDCameraPowerAssertionProtocol-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAccessory, HMDCameraSessionID, NSString, NSUUID;
+@class HMDAccessory, HMDCameraSessionID, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDCameraSnapshotSender : NSObject <HMFLogging, HMDCameraPowerAssertionProtocol>
+@interface HMDCameraSnapshotSender : HMFObject <HMFLogging, HMDCameraPowerAssertionProtocol>
 {
     NSUUID *_uniqueIdentifier;
     NSString *_destinationID;

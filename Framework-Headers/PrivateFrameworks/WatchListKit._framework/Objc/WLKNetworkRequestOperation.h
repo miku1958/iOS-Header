@@ -16,6 +16,7 @@
     unsigned long long _numRetries;
     BOOL _allowAuthentication;
     BOOL _requiresMescal;
+    BOOL _encodeQueryParams;
     id<WLKNetworkRequestOperationDelegate> _delegate;
     NSDictionary *_additionalHeaderFields;
     NSString *_serverRouteKey;
@@ -37,6 +38,7 @@
 @property (strong, nonatomic) NSString *callerOverride; // @synthesize callerOverride=_callerOverride;
 @property (readonly, copy, nonatomic) NSURL *defaultBaseURL;
 @property (weak, nonatomic) id<WLKNetworkRequestOperationDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) BOOL encodeQueryParams; // @synthesize encodeQueryParams=_encodeQueryParams;
 @property (readonly, copy, nonatomic) NSString *endpoint; // @synthesize endpoint=_endpoint;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, copy, nonatomic) SSURLConnectionResponse *fullResponse; // @synthesize fullResponse=_fullResponse;

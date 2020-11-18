@@ -6,7 +6,7 @@
 
 #import <VisualVoicemail/NSObject-Protocol.h>
 
-@class NSArray, VMVoicemailCapabilities;
+@class NSOrderedSet, VMVoicemailCapabilities;
 
 @protocol VMClientXPCProtocol <NSObject>
 - (void)setCapabilities:(VMVoicemailCapabilities *)arg1;
@@ -14,6 +14,6 @@
 - (void)setStorageUsage:(unsigned long long)arg1;
 - (void)setSubscribed:(BOOL)arg1;
 - (void)setSyncInProgress:(BOOL)arg1;
-- (void)voicemailsUpdated:(NSArray *)arg1;
+- (void)voicemailsUpdated:(NSOrderedSet *)arg1;
 @end
 

@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <ProactiveML/PMLClassifierModelProtocol-Protocol.h>
+#import <ProactiveML/PMLPlistAndChunksSerializableProtocol-Protocol.h>
 #import <ProactiveML/PMLRegressionModelProtocol-Protocol.h>
 
 @class NSString, PMLGradientSolver;
 
-@interface PMLLogisticRegressionModel : NSObject <PMLRegressionModelProtocol, PMLClassifierModelProtocol>
+@interface PMLLogisticRegressionModel : NSObject <PMLRegressionModelProtocol, PMLClassifierModelProtocol, PMLPlistAndChunksSerializableProtocol>
 {
     PMLGradientSolver *_solver;
 }
@@ -21,13 +22,17 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)regression;
++ (id)solverWithWeights:(id)arg1;
++ (id)solverWithWeights:(id)arg1 andIntercept:(BOOL)arg2;
++ (id)solverWithWeights:(id)arg1 andIntercept:(BOOL)arg2 learningRate:(float)arg3;
 + (id)withWeights:(id)arg1;
++ (id)withWeights:(id)arg1 andIntercept:(BOOL)arg2;
 - (void).cxx_destruct;
 - (BOOL)classify:(id)arg1;
-- (id)fitForCovariates:(id)arg1 andOutcome:(id)arg2;
-- (double)predict:(id)arg1;
-- (id)updateForCovariates:(id)arg1 andOutcome:(id)arg2;
+- (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
+- (id)initWithSolver:(id)arg1;
+- (float)predict:(id)arg1;
+- (id)toPlistWithChunks:(id)arg1;
 
 @end
 

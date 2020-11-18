@@ -23,6 +23,7 @@
 @property (strong, nonatomic) HFMutableSetDiff *actionBuilders; // @synthesize actionBuilders=_actionBuilders;
 @property (readonly, nonatomic) HMActionSet *actionSet;
 @property (readonly, nonatomic) NSArray *actions; // @synthesize actions=_actions;
+@property (readonly, nonatomic, getter=isAffectedByEndEvents) BOOL affectedByEndEvents;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

@@ -19,15 +19,18 @@
     NSString *_primaryDeviceHost;
     WBSCyclerPrimaryDeviceCoordinator *_primaryDeviceCoordinator;
     WBSCyclerSecondaryDeviceCoordinator *_secondaryDeviceCoordinator;
+    BOOL _coordinating;
     id<WBSCyclerDeviceCoordinatorDelegate> _delegate;
     NSNumber *_numberOfSecondaryDevices;
 }
 
+@property (getter=isCoordinating) BOOL coordinating; // @synthesize coordinating=_coordinating;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<WBSCyclerDeviceCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSNumber *numberOfSecondaryDevices; // @synthesize numberOfSecondaryDevices=_numberOfSecondaryDevices;
+@property (readonly, nonatomic, getter=isPrimaryDevice) BOOL primaryDevice;
 @property (readonly, copy, nonatomic) NSString *primaryDeviceAddress;
 @property (readonly) Class superclass;
 
@@ -35,6 +38,7 @@
 - (id)_descriptionForErrorCode:(long long)arg1;
 - (void)_didEncounterError:(id)arg1;
 - (void)_didFinishConnectingToDevices;
+- (void)_didReceiveData:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)_didStartListeningAsPrimaryDeviceOnPort:(unsigned long long)arg1;
 - (id)_errorWithCode:(long long)arg1;
 - (id)_ipAddress;
@@ -44,10 +48,13 @@
 - (BOOL)_setSecondaryCyclerCountOnInternalQueue:(id)arg1 error:(id *)arg2;
 - (id)init;
 - (void)primaryDeviceCoordinator:(id)arg1 didEncounterError:(id)arg2;
+- (void)primaryDeviceCoordinator:(id)arg1 didReceiveData:(id)arg2 fromSecondaryDevice:(unsigned long long)arg3;
 - (void)primaryDeviceCoordinator:(id)arg1 didStartListeningForSecondaryDevicesOnPort:(unsigned long long)arg2;
 - (void)primaryDeviceCoordinatorDidConnectToAllSecondaryDevices:(id)arg1;
 - (void)secondaryDeviceCoordinator:(id)arg1 didEncounterError:(id)arg2;
+- (void)secondaryDeviceCoordinator:(id)arg1 didReceiveDataFromPrimaryDevice:(id)arg2;
 - (void)secondaryDeviceCoordinatorDidConnectToPrimaryDevice:(id)arg1;
+- (void)sendData:(id)arg1;
 - (BOOL)setValue:(id)arg1 forConfigurationKey:(id)arg2 error:(id *)arg3;
 - (void)startCoordinatingWithTimeout:(double)arg1;
 

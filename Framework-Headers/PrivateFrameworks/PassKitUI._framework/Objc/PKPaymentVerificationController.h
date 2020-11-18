@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <PassKitUI/SKStoreProductViewControllerDelegate-Protocol.h>
 #import <PassKitUI/UINavigationControllerDelegate-Protocol.h>
 
-@class NSNumber, NSString, PKPassView, PKPaymentPass, PKPaymentWebService, PKVerificationRequestRecord, UIImage;
+@class NSNumber, NSString, PKPassView, PKPaymentPass, PKPaymentProvisioningController, PKPaymentWebService, PKVerificationRequestRecord, UIImage;
 @protocol PKPaymentSetupViewControllerDelegate, PKPaymentVerificationControllerDelegate;
 
-@interface PKPaymentVerificationController : NSObject <SKStoreProductViewControllerDelegate, UINavigationControllerDelegate>
+@interface PKPaymentVerificationController : NSObject <UINavigationControllerDelegate>
 {
     NSString *_installedBankAppBundleID;
     NSString *_installedBankAppTitle;
@@ -27,6 +26,7 @@
     long long _context;
     long long _verificationContext;
     PKVerificationRequestRecord *_verificationRecord;
+    PKPaymentProvisioningController *_provisioningController;
     PKPassView *_passView;
 }
 
@@ -39,6 +39,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 @property (strong, nonatomic) PKPassView *passView; // @synthesize passView=_passView;
+@property (strong, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
 @property (weak, nonatomic) id<PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property (readonly) BOOL shouldDisabledVerificationButton;
 @property (readonly) Class superclass;
@@ -68,7 +69,6 @@
 - (void)_wrapViewControllerAndRequestDelegatePresentationOfView:(id)arg1;
 - (void)continueVerification;
 - (void)dealloc;
-- (void)fetchVerificationOptionsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithPaymentPass:(id)arg1 passView:(id)arg2 webService:(id)arg3 context:(long long)arg4 delegate:(id)arg5 setupDelegate:(id)arg6 verificationContext:(long long)arg7;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (id)passSnapshot;

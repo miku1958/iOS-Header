@@ -7,7 +7,7 @@
 #import <UIKit/UITableViewCell.h>
 
 @class NSLayoutConstraint, SGRealtimeContact, UIButton, UIImageView, UILabel;
-@protocol SGUIContactSuggestionTableViewCellDelegate;
+@protocol SGUISuggestionTableViewCellDelegate;
 
 @interface SGUIContactSuggestionTableViewCell : UITableViewCell
 {
@@ -21,10 +21,10 @@
     NSLayoutConstraint *_interLabelAndButtonBaselineConstraint;
     NSLayoutConstraint *_bottomMarginConstraint;
     SGRealtimeContact *_realtimeContact;
-    id<SGUIContactSuggestionTableViewCellDelegate> _delegate;
+    id<SGUISuggestionTableViewCellDelegate> _delegate;
 }
 
-@property (weak, nonatomic) id<SGUIContactSuggestionTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SGUISuggestionTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) SGRealtimeContact *realtimeContact; // @synthesize realtimeContact=_realtimeContact;
 
 + (id)actionButtonTitleForContact:(id)arg1;

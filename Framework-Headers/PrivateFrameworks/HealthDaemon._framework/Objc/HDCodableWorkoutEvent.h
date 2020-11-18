@@ -8,28 +8,38 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
+@class HDCodableMetadataDictionary;
+
 @interface HDCodableWorkoutEvent : PBCodable <NSCopying>
 {
     double _date;
+    double _duration;
+    long long _swimmingStrokeStyle;
     long long _type;
-    long long _wStepStyle;
+    HDCodableMetadataDictionary *_metadataDictionary;
     struct {
         unsigned int date:1;
+        unsigned int duration:1;
+        unsigned int swimmingStrokeStyle:1;
         unsigned int type:1;
-        unsigned int wStepStyle:1;
     } _has;
 }
 
 @property (nonatomic) double date; // @synthesize date=_date;
+@property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (nonatomic) BOOL hasDate;
+@property (nonatomic) BOOL hasDuration;
+@property (readonly, nonatomic) BOOL hasMetadataDictionary;
+@property (nonatomic) BOOL hasSwimmingStrokeStyle;
 @property (nonatomic) BOOL hasType;
-@property (nonatomic) BOOL hasWStepStyle;
+@property (strong, nonatomic) HDCodableMetadataDictionary *metadataDictionary; // @synthesize metadataDictionary=_metadataDictionary;
+@property (nonatomic) long long swimmingStrokeStyle; // @synthesize swimmingStrokeStyle=_swimmingStrokeStyle;
 @property (nonatomic) long long type; // @synthesize type=_type;
-@property (nonatomic) long long wStepStyle; // @synthesize wStepStyle=_wStepStyle;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)decodedDate;
+- (id)decodedDateIntervalStartDate;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

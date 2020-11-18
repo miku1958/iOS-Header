@@ -25,6 +25,7 @@
     unsigned long long _maximumRecentsCount;
 }
 
+@property (readonly, nonatomic) NSArray *allRecents;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasDisplayedSkinToneHelp;
@@ -34,9 +35,11 @@
 @property (readonly, nonatomic) NSArray *recentEmojis;
 @property (readonly) Class superclass;
 
++ (id)_allRecentStrings;
 + (id)_cacheDomain;
 + (id)_cachedFlagCategoryEmoji:(CDUnknownBlockType)arg1;
 + (id)_recentEmojiStrings;
++ (id)_recentStringsInCharacterSet:(id)arg1;
 + (id)defaultsDomain;
 - (void).cxx_destruct;
 - (void)_checkForDingbatDuplicates;
@@ -61,11 +64,13 @@
 - (unsigned long long)previouslyUsedIndexInCategory:(id)arg1;
 - (void)readEmojiDefaults;
 - (id)recentVariantEmojiForEmoji:(id)arg1;
+- (id)recentsInCharacterSet:(id)arg1;
 - (void)resetEmojiDefaults;
 - (double)scoreForEmojiString:(id)arg1;
 - (double)scoreForSequence:(long long)arg1;
 - (id)typingNameForEmoji:(id)arg1;
 - (void)writeEmojiDefaults;
+- (void)writeEmojiDefaultsAndNotify:(BOOL)arg1;
 
 @end
 

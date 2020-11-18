@@ -23,13 +23,14 @@
 
 + (id)defaultManager;
 - (void).cxx_destruct;
+- (void)_progressSubscription;
 - (void)_setGlobalProgress:(id)arg1 forIvar:(id *)arg2;
 - (void)addTransfer:(id)arg1;
+- (void)dealloc;
 - (void)downloadAndObserveItemAtURL:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)insertTransfer:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)removeTransfer:(id)arg1;
-- (void)resume;
 - (id)startObservingItemDownloadProgressAtURL:(id)arg1;
 - (void)stopObservingItemDownloadProgress:(id)arg1;
 

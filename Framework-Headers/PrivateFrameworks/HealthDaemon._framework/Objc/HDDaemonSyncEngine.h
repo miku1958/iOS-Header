@@ -12,6 +12,7 @@
 
 @interface HDDaemonSyncEngine : NSObject <HDSyncEngine>
 {
+    CDUnknownBlockType _unitTest_didCompleteReadTransaction;
     HDProfile *_profile;
 }
 
@@ -20,15 +21,17 @@
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) CDUnknownBlockType unitTest_didCompleteReadTransaction; // @synthesize unitTest_didCompleteReadTransaction=_unitTest_didCompleteReadTransaction;
 
 - (void).cxx_destruct;
 - (BOOL)_performSyncSession:(id)arg1 error:(id *)arg2;
 - (long long)_receivedAnchorForEntityClass:(Class)arg1 store:(id)arg2 error:(id *)arg3;
 - (void)_resetStore:(id)arg1;
-- (BOOL)_sendChanges:(id)arg1 session:(id)arg2 error:(id *)arg3;
+- (long long)_sendChanges:(id)arg1 session:(id)arg2 error:(id *)arg3;
 - (BOOL)_setReceivedAnchor:(long long)arg1 forEntityClass:(Class)arg2 store:(id)arg3 error:(id *)arg4;
 - (id)_syncAnchorMapForSyncEntityClass:(Class)arg1 session:(id)arg2 error:(id *)arg3;
-- (BOOL)_synchronizeSyncEntityClass:(Class)arg1 session:(id)arg2 predicate:(id)arg3 startAnchor:(long long *)arg4 finalAnchor:(long long)arg5 postTransactionBlocks:(id)arg6 error:(id *)arg7;
+- (long long)_synchronizeSyncEntityClass:(Class)arg1 session:(id)arg2 predicate:(id)arg3 startAnchor:(long long *)arg4 finalAnchor:(long long)arg5 postTransactionBlocks:(id)arg6 error:(id *)arg7;
+- (BOOL)_transactionDidEndForSession:(id)arg1 error:(id *)arg2;
 - (long long)_validateAnchorsForSyncChange:(id)arg1 store:(id)arg2 error:(id *)arg3;
 - (BOOL)_validateSequenceNumberForSyncChange:(id)arg1 store:(id)arg2 error:(id *)arg3;
 - (BOOL)applyAcknowledgedAnchorMap:(id)arg1 forStore:(id)arg2 resetNext:(BOOL)arg3 resetInvalid:(BOOL)arg4 error:(id *)arg5;

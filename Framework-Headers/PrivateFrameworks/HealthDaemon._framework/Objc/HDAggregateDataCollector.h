@@ -27,8 +27,10 @@
 - (double)_queue_aggregationInterval;
 - (void)_queue_beginStreaming;
 - (void)_queue_beginUpdates;
+- (void)_queue_fetchHistoricalDataForcedUpdate:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_fetchHistoricalDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_queue_handleCMDatabaseReset;
+- (void)_queue_handleUpdatingHistoricalDataForcedUpdate:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_handleUpdatingHistoricalDataWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_queue_lastReceivedSecondaryContext;
 - (id)_queue_lastReceivedSensorDatum;
@@ -40,8 +42,9 @@
 - (void)beginUpdatesFromDatum:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)fetchHistoricalSensorDataSinceDatum:(id)arg1 databaseIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)hkObjectsFromSensorData:(id)arg1 baseSensorDatum:(id)arg2 startDate:(id)arg3 endDate:(id)arg4;
-- (id)initWithPrimaryProfile:(id)arg1;
+- (id)initWithProfile:(id)arg1;
 - (void)updateHistoricalData;
+- (void)updateHistoricalDataForcedUpdate:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateHistoricalDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)willPersistHKObjects:(id)arg1;
 

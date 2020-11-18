@@ -6,17 +6,24 @@
 
 #import <HomeUI/HUCollectionViewController.h>
 
+#import <HomeUI/HFExecutionEnvironmentObserver-Protocol.h>
 #import <HomeUI/HFItemManagerDelegate-Protocol.h>
 #import <HomeUI/HUItemManagerContainer-Protocol.h>
+#import <HomeUI/HUItemPresentationContainer-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
 
-@class HFItemManager, NSHashTable, NSString;
+@class HFItem, HFItemManager, NSHashTable, NSMutableArray, NSMutableSet, NSString;
+@protocol NACancelable;
 
-@interface HUItemCollectionViewController : HUCollectionViewController <HFItemManagerDelegate, HUItemManagerContainer, HUPreloadableViewController>
+@interface HUItemCollectionViewController : HUCollectionViewController <HFExecutionEnvironmentObserver, HFItemManagerDelegate, HUItemManagerContainer, HUItemPresentationContainer, HUPreloadableViewController>
 {
     BOOL _wantsPreferredContentSize;
     BOOL _hasFinishedInitialLoad;
+    BOOL _visibilityUpdatesEnabled;
     HFItemManager *_itemManager;
+    NSMutableArray *_foregroundUpdateFutures;
+    NSMutableSet *_registeredCellClasses;
+    id<NACancelable> _deferredVisibilityUpdate;
     NSHashTable *_childViewControllersAtViewWillAppearTime;
     NSHashTable *_childViewControllersAtViewWillDisappearTime;
 }
@@ -24,25 +31,31 @@
 @property (strong, nonatomic) NSHashTable *childViewControllersAtViewWillAppearTime; // @synthesize childViewControllersAtViewWillAppearTime=_childViewControllersAtViewWillAppearTime;
 @property (strong, nonatomic) NSHashTable *childViewControllersAtViewWillDisappearTime; // @synthesize childViewControllersAtViewWillDisappearTime=_childViewControllersAtViewWillDisappearTime;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) id<NACancelable> deferredVisibilityUpdate; // @synthesize deferredVisibilityUpdate=_deferredVisibilityUpdate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSMutableArray *foregroundUpdateFutures; // @synthesize foregroundUpdateFutures=_foregroundUpdateFutures;
 @property (nonatomic) BOOL hasFinishedInitialLoad; // @synthesize hasFinishedInitialLoad=_hasFinishedInitialLoad;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HFItem *hu_presentedItem;
 @property (strong, nonatomic) HFItemManager *itemManager; // @synthesize itemManager=_itemManager;
+@property (readonly, nonatomic) NSMutableSet *registeredCellClasses; // @synthesize registeredCellClasses=_registeredCellClasses;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL visibilityUpdatesEnabled; // @synthesize visibilityUpdatesEnabled=_visibilityUpdatesEnabled;
 @property (nonatomic) BOOL wantsPreferredContentSize; // @synthesize wantsPreferredContentSize=_wantsPreferredContentSize;
 
 + (unsigned long long)updateMode;
 - (void).cxx_destruct;
 - (void)_updateTitle;
-- (id)allCellClasses;
 - (BOOL)automaticallyUpdatesViewControllerTitle;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)childViewControllersToPreload;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
+- (void)executionEnvironmentRunningStateDidChange:(id)arg1;
 - (id)hu_preloadContent;
 - (id)initWithItemManager:(id)arg1 collectionViewLayout:(id)arg2;
+- (BOOL)isLayoutDependentOnItemState;
 - (void)itemManager:(id)arg1 didChangeOverallLoadingState:(unsigned long long)arg2;
 - (void)itemManager:(id)arg1 didChangeSourceItem:(id)arg2;
 - (void)itemManager:(id)arg1 didInsertItem:(id)arg2 atIndexPath:(id)arg3;
@@ -53,11 +66,12 @@
 - (void)itemManager:(id)arg1 didRemoveSections:(id)arg2;
 - (void)itemManager:(id)arg1 didUpdateResultsForItem:(id)arg2 atIndexPath:(id)arg3;
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
-- (BOOL)itemManager:(id)arg1 performBatchUpdateBlock:(CDUnknownBlockType)arg2;
+- (id)itemManager:(id)arg1 futureToUpdateItems:(id)arg2 itemUpdateOptions:(id)arg3;
+- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
+- (struct CGSize)preferredContentSizeForCollectionViewContentSize:(struct CGSize)arg1;
 - (void)recursivelyDisableItemUpdates:(BOOL)arg1 withReason:(id)arg2;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
-- (BOOL)shouldCoalesceBatchUpdatesBeforeViewDidAppear;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

@@ -28,14 +28,17 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)actualElementForProxyElement:(id)arg1;
 - (void)applyUpdatesWithImplementation:(id)arg1 usingUpdater:(CDUnknownBlockType)arg2;
 - (void)configureUpdatesWithImplementation:(id)arg1;
-- (id)elementForItemAtIndex:(long long)arg1 loadIfNeeded:(BOOL)arg2;
+- (id)elementForItemAtIndex:(long long)arg1;
 - (long long)indexOfItemForChildElement:(id)arg1;
 - (id)initWithDataSourceElement:(id)arg1;
-- (void)initialize;
+- (void)initializeWithElementFactory:(id)arg1;
+- (void)loadIndex:(long long)arg1;
 - (long long)numberOfItems;
 - (id)prototypeForItemAtIndex:(long long)arg1;
+- (void)resetUpdates;
 - (void)teardown;
 - (void)unloadIndex:(long long)arg1;
 - (void)updateStylesUsingUpdater:(CDUnknownBlockType)arg1;

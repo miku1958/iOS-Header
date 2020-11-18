@@ -32,7 +32,7 @@
 - (id)createCSIRepresentationWithCompression:(BOOL)arg1 colorSpaceID:(unsigned long long)arg2 document:(id)arg3;
 - (void)drawPackableRenditionInContext:(struct CGContext *)arg1 withDocument:(id)arg2;
 - (void)resetToBaseKeySpec;
-- (void)updatePackingPropertiesWithDocument:(id)arg1;
+- (BOOL)updatePackingPropertiesWithDocument:(id)arg1;
 
 @end
 

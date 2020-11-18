@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class NSMutableSet, NSString;
+@class NSMutableSet, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDCameraStreamTracker : NSObject <HMFLogging>
+@interface HMDCameraStreamTracker : HMFObject <HMFLogging>
 {
     NSMutableSet *_currentStreamIdentifiers;
     NSObject<OS_dispatch_queue> *_workQueue;

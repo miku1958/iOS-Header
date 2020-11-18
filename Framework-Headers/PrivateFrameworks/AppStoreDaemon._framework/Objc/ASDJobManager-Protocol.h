@@ -14,7 +14,7 @@
 - (void)getJobsUsingReplyBlock:(void (^)(NSArray *))arg1;
 - (void)getJobsWithIDs:(NSArray *)arg1 usingReplyBlock:(void (^)(NSArray *))arg2;
 - (void)pauseJobsWithIDs:(NSArray *)arg1 completionBlock:(void (^)(BOOL, NSError *))arg2;
-- (void)registerJobManagerWithOptions:(ASDJobManagerOptions *)arg1 replyBlock:(void (^)(BOOL, NSError *))arg2;
+- (void)registerJobManagerWithOptions:(ASDJobManagerOptions *)arg1 replyBlock:(void (^)(BOOL, NSError *, NSArray *))arg2;
 - (void)resumeJobsWithIDs:(NSArray *)arg1 completionBlock:(void (^)(BOOL, NSError *))arg2;
 @end
 

@@ -46,8 +46,7 @@
 - (void)dealloc;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithAccessory:(id)arg1 uuid:(id)arg2 services:(id)arg3 msgDispatcher:(id)arg4;
-- (id)initWithCoder:(id)arg1;
+- (id)initWithAccessory:(id)arg1 services:(id)arg2 msgDispatcher:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)logIdentifier;
 - (void)monitorForEventsForServices:(id)arg1;

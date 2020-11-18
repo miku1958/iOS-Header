@@ -18,6 +18,7 @@
     UIStackView *_containerStackView;
     HKTitledLogoBuddyHeaderView *_header;
     NSArray *_buttons;
+    NSArray *_buttonStackConstraints;
     UIActivityIndicatorView *_loadingIndicator;
 }
 
@@ -29,6 +30,7 @@
 - (void)_anchoredButtonTapped:(id)arg1;
 - (void)_createAnchoredButtons;
 - (id)_createHeaderView;
+- (void)_updateForCurrentSizeCategory;
 - (id)bodyString;
 - (id)bottomAnchoredButtons;
 - (void)buttonAtIndexTapped:(long long)arg1;
@@ -37,12 +39,14 @@
 - (void)linkButtonTapped:(id)arg1;
 - (id)linkButtonTitle;
 - (void)reloadViews;
+- (BOOL)shouldCustomizeNavigationBar;
 - (BOOL)shouldHideNavigationBar;
 - (id)subsequentViews;
 - (unsigned long long)supportedInterfaceOrientations;
 - (id)titleImage;
 - (id)titleString;
 - (void)titledBuddyHeaderViewDidTapLinkButton:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

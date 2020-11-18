@@ -17,6 +17,7 @@
     double _requestStart;
     int _decodeTime;
     int _httpResponseCode;
+    NSString *_manifestEnv;
     int _networkService;
     int _queuedTime;
     int _redirectCount;
@@ -27,6 +28,7 @@
     int _responseDataSize;
     NSString *_serviceIpAddress;
     GEONetworkSessionTaskTransactionMetrics *_taskMetrics;
+    unsigned int _tilesetId;
     int _totalTime;
     struct {
         unsigned int requestEnd:1;
@@ -39,6 +41,7 @@
         unsigned int redirectCount:1;
         unsigned int requestDataSize:1;
         unsigned int responseDataSize:1;
+        unsigned int tilesetId:1;
         unsigned int totalTime:1;
     } _has;
 }
@@ -46,6 +49,7 @@
 @property (nonatomic) int decodeTime; // @synthesize decodeTime=_decodeTime;
 @property (nonatomic) BOOL hasDecodeTime;
 @property (nonatomic) BOOL hasHttpResponseCode;
+@property (readonly, nonatomic) BOOL hasManifestEnv;
 @property (nonatomic) BOOL hasNetworkService;
 @property (nonatomic) BOOL hasQueuedTime;
 @property (nonatomic) BOOL hasRedirectCount;
@@ -59,8 +63,10 @@
 @property (nonatomic) BOOL hasResponseDataSize;
 @property (readonly, nonatomic) BOOL hasServiceIpAddress;
 @property (readonly, nonatomic) BOOL hasTaskMetrics;
+@property (nonatomic) BOOL hasTilesetId;
 @property (nonatomic) BOOL hasTotalTime;
 @property (nonatomic) int httpResponseCode; // @synthesize httpResponseCode=_httpResponseCode;
+@property (strong, nonatomic) NSString *manifestEnv; // @synthesize manifestEnv=_manifestEnv;
 @property (nonatomic) int networkService; // @synthesize networkService=_networkService;
 @property (nonatomic) int queuedTime; // @synthesize queuedTime=_queuedTime;
 @property (nonatomic) int redirectCount; // @synthesize redirectCount=_redirectCount;
@@ -74,12 +80,13 @@
 @property (nonatomic) int responseDataSize; // @synthesize responseDataSize=_responseDataSize;
 @property (strong, nonatomic) NSString *serviceIpAddress; // @synthesize serviceIpAddress=_serviceIpAddress;
 @property (strong, nonatomic) GEONetworkSessionTaskTransactionMetrics *taskMetrics; // @synthesize taskMetrics=_taskMetrics;
+@property (nonatomic) unsigned int tilesetId; // @synthesize tilesetId=_tilesetId;
 @property (nonatomic) int totalTime; // @synthesize totalTime=_totalTime;
 
+- (void).cxx_destruct;
 - (int)StringAsNetworkService:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

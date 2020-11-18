@@ -6,29 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class _OSLogChunkFileReference, _OSLogChunkStore;
+#import <LoggingSupport/_OSLogIndexTimeRangable-Protocol.h>
+
+@class NSString, _OSLogChunkFileReference, _OSLogChunkStore;
 
 __attribute__((visibility("hidden")))
-@interface _OSLogIndexFile : NSObject
+@interface _OSLogIndexFile : NSObject <_OSLogIndexTimeRangable>
 {
     _OSLogChunkFileReference *_cfr;
     _OSLogChunkStore *_cs;
     unsigned char _bootu[16];
+    BOOL _catalogsScanned;
     unsigned long long _et;
     unsigned long long _ot;
 }
 
 @property (readonly, nonatomic) const char *bootUUID;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long endTime; // @synthesize endTime=_et;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long oldestTime; // @synthesize oldestTime=_ot;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_loadHeaderMetadata:(id)arg1 error:(id *)arg2;
-- (long long)endTimeCompare:(id)arg1;
+- (BOOL)_loadCatalogMetadata;
+- (BOOL)_loadHeaderMetadata:(id)arg1;
 - (id)initWithChunkStore:(id)arg1 error:(id *)arg2;
 - (id)initWithTraceFile:(id)arg1 error:(id *)arg2;
 - (id)map:(id *)arg1;
-- (long long)oldestTimeCompare:(id)arg1;
 
 @end
 

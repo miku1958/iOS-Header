@@ -47,6 +47,7 @@
 + (void)logContactUpdate:(long long)arg1;
 + (void)logPropertyAdded:(int)arg1 forContact:(void *)arg2;
 - (id)_sourceTypeAsString:(int)arg1;
+- (void)dealloc;
 - (id)initWithAddressBook:(void *)arg1;
 - (void)logAllData;
 - (void)logMeCard;

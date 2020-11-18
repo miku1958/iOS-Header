@@ -25,12 +25,12 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
 
 - (void).cxx_destruct;
+- (id)generateRequestOperations;
 - (id)initWithSubscriptionsToSave:(id)arg1 subscriptionIDsToDelete:(id)arg2;
 - (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 
 @end
 

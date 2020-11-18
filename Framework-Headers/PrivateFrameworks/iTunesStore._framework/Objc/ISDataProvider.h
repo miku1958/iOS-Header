@@ -8,7 +8,7 @@
 
 #import <iTunesStore/NSCopying-Protocol.h>
 
-@class ISBiometricAuthenticationContext, ISOperation, NSNumber, NSString, NSURL, SSAuthenticationContext, SSURLBagContext;
+@class ISOperation, NSNumber, NSString, NSURL, SSAuthenticationContext, SSBiometricAuthenticationContext, SSURLBagContext;
 @protocol ISBiometricSessionDelegate;
 
 @interface ISDataProvider : NSObject <NSCopying>
@@ -21,7 +21,7 @@
     id _output;
     ISOperation *_parentOperation;
     NSURL *_redirectURL;
-    ISBiometricAuthenticationContext *_biometricAuthenticationContext;
+    SSBiometricAuthenticationContext *_biometricAuthenticationContext;
     long long _errorHandlerResponseType;
     id<ISBiometricSessionDelegate> _biometricSessionDelegate;
 }
@@ -29,7 +29,7 @@
 @property (strong) NSNumber *authenticatedAccountDSID; // @synthesize authenticatedAccountDSID=_authenticatedAccountDSID;
 @property (strong) SSAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 @property (strong) SSURLBagContext *bagContext; // @synthesize bagContext=_bagContext;
-@property (strong) ISBiometricAuthenticationContext *biometricAuthenticationContext; // @synthesize biometricAuthenticationContext=_biometricAuthenticationContext;
+@property (strong) SSBiometricAuthenticationContext *biometricAuthenticationContext; // @synthesize biometricAuthenticationContext=_biometricAuthenticationContext;
 @property id<ISBiometricSessionDelegate> biometricSessionDelegate; // @synthesize biometricSessionDelegate=_biometricSessionDelegate;
 @property long long contentLength; // @synthesize contentLength=_contentLength;
 @property (strong) NSString *contentType; // @synthesize contentType=_contentType;
@@ -54,6 +54,7 @@
 - (BOOL)runAuthorizationDialog:(id)arg1 error:(id *)arg2;
 - (BOOL)runSubOperation:(id)arg1 error:(id *)arg2;
 - (BOOL)runTouchIDAuthorizationDialog:(id)arg1 fallbackDialog:(id)arg2 error:(id *)arg3;
+- (BOOL)runTouchIDAuthorizationDialog:(id)arg1 fallbackDialog:(id)arg2 metricsDictionary:(id)arg3 error:(id *)arg4;
 - (void)setup;
 - (void)streamCancelled;
 - (void)streamDidFailWithError:(id)arg1;

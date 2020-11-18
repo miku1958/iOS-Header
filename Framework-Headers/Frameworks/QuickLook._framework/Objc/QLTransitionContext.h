@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)_snapshotSourceViewIfNeeded;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithQLPreviewController:(id)arg1 toViewController:(id)arg2;
+- (id)initWithQLPreviewController:(id)arg1 containerView:(id)arg2 toViewController:(id)arg3;
 - (void)prepareContextToSend;
 - (void)setUpTransitionSourceView;
 - (id)sourceViewSnapshotImage;

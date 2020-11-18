@@ -17,9 +17,9 @@
 @property (readonly) NSArray *trackedSessions; // @synthesize trackedSessions=_trackedSessions;
 
 - (void).cxx_destruct;
-- (void)_postMetricId:(unsigned int)arg1 message:(id)arg2;
 - (void)clearTrackedSessions;
 - (id)initWithModel:(id)arg1;
+- (void)postMetricId:(unsigned int)arg1 message:(id)arg2;
 
 @end
 

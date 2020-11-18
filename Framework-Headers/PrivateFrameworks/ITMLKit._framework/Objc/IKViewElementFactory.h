@@ -15,6 +15,7 @@
         unsigned int parsingUpdatedTree:1;
         unsigned int parsingReorderedSiblings:1;
         unsigned int parsingUpdatedData:1;
+        unsigned int parsingPartOfPrototype:1;
     } _parsingFlags;
     IKViewElementRegistry *_elementRegistry;
     IKViewElementStyleFactory *_styleFactory;
@@ -24,7 +25,7 @@
 @property (strong, nonatomic) IKViewElementStyleFactory *styleFactory; // @synthesize styleFactory=_styleFactory;
 
 + (Class)elementClassByTagName:(id)arg1;
-+ (id)elementsForDocumentElement:(id)arg1 sparse:(BOOL)arg2 styleFactory:(id *)arg3;
++ (BOOL)elementsForDocumentElement:(id)arg1 context:(id)arg2;
 + (void)initialize;
 + (BOOL)isDependentByTagName:(id)arg1;
 + (void)registerClass:(Class)arg1 forElementName:(id)arg2 elementType:(unsigned long long)arg3;

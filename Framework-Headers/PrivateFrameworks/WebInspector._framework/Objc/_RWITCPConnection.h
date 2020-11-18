@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_outputMessageQueue;
     NSMutableData *_incomingData;
     _RWITCPServer *_server;
+    long long _type;
 }
 
 @property (weak, nonatomic) id<_RWITCPConnectionDelegate> delegate; // @synthesize delegate=_delegate;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_closeInputStream;
 - (void)_closeOutputStream;
+- (void)_commonInitializationWithServer:(id)arg1 socket:(int)arg2 type:(long long)arg3;
 - (void)_createInputSource;
 - (void)_createOutputSource;
 - (void)_dispatchSourceCancelled;

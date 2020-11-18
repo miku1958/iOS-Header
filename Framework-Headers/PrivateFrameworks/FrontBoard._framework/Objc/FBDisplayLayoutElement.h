@@ -15,13 +15,13 @@
     Class _elementClass;
     NSString *_identifier;
     FBSDisplayLayoutElement *_element;
-    unsigned long long _displayType;
+    long long _displayType;
     BOOL _activated;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) unsigned long long displayType; // @synthesize displayType=_displayType;
+@property (readonly, nonatomic) long long displayType; // @synthesize displayType=_displayType;
 @property (readonly, strong, nonatomic) FBSDisplayLayoutElement *element; // @synthesize element=_element;
 @property (readonly, nonatomic) Class elementClass; // @synthesize elementClass=_elementClass;
 @property (readonly) unsigned long long hash;
@@ -34,7 +34,7 @@
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)initWithDisplayType:(unsigned long long)arg1 identifier:(id)arg2 elementClass:(Class)arg3;
+- (id)initWithDisplayType:(long long)arg1 identifier:(id)arg2 elementClass:(Class)arg3;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (void)updateWithBuilder:(CDUnknownBlockType)arg1;

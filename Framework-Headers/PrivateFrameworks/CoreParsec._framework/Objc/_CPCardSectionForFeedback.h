@@ -6,30 +6,39 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreParsec/NSCopying-Protocol.h>
+#import <CoreParsec/NSSecureCoding-Protocol.h>
+#import <CoreParsec/_CPCardSectionForFeedback-Protocol.h>
 
-@class NSMutableArray;
+@class NSData, NSString;
 
-@interface _CPCardSectionForFeedback : PBCodable <NSCopying>
+@interface _CPCardSectionForFeedback : PBCodable <_CPCardSectionForFeedback, NSSecureCoding>
 {
-    NSMutableArray *_punchoutOptions;
+    NSString *_cardSectionId;
+    NSString *_actionTarget;
+    NSString *_actionDestination;
+    NSString *_resultId;
 }
 
-@property (strong, nonatomic) NSMutableArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
+@property (copy, nonatomic) NSString *actionDestination; // @synthesize actionDestination=_actionDestination;
+@property (copy, nonatomic) NSString *actionTarget; // @synthesize actionTarget=_actionTarget;
+@property (copy, nonatomic) NSString *cardSectionId; // @synthesize cardSectionId=_cardSectionId;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasActionDestination;
+@property (readonly, nonatomic) BOOL hasActionTarget;
+@property (readonly, nonatomic) BOOL hasCardSectionId;
+@property (readonly, nonatomic) BOOL hasResultId;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSString *resultId; // @synthesize resultId=_resultId;
+@property (readonly) Class superclass;
 
-+ (Class)punchoutOptionsType;
 - (void).cxx_destruct;
-- (void)addPunchoutOptions:(id)arg1;
-- (void)clearPunchoutOptions;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithFacade:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
-- (id)punchoutOptionsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)punchoutOptionsCount;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

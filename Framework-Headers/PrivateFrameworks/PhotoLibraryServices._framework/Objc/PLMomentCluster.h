@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CLLocation, NSArray, NSCountedSet, NSDate, NSMutableArray, NSMutableSet, NSString;
 @protocol NSCopying;
 
 @interface PLMomentCluster : NSObject
 {
+    BOOL __usedLocationsOfInterest;
     short _generationType;
     NSString *__title;
     NSObject<NSCopying> *__objectID;
@@ -34,6 +35,7 @@
 @property (readonly, nonatomic) NSObject<NSCopying> *objectID; // @synthesize objectID=__objectID;
 @property (strong, nonatomic, setter=_setStartingDate:) NSDate *startingDate; // @synthesize startingDate=__startingDate;
 @property (strong, nonatomic) NSString *title; // @synthesize title=__title;
+@property (nonatomic) BOOL usedLocationsOfInterest; // @synthesize usedLocationsOfInterest=__usedLocationsOfInterest;
 
 + (double)nameOccurrenceCutoff;
 - (void)_correctStartAndEndDates;

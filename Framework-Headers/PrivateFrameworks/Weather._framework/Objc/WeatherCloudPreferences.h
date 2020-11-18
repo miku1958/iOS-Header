@@ -35,6 +35,7 @@
 - (id)cloudCityRepresentationsFromLegacyRepresentations;
 - (void)cloudPersistenceDidSynchronize:(id)arg1;
 - (id)cloudRepresentationFromCities:(id)arg1;
+- (void)forceSync;
 - (id)initWithLocalPreferences:(id)arg1;
 - (id)initWithLocalPreferences:(id)arg1 persistence:(id)arg2;
 - (BOOL)legacyCloudCity:(id)arg1 isEqualToALCity:(id)arg2;

@@ -6,18 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class CKDAssetCache, CKDMMCSEngineContext, NSString;
+@class CKDAssetCache, CKDClientContext, CKDMMCSEngineContext, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDMMCS : NSObject
 {
+    BOOL _didDrop;
     NSString *_path;
     CKDAssetCache *_assetCache;
+    CKDClientContext *_clientContext;
+    long long _checkoutCount;
     CKDMMCSEngineContext *_MMCSEngineContext;
 }
 
 @property (strong, nonatomic) CKDMMCSEngineContext *MMCSEngineContext; // @synthesize MMCSEngineContext=_MMCSEngineContext;
 @property (strong, nonatomic) CKDAssetCache *assetCache; // @synthesize assetCache=_assetCache;
+@property (nonatomic) long long checkoutCount; // @synthesize checkoutCount=_checkoutCount;
+@property (weak, nonatomic) CKDClientContext *clientContext; // @synthesize clientContext=_clientContext;
+@property (nonatomic) BOOL didDrop; // @synthesize didDrop=_didDrop;
 @property (readonly, nonatomic, getter=getMaxChunkCountForSection) unsigned int maxChunkCountForSection;
 @property (strong, nonatomic) NSString *path; // @synthesize path=_path;
 
@@ -30,6 +36,7 @@ __attribute__((visibility("hidden")))
 + (id)_errorWithMMCSError:(id)arg1 path:(id)arg2 description:(id)arg3 operationType:(long long)arg4;
 + (id)_userInfoFromMMCSRetryableError:(id)arg1;
 + (BOOL)isTrackingItemID:(unsigned long long)arg1;
++ (id)protocolHeaders;
 + (id)protocolVersion;
 + (void)purgeMMCSDirectoryWithPath:(id)arg1;
 + (id)sharedItemIDs;
@@ -52,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (id)_referenceIdentifierFromAssetKey:(id)arg1;
 - (void)_unregisterItemIDs:(id)arg1;
 - (void)dealloc;
+- (void)drop;
 - (id)getItemGroupSet:(id)arg1 operation:(id)arg2 shouldFetchAssetContentInMemory:(BOOL)arg3 options:(id)arg4 progress:(CDUnknownBlockType)arg5 command:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (struct _mmcs_engine *)getMMCSEngine;
 - (id)getSectionItem:(id)arg1 operation:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;

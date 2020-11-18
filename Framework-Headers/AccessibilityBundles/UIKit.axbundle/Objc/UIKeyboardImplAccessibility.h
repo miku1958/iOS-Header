@@ -16,6 +16,7 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityInputObjectUsesSecureText:(id)arg1;
 - (id)_accessibilityKeyboardInputDelegate;
+- (void)_axShowKeyboardIfHidden;
 - (void)acceptCandidate:(id)arg1;
 - (BOOL)acceptWord:(id)arg1 firstDelete:(unsigned long long)arg2 forInput:(id)arg3;
 - (BOOL)autocorrectSpellingEnabled;
@@ -26,12 +27,14 @@
 - (void)handleKeyboardInput:(id)arg1 executionContext:(id)arg2;
 - (void)hideKeyboard;
 - (void)insertText:(id)arg1;
+- (void)setInHardwareKeyboardMode:(BOOL)arg1;
 - (void)setInputMode:(id)arg1 userInitiated:(BOOL)arg2;
 - (void)setInputModeToNextInPreferredList;
 - (void)setInputModeToNextInPreferredListWithExecutionContext:(id)arg1;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2 inputString:(id)arg3 searchString:(id)arg4;
 - (void)setShift:(BOOL)arg1 autoshift:(BOOL)arg2;
 - (void)showKeyboard;
+- (void)showKeyboardIfNeeded;
 - (void)textDidChange:(id)arg1;
 - (void)toggleSoftwareKeyboard;
 - (void)unmarkText:(id)arg1;

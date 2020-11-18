@@ -15,8 +15,8 @@
     NSLock *_lock;
 }
 
+- (void).cxx_destruct;
 - (void)buildLayerStackWithMaskSourceImage:(id)arg1;
-- (void)dealloc;
 - (BOOL)hasLayerStack;
 - (BOOL)hasRetouch;
 - (id)imageForWorkingImage:(id)arg1 workingTransform:(struct CGAffineTransform)arg2 inDestRect:(struct CGRect)arg3 withPadding:(double)arg4;

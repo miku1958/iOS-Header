@@ -10,8 +10,6 @@
 
 @interface SBUILongNumericPasscodeEntryField : SBUINumericPasscodeEntryFieldBase
 {
-    UIView *_leftPaddingView;
-    UIView *_rightPaddingView;
     SBUIButton *_okButton;
     BOOL _showsOkButton;
     UILabel *_promptLabel;
@@ -29,7 +27,7 @@
 + (BOOL)_shouldResetAutoAcceptWhenMaxNumbersMetInResignFirstResponder;
 + (BOOL)_usesTextFieldForFirstResponder;
 - (void).cxx_destruct;
-- (void)_autofillForMesaWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_autofillForBiometricAuthenticationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_getPasscodeFieldSize:(struct CGSize *)arg1 okButtonSize:(struct CGSize *)arg2;
 - (void)_handleKeyUIEvent:(id)arg1;
 - (void)_okButtonHit;
@@ -44,8 +42,6 @@
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)resignFirstResponder;
-- (void)setBackgroundAlpha:(double)arg1;
-- (void)setCustomBackgroundColor:(id)arg1;
 - (BOOL)textFieldShouldBeginEditing:(id)arg1;
 
 @end

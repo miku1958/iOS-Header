@@ -17,11 +17,12 @@
 @property (strong) NSCache *contactCache; // @synthesize contactCache=_contactCache;
 @property (strong) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 
-+ (id)contactForPhoneNumber:(id)arg1;
++ (id)contactForPhoneNumber:(id)arg1 email:(id)arg2;
 + (id)placeholderContact;
 + (id)sharedStore;
 - (void).cxx_destruct;
 - (id)cachedContactForIdentifier:(id)arg1;
+- (id)contactForIdentifier:(id)arg1;
 - (void)fetchContactForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 

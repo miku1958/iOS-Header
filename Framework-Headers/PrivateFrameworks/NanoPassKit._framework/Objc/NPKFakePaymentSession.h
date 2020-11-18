@@ -54,6 +54,7 @@
 - (BOOL)inServiceMode;
 - (id)initWithQueue:(id)arg1;
 - (void)renewSession;
+- (void)setCredential:(id)arg1;
 - (void)setCurrentPass:(id)arg1;
 - (void)setDeferAuthorization:(BOOL)arg1;
 - (void)setInServiceMode:(BOOL)arg1;

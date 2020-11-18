@@ -47,7 +47,6 @@
 @property (readonly, nonatomic) AVPlayerLayer *playerLayer;
 @property (readonly) Class superclass;
 
-+ (void)initialize;
 + (BOOL)isPictureInPictureSupported;
 + (id)keyPathsForValuesAffectingPictureInPictureActive;
 + (id)keyPathsForValuesAffectingPictureInPicturePossible;

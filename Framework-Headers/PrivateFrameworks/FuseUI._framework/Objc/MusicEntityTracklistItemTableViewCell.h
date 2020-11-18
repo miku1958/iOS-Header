@@ -37,8 +37,6 @@
 - (void)setBackgroundColor:(id)arg1;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)tracklistItemView:(id)arg1 didSelectPlayButtonAction:(unsigned long long)arg2;
-- (void)tracklistItemViewDidSelectContextualActionsButton:(id)arg1;
 - (BOOL)tracklistItemViewShouldLayoutAsEditing:(id)arg1;
 
 @end

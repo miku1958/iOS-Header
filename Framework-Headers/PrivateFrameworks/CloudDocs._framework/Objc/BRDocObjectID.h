@@ -12,11 +12,13 @@
 }
 
 + (BOOL)supportsSecureCoding;
+- (id)asString;
 - (id)description;
 - (id)documentID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDocID:(unsigned int)arg1;
+- (id)initWithDocIDNumber:(id)arg1;
 - (BOOL)isDocumentID;
 - (unsigned long long)rawID;
 

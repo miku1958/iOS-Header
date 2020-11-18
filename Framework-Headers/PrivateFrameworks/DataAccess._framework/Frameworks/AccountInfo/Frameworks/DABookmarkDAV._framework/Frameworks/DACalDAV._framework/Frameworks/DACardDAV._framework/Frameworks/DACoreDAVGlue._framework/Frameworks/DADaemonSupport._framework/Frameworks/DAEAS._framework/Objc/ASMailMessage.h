@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (id)attachments;
+- (id)bcc;
 - (id)body;
 - (int)bodySize;
 - (int)bodyTruncated;

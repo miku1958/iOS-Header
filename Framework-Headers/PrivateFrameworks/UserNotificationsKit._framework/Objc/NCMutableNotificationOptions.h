@@ -22,7 +22,6 @@
 @property (nonatomic) unsigned long long contentPreviewSetting; // @dynamic contentPreviewSetting;
 @property (nonatomic) BOOL dismissAutomatically; // @dynamic dismissAutomatically;
 @property (nonatomic) BOOL hideClearActionInList; // @dynamic hideClearActionInList;
-@property (nonatomic) BOOL ignoreAttachmentImageThumbnailCrop; // @dynamic ignoreAttachmentImageThumbnailCrop;
 @property (nonatomic) unsigned long long lockScreenPersistence; // @dynamic lockScreenPersistence;
 @property (nonatomic) unsigned long long lockScreenPriority; // @dynamic lockScreenPriority;
 @property (nonatomic) unsigned long long messageNumberOfLines; // @dynamic messageNumberOfLines;
@@ -36,7 +35,9 @@
 @property (nonatomic) BOOL revealsAdditionalContentOnPresentation; // @dynamic revealsAdditionalContentOnPresentation;
 @property (nonatomic) BOOL silencedByMenuButtonPress; // @dynamic silencedByMenuButtonPress;
 @property (nonatomic) BOOL suppressesAlertsWhenAppIsActive; // @dynamic suppressesAlertsWhenAppIsActive;
+@property (nonatomic) BOOL suppressesBodyWhenLocked; // @dynamic suppressesBodyWhenLocked;
 @property (nonatomic) BOOL suppressesSubtitleWhenLocked; // @dynamic suppressesSubtitleWhenLocked;
+@property (nonatomic) BOOL suppressesTitleWhenLocked; // @dynamic suppressesTitleWhenLocked;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

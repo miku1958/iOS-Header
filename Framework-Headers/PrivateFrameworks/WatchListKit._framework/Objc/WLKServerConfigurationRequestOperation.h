@@ -7,20 +7,19 @@
 #import <Foundation/NSOperation.h>
 
 @class NSError, NSString, WLKServerConfigurationResponse, WLKUserEnvironment;
-@protocol WLKServerConfigurationRequestOperationDelegate;
 
 @interface WLKServerConfigurationRequestOperation : NSOperation
 {
     NSString *_nextEK;
-    id<WLKServerConfigurationRequestOperationDelegate> _delegate;
     NSError *_error;
     WLKServerConfigurationResponse *_response;
     WLKUserEnvironment *_userEnvironment;
+    CDUnknownBlockType _requestCompletionBlock;
 }
 
-@property (weak, nonatomic) id<WLKServerConfigurationRequestOperationDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSString *nextEK; // @synthesize nextEK=_nextEK;
+@property (copy, nonatomic) CDUnknownBlockType requestCompletionBlock; // @synthesize requestCompletionBlock=_requestCompletionBlock;
 @property (readonly, nonatomic) WLKServerConfigurationResponse *response; // @synthesize response=_response;
 @property (readonly, nonatomic) WLKUserEnvironment *userEnvironment; // @synthesize userEnvironment=_userEnvironment;
 
@@ -34,6 +33,7 @@
 - (id)_queryStringForKey:(id)arg1 values:(id)arg2;
 - (id)_requestProperties;
 - (id)_runNetworkOperationAndReturnError:(id *)arg1;
+- (id)init;
 - (void)main;
 
 @end

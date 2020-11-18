@@ -18,6 +18,7 @@
     int _clientProcessID;
     PHFaceprint *_faceprint;
     BOOL _didSetFaceprint;
+    BOOL _shouldClearFaceCropGenerationState;
     PHChangeRequestHelper *_helper;
 }
 
@@ -64,27 +65,28 @@
 @property (nonatomic, getter=isRightEyeClosed) BOOL rightEyeClosed;
 @property (nonatomic) double rightEyeX;
 @property (nonatomic) double rightEyeY;
+@property (nonatomic) BOOL shouldClearFaceCropGenerationState; // @synthesize shouldClearFaceCropGenerationState=_shouldClearFaceCropGenerationState;
 @property (nonatomic) double size;
 @property (nonatomic) long long sourceHeight;
 @property (nonatomic) long long sourceWidth;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uuid;
 
++ (BOOL)canGenerateUUIDWithoutEntitlements;
 + (id)changeRequestForFace:(id)arg1;
 + (id)creationRequestForFace;
 + (void)deleteFaces:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
 - (BOOL)applyMutationsToManagedObject:(id)arg1 error:(id *)arg2;
-- (BOOL)canGenerateUUIDLocally;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (void)didMutate;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initWithXPCDict:(id)arg1 clientEntitlements:(id)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
-- (id)mutations;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
+- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (BOOL)validateInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (BOOL)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;
 

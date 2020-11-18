@@ -27,6 +27,7 @@
 - (id)JSONObjectRepresentationWritingResourcesToBundlePath:(id)arg1;
 - (void)_enumerateAllKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateBOOLKeysWithBlock:(CDUnknownBlockType)arg1;
+- (void)_enumerateDateKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateFloatKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateImageProviderKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateIntegerKeysWithBlock:(CDUnknownBlockType)arg1;

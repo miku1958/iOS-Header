@@ -10,16 +10,19 @@
 + (id)hf_programmableSwitchServiceTypes;
 + (id)hf_roomsForServices:(id)arg1;
 + (id)hf_standardServices;
+- (BOOL)_hf_isDirectlyOrIndirectlyLinkedToService:(id)arg1;
+- (BOOL)hf_canGroupWithService:(id)arg1;
 - (id)hf_characteristicOfType:(id)arg1;
+- (id)hf_childServices;
 - (id)hf_effectiveServiceType;
 - (unsigned long long)hf_fallbackProgrammableSwitchIndex;
 - (id)hf_iconDescriptor;
 - (BOOL)hf_isLegacyService;
 - (BOOL)hf_isProgrammableSwitch;
+- (BOOL)hf_isVisible;
 - (id)hf_labelIndexCharacteristic;
 - (id)hf_labelNamespaceCharacteristic;
 - (id)hf_linkedServiceOfType:(id)arg1;
-- (id)hf_room;
 - (BOOL)hf_supportsGroups;
 - (id)hf_updateIconDescriptor:(id)arg1;
 @end

@@ -4,11 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameCenterUI/GKRemoteViewControllerDelegate-Protocol.h>
+#import <GameCenterUI/GKExtensionProtocol-Protocol.h>
 
-@class GKChallenge, NSArray, NSString;
-
-@protocol GKChallengeIssueServiceProtocol <GKRemoteViewControllerDelegate>
-- (void)setChallenge:(GKChallenge *)arg1 playerInternals:(NSArray *)arg2 defaultMessage:(NSString *)arg3 forcePicker:(BOOL)arg4;
+@protocol GKChallengeIssueServiceProtocol <GKExtensionProtocol>
 @end
 

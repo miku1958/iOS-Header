@@ -20,6 +20,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isFaceTimeAudioSupported;
 @property (readonly, nonatomic) BOOL isFaceTimeVideoSupported;
+@property (readonly, nonatomic) BOOL isPaySupported;
 @property (readonly, nonatomic) BOOL isiMessageSupported;
 @property (readonly) Class superclass;
 

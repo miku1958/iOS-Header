@@ -13,7 +13,7 @@
     CoreDAVHrefItem *_virtualHref;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)href;
 - (void)setPayload:(id)arg1;

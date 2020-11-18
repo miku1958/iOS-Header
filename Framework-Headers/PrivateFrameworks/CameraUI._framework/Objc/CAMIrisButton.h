@@ -6,35 +6,42 @@
 
 #import <UIKit/UIButton.h>
 
-@class NSArray, UIImage, UIImageView;
+#import <CameraUI/CAMAccessibilityHUDImageProvider-Protocol.h>
 
-@interface CAMIrisButton : UIButton
+@class NSArray, NSString, UIImageView;
+
+@interface CAMIrisButton : UIButton <CAMAccessibilityHUDImageProvider>
 {
     long long _layoutStyle;
     long long _irisMode;
     UIImageView *__padBackgroundView;
-    UIImage *__baseImage;
     NSArray *__enablingAnimationImages;
     struct UIEdgeInsets _tappableEdgeInsets;
 }
 
-@property (readonly, nonatomic) UIImage *_baseImage; // @synthesize _baseImage=__baseImage;
 @property (copy, nonatomic, setter=_setEnablingAnimationImages:) NSArray *_enablingAnimationImages; // @synthesize _enablingAnimationImages=__enablingAnimationImages;
 @property (readonly, nonatomic) UIImageView *_padBackgroundView; // @synthesize _padBackgroundView=__padBackgroundView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long irisMode; // @synthesize irisMode=_irisMode;
 @property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
+@property (readonly) Class superclass;
 @property (nonatomic) struct UIEdgeInsets tappableEdgeInsets; // @synthesize tappableEdgeInsets=_tappableEdgeInsets;
 
 + (double)enablingAnimationDuration;
 + (id)irisButtonWithLayoutStyle:(long long)arg1;
 - (void).cxx_destruct;
 - (id)_actuallyLoadEnablingAnimationImagesForScale:(double)arg1;
+- (id)_baseImageForMode:(long long)arg1;
 - (void)_commonCAMIrisButtonConfiguration;
 - (void)_ensureEnablingAnimationImages;
 - (BOOL)_shouldLoadEnablingAnimationImages;
+- (void)_updateBaseImage;
 - (void)_updateForLayoutStyle;
 - (void)_updateTintColorForMode:(long long)arg1;
 - (struct UIEdgeInsets)alignmentRectInsets;
+- (id)imageForAccessibilityHUD;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)interruptEnablingAnimation;
@@ -42,6 +49,7 @@
 - (void)layoutSubviews;
 - (void)performEnablingAnimation;
 - (void)preloadEnablingAnimation;
+- (void)setHighlighted:(BOOL)arg1;
 
 @end
 

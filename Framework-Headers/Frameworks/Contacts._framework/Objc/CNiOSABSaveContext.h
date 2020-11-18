@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CNMutableSaveResponse, CNSaveRequest, NSMapTable, NSMutableDictionary;
 
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) CNSaveRequest *saveRequest; // @synthesize saveRequest=_saveRequest;
 @property (readonly, nonatomic) CNMutableSaveResponse *saveResponse; // @synthesize saveResponse=_saveResponse;
 
+- (void).cxx_destruct;
 - (void)_populateSaveRequestIndexTables;
 - (void)dealloc;
 - (id)indexPathForContactInstance:(id)arg1;

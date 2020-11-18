@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableSet;
+@class NSArray, NSMutableArray;
 
 @interface CKRecordGraph : NSObject
 {
-    NSMutableSet *_nodes;
+    NSMutableArray *_nodes;
     NSArray *_sortedRecords;
 }
 
-@property (copy, nonatomic) NSMutableSet *nodes; // @synthesize nodes=_nodes;
+@property (strong, nonatomic) NSMutableArray *nodes; // @synthesize nodes=_nodes;
 @property (strong, nonatomic) NSArray *sortedRecords; // @synthesize sortedRecords=_sortedRecords;
 
 + (id)topologicallySortRecords:(id)arg1 withError:(id *)arg2;

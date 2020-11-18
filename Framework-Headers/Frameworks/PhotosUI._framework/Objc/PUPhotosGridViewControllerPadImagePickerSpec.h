@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUPhotosGridViewControllerPhoneSpec.h>
+#import <PhotosUI/PUPhotosGridViewControllerPadSpec.h>
 
-@interface PUPhotosGridViewControllerPadImagePickerSpec : PUPhotosGridViewControllerPhoneSpec
+@interface PUPhotosGridViewControllerPadImagePickerSpec : PUPhotosGridViewControllerPadSpec
 {
 }
 

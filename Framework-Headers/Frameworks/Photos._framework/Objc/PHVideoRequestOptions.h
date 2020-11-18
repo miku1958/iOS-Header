@@ -11,6 +11,7 @@
     BOOL _networkAccessAllowed;
     BOOL _streamingAllowed;
     BOOL _videoComplementAllowed;
+    BOOL _allowMediumHighQuality;
     BOOL _restrictToPlayableOnCurrentDevice;
     long long _version;
     long long _deliveryMode;
@@ -19,6 +20,7 @@
     struct CGSize _targetSize;
 }
 
+@property (nonatomic, getter=isMediumHighQualityAllowed) BOOL allowMediumHighQuality; // @synthesize allowMediumHighQuality=_allowMediumHighQuality;
 @property (nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
 @property (nonatomic) long long deliveryMode; // @synthesize deliveryMode=_deliveryMode;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;

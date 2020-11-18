@@ -7,17 +7,17 @@
 #import <UIKit/UICollectionViewCell.h>
 
 @class CALayer, MSStickerView;
-@protocol MSSticker;
+@protocol MSStickerPrivate;
 
 @interface _MSStickerCollectionViewCell : UICollectionViewCell
 {
     MSStickerView *_stickerView;
-    id<MSSticker> _sticker;
+    id<MSStickerPrivate> _sticker;
     CALayer *_borderLayer;
 }
 
 @property (strong, nonatomic) CALayer *borderLayer; // @synthesize borderLayer=_borderLayer;
-@property (strong, nonatomic) id<MSSticker> sticker; // @synthesize sticker=_sticker;
+@property (strong, nonatomic) id<MSStickerPrivate> sticker; // @synthesize sticker=_sticker;
 @property (readonly, nonatomic) MSStickerView *stickerView; // @synthesize stickerView=_stickerView;
 
 - (void).cxx_destruct;

@@ -22,6 +22,9 @@
     struct NSMutableArray *_dataSendQueue;
     BOOL _invalidateCalled;
     struct LogCategory *_ucat;
+    BOOL _bleEncrypted;
+    BOOL _latencyCritical;
+    BOOL _lePipeCapable;
     CDUnknownBlockType _bluetoothBandwidthChangedHandler;
     CDUnknownBlockType _bluetoothStateChangedHandler;
     CDUnknownBlockType _connectionStateChangedHandler;
@@ -32,6 +35,7 @@
 }
 
 @property (nonatomic) BOOL acceptor; // @synthesize acceptor=_acceptor;
+@property (nonatomic) BOOL bleEncrypted; // @synthesize bleEncrypted=_bleEncrypted;
 @property (copy, nonatomic) CDUnknownBlockType bluetoothBandwidthChangedHandler; // @synthesize bluetoothBandwidthChangedHandler=_bluetoothBandwidthChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType bluetoothStateChangedHandler; // @synthesize bluetoothStateChangedHandler=_bluetoothStateChangedHandler;
 @property (readonly, nonatomic) long long connectionState;
@@ -39,6 +43,8 @@
 @property (copy, nonatomic) CDUnknownBlockType dataHandler; // @synthesize dataHandler=_dataHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
+@property (nonatomic) BOOL latencyCritical; // @synthesize latencyCritical=_latencyCritical;
+@property (nonatomic) BOOL lePipeCapable; // @synthesize lePipeCapable=_lePipeCapable;
 @property (strong, nonatomic) SFBLEDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
 
 - (void).cxx_destruct;

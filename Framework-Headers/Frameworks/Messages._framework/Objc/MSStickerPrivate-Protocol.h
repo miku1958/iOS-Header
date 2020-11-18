@@ -4,8 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Messages/MSSticker-Protocol.h>
+#import <Messages/NSObject-Protocol.h>
 
-@protocol MSStickerPrivate <MSSticker>
+@class NSData, NSString, NSURL;
+
+@protocol MSStickerPrivate <NSObject>
+
+@property (readonly, nonatomic) NSData *data;
+@property (readonly, nonatomic) NSURL *imageFileURL;
+@property (readonly, copy, nonatomic) NSString *localizedDescription;
+
 @end
 

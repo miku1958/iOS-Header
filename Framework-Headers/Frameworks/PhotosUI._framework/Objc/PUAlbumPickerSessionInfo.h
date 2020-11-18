@@ -10,7 +10,7 @@
 {
 }
 
-- (id)initWithSourceAlbum:(struct NSObject *)arg1 transferredAssets:(id)arg2;
+- (id)initWithSourceAlbum:(id)arg1 transferredAssets:(id)arg2;
 - (BOOL)isSelectingTargetAlbum;
 
 @end

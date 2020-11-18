@@ -4,25 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 @protocol AVSpeechSynthesizerDelegate;
 
 @interface AVSpeechSynthesizer : NSObject
 {
-    BOOL speaking;
-    BOOL paused;
-    id<AVSpeechSynthesizerDelegate> delegate;
-    NSArray *outputChannels;
+    BOOL _speaking;
+    BOOL _paused;
+    id<AVSpeechSynthesizerDelegate> _delegate;
+    NSArray *_outputChannels;
 }
 
-@property (nonatomic) id<AVSpeechSynthesizerDelegate> delegate; // @synthesize delegate;
-@property (strong, nonatomic) NSArray *outputChannels; // @synthesize outputChannels;
-@property (readonly, nonatomic, getter=isPaused) BOOL paused; // @synthesize paused;
-@property (readonly, nonatomic, getter=isSpeaking) BOOL speaking; // @synthesize speaking;
+@property (weak, nonatomic) id<AVSpeechSynthesizerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) NSArray *outputChannels; // @synthesize outputChannels=_outputChannels;
+@property (readonly, nonatomic, getter=isPaused) BOOL paused; // @synthesize paused=_paused;
+@property (readonly, nonatomic, getter=isSpeaking) BOOL speaking; // @synthesize speaking=_speaking;
 
 + (void)initialize;
+- (void).cxx_destruct;
 - (BOOL)continueSpeaking;
 - (BOOL)pauseSpeakingAtBoundary:(long long)arg1;
 - (void)speakUtterance:(id)arg1;

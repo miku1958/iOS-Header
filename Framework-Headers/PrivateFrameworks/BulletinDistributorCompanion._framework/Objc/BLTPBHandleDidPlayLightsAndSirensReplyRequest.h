@@ -15,6 +15,7 @@
     double _date;
     NSString *_phoneSectionID;
     NSString *_publisherMatchID;
+    NSString *_replyToken;
     BOOL _didPlayLightsAndSirens;
     struct {
         unsigned int date:1;
@@ -28,8 +29,10 @@
 @property (nonatomic) BOOL hasDidPlayLightsAndSirens;
 @property (readonly, nonatomic) BOOL hasPhoneSectionID;
 @property (readonly, nonatomic) BOOL hasPublisherMatchID;
+@property (readonly, nonatomic) BOOL hasReplyToken;
 @property (strong, nonatomic) NSString *phoneSectionID; // @synthesize phoneSectionID=_phoneSectionID;
 @property (strong, nonatomic) NSString *publisherMatchID; // @synthesize publisherMatchID=_publisherMatchID;
+@property (strong, nonatomic) NSString *replyToken; // @synthesize replyToken=_replyToken;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

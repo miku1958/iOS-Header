@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <ITMLKit/IKJSDOMDocument-Protocol.h>
 #import <ITMLKit/JSExport-Protocol.h>
 
 @class IKDOMDocument, JSValue, NSArray, NSDictionary, NSString;
 
-@protocol _IKJSDOMDocument <JSExport>
+@protocol _IKJSDOMDocument <IKJSDOMDocument, JSExport>
 - (NSArray *)matchingImpressions:(NSString *)arg1:(JSValue *)arg2;
 - (NSArray *)recordedImpressions:(JSValue *)arg1;
 - (void)replace:(IKDOMDocument *)arg1;

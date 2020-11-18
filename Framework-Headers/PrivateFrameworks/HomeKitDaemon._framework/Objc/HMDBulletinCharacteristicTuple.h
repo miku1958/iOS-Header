@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSDate, NSNumber, NSString;
 
-@interface HMDBulletinCharacteristicTuple : NSObject
+@interface HMDBulletinCharacteristicTuple : HMFObject
 {
     BOOL _changedByThisDevice;
     NSString *_serviceContextID;

@@ -30,6 +30,7 @@
 
 + (Class)addressResultType;
 + (Class)significantLocationType;
+- (void).cxx_destruct;
 - (int)StringAsCorrectionStatus:(id)arg1;
 - (void)addAddressResult:(id)arg1;
 - (void)addSignificantLocation:(id)arg1;
@@ -40,7 +41,6 @@
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)correctionStatusAsString:(int)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

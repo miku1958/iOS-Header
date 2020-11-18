@@ -27,6 +27,7 @@
 
 + (id)_identifierFromManagedObject:(id)arg1 readMetadata:(BOOL)arg2 cache:(id)arg3;
 + (id)entityName;
++ (id)fromPBCodable:(id)arg1;
 + (id)identifierWithString:(id)arg1 type:(id)arg2;
 + (id)objectFromManagedObject:(id)arg1 readMetadata:(BOOL)arg2 cache:(id)arg3;
 + (BOOL)supportsSecureCoding;
@@ -38,8 +39,11 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithString:(id)arg1 type:(id)arg2;
 - (long long)integerValue;
+- (BOOL)isEqual:(id)arg1;
 - (id)objectType;
 - (id)primaryValue;
+- (id)toPBCodable;
+- (long long)typeCode;
 
 @end
 

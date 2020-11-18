@@ -11,20 +11,19 @@
 __attribute__((visibility("hidden")))
 @interface _LSAvailableApplicationsForURLQuery : _LSQuery
 {
-    BOOL _legacySPI;
     NSURL *_URL;
 }
 
 @property (readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
-@property (readonly, nonatomic) BOOL legacySPI; // @synthesize legacySPI=_legacySPI;
 
 + (BOOL)supportsSecureCoding;
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (BOOL)_requiresDatabaseMappingEntitlement;
 - (BOOL)_shouldCacheResolvedResults;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithURL:(id)arg1 legacySPI:(BOOL)arg2;
+- (id)initWithURL:(id)arg1;
 
 @end
 

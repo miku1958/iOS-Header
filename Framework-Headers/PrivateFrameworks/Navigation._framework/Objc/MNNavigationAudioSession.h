@@ -6,41 +6,46 @@
 
 #import <objc/NSObject.h>
 
+#import <Navigation/MNAudioSession-Protocol.h>
+
 @class NSString;
 @protocol MNNavigationAudioSessionDelegate;
 
-@interface MNNavigationAudioSession : NSObject
+__attribute__((visibility("hidden")))
+@interface MNNavigationAudioSession : NSObject <MNAudioSession>
 {
     unsigned long long _sessionType;
     NSString *_language;
+    id<MNNavigationAudioSessionDelegate> _delegate;
     BOOL _speechEnabled;
     BOOL _muteSpeechOverride;
-    id<MNNavigationAudioSessionDelegate> _delegate;
+    unsigned long long _voiceGuidanceLevel;
     unsigned long long _appContext;
 }
 
 @property (nonatomic) unsigned long long appContext; // @synthesize appContext=_appContext;
-@property (weak, nonatomic) id<MNNavigationAudioSessionDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *language; // @synthesize language=_language;
 @property (nonatomic) BOOL muteSpeechOverride; // @synthesize muteSpeechOverride=_muteSpeechOverride;
 @property (nonatomic) unsigned long long sessionType; // @synthesize sessionType=_sessionType;
 @property (nonatomic) BOOL speechEnabled; // @synthesize speechEnabled=_speechEnabled;
+@property (readonly) Class superclass;
+@property (nonatomic) unsigned long long voiceGuidanceLevel; // @synthesize voiceGuidanceLevel=_voiceGuidanceLevel;
 
 + (id)sessionOfType:(unsigned long long)arg1 language:(id)arg2;
 - (void).cxx_destruct;
-- (BOOL)_beepIfNecessaryWithShortPromptType:(unsigned long long)arg1;
+- (BOOL)_beepIfNecessaryWithShortPromptType:(unsigned long long)arg1 textToSpeak:(id)arg2;
 - (BOOL)_headphonesAreInUse;
 - (BOOL)_isVoiceGuidanceEnabled;
 - (void)beginSession;
 - (void)clearAllAnnouncements;
-- (void)endAnnounce;
 - (void)endSession;
 - (void)prepareToAnnounce;
-- (void)speak:(id)arg1 shortPromptType:(unsigned long long)arg2;
-- (void)speak:(id)arg1 shortPromptType:(unsigned long long)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)speak:(id)arg1 shortPromptType:(unsigned long long)arg2 ignorePromptStyle:(BOOL)arg3;
 - (void)speak:(id)arg1 shortPromptType:(unsigned long long)arg2 ignorePromptStyle:(BOOL)arg3 completionBlock:(CDUnknownBlockType)arg4;
-- (void)speakInitialAnnouncement:(id)arg1;
+- (void)speak:(id)arg1 shortPromptType:(unsigned long long)arg2 ignorePromptStyle:(BOOL)arg3 minimumRequiredLevel:(unsigned long long)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)stop;
 - (BOOL)vibrateForPrompt:(unsigned long long)arg1;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOStep, GEOTransitStep;
 
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOTransitStep *transitStep; // @synthesize transitStep=_transitStep;
 @property (strong, nonatomic) GEOStep *walkingStep; // @synthesize walkingStep=_walkingStep;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

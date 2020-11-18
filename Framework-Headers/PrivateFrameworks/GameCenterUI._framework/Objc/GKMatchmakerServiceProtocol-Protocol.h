@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameCenterUI/GKRemoteViewControllerDelegate-Protocol.h>
+#import <GameCenterUI/GKExtensionProtocol-Protocol.h>
 
 @class GKInviteInternal, GKMatchRequestInternal, GKPlayerInternal, NSArray, NSData, NSError, NSString;
 
-@protocol GKMatchmakerServiceProtocol <GKRemoteViewControllerDelegate>
+@protocol GKMatchmakerServiceProtocol <GKExtensionProtocol>
+
+@optional
 - (void)applicationWillEnterForeground;
 - (void)inviterCancelled;
 - (void)setAcceptedInviteInternal:(GKInviteInternal *)arg1;

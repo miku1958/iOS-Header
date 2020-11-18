@@ -23,6 +23,7 @@
 + (id)encodingsFromUserDefaults;
 + (id)isoLatin1Encoding;
 + (id)macRomanEncoding;
++ (id)makeStandardEncodings;
 + (id)preferredEncodingInUserDefaults;
 + (id)standardEncodings;
 + (id)utf8Encoding;

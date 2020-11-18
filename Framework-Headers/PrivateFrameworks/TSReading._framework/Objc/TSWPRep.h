@@ -249,6 +249,7 @@
 - (void)screenScaleDidChange;
 - (id)selectionForDragAndDropNaturalPoint:(struct CGPoint)arg1 dragIsTopicSelection:(BOOL)arg2;
 - (struct CGRect)selectionRect;
+- (id)selectionRects;
 - (void)setHighlightedHyperlinkField:(id)arg1;
 - (void)setNeedsDisplay;
 - (void)setNeedsDisplayInRange:(struct _NSRange)arg1;
@@ -268,6 +269,7 @@
 - (id)textBackgroundLayer;
 - (id)textImageForRect:(struct CGRect)arg1;
 - (id)textImageForSelection:(id)arg1;
+- (id)textImageForSelection:(id)arg1 frame:(struct CGRect *)arg2 usingGlyphRect:(BOOL)arg3 drawBackground:(BOOL)arg4 shouldPulsate:(BOOL)arg5 suppressInvisibles:(BOOL)arg6;
 - (id)textImageForSelection:(id)arg1 frame:(struct CGRect *)arg2 usingGlyphRect:(BOOL)arg3 shouldPulsate:(BOOL)arg4 suppressInvisibles:(BOOL)arg5;
 - (id)textLayer;
 - (void)tilingLayerWillSetNeedsDisplay:(id)arg1;

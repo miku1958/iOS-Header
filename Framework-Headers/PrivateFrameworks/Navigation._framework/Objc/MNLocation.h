@@ -22,10 +22,12 @@
     unsigned int _roadLineType;
     unsigned long long _speedLimit;
     BOOL _speedLimitIsMPH;
+    long long _speedLimitShieldType;
     BOOL _isDirectional;
     BOOL _locationUnreliable;
     NSDate *_expirationDate;
     NSDate *_originalDate;
+    BOOL _isLeeched;
     int _rampType;
 }
 
@@ -33,6 +35,7 @@
 @property (strong, nonatomic) GEONavigationMatchInfo *detailedMatchInfo; // @synthesize detailedMatchInfo=_detailedMatchInfo;
 @property (strong, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (nonatomic) BOOL isDirectional; // @synthesize isDirectional=_isDirectional;
+@property (nonatomic) BOOL isLeeched; // @synthesize isLeeched=_isLeeched;
 @property (readonly, nonatomic) BOOL isProjected;
 @property (nonatomic) BOOL locationUnreliable; // @synthesize locationUnreliable=_locationUnreliable;
 @property (strong, nonatomic) NSDate *originalDate; // @synthesize originalDate=_originalDate;
@@ -47,6 +50,7 @@
 @property (nonatomic) long long shieldType; // @synthesize shieldType=_shieldType;
 @property (nonatomic) unsigned long long speedLimit; // @synthesize speedLimit=_speedLimit;
 @property (nonatomic) BOOL speedLimitIsMPH; // @synthesize speedLimitIsMPH=_speedLimitIsMPH;
+@property (nonatomic) long long speedLimitShieldType; // @synthesize speedLimitShieldType=_speedLimitShieldType;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) unsigned long long stepIndex;
 
@@ -56,9 +60,10 @@
 - (BOOL)_navigation_isStale;
 - (struct CLLocationCoordinate2D)_navigation_rawShiftedCoordinate;
 - (id)_navigation_routeMatch;
-- (CDStruct_6ac9d495 *)_roadFeature;
+- (CDStruct_c707fdd0 *)_roadFeature;
 - (id)description;
 - (id)initWithClientLocation:(CDStruct_0e8fe709)arg1;
+- (id)initWithGEOLocation:(id)arg1;
 - (id)initWithLocationDetails:(id)arg1;
 - (id)initWithLocationDetails:(id)arg1 route:(id)arg2;
 - (id)initWithRawLocation:(id)arg1;

@@ -13,17 +13,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityRemoveAssociationNavItemView:(id)arg1;
-- (void)_accessibilitySetAssociationNavItemView:(id)arg1;
-- (BOOL)accessibilityPerformEscape;
-- (void)dealloc;
-- (id)init;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithTitle:(id)arg1;
-- (void)setLeftBarButtonItem:(id)arg1 animated:(BOOL)arg2;
-- (void)setLeftBarButtonItems:(id)arg1 animated:(BOOL)arg2;
-- (void)setRightBarButtonItem:(id)arg1 animated:(BOOL)arg2;
-- (void)setRightBarButtonItems:(id)arg1 animated:(BOOL)arg2;
 - (void)setTitleView:(id)arg1;
 
 @end

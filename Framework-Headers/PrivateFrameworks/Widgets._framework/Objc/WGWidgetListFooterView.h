@@ -23,7 +23,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) id<WGWidgetListFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<WGWidgetListFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSString *groupName; // @dynamic groupName;
 @property (readonly) unsigned long long hash;
@@ -43,6 +43,7 @@
 - (void)layoutSubviews;
 - (void)setVisibleWidgetsIDs:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (BOOL)textView:(id)arg1 shouldInteractWithTextAttachment:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)traitCollectionDidChange:(id)arg1;
 

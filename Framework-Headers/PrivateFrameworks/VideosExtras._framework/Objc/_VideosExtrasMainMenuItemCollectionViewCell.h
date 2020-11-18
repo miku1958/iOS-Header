@@ -6,20 +6,23 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class UILabel;
+@class NSLayoutConstraint, UILabel;
 
 @interface _VideosExtrasMainMenuItemCollectionViewCell : UICollectionViewCell
 {
+    NSLayoutConstraint *_textLabelConstraint;
     UILabel *_textLabel;
 }
 
 @property (readonly, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
+@property (strong, nonatomic) NSLayoutConstraint *textLabelConstraint; // @synthesize textLabelConstraint=_textLabelConstraint;
 
 + (id)_createLabelInCell:(id)arg1;
 - (void).cxx_destruct;
 - (void)_dynamicTypeChanged;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)safeAreaInsetsDidChange;
 - (void)setSelected:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

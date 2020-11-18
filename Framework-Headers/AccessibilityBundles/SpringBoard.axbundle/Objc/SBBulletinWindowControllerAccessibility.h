@@ -15,7 +15,6 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityAllowsShowNotificationsGestureFromThreeFingerSwipe;
 - (BOOL)_accessibilityAllowsShowNotificationsGestureFromThreeFingerSwipe:(BOOL)arg1;
-- (BOOL)allowsHideNotificationsGesture;
 - (BOOL)allowsShowNotificationsGesture;
 - (void)setBusy:(BOOL)arg1 forReason:(id)arg2;
 

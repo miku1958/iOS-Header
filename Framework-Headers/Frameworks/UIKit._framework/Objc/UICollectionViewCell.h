@@ -27,18 +27,22 @@
         unsigned int clearSelectionWhenMenuDisappears:1;
         unsigned int waitingForSelectionAnimationHalfwayPoint:1;
     } _collectionCellFlags;
+    long long _dragState;
     BOOL _selected;
     BOOL _highlighted;
     BOOL _isLayoutEngineSuspended;
+    BOOL _dragging;
     long long _focusStyle;
 }
 
+@property (nonatomic, getter=_dragState, setter=_setDragState:) long long _dragState;
 @property (nonatomic, getter=_isLayoutEngineSuspended, setter=_setLayoutEngineSuspended:) BOOL _layoutEngineSuspended; // @synthesize _layoutEngineSuspended=_isLayoutEngineSuspended;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, nonatomic, getter=_contentViewFrame) struct CGRect contentViewFrame;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isDragging) BOOL dragging; // @synthesize dragging=_dragging;
 @property (nonatomic, getter=_focusStyle, setter=_setFocusStyle:) long long focusStyle; // @synthesize focusStyle=_focusStyle;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
@@ -67,6 +71,7 @@
 - (id)_selectionSegueTemplate;
 - (void)_setContentView:(id)arg1 addToHierarchy:(BOOL)arg2;
 - (void)_setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)_setLayoutAttributes:(id)arg1;
 - (void)_setOpaque:(BOOL)arg1 forSubview:(id)arg2;
 - (void)_setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setSelectionSegueTemplate:(id)arg1;
@@ -76,6 +81,7 @@
 - (void)_updateBackgroundView;
 - (void)_updateFocusedFloatingContentControlStateAnimated:(BOOL)arg1;
 - (void)_updateFocusedFloatingContentControlStateInContext:(id)arg1 withAnimationCoordinator:(id)arg2 animated:(BOOL)arg3;
+- (void)_updateGhostedAppearance;
 - (void)_updateHighlightColorsForAnimationHalfwayPoint;
 - (void)_updateHighlightColorsForView:(id)arg1 highlight:(BOOL)arg2;
 - (BOOL)canBecomeFocused;
@@ -83,6 +89,7 @@
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
 - (void)dealloc;
+- (void)dragStateDidChange:(long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -8,40 +8,40 @@
 
 #import <Intents/NSCopying-Protocol.h>
 
-@class PBUnknownFields, _INPBContactList, _INPBDateTimeRange, _INPBIntentMetadata, _INPBStringList;
+@class PBUnknownFields, _INPBContactList, _INPBDataStringList, _INPBDateTimeRange, _INPBIntentMetadata, _INPBStringList;
 
 @interface _INPBSearchForMessagesIntent : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _attributes;
     _INPBDateTimeRange *_dateTimeRange;
-    _INPBStringList *_groupName;
     _INPBStringList *_identifier;
     _INPBIntentMetadata *_intentMetadata;
     _INPBStringList *_notificationIdentifier;
     _INPBContactList *_recipient;
     _INPBStringList *_searchTerm;
     _INPBContactList *_sender;
+    _INPBDataStringList *_speakableGroupName;
 }
 
 @property (readonly, nonatomic) int *attributes;
 @property (readonly, nonatomic) unsigned long long attributesCount;
 @property (strong, nonatomic) _INPBDateTimeRange *dateTimeRange; // @synthesize dateTimeRange=_dateTimeRange;
-@property (strong, nonatomic) _INPBStringList *groupName; // @synthesize groupName=_groupName;
 @property (readonly, nonatomic) BOOL hasDateTimeRange;
-@property (readonly, nonatomic) BOOL hasGroupName;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (readonly, nonatomic) BOOL hasNotificationIdentifier;
 @property (readonly, nonatomic) BOOL hasRecipient;
 @property (readonly, nonatomic) BOOL hasSearchTerm;
 @property (readonly, nonatomic) BOOL hasSender;
+@property (readonly, nonatomic) BOOL hasSpeakableGroupName;
 @property (strong, nonatomic) _INPBStringList *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (strong, nonatomic) _INPBStringList *notificationIdentifier; // @synthesize notificationIdentifier=_notificationIdentifier;
 @property (strong, nonatomic) _INPBContactList *recipient; // @synthesize recipient=_recipient;
 @property (strong, nonatomic) _INPBStringList *searchTerm; // @synthesize searchTerm=_searchTerm;
 @property (strong, nonatomic) _INPBContactList *sender; // @synthesize sender=_sender;
+@property (strong, nonatomic) _INPBDataStringList *speakableGroupName; // @synthesize speakableGroupName=_speakableGroupName;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)options;

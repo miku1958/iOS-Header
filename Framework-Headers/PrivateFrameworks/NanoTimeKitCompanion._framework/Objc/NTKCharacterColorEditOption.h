@@ -24,6 +24,7 @@
 + (id)optionWithFaceColor:(unsigned long long)arg1;
 + (id)optionWithOption:(id)arg1 forCharacter:(unsigned long long)arg2;
 - (id)_valueToFaceBundleStringDict;
+- (long long)swatchStyle;
 
 @end
 

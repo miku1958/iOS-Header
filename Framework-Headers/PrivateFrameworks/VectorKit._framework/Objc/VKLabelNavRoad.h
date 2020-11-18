@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/VKLabelNavFeature-Protocol.h>
 
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 @interface VKLabelNavRoad : NSObject <VKLabelNavFeature>
 {
     VKLabelTile *_tile;
-    CDStruct_6ac9d495 *_data;
+    CDStruct_c707fdd0 *_data;
     unsigned long long _vertexIndexA;
     unsigned long long _vertexIndexB;
     CDStruct_3b01f0aa *_junctionA;
@@ -37,12 +37,13 @@ __attribute__((visibility("hidden")))
     NSString *_shieldGroup;
     VKLabelNavRoadLabel *_roadSign;
     VKLabelNavRoadLabel *_roadShield;
-    BOOL _isVisibilityCached[2];
-    BOOL _cachedSignVisibility[2];
-    BOOL _cachedShieldVisibility[2];
+    BOOL _isVisibilityCached[3];
+    BOOL _cachedSignVisibility[3];
+    BOOL _cachedShieldVisibility[3];
     BOOL _hasVisibleSigns;
     BOOL _hasVisibleShields;
     BOOL _suppressRoadSignIfShieldPresent;
+    BOOL _isPicked;
 }
 
 @property (nonatomic) BOOL areLabelsDisabled; // @synthesize areLabelsDisabled=_areLabelsDisabled;
@@ -50,13 +51,16 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) Matrix_8746f91e direction; // @synthesize direction=_direction;
 @property (nonatomic) long long intraRoadPriority; // @synthesize intraRoadPriority=_intraRoadPriority;
 @property (readonly, nonatomic) BOOL isAwayFromRoute;
+@property (readonly, nonatomic) BOOL isEtaFeature;
 @property (nonatomic) BOOL isGuidanceStepStart; // @synthesize isGuidanceStepStart=_isGuidanceStepStart;
 @property (nonatomic) BOOL isInGuidance; // @synthesize isInGuidance=_isInGuidance;
 @property (nonatomic) BOOL isOnRoute; // @synthesize isOnRoute=_isOnRoute;
 @property (readonly, nonatomic) BOOL isOnewayToJunction;
+@property (nonatomic) BOOL isPicked; // @synthesize isPicked=_isPicked;
 @property (readonly, nonatomic) BOOL isRamp;
 @property (nonatomic) BOOL isRoadLabelUnique; // @synthesize isRoadLabelUnique=_isRoadLabelUnique;
 @property (nonatomic) BOOL isStartOfRoadName; // @synthesize isStartOfRoadName=_isStartOfRoadName;
+@property (readonly, nonatomic) BOOL isTrafficCameraFeature;
 @property (readonly, nonatomic) CDStruct_3b01f0aa *junctionB; // @synthesize junctionB=_junctionB;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) VKLabelNavJunction *navJunctionA; // @synthesize navJunctionA=_navJunctionA;
@@ -71,12 +75,12 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)_findLabelAnchorPoint:(Mercator3_d8bb135c *)arg1 isShieldLabel:(BOOL)arg2 desiredOffsetDistance:(float)arg3 maxOffsetDistance:(float)arg4 minJunctionDistance:(float)arg5 roadGraph:(id)arg6;
+- (BOOL)_findLabelAnchorPoint:(Mercator3_40a88dec *)arg1 isShieldLabel:(BOOL)arg2 desiredOffsetDistance:(float)arg3 maxOffsetDistance:(float)arg4 minJunctionDistance:(float)arg5 roadGraph:(id)arg6;
 - (float)_findRoadOffsetForDistanceToRay:(float)arg1 rayStart:(Matrix_6e1d3589)arg2 rayVector:(Matrix_8746f91e)arg3 roadGraph:(id)arg4;
 - (id)_newLabelWithNavContext:(struct NavContext *)arg1 isShieldLabel:(BOOL)arg2 worldPoint:(Matrix_6e1d3589)arg3 alignment:(unsigned char)arg4 artworkCache:(struct VKLabelNavArtworkCache *)arg5;
 - (void)_updateWithNavContext:(struct NavContext *)arg1;
 - (void)_updateWithNavContext:(struct NavContext *)arg1 threshold:(double)arg2;
-- (BOOL)_worldPointForRoadOffset:(float)arg1 worldPoint:(Mercator3_d8bb135c *)arg2;
+- (BOOL)_worldPointForRoadOffset:(float)arg1 worldPoint:(Mercator3_40a88dec *)arg2;
 - (void)_worldRoadPoints:(vector_e20517dc *)arg1;
 - (void)appendSimplifiedWorldRoadPoints:(vector_e20517dc *)arg1;
 - (void)clearRoadSign;

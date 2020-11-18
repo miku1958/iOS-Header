@@ -9,12 +9,10 @@
 #import <BulletinBoard/BBSectionIdentity-Protocol.h>
 
 @class BBDataProviderIdentity, NSString;
-@protocol OS_dispatch_queue;
 
 @interface BBDataProvider : NSObject <BBSectionIdentity>
 {
-    NSObject<OS_dispatch_queue> *_identityQueue;
-    BBDataProviderIdentity *__identity;
+    BBDataProviderIdentity *_identity;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -42,7 +40,6 @@
 - (void)getAspectRatioForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)getDataForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)getPNGDataForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(BOOL)arg3 sizeConstraints:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
-- (id)init;
 - (BOOL)initialized;
 - (void)invalidate;
 - (BOOL)isPushDataProvider;

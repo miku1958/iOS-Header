@@ -7,14 +7,13 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (TSUNSStringPathExtensions)
-+ (id)stringByHexEncodingData:(id)arg1;
-- (BOOL)containsSubstring:(id)arg1;
-- (void)enumerateRangesOfCharactersInSet:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (BOOL)isPathCreatedByAppendingPathComponent:(id)arg1 insideBasePath:(id)arg2;
-- (id)pathToRelativeComponentPath:(id)arg1;
-- (struct _NSRange)range;
-- (struct _NSRange)rangeOfString:(id)arg1 options:(unsigned long long)arg2 updatingSearchRange:(struct _NSRange *)arg3;
-- (id)stringWithPathRelativeTo:(id)arg1;
-- (id)stringWithPathRelativeTo:(id)arg1 allowBacktracking:(BOOL)arg2;
+- (BOOL)tsu_containsSubstring:(id)arg1;
+- (void)tsu_enumerateRangesOfCharactersInSet:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (BOOL)tsu_isPathCreatedByAppendingPathComponent:(id)arg1 insideBasePath:(id)arg2;
+- (id)tsu_pathToRelativeComponentPath:(id)arg1;
+- (struct _NSRange)tsu_range;
+- (struct _NSRange)tsu_rangeOfString:(id)arg1 options:(unsigned long long)arg2 updatingSearchRange:(struct _NSRange *)arg3;
+- (id)tsu_stringWithPathRelativeTo:(id)arg1;
+- (id)tsu_stringWithPathRelativeTo:(id)arg1 allowBacktracking:(BOOL)arg2;
 @end
 

@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDCameraRemoteStreamProtocol-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
-@class HMDCameraSessionID, IDSService, IDSSession, NSString;
+@class HMDCameraSessionID, IDSService, IDSSession, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDCameraIDSSessionHandler : NSObject <HMFLogging, IDSServiceDelegate, HMDCameraRemoteStreamProtocol>
+@interface HMDCameraIDSSessionHandler : HMFObject <HMFLogging, IDSServiceDelegate, HMDCameraRemoteStreamProtocol>
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDCameraSessionID *_sessionID;

@@ -58,7 +58,6 @@
 - (void)disableUndoRegistration;
 - (void)enableUndoRegistration;
 - (void)endUndoGrouping;
-- (void)finalize;
 - (id)init;
 - (id)prepareWithInvocationTarget:(id)arg1;
 - (void)redo;

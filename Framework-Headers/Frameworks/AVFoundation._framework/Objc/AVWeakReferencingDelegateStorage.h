@@ -28,7 +28,7 @@
 + (void)initialize;
 - (void)_collectUncollectables;
 - (id)_delegate;
-- (void)_setDelegate:(id)arg1;
+- (void)_setDelegateViaWeakReference:(id)arg1;
 - (void)dealloc;
 - (void)finalize;
 - (void)getRetainedDelegate:(id *)arg1 retainedDelegateQueue:(id *)arg2;

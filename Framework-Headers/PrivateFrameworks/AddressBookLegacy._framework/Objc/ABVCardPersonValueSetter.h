@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AddressBook/ABVCardValueSetter.h>
+#import <AddressBookLegacy/ABVCardValueSetter.h>
 
 @interface ABVCardPersonValueSetter : ABVCardValueSetter
 {

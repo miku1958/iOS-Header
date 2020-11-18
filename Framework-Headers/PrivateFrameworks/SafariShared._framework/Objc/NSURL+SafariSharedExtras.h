@@ -15,6 +15,7 @@
 - (id)_safari_URLByReplacingComponent:(long long)arg1 withString:(id)arg2;
 - (id)safari_URLByDeletingPort;
 - (id)safari_URLByDeletingScheme;
+- (id)safari_URLByDeletingUserAndPassword;
 - (id)safari_URLByReplacingHostWithString:(id)arg1;
 - (id)safari_URLByReplacingQueryWithString:(id)arg1;
 - (id)safari_URLByReplacingSchemeWithString:(id)arg1;
@@ -24,6 +25,7 @@
 - (BOOL)safari_hasCharactersBeyondPath;
 - (BOOL)safari_hasSameOriginAsURL:(id)arg1;
 - (BOOL)safari_hasScheme:(id)arg1;
+- (BOOL)safari_hasUserOrPassword;
 - (BOOL)safari_isDataURL;
 - (BOOL)safari_isHTTPFamilyURL;
 - (id)safari_originalDataAsString;

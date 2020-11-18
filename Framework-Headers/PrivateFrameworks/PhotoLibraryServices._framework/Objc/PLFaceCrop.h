@@ -6,35 +6,55 @@
 
 #import <PhotoLibraryServices/PLManagedObject.h>
 
+#import <PhotoLibraryServices/PLSyncableObject-Protocol.h>
+
 @class NSData, NSString, PLDetectedFace, PLManagedAsset, PLPerson;
 
-@interface PLFaceCrop : PLManagedObject
+@interface PLFaceCrop : PLManagedObject <PLSyncableObject>
 {
+    BOOL _needsPersistenceUpdate;
 }
 
 @property (strong, nonatomic) PLManagedAsset *asset; // @dynamic asset;
 @property (nonatomic) short cloudLocalState; // @dynamic cloudLocalState;
+@property (nonatomic) unsigned short cloudType; // @dynamic cloudType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) PLDetectedFace *face; // @dynamic face;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSString *invalidMergeCandidatePersonUUID; // @dynamic invalidMergeCandidatePersonUUID;
+@property (readonly, strong, nonatomic) id localID;
+@property (nonatomic) BOOL needsPersistenceUpdate; // @synthesize needsPersistenceUpdate=_needsPersistenceUpdate;
 @property (strong, nonatomic) PLPerson *person; // @dynamic person;
 @property (strong, nonatomic) NSData *resourceData; // @dynamic resourceData;
 @property (nonatomic) short state; // @dynamic state;
+@property (readonly) Class superclass;
 @property (nonatomic) short type; // @dynamic type;
 @property (copy, nonatomic) NSString *uuid; // @dynamic uuid;
 
-+ (id)_faceCropsMatchingPredicate:(id)arg1 limit:(unsigned long long)arg2 inPhotoLibrary:(id)arg3;
++ (long long)_cloudTypeToPushFromLocalType:(short)arg1 cachedCloudType:(unsigned short)arg2;
++ (id)_faceCropsMatchingPredicate:(id)arg1 limit:(unsigned long long)arg2 inManagedObjectContext:(id)arg3;
++ (short)_localTypeFromCloudType:(long long)arg1;
++ (int)_nameSourceForFaceFromFaceCrop:(id)arg1;
++ (int)_trainingFaceTypeForFaceFromFaceCrop:(id)arg1;
 + (id)allFaceCropsInPhotoLibrary:(id)arg1;
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)faceCropsToUploadInPhotoLibrary:(id)arg1 limit:(unsigned long long)arg2;
++ (id)faceCropsWithUUIDs:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)faceCropsWithUUIDs:(id)arg1 inPhotoLibrary:(id)arg2;
++ (id)insertIntoManagedObjectContext:(id)arg1 withUUID:(id)arg2 resourceData:(id)arg3 type:(short)arg4;
 + (id)insertIntoPhotoLibrary:(id)arg1 withUUID:(id)arg2 resourceData:(id)arg3 type:(short)arg4;
 + (id)insertOrUpdateWithCPLFaceCrop:(id)arg1 inPhotoLibrary:(id)arg2;
-+ (void)resetCloudStateInPhotoLibrary:(id)arg1;
++ (id)listOfSyncedProperties;
++ (void)resetCloudStateInPhotoLibrary:(id)arg1 hardReset:(BOOL)arg2;
+- (void)applyPropertiesToTrainingFace;
 - (id)cplFaceCropChange;
-- (id)debugDescription;
+- (id)cplFullRecord;
 - (BOOL)isSyncableChange;
 - (void)prepareForDeletion;
 - (BOOL)supportsCloudUpload;
+- (void)willSave;
 
 @end
 

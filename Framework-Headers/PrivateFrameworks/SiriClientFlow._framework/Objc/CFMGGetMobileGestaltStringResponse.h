@@ -6,11 +6,12 @@
 
 #import <SAObjects/SABaseCommand.h>
 
+#import <SiriClientFlow/CFLocalAceHandling-Protocol.h>
 #import <SiriClientFlow/SAServerBoundCommand-Protocol.h>
 
 @class NSString;
 
-@interface CFMGGetMobileGestaltStringResponse : SABaseCommand <SAServerBoundCommand>
+@interface CFMGGetMobileGestaltStringResponse : SABaseCommand <SAServerBoundCommand, CFLocalAceHandling>
 {
 }
 
@@ -22,9 +23,9 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *value;
 
++ (id)aceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)getMobileGestaltStringResponse;
 + (id)getMobileGestaltStringResponseWithDictionary:(id)arg1 context:(id)arg2;
-+ (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

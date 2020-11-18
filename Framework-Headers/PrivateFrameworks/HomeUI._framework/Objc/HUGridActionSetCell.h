@@ -42,8 +42,7 @@
 - (void)_invalidateConstraints;
 - (void)_setupActionSetCell;
 - (void)_updateLabels;
-- (void)_updateLabelsWithTitle:(id)arg1 description:(id)arg2 primaryState:(long long)arg3;
-- (void)displayStyleDidChange;
+- (void)_updateLabelsWithTitle:(id)arg1 description:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)item;

@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameCenterUI/GKServiceViewControllerDelegate-Protocol.h>
+#import <GameCenterUI/GKExtensionHostProtocol-Protocol.h>
 
 @class GKTurnBasedMatchInternal, NSError;
 
-@protocol GKTurnBasedMatchmakerHostProtocol <GKServiceViewControllerDelegate>
+@protocol GKTurnBasedMatchmakerHostProtocol <GKExtensionHostProtocol>
+
+@optional
 - (void)finishWithError:(NSError *)arg1;
 - (void)finishWithMatch:(GKTurnBasedMatchInternal *)arg1;
 - (void)playerQuitMatch:(GKTurnBasedMatchInternal *)arg1;

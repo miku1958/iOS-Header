@@ -17,6 +17,8 @@
 
 @property (readonly) struct Object *_apiObject;
 @property (readonly, nonatomic) BOOL _canHandleRequest;
+@property (readonly, nonatomic) struct CGPoint _clickLocationInRootViewCoordinates;
+@property (readonly, nonatomic) BOOL _isRedirect;
 @property (readonly, nonatomic) NSURL *_originalURL;
 @property (readonly, nonatomic) BOOL _shouldOpenAppLinks;
 @property (readonly, nonatomic) BOOL _shouldOpenExternalSchemes;

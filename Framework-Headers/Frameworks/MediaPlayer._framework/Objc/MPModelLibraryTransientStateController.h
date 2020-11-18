@@ -22,8 +22,11 @@
 - (void)addOperation:(id)arg1;
 - (id)init;
 - (void)performDeleteEntityChangeRequest:(id)arg1 withRelatedModelObjects:(id)arg2;
+- (void)performDeleteEntityChangeRequest:(id)arg1 withRelatedModelObjects:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)performKeepLocalChangeRequest:(id)arg1 withRelatedModelObjects:(id)arg2;
+- (void)performKeepLocalChangeRequest:(id)arg1 withRelatedModelObjects:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)performLibraryImportChangeRequest:(id)arg1 withRelatedModelObjects:(id)arg2;
+- (void)performLibraryImportChangeRequest:(id)arg1 withRelatedModelObjects:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)registerTransientAddState:(long long)arg1 forModelObjects:(id)arg2 relatedModelObjects:(id)arg3;
 - (id)registerTransientKeepLocalState:(long long)arg1 forModelObjects:(id)arg2 relatedModelObjects:(id)arg3;
 - (long long)transientAddStateForModelObject:(id)arg1;

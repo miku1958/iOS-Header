@@ -15,8 +15,8 @@
 
 @property (readonly) BOOL allowSelfSignedCertificates;
 @property (readonly) BOOL allowUnsignedBags;
-@property (readonly, strong) NSString *apsEnvironmentName;
-@property (readonly, strong) NSURL *bagURL;
+@property (readonly) NSString *apsEnvironmentName;
+@property (readonly) NSURL *bagURL;
 @property (readonly) BOOL isInDebilitatedMode;
 @property (readonly) BOOL isLoaded;
 @property (readonly) BOOL isLoading;

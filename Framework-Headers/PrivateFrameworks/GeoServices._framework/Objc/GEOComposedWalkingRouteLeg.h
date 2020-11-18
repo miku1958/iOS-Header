@@ -20,7 +20,7 @@
 @property (readonly, nonatomic) id<GEOTransitRoutingIncidentMessage> transitRouteDetailsIncidentMessage; // @synthesize transitRouteDetailsIncidentMessage=_transitRouteDetailsIncidentMessage;
 @property (readonly, nonatomic) id<GEOTransitRoutingIncidentMessage> transitSteppingIncidentMessage; // @synthesize transitSteppingIncidentMessage=_transitSteppingIncidentMessage;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithComposedRoute:(id)arg1 stepRange:(struct _NSRange)arg2 pointRange:(struct _NSRange)arg3 transitSteppingIncidentMessage:(id)arg4 transitRouteDetailsIncidentMessage:(id)arg5;
 
 @end

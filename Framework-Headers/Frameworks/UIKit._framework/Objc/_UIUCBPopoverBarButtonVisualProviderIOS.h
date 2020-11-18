@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIColor *selectionTintColor; // @synthesize selectionTintColor=_selectionTintColor;
 
 - (void).cxx_destruct;
-- (void)configureButton:(id)arg1 fromBarItem:(id)arg2;
+- (void)configureButton:(id)arg1 withAppearanceDelegate:(id)arg2 fromBarItem:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (id)init;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/PLPhotoBakedThumbnailsDelegate-Protocol.h>
 
@@ -19,6 +19,7 @@
     NSCountedSet *_unfinishedLowPriorityJobs;
     NSRecursiveLock *_jobsLock;
     int _unfinishedJobCount;
+    int _unfinishedJobsRequiringIndicatorCount;
     int _jobQueueAvailabilityToken;
     BOOL _writerThreadRunning;
     BOOL _databaseIsCorrupt;
@@ -26,9 +27,17 @@
     NSMutableDictionary *_inProgressAvalancheFds;
 }
 
++ (id)_assetAdjustmentsFromCameraAdjustmentsFileAtPath:(id)arg1 exportProperties:(id)arg2;
++ (id)_assetAdjustmentsFromCameraFilters:(id)arg1 portraitMetadata:(id)arg2 exportProperties:(id)arg3;
++ (id)_assetAdjustmentsFromPhotoEditModel:(id)arg1 exportProperties:(id)arg2;
++ (id)_assetAdjustmentsWithEffectFilterName:(id)arg1 exportProperties:(id)arg2;
++ (id)_assetUUIDFromIncomingFilename:(id)arg1;
++ (BOOL)_hasPrimaryAssetAndAdjustmentsFilesWithType:(short)arg1 inIncomingFilenames:(id)arg2 forAssetUUID:(id)arg3;
++ (id)_pathsByAssetUUIDFromIncomingCrashRecoveryPaths:(id)arg1;
++ (BOOL)_requiresIndicatorFileForJobType:(id)arg1;
 + (void)decorateThumbnail:(id)arg1 inContext:(struct CGContext *)arg2;
 + (void)decorateThumbnailInRect:(struct CGRect)arg1 size:(struct CGSize)arg2 duration:(id)arg3 inContext:(struct CGContext *)arg4 format:(id)arg5;
-+ (BOOL)setAdjustmentsForNewPhoto:(id)arg1 withEffectFilterName:(id)arg2 filteredImagePath:(id)arg3 isSubstandardRender:(BOOL)arg4;
++ (BOOL)setAdjustmentsForNewPhoto:(id)arg1 withEffectFilterName:(id)arg2 adjustmentDataPath:(id)arg3 filteredImagePath:(id)arg4 isSubstandardRender:(BOOL)arg5;
 + (id)sharedWriter;
 - (void)_decorateThumbnail:(id)arg1;
 - (void)_decrementJobCount:(id)arg1;
@@ -36,10 +45,12 @@
 - (id)_fetchPhotoAssetForMediaGroupUUID:(id)arg1 moc:(id)arg2;
 - (id)_fetchPhotoAssetForUUID:(id)arg1 moc:(id)arg2;
 - (void)_handleAvalancheCrashRecovery:(id)arg1;
+- (void)_handleCameraAdjustments:(id)arg1 fullsizeRenders:(id)arg2;
 - (void)_handlePhotoIrisCrashRecoveryForPhotoIndicatorFiles:(id)arg1;
 - (void)_handlePhotoIrisCrashRecoveryForVideos:(id)arg1;
 - (void)_incrementJobCount:(id)arg1;
 - (BOOL)_isHighPriorityJob:(id)arg1;
+- (id)_pathForFilteredPreviewWithBaseName:(id)arg1 imageData:(id)arg2 orImage:(id)arg3;
 - (void)_photoIrisPairingDidSucceed:(BOOL)arg1 fileIndicatorPath:(id)arg2 photoAsset:(id)arg3 photoLibrary:(id)arg4;
 - (void)_postJobQueueNotificationIsAvailable:(BOOL)arg1;
 - (void)_processAutodeleteEmptyAlbumJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -72,7 +83,6 @@
 - (id)init;
 - (id)pathForNewAssetPathAtAlbumDirectoryPath:(id)arg1 assetType:(unsigned int)arg2 extension:(id)arg3;
 - (void)setAvalancheInProgress:(BOOL)arg1 uuid:(id)arg2;
-- (id)uuidFromIncomingFilename:(id)arg1;
 
 @end
 

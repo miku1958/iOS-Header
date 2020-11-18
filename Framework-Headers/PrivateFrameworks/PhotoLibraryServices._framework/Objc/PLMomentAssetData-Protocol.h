@@ -19,7 +19,7 @@
 @property (strong, nonatomic) NSDate *dateCreated;
 @property (nonatomic) double duration;
 @property (nonatomic) BOOL favorite;
-@property (nonatomic) short height;
+@property (nonatomic) long long height;
 @property (nonatomic) short kind;
 @property (nonatomic) short kindSubtype;
 @property (strong, nonatomic) CLLocation *location;
@@ -32,7 +32,7 @@
 @property (nonatomic) BOOL shiftedLocationIsValid;
 @property (readonly, strong, nonatomic) NSObject<NSCopying> *uniqueObjectID;
 @property (readonly, strong, nonatomic) NSString *uuid;
-@property (nonatomic) short width;
+@property (nonatomic) long long width;
 
 - (long long)compareToAsset:(id<PLMomentAssetData>)arg1;
 - (NSString *)globalUUID;

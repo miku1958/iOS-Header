@@ -31,7 +31,6 @@
     BOOL _shouldUpdateTallestButtonHeightCache;
     BOOL _editing;
     BOOL _editableTitleShouldBecomeFirstResponder;
-    UIButton *_contextualActionsButton;
     double _downloadProgress;
     MusicDownloadProgressButton *_downloadProgressButton;
     long long _downloadProgressType;
@@ -41,7 +40,6 @@
     MusicEntityViewProductHeaderLockupContentDescriptor *_productHeaderLockupContentDescriptor;
 }
 
-@property (readonly, nonatomic) UIButton *contextualActionsButton; // @synthesize contextualActionsButton=_contextualActionsButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MusicEntityProductHeaderLockupViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -65,7 +63,6 @@
 - (struct CGRect)_adjustAvailableContentBounds:(struct CGRect)arg1 forActionView:(id)arg2;
 - (void)_artworkViewImageDidChange;
 - (void)_contentDescriptorDidChange:(id)arg1;
-- (void)_contextualActionsButtonTapped:(id)arg1;
 - (void)_downloadProgressButtonTapped:(id)arg1;
 - (void)_editButtonTapped:(id)arg1;
 - (id)_genericActionButtonWithImage:(id)arg1;

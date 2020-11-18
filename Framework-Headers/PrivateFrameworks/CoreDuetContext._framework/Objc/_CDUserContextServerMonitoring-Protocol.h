@@ -10,5 +10,6 @@
 
 @protocol _CDUserContextServerMonitoring <NSObject>
 - (void)handleContextualChange:(NSString *)arg1 handler:(void (^)(BOOL))arg2;
+- (void)handleRegistrationCompleted:(NSString *)arg1 handler:(void (^)(BOOL))arg2;
 @end
 

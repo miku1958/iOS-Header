@@ -21,16 +21,20 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *serverRecordType; // @synthesize serverRecordType=_serverRecordType;
 
 - (void).cxx_destruct;
-- (BOOL)_createParentPCS;
+- (BOOL)_createAdditionalPCS;
 - (BOOL)_decryptPCS;
+- (BOOL)_decryptRecordPCSInPrivateDatabase;
+- (BOOL)_decryptRecordPCSInSharedDatabase;
+- (BOOL)_fetchDependentPCS;
+- (BOOL)_fetchDependentPCSInSharedDatabase;
 - (BOOL)_fetchPCSDataFromDatabase;
 - (BOOL)_fetchPCSDataFromServer;
-- (BOOL)_fetchParentPCS;
+- (BOOL)_fetchPCSForPrivateZone;
 - (void)_handlePCSDataFetched:(id)arg1 withError:(id)arg2;
 - (BOOL)_savePCSDataToCache;
 - (BOOL)hasAllPCSData;
-- (id)initWithRecordID:(id)arg1 parentOperation:(id)arg2 cache:(id)arg3 options:(unsigned long long)arg4;
 - (id)itemTypeName;
+- (BOOL)needsChainPCSCreation;
 
 @end
 

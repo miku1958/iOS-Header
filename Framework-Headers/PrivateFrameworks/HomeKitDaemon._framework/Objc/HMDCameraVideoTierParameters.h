@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDCameraSessionID, HMDCameraVideoTier, NSArray, NSDictionary, NSString;
 
-@interface HMDCameraVideoTierParameters : NSObject <NSSecureCoding, HMFLogging>
+@interface HMDCameraVideoTierParameters : HMFObject <NSSecureCoding, HMFLogging>
 {
     NSDictionary *_videoTierCombinations;
     NSArray *_tierOrder;

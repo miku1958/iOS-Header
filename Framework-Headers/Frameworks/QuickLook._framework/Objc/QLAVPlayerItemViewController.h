@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     BOOL _mediaWasPausedOnResignActive;
     AVPlayer *_player;
     struct CGSize _imageSize;
+    BOOL _isAudioOnly;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,14 +27,19 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)shouldBeRemoteForContentType:(id)arg1;
++ (id)supportedContentTypes;
++ (Class)transformerClass;
 - (void).cxx_destruct;
 - (BOOL)canEnterFullScreen;
+- (BOOL)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (void)enterFullScreen:(BOOL)arg1;
 - (void)hostApplicationDidBecomeActive;
 - (void)hostApplicationDidEnterBackground:(id)arg1;
 - (struct CGSize)imageSize;
-- (void)loadPreviewControllerWithPreviewItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)pause;
+- (void)performFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (void)play;
 - (BOOL)playerViewController:(id)arg1 shouldExitFullScreenWithReason:(long long)arg2;
 - (long long)preferredWhitePointAdaptivityStyle;

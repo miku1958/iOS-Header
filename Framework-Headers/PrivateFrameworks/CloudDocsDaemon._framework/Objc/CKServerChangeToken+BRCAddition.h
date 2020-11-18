@@ -6,7 +6,19 @@
 
 #import <CloudKit/CKServerChangeToken.h>
 
-@interface CKServerChangeToken (BRCAddition)
+#import <CloudDocsDaemon/PQLValuable-Protocol.h>
+
+@class NSString;
+
+@interface CKServerChangeToken (BRCAddition) <PQLValuable>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
 - (id)descriptionWithContext:(id)arg1;
+- (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
 @end
 

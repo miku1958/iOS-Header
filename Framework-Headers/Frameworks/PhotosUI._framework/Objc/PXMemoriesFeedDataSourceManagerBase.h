@@ -32,6 +32,7 @@
 + (id)generateEntriesFromMemories:(id)arg1 startingFromIndex:(unsigned long long)arg2 maximumNumberOfEntries:(unsigned long long)arg3 finalMemoryIndex:(out unsigned long long *)arg4;
 + (BOOL)shouldGroupTogetherMemoriesWithCreationDate:(id)arg1 andCreationDate:(id)arg2;
 - (void).cxx_destruct;
+- (void)_clearPendingNotificationForMemory:(id)arg1;
 - (id)createInitialDataSource;
 - (id)fetchOptions;
 - (void)generateAdditionalEntriesIfPossible;
@@ -40,11 +41,14 @@
 - (void)handleNonIncrementalFetchResultChange:(id)arg1;
 - (id)init;
 - (id)initWithPhotoLibrary:(id)arg1;
-- (void)markCurrentMemoriesAsNotPending;
+- (void)pauseLibraryUpdates;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1 withPreparedInfo:(id)arg2;
 - (id)prepareForPhotoLibraryChange:(id)arg1;
+- (void)reloadMemories:(BOOL)arg1;
 - (void)resetMemoriesFetchResult;
+- (void)resumeLibraryUpdates;
 - (void)startGeneratingMemories;
+- (void)updateCurrentMemoriesNonPendingAndNotificationStatus;
 
 @end
 

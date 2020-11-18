@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUSettings.h>
+#import <PhotosUICore/PXSettings.h>
 
-@interface PUFeedSettings : PUSettings
+@interface PUFeedSettings : PXSettings
 {
     BOOL _useJPEGImageFormats;
     BOOL _shouldUseJPEGFastFormatForMediumTiles;
@@ -78,6 +78,7 @@
 + (id)_localizedStrings;
 + (id)settingsControllerModule;
 + (id)sharedInstance;
+- (id)parentSettings;
 - (void)setDefaultValues;
 
 @end

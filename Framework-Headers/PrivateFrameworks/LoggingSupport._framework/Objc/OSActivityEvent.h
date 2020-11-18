@@ -60,7 +60,6 @@
 - (id)description;
 - (void)fillFromStreamEntry:(struct os_activity_stream_entry_s *)arg1 eventMessage:(const char *)arg2 persisted:(BOOL)arg3;
 - (id)properties;
-- (id)timeZone;
 
 @end
 

@@ -19,7 +19,7 @@
 }
 
 @property (readonly, nonatomic) AXLanguageManager *langManager;
-@property (nonatomic) AXLangMap *langMap; // @synthesize langMap=_langMap;
+@property (weak, nonatomic) AXLangMap *langMap; // @synthesize langMap=_langMap;
 @property (readonly, nonatomic) NSString *languageNameAndLocaleInCurrentLocale;
 @property (readonly, nonatomic) NSString *languageNameAndLocaleInNativeLocale;
 @property (readonly, nonatomic) NSString *languageNameInCurrentLocale;
@@ -32,11 +32,11 @@
 @property (copy, nonatomic) NSString *specificLanguageID; // @synthesize specificLanguageID=_specificLanguageID;
 @property (copy, nonatomic) NSString *voiceName; // @synthesize voiceName=_voiceName;
 
+- (void).cxx_destruct;
 - (id)basicDescription;
 - (BOOL)canSpeakCharacter:(unsigned short)arg1;
 - (BOOL)canSpeakLongCharacter:(unsigned int)arg1;
 - (BOOL)canSpeakString:(id)arg1;
-- (void)dealloc;
 - (id)debugDescription;
 - (id)description;
 - (id)initWithLocale:(id)arg1 voiceName:(id)arg2 specificLanguageID:(id)arg3 speakableCharacters:(id)arg4 secondaryLanguageRange:(id)arg5;

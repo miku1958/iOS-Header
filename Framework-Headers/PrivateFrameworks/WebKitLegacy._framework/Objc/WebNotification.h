@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
+@class WebNotificationPrivate;
+
 @interface WebNotification : NSObject
 {
-    struct RetainPtr<WebNotificationPrivate> _private;
+    WebNotificationPrivate *_private;
 }
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (id)body;
+- (void)dealloc;
 - (id)dir;
 - (void)dispatchClickEvent;
 - (void)dispatchCloseEvent;

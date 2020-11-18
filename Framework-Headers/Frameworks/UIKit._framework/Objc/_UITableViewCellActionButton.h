@@ -21,9 +21,14 @@
 
 + (id)actionButtonWithStyle:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (void)didMoveToWindow;
+- (double)dynamicTypeSizeFittingHeight:(double)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (double)preferredFontSizeForContentSizeCategory:(id)arg1;
+- (void)setTitleFontSizeForContentSizeCategory:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

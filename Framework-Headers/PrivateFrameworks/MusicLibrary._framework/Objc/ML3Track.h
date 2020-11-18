@@ -24,6 +24,7 @@
 + (BOOL)clearLocationFromLibrary:(id)arg1 persistentIDs:(id)arg2 disableKeepLocal:(BOOL)arg3;
 + (BOOL)clearLocationFromLibrary:(id)arg1 persistentIDs:(id)arg2 disableKeepLocal:(BOOL)arg3 usingConnection:(id)arg4;
 + (BOOL)clearLocationFromLibrary:(id)arg1 persistentIDs:(id)arg2 usingConnection:(id)arg3;
++ (BOOL)clearPlaybackKeysFromLibrary:(id)arg1 persistentIDs:(id)arg2;
 + (id)collectionClassesToUpdateBeforeDelete;
 + (id)composersDefaultOrderingTerms;
 + (id)containerQueryWithContainer:(id)arg1;
@@ -70,6 +71,7 @@
 + (BOOL)unlinkRedownloadableAssetsFromLibrary:(id)arg1 persistentIDs:(id)arg2 deletionType:(int)arg3 deletedFileSize:(long long *)arg4;
 + (id)unsettableProperties;
 + (void)updateAllBookmarkableStoreBookmarkMetadataIdentifiersOnConnection:(id)arg1;
+- (BOOL)_populateLocationPropertiesWithPath:(id)arg1 protectionType:(long long)arg2 fromLibrary:(id)arg3 usingConnection:(id)arg4;
 - (id)absoluteFilePath;
 - (id)artworkTokenAtPlaybackTime:(double)arg1;
 - (id)chapterTOC;
@@ -84,6 +86,7 @@
 - (void)populateLocationPropertiesWithPath:(id)arg1;
 - (void)populateLocationPropertiesWithPath:(id)arg1 isProtected:(BOOL)arg2;
 - (void)populateLocationPropertiesWithPath:(id)arg1 protectionType:(long long)arg2;
+- (void)populateLocationPropertiesWithPath:(id)arg1 protectionType:(long long)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)protocolItem;
 - (id)protocolItemForDynamicUpdate;
 - (id)rawIntegrity;

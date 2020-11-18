@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
+#import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSMutableArray;
 
-@interface PKCatalog : NSObject <NSSecureCoding>
+@interface PKCatalog : NSObject <NSCopying, NSSecureCoding>
 {
     NSMutableArray *_groups;
     NSDate *_timestamp;
@@ -23,6 +24,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)allGroupIDs;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

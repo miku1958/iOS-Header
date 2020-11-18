@@ -4,61 +4,69 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <PassKitUI/PKExplanationViewController.h>
 
+#import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupBrowseProductsViewControllerDelegate-Protocol.h>
-#import <PassKitUI/PKPaymentSetupPrivacyFooterViewDelegate-Protocol.h>
 
-@class ACAccountStore, NSString, PKPaymentProvisioningController, PKPaymentSetupIntroView, PKPaymentWebService;
+@class ACAccountStore, NSString, PKPaymentHeroImageController, PKPaymentProvisioningController, PKPaymentSetupHeroView, PKPaymentWebService;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPaymentSetupViewController : UIViewController <PKPaymentSetupPrivacyFooterViewDelegate, PKPaymentSetupBrowseProductsViewControllerDelegate>
+@interface PKPaymentSetupViewController : PKExplanationViewController <PKPaymentSetupBrowseProductsViewControllerDelegate, PKExplanationViewDelegate>
 {
     ACAccountStore *_accountStore;
     BOOL _nextButtonPushed;
-    PKPaymentProvisioningController *_provisioningController;
-    PKPaymentSetupIntroView *_splashView;
+    PKPaymentSetupHeroView *_splashView;
     BOOL _hideSetupLater;
+    BOOL _hasFelicaSecureElement;
+    BOOL _preflightComplete;
     BOOL _allowsManualEntry;
-    long long _context;
+    PKPaymentProvisioningController *_provisioningController;
     id<PKPaymentSetupViewControllerDelegate> _delegate;
+    PKPaymentHeroImageController *_heroImageController;
     long long _paymentSetupMode;
 }
 
 @property (nonatomic) BOOL allowsManualEntry; // @synthesize allowsManualEntry=_allowsManualEntry;
-@property (nonatomic) long long context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<PKPaymentSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) PKPaymentHeroImageController *heroImageController; // @synthesize heroImageController=_heroImageController;
 @property (nonatomic) long long paymentSetupMode; // @synthesize paymentSetupMode=_paymentSetupMode;
-@property (readonly, strong, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
+@property (readonly, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) PKPaymentWebService *webService;
+@property (readonly, nonatomic) PKPaymentWebService *webService;
 
 + (id)configuredManualProvisioningViewControllerForProduct:(id)arg1 provisioningController:(id)arg2 context:(long long)arg3 delegate:(id)arg4;
 - (void).cxx_destruct;
 - (id)_actionViewControllerForAssociatedCredentials:(id)arg1 product:(id)arg2;
 - (id)_associatedCredentialsForDefaultBehaviour;
+- (id)_bodyText;
 - (id)_configuredflowPickerViewControllerWithBrowsableProductTypes:(id)arg1;
-- (id)_contextSpecificStringForAggdKey:(id)arg1;
-- (id)_deviceSpecificLocalizedStringKeyForKey:(id)arg1;
+- (void)_credentialRenewalRequired:(id)arg1;
 - (id)_filteredPaymentSetupProductsForFlowPicker:(id)arg1;
 - (id)_flowPicker;
 - (void)_flowPicker:(id)arg1 didSelectProducts:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)_isJapaneseRegion;
 - (void)_next:(id)arg1;
+- (void)_preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_productSelectionViewController:(id)arg1 didSelectProduct:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)_pushNextActionViewController:(id)arg1 ontoNavigationController:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_pushNextActionViewController:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)browseProductsViewController:(id)arg1 didSelectProduct:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)configuredNextActionViewController;
+- (void)dealloc;
 - (unsigned long long)edgesForExtendedLayout;
+- (void)explanationViewDidSelectContinue:(id)arg1;
+- (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 delegate:(id)arg3;
 - (void)loadView;
 - (void)privacyFooterLinkTapped:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
-- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 
 @end
 

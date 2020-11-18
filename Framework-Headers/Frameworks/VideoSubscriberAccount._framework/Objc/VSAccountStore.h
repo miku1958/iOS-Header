@@ -6,45 +6,50 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccount/MCProfileConnectionObserver-Protocol.h>
 #import <VideoSubscriberAccount/VSRemoteNotifierDelegate-Protocol.h>
 
-@class MCProfileConnection, NSArray, NSString, VSKeychainEditingContext, VSRemoteNotifier;
+@class NSArray, NSOperationQueue, NSString, NSUndoManager, VSAccount, VSKeychainEditingContext, VSRemoteNotifier;
 
-@interface VSAccountStore : NSObject <MCProfileConnectionObserver, VSRemoteNotifierDelegate>
+@interface VSAccountStore : NSObject <VSRemoteNotifierDelegate>
 {
-    BOOL _accountModificationAllowed;
-    MCProfileConnection *_profileConnection;
+    BOOL _needsUpdateCachedFirstAccount;
+    VSAccount *_cachedFirstAccount;
     VSKeychainEditingContext *_keychainEditingContext;
+    NSOperationQueue *_keychainQueue;
     id _changeObserver;
     VSRemoteNotifier *_remoteNotifier;
 }
 
-@property (nonatomic, getter=isAcountModificationAllowed) BOOL accountModificationAllowed; // @synthesize accountModificationAllowed=_accountModificationAllowed;
 @property (readonly, copy, nonatomic) NSArray *accounts;
+@property (strong) VSAccount *cachedFirstAccount; // @synthesize cachedFirstAccount=_cachedFirstAccount;
 @property (weak, nonatomic) id changeObserver; // @synthesize changeObserver=_changeObserver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VSKeychainEditingContext *keychainEditingContext; // @synthesize keychainEditingContext=_keychainEditingContext;
-@property (strong, nonatomic) MCProfileConnection *profileConnection; // @synthesize profileConnection=_profileConnection;
+@property (strong, nonatomic) NSOperationQueue *keychainQueue; // @synthesize keychainQueue=_keychainQueue;
+@property BOOL needsUpdateCachedFirstAccount; // @synthesize needsUpdateCachedFirstAccount=_needsUpdateCachedFirstAccount;
 @property (strong, nonatomic) VSRemoteNotifier *remoteNotifier; // @synthesize remoteNotifier=_remoteNotifier;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSUndoManager *undoManager;
 
 + (Class)accountClass;
 - (void).cxx_destruct;
 - (id)_accountForKeychainItem:(id)arg1;
+- (void)_insertAccount:(id)arg1 inContext:(id)arg2;
 - (id)_keychainItemsWithLimit:(unsigned long long)arg1;
 - (void)_sendLocalNotification;
 - (void)_sendRemoteNotification;
-- (void)_updateAccountModificationAllowed;
+- (BOOL)_updateCachedFirstAccount;
 - (void)dealloc;
+- (void)fetchAccountsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)firstAccount;
+- (id)firstAccountIfLoaded;
 - (id)init;
-- (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
+- (BOOL)isFirstAccountLoaded;
 - (void)remoteNotifier:(id)arg1 didReceiveRemoteNotificationWithUserInfo:(id)arg2;
-- (void)removeAccount:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)saveAccount:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)removeAccounts:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)saveAccounts:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

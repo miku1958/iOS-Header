@@ -18,6 +18,7 @@
         unsigned int didFailToConnectPeripheral:1;
         unsigned int didDisconnectPeripheral:1;
         unsigned int didUpdatePeripheralConnectionState:1;
+        unsigned int didLosePeripheral:1;
         unsigned int didLoseZone:1;
         unsigned int didUpdateConnectionParameters:1;
     } _delegateFlags;
@@ -36,13 +37,18 @@
 - (void)connectPeripheral:(id)arg1 options:(id)arg2;
 - (id)dataArrayToUUIDArray:(id)arg1;
 - (void)dealloc;
+- (void)enablePrivateModeForPeripheral:(id)arg1 forDuration:(unsigned short)arg2;
 - (void)forEachPeripheral:(CDUnknownBlockType)arg1;
+- (void)handleAdvertisingAddressChanged:(id)arg1;
+- (void)handleApplicationActivityEvent:(id)arg1;
 - (void)handleConnectionParametersUpdated:(id)arg1;
 - (void)handleMsg:(unsigned short)arg1 args:(id)arg2;
 - (void)handlePeripheralConnectionCompleted:(id)arg1;
 - (void)handlePeripheralConnectionStateUpdated:(id)arg1;
 - (void)handlePeripheralDisconnectionCompleted:(id)arg1;
 - (void)handlePeripheralDiscovered:(id)arg1;
+- (void)handlePeripheralTrackingUpdated:(id)arg1;
+- (void)handleReadyForUpdates:(id)arg1;
 - (void)handleRestoringState:(id)arg1;
 - (void)handleZoneLost:(id)arg1;
 - (id)init;
@@ -55,12 +61,17 @@
 - (id)peerWithInfo:(id)arg1;
 - (id)peripheralWithIdentifier:(id)arg1;
 - (id)peripheralWithInfo:(id)arg1;
+- (void)retrieveConnectedPeripherals;
 - (id)retrieveConnectedPeripheralsWithServices:(id)arg1;
 - (id)retrieveConnectedPeripheralsWithServices:(id)arg1 allowAll:(BOOL)arg2;
+- (void)retrievePeripherals:(id)arg1;
 - (id)retrievePeripheralsWithIdentifiers:(id)arg1;
+- (id)retrieveState;
 - (void)scanForPeripheralsWithServices:(id)arg1 options:(id)arg2;
 - (void)setDesiredConnectionLatency:(long long)arg1 forPeripheral:(id)arg2;
+- (void)startTrackingPeripheral:(id)arg1 options:(id)arg2;
 - (void)stopScan;
+- (void)stopTrackingPeripheral:(id)arg1 options:(id)arg2;
 
 @end
 

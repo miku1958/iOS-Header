@@ -6,35 +6,39 @@
 
 #import <EventKit/EKPersistentObject.h>
 
-#import <EventKit/NSCopying-Protocol.h>
-
-@class NSData, NSNumber, NSString;
-
-@interface EKPersistentLocation : EKPersistentObject <NSCopying>
+@interface EKPersistentLocation : EKPersistentObject
 {
 }
 
-@property (copy, nonatomic) NSString *address;
-@property (copy, nonatomic) NSString *addressBookEntityID;
-@property (copy, nonatomic) NSString *derivedFrom;
-@property (copy, nonatomic) NSNumber *latitude;
-@property (copy, nonatomic) NSNumber *longitude;
-@property (copy, nonatomic) NSData *mapKitHandle;
-@property (copy, nonatomic) NSNumber *radius;
-@property (copy, nonatomic) NSNumber *referenceFrame;
-@property (copy, nonatomic) NSString *routing;
-@property (copy, nonatomic) NSString *title;
-
 + (id)defaultPropertiesToLoad;
 + (id)relations;
+- (id)address;
+- (id)addressBookEntityID;
 - (id)alarmOwner;
 - (id)calendarItemOwner;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)derivedFrom;
 - (id)description;
 - (int)entityType;
-- (id)init;
+- (id)latitude;
+- (id)longitude;
+- (id)mapKitHandle;
+- (id)radius;
+- (id)referenceFrame;
+- (id)routing;
+- (void)setAddress:(id)arg1;
+- (void)setAddressBookEntityID:(id)arg1;
 - (void)setAlarmOwner:(id)arg1;
 - (void)setCalendarItemOwner:(id)arg1;
+- (void)setDerivedFrom:(id)arg1;
+- (void)setLatitude:(id)arg1;
+- (void)setLongitude:(id)arg1;
+- (void)setMapKitHandle:(id)arg1;
+- (void)setRadius:(id)arg1;
+- (void)setReferenceFrame:(id)arg1;
+- (void)setRouting:(id)arg1;
+- (void)setTitle:(id)arg1;
+- (id)title;
 
 @end
 

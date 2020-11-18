@@ -40,19 +40,7 @@
     NSArray *_clientCertificates;
     NSDictionary *_connectionProperties;
     BOOL _shouldHandleCookies;
-    struct {
-        unsigned int ignoresResponse:1;
-        unsigned int loading:1;
-        unsigned int needsCancel:1;
-        unsigned int responseStatusSet:1;
-        unsigned int parsedResponseHeader:1;
-        unsigned int delegateDidReceiveResponse:1;
-        unsigned int delegateDidFinish:1;
-        unsigned int delegateDidCancel:1;
-        unsigned int delegateDidFailWithError:1;
-        unsigned int paused:1;
-        unsigned int resuming:1;
-    } _flags;
+    CDStruct_dca542ad _flags;
 }
 
 @property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;

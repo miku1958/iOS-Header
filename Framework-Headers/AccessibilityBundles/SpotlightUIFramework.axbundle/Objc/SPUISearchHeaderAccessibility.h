@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (void)enableDictationIfRequired;
+- (void)searchForQuery:(id)arg1 forSuggestions:(BOOL)arg2;
 
 @end
 

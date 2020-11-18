@@ -9,14 +9,18 @@
 #import <PreferencesUI/CRCarPlayPreferencesDelegate-Protocol.h>
 #import <PreferencesUI/DevicePINControllerDelegate-Protocol.h>
 #import <PreferencesUI/PSListControllerTestableSpecifiers-Protocol.h>
+#import <PreferencesUI/PSUIHomeButtonCustomizeControllerDelegate-Protocol.h>
+#import <PreferencesUI/SFAirDropDiscoveryControllerDelegate-Protocol.h>
 
-@class CRCarPlayPreferences, NSString, NSTimer, PSSpecifier, PSUITVOutManager;
+@class CRCarPlayPreferences, NSString, NSTimer, PSSpecifier, PSUITVOutManager, SFAirDropDiscoveryController;
 
-@interface PSUIGeneralController : PSListController <CRCarPlayPreferencesDelegate, DevicePINControllerDelegate, PSListControllerTestableSpecifiers>
+@interface PSUIGeneralController : PSListController <CRCarPlayPreferencesDelegate, PSUIHomeButtonCustomizeControllerDelegate, SFAirDropDiscoveryControllerDelegate, DevicePINControllerDelegate, PSListControllerTestableSpecifiers>
 {
     NSTimer *_usageTimer;
     PSUITVOutManager *_tvOutManager;
     PSSpecifier *_tvOutSpecifier;
+    PSSpecifier *_airDropSpecifier;
+    SFAirDropDiscoveryController *_airDropDiscoveryController;
     CRCarPlayPreferences *_carPreferences;
 }
 
@@ -34,15 +38,20 @@
 - (void)dealloc;
 - (void)didAcceptEnteredPIN:(id)arg1;
 - (void)didCancelEnteringPIN;
+- (void)discoveryControllerSettingsDidChange:(id)arg1;
+- (void)discoveryControllerVisibilityDidChange:(id)arg1;
 - (void)enableEdge:(id)arg1;
 - (void)handleCarPlayAllowedDidChange;
 - (void)handleTVOutChange;
 - (void)handleURL:(id)arg1;
+- (void)homeButtonCustomizeControllerDidFinish:(id)arg1;
 - (id)init;
+- (void)loadHomeButtonSettings:(id)arg1;
 - (id)parentalControlsEnabled:(id)arg1;
 - (void)profileNotification:(id)arg1;
 - (void)setSoundEffects:(id)arg1 specifier:(id)arg2;
 - (BOOL)shouldDeferPushForSpecifierID:(id)arg1;
+- (void)shutDown:(id)arg1;
 - (id)soundEffects:(id)arg1;
 - (id)specifiers;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

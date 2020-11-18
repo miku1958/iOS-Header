@@ -6,7 +6,7 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
-@class CKDDecryptRecordsOperation, CKDProtocolTranslator, CKDRecordCache, NSArray, NSData, NSDictionary, NSMutableDictionary, NSObject;
+@class CKDDecryptRecordsOperation, CKDProtocolTranslator, CKDRecordCache, NSArray, NSData, NSDictionary, NSMapTable, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     BOOL _atomic;
     BOOL _shouldReportRecordsInFlight;
     int _saveAttempts;
+    NSData *_cachedUserBoundaryKeyData;
     CDUnknownBlockType _saveProgressBlock;
     CDUnknownBlockType _saveCompletionBlock;
     CDUnknownBlockType _deleteCompletionBlock;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_pluginFieldsForRecordDeletesByID;
     NSDictionary *_handlersByRecordID;
     NSDictionary *_parentsByRecordID;
+    NSMapTable *_handlersByAsset;
     NSMutableDictionary *_modifyHandlersByZoneID;
     long long _savePolicy;
     NSData *_clientChangeTokenData;
@@ -44,10 +46,12 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL atomic; // @synthesize atomic=_atomic;
 @property (strong, nonatomic) CKDRecordCache *cache; // @synthesize cache=_cache;
+@property (copy, nonatomic) NSData *cachedUserBoundaryKeyData; // @synthesize cachedUserBoundaryKeyData=_cachedUserBoundaryKeyData;
 @property (nonatomic) BOOL canSetPreviousProtectionEtag; // @synthesize canSetPreviousProtectionEtag=_canSetPreviousProtectionEtag;
 @property (copy, nonatomic) NSData *clientChangeTokenData; // @synthesize clientChangeTokenData=_clientChangeTokenData;
 @property (strong, nonatomic) NSDictionary *conflictLosersToResolveByRecordID; // @synthesize conflictLosersToResolveByRecordID=_conflictLosersToResolveByRecordID;
 @property (copy, nonatomic) CDUnknownBlockType deleteCompletionBlock; // @synthesize deleteCompletionBlock=_deleteCompletionBlock;
+@property (strong, nonatomic) NSMapTable *handlersByAsset; // @synthesize handlersByAsset=_handlersByAsset;
 @property (strong, nonatomic) NSDictionary *handlersByRecordID; // @synthesize handlersByRecordID=_handlersByRecordID;
 @property (readonly, nonatomic) BOOL hasDecryptOperation;
 @property (nonatomic) BOOL haveOutstandingHandlers; // @synthesize haveOutstandingHandlers=_haveOutstandingHandlers;
@@ -73,6 +77,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType uploadCompletionBlock; // @synthesize uploadCompletionBlock=_uploadCompletionBlock;
 
 + (BOOL)_claimPackagesInRecord:(id)arg1 error:(id *)arg2;
++ (long long)isPredominatelyDownload;
 - (void).cxx_destruct;
 - (void)_applySideEffects;
 - (void)_clearProtectionDataIfNotEntitled;
@@ -85,6 +90,7 @@ __attribute__((visibility("hidden")))
 - (void)_fetchRecordPCSData;
 - (void)_fetchSharePCSData;
 - (void)_fetchShareParticipants;
+- (void)_fetchUserBoundaryKey;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleDecryptionFailure:(id)arg1 forRecordID:(id)arg2;
 - (void)_handleRecordDeleted:(id)arg1 handler:(id)arg2 responseCode:(id)arg3;
@@ -95,10 +101,12 @@ __attribute__((visibility("hidden")))
 - (void)_performCallbacksForNonAtomicZoneHandlers:(id)arg1;
 - (void)_performHandlerCallbacks;
 - (id)_prepareAssetsForUpload;
+- (void)_prepareForUpload;
 - (void)_prepareParentPCS;
 - (BOOL)_prepareRecordsForSave;
 - (void)_reallyHandleRecordSaved:(id)arg1 handler:(id)arg2 etag:(id)arg3 dateStatistics:(id)arg4 responseCode:(id)arg5 keysAssociatedWithETag:(id)arg6 recordForOplockFailure:(id)arg7 decryptedServerRecord:(id)arg8;
 - (void)_reportRecordsInFlight;
+- (void)_setBoundaryKeyOnAssetsToUpload:(id)arg1;
 - (BOOL)_shouldToposortInContainerID:(id)arg1;
 - (BOOL)_topoSortRecords;
 - (id)_topoSortRecordsForHandlers:(id)arg1;

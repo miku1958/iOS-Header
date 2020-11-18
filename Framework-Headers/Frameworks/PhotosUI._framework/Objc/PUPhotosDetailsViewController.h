@@ -34,9 +34,11 @@ __attribute__((visibility("hidden")))
 - (void)_layoutContentUnavailableView;
 - (BOOL)contentAreaContainsPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (struct CGRect)contentBoundsInCoordinateSpace:(id)arg1;
+- (id)initWithContext:(id)arg1 configuration:(id)arg2;
 - (id)initWithContext:(id)arg1 options:(unsigned long long)arg2;
 - (unsigned long long)occludedContentEdges;
 - (struct CGSize)preferredContentSize;
+- (struct UIEdgeInsets)px_safeAreaInsets;
 - (void)scrollViewControllerContentBoundsDidChange:(id)arg1;
 - (void)scrollViewControllerDidScroll:(id)arg1;
 - (void)setContentEdgeInsets:(struct UIEdgeInsets)arg1;

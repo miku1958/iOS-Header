@@ -8,7 +8,7 @@
 
 #import <SafariServices/SFFormMetadataObserver-Protocol.h>
 
-@class NSString, NSTimer, SFFormAutocompleteState, UIView, WKWebView, _WKRemoteObjectInterface;
+@class NSMutableIndexSet, NSString, NSTimer, SFFormAutocompleteState, UIView, WKWebView, _WKRemoteObjectInterface;
 @protocol SFFormAutoFillControllerDelegate, SFFormAutoFiller, WBUFormAutoFillWebView;
 
 @interface _SFFormAutoFillController : NSObject <SFFormMetadataObserver>
@@ -19,6 +19,8 @@
     id<SFFormAutoFiller> _autoFiller;
     SFFormAutocompleteState *_state;
     NSTimer *_prefillTimer;
+    NSMutableIndexSet *_uniqueIDsOfFormsThatWereAutoFilled;
+    BOOL _isCurrentlyAuthenticating;
     BOOL _metadataCorrectionsEnabled;
 }
 
@@ -30,11 +32,14 @@
 @property (readonly, nonatomic) UIView<WBUFormAutoFillWebView> *webView;
 
 - (void).cxx_destruct;
-- (void)_autoFillLoginFormSynchronously:(id)arg1 inFrame:(id)arg2;
+- (void)_autoFillLoginFormSynchronouslyAndClearMetadata:(id)arg1 inFrame:(id)arg2;
+- (void)_didCollectURLsForPreFilling:(id)arg1 atURL:(id)arg2;
 - (void)_fieldFocused:(id)arg1 inForm:(id)arg2 inFrame:(id)arg3 inputSession:(id)arg4;
 - (void)_prefillTimerFired:(id)arg1;
 - (void)annotateForm:(long long)arg1 inFrame:(id)arg2 withValues:(id)arg3;
+- (void)authenticateForAutoFillOnPageLoad:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)autoFill;
+- (void)autoFillDidFinishWithUpdatedFormMetadata:(id)arg1;
 - (void)autoFillForm:(long long)arg1 inFrame:(id)arg2 withGeneratedPassword:(id)arg3;
 - (void)autoFillFormInFrame:(id)arg1 withValues:(id)arg2 setAutoFilled:(BOOL)arg3 andFocusField:(id)arg4;
 - (void)autoFillFormInFrame:(id)arg1 withValues:(id)arg2 setAutoFilled:(BOOL)arg3 focusFieldAfterFilling:(BOOL)arg4 fieldToFocus:(id)arg5;

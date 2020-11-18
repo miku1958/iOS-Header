@@ -7,24 +7,23 @@
 #import <Foundation/NSObject.h>
 
 #import <Stocks/NSURLSessionDataDelegate-Protocol.h>
-#import <Stocks/NSURLSessionDownloadDelegate-Protocol.h>
 
 @class NSMutableData, NSString, NSURLRequest, NSURLSession, NSURLSessionTask;
 
-@interface YQLRequest : NSObject <NSURLSessionDataDelegate, NSURLSessionDownloadDelegate>
+@interface YQLRequest : NSObject <NSURLSessionDataDelegate>
 {
     NSURLSession *_defaultSession;
     NSURLSessionTask *_dataTask;
     NSURLRequest *_request;
     NSMutableData *_rawData;
-    CDUnknownBlockType _finishEventsHandler;
+    BOOL _taggedAsInvalid;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) CDUnknownBlockType finishEventsHandler; // @synthesize finishEventsHandler=_finishEventsHandler;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=hasBeenTaggedAsInvalid) BOOL taggedAsInvalid; // @synthesize taggedAsInvalid=_taggedAsInvalid;
 
 + (void)appendDebugString:(id)arg1;
 + (void)saveDebugString;
@@ -32,9 +31,7 @@
 + (BOOL)shouldGenerateOfflineData;
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
-- (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
-- (void)URLSessionDidFinishEventsForBackgroundURLSession:(id)arg1;
 - (id)YQLCountryCode;
 - (id)YQLLanguageCode;
 - (void)_createDefaultSession;
@@ -42,6 +39,8 @@
 - (id)aggregateDictionaryDomain;
 - (id)arrayWithDictionaryKeyPath:(id)arg1 inJSONObject:(id)arg2 wrapResultIfDictionary:(BOOL)arg3;
 - (void)cancel;
+- (void)cancelAndInvalidate;
+- (void)dealloc;
 - (id)dictionaryWithDictionaryKeyPath:(id)arg1 inJSONObject:(id)arg2;
 - (void)didParseData;
 - (void)failToParseWithData:(id)arg1;

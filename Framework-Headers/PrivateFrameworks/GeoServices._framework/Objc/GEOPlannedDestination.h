@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
@@ -20,11 +20,11 @@
 
 @property (strong, nonatomic) NSDate *arrivalDate; // @synthesize arrivalDate=_arrivalDate;
 @property (strong, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
-@property (readonly, strong, nonatomic) NSData *handle; // @synthesize handle=_handle;
+@property (readonly, nonatomic) NSData *handle; // @synthesize handle=_handle;
 @property (nonatomic) int transportType; // @synthesize transportType=_transportType;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

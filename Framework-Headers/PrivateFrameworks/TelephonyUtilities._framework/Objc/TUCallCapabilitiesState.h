@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TelephonyUtilities/NSCopying-Protocol.h>
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
@@ -14,7 +14,8 @@
 
 @interface TUCallCapabilitiesState : NSObject <NSSecureCoding, NSCopying, TUPubliclyAccessibleCopying>
 {
-    BOOL _telephonyDevice;
+    BOOL _supportsPrimaryCalling;
+    BOOL _supportsBasebandCalling;
     BOOL _supportsCellularData;
     BOOL _supportsDisplayingTelephonyCalls;
     BOOL _supportsDisplayingFaceTimeAudioCalls;
@@ -40,6 +41,7 @@
     BOOL _supportsSimultaneousVoiceAndData;
     BOOL _pairedDeviceExists;
     BOOL _emergencyCallbackModeEnabled;
+    BOOL _supportsCarrierServices;
     int _relayCallingAvailability;
     TUCTCapabilityInfo *_wiFiCallingCapabilityInfo;
     TUCTCapabilityInfo *_voLTECallingCapabilityInfo;
@@ -69,17 +71,19 @@
 @property (copy, nonatomic) NSDictionary *relayCallingDisabledForDeviceID; // @synthesize relayCallingDisabledForDeviceID=_relayCallingDisabledForDeviceID;
 @property (nonatomic, getter=isRelayCallingEnabled) BOOL relayCallingEnabled; // @synthesize relayCallingEnabled=_relayCallingEnabled;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL supportsBasebandCalling; // @synthesize supportsBasebandCalling=_supportsBasebandCalling;
+@property (nonatomic) BOOL supportsCarrierServices; // @synthesize supportsCarrierServices=_supportsCarrierServices;
 @property (nonatomic) BOOL supportsCellularData; // @synthesize supportsCellularData=_supportsCellularData;
 @property (nonatomic) BOOL supportsDisplayingFaceTimeAudioCalls; // @synthesize supportsDisplayingFaceTimeAudioCalls=_supportsDisplayingFaceTimeAudioCalls;
 @property (nonatomic) BOOL supportsDisplayingFaceTimeVideoCalls; // @synthesize supportsDisplayingFaceTimeVideoCalls=_supportsDisplayingFaceTimeVideoCalls;
 @property (nonatomic) BOOL supportsDisplayingTelephonyCalls; // @synthesize supportsDisplayingTelephonyCalls=_supportsDisplayingTelephonyCalls;
 @property (nonatomic) BOOL supportsFaceTimeAudioRelayCalling; // @synthesize supportsFaceTimeAudioRelayCalling=_supportsFaceTimeAudioRelayCalling;
 @property (nonatomic) BOOL supportsFaceTimeVideoRelayCalling; // @synthesize supportsFaceTimeVideoRelayCalling=_supportsFaceTimeVideoRelayCalling;
+@property (nonatomic) BOOL supportsPrimaryCalling; // @synthesize supportsPrimaryCalling=_supportsPrimaryCalling;
 @property (nonatomic) BOOL supportsRelayCalling; // @synthesize supportsRelayCalling=_supportsRelayCalling;
 @property (nonatomic) BOOL supportsSimultaneousVoiceAndData; // @synthesize supportsSimultaneousVoiceAndData=_supportsSimultaneousVoiceAndData;
 @property (nonatomic) BOOL supportsTelephonyRelayCalling; // @synthesize supportsTelephonyRelayCalling=_supportsTelephonyRelayCalling;
 @property (nonatomic) BOOL supportsThumperCalling; // @synthesize supportsThumperCalling=_supportsThumperCalling;
-@property (nonatomic, getter=isTelephonyDevice) BOOL telephonyDevice; // @synthesize telephonyDevice=_telephonyDevice;
 @property (nonatomic, getter=isThumperCallingAllowedForCurrentDevice) BOOL thumperCallingAllowedForCurrentDevice; // @synthesize thumperCallingAllowedForCurrentDevice=_thumperCallingAllowedForCurrentDevice;
 @property (copy, nonatomic) NSSet *thumperCallingAllowedSecondaryDeviceIDs; // @synthesize thumperCallingAllowedSecondaryDeviceIDs=_thumperCallingAllowedSecondaryDeviceIDs;
 @property (copy, nonatomic) TUCTCapabilityInfo *thumperCallingCapabilityInfo; // @synthesize thumperCallingCapabilityInfo=_thumperCallingCapabilityInfo;

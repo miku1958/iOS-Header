@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)_detailMessageFont;
+- (long long)_effectStyle;
 - (id)_keyCommandInputForCancelAction;
 - (double)_marginAboveDetailMessageFirstBaseline;
 - (double)_maximumContentWidth;

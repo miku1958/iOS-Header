@@ -6,11 +6,18 @@
 
 #import <iTunesStore/ISOperationDelegate-Protocol.h>
 
-@class ISURLOperation, NSInputStream, NSMutableData, NSMutableURLRequest, NSNumber, NSString, NSURLAuthenticationChallenge, NSURLCredential, NSURLRequest, NSURLResponse;
+@class ISURLOperation, NSInputStream, NSMutableData, NSMutableURLRequest, NSNumber, NSString, NSURLAuthenticationChallenge, NSURLCache, NSURLCredential, NSURLRequest, NSURLResponse;
 
 @protocol ISURLOperationDelegate <ISOperationDelegate>
 
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentage;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSessionDuration;
+
+
 @optional
+- (NSURLCache *)URLCache;
+- (NSString *)URLCacheID;
 - (NSURLCredential *)operation:(ISURLOperation *)arg1 credentialForAuthenticationChallenge:(NSURLAuthenticationChallenge *)arg2;
 - (void)operation:(ISURLOperation *)arg1 didDiscoverContentLength:(NSNumber *)arg2;
 - (void)operation:(ISURLOperation *)arg1 didReceiveResponse:(NSURLResponse *)arg2;

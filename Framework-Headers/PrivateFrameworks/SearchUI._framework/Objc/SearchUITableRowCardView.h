@@ -4,34 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUILayoutFreeSectionView.h>
+#import <SearchUI/SearchUICardSectionView.h>
 
-@class NSArray, SearchUIGridLayoutManager;
+@class TLKGridRowView;
 
-@interface SearchUITableRowCardView : SearchUILayoutFreeSectionView
+@interface SearchUITableRowCardView : SearchUICardSectionView
 {
-    NSArray *_views;
-    SearchUIGridLayoutManager *_gridData;
 }
 
-@property (strong) SearchUIGridLayoutManager *gridData; // @synthesize gridData=_gridData;
-@property (strong) NSArray *views; // @synthesize views=_views;
+@property (strong) TLKGridRowView *contentView; // @dynamic contentView;
 
-+ (void)growViewsForStackView:(id)arg1 views:(id)arg2 withSizes:(id)arg3 indexOfFirstTrailingColumn:(unsigned long long)arg4;
-+ (id)ignoreIndicesForViews:(id)arg1;
-+ (void)makeViewExpandWithIndex:(unsigned long long)arg1 withViews:(id)arg2;
-+ (void)setRowSpacing:(id)arg1 forContainer:(id)arg2 trailingColumn:(unsigned long long)arg3;
-+ (void)setWidthForColumns:(id)arg1 forContainer:(id)arg2 views:(id)arg3;
-+ (void)setupStackView:(id)arg1 spacings:(id)arg2 views:(id)arg3 withSizes:(id)arg4 trailingColumn:(unsigned long long)arg5;
-- (void).cxx_destruct;
-- (id)initWithCardSection:(id)arg1 gridData:(id)arg2 controller:(id)arg3 style:(unsigned long long)arg4;
-- (void)layoutSubviews;
-- (id)rowOfViewsForData:(id)arg1 alignmentData:(id)arg2;
-- (void)setTruncationPriorities:(id)arg1;
-- (long long)textAlignmentForAlignment:(long long)arg1;
-- (struct UIEdgeInsets)verticalBaselineInsetsForHeader:(BOOL)arg1;
-- (struct UIEdgeInsets)verticalBaselineInsetsForRows;
-- (id)viewWithFormattedText:(id)arg1 textAlignment:(long long)arg2 row:(id)arg3;
++ (struct UIEdgeInsets)defaultLayoutMargins;
++ (BOOL)hasOnlyImages:(id)arg1;
++ (BOOL)isAHeader:(id)arg1;
++ (double)largestImageSizeForSection:(id)arg1;
++ (int)separatorStyleForCardSection:(id)arg1;
++ (BOOL)supportsRecyclingForCardSection:(id)arg1;
+- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
+- (id)initWithCardSection:(id)arg1 gridData:(id)arg2 style:(unsigned long long)arg3 feedbackDelegate:(id)arg4;
+- (id)setupContentView;
+- (void)updateWithCardSection:(id)arg1 manager:(id)arg2;
+- (struct UIEdgeInsets)verticalBaselineInsetsForHeader:(BOOL)arg1 isCompactTable:(BOOL)arg2;
+- (struct UIEdgeInsets)verticalBaselineInsetsForRowsWithCompactTable:(BOOL)arg1;
 
 @end
 

@@ -24,22 +24,21 @@
 @property (copy, nonatomic) CDUnknownBlockType writerBlock; // @synthesize writerBlock=_writerBlock;
 
 + (id)archive;
+- (int)_archiveDirectoryName:(id)arg1 withArchive:(struct archive *)arg2 error:(id *)arg3;
 - (id)_compressContents:(id)arg1 error:(id *)arg2;
 - (int)_compressContents:(id)arg1 fileName:(id)arg2 withArchive:(struct archive *)arg3 error:(id *)arg4;
 - (int)_compressContents:(id)arg1 withArchive:(struct archive *)arg2 error:(id *)arg3;
-- (void)_compressInputWithReader:(CDUnknownBlockType)arg1 writer:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (int)_compressWithArchive:(struct archive *)arg1 error:(id *)arg2;
 - (struct archive *)_compressionArchive;
-- (struct archive_entry *)_compressionArchiveEntryWithFileName:(id)arg1 length:(unsigned long long)arg2;
+- (struct archive_entry *)_compressionArchiveEntryWithName:(id)arg1 length:(unsigned long long)arg2 isDirectory:(BOOL)arg3;
 - (int)_compressionCompleteForArchive:(struct archive *)arg1 error:(id *)arg2;
 - (BOOL)_decompressArchive:(struct archive *)arg1 intoArchiveDirectory:(id)arg2 error:(id *)arg3;
-- (BOOL)_decompressContents:(id)arg1 error:(id *)arg2 mainEntry:(BOOL)arg3;
 - (BOOL)_decompressContents:(id)arg1 inMemoryWithError:(id *)arg2 mainEntry:(BOOL)arg3;
-- (void)_decompressInputWithReader:(CDUnknownBlockType)arg1 writer:(CDUnknownBlockType)arg2 mainEntry:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (struct archive *)_decompressionArchive;
 - (int)_decompressionCompleteForArchive:(struct archive *)arg1 error:(id *)arg2;
 - (id)_errorForArchiveStatus:(long long)arg1;
 - (void)compressContents:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)compressFolder:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (void)decompressContents:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)description;

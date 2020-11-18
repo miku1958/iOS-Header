@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOSearchAttribution : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_attributionURLs;
     NSString *_sourceIdentifier;
     unsigned int _sourceVersion;
@@ -20,15 +21,16 @@
 @property (strong, nonatomic) NSMutableArray *attributionURLs; // @synthesize attributionURLs=_attributionURLs;
 @property (strong, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 @property (nonatomic) unsigned int sourceVersion; // @synthesize sourceVersion=_sourceVersion;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)attributionURLsType;
+- (void).cxx_destruct;
 - (void)addAttributionURLs:(id)arg1;
 - (id)attributionURLsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)attributionURLsCount;
 - (void)clearAttributionURLs;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

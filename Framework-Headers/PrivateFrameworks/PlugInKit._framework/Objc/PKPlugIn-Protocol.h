@@ -6,7 +6,7 @@
 
 #import <PlugInKit/NSObject-Protocol.h>
 
-@class NSBundle, NSDictionary, NSObject, NSString, NSURL, NSUUID, NSUserDefaults, Protocol;
+@class NSArray, NSBundle, NSDictionary, NSObject, NSString, NSURL, NSUUID, NSUserDefaults, Protocol;
 @protocol OS_dispatch_queue, PKPlugIn;
 
 @protocol PKPlugIn <NSObject>
@@ -37,6 +37,7 @@
 - (id<PKPlugIn>)createInstanceWithUUID:(NSUUID *)arg1;
 - (NSUserDefaults *)defaults;
 - (void)endUsing:(void (^)(NSError *))arg1;
+- (void)localizedInfoDictionaryForKeys:(NSArray *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)setHostPrincipal:(id)arg1 withProtocol:(Protocol *)arg2;
 - (void)setReplyQueue:(NSObject<OS_dispatch_queue> *)arg1;
 - (BOOL)useBundle:(NSString *)arg1 error:(id *)arg2;

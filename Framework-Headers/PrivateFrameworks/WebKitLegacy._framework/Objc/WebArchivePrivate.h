@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     WebResource *cachedMainResource;
     NSArray *cachedSubresources;
     NSArray *cachedSubframeArchives;
-    struct RefPtr<WebCore::LegacyWebArchive> coreArchive;
+    RefPtr_3e3b2882 coreArchive;
 }
 
 + (void)initialize;
@@ -23,8 +23,8 @@ __attribute__((visibility("hidden")))
 - (struct LegacyWebArchive *)coreArchive;
 - (void)dealloc;
 - (id)init;
-- (id)initWithCoreArchive:(PassRefPtr_d33dc2c2)arg1;
-- (void)setCoreArchive:(PassRefPtr_d33dc2c2)arg1;
+- (id)initWithCoreArchive:(RefPtr_3e3b2882 *)arg1;
+- (void)setCoreArchive:(Ref_ec14ad19 *)arg1;
 
 @end
 

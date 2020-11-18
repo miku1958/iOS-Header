@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDLogEventObserver-Protocol.h>
 
 @class NSMutableDictionary, NSString;
 
-@interface HMDAWDLogEventObserver : NSObject <HMDLogEventObserver>
+@interface HMDAWDLogEventObserver : HMFObject <HMDLogEventObserver>
 {
     BOOL _uploadMaximumDelayReached;
     BOOL _hasDecryptionFailed;
@@ -19,6 +19,10 @@
     unsigned int _fetchCount;
     unsigned int _uploadCount;
     unsigned int _uploadErrorCount;
+    unsigned int _homeManagerFetchCount;
+    unsigned int _homeZoneFetchCount;
+    unsigned int _homeManagerUploadCount;
+    unsigned int _homeZoneUploadCount;
     unsigned long long _dataSyncState;
     NSMutableDictionary *_reasonToCountMap;
     NSMutableDictionary *_errorToCountMap;
@@ -31,6 +35,10 @@
 @property (nonatomic) unsigned int fetchCount; // @synthesize fetchCount=_fetchCount;
 @property (nonatomic) BOOL hasDecryptionFailed; // @synthesize hasDecryptionFailed=_hasDecryptionFailed;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned int homeManagerFetchCount; // @synthesize homeManagerFetchCount=_homeManagerFetchCount;
+@property (nonatomic) unsigned int homeManagerUploadCount; // @synthesize homeManagerUploadCount=_homeManagerUploadCount;
+@property (nonatomic) unsigned int homeZoneFetchCount; // @synthesize homeZoneFetchCount=_homeZoneFetchCount;
+@property (nonatomic) unsigned int homeZoneUploadCount; // @synthesize homeZoneUploadCount=_homeZoneUploadCount;
 @property (nonatomic) BOOL lastDecryptionFailed; // @synthesize lastDecryptionFailed=_lastDecryptionFailed;
 @property (nonatomic) unsigned int pushCount; // @synthesize pushCount=_pushCount;
 @property (strong, nonatomic) NSMutableDictionary *reasonToCountMap; // @synthesize reasonToCountMap=_reasonToCountMap;

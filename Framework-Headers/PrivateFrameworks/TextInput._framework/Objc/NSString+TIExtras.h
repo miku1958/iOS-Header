@@ -11,11 +11,11 @@
 + (struct USet *)_bopomofoToneSet;
 + (struct USet *)_characterSetWithPattern:(id)arg1;
 + (struct USet *)_fullwidthLettersAndNumbersSet;
++ (struct USet *)_fullwidthLettersAndSymbolsSet;
 + (struct USet *)_hiraganaSet;
 + (struct USet *)_ideographSet;
 + (struct USet *)_japaneseLetterSet;
 + (struct USet *)_nonFullwidthLettersAndNumbersSet;
-+ (struct USet *)_nonFullwidthLettersAndSymbolsSet;
 + (struct USet *)_nonHiraganaKatakanaOrBopomofoSet;
 + (struct USet *)_nonHiraganaOrKatakanaSet;
 + (struct USet *)_nonIdeographicCharacterSet;
@@ -32,9 +32,10 @@
 - (BOOL)_containsCJScripts;
 - (BOOL)_containsCJScriptsOnly;
 - (BOOL)_containsEmoji;
+- (BOOL)_containsEmojiOnly;
 - (BOOL)_containsFullwidthLettersAndNumbers;
 - (BOOL)_containsFullwidthLettersAndNumbersOnly;
-- (BOOL)_containsFullwidthLettersAndSymbols;
+- (BOOL)_containsFullwidthLettersAndSymbolsOnly;
 - (BOOL)_containsHiraganaKatakanaOrBopomofo;
 - (BOOL)_containsHiraganaOnly;
 - (BOOL)_containsHiraganaOrKatakana;

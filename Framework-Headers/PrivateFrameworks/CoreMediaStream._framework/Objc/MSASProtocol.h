@@ -45,6 +45,7 @@
 - (id)_addCommentURLWithBaseURL:(id)arg1;
 - (id)_albumStateURL;
 - (id)_albumSummaryURLWithBaseURL:(id)arg1;
+- (id)_appleIDSession;
 - (id)_couldNotReauthorizeError;
 - (id)_createAlbumURL;
 - (id)_deleteAssetsURLWithBaseURL:(id)arg1;
@@ -59,8 +60,10 @@
 - (id)_getTokensURLWithBaseURL:(id)arg1;
 - (id)_getUploadTokensURLWithBaseURL:(id)arg1;
 - (id)_getVideoURLWithBaseURL:(id)arg1;
+- (void)_prepareHeadersForRequest:(id)arg1;
 - (id)_putAssetsURLWithBaseURL:(id)arg1;
 - (id)_reportSpamURL;
+- (void)_sendOneURLRequest:(id)arg1 checkServerSideConfigVersion:(BOOL)arg2 retryCount:(unsigned long long)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)_serverSideConfigURL;
 - (id)_setAlbumStateURL;
 - (id)_setAssetStateURL;

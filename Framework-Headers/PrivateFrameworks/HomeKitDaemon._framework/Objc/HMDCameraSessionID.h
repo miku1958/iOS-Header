@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
 @class HMDDevice, NSMutableDictionary, NSString;
 
-@interface HMDCameraSessionID : NSObject <NSCopying>
+@interface HMDCameraSessionID : HMFObject <NSCopying>
 {
     BOOL _spiClient;
     NSString *_sessionID;

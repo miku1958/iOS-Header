@@ -18,9 +18,12 @@
 
 - (void)didTriggerOneTimeAction:(NSString *)arg1;
 - (BOOL)oneTimeActionCompleted:(NSString *)arg1;
+- (void)updateDidPerformFirstReachableKeyboardInteraction;
+- (void)updateEnabledDictationLanguages:(NSDictionary *)arg1;
 - (void)updateKeyboardHandBias:(NSString *)arg1;
 - (void)updateKeyboardIsFloating:(BOOL)arg1;
 - (void)updateKeyboardIsSplit:(BOOL)arg1 locked:(BOOL)arg2;
+- (void)updateLastUsedDictationLanguages:(NSDictionary *)arg1;
 - (void)updateLastUsedInputMode:(NSString *)arg1;
 - (void)updateLastUsedKeyboards:(NSDictionary *)arg1;
 - (void)updateLastUsedLayout:(NSString *)arg1;

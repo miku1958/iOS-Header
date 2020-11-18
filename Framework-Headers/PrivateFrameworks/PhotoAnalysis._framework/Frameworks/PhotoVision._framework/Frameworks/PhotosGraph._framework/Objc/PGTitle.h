@@ -19,6 +19,9 @@
 
 + (id)titleWithString:(id)arg1 category:(long long)arg2;
 - (void).cxx_destruct;
+- (id)description;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -42,6 +42,7 @@
 - (id)init;
 - (id)initWithInternalRepresentation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)matchOutcomeStringForLocalPlayer;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)setStatus:(long long)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface TULogging : NSObject
 {
@@ -12,7 +12,6 @@
 
 + (void)disablePhoneLogging;
 + (void)enablePhoneLogging;
-+ (BOOL)isWalkaboutEnabled;
 + (void)registerForShouldLogChangedNotification;
 + (BOOL)sendDirectoryToCrashReporter:(id)arg1 error:(id *)arg2;
 + (void)unregisterForShouldLogChangedNotification;

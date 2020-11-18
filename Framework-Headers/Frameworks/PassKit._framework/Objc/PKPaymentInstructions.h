@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSArray, NSData, NSDictionary;
 
@@ -21,8 +21,8 @@
 @property (readonly, nonatomic) NSData *signatureData; // @synthesize signatureData=_signatureData;
 
 - (void).cxx_destruct;
+- (struct CGDataProvider *)_createImageDataProviderForImageKey:(id)arg1;
 - (id)_imageDataForImageWithKey:(id)arg1 format:(id *)arg2;
-- (struct CGDataProvider *)_imageDataProviderForImageKey:(id)arg1;
 - (void)_pruneDirectoryAtURL:(id)arg1;
 - (BOOL)archiveToDirectoryAtURL:(id)arg1 error:(id *)arg2;
 - (id)description;

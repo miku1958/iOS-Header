@@ -6,14 +6,14 @@
 
 #import <SAObjects/SAUISnippet.h>
 
-@class NSArray;
+@class NSArray, NSNumber;
 
 @interface SAVCSContentCabinet : SAUISnippet
 {
 }
 
 @property (nonatomic) BOOL browseResults;
-@property (nonatomic) BOOL fullScreenEnabled;
+@property (copy, nonatomic) NSNumber *fullScreenEnabled;
 @property (copy, nonatomic) NSArray *shelves;
 
 + (id)contentCabinet;

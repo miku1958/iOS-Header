@@ -18,9 +18,9 @@
 - (void)remoteShutter:(CAMRemoteShutterController *)arg1 setZoomAmount:(double)arg2;
 - (void)remoteShutter:(CAMRemoteShutterController *)arg1 takePhotoWithCountdown:(unsigned long long)arg2;
 - (BOOL)remoteShutterBeginBurstCapture:(CAMRemoteShutterController *)arg1;
-- (void)remoteShutterBeginVideo:(CAMRemoteShutterController *)arg1;
 - (void)remoteShutterCancelCountdown:(CAMRemoteShutterController *)arg1;
 - (BOOL)remoteShutterEndBurstCapture:(CAMRemoteShutterController *)arg1;
-- (void)remoteShutterEndVideo:(CAMRemoteShutterController *)arg1;
+- (BOOL)remoteShutterStartCapture:(CAMRemoteShutterController *)arg1;
+- (BOOL)remoteShutterStopCapture:(CAMRemoteShutterController *)arg1;
 @end
 

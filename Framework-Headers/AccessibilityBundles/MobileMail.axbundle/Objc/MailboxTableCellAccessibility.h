@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityIsFlaggedMailboxCell;
-- (int)_accessibilityScannerActivateBehavior;
+- (long long)_accessibilityScannerActivateBehavior;
 - (void)_setUnreadCount:(unsigned long long)arg1;
 - (id)accessibilityLabel;
 - (BOOL)accessibilityPerformEscape;

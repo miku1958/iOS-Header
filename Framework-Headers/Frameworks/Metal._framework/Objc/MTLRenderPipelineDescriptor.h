@@ -8,7 +8,7 @@
 
 #import <Metal/NSCopying-Protocol.h>
 
-@class MTLRenderPipelineColorAttachmentDescriptorArray, MTLVertexDescriptor, NSString;
+@class MTLPipelineBufferDescriptorArray, MTLRenderPipelineColorAttachmentDescriptorArray, MTLVertexDescriptor, NSString;
 @protocol MTLFunction;
 
 @interface MTLRenderPipelineDescriptor : NSObject <NSCopying>
@@ -20,10 +20,12 @@
 @property (nonatomic, getter=isAlphaToOneEnabled) BOOL alphaToOneEnabled; // @dynamic alphaToOneEnabled;
 @property (readonly) MTLRenderPipelineColorAttachmentDescriptorArray *colorAttachments; // @dynamic colorAttachments;
 @property (nonatomic) unsigned long long depthAttachmentPixelFormat; // @dynamic depthAttachmentPixelFormat;
+@property (readonly) MTLPipelineBufferDescriptorArray *fragmentBuffers; // @dynamic fragmentBuffers;
 @property (strong, nonatomic) id<MTLFunction> fragmentFunction; // @dynamic fragmentFunction;
 @property (nonatomic) unsigned long long inputPrimitiveTopology; // @synthesize inputPrimitiveTopology=_inputPrimitiveTopology;
 @property (copy, nonatomic) NSString *label; // @dynamic label;
 @property (nonatomic) unsigned long long maxTessellationFactor; // @dynamic maxTessellationFactor;
+@property (nonatomic) unsigned long long rasterSampleCount; // @dynamic rasterSampleCount;
 @property (nonatomic, getter=isRasterizationEnabled) BOOL rasterizationEnabled; // @dynamic rasterizationEnabled;
 @property (nonatomic) unsigned long long sampleCount; // @dynamic sampleCount;
 @property (nonatomic) unsigned long long stencilAttachmentPixelFormat; // @dynamic stencilAttachmentPixelFormat;
@@ -33,6 +35,7 @@
 @property (nonatomic) unsigned long long tessellationFactorStepFunction; // @dynamic tessellationFactorStepFunction;
 @property (nonatomic) unsigned long long tessellationOutputWindingOrder; // @dynamic tessellationOutputWindingOrder;
 @property (nonatomic) unsigned long long tessellationPartitionMode; // @dynamic tessellationPartitionMode;
+@property (readonly) MTLPipelineBufferDescriptorArray *vertexBuffers; // @dynamic vertexBuffers;
 @property (copy, nonatomic) MTLVertexDescriptor *vertexDescriptor; // @dynamic vertexDescriptor;
 @property (strong, nonatomic) id<MTLFunction> vertexFunction; // @dynamic vertexFunction;
 

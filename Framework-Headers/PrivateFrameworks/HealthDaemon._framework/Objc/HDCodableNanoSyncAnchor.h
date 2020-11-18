@@ -23,6 +23,7 @@
 @property (nonatomic) BOOL hasObjectType;
 @property (nonatomic) int objectType; // @synthesize objectType=_objectType;
 
+- (int)StringAsObjectType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -31,6 +32,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)nanoSyncDescription;
+- (id)objectTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

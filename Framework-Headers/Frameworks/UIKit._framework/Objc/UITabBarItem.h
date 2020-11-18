@@ -6,9 +6,11 @@
 
 #import <UIKit/UIBarItem.h>
 
+#import <UIKit/UISpringLoadedInteractionSupporting-Protocol.h>
+
 @class NSString, UIColor, UIImage, UITabBarButton, _UITabBarItemAppearanceStorage;
 
-@interface UITabBarItem : UIBarItem
+@interface UITabBarItem : UIBarItem <UISpringLoadedInteractionSupporting>
 {
     NSString *_title;
     SEL _action;
@@ -18,6 +20,10 @@
     UIImage *_selectedImage;
     UIImage *_unselectedImage;
     struct UIEdgeInsets _imageInsets;
+    UIImage *_landscapeTemplateImage;
+    UIImage *_landscapeSelectedTemplateImage;
+    UIImage *_landscapeSelectedImage;
+    struct UIEdgeInsets _landscapeImageInsets;
     NSString *_badgeValue;
     UITabBarButton *_view;
     _UITabBarItemAppearanceStorage *_appearanceStorage;
@@ -29,6 +35,7 @@
         unsigned int customSelectedImage:1;
         unsigned int customUnselectedImage:1;
     } _tabBarItemFlags;
+    BOOL _springLoaded;
     long long __barMetrics;
     long long __imageStyle;
     UIColor *__tintColor;
@@ -36,20 +43,30 @@
 
 @property (nonatomic, setter=_setBarMetrics:) long long _barMetrics; // @synthesize _barMetrics=__barMetrics;
 @property (nonatomic, setter=_setImageStyle:) long long _imageStyle; // @synthesize _imageStyle=__imageStyle;
+@property (readonly, nonatomic) UIImage *_internalLandscapeSelectedImagePhone;
 @property (nonatomic, getter=_isSelected, setter=_setSelected:) BOOL _selected;
 @property (strong, nonatomic, setter=_setTintColor:) UIColor *_tintColor; // @synthesize _tintColor=__tintColor;
 @property (copy, nonatomic) UIColor *badgeColor;
 @property (copy, nonatomic) NSString *badgeValue; // @synthesize badgeValue=_badgeValue;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImage *selectedImage;
+@property (nonatomic, getter=isSpringLoaded) BOOL springLoaded;
+@property (readonly) Class superclass;
 @property (nonatomic) struct UIOffset titlePositionAdjustment;
 
 + (id)_appearanceBlindViewClasses;
 - (void).cxx_destruct;
 - (id)_createViewForTabBar:(id)arg1 asProxyView:(BOOL)arg2;
 - (id)_imageForState:(unsigned long long)arg1 metrics:(long long)arg2 position:(long long)arg3 type:(long long)arg4;
+- (id)_internalLandscapeTemplateImage;
+- (id)_internalLandscapeTemplateImages;
+- (id)_internalLargeContentSizeImage;
 - (id)_internalTemplateImage;
 - (id)_internalTemplateImages;
 - (id)_internalTitle;
+- (void)_setInternalLandscapeTemplateImage:(id)arg1;
 - (void)_setInternalTemplateImage:(id)arg1;
 - (void)_setInternalTitle:(id)arg1;
 - (void)_setTitleTextAttributeValue:(id)arg1 forAttributeKey:(id)arg2 state:(unsigned long long)arg3;
@@ -76,6 +93,11 @@
 - (id)initWithTitle:(id)arg1 image:(id)arg2 tag:(long long)arg3;
 - (BOOL)isEnabled;
 - (BOOL)isSystemItem;
+- (id)landscapeImagePhone;
+- (struct UIEdgeInsets)landscapeImagePhoneInsets;
+- (id)landscapeSelectedImagePhone;
+- (id)largeContentSizeImage;
+- (struct UIEdgeInsets)largeContentSizeImageInsets;
 - (id)resolvedTitle;
 - (void)setAction:(SEL)arg1;
 - (void)setAnimatedBadge:(BOOL)arg1;
@@ -84,6 +106,11 @@
 - (void)setFinishedSelectedImage:(id)arg1 withFinishedUnselectedImage:(id)arg2;
 - (void)setImage:(id)arg1;
 - (void)setImageInsets:(struct UIEdgeInsets)arg1;
+- (void)setLandscapeImagePhone:(id)arg1;
+- (void)setLandscapeImagePhoneInsets:(struct UIEdgeInsets)arg1;
+- (void)setLandscapeSelectedImagePhone:(id)arg1;
+- (void)setLargeContentSizeImage:(id)arg1;
+- (void)setLargeContentSizeImageInsets:(struct UIEdgeInsets)arg1;
 - (void)setTarget:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;

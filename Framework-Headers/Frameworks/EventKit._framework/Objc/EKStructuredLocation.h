@@ -31,19 +31,24 @@
 @property (strong, nonatomic) NSString *title;
 
 + (id)_stringByStrippingControlCharactersFromString:(id)arg1;
++ (Class)frozenClass;
 + (id)locationWithMapItem:(id)arg1;
 + (id)locationWithTitle:(id)arg1;
 - (void).cxx_destruct;
-- (id)_persistentLocation;
+- (void)_clearGeoLocationCache;
 - (id)cacheKey;
 - (id)calLocation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)geoURLString;
-- (id)init;
 - (BOOL)isEqualToLocation:(id)arg1;
+- (id)latitude;
+- (id)longitude;
+- (id)referenceFrame;
+- (void)setLatitude:(id)arg1;
+- (void)setLongitude:(id)arg1;
+- (void)setReferenceFrame:(id)arg1;
 - (void)updateFromMapItem:(id)arg1;
-- (void)updatePersistentObject;
 
 @end
 

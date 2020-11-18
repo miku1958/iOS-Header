@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSData *_chainParentPublicKeyID;
     CKDZonePCSData *_zonePCSData;
     CKRecordZoneID *_zoneID;
+    NSData *_zoneishPublicKeyID;
     CKDSharePCSData *_sharePCSData;
     CKRecordID *_shareID;
     CKDChainPCSData *_chainPCSData;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKDSharePCSData *sharePCSData; // @synthesize sharePCSData=_sharePCSData;
 @property (strong, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
 @property (strong, nonatomic) CKDZonePCSData *zonePCSData; // @synthesize zonePCSData=_zonePCSData;
+@property (strong, nonatomic) NSData *zoneishPublicKeyID; // @synthesize zoneishPublicKeyID=_zoneishPublicKeyID;
 
 + (id)dataWithRecord:(id)arg1;
 + (BOOL)supportsSecureCoding;
@@ -45,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithPCSData:(id)arg1 recordID:(id)arg2;
 - (id)initWithRecord:(id)arg1;
 - (id)itemID;
+- (BOOL)shouldEncodePCSData;
 
 @end
 

@@ -17,7 +17,7 @@
 - (void)getProfilesInfo:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getUsage:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)installProfile:(NSData *)arg1 replyHandler:(void (^)(NSError *))arg2;
-- (void)obliterateGizmo:(void (^)(NSError *))arg1;
+- (void)obliterateGizmoPreservingeSIM:(BOOL)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)purgeUsageBundle:(NSString *)arg1 replyHandler:(void (^)(NSError *))arg2;
 - (void)rebootDevice;
 - (void)removeProfileWithIdentifier:(NSString *)arg1 replyHandler:(void (^)(NSError *))arg2;

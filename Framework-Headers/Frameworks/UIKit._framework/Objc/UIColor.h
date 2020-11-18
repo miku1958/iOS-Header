@@ -7,11 +7,15 @@
 #import <Foundation/NSObject.h>
 
 #import <UIKit/NSCopying-Protocol.h>
+#import <UIKit/NSItemProviderReading-Protocol.h>
+#import <UIKit/NSItemProviderWriting-Protocol.h>
 #import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKit/UIItemProviderReading-Protocol.h>
+#import <UIKit/UIItemProviderWriting-Protocol.h>
 
-@class CIColor, NSString;
+@class CIColor, NSArray, NSString;
 
-@interface UIColor : NSObject <NSSecureCoding, NSCopying>
+@interface UIColor : NSObject <NSItemProviderReading, NSItemProviderWriting, UIItemProviderReading, UIItemProviderWriting, NSSecureCoding, NSCopying>
 {
     NSString *_systemColorName;
     NSString *_cachedStyleString;
@@ -19,7 +23,17 @@
 
 @property (readonly, nonatomic) struct CGColor *CGColor;
 @property (readonly, nonatomic) CIColor *CIColor;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (strong, nonatomic, getter=_systemColorName, setter=_setSystemColorName:) NSString *systemColorName;
+@property (readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
+@property (readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
 
 + (id)__halfTransparentBlackColor;
 + (id)__halfTransparentWhiteColor;
@@ -28,6 +42,7 @@
 + (id)_accessibilityButtonShapesDisabledBackgroundColorOnDark;
 + (id)_accessibilityButtonShapesNoBlendModeBackgroundColorOnDark;
 + (id)_accessibilityButtonShapesNoBlendModeBackgroundColorOnLight;
++ (id)_accessibilityDarkenedColorForColor:(id)arg1;
 + (id)_alternateSystemInteractionTintColor;
 + (id)_barHairlineShadowColor;
 + (id)_barStyleBlackHairlineShadowColor;
@@ -67,6 +82,8 @@
 + (id)brownColor;
 + (id)classFallbacksForKeyedArchiver;
 + (id)clearColor;
++ (id)colorNamed:(id)arg1;
++ (id)colorNamed:(id)arg1 inBundle:(id)arg2 compatibleWithTraitCollection:(id)arg3;
 + (id)colorWithCGColor:(struct CGColor *)arg1;
 + (id)colorWithCIColor:(id)arg1;
 + (id)colorWithDisplayP3Red:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
@@ -89,11 +106,14 @@
 + (id)lightGrayColor;
 + (id)lightTextColor;
 + (id)magentaColor;
++ (id)newObjectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 options:(id)arg3 error:(id *)arg4;
 + (id)noContentDarkGradientBackgroundColor;
 + (id)noContentLightGradientBackgroundColor;
++ (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 + (id)orangeColor;
 + (id)pinStripeColor;
 + (id)purpleColor;
++ (id)readableTypeIdentifiersForItemProvider;
 + (id)redColor;
 + (id)scrollViewTexturedBackgroundColor;
 + (id)sectionHeaderBackgroundColor;
@@ -146,6 +166,7 @@
 + (id)underPageBackgroundColor;
 + (id)viewFlipsideBackgroundColor;
 + (id)whiteColor;
++ (id)writableTypeIdentifiersForItemProvider;
 + (id)yellowColor;
 - (void).cxx_destruct;
 - (id)_colorBlendedWithColor:(id)arg1;
@@ -158,6 +179,7 @@
 - (BOOL)_isSimilarToColor:(id)arg1 withinPercentage:(double)arg2;
 - (double)_luminance;
 - (double)_luminanceDifferenceFromColor:(id)arg1;
+- (id)_ui_swipeActionHighlightedColor;
 - (double)alphaComponent;
 - (struct CGColor *)cgColor;
 - (Class)classForCoder;
@@ -167,22 +189,23 @@
 - (BOOL)getHue:(double *)arg1 saturation:(double *)arg2 brightness:(double *)arg3 alpha:(double *)arg4;
 - (BOOL)getRed:(double *)arg1 green:(double *)arg2 blue:(double *)arg3 alpha:(double *)arg4;
 - (BOOL)getWhite:(double *)arg1 alpha:(double *)arg2;
-- (unsigned long long)hash;
 - (id)initWithCGColor:(struct CGColor *)arg1;
 - (id)initWithCIColor:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDisplayP3Red:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
 - (id)initWithHue:(double)arg1 saturation:(double)arg2 brightness:(double)arg3 alpha:(double)arg4;
+- (id)initWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 - (id)initWithPatternImage:(id)arg1;
 - (id)initWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
 - (id)initWithWhite:(double)arg1 alpha:(double)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isPatternColor;
+- (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)registerLoadHandlersToItemProvider:(id)arg1;
 - (void)set;
 - (void)setFill;
 - (void)setStroke;
 - (id)styleString;
-- (id)ui_highlightedColor;
 
 @end
 

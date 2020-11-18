@@ -22,6 +22,7 @@
     long long notificationBehavior;
     SBLockScreenLegibilitySettings *legibilitySettings;
     NSArray *elementOverrides;
+    struct CGRect presentationRegion;
 }
 
 @property (readonly, nonatomic) long long backgroundStyle;
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic, getter=isHidden) BOOL hidden;
 @property (readonly, strong, nonatomic) SBLockScreenLegibilitySettings *legibilitySettings;
 @property (readonly, nonatomic) long long notificationBehavior;
+@property (readonly, nonatomic) struct CGRect presentationRegion;
 @property (readonly, nonatomic) long long presentationStyle;
 @property (readonly, nonatomic) unsigned long long restrictedCapabilities;
 @property (readonly) Class superclass;
@@ -47,6 +49,7 @@
 - (void)setHidden:(BOOL)arg1;
 - (void)setLegibilitySettings:(id)arg1;
 - (void)setNotificationBehavior:(long long)arg1;
+- (void)setPresentationRegion:(struct CGRect)arg1;
 - (void)setPresentationStyle:(long long)arg1;
 - (void)setRestrictedCapabilities:(unsigned long long)arg1;
 - (id)succinctDescription;

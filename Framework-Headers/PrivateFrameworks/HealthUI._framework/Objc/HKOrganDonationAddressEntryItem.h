@@ -4,17 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HealthUI/HKSimpleDataEntryItem.h>
 
 #import <HealthUI/HKSimpleDataEntryCellDelegate-Protocol.h>
-#import <HealthUI/HKSimpleDataEntryItemType-Protocol.h>
 #import <HealthUI/UIPickerViewDataSource-Protocol.h>
 #import <HealthUI/UIPickerViewDelegate-Protocol.h>
 
 @class HKOrganDonationAddressCell, NSArray, NSDictionary, NSString, UIPickerView;
-@protocol HKSimpleDataEntryItemDelegate;
 
-@interface HKOrganDonationAddressEntryItem : NSObject <UIPickerViewDelegate, UIPickerViewDataSource, HKSimpleDataEntryCellDelegate, HKSimpleDataEntryItemType>
+@interface HKOrganDonationAddressEntryItem : HKSimpleDataEntryItem <UIPickerViewDelegate, UIPickerViewDataSource, HKSimpleDataEntryCellDelegate>
 {
     HKOrganDonationAddressCell *_cell;
     NSString *_address1;
@@ -25,30 +23,22 @@
     UIPickerView *_statePicker;
     NSDictionary *_statesDict;
     NSArray *_sortedStateKeys;
-    id<HKSimpleDataEntryItemDelegate> _delegate;
-    unsigned long long _placeholderType;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<HKSimpleDataEntryItemDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) unsigned long long placeholderType; // @synthesize placeholderType=_placeholderType;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)beginEditing;
 - (id)cell;
 - (id)formattedKeyAndValue;
 - (id)initWithRegistrant:(id)arg1;
-- (void)localeDidChange:(id)arg1;
 - (long long)numberOfComponentsInPickerView:(id)arg1;
 - (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;
 - (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;
 - (id)pickerView:(id)arg1 titleForRow:(long long)arg2 forComponent:(long long)arg3;
-- (void)textFieldDidBeginEditing:(id)arg1 forCell:(id)arg2;
 - (void)textFieldDidChangeValue:(id)arg1 forCell:(id)arg2;
-- (void)textFieldDidEndEditing:(id)arg1 forCell:(id)arg2;
 - (void)updateCellDisplay;
 
 @end

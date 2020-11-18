@@ -6,23 +6,19 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSMutableArray, _AVViewSublayerAnimationDelegateProxy;
-
-__attribute__((visibility("hidden")))
 @interface AVView : UIView
 {
-    NSMutableArray *_sublayers;
-    _AVViewSublayerAnimationDelegateProxy *_sublayerAnimationDelegateProxy;
+    BOOL _ignoresTouches;
+    struct NSDirectionalEdgeInsets _hitRectInsets;
 }
 
-@property (readonly, nonatomic) NSArray *sublayers;
+@property (nonatomic) struct NSDirectionalEdgeInsets hitRectInsets; // @synthesize hitRectInsets=_hitRectInsets;
+@property (nonatomic) BOOL ignoresTouches; // @synthesize ignoresTouches=_ignoresTouches;
 
-- (void).cxx_destruct;
-- (void)addSublayer:(id)arg1;
-- (void)dealloc;
+- (struct CGRect)hitRect;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutSublayersOfLayer:(id)arg1;
-- (void)removeSublayer:(id)arg1;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 
 @end
 

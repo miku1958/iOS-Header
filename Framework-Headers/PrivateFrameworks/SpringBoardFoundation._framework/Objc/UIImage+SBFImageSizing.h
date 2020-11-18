@@ -8,9 +8,12 @@
 
 @interface UIImage (SBFImageSizing)
 - (id)sbf_cropImageWithRect:(struct CGRect)arg1 outputSize:(struct CGSize)arg2;
+- (id)sbf_cropImageWithRect:(struct CGRect)arg1 outputSize:(struct CGSize)arg2 canUseIOSurface:(BOOL)arg3;
 - (id)sbf_cropImageWithRect:(struct CGRect)arg1 outputSize:(struct CGSize)arg2 preservingAspectRatio:(BOOL)arg3;
+- (id)sbf_cropImageWithRect:(struct CGRect)arg1 outputSize:(struct CGSize)arg2 preservingAspectRatio:(BOOL)arg3 canUseIOSurface:(BOOL)arg4;
 - (id)sbf_resizeImageToSize:(struct CGSize)arg1;
 - (id)sbf_resizeImageToSize:(struct CGSize)arg1 preservingAspectRatio:(BOOL)arg2;
 - (id)sbf_scaleImage:(double)arg1;
+- (id)sbf_scaleImage:(double)arg1 canUseIOSurface:(BOOL)arg2;
 @end
 

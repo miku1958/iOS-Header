@@ -44,7 +44,6 @@
 - (BOOL)_isEdited;
 - (BOOL)_isTextField;
 - (void)_setAutofilled:(BOOL)arg1;
-- (void)_setAutofilled:(BOOL)arg1;
 - (id)autocomplete;
 - (BOOL)capture;
 - (BOOL)checkValidity;

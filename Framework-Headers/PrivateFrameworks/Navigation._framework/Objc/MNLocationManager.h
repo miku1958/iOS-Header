@@ -12,11 +12,13 @@
 @class CLHeading, GEOLocationShifter, MNLocation, NSBundle, NSDate, NSError, NSHashTable, NSLock, NSString;
 @protocol MNLocationProvider, MNLocationRecorder;
 
-__attribute__((visibility("hidden")))
 @interface MNLocationManager : NSObject <GEOResourceManifestTileGroupObserver, MNLocationProviderDelegate>
 {
+    unsigned long long _locationProviderType;
     id<MNLocationProvider> _locationProvider;
     id<MNLocationRecorder> _locationRecorder;
+    NSBundle *_effectiveBundle;
+    NSString *_effectiveBundleIdentifier;
     NSHashTable *_locationObservers;
     NSHashTable *_locationListeners;
     NSHashTable *_headingObservers;
@@ -28,18 +30,18 @@ __attribute__((visibility("hidden")))
     double _lastLocationUpdateTime;
     double _lastLocationReportTime;
     double _locationUpdateStartTime;
+    double _expectedGpsUpdateInterval;
     CLHeading *_heading;
     NSDate *_lastUpdatedHeadingDate;
     BOOL _hasCustomDesiredAccuracy;
-    BOOL _enabled;
     BOOL _trackingLocation;
     BOOL _logStartStopLocationUpdates;
     BOOL _isLastLocationStale;
     BOOL _lastLocationPushed;
     BOOL _useCourseForHeading;
     BOOL _trackingHeading;
-    NSError *_locationError;
     CDUnknownBlockType _locationCorrector;
+    NSError *_locationError;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -54,11 +56,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) CLHeading *heading; // @synthesize heading=_heading;
 @property (nonatomic) int headingOrientation;
 @property (readonly, nonatomic) BOOL isHeadingServicesAvailable;
-@property (readonly, nonatomic) BOOL isLastLocationStale;
+@property (readonly, nonatomic) BOOL isLastLocationStale; // @synthesize isLastLocationStale=_isLastLocationStale;
 @property (readonly, nonatomic) MNLocation *lastLocation;
 @property (copy, nonatomic) CDUnknownBlockType locationCorrector; // @synthesize locationCorrector=_locationCorrector;
 @property (readonly, nonatomic) NSError *locationError; // @synthesize locationError=_locationError;
-@property (strong, nonatomic) id<MNLocationProvider> locationProvider;
+@property (strong, nonatomic) id<MNLocationProvider> locationProvider; // @synthesize locationProvider=_locationProvider;
+@property (readonly, nonatomic) unsigned long long locationProviderType; // @synthesize locationProviderType=_locationProviderType;
 @property (strong, nonatomic) id<MNLocationRecorder> locationRecorder; // @synthesize locationRecorder=_locationRecorder;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double timeScale;
@@ -70,13 +73,13 @@ __attribute__((visibility("hidden")))
 - (void)_reportLocationReset;
 - (void)_reportLocationStatus:(SEL)arg1;
 - (void)_reportLocationSuccess;
+- (void)_reset;
 - (void)_setLastLocationReceivedFromMaps:(id)arg1;
 - (void)_setTrackingHeading:(BOOL)arg1;
 - (void)_setTrackingLocation:(BOOL)arg1;
 - (void)_startLocationUpdateWithObserver:(id)arg1 desiredAccuracy:(double)arg2;
-- (void)_syncLocationProviderWithTracking;
-- (void)_useCoreLocationProvider;
 - (long long)activityType;
+- (void)addLocationListener:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (BOOL)isLocationServicesApproved;
@@ -86,9 +89,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isLocationServicesPossiblyAvailable;
 - (BOOL)isLocationServicesPossiblyAvailable:(id *)arg1;
 - (BOOL)isLocationServicesRestricted;
-- (id)lastGoodLocation;
-- (int)lastLocationSource;
-- (void)listenForLocationUpdates:(id)arg1;
 - (void)locationProvider:(id)arg1 didReceiveError:(id)arg2;
 - (void)locationProvider:(id)arg1 didUpdateHeading:(id)arg2;
 - (void)locationProvider:(id)arg1 didUpdateLocation:(id)arg2;
@@ -99,15 +99,20 @@ __attribute__((visibility("hidden")))
 - (void)locationProviderDidResumeLocationUpdates:(id)arg1;
 - (BOOL)locationProviderShouldPauseLocationUpdates:(id)arg1;
 - (void)pushLocation:(id)arg1;
-- (void)reset;
+- (void)removeLocationListener:(id)arg1;
 - (void)resourceManifestManager:(id)arg1 didChangeActiveTileGroup:(id)arg2 fromOldTileGroup:(id)arg3;
 - (void)setActivityType:(long long)arg1;
 - (void)setLastLocation:(id)arg1;
+- (void)setLocationProviderType:(unsigned long long)arg1;
 - (void)startHeadingUpdateWithObserver:(id)arg1;
 - (void)startLocationUpdateWithObserver:(id)arg1;
+- (void)stop;
 - (void)stopHeadingUpdateWithObserver:(id)arg1;
-- (void)stopListeningForLocationUpdates:(id)arg1;
 - (void)stopLocationUpdateWithObserver:(id)arg1;
+- (void)useGPSLocationProvider;
+- (void)useHybridLocationProvider;
+- (void)useLeechedLocationProvider;
+- (void)useTraceLocationProvider:(id)arg1;
 
 @end
 

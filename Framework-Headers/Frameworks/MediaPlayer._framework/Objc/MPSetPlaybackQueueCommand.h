@@ -6,12 +6,15 @@
 
 #import <MediaPlayer/MPRemoteCommand.h>
 
-@class NSMutableDictionary, NSObject;
+@class NSMutableDictionary, NSMutableSet, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface MPSetPlaybackQueueCommand : MPRemoteCommand
 {
     NSMutableDictionary *_registeredSpecializedQueues;
+    NSMutableSet *_registeredQueueTypes;
+    NSMutableSet *_registeredCustomQueueIdentifiers;
+    BOOL _supportsSharedQueue;
     NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
@@ -19,7 +22,12 @@
 - (id)_mediaRemoteCommandInfoOptions;
 - (id)initWithMediaRemoteCommandType:(unsigned int)arg1;
 - (void)registerSpecializedQueueIdentifier:(id)arg1 localizedName:(id)arg2 queueType:(long long)arg3 queueParameters:(id)arg4;
+- (void)registerSupportedCustomQueueIdentifier:(id)arg1;
+- (void)registerSupportedQueueType:(long long)arg1;
+- (void)setSupportedSharedQueue:(BOOL)arg1;
 - (void)unregisterSpecializedQueueIdentifier:(id)arg1;
+- (void)unregisterSupportedCustomQueueIdentifier:(id)arg1;
+- (void)unregisterSupportedQueueType:(long long)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOTileKeyList, NSMutableArray, NSMutableSet, _GEOTransitPreloadCamera;
 
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     GEOTileKeyList *_tilesLoadingOrLoaded;
     GEOTileKeyList *_tilesReceived;
     GEOTileKeyList *_tilesMissed;
-    NSMutableSet *_placecardsLoadingOrLoaded;
     NSMutableSet *_placecardsReceived;
     NSMutableSet *_placecardsMissed;
     NSMutableArray *_preloadBatches;
@@ -26,7 +25,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _GEOTransitPreloadCamera *camera; // @synthesize camera=_camera;
 @property (nonatomic) unsigned long long currentBatchGeneration; // @synthesize currentBatchGeneration=_currentBatchGeneration;
 @property (nonatomic) BOOL isSufficientlyLoaded; // @synthesize isSufficientlyLoaded=_isSufficientlyLoaded;
-@property (strong, nonatomic) NSMutableSet *placecardsLoadingOrLoaded; // @synthesize placecardsLoadingOrLoaded=_placecardsLoadingOrLoaded;
 @property (strong, nonatomic) NSMutableSet *placecardsMissed; // @synthesize placecardsMissed=_placecardsMissed;
 @property (strong, nonatomic) NSMutableSet *placecardsReceived; // @synthesize placecardsReceived=_placecardsReceived;
 @property (strong, nonatomic) NSMutableArray *preloadBatches; // @synthesize preloadBatches=_preloadBatches;
@@ -34,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOTileKeyList *tilesMissed; // @synthesize tilesMissed=_tilesMissed;
 @property (strong, nonatomic) GEOTileKeyList *tilesReceived; // @synthesize tilesReceived=_tilesReceived;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

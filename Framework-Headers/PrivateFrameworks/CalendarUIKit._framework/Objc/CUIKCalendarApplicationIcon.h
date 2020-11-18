@@ -26,11 +26,13 @@
 + (BOOL)_isDate:(id)arg1 withinPreviousWeekOfDate:(id)arg2 calendar:(id)arg3;
 + (BOOL)_isWithinNextWeek:(id)arg1 calendar:(id)arg2;
 + (BOOL)_isWithinPreviousWeek:(id)arg1 calendar:(id)arg2;
++ (id)_whiteImage;
 + (id)croppedIconImage:(id)arg1 format:(int)arg2;
 + (void)drawIconInContext:(struct CGContext *)arg1 imageSize:(struct CGSize)arg2 iconBase:(id)arg3 date:(id)arg4 calendar:(id)arg5 format:(int)arg6;
 + (void)drawIconInContext:(struct CGContext *)arg1 imageSize:(struct CGSize)arg2 iconBase:(id)arg3 dateComponents:(id)arg4 dateNameFormatType:(long long)arg5 format:(long long)arg6 showGrid:(BOOL)arg7;
 + (long long)dynamicIconFormat:(int)arg1;
 + (BOOL)formatSupportsDynamicIcon:(int)arg1;
++ (id)getMaskedIconImageWithFormat:(int)arg1 imageScale:(double)arg2;
 + (id)getUnmaskedIconImage:(int)arg1;
 + (id)iconImageWithDate:(id)arg1 calendar:(id)arg2 format:(int)arg3;
 + (id)iconImageWithDate:(id)arg1 calendar:(id)arg2 format:(int)arg3 outline:(BOOL)arg4;

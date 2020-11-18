@@ -4,20 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <EventKitUI/EKUIConstrainedFontsTableViewCell.h>
+#import <EventKitUI/EKUITableViewCell.h>
 
-@class UIView;
-
-@interface EKRecurrenceTypeTableViewCell : EKUIConstrainedFontsTableViewCell
+@interface EKRecurrenceTypeTableViewCell : EKUITableViewCell
 {
-    UIView *_checkmarkView;
     BOOL _checked;
 }
 
 @property (nonatomic, getter=isChecked) BOOL checked; // @synthesize checked=_checked;
 
-- (void).cxx_destruct;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end
 

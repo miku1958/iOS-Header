@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOLocation, GEONavigationMatchInfo, GEORoadMatch, GEORouteMatch;
 
@@ -28,7 +28,7 @@
 + (id)matchResultWithRawLocation:(id)arg1;
 + (id)matchResultWithRoadMatch:(id)arg1 location:(id)arg2;
 + (id)matchResultWithRouteMatch:(id)arg1 location:(id)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithRawLocation:(id)arg1;
 - (id)initWithRoadMatch:(id)arg1 location:(id)arg2;
 - (id)initWithRouteMatch:(id)arg1 location:(id)arg2;

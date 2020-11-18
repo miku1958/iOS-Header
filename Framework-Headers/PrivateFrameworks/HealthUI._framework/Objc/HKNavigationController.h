@@ -6,11 +6,12 @@
 
 #import <UIKit/UINavigationController.h>
 
+#import <HealthUI/HKTabBarTapObserver-Protocol.h>
 #import <HealthUI/UINavigationControllerDelegate-Protocol.h>
 
 @class HKProfileBarButtonItem, NSString;
 
-@interface HKNavigationController : UINavigationController <UINavigationControllerDelegate>
+@interface HKNavigationController : UINavigationController <HKTabBarTapObserver, UINavigationControllerDelegate>
 {
     HKProfileBarButtonItem *_commonProfileBarButtonItem;
 }
@@ -22,7 +23,9 @@
 
 - (void).cxx_destruct;
 - (id)commonProfileBarButtonItem;
-- (id)initWithNavigationBarClass:(Class)arg1 toolbarClass:(Class)arg2;
+- (void)didChangeToAnotherTab;
+- (void)didTapTabBarIcon;
+- (id)initLargeTitlesNavigationControllerWithRootViewController:(id)arg1;
 - (id)initWithRootViewController:(id)arg1;
 - (unsigned long long)navigationControllerSupportedInterfaceOrientations:(id)arg1;
 

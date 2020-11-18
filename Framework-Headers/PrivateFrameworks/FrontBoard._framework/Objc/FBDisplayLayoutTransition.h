@@ -12,27 +12,27 @@
 {
     NSString *_name;
     NSString *_transitionReason;
-    unsigned long long _displayType;
+    long long _displayType;
     BOOL _transitioning;
     long long _interfaceOrientation;
     long long _backlightLevel;
 }
 
 @property (nonatomic) long long backlightLevel; // @synthesize backlightLevel=_backlightLevel;
-@property (readonly, nonatomic) unsigned long long displayType; // @synthesize displayType=_displayType;
+@property (readonly, nonatomic) long long displayType; // @synthesize displayType=_displayType;
 @property (nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *transitionReason; // @synthesize transitionReason=_transitionReason;
 @property (readonly, nonatomic, getter=isTransitioning) BOOL transitioning; // @synthesize transitioning=_transitioning;
 
-+ (void)flushLayoutForDisplayType:(unsigned long long)arg1;
-+ (BOOL)isTransitioningForDisplayType:(unsigned long long)arg1;
-+ (id)layoutForDisplayType:(unsigned long long)arg1;
++ (void)flushLayoutForDisplayType:(long long)arg1;
++ (BOOL)isTransitioningForDisplayType:(long long)arg1;
++ (id)layoutForDisplayType:(long long)arg1;
 - (void)beginTransition;
 - (void)dealloc;
 - (id)description;
 - (void)endTransition;
-- (id)initWithDisplayType:(unsigned long long)arg1 name:(id)arg2;
+- (id)initWithDisplayType:(long long)arg1 name:(id)arg2;
 
 @end
 

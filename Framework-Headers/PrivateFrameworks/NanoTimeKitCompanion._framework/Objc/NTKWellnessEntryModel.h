@@ -45,7 +45,9 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL userHasDoneActivitySetup;
 
++ (id)_LocalizedStringWithActiveEnergy:(id)arg1;
 + (id)_activityTemplateWithFamily:(long long)arg1 entryModel:(id)arg2;
++ (id)formattingManager;
 + (id)idealizedEntryModel;
 + (id)largeModular:(id)arg1;
 + (id)largeUtility:(id)arg1;

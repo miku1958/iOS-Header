@@ -26,6 +26,9 @@
     double _lastBriskPercentage;
     double _lastSedentaryPercentage;
     double _blinkerAndSecondsWidth;
+    long long _energyStringMetricWidth;
+    long long _briskStringMetricWidth;
+    long long _standStringMetricWidth;
     BOOL _useTimeTravelStyleForTimeLabel;
     BOOL _showSeconds;
     double _rightTimeViewInset;
@@ -40,11 +43,11 @@
 @property (strong, nonatomic) NTKDigitalTimeLabel *timeView; // @dynamic timeView;
 @property (nonatomic) BOOL useTimeTravelStyleForTimeLabel; // @synthesize useTimeTravelStyleForTimeLabel=_useTimeTravelStyleForTimeLabel;
 
-+ (id)_additionalPrelaunchApplicationIdentifiers;
 + (id)_newRingsView;
 + (void)_prewarm;
 + (id)_swatchColorForColorOption:(id)arg1;
 - (void).cxx_destruct;
+- (id)_additionalPrelaunchApplicationIdentifiers;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyCurrentEntryModelByFraction:(double)arg1 updateLabels:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)_applyCurrentRingLayout;

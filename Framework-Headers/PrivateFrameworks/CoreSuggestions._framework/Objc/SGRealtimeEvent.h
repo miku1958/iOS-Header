@@ -8,10 +8,11 @@
 
 #import <CoreSuggestions/NSCopying-Protocol.h>
 #import <CoreSuggestions/NSSecureCoding-Protocol.h>
+#import <CoreSuggestions/SGRealtimeSuggestion-Protocol.h>
 
 @class NSString, SGEvent;
 
-@interface SGRealtimeEvent : NSObject <NSSecureCoding, NSCopying>
+@interface SGRealtimeEvent : NSObject <NSSecureCoding, NSCopying, SGRealtimeSuggestion>
 {
     BOOL _isHarvested;
     int _state;
@@ -19,10 +20,14 @@
     NSString *_eventIdentifier;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) SGEvent *event; // @synthesize event=_event;
 @property (readonly, nonatomic) NSString *eventIdentifier; // @synthesize eventIdentifier=_eventIdentifier;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isHarvested; // @synthesize isHarvested=_isHarvested;
 @property (readonly, nonatomic) int state; // @synthesize state=_state;
+@property (readonly) Class superclass;
 
 + (id)realtimeEventForCanceledEvent:(id)arg1 eventIdentifier:(id)arg2;
 + (id)realtimeEventForCanceledEvent:(id)arg1 eventIdentifier:(id)arg2 harvested:(BOOL)arg3;
@@ -37,9 +42,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithState:(int)arg1 event:(id)arg2 eventIdentifier:(id)arg3 harvested:(BOOL)arg4;
 - (BOOL)isEqual:(id)arg1;

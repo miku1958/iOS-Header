@@ -36,6 +36,7 @@
 - (id)suggestionsURLForUserTypedString:(id)arg1;
 - (BOOL)urlIsValidSearch:(id)arg1;
 - (id)userVisibleQueryFromSearchURL:(id)arg1;
+- (id)userVisibleQueryFromSearchURL:(id)arg1 allowQueryThatLooksLikeURL:(BOOL)arg2;
 
 @end
 

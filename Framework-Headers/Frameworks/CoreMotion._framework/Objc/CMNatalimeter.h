@@ -18,6 +18,7 @@
 + (double)activeMetsThreshold;
 + (double)briskMinuteMetsThreshold;
 + (id)computeRestingCaloriesAtRate:(unsigned long long)arg1 user:(id)arg2 duration:(double)arg3;
++ (double)computeTimeToActiveCalories:(id)arg1 user:(id)arg2 workoutType:(long long)arg3;
 + (id)defaultUserProfile;
 + (BOOL)isNatalimeterAvailable;
 + (id)maxNatalieEntries;

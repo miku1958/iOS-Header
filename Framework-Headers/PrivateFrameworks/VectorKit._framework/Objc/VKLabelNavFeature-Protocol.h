@@ -10,11 +10,14 @@
 
 @property (readonly, nonatomic) long long intraRoadPriority;
 @property (readonly, nonatomic) BOOL isAwayFromRoute;
+@property (readonly, nonatomic) BOOL isEtaFeature;
 @property (readonly, nonatomic) BOOL isGuidanceStepStart;
 @property (readonly, nonatomic) BOOL isInGuidance;
 @property (readonly, nonatomic) BOOL isOnRoute;
+@property (nonatomic) BOOL isPicked;
 @property (readonly, nonatomic) BOOL isRamp;
 @property (readonly, nonatomic) BOOL isStartOfRoadName;
+@property (readonly, nonatomic) BOOL isTrafficCameraFeature;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) struct PolylineCoordinate routeOffset;
 @property (readonly, nonatomic) NSString *shieldDisplayGroup;

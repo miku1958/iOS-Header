@@ -19,16 +19,19 @@
     BOOL _interactive;
     BOOL _startedInteractively;
     double _interactiveProgress;
+    double _visibleInteractiveProgress;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) double imageModulationIntensity;
 @property (nonatomic, getter=isInteractive, setter=_setInteractive:) BOOL interactive; // @synthesize interactive=_interactive;
 @property (nonatomic, setter=_setInteractiveProgress:) double interactiveProgress; // @synthesize interactiveProgress=_interactiveProgress;
 @property (nonatomic) BOOL startedInteractively; // @synthesize startedInteractively=_startedInteractively;
 @property (readonly) Class superclass;
+@property (nonatomic) double visibleInteractiveProgress; // @synthesize visibleInteractiveProgress=_visibleInteractiveProgress;
 
 + (id)interactionControllerForAnimationController:(id)arg1;
 - (void).cxx_destruct;
@@ -43,6 +46,7 @@
 - (struct CGRect)finalToViewFrame;
 - (void)finishInteractiveTransition;
 - (id)fromViewController;
+- (void)imageModulationIntensityDidChange;
 - (id)initWithDuration:(double)arg1;
 - (struct CGRect)initialFromViewFrame;
 - (struct CGRect)initialToViewFrame;
@@ -51,6 +55,7 @@
 - (id)transitionContext;
 - (double)transitionDuration:(id)arg1;
 - (void)updateInteractiveTransitionProgress:(double)arg1;
+- (void)updateInteractiveTransitionProgress:(double)arg1 visibleTransitionProgress:(double)arg2;
 
 @end
 

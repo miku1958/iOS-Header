@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) BOOL isMoreToLoad;
 
 + (id)_charactersToIgnoreWhenParsingTextContent;
+- (id)_firstMessage;
 - (void)_handleItem:(id)arg1;
 - (unsigned long long)_indexOfItem:(id)arg1;
 - (id)_initWithItems:(id)arg1;

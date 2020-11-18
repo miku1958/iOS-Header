@@ -6,7 +6,7 @@
 
 #import <AVFoundation/AVCaptureDevice.h>
 
-@class AVCaptureDeviceControlRequestQueue, AVCaptureDeviceFormat, AVWeakReference, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString;
+@class AVCaptureDeviceControlRequestQueue, AVCaptureDeviceFormat, AVCaptureSystemPressureState, AVWeakReference, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface AVCaptureFigVideoDevice : AVCaptureDevice
@@ -21,6 +21,7 @@
     NSString *_localizedName;
     NSArray *_formats;
     AVCaptureDeviceFormat *_activeFormat;
+    AVCaptureDeviceFormat *_activeDepthDataFormat;
     CDStruct_1b6d18a9 _activeMinFrameDuration;
     BOOL _activeMinFrameDurationSetByClient;
     CDStruct_1b6d18a9 _activeMaxFrameDuration;
@@ -87,8 +88,6 @@
     BOOL _sceneIsHighDynamicRange;
     BOOL _isStillImageStabilizationScene;
     long long _activeColorSpace;
-    float _saturation;
-    float _contrast;
     long long _videoZoomDownscaleStageHint;
     long long _videoZoomUpscaleStageHint;
     float _videoZoomFactor;
@@ -96,8 +95,9 @@
     int _videoZoomRampCounter;
     float _videoZoomRampAcceleration;
     BOOL _videoZoomDrawOverlay;
-    float _minAvailableVideoZoomFactor;
-    BOOL _autoShallowDepthOfFieldEffectEnabled;
+    double _minAvailableVideoZoomFactor;
+    double _maxAvailableVideoZoomFactor;
+    BOOL _depthDataDeliveryEnabled;
     long long _shallowDepthOfFieldEffectStatus;
     NSString *_bravoCameraSelectionBehavior;
     AVWeakReference *_weakReference;
@@ -113,6 +113,7 @@
     NSMutableDictionary *_observedHighFrequencyPropertyCounts;
     NSMutableDictionary *_propertyToFigCaptureSourcePropertyMap;
     NSMutableDictionary *_cachedFigCaptureSourceProperties;
+    AVCaptureSystemPressureState *_systemPressureState;
 }
 
 + (BOOL)_cameraAccessIsEnabled;
@@ -139,6 +140,7 @@
 - (BOOL)_hasKeyValueObserversForHighFrequencyProperty:(id)arg1;
 - (void)_incrementObserverCountForHighFrequencyProperty:(id)arg1;
 - (id)_initWithFigCaptureSource:(struct OpaqueFigCaptureSource *)arg1;
+- (BOOL)_isDepthDataDeliveryEnabled;
 - (BOOL)_isFlashScene;
 - (BOOL)_isHighDynamicRangeScene;
 - (BOOL)_isStillImageStabilizationScene;
@@ -147,6 +149,7 @@
 - (void)_performBlockOnMainThread:(CDUnknownBlockType)arg1;
 - (double)_predictedTempForGains:(CDStruct_d6531dd4)arg1;
 - (void)_rampToVideoZoomFactor:(double)arg1 withRate:(float)arg2 duration:(double)arg3 rampType:(int)arg4;
+- (id)_recommendedFrameRateRangeForVideoFormat:(id)arg1 depthFormat:(id)arg2 systemPressureLevel:(id)arg3;
 - (void)_reconnectToFigCaptureSource:(struct OpaqueFigCaptureSource *)arg1;
 - (void)_restoreFigCaptureSourceProperties;
 - (void)_setActiveFormat:(id)arg1 resetVideoZoomFactorAndMinMaxFrameDurations:(BOOL)arg2;
@@ -158,6 +161,7 @@
 - (void)_setAdjustingFocus:(BOOL)arg1;
 - (void)_setAdjustingWhiteBalance:(BOOL)arg1;
 - (void)_setBravoCameraSelectionBehavior:(id)arg1;
+- (void)_setDepthDataDeliveryEnabled:(BOOL)arg1;
 - (int)_setExposureWithMode:(long long)arg1 duration:(CDStruct_1b6d18a9)arg2 ISO:(float)arg3 requestID:(int)arg4 newMaxFrameDuration:(CDStruct_1b6d18a9 *)arg5;
 - (int)_setFaceDetectionFeatureEnabled:(BOOL)arg1 enabledState:(BOOL *)arg2;
 - (void)_setFigCaptureSource:(struct OpaqueFigCaptureSource *)arg1;
@@ -166,17 +170,16 @@
 - (void)_setFlashActive:(BOOL)arg1;
 - (void)_setFlashAvailable:(BOOL)arg1;
 - (void)_setFlashSceneDetectedForPhotoOutput:(BOOL)arg1;
-- (void)_setFlashSceneDetectionEnabled:(BOOL)arg1;
 - (int)_setFocusWithMode:(long long)arg1 lensPosition:(float)arg2 requestID:(int)arg3;
 - (void)_setHighDynamicRangeScene:(BOOL)arg1;
-- (void)_setHighDynamicRangeSceneDetectionEnabled:(BOOL)arg1;
 - (void)_setImageControlMode:(long long)arg1;
 - (void)_setIsStillImageStabilizationScene:(BOOL)arg1;
 - (void)_setLowLightBoostEnabled:(BOOL)arg1;
+- (void)_setMaxAvailableVideoZoomFactor:(double)arg1;
 - (void)_setMinAvailableVideoZoomFactor:(double)arg1;
+- (void)_setPhotoSettingsForSceneMonitoring:(id)arg1;
 - (void)_setShallowDepthOfFieldEffectStatus:(long long)arg1;
 - (void)_setStillImageStabilizationAutomaticallyEnabled:(BOOL)arg1;
-- (void)_setStillImageStabilizationDetectionEnabled:(BOOL)arg1;
 - (void)_setTorchActive:(BOOL)arg1;
 - (void)_setTorchAvailable:(BOOL)arg1;
 - (void)_setTorchLevel:(float)arg1;
@@ -191,6 +194,7 @@
 - (double)_whiteBalanceMixingFactorForTemperature:(double)arg1;
 - (double)_whiteBalanceTemperatureForMixingFactor:(double)arg1;
 - (long long)activeColorSpace;
+- (id)activeDepthDataFormat;
 - (id)activeFormat;
 - (CDStruct_1b6d18a9)activeVideoMaxFrameDuration;
 - (CDStruct_1b6d18a9)activeVideoMinFrameDuration;
@@ -204,7 +208,6 @@
 - (BOOL)cachesFigCaptureSourceConfigurationChanges;
 - (void)cancelVideoZoomRamp;
 - (CDStruct_b2fbf00d)chromaticityValuesForDeviceWhiteBalanceGains:(CDStruct_d6531dd4)arg1;
-- (float)contrast;
 - (void)dealloc;
 - (struct OpaqueCMClock *)deviceClock;
 - (id)deviceFormatForSessionPreset:(id)arg1 videoFormat:(unsigned int)arg2;
@@ -213,6 +216,7 @@
 - (CDStruct_d6531dd4)deviceWhiteBalanceGains;
 - (CDStruct_d6531dd4)deviceWhiteBalanceGainsForChromaticityValues:(CDStruct_b2fbf00d)arg1;
 - (CDStruct_d6531dd4)deviceWhiteBalanceGainsForTemperatureAndTintValues:(CDStruct_b2fbf00d)arg1;
+- (double)dualCameraSwitchOverVideoZoomFactor;
 - (CDStruct_1b6d18a9)exposureDuration;
 - (long long)exposureMode;
 - (struct CGPoint)exposurePointOfInterest;
@@ -239,8 +243,9 @@
 - (BOOL)isAdjustingFocus;
 - (BOOL)isAdjustingWhiteBalance;
 - (BOOL)isAutoFocusRangeRestrictionSupported;
-- (BOOL)isAutoShallowDepthOfFieldEffectEnabled;
+- (BOOL)isCameraIntrinsicMatrixDeliverySupported;
 - (BOOL)isConnected;
+- (BOOL)isDiagnosticsTestSupported:(id)arg1;
 - (BOOL)isExposureModeSupported:(long long)arg1;
 - (BOOL)isExposurePointOfInterestSupported;
 - (BOOL)isEyeClosedDetectionSupported;
@@ -255,6 +260,9 @@
 - (BOOL)isFocusModeSupported:(long long)arg1;
 - (BOOL)isFocusPointOfInterestSupported;
 - (BOOL)isHDRSupported;
+- (BOOL)isHEIFSupported;
+- (BOOL)isHEVCPreferred;
+- (BOOL)isHEVCSupported;
 - (BOOL)isHighDynamicRangeScene;
 - (BOOL)isHighDynamicRangeSceneDetectionEnabled;
 - (BOOL)isHighDynamicRangeSceneDetectionSupported;
@@ -286,6 +294,7 @@
 - (float)lensPosition;
 - (id)localizedName;
 - (BOOL)lockForConfiguration:(id *)arg1;
+- (double)maxAvailableVideoZoomFactor;
 - (float)maxExposureTargetBias;
 - (CDStruct_79c71658)maxH264PhotoDimensions;
 - (CDStruct_79c71658)maxH264VideoDimensions;
@@ -301,18 +310,17 @@
 - (void)rampToVideoZoomFactor:(double)arg1 withRate:(float)arg2;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2 context:(void *)arg3;
-- (float)saturation;
+- (id)runDiagnosticsWithTestType:(id)arg1;
 - (void)setActiveColorSpace:(long long)arg1;
+- (void)setActiveDepthDataFormat:(id)arg1;
 - (void)setActiveFormat:(id)arg1;
 - (void)setActiveVideoMaxFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (void)setActiveVideoMinFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (void)setAutoFocusRangeRestriction:(long long)arg1;
-- (void)setAutoShallowDepthOfFieldEffectEnabled:(BOOL)arg1;
 - (void)setAutomaticallyAdjustsImageControlMode:(BOOL)arg1;
 - (void)setAutomaticallyAdjustsVideoHDREnabled:(BOOL)arg1;
 - (void)setAutomaticallyEnablesLowLightBoostWhenAvailable:(BOOL)arg1;
 - (void)setCachesFigCaptureSourceConfigurationChanges:(BOOL)arg1;
-- (void)setContrast:(float)arg1;
 - (void)setExposureMode:(long long)arg1;
 - (void)setExposureModeCustomWithDuration:(CDStruct_1b6d18a9)arg1 ISO:(float)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setExposurePointOfInterest:(struct CGPoint)arg1;
@@ -327,7 +335,6 @@
 - (void)setHighDynamicRangeSceneDetectionEnabled:(BOOL)arg1;
 - (void)setImageControlMode:(long long)arg1;
 - (void)setProvidesStortorgetMetadata:(BOOL)arg1;
-- (void)setSaturation:(float)arg1;
 - (void)setSmileDetectionEnabled:(BOOL)arg1;
 - (void)setSmoothAutoFocusEnabled:(BOOL)arg1;
 - (void)setSubjectAreaChangeMonitoringEnabled:(BOOL)arg1;
@@ -345,6 +352,7 @@
 - (BOOL)smileDetectionEnabled;
 - (id)supportedMetadataObjectIdentifiers;
 - (BOOL)supportsAVCaptureSessionPreset:(id)arg1;
+- (id)systemPressureState;
 - (CDStruct_b2fbf00d)temperatureAndTintValuesForDeviceWhiteBalanceGains:(CDStruct_d6531dd4)arg1;
 - (float)torchLevel;
 - (long long)torchMode;

@@ -6,26 +6,30 @@
 
 #import <PhotosGraph/PGFeaturedMemoryGenerator.h>
 
-@class NSDate, NSSet, NSString;
+@class NSSet, NSString;
 
 @interface PGPeopleMemoryGenerator : PGFeaturedMemoryGenerator
 {
-    NSDate *_localDate;
     NSString *_peopleUUID;
     NSSet *_peopleNodes;
+    NSSet *_birthdayPersonUUIDs;
     long long _year;
+    NSSet *_extraFeatures;
 }
 
-@property (strong, nonatomic) NSDate *localDate; // @synthesize localDate=_localDate;
+@property (strong, nonatomic) NSSet *birthdayPersonUUIDs; // @synthesize birthdayPersonUUIDs=_birthdayPersonUUIDs;
+@property (nonatomic) NSSet *extraFeatures; // @synthesize extraFeatures=_extraFeatures;
 @property (strong, nonatomic) NSSet *peopleNodes; // @synthesize peopleNodes=_peopleNodes;
 @property (strong, nonatomic) NSString *peopleUUID; // @synthesize peopleUUID=_peopleUUID;
 @property (nonatomic) long long year; // @synthesize year=_year;
 
 - (void).cxx_destruct;
-- (id)_contactIdentifiersOfPeopleWithBirthday:(id)arg1;
+- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)_generateExtendedCuratedSetForMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (id)_potentialMemories:(unsigned long long)arg1;
+- (id)_potentialMemoriesForDryTesting;
 - (void)_potentialMemoriesWithPeopleNode:(id)arg1 inYear:(long long)arg2 result:(CDUnknownBlockType)arg3;
+- (BOOL)_upcomingBirthdayWillCollideWithPotentialMemory:(id)arg1;
 
 @end
 

@@ -88,9 +88,11 @@
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_applicationWillResignActive:(id)arg1;
 - (void)_cleanupGL;
+- (double)_currentDisplayScale;
 - (float)_currentMicPowerLevel;
 - (int)_generateIndicesForNumCircleShapes:(int)arg1 withMaxSubdivisionLevel:(float)arg2 startingWithNumSubdivisionLevel:(float)arg3 forIndices:(unsigned int **)arg4 atStartIndex:(int)arg5 withFill:(BOOL)arg6 withCullingForAura:(BOOL)arg7 forVertices:(struct *)arg8;
 - (BOOL)_initGLAndSetupDisplayLink:(BOOL)arg1;
+- (BOOL)_isOriginatingProcessInBackground;
 - (unsigned int)_numVerticesPerCircle;
 - (MISSING_TYPE *)_predeterminedVertexPositionForAuraWithPolarVertex: /* Error: Ran out of types for this method. */;
 - (void)_prewarmShaders;
@@ -111,6 +113,7 @@
 - (void)_updateOrthoProjection;
 - (void)dealloc;
 - (void)didMoveToSuperview;
+- (void)fadeOutCurrentAura;
 - (BOOL)inDictationMode;
 - (BOOL)inSiriMode;
 - (id)initWithFrame:(struct CGRect)arg1 screen:(id)arg2 fidelity:(int)arg3;
@@ -123,6 +126,7 @@
 - (void)setHidden:(BOOL)arg1;
 - (void)setRenderingEnabled:(BOOL)arg1 forReason:(id)arg2;
 - (void)stopRenderingAndCleanupGL;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

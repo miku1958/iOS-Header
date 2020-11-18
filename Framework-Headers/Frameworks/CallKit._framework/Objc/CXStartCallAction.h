@@ -15,6 +15,7 @@
     BOOL _video;
     BOOL _relay;
     BOOL _upgrade;
+    BOOL _retry;
     BOOL _emergency;
     BOOL _voicemail;
     CXHandle *_handle;
@@ -35,6 +36,7 @@
 @property (nonatomic) struct CGSize localLandscapeAspectRatio; // @synthesize localLandscapeAspectRatio=_localLandscapeAspectRatio;
 @property (nonatomic) struct CGSize localPortraitAspectRatio; // @synthesize localPortraitAspectRatio=_localPortraitAspectRatio;
 @property (nonatomic, getter=isRelay) BOOL relay; // @synthesize relay=_relay;
+@property (nonatomic, getter=isRetry) BOOL retry; // @synthesize retry=_retry;
 @property (readonly) Class superclass;
 @property (nonatomic, setter=setTTYType:) long long ttyType; // @synthesize ttyType=_ttyType;
 @property (nonatomic, getter=isUpgrade) BOOL upgrade; // @synthesize upgrade=_upgrade;

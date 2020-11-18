@@ -59,7 +59,8 @@
 - (void)_notifyAssetsdOfIncomingMovieAtPath:(id)arg1 duration:(CDStruct_1b6d18a9)arg2 metadata:(id)arg3 state:(id)arg4;
 - (void)_performPendingWork;
 - (void)_permanentlyFailTimelapseUUID:(id)arg1 withState:(id)arg2;
-- (void)_reserveDummyFileForTimelapseUUID:(id)arg1 firstImageFilePath:(id)arg2;
+- (int)_pidForApplication:(id)arg1;
+- (void)_reserveDummyFileForTimelapseUUID:(id)arg1 firstImageFilePath:(id)arg2 useHEVC:(BOOL)arg3;
 - (void)_saveTimelapseDirectoryForDebuggingTimelapseUUID:(id)arg1;
 - (BOOL)_scheduleDelayedMovieWriteIfNeededForTimelapseUUID:(id)arg1;
 - (BOOL)_shouldSaveLastTimelapseDataForDebugging;

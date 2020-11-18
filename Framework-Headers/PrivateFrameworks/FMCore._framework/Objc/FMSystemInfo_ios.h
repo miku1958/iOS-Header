@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (id)_deviceInfoForKey:(struct __CFString *)arg1;
 - (id)_deviceInfoNumberForKey:(struct __CFString *)arg1;
 - (id)btMacAddress;
+- (id)chipId;
 - (id)deviceClass;
 - (id)deviceModelName;
 - (id)deviceName;
@@ -23,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasSEP;
 - (id)imei;
 - (BOOL)isDeviceSecured;
-- (BOOL)isInternalBuild;
 - (id)meid;
 - (id)osBuildVersion;
 - (id)osVersion;

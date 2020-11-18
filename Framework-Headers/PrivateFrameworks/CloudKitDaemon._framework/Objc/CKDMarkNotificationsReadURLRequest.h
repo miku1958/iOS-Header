@@ -21,12 +21,12 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType notificationMarkedReadProgressBlock; // @synthesize notificationMarkedReadProgressBlock=_notificationMarkedReadProgressBlock;
 
 - (void).cxx_destruct;
+- (id)generateRequestOperations;
 - (id)initWithNotificationIDsToMarkRead:(id)arg1;
 - (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 - (id)zoneIDsToLock;
 
 @end

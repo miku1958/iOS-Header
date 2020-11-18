@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOLogAdaptor-Protocol.h>
 
@@ -14,7 +14,6 @@
 @interface GEOBaseLogAdaptor : NSObject <GEOLogAdaptor>
 {
     NSMutableArray *_supportedLogMessageTypes;
-    NSMutableArray *_supportedLogMessageSubTypes;
     NSObject<OS_dispatch_queue> *_adaptorQueue;
 }
 
@@ -23,15 +22,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (BOOL)acceptsLogMessageOfType:(int)arg1 subType:(int)arg2;
+- (void).cxx_destruct;
+- (BOOL)acceptsLogMessageOfType:(int)arg1;
 - (id)adaptorQueue;
-- (void)addSupportForLogMessageType:(int)arg1 subType:(int)arg2;
-- (void)dealloc;
+- (void)addSupportForLogMessageType:(int)arg1;
 - (void)flushLogs;
 - (id)init;
 - (BOOL)isLogFrameworkAdaptor;
 - (void)queueLogMessage:(id)arg1;
-- (void)removeSupportForLogMessageType:(int)arg1 subType:(int)arg2;
+- (void)removeSupportForLogMessageType:(int)arg1;
 
 @end
 

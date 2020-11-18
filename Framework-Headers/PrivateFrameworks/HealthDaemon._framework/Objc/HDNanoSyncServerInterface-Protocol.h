@@ -9,6 +9,7 @@
 @class NSUUID;
 
 @protocol HDNanoSyncServerInterface <NSObject>
+- (void)remote_fetchNanoSyncPairedDevicesWithCompletion:(void (^)(HKNanoSyncPairedDevicesSnapshot *, NSError *))arg1;
 - (void)remote_forceNanoSyncWithOptions:(unsigned long long)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_resetNanoSyncWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_waitForLastChanceSyncWithDevicePairingID:(NSUUID *)arg1 timeout:(double)arg2 completion:(void (^)(BOOL, NSError *))arg3;

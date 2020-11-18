@@ -10,7 +10,7 @@
 #import <AccessibilityUtilities/NSCopying-Protocol.h>
 #import <AccessibilityUtilities/NSSecureCoding-Protocol.h>
 
-@class AXEventAccelerometerInfoRepresentation, AXEventData, AXEventGameControllerInfoRepresentation, AXEventHandInfoRepresentation, AXEventKeyInfoRepresentation, NSData, NSString;
+@class AXEventAccelerometerInfoRepresentation, AXEventData, AXEventGameControllerInfoRepresentation, AXEventHandInfoRepresentation, AXEventKeyInfoRepresentation, AXEventPointerInfoRepresentation, NSData, NSString;
 
 @interface AXEventRepresentation : NSObject <AXEventRepresentationDescription, NSSecureCoding, NSCopying>
 {
@@ -19,7 +19,9 @@
     BOOL _isGeneratedEvent;
     BOOL _useOriginalHIDTime;
     BOOL _redirectEvent;
+    BOOL _setTouchFlagOnSubevents;
     unsigned int _type;
+    unsigned int _originalType;
     int _subtype;
     int _flags;
     unsigned int _taskPort;
@@ -33,6 +35,7 @@
     AXEventKeyInfoRepresentation *_keyInfo;
     AXEventAccelerometerInfoRepresentation *_accelerometerInfo;
     AXEventGameControllerInfoRepresentation *_gameControllerInfo;
+    AXEventPointerInfoRepresentation *_pointerControllerInfo;
     NSString *_clientId;
     unsigned long long _HIDTime;
     NSData *_HIDAttributeData;
@@ -78,10 +81,13 @@
 @property (readonly, nonatomic) BOOL isUpdate;
 @property (strong, nonatomic) AXEventKeyInfoRepresentation *keyInfo; // @synthesize keyInfo=_keyInfo;
 @property (nonatomic) struct CGPoint location; // @synthesize location=_location;
+@property (nonatomic) unsigned int originalType; // @synthesize originalType=_originalType;
 @property (nonatomic) int pid; // @synthesize pid=_pid;
+@property (strong, nonatomic) AXEventPointerInfoRepresentation *pointerControllerInfo; // @synthesize pointerControllerInfo=_pointerControllerInfo;
 @property (nonatomic, getter=isRedirectEvent) BOOL redirectEvent; // @synthesize redirectEvent=_redirectEvent;
 @property (nonatomic) long long scrollAmount; // @synthesize scrollAmount=_scrollAmount;
 @property (nonatomic) unsigned long long senderID; // @synthesize senderID=_senderID;
+@property (nonatomic) BOOL setTouchFlagOnSubevents; // @synthesize setTouchFlagOnSubevents=_setTouchFlagOnSubevents;
 @property (nonatomic) int subtype; // @synthesize subtype=_subtype;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned int taskPort; // @synthesize taskPort=_taskPort;
@@ -93,9 +99,11 @@
 @property (nonatomic) void *window; // @synthesize window=_window;
 @property (nonatomic) struct CGPoint windowLocation; // @synthesize windowLocation=_windowLocation;
 
++ (void)_appendKeyInfoToMediaKey:(id)arg1 usage:(long long)arg2 downEvent:(BOOL)arg3;
 + (id)_digitizerRepresentation:(struct __IOHIDEvent *)arg1 hidStreamIdentifier:(id)arg2;
 + (id)_gameControllerEvent:(struct __IOHIDEvent *)arg1;
 + (id)_keyboardButtonEvent:(struct __IOHIDEvent *)arg1;
++ (id)_pointerControllerEvent:(struct __IOHIDEvent *)arg1;
 + (id)_wheelEvent:(struct __IOHIDEvent *)arg1;
 + (id)accelerometerRepresentation:(id)arg1;
 + (id)buttonRepresentationWithType:(unsigned int)arg1;
@@ -109,13 +117,14 @@
 + (id)representationWithType:(unsigned int)arg1 subtype:(int)arg2 time:(unsigned long long)arg3 location:(struct CGPoint)arg4 windowLocation:(struct CGPoint)arg5 handInfo:(id)arg6;
 + (BOOL)supportsSecureCoding;
 + (id)touchRepresentationWithHandType:(unsigned int)arg1 location:(struct CGPoint)arg2;
+- (void).cxx_destruct;
 - (BOOL)_HIDEventIsAccessibilityEvent:(struct __IOHIDEvent *)arg1;
 - (id)_accessibilityDataFromRealEvent:(struct __IOHIDEvent *)arg1;
 - (struct __IOHIDEvent *)_accessibilityEventFromRealEvent:(struct __IOHIDEvent *)arg1;
 - (void)_applyAccessibilityDataToRealEvent:(struct __IOHIDEvent *)arg1;
 - (unsigned int)_contextIDFromHIDEvent:(struct __IOHIDEvent *)arg1;
 - (struct __IOHIDEvent *)_newAccelerometerHIDEventRef;
-- (struct __IOHIDEvent *)_newButtonHIDEventRef;
+- (struct __IOHIDEvent *)_newButtonHIDEventRefWithType:(unsigned int)arg1;
 - (struct __IOHIDEvent *)_newHandHIDEventRef;
 - (struct __IOHIDEvent *)_newKeyboardHIDEventRef;
 - (id)_senderNameForID;

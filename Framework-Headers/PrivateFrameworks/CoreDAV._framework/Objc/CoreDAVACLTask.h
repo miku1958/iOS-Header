@@ -15,9 +15,9 @@
 }
 
 @property (strong, nonatomic) NSArray *accessControlEntities; // @synthesize accessControlEntities=_accessControlEntities;
-@property (nonatomic) id<CoreDAVACLTaskDelegate> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<CoreDAVACLTaskDelegate> delegate; // @dynamic delegate;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)finishCoreDAVTaskWithError:(id)arg1;
 - (id)httpMethod;

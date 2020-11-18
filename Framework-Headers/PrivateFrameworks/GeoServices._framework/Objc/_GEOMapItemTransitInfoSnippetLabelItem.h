@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOTransitLabelItem-Protocol.h>
 
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithType:(long long)arg1 labelString:(id)arg2 labelArtwork:(id)arg3;
 
 @end

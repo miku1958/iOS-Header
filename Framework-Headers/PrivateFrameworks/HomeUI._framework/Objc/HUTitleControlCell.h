@@ -6,29 +6,19 @@
 
 #import <HomeUI/HUControlPanelCell.h>
 
-@class NSArray, NSString, UILabel, UIView;
+@class NSString, UIView;
 @protocol HUControlView;
 
 @interface HUTitleControlCell : HUControlPanelCell
 {
-    UIView<HUControlView> *_controlView;
-    UILabel *_titleLabel;
-    NSArray *_titleLabelConstraints;
-    NSArray *_controlViewConstraints;
 }
 
 @property (copy, nonatomic) NSString *controlTitle;
-@property (strong, nonatomic) UIView<HUControlView> *controlView; // @synthesize controlView=_controlView;
-@property (copy, nonatomic) NSArray *controlViewConstraints; // @synthesize controlViewConstraints=_controlViewConstraints;
-@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property (copy, nonatomic) NSArray *titleLabelConstraints; // @synthesize titleLabelConstraints=_titleLabelConstraints;
+@property (strong, nonatomic) UIView<HUControlView> *controlView;
 
-+ (BOOL)requiresConstraintBasedLayout;
-- (void).cxx_destruct;
 - (id)allControlViews;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
-- (void)updateConstraints;
 
 @end
 

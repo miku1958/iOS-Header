@@ -29,9 +29,11 @@
 - (id<MTLComputeCommandEncoder>)computeCommandEncoder;
 - (void)enqueue;
 - (id<MTLParallelRenderCommandEncoder>)parallelRenderCommandEncoderWithDescriptor:(MTLRenderPassDescriptor *)arg1;
+- (void)popDebugGroup;
 - (void)presentDrawable:(id<MTLDrawable>)arg1;
 - (void)presentDrawable:(id<MTLDrawable>)arg1 afterMinimumDuration:(double)arg2;
 - (void)presentDrawable:(id<MTLDrawable>)arg1 atTime:(double)arg2;
+- (void)pushDebugGroup:(NSString *)arg1;
 - (id<MTLRenderCommandEncoder>)renderCommandEncoderWithDescriptor:(MTLRenderPassDescriptor *)arg1;
 - (void)waitUntilCompleted;
 - (void)waitUntilScheduled;

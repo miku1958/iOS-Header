@@ -7,25 +7,28 @@
 #import <UIKit/UICollectionViewCell.h>
 
 #import <HomeUI/HUCellProtocol-Protocol.h>
+#import <HomeUI/HUCollectionViewCellSeparatorsProtocol-Protocol.h>
 
 @class HFItem, HULinkedApplicationView, NSString, UIView;
+@protocol HUResizableCellDelegate;
 
-@interface HULinkedApplicationCollectionViewCell : UICollectionViewCell <HUCellProtocol>
+@interface HULinkedApplicationCollectionViewCell : UICollectionViewCell <HUCellProtocol, HUCollectionViewCellSeparatorsProtocol>
 {
     HULinkedApplicationView *_linkedApplicationView;
     UIView *_topSeparatorView;
     UIView *_bottomSeparatorView;
 }
 
-@property (strong, nonatomic) UIView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;
+@property (readonly, nonatomic) UIView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;
 @property (nonatomic) BOOL bottomSeparatorVisible;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HFItem *item;
-@property (strong, nonatomic) HULinkedApplicationView *linkedApplicationView; // @synthesize linkedApplicationView=_linkedApplicationView;
+@property (readonly, nonatomic) HULinkedApplicationView *linkedApplicationView; // @synthesize linkedApplicationView=_linkedApplicationView;
+@property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UIView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;
+@property (readonly, nonatomic) UIView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;
 @property (nonatomic) BOOL topSeparatorVisible;
 
 - (void).cxx_destruct;

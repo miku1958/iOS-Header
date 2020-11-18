@@ -48,6 +48,7 @@
 - (void)setContentVisible:(BOOL)arg1;
 - (void)setKeyboardVisible:(BOOL)arg1;
 - (void)setMessageBody:(id)arg1 isHTML:(BOOL)arg2;
+- (void)setPreferredSendingEmailAddress:(id)arg1;
 - (void)setSourceAccountManagement:(int)arg1;
 - (void)setSubject:(id)arg1;
 - (void)setToRecipients:(id)arg1;

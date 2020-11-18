@@ -6,7 +6,7 @@
 
 #import <CoreHandwriting/CHRecognitionResult.h>
 
-@class NSArray, NSString;
+@class NSArray, NSIndexSet, NSString;
 
 @interface CHTextRecognitionResult : CHRecognitionResult
 {
@@ -14,16 +14,32 @@
     NSString *_string;
     NSArray *_wordRanges;
     NSArray *_wordIDs;
+    NSArray *_wordScores;
+    NSArray *_wordStrokeSets;
+    NSArray *_wordLexicalEntries;
+    NSArray *_wordPatternEntries;
+    NSIndexSet *_wordOVSIDs;
 }
 
 @property (readonly) BOOL rare; // @synthesize rare=_rare;
 @property (readonly) NSString *string; // @synthesize string=_string;
 @property (readonly) NSArray *wordIDs; // @synthesize wordIDs=_wordIDs;
+@property (readonly) NSArray *wordLexicalEntries; // @synthesize wordLexicalEntries=_wordLexicalEntries;
+@property (readonly) NSIndexSet *wordOVSIDs; // @synthesize wordOVSIDs=_wordOVSIDs;
+@property (readonly) NSArray *wordPatternEntries; // @synthesize wordPatternEntries=_wordPatternEntries;
 @property (readonly) NSArray *wordRanges; // @synthesize wordRanges=_wordRanges;
+@property (readonly) NSArray *wordScores; // @synthesize wordScores=_wordScores;
+@property (readonly) NSArray *wordStrokeSets; // @synthesize wordStrokeSets=_wordStrokeSets;
 
++ (void)_filterCharactersInRange:(struct _NSRange)arg1 fromString:(id)arg2 withLastFilteredRange:(struct _NSRange)arg3;
+- (BOOL)_isGibberishWordAtIndex:(long long)arg1;
 - (void)dealloc;
 - (id)initWithString:(id)arg1 score:(double)arg2 rare:(BOOL)arg3 wordRanges:(id)arg4 wordIDs:(id)arg5;
+- (id)initWithString:(id)arg1 score:(double)arg2 rare:(BOOL)arg3 wordRanges:(id)arg4 wordIDs:(id)arg5 lexicalEntry:(BOOL)arg6 patternEntry:(BOOL)arg7;
+- (id)initWithString:(id)arg1 score:(double)arg2 rare:(BOOL)arg3 wordRanges:(id)arg4 wordIDs:(id)arg5 wordScores:(id)arg6 wordStrokeSets:(id)arg7 wordLexicalEntries:(id)arg8 wordPatternEntries:(id)arg9 wordOVSIDs:(id)arg10;
+- (float)languageFitnessForLocale:(id)arg1 competingLocales:(id)arg2;
 - (id)mecabraCandidate;
+- (id)stringByFilteringLowConfidenceRanges:(BOOL)arg1 excludeGibberish:(BOOL)arg2 rejectionRate:(double *)arg3;
 
 @end
 

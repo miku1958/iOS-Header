@@ -12,7 +12,9 @@
 
 @interface NTPBEndOfArticleExposure : PBCodable <NSCopying>
 {
+    long long _backendArticleVersionInt64;
     long long _personalizationTreatmentId;
+    long long _publisherArticleVersionInt64;
     NSString *_articleId;
     int _articleType;
     int _backendArticleVersion;
@@ -31,7 +33,9 @@
     NSString *_surfacedByTopicId;
     BOOL _isUserSubscribedToFeed;
     struct {
+        unsigned int backendArticleVersionInt64:1;
         unsigned int personalizationTreatmentId:1;
+        unsigned int publisherArticleVersionInt64:1;
         unsigned int articleType:1;
         unsigned int backendArticleVersion:1;
         unsigned int characterCount:1;
@@ -43,12 +47,14 @@
 @property (strong, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
 @property (nonatomic) int articleType; // @synthesize articleType=_articleType;
 @property (nonatomic) int backendArticleVersion; // @synthesize backendArticleVersion=_backendArticleVersion;
+@property (nonatomic) long long backendArticleVersionInt64; // @synthesize backendArticleVersionInt64=_backendArticleVersionInt64;
 @property (nonatomic) int characterCount; // @synthesize characterCount=_characterCount;
 @property (strong, nonatomic) NSString *feedId; // @synthesize feedId=_feedId;
 @property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (nonatomic) BOOL hasArticleType;
 @property (nonatomic) BOOL hasBackendArticleVersion;
+@property (nonatomic) BOOL hasBackendArticleVersionInt64;
 @property (nonatomic) BOOL hasCharacterCount;
 @property (readonly, nonatomic) BOOL hasFeedId;
 @property (readonly, nonatomic) BOOL hasFeedViewExposureId;
@@ -56,6 +62,7 @@
 @property (readonly, nonatomic) BOOL hasLanguage;
 @property (nonatomic) BOOL hasPersonalizationTreatmentId;
 @property (nonatomic) BOOL hasPublisherArticleVersion;
+@property (nonatomic) BOOL hasPublisherArticleVersionInt64;
 @property (readonly, nonatomic) BOOL hasReferencedArticleId;
 @property (readonly, nonatomic) BOOL hasSectionHeadlineId;
 @property (readonly, nonatomic) BOOL hasSurfacedByChannelId;
@@ -66,6 +73,7 @@
 @property (strong, nonatomic) NSMutableArray *namedEntities; // @synthesize namedEntities=_namedEntities;
 @property (nonatomic) long long personalizationTreatmentId; // @synthesize personalizationTreatmentId=_personalizationTreatmentId;
 @property (nonatomic) int publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;
+@property (nonatomic) long long publisherArticleVersionInt64; // @synthesize publisherArticleVersionInt64=_publisherArticleVersionInt64;
 @property (strong, nonatomic) NSMutableArray *recommendedArticleIds; // @synthesize recommendedArticleIds=_recommendedArticleIds;
 @property (strong, nonatomic) NSString *referencedArticleId; // @synthesize referencedArticleId=_referencedArticleId;
 @property (strong, nonatomic) NSMutableArray *referencedRecommendedArticleIds; // @synthesize referencedRecommendedArticleIds=_referencedRecommendedArticleIds;

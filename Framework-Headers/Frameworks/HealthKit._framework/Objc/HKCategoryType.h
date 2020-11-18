@@ -10,6 +10,7 @@
 {
 }
 
++ (id)_categoryTypeWithCode:(long long)arg1;
 - (BOOL)_acceptsValue:(long long)arg1;
 - (long long)_defaultValue;
 - (id)_predicateForSDKVersion:(unsigned int)arg1;

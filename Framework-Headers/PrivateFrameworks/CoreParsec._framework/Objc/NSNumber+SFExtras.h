@@ -7,7 +7,7 @@
 #import <Foundation/NSNumber.h>
 
 @interface NSNumber (SFExtras)
-- (long long)sf_asRowAlignment;
-- (unsigned long long)sf_asTopHit;
+- (int)sf_asRowAlignment;
+- (int)sf_asTopHit;
 @end
 

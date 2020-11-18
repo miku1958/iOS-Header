@@ -6,34 +6,24 @@
 
 #import <HealthUI/HKEmergencyCardTableItem.h>
 
-#import <HealthUI/HKIDIntroductionCellDelegate-Protocol.h>
-
-@class HKIDIntroductionCell, HKIDRegisteredReviewCell, NSString;
+@class HKOrganDonationCallToActionTableViewCell;
 @protocol HKMedicalIDRegisteredOrganDonorTableItemDelegate;
 
-@interface HKMedicalIDRegisteredOrganDonorTableItem : HKEmergencyCardTableItem <HKIDIntroductionCellDelegate>
+@interface HKMedicalIDRegisteredOrganDonorTableItem : HKEmergencyCardTableItem
 {
-    HKIDRegisteredReviewCell *_registeredCell;
-    HKIDIntroductionCell *_notRegisteredCell;
     long long _organization;
     id<HKMedicalIDRegisteredOrganDonorTableItemDelegate> _delegate;
+    HKOrganDonationCallToActionTableViewCell *_notRegisteredCell;
 }
 
-@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HKMedicalIDRegisteredOrganDonorTableItemDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (strong, nonatomic) HKOrganDonationCallToActionTableViewCell *notRegisteredCell; // @synthesize notRegisteredCell=_notRegisteredCell;
 
 - (void).cxx_destruct;
-- (id)_displayCell;
 - (BOOL)canEditRowAtIndex:(long long)arg1;
 - (BOOL)hasPresentableData;
 - (id)initInEditMode:(BOOL)arg1 organDonationOrganization:(long long)arg2;
-- (void)introductionCellDidTapActionButton:(id)arg1;
-- (void)introductionCellDidTapLinkButton:(id)arg1;
 - (id)organizationLogo;
-- (id)organizationLogoInline;
 - (void)presentDonateLifeRegistrationSequence;
 - (struct UIEdgeInsets)separatorInset;
 - (BOOL)shouldHighlightRowAtIndex:(long long)arg1;

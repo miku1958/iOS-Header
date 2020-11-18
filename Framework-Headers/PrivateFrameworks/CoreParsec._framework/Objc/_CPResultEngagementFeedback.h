@@ -6,60 +6,70 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreParsec/NSCopying-Protocol.h>
+#import <CoreParsec/NSSecureCoding-Protocol.h>
+#import <CoreParsec/_CPProcessableFeedback-Protocol.h>
+#import <CoreParsec/_CPResultEngagementFeedback-Protocol.h>
 
-@class NSString, _CPSearchResultForFeedback;
+@class NSData, NSDictionary, NSString, _CPSearchResultForFeedback;
 
-@interface _CPResultEngagementFeedback : PBCodable <NSCopying>
+@interface _CPResultEngagementFeedback : PBCodable <_CPProcessableFeedback, _CPResultEngagementFeedback, NSSecureCoding>
 {
-    unsigned long long _timestamp;
-    int _actionTarget;
-    int _destination;
-    _CPSearchResultForFeedback *_result;
-    NSString *_titleTextForResultEngagement;
-    int _triggerEvent;
-    BOOL _actionEngaged;
-    BOOL _resultHadTitle;
     struct {
-        unsigned int actionTarget:1;
-        unsigned int destination:1;
-        unsigned int triggerEvent:1;
+        unsigned int timestamp:1;
         unsigned int actionEngaged:1;
-        unsigned int resultHadTitle:1;
+        unsigned int triggerEvent:1;
+        unsigned int destination:1;
+        unsigned int actionTarget:1;
+        unsigned int matchesUnengagedSuggestion:1;
     } _has;
+    BOOL _actionEngaged;
+    BOOL _matchesUnengagedSuggestion;
+    int _triggerEvent;
+    int _destination;
+    int _actionTarget;
+    unsigned long long _timestamp;
+    _CPSearchResultForFeedback *_result;
+    NSString *_titleText;
 }
 
 @property (nonatomic) BOOL actionEngaged; // @synthesize actionEngaged=_actionEngaged;
 @property (nonatomic) int actionTarget; // @synthesize actionTarget=_actionTarget;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) int destination; // @synthesize destination=_destination;
-@property (nonatomic) BOOL hasActionEngaged;
-@property (nonatomic) BOOL hasActionTarget;
-@property (nonatomic) BOOL hasDestination;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly, nonatomic) id feedbackJSON;
+@property (readonly, nonatomic) BOOL hasActionEngaged;
+@property (readonly, nonatomic) BOOL hasActionTarget;
+@property (readonly, nonatomic) BOOL hasDestination;
+@property (readonly, nonatomic) BOOL hasMatchesUnengagedSuggestion;
 @property (readonly, nonatomic) BOOL hasResult;
-@property (nonatomic) BOOL hasResultHadTitle;
-@property (readonly, nonatomic) BOOL hasTitleTextForResultEngagement;
-@property (nonatomic) BOOL hasTriggerEvent;
+@property (readonly, nonatomic) BOOL hasTimestamp;
+@property (readonly, nonatomic) BOOL hasTitleText;
+@property (readonly, nonatomic) BOOL hasTriggerEvent;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (nonatomic) BOOL matchesUnengagedSuggestion; // @synthesize matchesUnengagedSuggestion=_matchesUnengagedSuggestion;
+@property (readonly, nonatomic) BOOL requiresQueryId;
 @property (strong, nonatomic) _CPSearchResultForFeedback *result; // @synthesize result=_result;
-@property (nonatomic) BOOL resultHadTitle; // @synthesize resultHadTitle=_resultHadTitle;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
-@property (strong, nonatomic) NSString *titleTextForResultEngagement; // @synthesize titleTextForResultEngagement=_titleTextForResultEngagement;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
+@property (copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 @property (nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 
 - (void).cxx_destruct;
-- (int)StringAsActionTarget:(id)arg1;
-- (int)StringAsDestination:(id)arg1;
-- (int)StringAsTriggerEvent:(id)arg1;
-- (id)actionTargetAsString:(int)arg1;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (id)destinationAsString:(int)arg1;
-- (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)actionDestinationFromResult:(id)arg1 actionEngaged:(BOOL)arg2 destination:(int)arg3;
+- (id)init;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithFacade:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)triggerEventAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

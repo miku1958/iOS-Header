@@ -10,6 +10,7 @@
 {
 }
 
++ (long long)authorizationStatus;
 + (BOOL)isAccelerometerRecordingAvailable;
 + (BOOL)isAuthorizedForRecording;
 + (BOOL)isGyroRecordingAvailable;

@@ -16,17 +16,20 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType fProgressCallbackBlock;
     NSMutableDictionary *fProgressParams;
     NSMutableDictionary *fDownloadOptions;
+    NSMutableDictionary *fAssetToDescriptors;
 }
 
 + (BOOL)activateFontsFromAssetURL:(id)arg1;
-+ (id)availableFontAttributesArray;
-+ (id)availableMobileAssets:(BOOL)arg1 error:(id *)arg2;
++ (id)attributesFromFontInfo:(id)arg1 assetDesignLanguages:(id)arg2;
++ (id)availableFontAttributesArrayMatchingRequests:(id)arg1 options:(unsigned long long)arg2;
++ (id)availableMobileAssetsWithOptions:(unsigned int)arg1 error:(id *)arg2;
++ (id)availableMobileAssetsWithOptions:(unsigned int)arg1 manager:(id)arg2 error:(id *)arg3;
 + (unsigned long long)calculateDownloadSize:(id)arg1;
-+ (id)displayNameForCurrentUser:(id)arg1;
++ (unsigned int)defaultQueryOptions;
 + (id)enabledKeyboardLanguages;
-+ (id)extractMatchingAssetsForDescriptor:(struct __CTFontDescriptor *)arg1 from:(id)arg2 withFailInfo:(BOOL *)arg3 andFontFilePaths:(id)arg4;
++ (BOOL)fontInfo:(id)arg1 andAssetDesignLanguages:(id)arg2 matchesRequest:(id)arg3;
 + (Class)getASAssetQueryClass;
-+ (BOOL)shouldIgnoreFontAsset:(id)arg1;
++ (BOOL)shouldIgnoreFontAssetWithAttributes:(id)arg1;
 + (BOOL)shouldRetryWithServer;
 + (BOOL)shouldTryServer;
 - (id).cxx_construct;
@@ -37,14 +40,14 @@ __attribute__((visibility("hidden")))
 - (id)doFinalMatching;
 - (BOOL)downloadAllowed;
 - (void)downloadFontAssets;
-- (BOOL)executeDownloadingFontAssets:(id)arg1 forDescriptors:(id)arg2 andFontFilePaths:(id)arg3;
-- (id)getUnmatchedDescriptors;
+- (BOOL)executeDownloadingFontAssets:(id)arg1;
 - (id)initWithDescriptors:(struct __CFArray *)arg1 andMandatoryAttributes:(struct __CFSet *)arg2 withBlock:(CDUnknownBlockType)arg3;
-- (id)mobileAssetsForUnmatched:(id)arg1 andFontFilePaths:(id)arg2;
+- (id)mobileAssetsForUnmatched:(id)arg1;
 - (id)preciousFontLanguages;
 - (void)setDownloadOptionsForMobileAsset;
 - (void)setGarbageCollectionBehaviorForAsset:(id)arg1;
 - (void)setProgressParam:(id)arg1 forKey:(id)arg2;
+- (id)unmatchedDescriptors;
 
 @end
 

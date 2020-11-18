@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSData *vertices; // @synthesize vertices=_vertices;
 @property (nonatomic) int zBits; // @synthesize zBits=_zBits;
 
+- (void).cxx_destruct;
 - (void)addCoastlines:(id)arg1;
 - (void)addLabelLanguage:(id)arg1;
 - (void)addLine:(id)arg1;
@@ -67,7 +68,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)coastlinesCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

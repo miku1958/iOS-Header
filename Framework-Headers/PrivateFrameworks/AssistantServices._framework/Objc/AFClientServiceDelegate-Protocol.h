@@ -6,13 +6,17 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFSpeechInterpretation, AFXPCWrapper, AceObject, INImage, NSArray, NSDictionary, NSError, NSString, NSURL, SASSpeechPartialResult, SASSpeechRecognized;
+@class AFAudioPlaybackRequest, AFSpeechInterpretation, AFXPCWrapper, AceObject, INImage, INIntent, NSArray, NSDictionary, NSError, NSString, NSURL, SASSpeechPartialResult, SASSpeechRecognized;
 @protocol SAAceCommand;
 
 @protocol AFClientServiceDelegate <NSObject>
 - (oneway void)aceConnectionWillRetryOnError:(NSError *)arg1;
 - (oneway void)acousticIDRequestDidFinishWithSuccess:(BOOL)arg1;
 - (oneway void)acousticIDRequestWillStart;
+- (oneway void)audioPlaybackRequestDidNotStart:(AFAudioPlaybackRequest *)arg1 error:(NSError *)arg2;
+- (oneway void)audioPlaybackRequestDidStart:(AFAudioPlaybackRequest *)arg1;
+- (oneway void)audioPlaybackRequestDidStop:(AFAudioPlaybackRequest *)arg1 error:(NSError *)arg2;
+- (oneway void)audioPlaybackRequestWillStart:(AFAudioPlaybackRequest *)arg1;
 - (oneway void)audioSessionDidBeginInterruption;
 - (oneway void)audioSessionDidEndInterruption:(BOOL)arg1;
 - (oneway void)audioSessionIDChanged:(unsigned int)arg1;
@@ -20,10 +24,10 @@
 - (oneway void)extensionRequestFinishedForApplication:(NSString *)arg1 error:(NSError *)arg2;
 - (oneway void)extensionRequestWillStartForApplication:(NSString *)arg1;
 - (oneway void)getBulletinContext:(void (^)(NSArray *))arg1;
+- (oneway void)handleIntent:(INIntent *)arg1 inBackgroundAppWithBundleId:(NSString *)arg2 reply:(void (^)(INIntentResponse *, NSError *))arg3;
 - (oneway void)invalidateCurrentUserActivity;
 - (oneway void)musicWasDetected;
-- (oneway void)requestDidFailWithError:(NSError *)arg1 requestClass:(NSString *)arg2;
-- (oneway void)requestDidFinish;
+- (oneway void)quickStopWasHandledWithActions:(unsigned long long)arg1;
 - (oneway void)requestDidReceiveCommand:(AceObject<SAAceCommand> *)arg1 reply:(void (^)(AceObject<SAAceCommand> *))arg2;
 - (oneway void)requestRequestedDismissAssistant;
 - (oneway void)requestRequestedOpenApplicationWithBundleID:(NSString *)arg1 URL:(NSURL *)arg2 reply:(void (^)(BOOL))arg3;
@@ -34,7 +38,7 @@
 - (oneway void)speechRecognized:(SASSpeechRecognized *)arg1;
 - (oneway void)speechRecognizedAdditionalInterpretation:(AFSpeechInterpretation *)arg1 refId:(NSString *)arg2;
 - (oneway void)speechRecognizedPartialResult:(SASSpeechPartialResult *)arg1;
-- (oneway void)speechRecordingDidBeginOnAVRecordRoute:(NSString *)arg1;
+- (oneway void)speechRecordingDidBeginOnAVRecordRoute:(NSString *)arg1 audioSessionID:(unsigned int)arg2;
 - (oneway void)speechRecordingDidCancel;
 - (oneway void)speechRecordingDidChangeAVRecordRoute:(NSString *)arg1;
 - (oneway void)speechRecordingDidEnd;
@@ -45,7 +49,7 @@
 - (oneway void)speechRecordingPerformTwoShotPromptWithType:(long long)arg1 reply:(void (^)(double, double, NSError *))arg2;
 - (oneway void)speechRecordingStartpointDetected;
 - (oneway void)speechRecordingWillBeginRecognitionUpdateForTask:(NSString *)arg1;
-- (oneway void)speechRecordingWillBeginWithLevelsSharedMem:(AFXPCWrapper *)arg1;
+- (oneway void)speechRecordingWillBeginWithInputAudioPowerXPCWrapper:(AFXPCWrapper *)arg1;
 - (oneway void)startUIRequestWithText:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 @end
 

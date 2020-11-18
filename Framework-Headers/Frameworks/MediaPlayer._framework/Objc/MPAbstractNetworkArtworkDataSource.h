@@ -9,25 +9,29 @@
 #import <MediaPlayer/MPArtworkDataSource-Protocol.h>
 #import <MediaPlayer/NSURLSessionDataDelegate-Protocol.h>
 
-@class NSCache, NSMapTable, NSString, NSURLSession, NSURLSessionConfiguration;
+@class NSCache, NSMapTable, NSMutableDictionary, NSString, NSURLSession, NSURLSessionConfiguration;
 @protocol OS_dispatch_queue;
 
 @interface MPAbstractNetworkArtworkDataSource : NSObject <NSURLSessionDataDelegate, MPArtworkDataSource>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
+    NSObject<OS_dispatch_queue> *_callbackQueue;
     NSCache *_fallbackArtworkRepresentationCache;
     NSMapTable *_catalogTaskMap;
+    NSMutableDictionary *_pendingRequestToCompletionHandlers;
     NSURLSession *_URLSession;
 }
 
 @property (strong, nonatomic) NSURLSession *URLSession; // @synthesize URLSession=_URLSession;
 @property (readonly, nonatomic) NSURLSessionConfiguration *URLSessionConfiguration;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property (strong, nonatomic) NSMapTable *catalogTaskMap; // @synthesize catalogTaskMap=_catalogTaskMap;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSCache *fallbackArtworkRepresentationCache; // @synthesize fallbackArtworkRepresentationCache=_fallbackArtworkRepresentationCache;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSMutableDictionary *pendingRequestToCompletionHandlers; // @synthesize pendingRequestToCompletionHandlers=_pendingRequestToCompletionHandlers;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

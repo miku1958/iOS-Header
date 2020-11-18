@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOMotionContextProviderDelegate-Protocol.h>
 
@@ -31,6 +31,7 @@
 @property (readonly, nonatomic) unsigned long long motionType; // @synthesize motionType=_motionType;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)motionContextProvider:(id)arg1 didUpdateMotion:(unsigned long long)arg2 exitType:(unsigned long long)arg3 confidence:(unsigned long long)arg4;
 - (void)startMotionUpdatesWithProvider:(id)arg1;

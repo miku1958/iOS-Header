@@ -122,6 +122,7 @@
 - (void)takeValuesFromClientInfo:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)updateAccountAndMarkComplete:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updatePostbackDictionary:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (id)viewControllerForAlertPresentation;
 - (id)viewControllers;
 
 @end

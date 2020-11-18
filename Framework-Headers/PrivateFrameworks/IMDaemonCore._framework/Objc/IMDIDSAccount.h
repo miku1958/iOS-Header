@@ -18,6 +18,7 @@
 - (id)accountDefaults;
 - (BOOL)canMakeDowngradeRoutingChecks;
 - (void)dealloc;
+- (id)description;
 - (id)initWithAccountID:(id)arg1 defaults:(id)arg2 service:(id)arg3 idsAccount:(id)arg4;
 - (void)writeAccountDefaults:(id)arg1;
 

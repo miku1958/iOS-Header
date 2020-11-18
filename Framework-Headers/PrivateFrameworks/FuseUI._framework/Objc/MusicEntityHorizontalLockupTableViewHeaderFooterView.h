@@ -29,8 +29,6 @@
 + (double)maximumHeightForContentDescriptor:(id)arg1 width:(double)arg2 traitCollection:(id)arg3;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)horizontalLockupView:(id)arg1 didSelectPlayButtonAction:(unsigned long long)arg2;
-- (void)horizontalLockupViewDidSelectContextualActionsButton:(id)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (void)layoutSubviews;
 - (void)setEntityDisabled:(BOOL)arg1;

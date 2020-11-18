@@ -18,7 +18,7 @@
 @property (copy, nonatomic) CDUnknownBlockType sendCompletion; // @synthesize sendCompletion=_sendCompletion;
 
 + (id)messageWithPayload:(id)arg1 andSendCompletion:(CDUnknownBlockType)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithPayload:(id)arg1;
 - (id)transportPayload;
 

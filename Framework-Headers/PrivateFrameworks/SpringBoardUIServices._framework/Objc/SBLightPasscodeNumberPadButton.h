@@ -22,6 +22,7 @@
 + (double)_numberPadButtonOuterCircleDiameter;
 + (struct CGSize)defaultSize;
 + (struct UIEdgeInsets)paddingOutsideRing;
++ (BOOL)usesTelephonyGlyphsWhereAvailable;
 - (int)characterType;
 - (id)initForCharacter:(unsigned int)arg1;
 - (id)stringCharacter;

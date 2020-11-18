@@ -20,6 +20,8 @@
 @property (readonly, nonatomic) NSData *playlistsData;
 
 - (void).cxx_destruct;
+- (id)_bestArtworkImageURLFromStoreArtworkVariants:(id)arg1 cropStyle:(id)arg2;
+- (id)_bestPlaylistArtworkImageURLFromStoreArtworkVariants:(id)arg1;
 - (id)_playlistPropertiesForLookupItems:(id)arg1;
 - (id)_playlistPropertiesFromPlaylistData:(id)arg1;
 - (id)initWithLookupItems:(id)arg1;

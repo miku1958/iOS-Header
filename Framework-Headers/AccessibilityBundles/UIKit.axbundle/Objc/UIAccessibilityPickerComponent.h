@@ -23,7 +23,7 @@
 - (long long)_accessibilityIndexForPickerString:(id)arg1;
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (void)_accessibilityMoveSelection:(long long)arg1;
-- (int)_accessibilityPickerType;
+- (long long)_accessibilityPickerType;
 - (id)_accessibilityScrollStatus;
 - (id)_accessibilityUserTestingChildren;
 - (id)_accessibilityViewForComponent;
@@ -33,6 +33,7 @@
 - (id)accessibilityHint;
 - (void)accessibilityIncrement;
 - (id)accessibilityLabel;
+- (struct _NSRange)accessibilityRowRange;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

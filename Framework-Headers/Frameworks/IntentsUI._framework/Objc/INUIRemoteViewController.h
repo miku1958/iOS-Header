@@ -6,12 +6,13 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
+#import <IntentsUI/INUIExtensionHostContextDelegate-Protocol.h>
 #import <IntentsUI/_INUIRemoteViewControllerHosting-Protocol.h>
 
 @class NSExtension, NSString, _INUIExtensionHostContext;
 @protocol INUIRemoteViewControllerDelegate, NSCopying;
 
-@interface INUIRemoteViewController : _UIRemoteViewController <_INUIRemoteViewControllerHosting>
+@interface INUIRemoteViewController : _UIRemoteViewController <_INUIRemoteViewControllerHosting, INUIExtensionHostContextDelegate>
 {
     id<INUIRemoteViewControllerDelegate> _delegate;
     _INUIExtensionHostContext *_extensionHostContext;
@@ -28,6 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)_requestRemoteViewControllerForSnippetExtensionInteraction:(id)arg1 delegate:(id)arg2 connectionHandler:(CDUnknownBlockType)arg3;
 + (void)attemptToConnectToRemoteViewControllerForRemainingExtensions:(id)arg1 delegate:(id)arg2 connectionHandler:(CDUnknownBlockType)arg3;
 + (id)exportedInterface;
 + (void)requestRemoteViewControllerForInteraction:(id)arg1 delegate:(id)arg2 connectionHandler:(CDUnknownBlockType)arg3;
@@ -35,11 +37,15 @@
 - (void).cxx_destruct;
 - (id)_errorHandlingServiceViewControllerProxy;
 - (void)_queryRepresentedPropertiesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)configureForParameters:(id)arg1 ofInteraction:(id)arg2 context:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)configureForParameters:(id)arg1 ofInteraction:(id)arg2 interactiveBehavior:(unsigned long long)arg3 context:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)configureWithInteraction:(id)arg1 context:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)configureWithInteraction:(id)arg1 context:(unsigned long long)arg2 errorHandlingCompletion:(CDUnknownBlockType)arg3;
 - (id)disconnect;
+- (void)extensionHostContext:(id)arg1 wantsToHandleIntent:(id)arg2;
+- (void)requestCancellation;
 - (void)serviceViewControllerDesiresConstrainedSize:(struct CGSize)arg1;
-- (void)updateSize;
+- (void)updateExtensionContextStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 
 @end

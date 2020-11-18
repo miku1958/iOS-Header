@@ -16,10 +16,12 @@
     BOOL _allowsPublisherPadApp;
     BOOL _allowsPublisherPhoneApp;
     BOOL _allowsPublisherWebSite;
+    BOOL _preferredOffer;
     struct {
         unsigned int allowsPublisherPadApp:1;
         unsigned int allowsPublisherPhoneApp:1;
         unsigned int allowsPublisherWebSite:1;
+        unsigned int preferredOffer:1;
     } _has;
 }
 
@@ -29,7 +31,9 @@
 @property (nonatomic) BOOL hasAllowsPublisherPadApp;
 @property (nonatomic) BOOL hasAllowsPublisherPhoneApp;
 @property (nonatomic) BOOL hasAllowsPublisherWebSite;
+@property (nonatomic) BOOL hasPreferredOffer;
 @property (readonly, nonatomic) BOOL hasPurchaseId;
+@property (nonatomic) BOOL preferredOffer; // @synthesize preferredOffer=_preferredOffer;
 @property (strong, nonatomic) NSString *purchaseId; // @synthesize purchaseId=_purchaseId;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

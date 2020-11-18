@@ -20,6 +20,7 @@
 - (id)init;
 - (id)initWithController:(id)arg1 snapshotData:(id)arg2;
 - (id)initWithSnapshotData:(id)arg1;
+- (BOOL)supportsDpadTaps;
 
 @end
 

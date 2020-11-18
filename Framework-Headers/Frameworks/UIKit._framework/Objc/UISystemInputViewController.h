@@ -21,6 +21,7 @@
     BOOL _supportsRecentInputsIntegration;
     BOOL _isAutomaticResponderTransition;
     BOOL _willPresentFullscreen;
+    BOOL _willUpdateBackgroundEffectOnInputModeChange;
     BOOL _didDisplayRecents;
     id<UISystemInputViewControllerDelegate> _systemInputViewControllerDelegate;
     UIResponder<UITextInput> *_persistentDelegate;
@@ -74,8 +75,11 @@
 @property (nonatomic) struct UIEdgeInsets unfocusedFocusGuideOutsets;
 @property (strong, nonatomic) NSLayoutConstraint *verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
 @property (nonatomic) BOOL willPresentFullscreen; // @synthesize willPresentFullscreen=_willPresentFullscreen;
+@property (nonatomic) BOOL willUpdateBackgroundEffectOnInputModeChange; // @synthesize willUpdateBackgroundEffectOnInputModeChange=_willUpdateBackgroundEffectOnInputModeChange;
 
 + (id)_canonicalTraitsForResponder:(id)arg1;
++ (id)_iOS_systemInputViewControllerForResponder:(id)arg1 editorView:(id)arg2 containingResponder:(id)arg3 traitCollection:(id)arg4;
++ (id)_tvOS_systemInputViewControllerForResponder:(id)arg1 editorView:(id)arg2 containingResponder:(id)arg3 traitCollection:(id)arg4;
 + (BOOL)canUseSystemInputViewControllerForResponder:(id)arg1;
 + (id)systemInputViewControllerForResponder:(id)arg1 editorView:(id)arg2;
 + (id)systemInputViewControllerForResponder:(id)arg1 editorView:(id)arg2 containingResponder:(id)arg3;

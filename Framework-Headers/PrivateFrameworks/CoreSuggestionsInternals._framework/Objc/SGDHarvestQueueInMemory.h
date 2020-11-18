@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) SGDHarvestQueue *other; // @synthesize other=_other;
 
 - (void).cxx_destruct;
-- (void)_deleteWithItemId:(long long)arg1;
+- (void)_deleteWithItemId:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_flushWithIndexLockedAsync:(unsigned long long)arg1;
 - (void)_flushWithItemIdLockedAsync:(long long)arg1;
 - (long long)_indexOfItemWithIdLocked:(long long)arg1;

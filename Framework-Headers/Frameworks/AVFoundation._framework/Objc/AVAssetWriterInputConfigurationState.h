@@ -32,7 +32,7 @@
     CDStruct_1b6d18a9 _chunkDuration;
     long long _chunkAlignment;
     long long _chunkSize;
-    BOOL _writesMediaDataToBeginningOfFile;
+    NSString *_mediaDataLocation;
     NSURL *_sampleReferenceBaseURL;
 }
 
@@ -42,6 +42,7 @@
 @property (copy, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
 @property (nonatomic) long long layer; // @synthesize layer=_layer;
 @property (nonatomic) BOOL marksOutputTrackAsEnabled; // @synthesize marksOutputTrackAsEnabled=_marksOutputTrackAsEnabled;
+@property (copy, nonatomic) NSString *mediaDataLocation; // @synthesize mediaDataLocation=_mediaDataLocation;
 @property (nonatomic) int mediaTimeScale; // @synthesize mediaTimeScale=_mediaTimeScale;
 @property (copy, nonatomic) NSString *mediaType; // @synthesize mediaType=_mediaType;
 @property (copy, nonatomic) NSArray *metadataItems; // @synthesize metadataItems=_metadataItems;
@@ -59,7 +60,6 @@
 @property (nonatomic) int trackID; // @synthesize trackID=_trackID;
 @property (copy, nonatomic) NSDictionary *trackReferences; // @synthesize trackReferences=_trackReferences;
 @property (nonatomic) struct CGAffineTransform transform; // @synthesize transform=_transform;
-@property (nonatomic) BOOL writesMediaDataToBeginningOfFile; // @synthesize writesMediaDataToBeginningOfFile=_writesMediaDataToBeginningOfFile;
 
 - (void)dealloc;
 

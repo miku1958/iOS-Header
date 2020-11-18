@@ -19,9 +19,10 @@
 
 @property (strong, nonatomic) _UIAsyncInvocation *cancelRequest; // @synthesize cancelRequest=_cancelRequest;
 @property (strong, nonatomic) SKRemoteReviewViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
-@property (nonatomic) NSString *reviewRequestToken; // @synthesize reviewRequestToken=_reviewRequestToken;
+@property (strong, nonatomic) NSString *reviewRequestToken; // @synthesize reviewRequestToken=_reviewRequestToken;
 @property (strong, nonatomic) SKInvocationQueueProxy<SKUIServiceReviewViewController> *serviceProxy; // @synthesize serviceProxy=_serviceProxy;
 
+- (void).cxx_destruct;
 - (void)_addRemoteView;
 - (void)_didFinishWithResult:(unsigned long long)arg1 error:(id)arg2;
 - (void)_requestRemoteViewController;

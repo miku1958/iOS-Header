@@ -23,7 +23,6 @@
     NSObject<OS_dispatch_queue> *_imageRequestQueue;
     BOOL _didAttemptRestartAfterAppContextFailure;
     VideosExtrasMainTemplateViewController *_mainTemplateViewController;
-    UITraitCollection *_overrideTraitCollection;
     VideosExtrasContext *_context;
     VideosExtrasFeatureContainerViewController *_featureContainer;
     IKAppContext *_applicationContext;
@@ -46,7 +45,7 @@
 @property (readonly, nonatomic) UIView *mainMenuBar;
 @property (strong, nonatomic) VideosExtrasMainTemplateViewController *mainTemplateViewController; // @synthesize mainTemplateViewController=_mainTemplateViewController;
 @property (readonly, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
-@property (copy, nonatomic) UITraitCollection *overrideTraitCollection; // @synthesize overrideTraitCollection=_overrideTraitCollection;
+@property (copy, nonatomic) UITraitCollection *overrideTraitCollection; // @dynamic overrideTraitCollection;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id<IKAppUserDefaultsStoring> userDefaultsStorage; // @synthesize userDefaultsStorage=_userDefaultsStorage;
 @property (strong, nonatomic) id<IKAppDataStoring> vendorStorage; // @synthesize vendorStorage=_vendorStorage;
@@ -59,6 +58,7 @@
 - (void)_attemptRestart;
 - (id)_createDataStorageForIdentifier:(id)arg1;
 - (void)_finalizeMainTemplateOffset:(BOOL)arg1;
+- (void)_playbackWillEndNotification:(id)arg1;
 - (BOOL)_setMainDocumentWithViewController:(id)arg1;
 - (void)_setNavigationController:(id)arg1;
 - (void)_setUpForApplication;
@@ -74,6 +74,7 @@
 - (id)appJSURL;
 - (id)appLaunchParams;
 - (BOOL)appUsesDefaultStyleSheets;
+- (id)childViewControllerForHomeIndicatorAutoHidden;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)dealloc;
 - (id)detectMainDocument:(id)arg1;
@@ -96,10 +97,11 @@
 - (unsigned long long)supportedInterfaceOrientations;
 - (id)systemLanguage;
 - (id)timeZone;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)vendorIdentifier;
-- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (id)viewElementRegistry;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

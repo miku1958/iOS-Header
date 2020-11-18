@@ -6,11 +6,22 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString;
+@protocol NSFastEnumeration;
 
 @protocol PXPerson <NSObject>
-- (NSString *)name;
-- (unsigned long long)numberOfAssets;
-- (void)requestFaceTileImageWithTargetSize:(struct CGSize)arg1 cropFactor:(unsigned long long)arg2 round:(BOOL)arg3 cacheResult:(BOOL)arg4 completionBlock:(void (^)(UIImage *, struct CGRect, NSError *))arg5;
+
+@property (readonly) BOOL isPersonModel;
+@property (readonly) BOOL isVerified;
+@property (readonly) NSString *name;
+@property (readonly) unsigned long long numberOfAssets;
+@property (readonly) NSString *px_displayName;
+@property (readonly) NSDate *px_keyPhotoDate;
+@property (readonly) NSString *px_localIdentifier;
+
++ (void)px_loadRepresentativeFacesForPersons:(id<NSFastEnumeration>)arg1;
+- (void)requestFaceTileImageWithTargetSize:(struct CGSize)arg1 cropFactor:(unsigned long long)arg2 round:(BOOL)arg3 cacheResult:(BOOL)arg4 boundFaceRect:(BOOL)arg5 completionBlock:(void (^)(UIImage *, struct CGRect, NSError *))arg6;
+
+@optional
 @end
 

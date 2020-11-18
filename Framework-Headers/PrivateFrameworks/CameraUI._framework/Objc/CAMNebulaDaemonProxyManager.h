@@ -10,11 +10,12 @@
 #import <CameraUI/CAMNebulaDaemonProtocol-Protocol.h>
 
 @class NSString, NSXPCConnection;
-@protocol CAMNebulaDaemonTimelapseClientProtocol, OS_dispatch_queue;
+@protocol CAMNebulaDaemonIrisClientProtocol, CAMNebulaDaemonTimelapseClientProtocol, OS_dispatch_queue;
 
 @interface CAMNebulaDaemonProxyManager : NSObject <CAMNebulaDaemonClientProtocol, CAMNebulaDaemonProtocol>
 {
     id<CAMNebulaDaemonTimelapseClientProtocol> _timelapseClientDelegate;
+    id<CAMNebulaDaemonIrisClientProtocol> _irisClientDelegate;
     NSObject<OS_dispatch_queue> *__queue;
     NSXPCConnection *__connection;
     long long __connectionCount;
@@ -26,6 +27,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<CAMNebulaDaemonIrisClientProtocol> irisClientDelegate; // @synthesize irisClientDelegate=_irisClientDelegate;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<CAMNebulaDaemonTimelapseClientProtocol> timelapseClientDelegate; // @synthesize timelapseClientDelegate=_timelapseClientDelegate;
 
@@ -41,8 +43,10 @@
 - (void)finishCaptureForTimelapseWithUUID:(id)arg1;
 - (void)forceStopTimelapseCaptureWithReasons:(long long)arg1;
 - (id)init;
+- (void)nebulaDaemonDidCompleteLocalVideoPersistenceWithResult:(id)arg1;
 - (void)performCrashRecoveryIfNeededForceEndLastTimelapseSession:(BOOL)arg1;
 - (void)performIrisCrashRecovery;
+- (void)pingAfterInterruption;
 - (void)resumeTimelapseWithUUID:(id)arg1;
 - (void)startTimelapseWithUUID:(id)arg1;
 - (void)stopTimelapseWithUUID:(id)arg1;

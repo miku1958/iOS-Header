@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDHomeManager, NSArray, NSString, NSUUID;
+@class HMDHomeManager, NSArray, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDAssistantGather : NSObject <HMFLogging>
+@interface HMDAssistantGather : HMFObject <HMFLogging>
 {
     HMDHomeManager *_manager;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -40,6 +40,7 @@
 - (void)gatherHomeKitObjects;
 - (void)getSyncEntityObjectsWithValidity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithHomeManager:(id)arg1 queue:(id)arg2;
+- (unsigned long long)numberOfHomeKitObjects;
 
 @end
 

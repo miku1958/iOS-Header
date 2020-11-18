@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HAPRelayRequestMessage, NSData;
 
-@interface HAPRelayResponseMessage : NSObject
+@interface HAPRelayResponseMessage : HMFObject
 {
     HAPRelayRequestMessage *_request;
     unsigned long long _type;

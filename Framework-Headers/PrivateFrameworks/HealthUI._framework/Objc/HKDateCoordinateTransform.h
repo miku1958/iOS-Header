@@ -10,9 +10,8 @@
 {
 }
 
-- (double)coordinateForDate:(id)arg1;
 - (double)coordinateForValue:(id)arg1;
-- (id)dateForCoordinate:(double)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)valueForCoordinate:(double)arg1;
 
 @end

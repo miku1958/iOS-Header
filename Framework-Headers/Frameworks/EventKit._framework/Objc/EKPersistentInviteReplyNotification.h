@@ -6,25 +6,24 @@
 
 #import <EventKit/EKPersistentObject.h>
 
-@class EKPersistentCalendar, NSDate, NSString;
-
 __attribute__((visibility("hidden")))
 @interface EKPersistentInviteReplyNotification : EKPersistentObject
 {
 }
 
-@property (readonly, nonatomic) BOOL alerted;
-@property (readonly, nonatomic) EKPersistentCalendar *calendar;
-@property (readonly, nonatomic) NSString *calendarName;
-@property (readonly, nonatomic) NSDate *creationDate;
-@property (readonly, nonatomic) NSString *shareeAddress;
-@property (readonly, nonatomic) NSString *shareeDisplayName;
-@property (readonly, nonatomic) NSString *shareeFirstName;
-@property (readonly, nonatomic) NSString *shareeLastName;
-@property (readonly, nonatomic) unsigned long long status;
-
 + (id)defaultPropertiesToLoad;
 + (id)relations;
+- (BOOL)alerted;
+- (id)calendar;
+- (id)calendarName;
+- (id)creationDate;
+- (int)entityType;
+- (id)inviteReplyCalendar;
+- (id)shareeAddressURL;
+- (id)shareeDisplayName;
+- (id)shareeFirstName;
+- (id)shareeLastName;
+- (unsigned long long)status;
 
 @end
 

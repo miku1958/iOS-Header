@@ -7,6 +7,11 @@
 #import <CFNetwork/NSHTTPCookieStorage.h>
 
 @interface NSHTTPCookieStorage (WebUIExtras)
+
+@property (readonly) unsigned long long webui_safariCookieAcceptPolicyEnumValue;
+@property (readonly) BOOL webui_trackerProtectionEnabled;
+
+- (float)_safariCookieAcceptPolicyFloatValue;
 - (void)webui_applySafariCookieAcceptPolicy;
 - (id)webui_safariCookieAcceptPolicy;
 @end

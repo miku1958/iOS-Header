@@ -78,6 +78,9 @@
 - (int)StringAsParticipantType:(id)arg1;
 - (int)StringAsPermission:(id)arg1;
 - (int)StringAsState:(id)arg1;
+- (id)_participantTypeCKLogValue;
+- (id)_permissionCKLogValue;
+- (id)_stateCKLogValue;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

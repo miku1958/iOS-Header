@@ -18,7 +18,6 @@
 @property (readonly, nonatomic) _SFSingleBookmarkNavigationController *bookmarkNavigationController;
 
 - (void).cxx_destruct;
-- (id)_beforeActivity;
 - (id)_embeddedActivityViewController;
 - (id)activityImage;
 - (id)activityTitle;

@@ -12,10 +12,7 @@
 {
     unsigned long long _timestamp;
     BOOL _enabled;
-    struct {
-        unsigned int timestamp:1;
-        unsigned int enabled:1;
-    } _has;
+    CDStruct_93f1cf87 _has;
 }
 
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;

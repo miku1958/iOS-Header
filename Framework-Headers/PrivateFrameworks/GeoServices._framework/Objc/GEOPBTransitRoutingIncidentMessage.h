@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBUnknownFields;
 
 @interface GEOPBTransitRoutingIncidentMessage : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     CDStruct_9f2792e4 _transitIncidentIndexs;
     unsigned int _routingIncidentMessageIndex;
     NSString *_routingMessage;
@@ -26,7 +27,9 @@
 @property (strong, nonatomic) NSString *routingMessage; // @synthesize routingMessage=_routingMessage;
 @property (readonly, nonatomic) unsigned int *transitIncidentIndexs;
 @property (readonly, nonatomic) unsigned long long transitIncidentIndexsCount;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)addTransitIncidentIndex:(unsigned int)arg1;
 - (void)clearTransitIncidentIndexs;
 - (void)copyTo:(id)arg1;

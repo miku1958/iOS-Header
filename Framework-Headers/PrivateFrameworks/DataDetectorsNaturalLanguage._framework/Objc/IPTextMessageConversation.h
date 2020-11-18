@@ -20,6 +20,8 @@
 @property (strong) NSMutableDictionary *eventsByMessageIdentifierDictionary; // @synthesize eventsByMessageIdentifierDictionary=_eventsByMessageIdentifierDictionary;
 @property (strong) NSMutableDictionary *messageByMessageIdentifierDictionary; // @synthesize messageByMessageIdentifierDictionary=_messageByMessageIdentifierDictionary;
 
++ (id)collapseMessages:(id)arg1;
++ (id)collapsedMessagesFromMessages:(id)arg1;
 - (void).cxx_destruct;
 - (void)_scanEventsInLastMessageOnly:(BOOL)arg1 synchronously:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addMessage:(id)arg1;

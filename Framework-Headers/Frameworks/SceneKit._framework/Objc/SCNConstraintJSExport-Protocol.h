@@ -10,6 +10,8 @@
 
 @protocol SCNConstraintJSExport <JSExport>
 
+@property (nonatomic, getter=isEnabled) BOOL enabled;
+@property (nonatomic, getter=isIncremental) BOOL incremental;
 @property (nonatomic) double influenceFactor;
 
 - (void)addAnimation:(CAAnimation *)arg1 forKey:(NSString *)arg2;

@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSNumber *adjustmentBaseImageFormat; // @dynamic adjustmentBaseImageFormat;
 @property (strong, nonatomic) NSString *adjustmentFormatIdentifier; // @dynamic adjustmentFormatIdentifier;
 @property (strong, nonatomic) NSString *adjustmentFormatVersion; // @dynamic adjustmentFormatVersion;
+@property (nonatomic) unsigned int adjustmentRenderTypes; // @dynamic adjustmentRenderTypes;
 @property (strong, nonatomic) NSDate *adjustmentTimestamp; // @dynamic adjustmentTimestamp;
 @property (strong, nonatomic) PLAdditionalAssetAttributes *assetAttributes; // @dynamic assetAttributes;
 @property (strong, nonatomic) NSString *editorLocalizedName; // @dynamic editorLocalizedName;
@@ -24,7 +25,6 @@
 
 + (id)_convertRedEyeCorrection:(id)arg1 withOrientation:(long long)arg2;
 + (id)_convertRedEyeCorrections:(id)arg1 withOrientation:(long long)arg2;
-+ (id)addUnmanagedAdjustmentFromAdjustmentFileAtPath:(id)arg1 withAsset:(id)arg2;
 + (id)addUnmanagedAdjustmentFromXMPDataIfNeededForAsset:(id)arg1;
 - (BOOL)isSyncableChange;
 - (BOOL)supportsCloudUpload;

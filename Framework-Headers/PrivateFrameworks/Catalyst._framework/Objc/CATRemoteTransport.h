@@ -40,9 +40,11 @@
 - (id)init;
 - (id)initWithRemoteConnection:(id)arg1;
 - (void)invalidateConnection;
+- (id)name;
 - (id)operationToSendMessage:(id)arg1;
 - (void)remoteTransportSendMessageOperation:(id)arg1 sendData:(id)arg2;
 - (void)resumeConnection;
+- (void)setName:(id)arg1;
 - (void)suspendConnection;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class BSSignal, NSArray;
 @protocol OS_dispatch_queue, OS_xpc_object;
@@ -15,6 +15,7 @@
     BSSignal *_invalidationSignal;
     CDUnknownBlockType _handler;
     unsigned int _interestedStates;
+    NSArray *_interestedAssertionReasons;
     NSArray *_interestedBundleIDs;
     BOOL _elevatedPriority;
     NSObject<OS_dispatch_queue> *_queue;
@@ -40,6 +41,7 @@
 - (id)initWithBundleIDs:(id)arg1 states:(unsigned int)arg2 elevatedPriority:(BOOL)arg3;
 - (id)initWithBundleIDs:(id)arg1 states:(unsigned int)arg2 isUserInteractive:(BOOL)arg3;
 - (id)initWithEndpoint:(id)arg1 bundleIDs:(id)arg2 states:(unsigned int)arg3 elevatedPriority:(BOOL)arg4;
+- (id)interestedAssertionReasons;
 - (void)invalidate;
 - (BOOL)isApplicationBeingDebugged:(id)arg1;
 - (unsigned int)mostElevatedApplicationStateForPID:(int)arg1;
@@ -50,11 +52,14 @@
 - (void)queue_reregister;
 - (void)queue_setElevatedPriority:(BOOL)arg1;
 - (void)queue_setHandler:(CDUnknownBlockType)arg1;
+- (void)queue_setInterestedAssertions:(id)arg1;
 - (void)queue_setInterestedBundleIDs:(id)arg1;
 - (void)queue_setInterestedStates:(unsigned int)arg1;
 - (void)queue_updateInterestedStates;
 - (void)queue_updateInterestedStates:(BOOL)arg1;
 - (void)setElevatedPriority:(BOOL)arg1;
+- (void)setInterestedAssertionReasons:(id)arg1;
+- (void)updateInterestedAssertionReasons:(id)arg1;
 - (void)updateInterestedBundleIDs:(id)arg1;
 - (void)updateInterestedBundleIDs:(id)arg1 states:(unsigned int)arg2;
 - (void)updateInterestedStates:(unsigned int)arg1;

@@ -27,12 +27,12 @@
 @property (strong, nonatomic) NSMutableArray *waypoints; // @synthesize waypoints=_waypoints;
 
 + (Class)waypointsType;
+- (void).cxx_destruct;
 - (int)StringAsTransportType:(id)arg1;
 - (void)addWaypoints:(id)arg1;
 - (void)clearWaypoints;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

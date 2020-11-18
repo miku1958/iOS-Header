@@ -60,8 +60,8 @@
 - (id)_selectedCalendars;
 - (void)_setNewVisibleHourLabels;
 - (void)_setupAutoLayout;
+- (void)_setupDayView;
 - (BOOL)_shouldShowAllVisibleEvents;
-- (double)_verticalMarginForInlineDayPreview;
 - (id)dayView:(id)arg1 eventsForStartDate:(id)arg2 endDate:(id)arg3;
 - (id)initWithDate:(id)arg1 event:(id)arg2 overriddenEventStartDate:(id)arg3 overriddenEventEndDate:(id)arg4;
 - (void)loadView;
@@ -69,6 +69,8 @@
 - (void)renderPressHighlight:(BOOL)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)toggleExpandedState;
+- (double)topInset;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

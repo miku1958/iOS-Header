@@ -4,41 +4,48 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSString, PKPaymentApplication;
+@class NSArray, NSData, NSDate, NSString, PKCurrencyAmount, PKPaymentApplication;
 
 @interface PKRemotePaymentInstrument : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _supportsAutomaticSelection;
+    BOOL _hasAssociatedPeerPaymentAccount;
     NSString *_passIdentifier;
     NSData *_manifestHash;
     NSString *_displayName;
     NSString *_primaryAccountNumberSuffix;
     NSString *_primaryAccountIdentifier;
+    NSString *_issuerCountryCode;
     NSArray *_paymentApplications;
     PKPaymentApplication *_primaryPaymentApplication;
     NSDate *_ingestedDate;
+    PKCurrencyAmount *_peerPaymentAccountBalance;
     NSArray *_associatedWebDomains;
 }
 
 @property (strong, nonatomic) NSArray *associatedWebDomains; // @synthesize associatedWebDomains=_associatedWebDomains;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (nonatomic) BOOL hasAssociatedPeerPaymentAccount; // @synthesize hasAssociatedPeerPaymentAccount=_hasAssociatedPeerPaymentAccount;
 @property (strong, nonatomic) NSDate *ingestedDate; // @synthesize ingestedDate=_ingestedDate;
+@property (copy, nonatomic) NSString *issuerCountryCode; // @synthesize issuerCountryCode=_issuerCountryCode;
 @property (copy, nonatomic) NSData *manifestHash; // @synthesize manifestHash=_manifestHash;
 @property (copy, nonatomic) NSString *passIdentifier; // @synthesize passIdentifier=_passIdentifier;
 @property (strong, nonatomic) NSArray *paymentApplications; // @synthesize paymentApplications=_paymentApplications;
+@property (strong, nonatomic) PKCurrencyAmount *peerPaymentAccountBalance; // @synthesize peerPaymentAccountBalance=_peerPaymentAccountBalance;
 @property (copy, nonatomic) NSString *primaryAccountIdentifier; // @synthesize primaryAccountIdentifier=_primaryAccountIdentifier;
 @property (copy, nonatomic) NSString *primaryAccountNumberSuffix; // @synthesize primaryAccountNumberSuffix=_primaryAccountNumberSuffix;
 @property (strong, nonatomic) PKPaymentApplication *primaryPaymentApplication; // @synthesize primaryPaymentApplication=_primaryPaymentApplication;
 @property (nonatomic) BOOL supportsAutomaticSelection; // @synthesize supportsAutomaticSelection=_supportsAutomaticSelection;
 
 + (id)remotePaymentInstrumentWithProtobuf:(id)arg1;
-+ (id)sortDescriptorForDefaultPaymentInstrument:(id)arg1 supportedNetworks:(id)arg2 merchantCapabilities:(unsigned long long)arg3;
++ (id)sortDescriptorForDefaultPaymentInstrument:(id)arg1 supportedNetworks:(id)arg2 merchantCapabilities:(unsigned long long)arg3 webService:(id)arg4;
 + (BOOL)supportsSecureCoding;
++ (id)thumbnailCachePathForManifestHash:(id)arg1 size:(struct CGSize)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

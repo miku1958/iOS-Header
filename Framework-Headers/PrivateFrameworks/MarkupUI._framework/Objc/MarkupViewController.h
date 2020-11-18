@@ -6,15 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MarkupUI/AKControllerDelegateProtocol-Protocol.h>
-#import <MarkupUI/MUPDFContentViewControllerDelegate-Protocol.h>
+#import <MarkupUI/MUContentViewControllerDelegate-Protocol.h>
 #import <MarkupUI/UINavigationBarDelegate-Protocol.h>
 #import <MarkupUI/UIToolbarDelegate-Protocol.h>
 
-@class AKController, MUCGPDFReader, NSLayoutConstraint, NSString, NSUndoManager, PDFDocument, PDFView, UIBarButtonItem, UIColor, UINavigationBar, UINavigationItem, UIToolbar, UIView;
-@protocol MUContentViewControllerProtocol><MUContentViewControllerAKControllerSubdelegate, MarkupViewControllerDelegate;
+@class AKController, AKToolbarView, NSData, NSLayoutConstraint, NSString, NSUndoManager, PDFDocument, PDFView, UIBarButtonItem, UIColor, UIImage, UIImageView, UINavigationBar, UINavigationItem, UIScrollView, UIView;
+@protocol MUContentViewControllerProtocol, MarkupViewControllerDelegate;
 
-@interface MarkupViewController : UIViewController <AKControllerDelegateProtocol, MUPDFContentViewControllerDelegate, UINavigationBarDelegate, UIToolbarDelegate>
+@interface MarkupViewController : UIViewController <MUContentViewControllerDelegate, UINavigationBarDelegate, UIToolbarDelegate>
 {
     UIColor *_backgroundColor;
     UIColor *_toolbarItemTintColor;
@@ -27,6 +26,7 @@
     BOOL _navigationModeHorizontal;
     BOOL _needToPerformFullTeardown;
     BOOL _needToPerformDocumentClosedTeardown;
+    BOOL _observingAKCurrentPageIndex;
     BOOL _alreadyLoggedSavingForThisDocument;
     BOOL _useFancyTransition;
     BOOL _isAnimatingMarkupExtensionTransition;
@@ -37,22 +37,24 @@
     BOOL _shapeDetectionEnabled;
     BOOL _allowShakeToUndo;
     BOOL _centersIgnoringContentInsets;
-    AKController *_annotationController;
-    UIToolbar *_toolbar;
+    BOOL _showShareButtonInToolbar;
     long long _toolbarPosition;
     UINavigationBar *_navBar;
-    UIViewController<MUContentViewControllerProtocol><MUContentViewControllerAKControllerSubdelegate> *_contentViewController;
+    UIViewController<MUContentViewControllerProtocol> *_contentViewController;
     NSString *_sourceContentType;
     id _sourceContent;
     id _digestedSourceContent;
-    MUCGPDFReader *_pdfReader;
+    NSData *_archivedModelData;
     double _initialContentScale;
+    UIView *_toolbar;
+    AKToolbarView *_modernToolbar;
     NSLayoutConstraint *_toolbarTopConstraint;
     NSLayoutConstraint *_toolbarTopAttachedConstraint;
     NSLayoutConstraint *_toolbarBottomConstraint;
     UINavigationItem *_navItem;
     UIBarButtonItem *_cancelButton;
     UIBarButtonItem *_doneButton;
+    UIImage *_placeholderImage;
     NSString *_preferredFileDisplayName;
     UIView *_contentContainerView;
     UIView *_transitionDimmingView;
@@ -60,18 +62,23 @@
     NSString *_hostProcessBundleIdentifier;
     NSUndoManager *_akUndoManager;
     id<MarkupViewControllerDelegate> _delegate;
+    UIImageView *_placeholderImageView;
+    unsigned long long _inkStyle;
 }
 
 @property (strong, nonatomic) NSUndoManager *akUndoManager; // @synthesize akUndoManager=_akUndoManager;
+@property (nonatomic) BOOL allEditingDisabled;
 @property (nonatomic) BOOL allowShakeToUndo; // @synthesize allowShakeToUndo=_allowShakeToUndo;
 @property (nonatomic) BOOL alreadyLoggedSavingForThisDocument; // @synthesize alreadyLoggedSavingForThisDocument=_alreadyLoggedSavingForThisDocument;
-@property (strong) AKController *annotationController; // @synthesize annotationController=_annotationController;
+@property (readonly, nonatomic) AKController *annotationController;
 @property (nonatomic) BOOL annotationEditingEnabled;
+@property (strong) NSData *archivedModelData; // @synthesize archivedModelData=_archivedModelData;
 @property (copy) UIColor *backgroundColor;
 @property (strong) UIBarButtonItem *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property (nonatomic) BOOL centersIgnoringContentInsets; // @synthesize centersIgnoringContentInsets=_centersIgnoringContentInsets;
 @property (strong) UIView *contentContainerView; // @synthesize contentContainerView=_contentContainerView;
-@property (strong) UIViewController<MUContentViewControllerProtocol><MUContentViewControllerAKControllerSubdelegate> *contentViewController; // @synthesize contentViewController=_contentViewController;
+@property (strong) UIViewController<MUContentViewControllerProtocol> *contentViewController; // @synthesize contentViewController=_contentViewController;
+@property (readonly, nonatomic) UIScrollView *contentViewScrollView;
 @property (nonatomic) unsigned long long currentPDFPageIndex;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MarkupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -83,27 +90,33 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *hostProcessBundleIdentifier; // @synthesize hostProcessBundleIdentifier=_hostProcessBundleIdentifier;
 @property double initialContentScale; // @synthesize initialContentScale=_initialContentScale;
+@property unsigned long long inkStyle; // @synthesize inkStyle=_inkStyle;
 @property BOOL isAnimatingMarkupExtensionTransition; // @synthesize isAnimatingMarkupExtensionTransition=_isAnimatingMarkupExtensionTransition;
+@property (readonly) BOOL isUsedOnDarkBackground;
+@property (strong) AKToolbarView *modernToolbar; // @synthesize modernToolbar=_modernToolbar;
 @property (strong, nonatomic) UINavigationBar *navBar; // @synthesize navBar=_navBar;
 @property (copy) UIColor *navBarTitleColor;
 @property (strong, nonatomic) UINavigationItem *navItem; // @synthesize navItem=_navItem;
 @property (nonatomic, getter=isNavigationModeHorizontal) BOOL navigationModeHorizontal; // @synthesize navigationModeHorizontal=_navigationModeHorizontal;
 @property BOOL needToPerformDocumentClosedTeardown; // @synthesize needToPerformDocumentClosedTeardown=_needToPerformDocumentClosedTeardown;
 @property BOOL needToPerformFullTeardown; // @synthesize needToPerformFullTeardown=_needToPerformFullTeardown;
+@property (getter=isObservingAKCurrentPageIndex) BOOL observingAKCurrentPageIndex; // @synthesize observingAKCurrentPageIndex=_observingAKCurrentPageIndex;
 @property (readonly, nonatomic) NSString *outputType;
 @property (readonly) PDFDocument *pdfDocument;
-@property (strong) MUCGPDFReader *pdfReader; // @synthesize pdfReader=_pdfReader;
 @property (readonly) PDFView *pdfView;
 @property (nonatomic) BOOL pencilAlwaysDraws; // @synthesize pencilAlwaysDraws=_pencilAlwaysDraws;
+@property (strong) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
+@property (strong) UIImageView *placeholderImageView; // @synthesize placeholderImageView=_placeholderImageView;
 @property (copy, nonatomic) NSString *preferredFileDisplayName; // @synthesize preferredFileDisplayName=_preferredFileDisplayName;
 @property (nonatomic, getter=isShapeDetectionEnabled) BOOL shapeDetectionEnabled; // @synthesize shapeDetectionEnabled=_shapeDetectionEnabled;
 @property BOOL showAsFormSheet; // @synthesize showAsFormSheet=_showAsFormSheet;
+@property (nonatomic) BOOL showShareButtonInToolbar; // @synthesize showShareButtonInToolbar=_showShareButtonInToolbar;
 @property (nonatomic) BOOL showThumbnailViewForMultipage; // @synthesize showThumbnailViewForMultipage=_showThumbnailViewForMultipage;
 @property (strong, nonatomic) id sourceContent; // @synthesize sourceContent=_sourceContent;
 @property (strong) NSString *sourceContentType; // @synthesize sourceContentType=_sourceContentType;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isThumbnailViewHidden) BOOL thumbnailViewHidden; // @synthesize thumbnailViewHidden=_thumbnailViewHidden;
-@property (strong) UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
+@property (strong, nonatomic) UIView *toolbar; // @synthesize toolbar=_toolbar;
 @property (strong) NSLayoutConstraint *toolbarBottomConstraint; // @synthesize toolbarBottomConstraint=_toolbarBottomConstraint;
 @property (nonatomic, getter=isToolbarHidden) BOOL toolbarHidden; // @synthesize toolbarHidden=_toolbarHidden;
 @property (copy) UIColor *toolbarItemTintColor;
@@ -120,9 +133,11 @@
 + (double)_maxImageDimensionInView;
 + (id)cleanImageMetadataFromData:(id)arg1;
 + (BOOL)hasPrivateImageMetadata:(id)arg1;
++ (id)markupBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2;
 - (void).cxx_destruct;
 - (void)_bailFailedAnimateEnterMarkup;
 - (void)_cancel;
+- (void)_cleanupPlaceholderImage;
 - (void)_commonInit;
 - (void)_createCancelDoneNavBar;
 - (id)_effectiveBackgroundColor;
@@ -132,32 +147,32 @@
 - (void)_installContentViewControllerForUTI:(id)arg1;
 - (void)_loadSourceContentWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_markupBlackColor;
+- (void)_presentPlaceholderImage;
 - (void)_saveEditing:(id)arg1;
 - (void)_setData:(id)arg1 withArchivedModelData:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_setFileURL:(id)arg1 withArchivedModelData:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)_setupAnnotationController;
 - (void)_setupInitialBaseModelScaleFactorWithScreenSize:(struct CGSize)arg1 windowDecorationSize:(struct CGSize)arg2;
 - (void)_showTextStyleOptions:(id)arg1;
 - (BOOL)_sourceImageMayContainBaseImageAndModel;
 - (void)_startObservingAnnotationController;
 - (void)_stopObservingAnnotationController;
+- (void)_toolbarShareButtonTapped:(id)arg1;
 - (void)_updateAndLoadSourceContent:(id)arg1 withArchivedModelData:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_updateAppearanceForTraitCollection:(id)arg1;
 - (void)_updateConstraintsForBarPosition:(long long)arg1;
-- (void)_updateUndoButtonWithController:(id)arg1;
+- (void)_updateundoBarButtonWithController:(id)arg1;
+- (BOOL)_useLegacyToolbar;
 - (BOOL)_writeToDataConsumer:(struct CGDataConsumer *)arg1 embedSourceImageAndEditModel:(BOOL)arg2 error:(id *)arg3;
 - (void)adjustContentInsetsForBars;
+- (id)annotationControllerOfContentViewController:(id)arg1 willSetToolbarItems:(id)arg2;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)cancel:(id)arg1;
-- (id)characterIndexesForQuadPoints:(id)arg1 onPageAtIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
-- (void)clearHighlightableSelectionForAnnotationController:(id)arg1;
-- (BOOL)controller:(id)arg1 shouldHandleURL:(id)arg2;
-- (void)controller:(id)arg1 willPlaceSingleShotAnnotation:(id)arg2 onProposedPageModelController:(id *)arg3;
-- (id)controller:(id)arg1 willSetToolbarItems:(id)arg2;
-- (void)controllerDidEnterToolMode:(id)arg1;
-- (void)controllerDidExitToolMode:(id)arg1;
-- (BOOL)controllerShouldDetectFormElements:(id)arg1;
-- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromModelToOverlayWithPageIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
-- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromOverlayToModelWithPageIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
+- (BOOL)contentViewController:(id)arg1 shouldHandleURL:(id)arg2;
+- (void)controllerWillDismissSignatureCaptureView:(id)arg1;
+- (void)controllerWillDismissSignatureManagerView:(id)arg1;
+- (void)controllerWillShowSignatureCaptureView:(id)arg1;
+- (void)controllerWillShowSignatureManagerView:(id)arg1;
 - (id)createArchivedModelData;
 - (id)dataRepresentationEmbeddingSourceImageAndEditModel:(BOOL)arg1 error:(id *)arg2;
 - (id)dataRepresentationWithError:(id *)arg1;
@@ -166,39 +181,39 @@
 - (void)documentDidCloseTeardown;
 - (void)done:(id)arg1;
 - (void)duplicate:(id)arg1;
+- (void)editCheckpointReachedForAnnotationController:(id)arg1;
+- (void)editDetectedForAnnotationController:(id)arg1;
 - (void)editTextAnnotation:(id)arg1;
 - (id)filteredToolbarItemsForItems:(id)arg1 fromController:(id)arg2;
 - (void)fullTeardown;
-- (BOOL)hasHighlightableSelectionForAnnotationController:(id)arg1;
-- (id)highlightableSelectionCharacterIndexesOnPageAtIndex:(unsigned long long)arg1 forAnnotationController:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)layerContainingQuickBackgroundForLoupeOnOverlayAtPageIndex:(unsigned long long)arg1 forAnnotationController:(id)arg2;
-- (struct CGRect)maxPageRectWithPageIndex:(unsigned long long)arg1 forAnnotationController:(id)arg2;
-- (double)modelBaseScaleFactorOfPageAtIndex:(unsigned long long)arg1 forAnnotationController:(id)arg2;
+- (double)modelBaseScaleFactorOfPageAtIndex:(unsigned long long)arg1 forContentViewController:(id)arg2;
 - (void)motionEnded:(long long)arg1 withEvent:(id)arg2;
-- (id)newContentSnapshotPDFDataIncludingAdornments:(BOOL)arg1 atScale:(double)arg2 inRect:(struct CGRect)arg3 onOverlayAtPageIndex:(unsigned long long)arg4 forAnnotationController:(id)arg5;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)penStrokeCompletedForAnnotationController:(id)arg1;
 - (id)popoverPresentingViewControllerForAnnotationController:(id)arg1;
 - (long long)positionForBar:(id)arg1;
-- (void)positionSketchOverlay:(id)arg1 forAnnotationController:(id)arg2;
+- (void)positionSketchOverlay:(id)arg1 forContentViewController:(id)arg2;
 - (long long)preferredStatusBarStyle;
-- (id)quadPointsForCharacterIndexes:(id)arg1 onPageAtIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
+- (void)restoreToolModeForContentType;
 - (void)revert;
 - (void)setData:(id)arg1;
 - (void)setData:(id)arg1 withArchivedModelData:(id)arg2;
+- (void)setData:(id)arg1 withArchivedModelData:(id)arg2 placeholderImage:(id)arg3;
 - (void)setFileURL:(id)arg1;
 - (void)setFileURL:(id)arg1 withArchivedModelData:(id)arg2;
 - (void)setFileURL:(id)arg1 withArchivedModelData:(id)arg2 placeholderImage:(id)arg3;
 - (void)setImage:(id)arg1;
 - (void)setImage:(id)arg1 withArchivedModelData:(id)arg2;
+- (void)setImage:(id)arg1 withArchivedModelData:(id)arg2 placeholderImage:(id)arg3;
 - (void)setSourceContent:(id)arg1 withArchivedModelData:(id)arg2;
 - (void)setToolbarHidden:(BOOL)arg1 animated:(BOOL)arg2;
-- (BOOL)shouldPlaceFormElementAtPoint:(struct CGPoint)arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
-- (BOOL)shouldPlaceProposedFormElementAtRect:(struct CGRect)arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
 - (struct UIEdgeInsets)sketchOverlayInsets;
+- (long long)toolbarController:(id)arg1 positionForBar:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
-- (id)undoManagerForAnnotationController:(id)arg1;
+- (id)undoManager;
+- (id)undoManagerForContentViewController:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

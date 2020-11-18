@@ -18,6 +18,8 @@
 - (BOOL)_valueForKeyDependsOnMetadataValue:(id)arg1;
 - (void)_valueRequestDidFinish;
 - (long long)_valueStatus;
+- (void)_waitForLoadingOfValueDependentKey:(id)arg1;
+- (id)dataType;
 - (void)dealloc;
 - (void)finalize;
 - (void)loadValuesAsynchronouslyForKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

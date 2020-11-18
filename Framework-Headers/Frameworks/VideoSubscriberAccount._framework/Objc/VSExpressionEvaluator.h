@@ -27,7 +27,7 @@
 @property (nonatomic) BOOL hasDeterminedValue; // @synthesize hasDeterminedValue=_hasDeterminedValue;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isMonitoringForChanges) BOOL monitoringForChanges; // @synthesize monitoringForChanges=_monitoringForChanges;
-@property (weak, nonatomic) id object; // @synthesize object=_object;
+@property (nonatomic) id object; // @synthesize object=_object;
 @property (copy, nonatomic) NSArray *observers; // @synthesize observers=_observers;
 @property (copy, nonatomic) NSDictionary *substitutionVariables; // @synthesize substitutionVariables=_substitutionVariables;
 @property (readonly) Class superclass;

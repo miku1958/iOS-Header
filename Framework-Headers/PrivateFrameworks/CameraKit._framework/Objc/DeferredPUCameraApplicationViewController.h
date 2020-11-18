@@ -19,12 +19,11 @@
 
 - (void).cxx_destruct;
 - (id)_initWithSessionID:(id)arg1 usesCameraLocationBundleID:(BOOL)arg2 startPreviewImmediately:(BOOL)arg3;
-- (BOOL)_navigationControllerShouldCrossFadeBottomBars:(id)arg1;
 - (BOOL)definesPresentationContext;
 - (id)initForCurrentPlatformWithSessionID:(id)arg1 startPreviewImmediately:(BOOL)arg2;
 - (id)initForCurrentPlatformWithSessionID:(id)arg1 usesCameraLocationBundleID:(BOOL)arg2 startPreviewImmediately:(BOOL)arg3;
-- (id)navigationController:(id)arg1 animatorForOperation:(long long)arg2 fromViewController:(id)arg3 toViewController:(id)arg4;
-- (id)navigationController:(id)arg1 interactionControllerUsingAnimator:(id)arg2;
+- (id)navigationController:(id)arg1 animationControllerForOperation:(long long)arg2 fromViewController:(id)arg3 toViewController:(id)arg4;
+- (id)navigationController:(id)arg1 interactionControllerForAnimationController:(id)arg2;
 - (id)newAlbumNavigationControllerForCameraRoll:(id)arg1;
 - (void)prepareAlbumNavigationControllerForReuse:(id)arg1 withCameraRoll:(id)arg2;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;

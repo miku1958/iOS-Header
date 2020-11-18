@@ -8,7 +8,7 @@
 
 #import <PhotosUI/PHLivePhotoViewDelegate-Protocol.h>
 
-@class NSString, PHLivePhoto, PHLivePhotoView, PUAvalancheStackView, PUBackgroundColorView, PUPhotoDecoration, PUTextBannerView, PXCollectionTileLayoutTemplate, PXFeatureSpec, PXRoundedCornerOverlayView, PXTitleSubtitleUILabel, PXUIAssetBadgeView, UIColor, UIImage, UIImageView, UIView;
+@class AVAsset, ISAnimatedImageView, ISWrappedAVAudioSession, ISWrappedAVPlayer, NSString, PHAnimatedImage, PHLivePhoto, PHLivePhotoView, PUAvalancheStackView, PUBackgroundColorView, PUPhotoDecoration, PUTextBannerView, PXCollectionTileLayoutTemplate, PXFeatureSpec, PXRoundedCornerOverlayView, PXTitleSubtitleUILabel, PXUIAssetBadgeView, PXVideoPlayerView, UIColor, UIImage, UIImageView, UIView;
 @protocol PUPhotoViewContentHelperDelegate;
 
 @interface PUPhotoViewContentHelper : NSObject <PHLivePhotoViewDelegate>
@@ -24,7 +24,12 @@
     UIColor *_layerDefaultBackgroundColor;
     struct {
         BOOL titleSubtitleUILabel;
+        BOOL loopingVideoView;
+        BOOL animatedImageView;
     } _needsUpdateFlags;
+    PXVideoPlayerView *_loopingVideoView;
+    ISWrappedAVPlayer *_loopingVideoPlayer;
+    ISAnimatedImageView *_animatedImageView;
     BOOL _isTextBannerVisible;
     BOOL _avoidsImageViewIfPossible;
     BOOL _flattensBadgeView;
@@ -34,6 +39,7 @@
     BOOL _highlighted;
     BOOL _livePhotoHidden;
     BOOL _shouldPrepareForPlayback;
+    BOOL _loopingPlaybackAllowed;
     BOOL _showsLivePhoto;
     BOOL _needsAvalancheStack;
     UIView *_contentView;
@@ -47,6 +53,8 @@
     UIColor *_backgroundColor;
     id<PUPhotoViewContentHelperDelegate> _delegate;
     PHLivePhoto *_livePhoto;
+    AVAsset *_loopingVideoAsset;
+    PHAnimatedImage *_animatedImage;
     struct CGColor *_avalancheStackBackgroundColor;
     long long _badgeStyle;
     PUTextBannerView *_textBannerView;
@@ -63,15 +71,18 @@
     UIView *__highlightOverlayView;
     PXUIAssetBadgeView *__badgeView;
     PXTitleSubtitleUILabel *__titleSubtitleLabel;
+    ISWrappedAVAudioSession *__audioSession;
     struct CGSize _photoSize;
     struct PXAssetBadgeInfo _badgeInfo;
     struct CGAffineTransform _imageTransform;
 }
 
+@property (strong, nonatomic, setter=_setAudioSession:) ISWrappedAVAudioSession *_audioSession; // @synthesize _audioSession=__audioSession;
 @property (strong, nonatomic, setter=_setBadgeView:) PXUIAssetBadgeView *_badgeView; // @synthesize _badgeView=__badgeView;
 @property (strong, nonatomic) UIImageView *_crossfadeImageView; // @synthesize _crossfadeImageView=__crossfadeImageView;
 @property (strong, nonatomic, setter=_setHighlightOverlayView:) UIView *_highlightOverlayView; // @synthesize _highlightOverlayView=__highlightOverlayView;
 @property (strong, nonatomic, setter=_setTitleSubtitleUILabel:) PXTitleSubtitleUILabel *_titleSubtitleLabel; // @synthesize _titleSubtitleLabel=__titleSubtitleLabel;
+@property (strong, nonatomic) PHAnimatedImage *animatedImage; // @synthesize animatedImage=_animatedImage;
 @property (nonatomic, getter=isAnimatingRoundedCorners) BOOL animatingRoundedCorners; // @synthesize animatingRoundedCorners=_animatingRoundedCorners;
 @property (nonatomic) struct CGColor *avalancheStackBackgroundColor; // @synthesize avalancheStackBackgroundColor=_avalancheStackBackgroundColor;
 @property (strong, nonatomic) PUAvalancheStackView *avalancheStackView; // @synthesize avalancheStackView=_avalancheStackView;
@@ -98,6 +109,8 @@
 @property (strong, nonatomic) PHLivePhoto *livePhoto; // @synthesize livePhoto=_livePhoto;
 @property (nonatomic, getter=isLivePhotoHidden) BOOL livePhotoHidden; // @synthesize livePhotoHidden=_livePhotoHidden;
 @property (strong, nonatomic) PHLivePhotoView *livePhotoView; // @synthesize livePhotoView=_livePhotoView;
+@property (nonatomic) BOOL loopingPlaybackAllowed; // @synthesize loopingPlaybackAllowed=_loopingPlaybackAllowed;
+@property (copy, nonatomic) AVAsset *loopingVideoAsset; // @synthesize loopingVideoAsset=_loopingVideoAsset;
 @property (nonatomic) BOOL needsAvalancheStack; // @synthesize needsAvalancheStack=_needsAvalancheStack;
 @property (strong, nonatomic) UIColor *overlayColor; // @synthesize overlayColor=_overlayColor;
 @property (copy, nonatomic) PUPhotoDecoration *photoDecoration; // @synthesize photoDecoration=_photoDecoration;
@@ -121,19 +134,25 @@
 + (struct CGSize)sizeThatFits:(struct CGSize)arg1 imageSize:(struct CGSize)arg2 fillMode:(long long)arg3;
 - (void).cxx_destruct;
 - (void)_addAvalancheStackViewIfNecessary;
+- (void)_invalidateAnimatedImageView;
 - (void)_invalidateBadgeView;
+- (void)_invalidateLoopingVideoView;
 - (void)_invalidateTitleSubtitleUILabel;
+- (BOOL)_needsUpdate;
 - (void)_removeAvalancheStackViewIfNecessary;
 - (void)_removePhotoImageViewIfNecessary;
 - (void)_startPlaybackWhenLivePhotoAvailableWithStyle:(long long)arg1;
+- (void)_updateAnimatedImageViewIfNeeded;
 - (void)_updateBadgeView;
 - (void)_updateContentViewClipsToBounds;
 - (void)_updateHighlight;
+- (void)_updateIfNeeded;
 - (void)_updateImageView;
 - (void)_updateLayerCornerRadius;
 - (void)_updateLivePhotoView;
 - (void)_updateLivePhotoViewPreparing;
 - (void)_updateLivePhotoViewVisibility;
+- (void)_updateLoopingVideoViewIfNeeded;
 - (void)_updatePhotoDecoration;
 - (void)_updateRoundedCornersOverlayView;
 - (void)_updateSubviewOrdering;

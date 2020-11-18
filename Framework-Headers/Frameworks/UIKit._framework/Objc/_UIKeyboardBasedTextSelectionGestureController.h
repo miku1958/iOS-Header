@@ -19,13 +19,10 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (void)_cleanupDeadGesturesIfNecessary;
 - (BOOL)allowOneFingerDeepPress;
-- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (void)oneFingerForcePan:(id)arg1;
-- (void)oneFingerForcePress:(id)arg1;
+- (Class)gestureCluster;
 - (double)oneFingerForcePressMinimumDuration;
 - (BOOL)oneFingerForcePressShouldCancelTouchesInView;
 - (BOOL)oneFingerForcePressShouldFailWithoutForce;
-- (void)transitionFromBlockMagnifyToBlockSelectWithLocation:(struct CGPoint)arg1 viaDrag:(BOOL)arg2;
 
 @end
 

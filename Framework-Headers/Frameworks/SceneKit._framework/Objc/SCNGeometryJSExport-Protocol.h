@@ -15,6 +15,7 @@
 @property (strong, nonatomic) SCNMaterial *firstMaterial;
 @property (readonly, nonatomic) long long geometryElementCount;
 @property (readonly, nonatomic) NSArray *geometryElements;
+@property (readonly, nonatomic) NSArray *geometrySourceChannels;
 @property (readonly, nonatomic) NSArray *geometrySources;
 @property (copy, nonatomic) NSArray *levelsOfDetail;
 @property (copy, nonatomic) NSArray *materials;
@@ -24,6 +25,7 @@
 + (id)geometry;
 + (id)geometryWithMDLMesh:(MDLMesh *)arg1;
 + (id)geometryWithSources:(NSArray *)arg1 elements:(NSArray *)arg2;
++ (id)geometryWithSources:(NSArray *)arg1 elements:(NSArray *)arg2 sourceChannels:(NSArray *)arg3;
 - (void)addAnimation:(CAAnimation *)arg1 forKey:(NSString *)arg2;
 - (CAAnimation *)animationForKey:(NSString *)arg1;
 - (NSArray *)animationKeys;

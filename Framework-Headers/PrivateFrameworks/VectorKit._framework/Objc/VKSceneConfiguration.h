@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface VKSceneConfiguration : NSObject
 {
     shared_ptr_c37d6e02 _sceneManager;
+    shared_ptr_a3c46825 _styleManager;
     struct vector<GEOLocationCoordinate2D, std::__1::allocator<GEOLocationCoordinate2D>> _pointsOfInterest;
     unsigned char _navState;
     unsigned char _distanceToCurrentManeuver;
@@ -28,14 +29,21 @@
     unsigned char _roadSpeed;
     unsigned long long _roadSpeedZeroes;
     unsigned char _cameraMode;
+    unsigned char _navigationDestination;
     struct ManeveuverDistancesRange _distanceRanges;
+    shared_ptr_e963992e _taskContext;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_updateStyleManager;
 - (id)analyticsLogContextWithNavigationState;
-- (id)init;
+- (id)initWithTaskContext:(shared_ptr_e963992e)arg1;
+- (unsigned long long)navCameraMode;
+- (unsigned long long)navigationDestination;
 - (unsigned char)navigationState;
+- (void)resetState;
+- (shared_ptr_c37d6e02)sceneManager;
 - (void)setCurrentGroupedManeuverCount:(unsigned long long)arg1;
 - (void)setCurrentIncidentType:(unsigned long long)arg1;
 - (void)setCurrentManeuverJunctionsCount:(unsigned long long)arg1;
@@ -46,6 +54,7 @@
 - (void)setDistanceToDestination:(double)arg1;
 - (void)setLineType:(unsigned int)arg1;
 - (void)setNavCameraMode:(unsigned long long)arg1;
+- (void)setNavigationDestination:(unsigned long long)arg1;
 - (void)setNavigationState:(int)arg1;
 - (void)setNextManeuverRampType:(int)arg1;
 - (void)setNextStepLength:(double)arg1;
@@ -55,6 +64,7 @@
 - (void)setSearchAlongTheRoute:(BOOL)arg1;
 - (void)setStyleManager:(shared_ptr_a3c46825)arg1;
 - (void)setVehicleSpeed:(double)arg1;
+- (shared_ptr_a3c46825)styleManager;
 
 @end
 

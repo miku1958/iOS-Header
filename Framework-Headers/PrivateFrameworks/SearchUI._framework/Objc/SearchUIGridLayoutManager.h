@@ -6,45 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, SFTableHeaderRowCardSection;
+@class NSMapTable, TLKGridLayoutManager;
 
 @interface SearchUIGridLayoutManager : NSObject
 {
-    BOOL _tableContainsRowHeaders;
     BOOL _isCompactTable;
-    long long _indexForFirstTrailingColumn;
-    NSArray *_spacings;
-    NSArray *_initialTruncationPriorities;
-    NSArray *_maxSizedWidthsForHeadersAndRows;
-    NSArray *_tableColumnAlignment;
-    long long _totalEqualColumns;
-    SFTableHeaderRowCardSection *_header;
-    NSArray *_sections;
+    TLKGridLayoutManager *_gridManager;
+    NSMapTable *_tableMapping;
 }
 
-@property (strong) SFTableHeaderRowCardSection *header; // @synthesize header=_header;
-@property long long indexForFirstTrailingColumn; // @synthesize indexForFirstTrailingColumn=_indexForFirstTrailingColumn;
-@property (strong) NSArray *initialTruncationPriorities; // @synthesize initialTruncationPriorities=_initialTruncationPriorities;
+@property (strong) TLKGridLayoutManager *gridManager; // @synthesize gridManager=_gridManager;
 @property BOOL isCompactTable; // @synthesize isCompactTable=_isCompactTable;
-@property (strong) NSArray *maxSizedWidthsForHeadersAndRows; // @synthesize maxSizedWidthsForHeadersAndRows=_maxSizedWidthsForHeadersAndRows;
-@property (strong) NSArray *sections; // @synthesize sections=_sections;
-@property (strong) NSArray *spacings; // @synthesize spacings=_spacings;
-@property (strong) NSArray *tableColumnAlignment; // @synthesize tableColumnAlignment=_tableColumnAlignment;
-@property BOOL tableContainsRowHeaders; // @synthesize tableContainsRowHeaders=_tableContainsRowHeaders;
-@property long long totalEqualColumns; // @synthesize totalEqualColumns=_totalEqualColumns;
+@property (strong) NSMapTable *tableMapping; // @synthesize tableMapping=_tableMapping;
 
-+ (double)leadingSectionSpacingForView:(id)arg1 view2:(id)arg2 index:(unsigned long long)arg3 alignmentSchema:(id)arg4 allEqual:(BOOL)arg5;
++ (id)alignmentsForSFHeaderRow:(id)arg1;
++ (id)itemsForDataItems:(id)arg1;
++ (BOOL)shouldHideViewForSection:(id)arg1;
 - (void).cxx_destruct;
-- (BOOL)allEqualColumns;
-- (id)fastPathSizing;
-- (BOOL)hasManyTrailingColumns;
+- (BOOL)computeCompactTableForSections:(id)arg1;
 - (id)initWithHeaderSection:(id)arg1 dataSections:(id)arg2;
-- (id)maxSizes;
-- (void)maxWidthColumsForSection:(id)arg1 widths:(double *)arg2 attributes:(id)arg3;
-- (long long)numberOfColumns;
-- (id)spacingsForViewsInSection;
-- (double)trailingSectionSpacingBasedOnTotalViewsInSection:(long long)arg1;
-- (id)truncationPriorities:(unsigned long long)arg1 alignments:(id)arg2;
+- (id)tableRowForTableRowCardSection:(id)arg1;
 
 @end
 

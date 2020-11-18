@@ -28,6 +28,7 @@
 @property (readonly, nonatomic) BOOL isInterfaceUsable;
 @property (readonly, nonatomic) BOOL isInternetReachable;
 @property (readonly, nonatomic) BOOL isLTEWithCDRX;
+@property (readonly, nonatomic) BOOL isNetworkingPowerExpensiveToUse;
 @property (readonly, nonatomic) BOOL isPoorLinkQuality;
 @property (readonly, nonatomic) BOOL isRadioHot;
 @property (readonly, nonatomic) int linkQuality;
@@ -36,9 +37,11 @@
 @property (readonly, nonatomic) struct __CFString *wwanInterfaceName;
 
 + (BOOL)isBadLinkQuality:(int)arg1;
++ (BOOL)isNetworkingPowerExpensiveToUse;
 + (BOOL)isPoorLinkQuality:(int)arg1;
 + (id)sharedInstanceForIdentifier:(long long)arg1;
 + (id)stringForLinkQuality:(int)arg1;
+- (void).cxx_destruct;
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
 - (void)dealloc;
 - (id)initWithInterfaceIdentifier:(long long)arg1;

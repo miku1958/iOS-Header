@@ -8,10 +8,16 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 @interface GEOPDFactoidFilter : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
 }
 
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

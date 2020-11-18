@@ -36,6 +36,7 @@
 - (void)_downloadWithOptions:(id)arg1 shouldFireCallback:(BOOL)arg2;
 - (id)_getLocalAttribute:(id)arg1;
 - (void)adjustDownloadOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)assetServerUrl;
 - (long long)assetStateForStateString:(id)arg1;
 - (void)beginDownloadWithOptions:(id)arg1;
 - (void)cancelDownload:(CDUnknownBlockType)arg1;
@@ -56,6 +57,7 @@
 - (BOOL)requiredDiskSpaceIsAvailableForDownloadOptions:(id)arg1 requiredBytes:(long long *)arg2 error:(id *)arg3;
 - (void)resumeDownload:(CDUnknownBlockType)arg1;
 - (BOOL)resumeDownloadAndReturnError:(id *)arg1;
+- (id)systemAppServerUrl;
 
 @end
 

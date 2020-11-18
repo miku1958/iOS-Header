@@ -13,6 +13,7 @@
 @interface PXAssetsTileTransitionCoordinator : NSObject <PXTileTransitionAnimationCoordinator>
 {
     BOOL _treatRemovalsAsDeletes;
+    BOOL _delayInsertions;
     BOOL __shouldCrossfade;
     PXTilingChange *__tilingChange;
     PXBasicTileAnimationOptions *__basicAnimationOptions;
@@ -36,6 +37,7 @@
 @property (readonly, nonatomic) PXTilingChange *_tilingChange; // @synthesize _tilingChange=__tilingChange;
 @property (readonly, nonatomic) PXAssetsTilingLayout *_toLayout; // @synthesize _toLayout=__toLayout;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) BOOL delayInsertions; // @synthesize delayInsertions=_delayInsertions;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;

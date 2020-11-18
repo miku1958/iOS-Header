@@ -9,18 +9,16 @@
 #import <CryptoTokenKit/TKProtocolTokenWatcher-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSXPCConnection;
-@protocol OS_dispatch_semaphore;
 
 @interface TKTokenWatcher : NSObject <TKProtocolTokenWatcher>
 {
     NSXPCConnection *_connection;
     NSMutableArray *_tokenIDs;
     NSMutableDictionary *_removalHandlers;
-    NSObject<OS_dispatch_semaphore> *_semaphore;
     CDUnknownBlockType _insertionHandler;
 }
 
-@property (readonly) NSArray *tokenIDs; // @synthesize tokenIDs=_tokenIDs;
+@property (readonly) NSArray *tokenIDs;
 
 - (void).cxx_destruct;
 - (void)addRemovalHandler:(CDUnknownBlockType)arg1 forTokenID:(id)arg2;
@@ -29,6 +27,7 @@
 - (id)initWithInsertionHandler:(CDUnknownBlockType)arg1;
 - (void)insertedToken:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)removedToken:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)setInsertionHandler:(CDUnknownBlockType)arg1;
 - (void)setup;
 
 @end

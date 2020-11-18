@@ -8,68 +8,113 @@
 
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKit/UIPreviewInteractionDelegate-Protocol.h>
+#import <UIKit/UIViewControllerTransitioningDelegate-Protocol.h>
+#import <UIKit/_UIPreviewActionsControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, UIGestureRecognizer, UIPanGestureRecognizer, UIPreviewInteraction, UIView, UIViewController, _UIPreviewGestureRecognizer2, _UIPreviewInteractionCommitTransition, _UIPreviewInteractionViewControllerTransition, _UIPreviewPresentationController2, _UIRevealGestureRecognizer2;
-@protocol UIViewControllerPreviewing_Internal, _UIPreviewInteractionControllerDelegate, _UIPreviewInteractionHighlighting;
+@class NSString, UIGestureRecognizer, UIPreviewInteraction, UIView, UIViewController, _UIInteractionEffect_deprecated, _UIPreviewActionsController, _UIPreviewInteractionCommitTransition, _UIPreviewInteractionDismissTransition, _UIPreviewInteractionGestureRecognizer, _UIPreviewInteractionPresentationTransition, _UIPreviewPresentationController2, _UISteadyTouchForceGestureRecognizer, _UITouchesObservingGestureRecognizer;
+@protocol UIViewControllerPreviewing_Internal, _UIPreviewInteractionControllerDelegate, _UIPreviewInteractionHighlighting, _UIPreviewInteractionTouchForceProviding;
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewInteractionController : NSObject <UIGestureRecognizerDelegate, UIPreviewInteractionDelegate>
+@interface _UIPreviewInteractionController : NSObject <UIGestureRecognizerDelegate, UIPreviewInteractionDelegate, UIViewControllerTransitioningDelegate, _UIPreviewActionsControllerDelegate>
 {
     BOOL _performingPreviewTransition;
+    BOOL _commitTransitionScheduled;
     BOOL _performingCommitTransition;
+    BOOL _hasTransitionedToPreview;
     id<_UIPreviewInteractionControllerDelegate> _delegate;
     UIView *_sourceView;
     UIViewController *_presentingViewController;
     UIPreviewInteraction *_previewInteraction;
-    _UIRevealGestureRecognizer2 *_revealGestureRecognizer;
-    _UIPreviewGestureRecognizer2 *_previewGestureRecognizer;
-    UIPanGestureRecognizer *_modalPanGestureRecognizer;
+    id<_UIPreviewInteractionTouchForceProviding> _presentedViewTouchForceProvider;
+    id<_UIPreviewInteractionTouchForceProviding> _pausingTouchForceProvider;
+    _UIPreviewInteractionGestureRecognizer *_revealGestureRecognizer;
+    _UIPreviewInteractionGestureRecognizer *_previewGestureRecognizer;
+    _UISteadyTouchForceGestureRecognizer *_steadyTouchForceGestureRecognizer;
     UIViewController *_currentPreviewViewController;
     _UIPreviewPresentationController2 *_currentPresentationController;
-    _UIPreviewInteractionViewControllerTransition *_currentTransitionDelegate;
-    _UIPreviewInteractionCommitTransition *_currentCommitTransition;
-    id<UIViewControllerPreviewing_Internal> _currentPreviewingContext;
     id<_UIPreviewInteractionHighlighting> _currentHighlighter;
+    _UIPreviewInteractionPresentationTransition *_currentPresentationTransition;
+    _UIPreviewInteractionDismissTransition *_currentDismissTransition;
+    _UIPreviewInteractionCommitTransition *_currentCommitTransition;
+    _UIInteractionEffect_deprecated *_currentInteractionEffect;
+    _UITouchesObservingGestureRecognizer *_gestureRecognizerForPreviewActions;
+    _UIPreviewActionsController *_previewActionsController;
+    id<UIViewControllerPreviewing_Internal> _currentPreviewingContext;
     struct CGPoint _location;
+    struct CGPoint _initialLocationForPreviewActionsPanning;
 }
 
 @property (readonly, nonatomic) UIGestureRecognizer *beginPreviewGestureRecognizer;
+@property (nonatomic) BOOL commitTransitionScheduled; // @synthesize commitTransitionScheduled=_commitTransitionScheduled;
 @property (strong, nonatomic) _UIPreviewInteractionCommitTransition *currentCommitTransition; // @synthesize currentCommitTransition=_currentCommitTransition;
+@property (strong, nonatomic) _UIPreviewInteractionDismissTransition *currentDismissTransition; // @synthesize currentDismissTransition=_currentDismissTransition;
 @property (strong, nonatomic) id<_UIPreviewInteractionHighlighting> currentHighlighter; // @synthesize currentHighlighter=_currentHighlighter;
+@property (strong, nonatomic) _UIInteractionEffect_deprecated *currentInteractionEffect; // @synthesize currentInteractionEffect=_currentInteractionEffect;
 @property (strong, nonatomic) _UIPreviewPresentationController2 *currentPresentationController; // @synthesize currentPresentationController=_currentPresentationController;
+@property (strong, nonatomic) _UIPreviewInteractionPresentationTransition *currentPresentationTransition; // @synthesize currentPresentationTransition=_currentPresentationTransition;
 @property (strong, nonatomic) UIViewController *currentPreviewViewController; // @synthesize currentPreviewViewController=_currentPreviewViewController;
 @property (weak, nonatomic) id<UIViewControllerPreviewing_Internal> currentPreviewingContext; // @synthesize currentPreviewingContext=_currentPreviewingContext;
-@property (strong, nonatomic) _UIPreviewInteractionViewControllerTransition *currentTransitionDelegate; // @synthesize currentTransitionDelegate=_currentTransitionDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_UIPreviewInteractionControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSArray *gestureRecognizers; // @dynamic gestureRecognizers;
+@property (strong, nonatomic) _UITouchesObservingGestureRecognizer *gestureRecognizerForPreviewActions; // @synthesize gestureRecognizerForPreviewActions=_gestureRecognizerForPreviewActions;
+@property (nonatomic) BOOL hasTransitionedToPreview; // @synthesize hasTransitionedToPreview=_hasTransitionedToPreview;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct CGPoint initialLocationForPreviewActionsPanning; // @synthesize initialLocationForPreviewActionsPanning=_initialLocationForPreviewActionsPanning;
 @property (nonatomic) struct CGPoint location; // @synthesize location=_location;
-@property (strong, nonatomic) UIPanGestureRecognizer *modalPanGestureRecognizer; // @synthesize modalPanGestureRecognizer=_modalPanGestureRecognizer;
+@property (strong, nonatomic) id<_UIPreviewInteractionTouchForceProviding> pausingTouchForceProvider; // @synthesize pausingTouchForceProvider=_pausingTouchForceProvider;
 @property (nonatomic) BOOL performingCommitTransition; // @synthesize performingCommitTransition=_performingCommitTransition;
 @property (nonatomic) BOOL performingPreviewTransition; // @synthesize performingPreviewTransition=_performingPreviewTransition;
 @property (readonly, nonatomic) UIGestureRecognizer *presentationGestureRecognizer;
+@property (strong, nonatomic) id<_UIPreviewInteractionTouchForceProviding> presentedViewTouchForceProvider; // @synthesize presentedViewTouchForceProvider=_presentedViewTouchForceProvider;
 @property (weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
-@property (strong, nonatomic) _UIPreviewGestureRecognizer2 *previewGestureRecognizer; // @synthesize previewGestureRecognizer=_previewGestureRecognizer;
+@property (strong, nonatomic) _UIPreviewActionsController *previewActionsController; // @synthesize previewActionsController=_previewActionsController;
+@property (strong, nonatomic) _UIPreviewInteractionGestureRecognizer *previewGestureRecognizer; // @synthesize previewGestureRecognizer=_previewGestureRecognizer;
 @property (strong, nonatomic) UIPreviewInteraction *previewInteraction; // @synthesize previewInteraction=_previewInteraction;
-@property (strong, nonatomic) _UIRevealGestureRecognizer2 *revealGestureRecognizer; // @synthesize revealGestureRecognizer=_revealGestureRecognizer;
+@property (strong, nonatomic) _UIPreviewInteractionGestureRecognizer *revealGestureRecognizer; // @synthesize revealGestureRecognizer=_revealGestureRecognizer;
 @property (weak, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
+@property (strong, nonatomic) _UISteadyTouchForceGestureRecognizer *steadyTouchForceGestureRecognizer; // @synthesize steadyTouchForceGestureRecognizer=_steadyTouchForceGestureRecognizer;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_dismissPreviewViewControllerIfNeeded;
+- (void)_dismissPreviewViewControllerIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_finalizeAfterPreviewViewControllerPresentation;
+- (void)_finalizeHighlighterAfterPreviewViewControllerPresentation;
 - (void)_finalizeInteractivePreview;
-- (void)_panningRecognizerDidFire:(id)arg1;
+- (void)_gestureRecognizerFailed:(id)arg1;
+- (void)_handlePreviewActionsGesture:(id)arg1;
+- (void)_handlePreviewGesture:(id)arg1;
+- (void)_handleRevealGesture:(id)arg1;
+- (void)_handleSteadyTouchForceGesture:(id)arg1;
+- (BOOL)_isLongPressGestureRecognizerUsedForDelayingActions:(id)arg1;
+- (id)_newHighlighterForPreviewingContext:(id)arg1;
+- (void)_overrideSourceViewForBinaryCompatibilityIfNeeded:(id *)arg1 sourceRect:(struct CGRect *)arg2;
 - (id)_preferredNavigationControllerForCommitTransition;
+- (void)_preparePreviewPresentationControllerIfNeeded:(id)arg1;
 - (BOOL)_preparePreviewViewControllerPresentationFromPreviewInteraction:(id)arg1;
+- (id)_preparedInteractionEffect;
+- (BOOL)_previewInteractionShouldEndOnGestureCompletion:(id)arg1;
+- (id)_previewPresentationControllerForViewController:(id)arg1;
 - (BOOL)_previewingIsPossibleForView:(id)arg1;
 - (void)_resetCustomPresentationHooks;
+- (void)_revertInteractionEffectToStartState;
+- (void)_stopCurrentInteractionEffect;
 - (BOOL)_viewControllerIsChildOfTwoColumnSplitViewController:(id)arg1;
+- (id)animationControllerForDismissedController:(id)arg1;
+- (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (void)commitInteractivePreview;
 - (void)dealloc;
+- (void)didDismissPreviewActionsController:(id)arg1;
+- (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithView:(id)arg1;
+- (struct CGPoint)initialPlatterPositionForPreviewActionsController:(id)arg1;
+- (id)interactionControllerForPresentation:(id)arg1;
+- (struct CGSize)maximumPreviewActionsViewSizeForPreviewActionsController:(id)arg1;
+- (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
+- (void)previewActionsController:(id)arg1 didCompleteWithSelectedAction:(id)arg2;
+- (void)previewActionsController:(id)arg1 didUpdatePlatterTranslation:(struct CGVector)arg2 withVelocity:(struct CGVector)arg3;
 - (void)previewInteraction:(id)arg1 didUpdateCommitTransition:(double)arg2 ended:(BOOL)arg3;
 - (void)previewInteraction:(id)arg1 didUpdatePreviewTransition:(double)arg2 ended:(BOOL)arg3;
 - (void)previewInteractionDidCancel:(id)arg1;

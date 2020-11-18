@@ -6,7 +6,7 @@
 
 #import <CFNetwork/__NSCFBackgroundSessionTask.h>
 
-@class AVURLAsset, NSArray, NSData, NSDictionary, NSString, NSURL;
+@class AVMediaSelection, AVURLAsset, NSArray, NSData, NSDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface __NSCFBackgroundAVAssetDownloadTask : __NSCFBackgroundSessionTask
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     AVURLAsset *_URLAsset;
     NSDictionary *_options;
     NSArray *_loadedTimeRanges;
+    AVMediaSelection *_resolvedMediaSelection;
 }
 
 @property unsigned long long AVAssetDownloadToken; // @synthesize AVAssetDownloadToken=_AVAssetDownloadToken;
@@ -31,13 +32,16 @@ __attribute__((visibility("hidden")))
 @property (copy) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
 @property (copy) NSArray *loadedTimeRanges; // @synthesize loadedTimeRanges=_loadedTimeRanges;
 @property (copy) NSDictionary *options; // @synthesize options=_options;
+@property (copy) AVMediaSelection *resolvedMediaSelection; // @synthesize resolvedMediaSelection=_resolvedMediaSelection;
 @property (copy) NSURL *temporaryDestinationURL; // @synthesize temporaryDestinationURL=_temporaryDestinationURL;
 
+- (BOOL)_isAVAssetTask;
 - (void)_onqueue_didFinishDownloadingToURL:(id)arg1;
 - (void)_onqueue_didFinishWithError:(id)arg1;
 - (void)_onqueue_didLoadTimeRange:(id)arg1 totalTimeRangesLoaded:(id)arg2 timeRangeExpectedToLoad:(id)arg3;
 - (void)_onqueue_didReceiveProgressUpdateWithTotalBytesWritten:(long long)arg1 totalBytesExpectedToWrite:(long long)arg2;
 - (void)_onqueue_didResolveMediaSelectionPropertyList:(id)arg1;
+- (void)_onqueue_willDownloadToURL:(id)arg1;
 - (id)currentRequest;
 - (void)dealloc;
 - (id)initWithSession:(id)arg1 remoteSession:(id)arg2 URLAsset:(id)arg3 URL:(id)arg4 destinationURL:(id)arg5 temporaryDestinationURL:(id)arg6 assetTitle:(id)arg7 assetArtworkData:(id)arg8 ident:(unsigned long long)arg9;

@@ -38,6 +38,7 @@
 @property (strong, nonatomic) HDCodableSample *sample; // @synthesize sample=_sample;
 @property (readonly) Class superclass;
 
++ (Class)locationDataType;
 - (void).cxx_destruct;
 - (void)addLocationData:(id)arg1;
 - (BOOL)applyToObject:(id)arg1;

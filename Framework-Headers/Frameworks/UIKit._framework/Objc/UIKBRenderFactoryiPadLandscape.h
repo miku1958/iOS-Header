@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)ZWNJKeyImageName;
 - (double)bottomRowDefaultFontSize;
 - (double)defaultVariantSizeThreshold;
 - (double)deleteKeyFontSize;

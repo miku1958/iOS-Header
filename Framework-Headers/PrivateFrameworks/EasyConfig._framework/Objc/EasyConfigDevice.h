@@ -42,6 +42,7 @@
     NSDictionary *_configuration;
     NSDictionary *_configResponse;
     BOOL _pausesAfterApply;
+    BOOL _skipPairSetup;
     BOOL _supportsHAP;
     BOOL _supportsHAP2;
     BOOL _supportsMFi;
@@ -85,6 +86,7 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) BOOL pausesAfterApply; // @synthesize pausesAfterApply=_pausesAfterApply;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
+@property (nonatomic) BOOL skipPairSetup; // @synthesize skipPairSetup=_skipPairSetup;
 
 + (id)deviceWithInfo:(id)arg1;
 + (id)deviceWithScanRecord:(id)arg1;

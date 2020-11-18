@@ -14,16 +14,19 @@
     PXAssetsDataSource *_dataSource;
     PXIndexPathSet *_hiddenIndexPaths;
     PXIndexPathSet *_selectedIndexPaths;
+    PXIndexPathSet *_draggingIndexPaths;
     unsigned long long _selectionBadgeOptions;
     unsigned long long _badgeOptions;
     PXSelectionBadgeTileUserData *__selectedUserData;
     PXSelectionBadgeTileUserData *__unselectedUserData;
     PXBasicTileUserData *__highlightedDimmingUserData;
     PXBasicTileUserData *__selectedDimmingUserData;
+    PXBasicTileUserData *__draggingDimmingUserData;
     struct PXSimpleIndexPath _highlightedIndexPath;
     struct PXSimpleIndexPath _focusedIndexPath;
 }
 
+@property (readonly, nonatomic) PXBasicTileUserData *_draggingDimmingUserData; // @synthesize _draggingDimmingUserData=__draggingDimmingUserData;
 @property (readonly, nonatomic) PXBasicTileUserData *_highlightedDimmingUserData; // @synthesize _highlightedDimmingUserData=__highlightedDimmingUserData;
 @property (strong, nonatomic, setter=_setContentTileUserData:) PXOverlayBadgeTileUserData *_overlayBadgeTileUserData; // @synthesize _overlayBadgeTileUserData;
 @property (readonly, nonatomic) PXBasicTileUserData *_selectedDimmingUserData; // @synthesize _selectedDimmingUserData=__selectedDimmingUserData;
@@ -31,6 +34,7 @@
 @property (readonly, nonatomic) PXSelectionBadgeTileUserData *_unselectedUserData; // @synthesize _unselectedUserData=__unselectedUserData;
 @property (nonatomic) unsigned long long badgeOptions; // @synthesize badgeOptions=_badgeOptions;
 @property (readonly, nonatomic) PXAssetsDataSource *dataSource; // @synthesize dataSource=_dataSource;
+@property (strong, nonatomic) PXIndexPathSet *draggingIndexPaths; // @synthesize draggingIndexPaths=_draggingIndexPaths;
 @property (nonatomic) struct PXSimpleIndexPath focusedIndexPath; // @synthesize focusedIndexPath=_focusedIndexPath;
 @property (strong, nonatomic) PXIndexPathSet *hiddenIndexPaths; // @synthesize hiddenIndexPaths=_hiddenIndexPaths;
 @property (nonatomic) struct PXSimpleIndexPath highlightedIndexPath; // @synthesize highlightedIndexPath=_highlightedIndexPath;

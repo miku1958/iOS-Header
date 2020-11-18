@@ -23,6 +23,7 @@
 - (BOOL)canPerformActionType:(id)arg1;
 - (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;
 - (id)previewActionForActionType:(id)arg1;
+- (id)previewActionGroupForActionType:(id)arg1;
 
 @end
 

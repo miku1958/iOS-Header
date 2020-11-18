@@ -47,9 +47,9 @@
 - (void).cxx_destruct;
 - (void)_flushCompletionBlocks;
 - (BOOL)_queue_isCancelled;
-- (void)addCompletionBlock:(CDUnknownBlockType)arg1;
-- (void)addFailureBlock:(CDUnknownBlockType)arg1;
-- (void)addSuccessBlock:(CDUnknownBlockType)arg1;
+- (id)addCompletionBlock:(CDUnknownBlockType)arg1;
+- (id)addFailureBlock:(CDUnknownBlockType)arg1;
+- (id)addSuccessBlock:(CDUnknownBlockType)arg1;
 - (BOOL)cancel;
 - (CDUnknownBlockType)completionHandlerAdapter;
 - (void)didCancel;

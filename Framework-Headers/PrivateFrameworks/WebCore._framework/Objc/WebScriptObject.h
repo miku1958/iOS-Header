@@ -22,12 +22,12 @@
 - (struct OpaqueJSContext *)_globalContextRef;
 - (BOOL)_hasImp;
 - (struct JSObject *)_imp;
-- (id)_initWithJSObject:(struct JSObject *)arg1 originRootObject:(PassRefPtr_8e019d1c)arg2 rootObject:(PassRefPtr_8e019d1c)arg3;
+- (id)_initWithJSObject:(struct JSObject *)arg1 originRootObject:(RefPtr_e0d66d50 *)arg2 rootObject:(RefPtr_e0d66d50 *)arg3;
 - (BOOL)_isSafeScript;
 - (struct RootObject *)_originRootObject;
 - (struct RootObject *)_rootObject;
-- (void)_setImp:(struct JSObject *)arg1 originRootObject:(PassRefPtr_8e019d1c)arg2 rootObject:(PassRefPtr_8e019d1c)arg3;
-- (void)_setOriginRootObject:(PassRefPtr_8e019d1c)arg1 andRootObject:(PassRefPtr_8e019d1c)arg2;
+- (void)_setImp:(struct JSObject *)arg1 originRootObject:(RefPtr_e0d66d50 *)arg2 rootObject:(RefPtr_e0d66d50 *)arg3;
+- (void)_setOriginRootObject:(RefPtr_e0d66d50 *)arg1 andRootObject:(RefPtr_e0d66d50 *)arg2;
 - (id)callWebScriptMethod:(id)arg1 withArguments:(id)arg2;
 - (void)dealloc;
 - (id)evaluateWebScript:(id)arg1;

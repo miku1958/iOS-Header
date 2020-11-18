@@ -6,11 +6,8 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString;
-
 @interface UIView (RCAdditions)
 
-@property (nonatomic, setter=rc_setAutoUpdatingTextStyle:) NSString *rc_autoUpdatingTextStyle;
 @property (nonatomic, setter=rc_setCharge:) float rc_charge;
 
 + (void)rc_beginDebuggingAutolayout;

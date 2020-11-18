@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class HMDCameraProtocolParameters, HMDCameraSessionID, HMDCameraVideoTierParameters, HMDStreamingCapabilities, HMDStreamingManager, NSString;
 
-@interface HMDCameraStreamSession : NSObject <HMFLogging>
+@interface HMDCameraStreamSession : HMFObject <HMFLogging>
 {
     HMDCameraSessionID *_sessionID;
     HMDStreamingManager *_streamingManager;

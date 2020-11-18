@@ -8,18 +8,15 @@
 
 #import <HealthUI/HKMedicalIDEditorCellEditDelegate-Protocol.h>
 
-@class HKMedicalIDEditorWeightCell, _HKCustomInsetCellLayoutManager, _HKMedicalIDMultilineStringCell;
+@class HKMedicalIDEditorWeightCell;
 
 @interface HKEmergencyCardWeightTableItem : HKEmergencyCardTableItem <HKMedicalIDEditorCellEditDelegate>
 {
     HKMedicalIDEditorWeightCell *_editableCell;
-    _HKMedicalIDMultilineStringCell *_displayCell;
-    _HKCustomInsetCellLayoutManager *_layoutManager;
 }
 
 - (void).cxx_destruct;
 - (id)_createEditableCell;
-- (id)_displayCell;
 - (BOOL)canEditRowAtIndex:(long long)arg1;
 - (void)commitEditing;
 - (long long)commitEditingStyle:(long long)arg1 forRowAtIndex:(long long)arg2;

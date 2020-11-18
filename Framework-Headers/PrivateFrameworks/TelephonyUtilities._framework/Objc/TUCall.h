@@ -4,29 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDictionary, NSString, NSUUID, TUCallCenter, TUCallDisplayContext, TUCallModel, TUCallNotificationManager, TUCallProvider, TUCallServicesInterface, TUDialRequest, TUHandle, TUProxyCall;
+@class NSArray, NSData, NSDate, NSDictionary, NSString, NSUUID, TUCallCenter, TUCallDisplayContext, TUCallModel, TUCallNotificationManager, TUCallProvider, TUCallServicesInterface, TUDialRequest, TUHandle, TUProxyCall, TUVideoCallAttributes;
 @protocol OS_dispatch_queue;
 
 @interface TUCall : NSObject <NSSecureCoding>
 {
-    struct {
-        unsigned int joiningConference:1;
-        unsigned int leavingConference:1;
-    } _phoneCallFlags;
     BOOL _endpointOnCurrentDevice;
     BOOL _shouldSuppressRingtone;
     BOOL _wantsHoldMusic;
-    BOOL _hasSentInvitation;
-    BOOL _connecting;
-    BOOL _connected;
     BOOL _wasDialAssisted;
     BOOL _hasBegunAudioInterruption;
     BOOL _hasUpdatedAudio;
-    BOOL _hasAudioFinished;
     BOOL _expectedEndpointOnPairedClientDevice;
     BOOL _ringtoneSuppressedRemotely;
     BOOL _wasPulledToCurrentDevice;
@@ -34,6 +26,11 @@
     int _faceTimeIDStatus;
     int _transitionStatus;
     int _hardPauseDigitsState;
+    NSDate *_dateCreated;
+    NSDate *_dateSentInvitation;
+    NSDate *_dateStartedConnecting;
+    NSDate *_dateConnected;
+    NSDate *_dateEnded;
     NSString *_uniqueProxyIdentifier;
     NSString *_sourceIdentifier;
     TUCallModel *_model;
@@ -41,12 +38,12 @@
     TUProxyCall *_comparativeCall;
     NSObject<OS_dispatch_queue> *_queue;
     TUCallServicesInterface *_callServicesInterface;
+    TUVideoCallAttributes *_videoCallAttributes;
     long long _provisionalHoldStatus;
     NSString *_isoCountryCode;
     NSString *_prematurelySelectedAudioRouteUID;
     long long _soundRegion;
     NSDictionary *_providerContext;
-    long long _videoStreamToken;
     double _hostCreationTime;
     double _hostMessageSendTime;
     double _clientMessageReceiveTime;
@@ -55,6 +52,7 @@
 }
 
 @property (readonly, nonatomic) int abUID;
+@property (readonly, copy, nonatomic) NSArray *activeRemoteParticipantHandles;
 @property (readonly, copy, nonatomic) NSString *audioCategory;
 @property (readonly, copy, nonatomic) NSString *audioMode;
 @property (readonly, nonatomic) TUCallProvider *backingProvider;
@@ -77,9 +75,15 @@
 @property (readonly, copy, nonatomic) NSString *companyName;
 @property (strong, nonatomic) TUProxyCall *comparativeCall; // @synthesize comparativeCall=_comparativeCall;
 @property (readonly, nonatomic, getter=isConferenced) BOOL conferenced;
-@property (nonatomic, getter=isConnected) BOOL connected; // @synthesize connected=_connected;
-@property (nonatomic, getter=isConnecting) BOOL connecting; // @synthesize connecting=_connecting;
+@property (readonly, nonatomic, getter=isConnected) BOOL connected;
+@property (readonly, nonatomic, getter=isConnecting) BOOL connecting;
 @property (readonly, copy, nonatomic) NSString *contactIdentifier;
+@property (readonly, copy, nonatomic) NSUUID *conversationGroupUUID;
+@property (strong, nonatomic) NSDate *dateConnected; // @synthesize dateConnected=_dateConnected;
+@property (readonly, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
+@property (strong, nonatomic) NSDate *dateEnded; // @synthesize dateEnded=_dateEnded;
+@property (strong, nonatomic) NSDate *dateSentInvitation; // @synthesize dateSentInvitation=_dateSentInvitation;
+@property (strong, nonatomic) NSDate *dateStartedConnecting; // @synthesize dateStartedConnecting=_dateStartedConnecting;
 @property (readonly, copy, nonatomic) NSString *destinationID;
 @property (readonly, copy, nonatomic) TUDialRequest *dialRequestForRedial;
 @property (nonatomic) int disconnectedReason; // @synthesize disconnectedReason=_disconnectedReason;
@@ -99,11 +103,10 @@
 @property (readonly, nonatomic) long long faceTimeTransportType;
 @property (readonly, nonatomic) TUHandle *handle;
 @property (copy, nonatomic) NSString *hardPauseDigits; // @synthesize hardPauseDigits=_hardPauseDigits;
-@property (readonly, strong, nonatomic) NSString *hardPauseDigitsDisplayString;
+@property (readonly, nonatomic) NSString *hardPauseDigitsDisplayString;
 @property (nonatomic) int hardPauseDigitsState; // @synthesize hardPauseDigitsState=_hardPauseDigitsState;
-@property (nonatomic) BOOL hasAudioFinished; // @synthesize hasAudioFinished=_hasAudioFinished;
 @property (nonatomic) BOOL hasBegunAudioInterruption; // @synthesize hasBegunAudioInterruption=_hasBegunAudioInterruption;
-@property (nonatomic) BOOL hasSentInvitation; // @synthesize hasSentInvitation=_hasSentInvitation;
+@property (readonly, nonatomic) BOOL hasSentInvitation;
 @property (nonatomic) BOOL hasUpdatedAudio; // @synthesize hasUpdatedAudio=_hasUpdatedAudio;
 @property (nonatomic) double hostCreationTime; // @synthesize hostCreationTime=_hostCreationTime;
 @property (nonatomic) double hostMessageSendTime; // @synthesize hostMessageSendTime=_hostMessageSendTime;
@@ -115,12 +118,13 @@
 @property (nonatomic) BOOL isSendingVideo;
 @property (readonly, nonatomic) BOOL isVideo;
 @property (copy, nonatomic) NSString *isoCountryCode; // @synthesize isoCountryCode=_isoCountryCode;
-@property (readonly, strong, nonatomic) NSData *localFrequency;
+@property (readonly, nonatomic) NSData *localFrequency;
 @property (readonly, copy, nonatomic) NSString *localizedLabel;
 @property (readonly, nonatomic, getter=isMediaStalled) BOOL mediaStalled;
 @property (copy, nonatomic) TUCallModel *model; // @synthesize model=_model;
 @property (readonly, nonatomic) BOOL needsManualInCallSounds;
 @property (readonly, nonatomic, getter=isOutgoing) BOOL outgoing;
+@property (readonly, nonatomic) BOOL prefersExclusiveAccessToCellularNetwork;
 @property (strong, nonatomic) NSString *prematurelySelectedAudioRouteUID; // @synthesize prematurelySelectedAudioRouteUID=_prematurelySelectedAudioRouteUID;
 @property (readonly, nonatomic) TUCallProvider *provider;
 @property (readonly, nonatomic) NSDictionary *providerContext; // @synthesize providerContext=_providerContext;
@@ -129,9 +133,11 @@
 @property (readonly, nonatomic) NSString *reminderString;
 @property (readonly, nonatomic) struct CGSize remoteAspectRatio;
 @property (readonly, nonatomic) long long remoteCameraOrientation;
-@property (readonly, strong, nonatomic) NSData *remoteFrequency;
+@property (readonly, nonatomic) NSData *remoteFrequency;
+@property (readonly, copy, nonatomic) NSArray *remoteParticipantHandles;
 @property (readonly, nonatomic) struct CGSize remoteScreenAspectRatio; // @synthesize remoteScreenAspectRatio=_remoteScreenAspectRatio;
 @property (readonly, nonatomic) long long remoteScreenOrientation;
+@property (readonly, nonatomic, getter=isRemoteUplinkMuted) BOOL remoteUplinkMuted;
 @property (readonly, nonatomic) struct CGRect remoteVideoContentRect;
 @property (nonatomic) BOOL requiresRemoteVideo;
 @property (nonatomic) BOOL ringtoneSuppressedRemotely; // @synthesize ringtoneSuppressedRemotely=_ringtoneSuppressedRemotely;
@@ -145,8 +151,9 @@
 @property (readonly, nonatomic) double startTime;
 @property (readonly, nonatomic) int status;
 @property (readonly, nonatomic) BOOL statusIsProvisional;
-@property (readonly, copy) NSString *suggestedDisplayName;
+@property (readonly, copy, nonatomic) NSString *suggestedDisplayName;
 @property (readonly, nonatomic) BOOL supportsDTMFTones;
+@property (readonly, nonatomic) BOOL supportsTTYWithVoice;
 @property (readonly, nonatomic, getter=isThirdPartyVideo) BOOL thirdPartyVideo;
 @property (nonatomic) int transitionStatus; // @synthesize transitionStatus=_transitionStatus;
 @property (readonly, nonatomic, getter=isTTY) BOOL tty;
@@ -155,9 +162,10 @@
 @property (readonly, copy, nonatomic) NSUUID *uniqueProxyIdentifierUUID;
 @property (nonatomic, getter=isUplinkMuted) BOOL uplinkMuted;
 @property (readonly, nonatomic, getter=isUsingBaseband) BOOL usingBaseband;
+@property (strong, nonatomic) TUVideoCallAttributes *videoCallAttributes; // @synthesize videoCallAttributes=_videoCallAttributes;
 @property (readonly, nonatomic, getter=isVideoDegraded) BOOL videoDegraded;
 @property (readonly, nonatomic, getter=isVideoPaused) BOOL videoPaused;
-@property (readonly, nonatomic) long long videoStreamToken; // @synthesize videoStreamToken=_videoStreamToken;
+@property (readonly, nonatomic) long long videoStreamToken;
 @property (readonly, nonatomic, getter=isVoicemail) BOOL voicemail;
 @property (readonly, nonatomic, getter=isVoIPCall) BOOL voipCall;
 @property (nonatomic) BOOL wantsHoldMusic; // @synthesize wantsHoldMusic=_wantsHoldMusic;
@@ -174,7 +182,6 @@
 - (void).cxx_destruct;
 - (void)_handleStatusChange;
 - (void)answerWithRequest:(id)arg1;
-- (id)contactImageDataWithFormat:(int)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)disconnectWithReason:(int)arg1;
@@ -202,6 +209,7 @@
 - (void)sendHardPauseDigits;
 - (id)serviceDisplayString;
 - (void)setIsOnHold:(BOOL)arg1;
+- (void)setLocalVideoLayer:(id)arg1 forMode:(long long)arg2;
 - (BOOL)setMuted:(BOOL)arg1;
 - (void)setRemoteVideoLayer:(id)arg1 forMode:(long long)arg2;
 - (void)setRemoteVideoPresentationSize:(struct CGSize)arg1;

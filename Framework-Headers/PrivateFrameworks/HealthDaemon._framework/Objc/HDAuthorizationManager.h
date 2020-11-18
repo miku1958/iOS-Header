@@ -13,6 +13,8 @@
 
 @interface HDAuthorizationManager : NSObject <HDDiagnosticObject>
 {
+    NSMutableDictionary *_openAppCompletionHandlersByBundleID;
+    NSMutableDictionary *_remoteAuthorizationRecordsByBundleID;
     BOOL _suppressAuthorizationPrompt;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
@@ -65,6 +67,7 @@
 - (void)handleObjectAuthorizationRequestsForBundleIdentifier:(id)arg1 promptHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithProfile:(id)arg1;
 - (void)openAppForAuthorization:(id)arg1 sessionIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)requestRemoteAuthorizationForRequestRecord:(id)arg1 requestSentHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)resetAllAuthorizationRecordsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setAuthorizationStatuses:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 

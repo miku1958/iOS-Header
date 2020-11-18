@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIFoundation/NSTextStorage.h>
+#import "NSTextStorage.h"
 
 @interface NSTextStorage (UIKitUndoExtensions)
 - (id)_undoRedoAttributedSubstringFromRange:(struct _NSRange)arg1;

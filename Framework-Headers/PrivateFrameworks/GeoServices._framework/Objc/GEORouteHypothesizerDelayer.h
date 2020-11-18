@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEORouteHypothesizer;
 @protocol OS_dispatch_queue;
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)checkin;
+- (void).cxx_destruct;
 - (void)_setNextHypothesizer:(id)arg1;
 - (void)_startValidHypothesizers;
 - (void)dealloc;

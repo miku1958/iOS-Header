@@ -13,10 +13,12 @@ __attribute__((visibility("hidden")))
 {
     PUDuplicateActionController *_duplicateActionController;
     long long _action;
+    CDStruct_1b6d18a9 _stillImageTime;
 }
 
 @property (nonatomic) long long action; // @synthesize action=_action;
 @property (strong, nonatomic) PUDuplicateActionController *duplicateActionController; // @synthesize duplicateActionController=_duplicateActionController;
+@property (nonatomic) CDStruct_1b6d18a9 stillImageTime; // @synthesize stillImageTime=_stillImageTime;
 
 + (BOOL)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
 - (void).cxx_destruct;

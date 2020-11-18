@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSString, NTPBAppConfigurationResource, NTPBCacheCoordinatorHints, NTPBDate, NTPBNetworkSessionList, NTPBPersonalizationLocalData, NTPBReadingHistoryItem;
+@class NSData, NSString, NTPBAppConfigurationResource, NTPBCacheCoordinatorHints, NTPBDate, NTPBNetworkSessionList, NTPBPersonalizationLocalData, NTPBPrivateDataControllerSyncState, NTPBReadingHistoryItem;
 
 @interface NTPBKeyValuePair : PBCodable <NSCopying>
 {
@@ -19,6 +19,7 @@
     NSString *_key;
     NTPBNetworkSessionList *_networkSessionList;
     NTPBPersonalizationLocalData *_personalizationLocalData;
+    NTPBPrivateDataControllerSyncState *_privateDataControllerSyncState;
     NTPBReadingHistoryItem *_readingHistoryItem;
     NSData *_recordData;
     NSString *_stringValue;
@@ -39,6 +40,7 @@
 @property (readonly, nonatomic) BOOL hasKey;
 @property (readonly, nonatomic) BOOL hasNetworkSessionList;
 @property (readonly, nonatomic) BOOL hasPersonalizationLocalData;
+@property (readonly, nonatomic) BOOL hasPrivateDataControllerSyncState;
 @property (readonly, nonatomic) BOOL hasReadingHistoryItem;
 @property (readonly, nonatomic) BOOL hasRecordData;
 @property (readonly, nonatomic) BOOL hasStringValue;
@@ -46,6 +48,7 @@
 @property (strong, nonatomic) NSString *key; // @synthesize key=_key;
 @property (strong, nonatomic) NTPBNetworkSessionList *networkSessionList; // @synthesize networkSessionList=_networkSessionList;
 @property (strong, nonatomic) NTPBPersonalizationLocalData *personalizationLocalData; // @synthesize personalizationLocalData=_personalizationLocalData;
+@property (strong, nonatomic) NTPBPrivateDataControllerSyncState *privateDataControllerSyncState; // @synthesize privateDataControllerSyncState=_privateDataControllerSyncState;
 @property (strong, nonatomic) NTPBReadingHistoryItem *readingHistoryItem; // @synthesize readingHistoryItem=_readingHistoryItem;
 @property (strong, nonatomic) NSData *recordData; // @synthesize recordData=_recordData;
 @property (strong, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;

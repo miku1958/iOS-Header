@@ -34,7 +34,10 @@
     long long _subscriptionStoreItemId;
     NSString *_artworkId;
     NSString *_chapterMetadataUrl;
+    int _cloudMatchedStatus;
+    int _cloudPlaybackEndpointType;
     int _cloudStatus;
+    NSString *_cloudUniversalLibraryId;
     NSString *_comment;
     int _contentRating;
     int _contentRatingLevel;
@@ -50,10 +53,13 @@
     MIPMovie *_movie;
     int _playCount;
     int _playCountDelta;
+    int _playbackEndpointType;
     MIPPodcast *_podcast;
     NSString *_purchaseHistoryRedownloadParams;
     int _purchaseHistoryToken;
     NSString *_sagaRedownloadParams;
+    NSString *_secondaryArtworkId;
+    int _secondaryArtworkSourceType;
     NSString *_shortDescription;
     int _skipCount;
     int _skipCountDelta;
@@ -69,6 +75,7 @@
     BOOL _explicitContent;
     BOOL _hasLocalAsset;
     BOOL _hidden;
+    BOOL _inUsersCloudLibrary;
     BOOL _isInUsersLibrary;
     BOOL _likedStateChanged;
     BOOL _needsReporting;
@@ -95,6 +102,8 @@
         unsigned int storePlaylistId:1;
         unsigned int storefrontId:1;
         unsigned int subscriptionStoreItemId:1;
+        unsigned int cloudMatchedStatus:1;
+        unsigned int cloudPlaybackEndpointType:1;
         unsigned int cloudStatus:1;
         unsigned int contentRating:1;
         unsigned int contentRatingLevel:1;
@@ -104,7 +113,9 @@
         unsigned int mediaType:1;
         unsigned int playCount:1;
         unsigned int playCountDelta:1;
+        unsigned int playbackEndpointType:1;
         unsigned int purchaseHistoryToken:1;
+        unsigned int secondaryArtworkSourceType:1;
         unsigned int skipCount:1;
         unsigned int skipCountDelta:1;
         unsigned int storeProtectionType:1;
@@ -113,6 +124,7 @@
         unsigned int explicitContent:1;
         unsigned int hasLocalAsset:1;
         unsigned int hidden:1;
+        unsigned int inUsersCloudLibrary:1;
         unsigned int isInUsersLibrary:1;
         unsigned int likedStateChanged:1;
         unsigned int needsReporting:1;
@@ -126,7 +138,10 @@
 @property (nonatomic) long long bookmarkTimeMilliseconds; // @synthesize bookmarkTimeMilliseconds=_bookmarkTimeMilliseconds;
 @property (strong, nonatomic) NSString *chapterMetadataUrl; // @synthesize chapterMetadataUrl=_chapterMetadataUrl;
 @property (nonatomic) BOOL cloudAssetAvailable; // @synthesize cloudAssetAvailable=_cloudAssetAvailable;
+@property (nonatomic) int cloudMatchedStatus; // @synthesize cloudMatchedStatus=_cloudMatchedStatus;
+@property (nonatomic) int cloudPlaybackEndpointType; // @synthesize cloudPlaybackEndpointType=_cloudPlaybackEndpointType;
 @property (nonatomic) int cloudStatus; // @synthesize cloudStatus=_cloudStatus;
+@property (strong, nonatomic) NSString *cloudUniversalLibraryId; // @synthesize cloudUniversalLibraryId=_cloudUniversalLibraryId;
 @property (strong, nonatomic) NSString *comment; // @synthesize comment=_comment;
 @property (nonatomic) int contentRating; // @synthesize contentRating=_contentRating;
 @property (nonatomic) int contentRatingLevel; // @synthesize contentRatingLevel=_contentRatingLevel;
@@ -148,7 +163,10 @@
 @property (nonatomic) BOOL hasBookmarkTimeMilliseconds;
 @property (readonly, nonatomic) BOOL hasChapterMetadataUrl;
 @property (nonatomic) BOOL hasCloudAssetAvailable;
+@property (nonatomic) BOOL hasCloudMatchedStatus;
+@property (nonatomic) BOOL hasCloudPlaybackEndpointType;
 @property (nonatomic) BOOL hasCloudStatus;
+@property (readonly, nonatomic) BOOL hasCloudUniversalLibraryId;
 @property (readonly, nonatomic) BOOL hasComment;
 @property (nonatomic) BOOL hasContentRating;
 @property (nonatomic) BOOL hasContentRatingLevel;
@@ -167,6 +185,7 @@
 @property (readonly, nonatomic) BOOL hasGrouping;
 @property (nonatomic) BOOL hasHasLocalAsset;
 @property (nonatomic) BOOL hasHidden;
+@property (nonatomic) BOOL hasInUsersCloudLibrary;
 @property (nonatomic) BOOL hasIsInUsersLibrary;
 @property (nonatomic) BOOL hasLastPlayedDateTime;
 @property (nonatomic) BOOL hasLastSkippedDateTime;
@@ -180,6 +199,7 @@
 @property (nonatomic) BOOL hasNeedsReporting;
 @property (nonatomic) BOOL hasPlayCount;
 @property (nonatomic) BOOL hasPlayCountDelta;
+@property (nonatomic) BOOL hasPlaybackEndpointType;
 @property (readonly, nonatomic) BOOL hasPodcast;
 @property (nonatomic) BOOL hasPurchaseDateTime;
 @property (nonatomic) BOOL hasPurchaseHistoryId;
@@ -189,6 +209,8 @@
 @property (nonatomic) BOOL hasRememberBookmark;
 @property (nonatomic) BOOL hasSagaId;
 @property (readonly, nonatomic) BOOL hasSagaRedownloadParams;
+@property (readonly, nonatomic) BOOL hasSecondaryArtworkId;
+@property (nonatomic) BOOL hasSecondaryArtworkSourceType;
 @property (readonly, nonatomic) BOOL hasShortDescription;
 @property (nonatomic) BOOL hasSkipCount;
 @property (nonatomic) BOOL hasSkipCountDelta;
@@ -206,6 +228,7 @@
 @property (nonatomic) BOOL hasUserDisabled;
 @property (nonatomic) BOOL hasYear;
 @property (nonatomic) BOOL hidden; // @synthesize hidden=_hidden;
+@property (nonatomic) BOOL inUsersCloudLibrary; // @synthesize inUsersCloudLibrary=_inUsersCloudLibrary;
 @property (nonatomic) BOOL isInUsersLibrary; // @synthesize isInUsersLibrary=_isInUsersLibrary;
 @property (nonatomic) long long lastPlayedDateTime; // @synthesize lastPlayedDateTime=_lastPlayedDateTime;
 @property (nonatomic) long long lastSkippedDateTime; // @synthesize lastSkippedDateTime=_lastSkippedDateTime;
@@ -219,6 +242,7 @@
 @property (nonatomic) BOOL needsReporting; // @synthesize needsReporting=_needsReporting;
 @property (nonatomic) int playCount; // @synthesize playCount=_playCount;
 @property (nonatomic) int playCountDelta; // @synthesize playCountDelta=_playCountDelta;
+@property (nonatomic) int playbackEndpointType; // @synthesize playbackEndpointType=_playbackEndpointType;
 @property (strong, nonatomic) MIPPodcast *podcast; // @synthesize podcast=_podcast;
 @property (nonatomic) long long purchaseDateTime; // @synthesize purchaseDateTime=_purchaseDateTime;
 @property (nonatomic) long long purchaseHistoryId; // @synthesize purchaseHistoryId=_purchaseHistoryId;
@@ -228,6 +252,8 @@
 @property (nonatomic) BOOL rememberBookmark; // @synthesize rememberBookmark=_rememberBookmark;
 @property (nonatomic) long long sagaId; // @synthesize sagaId=_sagaId;
 @property (strong, nonatomic) NSString *sagaRedownloadParams; // @synthesize sagaRedownloadParams=_sagaRedownloadParams;
+@property (strong, nonatomic) NSString *secondaryArtworkId; // @synthesize secondaryArtworkId=_secondaryArtworkId;
+@property (nonatomic) int secondaryArtworkSourceType; // @synthesize secondaryArtworkSourceType=_secondaryArtworkSourceType;
 @property (strong, nonatomic) NSString *shortDescription; // @synthesize shortDescription=_shortDescription;
 @property (nonatomic) int skipCount; // @synthesize skipCount=_skipCount;
 @property (nonatomic) int skipCountDelta; // @synthesize skipCountDelta=_skipCountDelta;

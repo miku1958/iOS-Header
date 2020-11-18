@@ -19,11 +19,16 @@
 - (id)_batteryTemplate;
 - (id)_breathingTemplate;
 - (id)_dateTemplate;
+- (id)_heartrateTemplate;
 - (void)_localeDidChange:(id)arg1;
+- (id)_messagesTemplate;
 - (id)_moonPhaseTemplate;
 - (id)_musicTemplate;
+- (id)_newsTemplate;
 - (id)_nextEventTemplate;
+- (id)_nowPlayingTemplate;
 - (id)_reminderTemplate;
+- (id)_siriTemplate;
 - (id)_stocksTemplate;
 - (id)_stopwatchTemplate;
 - (id)_sunriseTemplate;

@@ -4,33 +4,41 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEODirectionsError-Protocol.h>
+#import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class GEOAlert, NSString;
+@class GEOAlert, NSString, _GEOTransitRoutingIncidentMessage;
 @protocol GEOTransitRoutingIncidentMessage;
 
 __attribute__((visibility("hidden")))
-@interface _GEODirectionsError : NSObject <GEODirectionsError>
+@interface _GEODirectionsError : NSObject <GEODirectionsError, NSSecureCoding>
 {
     GEOAlert *_alert;
     struct GEOProblemDetail *_problemDetails;
     unsigned long long _problemDetailsCount;
-    id<GEOTransitRoutingIncidentMessage> _routingIncidentMessage;
+    _GEOTransitRoutingIncidentMessage *_routingIncidentMessage;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long firstDirectionsErrorCode;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<GEOTransitRoutingIncidentMessage> incidentMessage;
 @property (readonly, nonatomic) NSString *localizedDescription;
 @property (readonly, nonatomic) NSString *localizedTitle;
+@property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_copyProblemDetails:(struct GEOProblemDetail *)arg1 count:(unsigned long long)arg2;
 - (BOOL)_errorCode:(long long)arg1 toProblem:(out int *)arg2;
 - (long long)_errorCodeForProblemDetail:(struct GEOProblemDetail)arg1;
 - (void)dealloc;
-- (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasError:(long long)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithResponse:(id)arg1;
 - (id)initWithWaypointIndex:(unsigned long long)arg1;
 

@@ -46,7 +46,7 @@
 + (id)logWithDomain:(id)arg1;
 + (long long)roundNumber:(long long)arg1 usingSignificantDigits:(unsigned long long)arg2;
 + (BOOL)shouldLogGivenSamplePercentage:(float)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)enumerateCustomKeysAndValuesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateStandardKeysAndValuesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateStandardizedKeysAndValuesUsingBlock:(CDUnknownBlockType)arg1;

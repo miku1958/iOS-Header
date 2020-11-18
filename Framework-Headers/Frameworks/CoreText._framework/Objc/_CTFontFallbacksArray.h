@@ -11,14 +11,17 @@
 __attribute__((visibility("hidden")))
 @interface _CTFontFallbacksArray : NSArray
 {
-    int _lock;
+    struct TUnfairLock _lock;
     const struct TBaseFont *_baseFont;
+    struct TTraitsValues _traitsValue;
+    const struct TTraitsValues *_refTraits;
     unsigned long long _count;
     NSArray *_cascade;
     NSMutableArray *_fallbacks;
     unsigned long long _hash;
 }
 
+- (id).cxx_construct;
 - (struct __CTFontDescriptor *)cachedDescriptorForCharacter:(unsigned short)arg1;
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;

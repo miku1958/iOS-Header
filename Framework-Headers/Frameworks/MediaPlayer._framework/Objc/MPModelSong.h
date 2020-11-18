@@ -6,19 +6,21 @@
 
 #import <MediaPlayer/MPModelObject.h>
 
-@class MPModelAlbum, MPModelArtist, MPModelComposer, MPModelFileAsset, MPModelGenre, MPModelHomeSharingAsset, MPModelLyrics, MPModelPlaybackPosition, MPModelStoreAsset, NSDate, NSString;
+@class MPGaplessInfo, MPModelAlbum, MPModelArtist, MPModelComposer, MPModelFileAsset, MPModelGenre, MPModelHomeSharingAsset, MPModelLyrics, MPModelPlaybackPosition, MPModelStoreAsset, NSDate, NSString;
 
 @interface MPModelSong : MPModelObject
 {
     BOOL _explicitSong;
     BOOL _artistUploadedContent;
     BOOL _hasVideo;
+    BOOL _shouldExcludeFromShuffle;
     BOOL _shouldShowComposer;
     BOOL _libraryAdded;
     BOOL _libraryAddEligible;
     BOOL _hasCloudSyncSource;
     float _volumeNormalization;
     float _userRating;
+    float _volumeAdjustment;
     NSString *_title;
     NSString *_grouping;
     double _duration;
@@ -27,6 +29,7 @@
     long long _beatsPerMinute;
     NSString *_copyrightText;
     long long _year;
+    MPGaplessInfo *_gaplessInfo;
     NSString *_classicalWork;
     NSString *_classicalMovement;
     long long _classicalMovementCount;
@@ -60,6 +63,7 @@
 @property (nonatomic) long long discNumber; // @synthesize discNumber=_discNumber;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (nonatomic, getter=isExplicitSong) BOOL explicitSong; // @synthesize explicitSong=_explicitSong;
+@property (strong, nonatomic) MPGaplessInfo *gaplessInfo; // @synthesize gaplessInfo=_gaplessInfo;
 @property (strong, nonatomic) MPModelGenre *genre; // @synthesize genre=_genre;
 @property (copy, nonatomic) NSString *grouping; // @synthesize grouping=_grouping;
 @property (nonatomic) BOOL hasCloudSyncSource; // @synthesize hasCloudSyncSource=_hasCloudSyncSource;
@@ -73,11 +77,13 @@
 @property (strong, nonatomic) MPModelFileAsset *localFileAsset; // @synthesize localFileAsset=_localFileAsset;
 @property (strong, nonatomic) MPModelLyrics *lyrics; // @synthesize lyrics=_lyrics;
 @property (strong, nonatomic) MPModelPlaybackPosition *playbackPosition; // @synthesize playbackPosition=_playbackPosition;
+@property (nonatomic) BOOL shouldExcludeFromShuffle; // @synthesize shouldExcludeFromShuffle=_shouldExcludeFromShuffle;
 @property (nonatomic) BOOL shouldShowComposer; // @synthesize shouldShowComposer=_shouldShowComposer;
 @property (strong, nonatomic) MPModelStoreAsset *storeAsset; // @synthesize storeAsset=_storeAsset;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) long long trackNumber; // @synthesize trackNumber=_trackNumber;
 @property (nonatomic) float userRating; // @synthesize userRating=_userRating;
+@property (nonatomic) float volumeAdjustment; // @synthesize volumeAdjustment=_volumeAdjustment;
 @property (nonatomic) float volumeNormalization; // @synthesize volumeNormalization=_volumeNormalization;
 @property (nonatomic) long long year; // @synthesize year=_year;
 
@@ -92,6 +98,7 @@
 + (id)__MPModelPropertySongDiscNumber__PROPERTY;
 + (id)__MPModelPropertySongDuration__PROPERTY;
 + (id)__MPModelPropertySongExplicit__PROPERTY;
++ (id)__MPModelPropertySongGaplessInfo__PROPERTY;
 + (id)__MPModelPropertySongGrouping__PROPERTY;
 + (id)__MPModelPropertySongHasCloudSyncSource__PROPERTY;
 + (id)__MPModelPropertySongHasVideo__PROPERTY;
@@ -100,10 +107,12 @@
 + (id)__MPModelPropertySongLibraryAddEligible__PROPERTY;
 + (id)__MPModelPropertySongLibraryAddedDate__PROPERTY;
 + (id)__MPModelPropertySongLibraryAdded__PROPERTY;
++ (id)__MPModelPropertySongShouldExcludeFromShuffle__PROPERTY;
 + (id)__MPModelPropertySongShouldShowComposer__PROPERTY;
 + (id)__MPModelPropertySongTitle__PROPERTY;
 + (id)__MPModelPropertySongTrackNumber__PROPERTY;
 + (id)__MPModelPropertySongUserRating__PROPERTY;
++ (id)__MPModelPropertySongVolumeAdjustment__PROPERTY;
 + (id)__MPModelPropertySongVolumeNormalization__PROPERTY;
 + (id)__MPModelPropertySongYear__PROPERTY;
 + (id)__MPModelRelationshipSongAlbum__PROPERTY;
@@ -129,6 +138,7 @@
 + (id)__discNumber__KEY;
 + (id)__duration__KEY;
 + (id)__explicitSong__KEY;
++ (id)__gaplessInfo__KEY;
 + (id)__genre__KEY;
 + (id)__grouping__KEY;
 + (id)__hasCloudSyncSource__KEY;
@@ -142,20 +152,23 @@
 + (id)__localFileAsset__KEY;
 + (id)__lyrics__KEY;
 + (id)__playbackPosition__KEY;
++ (id)__shouldExcludeFromShuffle__KEY;
 + (id)__shouldShowComposer__KEY;
 + (id)__storeAsset__KEY;
 + (id)__title__KEY;
 + (id)__trackNumber__KEY;
 + (id)__userRating__KEY;
++ (id)__volumeAdjustment__KEY;
 + (id)__volumeNormalization__KEY;
 + (id)__year__KEY;
 + (id)kindWithVariants:(unsigned long long)arg1;
 + (id)kindWithVariants:(unsigned long long)arg1 options:(unsigned long long)arg2;
-+ (id)mqf_requiredPlaybackProperties;
 + (id)requiredKeepLocalStatusObservationProperties;
 + (id)requiredLibraryAddStatusObservationProperties;
 + (id)requiredLibraryRemovalProperties;
 + (id)requiredStoreLibraryPersonalizationProperties;
++ (id)storeItemMetadataRequestItemIdentifierForIdentifiers:(id)arg1;
++ (BOOL)storeItemMetadataRequestNeedsPersonalizationForIdentifiers:(id)arg1;
 + (BOOL)supportsKeepLocalStatusObservation;
 + (BOOL)supportsLibraryAddStatusObservation;
 + (BOOL)supportsLibraryRemoval;
@@ -165,9 +178,6 @@
 - (struct MPLibraryAddStatusObserverConfiguration)libraryAddStatusObserverConfiguration;
 - (long long)libraryRemovalSupportedOptions;
 - (id)mediaItemPropertyValues;
-- (void)mqf_configurePlaybackItemMetadata:(id)arg1;
-- (id)mqf_newPlaybackItemMetadata;
-- (id)mqf_playbackItemMetadataModelObject;
 - (id)newKeepLocalStatusObserverConfiguration;
 - (id)objectWithStoreLibraryPersonalizationRelativeModelObject:(id)arg1;
 - (id)personalizationScopedPropertiesForProperties:(id)arg1;

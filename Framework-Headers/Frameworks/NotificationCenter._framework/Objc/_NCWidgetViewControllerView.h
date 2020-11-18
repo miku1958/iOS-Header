@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SpringBoardUIServices/SBUISizeObservingView.h>
+#import <NotificationCenter/NCSizeObservingView.h>
 
 #import <NotificationCenter/UIScrollViewDelayedTouchesBeganGestureRecognizerClient-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _NCWidgetViewControllerView : SBUISizeObservingView <UIScrollViewDelayedTouchesBeganGestureRecognizerClient>
+@interface _NCWidgetViewControllerView : NCSizeObservingView <UIScrollViewDelayedTouchesBeganGestureRecognizerClient>
 {
 }
 

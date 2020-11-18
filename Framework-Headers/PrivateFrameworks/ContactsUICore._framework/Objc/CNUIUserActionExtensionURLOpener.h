@@ -23,6 +23,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithExtensionContext:(id)arg1;
+- (id)openURL:(id)arg1 isSensitive:(BOOL)arg2 withScheduler:(id)arg3;
 - (id)openURL:(id)arg1 withScheduler:(id)arg2;
 
 @end

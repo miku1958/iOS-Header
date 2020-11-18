@@ -8,49 +8,60 @@
 
 #import <SpringBoardFoundation/BSDescriptionProviding-Protocol.h>
 #import <SpringBoardFoundation/NSCopying-Protocol.h>
+#import <SpringBoardFoundation/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString, NSURL, SBFWallpaperConfigurationManager, SBFWallpaperOptions, SBWallpaperImage, UIImage;
+@class NSData, NSDictionary, NSString, NSURL, SBFWallpaperOptions, SBWallpaperImage, UIColor, UIImage;
 @protocol SBFProceduralWallpaper;
 
-@interface SBFWallpaperConfiguration : NSObject <NSCopying, BSDescriptionProviding>
+@interface SBFWallpaperConfiguration : NSObject <NSCopying, BSDescriptionProviding, NSSecureCoding>
 {
     id<SBFProceduralWallpaper> _proceduralWallpaper;
     long long _wallpaperType;
     SBWallpaperImage *_wallpaperImage;
+    UIImage *_wallpaperOriginalImage;
+    UIImage *_wallpaperThumbnailImage;
+    NSData *_wallpaperThumbnailImageData;
     SBFWallpaperOptions *_wallpaperOptions;
     NSDictionary *_proceduralWallpaperInfo;
     NSURL *_videoURL;
-    SBFWallpaperConfigurationManager *_wallpaperConfigurationManager;
+    NSURL *_originalVideoURL;
+    UIColor *_wallpaperColor;
+    NSString *_wallpaperColorName;
     long long _variant;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<SBFProceduralWallpaper> proceduralWallpaper;
+@property (copy, nonatomic) NSURL *originalVideoURL; // @synthesize originalVideoURL=_originalVideoURL;
+@property (strong, nonatomic) id<SBFProceduralWallpaper> proceduralWallpaper; // @synthesize proceduralWallpaper=_proceduralWallpaper;
 @property (readonly, copy, nonatomic) NSString *proceduralWallpaperIdentifier;
 @property (copy, nonatomic) NSDictionary *proceduralWallpaperInfo; // @synthesize proceduralWallpaperInfo=_proceduralWallpaperInfo;
 @property (readonly, copy, nonatomic) NSDictionary *proceduralWallpaperOptions;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long variant; // @synthesize variant=_variant;
 @property (copy, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
-@property (readonly, nonatomic) SBFWallpaperConfigurationManager *wallpaperConfigurationManager; // @synthesize wallpaperConfigurationManager=_wallpaperConfigurationManager;
+@property (copy, nonatomic) UIColor *wallpaperColor; // @synthesize wallpaperColor=_wallpaperColor;
+@property (copy, nonatomic) NSString *wallpaperColorName; // @synthesize wallpaperColorName=_wallpaperColorName;
 @property (strong, nonatomic) SBWallpaperImage *wallpaperImage; // @synthesize wallpaperImage=_wallpaperImage;
 @property (copy, nonatomic) SBFWallpaperOptions *wallpaperOptions; // @synthesize wallpaperOptions=_wallpaperOptions;
-@property (readonly, nonatomic) UIImage *wallpaperOriginalImage;
-@property (readonly, nonatomic) UIImage *wallpaperThumbnailImage;
+@property (strong, nonatomic) UIImage *wallpaperOriginalImage; // @synthesize wallpaperOriginalImage=_wallpaperOriginalImage;
+@property (strong, nonatomic) UIImage *wallpaperThumbnailImage; // @synthesize wallpaperThumbnailImage=_wallpaperThumbnailImage;
+@property (copy, nonatomic) NSData *wallpaperThumbnailImageData; // @synthesize wallpaperThumbnailImageData=_wallpaperThumbnailImageData;
 @property (readonly, nonatomic) long long wallpaperType; // @synthesize wallpaperType=_wallpaperType;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
-- (id)initWithWallpaperConfigurationManager:(id)arg1 variant:(long long)arg2 type:(long long)arg3;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithVariant:(long long)arg1 type:(long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
-- (id)wallpaperThumbnailImageData;
 
 @end
 

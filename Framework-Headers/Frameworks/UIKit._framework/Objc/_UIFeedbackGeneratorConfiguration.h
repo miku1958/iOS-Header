@@ -13,7 +13,7 @@
 @interface _UIFeedbackGeneratorConfiguration : NSObject <NSCopying>
 {
     BOOL _settingsEnabled;
-    BOOL _prepared;
+    BOOL _setup;
     BOOL _enabled;
     CDUnknownBlockType _preparationBlock;
     Class _clientClass;
@@ -32,9 +32,9 @@
 @property (readonly, nonatomic) NSArray *feedbackKeyPaths;
 @property (nonatomic) long long outputMode; // @synthesize outputMode=_outputMode;
 @property (copy, nonatomic) CDUnknownBlockType preparationBlock; // @synthesize preparationBlock=_preparationBlock;
-@property (nonatomic, getter=isPrepared) BOOL prepared; // @synthesize prepared=_prepared;
 @property (readonly, nonatomic) long long requiredSupportLevel;
 @property (nonatomic) BOOL settingsEnabled; // @synthesize settingsEnabled=_settingsEnabled;
+@property (nonatomic, getter=isSetup) BOOL setup; // @synthesize setup=_setup;
 @property (copy, nonatomic) NSString *usage; // @synthesize usage=_usage;
 @property (readonly, nonatomic) NSSet *usedFeedbacks;
 
@@ -44,7 +44,7 @@
 - (void).cxx_destruct;
 - (BOOL)_hasMutableFeedbackKeyPaths;
 - (void)_preferencesUpdated:(id)arg1;
-- (BOOL)_prepareRegardlessOfPreferences:(BOOL)arg1;
+- (BOOL)_setupRegardlessOfPreferences:(BOOL)arg1;
 - (BOOL)_shouldEnable;
 - (void)_updateEnabled;
 - (id)copyWithZone:(struct _NSZone *)arg1;

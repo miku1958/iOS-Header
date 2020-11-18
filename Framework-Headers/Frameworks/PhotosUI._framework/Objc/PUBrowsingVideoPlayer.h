@@ -6,18 +6,20 @@
 
 #import <PhotosUI/PUViewModel.h>
 
-#import <PhotosUI/PUAVPlayerDelegate-Protocol.h>
+#import <PhotosUI/ISChangeObserver-Protocol.h>
+#import <PhotosUI/ISWrappedAVPlayerDelegate-Protocol.h>
 
-@class AVAudioSession, AVPlayer, AVPlayerItem, NSDate, NSError, NSHashTable, NSMutableSet, NSObject, NSString, NSTimer, PUBrowsingVideoPlayerChange, PUMediaProvider;
+@class AVPlayerItem, ISWrappedAVAudioSession, ISWrappedAVPlayer, NSDate, NSError, NSHashTable, NSMutableSet, NSObject, NSString, NSTimer, PUBrowsingVideoPlayerChange, PUMediaProvider, PXUpdater;
 @protocol OS_dispatch_queue, PUDisplayAsset;
 
 __attribute__((visibility("hidden")))
-@interface PUBrowsingVideoPlayer : PUViewModel <PUAVPlayerDelegate>
+@interface PUBrowsingVideoPlayer : PUViewModel <ISChangeObserver, ISWrappedAVPlayerDelegate>
 {
+    PXUpdater *_updater;
     NSObject<OS_dispatch_queue> *_audioSessionQueue;
     BOOL _isPlayingAllowed;
     BOOL _isStalled;
-    BOOL _shouldRespectMuteSwitch;
+    BOOL _alwaysRespectsMuteSwitch;
     BOOL _isPlayable;
     BOOL _isPlayerLoadingAllowed;
     BOOL _isAtBeginning;
@@ -27,28 +29,19 @@ __attribute__((visibility("hidden")))
     BOOL __isBuffering;
     BOOL __shouldRewindBeforePlaying;
     BOOL __isPlayerTimeAdvancing;
-    BOOL __isUpdatingAudioCategory;
-    BOOL __needsUpdateAVPlayer;
-    BOOL __needsUpdatePlayerItem;
-    BOOL __needsUpdateBuffering;
-    BOOL __needsUpdateStalled;
-    BOOL __needsUpdatePlayState;
-    BOOL __needsUpdateAVPlayerState;
-    BOOL __needsUpdateAtBeginningOrEnd;
-    BOOL __needsUpdatePlayability;
+    BOOL __isUpdatingAudioSession;
     int __currentRequestID;
     id<PUDisplayAsset> _asset;
     PUMediaProvider *_mediaProvider;
     long long _desiredPlayState;
     long long _playState;
-    AVPlayer *_avPlayer;
+    ISWrappedAVPlayer *_avPlayer;
     AVPlayerItem *_playerItem;
     NSError *_error;
     NSMutableSet *__playerLoadingDisablingReasons;
     NSMutableSet *__playingDisablingReasons;
-    long long __audioCategoryUpdateID;
     long long __currentUnloadRequestId;
-    AVAudioSession *__audioSession;
+    ISWrappedAVAudioSession *__audioSession;
     id __playerTimeObservationToken;
     NSTimer *__playerTimeAdvancementTimer;
     CDUnknownBlockType __onPlayerLoadedBlock;
@@ -60,22 +53,13 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 __lastPlayerTime;
 }
 
-@property (nonatomic, setter=_setAudioCategoryUpdateID:) long long _audioCategoryUpdateID; // @synthesize _audioCategoryUpdateID=__audioCategoryUpdateID;
-@property (strong, nonatomic, setter=_setAudioSesstion:) AVAudioSession *_audioSession; // @synthesize _audioSession=__audioSession;
+@property (strong, nonatomic, setter=_setAudioSession:) ISWrappedAVAudioSession *_audioSession; // @synthesize _audioSession=__audioSession;
 @property (nonatomic, setter=_setCurrentRequestID:) int _currentRequestID; // @synthesize _currentRequestID=__currentRequestID;
 @property (nonatomic, setter=_setCurrentUnloadRequestId:) long long _currentUnloadRequestId; // @synthesize _currentUnloadRequestId=__currentUnloadRequestId;
 @property (nonatomic, setter=_setBuffering:) BOOL _isBuffering; // @synthesize _isBuffering=__isBuffering;
 @property (nonatomic, setter=_setPlayerTimeAdvancing:) BOOL _isPlayerTimeAdvancing; // @synthesize _isPlayerTimeAdvancing=__isPlayerTimeAdvancing;
-@property (nonatomic, setter=_setUpdatingAudioCategory:) BOOL _isUpdatingAudioCategory; // @synthesize _isUpdatingAudioCategory=__isUpdatingAudioCategory;
+@property (nonatomic, setter=_setUpdatingAudioSession:) BOOL _isUpdatingAudioSession; // @synthesize _isUpdatingAudioSession=__isUpdatingAudioSession;
 @property (nonatomic, setter=_setLastPlayerTime:) CDStruct_1b6d18a9 _lastPlayerTime; // @synthesize _lastPlayerTime=__lastPlayerTime;
-@property (nonatomic, setter=_setNeedsUpdateAVPlayer:) BOOL _needsUpdateAVPlayer; // @synthesize _needsUpdateAVPlayer=__needsUpdateAVPlayer;
-@property (nonatomic, setter=_setNeedsUpdateAVPlayerState:) BOOL _needsUpdateAVPlayerState; // @synthesize _needsUpdateAVPlayerState=__needsUpdateAVPlayerState;
-@property (nonatomic, setter=_setNeedsUpdateAtBeginningOrEnd:) BOOL _needsUpdateAtBeginningOrEnd; // @synthesize _needsUpdateAtBeginningOrEnd=__needsUpdateAtBeginningOrEnd;
-@property (nonatomic, setter=_setNeedsUpdateBuffering:) BOOL _needsUpdateBuffering; // @synthesize _needsUpdateBuffering=__needsUpdateBuffering;
-@property (nonatomic, setter=_setNeedsUpdatePlayState:) BOOL _needsUpdatePlayState; // @synthesize _needsUpdatePlayState=__needsUpdatePlayState;
-@property (nonatomic, setter=_setNeedsUpdatePlayability:) BOOL _needsUpdatePlayability; // @synthesize _needsUpdatePlayability=__needsUpdatePlayability;
-@property (nonatomic, setter=_setNeedsUpdatePlayerItem:) BOOL _needsUpdatePlayerItem; // @synthesize _needsUpdatePlayerItem=__needsUpdatePlayerItem;
-@property (nonatomic, setter=_setNeedsUpdateStalled:) BOOL _needsUpdateStalled; // @synthesize _needsUpdateStalled=__needsUpdateStalled;
 @property (copy, nonatomic, setter=_setOnPlayerLoadedBlock:) CDUnknownBlockType _onPlayerLoadedBlock; // @synthesize _onPlayerLoadedBlock=__onPlayerLoadedBlock;
 @property (strong, nonatomic, setter=_setPlayRequestDate:) NSDate *_playRequestDate; // @synthesize _playRequestDate=__playRequestDate;
 @property (strong, nonatomic, setter=_setPlayerLoadingDisablingReasons:) NSMutableSet *_playerLoadingDisablingReasons; // @synthesize _playerLoadingDisablingReasons=__playerLoadingDisablingReasons;
@@ -85,8 +69,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setShouldLoadPlayer:) BOOL _shouldLoadPlayer; // @synthesize _shouldLoadPlayer=__shouldLoadPlayer;
 @property (nonatomic, setter=_setShouldRewindBeforePlaying:) BOOL _shouldRewindBeforePlaying; // @synthesize _shouldRewindBeforePlaying=__shouldRewindBeforePlaying;
 @property (readonly, nonatomic) NSHashTable *_timeObservers; // @synthesize _timeObservers=__timeObservers;
+@property (nonatomic) BOOL alwaysRespectsMuteSwitch; // @synthesize alwaysRespectsMuteSwitch=_alwaysRespectsMuteSwitch;
 @property (strong, nonatomic) id<PUDisplayAsset> asset; // @synthesize asset=_asset;
-@property (strong, nonatomic, setter=_setAVPlayer:) AVPlayer *avPlayer; // @synthesize avPlayer=_avPlayer;
+@property (strong, nonatomic, setter=_setAVPlayer:) ISWrappedAVPlayer *avPlayer; // @synthesize avPlayer=_avPlayer;
 @property (readonly, nonatomic) PUBrowsingVideoPlayerChange *currentChange;
 @property (nonatomic, setter=_setCurrentTime:) CDStruct_1b6d18a9 currentTime; // @synthesize currentTime=_currentTime;
 @property (readonly, copy) NSString *debugDescription;
@@ -106,51 +91,40 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (nonatomic, setter=_setPlayState:) long long playState; // @synthesize playState=_playState;
 @property (strong, nonatomic, setter=_setPlayerItem:) AVPlayerItem *playerItem; // @synthesize playerItem=_playerItem;
-@property (nonatomic) BOOL shouldRespectMuteSwitch; // @synthesize shouldRespectMuteSwitch=_shouldRespectMuteSwitch;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_adoptAudioSession:(id)arg1;
+- (void)_audiosessionQueue_setAudioCategory:(id)arg1;
 - (void)_avPlayerTimeDidChange:(CDStruct_1b6d18a9)arg1;
 - (void)_dequeueAllOnPlayerLoadedBlocksIfApplicable;
-- (void)_didFinishUpdatingAudioCategoryWithUpdateID:(long long)arg1;
 - (void)_enqueueOnPlayerLoadedBlock:(CDUnknownBlockType)arg1;
+- (void)_handleDidBecomeActiveNotification:(id)arg1;
 - (void)_handlePlayerTimeAdvancementTimer:(id)arg1;
 - (void)_handlePlayerUnloadWithRequestId:(long long)arg1;
 - (void)_handleResultOfPlayerItemRequestWithID:(int)arg1 playerItem:(id)arg2 info:(id)arg3;
 - (void)_handleShouldReloadAssetMediaNotification:(id)arg1;
 - (void)_handleWillResignActiveNotification:(id)arg1;
-- (void)_invalidateAVPlayer;
-- (void)_invalidateAVPlayerPlayState;
-- (void)_invalidateAtBeginningOrEnd;
-- (void)_invalidateBuffering;
-- (void)_invalidatePlayState;
-- (void)_invalidatePlayability;
 - (void)_invalidatePlayerItem;
-- (void)_invalidateStalled;
+- (BOOL)_isAVPlayerPlayStateOutOfSync;
 - (void)_logPlaybackState;
-- (BOOL)_needsUpdate;
 - (void)_performBlockWithLoadedAVPlayer:(CDUnknownBlockType)arg1;
 - (id)_playbackStateDescription;
-- (void)_playerItemDidPlayToEndTime:(id)arg1;
-- (void)_setNeedsUpdate;
 - (void)_setPlayabilityFromAsset;
 - (void)_startObservingAVPlayer;
-- (void)_startObservingPlayerItem;
 - (void)_stopObservingAVPlayer;
-- (void)_stopObservingPlayerItem;
 - (void)_updateAVPlayer;
 - (void)_updateAVPlayerPlayState;
 - (void)_updateAtBeginningOrEnd;
-- (void)_updateAudioCategory;
+- (void)_updateAudioSession;
 - (void)_updateBuffering;
 - (void)_updateDuration;
-- (void)_updateIfNeeded;
 - (void)_updatePlayState;
-- (void)_updatePlayabilityIfNeeded;
+- (void)_updatePlayability;
 - (void)_updatePlayerItem;
 - (void)_updateStalled;
+- (void)avPlayer:(id)arg1 itemDidPlayToEnd:(id)arg2;
 - (void)avPlayerDidDeallocate;
-- (void)avPlayerStatusDidChange:(id)arg1;
 - (void)dealloc;
 - (id)debugDetailedDescription;
 - (void)didPerformChanges;
@@ -158,7 +132,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithAsset:(id)arg1 mediaProvider:(id)arg2;
 - (void)invalidateExistingPlayer;
 - (id)newViewModelChange;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)registerChangeObserver:(id)arg1;
 - (void)registerTimeObserver:(id)arg1;
 - (void)rewindExistingPlayer;

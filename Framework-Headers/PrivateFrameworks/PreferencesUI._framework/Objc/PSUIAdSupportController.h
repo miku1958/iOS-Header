@@ -12,13 +12,11 @@
 
 @interface PSUIAdSupportController : PSListController <ADPrivacyViewControllerDelegate>
 {
-    BOOL _limitAdTrackingURLIsReachable;
     id _restrictionsChangedObserver;
     id _effectiveSettingsChangedObserver;
     UITableViewCell *_limitAdTrackingCell;
     UIView *_originalAccessoryView;
     long long _optInStatus;
-    id _reachabilityAsObject;
     ADPrivacyViewController *_adPrivacyController;
 }
 
@@ -28,11 +26,8 @@
 @property (strong, nonatomic) id effectiveSettingsChangedObserver; // @synthesize effectiveSettingsChangedObserver=_effectiveSettingsChangedObserver;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UITableViewCell *limitAdTrackingCell; // @synthesize limitAdTrackingCell=_limitAdTrackingCell;
-@property (nonatomic) BOOL limitAdTrackingURLIsReachable; // @synthesize limitAdTrackingURLIsReachable=_limitAdTrackingURLIsReachable;
 @property (nonatomic) long long optInStatus; // @synthesize optInStatus=_optInStatus;
 @property (strong, nonatomic) UIView *originalAccessoryView; // @synthesize originalAccessoryView=_originalAccessoryView;
-@property (readonly, nonatomic) struct __SCNetworkReachability *reachability;
-@property (strong, nonatomic) id reachabilityAsObject; // @synthesize reachabilityAsObject=_reachabilityAsObject;
 @property (strong, nonatomic) id restrictionsChangedObserver; // @synthesize restrictionsChangedObserver=_restrictionsChangedObserver;
 @property (readonly) Class superclass;
 

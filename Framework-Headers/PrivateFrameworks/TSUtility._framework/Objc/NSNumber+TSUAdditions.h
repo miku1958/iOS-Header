@@ -7,8 +7,8 @@
 #import <Foundation/NSNumber.h>
 
 @interface NSNumber (TSUAdditions)
-+ (id)numberWithCGFloat:(double)arg1;
-- (double)CGFloatValue;
-- (BOOL)isFloatingPointType;
++ (id)tsu_numberWithCGFloat:(double)arg1;
+- (double)tsu_CGFloatValue;
+- (BOOL)tsu_isFloatingPointType;
 @end
 

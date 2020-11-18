@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)_computeSectionUpdates;
 - (void)_computeSupplementaryUpdates;
 - (void)dealloc;
+- (id)description;
 - (id)initWithCollectionView:(id)arg1 updateItems:(id)arg2 oldModel:(id)arg3 newModel:(id)arg4 oldVisibleBounds:(struct CGRect)arg5 newVisibleBounds:(struct CGRect)arg6;
 - (id)newIndexPathForSupplementaryElementOfKind:(id)arg1 oldIndexPath:(id)arg2;
 - (id)oldIndexPathForSupplementaryElementOfKind:(id)arg1 newIndexPath:(id)arg2;

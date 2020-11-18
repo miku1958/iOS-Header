@@ -4,8 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
+@class NSArray;
 @protocol CNiOSContactPredicate;
 
 __attribute__((visibility("hidden")))
@@ -15,19 +16,26 @@ __attribute__((visibility("hidden")))
     BOOL _shouldSort;
     unsigned int _sortOrder;
     unsigned long long _options;
+    BOOL _unifiedFetch;
+    NSArray *_keysToFetch;
+    unsigned long long _batchSize;
 }
 
+@property (readonly) unsigned long long batchSize; // @synthesize batchSize=_batchSize;
+@property (readonly) NSArray *keysToFetch; // @synthesize keysToFetch=_keysToFetch;
 @property (readonly) unsigned long long options; // @synthesize options=_options;
 @property (readonly) id<CNiOSContactPredicate> predicate; // @synthesize predicate=_predicate;
 @property (readonly) BOOL shouldSort; // @synthesize shouldSort=_shouldSort;
 @property (readonly) unsigned int sortOrder; // @synthesize sortOrder=_sortOrder;
+@property (readonly) unsigned int sortOrderIncludingNone;
+@property (readonly) BOOL unifiedFetch; // @synthesize unifiedFetch=_unifiedFetch;
 
 + (id)effectivePredicate:(id)arg1;
 + (id)fetchRequestFromCNFetchRequest:(id)arg1 error:(id *)arg2;
 + (long long)resolvedSortOrderFromContactSortOrder:(long long)arg1;
 + (id)validatePredicate:(id)arg1 error:(id *)arg2;
-- (void)dealloc;
-- (id)initWithPredicate:(id)arg1 shouldSort:(BOOL)arg2 sortOrder:(unsigned int)arg3 options:(unsigned long long)arg4;
+- (void).cxx_destruct;
+- (id)initWithPredicate:(id)arg1 keysToFetch:(id)arg2 shouldSort:(BOOL)arg3 sortOrder:(unsigned int)arg4 unifiedFetch:(BOOL)arg5 batchSize:(unsigned long long)arg6 options:(unsigned long long)arg7;
 
 @end
 

@@ -6,11 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <Accounts/ACProtobufCoding-Protocol.h>
+#import <Accounts/NSCoding-Protocol.h>
+#import <Accounts/NSCopying-Protocol.h>
 #import <Accounts/NSSecureCoding-Protocol.h>
 
 @class ACAccount, NSDate, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
-@interface ACAccountCredential : NSObject <NSSecureCoding>
+@interface ACAccountCredential : NSObject <ACProtobufCoding, NSCoding, NSCopying, NSSecureCoding>
 {
     NSMutableDictionary *_credentialItems;
     NSString *_credentialType;
@@ -22,11 +25,14 @@
 }
 
 @property (copy, nonatomic) NSString *credentialType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDirty) BOOL dirty; // @synthesize dirty=_dirty;
 @property (readonly, nonatomic) NSSet *dirtyProperties; // @synthesize dirtyProperties=_dirtyProperties;
 @property (nonatomic, getter=isEmpty) BOOL empty; // @synthesize empty=_empty;
 @property (strong, nonatomic) NSDate *expiryDate;
 @property (copy, nonatomic) NSString *findMyiPhoneToken;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *hsaToken;
 @property (copy, nonatomic) NSString *mapsToken;
 @property (copy, nonatomic) NSString *oauthRefreshToken;
@@ -35,6 +41,7 @@
 @property (copy, nonatomic) NSString *oauthTokenSecret;
 @property (copy, nonatomic) NSString *password;
 @property (nonatomic) BOOL requiresTouchID; // @synthesize requiresTouchID=_requiresTouchID;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *token;
 @property (copy, nonatomic) NSDate *tokenExpiryDate;
 
@@ -48,12 +55,16 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_clearDirtyProperties;
+- (id)_encodeProtobuf;
+- (id)_encodeProtobufData;
+- (id)_initWithProtobuf:(id)arg1;
+- (id)_initWithProtobufData:(id)arg1;
 - (void)_markPropertyDirty:(id)arg1;
 - (void)_setOwningAccount:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)credentialItemForKey:(id)arg1;
 - (id)credentialItems;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithOAuth2Token:(id)arg1 refreshToken:(id)arg2 expiryDate:(id)arg3;

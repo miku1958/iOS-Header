@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDHomeManager, HMFMessageDispatcher, NSMutableArray, NSString, NSUUID;
+@class HMDHomeManager, HMFMessageDispatcher, NSMutableArray, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDClientConnection : NSObject <HMFMessageReceiver>
+@interface HMDClientConnection : HMFObject <HMFMessageReceiver>
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_msgDispatcher;

@@ -36,6 +36,7 @@
 
 + (id)storageIDForItemAtURL:(id)arg1 error:(id *)arg2;
 + (id)storagePrefixForFileDescriptor:(int)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 - (id)URLforReplacingItemWithError:(id *)arg1;
 - (void)_connectionWithDaemonWasLost;
 - (void)_invalidate;

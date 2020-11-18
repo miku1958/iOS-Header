@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)usingRemoteNetworkObserver;
 - (void).cxx_destruct;
 - (void)_setNetworkState:(unsigned long long)arg1;
+- (void)_unregisterReachability;
 - (void)_update;
 - (void)_updateCompletionBlocks;
 - (void)_updateNetworkActivityIndicator;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateNetworkStateWithNotifyToken:(int)arg1;
 - (void)_updateRemoteObserver;
 - (void)airplaneModeChanged;
+- (void)dealloc;
 - (id)init;
 - (BOOL)isConnected;
 - (BOOL)isWifiCapable;

@@ -29,6 +29,7 @@
 
 - (void).cxx_destruct;
 - (void)_handleValuesDidLoad;
+- (void)_preparePlayerItem;
 - (id)initWithAsset:(id)arg1 trimmedTimeRange:(CDStruct_e83c9415)arg2 photoTime:(CDStruct_1b6d18a9)arg3 includeAudio:(BOOL)arg4 includeVideo:(BOOL)arg5 resultHandler:(CDUnknownBlockType)arg6;
 - (void)main;
 

@@ -13,13 +13,11 @@
 
 @interface NWConcrete_tcp_connection : NSObject <OS_tcp_connection>
 {
-    struct os_unfair_lock_s tc_lock;
     NSObject<OS_xpc_object> *tc_context;
     char tc_connection_activity[0];
     NSObject<OS_nw_connection> *tc_nwconn;
     struct __CFError *tc_last_nw_error;
     NSObject<OS_nw_path> *tc_nw_current_path;
-    int tc_dup_fd;
     NSObject<OS_nw_endpoint> *tc_network_endpoint;
     NSObject<OS_nw_parameters> *tc_network_parameters;
     int tc_tls_mode;
@@ -29,11 +27,21 @@
     CDUnknownBlockType tc_event;
     CDUnknownBlockType tc_cancel_handler;
     NSObject<OS_dispatch_source> *tc_connection_attempt_timer;
+    void *tc_internally_retained_object;
     unsigned long long tc_id;
+    unsigned long long tc_attempt_timeout_nanos;
     int tc_error;
+    int tc_dup_fd;
+    struct os_unfair_lock_s tc_lock;
+    int tc_usage_model;
+    long long tc_quality;
+    unsigned int tc_keepalive_count;
+    unsigned int tc_keepalive_interval;
+    unsigned int tc_adaptive_read_count;
+    unsigned int tc_adaptive_write_count;
+    unsigned int tc_minimum_throughput;
     unsigned char tc_state;
     unsigned char tc_by;
-    void *tc_internally_retained_object;
     unsigned int tc_event_read_close_delivered:1;
     unsigned int tc_event_write_close_delivered:1;
     unsigned int tc_event_connected_delivered:1;
@@ -43,19 +51,13 @@
     unsigned int tc_attempt_timeout_should_generate_event:1;
     unsigned int tc_allow_socket_access:1;
     unsigned int tc_sent_connected:1;
+    unsigned int tc_sent_tls_finished:1;
     unsigned int tc_state_has_been_preparing:1;
     unsigned int tc_client_owns_dup_fd:1;
+    unsigned int tc_started:1;
     unsigned int tc_keepalive_events:1;
     unsigned int tc_adaptive_read_events:1;
     unsigned int tc_adaptive_write_events:1;
-    int tc_usage_model;
-    long long tc_quality;
-    unsigned long long tc_attempt_timeout_nanos;
-    unsigned int tc_keepalive_count;
-    unsigned int tc_keepalive_interval;
-    unsigned int tc_adaptive_read_count;
-    unsigned int tc_adaptive_write_count;
-    unsigned int tc_minimum_throughput;
 }
 
 @property (readonly, copy) NSString *debugDescription;

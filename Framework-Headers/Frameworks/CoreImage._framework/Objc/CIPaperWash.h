@@ -13,8 +13,10 @@ __attribute__((visibility("hidden")))
 {
     CIImage *inputImage;
     NSNumber *inputSaturation;
+    NSNumber *inputGreyscale;
 }
 
+@property (copy, nonatomic) NSNumber *inputGreyscale; // @synthesize inputGreyscale;
 @property (copy, nonatomic) NSNumber *inputSaturation; // @synthesize inputSaturation;
 
 + (id)customAttributes;

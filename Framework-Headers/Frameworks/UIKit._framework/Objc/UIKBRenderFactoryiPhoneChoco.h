@@ -22,9 +22,11 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)popupSymbolTextOffset;
 - (struct CGPoint)returnKeyOffset;
 - (id)thinKeycapsFontName;
+- (struct CGPoint)variantAnnotationTextOffset;
 - (struct UIEdgeInsets)variantSymbolFrameInsets;
 - (struct CGPoint)variantSymbolTextOffset;
 - (struct UIEdgeInsets)wideShadowPaddleInsets;
+- (struct UIEdgeInsets)wideShadowPopupMenuInsets;
 
 @end
 

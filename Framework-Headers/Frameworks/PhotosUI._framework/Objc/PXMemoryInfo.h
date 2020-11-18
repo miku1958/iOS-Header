@@ -16,12 +16,10 @@
     NSString *_localizedTitle;
     PHAssetCollection *_assetCollection;
     PHFetchResult *_keyAssetFetchResult;
-    PHFetchResult *_curatedAssetsFetchResult;
 }
 
 @property (readonly, nonatomic) PHAssetCollection *assetCollection; // @synthesize assetCollection=_assetCollection;
 @property (readonly, nonatomic) long long category;
-@property (readonly, nonatomic) PHFetchResult *curatedAssetsFetchResult; // @synthesize curatedAssetsFetchResult=_curatedAssetsFetchResult;
 @property (readonly, nonatomic) PHFetchResult *keyAssetFetchResult; // @synthesize keyAssetFetchResult=_keyAssetFetchResult;
 @property (readonly, nonatomic) NSString *localizedDateText; // @synthesize localizedDateText=_localizedDateText;
 @property (readonly, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;

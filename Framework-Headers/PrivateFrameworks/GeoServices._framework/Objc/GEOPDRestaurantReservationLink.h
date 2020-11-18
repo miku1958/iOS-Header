@@ -8,22 +8,24 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEOPDRestaurantReservationLink : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_restaurantLinks;
 }
 
 @property (strong, nonatomic) NSMutableArray *restaurantLinks; // @synthesize restaurantLinks=_restaurantLinks;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)reservationLinkForPlaceData:(id)arg1;
 + (Class)restaurantLinkType;
+- (void).cxx_destruct;
 - (void)addRestaurantLink:(id)arg1;
 - (void)clearRestaurantLinks;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

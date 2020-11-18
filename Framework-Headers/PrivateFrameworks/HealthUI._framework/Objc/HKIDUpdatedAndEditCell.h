@@ -6,11 +6,15 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSDate, NSString, UIButton, UILabel;
+@class NSArray, NSDate, NSLayoutConstraint, NSString, UIButton, UILabel, UIStackView;
 @protocol HKIDUpdatedAndEditCellDelegate;
 
 @interface HKIDUpdatedAndEditCell : UITableViewCell
 {
+    NSArray *_regularLayoutConstraints;
+    NSArray *_largeTextLayoutConstraints;
+    UIStackView *_stackView;
+    NSLayoutConstraint *_editFirstBaseLineAnchorConstraint;
     BOOL _hideEditButton;
     id<HKIDUpdatedAndEditCellDelegate> _delegate;
     NSDate *_dateSaved;
@@ -30,7 +34,10 @@
 
 - (void).cxx_destruct;
 - (void)_editButtonTapped:(id)arg1;
+- (void)_updateFont;
+- (void)_updateForCurrentSizeCategory;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

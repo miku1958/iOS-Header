@@ -22,7 +22,7 @@
 @property (readonly, copy, nonatomic) NSArray *subresources;
 
 - (struct LegacyWebArchive *)_coreLegacyWebArchive;
-- (id)_initWithCoreLegacyWebArchive:(PassRefPtr_d33dc2c2)arg1;
+- (id)_initWithCoreLegacyWebArchive:(RefPtr_3e3b2882 *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSArray, NSNumber;
 
-@interface HAPMetadataCharacteristicValue : NSObject
+@interface HAPMetadataCharacteristicValue : HMFObject
 {
     NSNumber *_minValue;
     NSNumber *_maxValue;

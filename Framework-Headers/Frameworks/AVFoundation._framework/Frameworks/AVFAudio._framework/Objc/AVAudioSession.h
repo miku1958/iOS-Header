@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVAudioSessionPortDescription, AVAudioSessionRouteDescription, NSArray, NSString;
 
@@ -19,9 +19,11 @@
 @property (readonly) NSString *category;
 @property (readonly) unsigned long long categoryOptions;
 @property (readonly) AVAudioSessionRouteDescription *currentRoute;
+@property (readonly) BOOL isPrimary;
 @property (readonly) NSString *mode;
 @property (readonly, getter=isOtherAudioPlaying) BOOL otherAudioPlaying;
 @property (readonly) AVAudioSessionPortDescription *preferredInput;
+@property (readonly) unsigned long long routeSharingPolicy;
 @property (readonly) BOOL secondaryAudioShouldBeSilencedHint;
 
 + (id)auxiliarySession;
@@ -31,6 +33,7 @@
 - (double)IOBufferDuration;
 - (unsigned long long)IOBufferFrameSize;
 - (BOOL)allowAllBuiltInDataSources;
+- (id)audioClockDevice;
 - (long long)audioFormat;
 - (id)audioFormats;
 - (id)autorelease;
@@ -64,7 +67,6 @@
 - (BOOL)isInputAvailable;
 - (BOOL)isInputGainSettable;
 - (BOOL)isPiPAvailable;
-- (BOOL)isPrimary;
 - (BOOL)lastActivationStoppedNowPlayingApp;
 - (long long)maximumInputNumberOfChannels;
 - (long long)maximumOutputNumberOfChannels;
@@ -91,6 +93,7 @@
 - (struct AVAudioSessionImpl *)privateGetImplementation;
 - (id)privateGetSelectedDataSource:(BOOL)arg1;
 - (void)privateHandlePickableRoutesChange;
+- (void)privateHandleRoutingContextChange;
 - (void)privateHandleSecondaryAudioHintChange:(id)arg1;
 - (void)privateHandleServerDied;
 - (void)privateHandleServerReturned;
@@ -100,6 +103,8 @@
 - (id)privateRefreshAvailableInputs;
 - (BOOL)privateSetOptions:(unsigned long long)arg1 forCategory:(id)arg2 error:(id *)arg3;
 - (BOOL)privateSetPropertyValue:(unsigned int)arg1 withBool:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)privateSetRouteSharingPolicy:(unsigned long long)arg1 error:(id *)arg2;
+- (BOOL)privateSetRoutingContextUID:(id)arg1 error:(id *)arg2;
 - (void)privateUpdateAudioFormat:(id)arg1;
 - (void)privateUpdateAudioFormats:(id)arg1;
 - (void)privateUpdateDataSources:(id)arg1 forInput:(BOOL)arg2;
@@ -115,7 +120,9 @@
 - (void)requestRecordPermission:(CDUnknownBlockType)arg1;
 - (id)retain;
 - (unsigned long long)retainCount;
+- (id)routingContextUID;
 - (double)sampleRate;
+- (BOOL)selectIndependentRoutingContext:(id *)arg1;
 - (unsigned long long)sessionType;
 - (BOOL)setActivationContext:(id)arg1 error:(id *)arg2;
 - (BOOL)setActive:(BOOL)arg1 error:(id *)arg2;
@@ -123,9 +130,12 @@
 - (BOOL)setActive:(BOOL)arg1 withOptions:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)setAggregatedIOPreference:(unsigned long long)arg1 error:(id *)arg2;
 - (void)setAllowAllBuiltInDataSources:(BOOL)arg1;
+- (BOOL)setAudioClockDevice:(id)arg1 error:(id *)arg2;
+- (BOOL)setAudioHardwareControlFlags:(unsigned long long)arg1 error:(id *)arg2;
 - (BOOL)setBypassRingerSwitchPolicy:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)setCategory:(id)arg1 error:(id *)arg2;
 - (BOOL)setCategory:(id)arg1 mode:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
+- (BOOL)setCategory:(id)arg1 mode:(id)arg2 routeSharingPolicy:(unsigned long long)arg3 options:(unsigned long long)arg4 error:(id *)arg5;
 - (BOOL)setCategory:(id)arg1 withOptions:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)setDefaultChatMode:(id)arg1 error:(id *)arg2;
 - (void)setDelegate:(id)arg1;

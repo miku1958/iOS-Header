@@ -38,6 +38,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) EKTimedEventStorePurger *timedEventStorePurger; // @synthesize timedEventStorePurger=_timedEventStorePurger;
 
++ (id)logHandle;
 + (id)requestedDarwinNotifications;
 - (void).cxx_destruct;
 - (void)_calDatabaseChangedNotificationReceived;

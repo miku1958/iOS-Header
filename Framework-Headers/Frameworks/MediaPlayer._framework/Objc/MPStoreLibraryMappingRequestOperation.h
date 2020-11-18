@@ -17,7 +17,7 @@
 }
 
 @property (copy, nonatomic) NSArray *identifierSets; // @synthesize identifierSets=_identifierSets;
-@property (strong, nonatomic) MPMediaLibraryView *libraryView; // @synthesize libraryView=_libraryView;
+@property (copy, nonatomic) MPMediaLibraryView *libraryView; // @synthesize libraryView=_libraryView;
 @property (nonatomic) Class modelClass; // @synthesize modelClass=_modelClass;
 @property (copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 

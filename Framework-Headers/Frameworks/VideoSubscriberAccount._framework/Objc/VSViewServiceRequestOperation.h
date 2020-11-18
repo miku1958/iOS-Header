@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)cancel;
 - (void)dismissViewServiceHostViewController:(id)arg1;
 - (void)executionDidBegin;
+- (void)finishExecutionIfPossible;
 - (id)init;
 - (id)initWithViewServiceRequest:(id)arg1;
 - (void)presentViewServiceHostViewController:(id)arg1;
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)viewServiceHostViewController:(id)arg1 didChooseAdditionalProvidersForRequest:(id)arg2;
 - (void)viewServiceHostViewController:(id)arg1 request:(id)arg2 didFailWithError:(id)arg3;
 - (void)viewServiceHostViewController:(id)arg1 request:(id)arg2 didFinishWithResponse:(id)arg3;
+- (BOOL)viewServiceHostViewController:(id)arg1 shouldAuthenticateAccountProviderWithIdentifier:(id)arg2;
 
 @end
 

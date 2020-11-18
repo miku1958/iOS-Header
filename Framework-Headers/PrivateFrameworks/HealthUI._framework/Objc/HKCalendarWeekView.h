@@ -16,7 +16,7 @@
     UIView<HKCalendarMonthTitleFormatting> *_monthTitleView;
     double _dateTopMargin;
     double _dateBottomMargin;
-    double _leftMargin;
+    double _leadingMargin;
     double _monthTitleTopMargin;
     double _monthTitleBottomMargin;
     double _dateDiameter;
@@ -36,7 +36,7 @@
 @property (readonly, nonatomic) NSArray *dayCells; // @synthesize dayCells=_dayCells;
 @property (weak, nonatomic) id<HKCalendarWeekViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long firstDayOfMonthCellIndex; // @synthesize firstDayOfMonthCellIndex=_firstDayOfMonthCellIndex;
-@property (nonatomic) double leftMargin; // @synthesize leftMargin=_leftMargin;
+@property (nonatomic) double leadingMargin; // @synthesize leadingMargin=_leadingMargin;
 @property (nonatomic) double monthTitleBottomMargin; // @synthesize monthTitleBottomMargin=_monthTitleBottomMargin;
 @property (nonatomic) double monthTitleTopMargin; // @synthesize monthTitleTopMargin=_monthTitleTopMargin;
 @property (strong, nonatomic) UIView<HKCalendarMonthTitleFormatting> *monthTitleView; // @synthesize monthTitleView=_monthTitleView;
@@ -61,6 +61,7 @@
 - (void)reloadCells;
 - (void)selectedCalendarDay:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (BOOL)supportsRTL;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

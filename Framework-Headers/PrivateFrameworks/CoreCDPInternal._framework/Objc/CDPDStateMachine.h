@@ -38,20 +38,18 @@
 - (void)_confirmCDPEligibilityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_disableCloudDataProtectionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_enableKVSForAccount:(id)arg1 store:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_enableSecureBackupWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_enableSecureBackupWithCircleJoinResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_enrollOrDisableCDPAfterEnabledStateVerified:(CDUnknownBlockType)arg1;
-- (void)_handleBackupRecoveryWithPeersForRemoteApproval:(BOOL)arg1 circleStatus:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_handleCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_handleJoinCircleEvent:(CDUnknownBlockType)arg1;
+- (void)_handleJoinResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handlePreflightError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleiCDPStatusCheckError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performInteractivelyAuthenticatedRepair:(CDUnknownBlockType)arg1;
 - (id)_predicateForRecordUpgradeCheck;
 - (void)_preflightAccountStateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_recoverSecureBackupWithCircleJoinResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_recoverSecureBackupWithHasPeersForRemoteApproval:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_recoverSecureBackupWithRemotePeers:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_refreshWithContext:(id)arg1;
-- (void)_requestPostLockoutAccountReset:(CDUnknownBlockType)arg1;
 - (void)_resetAccountCDPStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)circleController:(id)arg1 secureBackupRecordsArePresentWithCompletion:(CDUnknownBlockType)arg2;
 - (id)circlePeerIDForSecureBackupController:(id)arg1;
@@ -59,12 +57,13 @@
 - (void)dealloc;
 - (void)handleCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithContext:(id)arg1 uiProvider:(id)arg2;
-- (void)promotForLocalSecretWithCompletion:(CDUnknownBlockType)arg1;
 - (void)promptForAdoptionOfMultipleICSCWithCompletion:(CDUnknownBlockType)arg1;
+- (void)promptForLocalSecretWithCompletion:(CDUnknownBlockType)arg1;
 - (void)repairCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
+- (id)secureChannelContextForController:(id)arg1;
 - (BOOL)shouldAllowCDPEnrollment;
 - (void)shouldPerformRepairWithCompletion:(CDUnknownBlockType)arg1;
-- (BOOL)synchronizeCircleViewsForSecureBackupController:(id)arg1;
+- (BOOL)synchronizeCircleViewsForSecureBackupContext:(id)arg1;
 
 @end
 

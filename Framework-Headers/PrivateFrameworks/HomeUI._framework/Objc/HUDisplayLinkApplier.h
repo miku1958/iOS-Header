@@ -11,20 +11,29 @@
 @interface HUDisplayLinkApplier : HUApplier
 {
     BOOL _applyOnlyOnProgressChanges;
+    BOOL _completesWhenAtRest;
+    BOOL _atRest;
     CDUnknownBlockType _progressInputBlock;
     CADisplayLink *_displayLink;
+    unsigned long long _restingFrameCount;
 }
 
 @property (nonatomic) BOOL applyOnlyOnProgressChanges; // @synthesize applyOnlyOnProgressChanges=_applyOnlyOnProgressChanges;
+@property (nonatomic, getter=isAtRest) BOOL atRest; // @synthesize atRest=_atRest;
+@property (nonatomic) BOOL completesWhenAtRest; // @synthesize completesWhenAtRest=_completesWhenAtRest;
 @property (strong, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
 @property (copy, nonatomic) CDUnknownBlockType progressInputBlock; // @synthesize progressInputBlock=_progressInputBlock;
+@property (nonatomic) unsigned long long restingFrameCount; // @synthesize restingFrameCount=_restingFrameCount;
 
 - (void).cxx_destruct;
 - (void)_displayLinkTick;
 - (void)_invalidateDisplayLinkIfNecessary;
+- (void)_updateProgressForInitialUpdate:(BOOL)arg1;
 - (BOOL)complete:(BOOL)arg1;
+- (double)effectiveInputProgressForBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithProgressInputBlock:(CDUnknownBlockType)arg1;
+- (void)restingStateDidChange;
 - (BOOL)start;
 
 @end

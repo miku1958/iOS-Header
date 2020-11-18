@@ -6,42 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class CNContact, CNContactStore, NSNotificationCenter;
-@protocol CNCancelable, CNMeContactComparisonStrategy, CNScheduler;
+@class CNContactStore, NSArray, NSNotificationCenter;
+@protocol CNCancelable, CNMeContactComparisonStrategy, CNReaderWriterScheduler;
 
 @interface CNUIMeContactMonitor : NSObject
 {
-    BOOL _hasRegistered;
-    BOOL _meContactIsUpToDate;
     id<CNMeContactComparisonStrategy> _strategy;
-    CNContactStore *_store;
+    CNContactStore *_contactStore;
     NSNotificationCenter *_notificationCenter;
-    CNContact *_meContact;
-    id<CNScheduler> _lock;
+    id<CNReaderWriterScheduler> _lock;
     id<CNCancelable> _meNotificationToken;
 }
 
-@property (nonatomic) BOOL hasRegistered; // @synthesize hasRegistered=_hasRegistered;
-@property (strong, nonatomic) id<CNScheduler> lock; // @synthesize lock=_lock;
-@property (strong, nonatomic) CNContact *meContact; // @synthesize meContact=_meContact;
-@property (nonatomic) BOOL meContactIsUpToDate; // @synthesize meContactIsUpToDate=_meContactIsUpToDate;
+@property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
+@property (strong, nonatomic) id<CNReaderWriterScheduler> lock; // @synthesize lock=_lock;
+@property (readonly, nonatomic) NSArray *meContactIdentifiers;
 @property (strong, nonatomic) id<CNCancelable> meNotificationToken; // @synthesize meNotificationToken=_meNotificationToken;
 @property (strong, nonatomic) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
-@property (strong, nonatomic) CNContactStore *store; // @synthesize store=_store;
 @property (strong, nonatomic) id<CNMeContactComparisonStrategy> strategy; // @synthesize strategy=_strategy;
 
++ (id)makeMeContactMonitor;
++ (id)makeUnifiedMeContactMonitor;
 + (id)meContactMonitor;
 + (id)unifiedMeContactMonitor;
 - (void).cxx_destruct;
-- (void)_updateMeContact;
 - (void)dealloc;
 - (id)init;
 - (id)initWithComparisonStrategy:(id)arg1;
 - (id)initWithComparisonStrategy:(id)arg1 contactStore:(id)arg2;
-- (id)initWithComparisonStrategy:(id)arg1 contactStore:(id)arg2 notificationCenter:(id)arg3;
+- (id)initWithComparisonStrategy:(id)arg1 contactStore:(id)arg2 notificationCenter:(id)arg3 schedulerProvider:(id)arg4;
 - (id)initWithContactStore:(id)arg1;
 - (BOOL)isMeContact:(id)arg1;
 - (void)meChanged:(id)arg1;
+- (void)startMonitoring;
 
 @end
 

@@ -41,6 +41,7 @@
 - (void)setController:(id)arg1;
 - (void)setPlayerIndex:(long long)arg1;
 - (void)setValueChangedHandler:(CDUnknownBlockType)arg1;
+- (BOOL)supportsDpadTaps;
 - (CDUnknownBlockType)valueChangedHandler;
 
 @end

@@ -29,6 +29,7 @@
 - (void)_sendFeedbackMessage:(id)arg1 object:(id)arg2 info:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)_sendMessage:(id)arg1 object:(id)arg2 info:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)activate;
+- (void)activate:(id)arg1;
 - (void)cancelQuery:(id)arg1;
 - (void)deactivate;
 - (void)dealloc;
@@ -37,11 +38,10 @@
 - (void)preheat;
 - (void)requestParsecParametersWithReply:(CDUnknownBlockType)arg1;
 - (void)retrieveFirstTimeExperienceTextWithReply:(CDUnknownBlockType)arg1;
+- (void)sendApps:(id)arg1;
 - (void)sendMessageForToken:(id)arg1 withResponse:(id)arg2 isStable:(BOOL)arg3;
 - (void)sendSFFeedbackMessage:(SEL)arg1 withFeedback:(id)arg2;
-- (id)startQuery:(id)arg1;
-- (id)startQuery:(id)arg1 withResponse:(id)arg2 isStable:(BOOL)arg3;
-- (id)startQuery:(id)arg1 withResponse:(id)arg2 isStable:(BOOL)arg3 queue:(id)arg4;
+- (id)startQuery:(id)arg1 withResponse:(id)arg2 isStable:(BOOL)arg3 queue:(id)arg4 delegate:(id)arg5;
 
 @end
 

@@ -10,6 +10,14 @@
 + (id)URLWithAddressBookUID:(id)arg1;
 + (id)davCompatibleFilenameForFilename:(id)arg1;
 - (id)URLWithUsername:(id)arg1 withPassword:(id)arg2;
+- (BOOL)cal_caseInsensitiveHasScheme:(id)arg1;
+- (id)cal_emailAddressString;
+- (BOOL)cal_hasSchemeMailto;
+- (BOOL)cal_hasSchemeTel;
+- (BOOL)cal_isEquivalentToEmailAddress:(id)arg1;
+- (BOOL)cal_isEquivalentToPhoneNumber:(id)arg1;
+- (id)cal_phoneNumberString;
+- (id)cal_resourceSpecifierNoLeadingSlashes;
 - (BOOL)compareToLocalString:(id)arg1;
 - (BOOL)compareToLocalURL:(id)arg1;
 - (id)hostWithoutWWW;

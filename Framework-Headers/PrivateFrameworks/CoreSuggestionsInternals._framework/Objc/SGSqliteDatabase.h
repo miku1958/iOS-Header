@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSCache, NSOperationQueue, NSString;
+@class NSCache, NSMutableDictionary, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue;
 
 @interface SGSqliteDatabase : NSObject
@@ -15,8 +15,10 @@
     int _transactionDepth;
     BOOL _transactionRolledback;
     struct atomic_flag _isClosed;
+    unsigned long long _lastBusyWaitEnded;
     NSString *_filename;
     NSCache *_queryCache;
+    NSMutableDictionary *_sqlarrays;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSOperationQueue *_operationQueue;
@@ -164,9 +166,12 @@
 - (void)insertOrReplaceIntoTable:(id)arg1 dictionary:(id)arg2 onError:(CDUnknownBlockType)arg3;
 - (id)languageForFTSTable:(id)arg1;
 - (long long)lastInsertRowId;
+- (long long)maxIdForTable:(id)arg1;
 - (unsigned long long)numberOfRowsInTable:(id)arg1;
+- (void)performIntegrityCheck;
 - (void)placeCorruptionMarker;
 - (BOOL)prepAndRunNonDataQueries:(id)arg1 onError:(CDUnknownBlockType)arg2;
+- (BOOL)prepAndRunQuery:(id)arg1 arrays:(id)arg2 onPrep:(CDUnknownBlockType)arg3 onRow:(CDUnknownBlockType)arg4 onError:(CDUnknownBlockType)arg5;
 - (BOOL)prepAndRunQuery:(id)arg1 onPrep:(CDUnknownBlockType)arg2 onRow:(CDUnknownBlockType)arg3 onError:(CDUnknownBlockType)arg4;
 - (void)prepQuery:(id)arg1 onPrep:(CDUnknownBlockType)arg2 onError:(CDUnknownBlockType)arg3;
 - (void)readTransaction:(CDUnknownBlockType)arg1;

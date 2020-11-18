@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOResourceManifestConfiguration, NSLocale;
 @protocol GEOTileServerProxyDelegate, OS_dispatch_queue;
@@ -12,15 +12,16 @@
 @interface GEOTileServerProxy : NSObject
 {
     id<GEOTileServerProxyDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_delegateQ;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
     GEOResourceManifestConfiguration *_manifestConfiguration;
     NSLocale *_locale;
     int _resourceNotificationToken;
 }
 
-@property (nonatomic) id<GEOTileServerProxyDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) NSObject<OS_dispatch_queue> *delegateQ; // @synthesize delegateQ=_delegateQ;
+@property (readonly, weak, nonatomic) id<GEOTileServerProxyDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 
+- (void).cxx_destruct;
 - (void)beginPreloadSessionOfSize:(unsigned long long)arg1 exclusive:(BOOL)arg2;
 - (void)calculateFreeableSize;
 - (void)cancel:(const struct _GEOTileKey *)arg1;
@@ -28,8 +29,8 @@
 - (void)dealloc;
 - (void)endPreloadSession;
 - (void)flushPendingWrites;
-- (id)initWithCacheLocation:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3;
-- (void)loadTiles:(id)arg1 priorities:(unsigned int *)arg2 options:(unsigned long long)arg3 client:(id)arg4;
+- (id)initWithCacheLocation:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3 delegateQueue:(id)arg4 delegate:(id)arg5;
+- (void)loadTiles:(id)arg1 priorities:(const unsigned int *)arg2 hasAdditionalInfos:(const BOOL *)arg3 additionalInfos:(const CDStruct_58878026 *)arg4 options:(unsigned long long)arg5 client:(id)arg6;
 - (void)open;
 - (void)reportCorruptTile:(const struct _GEOTileKey *)arg1;
 - (void)reprioritizeKey:(const struct _GEOTileKey *)arg1 newPriority:(unsigned int)arg2;

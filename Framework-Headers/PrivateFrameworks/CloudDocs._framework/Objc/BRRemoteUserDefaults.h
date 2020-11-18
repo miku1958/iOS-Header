@@ -15,6 +15,7 @@
 
 @property (readonly, nonatomic) NSSet *excludedExtensionsWorthPreserving;
 @property (readonly, nonatomic) NSSet *excludedFilenamesWorthWarningAtLogout;
+@property (readonly, nonatomic) long long minFileSizeForThumbnailTransfer;
 
 + (id)defaultExcludedExtensionsWorthPreserving;
 + (id)defaultExcludedFilenamesWorthPreserving;

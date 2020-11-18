@@ -9,15 +9,15 @@
 #import <Photos/PHInsertChangeRequest-Protocol.h>
 #import <Photos/PHUpdateChangeRequest-Protocol.h>
 
-@class NSData, NSManagedObjectID, NSString, PHChangeRequestHelper, PHRelationshipChangeRequestHelper;
+@class NSData, NSManagedObjectID, NSString, PHChangeRequestHelper, PHObjectPlaceholder, PHRelationshipChangeRequestHelper;
 
 @interface PHFaceCropChangeRequest : NSObject <PHInsertChangeRequest, PHUpdateChangeRequest>
 {
     BOOL _clientEntitled;
     NSString *_clientName;
     int _clientProcessID;
-    NSString *_originatingFaceUUID;
     PHChangeRequestHelper *_helper;
+    NSString *_originatingFaceUUID;
     PHRelationshipChangeRequestHelper *_faceHelper;
     PHRelationshipChangeRequestHelper *_personHelper;
 }
@@ -36,6 +36,7 @@
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (copy, nonatomic) NSString *originatingFaceUUID; // @synthesize originatingFaceUUID=_originatingFaceUUID;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *personHelper; // @synthesize personHelper=_personHelper;
+@property (readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedFaceCrop;
 @property (strong, nonatomic) NSData *resourceData;
 @property (nonatomic) short state;
 @property (readonly) Class superclass;
@@ -43,8 +44,10 @@
 
 + (id)_creationRequestForFaceCropWithOriginatingFace:(id)arg1 resourceData:(id)arg2 person:(id)arg3;
 + (id)_creationRequestForFaceCropWithOriginatingFace:(id)arg1 resourceData:(id)arg2 personLocalIdentifier:(id)arg3;
++ (BOOL)canGenerateUUIDWithoutEntitlements;
 + (id)changeRequestForFaceCrop:(id)arg1;
 + (id)creationRequestsForFaceCropsWithOriginatingFace:(id)arg1 resourceData:(id)arg2;
++ (void)deleteFaceCrops:(id)arg1;
 - (void).cxx_destruct;
 - (id)_mutableFaceObjectIDsAndUUIDs;
 - (id)_mutablePersonObjectIDsAndUUIDs;
@@ -52,16 +55,14 @@
 - (void)_preparePersonHelperIfNeeded;
 - (BOOL)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
 - (BOOL)applyMutationsToManagedObject:(id)arg1 error:(id *)arg2;
-- (BOOL)canGenerateUUIDLocally;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (void)didMutate;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initWithXPCDict:(id)arg1 clientEntitlements:(id)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
-- (id)mutations;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
-- (id)placeholderForCreatedObject;
+- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (void)setFace:(id)arg1;
 - (BOOL)validateInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (BOOL)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;

@@ -14,13 +14,13 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_didAddFirstValue;
 - (void)addValue:(double)arg1 startTime:(double)arg2 endTime:(double)arg3 sourceID:(long long)arg4;
 - (BOOL)advanceBucket;
 - (long long)dataCount;
 - (id)description;
 - (void)getCurrentBucketStats:(CDStruct_23c51cd0 *)arg1;
 - (BOOL)hasData;
-- (id)initWithBucketBoundaries:(id)arg1;
 - (id)sourceIDsForCurrentBucket;
 - (id)statsBySource;
 

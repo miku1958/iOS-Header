@@ -11,6 +11,7 @@
 @protocol PUFeedCollectionViewLayoutDelegate <UICollectionViewDelegate>
 - (id)collectionView:(UICollectionView *)arg1 layout:(PUFeedCollectionViewLayout *)arg2 batchIDForTileAtIndexPath:(NSIndexPath *)arg3;
 - (struct CGSize)collectionView:(UICollectionView *)arg1 layout:(PUFeedCollectionViewLayout *)arg2 captionSizeForTileAtIndexPath:(NSIndexPath *)arg3 proposedSize:(struct CGSize)arg4;
+- (long long)collectionView:(UICollectionView *)arg1 layout:(PUFeedCollectionViewLayout *)arg2 configurationForSectionHeaderType:(long long)arg3;
 - (struct UIEdgeInsets)collectionView:(UICollectionView *)arg1 layout:(PUFeedCollectionViewLayout *)arg2 contentInsetsForSection:(long long)arg3;
 - (id)collectionView:(UICollectionView *)arg1 layout:(PUFeedCollectionViewLayout *)arg2 groupIDForSection:(long long)arg3;
 - (struct CGSize)collectionView:(UICollectionView *)arg1 layout:(PUFeedCollectionViewLayout *)arg2 headerSizeForGroupID:(id)arg3 proposedSize:(struct CGSize)arg4;

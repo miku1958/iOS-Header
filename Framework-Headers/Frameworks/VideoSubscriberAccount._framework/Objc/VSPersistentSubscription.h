@@ -21,9 +21,11 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *providedSubscriptionInfo; // @dynamic providedSubscriptionInfo;
 @property (copy, nonatomic) NSString *sourceIdentifier; // @dynamic sourceIdentifier;
 @property (copy, nonatomic) NSNumber *sourceKind; // @dynamic sourceKind;
+@property (copy, nonatomic) NSString *subscriberIdentifierHash; // @dynamic subscriberIdentifierHash;
 @property (copy, nonatomic) NSArray *tierIdentifiers; // @dynamic tierIdentifiers;
 
 + (id)keyPathsForValuesAffectingDerivedSubscriptionInfo;
+- (void)_deriveValuesFromProvidedInfo:(id)arg1;
 - (void)_setNullResettableValue:(id)arg1 forKey:(id)arg2;
 - (void)_updateDerivedSubscriptionInfo;
 - (BOOL)_validateNullableValue:(id *)arg1 forKey:(id)arg2 error:(id *)arg3;
@@ -34,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)validateCreationDate:(id *)arg1 error:(id *)arg2;
 - (BOOL)validateExpirationDate:(id *)arg1 error:(id *)arg2;
 - (BOOL)validateModificationDate:(id *)arg1 error:(id *)arg2;
+- (BOOL)validateSubscriberIdentifierHash:(id *)arg1 error:(id *)arg2;
 - (BOOL)validateTierIdentifiers:(id *)arg1 error:(id *)arg2;
 
 @end

@@ -28,6 +28,7 @@
 - (BOOL)brc_containsCloudKitErrorCode:(long long)arg1;
 - (BOOL)brc_containsCloudKitInternalErrorCode:(long long)arg1;
 - (id)brc_description;
+- (BOOL)brc_isBatchRequestFailed;
 - (BOOL)brc_isBlacklistError;
 - (BOOL)brc_isCloudKitAssetFileModified;
 - (BOOL)brc_isCloudKitCancellationError;
@@ -47,6 +48,7 @@
 - (BOOL)brc_isOutOfSpaceError;
 - (BOOL)brc_isResetError;
 - (BOOL)brc_isRetriable;
+- (id)brc_staleUpdateRecordIDs;
 - (id)brc_strippedError;
 - (id)brc_wrappedError;
 @end

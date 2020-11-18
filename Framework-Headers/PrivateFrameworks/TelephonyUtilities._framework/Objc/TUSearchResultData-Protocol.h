@@ -12,6 +12,7 @@
 
 @property (readonly) CNContact *backingContact;
 @property (readonly) NSString *backingContactId;
+@property (readonly) NSString *backingContactIdentifier;
 @property (readonly) NSString *callerId;
 @property (readonly) NSString *destinationId;
 @property (readonly) NSString *displayName;

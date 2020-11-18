@@ -15,9 +15,9 @@
 {
     NSArray *_elementStore;
     BOOL _rootGroup;
-    int _groupTraits;
-    int _userDefinedScanningBehaviorTraits;
     id<AXElementGroupGenerator> _generator;
+    unsigned long long _groupTraits;
+    unsigned long long _userDefinedScanningBehaviorTraits;
     NSHashTable *_groupObservers;
     AXElementGroup *_parentGroup;
     AXElement *_elementCommunity;
@@ -34,7 +34,7 @@
 @property (readonly, nonatomic) struct CGRect frame;
 @property (nonatomic) id<AXElementGroupGenerator> generator; // @synthesize generator=_generator;
 @property (strong, nonatomic) NSHashTable *groupObservers; // @synthesize groupObservers=_groupObservers;
-@property (nonatomic) int groupTraits; // @synthesize groupTraits=_groupTraits;
+@property (nonatomic) unsigned long long groupTraits; // @synthesize groupTraits=_groupTraits;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property (readonly, nonatomic) unsigned long long numberOfElements;
@@ -42,11 +42,12 @@
 @property (nonatomic, getter=isRootGroup) BOOL rootGroup; // @synthesize rootGroup=_rootGroup;
 @property (readonly, nonatomic) BOOL shouldBeUngrouped;
 @property (readonly) Class superclass;
-@property (nonatomic) int userDefinedScanningBehaviorTraits; // @synthesize userDefinedScanningBehaviorTraits=_userDefinedScanningBehaviorTraits;
+@property (nonatomic) unsigned long long userDefinedScanningBehaviorTraits; // @synthesize userDefinedScanningBehaviorTraits=_userDefinedScanningBehaviorTraits;
 
 + (id)groupWithElements:(id)arg1;
 + (id)groupWithElements:(id)arg1 label:(id)arg2;
 + (id)groupWithGenerator:(id)arg1;
+- (void).cxx_destruct;
 - (void)_commonInitWithElements:(id)arg1 label:(id)arg2 generator:(id)arg3;
 - (id)_debugBriefDescription;
 - (id)_debugDescriptionForScanningBehaviorTraits;

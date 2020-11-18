@@ -6,12 +6,11 @@
 
 #import <FrontBoardUIServices/NSObject-Protocol.h>
 
-@class FBSDisplay, FBUISceneIdentity, NSString;
+@class NSString;
 @protocol FBUISceneManager, FBUISceneSurrogate;
 
 @protocol FBUISceneWorkspace <NSObject>
-- (FBSDisplay *)display;
 - (NSString *)identifier;
-- (id<FBUISceneSurrogate>)sceneManager:(id<FBUISceneManager>)arg1 surrogateForSceneWithIdentity:(FBUISceneIdentity *)arg2;
+- (id<FBUISceneSurrogate>)sceneManager:(id<FBUISceneManager>)arg1 surrogateForSceneWithIdentifier:(NSString *)arg2;
 @end
 

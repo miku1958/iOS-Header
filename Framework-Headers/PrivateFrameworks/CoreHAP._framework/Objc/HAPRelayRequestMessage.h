@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HMFBlockOperation, NSData, NSMutableSet, NSSet;
 
-@interface HAPRelayRequestMessage : NSObject
+@interface HAPRelayRequestMessage : HMFObject
 {
     NSMutableSet *_requestIdentifiers;
     unsigned short _transactionIdentifier;

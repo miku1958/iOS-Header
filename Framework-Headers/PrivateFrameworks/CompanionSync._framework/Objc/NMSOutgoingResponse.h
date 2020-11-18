@@ -9,7 +9,7 @@
 #import <CompanionSync/NMSDeviceTargetable-Protocol.h>
 #import <CompanionSync/NMSObfuscatableDescriptionProviding-Protocol.h>
 
-@class NMSIncomingRequest, NSData, NSDictionary, NSSet, NSString;
+@class IDSMessageContext, NMSIncomingRequest, NSData, NSDictionary, NSSet, NSString;
 
 @interface NMSOutgoingResponse : NSObject <NMSDeviceTargetable, NMSObfuscatableDescriptionProviding>
 {
@@ -23,6 +23,7 @@
     NSDictionary *_extraIDSOptions;
     NSString *_idsIdentifier;
     id _pbResponse;
+    IDSMessageContext *_idsContext;
 }
 
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
@@ -30,6 +31,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSDictionary *extraIDSOptions; // @synthesize extraIDSOptions=_extraIDSOptions;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) IDSMessageContext *idsContext; // @synthesize idsContext=_idsContext;
 @property (copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
 @property (strong, nonatomic) id pbResponse; // @synthesize pbResponse=_pbResponse;
 @property (strong, nonatomic) NSDictionary *persistentUserInfo; // @synthesize persistentUserInfo=_persistentUserInfo;

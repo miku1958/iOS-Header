@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSSet;
 
@@ -13,10 +13,12 @@ __attribute__((visibility("hidden")))
 {
     NSSet *_tiles;
     Box_3d7e3c2c _visibleRect;
+    Box_3d7e3c2c _snappingRect;
     vector_b9326b03 _rectsForSnapping;
     struct vector<VKTileKey, std::__1::allocator<VKTileKey>> _snappedTileKeys;
 }
 
+@property (readonly, nonatomic) Box_3d7e3c2c snappingRect; // @synthesize snappingRect=_snappingRect;
 @property (readonly, nonatomic) NSSet *tiles; // @synthesize tiles=_tiles;
 @property (readonly, nonatomic) Box_3d7e3c2c visibleRect; // @synthesize visibleRect=_visibleRect;
 

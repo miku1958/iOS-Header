@@ -33,13 +33,14 @@
 
 @property (readonly, nonatomic) BOOL isDone; // @synthesize isDone=_done;
 @property (nonatomic) unsigned int maxChunkSize; // @synthesize maxChunkSize=_maxChunkSize;
-@property (readonly, strong, nonatomic) NSString *messageUUID; // @synthesize messageUUID=_messageUUID;
+@property (readonly, nonatomic) NSString *messageUUID; // @synthesize messageUUID=_messageUUID;
 @property (nonatomic) unsigned long long nextByte; // @synthesize nextByte=_nextByte;
 @property (nonatomic) BOOL resumeResourceTransfers; // @synthesize resumeResourceTransfers=_resumeResourceTransfers;
 @property (readonly, nonatomic) BOOL sentFirstMessage; // @synthesize sentFirstMessage=_sentFirstMessage;
 @property (nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property (nonatomic) unsigned short streamID; // @synthesize streamID=_streamID;
 
+- (void).cxx_destruct;
 - (void)closeFileAndMarkDone;
 - (unsigned char)command;
 - (void)dealloc;

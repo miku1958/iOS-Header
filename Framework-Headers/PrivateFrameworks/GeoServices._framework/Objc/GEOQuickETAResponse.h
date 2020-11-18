@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOLocation, GEOQuickETATransitDeparturesInfo, NSMutableArray, NSString;
 
@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) GEOQuickETATransitDeparturesInfo *transitDeparturesInfo; // @synthesize transitDeparturesInfo=_transitDeparturesInfo;
 @property (readonly, nonatomic) double walkingDurationToDepartureStop; // @synthesize walkingDurationToDepartureStop=_walkingDurationToDepartureStop;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithDirectionsResponse:(id)arg1 fromRequest:(id)arg2;
 - (id)initWithETAResult:(id)arg1 fromRequest:(id)arg2;
 

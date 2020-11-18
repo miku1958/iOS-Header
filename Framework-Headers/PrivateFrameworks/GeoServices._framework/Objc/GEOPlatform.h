@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface GEOPlatform : NSObject
 {
@@ -19,6 +19,7 @@
 - (double)deviceScreenScale;
 - (long long)deviceScreenWidthInPixels;
 - (id)hardwareIdentifier;
+- (id)hardwareModel;
 - (BOOL)isInternalInstall;
 - (BOOL)mapsFeatureFreedomEnabled;
 - (id)osVersion;

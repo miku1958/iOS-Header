@@ -19,6 +19,7 @@
 - (BOOL)sendEmailInWBXML;
 - (BOOL)sendUserAgentInDeviceInfo;
 - (unsigned char)shortProtocolVersion;
+- (BOOL)supportsAttendeesInExceptions;
 - (BOOL)useSmartMailTasks;
 - (BOOL)usesTopLevelStatusCodes;
 

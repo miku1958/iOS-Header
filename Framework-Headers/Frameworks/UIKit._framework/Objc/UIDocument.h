@@ -9,7 +9,7 @@
 #import <UIKit/NSFilePresenter-Protocol.h>
 #import <UIKit/NSProgressReporting-Protocol.h>
 
-@class NSDate, NSDocumentDifferenceSize, NSLock, NSMutableArray, NSOperationQueue, NSProgress, NSString, NSTimer, NSURL, NSUndoManager, NSUserActivity;
+@class NSDate, NSDocumentDifferenceSize, NSLock, NSMutableArray, NSOperationQueue, NSProgress, NSSet, NSString, NSTimer, NSURL, NSUndoManager, NSUserActivity;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface UIDocument : NSObject <NSFilePresenter, NSProgressReporting>
@@ -66,6 +66,7 @@
 @property (readonly, nonatomic) BOOL hasUnsavedChanges;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSString *localizedName;
+@property (readonly) NSSet *observedPresentedItemUbiquityAttributes;
 @property (readonly, strong) NSOperationQueue *presentedItemOperationQueue;
 @property (readonly, copy) NSURL *presentedItemURL;
 @property (readonly, copy) NSURL *primaryPresentedItemURL;
@@ -80,7 +81,6 @@
 + (void)_finishWritingToURL:(id)arg1 withTemporaryDirectoryURL:(id)arg2 newContentsURL:(id)arg3 afterSuccess:(BOOL)arg4;
 + (id)_typeForContentsOfURL:(id)arg1 error:(id *)arg2;
 + (BOOL)_url:(id)arg1 matchesURL:(id)arg2;
-+ (void)initialize;
 - (void).cxx_destruct;
 - (id)_activityTypeIdentifierForCloudDocument:(BOOL *)arg1;
 - (void)_applicationDidBecomeActive:(id)arg1;
@@ -132,6 +132,7 @@
 - (void)_unlockFileAccessQueue;
 - (void)_unregisterAsFilePresenterIfNecessary;
 - (void)_updateConflictState;
+- (void)_updateLastUsedDate;
 - (void)_updateLocalizedName;
 - (void)_updatePermissionsState:(BOOL)arg1;
 - (id)_userActivityWithActivityType:(id)arg1;

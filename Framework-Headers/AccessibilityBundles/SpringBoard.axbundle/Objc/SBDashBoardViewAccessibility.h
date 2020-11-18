@@ -14,13 +14,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_accessibilityPageControlAdjusted;
 - (void)_axAdjustObscuredContent;
 - (id)_axAllowedObscuredWindows;
-- (BOOL)_axDidAddAXPageControlTarget;
-- (void)_axSetDidAddAXPageControlTarget:(BOOL)arg1;
 - (BOOL)accessibilityScroll:(long long)arg1;
-- (void)dealloc;
 - (void)layoutSubviews;
 - (BOOL)resetScrollViewToMainPageAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)scrollViewDidEndScrolling:(id)arg1;

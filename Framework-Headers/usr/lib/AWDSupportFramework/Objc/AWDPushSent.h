@@ -21,6 +21,7 @@
     int _linkQuality;
     unsigned int _payloadSize;
     unsigned int _sendDuration;
+    NSString *_topic;
     struct {
         unsigned int timestamp:1;
         unsigned int connectionType:1;
@@ -47,10 +48,12 @@
 @property (nonatomic) BOOL hasPayloadSize;
 @property (nonatomic) BOOL hasSendDuration;
 @property (nonatomic) BOOL hasTimestamp;
+@property (readonly, nonatomic) BOOL hasTopic;
 @property (nonatomic) int linkQuality; // @synthesize linkQuality=_linkQuality;
 @property (nonatomic) unsigned int payloadSize; // @synthesize payloadSize=_payloadSize;
 @property (nonatomic) unsigned int sendDuration; // @synthesize sendDuration=_sendDuration;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (strong, nonatomic) NSString *topic; // @synthesize topic=_topic;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

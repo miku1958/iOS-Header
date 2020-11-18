@@ -7,15 +7,18 @@
 #import <UIKit/UIViewController.h>
 
 #import <PassKitUI/PKAuthenticatorDelegate-Protocol.h>
+#import <PassKitUI/PKPaymentAuthorizationFooterViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentAuthorizationStateMachineDelegate-Protocol.h>
 
-@class NSString, NSTimer, PKAuthenticator, PKContinuityPaymentCardSummaryView, PKContinuityPaymentFaviconView, PKPaymentAuthorizationFooterView, PKPaymentAuthorizationStateMachine, PKRemotePaymentRequest, UILabel, UIStackView, UIView, _UIBackdropView;
+@class NSArray, NSString, NSTimer, PKAuthenticator, PKContinuityPaymentCardSummaryView, PKContinuityPaymentFaviconView, PKPaymentAuthorizationFooterView, PKPaymentAuthorizationStateMachine, PKPhysicalButtonView, PKRemotePaymentRequest, UILabel, UIStackView, UIView, _UIBackdropView;
 @protocol PKPaymentAuthorizationHostProtocol;
 
-@interface PKContinuityPaymentViewController : UIViewController <PKAuthenticatorDelegate, PKPaymentAuthorizationStateMachineDelegate>
+@interface PKContinuityPaymentViewController : UIViewController <PKAuthenticatorDelegate, PKPaymentAuthorizationFooterViewDelegate, PKPaymentAuthorizationStateMachineDelegate>
 {
-    UIView *_dimmingBackgroundView;
     _UIBackdropView *_backdropView;
+    UIView *_dimmingBackgroundView;
+    UIView *_compactRegion;
+    PKPhysicalButtonView *_physicalButtonView;
     UILabel *_requestingDeviceLabel;
     UILabel *_requestingSiteLabel;
     UILabel *_priceLabel;
@@ -24,7 +27,13 @@
     PKContinuityPaymentCardSummaryView *_cardView;
     PKPaymentAuthorizationFooterView *_authorizationView;
     PKContinuityPaymentFaviconView *_faviconImage;
+    UIViewController *_passcodeViewController;
     UIViewController *_passphraseViewController;
+    BOOL _viewAppeared;
+    BOOL _userIntentRequired;
+    NSArray *_defaultConstraints;
+    NSArray *_compactConstraints;
+    BOOL _authenticating;
     PKAuthenticator *_authenticator;
     PKPaymentAuthorizationStateMachine *_stateMachine;
     NSTimer *_timeoutTimer;
@@ -49,30 +58,43 @@
 - (void)_didSucceed;
 - (id)_evaluationRequest;
 - (void)_invalidPaymentDataWithParam:(id)arg1;
-- (void)_payWithPasscodePressed:(id)arg1;
 - (void)_processClientCallback:(id)arg1;
 - (void)_resetAndScheduleTimeout;
 - (void)_resumeAuthenticationWithPreviousError:(id)arg1;
+- (void)_setAuthenticating:(BOOL)arg1;
+- (void)_setPasscodeViewController:(id)arg1;
+- (void)_setPassphraseViewController:(id)arg1;
+- (void)_setUserIntentRequired:(BOOL)arg1;
 - (void)_startEvaluation;
 - (void)_suspendAuthentication;
 - (void)_timeoutFired;
+- (void)_updateUserIntentRequired;
+- (void)authenticator:(id)arg1 didRequestUserAction:(long long)arg2;
+- (void)authenticator:(id)arg1 didTransitionToPearlState:(long long)arg2;
 - (void)authenticatorDidEncounterFingerOff:(id)arg1;
 - (void)authenticatorDidEncounterFingerOn:(id)arg1;
 - (void)authenticatorDidEncounterMatchMiss:(id)arg1;
-- (void)authorizationDidAuthorizePaymentCompleteWithStatus:(long long)arg1;
-- (void)cancelPressed;
+- (void)authorizationDidAuthorizePaymentCompleteWithResult:(id)arg1;
+- (void)authorizationFooterViewDidChangeConstraints:(id)arg1;
+- (void)authorizationFooterViewPasscodeButtonPressed:(id)arg1;
+- (void)cancelPressed:(id)arg1;
 - (void)dealloc;
 - (void)dismissPasscodeViewController;
 - (void)dismissPassphraseViewController;
+- (id)init;
 - (id)initWithRemotePaymentRequest:(id)arg1;
 - (void)loadView;
 - (BOOL)paymentAuthorizationStateMachine:(id)arg1 didTransitionFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3 withParam:(id)arg4;
+- (BOOL)paymentPass:(id *)arg1 paymentApplication:(id *)arg2 fromAID:(id)arg3;
 - (void)presentPasscodeViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)presentPassphraseViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)setProgressState:(long long)arg1 string:(id)arg2 animated:(BOOL)arg3;
 - (void)updatePaymentWithClientUpdate:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

@@ -35,10 +35,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)configureWithCalendar:(id)arg1 preview:(BOOL)arg2;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (void)editButtonPressed;
+- (BOOL)minimalMode;
 - (void)predictionWasActedOn;
 - (void)reset;
 - (void)setCellPosition:(int)arg1;
 - (BOOL)shouldShowEditButtonInline;
+- (double)titleHeight;
 
 @end
 

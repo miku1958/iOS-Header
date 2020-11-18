@@ -14,13 +14,12 @@
 }
 
 + (id)sharedInstance;
-- (void)_generateLaunchImageWithCompatibilityInfo:(id)arg1 launchRequest:(id)arg2 generationHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_generateSnapshotInManifest:(id)arg1 store:(id)arg2 withCompatibilityInfo:(id)arg3 launchRequest:(id)arg4 remoteContextID:(unsigned int)arg5 snapshotProvider:(CDUnknownBlockType)arg6 completion:(CDUnknownBlockType)arg7;
+- (void).cxx_destruct;
+- (void)_generateImageForSnapshot:(id)arg1 inManifest:(id)arg2 withContext:(id)arg3 dataProvider:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)captureLaunchImageForManifest:(id)arg1 withCompatibilityInfo:(id)arg2 launchRequests:(id)arg3 firstImageIsReady:(CDUnknownBlockType)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
-- (void)configureLaunchImageSnapshot:(id)arg1 withCompatibilityInfo:(id)arg2 launchRequest:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)dealloc;
+- (CDUnknownBlockType)createLaunchImageGeneratorWithContext:(id)arg1;
 - (id)init;
-- (void)launchImageForManifest:(id)arg1 withCompatibilityInfo:(id)arg2 launchRequest:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)preheatServiceWithTimeout:(double)arg1;
 
 @end
 

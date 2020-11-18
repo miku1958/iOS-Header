@@ -13,8 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityLoadAccessibilityInformation;
-- (id)initWithFrame:(struct CGRect)arg1 barStyle:(long long)arg2;
+- (void)adjustMagnificationAtPoint:(struct CGPoint)arg1 minifyImmediately:(BOOL)arg2;
 
 @end
 

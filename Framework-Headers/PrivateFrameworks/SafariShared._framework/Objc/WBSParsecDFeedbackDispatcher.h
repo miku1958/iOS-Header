@@ -12,7 +12,6 @@
 @class NSArray, NSMapTable, NSString;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface WBSParsecDFeedbackDispatcher : NSObject <WBSParsecFeedbackDispatcher, WBSParsecGlobalFeedbackDispatcher>
 {
     NSMapTable *_queriesToDictionariesFromSearchTypesToStartSearchFeedbacks;
@@ -27,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_customFeedbackOfType:(unsigned long long)arg1 JSONDictionary:(id)arg2;
 - (void)_postFeedbackOnFeedbackQueue:(id)arg1;
 - (void)_setStartSearchFeedback:(id)arg1 forSearchOfType:(long long)arg2 withQuery:(id)arg3;
 - (id)_takeStartSearchFeedbackForSearchOfType:(long long)arg1 forQuery:(id)arg2;
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithSession:(id)arg1;
 - (void)postFeedback:(id)arg1;
 - (void)searchViewAppearedBecauseOfEvent:(unsigned long long)arg1;
+- (void)searchViewAppearedBecauseOfEvent:(unsigned long long)arg1 isSafariReaderAvailable:(BOOL)arg2;
 - (void)searchViewDisappearedBecauseOfEvent:(long long)arg1;
 - (void)sendAppLaunchFeedback;
 - (void)sendAppLostFocusFeedback;
@@ -50,7 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)sendMapsPlaceCardEngagementFeedbackOfType:(int)arg1;
 - (void)sendNewTabFeedback;
 - (void)sendNewWindowFeedback;
-- (void)sendSmartSearchFieldClickedFeedback;
+- (void)sendSmartSearchFieldClickedFeedbackWithReaderAvailable:(BOOL)arg1;
 - (void)sendWindowCloseByKeyboardFeedback;
 - (void)sendWindowCloseByMouseFeedback;
 - (void)sendWindowMiniaturizeByKeyboardFeedback;
@@ -59,6 +60,8 @@ __attribute__((visibility("hidden")))
 - (void)userDidCancelSession:(long long)arg1;
 - (void)userDidEngageWithCardShowingResult:(id)arg1 onCardOfType:(id)arg2 actionType:(id)arg3 actionTarget:(id)arg4 destination:(id)arg5;
 - (void)userDidEngageWithCompletionListItem:(id)arg1 onActionButton:(BOOL)arg2 method:(long long)arg3;
+- (void)userDidEngageWithCompletionListItem:(id)arg1 onActionButton:(BOOL)arg2 method:(long long)arg3 doesMatchSiriSuggestion:(BOOL)arg4;
+- (void)userTypedGoToSearch:(id)arg1 endpoint:(unsigned long long)arg2;
 - (void)userTypedURLDirectly:(id)arg1;
 
 @end

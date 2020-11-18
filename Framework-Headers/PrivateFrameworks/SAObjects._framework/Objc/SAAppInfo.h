@@ -17,6 +17,7 @@
 @property (strong, nonatomic) SASyncAppIdentifyingInfo *appIdentifyingInfo;
 @property (copy, nonatomic) NSString *appName;
 @property (copy, nonatomic) NSDictionary *appNameMap;
+@property (copy, nonatomic) NSArray *appNameSynonyms;
 @property (copy, nonatomic) NSDictionary *appNameSynonymsMap;
 @property (copy, nonatomic) NSString *appVersion;
 @property (nonatomic) BOOL betaApp;
@@ -33,6 +34,8 @@
 @property (copy, nonatomic) NSNumber *nowPlayingAppWithBrowsableContent;
 @property (copy, nonatomic) NSString *providerName;
 @property (strong, nonatomic) SASiriSupport *siriSupport;
+@property (copy, nonatomic) NSString *spokenName;
+@property (copy, nonatomic) NSDictionary *spokenNameMap;
 @property (copy, nonatomic) NSString *spotlightName;
 @property (copy, nonatomic) NSDictionary *spotlightNameMap;
 @property (strong, nonatomic) SAStarkSupport *starkSupport;

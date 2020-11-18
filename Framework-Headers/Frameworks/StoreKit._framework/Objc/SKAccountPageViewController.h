@@ -6,10 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSURL, SKInvocationQueueProxy, SKRemoteAccountPageViewController, _UIAsyncInvocation;
+#import <StoreKit/SKUIRedeemCameraViewControllerDelegate-Protocol.h>
+
+@class NSString, NSURL, SKInvocationQueueProxy, SKRemoteAccountPageViewController, _UIAsyncInvocation;
 @protocol SKAccountPageViewControllerDelegate, SKUIServiceAccountPageViewController;
 
-@interface SKAccountPageViewController : UIViewController
+@interface SKAccountPageViewController : UIViewController <SKUIRedeemCameraViewControllerDelegate>
 {
     NSURL *_accountURL;
     _UIAsyncInvocation *_cancelRequest;
@@ -17,19 +19,33 @@
     CDUnknownBlockType _prepareBlock;
     SKRemoteAccountPageViewController *_remoteViewController;
     SKInvocationQueueProxy<SKUIServiceAccountPageViewController> *_serviceProxy;
+    BOOL _isRemoteViewControllerReady;
+    BOOL _cameraDidShow;
+    CDUnknownBlockType redeemCompletionHandler;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<SKAccountPageViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void)_addRemoteView;
 - (void)_didPrepareWithResult:(BOOL)arg1 error:(id)arg2;
-- (void)_dismissViewController;
+- (void)_dismissViewControllerWithResult:(BOOL)arg1 error:(id)arg2;
+- (void)_overrideCreditCardPresentationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_overrideRedeemCameraWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_requestRemoteViewController;
+- (void)_sk_applicationDidEnterBackground:(id)arg1;
+- (void)_sk_applicationWillEnterForeground:(id)arg1;
 - (void)dealloc;
 - (id)initWithAccountURL:(id)arg1;
 - (void)loadView;
+- (void)overrideRedeemOperationWithCode:(id)arg1 cameraRecognized:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)prepareWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)redeemCameraViewController:(id)arg1 didFinishWithRedeem:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)willMoveToParentViewController:(id)arg1;
 
 @end
 

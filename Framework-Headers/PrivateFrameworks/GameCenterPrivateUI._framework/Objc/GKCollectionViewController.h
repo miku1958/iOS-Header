@@ -19,7 +19,6 @@
 {
     BOOL _skipLoadAfterViewDidLoad;
     BOOL _shouldSlideInContents;
-    BOOL _supportsMasterSelectionBehavior;
     BOOL _showSupplementaryViewsWhileLoading;
     BOOL _readyToDisplayData;
     BOOL _active;
@@ -66,7 +65,6 @@
 @property (nonatomic) BOOL showSupplementaryViewsWhileLoading; // @synthesize showSupplementaryViewsWhileLoading=_showSupplementaryViewsWhileLoading;
 @property (nonatomic) BOOL skipLoadAfterViewDidLoad;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL supportsMasterSelectionBehavior; // @synthesize supportsMasterSelectionBehavior=_supportsMasterSelectionBehavior;
 @property (strong, nonatomic) GKSwipeToEditStateMachine *swipeStateMachine; // @synthesize swipeStateMachine=_swipeStateMachine;
 
 + (id)_initializeSafeCategoryFromValidationManager;
@@ -129,7 +127,6 @@
 - (void)loadDataWithCompletionHandlerAndError:(CDUnknownBlockType)arg1;
 - (void)loadView;
 - (id)nearestSelectableIndexPath:(id)arg1;
-- (id)preservedIndexPathForSelectedItem;
 - (void)refreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2 updateNotifier:(id)arg3;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (void)searchBarCancelButtonClicked:(id)arg1;
@@ -141,7 +138,6 @@
 - (void)setIsReadyToDisplayData:(BOOL)arg1;
 - (void)setNeedsReload;
 - (void)showCollectionView;
-- (void)showDetailForSelectedItem;
 - (double)showMoreTextMarginAtIndexPath:(id)arg1;
 - (void)showPlaceholderWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 animated:(BOOL)arg4 block:(CDUnknownBlockType)arg5;
 - (void)shutActionPaneAnimated:(BOOL)arg1;
@@ -156,7 +152,6 @@
 - (void)stopLoadingIndicator;
 - (void)stopLoadingIndicatorWithoutAnimation;
 - (void)swipeToDeleteCell:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateDynamicColumnCountsForViewSize:(struct CGSize)arg1;
 - (void)updateLayoutGuideOffsets;
 - (void)updateMetrics;
@@ -165,6 +160,7 @@
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidDisappearAnimated:(BOOL)arg1 bubbleFlow:(BOOL)arg2;
 - (void)viewDidLoad;
+- (void)viewLayoutMarginsDidChange;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

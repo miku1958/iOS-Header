@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <Accounts/ACProtobufCoding-Protocol.h>
 #import <Accounts/NSSecureCoding-Protocol.h>
 
 @class ACAccountStore, NSDate, NSMutableSet, NSSet, NSString, NSURL;
 
-@interface ACCredentialItem : NSObject <NSSecureCoding>
+@interface ACCredentialItem : NSObject <NSSecureCoding, ACProtobufCoding>
 {
     NSString *_accountIdentifier;
     NSDate *_expirationDate;
@@ -23,20 +24,27 @@
 
 @property (readonly, nonatomic) NSString *accountIdentifier;
 @property (weak, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isDirty) BOOL dirty;
 @property (readonly, nonatomic) NSSet *dirtyProperties; // @synthesize dirtyProperties=_dirtyProperties;
 @property (strong, nonatomic) NSDate *expirationDate;
 @property (readonly, nonatomic, getter=isExpired) BOOL expired;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSURL *objectID;
 @property (nonatomic, getter=isPersistent) BOOL persistent;
 @property (readonly, nonatomic) NSString *serviceName;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_encodeProtobuf;
+- (id)_encodeProtobufData;
+- (id)_initWithProtobuf:(id)arg1;
+- (id)_initWithProtobufData:(id)arg1;
 - (void)_markPropertyDirty:(id)arg1;
 - (void)clearDirtyProperties;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)fullDescription;
 - (id)initWithAccountIdentifier:(id)arg1 serviceName:(id)arg2;

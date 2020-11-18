@@ -6,24 +6,19 @@
 
 #import <HealthDaemon/HDStatisticsBuilder.h>
 
-@class HDCumulativeCollectionCalculator, HDLastIntervalInfo, HKStatistics;
+@class HDCumulativeCollectionCalculator;
 
 @interface HDCumulativeStatisticsBuilder : HDStatisticsBuilder
 {
     HDCumulativeCollectionCalculator *_collectionCalculator;
-    HDLastIntervalInfo *_lastIntervalInfo;
-    HKStatistics *_lastStatistics;
 }
 
-@property (strong, nonatomic) HDLastIntervalInfo *lastIntervalInfo; // @synthesize lastIntervalInfo=_lastIntervalInfo;
-@property (strong, nonatomic) HKStatistics *lastStatistics; // @synthesize lastStatistics=_lastStatistics;
-
 - (void).cxx_destruct;
-- (id)_collectionCalculatorWithBucketBoundaries:(id)arg1;
-- (BOOL)_initialStatisticsForCollection:(id)arg1 timePeriod:(id)arg2 database:(id)arg3 shouldStopProcessing:(CDUnknownBlockType)arg4 shouldSuspend:(CDUnknownBlockType)arg5 batchHandler:(CDUnknownBlockType)arg6 error:(id *)arg7;
 - (BOOL)_setupStatistics:(id)arg1 withCalculator:(id)arg2;
-- (id)_statisticsWithTimePeriod:(id)arg1 samples:(id)arg2 lastPeriod:(BOOL)arg3 error:(id *)arg4;
+- (id)_statisticsFromCalculator:(id)arg1 samples:(id)arg2;
 - (id)_updateStatisticsCollection:(id)arg1 withSamples:(id)arg2 error:(id *)arg3;
+- (id)collectionCalculatorWithStatisticsCollection:(id)arg1;
+- (id)collectionCalculatorWithTimePeriod:(id)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -14,8 +14,10 @@
     NSString *_fieldSeparator;
     NSString *_nameValueSeparator;
     NSString *_suffix;
+    long long _extraIndent;
 }
 
+@property (readonly) long long extraIndent; // @synthesize extraIndent=_extraIndent;
 @property (readonly, copy) NSString *fieldSeparator; // @synthesize fieldSeparator=_fieldSeparator;
 @property (readonly, copy) NSString *initialFieldSeparator; // @synthesize initialFieldSeparator=_initialFieldSeparator;
 @property (readonly, copy) NSString *nameValueSeparator; // @synthesize nameValueSeparator=_nameValueSeparator;
@@ -23,7 +25,7 @@
 
 + (id)styleForEnum:(long long)arg1;
 - (void)dealloc;
-- (id)initWithIntialFieldSeparator:(id)arg1 fieldSeparator:(id)arg2 nameValueSeparator:(id)arg3 suffix:(id)arg4;
+- (id)initWithIntialFieldSeparator:(id)arg1 fieldSeparator:(id)arg2 nameValueSeparator:(id)arg3 suffix:(id)arg4 extraIndent:(long long)arg5;
 
 @end
 

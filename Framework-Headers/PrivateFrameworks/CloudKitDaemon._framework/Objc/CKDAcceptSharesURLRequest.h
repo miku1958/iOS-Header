@@ -21,12 +21,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *shareMetadatasToAccept; // @synthesize shareMetadatasToAccept=_shareMetadatasToAccept;
 
 - (void).cxx_destruct;
+- (id)generateRequestOperations;
 - (id)initWithShareMetadatasToAccept:(id)arg1;
 - (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 
 @end
 

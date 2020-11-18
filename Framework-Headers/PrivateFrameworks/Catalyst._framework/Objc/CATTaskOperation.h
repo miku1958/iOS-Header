@@ -25,6 +25,8 @@
 + (BOOL)validateRequest:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (BOOL)canSendNotificationWithName:(id)arg1 userInfo:(id)arg2;
+- (void)cat_addAssertion:(id)arg1;
+- (id)cat_assertions;
 - (id)init;
 - (id)initWithRequest:(id)arg1;
 - (void)main;

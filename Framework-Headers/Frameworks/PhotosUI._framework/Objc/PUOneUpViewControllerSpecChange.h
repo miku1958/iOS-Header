@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldPlaceButtonsInNavigationBarChanged;
     BOOL _shouldUseCompactTitleViewChanged;
     BOOL _maximumToolbarHeightChanged;
+    BOOL _maximumAccessoryToolbarHeightChanged;
     BOOL _shouldUseContentGuideInsetsChanged;
     BOOL _shouldUseUserTransformTilesChanged;
     BOOL _shouldDisplayBadgesChanged;
@@ -23,11 +24,10 @@ __attribute__((visibility("hidden")))
     BOOL _shouldAutoplayOnAppearChanged;
     BOOL _shouldDisplayEmptyPlaceholderChanged;
     BOOL _shouldDisplayBufferingIndicatorsChanged;
-    BOOL _shouldDisplayLoadingIndicatorsChanged;
+    BOOL _canDisplayLoadingIndicatorsChanged;
     BOOL _backgroundColorOverrideChanged;
     BOOL _progressIndicatorSizeChanged;
     BOOL _bufferingIndicatorSizeChanged;
-    BOOL _loadingIndicatorSizeChanged;
     BOOL _shouldUseCompactCommentsTitleChanged;
     BOOL _tileInitialContentModeChanged;
     BOOL _shouldPinContentToTopChanged;
@@ -35,8 +35,9 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic, setter=_setBackgroundColorOverrideChanged:) BOOL backgroundColorOverrideChanged; // @synthesize backgroundColorOverrideChanged=_backgroundColorOverrideChanged;
 @property (nonatomic, setter=_setBufferingIndicatorSizeChanged:) BOOL bufferingIndicatorSizeChanged; // @synthesize bufferingIndicatorSizeChanged=_bufferingIndicatorSizeChanged;
+@property (nonatomic, setter=_setCanDisplayLoadingIndicatorsChanged:) BOOL canDisplayLoadingIndicatorsChanged; // @synthesize canDisplayLoadingIndicatorsChanged=_canDisplayLoadingIndicatorsChanged;
 @property (nonatomic, setter=_setChromeVisibilityChanged:) BOOL chromeVisibilityChanged; // @synthesize chromeVisibilityChanged=_chromeVisibilityChanged;
-@property (nonatomic, setter=_setLoadingIndicatorSizeChanged:) BOOL loadingIndicatorSizeChanged; // @synthesize loadingIndicatorSizeChanged=_loadingIndicatorSizeChanged;
+@property (nonatomic, setter=_setMaximumAccessoryToolbarHeightChanged:) BOOL maximumAccessoryToolbarHeightChanged; // @synthesize maximumAccessoryToolbarHeightChanged=_maximumAccessoryToolbarHeightChanged;
 @property (nonatomic, setter=_setMaximumToolbarHeightChanged:) BOOL maximumToolbarHeightChanged; // @synthesize maximumToolbarHeightChanged=_maximumToolbarHeightChanged;
 @property (nonatomic, setter=_setPresentedForPreviewChanged:) BOOL presentedForPreviewChanged; // @synthesize presentedForPreviewChanged=_presentedForPreviewChanged;
 @property (nonatomic, setter=_setProgressIndicatorSizeChanged:) BOOL progressIndicatorSizeChanged; // @synthesize progressIndicatorSizeChanged=_progressIndicatorSizeChanged;
@@ -45,7 +46,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setShouldDisplayBadgesChanged:) BOOL shouldDisplayBadgesChanged; // @synthesize shouldDisplayBadgesChanged=_shouldDisplayBadgesChanged;
 @property (nonatomic, setter=_setShouldDisplayBufferingIndicatorsChanged:) BOOL shouldDisplayBufferingIndicatorsChanged; // @synthesize shouldDisplayBufferingIndicatorsChanged=_shouldDisplayBufferingIndicatorsChanged;
 @property (nonatomic, setter=_setShouldDisplayEmptyPlaceholderChanged:) BOOL shouldDisplayEmptyPlaceholderChanged; // @synthesize shouldDisplayEmptyPlaceholderChanged=_shouldDisplayEmptyPlaceholderChanged;
-@property (nonatomic, setter=_setShouldDisplayLoadingIndicatorsChanged:) BOOL shouldDisplayLoadingIndicatorsChanged; // @synthesize shouldDisplayLoadingIndicatorsChanged=_shouldDisplayLoadingIndicatorsChanged;
 @property (nonatomic, setter=_setShouldDisplayPlayButtonsChanged:) BOOL shouldDisplayPlayButtonsChanged; // @synthesize shouldDisplayPlayButtonsChanged=_shouldDisplayPlayButtonsChanged;
 @property (nonatomic, setter=_setShouldDisplayProgressIndicatorsChanged:) BOOL shouldDisplayProgressIndicatorsChanged; // @synthesize shouldDisplayProgressIndicatorsChanged=_shouldDisplayProgressIndicatorsChanged;
 @property (nonatomic, setter=_setShouldPinContentToTopChanged:) BOOL shouldPinContentToTopChanged; // @synthesize shouldPinContentToTopChanged=_shouldPinContentToTopChanged;

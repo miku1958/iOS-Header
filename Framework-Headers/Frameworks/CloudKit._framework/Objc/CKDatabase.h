@@ -18,7 +18,7 @@
 @property (weak, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property (readonly, nonatomic) long long databaseScope;
 @property (readonly, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
-@property (nonatomic) long long scope; // @synthesize scope=_scope;
+@property (readonly, nonatomic) long long scope; // @synthesize scope=_scope;
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
@@ -42,6 +42,7 @@
 - (void)fetchRecordWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchRecordZoneWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchSubscriptionWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getCorruptRecordsForAllZonesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getPCSDiagnosticsForZonesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)performQuery:(id)arg1 inZoneWithID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

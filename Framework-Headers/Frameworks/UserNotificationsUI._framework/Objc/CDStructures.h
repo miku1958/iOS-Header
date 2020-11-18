@@ -25,3 +25,7 @@ struct CGSize {
     double height;
 };
 
+struct atomic_flag {
+    _Atomic BOOL _Value;
+};
+

@@ -28,9 +28,11 @@ __attribute__((visibility("hidden")))
 + (double)detailsTopVerticalInset;
 - (void).cxx_destruct;
 - (double)detailsLeftInset;
+- (double)detailsRightInset;
 - (id)initWithEvent:(id)arg1 editable:(BOOL)arg2;
 - (id)initWithEvent:(id)arg1 editable:(BOOL)arg2 style:(long long)arg3;
 - (void)layoutForWidth:(double)arg1 position:(int)arg2;
+- (void)layoutMarginsDidChange;
 - (BOOL)needsLayoutForWidth:(double)arg1 position:(int)arg2;
 - (void)setEvent:(id)arg1;
 - (void)sizeToFit;

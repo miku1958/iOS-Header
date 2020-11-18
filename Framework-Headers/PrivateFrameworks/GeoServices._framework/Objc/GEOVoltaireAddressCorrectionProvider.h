@@ -4,33 +4,44 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <GeoServices/GEOPBSessionRequesterDelegate-Protocol.h>
+#import <GeoServices/GEOProtobufSessionTaskDelegate-Protocol.h>
 
-@class GEORequester, NSString;
+@class GEOProtobufSession, GEOProtobufSessionTask, NSString;
 
-@interface GEOVoltaireAddressCorrectionProvider : NSObject <GEOPBSessionRequesterDelegate>
+@interface GEOVoltaireAddressCorrectionProvider : NSObject <GEOProtobufSessionTaskDelegate>
 {
-    GEORequester *_requester;
-    CDUnknownBlockType _errorHandler;
+    GEOProtobufSession *_protobufSession;
+    GEOProtobufSessionTask *_initializationTask;
+    GEOProtobufSessionTask *_updateTask;
+    CDUnknownBlockType _initErrorHandler;
     CDUnknownBlockType _initFinishedHandler;
     CDUnknownBlockType _updateFinishedHandler;
+    CDUnknownBlockType _updateErrorHandler;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) GEORequester *requester; // @synthesize requester=_requester;
+@property (copy, nonatomic) CDUnknownBlockType initErrorHandler; // @synthesize initErrorHandler=_initErrorHandler;
+@property (copy, nonatomic) CDUnknownBlockType initFinishedHandler; // @synthesize initFinishedHandler=_initFinishedHandler;
+@property (strong, nonatomic) GEOProtobufSessionTask *initializationTask; // @synthesize initializationTask=_initializationTask;
+@property (readonly, nonatomic) GEOProtobufSession *protobufSession; // @synthesize protobufSession=_protobufSession;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) CDUnknownBlockType updateErrorHandler; // @synthesize updateErrorHandler=_updateErrorHandler;
+@property (copy, nonatomic) CDUnknownBlockType updateFinishedHandler; // @synthesize updateFinishedHandler=_updateFinishedHandler;
+@property (strong, nonatomic) GEOProtobufSessionTask *updateTask; // @synthesize updateTask=_updateTask;
 
-+ (id)acInitUrl;
++ (id)acInitURL;
 + (id)acUpdateURL;
+- (void).cxx_destruct;
+- (id)cancelError;
 - (void)cancelRequest;
-- (void)dealloc;
-- (void)requester:(id)arg1 didFailWithError:(id)arg2;
-- (void)requesterDidCancel:(id)arg1;
-- (void)requesterDidFinish:(id)arg1;
+- (void)didCompleteInitTask;
+- (void)didCompleteUpdateTask;
+- (id)init;
+- (void)protobufSession:(id)arg1 didCompleteTask:(id)arg2;
 - (void)startInitRequest:(id)arg1 finished:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
 - (void)startUpdateRequest:(id)arg1 finished:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
 

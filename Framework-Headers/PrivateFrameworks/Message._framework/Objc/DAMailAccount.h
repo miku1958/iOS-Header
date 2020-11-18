@@ -51,6 +51,7 @@
     int _supportsMessageFlagging;
     int _supportsConversations;
     int _supportsServerDrafts;
+    int _supportsUniqueServerId;
     unsigned int _daysToSync;
     NSMutableDictionary *_requestQueuesByFolderID;
     NSLock *_watchedFolderIdsLock;
@@ -134,6 +135,7 @@
 - (id)mailboxUidForInfo:(id)arg1;
 - (id)meetingStorePersistentID;
 - (id)moveMessages:(id)arg1 fromMailbox:(id)arg2 toMailbox:(id)arg3 markAsRead:(BOOL)arg4;
+- (BOOL)needsRemoteSearchResultsVerification;
 - (BOOL)newMailboxNameIsAcceptable:(id)arg1 reasonForFailure:(id *)arg2;
 - (BOOL)perMessageEncryptionEnabled;
 - (BOOL)performRequests:(id)arg1 mailbox:(id)arg2 consumers:(id)arg3;
@@ -174,12 +176,14 @@
 - (BOOL)supportsServerDrafts;
 - (BOOL)supportsServerSearch;
 - (BOOL)supportsThreadOperations;
+- (BOOL)supportsUniqueServerId;
 - (BOOL)supportsUserPushedMailboxes;
 - (id)syncAnchorForFolderID:(id)arg1 mailbox:(id *)arg2;
 - (id)syncAnchorForMailbox:(id)arg1;
 - (id)unactionableInvitationICSRepresentationInMessage:(id)arg1 summary:(id *)arg2;
 - (id)uniqueId;
 - (id)uniqueIdForPersistentConnection;
+- (id)uniqueServerIdForMessage:(id)arg1;
 - (id)unsupportedContinuationTypes;
 - (id)username;
 

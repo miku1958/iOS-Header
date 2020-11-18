@@ -20,6 +20,7 @@
 + (BOOL)hasFlashlight;
 + (void)initialize;
 - (void)_handleNotification:(id)arg1 payload:(id)arg2;
+- (void)_reconnectToServer;
 - (void)_setupFlashlight;
 - (void)_teardownFlashlight;
 - (void)dealloc;

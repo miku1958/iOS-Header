@@ -9,7 +9,7 @@
 #import <VoiceMemos/RCCaptureOutputWriterDelegate-Protocol.h>
 #import <VoiceMemos/RCWaveformDataSourceObserver-Protocol.h>
 
-@class NSDate, NSHashTable, NSString, RCAVState, RCAudioSessionRoutingAssertion, RCCaptureInputDevice, RCCaptureInputWaveformDataSource, RCCaptureOutputWriter;
+@class NSDate, NSHashTable, NSString, RCAVState, RCAudioSessionRoutingAssertion, RCCaptureInputDevice, RCCaptureInputWaveformDataSource, RCCaptureOutputWriter, SBSSecureAppAssertion;
 @protocol OS_dispatch_group;
 
 @interface RCCaptureSession : NSObject <RCCaptureOutputWriterDelegate, RCWaveformDataSourceObserver>
@@ -30,9 +30,11 @@
     NSHashTable *_weakObservers;
     RCCaptureInputDevice *_inputDevice;
     RCCaptureInputWaveformDataSource *_captureWaveformDataSource;
+    SBSSecureAppAssertion *_assertion;
 }
 
 @property (readonly, nonatomic) RCAVState *AVState;
+@property (strong, nonatomic) SBSSecureAppAssertion *assertion; // @synthesize assertion=_assertion;
 @property (readonly, nonatomic) double captureDestinationComposedDuration;
 @property (readonly, nonatomic) RCCaptureInputWaveformDataSource *captureWaveformDataSource; // @synthesize captureWaveformDataSource=_captureWaveformDataSource;
 @property (readonly, copy) NSString *debugDescription;
@@ -59,8 +61,8 @@
 - (void)_onMainQueueHandleCaptureDidFinishCapturingAfterCompletionSound;
 - (BOOL)_openAVCaptureSessionAndWaitUntilRunning;
 - (void)_postToObserversWithBlock:(CDUnknownBlockType)arg1;
-- (void)_setDisableSBMediaHUD:(BOOL)arg1;
 - (void)_setPostPrepareRequestedState:(long long)arg1;
+- (void)_takeSBSecureAppAssertion:(BOOL)arg1;
 - (void)addCaptureSessionObserver:(id)arg1;
 - (BOOL)canResumeCapturingAtCompositionDestinationTime:(double)arg1;
 - (void)captureOutputWriter:(id)arg1 captureSessionDidTerminateWithError:(id)arg2;

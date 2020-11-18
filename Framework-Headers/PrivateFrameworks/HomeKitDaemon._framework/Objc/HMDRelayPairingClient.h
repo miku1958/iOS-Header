@@ -9,15 +9,17 @@
 #import <HomeKitDaemon/HMDRelayManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDRelayManager, NSObject, NSString;
+@class HMDAccessory, HMDRelayManager, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMDRelayPairingClient : HAPRelayPairingClient <HMDRelayManagerDelegate, HMFLogging>
 {
     HMDRelayManager *_relayManager;
+    HMDAccessory *_accessory;
     NSObject<OS_dispatch_queue> *_clientQueue;
 }
 
+@property (readonly, weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -31,7 +33,7 @@
 - (void)_closeWithError:(id)arg1;
 - (id)accessoryBagURL;
 - (void)close;
-- (id)initWithRelayManager:(id)arg1;
+- (id)initWithRelayManager:(id)arg1 accessory:(id)arg2;
 - (id)logIdentifier;
 - (void)open;
 - (void)relayManager:(id)arg1 didUpdateControllerIdentifier:(id)arg2;

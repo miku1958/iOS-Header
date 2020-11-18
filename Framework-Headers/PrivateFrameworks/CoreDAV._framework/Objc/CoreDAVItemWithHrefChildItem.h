@@ -16,7 +16,7 @@
 @property (strong, nonatomic) CoreDAVHrefItem *href; // @synthesize href=_href;
 
 + (id)copyParseRules;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)write:(id)arg1;
 

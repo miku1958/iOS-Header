@@ -6,18 +6,21 @@
 
 #import <Home/HFItemProvider.h>
 
-@class NSMutableSet;
+@class HMHome, NSMutableSet;
 
 @interface HFResidentDeviceItemProvider : HFItemProvider
 {
     CDUnknownBlockType _filter;
+    HMHome *_home;
     NSMutableSet *_residentDeviceItems;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
+@property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSMutableSet *residentDeviceItems; // @synthesize residentDeviceItems=_residentDeviceItems;
 
 - (void).cxx_destruct;
+- (id)init;
 - (id)initWithHome:(id)arg1;
 - (id)invalidationReasons;
 - (id)items;

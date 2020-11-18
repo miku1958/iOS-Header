@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/PKPassLibraryDataProvider-Protocol.h>
 
@@ -26,6 +26,7 @@
 - (id)passWithPassTypeIdentifier:(id)arg1 serialNumber:(id)arg2;
 - (id)passWithUniqueID:(id)arg1;
 - (id)paymentPasses;
+- (id)peerPaymentPassUniqueID;
 - (void)removePass:(id)arg1;
 
 @end

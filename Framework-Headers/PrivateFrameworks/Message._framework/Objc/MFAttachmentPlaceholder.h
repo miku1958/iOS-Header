@@ -16,6 +16,7 @@
 + (id)_localStoreURLForFileData:(id)arg1 contentID:(id)arg2;
 + (id)_localStoreURLForFileURL:(id)arg1 contentID:(id)arg2;
 + (id)_placeholderMagic;
++ (BOOL)cloneFileAtURL:(id)arg1 toPlaceholderURL:(id)arg2;
 + (id)dataForPlaceholder:(id)arg1;
 + (BOOL)hasPlaceholderRepresentation:(id)arg1;
 + (BOOL)isPlaceholderSerializedRepresentation:(id)arg1;

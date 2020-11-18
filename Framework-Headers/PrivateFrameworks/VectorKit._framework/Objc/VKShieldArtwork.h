@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSCache, NSDictionary, NSMutableDictionary;
 
@@ -12,6 +12,7 @@
 {
     double _scale;
     NSCache *_imageCache;
+    struct mutex _imageCacheLock;
     NSDictionary *_stringAttributes;
     struct CGColor *_shadowColor;
     struct CGSize _shadowOffset;
@@ -33,6 +34,8 @@
 
 @property (readonly, nonatomic) double scale; // @synthesize scale=_scale;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)_initWithBackgroundImage:(struct CGImage *)arg1 contentScale:(double)arg2 resizableInfo:(CDStruct_65fe6994 *)arg3 font:(struct __CTFont *)arg4 nonDigitFont:(struct __CTFont *)arg5 textColor:(struct CGColor *)arg6 nonDigitTextColor:(struct CGColor *)arg7 textCenterOffsetX:(double)arg8 textBaseline:(double)arg9 textStrokeWidth:(double)arg10 textStrokeColor:(struct CGColor *)arg11 textShadowOffset:(struct CGSize)arg12 textShadowRadius:(double)arg13 textShadowColor:(struct CGColor *)arg14 lineSpacing:(double)arg15;
 - (void)dealloc;
 - (id)imageWithShieldText:(id)arg1;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSSet *_assetFieldNamesToPublishURLs;
     unsigned long long _requestedTTL;
     unsigned long long _URLOptions;
+    NSSet *_desiredAssetKeys;
     CDUnknownBlockType _recordFetchedBlock;
     NSArray *_recordIDs;
     NSDictionary *_recordIDsToETags;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) unsigned long long URLOptions; // @synthesize URLOptions=_URLOptions;
 @property (strong, nonatomic) NSSet *assetFieldNamesToPublishURLs; // @synthesize assetFieldNamesToPublishURLs=_assetFieldNamesToPublishURLs;
+@property (strong, nonatomic) NSSet *desiredAssetKeys; // @synthesize desiredAssetKeys=_desiredAssetKeys;
 @property (strong, nonatomic) NSSet *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (nonatomic) unsigned long long recordCount; // @synthesize recordCount=_recordCount;
 @property (copy, nonatomic) CDUnknownBlockType recordFetchedBlock; // @synthesize recordFetchedBlock=_recordFetchedBlock;
@@ -38,12 +40,12 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)allowsAnonymousAccount;
+- (id)generateRequestOperations;
 - (id)initWithRecordIDs:(id)arg1 recordIDsToEtags:(id)arg2 recordIDsToVersionETags:(id)arg3 desiredKeys:(id)arg4;
 - (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 - (id)zoneIDsToLock;
 
 @end

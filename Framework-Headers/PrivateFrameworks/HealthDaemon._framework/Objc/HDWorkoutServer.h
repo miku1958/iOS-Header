@@ -6,17 +6,17 @@
 
 #import <HealthDaemon/HDSubserver.h>
 
-#import <HealthDaemon/HDActiveWorkoutServerDelegate-Protocol.h>
 #import <HealthDaemon/HDWorkoutServerInterface-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class HDFitnessMachineManager, HDWorkoutManager, NSString, NSUUID;
 
-@interface HDWorkoutServer : HDSubserver <HDActiveWorkoutServerDelegate, HDWorkoutServerInterface>
+@interface HDWorkoutServer : HDSubserver <HDWorkoutServerInterface>
 {
-    NSMutableDictionary *_activeWorkoutServersByUUID;
+    HDWorkoutManager *_workoutManager;
+    HDFitnessMachineManager *_fitnessMachineManager;
+    NSUUID *_fitnessMachineConnectionUUID;
 }
 
-@property (readonly, nonatomic) long long activeWorkoutServerCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -24,28 +24,32 @@
 
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_completionHandlerForReplaceWithOriginalWorkout:(id)arg1 newWorkout:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_queue_releaseWorkoutServerWithUUID:(id)arg1;
-- (id)allActiveWorkoutServers;
-- (id)firstPartyWorkoutSnapshot;
 - (id)initWithParentServer:(id)arg1;
 - (void)invalidate;
-- (void)pauseActiveWorkoutsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_activeWorkoutApplicationIdentifier:(CDUnknownBlockType)arg1;
 - (void)remote_addSamples:(id)arg1 toWorkout:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_associateSamplesWithUUIDs:(id)arg1 withWorkout:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)remote_attachWorkoutServerWithClient:(id)arg1 serverConfiguration:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)remote_freezeLocationSeriesWithUUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_generateWorkoutMarkerWithDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remote_attachWorkoutServerWithClient:(id)arg1 serverConfiguration:(id)arg2 fitnessMachineConnectionClient:(id)arg3 fitnessMachineSessionConfiguration:(id)arg4 willReactivate:(BOOL)arg5 handler:(CDUnknownBlockType)arg6;
+- (void)remote_endFitnessMachineConnectionForFitnessMachineSessionUUID:(id)arg1 withConnectionUUID:(id)arg2;
+- (void)remote_endFitnessMachineConnectionWithUUID:(id)arg1;
+- (void)remote_forbidConnectionForFitnessMachineSessionUUID:(id)arg1 withConnectionUUID:(id)arg2;
+- (void)remote_generatePauseOrResumeRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_getFirstPartyWorkoutSnapshotWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_hasAnyActiveWorkouts:(CDUnknownBlockType)arg1;
+- (void)remote_markClientReadyWithConnectionUUID:(id)arg1;
 - (void)remote_pauseAllActiveWorkoutsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_pauseWorkoutSessionWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remote_permitConnectionForFitnessMachineSessionUUID:(id)arg1 withConnectionUUID:(id)arg2;
+- (void)remote_registerClient:(id)arg1 withConnectionUUID:(id)arg2;
+- (void)remote_registerConnectionInitiatorClient:(id)arg1 withConnectionUUID:(id)arg2;
 - (void)remote_replaceWorkout:(id)arg1 withWorkout:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_resumeWorkoutSessionWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remote_setActivityType:(unsigned long long)arg1;
+- (void)remote_simulateAccept;
+- (void)remote_simulateDisconnect;
+- (void)remote_simulateTapWithFitnessMachineType:(unsigned long long)arg1;
 - (void)remote_startWatchAppWithWorkoutConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_startWorkoutSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_stopWorkoutSessionWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)workoutServerDidDeactivate:(id)arg1;
 
 @end
 

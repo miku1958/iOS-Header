@@ -9,7 +9,7 @@
 #import <ITMLKit/ISStoreURLOperationDelegate-Protocol.h>
 #import <ITMLKit/NSURLConnectionDataDelegate-Protocol.h>
 
-@class IKAppContext, JSManagedValue, NSArray, NSMutableArray, NSString;
+@class IKAppContext, JSManagedValue, NSArray, NSMutableArray, NSNumber, NSString;
 
 @interface IKScriptsEvaluator : NSObject <ISStoreURLOperationDelegate, NSURLConnectionDataDelegate>
 {
@@ -28,6 +28,9 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL isJingleRequest; // @synthesize isJingleRequest=_isJingleRequest;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentage;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSessionDuration;
 @property (strong, nonatomic) NSMutableArray *records; // @synthesize records=_records;
 @property (strong, nonatomic) NSArray *scripts; // @synthesize scripts=_scripts;
 @property (readonly) Class superclass;

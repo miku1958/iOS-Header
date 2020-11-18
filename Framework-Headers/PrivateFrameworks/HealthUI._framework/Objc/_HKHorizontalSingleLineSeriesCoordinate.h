@@ -9,6 +9,7 @@
 #import <HealthUI/HKGraphSeriesBlockCoordinate-Protocol.h>
 
 @class NSString;
+@protocol HKGraphSeriesBlockCoordinateInfo;
 
 @interface _HKHorizontalSingleLineSeriesCoordinate : NSObject <HKGraphSeriesBlockCoordinate>
 {
@@ -16,7 +17,7 @@
     double _xValue;
     long long _yValue;
     long long _markStyle;
-    id _userInfo;
+    id<HKGraphSeriesBlockCoordinateInfo> _userInfo;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,7 +28,7 @@
 @property (readonly, nonatomic) long long markStyle; // @synthesize markStyle=_markStyle;
 @property (readonly, nonatomic) double startXValue;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
+@property (readonly, nonatomic) id<HKGraphSeriesBlockCoordinateInfo> userInfo; // @synthesize userInfo=_userInfo;
 @property (readonly, nonatomic) double xValue; // @synthesize xValue=_xValue;
 @property (readonly, nonatomic) long long yValue; // @synthesize yValue=_yValue;
 

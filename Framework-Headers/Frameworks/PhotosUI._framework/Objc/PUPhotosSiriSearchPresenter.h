@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotosUI/PHPhotoLibraryChangeObserver-Protocol.h>
 #import <PhotosUI/PUSearchResultsDataSourceChangeObserver-Protocol.h>
 
-@class NSString, PSIDatabase, PUNavigationController, PUPhotosGridViewControllerSpec, PUPingTimer, PUSearchGridDataSource, PUSearchGridViewController, PUSearchResultsDataSource, UIViewController;
+@class NSString, PHFetchResult, PSIDatabase, PUNavigationController, PUPhotosGridViewControllerSpec, PUPingTimer, PUSearchGridDataSource, PUSearchGridViewController, PUSearchResultsDataSource, UIViewController;
 @protocol OS_dispatch_semaphore;
 
-@interface PUPhotosSiriSearchPresenter : NSObject <PUSearchResultsDataSourceChangeObserver>
+@interface PUPhotosSiriSearchPresenter : NSObject <PUSearchResultsDataSourceChangeObserver, PHPhotoLibraryChangeObserver>
 {
     double _searchStartTime;
     BOOL _presenting;
@@ -27,11 +28,14 @@
     PUSearchResultsDataSource *__searchResultsDataSource;
     PSIDatabase *__searchIndex;
     PUPingTimer *__searchResultsPingTimer;
+    PHFetchResult *_albumFetchResult;
+    PHFetchResult *_smartAlbumFetchResult;
 }
 
 @property (strong, nonatomic) PSIDatabase *_searchIndex; // @synthesize _searchIndex=__searchIndex;
 @property (strong, nonatomic) PUSearchResultsDataSource *_searchResultsDataSource; // @synthesize _searchResultsDataSource=__searchResultsDataSource;
 @property (strong, nonatomic) PUPingTimer *_searchResultsPingTimer; // @synthesize _searchResultsPingTimer=__searchResultsPingTimer;
+@property (strong, nonatomic) PHFetchResult *albumFetchResult; // @synthesize albumFetchResult=_albumFetchResult;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL first; // @synthesize first=_first;
@@ -44,10 +48,10 @@
 @property (strong, nonatomic) PUSearchGridViewController *searchResultsViewController; // @synthesize searchResultsViewController=_searchResultsViewController;
 @property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *siriIntentBackgroundProcessingCompleteSemaphore; // @synthesize siriIntentBackgroundProcessingCompleteSemaphore=_siriIntentBackgroundProcessingCompleteSemaphore;
 @property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *siriSearchSemaphore; // @synthesize siriSearchSemaphore=_siriSearchSemaphore;
+@property (strong, nonatomic) PHFetchResult *smartAlbumFetchResult; // @synthesize smartAlbumFetchResult=_smartAlbumFetchResult;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *utterance; // @synthesize utterance=_utterance;
 
-+ (void)_photolibraryDidChange:(id)arg1;
 + (void)registerForSiriIntentsForViewController:(id)arg1;
 + (void)searchWithSiriSearch:(id)arg1;
 + (void)showSiriForForeground;
@@ -57,9 +61,11 @@
 - (void)_pingTimerFire:(id)arg1;
 - (void)_pushGridForPhotosWithUUIDs:(id)arg1 additionalUUIDs:(id)arg2 intent:(id)arg3 title:(id)arg4 searchCategories:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_searchResultsViewControllerDidFinish:(id)arg1;
-- (void)completeSearchQueryWithUUIDs:(id)arg1 additionalUUIDs:(id)arg2 intent:(id)arg3 dataSource:(id)arg4;
+- (void)completeSearchQueryWithUUIDs:(id)arg1 additionalUUIDs:(id)arg2 albumUUIDs:(id)arg3 intent:(id)arg4 dataSource:(id)arg5;
 - (void)completeWithZeroSearchResults:(id)arg1 showUI:(BOOL)arg2;
+- (void)dealloc;
 - (id)init;
+- (void)photoLibraryDidChange:(id)arg1;
 - (id)predicateForNearByWithLatitude:(double)arg1 longitude:(double)arg2;
 - (void)presentLast;
 - (void)presentRecentSiriSearch;

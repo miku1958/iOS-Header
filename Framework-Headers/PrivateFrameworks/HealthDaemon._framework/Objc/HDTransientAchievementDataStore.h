@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/HDAchievementDataStore.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 
 @interface HDTransientAchievementDataStore : HDAchievementDataStore
 {
@@ -16,17 +16,20 @@
     NSMutableDictionary *_committedValues;
     NSMutableDictionary *_uncommittedValues;
     NSMutableArray *_commitExpects;
+    NSString *_databaseIdentifier;
 }
 
 @property (strong, nonatomic) NSMutableArray *achievements; // @synthesize achievements=_achievements;
 @property (strong, nonatomic) NSMutableSet *addedAchievements; // @synthesize addedAchievements=_addedAchievements;
 @property (strong, nonatomic) NSMutableArray *commitExpects; // @synthesize commitExpects=_commitExpects;
 @property (strong, nonatomic) NSMutableDictionary *committedValues; // @synthesize committedValues=_committedValues;
+@property (strong, nonatomic) NSString *databaseIdentifier; // @synthesize databaseIdentifier=_databaseIdentifier;
 @property (strong, nonatomic) NSMutableSet *unalertedAchievements; // @synthesize unalertedAchievements=_unalertedAchievements;
 @property (strong, nonatomic) NSMutableDictionary *uncommittedValues; // @synthesize uncommittedValues=_uncommittedValues;
 
 - (void).cxx_destruct;
 - (id)_cachedValueForKey:(id)arg1;
+- (void)_removeDuplicateAddedAchievements;
 - (id)_valueForKey:(id)arg1;
 - (void)addAchievement:(id)arg1;
 - (id)allAchievements;
@@ -44,6 +47,7 @@
 - (long long)int64ForKey:(id)arg1;
 - (void)markAchievementAlerted:(id)arg1;
 - (id)modifiedKeyValues;
+- (BOOL)setDatabaseIdentifier:(id)arg1 error:(id *)arg2;
 - (void)setDate:(id)arg1 forKey:(id)arg2;
 - (void)setDouble:(double)arg1 forKey:(id)arg2;
 - (void)setInt64:(long long)arg1 forKey:(id)arg2;

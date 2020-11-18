@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <StoreKitUI/NSSecureCoding-Protocol.h>
+
 @class NSArray, NSDictionary, NSString, NSURL, UIImage;
 @protocol SKUIArtworkProviding;
 
-@interface SKUIRedeem : NSObject
+@interface SKUIRedeem : NSObject <NSSecureCoding>
 {
     BOOL _hideItemView;
     NSArray *_items;
@@ -44,8 +46,11 @@
 @property (strong, nonatomic) NSDictionary *thankYouDictionary; // @synthesize thankYouDictionary=_thankYouDictionary;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

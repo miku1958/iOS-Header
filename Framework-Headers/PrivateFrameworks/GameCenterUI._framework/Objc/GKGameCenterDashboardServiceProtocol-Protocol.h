@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameCenterUI/GKRemoteViewControllerDelegate-Protocol.h>
+#import <GameCenterUI/GKExtensionProtocol-Protocol.h>
 
 @class NSDictionary, NSNumber, NSString;
 
-@protocol GKGameCenterDashboardServiceProtocol <GKRemoteViewControllerDelegate>
+@protocol GKGameCenterDashboardServiceProtocol <GKExtensionProtocol>
 
 @optional
 - (void)hostDidChangeLeaderboardIdentifier:(NSString *)arg1;

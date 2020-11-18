@@ -13,22 +13,26 @@
 @interface GEOPDAutocompleteEntryAddress : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    double _distance;
     unsigned long long _opaqueGeoId;
     GEOLatLng *_center;
     struct {
+        unsigned int distance:1;
         unsigned int opaqueGeoId:1;
     } _has;
 }
 
 @property (strong, nonatomic) GEOLatLng *center; // @synthesize center=_center;
+@property (nonatomic) double distance; // @synthesize distance=_distance;
 @property (readonly, nonatomic) BOOL hasCenter;
+@property (nonatomic) BOOL hasDistance;
 @property (nonatomic) BOOL hasOpaqueGeoId;
 @property (nonatomic) unsigned long long opaqueGeoId; // @synthesize opaqueGeoId=_opaqueGeoId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

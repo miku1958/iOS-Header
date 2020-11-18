@@ -15,7 +15,7 @@
 
 @property (readonly, nonatomic) struct OpaqueCMClock *clock;
 @property (nonatomic, getter=isEnabled) BOOL enabled;
-@property (readonly, nonatomic) struct opaqueCMFormatDescription *formatDescription;
+@property (readonly, nonatomic) const struct opaqueCMFormatDescription *formatDescription;
 @property (readonly, nonatomic) AVCaptureInput *input;
 @property (readonly, nonatomic) NSString *mediaType;
 
@@ -28,7 +28,6 @@
 - (void)dealloc;
 - (id)description;
 - (id)figCaptureSourceConfigurationForSessionPreset:(id)arg1;
-- (id)init;
 - (id)initWithInput:(id)arg1 mediaType:(id)arg2 formatDescription:(struct opaqueCMFormatDescription *)arg3 enabled:(BOOL)arg4;
 - (void)setOwner:(id)arg1;
 - (id)sourceID;

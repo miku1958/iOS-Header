@@ -4,21 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIDictationView.h>
+#import <UIKit/UIDictationLayoutView.h>
 
 __attribute__((visibility("hidden")))
-@interface UIDictationSplitLayoutView : UIDictationView
+@interface UIDictationSplitLayoutView : UIDictationLayoutView
 {
 }
 
-- (BOOL)drawsOwnBackground;
-- (void)finishReturnToKeyboard;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (BOOL)isShowing;
-- (void)layoutSubviews;
-- (void)returnToKeyboard;
-- (void)setRenderConfig:(id)arg1;
-- (void)setState:(int)arg1;
 
 @end
 

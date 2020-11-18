@@ -19,6 +19,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUsageDate:(id)arg1 navigationWasInterrupted:(BOOL)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

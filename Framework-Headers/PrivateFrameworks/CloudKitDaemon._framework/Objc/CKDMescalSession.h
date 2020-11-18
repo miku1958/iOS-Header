@@ -40,7 +40,6 @@ __attribute__((visibility("hidden")))
 - (void)exchangeData:(id)arg1 serverVersion:(int)arg2 qualityOfService:(long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithContext:(id)arg1;
-- (void)processSignedData:(id)arg1 signature:(id)arg2 forRequest:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)renewMescalSessionForRequest:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 - (void)resetMescalSession;
 - (void)signData:(id)arg1 forRequest:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;

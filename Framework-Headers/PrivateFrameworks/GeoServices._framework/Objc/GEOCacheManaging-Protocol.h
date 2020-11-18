@@ -6,14 +6,14 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOMapServiceTraits, GEOPDComponent, GEOPDPlace, NSArray, NSData;
+@class GEOApplicationAuditToken, GEOMapServiceTraits, GEOPDComponent, GEOPDPlace, NSArray;
 
 @protocol GEOCacheManaging <NSObject>
 - (void)checkHasExpiredWithInvalidationDatas:(NSArray *)arg1 handler:(void (^)(NSArray *))arg2;
 - (long long)invalidationStateForComponent:(GEOPDComponent *)arg1;
 - (long long)invalidationStateForPlace:(GEOPDPlace *)arg1;
-- (void)refreshLOIAssociatedMapItems:(NSArray *)arg1 updatedCoordinates:(NSArray *)arg2 traits:(GEOMapServiceTraits *)arg3 auditToken:(NSData *)arg4 handler:(void (^)(NSArray *, NSError *))arg5;
-- (void)refreshLOIReverseGeocodedMapItems:(NSArray *)arg1 updatedCoordinates:(NSArray *)arg2 traits:(GEOMapServiceTraits *)arg3 auditToken:(NSData *)arg4 handler:(void (^)(NSArray *, NSError *))arg5;
+- (void)refreshLOIAssociatedMapItems:(NSArray *)arg1 updatedCoordinates:(NSArray *)arg2 traits:(GEOMapServiceTraits *)arg3 auditToken:(GEOApplicationAuditToken *)arg4 handler:(void (^)(NSArray *, NSError *))arg5;
+- (void)refreshLOIReverseGeocodedMapItems:(NSArray *)arg1 updatedCoordinates:(NSArray *)arg2 traits:(GEOMapServiceTraits *)arg3 auditToken:(GEOApplicationAuditToken *)arg4 handler:(void (^)(NSArray *, NSError *))arg5;
 - (void)snapshotWithFilePathArray:(NSArray *)arg1 handler:(void (^)(NSDictionary *))arg2;
 - (void)versionsForDomains:(NSArray *)arg1 handler:(void (^)(NSDictionary *))arg2;
 @end

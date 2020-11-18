@@ -40,6 +40,7 @@
 - (void)eraseScreenDown;
 - (void)eraseScreenUp;
 - (void)eraseStartOfLine;
+- (void)forgetRemainingSpace;
 - (id)initWithFd:(int)arg1 forceColor:(BOOL)arg2;
 - (void)put:(id)arg1;
 - (void)puts:(const char *)arg1;

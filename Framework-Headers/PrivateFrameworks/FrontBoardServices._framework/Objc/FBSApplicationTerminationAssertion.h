@@ -4,23 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSString;
+@class BKSTerminationAssertion, NSString;
+@protocol OS_dispatch_queue;
 
 @interface FBSApplicationTerminationAssertion : NSObject
 {
+    BKSTerminationAssertion *_assertion;
+    NSObject<OS_dispatch_queue> *_queue;
     NSString *_bundleID;
     NSString *_reason;
     long long _assertionState;
-    unsigned long long _serialNumber;
 }
 
-@property (readonly, nonatomic) long long assertionState; // @synthesize assertionState=_assertionState;
-@property (readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-@property (readonly, copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
-@property (nonatomic) unsigned long long serialNumber; // @synthesize serialNumber=_serialNumber;
+@property (readonly, nonatomic) long long assertionState;
+@property (readonly, copy, nonatomic) NSString *bundleID;
+@property (readonly, copy, nonatomic) NSString *reason;
 
++ (id)_queue;
 - (void)dealloc;
 - (id)description;
 - (id)initWithBundleID:(id)arg1 reason:(id)arg2 acquisitionHandler:(CDUnknownBlockType)arg3;

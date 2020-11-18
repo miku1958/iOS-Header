@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (double)_row4ControlSegmentWidthLeft;
+- (double)_row4ControlSegmentWidthRight;
 - (double)assistKeyFontSize;
 - (struct CGPoint)boldKeyOffset;
 - (struct CGPoint)copyKeyOffset;

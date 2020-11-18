@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@interface HMDPersistentStore : NSObject
+@interface HMDPersistentStore : HMFObject
 {
 }
 
@@ -18,11 +18,10 @@
 + (id)archiveCloudServerTokenData:(id)arg1;
 + (id)archiveHomeData:(id)arg1;
 + (id)archiveIDSDataSyncJournal:(id)arg1;
-+ (id)archiveMetadata:(id)arg1;
-+ (id)archiveTransactions:(id)arg1;
++ (BOOL)archiveMetadata:(id)arg1;
 + (void)archiveVendorStore:(id)arg1;
 + (void)cleanupKeysInStore;
-+ (id)decryptDataWithControllerKey:(id)arg1 totalKeysFound:(unsigned long long *)arg2 deleteExtraKeys:(BOOL)arg3 controllerIdentifierChanged:(BOOL *)arg4 successfulKeyUserName:(id *)arg5 error:(id *)arg6;
++ (id)decryptDataWithControllerKey:(id)arg1 totalKeysFound:(unsigned long long *)arg2 deleteExtraKeys:(BOOL)arg3 allowControllerIdentifierToChange:(BOOL)arg4 controllerIdentifierChanged:(BOOL *)arg5 successfulKeyUserName:(id *)arg6 error:(id *)arg7;
 + (id)decryptDataWithMetadataKey:(id)arg1 error:(id *)arg2;
 + (id)decryptUsingLocalKeyAndUnarchiveFromPath:(id)arg1 error:(id *)arg2;
 + (id)deserializeBlacklistedBundlesFromData:(id)arg1;
@@ -31,6 +30,10 @@
 + (id)encryptDataWithControllerKey:(id)arg1 error:(id *)arg2;
 + (id)encryptDataWithMetadataKey:(id)arg1 error:(id *)arg2;
 + (id)encryptUsingLocalKeyAndArchiveData:(id)arg1 storePath:(id)arg2 dataLabel:(id)arg3;
++ (id)loadBuiltinPlainMetadataDictionary;
++ (id)loadPlainMetadataDictionary;
++ (void)removeServerTokenDataFile;
++ (void)removeTransactionJournal;
 + (void)resetConfiguration;
 + (void)resetMetadata;
 + (id)serializeBlacklistedBundles:(id)arg1;
@@ -42,9 +45,9 @@
 + (id)unarchiveIDSDataSyncJournal;
 + (id)unarchiveMetadata:(id *)arg1;
 + (id)unarchiveServerTokenData:(BOOL *)arg1;
-+ (id)unarchiveTransactionJournal;
 + (id)unarchiveVendorStore;
 + (id)writeData:(id)arg1 toStorePath:(id)arg2 dataLabel:(id)arg3;
++ (BOOL)writeDictionary:(id)arg1 toStorePath:(id)arg2;
 
 @end
 

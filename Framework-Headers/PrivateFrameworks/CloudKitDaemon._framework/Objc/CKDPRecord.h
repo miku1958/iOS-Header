@@ -31,6 +31,7 @@
     CKDPDateStatistics *_timeStatistics;
     NSMutableArray *_tombstonedPublicKeyIDs;
     CKDPRecordType *_type;
+    NSData *_zoneRecordProtectionInfoPublicKeyID;
     struct {
         unsigned int permission:1;
     } _has;
@@ -58,6 +59,7 @@
 @property (readonly, nonatomic) BOOL hasStableUrl;
 @property (readonly, nonatomic) BOOL hasTimeStatistics;
 @property (readonly, nonatomic) BOOL hasType;
+@property (readonly, nonatomic) BOOL hasZoneRecordProtectionInfoPublicKeyID;
 @property (strong, nonatomic) CKDPIdentifier *modifiedBy; // @synthesize modifiedBy=_modifiedBy;
 @property (strong, nonatomic) NSString *modifiedByDevice; // @synthesize modifiedByDevice=_modifiedByDevice;
 @property (nonatomic) int permission; // @synthesize permission=_permission;
@@ -70,6 +72,7 @@
 @property (strong, nonatomic) CKDPDateStatistics *timeStatistics; // @synthesize timeStatistics=_timeStatistics;
 @property (strong, nonatomic) NSMutableArray *tombstonedPublicKeyIDs; // @synthesize tombstonedPublicKeyIDs=_tombstonedPublicKeyIDs;
 @property (strong, nonatomic) CKDPRecordType *type; // @synthesize type=_type;
+@property (strong, nonatomic) NSData *zoneRecordProtectionInfoPublicKeyID; // @synthesize zoneRecordProtectionInfoPublicKeyID=_zoneRecordProtectionInfoPublicKeyID;
 
 + (Class)conflictLoserEtagsType;
 + (Class)fieldsType;
@@ -79,6 +82,7 @@
 - (void).cxx_destruct;
 - (int)StringAsPermission:(id)arg1;
 - (void)_inflateFieldsFromData:(id)arg1;
+- (id)_permissionAsString;
 - (void)addConflictLoserEtags:(id)arg1;
 - (void)addFields:(id)arg1;
 - (void)addPluginFields:(id)arg1;

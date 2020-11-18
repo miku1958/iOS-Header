@@ -12,6 +12,6 @@
 
 @property (nonatomic, getter=isSuspended) BOOL suspended;
 
-- (void)writeMovieFromImageFiles:(NSArray *)arg1 visMetadataFiles:(NSArray *)arg2 startDate:(NSDate *)arg3 location:(CLLocation *)arg4 outputPath:(NSString *)arg5 transform:(struct CGAffineTransform)arg6 framesPerSecond:(long long)arg7 completionHandler:(void (^)(BOOL, struct, NSArray *))arg8;
+- (void)writeMovieFromImageFiles:(NSArray *)arg1 visMetadataFiles:(NSArray *)arg2 startDate:(NSDate *)arg3 location:(CLLocation *)arg4 outputPath:(NSString *)arg5 transform:(struct CGAffineTransform)arg6 framesPerSecond:(long long)arg7 preferHEVC:(BOOL)arg8 completionHandler:(void (^)(BOOL, struct, NSArray *))arg9;
 @end
 

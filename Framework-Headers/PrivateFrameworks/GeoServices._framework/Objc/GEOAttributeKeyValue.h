@@ -8,20 +8,22 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBUnknownFields;
 
 @interface GEOAttributeKeyValue : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSString *_attributeKey;
     NSString *_attributeValue;
 }
 
 @property (strong, nonatomic) NSString *attributeKey; // @synthesize attributeKey=_attributeKey;
 @property (strong, nonatomic) NSString *attributeValue; // @synthesize attributeValue=_attributeValue;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

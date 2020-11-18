@@ -9,10 +9,11 @@
 #import <HealthUI/HKGraphSeriesBlockCoordinate-Protocol.h>
 
 @class HKMinMaxCoordinate, NSString;
+@protocol HKGraphSeriesBlockCoordinateInfo;
 
 @interface _HKBloodPressureCoordinate : NSObject <HKGraphSeriesBlockCoordinate>
 {
-    id _userInfo;
+    id<HKGraphSeriesBlockCoordinateInfo> _userInfo;
     HKMinMaxCoordinate *_systolicCoordinate;
     HKMinMaxCoordinate *_diastolicCoordinate;
 }
@@ -25,7 +26,7 @@
 @property (readonly, nonatomic) double startXValue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) HKMinMaxCoordinate *systolicCoordinate; // @synthesize systolicCoordinate=_systolicCoordinate;
-@property (readonly, nonatomic) id userInfo;
+@property (readonly, nonatomic) id<HKGraphSeriesBlockCoordinateInfo> userInfo;
 
 - (void).cxx_destruct;
 - (id)copyWithTransform:(struct CGAffineTransform)arg1 roundToViewScale:(BOOL)arg2;

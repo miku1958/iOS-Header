@@ -12,6 +12,7 @@
 
 @interface NTPBChannelMuteUnmute : PBCodable <NSCopying>
 {
+    long long _previousArticlePublisherArticleVersion;
     NSString *_articleId;
     NSData *_articleSessionId;
     NSString *_articleSessionIdDeprecated;
@@ -24,17 +25,24 @@
     int _feedType;
     NSData *_feedViewExposureId;
     NSString *_feedViewExposureIdDeprecated;
+    int _feedViewPresentationReason;
     int _groupType;
     int _muteUnmuteLocation;
+    NSString *_previousArticleId;
+    NSString *_previousArticleVersion;
     NSString *_referencedArticleId;
     NSString *_sourceChannelId;
     int _userAction;
+    BOOL _isSearchResultArticle;
     BOOL _isUserSubscribedToFeed;
     struct {
+        unsigned int previousArticlePublisherArticleVersion:1;
         unsigned int feedType:1;
+        unsigned int feedViewPresentationReason:1;
         unsigned int groupType:1;
         unsigned int muteUnmuteLocation:1;
         unsigned int userAction:1;
+        unsigned int isSearchResultArticle:1;
         unsigned int isUserSubscribedToFeed:1;
     } _has;
 }
@@ -51,6 +59,7 @@
 @property (nonatomic) int feedType; // @synthesize feedType=_feedType;
 @property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
 @property (strong, nonatomic) NSString *feedViewExposureIdDeprecated; // @synthesize feedViewExposureIdDeprecated=_feedViewExposureIdDeprecated;
+@property (nonatomic) int feedViewPresentationReason; // @synthesize feedViewPresentationReason=_feedViewPresentationReason;
 @property (nonatomic) int groupType; // @synthesize groupType=_groupType;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (readonly, nonatomic) BOOL hasArticleSessionId;
@@ -64,25 +73,36 @@
 @property (nonatomic) BOOL hasFeedType;
 @property (readonly, nonatomic) BOOL hasFeedViewExposureId;
 @property (readonly, nonatomic) BOOL hasFeedViewExposureIdDeprecated;
+@property (nonatomic) BOOL hasFeedViewPresentationReason;
 @property (nonatomic) BOOL hasGroupType;
+@property (nonatomic) BOOL hasIsSearchResultArticle;
 @property (nonatomic) BOOL hasIsUserSubscribedToFeed;
 @property (nonatomic) BOOL hasMuteUnmuteLocation;
+@property (readonly, nonatomic) BOOL hasPreviousArticleId;
+@property (nonatomic) BOOL hasPreviousArticlePublisherArticleVersion;
+@property (readonly, nonatomic) BOOL hasPreviousArticleVersion;
 @property (readonly, nonatomic) BOOL hasReferencedArticleId;
 @property (readonly, nonatomic) BOOL hasSourceChannelId;
 @property (nonatomic) BOOL hasUserAction;
+@property (nonatomic) BOOL isSearchResultArticle; // @synthesize isSearchResultArticle=_isSearchResultArticle;
 @property (nonatomic) BOOL isUserSubscribedToFeed; // @synthesize isUserSubscribedToFeed=_isUserSubscribedToFeed;
 @property (nonatomic) int muteUnmuteLocation; // @synthesize muteUnmuteLocation=_muteUnmuteLocation;
+@property (strong, nonatomic) NSString *previousArticleId; // @synthesize previousArticleId=_previousArticleId;
+@property (nonatomic) long long previousArticlePublisherArticleVersion; // @synthesize previousArticlePublisherArticleVersion=_previousArticlePublisherArticleVersion;
+@property (strong, nonatomic) NSString *previousArticleVersion; // @synthesize previousArticleVersion=_previousArticleVersion;
 @property (strong, nonatomic) NSString *referencedArticleId; // @synthesize referencedArticleId=_referencedArticleId;
 @property (strong, nonatomic) NSString *sourceChannelId; // @synthesize sourceChannelId=_sourceChannelId;
 @property (nonatomic) int userAction; // @synthesize userAction=_userAction;
 
 - (void).cxx_destruct;
 - (int)StringAsFeedType:(id)arg1;
+- (int)StringAsFeedViewPresentationReason:(id)arg1;
 - (int)StringAsGroupType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)feedTypeAsString:(int)arg1;
+- (id)feedViewPresentationReasonAsString:(int)arg1;
 - (id)groupTypeAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

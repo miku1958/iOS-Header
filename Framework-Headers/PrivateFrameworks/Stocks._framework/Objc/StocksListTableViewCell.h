@@ -16,13 +16,16 @@
     StocksListBoxView *_boxView;
     UIImageView *_changeSignView;
     UIView *_rowSeparatorView;
+    BOOL _shouldStackView;
     Stock *_stock;
     long long _rowDataType;
 }
 
 @property (nonatomic) long long rowDataType; // @synthesize rowDataType=_rowDataType;
+@property (nonatomic) BOOL shouldStackView; // @synthesize shouldStackView=_shouldStackView;
 @property (strong, nonatomic) Stock *stock; // @synthesize stock=_stock;
 
++ (double)cellHeightForStackStatus:(BOOL)arg1;
 - (void).cxx_destruct;
 - (struct CGRect)changeButtonRect;
 - (id)changeSignNegative:(BOOL)arg1;

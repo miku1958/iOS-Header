@@ -11,6 +11,8 @@
 
 @interface IKAppMediaItemBridge : NSObject
 {
+    NSString *_artworkImageURL;
+    NSString *_artworkImageSrcset;
     id<IKAppMediaItem> _appMediaItem;
     IKAppContext *_appContext;
     IKJSMediaItem *_jsMediaItem;
@@ -18,7 +20,8 @@
 
 @property (readonly, weak, nonatomic) IKAppContext *appContext; // @synthesize appContext=_appContext;
 @property (readonly, weak, nonatomic) id<IKAppMediaItem> appMediaItem; // @synthesize appMediaItem=_appMediaItem;
-@property (strong, nonatomic) NSString *artworkImageURL;
+@property (strong, nonatomic) NSString *artworkImageSrcset; // @synthesize artworkImageSrcset=_artworkImageSrcset;
+@property (strong, nonatomic) NSString *artworkImageURL; // @synthesize artworkImageURL=_artworkImageURL;
 @property (strong, nonatomic) NSArray *chapterGroups;
 @property (nonatomic) double contentProposalAutomaticAcceptanceInterval;
 @property (nonatomic) double contentProposalPresentationTime;
@@ -38,6 +41,7 @@
 @property (strong, nonatomic) NSString *url;
 
 - (void).cxx_destruct;
+- (void)_resolveArtworkImageURL;
 - (void)cleanup;
 - (id)initWithAppContext:(id)arg1 jsMediaItem:(id)arg2;
 - (void)loadCertificateDataForURL:(id)arg1 withCallback:(CDUnknownBlockType)arg2;

@@ -6,15 +6,18 @@
 
 #import <CloudKitDaemon/NSObject-Protocol.h>
 
-@class CKContainerID, CKDMescalSession, CKDServerConfiguration, CKDURLRequest, NSArray, NSBundle, NSDictionary, NSString, NSURL;
+@class CKAccountOverrideInfo, CKContainerID, CKDMescalSession, CKDOperation, CKDServerConfiguration, CKDURLRequest, NSBundle, NSDictionary, NSString, NSURL;
 
 @protocol CKDAccountInfoProvider <NSObject>
 
 @property (readonly, nonatomic) BOOL accountWantsPushRegistration;
 @property (readonly, nonatomic) BOOL canAccessAccount;
 @property (readonly, nonatomic) BOOL canAuthWithCloudKit;
+@property (readonly, nonatomic) CKAccountOverrideInfo *fakeAccountInfo;
 @property (readonly, nonatomic) BOOL isAnonymousAccount;
+@property (readonly, nonatomic) BOOL isCarryAccount;
 @property (readonly, nonatomic) BOOL isUnitTestingAccount;
+@property (readonly, nonatomic) BOOL isiCloudDevEnvironmentAccount;
 
 - (NSBundle *)applicationBundle;
 - (NSURL *)baseURLForServerType:(long long)arg1 partitionType:(long long)arg2;
@@ -25,19 +28,20 @@
 - (NSString *)containerScopedUserID;
 - (NSString *)deviceName;
 - (NSString *)dsid;
-- (NSArray *)enabledKeyboards;
-- (void)fetchConfigurationUsingBackgroundSession:(BOOL)arg1 allowsCellularAccess:(BOOL)arg2 withCompletionHandler:(void (^)(CKDServerConfiguration *, NSError *))arg3;
-- (void)fetchContainerScopedUserIDUsingBackgroundSession:(BOOL)arg1 allowsCellularAccess:(BOOL)arg2 withCompletionHandler:(void (^)(NSString *, NSError *))arg3;
-- (void)fetchDeviceIDUsingBackgroundSession:(BOOL)arg1 allowsCellularAccess:(BOOL)arg2 withCompletionHandler:(void (^)(NSString *, NSError *))arg3;
-- (void)fetchPrivateURLWithServerType:(long long)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
-- (void)fetchPublicURLUsingBackgroundSession:(BOOL)arg1 allowsCellularAccess:(BOOL)arg2 serverType:(long long)arg3 completionHandler:(void (^)(NSURL *, NSError *))arg4;
+- (void)fetchConfigurationForOperation:(CKDOperation *)arg1 withCompletionHandler:(void (^)(CKDServerConfiguration *, NSError *))arg2;
+- (void)fetchContainerScopedUserIDForOperation:(CKDOperation *)arg1 withCompletionHandler:(void (^)(NSString *, NSError *))arg2;
+- (void)fetchDeviceIDForOperation:(CKDOperation *)arg1 withCompletionHandler:(void (^)(NSString *, NSError *))arg2;
+- (void)fetchPrivateURLForServerType:(long long)arg1 operation:(CKDOperation *)arg2 completionHandler:(void (^)(NSURL *, NSError *))arg3;
+- (void)fetchPublicURLForServerType:(long long)arg1 operation:(CKDOperation *)arg2 completionHandler:(void (^)(NSURL *, NSError *))arg3;
+- (void)fetchServerEnvironmentForOperation:(CKDOperation *)arg1 withCompletionHandler:(void (^)(long long, NSError *))arg2;
 - (NSString *)hardwareID;
 - (void)iCloudAuthTokenWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
 - (NSString *)languageCode;
 - (CKDMescalSession *)mescalSession;
 - (NSString *)regionCode;
-- (void)renewAuthTokenWithReason:(NSString *)arg1 shouldForce:(BOOL)arg2 failedToken:(NSString *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
+- (void)renewCloudKitAuthTokenWithReason:(NSString *)arg1 shouldForce:(BOOL)arg2 failedToken:(NSString *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)renewMescalSessionForRequest:(CKDURLRequest *)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
+- (void)renewiCloudAuthTokenWithReason:(NSString *)arg1 shouldForce:(BOOL)arg2 failedToken:(NSString *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)resetMescalSession;
 - (NSString *)serverPreferredPushEnvironment;
 - (BOOL)shouldFailAllTasks;

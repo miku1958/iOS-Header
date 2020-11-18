@@ -8,17 +8,17 @@
 
 #import <MediaPlayer/NSCoding-Protocol.h>
 
-@class NSData, NSString;
+@class MPAVItem, NSData, NSString;
 
 @interface MPPlaybackContext : NSObject <NSCoding>
 {
+    MPAVItem *_playerCurrentItem;
     BOOL _shouldStartPlayback;
+    BOOL _requireFinalTracklist;
     BOOL _shouldRestartPlayback;
     long long _startIndex;
     long long _shuffleType;
     long long _repeatType;
-    NSString *_requestingBundleIdentifier;
-    NSString *_requestingBundleVersion;
     NSString *_playActivityFeatureName;
     NSData *_playActivityRecommendationData;
     NSString *_siriReferenceIdentifier;
@@ -26,9 +26,9 @@
 
 @property (copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
 @property (copy, nonatomic) NSData *playActivityRecommendationData; // @synthesize playActivityRecommendationData=_playActivityRecommendationData;
+@property (strong, nonatomic) MPAVItem *playerCurrentItem;
 @property (nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
-@property (copy, nonatomic) NSString *requestingBundleIdentifier; // @synthesize requestingBundleIdentifier=_requestingBundleIdentifier;
-@property (copy, nonatomic) NSString *requestingBundleVersion; // @synthesize requestingBundleVersion=_requestingBundleVersion;
+@property (nonatomic) BOOL requireFinalTracklist; // @synthesize requireFinalTracklist=_requireFinalTracklist;
 @property (nonatomic) BOOL shouldRestartPlayback; // @synthesize shouldRestartPlayback=_shouldRestartPlayback;
 @property (nonatomic) BOOL shouldStartPlayback; // @synthesize shouldStartPlayback=_shouldStartPlayback;
 @property (nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;

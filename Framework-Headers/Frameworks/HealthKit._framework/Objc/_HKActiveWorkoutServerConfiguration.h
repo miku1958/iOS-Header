@@ -22,10 +22,16 @@
     NSUUID *_UUID;
     HKQuantity *_lapLength;
     long long _swimmingLocation;
+    NSUUID *_fitnessMachineSessionID;
+    HKQuantity *_initialActiveEnergyBurned;
+    HKQuantity *_initialBasalEnergyBurned;
 }
 
 @property (strong, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
+@property (strong, nonatomic) NSUUID *fitnessMachineSessionID; // @synthesize fitnessMachineSessionID=_fitnessMachineSessionID;
 @property (nonatomic, getter=isIndoor) BOOL indoor; // @synthesize indoor=_indoor;
+@property (strong, nonatomic) HKQuantity *initialActiveEnergyBurned; // @synthesize initialActiveEnergyBurned=_initialActiveEnergyBurned;
+@property (strong, nonatomic) HKQuantity *initialBasalEnergyBurned; // @synthesize initialBasalEnergyBurned=_initialBasalEnergyBurned;
 @property (strong, nonatomic) HKQuantity *lapLength; // @synthesize lapLength=_lapLength;
 @property (strong, nonatomic) NSDictionary *resumeDataByType; // @synthesize resumeDataByType=_resumeDataByType;
 @property (nonatomic) BOOL shouldUseDeviceData; // @synthesize shouldUseDeviceData=_shouldUseDeviceData;

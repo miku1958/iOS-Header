@@ -10,7 +10,14 @@
 
 @interface NPKProtoSecureElementGetPairingInfoRequest : PBRequest <NSCopying>
 {
+    BOOL _setAuthRandomIfNotPaired;
+    struct {
+        unsigned int setAuthRandomIfNotPaired:1;
+    } _has;
 }
+
+@property (nonatomic) BOOL hasSetAuthRandomIfNotPaired;
+@property (nonatomic) BOOL setAuthRandomIfNotPaired; // @synthesize setAuthRandomIfNotPaired=_setAuthRandomIfNotPaired;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

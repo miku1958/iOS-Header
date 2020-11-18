@@ -8,6 +8,7 @@
 
 @interface NSString (PhotosUICore)
 
+@property (readonly, nonatomic) struct _NSRange px_firstLetterRange;
 @property (readonly, nonatomic) long long px_platformAgnosticHash;
 @property (readonly, nonatomic) NSString *px_stringByIndentingNewLines;
 

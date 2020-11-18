@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOTransitRoutingIncidentMessage-Protocol.h>
+#import <GeoServices/NSSecureCoding-Protocol.h>
 
 @class GEOPBTransitRoutingIncidentMessage, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTransitRoutingIncidentMessage : NSObject <GEOTransitRoutingIncidentMessage>
+@interface _GEOTransitRoutingIncidentMessage : NSObject <GEOTransitRoutingIncidentMessage, NSSecureCoding>
 {
     GEOPBTransitRoutingIncidentMessage *_routingIncidentMessage;
     NSArray *_transitIncidents;
@@ -24,10 +25,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *transitIncidents;
 
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_fakeTransitLineIncidentInLine:(id)arg1;
 - (void)_populateTransitIncidentsWithDecoderData:(id)arg1;
-- (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initFakeLineIncidentMessageInLine:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithIncidentMessage:(id)arg1 decoderData:(id)arg2;
 - (id)initWithIncidentMessageIndex:(unsigned long long)arg1 decoderData:(id)arg2;
 - (BOOL)isEqual:(id)arg1;

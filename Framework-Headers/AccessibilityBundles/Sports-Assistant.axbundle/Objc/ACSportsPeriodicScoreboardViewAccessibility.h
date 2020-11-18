@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)accessibilityContainerElements;
+- (id)accessibilityElements;
 - (void)didChangeMatchupFromMatchup:(id)arg1;
 - (BOOL)isAccessibilityElement;
 

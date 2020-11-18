@@ -17,7 +17,7 @@
 + (void)app:(id)arg1 performedAction:(id)arg2 onContacts:(id)arg3 withResult:(id)arg4 elapsedTime:(unsigned long long)arg5;
 + (void)app:(id)arg1 performedAction:(id)arg2 onEvents:(id)arg3 withResult:(id)arg4 elapsedTime:(unsigned long long)arg5;
 + (void)assetVersion;
-+ (void)assetVersion:(int)arg1;
++ (void)assetVersion:(long long)arg1;
 + (void)clearDistributionKey:(id)arg1;
 + (void)contactConfirmed:(id)arg1 inApp:(unsigned long long)arg2;
 + (void)contactRejected:(id)arg1 inApp:(unsigned long long)arg2;
@@ -80,6 +80,7 @@
 + (void)setValueForScalarKeyWithDomain:(id)arg1 subdomain:(id)arg2 suffix:(id)arg3 action:(id)arg4 value:(long long)arg5;
 + (void)suggestionImpressionsViaBanner:(int)arg1;
 + (void)suggestionImpressionsViaBannerSuppressed:(int)arg1;
++ (unsigned long long)twoSigFigs:(id)arg1;
 
 @end
 

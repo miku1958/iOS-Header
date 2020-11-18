@@ -8,27 +8,35 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAddress, GEOPDAddressObject, GEOPDAmenities, GEOPDAssociatedApp, GEOPDBounds, GEOPDBusinessClaim, GEOPDCaptionedPhoto, GEOPDETA, GEOPDEntity, GEOPDExternalAction, GEOPDFactoid, GEOPDFlyover, GEOPDHours, GEOPDPhoto, GEOPDPlaceInfo, GEOPDPlacecardURL, GEOPDRap, GEOPDRating, GEOPDRawAttribute, GEOPDRestaurantReservationLink, GEOPDResultSnippet, GEOPDReview, GEOPDRoadAccessInfo, GEOPDSimpleRestaurantMenuText, GEOPDSpatialLookupResult, GEOPDTextBlock, GEOPDTip, GEOPDTransitAttribution, GEOPDTransitIncident, GEOPDTransitInfo, GEOPDTransitInfoSnippet, GEOPDTransitSchedule, GEOStyleAttributes;
+@class GEOPDAddress, GEOPDAddressObject, GEOPDAmenities, GEOPDAssociatedApp, GEOPDBounds, GEOPDBrowseCategories, GEOPDBusinessClaim, GEOPDCaptionedPhoto, GEOPDContainedPlace, GEOPDETA, GEOPDEntity, GEOPDExternalAction, GEOPDFactoid, GEOPDFlyover, GEOPDHours, GEOPDIcon, GEOPDLocationEvent, GEOPDMessageLink, GEOPDPhoto, GEOPDPlaceInfo, GEOPDPlacecardURL, GEOPDPriceDescription, GEOPDQuickLink, GEOPDRap, GEOPDRating, GEOPDRawAttribute, GEOPDRestaurantReservationLink, GEOPDResultSnippet, GEOPDReview, GEOPDRoadAccessInfo, GEOPDSimpleRestaurantMenuText, GEOPDSpatialLookupResult, GEOPDTextBlock, GEOPDTip, GEOPDTransitAttribution, GEOPDTransitIncident, GEOPDTransitInfo, GEOPDTransitInfoSnippet, GEOPDTransitSchedule, GEOPDVenueInfo, GEOPDWifiFingerprint, GEOStyleAttributes, PBUnknownFields;
 
 @interface GEOPDComponentValue : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     GEOPDRoadAccessInfo *_accessInfo;
     GEOPDAddress *_address;
     GEOPDAddressObject *_addressObject;
     GEOPDAmenities *_amenities;
     GEOPDAssociatedApp *_associatedApp;
     GEOPDBounds *_bounds;
+    GEOPDBrowseCategories *_browseCategories;
     GEOPDBusinessClaim *_businessClaim;
     GEOPDCaptionedPhoto *_captionedPhoto;
+    GEOPDContainedPlace *_containedPlace;
     GEOPDEntity *_entity;
     GEOPDETA *_eta;
     GEOPDExternalAction *_externalAction;
     GEOPDFactoid *_factoid;
     GEOPDFlyover *_flyover;
     GEOPDHours *_hours;
+    GEOPDIcon *_icon;
+    GEOPDLocationEvent *_locationEvent;
+    GEOPDMessageLink *_messageLink;
     GEOPDPhoto *_photo;
     GEOPDPlaceInfo *_placeInfo;
     GEOPDPlacecardURL *_placecardUrl;
+    GEOPDPriceDescription *_priceDescription;
+    GEOPDQuickLink *_quickLink;
     GEOPDRap *_rap;
     GEOPDRating *_rating;
     GEOPDRawAttribute *_rawAttribute;
@@ -45,6 +53,8 @@
     GEOPDTransitInfo *_transitInfo;
     GEOPDTransitInfoSnippet *_transitInfoSnippet;
     GEOPDTransitSchedule *_transitSchedule;
+    GEOPDVenueInfo *_venueInfo;
+    GEOPDWifiFingerprint *_wifiFingerprint;
 }
 
 @property (strong, nonatomic) GEOPDRoadAccessInfo *accessInfo; // @synthesize accessInfo=_accessInfo;
@@ -53,8 +63,10 @@
 @property (strong, nonatomic) GEOPDAmenities *amenities; // @synthesize amenities=_amenities;
 @property (strong, nonatomic) GEOPDAssociatedApp *associatedApp; // @synthesize associatedApp=_associatedApp;
 @property (strong, nonatomic) GEOPDBounds *bounds; // @synthesize bounds=_bounds;
+@property (strong, nonatomic) GEOPDBrowseCategories *browseCategories; // @synthesize browseCategories=_browseCategories;
 @property (strong, nonatomic) GEOPDBusinessClaim *businessClaim; // @synthesize businessClaim=_businessClaim;
 @property (strong, nonatomic) GEOPDCaptionedPhoto *captionedPhoto; // @synthesize captionedPhoto=_captionedPhoto;
+@property (strong, nonatomic) GEOPDContainedPlace *containedPlace; // @synthesize containedPlace=_containedPlace;
 @property (strong, nonatomic) GEOPDEntity *entity; // @synthesize entity=_entity;
 @property (strong, nonatomic) GEOPDETA *eta; // @synthesize eta=_eta;
 @property (strong, nonatomic) GEOPDExternalAction *externalAction; // @synthesize externalAction=_externalAction;
@@ -66,17 +78,24 @@
 @property (readonly, nonatomic) BOOL hasAmenities;
 @property (readonly, nonatomic) BOOL hasAssociatedApp;
 @property (readonly, nonatomic) BOOL hasBounds;
+@property (readonly, nonatomic) BOOL hasBrowseCategories;
 @property (readonly, nonatomic) BOOL hasBusinessClaim;
 @property (readonly, nonatomic) BOOL hasCaptionedPhoto;
+@property (readonly, nonatomic) BOOL hasContainedPlace;
 @property (readonly, nonatomic) BOOL hasEntity;
 @property (readonly, nonatomic) BOOL hasEta;
 @property (readonly, nonatomic) BOOL hasExternalAction;
 @property (readonly, nonatomic) BOOL hasFactoid;
 @property (readonly, nonatomic) BOOL hasFlyover;
 @property (readonly, nonatomic) BOOL hasHours;
+@property (readonly, nonatomic) BOOL hasIcon;
+@property (readonly, nonatomic) BOOL hasLocationEvent;
+@property (readonly, nonatomic) BOOL hasMessageLink;
 @property (readonly, nonatomic) BOOL hasPhoto;
 @property (readonly, nonatomic) BOOL hasPlaceInfo;
 @property (readonly, nonatomic) BOOL hasPlacecardUrl;
+@property (readonly, nonatomic) BOOL hasPriceDescription;
+@property (readonly, nonatomic) BOOL hasQuickLink;
 @property (readonly, nonatomic) BOOL hasRap;
 @property (readonly, nonatomic) BOOL hasRating;
 @property (readonly, nonatomic) BOOL hasRawAttribute;
@@ -93,10 +112,17 @@
 @property (readonly, nonatomic) BOOL hasTransitInfo;
 @property (readonly, nonatomic) BOOL hasTransitInfoSnippet;
 @property (readonly, nonatomic) BOOL hasTransitSchedule;
+@property (readonly, nonatomic) BOOL hasVenueInfo;
+@property (readonly, nonatomic) BOOL hasWifiFingerprint;
 @property (strong, nonatomic) GEOPDHours *hours; // @synthesize hours=_hours;
+@property (strong, nonatomic) GEOPDIcon *icon; // @synthesize icon=_icon;
+@property (strong, nonatomic) GEOPDLocationEvent *locationEvent; // @synthesize locationEvent=_locationEvent;
+@property (strong, nonatomic) GEOPDMessageLink *messageLink; // @synthesize messageLink=_messageLink;
 @property (strong, nonatomic) GEOPDPhoto *photo; // @synthesize photo=_photo;
 @property (strong, nonatomic) GEOPDPlaceInfo *placeInfo; // @synthesize placeInfo=_placeInfo;
 @property (strong, nonatomic) GEOPDPlacecardURL *placecardUrl; // @synthesize placecardUrl=_placecardUrl;
+@property (strong, nonatomic) GEOPDPriceDescription *priceDescription; // @synthesize priceDescription=_priceDescription;
+@property (strong, nonatomic) GEOPDQuickLink *quickLink; // @synthesize quickLink=_quickLink;
 @property (strong, nonatomic) GEOPDRap *rap; // @synthesize rap=_rap;
 @property (strong, nonatomic) GEOPDRating *rating; // @synthesize rating=_rating;
 @property (strong, nonatomic) GEOPDRawAttribute *rawAttribute; // @synthesize rawAttribute=_rawAttribute;
@@ -113,10 +139,13 @@
 @property (strong, nonatomic) GEOPDTransitInfo *transitInfo; // @synthesize transitInfo=_transitInfo;
 @property (strong, nonatomic) GEOPDTransitInfoSnippet *transitInfoSnippet; // @synthesize transitInfoSnippet=_transitInfoSnippet;
 @property (strong, nonatomic) GEOPDTransitSchedule *transitSchedule; // @synthesize transitSchedule=_transitSchedule;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (strong, nonatomic) GEOPDVenueInfo *venueInfo; // @synthesize venueInfo=_venueInfo;
+@property (strong, nonatomic) GEOPDWifiFingerprint *wifiFingerprint; // @synthesize wifiFingerprint=_wifiFingerprint;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

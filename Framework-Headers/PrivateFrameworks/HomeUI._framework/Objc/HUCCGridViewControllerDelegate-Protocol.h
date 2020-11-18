@@ -9,9 +9,12 @@
 @class HUCCGridViewController, NAFuture;
 
 @protocol HUCCGridViewControllerDelegate <NSObject>
-- (void)gridViewControllerDidEndApplyingDynamicBackgrounds:(HUCCGridViewController *)arg1;
-- (void)gridViewControllerWillBeginApplyingDynamicBackgrounds:(HUCCGridViewController *)arg1;
+- (BOOL)gridViewControllerShouldUsePunchOutBackgrounds:(HUCCGridViewController *)arg1;
 - (BOOL)isDeviceUnlockedForGridViewController:(HUCCGridViewController *)arg1;
 - (NAFuture *)prepareForActionRequiringDeviceUnlockForGridViewController:(HUCCGridViewController *)arg1;
+
+@optional
+- (void)gridViewControllerDidEndApplyingDynamicBackgrounds:(HUCCGridViewController *)arg1;
+- (void)gridViewControllerWillBeginApplyingDynamicBackgrounds:(HUCCGridViewController *)arg1;
 @end
 

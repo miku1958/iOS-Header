@@ -13,12 +13,13 @@
 {
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _isComplete;
+    BOOL _supportsMigrationSync;
     BOOL _complete;
     NRDevice *_pairedDevice;
-    unsigned long long _syncSessionType;
     NSUUID *_sessionIdentifier;
     PSYSyncCoordinator *_syncCoordinator;
     unsigned long long _switchID;
+    unsigned long long _syncSessionType;
     id<PSYServiceSyncSessionDelegate> _delegate;
 }
 
@@ -31,7 +32,7 @@
 @property (nonatomic) unsigned long long syncSessionType; // @synthesize syncSessionType=_syncSessionType;
 
 - (void).cxx_destruct;
-- (id)initWithQueue:(id)arg1;
+- (id)initWithQueue:(id)arg1 supportsMigrationSync:(BOOL)arg2;
 - (void)reportProgress:(double)arg1;
 - (void)syncDidComplete;
 - (void)syncDidCompleteSending;

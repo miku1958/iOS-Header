@@ -20,10 +20,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) SCRCMathExpression *numerator; // @synthesize numerator=_numerator;
 @property (strong, nonatomic) SCRCMathExpression *operator; // @synthesize operator=_operator;
 
+- (void).cxx_destruct;
 - (id)_dollarCodeDescriptionAsBinomialCoefficient:(BOOL)arg1 orMixedNumberFraction:(BOOL)arg2 withNumberOfOuterRadicals:(unsigned long long)arg3 treePosition:(id)arg4;
 - (id)_speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(BOOL)arg2 asBinomialCoefficient:(BOOL)arg3;
 - (id)_speakableSegmentsWithSpeakingStyle:(int)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3 asBinomialCoefficient:(BOOL)arg4;
-- (void)dealloc;
 - (id)description;
 - (id)dollarCodeDescriptionAsBinomialCoefficientWithTreePosition:(id)arg1 numberOfOuterRadicals:(unsigned long long)arg2;
 - (id)dollarCodeDescriptionAsMixedNumberFractionWithTreePosition:(id)arg1;

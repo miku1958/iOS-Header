@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewAnimationState.h>
 
-@class NSMutableDictionary, NSMutableSet;
+@class NSMapTable, NSMutableDictionary, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface UIViewKeyframeAnimationState : UIViewAnimationState
@@ -16,10 +16,14 @@ __attribute__((visibility("hidden")))
     long long _calculationMode;
     NSMutableSet *_keyframeLayers;
     NSMutableDictionary *_keyframeLayersForCurrentKeyFrameDict;
+    NSMapTable *_viewToKeyframesMap;
     BOOL _inFrame;
 }
 
 - (void).cxx_destruct;
+- (BOOL)_addPendingKeyframeValue:(id)arg1 forKey:(id)arg2 view:(id)arg3;
+- (void)_generatePendingKeyframeAnimations;
+- (BOOL)_isKeyframeAnimation;
 - (void)addKeyframeWithRelativeStartTime:(double)arg1 relativeDuration:(double)arg2 animations:(CDUnknownBlockType)arg3;
 - (id)animationForLayer:(id)arg1 forKey:(id)arg2 forView:(id)arg3;
 - (void)cleanupTrackedLayers;

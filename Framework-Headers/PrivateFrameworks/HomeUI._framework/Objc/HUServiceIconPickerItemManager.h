@@ -6,23 +6,19 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFItemProvider, HFServiceBuilder;
+@class HFServiceBuilder;
 
 @interface HUServiceIconPickerItemManager : HFItemManager
 {
     HFServiceBuilder *_serviceBuilder;
-    HFItemProvider *_iconItemProvider;
 }
 
-@property (readonly, nonatomic) HFItemProvider *iconItemProvider; // @synthesize iconItemProvider=_iconItemProvider;
 @property (readonly, nonatomic) HFServiceBuilder *serviceBuilder; // @synthesize serviceBuilder=_serviceBuilder;
 
 - (void).cxx_destruct;
+- (id)_buildItemProvidersForHome:(id)arg1;
 - (CDUnknownBlockType)_comparatorForSectionIdentifier:(id)arg1;
-- (void)_createItemProvidersWithHome:(id)arg1;
-- (id)_itemProviders;
 - (id)_serviceType;
-- (id)_styleForItem:(id)arg1;
 - (id)initWithServiceBuilder:(id)arg1 delegate:(id)arg2;
 
 @end

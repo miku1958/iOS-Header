@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class CUIPSDGradient, CUIShapeEffectPreset, NSArray, NSData, NSDate, NSMutableArray, NSSet, NSString;
+@class CUIPSDGradient, CUIShapeEffectPreset, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSSet, NSString;
 
 @interface CSIGenerator : NSObject
 {
@@ -22,8 +22,9 @@
     BOOL _isVectorBased;
     long long _templateRenderingMode;
     BOOL _allowsMultiPassEncoding;
-    BOOL _allowsOptimalPacking;
+    BOOL _allowsOptimalRowbytesPacking;
     BOOL _optOutOfThinning;
+    BOOL _preservedVectorRepresentation;
     BOOL _isFlippable;
     BOOL _isTintable;
     short _colorSpaceID;
@@ -52,12 +53,17 @@
     long long _textureInterpretation;
     NSMutableArray *_mipReferences;
     BOOL _textureOpaque;
+    NSArray *_colorComponents;
+    NSDictionary *_sizesByIndex;
+    BOOL _clampMetrics;
 }
 
 @property (nonatomic) BOOL allowsMultiPassEncoding; // @synthesize allowsMultiPassEncoding=_allowsMultiPassEncoding;
-@property (nonatomic) BOOL allowsOptimalPacking; // @synthesize allowsOptimalPacking=_allowsOptimalPacking;
+@property (nonatomic) BOOL allowsOptimalRowbytesPacking; // @synthesize allowsOptimalRowbytesPacking=_allowsOptimalRowbytesPacking;
 @property (nonatomic) struct CGRect alphaCroppedFrame; // @synthesize alphaCroppedFrame=_alphaCroppedFrame;
 @property (nonatomic) int blendMode; // @synthesize blendMode=_blendMode;
+@property (nonatomic) BOOL clampMetrics; // @synthesize clampMetrics=_clampMetrics;
+@property (copy, nonatomic) NSArray *colorComponents; // @synthesize colorComponents=_colorComponents;
 @property (nonatomic) short colorSpaceID; // @synthesize colorSpaceID=_colorSpaceID;
 @property (nonatomic) double compressionQuality;
 @property long long compressionType;
@@ -78,8 +84,10 @@
 @property (nonatomic) BOOL optOutOfThinning; // @synthesize optOutOfThinning=_optOutOfThinning;
 @property (nonatomic) struct CGSize originalUncroppedSize; // @synthesize originalUncroppedSize=_originalUncroppedSize;
 @property (nonatomic) unsigned int pixelFormat; // @synthesize pixelFormat=_pixelFormat;
+@property (nonatomic) BOOL preservedVectorRepresentation; // @synthesize preservedVectorRepresentation=_preservedVectorRepresentation;
 @property (nonatomic) unsigned int scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
+@property (copy, nonatomic) NSDictionary *sizesByIndex; // @synthesize sizesByIndex=_sizesByIndex;
 @property (nonatomic) long long templateRenderingMode; // @synthesize templateRenderingMode=_templateRenderingMode;
 @property (nonatomic) long long textureFormat; // @synthesize textureFormat=_textureFormat;
 @property (nonatomic) long long textureInterpretation; // @synthesize textureInterpretation=_textureInterpretation;
@@ -91,6 +99,7 @@
 + (void)setFileEncoding:(int)arg1;
 - (id)CSIRepresentationWithCompression:(BOOL)arg1;
 - (void)_addNodes:(id)arg1 toNodeList:(struct _csigradientdatanode *)arg2;
+- (BOOL)_shouldUseCompactCompressionForBitmap:(id)arg1;
 - (void)_updateCompressionInfoFor:(id)arg1;
 - (void)addBitmap:(id)arg1;
 - (void)addLayerReference:(id)arg1;
@@ -100,18 +109,23 @@
 - (void)dealloc;
 - (void)formatCSIHeader:(struct _csiheader *)arg1;
 - (id)initWithCanvasSize:(struct CGSize)arg1 sliceCount:(unsigned int)arg2 layout:(short)arg3;
+- (id)initWithColorNamed:(id)arg1 colorSpaceID:(unsigned long long)arg2 components:(id)arg3;
 - (id)initWithExplicitlyPackedList:(id)arg1;
 - (id)initWithExternalReference:(id)arg1 tags:(id)arg2;
 - (id)initWithInternalReferenceRect:(struct CGRect)arg1 layout:(short)arg2;
 - (id)initWithLayerStackData:(id)arg1 withCanvasSize:(struct CGSize)arg2;
+- (id)initWithMultisizeImageSetNamed:(id)arg1 sizesByIndex:(id)arg2;
 - (id)initWithRawData:(id)arg1 pixelFormat:(unsigned int)arg2 layout:(short)arg3;
 - (id)initWithShapeEffectPreset:(id)arg1 forScaleFactor:(unsigned int)arg2;
 - (id)initWithTextureForPixelFormat:(long long)arg1;
 - (id)initWithTextureImageWithSize:(struct CGSize)arg1 forPixelFormat:(long long)arg2 cubeMap:(BOOL)arg3;
+- (id)rawData;
 - (unsigned long long)writeBitmap:(id)arg1 toData:(id)arg2 compress:(BOOL)arg3;
+- (unsigned long long)writeColorToData:(id)arg1;
 - (unsigned long long)writeExternalLinkToData:(id)arg1;
 - (unsigned long long)writeGradientToData:(id)arg1;
 - (void)writeHeader:(struct _csiheader *)arg1 toData:(id)arg2;
+- (unsigned long long)writeMultisizeImageSetToData:(id)arg1;
 - (unsigned long long)writeRawDataToData:(id)arg1;
 - (unsigned long long)writeResourcesToData:(id)arg1;
 - (unsigned long long)writeTextureToData:(id)arg1;

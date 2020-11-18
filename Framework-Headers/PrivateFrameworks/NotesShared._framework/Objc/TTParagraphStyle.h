@@ -8,21 +8,22 @@
 
 #import <NotesShared/NSCopying-Protocol.h>
 #import <NotesShared/NSMutableCopying-Protocol.h>
+#import <NotesShared/NSSecureCoding-Protocol.h>
 #import <NotesShared/TTModelAttributeComparable-Protocol.h>
 
 @class NSString, NSUUID, TTTodo;
 
-@interface TTParagraphStyle : NSObject <NSCopying, NSMutableCopying, TTModelAttributeComparable>
+@interface TTParagraphStyle : NSObject <NSSecureCoding, NSCopying, NSMutableCopying, TTModelAttributeComparable>
 {
     BOOL _needsParagraphCleanup;
     BOOL _needsListCleanup;
     unsigned int _style;
     unsigned int _hints;
+    long long _alignment;
     long long _writingDirection;
     unsigned long long _indent;
     unsigned long long _startingItemNumber;
     TTTodo *_todo;
-    long long _alignment;
 }
 
 @property (nonatomic) long long alignment; // @synthesize alignment=_alignment;
@@ -34,7 +35,6 @@
 @property (nonatomic) unsigned long long indent; // @synthesize indent=_indent;
 @property (readonly, nonatomic) BOOL isHeader;
 @property (readonly, nonatomic) BOOL isList;
-@property (readonly, nonatomic) long long layoutWritingDirection;
 @property (nonatomic) BOOL needsListCleanup; // @synthesize needsListCleanup=_needsListCleanup;
 @property (nonatomic) BOOL needsParagraphCleanup; // @synthesize needsParagraphCleanup=_needsParagraphCleanup;
 @property (readonly, nonatomic) BOOL preferSingleLine;
@@ -50,11 +50,14 @@
 + (id)defaultParagraphStyle;
 + (int)paragraphStyleAlignmentForTextAlignment:(long long)arg1;
 + (id)paragraphStyleNamed:(unsigned int)arg1;
++ (BOOL)supportsSecureCoding;
 + (long long)textAlignmentForParagraphStyleAlignment:(int)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithArchive:(const struct ParagraphStyle *)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToModelComparable:(id)arg1;

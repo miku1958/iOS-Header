@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PassKitCore/PKWebServiceContext.h>
 
-#import <PassKitCore/NSSecureCoding-Protocol.h>
-
-@class NSArray, NSDate, NSDictionary, NSMutableDictionary, NSString, PKPaymentWebServiceConfiguration, PKPaymentWebServiceRegion;
+@class NSArray, NSDate, NSDictionary, NSMutableDictionary, NSObject, NSString, PKPaymentWebServiceConfiguration, PKPaymentWebServiceRegion;
 @protocol OS_dispatch_queue;
 
-@interface PKPaymentWebServiceContext : NSObject <NSSecureCoding>
+@interface PKPaymentWebServiceContext : PKWebServiceContext
 {
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _devSigned;
@@ -22,6 +20,7 @@
     NSString *_deviceID;
     NSString *_secureElementID;
     NSString *_pushToken;
+    NSString *_companionSerialNumber;
     NSDate *_registrationDate;
     NSDate *_configurationDate;
     PKPaymentWebServiceConfiguration *_configuration;
@@ -35,6 +34,7 @@
 
 @property (readonly, weak) NSDictionary *TSMURLStringByPushTopic;
 @property (copy) NSArray *certificates; // @synthesize certificates=_certificates;
+@property (copy) NSString *companionSerialNumber; // @synthesize companionSerialNumber=_companionSerialNumber;
 @property (strong) PKPaymentWebServiceConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (copy) NSDate *configurationDate; // @synthesize configurationDate=_configurationDate;
 @property long long consistencyCheckBackoffLevel; // @synthesize consistencyCheckBackoffLevel=_consistencyCheckBackoffLevel;
@@ -61,7 +61,6 @@
 - (id)TSMPushTopics;
 - (double)_contextProvisioningEnablementValue;
 - (void)addVerificationRequestRecord:(id)arg1 forUniqueID:(id)arg2;
-- (void)archiveAtPath:(id)arg1;
 - (BOOL)contextMeetsProvisioningEnablementPercentageThresholdForRegion:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

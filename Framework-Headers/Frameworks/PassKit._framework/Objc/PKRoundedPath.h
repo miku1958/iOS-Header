@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSMutableArray;
 
@@ -25,6 +25,7 @@
 - (void)addLineToPointX:(double)arg1 y:(double)arg2;
 - (struct CGRect)boundingRect;
 - (void)closeSubpath;
+- (void)dealloc;
 - (id)initWithPoints:(struct CGPoint *)arg1 count:(long long)arg2;
 - (id)initWithRect:(struct CGRect)arg1 withRoundedCorners:(int)arg2 cornerRadii:(id)arg3 smoothPillShapes:(BOOL)arg4;
 

@@ -67,6 +67,7 @@
 - (BOOL)supportsNoteSyncing;
 - (BOOL)supportsProposeNewTime;
 - (BOOL)supportsSettingsCommand;
+- (BOOL)supportsUniqueServerId;
 - (BOOL)syncSnoozeEvents;
 - (BOOL)useBooleanFolderItemsSyncDeletesAsMoves;
 - (BOOL)useEmptyAttendees;

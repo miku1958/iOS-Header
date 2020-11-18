@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSLock, NSMutableArray;
 @protocol OS_dispatch_source;
@@ -18,10 +18,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedListener;
+- (void).cxx_destruct;
 - (void)_finish:(BOOL)arg1;
-- (void)dealloc;
 - (id)init;
-- (void)waitForManifestWithHandler:(CDUnknownBlockType)arg1;
+- (void)waitForManifestWithCallback:(id)arg1;
 
 @end
 

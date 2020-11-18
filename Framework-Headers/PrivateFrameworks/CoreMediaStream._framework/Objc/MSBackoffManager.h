@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreMediaStream/NSCoding-Protocol.h>
+#import <CoreMediaStream/NSSecureCoding-Protocol.h>
 
 @class NSDate;
 @protocol MSBackoffManagerDelegate;
 
-@interface MSBackoffManager : NSObject <NSCoding>
+@interface MSBackoffManager : NSObject <NSSecureCoding>
 {
     id<MSBackoffManagerDelegate> _delegate;
     double _initialInterval;
@@ -28,10 +28,11 @@
 @property (nonatomic) id<MSBackoffManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) double initialInterval; // @synthesize initialInterval=_initialInterval;
 @property (nonatomic) double maxBackoffInterval; // @synthesize maxBackoffInterval=_maxBackoffInterval;
-@property (strong, nonatomic) NSDate *nextExpiryDate; // @synthesize nextExpiryDate=_nextExpiryDate;
+@property (strong) NSDate *nextExpiryDate;
 @property (nonatomic) double randomizeFactor; // @synthesize randomizeFactor=_randomizeFactor;
-@property (strong, nonatomic) NSDate *retryAfterDate; // @synthesize retryAfterDate=_retryAfterDate;
+@property (strong) NSDate *retryAfterDate; // @synthesize retryAfterDate=_retryAfterDate;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_complainAboutMissingKeyInArchive:(id)arg1;
 - (void)backoff;
@@ -40,6 +41,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInitialInterval:(double)arg1 backoffFactor:(double)arg2 randomizeFactor:(double)arg3 maxBackoffInterval:(double)arg4 retryAfterDate:(id)arg5;
+- (BOOL)isEqual:(id)arg1;
 - (void)reset;
 
 @end

@@ -22,9 +22,9 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL value;
 
++ (id)aceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)getMobileGestaltBoolResponse;
 + (id)getMobileGestaltBoolResponseWithDictionary:(id)arg1 context:(id)arg2;
-+ (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

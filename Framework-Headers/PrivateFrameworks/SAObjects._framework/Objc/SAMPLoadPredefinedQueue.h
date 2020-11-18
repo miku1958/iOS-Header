@@ -6,13 +6,14 @@
 
 #import <SAObjects/SADomainCommand.h>
 
-@class NSNumber, NSString;
+@class NSArray, NSNumber;
 
 @interface SAMPLoadPredefinedQueue : SADomainCommand
 {
 }
 
-@property (copy, nonatomic) NSString *airplayRouteUID;
+@property (nonatomic) BOOL dryRun;
+@property (copy, nonatomic) NSArray *hashedRouteUIDs;
 @property (nonatomic) int mediaItemType;
 @property (nonatomic) BOOL shouldShuffle;
 @property (copy, nonatomic) NSNumber *startPlaying;
@@ -21,6 +22,7 @@
 + (id)loadPredefinedQueueWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)mutatingCommand;
 - (BOOL)requiresResponse;
 
 @end

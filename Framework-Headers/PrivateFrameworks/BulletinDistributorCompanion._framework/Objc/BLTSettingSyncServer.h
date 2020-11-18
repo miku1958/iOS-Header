@@ -10,18 +10,18 @@
 #import <BulletinDistributorCompanion/BLTSettingsSendSerializerDelegate-Protocol.h>
 
 @class BLTPreviouslySentMessageStore, BLTSettingsSendSerializerPassthrough, NSString;
-@protocol BLTSettingSyncing;
+@protocol BLTSettingSyncingClient;
 
 @interface BLTSettingSyncServer : BLTRemoteObject <BLTSettingsSendSerializerDelegate, BLTSettingSyncing>
 {
     BLTSettingsSendSerializerPassthrough *_settingSendSerializer;
-    id<BLTSettingSyncing> _delegate;
+    id<BLTSettingSyncingClient> _delegate;
     BLTPreviouslySentMessageStore *_sectionInfoPreviouslySentMessageStore;
     BLTPreviouslySentMessageStore *_sectionSubtypeParametersIconsPreviouslySentMessageStore;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<BLTSettingSyncing> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<BLTSettingSyncingClient> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) BLTPreviouslySentMessageStore *sectionInfoPreviouslySentMessageStore; // @synthesize sectionInfoPreviouslySentMessageStore=_sectionInfoPreviouslySentMessageStore;
@@ -31,6 +31,9 @@
 - (void).cxx_destruct;
 - (void)_handleResponse:(id)arg1;
 - (void)clearSectionInfoSentCache;
+- (void)enableNotifications:(BOOL)arg1 sectionID:(id)arg2 mirror:(BOOL)arg3;
+- (void)enableNotifications:(BOOL)arg1 sectionID:(id)arg2 mirror:(BOOL)arg3 spoolToFile:(BOOL)arg4;
+- (void)handleEnableNotificationsRequest:(id)arg1;
 - (void)handleFileURL:(id)arg1 extraMetadata:(id)arg2;
 - (void)handleRemoveSectionRequest:(id)arg1;
 - (void)handleSetSectionInfoRequest:(id)arg1;
@@ -45,7 +48,6 @@
 - (void)setSectionInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setSectionInfo:(id)arg1 withQueue:(id)arg2 withSent:(CDUnknownBlockType)arg3 withAcknowledgement:(CDUnknownBlockType)arg4 spoolToFile:(BOOL)arg5;
 - (void)setSectionSubtypeParametersIcon:(id)arg1 forSectionID:(id)arg2 forSubtypeID:(long long)arg3;
-- (void)setSectionSubtypeParametersIcon:(id)arg1 forSectionID:(id)arg2 forSubtypeID:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setSectionSubtypeParametersIcon:(id)arg1 forSectionID:(id)arg2 forSubtypeID:(long long)arg3 withQueue:(id)arg4 withSent:(CDUnknownBlockType)arg5 withAcknowledgement:(CDUnknownBlockType)arg6 spoolToFile:(BOOL)arg7;
 
 @end

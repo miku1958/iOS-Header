@@ -8,7 +8,7 @@
 
 #import <HomeUI/UIScrollViewDelegate-Protocol.h>
 
-@class HFWallpaper, NSString, UIButton, UIImage, UIImageView, UIScrollView, UIVisualEffectView;
+@class HFWallpaper, NSString, UIButton, UIImage, UIImageView, UIScrollView, UIView, UIVisualEffectView;
 @protocol HUWallpaperEditingViewControllerDelegate;
 
 @interface HUWallpaperEditingViewController : UIViewController <UIScrollViewDelegate>
@@ -19,14 +19,17 @@
     UIImage *_image;
     UIScrollView *_scrollView;
     UIImageView *_imageView;
+    UIView *_buttonContainerView;
+    UIView *_buttonSeparatorView;
     UIButton *_cancelButton;
     UIButton *_setButton;
-    UIVisualEffectView *_cancelButtonBackgroundView;
-    UIVisualEffectView *_setButtonBackgroundView;
+    UIVisualEffectView *_buttonBackgroundView;
 }
 
+@property (strong, nonatomic) UIVisualEffectView *buttonBackgroundView; // @synthesize buttonBackgroundView=_buttonBackgroundView;
+@property (strong, nonatomic) UIView *buttonContainerView; // @synthesize buttonContainerView=_buttonContainerView;
+@property (strong, nonatomic) UIView *buttonSeparatorView; // @synthesize buttonSeparatorView=_buttonSeparatorView;
 @property (strong, nonatomic) UIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
-@property (strong, nonatomic) UIVisualEffectView *cancelButtonBackgroundView; // @synthesize cancelButtonBackgroundView=_cancelButtonBackgroundView;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUWallpaperEditingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -35,16 +38,16 @@
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (strong, nonatomic) UIButton *setButton; // @synthesize setButton=_setButton;
-@property (strong, nonatomic) UIVisualEffectView *setButtonBackgroundView; // @synthesize setButtonBackgroundView=_setButtonBackgroundView;
 @property (nonatomic) BOOL statusBarHidden; // @synthesize statusBarHidden=_statusBarHidden;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) HFWallpaper *wallpaper; // @synthesize wallpaper=_wallpaper;
 
 - (void).cxx_destruct;
+- (id)_createButtonConstraints;
+- (id)_createButtonViews;
 - (void)buttonPressed:(id)arg1;
 - (void)buttonTouchFinished:(id)arg1;
 - (void)buttonTouchStarted:(id)arg1;
-- (id)buttonsView;
 - (id)initWithWallpaper:(id)arg1 image:(id)arg2 delegate:(id)arg3;
 - (long long)preferredStatusBarUpdateAnimation;
 - (BOOL)prefersStatusBarHidden;

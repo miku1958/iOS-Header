@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOEquatorialCelestialBodyData, GEOHorizontalCelestialBodyData, GEOSolarEclipticCelestialBodyData, NSDate;
 
@@ -36,9 +36,9 @@
 @property (readonly, nonatomic) NSDate *set; // @synthesize set=_set;
 @property (readonly, nonatomic) NSDate *transit; // @synthesize transit=_transit;
 
+- (void).cxx_destruct;
 - (void)_getRightAscension:(double *)arg1 declination:(double *)arg2 forJulianDay:(double)arg3 forBody:(long long)arg4;
 - (struct CAARiseTransitSetDetails)_riseTransitSetForBody:(long long)arg1;
-- (void)dealloc;
 - (id)initWithLocation:(CDStruct_c3b9c2ee)arg1 date:(id)arg2 body:(long long)arg3;
 
 @end

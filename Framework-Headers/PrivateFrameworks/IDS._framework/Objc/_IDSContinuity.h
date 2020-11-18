@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 
@@ -25,6 +25,7 @@
 @property (readonly) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_callDelegateWithBlock:(CDUnknownBlockType)arg1;
 - (void)_daemonDied:(id)arg1;
 - (void)_handleReconnect;

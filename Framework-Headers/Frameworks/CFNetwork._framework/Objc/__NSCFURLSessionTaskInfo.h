@@ -8,10 +8,13 @@
 
 #import <CFNetwork/NSSecureCoding-Protocol.h>
 
-@class AVURLAsset, NSData, NSDictionary, NSError, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSessionTaskMetrics;
+@class AVURLAsset, NSData, NSDate, NSDictionary, NSError, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSessionTaskMetrics;
+@protocol SZExtractor;
 
 @interface __NSCFURLSessionTaskInfo : NSObject <NSSecureCoding>
 {
+    BOOL _resumedAndWaitingForEarliestBeginDate;
+    BOOL _respondedToWillBeginDelayedRequestCallback;
     BOOL _hasStarted;
     BOOL _expectingResumeCallback;
     BOOL _establishedConnection;
@@ -19,7 +22,7 @@
     BOOL _shouldCancelOnDisconnect;
     BOOL _discretionary;
     BOOL _mayBeDemotedToDiscretionary;
-    BOOL _initializedFromToken;
+    BOOL _initializedWithAVAsset;
     unsigned long long _identifier;
     unsigned long long _taskKind;
     double _creationTime;
@@ -29,6 +32,9 @@
     NSURLRequest *_originalRequest;
     NSURLRequest *_currentRequest;
     NSURLResponse *_response;
+    NSDate *_earliestBeginDate;
+    long long _countOfBytesClientExpectsToSend;
+    long long _countOfBytesClientExpectsToReceive;
     NSError *_error;
     NSURL *_fileURL;
     NSURL *_downloadFileURL;
@@ -42,15 +48,19 @@
     long long _bytesPerSecondLimit;
     double _loadingPriority;
     NSString *_pathToDownloadTaskFile;
+    double _timeoutIntervalForResource;
+    id<SZExtractor> __extractor;
     unsigned long long _AVAssetDownloadToken;
     NSURL *_URL;
     NSURL *_destinationURL;
     NSString *_assetTitle;
     NSData *_assetArtworkData;
     NSDictionary *_options;
-    unsigned long long _downloadTokenFromInitialization;
     AVURLAsset *_AVURLAsset;
+    NSURL *_AVAssetURL;
     NSURL *_temporaryDestinationURL;
+    NSDictionary *_resolvedMediaSelectionPlist;
+    NSString *_avAssetDownloadChildDownloadSessionIdentifier;
     long long _countOfBytesReceived;
     long long _countOfBytesSent;
     long long _countOfBytesExpectedToSend;
@@ -58,19 +68,26 @@
     NSDictionary *__backgroundTaskTimingData;
     NSDictionary *__backgroundTrailers;
     NSURLSessionTaskMetrics *__backgroundTaskMetrics;
+    NSDictionary *_additionalProperties;
 }
 
 @property unsigned long long AVAssetDownloadToken; // @synthesize AVAssetDownloadToken=_AVAssetDownloadToken;
+@property (copy) NSURL *AVAssetURL; // @synthesize AVAssetURL=_AVAssetURL;
 @property (strong) AVURLAsset *AVURLAsset; // @synthesize AVURLAsset=_AVURLAsset;
 @property (copy) NSURL *URL; // @synthesize URL=_URL;
 @property (strong) NSURLSessionTaskMetrics *_backgroundTaskMetrics; // @synthesize _backgroundTaskMetrics=__backgroundTaskMetrics;
 @property (copy) NSDictionary *_backgroundTaskTimingData; // @synthesize _backgroundTaskTimingData=__backgroundTaskTimingData;
 @property (strong) NSDictionary *_backgroundTrailers; // @synthesize _backgroundTrailers=__backgroundTrailers;
+@property (strong, nonatomic) id<SZExtractor> _extractor; // @synthesize _extractor=__extractor;
+@property (copy) NSDictionary *additionalProperties; // @synthesize additionalProperties=_additionalProperties;
 @property (copy) NSData *assetArtworkData; // @synthesize assetArtworkData=_assetArtworkData;
 @property (copy) NSString *assetTitle; // @synthesize assetTitle=_assetTitle;
+@property (copy) NSString *avAssetDownloadChildDownloadSessionIdentifier; // @synthesize avAssetDownloadChildDownloadSessionIdentifier=_avAssetDownloadChildDownloadSessionIdentifier;
 @property long long basePriority; // @synthesize basePriority=_basePriority;
 @property (copy) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property long long bytesPerSecondLimit; // @synthesize bytesPerSecondLimit=_bytesPerSecondLimit;
+@property long long countOfBytesClientExpectsToReceive; // @synthesize countOfBytesClientExpectsToReceive=_countOfBytesClientExpectsToReceive;
+@property long long countOfBytesClientExpectsToSend; // @synthesize countOfBytesClientExpectsToSend=_countOfBytesClientExpectsToSend;
 @property long long countOfBytesExpectedToReceive; // @synthesize countOfBytesExpectedToReceive=_countOfBytesExpectedToReceive;
 @property long long countOfBytesExpectedToSend; // @synthesize countOfBytesExpectedToSend=_countOfBytesExpectedToSend;
 @property long long countOfBytesReceived; // @synthesize countOfBytesReceived=_countOfBytesReceived;
@@ -81,21 +98,24 @@
 @property BOOL disablesRetry; // @synthesize disablesRetry=_disablesRetry;
 @property (getter=isDiscretionary) BOOL discretionary; // @synthesize discretionary=_discretionary;
 @property (copy) NSURL *downloadFileURL; // @synthesize downloadFileURL=_downloadFileURL;
-@property unsigned long long downloadTokenFromInitialization; // @synthesize downloadTokenFromInitialization=_downloadTokenFromInitialization;
+@property (copy) NSDate *earliestBeginDate; // @synthesize earliestBeginDate=_earliestBeginDate;
 @property (copy) NSError *error; // @synthesize error=_error;
 @property BOOL establishedConnection; // @synthesize establishedConnection=_establishedConnection;
 @property BOOL expectingResumeCallback; // @synthesize expectingResumeCallback=_expectingResumeCallback;
 @property (copy) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property BOOL hasStarted; // @synthesize hasStarted=_hasStarted;
 @property unsigned long long identifier; // @synthesize identifier=_identifier;
-@property BOOL initializedFromToken; // @synthesize initializedFromToken=_initializedFromToken;
+@property BOOL initializedWithAVAsset; // @synthesize initializedWithAVAsset=_initializedWithAVAsset;
 @property double loadingPriority; // @synthesize loadingPriority=_loadingPriority;
 @property unsigned long long lowThroughputTimerRetryCount; // @synthesize lowThroughputTimerRetryCount=_lowThroughputTimerRetryCount;
 @property BOOL mayBeDemotedToDiscretionary; // @synthesize mayBeDemotedToDiscretionary=_mayBeDemotedToDiscretionary;
 @property (copy) NSDictionary *options; // @synthesize options=_options;
 @property (copy) NSURLRequest *originalRequest; // @synthesize originalRequest=_originalRequest;
 @property (copy) NSString *pathToDownloadTaskFile; // @synthesize pathToDownloadTaskFile=_pathToDownloadTaskFile;
+@property (copy) NSDictionary *resolvedMediaSelectionPlist; // @synthesize resolvedMediaSelectionPlist=_resolvedMediaSelectionPlist;
+@property BOOL respondedToWillBeginDelayedRequestCallback; // @synthesize respondedToWillBeginDelayedRequestCallback=_respondedToWillBeginDelayedRequestCallback;
 @property (copy) NSURLResponse *response; // @synthesize response=_response;
+@property BOOL resumedAndWaitingForEarliestBeginDate; // @synthesize resumedAndWaitingForEarliestBeginDate=_resumedAndWaitingForEarliestBeginDate;
 @property unsigned long long retryCount; // @synthesize retryCount=_retryCount;
 @property (copy) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property BOOL shouldCancelOnDisconnect; // @synthesize shouldCancelOnDisconnect=_shouldCancelOnDisconnect;
@@ -105,17 +125,21 @@
 @property (copy) NSString *taskDescription; // @synthesize taskDescription=_taskDescription;
 @property unsigned long long taskKind; // @synthesize taskKind=_taskKind;
 @property (copy) NSURL *temporaryDestinationURL; // @synthesize temporaryDestinationURL=_temporaryDestinationURL;
+@property double timeoutIntervalForResource; // @synthesize timeoutIntervalForResource=_timeoutIntervalForResource;
 @property (copy) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 + (BOOL)supportsSecureCoding;
+- (void)_logTaskUUIDMapping;
+- (id)_loggableDescription;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithAVAssetDownloadURL:(id)arg1 destinationURL:(id)arg2 assetTitle:(id)arg3 assetArtworkData:(id)arg4 options:(id)arg5 taskIdentifier:(unsigned long long)arg6 bundleID:(id)arg7 sessionID:(id)arg8;
+- (id)initWithAVAggregateAssetDownloadChildDownloadSessionIdentifier:(id)arg1 assetTitle:(id)arg2 assetArtworkData:(id)arg3 options:(id)arg4 taskIdentifier:(unsigned long long)arg5 uniqueIdentifier:(id)arg6 bundleID:(id)arg7 sessionID:(id)arg8;
+- (id)initWithAVAssetDownloadURL:(id)arg1 destinationURL:(id)arg2 assetTitle:(id)arg3 assetArtworkData:(id)arg4 options:(id)arg5 taskIdentifier:(unsigned long long)arg6 uniqueIdentifier:(id)arg7 bundleID:(id)arg8 sessionID:(id)arg9;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDataTask:(id)arg1 bundleID:(id)arg2 sessionID:(id)arg3;
-- (id)initWithDownloadTask:(id)arg1 bundleID:(id)arg2 sessionID:(id)arg3;
-- (id)initWithTask:(id)arg1 bundleID:(id)arg2 sessionID:(id)arg3;
-- (id)initWithUploadTask:(id)arg1 bundleID:(id)arg2 sessionID:(id)arg3;
+- (id)initWithDataTask:(id)arg1 uniqueIdentifier:(id)arg2 bundleID:(id)arg3 sessionID:(id)arg4;
+- (id)initWithDownloadTask:(id)arg1 uniqueIdentifier:(id)arg2 bundleID:(id)arg3 sessionID:(id)arg4;
+- (id)initWithTask:(id)arg1 uniqueIdentifier:(id)arg2 bundleID:(id)arg3 sessionID:(id)arg4;
+- (id)initWithUploadTask:(id)arg1 uniqueIdentifier:(id)arg2 bundleID:(id)arg3 sessionID:(id)arg4;
 
 @end
 

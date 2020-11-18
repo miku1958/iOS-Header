@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOETAResult, GEOETAServiceResponseSummary, GEOPDDatasetABStatus, GEOPlaceSearchResponse, NSMutableArray;
+@class GEOClientMetrics, GEOETAResult, GEOETAServiceResponseSummary, GEOPDDatasetABStatus, GEOPlaceSearchResponse, NSMutableArray;
 
 @interface GEOETAResponse : PBCodable <NSCopying>
 {
@@ -16,6 +16,7 @@
     struct GEOProblemDetail *_problemDetails;
     unsigned long long _problemDetailsCount;
     unsigned long long _problemDetailsSpace;
+    GEOClientMetrics *_clientMetrics;
     GEOPDDatasetABStatus *_datasetAbStatus;
     NSMutableArray *_etaResultReferencePointDestinations;
     GEOETAResult *_etaResultReferencePointOrigin;
@@ -26,12 +27,14 @@
     CDStruct_00a28cb6 _has;
 }
 
+@property (strong, nonatomic) GEOClientMetrics *clientMetrics;
 @property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus; // @synthesize datasetAbStatus=_datasetAbStatus;
 @property (nonatomic) unsigned long long debugServerLatencyMs;
 @property (strong, nonatomic) NSMutableArray *etaResultReferencePointDestinations; // @synthesize etaResultReferencePointDestinations=_etaResultReferencePointDestinations;
 @property (strong, nonatomic) GEOETAResult *etaResultReferencePointOrigin; // @synthesize etaResultReferencePointOrigin=_etaResultReferencePointOrigin;
 @property (strong, nonatomic) NSMutableArray *etaResults; // @synthesize etaResults=_etaResults;
 @property (strong, nonatomic) GEOETAServiceResponseSummary *etaServiceSummary;
+@property (readonly, nonatomic) BOOL hasClientMetrics;
 @property (readonly, nonatomic) BOOL hasDatasetAbStatus;
 @property (nonatomic) BOOL hasDebugServerLatencyMs;
 @property (readonly, nonatomic) BOOL hasEtaResultReferencePointOrigin;
@@ -45,6 +48,7 @@
 
 + (Class)etaResultReferencePointDestinationType;
 + (Class)etaResultType;
+- (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
 - (void)addEtaResult:(id)arg1;
 - (void)addEtaResultReferencePointDestination:(id)arg1;

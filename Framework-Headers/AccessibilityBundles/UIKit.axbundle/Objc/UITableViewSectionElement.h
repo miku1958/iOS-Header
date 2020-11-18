@@ -27,7 +27,7 @@
 - (BOOL)_accessibilityIsNotFirstElement;
 - (void)_appendTextChildWithTitle:(id)arg1;
 - (id)accessibilityChildren;
-- (id)accessibilityContainerElements;
+- (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityIdentifier;
 - (BOOL)accessibilityScrollToVisible;

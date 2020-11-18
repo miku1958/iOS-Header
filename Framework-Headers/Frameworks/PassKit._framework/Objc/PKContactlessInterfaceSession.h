@@ -17,13 +17,11 @@
     NSArray *_activatedHostCards;
     NSArray *_valueAddedServiceTransactions;
     PKFieldProperties *_fieldProperties;
+    PKFieldProperties *_fieldPropertiesToLookup;
     unsigned long long _transactionStartTime;
     BOOL _fieldPresent;
-    BOOL _fieldPropertiesLookupActive;
-    BOOL _fieldPropertiesLookupProcessed;
-    unsigned long long _fieldPropertiesLookupValueAddedServiceMode;
-    unsigned long long _fieldPropertiesLookupTechnology;
     BOOL _handlingExpress;
+    unsigned long long _expressActivity;
     BOOL _felicaStateChanged;
     unsigned long long _state;
     id<PKContactlessInterfaceSessionDelegate> _delegate;
@@ -45,6 +43,8 @@
 - (BOOL)activatePaymentApplication:(id)arg1 forPaymentPass:(id)arg2;
 - (BOOL)activatePaymentApplication:(id)arg1 forPaymentPass:(id)arg2 markAsDefault:(BOOL)arg3;
 - (BOOL)activateValueAddedServicePassWhitelist:(id)arg1 greylist:(id)arg2;
+- (BOOL)activateValueAddedServicePasses:(id)arg1;
+- (BOOL)authorizeAndStartCardEmulationWithCredential:(id)arg1;
 - (BOOL)authorizeAndStartCardEmulationWithCredential:(id)arg1 deferAuthorization:(BOOL)arg2;
 - (void)invalidateSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)queuePersistentCardEmulation;

@@ -54,7 +54,6 @@
 - (struct CGSize)_playerCurrentItemPresentationSize;
 - (BOOL)_preventsChangesToSublayerHierarchy;
 - (void)_restoreClientLayers:(id)arg1 intoMaskLayer:(id)arg2;
-- (void)_scaleVideoLayerUsingLanczosFilterWithSublayerTransform:(struct CATransform3D)arg1;
 - (void)_setCanEnterPIPMode:(BOOL)arg1;
 - (void)_setPreventsChangesToSublayerHierarchy:(BOOL)arg1;
 - (void)_setSublayersForPIP:(id)arg1;

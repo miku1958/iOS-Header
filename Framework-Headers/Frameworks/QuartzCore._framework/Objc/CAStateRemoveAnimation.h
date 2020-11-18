@@ -15,6 +15,7 @@
 
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;
 
++ (BOOL)supportsSecureCoding;
 - (id)CAMLTypeForKey:(id)arg1;
 - (void)apply:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

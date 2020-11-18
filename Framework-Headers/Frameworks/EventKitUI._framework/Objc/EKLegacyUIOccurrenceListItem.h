@@ -18,7 +18,6 @@
     unsigned int _designator:2;
     unsigned int _isAllDay:1;
     unsigned int _isBirthday:1;
-    unsigned int _isFacebook:1;
     unsigned int _tentative:1;
     unsigned int _declined:1;
     unsigned int _needsReply:1;
@@ -62,7 +61,6 @@
 - (void)setIsAllDay:(BOOL)arg1;
 - (void)setIsBirthday:(BOOL)arg1;
 - (void)setIsEndDate:(BOOL)arg1;
-- (void)setIsFacebook:(BOOL)arg1;
 - (void)setLocation:(id)arg1;
 - (void)setNeedsReply:(BOOL)arg1;
 - (void)setShowsColors:(BOOL)arg1;

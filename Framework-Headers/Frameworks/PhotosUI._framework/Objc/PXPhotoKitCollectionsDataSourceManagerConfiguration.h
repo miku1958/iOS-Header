@@ -13,10 +13,12 @@
     BOOL _isRootSharedAlbum;
     BOOL _isRootFolder;
     BOOL _shouldHideEmptyCollections;
+    BOOL _shouldHideSmartAlbums;
     BOOL _canShowVirtualCollections;
     BOOL _isPickingSession;
     BOOL _canShowPeopleAlbum;
     BOOL _canShowScenesAlbum;
+    BOOL _canShowMemoriesAlbum;
     PHCollectionList *_collectionList;
     PHFetchResult *_collectionsFetchResult;
     NSPredicate *_assetFilteringPredicate;
@@ -24,6 +26,7 @@
 }
 
 @property (strong) NSPredicate *assetFilteringPredicate; // @synthesize assetFilteringPredicate=_assetFilteringPredicate;
+@property BOOL canShowMemoriesAlbum; // @synthesize canShowMemoriesAlbum=_canShowMemoriesAlbum;
 @property BOOL canShowPeopleAlbum; // @synthesize canShowPeopleAlbum=_canShowPeopleAlbum;
 @property BOOL canShowScenesAlbum; // @synthesize canShowScenesAlbum=_canShowScenesAlbum;
 @property BOOL canShowVirtualCollections; // @synthesize canShowVirtualCollections=_canShowVirtualCollections;
@@ -35,6 +38,7 @@
 @property BOOL isRootFolder; // @synthesize isRootFolder=_isRootFolder;
 @property BOOL isRootSharedAlbum; // @synthesize isRootSharedAlbum=_isRootSharedAlbum;
 @property BOOL shouldHideEmptyCollections; // @synthesize shouldHideEmptyCollections=_shouldHideEmptyCollections;
+@property BOOL shouldHideSmartAlbums; // @synthesize shouldHideSmartAlbums=_shouldHideSmartAlbums;
 
 - (void).cxx_destruct;
 - (id)dataSourceManagerConfigurationWithCollectionList:(id)arg1;

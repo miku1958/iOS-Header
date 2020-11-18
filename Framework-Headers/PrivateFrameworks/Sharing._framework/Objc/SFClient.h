@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSXPCConnection;
+@class NSMutableSet, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface SFClient : NSObject
 {
+    NSMutableSet *_assertions;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
@@ -28,11 +29,24 @@
 - (void)_interrupted;
 - (void)_invalidate;
 - (void)_invalidated;
+- (void)activateAssertionWithIdentifier:(id)arg1;
 - (void)activityStateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)appleIDInfoWithCompletion:(CDUnknownBlockType)arg1;
+- (void)contactIDForEmailHash:(id)arg1 phoneHash:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
+- (void)displayNameForEmailHash:(id)arg1 phoneHash:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)displayStringForContactIdentifier:(id)arg1 deviceIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)invalidate;
+- (void)openSetupURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)preventExitForLocaleReason:(id)arg1;
+- (void)reenableProxCardType:(unsigned char)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)retriggerProximityPairing:(CDUnknownBlockType)arg1;
+- (void)retriggerProximitySetup:(CDUnknownBlockType)arg1;
+- (void)setupDevice:(id)arg1 home:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)showDevicePickerWithInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)triggerHomeKitDeviceDetectedWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)wifiPasswordSharingAvailabilityWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

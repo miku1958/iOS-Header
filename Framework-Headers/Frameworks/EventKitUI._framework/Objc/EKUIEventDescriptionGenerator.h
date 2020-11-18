@@ -14,6 +14,7 @@
     NSNumberFormatter *_numberFormatter;
 }
 
++ (id)eventDescriptionForDrag:(id)arg1;
 - (void).cxx_destruct;
 - (id)_adjustedMinutesTillEventStarts:(id)arg1;
 - (id)_attendeesForEvent:(id)arg1 sorted:(BOOL)arg2 limitedTo:(long long)arg3;

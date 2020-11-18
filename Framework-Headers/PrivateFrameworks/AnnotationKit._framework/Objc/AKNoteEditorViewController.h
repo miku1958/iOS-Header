@@ -6,17 +6,17 @@
 
 #import <UIKit/UIViewController.h>
 
-@class AKNoteAnnotation, UITextView;
+@class AKPopupAnnotation, UITextView;
 @protocol AKNoteEditorViewControllerDelegate;
 
 @interface AKNoteEditorViewController : UIViewController
 {
     UITextView *_textView;
-    AKNoteAnnotation *_annotation;
+    AKPopupAnnotation *_annotation;
     id<AKNoteEditorViewControllerDelegate> _delegate;
 }
 
-@property (strong) AKNoteAnnotation *annotation; // @synthesize annotation=_annotation;
+@property (strong) AKPopupAnnotation *annotation; // @synthesize annotation=_annotation;
 @property (weak, nonatomic) id<AKNoteEditorViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UITextView *textView; // @synthesize textView=_textView;
 

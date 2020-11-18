@@ -17,9 +17,9 @@
 @property (readonly, nonatomic) MusicLibrarySearchResultsEntityProvider *entityProvider;
 
 + (id)_defaultLibraryViewConfigurations;
-+ (id)_mediaPickerConfigurationsIncludingPlaylists:(BOOL)arg1 allowingMultipleSelection:(BOOL)arg2;
++ (id)_mediaPickerConfigurationsIncludingPlaylists:(BOOL)arg1 allowingMultipleSelection:(BOOL)arg2 pickingSingleCollection:(BOOL)arg3 omittingGeniusPlaylists:(BOOL)arg4;
 + (id)defaultConfiguration;
-+ (id)mediaPickerConfigurationIncludingPlaylists:(BOOL)arg1 allowingMultipleSelection:(BOOL)arg2;
++ (id)mediaPickerConfigurationIncludingPlaylists:(BOOL)arg1 allowingMultipleSelection:(BOOL)arg2 pickingSingleCollection:(BOOL)arg3 omittingGeniusPlaylists:(BOOL)arg4;
 - (void).cxx_destruct;
 - (void)_applyTableViewMetricsToContentDescriptor:(id)arg1;
 - (id)_collectionViewDescriptorForEntityViewDescriptor:(id)arg1;

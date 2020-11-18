@@ -6,14 +6,14 @@
 
 #import <PhotoLibraryServices/PLDaemonJob.h>
 
-@class NSObject, NSSet;
+@class NSObject, NSOrderedSet;
 @protocol OS_xpc_object;
 
 @interface PHChangeRequestJob : PLDaemonJob
 {
-    NSSet *_inserts;
-    NSSet *_updates;
-    NSSet *_deletes;
+    NSOrderedSet *_inserts;
+    NSOrderedSet *_updates;
+    NSOrderedSet *_deletes;
     CDUnknownBlockType _completionHandler;
     NSObject<OS_xpc_object> *_xpcInserts;
     NSObject<OS_xpc_object> *_xpcUpdates;
@@ -21,9 +21,9 @@
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property (copy, nonatomic) NSSet *deletes; // @synthesize deletes=_deletes;
-@property (copy, nonatomic) NSSet *inserts; // @synthesize inserts=_inserts;
-@property (copy, nonatomic) NSSet *updates; // @synthesize updates=_updates;
+@property (copy, nonatomic) NSOrderedSet *deletes; // @synthesize deletes=_deletes;
+@property (copy, nonatomic) NSOrderedSet *inserts; // @synthesize inserts=_inserts;
+@property (copy, nonatomic) NSOrderedSet *updates; // @synthesize updates=_updates;
 @property (strong, nonatomic) NSObject<OS_xpc_object> *xpcDeletes; // @synthesize xpcDeletes=_xpcDeletes;
 @property (strong, nonatomic) NSObject<OS_xpc_object> *xpcInserts; // @synthesize xpcInserts=_xpcInserts;
 @property (strong, nonatomic) NSObject<OS_xpc_object> *xpcUpdates; // @synthesize xpcUpdates=_xpcUpdates;

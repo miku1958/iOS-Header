@@ -9,7 +9,7 @@
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKRecordID, CKUserIdentityLookupInfo, NSData, NSPersonNameComponents, NSString;
+@class CKRecordID, CKUserIdentityLookupInfo, NSArray, NSData, NSPersonNameComponents, NSString;
 
 @interface CKUserIdentity : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,6 +18,7 @@
     CKUserIdentityLookupInfo *_lookupInfo;
     NSPersonNameComponents *_nameComponents;
     CKRecordID *_userRecordID;
+    NSArray *_contactIdentifiers;
     NSData *_publicSharingKey;
     unsigned long long _publicKeyVersion;
     NSData *_outOfNetworkPrivateKey;
@@ -26,6 +27,7 @@
     NSString *_lastName;
 }
 
+@property (copy, nonatomic) NSArray *contactIdentifiers; // @synthesize contactIdentifiers=_contactIdentifiers;
 @property (strong, nonatomic) NSData *encryptedPersonalInfo; // @synthesize encryptedPersonalInfo=_encryptedPersonalInfo;
 @property (readonly, copy, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
 @property (nonatomic) BOOL hasiCloudAccount; // @synthesize hasiCloudAccount=_hasiCloudAccount;

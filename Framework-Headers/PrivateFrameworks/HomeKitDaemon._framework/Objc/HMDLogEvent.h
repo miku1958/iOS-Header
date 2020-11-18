@@ -4,30 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSError, NSUUID;
 
-@interface HMDLogEvent : NSObject
+@interface HMDLogEvent : HMFObject
 {
     BOOL _submitted;
     NSUUID *_eventType;
     NSError *_eventError;
-    double _startTime;
-    double _endTime;
+    unsigned long long _startTime;
+    unsigned long long _endTime;
 }
 
 @property (readonly) double durationInMilliseconds;
-@property (nonatomic) double endTime; // @synthesize endTime=_endTime;
+@property (nonatomic) unsigned long long endTime; // @synthesize endTime=_endTime;
 @property (strong, nonatomic) NSError *eventError; // @synthesize eventError=_eventError;
 @property (readonly, nonatomic) NSUUID *eventType; // @synthesize eventType=_eventType;
-@property (nonatomic) double startTime; // @synthesize startTime=_startTime;
+@property (nonatomic) unsigned long long startTime; // @synthesize startTime=_startTime;
 @property (nonatomic, getter=isSubmitted) BOOL submitted; // @synthesize submitted=_submitted;
 
++ (id)stringForSource:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithEventType:(id)arg1;
-- (void)submitAtTime:(double)arg1 error:(id)arg2;
+- (void)submitAtTime:(unsigned long long)arg1 error:(id)arg2;
 
 @end
 

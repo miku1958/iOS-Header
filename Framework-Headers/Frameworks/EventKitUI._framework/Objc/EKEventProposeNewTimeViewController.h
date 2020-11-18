@@ -64,7 +64,6 @@
 
 + (id)_participantsInArray:(id)arg1 thatAreNotInArray:(id)arg2;
 - (void).cxx_destruct;
-- (id)_attendeesWithoutOrganizerAndLocations;
 - (void)_dismiss:(id)arg1;
 - (void)_dismissPresentedViewControllerAnimated:(BOOL)arg1;
 - (void)_eventModified:(id)arg1;

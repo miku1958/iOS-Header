@@ -13,10 +13,12 @@ __attribute__((visibility("hidden")))
 @interface CKDRecordFetchAggregator : CKDDatabaseOperation
 {
     CKDRecordCache *_recordCache;
+    BOOL _useRecordCache;
     BOOL _fetchAssetContents;
     BOOL _preserveOrdering;
     BOOL _started;
     BOOL _markedToFinishByParent;
+    BOOL _forceDecryptionAttempt;
     CDUnknownBlockType _fetchAggregatorCompletionBlock;
     NSDictionary *_assetTransferOptionsByRecordTypeAndKey;
     NSSet *_desiredKeys;
@@ -40,12 +42,14 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *fetchInfosByOrder; // @synthesize fetchInfosByOrder=_fetchInfosByOrder;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *fetchQueue; // @synthesize fetchQueue=_fetchQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *fetchSource; // @synthesize fetchSource=_fetchSource;
+@property (nonatomic) BOOL forceDecryptionAttempt; // @synthesize forceDecryptionAttempt=_forceDecryptionAttempt;
 @property unsigned long long highestReturnedOrder; // @synthesize highestReturnedOrder=_highestReturnedOrder;
 @property (getter=isMarkedToFinishByParent) BOOL markedToFinishByParent; // @synthesize markedToFinishByParent=_markedToFinishByParent;
 @property (nonatomic) BOOL preserveOrdering; // @synthesize preserveOrdering=_preserveOrdering;
 @property (readonly, nonatomic) CKDRecordCache *recordCache;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *recordReadySource; // @synthesize recordReadySource=_recordReadySource;
 @property BOOL started; // @synthesize started=_started;
+@property (nonatomic) BOOL useRecordCache; // @synthesize useRecordCache=_useRecordCache;
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;

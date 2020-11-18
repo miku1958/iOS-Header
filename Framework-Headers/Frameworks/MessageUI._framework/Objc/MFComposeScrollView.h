@@ -6,19 +6,16 @@
 
 #import <UIKit/UIScrollView.h>
 
-@class NSMutableSet, NSSet, UIGestureRecognizer;
+@class NSMutableSet;
 
 @interface MFComposeScrollView : UIScrollView
 {
-    UIGestureRecognizer *_singleTapGestureRecognizer;
     NSMutableSet *_disabledSubviews;
-    struct CGPoint _tapLocation;
     long long _scrollBlocked;
-    BOOL _shouldScrollToFirstResponder;
     BOOL _subviewsDisabled;
+    BOOL _shouldScrollToFirstResponder;
 }
 
-@property (readonly, nonatomic) NSSet *disabledSubviews; // @synthesize disabledSubviews=_disabledSubviews;
 @property (nonatomic) BOOL shouldScrollToFirstResponder; // @synthesize shouldScrollToFirstResponder=_shouldScrollToFirstResponder;
 @property (nonatomic) BOOL subviewsDisabled; // @synthesize subviewsDisabled=_subviewsDisabled;
 

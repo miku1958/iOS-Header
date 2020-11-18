@@ -40,6 +40,7 @@
 - (void)_applyAddItem:(id)arg1;
 - (void)_applyDeleteItem:(id)arg1;
 - (void)_applyUpdateItem:(id)arg1;
+- (void)_clearAllNanoPersistableData;
 - (void)_findDisplayableBookmarks;
 - (void)_notifyObservers;
 - (void)_removeBookmark:(id)arg1;

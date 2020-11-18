@@ -16,6 +16,7 @@
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (BOOL)_accessibilitySpeakThisIgnoresAccessibilityElementStatus;
 - (id)_accessibilitySpeakThisString;
+- (id)accessibilityElements;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)shouldGroupAccessibilityChildren;
 

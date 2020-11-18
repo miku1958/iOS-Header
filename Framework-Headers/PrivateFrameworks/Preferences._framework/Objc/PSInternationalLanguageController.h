@@ -38,6 +38,7 @@
 @property (nonatomic) BOOL searchIsActive; // @synthesize searchIsActive=_searchIsActive;
 @property (readonly) Class superclass;
 
++ (BOOL)capitalizeLanguageNames;
 - (void).cxx_destruct;
 - (id)_mainContentView;
 - (void)cancelButtonTapped;

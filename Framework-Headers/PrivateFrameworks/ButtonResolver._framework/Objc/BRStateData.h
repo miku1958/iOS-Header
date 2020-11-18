@@ -18,8 +18,8 @@
 
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) id propertyList;
-@property (copy, nonatomic) NSMutableDictionary *speedConfigs; // @synthesize speedConfigs=_speedConfigs;
-@property (copy, nonatomic) NSMutableDictionary *speedSlots; // @synthesize speedSlots=_speedSlots;
+@property (readonly, nonatomic) NSMutableDictionary *speedConfigs; // @synthesize speedConfigs=_speedConfigs;
+@property (readonly, nonatomic) NSMutableDictionary *speedSlots; // @synthesize speedSlots=_speedSlots;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

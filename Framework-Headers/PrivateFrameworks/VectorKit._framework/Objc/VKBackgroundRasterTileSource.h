@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (long long)defaultMaximumZoomLevel;
-- (unsigned long long)mapLayerForZoomLevelRange;
+- (unsigned char)mapLayerForZoomLevelRange;
 - (BOOL)maximumZoomLevelBoundsCamera;
 
 @end

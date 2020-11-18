@@ -27,9 +27,9 @@
 @property (nonatomic) BOOL supportsMultipleAddresses; // @synthesize supportsMultipleAddresses=_supportsMultipleAddresses;
 @property (strong, nonatomic) NSString *token; // @synthesize token=_token;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

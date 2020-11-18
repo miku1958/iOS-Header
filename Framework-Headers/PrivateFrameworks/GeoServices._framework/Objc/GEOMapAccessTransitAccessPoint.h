@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOMapTransitAccessPoint-Protocol.h>
 
@@ -37,7 +37,6 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)dealloc;
 - (double)distanceInMetersFrom:(CDStruct_c3b9c2ee)arg1;
 - (id)findAccessPoints:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)findGeometryWithCompletionHandler:(CDUnknownBlockType)arg1;

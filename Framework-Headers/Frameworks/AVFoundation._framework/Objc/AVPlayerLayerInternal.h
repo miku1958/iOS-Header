@@ -34,8 +34,8 @@
     BOOL isReadyForDisplay;
     AVPlayer *playerBeingObserved;
     NSSet *KVOInvokers;
-    id<AVCallbackCancellation> playerCurrentItemHasVideoFrameEnqueuedKVOInvoker;
     struct CGSize latestAppliedPresentationSize;
+    id<AVCallbackCancellation> playerCurrentItemHasVideoFrameEnqueuedKVOInvoker;
     BOOL preventsChangesToSublayerHierarchy;
     NSDictionary *clientLayers;
     BOOL isPIPModeEnabled;

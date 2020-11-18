@@ -79,6 +79,7 @@
 - (id)_captionLabelCreateIfNeeded:(BOOL)arg1;
 - (void)_handleCaptionButton:(id)arg1;
 - (void)_handleSubtitleButton:(id)arg1;
+- (BOOL)_hasAccessibilityLargeText;
 - (BOOL)_hasSubtitle;
 - (void)_invalidateCaption;
 - (void)_invalidateHasContent;

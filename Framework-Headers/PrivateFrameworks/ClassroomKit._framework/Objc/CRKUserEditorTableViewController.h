@@ -36,6 +36,7 @@
 - (void).cxx_destruct;
 - (void)editorTextFieldDidChange:(id)arg1;
 - (id)init;
+- (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)switchCellValueDidChange:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

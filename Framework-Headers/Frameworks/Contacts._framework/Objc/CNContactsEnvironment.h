@@ -4,18 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSURL, SGSuggestionsService;
+@class CNiOSABPredicateRunner, CNiOSAddressBook, NSURL;
+@protocol CNContactsLoggerProvider, CNSchedulerProvider, SGSuggestionsServiceContactsProtocol;
 
 @interface CNContactsEnvironment : NSObject
 {
+    CNiOSAddressBook *_addressBook;
+    id<CNSchedulerProvider> _schedulerProvider;
     NSURL *_baseURL;
-    SGSuggestionsService *_suggestionsService;
+    id<SGSuggestionsServiceContactsProtocol> _suggestionsService;
+    CNiOSABPredicateRunner *_abPredicateRunner;
+    id<CNContactsLoggerProvider> _loggerProvider;
 }
 
+@property (strong, nonatomic) CNiOSABPredicateRunner *abPredicateRunner; // @synthesize abPredicateRunner=_abPredicateRunner;
+@property (readonly, nonatomic) CNiOSAddressBook *addressBook;
 @property (copy, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
-@property (strong, nonatomic) SGSuggestionsService *suggestionsService; // @synthesize suggestionsService=_suggestionsService;
+@property (readonly, nonatomic) id<CNContactsLoggerProvider> loggerProvider; // @synthesize loggerProvider=_loggerProvider;
+@property (readonly, nonatomic) id<CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
+@property (strong, nonatomic) id<SGSuggestionsServiceContactsProtocol> suggestionsService; // @synthesize suggestionsService=_suggestionsService;
 @property (readonly, nonatomic) BOOL useInMemoryStores;
 
 + (id)baseURLWithDataLocationName:(id)arg1;
@@ -24,10 +33,14 @@
 + (BOOL)supportsSecureCoding;
 + (id)unitTestingEnvironment;
 + (id)unitTestingEnvironmentWithDataLocationName:(id)arg1;
-- (void)dealloc;
++ (id)unitTestingEnvironmentWithDataLocationName:(id)arg1 schedulerProvider:(id)arg2;
++ (id)unitTestingEnvironmentWithDataLocationName:(id)arg1 schedulerProvider:(id)arg2 loggerProvider:(id)arg3;
++ (id)unitTestingEnvironmentWithSchedulerProvider:(id)arg1 loggerProvider:(id)arg2;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithSchedulerProvider:(id)arg1 loggerProvider:(id)arg2;
 
 @end
 

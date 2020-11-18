@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <ITMLKit/IKAppCacheDelegate-Protocol.h>
+#import <ITMLKit/IKJSInspectorControllerDelegate-Protocol.h>
 #import <ITMLKit/ISURLOperationDelegate-Protocol.h>
 
-@class IKAppCache, IKJSArrayBufferStore, IKJSFoundation, IKJSInspectorController, IKViewElementRegistry, JSContext, NSError, NSMutableArray, NSString;
+@class IKAppCache, IKJSArrayBufferStore, IKJSFoundation, IKJSInspectorController, IKViewElementRegistry, JSContext, NSError, NSMutableArray, NSNumber, NSString;
 @protocol IKAppContextDelegate, IKAppScriptFallbackHandler, IKApplication, OS_dispatch_source;
 
-@interface IKAppContext : NSObject <ISURLOperationDelegate, IKAppCacheDelegate>
+@interface IKAppContext : NSObject <ISURLOperationDelegate, IKAppCacheDelegate, IKJSInspectorControllerDelegate>
 {
     IKJSArrayBufferStore *_arrayBufferStore;
     struct __CFRunLoop *_jsThreadRunLoop;
@@ -60,6 +61,9 @@
 @property (strong, nonatomic) JSContext *jsContext; // @synthesize jsContext=_jsContext;
 @property (strong, nonatomic) IKJSFoundation *jsFoundation; // @synthesize jsFoundation=_jsFoundation;
 @property (nonatomic) BOOL mescalPrimeEnabledForXHRRequests; // @synthesize mescalPrimeEnabledForXHRRequests=_mescalPrimeEnabledForXHRRequests;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentage;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSessionDuration;
 @property (readonly, nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property (copy, nonatomic) NSString *nextJSChecksum; // @synthesize nextJSChecksum=_nextJSChecksum;
 @property (readonly, nonatomic) NSMutableArray *onStartQueue; // @synthesize onStartQueue=_onStartQueue;
@@ -76,7 +80,7 @@
 @property (strong, nonatomic) IKJSInspectorController *webInspectorController; // @synthesize webInspectorController=_webInspectorController;
 
 + (id)currentAppContext;
-+ (void)initialize;
++ (BOOL)isInFactoryMode;
 + (void)load;
 + (void)registerPrivateProtocols:(id)arg1 forClass:(Class)arg2;
 - (void).cxx_destruct;
@@ -88,7 +92,7 @@
 - (void)_enqueueOnStartOrExecute:(CDUnknownBlockType)arg1;
 - (id)_errorWithMessage:(id)arg1;
 - (void)_evaluate:(CDUnknownBlockType)arg1;
-- (void)_evaluateFoundationWithDeviceConfig:(id)arg1;
+- (void)_evaluateFoundationWithDeviceConfig:(id)arg1 addPrivateInterfaces:(BOOL)arg2;
 - (void)_invalidateJSThread;
 - (void)_jsThreadMain;
 - (id)_preferredLaunchURL;
@@ -101,6 +105,7 @@
 - (void)addPostEvaluateBlock:(CDUnknownBlockType)arg1;
 - (void)appCache:(id)arg1 didUpdateWithChecksum:(id)arg2;
 - (void)appTraitCollectionChanged:(id)arg1;
+- (BOOL)cancelHighlightView;
 - (void)contextDidFailWithError:(id)arg1;
 - (void)contextDidStartWithJS:(id)arg1 options:(id)arg2;
 - (void)contextDidStopWithOptions:(id)arg1;
@@ -110,6 +115,8 @@
 - (void)exitAppWithOptions:(id)arg1;
 - (void)handleCacheUpdate;
 - (void)handleReloadWithUrgencyType:(unsigned long long)arg1 minInterval:(double)arg2 data:(id)arg3;
+- (BOOL)highlightViewForElementWithID:(long long)arg1 contentColor:(id)arg2 paddingColor:(id)arg3 borderColor:(id)arg4 marginColor:(id)arg5;
+- (BOOL)highlightViewsForElementsWithIDs:(id)arg1 contentColor:(id)arg2 paddingColor:(id)arg3 borderColor:(id)arg4 marginColor:(id)arg5;
 - (id)initWithApplication:(id)arg1 mode:(unsigned long long)arg2 cache:(BOOL)arg3 delegate:(id)arg4;
 - (id)initWithApplication:(id)arg1 mode:(unsigned long long)arg2 delegate:(id)arg3;
 - (void)launchAppWithOptions:(id)arg1;

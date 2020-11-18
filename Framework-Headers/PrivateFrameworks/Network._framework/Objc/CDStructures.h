@@ -25,6 +25,12 @@ struct netagent {
 struct netcore_stats_data_usage_snapshot {
     unsigned long long bytes_in;
     unsigned long long bytes_out;
+    unsigned long long multipath_bytes_in_cell;
+    unsigned long long multipath_bytes_out_cell;
+    unsigned long long multipath_bytes_in_wifi;
+    unsigned long long multipath_bytes_out_wifi;
+    unsigned long long multipath_bytes_in_initial;
+    unsigned long long multipath_bytes_out_initial;
 };
 
 struct netcore_stats_network_event {
@@ -33,49 +39,33 @@ struct netcore_stats_network_event {
 };
 
 struct netcore_stats_tcp_cell_fallback_report {
-    BOOL fellback;
-    int deny_reason;
-    unsigned int fallback_timer_msecs;
-    unsigned int network_event_count;
     struct netcore_stats_network_event network_events[20];
-    unsigned int data_usage_snapshots_at_network_events_count;
     struct netcore_stats_data_usage_snapshot data_usage_snapshots_at_network_events[20];
+    int deny_reason;
+    unsigned int network_event_count;
+    unsigned int data_usage_snapshots_at_network_events_count;
+    unsigned int fallback_timer_msecs;
+    BOOL fellback;
+    unsigned char __pad[7];
 };
 
 struct netcore_stats_tcp_report {
-    BOOL delegated;
-    BOOL legacy;
     union {
         struct {
-            int report_reason;
             struct netcore_stats_tcp_statistics_report statistics_report;
             struct netcore_stats_tcp_cell_fallback_report fallback_report;
-            unsigned int ip_address_attempt_count;
             struct netcore_stats_tcp_statistics_report connection_attempts[10];
+            int report_reason;
+            unsigned int ip_address_attempt_count;
         } legacy;
         struct nw_connection_report_s nw_connection_report;
     } u;
+    BOOL delegated;
+    BOOL legacy;
+    unsigned char __pad[6];
 };
 
 struct netcore_stats_tcp_statistics_report {
-    unsigned int time_to_dns_resolved_msecs;
-    unsigned int time_to_dns_start_msecs;
-    unsigned int dns_resolved_time_msecs;
-    BOOL dns_answers_cached;
-    int interface_type;
-    unsigned int time_to_connection_start_msecs;
-    unsigned int time_to_connection_establishment_msecs;
-    unsigned int connection_establishment_time_msecs;
-    unsigned int flow_duration_msecs;
-    int connected_interface_type;
-    BOOL connected;
-    unsigned int traffic_class;
-    BOOL cellular_fallback;
-    BOOL cellular_rrc_connected;
-    BOOL kernel_reported_stalls;
-    BOOL kernel_reporting_connection_stalled;
-    BOOL kernel_reporting_read_stalled;
-    BOOL kernel_reporting_write_stalled;
     unsigned long long bytes_in;
     unsigned long long bytes_out;
     unsigned long long bytes_duplicate;
@@ -86,19 +76,90 @@ struct netcore_stats_tcp_statistics_report {
     unsigned long long packets_duplicate;
     unsigned long long packets_ooo;
     unsigned long long packets_retransmitted;
+    unsigned long long multipath_bytes_in_cell;
+    unsigned long long multipath_bytes_out_cell;
+    unsigned long long multipath_bytes_in_wifi;
+    unsigned long long multipath_bytes_out_wifi;
+    unsigned long long multipath_bytes_in_initial;
+    unsigned long long multipath_bytes_out_initial;
+    unsigned int time_to_dns_resolved_msecs;
+    unsigned int time_to_dns_start_msecs;
+    unsigned int dns_resolved_time_msecs;
+    unsigned int time_to_connection_start_msecs;
+    unsigned int time_to_connection_establishment_msecs;
+    unsigned int connection_establishment_time_msecs;
+    unsigned int flow_duration_msecs;
+    unsigned int traffic_class;
     unsigned int current_rtt_msecs;
     unsigned int smoothed_rtt_msecs;
     unsigned int best_rtt_msecs;
     unsigned int rtt_variance;
     unsigned int syn_retransmission_count;
-    BOOL tcp_fast_open;
     unsigned int better_route_event_count;
     unsigned int connection_reuse_count;
     unsigned int app_reporting_data_stall_count;
     unsigned int app_data_stall_timer_msecs;
+    int interface_type;
+    int connected_interface_type;
+    int multipath_service_type;
+    unsigned int dns_answers_cached:1;
+    unsigned int connected:1;
+    unsigned int cellular_fallback:1;
+    unsigned int cellular_rrc_connected:1;
+    unsigned int kernel_reported_stalls:1;
+    unsigned int kernel_reporting_connection_stalled:1;
+    unsigned int kernel_reporting_read_stalled:1;
+    unsigned int kernel_reporting_write_stalled:1;
+    unsigned int tcp_fast_open:1;
+    unsigned int first_party:1;
+    unsigned int __pad_bits:6;
+    unsigned char __pad[6];
 };
 
 struct nw_connection_report_s {
+    unsigned long long bytes_in;
+    unsigned long long bytes_out;
+    unsigned long long bytes_duplicate;
+    unsigned long long bytes_ooo;
+    unsigned long long bytes_retransmitted;
+    unsigned long long packets_in;
+    unsigned long long packets_out;
+    unsigned long long multipath_bytes_in_cell;
+    unsigned long long multipath_bytes_out_cell;
+    unsigned long long multipath_bytes_in_wifi;
+    unsigned long long multipath_bytes_out_wifi;
+    unsigned long long multipath_bytes_in_initial;
+    unsigned long long multipath_bytes_out_initial;
+    unsigned int current_rtt_msecs;
+    unsigned int smoothed_rtt_msecs;
+    unsigned int best_rtt_msecs;
+    unsigned int rtt_variance;
+    unsigned int syn_retransmission_count;
+    unsigned int used_proxy_type;
+    unsigned int traffic_class;
+    unsigned int path_trigger_milliseconds;
+    unsigned int resolution_milliseconds;
+    unsigned int proxy_milliseconds;
+    unsigned int flow_connect_milliseconds;
+    unsigned int tls_milliseconds;
+    unsigned int flow_duration_milliseconds;
+    unsigned int ipv4_address_count;
+    unsigned int ipv6_address_count;
+    unsigned int connected_address_index;
+    unsigned int connection_reuse_count;
+    unsigned int data_stall_count;
+    unsigned int ipv4_dns_server_count;
+    unsigned int ipv6_dns_server_count;
+    int failure_reason;
+    int connected_interface_type;
+    int multipath_service_type;
+    int connection_mode;
+    int apple_host;
+    int apple_app;
+    int tls_version;
+    int stack_level;
+    unsigned char first_address_family;
+    unsigned char connected_address_family;
     unsigned int triggered_path:1;
     unsigned int system_proxy_configured:1;
     unsigned int custom_proxy_configured:1;
@@ -112,27 +173,27 @@ struct nw_connection_report_s {
     unsigned int connected:1;
     unsigned int tls_succeeded:1;
     unsigned int synthesized_ipv6_address:1;
-    unsigned int used_proxy_type;
-    unsigned int traffic_class;
-    int failure_reason;
-    unsigned int path_trigger_milliseconds;
-    unsigned int resolution_milliseconds;
-    unsigned int proxy_milliseconds;
-    unsigned int flow_connect_milliseconds;
-    unsigned int tls_milliseconds;
-    unsigned int flow_duration_milliseconds;
-    unsigned int ipv4_address_count;
-    unsigned int ipv6_address_count;
-    unsigned char first_address_family;
-    unsigned char connected_address_family;
-    unsigned int connected_address_index;
-    int connected_interface_type;
-    unsigned int connection_reuse_count;
-    unsigned int data_stall_count;
-    int connection_mode;
-    int apple_host;
-    int apple_app;
+    unsigned int synthesized_extra_ipv6_address:1;
+    unsigned int ipv4_available:1;
+    unsigned int ipv6_available:1;
+    unsigned int used_tfo:1;
+    unsigned int tls_version_timeout:1;
+    unsigned int first_party:1;
+    unsigned int __pad_bits:5;
+    unsigned char __pad[3];
 };
+
+struct nw_protocol {
+    unsigned char _field1[16];
+    struct nw_protocol_identifier *_field2;
+    struct nw_protocol_callbacks *_field3;
+    struct nw_protocol *_field4;
+    void *_field5;
+    struct nw_protocol *_field6;
+    void *_field7;
+};
+
+struct nw_protocol_callbacks;
 
 struct nw_protocol_identifier {
     char _field1[32];
@@ -177,7 +238,8 @@ struct tcp_connection_info {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
-    unsigned int :18;
+    unsigned int :1;
+    unsigned int :17;
     unsigned long long _field17;
     unsigned long long _field18;
     unsigned long long _field19;
@@ -192,4 +254,10 @@ struct tcp_connection_info {
 typedef struct {
     unsigned int _field1[8];
 } CDStruct_6ad76789;
+
+typedef struct {
+    int *list;
+    unsigned long long count;
+    unsigned long long size;
+} CDStruct_95bda58d;
 

@@ -51,13 +51,13 @@
 - (void)_startPassiveResendThread;
 - (void)_undoContextShiftedPoints:(id)arg1;
 - (void)_userEventOccurred;
-- (id)accessibilityAttributeValue:(int)arg1;
-- (id)accessibilityAttributeValue:(int)arg1 forParameter:(id)arg2;
+- (id)accessibilityAttributeValue:(long long)arg1;
+- (id)accessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
 - (struct CGRect)accessibilityConvertHostedViewFrame:(struct CGRect)arg1 fromContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
 - (struct CGRect)accessibilityConvertHostedViewFrame:(struct CGRect)arg1 toContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
 - (struct CGPoint)accessibilityConvertHostedViewPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
 - (BOOL)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
-- (void)accessibilitySetValue:(id)arg1 forAttribute:(int)arg2;
+- (void)accessibilitySetValue:(id)arg1 forAttribute:(long long)arg2;
 - (id)allJobLabels;
 - (void)disableAccessibility;
 - (id)init;

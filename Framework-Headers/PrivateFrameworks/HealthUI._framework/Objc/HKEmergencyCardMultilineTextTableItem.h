@@ -9,12 +9,11 @@
 #import <HealthUI/HKMedicalIDEditorCellEditDelegate-Protocol.h>
 #import <HealthUI/HKMedicalIDEditorCellHeightChangeDelegate-Protocol.h>
 
-@class HKMedicalIDEditorMultilineStringCell, _HKMedicalIDMultilineStringCell;
+@class HKMedicalIDEditorMultilineStringCell;
 @protocol HKEmergencyCardRowHeightChangeDelegate;
 
 @interface HKEmergencyCardMultilineTextTableItem : HKEmergencyCardTableItem <HKMedicalIDEditorCellEditDelegate, HKMedicalIDEditorCellHeightChangeDelegate>
 {
-    _HKMedicalIDMultilineStringCell *_labelCell;
     HKMedicalIDEditorMultilineStringCell *_editableCell;
     id<HKEmergencyCardRowHeightChangeDelegate> _rowHeightChangeDelegate;
 }
@@ -22,11 +21,9 @@
 @property (weak, nonatomic) id<HKEmergencyCardRowHeightChangeDelegate> rowHeightChangeDelegate; // @synthesize rowHeightChangeDelegate=_rowHeightChangeDelegate;
 
 - (void).cxx_destruct;
-- (id)_cell;
 - (double)_cellFittedHeightWithWidth:(double)arg1;
 - (void)_configureEditableCell:(id)arg1;
 - (id)_editableCell;
-- (id)_labelCell;
 - (id)_multilineStringValue;
 - (id)_placeholderText;
 - (void)_updateMultilineStringValueWithValue:(id)arg1;

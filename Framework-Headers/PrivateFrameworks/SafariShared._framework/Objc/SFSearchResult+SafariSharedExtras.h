@@ -8,7 +8,7 @@
 
 #import <SafariShared/WBSCompletionListItem-Protocol.h>
 
-@class NSString;
+@class NSString, WBSQuerySuggestion;
 
 @interface SFSearchResult (SafariSharedExtras) <WBSCompletionListItem>
 
@@ -18,7 +18,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *lastSearchQuery;
 @property (readonly, nonatomic) NSString *parsecDomainIdentifier;
+@property (readonly, nonatomic) NSString *safari_loggingDescription;
 @property (readonly, nonatomic) SFSearchResult *sfSearchResultValue;
+@property (strong, nonatomic) WBSQuerySuggestion *siriSuggestion;
 @property (readonly) Class superclass;
 
 + (id)safari_sfSearchResultWithUniqueIdentifier;

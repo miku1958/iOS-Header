@@ -7,10 +7,11 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (HKMetadata)
-+ (BOOL)_hk_validateMetadataValueContent:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 + (id)hk_acceptedMetadataValueClasses;
-+ (BOOL)hk_acceptsMetadataValue:(id)arg1;
++ (id)hk_acceptedPublicMetadataValueClasses;
++ (BOOL)hk_acceptsMetadataValue:(id)arg1 allowPrivateMetadata:(BOOL)arg2;
 + (id)hk_secureCodingClasses;
+- (BOOL)_hk_validateMetadataValueContent:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (BOOL)hk_validateMetadataKeysAndValuesAllowingPrivateMetadataKeys:(BOOL)arg1 error:(id *)arg2;
 @end
 

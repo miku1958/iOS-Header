@@ -29,6 +29,8 @@
 @property (readonly, nonatomic) unsigned long long numberOfRepresentedAssets;
 @property (readonly, nonatomic) unsigned long long pixelHeight;
 @property (readonly, nonatomic) unsigned long long pixelWidth;
+@property (readonly, nonatomic) long long playbackStyle;
+@property (readonly, nonatomic) long long playbackVariation;
 @property (readonly, nonatomic) AVAsset *providedAVAsset;
 @property (readonly, nonatomic) AVAudioMix *providedAudioMix;
 @property (readonly, nonatomic) NSURL *providedFullsizeImageURL;

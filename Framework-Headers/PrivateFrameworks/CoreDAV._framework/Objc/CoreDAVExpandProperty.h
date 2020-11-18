@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSSet, NSString;
 
@@ -19,7 +19,7 @@
 @property (strong, nonatomic) NSString *expandedNameSpace; // @synthesize expandedNameSpace=_expandedNameSpace;
 @property (strong, nonatomic) NSSet *propertiesToFind; // @synthesize propertiesToFind=_propertiesToFind;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithPropertiesToFind:(id)arg1 expandedName:(id)arg2 expandedNameSpace:(id)arg3;
 
 @end

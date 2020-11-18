@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableDictionary;
+@class IMAccount, NSArray, NSMutableDictionary;
 
 @interface IMAccountController : NSObject
 {
@@ -23,6 +23,8 @@
 
 @property (copy) NSArray *accounts; // @synthesize accounts=_accounts;
 @property (readonly, nonatomic) NSArray *activeAccounts;
+@property (readonly, nonatomic) IMAccount *activeIMessageAccount;
+@property (readonly, nonatomic) IMAccount *activeSMSAccount;
 @property (readonly, nonatomic) id bestAccountForStatus;
 @property (readonly, nonatomic) NSArray *connectedAccounts;
 @property (readonly, nonatomic) int numberOfAccounts;

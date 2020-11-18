@@ -24,6 +24,7 @@
     CDStruct_4aabc75a _xyQuadrantInfo;
     CDStruct_4aabc75a _xyQuadrantRingInfo;
     CDStruct_4aabc75a _dynamicLinesInfo;
+    CDStruct_4aabc75a _dynamicLinesNoDepthTestInfo;
     CDStruct_4aabc75a _dynamicTrianglesInfo;
     CDStruct_4aabc75a _overlayDynamicLinesInfo;
     CDStruct_4aabc75a _overlayDynamicTriangleInfo;
@@ -67,12 +68,12 @@
         long long pressedButtonIndex;
         struct __CFString *fpsString;
         struct __CFString *shortString;
+        struct __CFString *internalString;
         unsigned int lightingStatistics[9];
         struct __C3DEngineStats stats;
     } _statisticsInfo;
     float _drawScale;
     SCNManipulator *_manipulator;
-    struct __C3DFXPass *_pass;
     id _delegate;
     SCNAuthoringEnvironment2 *_authEnv2;
 }
@@ -85,7 +86,6 @@
 @property (readonly, nonatomic) SCNManipulator *manipulator;
 @property (readonly) id<SCNSceneRenderer> sceneRenderer;
 @property (readonly, nonatomic) NSArray *selectedNodes;
-@property (readonly, nonatomic) BOOL selecting; // @synthesize selecting=_selecting;
 @property (nonatomic) BOOL selectionIsReadonly;
 @property (nonatomic) BOOL shouldSnapOnGrid; // @synthesize shouldSnapOnGrid=_shouldSnapOnGrid;
 @property (nonatomic) BOOL shouldSnapToAlign; // @synthesize shouldSnapToAlign=_shouldSnapToAlign;

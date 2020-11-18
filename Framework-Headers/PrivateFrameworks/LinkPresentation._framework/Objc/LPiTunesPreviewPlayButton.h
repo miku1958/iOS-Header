@@ -24,10 +24,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isActive) BOOL active;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=isFullScreen) BOOL fullScreen;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isMuted;
-@property (readonly, nonatomic) BOOL isPlaying;
 @property (readonly, nonatomic) unsigned long long lastInteractionTimestamp;
+@property (readonly, nonatomic, getter=isMuted) BOOL muted;
+@property (readonly, nonatomic, getter=isPlaying) BOOL playing;
 @property (readonly, nonatomic) BOOL shouldUnmuteWhenUserAdjustsVolume;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double unobscuredAreaFraction;

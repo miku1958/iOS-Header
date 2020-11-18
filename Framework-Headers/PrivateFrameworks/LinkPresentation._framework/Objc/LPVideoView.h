@@ -10,7 +10,7 @@
 #import <LinkPresentation/LPMediaPlayer-Protocol.h>
 #import <LinkPresentation/UIGestureRecognizerDelegate-Protocol.h>
 
-@class LPFullScreenVideoViewController, LPImage, LPImageViewStyle, LPStatisticsTimingToken, LPVideo, LPVideoViewStyle, NSString, UIImageView, UIView, UIWindow;
+@class CATextLayer, LPFullScreenVideoViewController, LPImage, LPImageViewStyle, LPStatisticsTimingToken, LPVideo, LPVideoViewConfiguration, LPVideoViewStyle, NSString, UIImageView, UIView, UIWindow;
 
 __attribute__((visibility("hidden")))
 @interface LPVideoView : LPComponentView <CALayerDelegate, UIGestureRecognizerDelegate, LPMediaPlayer>
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     LPVideoViewStyle *_style;
     LPImage *_posterFrame;
     LPImageViewStyle *_posterFrameStyle;
+    LPVideoViewConfiguration *_configuration;
     UIView *_playButtonContainerView;
     UIView *_playButtonView;
     UIView *_muteButtonContainerView;
@@ -27,35 +28,38 @@ __attribute__((visibility("hidden")))
     UIView *_visualEffectView;
     UIView *_pulsingLoadView;
     UIView *_containerView;
+    UIView *_playbackView;
+    CATextLayer *_debugIndicator;
     LPFullScreenVideoViewController *_fullScreenViewController;
     UIWindow *_fullScreenWindow;
     LPStatisticsTimingToken *_playbackDelayTimingToken;
     BOOL _playing;
     BOOL _hasBuilt;
-    BOOL _hasCreatedVideoView;
     BOOL _wasPlayingOrWaitingToPlayWhenUnparented;
     BOOL _wasPlayingWhenSuspended;
-    BOOL _disablePlayback;
-    BOOL _fullScreen;
     BOOL _showingPlayButton;
+    BOOL _waitingForPlaybackDueToAutoplay;
     unsigned long long _lastInteractionTimestamp;
+    unsigned long long _playbackWatchdogTimerID;
+    unsigned int _loggingID;
     BOOL _usesSharedAudioSession;
     BOOL _waitingForPlayback;
+    BOOL _fullScreen;
     BOOL _hasEverPlayed;
     double _volume;
 }
 
 @property (nonatomic, getter=isActive) BOOL active;
-@property (readonly, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
+@property (readonly, copy, nonatomic) LPVideoViewConfiguration *configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isFullScreen) BOOL fullScreen; // @synthesize fullScreen=_fullScreen;
 @property (nonatomic) BOOL hasEverPlayed; // @synthesize hasEverPlayed=_hasEverPlayed;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isMuted;
-@property (readonly, nonatomic) BOOL isPlaying;
 @property (readonly, nonatomic) unsigned long long lastInteractionTimestamp;
+@property (readonly, nonatomic) unsigned int loggingID; // @synthesize loggingID=_loggingID;
 @property (nonatomic, getter=isMuted) BOOL muted;
+@property (readonly, nonatomic) UIView *playbackView; // @synthesize playbackView=_playbackView;
 @property (nonatomic, getter=isPlaying) BOOL playing;
 @property (readonly, nonatomic) BOOL shouldAutoPlay;
 @property (readonly, nonatomic) BOOL shouldShowMuteButton;
@@ -73,18 +77,22 @@ __attribute__((visibility("hidden")))
 - (id)_createPulsingLoadIndicator;
 - (void)_muteButtonHighlightLongPressRecognized:(id)arg1;
 - (void)_muteButtonTapRecognized:(id)arg1;
+- (void)_startPlaybackWatchdogTimer;
 - (void)_swapVideoPlaceholderForVideoForAutoPlay:(BOOL)arg1;
-- (void)applicationDidBecomeActive:(id)arg1;
-- (void)applicationWillResignActive:(id)arg1;
+- (void)applicationDidEnterBackground:(id)arg1;
+- (void)applicationWillEnterForeground:(id)arg1;
 - (void)componentViewDidMoveToWindow;
 - (id)createFullScreenVideoViewController;
 - (id)createVideoPlayerView;
 - (void)dealloc;
+- (void)destroyFullScreenViewController;
 - (void)didChangeMutedState:(BOOL)arg1;
 - (void)didChangePlayingState:(BOOL)arg1;
 - (void)didEncounterPlaybackError;
 - (void)enterCustomFullScreen;
+- (void)enterFullScreen;
 - (void)fadeInMuteButton;
+- (id)fullScreenBackgroundColor;
 - (void)fullScreenVideoDidDismiss;
 - (void)fullScreenVideoDidPresent;
 - (void)fullScreenVideoWillDismiss;
@@ -92,17 +100,19 @@ __attribute__((visibility("hidden")))
 - (void)hideMuteButton;
 - (void)hidePlayButtonAnimated:(BOOL)arg1;
 - (id)init;
-- (id)initWithVideo:(id)arg1 style:(id)arg2 posterFrame:(id)arg3 posterFrameStyle:(id)arg4 disablePlayback:(BOOL)arg5;
+- (id)initWithVideo:(id)arg1 style:(id)arg2 posterFrame:(id)arg3 posterFrameStyle:(id)arg4 configuration:(id)arg5;
 - (BOOL)isParented;
 - (void)layoutComponentView;
 - (void)prepareForDisplayWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)recreateFullScreenViewControllerIfNeeded;
 - (void)removePlaceholderViews;
-- (void)setShowPlayButton:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)resetToPlaceholderView;
 - (void)showMuteButton;
 - (void)showPlayButtonAnimated:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tapRecognized:(id)arg1;
 - (void)updateMuteButtonImage;
+- (void)updatePlayButtonVisibility;
 - (void)userInteractedWithVideoView;
 - (BOOL)usesCustomFullScreenImplementation;
 

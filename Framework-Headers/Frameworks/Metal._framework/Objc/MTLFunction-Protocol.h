@@ -7,7 +7,7 @@
 #import <Metal/NSObject-Protocol.h>
 
 @class NSArray, NSDictionary, NSString;
-@protocol MTLDevice;
+@protocol MTLArgumentEncoder, MTLDevice;
 
 @protocol MTLFunction <NSObject>
 
@@ -21,5 +21,7 @@
 @property (readonly) NSArray *stageInputAttributes;
 @property (readonly) NSArray *vertexAttributes;
 
+- (id<MTLArgumentEncoder>)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
+- (id<MTLArgumentEncoder>)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2;
 @end
 

@@ -26,6 +26,7 @@
 - (void)buttonUp:(id)arg1;
 - (id)initWithButtons:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (Class)numberPadButtonClass;
 - (void)setNumberButtonsEnabled:(BOOL)arg1;
 
 @end

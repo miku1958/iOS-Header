@@ -12,16 +12,15 @@
 {
     HDSQLiteDatabase *_database;
     HDSQLiteQueryDescriptor *_descriptor;
-    HDSQLiteQueryDescriptor *_queryDescriptor;
 }
 
 @property (readonly) HDSQLiteDatabase *database; // @synthesize database=_database;
-@property (readonly) HDSQLiteQueryDescriptor *queryDescriptor; // @synthesize queryDescriptor=_queryDescriptor;
+@property (readonly) HDSQLiteQueryDescriptor *queryDescriptor;
 
 - (void).cxx_destruct;
 - (void)bindToSelectStatement:(struct sqlite3_stmt *)arg1 bindingIndex:(inout int *)arg2;
 - (id)copySelectSQLWithProperties:(id)arg1;
-- (BOOL)deleteAllEntities;
+- (BOOL)deleteAllEntitiesWithError:(id *)arg1;
 - (void)enumerateEntitiesUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)enumeratePersistentIDsAndProperties:(id)arg1 error:(id *)arg2 enumerationHandler:(CDUnknownBlockType)arg3;
 - (BOOL)enumerateProperties:(id)arg1 error:(id *)arg2 enumerationHandler:(CDUnknownBlockType)arg3;

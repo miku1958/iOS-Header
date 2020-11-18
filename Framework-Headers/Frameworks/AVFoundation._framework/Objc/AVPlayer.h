@@ -25,6 +25,8 @@
 @property (readonly, nonatomic, getter=isAudioPlaybackEnabledAtAllRates) BOOL audioPlaybackEnabledAtAllRates;
 @property (strong) AVAudioSession *audioSession;
 @property (readonly, nonatomic, getter=_cachedValueForPIPModePossible) BOOL cachedValueForPIPModePossible;
+@property (copy, nonatomic) NSString *captionPipelineStrategy;
+@property (copy, nonatomic) NSString *captionRenderingStrategy;
 @property (nonatomic) BOOL disallowsAMRAudio;
 @property (readonly, nonatomic) NSError *error;
 @property (nonatomic) float maxRateForAudioPlayback;
@@ -53,6 +55,7 @@
 + (id)playerWithFigPlayer:(struct OpaqueFigPlayer *)arg1;
 + (id)playerWithPlayerItem:(id)arg1;
 + (id)playerWithURL:(id)arg1;
++ (long long)propertyStorageCachePolicy;
 - (BOOL)_CALayerDestinationIsTVOut;
 - (long long)_actionAtItemEnd;
 - (void)_addFPListeners;
@@ -63,6 +66,7 @@
 - (BOOL)_airPlayVideoActive;
 - (BOOL)_allowsExternalPlayback;
 - (BOOL)_allowsPixelBufferPoolSharing;
+- (BOOL)_allowsVideoPlaybackWhileInBackground;
 - (id)_ancillaryPerformanceInformationForDisplay;
 - (BOOL)_applicationHasExternallyDisplayedAVPlayerLayerAndIsUnderDeviceLock;
 - (BOOL)_appliesMediaSelectionCriteriaAutomatically;
@@ -100,8 +104,7 @@
 - (void)_enumerateItemsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_evaluateDisplaySizeOfAllAttachedLayers;
 - (BOOL)_externalPlaybackActive;
-- (long long)_externalProtectionStatusWithCodeVerification:(BOOL)arg1;
-- (long long)_extractFPExternalProtectionStatus:(id)arg1 withCodeVerification:(BOOL)arg2;
+- (long long)_extractFPExternalProtectionStatus:(id)arg1;
 - (id)_fpNotificationNames;
 - (BOOL)_hasAssociatedAVPlayerLayerInPIPMode;
 - (BOOL)_hasAssociatedOnscreenAVPlayerLayer;
@@ -112,6 +115,7 @@
 - (BOOL)_isDisplayingClosedCaptions;
 - (BOOL)_isIAPDExtendedModeActive;
 - (BOOL)_isMuted;
+- (BOOL)_isVideoPlaybackAllowedWhileInBackground;
 - (void)_itemIsReadyToPlay:(id)arg1;
 - (long long)_itemOkayToPlayWhileTransitioningToBackground:(id)arg1;
 - (id)_items;
@@ -123,7 +127,7 @@
 - (id)_multichannelAudioStrategy;
 - (void)_noteNewNonForcedSubtitleDisplayEnabledForPlayerItem:(id)arg1;
 - (void)_noteNewPresentationSizeForPlayerItem:(id)arg1;
-- (BOOL)_outputObscuredDueToInsufficientExternalProtectionPerformingCodeVerification:(BOOL)arg1;
+- (BOOL)_outputObscuredDueToInsufficientExternalProtection;
 - (id)_pendingFigPlayerProperties;
 - (id)_pendingFigPlayerPropertyForKey:(id)arg1;
 - (id)_pixelBufferAttributeMediator;
@@ -143,6 +147,7 @@
 - (BOOL)_resumePlayback:(double)arg1 error:(id *)arg2;
 - (void)_runOnIvarAccessQueueOperationThatMayChangeCurrentItemWithPreflightBlock:(CDUnknownBlockType)arg1 modificationBlock:(CDUnknownBlockType)arg2;
 - (void)_setActionAtItemEnd:(long long)arg1 allowingAdvance:(BOOL)arg2;
+- (void)_setAllowsVideoPlaybackWhileInBackground:(BOOL)arg1;
 - (void)_setAncillaryPerformanceInformationForDisplay:(id)arg1;
 - (void)_setCALayerDestinationIsTVOut:(BOOL)arg1;
 - (void)_setCachedValue:(id)arg1 forKey:(id)arg2;
@@ -223,6 +228,7 @@
 - (void)play;
 - (void)playImmediatelyAtRate:(float)arg1;
 - (id)playerAVAudioSession;
+- (id)playerRole;
 - (void)prepareItem:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)preparesItemsForPlaybackAsynchronously;
 - (void)prerollAtRate:(float)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -251,11 +257,12 @@
 - (void)setMediaSelectionCriteria:(id)arg1 forMediaCharacteristic:(id)arg2;
 - (void)setMuted:(BOOL)arg1;
 - (void)setOutputContext:(id)arg1;
+- (void)setPlayerRole:(id)arg1;
 - (void)setPreparesItemsForPlaybackAsynchronously:(BOOL)arg1;
 - (void)setRate:(float)arg1;
 - (void)setRate:(float)arg1 time:(CDStruct_1b6d18a9)arg2 atHostTime:(CDStruct_1b6d18a9)arg3;
 - (void)setRate:(float)arg1 withVolumeRampDuration:(CDStruct_1b6d18a9)arg2;
-- (void)setRate:(float)arg1 withVolumeRampDuration:(CDStruct_1b6d18a9)arg2 playImmediately:(BOOL)arg3;
+- (void)setRate:(float)arg1 withVolumeRampDuration:(CDStruct_1b6d18a9)arg2 playImmediately:(BOOL)arg3 rateChangeReason:(int)arg4;
 - (void)setShouldReduceResourceUsage:(BOOL)arg1;
 - (void)setUsesAirPlayVideoWhileAirPlayScreenIsActive:(BOOL)arg1;
 - (void)setUsesAudioOnlyModeForExternalPlayback:(BOOL)arg1;

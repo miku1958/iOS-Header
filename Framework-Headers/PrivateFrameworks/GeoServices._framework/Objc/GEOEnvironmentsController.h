@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 @protocol GEOEnvironmentsControllerDelegate;
@@ -18,13 +18,15 @@
     id<GEOEnvironmentsControllerDelegate> _delegate;
 }
 
-@property (nonatomic) id<GEOEnvironmentsControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<GEOEnvironmentsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 
+- (void).cxx_destruct;
 - (void)addCustomEnvironment:(id)arg1;
 - (void)dealloc;
 - (id)environmentInfosForSection:(long long)arg1;
 - (id)initEnablingCustomEnvironments:(BOOL)arg1;
 - (void)reloadEnvironments;
+- (void)reloadEnvironments:(CDUnknownBlockType)arg1;
 - (void)removeCustomEnvironment:(id)arg1;
 
 @end

@@ -6,17 +6,12 @@
 
 #import <DataDetectorsUI/DDAction.h>
 
-@class UIViewController;
-
 @interface DDPreviewAction : DDAction
 {
-    UIViewController *_viewController;
 }
 
 + (id)previewActionForURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
-- (void).cxx_destruct;
 - (id)commitURL;
-- (id)contact;
 - (id)createViewController;
 - (void)dealloc;
 - (id)platterSubtitle;

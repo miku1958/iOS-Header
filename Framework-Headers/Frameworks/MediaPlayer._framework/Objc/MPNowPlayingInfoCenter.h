@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class MPNowPlayingPlaybackQueueCache, NSDate, NSDictionary;
+@class MPArtworkResizeUtility, MPNowPlayingInfoCenterArtworkContext, NSDate, NSDictionary, NSMutableDictionary, NSMutableOrderedSet, NSSet, NSString;
 @protocol MPNowPlayingInfoLyricsDelegate, MPNowPlayingPlaybackQueueDataSource, MPNowPlayingPlaybackQueueDelegate, OS_dispatch_queue;
 
 @interface MPNowPlayingInfoCenter : NSObject
@@ -14,33 +14,68 @@
     NSDictionary *_nowPlayingInfo;
     NSDictionary *_queuedNowPlayingInfo;
     NSDictionary *_convertedNowPlayingInfo;
+    BOOL _coalescingUpdates;
+    BOOL _needsInvalidation;
+    NSMutableOrderedSet *_contentItemIdentifiersSentToMediaRemote;
+    NSMutableOrderedSet *_contentItemIdentifiersNotSentToMediaRemote;
+    NSMutableDictionary *_mutatedContentItems;
+    NSMutableDictionary *_mutatedPlaybackQueueRequests;
+    MPArtworkResizeUtility *_artworkResizeUtility;
+    unsigned long long _playbackState;
     NSDate *_pushDate;
     NSObject<OS_dispatch_queue> *_queue;
-    MPNowPlayingPlaybackQueueCache *_playbackQueueCache;
+    NSObject<OS_dispatch_queue> *_utilityQueue;
     id<MPNowPlayingPlaybackQueueDataSource> _playbackQueueDataSource;
     id<MPNowPlayingPlaybackQueueDelegate> _playbackQueueDelegate;
     id<MPNowPlayingInfoLyricsDelegate> _lyricsDelegate;
-    unsigned long long _playbackState;
+    void *_createPlaybackQueueToken;
+    void *_createItemForIdentifierToken;
+    void *_createItemForOffsetToken;
+    void *_createChildItemToken;
+    void *_metadataToken;
+    void *_infoToken;
+    void *_languageOptionsToken;
+    void *_lyricsToken;
+    void *_artworkToken;
+    void *_playerPath;
+    MPNowPlayingInfoCenterArtworkContext *_publishedContext;
+    NSString *_playerID;
+    NSDictionary *__mediaRemoteNowPlayingInfo;
 }
 
+@property (readonly, nonatomic) NSDictionary *_mediaRemoteNowPlayingInfo; // @synthesize _mediaRemoteNowPlayingInfo=__mediaRemoteNowPlayingInfo;
+@property (weak, nonatomic) id<MPNowPlayingInfoLyricsDelegate> lyricsDelegate;
 @property (copy) NSDictionary *nowPlayingInfo;
-@property unsigned long long playbackState; // @synthesize playbackState=_playbackState;
+@property (weak, nonatomic) id<MPNowPlayingPlaybackQueueDataSource> playbackQueueDataSource;
+@property (weak, nonatomic) id<MPNowPlayingPlaybackQueueDelegate> playbackQueueDelegate;
+@property unsigned long long playbackState;
+@property (readonly, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;
+@property (readonly, copy, nonatomic) NSSet *unpublishedChangedContentItemIDs;
 
 + (id)defaultCenter;
++ (id)infoCenterForPlayerID:(id)arg1;
 - (void).cxx_destruct;
-- (void)_asynchronousRequests:(void *)arg1 forItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_init;
-- (id)_itemAtIndexPath:(id)arg1 fromRoot:(id)arg2;
+- (void)_clearPlaybackQueueDataSourceCallbacks;
+- (void)_contentItemChangedNotification:(id)arg1;
+- (void)_getArtworkForRequest:(void *)arg1 item:(id)arg2 returnItem:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_getInfoForRequest:(void *)arg1 item:(id)arg2 returnItem:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_getLanguageOptionsForRequest:(void *)arg1 item:(id)arg2 returnItem:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_getLyricsForRequest:(void *)arg1 item:(id)arg2 returnItem:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_invalidatePlaybackQueueImmediately;
+- (void)_pushContentItemsUpdate;
 - (void)_pushNowPlayingInfoAndRetry:(BOOL)arg1;
-- (void)_registerCallbacks;
+- (id)_queryChildItemFromDataSource:(id)arg1 atIndexPath:(id)arg2 fromRoot:(id)arg3;
+- (void)_registerLyricsDelegateCallbacks:(id)arg1;
+- (void)_registerPlaybackQueueDataSourceCallbacks:(id)arg1;
+- (void)_removeToken:(void **)arg1;
+- (void)becomeActive;
+- (void)beginObservingChangesForContentItemIDs:(id)arg1;
+- (void)beginPlaybackQueueContentItemUpdates;
+- (void)dealloc;
+- (void)endPlaybackQueueContentItemUpdates;
 - (id)init;
+- (id)initWithPlayerID:(id)arg1;
 - (void)invalidatePlaybackQueue;
-- (id)lyricsDelegate;
-- (id)playbackQueueDataSource;
-- (id)playbackQueueDelegate;
-- (void)setLyricsDelegate:(id)arg1;
-- (void)setPlaybackQueueDataSource:(id)arg1;
-- (void)setPlaybackQueueDelegate:(id)arg1;
 
 @end
 

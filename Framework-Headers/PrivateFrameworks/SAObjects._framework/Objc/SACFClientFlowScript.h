@@ -12,6 +12,7 @@
 {
 }
 
+@property (copy, nonatomic) NSData *compressedScript;
 @property (copy, nonatomic) NSString *jsScript;
 @property (copy, nonatomic) NSData *jsScriptChecksum;
 @property (copy, nonatomic) NSString *jsScriptIdentifier;

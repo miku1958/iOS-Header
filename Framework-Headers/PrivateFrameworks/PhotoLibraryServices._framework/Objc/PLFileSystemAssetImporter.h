@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSString, PLPhotoLibrary;
 
@@ -15,18 +15,19 @@
     NSMutableIndexSet *_thumbIndexes;
     BOOL _hasProcessedAnyAssets;
     NSMutableSet *_existingUUIDs;
-    NSMutableDictionary *_existingUUIDsByPath;
+    NSMutableDictionary *_existingUUIDsByUppercasePath;
     NSMutableDictionary *_existingOIDsByUUID;
     unsigned long long _thumbnailBatchFetchSize;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *existingOIDsByUUID; // @synthesize existingOIDsByUUID=_existingOIDsByUUID;
 @property (strong, nonatomic) NSMutableSet *existingUUIDs; // @synthesize existingUUIDs=_existingUUIDs;
-@property (strong, nonatomic) NSMutableDictionary *existingUUIDsByPath; // @synthesize existingUUIDsByPath=_existingUUIDsByPath;
+@property (strong, nonatomic) NSMutableDictionary *existingUUIDsByUppercasePath; // @synthesize existingUUIDsByUppercasePath=_existingUUIDsByUppercasePath;
 @property (nonatomic) unsigned long long thumbnailBatchFetchSize; // @synthesize thumbnailBatchFetchSize=_thumbnailBatchFetchSize;
 
 + (id)_mediaDirectoryPath;
 - (id)_addAssetWithURL:(id)arg1 existingOID:(id)arg2;
+- (BOOL)_setupAdjustmentsFromAdjustmentFileForAsset:(id)arg1;
 - (BOOL)_setupPhotoAsset:(id)arg1 withURL:(id)arg2;
 - (BOOL)_setupPhotoAsset:(id)arg1 withURL:(id)arg2 unknownType:(BOOL)arg3;
 - (BOOL)_setupPhotoAssetAsPhotoIrisIfNeeded:(id)arg1;

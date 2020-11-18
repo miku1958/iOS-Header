@@ -20,6 +20,7 @@
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
+- (void)prepareForReuse;
 
 @end
 

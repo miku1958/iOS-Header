@@ -6,7 +6,7 @@
 
 #import <FrontBoard/NSObject-Protocol.h>
 
-@class UIColor;
+@class NSString, UIColor;
 
 @protocol FBSceneHostAppearance <NSObject>
 
@@ -14,11 +14,12 @@
 @property (strong, nonatomic) UIColor *backgroundColorWhileHosting;
 @property (strong, nonatomic) UIColor *backgroundColorWhileNotHosting;
 @property (nonatomic, getter=isClippingDisabled) BOOL clippingDisabled;
-@property (readonly, nonatomic, getter=isContextHosted) BOOL contextHosted;
 @property (nonatomic) unsigned long long hostedLayerTypes;
 @property (readonly, nonatomic, getter=isHosting) BOOL hosting;
 @property (readonly, nonatomic) double level;
+@property (copy, nonatomic) NSString *minificationFilterName;
 @property (readonly, nonatomic) struct CGRect referenceFrame;
+@property (nonatomic) unsigned long long renderingMode;
 
 @end
 

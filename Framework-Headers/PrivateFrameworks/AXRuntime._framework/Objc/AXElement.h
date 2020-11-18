@@ -15,6 +15,10 @@
     BOOL _representsScannerGroup;
     AXUIElement *_uiElement;
     AXElementGroup *_parentGroup;
+    NSString *_localizedStringKey;
+    NSString *_localizationBundleID;
+    NSString *_localizationBundlePath;
+    NSString *_localizedStringTableName;
     AXElement *_cachedRemoteParent;
     AXElement *_cachedRemoteParentForContextID;
     struct CGPath *_cachedPath;
@@ -24,7 +28,7 @@
 
 @property (readonly, nonatomic) AXElement *accessibilityUIServerApplication;
 @property (readonly, nonatomic) AXElement *application;
-@property (readonly, nonatomic) int applicationOrientation;
+@property (readonly, nonatomic) long long applicationOrientation;
 @property (nonatomic) BOOL assistiveTechFocused;
 @property (strong, nonatomic) AXElement *autoscrollTarget;
 @property (readonly, nonatomic) NSString *bundleId;
@@ -43,6 +47,8 @@
 @property (readonly, nonatomic) NSArray *customActions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSArray *drags;
+@property (readonly, nonatomic) NSArray *drops;
 @property (readonly, nonatomic) struct __AXUIElement *elementRef;
 @property (readonly, nonatomic) NSArray *elementsWithSemanticContext;
 @property (readonly, nonatomic) NSArray *explorerElements;
@@ -73,6 +79,10 @@
 @property (readonly, nonatomic) BOOL isVisible;
 @property (readonly, nonatomic) NSString *label;
 @property (readonly, nonatomic) NSString *language;
+@property (readonly, nonatomic) NSString *localizationBundleID; // @synthesize localizationBundleID=_localizationBundleID;
+@property (readonly, nonatomic) NSString *localizationBundlePath; // @synthesize localizationBundlePath=_localizationBundlePath;
+@property (readonly, nonatomic) NSString *localizedStringKey; // @synthesize localizedStringKey=_localizedStringKey;
+@property (readonly, nonatomic) NSString *localizedStringTableName; // @synthesize localizedStringTableName=_localizedStringTableName;
 @property (readonly, nonatomic, getter=isNativeFocused) BOOL nativeFocus;
 @property (readonly, nonatomic) AXElement *nativeFocusElement;
 @property (readonly, nonatomic) AXElement *nativeFocusPreferredElement;
@@ -81,10 +91,11 @@
 @property (nonatomic) AXElementGroup *parentGroup; // @synthesize parentGroup=_parentGroup;
 @property (nonatomic, getter=isPassivelyListeningForEvents) BOOL passivelyListeningForEvents;
 @property (readonly, nonatomic) struct CGPath *path;
+@property (readonly, nonatomic) int pid;
 @property (readonly, nonatomic) AXElement *remoteParent;
 @property (readonly, nonatomic) BOOL representsScannerGroup; // @synthesize representsScannerGroup=_representsScannerGroup;
-@property (readonly, nonatomic) int scannerActivateBehavior;
-@property (readonly, nonatomic) int scanningBehaviorTraits;
+@property (readonly, nonatomic) long long scannerActivateBehavior;
+@property (readonly, nonatomic) unsigned long long scanningBehaviorTraits;
 @property (nonatomic) struct _NSRange selectedTextRange;
 @property (readonly, nonatomic) NSDictionary *semanticContext;
 @property (readonly, nonatomic) NSArray *siriContentElementsWithSemanticContext;
@@ -115,14 +126,19 @@
 + (void)registerNotifications:(id)arg1 withIdentifier:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 + (id)systemWideElement;
 + (void)unregisterNotifications:(id)arg1;
+- (void).cxx_destruct;
 - (id)_axElementsForAXUIElements:(id)arg1;
-- (id)_elementForAttribute:(int)arg1 shouldUpdateCache:(BOOL)arg2 shouldFetchAttributes:(BOOL)arg3;
+- (id)_elementForAttribute:(long long)arg1 shouldUpdateCache:(BOOL)arg2 shouldFetchAttributes:(BOOL)arg3;
 - (BOOL)_performActivate;
 - (id)_remoteParentForContextID;
 - (void)_updateLabel;
 - (BOOL)_zoomInOrOut:(BOOL)arg1;
+- (id)accessibilityLocalizationBundleID;
+- (id)accessibilityLocalizationBundlePath;
+- (id)accessibilityLocalizedStringKey;
+- (id)accessibilityLocalizedStringTableName;
 - (id)auditIssuesForOptions:(id)arg1;
-- (void)autoscrollInDirection:(int)arg1;
+- (void)autoscrollInDirection:(unsigned long long)arg1;
 - (BOOL)canPerformActivate;
 - (BOOL)canPerformSecondaryActivate;
 - (BOOL)canPerformTrackingDetail;
@@ -137,9 +153,9 @@
 - (void)decreaseAutoscrollSpeed;
 - (double)distanceToElement:(id)arg1;
 - (double)distanceToPoint:(struct CGPoint)arg1;
-- (id)elementForAttribute:(int)arg1;
-- (id)elementForAttribute:(int)arg1 parameter:(id)arg2;
-- (id)elementsForAttribute:(int)arg1;
+- (id)elementForAttribute:(long long)arg1;
+- (id)elementForAttribute:(long long)arg1 parameter:(id)arg2;
+- (id)elementsForAttribute:(long long)arg1;
 - (id)elementsMatchingText:(id)arg1;
 - (id)firstResponderForFocus;
 - (BOOL)hasAllTraits:(unsigned long long)arg1;
@@ -156,6 +172,7 @@
 - (BOOL)isMap;
 - (id)keyboardContainer;
 - (BOOL)longPress;
+- (id)makeLookingGlassRequest:(id)arg1;
 - (id)nextElementsWithCount:(unsigned long long)arg1;
 - (void)pauseAutoscrolling;
 - (BOOL)performAction:(int)arg1;
@@ -189,6 +206,7 @@
 - (void)sendUserEventOccurred;
 - (BOOL)setNativeFocus;
 - (BOOL)supportsAction:(int)arg1;
+- (BOOL)systemLongPressTVMenuButton;
 - (BOOL)systemPressTVDownButton;
 - (BOOL)systemPressTVHomeButton;
 - (BOOL)systemPressTVLeftButton;
@@ -198,7 +216,7 @@
 - (BOOL)systemPressTVSelectButton;
 - (BOOL)systemPressTVSiriButton;
 - (BOOL)systemPressTVUpButton;
-- (void)updateCache:(int)arg1;
+- (void)updateCache:(long long)arg1;
 - (BOOL)viewHierarchyHasNativeFocus;
 - (BOOL)zoomIn;
 - (BOOL)zoomOut;

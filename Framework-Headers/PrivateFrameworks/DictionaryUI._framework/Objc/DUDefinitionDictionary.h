@@ -22,22 +22,20 @@
 
 @property (nonatomic) BOOL activated; // @synthesize activated=_activated;
 @property (readonly) NSString *definitionLanguage; // @synthesize definitionLanguage=_definitionLanguage;
+@property (readonly) struct __DCSDictionary *dictionaryRef;
 @property BOOL isAppleDictionary; // @synthesize isAppleDictionary=_isAppleDictionary;
 @property BOOL isTTYDictionary; // @synthesize isTTYDictionary=_isTTYDictionary;
 @property (readonly) NSString *localizedDictionaryName;
 @property (readonly) NSString *localizedLanguageName;
 @property (readonly) NSString *localizedSortName;
+@property (readonly) BOOL needsDownloadNewerVersion;
 @property float progress; // @synthesize progress=_progress;
 @property (readonly) ASAsset *rawAsset; // @synthesize rawAsset=_rawAsset;
 
 + (id)displayNameForLanguageIdentifier:(id)arg1 forSorting:(BOOL)arg2;
 - (void).cxx_destruct;
-- (id)_HTMLDefinitionForTerm:(id)arg1 type:(long long)arg2;
-- (id)_attributedDefinitionForTerm:(id)arg1;
 - (id)_definitionValueForTerm:(id)arg1;
-- (id)_fullHTMLDefinitionForTerm:(id)arg1;
 - (BOOL)_hasDefinitionForTerm:(id)arg1;
-- (id)_shortHTMLDefinitionForTerm:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)initWithAsset:(id)arg1;

@@ -22,7 +22,6 @@
     BOOL _needsReboot;
     BOOL _isStub;
     BOOL _mustInstallNonInteractively;
-    BOOL _shouldHaveFullSSLTrust;
     NSString *_profileDescription;
     NSString *_displayName;
     NSString *_identifier;
@@ -70,7 +69,7 @@
 @property (readonly, strong, nonatomic) NSString *profileIDHashFileName;
 @property (readonly, nonatomic) NSDate *removalDate; // @synthesize removalDate=_removalDate;
 @property (strong, nonatomic) NSString *removalPasscode; // @synthesize removalPasscode=_removalPasscode;
-@property (readonly, nonatomic) BOOL shouldHaveFullSSLTrust; // @synthesize shouldHaveFullSSLTrust=_shouldHaveFullSSLTrust;
+@property (readonly, nonatomic) BOOL shouldHaveFullSSLTrust;
 @property (readonly, nonatomic) struct __SecCertificate *signerCertificate;
 @property (strong, nonatomic) NSArray *signerCertificates;
 @property (readonly, nonatomic) NSString *signerSummary;

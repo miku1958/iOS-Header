@@ -26,6 +26,7 @@
 @property (weak) id<TKTokenSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong) NSDictionary *parameters; // @synthesize parameters=_parameters;
 @property (readonly) id<TKTokenSessionPrivateDelegate> privateDelegate;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *sessionQueue; // @synthesize sessionQueue=_sessionQueue;
 @property (readonly) TKToken *token; // @synthesize token=_token;
 
 - (void).cxx_destruct;
@@ -39,13 +40,15 @@
 - (void)decryptData:(id)arg1 usingKey:(id)arg2 algorithm:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)deleteObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)endRequest;
-- (void)evaluateAuthOperation:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)evaluateAuthOperation:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)evaluateAuthOperation:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)finalizeAuthOperation:(id)arg1 evaluatedAuthOperation:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)getAccessControlOfObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getDataOfObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getPublicKeyDataOfObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (BOOL)handleControlEvent:(id)arg1 reply:(id)arg2 attributes:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)handleCopyIdentitiesEvent:(id)arg1 reply:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)handleCopyItemsEvent:(id)arg1 reply:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)handleCreateObjectEvent:(id)arg1 reply:(id)arg2 attributes:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)handleDeleteObjectEvent:(id)arg1 reply:(id)arg2 objectID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)handleEvaluateAccessControlEvent:(id)arg1 reply:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

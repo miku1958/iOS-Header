@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class SBFParallaxSettings, SBUIForceTouchGestureRecognizer, SBUIIconForceTouchController, UIView, UIViewController;
+@class SBFParallaxSettings, SBUIForceTouchGestureRecognizer, SBUIIconForceTouchController, UIView, UIViewController, UIWindow;
 @protocol SBUIIconForceTouchControllerDataSource;
 
 @interface SBUIIconForceTouchControllerDataProvider : NSObject
@@ -27,9 +27,11 @@
 @property (readonly, weak, nonatomic) SBUIIconForceTouchController *controller; // @synthesize controller=_controller;
 @property (readonly, nonatomic) id<SBUIIconForceTouchControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, weak, nonatomic) SBUIForceTouchGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
+@property (readonly, nonatomic) UIWindow *gestureRecognizerWindow;
 @property (readonly, nonatomic) double iconImageCornerRadius;
 @property (readonly, nonatomic) struct UIEdgeInsets iconImageInsets;
 @property (readonly, nonatomic) struct CGRect iconViewFrame;
+@property (readonly, nonatomic) long long interfaceOrientation;
 @property (readonly, nonatomic) long long layoutStyle;
 @property (readonly, nonatomic) SBFParallaxSettings *parallaxSettings;
 @property (readonly, nonatomic) UIViewController *primaryViewController;

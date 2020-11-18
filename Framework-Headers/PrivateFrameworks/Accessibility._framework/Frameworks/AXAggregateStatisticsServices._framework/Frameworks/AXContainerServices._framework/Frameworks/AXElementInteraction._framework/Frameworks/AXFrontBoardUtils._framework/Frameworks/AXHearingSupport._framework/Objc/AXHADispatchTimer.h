@@ -20,9 +20,9 @@
     BOOL _useWallTime;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSObject<OS_dispatch_source> *_dispatchTimer;
+    NSString *_label;
     CDUnknownBlockType _processBlock;
     CDUnknownBlockType _cancelBlock;
-    NSString *_label;
 }
 
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
@@ -40,6 +40,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useWallTime; // @synthesize useWallTime=_useWallTime;
 
+- (void).cxx_destruct;
 - (void)_reallyCancel;
 - (void)afterDelay:(double)arg1 processBlock:(CDUnknownBlockType)arg2;
 - (void)afterDelay:(double)arg1 processBlock:(CDUnknownBlockType)arg2 cancelBlock:(CDUnknownBlockType)arg3;

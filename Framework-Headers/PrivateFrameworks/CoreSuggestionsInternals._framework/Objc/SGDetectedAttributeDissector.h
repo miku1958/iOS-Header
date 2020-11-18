@@ -6,12 +6,14 @@
 
 #import <CoreSuggestionsInternals/SGPipelineDissector.h>
 
-@class PMLAWDSessionTracker, SGAppleDirectory;
+@class PMLAWDSessionTracker;
+@protocol PMLTrainingProtocol;
 
 @interface SGDetectedAttributeDissector : SGPipelineDissector
 {
-    PMLAWDSessionTracker *_awdSessionTracker;
-    SGAppleDirectory *_appleDirectory;
+    id<PMLTrainingProtocol> _localTraining;
+    PMLAWDSessionTracker *_foundInMailSessionTracker;
+    PMLAWDSessionTracker *_selfIdSessionTracker;
     unsigned long long _selfIdentificationMessageCount;
 }
 
@@ -19,13 +21,14 @@
 
 + (void)clearConversationCache;
 + (id)currentPatterns;
-+ (void)initialize;
++ (id)dissectorWithMockedMLTrainingForTests;
 + (BOOL)isAddressContext:(id)arg1;
 + (BOOL)isMaybeNameContext:(id)arg1;
 + (BOOL)isNameRequest:(id)arg1;
 + (BOOL)isPhoneContext:(id)arg1;
 + (unsigned long long)supervisionTypeIfFoundByPrevModel:(BOOL)arg1 isKnownContact:(BOOL)arg2 isKnownInternal:(BOOL)arg3;
 - (void).cxx_destruct;
+- (id)MLSelfIdWithEntity:(id)arg1 conversation:(id)arg2 label:(id)arg3 detectedRange:(struct _NSRange)arg4;
 - (id)_extractEmailishTokenFromMailHeader:(id)arg1;
 - (id)_makeAlnum:(id)arg1;
 - (id)_makeSimplifiedListIdEmail:(id)arg1;
@@ -41,11 +44,9 @@
 - (id)getLineContaining:(struct _NSRange)arg1 inText:(id)arg2;
 - (void)handleTextMessageSelfIdentification:(id)arg1;
 - (id)init;
-- (id)initWithAWDTracker:(id)arg1 appleDirectory:(id)arg2;
-- (BOOL)isAppleInternalConversation:(id)arg1;
-- (BOOL)isAuthorOfEntity:(id)arg1 knownContactWithPhonenumber:(id)arg2;
-- (BOOL)isEmail:(id)arg1 appleInternalContactWithPhonenumber:(id)arg2;
+- (id)initWithTraining:(id)arg1 foundInMailSessionTracker:(id)arg2 selfIdSessionTracker:(id)arg3;
 - (id)processTextMessageConversation:(id)arg1 messageIndex:(unsigned long long)arg2;
+- (id)spotlightReferenceFromMessage:(id)arg1;
 
 @end
 

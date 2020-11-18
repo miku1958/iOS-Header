@@ -11,6 +11,7 @@
 @protocol SCNCameraJSExport <JSExport>
 
 @property (nonatomic) double aperture;
+@property (nonatomic) long long apertureBladeCount;
 @property (nonatomic) BOOL automaticallyAdjustsZRange;
 @property (nonatomic) double averageGray;
 @property (nonatomic) double bloomBlurRadius;
@@ -24,19 +25,32 @@
 @property (nonatomic) double exposureAdaptationBrighteningSpeedFactor;
 @property (nonatomic) double exposureAdaptationDarkeningSpeedFactor;
 @property (nonatomic) double exposureOffset;
+@property (nonatomic) double fStop;
+@property (nonatomic) double fieldOfView;
 @property (nonatomic) double focalBlurRadius;
+@property (nonatomic) long long focalBlurSampleCount;
 @property (nonatomic) double focalDistance;
+@property (nonatomic) double focalLength;
 @property (nonatomic) double focalSize;
+@property (nonatomic) double focusDistance;
 @property (nonatomic) double maximumExposure;
 @property (nonatomic) double minimumExposure;
 @property (nonatomic) double motionBlurIntensity;
 @property (copy, nonatomic) NSString *name;
 @property (nonatomic) double orthographicScale;
+@property (nonatomic) long long projectionDirection;
 @property (nonatomic) struct SCNMatrix4 projectionTransform;
 @property (nonatomic) double saturation;
+@property (nonatomic) double screenSpaceAmbientOcclusionBias;
+@property (nonatomic) double screenSpaceAmbientOcclusionDepthThreshold;
+@property (nonatomic) double screenSpaceAmbientOcclusionIntensity;
+@property (nonatomic) double screenSpaceAmbientOcclusionNormalThreshold;
+@property (nonatomic) double screenSpaceAmbientOcclusionRadius;
+@property (nonatomic) double sensorHeight;
 @property (nonatomic) BOOL usesOrthographicProjection;
 @property (nonatomic) double vignettingIntensity;
 @property (nonatomic) double vignettingPower;
+@property (nonatomic) BOOL wantsDepthOfField;
 @property (nonatomic) BOOL wantsExposureAdaptation;
 @property (nonatomic) BOOL wantsHDR;
 @property (nonatomic) double whitePoint;

@@ -8,7 +8,7 @@
 
 #import <WatchConnectivity/NSFilePresenter-Protocol.h>
 
-@class NSArray, NSMutableArray, NSOperationQueue, NSString, NSURL;
+@class NSArray, NSMutableArray, NSOperationQueue, NSSet, NSString, NSURL;
 
 @interface WCContentIndex : NSObject <NSFilePresenter>
 {
@@ -27,6 +27,7 @@
 @property (nonatomic) BOOL invalidated; // @synthesize invalidated=_invalidated;
 @property (strong, nonatomic) NSURL *itemURL; // @synthesize itemURL=_itemURL;
 @property (strong, nonatomic) id lastGenerationIdentifier; // @synthesize lastGenerationIdentifier=_lastGenerationIdentifier;
+@property (readonly) NSSet *observedPresentedItemUbiquityAttributes;
 @property (strong, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property (readonly, strong) NSOperationQueue *presentedItemOperationQueue;
 @property (readonly, copy) NSURL *presentedItemURL;

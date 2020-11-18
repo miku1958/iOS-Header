@@ -10,7 +10,7 @@
 #import <Sharing/SFCompanionXPCManagerObserver-Protocol.h>
 
 @class NSMutableDictionary, NSString;
-@protocol OS_dispatch_semaphore, SFCompanionServiceManagerProtocol;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore, SFCompanionServiceManagerProtocol;
 
 @interface SFCompanionManager : NSObject <SFCompanionServiceManagerClient, SFCompanionXPCManagerObserver>
 {
@@ -21,6 +21,7 @@
     NSString *_deviceName;
     NSMutableDictionary *_services;
     NSMutableDictionary *_streamHandlers;
+    NSObject<OS_dispatch_queue> *_serviceIdentifierQueue;
     NSObject<OS_dispatch_semaphore> *_managerSemaphore;
 }
 
@@ -33,6 +34,7 @@
 @property (copy) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong) id<SFCompanionServiceManagerProtocol> managerProxy; // @synthesize managerProxy=_managerProxy;
 @property (strong) NSObject<OS_dispatch_semaphore> *managerSemaphore; // @synthesize managerSemaphore=_managerSemaphore;
+@property (strong) NSObject<OS_dispatch_queue> *serviceIdentifierQueue; // @synthesize serviceIdentifierQueue=_serviceIdentifierQueue;
 @property (strong) NSMutableDictionary *services; // @synthesize services=_services;
 @property (strong) NSMutableDictionary *streamHandlers; // @synthesize streamHandlers=_streamHandlers;
 @property (readonly) Class superclass;

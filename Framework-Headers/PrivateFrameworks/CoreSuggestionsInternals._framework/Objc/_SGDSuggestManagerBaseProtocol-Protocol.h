@@ -7,8 +7,8 @@
 #import <CoreSuggestionsInternals/_SGDSuggestManagerMetricsProtocol-Protocol.h>
 
 @protocol _SGDSuggestManagerBaseProtocol <_SGDSuggestManagerMetricsProtocol>
-- (void)isEnabledWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)isEnabledWithCompletion:(void (^)(SGXPCResponse1 *))arg1;
 - (void)keepDirty:(BOOL)arg1;
-- (void)noopWithCompletion:(void (^)(NSError *))arg1;
+- (void)noopWithCompletion:(void (^)(SGXPCResponse *))arg1;
 @end
 

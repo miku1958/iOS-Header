@@ -97,6 +97,7 @@
 - (BOOL)existsInLibrary;
 - (void)gaplessHeuristicInfo:(unsigned int *)arg1 durationInSamples:(unsigned long long *)arg2 lastPacketsResync:(unsigned long long *)arg3 encodingDelay:(unsigned int *)arg4 encodingDrain:(unsigned int *)arg5;
 - (unsigned long long)hash;
+- (void)incrementPlayCount;
 - (void)incrementPlayCountForPlayingToEnd;
 - (BOOL)incrementPlayCountForStopTime:(double)arg1;
 - (void)incrementSkipCount;
@@ -111,6 +112,7 @@
 - (void)noteWasPlayedToTime:(double)arg1 skipped:(BOOL)arg2;
 - (void)populateLocationPropertiesWithPath:(id)arg1;
 - (void)populateLocationPropertiesWithPath:(id)arg1 assetProtectionType:(long long)arg2;
+- (void)populateLocationPropertiesWithPath:(id)arg1 assetProtectionType:(long long)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)predicateForProperty:(id)arg1;
 - (id)representativeItem;
 - (id)screenshotArtworkCatalog;

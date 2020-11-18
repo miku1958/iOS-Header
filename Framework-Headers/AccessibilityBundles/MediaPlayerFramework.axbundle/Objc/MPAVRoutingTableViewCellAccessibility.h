@@ -13,9 +13,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityDescriptionForRoute:(id)arg1;
 - (id)accessibilityLabel;
+- (id)accessibilityMediaRoute;
 - (id)accessibilityValue;
-- (void)setMirroringSwitchVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setAccessibilityMediaRoute:(id)arg1;
+- (void)updateForRoute:(id)arg1 inferLocalizedModelName:(BOOL)arg2;
 
 @end
 

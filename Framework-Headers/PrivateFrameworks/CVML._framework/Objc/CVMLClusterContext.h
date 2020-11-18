@@ -32,6 +32,7 @@
 - (id)clusterFacesWithOptions:(id)arg1 error:(id *)arg2;
 - (id)clusterState;
 - (id)getClustersForClusterIds:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)getDistanceBetweenClusters:(id)arg1;
 - (id)getDistanceBetweenClustersWithFaceIds:(id)arg1;
 - (id)getDistances:(id)arg1 to:(id)arg2;
 - (id)getGroupedClusteredFaceIdsForFaceId:(id)arg1;

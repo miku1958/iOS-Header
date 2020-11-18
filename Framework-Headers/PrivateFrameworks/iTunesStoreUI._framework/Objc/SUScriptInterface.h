@@ -56,6 +56,7 @@
 @property (copy) NSString *cookie;
 @property (readonly) NSString *cookieDefaultURL;
 @property (readonly) NSString *cookieForDefaultURL;
+@property (readonly) id creditCardReaderAvailable;
 @property (readonly, copy) NSString *debugDescription;
 @property id<SUScriptInterfaceDelegate> delegate;
 @property (readonly, copy) NSString *description;
@@ -106,6 +107,7 @@
 - (id)_cookieForURL:(id)arg1;
 - (id)_copyDialogWithMessage:(id)arg1 title:(id)arg2 cancelButtonTitle:(id)arg3 okButtonTitle:(id)arg4;
 - (void)_dismissSafariViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_finishCreditCardReaderWithOutput:(id)arg1 callback:(id)arg2;
 - (void)_getSoftwareApplicationWithCompletionFunction:(id)arg1 lookupBlock:(CDUnknownBlockType)arg2;
 - (void)_globalEventNotification:(id)arg1;
 - (void)_presentSafariViewControllerWithURL:(id)arg1 safariIdentifier:(id)arg2 animated:(BOOL)arg3;
@@ -125,6 +127,7 @@
 - (void)approveInPerson:(id)arg1 completionFunction:(id)arg2;
 - (BOOL)arePodcastsDisabled;
 - (id)attributeKeys;
+- (void)authenticateAppleIdWithUsername:(id)arg1 password:(id)arg2 callback:(id)arg3;
 - (void)authenticateForAccount:(id)arg1 withOptions:(id)arg2;
 - (BOOL)canSendEmail;
 - (BOOL)checkCapabilitiesPropertyListString:(id)arg1 showFailureDialog:(BOOL)arg2;
@@ -211,7 +214,10 @@
 - (id)makeVolumeViewController;
 - (id)makeWindow;
 - (id)makeXMLHTTPRequest;
+- (void)openCreditCardReaderWithCompletionFunction:(id)arg1;
+- (void)openFamilyCircleSetupWithClientName:(id)arg1 completionFunction:(id)arg2;
 - (void)openURL:(id)arg1;
+- (void)openWallet;
 - (id)parentViewController;
 - (void)perfLog:(id)arg1;
 - (void)performPurchaseAnimationForIdentifier:(id)arg1 style:(id)arg2;
@@ -249,6 +255,7 @@
 - (void)setSubscriptionStatusCoordinator:(id)arg1;
 - (void)setWindow:(id)arg1;
 - (BOOL)shouldRestrictContentOfSystem:(id)arg1 level:(id)arg2;
+- (BOOL)shouldShowAddToWalletLink:(id)arg1;
 - (void)showAlertWithMessage:(id)arg1 title:(id)arg2 buttonTitle:(id)arg3;
 - (BOOL)showConfirmWithMessage:(id)arg1 title:(id)arg2 okButtonTitle:(id)arg3 cancelButtonTitle:(id)arg4;
 - (void)showMediaPlayerWithURLString:(id)arg1 orientation:(id)arg2 title:(id)arg3 subtitle:(id)arg4 bookmarkID:(id)arg5 duration:(id)arg6 type:(id)arg7 imageURL:(id)arg8;

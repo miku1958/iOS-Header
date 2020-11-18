@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/PLAssetChangeObserver-Protocol.h>
 #import <PhotoLibraryServices/PLAssetContainer-Protocol.h>
@@ -66,12 +66,10 @@
 + (id)_updatePropertiesForAssets:(id)arg1 autoPicks:(id)arg2 stackAsset:(id)arg3 userFavorites:(id)arg4 deleteNonPicks:(BOOL)arg5 setFirstPick:(BOOL)arg6 allowDissolve:(BOOL)arg7;
 + (id)_visibleIndexesAmongAssets:(id)arg1 fromUserFavoriteIndexes:(id)arg2 stackIndex:(unsigned long long)arg3;
 + (id)assetsWithAvalancheUUID:(id)arg1 inManagedObjectContext:(id)arg2;
-+ (id)avalancheStackForImage:(id)arg1 backgroundColor:(id)arg2;
 + (unsigned long long)countForAvalancheUUID:(id)arg1 inLibrary:(id)arg2;
 + (void)disolveBurstForAssets:(id)arg1;
 + (struct CGRect)frameOfTopImageInStackForStackFrame:(struct CGRect)arg1;
 + (BOOL)isValidBurstWithAssets:(id)arg1;
-+ (id)partialAvalancheStackForImage:(id)arg1 backgroundColor:(id)arg2;
 + (void)removeFavoriteStatus:(id)arg1;
 + (void)revalidateAvalancheAssets:(id)arg1 inLibrary:(id)arg2 deleteNonPicks:(BOOL)arg3 allowDissolve:(BOOL)arg4;
 + (BOOL)shouldHideAvalanchesFromPhotoStream;

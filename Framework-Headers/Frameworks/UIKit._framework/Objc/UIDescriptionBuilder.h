@@ -8,7 +8,6 @@
 
 @class NSMutableString, NSString;
 
-__attribute__((visibility("hidden")))
 @interface UIDescriptionBuilder : NSObject
 {
     NSString *_separator;
@@ -32,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)appendName:(id)arg1 intValue:(int)arg2;
 - (id)appendName:(id)arg1 integerValue:(long long)arg2;
 - (id)appendName:(id)arg1 object:(id)arg2;
+- (id)appendName:(id)arg1 object:(id)arg2 usingLightweightDescription:(BOOL)arg3;
 - (id)appendName:(id)arg1 pointerValue:(void *)arg2;
 - (id)appendName:(id)arg1 selector:(SEL)arg2;
 - (id)appendName:(id)arg1 unsignedInteger:(unsigned long long)arg2;

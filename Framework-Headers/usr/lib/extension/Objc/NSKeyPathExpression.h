@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSFunctionExpression.h>
+#import <Foundation/NSFunctionExpression.h>
 
 @interface NSKeyPathExpression : NSFunctionExpression
 {

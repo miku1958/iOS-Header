@@ -6,22 +6,25 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class MFComposeRecipient, MFRecipientTableViewCellDetailView, MFRecipientTableViewCellTitleView, UIColor, UIImageView;
+@class MFComposeRecipient, NSArray, UIColor, UILabel;
 
 @interface MFRecipientTableViewCell : UITableViewCell
 {
-    MFRecipientTableViewCellTitleView *_titleView;
-    MFRecipientTableViewCellDetailView *_detailView;
     MFComposeRecipient *_recipient;
-    UIImageView *_cellImageView;
     UIColor *_tintColor;
-    BOOL _shouldVerticallyCenterTitleLabel;
+    BOOL _shouldHideDetailLabel;
     BOOL _shouldHighlightCompleteMatches;
     BOOL _shouldDimIrrelevantInformation;
+    UILabel *_titleLabel;
+    UILabel *_detailLabel;
+    NSArray *_activeConstraints;
 }
 
+@property (strong, nonatomic) NSArray *activeConstraints; // @synthesize activeConstraints=_activeConstraints;
+@property (readonly, nonatomic) UILabel *detailLabel; // @synthesize detailLabel=_detailLabel;
 @property (nonatomic) BOOL shouldDimIrrelevantInformation; // @synthesize shouldDimIrrelevantInformation=_shouldDimIrrelevantInformation;
 @property (nonatomic) BOOL shouldHighlightCompleteMatches; // @synthesize shouldHighlightCompleteMatches=_shouldHighlightCompleteMatches;
+@property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 + (id)_attributedStringRepresentationOfCompleteMatchesForRecipient:(id)arg1 constrainedToWidth:(double)arg2 overflowRecipients:(out id *)arg3 useHighlighting:(BOOL)arg4;
 + (id)_attributedStringRepresentationOfPartialEmailMatchForSingleRecipient:(id)arg1 useHighlighting:(BOOL)arg2;
@@ -33,21 +36,27 @@
 + (double)_realDetailButtonAccessoryMargin;
 + (id)_tintedAttributedString:(id)arg1 toColor:(id)arg2 shouldDim:(BOOL)arg3;
 + (id)cellForRecipient:(id)arg1;
++ (id)defaultDetailStringAttributes;
++ (id)defaultTitleStringAttributes;
++ (double)detailLineHeight;
++ (id)groupDetailStringAttributes;
 + (double)height;
 + (double)heightWithRecipient:(id)arg1 width:(double)arg2;
++ (id)highlightedDetailStringAttributes;
++ (id)highlightedTitleStringAttributes;
 + (id)identifier;
-- (struct CGRect)_frameForDetailView;
-- (struct CGRect)_frameForTitleView;
++ (id)labelDetailStringAttributes;
++ (id)regularTitleStringAttributes;
+- (void)animateSnapshotOfLabel:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)layoutSubviews;
 - (id)recipient;
 - (void)setBackgroundColor:(id)arg1;
-- (void)setCellImage:(id)arg1 highlightedImage:(id)arg2;
 - (void)setOpaque:(BOOL)arg1;
 - (void)setRecipient:(id)arg1;
 - (void)setTintColor:(id)arg1 animated:(BOOL)arg2;
 - (id)tintColor;
+- (void)updateActiveConstraints;
 
 @end
 

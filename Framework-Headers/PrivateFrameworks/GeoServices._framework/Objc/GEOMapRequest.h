@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOMapRequestManager;
 
@@ -20,6 +20,7 @@
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (readonly, nonatomic) BOOL isFinished; // @synthesize isFinished=_isFinished;
 
+- (void).cxx_destruct;
 - (void)_finishAndCallHandler:(CDUnknownBlockType)arg1;
 - (void)cancel;
 - (void)complete;

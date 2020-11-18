@@ -9,16 +9,19 @@
 #import <WebUI/UISearchBarDelegate-Protocol.h>
 #import <WebUI/UISearchResultsUpdating-Protocol.h>
 
-@class NSArray, NSString, UISearchController, WBUPasswordPickerViewController, _UINavigationControllerPalette;
+@class NSArray, NSString, UISearchController, WBUPasswordPickerViewController;
 
 @interface _WBUPasswordPicker : UITableViewController <UISearchBarDelegate, UISearchResultsUpdating>
 {
+    NSArray *_savedPasswordsMatchingHintStrings;
     NSArray *_savedPasswords;
     NSArray *_matchingPasswords;
     WBUPasswordPickerViewController *_pickerViewController;
-    _UINavigationControllerPalette *_palette;
     UISearchController *_searchController;
     NSString *_searchPattern;
+    long long _sectionForPrompt;
+    long long _sectionForPasswordsMatchingHintStrings;
+    long long _sectionForAllPasswords;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,7 +30,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_passwordForIndexPath:(id)arg1;
 - (void)_setSearchPattern:(id)arg1;
+- (void)_updateSections;
 - (id)initWithPasswordPickerViewController:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (long long)positionForBar:(id)arg1;
@@ -40,7 +45,7 @@
 - (void)tableView:(id)arg1 performAction:(SEL)arg2 forRowAtIndexPath:(id)arg3 withSender:(id)arg4;
 - (BOOL)tableView:(id)arg1 shouldShowMenuForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
-- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)updateSearchResultsForSearchController:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

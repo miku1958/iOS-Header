@@ -13,13 +13,16 @@
     CalPreferences *_preferences;
 }
 
+@property (nonatomic) BOOL alertInviteeDeclines;
 @property (nonatomic) BOOL alwaysSetArrivedAndSettledForReminders;
+@property (readonly) BOOL bypassSplashScreen;
 @property (strong, nonatomic) NSArray *deselectedCalendarIdentifiers;
 @property (strong, nonatomic) NSArray *deselectedCalendarSyncHashes;
-@property (nonatomic) BOOL privacyPaneHasBeenAcknowledged;
+@property (nonatomic) unsigned long long lastConfirmedSplashScreenVersion;
 @property (nonatomic) BOOL refiringReminderAlarmsEnabled;
 @property (nonatomic) BOOL remindMeAboutThisInCalendarWidgetEnabled;
 @property (strong, nonatomic) NSArray *selectedCalendarIdentifiers;
+@property (nonatomic) BOOL showDeclinedEvents;
 @property (nonatomic) double travelEngineThrottlePeriod;
 @property (nonatomic) BOOL useShortReminderRefireInterval;
 @property (nonatomic) BOOL useShortReminderSnoozeInterval;

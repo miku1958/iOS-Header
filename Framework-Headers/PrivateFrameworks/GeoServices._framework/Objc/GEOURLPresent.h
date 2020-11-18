@@ -21,11 +21,11 @@
 @property (strong, nonatomic) GEOURLOptions *options; // @synthesize options=_options;
 
 + (Class)itemType;
+- (void).cxx_destruct;
 - (void)addItem:(id)arg1;
 - (void)clearItems;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

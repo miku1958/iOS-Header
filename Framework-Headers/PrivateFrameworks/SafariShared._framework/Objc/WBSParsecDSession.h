@@ -16,16 +16,17 @@
 {
     NSObject<OS_dispatch_queue> *_requestProcessingQueue;
     WBSParsecDFeedbackDispatcher *_feedbackDispatcher;
-    long long _currentQueryID;
     GEOUserSessionEntity *_geoUserSessionEntity;
     BOOL _valid;
     id<WBSParsecSearchSessionDelegate> _delegate;
     WBSCompletionQuery *_currentQuery;
     double _uiScale;
     PARSession *_parsecdSession;
+    unsigned long long _currentQueryID;
 }
 
 @property (strong, nonatomic) WBSCompletionQuery *currentQuery; // @synthesize currentQuery=_currentQuery;
+@property unsigned long long currentQueryID; // @synthesize currentQueryID=_currentQueryID;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WBSParsecSearchSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -36,6 +37,8 @@
 @property (nonatomic, setter=setUIScale:) double uiScale; // @synthesize uiScale=_uiScale;
 @property (readonly, nonatomic, getter=isValid) BOOL valid; // @synthesize valid=_valid;
 
++ (void)_updateAutoFillCorrectionSetsIfNeededForSession:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (void)_updateAutoFillTLDsIfNeededForSession:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)sharedCorrectionsProcessor;
 + (id)sharedDomainPolicyProvider;
 + (id)sharedPARSession;
@@ -44,9 +47,7 @@
 - (void)_didReceiveResponse:(id)arg1 error:(id)arg2 forTask:(id)arg3 query:(id)arg4;
 - (id)_parsecResultsFromRawResponse:(id)arg1 identifiersToSFSearchResults:(id)arg2 identifiersToSFResultSections:(id)arg3;
 - (id)_parsecResultsFromResponse:(id)arg1;
-- (void)_startUpdatingAutoFillDataInBackgroundFromBag:(id)arg1;
-- (void)_updateAutoFillCorrectionSetsIfNeededFromNewBag:(id)arg1;
-- (void)_updateAutoFillTLDsIfNeededFromNewBag:(id)arg1;
+- (void)_startUpdatingAutoFillDataInBackgroundIfPossibleForSession:(id)arg1;
 - (void)fetchCardDetailsForResult:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithParsecdSession:(id)arg1;

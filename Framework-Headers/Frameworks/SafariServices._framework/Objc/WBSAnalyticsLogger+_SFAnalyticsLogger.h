@@ -7,10 +7,13 @@
 #import <WebUI/WBSAnalyticsLogger.h>
 
 @interface WBSAnalyticsLogger (_SFAnalyticsLogger)
+- (void)_sf_authenticatedForAutoFillWithCategory:(int)arg1 onPageLoad:(BOOL)arg2 status:(int)arg3 client:(int)arg4;
+- (void)_sf_authenticatedForAutoFillWithCategory:(int)arg1 onPageLoad:(BOOL)arg2 status:(int)arg3 error:(id)arg4 client:(int)arg5;
 - (void)_sf_enteredTwoUpUsingMethod:(int)arg1;
 - (void)_sf_launchedOrResumedSafariWhileInPrivateBrowsing:(BOOL)arg1;
 - (void)_sf_longTappedOnSafariToolbarButton:(int)arg1;
 - (void)_sf_longTappedOnSafariViewControllerToolbarButton:(int)arg1;
+- (void)_sf_reportAutoFillRequiresAuthenticationPreference:(BOOL)arg1;
 - (void)_sf_safariViewControllerDidDismissWithMethod:(int)arg1;
 - (void)_sf_safariViewControllerDidPresentFromHostApp:(id)arg1;
 - (void)_sf_tappedOnSafariToolbarButton:(int)arg1;

@@ -18,11 +18,13 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGPoint offset; // @synthesize offset=_offset;
 @property (nonatomic) double yOffset; // @synthesize yOffset=_yOffset;
 
++ (id)activeCaretMagnifier;
 + (id)sharedCaretMagnifier;
 - (struct CGPoint)animationPoint;
 - (void)beginMagnifyingTarget:(id)arg1 text:(id)arg2 magnificationPoint:(struct CGPoint)arg3 offset:(struct CGPoint)arg4 animated:(BOOL)arg5;
 - (id)initWithFrame;
 - (BOOL)isHorizontal;
+- (double)offsetFromMagnificationPoint;
 - (void)remove;
 - (void)setAnimationPoint:(struct CGPoint)arg1;
 - (void)setAutoscrollDirections:(int)arg1;

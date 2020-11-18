@@ -16,13 +16,16 @@
 - (BOOL)_accessibilityOverridesInvalidFrames;
 - (BOOL)_accessibilityPointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilitySupportsActivateAction;
+- (BOOL)_accessibilityUIViewCanPerformEscapeAction;
 - (void)_axAddCustomActionWithName:(id)arg1 gesture:(unsigned long long)arg2 toArray:(id)arg3;
-- (BOOL)_axIsDividerForOverlay;
 - (BOOL)_axPerformGestureForAction:(id)arg1;
 - (BOOL)accessibilityActivate;
 - (id)accessibilityCustomActions;
 - (id)accessibilityHint;
 - (BOOL)accessibilityPerformEscape;
+- (id)actionsForFloatingAppNubView;
+- (id)actionsForPinnedAppNubView;
+- (id)actionsForSideAppDivider;
 
 @end
 

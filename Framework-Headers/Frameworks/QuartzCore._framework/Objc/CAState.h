@@ -6,12 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-#import <QuartzCore/NSCoding-Protocol.h>
 #import <QuartzCore/NSCopying-Protocol.h>
+#import <QuartzCore/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString;
 
-@interface CAState : NSObject <NSCoding, NSCopying>
+@interface CAState : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_name;
     NSString *_basedOn;
@@ -33,6 +33,7 @@
 @property double previousDelay; // @synthesize previousDelay=_previousDelay;
 
 + (void)CAMLParserStartElement:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void)CAMLParser:(id)arg1 setValue:(id)arg2 forKey:(id)arg3;
 - (id)CAMLTypeForKey:(id)arg1;
 - (void)addElement:(id)arg1;

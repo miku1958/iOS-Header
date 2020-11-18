@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <Foundation/NSProxy.h>
+
 #import <WebKit/WKObject-Protocol.h>
 
 @class NSObject, NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKObject <WKObject>
+@interface WKObject : NSProxy <WKObject>
 {
-    Class _isa;
     BOOL _hasInitializedTarget;
     NSObject *_target;
 }
@@ -22,28 +23,30 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (Class)class;
-+ (BOOL)conformsToProtocol:(id)arg1;
 - (id)_web_createTarget;
-- (BOOL)allowsWeakReference;
-- (id)autorelease;
-- (Class)class;
+- (Class)classForCoder;
+- (Class)classForKeyedArchiver;
 - (BOOL)conformsToProtocol:(id)arg1;
+- (void)dealloc;
+- (void)forwardInvocation:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isKindOfClass:(Class)arg1;
 - (BOOL)isMemberOfClass:(Class)arg1;
-- (BOOL)isProxy;
-- (id)performSelector:(SEL)arg1;
-- (id)performSelector:(SEL)arg1 withObject:(id)arg2;
-- (id)performSelector:(SEL)arg1 withObject:(id)arg2 withObject:(id)arg3;
-- (oneway void)release;
+- (BOOL)isNSArray__;
+- (BOOL)isNSCFConstantString__;
+- (BOOL)isNSData__;
+- (BOOL)isNSDate__;
+- (BOOL)isNSDictionary__;
+- (BOOL)isNSNumber__;
+- (BOOL)isNSObject__;
+- (BOOL)isNSOrderedSet__;
+- (BOOL)isNSSet__;
+- (BOOL)isNSString__;
+- (BOOL)isNSTimeZone__;
+- (BOOL)isNSValue__;
+- (id)methodSignatureForSelector:(SEL)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;
-- (id)retain;
-- (unsigned long long)retainCount;
-- (BOOL)retainWeakReference;
-- (id)self;
-- (struct _NSZone *)zone;
 
 @end
 

@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)enumerateDatesStartingAfterDate:(id)arg1 matchingComponents:(id)arg2 options:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (unsigned long long)firstWeekday;
+- (id)gregorianStartDate;
 - (unsigned long long)hash;
 - (BOOL)isDateInWeekend:(id)arg1;
 - (id)locale;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)rangeOfUnit:(unsigned long long)arg1 inUnit:(unsigned long long)arg2 forDate:(id)arg3;
 - (BOOL)rangeOfUnit:(unsigned long long)arg1 startDate:(id *)arg2 interval:(double *)arg3 forDate:(id)arg4;
 - (void)setFirstWeekday:(unsigned long long)arg1;
+- (void)setGregorianStartDate:(id)arg1;
 - (void)setLocale:(id)arg1;
 - (void)setMinimumDaysInFirstWeek:(unsigned long long)arg1;
 - (void)setTimeZone:(id)arg1;

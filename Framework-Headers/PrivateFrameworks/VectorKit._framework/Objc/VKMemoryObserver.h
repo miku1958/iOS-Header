@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface VKMemoryObserver : NSObject
 {
-    struct _geo_weak_ptr<id> _target;
+    struct _geo_weak_ptr<id> {
+        id _p;
+    } _target;
     SEL _selector;
     NSObject<OS_dispatch_source> *_memoryNotificationEventSource;
 }
@@ -20,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_receivedMemoryNotification;
 - (void)dealloc;
-- (id)initWithTarget:(id)arg1 selector:(SEL)arg2;
+- (id)initWithTarget:(id)arg1 selector:(SEL)arg2 taskContext:(const struct TaskContext *)arg3;
 - (void)triggerMemoryNotification:(BOOL)arg1;
 
 @end

@@ -12,7 +12,7 @@
 {
 }
 
-@property (nonatomic) id<CoreDAVTaskDelegate> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<CoreDAVTaskDelegate> delegate; // @dynamic delegate;
 
 - (void)finishCoreDAVTaskWithError:(id)arg1;
 - (id)httpMethod;

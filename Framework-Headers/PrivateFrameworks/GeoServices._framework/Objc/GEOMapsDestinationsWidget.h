@@ -32,11 +32,11 @@
 @property (nonatomic) int tappedItemIndex; // @synthesize tappedItemIndex=_tappedItemIndex;
 
 + (Class)proactiveItemType;
+- (void).cxx_destruct;
 - (void)addProactiveItem:(id)arg1;
 - (void)clearProactiveItems;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

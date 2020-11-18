@@ -10,8 +10,11 @@
 
 @interface EKUIAutocompletePETTracker : NSObject
 {
+    BOOL _hasTrackedZKWQuery;
+    BOOL _hasTrackedZKWResultShown;
     BOOL _hasTrackedAutocompleteQuery;
     BOOL _hasTrackedAutocompleteResultsShown;
+    BOOL _hasTrackedNLResultShown;
     BOOL _initialIsAllDay;
     unsigned long long _finalNumberOfAutocompleteResults;
     NSDate *_initialStartDate;
@@ -30,16 +33,22 @@
 + (id)_autocompleteCompleteWinTracker;
 + (id)_autocompleteEngagementEventTracker;
 + (id)_autocompleteQueryEventTracker;
++ (id)_autocompleteSelectionTypeTracker;
 + (id)_autocompleteStatsTracker;
 + (id)_eventTrackerForProperty:(unsigned long long)arg1;
 + (BOOL)_isChangeToTrackedPropertySignificant:(unsigned long long)arg1;
++ (id)_nlShownTracker;
 + (BOOL)_trackedEventProperty:(unsigned long long)arg1 isPresentInAutocompleteResult:(id)arg2;
 + (BOOL)_trackedEventProperty:(unsigned long long)arg1 wasOverriddenInEvent:(id)arg2 fromAutocompleteResult:(id)arg3;
++ (id)_zkwQueryEventTracker;
 - (void).cxx_destruct;
 - (BOOL)_trackedEventProperty:(unsigned long long)arg1 wasSetInNewEvent:(id)arg2;
-- (void)trackAutocompleteEventsOnSaveWithEvent:(id)arg1 selectedResult:(id)arg2 selectedIndex:(unsigned long long)arg3;
+- (void)trackAutocompleteEventsOnSaveWithEvent:(id)arg1 selectedResult:(id)arg2 selectedIndex:(unsigned long long)arg3 isZKW:(BOOL)arg4;
 - (void)trackAutocompleteQuery;
 - (void)trackAutocompleteResultsShown;
+- (void)trackNLResultShown;
+- (void)trackZKWQuery;
+- (void)trackZKWResultShown;
 
 @end
 

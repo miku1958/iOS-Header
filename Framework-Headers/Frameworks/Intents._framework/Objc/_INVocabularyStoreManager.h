@@ -26,8 +26,11 @@
 + (id)_customVocabularyDirectory;
 + (id)_globalClassQueue;
 + (id)_hashOfAppPath:(id)arg1;
++ (void)_iterateVocabularyWithSummary:(id)arg1 optionalBlock:(CDUnknownBlockType)arg2;
++ (id)_latestVocabularyStringsAt:(id)arg1;
 + (id)appDatastoreDirectoryForAppBundleID:(id)arg1 bundlePath:(id)arg2;
 + (void)deleteAllUserVocabularyFromAllAppsAsync;
++ (void)enumerateVocabularyUsingBlock:(CDUnknownBlockType)arg1;
 + (id)managerForBundleID:(id)arg1 bundlePath:(id)arg2;
 + (id)savedCustomVocabularyOverviewDictionary;
 - (void).cxx_destruct;

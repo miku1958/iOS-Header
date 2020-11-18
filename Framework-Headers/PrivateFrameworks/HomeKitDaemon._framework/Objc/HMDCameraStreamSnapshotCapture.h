@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDVideoStreamLastDecodedFrameDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDCameraSessionID, HMDVideoStreamInterface, HMFTimer, NSString;
+@class HMDCameraSessionID, HMDVideoStreamInterface, HMFTimer, NSObject, NSString;
 @protocol HMDCameraStreamSnapshotCaptureDelegate, OS_dispatch_queue;
 
-@interface HMDCameraStreamSnapshotCapture : NSObject <HMDVideoStreamLastDecodedFrameDelegate, HMFTimerDelegate, HMFLogging>
+@interface HMDCameraStreamSnapshotCapture : HMFObject <HMDVideoStreamLastDecodedFrameDelegate, HMFTimerDelegate, HMFLogging>
 {
     BOOL _capturingLastFrame;
     BOOL _capturingCurrentFrame;

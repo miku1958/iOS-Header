@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOCompletionItemPrivate-Protocol.h>
 
-@class GEOMapServiceTraits, GEOPDAutocompleteEntry, GEOSearchCategory, NSArray, NSData, NSString;
+@class GEOMapItemIdentifier, GEOMapServiceTraits, GEOPDAutocompleteEntry, GEOSearchCategory, NSArray, NSData, NSString;
 @protocol GEOMapItem;
 
 __attribute__((visibility("hidden")))
@@ -31,14 +31,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSData *entryMetadata;
 @property (readonly, nonatomic) id<GEOMapItem> geoMapItem;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) GEOMapItemIdentifier *identifier;
 @property (readonly, nonatomic) NSData *metadata;
 @property (readonly, nonatomic, getter=_placeDataAutocompleteEntry) GEOPDAutocompleteEntry *placeDataAutocompleteEntry;
 @property (readonly, nonatomic) GEOSearchCategory *searchCategory;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type;
 
+- (void).cxx_destruct;
 - (id)calloutTitle;
-- (void)dealloc;
 - (BOOL)getCoordinate:(CDStruct_c3b9c2ee *)arg1;
 - (id)highlightsForLine:(unsigned long long)arg1;
 - (id)initWithEntry:(id)arg1 traits:(id)arg2 entryListIndex:(int)arg3 entryIndex:(int)arg4 mapItems:(id)arg5;

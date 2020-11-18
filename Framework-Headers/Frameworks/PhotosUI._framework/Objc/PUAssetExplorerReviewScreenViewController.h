@@ -68,7 +68,9 @@
 - (void)_handleReviewAssetRequest:(id)arg1 completedWithSuccess:(BOOL)arg2 canceled:(BOOL)arg3 error:(id)arg4 reviewAsset:(id)arg5;
 - (void)_performCancelAction;
 - (void)_performDoneAction;
+- (void)_performDoneActionSteps;
 - (void)_performRetakeAction;
+- (void)_presentConfidentialityAlertWithConfirmAction:(CDUnknownBlockType)arg1 abortAction:(CDUnknownBlockType)arg2;
 - (id)_remainingReviewAssetRequests;
 - (void)_requestReviewAssetForAsset:(id)arg1;
 - (id)_reviewAssetRequestForAssetUUID:(id)arg1;

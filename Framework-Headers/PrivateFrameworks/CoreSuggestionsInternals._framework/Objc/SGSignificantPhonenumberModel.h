@@ -4,39 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CoreSuggestionsInternals/SGModel.h>
 
-#import <CoreSuggestionsInternals/SGModel-Protocol.h>
-
-@class NSString, SGPipelineTransformer;
-@protocol PMLRegressionModelProtocol;
-
-@interface SGSignificantPhonenumberModel : NSObject <SGModel>
+@interface SGSignificantPhonenumberModel : SGModel
 {
-    id<PMLRegressionModelProtocol> _model;
-    SGPipelineTransformer *_transformers;
-    SGPipelineTransformer *_ngramtransformers;
-    SGPipelineTransformer *_covariateTransformer;
 }
 
-@property (strong) SGPipelineTransformer *covariateTransformer; // @synthesize covariateTransformer=_covariateTransformer;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong) id<PMLRegressionModelProtocol> model; // @synthesize model=_model;
-@property (strong) SGPipelineTransformer *ngramtransformers; // @synthesize ngramtransformers=_ngramtransformers;
-@property (readonly) Class superclass;
-@property (strong) SGPipelineTransformer *transformers; // @synthesize transformers=_transformers;
-
-- (void).cxx_destruct;
-- (id)covariatize:(id)arg1;
-- (id)features:(id)arg1;
-- (id)featurize:(id)arg1;
-- (id)fit:(id)arg1 toOutcome:(BOOL)arg2;
-- (id)initWithWeights:(id)arg1 isLogistic:(BOOL)arg2;
-- (id)ngrammed:(id)arg1;
-- (BOOL)predict:(id)arg1;
-- (id)swapped:(id)arg1;
++ (id)newTransformerInstanceForLanguage:(id)arg1;
++ (id)temporaryKeyMap;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebCore/WAKView.h>
+#import <WebKitLegacy/WAKView.h>
 
 @class CALayer, UIView, UIWebDocumentView;
 

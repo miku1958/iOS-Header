@@ -13,7 +13,6 @@
 @interface CKDPShare : PBCodable <NSCopying>
 {
     NSString *_etag;
-    NSData *_internalAppSpecificMetadata;
     NSMutableArray *_invitedKeyToRemoves;
     CKDPProtectionInfo *_invitedPcs;
     NSMutableArray *_participants;
@@ -32,7 +31,6 @@
 
 @property (strong, nonatomic) NSString *etag; // @synthesize etag=_etag;
 @property (readonly, nonatomic) BOOL hasEtag;
-@property (readonly, nonatomic) BOOL hasInternalAppSpecificMetadata;
 @property (readonly, nonatomic) BOOL hasInvitedPcs;
 @property (nonatomic) BOOL hasPublicAccess;
 @property (nonatomic) BOOL hasPublisherModel;
@@ -40,7 +38,6 @@
 @property (readonly, nonatomic) BOOL hasShareId;
 @property (readonly, nonatomic) BOOL hasShortTokenHash;
 @property (readonly, nonatomic) BOOL hasShortTokenRoutingKey;
-@property (strong, nonatomic) NSData *internalAppSpecificMetadata; // @synthesize internalAppSpecificMetadata=_internalAppSpecificMetadata;
 @property (strong, nonatomic) NSMutableArray *invitedKeyToRemoves; // @synthesize invitedKeyToRemoves=_invitedKeyToRemoves;
 @property (strong, nonatomic) CKDPProtectionInfo *invitedPcs; // @synthesize invitedPcs=_invitedPcs;
 @property (strong, nonatomic) NSMutableArray *participants; // @synthesize participants=_participants;
@@ -57,6 +54,7 @@
 + (Class)potentialMatchType;
 - (void).cxx_destruct;
 - (int)StringAsPublicAccess:(id)arg1;
+- (id)_publicAccessCKLogValue;
 - (void)addInvitedKeyToRemove:(id)arg1;
 - (void)addParticipant:(id)arg1;
 - (void)addPotentialMatch:(id)arg1;

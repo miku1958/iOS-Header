@@ -14,6 +14,7 @@
 {
     NSMutableDictionary *_taskToFigHTTPRequest;
     struct OpaqueFigReentrantMutex *_taskToFigHTTPRequestMutex;
+    unsigned char _doesIgnoreDidReceiveResponseDisposition;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -32,6 +33,7 @@
 - (void)_registerFigHTTPRequest:(struct OpaqueFigHTTPRequest *)arg1 forDataTask:(id)arg2;
 - (void)dealloc;
 - (id)init;
+- (id)initWithResponseDispositionOption:(BOOL)arg1;
 
 @end
 

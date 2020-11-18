@@ -6,7 +6,7 @@
 
 #import <MediaPlayer/MPRTCReportingEvent.h>
 
-@class NSError, NSNumber;
+@class NSError, NSNumber, NSString;
 
 @interface MPRTCReportingSessionSummaryEvent : MPRTCReportingEvent
 {
@@ -26,6 +26,7 @@
     long long _interfaceTypeChangeCount;
     long long _startInterfaceType;
     NSNumber *_perceivedTotalStartupTime;
+    NSString *_siriSessionIdentifier;
 }
 
 @property (nonatomic) double assetLoadDuration; // @synthesize assetLoadDuration=_assetLoadDuration;
@@ -40,6 +41,7 @@
 @property (copy, nonatomic) NSError *playbackEndError; // @synthesize playbackEndError=_playbackEndError;
 @property (copy, nonatomic) NSError *secureKeyError; // @synthesize secureKeyError=_secureKeyError;
 @property (nonatomic) long long secureKeyLoadCount; // @synthesize secureKeyLoadCount=_secureKeyLoadCount;
+@property (copy, nonatomic) NSString *siriSessionIdentifier; // @synthesize siriSessionIdentifier=_siriSessionIdentifier;
 @property (nonatomic) long long startInterfaceType; // @synthesize startInterfaceType=_startInterfaceType;
 @property (nonatomic) long long startupState; // @synthesize startupState=_startupState;
 @property (nonatomic) double tracklistLoadDuration; // @synthesize tracklistLoadDuration=_tracklistLoadDuration;

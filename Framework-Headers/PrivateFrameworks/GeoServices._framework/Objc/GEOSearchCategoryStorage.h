@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAutocompleteEntry, GEOPDBrowseCategory;
+@class GEOPDAutocompleteEntry, GEOPDBrowseCategory, PBUnknownFields;
 
 @interface GEOSearchCategoryStorage : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     GEOPDAutocompleteEntry *_autocompleteEntry;
     GEOPDBrowseCategory *_browseCategory;
 }
@@ -20,10 +21,11 @@
 @property (strong, nonatomic) GEOPDBrowseCategory *browseCategory; // @synthesize browseCategory=_browseCategory;
 @property (readonly, nonatomic) BOOL hasAutocompleteEntry;
 @property (readonly, nonatomic) BOOL hasBrowseCategory;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

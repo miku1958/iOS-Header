@@ -22,6 +22,7 @@
     double _defaultTruncatedTextMinimumScaleFactor;
     double _textAutoscalingPrecision;
     long long _deviceGraphicsQuality;
+    double _simulatedSafeAreaHorizontalInsets;
 }
 
 @property (nonatomic) BOOL allowCapitalization; // @synthesize allowCapitalization=_allowCapitalization;
@@ -36,11 +37,13 @@
 @property (nonatomic) long long deviceGraphicsQuality; // @synthesize deviceGraphicsQuality=_deviceGraphicsQuality;
 @property (nonatomic) BOOL drawTypographicGuidelines; // @synthesize drawTypographicGuidelines=_drawTypographicGuidelines;
 @property (nonatomic) BOOL simulateSlowTextTypesetting; // @synthesize simulateSlowTextTypesetting=_simulateSlowTextTypesetting;
+@property (nonatomic) double simulatedSafeAreaHorizontalInsets; // @synthesize simulatedSafeAreaHorizontalInsets=_simulatedSafeAreaHorizontalInsets;
 @property (nonatomic) double textAutoscalingPrecision; // @synthesize textAutoscalingPrecision=_textAutoscalingPrecision;
 @property (nonatomic) BOOL useFancyDarkening; // @synthesize useFancyDarkening=_useFancyDarkening;
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
+- (id)parentSettings;
 - (void)setDefaultValues;
 
 @end

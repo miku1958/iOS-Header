@@ -4,29 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSData, NSString;
+@class GEOApplicationAuditToken, NSString;
 
 @interface GEOProxyClient : NSObject
 {
     NSString *_bundleIdentifier;
     NSString *_bundleVersion;
-    NSData *_auditToken;
+    GEOApplicationAuditToken *_auditToken;
     BOOL _isApplication;
 }
 
-@property (strong, nonatomic) NSData *auditToken; // @synthesize auditToken=_auditToken;
+@property (strong, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (strong, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property (nonatomic) BOOL isApplication; // @synthesize isApplication=_isApplication;
 
 + (id)compositeClientForClients:(id)arg1;
 + (id)currentClient;
+- (void).cxx_destruct;
 - (id)URLConnectionProperties;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
+- (id)initWithXPCConnection:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

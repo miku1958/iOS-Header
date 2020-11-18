@@ -19,11 +19,14 @@
     NSString *_titleForBeginningOfSentence;
     BOOL _selected;
     BOOL _showSelectAllButton;
+    BOOL _showVerifyAccountButton;
     EKSource *_source;
+    NSString *_footer;
 }
 
 @property (readonly, strong, nonatomic) NSArray *calendarInfos;
 @property (readonly, copy, nonatomic) NSSet *calendarSet;
+@property (strong, nonatomic) NSString *footer; // @synthesize footer=_footer;
 @property (readonly, nonatomic) BOOL isSubscribed;
 @property (readonly, nonatomic) unsigned long long numCalendars;
 @property (readonly, nonatomic) unsigned long long numSelectableCalendars;
@@ -33,8 +36,10 @@
 @property (readonly, nonatomic) BOOL showAddCalendarButton;
 @property (readonly, nonatomic) BOOL showCalendarNameIfSolitary;
 @property (nonatomic) BOOL showSelectAllButton; // @synthesize showSelectAllButton=_showSelectAllButton;
+@property (nonatomic) BOOL showVerifyAccountButton; // @synthesize showVerifyAccountButton=_showVerifyAccountButton;
 @property (readonly, nonatomic) int sortOrder;
 @property (strong, nonatomic) EKSource *source; // @synthesize source=_source;
+@property (readonly, nonatomic) EKSource *sourceForSyncError;
 @property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, copy, nonatomic) NSString *typeTitle;
 
@@ -46,7 +51,6 @@
 - (id)initWithCustomGroupType:(int)arg1;
 - (id)initWithSource:(id)arg1;
 - (void)insertCalendarInfo:(id)arg1;
-- (void)insertDeclinedEventsItem;
 - (void)removeCalendar:(id)arg1;
 - (void)selectAll;
 - (void)selectNone;

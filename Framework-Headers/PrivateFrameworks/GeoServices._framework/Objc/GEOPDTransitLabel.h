@@ -9,11 +9,12 @@
 #import <GeoServices/GEOTransitLabelItem-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPBTransitArtwork, NSString;
+@class GEOPBTransitArtwork, NSString, PBUnknownFields;
 @protocol GEOTransitArtworkDataSource;
 
 @interface GEOPDTransitLabel : PBCodable <GEOTransitLabelItem, NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     GEOPBTransitArtwork *_labelArtwork;
     NSString *_labelTextString;
     int _labelType;
@@ -35,11 +36,12 @@
 @property (nonatomic) int labelType; // @synthesize labelType=_labelType;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (int)StringAsLabelType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)dictionaryRepresentation;
 - (BOOL)isEqual:(id)arg1;
 - (id)labelTypeAsString:(int)arg1;

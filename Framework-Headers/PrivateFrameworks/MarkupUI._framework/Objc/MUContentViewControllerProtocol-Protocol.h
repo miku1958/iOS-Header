@@ -6,12 +6,14 @@
 
 #import <MarkupUI/NSObject-Protocol.h>
 
-@class NSArray, UIView;
+@class NSArray, UIScrollView, UIView;
 @protocol UICoordinateSpace;
 
 @protocol MUContentViewControllerProtocol <NSObject>
 
 @property (nonatomic) BOOL centersIgnoringContentInsets;
+@property (readonly, nonatomic) UIScrollView *contentViewScrollView;
+@property (readonly, nonatomic) long long defaultToolTag;
 @property (nonatomic) struct UIEdgeInsets edgeInsets;
 @property (nonatomic) BOOL navigationModeHorizontal;
 @property (readonly) unsigned long long pageCount;
@@ -21,6 +23,7 @@
 - (struct CGSize)contentSize;
 - (UIView *)contentSnapshot;
 - (struct CGSize)idealContentSizeForScreenSize:(struct CGSize)arg1 windowDecorationSize:(struct CGSize)arg2;
+- (void)loadContentWithCompletionBlock:(void (^)(void))arg1;
 - (void)setup;
 - (void)teardown;
 - (void)uninstallAllAnnotationControllerOverlays;

@@ -8,5 +8,6 @@
 
 @interface NSString (CRKAdditions)
 - (id)crk_sha1Hash;
+- (id)crk_stringByRemovingSuffix:(id)arg1;
 @end
 

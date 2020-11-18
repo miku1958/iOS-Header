@@ -28,9 +28,9 @@
 + (id)identityForApplicationInfo:(id)arg1;
 + (id)identityForBundleProxy:(id)arg1;
 + (id)identityForCompatibilityInfo:(id)arg1;
+- (void).cxx_destruct;
 - (id)_initWithBundleIdentifier:(id)arg1 bundlePath:(id)arg2 dataContainerPath:(id)arg3 bundleContainerPath:(id)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

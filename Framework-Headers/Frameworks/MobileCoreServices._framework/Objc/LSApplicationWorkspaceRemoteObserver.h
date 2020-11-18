@@ -15,15 +15,16 @@
 __attribute__((visibility("hidden")))
 @interface LSApplicationWorkspaceRemoteObserver : NSObject <LSInternalWorkspaceObserverProtocol, NSSecureCoding>
 {
-    BOOL _observinglsd;
     NSUUID *_uuid;
     NSHashTable *_observers;
     NSObject<OS_dispatch_queue> *_progressSubscriptionsQueue;
+    BOOL _observinglsd;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (getter=isObservinglsd) BOOL observinglsd; // @synthesize observinglsd=_observinglsd;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
@@ -50,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (BOOL)isObservinglsd;
 - (id)localObservers;
 - (BOOL)messageObserversWithSelector:(SEL)arg1 andApps:(id)arg2;
 - (void)networkUsageChanged:(BOOL)arg1;
@@ -58,7 +58,6 @@ __attribute__((visibility("hidden")))
 - (void)pluginsDidUninstall:(id)arg1;
 - (void)pluginsWillUninstall:(id)arg1;
 - (void)removeLocalObserver:(id)arg1;
-- (void)setObservinglsd:(BOOL)arg1;
 
 @end
 

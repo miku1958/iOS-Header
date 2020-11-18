@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDaemonConnection-Protocol.h>
 
-@class HMDApplicationRegistry, HMDProcessInfo, HMDXPCRequestTracker, HMFMessageDispatcher, NSDictionary, NSSet, NSString, NSXPCConnection;
+@class HMDApplicationRegistry, HMDProcessInfo, HMDXPCRequestTracker, HMFMessageDispatcher, NSDictionary, NSObject, NSSet, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
-@interface HMDConnectionProxy : NSObject <HMDaemonConnection>
+@interface HMDConnectionProxy : HMFObject <HMDaemonConnection>
 {
     BOOL _entitledForAPIAccess;
     BOOL _entitledForSPIAccess;
-    BOOL _entitledForBridgeSPIAccess;
     BOOL _entitledForBackgroundMode;
     BOOL _activated;
     NSXPCConnection *_xpcConnection;
@@ -43,7 +42,6 @@
 @property (readonly, nonatomic) NSString *effectiveLocationBundleIdentifier;
 @property (readonly, nonatomic, getter=isEntitledForAPIAccess) BOOL entitledForAPIAccess; // @synthesize entitledForAPIAccess=_entitledForAPIAccess;
 @property (readonly, nonatomic, getter=isEntitledForBackgroundMode) BOOL entitledForBackgroundMode; // @synthesize entitledForBackgroundMode=_entitledForBackgroundMode;
-@property (readonly, nonatomic, getter=isEntitledForBridgeSPIAccess) BOOL entitledForBridgeSPIAccess; // @synthesize entitledForBridgeSPIAccess=_entitledForBridgeSPIAccess;
 @property (readonly, nonatomic, getter=isEntitledForSPIAccess) BOOL entitledForSPIAccess; // @synthesize entitledForSPIAccess=_entitledForSPIAccess;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *name;

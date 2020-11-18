@@ -23,10 +23,10 @@
 - (void).cxx_destruct;
 - (void)_appendKey:(id)arg1 value:(id)arg2 toSearchResultElement:(id)arg3;
 - (id)_copySearchStringForQueryInput:(id)arg1;
-- (id)_copySearchStringPortionForWord:(id)arg1;
 - (void)_failImmediately;
 - (void)_performQuery;
 - (void)_promptForPasswordDueToError:(id)arg1;
+- (id)_searchStringForWord:(id)arg1;
 - (id)daLevelErrorForLDAPError:(int)arg1;
 - (void)disable;
 - (void)finishWithError:(id)arg1;

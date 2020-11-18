@@ -7,33 +7,36 @@
 #import <Foundation/NSObject.h>
 
 @class NSArray, NSMutableDictionary, NSString, NSURL;
-@protocol OS_dispatch_queue;
 
 @interface _LSStringLocalizer : NSObject
 {
     NSURL *_url;
+    BOOL _isMainBundle;
     NSString *_stringsFile;
     NSMutableDictionary *_stringsFileContent;
     NSMutableDictionary *_unlocalizedInfoPlistStrings;
     NSArray *_bundleLocalizations;
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
 + (id)coreTypesLocalizer;
 + (id)frameworkBundleLocalizer;
++ (id)preferredLocalizationsForXCTests;
++ (id)queue;
 + (void)setPreferredLocalizationsForXCTests:(id)arg1;
-- (id)_initWithBundle:(struct __CFBundle *)arg1 stringsFile:(id)arg2;
-- (struct __CFBundle *)copyBundle;
+- (void).cxx_destruct;
+- (id)_initWithBundleURL:(id)arg1 stringsFile:(id)arg2 keepBundle:(BOOL)arg3;
+- (struct __CFBundle *)bundle;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)init;
-- (id)initWithBundle:(struct __CFBundle *)arg1 stringsFile:(id)arg2;
-- (id)initWithDatabase:(LSDatabase_753d25be *)arg1 bundleUnit:(unsigned int)arg2 delegate:(unsigned int)arg3;
-- (id)initWithDatabase:(LSDatabase_753d25be *)arg1 pluginUnit:(unsigned int)arg2;
+- (id)initWithBundleURL:(id)arg1 stringsFile:(id)arg2;
+- (id)initWithDatabase:(struct LSDatabase *)arg1 bundleUnit:(unsigned int)arg2 delegate:(unsigned int)arg3;
+- (id)initWithDatabase:(struct LSDatabase *)arg1 pluginUnit:(unsigned int)arg2;
 - (id)localizedStringDictionaryWithString:(id)arg1 defaultValue:(id)arg2;
 - (id)localizedStringWithString:(id)arg1 inBundle:(struct __CFBundle *)arg2 localeCode:(id)arg3 keep:(BOOL)arg4;
 - (id)localizedStringWithString:(id)arg1 inBundle:(struct __CFBundle *)arg2 preferredLocalizations:(id)arg3 keep:(BOOL)arg4;
 - (id)localizedStringWithString:(id)arg1 preferredLocalizations:(id)arg2;
+- (id)localizedStringsWithStrings:(id)arg1 preferredLocalizations:(id)arg2;
 - (id)stringsFileContentInBundle:(struct __CFBundle *)arg1 withLocaleCode:(id)arg2 keep:(BOOL)arg3;
 
 @end

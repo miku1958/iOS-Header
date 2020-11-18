@@ -6,35 +6,47 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreParsec/NSCopying-Protocol.h>
+#import <CoreParsec/NSSecureCoding-Protocol.h>
+#import <CoreParsec/_CPProcessableFeedback-Protocol.h>
+#import <CoreParsec/_CPSkipSearchFeedback-Protocol.h>
 
-@class NSString;
+@class NSData, NSDictionary, NSString;
 
-@interface _CPSkipSearchFeedback : PBCodable <NSCopying>
+@interface _CPSkipSearchFeedback : PBCodable <_CPProcessableFeedback, _CPSkipSearchFeedback, NSSecureCoding>
 {
+    CDStruct_c6e3878d _has;
+    int _triggerEvent;
     unsigned long long _timestamp;
     NSString *_input;
-    int _triggerEvent;
-    CDStruct_ce7c5ddc _has;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly, nonatomic) id feedbackJSON;
 @property (readonly, nonatomic) BOOL hasInput;
-@property (nonatomic) BOOL hasTriggerEvent;
-@property (strong, nonatomic) NSString *input; // @synthesize input=_input;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (readonly, nonatomic) BOOL hasTimestamp;
+@property (readonly, nonatomic) BOOL hasTriggerEvent;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *input; // @synthesize input=_input;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (readonly, nonatomic) BOOL requiresQueryId;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 
 - (void).cxx_destruct;
-- (int)StringAsTriggerEvent:(id)arg1;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)init;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithTriggerEvent:(int)arg1 input:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)triggerEventAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

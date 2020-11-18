@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOPhoneNumberResolving-Protocol.h>
 
@@ -14,7 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface GEOPhoneNumberResolverRemoteProxy : NSObject <GEOPhoneNumberResolving>
 {
-    NSObject<OS_dispatch_queue> *_workQueue;
+    NSObject<OS_dispatch_queue> *_xcpWorkQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (void)resolvePhoneNumbers:(id)arg1 handler:(CDUnknownBlockType)arg2 queue:(id)arg3;
 

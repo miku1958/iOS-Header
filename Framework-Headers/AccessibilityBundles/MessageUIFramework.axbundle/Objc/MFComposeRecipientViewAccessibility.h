@@ -15,9 +15,6 @@
 + (id)safeCategoryTargetClassName;
 - (void)_reflowAnimated:(BOOL)arg1;
 - (void)addRecipient:(id)arg1 index:(unsigned long long)arg2 animate:(BOOL)arg3;
-- (void)dragEntered:(id)arg1 atPoint:(struct CGPoint)arg2;
-- (void)dragStartedWithItem:(id)arg1;
-- (void)dragUpdated:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)removeRecipient:(id)arg1;
 

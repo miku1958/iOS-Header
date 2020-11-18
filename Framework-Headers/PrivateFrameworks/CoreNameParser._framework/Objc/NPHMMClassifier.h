@@ -6,17 +6,21 @@
 
 #import <Foundation/NSObject.h>
 
+@class NPNameComponentsData;
+
 @interface NPHMMClassifier : NSObject
 {
     unsigned long long _totalGivenNamesCount;
     unsigned long long _totalFamilyNamesCount;
     unsigned long long _uniqueGivenNamesCount;
     unsigned long long _uniqueFamilyNamesCount;
+    NPNameComponentsData *_nameComponentsData;
     CDStruct_a720a2d7 _stateProbabilities;
 }
 
 @property CDStruct_a720a2d7 stateProbabilities; // @synthesize stateProbabilities=_stateProbabilities;
 
+- (void).cxx_destruct;
 - (id)candidatesBasedOnCommaDelimiterIndex:(unsigned long long)arg1 sequenceSize:(unsigned long long)arg2;
 - (id)candidatesBasedOnFormatSequence:(id)arg1;
 - (id)candidatesOfSize:(unsigned long long)arg1 constraints:(unsigned long long)arg2 compoundsConstraints:(id)arg3 labelsContraints:(id)arg4;
@@ -28,7 +32,7 @@
 - (BOOL)formCompoundGivenName:(id)arg1;
 - (unsigned long long)frequencyForName:(id)arg1 type:(unsigned long long)arg2;
 - (id)hiddenStatesFromObservationSequence:(id)arg1;
-- (id)initWithHMMProbabilities:(CDStruct_a720a2d7)arg1;
+- (id)initWithHMMProbabilities:(CDStruct_a720a2d7)arg1 nameComponentsDate:(id)arg2;
 - (BOOL)isCoupleName:(id)arg1;
 - (BOOL)isGivenNameAbbreviation:(id)arg1;
 - (BOOL)isInitial:(id)arg1;

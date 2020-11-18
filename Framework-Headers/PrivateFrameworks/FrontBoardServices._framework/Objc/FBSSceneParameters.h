@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
 #import <FrontBoardServices/NSCopying-Protocol.h>
 #import <FrontBoardServices/NSMutableCopying-Protocol.h>
 
-@class FBSDisplay, FBSSceneClientSettings, FBSSceneSettings, FBSSceneSpecification, NSString;
+@class FBSSceneClientSettings, FBSSceneSettings, FBSSceneSpecification, NSString;
 
 @interface FBSSceneParameters : NSObject <BSXPCCoding, NSCopying, NSMutableCopying, BSDescriptionProviding>
 {
     FBSSceneSpecification *_specification;
-    FBSDisplay *_display;
     FBSSceneSettings *_settings;
     FBSSceneClientSettings *_clientSettings;
 }
@@ -24,7 +23,6 @@
 @property (copy, nonatomic) FBSSceneClientSettings *clientSettings; // @synthesize clientSettings=_clientSettings;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) FBSDisplay *display; // @synthesize display=_display;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) FBSSceneSettings *settings; // @synthesize settings=_settings;
 @property (readonly, copy, nonatomic) FBSSceneSpecification *specification; // @synthesize specification=_specification;
@@ -44,6 +42,7 @@
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
+- (void)updateSettingsWithBlock:(CDUnknownBlockType)arg1;
 
 @end
 

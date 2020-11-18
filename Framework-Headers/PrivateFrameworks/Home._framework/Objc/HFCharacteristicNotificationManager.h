@@ -12,9 +12,9 @@
 
 @interface HFCharacteristicNotificationManager : NSObject <HFHomeManagerObserver>
 {
+    NSDate *_lastNotificationsEnableRequestDate;
     NSMutableSet *_notificationsEnabledReasons;
     HMHome *_notificationsEnabledHome;
-    NSDate *_lastNotificationsEnableRequestDate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -34,7 +34,6 @@
 - (void)homeKitDispatcher:(id)arg1 manager:(id)arg2 didChangeHome:(id)arg3;
 - (void)homeManagerDidFinishInitialDatabaseLoad:(id)arg1;
 - (id)init;
-- (BOOL)valueIsUpToDateForCharacteristic:(id)arg1;
 
 @end
 

@@ -15,7 +15,9 @@ __attribute__((visibility("hidden")))
     BOOL _showRSSI;
 }
 
+- (id)_signalStrengthBarsImageName;
 - (id)_stringForRSSI;
+- (id)accessibilityHUDRepresentation;
 - (id)contentsImage;
 - (double)extraLeftPadding;
 - (double)extraRightPadding;

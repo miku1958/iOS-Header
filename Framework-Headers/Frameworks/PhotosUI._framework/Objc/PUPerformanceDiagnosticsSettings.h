@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUSettings.h>
+#import <PhotosUICore/PXSettings.h>
 
-@interface PUPerformanceDiagnosticsSettings : PUSettings
+@interface PUPerformanceDiagnosticsSettings : PXSettings
 {
     BOOL _shouldTracePerformance;
     double _scrollTestRampUpDuration;
@@ -21,6 +21,7 @@
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
+- (id)parentSettings;
 - (void)setDefaultValues;
 
 @end

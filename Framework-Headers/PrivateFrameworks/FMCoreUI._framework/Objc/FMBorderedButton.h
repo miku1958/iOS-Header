@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIButton.h>
+#import <FMCoreUI/FM_Workaround_30408319_Button.h>
 
 @class UIColor;
 
-@interface FMBorderedButton : UIButton
+@interface FMBorderedButton : FM_Workaround_30408319_Button
 {
     BOOL _hairlineBorder;
     UIColor *_borderColor;

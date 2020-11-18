@@ -10,6 +10,9 @@
 
 @property (readonly, nonatomic) BOOL cam_isHidden;
 
++ (void)cam_animateIfNeededWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2;
++ (void)cam_animateIfNeededWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)cam_animateIfNeededWithDuration:(double)arg1 options:(unsigned long long)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)cam_ceilBounds:(struct CGRect *)arg1 andRoundCenter:(struct CGPoint *)arg2 toViewScale:(id)arg3;
 + (void)cam_convertRect:(struct CGRect)arg1 toCeiledBounds:(struct CGRect *)arg2 andRoundedCenter:(struct CGPoint *)arg3 toViewScale:(id)arg4;
 + (double)cam_setHiddenDefaultAnimationDuration;
@@ -24,9 +27,11 @@
 - (void)cam_setBorder;
 - (void)cam_setBorderColor:(id)arg1;
 - (void)cam_setBorderColor:(id)arg1 width:(double)arg2;
+- (void)cam_setCenterAndBoundsForFrame:(struct CGRect)arg1;
 - (void)cam_setHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)cam_setHidden:(BOOL)arg1 animationDuration:(double)arg2;
 - (void)cam_setHidden:(BOOL)arg1 animationDuration:(double)arg2 delay:(double)arg3;
 - (void)cam_setHidden:(BOOL)arg1 animationDuration:(double)arg2 delay:(double)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)cam_setHidden:(BOOL)arg1 totalAnimationTime:(double)arg2 normalizedFadeoutDuration:(double)arg3;
 @end
 

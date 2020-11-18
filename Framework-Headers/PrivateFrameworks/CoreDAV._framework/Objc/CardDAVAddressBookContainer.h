@@ -23,8 +23,8 @@
 @property (strong, nonatomic) NSURL *meCardURL; // @synthesize meCardURL=_meCardURL;
 
 + (id)copyPropertyMappingsForParser;
+- (void).cxx_destruct;
 - (void)applyParsedProperties:(id)arg1;
-- (void)dealloc;
 - (id)description;
 
 @end

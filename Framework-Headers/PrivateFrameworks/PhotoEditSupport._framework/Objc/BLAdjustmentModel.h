@@ -76,9 +76,9 @@
 + (id)exposureValuesForToneCurveData:(id)arg1 highlightsAndShadowsData:(id)arg2 andHistogramData:(id)arg3;
 + (struct CGPoint)pointOnCurveFromPoint:(struct CGPoint)arg1 withSlope:(double)arg2 andCurveData:(double *)arg3;
 + (id)rampImage;
+- (void).cxx_destruct;
 - (id)adjustedImageFromImage:(id)arg1;
 - (void)buildChain;
-- (void)dealloc;
 - (BOOL)hasAdjustments;
 - (BOOL)hasColor;
 - (BOOL)hasExposure;

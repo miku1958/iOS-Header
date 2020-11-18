@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface IMAVInterface : NSObject
 {
@@ -72,11 +72,6 @@
 - (id)natTypeForAVChat:(id)arg1;
 - (void)persistentProperty:(id)arg1 changedTo:(id)arg2 from:(id)arg3;
 - (void)processRemoteIPChanged:(id)arg1 fromParticipant:(id)arg2;
-- (void *)remoteVideoBackLayerForChat:(id)arg1;
-- (void *)remoteVideoLayerForChat:(id)arg1;
-- (void)setRemoteVideoBackLayer:(void *)arg1 forChat:(id)arg2;
-- (void)setRemoteVideoLayer:(void *)arg1 forChat:(id)arg2;
-- (void)setRemoteVideoLayersFromChat:(id)arg1 toChat:(id)arg2;
 - (void)setRemoteVideoPresentationSize:(struct CGSize)arg1 forChat:(id)arg2;
 - (void)setRemoteVideoPresentationState:(unsigned int)arg1 forChat:(id)arg2;
 - (BOOL)startPreviewWithError:(id *)arg1;

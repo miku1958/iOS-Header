@@ -14,8 +14,8 @@
 @interface EMFEmojiPreferencesService : NSObject <NSXPCListenerDelegate>
 {
     NSXPCListener *_listener;
-    EMFEmojiPreferences *_preferences;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    EMFEmojiPreferences *_preferences;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,6 +27,7 @@
 
 + (id)sharedServiceWithMachName:(id)arg1;
 - (void).cxx_destruct;
+- (void)_createPreferencesIfNecessary;
 - (void)dealloc;
 - (id)initWithMachName:(id)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

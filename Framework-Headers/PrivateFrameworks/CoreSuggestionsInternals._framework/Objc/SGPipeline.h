@@ -16,12 +16,14 @@
 + (id)customPipeline:(id)arg1;
 + (id)dependencyClassesForDissectorClass:(Class)arg1;
 + (id)dissectorsForBackgroundProcessing;
++ (id)emptyPipeline;
 + (id)fullPipeline;
 + (id)parallelPipeline:(id)arg1;
 + (id)pipelineAfterBackgroundProcessing;
 + (id)pipelineForBackgroundProcessing;
 + (id)quotedRegionPipeline;
 + (id)quotedRegionPipelineForIpsosTesting;
++ (id)retrainingPipeline;
 - (void).cxx_destruct;
 - (void)_dissectEntity:(id)arg1 inContext:(id)arg2 andThen:(CDUnknownBlockType)arg3;
 - (void)dissect:(id)arg1;

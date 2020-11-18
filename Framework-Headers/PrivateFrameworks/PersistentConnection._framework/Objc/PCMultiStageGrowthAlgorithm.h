@@ -9,6 +9,7 @@
 #import <PersistentConnection/PCGrowthAlgorithm-Protocol.h>
 
 @class NSDate, NSDictionary, NSString;
+@protocol OS_os_log;
 
 __attribute__((visibility("hidden")))
 @interface PCMultiStageGrowthAlgorithm : NSObject <PCGrowthAlgorithm>
@@ -16,15 +17,20 @@ __attribute__((visibility("hidden")))
     double _currentKeepAliveInterval;
     double _minimumKeepAliveInterval;
     double _maximumKeepAliveInterval;
+    double _previousMaximumKeepAliveInterval;
     double _lastKeepAliveInterval;
+    double _lastSuccessfulKeepAliveInterval;
     int _growthStage;
     double _highWatermark;
     double _initialGrowthStageHighWatermark;
     double _initialGrowthStageLastAttempt;
     NSDate *_leaveSteadyStateDate;
-    NSString *_loggingIdentifier;
+    NSDate *_leaveMinimumIntervalFallbackStateDate;
     NSString *_algorithmName;
     unsigned long long _countOfGrowthActions;
+    NSObject<OS_os_log> *_logObject;
+    BOOL _isServerOriginatedKeepAlive;
+    BOOL _minimumIntervalFallbackEnabled;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *cacheInfo;
@@ -32,16 +38,22 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double currentKeepAliveInterval; // @synthesize currentKeepAliveInterval=_currentKeepAliveInterval;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) int growthStage; // @synthesize growthStage=_growthStage;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *loggingIdentifier; // @synthesize loggingIdentifier=_loggingIdentifier;
+@property (nonatomic) BOOL isServerOriginatedKeepAlive; // @synthesize isServerOriginatedKeepAlive=_isServerOriginatedKeepAlive;
+@property (nonatomic) double lastSuccessfulKeepAliveInterval; // @synthesize lastSuccessfulKeepAliveInterval=_lastSuccessfulKeepAliveInterval;
 @property (nonatomic) double maximumKeepAliveInterval; // @synthesize maximumKeepAliveInterval=_maximumKeepAliveInterval;
+@property (nonatomic) BOOL minimumIntervalFallbackEnabled; // @synthesize minimumIntervalFallbackEnabled=_minimumIntervalFallbackEnabled;
 @property (nonatomic) double minimumKeepAliveInterval; // @synthesize minimumKeepAliveInterval=_minimumKeepAliveInterval;
 @property (readonly) Class superclass;
 
 + (void)_loadDefaultValue:(double *)arg1 forKey:(struct __CFString *)arg2;
 + (void)_loadDefaults;
+- (void).cxx_destruct;
+- (void)_fallbackToLastSuccessfulKeepAliveInterval;
 - (void)_processBackoffAction:(int)arg1;
 - (void)_processInitialGrowthAction:(int)arg1;
+- (void)_processMinimumIntervalFallbackStateAction:(int)arg1;
 - (void)_processRefinedGrowthAction:(int)arg1;
 - (void)_processSteadyStateAction:(int)arg1;
 - (void)_resetAlgorithmToInterval:(double)arg1;
@@ -50,7 +62,6 @@ __attribute__((visibility("hidden")))
 - (double)_steadyStateTimeout;
 - (id)_stringForAction:(int)arg1;
 - (id)_stringForStage:(int)arg1;
-- (void)dealloc;
 - (id)initWithCacheInfo:(id)arg1 loggingIdentifier:(id)arg2 algorithmName:(id)arg3;
 - (void)processNextAction:(int)arg1;
 - (BOOL)useIntervalIfImprovement:(double)arg1;

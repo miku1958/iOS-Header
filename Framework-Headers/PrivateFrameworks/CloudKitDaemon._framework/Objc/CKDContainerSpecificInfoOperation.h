@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)activityCreate;
+- (BOOL)canBeUsedForOperation:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
 - (void)setCompletionBlock:(CDUnknownBlockType)arg1;

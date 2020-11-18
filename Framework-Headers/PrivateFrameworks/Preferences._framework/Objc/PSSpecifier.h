@@ -90,9 +90,11 @@
 - (void)setValues:(id)arg1 titles:(id)arg2;
 - (void)setValues:(id)arg1 titles:(id)arg2 shortTitles:(id)arg3;
 - (void)setValues:(id)arg1 titles:(id)arg2 shortTitles:(id)arg3 usingLocalizedTitleSorting:(BOOL)arg4;
+- (void)setVersionLabelEnabled:(BOOL)arg1;
 - (void)setupIconImageWithBundle:(id)arg1;
 - (void)setupIconImageWithPath:(id)arg1;
 - (long long)titleCompare:(id)arg1;
+- (BOOL)versionLabelEnabled;
 
 @end
 

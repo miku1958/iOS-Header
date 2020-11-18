@@ -12,12 +12,11 @@
 #import <MediaPlayer/MPVideoOverlayDelegate-Protocol.h>
 #import <MediaPlayer/MPVolumeControllerDelegate-Protocol.h>
 #import <MediaPlayer/UIAlertViewDelegate-Protocol.h>
-#import <MediaPlayer/UIPopoverControllerDelegate-Protocol.h>
 
-@class MPAVController, MPAVItem, MPAudioVideoRoutingPopoverController, MPInlineAudioOverlay, MPInlineVideoFullscreenViewController, MPSwipableView, MPTVOutWindow, MPVideoBackgroundView, MPVideoContainerView, MPVideoPlaybackOverlayView, MPVideoView, MPVolumeController, MPWeakTimer, NSSet, NSString, UIActivityIndicatorView, UIAlertView, UIColor, UIImage, UINavigationController, UIPinchGestureRecognizer, UITapGestureRecognizer, UIView, UIWindow, _UIHostedWindow;
+@class MPAVController, MPAVItem, MPInlineAudioOverlay, MPInlineVideoFullscreenViewController, MPSwipableView, MPTVOutWindow, MPVideoBackgroundView, MPVideoContainerView, MPVideoPlaybackOverlayView, MPVideoView, MPVolumeController, MPWeakTimer, NSSet, NSString, UIActivityIndicatorView, UIAlertView, UIColor, UIImage, UINavigationController, UIPinchGestureRecognizer, UITapGestureRecognizer, UIView, UIWindow, _UIHostedWindow;
 @protocol MPVideoOverlay;
 
-@interface MPInlineVideoController : NSObject <MPVolumeControllerDelegate, MPVideoControllerProtocol, MPSwipableViewDelegate, MPVideoOverlayDelegate, MPTransportControlsTarget, UIAlertViewDelegate, UIPopoverControllerDelegate>
+@interface MPInlineVideoController : NSObject <MPVolumeControllerDelegate, MPVideoControllerProtocol, MPSwipableViewDelegate, MPVideoOverlayDelegate, MPTransportControlsTarget, UIAlertViewDelegate>
 {
     id _delegate;
     MPAVItem *_item;
@@ -75,7 +74,6 @@
     BOOL _isTransitioningToFullscreen;
     UIActivityIndicatorView *_loadingIndicator;
     UIPinchGestureRecognizer *_pinchGestureRecognizer;
-    MPAudioVideoRoutingPopoverController *_routePopoverController;
     long long _scaleModeOverride;
     BOOL _scheduledLoadingIndicator;
     UIView *_subtitlesView;
@@ -230,7 +228,6 @@
 - (void)overlay:(id)arg1 didEndUserEvent:(unsigned long long)arg2;
 - (void)overlayTappedBackButton:(id)arg1;
 - (void)overlayTappedFullscreenButton:(id)arg1;
-- (void)popoverControllerDidDismissPopover:(id)arg1;
 - (void)prepareToDisplayVideo;
 - (void)setControlsNeedLayout;
 - (void)setControlsOverlayVisible:(BOOL)arg1 animate:(BOOL)arg2;

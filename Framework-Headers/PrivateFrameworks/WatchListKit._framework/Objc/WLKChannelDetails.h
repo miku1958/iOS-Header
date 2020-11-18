@@ -6,16 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, NSURL, WLKArtworkVariantListing;
+#import <WatchListKit/WLKInstallable-Protocol.h>
 
-@interface WLKChannelDetails : NSObject
+@class NSArray, NSDictionary, NSString, NSURL, WLKArtworkVariantListing;
+
+@interface WLKChannelDetails : NSObject <WLKInstallable>
 {
     BOOL _subscribed;
     BOOL _itunes;
+    BOOL _firstParty;
     BOOL _watchListEnabled;
     BOOL _requiresSubscriptionForConsent;
     BOOL _requiresAccountLevelConsent;
     BOOL _shouldPromptForConsentOnSubscriptionChange;
+    BOOL _shouldIncludeInConsent;
     BOOL _appInstalled;
     NSString *_channelID;
     NSString *_name;
@@ -24,25 +28,37 @@
     NSString *_appName;
     NSURL *_appStoreURL;
     WLKArtworkVariantListing *_images;
+    NSDictionary *_rateLimit;
 }
 
+@property (readonly, copy, nonatomic) NSArray *appAdamIDs;
 @property (readonly, copy, nonatomic) NSArray *appAdamIDs; // @synthesize appAdamIDs=_appAdamIDs;
+@property (readonly, copy, nonatomic) NSArray *appBundleIDs;
 @property (readonly, copy, nonatomic) NSArray *appBundleIDs; // @synthesize appBundleIDs=_appBundleIDs;
 @property (readonly, nonatomic, getter=isAppInstalled) BOOL appInstalled; // @synthesize appInstalled=_appInstalled;
 @property (readonly, copy, nonatomic) NSString *appName; // @synthesize appName=_appName;
+@property (readonly, copy, nonatomic) NSURL *appStoreURL;
 @property (readonly, copy, nonatomic) NSURL *appStoreURL; // @synthesize appStoreURL=_appStoreURL;
 @property (readonly, copy, nonatomic) NSString *channelID; // @synthesize channelID=_channelID;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=isFirstParty) BOOL firstParty; // @synthesize firstParty=_firstParty;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) WLKArtworkVariantListing *images; // @synthesize images=_images;
 @property (readonly, nonatomic, getter=isiTunes) BOOL itunes; // @synthesize itunes=_itunes;
+@property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) NSDictionary *rateLimit; // @synthesize rateLimit=_rateLimit;
 @property (readonly, nonatomic) BOOL requiresAccountLevelConsent; // @synthesize requiresAccountLevelConsent=_requiresAccountLevelConsent;
 @property (readonly, nonatomic) BOOL requiresSubscriptionForConsent; // @synthesize requiresSubscriptionForConsent=_requiresSubscriptionForConsent;
+@property (readonly, nonatomic) BOOL shouldIncludeInConsent; // @synthesize shouldIncludeInConsent=_shouldIncludeInConsent;
 @property (readonly, nonatomic) BOOL shouldPromptForConsentOnSubscriptionChange; // @synthesize shouldPromptForConsentOnSubscriptionChange=_shouldPromptForConsentOnSubscriptionChange;
 @property (readonly, nonatomic, getter=isSubscribed) BOOL subscribed; // @synthesize subscribed=_subscribed;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isWatchListEnabled) BOOL watchListEnabled; // @synthesize watchListEnabled=_watchListEnabled;
 
 - (void).cxx_destruct;
-- (id)description;
+- (id)appIconURLForSize:(struct CGSize)arg1;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
 

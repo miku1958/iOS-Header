@@ -6,9 +6,12 @@
 
 #import <GeoServices/GEORoutePreloader.h>
 
-@class GEOMapServiceTraits, GEOTransitDecoderData, GEOTransitSuggestedRoute, NSTimer, _GEOTransitRoutePreloaderData;
+#import <GeoServices/GEORoutePreloaderSubclass-Protocol.h>
 
-@interface GEOTransitRoutePreloader : GEORoutePreloader
+@class GEOMapServiceTraits, GEOTransitDecoderData, GEOTransitSuggestedRoute, NSObject, NSTimer, _GEOTransitRoutePreloaderData;
+@protocol OS_os_log;
+
+@interface GEOTransitRoutePreloader : GEORoutePreloader <GEORoutePreloaderSubclass>
 {
     GEOTransitDecoderData *_decoderData;
     GEOTransitSuggestedRoute *_suggestedRoute;
@@ -18,8 +21,13 @@
     long long _indexOfLastStepWithPreparedBatch;
     NSTimer *_geodCrashTimer;
     double _radialDistanceToImplicateTilesMeters;
+    long long _tilesRequested;
+    BOOL _shouldPreloadEntireRoute;
 }
 
+@property (readonly, nonatomic) NSObject<OS_os_log> *preloaderLog;
+
+- (void).cxx_destruct;
 - (void)_cancelAllBatches;
 - (void)_cancelPreloadTasks;
 - (void)_geodCrashed:(id)arg1;
@@ -33,6 +41,7 @@
 - (void)_makePreloadBatchForSteps:(id)arg1;
 - (void)_makePreloadBatchForTilesOnRouteWithSteps:(id)arg1 andPriority:(unsigned int)arg2;
 - (void)_performNextRequests;
+- (void)_performSubscriptionRequests;
 - (struct PolylineCoordinate)_polylineCoordinateForDouble:(double)arg1;
 - (void)_processBatches;
 - (void)_processedFinishedBatch:(id)arg1 withPartialStatus:(unsigned long long)arg2;
@@ -44,13 +53,13 @@
 - (void)getPreloadSetCoordinates:(CDStruct_c3b9c2ee *)arg1 maxLength:(unsigned long long)arg2 actualLength:(unsigned long long *)arg3;
 - (id)initWithRoute:(id)arg1 loggingEnabled:(BOOL)arg2 minimalDebugging:(BOOL)arg3 fullDebugging:(BOOL)arg4 batteryHandler:(CDUnknownBlockType)arg5;
 - (BOOL)isSufficientlyLoaded;
-- (BOOL)loggingEnabled;
 - (BOOL)minimalDebuggingEnabled;
 - (int)preloadStateForTile:(const struct _GEOTileKey *)arg1;
-- (void)preloaderLog:(id)arg1;
 - (id)route;
+- (void)setShouldPreloadEntireRoute:(BOOL)arg1;
 - (void)setTraits:(id)arg1;
 - (void)stopLoading;
+- (long long)tilesRequested;
 - (void)updateWithRouteMatch:(id)arg1;
 
 @end

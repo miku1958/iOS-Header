@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSAttributedString, NSMutableArray, NSString, TTSSpeechRequest;
+@class NSAttributedString, NSMutableArray, NSString;
 
 @interface AXSpeechAction : NSObject
 {
@@ -26,11 +26,11 @@
     CDUnknownBlockType _onResumeCallback;
     CDUnknownBlockType _onWillSpeakRangeCallback;
     CDUnknownBlockType _onSpeechStartCallback;
-    TTSSpeechRequest *_speechRequest;
     BOOL _ignoreCustomSubstitutions;
     BOOL _useMonarchStyleSpeechRate;
     unsigned int _audioQueueFlags;
     NSString *_voiceIdentifier;
+    long long _state;
     NSAttributedString *_attributedString;
     NSString *_IPAPhonemes;
     long long _wordCallbackPostProcessedOffset;
@@ -60,7 +60,7 @@
 @property (nonatomic) BOOL shouldProcessEmoticons; // @synthesize shouldProcessEmoticons=_shouldProcessEmoticons;
 @property (nonatomic) BOOL shouldQueue; // @synthesize shouldQueue=_shouldQueue;
 @property (nonatomic) double speakingRate; // @synthesize speakingRate=_speakingRate;
-@property (strong, nonatomic) TTSSpeechRequest *speechRequest; // @synthesize speechRequest=_speechRequest;
+@property (nonatomic) long long state; // @synthesize state=_state;
 @property (copy, nonatomic) NSString *string; // @synthesize string=_string;
 @property (nonatomic) BOOL useMonarchStyleSpeechRate; // @synthesize useMonarchStyleSpeechRate=_useMonarchStyleSpeechRate;
 @property (strong, nonatomic) NSString *voiceIdentifier; // @synthesize voiceIdentifier=_voiceIdentifier;
@@ -69,8 +69,8 @@
 
 + (id)actionWithAttributedString:(id)arg1 shouldQueue:(BOOL)arg2;
 + (id)actionWithString:(id)arg1 shouldQueue:(BOOL)arg2;
+- (void).cxx_destruct;
 - (id)_detectLanguageFromContent;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (void)preprocessAction;

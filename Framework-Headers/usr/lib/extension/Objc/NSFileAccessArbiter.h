@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSFileAccessArbiterXPCInterface-Protocol.h>
-#import <extension/NSXPCListenerDelegate-Protocol.h>
+#import <Foundation/NSFileAccessArbiterXPCInterface-Protocol.h>
+#import <Foundation/NSXPCListenerDelegate-Protocol.h>
 
 @class NSFileAccessNode, NSMutableDictionary, NSString, NSXPCConnection, NSXPCListener;
 @protocol OS_dispatch_queue, OS_dispatch_source;
@@ -19,8 +19,10 @@
     BOOL _isStopped;
     BOOL _isSubarbiter;
     NSMutableDictionary *_accessClaimsByID;
+    NSMutableDictionary *_accessClaimTransactionsByID;
     NSMutableDictionary *_subarbitrationClaimsByID;
     NSMutableDictionary *_reactorsByID;
+    NSMutableDictionary *_reactorTransactionsByID;
     NSFileAccessNode *_rootNode;
     NSXPCConnection *_superarbitrationServer;
     NSObject<OS_dispatch_source> *_debugSignalSource;
@@ -32,9 +34,8 @@
 @property (readonly) NSXPCConnection *superarbitrationConnection;
 @property (readonly) Class superclass;
 
-+ (void)_gainedBirdProviderFromClient:(id)arg1;
-+ (void)_lostBirdProviderFromClient:(id)arg1;
-+ (void)_registerForTokenChangeNotificationsWithQueue:(id)arg1;
++ (void)_gainedBirdProvider:(id)arg1;
++ (void)_lostBirdProvider:(id)arg1;
 + (void)_wakeUpBirdWithUID:(unsigned int)arg1 queue:(id)arg2 thenContinue:(CDUnknownBlockType)arg3;
 + (void)ensureProvidersIfNecessaryForClaim:(id)arg1 readingAtLocation:(id)arg2 queue:(id)arg3 thenContinue:(CDUnknownBlockType)arg4;
 - (BOOL)_addPresenter:(id)arg1 ofItemAtURL:(id)arg2 watchingFile:(BOOL)arg3 withLastEventID:(id)arg4;
@@ -49,11 +50,12 @@
 - (void)_startArbitratingItemsAtURLs:(id)arg1 withSuperarbitrationServer:(id)arg2;
 - (void)_willRemoveReactor:(id)arg1;
 - (void)_writerWithPurposeID:(id)arg1 didMoveItemAtURL:(id)arg2 toURL:(id)arg3;
-- (void)addPresenter:(id)arg1 withID:(id)arg2 fileURL:(id)arg3 lastPresentedItemEventIdentifier:(id)arg4 options:(unsigned long long)arg5 responses:(unsigned long long)arg6;
+- (void)addPresenter:(id)arg1 withID:(id)arg2 fileURL:(id)arg3 lastPresentedItemEventIdentifier:(id)arg4 ubiquityAttributes:(id)arg5 options:(unsigned long long)arg6 responses:(unsigned long long)arg7;
 - (void)addProvider:(id)arg1 withID:(id)arg2 uniqueID:(id)arg3 forProvidedItemsURL:(id)arg4 options:(unsigned long long)arg5 withServer:(id)arg6 reply:(CDUnknownBlockType)arg7;
 - (oneway void)cancelAccessClaimForID:(id)arg1;
 - (void)dealloc;
 - (void)getDebugInformationIncludingEverything:(BOOL)arg1 withString:(id)arg2 fromPid:(int)arg3 thenContinue:(CDUnknownBlockType)arg4;
+- (void)getItemHasPresentersAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)grantAccessClaim:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)grantSubarbitrationClaim:(id)arg1 withServer:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)initWithQueue:(id)arg1 isSubarbiter:(BOOL)arg2 listener:(id)arg3;
@@ -71,6 +73,8 @@
 - (void)stopArbitrating;
 - (oneway void)tiePresenterForID:(id)arg1 toItemAtURL:(id)arg2;
 - (oneway void)writerWithPurposeID:(id)arg1 didChangeItemAtURL:(id)arg2;
+- (oneway void)writerWithPurposeID:(id)arg1 didChangeSharingOfItemAtURL:(id)arg2;
+- (oneway void)writerWithPurposeID:(id)arg1 didChangeUbiquityAttributes:(id)arg2 ofItemAtURL:(id)arg3;
 - (oneway void)writerWithPurposeID:(id)arg1 didChangeUbiquityOfItemAtURL:(id)arg2;
 - (oneway void)writerWithPurposeID:(id)arg1 didDisconnectItemAtURL:(id)arg2;
 - (oneway void)writerWithPurposeID:(id)arg1 didMakeItemDisappearAtURL:(id)arg2;

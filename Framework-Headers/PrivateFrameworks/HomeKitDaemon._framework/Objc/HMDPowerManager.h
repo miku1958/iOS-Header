@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
+@class NSObject;
 @protocol OS_dispatch_queue;
 
-@interface HMDPowerManager : NSObject
+@interface HMDPowerManager : HMFObject
 {
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     BOOL _networkInterfaceActive;

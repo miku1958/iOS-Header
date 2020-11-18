@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class NSMutableSet, NSString;
+@class NSMutableSet, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDCameraPowerAssertionHandler : NSObject <HMFLogging>
+@interface HMDCameraPowerAssertionHandler : HMFObject <HMFLogging>
 {
     unsigned int _powerAssertion;
     NSMutableSet *_currentRequestHandlerSessionIDs;

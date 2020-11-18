@@ -20,6 +20,7 @@
 - (BOOL)isMonitoring;
 - (BOOL)isNetworkUp;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)registerNetworkMonitorLaunchEvent:(BOOL)arg1;
 - (void)startMonitoring;
 - (void)stopMonitoring;
 

@@ -20,10 +20,11 @@ __attribute__((visibility("hidden")))
     BOOL _isAtBeginningDidChange;
     BOOL _isAtEndDidChange;
     BOOL _isStalledDidChange;
-    BOOL _shouldRespectMuteSwitchDidChange;
+    BOOL _alwaysRespectsMuteSwitchDidChange;
     BOOL _isPlayableDidChange;
 }
 
+@property (nonatomic, setter=_setAlwaysRespectsMuteSwitchDidChange:) BOOL alwaysRespectsMuteSwitchDidChange; // @synthesize alwaysRespectsMuteSwitchDidChange=_alwaysRespectsMuteSwitchDidChange;
 @property (nonatomic, setter=_setAVPlayerDidChange:) BOOL avPlayerDidChange; // @synthesize avPlayerDidChange=_avPlayerDidChange;
 @property (nonatomic, setter=_setDesiredPlayStateDidChange:) BOOL desiredPlayStateDidChange; // @synthesize desiredPlayStateDidChange=_desiredPlayStateDidChange;
 @property (nonatomic, setter=_setErrorDidChange:) BOOL errorDidChange; // @synthesize errorDidChange=_errorDidChange;
@@ -36,7 +37,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setStalledDidChange:) BOOL isStalledDidChange; // @synthesize isStalledDidChange=_isStalledDidChange;
 @property (nonatomic, setter=_setPlayStateDidChange:) BOOL playStateDidChange; // @synthesize playStateDidChange=_playStateDidChange;
 @property (nonatomic, setter=_setPlayerItemDidChange:) BOOL playerItemDidChange; // @synthesize playerItemDidChange=_playerItemDidChange;
-@property (nonatomic, setter=_setShouldRespectMuteSwitchDidChange:) BOOL shouldRespectMuteSwitchDidChange; // @synthesize shouldRespectMuteSwitchDidChange=_shouldRespectMuteSwitchDidChange;
 
 - (BOOL)hasChanges;
 

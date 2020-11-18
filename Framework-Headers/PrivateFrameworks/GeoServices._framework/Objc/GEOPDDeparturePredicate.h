@@ -8,8 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 @interface GEOPDDeparturePredicate : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     struct GEOPDTimeRange _timeRange;
     unsigned int _numAdditionalDepartures;
     struct {
@@ -22,7 +25,9 @@
 @property (nonatomic) BOOL hasTimeRange;
 @property (nonatomic) unsigned int numAdditionalDepartures; // @synthesize numAdditionalDepartures=_numAdditionalDepartures;
 @property (nonatomic) struct GEOPDTimeRange timeRange; // @synthesize timeRange=_timeRange;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

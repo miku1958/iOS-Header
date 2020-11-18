@@ -6,7 +6,7 @@
 
 #import <NotesShared/ICAttachmentModel.h>
 
-@class ICDrawing, ICDrawingVersionedDocument, UIImage;
+@class ICDrawing, ICDrawingVersionedDocument;
 
 @interface ICAttachmentDrawingModel : ICAttachmentModel
 {
@@ -14,30 +14,23 @@
 }
 
 @property (readonly, nonatomic) ICDrawing *drawing;
-@property (readonly, nonatomic) UIImage *imageForActivityItem;
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (id)activityItem;
-- (id)activityItems;
+- (BOOL)canSaveURL;
 - (void)dealloc;
 - (id)drawingDocument;
 - (void)drawingPreviewIsUpToDate;
-- (BOOL)generatePreviewsDuringCloudActivity;
-- (void)generatePreviewsInOperation:(id)arg1;
-- (CDUnknownBlockType)genericBrickThumbnailCreator;
-- (CDUnknownBlockType)genericListThumbnailCreator;
 - (BOOL)hasPreviews;
 - (id)initWithAttachment:(id)arg1;
-- (void)mergeWithMergeableData:(id)arg1;
-- (BOOL)needToGeneratePreviews;
+- (BOOL)mergeWithMergeableData:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (long long)previewImageOrientation;
 - (struct CGAffineTransform)previewImageOrientationTransform;
 - (id)previewImageURL;
 - (id)previewItemTitle;
 - (id)previewItemURL;
-- (void)saveDrawing:(id)arg1 withImage:(struct UIImage *)arg2 forImageDrawing:(id)arg3;
+- (id)saveURL;
 - (id)sharedDrawingController;
 - (BOOL)shouldSyncPreviewImageToCloud:(id)arg1;
 - (BOOL)showThumbnailInNoteList;

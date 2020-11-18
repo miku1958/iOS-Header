@@ -6,17 +6,21 @@
 
 #import <ReplayKit/RPBroadcastHandler.h>
 
-@class NSXPCConnection;
+#import <ReplayKit/RPExtensionContextDelegate-Protocol.h>
+
+@class NSString;
 @protocol RPBroadcastDaemonProtocol;
 
-@interface RPBroadcastSampleHandler : RPBroadcastHandler
+@interface RPBroadcastSampleHandler : RPBroadcastHandler <RPExtensionContextDelegate>
 {
-    NSXPCConnection *_connection;
     id<RPBroadcastDaemonProtocol> _daemonProxy;
 }
 
-@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (strong, nonatomic) id<RPBroadcastDaemonProtocol> daemonProxy; // @synthesize daemonProxy=_daemonProxy;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (struct AudioBufferList *)_audioBufferListFromData:(id)arg1;
@@ -30,9 +34,11 @@
 - (void)broadcastPaused;
 - (void)broadcastResumed;
 - (void)broadcastStartedWithSetupInfo:(id)arg1;
+- (void)extensionContext:(id)arg1 setEndpoint:(id)arg2;
 - (void)finishBroadcastWithError:(id)arg1;
 - (void)processPayload:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)processSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 withType:(long long)arg2;
+- (void)updateBroadcastURL:(id)arg1;
 - (void)updateServiceInfo:(id)arg1;
 - (id)videoQueue;
 

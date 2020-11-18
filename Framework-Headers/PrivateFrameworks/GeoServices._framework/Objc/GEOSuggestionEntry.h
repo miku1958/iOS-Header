@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, NSData, NSMutableArray, NSString;
+@class GEOLatLng, NSData, NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOSuggestionEntry : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     struct GEOHighlight *_textHighlights;
     unsigned long long _textHighlightsCount;
     unsigned long long _textHighlightsSpace;
@@ -38,9 +39,11 @@
 @property (strong, nonatomic) NSData *suggestionEntryMetadata; // @synthesize suggestionEntryMetadata=_suggestionEntryMetadata;
 @property (readonly, nonatomic) struct GEOHighlight *textHighlights;
 @property (readonly, nonatomic) unsigned long long textHighlightsCount;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)displayLineType;
 + (Class)namedFeatureType;
+- (void).cxx_destruct;
 - (void)addDisplayLine:(id)arg1;
 - (void)addNamedFeature:(id)arg1;
 - (void)addTextHighlights:(struct GEOHighlight)arg1;

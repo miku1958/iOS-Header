@@ -19,12 +19,12 @@
 @property struct ccrng_state *rng; // @synthesize rng=_rng;
 @property (strong) NSString *user; // @synthesize user=_user;
 
-+ (id)createWithUser:(id)arg1 digestInfo:(const struct ccdigest_info *)arg2 group:(CDUnion_089e675c)arg3 randomSource:(struct ccrng_state *)arg4;
++ (id)createWithUser:(id)arg1 digestInfo:(const struct ccdigest_info *)arg2 group:(struct ccdh_gp *)arg3 randomSource:(struct ccrng_state *)arg4;
 - (void).cxx_destruct;
 - (id)dataForPassword:(id)arg1;
 - (void)finalize;
 - (id)getKey;
-- (id)initWithUser:(id)arg1 digestInfo:(const struct ccdigest_info *)arg2 group:(CDUnion_089e675c)arg3 randomSource:(struct ccrng_state *)arg4;
+- (id)initWithUser:(id)arg1 digestInfo:(const struct ccdigest_info *)arg2 group:(struct ccdh_gp *)arg3 randomSource:(struct ccrng_state *)arg4;
 - (BOOL)isAuthenticated;
 - (const char *)userNameString;
 

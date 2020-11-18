@@ -34,7 +34,9 @@
 - (void)accountUpdated:(NSDictionary *)arg1;
 - (void)accountsChanged:(NSArray *)arg1 forTopic:(NSString *)arg2;
 - (void)adminAccessTokens:(NSArray *)arg1 error:(NSError *)arg2;
+- (void)allocationDone:(NSString *)arg1 sessionInfo:(NSDictionary *)arg2;
 - (void)applecareResponseForRequestID:(NSString *)arg1 withError:(NSError *)arg2;
+- (void)checkTransportLogWithReason:(long long)arg1;
 - (void)connectionComplete:(BOOL)arg1;
 - (void)consentTokens:(NSArray *)arg1 error:(NSError *)arg2;
 - (void)continuityDidConnectToPeer:(NSString *)arg1 withError:(NSError *)arg2;
@@ -65,6 +67,12 @@
 - (void)deviceIdentifierDidChange:(NSString *)arg1;
 - (void)didSwitchActivePairedDevice:(NSString *)arg1;
 - (void)didSwitchActivePairedDevice:(NSString *)arg1 forService:(NSString *)arg2 wasHandled:(BOOL *)arg3;
+- (void)engramDataReceived:(NSDictionary *)arg1 withGUID:(NSString *)arg2 forTopic:(NSString *)arg3 toIdentifier:(NSString *)arg4 fromID:(NSString *)arg5 context:(NSDictionary *)arg6;
+- (void)groupSessionEnded:(NSString *)arg1 withReason:(unsigned int)arg2 error:(NSError *)arg3;
+- (void)groupShareReceived:(NSData *)arg1 withGUID:(NSString *)arg2 forTopic:(NSString *)arg3 toIdentifier:(NSString *)arg4 fromID:(NSString *)arg5 context:(NSDictionary *)arg6;
+- (void)groupStatusNotifier:(NSString *)arg1 didUpdateActiveGroup:(NSDictionary *)arg2;
+- (void)groupStatusNotifier:(NSString *)arg1 didUpdateActiveGroups:(NSSet *)arg2;
+- (void)groupStatusNotifier:(NSString *)arg1 didUpdateEvents:(NSSet *)arg2 forGroupID:(NSString *)arg3;
 - (void)iMessageReportSpamCheckUnknownResponseForRequestID:(NSString *)arg1 status:(long long)arg2 abusive:(BOOL)arg3 delay:(double)arg4 withError:(NSError *)arg5;
 - (void)localDeviceInfo:(NSDictionary *)arg1;
 - (void)localPairingResponseForRequestID:(NSString *)arg1 withError:(NSError *)arg2;
@@ -83,11 +91,16 @@
 - (void)registrationFailedForAccount:(NSString *)arg1 needsDeletion:(NSNumber *)arg2;
 - (void)serviceUserIDs:(NSArray *)arg1 error:(NSError *)arg2;
 - (void)session:(NSString *)arg1 audioEnabled:(BOOL)arg2;
+- (void)session:(NSString *)arg1 didGetGroupSessionParticipants:(NSArray *)arg2 requestID:(NSNumber *)arg3 error:(NSNumber *)arg4;
 - (void)session:(NSString *)arg1 invitationSentToTokens:(NSSet *)arg2 shouldBreakBeforeMake:(BOOL)arg3;
 - (void)session:(NSString *)arg1 muted:(BOOL)arg2;
+- (void)session:(NSString *)arg1 participantDidJoinGroupWithInfo:(NSDictionary *)arg2;
+- (void)session:(NSString *)arg1 participantDidLeaveGroupWithInfo:(NSDictionary *)arg2;
 - (void)sessionAcceptReceived:(NSString *)arg1 fromID:(NSString *)arg2 withData:(NSData *)arg3;
 - (void)sessionCancelReceived:(NSString *)arg1 fromID:(NSString *)arg2 withData:(NSData *)arg3;
 - (void)sessionDeclineReceived:(NSString *)arg1 fromID:(NSString *)arg2 withData:(NSData *)arg3;
+- (void)sessionDidJoinGroup:(NSString *)arg1 participantsInfo:(NSArray *)arg2 error:(NSError *)arg3;
+- (void)sessionDidLeaveGroup:(NSString *)arg1 error:(NSError *)arg2;
 - (void)sessionEndReceived:(NSString *)arg1 fromID:(NSString *)arg2 withData:(NSData *)arg3;
 - (void)sessionEnded:(NSString *)arg1 withReason:(unsigned int)arg2 error:(NSError *)arg3;
 - (void)sessionInvitationReceivedWithPayload:(NSDictionary *)arg1 forTopic:(NSString *)arg2 sessionID:(NSString *)arg3 toIdentifier:(NSString *)arg4 fromID:(NSString *)arg5 transportType:(NSNumber *)arg6;
@@ -95,6 +108,7 @@
 - (void)sessionStarted:(NSString *)arg1;
 - (void)setupCompleteForAccount:(NSString *)arg1 transactionID:(NSString *)arg2 setupError:(NSError *)arg3;
 - (void)setupCompleteWithInfo:(NSDictionary *)arg1;
+- (void)updateDeviceIdentity:(NSData *)arg1 error:(NSError *)arg2;
 - (void)userAccessTokens:(NSArray *)arg1 error:(NSError *)arg2;
 - (void)xpcObject:(NSObject<OS_xpc_object> *)arg1 objectContext:(NSDictionary *)arg2;
 @end

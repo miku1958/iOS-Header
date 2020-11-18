@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     unsigned int _element;
 }
 
+- (void).cxx_destruct;
 - (id)format;
 - (id)initWithOwner:(id)arg1 au:(struct OpaqueAudioComponentInstance *)arg2 scope:(unsigned int)arg3 element:(unsigned int)arg4;
 - (void)setEnabled:(BOOL)arg1;

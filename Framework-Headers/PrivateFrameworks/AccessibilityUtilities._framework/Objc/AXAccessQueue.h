@@ -25,6 +25,7 @@
 
 + (id)backgroundAccessQueue;
 + (id)mainAccessQueue;
+- (void).cxx_destruct;
 - (unsigned long long)_accessQueueContextInCurrentExecutionThread;
 - (id)_initWithLabel:(id)arg1 appendUUIDToLabel:(BOOL)arg2 specialBehaviors:(unsigned long long)arg3;
 - (void)_performBlock:(CDUnknownBlockType)arg1 withDispatchFunction:(CDUnknownFunctionPointerType)arg2 synchronously:(BOOL)arg3 accessQueueContext:(unsigned long long)arg4;
@@ -33,7 +34,6 @@
 - (BOOL)canOnlyReadInCurrentExecutionThread;
 - (BOOL)canReadInCurrentExecutionThread;
 - (BOOL)canWriteInCurrentExecutionThread;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)initWithLabel:(id)arg1 appendUUIDToLabel:(BOOL)arg2;

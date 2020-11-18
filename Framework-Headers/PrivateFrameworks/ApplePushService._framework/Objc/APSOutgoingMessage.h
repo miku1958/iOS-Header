@@ -6,6 +6,8 @@
 
 #import <ApplePushService/APSMessage.h>
 
+@class NSString;
+
 @interface APSOutgoingMessage : APSMessage
 {
 }
@@ -13,6 +15,7 @@
 @property (nonatomic, getter=isCritical) BOOL critical;
 @property (nonatomic) unsigned long long payloadFormat;
 @property (nonatomic) unsigned long long payloadLength;
+@property (copy, nonatomic) NSString *senderTokenName;
 @property (nonatomic) unsigned long long timeout;
 
 - (unsigned long long)_effectiveSendTimeout;
@@ -20,16 +23,19 @@
 - (BOOL)hasTimedOut;
 - (BOOL)isEager;
 - (unsigned long long)messageID;
+- (id)originator;
 - (long long)priority;
+- (id)rawTimeoutTime;
 - (long long)sendInterface;
 - (id)sendTimeoutTime;
-- (id)senderTokenName;
+- (id)sentTimestamp;
 - (void)setCancelled:(BOOL)arg1;
 - (void)setMessageID:(unsigned long long)arg1;
+- (void)setOriginator:(id)arg1;
 - (void)setPriority:(long long)arg1;
 - (void)setSendInterface:(long long)arg1;
-- (void)setSenderTokenName:(id)arg1;
 - (void)setSent:(BOOL)arg1;
+- (void)setSentTimestamp:(id)arg1;
 - (void)setTimedOut:(BOOL)arg1;
 - (void)setTimestamp:(id)arg1;
 - (id)timestamp;

@@ -45,8 +45,8 @@
 - (BOOL)allowsLockScreenHint;
 - (BOOL)allowsLockScreenMediaControls;
 - (BOOL)allowsLogout;
-- (BOOL)allowsNotificationCenter;
 - (BOOL)allowsPhotoSlideshow;
+- (BOOL)allowsScreenshots;
 - (BOOL)allowsSiri;
 - (BOOL)allowsTimer;
 - (BOOL)allowsUnlocking;

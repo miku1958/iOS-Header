@@ -14,15 +14,17 @@
 @interface SKUISplitViewDocumentViewController : SKUIViewController <SKUINavigationDocumentDelegate, SKUIDocumentViewController>
 {
     UIViewController *_delayingPresentationViewController;
-    SKUINavigationDocumentController *_leftNavigationDocumentController;
-    SKUINavigationDocumentController *_rightNavigationDocumentController;
     UISplitViewController *_splitViewController;
     SKUISplitViewTemplateElement *_templateElement;
+    SKUINavigationDocumentController *_leftNavigationDocumentController;
+    SKUINavigationDocumentController *_rightNavigationDocumentController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) SKUINavigationDocumentController *leftNavigationDocumentController; // @synthesize leftNavigationDocumentController=_leftNavigationDocumentController;
+@property (strong, nonatomic) SKUINavigationDocumentController *rightNavigationDocumentController; // @synthesize rightNavigationDocumentController=_rightNavigationDocumentController;
 @property (readonly) Class superclass;
 
 + (BOOL)_shouldForwardViewWillTransitionToSize;

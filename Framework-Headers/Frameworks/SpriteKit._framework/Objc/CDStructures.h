@@ -628,15 +628,19 @@ struct SKCLabelNode {
     id _field29;
     id _field30;
     id _field31;
-    float _field32;
-    long long _field33;
+    id _field32;
+    float _field33;
     long long _field34;
-    struct __CTFont *_field35;
-    id _field36;
-    id _field37;
-    BOOL _field38;
-    BOOL _field39;
-    struct vector<SKCSpriteNode *, std::__1::allocator<SKCSpriteNode *>> _field40;
+    long long _field35;
+    int _field36;
+    long long _field37;
+    float _field38;
+    struct __CTFont *_field39;
+    id _field40;
+    id _field41;
+    BOOL _field42;
+    BOOL _field43;
+    struct vector<SKCSpriteNode *, std::__1::allocator<SKCSpriteNode *>> _field44;
 };
 
 struct SKCLightNode {
@@ -1122,8 +1126,10 @@ struct SKCSceneNode {
     id _field41;
     unsigned int _field42;
     long long _field43;
-    struct SKCSpriteNode *_field44;
+    BOOL _field44;
     struct SKCSpriteNode *_field45;
+    struct SKCSpriteNode *_field46;
+    struct SKCVideoBackdropNode *_field47;
 };
 
 struct SKCSequence {
@@ -1379,6 +1385,40 @@ struct SKCTileMapNode {
     struct map<unsigned int, SKCTileMapNodeChunk *, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, SKCTileMapNodeChunk *>>> _field44;
 };
 
+struct SKCTransformNode {
+    CDUnknownFunctionPointerType *_field1;
+    id _field2;
+    BOOL _field3;
+    struct unordered_map<std::__1::basic_string<char>, SKAttributeValue *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, SKAttributeValue *>>> _field4;
+    id _field5;
+    id _field6;
+    struct SKCNode *_field7;
+    struct vector<SKCNode *, std::__1::allocator<SKCNode *>> _field8;
+    struct vector<SKCNode *, std::__1::allocator<SKCNode *>> _field9;
+    struct vector<SKCNode *, std::__1::allocator<SKCNode *>> _field10;
+    id _field11;
+    float _field12;
+    BOOL _field13;
+    struct list<SKCAction *, std::__1::allocator<SKCAction *>> _field14;
+    struct list<SKCAction *, std::__1::allocator<SKCAction *>> _field15;
+    BOOL _field16;
+    id _field17;
+    struct shared_ptr<PKPath> _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    BOOL _field21;
+    long long _field22;
+    float _field23;
+    float _field24;
+    BOOL _field25;
+    BOOL _field26;
+    CDStruct_14d5dc5e _field27;
+    CDStruct_14d5dc5e _field28;
+    BOOL _field29;
+    CDStruct_14d5dc5e _field30;
+    struct _field31;
+};
+
 struct SKCTransitionNode {
     CDUnknownFunctionPointerType *_field1;
     id _field2;
@@ -1420,14 +1460,17 @@ struct SKCTransitionNode {
     shared_ptr_bb77cfd9 _field38;
     shared_ptr_bb77cfd9 _field39;
     shared_ptr_bb77cfd9 _field40;
-    shared_ptr_2ce53ef7 _field41;
+    shared_ptr_bb77cfd9 _field41;
     shared_ptr_2ce53ef7 _field42;
-    float _field43;
-    BOOL _field44;
+    shared_ptr_2ce53ef7 _field43;
+    float _field44;
     BOOL _field45;
     BOOL _field46;
     BOOL _field47;
+    BOOL _field48;
 };
+
+struct SKCVideoBackdropNode;
 
 struct SKCVideoNode {
     CDUnknownFunctionPointerType *_field1;
@@ -1468,8 +1511,10 @@ struct SKCVideoNode {
     struct __CVOpenGLESTextureCache *_field36;
     id _field37;
     struct __CVBuffer *_field38;
-    struct __CVBuffer *_field39;
-    id _field40;
+    struct list<__CVBuffer *, std::__1::allocator<__CVBuffer *>> _field39;
+    struct __list_iterator<__CVBuffer *, void *> {
+        struct __list_node_base<__CVBuffer *, void *> *_field1;
+    } _field40;
     id _field41;
 };
 
@@ -1531,6 +1576,11 @@ struct __list_node_base<SKCEmitterNode *, void *> {
 struct __list_node_base<SKCRenderSortInfo *, void *> {
     struct __list_node_base<SKCRenderSortInfo *, void *> *_field1;
     struct __list_node_base<SKCRenderSortInfo *, void *> *_field2;
+};
+
+struct __list_node_base<__CVBuffer *, void *> {
+    struct __list_node_base<__CVBuffer *, void *> *_field1;
+    struct __list_node_base<__CVBuffer *, void *> *_field2;
 };
 
 struct __list_node_base<std::__1::shared_ptr<SKCRenderPass>, void *> {
@@ -1617,6 +1667,13 @@ struct list<SKCEmitterNode *, std::__1::allocator<SKCEmitterNode *>> {
 struct list<SKCRenderSortInfo *, std::__1::allocator<SKCRenderSortInfo *>> {
     struct __list_node_base<SKCRenderSortInfo *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<SKCRenderSortInfo *, void *>>> {
+        unsigned long long _field1;
+    } _field2;
+};
+
+struct list<__CVBuffer *, std::__1::allocator<__CVBuffer *>> {
+    struct __list_node_base<__CVBuffer *, void *> _field1;
+    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<__CVBuffer *, void *>>> {
         unsigned long long _field1;
     } _field2;
 };

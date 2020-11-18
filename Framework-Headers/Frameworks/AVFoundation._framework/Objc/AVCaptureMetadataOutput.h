@@ -6,27 +6,38 @@
 
 #import <AVFoundation/AVCaptureOutput.h>
 
-@class AVCaptureMetadataOutputInternal, NSArray, NSObject;
+#import <AVFoundation/AVCaptureDataOutputDelegateOverride-Protocol.h>
+
+@class AVCaptureMetadataOutputInternal, NSArray, NSObject, NSString;
 @protocol AVCaptureMetadataOutputObjectsDelegate, OS_dispatch_queue;
 
-@interface AVCaptureMetadataOutput : AVCaptureOutput
+@interface AVCaptureMetadataOutput : AVCaptureOutput <AVCaptureDataOutputDelegateOverride>
 {
     AVCaptureMetadataOutputInternal *_internal;
 }
 
 @property (readonly, nonatomic) NSArray *availableMetadataObjectTypes;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *metadataObjectTypes;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *metadataObjectsCallbackQueue;
 @property (readonly, nonatomic) id<AVCaptureMetadataOutputObjectsDelegate> metadataObjectsDelegate;
 @property (nonatomic) struct CGRect rectOfInterest;
+@property (readonly) Class superclass;
 
 + (id)_metadataConstantValueToName:(id)arg1;
 + (void)initialize;
++ (id)new;
 - (id)_metadataIdentifiers;
 - (BOOL)canAddConnectionForMediaType:(id)arg1;
 - (id)connectionMediaTypes;
 - (void)dealloc;
 - (id)init;
+- (BOOL)isFaceTrackingMetadataObjectTypesAvailable;
+- (BOOL)isFaceTrackingSupported;
+- (void)setDelegateOverride:(id)arg1 delegateOverrideCallbackQueue:(id)arg2;
+- (void)setFaceTrackingMetadataObjectTypesAvailable:(BOOL)arg1;
 - (void)setMetadataObjectsDelegate:(id)arg1 queue:(id)arg2;
 
 @end

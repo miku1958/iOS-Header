@@ -39,13 +39,13 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL sendAllFields; // @synthesize sendAllFields=_sendAllFields;
 
 - (void).cxx_destruct;
+- (id)generateRequestOperations;
 - (id)initWithRecordsToSave:(id)arg1 recordIDsToDelete:(id)arg2 oplock:(BOOL)arg3 sendAllFields:(BOOL)arg4 clientChangeTokenData:(id)arg5;
 - (int)isolationLevel;
 - (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 - (id)zoneIDsToLock;
 
 @end

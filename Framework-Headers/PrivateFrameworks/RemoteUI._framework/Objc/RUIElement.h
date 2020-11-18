@@ -41,6 +41,7 @@
 - (id)initWithAttributes:(id)arg1 parent:(id)arg2;
 - (BOOL)loadImage;
 - (id)mutableAttributes;
+- (id)pageElement;
 - (void)performAction:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performAction:(int)arg1 forElement:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)populatePostbackDictionary:(id)arg1;

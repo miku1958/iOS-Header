@@ -14,9 +14,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_handleFilterButtonTapped:(id)arg1;
+- (void)_updateBadgeVisibilityAnimated:(BOOL)arg1;
 - (void)_updateForShallowDepthOfFieldStatusChangedAnimated:(BOOL)arg1;
 - (BOOL)accessibilityPerformMagicTap;
-- (void)cameraEffectsRenderer:(id)arg1 didSelectFilterType:(long long)arg2;
 
 @end
 

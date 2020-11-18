@@ -6,69 +6,87 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <SafariServices/SFBrowserRemoveViewControllerDelegate-Protocol.h>
+#import <SafariServices/SFBrowserRemoteViewControllerDelegate-Protocol.h>
 #import <SafariServices/SFInteractiveDismissControllerDelegate-Protocol.h>
-#import <SafariServices/_SFQueueingBrowserServiceViewControllerProxyDelegate-Protocol.h>
+#import <SafariServices/SFQueueingServiceViewControllerProxyDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, NSURL, SFBrowserRemoteViewController, SFInteractiveDismissController, UIColor, _SFQueueingBrowserServiceViewControllerProxy, _UIAsyncInvocation, _WKActivatedElementInfo;
-@protocol SFSafariViewControllerDelegate;
+@class NSArray, NSMutableDictionary, NSString, NSURL, SFBrowserRemoteViewController, SFInteractiveDismissController, SFQueueingServiceViewControllerProxy, SFSafariLaunchPlaceholderView, SFSafariViewControllerConfiguration, UIColor, _UIAsyncInvocation, _WKActivatedElementInfo;
+@protocol SFSafariViewControllerDelegate, SFServiceViewControllerProtocol;
 
-@interface SFSafariViewController : UIViewController <SFBrowserRemoveViewControllerDelegate, SFInteractiveDismissControllerDelegate, _SFQueueingBrowserServiceViewControllerProxyDelegate>
+@interface SFSafariViewController : UIViewController <SFBrowserRemoteViewControllerDelegate, SFInteractiveDismissControllerDelegate, SFQueueingServiceViewControllerProxyDelegate>
 {
     SFBrowserRemoteViewController *_remoteViewController;
     _UIAsyncInvocation *_cancelViewServiceRequest;
     BOOL _hasBeenDisplayedAtLeastOnce;
-    long long _preferredStatusBarStyle;
-    BOOL _showingLinkPreview;
     NSArray *_previewActions;
     _WKActivatedElementInfo *_activatedElementInfo;
     NSArray *_customActivities;
     NSMutableDictionary *_activitiesMap;
+    NSArray *_activityItemsForCustomActivities;
     BOOL _swipeGestureEnabled;
     SFInteractiveDismissController *_interactiveDismissController;
+    SFSafariLaunchPlaceholderView *_launchPlaceholderView;
+    long long _displayMode;
+    SFSafariViewControllerConfiguration *_configuration;
+    BOOL _viewSizeIsTransitioning;
+    struct UIEdgeInsets _verticalScrollIndicatorBaseInsets;
+    struct UIEdgeInsets _horizontalScrollIndicatorBaseInsets;
     id<SFSafariViewControllerDelegate> _delegate;
     UIColor *_preferredBarTintColor;
     UIColor *_preferredControlTintColor;
-    _SFQueueingBrowserServiceViewControllerProxy *_serviceProxy;
+    long long _dismissButtonStyle;
+    SFQueueingServiceViewControllerProxy<SFServiceViewControllerProtocol> *_serviceProxy;
     NSURL *_initialURL;
 }
 
 @property (strong, nonatomic, setter=_setActivatedElementInfo:) _WKActivatedElementInfo *_activatedElementInfo;
 @property (strong, nonatomic, setter=_setPreviewActions:) NSArray *_previewActions;
 @property (nonatomic, setter=_setShowingLinkPreview:) BOOL _showingLinkPreview;
+@property (nonatomic, setter=_setShowingLinkPreviewWithMinimalUI:) BOOL _showingLinkPreviewWithMinimalUI;
+@property (readonly, copy, nonatomic) SFSafariViewControllerConfiguration *configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SFSafariViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) long long dismissButtonStyle; // @synthesize dismissButtonStyle=_dismissButtonStyle;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSURL *initialURL; // @synthesize initialURL=_initialURL;
 @property (strong, nonatomic) UIColor *preferredBarTintColor; // @synthesize preferredBarTintColor=_preferredBarTintColor;
 @property (strong, nonatomic) UIColor *preferredControlTintColor; // @synthesize preferredControlTintColor=_preferredControlTintColor;
-@property (readonly, nonatomic) _SFQueueingBrowserServiceViewControllerProxy *serviceProxy; // @synthesize serviceProxy=_serviceProxy;
+@property (readonly, nonatomic) SFQueueingServiceViewControllerProxy<SFServiceViewControllerProtocol> *serviceProxy; // @synthesize serviceProxy=_serviceProxy;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_addRemoteView;
+- (void)_addRemoteViewControllerIfNeeded;
+- (void)_boundingPathMayHaveChangedForView:(id)arg1 relativeToBoundsOriginOnly:(BOOL)arg2;
 - (void)_connectToService;
+- (id)_defaultPreviewActionItems;
+- (id)_fetchCustomActivitiesForURL:(id)arg1 title:(id)arg2;
+- (id)_fetchExcludedActivityTypesForURL:(id)arg1 title:(id)arg2;
 - (void)_forwardNotificationToViewService:(id)arg1;
 - (void)_removeRemoteView;
 - (void)_setEdgeSwipeDismissalEnabled:(BOOL)arg1;
+- (void)_setUpWithURL:(id)arg1 configuration:(id)arg2;
+- (void)_updateScrollViewIndicatorInsets;
+- (id)childViewControllerForStatusBarStyle;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithURL:(id)arg1;
+- (id)initWithURL:(id)arg1 configuration:(id)arg2;
 - (id)initWithURL:(id)arg1 entersReaderIfAvailable:(BOOL)arg2;
 - (void)interactiveDismissControllerDidBegin:(id)arg1;
 - (void)interactiveDismissControllerDidCancel:(id)arg1;
 - (void)interactiveDismissControllerDidEnd:(id)arg1;
 - (void)loadView;
-- (long long)preferredStatusBarStyle;
 - (id)previewActionItems;
 - (void)remoteViewController:(id)arg1 didFinishInitialLoad:(BOOL)arg2;
 - (void)remoteViewController:(id)arg1 executeCustomActivityProxyID:(id)arg2;
-- (void)remoteViewController:(id)arg1 fetchHostAppCustomActivitiesForURL:(id)arg2 title:(id)arg3;
+- (void)remoteViewController:(id)arg1 fetchActivityViewControllerInfoForURL:(id)arg2 title:(id)arg3;
 - (void)remoteViewController:(id)arg1 hostApplicationOpenURL:(id)arg2;
+- (void)remoteViewController:(id)arg1 initialLoadDidRedirectToURL:(id)arg2;
 - (void)remoteViewController:(id)arg1 setSwipeGestureEnabled:(BOOL)arg2;
 - (void)remoteViewController:(id)arg1 viewServiceDidTerminateWithError:(id)arg2;
-- (void)remoteViewController:(id)arg1 willUpdateStatusBarStyle:(long long)arg2;
 - (void)remoteViewControllerDidLoadWebView:(id)arg1;
 - (void)remoteViewControllerWillDismiss:(id)arg1;
 - (void)serviceProxyWillQueueInvocation:(id)arg1;
@@ -76,6 +94,8 @@
 - (void)setTransitioningDelegate:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

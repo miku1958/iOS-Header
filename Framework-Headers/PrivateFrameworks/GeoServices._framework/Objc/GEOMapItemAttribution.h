@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOSearchAttributionInfo, NSArray, NSString;
 
@@ -24,8 +24,8 @@
 @property (readonly, nonatomic) BOOL shouldOpenInAppStore;
 @property (readonly, nonatomic) NSString *webBaseActionURL;
 
+- (void).cxx_destruct;
 - (id)_yelpHTTPURLForRequirement:(int)arg1 withUID:(id)arg2 writeAReview:(BOOL)arg3;
-- (void)dealloc;
 - (id)initWithSearchAttributionInfo:(id)arg1 attributionURLs:(id)arg2;
 - (id)initWithSearchAttributionInfo:(id)arg1 attributionURLs:(id)arg2 poiID:(id)arg3;
 - (id)initWithSearchAttributionInfo:(id)arg1 attributionURLs:(id)arg2 yelpID:(id)arg3;

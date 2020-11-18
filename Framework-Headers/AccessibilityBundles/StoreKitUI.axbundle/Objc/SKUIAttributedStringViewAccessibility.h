@@ -16,6 +16,7 @@
 - (id)_accessibilityLinks;
 - (id)accessibilityCustomRotorItemsAtIndex:(long long)arg1;
 - (id)accessibilityCustomRotorTitles;
+- (id)accessibilityCustomRotors;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;

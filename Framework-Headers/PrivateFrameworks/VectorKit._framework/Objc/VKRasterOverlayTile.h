@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (struct CGContext *)drawContext;
 - (id)initWithKey:(const struct VKTileKey *)arg1 size:(unsigned long long)arg2 scale:(float)arg3;
 - (BOOL)isEmpty;
-- (struct RenderItem *)setupRenderItemWithRenderState:(struct RenderState *)arg1 pipelineState:(const shared_ptr_8d835d6a *)arg2 mesh:(struct Mesh *)arg3;
+- (struct RenderItem *)setupRenderItemWithRenderState:(struct RenderState *)arg1 pipelineState:(const shared_ptr_74b38e53 *)arg2 mesh:(struct Mesh *)arg3;
 
 @end
 

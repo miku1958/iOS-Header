@@ -6,26 +6,30 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreParsec/NSCopying-Protocol.h>
+#import <CoreParsec/NSSecureCoding-Protocol.h>
+#import <CoreParsec/_CPActionItemForFeedback-Protocol.h>
 
-@class _CPPunchoutForFeedback;
+@class NSData, NSString, _CPPunchoutForFeedback;
 
-@interface _CPActionItemForFeedback : PBCodable <NSCopying>
+@interface _CPActionItemForFeedback : PBCodable <_CPActionItemForFeedback, NSSecureCoding>
 {
     _CPPunchoutForFeedback *_punchout;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasPunchout;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _CPPunchoutForFeedback *punchout; // @synthesize punchout=_punchout;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithFacade:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

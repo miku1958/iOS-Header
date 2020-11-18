@@ -9,7 +9,7 @@
 #import <CoreSpotlight/NSCopying-Protocol.h>
 #import <CoreSpotlight/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface CSIndexJob : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,13 +18,19 @@
     NSArray *_identifiersToReindex;
     NSArray *_bundleIDs;
     NSArray *_excludedBundleIDs;
+    NSString *_providerIdentifier;
+    NSString *_providerType;
+    NSString *_extensionBundleID;
 }
 
 @property (strong, nonatomic) NSArray *bundleIDs; // @synthesize bundleIDs=_bundleIDs;
 @property (strong, nonatomic) NSArray *excludedBundleIDs; // @synthesize excludedBundleIDs=_excludedBundleIDs;
+@property (strong, nonatomic) NSString *extensionBundleID; // @synthesize extensionBundleID=_extensionBundleID;
 @property (strong, nonatomic) NSArray *identifiersToReindex; // @synthesize identifiersToReindex=_identifiersToReindex;
 @property (nonatomic) long long jobOptions; // @synthesize jobOptions=_jobOptions;
 @property (nonatomic) long long jobType; // @synthesize jobType=_jobType;
+@property (strong, nonatomic) NSString *providerIdentifier; // @synthesize providerIdentifier=_providerIdentifier;
+@property (strong, nonatomic) NSString *providerType; // @synthesize providerType=_providerType;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -35,7 +41,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithJobType:(long long)arg1;
 - (id)initWithJobType:(long long)arg1 jobOptions:(long long)arg2;
+- (id)initWithXPCDict:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)xpc_dictionary;
 
 @end
 

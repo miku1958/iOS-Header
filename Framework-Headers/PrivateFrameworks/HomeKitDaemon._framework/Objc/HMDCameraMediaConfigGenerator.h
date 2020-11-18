@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@interface HMDCameraMediaConfigGenerator : NSObject
+@interface HMDCameraMediaConfigGenerator : HMFObject
 {
 }
 

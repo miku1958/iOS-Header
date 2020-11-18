@@ -11,9 +11,10 @@
 }
 
 + (id)aggdNameForType:(long long)arg1;
-+ (id)ciFilterNameForType:(long long)arg1;
++ (id)ciFilterNameForFilterType:(long long)arg1;
++ (id)ciFilterNameForFilterType:(long long)arg1 lightingType:(long long)arg2;
 + (id)displayNameForType:(long long)arg1;
-+ (id)newFilterForType:(long long)arg1;
++ (id)filtersForFilterType:(long long)arg1 lightingType:(long long)arg2 applyDepthEffect:(BOOL)arg3;
 
 @end
 

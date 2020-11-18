@@ -14,6 +14,7 @@
 + (CDUnknownBlockType)hf_characteristicSortComparator;
 + (id)hf_currentStateCharacteristicTypeForTargetStateCharacteristicType:(id)arg1;
 + (id)hf_descriptionForCharacteristicType:(id)arg1;
++ (id)hf_powerStateCharacteristicTypes;
 + (long long)hf_sortPriorityForCharacteristicType:(id)arg1;
 + (id)hf_targetStateCharacteristicTypeForCurrentStateCharacteristicType:(id)arg1;
 - (id)hf_associatedCharacteristicType;

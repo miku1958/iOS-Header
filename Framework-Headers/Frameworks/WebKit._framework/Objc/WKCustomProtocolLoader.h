@@ -13,9 +13,8 @@
 __attribute__((visibility("hidden")))
 @interface WKCustomProtocolLoader : NSObject <NSURLConnectionDelegate>
 {
-    struct CustomProtocolManagerProxy *_customProtocolManagerProxy;
+    struct LegacyCustomProtocolManagerProxy *_customProtocolManagerProxy;
     unsigned long long _customProtocolID;
-    struct RefPtr<IPC::Connection> _connection;
     unsigned long long _storagePolicy;
     NSURLConnection *_urlConnection;
 }
@@ -25,8 +24,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)connection:(id)arg1 didFailWithError:(id)arg2;
 - (void)connection:(id)arg1 didReceiveData:(id)arg2;
 - (void)connection:(id)arg1 didReceiveResponse:(id)arg2;
@@ -35,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)connectionDidFinishLoading:(id)arg1;
 - (void)customProtocolManagerProxyDestroyed;
 - (void)dealloc;
-- (id)initWithCustomProtocolManagerProxy:(struct CustomProtocolManagerProxy *)arg1 customProtocolID:(unsigned long long)arg2 request:(id)arg3 connection:(struct Connection *)arg4;
+- (id)initWithLegacyCustomProtocolManagerProxy:(struct LegacyCustomProtocolManagerProxy *)arg1 customProtocolID:(unsigned long long)arg2 request:(id)arg3;
 
 @end
 

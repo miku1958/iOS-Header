@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) NSSet *_pedigree; // @dynamic _pedigree;
 @property (readonly, nonatomic, getter=_isPublic) BOOL _public; // @dynamic _public;
 @property (readonly, nonatomic) NSString *_unlocalizedDescription; // @dynamic _unlocalizedDescription;
+@property (readonly, nonatomic, getter=_isWildcard) BOOL _wildcard;
 @property (readonly, nonatomic) NSDictionary *declaration; // @dynamic declaration;
 @property (readonly, nonatomic, getter=isDeclared) BOOL declared; // @dynamic declared;
 @property (readonly, nonatomic) NSURL *declaringBundleURL; // @dynamic declaringBundleURL;
@@ -36,8 +37,9 @@
 
 + (struct __CFArray *)_copyIdentifiersWithQuery:(id)arg1;
 + (BOOL)_isDeclaration:(id)arg1 equalToDeclaration:(id)arg2;
-+ (id)_localizationDictionaryForTypeWithIdentifier:(id)arg1 UUID:(id)arg2 preferredLocalizations:(id)arg3;
-- (id)_localizedDescriptionWithPreferredLocalizations:(id)arg1;
++ (id)_localizationDictionaryForTypeWithIdentifier:(id)arg1 unit:(unsigned int)arg2 preferredLocalizations:(id)arg3;
+- (void)_enumerateParentTypesWithBlock:(CDUnknownBlockType)arg1;
+- (id)_localizedDescriptionWithPreferredLocalizations:(id)arg1 checkingParents:(BOOL)arg2;
 - (BOOL)conformsToType:(id)arg1;
 - (BOOL)conformsToTypeIdentifier:(id)arg1;
 - (id)debugDescription;

@@ -27,6 +27,7 @@
 - (void)dealloc;
 - (void)dispose;
 - (void)handleNewFlow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)handleReport:(id)arg1;
 - (void)notifyRulesChanged;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)provideRemediationMap:(id)arg1;

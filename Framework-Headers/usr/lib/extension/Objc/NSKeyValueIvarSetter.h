@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSKeyValueSetter.h>
+#import <Foundation/NSKeyValueSetter.h>
 
 __attribute__((visibility("hidden")))
 @interface NSKeyValueIvarSetter : NSKeyValueSetter

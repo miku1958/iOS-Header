@@ -6,12 +6,14 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSIndexSet, NSMutableDictionary;
+@class NSArray, NSIndexSet, NSMutableDictionary, NSMutableIndexSet, NSMutableSet;
 
 @interface MPChangeDetails : NSObject
 {
-    struct vector<std::__1::pair<long, long>, std::__1::allocator<std::__1::pair<long, long>>> _sectionMoves;
+    NSMutableDictionary *_sectionMoves;
+    NSMutableIndexSet *_updatedSectionMoveFromIndexes;
     NSMutableDictionary *_itemMoves;
+    NSMutableSet *_updatedItemMoveFromIndexPaths;
     NSIndexSet *_insertedSections;
     NSIndexSet *_deletedSections;
     NSIndexSet *_updatedSections;
@@ -22,19 +24,22 @@
 
 @property (copy, nonatomic) NSArray *deletedItemIndexPaths; // @synthesize deletedItemIndexPaths=_deletedItemIndexPaths;
 @property (copy, nonatomic) NSIndexSet *deletedSections; // @synthesize deletedSections=_deletedSections;
+@property (readonly, nonatomic) BOOL hasChanges;
 @property (copy, nonatomic) NSArray *insertedItemIndexPaths; // @synthesize insertedItemIndexPaths=_insertedItemIndexPaths;
 @property (copy, nonatomic) NSIndexSet *insertedSections; // @synthesize insertedSections=_insertedSections;
 @property (copy, nonatomic) NSArray *updatedItemIndexPaths; // @synthesize updatedItemIndexPaths=_updatedItemIndexPaths;
 @property (copy, nonatomic) NSIndexSet *updatedSections; // @synthesize updatedSections=_updatedSections;
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)appendItemMoveFromIndexPath:(id)arg1 toIndexPath:(id)arg2;
-- (void)appendSectionMoveFromIndex:(long long)arg1 toIndex:(long long)arg2;
+- (void)_finalize;
+- (void)appendItemMoveFromIndexPath:(id)arg1 toIndexPath:(id)arg2 updated:(BOOL)arg3;
+- (void)appendSectionMoveFromIndex:(long long)arg1 toIndex:(long long)arg2 updated:(BOOL)arg3;
 - (id)description;
 - (void)enumerateItemMovesWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSectionMovesWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
+- (void)removeItemMoveFromIndexPath:(id)arg1;
+- (void)removeSectionMoveFromIndex:(long long)arg1;
 
 @end
 

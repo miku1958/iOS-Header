@@ -19,9 +19,11 @@
 @property (strong, nonatomic) id<PLMomentListData> megaMomentList;
 @property (strong, nonatomic) NSDate *representativeDate;
 @property (strong, nonatomic) NSData *reverseLocationData;
+@property (nonatomic) BOOL reverseLocationDataContainsLocation;
 @property (nonatomic) BOOL reverseLocationDataIsValid;
 @property (strong, nonatomic) NSDate *startDate;
 @property (readonly, strong, nonatomic) NSObject<NSCopying> *uniqueObjectID;
+@property (nonatomic) BOOL usedLocationsOfInterest;
 @property (strong, nonatomic) NSArray *userTitles;
 @property (strong, nonatomic) NSString *uuid;
 @property (strong, nonatomic) id<PLMomentListData> yearMomentList;

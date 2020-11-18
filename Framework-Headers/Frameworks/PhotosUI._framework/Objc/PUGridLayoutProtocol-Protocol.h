@@ -19,7 +19,6 @@
 @property (copy, nonatomic) NSSet *hiddenItemIndexPaths;
 @property (readonly, nonatomic) struct CGSize itemSize;
 @property (copy, nonatomic) NSString *sectionHeaderElementKind;
-@property (nonatomic) double sectionHeaderHeight;
 @property (nonatomic) BOOL sectionHeadersEnabled;
 @property (nonatomic) double sectionTopPadding;
 @property (nonatomic) BOOL usesAspectItems;

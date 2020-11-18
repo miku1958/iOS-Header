@@ -13,28 +13,45 @@
 @interface NTPBWidgetSectionConfigRecord : PBCodable <NSCopying>
 {
     NSMutableArray *_articleIDs;
+    NSMutableArray *_articleIDs2s;
     NSMutableArray *_articleListIDs;
+    NSMutableArray *_articleListIDs2s;
     NTPBRecordBase *_base;
     NSString *_configuration;
+    NSString *_configuration2;
 }
 
 @property (strong, nonatomic) NSMutableArray *articleIDs; // @synthesize articleIDs=_articleIDs;
+@property (strong, nonatomic) NSMutableArray *articleIDs2s; // @synthesize articleIDs2s=_articleIDs2s;
 @property (strong, nonatomic) NSMutableArray *articleListIDs; // @synthesize articleListIDs=_articleListIDs;
+@property (strong, nonatomic) NSMutableArray *articleListIDs2s; // @synthesize articleListIDs2s=_articleListIDs2s;
 @property (strong, nonatomic) NTPBRecordBase *base; // @synthesize base=_base;
 @property (strong, nonatomic) NSString *configuration; // @synthesize configuration=_configuration;
+@property (strong, nonatomic) NSString *configuration2; // @synthesize configuration2=_configuration2;
 @property (readonly, nonatomic) BOOL hasBase;
 @property (readonly, nonatomic) BOOL hasConfiguration;
+@property (readonly, nonatomic) BOOL hasConfiguration2;
 
++ (Class)articleIDs2Type;
 + (Class)articleIDsType;
++ (Class)articleListIDs2Type;
 + (Class)articleListIDsType;
+- (void)addArticleIDs2:(id)arg1;
 - (void)addArticleIDs:(id)arg1;
+- (void)addArticleListIDs2:(id)arg1;
 - (void)addArticleListIDs:(id)arg1;
+- (id)articleIDs2AtIndex:(unsigned long long)arg1;
+- (unsigned long long)articleIDs2sCount;
 - (id)articleIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)articleIDsCount;
+- (id)articleListIDs2AtIndex:(unsigned long long)arg1;
+- (unsigned long long)articleListIDs2sCount;
 - (id)articleListIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)articleListIDsCount;
 - (void)clearArticleIDs;
+- (void)clearArticleIDs2s;
 - (void)clearArticleListIDs;
+- (void)clearArticleListIDs2s;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

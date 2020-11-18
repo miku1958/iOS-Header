@@ -19,6 +19,9 @@
 - (void).cxx_destruct;
 - (void)_createAndStartMDMXPCConnection;
 - (void)dealloc;
+- (void)getAssertionDescriptionsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)processUserRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)processUserRequest:(id)arg1 outError:(id *)arg2;
 - (id)pushToken;
 - (void)scheduleTokenUpdate;
 - (void)simulatePush;

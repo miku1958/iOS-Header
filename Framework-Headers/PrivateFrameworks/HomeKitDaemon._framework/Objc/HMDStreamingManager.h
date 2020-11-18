@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/AVCRemoteVideoClientDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDAudioStreamInterfaceDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDVideoStreamInterfaceDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class AVCRemoteVideoClient, HMDAudioStreamInterface, HMDCameraSessionID, HMDCameraStreamSnapshotHandler, HMDVideoStreamInterface, NSNumber, NSString;
+@class AVCRemoteVideoClient, HMDAudioStreamInterface, HMDCameraSessionID, HMDCameraStreamSnapshotHandler, HMDVideoStreamInterface, NSNumber, NSObject, NSString;
 @protocol HMDStreamingManagerDelegate, OS_dispatch_queue;
 
-@interface HMDStreamingManager : NSObject <HMDVideoStreamInterfaceDelegate, HMDAudioStreamInterfaceDelegate, AVCRemoteVideoClientDelegate, HMFLogging>
+@interface HMDStreamingManager : HMFObject <HMDVideoStreamInterfaceDelegate, HMDAudioStreamInterfaceDelegate, AVCRemoteVideoClientDelegate, HMFLogging>
 {
     HMDVideoStreamInterface *_videoStreamInterface;
     HMDAudioStreamInterface *_audioStreamInterface;

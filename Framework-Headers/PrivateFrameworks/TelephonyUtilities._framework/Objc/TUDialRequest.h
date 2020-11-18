@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TelephonyUtilities/NSCopying-Protocol.h>
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
@@ -23,8 +23,7 @@
     BOOL _hostOnCurrentDevice;
     BOOL _endpointOnCurrentDevice;
     BOOL _sos;
-    int _callIdentifier;
-    TUCallProviderManager *_providerManager;
+    BOOL _redial;
     NSString *_uniqueProxyIdentifier;
     TUCallProvider *_provider;
     long long _dialType;
@@ -33,6 +32,7 @@
     NSString *_providerCustomIdentifier;
     NSString *_audioSourceIdentifier;
     long long _ttyType;
+    TUCallProviderManager *_providerManager;
     CDUnknownBlockType _isEmergencyNumberBlock;
     CDUnknownBlockType _isEmergencyNumberOrIsWhitelistedBlock;
     long long _originatingUIType;
@@ -42,7 +42,7 @@
 
 @property (readonly, nonatomic) NSURL *URL;
 @property (copy, nonatomic) NSString *audioSourceIdentifier; // @synthesize audioSourceIdentifier=_audioSourceIdentifier;
-@property (nonatomic) int callIdentifier; // @synthesize callIdentifier=_callIdentifier;
+@property (nonatomic) int callIdentifier;
 @property (copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property (readonly, nonatomic) CNContactStore *contactStore;
 @property (readonly, copy) NSString *debugDescription;
@@ -64,6 +64,7 @@
 @property (strong, nonatomic) TUCallProvider *provider; // @synthesize provider=_provider;
 @property (copy, nonatomic) NSString *providerCustomIdentifier; // @synthesize providerCustomIdentifier=_providerCustomIdentifier;
 @property (readonly, nonatomic) TUCallProviderManager *providerManager; // @synthesize providerManager=_providerManager;
+@property (nonatomic, getter=isRedial) BOOL redial; // @synthesize redial=_redial;
 @property (readonly, nonatomic) int service;
 @property (nonatomic) BOOL showUIPrompt; // @synthesize showUIPrompt=_showUIPrompt;
 @property (nonatomic, getter=isSOS, setter=setSOS:) BOOL sos; // @synthesize sos=_sos;
@@ -77,13 +78,15 @@
 @property (nonatomic, getter=isVideo) BOOL video; // @synthesize video=_video;
 
 + (CDUnknownBlockType)callIdentifierToContactIdentifierTransformBlock;
++ (CDUnknownBlockType)callProviderManagerGeneratorBlock;
 + (CDUnknownBlockType)contactIdentifierToCallIdentifierTransformBlock;
 + (long long)dialRequestTypeForIntentDestinationType:(long long)arg1;
 + (long long)handleTypeForQueryItem:(id)arg1;
 + (long long)intentTTYTypeForTTYType:(long long)arg1;
 + (long long)originatingUITypeForString:(id)arg1;
-+ (id)queryItemValueForHandleType:(long long)arg1;
++ (id)providerForIntentPreferredCallProvider:(long long)arg1 providerManager:(id)arg2;
 + (void)setCallIdentifierToContactIdentifierTransformBlock:(CDUnknownBlockType)arg1;
++ (void)setCallProviderManagerGeneratorBlock:(CDUnknownBlockType)arg1;
 + (void)setContactIdentifierToCallIdentifierTransformBlock:(CDUnknownBlockType)arg1;
 + (id)stringForDialType:(long long)arg1;
 + (id)stringForOriginatingUIType:(long long)arg1;
@@ -100,7 +103,9 @@
 - (BOOL)boolValueForQueryItemWithName:(id)arg1 inURLComponents:(id)arg2;
 - (int)callIdentifierFromURLComponents:(id)arg1;
 - (id)callIdentifierQueryItemName;
-- (id)callIdentifierURLQueryItem;
+- (id)callProviderFromURLComponents:(id)arg1 video:(BOOL *)arg2;
+- (id)contactIdentifierFromURLComponents:(id)arg1;
+- (id)contactIdentifierURLQueryItem;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)destinationIDFromURL:(id)arg1;
 - (id)dialAssistedURLQueryItem;
@@ -113,7 +118,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDialIntent:(id)arg1 providerManager:(id)arg2;
 - (id)initWithProvider:(id)arg1;
-- (id)initWithProvider:(id)arg1 providerManager:(id)arg2;
 - (id)initWithService:(int)arg1;
 - (id)initWithURL:(id)arg1;
 - (id)initWithUserActivity:(id)arg1;
@@ -124,7 +128,6 @@
 - (id)noPromptURLQueryItem;
 - (id)originatingUIURLQueryItem;
 - (id)providerCustomIdentifierURLQueryItem;
-- (int)serviceFromURLComponents:(id)arg1;
 - (id)sosURLQueryItem;
 - (id)suppressAssistURLQueryItem;
 - (id)ttyTypeURLQueryItem;
@@ -135,6 +138,7 @@
 - (id)validityErrorForNormalDialTypeWithUnknownDestination;
 - (id)validityErrorForSOS;
 - (id)validityErrorForUnspecifiedProvider;
+- (id)validityErrorForUnsupportedHandleType;
 - (id)validityErrorForVideoUnsupported;
 
 @end

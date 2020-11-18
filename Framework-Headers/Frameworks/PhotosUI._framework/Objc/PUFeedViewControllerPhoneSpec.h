@@ -12,9 +12,10 @@ __attribute__((visibility("hidden")))
 }
 
 - (BOOL)canUseSimplePreheatManager;
+- (double)collectionViewContentInset;
+- (long long)configurationForSectionHeaderType:(long long)arg1 collectionViewType:(long long)arg2;
 - (void)configureCommentSeparatorMetrics:(inout struct PUFeedSeparatorMetrics *)arg1;
-- (void)configureFeedCollectionViewLayout:(id)arg1 forCollectionViewType:(long long)arg2 collectionViewSize:(struct CGSize)arg3 contentInset:(struct UIEdgeInsets)arg4;
-- (void)configureImageCell:(id)arg1 forSectionHeaderBackgroundInCollectionViewType:(long long)arg2;
+- (void)configureFeedCollectionViewLayout:(id)arg1 forCollectionViewType:(long long)arg2 collectionViewSize:(struct CGSize)arg3;
 - (void)configureSeparatorMetrics:(inout struct PUFeedSeparatorMetrics *)arg1 betweenSectionWithInfo:(id)arg2 andSectionWithInfo:(id)arg3 joined:(BOOL)arg4 collectionViewType:(long long)arg5;
 - (void)configureTextCell:(id)arg1 forCaption:(id)arg2;
 - (void)configureTextCell:(id)arg1 forCommentWithDescriptionPhrase:(id)arg2;
@@ -22,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)configureTextCell:(id)arg1 forLikesWithDescriptionPhrase:(id)arg2;
 - (void)configureTextCell:(id)arg1 forSectionFooterWithActionText:(id)arg2 collectionViewType:(long long)arg3;
 - (void)configureTextCell:(id)arg1 forSectionGroupHeaderWithText:(id)arg2 collectionViewType:(long long)arg3;
-- (void)configureTextCell:(id)arg1 forSectionHeaderWithDescriptionPhrase:(id)arg2 streamAffordanceLabel:(id)arg3 actionText:(id)arg4 buttonType:(long long)arg5 collectionViewType:(long long)arg6 animated:(BOOL)arg7;
+- (void)configureTextCell:(id)arg1 forSectionHeaderWithDescriptionPhrase:(id)arg2 streamDisclosureLabel:(id)arg3 actionText:(id)arg4 buttonType:(long long)arg5 collectionViewType:(long long)arg6 animated:(BOOL)arg7;
 - (struct UIEdgeInsets)contentInsetsForSectionType:(long long)arg1 collectionViewType:(long long)arg2;
 - (id)defaultTextAttributesForCollectionViewType:(long long)arg1;
 - (id)emphasizedTextAttributesForCollectionViewType:(long long)arg1;
@@ -33,9 +34,6 @@ __attribute__((visibility("hidden")))
 - (id)photosPickerSpec;
 - (long long)promptStyle;
 - (BOOL)shouldHideBarsInLandscape;
-- (BOOL)shouldShowLikeButtonForCollectionViewType:(long long)arg1;
-- (BOOL)shouldShowSeeAllInSectionFootersInCollectionViewType:(long long)arg1;
-- (BOOL)shouldShowStreamAffordanceInSectionHeaderWithCollectionViewType:(long long)arg1;
 - (BOOL)shouldUseFullscreenLayout;
 - (double)spacingBetweenSectionWithInfo:(id)arg1 andHeaderWithGroupID:(id)arg2;
 - (struct CGSize)thumbnailSize;

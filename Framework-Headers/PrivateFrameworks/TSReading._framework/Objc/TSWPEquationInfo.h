@@ -15,8 +15,6 @@
 
 @property (strong, nonatomic) EQKitEquation *equation; // @synthesize equation=_equation;
 
-+ (void)forceLoadAllMathMLFonts;
-+ (void)registerMathMLFontsWithWP;
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
 - (id)initWithContext:(id)arg1 mathMLNode:(struct _xmlNode *)arg2 fromXMLDoc:(struct _xmlDoc *)arg3;

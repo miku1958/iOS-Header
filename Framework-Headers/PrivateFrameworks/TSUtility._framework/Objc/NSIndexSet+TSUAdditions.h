@@ -8,12 +8,12 @@
 
 @interface NSIndexSet (TSUAdditions)
 
-@property (readonly, nonatomic) BOOL isSingleContiguousRange;
+@property (readonly, nonatomic) BOOL tsu_isSingleContiguousRange;
 
-+ (id)indexSetWithIndices:(unsigned long long *)arg1 count:(unsigned long long)arg2;
-- (id)indexSetByAddingIndexes:(id)arg1;
-- (id)indexSetByInsertingIndexes:(id)arg1 inRange:(struct _NSRange)arg2;
++ (id)tsu_indexSetWithIndices:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (id)initWithIndices:(unsigned long long *)arg1 count:(unsigned long long)arg2;
-- (BOOL)intersectsIndexesInIndexSet:(id)arg1;
+- (id)tsu_indexSetByAddingIndexes:(id)arg1;
+- (id)tsu_indexSetByInsertingIndexes:(id)arg1 inRange:(struct _NSRange)arg2;
+- (BOOL)tsu_intersectsIndexesInIndexSet:(id)arg1;
 @end
 

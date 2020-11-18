@@ -12,10 +12,10 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityAutomationHitTest;
 - (id)_accessibilityHitTestStartsAtElement;
-- (BOOL)_accessibilityHitTestsAnyElement;
+- (void)_setAccessibilityAutomationHitTest:(BOOL)arg1;
 - (void)_setAccessibilityHitTestStartsAtElement:(id)arg1;
-- (void)_setAccessibilityHitTestsAnyElement:(BOOL)arg1;
 
 @end
 

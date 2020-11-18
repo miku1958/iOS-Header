@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
+@class NSObject;
 @protocol HAPKeyStore, OS_dispatch_queue;
 
-@interface HAPAccessoryServerBrowser : NSObject
+@interface HAPAccessoryServerBrowser : HMFObject
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     long long _linkType;
@@ -22,6 +23,7 @@
 - (void).cxx_destruct;
 - (void)discoverAccessoryServerWithIdentifier:(id)arg1;
 - (id)initWithQueue:(id)arg1;
+- (void)matchAccessoryServerWithSetupID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)startDiscoveringAccessoryServers;
 - (void)stopDiscoveringAccessoryServers;

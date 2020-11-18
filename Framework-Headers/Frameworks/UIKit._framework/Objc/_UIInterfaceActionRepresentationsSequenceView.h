@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)_temporarilySkipSizingSeparatedContentSequenceViewToFit;
 - (void)_updateMinimumHeightConstraint;
 - (void)_updateSeparatedContentSequenceViewToFitSizeIfPossible;
+- (void)_willUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (double)fittingWidthForLayoutAxis:(long long)arg1;
 - (id)initWithVisualStyle:(id)arg1;
@@ -49,7 +50,6 @@ __attribute__((visibility("hidden")))
 - (void)reloadDisplayedContentVisualStyle;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 - (void)updateConstraints;
-- (void)willUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 
 @end
 

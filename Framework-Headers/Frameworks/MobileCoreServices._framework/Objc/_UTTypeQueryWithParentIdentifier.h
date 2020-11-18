@@ -15,10 +15,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (BOOL)_canResolveLocallyWithoutMappingDatabase;
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (BOOL)canIdentifierHaveChildren;
-- (void)dealloc;
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

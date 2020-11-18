@@ -6,47 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class NSOperation, NSOperationQueue;
+@class NSHashTable, NSMutableArray, NSOperation, NSOperationQueue;
 
 __attribute__((visibility("hidden")))
 @interface __NSOperationInternal : NSObject
 {
-    unsigned char __pad1[8];
-    NSOperation *__outerOp;
+    struct os_unfair_lock_s __lock;
     NSOperation *__prevOp;
     NSOperation *__nextOp;
     NSOperation *__nextPriOp;
     NSOperationQueue *__queue;
-    id __dependencies;
-    id __down_dependencies;
+    NSMutableArray *__dependencies;
+    NSHashTable *__down_dependencies;
     long long __unfinished_deps;
     CDUnknownBlockType __completion;
     void *__obsInfo;
     void *__implicitObsInfo;
-    long long __seqno;
     double __thread_prio;
-    id __children;
-    int __RC;
-    int __state;
+    _Atomic unsigned char __state;
     BOOL __prio;
-    unsigned char __cached_isReady;
-    unsigned char __isCancelled;
-    unsigned char __isBarrier;
-    int __qoses;
+    _Atomic BOOL __cached_isReady;
+    _Atomic BOOL __isCancelled;
+    _Atomic unsigned char __propertyQoS;
     struct _opaque_pthread_mutex_t __wait_mutex;
     struct _opaque_pthread_cond_t {
         long long __sig;
         char __opaque[40];
     } __wait_cond;
-    struct _opaque_pthread_t *__pthread;
     char *__nameBuffer;
     id __activity;
-    struct pthread_override_s *__ov;
-    unsigned char __pad3[0];
+    _Atomic unsigned char __isExecutingObserverCount;
+    _Atomic unsigned char __isFinishedObserverCount;
+    _Atomic unsigned char __isReadyObserverCount;
+    _Atomic unsigned char __isCancelledObserverCount;
 }
 
 + (void)_observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 changeKind:(unsigned long long)arg3 oldValue:(id)arg4 newValue:(id)arg5 indexes:(id)arg6 context:(void *)arg7;
-- (id)__;
 - (id)_activity;
 - (void)_addDependency:(id)arg1 outer:(id)arg2;
 - (void)_cancel:(id)arg1;

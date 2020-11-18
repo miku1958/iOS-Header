@@ -6,17 +6,19 @@
 
 #import <UIKit/UIActivity.h>
 
+#import <UIKit/UIManagedConfigurationRestrictableActivity-Protocol.h>
 #import <UIKit/UIStateRestoring-Protocol.h>
 
 @class MFMailComposeViewController, NSString;
 @protocol UIStateRestoring;
 
-@interface UIMailActivity : UIActivity <UIStateRestoring>
+@interface UIMailActivity : UIActivity <UIStateRestoring, UIManagedConfigurationRestrictableActivity>
 {
-    BOOL _keyboardVisible;
     BOOL _sourceIsManaged;
+    BOOL _keyboardVisible;
     BOOL _hasAnyAccount;
     BOOL _hasFilteredAccount;
+    NSString *_sourceApplicationBundleID;
     NSString *_subject;
     NSString *_autosaveIdentifier;
     MFMailComposeViewController *_mailComposeViewController;
@@ -32,21 +34,22 @@
 @property (strong, nonatomic) MFMailComposeViewController *mailComposeViewController; // @synthesize mailComposeViewController=_mailComposeViewController;
 @property (readonly, nonatomic) Class objectRestorationClass;
 @property (readonly, nonatomic) id<UIStateRestoring> restorationParent;
+@property (copy, nonatomic) NSString *sourceApplicationBundleID; // @synthesize sourceApplicationBundleID=_sourceApplicationBundleID;
 @property (nonatomic) BOOL sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
 @property (copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property (readonly) Class superclass;
 
++ (unsigned long long)_xpcAttributes;
 + (long long)activityCategory;
 + (id)applicationBundleID;
 - (void).cxx_destruct;
-- (id)_activityImage;
-- (id)_activitySettingsImage;
+- (id)_bundleIdentifierForActivityImageCreation;
 - (void)_cleanup;
 - (void)_deleteMailDraftIdentifierRestorationArchive:(id)arg1;
 - (id)_mailDraftRestorationURL;
 - (BOOL)_restoreDraft;
 - (void)_saveDraft:(id)arg1;
-- (void)_setSubject:(id)arg1;
+- (void)_setMailSubject:(id)arg1;
 - (id)_stateRestorationDraftIsAvailable;
 - (id)activityTitle;
 - (id)activityType;

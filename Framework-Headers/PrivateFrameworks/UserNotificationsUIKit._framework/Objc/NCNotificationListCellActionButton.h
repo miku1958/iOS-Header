@@ -6,32 +6,32 @@
 
 #import <UIKit/UIControl.h>
 
-#import <UserNotificationsUIKit/NCContentSizeCategoryAdjusting-Protocol.h>
+#import <UserNotificationsUIKit/MTContentSizeCategoryAdjusting-Protocol.h>
 
-@class NCLookViewFontProvider, NCNotificationAction, NSString, UILabel, UIView;
+@class MTFontProvider, MTMaterialView, NCNotificationAction, NSString, UILabel, UIView;
 
-@interface NCNotificationListCellActionButton : UIControl <NCContentSizeCategoryAdjusting>
+@interface NCNotificationListCellActionButton : UIControl <MTContentSizeCategoryAdjusting>
 {
     BOOL _adjustsFontForContentSizeCategory;
-    BOOL _backgroundBlurred;
     NSString *_preferredContentSizeCategory;
     NCNotificationAction *_notificationAction;
     NSString *_title;
-    UIView *_customBackgroundView;
-    NCLookViewFontProvider *_fontProvider;
+    NSString *_backgroundGroupName;
+    MTFontProvider *_fontProvider;
     UILabel *_titleLabel;
-    UIView *_backgroundView;
-    UIView *_backgroundOverlayView;
+    MTMaterialView *_backgroundView;
+    MTMaterialView *_backgroundOverlayView;
+    UIView *_backgroundHighlightView;
 }
 
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
-@property (nonatomic, getter=isBackgroundBlurred) BOOL backgroundBlurred; // @synthesize backgroundBlurred=_backgroundBlurred;
-@property (strong, nonatomic) UIView *backgroundOverlayView; // @synthesize backgroundOverlayView=_backgroundOverlayView;
-@property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
-@property (strong, nonatomic) UIView *customBackgroundView; // @synthesize customBackgroundView=_customBackgroundView;
+@property (copy, nonatomic) NSString *backgroundGroupName; // @synthesize backgroundGroupName=_backgroundGroupName;
+@property (strong, nonatomic) UIView *backgroundHighlightView; // @synthesize backgroundHighlightView=_backgroundHighlightView;
+@property (strong, nonatomic) MTMaterialView *backgroundOverlayView; // @synthesize backgroundOverlayView=_backgroundOverlayView;
+@property (strong, nonatomic) MTMaterialView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic, getter=_fontProvider, setter=_setFontProvider:) NCLookViewFontProvider *fontProvider; // @synthesize fontProvider=_fontProvider;
+@property (strong, nonatomic, getter=_fontProvider, setter=_setFontProvider:) MTFontProvider *fontProvider; // @synthesize fontProvider=_fontProvider;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NCNotificationAction *notificationAction; // @synthesize notificationAction=_notificationAction;
 @property (copy, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
@@ -40,10 +40,12 @@
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
+- (void)_configureBackgroundHighlightViewIfNecessary;
 - (void)_configureBackgroundOverlayViewIfNecessary;
 - (void)_configureBackgroundViewIfNecessary;
 - (void)_configureTitleLabelIfNecessary;
 - (void)_highlightButton:(id)arg1;
+- (void)_layoutBackgroundHighlightView;
 - (void)_layoutBackgroundOverlayView;
 - (void)_layoutBackgroundView;
 - (void)_layoutTitleLabel;

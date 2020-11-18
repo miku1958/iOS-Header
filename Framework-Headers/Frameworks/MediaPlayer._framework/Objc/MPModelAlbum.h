@@ -132,6 +132,7 @@
 + (BOOL)supportsLibraryRemoval;
 - (void).cxx_destruct;
 - (id)artworkCatalog;
+- (id)contentItemCollectionInfo;
 - (id)descriptionWithType:(long long)arg1;
 - (struct MPLibraryAddStatusObserverConfiguration)libraryAddStatusObserverConfiguration;
 - (long long)libraryRemovalSupportedOptions;

@@ -10,6 +10,8 @@
 {
 }
 
++ (void)_addSGXPCResponseToReplyWhitelistForMethods:(struct objc_method_description *)arg1 count:(unsigned int)arg2 interface:(id)arg3;
++ (void)_addSGXPCResponseToReplyWhitelistForProtocol:(id)arg1 interface:(id)arg2;
 + (void)_registerWhitelistBlock:(CDUnknownBlockType)arg1 forProtocol:(id)arg2;
 + (void)_whitelistXPCInterface:(id)arg1 forProtocol:(id)arg2 alreadyWhitelisted:(id)arg3;
 + (void)initialize;

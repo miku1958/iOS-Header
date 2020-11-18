@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class NSMutableDictionary, NSPredicate, NSUUID;
+@class NSMutableDictionary, NSObject, NSPredicate, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDNameValidator : NSObject
+@interface HMDNameValidator : HMFObject
 {
     NSMutableDictionary *_namespaceList;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -18,7 +18,7 @@
 }
 
 @property (strong, nonatomic) NSUUID *homeManagerUUID; // @synthesize homeManagerUUID=_homeManagerUUID;
-@property (copy, nonatomic) NSMutableDictionary *namespaceList; // @synthesize namespaceList=_namespaceList;
+@property (strong, nonatomic) NSMutableDictionary *namespaceList; // @synthesize namespaceList=_namespaceList;
 @property (strong, nonatomic) NSPredicate *nonZeroLengthPredicate; // @synthesize nonZeroLengthPredicate=_nonZeroLengthPredicate;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 

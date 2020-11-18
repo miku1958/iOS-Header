@@ -10,31 +10,24 @@
 
 @interface SBUISimpleFixedDigitPasscodeEntryField : SBUINumericPasscodeEntryFieldBase
 {
-    UIView *_leftPaddingView;
-    UIView *_rightPaddingView;
     UIView *_characterIndicatorsContainerView;
     NSMutableArray *_characterIndicators;
-    double _backgroundAlpha;
     UIView *_springView;
     UIView *_springViewParent;
 }
 
 - (void).cxx_destruct;
 - (void)_appendString:(id)arg1;
-- (void)_autofillForMesaWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_autofillForBiometricAuthenticationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_deleteLastCharacter;
 - (struct CGRect)_entryFieldBoundsWithXOffset:(double)arg1;
 - (struct UIEdgeInsets)_entryFieldPaddingOutsideRing;
 - (BOOL)_hasAnyCharacters;
 - (void)_resetForFailedPasscode:(BOOL)arg1;
-- (void)_setLuminosityBoost:(double)arg1;
 - (struct CGSize)_viewSize;
 - (id)initWithDefaultSizeAndLightStyle:(BOOL)arg1;
 - (id)initWithDefaultSizeAndLightStyle:(BOOL)arg1 numberOfDigits:(unsigned long long)arg2;
-- (void)layoutSubviews;
 - (void)reset;
-- (void)setBackgroundAlpha:(double)arg1;
-- (void)setCustomBackgroundColor:(id)arg1;
 
 @end
 

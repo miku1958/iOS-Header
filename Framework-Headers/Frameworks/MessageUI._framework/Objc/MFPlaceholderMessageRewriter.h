@@ -46,7 +46,7 @@
 - (void)setSendingEmailAddress:(id)arg1 addIfNotPresent:(BOOL)arg2;
 - (void)setSubject:(id)arg1;
 - (void)setToRecipients:(id)arg1;
-- (BOOL)shouldCreateRichTextRepresentation;
+- (id)shouldCreateRichTextRepresentation;
 - (id)subject;
 - (id)toRecipients;
 

@@ -6,18 +6,26 @@
 
 #import <NanoTimeKitCompanion/NTKCompanionApp.h>
 
+@class NSString, UIImage;
+
 @interface NTKCompanion1stPartyApp : NTKCompanionApp
 {
+    UIImage *_icon;
     unsigned long long _complicationType;
+    NSString *_iconName;
 }
 
 @property (nonatomic) unsigned long long complicationType; // @synthesize complicationType=_complicationType;
+@property (copy, nonatomic) NSString *iconName; // @synthesize iconName=_iconName;
 
 + (id)allApps;
 + (id)companionAppWithAppInfo:(struct _NTKCompanion1stPartyInfo)arg1;
 + (BOOL)complicationTypeMapsToRemovedSystemApp:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (id)complication;
+- (id)icon;
 - (id)initWithAppInfo:(struct _NTKCompanion1stPartyInfo)arg1;
+- (void)setIcon:(id)arg1;
 
 @end
 

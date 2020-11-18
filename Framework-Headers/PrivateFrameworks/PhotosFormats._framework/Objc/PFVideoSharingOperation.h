@@ -23,17 +23,19 @@
     BOOL _shouldStripMetadata;
     BOOL _shouldStripLocation;
     NSURL *_outputDirectoryURL;
-    NSString *_generatedFileName;
+    NSString *_outputFilename;
     NSString *_customAccessibilityLabel;
+    NSString *_exportPreset;
     NSURL *_videoURL;
     PFAssetAdjustments *__adjustments;
 }
 
 @property (strong, nonatomic, setter=_setAdjustments:) PFAssetAdjustments *_adjustments; // @synthesize _adjustments=__adjustments;
 @property (copy, nonatomic) NSString *customAccessibilityLabel; // @synthesize customAccessibilityLabel=_customAccessibilityLabel;
-@property (copy, nonatomic) NSString *generatedFileName; // @synthesize generatedFileName=_generatedFileName;
+@property (copy, nonatomic) NSString *exportPreset; // @synthesize exportPreset=_exportPreset;
 @property (strong, nonatomic, setter=_setOperationError:) NSError *operationError;
 @property (copy, nonatomic) NSURL *outputDirectoryURL; // @synthesize outputDirectoryURL=_outputDirectoryURL;
+@property (copy, nonatomic) NSString *outputFilename; // @synthesize outputFilename=_outputFilename;
 @property (readonly, nonatomic) float progress;
 @property (nonatomic) BOOL shouldStripLocation; // @synthesize shouldStripLocation=_shouldStripLocation;
 @property (nonatomic) BOOL shouldStripMetadata; // @synthesize shouldStripMetadata=_shouldStripMetadata;

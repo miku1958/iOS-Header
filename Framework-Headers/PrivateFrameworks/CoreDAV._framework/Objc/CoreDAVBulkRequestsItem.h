@@ -26,8 +26,8 @@
 @property (readonly, nonatomic) BOOL supportsUpdate;
 
 + (id)copyParseRules;
+- (void).cxx_destruct;
 - (void)addSupportedItem:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (BOOL)supportsItemWithNameSpace:(id)arg1 name:(id)arg2;

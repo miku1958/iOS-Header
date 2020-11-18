@@ -8,7 +8,7 @@
 
 #import <HealthKit/NSCopying-Protocol.h>
 
-@class HKQuantity, NSDate, NSDateComponents;
+@class HKQuantity, NSArray, NSDate, NSDateComponents;
 
 @interface HKActivityCache : HKSample <NSCopying>
 {
@@ -25,45 +25,36 @@
     NSDate *_energyBurnedGoalDate;
     HKQuantity *_walkingAndRunningDistance;
     long long _flightsClimbed;
-    long long _activeEnergyBurnedAnchor;
-    long long _activeHoursAnchor;
-    long long _briskMinutesAnchor;
-    long long _energyBurnedGoalAnchor;
-    long long _stepCountAnchor;
-    long long _walkingAndRunningDistanceAnchor;
-    long long _pushCountAnchor;
-    long long _flightsClimbedAnchor;
-    long long _workoutAnchor;
-    long long _deepBreathingSessionAnchor;
+    NSArray *_dailyEnergyBurnedStatistics;
+    NSArray *_dailyBriskMinutesStatistics;
     unsigned long long _knownFields;
+    long long _sequence;
 }
 
-@property (setter=_setActiveEnergyBurnedAnchor:) long long activeEnergyBurnedAnchor;
 @property (setter=_setActiveHours:) double activeHours;
-@property (setter=_setActiveHoursAnchor:) long long activeHoursAnchor;
 @property (readonly) double activeHoursGoal;
 @property (readonly) double activeHoursGoalPercentage;
 @property (setter=_setBriskMinutes:) double briskMinutes;
-@property (setter=_setBriskMinutesAnchor:) long long briskMinutesAnchor;
 @property (readonly) double briskMinutesGoal;
 @property (readonly) double briskMinutesGoalPercentage;
 @property (setter=_setCacheIndex:) long long cacheIndex;
+@property (strong, setter=_setDailyBriskMinutesStatistics:) NSArray *dailyBriskMinutesStatistics;
+@property (strong, setter=_setDailyEnergyBurnedStatistics:) NSArray *dailyEnergyBurnedStatistics;
 @property (readonly) NSDateComponents *dateComponents;
 @property (setter=_setDeepBreathingDuration:) double deepBreathingDuration;
-@property (setter=_setDeepBreathingSessionAnchor:) long long deepBreathingSessionAnchor;
 @property (strong, setter=_setEnergyBurned:) HKQuantity *energyBurned;
 @property (strong, setter=_setEnergyBurnedGoal:) HKQuantity *energyBurnedGoal;
-@property (setter=_setEnergyBurnedGoalAnchor:) long long energyBurnedGoalAnchor;
 @property (readonly) NSDate *energyBurnedGoalDate;
 @property (readonly) double energyBurnedGoalPercentage;
 @property (setter=_setFlightsClimbed:) long long flightsClimbed;
-@property (setter=_setFlightsClimbedAnchor:) long long flightsClimbedAnchor;
 @property (readonly) BOOL hasActiveHours;
 @property (readonly) BOOL hasActiveHoursGoal;
 @property (readonly) BOOL hasActiveHoursGoalPercentage;
 @property (readonly) BOOL hasBriskMinutes;
 @property (readonly) BOOL hasBriskMinutesGoal;
 @property (readonly) BOOL hasBriskMinutesGoalPercentage;
+@property (readonly) BOOL hasDailyBriskMinutesStatistics;
+@property (readonly) BOOL hasDailyEnergyBurnedStatistics;
 @property (readonly) BOOL hasDateComponents;
 @property (readonly) BOOL hasDeepBreathingDuration;
 @property (readonly) BOOL hasEnergyBurned;
@@ -76,29 +67,23 @@
 @property (readonly) BOOL hasWheelchairUse;
 @property (setter=_setKnownFields:) unsigned long long knownFields;
 @property (setter=_setPushCount:) long long pushCount;
-@property (setter=_setPushCountAnchor:) long long pushCountAnchor;
+@property (setter=_setSequence:) long long sequence; // @synthesize sequence=_sequence;
 @property (setter=_setStepCount:) long long stepCount;
-@property (setter=_setStepCountAnchor:) long long stepCountAnchor;
 @property (strong, setter=_setWalkingAndRunningDistance:) HKQuantity *walkingAndRunningDistance;
-@property (setter=_setWalkingAndRunningDistanceAnchor:) long long walkingAndRunningDistanceAnchor;
 @property (setter=_setWheelchairUse:) long long wheelchairUse;
-@property (setter=_setWorkoutAnchor:) long long workoutAnchor;
 
++ (id)_activityCacheWithStartDate:(id)arg1 endDate:(id)arg2 dateComponents:(id)arg3 sequence:(long long)arg4 energyBurned:(id)arg5 energyBurnedGoal:(id)arg6 walkingAndRunningDistance:(id)arg7 metadata:(id)arg8;
++ (id)_activityCacheWithUUID:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 dateComponents:(id)arg4 sequence:(long long)arg5;
 + (BOOL)_isConcreteObjectClass;
 + (id)_newActivityCacheWithStartDate:(id)arg1 endDate:(id)arg2 dateComponents:(id)arg3 energyBurned:(id)arg4 energyBurnedGoal:(id)arg5 walkingAndRunningDistance:(id)arg6 metadata:(id)arg7;
-+ (id)_newActivityCacheWithUUID:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 dateComponents:(id)arg4;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (double)_energyBurnedGoalInKilocalories;
 - (double)_energyBurnedInKilocalories;
 - (BOOL)_isEqualToActivityCache:(id)arg1;
-- (long long)_minCategoryAnchor;
-- (long long)_minQuantityAnchor;
-- (void)_setCategoryAnchor:(long long)arg1;
 - (void)_setEnergyBurnedGoal:(id)arg1 date:(id)arg2;
 - (void)_setEnergyBurnedGoalDateOnly:(id)arg1;
 - (void)_setEnergyBurnedGoalOnly:(id)arg1;
-- (void)_setQuantityAnchor:(long long)arg1;
 - (id)_valueDescription;
 - (double)_walkingAndRunningDistanceInMeters;
 - (id)copyWithZone:(struct _NSZone *)arg1;

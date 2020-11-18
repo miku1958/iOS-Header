@@ -41,6 +41,7 @@
 - (id)init;
 - (id)initWithInput:(double)arg1;
 - (double)initialOutputForInput:(double)arg1;
+- (void)invalidateOutput;
 - (id)mutableChangeObject;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)setInput:(double)arg1;

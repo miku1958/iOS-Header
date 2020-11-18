@@ -15,10 +15,7 @@
     PHFetchOptions *_fetchOptions;
     PHFetchResult *_fetchResult;
     NSArray *_allItems;
-    BOOL _prefetchPersons;
-    BOOL _prefetchPersonCount;
-    BOOL _prefetchScenes;
-    BOOL _prefetchMediaAnalyses;
+    unsigned long long _prefetchOptions;
     PHAssetCollection *_assetCollection;
 }
 
@@ -28,11 +25,12 @@
 @property (readonly, nonatomic) BOOL hasFavoritedAssets;
 @property (readonly, nonatomic) BOOL hasPeople;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long numberOfAllPeople;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSDate *universalEndDate;
 @property (readonly, nonatomic) NSDate *universalStartDate;
 
-+ (id)feederForAssetCollection:(id)arg1 options:(id)arg2 prefetchPersons:(BOOL)arg3 personCountPrefetchOption:(unsigned long long)arg4 scenesPrefetchOption:(unsigned long long)arg5 mediaAnalysesPrefetchOption:(unsigned long long)arg6;
++ (id)feederForAssetCollection:(id)arg1 options:(id)arg2 feederPrefetchOptions:(id)arg3;
 - (void).cxx_destruct;
 - (id)_allAvailableMetadataKeys;
 - (BOOL)_shouldPrefetchCurationInformation;
@@ -40,8 +38,9 @@
 - (id)approximateLocation;
 - (id)endDateComponents;
 - (void)enumerateItemsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateItemsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)imageFileNameFor:(id)arg1 baseName:(id)arg2;
-- (id)init;
+- (id)initWithFeederForAssetCollection:(id)arg1 options:(id)arg2 feederPrefetchOptions:(id)arg3;
 - (id)itemAtIndex:(unsigned long long)arg1;
 - (id)itemMetadataAtIndex:(unsigned long long)arg1 withKeys:(id)arg2;
 - (struct CGImage *)itemThumbnailAtIndex:(unsigned long long)arg1 withResolution:(unsigned long long)arg2;

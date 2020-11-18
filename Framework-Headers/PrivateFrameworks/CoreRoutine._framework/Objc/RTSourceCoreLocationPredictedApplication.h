@@ -34,7 +34,6 @@
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 
-+ (id)allowedKeys;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

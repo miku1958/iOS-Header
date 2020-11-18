@@ -18,9 +18,10 @@
 
 @property (nonatomic) unsigned long long category; // @synthesize category=_category;
 @property (strong, nonatomic) id<HFCharacteristicOperationContextProviding> contextProvider; // @synthesize contextProvider=_contextProvider;
+@property (readonly, nonatomic, getter=isPersistentError) BOOL persistentError;
 @property (copy, nonatomic) NSError *underlyingError; // @synthesize underlyingError=_underlyingError;
 
-+ (id)errorWithUnderlyingError:(id)arg1 contextProvider:(id)arg2;
++ (id)errorWithUnderlyingError:(id)arg1 readTraits:(id)arg2 contextProvider:(id)arg3;
 - (void).cxx_destruct;
 
 @end

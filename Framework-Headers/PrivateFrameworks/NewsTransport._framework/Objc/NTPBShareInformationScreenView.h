@@ -25,7 +25,14 @@
     int _userAction;
     BOOL _arrivedFromAd;
     BOOL _subscriptionOnlyArticlePreview;
-    CDStruct_945473b1 _has;
+    struct {
+        unsigned int paidSubscriptionConversionPointType:1;
+        unsigned int parentFeedType:1;
+        unsigned int resultType:1;
+        unsigned int userAction:1;
+        unsigned int arrivedFromAd:1;
+        unsigned int subscriptionOnlyArticlePreview:1;
+    } _has;
 }
 
 @property (nonatomic) BOOL arrivedFromAd; // @synthesize arrivedFromAd=_arrivedFromAd;

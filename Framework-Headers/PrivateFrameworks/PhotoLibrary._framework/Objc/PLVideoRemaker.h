@@ -22,12 +22,15 @@
     id _delegate;
     BOOL _shouldExportToPhotoDataDirectory;
     CDUnknownBlockType _progressHandler;
+    NSString *_exportPresetOverride;
     NSString *_customAccessibilityLabel;
     PFVideoAVObjectBuilder *__videoAVObjectBuilder;
 }
 
 @property (readonly, strong, nonatomic) PFVideoAVObjectBuilder *_videoAVObjectBuilder; // @synthesize _videoAVObjectBuilder=__videoAVObjectBuilder;
 @property (copy, nonatomic) NSString *customAccessibilityLabel; // @synthesize customAccessibilityLabel=_customAccessibilityLabel;
+@property (readonly, nonatomic) NSString *exportPreset;
+@property (copy, nonatomic) NSString *exportPresetOverride; // @synthesize exportPresetOverride=_exportPresetOverride;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (nonatomic) BOOL shouldExportToPhotoDataDirectory; // @synthesize shouldExportToPhotoDataDirectory=_shouldExportToPhotoDataDirectory;
 

@@ -4,25 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFAudio/AVAudioMixing-Protocol.h>
 
-@class AVAudioEngine, AVAudioTime, NSString;
+@class AUAudioUnit, AVAudioEngine, AVAudioTime, NSString;
 
 @interface AVAudioNode : NSObject <AVAudioMixing>
 {
     void *_impl;
 }
 
+@property (readonly, nonatomic) AUAudioUnit *AUAudioUnit;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) AVAudioEngine *engine;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct AVAudioNodeImplBase *impl;
 @property (readonly, nonatomic) AVAudioTime *lastRenderTime;
+@property (readonly, nonatomic) double latency;
 @property (readonly, nonatomic) unsigned long long numberOfInputs;
 @property (readonly, nonatomic) unsigned long long numberOfOutputs;
+@property (readonly, nonatomic) double outputPresentationLatency;
 @property (readonly) Class superclass;
 @property (nonatomic) float volume;
 
@@ -47,6 +50,7 @@
 - (void)removeTapOnBus:(unsigned long long)arg1;
 - (long long)renderingAlgorithm;
 - (void)reset;
+- (BOOL)resetImpl:(struct AVAudioNodeImplBase *)arg1;
 - (float)reverbBlend;
 - (BOOL)setInputFormat:(id)arg1 forBus:(unsigned long long)arg2;
 - (void)setNumberOfInputs:(unsigned int)arg1;

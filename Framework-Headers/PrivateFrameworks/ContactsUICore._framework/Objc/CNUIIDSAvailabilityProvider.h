@@ -6,24 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class CNCache, NSArray;
-@protocol CNScheduler;
+#import <ContactsUICore/CNUIIDSAvailabilityProvider-Protocol.h>
 
-@interface CNUIIDSAvailabilityProvider : NSObject
+@class CNCache, NSArray, NSString;
+@protocol CNScheduler, CNUIIDSIDQueryControllerWrapper;
+
+@interface CNUIIDSAvailabilityProvider : NSObject <CNUIIDSAvailabilityProvider>
 {
+    id<CNUIIDSIDQueryControllerWrapper> _queryControllerWrapper;
     CNCache *_faceTimeRequests;
     CNCache *_iMessageRequests;
     NSArray *_requestFutures;
     id<CNScheduler> _resourceLock;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) CNCache *faceTimeRequests; // @synthesize faceTimeRequests=_faceTimeRequests;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CNCache *iMessageRequests; // @synthesize iMessageRequests=_iMessageRequests;
+@property (strong, nonatomic) id<CNUIIDSIDQueryControllerWrapper> queryControllerWrapper; // @synthesize queryControllerWrapper=_queryControllerWrapper;
 @property (strong, nonatomic) NSArray *requestFutures; // @synthesize requestFutures=_requestFutures;
 @property (strong, nonatomic) id<CNScheduler> resourceLock; // @synthesize resourceLock=_resourceLock;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)initWithQueryControllerWrapper:(id)arg1;
 - (void)startRequestForCacheMisses:(id)arg1 service:(long long)arg2 scheduler:(id)arg3;
 - (id)validateHandles:(id)arg1 forService:(long long)arg2 schedulerProvider:(id)arg3;
 - (id)validateHandlesForFaceTime:(id)arg1 schedulerProvider:(id)arg2;

@@ -9,46 +9,24 @@
 #import <Celestial/FigXPCCoding-Protocol.h>
 #import <Celestial/NSCopying-Protocol.h>
 
-@class FigCaptureIrisPreparedSettings, NSString;
+@class NSString;
 
 @interface FigCaptureSinkConfiguration : NSObject <FigXPCCoding, NSCopying>
 {
     NSString *_sinkID;
-    int _sinkType;
-    BOOL _videoDataDiscardsLateVideoFrames;
-    BOOL _videoDataDerivedFromPreview;
-    BOOL _irisMovieCaptureEnabled;
-    CDStruct_1b6d18a9 _irisMovieDuration;
-    CDStruct_1b6d18a9 _irisMovieVideoFrameDuration;
-    int _irisMovieAutoTrimMethod;
-    FigCaptureIrisPreparedSettings *_irisPreparedSettings;
-    BOOL _optimizesImagesForOfflineVideoStabilization;
-    BOOL _quadraHighResStillImageCaptureEnabled;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) int irisMovieAutoTrimMethod; // @synthesize irisMovieAutoTrimMethod=_irisMovieAutoTrimMethod;
-@property (nonatomic) BOOL irisMovieCaptureEnabled; // @synthesize irisMovieCaptureEnabled=_irisMovieCaptureEnabled;
-@property (nonatomic) CDStruct_1b6d18a9 irisMovieDuration; // @synthesize irisMovieDuration=_irisMovieDuration;
-@property (nonatomic) CDStruct_1b6d18a9 irisMovieVideoFrameDuration; // @synthesize irisMovieVideoFrameDuration=_irisMovieVideoFrameDuration;
-@property (strong, nonatomic) FigCaptureIrisPreparedSettings *irisPreparedSettings; // @synthesize irisPreparedSettings=_irisPreparedSettings;
-@property (nonatomic) BOOL optimizesImagesForOfflineVideoStabilization; // @synthesize optimizesImagesForOfflineVideoStabilization=_optimizesImagesForOfflineVideoStabilization;
-@property (nonatomic) BOOL quadraHighResStillImageCaptureEnabled; // @synthesize quadraHighResStillImageCaptureEnabled=_quadraHighResStillImageCaptureEnabled;
 @property (copy, nonatomic) NSString *sinkID; // @synthesize sinkID=_sinkID;
-@property (nonatomic) int sinkType; // @synthesize sinkType=_sinkType;
+@property (readonly, nonatomic) int sinkType;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL videoDataDerivedFromPreview; // @synthesize videoDataDerivedFromPreview=_videoDataDerivedFromPreview;
-@property (nonatomic) BOOL videoDataDiscardsLateVideoFrames; // @synthesize videoDataDiscardsLateVideoFrames=_videoDataDiscardsLateVideoFrames;
 
-+ (void)initialize;
-+ (int)sinkTypeForString:(id)arg1;
 + (id)stringForSinkType:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyXPCEncoding;
 - (void)dealloc;
-- (id)init;
 - (id)initWithXPCEncoding:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

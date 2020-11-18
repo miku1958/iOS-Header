@@ -33,13 +33,12 @@
 
 + (id)viewControllerForPresentingPaymentError:(id)arg1;
 - (void).cxx_destruct;
-- (void)_handleAssociatedCredentialsDidChangeNotification:(id)arg1;
 - (void)_reconfigureRootViewController;
 - (void)cancel:(id)arg1;
-- (void)dealloc;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2;
 - (void)loadView;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
+- (void)setCustomFormSheetPresentationStyleForiPad;
 - (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewController:(id)arg1 didShowProvisioningError:(id)arg2;

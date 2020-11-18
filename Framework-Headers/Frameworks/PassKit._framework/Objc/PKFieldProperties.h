@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -12,24 +12,25 @@
 
 @interface PKFieldProperties : NSObject <NSSecureCoding>
 {
-    NSError *_error;
     unsigned long long _technology;
-    unsigned long long _mode;
+    long long _terminalType;
+    long long _valueAddedServiceMode;
     NSArray *_merchantIdentifiers;
+    NSError *_error;
 }
 
-@property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
-@property (readonly, nonatomic) NSArray *merchantIdentifiers; // @synthesize merchantIdentifiers=_merchantIdentifiers;
-@property (readonly, nonatomic) unsigned long long mode; // @synthesize mode=_mode;
+@property (copy, nonatomic) NSError *error; // @synthesize error=_error;
+@property (copy, nonatomic) NSArray *merchantIdentifiers; // @synthesize merchantIdentifiers=_merchantIdentifiers;
 @property (readonly, nonatomic) unsigned long long technology; // @synthesize technology=_technology;
+@property (readonly, nonatomic) long long terminalType; // @synthesize terminalType=_terminalType;
+@property (readonly, nonatomic) long long valueAddedServiceMode; // @synthesize valueAddedServiceMode=_valueAddedServiceMode;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTechnology:(unsigned long long)arg1 mode:(unsigned long long)arg2 error:(id)arg3;
-- (id)initWithTechnology:(unsigned long long)arg1 mode:(unsigned long long)arg2 merchantIdentifiers:(id)arg3;
+- (id)initWithTechnology:(unsigned long long)arg1 terminalType:(long long)arg2 valueAddedServiceMode:(long long)arg3;
 
 @end
 

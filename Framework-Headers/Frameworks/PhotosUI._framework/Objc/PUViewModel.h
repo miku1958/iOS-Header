@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) NSHashTable *_changeObservers; // @synthesize _changeObservers=__changeObservers;
 @property (nonatomic, getter=_isPublishingChanges, setter=_setPublishingChanges:) BOOL _publishingChanges; // @synthesize _publishingChanges=__publishingChanges;
 @property (readonly, nonatomic) PUViewModelChange *currentChange;
+@property (readonly, nonatomic) PUViewModelChange *currentChangeIfExists;
 
 - (void).cxx_destruct;
 - (void)_applyPendingChanges;

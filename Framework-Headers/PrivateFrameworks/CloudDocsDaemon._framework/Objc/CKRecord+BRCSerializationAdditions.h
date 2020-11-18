@@ -6,18 +6,34 @@
 
 #import <CloudKit/CKRecord.h>
 
-@interface CKRecord (BRCSerializationAdditions)
-- (BOOL)_deserializeValue:(id *)arg1 forKey:(id)arg2 expectClass:(Class)arg3 allowNil:(BOOL)arg4 errorDescription:(id *)arg5;
+#import <CloudDocsDaemon/PQLValuable-Protocol.h>
+
+@class NSString;
+
+@interface CKRecord (BRCSerializationAdditions) <PQLValuable>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
+- (void)_deserializeRootSharingOptions:(unsigned long long *)arg1;
+- (BOOL)_deserializeValue:(id *)arg1 forKey:(id)arg2 encrypted:(BOOL)arg3 expectClass:(Class)arg4 allowNil:(BOOL)arg5 errorDescription:(id *)arg6;
 - (BOOL)deserializeAliasInfo:(id *)arg1 serverZone:(id)arg2 error:(id *)arg3;
 - (BOOL)deserializeFilename:(id *)arg1 basename:(id *)arg2 bounceno:(id *)arg3 extension:(id *)arg4 userInfo:(id)arg5 error:(id *)arg6;
+- (void)deserializeFolderSharingOptions:(unsigned long long *)arg1;
 - (BOOL)deserializeStatInfo:(id *)arg1 itemID:(id)arg2 session:(id)arg3 error:(id *)arg4;
 - (BOOL)deserializeSymlinkTarget:(id *)arg1 error:(id *)arg2;
 - (BOOL)deserializeVersion:(id *)arg1 fakeStatInfo:(id *)arg2 clientZone:(id)arg3 error:(id *)arg4;
 - (BOOL)deserializeiWorkSharingOptions:(unsigned long long *)arg1 error:(id *)arg2;
 - (void)serializeFilename:(id)arg1 forCreation:(BOOL)arg2;
 - (void)serializeFilename:(id)arg1 forCreation:(BOOL)arg2 setExtension:(BOOL)arg3;
+- (void)serializeFilename:(id)arg1 forCreation:(BOOL)arg2 setExtension:(BOOL)arg3 inSharedAlias:(BOOL)arg4;
+- (void)serializeFinderTags:(id)arg1 forCreation:(BOOL)arg2;
 - (void)serializeStatInfo:(id)arg1 diffs:(unsigned long long)arg2 stageID:(id)arg3 deadInServerTruth:(BOOL)arg4 pcsChaining:(BOOL)arg5;
 - (void)serializeSystemFields:(id)arg1;
 - (void)serializeVersion:(id)arg1 diffs:(unsigned long long)arg2 deadInServerTruth:(BOOL)arg3;
+- (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
 @end
 

@@ -18,15 +18,21 @@ __attribute__((visibility("hidden")))
     NSData *_clientChangeToken;
     int _status;
     NSData *_syncContinuationToken;
-    CDStruct_47fe53f2 _has;
+    BOOL _pendingArchivedRecords;
+    struct {
+        unsigned int status:1;
+        unsigned int pendingArchivedRecords:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSMutableArray *changedRecords; // @synthesize changedRecords=_changedRecords;
 @property (strong, nonatomic) NSMutableArray *changedShares; // @synthesize changedShares=_changedShares;
 @property (strong, nonatomic) NSData *clientChangeToken; // @synthesize clientChangeToken=_clientChangeToken;
 @property (readonly, nonatomic) BOOL hasClientChangeToken;
+@property (nonatomic) BOOL hasPendingArchivedRecords;
 @property (nonatomic) BOOL hasStatus;
 @property (readonly, nonatomic) BOOL hasSyncContinuationToken;
+@property (nonatomic) BOOL pendingArchivedRecords; // @synthesize pendingArchivedRecords=_pendingArchivedRecords;
 @property (nonatomic) int status; // @synthesize status=_status;
 @property (strong, nonatomic) NSData *syncContinuationToken; // @synthesize syncContinuationToken=_syncContinuationToken;
 

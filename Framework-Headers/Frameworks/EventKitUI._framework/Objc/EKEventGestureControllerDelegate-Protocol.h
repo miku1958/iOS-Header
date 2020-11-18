@@ -26,6 +26,7 @@
 - (EKDayOccurrenceView *)eventGestureController:(EKEventGestureController *)arg1 occurrenceViewAtPoint:(struct CGPoint)arg2;
 - (EKDayOccurrenceView *)eventGestureController:(EKEventGestureController *)arg1 occurrenceViewForOccurrence:(EKEvent *)arg2;
 - (struct CGPoint)eventGestureController:(EKEventGestureController *)arg1 pointAtDate:(double)arg2 isAllDay:(BOOL)arg3;
+- (void)eventGestureController:(EKEventGestureController *)arg1 requestsPresentationOfViewController:(UIViewController *)arg2;
 - (double)eventGestureController:(EKEventGestureController *)arg1 widthForOccurrenceViewOfDays:(unsigned long long)arg2;
 - (double)eventGestureController:(EKEventGestureController *)arg1 yPositionPerhapsMatchingAllDayOccurrence:(EKEvent *)arg2 atPoint:(struct CGPoint)arg3;
 - (UIView *)occurrenceViewSuperviewForEventGestureController:(EKEventGestureController *)arg1;
@@ -33,10 +34,13 @@
 - (UIView *)touchTrackingViewForEventGestureController:(EKEventGestureController *)arg1;
 
 @optional
+- (void)cleanUpAfterGestureFailureForEventGestureController:(EKEventGestureController *)arg1;
 - (double)computeXDragOffsetForEventGestureController:(EKEventGestureController *)arg1 currentX:(double)arg2 startX:(double)arg3;
 - (BOOL)eventEditorPopoverActiveWhileDraggingForEventGestureController:(EKEventGestureController *)arg1;
 - (double)eventGestureController:(EKEventGestureController *)arg1 convertXForMargin:(double)arg2;
+- (void)eventGestureController:(EKEventGestureController *)arg1 requestsShowEvent:(EKEvent *)arg2;
 - (BOOL)eventGestureController:(EKEventGestureController *)arg1 shouldFadeOccurrenceAfterFling:(EKEvent *)arg2;
+- (void)eventGestureControllerDidEndDragSession:(EKEventGestureController *)arg1;
 - (BOOL)eventGestureControllerShouldAllowLongPress:(EKEventGestureController *)arg1;
 - (BOOL)hasCorrectParentForDraggingView:(UIView *)arg1 isAllDay:(BOOL)arg2;
 - (double)horizontalOffsetForPagingForEventGestureController:(EKEventGestureController *)arg1;

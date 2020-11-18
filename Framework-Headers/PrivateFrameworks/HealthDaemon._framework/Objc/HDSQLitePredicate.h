@@ -12,6 +12,7 @@
 {
 }
 
++ (id)booleanPredicateWithValue:(BOOL)arg1;
 + (id)compoundPredicateWithPredicate:(id)arg1 otherPredicate:(id)arg2;
 + (id)falsePredicate;
 + (id)truePredicate;

@@ -13,15 +13,19 @@
 @interface GEOPDAutocompleteEntryBusiness : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    double _distance;
     unsigned long long _muid;
     GEOPDPlace *_place;
     int _resultProviderId;
     struct {
+        unsigned int distance:1;
         unsigned int muid:1;
         unsigned int resultProviderId:1;
     } _has;
 }
 
+@property (nonatomic) double distance; // @synthesize distance=_distance;
+@property (nonatomic) BOOL hasDistance;
 @property (nonatomic) BOOL hasMuid;
 @property (readonly, nonatomic) BOOL hasPlace;
 @property (nonatomic) BOOL hasResultProviderId;
@@ -30,9 +34,9 @@
 @property (nonatomic) int resultProviderId; // @synthesize resultProviderId=_resultProviderId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

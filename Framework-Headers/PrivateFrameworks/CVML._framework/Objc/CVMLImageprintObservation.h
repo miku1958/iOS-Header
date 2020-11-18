@@ -33,6 +33,9 @@
 - (id)initWithRawImageprintDescriptor:(id)arg1;
 - (id)isImageprintValid;
 - (id)serialize;
+- (id)serializeAsVNImageprintStateAndReturnError:(id *)arg1;
+- (unsigned long long)serializeStateIntoData:(id)arg1 startingAtByteOffset:(unsigned long long)arg2 error:(id *)arg3;
+- (unsigned long long)serializedLength;
 
 @end
 

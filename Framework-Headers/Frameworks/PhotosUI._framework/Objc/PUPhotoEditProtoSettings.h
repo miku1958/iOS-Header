@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUSettings.h>
+#import <PhotosUICore/PXSettings.h>
 
-__attribute__((visibility("hidden")))
-@interface PUPhotoEditProtoSettings : PUSettings
+@interface PUPhotoEditProtoSettings : PXSettings
 {
     BOOL _showLevelIndicator;
     BOOL _showResetToolButton;
@@ -18,10 +17,13 @@ __attribute__((visibility("hidden")))
     BOOL _simulateDownloadFailure;
     BOOL _previewOriginalAllowsLongPress;
     BOOL _previewOriginalTimesOut;
+    BOOL _livePhotoTrimAllowed;
+    long long _renderPriority;
     double _cropSideMargins;
     double _cropWheelSize;
     double _cropRecomposeDelay;
     double _previewOriginalDuration;
+    double _minimumLivePhotoTrimDuration;
 }
 
 @property (nonatomic) BOOL allowAnyPlugin; // @synthesize allowAnyPlugin=_allowAnyPlugin;
@@ -30,9 +32,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double cropRecomposeDelay; // @synthesize cropRecomposeDelay=_cropRecomposeDelay;
 @property (nonatomic) double cropSideMargins; // @synthesize cropSideMargins=_cropSideMargins;
 @property (nonatomic) double cropWheelSize; // @synthesize cropWheelSize=_cropWheelSize;
+@property (nonatomic) BOOL livePhotoTrimAllowed; // @synthesize livePhotoTrimAllowed=_livePhotoTrimAllowed;
+@property (nonatomic) double minimumLivePhotoTrimDuration; // @synthesize minimumLivePhotoTrimDuration=_minimumLivePhotoTrimDuration;
 @property (nonatomic) BOOL previewOriginalAllowsLongPress; // @synthesize previewOriginalAllowsLongPress=_previewOriginalAllowsLongPress;
 @property (nonatomic) double previewOriginalDuration; // @synthesize previewOriginalDuration=_previewOriginalDuration;
 @property (nonatomic) BOOL previewOriginalTimesOut; // @synthesize previewOriginalTimesOut=_previewOriginalTimesOut;
+@property (nonatomic) long long renderPriority; // @synthesize renderPriority=_renderPriority;
 @property (nonatomic) BOOL showLevelIndicator; // @synthesize showLevelIndicator=_showLevelIndicator;
 @property (nonatomic) BOOL showResetToolButton; // @synthesize showResetToolButton=_showResetToolButton;
 @property (nonatomic) BOOL simulateDownload; // @synthesize simulateDownload=_simulateDownload;
@@ -40,6 +45,7 @@ __attribute__((visibility("hidden")))
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
+- (id)parentSettings;
 - (void)setDefaultValues;
 
 @end

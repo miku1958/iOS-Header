@@ -40,9 +40,11 @@
 + (double)playedThresholdTimeForDuration:(double)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)JSONRepresentation;
 - (BOOL)_compareOptional:(id)arg1 with:(id)arg2;
 - (BOOL)_validate:(id)arg1 identifier:(id)arg2 expectedClass:(Class)arg3;
 - (id)description;
+- (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithBundleId:(id)arg1 timestamp:(id)arg2 duration:(id)arg3 elapsedTime:(id)arg4 externalProfileID:(id)arg5 contentID:(id)arg6 accountID:(id)arg7 playbackState:(long long)arg8 playbackRate:(id)arg9 completionState:(long long)arg10;
@@ -50,6 +52,7 @@
 - (id)initWithMediaRemoteDictionary:(id)arg1 bundleID:(id)arg2 accountID:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToSummary:(id)arg1;
+- (BOOL)isEqualToSummaryExceptForCursor:(id)arg1;
 
 @end
 

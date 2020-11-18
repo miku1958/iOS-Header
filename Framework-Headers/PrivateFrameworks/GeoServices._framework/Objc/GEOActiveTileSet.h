@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOActiveTileSet : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     struct GEOTileSetRegion *_availableTiles;
     unsigned long long _availableTilesCount;
     unsigned long long _availableTilesSpace;
@@ -19,6 +20,7 @@
     int _checksumType;
     NSMutableArray *_countryRegionWhitelists;
     NSString *_localizationURL;
+    int _requestStyle;
     int _scale;
     NSMutableArray *_sentinelTiles;
     int _size;
@@ -29,6 +31,7 @@
     unsigned int _version;
     struct {
         unsigned int checksumType:1;
+        unsigned int requestStyle:1;
         unsigned int timeToLiveSeconds:1;
         unsigned int updateBehavior:1;
     } _has;
@@ -42,23 +45,28 @@
 @property (readonly, nonatomic) BOOL hasBaseURL;
 @property (nonatomic) BOOL hasChecksumType;
 @property (readonly, nonatomic) BOOL hasLocalizationURL;
+@property (nonatomic) BOOL hasRequestStyle;
 @property (nonatomic) BOOL hasTimeToLiveSeconds;
 @property (nonatomic) BOOL hasUpdateBehavior;
 @property (strong, nonatomic) NSString *localizationURL; // @synthesize localizationURL=_localizationURL;
+@property (nonatomic) int requestStyle; // @synthesize requestStyle=_requestStyle;
 @property (nonatomic) int scale; // @synthesize scale=_scale;
 @property (strong, nonatomic) NSMutableArray *sentinelTiles; // @synthesize sentinelTiles=_sentinelTiles;
 @property (nonatomic) int size; // @synthesize size=_size;
 @property (nonatomic) int style; // @synthesize style=_style;
 @property (strong, nonatomic) NSMutableArray *supportedLanguages; // @synthesize supportedLanguages=_supportedLanguages;
 @property (nonatomic) unsigned int timeToLiveSeconds; // @synthesize timeToLiveSeconds=_timeToLiveSeconds;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (nonatomic) int updateBehavior; // @synthesize updateBehavior=_updateBehavior;
 @property (nonatomic) unsigned int version; // @synthesize version=_version;
 
-+ (id)buildDisputedBordersQueryStringForCountry:(id)arg1 region:(id)arg2;
++ (id)buildDisputedBordersQueryItemsForCountry:(id)arg1 region:(id)arg2;
 + (Class)countryRegionWhitelistType;
 + (Class)sentinelTileType;
 + (Class)supportedLanguageType;
+- (void).cxx_destruct;
 - (int)StringAsChecksumType:(id)arg1;
+- (int)StringAsRequestStyle:(id)arg1;
 - (int)StringAsScale:(id)arg1;
 - (int)StringAsSize:(id)arg1;
 - (int)StringAsStyle:(id)arg1;
@@ -84,7 +92,7 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (id)disputedBordersQueryStringForCountry:(id)arg1 region:(id)arg2;
+- (id)disputedBordersQueryItemsForCountry:(id)arg1 region:(id)arg2;
 - (unsigned long long)hash;
 - (BOOL)isAvailableForTileKey:(const struct _GEOTileKey *)arg1;
 - (BOOL)isDisputedBordersWhitelistedForCountry:(id)arg1 region:(id)arg2;
@@ -96,6 +104,7 @@
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)minimumZoomLevelInRect:(CDStruct_90e2a262)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)requestStyleAsString:(int)arg1;
 - (id)scaleAsString:(int)arg1;
 - (id)sentinelTileAtIndex:(unsigned long long)arg1;
 - (unsigned long long)sentinelTilesCount;

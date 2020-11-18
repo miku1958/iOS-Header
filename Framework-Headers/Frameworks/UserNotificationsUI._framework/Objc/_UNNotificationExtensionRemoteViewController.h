@@ -14,7 +14,7 @@
 
 @interface _UNNotificationExtensionRemoteViewController : UIViewController <_UNNotificationContentExtensionLegacyDelegate, _UNNotificationExtensionRemoteInterface>
 {
-    long long _invalidationOnceToken;
+    struct atomic_flag _invalidationOnceFlag;
     BOOL _didCheckActionResponseDelegate;
     UIViewController<UNNotificationContentExtension> *_extensionViewController;
     id<_UNNotificationExtensionHostInterface> _hostService;

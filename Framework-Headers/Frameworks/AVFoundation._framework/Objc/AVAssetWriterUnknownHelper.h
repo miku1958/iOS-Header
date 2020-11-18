@@ -29,6 +29,8 @@
 - (void)setPreferredTransform:(struct CGAffineTransform)arg1;
 - (void)setPreferredVolume:(float)arg1;
 - (void)setShouldOptimizeForNetworkUse:(BOOL)arg1;
+- (void)setSinglePassFileSize:(long long)arg1;
+- (void)setSinglePassMediaDataSize:(long long)arg1;
 - (void)startWriting;
 - (long long)status;
 

@@ -12,10 +12,7 @@
 
 + (id)_themeAssetCache;
 + (id)cachedObjectWithKey:(id)arg1 block:(CDUnknownBlockType)arg2;
-+ (id)cloudGlyph;
 + (id)disabledPlaybackControlColor;
-+ (double)explicitGlyphImageBaselineOffsetFromBottomForSizeCategory:(unsigned long long)arg1;
-+ (id)explicitGlyphImageForSizeCategory:(unsigned long long)arg1;
 + (double)tableViewContentLeftInset;
 
 @end

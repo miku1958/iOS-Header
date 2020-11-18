@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
     unsigned int mAUHandleCntr;
     int mNotifyToken;
     BOOL mValidToken;
-    BOOL mPrevRegistrarNeeded;
 }
 
 @property (readonly, copy) NSString *debugDescription;

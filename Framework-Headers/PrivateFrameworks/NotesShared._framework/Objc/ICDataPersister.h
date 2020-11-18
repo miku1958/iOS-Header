@@ -13,12 +13,12 @@
 
 @interface ICDataPersister : NSObject <ICDataPersister, NSSecureCoding>
 {
+    unsigned long long _accumulatedDataSize;
     ICDataCryptor *_dataCryptor;
     NSURL *_cacheDirectoryURL;
     NSString *_objectIdentifier;
     NSMutableArray *_allURLs;
     NSMutableDictionary *_identifierToDataDictionary;
-    unsigned long long _accumulatedDataSize;
 }
 
 @property (nonatomic) unsigned long long accumulatedDataSize; // @synthesize accumulatedDataSize=_accumulatedDataSize;

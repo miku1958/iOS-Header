@@ -15,6 +15,7 @@
 - (id)_accessibilityFuzzyHitTestElements;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
+- (BOOL)_accessibilitySupportsContentSizeCategory:(id)arg1;
 - (void)_dismissCustomizeSheet:(BOOL)arg1;
 - (unsigned long long)accessibilityTraits;
 - (void)beginCustomizingItems:(id)arg1;

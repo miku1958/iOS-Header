@@ -4,7 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CameraUI/CAMLegacyStillImageCaptureDelegate-Protocol.h>
 #import <CameraUI/CAMMetadataDelegate-Protocol.h>
 #import <CameraUI/CAMPanoramaCaptureDelegate-Protocol.h>
 #import <CameraUI/CAMPanoramaConfigurationDelegate-Protocol.h>
@@ -14,6 +13,6 @@
 #import <CameraUI/CAMVideoCaptureDelegate-Protocol.h>
 #import <CameraUI/NSObject-Protocol.h>
 
-@protocol CAMCaptureService <NSObject, CAMLegacyStillImageCaptureDelegate, CAMStillImageCaptureDelegate, CAMVideoCaptureDelegate, CAMPanoramaCaptureDelegate, CAMPanoramaConfigurationDelegate, CAMMetadataDelegate, CAMRecoveryDelegate, CAMSessionDelegate>
+@protocol CAMCaptureService <NSObject, CAMStillImageCaptureDelegate, CAMVideoCaptureDelegate, CAMPanoramaCaptureDelegate, CAMPanoramaConfigurationDelegate, CAMMetadataDelegate, CAMRecoveryDelegate, CAMSessionDelegate>
 @end
 

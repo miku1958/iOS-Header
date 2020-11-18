@@ -11,7 +11,10 @@
     CDStruct_c57d91d4 _parameterList[125];
     unsigned int _effectIndex[26];
     double _scaleFactor;
+    float _minimumShadowSpread;
 }
+
+@property float minimumShadowSpread; // @synthesize minimumShadowSpread=_minimumShadowSpread;
 
 + (unsigned int)cuiEffectBlendModeFromCGBlendMode:(int)arg1;
 + (id)requiredEffectParametersForEffectType:(unsigned int)arg1;

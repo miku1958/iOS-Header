@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface PLPhotoStreamsHelper : NSObject
 {
@@ -27,7 +27,7 @@
 - (BOOL)dequeueAssetsForPSPublishing:(id)arg1;
 - (id)derivedAssetForMasterAsset:(id)arg1;
 - (struct CGSize)derivedAssetSizeForMasterSizeWidth:(double)arg1 height:(double)arg2;
-- (BOOL)enqueueAssetForPSPublishing:(id)arg1 assetHash:(id)arg2 fullPath:(id)arg3 fileSize:(id)arg4 type:(id)arg5 reenqueueCount:(id)arg6 publicGlobalUUID:(id *)arg7;
+- (BOOL)enqueueAssetForPSPublishing:(id)arg1 fullPath:(id)arg2 fileSize:(id)arg3 reenqueueCount:(unsigned long long)arg4 publicGlobalUUID:(id *)arg5;
 - (void)enumerateMasterHashesAndPublicGlobalUUIDsForAssets:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (long long)friendsLimit;
 - (long long)imageLimitForFriendStream;
@@ -53,6 +53,7 @@
 - (void)savePhotoStreamMetadata:(id)arg1 forAsset:(id)arg2;
 - (BOOL)shouldPublishScreenShots;
 - (BOOL)shouldUploadVideos;
+- (id)temporaryPathForConvertedAssetWithUUID:(id)arg1;
 - (id)temporaryPathForRecentlyUploadedAsset:(id)arg1;
 - (void)writeDidEnqueueBreadcrumbForHash:(id)arg1 imagePath:(id)arg2;
 - (void)writeDidPublishBreadcrumbforHash:(id)arg1 imagePath:(id)arg2;

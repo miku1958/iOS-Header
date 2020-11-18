@@ -6,11 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
-#import <MediaPlayer/NSCopying-Protocol.h>
+#import <MediaPlayer/MPArtworkDataSourceVisualIdenticality-Protocol.h>
 
 @class NSString;
 
-@interface _MPMediaLibraryArtworkVisualIdenticalityIdentifier : NSObject <NSCopying>
+@interface _MPMediaLibraryArtworkVisualIdenticalityIdentifier : NSObject <MPArtworkDataSourceVisualIdenticality>
 {
     long long _artworkType;
     NSString *_availableArtworkToken;
@@ -19,15 +19,18 @@
 
 @property (readonly, nonatomic) long long artworkType; // @synthesize artworkType=_artworkType;
 @property (readonly, nonatomic) NSString *availableArtworkToken; // @synthesize availableArtworkToken=_availableArtworkToken;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *fetchableArtworkToken; // @synthesize fetchableArtworkToken=_fetchableArtworkToken;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithArtworkType:(long long)arg1 availableArtworkToken:(id)arg2 fetchableArtworkToken:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (id)stringRepresentation;
 
 @end
 

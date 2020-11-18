@@ -35,11 +35,6 @@
 @property (nonatomic) BOOL shouldSuppressCellularDataAlerts; // @synthesize shouldSuppressCellularDataAlerts=_shouldSuppressCellularDataAlerts;
 @property (nonatomic) int trackedTransportType; // @synthesize trackedTransportType=_trackedTransportType;
 
-+ (BOOL)_currentLocationInsideTrackingRegionForRoute:(id)arg1 location:(id)arg2;
-+ (BOOL)_currentLocationInsideTurnByTurnRegionForRoute:(id)arg1 location:(id)arg2;
-+ (BOOL)_currentTimeInsideTrackingRegionForRoute:(id)arg1 location:(id)arg2;
-+ (int)routeGuidanceLevelForLocation:(id)arg1 route:(id)arg2 withCurrentGuidanceLevel:(int)arg3;
-+ (int)routeGuidanceLevelForLocation:(id)arg1 route:(id)arg2 withCurrentGuidanceLevel:(int)arg3 ignoreTimeCriterion:(BOOL)arg4;
 - (int)StringAsGuidanceLevel:(id)arg1;
 - (int)StringAsGuidanceLevelIgnoringTimeCriterion:(id)arg1;
 - (int)StringAsNavigationState:(id)arg1;

@@ -7,14 +7,17 @@
 #import <PassKitUI/NSObject-Protocol.h>
 
 @class NSArray, NSString, UIViewController;
-@protocol PKPassLibraryDataProvider, PKPaymentDataProvider, PKPaymentOptionsProtocol, PKPaymentSetupDelegate;
+@protocol PKPassLibraryDataProvider, PKPassbookPeerPaymentSettingsDataSource, PKPassbookPeerPaymentSettingsDelegate, PKPaymentDataProvider, PKPaymentOptionsProtocol, PKPaymentSetupDelegate;
 
 @protocol PKPassbookSettingsDataSource <NSObject>
+- (BOOL)canRegisterForPeerPayment;
 - (BOOL)deviceInRestrictedMode;
 - (BOOL)deviceSupportsInAppPayments;
 - (id<PKPaymentOptionsProtocol>)optionsDelegate;
 - (id<PKPassLibraryDataProvider>)passLibraryDataProvider;
 - (id<PKPaymentDataProvider>)paymentDataProvider;
+- (id<PKPassbookPeerPaymentSettingsDataSource>)peerPaymentDataSource;
+- (id<PKPassbookPeerPaymentSettingsDelegate>)peerPaymentDelegate;
 - (NSString *)secureElementID;
 - (BOOL)secureElementIsProductionSigned;
 - (id<PKPaymentSetupDelegate>)setupDelegate;

@@ -16,7 +16,7 @@
 - (id)_accessibilityElementStoredUserLabel;
 - (id)_accessibilityPhotoDescription;
 - (BOOL)_accessibilitySavePhotoLabel:(id)arg1;
-- (int)_accessibilityScannerActivateBehavior;
+- (long long)_accessibilityScannerActivateBehavior;
 - (id)_axMainAssetURL;
 - (id)_axPHAsset;
 - (id)accessibilityLabel;

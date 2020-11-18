@@ -14,32 +14,39 @@
 {
     NSMutableArray *_alightNotificationFeedbacks;
     NSData *_directionResponseID;
+    NSMutableArray *_guidanceFeedbacks;
     NSMutableArray *_stepFeedbacks;
     NSMutableArray *_trafficRerouteFeedbacks;
 }
 
 @property (strong, nonatomic) NSMutableArray *alightNotificationFeedbacks; // @synthesize alightNotificationFeedbacks=_alightNotificationFeedbacks;
 @property (strong, nonatomic) NSData *directionResponseID; // @synthesize directionResponseID=_directionResponseID;
+@property (strong, nonatomic) NSMutableArray *guidanceFeedbacks; // @synthesize guidanceFeedbacks=_guidanceFeedbacks;
 @property (readonly, nonatomic) BOOL hasDirectionResponseID;
 @property (strong, nonatomic) NSMutableArray *stepFeedbacks; // @synthesize stepFeedbacks=_stepFeedbacks;
 @property (strong, nonatomic) NSMutableArray *trafficRerouteFeedbacks; // @synthesize trafficRerouteFeedbacks=_trafficRerouteFeedbacks;
 
 + (Class)alightNotificationFeedbackType;
++ (Class)guidanceFeedbackType;
 + (Class)stepFeedbackType;
 + (Class)trafficRerouteFeedbackType;
+- (void).cxx_destruct;
 - (void)addAlightNotificationFeedback:(id)arg1;
+- (void)addGuidanceFeedback:(id)arg1;
 - (void)addStepFeedback:(id)arg1;
 - (void)addTrafficRerouteFeedback:(id)arg1;
 - (id)alightNotificationFeedbackAtIndex:(unsigned long long)arg1;
 - (unsigned long long)alightNotificationFeedbacksCount;
 - (void)clearAlightNotificationFeedbacks;
+- (void)clearGuidanceFeedbacks;
 - (void)clearStepFeedbacks;
 - (void)clearTrafficRerouteFeedbacks;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)guidanceFeedbackAtIndex:(unsigned long long)arg1;
+- (unsigned long long)guidanceFeedbacksCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

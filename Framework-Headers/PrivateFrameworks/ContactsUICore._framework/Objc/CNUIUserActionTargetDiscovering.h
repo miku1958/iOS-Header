@@ -41,6 +41,7 @@
 - (id)targetForVoiceWithTelephony;
 - (id)targetsForActionType:(id)arg1;
 - (id)targetsForEmail;
+- (id)targetsForPay;
 - (id)targetsForSendMessageIntent;
 - (id)targetsForStartAudioCallIntent;
 - (id)targetsForStartVideoCallIntent;

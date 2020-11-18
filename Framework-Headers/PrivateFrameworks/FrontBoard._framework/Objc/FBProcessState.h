@@ -32,8 +32,6 @@
 @property (nonatomic) int taskState; // @synthesize taskState=_taskState;
 @property (nonatomic) int visibility; // @synthesize visibility=_visibility;
 
-- (id)_descriptionForTaskState:(int)arg1;
-- (id)_descriptionForVisibility:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

@@ -8,7 +8,7 @@
 
 #import <MediaPlaybackCore/MPCQueueBehaviorManaging-Protocol.h>
 
-@class MPAVItem, MPMusicPlayerControllerQueue, MPMutableBidirectionalDictionary, MPQueueFeeder, NSMutableArray, NSMutableIndexSet, NSObject, NSString, _MPCAVItemSourceContext, _MPCAVPlaylistIteration;
+@class MPAVItem, MPMusicPlayerControllerQueue, MPMutableBidirectionalDictionary, MPQueueFeeder, NSMapTable, NSMutableArray, NSMutableIndexSet, NSObject, NSString, _MPCAVItemSourceContext, _MPCAVPlaylistIteration;
 @protocol OS_dispatch_queue;
 
 @interface MPCMediaPlayerLegacyPlaylistManager : MPAVPlaylistManager <MPCQueueBehaviorManaging>
@@ -25,6 +25,7 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_musicPlayerControllerAccessQueue;
     MPMusicPlayerControllerQueue *_currentMusicPlayerControllerQueue;
+    NSMapTable *_queueFeederLookup;
     BOOL _disableQueueModifications;
     MPQueueFeeder *_softQueueFeeder;
     NSMutableArray *_hardQueueSourceContexts;
@@ -83,8 +84,10 @@
 - (void)_updateMusicPlayerControllerQueueWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_willFinishReloadWithQueueFeeder:(id)arg1 fromPlaybackContext:(id)arg2;
 - (void)addPlaybackContext:(id)arg1 toQueueWithInsertionType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)canSkipToPreviousItemForItem:(id)arg1;
 - (void)clearHardQueue;
 - (void)clearSoftQueue;
+- (id)contentItemIDForPlaylistIndex:(long long)arg1;
 - (long long)currentIndex;
 - (id)currentQueueUUID;
 - (unsigned long long)displayCountForItem:(id)arg1;
@@ -93,9 +96,12 @@
 - (void)finalizeStateRestorationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handlePlaybackFailureForItem:(id)arg1;
 - (id)identifierAtIndex:(unsigned long long)arg1 queueFeeder:(id)arg2;
+- (unsigned long long)indexForContentItemID:(id)arg1;
 - (unsigned long long)indexOfItemWithIdentifier:(id)arg1 queueFeeder:(id)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isPlaceholderItemForContentItemID:(id)arg1;
+- (id)itemForContentItemID:(id)arg1;
 - (id)itemForPlaylistIndex:(long long)arg1;
 - (id)metadataItemForPlaylistIndex:(long long)arg1;
 - (void)moveItemAtPlaybackIndex:(long long)arg1 toPlaybackIndex:(long long)arg2 intoHardQueue:(BOOL)arg3;
@@ -121,6 +127,7 @@
 - (BOOL)setPlaylistFeeder:(id)arg1 startIndex:(long long)arg2 keepPlaying:(BOOL)arg3;
 - (void)setRepeatMode:(long long)arg1;
 - (BOOL)supportsAddToQueue;
+- (long long)upNextItemCount;
 
 @end
 

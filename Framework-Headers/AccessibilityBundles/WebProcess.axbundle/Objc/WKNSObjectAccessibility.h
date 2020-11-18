@@ -13,7 +13,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityFirstElementForFocusForRemoteElement;
-- (id)accessibilityAttributeValue:(int)arg1;
+- (id)accessibilityAttributeValue:(long long)arg1;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
 
 @end

@@ -14,6 +14,7 @@
 @property struct CGAffineTransform transform; // @synthesize transform=_transform;
 
 - (id)initWithParseDeclaration:(id)arg1 info:(id)arg2;
+- (id)stringValue;
 
 @end
 

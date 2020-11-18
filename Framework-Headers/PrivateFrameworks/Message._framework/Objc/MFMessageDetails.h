@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class MFMessageLibrary, NSString;
+#import <Message/MFBaseMessage-Protocol.h>
 
-@interface MFMessageDetails : NSObject
+@class MFMailboxUid, MFMessageLibrary, NSString;
+
+@interface MFMessageDetails : NSObject <MFBaseMessage>
 {
     MFMessageLibrary *library;
     unsigned int libraryID;
     unsigned long long messageFlags;
     unsigned int uid;
-    unsigned int encoding;
-    BOOL isInvalid;
     unsigned int mailboxID;
     long long conversationHash;
     long long messageIDHash;
@@ -24,23 +24,32 @@
     NSString *externalID;
 }
 
+@property (readonly, nonatomic) long long conversationHash; // @synthesize conversationHash;
+@property (readonly, nonatomic) unsigned int dateReceivedInterval; // @synthesize dateReceivedInterval=dateReceived;
+@property (readonly, nonatomic) unsigned int dateSentInterval; // @synthesize dateSentInterval=dateSent;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) BOOL deleted;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSString *externalID; // @synthesize externalID;
+@property (readonly, nonatomic) BOOL flagged;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isKnownToHaveAttachments) BOOL knownToHaveAttachments;
+@property (readonly, nonatomic) unsigned int libraryID; // @synthesize libraryID;
+@property (readonly, nonatomic, getter=isLibraryMessage) BOOL libraryMessage;
+@property (readonly, weak, nonatomic) MFMailboxUid *mailbox;
+@property (readonly, nonatomic) unsigned int mailboxID; // @synthesize mailboxID;
+@property (readonly, nonatomic) unsigned long long messageFlags; // @synthesize messageFlags;
+@property (readonly, nonatomic) long long messageIDHash; // @synthesize messageIDHash;
+@property (readonly, nonatomic) BOOL read;
+@property (readonly, nonatomic) BOOL senderVIP;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned int uid; // @synthesize uid;
+
 - (id)copyMessageInfo;
-- (double)dateReceivedAsTimeIntervalSince1970;
-- (double)dateSentAsTimeIntervalSince1970;
 - (void)dealloc;
-- (id)description;
-- (id)externalID;
-- (unsigned long long)hash;
-- (id)init;
 - (BOOL)isEqual:(id)arg1;
-- (unsigned int)libraryID;
-- (id)mailbox;
-- (unsigned int)mailboxID;
-- (unsigned long long)messageFlags;
 - (id)messageID;
-- (long long)messageIDHash;
 - (id)remoteID;
-- (unsigned int)uid;
 
 @end
 

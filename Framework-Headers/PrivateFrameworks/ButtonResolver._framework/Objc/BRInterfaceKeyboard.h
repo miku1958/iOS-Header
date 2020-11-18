@@ -26,7 +26,7 @@
 + (id)interface;
 - (BOOL)_disableState:(unsigned long long)arg1;
 - (BOOL)_enableState:(unsigned long long)arg1;
-- (BOOL)_findServices;
+- (void)_findServices;
 - (BOOL)_servicesSetProperty:(void *)arg1 forKey:(struct __CFString *)arg2;
 - (BOOL)_setCachedPropertiesOnService:(struct __IOHIDServiceClient *)arg1;
 - (BOOL)_setConfig:(id)arg1 forState:(unsigned long long)arg2 error:(id *)arg3;

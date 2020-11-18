@@ -20,6 +20,7 @@
     int _requestID;
     int _registrationRefCount;
     NSString *_pathForAdjustmentFile;
+    unsigned long long _phase;
     id<_PLImageLoadingAsset> _asset;
     id _domain;
     CDUnknownBlockType _cancellationHandler;
@@ -32,6 +33,7 @@
     NSString *_debugFilename;
     double _creationTimeInterval;
     PLImageFormat *_bestFormatIssuedSoFar;
+    double _creationTime;
 }
 
 @property (strong) PLCPLDownloadContext *CPLDownloadContext; // @synthesize CPLDownloadContext=_CPLDownloadContext;
@@ -42,6 +44,7 @@
 @property (strong, nonatomic) PLImageFormat *bestFormatIssuedSoFar; // @synthesize bestFormatIssuedSoFar=_bestFormatIssuedSoFar;
 @property (copy) CDUnknownBlockType cancellationHandler; // @synthesize cancellationHandler=_cancellationHandler;
 @property (readonly, nonatomic) long long cloudSharedAssetPlaceholderKind; // @synthesize cloudSharedAssetPlaceholderKind=_cloudSharedAssetPlaceholderKind;
+@property (readonly, nonatomic) double creationTime; // @synthesize creationTime=_creationTime;
 @property (readonly, nonatomic) double creationTimeInterval; // @synthesize creationTimeInterval=_creationTimeInterval;
 @property (readonly, nonatomic) NSString *debugFilename; // @synthesize debugFilename=_debugFilename;
 @property (readonly, nonatomic) id domain; // @synthesize domain=_domain;
@@ -51,6 +54,7 @@
 @property (readonly, nonatomic) BOOL isVideo;
 @property (strong) PHImageManagerRequest *nextRequest; // @synthesize nextRequest=_nextRequest;
 @property (readonly, nonatomic) NSString *pathForAdjustmentFile; // @synthesize pathForAdjustmentFile=_pathForAdjustmentFile;
+@property (nonatomic) unsigned long long phase; // @synthesize phase=_phase;
 @property (readonly, nonatomic) int registrationRefCount; // @synthesize registrationRefCount=_registrationRefCount;
 @property (readonly, nonatomic) int requestID; // @synthesize requestID=_requestID;
 @property (strong) PLPreheatItem *transientPreheatlItem; // @synthesize transientPreheatlItem=_transientPreheatlItem;

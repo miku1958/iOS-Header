@@ -12,15 +12,19 @@
 {
     int _deviceBatteryState;
     int _deviceInterfaceOrientation;
+    BOOL _deviceInVehicle;
     struct {
         unsigned int deviceBatteryState:1;
         unsigned int deviceInterfaceOrientation:1;
+        unsigned int deviceInVehicle:1;
     } _has;
 }
 
 @property (nonatomic) int deviceBatteryState; // @synthesize deviceBatteryState=_deviceBatteryState;
+@property (nonatomic) BOOL deviceInVehicle; // @synthesize deviceInVehicle=_deviceInVehicle;
 @property (nonatomic) int deviceInterfaceOrientation; // @synthesize deviceInterfaceOrientation=_deviceInterfaceOrientation;
 @property (nonatomic) BOOL hasDeviceBatteryState;
+@property (nonatomic) BOOL hasDeviceInVehicle;
 @property (nonatomic) BOOL hasDeviceInterfaceOrientation;
 
 - (int)StringAsDeviceBatteryState:(id)arg1;

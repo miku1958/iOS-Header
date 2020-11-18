@@ -20,6 +20,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)shouldEnforceRxProtocols;
++ (BOOL)shouldSwizzleNilResults;
 - (void)observerDidComplete;
 - (void)observerDidFailWithError:(id)arg1;
 - (void)observerDidReceiveResult:(id)arg1;

@@ -26,7 +26,6 @@
     _UIBackdropView *_backdropView;
     BOOL _usingBackgroundBlur;
     UIView *_highlightView;
-    BOOL _generateDefaultTitleFromDates;
     BOOL _useYearOnlyForDefaultTitle;
     BOOL _showsActionButton;
     BOOL _allowsPhotosDetailsInteraction;
@@ -50,7 +49,6 @@
 @property (nonatomic) unsigned long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property (nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
 @property (weak, nonatomic) id<PUPhotosSectionHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) BOOL generateDefaultTitleFromDates;
 @property (nonatomic) struct UIEdgeInsets highlightInsets; // @synthesize highlightInsets=_highlightInsets;
 @property (readonly, nonatomic) NSDate *sectionEndDate; // @synthesize sectionEndDate=_sectionEndDate;
 @property (nonatomic) long long sectionIndex; // @synthesize sectionIndex=_sectionIndex;
@@ -60,11 +58,9 @@
 @property (nonatomic) BOOL showsActionButton; // @synthesize showsActionButton=_showsActionButton;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly, nonatomic) NSString *synthesizedSectionTitle;
-@property (readonly, nonatomic) BOOL useYearOnlyForDefaultTitle;
+@property (nonatomic) BOOL useYearOnlyForDefaultTitle;
 
-+ (void)_updateLabelGlobalCachedSizes;
-+ (void)initialize;
-+ (double)sectionHeaderHeightForHeaderStyle:(long long)arg1;
++ (BOOL)_hasAccessibilityLargeText;
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChangeNotification:(id)arg1;
 - (id)_dateRangeCompactFormatter;
@@ -75,9 +71,7 @@
 - (void)_handleActionButton:(id)arg1;
 - (void)_handleSignificantDateChange:(id)arg1;
 - (void)_hideHighlightView;
-- (void)_layoutSubviewsStyleFullDetail;
-- (void)_layoutSubviewsStyleOnelineDetail;
-- (void)_layoutSubviewsStyleOnelineMinimal;
+- (void)_layoutSubviewsForCurentStyle;
 - (struct CGSize)_preferredSizeForLabel:(id)arg1;
 - (struct CGSize)_preferredSizeForText:(id)arg1 withFont:(id)arg2;
 - (void)_setHighlightViewVisible:(BOOL)arg1;
@@ -89,6 +83,7 @@
 - (void)_updateDateLabel;
 - (void)_updateDisclosureIconVisibility;
 - (void)_updateHighlightView;
+- (void)_updateLabelsForTextStyle;
 - (void)_updateLocationsLabelVisibility;
 - (void)_updateTitleLabel;
 - (BOOL)_usingDateAsTitle;
@@ -101,7 +96,6 @@
 - (void)layoutSubviews;
 - (void)performBatchUpdateOfDateDependentPropertiesWithBlock:(CDUnknownBlockType)arg1;
 - (void)prepareForReuse;
-- (void)setGenerateDefaultTitleFromDates:(BOOL)arg1 yearOnly:(BOOL)arg2;
 - (void)setSectionStartDate:(id)arg1 endDate:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;

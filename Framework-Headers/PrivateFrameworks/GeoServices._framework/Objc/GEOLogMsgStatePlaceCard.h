@@ -33,6 +33,7 @@
 @property (readonly, nonatomic) int *unactionableUiElements;
 @property (readonly, nonatomic) unsigned long long unactionableUiElementsCount;
 
+- (void).cxx_destruct;
 - (int)StringAsPlacecardType:(id)arg1;
 - (int)StringAsPossibleActions:(id)arg1;
 - (int)StringAsUnactionableUiElements:(id)arg1;

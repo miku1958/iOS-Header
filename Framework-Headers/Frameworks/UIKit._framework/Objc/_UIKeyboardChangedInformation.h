@@ -30,6 +30,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)copyWithoutFence;
 - (id)copyWithoutIAV;
 - (void)dealloc;
 - (id)description;

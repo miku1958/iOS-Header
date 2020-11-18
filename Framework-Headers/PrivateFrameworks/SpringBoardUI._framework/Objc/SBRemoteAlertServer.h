@@ -33,6 +33,7 @@
 - (id)initWithRemoteAlertControllerClass:(Class)arg1;
 - (void)noteClientDidDisconnect:(id)arg1;
 - (void)noteDidReceiveMessage:(id)arg1 withType:(long long)arg2 fromClient:(id)arg3;
+- (id)prerequisiteMilestones;
 - (void)queue_remoteAlertController:(id)arg1 didInvalidateWithReason:(long long)arg2 underlyingError:(id)arg3;
 - (void)queue_remoteAlertControllerDidChangeActivationState:(id)arg1;
 

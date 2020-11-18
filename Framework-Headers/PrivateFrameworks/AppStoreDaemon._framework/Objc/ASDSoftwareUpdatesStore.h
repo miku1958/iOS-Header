@@ -43,6 +43,8 @@
 - (void)showApplicationBadgeForPendingUpdates;
 - (void)showApplicationUpdateBulletin;
 - (void)updateAllWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)updateAllWithJobResultsCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)updateAllWithOrder:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 
 @end
 

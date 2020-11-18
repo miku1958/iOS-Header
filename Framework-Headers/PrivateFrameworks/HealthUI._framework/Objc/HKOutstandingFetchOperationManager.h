@@ -24,6 +24,8 @@
 @property (nonatomic) long long maxConcurrentFetchOperations; // @synthesize maxConcurrentFetchOperations=_maxConcurrentFetchOperations;
 @property (readonly) Class superclass;
 
++ (void)setSharedOperationManager:(id)arg1;
++ (id)sharedOperationManager;
 - (void).cxx_destruct;
 - (void)_executeFetchOperation:(id)arg1;
 - (void)_fillActiveFetchOperations;

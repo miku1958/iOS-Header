@@ -14,16 +14,20 @@
 {
     PBUnknownFields *_unknownFields;
     GEOLatLng *_droppedPinCoordinate;
+    int _droppedPinFloorOrdinal;
     GEOMapItemStorage *_mapItemStorage;
     int _origin;
     NSString *_title;
     struct {
+        unsigned int droppedPinFloorOrdinal:1;
         unsigned int origin:1;
     } _has;
 }
 
 @property (strong, nonatomic) GEOLatLng *droppedPinCoordinate; // @synthesize droppedPinCoordinate=_droppedPinCoordinate;
+@property (nonatomic) int droppedPinFloorOrdinal; // @synthesize droppedPinFloorOrdinal=_droppedPinFloorOrdinal;
 @property (readonly, nonatomic) BOOL hasDroppedPinCoordinate;
+@property (nonatomic) BOOL hasDroppedPinFloorOrdinal;
 @property (readonly, nonatomic) BOOL hasMapItemStorage;
 @property (nonatomic) BOOL hasOrigin;
 @property (readonly, nonatomic) BOOL hasTitle;

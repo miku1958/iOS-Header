@@ -13,8 +13,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axAnnotateView;
 - (id)accessibilityScrollStatusForScrollView:(id)arg1;
 - (void)showDate:(id)arg1 animated:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)viewDidLoad;
 
 @end
 

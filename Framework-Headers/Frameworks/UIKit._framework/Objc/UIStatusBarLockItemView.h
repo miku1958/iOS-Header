@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)_beginAnimation;
 - (void)_endAnimation;
 - (BOOL)_isAnimating;
+- (id)accessibilityHUDRepresentation;
 - (void)animateUnlockForegroundView:(id)arg1 timeItemSnapshot:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (BOOL)isExclusive;

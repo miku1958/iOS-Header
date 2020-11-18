@@ -13,6 +13,8 @@
 + (void)connectForOperations:(CDUnknownBlockType)arg1 withErrorHandler:(CDUnknownBlockType)arg2;
 + (void)dismissDialog;
 + (void)dismissEnableDictationPrompt;
++ (void)launchDictationSettings;
++ (void)launchKeyboardSettings;
 + (void)presentDialogForType:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (void)promptToEnableDictationWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)setTestBlock:(CDUnknownBlockType)arg1;

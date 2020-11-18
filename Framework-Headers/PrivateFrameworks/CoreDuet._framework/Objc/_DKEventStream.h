@@ -7,28 +7,35 @@
 #import <objc/NSObject.h>
 
 #import <CoreDuet/NSSecureCoding-Protocol.h>
+#import <CoreDuet/_DKProtobufConverting-Protocol.h>
 
 @class NSString, _CDEventStreamProperties, _DKObjectType;
 
-@interface _DKEventStream : NSObject <NSSecureCoding>
+@interface _DKEventStream : NSObject <_DKProtobufConverting, NSSecureCoding>
 {
     _CDEventStreamProperties *_eventProperties;
     NSString *_name;
     _DKObjectType *_eventValueType;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly) _CDEventStreamProperties *eventProperties; // @synthesize eventProperties=_eventProperties;
 @property (readonly) _DKObjectType *eventValueType; // @synthesize eventValueType=_eventValueType;
+@property (readonly) unsigned long long hash;
 @property (readonly) NSString *name; // @synthesize name=_name;
+@property (readonly) Class superclass;
 
 + (id)eventStreamWithName:(id)arg1;
 + (id)eventStreamWithName:(id)arg1 valueType:(id)arg2;
++ (id)fromPBCodable:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 valueType:(id)arg2 cache:(id)arg3;
+- (BOOL)isEqual:(id)arg1;
+- (id)toPBCodable;
 
 @end
 

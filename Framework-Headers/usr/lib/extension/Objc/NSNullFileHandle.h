@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSFileHandle.h>
+#import <Foundation/NSFileHandle.h>
 
 __attribute__((visibility("hidden")))
 @interface NSNullFileHandle : NSFileHandle

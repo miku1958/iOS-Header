@@ -9,12 +9,13 @@
 #import <HealthUI/HKChartPoint-Protocol.h>
 
 @class NSDate, NSString;
+@protocol HKGraphSeriesBlockCoordinateInfo;
 
 @interface HKNumericChartPoint : NSObject <HKChartPoint>
 {
     NSDate *_xValue;
     id _yValue;
-    id _userInfo;
+    id<HKGraphSeriesBlockCoordinateInfo> _userInfo;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,12 +26,12 @@
 - (void).cxx_destruct;
 - (id)allYValues;
 - (id)initWithXValue:(id)arg1 yValue:(id)arg2 userInfo:(id)arg3;
-- (id)maxXValue;
+- (id)maxXValueAsGenericType;
 - (id)maxYValue;
-- (id)minXValue;
+- (id)minXValueAsGenericType;
 - (id)minYValue;
 - (id)userInfo;
-- (id)xValue;
+- (id)xValueAsGenericType;
 - (id)yValue;
 - (id)yValueForKey:(id)arg1;
 

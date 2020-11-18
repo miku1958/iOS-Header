@@ -25,9 +25,11 @@
 - (id)_connection;
 - (id)_managedStoreService;
 - (id)_managedStoreServiceWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)dataForKey:(id)arg1 inKnowledgeStoreWithName:(id)arg2;
 - (void)dealloc;
 - (id)domainObjectForKey:(id)arg1;
-- (id)init;
+- (void)resetKnowledgeStoreWithName:(id)arg1;
+- (void)setData:(id)arg1 forKey:(id)arg2 inKnowledgeStoreWithName:(id)arg3;
 - (void)setDomainObject:(id)arg1 forKey:(id)arg2;
 
 @end

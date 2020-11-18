@@ -9,6 +9,7 @@
 @interface NSDate (Logging)
 + (id)dateFromFileNameDescription:(id)arg1;
 + (id)timeIntervalDescription:(double)arg1;
+- (id)dateComponents;
 - (id)fileNameDescription;
 - (id)iso8601Description;
 - (id)localTimeDescription;

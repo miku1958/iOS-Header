@@ -10,7 +10,6 @@
 {
 }
 
-- (void)_getStackSize:(struct CGSize *)arg1 edgeInset:(double *)arg2 forLayoutReferenceSize:(struct CGSize)arg3;
 - (id)_nameOfAddSharedAlbumPlaceholderImage;
 - (id)_nameOfEmptyAlbumPlaceholderImage;
 - (id)_nameOfEmptySharedAlbumPlaceholderImage;
@@ -25,7 +24,7 @@
 - (long long)collageImageContentMode;
 - (struct CGSize)collageImageSize;
 - (double)collageSpacing;
-- (void)configureGridLayout:(id)arg1 forLayoutReferenceSize:(struct CGSize)arg2;
+- (void)configureGridLayout:(id)arg1 forLayoutReferenceSize:(struct CGSize)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
 - (void)configureStackViewWithGridStyle:(id)arg1;
 - (BOOL)displaysSearchInPopover;
 - (id)emptyAlbumPlaceholderImage;
@@ -34,7 +33,7 @@
 - (unsigned long long)folderStackViewStyle;
 - (id)gridViewControllerSpec;
 - (struct CGSize)imageSize;
-- (struct CGSize)imageSizeForLayoutReferenceSize:(struct CGSize)arg1;
+- (struct CGSize)imageSizeForLayoutReferenceSize:(struct CGSize)arg1 safeAreaInsets:(struct UIEdgeInsets)arg2;
 - (double)maxSearchBarWidth;
 - (id)panoramaViewControllerSpec;
 - (id)photosPickerViewControllerSpec;
@@ -42,7 +41,7 @@
 - (double)posterSubitemCornerRadius;
 - (double)sectionFooterHeight;
 - (double)sectionHeaderHeight;
-- (struct UIEdgeInsets)sectionInsetsForLayoutReferenceSize:(struct CGSize)arg1;
+- (struct UIEdgeInsets)sectionInsetsForLayoutReferenceSize:(struct CGSize)arg1 safeAreaInsets:(struct UIEdgeInsets)arg2;
 - (BOOL)shouldShowSectionHeaders;
 - (BOOL)shouldUseCollageForCloudFeedPlaceholder;
 - (BOOL)showsDeleteButtonOnCellContentView;
@@ -51,7 +50,7 @@
 - (struct UIOffset)stackPerspectiveOffset;
 - (id)stackPhotoDecoration;
 - (struct CGSize)stackSize;
-- (struct CGSize)stackSizeForLayoutReferenceSize:(struct CGSize)arg1;
+- (struct CGSize)stackSizeForLayoutReferenceSize:(struct CGSize)arg1 safeAreaInsets:(struct UIEdgeInsets)arg2;
 - (unsigned long long)stackViewStyle;
 - (BOOL)usesStackTransitionToGrid;
 

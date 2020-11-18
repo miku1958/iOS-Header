@@ -18,10 +18,12 @@
 + (id)imageAccumulatorWithExtent:(struct CGRect)arg1 format:(int)arg2 colorSpace:(struct CGColorSpace *)arg3;
 + (id)imageAccumulatorWithExtent:(struct CGRect)arg1 format:(int)arg2 options:(id)arg3;
 - (void)clear;
+- (struct CGColorSpace *)colorSpace;
 - (void)commitUpdates:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)image;
+- (id)init;
 - (id)initWithExtent:(struct CGRect)arg1 format:(int)arg2;
 - (id)initWithExtent:(struct CGRect)arg1 format:(int)arg2 colorSpace:(struct CGColorSpace *)arg3;
 - (id)initWithExtent:(struct CGRect)arg1 format:(int)arg2 options:(id)arg3;

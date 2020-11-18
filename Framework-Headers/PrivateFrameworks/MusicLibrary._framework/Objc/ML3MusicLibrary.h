@@ -9,13 +9,14 @@
 #import <MusicLibrary/ML3DatabaseConnectionDelegate-Protocol.h>
 #import <MusicLibrary/ML3DatabaseConnectionPoolDelegate-Protocol.h>
 
-@class ML3AccountCacheDatabase, ML3Container, ML3DatabaseConnectionPool, ML3DatabaseMetadata, ML3LibraryNotificationManager, NSArray, NSMutableDictionary, NSString;
+@class ML3AccountCacheDatabase, ML3Container, ML3DatabaseConnectionPool, ML3DatabaseMetadata, ML3LibraryNotificationManager, NSArray, NSLock, NSMutableDictionary, NSString;
 @protocol ML3MusicLibraryDelegate, OS_dispatch_queue;
 
 @interface ML3MusicLibrary : NSObject <ML3DatabaseConnectionDelegate, ML3DatabaseConnectionPoolDelegate>
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSString *_libraryUID;
+    NSLock *_libraryUIDLock;
     NSString *_syncLibraryUID;
     ML3AccountCacheDatabase *_accountCacheDatabase;
     ML3LibraryNotificationManager *_notificationManager;
@@ -68,6 +69,7 @@
 + (id)allSchemaSQL;
 + (id)allTables;
 + (id)allTriggersSQL;
++ (id)assistantSyncDataChangedNotificationName;
 + (BOOL)companionDeviceActiveStoreAccountIsSubscriber;
 + (id)controlDirectoryPathWithBasePath:(id)arg1;
 + (id)databasePathForUnitTest:(id)arg1 withBasePath:(id)arg2;
@@ -103,6 +105,7 @@
 + (BOOL)updateTrackIntegrityOnConnection:(id)arg1;
 + (BOOL)userVersionMatchesSystemUsingConnection:(id)arg1;
 + (int)userVersionUsingConnection:(id)arg1;
++ (id)widthLimitedSetValuesQueue;
 - (void).cxx_destruct;
 - (id)_allArtworkVariantDirectories;
 - (id)_allKeepLocalPlaylistTracks;
@@ -185,7 +188,6 @@
 - (void)connectionWillOpenDatabase:(id)arg1;
 - (unsigned long long)countOfChangedPersistentIdsAfterRevision:(long long)arg1 revisionTrackingCode:(unsigned long long)arg2 maximumRevisionType:(int)arg3;
 - (BOOL)createIndexes;
-- (BOOL)createMissingBuiltInSmartPlaylists;
 - (int)currentDatabaseVersion;
 - (void)databaseConnectionAllowingWrites:(BOOL)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)dealloc;
@@ -234,6 +236,7 @@
 - (void)notifyLibraryImportDidFinish;
 - (void)notifyNonContentsPropertyDidChange;
 - (void)notifySectionsDidChange;
+- (void)performAsyncDatabaseWriteTransactionWithBlock:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)performDatabaseTransactionWithBlock:(CDUnknownBlockType)arg1;
 - (void)performReadOnlyDatabaseTransactionWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)persistentID:(long long)arg1 changedAfterRevision:(long long)arg2 revisionTrackingCode:(long long)arg3;

@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *recordIDsToRevoke; // @synthesize recordIDsToRevoke=_recordIDsToRevoke;
 @property (strong, nonatomic) NSMutableDictionary *recordsToSaveByID; // @synthesize recordsToSaveByID=_recordsToSaveByID;
 
++ (long long)isPredominatelyDownload;
 - (void).cxx_destruct;
 - (struct _PCSIdentityData *)_copyShareProtectionFromRecord:(id)arg1 error:(id *)arg2;
 - (void)_fetchRecords;

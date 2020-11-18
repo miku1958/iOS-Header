@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSCoding-Protocol.h>
+#import <Foundation/NSCoding-Protocol.h>
 
 @protocol NSSecureCoding <NSCoding>
 + (BOOL)supportsSecureCoding;

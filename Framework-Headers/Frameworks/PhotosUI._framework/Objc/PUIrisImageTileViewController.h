@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)addToTilingView:(id)arg1;
 - (void)applyLayoutInfo:(id)arg1;
 - (void)assetViewModelDidChange;
+- (id)generateAssetTransitionInfo;
 - (void)livePhotoView:(id)arg1 didEndPlaybackWithStyle:(long long)arg2;
 - (void)livePhotoView:(id)arg1 willBeginPlaybackWithStyle:(long long)arg2;
 - (void)livePhotoViewDidBeginHinting:(id)arg1;
@@ -55,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)ppt_playLivePhotoWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeAllAnimations;
 - (void)setAssetViewModel:(id)arg1;
+- (void)updateMutableImageLayerModulator:(id)arg1;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 
 @end

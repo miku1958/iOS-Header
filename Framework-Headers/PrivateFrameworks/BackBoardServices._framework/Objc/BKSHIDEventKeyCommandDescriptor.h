@@ -11,6 +11,7 @@
 @interface BKSHIDEventKeyCommandDescriptor : BKSHIDEventDescriptor
 {
     NSString *_input;
+    long long _keyCode;
     long long _modifierFlags;
     NSString *_unmodifiedInput;
     NSString *_shiftModifiedInput;
@@ -20,6 +21,7 @@
 @property (strong, nonatomic) NSString *commandModifiedInput; // @synthesize commandModifiedInput=_commandModifiedInput;
 @property (readonly, strong, nonatomic) NSString *input; // @synthesize input=_input;
 @property (readonly, nonatomic) BOOL isTextualDescriptor;
+@property (readonly, nonatomic) long long keyCode; // @synthesize keyCode=_keyCode;
 @property (readonly, nonatomic) long long modifierFlags; // @synthesize modifierFlags=_modifierFlags;
 @property (strong, nonatomic) NSString *shiftModifiedInput; // @synthesize shiftModifiedInput=_shiftModifiedInput;
 @property (strong, nonatomic) NSString *unmodifiedInput; // @synthesize unmodifiedInput=_unmodifiedInput;
@@ -27,6 +29,7 @@
 + (BOOL)_keyCodeIsModifierKey:(long long)arg1;
 + (BOOL)_shouldMatchKeyCommandsWithKeyCode:(long long)arg1 gsKeyboard:(struct __GSKeyboard *)arg2;
 + (id)descriptorWithInput:(id)arg1 modifierFlags:(long long)arg2;
++ (id)descriptorWithKeyCode:(long long)arg1 modifierFlags:(long long)arg2;
 + (id)keyCommandDescriptorForEvent:(struct __IOHIDEvent *)arg1 gsKeyboard:(struct __GSKeyboard *)arg2;
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;
@@ -36,6 +39,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInput:(id)arg1 modifierFlags:(long long)arg2;
+- (id)initWithKeyCode:(long long)arg1 modifierFlags:(long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 
 + (id)descriptionForOptions:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1;

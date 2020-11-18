@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSCoding-Protocol.h>
-#import <extension/NSCopying-Protocol.h>
+#import <Foundation/NSCoding-Protocol.h>
+#import <Foundation/NSCopying-Protocol.h>
 
 @class NSLayoutDimension, NSLayoutPoint, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSString;
 
@@ -58,8 +58,8 @@
 - (BOOL)nsli_isLegalConstraintItem;
 - (id)nsli_superitem;
 - (id)observableValueInItem:(id)arg1;
-- (id)relationshipContainingLayoutRect:(id)arg1;
-- (id)relationshipEqualToLayoutRect:(id)arg1;
+- (id)ruleContainingLayoutRect:(id)arg1;
+- (id)ruleEqualToLayoutRect:(id)arg1;
 - (struct CGRect)valueInItem:(id)arg1;
 
 @end

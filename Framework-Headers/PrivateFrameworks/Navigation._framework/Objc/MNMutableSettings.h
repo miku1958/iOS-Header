@@ -12,7 +12,6 @@
 {
 }
 
-@property (nonatomic) long long acceptFasterReroute; // @dynamic acceptFasterReroute;
 @property (nonatomic) double alightSignalTimeBuffer; // @dynamic alightSignalTimeBuffer;
 @property (nonatomic) double backgroundTimeWindow; // @dynamic backgroundTimeWindow;
 @property (nonatomic) BOOL beepBeforeInstruction; // @dynamic beepBeforeInstruction;
@@ -23,11 +22,13 @@
 @property (nonatomic) double initialRequestDelay; // @dynamic initialRequestDelay;
 @property (nonatomic) double initialTraceSpeedMultiplier; // @dynamic initialTraceSpeedMultiplier;
 @property (nonatomic) BOOL isTracePlaybackCameraTestMode; // @dynamic isTracePlaybackCameraTestMode;
+@property (nonatomic) unsigned long long maxAlternateRoutesCount; // @dynamic maxAlternateRoutesCount;
 @property (nonatomic) BOOL muteSpeechOverride; // @dynamic muteSpeechOverride;
 @property (nonatomic) BOOL pauseSpokenAudio; // @dynamic pauseSpokenAudio;
 @property (nonatomic) BOOL shouldLoadETAUpdatesFromTrace; // @dynamic shouldLoadETAUpdatesFromTrace;
 @property (nonatomic) BOOL shouldLoadInitialRouteFromTrace; // @dynamic shouldLoadInitialRouteFromTrace;
 @property (nonatomic) BOOL shouldLoadReroutesFromTrace; // @dynamic shouldLoadReroutesFromTrace;
+@property (nonatomic) BOOL shouldUseGuidanceEventManager; // @dynamic shouldUseGuidanceEventManager;
 @property (nonatomic) BOOL speechEnabled; // @dynamic speechEnabled;
 @property (strong, nonatomic) NSString *voiceLanguage; // @dynamic voiceLanguage;
 @property (nonatomic) unsigned long long voiceVolume; // @dynamic voiceVolume;

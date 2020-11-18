@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (id)initWithObjects:(const id *)arg1 count:(unsigned long long)arg2;
+- (id)initWithSet:(id)arg1 copyItems:(BOOL)arg2;
 - (id)member:(id)arg1;
 - (id)objectEnumerator;
 - (oneway void)release;

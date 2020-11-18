@@ -10,12 +10,11 @@
 {
 }
 
-- (id)characteristicType;
 - (id)multipleAbnormalServicesFormatString;
 - (id)multipleAbnormalServicesWithRoomFormatString;
 - (id)oneAbnormalServiceFormatString;
 - (id)oneAbnormalServiceWithRoomFormatString;
-- (id)serviceType;
+- (id)serviceTypes;
 
 @end
 

@@ -12,6 +12,7 @@
 {
 }
 
+@property (readonly) struct CGRect boundsInRootViewSpace;
 @property (readonly) unsigned int childElementCount;
 @property (copy) NSString *className;
 @property (readonly) int clientHeight;

@@ -43,6 +43,7 @@
     UITapGestureRecognizer *_doubleTapGestureRecognizer;
     BOOL _allowsOccurrenceSelection;
     BOOL _alignsMidnightToTop;
+    BOOL _showOnlyAllDayArea;
     BOOL _isNowVisible;
     BOOL _scrollEventsInToViewIgnoresVisibility;
     BOOL _shouldEverShowTimeIndicators;
@@ -56,12 +57,11 @@
     NSCalendar *_calendar;
     double _additionalLeftPadding;
     double _topYBoundaryForOccurrenceText;
-    double _verticalContentInset;
+    double _topContentInset;
+    double _bottomContentInset;
     double _todayScrollSecondBuffer;
     double _scrollAnimationDurationOverride;
     double _hourScale;
-    double _topContentInset;
-    double _bottomContentInset;
 }
 
 @property (nonatomic) double additionalLeftPadding; // @synthesize additionalLeftPadding=_additionalLeftPadding;
@@ -105,6 +105,7 @@
 @property (nonatomic) BOOL scrollEventsInToViewIgnoresVisibility; // @synthesize scrollEventsInToViewIgnoresVisibility=_scrollEventsInToViewIgnoresVisibility;
 @property (readonly, nonatomic) double scrollOffset;
 @property (nonatomic) BOOL shouldEverShowTimeIndicators; // @synthesize shouldEverShowTimeIndicators=_shouldEverShowTimeIndicators;
+@property (nonatomic) BOOL showOnlyAllDayArea; // @synthesize showOnlyAllDayArea=_showOnlyAllDayArea;
 @property (nonatomic) BOOL showsLeftBorder;
 @property (nonatomic) BOOL showsTimeLabel;
 @property (nonatomic) BOOL showsTimeLine;
@@ -118,7 +119,6 @@
 @property (nonatomic) double topContentInset; // @synthesize topContentInset=_topContentInset;
 @property (nonatomic) double topYBoundaryForOccurrenceText; // @synthesize topYBoundaryForOccurrenceText=_topYBoundaryForOccurrenceText;
 @property (nonatomic) BOOL usesVibrantGridDrawing; // @synthesize usesVibrantGridDrawing=_usesVibrantGridDrawing;
-@property (nonatomic) double verticalContentInset; // @synthesize verticalContentInset=_verticalContentInset;
 
 - (void).cxx_destruct;
 - (void)_adjustForDateOrCalendarChange;

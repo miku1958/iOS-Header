@@ -10,9 +10,11 @@
 {
     BOOL _mustContainMePerson;
     unsigned long long _type;
+    unsigned long long _category;
     struct _NSRange _peopleRange;
 }
 
+@property (nonatomic) unsigned long long category; // @synthesize category=_category;
 @property (readonly, nonatomic) BOOL isCelebration;
 @property (nonatomic) BOOL mustContainMePerson; // @synthesize mustContainMePerson=_mustContainMePerson;
 @property (nonatomic) struct _NSRange peopleRange; // @synthesize peopleRange=_peopleRange;

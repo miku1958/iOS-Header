@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class HMFMessage, NSUUID;
+@class HMFMessage, NSObject, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDRemoteReadRequestMessage : NSObject
+@interface HMDRemoteReadRequestMessage : HMFObject
 {
     HMFMessage *_readMessage;
     NSUUID *_accessoryUUID;

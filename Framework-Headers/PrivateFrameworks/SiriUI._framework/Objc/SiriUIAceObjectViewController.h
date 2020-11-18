@@ -13,6 +13,7 @@
 
 @interface SiriUIAceObjectViewController : UIViewController <SiriUIViewController>
 {
+    BOOL _utteranceUserInteractionEnabled;
     BOOL _virgin;
     AceObject *_aceObject;
     id<SiriUIAceObjectViewControllerDelegate> _delegate;
@@ -24,6 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=isUtteranceUserInteractionEnabled) BOOL utteranceUserInteractionEnabled; // @synthesize utteranceUserInteractionEnabled=_utteranceUserInteractionEnabled;
 @property (readonly, nonatomic, getter=isVirgin) BOOL virgin; // @synthesize virgin=_virgin;
 
 - (void).cxx_destruct;

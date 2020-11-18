@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class GEOResourceManifestConfiguration;
+@class GEOResourceManifestConfiguration, NSBundle;
 
 @interface VKResourceManager : NSObject
 {
     GEOResourceManifestConfiguration *_manifestConfiguration;
+    NSBundle *_vkBundle;
 }
 
 - (id)_localNameForResourceName:(id)arg1;

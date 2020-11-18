@@ -16,6 +16,7 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityHitTestReverseOrder;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (BOOL)_accessibilitySupportsContentSizeCategory:(id)arg1;
 - (id)_accessibilityUserTestingChildren;
 - (id)_axCustomContentType;
 - (void)_axSetCellCustomContentType:(id)arg1;
@@ -25,7 +26,7 @@
 - (void)_setAXCustomContentType:(id)arg1;
 - (struct CGPoint)accessibilityActivationPoint;
 - (struct CGPoint)accessibilityActivationPoint:(id)arg1;
-- (id)accessibilityContainerElements;
+- (id)accessibilityElements;
 - (BOOL)accessibilityElementsHidden;
 - (struct CGRect)accessibilityFrame:(id)arg1;
 - (id)accessibilityHint:(id)arg1;

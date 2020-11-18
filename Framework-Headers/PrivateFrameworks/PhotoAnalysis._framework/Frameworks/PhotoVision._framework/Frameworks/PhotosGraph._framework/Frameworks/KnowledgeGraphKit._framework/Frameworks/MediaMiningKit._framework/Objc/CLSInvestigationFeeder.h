@@ -8,19 +8,21 @@
 
 #import <MediaMiningKit/CLSInvestigationInterviewDelegate-Protocol.h>
 
-@class NSMutableSet, NSString;
+@class NSMutableSet, NSSet, NSString;
 
 @interface CLSInvestigationFeeder : NSObject <CLSInvestigationInterviewDelegate>
 {
     unsigned long long _locationClusteringAlgorithm;
     BOOL _allowsInterview;
     NSMutableSet *_focusItems;
+    NSSet *_focusPeopleUUIDs;
 }
 
 @property (nonatomic) BOOL allowsInterview; // @synthesize allowsInterview=_allowsInterview;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSMutableSet *focusItems; // @synthesize focusItems=_focusItems;
+@property (strong, nonatomic) NSSet *focusPeopleUUIDs; // @synthesize focusPeopleUUIDs=_focusPeopleUUIDs;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long locationClusteringAlgorithm; // @synthesize locationClusteringAlgorithm=_locationClusteringAlgorithm;
 @property (readonly) Class superclass;
@@ -31,6 +33,7 @@
 - (id)approximateLocation;
 - (id)endDateComponents;
 - (void)enumerateItemsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateItemsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateLocationClustersWithGaussians:(id)arg1 enumerationBlock:(CDUnknownBlockType)arg2;
 - (void)enumeratePeopleNamesWithGaussians:(id)arg1 enumerationBlock:(CDUnknownBlockType)arg2;
 - (id)init;

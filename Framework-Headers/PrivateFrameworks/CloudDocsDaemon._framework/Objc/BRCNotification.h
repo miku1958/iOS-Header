@@ -6,7 +6,7 @@
 
 #import <CloudDocs/BRQueryItem.h>
 
-@class BRCAppLibrary, BRCItemID, BRFileObjectID, NSMutableSet, NSSet, NSString, NSURL;
+@class BRCAppLibrary, BRCItemGlobalID, BRFileObjectID, NSMutableSet, NSSet, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface BRCNotification : BRQueryItem
@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     BOOL _isInDocumentScope;
     BOOL _isInDataScope;
     BOOL _isInTrashScope;
-    BRCItemID *_itemID;
-    BRCItemID *_parentID;
+    BRCItemGlobalID *_itemGlobalID;
+    BRCItemGlobalID *_parentGlobalID;
     unsigned long long _oldParentFileID;
-    NSSet *_parentIDs;
+    NSSet *_parentGlobalIDs;
     NSMutableSet *_appLibraryIDsWithReverseAliases;
     BRCAppLibrary *_appLibrary;
     NSString *_oldAppLibraryID;
@@ -28,19 +28,21 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *aliasSourceAppLibraryID; // @synthesize aliasSourceAppLibraryID=_aliasSourceAppLibraryID;
 @property (readonly, nonatomic) BRCAppLibrary *appLibrary; // @synthesize appLibrary=_appLibrary;
 @property (strong, nonatomic) NSMutableSet *appLibraryIDsWithReverseAliases; // @synthesize appLibraryIDsWithReverseAliases=_appLibraryIDsWithReverseAliases;
+@property (readonly, nonatomic) BOOL isDocumentsFolder;
 @property (readonly, nonatomic) BOOL isInDataScope; // @synthesize isInDataScope=_isInDataScope;
 @property (readonly, nonatomic) BOOL isInDocumentScope; // @synthesize isInDocumentScope=_isInDocumentScope;
 @property (readonly, nonatomic) BOOL isInTrashScope; // @synthesize isInTrashScope=_isInTrashScope;
-@property (readonly, nonatomic) BRCItemID *itemID; // @synthesize itemID=_itemID;
+@property (readonly, nonatomic) BRCItemGlobalID *itemGlobalID; // @synthesize itemGlobalID=_itemGlobalID;
 @property (readonly, nonatomic) NSString *oldAppLibraryID; // @synthesize oldAppLibraryID=_oldAppLibraryID;
 @property (readonly, nonatomic) unsigned long long oldParentFileID; // @synthesize oldParentFileID=_oldParentFileID;
 @property (readonly, nonatomic) BRFileObjectID *oldParentFileObjectID;
 @property (readonly, nonatomic) BRFileObjectID *parentFileObjectID;
-@property (readonly, nonatomic) BRCItemID *parentID; // @synthesize parentID=_parentID;
-@property (strong, nonatomic) NSSet *parentIDs; // @synthesize parentIDs=_parentIDs;
+@property (readonly, nonatomic) BRCItemGlobalID *parentGlobalID; // @synthesize parentGlobalID=_parentGlobalID;
+@property (strong, nonatomic) NSSet *parentGlobalIDs; // @synthesize parentGlobalIDs=_parentGlobalIDs;
 @property (strong, nonatomic) NSString *unsaltedBookmarkData; // @synthesize unsaltedBookmarkData=_unsaltedBookmarkData;
 @property (readonly, nonatomic) NSURL *url; // @dynamic url;
 
++ (id)notificationFromItem:(id)arg1 relpath:(id)arg2;
 + (id)notificationGatheredFromItem:(id)arg1;
 + (id)notificationWithAliasItem:(id)arg1 targetItemNotification:(id)arg2;
 + (BOOL)supportsSecureCoding;

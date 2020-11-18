@@ -6,12 +6,15 @@
 
 #import <HomeKit/HMRoom.h>
 
-@class HMHome;
+@class HMHome, NSSet;
 
 @interface HMRoom (HFAdditions)
 
+@property (readonly, nonatomic) NSSet *hf_allVisibleServices;
 @property (readonly, weak, nonatomic) HMHome *home; // @dynamic home;
 
+- (id)hf_allCameraProfiles;
 - (id)hf_allServices;
+- (id)hf_allZones;
 @end
 

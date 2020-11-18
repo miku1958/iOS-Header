@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface BookmarkDAVMoveIDUpdater : NSObject
 {
     void *_database;
 }
 
++ (void)rewriteOrderedPayloadsFromProvider:(CDUnknownBlockType)arg1;
+- (void)_recursivelyRewriteServerIDsForItemWithServerID:(id)arg1 newParentID:(id)arg2 mutableMap:(id)arg3;
+- (void)_recursivelyRewriteServerIDsInMutableMap:(id)arg1 sortingHint:(id)arg2;
 - (void)dealloc;
 - (id)init;
 - (id)initWithDatabase:(void *)arg1;
 - (void)recursivelyRewriteServerIDsForItemWithServerID:(id)arg1 newParentID:(id)arg2;
+- (void)recursivelyRewriteServerIDsInMap:(id)arg1;
 
 @end
 

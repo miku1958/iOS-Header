@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/NSCopying-Protocol.h>
 
@@ -21,34 +21,32 @@
     BOOL _didFetchOwningContentString;
     float _score;
     NSArray *_searchTokens;
-    NSArray *_contentStrings;
-    NSArray *_matchRanges;
-    struct __CFArray *_categories;
     PSIGroupResult *_additionalGroupResult;
-    struct __CFArray *_owningGroupIds;
+    NSArray *_groups;
     struct __CFArray *_assetIds;
 }
 
 @property (strong, nonatomic) PSIGroupResult *additionalGroupResult; // @synthesize additionalGroupResult=_additionalGroupResult;
 @property (strong, nonatomic) struct __CFArray *assetIds; // @synthesize assetIds=_assetIds;
 @property (readonly) NSArray *assetUUIDs;
-@property (strong, nonatomic) struct __CFArray *categories; // @synthesize categories=_categories;
-@property (strong, nonatomic) NSArray *contentStrings; // @synthesize contentStrings=_contentStrings;
+@property (readonly, strong, nonatomic) NSArray *contentStrings;
+@property (copy, nonatomic) NSArray *groups; // @synthesize groups=_groups;
 @property (weak, nonatomic) PSIDatabase *idx; // @synthesize idx=_idx;
 @property (readonly, nonatomic) unsigned long long matchCount;
-@property (strong, nonatomic) NSArray *matchRanges; // @synthesize matchRanges=_matchRanges;
+@property (readonly, strong, nonatomic) NSArray *matchRanges;
 @property (readonly) NSString *owningContentString;
-@property (strong, nonatomic) struct __CFArray *owningGroupIds; // @synthesize owningGroupIds=_owningGroupIds;
 @property (nonatomic) float score; // @synthesize score=_score;
 @property (strong, nonatomic) NSArray *searchTokens; // @synthesize searchTokens=_searchTokens;
 
 - (void).cxx_destruct;
 - (id)_prepareForFetchWithCount:(unsigned long long)arg1 outRange:(struct _NSRange *)arg2 outFetchOwningContentString:(BOOL *)arg3;
+- (long long)categoryAtIndex:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)fetchNextAssetUUIDs:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
+- (unsigned long long)tokenCount;
 - (id)unitTestDescription;
 
 @end

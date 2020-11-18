@@ -4,21 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileCoreServices/_LSQuery.h>
+#import <MobileCoreServices/_LSBundleQuery.h>
 
 __attribute__((visibility("hidden")))
-@interface _LSApplicationProxiesOfTypeQuery : _LSQuery
+@interface _LSApplicationProxiesOfTypeQuery : _LSBundleQuery
 {
-    BOOL _legacySPI;
     unsigned long long _type;
 }
 
-@property (readonly, nonatomic) BOOL legacySPI; // @synthesize legacySPI=_legacySPI;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
-+ (id)queryWithType:(unsigned long long)arg1 legacySPI:(BOOL)arg2;
++ (id)queryWithType:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (BOOL)_requiresDatabaseMappingEntitlement;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

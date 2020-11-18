@@ -12,6 +12,7 @@
 @property (readonly, nonatomic) unsigned long long index;
 
 - (CDStruct_a157df34)donatableSpace;
+- (CDStruct_a157df34)donatableSpaceAllowRemeasure:(BOOL)arg1;
 - (id)initWithWidgetGridView:(NUIWidgetGridView *)arg1 item:(id<NUIWidgetGridViewItem>)arg2 index:(unsigned long long)arg3;
 @end
 

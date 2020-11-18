@@ -6,14 +6,20 @@
 
 #import <objc/NSObject.h>
 
+@class VSAppInstallationInfoCenter;
+
 __attribute__((visibility("hidden")))
 @interface VSSubscriptionPredicateFactory : NSObject
 {
+    VSAppInstallationInfoCenter *_appInstallationInfoCenter;
 }
+
+@property (strong, nonatomic) VSAppInstallationInfoCenter *appInstallationInfoCenter; // @synthesize appInstallationInfoCenter=_appInstallationInfoCenter;
 
 + (id)_subscriptionPredicateTemplateValues;
 + (id)_subscriptionSourceKindPredicateTemplateValues;
 + (id)_subscriptionSourcePredicateTemplateValues;
+- (void).cxx_destruct;
 - (id)_expressionByConvertingSubscriptionKeyPathInExpression:(id)arg1 toAttributeKeysInEntity:(id)arg2;
 - (id)_predicateTemplateForAppPredicate:(id)arg1 withTask:(id)arg2;
 - (id)_predicateTemplateForRequestKind:(long long)arg1 fromTask:(id)arg2;

@@ -6,25 +6,34 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreRoutine/NSCopying-Protocol.h>
 #import <CoreRoutine/NSSecureCoding-Protocol.h>
 
-@class NSDictionary;
+@class NSString, NSUUID;
 
-@interface RTAction : NSObject <NSSecureCoding>
+@interface RTAction : NSObject <NSSecureCoding, NSCopying>
 {
-    long long _type;
-    NSDictionary *_options;
+    NSUUID *_identifier;
+    NSString *_name;
+    long long _conditions;
 }
 
-@property (readonly, nonatomic) NSDictionary *options; // @synthesize options=_options;
-@property (readonly, nonatomic) long long type; // @synthesize type=_type;
+@property (readonly, nonatomic) long long conditions; // @synthesize conditions=_conditions;
+@property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 
-+ (id)actionTypeToString:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithName:(id)arg1 conditions:(long long)arg2;
+- (id)initWithName:(id)arg1 conditions:(long long)arg2 identifier:(id)arg3;
 - (id)initWithType:(long long)arg1 andOptions:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToAction:(id)arg1;
 
 @end
 

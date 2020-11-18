@@ -9,7 +9,7 @@
 #import <VideoSubscriberAccount/NSCopying-Protocol.h>
 #import <VideoSubscriberAccount/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, NSURL, VSOptional;
+@class NSArray, NSNumber, NSString, NSURL, VSOptional;
 
 @interface VSIdentityProvider : NSObject <NSCopying, NSSecureCoding>
 {
@@ -19,14 +19,15 @@
     VSOptional *_providerID;
     VSOptional *_providerInfo;
     NSString *_nameForSorting;
+    NSNumber *_rankForSorting;
     NSArray *_supportedTemplates;
     NSArray *_supportedAuthenticationSchemes;
     NSURL *_authenticationURL;
     NSURL *_appStoreRoomURL;
-    NSString *_appAdamID;
+    NSArray *_appAdamIDs;
 }
 
-@property (copy, nonatomic) NSString *appAdamID; // @synthesize appAdamID=_appAdamID;
+@property (copy, nonatomic) NSArray *appAdamIDs; // @synthesize appAdamIDs=_appAdamIDs;
 @property (copy, nonatomic) NSURL *appStoreRoomURL; // @synthesize appStoreRoomURL=_appStoreRoomURL;
 @property (copy, nonatomic) NSURL *authenticationURL; // @synthesize authenticationURL=_authenticationURL;
 @property (nonatomic, getter=isDeveloper) BOOL developer; // @synthesize developer=_developer;
@@ -35,6 +36,7 @@
 @property (nonatomic, getter=isProhibitedByStore) BOOL prohibitedByStore; // @synthesize prohibitedByStore=_prohibitedByStore;
 @property (strong, nonatomic) VSOptional *providerID; // @synthesize providerID=_providerID;
 @property (strong, nonatomic) VSOptional *providerInfo; // @synthesize providerInfo=_providerInfo;
+@property (copy, nonatomic) NSNumber *rankForSorting; // @synthesize rankForSorting=_rankForSorting;
 @property (copy, nonatomic) NSArray *supportedAuthenticationSchemes; // @synthesize supportedAuthenticationSchemes=_supportedAuthenticationSchemes;
 @property (copy, nonatomic) NSArray *supportedTemplates; // @synthesize supportedTemplates=_supportedTemplates;
 @property (readonly, nonatomic) BOOL supportsTemplatesSufficientForCurrentPlatform;
@@ -51,6 +53,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isFullySupportedForRequestsExpectingAuthenticationSchemes:(id)arg1;
 - (BOOL)supportsRequestsExpectingAuthenticationSchemes:(id)arg1;
 
 @end

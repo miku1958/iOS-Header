@@ -42,6 +42,7 @@
 + (id)eventVocabularyRejectionRegexForLanguageID:(id)arg1;
 + (id)eventVocabularySubjectTitleInString:(id)arg1 languageID:(id)arg2;
 + (id)eventVocabularySubjectTitleRegexForLanguageID:(id)arg1;
++ (id)humanReadableFeaturePolarity:(unsigned long long)arg1;
 + (unsigned long long)numberOfMatchesForEventVocabularySubjectTitleInString:(id)arg1 languageID:(id)arg2;
 + (id)regexSetForType:(id)arg1 languageID:(id)arg2;
 - (void).cxx_destruct;

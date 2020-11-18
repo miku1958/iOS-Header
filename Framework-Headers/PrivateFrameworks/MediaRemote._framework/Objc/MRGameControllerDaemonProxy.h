@@ -28,7 +28,7 @@
 - (void)_openConnection;
 - (void)addController:(id)arg1;
 - (id)addEmulatedControllerWithProperties:(void *)arg1;
-- (void)controllerID:(unsigned long long)arg1 setArrayValueX:(float)arg2 y:(float)arg3 z:(float)arg4 forElement:(int)arg5;
+- (void)controllerID:(unsigned long long)arg1 setArrayValueX:(float)arg2 y:(float)arg3 z:(float)arg4 w:(float)arg5 forElement:(int)arg6;
 - (void)controllerID:(unsigned long long)arg1 setDigitizerX:(float)arg2 digitizerY:(float)arg3 withTimeStamp:(unsigned long long)arg4 touchDown:(BOOL)arg5;
 - (void)controllerID:(unsigned long long)arg1 setValue:(float)arg2 forElement:(int)arg3;
 - (void)controllerID:(unsigned long long)arg1 setValue:(float)arg2 forElement:(int)arg3 withUpDelay:(double)arg4;

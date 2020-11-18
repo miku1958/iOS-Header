@@ -10,8 +10,8 @@
 #import <CloudDocsDaemon/BRCAppLibraryDelegate-Protocol.h>
 #import <CloudDocsDaemon/BRCClientZoneDelegate-Protocol.h>
 
-@class APSConnection, BRCAccountSession, BRCContainerMetadataSyncPersistedState, BRCDeadlineScheduler, BRCDeadlineSource, BRCMigrateZonePCSOperation, BRCSyncBudgetThrottle, BRCZoneHealthSyncPersistedState, NSData, NSDate, NSString;
-@protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
+@class APSConnection, BRCAccountSession, BRCContainerMetadataSyncPersistedState, BRCDeadlineScheduler, BRCDeadlineSource, BRCFairSource, BRCMigrateZonePCSOperation, BRCSyncBudgetThrottle, BRCZoneHealthSyncPersistedState, NSData, NSDate, NSMutableArray, NSString;
+@protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface BRCContainerScheduler : NSObject <APSConnectionDelegate, BRCClientZoneDelegate, BRCAppLibraryDelegate>
 {
@@ -19,7 +19,7 @@
     BRCDeadlineSource *_containerMetadataSyncSource;
     BRCDeadlineSource *_sharedDatabaseSyncSource;
     BRCDeadlineSource *_zoneHealthSyncSource;
-    NSObject<OS_dispatch_source> *_pushSource;
+    BRCFairSource *_pushSource;
     NSString *_environmentName;
     NSData *_pushToken;
     APSConnection *_pushConnection;
@@ -36,6 +36,7 @@
     NSDate *_lastPeriodicSyncDate;
     BRCMigrateZonePCSOperation *_migrateZonePCSOperation;
     BRCDeadlineSource *_migrateZonePCSSource;
+    NSMutableArray *_nextZoneHealthSyncDownBarriers;
     NSObject<OS_dispatch_group> *_initialSyncDownGroup;
     NSObject<OS_dispatch_group> *_syncGroup;
     BRCSyncBudgetThrottle *_syncUpBudget;
@@ -54,7 +55,7 @@
 @property (readonly, nonatomic) BRCZoneHealthSyncPersistedState *zoneHealthSyncPersistedState; // @synthesize zoneHealthSyncPersistedState=_zoneHealthPersistedState;
 
 - (void).cxx_destruct;
-- (id)_newSyncDeadlineSource;
+- (id)_newSyncDeadlineSourceWithName:(id)arg1;
 - (void)_scheduleCrossZoneMovePCSPrep;
 - (void)_scheduleUpdatePushTopicsRegistration;
 - (void)_syncScheduleForContainersMetadata;
@@ -64,22 +65,24 @@
 - (void)_updatePushTopicsRegistration;
 - (void)close;
 - (void)closeContainers;
-- (void)completedZoneHealthSyncDownWithServerChangeToken:(id)arg1 requestID:(unsigned long long)arg2 moreComing:(BOOL)arg3 error:(id)arg4;
 - (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
 - (void)connection:(id)arg1 didReceiveToken:(id)arg2 forTopic:(id)arg3 identifier:(id)arg4;
 - (void)didChangeSyncStatusForContainerMetadataForContainer:(id)arg1;
 - (void)didChangeSyncStatusForZoneHealthForContainer:(id)arg1;
 - (void)didInitialSyncDownForClientZone:(id)arg1;
-- (void)dumpToContext:(id)arg1;
+- (void)dumpToContext:(id)arg1 includeAllItems:(BOOL)arg2 db:(id)arg3;
+- (void)finishedZoneHealthSyncDownWithRequestID:(unsigned long long)arg1 error:(id)arg2;
 - (id)initWithAccountSession:(id)arg1;
+- (void)notifyAfterNextZoneHealthSyncDown:(CDUnknownBlockType)arg1;
+- (void)receivedUpdatedZoneHealthServerChangeToken:(id)arg1 requestID:(unsigned long long)arg2;
 - (void)redoZonePCSPreperation;
 - (void)refreshPushRegistrationAfterAppsListChanged;
 - (void)resume;
 - (void)schedulePeriodicSyncIfNecessary;
-- (void)scheduleSyncDownForContainerMetadata;
+- (void)scheduleSyncDownForContainerMetadataWithGroup:(id)arg1;
 - (void)scheduleSyncDownForSharedDatabaseImmediately:(BOOL)arg1;
-- (void)scheduleSyncDownForZoneHealth;
+- (void)scheduleSyncDownForZoneHealthWithGroup:(id)arg1;
 - (void)setup;
 - (void)syncContextDidBecomeBackground:(id)arg1;
 - (void)syncContextDidBecomeForeground:(id)arg1;

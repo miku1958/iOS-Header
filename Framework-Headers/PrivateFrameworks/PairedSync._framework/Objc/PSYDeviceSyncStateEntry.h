@@ -13,6 +13,7 @@
 @interface PSYDeviceSyncStateEntry : NSObject <NSSecureCoding>
 {
     unsigned int _syncSwitchIndex;
+    unsigned int _migrationIndex;
     NSUUID *_pairingID;
     unsigned long long _initialSyncState;
 }
@@ -20,6 +21,7 @@
 @property (readonly, nonatomic) BOOL hasCompletedInitialSync;
 @property (readonly, nonatomic) BOOL hasCompletedSync;
 @property (nonatomic) unsigned long long initialSyncState; // @synthesize initialSyncState=_initialSyncState;
+@property (nonatomic) unsigned int migrationIndex; // @synthesize migrationIndex=_migrationIndex;
 @property (strong, nonatomic) NSUUID *pairingID; // @synthesize pairingID=_pairingID;
 @property (nonatomic) unsigned int syncSwitchIndex; // @synthesize syncSwitchIndex=_syncSwitchIndex;
 
@@ -28,6 +30,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasCompletedInitialOrMigrationSync;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPairingID:(id)arg1 syncState:(unsigned long long)arg2;

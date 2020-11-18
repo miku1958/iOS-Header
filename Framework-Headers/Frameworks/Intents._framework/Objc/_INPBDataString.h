@@ -8,23 +8,30 @@
 
 #import <Intents/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSMutableArray, NSString, PBUnknownFields;
 
 @interface _INPBDataString : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    NSMutableArray *_alternatives;
     NSString *_localizedValue;
     NSString *_vocabularyIdentifier;
 }
 
+@property (strong, nonatomic) NSMutableArray *alternatives; // @synthesize alternatives=_alternatives;
 @property (readonly, nonatomic) BOOL hasLocalizedValue;
 @property (readonly, nonatomic) BOOL hasVocabularyIdentifier;
 @property (strong, nonatomic) NSString *localizedValue; // @synthesize localizedValue=_localizedValue;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) NSString *vocabularyIdentifier; // @synthesize vocabularyIdentifier=_vocabularyIdentifier;
 
++ (Class)alternativesType;
 + (id)options;
 - (void).cxx_destruct;
+- (void)addAlternatives:(id)arg1;
+- (id)alternativesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)alternativesCount;
+- (void)clearAlternatives;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;

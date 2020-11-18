@@ -6,21 +6,24 @@
 
 #import <objc/NSObject.h>
 
+@class NSArray;
+
 @interface RKEventIdentification : NSObject
 {
-    vector_ae35c5ca *_tokenSequences;
+    NSArray *_tokenSequences;
     float *_probabilities;
 }
 
-@property (readonly, nonatomic) vector_ae35c5ca *tokenSequences; // @synthesize tokenSequences=_tokenSequences;
+@property (readonly, nonatomic) NSArray *tokenSequences; // @synthesize tokenSequences=_tokenSequences;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (void)enumerateClassifiedTokens:(CDUnknownBlockType)arg1;
 - (void)enumerateTopKClassificationsForEachString:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (void)getTopKClassifications:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)initWithOwnedTokenSequences:(vector_ae35c5ca *)arg1 probabilities:(float *)arg2;
+- (id)initWithOwnedTokenSequences:(id)arg1 probabilities:(float *)arg2;
 - (CDStruct_cd0cafa4)topClassification;
 
 @end

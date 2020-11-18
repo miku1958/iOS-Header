@@ -6,27 +6,42 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSNumber, NSString;
+@class ICClientInfo, ICStorePlatformRequest, ICUserIdentity, ICUserIdentityStore, NSArray, NSNumber, NSString;
 
 @interface MPStoreItemMetadataRequest : NSObject
 {
     BOOL _allowLocalEquivalencies;
+    BOOL _shouldIgnoreCache;
     unsigned long long _reason;
     NSArray *_itemIdentifiers;
-    NSString *_requestingBundleIdentifier;
-    NSString *_requestingBundleVersion;
     NSNumber *_timeoutInterval;
     NSString *_platform;
+    NSString *_clientIdentifier;
+    long long _personalizationStyle;
+    ICClientInfo *_clientInfo;
+    ICUserIdentity *_delegatedUserIdentity;
+    ICUserIdentity *_userIdentity;
+    ICUserIdentityStore *_userIdentityStore;
 }
 
 @property (nonatomic) BOOL allowLocalEquivalencies; // @synthesize allowLocalEquivalencies=_allowLocalEquivalencies;
+@property (copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property (copy, nonatomic) ICClientInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
+@property (copy, nonatomic) ICUserIdentity *delegatedUserIdentity; // @synthesize delegatedUserIdentity=_delegatedUserIdentity;
 @property (copy, nonatomic) NSArray *itemIdentifiers; // @synthesize itemIdentifiers=_itemIdentifiers;
+@property (nonatomic) long long personalizationStyle; // @synthesize personalizationStyle=_personalizationStyle;
+@property (readonly, nonatomic, getter=isPersonalized) BOOL personalized;
 @property (copy, nonatomic) NSString *platform; // @synthesize platform=_platform;
 @property (nonatomic) unsigned long long reason; // @synthesize reason=_reason;
-@property (copy, nonatomic) NSString *requestingBundleIdentifier; // @synthesize requestingBundleIdentifier=_requestingBundleIdentifier;
-@property (copy, nonatomic) NSString *requestingBundleVersion; // @synthesize requestingBundleVersion=_requestingBundleVersion;
+@property (copy, nonatomic) NSString *requestingBundleIdentifier;
+@property (copy, nonatomic) NSString *requestingBundleVersion;
+@property (nonatomic) BOOL shouldIgnoreCache; // @synthesize shouldIgnoreCache=_shouldIgnoreCache;
+@property (readonly, copy, nonatomic) ICStorePlatformRequest *storePlatformRequest;
 @property (copy, nonatomic) NSNumber *timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
+@property (copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
+@property (strong, nonatomic) ICUserIdentityStore *userIdentityStore; // @synthesize userIdentityStore=_userIdentityStore;
 
++ (id)itemIdentifiersForModelObjects:(id)arg1;
 - (void).cxx_destruct;
 
 @end

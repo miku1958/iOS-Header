@@ -33,15 +33,22 @@
 + (struct Context *)internalContextWithMTLDevice:(id)arg1 options:(id)arg2;
 + (struct Context *)internalGLContextWithOptions:(id)arg1;
 - (struct CGAffineTransform)CTM;
+- (id)HEIFRepresentationOfImage:(id)arg1 format:(int)arg2 colorSpace:(struct CGColorSpace *)arg3 options:(id)arg4;
 - (id)JPEGRepresentationOfImage:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 options:(id)arg3;
+- (id)PNGRepresentationOfImage:(id)arg1 format:(int)arg2 colorSpace:(struct CGColorSpace *)arg3 options:(id)arg4;
 - (id)TIFFRepresentationOfImage:(id)arg1 format:(int)arg2 colorSpace:(struct CGColorSpace *)arg3 options:(id)arg4;
+- (int)_contextColorForInstruments;
 - (struct CGImage *)_createCGImage:(id)arg1 fromRect:(struct CGRect)arg2 format:(int)arg3 colorSpace:(struct CGColorSpace *)arg4 deferred:(BOOL)arg5 textureLimit:(unsigned long long)arg6;
 - (void)_gpuContextCheck;
 - (id)_initWithInternalRepresentation:(void *)arg1;
 - (void)_insertEventMarker:(const char *)arg1;
 - (BOOL)_isCGBackedContext;
-- (BOOL)_isEAGLBackedContext;
+- (BOOL)_isGLBackedContext;
+- (BOOL)_isGLInternalContext;
+- (BOOL)_isMetalInternalContext;
 - (struct CGColorSpace *)_outputColorSpace;
+- (id)_pdfDataRepresentation;
+- (id)_startTaskToRender:(id)arg1 toDestination:(id)arg2 forPrepareRender:(BOOL)arg3 error:(id *)arg4;
 - (void)abort;
 - (struct CGRect)bounds;
 - (void)clearCaches;
@@ -70,6 +77,7 @@
 - (BOOL)measureRequirementsOf:(id)arg1 query:(int)arg2:(id *)arg3 results:(struct CGRect *)arg4;
 - (id)objectForKey:(id)arg1;
 - (struct CGSize)outputImageMaximumSize;
+- (BOOL)prepareRender:(id)arg1 fromRect:(struct CGRect)arg2 toDestination:(id)arg3 atPoint:(struct CGPoint)arg4 error:(id *)arg5;
 - (void)reclaimResources;
 - (void)render:(id)arg1;
 - (void)render:(id)arg1 toBitmap:(void *)arg2 rowBytes:(long long)arg3 bounds:(struct CGRect)arg4 format:(int)arg5 colorSpace:(struct CGColorSpace *)arg6;
@@ -81,8 +89,13 @@
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setCTM:(struct CGAffineTransform)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
+- (id)startTaskToClear:(id)arg1 error:(id *)arg2;
+- (id)startTaskToRender:(id)arg1 fromRect:(struct CGRect)arg2 toDestination:(id)arg3 atPoint:(struct CGPoint)arg4 error:(id *)arg5;
+- (id)startTaskToRender:(id)arg1 toDestination:(id)arg2 error:(id *)arg3;
 - (void)unlock;
+- (BOOL)writeHEIFRepresentationOfImage:(id)arg1 toURL:(id)arg2 format:(int)arg3 colorSpace:(struct CGColorSpace *)arg4 options:(id)arg5 error:(id *)arg6;
 - (BOOL)writeJPEGRepresentationOfImage:(id)arg1 toURL:(id)arg2 colorSpace:(struct CGColorSpace *)arg3 options:(id)arg4 error:(id *)arg5;
+- (BOOL)writePNGRepresentationOfImage:(id)arg1 toURL:(id)arg2 format:(int)arg3 colorSpace:(struct CGColorSpace *)arg4 options:(id)arg5 error:(id *)arg6;
 - (BOOL)writeTIFFRepresentationOfImage:(id)arg1 toURL:(id)arg2 format:(int)arg3 colorSpace:(struct CGColorSpace *)arg4 options:(id)arg5 error:(id *)arg6;
 
 @end

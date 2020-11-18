@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <Accounts/ACProtobufCoding-Protocol.h>
 #import <Accounts/NSSecureCoding-Protocol.h>
 
 @class ACAccountStore, NSSet, NSString, NSURL;
 
-@interface ACAccountType : NSObject <NSSecureCoding>
+@interface ACAccountType : NSObject <NSSecureCoding, ACProtobufCoding>
 {
     NSString *_accountTypeDescription;
     NSString *_identifier;
@@ -21,6 +22,7 @@
     ACAccountStore *_accountStore;
     int _supportsAuthentication;
     BOOL _supportsMultipleAccounts;
+    BOOL _obsolete;
     NSSet *_supportedDataclasses;
     NSSet *_syncableDataclasses;
     NSSet *_accessKeys;
@@ -34,11 +36,16 @@
 @property (readonly, nonatomic) NSString *accountTypeDescription; // @synthesize accountTypeDescription=_accountTypeDescription;
 @property (copy, nonatomic) id credentialProtectionPolicy;
 @property (strong, nonatomic) NSString *credentialType; // @synthesize credentialType=_credentialType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL encryptAccountProperties; // @synthesize encryptAccountProperties=_encryptAccountProperties;
 @property (readonly, nonatomic) NSString *fullDescription;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSURL *objectID; // @synthesize objectID=_objectID;
+@property (nonatomic, getter=isObsolete) BOOL obsolete; // @synthesize obsolete=_obsolete;
 @property (strong, nonatomic) NSString *owningBundleID; // @synthesize owningBundleID=_owningBundleID;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSSet *supportedDataclasses; // @synthesize supportedDataclasses=_supportedDataclasses;
 @property (nonatomic) int supportsAuthentication; // @synthesize supportsAuthentication=_supportsAuthentication;
 @property (nonatomic) BOOL supportsMultipleAccounts; // @synthesize supportsMultipleAccounts=_supportsMultipleAccounts;
@@ -48,10 +55,12 @@
 + (id)allIdentifiers;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_encodeProtobuf;
+- (id)_encodeProtobufData;
+- (id)_initWithProtobuf:(id)arg1;
+- (id)_initWithProtobufData:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 description:(id)arg2;
 - (id)initWithManagedAccountType:(id)arg1;

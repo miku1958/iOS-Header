@@ -14,6 +14,7 @@
 {
     NSString *_appIdentifier;
     int _purpose;
+    NSString *_requestingAppId;
     int _source;
     struct {
         unsigned int purpose:1;
@@ -24,15 +25,17 @@
 @property (strong, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 @property (readonly, nonatomic) BOOL hasAppIdentifier;
 @property (nonatomic) BOOL hasPurpose;
+@property (readonly, nonatomic) BOOL hasRequestingAppId;
 @property (nonatomic) BOOL hasSource;
 @property (nonatomic) int purpose; // @synthesize purpose=_purpose;
+@property (strong, nonatomic) NSString *requestingAppId; // @synthesize requestingAppId=_requestingAppId;
 @property (nonatomic) int source; // @synthesize source=_source;
 
+- (void).cxx_destruct;
 - (int)StringAsPurpose:(id)arg1;
 - (int)StringAsSource:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

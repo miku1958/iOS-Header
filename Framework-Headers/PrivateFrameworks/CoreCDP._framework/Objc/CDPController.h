@@ -25,6 +25,7 @@
 @property (strong, nonatomic) CDPStateUIProviderProxy *uiProviderProxy; // @synthesize uiProviderProxy=_uiProviderProxy;
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)init;
 - (id)initWithContext:(id)arg1;
 - (void)invalidate;

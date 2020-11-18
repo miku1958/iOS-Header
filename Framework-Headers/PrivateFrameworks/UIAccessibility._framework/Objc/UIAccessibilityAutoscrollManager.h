@@ -11,21 +11,21 @@
 @interface UIAccessibilityAutoscrollManager : NSObject
 {
     BOOL _autoscrolling;
-    int _scrollDirection;
     UIScrollView *_scrollView;
+    unsigned long long _scrollDirection;
     double _autoscrollSpeed;
 }
 
 @property (nonatomic) double autoscrollSpeed; // @synthesize autoscrollSpeed=_autoscrollSpeed;
 @property (nonatomic, getter=isAutoscrolling) BOOL autoscrolling; // @synthesize autoscrolling=_autoscrolling;
-@property (nonatomic) int scrollDirection; // @synthesize scrollDirection=_scrollDirection;
+@property (nonatomic) unsigned long long scrollDirection; // @synthesize scrollDirection=_scrollDirection;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_autoscroll;
-- (void)autoscrollInDirection:(int)arg1;
-- (int)availableAutoscrollDirections;
-- (void)dealloc;
+- (void)autoscrollInDirection:(unsigned long long)arg1;
+- (unsigned long long)availableAutoscrollDirections;
 - (void)decrementAutoscrollSpeed;
 - (void)incrementAutoscrollSpeed;
 - (id)init;

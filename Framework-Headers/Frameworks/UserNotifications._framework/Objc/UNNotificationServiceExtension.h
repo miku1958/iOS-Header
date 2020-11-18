@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)initialize;
 - (void)beginRequestWithExtensionContext:(id)arg1;
 - (void)didReceiveNotificationRequest:(id)arg1 withContentHandler:(CDUnknownBlockType)arg2;
 - (id)init;

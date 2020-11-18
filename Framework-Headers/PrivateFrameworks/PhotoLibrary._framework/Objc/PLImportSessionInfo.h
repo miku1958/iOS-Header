@@ -11,27 +11,27 @@
 @interface PLImportSessionInfo : NSObject
 {
     NSMutableIndexSet *_importIndexes;
-    NSMutableIndexSet *_importInProgressIndexes;
-    NSMutableIndexSet *_importErrorIndexes;
-    NSMutableIndexSet *_importCompleteIndexes;
+    NSMutableIndexSet *_inProgressIndexes;
+    NSMutableIndexSet *_errorIndexes;
+    NSMutableIndexSet *_completedIndexes;
     BOOL _importComplete;
     BOOL _importStopped;
     BOOL _importingSelection;
 }
 
-@property (readonly, strong, nonatomic) NSIndexSet *completedIndexes; // @synthesize completedIndexes=_importCompleteIndexes;
-@property (readonly, strong, nonatomic) NSIndexSet *errorIndexes; // @synthesize errorIndexes=_importErrorIndexes;
+@property (readonly, strong, nonatomic) NSIndexSet *completedIndexes; // @synthesize completedIndexes=_completedIndexes;
+@property (readonly, strong, nonatomic) NSIndexSet *errorIndexes; // @synthesize errorIndexes=_errorIndexes;
 @property (nonatomic) BOOL importComplete; // @synthesize importComplete=_importComplete;
 @property (readonly, strong, nonatomic) NSIndexSet *importIndexes; // @synthesize importIndexes=_importIndexes;
 @property (nonatomic) BOOL importStopped; // @synthesize importStopped=_importStopped;
 @property (nonatomic) BOOL importingSelection; // @synthesize importingSelection=_importingSelection;
-@property (readonly, strong, nonatomic) NSIndexSet *inProgressIndexes; // @synthesize inProgressIndexes=_importInProgressIndexes;
+@property (readonly, strong, nonatomic) NSIndexSet *inProgressIndexes; // @synthesize inProgressIndexes=_inProgressIndexes;
 
+- (void).cxx_destruct;
 - (BOOL)_isImportCompleteForIndex:(unsigned long long)arg1;
 - (void)addIndexToImport:(unsigned long long)arg1;
 - (void)beginImportForIndex:(unsigned long long)arg1;
 - (void)completeImportForIndex:(unsigned long long)arg1 error:(BOOL)arg2;
-- (void)dealloc;
 - (id)initWithImportIndexes:(id)arg1;
 - (void)removeIndex:(unsigned long long)arg1;
 - (void)shiftIndexesStartingAtIndex:(unsigned long long)arg1 by:(unsigned long long)arg2;

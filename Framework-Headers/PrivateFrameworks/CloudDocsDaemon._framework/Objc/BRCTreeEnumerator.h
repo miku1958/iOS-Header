@@ -22,19 +22,21 @@ __attribute__((visibility("hidden")))
     brc_task_tracker *_tracker;
     NSObject<OS_dispatch_group> *_group;
     id _strongSelf;
+    BOOL _isCancelled;
     CDUnknownBlockType _completionHandler;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 
 - (void).cxx_destruct;
-- (BOOL)__iterate:(unsigned long long)arg1;
-- (void)_done;
+- (unsigned long long)__iterate:(unsigned long long)arg1;
+- (void)_doneWithError:(id)arg1;
 - (void)_iterate:(unsigned long long)arg1;
-- (void)_iterateWithoutParent:(unsigned long long)arg1;
 - (void)_scheduleAsync;
-- (BOOL)_visitNewParent:(unsigned long long)arg1;
+- (BOOL)_visitNewParent;
+- (void)cancel;
 - (void)enumerateBelow:(id)arg1 appLibrary:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (BOOL)finishIfCancelled;
 - (id)initWithSession:(id)arg1;
 - (id)initWithSession:(id)arg1 group:(id)arg2;
 - (id)initWithSession:(id)arg1 tracker:(id)arg2;

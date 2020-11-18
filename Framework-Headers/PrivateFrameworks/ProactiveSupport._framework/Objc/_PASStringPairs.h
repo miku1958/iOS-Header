@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) NSArray *values; // @synthesize values=_values;
 
 - (void).cxx_destruct;
+- (id)init;
 - (id)initWithKeys:(id)arg1 values:(id)arg2;
 - (id)keyAtIndex:(unsigned long long)arg1;
 - (id)valueAtIndex:(unsigned long long)arg1;

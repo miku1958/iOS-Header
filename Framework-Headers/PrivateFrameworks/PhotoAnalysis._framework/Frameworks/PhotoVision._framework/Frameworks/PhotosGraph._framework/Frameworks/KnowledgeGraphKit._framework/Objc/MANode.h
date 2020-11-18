@@ -36,7 +36,10 @@
 - (id)anyNeighborNodeThroughEdgesWithLabel:(id)arg1;
 - (id)anyNeighborNodeThroughEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2;
 - (id)anyNeighborNodeThroughInEdges;
+- (id)anyNeighborNodeThroughInEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2;
 - (id)anyNeighborNodeThroughOutEdges;
+- (id)anyNeighborNodeThroughOutEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2;
+- (BOOL)conformsToNodeSchema:(id)arg1;
 - (unsigned long long)countOfEdgesWithLabel:(id)arg1;
 - (unsigned long long)countOfEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2;
 - (id)description;

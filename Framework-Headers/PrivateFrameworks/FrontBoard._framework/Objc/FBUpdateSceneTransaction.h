@@ -9,7 +9,7 @@
 #import <FrontBoard/FBSceneManagerObserver-Protocol.h>
 #import <FrontBoard/FBSynchronizedTransaction-Protocol.h>
 
-@class FBSDisplay, FBSSceneDefinition, FBSSceneParameters, FBSSceneSettings, FBSSceneSpecification, FBSSceneTransitionContext, FBScene, FBSceneManager, FBWaitForSceneDestructionTransaction, NSString;
+@class FBSSceneDefinition, FBSSceneParameters, FBSSceneSettings, FBSSceneSpecification, FBSSceneTransitionContext, FBScene, FBSceneManager, FBWaitForSceneDestructionTransaction, NSString;
 @protocol FBSynchronizedTransactionDelegate;
 
 @interface FBUpdateSceneTransaction : FBTransaction <FBSceneManagerObserver, FBSynchronizedTransaction>
@@ -31,7 +31,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL destroyed; // @synthesize destroyed=_destroyed;
-@property (readonly, strong, nonatomic) FBSDisplay *display; // @dynamic display;
 @property (readonly) unsigned long long hash;
 @property (readonly, strong, nonatomic) FBSSceneSettings *newSettings; // @dynamic newSettings;
 @property (readonly, strong, nonatomic) FBScene *scene; // @dynamic scene;

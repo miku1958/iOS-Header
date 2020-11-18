@@ -34,13 +34,16 @@
 @property (readonly, nonatomic) NSString *relationshipName; // @synthesize relationshipName=_relationshipName;
 
 + (id)_offsetsFromSourceOIDs:(id)arg1 toManagedObjects:(id)arg2;
++ (id)objectIDsOrUUIDsFromPHObjects:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)applyMutationsToManagedObject:(id)arg1 orderedMutableChildren:(id)arg2 error:(id *)arg3;
 - (BOOL)applyMutationsToManagedObject:(id)arg1 unorderedMutableChildren:(id)arg2 error:(id *)arg3;
+- (BOOL)applyMutationsToManagedObject:(id)arg1 unorderedMutableChildren:(id)arg2 inserts:(id *)arg3 deletes:(id *)arg4 error:(id *)arg5;
 - (BOOL)applyMutationsToManagedObjectToOneRelationship:(id)arg1 error:(id *)arg2;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)initWithRelationshipName:(id)arg1 changeRequestHelper:(id)arg2;
 - (id)initWithRelationshipName:(id)arg1 xpcDict:(id)arg2 changeRequestHelper:(id)arg3;
+- (void)prepareIfNeededWithExistentObjectIDs:(id)arg1;
 
 @end
 

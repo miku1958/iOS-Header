@@ -8,10 +8,11 @@
 
 #import <SpringBoardFoundation/BSDescriptionProviding-Protocol.h>
 #import <SpringBoardFoundation/NSCopying-Protocol.h>
+#import <SpringBoardFoundation/NSSecureCoding-Protocol.h>
 
 @class NSData, NSString;
 
-@interface SBFWallpaperOptions : NSObject <NSCopying, BSDescriptionProviding>
+@interface SBFWallpaperOptions : NSObject <NSCopying, BSDescriptionProviding, NSSecureCoding>
 {
     BOOL _magnifyEnabled;
     BOOL _supportsCropping;
@@ -24,7 +25,6 @@
     struct CGRect _cropRect;
 }
 
-@property (readonly, nonatomic) struct CGSize bestWallpaperSize;
 @property (nonatomic) struct CGRect cropRect; // @synthesize cropRect=_cropRect;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -43,16 +43,21 @@
 
 + (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 portrait:(BOOL)arg6;
 + (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 portrait:(BOOL)arg6 hasVideo:(BOOL)arg7 stillTimeInVideo:(double)arg8;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (struct CGSize)bestWallpaperSizeForWallpaperSize:(struct CGSize)arg1 wallpaperScale:(double)arg2 deviceType:(long long)arg3 imageScale:(double)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithContentsOfURL:(id)arg1;
 - (id)initWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 portrait:(BOOL)arg6 hasVideo:(BOOL)arg7 stillTimeInVideo:(double)arg8;
 - (id)initWithPersistentDataRepresentation:(id)arg1;
 - (id)initWithStream:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isLooselyEqualToWallpaperOptions:(id)arg1;
 - (id)persistentPropertyList;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

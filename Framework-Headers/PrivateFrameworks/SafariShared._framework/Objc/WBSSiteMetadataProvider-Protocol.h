@@ -11,7 +11,6 @@
 
 @protocol WBSSiteMetadataProvider <NSObject>
 
-@property (nonatomic, getter=isCachingDisabled) BOOL cachingDisabled;
 @property (weak, nonatomic) id<WBSSiteMetadataProviderDelegate> providerDelegate;
 
 - (BOOL)canHandleRequest:(WBSSiteMetadataRequest *)arg1;

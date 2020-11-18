@@ -30,11 +30,14 @@
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (id)_responseMessagePBRepresentation;
+- (BOOL)_shouldForwardIntentToApp;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithBackingStore:(id)arg1;
 - (id)initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (id)initWithCoder:(id)arg1;
+- (id)propertiesByName;
+- (void)setPropertiesByName:(id)arg1;
 
 @end
 

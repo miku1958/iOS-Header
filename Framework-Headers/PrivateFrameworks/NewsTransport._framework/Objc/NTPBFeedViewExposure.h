@@ -12,6 +12,7 @@
 
 @interface NTPBFeedViewExposure : PBCodable <NSCopying>
 {
+    long long _previousArticlePublisherArticleVersion;
     int _areaPresentationReason;
     NSString *_campaignId;
     NSString *_campaignType;
@@ -26,6 +27,8 @@
     int _groupType;
     int _presentationReason;
     NSString *_presentationReasonSearchString;
+    NSString *_previousArticleId;
+    NSString *_previousArticleVersion;
     NSString *_referringSourceApplication;
     NSString *_referringUrl;
     NSString *_sourceChannelId;
@@ -38,6 +41,7 @@
     BOOL _isSubscribedToGroupFeed;
     BOOL _isUserSubscribedToFeed;
     struct {
+        unsigned int previousArticlePublisherArticleVersion:1;
         unsigned int areaPresentationReason:1;
         unsigned int countOfTotalGroupExposures:1;
         unsigned int countOfTotalGroupsExposed:1;
@@ -89,6 +93,9 @@
 @property (nonatomic) BOOL hasIsUserSubscribedToFeed;
 @property (nonatomic) BOOL hasPresentationReason;
 @property (readonly, nonatomic) BOOL hasPresentationReasonSearchString;
+@property (readonly, nonatomic) BOOL hasPreviousArticleId;
+@property (nonatomic) BOOL hasPreviousArticlePublisherArticleVersion;
+@property (readonly, nonatomic) BOOL hasPreviousArticleVersion;
 @property (readonly, nonatomic) BOOL hasReferringSourceApplication;
 @property (readonly, nonatomic) BOOL hasReferringUrl;
 @property (readonly, nonatomic) BOOL hasSourceChannelId;
@@ -100,6 +107,9 @@
 @property (nonatomic) BOOL isUserSubscribedToFeed; // @synthesize isUserSubscribedToFeed=_isUserSubscribedToFeed;
 @property (nonatomic) int presentationReason; // @synthesize presentationReason=_presentationReason;
 @property (strong, nonatomic) NSString *presentationReasonSearchString; // @synthesize presentationReasonSearchString=_presentationReasonSearchString;
+@property (strong, nonatomic) NSString *previousArticleId; // @synthesize previousArticleId=_previousArticleId;
+@property (nonatomic) long long previousArticlePublisherArticleVersion; // @synthesize previousArticlePublisherArticleVersion=_previousArticlePublisherArticleVersion;
+@property (strong, nonatomic) NSString *previousArticleVersion; // @synthesize previousArticleVersion=_previousArticleVersion;
 @property (strong, nonatomic) NSString *referringSourceApplication; // @synthesize referringSourceApplication=_referringSourceApplication;
 @property (strong, nonatomic) NSString *referringUrl; // @synthesize referringUrl=_referringUrl;
 @property (strong, nonatomic) NSString *sourceChannelId; // @synthesize sourceChannelId=_sourceChannelId;

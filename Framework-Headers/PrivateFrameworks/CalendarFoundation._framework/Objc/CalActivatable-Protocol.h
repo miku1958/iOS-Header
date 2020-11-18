@@ -4,12 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CalendarFoundation/NSObject-Protocol.h>
-
-@protocol CalActivatable <NSObject>
-
-@property (readonly, nonatomic) BOOL active;
-
+@protocol CalActivatable
 - (void)activate;
 - (void)deactivate;
 @end

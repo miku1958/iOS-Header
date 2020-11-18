@@ -26,7 +26,6 @@
 
 - (void).cxx_destruct;
 - (void)_ensureXPCStarted;
-- (void)_getVersionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_interrupted;
 - (void)_invalidate;
 - (void)_invalidated;
@@ -36,7 +35,9 @@
 - (void)dealloc;
 - (void)diagnosticBLEModeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)diagnosticControl:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)getVersionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)diagnosticMock:(id)arg1 device:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)diagnosticMockStart:(CDUnknownBlockType)arg1;
+- (void)diagnosticMockStop:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)invalidate;
 - (void)logControl:(id)arg1 completion:(CDUnknownBlockType)arg2;

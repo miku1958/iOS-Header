@@ -8,15 +8,13 @@
 
 #import <MessageUI/MFComposeRecipientAtomDelegate-Protocol.h>
 #import <MessageUI/MFCorecipientsIndicatorAtomDelegate-Protocol.h>
-#import <MessageUI/MFDragDestination-Protocol.h>
-#import <MessageUI/MFDragSource-Protocol.h>
 #import <MessageUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <MessageUI/UITextFieldDelegate-Protocol.h>
 
 @class MFComposeRecipient, MFCorecipientsIndicatorAtom, MFModernComposeRecipientAtom, NSArray, NSCountedSet, NSMutableArray, NSMutableDictionary, NSString, NSTimer, UIButton, UIFont, UITapGestureRecognizer, UITextField, UIView, _MFMailRecipientTextField;
 @protocol MFComposeRecipientViewDelegate;
 
-@interface MFComposeRecipientView : MFComposeHeaderView <UITextFieldDelegate, UIGestureRecognizerDelegate, MFComposeRecipientAtomDelegate, MFDragSource, MFDragDestination, MFCorecipientsIndicatorAtomDelegate>
+@interface MFComposeRecipientView : MFComposeHeaderView <UITextFieldDelegate, UIGestureRecognizerDelegate, MFComposeRecipientAtomDelegate, MFCorecipientsIndicatorAtomDelegate>
 {
     _MFMailRecipientTextField *_textField;
     NSArray *_textFieldConstraints;
@@ -84,7 +82,6 @@
 - (void)_delayTimerFired:(id)arg1;
 - (void)_deleteSelectedAtom;
 - (void)_deselectAtom;
-- (long long)_recipientIndexAtPoint:(struct CGPoint)arg1;
 - (void)_reflowAnimated:(BOOL)arg1;
 - (void)_removeAddressAtomPresentationOptionsForRecipient:(id)arg1;
 - (void)_removeAllRecipients;
@@ -100,8 +97,6 @@
 - (void)addRecipient:(id)arg1;
 - (void)addRecipient:(id)arg1 index:(unsigned long long)arg2 animate:(BOOL)arg3;
 - (void)addRecord:(void *)arg1 property:(int)arg2 identifier:(int)arg3;
-- (BOOL)allowsDrag;
-- (void)animatePlaceholderForDragFailure:(id)arg1;
 - (BOOL)becomeFirstResponder;
 - (void)clearAllAddressAtomPresentationOptions;
 - (void)clearText;
@@ -113,16 +108,7 @@
 - (void)deselectComposeRecipientAtom:(id)arg1;
 - (void)didMoveToSuperview;
 - (void)didTapShowCorecipientsForIndicatorAtom:(id)arg1 recipients:(id)arg2;
-- (void)dragCompletedForItem:(id)arg1 success:(BOOL)arg2;
-- (void)dragEntered:(id)arg1 atPoint:(struct CGPoint)arg2;
-- (void)dragExited:(id)arg1;
-- (id)dragInitiatedAtPoint:(struct CGPoint)arg1;
-- (void)dragStartedWithItem:(id)arg1;
-- (void)dragUpdated:(id)arg1 atPoint:(struct CGPoint)arg2;
-- (void)dropItem:(id)arg1;
-- (struct CGRect)dropRect;
 - (BOOL)finishEnteringRecipient;
-- (struct CGRect)frameForDraggedItem:(id)arg1;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (BOOL)hasContent;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -147,17 +133,12 @@
 - (void)setProperties:(id)arg1;
 - (void)setProperty:(int)arg1;
 - (void)showCorecipientIndicator:(BOOL)arg1 withCorecipients:(id)arg2 animated:(BOOL)arg3;
-- (id)supportedDropTypes:(id)arg1;
 - (void)textChanged:(id)arg1;
 - (void)textFieldDidBecomeFirstResponder:(id)arg1;
 - (void)textFieldDidResignFirstResponder:(id)arg1;
 - (double)textFieldOffsetForNumberOfRowsToScroll:(unsigned long long)arg1 numberOfRowsAboveField:(long long)arg2;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (id)uncommentedAddresses;
-- (id)viewForDragSource;
-- (id)viewForDraggedItem:(id)arg1 atScale:(double)arg2;
-- (id)viewForDrop;
-- (void)willMoveToSuperview:(id)arg1;
 
 @end
 

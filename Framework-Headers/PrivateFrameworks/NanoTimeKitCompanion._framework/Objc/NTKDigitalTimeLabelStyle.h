@@ -19,7 +19,10 @@
 
 + (id)defaultStyleForBounds:(struct CGRect)arg1 withRightSideMargin:(double)arg2;
 + (id)defaultStyleForBounds:(struct CGRect)arg1 withRightSideMargin:(double)arg2 withBaselineY:(double)arg3;
++ (id)defaultStyleForBounds:(struct CGRect)arg1 withRightSideMargin:(double)arg2 withBaselineY:(double)arg3 withFont:(id)arg4;
 + (id)smallInUpperRightCornerStyleForBounds:(struct CGRect)arg1;
++ (id)smallInUpperRightCornerStyleForBounds:(struct CGRect)arg1 withBaselineY:(double)arg2 withFont:(id)arg3;
++ (id)smallInUpperRightCornerStyleForBounds:(struct CGRect)arg1 withFont:(id)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;

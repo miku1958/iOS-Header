@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSObservationSource.h>
+#import <Foundation/NSObservationSource.h>
 
 @class NSISEngine, NSISVariable;
 
 __attribute__((visibility("hidden")))
 @interface _NSISVariableObservable : NSObservationSource
 {
+    _NSISVariableObservable *_nextDirtyObservable;
+    _NSISVariableObservable *_prevDirtyObservable;
     double _lastValue;
     NSISVariable *_variable;
     NSISEngine *_associatedEngine;
@@ -23,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)emitValueIfNeeded;
 - (id)initWithVariable:(id)arg1 inEngine:(id)arg2;
 - (void)receiveObservedValue:(id)arg1;
+- (BOOL)valueHasChanged;
 
 @end
 

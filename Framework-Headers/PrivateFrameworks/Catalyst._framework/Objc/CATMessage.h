@@ -15,6 +15,7 @@
     NSUUID *_messageUUID;
 }
 
+@property (strong, nonatomic) id cat_assertion;
 @property (strong, nonatomic) NSUUID *messageUUID; // @synthesize messageUUID=_messageUUID;
 
 + (BOOL)supportsSecureCoding;

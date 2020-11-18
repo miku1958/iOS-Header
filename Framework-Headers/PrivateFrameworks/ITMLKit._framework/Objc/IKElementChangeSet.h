@@ -22,8 +22,10 @@
 @property (readonly, copy, nonatomic) NSDictionary *updatedIndexesByNewIndex; // @synthesize updatedIndexesByNewIndex=_updatedIndexesByNewIndex;
 
 - (void).cxx_destruct;
+- (id)changesetByConcatenatingChangeset:(id)arg1;
 - (id)initWithAddedIndexes:(id)arg1 removedIndexes:(id)arg2 movedIndexesByNewIndex:(id)arg3 updatedIndexesByNewIndex:(id)arg4;
 - (long long)newIndexForOldIndex:(long long)arg1;
+- (long long)oldIndexForNewIndex:(long long)arg1;
 
 @end
 

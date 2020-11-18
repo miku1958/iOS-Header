@@ -48,6 +48,7 @@
 @property (nonatomic) struct UIEdgeInsets defaultViewInsets; // @synthesize defaultViewInsets=_defaultViewInsets;
 @property (weak, nonatomic) id<SiriUISnippetViewControllerDelegate> delegate; // @dynamic delegate;
 @property (strong, nonatomic) SAUIAppPunchOut *headerPunchOut; // @synthesize headerPunchOut=_headerPunchOut;
+@property (readonly, nonatomic, getter=isIndicatingActivity) BOOL indicatingActivity;
 @property (nonatomic) BOOL isFullPadWidth; // @synthesize isFullPadWidth=_isFullPadWidth;
 @property (nonatomic) BOOL isTransparent; // @synthesize isTransparent=_isTransparent;
 @property (nonatomic, getter=isLoading) BOOL loading; // @synthesize loading=_loading;
@@ -67,6 +68,7 @@
 @property (nonatomic, getter=_willAnimateConfirmation, setter=_setWillAnimateConfirmation:) BOOL willAnimateConfirmation; // @synthesize willAnimateConfirmation=_willAnimateConfirmation;
 
 - (void).cxx_destruct;
+- (void)_cancelTouchesIfNecessary;
 - (void)_cellDidLayoutSubviews;
 - (id)_createReusableViewIfNeededWithClass:(Class)arg1;
 - (id)_footerView;
@@ -77,6 +79,7 @@
 - (long long)_pinAnimationType;
 - (id)_privateDelegate;
 - (long long)_replacementAnimation;
+- (void)_resumeTouchesIfNecessary;
 - (void)_setVirgin:(BOOL)arg1;
 - (void)_snippetPunchOutButtonTapped;
 - (void)_snippetViewControllerWillBeRemoved;
@@ -89,6 +92,7 @@
 - (void)configureReusableTransparentFooterView:(id)arg1;
 - (void)configureReusableTransparentHeaderView:(id)arg1;
 - (void)confirmButtonTapped:(id)arg1;
+- (void)confirmSnippet;
 - (double)desiredHeightForFooterView;
 - (double)desiredHeightForHeaderView;
 - (double)desiredHeightForTransparentFooterView;
@@ -98,6 +102,7 @@
 - (Class)headerViewClass;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (BOOL)isMemoryIntensive;
+- (BOOL)logContentsIfApplicable;
 - (BOOL)removedAfterDialogProgresses;
 - (void)setManageBackgroundColor:(BOOL)arg1;
 - (void)siriDidLayoutSnippetView;

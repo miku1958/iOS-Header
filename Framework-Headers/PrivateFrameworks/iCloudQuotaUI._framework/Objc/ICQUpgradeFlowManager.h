@@ -9,19 +9,23 @@
 #import <iCloudQuotaUI/ICQPageDelegate-Protocol.h>
 #import <iCloudQuotaUI/UINavigationControllerDelegate-Protocol.h>
 
-@class ICQAlertController, ICQOffer, ICQUpgradeOfferViewController, NSString, UINavigationController;
+@class ICQAlertController, ICQOffer, ICQUpgradeOfferViewController, NSDictionary, NSString, UINavigationController;
 @protocol ICQUpgradeFlowManagerDelegate;
 
 @interface ICQUpgradeFlowManager : NSObject <UINavigationControllerDelegate, ICQPageDelegate>
 {
     ICQUpgradeOfferViewController *_busyOfferViewController;
     BOOL _shouldNavigationControllerBeDismissed;
+    BOOL _completedFamilySetup;
     ICQOffer *_offer;
+    NSDictionary *_bindings;
     id<ICQUpgradeFlowManagerDelegate> _delegate;
     UINavigationController *_hostingNavigationController;
     ICQAlertController *_upgradeAlertController;
 }
 
+@property (strong, nonatomic) NSDictionary *bindings; // @synthesize bindings=_bindings;
+@property (nonatomic) BOOL completedFamilySetup; // @synthesize completedFamilySetup=_completedFamilySetup;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ICQUpgradeFlowManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -43,14 +47,16 @@
 - (void)_addAlertActionForAlertSpec:(id)arg1 buttonIndex:(long long)arg2;
 - (void)_cancelFlow;
 - (void)_clearBusyOfferViewController;
+- (void)_initiateFamilySetupFlow;
 - (void)_openURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_performPageButtonActionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_performPageButtonActionWithParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentPageWithSpecification:(id)arg1;
 - (void)_presentUpgradeComplete;
 - (void)_sendDelegateCancel;
 - (void)_sendDelegateComplete;
 - (void)_sendDelegateDidPresentViewController:(id)arg1;
 - (void)_setBusyOfferViewController:(id)arg1;
+- (void)_simulateDoneButton;
 - (void)_tappedAlertLink:(id)arg1;
 - (void)beginFlowWithPresentingViewController:(id)arg1;
 - (id)init;

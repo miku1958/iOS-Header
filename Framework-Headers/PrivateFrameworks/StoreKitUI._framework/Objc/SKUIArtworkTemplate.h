@@ -31,6 +31,7 @@
 @property (readonly, nonatomic) long long width; // @synthesize width=_width;
 
 + (BOOL)canHandleArtworkFormat:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_artworkURLWithWidth:(long long)arg1;
 - (id)_artworkWithWidth:(long long)arg1;
@@ -43,8 +44,10 @@
 - (id)bestArtworkForScaledSize:(struct CGSize)arg1;
 - (id)bestArtworkForSize:(struct CGSize)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasArtwork;
 - (id)initWithCacheRepresentation:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithTemplateDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)preferredExactArtworkForSize:(struct CGSize)arg1;

@@ -20,8 +20,6 @@
     BOOL _pendingChanges;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_timerQueue;
-    unsigned long long _lastEventCount;
-    unsigned long long _lastReminderCount;
     NSArray *_eventNotificationReferences;
     NSArray *_reminderNotificationReferences;
     BOOL _initialCheck;
@@ -32,25 +30,28 @@
     long long _notificationTypes;
     NSMutableSet *_alertedNotificationsThatFailedToMarkAlerted;
     BOOL _allowedToMarkAlerted;
+    NSObject<OS_dispatch_queue> *_notificationQueue;
 }
 
 @property (nonatomic) BOOL allowedToMarkAlerted; // @synthesize allowedToMarkAlerted=_allowedToMarkAlerted;
 @property (readonly, nonatomic) unsigned long long eventNotificationCount;
 @property (readonly, nonatomic) NSArray *eventNotificationReferences;
 @property (readonly, nonatomic) unsigned long long notificationCount;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *notificationQueue; // @synthesize notificationQueue=_notificationQueue;
 @property (readonly, nonatomic) NSArray *notificationReferences;
 @property (readonly, nonatomic) NSArray *reminderNotificationReferences;
 
++ (id)logHandle;
 + (id)requestedDarwinNotifications;
 - (void).cxx_destruct;
 - (void)_alertPrefChanged;
-- (unsigned long long)_checkForEventNotifications:(id)arg1;
-- (unsigned long long)_checkForReminderNotifications:(id)arg1;
 - (void)_databaseChanged;
 - (id)_eventStore;
+- (id)_fetchEventNotificationReferencesFromEventStore:(id)arg1;
 - (void)_killSyncTimer;
 - (void)_notificationCountChangedExternally;
 - (void)_notifyForUnalertedNotifications:(id)arg1;
+- (unsigned long long)_reminderNotificationCount;
 - (void)_resetSyncTimer;
 - (void)_resetTimer;
 - (void)_syncDidEnd;

@@ -13,7 +13,7 @@
 
 @property (nonatomic) BOOL sourceIsManaged; // @synthesize sourceIsManaged;
 
-- (id)initWithActivityItems:(id)arg1 applicationActivities:(id)arg2 sourceURL:(id)arg3;
+- (id)initWithActivityItems:(id)arg1 applicationActivities:(id)arg2 sharingURL:(id)arg3 sourceURL:(id)arg4;
 
 @end
 

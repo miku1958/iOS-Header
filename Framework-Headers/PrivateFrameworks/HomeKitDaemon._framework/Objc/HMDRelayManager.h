@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFNetMonitorDelegate-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegateHomeKit-Protocol.h>
 #import <HomeKitDaemon/NSURLSessionDelegate-Protocol.h>
 
-@class HMDHome, HMFNetMonitor, IDSService, NSHashTable, NSMutableArray, NSString, NSURLSession;
+@class HMDHome, HMFNetMonitor, IDSService, NSHashTable, NSMutableArray, NSObject, NSString, NSURLSession;
 @protocol OS_dispatch_queue;
 
-@interface HMDRelayManager : NSObject <HMFNetMonitorDelegate, IDSServiceDelegateHomeKit, NSURLSessionDelegate, HMFLogging>
+@interface HMDRelayManager : HMFObject <HMFNetMonitorDelegate, IDSServiceDelegateHomeKit, NSURLSessionDelegate, HMFLogging>
 {
     BOOL _supported;
     BOOL _enabled;

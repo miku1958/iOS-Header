@@ -4,16 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HealthUI/HKSimpleDataEntryItem.h>
 
-#import <HealthUI/HKSimpleDataEntryItemType-Protocol.h>
 #import <HealthUI/UIPickerViewDataSource-Protocol.h>
 #import <HealthUI/UIPickerViewDelegate-Protocol.h>
 
 @class HKSimpleDataEntryPlainTextCell, NSArray, NSNumber, NSString, UIPickerView;
-@protocol HKSimpleDataEntryItemDelegate;
 
-@interface HKSimpleDataEntryMultipleChoiceItem : NSObject <UIPickerViewDelegate, UIPickerViewDataSource, HKSimpleDataEntryItemType>
+@interface HKSimpleDataEntryMultipleChoiceItem : HKSimpleDataEntryItem <UIPickerViewDelegate, UIPickerViewDataSource>
 {
     HKSimpleDataEntryPlainTextCell *_cell;
     NSString *_title;
@@ -22,26 +20,19 @@
     NSArray *_choiceDisplayValues;
     NSArray *_choices;
     UIPickerView *_picker;
-    id<HKSimpleDataEntryItemDelegate> _delegate;
-    unsigned long long _placeholderType;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<HKSimpleDataEntryItemDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) unsigned long long placeholderType; // @synthesize placeholderType=_placeholderType;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_setTextForInputTextField:(id)arg1;
 - (void)_setupPlaceholder;
-- (void)beginEditing;
 - (id)cell;
-- (void)doneButtonTapped:(id)arg1;
 - (id)formattedKeyAndValue;
 - (id)initWithTitle:(id)arg1 registrantModelKey:(id)arg2 choices:(id)arg3 choiceDisplayNames:(id)arg4 defaultChoice:(id)arg5;
-- (void)localeDidChange:(id)arg1;
 - (long long)numberOfComponentsInPickerView:(id)arg1;
 - (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;
 - (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;

@@ -11,28 +11,32 @@
 @interface MPModelFileAsset : MPModelObject
 {
     BOOL _nonPurgeable;
-    BOOL _usesPurchaseBundle;
     NSString *_filePath;
+    unsigned long long _fileSize;
     long long _protectionType;
     long long _qualityType;
+    NSString *_purchaseBundleFilePath;
 }
 
 @property (copy, nonatomic) NSString *filePath; // @synthesize filePath=_filePath;
+@property (nonatomic) unsigned long long fileSize; // @synthesize fileSize=_fileSize;
 @property (nonatomic, getter=isNonPurgeable) BOOL nonPurgeable; // @synthesize nonPurgeable=_nonPurgeable;
 @property (nonatomic) long long protectionType; // @synthesize protectionType=_protectionType;
+@property (copy, nonatomic) NSString *purchaseBundleFilePath; // @synthesize purchaseBundleFilePath=_purchaseBundleFilePath;
 @property (nonatomic) long long qualityType; // @synthesize qualityType=_qualityType;
-@property (nonatomic) BOOL usesPurchaseBundle; // @synthesize usesPurchaseBundle=_usesPurchaseBundle;
 
 + (id)__MPModelPropertyFileAssetFilePath__PROPERTY;
++ (id)__MPModelPropertyFileAssetFileSize__PROPERTY;
 + (id)__MPModelPropertyFileAssetNonPurgeable__PROPERTY;
 + (id)__MPModelPropertyFileAssetProtectionType__PROPERTY;
++ (id)__MPModelPropertyFileAssetPurchaseBundleFilePath__PROPERTY;
 + (id)__MPModelPropertyFileAssetQualityType__PROPERTY;
-+ (id)__MPModelPropertyFileAssetUsesPurchaseBundle__PROPERTY;
 + (id)__filePath__KEY;
++ (id)__fileSize__KEY;
 + (id)__nonPurgeable__KEY;
 + (id)__protectionType__KEY;
++ (id)__purchaseBundleFilePath__KEY;
 + (id)__qualityType__KEY;
-+ (id)__usesPurchaseBundle__KEY;
 + (id)allSupportedProperties;
 - (void).cxx_destruct;
 - (id)descriptionWithType:(long long)arg1;

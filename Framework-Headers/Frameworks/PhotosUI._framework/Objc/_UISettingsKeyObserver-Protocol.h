@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUICore/NSObject-Protocol.h>
+#import <PhotosUI/NSObject-Protocol.h>
 
 @class NSString, _UISettings;
 

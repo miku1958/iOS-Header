@@ -15,12 +15,12 @@
 }
 
 @property (strong, nonatomic) id appSpecificDataItemResult; // @synthesize appSpecificDataItemResult=_appSpecificDataItemResult;
-@property (nonatomic) id<CoreDAVTaskDelegate> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<CoreDAVTaskDelegate> delegate; // @dynamic delegate;
 @property (nonatomic) BOOL forceNoCache; // @synthesize forceNoCache=_forceNoCache;
 
+- (void).cxx_destruct;
 - (unsigned long long)cachePolicy;
 - (id)copyDefaultParserForContentType:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)finishCoreDAVTaskWithError:(id)arg1;
 - (id)httpMethod;

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAdditionalEnabledMarkets, GEOClientCapabilities, GEOCommonOptions, GEOLocation, GEOPDABClientDatasetMetadata, GEORouteAttributes, GEOTFTrafficSnapshot, NSData, NSMutableArray;
+@class GEOAdditionalEnabledMarkets, GEOClientCapabilities, GEOCommonOptions, GEOLocation, GEOPDABClientDatasetMetadata, GEORouteAttributes, GEOTFTrafficSnapshot, NSData, NSMutableArray, NSString;
 
 @interface GEOETATrafficUpdateRequest : PBRequest <NSCopying>
 {
@@ -21,13 +21,16 @@
     GEOLocation *_currentUserLocation;
     NSMutableArray *_destinationWaypointTypeds;
     NSData *_directionsResponseID;
+    unsigned int _maxAlternateRouteCount;
     unsigned int _previouslyRejectedRerouteSavings;
+    NSString *_requestingAppId;
     int _rerouteStatus;
     GEORouteAttributes *_routeAttributes;
     NSMutableArray *_routes;
     NSMutableArray *_serviceTags;
     NSData *_sessionState;
     GEOTFTrafficSnapshot *_trafficSnapshot;
+    NSData *_tripID;
     BOOL _includeBetterRouteSuggestion;
     BOOL _needServerLatency;
     BOOL _useClientTimepointAsNow;
@@ -35,6 +38,7 @@
     struct {
         unsigned int sessionID:1;
         unsigned int clientTimepoint:1;
+        unsigned int maxAlternateRouteCount:1;
         unsigned int previouslyRejectedRerouteSavings:1;
         unsigned int rerouteStatus:1;
         unsigned int includeBetterRouteSuggestion:1;
@@ -60,18 +64,23 @@
 @property (readonly, nonatomic) BOOL hasCurrentUserLocation;
 @property (readonly, nonatomic) BOOL hasDirectionsResponseID;
 @property (nonatomic) BOOL hasIncludeBetterRouteSuggestion;
+@property (nonatomic) BOOL hasMaxAlternateRouteCount;
 @property (nonatomic) BOOL hasNeedServerLatency;
 @property (nonatomic) BOOL hasPreviouslyRejectedRerouteSavings;
+@property (readonly, nonatomic) BOOL hasRequestingAppId;
 @property (nonatomic) BOOL hasRerouteStatus;
 @property (readonly, nonatomic) BOOL hasRouteAttributes;
 @property (nonatomic) BOOL hasSessionID;
 @property (readonly, nonatomic) BOOL hasSessionState;
 @property (readonly, nonatomic) BOOL hasTrafficSnapshot;
+@property (readonly, nonatomic) BOOL hasTripID;
 @property (nonatomic) BOOL hasUseClientTimepointAsNow;
 @property (nonatomic) BOOL hasUseLiveTrafficAsFallback;
 @property (nonatomic) BOOL includeBetterRouteSuggestion; // @synthesize includeBetterRouteSuggestion=_includeBetterRouteSuggestion;
+@property (nonatomic) unsigned int maxAlternateRouteCount; // @synthesize maxAlternateRouteCount=_maxAlternateRouteCount;
 @property (nonatomic) BOOL needServerLatency;
 @property (nonatomic) unsigned int previouslyRejectedRerouteSavings; // @synthesize previouslyRejectedRerouteSavings=_previouslyRejectedRerouteSavings;
+@property (strong, nonatomic) NSString *requestingAppId; // @synthesize requestingAppId=_requestingAppId;
 @property (nonatomic) int rerouteStatus; // @synthesize rerouteStatus=_rerouteStatus;
 @property (strong, nonatomic) GEORouteAttributes *routeAttributes; // @synthesize routeAttributes=_routeAttributes;
 @property (strong, nonatomic) NSMutableArray *routes; // @synthesize routes=_routes;
@@ -79,12 +88,14 @@
 @property (nonatomic) struct GEOSessionID sessionID; // @synthesize sessionID=_sessionID;
 @property (strong, nonatomic) NSData *sessionState; // @synthesize sessionState=_sessionState;
 @property (strong, nonatomic) GEOTFTrafficSnapshot *trafficSnapshot;
+@property (strong, nonatomic) NSData *tripID; // @synthesize tripID=_tripID;
 @property (nonatomic) BOOL useClientTimepointAsNow;
 @property (nonatomic) BOOL useLiveTrafficAsFallback;
 
 + (Class)destinationWaypointTypedType;
 + (Class)routeType;
 + (Class)serviceTagType;
+- (void).cxx_destruct;
 - (int)StringAsRerouteStatus:(id)arg1;
 - (void)addDestinationWaypointTyped:(id)arg1;
 - (void)addRoute:(id)arg1;
@@ -94,7 +105,6 @@
 - (void)clearServiceTags;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)destinationWaypointTypedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)destinationWaypointTypedsCount;

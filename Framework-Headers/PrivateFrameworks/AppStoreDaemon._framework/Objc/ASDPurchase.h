@@ -19,6 +19,7 @@
     BOOL _isBackgroundUpdate;
     BOOL _isRedownload;
     BOOL _shouldCancelForInstalledBundleItems;
+    BOOL _sendGUID;
     NSString *_bundleID;
     NSNumber *_itemID;
     NSString *_itemName;
@@ -53,6 +54,7 @@
 @property (copy, nonatomic) NSString *referrerName; // @synthesize referrerName=_referrerName;
 @property (copy, nonatomic) NSString *referrerURL; // @synthesize referrerURL=_referrerURL;
 @property (copy, nonatomic) NSArray *requiredCapabilities; // @synthesize requiredCapabilities=_requiredCapabilities;
+@property (nonatomic) BOOL sendGUID; // @synthesize sendGUID=_sendGUID;
 @property (nonatomic) BOOL shouldCancelForInstalledBundleItems; // @synthesize shouldCancelForInstalledBundleItems=_shouldCancelForInstalledBundleItems;
 @property (copy, nonatomic) NSString *vendorName; // @synthesize vendorName=_vendorName;
 

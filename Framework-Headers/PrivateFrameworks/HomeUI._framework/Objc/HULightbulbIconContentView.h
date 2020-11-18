@@ -6,12 +6,13 @@
 
 #import <HomeUI/HUIconContentView.h>
 
-@class HUAnimatableFilterImageView, UIVisualEffectView;
+@class HUAnimatableFilterImageView, NSString, UIVisualEffectView;
 
 @interface HULightbulbIconContentView : HUIconContentView
 {
     BOOL _on;
     double _brightness;
+    NSString *_lastUsedIconIdentifier;
     UIVisualEffectView *_vibrantBaseEffectView;
     UIVisualEffectView *_vibrantOutlineEffectView;
     HUAnimatableFilterImageView *_vibrantBulbView;
@@ -23,6 +24,7 @@
 @property (nonatomic) double brightness; // @synthesize brightness=_brightness;
 @property (strong, nonatomic) HUAnimatableFilterImageView *coloredBaseView; // @synthesize coloredBaseView=_coloredBaseView;
 @property (strong, nonatomic) HUAnimatableFilterImageView *coloredBulbView; // @synthesize coloredBulbView=_coloredBulbView;
+@property (copy, nonatomic) NSString *lastUsedIconIdentifier; // @synthesize lastUsedIconIdentifier=_lastUsedIconIdentifier;
 @property (nonatomic, getter=isOn) BOOL on; // @synthesize on=_on;
 @property (strong, nonatomic) UIVisualEffectView *vibrantBaseEffectView; // @synthesize vibrantBaseEffectView=_vibrantBaseEffectView;
 @property (strong, nonatomic) HUAnimatableFilterImageView *vibrantBaseView; // @synthesize vibrantBaseView=_vibrantBaseView;
@@ -31,8 +33,6 @@
 
 - (void).cxx_destruct;
 - (id)_allImageViews;
-- (BOOL)_shouldApplyVibrancy;
-- (id)_tintColorForImageView:(id)arg1 style:(unsigned long long)arg2;
 - (void)_updateBulbState;
 - (void)_updateDisplayContextState;
 - (void)_updateImages;

@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int mode; // @synthesize mode=m_mode;
 @property (nonatomic) double pointerOffset; // @synthesize pointerOffset=m_pointerOffset;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

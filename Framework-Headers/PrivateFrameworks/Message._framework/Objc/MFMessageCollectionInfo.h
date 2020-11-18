@@ -12,22 +12,22 @@
 {
     MFMessageInfoOrderedSet *_messageInfoSet;
     long long _messageCollectionHash;
-    MFMessageInfo *_stickyPlaceholder;
 }
 
 @property (readonly, nonatomic) NSArray *allMessageInfos;
+@property (copy, nonatomic) CDUnknownBlockType duplicatePreferenceComparator;
 @property (readonly, nonatomic) MFMessageInfo *firstMessage;
 @property (readonly, nonatomic) BOOL isEmpty;
 @property (readonly, nonatomic) MFMessageInfo *lastMessage;
 @property (readonly, nonatomic) long long messageCollectionHash; // @synthesize messageCollectionHash=_messageCollectionHash;
 @property (readonly, nonatomic) unsigned long long messageCountWithDuplicates;
 @property (readonly, nonatomic) unsigned long long messagesCount;
-@property (strong, nonatomic) MFMessageInfo *stickyPlaceholder; // @synthesize stickyPlaceholder=_stickyPlaceholder;
 @property (readonly, nonatomic) NSArray *uniqueMessageInfos;
 
 + (unsigned long long)stateForMessages:(id)arg1;
 - (unsigned long long)addMessageInfo:(id)arg1;
 - (void)dealloc;
+- (id)debugDescription;
 - (id)duplicatesOfMessageInfo:(id)arg1;
 - (unsigned long long)indexOfMessageInfo:(id)arg1;
 - (unsigned long long)indexWhereMessageInfoWouldBeInserted:(id)arg1;

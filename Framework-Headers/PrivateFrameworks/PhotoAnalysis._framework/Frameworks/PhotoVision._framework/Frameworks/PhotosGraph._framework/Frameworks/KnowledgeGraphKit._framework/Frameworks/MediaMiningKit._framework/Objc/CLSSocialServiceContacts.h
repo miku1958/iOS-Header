@@ -7,6 +7,7 @@
 #import <MediaMiningKit/CLSSocialService.h>
 
 @class CNContact, CNContactStore, NSMutableArray, NSMutableDictionary;
+@protocol CLSSocialServiceContactsDelegate;
 
 @interface CLSSocialServiceContacts : CLSSocialService
 {
@@ -16,12 +17,16 @@
     NSMutableArray *_allPersons;
     NSMutableDictionary *_personsForCNIdentifiers;
     NSMutableDictionary *_personsForPHIdentifiers;
+    id<CLSSocialServiceContactsDelegate> _delegate;
 }
+
+@property (weak, nonatomic) id<CLSSocialServiceContactsDelegate> delegate; // @synthesize delegate=_delegate;
 
 + (id)defaultKeysToFetch;
 - (void).cxx_destruct;
 - (id)__newPersonWithContact:(id)arg1;
 - (id)__newPersonWithPHPerson:(id)arg1;
+- (void)_addAddressesToPerson:(id)arg1 withContact:(id)arg2;
 - (id)_allPersonRecords;
 - (id)_allPersons;
 - (id)_firstNameForPersonRecord:(id)arg1;

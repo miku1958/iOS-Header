@@ -13,20 +13,16 @@
     NSObject<OS_dispatch_semaphore> *m_assertionSemaphore;
     long long m_assertionCount;
     BOOL m_waiting;
-    int m_assertionLock;
+    struct os_unfair_lock_s m_assertionLock;
     long long m_idleCount;
-    int m_idleLock;
+    struct os_unfair_lock_s m_idleLock;
 }
 
 + (id)sharedInstance;
-- (id)autorelease;
-- (void)dealloc;
-- (id)hidden;
-- (id)init;
-- (oneway void)release;
+- (void).cxx_destruct;
+- (id)_init;
 - (void)releaseIdleAssertion;
 - (void)releaseSleepAssertion;
-- (id)retain;
 - (void)takeIdleAssertion;
 - (void)takeSleepAssertion;
 - (void)waitForOutstandingSleepAssertions;

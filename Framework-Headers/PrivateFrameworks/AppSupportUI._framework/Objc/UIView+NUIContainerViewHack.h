@@ -17,5 +17,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 @end
 

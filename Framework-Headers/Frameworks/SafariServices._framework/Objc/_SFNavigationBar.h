@@ -6,21 +6,25 @@
 
 #import <UIKit/UIView.h>
 
+#import <SafariServices/UIDragInteractionDelegate-Protocol.h>
+#import <SafariServices/UIDragInteractionDelegate_Private-Protocol.h>
+#import <SafariServices/UIDropInteractionDelegate-Protocol.h>
+#import <SafariServices/UIDropInteractionDelegate_Private-Protocol.h>
 #import <SafariServices/UIGestureRecognizerDelegate-Protocol.h>
 #import <SafariServices/_SFFluidProgressViewDelegate-Protocol.h>
 #import <SafariServices/_SFNavigationBarURLButtonDelegate-Protocol.h>
 #import <SafariServices/_UIBasicAnimationFactory-Protocol.h>
 
-@class NSArray, NSAttributedString, NSString, NSTimer, SFCrossfadingImageView, SFCrossfadingLabel, UIButton, UIColor, UIImageView, UILabel, UILongPressGestureRecognizer, UITextField, _SFDimmingButton, _SFFluidProgressView, _SFNavigationBarBackdrop, _SFNavigationBarItem, _SFNavigationBarLabelsContainer, _SFNavigationBarReaderButton, _SFNavigationBarURLButton, _SFToolbar, _UIBackdropViewSettings;
+@class NSArray, NSAttributedString, NSString, NSTimer, SFCrossfadingImageView, SFNavigationBarReaderButton, UIButton, UIColor, UIImageView, UILabel, UILongPressGestureRecognizer, UITextField, _SFDimmingButton, _SFDismissButton, _SFFluidProgressView, _SFNavigationBarBackdrop, _SFNavigationBarItem, _SFNavigationBarLabelsContainer, _SFNavigationBarURLButton, _SFToolbar, _UIBackdropViewSettings;
 @protocol _SFNavigationBarDelegate;
 
-@interface _SFNavigationBar : UIView <_UIBasicAnimationFactory, _SFFluidProgressViewDelegate, _SFNavigationBarURLButtonDelegate, UIGestureRecognizerDelegate>
+@interface _SFNavigationBar : UIView <_UIBasicAnimationFactory, _SFFluidProgressViewDelegate, _SFNavigationBarURLButtonDelegate, UIGestureRecognizerDelegate, UIDragInteractionDelegate, UIDragInteractionDelegate_Private, UIDropInteractionDelegate, UIDropInteractionDelegate_Private>
 {
     UIButton *_compressedBarButton;
     UIView *_controlsContainer;
     _SFNavigationBarLabelsContainer *_labelsContainer;
     UIView *_labelScalingContainer;
-    SFCrossfadingLabel *_URLLabel;
+    UILabel *_URLLabel;
     UILabel *_expandedURLLabel;
     UILabel *_readerAvailabilityLabel;
     double _URLWidth;
@@ -43,18 +47,20 @@
     UIView *_separator;
     BOOL _lockViewNeedsUpdate;
     NSAttributedString *_attributedTextWhenExpanded;
-    _SFNavigationBarReaderButton *_readerButton;
+    SFNavigationBarReaderButton *_readerButton;
     _SFDimmingButton *_stopButton;
     _SFDimmingButton *_reloadButton;
+    UILongPressGestureRecognizer *_readerLongPressGestureRecognizer;
     _SFDimmingButton *_readerAppearanceButton;
+    UIButton *_mediaCaptureMuteButton;
     long long _visibleRightButtonType;
     UILongPressGestureRecognizer *_reloadLongPressGestureRecognizer;
     UIButton *_cancelButton;
     double _cancelButtonIntrinsicWidth;
     BOOL _readerButtonWillShow;
     NSTimer *_readerAvailabilityLabelHideTimer;
-    UIButton *_doneButton;
-    UIView *_doneButtonContainer;
+    _SFDismissButton *_dismissButton;
+    UIView *_dismissButtonContainer;
     unsigned long long _inputMode;
     BOOL _preferredBarTintColorIsDark;
     BOOL _preferredBarTintColorIsGreen;
@@ -66,7 +72,6 @@
     BOOL _expanded;
     BOOL _usesUnscaledBackdrop;
     BOOL _backdropGroupDisabled;
-    BOOL _usesContainedAppearance;
     BOOL _suppressesBlur;
     _SFNavigationBarItem *_item;
     unsigned long long _tintStyle;
@@ -93,6 +98,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_SFNavigationBarDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) double dismissButtonPadding;
+@property (readonly, nonatomic) struct CGSize dismissButtonSize;
 @property (nonatomic, getter=isExpanded) BOOL expanded; // @synthesize expanded=_expanded;
 @property (nonatomic) BOOL hasToolbar;
 @property (readonly) unsigned long long hash;
@@ -104,6 +111,7 @@
 @property (strong, nonatomic) UIColor *preferredBarTintColor; // @synthesize preferredBarTintColor=_preferredBarTintColor;
 @property (strong, nonatomic) UIColor *preferredControlsTintColor; // @synthesize preferredControlsTintColor=_preferredControlsTintColor;
 @property (readonly, nonatomic) UIButton *readerAppearanceButton;
+@property (readonly, nonatomic) UIButton *readerButton; // @synthesize readerButton=_readerButton;
 @property (readonly, nonatomic) UIButton *reloadButton; // @synthesize reloadButton=_reloadButton;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressesBlur; // @synthesize suppressesBlur=_suppressesBlur;
@@ -112,13 +120,14 @@
 @property (readonly, nonatomic) _SFToolbar *toolbar; // @synthesize toolbar=_toolbar;
 @property (nonatomic) BOOL unifiedFieldShowsProgressView; // @synthesize unifiedFieldShowsProgressView=_unifiedFieldShowsProgressView;
 @property (nonatomic) BOOL updatesBackdrop;
-@property (nonatomic) BOOL usesContainedAppearance; // @synthesize usesContainedAppearance=_usesContainedAppearance;
 @property (nonatomic) BOOL usesNarrowLayout; // @synthesize usesNarrowLayout=_usesNarrowLayout;
 @property (nonatomic) BOOL usesUnscaledBackdrop; // @synthesize usesUnscaledBackdrop=_usesUnscaledBackdrop;
 @property (nonatomic, getter=isUsingLightControls) BOOL usingLightControls; // @synthesize usingLightControls=_usingLightControls;
 @property (readonly, nonatomic) double visualHeight;
 
++ (long long)_metricsCategory;
 + (double)defaultHeight;
++ (void)initialize;
 + (double)minimumHeight;
 + (double)separatorHeight;
 - (void).cxx_destruct;
@@ -128,14 +137,21 @@
 - (double)_URLFieldHorizontalMargin;
 - (void)_URLTapped:(id)arg1;
 - (id)_URLTextColor;
+- (void)_adjustLabelRectForLeadingButtonWithDelay:(double)arg1;
+- (id)_api_dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
+- (id)_api_dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
 - (id)_backdropInputSettings;
+- (void)_barMetricsDidChange;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
 - (void)_cancelButtonTapped:(id)arg1;
 - (void)_compressedBarTapped;
 - (void)_configureNavigationBarRightButtonTintedImages;
 - (double)_customButtonHorizontalPadding;
 - (id)_dimmingButtonWithAction:(SEL)arg1;
-- (void)_doneButtonTapped:(id)arg1;
+- (void)_dismissButtonTapped:(id)arg1;
+- (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
+- (id)_dragInteraction:(id)arg1 viewToSnapshotItem:(id)arg2;
+- (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (id)_editingLabelFont;
 - (double)_editingScaleFactor;
 - (id)_expandedURLLabelParagraphStyle;
@@ -145,18 +161,21 @@
 - (void)_hideReaderAvailabilityLabelSoon;
 - (id)_hitTestCandidateViews;
 - (long long)_inferredNavigationBarRightButtonType;
-- (id)_legibilityColorForBarTintColor:(id)arg1;
 - (id)_lockImageUsingMiniatureVersion:(BOOL)arg1;
+- (void)_mediaCaptureMuteButtonTapped:(id)arg1;
 - (double)_minimumXForLabelOfWidth:(double)arg1 centeredInOutlineOfWidth:(double)arg2 leftAlignedToMinimumX:(double)arg3 maximumX:(double)arg4;
 - (id)_navigationBarRightButtonWithType:(long long)arg1;
 - (id)_newNavigationButtonWithImage:(id)arg1 insets:(struct UIEdgeInsets)arg2 action:(SEL)arg3;
 - (id)_placeholderColor;
 - (id)_placeholderText;
+- (long long)_preferredLeadingButtonType;
 - (void)_readerAppearanceButtonPressed;
+- (void)_readerButtonLongPressed:(id)arg1;
 - (void)_readerButtonTapped:(id)arg1;
 - (void)_reloadButtonLongPressed:(id)arg1;
 - (void)_reloadButtonPressed;
 - (BOOL)_shouldShowPreferredBarTintColor;
+- (BOOL)_shouldUpdateBackdropStyleForTransitionFromItem:(id)arg1 toItem:(id)arg2;
 - (double)_squishTransformFactor;
 - (void)_stopButtonPressed;
 - (double)_textFieldTopMargin;
@@ -170,16 +189,21 @@
 - (void)_updateBarTintColorMetrics;
 - (void)_updateControlTints;
 - (void)_updateFakeViews;
+- (void)_updateFonts;
 - (void)_updateLockIconHasEVCertificateTint;
 - (void)_updateLockViewIfNeeded;
+- (void)_updateMediaCaptureMuteButton;
+- (void)_updateNavigationBarLeadingButtonsAlpha;
+- (void)_updateNavigationBarLeadingButtonsVisibility;
 - (void)_updateNavigationBarRightButtonType;
 - (void)_updateNavigationBarRightButtonsAlpha;
 - (void)_updateNavigationBarRightButtonsVisibility;
 - (void)_updatePlaceholderText;
 - (void)_updateProgressView;
+- (void)_updateProgressViewCornerRadius;
+- (void)_updateReaderButtonAndAvailabilityTextVisibility;
 - (void)_updateReaderButtonSelected;
 - (void)_updateReaderButtonTint;
-- (void)_updateReaderButtonVisibility;
 - (void)_updateReaderButtonVisibilityAnimated:(BOOL)arg1 showAvailabilityText:(BOOL)arg2 adjustURLLabels:(BOOL)arg3;
 - (void)_updateSearchIndicator;
 - (void)_updateSeparatorAlpha;
@@ -192,11 +216,16 @@
 - (void)_updateTintColorForControls;
 - (void)_updateToolbarAlpha;
 - (void)_updateURLOutlineColor;
+- (void)_updateURLOutlineCornerRadius;
 - (id)_viewToInsertProgressBarIn;
 - (void)backdropDidApplySettings:(id)arg1;
 - (BOOL)canBecomeFirstResponder;
 - (void)clearEphemeralUI;
 - (void)dealloc;
+- (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
+- (void)dragInteraction:(id)arg1 sessionWillBegin:(id)arg2;
+- (BOOL)dropInteraction:(id)arg1 canHandleSession:(id)arg2;
+- (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
 - (void)fluidProgressViewDidShowProgress:(id)arg1;
 - (void)fluidProgressViewWillShowProgress:(id)arg1;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
@@ -204,18 +233,20 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 inputMode:(unsigned long long)arg2;
 - (void)layoutSubviews;
+- (BOOL)navigationBarURLButton:(id)arg1 shouldShowMenuForGestureWithRecognizer:(id)arg2;
 - (void)navigationBarURLButtonDidReceiveCopyCommand:(id)arg1;
 - (void)navigationBarURLButtonDidReceivePasteCommand:(id)arg1;
 - (BOOL)navigationBarURLButtonShouldCopy:(id)arg1;
 - (BOOL)navigationBarURLButtonShouldPaste:(id)arg1;
 - (id)newTextField;
 - (double)placeholderHorizontalInset;
+- (void)setDismissButtonStyle:(long long)arg1 animated:(BOOL)arg2;
 - (void)setExpanded:(BOOL)arg1 textFieldSelectionRange:(struct _NSRange)arg2;
 - (void)setTextFieldPlaceHolderColor:(id)arg1;
-- (void)squishExternalView:(id)arg1 withUntransformedFrame:(struct CGRect)arg2 minimumScale:(double)arg3;
 - (id)textForNavigationBarURLButton:(id)arg1;
 - (void)tintColorDidChange;
 - (id)toolbarPlacedOnTop;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateToolbarTintColor;
 
 @end

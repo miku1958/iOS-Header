@@ -27,6 +27,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStartDate:(id)arg1 endDate:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -8,8 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 @interface GEOPlaceDataAmendment : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     BOOL _suppressSiriRating;
     struct {
         unsigned int suppressSiriRating:1;
@@ -18,7 +21,9 @@
 
 @property (nonatomic) BOOL hasSuppressSiriRating;
 @property (nonatomic) BOOL suppressSiriRating; // @synthesize suppressSiriRating=_suppressSiriRating;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

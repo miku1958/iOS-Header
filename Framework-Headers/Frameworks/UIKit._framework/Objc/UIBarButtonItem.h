@@ -7,11 +7,12 @@
 #import <UIKit/UIBarItem.h>
 
 #import <UIKit/NSCoding-Protocol.h>
+#import <UIKit/UISpringLoadedInteractionSupporting-Protocol.h>
 
-@class NSDictionary, NSSet, NSString, UIBarButtonItemGroup, UIColor, UIImage, UILayoutGuide, UINavigationItem, UIToolbarButton, UIView;
+@class NSArray, NSDictionary, NSSet, NSString, UIBarButtonItemGroup, UIColor, UIImage, UILayoutGuide, UINavigationItem, UIToolbarButton, UIView;
 @protocol _UIBarButtonItemViewOwner;
 
-@interface UIBarButtonItem : UIBarItem <NSCoding>
+@interface UIBarButtonItem : UIBarItem <UISpringLoadedInteractionSupporting, NSCoding>
 {
     NSString *_title;
     NSSet *_possibleTitles;
@@ -21,6 +22,7 @@
     UIImage *_landscapeImagePhone;
     struct UIEdgeInsets _imageInsets;
     struct UIEdgeInsets _landscapeImagePhoneInsets;
+    struct UIEdgeInsets _additionalSelectionInsets;
     double _width;
     UIView *_view;
     id _appearanceStorage;
@@ -35,7 +37,12 @@
         unsigned int selected:1;
         unsigned int imageHasEffects:1;
         unsigned int actsAsFakeBackButton:1;
+        unsigned int springLoaded:1;
+        unsigned int showsChevron:1;
+        unsigned int wantsThreeUp:1;
     } _barButtonItemFlags;
+    NSArray *_gestureRecognizers;
+    NSArray *_interactions;
     BOOL _flexible;
     BOOL __showsBackButtonIndicator;
     BOOL __hidden;
@@ -53,13 +60,18 @@
     id<_UIBarButtonItemViewOwner> __viewOwner;
     CDUnknownBlockType __autoValidationHandler;
     UILayoutGuide *__popoverLayoutGuide;
+    NSArray *__backButtonAlternateTitles;
     UIBarButtonItemGroup *_buttonGroup;
 }
 
+@property (nonatomic, setter=_setAdditionalSelectionInsets:) struct UIEdgeInsets _additionalSelectionInsets;
 @property (copy, nonatomic, setter=_setAutoValidationHandler:) CDUnknownBlockType _autoValidationHandler; // @synthesize _autoValidationHandler=__autoValidationHandler;
+@property (copy, nonatomic, setter=_setBackButtonAlternateTitles:) NSArray *_backButtonAlternateTitles; // @synthesize _backButtonAlternateTitles=__backButtonAlternateTitles;
 @property (nonatomic, setter=_setFlexible:) BOOL _flexible; // @synthesize _flexible;
+@property (strong, nonatomic, setter=_setGestureRecognizers:) NSArray *_gestureRecognizers;
 @property (nonatomic, setter=_setHidden:) BOOL _hidden; // @synthesize _hidden=__hidden;
 @property (nonatomic, setter=_setImageHasEffects:) BOOL _imageHasEffects;
+@property (strong, nonatomic, setter=_setInteractions:) NSArray *_interactions;
 @property (strong, nonatomic, setter=_setItemVariation:) UIBarButtonItem *_itemVariation; // @dynamic _itemVariation;
 @property (strong, nonatomic, setter=_setItemVariation:) UIBarButtonItem *_itemVariation; // @synthesize _itemVariation=__itemVariation;
 @property (nonatomic, setter=_setMaximumWidth:) double _maximumWidth; // @synthesize _maximumWidth;
@@ -80,18 +92,21 @@
 @property (nonatomic) SEL action; // @synthesize action=_action;
 @property (readonly, weak, nonatomic) UIBarButtonItemGroup *buttonGroup; // @synthesize buttonGroup=_buttonGroup;
 @property (strong, nonatomic) UIView *customView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly, nonatomic) BOOL groupRepresentative; // @synthesize groupRepresentative=_groupRepresentative;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isSystemItem;
 @property (readonly, nonatomic) BOOL isSystemItem;
-@property (strong, nonatomic, getter=_miniImage, setter=_setMiniImage:) UIImage *miniImage;
-@property (nonatomic, getter=_miniImageInsets, setter=_setMiniImageInsets:) struct UIEdgeInsets miniImageInsets;
 @property (copy, nonatomic, getter=_possibleSystemItems, setter=_setPossibleSystemItems:) NSSet *possibleSystemItems;
 @property (copy, nonatomic, getter=_possibleSystemItems, setter=_setPossibleSystemItems:) NSSet *possibleSystemItems; // @synthesize possibleSystemItems=_possibleSystemItems;
 @property (copy, nonatomic) NSSet *possibleTitles;
 @property (nonatomic) BOOL selected;
 @property (nonatomic) BOOL selected;
+@property (nonatomic, getter=isSpringLoaded) BOOL springLoaded;
 @property (nonatomic) long long style;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) long long systemItem;
 @property (readonly, nonatomic) long long systemItem;
 @property (weak, nonatomic) id target; // @synthesize target=_target;
@@ -111,24 +126,31 @@
 - (id)_foregroundColorForLetterpressWithView:(id)arg1;
 - (void)_getNavBarEdgeSizeAdjust:(struct CGSize *)arg1 imageInsets:(struct UIEdgeInsets *)arg2 landscape:(BOOL)arg3;
 - (void)_getSystemItemStyle:(long long *)arg1 title:(id *)arg2 image:(id *)arg3 selectedImage:(id *)arg4 action:(SEL *)arg5 forBarStyle:(long long)arg6 landscape:(BOOL)arg7 alwaysBordered:(BOOL)arg8;
-- (void)_getToolbarEdgeInsets:(struct UIEdgeInsets *)arg1 imageInsets:(struct UIEdgeInsets *)arg2 glowInsets:(struct UIEdgeInsets *)arg3 forBarStyle:(long long)arg4 landscape:(BOOL)arg5 alwaysBordered:(BOOL)arg6;
+- (void)_getToolbarSystemItemEdgeInsetsWithImageInsets:(struct UIEdgeInsets *)arg1 forBarStyle:(long long)arg2 landscape:(BOOL)arg3 alwaysBordered:(BOOL)arg4;
 - (id)_imageForState:(unsigned long long)arg1 metrics:(long long)arg2 position:(long long)arg3 type:(long long)arg4;
+- (id)_internalLargeContentSizeImage;
 - (BOOL)_isImageBarButtonItem;
 - (id)_itemForPresenting;
 - (double)_leftImagePaddingForEdgeMarginInNavBar;
+- (id)_miniImage;
+- (struct UIEdgeInsets)_miniImageInsets;
 - (struct CGRect)_rectForPresenting;
-- (BOOL)_resolveSystemImage:(id *)arg1 metrics:(long long)arg2 position:(long long)arg3 type:(long long)arg4;
-- (id)_resolveSystemTitle;
 - (double)_rightImagePaddingForEdgeMarginInNavBar;
 - (void)_sendAction:(id)arg1 withEvent:(id)arg2;
 - (void)_setActsAsFakeBackButton:(BOOL)arg1;
 - (void)_setButtonGroup:(id)arg1 isRepresentative:(BOOL)arg2;
 - (void)_setEnclosingBar:(id)arg1 onItem:(id)arg2;
+- (void)_setMiniImage:(id)arg1;
+- (void)_setMiniImageInsets:(struct UIEdgeInsets)arg1;
+- (void)_setShowsChevron:(BOOL)arg1;
 - (void)_setSystemItem:(long long)arg1;
+- (void)_setWantsThreeUp:(BOOL)arg1;
 - (void)_setWidth:(double)arg1;
 - (BOOL)_shouldBezelSystemButtonImage;
+- (BOOL)_showsChevron;
 - (void)_updateView;
 - (id)_viewForPresenting;
+- (BOOL)_wantsThreeUp;
 - (double)_width;
 - (id)backButtonBackgroundImageForState:(unsigned long long)arg1 barMetrics:(long long)arg2;
 - (double)backButtonBackgroundVerticalPositionAdjustmentForBarMetrics:(long long)arg1;
@@ -152,11 +174,14 @@
 - (id)initWithImage:(id)arg1 style:(long long)arg2 target:(id)arg3 action:(SEL)arg4;
 - (id)initWithTitle:(id)arg1 style:(long long)arg2 target:(id)arg3 action:(SEL)arg4;
 - (BOOL)isCustomViewItem;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isMinibarView;
 - (BOOL)isSpaceItem;
 - (id)itemVariation;
 - (id)landscapeImagePhone;
 - (struct UIEdgeInsets)landscapeImagePhoneInsets;
+- (id)largeContentSizeImage;
+- (struct UIEdgeInsets)largeContentSizeImageInsets;
 - (id)nextResponder;
 - (id)resolvedTitle;
 - (void)setBackButtonBackgroundImage:(id)arg1 forState:(unsigned long long)arg2 barMetrics:(long long)arg3;
@@ -170,6 +195,8 @@
 - (void)setIsMinibarView:(BOOL)arg1;
 - (void)setLandscapeImagePhone:(id)arg1;
 - (void)setLandscapeImagePhoneInsets:(struct UIEdgeInsets)arg1;
+- (void)setLargeContentSizeImage:(id)arg1;
+- (void)setLargeContentSizeImageInsets:(struct UIEdgeInsets)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setTitlePositionAdjustment:(struct UIOffset)arg1 forBarMetrics:(long long)arg2;
 - (void)setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;

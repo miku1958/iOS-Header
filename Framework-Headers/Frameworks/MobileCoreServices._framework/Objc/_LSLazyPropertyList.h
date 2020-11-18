@@ -9,34 +9,23 @@
 #import <MobileCoreServices/NSCopying-Protocol.h>
 #import <MobileCoreServices/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSMutableDictionary;
-@protocol OS_dispatch_queue;
+@class NSDictionary;
 
-__attribute__((visibility("hidden")))
 @interface _LSLazyPropertyList : NSObject <NSCopying, NSSecureCoding>
 {
-    NSDictionary *_plist;
-    NSMutableDictionary *_individuallyLoadedValues;
-    NSObject<OS_dispatch_queue> *_queue;
-    BOOL _peeking;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_queue; // @synthesize _queue;
-@property (getter=isPeeking) BOOL peeking; // @synthesize peeking=_peeking;
 @property (readonly) NSDictionary *propertyList; // @dynamic propertyList;
 
-+ (id)lazyPropertyListWithContext:(struct LSContext *)arg1 table:(unsigned int)arg2 unit:(unsigned int)arg3;
++ (id)lazyPropertyListWithContext:(struct LSContext *)arg1 unit:(unsigned int)arg2;
 + (id)lazyPropertyListWithLazyPropertyLists:(id)arg1;
 + (id)lazyPropertyListWithPropertyList:(id)arg1;
 + (id)lazyPropertyListWithPropertyListData:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)_filterValueFromPropertyList:(id)arg1 ofClass:(Class)arg2 valuesOfClass:(Class)arg3;
+- (BOOL)_getPropertyList:(id *)arg1;
 - (BOOL)_getValue:(id *)arg1 forPropertyListKey:(id)arg2;
-- (id)_initWithPropertyList:(id)arg1;
-- (id)_loadPropertyListPeeking:(BOOL)arg1;
-- (id)_loadPropertyListPeeking:(BOOL)arg1 forKey:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

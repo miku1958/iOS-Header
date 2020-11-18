@@ -25,11 +25,13 @@
 - (void).cxx_destruct;
 - (BOOL)_canPerformRelatedFetch;
 - (BOOL)_canPerformSuggestionsFetch;
+- (id)_createToken;
 - (void)_tokenDidComplete:(id)arg1;
 - (id)init;
 - (void)performBlockWhenReadyToFetchRelated:(CDUnknownBlockType)arg1;
 - (void)performBlockWhenReadyToFetchSuggestions:(CDUnknownBlockType)arg1;
 - (id)tokenForCuratedFetch;
+- (id)tokenForLivePhotoVariations;
 
 @end
 

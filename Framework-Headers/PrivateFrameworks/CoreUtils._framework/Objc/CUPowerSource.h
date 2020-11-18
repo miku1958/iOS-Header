@@ -6,15 +6,18 @@
 
 #import <Foundation/NSObject.h>
 
+#import <CoreUtils/NSSecureCoding-Protocol.h>
+
 @class NSDictionary, NSString;
 
-@interface CUPowerSource : NSObject
+@interface CUPowerSource : NSObject <NSSecureCoding>
 {
     struct OpaqueIOPSPowerSourceID *_psID;
     BOOL _charging;
     BOOL _present;
     NSString *_accessoryID;
     double _chargeLevel;
+    long long _familyCode;
     NSString *_groupID;
     NSString *_name;
     NSString *_partID;
@@ -24,13 +27,20 @@
     NSString *_transportType;
     NSString *_type;
     long long _vendorID;
+    long long _adapterFamilyCode;
+    NSString *_adapterName;
     NSDictionary *_ioKitDescription;
+    NSDictionary *_ioKitAdapterDescription;
 }
 
 @property (copy, nonatomic) NSString *accessoryID; // @synthesize accessoryID=_accessoryID;
+@property (nonatomic) long long adapterFamilyCode; // @synthesize adapterFamilyCode=_adapterFamilyCode;
+@property (copy, nonatomic) NSString *adapterName; // @synthesize adapterName=_adapterName;
 @property (nonatomic) double chargeLevel; // @synthesize chargeLevel=_chargeLevel;
 @property (nonatomic) BOOL charging; // @synthesize charging=_charging;
+@property (nonatomic) long long familyCode; // @synthesize familyCode=_familyCode;
 @property (copy, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
+@property (copy, nonatomic) NSDictionary *ioKitAdapterDescription; // @synthesize ioKitAdapterDescription=_ioKitAdapterDescription;
 @property (copy, nonatomic) NSDictionary *ioKitDescription; // @synthesize ioKitDescription=_ioKitDescription;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *partID; // @synthesize partID=_partID;
@@ -42,12 +52,18 @@
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property (nonatomic) long long vendorID; // @synthesize vendorID=_vendorID;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (id)detailedDescription;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (void)invalidate;
+- (BOOL)isEqual:(id)arg1;
 - (int)publish;
+- (unsigned int)updateWithPowerAdapterDetails:(id)arg1;
 - (unsigned int)updateWithPowerSourceDescription:(id)arg1;
 
 @end

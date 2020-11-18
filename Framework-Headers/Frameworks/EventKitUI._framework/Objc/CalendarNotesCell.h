@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <EventKitUI/EKUIConstrainedFontsTableViewCell.h>
+#import <EventKitUI/EKUITableViewCell.h>
 
 @class NSString, UITextView;
 
-@interface CalendarNotesCell : EKUIConstrainedFontsTableViewCell
+@interface CalendarNotesCell : EKUITableViewCell
 {
     UITextView *_textView;
     NSString *_text;

@@ -75,7 +75,7 @@
 - (void)routingController:(id)arg1 didChangeAirPlayMirrorDestinationToActive:(BOOL)arg2;
 - (void)routingController:(id)arg1 willChangeCategoryActiveStateToActive:(BOOL)arg2;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
-- (void)showAvailableRoutes;
+- (void)showAvailableRoutesInWindow:(id)arg1;
 - (void)toggleSpeaker;
 
 @end

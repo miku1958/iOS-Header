@@ -66,6 +66,7 @@
 
 + (id)deduplicatedRecordsForCloudObjects:(id)arg1;
 + (void)deleteAllServerChangeTokens;
++ (id)errorCodesToIgnoreForBackoffTimer;
 + (id)errorForDisabledCloudSyncing;
 + (id)errorFromErrors:(id)arg1;
 + (id)errorFromOperations:(id)arg1;
@@ -76,12 +77,13 @@
 + (id)notesZoneID;
 + (id)objectsByDatabaseScope:(id)arg1;
 + (id)sharedContext;
++ (BOOL)shouldIgnoreErrorForBackoffTimer:(id)arg1;
 + (id)sortedRecords:(id)arg1;
 + (id)zoneIDsFromZoneInfos:(id)arg1;
 + (id)zoneInfosFromZoneIDs:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addModifyRecordsOperationsWithCloudObjectsToSave:(id)arg1 delete:(id)arg2 waitForDependencies:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_processCloudObjects:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_processCloudObjects:(id)arg1 operationQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_syncWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)addCallbackBlocksToModifyRecordsOperation:(id)arg1 rootRecordIDsByShareID:(id)arg2;
 - (void)addDependenciesForModifyRecordsOperation:(id)arg1;
@@ -124,8 +126,8 @@
 - (void)fetchRecordIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchRecordZoneChangesForZoneIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchRecordZoneChangesOperation:(id)arg1 completedFetchForZoneID:(id)arg2 serverChangeToken:(id)arg3 error:(id)arg4;
-- (void)fetchRecordZoneChangesOperation:(id)arg1 recordChanged:(id)arg2;
-- (void)fetchRecordZoneChangesOperation:(id)arg1 recordWasDeletedWithRecordID:(id)arg2 recordType:(id)arg3;
+- (void)fetchRecordZoneChangesOperation:(id)arg1 recordChanged:(id)arg2 context:(id)arg3;
+- (void)fetchRecordZoneChangesOperation:(id)arg1 recordWasDeletedWithRecordID:(id)arg2 recordType:(id)arg3 context:(id)arg4;
 - (void)fetchRecordZoneChangesOperation:(id)arg1 zoneID:(id)arg2 changeTokenUpdated:(id)arg3;
 - (void)fetchRecordZoneChangesOperationDidComplete:(id)arg1 error:(id)arg2;
 - (void)fetchRecordZoneChangesWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -166,7 +168,7 @@
 - (BOOL)partialError:(id)arg1 containsErrorCode:(long long)arg2;
 - (void)printOperationQueue;
 - (void)processAllCloudObjectsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)processObjectIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)processObjectIDs:(id)arg1 operationQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)processPendingCloudObjects;
 - (void)processPendingCloudObjectsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)pushCloudObjects:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

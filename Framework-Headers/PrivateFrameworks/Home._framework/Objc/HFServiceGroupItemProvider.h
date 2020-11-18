@@ -6,22 +6,26 @@
 
 #import <Home/HFItemProvider.h>
 
-@class NSMutableSet;
+@class HMHome, NSMutableSet;
 @protocol HFCharacteristicValueSource;
 
 @interface HFServiceGroupItemProvider : HFItemProvider
 {
     CDUnknownBlockType _filter;
+    HMHome *_home;
     NSMutableSet *_serviceGroupItems;
     id<HFCharacteristicValueSource> _overrideValueSource;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
+@property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) id<HFCharacteristicValueSource> overrideValueSource; // @synthesize overrideValueSource=_overrideValueSource;
 @property (strong, nonatomic) NSMutableSet *serviceGroupItems; // @synthesize serviceGroupItems=_serviceGroupItems;
 @property (strong, nonatomic) id<HFCharacteristicValueSource> valueSource;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 - (id)initWithHome:(id)arg1;
 - (id)invalidationReasons;
 - (id)items;

@@ -8,43 +8,60 @@
 
 #import <UserNotificationsUIKit/NCNotificationListClearButtonDelegate-Protocol.h>
 
-@class NCNotificationListClearButton, NSString, UILabel;
+@class NCNotificationListClearButton, NSString, SBUILegibilityLabel;
 @protocol NCNotificationListSectionHeaderViewDelegate;
 
 @interface NCNotificationListSectionHeaderView : UICollectionReusableView <NCNotificationListClearButtonDelegate>
 {
+    BOOL _shouldOverrideForReveal;
     id<NCNotificationListSectionHeaderViewDelegate> _delegate;
-    UILabel *_titleLabel;
+    NSString *_backgroundGroupName;
+    double _overrideAlpha;
+    SBUILegibilityLabel *_titleLabel;
     NCNotificationListClearButton *_clearButton;
     NSString *_sectionIdentifier;
+    struct CGPoint _overrideCenter;
 }
 
+@property (copy, nonatomic) NSString *backgroundGroupName; // @synthesize backgroundGroupName=_backgroundGroupName;
 @property (strong, nonatomic) NCNotificationListClearButton *clearButton; // @synthesize clearButton=_clearButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<NCNotificationListSectionHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double overrideAlpha; // @synthesize overrideAlpha=_overrideAlpha;
+@property (nonatomic) struct CGPoint overrideCenter; // @synthesize overrideCenter=_overrideCenter;
 @property (copy, nonatomic) NSString *sectionIdentifier; // @synthesize sectionIdentifier=_sectionIdentifier;
+@property (nonatomic) BOOL shouldOverrideForReveal; // @synthesize shouldOverrideForReveal=_shouldOverrideForReveal;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (strong, nonatomic) SBUILegibilityLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 + (id)_labelFont;
-+ (double)headerHeight;
++ (struct CGSize)_labelSizeWithWidth:(double)arg1 title:(id)arg2;
++ (double)headerHeightWithWidth:(double)arg1 title:(id)arg2;
 - (void).cxx_destruct;
 - (void)_clearButtonAction:(id)arg1;
 - (long long)_graphicsQuality;
 - (void)_layoutClearButtonWithScale:(double)arg1;
 - (void)_layoutTitleLabelWithScale:(double)arg1;
+- (void)_observeContentSizeChange;
 - (void)_resetClearButtonStateAnimated:(BOOL)arg1;
+- (void)_resetRevealOverrides;
 - (double)_titleLabelBaselineOffset;
+- (void)applyLayoutAttributes:(id)arg1;
 - (void)clearButtonViewDidDismissForceTouchView:(id)arg1;
 - (void)clearButtonViewDidPresentForceTouchView:(id)arg1;
+- (void)configureClearButton;
+- (void)contentSizeDidChange;
+- (void)dealloc;
 - (BOOL)dismissModalFullScreenIfNeeded;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)resetAnimated:(BOOL)arg1;
+- (void)setClearButtonVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setTitle:(id)arg1 forSectionIdentifier:(id)arg2;
+- (void)updateForLegibilitySettings:(id)arg1;
 
 @end
 

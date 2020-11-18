@@ -20,6 +20,7 @@
     struct CGSize _size;
     struct CGRect _frame;
     double _alpha;
+    long long _zPosition;
     struct CATransform3D _transform;
     NSString *_isCloneString;
     struct {
@@ -67,6 +68,8 @@
 - (void)_setElementKind:(id)arg1;
 - (void)_setIsClone:(BOOL)arg1;
 - (void)_setReuseIdentifier:(id)arg1;
+- (void)_setZPosition:(long long)arg1;
+- (long long)_zPosition;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initialLayoutAttributesForInsertedDecorationElementOfKind:(id)arg1 atIndexPath:(id)arg2;

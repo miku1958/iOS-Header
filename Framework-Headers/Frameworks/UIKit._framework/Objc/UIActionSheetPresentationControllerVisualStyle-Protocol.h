@@ -6,7 +6,7 @@
 
 #import <UIKit/NSObject-Protocol.h>
 
-@class UIColor, UIView;
+@class UIColor, UITraitCollection, UIView;
 @protocol UIActionSheetPresentationControllerDismissActionView;
 
 @protocol UIActionSheetPresentationControllerVisualStyle <NSObject>
@@ -15,6 +15,8 @@
 @property (readonly) double cornerRadius;
 @property (readonly) UIColor *dimmingViewColor;
 @property (readonly) UIView<UIActionSheetPresentationControllerDismissActionView> *dismissActionView;
+@property (readonly) double dismissToContentSpacing;
+@property (strong) UITraitCollection *traitCollection;
 
 @end
 

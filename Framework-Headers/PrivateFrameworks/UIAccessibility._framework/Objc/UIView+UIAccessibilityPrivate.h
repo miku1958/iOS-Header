@@ -7,16 +7,20 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (UIAccessibilityPrivate)
++ (id)_accessibilityTitleForSystemTag:(long long)arg1;
 - (BOOL)_accessibilityAllowsSiblingsWhenOvergrown;
+- (id)_accessibilityComputedLabelForNavigationBarWithAssociatedBarButtonItem:(id)arg1;
 - (struct CGSize)_accessibilityFrameExpansion;
 - (BOOL)_accessibilityOverridesInvalidFrames;
 - (void)_accessibilitySetAllowsSiblingsWhenOvergrown:(BOOL)arg1;
 - (void)_accessibilitySetFrameExpansion:(struct CGSize)arg1;
+- (void)_accessibilitySetOverridesInvalidFrames:(BOOL)arg1;
 - (void)_accessibilitySetViewIsVisible:(BOOL)arg1;
 - (id)_accessibilitySubviews;
 - (BOOL)_accessibilityViewIsActive;
 - (BOOL)_accessibilityViewIsVisible;
 - (BOOL)_accessibilityViewIsVisibleIgnoringAXOverrides:(BOOL)arg1;
 - (id)_accessibleSubviews;
+- (id)_accessibleSubviews:(int)arg1;
 @end
 

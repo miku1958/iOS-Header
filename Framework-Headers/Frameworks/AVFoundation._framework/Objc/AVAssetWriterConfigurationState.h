@@ -21,6 +21,8 @@
     struct CGAffineTransform _preferredTransform;
     float _preferredVolume;
     float _preferredRate;
+    long long _singlePassFileSize;
+    long long _singlePassMediaDataSize;
     NSArray *_inputs;
     NSArray *_inputGroups;
 }
@@ -38,6 +40,8 @@
 @property (nonatomic) struct CGAffineTransform preferredTransform; // @synthesize preferredTransform=_preferredTransform;
 @property (nonatomic) float preferredVolume; // @synthesize preferredVolume=_preferredVolume;
 @property (nonatomic) BOOL shouldOptimizeForNetworkUse; // @synthesize shouldOptimizeForNetworkUse=_shouldOptimizeForNetworkUse;
+@property (nonatomic) long long singlePassFileSize; // @synthesize singlePassFileSize=_singlePassFileSize;
+@property (nonatomic) long long singlePassMediaDataSize; // @synthesize singlePassMediaDataSize=_singlePassMediaDataSize;
 
 - (void)dealloc;
 

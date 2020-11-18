@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSMapTable.h>
+#import <Foundation/NSMapTable.h>
 
 __attribute__((visibility("hidden")))
 @interface NSConcreteMapTable : NSMapTable
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     unsigned long long keyOptions;
     unsigned long long valueOptions;
     unsigned long long mutations;
-    int growLock;
+    struct os_unfair_lock_s growLock;
     BOOL shouldRehash;
 }
 

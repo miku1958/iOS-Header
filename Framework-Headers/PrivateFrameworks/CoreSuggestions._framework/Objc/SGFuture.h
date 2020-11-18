@@ -15,6 +15,7 @@
     NSError *_error;
     struct _opaque_pthread_mutex_t _lock;
     NSObject<OS_dispatch_queue> *_callbacks;
+    BOOL _yoDontLeaveMeHangingBro;
     BOOL _isComplete;
     NSObject<OS_dispatch_queue> *_workQueue;
 }
@@ -22,12 +23,19 @@
 @property (readonly, nonatomic) BOOL isComplete; // @synthesize isComplete=_isComplete;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (id)createAfter:(id)arg1 onCreate:(CDUnknownBlockType)arg2;
++ (id)createWithImmediateResult:(id)arg1 error:(id)arg2;
 + (id)futureForObject:(id)arg1 withKey:(void *)arg2 onCreate:(CDUnknownBlockType)arg3;
++ (void)waitForFuturesToComplete:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (BOOL)_finishWithResult:(id)arg1 orError:(id)arg2;
+- (BOOL)completeWithResult:(id)arg1 error:(id)arg2;
+- (CDUnknownBlockType)completer;
 - (void)dealloc;
+- (id)error;
 - (BOOL)fail:(id)arg1;
 - (id)init;
+- (id)result;
 - (BOOL)succeed:(id)arg1;
 - (id)wait;
 - (void)wait:(CDUnknownBlockType)arg1;

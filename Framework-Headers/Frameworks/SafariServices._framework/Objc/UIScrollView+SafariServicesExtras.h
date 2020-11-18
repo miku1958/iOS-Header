@@ -7,7 +7,16 @@
 #import <UIKit/UIScrollView.h>
 
 @interface UIScrollView (SafariServicesExtras)
-- (BOOL)_sf_isScrolledToOrPastBottom;
+
+@property (readonly, nonatomic) BOOL _sf_isScrolledPastTop;
+@property (readonly, nonatomic) BOOL _sf_isScrolledToOrPastBottom;
+
++ (BOOL)_sf_baseHorizontalScrollIndicatorInsetsExtendFullWidth:(struct UIEdgeInsets)arg1;
++ (struct UIEdgeInsets)_sf_baseInsetsForHorizontalScrollIndicatorInScrollViewContainerView:(id)arg1;
++ (struct UIEdgeInsets)_sf_baseInsetsForVerticalScrollIndicatorInScrollViewContainerView:(id)arg1;
++ (BOOL)_sf_baseVerticalScrollIndicatorInsetsExtendFullHeight:(struct UIEdgeInsets)arg1;
++ (BOOL)_sf_supportsPerAxisIndicatorInsets;
 - (void)_sf_setContentInsetAdjustments:(struct UIEdgeInsets)arg1;
+- (void)_sf_setContentInsetIgnoringAutoContentOffsetAdjustment:(struct UIEdgeInsets)arg1;
 @end
 

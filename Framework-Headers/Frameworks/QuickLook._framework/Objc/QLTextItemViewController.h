@@ -9,13 +9,15 @@
 #import <QuickLook/QLPrintingProtocol-Protocol.h>
 #import <QuickLook/UITextViewDelegate-Protocol.h>
 
-@class NSAttributedString, NSString, UIPrintPageRenderer, UISimpleTextPrintFormatter, UITextView;
+@class NSAttributedString, NSLayoutConstraint, NSString, UIPrintPageRenderer, UISimpleTextPrintFormatter, UITextView;
 
 __attribute__((visibility("hidden")))
 @interface QLTextItemViewController : QLItemViewController <UITextViewDelegate, QLPrintingProtocol>
 {
     UITextView *_textView;
     NSAttributedString *_content;
+    NSLayoutConstraint *_leftConstraint;
+    NSLayoutConstraint *_rightConstraint;
     UISimpleTextPrintFormatter *_printFormatter;
     UIPrintPageRenderer *_pageRenderer;
 }
@@ -27,21 +29,25 @@ __attribute__((visibility("hidden")))
 @property (readonly) UISimpleTextPrintFormatter *printFormatter; // @synthesize printFormatter=_printFormatter;
 @property (readonly) Class superclass;
 
-+ (void)stringFromPreviewItem:(id)arg1 withAttributes:(id *)arg2 error:(id *)arg3 completionBlock:(CDUnknownBlockType)arg4;
++ (BOOL)providesCustomPrinter;
++ (BOOL)shouldBeRemoteForContentType:(id)arg1;
++ (id)supportedContentTypes;
++ (Class)transformerClass;
 - (void).cxx_destruct;
+- (void)_updateConstraintConstants:(BOOL)arg1;
 - (BOOL)automaticallyUpdateScrollViewContentInset;
 - (BOOL)automaticallyUpdateScrollViewContentOffset;
 - (BOOL)canPinchToDismiss;
 - (BOOL)canSwipeToDismiss;
-- (void)loadPreviewControllerWithPreviewItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)loadView;
+- (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)numberOfPagesWithSize:(struct CGSize)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)pdfDataForPageAtIndex:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (long long)preferredWhitePointAdaptivityStyle;
-- (void)prepareForDrawingPages:(struct _NSRange)arg1;
+- (void)prepareForDrawingPages:(struct _NSRange)arg1 ofSize:(struct CGSize)arg2;
 - (id)printer;
 - (id)registeredKeyCommands;
 - (id)scrollView;
+- (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldRecognizeGestureRecognizer:(id)arg1;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
 

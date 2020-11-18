@@ -14,6 +14,7 @@
     _INVocabularyValidator *_validator;
 }
 
++ (void)enumerateVocabularyUsingBlock:(CDUnknownBlockType)arg1;
 + (id)sharedVocabulary;
 + (id)supportedVocabularyStringTypes;
 - (void).cxx_destruct;
@@ -23,7 +24,10 @@
 - (id)_validator;
 - (id)init;
 - (void)removeAllVocabularyStrings;
+- (void)setValidatedVocabulary:(id)arg1 ofType:(long long)arg2;
+- (void)setVocabulary:(id)arg1 ofType:(long long)arg2;
 - (void)setVocabularyStrings:(id)arg1 ofType:(long long)arg2;
+- (void)validateVocabularyType:(long long)arg1;
 
 @end
 

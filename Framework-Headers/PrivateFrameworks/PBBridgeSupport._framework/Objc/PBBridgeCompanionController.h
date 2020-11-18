@@ -27,6 +27,7 @@
     BOOL _selectedPairedUnlock;
     unsigned short _granularActivationState;
     int _activationState;
+    int _activationRetries;
     RUIStyle *_remoteUIStyle;
     id<RUILoaderDelegate> _ruiDelegate;
     id<PBBridgeConnectionDelegate> _delegate;
@@ -40,12 +41,14 @@
     NSString *_remoteActivationUserAgent;
     CDUnknownBlockType _lockedOnAnimationCompletion;
     CDUnknownBlockType _initialSyncPrepCompletion;
+    CDUnknownBlockType _languageLocaleCompletion;
     NSMutableDictionary *_reportMapping;
 }
 
 @property (strong, nonatomic) NSURLConnection *activationConnection; // @synthesize activationConnection=_activationConnection;
 @property (strong, nonatomic) NSMutableData *activationData; // @synthesize activationData=_activationData;
 @property (strong, nonatomic) NSMutableURLRequest *activationRequest; // @synthesize activationRequest=_activationRequest;
+@property (nonatomic) int activationRetries; // @synthesize activationRetries=_activationRetries;
 @property (nonatomic) int activationState; // @synthesize activationState=_activationState;
 @property (strong, nonatomic) NSTimer *activationTimeout; // @synthesize activationTimeout=_activationTimeout;
 @property (nonatomic) BOOL allowAnyHTTPSCertificate; // @synthesize allowAnyHTTPSCertificate=_allowAnyHTTPSCertificate;
@@ -60,6 +63,7 @@
 @property (copy, nonatomic) CDUnknownBlockType initialSyncPrepCompletion; // @synthesize initialSyncPrepCompletion=_initialSyncPrepCompletion;
 @property (strong, nonatomic) NSString *internalLastSendMessageID; // @synthesize internalLastSendMessageID=_internalLastSendMessageID;
 @property (nonatomic) BOOL isEstablishingPairing; // @synthesize isEstablishingPairing=_isEstablishingPairing;
+@property (copy, nonatomic) CDUnknownBlockType languageLocaleCompletion; // @synthesize languageLocaleCompletion=_languageLocaleCompletion;
 @property (copy, nonatomic) CDUnknownBlockType lockedOnAnimationCompletion; // @synthesize lockedOnAnimationCompletion=_lockedOnAnimationCompletion;
 @property (nonatomic) BOOL nonSilentActivation; // @synthesize nonSilentActivation=_nonSilentActivation;
 @property (nonatomic) BOOL passcodeSet; // @synthesize passcodeSet=_passcodeSet;
@@ -139,10 +143,12 @@
 - (void)tellGizmoToSetLocationEnabled:(BOOL)arg1;
 - (void)tellGizmoToShowLockedOnAnimationTimeToFlash:(double)arg1 animationCompletion:(CDUnknownBlockType)arg2;
 - (void)tellGizmoToUpdateSyncProgressTo:(double)arg1 withState:(long long)arg2;
+- (void)tellWatchLanguagesAndLocaleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)transportBecameReachable;
 - (void)transportBecameUnreachable;
 - (id)viewControllerForAlertPresentation;
 - (void)watchDidPrepareForInitialSync:(id)arg1;
+- (void)watchDidRespondWithLanguageAndLocaleStatus:(id)arg1;
 
 @end
 

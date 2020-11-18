@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (void)_handlePCSDataFetched:(id)arg1 withError:(id)arg2;
 - (BOOL)_savePCSDataToCache;
 - (BOOL)hasAllPCSData;
-- (id)initWithShareID:(id)arg1 parentOperation:(id)arg2 cache:(id)arg3 options:(unsigned long long)arg4;
 - (id)itemTypeName;
 
 @end

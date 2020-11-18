@@ -6,19 +6,22 @@
 
 #import <UIKit/UIView.h>
 
+#import <MediaPlayer/MPAVRoutingControllerDelegate-Protocol.h>
 #import <MediaPlayer/MPDetailSliderDelegate-Protocol.h>
 #import <MediaPlayer/MPVideoOverlay-Protocol.h>
+#import <MediaPlayer/MPVolumeControllerDelegate-Protocol.h>
 #import <MediaPlayer/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class MPAVController, MPAVItem, MPAudioAndSubtitlesController, MPDetailSlider, MPKnockoutButton, MPVolumeSlider, NSArray, NSLayoutConstraint, NSString, UIActivityIndicatorView, UIButton, UILabel, UINavigationBar, UIStatusBar, UIViewController, _UIBackdropView;
+@class MPAVController, MPAVItem, MPAVRoutingController, MPAudioAndSubtitlesController, MPDetailSlider, MPKnockoutButton, MPVideoView, MPVolumeController, MPVolumeSlider, NSArray, NSLayoutConstraint, NSString, UIActivityIndicatorView, UIButton, UILabel, UINavigationBar, UIStatusBar, UIViewController, _UIBackdropView;
 @protocol MPVideoControllerProtocol, MPVideoOverlayDelegate;
 
-@interface MPVideoPlaybackOverlayView : UIView <UIPopoverPresentationControllerDelegate, MPVideoOverlay, MPDetailSliderDelegate>
+@interface MPVideoPlaybackOverlayView : UIView <UIPopoverPresentationControllerDelegate, MPAVRoutingControllerDelegate, MPVolumeControllerDelegate, MPVideoOverlay, MPDetailSliderDelegate>
 {
     MPDetailSlider *_scrubber;
     MPKnockoutButton *_playPauseButton;
     MPKnockoutButton *_fullscreenButton;
     MPKnockoutButton *_pictureInPictureButton;
+    MPKnockoutButton *_airplayButton;
     UIStatusBar *_statusBar;
     UIButton *_doneButton;
     UIActivityIndicatorView *_loadingIndicator;
@@ -30,6 +33,8 @@
     MPKnockoutButton *_leftButton;
     MPKnockoutButton *_rightButton;
     UIButton *_audioAndSubtitlesButton;
+    MPAVRoutingController *_airplayController;
+    MPVolumeController *_volumeController;
     UIView *_topBarLayoutGuide;
     UIView *_topBarItemsGuide;
     UIView *_bottomBarTopLayoutGuide;
@@ -41,8 +46,13 @@
     BOOL _shouldResumePlayback;
     int _seekDirection;
     NSLayoutConstraint *_topBarBottomConstraint;
-    NSLayoutConstraint *_bottomBarHeightConstraint;
+    NSLayoutConstraint *_topBarHeightConstraint;
+    NSLayoutConstraint *_topBarLayoutGuideHeightConstraint;
+    NSLayoutConstraint *_topItemsTopConstraint;
     NSLayoutConstraint *_topItemsTrailingConstraint;
+    NSLayoutConstraint *_bottomBarHeightConstraint;
+    NSLayoutConstraint *_bottomItemsBottomConstraint;
+    NSLayoutConstraint *_bottomItemsLeftConstraint;
     NSLayoutConstraint *_bottomItemsRightConstraint;
     NSLayoutConstraint *_volumeSliderRightConstraint;
     NSLayoutConstraint *_volumeSliderWidthConstraint;
@@ -52,7 +62,7 @@
     NSArray *_topBarTraitCollectionConstraints;
     NSArray *_topItems;
     NSArray *_bottomItems;
-    BOOL allowsWirelessPlayback;
+    BOOL _allowsWirelessPlayback;
     BOOL navigationBarHidden;
     BOOL _automaticallyHandleTransportControls;
     BOOL _allowsExitFromFullscreen;
@@ -69,6 +79,8 @@
     UIViewController *_viewControllerForModalPresentationOrientation;
     _UIBackdropView *_topBarBackdropView;
     _UIBackdropView *_bottomBarBackdropView;
+    long long _overrideType;
+    MPVideoView *_videoView;
 }
 
 @property (nonatomic) BOOL allowsAudioAndSubtitles; // @synthesize allowsAudioAndSubtitles=_allowsAudioAndSubtitles;
@@ -76,10 +88,11 @@
 @property (nonatomic) BOOL allowsExitFromFullscreen; // @synthesize allowsExitFromFullscreen=_allowsExitFromFullscreen;
 @property (nonatomic) BOOL allowsPictureInPicture; // @synthesize allowsPictureInPicture=_allowsPictureInPicture;
 @property (nonatomic) BOOL allowsScrubbing;
-@property (nonatomic) BOOL allowsWirelessPlayback; // @synthesize allowsWirelessPlayback;
+@property (nonatomic) BOOL allowsWirelessPlayback; // @synthesize allowsWirelessPlayback=_allowsWirelessPlayback;
 @property (nonatomic) BOOL automaticallyHandleTransportControls; // @synthesize automaticallyHandleTransportControls=_automaticallyHandleTransportControls;
 @property (readonly, nonatomic) _UIBackdropView *bottomBarBackdropView; // @synthesize bottomBarBackdropView=_bottomBarBackdropView;
 @property (readonly, nonatomic) double bottomBarHeight;
+@property (readonly, nonatomic) UIView *contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MPVideoOverlayDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -89,17 +102,22 @@
 @property (strong, nonatomic) MPAVItem *item; // @synthesize item=_item;
 @property (readonly, strong, nonatomic) UINavigationBar *navigationBar;
 @property (nonatomic) BOOL navigationBarHidden; // @synthesize navigationBarHidden;
+@property (nonatomic, setter=_setOverrideType:) long long overrideType; // @synthesize overrideType=_overrideType;
 @property (strong, nonatomic) MPAVController *player; // @synthesize player=_player;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) _UIBackdropView *topBarBackdropView; // @synthesize topBarBackdropView=_topBarBackdropView;
+@property (weak, nonatomic) MPVideoView *videoView; // @synthesize videoView=_videoView;
 @property (weak, nonatomic) id<MPVideoControllerProtocol> videoViewController; // @synthesize videoViewController;
 @property (weak, nonatomic) UIViewController *viewControllerForModalPresentationOrientation; // @synthesize viewControllerForModalPresentationOrientation=_viewControllerForModalPresentationOrientation;
 @property (nonatomic) unsigned long long visibleParts; // @synthesize visibleParts;
 
 - (void).cxx_destruct;
 - (void)_activeAudioRouteDidChange:(id)arg1;
+- (void)_airplayButtonTapped:(id)arg1;
 - (void)_alternateTracksAvailable:(id)arg1;
+- (void)_applicationDidEnterBackgroundNotification:(id)arg1;
+- (void)_applicationWillEnterForegroundNotification:(id)arg1;
 - (void)_audioAndSubtitlesButtonTapped:(id)arg1;
 - (void)_buttonInteractionBegan:(id)arg1;
 - (void)_buttonInteractionCanceled:(id)arg1;
@@ -130,6 +148,9 @@
 - (void)_scaleButtonTapped:(id)arg1;
 - (void)_seekabilityChanged:(id)arg1;
 - (void)_setButtons:(id)arg1 inBar:(id)arg2 animated:(BOOL)arg3;
+- (void)_setScrubberDuration:(double)arg1;
+- (void)_setScrubberValue:(double)arg1;
+- (BOOL)_shouldHideStatusBar;
 - (void)_showScrubInstructions;
 - (void)_skipButtonTouchCancel:(id)arg1;
 - (void)_skipButtonTouchDown:(id)arg1;
@@ -139,9 +160,11 @@
 - (void)_tick:(id)arg1;
 - (void)_unregisterForItemNotifications:(id)arg1;
 - (void)_unregisterForPlayerNotifications:(id)arg1;
+- (void)_updateAirplayButton;
 - (void)_updateLoadingIndicator;
 - (void)_updateScaleButton;
 - (void)_updateTopBarBoundsBasedConstraints;
+- (void)_updateVolumeImage:(float)arg1;
 - (void)_updateVolumeSlider;
 - (void)_videoViewDidMoveToWindow:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
@@ -161,6 +184,7 @@
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (void)presentationController:(id)arg1 willPresentWithAdaptiveStyle:(long long)arg2 transitionCoordinator:(id)arg3;
 - (void)removeFromSuperview;
+- (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setDesiredParts:(unsigned long long)arg1 animate:(BOOL)arg2;
 - (void)setFrame:(struct CGRect)arg1;
@@ -175,6 +199,7 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
 - (BOOL)updateTimeBasedValues;
+- (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
 
 @end
 

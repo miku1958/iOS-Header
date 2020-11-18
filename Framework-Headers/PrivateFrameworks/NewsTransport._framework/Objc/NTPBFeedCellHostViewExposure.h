@@ -18,9 +18,13 @@
     NSString *_creativeId;
     int _feedCellHostType;
     NSString *_topicFeedId;
+    int _userAction;
+    BOOL _pickFavsButtonExposed;
     struct {
         unsigned int areaPresentationReason:1;
         unsigned int feedCellHostType:1;
+        unsigned int userAction:1;
+        unsigned int pickFavsButtonExposed:1;
     } _has;
 }
 
@@ -34,8 +38,12 @@
 @property (readonly, nonatomic) BOOL hasCampaignType;
 @property (readonly, nonatomic) BOOL hasCreativeId;
 @property (nonatomic) BOOL hasFeedCellHostType;
+@property (nonatomic) BOOL hasPickFavsButtonExposed;
 @property (readonly, nonatomic) BOOL hasTopicFeedId;
+@property (nonatomic) BOOL hasUserAction;
+@property (nonatomic) BOOL pickFavsButtonExposed; // @synthesize pickFavsButtonExposed=_pickFavsButtonExposed;
 @property (strong, nonatomic) NSString *topicFeedId; // @synthesize topicFeedId=_topicFeedId;
+@property (nonatomic) int userAction; // @synthesize userAction=_userAction;
 
 - (void).cxx_destruct;
 - (int)StringAsAreaPresentationReason:(id)arg1;

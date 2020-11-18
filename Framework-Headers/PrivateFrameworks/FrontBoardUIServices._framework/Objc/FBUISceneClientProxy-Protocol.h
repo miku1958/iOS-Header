@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardUIServices/FBUISceneIdentity-Protocol.h>
+#import <FrontBoardUIServices/BSDescriptionProviding-Protocol.h>
+#import <FrontBoardUIServices/NSObject-Protocol.h>
 
 @class FBSSceneSettings, FBSSceneSettingsDiff, FBSSceneTransitionContext, NSSet;
 @protocol FBUISceneHostProxy;
 
-@protocol FBUISceneClientProxy <FBUISceneIdentity>
+@protocol FBUISceneClientProxy <NSObject, BSDescriptionProviding>
 - (void)didInvalidateSceneHost:(id<FBUISceneHostProxy>)arg1;
 - (void)sceneHost:(id<FBUISceneHostProxy>)arg1 destroySceneWithTransitionContext:(FBSSceneTransitionContext *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)sceneHost:(id<FBUISceneHostProxy>)arg1 didReceiveActions:(NSSet *)arg2;

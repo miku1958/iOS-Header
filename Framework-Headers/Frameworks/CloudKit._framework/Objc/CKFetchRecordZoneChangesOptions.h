@@ -6,24 +6,33 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class CKServerChangeToken, NSArray;
 
-@interface CKFetchRecordZoneChangesOptions : NSObject <NSSecureCoding>
+@interface CKFetchRecordZoneChangesOptions : NSObject <NSSecureCoding, NSCopying>
 {
+    BOOL _fetchNewestChangesFirst;
+    BOOL _fetchChangesMadeByThisDevice;
     CKServerChangeToken *_previousServerChangeToken;
     unsigned long long _resultsLimit;
     NSArray *_desiredKeys;
 }
 
 @property (copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
+@property (nonatomic) BOOL fetchChangesMadeByThisDevice; // @synthesize fetchChangesMadeByThisDevice=_fetchChangesMadeByThisDevice;
+@property (nonatomic) BOOL fetchNewestChangesFirst; // @synthesize fetchNewestChangesFirst=_fetchNewestChangesFirst;
 @property (copy, nonatomic) CKServerChangeToken *previousServerChangeToken; // @synthesize previousServerChangeToken=_previousServerChangeToken;
 @property (nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSDate, NSDictionary, NSSet, NSString, NSURL, PLMemory;
 
@@ -16,6 +16,7 @@
     BOOL _userCreated;
     short _category;
     short _subcategory;
+    short _notificationState;
     NSString *_uuid;
     NSString *_title;
     NSString *_subtitle;
@@ -23,6 +24,7 @@
     NSString *_keyAssetUUID;
     NSSet *_representativeAssetUUIDs;
     NSSet *_curatedAssetUUIDs;
+    NSSet *_extendedCuratedAssetUUIDs;
     NSSet *_movieCuratedAssetUUIDs;
     NSData *_movieData;
     NSDictionary *_movieAssetState;
@@ -31,14 +33,23 @@
     NSData *_assetListPredicate;
     double _score;
     long long _version;
+    NSData *_blacklistedFeature;
+    long long _playCount;
+    long long _shareCount;
+    long long _viewCount;
+    long long _pendingPlayCount;
+    long long _pendingShareCount;
+    long long _pendingViewCount;
     PLMemory *_memory;
     NSURL *_metadataURL;
 }
 
 @property (strong, nonatomic) NSData *assetListPredicate; // @synthesize assetListPredicate=_assetListPredicate;
+@property (strong, nonatomic) NSData *blacklistedFeature; // @synthesize blacklistedFeature=_blacklistedFeature;
 @property (nonatomic) short category; // @synthesize category=_category;
 @property (strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (strong, nonatomic) NSSet *curatedAssetUUIDs; // @synthesize curatedAssetUUIDs=_curatedAssetUUIDs;
+@property (strong, nonatomic) NSSet *extendedCuratedAssetUUIDs; // @synthesize extendedCuratedAssetUUIDs=_extendedCuratedAssetUUIDs;
 @property (nonatomic, getter=isFavorite) BOOL favorite; // @synthesize favorite=_favorite;
 @property (strong, nonatomic) NSString *keyAssetUUID; // @synthesize keyAssetUUID=_keyAssetUUID;
 @property (strong, nonatomic) PLMemory *memory; // @synthesize memory=_memory;
@@ -46,18 +57,25 @@
 @property (strong, nonatomic) NSDictionary *movieAssetState; // @synthesize movieAssetState=_movieAssetState;
 @property (strong, nonatomic) NSSet *movieCuratedAssetUUIDs; // @synthesize movieCuratedAssetUUIDs=_movieCuratedAssetUUIDs;
 @property (strong, nonatomic) NSData *movieData; // @synthesize movieData=_movieData;
+@property (nonatomic) short notificationState; // @synthesize notificationState=_notificationState;
 @property (nonatomic, getter=isPending) BOOL pending; // @synthesize pending=_pending;
+@property (nonatomic) long long pendingPlayCount; // @synthesize pendingPlayCount=_pendingPlayCount;
+@property (nonatomic) long long pendingShareCount; // @synthesize pendingShareCount=_pendingShareCount;
+@property (nonatomic) long long pendingViewCount; // @synthesize pendingViewCount=_pendingViewCount;
 @property (strong, nonatomic) NSData *photosGraphData; // @synthesize photosGraphData=_photosGraphData;
 @property (nonatomic) long long photosGraphVersion; // @synthesize photosGraphVersion=_photosGraphVersion;
+@property (nonatomic) long long playCount; // @synthesize playCount=_playCount;
 @property (nonatomic, getter=isRejected) BOOL rejected; // @synthesize rejected=_rejected;
 @property (strong, nonatomic) NSSet *representativeAssetUUIDs; // @synthesize representativeAssetUUIDs=_representativeAssetUUIDs;
 @property (nonatomic) double score; // @synthesize score=_score;
+@property (nonatomic) long long shareCount; // @synthesize shareCount=_shareCount;
 @property (nonatomic) short subcategory; // @synthesize subcategory=_subcategory;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic, getter=isUserCreated) BOOL userCreated; // @synthesize userCreated=_userCreated;
 @property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property (nonatomic) long long version; // @synthesize version=_version;
+@property (nonatomic) long long viewCount; // @synthesize viewCount=_viewCount;
 
 + (BOOL)isValidPath:(id)arg1;
 - (void).cxx_destruct;

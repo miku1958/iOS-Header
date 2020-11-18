@@ -4,35 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSDate, NSMutableArray, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@class GEOLogMsgCacheDBInfo, NSDate, NSMutableArray, NSString;
 
 @interface GEOLogMessageCacheManager : NSObject
 {
     NSString *_logMessageCacheFilePath;
-    struct sqlite3 *_logMessageCacheDatabase;
+    GEOLogMsgCacheDBInfo *_logMsgCacheDBInfo;
+    long long _numberOfLogMessagesInCache;
+    NSString *_policyIdentifier;
     NSString *_adaptorId;
+    int _supportedLogMessageType;
     BOOL _fromLogFrameworkAdaptor;
     long long _logMessageCacheIterator;
     long long _logMessageCacheEndIterator;
     NSMutableArray *_retrivedLogMessageCacheIds;
-    int _currentRetrivedLogMessageRetryCount;
-    NSObject<OS_dispatch_queue> *_databaseQueue;
-    void *_databaseQueueIdentityKey;
-    void *_databaseQueueIdentityValue;
-    long long _maxNumberOfLogMessageAllowedInCache;
-    BOOL _encryptionEnabled;
-    NSObject<OS_dispatch_source> *_logMessageCacheTransactionTimer;
-    BOOL _logMessageCacheTransactionPending;
-    long long _pendingLogMessageCount;
+    long long _maxNumberOfLogMessagesAllowedInCache;
+    long long _logMessagesOverflowPurgeSize;
+    unsigned long long _encryptionType;
+    BOOL _realtimeAdaptor;
+    long long _cacheCountFlushThreshold;
+    NSDate *_oldestLogMessageInCache;
 }
 
-@property (readonly) int currentRetrivedLogMessageRetryCount; // @synthesize currentRetrivedLogMessageRetryCount=_currentRetrivedLogMessageRetryCount;
-@property (nonatomic) BOOL encryptionEnabled; // @synthesize encryptionEnabled=_encryptionEnabled;
+@property (nonatomic) unsigned long long encryptionType; // @synthesize encryptionType=_encryptionType;
 @property (nonatomic) NSDate *oldestLogMessageInCache;
 
++ (id)logMsgCacheDatabaseObjectForPolicyIdentity:(id)arg1;
+- (void).cxx_destruct;
 - (void)_addRetryCountColumnToTable;
 - (void)_beginLogMessageCacheTransaction;
 - (void)_cleanupLogMessageCacheDatabase;
@@ -41,34 +41,45 @@
 - (void)_createTables;
 - (int)_deleteAllExpiredLogMessages:(double)arg1;
 - (void)_deleteExpiredLogMessageCacheDBFile:(double)arg1;
+- (int)_deleteFixedNumberOfOlderLogMessages:(long long)arg1;
+- (BOOL)_encryptionEnabled;
 - (BOOL)_executeSQL:(id)arg1;
 - (long long)_getNumberOfLogMessagesInCache;
 - (id)_groupIDOfNextPendingLogMessage;
 - (BOOL)_logMessageCacheFileExists;
 - (void)_migrateDatabaseIfNeeded;
+- (void)_migrateLogMessageCacheTableFromOldDatabase:(id)arg1;
 - (void)_openCreateLogMessageCacheDBFile;
 - (void)_openLogMessageCacheDBFile;
 - (long long)_queryLogMessageCacheDBUserVersion;
 - (id)_retrieveBatchOfLogMessagesLimitCount:(long long)arg1 limitSize:(long long)arg2;
 - (long long)_retrieveEndLogMessageCacheIterator;
+- (void)_rollbackLogMessageCacheTransaction;
 - (void)_setLogMessageCacheDBJournalMode;
+- (void)_setupWithLogMsgCacheFilePath:(id)arg1 policyIdentifier:(id)arg2 maxNumberOfLogMessagesAllowedInCache:(long long)arg3 logMessagesOverflowPurgeSize:(long long)arg4 encryptionType:(unsigned long long)arg5 realtimeAdaptor:(BOOL)arg6 cacheCountFlushThreshold:(long long)arg7 adaptorId:(id)arg8 supportedLogMessageType:(int)arg9 fromLogFrameworkAdaptor:(BOOL)arg10;
+- (int)_sqlite3_open_protection_flag;
 - (void)_startLogMessageCacheTransactionTimer;
 - (void)_stopLogMessageCacheTransactionTimer;
 - (void)_updateLogMessageCacheDBUserVersion;
+- (id)_updatedSQLQueryFromQuery:(id)arg1;
 - (BOOL)_usingInMemoryLogMessageCacheFile;
 - (void)beginLogMessageCacheTransaction;
 - (void)closeLogMessageCache;
 - (void)commitLogMessageCacheTransaction;
 - (void)dealloc;
-- (id)initWithLogMessageCacheFilePath:(id)arg1 maxNumberOfLogMessagesAllowedInCache:(long long)arg2 adaptorId:(id)arg3 fromLogFrameworkAdaptor:(BOOL)arg4;
+- (id)initWithLogMessageCacheDBInfo:(id)arg1 logMessageCacheFilePath:(id)arg2 policyIdentifier:(id)arg3 maxNumberOfLogMessagesAllowedInCache:(long long)arg4 logMessagesOverflowPurgeSize:(long long)arg5 encryptionType:(unsigned long long)arg6 realtimeAdaptor:(BOOL)arg7 cacheCountFlushThreshold:(long long)arg8 adaptorId:(id)arg9 supportedLogMessageType:(int)arg10 fromLogFrameworkAdaptor:(BOOL)arg11;
+- (id)initWithLogMessageCacheFilePath:(id)arg1 policyIdentifier:(id)arg2 maxNumberOfLogMessagesAllowedInCache:(long long)arg3 logMessagesOverflowPurgeSize:(long long)arg4 encryptionType:(unsigned long long)arg5 realtimeAdaptor:(BOOL)arg6 cacheCountFlushThreshold:(long long)arg7 adaptorId:(id)arg8 supportedLogMessageType:(int)arg9 fromLogFrameworkAdaptor:(BOOL)arg10;
 - (void)insertLogMessageIntoCache:(id)arg1;
 - (BOOL)isLogMessageCacheEmpty;
+- (void)openCreateLogMessageCache;
 - (void)openLogMessageCache;
+- (void)purgeAllLogMessagesFromCache;
 - (void)purgeCurrentlyRetrievedLogMessagesFromCache;
 - (void)purgeExpiredLogMessagesFromCache:(double)arg1;
 - (void)resetLogMessageCacheIterator;
 - (id)retrieveFirstBatchOfLogMessagesWithLimitCount:(long long)arg1 limitSize:(long long)arg2;
 - (id)retrieveNextBatchOfLogMessagesWithLimitCount:(long long)arg1 limitSize:(long long)arg2;
+- (void)rollbackLogMessageCacheTransaction;
 - (BOOL)shouldFlushLogMessageCache;
 - (void)updateCurrentlyRetrievedLogMessagesRetryCount;
 

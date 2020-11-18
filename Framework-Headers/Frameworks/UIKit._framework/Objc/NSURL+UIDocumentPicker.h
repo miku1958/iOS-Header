@@ -23,5 +23,7 @@
 - (id)ui_resolveOnDiskBookmarkAndPromise;
 - (void)ui_scheduleForCleanup;
 - (void)ui_setIsFileProviderURL:(BOOL)arg1;
+- (void)ui_setSourceIsManaged:(BOOL)arg1;
+- (BOOL)ui_sourceIsManaged;
 @end
 

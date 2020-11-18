@@ -14,15 +14,18 @@
 @property (readonly, nonatomic, getter=isAuthorizedForHomeDataAccess) BOOL authorizedForHomeDataAccess;
 @property (readonly, nonatomic, getter=isAuthorizedForLocationAccess) BOOL authorizedForLocationAccess;
 @property (readonly, nonatomic, getter=isAuthorizedForMicrophoneAccess) BOOL authorizedForMicrophoneAccess;
+@property (readonly, nonatomic, getter=isBackground) BOOL background;
 @property (readonly, copy, nonatomic) NSString *companionAppBundleIdentifier;
 @property (readonly, copy, nonatomic) NSString *effectiveLocationBundleIdentifier;
 @property (readonly, nonatomic, getter=isEntitledForAPIAccess) BOOL entitledForAPIAccess;
 @property (readonly, nonatomic, getter=isEntitledForBackgroundMode) BOOL entitledForBackgroundMode;
-@property (readonly, nonatomic, getter=isEntitledForBridgeSPIAccess) BOOL entitledForBridgeSPIAccess;
 @property (readonly, nonatomic, getter=isEntitledForSPIAccess) BOOL entitledForSPIAccess;
+@property (readonly, nonatomic) BOOL requiresSPIEntitlement;
 @property (readonly, nonatomic) int sourcePid;
 @property (readonly, copy, nonatomic) NSString *teamIdentifier;
 
++ (id)entitledMessageWithName:(id)arg1 identifier:(id)arg2 messagePayload:(id)arg3;
++ (id)entitledMessageWithName:(id)arg1 messagePayload:(id)arg2;
 - (id)proxyConnection;
 @end
 

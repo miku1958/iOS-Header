@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
 - (id)messagesWriteboardKeyImageName;
 - (double)returnKeyFontSize;
 - (void)setupLayoutSegments;
+- (BOOL)shouldShowBottomRowEdge;
+- (BOOL)shouldShowTopRowEdge;
 - (double)spaceKeyFontSize;
 - (id)thinKeycapsFontName;
 

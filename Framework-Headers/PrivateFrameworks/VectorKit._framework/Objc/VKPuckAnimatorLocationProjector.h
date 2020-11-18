@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEORouteMatch;
 
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void)_updateCourseAndPositionFromRouteMatch;
 - (void)dealloc;
+- (id)detailedDescription;
 - (id)init;
 - (void)projectFromLocation:(id)arg1 routeMatch:(id)arg2 speedMultiplier:(double)arg3;
 - (void)reset;

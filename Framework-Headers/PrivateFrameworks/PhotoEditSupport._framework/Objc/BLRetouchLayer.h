@@ -20,11 +20,12 @@
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) BOOL hasLayerMask;
 @property (readonly, nonatomic) struct CGSize imageSize;
-@property (nonatomic) BLRetouchLayer *layerBelow; // @synthesize layerBelow=_layerBelow;
-@property (nonatomic) NSData *layerData;
-@property (nonatomic) BLBaseLayerStack *layerStack; // @synthesize layerStack=_layerStack;
+@property (weak, nonatomic) BLRetouchLayer *layerBelow; // @synthesize layerBelow=_layerBelow;
+@property (weak, nonatomic) NSData *layerData;
+@property (weak, nonatomic) BLBaseLayerStack *layerStack; // @synthesize layerStack=_layerStack;
 
 + (id)layer;
+- (void).cxx_destruct;
 - (BOOL)boolForKey:(id)arg1;
 - (id)init;
 - (struct CGContext *)newContextForRect:(struct CGRect)arg1 inDestRect:(struct CGRect)arg2 andScale:(double)arg3;

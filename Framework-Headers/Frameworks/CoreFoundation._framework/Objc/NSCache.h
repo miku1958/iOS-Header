@@ -22,6 +22,7 @@
 @property (copy) NSString *name;
 @property unsigned long long totalCostLimit;
 
+- (void)__apply:(CDUnknownBlockType)arg1;
 - (id)allObjects;
 - (void)dealloc;
 - (BOOL)evictsObjectsWhenApplicationEntersBackground;

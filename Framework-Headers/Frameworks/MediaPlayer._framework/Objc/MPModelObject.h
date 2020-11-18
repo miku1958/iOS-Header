@@ -24,16 +24,18 @@
 @property (readonly, nonatomic) MPIdentifierSet *originalIdentifierSet;
 
 + (void)initialize;
-+ (id)mqf_requiredPlaybackProperties;
 + (void)performWithoutEnforcement:(CDUnknownBlockType)arg1;
 + (id)requiredKeepLocalStatusObservationProperties;
 + (id)requiredLibraryAddStatusObservationProperties;
 + (id)requiredLibraryRemovalProperties;
++ (id)storeItemMetadataRequestItemIdentifierForIdentifiers:(id)arg1;
++ (BOOL)storeItemMetadataRequestNeedsPersonalizationForIdentifiers:(id)arg1;
 + (BOOL)supportsKeepLocalStatusObservation;
 + (BOOL)supportsLibraryAddStatusObservation;
 + (BOOL)supportsLibraryRemoval;
 - (void).cxx_destruct;
 - (void)appendIdentifiersToDescription:(id)arg1;
+- (id)contentItemCollectionInfo;
 - (id)copyWithIdentifiers:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -42,10 +44,9 @@
 - (BOOL)hasLoadedValuesForProperties:(id)arg1;
 - (id)initWithIdentifiers:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)mediaItemPropertyValues;
-- (void)mqf_configurePlaybackItemMetadata:(id)arg1;
-- (id)mqf_newPlaybackItemMetadata;
-- (id)mqf_playbackItemMetadataModelObject;
 - (id)newKeepLocalStatusObserverConfiguration;
+- (id)storeItemMetadataRequestItemIdentifier;
+- (BOOL)storeItemMetadataRequestNeedsPersonalization;
 
 @end
 

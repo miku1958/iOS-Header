@@ -31,7 +31,7 @@
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (id)description;
-- (id)dictionary;
+- (id)dictionaryForRequest;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithPushDictionary:(id)arg1;
 - (void)setDictionary:(id)arg1;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class NSArray, NSMutableArray;
+@class NSArray, NSMutableArray, NSObject;
 @protocol OS_dispatch_queue;
 
-@interface HMDMessageFilterChain : NSObject
+@interface HMDMessageFilterChain : HMFObject
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     NSMutableArray *_messageFilters;

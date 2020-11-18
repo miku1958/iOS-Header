@@ -25,9 +25,12 @@
 - (id)init;
 - (void)invalidate;
 - (void)synchronizeNanoDomain:(id)arg1 keys:(id)arg2;
+- (void)synchronizeNanoDomain:(id)arg1 keys:(id)arg2 cloudEnabled:(BOOL)arg3;
 - (void)synchronizeUserDefaultsDomain:(id)arg1 keys:(id)arg2;
+- (void)synchronizeUserDefaultsDomain:(id)arg1 keys:(id)arg2 cloudEnabled:(BOOL)arg3;
 - (void)synchronizeUserDefaultsDomain:(id)arg1 keys:(id)arg2 container:(id)arg3;
 - (void)synchronizeUserDefaultsDomain:(id)arg1 keys:(id)arg2 container:(id)arg3 appGroupContainer:(id)arg4;
+- (void)synchronizeUserDefaultsDomain:(id)arg1 keys:(id)arg2 container:(id)arg3 appGroupContainer:(id)arg4 cloudEnabled:(BOOL)arg5;
 - (void)unsafe_invalidate;
 
 @end

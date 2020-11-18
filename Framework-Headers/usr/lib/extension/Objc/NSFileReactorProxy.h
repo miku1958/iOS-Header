@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSXPCConnection *_client;
     id _reactorID;
     NSFileAccessNode *_itemLocation;
+    unsigned int _effectiveUserIdentifier;
 }
 
 + (void)_enumerateParentDirectoriesStartingAtURL:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (id)descriptionWithIndenting:(id)arg1;
+- (unsigned int)effectiveUserIdentifier;
 - (void)forwardUsingProxy:(id)arg1;
 - (id)initWithClient:(id)arg1 reactorID:(id)arg2;
 - (void)invalidate;

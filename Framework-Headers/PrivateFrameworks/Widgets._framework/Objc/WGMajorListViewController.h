@@ -25,12 +25,11 @@
 - (void).cxx_destruct;
 - (void)_configureStackView;
 - (id)_group;
-- (id)_repopulateStackViewWithWidgetIdentifiers:(id)arg1 forColumnMode:(long long)arg2;
+- (id)_repopulateStackViewWithWidgetIdentifiers:(id)arg1;
 - (void)orderOfVisibleWidgetsDidChange:(id)arg1;
 - (void)presentEditView:(id)arg1;
 - (void)setShouldBlurContent:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-- (id)visibleWidgetIdentifiersForColumnMode:(long long)arg1;
 - (void)widgetDiscoveryController:(id)arg1 widgetWithIdentifier:(id)arg2 shouldBecomeHiddenInGroup:(id)arg3;
 - (void)widgetDiscoveryController:(id)arg1 widgetWithIdentifier:(id)arg2 shouldBecomeVisibleInGroup:(id)arg3;
 - (id)widgetListFooterView:(id)arg1 customBackgroundViewForItem:(id)arg2;

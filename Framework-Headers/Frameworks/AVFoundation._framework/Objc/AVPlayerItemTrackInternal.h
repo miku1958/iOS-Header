@@ -22,6 +22,10 @@
     BOOL enabledWasSet;
     BOOL disableColorMatching;
     BOOL disableColorMatchingWasSet;
+    long long activeHapticChannelIndex;
+    BOOL activeHapticChannelIndexWasSet;
+    float hapticVolume;
+    BOOL hapticVolumeWasSet;
 }
 
 @end

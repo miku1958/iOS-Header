@@ -25,6 +25,10 @@ struct CGSize {
     double height;
 };
 
+struct DeviceLibrary;
+
+struct DeviceLibraryView;
+
 struct Entity;
 
 struct EntityCache;
@@ -46,8 +50,6 @@ struct ITColor {
     double _field3;
     double _field4;
 };
-
-struct Library;
 
 struct LibraryView;
 
@@ -73,6 +75,10 @@ struct ModelPropertyBase {
     struct EntityClass *_field2;
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field3;
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field4;
+};
+
+struct NSMapTable {
+    Class _field1;
 };
 
 struct Predicate;
@@ -135,6 +141,18 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
     } _field1;
 };
 
+struct map<MPModelStoreBrowseDetailedContentItemType, unsigned long, std::__1::less<MPModelStoreBrowseDetailedContentItemType>, std::__1::allocator<std::__1::pair<const MPModelStoreBrowseDetailedContentItemType, unsigned long>>> {
+    struct __tree<std::__1::__value_type<MPModelStoreBrowseDetailedContentItemType, unsigned long>, std::__1::__map_value_compare<MPModelStoreBrowseDetailedContentItemType, std::__1::__value_type<MPModelStoreBrowseDetailedContentItemType, unsigned long>, std::__1::less<MPModelStoreBrowseDetailedContentItemType>, true>, std::__1::allocator<std::__1::__value_type<MPModelStoreBrowseDetailedContentItemType, unsigned long>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<MPModelStoreBrowseDetailedContentItemType, unsigned long>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __first_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<MPModelStoreBrowseDetailedContentItemType, std::__1::__value_type<MPModelStoreBrowseDetailedContentItemType, unsigned long>, std::__1::less<MPModelStoreBrowseDetailedContentItemType>, true>> {
+            unsigned long long __first_;
+        } __pair3_;
+    } __tree_;
+};
+
 struct map<long long, MPMediaEntity<MPCacheableConcreteMediaEntity>*__weak, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, MPMediaEntity<MPCacheableConcreteMediaEntity>*__weak>>> {
     struct __tree<std::__1::__value_type<long long, MPMediaEntity<MPCacheableConcreteMediaEntity>*__weak>, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, MPMediaEntity<MPCacheableConcreteMediaEntity>*__weak>, std::__1::less<long long>, true>, std::__1::allocator<std::__1::__value_type<long long, MPMediaEntity<MPCacheableConcreteMediaEntity>*__weak>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
@@ -171,18 +189,6 @@ struct map<std::__1::basic_string<char>, mlcore::ModelPropertyBase *, std::__1::
     } _field1;
 };
 
-struct map<unsigned long, MPIdentifierSet *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, MPIdentifierSet *>>> {
-    struct __tree<std::__1::__value_type<unsigned long, MPIdentifierSet *>, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, MPIdentifierSet *>, std::__1::less<unsigned long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long, MPIdentifierSet *>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long, MPIdentifierSet *>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __first_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, MPIdentifierSet *>, std::__1::less<unsigned long>, true>> {
-            unsigned long long __first_;
-        } __pair3_;
-    } __tree_;
-};
-
 struct mutex {
     struct _opaque_pthread_mutex_t {
         long long _field1;
@@ -190,7 +196,15 @@ struct mutex {
     } _field1;
 };
 
-struct pair<long, long>;
+struct shared_ptr<mlcore::DeviceLibrary> {
+    struct DeviceLibrary *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
+struct shared_ptr<mlcore::DeviceLibraryView> {
+    struct DeviceLibraryView *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
 
 struct shared_ptr<mlcore::Entity> {
     struct Entity *_field1;
@@ -212,14 +226,9 @@ struct shared_ptr<mlcore::EntityQueryResult> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<mlcore::Library> {
-    struct Library *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
 struct shared_ptr<mlcore::LibraryView> {
-    struct LibraryView *__ptr_;
-    struct __shared_weak_count *__cntrl_;
+    struct LibraryView *_field1;
+    struct __shared_weak_count *_field2;
 };
 
 struct shared_ptr<mlcore::LocalizedSearchQuery> {
@@ -359,14 +368,6 @@ struct vector<mlcore::SortDescriptor, std::__1::allocator<mlcore::SortDescriptor
     } _field3;
 };
 
-struct vector<std::__1::pair<long, long>, std::__1::allocator<std::__1::pair<long, long>>> {
-    struct pair<long, long> *__begin_;
-    struct pair<long, long> *__end_;
-    struct __compressed_pair<std::__1::pair<long, long>*, std::__1::allocator<std::__1::pair<long, long>>> {
-        struct pair<long, long> *__first_;
-    } __end_cap_;
-};
-
 struct vector<std::__1::shared_ptr<mlcore::Entity>, std::__1::allocator<std::__1::shared_ptr<mlcore::Entity>>>;
 
 struct vector<std::__1::shared_ptr<mlcore::EntityCache>, std::__1::allocator<std::__1::shared_ptr<mlcore::EntityCache>>> {
@@ -386,6 +387,29 @@ struct vector<unsigned long long, std::__1::allocator<unsigned long long>> {
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    BOOL _field1;
+    BOOL _field2;
+    BOOL _field3;
+    BOOL _field4;
+    BOOL _field5;
+    BOOL _field6;
+    BOOL _field7;
+    long long _field8;
+} CDStruct_7fd8f4e3;
+
+typedef struct {
+    BOOL useCarPlayBrowseTopLevelContentOnly;
+    BOOL useCarPlayBrowseTopLevelRequestReorderingHeuristics;
+} CDStruct_d2d88407;
+
+typedef struct {
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
 
 typedef struct {
     unsigned int _field1[8];
@@ -419,7 +443,25 @@ typedef struct {
     } showCreator;
 } CDStruct_93f342fe;
 
-// Template types
+// Ambiguous groups
+typedef struct {
+    unsigned int identifiers:1;
+    unsigned int title:1;
+    unsigned int releaseDate:1;
+    unsigned int year:1;
+    unsigned int artist:1;
+} CDStruct_0f043e9e;
+
+typedef struct {
+    unsigned int identifiers:1;
+    unsigned int text:1;
+    unsigned int hasStoreLyrics:1;
+} CDStruct_99cfb959;
+
+typedef struct {
+    unsigned int identifiers:1;
+} CDStruct_f9384266;
+
 typedef struct map<long long, MPMediaEntity<MPCacheableConcreteMediaEntity>*__weak, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, MPMediaEntity<MPCacheableConcreteMediaEntity>*__weak>>> {
     struct __tree<std::__1::__value_type<long long, MPMediaEntity<MPCacheableConcreteMediaEntity>*__weak>, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, MPMediaEntity<MPCacheableConcreteMediaEntity>*__weak>, std::__1::less<long long>, true>, std::__1::allocator<std::__1::__value_type<long long, MPMediaEntity<MPCacheableConcreteMediaEntity>*__weak>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
@@ -456,6 +498,16 @@ typedef struct map<std::__1::basic_string<char>, mlcore::ModelPropertyBase *, st
     } _field1;
 } map_8b4f5bcf;
 
+typedef struct shared_ptr<mlcore::DeviceLibrary> {
+    struct DeviceLibrary *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_0f3dbfb3;
+
+typedef struct shared_ptr<mlcore::DeviceLibraryView> {
+    struct DeviceLibraryView *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_6af3da69;
+
 typedef struct shared_ptr<mlcore::Entity> {
     struct Entity *_field1;
     struct __shared_weak_count *_field2;
@@ -476,15 +528,10 @@ typedef struct shared_ptr<mlcore::EntityQueryResult> {
     struct __shared_weak_count *__cntrl_;
 } shared_ptr_274c5e8b;
 
-typedef struct shared_ptr<mlcore::Library> {
-    struct Library *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-} shared_ptr_2d06daf8;
-
 typedef struct shared_ptr<mlcore::LibraryView> {
-    struct LibraryView *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-} shared_ptr_f45adb51;
+    struct LibraryView *_field1;
+    struct __shared_weak_count *_field2;
+} shared_ptr_5c01893c;
 
 typedef struct shared_ptr<mlcore::LocalizedSearchQuery> {
     struct LocalizedSearchQuery *__ptr_;

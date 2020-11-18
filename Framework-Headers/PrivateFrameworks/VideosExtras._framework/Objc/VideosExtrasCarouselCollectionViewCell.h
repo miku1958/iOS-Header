@@ -9,13 +9,14 @@
 #import <VideosExtras/UIGestureRecognizerDelegate-Protocol.h>
 #import <VideosExtras/VideosExtrasCarouselCollectionViewCell-Protocol.h>
 
-@class MPUContentSizeLayoutConstraint, NSLayoutConstraint, NSString, UILabel, UIPinchGestureRecognizer, UIView, VideosExtrasConstrainedArtworkContainerView, VideosExtrasZoomingImageInteractiveTransitionSourceContext;
+@class MPUContentSizeLayoutConstraint, NSArray, NSLayoutConstraint, NSString, UILabel, UIPinchGestureRecognizer, UIView, VideosExtrasConstrainedArtworkContainerView, VideosExtrasZoomingImageInteractiveTransitionSourceContext;
 
 @interface VideosExtrasCarouselCollectionViewCell : UICollectionViewCell <UIGestureRecognizerDelegate, VideosExtrasCarouselCollectionViewCell>
 {
     BOOL _allowsPinchingThumbnailImageForInteractiveZoomingImageTransition;
     VideosExtrasConstrainedArtworkContainerView *_thumbnailImageContainerView;
     NSLayoutConstraint *_thumbnailImageContainerViewHeightConstraint;
+    NSArray *_thumbnailImageContainerViewConstraints;
     MPUContentSizeLayoutConstraint *_subtitleBaselineConstraint;
     MPUContentSizeLayoutConstraint *_descriptionLabelBaselineConstraint;
     UIView *_textContainer;
@@ -44,6 +45,7 @@
 @property (strong, nonatomic) UIView *textContainer; // @synthesize textContainer=_textContainer;
 @property (readonly, nonatomic) double thumbnailImageContainerHeight;
 @property (strong, nonatomic) VideosExtrasConstrainedArtworkContainerView *thumbnailImageContainerView; // @synthesize thumbnailImageContainerView=_thumbnailImageContainerView;
+@property (strong, nonatomic) NSArray *thumbnailImageContainerViewConstraints; // @synthesize thumbnailImageContainerViewConstraints=_thumbnailImageContainerViewConstraints;
 @property (strong, nonatomic) NSLayoutConstraint *thumbnailImageContainerViewHeightConstraint; // @synthesize thumbnailImageContainerViewHeightConstraint=_thumbnailImageContainerViewHeightConstraint;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (nonatomic) struct CGSize windowSize; // @synthesize windowSize=_windowSize;
@@ -75,10 +77,12 @@
 - (void)setThumbnailMaxSize:(struct CGSize)arg1;
 - (void)setThumbnailOverlayImage:(id)arg1;
 - (void)setTitleText:(id)arg1;
+- (id)subtitleText;
 - (id)subtitleTextStyle;
 - (id)thumbnailImage;
 - (id)thumbnailImageAccessibilityText;
 - (id)thumbnailImagePlaceholder;
+- (struct CGSize)thumbnailMaxSize;
 - (id)titleText;
 - (id)titleTextStyle;
 - (void)updateConstraints;

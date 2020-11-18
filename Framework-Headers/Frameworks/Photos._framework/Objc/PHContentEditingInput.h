@@ -20,6 +20,7 @@
     NSDate *_creationDate;
     CLLocation *_location;
     NSString *_uniformTypeIdentifier;
+    long long _playbackStyle;
     PHAdjustmentData *_adjustmentData;
     UIImage *_displaySizeImage;
     NSURL *_fullSizeImageURL;
@@ -40,6 +41,7 @@
 @property (copy, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (nonatomic) unsigned long long mediaSubtypes; // @synthesize mediaSubtypes=_mediaSubtypes;
 @property (nonatomic) long long mediaType; // @synthesize mediaType=_mediaType;
+@property (nonatomic) long long playbackStyle; // @synthesize playbackStyle=_playbackStyle;
 @property (copy, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
 @property (copy, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 

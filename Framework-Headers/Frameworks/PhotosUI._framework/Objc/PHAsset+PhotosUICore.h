@@ -7,11 +7,16 @@
 #import <Photos/PHAsset.h>
 
 @interface PHAsset (PhotosUICore)
+
+@property (readonly, nonatomic) long long px_currentVariationType;
+
 + (id)px_fetchAssetsInArray:(id)arg1;
 + (id)px_fetchPlacesAssetsInAssetCollection:(id)arg1 options:(id)arg2;
++ (id)px_orderedAssetsFromAssets:(id)arg1 sortDescriptors:(id)arg2;
 - (void)_px_adjustRectWithFaces:(struct CGRect *)arg1 forAssetRect:(struct CGRect)arg2 verticalContentMode:(long long)arg3;
 - (struct CGRect)faceAreaRect;
 - (struct CGRect)px_bestCropRectForAspectRatio:(double)arg1 verticalContentMode:(long long)arg2;
+- (struct CGRect)px_bestCropRectForAspectRatio:(double)arg1 verticalContentMode:(long long)arg2 shouldUseFacesRect:(BOOL)arg3;
 - (id)px_mailingAddressIncludeZipCode:(BOOL)arg1;
 - (id)px_postalAddressIncludeZipCode:(BOOL)arg1;
 - (id)px_singleLineMailingAddressIncludeZipCode:(BOOL)arg1;

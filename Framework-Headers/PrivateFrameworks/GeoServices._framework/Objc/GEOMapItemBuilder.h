@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class GEOAddress, GEOLatLng, GEOLocation, GEOMapRegion;
+@class GEOAddress, GEOLatLng, GEOLocation, GEOMapRegion, NSString;
 
 @interface GEOMapItemBuilder : NSObject
 {
@@ -18,17 +18,19 @@
     GEOAddress *_address;
     GEOMapRegion *_mapRegion;
     GEOLatLng *_latlng;
+    NSString *_name;
 }
 
 @property (strong, nonatomic) GEOAddress *address; // @synthesize address=_address;
 @property (strong, nonatomic) GEOLatLng *latlng; // @synthesize latlng=_latlng;
 @property (strong, nonatomic) GEOLocation *location; // @synthesize location=_location;
 @property (strong, nonatomic) GEOMapRegion *mapRegion; // @synthesize mapRegion=_mapRegion;
+@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) int referenceFrame; // @synthesize referenceFrame=_referenceFrame;
 
 + (id)buildWithSetterBlock:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 - (id)build;
-- (void)dealloc;
 - (id)init;
 
 @end

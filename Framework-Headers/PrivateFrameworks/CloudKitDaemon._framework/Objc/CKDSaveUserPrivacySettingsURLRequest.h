@@ -19,11 +19,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long discoverableTrinary; // @synthesize discoverableTrinary=_discoverableTrinary;
 
 - (void).cxx_destruct;
+- (long long)databaseScope;
+- (id)generateRequestOperations;
 - (id)init;
 - (int)operationType;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 - (BOOL)requiresTokenRegistration;
 - (void)setDiscoverable:(BOOL)arg1;
 

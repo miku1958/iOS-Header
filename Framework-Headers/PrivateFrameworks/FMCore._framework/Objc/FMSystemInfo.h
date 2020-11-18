@@ -12,6 +12,7 @@
 
 + (id)sharedInstance;
 - (id)btMacAddress;
+- (id)chipId;
 - (id)deviceClass;
 - (id)deviceModelName;
 - (id)deviceName;

@@ -31,9 +31,9 @@
 @property (readonly, nonatomic) NSURL *sourceURL; // @synthesize sourceURL=_sourceURL;
 @property (nonatomic) BOOL useFallback; // @synthesize useFallback=_useFallback;
 
+- (void).cxx_destruct;
 - (void)_completedMoveTask:(id)arg1;
 - (void)_completedPutTask:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithSourceURL:(id)arg1 destinationURL:(id)arg2 AccountInfoProvider:(id)arg3 taskManager:(id)arg4;
 - (void)startTaskGroup;

@@ -24,14 +24,17 @@
 - (void)enumerateAssetsWithIDs:(NSArray *)arg1 usingBlock:(void (^)(id<PLMomentAssetData>, unsigned long long, BOOL *))arg2;
 - (id<PLMomentListData>)findOrCreateYearMomentListForYear:(long long)arg1;
 - (BOOL)hasChanges;
+- (BOOL)hasLocationsOfInterestInformation;
 - (NSDictionary *)homeAddressDictionary;
 - (id<PLMomentData>)insertNewMoment;
 - (id<PLMomentListData>)insertNewMomentListForGranularityLevel:(short)arg1;
+- (void)invalidateLocationsOfInterest;
 - (void)invalidateShiftedLocationForAllAssetsInMoments;
 - (BOOL)isMomentAnalysisNeeded;
 - (BOOL)isMomentsSupportedOnPlatform;
 - (BOOL)isNetworkReachable;
 - (NSDictionary *)locationCoordinatesForAssetIDs:(NSArray *)arg1;
+- (NSArray *)locationsOfInterest;
 - (Class)momentAssetDataClass;
 - (Class)momentDataClass;
 - (id<PLMomentListData>)momentListContainingDate:(NSDate *)arg1 forLevel:(short)arg2 wantsEarliest:(BOOL)arg3;
@@ -41,6 +44,7 @@
 - (NSArray *)momentsBetweenDate:(NSDate *)arg1 andDate:(NSDate *)arg2 sorted:(BOOL)arg3;
 - (NSArray *)momentsBetweenDateRanges:(NSArray *)arg1;
 - (NSArray *)momentsSinceDate:(NSDate *)arg1;
+- (BOOL)needsLocationsOfInterestProcessing;
 - (void)performBlock:(void (^)(void))arg1 synchronously:(BOOL)arg2 completionHandler:(void (^)(void))arg3;
 - (void)performDataTransaction:(void (^)(void))arg1 synchronously:(BOOL)arg2 completionHandler:(void (^)(void))arg3;
 - (void)resetOnFailure;

@@ -10,22 +10,7 @@
 {
 }
 
-+ (void)_appendString:(id)arg1 toFileNamed:(id)arg2;
-+ (void)_configureLogFacilityIfNeeded:(id)arg1;
-+ (id)_facilityForIdentifier:(id)arg1;
-+ (id)_fileNameForIdentifier:(id)arg1;
-+ (CDUnknownBlockType)_formatBlock;
-+ (void)_printLoggingConfig;
-+ (void)enableConsoleLoggingForLevel:(int)arg1;
-+ (void)enableFileLogging:(BOOL)arg1;
-+ (void)enableLoggingForCustomHandler:(CDUnknownBlockType)arg1;
-+ (id)getMainBundleId;
-+ (void)initialize;
-+ (void)logAtLevel:(int)arg1 delegate:(id)arg2 format:(id)arg3;
-+ (void)logAtLevel:(int)arg1 delegate:(id)arg2 format:(id)arg3 arguments:(struct __va_list_tag [1])arg4;
 + (id)logFileDirectory;
-+ (void)logKeepAliveInterval:(double)arg1 forServiceIdentifier:(id)arg2;
-+ (BOOL)loggingEnabledForLevel:(int)arg1;
 
 @end
 

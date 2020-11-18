@@ -8,17 +8,33 @@
 
 #import <AWDSupportFramework/NSCopying-Protocol.h>
 
+@class AWDCoreRoutineMapItem, NSMutableArray;
+
 @interface AWDCoreRoutineVisit : PBCodable <NSCopying>
 {
     CDStruct_95bda58d _mapItemSources;
+    unsigned long long _dwellTime;
+    NSMutableArray *_possibleMapItems;
+    AWDCoreRoutineMapItem *_selectedMapItem;
+    struct {
+        unsigned int dwellTime:1;
+    } _has;
 }
 
+@property (nonatomic) unsigned long long dwellTime; // @synthesize dwellTime=_dwellTime;
+@property (nonatomic) BOOL hasDwellTime;
+@property (readonly, nonatomic) BOOL hasSelectedMapItem;
 @property (readonly, nonatomic) int *mapItemSources;
 @property (readonly, nonatomic) unsigned long long mapItemSourcesCount;
+@property (strong, nonatomic) NSMutableArray *possibleMapItems; // @synthesize possibleMapItems=_possibleMapItems;
+@property (strong, nonatomic) AWDCoreRoutineMapItem *selectedMapItem; // @synthesize selectedMapItem=_selectedMapItem;
 
++ (Class)possibleMapItemsType;
 - (int)StringAsMapItemSources:(id)arg1;
 - (void)addMapItemSources:(int)arg1;
+- (void)addPossibleMapItems:(id)arg1;
 - (void)clearMapItemSources;
+- (void)clearPossibleMapItems;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -29,6 +45,8 @@
 - (id)mapItemSourcesAsString:(int)arg1;
 - (int)mapItemSourcesAtIndex:(unsigned long long)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)possibleMapItemsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)possibleMapItemsCount;
 - (BOOL)readFrom:(id)arg1;
 - (void)setMapItemSources:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

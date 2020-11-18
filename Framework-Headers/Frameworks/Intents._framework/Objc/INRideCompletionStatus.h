@@ -10,7 +10,7 @@
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INCurrencyAmount, NSString, NSUserActivity;
+@class INCurrencyAmount, NSSet, NSString, NSUserActivity;
 
 @interface INRideCompletionStatus : NSObject <INRideCompletionStatusExport, NSCopying, NSSecureCoding>
 {
@@ -20,6 +20,8 @@
     BOOL _canceledByService;
     NSUserActivity *_completionUserActivity;
     INCurrencyAmount *_paymentAmount;
+    unsigned long long _feedbackType;
+    NSSet *_defaultTippingOptions;
 }
 
 @property (readonly, nonatomic, getter=isCanceled) BOOL canceled;
@@ -27,7 +29,9 @@
 @property (readonly, nonatomic, getter=isCompleted) BOOL completed; // @synthesize completed=_completed;
 @property (strong, nonatomic) NSUserActivity *completionUserActivity; // @synthesize completionUserActivity=_completionUserActivity;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) NSSet *defaultTippingOptions; // @synthesize defaultTippingOptions=_defaultTippingOptions;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long feedbackType; // @synthesize feedbackType=_feedbackType;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isMissedPickup) BOOL missedPickup; // @synthesize missedPickup=_missedPickup;
 @property (readonly, nonatomic, getter=isOutstanding) BOOL outstanding; // @synthesize outstanding=_outstanding;
@@ -38,15 +42,17 @@
 + (id)canceledByUser;
 + (id)canceledMissedPickup;
 + (id)completed;
++ (id)completedWithOutstandingFeedbackType:(unsigned long long)arg1;
 + (id)completedWithOutstandingPaymentAmount:(id)arg1;
 + (id)completedWithSettledPaymentAmount:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
-- (id)_initCompleted:(BOOL)arg1 canceledByService:(BOOL)arg2 missedPickup:(BOOL)arg3 amount:(id)arg4 outstanding:(BOOL)arg5;
+- (id)_initCompleted:(BOOL)arg1 canceledByService:(BOOL)arg2 missedPickup:(BOOL)arg3 amount:(id)arg4 feedbackType:(unsigned long long)arg5 outstanding:(BOOL)arg6;
 - (id)_initWithValue:(id)arg1;
 - (id)_newValue;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

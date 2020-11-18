@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
     long long _lastNotifiedDisplayMode;
     struct CGRect _viewBoundsBeforeCollapse;
     long long _suspendedState;
+    long long _primaryEdge;
     struct {
         unsigned int invalidDelegateHiddenMasterAspectRatios:2;
         unsigned int delegateHiddenMasterAspectRatios:2;
@@ -75,6 +76,7 @@ __attribute__((visibility("hidden")))
         unsigned int pendingUpdateTargetDisplayMode:1;
         unsigned int collapsingClockwise:1;
         unsigned int firstResponderChangedFromPostTransitionResponder:1;
+        unsigned int firstResponderChangedFromPostTransitionResponderToNil:1;
         unsigned int inWillTransitionToSize:1;
         unsigned int hasTransitioningToInternalMode:1;
         unsigned int delegateImplementsPrivateIsPrimaryVisible:1;
@@ -111,6 +113,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long preferredDisplayMode;
 @property (nonatomic) double preferredPrimaryColumnWidthFraction; // @synthesize preferredPrimaryColumnWidthFraction=_preferredPrimaryColumnWidthFraction;
 @property (nonatomic) BOOL presentsWithGesture; // @synthesize presentsWithGesture=_presentsWithGesture;
+@property (nonatomic) long long primaryEdge;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSArray *viewControllers;
 
@@ -143,6 +146,7 @@ __attribute__((visibility("hidden")))
 - (void)_didChangeToFirstResponder:(id)arg1;
 - (void)_didEndSnapshotSession;
 - (void)_didTransitionTraitCollection;
+- (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)_disableAutomaticKeyboardBehavior;
 - (void)_dismissMasterViewController:(BOOL)arg1;
 - (void)_displayModeDidChange;
@@ -171,7 +175,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isTransitioningFromCollapsedToSeparated;
 - (void)_layoutContainerViewDidMoveToWindow:(id)arg1;
 - (void)_layoutContainerViewWillMoveToWindow:(id)arg1;
+- (BOOL)_layoutPrimaryOnRight;
 - (void)_loadNewSubviews:(id)arg1;
+- (void)_marginInfoForChild:(id)arg1 leftMargin:(double *)arg2 rightMargin:(double *)arg3;
 - (double)_masterPresentationAnimationDuration;
 - (struct CGRect)_masterViewFrame;
 - (struct CGRect)_masterViewFrame:(struct CGRect)arg1;
@@ -193,6 +199,7 @@ __attribute__((visibility("hidden")))
 - (id)_primaryViewControllerForExpanding;
 - (void)_removeCollapsingSnapshotViews;
 - (void)_removeRoundedCorners;
+- (struct CGSize)_screenSizeInMainScene:(BOOL)arg1;
 - (id)_secondaryViewControllerForCollapsing;
 - (void)_separateMasterAndDetailWithTransitionCoordinator:(id)arg1;
 - (id)_separateSecondaryViewControllerFromPrimaryViewController:(id)arg1;
@@ -209,6 +216,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldPersistViewWhenCoding;
 - (BOOL)_shouldPreventAutorotation;
 - (BOOL)_shouldSynthesizeSupportedOrientations;
+- (BOOL)_shouldUseRelativeInsets;
 - (void)_showMasterViewAnimated:(BOOL)arg1;
 - (unsigned long long)_targetEdgeForPopover;
 - (void)_triggerDisplayModeAction:(id)arg1;
@@ -261,7 +269,6 @@ __attribute__((visibility("hidden")))
 - (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
-- (void)willUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 
 @end
 

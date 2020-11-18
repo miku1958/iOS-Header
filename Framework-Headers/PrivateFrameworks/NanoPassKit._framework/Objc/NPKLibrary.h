@@ -8,7 +8,7 @@
 
 #import <NanoPassKit/NPKGizmoClientProtocol-Protocol.h>
 
-@class NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSString, NSTimer, NSXPCConnection;
+@class NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSString, NSTimer, NSXPCConnection, PKPaymentPass;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface NPKLibrary : NSObject <NPKGizmoClientProtocol>
@@ -53,6 +53,7 @@
 @property (strong, nonatomic) NSTimer *passLibraryChangedCoalescingTimer; // @synthesize passLibraryChangedCoalescingTimer=_passLibraryChangedCoalescingTimer;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *passesQueue; // @synthesize passesQueue=_passesQueue;
 @property (readonly, nonatomic) NSArray *paymentPassDescriptions; // @dynamic paymentPassDescriptions;
+@property (readonly, nonatomic) PKPaymentPass *peerPaymentPass;
 @property (strong, nonatomic) NSMutableDictionary *preferredPaymentApplicationsCache; // @synthesize preferredPaymentApplicationsCache=_preferredPaymentApplicationsCache;
 @property (readonly, nonatomic) NSArray *relevantPassTuples;
 @property BOOL serverHasPasses; // @synthesize serverHasPasses=_serverHasPasses;
@@ -74,6 +75,8 @@
 - (void)addPassData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)boostDaemonUntilPassDBAvailable:(CDUnknownBlockType)arg1;
 - (id)cachedPassWithID:(id)arg1;
+- (id)cachedPaymentPassWithDPANIdentifier:(id)arg1;
+- (id)cachedPaymentPasses;
 - (void)dealloc;
 - (void)deletePassWithID:(id)arg1;
 - (void)getDeviceHasAnyPaymentPassesWithCompletion:(CDUnknownBlockType)arg1;
@@ -81,7 +84,6 @@
 - (void)getPassWithID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getPassWithID:(id)arg1 reply:(CDUnknownBlockType)arg2 queue:(id)arg3;
 - (void)getSecureElementIdentifiers:(CDUnknownBlockType)arg1;
-- (void)getSharedWebServiceContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleAddedValue:(id)arg1 forPassUniqueID:(id)arg2;
 - (void)handleEndedServiceModeRequest;
 - (void)handlePassLibraryChangedNotification:(id)arg1;
@@ -100,7 +102,6 @@
 - (void)processFelicaTransitHistory:(id)arg1 forPaymentApplication:(id)arg2 withPassUniqueIdentifier:(id)arg3 transactionDate:(id)arg4;
 - (void)setExpressTransitUniqueID:(id)arg1 applicationIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setPreferredPaymentApplication:(id)arg1 forPaymentPass:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)setSharedWebServiceContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

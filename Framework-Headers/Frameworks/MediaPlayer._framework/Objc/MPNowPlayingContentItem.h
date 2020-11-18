@@ -6,65 +6,88 @@
 
 #import <MediaPlayer/MPContentItem.h>
 
-@class NSDate, NSString;
-@protocol MPNowPlayingContentItemDescriptionDataSource, MPNowPlayingContentItemLanguageOptionDataSource, MPNowPlayingContentItemLyricsDataSource;
+@class MPMediaItemArtwork, MPNowPlayingInfoLyricsItem, NSArray, NSDate, NSDictionary, NSString;
+@protocol MPNowPlayingContentItemArtworkDataSource, MPNowPlayingContentItemDescriptionDataSource, MPNowPlayingContentItemLanguageOptionDataSource, MPNowPlayingContentItemLyricsDataSource;
 
 @interface MPNowPlayingContentItem : MPContentItem
 {
+    NSDictionary *_nowPlayingInfo;
+    void *_mediaRemoteDeltaRequest;
+    id<MPNowPlayingContentItemLanguageOptionDataSource> _languageOptionDataSource;
     id<MPNowPlayingContentItemLyricsDataSource> _lyricsDataSource;
     id<MPNowPlayingContentItemDescriptionDataSource> _descriptionDataSource;
-    id<MPNowPlayingContentItemLanguageOptionDataSource> _languageOptionDataSource;
+    id<MPNowPlayingContentItemArtworkDataSource> _artworkDataSource;
 }
 
+@property (nonatomic) void *_mediaRemoteDeltaRequest; // @synthesize _mediaRemoteDeltaRequest;
 @property (copy, nonatomic) NSString *albumArtistName;
 @property (copy, nonatomic) NSString *albumName;
+@property (nonatomic, getter=isAlwaysLiveItem) BOOL alwaysLiveItem;
+@property (strong, nonatomic) MPMediaItemArtwork *artwork; // @dynamic artwork;
+@property (weak, nonatomic) id<MPNowPlayingContentItemArtworkDataSource> artworkDataSource; // @synthesize artworkDataSource=_artworkDataSource;
+@property (copy, nonatomic) NSString *artworkIdentifier;
+@property (readonly, nonatomic) NSDictionary *auxiliaryNowPlayingInfo;
+@property (copy, nonatomic) NSArray *availableLanguageOptions;
 @property (copy, nonatomic) NSString *collectionIdentifier;
+@property (copy, nonatomic) NSDictionary *collectionInfo;
+@property (copy, nonatomic) NSString *composerName;
+@property (copy, nonatomic) NSArray *currentLanguageOptions;
+@property (nonatomic) float defaultPlaybackRate;
+@property (weak, nonatomic) id<MPNowPlayingContentItemDescriptionDataSource> descriptionDataSource; // @synthesize descriptionDataSource=_descriptionDataSource;
+@property (copy, nonatomic) NSDictionary *deviceSpecificUserInfo;
 @property (copy, nonatomic) NSString *directorName;
+@property (nonatomic) long long discNumber;
 @property (nonatomic) double duration;
+@property (nonatomic) long long editingStyleFlags;
+@property (nonatomic) double elapsedTime;
+@property (readonly, nonatomic) double elapsedTimeTimestamp;
 @property (nonatomic) long long episodeNumber;
 @property (nonatomic, getter=isExplicitItem) BOOL explicitItem;
+@property (copy, nonatomic) NSString *externalContentIdentifier;
+@property (copy, nonatomic) NSString *genreName;
+@property (copy, nonatomic) NSString *info;
+@property (weak, nonatomic) id<MPNowPlayingContentItemLanguageOptionDataSource> languageOptionDataSource; // @synthesize languageOptionDataSource=_languageOptionDataSource;
 @property (copy, nonatomic) NSString *localizedContentRating;
+@property (copy, nonatomic) MPNowPlayingInfoLyricsItem *lyrics;
+@property (weak, nonatomic) id<MPNowPlayingContentItemLyricsDataSource> lyricsDataSource; // @synthesize lyricsDataSource=_lyricsDataSource;
+@property (nonatomic) unsigned long long mediaType;
+@property (copy, nonatomic) NSDictionary *nowPlayingInfo;
 @property (nonatomic) unsigned long long numberOfChildren;
 @property (nonatomic) long long playCount;
+@property (nonatomic) float playbackRate;
+@property (nonatomic) long long playlistType;
 @property (copy, nonatomic) NSString *profileIdentifier;
+@property (copy, nonatomic) NSString *queueIdentifier;
+@property (copy, nonatomic) NSString *radioStationName;
+@property (copy, nonatomic) NSString *radioStationStringIdentifier;
+@property (nonatomic) long long radioStationType;
 @property (copy, nonatomic) NSDate *releaseDate;
 @property (nonatomic) long long seasonNumber;
+@property (copy, nonatomic) NSArray *sections;
+@property (copy, nonatomic) NSString *seriesName;
+@property (nonatomic, getter=isSharableItem) BOOL sharableItem;
+@property (nonatomic) double startTime;
+@property (nonatomic, getter=isSteerable) BOOL steerable;
+@property (nonatomic) long long storeAlbumID;
+@property (nonatomic) long long storeArtistID;
+@property (nonatomic) long long storeID;
+@property (nonatomic) long long storeSubscriptionID;
+@property (nonatomic) long long totalDiscCount;
+@property (nonatomic) long long totalTrackCount;
 @property (copy, nonatomic) NSString *trackArtistName;
+@property (nonatomic) long long trackNumber;
+@property (copy, nonatomic) NSDictionary *userInfo;
 
++ (BOOL)shouldPushArtworkData;
 - (void).cxx_destruct;
-- (unsigned int)_convertFromEditingStyleFlags:(long long)arg1;
-- (unsigned int)_convertFromPlaylistType:(long long)arg1;
-- (unsigned int)_convertFromRadioStationType:(long long)arg1;
-- (long long)_convertToEditingStyleFlags:(unsigned int)arg1;
-- (long long)_convertToPlaylistType:(unsigned int)arg1;
-- (long long)_convertToRadioStationType:(unsigned int)arg1;
-- (id)availableLanguageOptions;
-- (id)currentLanguageOptions;
-- (id)descriptionDataSource;
-- (long long)editingStyleFlags;
-- (id)info;
+- (id)_changeDictionary;
+- (void)dealloc;
 - (id)initWithIdentifier:(id)arg1;
-- (id)languageOptionDataSource;
-- (id)lyrics;
-- (id)lyricsDataSource;
-- (long long)playlistType;
-- (long long)radioStationType;
-- (id)sections;
-- (id)seriesName;
-- (void)setAvailableLanguageOptions:(id)arg1;
-- (void)setCurrentLanguageOptions:(id)arg1;
-- (void)setDescriptionDataSource:(id)arg1;
-- (void)setEditingStyleFlags:(long long)arg1;
-- (void)setInfo:(id)arg1;
-- (void)setLanguageOptionDataSource:(id)arg1;
-- (void)setLyrics:(id)arg1;
-- (void)setLyricsDataSource:(id)arg1;
-- (void)setPlaylistType:(long long)arg1;
-- (void)setRadioStationType:(long long)arg1;
-- (void)setSections:(id)arg1;
-- (void)setSeriesName:(id)arg1;
-- (void)setStartTime:(double)arg1;
-- (double)startTime;
+- (void)invalidateArtwork;
+- (void)invalidateDescription;
+- (void)invalidateLanguageOptions;
+- (void)invalidateLyrics;
+- (void)setElapsedTime:(double)arg1 playbackRate:(double)arg2;
 
 @end
 

@@ -16,6 +16,7 @@
     BOOL _forceOfflineRecognition;
     BOOL _detectUtterances;
     BOOL _secureOfflineOnly;
+    BOOL _farField;
     BOOL _releaseAudioSessionOnRecordingCompletion;
     NSString *_applicationName;
     NSString *_applicationVersion;
@@ -33,6 +34,7 @@
     NSArray *_inlineItemList;
     NSString *_microphoneIdentifier;
     NSString *_orthography;
+    NSString *_keyboardIdentifier;
     NSString *_languageCodeOverride;
     NSString *_offlineLanguage;
     long long _voiceSearchTypeOptions;
@@ -42,26 +44,32 @@
     double _maximumRecognitionDuration;
     long long _taskHint;
     NSURL *_originalAudioFileURL;
+    NSDictionary *_recognitionOverrides;
+    NSURL *_modelOverrideURL;
 }
 
 @property (copy, nonatomic) NSString *applicationName; // @synthesize applicationName=_applicationName;
 @property (copy, nonatomic) NSString *applicationVersion; // @synthesize applicationVersion=_applicationVersion;
 @property (strong, nonatomic) STSiriContext *context; // @synthesize context=_context;
 @property (nonatomic) BOOL detectUtterances; // @synthesize detectUtterances=_detectUtterances;
+@property (nonatomic) BOOL farField; // @synthesize farField=_farField;
 @property (copy, nonatomic) NSString *fieldIdentifier; // @synthesize fieldIdentifier=_fieldIdentifier;
 @property (copy, nonatomic) NSString *fieldLabel; // @synthesize fieldLabel=_fieldLabel;
 @property (nonatomic) BOOL forceOfflineRecognition; // @synthesize forceOfflineRecognition=_forceOfflineRecognition;
 @property (copy, nonatomic) NSArray *inlineItemList; // @synthesize inlineItemList=_inlineItemList;
 @property (copy, nonatomic) NSString *interactionIdentifier; // @synthesize interactionIdentifier=_interactionIdentifier;
+@property (copy, nonatomic) NSString *keyboardIdentifier; // @synthesize keyboardIdentifier=_keyboardIdentifier;
 @property (nonatomic) long long keyboardType; // @synthesize keyboardType=_keyboardType;
 @property (copy, nonatomic) NSString *languageCodeOverride; // @synthesize languageCodeOverride=_languageCodeOverride;
 @property (nonatomic) double maximumRecognitionDuration; // @synthesize maximumRecognitionDuration=_maximumRecognitionDuration;
 @property (copy, nonatomic) NSString *microphoneIdentifier; // @synthesize microphoneIdentifier=_microphoneIdentifier;
+@property (copy, nonatomic) NSURL *modelOverrideURL; // @synthesize modelOverrideURL=_modelOverrideURL;
 @property (copy, nonatomic) NSString *offlineLanguage; // @synthesize offlineLanguage=_offlineLanguage;
 @property (copy, nonatomic) NSURL *originalAudioFileURL; // @synthesize originalAudioFileURL=_originalAudioFileURL;
 @property (copy, nonatomic) NSString *orthography; // @synthesize orthography=_orthography;
 @property (copy, nonatomic) NSString *postfixText; // @synthesize postfixText=_postfixText;
 @property (copy, nonatomic) NSString *prefixText; // @synthesize prefixText=_prefixText;
+@property (copy, nonatomic) NSDictionary *recognitionOverrides; // @synthesize recognitionOverrides=_recognitionOverrides;
 @property (nonatomic) BOOL releaseAudioSessionOnRecordingCompletion; // @synthesize releaseAudioSessionOnRecordingCompletion=_releaseAudioSessionOnRecordingCompletion;
 @property (copy, nonatomic) NSString *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
 @property (nonatomic) long long returnKeyType; // @synthesize returnKeyType=_returnKeyType;

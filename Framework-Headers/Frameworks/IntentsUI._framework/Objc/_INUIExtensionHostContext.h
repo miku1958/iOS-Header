@@ -9,20 +9,25 @@
 #import <IntentsUI/_INUIExtensionContextHosting-Protocol.h>
 
 @class NSString;
+@protocol INUIExtensionHostContextDelegate;
 
 @interface _INUIExtensionHostContext : NSExtensionContext <_INUIExtensionContextHosting>
 {
+    id<INUIExtensionHostContextDelegate> _extensionHostContextDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (weak, nonatomic) id<INUIExtensionHostContextDelegate> extensionHostContextDelegate; // @synthesize extensionHostContextDelegate=_extensionHostContextDelegate;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
+- (void).cxx_destruct;
 - (id)_errorHandlingExtensionContextProxy;
-- (void)setHostedViewMinimumAllowedSize:(struct CGSize)arg1 maximumAllowedSize:(struct CGSize)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)requestHandlingOfIntent:(id)arg1;
+- (void)setExtensionContextState:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

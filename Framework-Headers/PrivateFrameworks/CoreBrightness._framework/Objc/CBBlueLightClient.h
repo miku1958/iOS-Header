@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @interface CBBlueLightClient : NSObject
 {
@@ -19,6 +19,8 @@
 - (BOOL)getCCTRange:(CDStruct_869f9c67 *)arg1;
 - (BOOL)getDefaultCCTRange:(CDStruct_869f9c67 *)arg1;
 - (BOOL)getStrength:(float *)arg1;
+- (BOOL)getWarningCCT:(float *)arg1;
+- (BOOL)getWarningStrength:(float *)arg1;
 - (id)init;
 - (id)initWithClientObj:(id)arg1;
 - (BOOL)setActive:(BOOL)arg1;

@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <UserNotificationsKit/NCDebugInfoProvider-Protocol.h>
 #import <UserNotificationsKit/NCNotificationAlertDestination-Protocol.h>
 #import <UserNotificationsKit/NCNotificationAlertDestinationDelegate-Protocol.h>
 
 @class NCNotificationCollapsingQueue, NCNotificationDestinationsRegistry, NCNotificationRequest, NCNotificationStore, NSString;
 @protocol NCNotificationAlertDestinationDelegate, NCNotificationDestinationDelegate;
 
-@interface NCNotificationAlertQueue : NSObject <NCNotificationAlertDestinationDelegate, NCNotificationAlertDestination, NCDebugInfoProvider>
+@interface NCNotificationAlertQueue : NSObject <NCNotificationAlertDestinationDelegate, NCNotificationAlertDestination>
 {
     id<NCNotificationAlertDestinationDelegate> _delegate;
     NCNotificationDestinationsRegistry *_destinationsRegistry;
@@ -43,12 +42,11 @@
 - (void)_prepareDestinationsToReceiveCriticalNotificationRequest:(id)arg1;
 - (BOOL)_readyToReceiveForNotificationRequest:(id)arg1;
 - (BOOL)canReceiveNotificationRequest:(id)arg1;
-- (id)debugInfoPlist;
 - (void)destination:(id)arg1 didBecomeReadyToReceiveNotificationsCoalescedWith:(id)arg2;
 - (void)destination:(id)arg1 didBecomeReadyToReceiveNotificationsPassingTest:(CDUnknownBlockType)arg2;
 - (void)destination:(id)arg1 didDismissNotificationRequest:(id)arg2;
 - (void)destination:(id)arg1 didPresentNotificationRequest:(id)arg2;
-- (void)destination:(id)arg1 executeAction:(id)arg2 forNotificationRequest:(id)arg3 withParameters:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)destination:(id)arg1 executeAction:(id)arg2 forNotificationRequest:(id)arg3 requestAuthentication:(BOOL)arg4 withParameters:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)destination:(id)arg1 requestPermissionToExecuteAction:(id)arg2 forNotificationRequest:(id)arg3 withParameters:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)destination:(id)arg1 requestsClearingNotificationRequests:(id)arg2;
 - (void)destination:(id)arg1 requestsClearingNotificationRequests:(id)arg2 fromDestinations:(id)arg3;

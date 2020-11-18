@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOActiveResourceFilters, GEOResourceManifestConfiguration, NSLock, NSSet;
 @protocol GEOResourceFiltersManagerDelegate;
@@ -20,8 +20,9 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) NSSet *activeScales;
 @property (readonly, nonatomic) NSSet *activeScenarios;
-@property (nonatomic) id<GEOResourceFiltersManagerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<GEOResourceFiltersManagerDelegate> delegate; // @synthesize delegate=_delegate;
 
+- (void).cxx_destruct;
 - (void)_activateFilters:(CDUnknownBlockType)arg1 setValueBlock:(CDUnknownBlockType)arg2;
 - (void)_deactivateFilters:(CDUnknownBlockType)arg1;
 - (void)_writeToDisk;
@@ -29,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)activateScenario:(int)arg1;
 - (void)deactivateScale:(int)arg1;
 - (void)deactivateScenario:(int)arg1;
-- (void)dealloc;
+- (id)init;
 - (id)initWithConfiguration:(id)arg1;
 
 @end

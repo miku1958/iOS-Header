@@ -15,6 +15,7 @@
     NSArray *_supportedChannelCounts;
     unsigned int _maximumChannelCount;
     BOOL _enabled;
+    BOOL _shouldAllocateBuffer;
     NSString *_name;
     unsigned long long _index;
     long long _busType;
@@ -32,6 +33,7 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) vector_07ddb480 observers; // @synthesize observers=_observers;
 @property (readonly, nonatomic) AUAudioUnit *ownerAudioUnit; // @synthesize ownerAudioUnit=_ownerAudioUnit;
+@property (nonatomic) BOOL shouldAllocateBuffer; // @synthesize shouldAllocateBuffer=_shouldAllocateBuffer;
 @property (readonly, copy, nonatomic) NSArray *supportedChannelLayoutTags; // @synthesize supportedChannelLayoutTags=_supportedChannelLayoutTags;
 
 - (id).cxx_construct;

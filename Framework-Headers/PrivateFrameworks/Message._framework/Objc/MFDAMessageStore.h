@@ -23,8 +23,7 @@
 - (id)_fetchBodyDataForSearchResult:(id)arg1 folderID:(id)arg2 format:(int)arg3 streamConsumer:(id)arg4;
 - (BOOL)_fetchDataForMimePart:(id)arg1 range:(struct _NSRange)arg2 isComplete:(BOOL *)arg3 consumer:(id)arg4;
 - (id)_folderIDForFetching;
-- (BOOL)_messageIsSearchResultWithBogusRemoteId:(id)arg1;
-- (void)_remoteIDsMatchingSearchText:(id)arg1 predicate:(id)arg2 limit:(unsigned int)arg3 filterByDate:(BOOL)arg4 handler:(CDUnknownBlockType)arg5;
+- (void)_remoteIDsMatchingSearchText:(id)arg1 predicate:(id)arg2 limit:(unsigned int)arg3 offset:(id)arg4 filterByDate:(BOOL)arg5 handler:(CDUnknownBlockType)arg6;
 - (id)additionalHeadersForForwardOfMessage:(id)arg1;
 - (id)additionalHeadersForReplyOfMessage:(id)arg1;
 - (BOOL)allowsAppend;
@@ -55,7 +54,7 @@
 - (BOOL)shouldDownloadBodyDataForMessage:(id)arg1;
 - (BOOL)shouldGrowFetchWindow;
 - (BOOL)shouldSetSummaryForMessage:(id)arg1;
-- (id)storeSearchResultMatchingSearchText:(id)arg1 criterion:(id)arg2 limit:(unsigned int)arg3 error:(id *)arg4;
+- (id)storeSearchResultMatchingSearchText:(id)arg1 criterion:(id)arg2 limit:(unsigned int)arg3 offset:(id)arg4 error:(id *)arg5;
 - (BOOL)wantsLineEndingConversionForMIMEPart:(id)arg1;
 - (id)willSetFlagsFromDictionary:(id)arg1 forMessages:(id)arg2;
 

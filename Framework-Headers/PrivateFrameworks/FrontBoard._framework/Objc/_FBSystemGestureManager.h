@@ -9,43 +9,56 @@
 #import <FrontBoard/FBExclusiveTouchGestureRecognizerDelegate-Protocol.h>
 #import <FrontBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class BKSTouchStream, FBSDisplay, NSMutableSet, NSSet, NSString, UIGestureRecognizer;
+@class BKSTouchStream, FBSDisplayIdentity, NSMutableSet, NSSet, NSString, UIGestureRecognizer;
 
 @interface _FBSystemGestureManager : NSObject <UIGestureRecognizerDelegate, FBExclusiveTouchGestureRecognizerDelegate>
 {
+    FBSDisplayIdentity *_rootDisplayIdentity;
     NSMutableSet *_recognizingGestures;
+    NSMutableSet *_externalEdgeSwipeGestures;
     NSMutableSet *_internalGestures;
     NSMutableSet *_externalGestures;
     BOOL _achievedMaximumMovement;
     BOOL _didSeeExclusiveTouchBegan;
-    FBSDisplay *_display;
+    BOOL _didProcessPendingSwipeBegan;
     UIGestureRecognizer *_exclusiveTouchGesture;
+    UIGestureRecognizer *_pendingSwipeGesture;
+    UIGestureRecognizer *_catchEdgeSwipeFailureGesture;
     BKSTouchStream *_touchStream;
 }
 
 @property (nonatomic) BOOL achievedMaximumMovement; // @synthesize achievedMaximumMovement=_achievedMaximumMovement;
+@property (strong, nonatomic) UIGestureRecognizer *catchEdgeSwipeFailureGesture; // @synthesize catchEdgeSwipeFailureGesture=_catchEdgeSwipeFailureGesture;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didProcessPendingSwipeBegan; // @synthesize didProcessPendingSwipeBegan=_didProcessPendingSwipeBegan;
 @property (nonatomic) BOOL didSeeExclusiveTouchBegan; // @synthesize didSeeExclusiveTouchBegan=_didSeeExclusiveTouchBegan;
-@property (readonly, strong, nonatomic) FBSDisplay *display; // @synthesize display=_display;
 @property (strong, nonatomic) UIGestureRecognizer *exclusiveTouchGesture; // @synthesize exclusiveTouchGesture=_exclusiveTouchGesture;
 @property (readonly, copy, nonatomic) NSSet *gestureRecognizers;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIGestureRecognizer *pendingSwipeGesture; // @synthesize pendingSwipeGesture=_pendingSwipeGesture;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) BKSTouchStream *touchStream; // @synthesize touchStream=_touchStream;
 
 - (void)_addInternalGesturesToView:(id)arg1;
+- (void)_catchSwipeFailureGestureChanged:(id)arg1;
+- (unsigned char)_dispatchModeForExternalGestureCompletion;
 - (void)_exclusiveTouchGestureChanged:(id)arg1;
 - (void)_exclusiveTouchGestureDidTerminate:(id)arg1;
 - (void)_externalGestureRecognizerChanged:(id)arg1;
+- (void)_failedPendingSwipe;
 - (void)_handleTooMuchMovementWithLastTouchTimestamp:(double)arg1;
+- (void)_pendingSwipeGestureChanged:(id)arg1;
+- (void)_pendingSwipeGestureDidBegin:(id)arg1;
+- (void)_pendingSwipeGestureDidTerminate:(id)arg1;
 - (void)_removeInternalGestures;
 - (void)addGestureRecognizer:(id)arg1;
+- (void)addGestureRecognizer:(id)arg1 recognitionEvent:(long long)arg2;
 - (void)dealloc;
 - (void)exclusiveTouchGestureRecognizer:(id)arg1 achievedMaximumAbsoluteAccumulatedMovement:(BOOL)arg2 timestamp:(double)arg3;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
-- (id)initWithDisplay:(id)arg1;
+- (id)initWithRootDisplayIdentity:(id)arg1;
 - (void)removeGestureRecognizer:(id)arg1;
 - (id)windowForSystemGestures;
 

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/WebGeolocationCoreLocationUpdateListener-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface WKGeolocationProviderIOS : NSObject <WebGeolocationCoreLocationUpdateListener>
+@interface WKGeolocationProviderIOS : NSObject
 {
     struct RefPtr<WebKit::WebGeolocationManagerProxy> _geolocationManager;
-    struct RetainPtr<WebGeolocationCoreLocationProvider> _coreLocationProvider;
+    struct RetainPtr<id<_WKGeolocationCoreLocationProvider>> _coreLocationProvider;
     BOOL _isWebCoreGeolocationActive;
     struct RefPtr<WebKit::WebGeolocationPosition> _lastActivePosition;
     struct Vector<GeolocationRequestData, 0, WTF::CrashOnOverflow, 16> _requestsWaitingForCoreLocationAuthorization;
@@ -29,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)geolocationAuthorizationGranted;
 - (id)init;
 - (id)initWithProcessPool:(struct WebProcessPool *)arg1;
-- (void)positionChanged:(struct GeolocationPosition *)arg1;
+- (void)positionChanged:(id)arg1;
 - (void)resetGeolocation;
 
 @end

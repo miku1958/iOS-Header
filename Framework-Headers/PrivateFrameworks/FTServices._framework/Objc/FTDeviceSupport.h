@@ -31,9 +31,8 @@
     BOOL _commCenterDead;
     BOOL _simBecameNotReady;
     BOOL _simInserted;
-    BOOL _wantsForcedCelluarQueries;
+    BOOL _wantsForcedCellularQueries;
     int _carrierBundleSupported;
-    int _iMessageAllowedToken;
     BOOL _faceTimeBlocked;
     BOOL _iMessageBlocked;
     BOOL _accountModificationRestricted;
@@ -79,6 +78,7 @@
 @property (readonly, nonatomic) long long performanceClass;
 @property (readonly, nonatomic) NSString *productBuildVersion;
 @property (readonly, nonatomic) NSString *productName;
+@property (readonly, nonatomic) NSString *productOSVersion;
 @property (readonly, nonatomic) NSString *productVersion;
 @property (readonly, nonatomic) BOOL registrationSupported;
 @property (readonly, nonatomic) BOOL supportsAppleIDIdentification;
@@ -101,13 +101,15 @@
 @property (readonly, nonatomic) NSDictionary *telephonyCapabilities;
 @property (readonly, nonatomic) NSString *userAgentString;
 @property (readonly, nonatomic) BOOL wantsBreakBeforeMake;
-@property (readonly, nonatomic) BOOL wantsForcedCelluarQueries; // @synthesize wantsForcedCelluarQueries=_wantsForcedCelluarQueries;
+@property (readonly, nonatomic) BOOL wantsForcedCellularQueries; // @synthesize wantsForcedCellularQueries=_wantsForcedCellularQueries;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_carrierChanged;
 - (id)_forceWWANQueriesCarrierBundleValue;
 - (void)_handlePhoneNumberRegistrationStateChanged:(id)arg1;
 - (void)_handleTechnologyChange:(id)arg1;
+- (id)_iMessageStatus;
 - (void)_lockdownStateChanged:(id)arg1;
 - (void)_operatorChanged;
 - (void)_registerForCapabilityNotifications;
@@ -117,18 +119,20 @@
 - (void)_registerForInternalCoreTelephonyNotifications;
 - (void)_registerForLockdownNotifications;
 - (void)_registerForManagedConfigurationNotifications;
+- (void)_registerForiMessageStatusNotifications;
 - (void)_simStatusChanged:(id)arg1;
 - (void)_unregisterForCarrierNotifications;
 - (void)_unregisterForCommCenterReadyNotifications;
 - (void)_unregisterForCoreTelephonyNotifications;
 - (void)_unregisterForManagedConfigurationNotifications;
+- (void)_unregisterForiMessageStatusNotifications;
 - (void)_updateCapabilities;
 - (void)_updateManagedConfigurationSettings;
 - (BOOL)_wantsForcedCellularQueries;
-- (void)_watchNotifyTokens;
 - (void)carrierSettingsChanged:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (BOOL)nonBluetoothAvailableForBundleId:(id)arg1;
 - (BOOL)nonWifiAvailableForBundleId:(id)arg1;
 - (BOOL)wifiAllowedForBundleId:(id)arg1;
 

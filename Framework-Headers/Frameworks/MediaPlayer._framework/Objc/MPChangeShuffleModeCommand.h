@@ -6,16 +6,21 @@
 
 #import <MediaPlayer/MPRemoteCommand.h>
 
+@class NSArray;
+
 @interface MPChangeShuffleModeCommand : MPRemoteCommand
 {
+    NSArray *_supportedShuffleTypes;
     long long _currentShuffleType;
 }
 
 @property (nonatomic) long long currentShuffleType; // @synthesize currentShuffleType=_currentShuffleType;
 
+- (void).cxx_destruct;
 - (id)_mediaRemoteCommandInfoOptions;
 - (id)newCommandEventWithType:(long long)arg1;
 - (id)newCommandEventWithType:(long long)arg1 preservesShuffleMode:(BOOL)arg2;
+- (void)setSupportedShuffleTypes:(id)arg1;
 
 @end
 

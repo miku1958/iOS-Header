@@ -8,36 +8,50 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPZone, NSData;
+@class CKDPDate, CKDPZone, CKDPZoneCapabilities, NSData;
 
 __attribute__((visibility("hidden")))
 @interface CKDPZoneRetrieveResponseZoneSummary : PBCodable <NSCopying>
 {
     long long _assetQuotaUsage;
     long long _metadataQuotaUsage;
+    CKDPZoneCapabilities *_capabilities;
     NSData *_clientChangeToken;
     NSData *_currentServerContinuationToken;
     int _deviceCount;
     CKDPZone *_targetZone;
+    CKDPDate *_zonePcsModificationTime;
+    BOOL _zoneKeyRollAllowed;
+    BOOL _zoneishPcsNeedsRolled;
     struct {
         unsigned int assetQuotaUsage:1;
         unsigned int metadataQuotaUsage:1;
         unsigned int deviceCount:1;
+        unsigned int zoneKeyRollAllowed:1;
+        unsigned int zoneishPcsNeedsRolled:1;
     } _has;
 }
 
 @property (nonatomic) long long assetQuotaUsage; // @synthesize assetQuotaUsage=_assetQuotaUsage;
+@property (strong, nonatomic) CKDPZoneCapabilities *capabilities; // @synthesize capabilities=_capabilities;
 @property (strong, nonatomic) NSData *clientChangeToken; // @synthesize clientChangeToken=_clientChangeToken;
 @property (strong, nonatomic) NSData *currentServerContinuationToken; // @synthesize currentServerContinuationToken=_currentServerContinuationToken;
 @property (nonatomic) int deviceCount; // @synthesize deviceCount=_deviceCount;
 @property (nonatomic) BOOL hasAssetQuotaUsage;
+@property (readonly, nonatomic) BOOL hasCapabilities;
 @property (readonly, nonatomic) BOOL hasClientChangeToken;
 @property (readonly, nonatomic) BOOL hasCurrentServerContinuationToken;
 @property (nonatomic) BOOL hasDeviceCount;
 @property (nonatomic) BOOL hasMetadataQuotaUsage;
 @property (readonly, nonatomic) BOOL hasTargetZone;
+@property (nonatomic) BOOL hasZoneKeyRollAllowed;
+@property (readonly, nonatomic) BOOL hasZonePcsModificationTime;
+@property (nonatomic) BOOL hasZoneishPcsNeedsRolled;
 @property (nonatomic) long long metadataQuotaUsage; // @synthesize metadataQuotaUsage=_metadataQuotaUsage;
 @property (strong, nonatomic) CKDPZone *targetZone; // @synthesize targetZone=_targetZone;
+@property (nonatomic) BOOL zoneKeyRollAllowed; // @synthesize zoneKeyRollAllowed=_zoneKeyRollAllowed;
+@property (strong, nonatomic) CKDPDate *zonePcsModificationTime; // @synthesize zonePcsModificationTime=_zonePcsModificationTime;
+@property (nonatomic) BOOL zoneishPcsNeedsRolled; // @synthesize zoneishPcsNeedsRolled=_zoneishPcsNeedsRolled;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

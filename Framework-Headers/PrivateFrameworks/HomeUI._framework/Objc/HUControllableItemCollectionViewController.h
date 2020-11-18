@@ -7,30 +7,31 @@
 #import <HomeUI/HUItemCollectionViewController.h>
 
 #import <HomeUI/HUQuickControlPresentationCoordinatorDelegate-Protocol.h>
-#import <HomeUI/HUQuickControlsHost-Protocol.h>
+#import <HomeUI/HUQuickControlPresentationHost-Protocol.h>
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class HUQuickControlPresentationCoordinator, NSMutableDictionary, NSString, UICollectionViewLayout, UILongPressGestureRecognizer, UIViewController;
-@protocol HUControllableCollectionViewLayout, HUQuickControlsHost;
+@class HFItemManager, HUQuickControlPresentationCoordinator, NSMutableDictionary, NSString, UICollectionViewLayout, UILongPressGestureRecognizer, UIViewController;
+@protocol HUControllableCollectionViewLayout, HUQuickControlPresentationHost;
 
-@interface HUControllableItemCollectionViewController : HUItemCollectionViewController <HUQuickControlsHost, UIGestureRecognizerDelegate, HUQuickControlPresentationCoordinatorDelegate>
+@interface HUControllableItemCollectionViewController : HUItemCollectionViewController <HUQuickControlPresentationHost, UIGestureRecognizerDelegate, HUQuickControlPresentationCoordinatorDelegate>
 {
     BOOL _viewAppeared;
     BOOL _suppressCollectionViewUpdatesForReorderCommit;
     unsigned long long _contentColorStyle;
     HUQuickControlPresentationCoordinator *_quickControlPresentationCoordinator;
-    UIViewController<HUQuickControlsHost> *_parentViewControllerAtQuickControlsPresentationTime;
+    UIViewController<HUQuickControlPresentationHost> *_ancestorQuickControlHostAtPresentationTime;
     UILongPressGestureRecognizer *_reorderGestureRecognizer;
     NSMutableDictionary *_actionSetExecutionFuturesKeyedByIdentifier;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *actionSetExecutionFuturesKeyedByIdentifier; // @synthesize actionSetExecutionFuturesKeyedByIdentifier=_actionSetExecutionFuturesKeyedByIdentifier;
+@property (weak, nonatomic) UIViewController<HUQuickControlPresentationHost> *ancestorQuickControlHostAtPresentationTime; // @synthesize ancestorQuickControlHostAtPresentationTime=_ancestorQuickControlHostAtPresentationTime;
 @property (readonly, nonatomic) UICollectionViewLayout<HUControllableCollectionViewLayout> *collectionViewLayout; // @dynamic collectionViewLayout;
 @property (readonly, nonatomic) unsigned long long contentColorStyle; // @synthesize contentColorStyle=_contentColorStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) UIViewController<HUQuickControlsHost> *parentViewControllerAtQuickControlsPresentationTime; // @synthesize parentViewControllerAtQuickControlsPresentationTime=_parentViewControllerAtQuickControlsPresentationTime;
+@property (readonly, nonatomic) HFItemManager *itemManager;
 @property (strong, nonatomic) HUQuickControlPresentationCoordinator *quickControlPresentationCoordinator; // @synthesize quickControlPresentationCoordinator=_quickControlPresentationCoordinator;
 @property (strong, nonatomic) UILongPressGestureRecognizer *reorderGestureRecognizer; // @synthesize reorderGestureRecognizer=_reorderGestureRecognizer;
 @property (readonly) Class superclass;
@@ -38,6 +39,7 @@
 @property (nonatomic) BOOL viewAppeared; // @synthesize viewAppeared=_viewAppeared;
 
 - (void).cxx_destruct;
+- (id)_ancestorQuickControlPresentationHost;
 - (void)_handleApplicationWillResignActiveNotification:(id)arg1;
 - (void)_handleReorderGesture:(id)arg1;
 - (BOOL)_hasTapActionForItem:(id)arg1;
@@ -58,14 +60,11 @@
 - (BOOL)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 targetIndexPathForMoveFromItemAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)hasDetailsActionForPresentationCoordinator:(id)arg1 item:(id)arg2;
 - (id)initWithItemManager:(id)arg1 collectionViewLayout:(id)arg2;
-- (void)itemManager:(id)arg1 didInsertItem:(id)arg2 atIndexPath:(id)arg3;
-- (void)itemManager:(id)arg1 didInsertSections:(id)arg2;
 - (void)itemManager:(id)arg1 didMoveItem:(id)arg2 fromIndexPath:(id)arg3 toIndexPath:(id)arg4;
-- (void)itemManager:(id)arg1 didMoveSection:(long long)arg2 toSection:(long long)arg3;
-- (void)itemManager:(id)arg1 didRemoveItem:(id)arg2 atIndexPath:(id)arg3;
-- (void)itemManager:(id)arg1 didRemoveSections:(id)arg2;
+- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (id)prepareToPerformToggleActionForItem:(id)arg1 sourceItem:(id)arg2;
 - (void)presentationCoordinator:(id)arg1 applyOverrideAttributes:(id)arg2 toItem:(id)arg3;
 - (void)presentationCoordinator:(id)arg1 clearOverrideAttributesForItem:(id)arg2;
@@ -74,6 +73,7 @@
 - (void)presentationCoordinator:(id)arg1 didRecognizeTapForItem:(id)arg2;
 - (BOOL)presentationCoordinator:(id)arg1 shouldBeginInteractivePresentationWithTouchLocation:(struct CGPoint)arg2;
 - (void)presentationCoordinator:(id)arg1 willBeginPresentationWithContext:(id)arg2;
+- (id)quickControlPresentationContextForItem:(id)arg1 atIndexPath:(id)arg2;
 - (id)reorderableHomeKitItemListForSection:(long long)arg1;
 - (void)setContentColorStyle:(unsigned long long)arg1;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
@@ -84,6 +84,7 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

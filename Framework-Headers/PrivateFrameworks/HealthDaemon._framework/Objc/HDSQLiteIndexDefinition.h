@@ -6,23 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class HDSQLitePredicate, NSArray, NSString;
 
 @interface HDSQLiteIndexDefinition : NSObject
 {
+    BOOL _unique;
     Class _entityClass;
     NSString *_name;
     NSArray *_columns;
+    HDSQLitePredicate *_predicate;
 }
 
 @property (readonly, nonatomic) NSArray *columns; // @synthesize columns=_columns;
 @property (readonly, copy, nonatomic) NSString *disambiguatedName;
 @property (readonly, nonatomic) Class entityClass; // @synthesize entityClass=_entityClass;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, copy, nonatomic) HDSQLitePredicate *predicate; // @synthesize predicate=_predicate;
+@property (readonly, nonatomic, getter=isUnique) BOOL unique; // @synthesize unique=_unique;
 
 - (void).cxx_destruct;
 - (id)creationSQL;
 - (id)initWithEntity:(Class)arg1 name:(id)arg2 columns:(id)arg3;
+- (id)initWithEntity:(Class)arg1 name:(id)arg2 columns:(id)arg3 unique:(BOOL)arg4 predicate:(id)arg5;
 
 @end
 

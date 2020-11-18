@@ -15,8 +15,8 @@
 
 @property (strong, nonatomic) NSFileHandle *destinationFile; // @synthesize destinationFile=_destinationFile;
 
+- (void).cxx_destruct;
 - (id)copyDefaultParserForContentType:(id)arg1;
-- (void)dealloc;
 - (id)initWithURL:(id)arg1 destinationFile:(id)arg2;
 - (BOOL)shouldLogResponseBody;
 

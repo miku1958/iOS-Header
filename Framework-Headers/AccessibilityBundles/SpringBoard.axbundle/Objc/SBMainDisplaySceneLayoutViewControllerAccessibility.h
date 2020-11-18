@@ -14,7 +14,12 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)_axAffordanceView;
+- (void)_axAnnotateAffordanceView;
+- (BOOL)_axSeparatorHidden;
+- (void)_updateAuxiliaryViews;
 - (void)loadView;
+- (void)viewDidLoad;
 
 @end
 

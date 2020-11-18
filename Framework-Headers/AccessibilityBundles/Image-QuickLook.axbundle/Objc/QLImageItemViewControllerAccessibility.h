@@ -14,8 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)_axPhotoDescriptionFromItem:(id)arg1;
-- (void)loadPreviewControllerWithPreviewItem:(id)arg1 completionHandler:(id)arg2;
+- (id)_axPhotoDescriptionFromContents:(id)arg1 context:(id)arg2;
+- (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)previewDidAppear:(BOOL)arg1;
 
 @end

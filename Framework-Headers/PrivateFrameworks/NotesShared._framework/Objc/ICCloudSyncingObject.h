@@ -13,9 +13,12 @@
 
 @interface ICCloudSyncingObject : NSManagedObject <ICCloudObject, ICLoggable>
 {
-    BOOL needsToLoadDecryptedValues;
+    BOOL _needsToLoadDecryptedValues;
     BOOL mergingUnappliedEncryptedRecord;
     NSMutableDictionary *_decryptedValues;
+    CKRecord *_serverRecord;
+    CKShare *_serverShare;
+    CKRecord *_userSpecificServerRecord;
 }
 
 @property (strong, nonatomic) ICCloudState *cloudState; // @dynamic cloudState;
@@ -38,21 +41,23 @@
 @property (nonatomic) long long minimumSupportedNotesVersion; // @dynamic minimumSupportedNotesVersion;
 @property (nonatomic) BOOL needsInitialFetchFromCloud; // @dynamic needsInitialFetchFromCloud;
 @property (nonatomic) BOOL needsToBeFetchedFromCloud; // @dynamic needsToBeFetchedFromCloud;
-@property (nonatomic) BOOL needsToLoadDecryptedValues; // @synthesize needsToLoadDecryptedValues;
+@property (nonatomic) BOOL needsToLoadDecryptedValues; // @synthesize needsToLoadDecryptedValues=_needsToLoadDecryptedValues;
 @property (nonatomic) BOOL needsToSaveUserSpecificRecord; // @dynamic needsToSaveUserSpecificRecord;
 @property long long numberOfPushAttemptsToWaitCount;
 @property (strong, nonatomic) NSString *passwordHint; // @dynamic passwordHint;
 @property (strong, nonatomic) NSString *primitiveZoneOwnerName; // @dynamic primitiveZoneOwnerName;
-@property (strong, nonatomic) CKRecord *serverRecord; // @dynamic serverRecord;
-@property (strong, nonatomic) CKShare *serverShare; // @dynamic serverShare;
+@property (strong, nonatomic) CKRecord *serverRecord; // @synthesize serverRecord=_serverRecord;
+@property (strong, nonatomic) NSData *serverRecordData; // @dynamic serverRecordData;
+@property (strong, nonatomic) CKShare *serverShare; // @synthesize serverShare=_serverShare;
+@property (strong, nonatomic) NSData *serverShareData; // @dynamic serverShareData;
 @property (readonly, nonatomic) BOOL shouldBeIgnoredForSync;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSData *unappliedEncryptedRecord; // @dynamic unappliedEncryptedRecord;
-@property (strong, nonatomic) CKRecord *userSpecificServerRecord; // @dynamic userSpecificServerRecord;
+@property (strong, nonatomic) CKRecord *userSpecificServerRecord; // @synthesize userSpecificServerRecord=_userSpecificServerRecord;
+@property (strong, nonatomic) NSData *userSpecificServerRecordData; // @dynamic userSpecificServerRecordData;
 @property (strong, nonatomic) NSString *zoneOwnerName; // @dynamic zoneOwnerName;
 
 + (id)allCloudObjectsInContext:(id)arg1;
-+ (void)applicationWillTerminate:(id)arg1;
 + (id)assetForData:(id)arg1;
 + (id)cloudObjectWithIdentifier:(id)arg1 context:(id)arg2;
 + (id)currentNotesVersion;
@@ -64,7 +69,6 @@
 + (id)existingCloudObjectForRecordID:(id)arg1 context:(id)arg2;
 + (id)failedToSyncCountsByIdentifier;
 + (id)failureCountQueue;
-+ (void)initialize;
 + (id)keyPathsForValuesAffectingCanBeSharedViaICloud;
 + (id)keyPathsForValuesAffectingCloudAccount;
 + (id)keyPathsForValuesAffectingIsSharedReadOnly;
@@ -79,7 +83,9 @@
 + (id)newPlaceholderObjectForRecordID:(id)arg1 context:(id)arg2;
 + (id)numberOfPushAttemptsToWaitByIdentifier;
 + (id)objectWithRecordID:(id)arg1 context:(id)arg2;
++ (id)recordSystemFieldsTransformer;
 + (void)resetAllDeletedByThisDeviceProperties;
++ (id)shareSystemFieldsTransformer;
 + (BOOL)supportsUserSpecificRecords;
 + (id)temporaryAssetDirectoryURL;
 + (id)temporaryAssets;
@@ -88,6 +94,7 @@
 - (void).cxx_destruct;
 - (void)awakeFromFetch;
 - (void)awakeFromInsert;
+- (BOOL)canBeRootShareObject;
 - (BOOL)canBeSharedViaICloud;
 - (id)childCloudObjects;
 - (void)clearChangeCount;
@@ -107,12 +114,14 @@
 - (void)didFailToSaveUserSpecificRecord:(id)arg1 error:(id)arg2;
 - (void)didFetchUserSpecificRecord:(id)arg1;
 - (void)didSaveUserSpecificRecord:(id)arg1;
+- (void)didTurnIntoFault;
 - (void)fixBrokenReferences;
 - (BOOL)hasAllMandatoryFields;
 - (BOOL)hasSuccessfullyPushedLatestVersionToCloud;
 - (id)ic_loggingIdentifier;
 - (id)ic_loggingValues;
 - (void)incrementFailureCounts;
+- (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
 - (void)initializeCryptoProperties;
 - (void)initializeCryptoPropertiesFromObject:(id)arg1;
 - (BOOL)isDeletable;
@@ -179,6 +188,7 @@
 - (void)unmarkForDeletion;
 - (void)updateChangeCount;
 - (void)updateChangeCountsForUnsavedParentReferences;
+- (void)updateMinimumSupportedNotesVersion;
 - (void)updateParentReferenceIfNecessary;
 - (id)userSpecificRecordID;
 - (id)userSpecificRecordType;

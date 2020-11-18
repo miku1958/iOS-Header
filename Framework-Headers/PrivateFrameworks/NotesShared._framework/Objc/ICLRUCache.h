@@ -21,6 +21,8 @@
 @property (weak, nonatomic) id<ICLRUCacheDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) unsigned long long maxSize; // @synthesize maxSize=mMax;
 
++ (id)cacheCollection;
++ (void)purgeAllCaches;
 - (void).cxx_destruct;
 - (id)initWithMaxSize:(unsigned long long)arg1;
 - (id)objectForKey:(id)arg1;

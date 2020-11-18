@@ -12,11 +12,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 struct SwiftReflectionContext;
 
-struct VMULabelUniquingDataForStringType {
-    id _field1;
-    id _field2;
-};
-
 struct _CSTypeRef {
     unsigned long long _opaque_1;
     unsigned long long _opaque_2;
@@ -178,13 +173,15 @@ struct libSwiftRemoteMirrorWrapper {
     CDUnknownFunctionPointerType _field14;
     CDUnknownFunctionPointerType _field15;
     CDUnknownFunctionPointerType _field16;
-};
-
-struct mach_stack_logging_record {
-    unsigned int _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
+    unsigned long long _field17;
+    unsigned long long _field18;
+    unsigned long long _field19;
+    BOOL _field20;
+    unsigned long long _field21;
+    unsigned long long _field22;
+    unsigned long long _field23;
+    unsigned char _field24;
+    unsigned char _field25;
 };
 
 struct malloc_introspection_t;

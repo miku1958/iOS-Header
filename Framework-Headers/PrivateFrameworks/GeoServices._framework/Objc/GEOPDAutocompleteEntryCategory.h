@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocalizedString, GEOStyleAttributes, NSData, PBUnknownFields;
+@class GEOLocalizedString, GEOPDVenueIdentifier, GEOStyleAttributes, NSData, PBUnknownFields;
 
 @interface GEOPDAutocompleteEntryCategory : PBCodable <NSCopying>
 {
@@ -16,19 +16,22 @@
     GEOLocalizedString *_displayName;
     GEOStyleAttributes *_styleAttributes;
     NSData *_suggestionEntryMetadata;
+    GEOPDVenueIdentifier *_venueIdentifier;
 }
 
 @property (strong, nonatomic) GEOLocalizedString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, nonatomic) BOOL hasDisplayName;
 @property (readonly, nonatomic) BOOL hasStyleAttributes;
 @property (readonly, nonatomic) BOOL hasSuggestionEntryMetadata;
+@property (readonly, nonatomic) BOOL hasVenueIdentifier;
 @property (strong, nonatomic) GEOStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
 @property (strong, nonatomic) NSData *suggestionEntryMetadata; // @synthesize suggestionEntryMetadata=_suggestionEntryMetadata;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (strong, nonatomic) GEOPDVenueIdentifier *venueIdentifier; // @synthesize venueIdentifier=_venueIdentifier;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

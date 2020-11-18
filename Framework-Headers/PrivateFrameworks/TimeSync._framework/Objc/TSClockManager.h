@@ -12,6 +12,7 @@
 {
     unsigned int _connection;
     NSMutableArray *_clockPersonalities;
+    struct mach_timebase_info _timebaseInfo;
     unsigned long long _machAbsoluteNanosecondClockIdentifier;
 }
 
@@ -21,8 +22,8 @@
 + (id)defaultClockPersonalities;
 + (id)diagnosticDescriptionForClockService:(unsigned int)arg1 withIndent:(id)arg2;
 + (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
-+ (void)loadClockManagerNub;
 + (id)sharedClockManager;
++ (id)sharedClockManagerSyncWithTimeout:(unsigned long long)arg1;
 + (id)timeSyncAudioClockDeviceUIDForClockIdentifier:(unsigned long long)arg1;
 - (void)addClockPersonality:(id)arg1;
 - (BOOL)addMappingFromClockID:(unsigned long long)arg1 toCoreAudioClockDomain:(unsigned int *)arg2 error:(id *)arg3;
@@ -33,6 +34,8 @@
 - (void)dealloc;
 - (BOOL)getMachAbsoluteClockID:(unsigned long long *)arg1 error:(id *)arg2;
 - (id)init;
+- (unsigned long long)machAbsoluteToNanoseconds:(unsigned long long)arg1;
+- (unsigned long long)nanosecondsToMachAbsolute:(unsigned long long)arg1;
 - (BOOL)nextAvailableDynamicClockID:(unsigned long long *)arg1 error:(id *)arg2;
 - (BOOL)releaseDynamicClockID:(unsigned long long)arg1 error:(id *)arg2;
 - (void)removeClockPersonality:(id)arg1;

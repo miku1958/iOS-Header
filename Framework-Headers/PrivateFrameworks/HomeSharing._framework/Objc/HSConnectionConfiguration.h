@@ -9,11 +9,12 @@
 #import <HomeSharing/NSCopying-Protocol.h>
 #import <HomeSharing/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSString, NSURL, SSAccount;
+@class ICUserIdentity, ICUserIdentityStore, NSNumber, NSString, NSURL;
 
 @interface HSConnectionConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
-    SSAccount *_account;
+    ICUserIdentity *_userIdentity;
+    ICUserIdentityStore *_userIdentityStore;
     NSURL *_baseURL;
     NSString *_libraryBagKey;
     NSString *_buildIdentifier;
@@ -22,13 +23,14 @@
     NSNumber *_familyMemberStoreID;
 }
 
-@property (strong, nonatomic) SSAccount *account; // @synthesize account=_account;
 @property (copy, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property (copy, nonatomic) NSString *buildIdentifier; // @synthesize buildIdentifier=_buildIdentifier;
 @property (copy, nonatomic) NSNumber *familyMemberStoreID; // @synthesize familyMemberStoreID=_familyMemberStoreID;
 @property (copy, nonatomic) NSString *libraryBagKey; // @synthesize libraryBagKey=_libraryBagKey;
 @property (copy, nonatomic) NSString *purchaseClientIdentifier; // @synthesize purchaseClientIdentifier=_purchaseClientIdentifier;
 @property (nonatomic) long long requestReason; // @synthesize requestReason=_requestReason;
+@property (copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
+@property (readonly, nonatomic) ICUserIdentityStore *userIdentityStore; // @synthesize userIdentityStore=_userIdentityStore;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

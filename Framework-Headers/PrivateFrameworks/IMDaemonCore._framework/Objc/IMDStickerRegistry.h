@@ -17,10 +17,7 @@
 
 + (id)sharedInstance;
 - (id)_cachedPathForStickerWithProperties:(id)arg1;
-- (id)_filePathInStickerPacksForStickerGUID:(struct NSString *)arg1 stickerPackGUID:(struct NSString *)arg2 stickerHash:(id)arg3;
 - (BOOL)_isRecipeBasedSticker:(id)arg1;
-- (id)allDownloadedStickerPacks;
-- (id)allDownloadedStickers;
 - (void)dealloc;
 - (id)init;
 - (void)retrieveStickerWithProperties:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;

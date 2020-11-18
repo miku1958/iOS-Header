@@ -6,28 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, NSString;
+@class NSString;
 @protocol OS_xpc_object;
 
 @interface WBWebsiteDataRecord : NSObject
 {
     NSString *_domain;
     unsigned long long _usage;
-    NSMutableSet *_cookieDomains;
-    NSMutableSet *_securityOriginHosts;
 }
 
 @property (readonly, copy, nonatomic) NSObject<OS_xpc_object> *XPCDictionaryRepresentation;
-@property (readonly, nonatomic) NSMutableSet *cookieDomains; // @synthesize cookieDomains=_cookieDomains;
 @property (readonly, copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
-@property (readonly, nonatomic) NSMutableSet *securityOriginHosts; // @synthesize securityOriginHosts=_securityOriginHosts;
 @property (nonatomic) unsigned long long usage; // @synthesize usage=_usage;
 
 + (id)websiteDataRecordFromXPCDictionary:(id)arg1;
 + (id)websiteDataRecordWithDomain:(id)arg1;
 - (void).cxx_destruct;
 - (id)_initWithDomain:(id)arg1;
-- (id)_initWithDomain:(id)arg1 usage:(unsigned long long)arg2 securityOriginHosts:(id)arg3 cookieDomains:(id)arg4;
+- (id)_initWithDomain:(id)arg1 usage:(unsigned long long)arg2;
 
 @end
 

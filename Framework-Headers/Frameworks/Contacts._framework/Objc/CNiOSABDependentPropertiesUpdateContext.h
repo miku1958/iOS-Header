@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData;
 
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSData *pendingThumbnailImageData; // @synthesize pendingThumbnailImageData=_pendingThumbnailImageData;
 
 + (BOOL)shouldSetWatchChanges;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (BOOL)flushPendingImageChangesToPerson:(void *)arg1 error:(id *)arg2;
 - (void)resetAllData;
 - (BOOL)setWatchChangesforThumbnailImageDataToPerson:(void *)arg1 error:(id *)arg2;

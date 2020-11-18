@@ -38,7 +38,6 @@
 - (id)init;
 - (id)objectAtPath:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
-- (id)primitive;
 - (void)setComponent:(id)arg1 forProtocol:(id)arg2;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 

@@ -76,7 +76,6 @@
 - (long long)_additionalButtons;
 - (id)_advertisementView;
 - (BOOL)_areControlsHidden;
-- (id)_audioSessionModeOverride;
 - (void)_bufferingStateDidChangeNotification:(id)arg1;
 - (void)_cacheAccessAndErrorLogs;
 - (BOOL)_canContinuePlayingWhenLocked;
@@ -128,7 +127,6 @@
 - (double)_seekableStartTime;
 - (void)_serverDiedNotification:(id)arg1;
 - (void)_setAdditionalButtons:(long long)arg1;
-- (void)_setAudioSessionModeOverride:(id)arg1;
 - (void)_setControlsHidden:(BOOL)arg1;
 - (void)_setControlsHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setCurrentPlaybackTime:(double)arg1 timeOption:(long long)arg2;

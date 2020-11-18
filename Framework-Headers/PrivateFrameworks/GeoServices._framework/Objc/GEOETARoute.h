@@ -15,6 +15,7 @@
     CDStruct_9f2792e4 _incidentEndOffsetsInETARoutes;
     CDStruct_9f2792e4 _trafficColorOffsets;
     CDStruct_9f2792e4 _trafficColors;
+    NSMutableArray *_enrouteNotices;
     unsigned int _historicTravelTime;
     NSMutableArray *_incidentsOffReRoutes;
     NSMutableArray *_incidentsOnETARoutes;
@@ -40,6 +41,7 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSMutableArray *enrouteNotices; // @synthesize enrouteNotices=_enrouteNotices;
 @property (readonly, nonatomic) double expectedTime;
 @property (nonatomic) BOOL hasHistoricTravelTime;
 @property (readonly, nonatomic) BOOL hasRouteID;
@@ -72,13 +74,16 @@
 @property (nonatomic) unsigned int travelTimeConservativeEstimate; // @synthesize travelTimeConservativeEstimate=_travelTimeConservativeEstimate;
 @property (strong, nonatomic) NSData *zilchPoints; // @synthesize zilchPoints=_zilchPoints;
 
++ (Class)enrouteNoticeType;
 + (Class)incidentsOffReRoutesType;
 + (Class)incidentsOnETARouteType;
 + (Class)incidentsOnReRoutesType;
 + (Class)invalidSectionZilchPointsType;
 + (Class)reroutedRouteType;
 + (Class)stepType;
+- (void).cxx_destruct;
 - (void)_addDebugArguments:(id)arg1;
+- (void)addEnrouteNotice:(id)arg1;
 - (void)addIncidentEndOffsetsInETARoute:(unsigned int)arg1;
 - (void)addIncidentsOffReRoutes:(id)arg1;
 - (void)addIncidentsOnETARoute:(id)arg1;
@@ -91,6 +96,7 @@
 - (id)bannerDescription;
 - (id)bannerSpoken;
 - (id)bannerTitle;
+- (void)clearEnrouteNotices;
 - (void)clearIncidentEndOffsetsInETARoutes;
 - (void)clearIncidentsOffReRoutes;
 - (void)clearIncidentsOnETARoutes;
@@ -105,6 +111,8 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)enrouteNoticeAtIndex:(unsigned long long)arg1;
+- (unsigned long long)enrouteNoticesCount;
 - (unsigned long long)hash;
 - (unsigned int)incidentEndOffsetsInETARouteAtIndex:(unsigned long long)arg1;
 - (id)incidentsOffReRoutesAtIndex:(unsigned long long)arg1;

@@ -23,7 +23,7 @@
 @property (strong, nonatomic) id<CDPStateUIProviderInternal> uiProvider; // @synthesize uiProvider=_uiProvider;
 
 - (void).cxx_destruct;
-- (void)_joinCDPCircleIgnoringBackups:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_joinCircleIgnoringBackups:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)_peerCount;
 - (id)_peerDeviceNamesByPeerID;
 - (void)_requestCircleJoinWithObserver:(id)arg1 requestBlock:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
@@ -31,17 +31,18 @@
 - (void)_requestToJoinAndWaitForSuccessWithHandler:(CDUnknownBlockType)arg1;
 - (void)_requestToJoinWithObserver:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_requestToJoinWithRequestBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_resetCicleToResolvePendingAfterRecoveryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)applyToJoinCircleWithJoinHandler:(CDUnknownBlockType)arg1;
 - (void)cancelApplicationToJoinCircle;
 - (int)circleStatus;
 - (void)dealloc;
 - (id)initWithUiProvider:(id)arg1 delegate:(id)arg2 circleProxy:(id)arg3;
-- (void)joinCDPCircleIgnoringBackups:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)joinCDPCircleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)joinCircleAfterRecoveryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)joinCircleIgnoringBackups:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)joinCircleWithCompletion:(CDUnknownBlockType)arg1;
 - (id)peerID;
 - (void)prepareCircleStateForRecovery;
+- (void)promptForCredentials:(CDUnknownBlockType)arg1;
+- (void)resetCircleIncludingCloudKitData:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)synchronizeCircleViews;
 - (void)useCircleInfoToUpdateNameForDevices:(id)arg1;
 

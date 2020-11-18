@@ -8,43 +8,36 @@
 
 #import <WatchListKitUI/SBIconProgressViewDelegate-Protocol.h>
 
-@class NSString, SBIconProgressView, TVImageProxy, UIImage, UILabel, UIVisualEffectView, _TVImageView;
+@class NSString, SBIconProgressView, UIImage, UIImageView;
 
 @interface _WLKUIAppInstallView : UIView <SBIconProgressViewDelegate>
 {
-    _TVImageView *_appIconImageView;
-    UIView *_backgroundContainerView;
-    UIVisualEffectView *_backgroundView;
+    UIImageView *_appIconImageView;
     UIView *_backgroundKnockoutView;
     CDUnknownBlockType _completion;
     SBIconProgressView *_progressView;
-    UILabel *_subtitleLabel;
-    UILabel *_titleLabel;
-    TVImageProxy *_appIconImageProxy;
-    UIImage *_placeholderAppIcon;
-    NSString *_title;
-    NSString *_subtitle;
+    UIImage *_appIcon;
     double _installProgress;
 }
 
-@property (strong, nonatomic) TVImageProxy *appIconImageProxy; // @synthesize appIconImageProxy=_appIconImageProxy;
+@property (strong, nonatomic) UIImage *appIcon; // @synthesize appIcon=_appIcon;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double installProgress; // @synthesize installProgress=_installProgress;
-@property (strong, nonatomic) UIImage *placeholderAppIcon; // @synthesize placeholderAppIcon=_placeholderAppIcon;
-@property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
++ (double)_appIconRadius;
++ (struct CGSize)_appIconSize;
 + (id)_progressMaskImage;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)finishInstallationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)progressViewCanBeRemoved:(id)arg1;
-- (BOOL)shouldDismissForTapLocation:(struct CGPoint)arg1;
+- (void)setWaiting;
 
 @end
 

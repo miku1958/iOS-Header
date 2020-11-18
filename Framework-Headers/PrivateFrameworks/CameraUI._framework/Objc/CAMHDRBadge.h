@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CameraUI/CAMBadgeTextView.h>
+#import <DCIMServices/CAMBadgeTextView.h>
 
 @interface CAMHDRBadge : CAMBadgeTextView
 {

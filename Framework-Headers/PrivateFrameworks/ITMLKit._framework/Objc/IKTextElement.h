@@ -26,10 +26,13 @@
 - (void).cxx_destruct;
 - (unsigned long long)_styleForTagName:(id)arg1;
 - (id)accessibilityText;
+- (void)appDocumentDidMarkStylesDirty;
 - (id)attributedStringWithFont:(id)arg1;
 - (id)attributedStringWithFont:(id)arg1 foregroundColor:(id)arg2 textAlignment:(long long)arg3;
 - (id)attributedStringWithFontHandler:(CDUnknownBlockType)arg1;
+- (id)attributedStringWithFontHandler:(CDUnknownBlockType)arg1 defaultAttributes:(id *)arg2;
 - (id)attributedStringWithFontHandler:(CDUnknownBlockType)arg1 foregroundColor:(id)arg2 textAlignment:(long long)arg3;
+- (id)attributedStringWithFontHandler:(CDUnknownBlockType)arg1 foregroundColor:(id)arg2 textAlignment:(long long)arg3 defaultAttributes:(id *)arg4;
 - (id)initWithDOMElement:(id)arg1 parent:(id)arg2 elementFactory:(id)arg3;
 
 @end

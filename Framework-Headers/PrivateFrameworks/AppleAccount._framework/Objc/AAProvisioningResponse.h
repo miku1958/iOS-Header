@@ -15,18 +15,19 @@
 
 @property (readonly, nonatomic) NSString *appleID;
 @property (readonly, nonatomic) NSArray *appleIDAliases;
+@property (readonly, nonatomic, getter=isCloudDocsMigrated) BOOL cloudDocsMigrated;
 @property (readonly, nonatomic) NSDictionary *dataclassProperties;
 @property (readonly, nonatomic) NSString *firstName;
 @property (readonly, nonatomic) NSString *fmipAuthToken;
 @property (readonly, nonatomic) NSString *fmipSiriToken;
 @property (readonly, nonatomic) NSString *iCloudAuthToken;
-@property (readonly, nonatomic) BOOL isManagedAppleID;
-@property (readonly, nonatomic) BOOL isSandboxAccount;
 @property (readonly, nonatomic) NSString *lastName;
-@property (readonly, nonatomic) BOOL notesMigrated;
+@property (readonly, nonatomic, getter=isManagedAppleID) BOOL managedAppleID;
+@property (readonly, nonatomic, getter=isNotesMigrated) BOOL notesMigrated;
 @property (readonly, nonatomic) NSString *primaryEmail;
 @property (readonly, nonatomic) NSNumber *primaryEmailVerified;
 @property (readonly, nonatomic) NSArray *provisionedDataclasses;
+@property (readonly, nonatomic, getter=isSandboxAccount) BOOL sandboxAccount;
 
 - (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;

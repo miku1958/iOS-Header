@@ -14,12 +14,14 @@
     NSArray *_postalAddresses;
     NSArray *_phoneNumbers;
     NSArray *_instantMessageAddresses;
+    NSArray *_socialProfiles;
 }
 
-@property (strong) NSArray *emailAddresses; // @synthesize emailAddresses=_emailAddresses;
-@property (strong) NSArray *instantMessageAddresses; // @synthesize instantMessageAddresses=_instantMessageAddresses;
-@property (strong) NSArray *phoneNumbers; // @synthesize phoneNumbers=_phoneNumbers;
-@property (strong) NSArray *postalAddresses; // @synthesize postalAddresses=_postalAddresses;
+@property (strong, nonatomic) NSArray *emailAddresses; // @synthesize emailAddresses=_emailAddresses;
+@property (strong, nonatomic) NSArray *instantMessageAddresses; // @synthesize instantMessageAddresses=_instantMessageAddresses;
+@property (strong, nonatomic) NSArray *phoneNumbers; // @synthesize phoneNumbers=_phoneNumbers;
+@property (strong, nonatomic) NSArray *postalAddresses; // @synthesize postalAddresses=_postalAddresses;
+@property (strong, nonatomic) NSArray *socialProfiles; // @synthesize socialProfiles=_socialProfiles;
 
 - (void).cxx_destruct;
 

@@ -40,7 +40,6 @@
 - (void)drawInContext:(struct CGContext *)arg1;
 - (id)implicitAnimationForKeyPath:(id)arg1;
 - (id)init;
-- (id)initWithLayer:(id)arg1;
 - (BOOL)wrapped;
 
 @end

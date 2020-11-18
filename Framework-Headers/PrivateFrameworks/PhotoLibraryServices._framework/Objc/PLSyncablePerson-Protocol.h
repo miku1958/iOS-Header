@@ -5,14 +5,21 @@
 //
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
+#import <PhotoLibraryServices/PLSyncableObject-Protocol.h>
 
 @class NSString;
 
-@protocol PLSyncablePerson <NSObject>
+@protocol PLSyncablePerson <NSObject, PLSyncableObject>
 
 @property (strong, nonatomic) NSString *fullName;
+@property (readonly, nonatomic) BOOL graphVerified;
+@property (readonly, nonatomic) BOOL isTombstone;
+@property (readonly, nonatomic) BOOL keyFaceIsPicked;
 @property (strong, nonatomic) NSString *personUUID;
-@property (nonatomic) BOOL verified;
+@property (readonly, nonatomic) BOOL userVerified;
 
+- (NSString *)pointerDescription;
+- (void)setKeyFaceToPicked;
+- (NSString *)syncDescription;
 @end
 

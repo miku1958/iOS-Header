@@ -4,22 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
-
-@class NSLock, NSMapTable;
+#import <GeoServices/GEOServiceRequester.h>
 
 __attribute__((visibility("hidden")))
-@interface GEOGeocodeRequester : NSObject
+@interface GEOGeocodeRequester : GEOServiceRequester
 {
-    NSMapTable *_pendingBatchGeocodes;
-    NSLock *_pendingGeocodesLock;
 }
 
 + (id)sharedGeocodeRequester;
-- (void)batchReverseGeocode:(id)arg1 success:(CDUnknownBlockType)arg2 networkActivity:(CDUnknownBlockType)arg3 error:(CDUnknownBlockType)arg4;
+- (void)batchReverseGeocode:(id)arg1 auditToken:(id)arg2 success:(CDUnknownBlockType)arg3 networkActivity:(CDUnknownBlockType)arg4 error:(CDUnknownBlockType)arg5;
 - (void)cancelBatchReverseGeocode:(id)arg1;
-- (void)dealloc;
-- (id)init;
 
 @end
 

@@ -8,57 +8,18 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapLaunchDetails, GEOMapsServerMetadata, GEOPlaceActionDetails, GEORouteDetails, NSString;
-
 @interface GEOUserActionUsageLogMessage : PBCodable <NSCopying>
 {
-    int _locationBucket;
-    GEOMapLaunchDetails *_mapLaunchDetails;
-    GEOPlaceActionDetails *_placeActionDetails;
-    NSString *_providerId;
-    GEORouteDetails *_routeDetails;
-    GEOMapsServerMetadata *_serverMetadata;
-    int _uiTarget;
-    NSString *_usageEventKey;
-    NSString *_usageEventValue;
-    struct {
-        unsigned int locationBucket:1;
-        unsigned int uiTarget:1;
-    } _has;
 }
 
-@property (nonatomic) BOOL hasLocationBucket;
-@property (readonly, nonatomic) BOOL hasMapLaunchDetails;
-@property (readonly, nonatomic) BOOL hasPlaceActionDetails;
-@property (readonly, nonatomic) BOOL hasProviderId;
-@property (readonly, nonatomic) BOOL hasRouteDetails;
-@property (readonly, nonatomic) BOOL hasServerMetadata;
-@property (nonatomic) BOOL hasUiTarget;
-@property (readonly, nonatomic) BOOL hasUsageEventKey;
-@property (readonly, nonatomic) BOOL hasUsageEventValue;
-@property (nonatomic) int locationBucket; // @synthesize locationBucket=_locationBucket;
-@property (strong, nonatomic) GEOMapLaunchDetails *mapLaunchDetails; // @synthesize mapLaunchDetails=_mapLaunchDetails;
-@property (strong, nonatomic) GEOPlaceActionDetails *placeActionDetails; // @synthesize placeActionDetails=_placeActionDetails;
-@property (strong, nonatomic) NSString *providerId; // @synthesize providerId=_providerId;
-@property (strong, nonatomic) GEORouteDetails *routeDetails; // @synthesize routeDetails=_routeDetails;
-@property (strong, nonatomic) GEOMapsServerMetadata *serverMetadata; // @synthesize serverMetadata=_serverMetadata;
-@property (nonatomic) int uiTarget; // @synthesize uiTarget=_uiTarget;
-@property (strong, nonatomic) NSString *usageEventKey; // @synthesize usageEventKey=_usageEventKey;
-@property (strong, nonatomic) NSString *usageEventValue; // @synthesize usageEventValue=_usageEventValue;
-
-- (int)StringAsLocationBucket:(id)arg1;
-- (int)StringAsUiTarget:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (id)locationBucketAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)uiTargetAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

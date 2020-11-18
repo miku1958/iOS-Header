@@ -6,26 +6,48 @@
 
 #import <HomeKitDaemon/HMDEvent.h>
 
+#import <HomeKitDaemon/HMDLocationDelegate-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class CLRegion;
+@class CLRegion, NSString;
 
-@interface HMDLocationEvent : HMDEvent <NSSecureCoding>
+@interface HMDLocationEvent : HMDEvent <HMDLocationDelegate, NSSecureCoding>
 {
     CLRegion *_region;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CLRegion *region; // @synthesize region=_region;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) CLRegion *uniqueRegion;
 
-+ (id)locationEventWithDictionary:(id)arg1 error:(id *)arg2;
++ (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)_activate:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_handleLocationEventOccured:(id)arg1;
+- (void)_handleRetrieveLocationEventForEventTrigger:(id)arg1;
+- (void)_handleUpdateRequest:(id)arg1;
+- (void)_registerForMessages;
+- (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
+- (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (void)checkFMFStatus:(id)arg1;
+- (id)createPayload;
+- (void)didEnterRegion:(id)arg1;
+- (void)didExitRegion:(id)arg1;
 - (id)dumpState;
+- (id)emptyModelObject;
 - (void)encodeWithCoder:(id)arg1;
+- (void)fmfStatusUpdateNotification:(id)arg1;
+- (void)informLocationEventOccuranceToResident;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRegion:(id)arg1;
-- (BOOL)setRegionIfValid:(id)arg1;
+- (id)initWithModel:(id)arg1 home:(id)arg2;
+- (BOOL)isActive;
+- (void)locationEventOccured;
+- (id)metricData;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1;
 
 @end
 

@@ -10,7 +10,7 @@
 #import <WebKit/WKObject-Protocol.h>
 
 @class NSString, WKGeolocationProviderIOS, _WKProcessPoolConfiguration;
-@protocol _WKAutomationDelegate, _WKDownloadDelegate;
+@protocol _WKAutomationDelegate, _WKDownloadDelegate, _WKGeolocationCoreLocationProvider;
 
 @interface WKProcessPool : NSObject <WKObject, NSCoding>
 {
@@ -19,12 +19,14 @@
     struct WeakObjCPtr<id<_WKDownloadDelegate>> _downloadDelegate;
     struct RetainPtr<_WKAutomationSession> _automationSession;
     struct RetainPtr<WKGeolocationProviderIOS> _geolocationProvider;
+    struct RetainPtr<id<_WKGeolocationCoreLocationProvider>> _coreLocationProvider;
 }
 
 @property (readonly) struct Object *_apiObject;
 @property (weak, nonatomic, setter=_setAutomationDelegate:) id<_WKAutomationDelegate> _automationDelegate;
 @property (readonly, nonatomic) _WKProcessPoolConfiguration *_configuration;
 @property (nonatomic, getter=_isCookieStoragePartitioningEnabled, setter=_setCookieStoragePartitioningEnabled:) BOOL _cookieStoragePartitioningEnabled;
+@property (nonatomic, setter=_setCoreLocationProvider:) id<_WKGeolocationCoreLocationProvider> _coreLocationProvider;
 @property (weak, nonatomic, setter=_setDownloadDelegate:) id<_WKDownloadDelegate> _downloadDelegate;
 @property (readonly) WKGeolocationProviderIOS *_geolocationProvider;
 @property (readonly, copy) NSString *debugDescription;
@@ -40,6 +42,7 @@
 - (void).cxx_destruct;
 - (void)_automationCapabilitiesDidChange;
 - (id)_initWithConfiguration:(id)arg1;
+- (int)_networkProcessIdentifier;
 - (id)_objectForBundleParameter:(id)arg1;
 - (void)_setAllowsSpecificHTTPSCertificate:(id)arg1 forHost:(id)arg2;
 - (void)_setAutomationSession:(id)arg1;
@@ -47,8 +50,11 @@
 - (void)_setCookieAcceptPolicy:(unsigned long long)arg1;
 - (void)_setObject:(id)arg1 forBundleParameter:(id)arg2;
 - (void)_setObjectsForBundleParametersWithDictionary:(id)arg1;
+- (void)_syncNetworkProcessCookies;
 - (void)_terminateDatabaseProcess;
+- (void)_terminateNetworkProcess;
 - (void)_warmInitialProcess;
+- (unsigned long long)_webProcessCount;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

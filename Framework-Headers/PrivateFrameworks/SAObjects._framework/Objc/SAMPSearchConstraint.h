@@ -17,6 +17,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *mediaPlayerOrderingTerms;
 @property (copy, nonatomic) NSString *query;
 @property (copy, nonatomic) NSArray *searchProperties;
 @property (readonly) Class superclass;

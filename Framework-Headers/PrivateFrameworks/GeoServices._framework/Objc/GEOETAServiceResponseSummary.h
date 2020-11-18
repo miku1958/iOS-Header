@@ -32,12 +32,12 @@
 @property (nonatomic) int status; // @synthesize status=_status;
 
 + (Class)routeInfoType;
+- (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
 - (void)addRouteInfo:(id)arg1;
 - (void)clearRouteInfos;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

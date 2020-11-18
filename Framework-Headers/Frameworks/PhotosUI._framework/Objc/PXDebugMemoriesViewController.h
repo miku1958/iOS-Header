@@ -30,7 +30,6 @@
 - (void).cxx_destruct;
 - (void)_closeAction:(id)arg1;
 - (id)_debugDictionary;
-- (id)_preprocessDictionary:(id)arg1;
 - (void)_sendByEmailAction:(id)arg1;
 - (void)_setupWithDictionary:(id)arg1;
 - (void)_switchLogsAction:(id)arg1;

@@ -26,7 +26,6 @@
 - (void)_remote_playbackPausedForAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_playbackResumedForAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_playbackStartedForImpressionSource:(int)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
-- (void)_remote_refreshTargetingData;
 - (void)_remote_reportContentImpressionForAdSpaceWithIdenfier:(NSString *)arg1;
 - (void)_remote_reportNativeClickEventForAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_reportPreRollDidStartForAdSpaceWithIdentifier:(NSString *)arg1;
@@ -41,13 +40,8 @@
 - (void)_remote_reportTotalCreativeRequestCount:(long long)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
 - (void)_remote_requestAdSpaceWithConfiguration:(ADAdSpaceConfiguration *)arg1;
 - (void)_remote_requestAttributionDetailsWithBlock:(void (^)(NSDictionary *))arg1;
-- (void)_remote_requestSponsoredSearchData:(void (^)(NSString *))arg1;
-- (void)_remote_requestSponsoredSearchDataAndRequestID:(void (^)(NSString *, NSString *))arg1;
-- (void)_remote_requestSponsoredSearchURL:(void (^)(NSString *))arg1;
-- (void)_remote_requestTrendingSearchData:(void (^)(NSString *))arg1;
-- (void)_remote_requestTrendingSearchURL:(void (^)(NSString *))arg1;
-- (void)_remote_requestUserTargetingIdentifier:(void (^)(NSString *))arg1;
 - (void)_remote_segmentDataForSignedInUser:(void (^)(NSString *, NSString *, double, NSError *))arg1;
+- (void)_remote_sendAdspaceStatusEventForAdSpaceWithIdentifier:(NSString *)arg1 withAdSpaceInfo:(ADAdSpaceEventInfo *)arg2;
 - (void)_remote_setAdSpaceType:(int)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
 - (void)_remote_setAuthenticationUserName:(NSString *)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
 - (void)_remote_setClientLinkedOnVersion:(NSString *)arg1;
@@ -55,9 +49,6 @@
 - (void)_remote_setSelectedAdFrame:(NSValue *)arg1 withContentFrame:(NSValue *)arg2 atScale:(float)arg3 forAdSpaceWithIdentifier:(NSString *)arg4;
 - (void)_remote_setVisibility:(long long)arg1 forAdSpaceWithIdentifier:(NSString *)arg2 withAdSpaceInfo:(ADAdSpaceEventInfo *)arg3;
 - (void)_remote_signatureForRequestData:(NSData *)arg1 completionHandler:(void (^)(NSString *))arg2;
-- (void)_remote_updateDPIDWithAction:(unsigned long long)arg1;
-- (void)_remote_updateFrequencyCapData:(NSString *)arg1 forType:(NSString *)arg2;
-- (void)_remote_updateToroClickData:(NSString *)arg1;
 - (void)_remote_userDidSkipPrerollForAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_reportSubscriptionEventWithType:(long long)arg1 withQToken:(NSString *)arg2 sourceIdentifier:(NSString *)arg3 eventTime:(double)arg4 info:(NSDictionary *)arg5;
 @end

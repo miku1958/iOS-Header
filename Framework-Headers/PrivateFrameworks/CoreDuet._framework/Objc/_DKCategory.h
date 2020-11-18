@@ -28,6 +28,7 @@
 + (id)_categoryFromManagedObject:(id)arg1 readMetadata:(BOOL)arg2 cache:(id)arg3;
 + (id)categoryWithInteger:(long long)arg1 type:(id)arg2;
 + (id)entityName;
++ (id)fromPBCodable:(id)arg1;
 + (id)objectFromManagedObject:(id)arg1 readMetadata:(BOOL)arg2 cache:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -37,9 +38,12 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInteger:(long long)arg1 type:(id)arg2 cache:(id)arg3;
+- (BOOL)isEqual:(id)arg1;
 - (id)objectType;
 - (id)primaryValue;
 - (id)stringValue;
+- (id)toPBCodable;
+- (long long)typeCode;
 
 @end
 

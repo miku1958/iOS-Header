@@ -4,25 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <DeviceManagement/DMFApplicationInstallProgress.h>
 
-#import <DeviceManagement/NSSecureCoding-Protocol.h>
-
-@interface DMFInstalledApplicationInstallProgress : NSObject <NSSecureCoding>
+@interface DMFInstalledApplicationInstallProgress : DMFApplicationInstallProgress
 {
-    unsigned long long _state;
-    unsigned long long _phase;
-    double _fractionCompleted;
 }
-
-@property (nonatomic) double fractionCompleted; // @synthesize fractionCompleted=_fractionCompleted;
-@property (nonatomic) unsigned long long phase; // @synthesize phase=_phase;
-@property (nonatomic) unsigned long long state; // @synthesize state=_state;
-
-+ (BOOL)supportsSecureCoding;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
 
 @end
 

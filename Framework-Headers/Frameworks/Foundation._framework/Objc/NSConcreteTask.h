@@ -7,12 +7,12 @@
 #import <Foundation/NSTask.h>
 
 @class NSMutableDictionary, NSObject, NSPort;
-@protocol OS_dispatch_semaphore, OS_dispatch_source;
+@protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface NSConcreteTask : NSTask
 {
-    NSObject<OS_dispatch_semaphore> *_lock;
+    struct _opaque_pthread_mutex_t _lock;
     NSMutableDictionary *_dictionary;
     CDUnknownBlockType _terminationHandler;
     NSObject<OS_dispatch_source> *_dsrc;
@@ -39,8 +39,9 @@ __attribute__((visibility("hidden")))
 - (void)interrupt;
 - (BOOL)isRunning;
 - (void)launch;
+- (BOOL)launchAndReturnError:(id *)arg1;
 - (id)launchPath;
-- (void)launchWithDictionary:(id)arg1;
+- (BOOL)launchWithDictionary:(id)arg1 error:(id *)arg2;
 - (id)preferredArchitectures;
 - (int)processIdentifier;
 - (long long)qualityOfService;

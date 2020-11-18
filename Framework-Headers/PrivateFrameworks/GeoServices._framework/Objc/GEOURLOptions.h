@@ -21,22 +21,26 @@
     GEOURLTimePoint *_timePoint;
     int _transportType;
     int _userTrackingMode;
+    BOOL _connectedToCar;
     BOOL _enableTraffic;
     struct {
         unsigned int mapType:1;
         unsigned int transportType:1;
         unsigned int userTrackingMode:1;
+        unsigned int connectedToCar:1;
         unsigned int enableTraffic:1;
     } _has;
 }
 
 @property (strong, nonatomic) GEOURLCamera *camera; // @synthesize camera=_camera;
 @property (strong, nonatomic) GEOURLCenterSpan *centerSpan; // @synthesize centerSpan=_centerSpan;
+@property (nonatomic) BOOL connectedToCar; // @synthesize connectedToCar=_connectedToCar;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enableTraffic; // @synthesize enableTraffic=_enableTraffic;
 @property (readonly, nonatomic) BOOL hasCamera;
 @property (readonly, nonatomic) BOOL hasCenterSpan;
+@property (nonatomic) BOOL hasConnectedToCar;
 @property (nonatomic) BOOL hasEnableTraffic;
 @property (nonatomic) BOOL hasMapType;
 @property (readonly, nonatomic) BOOL hasReferralIdentifier;
@@ -53,12 +57,12 @@
 @property (nonatomic) int transportType; // @synthesize transportType=_transportType;
 @property (nonatomic) int userTrackingMode; // @synthesize userTrackingMode=_userTrackingMode;
 
+- (void).cxx_destruct;
 - (int)StringAsMapType:(id)arg1;
 - (int)StringAsTransportType:(id)arg1;
 - (int)StringAsUserTrackingMode:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)dictionaryRepresentation;
 - (id)initWithUrlRepresentation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

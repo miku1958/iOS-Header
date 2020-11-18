@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/IDSServiceDelegate-Protocol.h>
 
@@ -13,18 +13,19 @@
 
 @interface PKIDSManager : NSObject <IDSServiceDelegate>
 {
-    IDSService *_service;
     NSObject<OS_dispatch_queue> *_idsQueue;
     NSMutableArray *_remoteDevices;
     NSMutableArray *_paymentRequests;
-    NSMutableArray *_pendingCancellations;
     NSMutableDictionary *_completionHandlers;
     NSMutableDictionary *_thumbnailCompletionHandlers;
     PKProximityAdvertiser *_proximityAdvertiser;
-    NSMutableDictionary *_recentlySeenUUIDs;
     NSHashTable *_delegates;
     NSObject<OS_dispatch_queue> *_stateQueue;
     id<PKIDSManagerDataSource> _dataSource;
+    NSMutableArray *_pendingCancellations;
+    NSMutableDictionary *_pendingDiscoveries;
+    IDSService *_service;
+    NSMutableDictionary *_recentlySeenUUIDs;
 }
 
 @property (nonatomic) id<PKIDSManagerDataSource> dataSource; // @synthesize dataSource=_dataSource;
@@ -33,12 +34,15 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) NSArray *paymentRequests;
+@property (strong, nonatomic) NSMutableArray *pendingCancellations; // @synthesize pendingCancellations=_pendingCancellations;
+@property (strong, nonatomic) NSMutableDictionary *pendingDiscoveries; // @synthesize pendingDiscoveries=_pendingDiscoveries;
+@property (strong, nonatomic) NSMutableDictionary *recentlySeenUUIDs; // @synthesize recentlySeenUUIDs=_recentlySeenUUIDs;
 @property (readonly, weak, nonatomic) NSArray *remoteDevices;
+@property (strong, nonatomic) IDSService *service; // @synthesize service=_service;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_archiveDevicesToDisk;
-- (BOOL)_deviceIsApplePayCapable:(id)arg1;
 - (BOOL)_deviceIsRegistered:(id)arg1;
 - (id)_fetchPaymentInstruments;
 - (BOOL)_hasRegisteredAccounts;
@@ -50,14 +54,16 @@
 - (void)_paymentHostUpdateReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_paymentRequestReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_paymentResponseReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
+- (void)_paymentResultReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_paymentSetupRequestReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
-- (void)_paymentStatusReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_populateDevicesIfNeeded;
 - (id)_preparePaymentDeviceResponse;
+- (void)_queue_addThumbnailCompletionHandler:(CDUnknownBlockType)arg1 forKey:(id)arg2;
+- (void)_queue_removeThumbnailCompletionHandlersForKeys:(id)arg1;
 - (void)_registerListeners;
 - (id)_remoteDevicesWithArchive;
 - (void)_sendDeviceDiscoveryRequestWithProximity:(BOOL)arg1 devices:(id)arg2;
-- (void)_sendDiscoveryResponse:(id)arg1 toDevice:(id)arg2;
+- (void)_sendDiscoveryResponse:(id)arg1 toDeviceWithFromID:(id)arg2;
 - (void)_thumbnailRequestReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_thumbnailResponseReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)addDelegate:(id)arg1;
@@ -68,6 +74,7 @@
 - (void)discoverRemoteDevicesWithProximity:(BOOL)arg1;
 - (BOOL)hasRemoteDevices;
 - (id)init;
+- (id)initWithIDSService:(id)arg1;
 - (id)initWithTargetQueue:(id)arg1;
 - (void)invalidateMessage:(id)arg1;
 - (void)removeDelegate:(id)arg1;
@@ -76,6 +83,7 @@
 - (id)sendPayment:(id)arg1 forRemotePaymentRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)sendPaymentClientUpdate:(id)arg1 forRemotePaymentRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)sendPaymentHostUpdate:(id)arg1 forRemotePaymentRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)sendPaymentResult:(id)arg1 forRemotePaymentRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)sendPaymentStatus:(long long)arg1 forRemotePaymentRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)sendRemotePaymentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)sendSetupRequest:(id)arg1 appDisplayName:(id)arg2 completion:(CDUnknownBlockType)arg3;

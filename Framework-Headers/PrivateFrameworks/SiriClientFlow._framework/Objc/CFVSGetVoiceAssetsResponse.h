@@ -22,9 +22,9 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSArray *voiceAssets;
 
++ (id)aceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)getVoiceAssetsResponse;
 + (id)getVoiceAssetsResponseWithDictionary:(id)arg1 context:(id)arg2;
-+ (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

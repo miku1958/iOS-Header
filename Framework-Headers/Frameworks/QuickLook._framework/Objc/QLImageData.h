@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)durations;
 - (id)imageAtIndex:(unsigned long long)arg1;
-- (id)initWithURL:(id)arg1;
+- (id)initWithImageSource:(struct CGImageSource *)arg1;
 - (long long)orientation;
 - (id)type;
 

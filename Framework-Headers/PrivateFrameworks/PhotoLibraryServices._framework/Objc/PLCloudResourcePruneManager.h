@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class PLCloudPhotoLibraryManager, PLPhotoLibrary;
 @protocol OS_dispatch_queue;
@@ -18,16 +18,13 @@
 }
 
 + (id)_nonOriginalResourceTypes;
-+ (id)_orderedPruneConditionStringsOnAssets;
 + (id)_originalResourceTypes;
 - (id)_colorAwareResourceTypes;
-- (long long)_fetchResourcesForPruningWithBatchHandler:(CDUnknownBlockType)arg1 budget:(long long)arg2;
+- (long long)_fetchResourcesForPruningWithBudget:(long long)arg1 batchHandler:(CDUnknownBlockType)arg2;
 - (id)_identifierForResource:(id)arg1;
 - (long long)_localResourcesSize;
-- (id)_notOnDemandDownloadPredicate;
-- (id)_onDemandDownloadPredicate;
-- (id)_predicateForCPLResourceType:(unsigned long long)arg1 additionalAssetConditions:(id)arg2 additionalResourcePredicates:(id)arg3;
-- (id)_predicatesForPrune;
+- (id)_predicateForCPLResourceTypes:(id)arg1;
+- (id)_predicateForPrune;
 - (void)_runOnWorkQueueWithTransaction:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_updateLocalSRGBFileForPrunedResource:(id)arg1 inPhotoLibrary:(id)arg2;
 - (void)_updateLocalStateForPrunedResource:(id)arg1 inPhotoLibrary:(id)arg2;
@@ -37,8 +34,9 @@
 - (id)initWithCPLManager:(id)arg1;
 - (long long)pruneResources:(id)arg1 inPhotoLibrary:(id)arg2;
 - (id)pruneStatusForDebug:(BOOL)arg1;
-- (long long)startAutomaticPruneWithBudget:(long long)arg1;
+- (void)startAutomaticPruneWithBudget:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)stop;
+- (void)updateCacheDeletePurgeableAmount;
 
 @end
 

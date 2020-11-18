@@ -10,43 +10,38 @@
 #import <Home/HFServiceLikeBuilderCreating-Protocol.h>
 #import <Home/HFServiceLikeItem-Protocol.h>
 
-@class HMServiceGroup, NSSet, NSString;
+@class HMServiceGroup, NSString;
 @protocol HFCharacteristicValueSource, HFHomeKitObject;
 
 @interface HFServiceGroupItem : HFItem <HFServiceLikeItem, HFCharacteristicWriteActionBuilderFactory, HFServiceLikeBuilderCreating>
 {
     id<HFCharacteristicValueSource> _valueSource;
     HMServiceGroup *_serviceGroup;
-    NSSet *_serviceItemUUIDs;
-    NSSet *_serviceItems;
-    NSSet *_controlItems;
 }
 
-@property (strong, nonatomic) NSSet *controlItems; // @synthesize controlItems=_controlItems;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
 @property (readonly, nonatomic) HMServiceGroup *serviceGroup; // @synthesize serviceGroup=_serviceGroup;
-@property (strong, nonatomic) NSSet *serviceItemUUIDs; // @synthesize serviceItemUUIDs=_serviceItemUUIDs;
-@property (strong, nonatomic) NSSet *serviceItems; // @synthesize serviceItems=_serviceItems;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
 + (id)_combinedWriteErrorForError:(id)arg1 serviceGroupTitle:(id)arg2;
++ (BOOL)_isControlItem:(id)arg1 identicalToControlItem:(id)arg2;
++ (BOOL)_isControlItem:(id)arg1 similarToControlItem:(id)arg2;
 - (void).cxx_destruct;
 - (id)_aggregatedValueSource;
 - (double)_averageNumericalValueForResultsKey:(id)arg1 inServiceItems:(id)arg2;
-- (id)_initForCopyWithValueSource:(id)arg1 serviceGroup:(id)arg2 serviceItems:(id)arg3 controlItems:(id)arg4;
-- (BOOL)_isControlItem:(id)arg1 identicalToControlItem:(id)arg2;
-- (BOOL)_isControlItem:(id)arg1 similarToControlItem:(id)arg2;
+- (id)_buildControlItemsForServiceItems:(id)arg1;
+- (id)_buildServiceItems;
+- (long long)_highestIntegerValueForResultsKey:(id)arg1 inServiceItems:(id)arg2;
 - (id)_mergedIconDescriptorForServiceItems:(id)arg1;
 - (id)_mostCommonValueForResultsKey:(id)arg1 inServiceItems:(id)arg2;
 - (id)_mostCommonValueInServiceItems:(id)arg1 valueProvider:(CDUnknownBlockType)arg2;
-- (BOOL)_reloadServiceItems;
+- (id)_sortDescriptorsForServiceItems;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)_unanimousValueForResultsKey:(id)arg1 inServiceItems:(id)arg2;
-- (void)_updateControlItems;
 - (id)accessories;
 - (BOOL)actionsMayRequireDeviceUnlock;
 - (id)allControlItems;

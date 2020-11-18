@@ -6,16 +6,13 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, PXPeopleStripCollectionViewController, UIFont;
+@class NSIndexPath, PXPeopleStripCollectionViewController;
 
 @protocol PXPeopleStripCollectionViewControllerDelegate <NSObject>
-- (UIFont *)currentNameLabelFont;
 - (void)memberTappedAtIndexPath:(NSIndexPath *)arg1 forPeopleStripController:(PXPeopleStripCollectionViewController *)arg2;
 - (double)minimumInteritemSpacing;
 - (double)minimumLineSpacing;
-- (NSString *)nameStringForPeople:(NSArray *)arg1 font:(UIFont *)arg2 width:(double)arg3 outHeight:(double *)arg4;
 - (struct UIEdgeInsets)sectionInset;
 - (struct CGSize)sizeForItem;
-- (double)verticalSpacingForFaceAndText;
 @end
 

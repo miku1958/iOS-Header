@@ -7,11 +7,10 @@
 #import <GameCenterUI/GKExtensionHostContext.h>
 
 #import <GameCenterUI/GKMatchmakerHostProtocol-Protocol.h>
-#import <GameCenterUI/GKMatchmakerServiceProtocol-Protocol.h>
 
 @class GKGame, NSString;
 
-@interface GKMatchmakerExtensionHostContext : GKExtensionHostContext <GKMatchmakerHostProtocol, GKMatchmakerServiceProtocol>
+@interface GKMatchmakerExtensionHostContext : GKExtensionHostContext <GKMatchmakerHostProtocol>
 {
 }
 
@@ -23,31 +22,7 @@
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
-- (void)applicationWillEnterForeground;
-- (void)cancelMatching;
-- (void)cancelPendingInviteToPlayer:(id)arg1;
-- (id)extensionObjectProxy;
-- (void)finishWithError:(id)arg1;
-- (void)inviterCancelled;
-- (void)remoteViewControllerIsCanceling;
-- (void)sendData:(id)arg1;
-- (void)setAcceptedInviteInternal:(id)arg1;
-- (void)setAutomatchFailedWithError:(id)arg1;
-- (void)setAutomatchPlayerCount:(long long)arg1;
-- (void)setBrowsingForNearbyPlayers:(BOOL)arg1;
-- (void)setDefaultInvitationMessage:(id)arg1;
-- (void)setExistingPlayers:(id)arg1;
-- (void)setFailedWithError:(id)arg1;
-- (void)setHosted:(BOOL)arg1;
-- (void)setInvitesFailedWithError:(id)arg1;
-- (void)setMatchRequestInternal:(id)arg1;
-- (void)setNearbyPlayer:(id)arg1 reachable:(BOOL)arg2;
-- (void)setPlayer:(id)arg1 connected:(BOOL)arg2;
-- (void)setPlayer:(id)arg1 responded:(long long)arg2;
-- (void)setPlayer:(id)arg1 sentData:(id)arg2;
-- (void)setShareInvitees:(id)arg1;
 - (void)shareMatchWithRequest:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)startMatchingWithRequest:(id)arg1;
 
 @end
 

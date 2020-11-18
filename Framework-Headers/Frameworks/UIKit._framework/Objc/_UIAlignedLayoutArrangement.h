@@ -46,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (void)_removeIndividualConstraintsAsNecessary;
 - (void)_setUpConstraintForItem:(id)arg1 referenceItem:(id)arg2 attribute:(long long)arg3 inConstraintsTable:(id)arg4;
 - (BOOL)_spanningGuideConstraintsNeedUpdate;
-- (void)_trackChangesWithValue:(id)arg1 forKey:(id)arg2;
 - (void)_updateArrangementConstraints;
 - (void)_updateConfigurationHistory;
 - (BOOL)_usesCenteringConnectionConstraint;

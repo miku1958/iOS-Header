@@ -7,17 +7,20 @@
 #import <Foundation/NSObject.h>
 
 @class MRTransactionPacketizer;
+@protocol OS_dispatch_queue;
 
 @interface MRTransactionDestination : NSObject
 {
+    void *_playerPath;
     MRTransactionPacketizer *_packetizer;
+    NSObject<OS_dispatch_queue> *_serialQueue;
     unsigned long long _name;
 }
 
 @property (readonly, nonatomic) unsigned long long name; // @synthesize name=_name;
 
 - (void)dealloc;
-- (id)initWithName:(unsigned long long)arg1;
+- (id)initWithName:(unsigned long long)arg1 playerPath:(void *)arg2;
 - (void)packetsFromMessage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)unpacketize:(id)arg1 completion:(CDUnknownBlockType)arg2;
 

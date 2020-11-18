@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEONavdServerProxy, NSLock, NSMutableArray;
 
@@ -18,8 +18,8 @@
 + (id)navdManager;
 + (id)navdManagerClientIdentifier:(id)arg1;
 + (void)setProxyClass:(Class)arg1;
+- (void).cxx_destruct;
 - (void)closeForClient:(id)arg1;
-- (void)dealloc;
 - (void)didPostUINotification:(unsigned long long)arg1 forDestination:(id)arg2 fromClient:(id)arg3;
 - (void)forceCacheRefresh;
 - (id)init;

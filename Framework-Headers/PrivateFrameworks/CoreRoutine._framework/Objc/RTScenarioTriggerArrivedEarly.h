@@ -13,11 +13,14 @@
 
 @property (readonly, nonatomic) double secondsEarly; // @synthesize secondsEarly=_secondsEarly;
 
++ (BOOL)supportsSecureCoding;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSecondsEarly:(double)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

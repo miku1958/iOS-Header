@@ -53,8 +53,10 @@
 - (id)_macAddress;
 - (id)_macAddressSpecifierKey;
 - (id)_mobileEquipmentInfo;
+- (id)_modelRegionString;
 - (id)_myNumber;
 - (id)_photos:(id)arg1;
+- (id)_regulatoryModelNumberString;
 - (void)_setValue:(id)arg1 forSpecifier:(id)arg2;
 - (void)_setValue:(id)arg1 forSpecifierWithKey:(id)arg2;
 - (id)_songs:(id)arg1;
@@ -77,6 +79,7 @@
 - (void)simStatusChangedToReady;
 - (id)specifiersForSpecifier:(id)arg1 observer:(id)arg2;
 - (void)updateCarrierSpecifier:(id)arg1;
+- (void)updateProductModelSpecifier:(id)arg1;
 - (void)updateSIMSpecifier:(id)arg1;
 - (id)valueForSpecifier:(id)arg1;
 

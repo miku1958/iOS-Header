@@ -4,25 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSData;
+@class NSData, NSMapTable, NSMutableSet;
+@protocol OS_dispatch_queue;
 
 @interface IDSPushHandler : NSObject
 {
+    NSData *_cachedPushToken;
+    NSMapTable *_handlerMap;
+    NSObject<OS_dispatch_queue> *_ivarQueue;
+    NSMutableSet *_topicsCache;
     BOOL _shouldWaitToSetTopics;
+    Class _APSConnectionClass;
 }
 
+@property (strong, nonatomic) Class APSConnectionClass; // @synthesize APSConnectionClass=_APSConnectionClass;
 @property (readonly, nonatomic) BOOL isConnected;
 @property (readonly, nonatomic) NSData *pushToken;
 @property (nonatomic) BOOL shouldWaitToSetTopics; // @synthesize shouldWaitToSetTopics=_shouldWaitToSetTopics;
 
 + (id)sharedInstance;
 + (id)sharedInstanceWithPortName:(id)arg1;
+- (void).cxx_destruct;
+- (id)_apsConnectionPushToken;
 - (void)_recalculateTopicsCacheOnIvarQueue;
 - (void)_updateTopicsOnIvarQueue;
+- (BOOL)_validateHandler:(id)arg1 withSelector:(SEL)arg2 topic:(id)arg3 command:(id)arg4;
 - (void)addListener:(id)arg1 topics:(id)arg2 commands:(id)arg3 queue:(id)arg4;
 - (void)configureAsMacNotificationCenterObserver:(id)arg1;
+- (void)configureAsMacNotificationCenterObserver:(id)arg1 withPushToWakeTopics:(id)arg2;
+- (void)connection:(id)arg1 didChangeConnectedStatus:(BOOL)arg2;
+- (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
 - (void)dealloc;
 - (id)init;
 - (id)initWithPort:(id)arg1;

@@ -44,6 +44,7 @@
 
 + (Class)localizedChangeListType;
 + (Class)updatedPlaceType;
+- (void).cxx_destruct;
 - (int)StringAsDisplayStyle:(id)arg1;
 - (void)addLocalizedChangeList:(id)arg1;
 - (void)addUpdatedPlace:(id)arg1;
@@ -51,7 +52,6 @@
 - (void)clearUpdatedPlaces;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)displayStyleAsString:(int)arg1;

@@ -32,6 +32,7 @@
 - (void)completeTransition:(BOOL)arg1;
 - (void)didCompleteTransitionAnimation;
 - (void)finishInteractiveTransition;
+- (void)imageModulationIntensityDidChange;
 - (id)initWithDuration:(double)arg1;
 - (id)initWithPushDuration:(double)arg1 popDuration:(double)arg2;
 - (void)transitionDidStartOperation:(long long)arg1 animated:(BOOL)arg2 interactive:(BOOL)arg3;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOMapRegion, GEOPlace, NSString;
 
@@ -19,7 +19,7 @@
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) int placeType;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithName:(id)arg1 placeType:(int)arg2 areaInMeters:(double)arg3;
 - (id)initWithPlace:(id)arg1;
 

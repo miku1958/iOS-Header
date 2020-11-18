@@ -10,7 +10,7 @@
 #import <LocalAuthentication/LAContextXPC-Protocol.h>
 
 @class LACachedExternalizedContext, NSData, NSError, NSMutableArray, NSXPCConnection;
-@protocol LAContextXPC, LAUIDelegate;
+@protocol LAContextXPC, LAUIDelegate, OS_dispatch_queue;
 
 @interface LAClient : NSObject <LAContextXPC, LAContextCallbackXPC>
 {
@@ -21,6 +21,7 @@
     NSMutableArray *_callInvalidationBlocks;
     BOOL _shouldRecoverConnection;
     LACachedExternalizedContext *_cachedExternalizedContext;
+    NSObject<OS_dispatch_queue> *_uncork_queue;
     id<LAUIDelegate> _uiDelegate;
 }
 
@@ -31,12 +32,15 @@
 + (id)_queue;
 + (id)_recoveryQueue;
 - (void).cxx_destruct;
+- (void)_checkIdResultForTCC:(id)arg1 error:(id)arg2 retryBlock:(CDUnknownBlockType)arg3 finally:(CDUnknownBlockType)arg4;
 - (void)_performCallBool:(CDUnknownBlockType)arg1 finally:(CDUnknownBlockType)arg2;
 - (void)_performCallId:(CDUnknownBlockType)arg1 finally:(CDUnknownBlockType)arg2;
+- (void)_performCallIdCore:(CDUnknownBlockType)arg1 finally:(CDUnknownBlockType)arg2;
 - (void)_recoverConnection;
 - (void)_scheduleRecovery;
 - (BOOL)_setPermanentError:(id)arg1;
 - (id)_updateOptions:(id)arg1;
+- (void)connectToServerWithInterruptionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)evaluateACL:(id)arg1 operation:(long long)arg2 options:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)evaluateACL:(id)arg1 operation:(long long)arg2 options:(id)arg3 uiDelegate:(id)arg4 reply:(CDUnknownBlockType)arg5;
@@ -48,14 +52,18 @@
 - (void)invalidateWithMessage:(id)arg1;
 - (void)invalidatedWithError:(id)arg1;
 - (void)isCredentialSet:(long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)notifyEvent:(long long)arg1 options:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)prearmTouchIdWithReply:(CDUnknownBlockType)arg1;
+- (void)resetProcessedEvent:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)resetWithReply:(CDUnknownBlockType)arg1;
+- (void)retryProcessedEvent:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)serverPropertyForOption:(long long)arg1 error:(id *)arg2;
 - (void)serverPropertyForOption:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setCredential:(id)arg1 forProcessedEvent:(long long)arg2 credentialType:(long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)setCredential:(id)arg1 type:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (BOOL)setServerPropertyForOption:(long long)arg1 value:(id)arg2 error:(id *)arg3;
 - (void)setServerPropertyForOption:(long long)arg1 value:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)tccPreflightWithService:(id)arg1 reply:(CDUnknownBlockType)arg2;
 
 @end
 

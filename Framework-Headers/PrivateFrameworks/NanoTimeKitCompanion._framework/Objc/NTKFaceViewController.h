@@ -20,6 +20,7 @@
 {
     NTKFaceView *_faceView;
     NSMutableDictionary *_normalComplicationControllers;
+    NSMutableDictionary *_detachedComplicationControllers;
     NTKFaceEditView *_editView;
     BOOL _editingComplications;
     NSCache *_appearanceVariantsCache;
@@ -97,6 +98,7 @@
 - (void)_defaultSetZoomFraction:(double)arg1 iconDiameter:(double)arg2;
 - (void)_endTransitionToValue:(long long)arg1 forEditMode:(long long)arg2;
 - (void)_ensureComplication:(id)arg1 forSlot:(id)arg2;
+- (void)_ensureDetachedComplication:(id)arg1;
 - (void)_ensureNormalComplication:(id)arg1 forSlot:(id)arg2;
 - (void)_ensureNotLive;
 - (void)_ensurePauseDate;
@@ -105,17 +107,20 @@
 - (void)_handleDeviceLockChange;
 - (BOOL)_handlePhysicalButton:(unsigned long long)arg1 event:(unsigned long long)arg2;
 - (void)_handleStatusBarChange;
+- (void)_insertDetachedComplicationDisplay:(id)arg1 controller:(id)arg2 forSlot:(id)arg3;
 - (void)_insertNormalComplicationDisplay:(id)arg1 controller:(id)arg2 forSlot:(id)arg3;
 - (id)_keylineLabelTextForOption:(id)arg1 customEditMode:(long long)arg2;
 - (id)_newNormalDisplayForComplicationController:(id)arg1 slot:(id)arg2;
 - (void)_populateFaceViewEditOptionsFromFace;
 - (void)_removeComplicationForSlot:(id)arg1;
+- (void)_removeDetachedComplicationForSlot:(id)arg1 andDisconnectDisplay:(BOOL)arg2;
 - (void)_removeNormalComplicationForSlot:(id)arg1 andDisconnectDisplay:(BOOL)arg2;
 - (void)_setDataMode:(long long)arg1 becomeLiveOnUnfreeze:(BOOL)arg2;
 - (void)_setFaceViewResourceDirectoryFromFace;
 - (void)_setupEditViewForComplications;
 - (void)_setupEditViewForCustomEditMode:(long long)arg1;
 - (void)_setupEditing;
+- (BOOL)_shouldHideUI;
 - (BOOL)_shouldShowComplicationPickerForSlot:(id)arg1;
 - (void)_showStatusBarAfterWake;
 - (void)_tearDownEditing;
@@ -133,7 +138,7 @@
 - (void)complicationPickerView:(id)arg1 getDisplay:(id *)arg2 controller:(id *)arg3 forComplication:(id)arg4;
 - (id)complicationPickerView:(id)arg1 layoutRuleForComplicationDisplay:(id)arg2;
 - (void)configureWithDuration:(double)arg1 block:(CDUnknownBlockType)arg2;
-- (id)currentComplicationApplicationIdentifiers;
+- (id)currentOrderedComplicationApplicationIdentifiers;
 - (BOOL)dailySnapshotShowsComplication:(id)arg1 forSlot:(id)arg2;
 - (void)dealloc;
 - (void)disableSlowMode;
@@ -158,6 +163,7 @@
 - (void)faceViewWantsComplicationKeylineFramesReloaded;
 - (void)faceViewWantsCustomKeylineFramesReloadedForEditMode:(long long)arg1;
 - (void)faceViewWantsStatusBarHidden:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)faceViewWantsToPresentViewController:(id)arg1;
 - (void)faceViewWantsUnadornedSnapshotViewRemoved;
 - (void)faceViewWillEnterTimeTravel;
 - (void)faceViewWillExitTimeTravel;
@@ -174,7 +180,9 @@
 - (void)performComplicationBackgroundDataRefresh;
 - (void)performWristRaiseAnimation;
 - (void)prepareForOrb;
+- (void)prepareForSnapshotting;
 - (void)prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
+- (void)prepareWristRaiseAnimation;
 - (void)setNextRenderIsFirstAfterWake;
 - (void)setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
 - (BOOL)shouldLoadLiveFaceAtNextScreenOff;

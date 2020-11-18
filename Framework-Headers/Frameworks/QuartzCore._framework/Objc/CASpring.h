@@ -6,14 +6,14 @@
 
 #import <Foundation/NSObject.h>
 
-#import <QuartzCore/NSCoding-Protocol.h>
 #import <QuartzCore/NSCopying-Protocol.h>
 #import <QuartzCore/NSMutableCopying-Protocol.h>
+#import <QuartzCore/NSSecureCoding-Protocol.h>
 
 @class CALayer, CAValueFunction, NSString;
 @protocol CASpringDelegate;
 
-@interface CASpring : NSObject <NSCopying, NSMutableCopying, NSCoding>
+@interface CASpring : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
     NSString *_name;
     CALayer *_layerA;
@@ -43,6 +43,7 @@
 + (void)CAMLParserStartElement:(id)arg1;
 + (id)defaultValueForKey:(id)arg1;
 + (id)spring;
++ (BOOL)supportsSecureCoding;
 - (void)CAMLParser:(id)arg1 setValue:(id)arg2 forKey:(id)arg3;
 - (id)CAMLTypeForKey:(id)arg1;
 - (struct Object *)CA_copyRenderValue;

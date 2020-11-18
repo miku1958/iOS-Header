@@ -20,8 +20,9 @@
 @property (readonly) Class superclass;
 
 - (void *)ABValueFromCNValue:(id)arg1;
+- (id)CNMutableValueForABMultivalue;
 - (id)CNValueFromABValue:(void *)arg1;
-- (BOOL)isValue:(id)arg1 equivalentToValue:(id)arg2;
+- (BOOL)canUnifyValue:(id)arg1 withValue:(id)arg2;
 - (Class)valueClass;
 
 @end

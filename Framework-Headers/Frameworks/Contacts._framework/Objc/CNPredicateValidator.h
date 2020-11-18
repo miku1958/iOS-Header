@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Contacts/NSPredicateVisitor-Protocol.h>
 
@@ -27,7 +27,7 @@
 @property (strong, nonatomic) NSMutableSet *usedKeysSet; // @synthesize usedKeysSet=_usedKeysSet;
 @property (nonatomic) BOOL validated; // @synthesize validated=_validated;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)resetUsedKeys;
 - (BOOL)validateWithError:(id *)arg1;
 - (void)visitPredicate:(id)arg1;

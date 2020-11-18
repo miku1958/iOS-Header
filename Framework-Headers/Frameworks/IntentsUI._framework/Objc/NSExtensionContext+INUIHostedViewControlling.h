@@ -11,5 +11,6 @@
 @property (readonly, nonatomic) struct CGSize hostedViewMaximumAllowedSize;
 @property (readonly, nonatomic) struct CGSize hostedViewMinimumAllowedSize;
 
+- (id)interfaceParametersDescription;
 @end
 

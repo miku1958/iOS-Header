@@ -6,12 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, NSURLRequest, NSURLResponse, QLPreviewParts;
+@class NSDictionary, NSString, NSURL, NSURLRequest, NSURLResponse, QLPreviewParts;
+@protocol OS_dispatch_io;
 
 @interface QLPreviewConverter : NSObject
 {
     QLPreviewParts *_previewParts;
     NSDictionary *_options;
+    NSObject<OS_dispatch_io> *_io_write;
+    NSURL *_tmpFileURL;
+    long long _totalWrittenBytes;
+    BOOL _dataPhaseFinished;
+    BOOL _dataGatheringSucceeded;
 }
 
 @property (readonly, nonatomic) NSString *previewFileName;
@@ -20,13 +26,20 @@
 @property (readonly, nonatomic) NSURLResponse *previewResponse;
 @property (readonly, nonatomic) NSString *previewUTI;
 
++ (id)_csvMIMETypes;
 + (id)_csvUTIs;
++ (id)_iWorkMIMETypes;
 + (id)_iWorkUTIs;
 + (id)_lpdfUTIs;
++ (id)_officeMIMETypes;
 + (id)_officeUTIs;
++ (id)_rtfMIMETypes;
 + (id)_rtfUTIs;
++ (id)_spreadSheetMIMETypes;
 + (id)_spreadSheetUTIs;
 + (BOOL)canConvertDocumentType:(id)arg1;
++ (id)convertibleMIMETypes;
++ (id)convertibleUTIs;
 + (BOOL)isCSVDocumentType:(id)arg1;
 + (BOOL)isIWorkDocumentType:(id)arg1;
 + (BOOL)isLPDFDocumentType:(id)arg1;
@@ -36,7 +49,10 @@
 + (BOOL)isSafeURL:(id)arg1;
 + (BOOL)isSpreadSheetDocumentType:(id)arg1;
 - (void).cxx_destruct;
+- (void)_closeIOCahnnel;
+- (void)_createDispatchIOChannel;
 - (void)_register;
+- (void)_writeDataArrayIntoStream:(id)arg1;
 - (void)appendData:(id)arg1;
 - (void)appendDataArray:(id)arg1;
 - (void)cancel;

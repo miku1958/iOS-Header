@@ -20,7 +20,7 @@
 - (void)_axUpdateMonthAXLabel;
 - (void)_rebuildDayNumberLabels;
 - (void)_updateMonthLabel;
-- (id)accessibilityContainerElements;
+- (id)accessibilityElements;
 - (void)reloadData;
 
 @end

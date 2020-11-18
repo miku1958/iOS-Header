@@ -19,6 +19,12 @@
     NSString *_alertBody;
     NSString *_alertLocalizationKey;
     NSArray *_alertLocalizationArgs;
+    NSString *_title;
+    NSString *_titleLocalizationKey;
+    NSArray *_titleLocalizationArgs;
+    NSString *_subtitle;
+    NSString *_subtitleLocalizationKey;
+    NSArray *_subtitleLocalizationArgs;
     NSString *_alertActionLocalizationKey;
     NSString *_alertLaunchImage;
     NSNumber *_badge;
@@ -40,6 +46,12 @@
 @property (nonatomic) long long notificationType; // @synthesize notificationType=_notificationType;
 @property (copy, nonatomic) NSString *soundName; // @synthesize soundName=_soundName;
 @property (copy, nonatomic) NSString *subscriptionID; // @synthesize subscriptionID=_subscriptionID;
+@property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (copy, nonatomic) NSArray *subtitleLocalizationArgs; // @synthesize subtitleLocalizationArgs=_subtitleLocalizationArgs;
+@property (copy, nonatomic) NSString *subtitleLocalizationKey; // @synthesize subtitleLocalizationKey=_subtitleLocalizationKey;
+@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (copy, nonatomic) NSArray *titleLocalizationArgs; // @synthesize titleLocalizationArgs=_titleLocalizationArgs;
+@property (copy, nonatomic) NSString *titleLocalizationKey; // @synthesize titleLocalizationKey=_titleLocalizationKey;
 
 + (id)_realNotificationFromRemoteNotificationDictionary:(id)arg1;
 + (id)notificationFromRemoteNotificationDictionary:(id)arg1;

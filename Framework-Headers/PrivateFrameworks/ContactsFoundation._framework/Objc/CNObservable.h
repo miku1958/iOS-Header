@@ -21,6 +21,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)binderTypeForResultType:(unsigned long long)arg1;
 + (id)combineLatest:(id)arg1;
 + (id)combineLatest:(id)arg1 schedulerProvider:(id)arg2;
 + (id)concatenate:(id)arg1;
@@ -35,6 +36,7 @@
 + (id)observableOnNotificationCenter:(id)arg1 withName:(id)arg2 object:(id)arg3;
 + (id)observableWithAbsoluteTimestamps:(id)arg1 schedulerProvider:(id)arg2;
 + (id)observableWithBlock:(CDUnknownBlockType)arg1;
++ (id)observableWithEmailAddressesInString:(id)arg1;
 + (id)observableWithError:(id)arg1;
 + (id)observableWithFuture:(id)arg1;
 + (id)observableWithFutures:(id)arg1;
@@ -50,6 +52,8 @@
 + (id)observableWithResults:(id)arg1;
 + (id)observableWithResults:(id)arg1 interval:(double)arg2 scheduler:(id)arg3;
 + (id)observableWithResults:(id)arg1 scheduler:(id)arg2;
++ (id)observableWithScannerResultsInString:(id)arg1;
++ (id)observableWithScannerResultsOfType:(unsigned long long)arg1 inString:(id)arg2;
 + (id)observableWithTimeInterval:(double)arg1 scheduler:(id)arg2;
 + (id)progressiveForkJoin:(id)arg1 scheduler:(id)arg2;
 + (void)sendNextTimestampFromQueue:(id)arg1 toObserver:(id)arg2 untilCanceled:(id)arg3 scheduler:(id)arg4;
@@ -76,6 +80,7 @@
 - (id)doOnNext:(CDUnknownBlockType)arg1;
 - (id)doOnSubscribe:(CDUnknownBlockType)arg1;
 - (id)doOnTerminate:(CDUnknownBlockType)arg1;
+- (void)enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)filter:(CDUnknownBlockType)arg1;
 - (id)flatMap:(CDUnknownBlockType)arg1;
 - (id)flatMap:(CDUnknownBlockType)arg1 schedulerProvider:(id)arg2;
@@ -106,8 +111,10 @@
 - (id)switchWithSchedulerProvider:(id)arg1;
 - (id)take:(unsigned long long)arg1;
 - (id)takeLast:(unsigned long long)arg1;
+- (id)throttle:(double)arg1 options:(unsigned long long)arg2 schedulerProvider:(id)arg3;
 - (id)throttle:(double)arg1 schedulerProvider:(id)arg2;
 - (id)throttleFirst:(double)arg1 scheduler:(id)arg2;
+- (id)throttleFirstAndLast:(double)arg1 schedulerProvider:(id)arg2;
 - (id)timeInterval;
 - (id)timeIntervalWithScheduler:(id)arg1;
 - (id)timeoutAfterDelay:(double)arg1 alternateObservable:(id)arg2 schedule:(id)arg3;

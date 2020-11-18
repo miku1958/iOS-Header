@@ -4,41 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUILayoutFreeSectionView.h>
+#import <SearchUI/SearchUICardSectionView.h>
 
-#import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
+@class TLKSimpleRowView;
 
-@class NSString, UIImageView, UIView;
-@protocol SearchUIWidthLimitedView;
-
-@interface SearchUIRowCardSectionView : SearchUILayoutFreeSectionView <NUIContainerStackViewDelegate>
+@interface SearchUIRowCardSectionView : SearchUICardSectionView
 {
-    BOOL _onlyLeftAndRightLabel;
-    BOOL _imageIsLarge;
-    UIView<SearchUIWidthLimitedView> *_leftLabel;
-    UIView<SearchUIWidthLimitedView> *_rightLabel;
-    UIImageView *_leftImageView;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property BOOL imageIsLarge; // @synthesize imageIsLarge=_imageIsLarge;
-@property (strong) UIImageView *leftImageView; // @synthesize leftImageView=_leftImageView;
-@property (strong) UIView<SearchUIWidthLimitedView> *leftLabel; // @synthesize leftLabel=_leftLabel;
-@property BOOL onlyLeftAndRightLabel; // @synthesize onlyLeftAndRightLabel=_onlyLeftAndRightLabel;
-@property (strong) UIView<SearchUIWidthLimitedView> *rightLabel; // @synthesize rightLabel=_rightLabel;
-@property (readonly) Class superclass;
+@property (strong) TLKSimpleRowView *contentView; // @dynamic contentView;
 
-- (void).cxx_destruct;
-- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
-- (void)containerViewDidLayoutArrangedSubviews:(id)arg1;
-- (id)initWithCardSection:(id)arg1 controller:(id)arg2 style:(unsigned long long)arg3;
-- (BOOL)isLTR;
-- (id)makeImageView:(id)arg1 formatter:(id)arg2;
-- (id)makeLabel:(id)arg1 primaryText:(BOOL)arg2 formatter:(id)arg3;
-- (double)separatorLeftInset;
-- (void)shrinkLabel:(id)arg1 withGrowingLabel:(id)arg2 sizeOfResizeLabel:(struct CGSize)arg3 leftLabel:(BOOL)arg4;
++ (id)dragSubtitleForCardSection:(id)arg1;
++ (id)dragTitleForCardSection:(id)arg1;
++ (double)separatorInsetForLeadingImageForSection:(id)arg1;
++ (BOOL)supportsRecyclingForCardSection:(id)arg1;
+- (id)setupContentView;
+- (void)updateWithCardSection:(id)arg1;
 
 @end
 

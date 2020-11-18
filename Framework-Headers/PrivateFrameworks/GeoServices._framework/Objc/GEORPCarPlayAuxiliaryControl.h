@@ -18,9 +18,9 @@
 @property (strong, nonatomic) GEOCarInfo *carInfo; // @synthesize carInfo=_carInfo;
 @property (readonly, nonatomic) BOOL hasCarInfo;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

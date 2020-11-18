@@ -6,7 +6,7 @@
 
 #import <ITMLKit/NSObject-Protocol.h>
 
-@class IKElementChangeSet, IKViewElement, NSArray;
+@class IKElementChangeSet, IKViewElement, IKViewElementFactory, NSArray;
 @protocol IKDataSourceElementImplementing;
 
 @protocol IKDataSourceElementImplementing <NSObject>
@@ -14,13 +14,16 @@
 @property (readonly, nonatomic) IKElementChangeSet *itemsChangeset;
 @property (readonly, nonatomic) NSArray *prototypes;
 
+- (IKViewElement *)actualElementForProxyElement:(IKViewElement *)arg1;
 - (void)applyUpdatesWithImplementation:(id<IKDataSourceElementImplementing>)arg1 usingUpdater:(IKDataSourceElement * (^)(void))arg2;
 - (void)configureUpdatesWithImplementation:(id<IKDataSourceElementImplementing>)arg1;
-- (IKViewElement *)elementForItemAtIndex:(long long)arg1 loadIfNeeded:(BOOL)arg2;
+- (IKViewElement *)elementForItemAtIndex:(long long)arg1;
 - (long long)indexOfItemForChildElement:(IKViewElement *)arg1;
-- (void)initialize;
+- (void)initializeWithElementFactory:(IKViewElementFactory *)arg1;
+- (void)loadIndex:(long long)arg1;
 - (long long)numberOfItems;
 - (IKViewElement *)prototypeForItemAtIndex:(long long)arg1;
+- (void)resetUpdates;
 - (void)teardown;
 - (void)unloadIndex:(long long)arg1;
 - (void)updateStylesUsingUpdater:(void (^)(void))arg1;

@@ -21,7 +21,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 - (void)performForChangedDefault:(id)arg1;
 

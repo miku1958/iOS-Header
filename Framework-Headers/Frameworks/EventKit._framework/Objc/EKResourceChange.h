@@ -38,14 +38,17 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL titleChanged;
 @property (readonly, nonatomic) NSNumber *updateCount;
 
-- (id)_calendarItemRelation;
-- (id)_persistentResourceChange;
++ (Class)frozenClass;
++ (id)knownRelationshipSingleValueKeys;
+- (id)URL;
+- (BOOL)_propertyWithFlagDidChange:(unsigned int)arg1;
+- (unsigned int)changedProperties;
 - (void)clearAlertedStatus;
 - (id)emailAddress;
 - (id)firstName;
 - (id)lastName;
-- (id)lazyLoadRelationForKey:(id)arg1;
 - (id)name;
+- (id)phoneNumber;
 
 @end
 

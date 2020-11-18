@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSString;
 
-@interface HMFNetAddressInternal : NSObject
+@interface HMFNetAddressInternal : HMFObject
 {
     unsigned long long _addressFamily;
     NSString *_addressString;

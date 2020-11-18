@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HMDCameraVideoTier, HMDH264Level, HMDH264Profile;
 
-@interface HMDCameraVideoParameterCombination : NSObject
+@interface HMDCameraVideoParameterCombination : HMFObject
 {
     HMDH264Profile *_profile;
     HMDH264Level *_level;

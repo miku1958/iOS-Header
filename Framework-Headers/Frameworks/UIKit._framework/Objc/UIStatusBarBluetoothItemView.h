@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)_blinkAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
+- (id)accessibilityHUDRepresentation;
 - (double)alphaForConnected:(BOOL)arg1;
 - (id)contentsImage;
 - (void)performPendedActions;

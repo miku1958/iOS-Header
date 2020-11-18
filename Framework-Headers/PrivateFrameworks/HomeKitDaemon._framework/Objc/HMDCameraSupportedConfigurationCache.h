@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HMDSupportedAudioStreamConfiguration, HMDSupportedRTPConfiguration, HMDSupportedVideoStreamConfiguration;
 
-@interface HMDCameraSupportedConfigurationCache : NSObject
+@interface HMDCameraSupportedConfigurationCache : HMFObject
 {
     HMDSupportedVideoStreamConfiguration *_supportedVideoStreamConfiguration;
     HMDSupportedAudioStreamConfiguration *_supportedAudioStreamConfiguration;

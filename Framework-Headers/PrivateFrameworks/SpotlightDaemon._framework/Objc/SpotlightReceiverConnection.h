@@ -4,48 +4,49 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CoreSpotlight/CSXPCConnection.h>
 
-@class NSArray, NSMutableSet, NSSet, NSString;
-@protocol OS_dispatch_queue, SpotlightReceiverJob;
+@class NSArray, NSMutableSet, NSObject, NSSet, NSString;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
-@interface SpotlightReceiverConnection : NSObject
+@interface SpotlightReceiverConnection : CSXPCConnection
 {
     NSMutableSet *_positiveSet;
     NSMutableSet *_negativeSet;
+    _Atomic BOOL _disabled;
     BOOL _wantsHTML;
     BOOL _wantsText;
-    BOOL _wantsUAs;
-    BOOL _wantsIndexUpdates;
-    BOOL _wantsInteractions;
-    NSObject<SpotlightReceiverJob> *_receiver;
+    BOOL _setupComplete;
+    int _supportedJobs;
+    _Atomic unsigned int _requestCount;
     NSSet *_bundleIDs;
     NSArray *_contentTypes;
     NSSet *_INIntentClassNames;
     NSString *_serviceName;
-    NSObject<OS_dispatch_queue> *_queue;
-    unsigned long long _requestCount;
+    NSObject<OS_dispatch_queue> *_senderQueue;
+    NSObject<OS_dispatch_semaphore> *_setupSemaphore;
 }
 
 @property (readonly, nonatomic) NSSet *INIntentClassNames; // @synthesize INIntentClassNames=_INIntentClassNames;
 @property (readonly, nonatomic) NSSet *bundleIDs; // @synthesize bundleIDs=_bundleIDs;
 @property (readonly, nonatomic) NSArray *contentTypes; // @synthesize contentTypes=_contentTypes;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (readonly, nonatomic) NSObject<SpotlightReceiverJob> *receiver; // @synthesize receiver=_receiver;
-@property (readonly, nonatomic) unsigned long long requestCount; // @synthesize requestCount=_requestCount;
+@property (readonly, nonatomic) _Atomic unsigned int requestCount; // @synthesize requestCount=_requestCount;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *senderQueue; // @synthesize senderQueue=_senderQueue;
 @property (readonly, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
+@property (nonatomic) BOOL setupComplete; // @synthesize setupComplete=_setupComplete;
+@property (strong) NSObject<OS_dispatch_semaphore> *setupSemaphore; // @synthesize setupSemaphore=_setupSemaphore;
+@property (readonly, nonatomic) int supportedJobs; // @synthesize supportedJobs=_supportedJobs;
+@property (readonly, nonatomic) BOOL unresponsive;
 @property (nonatomic) BOOL wantsHTML; // @synthesize wantsHTML=_wantsHTML;
-@property (nonatomic) BOOL wantsIndexUpdates; // @synthesize wantsIndexUpdates=_wantsIndexUpdates;
-@property (nonatomic) BOOL wantsInteractions; // @synthesize wantsInteractions=_wantsInteractions;
 @property (nonatomic) BOOL wantsText; // @synthesize wantsText=_wantsText;
-@property (nonatomic) BOOL wantsUAs; // @synthesize wantsUAs=_wantsUAs;
 
 + (void)setup;
 - (void).cxx_destruct;
 - (BOOL)_wantsBundleID:(id)arg1;
 - (BOOL)_wantsContentType:(id)arg1;
-- (void)addInteraction:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
+- (void)addInteraction:(id)arg1 intentClassName:(id)arg2 bundleID:(id)arg3 protectionClass:(id)arg4;
 - (void)addUserActions:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
+- (BOOL)canRun;
 - (void)deleteAllInteractionsWithBundleID:(id)arg1 protectionClass:(id)arg2;
 - (void)deleteFromBundle:(id)arg1;
 - (void)deleteFromBundle:(id)arg1 contentType:(id)arg2 identifiers:(id)arg3;
@@ -54,9 +55,18 @@
 - (void)deleteFromBundle:(id)arg1 sinceDate:(id)arg2;
 - (void)deleteInteractionsWithGroupIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
 - (void)deleteInteractionsWithIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
+- (void)disableReceiver;
+- (void)enableReceiver;
+- (void)handleError:(id)arg1;
 - (void)indexFromBundle:(id)arg1 protectionClass:(id)arg2 items:(id)arg3 itemsContent:(id)arg4;
 - (id)initWithServiceName:(id)arg1 clientID:(long long)arg2 wantsText:(BOOL)arg3 wantsHTML:(BOOL)arg4;
+- (void)invalidationHandler;
 - (void)purgeFromBundle:(id)arg1 identifiers:(id)arg2;
+- (void)receiverRequestComplete;
+- (void)receiverRequestStart;
+- (void)runOnSenderQueue:(CDUnknownBlockType)arg1;
+- (void)setupComplete:(BOOL)arg1;
+- (void)startSetup;
 
 @end
 

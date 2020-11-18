@@ -17,7 +17,10 @@
 - (id)_loadConfigurations;
 - (BOOL)hasSectionIDOptedOutOfAttachmentCoordination:(id)arg1;
 - (BOOL)hasSectionIDOptedOutOfCoordination:(id)arg1 subtype:(long long)arg2;
+- (BOOL)hasSectionIDOptedOutOfCoordination:(id)arg1 subtype:(long long)arg2 category:(id)arg3;
+- (BOOL)hasSectionIDOptedOutOfWaitForUserIdle:(id)arg1;
 - (id)init;
+- (BOOL)shouldSectionIDAlwaysAlert:(id)arg1;
 - (BOOL)shouldSectionIDSettingsAlwaysSync:(id)arg1;
 
 @end

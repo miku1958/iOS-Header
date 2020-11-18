@@ -35,6 +35,7 @@
 - (id)initWithStyle:(unsigned long long)arg1 allowsMaterialFallback:(BOOL)arg2;
 - (id)initWithStyle:(unsigned long long)arg1 andVersionModifier:(id)arg2;
 - (id)initWithStyle:(unsigned long long)arg1 versionModifier:(id)arg2 allowsMaterialFallback:(BOOL)arg3;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)overrideMaterial:(unsigned long long)arg1 size:(unsigned long long)arg2;
 - (struct CGSize)screenImageSize;

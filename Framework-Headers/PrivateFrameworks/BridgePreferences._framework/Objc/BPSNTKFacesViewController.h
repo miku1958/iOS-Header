@@ -10,7 +10,6 @@
 {
 }
 
-+ (double)height;
 + (void)setDisplayDevice:(id)arg1;
 
 @end

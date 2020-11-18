@@ -20,6 +20,7 @@
 @property (copy, nonatomic) NSString *fieldLabel;
 @property (copy, nonatomic) NSArray *inlineItemList;
 @property (copy, nonatomic) NSString *interactionId;
+@property (copy, nonatomic) NSString *keyboardIdentifier;
 @property (copy, nonatomic) NSString *keyboardReturnKey;
 @property (copy, nonatomic) NSString *keyboardType;
 @property (copy, nonatomic) NSString *language;
@@ -34,6 +35,7 @@
 + (id)startSpeechDictationWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)requiresResponse;
 
 @end
 

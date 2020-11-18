@@ -6,7 +6,7 @@
 
 #import <Preferences/PSListController.h>
 
-@class CHManager, NSArray, PSSpecifier, PSUIAppCellularUsageGroupController, PSUICellularAccountGroupController, PSUICellularAccountListGroupController, WirelessDataUsageWorkspace;
+@class CHManager, NSArray, NSMutableArray, PSSpecifier, PSUIAppCellularUsageGroupController, PSUICarrierSpaceGroupController, PSUICellularAccountGroupController, PSUICellularAccountListGroupController, WirelessDataUsageWorkspace;
 
 @interface PSUISettingsNetworkController : PSListController
 {
@@ -20,15 +20,19 @@
     PSSpecifier *_lastResetSpecifier;
     BOOL _ignoreNextEntitlementStatusChange;
     NSArray *_appUsageSpecifierCache;
+    NSArray *_wifiCallingSpecifiers;
+    NSMutableArray *_carrierSpaceBundleControllers;
     PSUICellularAccountListGroupController *_cellularAccountListGroupController;
     PSUICellularAccountGroupController *_cellularGroupController;
     PSUIAppCellularUsageGroupController *_appUsageGroupController;
+    PSUICarrierSpaceGroupController *_carrierSpace;
     CHManager *_callHistoryManager;
     WirelessDataUsageWorkspace *_workspace;
 }
 
 @property (strong, nonatomic) PSUIAppCellularUsageGroupController *appUsageGroupController; // @synthesize appUsageGroupController=_appUsageGroupController;
 @property (strong, nonatomic) CHManager *callHistoryManager; // @synthesize callHistoryManager=_callHistoryManager;
+@property (strong, nonatomic) PSUICarrierSpaceGroupController *carrierSpace; // @synthesize carrierSpace=_carrierSpace;
 @property (strong, nonatomic) PSUICellularAccountListGroupController *cellularAccountListGroupController; // @synthesize cellularAccountListGroupController=_cellularAccountListGroupController;
 @property (strong, nonatomic) PSUICellularAccountGroupController *cellularGroupController; // @synthesize cellularGroupController=_cellularGroupController;
 @property (strong, nonatomic) WirelessDataUsageWorkspace *workspace; // @synthesize workspace=_workspace;
@@ -70,6 +74,7 @@
 - (void)updateAppUsageGroupEnabledState;
 - (void)updatePaneWithCellularDataState:(BOOL)arg1;
 - (void)viewAccountPressed:(id)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)wirelessDataUsageChangedNotification;
 
 @end

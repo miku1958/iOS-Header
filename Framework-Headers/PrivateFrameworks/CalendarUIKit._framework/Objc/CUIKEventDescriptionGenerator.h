@@ -34,6 +34,7 @@
 - (BOOL)_prependFreeMorningMessageToEventSummaryIfPossible:(id)arg1;
 - (id)_sharedDateFormatter;
 - (id)_sharedNumberFormatter;
+- (id)_showEventURLStringForEvent:(id)arg1;
 - (BOOL)_startTimeRequiresSingularForEvent:(id)arg1 withTimeString:(id)arg2;
 - (id)_timeStringForEvent:(id)arg1 forBeginningOfSentence:(BOOL)arg2 useExplicitTimes:(BOOL)arg3 followingComma:(BOOL)arg4;
 - (void)dealloc;
@@ -41,6 +42,8 @@
 - (void)meCardChanged:(id)arg1;
 - (id)naturalLanguageDescriptionForBirthdayEvents:(id)arg1;
 - (id)naturalLanguageDescriptionForUpcomingEvents:(id)arg1 firstInDay:(BOOL)arg2;
+- (id)textRepresentationForAttendee:(id)arg1 includeEmailAddress:(BOOL)arg2;
+- (id)textRepresentationForEvent:(id)arg1 withTextFormat:(int)arg2 showURI:(BOOL)arg3;
 - (id)tomorrowSnippetForUpcomingEvents:(id)arg1 withTodayEvents:(id)arg2;
 
 @end

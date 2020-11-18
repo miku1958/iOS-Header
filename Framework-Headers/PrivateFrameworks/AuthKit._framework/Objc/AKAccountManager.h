@@ -31,7 +31,7 @@
 - (id)_iCloudAccountType;
 - (void)_removeTokenForKeys:(id)arg1 forAccount:(id)arg2;
 - (void)_removeTokenKey:(id)arg1 forAccount:(id)arg2;
-- (id)_tokenWithName:(id)arg1 forAccount:(id)arg2;
+- (id)_tokenWithName:(id)arg1 forAccount:(id)arg2 error:(id *)arg3;
 - (id)activeServiceNamesForAccount:(id)arg1;
 - (id)aliasesForAccount:(id)arg1;
 - (id)allAuthKitAccounts;
@@ -42,8 +42,11 @@
 - (id)authKitAccountWithAppleID:(id)arg1;
 - (id)authKitAccountWithDSID:(id)arg1;
 - (id)continuationTokenForAccount:(id)arg1;
+- (id)continuationTokenForAccount:(id)arg1 error:(id *)arg2;
+- (BOOL)hasPrimaryiCloudAccountForAltDSID:(id)arg1;
 - (BOOL)hasPrimaryiCloudAccountForAppleID:(id)arg1;
 - (id)hearbeatTokenForAccount:(id)arg1;
+- (id)hearbeatTokenForAccount:(id)arg1 error:(id *)arg2;
 - (id)iCloudAccountForAltDSID:(id)arg1;
 - (id)iCloudAccountForAppleID:(id)arg1;
 - (id)init;
@@ -51,7 +54,9 @@
 - (id)masterTokenForAccount:(id)arg1;
 - (id)mostRecentlyUsedAuthKitAccount;
 - (id)passwordResetTokenBackupForAccount:(id)arg1;
+- (id)passwordResetTokenBackupForAccount:(id)arg1 error:(id *)arg2;
 - (id)passwordResetTokenForAccount:(id)arg1;
+- (id)passwordResetTokenForAccount:(id)arg1 error:(id *)arg2;
 - (void)removeAllPasswordResetTokens;
 - (void)removeContinuationTokenForAccount:(id)arg1;
 - (void)removeMasterTokenForAccount:(id)arg1;

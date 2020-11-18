@@ -24,17 +24,17 @@ __attribute__((visibility("hidden")))
     BOOL _shouldDisplayProgressIndicators;
     BOOL _shouldAutoplayOnAppear;
     BOOL _shouldDisplayBufferingIndicators;
-    BOOL _shouldDisplayLoadingIndicators;
+    BOOL _canDisplayLoadingIndicators;
     BOOL _shouldDisplayEmptyPlaceholder;
     BOOL _shouldUseCompactCommentsTitle;
     BOOL _shouldPinContentToTop;
     unsigned long long _options;
     double _maximumToolbarHeight;
+    double _maximumAccessoryToolbarHeight;
     UIColor *_backgroundColorOverride;
     long long _tileInitialContentMode;
     struct CGSize _progressIndicatorSize;
     struct CGSize _bufferingIndicatorSize;
-    struct CGSize _loadingIndicatorSize;
 }
 
 @property (readonly, nonatomic) BOOL allowAccessoryVisibility;
@@ -43,11 +43,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGSize assetExplorerReviewScreenProgressIndicatorSize;
 @property (strong, nonatomic, setter=_setBackgroundColorOverride:) UIColor *backgroundColorOverride; // @synthesize backgroundColorOverride=_backgroundColorOverride;
 @property (nonatomic, setter=_setBufferingIndicatorSize:) struct CGSize bufferingIndicatorSize; // @synthesize bufferingIndicatorSize=_bufferingIndicatorSize;
+@property (nonatomic, setter=_setCanDisplayLoadingIndicators:) BOOL canDisplayLoadingIndicators; // @synthesize canDisplayLoadingIndicators=_canDisplayLoadingIndicators;
 @property (readonly, nonatomic) PUOneUpViewControllerSpecChange *currentChange;
 @property (nonatomic, setter=setChromeVisible:) BOOL isChromeVisible; // @synthesize isChromeVisible=_isChromeVisible;
 @property (nonatomic, setter=setPresentedForPreview:) BOOL isPresentedForPreview; // @synthesize isPresentedForPreview=_isPresentedForPreview;
 @property (nonatomic, setter=setShowingPlayPauseButtonInBars:) BOOL isShowingPlayPauseButtonInBars; // @synthesize isShowingPlayPauseButtonInBars=_isShowingPlayPauseButtonInBars;
-@property (nonatomic, setter=_setLoadingIndicatorSize:) struct CGSize loadingIndicatorSize; // @synthesize loadingIndicatorSize=_loadingIndicatorSize;
+@property (nonatomic, setter=_setMaximumAccessoryToolbarHeight:) double maximumAccessoryToolbarHeight; // @synthesize maximumAccessoryToolbarHeight=_maximumAccessoryToolbarHeight;
 @property (nonatomic, setter=_setMaximumToolbarHeight:) double maximumToolbarHeight; // @synthesize maximumToolbarHeight=_maximumToolbarHeight;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (readonly, nonatomic) struct CGSize playButtonSize;
@@ -59,7 +60,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setShouldDisplayBadges:) BOOL shouldDisplayBadges; // @synthesize shouldDisplayBadges=_shouldDisplayBadges;
 @property (nonatomic, setter=_setShouldDisplayBufferingIndicators:) BOOL shouldDisplayBufferingIndicators; // @synthesize shouldDisplayBufferingIndicators=_shouldDisplayBufferingIndicators;
 @property (nonatomic, setter=_setShouldDisplayEmptyPlaceholder:) BOOL shouldDisplayEmptyPlaceholder; // @synthesize shouldDisplayEmptyPlaceholder=_shouldDisplayEmptyPlaceholder;
-@property (nonatomic, setter=_setShouldDisplayLoadingIndicators:) BOOL shouldDisplayLoadingIndicators; // @synthesize shouldDisplayLoadingIndicators=_shouldDisplayLoadingIndicators;
 @property (nonatomic, setter=_setShouldDisplayPlayButtons:) BOOL shouldDisplayPlayButtons; // @synthesize shouldDisplayPlayButtons=_shouldDisplayPlayButtons;
 @property (nonatomic, setter=_setShouldDisplayProgressIndicators:) BOOL shouldDisplayProgressIndicators; // @synthesize shouldDisplayProgressIndicators=_shouldDisplayProgressIndicators;
 @property (nonatomic, setter=_setShouldPinContentToTop:) BOOL shouldPinContentToTop; // @synthesize shouldPinContentToTop=_shouldPinContentToTop;

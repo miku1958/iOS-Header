@@ -21,6 +21,7 @@
     unsigned int _service;
     unsigned long long _deviceHash;
     NSObject<OS_dispatch_queue> *_handlerQueue;
+    BOOL physicalDeviceUsesCompass;
     NSString *physicalDeviceUniqueID;
 }
 
@@ -45,6 +46,7 @@
 - (id)microGamepad;
 - (id)motion;
 - (id)physicalDeviceUniqueID;
+- (BOOL)physicalDeviceUsesCompass;
 - (long long)playerIndex;
 - (id)profile;
 - (void)removeServiceRef:(struct __IOHIDServiceClient *)arg1;
@@ -52,6 +54,7 @@
 - (void)setControllerPausedHandler:(CDUnknownBlockType)arg1;
 - (void)setHandlerQueue:(id)arg1;
 - (void)setPhysicalDeviceUniqueID:(id)arg1;
+- (void)setPhysicalDeviceUsesCompass:(BOOL)arg1;
 - (void)setPlayerIndex:(long long)arg1;
 - (void)setProfile:(id)arg1;
 - (id)vendorName;

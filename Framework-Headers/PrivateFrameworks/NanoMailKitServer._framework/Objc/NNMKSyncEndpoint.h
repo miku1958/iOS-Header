@@ -14,21 +14,22 @@
     NSObject<OS_dispatch_queue> *_endpointQueue;
     NSObject<OS_dispatch_queue> *_resendingQueue;
     NSMutableDictionary *_datesForIDSIdentifiersScheduledToBeResent;
-    NSMutableDictionary *_lastResendIntervalKeyedByIDSIdentifier;
+    NSMutableDictionary *_lastResendIntervalByIDSIdentifier;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *datesForIDSIdentifiersScheduledToBeResent; // @synthesize datesForIDSIdentifiersScheduledToBeResent=_datesForIDSIdentifiersScheduledToBeResent;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *endpointQueue; // @synthesize endpointQueue=_endpointQueue;
-@property (strong, nonatomic) NSMutableDictionary *lastResendIntervalKeyedByIDSIdentifier; // @synthesize lastResendIntervalKeyedByIDSIdentifier=_lastResendIntervalKeyedByIDSIdentifier;
+@property (strong, nonatomic) NSMutableDictionary *lastResendIntervalByIDSIdentifier; // @synthesize lastResendIntervalByIDSIdentifier=_lastResendIntervalByIDSIdentifier;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *resendingQueue; // @synthesize resendingQueue=_resendingQueue;
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (void)dequeueIDSIdentifierForResend:(id)arg1;
 - (void)enqueueIDSIdentifierForResend:(id)arg1 atDate:(id)arg2 silent:(BOOL)arg3;
 - (void)enqueueIDSIdentifiersForResend:(id)arg1;
 - (id)initWithQueue:(id)arg1;
 - (unsigned long long)newResendIntervalForPreviousResendInterval:(unsigned long long)arg1 errorCode:(long long)arg2;
-- (void)resendIDSIdentifier:(id)arg1;
+- (void)resendObjectsForIDSIdentifier:(id)arg1;
 - (void)resendReadyIDSIdentifiers;
 
 @end

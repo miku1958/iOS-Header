@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class NSString;
+@class NSObject, NSString;
 @protocol HAPHTTPClientDebugDelegate, HAPHTTPClientDelegate, OS_dispatch_queue;
 
-@interface HAPHTTPClient : NSObject
+@interface HAPHTTPClient : HMFObject
 {
     struct HTTPClientPrivate *_httpClient;
     BOOL _invalidateRequested;

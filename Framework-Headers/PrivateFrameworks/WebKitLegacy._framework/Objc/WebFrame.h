@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) DOMHTMLElement *frameElement;
 @property (readonly, nonatomic) WebFrameView *frameView;
 @property (readonly, nonatomic) struct OpaqueJSContext *globalContext;
+@property (readonly, nonatomic) BOOL hasRichlyEditableDragCaret;
 @property (readonly, nonatomic) JSContext *javaScriptContext;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, nonatomic) WebFrame *parentFrame;
@@ -47,8 +48,8 @@
 - (id)_computePageRectsWithPrintScaleFactor:(float)arg1 pageSize:(struct CGSize)arg2;
 - (struct _NSRange)_convertDOMRangeToNSRange:(id)arg1;
 - (id)_convertNSRangeToDOMRange:(struct _NSRange)arg1;
-- (PassRefPtr_d7fc6f43)_convertToDOMRange:(struct _NSRange)arg1;
-- (PassRefPtr_d7fc6f43)_convertToDOMRange:(struct _NSRange)arg1 rangeIsRelativeTo:(unsigned char)arg2;
+- (RefPtr_59db400e)_convertToDOMRange:(struct _NSRange)arg1;
+- (RefPtr_59db400e)_convertToDOMRange:(struct _NSRange)arg1 rangeIsRelativeTo:(unsigned char)arg2;
 - (struct _NSRange)_convertToNSRange:(struct Range *)arg1;
 - (id)_dataSource;
 - (void)_detachScriptDebugger;
@@ -84,6 +85,7 @@
 - (id)_markDOMRange;
 - (BOOL)_needsLayout;
 - (id)_nodesFromList:(Vector_1d266cd7 *)arg1;
+- (unsigned int)_paintBehaviorForDestinationContext:(struct CGContext *)arg1;
 - (unsigned int)_pendingFrameUnloadEventCount;
 - (id)_rectsForRange:(id)arg1;
 - (void)_replaceSelectionWithFragment:(id)arg1 selectReplacement:(BOOL)arg2 smartReplace:(BOOL)arg3 matchStyle:(BOOL)arg4;
@@ -112,7 +114,6 @@
 - (void)_setTextAutosizingWidth:(double)arg1;
 - (void)_setTypingStyle:(id)arg1 withUndoAction:(int)arg2;
 - (void)_setVisibleSize:(struct CGSize)arg1;
-- (BOOL)_shouldFlattenCompositingLayers:(struct CGContext *)arg1;
 - (id)_stringByEvaluatingJavaScriptFromString:(id)arg1;
 - (id)_stringByEvaluatingJavaScriptFromString:(id)arg1 forceUserGesture:(BOOL)arg2;
 - (id)_stringByEvaluatingJavaScriptFromString:(id)arg1 withGlobalObject:(struct OpaqueJSValue *)arg2 inScriptWorld:(id)arg3;
@@ -124,6 +125,7 @@
 - (void)_updateBackgroundAndUpdatesWhileOffscreen;
 - (void)_userScrolled;
 - (struct VisiblePosition)_visiblePositionForPoint:(struct CGPoint)arg1;
+- (id)_webHTMLDocumentView;
 - (id)accessibilityRoot;
 - (void)aggressivelyExpandSelectionToWordContainingCaretSelection;
 - (id)approximateNodeAtViewportLocation:(struct CGPoint *)arg1;
@@ -224,7 +226,6 @@
 - (id)selectionRectsForCoreRange:(struct Range *)arg1;
 - (id)selectionRectsForRange:(id)arg1;
 - (int)selectionState;
-- (void)sendOrientationChangeEvent:(int)arg1;
 - (void)sendScrollEvent;
 - (void)setAccessibleName:(id)arg1;
 - (void)setBaseWritingDirection:(int)arg1;

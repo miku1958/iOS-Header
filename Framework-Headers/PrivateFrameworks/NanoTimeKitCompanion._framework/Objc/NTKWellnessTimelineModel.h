@@ -32,6 +32,7 @@
     _HKDelayedOperation *_delayedProcessingOperation;
     NSObject<OS_dispatch_queue> *_subscriber_queue;
     NSHashTable *_subscribers;
+    BOOL _queue_ignoreLoadingSummary;
 }
 
 + (id)sharedModel;
@@ -44,6 +45,7 @@
 - (id)_createCalorieGoalObserverQuery;
 - (void)_fetchCalorieGoalSamples;
 - (void)_handleTimeChange;
+- (BOOL)_loadingStateForActivitySummary:(id)arg1;
 - (id)_queue_calorieGoalSampleForDate:(id)arg1;
 - (void)_queue_fetchCalorieGoalSamples;
 - (BOOL)_queue_historicalDataLoaded;
@@ -53,7 +55,7 @@
 - (void)_queue_restartQueriesIfQueryInUse:(id)arg1;
 - (id)_queue_standHourForDate:(id)arg1;
 - (void)_queue_startQueries;
-- (void)_queue_stopQueries;
+- (void)_queue_stopQueriesPreservingHistoricalData:(BOOL)arg1;
 - (void)_queue_updateCalorieGoalsWithSamples:(id)arg1 deletedSamples:(id)arg2 anchor:(id)arg3;
 - (void)_queue_updateCurrentActivitySummaryWithSummary:(id)arg1;
 - (void)_queue_updateMoveActivityStatistics:(id)arg1 exerciseActivityStatistics:(id)arg2 standActivityStatistics:(id)arg3;

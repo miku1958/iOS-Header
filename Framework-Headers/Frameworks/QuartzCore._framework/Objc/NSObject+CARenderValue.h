@@ -17,6 +17,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (unsigned long long)CA_copyNumericValue:(double [20])arg1;
 - (struct Object *)CA_copyRenderValue;
 - (void)CA_prepareRenderValue;
 @end

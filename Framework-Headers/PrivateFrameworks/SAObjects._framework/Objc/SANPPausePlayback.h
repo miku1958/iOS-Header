@@ -6,9 +6,13 @@
 
 #import <SAObjects/SADomainCommand.h>
 
+@class NSArray;
+
 @interface SANPPausePlayback : SADomainCommand
 {
 }
+
+@property (copy, nonatomic) NSArray *hashedRouteUIDs;
 
 + (id)pausePlayback;
 + (id)pausePlaybackWithDictionary:(id)arg1 context:(id)arg2;

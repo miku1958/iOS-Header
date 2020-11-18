@@ -4,21 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
-@class HMDAccount, HMDDevice, HMFExponentialBackoffTimer, HMFTimer, IDSService, NSArray, NSMutableSet, NSString;
+@class HMDAccount, HMDDevice, HMDLocalAccountContext, HMFExponentialBackoffTimer, HMFTimer, IDSService, NSArray, NSMutableSet, NSObject, NSString;
 @protocol HMDAccountRegistryDelegate, OS_dispatch_queue;
 
-@interface HMDAccountRegistry : NSObject <HMFTimerDelegate, IDSServiceDelegate, HMFLogging>
+@interface HMDAccountRegistry : HMFObject <HMFTimerDelegate, IDSServiceDelegate, HMFLogging>
 {
     NSMutableSet *_accounts;
     BOOL _monitoring;
     BOOL _resolved;
     HMDAccount *_currentAccount;
+    HMDLocalAccountContext *_localAccountContext;
     HMDDevice *_currentDevice;
     id<HMDAccountRegistryDelegate> _delegate;
     IDSService *_service;
@@ -38,6 +39,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) HMFTimer *devicesChangeBackoffTimer; // @synthesize devicesChangeBackoffTimer=_devicesChangeBackoffTimer;
 @property (readonly) unsigned long long hash;
+@property (strong) HMDLocalAccountContext *localAccountContext; // @synthesize localAccountContext=_localAccountContext;
 @property (nonatomic, getter=isMonitoring) BOOL monitoring; // @synthesize monitoring=_monitoring;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (nonatomic, getter=isResolved) BOOL resolved; // @synthesize resolved=_resolved;
@@ -45,11 +47,13 @@
 @property (readonly) Class superclass;
 
 + (id)logCategory;
++ (id)sharedRegistry;
 + (id)shortDescription;
 - (void).cxx_destruct;
+- (void)_cleanupDevices;
 - (void)_updateLocalAccount;
 - (void)_updateLocalDevices;
-- (id)accountWithDestination:(id)arg1 shouldCreate:(BOOL)arg2;
+- (id)accountForDestination:(id)arg1 shouldCreate:(BOOL)arg2;
 - (void)addAccount:(id)arg1;
 - (id)descriptionWithPointer:(BOOL)arg1;
 - (id)deviceForDestination:(id)arg1 shouldCreate:(BOOL)arg2;
@@ -67,6 +71,7 @@
 - (void)timerDidFire:(id)arg1;
 - (void)updateCurrentAccount;
 - (void)updateCurrentDevice;
+- (void)updateLocalAccountContext;
 
 @end
 

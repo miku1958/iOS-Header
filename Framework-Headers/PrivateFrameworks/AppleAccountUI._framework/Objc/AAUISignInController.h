@@ -9,17 +9,19 @@
 #import <AppleAccountUI/AAUISignInViewControllerDelegate-Protocol.h>
 
 @class NSDictionary, NSString;
-@protocol AAServiceOwnerProtocol, AAUISignInControllerDelegate;
+@protocol AAUISignInControllerDelegate, AIDAServiceOwnerProtocol;
 
 @interface AAUISignInController : UINavigationController <AAUISignInViewControllerDelegate>
 {
     NSDictionary *_authenticationResults;
-    id<AAServiceOwnerProtocol> _serviceOwnersManager;
+    id<AIDAServiceOwnerProtocol> _serviceOwnersManager;
+    BOOL __shouldForceOperation;
     NSString *_serviceType;
 }
 
 @property (strong, nonatomic, setter=_setAuthenticationResults:) NSDictionary *_authenticationResults;
-@property (strong, nonatomic, setter=_setServiceOwnersManager:) id<AAServiceOwnerProtocol> _serviceOwnersManager;
+@property (strong, nonatomic, setter=_setServiceOwnersManager:) id<AIDAServiceOwnerProtocol> _serviceOwnersManager;
+@property (nonatomic, setter=_setShouldForceOperation:) BOOL _shouldForceOperation; // @synthesize _shouldForceOperation=__shouldForceOperation;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AAUISignInControllerDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
@@ -29,18 +31,20 @@
 
 - (void).cxx_destruct;
 - (BOOL)_allowsAccountCreationForService:(id)arg1;
-- (void)_attemptSignInForService:(id)arg1 withAuthenticationResults:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_attemptSignInForService:(id)arg1 withAuthenticationResults:(id)arg2 parentViewController:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_attemptSignInForServices:(id)arg1 withAuthenticationResults:(id)arg2 parentViewController:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_commonInit;
 - (id)_continueUsingControllerForAccount:(id)arg1 serviceType:(id)arg2 inViewController:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_delegate_signInControllerDidCancel;
 - (void)_delegate_signInControllerDidCompleteWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (BOOL)_isAuthenticatingPrimary:(id)arg1;
-- (void)_mainQueue_continueSignInWithAuthenticationResults:(id)arg1;
+- (void)_mainQueue_continueSignInWithAuthenticationResults:(id)arg1 parentViewController:(id)arg2;
 - (void)_mainQueue_presentAlertForError:(id)arg1 inViewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_mainQueue_presentContinueUsingInViewController:(id)arg1 account:(id)arg2 serviceType:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_mainQueue_presentSpinnerViewControllerWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_mainQueue_presentSpinnerViewControllerInParentViewController:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)_messageStringForService:(id)arg1;
 - (void)_performAuthenticationForAccount:(id)arg1 serviceType:(id)arg2 inViewController:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_performSilentRenewalWithResults:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_showsServiceIconsForService:(id)arg1;
 - (id)_signInViewController;
 - (id)_spinnerMessageForService:(id)arg1;

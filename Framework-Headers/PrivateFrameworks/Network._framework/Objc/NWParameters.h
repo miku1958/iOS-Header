@@ -10,31 +10,33 @@
 #import <Network/NSSecureCoding-Protocol.h>
 #import <Network/NWPrettyDescription-Protocol.h>
 
-@class NSData, NSDictionary, NSSet, NSString, NSURL, NSUUID, NWAddressEndpoint, NWInterface;
+@class NSArray, NSData, NSDictionary, NSSet, NSString, NSURL, NSUUID, NWAddressEndpoint, NWInterface;
 @protocol OS_nw_parameters;
 
 @interface NWParameters : NSObject <NWPrettyDescription, NSSecureCoding, NSCopying>
 {
+    BOOL _enableSFO;
     NSObject<OS_nw_parameters> *_internalParameters;
 }
 
 @property (copy, nonatomic) NSSet *SSLCipherSuites;
 @property (copy, nonatomic) NSData *TLSSessionID;
 @property (copy, nonatomic) NSString *account;
-@property (nonatomic) BOOL connectedBySocket;
-@property (nonatomic) BOOL customProtocolsOnly;
+@property (nonatomic) BOOL allowSocketAccess;
 @property (nonatomic) unsigned long long dataMode;
 @property (nonatomic) BOOL disableBlackHoleDetection;
 @property (nonatomic) BOOL disableNagleAlgorithm;
+@property (nonatomic, getter=isDiscretionary) BOOL discretionary;
+@property (readonly, nonatomic, getter=isDryRun) BOOL dryRun;
 @property (copy, nonatomic) NSString *effectiveBundleID;
 @property (copy, nonatomic) NSUUID *effectiveProcessUUID;
 @property (nonatomic) BOOL enableExtendedBackgroundIdle;
-@property (nonatomic) BOOL enableHWChecksum;
-@property (nonatomic) BOOL enableSFO;
+@property (nonatomic) BOOL enableSFO; // @synthesize enableSFO=_enableSFO;
 @property (nonatomic) BOOL enableTFO;
 @property (nonatomic) BOOL enableTFONoCookie;
 @property (nonatomic) BOOL enableTLS;
 @property (nonatomic) BOOL enableTLSSessionTicket;
+@property (nonatomic) BOOL enforceExtendedValidation;
 @property (nonatomic) BOOL indefinite;
 @property (strong) NSObject<OS_nw_parameters> *internalParameters; // @synthesize internalParameters=_internalParameters;
 @property (nonatomic) unsigned char ipProtocol;
@@ -47,6 +49,7 @@
 @property (nonatomic) NSData *metadata;
 @property (nonatomic) unsigned long long minimumSSLProtocolVersion;
 @property (nonatomic) BOOL multipath;
+@property (nonatomic) int multipathService;
 @property (nonatomic) BOOL noProxy;
 @property (strong, nonatomic) NSUUID *parentID;
 @property (nonatomic) int pid;
@@ -55,30 +58,38 @@
 @property (readonly, nonatomic) BOOL prohibitCellular;
 @property (nonatomic) BOOL prohibitExpensivePaths;
 @property (nonatomic) BOOL prohibitFallback;
+@property (nonatomic) BOOL prohibitRoaming;
+@property (copy, nonatomic) NSArray *protocolTransforms;
 @property (copy, nonatomic) NSDictionary *proxyConfiguration;
 @property (nonatomic) BOOL reduceBuffering;
 @property (nonatomic) unsigned char requiredAddressFamily;
-@property (readonly, nonatomic) NSString *requiredCellularService;
 @property (strong, nonatomic) NWInterface *requiredInterface;
+@property (nonatomic) long long requiredInterfaceSubtype;
 @property (nonatomic) long long requiredInterfaceType;
 @property (nonatomic) BOOL resolvePTR;
 @property (nonatomic) BOOL reuseLocalAddress;
+@property (readonly, nonatomic) NSURL *sanitizedURL;
 @property (nonatomic) unsigned long long trafficClass;
 @property (nonatomic) BOOL trustInvalidCertificates;
 @property (nonatomic) unsigned int uid;
 @property (copy, nonatomic) NSURL *url;
 @property (nonatomic) BOOL useAWDL;
+@property (nonatomic) BOOL useBoringSSL;
 @property (nonatomic) BOOL useLongOutstandingQueries;
 @property (nonatomic) BOOL useP2P;
+@property (nonatomic) BOOL useTFOHeuristics;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 + (id)parametersWithCParameters:(id)arg1;
++ (id)parametersWithProtocolBufferData:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)applicationProtocols;
 - (id)copyCParameters;
 - (BOOL)copyEffectiveAuditToken:(CDStruct_6ad76789 *)arg1;
+- (id)copyRequiredAgentsDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)createProtocolBufferObject;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
 - (void)encodeWithCoder:(id)arg1;

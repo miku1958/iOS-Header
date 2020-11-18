@@ -6,30 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class CMWorkout, HDBackgroundWorkoutRunner, HDClient, _HKWorkoutSession;
-@protocol HDServer;
+@class CMWorkout, HDBackgroundWorkoutRunner, HDHealthStoreServer, HDXPCClient, NSArray, NSMutableArray, _HKWorkoutSession;
 
 @interface _HDWorkoutData : NSObject
 {
+    NSMutableArray *_events;
     BOOL _isFirstParty;
     _HKWorkoutSession *_workoutSession;
-    HDClient *_client;
-    id<HDServer> _server;
+    HDXPCClient *_client;
+    HDHealthStoreServer *_server;
     CMWorkout *_cmWorkout;
     HDBackgroundWorkoutRunner *_backgroundRunner;
 }
 
 @property (strong, nonatomic) HDBackgroundWorkoutRunner *backgroundRunner; // @synthesize backgroundRunner=_backgroundRunner;
-@property (weak, nonatomic) HDClient *client; // @synthesize client=_client;
+@property (readonly, nonatomic) HDXPCClient *client; // @synthesize client=_client;
 @property (strong, nonatomic) CMWorkout *cmWorkout; // @synthesize cmWorkout=_cmWorkout;
-@property (nonatomic) BOOL isFirstParty; // @synthesize isFirstParty=_isFirstParty;
-@property (weak, nonatomic) id<HDServer> server; // @synthesize server=_server;
-@property (strong, nonatomic) _HKWorkoutSession *workoutSession; // @synthesize workoutSession=_workoutSession;
+@property (readonly, nonatomic) double duration;
+@property (readonly, nonatomic) NSArray *events;
+@property (readonly, nonatomic) BOOL isFirstParty; // @synthesize isFirstParty=_isFirstParty;
+@property (weak, nonatomic) HDHealthStoreServer *server; // @synthesize server=_server;
+@property (readonly, nonatomic) _HKWorkoutSession *workoutSession; // @synthesize workoutSession=_workoutSession;
 
 - (void).cxx_destruct;
 - (void)deliverChangeToState:(long long)arg1 fromState:(long long)arg2 date:(id)arg3;
 - (void)deliverError:(id)arg1;
 - (void)deliverEvent:(id)arg1;
+- (void)deliverMetrics:(id)arg1;
 - (id)initWithWorkoutSession:(id)arg1 client:(id)arg2 server:(id)arg3 isFirstParty:(BOOL)arg4;
 
 @end

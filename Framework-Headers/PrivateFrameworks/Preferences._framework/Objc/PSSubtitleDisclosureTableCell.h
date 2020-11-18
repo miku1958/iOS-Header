@@ -13,6 +13,8 @@
     UILabel *_valueLabel;
 }
 
+@property (strong, nonatomic) UILabel *valueLabel; // @synthesize valueLabel=_valueLabel;
+
 + (long long)cellStyle;
 - (void).cxx_destruct;
 - (void)_valueLabelForSpecifier:(id)arg1;
@@ -20,6 +22,7 @@
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
 - (void)layoutSubviews;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

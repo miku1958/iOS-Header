@@ -8,11 +8,12 @@
 
 #import <Message/ECMailbox-Protocol.h>
 #import <Message/MFMailboxPredictionMailbox-Protocol.h>
+#import <Message/MFPubliclyDescribable-Protocol.h>
 #import <Message/NSCopying-Protocol.h>
 
 @class MFInvocationQueue, MFMessageCriterion, MFWeakReferenceHolder, MailAccount, NSArray, NSMutableArray, NSMutableDictionary, NSNumber, NSString;
 
-@interface MFMailboxUid : NSObject <MFMailboxPredictionMailbox, ECMailbox, NSCopying>
+@interface MFMailboxUid : NSObject <MFMailboxPredictionMailbox, ECMailbox, NSCopying, MFPubliclyDescribable>
 {
     NSString *uniqueId;
     unsigned int _mailboxID;
@@ -29,34 +30,41 @@
     NSNumber *_pendingLevel;
     int _type;
     NSMutableDictionary *_userInfo;
-    NSString *_permanentTag;
 }
 
 @property (readonly, nonatomic) MFInvocationQueue *attachmentDownloadQueue;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSArray *extraAttributes; // @synthesize extraAttributes=_extraAttributes;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *mf_publicDescription;
 @property (readonly, copy, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *permanentTag; // @synthesize permanentTag=_permanentTag;
 @property (readonly, copy, nonatomic) NSString *persistentID;
 @property (readonly, nonatomic) unsigned long long suggestionsLostMessageSearchResultCount;
 @property (readonly, nonatomic) double suggestionsLostMessageSearchTimestamp;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type;
 
++ (id)fileURLForMailboxURL:(id)arg1;
 + (BOOL)isDraftsMailboxType:(int)arg1;
 + (BOOL)isOutgoingMailboxType:(int)arg1;
 + (BOOL)isSentMailboxType:(int)arg1;
 + (BOOL)isStandardizedMailboxUidType:(int)arg1;
 + (id)specialNameForType:(int)arg1;
++ (BOOL)typeIsValidTransferDestination:(int)arg1;
 - (id)URL;
 - (id)URLString;
 - (id)URLStringNonNil;
 - (id)URLStringWithAccount:(id)arg1;
+- (id)_dictionaryRepresentation;
 - (id)_initWithName:(id)arg1 attributes:(unsigned int)arg2 forAccount:(id)arg3;
 - (id)_loadUserInfo;
 - (id)_mutableChildren;
+- (id)_privacySafeDescription;
 - (id)account;
 - (id)accountDisplayName;
 - (id)accountRelativePath;
@@ -69,7 +77,6 @@
 - (id)childEnumeratorIncludingHiddenChildren:(BOOL)arg1;
 - (id)childWithExtraAttribute:(id)arg1;
 - (id)childWithName:(id)arg1;
-- (id)childWithPermanentTag:(id)arg1;
 - (id)children;
 - (long long)compareWithMailboxUid:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -77,7 +84,7 @@
 - (void)dealloc;
 - (id)depthFirstEnumerator;
 - (id)descendantWithExtraAttribute:(id)arg1;
-- (id)descendantWithPermanentTag:(id)arg1;
+- (id)dictionaryRepresentation;
 - (id)displayName;
 - (id)displayNameUsingSpecialNames;
 - (void)flushCriteria;
@@ -89,13 +96,11 @@
 - (id)init;
 - (id)initWithAccount:(id)arg1;
 - (id)initWithName:(id)arg1 attributes:(unsigned int)arg2 forAccount:(id)arg3 extraAttributes:(id)arg4;
-- (id)initWithName:(id)arg1 attributes:(unsigned int)arg2 forAccount:(id)arg3 permanentTag:(id)arg4;
 - (void)invalidate;
 - (BOOL)isContainer;
 - (BOOL)isDescendantOfMailbox:(id)arg1;
 - (BOOL)isNotesMailboxUid;
 - (BOOL)isOutgoingMailboxUid;
-- (BOOL)isSelectable;
 - (BOOL)isSentMailboxUid;
 - (BOOL)isShared;
 - (BOOL)isSpecialMailboxUid;
@@ -108,6 +113,7 @@
 - (unsigned int)mailboxID;
 - (BOOL)mergeWithUserInfo:(id)arg1;
 - (id)mutableCopyOfChildren;
+- (id)mutableDictionaryRepresentation;
 - (unsigned long long)nonDeletedCount;
 - (unsigned long long)numberOfChildren;
 - (unsigned long long)numberOfDescendants;
@@ -133,13 +139,16 @@
 - (void)setUserInfoObject:(id)arg1 forKey:(id)arg2;
 - (void)setUserInfoWithDictionary:(id)arg1;
 - (BOOL)shouldRestoreMessagesAfterFailedDelete;
+- (BOOL)shouldUseNonDeletedForUnreadCount;
 - (void)sortChildren;
+- (long long)statusCountDelta;
 - (id)store;
 - (id)tildeAbbreviatedPath;
 - (id)topMailbox;
 - (id)uniqueId;
 - (unsigned long long)unreadCount;
 - (unsigned long long)unreadCountMatchingCriterion:(id)arg1;
+- (void)updateMostRecentStatusCount:(unsigned long long)arg1;
 - (void)updateSuggestionsLostMessageSearchResultCount:(unsigned long long)arg1;
 - (BOOL)userInfoBoolForKey:(id)arg1;
 - (id)userInfoDictionary;

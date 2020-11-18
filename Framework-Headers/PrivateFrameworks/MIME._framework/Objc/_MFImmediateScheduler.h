@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MIME/MFScheduler-Protocol.h>
 
@@ -22,6 +22,7 @@
 - (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1;
+- (void)performSyncBlock:(CDUnknownBlockType)arg1;
 
 @end
 

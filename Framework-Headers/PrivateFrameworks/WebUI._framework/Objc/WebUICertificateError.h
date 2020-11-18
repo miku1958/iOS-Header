@@ -15,8 +15,12 @@
 + (BOOL)isServerCertificateError:(long long)arg1;
 + (id)newAlertToHandleClientSideCertificateErrorCode:(long long)arg1 context:(id)arg2;
 + (id)newAlertToListPossibleClientSideCertificatesWithContext:(id)arg1;
++ (void)permanentlyAllowCertificateTrust:(struct __SecTrust *)arg1 host:(id)arg2;
 + (BOOL)proceedWithClientCertificateIdentity:(struct __SecIdentity *)arg1 context:(id)arg2;
-+ (BOOL)userAllowsCertificateTrust:(struct __SecTrust *)arg1 host:(id)arg2 applicationDisplayName:(id)arg3;
++ (BOOL)promptForCertificateTrust:(struct __SecTrust *)arg1 host:(id)arg2;
++ (BOOL)trustIncludesRevokedCertificate:(struct __SecTrust *)arg1;
++ (BOOL)userAllowsCertificateTrust:(struct __SecTrust *)arg1 host:(id)arg2;
++ (BOOL)userAllowsCertificateTrust:(struct __SecTrust *)arg1 host:(id)arg2 shouldPrompt:(BOOL)arg3;
 
 @end
 

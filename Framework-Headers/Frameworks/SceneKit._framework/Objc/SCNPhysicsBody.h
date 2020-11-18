@@ -70,6 +70,7 @@
 - (void)_didDecodeSCNPhysicsBody:(id)arg1;
 - (struct btRigidBody *)_handle;
 - (id)_owner;
+- (void)_ownerWillDie;
 - (void)_removeOwner;
 - (void)_setOwner:(id)arg1;
 - (struct btCollisionShape *)_shapeHandleWithShape:(id)arg1 owner:(id)arg2;

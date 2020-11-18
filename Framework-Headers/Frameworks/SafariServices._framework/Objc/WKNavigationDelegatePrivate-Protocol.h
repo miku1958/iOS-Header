@@ -6,7 +6,7 @@
 
 #import <SafariServices/WKNavigationDelegate-Protocol.h>
 
-@class NSData, NSError, NSString, NSURLAuthenticationChallenge, NSURLProtectionSpace, WKBackForwardListItem, WKFrameInfo, WKNavigation, WKNavigationAction, WKWebView;
+@class NSData, NSError, NSString, NSURL, NSURLAuthenticationChallenge, NSURLProtectionSpace, WKBackForwardListItem, WKFrameInfo, WKNavigation, WKNavigationAction, WKWebView;
 
 @protocol WKNavigationDelegatePrivate <WKNavigationDelegate>
 
@@ -21,10 +21,13 @@
 - (void)_webView:(WKWebView *)arg1 navigation:(WKNavigation *)arg2 didSameDocumentNavigation:(long long)arg3;
 - (void)_webView:(WKWebView *)arg1 navigationDidFinishDocumentLoad:(WKNavigation *)arg2;
 - (void)_webView:(WKWebView *)arg1 renderingProgressDidChange:(unsigned long long)arg2;
+- (void)_webView:(WKWebView *)arg1 willPerformClientRedirectToURL:(NSURL *)arg2 delay:(double)arg3;
 - (void)_webView:(WKWebView *)arg1 willSnapshotBackForwardListItem:(WKBackForwardListItem *)arg2;
 - (void)_webViewDidBeginNavigationGesture:(WKWebView *)arg1;
+- (void)_webViewDidCancelClientRedirect:(WKWebView *)arg1;
 - (void)_webViewDidEndNavigationGesture:(WKWebView *)arg1 withNavigationToBackForwardListItem:(WKBackForwardListItem *)arg2;
 - (void)_webViewDidRemoveNavigationGestureSnapshot:(WKWebView *)arg1;
+- (void)_webViewDidRequestPasswordForQuickLookDocument:(WKWebView *)arg1;
 - (void)_webViewWebProcessDidBecomeResponsive:(WKWebView *)arg1;
 - (void)_webViewWebProcessDidBecomeUnresponsive:(WKWebView *)arg1;
 - (void)_webViewWebProcessDidCrash:(WKWebView *)arg1;

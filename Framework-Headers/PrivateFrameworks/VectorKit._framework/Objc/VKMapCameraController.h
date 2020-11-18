@@ -58,9 +58,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)isFullyPitched;
 - (BOOL)isPitched;
 - (float)maxPitchForNormalizedZoomLevel:(float)arg1;
-- (long long)maximumNormalizedZoomLevel;
+- (float)maximumNormalizedZoomLevel;
 - (double)maximumZoomLevel;
-- (long long)minimumNormalizedZoomLevel;
+- (float)minimumNormalizedZoomLevel;
 - (float)minimumPitchForNormalizedZoomLevel:(float)arg1;
 - (double)minimumZoomLevel;
 - (float)normalizedZoomLevelAdjustmentForTileSize:(long long)arg1;

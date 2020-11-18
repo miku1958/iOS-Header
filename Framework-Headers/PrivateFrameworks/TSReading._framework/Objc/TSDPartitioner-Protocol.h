@@ -5,13 +5,13 @@
 //
 
 @class TSDLayout;
-@protocol TSDHint, TSDHint><NSCoding;
+@protocol TSDHint, TSDHint><NSSecureCoding;
 
 @protocol TSDPartitioner
 - (BOOL)didHint:(id<TSDHint>)arg1 syncWithNextHint:(id<TSDHint>)arg2 horizontally:(BOOL)arg3 delta:(int)arg4;
-- (id<TSDHint><NSCoding>)hintForLayout:(TSDLayout *)arg1;
+- (id<TSDHint><NSSecureCoding>)hintForLayout:(TSDLayout *)arg1;
 - (TSDLayout *)layoutForHint:(id<TSDHint>)arg1 parentLayout:(TSDLayout *)arg2;
-- (id<TSDHint><NSCoding>)nextHintForSize:(struct CGSize)arg1 parentLayout:(TSDLayout *)arg2 previousHint:(id<TSDHint>)arg3 horizontally:(BOOL)arg4 outFinished:(out BOOL *)arg5;
+- (id<TSDHint><NSSecureCoding>)nextHintForSize:(struct CGSize)arg1 parentLayout:(TSDLayout *)arg2 previousHint:(id<TSDHint>)arg3 horizontally:(BOOL)arg4 outFinished:(out BOOL *)arg5;
 - (TSDLayout *)nextLayoutForSize:(struct CGSize)arg1 parentLayout:(TSDLayout *)arg2 previousHint:(id<TSDHint>)arg3 horizontally:(BOOL)arg4 outFinished:(out BOOL *)arg5;
 @end
 

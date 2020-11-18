@@ -12,15 +12,15 @@
 #import <PhotosUI/PUTilingViewScrollDelegate-Protocol.h>
 #import <PhotosUI/PUTilingViewTileSource-Protocol.h>
 #import <PhotosUI/PUTilingViewTileTransitionDelegate-Protocol.h>
-#import <PhotosUI/PUVideoScrubberControllerDelegate-Protocol.h>
+#import <PhotosUI/PXVideoScrubberControllerDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSIndexPath, NSMutableDictionary, NSString, PUBrowsingSession, PUScrubberTilingLayout, PUTilingView, PUTouchingGestureRecognizer, PUVideoScrubberController, UIScrollView, UITapGestureRecognizer;
+@class NSIndexPath, NSMutableDictionary, NSString, PUBrowsingSession, PUScrubberTilingLayout, PUTilingView, PUTouchingGestureRecognizer, PXVideoScrubberController, UIScrollView, UITapGestureRecognizer;
 @protocol PUScrubberViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUScrubberView : UIView <PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PUTilingViewScrollDelegate, UIScrollViewDelegate, PUBrowsingViewModelChangeObserver, PUScrubberTilingLayoutDelegate, PUVideoScrubberControllerDelegate, PUPlaybackTimeIndicatorTileViewControllerDelegate, UIGestureRecognizerDelegate>
+@interface PUScrubberView : UIView <PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PUTilingViewScrollDelegate, UIScrollViewDelegate, PUBrowsingViewModelChangeObserver, PUScrubberTilingLayoutDelegate, PXVideoScrubberControllerDelegate, PUPlaybackTimeIndicatorTileViewControllerDelegate, UIGestureRecognizerDelegate>
 {
     NSString *_scrubbingIdentifier;
     NSString *_contentScrubbingIdentifier;
@@ -49,7 +49,8 @@ __attribute__((visibility("hidden")))
     PUScrubberTilingLayout *__scrubberLayout;
     PUTilingView *__tilingView;
     UITapGestureRecognizer *__tapGestureRecognizer;
-    PUVideoScrubberController *__videoScrubberController;
+    PXVideoScrubberController *__videoScrubberController;
+    long long __expandedItemType;
     NSIndexPath *__decelerationTargetIndexPath;
     double __decelerationDistance;
     long long __layoutTransitionsDisabledCount;
@@ -60,9 +61,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setDecelerationDistance:) double _decelerationDistance; // @synthesize _decelerationDistance=__decelerationDistance;
 @property (strong, nonatomic, setter=_setDecelerationTargetIndexPath:) NSIndexPath *_decelerationTargetIndexPath; // @synthesize _decelerationTargetIndexPath=__decelerationTargetIndexPath;
 @property (nonatomic, setter=_setDecelerationTargetOffset:) struct CGPoint _decelerationTargetOffset; // @synthesize _decelerationTargetOffset=__decelerationTargetOffset;
+@property (nonatomic, setter=_setExpandedItemType:) long long _expandedItemType; // @synthesize _expandedItemType=__expandedItemType;
 @property (nonatomic, setter=_setHandlingScrollViewWillEndDragging:) BOOL _isHandlingScrollViewWillEndDragging; // @synthesize _isHandlingScrollViewWillEndDragging=__isHandlingScrollViewWillEndDragging;
 @property (nonatomic, setter=_setIsHandlingUserScroll:) BOOL _isHandlingUserScroll; // @synthesize _isHandlingUserScroll=__isHandlingUserScroll;
 @property (nonatomic, setter=_setScrubbingAwayFromContentEdge:) BOOL _isScrubbingAwayFromContentEdge; // @synthesize _isScrubbingAwayFromContentEdge=__isScrubbingAwayFromContentEdge;
+@property (readonly, nonatomic, getter=_areLayoutTransitionsDisabled) BOOL _layoutTransitionsDisabled;
 @property (nonatomic, setter=_setLayoutTransitionsDisabledCount:) long long _layoutTransitionsDisabledCount; // @synthesize _layoutTransitionsDisabledCount=__layoutTransitionsDisabledCount;
 @property (nonatomic, setter=_setScrollViewSettled:) BOOL _scrollViewSettled; // @synthesize _scrollViewSettled=__scrollViewSettled;
 @property (strong, nonatomic, setter=_setScrubberLayout:) PUScrubberTilingLayout *_scrubberLayout; // @synthesize _scrubberLayout=__scrubberLayout;
@@ -73,7 +76,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setTilingView:) PUTilingView *_tilingView; // @synthesize _tilingView=__tilingView;
 @property (nonatomic, setter=_setUseLoupe:) BOOL _useLoupe; // @synthesize _useLoupe=__useLoupe;
 @property (nonatomic, setter=_setUseSmoothingTransitionCoordinator:) BOOL _useSmoothingTransitionCoordinator; // @synthesize _useSmoothingTransitionCoordinator=__useSmoothingTransitionCoordinator;
-@property (strong, nonatomic, setter=_setVideoScrubberController:) PUVideoScrubberController *_videoScrubberController; // @synthesize _videoScrubberController=__videoScrubberController;
+@property (strong, nonatomic, setter=_setVideoScrubberController:) PXVideoScrubberController *_videoScrubberController; // @synthesize _videoScrubberController=__videoScrubberController;
 @property (strong, nonatomic) PUBrowsingSession *browsingSession; // @synthesize browsingSession=_browsingSession;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUScrubberViewDelegate> delegate; // @synthesize delegate=_delegate;
@@ -87,13 +90,14 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)_allowExitFromContentScrubbing;
-- (BOOL)_areLayoutTransitionsDisabled;
 - (id)_currentAssetsDataSource;
 - (void)_disableLayoutTransitionsForDuration:(double)arg1;
 - (void)_endScrubbing;
 - (id)_expandedAssetReference;
 - (double)_expandedItemWidth;
 - (void)_handleTap:(id)arg1;
+- (void)_handleTapOnBrowsingIrisPlayer:(id)arg1;
+- (void)_handleTapOnBrowsingVideoPlayer:(id)arg1;
 - (void)_handleUserScrollWillBegin:(BOOL)arg1;
 - (void)_invalidateLoupeEffect;
 - (void)_invalidateScrubberLayout;
@@ -104,6 +108,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isLibraryScrubbing;
 - (double)_lengthForDuration:(double)arg1;
 - (id)_newScrubberLayout;
+- (double)_playheadProgressForIrisAssetReference:(id)arg1;
 - (void)_reenableLayoutTransitions;
 - (void)_setNeedsUpdate;
 - (void)_updateLoupeEffectIfNeeded;
@@ -120,6 +125,7 @@ __attribute__((visibility("hidden")))
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (float)layout:(id)arg1 aspectRatioForItemAtIndexPath:(id)arg2;
+- (BOOL)layout:(id)arg1 shouldShowTimeIndicatorForExpandedItemAtIndexPath:(id)arg2;
 - (void)layoutSubviews;
 - (BOOL)playbackTimeIndicatorTileViewControllerCanFlashIndicator:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;

@@ -14,6 +14,7 @@
     BOOL _containsOverrideFaceColor;
     NSArray *_faceColors;
     double _multicolorAlpha;
+    double _siriAlpha;
 }
 
 @property (readonly, nonatomic) UIColor *accentColor;
@@ -27,9 +28,11 @@
 @property (readonly, nonatomic) UIColor *secondaryForegroundColor;
 @property (readonly, nonatomic) UIColor *shiftedBackgroundColor;
 @property (readonly, nonatomic) UIColor *shiftedForegroundColor;
+@property (nonatomic) double siriAlpha; // @synthesize siriAlpha=_siriAlpha;
 @property (readonly, nonatomic) UIColor *stackedImagesForegroundColor;
 @property (readonly, nonatomic) UIColor *tickColor;
 @property (readonly, nonatomic) unsigned long long units;
+@property (readonly, nonatomic) UIColor *upNextTextColor;
 
 + (id)colorSchemeWithFaceColor:(unsigned long long)arg1 foregroundColor:(id)arg2 units:(unsigned long long)arg3 alternateHighlight:(BOOL)arg4;
 + (id)colorSchemeWithFaceColor:(unsigned long long)arg1 units:(unsigned long long)arg2;

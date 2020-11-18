@@ -8,11 +8,12 @@
 
 #import <SOS/NPHSOSPersistentTimerLocationManagerDelegate-Protocol.h>
 #import <SOS/NSXPCListenerDelegate-Protocol.h>
+#import <SOS/SOSInternalServerProtocol-Protocol.h>
 #import <SOS/SOSServerProtocol-Protocol.h>
 
 @class CLLocation, FKFriendsManager, NPHSOSPersistentTimerLocationManager, NSDate, NSMutableArray, NSString, SOSContactsManager;
 
-@interface SOSEngine : NSObject <NPHSOSPersistentTimerLocationManagerDelegate, SOSServerProtocol, NSXPCListenerDelegate>
+@interface SOSEngine : NSObject <NPHSOSPersistentTimerLocationManagerDelegate, SOSInternalServerProtocol, SOSServerProtocol, NSXPCListenerDelegate>
 {
     NPHSOSPersistentTimerLocationManager *_sosPersistentTimerLocationManager;
     NSDate *_timeToStopSendingMessages;
@@ -30,27 +31,42 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)GPSCoordinatesURLForLocation:(id)arg1;
++ (BOOL)_isBasebandDevice;
++ (id)_myNumber;
++ (void)_sendMessage:(id)arg1 location:(id)arg2 recipients:(id)arg3 useStandalone:(BOOL)arg4 failureBlock:(CDUnknownBlockType)arg5;
++ (void)_sendMessageToRecipients:(id)arg1 withLocation:(id)arg2 isFirstMessage:(BOOL)arg3;
++ (id)_sosMessageForLocation:(id)arg1 isFirstMessage:(BOOL)arg2 withMMS:(BOOL)arg3 callbackNumber:(id)arg4;
++ (id)_sosMessageForLocation:(id)arg1 isFirstMessage:(BOOL)arg2 withMMS:(BOOL)arg3 myFullName:(id)arg4 myFirstName:(id)arg5 callbackNumber:(id)arg6;
++ (id)additionalTextForCallbackNumber:(id)arg1;
++ (id)additionalTextForCallbackNumber:(id)arg1 fullName:(id)arg2 firstName:(id)arg3;
 + (BOOL)authorizedToUseContactStore;
 + (id)contactStore;
++ (id)firstNameForContact:(id)arg1;
++ (id)fullNameForContact:(id)arg1;
++ (id)meContact;
 + (void)preloadContactStoreIfNecessary;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)SOSSendingLocationUpdateChanged:(id)arg1;
-- (BOOL)_isMMSEnabled;
 - (BOOL)_locationIsValidToSend:(id)arg1;
-- (id)_sosMessageForLocation:(id)arg1 isFirstMessage:(BOOL)arg2 withMMS:(BOOL)arg3;
 - (void)contactStoreDidChange;
 - (id)contactsManager;
+- (long long)currentSOSInitiationState;
 - (void)dealloc;
+- (void)dismissSOSWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (BOOL)isSendingLocationUpdate;
 - (void)isSendingLocationUpdate:(CDUnknownBlockType)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (void)mostRecentLocationSentWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)notificationEnabledAndContactsExist;
 - (void)sosPersistentTimerLocationMangerTimerFired:(id)arg1 location:(id)arg2;
 - (void)start;
 - (void)startSendingLocationUpdateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)stopSendingLocationUpdate;
+- (void)updateCurrentSOSInitiationState:(long long)arg1;
+- (void)updateCurrentSOSInteractiveState:(long long)arg1;
 - (void)willStartSendingLocationUpdate;
 
 @end

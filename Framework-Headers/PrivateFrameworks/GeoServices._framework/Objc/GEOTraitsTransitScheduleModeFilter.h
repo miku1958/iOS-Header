@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOTraitsTransitScheduleTimeRange;
+@class GEOTraitsTransitScheduleTimeRange, PBUnknownFields;
 
 @interface GEOTraitsTransitScheduleModeFilter : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     unsigned int _numAdditionalDepartures;
     GEOTraitsTransitScheduleTimeRange *_timeRange;
     struct {
@@ -23,11 +24,12 @@
 @property (readonly, nonatomic) BOOL hasTimeRange;
 @property (nonatomic) unsigned int numAdditionalDepartures; // @synthesize numAdditionalDepartures=_numAdditionalDepartures;
 @property (strong, nonatomic) GEOTraitsTransitScheduleTimeRange *timeRange; // @synthesize timeRange=_timeRange;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)configureWithDefaultStartTime:(double)arg1 duration:(double)arg2 numAdditionalDepartures:(unsigned int)arg3;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

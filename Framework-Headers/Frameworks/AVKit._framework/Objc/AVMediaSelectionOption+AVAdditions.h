@@ -11,6 +11,7 @@
 @interface AVMediaSelectionOption (AVAdditions)
 
 @property (readonly, nonatomic) NSString *localizedDisplayName;
+@property (readonly, nonatomic) NSString *shortLocalizedDisplayName;
 
 @end
 

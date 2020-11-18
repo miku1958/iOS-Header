@@ -6,22 +6,18 @@
 
 #import <EventKit/EKPersistentObject.h>
 
-@class EKPersistentCalendarItem, NSDate;
-
 @interface EKPersistentExceptionDate : EKPersistentObject
 {
 }
 
-@property (readonly, nonatomic) NSDate *date; // @dynamic date;
-@property (strong, nonatomic) EKPersistentCalendarItem *owner;
-
-+ (id)exceptionDateWithDate:(id)arg1;
 + (id)relations;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)date;
 - (id)description;
 - (int)entityType;
-- (unsigned long long)hash;
-- (id)initWithExceptionDate:(id)arg1;
+- (id)owner;
+- (void)setDate:(id)arg1;
+- (void)setOwner:(id)arg1;
 
 @end
 

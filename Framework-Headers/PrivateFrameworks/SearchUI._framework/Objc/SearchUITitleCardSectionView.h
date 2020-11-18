@@ -4,13 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUILayoutFreeSectionView.h>
+#import <SearchUI/SearchUICardSectionView.h>
 
-@interface SearchUITitleCardSectionView : SearchUILayoutFreeSectionView
+@class NUIContainerBoxView, UILabel;
+
+@interface SearchUITitleCardSectionView : SearchUICardSectionView
 {
+    UILabel *_label;
+    NUIContainerBoxView *_containerView;
 }
 
-- (id)initWithCardSection:(id)arg1 controller:(id)arg2 style:(unsigned long long)arg3;
+@property (strong) NUIContainerBoxView *containerView; // @synthesize containerView=_containerView;
+@property (strong) UILabel *label; // @synthesize label=_label;
+
++ (BOOL)supportsRecyclingForCardSection:(id)arg1;
+- (void).cxx_destruct;
+- (id)setupContentView;
+- (void)updateWithCardSection:(id)arg1;
 
 @end
 

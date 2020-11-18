@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class SBVOTWindow, SBVoiceOverTouchCursorDisplay, SBVoiceOverTouchLabelElementAlertItem, UIView;
+@class SBVOTWindow, SBVoiceOverTouchLabelElementAlertItem, UIView;
 
 @interface SBVoiceOverTouchConnection : NSObject
 {
     struct __CFMachPort *_votMachPort;
     SBVOTWindow *_votWindow;
     UIView *_contentView;
-    SBVoiceOverTouchCursorDisplay *_cursorDisplay;
     SBVoiceOverTouchLabelElementAlertItem *_labelAlert;
     BOOL _screenCurtainEnabled;
     BOOL inVoiceOverPassthroughMode;
@@ -26,14 +25,10 @@
 + (id)defaultConnection;
 - (void).cxx_destruct;
 - (void)_dismissLabelAlert;
-- (void)_displayItemChooser:(id)arg1;
 - (void)_programmaticAppSwitch:(BOOL)arg1;
 - (void)_registerForMachConnection;
 - (void)_registerVOTConnectionWithPort:(unsigned int)arg1;
-- (void)_setItemChooserCategories:(id)arg1;
-- (void)_tripleClickAlertDisplayed:(id)arg1;
 - (void)dealloc;
-- (void)exitedItemChooserWithSelection:(long long)arg1 activate:(BOOL)arg2;
 - (void)setLabelElementPanelVisible:(BOOL)arg1 initialValue:(id)arg2;
 - (void)setScreenCurtainEnabled:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)tearDownVoiceOverTouchConnection;

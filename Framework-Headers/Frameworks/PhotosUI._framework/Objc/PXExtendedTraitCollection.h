@@ -18,6 +18,8 @@
         BOOL layoutSizeClass;
         BOOL layoutOrientation;
         BOOL displayScale;
+        BOOL safeAreaInsets;
+        BOOL layoutMargins;
         BOOL userInterfaceIdiom;
         BOOL userInterfaceFeature;
     } _needsUpdateFlags;
@@ -33,16 +35,20 @@
     struct CGSize _layoutReferenceSize;
     struct CGSize __viewSize;
     struct CGSize __pendingViewTransitionSize;
+    struct UIEdgeInsets _safeAreaInsets;
+    struct UIEdgeInsets _layoutMargins;
 }
 
 @property (nonatomic, setter=_setPendingViewTransitionSize:) struct CGSize _pendingViewTransitionSize; // @synthesize _pendingViewTransitionSize=__pendingViewTransitionSize;
 @property (nonatomic, setter=_setViewSize:) struct CGSize _viewSize; // @synthesize _viewSize=__viewSize;
 @property (nonatomic, setter=_setDisplayScale:) double displayScale; // @synthesize displayScale=_displayScale;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
+@property (nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
 @property (nonatomic, setter=_setLayoutOrientation:) long long layoutOrientation; // @synthesize layoutOrientation=_layoutOrientation;
 @property (nonatomic, setter=_setLayoutReferenceSize:) struct CGSize layoutReferenceSize; // @synthesize layoutReferenceSize=_layoutReferenceSize;
 @property (nonatomic, setter=_setLayoutSizeClass:) long long layoutSizeClass; // @synthesize layoutSizeClass=_layoutSizeClass;
 @property (nonatomic, setter=_setLayoutSizeSubclass:) long long layoutSizeSubclass; // @synthesize layoutSizeSubclass=_layoutSizeSubclass;
+@property (nonatomic) struct UIEdgeInsets safeAreaInsets; // @synthesize safeAreaInsets=_safeAreaInsets;
 @property (strong, nonatomic, setter=_setTraitCollection:) NSObject<PXAnonymousTraitCollection> *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property (nonatomic, setter=_setUserInterfaceFeature:) long long userInterfaceFeature; // @synthesize userInterfaceFeature=_userInterfaceFeature;
 @property (nonatomic, setter=_setUserInterfaceIdiom:) long long userInterfaceIdiom; // @synthesize userInterfaceIdiom=_userInterfaceIdiom;
@@ -59,9 +65,11 @@
 - (void)_setNeedsUpdate;
 - (void)_updateDisplayScaleIfNeeded;
 - (void)_updateIfNeeded;
+- (void)_updateLayoutMarginsIfNeeded;
 - (void)_updateLayoutOrientationIfNeeded;
 - (void)_updateLayoutReferenceSizeIfNeeded;
 - (void)_updateLayoutSizeClassIfNeeded;
+- (void)_updateSafeAreaInsetsIfNeeded;
 - (void)_updateTraitCollectionIfNeeded;
 - (void)_updateUserInterfaceFeatureIfNeeded;
 - (void)_updateUserInterfaceIdiomIfNeeded;
@@ -76,15 +84,20 @@
 - (id)init;
 - (id)initWithViewController:(struct NSObject *)arg1;
 - (void)invalidateDisplayScale;
+- (void)invalidateLayoutMargins;
+- (void)invalidateSafeAreaInsets;
 - (void)invalidateTraitCollection;
 - (id)mutableChangeObject;
 - (void)registerObservations;
 - (void)unregisterObservations;
 - (long long)userInterfaceFeatureForViewController:(struct NSObject *)arg1;
+- (void)viewControllerDidMoveToParentViewController:(struct NSObject *)arg1;
 - (void)viewControllerLayoutOrientationDidChange;
 - (void)viewControllerTraitCollectionDidChange;
 - (void)viewControllerViewDidAppear;
 - (void)viewControllerViewDidLoad;
+- (void)viewControllerViewLayoutMarginsDidChange;
+- (void)viewControllerViewSafeAreaInsetsDidChange;
 - (void)viewControllerViewWillAppear;
 - (void)viewControllerViewWillLayoutSubviews;
 - (void)viewControllerViewWillTransitionToSize:(struct CGSize)arg1;

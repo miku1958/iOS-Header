@@ -6,20 +6,31 @@
 
 #import <SAObjects/SADomainCommand.h>
 
-@class NSNumber;
+#import <SiriClientFlow/CFLocalAceHandling-Protocol.h>
 
-@interface CFCLReverseGeoCode : SADomainCommand
+@class NSNumber, NSString;
+
+@interface CFCLReverseGeoCode : SADomainCommand <CFLocalAceHandling>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSNumber *latitude;
 @property (copy, nonatomic) NSNumber *longitude;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
 
++ (id)aceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)command;
 + (id)commandWithDictionary:(id)arg1 context:(id)arg2;
-+ (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (void)handleWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)requiresResponse;
 
 @end

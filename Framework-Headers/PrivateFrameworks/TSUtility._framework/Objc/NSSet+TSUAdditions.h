@@ -7,8 +7,7 @@
 #import <Foundation/NSSet.h>
 
 @interface NSSet (TSUAdditions)
-+ (id)intersectionOfSets:(id)arg1;
-+ (BOOL)set:(id)arg1 isEqualToSet:(id)arg2;
-- (BOOL)containsObjectIdenticalTo:(id)arg1;
++ (BOOL)tsu_set:(id)arg1 isEqualToSet:(id)arg2;
+- (BOOL)tsu_containsObjectIdenticalTo:(id)arg1;
 @end
 

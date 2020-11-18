@@ -21,7 +21,7 @@
 @property (nonatomic) BOOL sentenceHighlight; // @synthesize sentenceHighlight=_sentenceHighlight;
 @property (strong, nonatomic) UIColor *underlineColor; // @synthesize underlineColor=_underlineColor;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

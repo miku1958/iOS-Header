@@ -6,12 +6,17 @@
 
 #import <SearchFoundation/SFText.h>
 
+#import <SearchFoundation/NSCopying-Protocol.h>
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFRichText-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSData, NSDictionary, NSString;
 
-@interface SFRichText : SFText <NSSecureCoding>
+@interface SFRichText : SFText <SFRichText, NSSecureCoding, NSCopying>
 {
+    struct {
+        unsigned int starRating:1;
+    } _has;
     double _starRating;
     NSString *_contentAdvisory;
     NSArray *_icons;
@@ -19,14 +24,26 @@
 }
 
 @property (copy, nonatomic) NSString *contentAdvisory; // @synthesize contentAdvisory=_contentAdvisory;
-@property (copy) NSArray *formattedTextPieces; // @synthesize formattedTextPieces=_formattedTextPieces;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (copy, nonatomic) NSArray *formattedTextPieces; // @synthesize formattedTextPieces=_formattedTextPieces;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *icons; // @synthesize icons=_icons;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (nonatomic) unsigned long long maxLines;
 @property (nonatomic) double starRating; // @synthesize starRating=_starRating;
+@property (readonly) Class superclass;
+@property (copy) NSString *text;
 
 + (BOOL)supportsSecureCoding;
++ (id)textWithString:(id)arg1;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasStarRating;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 - (void)loadRichTextWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

@@ -4,16 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUSettings.h>
+#import <PhotosUICore/PXSettings.h>
 
-@class NSMutableSet, PUAirPlaySettings, PUAlbumListSettings, PUFeedSettings, PUIrisSettings, PULoggingSettings, PUMedusaSettings, PUMemoriesSettings, PUMomentsSettings, PUOneUpSettings, PUPerformanceDiagnosticsSettings, PUPhotoEditProtoSettings, PUPhotosGridSettings, PUSceneSettings, PUSlideshowSettings, PUTilingViewSettings, PUWelcomeSettings, PUWorkaroundSettings;
+@class PUAirPlaySettings, PUAlbumListSettings, PUFeedSettings, PUIrisSettings, PUMedusaSettings, PUMemoriesSettings, PUMomentsSettings, PUOneUpSettings, PUPerformanceDiagnosticsSettings, PUPhotoEditProtoSettings, PUPhotosGridSettings, PUSceneSettings, PUSlideshowSettings, PUTilingViewSettings, PUWelcomeSettings, PUWorkaroundSettings;
 
-@interface PURootSettings : PUSettings
+@interface PURootSettings : PXSettings
 {
-    NSMutableSet *_archivedSettings;
     BOOL _enforceDisableIrisUI;
+    BOOL _forcePlacesMapDisplay;
     BOOL _allowIrisUI;
-    long long _livePhotoBadgingType;
     PUPhotosGridSettings *_photosGridSettings;
     PUPhotoEditProtoSettings *_photoEditingSettings;
     PUFeedSettings *_feedSettings;
@@ -32,28 +31,24 @@
     PUIrisSettings *_irisSettings;
     Class _orbInterfaceThemeClass;
     PUPerformanceDiagnosticsSettings *_performanceDiagnosticsSettings;
-    unsigned long long _settingsVersion;
-    PULoggingSettings *_loggingSettings;
 }
 
 @property (strong, nonatomic) PUAirPlaySettings *airPlaySettings; // @synthesize airPlaySettings=_airPlaySettings;
 @property (strong, nonatomic) PUAlbumListSettings *albumListSettings; // @synthesize albumListSettings=_albumListSettings;
 @property (nonatomic) BOOL allowIrisUI; // @synthesize allowIrisUI=_allowIrisUI;
 @property (strong, nonatomic) PUFeedSettings *feedSettings; // @synthesize feedSettings=_feedSettings;
-@property (nonatomic) Class interfaceThemeClass; // @synthesize interfaceThemeClass=_interfaceThemeClass;
+@property (nonatomic) BOOL forcePlacesMapDisplay; // @synthesize forcePlacesMapDisplay=_forcePlacesMapDisplay;
+@property (strong, nonatomic) Class interfaceThemeClass; // @synthesize interfaceThemeClass=_interfaceThemeClass;
 @property (strong, nonatomic) PUIrisSettings *irisSettings; // @synthesize irisSettings=_irisSettings;
-@property (nonatomic) long long livePhotoBadgingType; // @synthesize livePhotoBadgingType=_livePhotoBadgingType;
-@property (strong, nonatomic) PULoggingSettings *loggingSettings; // @synthesize loggingSettings=_loggingSettings;
 @property (strong, nonatomic) PUMedusaSettings *medusaSettings; // @synthesize medusaSettings=_medusaSettings;
 @property (strong, nonatomic) PUMemoriesSettings *memoriesSettings; // @synthesize memoriesSettings=_memoriesSettings;
 @property (strong, nonatomic) PUMomentsSettings *momentsSettings; // @synthesize momentsSettings=_momentsSettings;
 @property (strong, nonatomic) PUOneUpSettings *oneUpSettings; // @synthesize oneUpSettings=_oneUpSettings;
-@property (nonatomic) Class orbInterfaceThemeClass; // @synthesize orbInterfaceThemeClass=_orbInterfaceThemeClass;
+@property (strong, nonatomic) Class orbInterfaceThemeClass; // @synthesize orbInterfaceThemeClass=_orbInterfaceThemeClass;
 @property (strong, nonatomic) PUPerformanceDiagnosticsSettings *performanceDiagnosticsSettings; // @synthesize performanceDiagnosticsSettings=_performanceDiagnosticsSettings;
 @property (strong, nonatomic) PUPhotoEditProtoSettings *photoEditingSettings; // @synthesize photoEditingSettings=_photoEditingSettings;
 @property (strong, nonatomic) PUPhotosGridSettings *photosGridSettings; // @synthesize photosGridSettings=_photosGridSettings;
 @property (strong, nonatomic) PUSceneSettings *sceneSettings; // @synthesize sceneSettings=_sceneSettings;
-@property (nonatomic) unsigned long long settingsVersion; // @synthesize settingsVersion=_settingsVersion;
 @property (strong, nonatomic) PUSlideshowSettings *slideshowSettings; // @synthesize slideshowSettings=_slideshowSettings;
 @property (strong, nonatomic) PUTilingViewSettings *tilingViewSettings; // @synthesize tilingViewSettings=_tilingViewSettings;
 @property (strong, nonatomic) PUWelcomeSettings *welcomeSettings; // @synthesize welcomeSettings=_welcomeSettings;
@@ -77,8 +72,8 @@
 - (void)applyArchiveValue:(id)arg1 forKey:(id)arg2;
 - (id)archiveValueForKey:(id)arg1;
 - (BOOL)irisUIEnabled;
+- (id)parentSettings;
 - (void)restoreDefaultValues;
-- (void)save;
 - (void)setDefaultValues;
 - (void)setEnforceDisableIrisUI:(BOOL)arg1;
 

@@ -7,39 +7,48 @@
 #import <objc/NSObject.h>
 
 #import <DeviceManagement/CATTaskClientDelegate-Protocol.h>
+#import <DeviceManagement/DMFTransportProvider-Protocol.h>
 
 @class CATOperationQueue, CATTaskClient, NSString;
+@protocol DMFTransportProvider;
 
-@interface DMFConnection : NSObject <CATTaskClientDelegate>
+@interface DMFConnection : NSObject <CATTaskClientDelegate, DMFTransportProvider>
 {
-    CATTaskClient *mTaskClient;
-    CATOperationQueue *mOperationQueue;
-    BOOL mConnected;
+    BOOL _isConnected;
+    id<DMFTransportProvider> _transportProvider;
+    CATTaskClient *_taskClient;
+    CATOperationQueue *_operationQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isConnected; // @synthesize isConnected=_isConnected;
+@property (strong, nonatomic) CATOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) CATTaskClient *taskClient; // @synthesize taskClient=_taskClient;
+@property (weak, nonatomic) id<DMFTransportProvider> transportProvider; // @synthesize transportProvider=_transportProvider;
 
++ (id)currentPlatformRequestClasses;
++ (id)iOSRequestClasses;
++ (id)macOSRequestClasses;
 + (id)sharedConnection;
++ (id)tvOSRequestClasses;
++ (id)watchOSRequestClasses;
 - (void).cxx_destruct;
-- (void)client:(id)arg1 didDisconnectWithError:(id)arg2;
+- (void)_operationDidFinish:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)client:(id)arg1 didInterruptWithError:(id)arg2;
 - (void)clientDidConnect:(id)arg1;
+- (void)clientDidDisconnect:(id)arg1;
 - (void)clientDidInvalidate:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (id)initWithServiceName:(id)arg1;
-- (id)initWithTransport:(id)arg1;
-- (id)initWithXPCConnection:(id)arg1;
+- (id)initWithTransportProvider:(id)arg1;
 - (void)invalidate;
-- (void)operationDidFinish:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)operationDidFinish:(id)arg1 semaphore:(id)arg2;
+- (id)makeNewTransport;
 - (void)performRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)prepareOperationForRequest:(id)arg1;
 - (id)progressForAllInflightRequests;
-- (id)runRequest:(id)arg1 error:(id *)arg2;
 
 @end
 

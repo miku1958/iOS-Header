@@ -15,7 +15,8 @@
 #import <Navigation/MNTracePlayerObserver-Protocol.h>
 #import <Navigation/MNVoiceControllerObserver-Protocol.h>
 
-@class GEOComposedWaypoint, GEOMotionContext, GEONavigationGuidanceState, GEORouteAttributes, MNGuidanceEventRecorder, MNGuidanceManager, MNLocation, MNLocationTracker, MNNavigationAudioSession, MNNavigationTraceManager, MNObserverHashTable, MNRouteManager, MNTimeAndDistanceUpdater, MNTrafficIncidentAlert, NSString;
+@class GEOApplicationAuditToken, GEOComposedWaypoint, GEOMotionContext, GEONavigationGuidanceState, MNClassicGuidanceManager, MNGuidanceEventManager, MNGuidanceSignInfo, MNLocation, MNLocationTracker, MNNavigationAudioSession, MNNavigationTraceManager, MNObserverHashTable, MNRouteManager, MNTimeAndDistanceUpdater, MNTrafficIncidentAlert, NSString, NSUUID;
+@protocol MNAudioSession, MNGuidanceManager;
 
 __attribute__((visibility("hidden")))
 @interface MNNavigationSession : NSObject <MNGuidanceManagerDelegate, MNLocationManagerHeadingObserver, MNLocationManagerObserver, MNLocationTrackerDelegate, MNNavigationAudioSessionDelegate, MNTimeAndDistanceUpdaterDelegate, MNTracePlayerObserver, MNVoiceControllerObserver>
@@ -26,11 +27,12 @@ __attribute__((visibility("hidden")))
     MNLocationTracker *_locationTracker;
     GEOMotionContext *_motionContext;
     MNNavigationAudioSession *_audioSession;
-    MNGuidanceManager *_guidanceManager;
+    id<MNGuidanceManager> _guidanceManager;
+    MNClassicGuidanceManager *_classicGuidanceManager;
+    MNGuidanceEventManager *_guidanceEventManager;
     MNTimeAndDistanceUpdater *_timeAndDistanceUpdater;
     NSString *_voiceLanguage;
     MNNavigationTraceManager *_traceManager;
-    MNGuidanceEventRecorder *_guidanceEventRecorder;
     MNTrafficIncidentAlert *_activeTrafficIncidentAlert;
     BOOL _guidancePromptsEnabled;
     BOOL _isConnectedToCarplay;
@@ -38,15 +40,19 @@ __attribute__((visibility("hidden")))
     GEONavigationGuidanceState *_guidanceState;
     MNObserverHashTable *_observers;
     NSString *_tileLoaderClient;
+    GEOApplicationAuditToken *_auditToken;
+    MNGuidanceSignInfo *_lastSignInfo;
+    NSUUID *_lastLaneID;
     BOOL _isAllowedToSwitchTransportTypes;
 }
 
+@property (strong, nonatomic) id<MNAudioSession> audioSession; // @synthesize audioSession=_audioSession;
+@property (readonly, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) GEOComposedWaypoint *destination; // @synthesize destination=_destination;
 @property (readonly, nonatomic) double distanceToManeuverEnd;
 @property (readonly, nonatomic) double distanceToManeuverStart;
-@property (readonly, nonatomic) MNGuidanceManager *guidanceManager; // @synthesize guidanceManager=_guidanceManager;
 @property (nonatomic) BOOL guidancePromptsEnabled; // @synthesize guidancePromptsEnabled=_guidancePromptsEnabled;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isAllowedToSwitchTransportTypes; // @synthesize isAllowedToSwitchTransportTypes=_isAllowedToSwitchTransportTypes;
@@ -57,14 +63,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int navigationType; // @synthesize navigationType=_navigationType;
 @property (readonly, nonatomic) double remainingDistance;
 @property (readonly, nonatomic) double remainingTime;
-@property (readonly, nonatomic) GEORouteAttributes *routeAttributes;
 @property (readonly, nonatomic) MNRouteManager *routeManager; // @synthesize routeManager=_routeManager;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) MNNavigationTraceManager *traceManager; // @synthesize traceManager=_traceManager;
 
 - (void).cxx_destruct;
-- (void)_announceArrival:(id)arg1;
-- (void)_announceStart;
 - (void)_closeTileLoader;
 - (id)_locationTrackerForTransportType:(int)arg1 navigationType:(int)arg2;
 - (void)_openTileLoader;
@@ -88,17 +91,26 @@ __attribute__((visibility("hidden")))
 - (void)audioSessionWillAnnounceArrival:(id)arg1;
 - (void)dealloc;
 - (void)guidanceManager:(id)arg1 announce:(id)arg2 shortPromptType:(unsigned long long)arg3 stage:(unsigned long long)arg4 hasSecondaryManeuver:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
+- (void)guidanceManager:(id)arg1 didArriveWithAnnouncement:(id)arg2;
+- (void)guidanceManager:(id)arg1 didStartWithAnnouncement:(id)arg2;
 - (void)guidanceManager:(id)arg1 displayManeuverAlertForAnnouncementStage:(unsigned long long)arg2;
 - (void)guidanceManager:(id)arg1 displayPrimaryStep:(id)arg2 instructions:(id)arg3 shieldType:(int)arg4 shieldText:(id)arg5 drivingSide:(int)arg6 maneuverStepIndex:(unsigned long long)arg7 isSynthetic:(BOOL)arg8;
 - (void)guidanceManager:(id)arg1 displaySecondaryStep:(id)arg2 instructions:(id)arg3 shieldType:(int)arg4 shieldText:(id)arg5 drivingSide:(int)arg6;
-- (void)guidanceManager:(id)arg1 updatePointOfInterest:(CDStruct_2c43369c)arg2 focusStyle:(int)arg3;
+- (void)guidanceManager:(id)arg1 hideLaneDirectionsForId:(id)arg2;
+- (void)guidanceManager:(id)arg1 newGuidanceEventFeedback:(id)arg2;
+- (void)guidanceManager:(id)arg1 showLaneDirections:(id)arg2;
+- (void)guidanceManager:(id)arg1 triggerHaptics:(int)arg2;
+- (void)guidanceManager:(id)arg1 updateSignsWithInfo:(id)arg2;
+- (void)guidanceManager:(id)arg1 updatedGuidanceEventFeedback:(id)arg2;
+- (void)guidanceManager:(id)arg1 usePersistentDisplay:(BOOL)arg2;
 - (void)guidanceManager:(id)arg1 willAnnounce:(unsigned long long)arg2 inSeconds:(double)arg3;
+- (void)guidanceManagerBeginGuidanceUpdate:(id)arg1;
 - (void)guidanceManagerDidUpdateProgress:(id)arg1 currentStepIndex:(unsigned long long)arg2 distanceUntilSign:(double)arg3 timeUntilSign:(double)arg4;
-- (void)guidanceManagerHasArrived:(id)arg1 announce:(id)arg2;
+- (void)guidanceManagerEndGuidanceUpdate:(id)arg1;
 - (void)guidanceManagerHideSecondaryStep:(id)arg1;
-- (BOOL)guidanceManagerIsOffRoute:(id)arg1 location:(id)arg2 stepIndex:(unsigned long long)arg3;
 - (void)guidanceManagerProceedingToRoute:(id)arg1 proceedToRouteDistance:(double)arg2 displayString:(id)arg3 closestStepIndex:(unsigned long long)arg4;
-- (id)initWithRouteManager:(id)arg1 traceManager:(id)arg2;
+- (id)initWithRouteManager:(id)arg1 auditToken:(id)arg2 traceManager:(id)arg3;
+- (BOOL)isCurrentlySpeaking;
 - (void)locationManager:(id)arg1 didUpdateVehicleHeading:(double)arg2 timestamp:(id)arg3;
 - (void)locationManager:(id)arg1 didUpdateVehicleSpeed:(double)arg2 timestamp:(id)arg3;
 - (void)locationManagerDidPauseLocationUpdates:(id)arg1;
@@ -108,50 +120,41 @@ __attribute__((visibility("hidden")))
 - (BOOL)locationManagerShouldPauseLocationUpdates:(id)arg1;
 - (void)locationManagerUpdatedHeading:(id)arg1;
 - (void)locationManagerUpdatedLocation:(id)arg1;
-- (void)locationTracker:(id)arg1 currentStepIndex:(unsigned long long)arg2 distanceUntilSign:(double)arg3 timeUntilManeuver:(double)arg4;
 - (void)locationTracker:(id)arg1 didChangeState:(int)arg2;
-- (void)locationTracker:(id)arg1 didEnableGuidance:(BOOL)arg2;
-- (void)locationTracker:(id)arg1 didReroute:(id)arg2 rerouteReason:(unsigned long long)arg3 request:(id)arg4 response:(id)arg5;
+- (void)locationTracker:(id)arg1 didReroute:(id)arg2 newAlternateRoutes:(id)arg3 rerouteReason:(unsigned long long)arg4 request:(id)arg5 response:(id)arg6;
 - (void)locationTracker:(id)arg1 didSignalAlightForStepAtIndex:(unsigned long long)arg2;
 - (void)locationTracker:(id)arg1 didSwitchToNewTransportType:(int)arg2 newRoute:(id)arg3 request:(id)arg4 response:(id)arg5;
-- (void)locationTracker:(id)arg1 didUpdateETA:(id)arg2 forRoute:(id)arg3;
+- (void)locationTracker:(id)arg1 didUpdateAlternateRoutes:(id)arg2;
+- (void)locationTracker:(id)arg1 didUpdateETAForRoute:(id)arg2;
 - (void)locationTracker:(id)arg1 didUpdateFeedback:(id)arg2 forAlightingStepAtIndex:(unsigned long long)arg3;
 - (void)locationTracker:(id)arg1 didUpdateMatchedLocation:(id)arg2;
 - (void)locationTracker:(id)arg1 didUpdateTrafficForETARoute:(id)arg2 from:(unsigned int)arg3 to:(unsigned int)arg4;
-- (void)locationTracker:(id)arg1 displayManeuverAlertForAnnouncementStage:(unsigned long long)arg2;
-- (void)locationTracker:(id)arg1 displayPrimaryStepManeuverType:(int)arg2 junctionType:(int)arg3 junctionElements:(struct GEOJunctionElement *)arg4 count:(unsigned long long)arg5 instructions:(id)arg6 shieldType:(int)arg7 shieldText:(id)arg8 drivingSide:(int)arg9 maneuverStepIndex:(unsigned long long)arg10 isSynthetic:(BOOL)arg11;
-- (void)locationTracker:(id)arg1 displaySecondaryStepManeuverType:(int)arg2 junctionType:(int)arg3 junctionElements:(struct GEOJunctionElement *)arg4 count:(unsigned long long)arg5 instructions:(id)arg6 shieldType:(int)arg7 shieldText:(id)arg8 drivingSide:(int)arg9;
 - (void)locationTracker:(id)arg1 failedRerouteWithErrorCode:(long long)arg2;
-- (void)locationTracker:(id)arg1 failedWithErrorCode:(long long)arg2;
-- (void)locationTracker:(id)arg1 ignoredLocation:(id)arg2;
 - (void)locationTracker:(id)arg1 invalidatedTrafficIncidentAlert:(id)arg2;
 - (void)locationTracker:(id)arg1 matchedToStepIndex:(unsigned long long)arg2 legIndex:(unsigned long long)arg3;
-- (void)locationTracker:(id)arg1 proceedToRouteDistance:(double)arg2 displayString:(id)arg3 remainingTime:(double)arg4 remainingDistance:(double)arg5 closestStepIndex:(unsigned long long)arg6;
 - (void)locationTracker:(id)arg1 receivedTrafficIncidentAlert:(id)arg2 responseCallback:(CDUnknownBlockType)arg3;
-- (void)locationTracker:(id)arg1 remainingTime:(double)arg2 remainingDistance:(double)arg3;
-- (void)locationTracker:(id)arg1 startingStepIndex:(unsigned long long)arg2;
-- (void)locationTracker:(id)arg1 updatePointOfInterest:(CDStruct_2c43369c)arg2 focusStyle:(int)arg3;
 - (void)locationTracker:(id)arg1 updatedTrafficIncidentAlert:(id)arg2;
-- (void)locationTrackerDetectedNewTransportType:(id)arg1 newTransportType:(int)arg2;
 - (void)locationTrackerDidArrive:(id)arg1;
 - (void)locationTrackerDidCancelReroute:(id)arg1;
-- (void)locationTrackerHideSecondaryStep:(id)arg1;
-- (void)locationTrackerWillPause:(id)arg1;
 - (void)locationTrackerWillReroute:(id)arg1;
-- (void)locationTrackerWillResumeFromPause:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (BOOL)repeatCurrentGuidance;
 - (BOOL)repeatCurrentTrafficAlert;
 - (void)resumeOriginalDestination;
-- (void)startNavigationSessionWithDetails:(id)arg1 guidanceLevel:(int)arg2;
+- (void)startNavigationSessionWithDetails:(id)arg1;
 - (void)stopCurrentGuidancePrompt;
 - (void)stopNavigationSession;
+- (void)switchToRoute:(id)arg1;
 - (void)timeAndDistanceUpdater:(id)arg1 currentStepIndex:(unsigned long long)arg2 didUpdateDistanceUntilManeuver:(double)arg3 timeUntilManeuver:(double)arg4;
+- (void)timeAndDistanceUpdater:(id)arg1 didUpdateDisplayETA:(id)arg2 displayRemainingMinutes:(unsigned long long)arg3 forRoute:(id)arg4;
 - (void)timeAndDistanceUpdater:(id)arg1 didUpdateRemainingTime:(double)arg2 remainingDistance:(double)arg3;
-- (void)tracePlayer:(id)arg1 didJumpToRouteResponse:(id)arg2 request:(id)arg3 destination:(id)arg4;
+- (double)timeSinceLastAnnouncement;
+- (double)timeUntilNextAnnouncement;
+- (void)traceJumpedInTime;
+- (void)tracePlayer:(id)arg1 didJumpToRouteResponse:(id)arg2 request:(id)arg3 origin:(id)arg4 destination:(id)arg5;
 - (void)tracePlayer:(id)arg1 didPlayAtTime:(double)arg2;
 - (void)tracePlayer:(id)arg1 didReceiveLocationError:(id)arg2;
-- (void)tracePlayer:(id)arg1 didSeekToTime:(double)arg2 location:(id)arg3;
+- (void)tracePlayer:(id)arg1 didSeekToTime:(double)arg2 fromTime:(double)arg3 location:(id)arg4;
 - (void)tracePlayer:(id)arg1 didSeekToTransportType:(int)arg2;
 - (void)tracePlayer:(id)arg1 didUpdateHeading:(id)arg2;
 - (void)tracePlayer:(id)arg1 didUpdateLocation:(id)arg2;

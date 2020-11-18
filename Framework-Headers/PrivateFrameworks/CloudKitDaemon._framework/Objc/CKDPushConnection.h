@@ -6,37 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/APSConnectionDelegate-Protocol.h>
-
 @class APSConnection, NSMapTable, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
-@interface CKDPushConnection : NSObject <APSConnectionDelegate>
+@interface CKDPushConnection : NSObject
 {
     BOOL _darkWakeEnabled;
     NSString *_apsEnvironmentString;
     APSConnection *_apsConnection;
     NSObject<OS_dispatch_queue> *_queue;
-    NSMutableDictionary *_tokensCache;
     NSMapTable *_callbacks;
-    NSMutableSet *_enabledTopics;
     NSMutableDictionary *_topicsToWaitingAppContainerTuples;
     NSMutableSet *_topicsAwaitingPublicToken;
-    NSMutableSet *_topicsAwaitingPrivateToken;
 }
 
 @property (strong, nonatomic) APSConnection *apsConnection; // @synthesize apsConnection=_apsConnection;
 @property (strong, nonatomic, setter=setAPSEnvironmentString:) NSString *apsEnvironmentString; // @synthesize apsEnvironmentString=_apsEnvironmentString;
 @property (strong, nonatomic) NSMapTable *callbacks; // @synthesize callbacks=_callbacks;
 @property (nonatomic) BOOL darkWakeEnabled; // @synthesize darkWakeEnabled=_darkWakeEnabled;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSMutableSet *enabledTopics; // @synthesize enabledTopics=_enabledTopics;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (readonly) Class superclass;
-@property (strong, nonatomic) NSMutableDictionary *tokensCache; // @synthesize tokensCache=_tokensCache;
-@property (strong, nonatomic) NSMutableSet *topicsAwaitingPrivateToken; // @synthesize topicsAwaitingPrivateToken=_topicsAwaitingPrivateToken;
 @property (strong, nonatomic) NSMutableSet *topicsAwaitingPublicToken; // @synthesize topicsAwaitingPublicToken=_topicsAwaitingPublicToken;
 @property (strong, nonatomic) NSMutableDictionary *topicsToWaitingAppContainerTuples; // @synthesize topicsToWaitingAppContainerTuples=_topicsToWaitingAppContainerTuples;
 
@@ -51,7 +39,7 @@
 - (void)connectionDidReconnect:(id)arg1;
 - (void)dealloc;
 - (id)initWithEnvironment:(id)arg1 darkWakeEnabled:(BOOL)arg2;
-- (void)requestTokenForAppContainerTuple:(id)arg1 useAPSPublicToken:(BOOL)arg2;
+- (void)requestTokenForAppContainerTuple:(id)arg1;
 - (void)revokeTokenForAppContainerTuple:(id)arg1;
 
 @end

@@ -22,6 +22,8 @@
 - (id)mf_map:(CDUnknownBlockType)arg1;
 - (id)mf_mapSelector:(SEL)arg1;
 - (id)mf_partition:(CDUnknownBlockType)arg1;
+- (id)mf_permutations;
+- (id)mf_prefix:(unsigned long long)arg1;
 - (id)mf_reduce:(CDUnknownBlockType)arg1;
 - (id)mf_subarraysOfSize:(unsigned long long)arg1;
 - (id)mf_uniquifyWithComparator:(CDUnknownBlockType)arg1;

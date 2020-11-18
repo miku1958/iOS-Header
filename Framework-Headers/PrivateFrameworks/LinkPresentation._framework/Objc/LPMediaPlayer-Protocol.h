@@ -9,14 +9,16 @@
 @protocol LPMediaPlayer <NSObject>
 
 @property (nonatomic, getter=isActive) BOOL active;
-@property (readonly, nonatomic) BOOL isMuted;
-@property (readonly, nonatomic) BOOL isPlaying;
+@property (readonly, nonatomic, getter=isFullScreen) BOOL fullScreen;
 @property (readonly, nonatomic) unsigned long long lastInteractionTimestamp;
+@property (readonly, nonatomic, getter=isMuted) BOOL muted;
+@property (readonly, nonatomic, getter=isPlaying) BOOL playing;
 @property (readonly, nonatomic) BOOL shouldUnmuteWhenUserAdjustsVolume;
 @property (readonly, nonatomic) double unobscuredAreaFraction;
 @property (readonly, nonatomic) BOOL usesSharedAudioSession;
 
 
 @optional
+- (BOOL)releaseDecodingResourcesIfInactive;
 @end
 

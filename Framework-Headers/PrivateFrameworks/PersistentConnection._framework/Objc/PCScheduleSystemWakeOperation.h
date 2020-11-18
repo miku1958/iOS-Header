@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     void *_unqiueIdentifier;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initForScheduledWake:(BOOL)arg1 wakeDate:(id)arg2 acceptableDelay:(double)arg3 userVisible:(BOOL)arg4 serviceIdentifier:(id)arg5 uniqueIdentifier:(void *)arg6;
 - (void)main;
 

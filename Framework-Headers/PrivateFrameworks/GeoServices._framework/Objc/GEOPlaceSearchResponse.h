@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapRegion, NSData, NSMutableArray, NSString;
+@class GEOMapRegion, NSData, NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPlaceSearchResponse : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     double _turnaroundTime;
     GEOMapRegion *_mapRegion;
     NSMutableArray *_namedFeatures;
@@ -45,10 +46,12 @@
 @property (strong, nonatomic) NSMutableArray *suggestionEntryLists; // @synthesize suggestionEntryLists=_suggestionEntryLists;
 @property (strong, nonatomic) NSData *suggestionMetadata; // @synthesize suggestionMetadata=_suggestionMetadata;
 @property (nonatomic) double turnaroundTime; // @synthesize turnaroundTime=_turnaroundTime;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)namedFeaturesType;
 + (Class)placeResultType;
 + (Class)suggestionEntryListsType;
+- (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
 - (int)StringAsStatusCodeInfo:(id)arg1;
 - (void)addNamedFeatures:(id)arg1;
@@ -59,7 +62,6 @@
 - (void)clearSuggestionEntryLists;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

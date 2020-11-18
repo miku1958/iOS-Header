@@ -14,10 +14,10 @@
     NSArray *inputs;
 }
 
-@property (strong) NSArray *inputs; // @synthesize inputs;
-@property (strong) NSArray *outputs; // @synthesize outputs;
+@property (strong, nonatomic) NSArray *inputs; // @synthesize inputs;
+@property (strong, nonatomic) NSArray *outputs; // @synthesize outputs;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

@@ -36,6 +36,7 @@
     BOOL _supportsCalendarRecurrenceSplit;
     BOOL _alwaysSupportsFreebusyOnOutbox;
     BOOL _supportsCalendarAudit;
+    BOOL _supportsTelephone;
     double _version;
     NSString *_supportedCalendarComponentSets;
     NSSet *_complianceClasses;
@@ -65,6 +66,7 @@
 @property (nonatomic) BOOL supportsSharing; // @synthesize supportsSharing=_supportsSharing;
 @property (nonatomic) BOOL supportsSharingNoScheduling; // @synthesize supportsSharingNoScheduling=_supportsSharingNoScheduling;
 @property (nonatomic) BOOL supportsSubscriptionCalendars; // @synthesize supportsSubscriptionCalendars=_supportsSubscriptionCalendars;
+@property (nonatomic) BOOL supportsTelephone; // @synthesize supportsTelephone=_supportsTelephone;
 @property (nonatomic) BOOL supportsTimeRangeFilter; // @synthesize supportsTimeRangeFilter=_supportsTimeRangeFilter;
 @property (nonatomic) BOOL supportsTimeRangeFilterOnInbox; // @synthesize supportsTimeRangeFilterOnInbox=_supportsTimeRangeFilterOnInbox;
 @property (nonatomic) BOOL supportsTimeRangeFilterWithoutEndDate; // @synthesize supportsTimeRangeFilterWithoutEndDate=_supportsTimeRangeFilterWithoutEndDate;

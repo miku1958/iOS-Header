@@ -6,7 +6,7 @@
 
 #import <DataDetectorsUI/NSObject-Protocol.h>
 
-@class CNAvatarCardController, CNContact, NSArray, NSMutableArray, NSString, UIViewController;
+@class CNAvatarCardController, CNContact, NSArray, NSString, UIViewController;
 
 @protocol CNAvatarCardControllerDelegate <NSObject>
 - (UIViewController *)presentingViewControllerForAvatarCardController:(CNAvatarCardController *)arg1;
@@ -16,8 +16,8 @@
 - (long long)avatarCardController:(CNAvatarCardController *)arg1 presentationResultForLocation:(struct CGPoint)arg2;
 - (BOOL)avatarCardController:(CNAvatarCardController *)arg1 shouldPresentForLocation:(struct CGPoint)arg2;
 - (BOOL)avatarCardController:(CNAvatarCardController *)arg1 shouldShowContact:(CNContact *)arg2;
-- (void)avatarCardController:(CNAvatarCardController *)arg1 willShowActions:(NSMutableArray *)arg2;
 - (void)avatarCardControllerDidDismiss:(CNAvatarCardController *)arg1;
+- (void)avatarCardControllerWillBeginPreviewInteraction:(CNAvatarCardController *)arg1;
 - (void)avatarCardControllerWillDismiss:(CNAvatarCardController *)arg1;
 @end
 

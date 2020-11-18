@@ -7,6 +7,10 @@
 #import <QuartzCore/CAFilter.h>
 
 @interface CAFilter (PhotosUICore)
+
+@property (readonly, nonatomic, getter=px_isSnapshotCompatible) BOOL px_snapshotCompatible;
+@property (readonly, nonatomic) BOOL px_supportsAlphaBlending;
+
 + (id)px_filterWithPXCompositingFilterType:(long long)arg1;
 @end
 

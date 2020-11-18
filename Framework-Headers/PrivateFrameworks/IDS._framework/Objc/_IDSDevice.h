@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 
@@ -33,29 +33,29 @@
 @property (readonly, nonatomic, getter=isConnected) BOOL connected;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, strong, nonatomic) NSString *deviceColor;
-@property (readonly, strong, nonatomic) NSString *enclosureColor;
+@property (readonly, nonatomic) NSString *deviceColor;
+@property (readonly, nonatomic) NSString *enclosureColor;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) NSArray *identities;
+@property (readonly, nonatomic) NSArray *identities;
 @property (readonly, nonatomic) BOOL isActive;
 @property (readonly, nonatomic) BOOL isDefaultPairedDevice;
 @property (readonly, nonatomic) BOOL isHSATrusted;
 @property (readonly, nonatomic) BOOL isLocallyPaired;
-@property (readonly, strong, nonatomic) NSDate *lastActivityDate;
-@property (readonly, strong, nonatomic) NSArray *linkedUserURIs;
+@property (readonly, nonatomic) NSDate *lastActivityDate;
+@property (readonly, nonatomic) NSArray *linkedUserURIs;
 @property (readonly, nonatomic) BOOL locallyPresent;
 @property (readonly, nonatomic) unsigned long long maxCompatibilityVersion;
 @property (readonly, nonatomic) unsigned long long minCompatibilityVersion;
-@property (readonly, strong, nonatomic) NSString *modelIdentifier;
-@property (readonly, strong, nonatomic) NSString *name;
+@property (readonly, nonatomic) NSString *modelIdentifier;
+@property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic, getter=isNearby) BOOL nearby;
 @property (strong, nonatomic, setter=setNSUUID:) NSUUID *nsuuid;
 @property (readonly, nonatomic) unsigned long long pairingProtocolVersion;
 @property (readonly, nonatomic) NSString *productBuildVersion;
 @property (readonly, nonatomic) NSString *productName;
 @property (readonly, nonatomic) NSString *productVersion;
-@property (readonly, strong, nonatomic) NSData *pushToken;
-@property (readonly, strong, nonatomic) NSString *service;
+@property (readonly, nonatomic) NSData *pushToken;
+@property (readonly, nonatomic) NSString *service;
 @property (readonly, nonatomic) unsigned long long serviceMinCompatibilityVersion;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsApplePay;
@@ -65,9 +65,10 @@
 @property (readonly, nonatomic) BOOL supportsSMSRelay;
 @property (readonly, nonatomic) BOOL supportsTethering;
 @property (readonly, nonatomic) BOOL supportsiCloudPairing;
-@property (readonly, strong, nonatomic) NSString *uniqueID;
-@property (readonly, strong, nonatomic) NSString *uniqueIDOverride;
+@property (readonly, nonatomic) NSString *uniqueID;
+@property (readonly, nonatomic) NSString *uniqueIDOverride;
 
+- (void).cxx_destruct;
 - (void)_addIdentity:(id)arg1;
 - (void)_cloudConnectedStateChanged;
 - (void)_connect;

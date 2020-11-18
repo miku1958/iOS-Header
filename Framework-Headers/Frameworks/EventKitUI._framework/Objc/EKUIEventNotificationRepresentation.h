@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class EKUITextAndHeaderItem, NSArray, NSDate, NSDictionary;
+@class EKUITextAndHeaderItem, NSArray, NSDate, NSDictionary, NSString;
 
 @interface EKUIEventNotificationRepresentation : NSObject
 {
@@ -17,13 +17,23 @@
     NSArray *_supplementaryItems;
     NSDictionary *_userActivityUserInfo;
     NSDate *_date;
+    NSDate *_endDate;
+    NSString *_sourceIdentifier;
+    NSString *_externalURLString;
+    NSArray *_potentialConflictDates;
+    NSString *_notes;
     NSDictionary *_organizerContactDictionary;
 }
 
 @property (nonatomic, getter=isAllDay) BOOL allDay; // @synthesize allDay=_allDay;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (strong, nonatomic) NSString *externalURLString; // @synthesize externalURLString=_externalURLString;
+@property (strong, nonatomic) NSString *notes; // @synthesize notes=_notes;
 @property (readonly, nonatomic) NSDictionary *organizerContactDictionary; // @synthesize organizerContactDictionary=_organizerContactDictionary;
+@property (strong, nonatomic) NSArray *potentialConflictDates; // @synthesize potentialConflictDates=_potentialConflictDates;
+@property (strong, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 @property (strong, nonatomic) EKUITextAndHeaderItem *subtitleItem; // @synthesize subtitleItem=_subtitleItem;
 @property (strong, nonatomic) NSArray *supplementaryItems; // @synthesize supplementaryItems=_supplementaryItems;
 @property (strong, nonatomic) EKUITextAndHeaderItem *titleItem; // @synthesize titleItem=_titleItem;
@@ -35,13 +45,15 @@
 + (id)_invitationUpdatedTitleLocalizedString;
 + (id)_whenLocalizedString;
 + (id)_whereLocalizedString;
-+ (id)defaultEventNotificationRepresentationWithTitle:(id)arg1 message:(id)arg2;
-+ (id)invitationNotificationRepresentationWithNotification:(id)arg1 date:(id)arg2 endDate:(id)arg3 timeZone:(id)arg4;
++ (id)defaultEventNotificationRepresentationWithTitle:(id)arg1 message:(id)arg2 notes:(id)arg3;
++ (id)invitationNotificationRepresentationWithNotification:(id)arg1 event:(id)arg2 date:(id)arg3 endDate:(id)arg4 timeZone:(id)arg5;
++ (id)previewForNotes:(id)arg1;
 + (id)resourceChangeNotificationWithNotification:(id)arg1 message:(id)arg2 date:(id)arg3 endDate:(id)arg4 timeZone:(id)arg5;
 + (id)responseNotificationWithTitle:(id)arg1 message:(id)arg2;
 + (id)timeToLeaveNotificationRepresentationWithHypothesisMessage:(id)arg1 event:(id)arg2 date:(id)arg3 displayTimeZone:(id)arg4;
 + (id)upcomingEventNotificationRepresentationWithEvent:(id)arg1 date:(id)arg2 displayTimeZone:(id)arg3;
 - (void).cxx_destruct;
+- (void)_setOwnerForContactDictionary:(id)arg1;
 - (id)description;
 - (id)dictionaryRepresentationsOfSupplementaryItems;
 - (id)initWithDictionary:(id)arg1;

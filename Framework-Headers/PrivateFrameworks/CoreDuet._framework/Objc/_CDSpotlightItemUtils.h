@@ -25,7 +25,7 @@
 + (id)mechanismUtiMap;
 + (id)policies;
 + (id)querySpotlightItemsWithStartDate:(id)arg1 endDate:(id)arg2 getMail:(BOOL)arg3 getMessages:(BOOL)arg4;
-+ (id)requestedIntentClasses;
++ (id)safariUTIs;
 + (BOOL)shouldFilterEmailAddress:(id)arg1;
 + (BOOL)uncachedUtType:(id)arg1 conformsTo:(id)arg2;
 + (BOOL)utType:(id)arg1 conformsTo:(id)arg2;

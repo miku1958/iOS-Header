@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSDateFormatter, NSString;
+@class NSArray, NSDateFormatter, NSString;
 @protocol OS_dispatch_queue;
 
 @interface PLSearchIndexDateFormatter : NSObject
@@ -17,15 +17,18 @@
     NSString *_monthFormat;
     NSString *_displayFormat;
     NSString *_parseFormat;
+    NSArray *_monthSymbols;
     BOOL _localeDidChange;
 }
 
+- (id)_arrangedMonthSymbols;
 - (id)_inqNewLocalizedStringFromDate:(id)arg1;
 - (void)_inqSetupDateFormatter;
 - (void)_inqUpdateDateFormat:(id)arg1;
 - (void)_localeDidChange:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)localizedMonthStringsFromDate:(id)arg1;
 - (id)newLocalizedComponentsFromDate:(id)arg1 includeMonth:(BOOL)arg2;
 - (id)newLocalizedStringFromDate:(id)arg1;
 - (id)newLocalizedStringFromYear:(id)arg1 month:(id)arg2;

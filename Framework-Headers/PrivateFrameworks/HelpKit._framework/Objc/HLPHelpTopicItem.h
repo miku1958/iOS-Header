@@ -28,7 +28,7 @@
 - (BOOL)categoryContainKey:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
-- (id)initWithDictionary:(id)arg1 helpBookURL:(id)arg2;
+- (id)initWithDictionary:(id)arg1 helpBookURL:(id)arg2 serverType:(long long)arg3;
 
 @end
 

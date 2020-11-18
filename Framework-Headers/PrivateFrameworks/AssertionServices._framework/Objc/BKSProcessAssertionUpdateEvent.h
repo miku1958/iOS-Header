@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AssertionServices/BKSProcessAssertionEvent.h>
+#import <AssertionServices/BKSAssertionEvent.h>
 
 @class NSString;
 
-@interface BKSProcessAssertionUpdateEvent : BKSProcessAssertionEvent
+@interface BKSProcessAssertionUpdateEvent : BKSAssertionEvent
 {
     NSString *_name;
     unsigned int _flags;
@@ -21,6 +21,7 @@
 - (id)description;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

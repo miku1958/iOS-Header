@@ -43,8 +43,6 @@
 - (long long)handleSelectionOfEntityValueContext:(id)arg1 fromViewController:(id)arg2;
 - (BOOL)isEntityViewDescriptorLoaded;
 - (id)loadEntityViewDescriptor;
-- (id)newContextualActionsEntityValueContext;
-- (id)newContextualActionsSectionEntityValueContext;
 - (id)newEntityValueContext;
 - (id)newSectionEntityValueContext;
 - (id)newSelectionEntityValueContext;

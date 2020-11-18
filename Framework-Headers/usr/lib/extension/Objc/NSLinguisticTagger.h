@@ -15,20 +15,32 @@
     NSString *_string;
     id _orthographyArray;
     id _tokenArray;
-    id _reserved;
+    void *_reserved;
 }
 
+@property (readonly, copy) NSString *dominantLanguage;
 @property (strong) NSString *string;
 @property (readonly, copy) NSArray *tagSchemes;
 
 + (id)availableTagSchemesForLanguage:(id)arg1;
++ (id)availableTagSchemesForUnit:(long long)arg1 language:(id)arg2;
++ (id)dominantLanguageForString:(id)arg1;
++ (void)enumerateTagsForString:(id)arg1 range:(struct _NSRange)arg2 unit:(long long)arg3 scheme:(id)arg4 options:(unsigned long long)arg5 orthography:(id)arg6 usingBlock:(CDUnknownBlockType)arg7;
 + (BOOL)supportsLanguage:(id)arg1;
++ (id)tagForString:(id)arg1 atIndex:(unsigned long long)arg2 unit:(long long)arg3 scheme:(id)arg4 orthography:(id)arg5 tokenRange:(struct _NSRange *)arg6;
++ (id)tagsForString:(id)arg1 range:(struct _NSRange)arg2 unit:(long long)arg3 scheme:(id)arg4 options:(unsigned long long)arg5 orthography:(id)arg6 tokenRanges:(id *)arg7;
 - (BOOL)_acceptSentenceTerminatorRange:(struct _NSRange)arg1 paragraphRange:(struct _NSRange)arg2 tokens:(struct _NSLTToken *)arg3 count:(unsigned long long)arg4 tokenIndex:(unsigned long long)arg5;
 - (void)_acceptSentencesForParagraphRange:(struct _NSRange)arg1;
 - (void)_analyzePunctuationTokensInRange:(struct _NSRange)arg1 paragraphRange:(struct _NSRange)arg2;
 - (void)_analyzeTokensInInterwordRange:(struct _NSRange)arg1 paragraphRange:(struct _NSRange)arg2;
 - (void)_analyzeTokensInWordRange:(struct _NSRange)arg1 paragraphRange:(struct _NSRange)arg2;
 - (void)_calculateSentenceRangesForParagraphRange:(struct _NSRange)arg1;
+- (void)_detectOrthographyIfNeededAtIndex:(unsigned long long)arg1;
+- (void)_enumerateTagsInRange:(struct _NSRange)arg1 scheme:(id)arg2 options:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (void)_nativeSetOrthography:(id)arg1 range:(struct _NSRange)arg2;
+- (struct _NSRange)_sentenceRangeForRange:(struct _NSRange)arg1;
+- (void)_setOrthography:(id)arg1 range:(struct _NSRange)arg2;
+- (id)_tagAtIndex:(unsigned long long)arg1 scheme:(id)arg2 tokenRange:(struct _NSRange *)arg3 sentenceRange:(struct _NSRange *)arg4;
 - (id)_tagSchemeForScheme:(id)arg1;
 - (id)_tokenDataForParagraphAtIndex:(unsigned long long)arg1 paragraphRange:(struct _NSRange *)arg2 requireLemmas:(BOOL)arg3 requirePartsOfSpeech:(BOOL)arg4 requireNamedEntities:(BOOL)arg5;
 - (id)_tokenDataForParagraphAtIndex:(unsigned long long)arg1 paragraphRange:(struct _NSRange *)arg2 tagScheme:(id)arg3;
@@ -37,6 +49,7 @@
 - (void)dealloc;
 - (id)description;
 - (void)enumerateTagsInRange:(struct _NSRange)arg1 scheme:(id)arg2 options:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (void)enumerateTagsInRange:(struct _NSRange)arg1 unit:(long long)arg2 scheme:(id)arg3 options:(unsigned long long)arg4 usingBlock:(CDUnknownBlockType)arg5;
 - (id)initWithTagSchemes:(id)arg1 options:(unsigned long long)arg2;
 - (id)orthographyAtIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (id)possibleTagsAtIndex:(unsigned long long)arg1 scheme:(id)arg2 tokenRange:(struct _NSRange *)arg3 sentenceRange:(struct _NSRange *)arg4 scores:(id *)arg5;
@@ -44,7 +57,10 @@
 - (void)setOrthography:(id)arg1 range:(struct _NSRange)arg2;
 - (void)stringEditedInRange:(struct _NSRange)arg1 changeInLength:(long long)arg2;
 - (id)tagAtIndex:(unsigned long long)arg1 scheme:(id)arg2 tokenRange:(struct _NSRange *)arg3 sentenceRange:(struct _NSRange *)arg4;
+- (id)tagAtIndex:(unsigned long long)arg1 unit:(long long)arg2 scheme:(id)arg3 tokenRange:(struct _NSRange *)arg4;
 - (id)tagsInRange:(struct _NSRange)arg1 scheme:(id)arg2 options:(unsigned long long)arg3 tokenRanges:(id *)arg4;
+- (id)tagsInRange:(struct _NSRange)arg1 unit:(long long)arg2 scheme:(id)arg3 options:(unsigned long long)arg4 tokenRanges:(id *)arg5;
+- (struct _NSRange)tokenRangeAtIndex:(unsigned long long)arg1 unit:(long long)arg2;
 
 @end
 

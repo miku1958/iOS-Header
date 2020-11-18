@@ -15,9 +15,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (BOOL)_getPropertyList:(id *)arg1;
 - (BOOL)_getValue:(id *)arg1 forPropertyListKey:(id)arg2;
-- (id)_loadPropertyListPeeking:(BOOL)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLazyPropertyLists:(id)arg1;

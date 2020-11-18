@@ -6,14 +6,22 @@
 
 #import <UIKit/UINavigationController.h>
 
+#import <UIKit/UIPrintInteractionControllerDelegate-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface UIPrintActivityWrapperNavigationController : UINavigationController
+@interface UIPrintActivityWrapperNavigationController : UINavigationController <UIPrintInteractionControllerDelegate>
 {
     CDUnknownBlockType _completionHandler;
     BOOL _presentedPrintInteractionController;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL presentedPrintInteractionController; // @synthesize presentedPrintInteractionController=_presentedPrintInteractionController;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)initWithCompletion:(CDUnknownBlockType)arg1;

@@ -44,6 +44,7 @@
 - (id)copyWithoutModifiers;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCEMEmojiToken:(struct __EmojiTokenWrapper *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithString:(id)arg1 localeIdentifier:(id)arg2;

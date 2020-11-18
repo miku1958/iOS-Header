@@ -17,11 +17,13 @@ __attribute__((visibility("hidden")))
     _UIPreviewPresentationEffectView *_sourceViewSnapshot;
 }
 
+@property (nonatomic) BOOL actionsReversed; // @synthesize actionsReversed=_actionsReversed;
 @property (strong, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
 @property (strong, nonatomic) UIVisualEffectView *revealEffectView; // @synthesize revealEffectView=_revealEffectView;
 @property (strong, nonatomic) _UIPreviewPresentationEffectView *sourceViewSnapshot; // @synthesize sourceViewSnapshot=_sourceViewSnapshot;
 
 + (long long)interfaceActionPresentationStyle;
++ (void)positionContentsOfAlertController:(id)arg1 alertContentView:(id)arg2 availableSpaceView:(id)arg3 visualStyle:(id)arg4 updatableConstraints:(id)arg5;
 - (void).cxx_destruct;
 - (double)_actionDescriptiveTextFontSize;
 - (BOOL)_shouldReverseActions;
@@ -34,7 +36,6 @@ __attribute__((visibility("hidden")))
 - (double)minimumWidth;
 - (long long)permittedActionLayoutDirection;
 - (BOOL)placementAvoidsKeyboard;
-- (void)positionAlertControllerView:(id)arg1 ofAlertController:(id)arg2 inAvailableSpaceView:(id)arg3;
 - (BOOL)shouldOccludeDuringPresentation;
 - (BOOL)shouldPreserveRespondersAcrossWindows;
 - (id)tintColorForAlertController:(id)arg1;

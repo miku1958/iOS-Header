@@ -20,10 +20,9 @@
 - (void).cxx_destruct;
 - (void)_addFailingSamples:(id)arg1 toResultDictionary:(id)arg2;
 - (id)_failingSamples:(id)arg1 tester:(id)arg2;
-- (void)_postCorruptSearchableIndexNotificationWithErrorLog:(id)arg1 andState:(unsigned long long)arg2;
 - (id)_verifySamples:(id)arg1;
 - (id)initWithDataSource:(id)arg1;
-- (unsigned long long)verifyDataSamples;
+- (void)verifyDataSamplesWithCompletionHandler:(CDUnknownBlockType)arg1 queue:(id)arg2;
 
 @end
 

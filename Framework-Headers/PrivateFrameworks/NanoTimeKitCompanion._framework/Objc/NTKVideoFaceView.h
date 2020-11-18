@@ -18,9 +18,7 @@
     unsigned int _isComplicationColorApplied:1;
 }
 
-+ (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void).cxx_destruct;
-- (void)_addSubviewInOrder:(id)arg1;
 - (void)_applyComplicationContentSpecificAttributesWithColor:(id)arg1 animated:(BOOL)arg2;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_cleanupAfterEditing;
@@ -45,12 +43,14 @@
 - (double)_rightSideMarginForDigitalTimeHeroPosition;
 - (void)_selectDefaultListing;
 - (BOOL)_shouldDelayBeforePlayingNextVideo;
+- (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (double)_timeTravelYAdjustment;
 - (void)_unloadSnapshotContentViews;
 - (void)_updatePaused;
 - (long long)_utilitySlotForSlot:(id)arg1;
 - (id)_viewForEditOption:(id)arg1;
 - (void)dealloc;
+- (void)didAddSubview:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;

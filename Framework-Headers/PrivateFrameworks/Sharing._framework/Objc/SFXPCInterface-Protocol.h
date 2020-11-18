@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData, NSError, NSUUID, SFDevice, SFEventMessage, SFRemoteTextSessionInfo, SFRequestMessage, SFResponseMessage;
+@class NSData, NSError, NSString, NSUUID, SFDevice, SFEventMessage, SFRemoteTextSessionInfo, SFRequestMessage, SFResponseMessage;
 
 @protocol SFXPCInterface
 
@@ -22,10 +22,14 @@
 - (void)serviceReceivedFrameType:(unsigned char)arg1 data:(NSData *)arg2 peer:(NSUUID *)arg3;
 - (void)serviceReceivedRequest:(SFRequestMessage *)arg1;
 - (void)serviceReceivedResponse:(SFResponseMessage *)arg1;
+- (void)sessionBluetoothStateChanged:(long long)arg1;
 - (void)sessionError:(NSError *)arg1;
 - (void)sessionReceivedEvent:(SFEventMessage *)arg1;
 - (void)sessionReceivedFrameType:(unsigned char)arg1 data:(NSData *)arg2;
 - (void)sessionReceivedRequest:(SFRequestMessage *)arg1;
 - (void)sessionReceivedResponse:(SFResponseMessage *)arg1;
+- (void)userNotificationError:(NSError *)arg1;
+- (void)userNotificationResponse:(int)arg1;
+- (void)userNotificationTextResponse:(NSString *)arg1;
 @end
 

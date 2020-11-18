@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SAObjects/SABaseCommand.h>
+#import <SAObjects/SABaseClientBoundCommand.h>
 
 #import <SAObjects/SAServerBoundCommand-Protocol.h>
 
 @class NSString;
 
-@interface SASyncFinished : SABaseCommand <SAServerBoundCommand>
+@interface SASyncFinished : SABaseClientBoundCommand <SAServerBoundCommand>
 {
 }
 
@@ -25,6 +25,7 @@
 + (id)finishedWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)requiresResponse;
 
 @end
 

@@ -13,8 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)accessibilityContainerElements;
-- (void)setOccurrences:(id)arg1;
+- (id)accessibilityElements;
+- (void)setOccurrences:(id)arg1 animated:(BOOL)arg2;
 
 @end
 

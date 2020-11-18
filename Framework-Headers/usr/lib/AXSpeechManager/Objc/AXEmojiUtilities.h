@@ -10,6 +10,7 @@
 {
 }
 
++ (struct _NSRange)emojiRangeFromString:(id)arg1 withSearchRange:(struct _NSRange)arg2;
 + (id)stringByReplacingEmojiCharactersWithEmojiDescriptions:(id)arg1 stringForPauses:(id)arg2 language:(id)arg3 rangeReplacements:(id)arg4 appendEmojiSuffix:(BOOL)arg5;
 
 @end

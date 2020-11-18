@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOLocation, NSDate, NSString;
 
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long travelState; // @synthesize travelState=_travelState;
 @property (readonly, nonatomic) double travelStateScore; // @synthesize travelStateScore=_travelStateScore;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)updateCurrentTrafficDensity:(double)arg1 staticTravelTime:(double)arg2;
 - (void)updateDepartureAndArrivalSuggestions:(id)arg1 arrivalDate:(id)arg2 travelTimeWithTraffic:(double)arg3;

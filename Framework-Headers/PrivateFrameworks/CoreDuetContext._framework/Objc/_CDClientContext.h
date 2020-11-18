@@ -43,14 +43,18 @@
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *xpcQueue; // @synthesize xpcQueue=_xpcQueue;
 
++ (id)clientInterface;
++ (id)serverInterface;
 + (id)userContext;
 - (void).cxx_destruct;
 - (void)addKeyPathsWithRegistrationsForAnyChangeFromRegistration:(id)arg1;
 - (void)cleanupInternalReferencesToRegistration:(id)arg1;
+- (void)clearCacheForKeyPathsWithFireOnChangeRegistrations:(id)arg1;
 - (void)dealloc;
 - (void)deregisterCallback:(id)arg1;
 - (BOOL)evaluatePredicate:(id)arg1;
 - (void)handleContextualChange:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)handleRegistrationCompleted:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (BOOL)hasKnowledgeOfContextualKeyPath:(id)arg1;
 - (id)initWithEndpoint:(id)arg1;
 - (id)lastModifiedDateForContextualKeyPath:(id)arg1;
@@ -59,6 +63,7 @@
 - (id)objectForKeyedSubscript:(id)arg1;
 - (void)registerCallback:(id)arg1;
 - (void)removeKeyPathsWithRegistrationsForAnyChangeFromRegistration:(id)arg1;
+- (void)retryTimes:(int)arg1 block:(CDUnknownBlockType)arg2;
 - (BOOL)setObject:(id)arg1 forContextualKeyPath:(id)arg2;
 - (BOOL)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (void)setUpXPCConnectionWithEndpoint:(id)arg1;

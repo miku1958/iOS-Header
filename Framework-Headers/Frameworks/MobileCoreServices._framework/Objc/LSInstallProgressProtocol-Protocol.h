@@ -6,24 +6,15 @@
 
 #import <MobileCoreServices/NSObject-Protocol.h>
 
-@class LSApplicationProxy, LSApplicationWorkspaceRemoteObserver, NSArray, NSString, NSUUID;
+@class LSApplicationProxy, NSArray, NSString;
 
 @protocol LSInstallProgressProtocol <NSObject>
-- (void)addObserver:(LSApplicationWorkspaceRemoteObserver *)arg1 withUUID:(NSUUID *)arg2;
-- (void)beginObservingConnection;
+- (void)_lsPing:(NSString *)arg1 reply:(void (^)(NSString *))arg2;
+- (void)addObserver;
 - (void)createInstallProgressForApplication:(LSApplicationProxy *)arg1 withPhase:(unsigned long long)arg2 andPublishingString:(NSString *)arg3;
-- (void)endObservingConnection;
-- (void)installationEndedForApplication:(NSString *)arg1;
+- (void)installationEndedForApplication:(NSString *)arg1 withState:(unsigned long long)arg2;
 - (void)installationFailedForApplication:(NSString *)arg1 reply:(void (^)(BOOL))arg2;
-- (void)placeholderInstalledForApp:(LSApplicationProxy *)arg1;
-- (void)removeObserverWithUUID:(NSUUID *)arg1;
-- (void)sendChangeNotificationForApp:(LSApplicationProxy *)arg1;
-- (void)sendFailedNotificationForApp:(LSApplicationProxy *)arg1 isUninstall:(BOOL)arg2;
-- (void)sendIconUpdatedNotificationForApp:(LSApplicationProxy *)arg1 userInitiated:(BOOL)arg2;
-- (void)sendInstalledNotificationForApp:(LSApplicationProxy *)arg1 reply:(void (^)(BOOL))arg2;
-- (void)sendInstalledNotificationForApps:(NSArray *)arg1 Plugins:(NSArray *)arg2;
-- (void)sendUninstalledNotificationForApp:(LSApplicationProxy *)arg1 reply:(void (^)(BOOL))arg2;
-- (void)sendUninstalledNotificationForApps:(NSArray *)arg1 Plugins:(NSArray *)arg2;
-- (void)sendWillUninstallNotificationForApps:(LSApplicationProxy *)arg1 Plugins:(NSArray *)arg2 isUpdate:(BOOL)arg3;
+- (void)removeObserver;
+- (void)sendNotification:(int)arg1 forApplications:(NSArray *)arg2 withPlugins:(BOOL)arg3;
 @end
 

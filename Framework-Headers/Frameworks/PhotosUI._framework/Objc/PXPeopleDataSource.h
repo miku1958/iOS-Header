@@ -23,7 +23,6 @@
     NSArray *_members;
     NSObject<OS_dispatch_queue> *_reloadQueue;
     PHFetchResult *_objects;
-    PHFetchResult *_originalObjects;
     CDUnknownBlockType _reloadBlock;
     NSArray *_originalMembers;
 }
@@ -34,19 +33,17 @@
 @property (copy) NSString *localizedDisclosedTitle; // @synthesize localizedDisclosedTitle=_localizedDisclosedTitle;
 @property (copy) NSString *localizedUndisclosedTitle; // @synthesize localizedUndisclosedTitle=_localizedUndisclosedTitle;
 @property (nonatomic) unsigned long long maximumNumberOfMembers; // @synthesize maximumNumberOfMembers=_maximumNumberOfMembers;
-@property (strong, nonatomic) NSArray *members; // @synthesize members=_members;
+@property (copy, nonatomic) NSArray *members; // @synthesize members=_members;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) unsigned long long numberOfMembers;
 @property (strong, nonatomic) PHFetchResult *objects; // @synthesize objects=_objects;
-@property (strong, nonatomic) NSArray *originalMembers; // @synthesize originalMembers=_originalMembers;
-@property (strong, nonatomic) PHFetchResult *originalObjects; // @synthesize originalObjects=_originalObjects;
+@property (copy, nonatomic) NSArray *originalMembers; // @synthesize originalMembers=_originalMembers;
 @property (copy, nonatomic) CDUnknownBlockType reloadBlock; // @synthesize reloadBlock=_reloadBlock;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *reloadQueue; // @synthesize reloadQueue=_reloadQueue;
 @property (copy, nonatomic) CDUnknownBlockType sortComparator; // @synthesize sortComparator=_sortComparator;
 @property (readonly, nonatomic) BOOL useAsynchronousLoad; // @synthesize useAsynchronousLoad=_useAsynchronousLoad;
 
 - (void).cxx_destruct;
-- (void)_asyncLoadImageForItem:(id)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (void)_asyncLoadImageForItem:(id)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3 fastDisplayBlock:(CDUnknownBlockType)arg4;
 - (id)_itemsArrayFromObjects:(id)arg1;
 - (void)_setObjectsWithoutUpdate:(id)arg1;

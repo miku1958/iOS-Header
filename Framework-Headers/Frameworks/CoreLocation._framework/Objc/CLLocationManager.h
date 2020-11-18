@@ -17,7 +17,6 @@
 @property (nonatomic) long long activityType;
 @property (nonatomic) BOOL allowsAlteredAccessoryLocations;
 @property (nonatomic) BOOL allowsBackgroundLocationUpdates;
-@property (readonly, nonatomic) double bestAccuracy;
 @property (nonatomic) id<CLLocationManagerDelegate> delegate;
 @property (nonatomic) double desiredAccuracy;
 @property (nonatomic) double distanceFilter;
@@ -41,6 +40,7 @@
 @property (nonatomic) BOOL privateMode;
 @property (copy, nonatomic) NSString *purpose;
 @property (readonly, copy, nonatomic) NSSet *rangedRegions;
+@property (nonatomic) BOOL showsBackgroundLocationIndicator;
 @property (nonatomic) BOOL supportInfo;
 
 + (int)_authorizationStatus;
@@ -52,6 +52,7 @@
 + (int)authorizationStatus;
 + (int)authorizationStatusForBundle:(id)arg1;
 + (int)authorizationStatusForBundleIdentifier:(id)arg1;
++ (BOOL)backgroundIndicatorEnabledForLocationDictionary:(id)arg1;
 + (BOOL)bundleSupported:(id)arg1;
 + (id)dateLocationLastUsedForLocationDictionary:(id)arg1;
 + (BOOL)deferredLocationUpdatesAvailable;
@@ -80,6 +81,9 @@
 + (void)setAuthorizationStatus:(BOOL)arg1 forBundleIdentifier:(id)arg2;
 + (void)setAuthorizationStatusByType:(int)arg1 forBundle:(id)arg2;
 + (void)setAuthorizationStatusByType:(int)arg1 forBundleIdentifier:(id)arg2;
++ (void)setBackgroundIndicatorEnabled:(BOOL)arg1 forBundle:(id)arg2;
++ (void)setBackgroundIndicatorEnabled:(BOOL)arg1 forBundleIdentifier:(id)arg2;
++ (void)setBackgroundIndicatorEnabled:(BOOL)arg1 forLocationDictionary:(id)arg2;
 + (void)setDefaultEffectiveBundle:(id)arg1;
 + (void)setDefaultEffectiveBundleIdentifier:(id)arg1;
 + (void)setEntityAuthorization:(unsigned long long)arg1 forLocationDictionary:(id)arg2;
@@ -89,6 +93,8 @@
 + (id)sharedManager;
 + (BOOL)shutdownDaemon;
 + (BOOL)significantLocationChangeMonitoringAvailable;
+- (void)_startLeechingVisits;
+- (void)_startMonitoringSignificantLocationChangesOfDistance:(double)arg1 withPowerBudget:(int)arg2;
 - (void)allowDeferredLocationUpdatesUntilTraveled:(double)arg1 timeout:(double)arg2;
 - (id)appsUsingLocation;
 - (id)appsUsingLocationWithDetails;
@@ -114,6 +120,7 @@
 - (void)onClientEventMicroLocations:(id)arg1;
 - (void)onClientEventPeerRanging:(id)arg1;
 - (void)onClientEventPeerRangingError:(id)arg1;
+- (void)onClientEventPeerRangingRequestProcessed:(id)arg1;
 - (void)onClientEventRanging:(id)arg1;
 - (void)onClientEventRangingError:(id)arg1;
 - (void)onClientEventRegion:(id)arg1;
@@ -153,6 +160,7 @@
 - (void)startUpdatingLocation;
 - (void)startUpdatingLocationWithPrompt;
 - (void)startUpdatingMicroLocation;
+- (void)startUpdatingMicroLocationForLocationOfInterest:(id)arg1;
 - (void)startUpdatingVehicleHeading;
 - (void)startUpdatingVehicleSpeed;
 - (void)stopAppStatusUpdates;

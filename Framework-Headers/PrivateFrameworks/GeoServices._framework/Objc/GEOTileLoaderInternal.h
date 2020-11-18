@@ -11,7 +11,7 @@
 #import <GeoServices/GEOTileServerProxyDelegate-Protocol.h>
 
 @class GEOTileLoaderConfiguration, GEOTileLoaderUsage, GEOTilePool, GEOTileServerProxy, NSMutableArray, NSMutableSet, NSObject, NSString;
-@protocol GEOTileLoaderInternalDelegate, OS_dispatch_queue;
+@protocol GEOTileLoaderInternalDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface GEOTileLoaderInternal : GEOTileLoader <GEOTileServerProxyDelegate, GEOResourceManifestTileGroupObserver, GEOExperimentConfigurationObserver>
@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
     int _rollingBatchId;
     struct deque<ErrorInfo, std::__1::allocator<ErrorInfo>> _recentErrors;
     GEOTileLoaderUsage *_usage;
+    NSObject<OS_dispatch_source> *_memoryNotificationEventSource;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -47,7 +48,6 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_activeTileGroupChanged:(id)arg1;
 - (void)_cancel:(__list_iterator_aef25af4 *)arg1 err:(id)arg2;
 - (BOOL)_cancelIfNeeded:(__list_iterator_aef25af4 *)arg1;
 - (id)_findInCache:(const struct _GEOTileKey *)arg1;
@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)_loadedTile:(id)arg1 forKey:(const struct _GEOTileKey *)arg2 info:(id)arg3;
 - (void)_loadedTileForLocalKey:(struct _GEOTileKey)arg1 preliminary:(BOOL)arg2 quickly:(BOOL)arg3 tileDecoder:(id)arg4 data:(id)arg5 disburseTile:(CDUnknownBlockType)arg6;
 - (void)_localeChanged:(id)arg1;
+- (void)_receivedMemoryWarningNotification;
 - (void)_removeUsageDataForKey:(const struct _GEOTileKey *)arg1;
 - (void)_requestOnlineTiles;
 - (void)_tileEditionChanged:(id)arg1;
@@ -77,8 +78,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithConfiguration:(id)arg1;
 - (id)internalDelegate;
 - (id)internalDelegateQ;
+- (void)loadKey:(const struct _GEOTileKey *)arg1 additionalInfo:(const CDStruct_58878026 *)arg2 priority:(unsigned int)arg3 forClient:(id)arg4 options:(unsigned long long)arg5 callbackQ:(id)arg6 beginNetwork:(CDUnknownBlockType)arg7 callback:(CDUnknownBlockType)arg8;
+- (void)loadKey:(const struct _GEOTileKey *)arg1 additionalInfo:(const CDStruct_58878026 *)arg2 priority:(unsigned int)arg3 forClient:(id)arg4 proxyClient:(id)arg5 options:(unsigned long long)arg6 callbackQ:(id)arg7 beginNetwork:(CDUnknownBlockType)arg8 callback:(CDUnknownBlockType)arg9;
 - (void)loadKey:(const struct _GEOTileKey *)arg1 priority:(unsigned int)arg2 forClient:(id)arg3 options:(unsigned long long)arg4 callbackQ:(id)arg5 beginNetwork:(CDUnknownBlockType)arg6 callback:(CDUnknownBlockType)arg7;
-- (void)loadKey:(const struct _GEOTileKey *)arg1 priority:(unsigned int)arg2 forClient:(id)arg3 proxyClient:(id)arg4 options:(unsigned long long)arg5 callbackQ:(id)arg6 beginNetwork:(CDUnknownBlockType)arg7 callback:(CDUnknownBlockType)arg8;
 - (int)memoryHits;
 - (int)networkHits;
 - (void)openForClient:(id)arg1;

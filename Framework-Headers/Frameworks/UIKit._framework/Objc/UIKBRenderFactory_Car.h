@@ -17,9 +17,15 @@ __attribute__((visibility("hidden")))
 - (id)activeKeyColor;
 - (id)backgroundTraitsForKeyplane:(id)arg1;
 - (double)defaultKeyFontSize;
+- (id)deleteKeyImageName;
+- (id)deleteOnKeyImageName;
 - (id)displayContentsForKey:(id)arg1;
 - (id)dividerColor;
 - (id)enabledKeyColor;
+- (id)globalKeyImageName;
+- (id)shiftKeyImageName;
+- (id)shiftLockImageName;
+- (id)shiftOnKeyImageName;
 
 @end
 

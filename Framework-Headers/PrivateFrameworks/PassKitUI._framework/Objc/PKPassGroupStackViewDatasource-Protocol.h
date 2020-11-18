@@ -7,6 +7,7 @@
 #import <PassKitUI/NSObject-Protocol.h>
 
 @class PKGroup, PKPassGroupStackView, UIView;
+@protocol PKPGSVSectionSubheaderView;
 
 @protocol PKPassGroupStackViewDatasource <NSObject>
 - (PKGroup *)groupAtIndex:(unsigned long long)arg1;
@@ -15,9 +16,11 @@
 - (unsigned long long)numberOfGroups;
 
 @optional
+- (UIView *)footerForGroupStackView:(PKPassGroupStackView *)arg1;
 - (UIView *)groupStackView:(PKPassGroupStackView *)arg1 headerForPassType:(unsigned long long)arg2;
 - (BOOL)groupStackView:(PKPassGroupStackView *)arg1 requiresHeaderForPassType:(unsigned long long)arg2;
-- (UIView *)groupStackView:(PKPassGroupStackView *)arg1 subheaderForPassType:(unsigned long long)arg2;
+- (UIView<PKPGSVSectionSubheaderView> *)groupStackView:(PKPassGroupStackView *)arg1 subheaderForPassType:(unsigned long long)arg2;
+- (BOOL)groupStackView:(PKPassGroupStackView *)arg1 willHaveHeaderViewForPassType:(unsigned long long)arg2;
 - (BOOL)groupStackViewShouldShowHeaderViews:(PKPassGroupStackView *)arg1;
 @end
 

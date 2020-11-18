@@ -6,11 +6,15 @@
 
 #import <Contacts/CNContact.h>
 
+@class NSArray, NSString, NSURL;
+
 @interface CNContact (TUSearchUtilities)
+
+@property (readonly, nonatomic) NSString *anyDestinationID;
+@property (readonly, nonatomic) NSArray *emailAddressStrings;
+@property (readonly, nonatomic) NSURL *faceTimeQuicklookURL;
+@property (readonly, nonatomic) NSArray *phoneNumberStrings;
+
 + (id)keysToFetchForFaceTime;
-- (id)anyDestinationID;
-- (id)emailAddressStrings;
-- (id)faceTimeQuicklookURL;
-- (id)phoneNumberStrings;
 @end
 

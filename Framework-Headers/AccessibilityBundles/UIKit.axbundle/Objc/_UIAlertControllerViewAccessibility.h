@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityIsAlertContainer;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_prepareDetailMessageLabel;
 - (void)_prepareMesssageLabel;

@@ -6,22 +6,38 @@
 
 #import <objc/NSObject.h>
 
+#import <SearchFoundation/NSCopying-Protocol.h>
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFTableColumnAlignment-Protocol.h>
 
-@interface SFTableColumnAlignment : NSObject <NSSecureCoding>
+@class NSData, NSDictionary, NSString;
+
+@interface SFTableColumnAlignment : NSObject <SFTableColumnAlignment, NSSecureCoding, NSCopying>
 {
+    CDStruct_92ac6441 _has;
     BOOL _isEqualWidth;
-    unsigned long long _columnAlignment;
-    unsigned long long _dataAlignment;
+    int _columnAlignment;
+    int _dataAlignment;
 }
 
-@property unsigned long long columnAlignment; // @synthesize columnAlignment=_columnAlignment;
-@property unsigned long long dataAlignment; // @synthesize dataAlignment=_dataAlignment;
-@property BOOL isEqualWidth; // @synthesize isEqualWidth=_isEqualWidth;
+@property (nonatomic) int columnAlignment; // @synthesize columnAlignment=_columnAlignment;
+@property (nonatomic) int dataAlignment; // @synthesize dataAlignment=_dataAlignment;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isEqualWidth; // @synthesize isEqualWidth=_isEqualWidth;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasColumnAlignment;
+- (BOOL)hasDataAlignment;
+- (BOOL)hasIsEqualWidth;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 - (long long)textAlignment;
 
 @end

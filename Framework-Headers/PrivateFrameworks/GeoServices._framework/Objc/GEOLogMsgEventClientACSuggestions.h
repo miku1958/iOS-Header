@@ -30,13 +30,13 @@
 
 + (Class)entriesType;
 + (Class)queryTokensType;
+- (void).cxx_destruct;
 - (void)addEntries:(id)arg1;
 - (void)addQueryTokens:(id)arg1;
 - (void)clearEntries;
 - (void)clearQueryTokens;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)entriesAtIndex:(unsigned long long)arg1;

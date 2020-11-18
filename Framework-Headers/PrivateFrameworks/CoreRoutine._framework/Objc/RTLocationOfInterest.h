@@ -34,6 +34,7 @@
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) double latitude; // @synthesize latitude=_latitude;
 @property (readonly, nonatomic) double longitude; // @synthesize longitude=_longitude;
+@property (readonly, nonatomic) NSString *preferredName;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, nonatomic) long long typeSource; // @synthesize typeSource=_typeSource;
 @property (readonly, nonatomic) double uncertainty; // @synthesize uncertainty=_uncertainty;
@@ -47,17 +48,13 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (long long)frequencyCompare:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2 uncertainty:(double)arg3 confidence:(double)arg4 identifier:(id)arg5 type:(long long)arg6 typeSource:(long long)arg7 geoMapItem:(id)arg8 geoMapItemSource:(long long)arg9 visits:(id)arg10 customLabel:(id)arg11;
 - (BOOL)isEqual:(id)arg1;
-- (id)localizedAllVisitsDescription;
-- (id)localizedLastVisitDescription;
-- (id)name;
-- (id)preciseName;
+- (id)nameFromMapItem:(id)arg1;
+- (id)nameFromType:(long long)arg1;
 - (long long)recentCompare:(id)arg1;
-- (id)relativeNameToMapItem:(id)arg1;
 
 @end
 

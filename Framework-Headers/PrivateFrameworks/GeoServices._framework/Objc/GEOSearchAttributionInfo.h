@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
@@ -30,8 +30,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *webBaseActionURL;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)addLogoPath:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;

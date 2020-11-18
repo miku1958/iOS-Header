@@ -21,7 +21,7 @@
 @property (nonatomic) unsigned long long retries; // @synthesize retries=_retries;
 @property (readonly, nonatomic) NSString *type; // @synthesize type=_type;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithType:(id)arg1 identifier:(id)arg2 isAcquisition:(BOOL)arg3;
 
 @end

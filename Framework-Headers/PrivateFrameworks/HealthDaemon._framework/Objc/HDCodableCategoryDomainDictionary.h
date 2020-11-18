@@ -31,6 +31,7 @@
 @property (strong, nonatomic) NSMutableArray *keyValuePairs; // @synthesize keyValuePairs=_keyValuePairs;
 @property (readonly) Class superclass;
 
++ (Class)keyValuePairsType;
 - (void).cxx_destruct;
 - (BOOL)_validateForInsertionWithError:(id *)arg1;
 - (void)addKeyValuePairs:(id)arg1;

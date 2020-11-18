@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GSAddition;
 
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong) GSAddition *addition; // @synthesize addition=_addition;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (id)initWithAddition:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

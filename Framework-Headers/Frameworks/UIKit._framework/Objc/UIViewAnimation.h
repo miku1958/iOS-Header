@@ -11,13 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface UIViewAnimation : NSObject
 {
-    UIView *_view;
-    NSIndexPath *_indexPath;
-    struct CGRect _endRect;
-    double _endAlpha;
-    double _startFraction;
-    double _endFraction;
-    int _curve;
     BOOL _animateFromCurrentPosition;
     BOOL _shouldDeleteAfterAnimation;
     BOOL _editing;
@@ -26,6 +19,13 @@ __attribute__((visibility("hidden")))
     BOOL _shouldAllowGroupOpacityAfterAnimation;
     BOOL _shouldClipToBoundsAfterAnimation;
     int _viewType;
+    int _curve;
+    UIView *_view;
+    NSIndexPath *_indexPath;
+    double _endAlpha;
+    double _startFraction;
+    double _endFraction;
+    struct CGRect _endRect;
 }
 
 @property (readonly, nonatomic) BOOL animateFromCurrentPosition; // @synthesize animateFromCurrentPosition=_animateFromCurrentPosition;

@@ -6,23 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class HMHome, NSArray, NSSet;
+#import <Home/NSCopying-Protocol.h>
 
-@interface HFItemProvider : NSObject
+@class NSSet;
+
+@interface HFItemProvider : NSObject <NSCopying>
 {
-    HMHome *_home;
+    NSSet *_clientInvalidationReasons;
 }
 
-@property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
-@property (readonly, nonatomic) NSArray *invalidationReasons;
+@property (strong, nonatomic) NSSet *clientInvalidationReasons; // @synthesize clientInvalidationReasons=_clientInvalidationReasons;
 @property (readonly, nonatomic) NSSet *items;
 
 + (BOOL)prefersNonBlockingReloads;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithHome:(id)arg1;
+- (id)invalidationReasons;
 - (id)reloadItems;
 - (id)reloadItemsWithHomeKitObjects:(id)arg1 filter:(CDUnknownBlockType)arg2 itemMap:(CDUnknownBlockType)arg3;
+- (id)reloadItemsWithObjects:(id)arg1 keyAdaptor:(CDUnknownBlockType)arg2 itemAdaptor:(CDUnknownBlockType)arg3 filter:(CDUnknownBlockType)arg4 itemMap:(CDUnknownBlockType)arg5;
 
 @end
 

@@ -8,7 +8,6 @@
 
 @class CALayer;
 
-__attribute__((visibility("hidden")))
 @interface SCNTextureLayerSource : SCNTextureOffscreenRenderingSource
 {
     CALayer *_layer;
@@ -22,10 +21,13 @@ __attribute__((visibility("hidden")))
 - (double)__updateTextureWithLayer:(id)arg1 engineContext:(struct __C3DEngineContext *)arg2 sampler:(struct __C3DTextureSampler *)arg3;
 - (struct __C3DTexture *)_textureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 - (void)cleanup:(struct __C3DRendererContext *)arg1;
+- (float)clearValue;
 - (void)dealloc;
+- (double)layerContentsScaleFactor;
 - (struct CGSize)layerSizeInPixels;
+- (id)layerToFocusForRenderedLayer:(id)arg1;
 - (BOOL)prefersGL3;
-- (void)renderWithEngineContext:(struct __C3DEngineContext *)arg1 nextFrameTime:(double *)arg2;
+- (void)renderWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 - (BOOL)supportsMetal;
 - (struct __C3DTexture *)textureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 

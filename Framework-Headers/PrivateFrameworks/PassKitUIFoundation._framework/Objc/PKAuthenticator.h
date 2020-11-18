@@ -27,17 +27,23 @@
 @property (readonly, nonatomic) BOOL passcodeActive;
 @property (readonly, nonatomic) BOOL passcodeWasPresented;
 @property (readonly, nonatomic) BOOL passphraseActive;
+@property (readonly, nonatomic) BOOL userIntentAvailable;
 
++ (unsigned long long)_currentStateForMechanisms:(id)arg1;
++ (unsigned long long)cachedStateForPolicy:(long long)arg1;
++ (unsigned long long)currentStateForAccessControl:(struct __SecAccessControl *)arg1;
 + (unsigned long long)currentStateForPolicy:(long long)arg1;
++ (BOOL)isUserIntentAvailable;
 + (void)preheatAuthenticator;
++ (void)removeUserIntentAvailable;
++ (void)resetSharedRootContextWithCompletion:(CDUnknownBlockType)arg1;
 + (id)viewServiceBundleID;
 - (void).cxx_destruct;
 - (BOOL)_delegateSupportsPasscodePresentation;
 - (BOOL)_delegateSupportsPassphrasePresentation;
 - (void)accessExternalizedContextWithCompletion:(CDUnknownBlockType)arg1;
-- (void)applyDynamicFunctionRowScene:(long long)arg1;
-- (void)applyPaymentInstructions:(id)arg1;
 - (void)cancelEvaluation;
+- (void)cancelEvaluationWithOptions:(unsigned long long)arg1;
 - (void)dealloc;
 - (void)evaluatePolicy:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)evaluateRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

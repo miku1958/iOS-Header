@@ -23,7 +23,7 @@
 @property (copy, nonatomic) CDUnknownBlockType downloadablePlaylistItemEntityQueryBlock; // @synthesize downloadablePlaylistItemEntityQueryBlock=_downloadablePlaylistItemEntityQueryBlock;
 @property (nonatomic) long long enableState; // @synthesize enableState=_enableState;
 @property (strong, nonatomic) MPModelObject *identifyingModelObject; // @synthesize identifyingModelObject=_identifyingModelObject;
-@property (strong, nonatomic) MPMediaLibraryView *libraryView; // @synthesize libraryView=_libraryView;
+@property (copy, nonatomic) MPMediaLibraryView *libraryView; // @synthesize libraryView=_libraryView;
 @property (copy, nonatomic) NSNumber *redownloadableItemCount; // @synthesize redownloadableItemCount=_redownloadableItemCount;
 @property (copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 

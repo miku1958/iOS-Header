@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSData, NSSet, NSString, PKDisplayProfile;
+@class NSArray, NSData, NSSet, NSString, PKDisplayProfile;
 
 @protocol PDPassLibraryExportedInterface <PDXPCServiceExportedInterface>
 - (void)addPassesWithData:(NSSet *)arg1 handler:(void (^)(unsigned long long))arg2;
@@ -25,7 +25,12 @@
 - (void)getPassesWithHandler:(void (^)(NSSet *))arg1;
 - (void)hasPassesOfType:(unsigned long long)arg1 handler:(void (^)(BOOL))arg2;
 - (void)isPaymentPassActivationAvailableWithHandler:(void (^)(BOOL))arg1;
+- (void)migrateDataWithHandler:(void (^)(BOOL))arg1;
+- (void)passWithDPANIdentifier:(NSString *)arg1 handler:(void (^)(PKPaymentPass *))arg2;
+- (void)passWithFPANIdentifier:(NSString *)arg1 handler:(void (^)(PKPaymentPass *))arg2;
+- (void)peerPaymentPassUniqueIDWithHandler:(void (^)(NSString *))arg1;
 - (void)removePassWithUniqueID:(NSString *)arg1 diagnosticReason:(NSString *)arg2 handler:(void (^)(void))arg3;
+- (void)removePassesWithUniqueIDs:(NSArray *)arg1 diagnosticReason:(NSString *)arg2 handler:(void (^)(void))arg3;
 - (void)replacePassWithPassData:(NSData *)arg1 handler:(void (^)(BOOL))arg2;
 - (void)submitVerificationCode:(NSString *)arg1 verificationData:(NSData *)arg2 forPassWithUniqueID:(NSString *)arg3 handler:(void (^)(BOOL, NSError *))arg4;
 @end

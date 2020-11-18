@@ -91,7 +91,6 @@
 - (id)_memoryObjectReferenceForPhotosDetailsContext:(id)arg1;
 - (BOOL)_needsUpdate;
 - (id)_photosDetailsContextForIndexPath:(struct PXSimpleIndexPath)arg1;
-- (id)_photosDetailsContextForMemory:(id)arg1;
 - (void)_presentActionsForMemoryReference:(id)arg1;
 - (void)_reconfigureTargetLayout;
 - (void)_saveAnchor;

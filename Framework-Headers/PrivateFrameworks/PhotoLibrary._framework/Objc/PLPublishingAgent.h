@@ -7,12 +7,11 @@
 #import <Foundation/NSObject.h>
 
 #import <PhotoLibrary/PLDataArrayInputStreamProgressDelegate-Protocol.h>
-#import <PhotoLibrary/UIAlertViewDelegate-Protocol.h>
 
 @class NSData, NSMutableArray, NSString, PLVideoRemaker;
 @protocol PLPublishingAgentDelegate;
 
-@interface PLPublishingAgent : NSObject <PLDataArrayInputStreamProgressDelegate, UIAlertViewDelegate>
+@interface PLPublishingAgent : NSObject <PLDataArrayInputStreamProgressDelegate>
 {
     id _userInfo;
     id _delegate;
@@ -55,11 +54,8 @@
 @property (nonatomic) BOOL allowsHDOver3GUpload; // @synthesize allowsHDOver3GUpload=_allowsHDOver3GUpload;
 @property (nonatomic) long long approximateHDUploadSize; // @synthesize approximateHDUploadSize=_approximateHDUploadSize;
 @property (nonatomic) long long approximateSDUploadSize; // @synthesize approximateSDUploadSize=_approximateSDUploadSize;
-@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<PLPublishingAgentDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enableHDUpload; // @synthesize enableHDUpload=_enableHDUpload;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL mediaIsHDVideo; // @synthesize mediaIsHDVideo=_mediaIsHDVideo;
 @property (nonatomic) BOOL needsTrimming; // @synthesize needsTrimming=_needsTrimming;
 @property (nonatomic) BOOL ownerIsCamera; // @synthesize ownerIsCamera=_ownerIsCamera;
@@ -67,7 +63,6 @@
 @property (nonatomic) int remakerMode; // @synthesize remakerMode=_remakerMode;
 @property (nonatomic) int selectedOption; // @synthesize selectedOption=_selectedOption;
 @property (nonatomic) BOOL shouldCancelPublish; // @synthesize shouldCancelPublish=_shouldCancelPublish;
-@property (readonly) Class superclass;
 
 + (BOOL)canUploadHDVideoOverCellular;
 + (id)publishingAgentForBundleNamed:(id)arg1 toPublishMedia:(id)arg2;
@@ -82,7 +77,6 @@
 - (void)_stopNetworkObservation;
 - (void)_transcodeVideo:(id)arg1;
 - (void)_updateStatisticsFromSnapshots;
-- (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
 - (BOOL)allowsTellingFriend;
 - (BOOL)allowsViewingOnHost;
 - (void)cancelButtonClicked;

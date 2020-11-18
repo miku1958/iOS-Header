@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUQuickControlColorInteractionCoordinatorDelegate-Protocol.h>
 
-@class HFColorControlItem, HUQuickControlSimpleViewProfile, NSString;
+@class HFColorControlItem, HUQuickControlColorViewProfile, NSString;
 
 @interface HUQuickControlColorController : HUQuickControlController <HUQuickControlColorInteractionCoordinatorDelegate>
 {
@@ -19,10 +19,11 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) HUQuickControlSimpleViewProfile *viewProfile;
+@property (readonly, nonatomic) HUQuickControlColorViewProfile *viewProfile;
 
 + (Class)controlItemClass;
 - (void)_notifyDelegateOfOverrideStatusTextChange;
+- (unsigned long long)_paletteType;
 - (id)controlToViewValueTransformer;
 - (id)createInteractionCoordinator;
 - (void)interactionCoordinator:(id)arg1 activeModeDidChange:(unsigned long long)arg2;

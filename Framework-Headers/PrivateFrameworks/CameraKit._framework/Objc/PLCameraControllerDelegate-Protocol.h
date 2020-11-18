@@ -52,8 +52,8 @@
 - (void)cameraControllerRemoteShutterCanceled:(CMKCaptureController *)arg1;
 - (void)cameraControllerRemoteShutterNeedsReadiness:(CMKCaptureController *)arg1;
 - (void)cameraControllerRemoteShutterPressed:(CMKCaptureController *)arg1 countdown:(unsigned long long)arg2;
-- (void)cameraControllerRemoteShutterStartVideoCapture:(CMKCaptureController *)arg1;
-- (void)cameraControllerRemoteShutterStopVideoCapture:(CMKCaptureController *)arg1;
+- (BOOL)cameraControllerRemoteShutterStartVideoCapture:(CMKCaptureController *)arg1;
+- (BOOL)cameraControllerRemoteShutterStopVideoCapture:(CMKCaptureController *)arg1;
 - (void)cameraControllerRemoteShutterToggleCameraDevice:(CMKCaptureController *)arg1;
 - (void)cameraControllerServerDied:(CMKCaptureController *)arg1;
 - (void)cameraControllerServerError:(CMKCaptureController *)arg1;

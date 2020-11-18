@@ -53,11 +53,12 @@
 - (struct OpaqueFigEndpoint *)figEndpoint;
 - (void)finalize;
 - (id)init;
-- (id)initWithCurrentCarPlayExternalDevice;
 - (id)initWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1;
 - (void)requestCarUI;
 - (void)requestCarUIForURL:(id)arg1;
+- (void)requestCarUIForURL:(id)arg1 withUUID:(id)arg2;
 - (id)requestTurnByTurnNavigationOwnership;
+- (void)sendCommand:(id)arg1 withParameters:(id)arg2;
 - (void)takeScreenForClient:(id)arg1 reason:(id)arg2;
 - (void)takeScreenForConnection;
 

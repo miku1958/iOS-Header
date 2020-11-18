@@ -133,13 +133,14 @@
 @property (nonatomic) BOOL supportsBinauralStreaming; // @synthesize supportsBinauralStreaming=_supportsBinauralStreaming;
 @property (nonatomic) BOOL supportsCombinedPresets; // @synthesize supportsCombinedPresets=_supportsCombinedPresets;
 @property (nonatomic) BOOL supportsCombinedVolumes; // @synthesize supportsCombinedVolumes=_supportsCombinedVolumes;
-@property (nonatomic) id<AXHARemoteUpdateProtocol> updateDelegate; // @synthesize updateDelegate=_updateDelegate;
+@property (weak, nonatomic) id<AXHARemoteUpdateProtocol> updateDelegate; // @synthesize updateDelegate=_updateDelegate;
 
 - (void).cxx_destruct;
 - (void)_delayWriteProperties;
 - (void)_updateSelectedProgramsProperties;
 - (id)_valueForProperty:(unsigned long long)arg1;
 - (void)_writeAllProgramSelectionsToPeripheral;
+- (id)combinedPrograms;
 - (void)connect;
 - (BOOL)containsPeripheralWithUUID:(id)arg1;
 - (void)dealloc;
@@ -156,6 +157,7 @@
 - (BOOL)isRightConnected;
 - (BOOL)leftAvailable;
 - (void)loadRequiredProperties;
+- (id)programAtIndex:(unsigned char)arg1 forEar:(int)arg2;
 - (id)programs;
 - (BOOL)programsListsAreEqual;
 - (BOOL)propertyIsAvailable:(unsigned long long)arg1 forEar:(int)arg2;
@@ -164,6 +166,8 @@
 - (id)selectedProgramIndexes;
 - (id)selectedPrograms;
 - (void)setValue:(id)arg1 forProperty:(unsigned long long)arg2;
+- (BOOL)shouldDisplayCombinedVolume;
+- (BOOL)shouldOnlyShowIndividualVolumesForProperty:(unsigned long long)arg1;
 - (BOOL)showCombinedPrograms;
 - (BOOL)supportsCombinedVolumesForProperty:(unsigned long long)arg1;
 - (id)valueForProperty:(unsigned long long)arg1;

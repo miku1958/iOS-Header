@@ -4,24 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessory, HMDUser, NSData, NSDate, NSUUID;
+@class HMDHAPAccessory, HMDUser, NSData, NSDate, NSUUID;
 
-@interface HMDRelayConsentToken : NSObject <NSSecureCoding>
+@interface HMDRelayConsentToken : HMFObject <NSSecureCoding>
 {
     NSUUID *_accessoryIdentifier;
     NSUUID *_userIdentifier;
     NSUUID *_identifier;
-    HMDAccessory *_accessory;
+    HMDHAPAccessory *_accessory;
     HMDUser *_user;
     NSData *_consentToken;
     NSDate *_expirationDate;
 }
 
-@property (weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
+@property (weak, nonatomic) HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
 @property (readonly, nonatomic) NSUUID *accessoryIdentifier; // @synthesize accessoryIdentifier=_accessoryIdentifier;
 @property (readonly, copy, nonatomic) NSData *consentToken; // @synthesize consentToken=_consentToken;
 @property (readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;

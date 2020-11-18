@@ -8,53 +8,96 @@
 
 #import <CloudKitDaemon/CKDProtocolTranslatorIdentityDelegate-Protocol.h>
 
-@class CKDClientContext, NSArray, NSMutableDictionary, NSOperationQueue, NSString;
-@protocol NSObject, OS_dispatch_source;
+@class CKDClientContext, NSArray, NSData, NSDate, NSMutableDictionary, NSOperationQueue, NSString;
+@protocol NSObject, OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface CKDPCSManager : NSObject <CKDProtocolTranslatorIdentityDelegate>
 {
     NSArray *_sharingIdentityFingerprints;
     CKDClientContext *_context;
-    NSOperationQueue *_operationQueue;
+    NSOperationQueue *_notificationQueue;
     NSString *_currentAccountIdentifier;
     NSMutableDictionary *_PCSIdentityWrappersByServiceName;
+    NSDate *_lastMissingManateeIdentityErrorDateForCurrentService;
     struct _PCSIdentityData *_debugIdentity;
     NSString *_serviceName;
+    NSData *_boundaryKeyData;
     NSString *_liverpoolPublicKey;
     id<NSObject> _contextObserver;
     NSObject<OS_dispatch_source> *_pcsUpdateSource;
+    NSObject<OS_dispatch_queue> *_synchronizeQueue;
+    NSMutableDictionary *_fakeIdentitySetsByServiceByUsername;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *PCSIdentityWrappersByServiceName; // @synthesize PCSIdentityWrappersByServiceName=_PCSIdentityWrappersByServiceName;
+@property (strong, nonatomic) NSData *boundaryKeyData; // @synthesize boundaryKeyData=_boundaryKeyData;
 @property (readonly, weak, nonatomic) CKDClientContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) id<NSObject> contextObserver; // @synthesize contextObserver=_contextObserver;
 @property (strong) NSString *currentAccountIdentifier; // @synthesize currentAccountIdentifier=_currentAccountIdentifier;
+@property (readonly, nonatomic) BOOL currentServiceIsManatee;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) struct _PCSIdentityData *debugIdentity; // @synthesize debugIdentity=_debugIdentity;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSMutableDictionary *fakeIdentitySetsByServiceByUsername; // @synthesize fakeIdentitySetsByServiceByUsername=_fakeIdentitySetsByServiceByUsername;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSDate *lastMissingManateeIdentityErrorDateForCurrentService; // @synthesize lastMissingManateeIdentityErrorDateForCurrentService=_lastMissingManateeIdentityErrorDateForCurrentService;
 @property (strong, nonatomic) NSString *liverpoolPublicKey; // @synthesize liverpoolPublicKey=_liverpoolPublicKey;
-@property (strong, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
+@property (strong, nonatomic) NSOperationQueue *notificationQueue; // @synthesize notificationQueue=_notificationQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *pcsUpdateSource; // @synthesize pcsUpdateSource=_pcsUpdateSource;
 @property (strong, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property (strong, nonatomic) NSArray *sharingIdentityFingerprints; // @synthesize sharingIdentityFingerprints=_sharingIdentityFingerprints;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *synchronizeQueue; // @synthesize synchronizeQueue=_synchronizeQueue;
 
++ (struct _PCSIdentitySetData *)_copyPCSIdentitiesForService:(id)arg1 forFakeAccount:(id)arg2 withError:(id *)arg3;
++ (struct _PCSIdentitySetData *)_getPCSIdentitiesForService:(id)arg1 forFakeAccount:(id)arg2 withError:(id *)arg3;
++ (id)accountIDAwaitingUpdatesToServiceNames;
++ (id)allProtectionIdentifiersFromShareProtection:(struct _OpaquePCSShareProtection *)arg1;
++ (id)currentKeyIDByServiceNameAwaitingUpdate;
++ (id)globalKeyRegistrySyncQueue;
++ (id)keyRegistrySyncGroupByManateeServiceName;
++ (id)lastKeyRegistrySyncErrorByManateeServiceName;
++ (id)lastKeyRegistrySyncSuccessByManateeServiceName;
++ (id)lastKeyRegistrySyncTimestampByServiceName;
++ (id)lastNonManateeKeyRegistrySyncError;
++ (BOOL)lastNonManateeKeyRegistrySyncSuccess;
++ (id)noMatchingIdentityErrorForPCSError:(struct __CFError *)arg1 withErrorCode:(long long)arg2 description:(id)arg3;
++ (id)nonManateeKeyRegistrySyncGroup;
++ (id)protectionIdentifierFromShareProtection:(struct _OpaquePCSShareProtection *)arg1;
++ (id)publicKeyIDFromIdentity:(struct _OpaquePCSShareProtection *)arg1;
++ (void)setAccountIDAwaitingUpdatesToServiceNames:(id)arg1;
++ (void)setLastNonManateeKeyRegistrySyncError:(id)arg1;
++ (void)setLastNonManateeKeyRegistrySyncSuccess:(BOOL)arg1;
++ (void)setNonManateeKeyRegistrySyncGroup:(id)arg1;
++ (id)sharedFakeIdentitySetsByServiceByUsername;
 - (void).cxx_destruct;
 - (id)_PCSServiceStringFromCKServiceType:(unsigned long long)arg1;
 - (id)_addIdentity:(struct _PCSIdentitySetData *)arg1 withService:(unsigned long long)arg2 toPCS:(struct _OpaquePCSShareProtection *)arg3;
 - (struct _OpaquePCSShareProtection *)_addPublicIdentityForService:(unsigned long long)arg1 toSharePCS:(struct _OpaquePCSShareProtection *)arg2 withError:(id *)arg3;
 - (id)_addServiceIdentitiesOfType:(id)arg1 toSet:(struct _PCSIdentitySetData *)arg2 fromSet:(struct _PCSIdentitySetData *)arg3 markCurrent:(BOOL)arg4;
+- (id)_copyAllPublicKeyDatasForIdentitySet:(struct _PCSIdentitySetData *)arg1 withError:(id *)arg2;
 - (struct _PCSIdentitySetData *)_copyIdentityForService:(id)arg1 useCache:(BOOL)arg2 withError:(id *)arg3;
 - (id)_copyPublicKeyDataForIdentitySet:(struct _PCSIdentitySetData *)arg1 withService:(unsigned long long)arg2 withError:(id *)arg3;
 - (struct _PCSIdentitySetData *)_copyServiceIdentityWithType:(unsigned long long)arg1 useCache:(BOOL)arg2 withError:(id *)arg3;
 - (struct _PCSIdentitySetData *)_copyServiceIdentityWithType:(unsigned long long)arg1 withError:(id *)arg2;
+- (struct _OpaquePCSShareProtection *)_copyShareProtectionFromExportedData:(id)arg1 identities:(struct _PCSIdentitySetData *)arg2 error:(struct __CFError **)arg3;
 - (struct _PCSIdentitySetData *)_createIdentitySetByAddingLiverpoolIdentity:(id)arg1 error:(id *)arg2;
 - (struct _PCSIdentitySetData *)_createInMemoryIdentitySetForService:(id)arg1 error:(id *)arg2;
+- (void)_createZonePCSFromData:(id)arg1 usingServiceIdentityWithType:(unsigned long long)arg2 withSyncKeyRegistryRetry:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)_fingerprintsFromIdentitySet:(struct _PCSIdentitySetData *)arg1;
+- (struct _PCSIdentitySetData *)_getPCSIdentitiesForService:(id)arg1 forFakeAccount:(id)arg2 withError:(id *)arg3;
 - (id)_internalServicesToCombineWithLiverpoolKey;
-- (struct _PCSIdentitySetData *)_reallyCopyIdentityForService:(id)arg1 withError:(id *)arg2;
+- (BOOL)_isValidIdentitySet:(struct _PCSIdentitySetData *)arg1 forServiceName:(id)arg2;
+- (void)_lockedBoundaryKeyDataWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_lockedSynchronizeUserKeyRegistryForServiceType:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_locked_createZonePCSFromData:(id)arg1 usingServiceIdentityWithType:(unsigned long long)arg2 withSyncKeyRegistryRetry:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_locked_createZonePCSWithSyncKeyRegistryRetry:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_locked_preflightIdentitiesForService:(unsigned long long)arg1 withSyncKeyRegistryRetry:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_markServiceAsAwaitingUpdate:(id)arg1;
+- (void)_onSynchronizeQueue:(CDUnknownBlockType)arg1;
+- (void)_preflightIdentitiesForService:(unsigned long long)arg1 withSyncKeyRegistryRetry:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (struct _PCSIdentitySetData *)_reallyCopyIdentityForService:(id)arg1 withValidation:(BOOL)arg2 error:(id *)arg3;
 - (id)_serviceNameForContainerID:(id)arg1;
 - (id)addIdentityBackToPCS:(struct _OpaquePCSShareProtection *)arg1;
 - (id)addIdentityForService:(unsigned long long)arg1 toPCS:(struct _OpaquePCSShareProtection *)arg2;
@@ -62,12 +105,13 @@ __attribute__((visibility("hidden")))
 - (BOOL)addSharePCS:(struct _OpaquePCSShareProtection *)arg1 toRecordPCS:(struct _OpaquePCSShareProtection *)arg2 error:(id *)arg3;
 - (BOOL)addSharePCS:(struct _OpaquePCSShareProtection *)arg1 toRecordPCS:(struct _OpaquePCSShareProtection *)arg2 permission:(unsigned long long)arg3 error:(id *)arg4;
 - (id)addSharingIdentity:(struct _PCSIdentityData *)arg1 toSharePCS:(struct _OpaquePCSShareProtection *)arg2 permission:(unsigned long long)arg3;
+- (void)boundaryKeyDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)canDecryptInvitedProtectionData:(id)arg1 participantProtectionInfo:(id)arg2 serviceType:(unsigned long long)arg3 error:(id *)arg4;
+- (BOOL)containerSupportsEnhancedContext;
+- (id)copyAllPublicKeysForService:(unsigned long long)arg1 withError:(id *)arg2;
 - (struct _PCSPublicIdentityData *)copyDiversifiedIdentityForService:(unsigned long long)arg1 withError:(id *)arg2;
 - (id)copyDiversifiedPublicKeyForService:(unsigned long long)arg1 withError:(id *)arg2;
-- (id)copyPublicIdentityForDSID:(id)arg1 withError:(id *)arg2;
 - (id)copyPublicKeyForService:(unsigned long long)arg1 withError:(id *)arg2;
-- (struct _PCSIdentitySetData *)copyServiceIdentityForDSID:(id)arg1 withError:(id *)arg2;
 - (struct _OpaquePCSShareProtection *)createChainPCSWithError:(id *)arg1;
 - (struct _PCSIdentityData *)createCombinedIdentityWithOutOfNetworkPrivateKey:(id)arg1 publicSharingIdentity:(id)arg2;
 - (struct _OpaquePCSShareProtection *)createEmptySharePCSWithError:(id *)arg1;
@@ -88,8 +132,11 @@ __attribute__((visibility("hidden")))
 - (struct _OpaquePCSShareProtection *)createSharePCSFromEncryptedData:(id)arg1 error:(id *)arg2;
 - (struct _OpaquePCSShareProtection *)createSharePublicPCSWithIdentity:(struct _PCSIdentityData *)arg1 error:(id *)arg2;
 - (struct _PCSIdentityData *)createSharingIdentityFromData:(id)arg1 error:(id *)arg2;
-- (struct _OpaquePCSShareProtection *)createZonePCSFromData:(id)arg1 error:(id *)arg2;
+- (void)createZonePCSFromData:(id)arg1 usingServiceIdentityWithType:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (struct _OpaquePCSShareProtection *)createZonePCSFromData:(id)arg1 usingServiceIdentityWithType:(unsigned long long)arg2 error:(id *)arg3;
+- (void)createZonePCSWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (struct _OpaquePCSShareProtection *)createZonePCSWithError:(id *)arg1;
+- (void)createZonePCSWithSyncKeyRegistryRetry:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)dataFromRecordPCS:(struct _OpaquePCSShareProtection *)arg1 error:(id *)arg2;
 - (id)dataFromSharePCS:(struct _OpaquePCSShareProtection *)arg1 error:(id *)arg2;
 - (id)dataFromSharingIdentity:(struct _PCSIdentityData *)arg1 error:(id *)arg2;
@@ -103,10 +150,10 @@ __attribute__((visibility("hidden")))
 - (id)etagFromSharePCS:(struct _OpaquePCSShareProtection *)arg1 error:(id *)arg2;
 - (id)etagFromZonePCS:(struct _OpaquePCSShareProtection *)arg1 error:(id *)arg2;
 - (id)initWithClientContext:(id)arg1;
-- (id)newAssetKeyWithError:(id *)arg1;
+- (id)keyRegistrySyncQueue;
+- (id)newAssetKeyWithType:(unsigned long long)arg1 withError:(id *)arg2;
 - (id)pcsDataFromFetchedShare:(id)arg1 withServiceType:(unsigned long long)arg2 error:(id *)arg3;
-- (id)protectionIdentifierFromShareProtection:(struct _OpaquePCSShareProtection *)arg1;
-- (id)publicKeyIDFromIdentity:(struct _OpaquePCSShareProtection *)arg1;
+- (void)preflightIdentitiesForService:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)referenceIdentifierStringFromAssetKey:(id)arg1;
 - (id)referenceSignatureFromAssetKey:(id)arg1;
 - (id)removeEncryptedPCS:(id)arg1 fromSharePCS:(struct _OpaquePCSShareProtection *)arg2;
@@ -116,12 +163,18 @@ __attribute__((visibility("hidden")))
 - (BOOL)removeSharePCS:(struct _OpaquePCSShareProtection *)arg1 fromRecordPCS:(struct _OpaquePCSShareProtection *)arg2 error:(id *)arg3;
 - (id)removeSharingIdentity:(struct _PCSIdentityData *)arg1 fromSharePCS:(struct _OpaquePCSShareProtection *)arg2;
 - (id)repairZonePCSData:(id)arg1 error:(id *)arg2;
+- (id)rollMasterKeyForRecordPCS:(struct _OpaquePCSShareProtection *)arg1;
 - (id)sharingIdentityDataFromPCS:(struct _OpaquePCSShareProtection *)arg1 error:(id *)arg2;
-- (id)unwrapAssetKey:(id)arg1 withRecordPCS:(struct _OpaquePCSShareProtection *)arg2 withError:(id *)arg3;
-- (id)unwrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 forField:(id)arg3;
+- (void)synchronizeUserKeyRegistryForServiceType:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)unwrapAssetKey:(id)arg1 withRecordPCS:(struct _OpaquePCSShareProtection *)arg2 inContext:(id)arg3 withError:(id *)arg4;
+- (id)unwrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 inContext:(id)arg3;
+- (id)unwrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 withContextString:(id)arg3;
+- (id)updateIdentityAndRollKeyForZonePCS:(struct _OpaquePCSShareProtection *)arg1 usingServiceIdentityWithType:(unsigned long long)arg2;
 - (id)updateServiceIdentityOnZonePCS:(struct _OpaquePCSShareProtection *)arg1;
-- (id)wrapAssetKey:(id)arg1 withRecordPCS:(struct _OpaquePCSShareProtection *)arg2 withError:(id *)arg3;
-- (id)wrapEncrypedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 forField:(id)arg3;
+- (id)wrapAssetKey:(id)arg1 withRecordPCS:(struct _OpaquePCSShareProtection *)arg2 inContext:(id)arg3 withError:(id *)arg4;
+- (id)wrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 inContext:(id)arg3;
+- (id)wrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 withContextString:(id)arg3;
+- (BOOL)zonePCSNeedsKeyRolled:(struct _OpaquePCSShareProtection *)arg1;
 - (BOOL)zonePCSNeedsUpdate:(struct _OpaquePCSShareProtection *)arg1;
 
 @end

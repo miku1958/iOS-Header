@@ -19,6 +19,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) ICAccount *noteContainerAccount;
 @property (readonly) Class superclass;
 
 + (id)accountProxyWithAccount:(id)arg1;
@@ -29,9 +30,9 @@
 - (id)initWithAccount:(id)arg1;
 - (BOOL)isDeleted;
 - (BOOL)isLeaf;
-- (id)noteContainerAccount;
 - (BOOL)noteIsVisible:(id)arg1;
 - (id)noteVisibilityTestingForSearchingAccount;
+- (id)predicateForPinnedNotes;
 - (id)predicateForSearchableAttachments;
 - (id)predicateForSearchableNotes;
 - (id)predicateForVisibleNotes;

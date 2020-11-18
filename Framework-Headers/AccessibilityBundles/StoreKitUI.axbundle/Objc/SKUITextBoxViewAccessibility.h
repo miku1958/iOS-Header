@@ -14,11 +14,10 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilitySwitchOrderedChildrenFrom:(id)arg1;
-- (id)accessibilityContainerElements;
+- (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame:(id)arg1;
 - (id)accessibilityLabel:(id)arg1;
 - (unsigned long long)accessibilityTraits:(id)arg1;
-- (void)dealloc;
 - (BOOL)isAccessibilityElement;
 - (BOOL)isAccessibilityElement:(id)arg1;
 

@@ -6,14 +6,16 @@
 
 #import <Photos/PHSettings.h>
 
-@class PHImageManagerSettings;
+@class PHImageManagerSettings, PHResourceDownloadSettings;
 
 @interface PHRootSettings : PHSettings
 {
     PHImageManagerSettings *_imageManagerSettings;
+    PHResourceDownloadSettings *_resourceDownloadSettings;
 }
 
 @property (readonly, nonatomic) PHImageManagerSettings *imageManagerSettings; // @synthesize imageManagerSettings=_imageManagerSettings;
+@property (readonly, nonatomic) PHResourceDownloadSettings *resourceDownloadSettings; // @synthesize resourceDownloadSettings=_resourceDownloadSettings;
 
 + (id)settingsControllerModule;
 + (id)sharedSettings;

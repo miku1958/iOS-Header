@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)setHidden:(BOOL)arg1;
 
 @end
 

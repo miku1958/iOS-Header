@@ -14,12 +14,14 @@
 {
     BOOL _allowDefaultZoneSave;
     BOOL _markZonesAsUserPurged;
+    BOOL _dontFetchFromServer;
     NSArray *_recordZonesToSave;
     NSArray *_recordZoneIDsToDelete;
     long long _maxZoneSaveAttempts;
 }
 
 @property (nonatomic) BOOL allowDefaultZoneSave; // @synthesize allowDefaultZoneSave=_allowDefaultZoneSave;
+@property (nonatomic) BOOL dontFetchFromServer; // @synthesize dontFetchFromServer=_dontFetchFromServer;
 @property (nonatomic) BOOL markZonesAsUserPurged; // @synthesize markZonesAsUserPurged=_markZonesAsUserPurged;
 @property (nonatomic) long long maxZoneSaveAttempts; // @synthesize maxZoneSaveAttempts=_maxZoneSaveAttempts;
 @property (strong, nonatomic) NSArray *recordZoneIDsToDelete; // @synthesize recordZoneIDsToDelete=_recordZoneIDsToDelete;

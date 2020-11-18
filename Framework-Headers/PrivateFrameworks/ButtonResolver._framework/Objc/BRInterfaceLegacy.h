@@ -13,6 +13,7 @@
     BOOL _isReady;
     struct __IOHIDEventSystemClient *_client;
     NSMutableArray *_services;
+    CDUnknownBlockType _block;
     unsigned long long _doublePressTimeoutUs;
     unsigned long long _triplePressTimeoutUs;
     unsigned long long _doubleTapTimeoutUs;
@@ -29,10 +30,10 @@
 + (id)interface;
 - (BOOL)_disableState:(unsigned long long)arg1;
 - (BOOL)_enableState:(unsigned long long)arg1;
-- (BOOL)_findServices:(CDUnknownBlockType)arg1;
+- (void)_findServices;
 - (BOOL)_servicesSetProperty:(void *)arg1 forKey:(struct __CFString *)arg2;
 - (BOOL)_setConfig:(id)arg1 forState:(unsigned long long)arg2 error:(id *)arg3;
-- (BOOL)_setDefaultServiceProperties;
+- (BOOL)_setDefaultServicePropertiesOnService:(struct __IOHIDServiceClient *)arg1;
 - (void)dealloc;
 - (id)description;
 - (BOOL)disableStates:(id)arg1 clearAsset:(BOOL)arg2 error:(id *)arg3;
@@ -42,6 +43,7 @@
 - (unsigned long long)maxAssetSlots;
 - (id)propertyList;
 - (void)scheduleReadyNotificationWithBlock:(CDUnknownBlockType)arg1;
+- (void)serviceAddedHandler:(struct __IOHIDServiceClient *)arg1;
 - (BOOL)setConfigs:(id)arg1 withAssets:(id)arg2 forStates:(id)arg3 error:(id *)arg4;
 - (BOOL)setGlobalConfigs:(id)arg1 error:(id *)arg2;
 - (unsigned long long)unusedAssetSlots;

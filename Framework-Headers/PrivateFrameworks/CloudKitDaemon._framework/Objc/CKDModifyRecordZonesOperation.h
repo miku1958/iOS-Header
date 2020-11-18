@@ -13,34 +13,45 @@ __attribute__((visibility("hidden")))
 {
     BOOL _allowDefaultZoneSave;
     BOOL _markZonesAsUserPurged;
+    BOOL _dontFetchFromServer;
+    BOOL _didSynchronizeUserKeyRegistry;
+    BOOL _shouldSynchronizeUserKeyRegistry;
     int _numZoneSaveAttempts;
     CDUnknownBlockType _saveCompletionBlock;
     CDUnknownBlockType _deleteCompletionBlock;
     NSMutableArray *_recordZonesToSave;
     NSArray *_recordZoneIDsToDelete;
     NSMutableDictionary *_recordZonesByZoneID;
+    NSMutableDictionary *_retryableErrorsByZoneID;
     long long _maxZoneSaveAttempts;
 }
 
 @property (nonatomic) BOOL allowDefaultZoneSave; // @synthesize allowDefaultZoneSave=_allowDefaultZoneSave;
 @property (copy, nonatomic) CDUnknownBlockType deleteCompletionBlock; // @synthesize deleteCompletionBlock=_deleteCompletionBlock;
+@property (nonatomic) BOOL didSynchronizeUserKeyRegistry; // @synthesize didSynchronizeUserKeyRegistry=_didSynchronizeUserKeyRegistry;
+@property (nonatomic) BOOL dontFetchFromServer; // @synthesize dontFetchFromServer=_dontFetchFromServer;
 @property (nonatomic) BOOL markZonesAsUserPurged; // @synthesize markZonesAsUserPurged=_markZonesAsUserPurged;
 @property (nonatomic) long long maxZoneSaveAttempts; // @synthesize maxZoneSaveAttempts=_maxZoneSaveAttempts;
 @property (nonatomic) int numZoneSaveAttempts; // @synthesize numZoneSaveAttempts=_numZoneSaveAttempts;
 @property (strong, nonatomic) NSArray *recordZoneIDsToDelete; // @synthesize recordZoneIDsToDelete=_recordZoneIDsToDelete;
 @property (strong, nonatomic) NSMutableDictionary *recordZonesByZoneID; // @synthesize recordZonesByZoneID=_recordZonesByZoneID;
 @property (strong, nonatomic) NSMutableArray *recordZonesToSave; // @synthesize recordZonesToSave=_recordZonesToSave;
+@property (strong, nonatomic) NSMutableDictionary *retryableErrorsByZoneID; // @synthesize retryableErrorsByZoneID=_retryableErrorsByZoneID;
 @property (copy, nonatomic) CDUnknownBlockType saveCompletionBlock; // @synthesize saveCompletionBlock=_saveCompletionBlock;
+@property (nonatomic) BOOL shouldSynchronizeUserKeyRegistry; // @synthesize shouldSynchronizeUserKeyRegistry=_shouldSynchronizeUserKeyRegistry;
 
++ (long long)isPredominatelyDownload;
 - (void).cxx_destruct;
 - (void)_checkAndPrepareZones;
+- (void)_createNewPCSForZone:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_fetchPCSDataForZone:(id)arg1 fromServer:(BOOL)arg2;
 - (void)_fetchPCSDataForZonesFromServer:(BOOL)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleRecordZoneDeleted:(id)arg1 responseCode:(id)arg2;
-- (void)_handleRecordZoneSaved:(id)arg1 responseCode:(id)arg2;
+- (void)_handleRecordZoneSaved:(id)arg1 responseCode:(id)arg2 serverCapabilities:(unsigned long long)arg3;
 - (BOOL)_saveZonesToServer;
 - (void)_sendErrorForFailedZones;
+- (void)_sychronizeUserKeyRegistryIfNeeded;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;

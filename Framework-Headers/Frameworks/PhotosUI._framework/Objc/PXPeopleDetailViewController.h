@@ -6,35 +6,52 @@
 
 #import <PhotosUICore/PXPhotosDetailsUIViewController.h>
 
-#import <PhotosUICore/PXPeopleNamePickerViewControllerDelegate-Protocol.h>
+#import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
-@class NSArray, NSString, PXPeopleNamePickerViewController;
+@class NSArray, NSString, PXPeopleDetailStatusOverlayView, UIScrollView;
 
-@interface PXPeopleDetailViewController : PXPhotosDetailsUIViewController <PXPeopleNamePickerViewControllerDelegate>
+@interface PXPeopleDetailViewController : PXPhotosDetailsUIViewController <PXPhotoLibraryUIChangeObserver>
 {
-    PXPeopleNamePickerViewController *_namePicker;
+    BOOL _processingFaces;
     NSArray *_people;
+    PXPeopleDetailStatusOverlayView *_overlayView;
+    UIScrollView *_overlayScrollView;
+    NSArray *_overlayConstraints;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) PXPeopleNamePickerViewController *namePicker; // @synthesize namePicker=_namePicker;
+@property (strong, nonatomic) NSArray *overlayConstraints; // @synthesize overlayConstraints=_overlayConstraints;
+@property (strong, nonatomic) UIScrollView *overlayScrollView; // @synthesize overlayScrollView=_overlayScrollView;
+@property (strong, nonatomic) PXPeopleDetailStatusOverlayView *overlayView; // @synthesize overlayView=_overlayView;
 @property (strong, nonatomic) NSArray *people; // @synthesize people=_people;
+@property (nonatomic, getter=isProcessingFaces) BOOL processingFaces; // @synthesize processingFaces=_processingFaces;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_assetCollectionListFetchResultForPeople:(id)arg1;
+- (void)_applicationBecameActive:(id)arg1;
+- (id)_assetCollectionListFetchResultForPeople:(id)arg1 assetCount:(unsigned long long *)arg2;
+- (void)_createNewDetailView:(id)arg1;
+- (void)_launchNaming:(id)arg1;
+- (void)_loadComposition;
 - (void)_setupHeader;
+- (void)_setupProcessingOverlayView;
+- (void)_suggestionsDidFinish:(id)arg1;
 - (void)_updateDataSourceWithCollectionForPerson:(id)arg1;
+- (void)_updateHeader;
+- (void)_updateOverlayConstraintsIfNeeded;
+- (void)_updateOverlayContentSizeIfNeeded;
 - (id)initWithPeople:(id)arg1;
-- (void)namePickerController:(id)arg1 didPickContact:(id)arg2;
-- (void)namePickerController:(id)arg1 didPickPerson:(id)arg2;
-- (void)namePickerController:(id)arg1 didPickString:(id)arg2;
-- (void)namePickerControllerDidEndEditing:(id)arg1;
-- (void)namePickerControllerDidStartEditing:(id)arg1;
+- (void)photoLibraryDidChangeOnMainQueue:(id)arg1 withPreparedInfo:(id)arg2;
+- (void)presentBootstrapViewControllerWithType:(unsigned long long)arg1;
+- (void)refreshName;
+- (void)refreshPeople;
 - (BOOL)shouldUpdateStatusBarTitle;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

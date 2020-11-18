@@ -25,9 +25,10 @@
 - (unsigned int)_accessibilityWindowContextId;
 - (void)_axListenForRemoteElement;
 - (void)_axRemoteElementRegistered:(id)arg1;
+- (void)_axUpdateForRemoteElement:(id)arg1;
 - (void)_orderFrontWithoutMakingKey;
 - (void)_setFirstResponder:(id)arg1;
-- (id)accessibilityAttributeValue:(int)arg1;
+- (id)accessibilityAttributeValue:(long long)arg1;
 - (id)accessibilityContainer;
 - (BOOL)accessibilityIsWindow;
 - (id)accessibilityRemoteSubstituteChildren:(id)arg1;

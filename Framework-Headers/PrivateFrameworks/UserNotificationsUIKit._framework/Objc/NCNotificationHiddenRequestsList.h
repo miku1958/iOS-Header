@@ -24,6 +24,7 @@
 - (void)addHiddenNotificationRequest:(id)arg1;
 - (void)addHiddenSectionIdentifier:(id)arg1 subSectionIdentifier:(id)arg2;
 - (void)clearAllNotificationRequests;
+- (BOOL)containsHiddenNotificationRequest:(id)arg1;
 - (id)hiddenNotificationRequestsForSectionIdentifier:(id)arg1 subSectionIdentifier:(id)arg2;
 - (id)init;
 - (BOOL)isHiddenNotificationRequest:(id)arg1;

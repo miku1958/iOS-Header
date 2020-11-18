@@ -25,6 +25,8 @@
 
 - (void).cxx_destruct;
 - (void)loadView;
+- (void)manageDictionaries:(id)arg1;
+- (id)manageDictionariesURL;
 - (void)searchWeb:(id)arg1;
 
 @end

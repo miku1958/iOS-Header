@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray, NSString, UIAlertController, UIViewController, _UIAlertControllerShimPresenter;
+@class NSMutableArray, NSString, UIAlertController, _UIAlertControllerShimPresenter;
 
 @interface UIAlertView : UIView
 {
@@ -29,25 +29,20 @@
     BOOL _dismissingAlertController;
     BOOL __currentlyRunningModal;
     id _delegate;
-    UIViewController *_externalViewControllerForPresentation;
 }
 
 @property (nonatomic, setter=_setCurrentlyRunningModal:) BOOL _currentlyRunningModal; // @synthesize _currentlyRunningModal=__currentlyRunningModal;
 @property (nonatomic) long long alertViewStyle;
 @property (nonatomic) long long cancelButtonIndex;
 @property (weak, nonatomic) id delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic, getter=_externalViewControllerForPresentation, setter=_setExternalViewControllerForPresentation:) UIViewController *externalViewControllerForPresentation; // @synthesize externalViewControllerForPresentation=_externalViewControllerForPresentation;
 @property (readonly, nonatomic) long long firstOtherButtonIndex;
-@property (nonatomic) BOOL groupsTextFields;
 @property (copy, nonatomic) NSString *message;
 @property (readonly, nonatomic) long long numberOfButtons;
-@property (nonatomic) BOOL showsOverSpringBoardAlerts;
 @property (copy, nonatomic) NSString *title;
 @property (readonly, nonatomic, getter=isVisible) BOOL visible;
 
 + (id)_alertViewForSessionWithRemoteViewController:(id)arg1;
 + (id)_alertViewForWindow:(id)arg1;
-+ (id)_alertWindow;
 + (BOOL)_isAlertControllerShimClass;
 + (id)_remoteAlertViewWithBlock:(CDUnknownBlockType)arg1;
 + (void)_setSpringBoardAlertDisplayingOverApplicationAlert:(BOOL)arg1;
@@ -56,7 +51,6 @@
 + (struct CGSize)minimumSize;
 - (void).cxx_destruct;
 - (id)_addButtonWithTitle:(id)arg1;
-- (id)_addButtonWithTitle:(id)arg1 label:(id)arg2 buttonClass:(Class)arg3;
 - (id)_addButtonWithTitleText:(id)arg1;
 - (id)_addTextFieldWithValue:(id)arg1 label:(id)arg2;
 - (id)_alertController;
@@ -72,7 +66,6 @@
 - (void)_dismissForTappedIndex:(long long)arg1;
 - (void)_endRunningModallyIfNecessary;
 - (BOOL)_isAnimating;
-- (BOOL)_isSBAlert;
 - (double)_maxHeight;
 - (long long)_maximumNumberOfTextFieldsForCurrentStyle;
 - (void)_performPopup:(BOOL)arg1;
@@ -83,7 +76,6 @@
 - (BOOL)_prepareToDismissForTappedIndex:(long long)arg1;
 - (id)_preparedAlertActionAtIndex:(unsigned long long)arg1;
 - (void)_presentSheetFromView:(id)arg1 above:(BOOL)arg2;
-- (void)_presentSheetStartingFromYCoordinate:(double)arg1;
 - (void)_setAccessoryView:(id)arg1;
 - (void)_setAccessoryViewController:(id)arg1;
 - (void)_setDefaultButton:(id)arg1;
@@ -107,7 +99,6 @@
 - (id)addButtonWithTitle:(id)arg1 buttonClass:(Class)arg2;
 - (id)addButtonWithTitle:(id)arg1 label:(id)arg2;
 - (id)addTextFieldWithValue:(id)arg1 label:(id)arg2;
-- (int)alertSheetStyle;
 - (struct CGSize)backgroundSize;
 - (int)bodyMaxLineCount;
 - (id)bodyText;
@@ -124,6 +115,7 @@
 - (void)dismissAnimated:(BOOL)arg1;
 - (void)dismissWithClickedButtonIndex:(long long)arg1 animated:(BOOL)arg2;
 - (BOOL)forceHorizontalButtonsLayout;
+- (BOOL)groupsTextFields;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithTitle:(id)arg1 buttons:(id)arg2 defaultButtonIndex:(int)arg3 delegate:(id)arg4 context:(id)arg5;
@@ -136,7 +128,6 @@
 - (int)numberOfLinesInTitle;
 - (long long)numberOfRows;
 - (void)popupAlertAnimated:(BOOL)arg1;
-- (void)popupAlertAnimated:(BOOL)arg1 animationType:(int)arg2;
 - (void)popupAlertAnimated:(BOOL)arg1 atOffset:(double)arg2;
 - (void)presentSheetFromAboveView:(id)arg1;
 - (void)presentSheetFromBehindView:(id)arg1;
@@ -146,7 +137,6 @@
 - (void)replaceAlert:(id)arg1;
 - (BOOL)requiresPortraitOrientation;
 - (BOOL)runsModal;
-- (void)setAlertSheetStyle:(int)arg1;
 - (void)setBodyText:(id)arg1;
 - (void)setBodyTextMaxLineCount:(int)arg1;
 - (void)setContext:(id)arg1;
@@ -155,16 +145,18 @@
 - (void)setDimView:(id)arg1;
 - (void)setDimsBackground:(BOOL)arg1;
 - (void)setForceHorizontalButtonsLayout:(BOOL)arg1;
+- (void)setGroupsTextFields:(BOOL)arg1;
 - (void)setKeyboardShowsOnPopup:(BOOL)arg1;
 - (void)setNumberOfRows:(long long)arg1;
 - (void)setRunsModal:(BOOL)arg1;
+- (void)setShowsOverSpringBoardAlerts:(BOOL)arg1;
 - (void)setSubtitle:(id)arg1;
 - (void)setSuspendTag:(int)arg1;
 - (void)setTableShouldShowMinimumContent:(BOOL)arg1;
 - (void)setTaglineText:(id)arg1;
 - (void)setTitleMaxLineCount:(int)arg1;
 - (void)show;
-- (void)showWithAnimationType:(int)arg1;
+- (BOOL)showsOverSpringBoardAlerts;
 - (id)subtitle;
 - (int)suspendTag;
 - (BOOL)tableShouldShowMinimumContent;

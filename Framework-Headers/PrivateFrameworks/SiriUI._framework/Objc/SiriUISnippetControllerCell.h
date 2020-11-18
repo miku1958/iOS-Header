@@ -20,6 +20,7 @@
     UIView *_cancelledTouchPreventionView;
     UILabel *_cancelledLabel;
     BOOL _cellIsUsingPlatterStyle;
+    double _topPadding;
     UICollectionReusableView<SiriUIReusableView> *_headerView;
     UICollectionReusableView<SiriUIReusableView> *_footerView;
     UICollectionReusableView<SiriUIReusableView> *_transparentHeaderView;
@@ -55,6 +56,7 @@
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)setShowBackgroundView:(BOOL)arg1;
+- (void)setTopPadding:(double)arg1;
 
 @end
 

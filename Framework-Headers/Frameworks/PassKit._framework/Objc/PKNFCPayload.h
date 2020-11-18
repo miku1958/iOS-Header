@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
@@ -13,14 +13,12 @@
 
 @interface PKNFCPayload : NSObject <NSSecureCoding, NSCopying>
 {
-    BOOL _requiresCertificate;
     NSString *_message;
     NSData *_encryptionPublicKeyData;
 }
 
 @property (copy, nonatomic) NSData *encryptionPublicKeyData; // @synthesize encryptionPublicKeyData=_encryptionPublicKeyData;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
-@property (nonatomic) BOOL requiresCertificate; // @synthesize requiresCertificate=_requiresCertificate;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

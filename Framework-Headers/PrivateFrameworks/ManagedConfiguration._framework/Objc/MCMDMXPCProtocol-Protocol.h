@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <ManagedConfiguration/MCMDMClientProtocol-Protocol.h>
 #import <ManagedConfiguration/NSObject-Protocol.h>
 
 @class NSDictionary;
 
-@protocol MCMDMXPCProtocol <NSObject>
+@protocol MCMDMXPCProtocol <NSObject, MCMDMClientProtocol>
 - (void)migrateMDMWithContext:(int)arg1 completion:(void (^)(NSError *))arg2;
 - (void)notifyNewConfigurationWithCompletion:(void (^)(NSError *))arg1;
 - (void)processDeviceRequest:(NSDictionary *)arg1 completion:(void (^)(NSError *, NSDictionary *))arg2;
-- (void)processUserRequest:(NSDictionary *)arg1 completion:(void (^)(NSError *, NSDictionary *))arg2;
 - (void)retryNotNowWithCompletion:(void (^)(NSError *))arg1;
 - (void)scheduleTokenUpdateIfNecessaryWithCompletion:(void (^)(NSError *))arg1;
 - (void)scheduleTokenUpdateWithCompletion:(void (^)(NSError *))arg1;

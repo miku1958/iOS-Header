@@ -15,6 +15,11 @@
 {
     NRDevice *_nrDevice;
     NSUUID *_pairingID;
+    NSString *_pairingStorePath;
+    NSString *_deviceClass;
+    NSString *_systemVersion;
+    NSString *_systemBuildVersion;
+    NSDate *_lastActiveDate;
     BOOL _hasCachedNearby;
     BOOL _cachedIsNearby;
     long long _state;
@@ -24,21 +29,21 @@
 @property (nonatomic) BOOL cachedIsNearby; // @synthesize cachedIsNearby=_cachedIsNearby;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSString *deviceClass;
+@property (readonly, nonatomic) NSString *deviceClass; // @synthesize deviceClass=_deviceClass;
 @property (readonly, nonatomic) long long deviceCode;
 @property (nonatomic) BOOL hasCachedNearby; // @synthesize hasCachedNearby=_hasCachedNearby;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSDate *lastActiveDate;
+@property (readonly, nonatomic) NSDate *lastActiveDate; // @synthesize lastActiveDate=_lastActiveDate;
 @property (readonly, nonatomic) NRDevice *nrDevice; // @synthesize nrDevice=_nrDevice;
 @property (readonly, nonatomic, getter=isPaired) BOOL paired;
 @property (readonly, nonatomic) NSUUID *pairingID; // @synthesize pairingID=_pairingID;
-@property (readonly, copy, nonatomic) NSString *pairingStorePath;
+@property (readonly, copy, nonatomic) NSString *pairingStorePath; // @synthesize pairingStorePath=_pairingStorePath;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) PBCodable *stateForLogging;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsFileTransferMessageSend;
-@property (readonly, nonatomic) NSString *systemBuildVersion;
-@property (readonly, nonatomic) NSString *systemVersion;
+@property (readonly, nonatomic) NSString *systemBuildVersion; // @synthesize systemBuildVersion=_systemBuildVersion;
+@property (readonly, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
 @property (readonly, nonatomic, getter=isTargetable) BOOL targetable;
 
 + (id)deviceForIDSDevice:(id)arg1;
@@ -47,6 +52,7 @@
 + (id)knownDevices;
 + (id)targetableDevice;
 - (void).cxx_destruct;
+- (void)_updateCachedStateForProperty:(id)arg1;
 - (void)_updateStateFlagsPostingNotifications:(BOOL)arg1;
 - (void)device:(id)arg1 propertyDidChange:(id)arg2 fromValue:(id)arg3;
 - (id)findMatchingIDSDeviceFromList:(id)arg1;

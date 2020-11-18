@@ -6,15 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@class NSDictionary;
+
 @interface PXPPTLoadingLatencyMeter : NSObject
 {
     CDStruct_4bbd3430 _lowQualityResults;
+    CDStruct_4bbd3430 _mediumQualityResults;
     CDStruct_4bbd3430 _highQualityResults;
 }
+
+@property (readonly, nonatomic) NSDictionary *measurementsDictionaryRepresentation;
 
 + (id)sharedInstance;
 + (void)startMeasurements;
 + (void)stopMeasurements;
+- (id)_measurementsDictionaryForImageQuality:(long long)arg1;
 - (id)init;
 - (CDStruct_4bbd3430)measurementsForImageQuality:(long long)arg1;
 - (void)reportLatency:(double)arg1 forImageQuality:(long long)arg2;

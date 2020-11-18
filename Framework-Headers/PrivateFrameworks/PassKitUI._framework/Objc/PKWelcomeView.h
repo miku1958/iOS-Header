@@ -6,43 +6,52 @@
 
 #import <UIKit/UIView.h>
 
-@class NSAttributedString, UIActivityIndicatorView, UIButton, UIImage, UIImageView, UITextView;
+#import <PassKitUI/PKPGSVSectionSubheaderView-Protocol.h>
 
-@interface PKWelcomeView : UIView
+@class NSAttributedString, NSMutableArray, NSString, UIActivityIndicatorView, UIImage, UIImageView, UITextView;
+
+@interface PKWelcomeView : UIView <PKPGSVSectionSubheaderView>
 {
     UIImageView *_backgroundView;
     UIImageView *_shadowView;
     UIImageView *_headerView;
-    UITextView *_titleView;
     UITextView *_messageView;
     UIActivityIndicatorView *_activityIndicator;
     BOOL _showActivityIndicator;
     UIImage *_headerImage;
-    NSAttributedString *_title;
     NSAttributedString *_message;
-    UIButton *_actionButton;
+    NSMutableArray *_actionButtons;
 }
 
-@property (strong, nonatomic) UIButton *actionButton; // @synthesize actionButton=_actionButton;
+@property (strong, nonatomic) NSMutableArray *actionButtons; // @synthesize actionButtons=_actionButtons;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImage *headerImage; // @synthesize headerImage=_headerImage;
 @property (copy, nonatomic) NSAttributedString *message; // @synthesize message=_message;
 @property (nonatomic) BOOL showActivityIndicator; // @synthesize showActivityIndicator=_showActivityIndicator;
-@property (copy, nonatomic) NSAttributedString *title; // @synthesize title=_title;
+@property (readonly) Class superclass;
 
-+ (double)bodySeparation;
++ (double)bottomMargin;
++ (double)buttonHeight;
++ (double)buttonSpacing;
++ (id)buttonWithTitle:(id)arg1;
 + (double)defaultHeight;
-+ (double)headerImageRegionHeight;
++ (struct UIEdgeInsets)headerImageMargins;
++ (struct CGSize)headerImageSize;
++ (double)indicatorSpacing;
 + (BOOL)isAvailable;
-+ (struct UIEdgeInsets)margins;
 + (id)messageFont;
 + (struct UIEdgeInsets)textInsets;
-+ (id)titleFont;
++ (double)textToButtonSpacing;
 - (void).cxx_destruct;
+- (void)addActionButton:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithHeight:(double)arg1;
 - (void)layoutSubviews;
+- (BOOL)needsUpdate;
 
 @end
 

@@ -6,11 +6,31 @@
 
 #import <SearchFoundation/SFCardSection.h>
 
-@class NSNumber, NSString, SFImage, SFRichText;
+#import <SearchFoundation/NSCopying-Protocol.h>
+#import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFSocialMediaPostCardSection-Protocol.h>
 
-@interface SFSocialMediaPostCardSection : SFCardSection
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFCard, SFColor, SFImage, SFRichText;
+
+@interface SFSocialMediaPostCardSection : SFCardSection <SFSocialMediaPostCardSection, NSSecureCoding, NSCopying>
 {
+    struct {
+        unsigned int canBeHidden:1;
+        unsigned int hasTopPadding:1;
+        unsigned int hasBottomPadding:1;
+        unsigned int separatorStyle:1;
+        unsigned int nameNoWrap:1;
+    } _has;
+    BOOL _canBeHidden;
+    BOOL _hasTopPadding;
+    BOOL _hasBottomPadding;
     BOOL _nameNoWrap;
+    int _separatorStyle;
+    NSArray *_punchoutOptions;
+    NSString *_punchoutPickerTitle;
+    NSString *_punchoutPickerDismissText;
+    NSString *_type;
+    SFColor *_backgroundColor;
     NSString *_name;
     NSNumber *_nameMaxLines;
     NSString *_handle;
@@ -22,21 +42,49 @@
     NSString *_footnote;
 }
 
+@property (strong, nonatomic) SFColor *backgroundColor;
+@property (nonatomic) BOOL canBeHidden;
+@property (copy, nonatomic) NSString *cardSectionId;
+@property (copy, nonatomic) NSArray *commands;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (copy, nonatomic) NSString *footnote; // @synthesize footnote=_footnote;
 @property (copy, nonatomic) NSString *handle; // @synthesize handle=_handle;
+@property (nonatomic) BOOL hasBottomPadding;
+@property (nonatomic) BOOL hasTopPadding;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hideDivider;
+@property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSNumber *nameMaxLines; // @synthesize nameMaxLines=_nameMaxLines;
 @property (nonatomic) BOOL nameNoWrap; // @synthesize nameNoWrap=_nameNoWrap;
+@property (strong, nonatomic) SFCard *nextCard;
+@property (copy, nonatomic) NSArray *parameterKeyPaths;
 @property (strong, nonatomic) SFImage *picture; // @synthesize picture=_picture;
 @property (strong, nonatomic) SFRichText *post; // @synthesize post=_post;
 @property (strong, nonatomic) SFImage *profilePicture; // @synthesize profilePicture=_profilePicture;
+@property (copy, nonatomic) NSArray *punchoutOptions;
+@property (copy, nonatomic) NSString *punchoutPickerDismissText;
+@property (copy, nonatomic) NSString *punchoutPickerTitle;
+@property (copy, nonatomic) NSString *resultIdentifier;
+@property (nonatomic) int separatorStyle;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *timestamp; // @synthesize timestamp=_timestamp;
+@property (copy, nonatomic) NSString *type;
 @property (strong, nonatomic) SFImage *verifiedGlyph; // @synthesize verifiedGlyph=_verifiedGlyph;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasCanBeHidden;
+- (BOOL)hasHasBottomPadding;
+- (BOOL)hasHasTopPadding;
+- (BOOL)hasNameNoWrap;
+- (BOOL)hasSeparatorStyle;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 
 @end
 

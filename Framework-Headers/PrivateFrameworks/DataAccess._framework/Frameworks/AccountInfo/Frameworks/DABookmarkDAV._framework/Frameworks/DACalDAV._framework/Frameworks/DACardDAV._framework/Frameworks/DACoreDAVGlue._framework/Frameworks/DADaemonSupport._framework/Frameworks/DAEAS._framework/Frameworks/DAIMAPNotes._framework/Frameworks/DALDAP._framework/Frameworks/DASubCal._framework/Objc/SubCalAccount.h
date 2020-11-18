@@ -45,6 +45,7 @@
 - (void)clearTmpICSData;
 - (void)discoverInitialPropertiesWithConsumer:(id)arg1;
 - (void)handleTrustChallenge:(id)arg1 forTask:(id)arg2;
+- (void)handleTrustChallenge:(id)arg1 forTask:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)hasSubscribedCalendarAtURL:(id)arg1;
 - (id)initWithBackingAccountInfo:(id)arg1;
 - (BOOL)isEqualToAccount:(id)arg1;

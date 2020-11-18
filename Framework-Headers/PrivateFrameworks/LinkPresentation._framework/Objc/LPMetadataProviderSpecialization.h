@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (weak, nonatomic) id<LPMetadataProviderSpecializationDelegate> delegate; // @synthesize delegate=_delegate;
 
++ (id)specializedMetadataProviderForMetadata:(id)arg1 URL:(id)arg2;
++ (id)specializedMetadataProviderForResourceWithMIMEType:(id)arg1 URL:(id)arg2;
 + (id)specializedMetadataProviderForURL:(id)arg1;
 - (void).cxx_destruct;
 - (void)cancel;

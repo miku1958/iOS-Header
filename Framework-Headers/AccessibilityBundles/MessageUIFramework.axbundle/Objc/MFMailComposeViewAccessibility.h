@@ -15,8 +15,12 @@
 + (id)safeCategoryTargetClassName;
 - (long long)_accessibilityCompareElement:(id)arg1 toElement:(id)arg2;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (unsigned long long)_axIndexOfRecipient:(id)arg1 inArray:(id)arg2;
 - (id)_searchResultsTable;
 - (void)didMoveToSuperview;
+- (id)dragSource:(id)arg1 draggableItemsAtPoint:(struct CGPoint)arg2;
+- (void)dropTarget:(id)arg1 dragDidMoveToPoint:(struct CGPoint)arg2;
+- (void)dropTarget:(id)arg1 dragEnteredAtPoint:(struct CGPoint)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2;
 - (BOOL)presentSearchResults:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;

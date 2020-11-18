@@ -6,20 +6,26 @@
 
 #import <Home/HFItem.h>
 
-@interface HFTransformItem : HFItem
+#import <Home/NSCopying-Protocol.h>
+
+@interface HFTransformItem : HFItem <NSCopying>
 {
     HFItem *_sourceItem;
-    CDUnknownBlockType _transformationBlock;
+    CDUnknownBlockType _optionsTransformBlock;
+    CDUnknownBlockType _resultsTransformBlock;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType optionsTransformBlock; // @synthesize optionsTransformBlock=_optionsTransformBlock;
+@property (copy, nonatomic) CDUnknownBlockType resultsTransformBlock; // @synthesize resultsTransformBlock=_resultsTransformBlock;
 @property (strong, nonatomic) HFItem *sourceItem; // @synthesize sourceItem=_sourceItem;
-@property (copy, nonatomic) CDUnknownBlockType transformationBlock; // @synthesize transformationBlock=_transformationBlock;
 
 - (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithSourceItem:(id)arg1 resultKeyFilter:(id)arg2;
 - (id)initWithSourceItem:(id)arg1 transformationBlock:(CDUnknownBlockType)arg2;
+- (id)initWithSourceItem:(id)arg1 updateOptionsTransformBlock:(CDUnknownBlockType)arg2 resultsTransformBlock:(CDUnknownBlockType)arg3;
 
 @end
 

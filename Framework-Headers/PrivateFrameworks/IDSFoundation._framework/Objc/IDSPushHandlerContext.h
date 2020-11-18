@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSSet;
 @protocol OS_dispatch_queue;
@@ -20,7 +20,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (copy, nonatomic) NSSet *topics; // @synthesize topics=_topics;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithQueue:(id)arg1 topics:(id)arg2 commands:(id)arg3;
 
 @end

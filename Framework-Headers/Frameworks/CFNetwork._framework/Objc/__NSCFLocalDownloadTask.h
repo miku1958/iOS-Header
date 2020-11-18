@@ -69,6 +69,8 @@ __attribute__((visibility("hidden")))
 - (int)openItemForPath:(id)arg1 mode:(int)arg2;
 - (void)reportProgress:(unsigned long long)arg1;
 - (BOOL)setupForNewDownload:(id)arg1;
+- (void)suspendExtractor;
+- (void)terminateExtractorWithError:(id)arg1;
 - (void)writeAndResume;
 
 @end

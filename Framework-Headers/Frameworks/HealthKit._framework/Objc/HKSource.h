@@ -9,13 +9,14 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSNumber, NSString;
 
 @interface HKSource : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_name;
     NSString *_bundleIdentifier;
     BOOL _localDevice;
+    NSNumber *_sourceID;
     NSString *_productType;
     unsigned long long _options;
 }
@@ -25,12 +26,15 @@
 @property (readonly) NSString *name;
 @property (nonatomic, getter=_options, setter=_setOptions:) unsigned long long options; // @synthesize options=_options;
 @property (strong, nonatomic, getter=_productType, setter=_setProductType:) NSString *productType; // @synthesize productType=_productType;
+@property (strong, nonatomic, getter=_sourceID, setter=_setSourceID:) NSNumber *sourceID; // @synthesize sourceID=_sourceID;
 
++ (id)_connectedGymSource;
 + (id)_currentSourceProductType:(BOOL)arg1;
 + (id)_generateIdentifierForAppleDevice;
 + (id)_generateIdentifierForAppleDeviceWithUUID:(id)arg1;
++ (id)_localDeviceSource;
 + (BOOL)_representsCurrentDeviceWithBundleIdentifier:(id)arg1;
-+ (id)_sourceBundleIdentifierWithEntitlements:(id)arg1 clientBundleIdentifier:(id)arg2 isExtension:(BOOL)arg3;
++ (id)_sourceBundleIdentifierWithEntitlements:(id)arg1 processBundleIdentifier:(id)arg2 isExtension:(BOOL)arg3;
 + (id)_sourceNameWithRepresentsCurrentDevice:(BOOL)arg1 defaultSource:(BOOL)arg2;
 + (id)_sourceWithBundleIdentifier:(id)arg1 name:(id)arg2 productType:(id)arg3 options:(unsigned long long)arg4;
 + (id)defaultSource;
@@ -38,8 +42,11 @@
 - (void).cxx_destruct;
 - (BOOL)_hasFirstPartyBundleID;
 - (id)_init;
+- (BOOL)_isAppleDevice;
 - (BOOL)_isAppleWatch;
 - (BOOL)_isApplication;
+- (BOOL)_isConnectedGymBundleID;
+- (BOOL)_isConnectedGymSource;
 - (BOOL)_isHidden;
 - (BOOL)_isPreferredSource;
 - (BOOL)_requiresAuthorization;

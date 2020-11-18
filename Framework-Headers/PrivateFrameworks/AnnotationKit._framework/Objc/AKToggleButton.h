@@ -27,11 +27,13 @@
 - (void)_setSelectedStateColorImage;
 - (void)_touchCommitted:(id)arg1;
 - (void)_updateSelectionColorsAnimated:(BOOL)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 templateImage:(id)arg2;
+- (void)_updateStateColors;
+- (id)initWithFrame:(struct CGRect)arg1 templateImage:(id)arg2 autoUpdatesColor:(BOOL)arg3;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setImage:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setSelected:(BOOL)arg1;
 - (void)tintColorDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

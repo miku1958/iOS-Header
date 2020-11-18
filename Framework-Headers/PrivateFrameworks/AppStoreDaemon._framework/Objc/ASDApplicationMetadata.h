@@ -14,6 +14,8 @@
 @interface ASDApplicationMetadata : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_accountName;
+    NSNumber *_accountID;
+    NSString *_altDSID;
     NSString *_artworkPath;
     NSString *_bundleID;
     NSNumber *_externalVersionIdentifier;
@@ -25,7 +27,9 @@
     NSString *_vendorName;
 }
 
+@property (copy, nonatomic) NSNumber *accountID; // @synthesize accountID=_accountID;
 @property (copy, nonatomic) NSString *accountName; // @synthesize accountName=_accountName;
+@property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (copy, nonatomic) NSString *artworkPath; // @synthesize artworkPath=_artworkPath;
 @property (readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (copy, nonatomic) NSNumber *externalVersionIdentifier; // @synthesize externalVersionIdentifier=_externalVersionIdentifier;

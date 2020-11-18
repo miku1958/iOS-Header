@@ -29,19 +29,19 @@
 
 + (Class)immutableObjectClass;
 + (id)immutableObjectProtocol;
-+ (void)initialize;
 + (id)mutableFavoriteForBookmarkStorage:(id)arg1;
 + (Class)mutableObjectClass;
 + (id)mutableObjectProtocol;
 - (void).cxx_destruct;
-- (void)_assertNotImmutable;
 - (void)_markImmutable;
+- (void)_noteWillMutate;
 - (id)abridgedBookmarkStorageForSpotlightStorage;
 - (id)copyIfValidWithError:(out id *)arg1;
 - (void)ifMutablePlace:(CDUnknownBlockType)arg1 ifMutableRoute:(CDUnknownBlockType)arg2 ifMutableRegion:(CDUnknownBlockType)arg3 ifMutableTransitLine:(CDUnknownBlockType)arg4;
 - (void)ifPlace:(CDUnknownBlockType)arg1 ifRoute:(CDUnknownBlockType)arg2 ifRegion:(CDUnknownBlockType)arg3 ifTransitLine:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithBookmarkStorage:(id)arg1;
+- (BOOL)isUserVisibleDuplicateOfFavorite:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)persisterOnlyBookmarkStorage;
 - (id)transferToImmutableIfValidWithError:(out id *)arg1;

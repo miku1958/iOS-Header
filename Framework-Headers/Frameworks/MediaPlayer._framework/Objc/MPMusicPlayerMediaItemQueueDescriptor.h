@@ -26,7 +26,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithItemCollection:(id)arg1;
 - (id)initWithQuery:(id)arg1;
-- (id)playbackContext;
 - (void)setEndTime:(double)arg1 forItem:(id)arg2;
 - (void)setStartTime:(double)arg1 forItem:(id)arg2;
 

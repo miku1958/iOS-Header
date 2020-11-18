@@ -6,22 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSUUID;
+@class HDProfile, NSUUID;
 @protocol HDWorkoutEventCollectorDelegate;
 
 @interface HDWorkoutEventCollector : NSObject
 {
     id<HDWorkoutEventCollectorDelegate> _delegate;
     NSUUID *_sessionId;
+    HDProfile *_profile;
 }
 
 @property (readonly, weak) id<HDWorkoutEventCollectorDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, weak) HDProfile *profile; // @synthesize profile=_profile;
 @property (readonly) NSUUID *sessionId; // @synthesize sessionId=_sessionId;
 
 + (BOOL)isAvailableInCurrentHardware;
 - (void).cxx_destruct;
 - (void)immediateUpdateWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithDelegate:(id)arg1;
+- (id)initWithProfile:(id)arg1 delegate:(id)arg2;
 - (void)startWithSessionId:(id)arg1;
 - (void)stop;
 - (BOOL)supportsWorkoutActivityType:(unsigned long long)arg1;

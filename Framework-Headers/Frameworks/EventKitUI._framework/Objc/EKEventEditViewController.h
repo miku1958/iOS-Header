@@ -14,6 +14,7 @@
     EKEventStore *_store;
     EKEvent *_event;
     NSString *_eventId;
+    BOOL _completedWithAction;
     int _transitionForModalViewPresentation;
     id<EKEventEditViewDelegate> _editViewDelegate;
     EKEventEditor *_editor;
@@ -53,6 +54,8 @@
 - (BOOL)saveWithSpan:(long long)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (BOOL)willPresentDialogOnSave;
 
 @end

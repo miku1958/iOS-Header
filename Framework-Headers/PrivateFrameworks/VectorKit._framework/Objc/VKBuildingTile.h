@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VectorKit/VKVectorTile.h>
+#import <VectorKit/VKSkewingVectorTile.h>
 
 @class NSMutableArray, VK3DObjectSubTile, VKAnimation;
 
 __attribute__((visibility("hidden")))
-@interface VKBuildingTile : VKVectorTile
+@interface VKBuildingTile : VKSkewingVectorTile
 {
     vector_dc840c5c _facadeTextures;
     NSMutableArray *_polygonGroups[3];
@@ -47,17 +47,17 @@ __attribute__((visibility("hidden")))
 - (void)_buildShadowTexture;
 - (void)_fillShadowAreasInContext:(struct CGContext *)arg1 data:(char *)arg2;
 - (Box_3fb92e00)_shadowBounds;
-- (void)buildMeshesWithTriangulator:(id)arg1 device:(Device_f0710f89 *)arg2 prepareExtrusion:(BOOL)arg3;
-- (void)confirmBuildingSuppression:(CDStruct_de1a80f1 *)arg1;
+- (void)buildMeshesWithTriangulator:(id)arg1 device:(Device_9226c869 *)arg2 prepareExtrusion:(BOOL)arg3;
+- (void)confirmBuildingSuppression:(CDStruct_bc04cdca *)arg1;
 - (void)dealloc;
 - (const vector_dc840c5c *)facadeTextures;
-- (BOOL)heightAtPoint:(const Matrix_8746f91e *)arg1 outZ:(float *)arg2;
-- (id)initWithKey:(const struct VKTileKey *)arg1 modelTile:(id)arg2 prepareExtrusion:(BOOL)arg3 styleManager:(shared_ptr_a3c46825)arg4 sharedResources:(id)arg5 contentScale:(double)arg6 device:(Device_f0710f89 *)arg7;
+- (BOOL)heightAtPoint:(const Matrix_8746f91e *)arg1 outZ:(float *)arg2 outBuildingId:(unsigned long long *)arg3;
+- (id)initWithKey:(const struct VKTileKey *)arg1 modelTile:(id)arg2 prepareExtrusion:(BOOL)arg3 styleManager:(shared_ptr_a3c46825)arg4 sharedResources:(id)arg5 contentScale:(double)arg6 device:(Device_9226c869 *)arg7;
 - (unsigned long long)numberOfFacadeTextures;
 - (id)polygonGroupsForTextureAtIndex:(unsigned long long)arg1;
 - (void)updateViewDependentStateIfNecessaryWithContext:(struct LayoutContext *)arg1;
 - (void)updateViewDependentStateWithContext:(struct LayoutContext *)arg1;
-- (void)updateWithStyleManager:(shared_ptr_a3c46825 *)arg1;
+- (void)updateWithStyleManager:(const shared_ptr_a3c46825 *)arg1;
 
 @end
 

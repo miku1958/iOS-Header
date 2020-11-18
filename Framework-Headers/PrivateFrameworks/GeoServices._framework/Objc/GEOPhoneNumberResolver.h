@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol GEOPhoneNumberResolving, OS_dispatch_queue;
 
@@ -14,9 +14,12 @@
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
++ (id)sharedResolver;
 + (void)useLocalResolver;
++ (void)useProxy:(Class)arg1;
++ (void)useRemoteResolver;
+- (void).cxx_destruct;
 - (void)_alePackResolution:(id)arg1 handler:(CDUnknownBlockType)arg2 queue:(id)arg3;
-- (void)dealloc;
 - (id)init;
 - (void)resolvePhoneNumbers:(id)arg1 handler:(CDUnknownBlockType)arg2 queue:(id)arg3;
 

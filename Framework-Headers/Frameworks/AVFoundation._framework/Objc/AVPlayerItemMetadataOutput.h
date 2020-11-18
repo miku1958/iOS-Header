@@ -6,7 +6,7 @@
 
 #import <AVFoundation/AVPlayerItemOutput.h>
 
-@class AVPlayerItemMetadataOutputInternal, NSObject;
+@class AVPlayerItemMetadataOutputInternal, NSDictionary, NSObject;
 @protocol AVPlayerItemMetadataOutputPushDelegate, OS_dispatch_queue;
 
 @interface AVPlayerItemMetadataOutput : AVPlayerItemOutput
@@ -17,6 +17,7 @@
 @property (nonatomic) double advanceIntervalForDelegateInvocation;
 @property (readonly, weak, nonatomic) id<AVPlayerItemMetadataOutputPushDelegate> delegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue;
+@property (readonly, nonatomic, getter=_figMetadataOutputsDictionaryOptions) NSDictionary *figMetadataOutputsDictionaryOptions;
 
 + (void)initialize;
 - (BOOL)_attachToPlayerItem:(id)arg1;

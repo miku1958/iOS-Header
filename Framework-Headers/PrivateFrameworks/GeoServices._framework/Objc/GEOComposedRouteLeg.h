@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOComposedRoute, GEOPBTransitStop, NSArray;
 
@@ -16,7 +16,7 @@
     struct _NSRange _stepRange;
 }
 
-@property (nonatomic) GEOComposedRoute *composedRoute; // @synthesize composedRoute=_composedRoute;
+@property (weak, nonatomic) GEOComposedRoute *composedRoute; // @synthesize composedRoute=_composedRoute;
 @property (readonly, nonatomic) unsigned int endPointIndex;
 @property (readonly, nonatomic) unsigned long long endStepIndex;
 @property (readonly, nonatomic) GEOPBTransitStop *endingTransitStop;
@@ -36,6 +36,8 @@
 @property (readonly, nonatomic) int transportType;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
+- (void).cxx_destruct;
+- (BOOL)_MapsCarPlay_isEqual:(id)arg1;
 - (BOOL)contains:(id)arg1;
 - (id)description;
 - (id)initWithComposedRoute:(id)arg1 routeLegType:(long long)arg2 stepRange:(struct _NSRange)arg3 pointRange:(struct _NSRange)arg4;

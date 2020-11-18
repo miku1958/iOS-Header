@@ -6,25 +6,23 @@
 
 #import <UIKit/UICollectionView.h>
 
-@class UIKBRenderConfig, UIKeyboardEmojiGraphicsTraits, UIResponder;
+@class UIKeyboardEmojiGraphicsTraits, UIResponder;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiCollectionView : UICollectionView
 {
-    UIKBRenderConfig *_renderConfig;
     UIKeyboardEmojiGraphicsTraits *_emojiGraphicsTraits;
     UIResponder *_hitTestResponder;
 }
 
 @property (readonly, strong) UIKeyboardEmojiGraphicsTraits *emojiGraphicsTraits; // @synthesize emojiGraphicsTraits=_emojiGraphicsTraits;
 @property (nonatomic) UIResponder *hitTestResponder; // @synthesize hitTestResponder=_hitTestResponder;
-@property (strong) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
 
 - (double)_currentScreenScale;
 - (BOOL)_shouldReverseLayoutDirection;
 - (id)closestCellForPoint:(struct CGPoint)arg1;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2 renderConfig:(id)arg3 emojiGraphicsTraits:(id)arg4;
+- (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2 emojiGraphicsTraits:(id)arg3;
 - (void)layoutSubviews;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUSettings.h>
+#import <PhotosUICore/PXSettings.h>
 
 __attribute__((visibility("hidden")))
-@interface PUWorkaroundSettings : PUSettings
+@interface PUWorkaroundSettings : PXSettings
 {
     BOOL _addRemoveVideoLayer;
 }
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
+- (id)parentSettings;
 - (void)setDefaultValues;
 
 @end

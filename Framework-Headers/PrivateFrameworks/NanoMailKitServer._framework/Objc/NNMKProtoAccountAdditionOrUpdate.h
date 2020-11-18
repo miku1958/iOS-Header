@@ -15,8 +15,11 @@
     NSString *_accountId;
     NSString *_displayName;
     NSMutableArray *_emails;
+    unsigned int _fullSyncVersion;
+    NSMutableArray *_mailboxes;
     BOOL _shouldArchive;
     struct {
+        unsigned int fullSyncVersion:1;
         unsigned int shouldArchive:1;
     } _has;
 }
@@ -24,14 +27,21 @@
 @property (strong, nonatomic) NSString *accountId; // @synthesize accountId=_accountId;
 @property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (strong, nonatomic) NSMutableArray *emails; // @synthesize emails=_emails;
+@property (nonatomic) unsigned int fullSyncVersion; // @synthesize fullSyncVersion=_fullSyncVersion;
 @property (readonly, nonatomic) BOOL hasAccountId;
 @property (readonly, nonatomic) BOOL hasDisplayName;
+@property (nonatomic) BOOL hasFullSyncVersion;
 @property (nonatomic) BOOL hasShouldArchive;
+@property (strong, nonatomic) NSMutableArray *mailboxes; // @synthesize mailboxes=_mailboxes;
 @property (nonatomic) BOOL shouldArchive; // @synthesize shouldArchive=_shouldArchive;
 
++ (Class)emailType;
++ (Class)mailboxesType;
 - (void).cxx_destruct;
 - (void)addEmail:(id)arg1;
+- (void)addMailboxes:(id)arg1;
 - (void)clearEmails;
+- (void)clearMailboxes;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -40,6 +50,8 @@
 - (unsigned long long)emailsCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)mailboxesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)mailboxesCount;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

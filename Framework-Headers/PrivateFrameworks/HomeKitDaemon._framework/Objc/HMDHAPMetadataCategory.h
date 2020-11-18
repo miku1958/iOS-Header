@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
-
-#import <HomeKitDaemon/NSSecureCoding-Protocol.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSNumber, NSString;
 
-@interface HMDHAPMetadataCategory : NSObject <NSSecureCoding>
+@interface HMDHAPMetadataCategory : HMFObject
 {
     NSNumber *_identifier;
     NSString *_uuidStr;
@@ -23,13 +21,9 @@
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSString *uuidStr; // @synthesize uuidStr=_uuidStr;
 
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
-- (void)encodeWithCoder:(id)arg1;
-- (id)generateDictionary;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 uuid:(id)arg2 name:(id)arg3 description:(id)arg4;
 
 @end

@@ -13,8 +13,9 @@
 
 @property (nonatomic) long long year; // @synthesize year=_year;
 
+- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (id)_potentialMemories:(unsigned long long)arg1;
+- (id)_potentialMemoriesForDryTesting;
 
 @end
 

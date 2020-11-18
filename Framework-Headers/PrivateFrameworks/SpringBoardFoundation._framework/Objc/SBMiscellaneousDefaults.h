@@ -6,17 +6,17 @@
 
 #import <SpringBoardFoundation/SBAbstractSpringBoardDefaultDomain.h>
 
-@class NSArray, NSString;
+@class NSArray;
 
 @interface SBMiscellaneousDefaults : SBAbstractSpringBoardDefaultDomain
 {
 }
 
 @property (nonatomic) float backlightLevel; // @dynamic backlightLevel;
-@property (strong, nonatomic) NSString *carrierDebuggingAlertVersion; // @dynamic carrierDebuggingAlertVersion;
 @property (nonatomic) long long dataPlanActivationPromptCount; // @dynamic dataPlanActivationPromptCount;
 @property (readonly, nonatomic) NSArray *fakeDuetTriggers; // @dynamic fakeDuetTriggers;
-@property (readonly, nonatomic) BOOL showStackshotUIFeedback; // @dynamic showStackshotUIFeedback;
+@property (readonly, nonatomic) BOOL suppressNoSimAlert; // @dynamic suppressNoSimAlert;
+@property (readonly, nonatomic) BOOL walletPreArmForceLockButton; // @dynamic walletPreArmForceLockButton;
 
 - (void)_bindAndRegisterDefaults;
 

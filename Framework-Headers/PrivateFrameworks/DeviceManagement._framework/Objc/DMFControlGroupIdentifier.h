@@ -11,14 +11,14 @@
 
 @class NSString, NSUUID;
 
-@interface DMFControlGroupIdentifier : NSObject <NSSecureCoding, NSCopying>
+@interface DMFControlGroupIdentifier : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned short _groupID;
     NSUUID *_organizationUUID;
 }
 
-@property (nonatomic) unsigned short groupID; // @synthesize groupID=_groupID;
-@property (copy, nonatomic) NSUUID *organizationUUID; // @synthesize organizationUUID=_organizationUUID;
+@property (readonly, nonatomic) unsigned short groupID; // @synthesize groupID=_groupID;
+@property (readonly, copy, nonatomic) NSUUID *organizationUUID; // @synthesize organizationUUID=_organizationUUID;
 @property (readonly, copy, nonatomic) NSString *stringValue;
 
 + (id)new;

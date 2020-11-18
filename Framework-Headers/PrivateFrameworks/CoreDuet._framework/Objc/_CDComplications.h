@@ -16,11 +16,11 @@
     int deviceChangeToken;
     NSUserDefaults *pushLimits;
     NSMutableDictionary *meterTokens;
-    NSDictionary *_activeComplications;
     CDAttribute *attribute;
+    NSDictionary *_activeComplications;
 }
 
-@property (copy, nonatomic) NSDictionary *activeComplications; // @synthesize activeComplications=_activeComplications;
+@property (copy) NSDictionary *activeComplications; // @synthesize activeComplications=_activeComplications;
 
 + (id)initializeForAdmissionChecking:(BOOL)arg1;
 + (id)sharedComplication;

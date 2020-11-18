@@ -6,23 +6,33 @@
 
 #import <HealthKit/HKQuery.h>
 
-@interface HKActivitySummaryQuery : HKQuery
+#import <HealthKit/HKActivitySummaryQueryClientInterface-Protocol.h>
+
+@class NSString;
+
+@interface HKActivitySummaryQuery : HKQuery <HKActivitySummaryQueryClientInterface>
 {
     BOOL _initialHandlerCalled;
     CDUnknownBlockType _completionHandler;
     CDUnknownBlockType _updateHandler;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
 
++ (id)clientInterfaceProtocol;
++ (void)configureClientInterface:(id)arg1;
 - (void).cxx_destruct;
-- (void)_queue_cleanupAfterDeactivation;
-- (CDUnknownBlockType)_queue_errorHandler;
-- (BOOL)_queue_shouldStayAliveAfterInitialResults;
-- (void)_queue_validate;
-- (BOOL)_requiresValidSampleType;
-- (void)deliverActivitySummaries:(id)arg1 queryUUID:(id)arg2;
+- (void)client_deliverActivitySummaries:(id)arg1 queryUUID:(id)arg2;
 - (id)initWithPredicate:(id)arg1 resultsHandler:(CDUnknownBlockType)arg2;
+- (void)queue_connectToQueryServerWithHealthStore:(id)arg1 activationUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)queue_deliverError:(id)arg1;
+- (void)queue_queryDidDeactivate:(id)arg1;
+- (BOOL)queue_shouldDeactivateAfterInitialResults;
+- (void)queue_validate;
 
 @end
 

@@ -18,13 +18,13 @@
 }
 
 @property (nonatomic) int absoluteOrder; // @synthesize absoluteOrder=_absoluteOrder;
-@property (nonatomic) id<CoreDAVTaskDelegate> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<CoreDAVTaskDelegate> delegate; // @dynamic delegate;
 @property (strong, nonatomic) NSURL *priorOrderedURL; // @synthesize priorOrderedURL=_priorOrderedURL;
 @property (strong, nonatomic) NSSet *propertiesToSet; // @synthesize propertiesToSet=_propertiesToSet;
 
+- (void).cxx_destruct;
 - (id)additionalHeaderValues;
 - (id)copyDefaultParserForContentType:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)finishCoreDAVTaskWithError:(id)arg1;
 - (id)httpMethod;

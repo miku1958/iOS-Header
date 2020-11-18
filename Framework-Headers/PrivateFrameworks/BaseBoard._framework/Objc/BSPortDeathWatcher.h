@@ -4,26 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <BaseBoard/BSPortDeathSentinel.h>
 
-@class BSDispatchSource, BSMachPortSendRight;
-@protocol OS_dispatch_queue;
-
-@interface BSPortDeathWatcher : NSObject
+@interface BSPortDeathWatcher : BSPortDeathSentinel
 {
-    NSObject<OS_dispatch_queue> *_queue;
-    BSDispatchSource *_source;
-    BSMachPortSendRight *_sendRight;
-    CDUnknownBlockType _handler;
 }
 
-@property (readonly, copy, nonatomic) BSMachPortSendRight *sendRight; // @synthesize sendRight=_sendRight;
-
-- (void)dealloc;
 - (id)initWithPort:(unsigned int)arg1 queue:(id)arg2 deathHandler:(CDUnknownBlockType)arg3;
 - (id)initWithSendRight:(id)arg1 queue:(id)arg2 deathHandler:(CDUnknownBlockType)arg3;
-- (void)invalidate;
-- (void)queue_handlePortDeathEvent;
 
 @end
 

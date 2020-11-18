@@ -30,8 +30,8 @@
     ICQLink *_purchaseLink;
     ICQLink *_bottomLink;
     UILayoutGuide *_navigationBarLayoutGuide;
-    UILayoutGuide *_abovePurchaseLayoutGuide;
-    UILayoutGuide *_belowPurchaseLayoutGuide;
+    UILayoutGuide *_aboveSpinnerLayoutGuide;
+    UILayoutGuide *_belowSpinnerLayoutGuide;
     NSLayoutConstraint *_iconTopMarginConstraint;
     NSLayoutConstraint *_titleTopMarginConstraint;
     double _tippyTopMargin;
@@ -39,9 +39,9 @@
     NSArray *_activeConstraints;
 }
 
-@property (readonly, nonatomic) UILayoutGuide *abovePurchaseLayoutGuide; // @synthesize abovePurchaseLayoutGuide=_abovePurchaseLayoutGuide;
+@property (readonly, nonatomic) UILayoutGuide *aboveSpinnerLayoutGuide; // @synthesize aboveSpinnerLayoutGuide=_aboveSpinnerLayoutGuide;
 @property (strong, nonatomic) NSArray *activeConstraints; // @synthesize activeConstraints=_activeConstraints;
-@property (readonly, nonatomic) UILayoutGuide *belowPurchaseLayoutGuide; // @synthesize belowPurchaseLayoutGuide=_belowPurchaseLayoutGuide;
+@property (readonly, nonatomic) UILayoutGuide *belowSpinnerLayoutGuide; // @synthesize belowSpinnerLayoutGuide=_belowSpinnerLayoutGuide;
 @property (strong, nonatomic) UIButton *bottomButton; // @synthesize bottomButton=_bottomButton;
 @property (readonly, nonatomic) ICQLink *bottomLink; // @synthesize bottomLink=_bottomLink;
 @property (readonly, copy) NSString *debugDescription;
@@ -63,7 +63,7 @@
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (readonly, nonatomic) NSLayoutConstraint *titleTopMarginConstraint; // @synthesize titleTopMarginConstraint=_titleTopMarginConstraint;
 @property (nonatomic) long long upgradeMode; // @synthesize upgradeMode=_upgradeMode;
-@property (strong, nonatomic) _ICQUpgradeOfferPageSpecification *upgradeOfferPageSpecification; // @synthesize upgradeOfferPageSpecification=_upgradeOfferPageSpecification;
+@property (strong, nonatomic) _ICQUpgradeOfferPageSpecification *upgradeOfferPageSpecification;
 
 - (void).cxx_destruct;
 - (id)_imageForBundleIdentifier:(id)arg1;
@@ -82,7 +82,6 @@
 - (void)purchaseButtonTapped:(id)arg1;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
 - (void)updateConstraints;
-- (id)upgradeOfferSpecification;
 
 @end
 

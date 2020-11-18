@@ -10,13 +10,12 @@
 {
 }
 
-+ (id)organizerWithName:(id)arg1 emailAddress:(id)arg2 address:(id)arg3 isCurrentUser:(BOOL)arg4;
++ (Class)frozenClass;
++ (id)organizerWithName:(id)arg1 emailAddress:(id)arg2 phoneNumber:(id)arg3 address:(id)arg4 isCurrentUser:(BOOL)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)init;
-- (id)initWithName:(id)arg1 emailAddress:(id)arg2 address:(id)arg3 isCurrentUser:(BOOL)arg4;
+- (id)initWithName:(id)arg1 emailAddress:(id)arg2 phoneNumber:(id)arg3 address:(id)arg4 isCurrentUser:(BOOL)arg5;
 - (BOOL)isCurrentUser;
-- (id)lazyLoadRelationForKey:(id)arg1;
 - (id)owner;
 - (void)setCurrentUser:(BOOL)arg1;
 

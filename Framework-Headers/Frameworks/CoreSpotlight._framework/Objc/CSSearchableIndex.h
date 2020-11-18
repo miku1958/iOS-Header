@@ -6,17 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class CSIndexingQueue, NSMutableArray, NSString, NSXPCConnection;
-@protocol CSSearchableIndexDelegate, CSSearchableIndexInterface><NSXPCProxyCreating, OS_dispatch_queue;
+@class CSIndexingQueue, NSMutableArray, NSString;
+@protocol CSSearchableIndexDelegate, OS_dispatch_queue;
 
 @interface CSSearchableIndex : NSObject
 {
     CSIndexingQueue *_activityQueue;
     BOOL _batchOpen;
     int _awakeNotifyToken;
+    int _indexID;
     id<CSSearchableIndexDelegate> _indexDelegate;
-    NSXPCConnection *_connection;
-    id<CSSearchableIndexInterface><NSXPCProxyCreating> _testProxy;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSString *_name;
     NSString *_protectionClass;
@@ -32,17 +31,18 @@
 @property (strong, nonatomic) NSMutableArray *batchedItemIdentifiersToDelete; // @synthesize batchedItemIdentifiersToDelete=_batchedItemIdentifiersToDelete;
 @property (strong, nonatomic) NSMutableArray *batchedItemsToIndex; // @synthesize batchedItemsToIndex=_batchedItemsToIndex;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (weak) id<CSSearchableIndexDelegate> indexDelegate; // @synthesize indexDelegate=_indexDelegate;
+@property (readonly, nonatomic) int indexID; // @synthesize indexID=_indexID;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) long long options; // @synthesize options=_options;
 @property (copy, nonatomic) NSString *protectionClass; // @synthesize protectionClass=_protectionClass;
-@property (strong, nonatomic) id<CSSearchableIndexInterface><NSXPCProxyCreating> testProxy; // @synthesize testProxy=_testProxy;
 
 + (id)_requestQueueAttribute;
 + (void)_setLastUpdateTime;
 + (BOOL)activityShouldBeIndexed:(id)arg1 bundleID:(id)arg2;
++ (id)codedIdentifiers:(id)arg1;
++ (id)codedUniqueIdentifiers:(id)arg1;
 + (id)defaultSearchableIndex;
 + (void)initialize;
 + (BOOL)isIndexingAvailable;
@@ -55,8 +55,6 @@
 - (void)_changeStateOfSearchableItemsWithUIDs:(id)arg1 toState:(long long)arg2 forUser:(unsigned int)arg3 forBundleID:(id)arg4 forUTIType:(id)arg5;
 - (void)_checkInWithIndexDelegate:(id)arg1 reason:(id)arg2;
 - (void)_commonInit;
-- (void)_didInterruptConnection;
-- (void)_didInvalidateConnection;
 - (void)_indexActivities:(id)arg1 flush:(BOOL)arg2;
 - (id)_initWithName:(id)arg1 protectionClass:(id)arg2 bundleIdentifier:(id)arg3 options:(long long)arg4;
 - (void)_issueCommand:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -108,17 +106,18 @@
 - (id)initWithName:(id)arg1 options:(long long)arg2;
 - (id)initWithName:(id)arg1 protectionClass:(id)arg2;
 - (id)initWithName:(id)arg1 protectionClass:(id)arg2 bundleIdentifier:(id)arg3;
-- (id)initWithTestingStub:(id)arg1;
 - (void)performDataMigrationWithTimeout:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performIndexJob:(id)arg1;
 - (void)performIndexJob:(id)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
-- (id)remoteProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)provideDataForBundle:(id)arg1 identifier:(id)arg2 type:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)provideFileURLForBundle:(id)arg1 identifier:(id)arg2 type:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)requestQueue;
 - (void)throttle;
 - (id)throttleQueue;
 - (void)unthrottle;
 - (void)willModifySearchableItemsWithIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)willModifySearchableItemsWithIdentifiers:(id)arg1 protectionClass:(id)arg2 forBundleID:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)xpc_dictionary_for_command:(const char *)arg1;
 
 @end
 

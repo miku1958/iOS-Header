@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) unsigned long long placeIndexsCount;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)addPlaceIndex:(unsigned int)arg1;
 - (void)clearPlaceIndexs;
 - (void)copyTo:(id)arg1;

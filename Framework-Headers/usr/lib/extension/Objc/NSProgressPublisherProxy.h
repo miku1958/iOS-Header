@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSProgressPublisher-Protocol.h>
+#import <Foundation/NSProgressPublisher-Protocol.h>
 
 @class NSFileAccessNode, NSProgressValues, NSString, NSXPCConnection;
 @protocol NSProgressPublisher;

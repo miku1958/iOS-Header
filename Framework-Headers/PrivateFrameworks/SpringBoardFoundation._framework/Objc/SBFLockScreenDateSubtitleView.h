@@ -32,11 +32,14 @@
 @property (strong, nonatomic) NSString *string;
 @property (readonly) Class superclass;
 
++ (id)labelFont;
++ (double)scaledFontSize:(double)arg1 withMaximumFontSizeCategory:(id)arg2;
 - (void).cxx_destruct;
 - (id)_createReplicateView;
 - (void)_enumerateReplicateViews:(CDUnknownBlockType)arg1;
-- (id)_labelFont;
+- (void)_updateForCurrentSizeCategory;
 - (struct CGRect)accessoryViewFrame;
+- (void)dealloc;
 - (id)init;
 - (id)initWithString:(id)arg1 accessoryView:(id)arg2;
 - (double)interItemSpacing;

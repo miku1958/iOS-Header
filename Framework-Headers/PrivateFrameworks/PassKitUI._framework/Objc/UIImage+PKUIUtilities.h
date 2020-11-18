@@ -10,6 +10,9 @@
 + (id)imageWithPKImage:(id)arg1;
 - (struct CGSize)alignmentSize;
 - (id)pkui_imageOverlaidWithColor:(id)arg1;
+- (id)pkui_imageWithAlpha:(double)arg1;
 - (id)pkui_resizableImageByTilingCenterPixel;
+- (id)pkui_resizableImageByTilingHorizontally;
+- (id)pkui_resizableImageByTilingVertically;
 @end
 

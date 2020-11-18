@@ -6,28 +6,30 @@
 
 #import <Foundation/NSObject.h>
 
+@class NSURL;
 @protocol OS_dispatch_queue;
 
 @interface TPFileStorageManager : NSObject
 {
     BOOL _hasClearedLegacyStorage;
+    NSURL *_urlForFileSystem;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (nonatomic) BOOL hasClearedLegacyStorage; // @synthesize hasClearedLegacyStorage=_hasClearedLegacyStorage;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly, nonatomic) NSURL *urlForFileSystem; // @synthesize urlForFileSystem=_urlForFileSystem;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)clearLegacyStorageIfNecessary;
 - (void)dealloc;
-- (void)deleteStorageAtURL:(id)arg1;
+- (void)deleteStorageAtURLs:(id)arg1;
 - (id)imageWithName:(id)arg1;
 - (id)init;
 - (void)localeChanged;
 - (void)saveImage:(id)arg1 withName:(id)arg2;
-- (id)urlForFileSystem;
-- (id)urlForLegacyFileSystem;
+- (id)urlsForLegacyFileSystem;
 
 @end
 

@@ -12,6 +12,7 @@
 }
 
 + (BOOL)supportsSecureCoding;
+- (id)asString;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)folderID;

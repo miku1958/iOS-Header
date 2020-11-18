@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
@@ -41,7 +41,7 @@
 @property (copy, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
 @property (nonatomic) BOOL userDisabled; // @synthesize userDisabled=_userDisabled;
 
-+ (CDUnknownBlockType)acceptedComparatorForSupportedNetworks:(id)arg1 merchantCapabilities:(unsigned long long)arg2;
++ (CDUnknownBlockType)acceptedComparatorForSupportedNetworks:(id)arg1 merchantCapabilities:(unsigned long long)arg2 webService:(id)arg3;
 + (CDUnknownBlockType)preferenceComparator;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -54,6 +54,7 @@
 - (id)initWithIDSDevice:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToRemoteDevice:(id)arg1;
+- (id)pk_idsDestination;
 
 @end
 

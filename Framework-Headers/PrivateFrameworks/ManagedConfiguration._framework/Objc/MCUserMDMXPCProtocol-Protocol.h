@@ -4,9 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <ManagedConfiguration/MCMDMClientProtocol-Protocol.h>
 #import <ManagedConfiguration/NSObject-Protocol.h>
 
-@protocol MCUserMDMXPCProtocol <NSObject>
+@class NSDictionary;
+
+@protocol MCUserMDMXPCProtocol <NSObject, MCMDMClientProtocol>
+- (void)processUserRequest:(NSDictionary *)arg1 completion:(void (^)(NSError *, NSDictionary *))arg2;
 - (void)scheduleTokenUpdateWithCompletion:(void (^)(NSError *))arg1;
 - (void)simulatePushWithCompletion:(void (^)(NSError *))arg1;
 - (void)userPushTokenWithCompletion:(void (^)(NSData *, NSError *))arg1;

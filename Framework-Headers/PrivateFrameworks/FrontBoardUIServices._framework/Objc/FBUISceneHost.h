@@ -4,24 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <FrontBoardUIServices/FBUISceneHost-Protocol.h>
 #import <FrontBoardUIServices/FBUISceneUpdater-Protocol.h>
 
-@class FBUISceneIdentity, NSString;
+@class FBSSceneSpecification, NSString;
 @protocol FBUISceneClientProxy;
 
 @interface FBUISceneHost : NSObject <FBUISceneHost, FBUISceneUpdater>
 {
-    FBUISceneIdentity *_identity;
+    NSString *_identifier;
+    FBSSceneSpecification *_specification;
     id<FBUISceneClientProxy> _sceneClient;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSString *sceneIdentifier;
 @property (readonly) Class superclass;
 
 - (id)contentView;
@@ -29,7 +29,7 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)didInvalidateSceneClient:(id)arg1;
-- (id)initWithIdentity:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 specification:(id)arg2;
 - (void)invalidateSceneClient;
 - (void)registerSceneClient:(id)arg1;
 - (id)sceneClient;
@@ -38,6 +38,8 @@
 - (void)sceneClient:(id)arg1 didReceiveActions:(id)arg2;
 - (void)sceneClient:(id)arg1 didUpdateClientSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4;
 - (void)sceneClient:(id)arg1 didUpdateLayer:(id)arg2;
+- (id)sceneIdentifier;
+- (id)sceneSpecification;
 - (void)sendActions:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

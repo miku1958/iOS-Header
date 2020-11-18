@@ -9,10 +9,8 @@
 __attribute__((visibility("hidden")))
 @interface __NSSetM : NSMutableSet
 {
-    unsigned int _used:58;
-    unsigned long long _size;
-    unsigned long long _mutations;
-    id *_objs;
+    _Atomic struct __cow_state_t *cow;
+    CDStruct_af6d7307 storage;
 }
 
 + (id)__new:(const id *)arg1:(unsigned long long)arg2:(BOOL)arg3;
@@ -25,11 +23,12 @@ __attribute__((visibility("hidden")))
 - (double)clumpingInterestingThreshold;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_58648341 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)getObjects:(id *)arg1 count:(unsigned long long)arg2;
 - (id)member:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)objectEnumerator;
 - (void)removeAllObjects;
 - (void)removeObject:(id)arg1;

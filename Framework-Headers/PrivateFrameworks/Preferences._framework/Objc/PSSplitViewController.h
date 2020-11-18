@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (id)childViewControllerForStatusBarStyle;
 - (void)popRecursivelyToRootController;
+- (void)setViewControllers:(id)arg1;
 - (void)setupControllerForToolbar:(id)arg1;
 - (void)showInitialViewController:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;

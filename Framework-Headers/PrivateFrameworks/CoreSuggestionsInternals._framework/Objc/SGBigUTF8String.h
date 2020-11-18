@@ -35,6 +35,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dataUsingEncoding:(unsigned long long)arg1;
 - (void)dealloc;
+- (unsigned long long)fastestEncoding;
 - (void)getCharacters:(unsigned short *)arg1 range:(struct _NSRange)arg2;
 - (unsigned long long)hash;
 - (id)initWithUTF8Data:(id)arg1;

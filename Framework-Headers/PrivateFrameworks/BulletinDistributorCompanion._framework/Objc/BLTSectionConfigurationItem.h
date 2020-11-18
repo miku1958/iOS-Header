@@ -13,17 +13,24 @@
     BOOL _optOutOfCoordination;
     BOOL _optOutOfAttachmentTransmission;
     BOOL _alwaysSyncSettings;
+    BOOL _alwaysAlert;
+    BOOL _optOutOfWaitForUserIdle;
     NSArray *_whitelistedSubtypes;
+    NSArray *_blacklistedCategories;
 }
 
+@property (nonatomic) BOOL alwaysAlert; // @synthesize alwaysAlert=_alwaysAlert;
 @property (nonatomic) BOOL alwaysSyncSettings; // @synthesize alwaysSyncSettings=_alwaysSyncSettings;
+@property (strong, nonatomic) NSArray *blacklistedCategories; // @synthesize blacklistedCategories=_blacklistedCategories;
 @property (nonatomic) BOOL optOutOfAttachmentTransmission; // @synthesize optOutOfAttachmentTransmission=_optOutOfAttachmentTransmission;
 @property (nonatomic) BOOL optOutOfCoordination; // @synthesize optOutOfCoordination=_optOutOfCoordination;
+@property (nonatomic) BOOL optOutOfWaitForUserIdle; // @synthesize optOutOfWaitForUserIdle=_optOutOfWaitForUserIdle;
 @property (strong, nonatomic) NSArray *whitelistedSubtypes; // @synthesize whitelistedSubtypes=_whitelistedSubtypes;
 
 - (void).cxx_destruct;
 - (id)description;
 - (id)initWithDictionary:(id)arg1;
+- (BOOL)optOutOfCoordinationWithSubtype:(long long)arg1;
 
 @end
 

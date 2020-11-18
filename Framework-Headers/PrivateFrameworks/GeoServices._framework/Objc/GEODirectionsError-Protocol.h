@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <GeoServices/NSObject-Protocol.h>
+
 @class NSString;
 @protocol GEOTransitRoutingIncidentMessage;
 
-@protocol GEODirectionsError
+@protocol GEODirectionsError <NSObject>
 
 @property (readonly, nonatomic) long long firstDirectionsErrorCode;
 @property (readonly, nonatomic) id<GEOTransitRoutingIncidentMessage> incidentMessage;

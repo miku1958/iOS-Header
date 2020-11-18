@@ -6,9 +6,11 @@
 
 #import <HealthKit/HKQuery.h>
 
-@class NSCalendar, NSDate, NSSet;
+#import <HealthKit/HKLatestSummariesQueryClientInterface-Protocol.h>
 
-@interface _HKLatestSummariesQuery : HKQuery
+@class NSCalendar, NSDate, NSSet, NSString;
+
+@interface _HKLatestSummariesQuery : HKQuery <HKLatestSummariesQueryClientInterface>
 {
     NSDate *_summaryDate;
     NSCalendar *_calendar;
@@ -17,21 +19,26 @@
     CDUnknownBlockType _updateHandler;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CDUnknownBlockType resultsHandler; // @synthesize resultsHandler=_resultsHandler;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
 
-+ (Class)_queryServerDataObjectClass;
++ (id)clientInterfaceProtocol;
++ (void)configureClientInterface:(id)arg1;
 - (void).cxx_destruct;
-- (void)_queue_cleanupAfterDeactivation;
-- (void)_queue_configureQueryServerDataObject:(id)arg1;
-- (CDUnknownBlockType)_queue_errorHandler;
-- (BOOL)_queue_shouldStayAliveAfterInitialResults;
-- (void)_queue_validate;
-- (BOOL)_requiresValidSampleType;
-- (void)deliverResetSummaries:(id)arg1 forQuery:(id)arg2;
-- (void)deliverSummaries:(id)arg1 forQuery:(id)arg2;
-- (void)deliverUpdatedSummaries:(id)arg1 forQuery:(id)arg2;
+- (void)client_deliverResetSummaries:(id)arg1 forQuery:(id)arg2;
+- (void)client_deliverSummaries:(id)arg1 forQuery:(id)arg2;
+- (void)client_deliverUpdatedSummaries:(id)arg1 forQuery:(id)arg2;
 - (id)initWithDate:(id)arg1 calendar:(id)arg2 resultsHandler:(CDUnknownBlockType)arg3;
+- (void)queue_connectToQueryServerWithHealthStore:(id)arg1 activationUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)queue_deliverError:(id)arg1;
+- (void)queue_populateConfiguration:(id)arg1;
+- (void)queue_queryDidDeactivate:(id)arg1;
+- (BOOL)queue_shouldDeactivateAfterInitialResults;
+- (void)queue_validate;
 
 @end
 

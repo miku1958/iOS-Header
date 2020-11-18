@@ -30,6 +30,7 @@
 @property (strong, nonatomic) NSMutableArray *logMessageList; // @synthesize logMessageList;
 @property (readonly, nonatomic) Alarm *sleepAlarm; // @synthesize sleepAlarm=_sleepAlarm;
 
++ (id)assistantSyncNotificationName;
 + (id)copyReadAlarmsFromPreferences;
 + (id)copySleepAlarmFromPreferences;
 + (BOOL)discardOldVersion;
@@ -39,6 +40,7 @@
 + (void)writeAlarmsToPreferences:(id)arg1;
 + (void)writeSleepAlarmToPreferences:(id)arg1;
 - (void).cxx_destruct;
+- (void)_updateAlarm:(id)arg1 active:(BOOL)arg2 logIntent:(BOOL)arg3;
 - (void)addAlarm:(id)arg1 active:(BOOL)arg2;
 - (void)addObserver:(id)arg1;
 - (id)alarmWithId:(id)arg1;

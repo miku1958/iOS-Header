@@ -42,13 +42,13 @@
 + (BOOL)deleteAchievements:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;
 + (BOOL)deleteAllAchievementsInHealthDatabase:(id)arg1 error:(id *)arg2;
 + (id)entityEncoderForProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
-+ (BOOL)generateSyncObjectsForStore:(id)arg1 predicate:(id)arg2 syncAnchorRange:(struct HDSyncAnchorRange)arg3 maxEncodedBytesPerMessage:(long long)arg4 profile:(id)arg5 error:(id *)arg6 handler:(CDUnknownBlockType)arg7;
++ (BOOL)generateSyncObjectsForSession:(id)arg1 predicate:(id)arg2 syncAnchorRange:(struct HDSyncAnchorRange)arg3 maxEncodedBytesPerMessage:(long long)arg4 profile:(id)arg5 error:(id *)arg6 handler:(CDUnknownBlockType)arg7;
 + (BOOL)insertAchievement:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;
 + (BOOL)insertAchievements:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;
 + (BOOL)markAchievement:(id)arg1 alertedInHealthDatabase:(id)arg2 error:(id *)arg3;
 + (BOOL)markAchievement:(id)arg1 viewedInHealthDatabase:(id)arg2 error:(id *)arg3;
 + (int)nanoSyncObjectType;
-+ (long long)nextSyncAnchorWithStore:(id)arg1 predicate:(id)arg2 startSyncAnchor:(long long)arg3 profile:(id)arg4 error:(id *)arg5;
++ (long long)nextSyncAnchorWithSession:(id)arg1 predicate:(id)arg2 startSyncAnchor:(long long)arg3 profile:(id)arg4 error:(id *)arg5;
 + (long long)numberOfUnviewedAchievementsInHealthDatabase:(id)arg1;
 + (id)predicateForAchievementsWithDefinitionIdentifiers:(id)arg1;
 + (id)propertyForSyncProvenance;
@@ -56,7 +56,7 @@
 + (long long)receiveSyncObjects:(id)arg1 syncStore:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;
 + (BOOL)supportsSpeculativeNanoSyncChanges;
-+ (id)syncEntityDependencies;
++ (id)syncEntityDependenciesForSyncProtocolVersion:(int)arg1;
 + (long long)syncEntityType;
 + (id)unalertedAchievementsInProfile:(id)arg1;
 

@@ -18,11 +18,9 @@
 - (BOOL)canDisplaySlideshowButton;
 - (long long)cellBannerTextAlignment;
 - (long long)cellFillMode;
-- (void)configureCollectionViewGridLayout:(id)arg1 forWidth:(double)arg2;
-- (double)globalFooterHeight;
+- (void)configureCollectionViewGridLayout:(id)arg1 forWidth:(double)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
 - (double)maxSearchBarWidth;
 - (id)photosPickerViewControllerSpec;
-- (double)sectionHeaderHeight;
 - (long long)sectionHeaderStyle;
 - (BOOL)shouldPlaceDeleteInCenterToolbarPosition;
 - (BOOL)shouldPlaceSelectAllButtonInRightNavigationBar;

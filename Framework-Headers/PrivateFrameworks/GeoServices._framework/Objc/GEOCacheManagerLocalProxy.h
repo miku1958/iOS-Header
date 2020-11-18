@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOCacheManaging-Protocol.h>
 
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_asyncPlaceDataRequest:(id)arg1 traits:(id)arg2 auditToken:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (long long)_invalidationDataHasExpired:(id)arg1;
 - (BOOL)_invalidationDataHasExpiredByVersion:(unsigned int)arg1 domains:(id)arg2;
@@ -31,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (id)_syncedPlaceRefineMapItem:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 traits:(id)arg3 auditToken:(id)arg4;
 - (id)_syncedRevGeoCoordinate:(CDStruct_c3b9c2ee)arg1 traits:(id)arg2 auditToken:(id)arg3;
 - (void)checkHasExpiredWithInvalidationDatas:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (id)init;
 - (long long)invalidationStateForComponent:(id)arg1;
 - (long long)invalidationStateForPlace:(id)arg1;

@@ -13,17 +13,21 @@
 + (id)hk_error:(long long)arg1 description:(id)arg2;
 + (id)hk_error:(long long)arg1 description:(id)arg2 underlyingError:(id)arg3;
 + (id)hk_error:(long long)arg1 format:(id)arg2;
++ (id)hk_featureUnavailableForProfileError;
++ (id)hk_invalidProfileError;
 + (id)hk_protectedDataInaccessibilityError;
 - (BOOL)hk_isAuthorizationDeniedError;
 - (BOOL)hk_isAuthorizationNotDeterminedError;
 - (BOOL)hk_isCocoaNoSuchFileError;
 - (BOOL)hk_isDatabaseAccessibilityError;
 - (BOOL)hk_isHealthKitError;
+- (BOOL)hk_isHealthKitErrorWithCode:(long long)arg1;
 - (BOOL)hk_isInternalFailureError;
 - (BOOL)hk_isInvalidArgumentError;
 - (BOOL)hk_isServiceDeviceNotFoundError;
 - (BOOL)hk_isStreamFailureError;
 - (BOOL)hk_isTimeoutError;
+- (id)hk_sanitizedError;
 - (id)hk_underlyingErrorWithDomain:(id)arg1;
 @end
 

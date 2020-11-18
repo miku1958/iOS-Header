@@ -26,6 +26,7 @@
 
 + (Class)clientConfigType;
 + (Class)serverAbAssignmentType;
+- (void).cxx_destruct;
 - (void)addClientConfig:(id)arg1;
 - (void)addServerAbAssignment:(id)arg1;
 - (void)clearClientConfigs;
@@ -34,7 +35,6 @@
 - (unsigned long long)clientConfigsCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

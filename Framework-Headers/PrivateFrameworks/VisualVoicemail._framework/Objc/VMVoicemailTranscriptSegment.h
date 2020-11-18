@@ -6,16 +6,17 @@
 
 #import <Foundation/NSObject.h>
 
+#import <VisualVoicemail/NSCopying-Protocol.h>
 #import <VisualVoicemail/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface VMVoicemailTranscriptSegment : NSObject <NSSecureCoding>
+@interface VMVoicemailTranscriptSegment : NSObject <NSCopying, NSSecureCoding>
 {
     float _confidence;
     NSString *_substring;
-    double _timestamp;
     double _duration;
+    double _timestamp;
     unsigned long long _confidenceRating;
     struct _NSRange _substringRange;
 }
@@ -29,11 +30,12 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTranscriptionSegment:(id)arg1;
+- (id)initWithTranscriptionSegment:(id)arg1 confidenceThreshold:(float)arg2;
 
 @end
 

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreCDP/CDPDeviceProtocol-Protocol.h>
 #import <CoreCDP/NSCopying-Protocol.h>
 #import <CoreCDP/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSNumber, NSString;
 
-@interface CDPDevice : NSObject <NSCopying, NSSecureCoding>
+@interface CDPDevice : NSObject <NSCopying, NSSecureCoding, CDPDeviceProtocol>
 {
     NSString *_localizedName;
     NSString *_model;
@@ -36,10 +37,13 @@
 }
 
 @property (strong, nonatomic) NSNumber *coolOffPeriod; // @synthesize coolOffPeriod=_coolOffPeriod;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *deviceColor; // @synthesize deviceColor=_deviceColor;
 @property (copy, nonatomic) NSString *enclosureColor; // @synthesize enclosureColor=_enclosureColor;
 @property (nonatomic) BOOL hasNumericSecret; // @synthesize hasNumericSecret=_hasNumericSecret;
 @property (nonatomic) BOOL hasRandomSecret; // @synthesize hasRandomSecret=_hasRandomSecret;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isCurrentDevice; // @synthesize isCurrentDevice=_isCurrentDevice;
 @property (nonatomic) BOOL isUsingMultipleiCSC; // @synthesize isUsingMultipleiCSC=_isUsingMultipleiCSC;
 @property (readonly, nonatomic) unsigned long long localSecretType;
@@ -56,11 +60,11 @@
 @property (nonatomic) unsigned long long recoveryStatus; // @synthesize recoveryStatus=_recoveryStatus;
 @property (nonatomic) unsigned long long remainingAttempts; // @synthesize remainingAttempts=_remainingAttempts;
 @property (copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

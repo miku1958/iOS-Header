@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameCenterUI/GKServiceViewControllerDelegate-Protocol.h>
+#import <GameCenterUI/GKExtensionHostProtocol-Protocol.h>
 
 @class GKMatchRequestInternal, GKPlayerInternal, NSArray, NSData, NSError;
 
-@protocol GKMatchmakerHostProtocol <GKServiceViewControllerDelegate>
+@protocol GKMatchmakerHostProtocol <GKExtensionHostProtocol>
+
+@optional
 - (void)cancelMatching;
 - (void)cancelPendingInviteToPlayer:(GKPlayerInternal *)arg1;
 - (void)finishWithError:(NSError *)arg1;

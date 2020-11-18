@@ -19,7 +19,7 @@
 @property (strong, nonatomic) NSDictionary *extraAttributes; // @synthesize extraAttributes=_extraAttributes;
 @property (strong, nonatomic) NSSet *searchItems; // @synthesize searchItems=_searchItems;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)finishCoreDAVTaskWithError:(id)arg1;
 - (id)httpMethod;
 - (id)initWithPropertiesToFind:(id)arg1 atURL:(id)arg2;

@@ -7,12 +7,13 @@
 #import <VectorKit/VKCameraController-Protocol.h>
 #import <VectorKit/VKPuckAnimatorDelegate-Protocol.h>
 
-@class VKMapCanvas, VKMapModel;
+@class VKSceneConfiguration, VKScreenCanvas;
+@protocol VKInteractiveMap><VKMapDataAccess;
 
 @protocol VKNavigationCameraController <VKCameraController, VKPuckAnimatorDelegate>
 
-@property (nonatomic) VKMapCanvas *mapCanvas;
-@property (strong, nonatomic) VKMapModel *mapModel;
+@property (nonatomic) VKSceneConfiguration *sceneConfiguration;
+@property (nonatomic) VKScreenCanvas<VKInteractiveMap><VKMapDataAccess> *screenCanvas;
 @property (nonatomic) double zoomScale;
 
 - (void)startWithPounce:(BOOL)arg1 startLocation:(CDStruct_c3b9c2ee)arg2 startCourse:(double)arg3 pounceCompletionHandler:(void (^)(BOOL))arg4;

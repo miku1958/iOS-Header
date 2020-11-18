@@ -7,6 +7,7 @@
 #import <UIKit/NSObject-Protocol.h>
 
 @protocol _UIMultilineTextContentSizing <NSObject>
+- (BOOL)_inSecondConstraintsPass;
 - (void)_prepareForFirstIntrinsicContentSizeCalculation;
 - (void)_prepareForSecondIntrinsicContentSizeCalculationWithLayoutEngineBounds:(struct CGRect)arg1;
 - (void)_resetToBeginningOfDoublePass;

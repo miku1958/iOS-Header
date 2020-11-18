@@ -4,17 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVAudioInputNode, AVAudioMixerNode, AVAudioOutputNode;
+@class AVAudioFormat, AVAudioInputNode, AVAudioMixerNode, AVAudioOutputNode;
 
 @interface AVAudioEngine : NSObject
 {
     void *_impl;
 }
 
+@property (nonatomic, getter=isAutoShutdownEnabled) BOOL autoShutdownEnabled;
 @property (readonly, nonatomic) AVAudioInputNode *inputNode;
+@property (readonly, nonatomic) BOOL isInManualRenderingMode;
 @property (readonly, nonatomic) AVAudioMixerNode *mainMixerNode;
+@property (readonly, nonatomic) CDUnknownBlockType manualRenderingBlock;
+@property (readonly, nonatomic) AVAudioFormat *manualRenderingFormat;
+@property (readonly, nonatomic) unsigned int manualRenderingMaximumFrameCount;
+@property (readonly, nonatomic) long long manualRenderingMode;
+@property (readonly, nonatomic) long long manualRenderingSampleTime;
 @property (nonatomic) struct OpaqueMusicSequence *musicSequence;
 @property (readonly, nonatomic) AVAudioOutputNode *outputNode;
 @property (readonly, nonatomic, getter=isRunning) BOOL running;
@@ -26,16 +33,19 @@
 - (void)dealloc;
 - (id)description;
 - (void)detachNode:(id)arg1;
+- (void)disableManualRenderingMode;
 - (void)disconnectNodeInput:(id)arg1;
 - (void)disconnectNodeInput:(id)arg1 bus:(unsigned long long)arg2;
 - (void)disconnectNodeOutput:(id)arg1;
 - (void)disconnectNodeOutput:(id)arg1 bus:(unsigned long long)arg2;
+- (BOOL)enableManualRenderingMode:(long long)arg1 format:(id)arg2 maximumFrameCount:(unsigned int)arg3 error:(id *)arg4;
 - (struct AVAudioEngineImpl *)implementation;
 - (id)init;
 - (id)inputConnectionPointForNode:(id)arg1 inputBus:(unsigned long long)arg2;
 - (id)outputConnectionPointsForNode:(id)arg1 outputBus:(unsigned long long)arg2;
 - (void)pause;
 - (void)prepare;
+- (long long)renderOffline:(unsigned int)arg1 toBuffer:(id)arg2 error:(id *)arg3;
 - (void)reset;
 - (BOOL)startAndReturnError:(id *)arg1;
 - (void)stop;

@@ -8,11 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOVersionManifest, NSMutableArray, NSString;
+@class GEOVersionManifest, NSMutableArray, NSString, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOResources : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSString *_abExperimentURL;
     NSString *_addressCorrectionInitURL;
     NSString *_addressCorrectionUpdateURL;
@@ -20,7 +21,11 @@ __attribute__((visibility("hidden")))
     NSString *_announcementsURL;
     NSMutableArray *_attributions;
     NSString *_authToken;
+    NSString *_backgroundDispatcherURL;
+    NSString *_backgroundRevGeoURL;
     NSString *_batchReverseGeocoderURL;
+    NSString *_batchTrafficProbeURL;
+    NSString *_bluePOIDispatcherURL;
     NSString *_businessPortalBaseURL;
     NSMutableArray *_dataSetURLOverrides;
     NSMutableArray *_dataSets;
@@ -34,11 +39,14 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_locationShiftEnabledRegions;
     unsigned int _locationShiftVersion;
     NSString *_logMessageUsageURL;
+    NSString *_logMessageUsageV3URL;
     NSString *_polyLocationShiftURL;
+    NSString *_proactiveRoutingURL;
     NSString *_problemCategoriesURL;
     NSString *_problemOptInURL;
     NSString *_problemStatusURL;
     NSString *_problemSubmissionURL;
+    NSString *_realtimeTrafficProbeURL;
     NSMutableArray *_regionalResources;
     NSString *_releaseInfo;
     NSMutableArray *_resources;
@@ -68,7 +76,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *announcementsURL; // @synthesize announcementsURL=_announcementsURL;
 @property (strong, nonatomic) NSMutableArray *attributions; // @synthesize attributions=_attributions;
 @property (strong, nonatomic) NSString *authToken; // @synthesize authToken=_authToken;
+@property (strong, nonatomic) NSString *backgroundDispatcherURL; // @synthesize backgroundDispatcherURL=_backgroundDispatcherURL;
+@property (strong, nonatomic) NSString *backgroundRevGeoURL; // @synthesize backgroundRevGeoURL=_backgroundRevGeoURL;
 @property (strong, nonatomic) NSString *batchReverseGeocoderURL; // @synthesize batchReverseGeocoderURL=_batchReverseGeocoderURL;
+@property (strong, nonatomic) NSString *batchTrafficProbeURL; // @synthesize batchTrafficProbeURL=_batchTrafficProbeURL;
+@property (strong, nonatomic) NSString *bluePOIDispatcherURL; // @synthesize bluePOIDispatcherURL=_bluePOIDispatcherURL;
 @property (strong, nonatomic) NSString *businessPortalBaseURL; // @synthesize businessPortalBaseURL=_businessPortalBaseURL;
 @property (strong, nonatomic) NSMutableArray *dataSetURLOverrides; // @synthesize dataSetURLOverrides=_dataSetURLOverrides;
 @property (strong, nonatomic) NSMutableArray *dataSets; // @synthesize dataSets=_dataSets;
@@ -82,18 +94,25 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasAddressCorrectionUpdateURL;
 @property (readonly, nonatomic) BOOL hasAnnouncementsURL;
 @property (readonly, nonatomic) BOOL hasAuthToken;
+@property (readonly, nonatomic) BOOL hasBackgroundDispatcherURL;
+@property (readonly, nonatomic) BOOL hasBackgroundRevGeoURL;
 @property (readonly, nonatomic) BOOL hasBatchReverseGeocoderURL;
+@property (readonly, nonatomic) BOOL hasBatchTrafficProbeURL;
+@property (readonly, nonatomic) BOOL hasBluePOIDispatcherURL;
 @property (readonly, nonatomic) BOOL hasBusinessPortalBaseURL;
 @property (readonly, nonatomic) BOOL hasDirectionsURL;
 @property (readonly, nonatomic) BOOL hasDispatcherURL;
 @property (readonly, nonatomic) BOOL hasEtaURL;
 @property (nonatomic) BOOL hasLocationShiftVersion;
 @property (readonly, nonatomic) BOOL hasLogMessageUsageURL;
+@property (readonly, nonatomic) BOOL hasLogMessageUsageV3URL;
 @property (readonly, nonatomic) BOOL hasPolyLocationShiftURL;
+@property (readonly, nonatomic) BOOL hasProactiveRoutingURL;
 @property (readonly, nonatomic) BOOL hasProblemCategoriesURL;
 @property (readonly, nonatomic) BOOL hasProblemOptInURL;
 @property (readonly, nonatomic) BOOL hasProblemStatusURL;
 @property (readonly, nonatomic) BOOL hasProblemSubmissionURL;
+@property (readonly, nonatomic) BOOL hasRealtimeTrafficProbeURL;
 @property (readonly, nonatomic) BOOL hasReleaseInfo;
 @property (readonly, nonatomic) BOOL hasResourcesURL;
 @property (readonly, nonatomic) BOOL hasReverseGeocoderVersionsURL;
@@ -106,11 +125,14 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *locationShiftEnabledRegions; // @synthesize locationShiftEnabledRegions=_locationShiftEnabledRegions;
 @property (nonatomic) unsigned int locationShiftVersion; // @synthesize locationShiftVersion=_locationShiftVersion;
 @property (strong, nonatomic) NSString *logMessageUsageURL; // @synthesize logMessageUsageURL=_logMessageUsageURL;
+@property (strong, nonatomic) NSString *logMessageUsageV3URL; // @synthesize logMessageUsageV3URL=_logMessageUsageV3URL;
 @property (strong, nonatomic) NSString *polyLocationShiftURL; // @synthesize polyLocationShiftURL=_polyLocationShiftURL;
+@property (strong, nonatomic) NSString *proactiveRoutingURL; // @synthesize proactiveRoutingURL=_proactiveRoutingURL;
 @property (strong, nonatomic) NSString *problemCategoriesURL; // @synthesize problemCategoriesURL=_problemCategoriesURL;
 @property (strong, nonatomic) NSString *problemOptInURL; // @synthesize problemOptInURL=_problemOptInURL;
 @property (strong, nonatomic) NSString *problemStatusURL; // @synthesize problemStatusURL=_problemStatusURL;
 @property (strong, nonatomic) NSString *problemSubmissionURL; // @synthesize problemSubmissionURL=_problemSubmissionURL;
+@property (strong, nonatomic) NSString *realtimeTrafficProbeURL; // @synthesize realtimeTrafficProbeURL=_realtimeTrafficProbeURL;
 @property (strong, nonatomic) NSMutableArray *regionalResources; // @synthesize regionalResources=_regionalResources;
 @property (strong, nonatomic) NSString *releaseInfo; // @synthesize releaseInfo=_releaseInfo;
 @property (strong, nonatomic) NSMutableArray *resources; // @synthesize resources=_resources;
@@ -125,6 +147,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *textures; // @synthesize textures=_textures;
 @property (strong, nonatomic) NSMutableArray *tileGroups; // @synthesize tileGroups=_tileGroups;
 @property (strong, nonatomic) NSMutableArray *tileSets; // @synthesize tileSets=_tileSets;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOVersionManifest *versionManifest; // @synthesize versionManifest=_versionManifest;
 @property (strong, nonatomic) NSMutableArray *xmlChecksums; // @synthesize xmlChecksums=_xmlChecksums;
 @property (strong, nonatomic) NSMutableArray *xmls; // @synthesize xmls=_xmls;
@@ -148,6 +171,7 @@ __attribute__((visibility("hidden")))
 + (Class)tileSetType;
 + (Class)xmlChecksumType;
 + (Class)xmlType;
+- (void).cxx_destruct;
 - (void)addAnnouncementsSupportedLanguages:(id)arg1;
 - (void)addAttribution:(id)arg1;
 - (void)addDataSet:(id)arg1;
@@ -197,7 +221,6 @@ __attribute__((visibility("hidden")))
 - (id)dataSetURLOverrideAtIndex:(unsigned long long)arg1;
 - (unsigned long long)dataSetURLOverridesCount;
 - (unsigned long long)dataSetsCount;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)fontAtIndex:(unsigned long long)arg1;

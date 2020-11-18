@@ -47,6 +47,7 @@
 @property (readonly, nonatomic) unsigned long long photosCount;
 @property (strong, nonatomic) NSDate *representativeDate; // @dynamic representativeDate;
 @property (strong, nonatomic) NSData *reverseLocationData; // @dynamic reverseLocationData;
+@property (nonatomic) BOOL reverseLocationDataContainsLocation; // @dynamic reverseLocationDataContainsLocation;
 @property (nonatomic) BOOL reverseLocationDataIsValid; // @dynamic reverseLocationDataIsValid;
 @property (strong, nonatomic) PLManagedAsset *secondaryKeyAsset;
 @property (strong, nonatomic) NSDate *startDate; // @dynamic startDate;
@@ -56,6 +57,7 @@
 @property (strong, nonatomic) NSString *title2; // @dynamic title2;
 @property (strong, nonatomic) NSString *title3; // @dynamic title3;
 @property (readonly, strong, nonatomic) NSObject<NSCopying> *uniqueObjectID;
+@property (nonatomic) BOOL usedLocationsOfInterest; // @dynamic usedLocationsOfInterest;
 @property (strong, nonatomic) NSArray *userTitles;
 @property (strong, nonatomic) NSString *uuid; // @dynamic uuid;
 @property (readonly, nonatomic) unsigned long long videosCount;
@@ -69,6 +71,7 @@
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)insertNewMomentInManagedObjectContext:(id)arg1 error:(id *)arg2;
++ (unsigned long long)numberOfMomentsGeneratedWithoutLocationsOfInterestInformation:(id)arg1 error:(id *)arg2;
 + (id)predicateForAssetsIncludedInMoments;
 - (void)_updateCachedNameInfoIfNeeded;
 - (BOOL)_validateForInsertOrUpdate:(id *)arg1;

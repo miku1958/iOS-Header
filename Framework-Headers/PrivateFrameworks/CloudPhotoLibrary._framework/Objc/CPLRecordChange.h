@@ -13,7 +13,8 @@
 
 @interface CPLRecordChange : NSObject <NSSecureCoding, NSCopying>
 {
-    unsigned long long _alterationTypeFlags;
+    NSString *_uploadIdentifier;
+    BOOL _shouldNotTrustCloudCache;
     BOOL _shouldFilterDefaultValuesForNewProperties;
     BOOL _isSparseFullChange;
     BOOL _inTrash;
@@ -41,20 +42,24 @@
 + (Class)classForStoredClassName:(id)arg1 forCPLArchiver:(id)arg2;
 + (CDUnknownBlockType)copyPropertyBlockForDirection:(unsigned long long)arg1;
 + (id)cplAdditionalSecureClassesForProperty:(id)arg1;
-+ (id)deleteChangeWithIdentifier:(id)arg1;
 + (id)descriptionForChangeType:(unsigned long long)arg1;
++ (id)descriptionForDirection:(unsigned long long)arg1;
 + (CDUnknownBlockType)equalityBlockForDirection:(unsigned long long)arg1;
 + (long long)maxInlineDataSize;
 + (id)newChangeWithIdentifier:(id)arg1 changeType:(unsigned long long)arg2;
 + (id)newChangeWithType:(unsigned long long)arg1;
++ (id)newDeleteChangeWithIdentifier:(id)arg1;
 + (id)newRecord;
 + (id)newRecordWithIdentifier:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)_addRealChangeToChangeBatch:(id)arg1 withStoredRecord:(id)arg2 andApplyToClientCache:(id)arg3 error:(id *)arg4;
-- (BOOL)addExpandedChangesToChangeBatch:(id)arg1 andApplyToClientCache:(id)arg2 error:(id *)arg3;
+- (BOOL)_canLowerQuota;
+- (void)_setShouldNotTrustCloudCache:(BOOL)arg1;
+- (void)_setUploadIdentifier:(id)arg1;
+- (BOOL)_shouldNotTrustCloudCache;
+- (id)_uploadIdentifier;
 - (id)allRelatedIdentifiers;
-- (unsigned long long)alterationTypeFlags;
+- (BOOL)allResourcesAreAvailable;
 - (BOOL)applyChange:(id)arg1 copyPropertiesToFinalChange:(id)arg2 forChangeType:(unsigned long long)arg3 direction:(unsigned long long)arg4 updatedProperty:(id *)arg5;
 - (void)awakeFromStorage;
 - (CDUnknownBlockType)checkDefaultValueBlockForPropertyWithSelector:(SEL)arg1;
@@ -65,14 +70,17 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)estimatedRecordSize;
+- (unsigned long long)fullChangeTypeForFullRecord;
 - (BOOL)hasChangeType:(unsigned long long)arg1;
 - (unsigned long long)hash;
 - (id)identifierForQuarantine;
 - (id)identifiersForMapping;
+- (id)identifiersForQuarantine;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isDelete;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isFullRecord;
+- (BOOL)isResourceTypeAGeneratedDerivative:(unsigned long long)arg1;
 - (BOOL)isSparseFullChange;
 - (void)markAsSparseFullChange;
 - (id)mergeRecordChangeWithNewRecordChange:(id)arg1 direction:(unsigned long long)arg2;
@@ -86,11 +94,11 @@
 - (id)realRecordChangeFromRecordChange:(id)arg1 direction:(unsigned long long)arg2 newRecord:(id *)arg3 updatedProperties:(id *)arg4;
 - (unsigned long long)realResourceSize;
 - (id)relatedIdentifier;
+- (BOOL)resourceChangeWillOnlyChangeDerivatives:(id)arg1;
 - (id)resourceForType:(unsigned long long)arg1;
 - (id)resources;
 - (id)resourcesDescription;
 - (id)secondaryIdentifier;
-- (void)setAlterationTypeFlags:(unsigned long long)arg1;
 - (void)setRelatedIdentifier:(id)arg1;
 - (void)setResources:(id)arg1;
 - (void)setSecondaryIdentifier:(id)arg1;
@@ -106,6 +114,7 @@
 - (id)translateToCloudChangeUsingIDMapping:(id)arg1 error:(id *)arg2;
 - (BOOL)validateChangeWithError:(id *)arg1;
 - (BOOL)validateFullRecord;
+- (BOOL)validateRecordForTracker:(id)arg1;
 
 @end
 

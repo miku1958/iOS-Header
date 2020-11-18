@@ -15,9 +15,10 @@
 {
     NSString *_queriedAirlineTitle;
     FUAirline *_displayAirline;
-    long long _displayFlightNumber;
+    unsigned long long _displayFlightNumber;
     FUAirline *_airline;
-    long long _flightNumber;
+    unsigned long long _flightNumber;
+    NSString *_flightIdentifier;
     NSString *_cancellationMessage;
     NSArray *_legs;
     NSArray *_codeShares;
@@ -39,11 +40,12 @@
 @property unsigned long long departureLegIndex; // @synthesize departureLegIndex=_departureLegIndex;
 @property (strong) FUAirline *displayAirline; // @synthesize displayAirline=_displayAirline;
 @property (readonly) NSString *displayFlightCode;
-@property long long displayFlightNumber; // @synthesize displayFlightNumber=_displayFlightNumber;
+@property unsigned long long displayFlightNumber; // @synthesize displayFlightNumber=_displayFlightNumber;
 @property (readonly) double duration;
 @property (strong) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly) NSString *flightCode;
-@property long long flightNumber; // @synthesize flightNumber=_flightNumber;
+@property (strong) NSString *flightIdentifier; // @synthesize flightIdentifier=_flightIdentifier;
+@property unsigned long long flightNumber; // @synthesize flightNumber=_flightNumber;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong) NSArray *legs; // @synthesize legs=_legs;
 @property (strong) NSString *queriedAirlineTitle; // @synthesize queriedAirlineTitle=_queriedAirlineTitle;

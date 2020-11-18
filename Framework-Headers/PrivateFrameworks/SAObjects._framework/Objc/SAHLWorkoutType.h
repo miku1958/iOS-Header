@@ -18,6 +18,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *swimmingLocationType;
 @property (copy, nonatomic) NSString *workoutCategory;
 @property (copy, nonatomic) NSString *workoutLocationType;
 

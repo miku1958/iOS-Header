@@ -4,34 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <BaseBoard/BSBaseXPCClient.h>
+#import <AssertionServices/BKSBaseAssertionClient.h>
 
-@class NSMapTable, NSObject;
-@protocol OS_dispatch_queue;
-
-@interface BKSProcessAssertionClient : BSBaseXPCClient
+@interface BKSProcessAssertionClient : BKSBaseAssertionClient
 {
-    NSMapTable *_assertionHandlersByIdentifier;
-    NSObject<OS_dispatch_queue> *_assertionQueue;
 }
 
-+ (id)assertionQueue;
-+ (id)sharedInstance;
-- (void)_assertionQueue_sendEvent:(id)arg1 forMessageType:(unsigned long long)arg2 responseHandler:(CDUnknownBlockType)arg3;
-- (void)_assertionQueue_unregisterHandlerWithIdentifier:(id)arg1 andNotify:(BOOL)arg2;
-- (void)_connectionQueue_handleDestroy:(id)arg1;
-- (void)_connectionQueue_invalidateAllAssertions;
+- (void)assertionQueue_handleMessage:(id)arg1;
 - (double)backgroundTimeRemaining:(int)arg1;
-- (void)dealloc;
-- (id)description;
-- (id)initWithServiceName:(id)arg1 endpoint:(id)arg2;
-- (void)queue_connectionWasDestroyed;
-- (void)queue_handleMessage:(id)arg1;
-- (void)registerClientHandler:(id)arg1 forAssertionIdentifier:(id)arg2;
-- (BOOL)sendCreateAssertion:(id)arg1;
-- (void)sendDestroyAssertion:(id)arg1;
-- (void)sendUpdateAssertion:(id)arg1;
-- (void)unregisterClientHandlerForAssertionIdentifier:(id)arg1;
+- (BOOL)sendCreateEvent:(id)arg1 error:(id *)arg2;
+- (void)sendDestroyEvent:(id)arg1;
+- (void)sendUpdateEvent:(id)arg1;
+- (id)supportedAssertionType;
 
 @end
 

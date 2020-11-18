@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Contacts/CNObjectValidation-Protocol.h>
 #import <Contacts/NSCopying-Protocol.h>
@@ -41,10 +41,12 @@
 @property (readonly) Class superclass;
 
 + (id)localizedStringForKey:(id)arg1;
++ (id)postalAddressWithAddressBookDictionaryRepresentation:(id)arg1;
 + (id)postalAddressWithDictionaryRepresentation:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (id)addressBookDictionaryRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

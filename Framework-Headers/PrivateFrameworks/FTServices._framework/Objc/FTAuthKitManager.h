@@ -16,8 +16,8 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)anisetteHeadersForRequest:(id)arg1 completionBlockQueue:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)dealloc;
 - (void)handleResponse:(id)arg1 forRequest:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)init;
 

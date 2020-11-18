@@ -25,7 +25,6 @@
 + (id)__previewArtworkCatalogBlock__KEY;
 + (id)__staticAssets__KEY;
 + (id)__title__KEY;
-+ (id)mqf_requiredPlaybackProperties;
 - (void).cxx_destruct;
 - (id)previewArtworkCatalog;
 

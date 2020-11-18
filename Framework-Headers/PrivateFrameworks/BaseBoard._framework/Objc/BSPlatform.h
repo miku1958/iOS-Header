@@ -20,9 +20,6 @@
 @property (readonly, nonatomic) long long homeButtonType; // @dynamic homeButtonType;
 @property (readonly, nonatomic, getter=isInternalInstall) BOOL internalInstall; // @dynamic internalInstall;
 @property (readonly, copy, nonatomic) NSString *localizedProductName; // @dynamic localizedProductName;
-@property (readonly, nonatomic) double mainScreenOrientation; // @dynamic mainScreenOrientation;
-@property (readonly, nonatomic) int mainScreenPitch; // @dynamic mainScreenPitch;
-@property (readonly, nonatomic) double mainScreenScale; // @dynamic mainScreenScale;
 @property (readonly, nonatomic, getter=isMultiCore) BOOL multiCore; // @dynamic multiCore;
 @property (readonly, copy, nonatomic) NSString *operatingSystemName; // @dynamic operatingSystemName;
 @property (readonly, copy, nonatomic) NSString *productBuildVersion; // @dynamic productBuildVersion;
@@ -34,7 +31,7 @@
 @property (readonly, copy, nonatomic) NSString *uniqueDeviceIdentifier; // @dynamic uniqueDeviceIdentifier;
 
 + (id)sharedInstance;
-- (id)init;
+- (BOOL)_isD22Emulator;
 
 @end
 

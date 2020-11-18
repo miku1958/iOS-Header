@@ -20,8 +20,10 @@ __attribute__((visibility("hidden")))
     double _pulsingLoadIndicatorMaximumOpacity;
     double _pulsingLoadIndicatorDuration;
     CAMediaTimingFunction *_pulsingLoadIndicatorTimingFunction;
+    UIColor *_fullScreenBackgroundColor;
 }
 
+@property (strong, nonatomic) UIColor *fullScreenBackgroundColor; // @synthesize fullScreenBackgroundColor=_fullScreenBackgroundColor;
 @property (readonly, nonatomic) LPImageViewStyle *muteButton; // @synthesize muteButton=_muteButton;
 @property (nonatomic) double muteButtonHighlightedOpacity; // @synthesize muteButtonHighlightedOpacity=_muteButtonHighlightedOpacity;
 @property (nonatomic) double muteButtonOpacity; // @synthesize muteButtonOpacity=_muteButtonOpacity;

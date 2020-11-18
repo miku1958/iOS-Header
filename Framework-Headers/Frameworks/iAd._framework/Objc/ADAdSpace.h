@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/ADCreativeControllerDelegate-Protocol.h>
 #import <iAd/ADPrivacyViewControllerInternalDelegate-Protocol.h>
 #import <iAd/ADWebViewActionViewControllerDelegate-Protocol.h>
 
-@class ADAdActionPublicAttributes, ADAdImpressionPublicAttributes, ADAdSpaceConfiguration, ADCreativeController, ADPrivacyViewController, ADRemoteActionViewController, ADWebViewActionViewController, NSSet, NSString, NSURL, _UIAsyncInvocation;
+@class ADAdActionPublicAttributes, ADAdImpressionPublicAttributes, ADAdSpaceConfiguration, ADContext, ADCreativeController, ADPrivacyViewController, ADRemoteActionViewController, ADWebViewActionViewController, NSString, NSURL, _UIAsyncInvocation;
 @protocol ADAdRecipient;
 
 @interface ADAdSpace : NSObject <ADPrivacyViewControllerInternalDelegate, ADWebViewActionViewControllerDelegate, ADCreativeControllerDelegate>
@@ -20,7 +20,9 @@
     BOOL _firedAdStatusEvent;
     BOOL _isModalInterstitial;
     BOOL _didInstallCreativeView;
+    BOOL _hasImpressed;
     BOOL _visibilityCheckScheduled;
+    BOOL _adRequestMade;
     BOOL _shouldMonitorVisibility;
     BOOL _serviceAdSpaceRequestInProgress;
     BOOL _shouldPresentActionViewControllerWhenReady;
@@ -32,7 +34,7 @@
     NSURL *_serverURL;
     NSString *_advertisingSection;
     NSString *_authenticationUserName;
-    NSSet *_context;
+    ADContext *_context;
     ADAdImpressionPublicAttributes *_currentAdImpressionPublicAttributes;
     ADAdActionPublicAttributes *_currentActionPublicAttributes;
     long long _visibility;
@@ -47,11 +49,12 @@
 
 @property (nonatomic) BOOL actionViewControllerReadyForPresentation; // @synthesize actionViewControllerReadyForPresentation=_actionViewControllerReadyForPresentation;
 @property (nonatomic) BOOL actionViewControllerWantsDismissal; // @synthesize actionViewControllerWantsDismissal=_actionViewControllerWantsDismissal;
+@property (nonatomic) BOOL adRequestMade; // @synthesize adRequestMade=_adRequestMade;
 @property (copy, nonatomic) NSString *advertisingSection; // @synthesize advertisingSection=_advertisingSection;
 @property (copy, nonatomic) NSString *authenticationUserName; // @synthesize authenticationUserName=_authenticationUserName;
 @property (readonly, nonatomic) ADAdSpaceConfiguration *configuration;
 @property (readonly, nonatomic) NSString *connectionAssertionIdentifier;
-@property (copy, nonatomic) NSSet *context; // @synthesize context=_context;
+@property (copy, nonatomic) ADContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) ADCreativeController *creativeController; // @synthesize creativeController=_creativeController;
 @property (strong, nonatomic) ADAdActionPublicAttributes *currentActionPublicAttributes; // @synthesize currentActionPublicAttributes=_currentActionPublicAttributes;
 @property (strong, nonatomic) ADAdImpressionPublicAttributes *currentAdImpressionPublicAttributes; // @synthesize currentAdImpressionPublicAttributes=_currentAdImpressionPublicAttributes;
@@ -60,6 +63,7 @@
 @property (nonatomic) BOOL didInstallCreativeView; // @synthesize didInstallCreativeView=_didInstallCreativeView;
 @property (nonatomic) BOOL fastVisibilityContextIsFeed; // @synthesize fastVisibilityContextIsFeed=_fastVisibilityContextIsFeed;
 @property (nonatomic) BOOL firedAdStatusEvent; // @synthesize firedAdStatusEvent=_firedAdStatusEvent;
+@property (nonatomic) BOOL hasImpressed; // @synthesize hasImpressed=_hasImpressed;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL isModalInterstitial; // @synthesize isModalInterstitial=_isModalInterstitial;
@@ -80,12 +84,12 @@
 @property (nonatomic) BOOL visibilityCheckScheduled; // @synthesize visibilityCheckScheduled=_visibilityCheckScheduled;
 @property (strong, nonatomic) ADWebViewActionViewController *webViewActionViewController; // @synthesize webViewActionViewController=_webViewActionViewController;
 
++ (id)ADIdentifierNameForCreativeType:(int)arg1;
 - (void)_clientApplicationDidBecomeActive;
 - (void)_clientApplicationDidEnterBackground;
 - (void)_closeConnectionIfNecessary;
 - (void)_considerPresentingActionViewController;
 - (void)_considerPresentingWebViewActionViewControllerWithURL:(id)arg1;
-- (BOOL)_contextForFeldsparClientIsFeed:(id)arg1;
 - (void)_handleMRAIDActionPresentation;
 - (void)_notifiyCreativeControllerOfActionViewControllerPresentation;
 - (void)_presentPrivacyViewController;
@@ -102,15 +106,18 @@
 - (void)_requestAdFromAdSheet;
 - (void)_tearDownCreativeController;
 - (void)_tearDownWebActionViewController;
+- (id)_updateIdentifier;
 - (void)adPrivacyViewController:(id)arg1 didFailWithError:(id)arg2;
 - (void)adPrivacyViewControllerDidAppear:(id)arg1;
 - (void)adPrivacyViewControllerDidDismiss:(id)arg1;
 - (void)adPrivacyViewControllerDidLinkOut:(id)arg1;
 - (void)adPrivacyViewControllerDidLoad:(id)arg1;
 - (void)adPrivacyViewControllerDidRenderTransparency:(id)arg1;
+- (BOOL)canReuseForContext:(id)arg1;
 - (void)cancelBannerViewAction;
 - (void)close;
 - (void)creativeControllerViewDidRequestCloseWithTapLocation:(struct CGPoint)arg1;
+- (void)creativeControllerViewDidRequestCreateCalendarEvent:(id)arg1 withTapLocation:(struct CGPoint)arg2;
 - (void)creativeControllerViewDidRequestExpandURL:(id)arg1 withMaximumSize:(struct CGSize)arg2 withTapLocation:(struct CGPoint)arg3;
 - (void)creativeControllerViewDidRequestOpenURL:(id)arg1 withTapLocation:(struct CGPoint)arg2;
 - (void)dealloc;
@@ -119,6 +126,7 @@
 - (void)impressionPublicAttributesDidLoad:(id)arg1;
 - (id)initForRecipient:(id)arg1;
 - (void)installCreativeView;
+- (void)internalAdTypeDidChange;
 - (void)refuseBannerViewAction;
 - (void)reportNativeClickEvent;
 - (void)safariViewControllerDidFinish:(id)arg1;

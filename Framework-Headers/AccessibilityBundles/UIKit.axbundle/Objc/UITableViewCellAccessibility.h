@@ -54,12 +54,14 @@
 - (id)_accessibilityPreviousIndexPath;
 - (void)_accessibilityReevaluateChildren;
 - (id)_accessibilityRetrieveTableViewCellText;
+- (id)_accessibilityRetrieveTableViewCellText:(long long)arg1;
 - (id)_accessibilityRetrieveTableViewIvarsText;
 - (void)_accessibilityReuseChildren:(id)arg1 forMockParent:(id)arg2;
 - (id)_accessibilityScannerGroupElements;
-- (BOOL)_accessibilityScrollToVisibleForNextElementRetrieval:(int)arg1;
+- (BOOL)_accessibilityScrollToVisibleForNextElementRetrieval:(long long)arg1;
 - (BOOL)_accessibilitySetNativeFocus;
 - (BOOL)_accessibilityShouldBeEmptyIfHidden;
+- (BOOL)_accessibilityShouldIncludeRowRangeInElementDescription;
 - (BOOL)_accessibilityShouldSortTableViewCellChildren;
 - (id)_accessibilitySubviewsForAdding;
 - (id)_accessibilitySubviewsForAddingWithSort:(BOOL)arg1;
@@ -77,6 +79,8 @@
 - (long long)_accessibilityUserTestingChildrenCount;
 - (BOOL)_accessibilityUsesOverrideContainerProtocol;
 - (BOOL)_accessibilityViewHierarchyHasNativeFocus;
+- (id)_axCustomActionsForActions:(id)arg1;
+- (BOOL)_axPerformAction:(id)arg1;
 - (BOOL)_axSubviewIgnoredDueToHiddenAncestry:(id)arg1;
 - (void)_beginSwiping;
 - (id)_checkmarkImage:(BOOL)arg1;
@@ -85,6 +89,8 @@
 - (void)_setAccessibilityMockParent:(id)arg1;
 - (void)_setShowingDeleteConfirmation:(BOOL)arg1;
 - (struct CGPoint)accessibilityActivationPoint;
+- (id)accessibilityDragSourceDescriptors;
+- (id)accessibilityDropPointDescriptors;
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;
 - (BOOL)accessibilityElementIsFocused;
@@ -116,6 +122,10 @@
 - (BOOL)shouldGroupAccessibilityChildren;
 - (struct CGRect)tableTextAccessibleFrame:(id)arg1;
 - (id)tableTextAccessibleLabel:(id)arg1;
+- (id)tableTextAccessibleLocalizationBundleID:(id)arg1;
+- (id)tableTextAccessibleLocalizationBundlePath:(id)arg1;
+- (id)tableTextAccessibleLocalizedTableName:(id)arg1;
+- (id)tableTextAccessibleStringKey:(id)arg1;
 - (void)unregisterMockChild:(id)arg1;
 
 @end

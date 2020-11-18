@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class GEOComposedRoute, NSHashTable, NSString;
+@class NSArray, NSHashTable, NSString, VKRouteInfo;
 
 @interface VKRouteContext : NSObject
 {
-    GEOComposedRoute *_route;
+    VKRouteInfo *_routeInfo;
     unsigned char useType;
     long long _inspectedLegIndex;
     long long _inspectedStepIndex;
@@ -28,11 +28,16 @@
     NSHashTable *_labelObservers;
     BOOL _hasContextChangedForRouteLine;
     NSHashTable *_routeLineObservers;
+    BOOL _hasContextChangedForAlternateRouteLines;
+    NSHashTable *_alternateRouteLineObservers;
+    NSArray *_alternateRoutes;
+    struct multimap<unsigned int, std::__1::vector<RouteSection, std::__1::allocator<RouteSection>>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::vector<RouteSection, std::__1::allocator<RouteSection>>>>> _shareSections;
     unsigned char _useType;
 }
 
 @property (strong, nonatomic) NSString *accessPointEntryName; // @synthesize accessPointEntryName=_accessPointEntryName;
 @property (strong, nonatomic) NSString *accessPointExitName; // @synthesize accessPointExitName=_accessPointExitName;
+@property (strong, nonatomic) NSArray *alternateRoutes; // @synthesize alternateRoutes=_alternateRoutes;
 @property (nonatomic) long long currentLegIndex; // @synthesize currentLegIndex=_currentLegIndex;
 @property (nonatomic) long long currentStepIndex; // @synthesize currentStepIndex=_currentStepIndex;
 @property (nonatomic) long long inspectedLegIndex; // @synthesize inspectedLegIndex=_inspectedLegIndex;
@@ -41,17 +46,22 @@
 @property (nonatomic) CDStruct_c3b9c2ee puckLocation; // @synthesize puckLocation=_puckLocation;
 @property (nonatomic) float puckRadius; // @synthesize puckRadius=_puckRadius;
 @property (nonatomic) unsigned long long puckSnappedStopID; // @synthesize puckSnappedStopID=_puckSnappedStopID;
-@property (readonly, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
+@property (readonly, nonatomic) VKRouteInfo *routeInfo; // @synthesize routeInfo=_routeInfo;
 @property (nonatomic) struct PolylineCoordinate routeOffset; // @synthesize routeOffset=_routeOffset;
 @property (nonatomic) BOOL snappingToTransitLines; // @synthesize snappingToTransitLines=_snappingToTransitLines;
+@property (readonly, nonatomic) unsigned long long totalRouteCount;
 @property (readonly, nonatomic) unsigned char useType; // @synthesize useType=_useType;
 
 - (id).cxx_construct;
-- (void)_setContextChangedForLabels;
-- (void)_setContextChangedForRouteLine;
+- (void).cxx_destruct;
+- (id)_hashTableForObserverType:(unsigned char)arg1;
+- (void)_setHasContextChangedForObserverType:(unsigned char)arg1 withValue:(BOOL)arg2;
 - (void)addObserver:(id)arg1 withType:(unsigned char)arg2;
+- (void)addShareSections:(const CDStruct_2c837fe9 *)arg1 shareCount:(unsigned int)arg2;
 - (void)dealloc;
-- (id)initWithComposedRoute:(id)arg1;
+- (void)forEachSectionWithShareCount:(unsigned int)arg1 dothis:(CDUnknownBlockType)arg2;
+- (id)initWithComposedRoute:(id)arg1 useType:(unsigned char)arg2;
+- (id)initWithRouteInfo:(id)arg1 useType:(unsigned char)arg2;
 - (void)removeObserver:(id)arg1 withType:(unsigned char)arg2;
 - (void)resetNotificationsForObserverType:(unsigned char)arg1;
 

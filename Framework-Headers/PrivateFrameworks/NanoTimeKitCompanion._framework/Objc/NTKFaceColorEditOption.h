@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) unsigned long long faceColor;
 
++ (id)__allOrderedColors;
 + (id)__orderedValues;
 + (id)_localizedNameForValue:(unsigned long long)arg1;
 + (id)_orderedValues;
@@ -19,6 +20,8 @@
 + (id)_snapshotKeyForValue:(unsigned long long)arg1;
 + (id)optionWithFaceColor:(unsigned long long)arg1;
 - (id)_valueToFaceBundleStringDict;
+- (BOOL)optionExistsInOSVersion:(unsigned int)arg1;
+- (long long)swatchStyle;
 
 @end
 

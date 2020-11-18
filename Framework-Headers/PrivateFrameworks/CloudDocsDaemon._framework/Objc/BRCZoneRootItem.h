@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CloudDocsDaemon/BRCFSRootItem.h>
+#import <CloudDocsDaemon/BRCDirectoryItem.h>
+
+#import <CloudDocsDaemon/BRCFSRooted-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface BRCZoneRootItem : BRCFSRootItem
+@interface BRCZoneRootItem : BRCDirectoryItem <BRCFSRooted>
 {
 }
 
+- (struct BRCDirectoryItem *)asFSRoot;
 - (id)fileID;
 - (id)initWithZoneRootItemID:(id)arg1 session:(id)arg2;
+- (BOOL)isFSRoot;
 - (BOOL)isZoneRoot;
-- (id)parentItemInZone;
+- (id)parentItemID;
 - (id)parentItemOnFS;
 - (BOOL)saveToDB;
 - (id)st;

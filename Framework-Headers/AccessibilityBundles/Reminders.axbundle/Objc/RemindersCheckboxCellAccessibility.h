@@ -34,7 +34,7 @@
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (long long)indexOfAccessibilityElement:(id)arg1;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 appearance:(int)arg3 contentMask:(unsigned long long)arg4 deadlinePosition:(unsigned long long)arg5 width:(double)arg6;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 appearance:(int)arg3 deadlinePosition:(unsigned long long)arg4 width:(double)arg5 checkboxWidth:(double)arg6;
 - (void)setAccessoryType:(long long)arg1;
 - (struct CGRect)tableTextAccessibleFrame:(id)arg1;
 

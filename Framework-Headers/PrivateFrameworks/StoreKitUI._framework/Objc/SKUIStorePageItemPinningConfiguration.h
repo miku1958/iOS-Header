@@ -10,20 +10,25 @@
 {
     BOOL _hasValidPinningContentInset;
     BOOL _hasValidPinningStyle;
+    BOOL _hasValidPinningGroup;
     BOOL _hasValidPinningTransitionStyle;
     long long _pinningStyle;
+    long long _pinningGroup;
     long long _pinningTransitionStyle;
     struct UIEdgeInsets _pinningContentInset;
 }
 
 @property (readonly, nonatomic) BOOL hasValidPinningContentInset; // @synthesize hasValidPinningContentInset=_hasValidPinningContentInset;
+@property (readonly, nonatomic) BOOL hasValidPinningGroup; // @synthesize hasValidPinningGroup=_hasValidPinningGroup;
 @property (readonly, nonatomic) BOOL hasValidPinningStyle; // @synthesize hasValidPinningStyle=_hasValidPinningStyle;
 @property (readonly, nonatomic) BOOL hasValidPinningTransitionStyle; // @synthesize hasValidPinningTransitionStyle=_hasValidPinningTransitionStyle;
 @property (nonatomic) struct UIEdgeInsets pinningContentInset; // @synthesize pinningContentInset=_pinningContentInset;
+@property (nonatomic) long long pinningGroup; // @synthesize pinningGroup=_pinningGroup;
 @property (nonatomic) long long pinningStyle; // @synthesize pinningStyle=_pinningStyle;
 @property (nonatomic) long long pinningTransitionStyle; // @synthesize pinningTransitionStyle=_pinningTransitionStyle;
 
 - (void)invalidatePinningContentInset;
+- (void)invalidatePinningGroup;
 - (void)invalidatePinningStyle;
 - (void)invalidatePinningTransitionStyle;
 

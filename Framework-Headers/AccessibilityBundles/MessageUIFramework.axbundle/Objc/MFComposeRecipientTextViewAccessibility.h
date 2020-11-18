@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_didRemoveRecipient:(id)arg1;
 - (void)_updateInactiveTextView;
 - (id)initWithFrame:(struct CGRect)arg1;
 

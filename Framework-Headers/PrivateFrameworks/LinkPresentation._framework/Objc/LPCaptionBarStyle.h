@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     LPImageViewStyle *_leadingIcon;
     LPImageViewStyle *_trailingIcon;
+    LPImageViewStyle *_belowLeadingIcon;
     LPCaptionBarAccessoryStyle *_leadingAccessory;
     LPCaptionBarAccessoryStyle *_trailingAccessory;
     LPVerticalTextStackViewStyle *_textStack;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
     LPPadding *_playButtonPadding;
 }
 
+@property (readonly, nonatomic) LPImageViewStyle *belowLeadingIcon; // @synthesize belowLeadingIcon=_belowLeadingIcon;
 @property (readonly, nonatomic) LPCaptionBarAccessoryStyle *leadingAccessory; // @synthesize leadingAccessory=_leadingAccessory;
 @property (readonly, nonatomic) LPImageViewStyle *leadingIcon; // @synthesize leadingIcon=_leadingIcon;
 @property (strong, nonatomic) LPPointUnit *minimumWidth; // @synthesize minimumWidth=_minimumWidth;
@@ -33,6 +35,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) LPImageViewStyle *trailingIcon; // @synthesize trailingIcon=_trailingIcon;
 
 - (void).cxx_destruct;
+- (id)belowLeftIcon;
+- (id)belowRightIcon;
 - (id)initWithPlatform:(long long)arg1;
 - (id)leftAccessory;
 - (id)leftIcon;

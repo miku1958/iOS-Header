@@ -29,6 +29,7 @@
 @property (strong, nonatomic) UIImage *repairSourceImage; // @synthesize repairSourceImage=_repairSourceImage;
 @property (nonatomic) int totalStrokeArea; // @synthesize totalStrokeArea=_totalStrokeArea;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (struct CGRect)drawBrushAtLocation:(struct CGPoint)arg1 opacity:(float)arg2 erase:(BOOL)arg3 magicEdges:(BOOL)arg4 brushSize:(float)arg5 brushSoftness:(float)arg6;
 - (id)init;

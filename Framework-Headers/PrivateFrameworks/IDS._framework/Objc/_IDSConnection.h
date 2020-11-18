@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IDS/IDSAccountDelegate-Protocol.h>
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
@@ -24,13 +24,14 @@
     BOOL _indirectDelegateCallouts;
 }
 
-@property (readonly, strong, nonatomic) IDSAccount *account;
+@property (readonly, nonatomic) IDSAccount *account;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isActive;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_activeDevice;
 - (void)_callDelegatesRespondingToSelector:(SEL)arg1 withPreCallbacksBlock:(CDUnknownBlockType)arg2 callbackBlock:(CDUnknownBlockType)arg3 postCallbacksBlock:(CDUnknownBlockType)arg4;
 - (void)_callDelegatesRespondingToSelector:(SEL)arg1 withPreCallbacksBlock:(CDUnknownBlockType)arg2 callbackBlock:(CDUnknownBlockType)arg3 postCallbacksBlock:(CDUnknownBlockType)arg4 group:(id)arg5;
@@ -50,11 +51,14 @@
 - (void)account:(id)arg1 isActiveChanged:(BOOL)arg2;
 - (void)account:(id)arg1 nearbyDevicesChanged:(id)arg2;
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
+- (void)checkTransportLogWithReason:(long long)arg1;
 - (void)daemonConnected;
 - (id)daemonController;
 - (id)daemonListener;
 - (void)dataReceived:(id)arg1 withGUID:(id)arg2 forTopic:(id)arg3 toIdentifier:(id)arg4 fromID:(id)arg5 context:(id)arg6;
 - (void)dealloc;
+- (void)engramDataReceived:(id)arg1 withGUID:(id)arg2 forTopic:(id)arg3 toIdentifier:(id)arg4 fromID:(id)arg5 context:(id)arg6;
+- (void)groupShareReceived:(id)arg1 withGUID:(id)arg2 forTopic:(id)arg3 toIdentifier:(id)arg4 fromID:(id)arg5 context:(id)arg6;
 - (id)initWithAccount:(id)arg1 commands:(id)arg2 indirectDelegateCallouts:(BOOL)arg3 delegateContext:(id)arg4;
 - (void)messageIdentifier:(id)arg1 alternateCallbackID:(id)arg2 forAccount:(id)arg3 updatedWithResponseCode:(long long)arg4 error:(id)arg5 lastCall:(BOOL)arg6 context:(id)arg7;
 - (void)messageIdentifier:(id)arg1 alternateCallbackID:(id)arg2 forAccount:(id)arg3 willSendToDestinations:(id)arg4 skippedDestinations:(id)arg5 registrationPropertyToDestinations:(id)arg6;
@@ -68,6 +72,7 @@
 - (BOOL)sendServerMessage:(id)arg1 command:(id)arg2;
 - (void)sessionInvitationReceivedWithPayload:(id)arg1 forTopic:(id)arg2 sessionID:(id)arg3 toIdentifier:(id)arg4 fromID:(id)arg5 transportType:(id)arg6;
 - (void)setDelegateCapabilities:(unsigned int)arg1;
+- (void)updateDeviceIdentity:(id)arg1 error:(id)arg2;
 
 @end
 

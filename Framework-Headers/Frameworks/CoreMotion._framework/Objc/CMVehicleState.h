@@ -13,6 +13,8 @@
 + (BOOL)isAvailable;
 + (id)mostRecentInVehicle;
 + (id)mostRecentVehicleConnection;
++ (unsigned long long)vehicularHints;
++ (unsigned long long)vehicularState;
 
 @end
 

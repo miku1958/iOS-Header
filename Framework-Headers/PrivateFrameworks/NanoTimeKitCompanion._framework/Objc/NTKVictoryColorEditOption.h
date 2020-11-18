@@ -14,9 +14,12 @@
 
 + (id)_localizedNameForValue:(unsigned long long)arg1;
 + (id)_orderedValues;
++ (id)_orderedValuesRestrictedByCurrentDeviceCollection;
 + (id)_snapshotKeyForValue:(unsigned long long)arg1;
 + (id)optionWithVictoryColor:(unsigned long long)arg1;
 - (id)_valueToFaceBundleStringDict;
+- (BOOL)optionExistsInOSVersion:(unsigned int)arg1;
+- (long long)swatchStyle;
 
 @end
 

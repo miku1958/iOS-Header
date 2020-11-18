@@ -7,8 +7,10 @@
 #import <ContactsUICore/NSObject-Protocol.h>
 
 @class NSString, UIImage;
+@protocol CNUIUserActionTemplateImage;
 
 @protocol CNUIUserActionImageProvider <NSObject>
 + (UIImage *)imageForActionType:(NSString *)arg1 imageStyle:(long long)arg2;
++ (id<CNUIUserActionTemplateImage>)templateImageForActionType:(NSString *)arg1 imageStyle:(long long)arg2;
 @end
 

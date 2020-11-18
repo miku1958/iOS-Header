@@ -6,19 +6,25 @@
 
 #import <PassKitUI/PKPaymentSetupTableViewController.h>
 
+#import <PassKitUI/PKNavigationItemController-Protocol.h>
 #import <PassKitUI/PKPaymentSetupFieldCellDelegate-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
-@class NSMapTable, NSString, PKPaymentSetupFieldsModel, PKPaymentWebService, PKTableHeaderView;
+@class NSArray, NSMapTable, NSString, PKPaymentSetupFieldsModel, PKPaymentWebService, PKTableHeaderView;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPaymentSetupFieldsViewController : PKPaymentSetupTableViewController <UITextFieldDelegate, PKPaymentSetupFieldCellDelegate>
+@interface PKPaymentSetupFieldsViewController : PKPaymentSetupTableViewController <UITextFieldDelegate, PKPaymentSetupFieldCellDelegate, PKNavigationItemController>
 {
     PKTableHeaderView *_headerView;
     BOOL _hasScrolledToShowFields;
     PKPaymentSetupFieldsModel *_fieldsModel;
     NSMapTable *_fieldIdentifierToCellMap;
     id _currentNextActionBlock;
+    NSArray *_leftBarButtonItems;
+    NSArray *_rightBarButtonItems;
+    BOOL _navigationEnabled;
+    BOOL _rightBarButtonItemsEnabled;
+    BOOL _hidesBackButton;
     BOOL _showingActivitySpinner;
     id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
     PKPaymentWebService *_webService;
@@ -36,11 +42,17 @@
 
 - (void).cxx_destruct;
 - (id)_contextSpecificStringForAggDKey:(id)arg1;
+- (void)_destroyNavigationBarButtonItemsAnimated:(BOOL)arg1;
 - (void)_handleNextButtonTapped:(id)arg1;
 - (void)_setIdleTimerDisabled:(BOOL)arg1 title:(id)arg2 subtitle:(id)arg3;
-- (void)_setNavigationBarEnabled:(BOOL)arg1;
-- (void)_setTableViewHeaderActivitySpinnerAnimated:(BOOL)arg1 title:(id)arg2 subtitle:(id)arg3;
+- (void)_setLeftBarButtonItems:(id)arg1 animated:(BOOL)arg2;
+- (void)_setNavigationBarEnabled:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)_setRightBarButtonItems:(id)arg1 animated:(BOOL)arg2;
+- (void)_setRightBarButtonItemsEnabled:(BOOL)arg1;
+- (void)_setTableViewHeaderActivityIndicatorActive:(BOOL)arg1 title:(id)arg2 subtitle:(id)arg3 animated:(BOOL)arg4;
 - (void)_triggerNextActionLoop;
+- (void)_updateNavigationItemAnimated:(BOOL)arg1;
+- (void)_updateRightBarButtonState;
 - (id)allCells;
 - (id)cellForIdentifier:(id)arg1;
 - (id)defaultFields;
@@ -61,7 +73,7 @@
 - (void)handleNextButtonTapped:(id)arg1;
 - (id)headerView;
 - (void)hideActivitySpinner;
-- (void)hideActivitySpinnerWithTitle:(id)arg1 subtitle:(id)arg2;
+- (void)hideActivitySpinnerWithTitle:(id)arg1 subtitle:(id)arg2 animated:(BOOL)arg3;
 - (id)initWithWebService:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 setupFieldsModel:(id)arg4;
 - (BOOL)isEmpty;
 - (void)logAggDCheckpointForKey:(id)arg1;
@@ -71,6 +83,7 @@
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)readonlyFieldIdentifiers;
 - (void)setHeaderViewTitle:(id)arg1 subtitle:(id)arg2;
+- (void)setHidesBackButton:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldAppearWithFirstEmptyFieldAsFirstResponder;
 - (void)showActivitySpinnerWithTitle:(id)arg1 subtitle:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

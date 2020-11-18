@@ -13,10 +13,9 @@ __attribute__((visibility("hidden")))
 {
     GEORouteRoadMatcher *_routeRoadMatcher;
     BOOL _supportsSnapping;
-    BOOL _fixHorizontalAccuracyCheck;
-    BOOL _fixLowSpeedCourseSwing;
 }
 
+- (void).cxx_destruct;
 - (id)_candidateForSegment:(id)arg1 location:(id)arg2 previousRouteMatch:(id)arg3;
 - (double)_courseWeightForLocation:(id)arg1 accuracyType:(long long)arg2;
 - (void)_finishRouteMatch:(id)arg1 previousRouteMatch:(id)arg2 forLocation:(id)arg3;

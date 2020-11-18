@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/NSCopying-Protocol.h>
 
@@ -29,8 +29,8 @@
 @property (nonatomic) Class serverProxyClass; // @synthesize serverProxyClass=_serverProxyClass;
 @property (nonatomic) BOOL trackUsage; // @synthesize trackUsage=_trackUsage;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

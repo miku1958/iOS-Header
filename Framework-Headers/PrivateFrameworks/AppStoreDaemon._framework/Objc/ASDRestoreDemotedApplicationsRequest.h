@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppStoreDaemon/ASDRequest.h>
+#import <AppStoreDaemon/ASDEphemeralRequest.h>
 
 @class ASDRestoreDemotedApplicationsRequestOptions;
 
-@interface ASDRestoreDemotedApplicationsRequest : ASDRequest
+@interface ASDRestoreDemotedApplicationsRequest : ASDEphemeralRequest
 {
-    CDUnknownBlockType _completionBlock;
-    ASDRestoreDemotedApplicationsRequestOptions *_options;
 }
 
-- (void).cxx_destruct;
-- (void)_handleResponse:(id)arg1 error:(id)arg2;
+@property (readonly, copy, nonatomic) ASDRestoreDemotedApplicationsRequestOptions *options; // @dynamic options;
+
++ (long long)requestType;
 - (id)initWithOptions:(id)arg1;
 - (void)startWithCompletionBlock:(CDUnknownBlockType)arg1;
 

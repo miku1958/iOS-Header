@@ -37,8 +37,8 @@
 @property (readonly) Class superclass;
 
 + (id)font;
++ (id)localMediaItemForStoreIdentifiers:(id)arg1;
 + (id)playButton;
-+ (void)preheatImages;
 + (BOOL)supportsResult:(id)arg1;
 - (void).cxx_destruct;
 - (void)buttonPressed;
@@ -46,10 +46,11 @@
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
 - (void)containerViewDidInvalidateIntrinsicContentSize:(id)arg1;
 - (id)fetchLocalMediaItem;
-- (BOOL)matchesNowPlayingItem;
+- (BOOL)matchesNowPlayingAudioItem;
 - (void)nowPlayingController:(id)arg1 elapsedTimeDidChange:(double)arg2;
 - (void)nowPlayingController:(id)arg1 playbackStateDidChange:(BOOL)arg2;
 - (id)setupViewWithStyle:(unsigned long long)arg1;
+- (BOOL)shouldTopAlignForAccessibilityContentSizes;
 - (void)updatePlayState;
 - (void)updateProgressForCurrentlyActiveTrackAnimated:(BOOL)arg1;
 - (void)updateWithResult:(id)arg1;

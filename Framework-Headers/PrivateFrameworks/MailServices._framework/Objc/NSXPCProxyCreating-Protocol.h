@@ -7,5 +7,8 @@
 @protocol NSXPCProxyCreating
 - (id)remoteObjectProxy;
 - (id)remoteObjectProxyWithErrorHandler:(void (^)(NSError *))arg1;
+
+@optional
+- (id)synchronousRemoteObjectProxyWithErrorHandler:(void (^)(NSError *))arg1;
 @end
 

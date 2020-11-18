@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 + (id)customAttributes;
 - (BOOL)_inputsAreOK;
 - (struct IRect)_netExtent;
-- (id)_outputData:(BOOL)arg1;
 - (void)dealloc;
 - (id)outputData;
 - (id)outputImage;

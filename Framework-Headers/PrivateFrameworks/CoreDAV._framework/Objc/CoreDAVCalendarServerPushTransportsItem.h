@@ -16,8 +16,8 @@
 @property (strong, nonatomic) NSMutableSet *transports; // @synthesize transports=_transports;
 
 + (id)copyParseRules;
+- (void).cxx_destruct;
 - (void)addTransport:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 

@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (id)layoutForBarButtonItem:(id)arg1;
 - (id)layoutsForSpacerItem:(id)arg1;
 - (double)minimumLayoutWidthGivenMinimumSpaceWidth:(double)arg1;
+- (BOOL)shouldHoriziontallyCenterView:(id)arg1;
 
 @end
 

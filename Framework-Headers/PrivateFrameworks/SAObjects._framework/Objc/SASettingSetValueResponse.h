@@ -17,13 +17,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) SASettingEntity *setting; // @dynamic setting;
+@property (strong, nonatomic) SASettingEntity *setting;
 @property (readonly) Class superclass;
 
 + (id)setValueResponse;
 + (id)setValueResponseWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)requiresResponse;
 
 @end
 

@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITextField.h>
+#import <SearchUI/SearchUISearchField.h>
 
-@class NSArray, SPUIHeaderBlurView, UIImage, UIView;
+@class NSArray, SPSearchEntity, SPUIHeaderBlurView, UIButton, UIImage, UIView;
 
-@interface SPUITextField : UITextField
+@interface SPUITextField : SearchUISearchField
 {
+    BOOL _ignoreRepresentedObjectUpdate;
     NSArray *_suggestions;
     UIImage *_clearButtonImage;
+    UIButton *_microphoneButton;
     SPUIHeaderBlurView *_blurView;
     UIView *_tintView;
     struct CGSize _imageSize;
@@ -19,21 +21,24 @@
 
 @property (strong) SPUIHeaderBlurView *blurView; // @synthesize blurView=_blurView;
 @property (strong) UIImage *clearButtonImage; // @synthesize clearButtonImage=_clearButtonImage;
+@property BOOL ignoreRepresentedObjectUpdate; // @synthesize ignoreRepresentedObjectUpdate=_ignoreRepresentedObjectUpdate;
 @property struct CGSize imageSize; // @synthesize imageSize=_imageSize;
+@property (strong) UIButton *microphoneButton; // @synthesize microphoneButton=_microphoneButton;
+@property (readonly) SPSearchEntity *searchEntity;
 @property (strong) NSArray *suggestions; // @synthesize suggestions=_suggestions;
 @property (strong) UIView *tintView; // @synthesize tintView=_tintView;
 
++ (Class)_backgroundViewClass;
 - (void).cxx_destruct;
-- (void)dictationButtonTapped;
-- (struct CGRect)editingRectForBounds:(struct CGRect)arg1;
+- (id)_textWithRepresentedObjects:(id)arg1;
 - (id)init;
-- (void)insertTextSuggestion:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (BOOL)isRightToLeft;
-- (struct CGRect)leftViewRectForBounds:(struct CGRect)arg1;
-- (struct CGRect)placeholderRectForBounds:(struct CGRect)arg1;
-- (struct CGRect)rightViewRectForBounds:(struct CGRect)arg1;
-- (struct CGRect)textRectForBounds:(struct CGRect)arg1;
+- (void)setText:(id)arg1;
+- (id)text;
+- (id)textFromMarkedTextRange:(struct _NSRange)arg1 markedTextReplacement:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateContentSizeCategory;
+- (void)updateRepresentedObjects:(id)arg1;
 - (void)updateWithColor:(id)arg1;
 
 @end

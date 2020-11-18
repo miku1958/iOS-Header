@@ -9,22 +9,19 @@
 __attribute__((visibility("hidden")))
 @interface __NSArrayM : NSMutableArray
 {
-    unsigned long long _used;
-    unsigned long long _offset;
-    unsigned int _size:60;
-    unsigned int _unused:4;
-    unsigned long long _mutations;
-    id *_list;
+    _Atomic struct __cow_state_t *cow;
+    CDStruct_a6934631 storage;
 }
 
 + (id)__new:(const id *)arg1:(unsigned long long)arg2:(BOOL)arg3;
++ (id)__transferNew:(id *)arg1:(unsigned long long)arg2:(unsigned long long)arg3;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (void)_mutate;
 - (void)addObject:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_58648341 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)exchangeObjectAtIndex:(unsigned long long)arg1 withObjectAtIndex:(unsigned long long)arg2;
@@ -34,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)insertObjects:(const id *)arg1 count:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)objectAtIndex:(unsigned long long)arg1;
+- (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (void)removeAllObjects;
 - (void)removeLastObject;
 - (void)removeObjectAtIndex:(unsigned long long)arg1;

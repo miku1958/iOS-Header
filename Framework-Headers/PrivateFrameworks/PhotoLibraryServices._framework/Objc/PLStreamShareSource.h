@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSString, NSURL, PFVideoComplement;
 
@@ -23,6 +23,9 @@
 @property (strong, nonatomic) NSURL *mediaURL; // @synthesize mediaURL=_mediaURL;
 @property (strong, nonatomic) PFVideoComplement *videoComplement; // @synthesize videoComplement=_videoComplement;
 
+- (void)_cleanupIfNeededMediaAtURL:(id)arg1;
+- (void)cleanupResources;
+- (void)dealloc;
 - (id)initWithDictionary:(id)arg1;
 - (id)serializedDictionary;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSMutableSet;
 @protocol ADAdSheetProxyDelegate, OS_dispatch_queue;
@@ -39,6 +39,7 @@
 - (void)_adSheetAvailable;
 - (void)_considerLaunchingAdSheet;
 - (void)considerLaunchingAdSheet;
+- (void)dealloc;
 - (id)init;
 - (void)releaseLaunchAssertion:(id)arg1;
 - (void)reportAdSheetInterruption;

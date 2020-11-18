@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/PKContinuityPaymentServiceDelegate-Protocol.h>
 
@@ -38,7 +38,7 @@
 - (void).cxx_destruct;
 - (void)_deviceUpdateTimerDidTimeout;
 - (void)_deviceUpdateTotalTimerDidTimeout;
-- (void)_queue_sendPaymentStatus:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_queue_sendPaymentResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_resetRequest;
 - (void)_send_didReceiveCancellation;
 - (void)_send_didReceivePayment:(id)arg1;
@@ -52,7 +52,7 @@
 - (void)didReceiveUpdatedPaymentDevices:(id)arg1;
 - (id)initWithContinuityPaymentService:(id)arg1;
 - (void)sendPaymentClientUpdate:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)sendPaymentStatus:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)sendPaymentResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendRemotePaymentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updatePaymentDevices;
 

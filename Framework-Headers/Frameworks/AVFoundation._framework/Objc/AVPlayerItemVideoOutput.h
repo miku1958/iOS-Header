@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue;
 
 - (BOOL)_attachToPlayerItem:(id)arg1;
+- (struct __CVBuffer *)_copyPixelBufferForItemTimeWithOptions:(CDStruct_1b6d18a9)arg1 itemTimeForDisplay:(CDStruct_1b6d18a9 *)arg2 options:(unsigned int)arg3;
 - (void)_detachFromPlayerItem;
 - (void)_dispatchOutputMediaDataWillChange;
 - (void)_dispatchOutputSequenceWasFlushed;
@@ -28,13 +29,17 @@
 - (void)_startObservingTimebaseNotificationsForTimebase:(struct OpaqueCMTimebase *)arg1;
 - (void)_stopObservingTimebaseNotificationsForTimebase:(struct OpaqueCMTimebase *)arg1;
 - (struct OpaqueFigVisualContext *)_visualContext;
+- (long long)clientStateOnRequestedMediaDataChangeNotification;
 - (struct __CVBuffer *)copyPixelBufferForItemTime:(CDStruct_1b6d18a9)arg1 itemTimeForDisplay:(CDStruct_1b6d18a9 *)arg2;
+- (struct __CVBuffer *)copyPixelBufferForItemTime:(CDStruct_1b6d18a9)arg1 remove:(BOOL)arg2 itemTimeForDisplay:(CDStruct_1b6d18a9 *)arg3;
 - (void)dealloc;
+- (CDStruct_1b6d18a9)earliestAvailablePixelBufferItemTime;
 - (void)finalize;
 - (BOOL)hasNewPixelBufferForItemTime:(CDStruct_1b6d18a9)arg1;
 - (id)init;
 - (id)initWithOutputSettings:(id)arg1;
 - (id)initWithPixelBufferAttributes:(id)arg1;
+- (void)requestNotificationOfMediaDataChangeAsSoonAsPossible;
 - (void)requestNotificationOfMediaDataChangeWithAdvanceInterval:(double)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)setSuppressesPlayerRendering:(BOOL)arg1;

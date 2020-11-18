@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/PKPaymentValidating-Protocol.h>
 
-@class CNContact, NSArray, NSDecimalNumber, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, PKPassLibrary, PKPaymentApplication, PKPaymentInstructions, PKPaymentOptionsDefaults, PKPaymentOptionsRecents, PKPaymentPass, PKPaymentRequest, PKPaymentTransaction, PKRemoteDevice, PKRemotePaymentInstrument, PKShippingMethod;
+@class CNContact, NSArray, NSDecimalNumber, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, PKPassLibrary, PKPayment, PKPaymentApplication, PKPaymentInstructions, PKPaymentOptionsDefaults, PKPaymentOptionsRecents, PKPaymentPass, PKPaymentRequest, PKPaymentTransaction, PKPaymentWebService, PKPeerPaymentQuote, PKPeerPaymentService, PKRemoteDevice, PKRemotePaymentInstrument, PKShippingMethod;
 
 @interface PKPaymentAuthorizationDataModel : NSObject <PKPaymentValidating>
 {
@@ -18,15 +18,19 @@
     BOOL _ignoreProximity;
     NSArray *_acceptedPasses;
     NSArray *_unavailablePasses;
+    NSMutableDictionary *_acceptedApplications;
     NSMapTable *_instrumentToDeviceMap;
     NSMutableDictionary *_remoteDeviceToAcceptedInstruments;
     NSArray *_allRemoteDevices;
     NSMutableDictionary *_statusForPass;
+    PKPaymentPass *_paymentPassForErrors;
+    NSArray *_clientErrors;
     BOOL _shippingEditable;
     PKPaymentPass *_pass;
     PKRemoteDevice *_remoteDevice;
     long long _mode;
     PKPaymentRequest *_paymentRequest;
+    NSArray *_paymentContentItems;
     NSString *_hostAppLocalizedName;
     NSString *_hostApplicationIdentifier;
     CNContact *_shippingEmail;
@@ -37,11 +41,16 @@
     NSString *_shippingType;
     NSString *_shippingEditableMessage;
     CNContact *_billingAddress;
+    NSArray *_paymentErrors;
+    PKPayment *_payment;
     PKPaymentOptionsDefaults *_defaults;
     PKPaymentOptionsRecents *_recents;
     PKPassLibrary *_library;
+    PKPaymentWebService *_paymentWebService;
+    PKPeerPaymentService *_peerPaymentService;
     PKPaymentTransaction *_pendingTransaction;
     CDUnknownBlockType _updateHandler;
+    PKPeerPaymentQuote *_peerPaymentQuote;
     PKPaymentApplication *_paymentApplication;
     PKPaymentInstructions *_instructions;
     PKRemotePaymentInstrument *_remotePaymentInstrument;
@@ -73,9 +82,15 @@
 @property (readonly, nonatomic) NSString *merchantName;
 @property (readonly, nonatomic) long long mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+@property (strong, nonatomic) PKPayment *payment; // @synthesize payment=_payment;
 @property (strong, nonatomic) PKPaymentApplication *paymentApplication; // @synthesize paymentApplication=_paymentApplication;
+@property (strong, nonatomic) NSArray *paymentContentItems; // @synthesize paymentContentItems=_paymentContentItems;
+@property (strong, nonatomic) NSArray *paymentErrors; // @synthesize paymentErrors=_paymentErrors;
 @property (strong, nonatomic) PKPaymentRequest *paymentRequest; // @synthesize paymentRequest=_paymentRequest;
 @property (strong, nonatomic) NSArray *paymentSummaryItems;
+@property (strong, nonatomic) PKPaymentWebService *paymentWebService; // @synthesize paymentWebService=_paymentWebService;
+@property (strong, nonatomic) PKPeerPaymentQuote *peerPaymentQuote; // @synthesize peerPaymentQuote=_peerPaymentQuote;
+@property (strong, nonatomic) PKPeerPaymentService *peerPaymentService; // @synthesize peerPaymentService=_peerPaymentService;
 @property (strong, nonatomic) PKPaymentTransaction *pendingTransaction; // @synthesize pendingTransaction=_pendingTransaction;
 @property (readonly, nonatomic) BOOL pinRequired;
 @property (strong, nonatomic) PKPaymentOptionsRecents *recents; // @synthesize recents=_recents;
@@ -99,26 +114,36 @@
 - (void).cxx_destruct;
 - (void)_ensureItemForClass:(Class)arg1;
 - (void)_ensureItems;
+- (void)_ensurePaymentContentItems;
 - (void)_ensurePlaceholderItems;
-- (id)_filterPaymentPassesUsingConfiguration:(id)arg1;
-- (id)_inAppPaymentPassesForNetworks:(id)arg1 capabilities:(unsigned long long)arg2;
+- (id)_filterAndProcessPaymentApplicationsUsingConfigurationForPass:(id)arg1;
+- (id)_filterAndProcessPaymentPassesUsingConfiguration:(id)arg1;
+- (id)_inAppPaymentPassesForPaymentRequest:(id)arg1;
 - (id)_inAppPrivateLabelPaymentPasses;
+- (unsigned long long)_insertionIndexForItem:(id)arg1;
 - (void)_notifyModelChanged;
 - (void)_setDataItem:(id)arg1;
+- (void)_setPaymentContentDataItems:(id)arg1;
 - (void)_setStatus:(long long)arg1 forPass:(id)arg2;
 - (id)_simulatorPasses;
 - (long long)_statusForPass:(id)arg1;
+- (id)acceptedPaymentApplicationsForPass:(id)arg1;
 - (id)acceptedRemotePaymentInstrumentsForRemoteDevice:(id)arg1;
-- (id)automaticallyPresentedPass;
+- (id)automaticallyPresentedPassFromAcceptedPasses:(id)arg1;
 - (void)beginUpdates;
-- (void)dealloc;
 - (void)endUpdates;
 - (id)init;
 - (id)initWithMode:(long long)arg1;
 - (BOOL)isValidWithError:(id *)arg1;
 - (id)itemForType:(long long)arg1;
+- (id)paymentErrorsFromLegacyStatus:(long long)arg1;
+- (void)setPass:(id)arg1 paymentApplication:(id)arg2;
+- (void)setShippingAddressErrors:(id)arg1;
 - (void)setStatus:(long long)arg1 forItemWithType:(long long)arg2;
 - (void)setStatus:(long long)arg1 forItemWithType:(long long)arg2 notify:(BOOL)arg3;
+- (BOOL)shouldUpdateContactDataItem;
+- (id)unavailablePaymentApplicationsForPass:(id)arg1;
+- (void)updatePass:(id)arg1;
 - (void)updateRemoteDevices:(id)arg1;
 - (void)updateRemoteDevices:(id)arg1 ignoreProximity:(BOOL)arg2;
 

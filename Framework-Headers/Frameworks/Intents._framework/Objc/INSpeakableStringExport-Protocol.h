@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSString *identifier;
 @property (strong, nonatomic) NSString *pronunciationHint;
 @property (strong, nonatomic) NSString *spokenPhrase;
+@property (strong, nonatomic) NSString *vocabularyIdentifier;
 
 - (id)init;
 @end

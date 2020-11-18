@@ -13,10 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilityTouchContainerShouldOutputBraille;
-- (id)accessibilityElements;
-- (id)accessibilityLabel;
-- (unsigned long long)accessibilityTraits;
+- (id)_accessibilityMailSwipeActions;
+- (id)_accessibilityMessageIndexDescription;
+- (void)_accessibilityPerformMailSwipeAction:(id)arg1;
+- (id)accessibilityCustomActions;
 
 @end
 

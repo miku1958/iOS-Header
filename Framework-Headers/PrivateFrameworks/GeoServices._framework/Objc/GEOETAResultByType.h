@@ -8,13 +8,15 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class GEORouteTrafficDetail, GEOShortTrafficSummary, NSMutableArray;
 
 @interface GEOETAResultByType : PBCodable <NSCopying>
 {
     double _expectedTimeOfDeparture;
     unsigned int _distance;
     unsigned int _historicTravelTime;
+    GEORouteTrafficDetail *_routeTrafficDetail;
+    GEOShortTrafficSummary *_shortTrafficSummary;
     unsigned int _staticTravelTime;
     int _status;
     NSMutableArray *_summaryForPredictedDestinations;
@@ -40,6 +42,8 @@
 @property (nonatomic) BOOL hasDistance;
 @property (nonatomic) BOOL hasExpectedTimeOfDeparture;
 @property (nonatomic) BOOL hasHistoricTravelTime;
+@property (readonly, nonatomic) BOOL hasRouteTrafficDetail;
+@property (readonly, nonatomic) BOOL hasShortTrafficSummary;
 @property (nonatomic) BOOL hasStaticTravelTime;
 @property (nonatomic) BOOL hasStatus;
 @property (nonatomic) BOOL hasTransportType;
@@ -47,6 +51,8 @@
 @property (nonatomic) BOOL hasTravelTimeBestEstimate;
 @property (nonatomic) BOOL hasTravelTimeConservativeEstimate;
 @property (nonatomic) unsigned int historicTravelTime; // @synthesize historicTravelTime=_historicTravelTime;
+@property (strong, nonatomic) GEORouteTrafficDetail *routeTrafficDetail; // @synthesize routeTrafficDetail=_routeTrafficDetail;
+@property (strong, nonatomic) GEOShortTrafficSummary *shortTrafficSummary; // @synthesize shortTrafficSummary=_shortTrafficSummary;
 @property (nonatomic) unsigned int staticTravelTime; // @synthesize staticTravelTime=_staticTravelTime;
 @property (nonatomic) int status; // @synthesize status=_status;
 @property (strong, nonatomic) NSMutableArray *summaryForPredictedDestinations; // @synthesize summaryForPredictedDestinations=_summaryForPredictedDestinations;
@@ -56,13 +62,13 @@
 @property (nonatomic) unsigned int travelTimeConservativeEstimate; // @synthesize travelTimeConservativeEstimate=_travelTimeConservativeEstimate;
 
 + (Class)summaryForPredictedDestinationType;
+- (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
 - (int)StringAsTransportType:(id)arg1;
 - (void)addSummaryForPredictedDestination:(id)arg1;
 - (void)clearSummaryForPredictedDestinations;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

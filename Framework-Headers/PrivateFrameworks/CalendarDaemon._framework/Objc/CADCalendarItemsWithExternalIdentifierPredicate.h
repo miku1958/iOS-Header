@@ -12,9 +12,11 @@
 
 @interface CADCalendarItemsWithExternalIdentifierPredicate : CADEventPredicate <NSSecureCoding>
 {
+    int _entityType;
     NSString *_externalIdentifier;
 }
 
+@property (readonly, nonatomic) int entityType; // @synthesize entityType=_entityType;
 @property (readonly, nonatomic) NSString *externalIdentifier; // @synthesize externalIdentifier=_externalIdentifier;
 
 + (BOOL)supportsSecureCoding;
@@ -24,6 +26,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithExternalIdentifier:(id)arg1;
+- (id)initWithExternalIdentifier:(id)arg1 entityType:(int)arg2;
 - (id)predicateFormat;
 
 @end

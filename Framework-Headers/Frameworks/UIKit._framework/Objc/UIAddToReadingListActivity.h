@@ -10,6 +10,7 @@
 {
 }
 
++ (unsigned long long)_xpcAttributes;
 - (id)_activityImage;
 - (void)_addToReadingList:(id)arg1 withTitle:(id)arg2;
 - (id)activityTitle;

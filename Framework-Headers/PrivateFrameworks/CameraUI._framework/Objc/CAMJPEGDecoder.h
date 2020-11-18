@@ -10,7 +10,6 @@
 {
 }
 
-- (void)dealloc;
 - (void)decodeJPEGData:(id)arg1 withPixelBufferCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 

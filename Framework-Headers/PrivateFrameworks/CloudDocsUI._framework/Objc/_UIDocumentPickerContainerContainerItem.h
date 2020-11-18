@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)_blockingThumbnailWithSize:(struct CGSize)arg1 scale:(double)arg2 wantsBorder:(BOOL *)arg3;
 - (void)_modelChanged;
 - (id)initWithContainer:(id)arg1;
-- (id)sortDate;
+- (id)modificationDate;
 - (id)sortPath;
 - (id)subtitle;
 - (id)title;

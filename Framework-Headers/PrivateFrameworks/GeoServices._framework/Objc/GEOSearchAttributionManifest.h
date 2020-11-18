@@ -28,6 +28,7 @@
 
 + (Class)actionComponentMapEntriesType;
 + (Class)searchAttributionSourcesType;
+- (void).cxx_destruct;
 - (id)actionComponentMapEntriesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)actionComponentMapEntriesCount;
 - (void)addActionComponentMapEntries:(id)arg1;
@@ -36,7 +37,6 @@
 - (void)clearSearchAttributionSources;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

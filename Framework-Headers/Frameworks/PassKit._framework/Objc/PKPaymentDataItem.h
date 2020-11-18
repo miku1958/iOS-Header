@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/PKPaymentValidating-Protocol.h>
 
-@class NSString, PKPaymentAuthorizationDataModel;
+@class NSArray, NSString, PKPaymentAuthorizationDataModel;
 
 @interface PKPaymentDataItem : NSObject <PKPaymentValidating>
 {
@@ -19,6 +19,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSArray *errors;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) PKPaymentAuthorizationDataModel *model; // @synthesize model=_model;
 @property (readonly, nonatomic, getter=isRejected) BOOL rejected;
@@ -27,6 +28,7 @@
 @property (nonatomic) long long type; // @synthesize type=_type;
 
 + (long long)dataType;
++ (BOOL)supportsMultipleItems;
 - (void).cxx_destruct;
 - (id)initWithModel:(id)arg1;
 - (BOOL)isValidWithError:(id *)arg1;

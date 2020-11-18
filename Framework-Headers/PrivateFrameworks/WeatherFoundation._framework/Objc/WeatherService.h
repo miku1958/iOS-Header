@@ -44,6 +44,8 @@
 - (void)forecastForLocation:(id)arg1 atDate:(id)arg2 options:(id)arg3 taskIdentifier:(id)arg4;
 - (void)hourlyForecastForLocation:(id)arg1 taskIdentifier:(id)arg2;
 - (id)init;
+- (id)initWithStore:(id)arg1;
+- (void)invalidateCache:(id)arg1;
 - (void)locationForCoordinate:(struct CLLocationCoordinate2D)arg1 taskIdentifier:(id)arg2;
 - (void)locationForSearchCompletion:(id)arg1 taskIdentifier:(id)arg2;
 - (void)locationForString:(id)arg1 taskIdentifier:(id)arg2;

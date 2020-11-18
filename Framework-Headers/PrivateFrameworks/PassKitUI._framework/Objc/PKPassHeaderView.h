@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class PKFelicaPassProperties, PKPass, PKPassView, PKRemoteDataAccessor, UIColor, UIImageView, UILabel;
+@class PKFelicaPassProperties, PKPass, PKPassView, PKPeerPaymentAccount, PKRemoteDataAccessor, UIColor, UIImageView, UILabel;
 @protocol PKPassHeaderViewDelegate, PKPassLibraryDataProvider;
 
 @interface PKPassHeaderView : UIView
@@ -24,6 +24,7 @@
     PKPass *_pass;
     PKPassView *_passView;
     PKFelicaPassProperties *_felicaProperties;
+    PKPeerPaymentAccount *_peerPaymentAccount;
     unsigned long long _suppressedContent;
     UIColor *_primaryTextColor;
     UIColor *_secondaryTextColor;
@@ -37,6 +38,7 @@
 @property (readonly, nonatomic) PKPass *pass; // @synthesize pass=_pass;
 @property (strong, nonatomic) id<PKPassLibraryDataProvider> passLibraryOverride; // @synthesize passLibraryOverride=_passLibraryOverride;
 @property (readonly, nonatomic) PKPassView *passView; // @synthesize passView=_passView;
+@property (strong, nonatomic) PKPeerPaymentAccount *peerPaymentAccount; // @synthesize peerPaymentAccount=_peerPaymentAccount;
 @property (strong, nonatomic) UIColor *primaryTextColor; // @synthesize primaryTextColor=_primaryTextColor;
 @property (strong, nonatomic) UIColor *secondaryTextColor; // @synthesize secondaryTextColor=_secondaryTextColor;
 @property (nonatomic) BOOL showModificationDate; // @synthesize showModificationDate=_showModificationDate;

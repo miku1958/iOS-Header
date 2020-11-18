@@ -12,8 +12,6 @@ __attribute__((visibility("hidden")))
 @interface UIMainPrinterUtilityCell : UITableViewCell
 {
     NSArray *_supplyLevelViews;
-    double textLabelY;
-    double detailTextLabelY;
     BOOL _showSupplyDataUnderPrinterName;
     NSArray *_supplies;
 }
@@ -23,6 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)layoutSubviews;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

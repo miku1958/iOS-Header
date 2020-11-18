@@ -17,6 +17,7 @@
 - (unsigned int)_accessibilitySlotID;
 - (void)_activateSpeaking:(id)arg1;
 - (BOOL)_axHideCell;
+- (BOOL)_axIsAutofillButton;
 - (id)accessibilityCustomActions;
 - (BOOL)accessibilityElementsHidden;
 - (id)accessibilityLabel;

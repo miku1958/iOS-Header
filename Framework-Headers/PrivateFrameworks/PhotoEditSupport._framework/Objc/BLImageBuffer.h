@@ -18,6 +18,7 @@
 
 @property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 
+- (void).cxx_destruct;
 - (id)ciImage;
 - (void)dealloc;
 - (id)image;

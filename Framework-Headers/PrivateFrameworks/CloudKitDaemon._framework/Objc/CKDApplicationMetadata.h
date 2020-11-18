@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _canSetEnvironment;
     BOOL _allowCustomAccounts;
     BOOL _canAccessProtectionData;
+    BOOL _canAccessZoneProtectionData;
     BOOL _canSetDeviceIdentifier;
     BOOL _hasAccessDuringBuddy;
     BOOL _hasLightweightPCS;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
     BOOL _displaysSystemAcceptPrompt;
     NSString *_apsEnvironmentString;
     long long _isApplication;
+    NSString *_entitlementSpecifiedPCSServiceName;
     NSString *_applicationIdentifier;
     NSString *_clientPrefix;
 }
@@ -36,11 +38,13 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property (strong, nonatomic) NSString *apsEnvironmentString; // @synthesize apsEnvironmentString=_apsEnvironmentString;
 @property (nonatomic) BOOL canAccessProtectionData; // @synthesize canAccessProtectionData=_canAccessProtectionData;
+@property (nonatomic) BOOL canAccessZoneProtectionData; // @synthesize canAccessZoneProtectionData=_canAccessZoneProtectionData;
 @property (nonatomic) BOOL canMasquerade; // @synthesize canMasquerade=_canMasquerade;
 @property (nonatomic) BOOL canSetDeviceIdentifier; // @synthesize canSetDeviceIdentifier=_canSetDeviceIdentifier;
 @property (nonatomic) BOOL canSetEnvironment; // @synthesize canSetEnvironment=_canSetEnvironment;
 @property (strong, nonatomic) NSString *clientPrefix; // @synthesize clientPrefix=_clientPrefix;
 @property (nonatomic) BOOL displaysSystemAcceptPrompt; // @synthesize displaysSystemAcceptPrompt=_displaysSystemAcceptPrompt;
+@property (strong, nonatomic) NSString *entitlementSpecifiedPCSServiceName; // @synthesize entitlementSpecifiedPCSServiceName=_entitlementSpecifiedPCSServiceName;
 @property (nonatomic) BOOL hasAccessDuringBuddy; // @synthesize hasAccessDuringBuddy=_hasAccessDuringBuddy;
 @property (nonatomic) BOOL hasLightweightPCS; // @synthesize hasLightweightPCS=_hasLightweightPCS;
 @property (nonatomic) BOOL hasTCCAuthorization; // @synthesize hasTCCAuthorization=_hasTCCAuthorization;

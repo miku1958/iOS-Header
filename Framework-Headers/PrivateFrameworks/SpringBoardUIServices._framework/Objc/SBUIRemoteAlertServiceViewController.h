@@ -20,6 +20,7 @@
 - (void)handleDoubleHeightStatusBarTap;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)noteActivatedForActivityContinuationWithIdentifier:(id)arg1;
+- (long long)preferredStatusBarStyle;
 - (void)prepareForActivationWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setUserInfo:(id)arg1;
 

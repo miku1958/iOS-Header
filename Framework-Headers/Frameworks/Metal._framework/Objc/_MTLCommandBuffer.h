@@ -92,9 +92,11 @@
 - (id)initWithQueue:(id)arg1 retainedReferences:(BOOL)arg2 synchronousDebugMode:(BOOL)arg3;
 - (BOOL)isCommitted;
 - (void)kernelSubmitTime;
+- (void)popDebugGroup;
 - (void)presentDrawable:(id)arg1;
 - (void)presentDrawable:(id)arg1 afterMinimumDuration:(double)arg2;
 - (void)presentDrawable:(id)arg1 atTime:(double)arg2;
+- (void)pushDebugGroup:(id)arg1;
 - (void)runPerfCounterCallbackWithBlock:(CDUnknownBlockType)arg1;
 - (void)setCommitted:(BOOL)arg1;
 - (void)setCurrentCommandEncoder:(id)arg1;

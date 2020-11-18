@@ -35,11 +35,9 @@
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithDictionary:(id)arg1;
 - (id)initWithStickerID:(struct NSString *)arg1 stickerPackID:(struct NSString *)arg2 fileURL:(id)arg3 accessibilityLabel:(id)arg4 moodCategory:(id)arg5 stickerName:(id)arg6;
 - (id)initWithStickerPropertyDictionary:(id)arg1 stickerPackID:(struct NSString *)arg2 stickerPackBundlePath:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
-- (id)stickerDictionaryRepresentation;
 
 @end
 

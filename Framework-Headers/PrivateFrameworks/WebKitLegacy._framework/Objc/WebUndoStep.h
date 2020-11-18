@@ -13,11 +13,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)initialize;
-+ (id)stepWithUndoStep:(PassRefPtr_f4b194ba)arg1;
++ (id)stepWithUndoStep:(struct UndoStep *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithUndoStep:(PassRefPtr_f4b194ba)arg1;
+- (id)initWithUndoStep:(struct UndoStep *)arg1;
 - (struct UndoStep *)step;
 
 @end

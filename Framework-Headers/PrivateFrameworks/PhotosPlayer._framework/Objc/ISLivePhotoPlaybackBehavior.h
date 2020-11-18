@@ -17,11 +17,11 @@
     BOOL _immediatelyShowsPhotoWhenPlaybackEnds;
     BOOL __videoReadyToPlay;
     BOOL __preparing;
-    long long _playbackStyle;
     double _photoTransitionDuration;
     long long __currentPlaybackID;
     long long __readyToPlayPlaybackID;
     CDStruct_1b6d18a9 _keyTime;
+    CDStruct_e83c9415 _playbackTimeRange;
 }
 
 @property (nonatomic, setter=_setCurrentPlaybackID:) long long _currentPlaybackID; // @synthesize _currentPlaybackID=__currentPlaybackID;
@@ -32,7 +32,7 @@
 @property (readonly, nonatomic) BOOL immediatelyShowsPhotoWhenPlaybackEnds; // @synthesize immediatelyShowsPhotoWhenPlaybackEnds=_immediatelyShowsPhotoWhenPlaybackEnds;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 keyTime; // @synthesize keyTime=_keyTime;
 @property (readonly, nonatomic) double photoTransitionDuration; // @synthesize photoTransitionDuration=_photoTransitionDuration;
-@property (readonly, nonatomic) long long playbackStyle; // @synthesize playbackStyle=_playbackStyle;
+@property (readonly, nonatomic) CDStruct_e83c9415 playbackTimeRange; // @synthesize playbackTimeRange=_playbackTimeRange;
 
 - (void)_didFinishPreparing;
 - (void)_handleDidFinishPreroll;
@@ -44,8 +44,9 @@
 - (void)_transitionToVideoWithPlaybackID:(long long)arg1;
 - (void)activeDidChange;
 - (long long)behaviorType;
-- (id)initWithInitialLayoutInfo:(id)arg1 playbackStyle:(long long)arg2 keyTime:(CDStruct_1b6d18a9)arg3 photoTransitionDuration:(double)arg4 immediatelyShowsPhotoWhenPlaybackEnds:(BOOL)arg5;
+- (id)initWithInitialLayoutInfo:(id)arg1 keyTime:(CDStruct_1b6d18a9)arg2 playbackTimeRange:(CDStruct_e83c9415)arg3 photoTransitionDuration:(double)arg4 immediatelyShowsPhotoWhenPlaybackEnds:(BOOL)arg5;
 - (void)startPlayback;
+- (void)videoDidPlayToEnd;
 - (void)videoWillPlayToEnd;
 
 @end

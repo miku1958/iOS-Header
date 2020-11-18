@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HAPAccessoryServerBTLE;
 
-@interface HAPDiscoveredBTLEAccessoryServerTuple : NSObject
+@interface HAPDiscoveredBTLEAccessoryServerTuple : HMFObject
 {
     HAPAccessoryServerBTLE *_accessoryServer;
     double _lastSeen;

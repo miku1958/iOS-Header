@@ -23,7 +23,7 @@
 - (id)_accessibilityScrollStatus;
 - (BOOL)_accessibilityShouldOverrideScrollViewContentOffsetLimits;
 - (id)_accessibilitySortedElementsWithin;
-- (BOOL)_accessibilityUseXRightOffsetForScrollOpaqueElementIntoViewDirection:(int)arg1;
+- (BOOL)_accessibilityUseXRightOffsetForScrollOpaqueElementIntoViewDirection:(long long)arg1;
 - (BOOL)_axIsCollectionViewCarousel;
 
 @end

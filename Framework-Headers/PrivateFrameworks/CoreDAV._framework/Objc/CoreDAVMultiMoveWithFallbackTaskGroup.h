@@ -33,11 +33,11 @@
 @property (readonly, nonatomic) NSSet *sourceURLs; // @synthesize sourceURLs=_sourceURLs;
 @property (readonly, nonatomic) BOOL useFallback; // @synthesize useFallback=_useFallback;
 
+- (void).cxx_destruct;
 - (void)_completedMoveTask:(id)arg1 sourceURL:(id)arg2;
 - (void)_completedPutTask:(id)arg1 sourceURL:(id)arg2;
 - (id)_eTagFromTaskResponseHeaders:(id)arg1;
 - (void)_setTagsForDestinationEntityAtURL:(id)arg1 fromTaskResponseHeaders:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)dealloc;
 - (id)description;
 - (id)filenameFromURL:(id)arg1;
 - (id)fullDestinationURLFromSourceURL:(id)arg1;

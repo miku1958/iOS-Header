@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class IDSDataChannelLinkContext, NSArray, _IDSDatagramChannel;
 
@@ -16,27 +16,41 @@
 @property (readonly) NSArray *connectedLinks;
 @property (readonly) IDSDataChannelLinkContext *defaultLink;
 
-- (void)addNewIDSDataChannelLinkWithAttributes:(char *)arg1;
+- (void).cxx_destruct;
+- (void)_logReceivingStats:(unsigned long long)arg1;
+- (void)_logSendingStats:(unsigned long long)arg1;
+- (void)_setNeedEncryptionInfoPreference:(BOOL)arg1;
+- (void)_writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_d008d4b8 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)addNewIDSDataChannelLinkWithAttributes:(char *)arg1 linkAttributesLength:(unsigned short)arg2;
+- (id)cachedMetadata;
 - (void)close;
 - (void)dealloc;
 - (id)description;
+- (unsigned short)generateMetadata:(char *)arg1 maxSize:(unsigned long long)arg2 withDatagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_d008d4b8 *)arg4;
 - (id)initWithDestination:(id)arg1;
 - (id)initWithSocketDescriptor:(int)arg1;
 - (void)invalidate;
-- (void)processMetadataForDatagram:(char *)arg1 size:(unsigned long long)arg2 datagramInfo:(CDStruct_ec0e349a *)arg3;
+- (void)optinStreamIDs:(id)arg1;
+- (void)optoutStreamIDs:(id)arg1;
+- (void)processMetadataForDatagram:(char *)arg1 size:(unsigned long long)arg2 datagramInfo:(CDStruct_54fea20c *)arg3 options:(CDStruct_d008d4b8 *)arg4;
 - (void)readDatagramWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)readDatagramsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)readyToRead;
-- (void)removeIDSDataChannelLinkContext:(BOOL)arg1;
+- (void)removeIDSDataChannelLinkContext:(BOOL)arg1 linkUUID:(id)arg2;
 - (void)selectDefaultLink:(BOOL)arg1;
 - (void)sendEventConnectedWithDummyLinkInfo;
+- (void)sendMediaEncryptionInfoWithMKM:(id)arg1 MKS:(id)arg2 MKI:(unsigned int)arg3;
+- (void)sendMediaMembershipChangedInfo:(unsigned char)arg1;
 - (void)sendMetadata;
 - (void)setChannelPreferences:(id)arg1;
 - (void)setEventHandler:(CDUnknownBlockType)arg1;
 - (void)setReadHandler:(CDUnknownBlockType)arg1;
+- (void)setReadHandlerWithOptions:(CDUnknownBlockType)arg1;
 - (void)start;
 - (int)underlyingFileDescriptor;
-- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 flags:(CDStruct_ec0e349a)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)writeDatagrams:(const void **)arg1 datagramSizes:(unsigned int *)arg2 datagramInfo:(CDStruct_ec0e349a)arg3 datagramCount:(int)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_d008d4b8 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 flags:(CDStruct_54fea20c)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)writeDatagrams:(const void **)arg1 datagramSizes:(unsigned int *)arg2 datagramInfo:(CDStruct_54fea20c)arg3 datagramCount:(int)arg4 options:(CDStruct_d008d4b8 *)arg5 completionHandler:(CDUnknownBlockType)arg6;
 
 @end
 

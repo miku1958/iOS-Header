@@ -11,11 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface CKDFetchZoneChangesRequestOperationResult : NSObject
 {
+    BOOL _hasPendingArchivedRecords;
     NSData *_resultServerChangeTokenData;
     NSData *_resultClientChangeTokenData;
     long long _status;
 }
 
+@property (nonatomic) BOOL hasPendingArchivedRecords; // @synthesize hasPendingArchivedRecords=_hasPendingArchivedRecords;
 @property (strong, nonatomic) NSData *resultClientChangeTokenData; // @synthesize resultClientChangeTokenData=_resultClientChangeTokenData;
 @property (strong, nonatomic) NSData *resultServerChangeTokenData; // @synthesize resultServerChangeTokenData=_resultServerChangeTokenData;
 @property (nonatomic) long long status; // @synthesize status=_status;

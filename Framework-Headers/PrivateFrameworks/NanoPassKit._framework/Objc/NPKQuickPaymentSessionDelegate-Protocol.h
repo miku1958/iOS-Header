@@ -19,7 +19,7 @@
 - (void)paymentSessionDidEnterField:(NPKQuickPaymentSession *)arg1;
 - (void)paymentSessionDidExitField:(NPKQuickPaymentSession *)arg1;
 - (void)paymentSessionDidReceiveActivityTimeout:(NPKQuickPaymentSession *)arg1;
-- (void)paymentSessionDidReceiveFinishTransaction:(NPKQuickPaymentSession *)arg1;
+- (void)paymentSessionDidReceiveCredential:(NPKQuickPaymentSession *)arg1;
 - (void)paymentSessionDidReceiveStartTransaction:(NPKQuickPaymentSession *)arg1;
 - (void)paymentSessionDidSelectPayment:(NPKQuickPaymentSession *)arg1;
 - (void)paymentSessionDidSelectValueAddedService:(NPKQuickPaymentSession *)arg1;

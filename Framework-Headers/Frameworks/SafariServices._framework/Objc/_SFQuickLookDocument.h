@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class LSDocumentProxy, NSString, NSURL;
+@protocol _SFQuickLookDocumentSource;
 
 @interface _SFQuickLookDocument : NSObject
 {
@@ -20,10 +21,13 @@
     NSString *_mimeType;
     NSString *_uti;
     NSURL *_sourceURL;
+    id<_SFQuickLookDocumentSource> _documentSource;
 }
 
 @property (strong, nonatomic) LSDocumentProxy *documentProxy; // @synthesize documentProxy=_documentProxy;
+@property (weak, nonatomic) id<_SFQuickLookDocumentSource> documentSource; // @synthesize documentSource=_documentSource;
 @property (copy, nonatomic) NSString *fileName; // @synthesize fileName=_fileName;
+@property (readonly, copy, nonatomic) NSString *inferredUTI;
 @property (readonly, copy, nonatomic) NSString *localizedType;
 @property (copy, nonatomic) NSString *mimeType; // @synthesize mimeType=_mimeType;
 @property (readonly, nonatomic) BOOL needsQuickLookDocumentView; // @synthesize needsQuickLookDocumentView=_needsQuickLookDocumentView;
@@ -40,6 +44,8 @@
 - (void)addQuickLookPrintSettingsToPrintInfo:(id)arg1;
 - (void)dealloc;
 - (id)initWithFileName:(id)arg1 mimeType:(id)arg2 uti:(id)arg3 needsQuickLookDocumentView:(BOOL)arg4;
+- (void)saveToFileIfNeeded;
+- (void)setFileNameForPDFDocument:(id)arg1;
 - (void)setSavedPath:(id)arg1 shouldDelete:(BOOL)arg2;
 - (void)setSavedPathWithProperExtension:(id)arg1 shouldDelete:(BOOL)arg2;
 

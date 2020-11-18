@@ -19,7 +19,7 @@
     BOOL _shouldConvertToSRGB;
     BOOL _shouldStripMetadata;
     NSURL *_outputDirectoryURL;
-    NSString *_generatedFileName;
+    NSString *_outputFilename;
     NSString *_customAccessibilityLabel;
     NSURL *_imageURL;
     PFAssetAdjustments *__adjustments;
@@ -27,10 +27,10 @@
 
 @property (strong, nonatomic, setter=_setAdjustments:) PFAssetAdjustments *_adjustments; // @synthesize _adjustments=__adjustments;
 @property (copy, nonatomic) NSString *customAccessibilityLabel; // @synthesize customAccessibilityLabel=_customAccessibilityLabel;
-@property (copy, nonatomic) NSString *generatedFileName; // @synthesize generatedFileName=_generatedFileName;
 @property (copy, nonatomic, setter=_setImageURL:) NSURL *imageURL; // @synthesize imageURL=_imageURL;
 @property (readonly, nonatomic) NSError *operationError;
 @property (copy, nonatomic) NSURL *outputDirectoryURL; // @synthesize outputDirectoryURL=_outputDirectoryURL;
+@property (copy, nonatomic) NSString *outputFilename; // @synthesize outputFilename=_outputFilename;
 @property (readonly, nonatomic) float progress;
 @property (nonatomic) BOOL shouldConvertToSRGB; // @synthesize shouldConvertToSRGB=_shouldConvertToSRGB;
 @property (nonatomic) BOOL shouldStripLocation; // @synthesize shouldStripLocation=_shouldStripLocation;

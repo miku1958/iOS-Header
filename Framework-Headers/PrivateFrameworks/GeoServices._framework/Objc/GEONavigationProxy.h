@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class GEOCompanionRouteDetails, GEOCompanionRouteStatus, GEOComposedRoute, GEOLocation, GEONavigationGuidanceState, GEONavigationRouteSummary, GEONavigationRouteTransitSummary, GEORouteMatch, NSArray, NSData, NSString, NSXPCConnection;
+@class GEOCompanionRouteContext, GEOCompanionRouteDetails, GEOCompanionRouteStatus, GEOComposedRoute, GEOLocation, GEONameInfo, GEONavigationGuidanceState, GEONavigationRouteSummary, GEONavigationRouteTransitSummary, GEORouteMatch, NSArray, NSData, NSString, NSXPCConnection;
 @protocol GEOServerFormattedStepStringFormatter;
 
 @interface GEONavigationProxy : NSObject
@@ -20,64 +20,84 @@
     GEOLocation *_lastLocation;
     BOOL _locationUnreliable;
     GEORouteMatch *_routeMatch;
+    NSString *_currentRoadName;
     BOOL _guidancePromptsEnabled;
     NSData *_activeRouteDetailsData;
     NSArray *_rideSelections;
     unsigned long long _stepIndex;
     unsigned long long _displayedStepIndex;
-    double _remainingDistance;
-    double _remainingTime;
-    double _distanceToManeuver;
+    GEONameInfo *_stepNameInfo;
+    CDStruct_a70066d4 _positionFromSign;
+    CDStruct_a70066d4 _positionFromManeuver;
+    CDStruct_a70066d4 _positionFromDestination;
     unsigned long long _announcementStage;
     unsigned long long _nextAnnouncementStage;
     double _timeUntilNextAnnouncement;
     GEONavigationRouteSummary *_routeSummary;
     GEONavigationRouteTransitSummary *_transitRouteSummary;
     GEONavigationGuidanceState *_guidanceState;
+    NSData *_trafficIncidentAlertDetailsData;
+    int _navigationVoiceVolume;
+    BOOL _isNavigatingInLowGuidance;
     GEOCompanionRouteDetails *_companionRouteDetails;
     GEOCompanionRouteStatus *_companionRouteStatus;
-    NSData *_lastSentCompanionRouteContext;
+    GEOCompanionRouteContext *_companionRouteContext;
     BOOL _shouldSendRouteWithStatus;
     id<GEOServerFormattedStepStringFormatter> _formatter;
 }
 
 @property (strong) id<GEOServerFormattedStepStringFormatter> formatter; // @synthesize formatter=_formatter;
 
+- (void).cxx_destruct;
 - (void)_clearState;
 - (void)_closeNanomapscdConnection;
 - (void)_closeNavdConnection;
 - (void)_invalidateNavigationSessionWithRouteContext:(id)arg1;
+- (void)_markCurrentHapticsAsTriggered;
 - (void)_openNanomapscdConnection;
 - (void)_openNavdConnection;
 - (void)_sendActiveRouteDetailsData;
 - (void)_sendCoalescedCompanionRouteStatus;
 - (void)_sendCompanionRouteDetails:(id)arg1 routeStatus:(id)arg2 routeContext:(id)arg3;
 - (void)_sendCompanionRouteStatus;
+- (void)_sendCurrentRoadName;
 - (void)_sendGuidanceState;
+- (void)_sendNavigationVoiceVolume;
+- (void)_sendPositionFromDestination;
+- (void)_sendPositionFromManeuver;
+- (void)_sendPositionFromSign;
 - (void)_sendRideSelections;
 - (void)_sendRouteSummary;
 - (void)_sendStepIndex;
+- (void)_sendStepNameInfo;
+- (void)_sendTrafficIncidentAlertDetailsData;
 - (void)_sendTransitSummary;
 - (void)_updateCompanionRouteStatus;
 - (void)dealloc;
 - (void)setActiveRouteDetailsData:(id)arg1;
 - (void)setAnnouncementStage:(unsigned long long)arg1;
 - (void)setClusteredSectionSelectedRideFromRoute:(id)arg1 routeID:(id)arg2;
+- (void)setCurrentRoadName:(id)arg1;
 - (void)setDestinationName:(id)arg1;
 - (void)setDisplayedStepIndex:(unsigned long long)arg1;
-- (void)setDistanceToManeuver:(double)arg1;
 - (void)setGuidancePromptsEnabled:(BOOL)arg1;
+- (void)setIsNavigatingInLowGuidance:(BOOL)arg1;
 - (void)setLastLocation:(id)arg1;
 - (void)setLocationUnreliable:(BOOL)arg1;
 - (void)setNavigationState:(int)arg1;
+- (void)setNavigationVoiceVolume:(int)arg1;
 - (void)setNextAnnouncementStage:(unsigned long long)arg1 timeUntilNextAnnouncement:(double)arg2;
-- (void)setRemainingDistance:(double)arg1;
-- (void)setRemainingTime:(double)arg1;
+- (void)setPositionFromDestination:(CDStruct_c3b9c2ee)arg1;
+- (void)setPositionFromManeuver:(CDStruct_c3b9c2ee)arg1;
+- (void)setPositionFromSign:(CDStruct_c3b9c2ee)arg1;
 - (void)setRoute:(id)arg1;
 - (void)setRouteMatch:(id)arg1;
 - (void)setStepIndex:(unsigned long long)arg1;
+- (void)setStepNameInfo:(id)arg1;
+- (void)setTrafficIncidentDetailsData:(id)arg1;
 - (void)startWithDestinationName:(id)arg1;
 - (void)stop;
+- (void)triggerHaptics:(int)arg1;
 
 @end
 

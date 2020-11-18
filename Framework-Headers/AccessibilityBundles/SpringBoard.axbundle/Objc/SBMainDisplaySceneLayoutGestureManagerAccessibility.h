@@ -16,7 +16,7 @@
 - (id)_accessibilityLastResizeState;
 - (void)_accessibilitySetLastResizeState:(id)arg1;
 - (id)_axAnnouncementForResizeState:(long long)arg1;
-- (void)_resizeGestureDidUpdate:(id)arg1;
+- (void)_handleResizePanSystemGestureRecognizer:(id)arg1;
 
 @end
 

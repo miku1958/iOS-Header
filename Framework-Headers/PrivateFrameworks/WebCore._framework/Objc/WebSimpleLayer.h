@@ -9,11 +9,15 @@
 __attribute__((visibility("hidden")))
 @interface WebSimpleLayer : CALayer
 {
+    BOOL _isRenderingInContext;
 }
+
+@property (readonly, nonatomic) BOOL isRenderingInContext; // @synthesize isRenderingInContext=_isRenderingInContext;
 
 - (id)actionForKey:(id)arg1;
 - (void)display;
 - (void)drawInContext:(struct CGContext *)arg1;
+- (void)renderInContext:(struct CGContext *)arg1;
 - (void)setNeedsDisplay;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 

@@ -27,6 +27,7 @@
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void).cxx_destruct;
 - (void)handleNewFlow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)handleReport:(id)arg1;
 - (void)notifyRulesChanged;
 - (void)provideRemediationMap:(id)arg1;
 - (void)provideURLAppendStringMap:(id)arg1;

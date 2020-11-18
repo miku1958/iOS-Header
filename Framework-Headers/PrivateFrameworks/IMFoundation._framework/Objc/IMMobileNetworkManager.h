@@ -14,20 +14,16 @@
     BOOL _shouldBringUpDataContext;
     BOOL _dataContextActive;
     NSRecursiveLock *_lock;
-    NSMutableSet *_disableFastDormancyTokens;
-    NSMutableSet *_wiFiAutoAssociationTokens;
     NSMutableSet *_cellAutoAssociationTokens;
-    void *__suspendDormancyAssertion;
+    NSMutableSet *_wiFiAutoAssociationTokens;
 }
 
-@property (nonatomic) void *_suspendDormancyAssertion; // @synthesize _suspendDormancyAssertion=__suspendDormancyAssertion;
 @property (readonly, nonatomic) BOOL autoAssociateCellular;
 @property (readonly, nonatomic) BOOL autoAssociateWiFi;
 @property (strong, nonatomic) NSMutableSet *cellularAutoAssociationTokens; // @synthesize cellularAutoAssociationTokens=_cellAutoAssociationTokens;
 @property (readonly, nonatomic) BOOL dataConnectionExists;
 @property (nonatomic) BOOL dataContextActive; // @synthesize dataContextActive=_dataContextActive;
 @property (readonly, nonatomic) BOOL disableFastDormancy;
-@property (strong, nonatomic) NSMutableSet *disableFastDormancyTokens; // @synthesize disableFastDormancyTokens=_disableFastDormancyTokens;
 @property (readonly, nonatomic) BOOL has2GDataConnection;
 @property (readonly, nonatomic) BOOL hasLTEDataConnection;
 @property (readonly, nonatomic) BOOL inValidSIMState;
@@ -52,16 +48,13 @@
 @property (readonly, nonatomic) BOOL willTryToAutoAssociateWiFiNetwork;
 @property (readonly, nonatomic) BOOL willTryToSearchForWiFiNetwork;
 
-- (void)__adjustFastDormancyTokens;
-- (void)_adjustCelluarAutoAssociation;
 - (void)_adjustCellularAutoAssociation;
-- (void)_adjustFastDormancyTokens;
 - (void)_createCTServerConnection;
 - (void)_ctServerCallBack:(id)arg1 object:(id)arg2 userInfo:(id)arg3;
 - (BOOL)_isDataConnectionAvailable;
+- (void)_lockedAdjustCellularAutoAssociation;
 - (void)_makeDataConnectionAvailable:(BOOL)arg1;
 - (void)_releaseCTServerConnection;
-- (void)_setFastDormancySuspended:(BOOL)arg1;
 - (void)addCellularAutoAssociationClientToken:(id)arg1;
 - (void)addFastDormancyDisableToken:(id)arg1;
 - (void)addWiFiAutoAssociationClientToken:(id)arg1;

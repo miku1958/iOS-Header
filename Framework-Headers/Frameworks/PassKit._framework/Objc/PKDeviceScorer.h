@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class PKDSPContext;
 
@@ -20,6 +20,7 @@
 - (void)deviceScoreWithNonce:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithContext:(id)arg1;
+- (void)peerPaymentDeviceScoreWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

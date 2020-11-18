@@ -6,13 +6,13 @@
 
 #import <SceneKit/SCNAction.h>
 
-__attribute__((visibility("hidden")))
 @interface SCNActionPlaySound : SCNAction
 {
     struct SCNCPlaySound *_mycaction;
 }
 
 + (id)playAudioSource:(id)arg1 waitForCompletion:(BOOL)arg2;
++ (BOOL)supportsSecureCoding;
 - (void)_setupDuration;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

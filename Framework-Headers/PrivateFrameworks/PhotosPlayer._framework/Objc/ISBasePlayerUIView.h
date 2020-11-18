@@ -9,50 +9,62 @@
 #import <PhotosPlayer/ISBasePlayerOutput-Protocol.h>
 #import <PhotosPlayer/ISChangeObserver-Protocol.h>
 
-@class AVAudioSession, ISBasePlayer, ISPlayerOutputContent, ISVideoPlayerUIView, NSObject, NSString, UIImageView;
-@protocol OS_dispatch_queue;
+@class ISBasePlayer, ISPlayerOutputContent, ISVideoPlayerUIView, ISWrappedAVAudioSession, NSObject, NSString, UIImage, UIImageView;
+@protocol ISBasePlayerUIViewChangeObserver, OS_dispatch_queue;
 
 @interface ISBasePlayerUIView : UIView <ISChangeObserver, ISBasePlayerOutput>
 {
     NSObject<OS_dispatch_queue> *_audioSessionQueue;
     ISPlayerOutputContent *_content;
+    struct {
+        BOOL didChangeWithAnimationDuration;
+    } _changeObserverRespondsTo;
     ISBasePlayer *_player;
     UIView *_customPhotoView;
+    UIImage *_overrideImage;
     UIImageView *__photoView;
     ISVideoPlayerUIView *__videoView;
     UIView *__containerView;
-    AVAudioSession *_audioSession;
+    ISWrappedAVAudioSession *_wrappedAudioSession;
+    id<ISBasePlayerUIViewChangeObserver> __changeObserver;
     struct CGPoint _scaleAnchorOffset;
 }
 
+@property (weak, nonatomic, setter=_setChangeObserver:) id<ISBasePlayerUIViewChangeObserver> _changeObserver; // @synthesize _changeObserver=__changeObserver;
 @property (readonly, nonatomic) UIView *_containerView; // @synthesize _containerView=__containerView;
 @property (readonly, nonatomic) UIImageView *_photoView; // @synthesize _photoView=__photoView;
 @property (readonly, nonatomic) ISVideoPlayerUIView *_videoView; // @synthesize _videoView=__videoView;
-@property (strong, nonatomic, setter=_setAudioSession:) AVAudioSession *audioSession; // @synthesize audioSession=_audioSession;
 @property (strong, nonatomic) UIView *customPhotoView; // @synthesize customPhotoView=_customPhotoView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=isDisplayingPhoto) BOOL displayingPhoto;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIImage *overrideImage; // @synthesize overrideImage=_overrideImage;
 @property (strong, nonatomic) ISBasePlayer *player; // @synthesize player=_player;
 @property (nonatomic) struct CGPoint scaleAnchorOffset; // @synthesize scaleAnchorOffset=_scaleAnchorOffset;
 @property (readonly) Class superclass;
+@property (strong, nonatomic, setter=_setWrappedAudioSession:) ISWrappedAVAudioSession *wrappedAudioSession; // @synthesize wrappedAudioSession=_wrappedAudioSession;
 
 + (Class)playerClass;
 - (void).cxx_destruct;
 - (void)_performCommonInitialization;
+- (void)_signalChange:(unsigned long long)arg1 withAnimationDuration:(double)arg2;
 - (void)_updatePhotoView;
 - (void)_updatePlayerAudioSession;
 - (void)applyOutputInfo:(id)arg1 withTransitionOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)applyScale:(double)arg1 withTransitionOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)audioSessionDidChange;
 - (void)contentDidChange;
+- (id)generateSnapshotImage;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)playerDidChange;
+- (void)registerChangeObserver:(id)arg1;
 - (void)setContent:(id)arg1;
 - (void)setContentMode:(long long)arg1;
+- (void)unregisterChangeObserver:(id)arg1;
 
 @end
 

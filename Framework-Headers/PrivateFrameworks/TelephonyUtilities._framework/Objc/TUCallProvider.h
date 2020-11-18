@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TelephonyUtilities/NSCopying-Protocol.h>
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
@@ -17,6 +17,8 @@
     BOOL _supportsAudioAndVideo;
     BOOL _supportsEmergency;
     BOOL _supportsVoicemail;
+    BOOL _supportsRecents;
+    BOOL _supportsCurrentPlatform;
     unsigned int _audioSessionID;
     NSString *_identifier;
     NSString *_localizedName;
@@ -24,7 +26,6 @@
     NSURL *_bundleURL;
     NSString *_bundleIdentifier;
     NSArray *_emergencyLabeledHandles;
-    NSString *_URLScheme;
     NSArray *_handoffIdentifiers;
     TUSandboxExtendedURL *_sandboxExtendedRingtoneSoundURL;
     NSURL *_originalRingtoneSoundURL;
@@ -33,12 +34,10 @@
     unsigned long long _maximumCallsPerCallGroup;
 }
 
-@property (copy, nonatomic) NSString *URLScheme; // @synthesize URLScheme=_URLScheme;
 @property (nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
 @property (copy, nonatomic) NSArray *emergencyLabeledHandles; // @synthesize emergencyLabeledHandles=_emergencyLabeledHandles;
-@property (readonly, nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly, nonatomic, getter=isFaceTimeProvider) BOOL faceTimeProvider;
 @property (copy, nonatomic) NSArray *handoffIdentifiers; // @synthesize handoffIdentifiers=_handoffIdentifiers;
 @property (copy, nonatomic) NSData *iconTemplateImageData; // @synthesize iconTemplateImageData=_iconTemplateImageData;
@@ -52,7 +51,9 @@
 @property (copy, nonatomic) NSSet *supportedHandleTypes; // @synthesize supportedHandleTypes=_supportedHandleTypes;
 @property (nonatomic) BOOL supportsAudioAndVideo; // @synthesize supportsAudioAndVideo=_supportsAudioAndVideo;
 @property (nonatomic) BOOL supportsAudioOnly; // @synthesize supportsAudioOnly=_supportsAudioOnly;
+@property (nonatomic) BOOL supportsCurrentPlatform; // @synthesize supportsCurrentPlatform=_supportsCurrentPlatform;
 @property (nonatomic) BOOL supportsEmergency; // @synthesize supportsEmergency=_supportsEmergency;
+@property (nonatomic) BOOL supportsRecents; // @synthesize supportsRecents=_supportsRecents;
 @property (nonatomic) BOOL supportsVoicemail; // @synthesize supportsVoicemail=_supportsVoicemail;
 @property (readonly, nonatomic, getter=isTelephonyProvider) BOOL telephonyProvider;
 

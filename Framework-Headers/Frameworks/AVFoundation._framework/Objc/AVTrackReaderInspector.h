@@ -27,6 +27,7 @@
 - (id)availableMetadataFormats;
 - (id)commonMetadata;
 - (void)dealloc;
+- (int)decodabilityValidationResult;
 - (long long)defaultAlternateGroupID;
 - (struct CGSize)dimensions;
 - (float)estimatedDataRate;
@@ -34,6 +35,7 @@
 - (void)finalize;
 - (id)formatDescriptions;
 - (unsigned long long)hash;
+- (BOOL)isDecodable;
 - (BOOL)isEnabled;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isExcludedFromAutoselectionInTrackGroup;

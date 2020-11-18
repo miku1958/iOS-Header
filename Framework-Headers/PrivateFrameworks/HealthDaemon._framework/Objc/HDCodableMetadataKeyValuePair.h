@@ -8,13 +8,14 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDCodableQuantity, NSString;
+@class HDCodableQuantity, NSData, NSString;
 
 @interface HDCodableMetadataKeyValuePair : PBCodable <NSCopying>
 {
     double _dateValue;
     double _numberDoubleValue;
     long long _numberIntValue;
+    NSData *_dataValue;
     NSString *_key;
     HDCodableQuantity *_quantityValue;
     NSString *_stringValue;
@@ -25,7 +26,9 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSData *dataValue; // @synthesize dataValue=_dataValue;
 @property (nonatomic) double dateValue; // @synthesize dateValue=_dateValue;
+@property (readonly, nonatomic) BOOL hasDataValue;
 @property (nonatomic) BOOL hasDateValue;
 @property (readonly, nonatomic) BOOL hasKey;
 @property (nonatomic) BOOL hasNumberDoubleValue;

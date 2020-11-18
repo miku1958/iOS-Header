@@ -36,13 +36,13 @@
 @property (nonatomic) struct GEOSessionID sessionID; // @synthesize sessionID=_sessionID;
 
 + (Class)actionCaptureType;
+- (void).cxx_destruct;
 - (id)actionCaptureAtIndex:(unsigned long long)arg1;
 - (unsigned long long)actionCapturesCount;
 - (void)addActionCapture:(id)arg1;
 - (void)clearActionCaptures;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

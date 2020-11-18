@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOPlannedDestination, GEORouteHypothesis, NSError, NSUUID;
 @protocol OS_dispatch_queue, OS_dispatch_source;
@@ -31,8 +31,10 @@
 @property (readonly, nonatomic) double willBeginHypothesizingInterval;
 @property (readonly, nonatomic) double willEndHypothesizingInterval;
 
++ (void)didDismissUINotification:(unsigned long long)arg1 forPlannedDestination:(id)arg2 dismissalType:(unsigned long long)arg3;
 + (id)hypothesizerForPlannedDestination:(id)arg1;
 + (BOOL)transitTTLSupportedInCurrentCountry;
+- (void).cxx_destruct;
 - (void)_delayStartingWithXpc;
 - (void)_delayStartingWithoutXpc;
 - (void)_performDelayedStart;
@@ -40,6 +42,7 @@
 - (void)cancelDelayDispatchTimer;
 - (void)dealloc;
 - (id)description;
+- (void)didDismissUINotification:(unsigned long long)arg1 dismissalType:(unsigned long long)arg2;
 - (void)didPostUINotification:(unsigned long long)arg1;
 - (id)initWithPlannedDestination:(id)arg1;
 - (void)onlyPerformLocalUpdates;

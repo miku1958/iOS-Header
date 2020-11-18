@@ -10,44 +10,49 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CCUILayoutPoint {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+
+struct CCUILayoutRect {
+    struct CCUILayoutPoint _field1;
+    struct CCUILayoutSize _field2;
+};
+
+struct CCUILayoutSize {
+    unsigned long long width;
+    unsigned long long height;
+};
+
+struct CGAffineTransform {
+    double a;
+    double b;
+    double c;
+    double d;
+    double tx;
+    double ty;
+};
+
 struct CGPoint {
     double x;
     double y;
 };
 
 struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
+    struct CGPoint _field1;
+    struct CGSize _field2;
 };
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
 
 struct UIEdgeInsets {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
+    double top;
+    double left;
+    double bottom;
+    double right;
 };
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    int hour;
-    int minute;
-} CDStruct_bdf7039f;
-
-typedef struct {
-    BOOL active;
-    BOOL enabled;
-    BOOL sunSchedulePermitted;
-    int mode;
-    struct {
-        CDStruct_bdf7039f fromTime;
-        CDStruct_bdf7039f toTime;
-    } schedule;
-    unsigned long long disableFlags;
-} CDStruct_0b0a24e2;
 

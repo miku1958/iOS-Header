@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *predictedLocationsOfInterests; // @synthesize predictedLocationsOfInterests=_predictedLocationsOfInterests;
 
++ (Class)predictedLocationsOfInterestType;
 - (void).cxx_destruct;
 - (void)addPredictedLocationsOfInterest:(id)arg1;
 - (void)clearPredictedLocationsOfInterests;

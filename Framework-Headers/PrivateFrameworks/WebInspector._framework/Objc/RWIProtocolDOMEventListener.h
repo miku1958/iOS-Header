@@ -17,6 +17,8 @@
 @property (nonatomic) BOOL isAttribute;
 @property (strong, nonatomic) RWIProtocolDebuggerLocation *location;
 @property (nonatomic) int nodeId;
+@property (nonatomic) BOOL once;
+@property (nonatomic) BOOL passive;
 @property (copy, nonatomic) NSString *sourceName;
 @property (copy, nonatomic) NSString *type;
 @property (nonatomic) BOOL useCapture;

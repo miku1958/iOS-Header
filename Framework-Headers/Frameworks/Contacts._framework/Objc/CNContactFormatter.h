@@ -29,10 +29,13 @@
 
 + (id)attributedStringFromContact:(id)arg1 style:(long long)arg2 defaultAttributes:(id)arg3;
 + (id)delimiterForContact:(id)arg1;
++ (id)descriptorForRequiredKeysForDelimiter;
++ (id)descriptorForRequiredKeysForNameOrder;
 + (id)descriptorForRequiredKeysForStyle:(long long)arg1;
 + (long long)nameOrderForContact:(id)arg1;
 + (id)stringFromContact:(id)arg1 style:(long long)arg2;
 + (BOOL)styleSupportsFallBackToFullNameStyle:(long long)arg1;
+- (void).cxx_destruct;
 - (id)abbreviatedNameForContact:(id)arg1 attributes:(id)arg2;
 - (void)appendValue:(id)arg1 derivedFromPropertyName:(id)arg2 toString:(id)arg3 delimiter:(id)arg4 attributes:(id)arg5;
 - (void)appendValueForProperties:(id)arg1 fromContact:(id)arg2 toString:(id)arg3 delimiter:(id)arg4 attributes:(id)arg5 fallback:(BOOL)arg6;
@@ -40,7 +43,6 @@
 - (id)attributedStringFromContact:(id)arg1 defaultAttributes:(id)arg2;
 - (id)avatarNameForContact:(id)arg1 attributes:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)descriptorForRequiredKeys;
 - (void)encodeWithCoder:(id)arg1;
 - (id)fullNameForContact:(id)arg1 attributes:(id)arg2 style:(long long)arg3;

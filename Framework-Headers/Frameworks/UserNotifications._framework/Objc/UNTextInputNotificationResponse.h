@@ -15,6 +15,7 @@
 
 @property (readonly, copy, nonatomic) NSString *userText; // @synthesize userText=_userText;
 
++ (id)responseWithNotification:(id)arg1 actionIdentifier:(id)arg2 actionOptions:(unsigned long long)arg3;
 + (id)responseWithNotification:(id)arg1 actionIdentifier:(id)arg2 actionOptions:(unsigned long long)arg3 userText:(id)arg4;
 + (id)responseWithNotification:(id)arg1 actionIdentifier:(id)arg2 userText:(id)arg3;
 + (BOOL)supportsSecureCoding;

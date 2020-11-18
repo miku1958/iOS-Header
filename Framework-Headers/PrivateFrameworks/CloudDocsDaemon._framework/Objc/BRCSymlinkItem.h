@@ -6,7 +6,8 @@
 
 #import <CloudDocsDaemon/BRCLocalItem.h>
 
-@class BRCAliasItem, BRCDirectoryItem, BRCDocumentItem, BRCFSRootItem, NSString;
+@class BRCAliasItem, BRCDirectoryItem, BRCDocumentItem, NSString;
+@protocol BRCFSRooted;
 
 __attribute__((visibility("hidden")))
 @interface BRCSymlinkItem : BRCLocalItem
@@ -17,7 +18,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BRCAliasItem *asBRAlias; // @dynamic asBRAlias;
 @property (readonly, nonatomic) BRCDirectoryItem *asDirectory; // @dynamic asDirectory;
 @property (readonly, nonatomic) BRCDocumentItem *asDocument; // @dynamic asDocument;
-@property (readonly, nonatomic) BRCFSRootItem *asFSRoot; // @dynamic asFSRoot;
+@property (readonly, nonatomic) BRCDirectoryItem<BRCFSRooted> *asFSRoot; // @dynamic asFSRoot;
 @property (readonly, nonatomic) NSString *symlinkTarget; // @synthesize symlinkTarget=_symlinkTarget;
 
 - (void).cxx_destruct;
@@ -31,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)diffAgainstLocalItem:(id)arg1;
 - (unsigned long long)diffAgainstServerItem:(id)arg1;
 - (BOOL)isSymLink;
-- (float)prepareEditSyncUpWithOperation:(id)arg1 defaults:(id)arg2;
 - (void)readTargetFromRelativePathAndSyncUp:(id)arg1;
 
 @end

@@ -12,6 +12,7 @@
 {
     UIImageView *_invalidRowView;
     BOOL _leftAlignDetailLabel;
+    BOOL _didSetupEditableTextFieldLargeText;
     long long _remoteUIAccessoryType;
     UIView *_remoteUIAccessoryView;
     UIButton *_detailLinkButton;
@@ -39,6 +40,7 @@
 - (void)_setRemoteUIAccessoryType:(long long)arg1 withColor:(id)arg2;
 - (void)_showActivityIndicatorAccessory;
 - (id)detailLinkButton;
+- (id)editableTextField;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)setDetailLinkText:(id)arg1 handler:(CDUnknownBlockType)arg2;

@@ -107,6 +107,7 @@
 + (Class)enterExitInfoType;
 + (Class)transferInfoType;
 + (Class)vehicleInfoType;
+- (void).cxx_destruct;
 - (int)StringAsManeuverType:(id)arg1;
 - (int)StringAsSignificanceForEndNode:(id)arg1;
 - (void)addEnterExitInfo:(id)arg1;

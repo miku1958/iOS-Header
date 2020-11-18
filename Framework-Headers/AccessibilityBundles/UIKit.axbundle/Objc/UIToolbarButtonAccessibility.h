@@ -15,6 +15,10 @@
 + (id)safeCategoryTargetClassName;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
+- (id)accessibilityLocalizationBundleID;
+- (id)accessibilityLocalizationBundlePath;
+- (id)accessibilityLocalizedStringKey;
+- (id)accessibilityLocalizedStringTableName;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 

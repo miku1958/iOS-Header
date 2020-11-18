@@ -4,17 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class MISSING_TYPE;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
-
-struct Atomic {
-    struct {
-        int _field1;
-    } _field1;
-};
 
 struct CGAffineTransform {
     double _field1;
@@ -56,9 +52,28 @@ struct CIBurstSupportVector {
     double _field2[7];
 };
 
+struct CIRenderDestinationInternal {
+    struct RenderDestination *_field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    int _field4;
+    struct CGColorSpace *_field5;
+    unsigned long long _field6;
+    BOOL _field7;
+    BOOL _field8;
+    int _field9;
+    BOOL _field10;
+    BOOL _field11;
+    id _field12;
+};
+
+struct CPUColorCube {
+    unsigned char data[32768];
+};
+
 struct Context {
     CDUnknownFunctionPointerType *_field1;
-    struct Atomic _field2;
+    struct atomic<unsigned int> _field2;
     struct CGColorSpace *_field3;
     struct CGColorSpace *_field4;
     int _field5;
@@ -71,18 +86,24 @@ struct Context {
     BOOL _field12;
     struct CGRect _field13;
     struct CGAffineTransform _field14;
-    int _field15;
+    unsigned int _field15;
     unsigned long long _field16;
     unsigned long long _field17;
     int _field18;
     BOOL _field19;
     struct TreeCacheElement _field20[1024];
     unsigned long long _field21;
-    double _field22;
-    double _field23;
-    BOOL _field24;
-    id _field25;
+    struct ObjectCache<CI::Node> *_field22;
+    struct ObjectCache<CI::Node> *_field23;
+    double _field24;
+    double _field25;
     id _field26;
+    struct RenderTask *_field27;
+    int _field28;
+    BOOL _field29;
+    unsigned long long _field30;
+    id _field31;
+    id _field32;
 };
 
 struct FastRegistration_Signatures {
@@ -101,10 +122,6 @@ struct GridROI_t {
     int endY;
 };
 
-struct Hash {
-    unsigned char _field1[20];
-};
-
 struct IPoint {
     long long _field1;
     long long _field2;
@@ -120,9 +137,19 @@ struct ISize {
     unsigned long long _field2;
 };
 
+struct Image {
+    CDUnknownFunctionPointerType *_field1;
+    struct atomic<unsigned int> _field2;
+    struct CGRect _field3;
+    struct __CFURL *_field4;
+    void *_field5;
+    void *_field6;
+    unsigned int _field7;
+};
+
 struct Kernel {
     CDUnknownFunctionPointerType *_field1;
-    struct Atomic _field2;
+    struct atomic<unsigned int> _field2;
     char *_field3;
     char *_field4;
     BOOL _field5;
@@ -132,8 +159,27 @@ struct Kernel {
     BOOL _field9;
     BOOL _field10;
     BOOL _field11;
-    int _field12;
+    BOOL _field12;
+    BOOL _field13;
+    int _field14;
 };
+
+struct MetalFaceMaskCubeInputScaling_t {
+    MISSING_TYPE *offset__scale;
+};
+
+struct MetalFaceMaskEyeQuads_t {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned char _field3;
+    struct MetalFaceMaskQuad_t _field4[16];
+};
+
+struct MetalFaceMaskQuad_t;
+
+struct Node;
+
+struct ObjectCache<CI::Node>;
 
 struct Projections_meanStdTable {
     float *sumTable;
@@ -145,6 +191,31 @@ struct Rectangle {
     double _field2;
     double _field3;
     double _field4;
+};
+
+struct RenderDestination {
+    CDUnknownFunctionPointerType *_field1;
+    struct atomic<unsigned int> _field2;
+};
+
+struct RenderTask {
+    CDUnknownFunctionPointerType *_field1;
+    struct atomic<unsigned int> _field2;
+    char *_field3;
+    int _field4;
+    int _field5;
+    BOOL _field6;
+    unsigned long long _field7;
+    struct Node *_field8;
+    struct CGRect _field9;
+    int _field10;
+    unsigned long long _field11;
+    struct __CFString *_field12;
+    struct vector<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>, std::__1::allocator<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>>> _field13;
+    double _field14;
+    unsigned long long _field15;
+    unsigned long long _field16;
+    unsigned long long _field17;
 };
 
 struct SerialIntArray;
@@ -166,21 +237,22 @@ struct SharpnessGridElement_t {
 
 struct Texture {
     union {
-        unsigned int _field1;
+        struct {
+            unsigned int _field1;
+            unsigned int _field2;
+        } _field1;
         void *_field2;
     } _field1;
-    unsigned int _field2;
 };
 
 struct TreeCacheElement {
-    struct Hash _field1;
-    unsigned long long _field2;
-    struct Kernel *_field3;
+    unsigned long long _field1;
+    struct Kernel *_field2;
 };
 
 struct WarpKernel {
     CDUnknownFunctionPointerType *_field1;
-    struct Atomic _field2;
+    struct atomic<unsigned int> _field2;
     char *_field3;
     char *_field4;
     BOOL _field5;
@@ -190,7 +262,9 @@ struct WarpKernel {
     BOOL _field9;
     BOOL _field10;
     BOOL _field11;
-    int _field12;
+    BOOL _field12;
+    BOOL _field13;
+    int _field14;
 };
 
 struct __CFString;
@@ -220,8 +294,21 @@ struct __va_list_tag {
     void *_field4;
 };
 
+struct atomic<unsigned int> {
+    _Atomic unsigned int _field1;
+};
+
 struct filterShape {
     struct CGRect _field1;
+};
+
+struct unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>;
+
+struct vImage_Buffer {
+    void *_field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
 };
 
 struct vec2 {
@@ -240,6 +327,14 @@ struct vec4 {
     float _field2;
     float _field3;
     float _field4;
+};
+
+struct vector<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>, std::__1::allocator<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>>> {
+    struct unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>> *_field1;
+    struct unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>> *_field2;
+    struct __compressed_pair<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>*, std::__1::allocator<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>>> {
+        struct unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>> *_field1;
+    } _field3;
 };
 
 #pragma mark Typedef'd Structures
@@ -282,6 +377,12 @@ typedef struct {
 } CDStruct_e0ece3c1;
 
 typedef struct {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+} CDStruct_14f26992;
+
+typedef struct {
     char *baseAddress;
     int width;
     int height;
@@ -302,6 +403,11 @@ typedef struct {
     double i;
     double q;
 } CDStruct_bfe67ca5;
+
+typedef struct {
+    float _field1;
+    float _field2;
+} CDStruct_b2fbf00d;
 
 typedef struct {
     char _field1[256];
@@ -369,6 +475,11 @@ typedef struct {
 } CDStruct_8b259ba7;
 
 typedef struct {
+    struct CGPoint _field1;
+    struct CGPoint _field2;
+} CDStruct_e3b9714e;
+
+typedef struct {
     int tag;
     struct CGPoint pt2;
     int eyeCase;
@@ -404,6 +515,15 @@ typedef struct {
         float ystd;
     } BI;
 } CDStruct_907e448c;
+
+typedef struct {
+    struct CGRect _field1;
+    struct CGPoint _field2;
+    struct CGPoint _field3;
+    struct CGPoint _field4;
+    struct CGPoint _field5;
+    id _field6;
+} CDStruct_1b0b1413;
 
 // Ambiguous groups
 typedef struct {

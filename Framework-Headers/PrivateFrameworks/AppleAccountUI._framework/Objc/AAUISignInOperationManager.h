@@ -31,6 +31,7 @@
 - (void)_delegate_signInOperationManagerDidSaveAccount:(id)arg1 error:(id)arg2;
 - (void)_disableDataclasses:(id)arg1 forAccount:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_mainQueue_dataclassActionsForPicker:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_refreshEnabledDataclassesForAccount:(id)arg1;
 - (id)init;
 - (id)initWithPresentingViewController:(id)arg1;
 - (id)operationsHelper:(id)arg1 desiredDataclassActionFromPicker:(id)arg2;

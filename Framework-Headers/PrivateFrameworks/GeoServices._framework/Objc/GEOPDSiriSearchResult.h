@@ -27,13 +27,13 @@
 
 + (Class)disambiguationLabelType;
 + (Class)resultDetourInfoType;
+- (void).cxx_destruct;
 - (void)addDisambiguationLabel:(id)arg1;
 - (void)addResultDetourInfo:(id)arg1;
 - (void)clearDisambiguationLabels;
 - (void)clearResultDetourInfos;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)disambiguationLabelAtIndex:(unsigned long long)arg1;

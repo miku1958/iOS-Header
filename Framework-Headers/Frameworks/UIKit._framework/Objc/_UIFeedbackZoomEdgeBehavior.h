@@ -4,25 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIFeedbackEdgeBehavior.h>
+#import <UIKit/_UIZoomEdgeFeedbackGenerator.h>
 
-@interface _UIFeedbackZoomEdgeBehavior : _UIFeedbackEdgeBehavior
+@interface _UIFeedbackZoomEdgeBehavior : _UIZoomEdgeFeedbackGenerator
 {
-    double _minimumZoomScale;
-    double _maximumZoomScale;
-    double _minimumTemporaryZoomScale;
-    double _maximumTemporaryZoomScale;
 }
-
-@property (nonatomic) double maximumTemporaryZoomScale; // @synthesize maximumTemporaryZoomScale=_maximumTemporaryZoomScale;
-@property (nonatomic) double maximumZoomScale; // @synthesize maximumZoomScale=_maximumZoomScale;
-@property (nonatomic) double minimumTemporaryZoomScale; // @synthesize minimumTemporaryZoomScale=_minimumTemporaryZoomScale;
-@property (nonatomic) double minimumZoomScale; // @synthesize minimumZoomScale=_minimumZoomScale;
-
-+ (id)behaviorWithCoordinateSpace:(id)arg1;
-- (void)_updateMaximumValue;
-- (void)_zoomScaleUpdated:(double)arg1 withVelocity:(double)arg2;
-- (void)zoomScaleUpdated:(double)arg1;
 
 @end
 

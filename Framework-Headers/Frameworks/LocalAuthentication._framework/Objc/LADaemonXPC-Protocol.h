@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData;
+@class NSData, NSDictionary;
 @protocol LAContextCallbackXPC;
 
 @protocol LADaemonXPC
 - (void)connectToExistingContext:(NSData *)arg1 callback:(id<LAContextCallbackXPC>)arg2 reply:(void (^)(id<LAContextXPC>, NSError *))arg3;
+- (void)notifyEvent:(long long)arg1 options:(NSDictionary *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 - (void)prearmTouchIdWithReply:(void (^)(id<LAPrearmContextXPC>, NSError *))arg1;
 @end
 

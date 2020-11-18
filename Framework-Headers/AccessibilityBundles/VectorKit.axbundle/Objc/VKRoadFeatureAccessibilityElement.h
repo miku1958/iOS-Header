@@ -29,8 +29,8 @@
 - (float)_accessibilityDistance:(struct CGPoint)arg1 forAngle:(float)arg2 toRoad:(id)arg3;
 - (float)_accessibilityDistanceFromEndOfRoad:(struct CGPoint)arg1 forAngle:(float)arg2;
 - (BOOL)_accessibilityLastHitTestNearBorder;
-- (int)_accessibilityMapFeatureType;
-- (int)_accessibilityMapRoadType;
+- (long long)_accessibilityMapFeatureType;
+- (long long)_accessibilityMapRoadType;
 - (BOOL)_accessibilityRoadContainsTrackingPoint:(struct CGPoint)arg1;
 - (id)_accessibilityUpcomingRoadsForPoint:(struct CGPoint)arg1 forAngle:(float)arg2;
 - (id)_axRoadPrefix;

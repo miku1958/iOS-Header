@@ -18,6 +18,7 @@
     PKRemotePaymentRequest *_remoteRequest;
     PKContinuityPaymentService *_continuityService;
     BOOL _hasAuthorizedPayment;
+    BOOL _hasSentCancelPaymentRequest;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -30,6 +31,7 @@
 - (void)_dismiss;
 - (void)_willAppearInRemoteViewController;
 - (void)authorizationDidAuthorizePayment:(id)arg1;
+- (void)authorizationDidAuthorizePeerPaymentQuote:(id)arg1;
 - (void)authorizationDidAuthorizePurchase:(id)arg1;
 - (void)authorizationDidFinishWithError:(id)arg1;
 - (void)authorizationDidRequestMerchantSession;
@@ -37,13 +39,15 @@
 - (void)authorizationDidSelectShippingAddress:(id)arg1;
 - (void)authorizationDidSelectShippingMethod:(id)arg1;
 - (void)authorizationWillStart;
+- (void)configureWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)didReceiveCancellationForRemotePaymentRequest:(id)arg1;
 - (void)didReceivePaymentClientUpdate:(id)arg1 forRemotePaymentRequest:(id)arg2;
-- (void)didReceivePaymentStatus:(long long)arg1 forRemotePaymentRequest:(id)arg2;
+- (void)didReceivePaymentResult:(id)arg1 forRemotePaymentRequest:(id)arg2;
 - (void)handleHomeButtonPressed;
-- (void)handleLockButtonPressed;
 - (id)init;
+- (long long)preferredStatusBarStyle;
+- (BOOL)prefersStatusBarHidden;
 - (void)setUserInfo:(id)arg1;
 - (BOOL)shouldAutorotate;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;

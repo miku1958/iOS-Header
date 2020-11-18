@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilitySupportsContentSizeCategory:(id)arg1;
 - (BOOL)_axIsTappable;
 - (id)accessibilityHint;
 - (unsigned long long)accessibilityTraits;

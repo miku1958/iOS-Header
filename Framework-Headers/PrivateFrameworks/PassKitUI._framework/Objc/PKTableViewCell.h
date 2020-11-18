@@ -10,6 +10,7 @@
 
 @interface PKTableViewCell : UITableViewCell
 {
+    BOOL _showsActionSpinner;
     UIColor *_highlightColor;
     UIColor *_checkmarkAccessoryColor;
     UIColor *_customAccessoryColor;
@@ -18,6 +19,7 @@
 @property (copy, nonatomic) UIColor *checkmarkAccessoryColor; // @synthesize checkmarkAccessoryColor=_checkmarkAccessoryColor;
 @property (copy, nonatomic) UIColor *customAccessoryColor; // @synthesize customAccessoryColor=_customAccessoryColor;
 @property (copy, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
+@property (nonatomic) BOOL showsActionSpinner; // @synthesize showsActionSpinner=_showsActionSpinner;
 
 - (void).cxx_destruct;
 - (id)_checkmarkImage:(BOOL)arg1;

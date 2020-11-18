@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <PhotoLibraryServices/CVMLPhotosFaceRepresentation-Protocol.h>
+#import <PhotoLibraryServices/PFPhotosFaceRepresentation-Protocol.h>
 
-@interface PLFaceDimension : NSObject <CVMLPhotosFaceRepresentation>
+@interface PLFaceDimension : NSObject <PFPhotosFaceRepresentation>
 {
     long long _sourceWidth;
     long long _sourceHeight;
@@ -17,12 +17,19 @@
     double _size;
 }
 
-- (double)cvmlPhotosFaceRepresentationCenterX;
-- (double)cvmlPhotosFaceRepresentationCenterY;
-- (double)cvmlPhotosFaceRepresentationSize;
-- (long long)cvmlPhotosFaceRepresentationSourceHeight;
-- (long long)cvmlPhotosFaceRepresentationSourceWidth;
 - (id)initWithSourceWidth:(long long)arg1 sourceHeight:(long long)arg2 centerX:(double)arg3 centerY:(double)arg4 size:(double)arg5;
+- (double)photosFaceRepresentationBlurScore;
+- (double)photosFaceRepresentationCenterX;
+- (double)photosFaceRepresentationCenterY;
+- (long long)photosFaceRepresentationClusterSequenceNumber;
+- (BOOL)photosFaceRepresentationHasSmile;
+- (BOOL)photosFaceRepresentationIsLeftEyeClosed;
+- (BOOL)photosFaceRepresentationIsRightEyeClosed;
+- (id)photosFaceRepresentationLocalIdentifier;
+- (long long)photosFaceRepresentationQualityMeasure;
+- (double)photosFaceRepresentationSize;
+- (long long)photosFaceRepresentationSourceHeight;
+- (long long)photosFaceRepresentationSourceWidth;
 
 @end
 

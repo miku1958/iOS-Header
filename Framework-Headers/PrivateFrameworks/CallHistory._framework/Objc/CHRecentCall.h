@@ -9,7 +9,7 @@
 #import <CallHistory/NSCopying-Protocol.h>
 #import <CallHistory/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSMutableArray, NSNumber, NSString, NSValue;
+@class CNContact, NSDate, NSMutableArray, NSNumber, NSString, NSValue;
 @protocol CHPhoneBookManagerProtocol;
 
 @interface CHRecentCall : CHSynchronizable <NSSecureCoding, NSCopying>
@@ -39,16 +39,19 @@
     NSString *_callerNetworkFirstName;
     NSString *_callerNetworkSecondName;
     unsigned long long _unreadCount;
-    NSValue *_addressBookRecordRef;
     NSString *_clientAddressBookRecordId;
+    NSValue *_addressBookRecordRef;
+    NSString *_addressBookRecordId;
+    NSString *_addressBookCallerIDMultiValueId;
+    NSString *_contactIdentifier;
     long long _mediaType;
     long long _ttyType;
+    NSNumber *_timeToEstablish;
     NSString *_callerName;
     NSMutableArray *_callOccurrences;
     NSString *_callerIdLabel;
     NSString *_callerIdLocation;
-    NSString *_addressBookRecordId;
-    NSString *_addressBookCallerIDMultiValueId;
+    CNContact *_contactRef;
     NSString *_callerIdFormatted;
     id<CHPhoneBookManagerProtocol> _phoneBookManager;
 }
@@ -73,6 +76,8 @@
 @property (copy, nonatomic) NSString *callerNetworkName; // @synthesize callerNetworkName=_callerNetworkName;
 @property (copy) NSString *callerNetworkSecondName; // @synthesize callerNetworkSecondName=_callerNetworkSecondName;
 @property (copy) NSString *clientAddressBookRecordId; // @synthesize clientAddressBookRecordId=_clientAddressBookRecordId;
+@property (copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
+@property (copy, nonatomic) CNContact *contactRef; // @synthesize contactRef=_contactRef;
 @property (copy) NSDate *date; // @synthesize date=_date;
 @property (copy) NSString *devicePhoneId; // @synthesize devicePhoneId=_devicePhoneId;
 @property (copy) NSNumber *disconnectedCause; // @synthesize disconnectedCause=_disconnectedCause;
@@ -87,6 +92,7 @@
 @property (strong) id<CHPhoneBookManagerProtocol> phoneBookManager; // @synthesize phoneBookManager=_phoneBookManager;
 @property (nonatomic) BOOL read; // @synthesize read=_read;
 @property (copy, nonatomic) NSString *serviceProvider; // @synthesize serviceProvider=_serviceProvider;
+@property (copy) NSNumber *timeToEstablish; // @synthesize timeToEstablish=_timeToEstablish;
 @property (nonatomic) long long ttyType; // @synthesize ttyType=_ttyType;
 @property (copy) NSString *uniqueId; // @synthesize uniqueId=_uniqueId;
 @property unsigned long long unreadCount; // @synthesize unreadCount=_unreadCount;
@@ -108,7 +114,6 @@
 + (long long)ttyTypeForCallCategory:(unsigned int)arg1;
 - (void).cxx_destruct;
 - (void)addOccurrencesFromArraySync:(id)arg1;
-- (id)addressBookCallerIDMultiValueIdSync;
 - (void)addressBookChanged;
 - (id)addressBookRecordIdSync;
 - (id)addressBookRecordRefSync;
@@ -129,16 +134,16 @@
 - (BOOL)canCoalesceWithCall:(id)arg1 withStrategy:(id)arg2;
 - (BOOL)coalesceWithCall:(id)arg1 withStrategy:(id)arg2;
 - (id)coalescingHash;
+- (id)contactIdentifierSync;
+- (id)contactRefSync;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)createOccurrenceArraySync;
-- (void)dealloc;
 - (id)description;
 - (id)descriptionInDepth;
 - (void)encodeWithCoder:(id)arg1;
-- (void)fetchAndSetAddressBookIdsSync;
+- (void)fetchAndSetContactsValuesSync;
 - (void)fixCallTypeInfo;
 - (id)getLocalizedStringSync:(id)arg1;
-- (void)handleCurrentLocaleDidChangeNotification:(id)arg1;
 - (long long)handleTypeSync;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -148,7 +153,6 @@
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)numberOfOccurrences;
 - (unsigned long long)numberOfOccurrencesSync;
-- (void)registerForCurrentLocaleDidChangeNotification;
 - (BOOL)representsCallAtDate:(id)arg1;
 - (void)updateTTYAndMediaType;
 

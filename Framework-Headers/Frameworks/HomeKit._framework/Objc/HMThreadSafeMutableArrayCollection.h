@@ -27,12 +27,18 @@
 - (void)addObjectsFromArray:(id)arg1;
 - (BOOL)containsObject:(id)arg1;
 - (id)filteredArrayUsingPredicate:(id)arg1;
+- (id)firstItemWithCharacteristicType:(id)arg1;
+- (id)firstItemWithInstanceID:(id)arg1;
+- (id)firstItemWithName:(id)arg1;
+- (id)firstItemWithUUID:(id)arg1;
+- (id)firstItemWithUniqueIdentifier:(id)arg1;
 - (id)firstItemWithValue:(id)arg1 forKey:(id)arg2;
 - (id)initWithArray:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)itemsWithValue:(id)arg1 forKey:(id)arg2;
 - (void)removeObject:(id)arg1;
 - (void)removeObjectsInArray:(id)arg1;
+- (void)replaceObject:(id)arg1;
 - (void)setArray:(id)arg1;
 - (void)setIfDifferent:(id)arg1;
 

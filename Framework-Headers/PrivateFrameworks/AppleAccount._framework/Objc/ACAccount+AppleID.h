@@ -12,6 +12,7 @@
 - (BOOL)canRemoveAccount;
 - (id)dsid;
 - (id)initWithAppleID:(id)arg1 password:(id)arg2;
+- (id)normalizedDSID;
 - (void)setDSID:(id)arg1;
 @end
 

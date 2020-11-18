@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSDictionary, NSMutableArray, NSString;
 
@@ -24,9 +24,9 @@
 @property (readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 
+- (void).cxx_destruct;
 - (void)_addAssignment:(id)arg1;
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithLabel:(id)arg1 name:(id)arg2 experimentIdentifier:(id)arg3;
 - (id)querySubstringForType:(long long)arg1 dispatcherRequestType:(int)arg2;

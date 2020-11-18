@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSPredicate;
 
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *properties; // @synthesize properties=_properties;
 
 + (id)fetchRequestInfoForPredicate:(id)arg1 properties:(id)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

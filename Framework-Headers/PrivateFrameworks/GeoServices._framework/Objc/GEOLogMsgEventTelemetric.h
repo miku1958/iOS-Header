@@ -18,11 +18,11 @@
 @property (strong, nonatomic) NSMutableArray *telemetricEntitys; // @synthesize telemetricEntitys=_telemetricEntitys;
 
 + (Class)telemetricEntityType;
+- (void).cxx_destruct;
 - (void)addTelemetricEntity:(id)arg1;
 - (void)clearTelemetricEntitys;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

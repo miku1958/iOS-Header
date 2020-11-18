@@ -28,6 +28,7 @@
 - (id)_attachmentStorageLocation;
 - (void)_forceLoadOfMessageSummaryFromProtectedStore;
 - (void)_initializeMetadata;
+- (id)_privacySafeDescription;
 - (void)_updateUID;
 - (id)account;
 - (id)attachmentStorageLocation;
@@ -38,7 +39,6 @@
 - (id)dataConsumerForMimePart:(id)arg1;
 - (id)dataPathForMimePart:(id)arg1;
 - (void)dealloc;
-- (id)description;
 - (BOOL)hasTemporaryUid;
 - (unsigned long long)hash;
 - (id)initWithLibraryID:(unsigned int)arg1;

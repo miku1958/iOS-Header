@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
+- (void)setPrimaryText:(id)arg1 secondaryText:(id)arg2 minimizedSecondaryText:(id)arg3;
 
 @end
 

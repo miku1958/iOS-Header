@@ -12,7 +12,6 @@
 
 @interface FBApplicationInfo : FBBundleInfo <BSDescriptionProviding>
 {
-    NSString *_displayName;
     NSURL *_executableURL;
     NSURL *_bundleContainerURL;
     NSURL *_dataContainerURL;
@@ -22,7 +21,6 @@
     NSString *_signerIdentity;
     NSDictionary *_environmentVariables;
     NSDictionary *_lazy_entitlements;
-    long long _once_entitlements;
     BOOL _provisioningProfileValidated;
     BOOL _isManaged;
     NSString *_sdkVersion;
@@ -51,11 +49,12 @@
     NSNumber *_downloaderDSID;
     NSArray *_lazy_folderNames;
     NSString *_lazy_fallbackFolderName;
-    long long _once_folderNames;
     BOOL _installing;
     BOOL _uninstalling;
+    struct os_unfair_lock_s _lock;
     BOOL _initialized;
     FBProfileManager *_profileManager;
+    BOOL _pendingUninstall;
 }
 
 @property (readonly, copy, nonatomic, getter=_appIDEntitlement) NSString *appIDEntitlement; // @synthesize appIDEntitlement=_appIDEntitlement;
@@ -68,7 +67,6 @@
 @property (readonly, strong, nonatomic) FBApplicationDefaults *defaults; // @synthesize defaults=_defaults;
 @property (readonly, copy) NSString *description;
 @property (readonly, strong, nonatomic) NSArray *deviceFamilies; // @synthesize deviceFamilies=_deviceFamilies;
-@property (readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, strong, nonatomic) NSNumber *downloaderDSID; // @synthesize downloaderDSID=_downloaderDSID;
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, strong, nonatomic) NSDictionary *entitlements;
@@ -86,6 +84,7 @@
 @property (readonly, nonatomic) double lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property (readonly, nonatomic) float minimumBrightnessLevel; // @synthesize minimumBrightnessLevel=_minimumBrightnessLevel;
 @property (readonly, nonatomic, getter=isNewsstand) BOOL newsstand; // @synthesize newsstand=_newsstand;
+@property (nonatomic, getter=_isPendingUninstall, setter=_setPendingUninstall:) BOOL pendingUninstall; // @synthesize pendingUninstall=_pendingUninstall;
 @property (readonly, copy, nonatomic) NSString *preferenceDomain; // @synthesize preferenceDomain=_preferenceDomain;
 @property (nonatomic, getter=_profileManager, setter=_setProfileManager:) FBProfileManager *profileManager; // @synthesize profileManager=_profileManager;
 @property (readonly, nonatomic, getter=isProvisioningProfileValidated) BOOL provisioningProfileValidated; // @synthesize provisioningProfileValidated=_provisioningProfileValidated;
@@ -116,17 +115,16 @@
 - (id)_initWithBundleIdentifier:(id)arg1 url:(id)arg2;
 - (id)_initWithBundleProxy:(id)arg1 overrideURL:(id)arg2;
 - (void)_loadFromProxy:(id)arg1;
+- (void)_lock_loadFolderNamesIfNecessary;
 - (long long)_mapSignatureStateFromTrustState:(unsigned long long)arg1;
-- (void)_once_loadFolderNamesIfNecessary;
 - (void)_overrideTags:(id)arg1;
+- (void)_synchronize:(CDUnknownBlockType)arg1;
 - (void)acceptApplicationSignatureIdentity;
 - (BOOL)builtOnOrAfterSDKVersion:(id)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)initWithApplicationProxy:(id)arg1;
 - (BOOL)statusBarHiddenForInterfaceOrientation:(long long)arg1 onDisplay:(id)arg2;
-- (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (BOOL)supportsAllInterfaceOrientations;
 - (BOOL)supportsBackgroundMode:(id)arg1;

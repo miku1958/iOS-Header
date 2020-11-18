@@ -51,7 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)onqueue_invalidate;
 - (void)onqueue_invalidated;
 - (id)remoteObjectInterface;
-- (BOOL)shouldAutomaticallyDispatchIncomingInvocations;
+- (BOOL)shouldEscapeXpcTryCatch;
 
 @end
 

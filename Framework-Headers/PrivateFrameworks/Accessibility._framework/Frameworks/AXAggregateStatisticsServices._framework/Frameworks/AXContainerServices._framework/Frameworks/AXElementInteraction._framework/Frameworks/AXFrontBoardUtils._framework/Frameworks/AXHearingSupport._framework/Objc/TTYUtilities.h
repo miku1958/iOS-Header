@@ -6,12 +6,16 @@
 
 #import <objc/NSObject.h>
 
+@protocol OS_dispatch_queue;
+
 @interface TTYUtilities : NSObject
 {
     BOOL _inUnitTestMode;
     BOOL _headphoneJackSupportsTTY;
+    NSObject<OS_dispatch_queue> *_callCenterQueue;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *callCenterQueue; // @synthesize callCenterQueue=_callCenterQueue;
 @property (nonatomic) BOOL headphoneJackSupportsTTY; // @synthesize headphoneJackSupportsTTY=_headphoneJackSupportsTTY;
 @property (nonatomic) BOOL inUnitTestMode; // @synthesize inUnitTestMode=_inUnitTestMode;
 
@@ -21,12 +25,15 @@
 + (void)displayCallPromptForContact:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 + (BOOL)hardwareTTYIsSupported;
 + (BOOL)isAppleInternalBuild;
++ (void)performCallCenterTask:(CDUnknownBlockType)arg1;
 + (id)phoneNumberStringFromString:(id)arg1;
 + (BOOL)relayIsSupported;
 + (id)relayPhoneNumber;
++ (id)sharedCallCenter;
 + (id)sharedUtilityProvider;
 + (BOOL)softwareTTYIsSupported;
 + (BOOL)ttyShouldBeRealtimeForCall:(id)arg1;
+- (void).cxx_destruct;
 - (id)bubbleColorForMe:(BOOL)arg1;
 - (id)bubbleFillForMe:(BOOL)arg1;
 - (struct UIEdgeInsets)bubbleInsetForMe:(BOOL)arg1;
@@ -34,6 +41,7 @@
 - (id)conversationForCallUID:(id)arg1;
 - (unsigned long long)currentPreferredTransportMethod;
 - (BOOL)deleteConversationWithCallUID:(id)arg1;
+- (id)init;
 - (id)largeTTYIconWithTint:(id)arg1;
 - (id)myPhoneNumber;
 - (void)setTTYDictionaryAvailability:(BOOL)arg1;

@@ -17,6 +17,7 @@
     NSDictionary *_entitlements;
     NSString *_restrictions;
     NSArray *_consentedBrands;
+    unsigned long long _protocolVersion;
 }
 
 @property (strong, nonatomic) NSString *DSID; // @synthesize DSID=_DSID;
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) NSArray *consentedBrands; // @synthesize consentedBrands=_consentedBrands;
 @property (strong, nonatomic) NSDictionary *entitlements; // @synthesize entitlements=_entitlements;
 @property (strong, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
+@property (nonatomic) unsigned long long protocolVersion; // @synthesize protocolVersion=_protocolVersion;
 @property (strong, nonatomic) NSString *restrictions; // @synthesize restrictions=_restrictions;
 @property (strong, nonatomic) NSString *storeFrontIdentifier; // @synthesize storeFrontIdentifier=_storeFrontIdentifier;
 
@@ -31,6 +33,7 @@
 + (void)setCurrentEnvironmentForTesting:(id)arg1;
 - (void).cxx_destruct;
 - (unsigned long long)_hashForStoreStuff;
+- (id)description;
 - (unsigned long long)hash;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;

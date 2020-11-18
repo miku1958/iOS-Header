@@ -39,13 +39,14 @@
 @property (nonatomic) unsigned long long observerFeed; // @synthesize observerFeed=_observerFeed;
 @property (readonly) Class superclass;
 
++ (id)gatewayWithQueue:(id)arg1 calloutQueue:(id)arg2 name:(id)arg3 priority:(unsigned long long)arg4;
 + (void)initialize;
-+ (id)observerGlobalQueue;
++ (id)observerWithQueue:(id)arg1 calloutQueue:(id)arg2 forGatewayName:(id)arg3;
 - (void).cxx_destruct;
 - (void)_getComposedImageIgnoringCacheForAttachment:(id)arg1 bulletin:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_getComposedImageSizeIgnoringCacheForAttachment:(id)arg1 bulletin:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_getDataIgnoringCacheForAttachment:(id)arg1 bulletin:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (id)_initWithCalloutQueue:(id)arg1 gatewayName:(id)arg2 gatewayPriority:(unsigned long long)arg3 isGateway:(BOOL)arg4;
+- (id)_initWithQueue:(id)arg1 calloutQueue:(id)arg2 gatewayName:(id)arg3 gatewayPriority:(unsigned long long)arg4 isGateway:(BOOL)arg5;
 - (void)_prewarmSectionParametersAndAttachmentsForBulletin:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_queue_associateAttachment:(id)arg1 withBulletin:(id)arg2;
 - (id)_queue_cachedComposedImageForAttachment:(id)arg1;
@@ -75,7 +76,6 @@
 - (void)getAlertBehaviorOverridesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getAttachmentImageForBulletin:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getBulletinsForPublisherMatchIDs:(id)arg1 sectionID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)getBulletinsPublishedAfterDate:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getBulletinsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getComposedImageForAttachment:(id)arg1 bulletin:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)getComposedImageSizeForAttachment:(id)arg1 bulletin:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
@@ -93,6 +93,8 @@
 - (id)init;
 - (id)initWithQueue:(id)arg1;
 - (id)initWithQueue:(id)arg1 asGateway:(id)arg2 priority:(unsigned long long)arg3;
+- (id)initWithQueue:(id)arg1 calloutQueue:(id)arg2;
+- (id)initWithQueue:(id)arg1 calloutQueue:(id)arg2 gatewayName:(id)arg3 gatewayPriority:(unsigned long long)arg4 isGateway:(BOOL)arg5 connection:(id)arg6;
 - (id)initWithQueue:(id)arg1 forGateway:(id)arg2;
 - (void)invalidate;
 - (BOOL)isValid;

@@ -6,7 +6,6 @@
 
 #import <Foundation/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface SCNNodeComponent : NSObject
 {
     long long type;
@@ -18,7 +17,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) SCNNodeComponent *next; // @synthesize next;
 @property (nonatomic) long long type; // @synthesize type;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithType:(long long)arg1 component:(id)arg2;
 
 @end

@@ -24,11 +24,8 @@
 @property (nonatomic) BOOL usesApplicationAudioSession;
 
 + (void)_beginConfiguringActiveColorSpaceForDevice:(id)arg1;
-+ (void)_beginConfiguringAutoShallowDepthOfFieldEffectEnabledForDevice:(id)arg1;
 + (void)_finishConfiguringActiveColorSpaceForDevice:(id)arg1;
-+ (void)_finishConfiguringAutoShallowDepthOfFieldEffectEnabledForDevice:(id)arg1;
 + (BOOL)_isActiveColorSpaceBeingConfiguredForDevice:(id)arg1;
-+ (BOOL)_isAutoShallowDepthOfFieldEffectEnabledBeingConfiguredForDevice:(id)arg1;
 + (id)allSessionPresets;
 + (BOOL)automaticallyNotifiesObserversOfMasterClock;
 + (BOOL)automaticallyNotifiesObserversOfRunning;
@@ -79,6 +76,7 @@
 - (BOOL)_stopFigCaptureSession;
 - (void)_teardownFigCaptureSession;
 - (void)_updateDeviceActiveFormatsAndActiveConnections;
+- (void)_updateSourceDeviceDepthDataDeliveryEnabled;
 - (void)addConnection:(id)arg1;
 - (void)addInput:(id)arg1;
 - (void)addInputWithNoConnections:(id)arg1;
@@ -89,6 +87,7 @@
 - (BOOL)canAddInput:(id)arg1;
 - (BOOL)canAddOutput:(id)arg1;
 - (BOOL)canSetSessionPreset:(id)arg1;
+- (void)cancelForegroundAutoResumeAfterDate:(id)arg1;
 - (void)commitConfiguration;
 - (void)dealloc;
 - (id)description;

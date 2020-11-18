@@ -17,6 +17,8 @@
     long long _personType;
     long long _manualSortOrder;
     NSString *_displayName;
+    long long _verifiedType;
+    NSString *_mergeTargetPersonIdentifier;
     NSData *_contactDescriptor;
 }
 
@@ -25,12 +27,20 @@
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic) NSString *fullName; // @synthesize fullName=_fullName;
 @property (nonatomic) long long manualSortOrder; // @synthesize manualSortOrder=_manualSortOrder;
+@property (copy, nonatomic) NSString *mergeTargetPersonIdentifier; // @synthesize mergeTargetPersonIdentifier=_mergeTargetPersonIdentifier;
 @property (nonatomic) long long personType; // @synthesize personType=_personType;
+@property (nonatomic) long long verifiedType; // @synthesize verifiedType=_verifiedType;
 
 + (BOOL)cplShouldIgnorePropertyForCoding:(id)arg1;
 + (BOOL)cplShouldIgnorePropertyForEquality:(id)arg1;
++ (BOOL)serverSupportsGraphPeopleHome;
++ (BOOL)serverSupportsMergeTargetRef;
 - (void).cxx_destruct;
+- (id)relatedIdentifier;
+- (void)setRelatedIdentifier:(id)arg1;
 - (BOOL)supportsDeletion;
+- (BOOL)supportsDirectDeletion;
+- (BOOL)validateRecordForTracker:(id)arg1;
 
 @end
 

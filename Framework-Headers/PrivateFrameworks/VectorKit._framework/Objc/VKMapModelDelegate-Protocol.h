@@ -6,11 +6,9 @@
 
 #import <VectorKit/NSObject-Protocol.h>
 
-@class NSError, VKMapModel, VKOverlayPainter;
-@protocol VKOverlay;
+@class NSError, VKMapModel;
 
 @protocol VKMapModelDelegate <NSObject>
-- (VKOverlayPainter *)mapModel:(VKMapModel *)arg1 painterForOverlay:(id<VKOverlay>)arg2;
 - (void)mapModel:(VKMapModel *)arg1 selectedLabelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)mapModel:(VKMapModel *)arg1 selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)mapModel:(VKMapModel *)arg1 willTransitionFrom:(long long)arg2 to:(long long)arg3 duration:(double)arg4;

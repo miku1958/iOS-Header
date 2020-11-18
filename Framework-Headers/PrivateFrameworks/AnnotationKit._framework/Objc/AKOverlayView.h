@@ -27,7 +27,8 @@
 
 + (void)initialize;
 - (void).cxx_destruct;
-- (void)_postScrollViewNotification;
+- (void)_postScrollViewRectChangedNotification;
+- (void)_postScrollViewScrollOrMagnifyEndNotification;
 - (void)_scrollViewDidEndAnimation:(id)arg1;
 - (void)_scrollViewDidEndDecelerating:(id)arg1;
 - (void)_scrollViewDidEndDragging:(id)arg1;
@@ -41,20 +42,17 @@
 - (void)_willRemoveFromOldSuperview;
 - (void)_willStartLiveMagnify:(id)arg1;
 - (BOOL)canBecomeFirstResponder;
+- (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)dealloc;
+- (void)delete:(id)arg1;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
+- (void)duplicate:(id)arg1;
+- (void)editTextAnnotation:(id)arg1;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithPageController:(id)arg1;
 - (void)layoutSublayersOfLayer:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)superTouchesBegan:(id)arg1 withEvent:(id)arg2;
-- (void)superTouchesCancelled:(id)arg1 withEvent:(id)arg2;
-- (void)superTouchesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)superTouchesMoved:(id)arg1 withEvent:(id)arg2;
-- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
-- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)updateLayers;
 - (void)willMoveToSuperview:(id)arg1;
 

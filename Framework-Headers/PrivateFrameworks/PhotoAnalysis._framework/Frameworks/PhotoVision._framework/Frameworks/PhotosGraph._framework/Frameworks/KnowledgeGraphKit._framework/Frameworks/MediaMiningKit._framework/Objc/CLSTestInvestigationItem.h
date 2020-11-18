@@ -18,6 +18,8 @@
     BOOL _isFavorite;
     BOOL _clsIsSDOF;
     BOOL _clsIsHDR;
+    float _clsSharpnessScore;
+    float _clsExposureScore;
     NSDate *_clsDate;
     CLLocation *_clsLocation;
     NSArray *_clsPeopleNames;
@@ -33,13 +35,16 @@
 @property (readonly, nonatomic) double clsContentScore; // @synthesize clsContentScore=_clsContentScore;
 @property (strong, nonatomic) NSDate *clsDate; // @synthesize clsDate=_clsDate;
 @property (readonly, nonatomic) NSData *clsDistanceIdentity; // @synthesize clsDistanceIdentity=_clsDistanceIdentity;
+@property (readonly, nonatomic) float clsExposureScore; // @synthesize clsExposureScore=_clsExposureScore;
 @property (readonly, nonatomic) BOOL clsIsHDR; // @synthesize clsIsHDR=_clsIsHDR;
 @property (readonly, nonatomic) BOOL clsIsSDOF; // @synthesize clsIsSDOF=_clsIsSDOF;
 @property (strong, nonatomic) CLLocation *clsLocation; // @synthesize clsLocation=_clsLocation;
+@property (readonly, nonatomic) unsigned long long clsPeopleCount;
 @property (strong, nonatomic) NSArray *clsPeopleNames; // @synthesize clsPeopleNames=_clsPeopleNames;
 @property (readonly, nonatomic) long long clsPlayCount; // @synthesize clsPlayCount=_clsPlayCount;
 @property (copy, nonatomic) NSSet *clsSceneClassifications; // @synthesize clsSceneClassifications=_clsSceneClassifications;
 @property (readonly, nonatomic) long long clsShareCount; // @synthesize clsShareCount=_clsShareCount;
+@property (readonly, nonatomic) float clsSharpnessScore; // @synthesize clsSharpnessScore=_clsSharpnessScore;
 @property (readonly, nonatomic) NSArray *clsUnprefetchedPeopleNames; // @synthesize clsUnprefetchedPeopleNames=_clsUnprefetchedPeopleNames;
 @property (readonly, nonatomic) long long clsViewCount; // @synthesize clsViewCount=_clsViewCount;
 @property (readonly, nonatomic) NSDate *date;

@@ -6,23 +6,33 @@
 
 #import <objc/NSObject.h>
 
+#import <SearchFoundation/NSCopying-Protocol.h>
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFKeyValueTuple-Protocol.h>
 
-@class NSString;
+@class NSData, NSDictionary, NSString;
 
-@interface SFKeyValueTuple : NSObject <NSSecureCoding>
+@interface SFKeyValueTuple : NSObject <SFKeyValueTuple, NSSecureCoding, NSCopying>
 {
     NSString *_key;
     NSString *_value;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *value; // @synthesize value=_value;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 
 @end
 

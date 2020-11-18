@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class HMDAccessory, HMDCentralMessageDispatcher, NSString;
 
-@interface HMDCameraResidentMessageHandler : NSObject <HMFLogging>
+@interface HMDCameraResidentMessageHandler : HMFObject <HMFLogging>
 {
     NSString *_logID;
     HMDAccessory *_accessory;
@@ -18,6 +18,7 @@
 }
 
 @property (readonly, weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
+@property (readonly, nonatomic) BOOL companionIsResident;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isProjecting; // @synthesize isProjecting=_isProjecting;
 
 - (void).cxx_destruct;
-- (double)_approximateMaxSpeedForRoad:(CDStruct_6ac9d495 *)arg1;
+- (double)_approximateMaxSpeedForRoad:(CDStruct_c707fdd0 *)arg1;
 - (BOOL)_locationIsGoodEnoughToEndProjection:(id)arg1;
 - (double)_locationOverdueTimeoutForLocation:(id)arg1;
 - (void)_locationUpdateOverdueTimerFired:(id)arg1;

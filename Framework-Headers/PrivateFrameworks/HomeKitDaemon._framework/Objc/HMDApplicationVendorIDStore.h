@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
-@interface HMDApplicationVendorIDStore : NSObject <NSSecureCoding>
+@interface HMDApplicationVendorIDStore : HMFObject <NSSecureCoding>
 {
     NSMutableDictionary *_applicationVendorIdMapping;
     NSMutableDictionary *_applicationMachUUIDMapping;

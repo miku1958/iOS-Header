@@ -6,37 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class PUChangeDirectionValueFilter, PUInitialHysteresisValueFilter;
+@class PXSwipeDownTracker;
 
 @interface PHSwipeDownTracker : NSObject
 {
-    BOOL _didStartTracking;
-    struct CGPoint _initialTouchLocation;
-    struct CGPoint _initialCenter;
-    struct CGRect _initialBounds;
-    struct CGAffineTransform _initialTransform;
-    BOOL _shouldFinishDismissal;
-    double _dismissalProgress;
-    double _finalAnimationDuration;
-    double _finalAnimationSpringDamping;
-    PUChangeDirectionValueFilter *__verticalDirectionValueFilter;
-    PUInitialHysteresisValueFilter *__horizontalTranslationValueFilter;
-    struct CGPoint _trackedCenter;
-    struct CGRect _trackedBounds;
-    struct PHDisplayVelocity _trackedVelocity;
-    struct CGAffineTransform _trackedTransform;
+    PXSwipeDownTracker *_impl;
 }
 
-@property (strong, nonatomic, setter=_setHorizontalTranslationValueFilter:) PUInitialHysteresisValueFilter *_horizontalTranslationValueFilter; // @synthesize _horizontalTranslationValueFilter=__horizontalTranslationValueFilter;
-@property (strong, nonatomic, setter=_setVerticalDirectionValueFilter:) PUChangeDirectionValueFilter *_verticalDirectionValueFilter; // @synthesize _verticalDirectionValueFilter=__verticalDirectionValueFilter;
-@property (nonatomic, setter=_setDismissalProgress:) double dismissalProgress; // @synthesize dismissalProgress=_dismissalProgress;
-@property (readonly, nonatomic) double finalAnimationDuration; // @synthesize finalAnimationDuration=_finalAnimationDuration;
-@property (readonly, nonatomic) double finalAnimationSpringDamping; // @synthesize finalAnimationSpringDamping=_finalAnimationSpringDamping;
-@property (nonatomic, setter=_setShouldFinishDismissal:) BOOL shouldFinishDismissal; // @synthesize shouldFinishDismissal=_shouldFinishDismissal;
-@property (nonatomic, setter=_setTrackedBounds:) struct CGRect trackedBounds; // @synthesize trackedBounds=_trackedBounds;
-@property (nonatomic, setter=_setTrackedCenter:) struct CGPoint trackedCenter; // @synthesize trackedCenter=_trackedCenter;
-@property (nonatomic, setter=_setTrackedTransform:) struct CGAffineTransform trackedTransform; // @synthesize trackedTransform=_trackedTransform;
-@property (nonatomic, setter=_setTrackedVelocity:) struct PHDisplayVelocity trackedVelocity; // @synthesize trackedVelocity=_trackedVelocity;
+@property (readonly, nonatomic) double dismissalProgress;
+@property (readonly, nonatomic) double finalAnimationDuration;
+@property (readonly, nonatomic) double finalAnimationSpringDamping;
+@property (readonly, nonatomic) PXSwipeDownTracker *impl; // @synthesize impl=_impl;
+@property (readonly, nonatomic) BOOL shouldFinishDismissal;
+@property (readonly, nonatomic) struct CGRect trackedBounds;
+@property (readonly, nonatomic) struct CGPoint trackedCenter;
+@property (readonly, nonatomic) struct CGAffineTransform trackedTransform;
+@property (readonly, nonatomic) struct PHDisplayVelocity trackedVelocity;
 
 - (void).cxx_destruct;
 - (id)init;

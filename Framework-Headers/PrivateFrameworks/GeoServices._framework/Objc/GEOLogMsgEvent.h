@@ -8,15 +8,19 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLogMsgEventCacheHit, GEOLogMsgEventClientACSuggestions, GEOLogMsgEventDirections, GEOLogMsgEventFullNavTrace, GEOLogMsgEventListInteractionSession, GEOLogMsgEventLogFramework, GEOLogMsgEventMapLaunch, GEOLogMsgEventMapsWidgetsInteractionSession, GEOLogMsgEventNetwork, GEOLogMsgEventPlaceDataCache, GEOLogMsgEventProactiveSuggestionInteractionSession, GEOLogMsgEventRefineSearchSession, GEOLogMsgEventStaleResource, GEOLogMsgEventStateTiming, GEOLogMsgEventTelemetric, GEOLogMsgEventTileSetState, GEOLogMsgEventTimeToLeaveHypothesis, GEOLogMsgEventTimeToLeaveInitialTravelTime, GEOLogMsgEventTransitAppLaunch, GEOLogMsgEventUserAction, LOGMSGEVENTLogMsgEventRideBookedSession, LOGMSGEVENTLogMsgEventRideBookingSession, LOGMSGEVENTLogMsgEventTableBookedSession, LOGMSGEVENTLogMsgEventTableBookingSession, NSMutableArray;
+@class GEOLogMsgEventBatchTrafficProbe, GEOLogMsgEventCacheHit, GEOLogMsgEventClientACSuggestions, GEOLogMsgEventCommuteWindow, GEOLogMsgEventDirections, GEOLogMsgEventFullNavTrace, GEOLogMsgEventGenericAppError, GEOLogMsgEventListInteractionSession, GEOLogMsgEventLogFramework, GEOLogMsgEventMapLaunch, GEOLogMsgEventMapsWidgetsInteractionSession, GEOLogMsgEventNetwork, GEOLogMsgEventPlaceDataCache, GEOLogMsgEventProactiveSuggestionInteractionSession, GEOLogMsgEventRealtimeTrafficProbe, GEOLogMsgEventRefineSearchSession, GEOLogMsgEventStaleResource, GEOLogMsgEventStateTiming, GEOLogMsgEventTelemetric, GEOLogMsgEventTileSetState, GEOLogMsgEventTimeToLeaveHypothesis, GEOLogMsgEventTimeToLeaveInitialTravelTime, GEOLogMsgEventTransitAppLaunch, GEOLogMsgEventUserAction, LOGMSGEVENTLogMsgEventRideBookedSession, LOGMSGEVENTLogMsgEventRideBookingSession, LOGMSGEVENTLogMsgEventTableBookedSession, LOGMSGEVENTLogMsgEventTableBookingSession, NSMutableArray;
 
 @interface GEOLogMsgEvent : PBCodable <NSCopying>
 {
+    double _usageEventTime;
+    GEOLogMsgEventBatchTrafficProbe *_batchTrafficProbeCollection;
     GEOLogMsgEventCacheHit *_cacheHitEvent;
     GEOLogMsgEventClientACSuggestions *_clientAcSuggestions;
+    GEOLogMsgEventCommuteWindow *_commuteWindow;
     GEOLogMsgEventDirections *_directionsEvent;
     int _eventType;
     GEOLogMsgEventFullNavTrace *_fullNavTrace;
+    GEOLogMsgEventGenericAppError *_genericAppErrorEvent;
     GEOLogMsgEventListInteractionSession *_listInteractionSession;
     GEOLogMsgEventLogFramework *_logFrameworkEvent;
     NSMutableArray *_logMsgStates;
@@ -25,6 +29,7 @@
     GEOLogMsgEventNetwork *_networkEvent;
     GEOLogMsgEventPlaceDataCache *_placeDataCacheEvent;
     GEOLogMsgEventProactiveSuggestionInteractionSession *_proactiveSuggestionInteractionSessionEvent;
+    GEOLogMsgEventRealtimeTrafficProbe *_realtimeTrafficProbeCollection;
     GEOLogMsgEventRefineSearchSession *_refineSearchSession;
     LOGMSGEVENTLogMsgEventRideBookedSession *_rideBookedSession;
     LOGMSGEVENTLogMsgEventRideBookingSession *_rideBookingSession;
@@ -39,20 +44,27 @@
     GEOLogMsgEventTransitAppLaunch *_transitAppLaunchEvent;
     GEOLogMsgEventUserAction *_userActionEvent;
     struct {
+        unsigned int usageEventTime:1;
         unsigned int eventType:1;
     } _has;
 }
 
+@property (strong, nonatomic) GEOLogMsgEventBatchTrafficProbe *batchTrafficProbeCollection; // @synthesize batchTrafficProbeCollection=_batchTrafficProbeCollection;
 @property (strong, nonatomic) GEOLogMsgEventCacheHit *cacheHitEvent; // @synthesize cacheHitEvent=_cacheHitEvent;
 @property (strong, nonatomic) GEOLogMsgEventClientACSuggestions *clientAcSuggestions; // @synthesize clientAcSuggestions=_clientAcSuggestions;
+@property (strong, nonatomic) GEOLogMsgEventCommuteWindow *commuteWindow; // @synthesize commuteWindow=_commuteWindow;
 @property (strong, nonatomic) GEOLogMsgEventDirections *directionsEvent; // @synthesize directionsEvent=_directionsEvent;
 @property (nonatomic) int eventType; // @synthesize eventType=_eventType;
 @property (strong, nonatomic) GEOLogMsgEventFullNavTrace *fullNavTrace; // @synthesize fullNavTrace=_fullNavTrace;
+@property (strong, nonatomic) GEOLogMsgEventGenericAppError *genericAppErrorEvent; // @synthesize genericAppErrorEvent=_genericAppErrorEvent;
+@property (readonly, nonatomic) BOOL hasBatchTrafficProbeCollection;
 @property (readonly, nonatomic) BOOL hasCacheHitEvent;
 @property (readonly, nonatomic) BOOL hasClientAcSuggestions;
+@property (readonly, nonatomic) BOOL hasCommuteWindow;
 @property (readonly, nonatomic) BOOL hasDirectionsEvent;
 @property (nonatomic) BOOL hasEventType;
 @property (readonly, nonatomic) BOOL hasFullNavTrace;
+@property (readonly, nonatomic) BOOL hasGenericAppErrorEvent;
 @property (readonly, nonatomic) BOOL hasListInteractionSession;
 @property (readonly, nonatomic) BOOL hasLogFrameworkEvent;
 @property (readonly, nonatomic) BOOL hasMapLaunchEvent;
@@ -60,6 +72,7 @@
 @property (readonly, nonatomic) BOOL hasNetworkEvent;
 @property (readonly, nonatomic) BOOL hasPlaceDataCacheEvent;
 @property (readonly, nonatomic) BOOL hasProactiveSuggestionInteractionSessionEvent;
+@property (readonly, nonatomic) BOOL hasRealtimeTrafficProbeCollection;
 @property (readonly, nonatomic) BOOL hasRefineSearchSession;
 @property (readonly, nonatomic) BOOL hasRideBookedSession;
 @property (readonly, nonatomic) BOOL hasRideBookingSession;
@@ -72,6 +85,7 @@
 @property (readonly, nonatomic) BOOL hasTimeToLeaveHypothesisEvent;
 @property (readonly, nonatomic) BOOL hasTimeToLeaveInitialTravelTimeEvent;
 @property (readonly, nonatomic) BOOL hasTransitAppLaunchEvent;
+@property (nonatomic) BOOL hasUsageEventTime;
 @property (readonly, nonatomic) BOOL hasUserActionEvent;
 @property (strong, nonatomic) GEOLogMsgEventListInteractionSession *listInteractionSession; // @synthesize listInteractionSession=_listInteractionSession;
 @property (strong, nonatomic) GEOLogMsgEventLogFramework *logFrameworkEvent; // @synthesize logFrameworkEvent=_logFrameworkEvent;
@@ -81,6 +95,7 @@
 @property (strong, nonatomic) GEOLogMsgEventNetwork *networkEvent; // @synthesize networkEvent=_networkEvent;
 @property (strong, nonatomic) GEOLogMsgEventPlaceDataCache *placeDataCacheEvent; // @synthesize placeDataCacheEvent=_placeDataCacheEvent;
 @property (strong, nonatomic) GEOLogMsgEventProactiveSuggestionInteractionSession *proactiveSuggestionInteractionSessionEvent; // @synthesize proactiveSuggestionInteractionSessionEvent=_proactiveSuggestionInteractionSessionEvent;
+@property (strong, nonatomic) GEOLogMsgEventRealtimeTrafficProbe *realtimeTrafficProbeCollection; // @synthesize realtimeTrafficProbeCollection=_realtimeTrafficProbeCollection;
 @property (strong, nonatomic) GEOLogMsgEventRefineSearchSession *refineSearchSession; // @synthesize refineSearchSession=_refineSearchSession;
 @property (strong, nonatomic) LOGMSGEVENTLogMsgEventRideBookedSession *rideBookedSession; // @synthesize rideBookedSession=_rideBookedSession;
 @property (strong, nonatomic) LOGMSGEVENTLogMsgEventRideBookingSession *rideBookingSession; // @synthesize rideBookingSession=_rideBookingSession;
@@ -93,30 +108,26 @@
 @property (strong, nonatomic) GEOLogMsgEventTimeToLeaveHypothesis *timeToLeaveHypothesisEvent; // @synthesize timeToLeaveHypothesisEvent=_timeToLeaveHypothesisEvent;
 @property (strong, nonatomic) GEOLogMsgEventTimeToLeaveInitialTravelTime *timeToLeaveInitialTravelTimeEvent; // @synthesize timeToLeaveInitialTravelTimeEvent=_timeToLeaveInitialTravelTimeEvent;
 @property (strong, nonatomic) GEOLogMsgEventTransitAppLaunch *transitAppLaunchEvent; // @synthesize transitAppLaunchEvent=_transitAppLaunchEvent;
+@property (nonatomic) double usageEventTime;
 @property (strong, nonatomic) GEOLogMsgEventUserAction *userActionEvent; // @synthesize userActionEvent=_userActionEvent;
 
 + (void)_initializeAcceptedLogMsgStateTypes;
-+ (void)_initializeAllowedSessionTypes;
 + (id)acceptedLogMsgStates;
 + (id)acceptedLogMsgStatesForLogMsgEventType:(int)arg1;
 + (BOOL)logMsgEventType:(int)arg1 acceptsLogMsgStateType:(int)arg2;
 + (Class)logMsgStateType;
+- (void).cxx_destruct;
 - (int)StringAsEventType:(id)arg1;
 - (BOOL)acceptsLogMsgStateType:(int)arg1;
 - (void)addLogMsgState:(id)arg1;
-- (unsigned long long)allowedSessionType;
 - (void)clearLogMsgStates;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)eventTypeAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isFullCarPlayStateAllowed;
-- (BOOL)isFullExperimentsStateAllowed;
-- (BOOL)isNavigationSessionAllowed;
 - (id)logMsgStateAtIndex:(unsigned long long)arg1;
 - (id)logMsgStateOfType:(int)arg1;
 - (id)logMsgStateOfType:(int)arg1 stateOrigin:(id)arg2;
@@ -125,6 +136,8 @@
 - (unsigned long long)numberOfLogMsgStatesOfType:(int)arg1;
 - (unsigned long long)numberOfLogMsgStatesOfType:(int)arg1 stateOrigin:(id)arg2;
 - (BOOL)readFrom:(id)arg1;
+- (void)unregisterLogMsgStateOfType:(int)arg1;
+- (void)unregisterLogMsgStatesOfTypes:(id)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

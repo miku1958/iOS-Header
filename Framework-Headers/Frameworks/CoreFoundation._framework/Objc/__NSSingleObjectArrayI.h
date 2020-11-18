@@ -17,11 +17,13 @@ __attribute__((visibility("hidden")))
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_58648341 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)firstObject;
 - (void)getObjects:(id *)arg1 range:(struct _NSRange)arg2;
 - (BOOL)isEqualToArray:(id)arg1;
+- (id)lastObject;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (id)objectEnumerator;

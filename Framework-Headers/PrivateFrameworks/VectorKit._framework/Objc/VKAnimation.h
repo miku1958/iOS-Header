@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 @protocol VKAnimationRunner;
@@ -21,9 +21,11 @@
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (nonatomic) double duration;
+@property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly, nonatomic) BOOL running;
 @property (nonatomic) BOOL runsForever; // @synthesize runsForever=_runsForever;
+@property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) BOOL timed;
 
 - (void)dealloc;

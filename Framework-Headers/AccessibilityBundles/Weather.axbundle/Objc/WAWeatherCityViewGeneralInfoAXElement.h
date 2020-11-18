@@ -10,6 +10,7 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 - (BOOL)_axMissingData;
 - (id)_basicInfoElements;
 - (struct CGRect)accessibilityFrame;

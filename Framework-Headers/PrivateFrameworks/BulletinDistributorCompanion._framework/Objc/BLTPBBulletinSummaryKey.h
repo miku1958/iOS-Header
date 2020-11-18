@@ -14,11 +14,14 @@
 {
     NSString *_key;
     NSData *_value;
+    NSData *_valueNulls;
 }
 
 @property (readonly, nonatomic) BOOL hasValue;
+@property (readonly, nonatomic) BOOL hasValueNulls;
 @property (strong, nonatomic) NSString *key; // @synthesize key=_key;
 @property (strong, nonatomic) NSData *value; // @synthesize value=_value;
+@property (strong, nonatomic) NSData *valueNulls; // @synthesize valueNulls=_valueNulls;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

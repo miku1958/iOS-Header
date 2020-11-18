@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData;
+@class NSArray, NSData;
 
 @protocol GEONavXPCInterface
+- (void)anticipatePreviewRoute:(NSData *)arg1 routeContext:(NSData *)arg2;
+- (void)clearPreviewRoutesWithRouteContext:(NSData *)arg1;
 - (void)updateNavigationRouteDetails:(NSData *)arg1 routeStatus:(NSData *)arg2 routeContext:(NSData *)arg3;
-- (void)updateNavigationRouteStatus:(NSData *)arg1;
+- (void)updateNavigationRouteStatus:(NSData *)arg1 routeContext:(NSData *)arg2;
+- (void)updatePreviewRoutes:(NSArray *)arg1 expectedNumberOfRoutes:(unsigned long long)arg2 routeContext:(NSData *)arg3;
 @end
 

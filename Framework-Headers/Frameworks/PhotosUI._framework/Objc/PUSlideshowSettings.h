@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUSettings.h>
+#import <PhotosUICore/PXSettings.h>
 
 @class NSString, OKProducerPreset;
 
 __attribute__((visibility("hidden")))
-@interface PUSlideshowSettings : PUSettings
+@interface PUSlideshowSettings : PXSettings
 {
     BOOL _allowUserInteractivity;
     BOOL _slideshowSettingsEnableFullscreenSupport;
@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)applyArchiveValue:(id)arg1 forKey:(id)arg2;
 - (id)archiveValueForKey:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)parentSettings;
 - (void)performPostSaveActions;
 - (void)removeTransitionTimingCustomizationsFromUserDefaults;
 - (void)restoreCurrentInteractiveTransitionValuesFromUserDefaults;

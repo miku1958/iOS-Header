@@ -13,6 +13,7 @@
 - (void)clearAvailability;
 - (void)clearReaderWebView;
 - (void)clearUnusedReaderResourcesSoon;
+- (void)collectReaderContentForMailWithCompletion:(void (^)(NSString *))arg1;
 - (NSDictionary *)configuration;
 - (void)createArticleFinder;
 - (void)deactivateReaderNow:(unsigned long long)arg1;

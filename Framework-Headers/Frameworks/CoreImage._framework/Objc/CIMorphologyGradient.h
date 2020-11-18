@@ -4,19 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreImage/CIFilter.h>
-
-@class CIImage, NSNumber;
+#import <CoreImage/CIMorphology.h>
 
 __attribute__((visibility("hidden")))
-@interface CIMorphologyGradient : CIFilter
+@interface CIMorphologyGradient : CIMorphology
 {
-    CIImage *inputImage;
-    NSNumber *inputRadius;
 }
-
-@property (strong, nonatomic) CIImage *inputImage; // @synthesize inputImage;
-@property (strong, nonatomic) NSNumber *inputRadius; // @synthesize inputRadius;
 
 + (id)customAttributes;
 - (id)outputImage;

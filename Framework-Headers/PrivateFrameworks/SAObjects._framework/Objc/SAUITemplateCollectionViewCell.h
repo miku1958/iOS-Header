@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAUITemplateMonogrammable-Protocol.h>
 
-@class NSArray, NSString, SAUIImageResource;
+@class NSArray, NSString;
 
 @interface SAUITemplateCollectionViewCell : SAUITemplateBaseItem <SAUITemplateMonogrammable>
 {
@@ -17,11 +17,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) SAUIImageResource *image;
-@property (copy, nonatomic) NSArray *monogramName; // @dynamic monogramName;
+@property (copy, nonatomic) NSArray *monogramName;
 @property (nonatomic) BOOL sizeToFitImage;
 @property (copy, nonatomic) NSString *subtitleText;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSArray *themeImages;
 @property (copy, nonatomic) NSString *titleText;
 
 + (id)collectionViewCell;

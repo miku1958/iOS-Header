@@ -25,6 +25,7 @@
     NSObject *_keyboardTagForUserNotification;
     BOOL _loadingExtensions;
     BOOL _needsUpdateExtensions;
+    BOOL _suppressCurrentPublicInputMode;
     BOOL _shouldRunContinuousDiscovery;
     NSArray *keyboardInputModes;
     NSArray *keyboardInputModeIdentifiers;
@@ -34,6 +35,7 @@
     NSArray *defaultRawInputModes;
     NSArray *defaultInputModes;
     NSArray *defaultNormalizedInputModes;
+    NSArray *suggestedInputModesForSiriLanguage;
     UIKeyboardInputMode *_lastUsedInputMode;
     NSString *_inputModeContextIdentifier;
     id<UIKeyboardInputModeControllerDelegate> _delegate;
@@ -42,6 +44,8 @@
     id _extensionMatchingContext;
 }
 
+@property (readonly, nonatomic) NSArray *activeDictationLanguages;
+@property (readonly, nonatomic) NSArray *activeDictationSupportedInputModeIdentifiers;
 @property (readonly) NSArray *activeInputModeIdentifiers;
 @property (readonly, nonatomic) NSArray *allowedExtensions; // @synthesize allowedExtensions=_allowedExtensions;
 @property (readonly, nonatomic) BOOL containsDictationSupportedInputMode;
@@ -56,6 +60,7 @@
 @property (strong) NSArray *defaultNormalizedInputModes; // @synthesize defaultNormalizedInputModes;
 @property (copy, nonatomic) NSArray *defaultRawInputModes; // @synthesize defaultRawInputModes;
 @property (nonatomic) id<UIKeyboardInputModeControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) NSArray *enabledDictationLanguages;
 @property (readonly) NSArray *enabledInputModeIdentifiers;
 @property (readonly) NSArray *enabledInputModeLanguages;
 @property (strong) NSArray *enabledInputModes; // @synthesize enabledInputModes;
@@ -71,6 +76,7 @@
 @property (readonly) NSArray *normalizedEnabledInputModeIdentifiers;
 @property (strong) NSArray *normalizedInputModes; // @synthesize normalizedInputModes;
 @property (nonatomic) BOOL shouldRunContinuousDiscovery; // @synthesize shouldRunContinuousDiscovery=_shouldRunContinuousDiscovery;
+@property (strong) NSArray *suggestedInputModesForSiriLanguage; // @synthesize suggestedInputModesForSiriLanguage;
 @property (readonly) NSArray *supportedInputModeIdentifiers;
 
 + (id)ASCIICapableInputModeIdentifierForPreferredLanguages;
@@ -91,6 +97,7 @@
 - (id)appendPasscodeInputModes:(id)arg1;
 - (BOOL)currentLocaleRequiresExtendedSetup;
 - (void)dealloc;
+- (id)defaultDictationLanguages:(id)arg1;
 - (id)defaultEnabledInputModesForCurrentLocale:(BOOL)arg1;
 - (BOOL)deviceStateIsLocked;
 - (void)didAcceptAddKeyboardInputMode;
@@ -98,6 +105,7 @@
 - (id)enabledInputModeIdentifiers:(BOOL)arg1;
 - (id)extensionInputModes;
 - (void)extensionsChanged;
+- (id)filteredInputModesForSiriLanguageFromInputModes:(id)arg1;
 - (id)filteredTVInputModesFromInputModes:(id)arg1;
 - (void)handleLastUsedInputMode:(id)arg1 withNewInputMode:(id)arg2;
 - (void)handleSpecificHardwareKeyboard;
@@ -111,8 +119,11 @@
 - (id)inputModeToAddForKeyboardLanguage:(id)arg1 countryCode:(id)arg2 activeModes:(id)arg3;
 - (id)inputModeWithIdentifier:(id)arg1;
 - (id)inputModesFromIdentifiers:(id)arg1;
+- (BOOL)isDictationLanguageEnabled:(id)arg1;
 - (BOOL)isLockscreenPasscodeKeyboard;
+- (id)keyboardLanguageForDictationLanguage:(id)arg1;
 - (void)keyboardsPreferencesChanged:(id)arg1;
+- (void)loadSuggestedInputModesForSiriLanguage;
 - (id)nextInputModeFromList:(id)arg1 withFilter:(unsigned long long)arg2 withTraits:(id)arg3;
 - (id)nextInputModeInPreferenceListForTraits:(id)arg1;
 - (id)nextInputModeInPreferenceListForTraits:(id)arg1 updatePreference:(BOOL)arg2;
@@ -126,12 +137,14 @@
 - (void)startConnectionForFileAtURL:(id)arg1 forInputModeIdentifier:(id)arg2;
 - (void)startDictationConnectionForFileAtURL:(id)arg1 forInputModeIdentifier:(id)arg2;
 - (void)stopDictation;
+- (id)suggestedDictationLanguageForDeviceLanguage;
 - (id)suggestedInputModesForCurrentLocale;
 - (id)suggestedInputModesForCurrentLocale:(BOOL)arg1 fallbackToDefaultInputModes:(BOOL)arg2;
 - (id)suggestedInputModesForPreferredLanguages;
 - (id)supportedInputModesFromArray:(id)arg1;
 - (void)switchToCurrentSystemInputMode;
 - (void)switchToDictationInputMode;
+- (id)textInputModeForResponder:(id)arg1;
 - (void)updateCurrentAndNextInputModes;
 - (void)updateCurrentInputMode:(id)arg1;
 - (void)updateDefaultInputModesIfNecessaryForIdiom;

@@ -10,9 +10,9 @@
 {
 }
 
++ (id)defaultDirectoryURL;
 - (void)didWriteFileToURL:(id)arg1;
 - (id)directoryCreationAttributes;
-- (id)init;
 - (void)removeWallpaperOptionsForVariants:(long long)arg1;
 - (BOOL)setWallpaperOptions:(id)arg1 forVariants:(long long)arg2;
 - (id)wallpaperOptionsForVariant:(long long)arg1;

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAutocompleteEntry, GEOPDViewportInfo, NSData, NSString, PBUnknownFields;
+@class GEOPDAutocompleteEntry, GEOPDVenueIdentifier, GEOPDViewportInfo, NSData, NSString, PBUnknownFields;
 
 @interface GEOPDAutocompleteParametersAllEntriesWithBrowse : PBCodable <NSCopying>
 {
@@ -17,6 +17,7 @@
     NSData *_categorySuggestionEntryMetadata;
     int _maxResults;
     NSString *_query;
+    GEOPDVenueIdentifier *_venueIdentifier;
     GEOPDViewportInfo *_viewportInfo;
     BOOL _highlightDiff;
     BOOL _interleaveCategorySuggestions;
@@ -35,17 +36,19 @@
 @property (nonatomic) BOOL hasInterleaveCategorySuggestions;
 @property (nonatomic) BOOL hasMaxResults;
 @property (readonly, nonatomic) BOOL hasQuery;
+@property (readonly, nonatomic) BOOL hasVenueIdentifier;
 @property (readonly, nonatomic) BOOL hasViewportInfo;
 @property (nonatomic) BOOL highlightDiff; // @synthesize highlightDiff=_highlightDiff;
 @property (nonatomic) BOOL interleaveCategorySuggestions; // @synthesize interleaveCategorySuggestions=_interleaveCategorySuggestions;
 @property (nonatomic) int maxResults; // @synthesize maxResults=_maxResults;
 @property (strong, nonatomic) NSString *query; // @synthesize query=_query;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (strong, nonatomic) GEOPDVenueIdentifier *venueIdentifier; // @synthesize venueIdentifier=_venueIdentifier;
 @property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

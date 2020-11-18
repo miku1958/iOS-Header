@@ -6,7 +6,7 @@
 
 #import <PhotosUI/PUTilingLayout.h>
 
-@class NSCache;
+@class NSCache, PUFilmstripDataSource;
 
 __attribute__((visibility("hidden")))
 @interface PUFilmstripTilingLayout : PUTilingLayout
@@ -19,8 +19,10 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
+@property (strong, nonatomic) PUFilmstripDataSource *dataSource; // @dynamic dataSource;
 
 - (void).cxx_destruct;
+- (id)_layoutInfoForIndicatorInfo:(id)arg1 withIndex:(long long)arg2;
 - (id)_layoutInfoForTileWithIndex:(long long)arg1 kind:(id)arg2;
 - (struct CGRect)contentBounds;
 - (id)initWithContentSize:(struct CGSize)arg1;

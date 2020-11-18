@@ -15,13 +15,16 @@ __attribute__((visibility("hidden")))
     int _changeCount;
     double _flushInterval;
     BOOL _flushImmediately;
+    BOOL _autovacuumInProgress;
+    unsigned long long _vmStepsExecuted;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType lockedHandler; // @dynamic lockedHandler;
 @property (nonatomic) BOOL profilingEnabled;
+@property (readonly, nonatomic) unsigned long long vmStepsExecuted; // @synthesize vmStepsExecuted=_vmStepsExecuted;
 
 - (void).cxx_destruct;
-- (void)_setErrorHandlerWithDBCorruptionHandler:(id)arg1;
+- (void)_setErrorHandlerWithDBCorruptionHandler:(CDUnknownBlockType)arg1;
 - (void)_setLockedHandler;
 - (BOOL)_shouldFlushWithChangeCount:(int)arg1;
 - (BOOL)attachDBAtPath:(id)arg1 as:(id)arg2 error:(id *)arg3;
@@ -30,10 +33,11 @@ __attribute__((visibility("hidden")))
 - (void)disableProfilingForQueriesInBlock:(CDUnknownBlockType)arg1;
 - (BOOL)executeWithErrorHandler:(CDUnknownBlockType)arg1 sql:(id)arg2;
 - (BOOL)executeWithSlowStatementRadar:(id)arg1 sql:(id)arg2;
+- (id)fetchWithSlowStatementRadar:(id)arg1 objectOfClass:(Class)arg2 sql:(id)arg3;
 - (id)fetchWithSlowStatementRadar:(id)arg1 sql:(id)arg2;
 - (void)flushToMakeEditsVisibleToIPCReaders;
 - (id)init;
-- (id)initWithLabel:(id)arg1 dbCorruptionHandler:(id)arg2;
+- (id)initWithLabel:(id)arg1 dbCorruptionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)needsAutovacuum;
 - (BOOL)openAtURL:(id)arg1 withFlags:(int)arg2 error:(id *)arg3;
 - (void)setProfilingHook:(CDUnknownBlockType)arg1;

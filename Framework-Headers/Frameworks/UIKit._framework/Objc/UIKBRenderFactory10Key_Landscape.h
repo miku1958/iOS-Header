@@ -12,11 +12,15 @@ __attribute__((visibility("hidden")))
 }
 
 - (struct CGPoint)abcKeyTextOffset;
+- (double)capitalAbcSymbolSize;
+- (double)centerColumnWidthFactor;
 - (double)controlColumnWidthFactor;
+- (struct CGPoint)longVowelSignKeyTextOffset;
 - (double)numberPadKeyPrimarySymbolSize;
 - (struct CGPoint)numberPadKeyPrimaryTextOffset;
 - (struct CGPoint)numberPadKeySecondaryTextOffset;
 - (struct CGPoint)numberPadVBarSecondaryTextOffset;
+- (void)setupColumnLayoutSegmentsWithControlWidth:(double)arg1;
 - (struct UIEdgeInsets)wideShadowPaddleInsets;
 
 @end

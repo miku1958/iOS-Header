@@ -6,19 +6,18 @@
 
 #import <MediaPlayer/MPModelRequest.h>
 
-#import <MediaPlayer/MPModelPlaybackRequesting-Protocol.h>
 #import <MediaPlayer/MPModelRequestDetailedKeepLocalStatusRequesting-Protocol.h>
-#import <MediaPlayer/MPModelRequestRTCReporting-Protocol.h>
 
-@class MPMediaLibrary, NSArray, NSString;
+@class MPMediaLibrary, MPMediaQuery, NSArray, NSString;
 
-@interface MPModelLibraryRequest : MPModelRequest <MPModelPlaybackRequesting, MPModelRequestRTCReporting, MPModelRequestDetailedKeepLocalStatusRequesting>
+@interface MPModelLibraryRequest : MPModelRequest <MPModelRequestDetailedKeepLocalStatusRequesting>
 {
     BOOL _wantsDetailedKeepLocalRequestableResponse;
     MPMediaLibrary *_mediaLibrary;
     NSArray *_allowedItemIdentifiers;
     NSArray *_scopedContainers;
     unsigned long long _filteringOptions;
+    MPMediaQuery *_legacyMediaQuery;
     struct _NSRange _contentRange;
 }
 
@@ -28,10 +27,9 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long filteringOptions; // @synthesize filteringOptions=_filteringOptions;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) MPMediaQuery *legacyMediaQuery; // @synthesize legacyMediaQuery=_legacyMediaQuery;
 @property (strong, nonatomic) MPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
-@property (readonly, copy, nonatomic) NSString *rtcReportingPlayQueueSourceIdentifier;
 @property (copy, nonatomic) NSArray *scopedContainers; // @synthesize scopedContainers=_scopedContainers;
-@property (nonatomic) BOOL shouldExcludeNonShuffleItems;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL wantsDetailedKeepLocalRequestableResponse; // @synthesize wantsDetailedKeepLocalRequestableResponse=_wantsDetailedKeepLocalRequestableResponse;
 

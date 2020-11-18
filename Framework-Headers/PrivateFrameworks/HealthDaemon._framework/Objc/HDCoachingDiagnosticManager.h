@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
-#import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
+#import <HealthDaemon/HDPeriodicActivityDelegate-Protocol.h>
 
-@class CMMotionActivityManager, HDProfile, NSDate, NSNumber, NSOperationQueue, NSString;
+@class CMMotionActivityManager, HDPeriodicActivity, HDProfile, NSDate, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDCoachingDiagnosticManager : NSObject <HDHealthDaemonReadyObserver, HDDatabaseProtectedDataObserver, HDDiagnosticObject>
+@interface HDCoachingDiagnosticManager : NSObject <HDDiagnosticObject, HDPeriodicActivityDelegate>
 {
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
-    BOOL _isRunning;
-    NSNumber *_waitingToRun;
+    HDPeriodicActivity *_scheduler;
     CMMotionActivityManager *_activityManager;
     NSOperationQueue *_activityQueue;
     NSDate *_cachedLastSubmittedDate;
@@ -33,32 +31,26 @@
 
 - (void).cxx_destruct;
 - (id)_dateComponentsAsAge:(id)arg1;
-- (void)_performCoachingDiagnosticActivity:(id)arg1;
-- (void)_performCoachingDiagnosticIfWaiting;
+- (void)_performCoachingDiagnosticWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_queue_acquireMotionActivityStatisticsForAnchorDate:(id)arg1 data:(id)arg2 error:(id *)arg3;
 - (BOOL)_queue_addHealthCharacteristicsToMetrics:(id)arg1 error:(id *)arg2;
 - (id)_queue_computeStatisticsForCoachingEvent:(id)arg1 error:(id *)arg2;
 - (BOOL)_queue_computeWorkoutStatisticsForAnchorDate:(id)arg1 data:(id)arg2 error:(id *)arg3;
-- (BOOL)_queue_isWaitingToRun;
-- (id)_queue_lastRunDate;
 - (id)_queue_lastSubmittedDate;
 - (void)_queue_performCoachingDiagnosticWithRunDate:(id)arg1 ignoreAnchor:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_queue_performCoachingDiagnosticWithRunDate:(id)arg1 ignoreAnchor:(BOOL)arg2 submitMetrics:(BOOL)arg3 handler:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)_queue_setLastRunDate:(id)arg1;
 - (void)_queue_setLastSubmittedDate:(id)arg1;
-- (void)_queue_setWaitingToRun:(BOOL)arg1;
 - (id)_queue_statisticsCollectionForAnchorDate:(id)arg1 quantityType:(id)arg2 statisticsOptions:(unsigned long long)arg3 error:(id *)arg4;
 - (BOOL)_queue_submitMetricForActivitySummary:(id)arg1 dateOfBirth:(id)arg2 biologicalSex:(id)arg3 heightSample:(id)arg4 weightSample:(id)arg5;
 - (BOOL)_queue_submitMetricForData:(id)arg1;
 - (BOOL)_queue_submitMetrics:(id)arg1;
-- (void)_registerActivity;
-- (void)_setNeedsToRunWithCompletion:(CDUnknownBlockType)arg1;
-- (void)daemonReady:(id)arg1;
-- (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
 - (id)diagnosticDescription;
 - (id)initWithProfile:(id)arg1;
 - (void)performCoachingDiagnosticWithRunDate:(id)arg1 ignoreAnchor:(BOOL)arg2 submitMetrics:(BOOL)arg3 handler:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)performPeriodicActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)periodicActivity:(id)arg1 configureXPCActivityCriteria:(id)arg2;
+- (BOOL)periodicActivityRequiresProtectedData:(id)arg1;
 - (void)setActivityManager:(id)arg1;
 
 @end

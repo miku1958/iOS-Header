@@ -8,7 +8,7 @@
 
 #import <Sharing/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDictionary, NSString, NSUUID;
+@class NSData, NSDictionary, NSString, NSUUID, SFProximityEstimator;
 
 @interface SFBLEDevice : NSObject <NSSecureCoding>
 {
@@ -21,6 +21,7 @@
     NSData *_bluetoothAddress;
     NSUUID *_counterpartIdentifier;
     long long _distance;
+    unsigned long long _foundTicks;
     NSUUID *_identifier;
     NSString *_name;
     long long _rssi;
@@ -29,6 +30,7 @@
     long long _smoothedRSSI;
     double _lastSeen;
     double _pairCheckTime;
+    SFProximityEstimator *_setupProximityEstimator;
 }
 
 @property (copy, nonatomic) NSData *advertisementData; // @synthesize advertisementData=_advertisementData;
@@ -36,6 +38,7 @@
 @property (copy, nonatomic) NSData *bluetoothAddress; // @synthesize bluetoothAddress=_bluetoothAddress;
 @property (copy, nonatomic) NSUUID *counterpartIdentifier; // @synthesize counterpartIdentifier=_counterpartIdentifier;
 @property (nonatomic) long long distance; // @synthesize distance=_distance;
+@property (nonatomic) unsigned long long foundTicks; // @synthesize foundTicks=_foundTicks;
 @property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) double lastSeen; // @synthesize lastSeen=_lastSeen;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
@@ -44,6 +47,7 @@
 @property (nonatomic) long long rssi; // @synthesize rssi=_rssi;
 @property (nonatomic) long long rssiCeiling; // @synthesize rssiCeiling=_rssiCeiling;
 @property (nonatomic) long long rssiFloor; // @synthesize rssiFloor=_rssiFloor;
+@property (strong, nonatomic) SFProximityEstimator *setupProximityEstimator; // @synthesize setupProximityEstimator=_setupProximityEstimator;
 @property (nonatomic) long long smoothedRSSI; // @synthesize smoothedRSSI=_smoothedRSSI;
 
 + (void)setRSSIEstimatorInfo:(id)arg1;

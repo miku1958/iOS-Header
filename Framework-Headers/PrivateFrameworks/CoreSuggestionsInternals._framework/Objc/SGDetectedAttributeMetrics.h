@@ -15,13 +15,10 @@
 
 @property (strong, nonatomic) SGMContactDetailExtraction *petGenClassInstance; // @synthesize petGenClassInstance=_petGenClassInstance;
 
-+ (id)contactStore;
-+ (id)findContactFromEntity:(id)arg1 withPhonenumber:(id)arg2;
-+ (id)findContactFromEntity:(id)arg1 withType:(struct SGMContactDetailType_)arg2 detailValue:(id)arg3;
++ (void)_recordExtractionEventFromSource:(struct SGMDocumentType_)arg1 foundInSignature:(BOOL)arg2 detailType:(struct SGMContactDetailType_)arg3 outcome:(struct SGMContactDetailExtractionOutcome_)arg4 foundInSenderCNContact:(BOOL)arg5;
++ (void)_recordExtractionOutcome:(struct SGMContactDetailExtractionOutcome_)arg1 detailType:(struct SGMContactDetailType_)arg2 fromEntity:(id)arg3 foundInSignature:(BOOL)arg4 detailType:(unsigned long long)arg5 detailValue:(id)arg6;
 + (id)instance;
-+ (void)recordExtractionEventFromSource:(struct SGMDocumentType_)arg1 foundInSignature:(BOOL)arg2 detailType:(struct SGMContactDetailType_)arg3 outcome:(struct SGMContactDetailExtractionOutcome_)arg4 foundInSenderCNContact:(BOOL)arg5;
 + (void)recordExtractionOutcome:(struct SGMContactDetailExtractionOutcome_)arg1 fromEntity:(id)arg2;
-+ (void)recordExtractionOutcome:(struct SGMContactDetailExtractionOutcome_)arg1 fromEntity:(id)arg2 foundInSignature:(BOOL)arg3 detailType:(struct SGMContactDetailType_)arg4 detailValue:(id)arg5;
 + (void)recordExtractionOutcome:(struct SGMContactDetailExtractionOutcome_)arg1 fromEntity:(id)arg2 foundInSignature:(BOOL)arg3 detection:(id)arg4;
 + (void)recordExtractionOutcome:(struct SGMContactDetailExtractionOutcome_)arg1 fromEntity:(id)arg2 foundInSignature:(BOOL)arg3 match:(id)arg4;
 - (void).cxx_destruct;

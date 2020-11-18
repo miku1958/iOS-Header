@@ -10,6 +10,7 @@
 #import <StoreKitUI/SKUIRedeemStepDelegate-Protocol.h>
 
 @class NSOperationQueue, NSString, SKUIClientContext, SKUIRedeemConfiguration, SKUIRedeemPreflightOperation, SKUIRedeemStepViewController, UIBarButtonItem;
+@protocol SKUIRedeemViewCameraOverrideDelegate;
 
 @interface SKUIRedeemViewController : UINavigationController <SKUIRedeemIdDelegate, SKUIRedeemStepDelegate>
 {
@@ -24,10 +25,12 @@
     SKUIRedeemStepViewController *_inputViewController;
     long long _initialBarStyle;
     BOOL _shouldPerformInitialOperationOnAppear;
+    id<SKUIRedeemViewCameraOverrideDelegate> _cameraDelegate;
     UIBarButtonItem *_cancelButtonItem;
 }
 
 @property (nonatomic) BOOL attempsAutomaticRedeem; // @synthesize attempsAutomaticRedeem=_attempsAutomaticRedeem;
+@property (weak, nonatomic) id<SKUIRedeemViewCameraOverrideDelegate> cameraDelegate; // @synthesize cameraDelegate=_cameraDelegate;
 @property (strong, nonatomic) UIBarButtonItem *cancelButtonItem; // @synthesize cancelButtonItem=_cancelButtonItem;
 @property (readonly, nonatomic) long long category; // @synthesize category=_category;
 @property (strong, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;

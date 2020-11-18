@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CNContactStore;
 @protocol CNScheduler, CNSchedulerProvider;
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)contactsForEmailAddress:(id)arg1;
 - (id)contactsForPhoneNumber:(id)arg1;
-- (id)contactsForPredicate:(id)arg1;
+- (id)contactsForPredicate:(id)arg1 keys:(id)arg2;
 - (id)init;
 - (id)initWithContactStore:(id)arg1;
 - (id)initWithContactStore:(id)arg1 schedulerProvider:(id)arg2;

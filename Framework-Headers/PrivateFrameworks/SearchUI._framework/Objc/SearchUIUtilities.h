@@ -12,15 +12,20 @@
 
 + (struct CGRect)absoluteFrameForView:(id)arg1;
 + (id)addAspectRatioConstraintForImageView:(id)arg1;
++ (BOOL)backgroundColorPrefersWhiteForegroundText:(id)arg1;
++ (id)boldBodyFont;
 + (id)buttonColorForStyle:(unsigned long long)arg1;
 + (id)captionFont;
++ (BOOL)deviceIsAuthenticated;
 + (BOOL)deviceSupportsRotation;
++ (void)dispatchAsyncIfNecessary:(CDUnknownBlockType)arg1;
 + (void)dispatchMainIfNecessary:(CDUnknownBlockType)arg1;
-+ (id)footnoteBoldFont;
++ (id)footnoteFont;
 + (id)hyphenatableStringForString:(id)arg1;
 + (id)imageWithColor:(id)arg1 size:(struct CGSize)arg2;
 + (id)imageWithColor:(id)arg1 size:(struct CGSize)arg2 cornersToRound:(unsigned long long)arg3 cornerRadius:(double)arg4;
 + (void)initialize;
++ (BOOL)isLargeIpad;
 + (BOOL)isPortrait;
 + (BOOL)isWideScreen;
 + (id)localizedStringForKey:(id)arg1;
@@ -28,16 +33,27 @@
 + (double)onePixelForCurrentScreenResolution;
 + (id)openOptions;
 + (void)openPunchout:(id)arg1;
++ (void)openPunchout:(id)arg1 fromCardSection:(id)arg2 toListener:(id)arg3 triggerEvent:(unsigned long long)arg4;
 + (void)openUserActivity:(id)arg1 applicationBundleIdentifier:(id)arg2;
 + (void)performAnimatableChanges:(CDUnknownBlockType)arg1;
 + (void)performAnimatableChanges:(CDUnknownBlockType)arg1 animated:(BOOL)arg2;
 + (void)performAnimatableChanges:(CDUnknownBlockType)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)performOpenTask:(CDUnknownBlockType)arg1;
++ (void)requestDeviceUnlockWithSuccessHandler:(CDUnknownBlockType)arg1;
++ (id)sendFeedbackForPunchout:(id)arg1 toListener:(id)arg2 fromCardSection:(id)arg3 triggerEvent:(unsigned long long)arg4;
 + (double)separatorHeight;
++ (id)shortBodyFont;
++ (id)shortFontForFontStyle:(id)arg1;
 + (id)shortFootnoteFont;
++ (id)shortSubheadBoldFont;
 + (id)shortSubheadFont;
++ (id)shortTitle1Font;
++ (BOOL)shouldHandleCardSectionEngagement:(id)arg1 feedbackListener:(id)arg2;
 + (double)standardTableCellContentInset;
-+ (id)textColorForStyle:(unsigned long long)arg1;
++ (id)stringForSFRichText:(id)arg1;
++ (id)stringForSFRichTextArray:(id)arg1;
++ (id)textColorForSearchUIStyle:(unsigned long long)arg1;
++ (id)uiColorForSFColor:(id)arg1;
 + (id)vibrantButtonColorForStyle:(unsigned long long)arg1;
 
 @end

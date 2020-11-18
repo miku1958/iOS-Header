@@ -13,7 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityIndexPathForCell;
 - (id)_accessibilityLabelForPlaybackState:(long long)arg1;
+- (BOOL)_axPerformCustomAction:(id)arg1;
+- (id)_privateAccessibilityCustomActions;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

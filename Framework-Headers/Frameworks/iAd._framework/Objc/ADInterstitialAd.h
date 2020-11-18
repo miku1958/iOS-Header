@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/ADAdRecipient-Protocol.h>
 
@@ -18,11 +18,13 @@
     UIViewController *_internalPresentingViewController;
     BOOL _loaded;
     BOOL _displayed;
+    BOOL _reUsed;
     BOOL _actionInProgress;
     BOOL _dimmingEnabled;
     BOOL _canLoadMoreThanOnce;
     BOOL _hasLoadedFirstAd;
     int _screenfuls;
+    int _slotPosition;
     int _creativeType;
     long long _options;
     NSString *_adResponseId;
@@ -54,8 +56,10 @@
 @property (readonly, nonatomic) long long options; // @synthesize options=_options;
 @property (strong, nonatomic) ADInterstitialAdPresentationViewController *presentationViewController; // @synthesize presentationViewController=_presentationViewController;
 @property (readonly, nonatomic) UIViewController *presentingViewController;
+@property (nonatomic) BOOL reUsed; // @synthesize reUsed=_reUsed;
 @property (readonly, nonatomic) BOOL requiresMRAID;
 @property (nonatomic) int screenfuls; // @synthesize screenfuls=_screenfuls;
+@property (nonatomic) int slotPosition; // @synthesize slotPosition=_slotPosition;
 @property (readonly) Class superclass;
 
 - (BOOL)_considerClosingAdSpace;
@@ -69,6 +73,7 @@
 - (id)context;
 - (void)creativeControllerViewWasTappedAtPoint:(struct CGPoint)arg1 withMRAIDAction:(id)arg2;
 - (void)dealloc;
+- (BOOL)hasImpressed;
 - (id)identifier;
 - (id)init;
 - (id)initWithCreativeType:(int)arg1 options:(long long)arg2;

@@ -30,8 +30,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSOperationQueue *targetOperationQueue; // @synthesize targetOperationQueue=_targetOperationQueue;
 
 - (void).cxx_destruct;
-- (id)CKPropertiesDescription;
+- (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
 - (id)_runDurationString;
+- (void)_setIsExecuting:(BOOL)arg1;
+- (void)_setIsFinished:(BOOL)arg1;
 - (id)_startDateString;
 - (void)cancel;
 - (id)ckShortDescription;

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAdditionalEnabledMarkets, GEOAutomobileOptions, GEOClientCapabilities, GEOCommonOptions, GEOLocation, GEOPDABClientDatasetMetadata, GEOTFTrafficSnapshot, GEOTransitOptions, GEOWalkingOptions, GEOWaypoint, GEOWaypointTyped, NSData, NSMutableArray;
+@class GEOAdditionalEnabledMarkets, GEOAutomobileOptions, GEOClientCapabilities, GEOCommonOptions, GEOLocation, GEOPDABClientDatasetMetadata, GEOTFTrafficSnapshot, GEOTransitOptions, GEOWalkingOptions, GEOWaypoint, GEOWaypointTyped, NSData, NSMutableArray, NSString;
 
 @interface GEOETARequest : PBRequest <NSCopying>
 {
@@ -27,6 +27,8 @@
     GEOWaypointTyped *_originWaypointTyped;
     NSData *_originalRouteID;
     NSData *_originalRouteZilchPoints;
+    NSString *_phoneticLocaleIdentifier;
+    NSString *_requestingAppId;
     NSMutableArray *_serviceTags;
     NSData *_sessionState;
     GEOTFTrafficSnapshot *_trafficSnapshot;
@@ -37,6 +39,8 @@
     BOOL _allowPartialResults;
     BOOL _includeDistance;
     BOOL _includeHistoricTravelTime;
+    BOOL _includeRouteTrafficDetail;
+    BOOL _includeShortTrafficSummary;
     BOOL _isFromAPI;
     BOOL _needServerLatency;
     BOOL _useLiveTrafficAsFallback;
@@ -48,6 +52,8 @@
         unsigned int allowPartialResults:1;
         unsigned int includeDistance:1;
         unsigned int includeHistoricTravelTime:1;
+        unsigned int includeRouteTrafficDetail:1;
+        unsigned int includeShortTrafficSummary:1;
         unsigned int isFromAPI:1;
         unsigned int needServerLatency:1;
         unsigned int useLiveTrafficAsFallback:1;
@@ -71,6 +77,8 @@
 @property (readonly, nonatomic) BOOL hasCommonOptions;
 @property (nonatomic) BOOL hasIncludeDistance;
 @property (nonatomic) BOOL hasIncludeHistoricTravelTime;
+@property (nonatomic) BOOL hasIncludeRouteTrafficDetail;
+@property (nonatomic) BOOL hasIncludeShortTrafficSummary;
 @property (nonatomic) BOOL hasIsFromAPI;
 @property (readonly, nonatomic) BOOL hasLastKnownRoadLocation;
 @property (nonatomic) BOOL hasNeedServerLatency;
@@ -78,6 +86,8 @@
 @property (readonly, nonatomic) BOOL hasOriginWaypointTyped;
 @property (readonly, nonatomic) BOOL hasOriginalRouteID;
 @property (readonly, nonatomic) BOOL hasOriginalRouteZilchPoints;
+@property (readonly, nonatomic) BOOL hasPhoneticLocaleIdentifier;
+@property (readonly, nonatomic) BOOL hasRequestingAppId;
 @property (nonatomic) BOOL hasSessionID;
 @property (readonly, nonatomic) BOOL hasSessionState;
 @property (nonatomic) BOOL hasTimepoint;
@@ -89,6 +99,8 @@
 @property (readonly, nonatomic) BOOL hasWalkingOptions;
 @property (nonatomic) BOOL includeDistance; // @synthesize includeDistance=_includeDistance;
 @property (nonatomic) BOOL includeHistoricTravelTime; // @synthesize includeHistoricTravelTime=_includeHistoricTravelTime;
+@property (nonatomic) BOOL includeRouteTrafficDetail; // @synthesize includeRouteTrafficDetail=_includeRouteTrafficDetail;
+@property (nonatomic) BOOL includeShortTrafficSummary; // @synthesize includeShortTrafficSummary=_includeShortTrafficSummary;
 @property (nonatomic) BOOL isFromAPI; // @synthesize isFromAPI=_isFromAPI;
 @property (strong, nonatomic) GEOLocation *lastKnownRoadLocation; // @synthesize lastKnownRoadLocation=_lastKnownRoadLocation;
 @property (nonatomic) BOOL needServerLatency;
@@ -96,6 +108,8 @@
 @property (strong, nonatomic) GEOWaypointTyped *originWaypointTyped; // @synthesize originWaypointTyped=_originWaypointTyped;
 @property (strong, nonatomic) NSData *originalRouteID; // @synthesize originalRouteID=_originalRouteID;
 @property (strong, nonatomic) NSData *originalRouteZilchPoints; // @synthesize originalRouteZilchPoints=_originalRouteZilchPoints;
+@property (strong, nonatomic) NSString *phoneticLocaleIdentifier; // @synthesize phoneticLocaleIdentifier=_phoneticLocaleIdentifier;
+@property (strong, nonatomic) NSString *requestingAppId; // @synthesize requestingAppId=_requestingAppId;
 @property (strong, nonatomic) NSMutableArray *serviceTags; // @synthesize serviceTags=_serviceTags;
 @property (nonatomic) struct GEOSessionID sessionID; // @synthesize sessionID=_sessionID;
 @property (strong, nonatomic) NSData *sessionState; // @synthesize sessionState=_sessionState;
@@ -111,6 +125,7 @@
 + (Class)destinationWaypointTypedType;
 + (Class)deviceHistoricalLocationType;
 + (Class)serviceTagType;
+- (void).cxx_destruct;
 - (int)StringAsTransportType:(id)arg1;
 - (void)addDestination:(id)arg1;
 - (void)addDestinationWaypointTyped:(id)arg1;
@@ -122,7 +137,6 @@
 - (void)clearServiceTags;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)destinationAtIndex:(unsigned long long)arg1;
 - (id)destinationWaypointTypedAtIndex:(unsigned long long)arg1;

@@ -8,46 +8,82 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 @interface NTPBAdExposureOpportunity : PBCodable <NSCopying>
 {
+    long long _adErrorCode;
+    NSString *_adCreativeId;
+    NSString *_adOpportunityId;
     NSString *_adSlotId;
+    NSData *_articleViewingSessionId;
     int _durationInFeed;
     int _errorCode;
+    NSString *_eventId;
+    int _exposureLocationType;
+    NSString *_exposureLocationTypeId;
+    int _feedType;
+    NSData *_feedViewExposureId;
     int _responseTime;
     int _screenfulsFromTop;
     BOOL _isExpanded;
     BOOL _isFilled;
+    BOOL _isViewable;
     struct {
+        unsigned int adErrorCode:1;
         unsigned int durationInFeed:1;
         unsigned int errorCode:1;
+        unsigned int exposureLocationType:1;
+        unsigned int feedType:1;
         unsigned int responseTime:1;
         unsigned int screenfulsFromTop:1;
         unsigned int isExpanded:1;
         unsigned int isFilled:1;
+        unsigned int isViewable:1;
     } _has;
 }
 
+@property (strong, nonatomic) NSString *adCreativeId; // @synthesize adCreativeId=_adCreativeId;
+@property (nonatomic) long long adErrorCode; // @synthesize adErrorCode=_adErrorCode;
+@property (strong, nonatomic) NSString *adOpportunityId; // @synthesize adOpportunityId=_adOpportunityId;
 @property (strong, nonatomic) NSString *adSlotId; // @synthesize adSlotId=_adSlotId;
+@property (strong, nonatomic) NSData *articleViewingSessionId; // @synthesize articleViewingSessionId=_articleViewingSessionId;
 @property (nonatomic) int durationInFeed; // @synthesize durationInFeed=_durationInFeed;
 @property (nonatomic) int errorCode; // @synthesize errorCode=_errorCode;
+@property (strong, nonatomic) NSString *eventId; // @synthesize eventId=_eventId;
+@property (nonatomic) int exposureLocationType; // @synthesize exposureLocationType=_exposureLocationType;
+@property (strong, nonatomic) NSString *exposureLocationTypeId; // @synthesize exposureLocationTypeId=_exposureLocationTypeId;
+@property (nonatomic) int feedType; // @synthesize feedType=_feedType;
+@property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
+@property (readonly, nonatomic) BOOL hasAdCreativeId;
+@property (nonatomic) BOOL hasAdErrorCode;
+@property (readonly, nonatomic) BOOL hasAdOpportunityId;
 @property (readonly, nonatomic) BOOL hasAdSlotId;
+@property (readonly, nonatomic) BOOL hasArticleViewingSessionId;
 @property (nonatomic) BOOL hasDurationInFeed;
 @property (nonatomic) BOOL hasErrorCode;
+@property (readonly, nonatomic) BOOL hasEventId;
+@property (nonatomic) BOOL hasExposureLocationType;
+@property (readonly, nonatomic) BOOL hasExposureLocationTypeId;
+@property (nonatomic) BOOL hasFeedType;
+@property (readonly, nonatomic) BOOL hasFeedViewExposureId;
 @property (nonatomic) BOOL hasIsExpanded;
 @property (nonatomic) BOOL hasIsFilled;
+@property (nonatomic) BOOL hasIsViewable;
 @property (nonatomic) BOOL hasResponseTime;
 @property (nonatomic) BOOL hasScreenfulsFromTop;
 @property (nonatomic) BOOL isExpanded; // @synthesize isExpanded=_isExpanded;
 @property (nonatomic) BOOL isFilled; // @synthesize isFilled=_isFilled;
+@property (nonatomic) BOOL isViewable; // @synthesize isViewable=_isViewable;
 @property (nonatomic) int responseTime; // @synthesize responseTime=_responseTime;
 @property (nonatomic) int screenfulsFromTop; // @synthesize screenfulsFromTop=_screenfulsFromTop;
 
 - (void).cxx_destruct;
+- (int)StringAsFeedType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)feedTypeAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

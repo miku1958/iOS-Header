@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator; // @synthesize persistentStoreCoordinator=_persistentStoreCoordinator;
 
 + (id)sharedInstance;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)descriptionForWord:(id)arg1;
 - (id)languageCode;
 

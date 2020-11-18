@@ -13,6 +13,7 @@
 }
 
 @property (copy, nonatomic) NSString *flowIdentifier;
+@property (copy, nonatomic) NSString *tipPrefix;
 
 + (id)assistantTipView;
 + (id)assistantTipViewWithDictionary:(id)arg1 context:(id)arg2;

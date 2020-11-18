@@ -15,7 +15,9 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityUpdateTextViewLabel;
+- (id)accessibilityLabel;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (BOOL)isAccessibilityElement;
 - (void)setLabel:(id)arg1;
 - (void)setPlaceholder:(id)arg1;
 - (void)setStringValue:(id)arg1;

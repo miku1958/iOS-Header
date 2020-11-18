@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 @property (copy, nonatomic) NSSet *touches; // @synthesize touches=_touches;
 
++ (BOOL)_shouldDefaultToTouches;
 - (void).cxx_destruct;
 - (BOOL)_affectedByGesture:(id)arg1;
 - (BOOL)_allTouchesAreEndedOrCancelled:(id)arg1;

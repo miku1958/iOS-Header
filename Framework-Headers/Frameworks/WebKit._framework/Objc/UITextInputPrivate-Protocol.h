@@ -8,7 +8,7 @@
 #import <WebKit/UITextInputTokenizer-Protocol.h>
 #import <WebKit/UITextInputTraits_Private-Protocol.h>
 
-@class NSArray, NSAttributedString, NSString, UIColor, UIFont, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UITextSuggestion, UIView, WebEvent;
+@class NSArray, NSAttributedString, NSString, UIColor, UIDictationSerializableResults, UIFont, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UITextSuggestion, UIView, WebEvent;
 @protocol UISelectionInteractionAssistant, UITextInputSuggestionDelegate;
 
 @protocol UITextInputPrivate <UITextInput, UITextInputTokenizer, UITextInputTraits_Private>
@@ -37,7 +37,7 @@
 - (UIFont *)fontForCaretSelection;
 - (void)handleKeyWebEvent:(WebEvent *)arg1;
 - (void)handleKeyWebEvent:(WebEvent *)arg1 withCompletionHandler:(void (^)(WebEvent *, BOOL))arg2;
-- (void)insertDictationResult:(NSArray *)arg1 withCorrectionIdentifier:(id)arg2;
+- (void)insertDictationResult:(UIDictationSerializableResults *)arg1 withCorrectionIdentifier:(id)arg2;
 - (void)insertTextSuggestion:(UITextSuggestion *)arg1;
 - (BOOL)isAutoFillMode;
 - (NSArray *)metadataDictionariesForDictationResults;

@@ -12,9 +12,11 @@
 {
     City *_currentCity;
     CLGeocoder *_reverseGeocoder;
+    struct ct_green_tea_logger_s *_greenTeaLogger;
 }
 
 @property (strong, nonatomic) City *currentCity; // @synthesize currentCity=_currentCity;
+@property (nonatomic) struct ct_green_tea_logger_s *greenTeaLogger; // @synthesize greenTeaLogger=_greenTeaLogger;
 @property (strong, nonatomic) CLGeocoder *reverseGeocoder; // @synthesize reverseGeocoder=_reverseGeocoder;
 
 + (id)sharedLocationUpdater;
@@ -22,7 +24,9 @@
 - (void)_completeReverseGeocodeForLocation:(id)arg1 currentCity:(id)arg2 geocodeError:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_geocodeLocation:(id)arg1 currentCity:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_updateWeatherForLocation:(id)arg1 city:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)dealloc;
 - (void)enableProgressIndicator:(BOOL)arg1;
+- (id)init;
 - (void)parsedResultCity:(id)arg1;
 - (void)updateWeatherForCities:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)updateWeatherForCity:(id)arg1;

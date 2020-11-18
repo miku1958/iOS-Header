@@ -36,7 +36,7 @@
 @property (readonly) Class superclass;
 
 + (id)compatibilityInfoForAppInfo:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithBundle:(id)arg1;

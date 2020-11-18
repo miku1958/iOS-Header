@@ -20,11 +20,11 @@
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)searchResultsForCategoryEntryType;
+- (void).cxx_destruct;
 - (void)addSearchResultsForCategoryEntry:(id)arg1;
 - (void)clearSearchResultsForCategoryEntrys;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

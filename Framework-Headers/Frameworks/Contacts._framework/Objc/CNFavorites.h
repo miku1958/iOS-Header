@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CNContactStore, NSArray, NSMutableArray, NSMutableDictionary;
 
@@ -14,10 +14,12 @@
     BOOL _dirty;
     BOOL _postCount;
     BOOL _needsReload;
+    BOOL _autoUpdating;
     CNContactStore *_store;
     NSMutableDictionary *_uidToEntry;
 }
 
+@property (readonly, nonatomic) BOOL autoUpdating; // @synthesize autoUpdating=_autoUpdating;
 @property (nonatomic) BOOL dirty; // @synthesize dirty=_dirty;
 @property (readonly, nonatomic) NSArray *entries;
 @property (readonly, getter=isFull) BOOL full;
@@ -48,12 +50,15 @@
 - (id)entriesForContact:(id)arg1;
 - (id)entriesForContact:(id)arg1 propertyKey:(id)arg2 labeledValueIdentifier:(id)arg3 actionType:(id)arg4 bundleIdentifier:(id)arg5;
 - (id)entriesForContacts:(id)arg1;
+- (id)entriesWithRecaching:(BOOL)arg1;
 - (BOOL)entryIsDuplicateAndThusRemoved:(id)arg1 oldUid:(int)arg2;
 - (id)entryWithIdentifier:(id)arg1 forContact:(id)arg2;
 - (id)entryWithType:(long long)arg1 forContact:(id)arg2 propertyKey:(id)arg3 identifier:(id)arg4;
 - (id)init;
+- (id)initNonUpdatingReadonlyInstanceWithContactStore:(id)arg1;
 - (id)initWithContactStore:(id)arg1;
-- (void)loadEntriesIfNecessary;
+- (id)initWithContactStore:(id)arg1 autoUpdating:(BOOL)arg2;
+- (void)loadEntriesIfNecessaryAndRecache:(BOOL)arg1;
 - (void)moveEntryAtIndex:(long long)arg1 toIndex:(long long)arg2;
 - (void)recacheIdentitiesSoon;
 - (void)removeAllEntries;

@@ -31,8 +31,8 @@
 + (id)tokensFromString:(id)arg1 nameOrder:(long long *)arg2;
 + (id)uncachedNameComponentElements;
 + (id)whitespaceTokens:(id)arg1;
+- (void).cxx_destruct;
 - (void)adjustTokensForNobiliaryParticles;
-- (void)dealloc;
 - (void)extractGivenMiddleFamilyNamesFromWhatsLeftUsingOrder:(long long)arg1;
 - (void)extractNamePrefixFromBeginning;
 - (void)extractNameSuffixFromEnd;

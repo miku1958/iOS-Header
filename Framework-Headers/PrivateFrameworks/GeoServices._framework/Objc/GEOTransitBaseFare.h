@@ -45,12 +45,12 @@
 @property (readonly, nonatomic) NSDecimalNumber *value;
 
 + (Class)supportedPaymentMethodType;
+- (void).cxx_destruct;
 - (int)StringAsPaymentType:(id)arg1;
 - (void)addSupportedPaymentMethod:(id)arg1;
 - (void)clearSupportedPaymentMethods;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)dictionaryRepresentation;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

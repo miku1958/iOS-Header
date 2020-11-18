@@ -16,29 +16,31 @@
     HUWheelControlView *_wheelView;
     UILabel *_titleLabel;
     UILabel *_detailLabel;
-    UIView *_seperatorView;
-    NSArray *_titleLabelConstraints;
-    NSArray *_wheelViewConstraints;
+    UIView *_separatorView;
+    NSArray *_staticConstraints;
+    NSArray *_dynamicConstraints;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) UILabel *detailLabel; // @synthesize detailLabel=_detailLabel;
+@property (readonly, nonatomic) UILabel *detailLabel; // @synthesize detailLabel=_detailLabel;
 @property (copy, nonatomic) NSString *detailText;
 @property (readonly, nonatomic, getter=isDisabled) BOOL disabled;
+@property (strong, nonatomic) NSArray *dynamicConstraints; // @synthesize dynamicConstraints=_dynamicConstraints;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIView *seperatorView; // @synthesize seperatorView=_seperatorView;
+@property (readonly, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
+@property (strong, nonatomic) NSArray *staticConstraints; // @synthesize staticConstraints=_staticConstraints;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property (copy, nonatomic) NSArray *titleLabelConstraints; // @synthesize titleLabelConstraints=_titleLabelConstraints;
+@property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (copy, nonatomic) NSString *titleText;
 @property (strong, nonatomic) HUWheelControlView *wheelView; // @synthesize wheelView=_wheelView;
-@property (copy, nonatomic) NSArray *wheelViewConstraints; // @synthesize wheelViewConstraints=_wheelViewConstraints;
 @property (nonatomic) BOOL wheelViewVisible; // @synthesize wheelViewVisible=_wheelViewVisible;
 
++ (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (id)allControlViews;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)updateConstraints;
 - (void)wheelControlView:(id)arg1 didUpdateValue:(id)arg2;

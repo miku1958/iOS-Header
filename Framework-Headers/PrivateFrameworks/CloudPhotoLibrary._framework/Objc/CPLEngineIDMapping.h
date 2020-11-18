@@ -20,19 +20,19 @@
 @property (readonly, nonatomic) CPLPlatformObject *platformObject;
 @property (readonly) Class superclass;
 
-- (BOOL)addCloudIdentifier:(id)arg1 forLocalIdentifier:(id)arg2 isFinal:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)addAddEventForRecordWithLocalIdentifier:(id)arg1 direction:(unsigned long long)arg2 error:(id *)arg3;
+- (BOOL)addCloudIdentifier:(id)arg1 forLocalIdentifier:(id)arg2 isFinal:(BOOL)arg3 direction:(unsigned long long)arg4 error:(id *)arg5;
+- (BOOL)addDeleteEventForRecordWithLocalIdentifier:(id)arg1 direction:(unsigned long long)arg2 error:(id *)arg3;
 - (id)cloudIdentifierForLocalIdentifier:(id)arg1 isFinal:(BOOL *)arg2;
-- (id)cloudIdentifiersForLocalIdentifiers:(id)arg1;
 - (BOOL)hasPendingIdentifiers;
 - (id)localIdentifierForCloudIdentifier:(id)arg1 isFinal:(BOOL *)arg2;
 - (id)localIdentifierForCloudIdentifierIncludeRemappedRecords:(id)arg1;
-- (id)localIdentifiersForCloudIdentifiers:(id)arg1;
 - (BOOL)markAllPendingIdentifiersAsFinalWithError:(id *)arg1;
 - (BOOL)removeMappingForCloudIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)resetAllFinalCloudIdentifiersWithError:(id *)arg1;
 - (BOOL)resetWithError:(id *)arg1;
 - (BOOL)setFinalCloudIdentifier:(id)arg1 forPendingCloudIdentifier:(id)arg2 error:(id *)arg3;
-- (id)setupCloudIdentifier:(id)arg1 forLocalIdentifier:(id)arg2 isFinal:(BOOL)arg3 error:(id *)arg4;
+- (id)setupCloudIdentifier:(id)arg1 forLocalIdentifier:(id)arg2 isFinal:(BOOL)arg3 direction:(unsigned long long)arg4 error:(id *)arg5;
 
 @end
 

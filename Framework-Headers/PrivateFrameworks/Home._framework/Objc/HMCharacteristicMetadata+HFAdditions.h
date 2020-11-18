@@ -15,8 +15,10 @@
 
 - (id)hf_characteristicValueForPercentage:(double)arg1;
 - (BOOL)hf_isEqualToMetadata:(id)arg1;
+- (BOOL)hf_isInteger;
 - (BOOL)hf_isValidValue:(id)arg1;
 - (id)hf_normalizedValueForValue:(id)arg1;
 - (id)hf_percentageForCharacteristicValue:(id)arg1;
+- (id)hf_valueRoundedToNearestStepValue:(id)arg1;
 @end
 

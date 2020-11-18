@@ -17,8 +17,7 @@ __attribute__((visibility("hidden")))
     int _saveFlag;
 }
 
-+ (id)queryForApplicationsAvailableForOpeningURL:(id)arg1 legacySPI:(BOOL)arg2;
-+ (id)queryForURLSchemesOfType:(long long)arg1;
++ (id)queryForApplicationsAvailableForOpeningURL:(id)arg1;
 + (id)sharedManager;
 - (BOOL)canOpenURL:(id)arg1 publicSchemes:(BOOL)arg2 privateSchemes:(BOOL)arg3 XPCConnection:(id)arg4 error:(id *)arg5;
 - (id)copySchemesMap;
@@ -31,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isXPCConnection:(id)arg1 allowedToCheckScheme:(id)arg2 error:(id *)arg3;
 - (BOOL)legacy_isBundleID:(unsigned int)arg1 bundleData:(const struct LSBundleData *)arg2 context:(struct LSContext *)arg3 allowedToCheckScheme:(id)arg4 error:(id *)arg5;
 - (void)resetSchemeQueryLimitForApplicationWithIdentifier:(id)arg1;
+- (long long)schemeTypeOfScheme:(id)arg1;
 - (void)writeSchemesMap;
 
 @end

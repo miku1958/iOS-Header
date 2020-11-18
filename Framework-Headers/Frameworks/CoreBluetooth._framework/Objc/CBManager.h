@@ -9,15 +9,17 @@
 #import <CoreBluetooth/CBPairingAgentParentDelegate-Protocol.h>
 #import <CoreBluetooth/CBXpcConnectionDelegate-Protocol.h>
 
-@class CBPairingAgent, CBXpcConnection, NSString;
+@class CBPairingAgent, CBXpcConnection, NSData, NSString;
 
 @interface CBManager : NSObject <CBXpcConnectionDelegate, CBPairingAgentParentDelegate>
 {
     CBXpcConnection *_connection;
     CBPairingAgent *_pairingAgent;
     long long _state;
+    NSData *_advertisingAddress;
 }
 
+@property (copy, nonatomic) NSData *advertisingAddress; // @synthesize advertisingAddress=_advertisingAddress;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -26,6 +28,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)closeL2CAPChannelForPeerUUID:(id)arg1 withPsm:(unsigned short)arg2;
 - (void)dealloc;
 - (void)handleMsg:(unsigned short)arg1 args:(id)arg2;
 - (void)handlePairingAgentMsg:(unsigned short)arg1 args:(id)arg2;
@@ -34,6 +37,7 @@
 - (BOOL)isMsgAllowedAlways:(unsigned short)arg1;
 - (BOOL)isMsgAllowedWhenOff:(unsigned short)arg1;
 - (id)peerWithInfo:(id)arg1;
+- (BOOL)sendDebugMsg:(unsigned short)arg1 args:(id)arg2;
 - (BOOL)sendMsg:(unsigned short)arg1 args:(id)arg2;
 - (id)sendSyncMsg:(unsigned short)arg1 args:(id)arg2;
 - (void)setConnectionTargetQueue:(id)arg1;

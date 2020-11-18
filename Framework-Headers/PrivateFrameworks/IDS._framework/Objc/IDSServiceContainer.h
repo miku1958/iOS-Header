@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class IDSServiceMonitor, NSMutableSet;
 
@@ -14,11 +14,11 @@
     NSMutableSet *_listeners;
 }
 
-@property (readonly, strong, nonatomic) NSMutableSet *listeners; // @synthesize listeners=_listeners;
+@property (readonly, nonatomic) NSMutableSet *listeners; // @synthesize listeners=_listeners;
 @property (strong, nonatomic) IDSServiceMonitor *monitor; // @synthesize monitor=_monitor;
 
+- (void).cxx_destruct;
 - (BOOL)addListenerID:(id)arg1;
-- (void)dealloc;
 - (BOOL)hasListenerID:(id)arg1;
 - (id)initWithService:(id)arg1;
 - (BOOL)removeListenerID:(id)arg1;

@@ -13,9 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilitySetInteractive;
-- (BOOL)accessibilityActivate;
-- (void)accessibilityElementDidLoseFocus;
+- (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (id)accessibilityPath;

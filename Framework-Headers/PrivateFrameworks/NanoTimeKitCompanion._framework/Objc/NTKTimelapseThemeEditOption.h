@@ -20,11 +20,12 @@
 + (id)_orderedValues;
 + (id)_resourceBaseNameForTheme:(unsigned long long)arg1;
 + (id)_resourceNameForTheme:(unsigned long long)arg1 videoIndex:(long long)arg2;
-+ (id)_resourceNameForThemeWithoutDeviceSize:(unsigned long long)arg1 videoIndex:(long long)arg2;
 + (id)_snapshotKeyForValue:(unsigned long long)arg1;
 + (id)optionWithTimelapseTheme:(unsigned long long)arg1;
++ (id)optionsDescription;
 - (id)_valueToFaceBundleStringDict;
 - (id)resourceNameWithVideoIndex:(long long)arg1;
+- (long long)swatchStyle;
 
 @end
 

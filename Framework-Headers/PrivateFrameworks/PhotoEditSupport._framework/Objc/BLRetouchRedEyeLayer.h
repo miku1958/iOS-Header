@@ -22,6 +22,7 @@
 
 + (id)addAutoRedEyeCorrection:(id)arg1 toLayerData:(id)arg2 maskSize:(struct CGSize)arg3 newTimestampIncrement:(double *)arg4;
 + (long long)indexOfPointNear:(struct CGPoint)arg1 inEyePoints:(id)arg2 andMaskSize:(struct CGSize)arg3;
+- (void).cxx_destruct;
 - (float)amount;
 - (struct CGRect)area;
 - (void)clearRedEyes;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSError;
+@class NSError, NSMutableDictionary;
 @protocol NSStreamDelegate, OS_dispatch_queue;
 
 @interface _SYStreamGuts : NSObject
@@ -18,13 +18,16 @@
     id<NSStreamDelegate> _delegate;
     NSError *_error;
     unsigned long long _status;
+    NSMutableDictionary *_propertyStore;
 }
 
 - (void).cxx_destruct;
 - (void)createRunloopSourceForStream:(id)arg1;
 - (void)dealloc;
 - (void)postStreamEvent:(unsigned long long)arg1 forStream:(id)arg2;
+- (id)propertyForKey:(id)arg1;
 - (void)setEventHandler:(CDUnknownBlockType)arg1 queue:(id)arg2;
+- (void)storeProperty:(id)arg1 forKey:(id)arg2;
 
 @end
 

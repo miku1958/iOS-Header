@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDate, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedInstance;
 + (BOOL)shouldIgnoreRequestType:(unsigned char)arg1 fromClientWithId:(id)arg2;
+- (void).cxx_destruct;
 - (void)_cancelXpcActivity;
 - (void)_flushToPowerLog;
 - (void)_scheduleXpcActivity;

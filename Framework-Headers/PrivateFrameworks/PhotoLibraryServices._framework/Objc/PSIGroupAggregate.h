@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray;
 
@@ -19,8 +19,9 @@
     NSMutableArray *_aggregatedGroupIds;
 }
 
-@property (readonly) NSArray *searchTokens; // @synthesize searchTokens=_searchTokens;
+@property (readonly, nonatomic) NSArray *searchTokens; // @synthesize searchTokens=_searchTokens;
 
++ (BOOL)_canDedupeGroupResult:(id)arg1 withGroupResult:(id)arg2;
 + (BOOL)_prefer:(id)arg1 over:(id)arg2;
 + (void)postProcessGroupResults:(id)arg1;
 - (struct __CFArray *)_newSortedGroupIds;

@@ -6,15 +6,19 @@
 
 #import <SAObjects/SAUITemplateBaseItem.h>
 
-@class SAUIImageResource, SAUITemplateAttributedString;
+@class NSArray, NSDictionary, SAUIImageResource, SAUITemplateAttributedString;
 
 @interface SAUITemplateTabularDataValue : SAUITemplateBaseItem
 {
 }
 
 @property (strong, nonatomic) SAUITemplateAttributedString *attributedText;
+@property (copy, nonatomic) NSDictionary *attributedTexts;
 @property (nonatomic) BOOL highlighted;
 @property (strong, nonatomic) SAUIImageResource *image;
+@property (nonatomic) double imagePointHeight;
+@property (nonatomic) double imagePointWidth;
+@property (copy, nonatomic) NSArray *themeImages;
 
 + (id)tabularDataValue;
 + (id)tabularDataValueWithDictionary:(id)arg1 context:(id)arg2;

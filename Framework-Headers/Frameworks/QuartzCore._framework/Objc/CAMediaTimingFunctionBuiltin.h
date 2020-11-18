@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     unsigned int _index;
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)_getPoints:(double *)arg1;
 - (Class)classForCoder;
 - (id)description;

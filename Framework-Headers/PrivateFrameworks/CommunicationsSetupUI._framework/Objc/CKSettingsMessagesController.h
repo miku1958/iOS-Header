@@ -8,25 +8,34 @@
 
 #import <CommunicationsSetupUI/AKAppleIDAuthenticationDelegate-Protocol.h>
 #import <CommunicationsSetupUI/CNFRegWizardControllerDelegate-Protocol.h>
+#import <CommunicationsSetupUI/IMCloudKitEventHandler-Protocol.h>
 
-@class NSString;
+@class CKFilteringListController, CKNSExtension, NSString;
 
-@interface CKSettingsMessagesController : CNFRegListController <CNFRegWizardControllerDelegate, AKAppleIDAuthenticationDelegate>
+@interface CKSettingsMessagesController : CNFRegListController <CNFRegWizardControllerDelegate, AKAppleIDAuthenticationDelegate, IMCloudKitEventHandler>
 {
     BOOL _showingChildViewController;
     int _profileToken;
+    CKFilteringListController *_filteringController;
+    id _beginMappingID;
+    CKNSExtension *_ckExtension;
 }
 
+@property (strong) id beginMappingID; // @synthesize beginMappingID=_beginMappingID;
+@property (strong, nonatomic) CKNSExtension *ckExtension; // @synthesize ckExtension=_ckExtension;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) CKFilteringListController *filteringController; // @synthesize filteringController=_filteringController;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (id)currentKeepMessages;
 + (BOOL)currentMessageAutoKeepForType:(int)arg1;
 + (int)currentMessageAutoKeepOptionForType:(int)arg1;
+- (void).cxx_destruct;
 - (BOOL)_allAccountsAreDeactivated;
 - (void)_clearMessagesAppExtensionSalt;
+- (id)_formattedStringFromLastSyncDate:(id)arg1;
 - (BOOL)_isMadridAccountOperational;
 - (BOOL)_isMadridSwitchOn;
 - (BOOL)_isRaiseGestureSupported;
@@ -34,6 +43,7 @@
 - (id)_madridSettingsController;
 - (void)_setupAccountHandlers;
 - (void)_setupAccountHandlersForDisabling;
+- (BOOL)_shouldShowLastSyncLabel:(id *)arg1;
 - (void)_showAuthKitSignInIfNecessary;
 - (void)_showMadridSetupIfNecessary;
 - (void)_showMadridSetupIfNecessary:(BOOL)arg1;
@@ -46,16 +56,21 @@
 - (void)_updateSwitch;
 - (void)_updateSwitchDelayed;
 - (void)_updateUIWithError:(id)arg1;
+- (void)applicationDidResume;
+- (void)applicationWillSuspend;
 - (id)areReadReceiptsEnabled:(id)arg1;
 - (id)audioMessageSettingsSpecifierIdentifiers;
 - (BOOL)authenticationController:(id)arg1 shouldContinueWithAuthenticationResults:(id)arg2 error:(id)arg3 forContext:(id)arg4;
 - (id)blacklistSettingsSpecifierIdentifiers;
 - (id)bundle;
 - (id)characterCountSpecifierIdentifiers;
+- (void)cloudKitEventNotificationManager:(id)arg1 syncStateDidChange:(id)arg2;
 - (id)contactPhotoSettingsSpecifierIdentifiers;
 - (id)controllerForSpecifier:(id)arg1;
 - (void)dealloc;
 - (id)deliveryReceiptSpecifierIdentifiers;
+- (void)endMatchingExtensions;
+- (void)findSpamExtensions;
 - (void)firstRunControllerDidFinish:(id)arg1 finished:(BOOL)arg2;
 - (id)genericSettingsSpecifierIdentifiers;
 - (id)getAccountSummaryForSpecifier:(id)arg1;
@@ -64,19 +79,23 @@
 - (id)getPreviewTranscodingEnabled:(id)arg1;
 - (id)getRaiseToListenEnabled:(id)arg1;
 - (id)getSMSRelayDevicesSummary:(id)arg1;
+- (id)iCloudSettingsSpecificerIdentifiers;
 - (id)iMessageFilteringSpecifierIdentifiers;
 - (id)init;
 - (id)isConversationListFilteringEnabled:(id)arg1;
 - (id)isDeliveryReportsEnabled:(id)arg1;
 - (id)isMMSEnabled:(id)arg1;
 - (id)isMadridEnabled:(id)arg1;
+- (id)lastSyncDateStringForSpecifier:(id)arg1;
 - (id)logName;
 - (id)madridAccountsSpecifierIdentifiers;
 - (id)madridSigninButtonTextForSpecifier:(id)arg1;
 - (id)madridSigninSpecifiers;
 - (void)madridSigninTappedWithSpecifier:(id)arg1;
 - (id)madridSwitchSpecifierIdentifiers;
+- (void)messageFilteringTapped:(id)arg1;
 - (void)newCarrierNotification;
+- (void)notifyThatConversationFilteringChanged;
 - (id)raiseToListenSpecifierIdentifiers;
 - (id)readReceiptSpecifierIdentifiers;
 - (id)sendAsSMSIdentifiers;
@@ -105,8 +124,10 @@
 - (BOOL)shouldShowReadReceipts;
 - (BOOL)shouldShowSMSRelaySettings;
 - (BOOL)shouldShowSendAsSMS;
-- (BOOL)shouldShowiMessageFilteringSettings;
+- (BOOL)shouldShowiCloudSettings;
+- (BOOL)shouldShowiMessageFilteringSettings:(id)arg1;
 - (id)smsRelaySettingsSpecifierIdentifiers;
+- (id)spamFilteringSpecifierIdentifiers;
 - (id)specifiers;
 - (void)systemApplicationDidEnterBackground;
 - (void)systemApplicationWillEnterForeground;

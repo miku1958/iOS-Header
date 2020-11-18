@@ -6,50 +6,21 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDAchievementAssetManager, HDAchievementDefinitionAlertManager, HDAppSubscriptionManager, HDAuthorizationManager, HDBackgroundTaskScheduler, HDContentProtectionManager, HDCurrentActivitySummaryHelper, HDDataProvenanceManager, HDDeviceEntity, HDDeviceManager, HDFitnessFriendsManager, HDHealthServiceManager, HDNanoSyncManager, HDPluginManager, HDPrimaryProfile, HDProcessStateManager, HDProfile, HDRoutineGateway, HDServiceConnectionManager, HDUserCharacteristicsManager, HKObject, HKSampleType, NSArray, NSDate, NSDictionary, NSObject, NSString, NSTimeZone, NSURL, NSUUID, _HKBehavior, _HKFirstPartyWorkoutSnapshot;
-@protocol HDHealthDaemonReadyObserver, HDHealthDatabase, HDNanoAlertSuppressionService, HDViewOnWakeService, OS_dispatch_queue;
+@class HDAchievementDefinitionAlertManager, HDBackgroundTaskScheduler, HDPluginManager, HDPrimaryProfile, HDXPCListener, NSString, _HKBehavior;
+@protocol HDHealthDaemonReadyObserver, HDNanoAlertSuppressionService;
 
 @protocol HDHealthDaemon <NSObject>
 
-@property (strong, nonatomic) HDAchievementAssetManager *achievementAssetManager;
 @property (strong, nonatomic) HDAchievementDefinitionAlertManager *achievementDefinitionAlertManager;
 @property (strong, nonatomic) id<HDNanoAlertSuppressionService> alertSuppressionService;
-@property (readonly, nonatomic) HDAuthorizationManager *authorizationManager;
 @property (readonly) HDBackgroundTaskScheduler *backgroundTaskScheduler;
 @property (readonly, nonatomic) _HKBehavior *behavior;
-@property (readonly) HDContentProtectionManager *contentProtectionManager;
-@property (readonly, nonatomic) HDCurrentActivitySummaryHelper *currentActivitySummaryHelper;
-@property (readonly) HDDataProvenanceManager *dataProvenanceManager;
-@property (readonly, nonatomic) HDFitnessFriendsManager *fitnessFriendsManager;
-@property (readonly) id<HDHealthDatabase> healthDatabase;
-@property (readonly) HDDeviceManager *healthDeviceManager;
-@property (readonly) HDHealthServiceManager *healthServiceManager;
-@property (readonly) NSString *homeDirectoryPath;
-@property (readonly) NSURL *homeDirectoryURL;
-@property (readonly) BOOL isAppleWatch;
-@property (readonly) NSObject<OS_dispatch_queue> *mainQueue;
-@property (readonly, nonatomic) HDNanoSyncManager *nanoSyncManager;
 @property (readonly) HDPluginManager *pluginManager;
 @property (readonly, nonatomic) HDPrimaryProfile *primaryProfile;
-@property (readonly) HDProcessStateManager *processStateManager;
-@property (readonly, nonatomic) HDRoutineGateway *routineGateway;
-@property (readonly, nonatomic) HDServiceConnectionManager *serviceConnectionManager;
-@property (readonly, nonatomic) HDAppSubscriptionManager *subscriptionManager;
-@property (readonly) HDUserCharacteristicsManager *userCharacteristicsManager;
-@property (strong, nonatomic) id<HDViewOnWakeService> viewOnWakeService;
 
-- (void)didUpdateActiveWorkoutServers;
-- (_HKFirstPartyWorkoutSnapshot *)firstPartyWorkoutSnapshot;
-- (BOOL)hasAnyActiveWorkouts;
-- (void)pauseAllActiveWorkoutsWithCompletion:(void (^)(void))arg1;
-- (void)performBlockWithPowerAssertionIdentifier:(NSString *)arg1 transactionName:(NSString *)arg2 powerAssertionInterval:(double)arg3 block:(void (^)(void))arg4;
-- (BOOL)persistAndNotifyDataObject:(HKObject *)arg1 device:(HDDeviceEntity *)arg2 error:(id *)arg3;
-- (BOOL)persistAndNotifyDataObjects:(NSArray *)arg1 device:(HDDeviceEntity *)arg2 error:(id *)arg3;
+- (HDXPCListener *)createXPCListenerWithMachServiceName:(NSString *)arg1;
 - (void)registerForDaemonReady:(id<HDHealthDaemonReadyObserver>)arg1;
 - (void)registerForLaunchNotification:(const char *)arg1;
-- (void)setCurrentActivityCacheOverrideDate:(NSDate *)arg1 timeZone:(NSTimeZone *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
-- (void)setDataCollectionOptions:(NSDictionary *)arg1 forKey:(NSString *)arg2 type:(HKSampleType *)arg3 clientUUID:(NSUUID *)arg4;
-- (HDProfile *)temporaryProfile;
 - (void)unregisterForLaunchNotification:(const char *)arg1;
 @end
 

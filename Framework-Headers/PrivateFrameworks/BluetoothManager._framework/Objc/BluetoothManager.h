@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -13,6 +13,8 @@
     struct BTLocalDeviceImpl *_localDevice;
     struct BTSessionImpl *_session;
     int _available;
+    int _state;
+    BOOL _airplaneMode;
     BOOL _audioConnected;
     BOOL _scanningEnabled;
     BOOL _scanningInProgress;
@@ -22,7 +24,10 @@
     struct BTAccessoryManagerImpl *_accessoryManager;
     NSMutableDictionary *_btAddrDict;
     NSMutableDictionary *_btDeviceDict;
+    BOOL _blacklistEnabled;
 }
+
+@property (nonatomic) BOOL blacklistEnabled; // @synthesize blacklistEnabled=_blacklistEnabled;
 
 + (int)lastInitError;
 + (void)setSharedInstanceQueue:(id)arg1;
@@ -43,22 +48,31 @@
 - (void)_scanForServices:(unsigned int)arg1 withMode:(int)arg2;
 - (void)_setScanState:(int)arg1;
 - (BOOL)_setup:(struct BTSessionImpl *)arg1;
+- (void)_updateAirplaneModeStatus;
+- (void)_updateBlacklistMode;
+- (void)_updateBluetoothState;
 - (void)acceptSSP:(long long)arg1 forDevice:(id)arg2;
 - (id)addDeviceIfNeeded:(struct BTDeviceImpl *)arg1;
 - (BOOL)audioConnected;
 - (BOOL)available;
+- (int)bluetoothState;
+- (void)bluetoothStateAction;
+- (void)bluetoothStateActionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cancelPairing;
 - (void)connectDevice:(id)arg1;
 - (void)connectDevice:(id)arg1 withServices:(unsigned int)arg2;
 - (BOOL)connectable;
 - (BOOL)connected;
+- (id)connectedDeviceNamesThatMayBeBlacklisted;
 - (id)connectedDevices;
 - (id)connectingDevices;
 - (void)dealloc;
+- (struct BTDeviceImpl *)deviceFromIdentifier:(id)arg1;
 - (BOOL)devicePairingEnabled;
 - (BOOL)deviceScanningEnabled;
 - (BOOL)deviceScanningInProgress;
 - (void)disconnectDevice:(id)arg1;
+- (void)disconnectDevicePhysicalLink:(id)arg1;
 - (void)enableTestMode;
 - (BOOL)enabled;
 - (void)endVoiceCommand:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 
@@ -15,8 +15,10 @@
     NSString *_secureElementID;
     NSData *_cryptogram;
     NSData *_challengeResponse;
+    NSString *_serverEndpointIdentifier;
     NSString *_cardholderName;
     NSString *_phoneNumber;
+    NSString *_peerPaymentRecipientAddress;
     NSString *_primaryAppleAccountFirstName;
     NSString *_primaryAppleAccountLastName;
 }
@@ -24,10 +26,12 @@
 @property (copy, nonatomic) NSString *cardholderName; // @synthesize cardholderName=_cardholderName;
 @property (copy, nonatomic) NSData *challengeResponse; // @synthesize challengeResponse=_challengeResponse;
 @property (copy, nonatomic) NSData *cryptogram; // @synthesize cryptogram=_cryptogram;
+@property (copy, nonatomic) NSString *peerPaymentRecipientAddress; // @synthesize peerPaymentRecipientAddress=_peerPaymentRecipientAddress;
 @property (copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property (copy, nonatomic) NSString *primaryAppleAccountFirstName; // @synthesize primaryAppleAccountFirstName=_primaryAppleAccountFirstName;
 @property (copy, nonatomic) NSString *primaryAppleAccountLastName; // @synthesize primaryAppleAccountLastName=_primaryAppleAccountLastName;
 @property (copy, nonatomic) NSString *secureElementID; // @synthesize secureElementID=_secureElementID;
+@property (copy, nonatomic) NSString *serverEndpointIdentifier; // @synthesize serverEndpointIdentifier=_serverEndpointIdentifier;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

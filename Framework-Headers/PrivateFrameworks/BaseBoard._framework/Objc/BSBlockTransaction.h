@@ -10,14 +10,16 @@
 
 @interface BSBlockTransaction : BSTransaction
 {
-    CDUnknownBlockType _block;
     NSString *_debugName;
+    CDUnknownBlockType _block;
 }
 
 @property (copy, nonatomic) NSString *debugName; // @synthesize debugName=_debugName;
 
 - (void)_begin;
+- (BOOL)_canBeInterrupted;
 - (id)_descriptionProem;
+- (id)_graphNodeDebugName;
 - (void)dealloc;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 

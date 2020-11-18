@@ -17,6 +17,7 @@
 @property (copy) NSString *TVMode;
 @property (copy) NSString *TVSignalType;
 @property BOOL allowsDisplayCompositing;
+@property BOOL allowsExtendedDynamicRange;
 @property BOOL allowsVirtualModes;
 @property (getter=isBlanked) BOOL blanked;
 @property (readonly) struct CGRect bounds;
@@ -52,6 +53,7 @@
 - (unsigned int)clientPortAtPosition:(struct CGPoint)arg1;
 - (unsigned int)clientPortOfContextId:(unsigned int)arg1;
 - (unsigned int)contextIdAtPosition:(struct CGPoint)arg1;
+- (unsigned int)contextIdAtPosition:(struct CGPoint)arg1 excludingContextIds:(id)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2;
 - (void)dealloc;
@@ -66,6 +68,8 @@
 - (void)setColorMatrix:(float *)arg1 scale:(float)arg2 rampDuration:(double)arg3;
 - (void)setMaximumRefreshRate:(float)arg1;
 - (void)setMinimumRefreshRate:(float)arg1;
+- (void)setNits:(float)arg1;
+- (unsigned int)taskNamePortOfContextId:(unsigned int)arg1;
 - (unsigned int)taskPortOfContextId:(unsigned int)arg1;
 - (void)update;
 - (void)willUnblank;

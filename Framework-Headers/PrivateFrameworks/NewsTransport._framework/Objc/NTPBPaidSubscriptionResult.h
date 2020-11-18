@@ -25,12 +25,14 @@
     NSString *_sourceChannelId;
     NSData *_subscriptionPurchaseSessionId;
     BOOL _arrivedFromAd;
+    BOOL _sawSubscriptionSheet;
     BOOL _subscriptionOnlyArticlePreview;
     struct {
         unsigned int paidSubscriptionConversionPointType:1;
         unsigned int parentFeedType:1;
         unsigned int resultType:1;
         unsigned int arrivedFromAd:1;
+        unsigned int sawSubscriptionSheet:1;
         unsigned int subscriptionOnlyArticlePreview:1;
     } _has;
 }
@@ -51,6 +53,7 @@
 @property (nonatomic) BOOL hasPaidSubscriptionConversionPointType;
 @property (nonatomic) BOOL hasParentFeedType;
 @property (nonatomic) BOOL hasResultType;
+@property (nonatomic) BOOL hasSawSubscriptionSheet;
 @property (readonly, nonatomic) BOOL hasSectionId;
 @property (readonly, nonatomic) BOOL hasSourceChannelId;
 @property (nonatomic) BOOL hasSubscriptionOnlyArticlePreview;
@@ -59,6 +62,7 @@
 @property (nonatomic) int paidSubscriptionConversionPointType; // @synthesize paidSubscriptionConversionPointType=_paidSubscriptionConversionPointType;
 @property (nonatomic) int parentFeedType; // @synthesize parentFeedType=_parentFeedType;
 @property (nonatomic) int resultType; // @synthesize resultType=_resultType;
+@property (nonatomic) BOOL sawSubscriptionSheet; // @synthesize sawSubscriptionSheet=_sawSubscriptionSheet;
 @property (strong, nonatomic) NSString *sectionId; // @synthesize sectionId=_sectionId;
 @property (strong, nonatomic) NSString *sourceChannelId; // @synthesize sourceChannelId=_sourceChannelId;
 @property (nonatomic) BOOL subscriptionOnlyArticlePreview; // @synthesize subscriptionOnlyArticlePreview=_subscriptionOnlyArticlePreview;

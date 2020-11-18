@@ -8,7 +8,7 @@
 
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSHashTable, NSString, PUBrowsingSession, PUDoubleTapZoomController, PUOneUpBarsController, PUTouchingGestureRecognizer;
+@class NSHashTable, NSString, PUBrowsingSession, PUDoubleTapZoomController, PULongPressDragController, PUOneUpBarsController, PUTouchingGestureRecognizer;
 @protocol PUOneUpGestureRecognizerCoordinatorDelegate;
 
 __attribute__((visibility("hidden")))
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     PUBrowsingSession *_browsingSession;
     PUOneUpBarsController *_oneUpBarsController;
     PUDoubleTapZoomController *_doubleTapZoomController;
+    PULongPressDragController *_longPressDragController;
     NSHashTable *__irisGestureRecognizers;
 }
 
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) PUDoubleTapZoomController *doubleTapZoomController; // @synthesize doubleTapZoomController=_doubleTapZoomController;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) PULongPressDragController *longPressDragController; // @synthesize longPressDragController=_longPressDragController;
 @property (strong, nonatomic) PUOneUpBarsController *oneUpBarsController; // @synthesize oneUpBarsController=_oneUpBarsController;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PUTouchingGestureRecognizer *touchingGestureRecognizer;

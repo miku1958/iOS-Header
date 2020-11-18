@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSNumber, NSString;
 
-@interface HMDCharacteristicMetadata : NSObject <NSSecureCoding, HMFDumpState>
+@interface HMDCharacteristicMetadata : HMFObject <NSSecureCoding, HMFDumpState>
 {
     NSNumber *_minimumValue;
     NSNumber *_maximumValue;
@@ -40,9 +40,10 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_descriptionDetails;
-- (void)configureWithCharacteristicMetadata:(id)arg1;
+- (BOOL)configureWithCharacteristicMetadata:(id)arg1;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
+- (id)getMetadataDictionary;
 - (id)initWithCharacteristicMetadata:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

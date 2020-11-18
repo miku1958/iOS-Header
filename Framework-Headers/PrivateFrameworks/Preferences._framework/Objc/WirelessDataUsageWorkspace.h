@@ -13,6 +13,8 @@
 
 @property BOOL pendingProcessAnalytics; // @synthesize pendingProcessAnalytics=_pendingProcessAnalytics;
 
+- (BOOL)shouldUseBillingCycleData;
+- (BOOL)shouldUseCalendarMonthBillingCycle;
 - (BOOL)valid;
 
 @end

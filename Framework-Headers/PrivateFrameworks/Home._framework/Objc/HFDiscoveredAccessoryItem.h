@@ -23,7 +23,6 @@
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
 @property (readonly) Class superclass;
 
-+ (id)_iconDescriptorForAccessoryCategory:(id)arg1;
 - (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)init;

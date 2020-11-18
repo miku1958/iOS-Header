@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface IDSWRMMetricContainer : NSObject
 {
@@ -37,7 +37,6 @@
 @property (readonly, nonatomic) unsigned long long numMessageReceivedSize; // @synthesize numMessageReceivedSize=_numMessageReceivedSize;
 @property (readonly, nonatomic) unsigned long long numMessageSentSize; // @synthesize numMessageSentSize=_numMessageSentSize;
 
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (void)resetMetric;

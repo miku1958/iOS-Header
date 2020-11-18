@@ -21,7 +21,7 @@
 @property (strong, nonatomic) SASmsSms *sms;
 @property (readonly) Class superclass;
 
-+ (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
++ (id)aceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)processedMessageResult;
 + (id)processedMessageResultWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;

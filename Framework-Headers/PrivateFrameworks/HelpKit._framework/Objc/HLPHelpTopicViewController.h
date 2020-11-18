@@ -11,7 +11,7 @@
 #import <HelpKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <HelpKit/UIWebViewDelegate-Protocol.h>
 
-@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocale, HLPHelpTopicHistoryItem, HLPHelpUsageController, HLPURLSession, NSArray, NSCache, NSMutableArray, NSString, NSURL, UIBarButtonItem, UITapGestureRecognizer, UIWebView;
+@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocale, HLPHelpTopicHistoryItem, HLPHelpUsageController, HLPURLSession, NSArray, NSCache, NSLayoutConstraint, NSMutableArray, NSString, NSURL, UIBarButtonItem, UITapGestureRecognizer, UIWebView;
 @protocol HLPHelpTopicViewControllerDelegate;
 
 @interface HLPHelpTopicViewController : UIViewController <UIGestureRecognizerDelegate, UIWebViewDelegate, HLPHelpTopicViewControllerDelegate, HLPHelpLoadingViewDelegate>
@@ -28,6 +28,7 @@
     UIBarButtonItem *_backBarButtonItem;
     UIBarButtonItem *_forwardBarButtonItem;
     UITapGestureRecognizer *_tapGestureRecognizer;
+    NSLayoutConstraint *_loadingViewTopConstraint;
     BOOL _displayHelpTopicsOnly;
     BOOL _hideDoneButton;
     BOOL _showTopicNameAsTitle;
@@ -60,11 +61,13 @@
 
 - (void).cxx_destruct;
 - (void)backButtonTapped;
+- (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)dealloc;
 - (void)dismiss;
 - (void)dismissWelcomeHelpTopic;
 - (void)forwardButtonTapped;
 - (void)helpTopicViewController:(id)arg1 failToLoadWithError:(id)arg2;
+- (void)helpTopicViewControllerCurrentTopicIsPassionPoint:(id)arg1;
 - (void)helpTopicViewControllerDoneButtonTapped:(id)arg1;
 - (void)helpTopicViewControllerShowHelpBookInfo:(id)arg1;
 - (id)init;
@@ -81,6 +84,7 @@
 - (void)updateNavigationButtons;
 - (void)updateScrollPositionForCurrentTopicItem;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

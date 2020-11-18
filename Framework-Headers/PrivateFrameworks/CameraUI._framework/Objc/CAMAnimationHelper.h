@@ -11,7 +11,10 @@
 }
 
 + (id)_animationWithKeyPath:(id)arg1;
++ (double)_highlightScaleForLayoutStyle:(long long)arg1;
++ (void)animateLayer:(id)arg1 forButtonHighlighted:(BOOL)arg2 layoutStyle:(long long)arg3;
 + (void)animateLayer:(id)arg1 toFrame:(struct CGRect)arg2 fromCurrentState:(BOOL)arg3;
++ (void)configurePowerSensitiveAnimation:(id)arg1;
 
 @end
 

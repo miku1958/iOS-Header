@@ -9,7 +9,7 @@
 #import <LinkPresentation/NSCopying-Protocol.h>
 #import <LinkPresentation/NSSecureCoding-Protocol.h>
 
-@class LPImage, LPSpecializationMetadata, LPVideo, NSArray, NSString, NSURL;
+@class LPIconMetadata, LPImage, LPImageMetadata, LPSpecializationMetadata, LPVideo, LPVideoMetadata, NSArray, NSString, NSURL;
 
 @interface LPLinkMetadata : NSObject <NSSecureCoding, NSCopying>
 {
@@ -25,9 +25,13 @@
     NSString *_creator;
     NSString *_creatorFacebookProfile;
     NSString *_creatorTwitterUsername;
+    NSString *_appleContentID;
     LPImage *_icon;
+    LPIconMetadata *_iconMetadata;
     LPImage *_image;
+    LPImageMetadata *_imageMetadata;
     LPVideo *_video;
+    LPVideoMetadata *_videoMetadata;
     NSArray *_icons;
     NSArray *_images;
     NSArray *_videos;
@@ -38,13 +42,16 @@
 
 @property (copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (readonly, nonatomic) unsigned long long _encodedSize;
+@property (copy, nonatomic) NSString *appleContentID; // @synthesize appleContentID=_appleContentID;
 @property (copy, nonatomic) NSArray *audios; // @synthesize audios=_audios;
 @property (copy, nonatomic) NSString *creator; // @synthesize creator=_creator;
 @property (copy, nonatomic) NSString *creatorFacebookProfile; // @synthesize creatorFacebookProfile=_creatorFacebookProfile;
 @property (copy, nonatomic) NSString *creatorTwitterUsername; // @synthesize creatorTwitterUsername=_creatorTwitterUsername;
 @property (strong, nonatomic) LPImage *icon; // @synthesize icon=_icon;
+@property (strong, nonatomic) LPIconMetadata *iconMetadata; // @synthesize iconMetadata=_iconMetadata;
 @property (copy, nonatomic) NSArray *icons; // @synthesize icons=_icons;
 @property (strong, nonatomic) LPImage *image; // @synthesize image=_image;
+@property (strong, nonatomic) LPImageMetadata *imageMetadata; // @synthesize imageMetadata=_imageMetadata;
 @property (copy, nonatomic) NSArray *images; // @synthesize images=_images;
 @property (copy, nonatomic) NSString *itemType; // @synthesize itemType=_itemType;
 @property (copy, nonatomic) NSURL *originalURL; // @synthesize originalURL=_originalURL;
@@ -57,12 +64,13 @@
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) unsigned int version; // @synthesize version=_version;
 @property (strong, nonatomic) LPVideo *video; // @synthesize video=_video;
+@property (strong, nonatomic) LPVideoMetadata *videoMetadata; // @synthesize videoMetadata=_videoMetadata;
 @property (copy, nonatomic) NSArray *videos; // @synthesize videos=_videos;
 
 + (id)metadataWithDataRepresentation:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithDictionary:(id)arg1 originalURL:(id)arg2;
+- (id)_initWithDictionary:(id)arg1;
 - (void)_reduceSizeByDroppingResourcesIfNeeded;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dataRepresentation;

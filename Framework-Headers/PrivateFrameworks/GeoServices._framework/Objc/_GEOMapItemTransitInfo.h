@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOMapItemTransitInfo-Protocol.h>
 
-@class GEOPDTransitInfo, GEOPDTransitSchedule, NSArray, NSDate, NSString, NSTimeZone;
+@class GEOPDTransitInfo, GEOPDTransitSchedule, NSArray, NSDate, NSMapTable, NSString, NSTimeZone;
 
 __attribute__((visibility("hidden")))
 @interface _GEOMapItemTransitInfo : NSObject <GEOMapItemTransitInfo>
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     NSDate *_incidentExpirationDate;
     NSArray *_connections;
     NSString *_displayName;
+    NSMapTable *_cachedHeadSignsForLine;
 }
 
 @property (readonly, nonatomic) NSArray *connections;
@@ -43,11 +44,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *systems;
 @property (readonly, nonatomic) unsigned long long systemsCount;
 
+- (void).cxx_destruct;
 - (id)_departureSequencesForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 ignoreDirectionFilter:(BOOL)arg3 direction:(id)arg4 validForDateFromBlock:(CDUnknownBlockType)arg5;
 - (id)allSequencesForSystem:(id)arg1 direction:(id)arg2;
-- (void)dealloc;
 - (id)departureSequencesForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 direction:(id)arg3 validForDateFromBlock:(CDUnknownBlockType)arg4;
 - (id)directionsForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 validForDateFromBlock:(CDUnknownBlockType)arg3 hasSequencesWithNoDirection:(out BOOL *)arg4;
+- (id)headSignsForLine:(id)arg1;
 - (id)inactiveLinesForSystem:(id)arg1 relativeToDateFromBlock:(CDUnknownBlockType)arg2 excludingIncidentEntities:(id)arg3;
 - (id)initWithTransitInfo:(id)arg1 schedule:(id)arg2 timeZone:(id)arg3 incidents:(id)arg4 hasTransitIncidentComponent:(BOOL)arg5 incidentExpirationDate:(id)arg6 providerID:(int)arg7;
 - (id)linesForSystem:(id)arg1;

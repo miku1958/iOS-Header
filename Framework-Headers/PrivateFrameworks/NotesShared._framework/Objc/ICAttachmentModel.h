@@ -6,16 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <NotesShared/ICAttachmentModelUI-Protocol.h>
 #import <NotesShared/QLPreviewItem-Protocol.h>
 
-@class ICAttachment, NSArray, NSString, NSURL;
+@class ICAttachment, NSString, NSURL;
 
-@interface ICAttachmentModel : NSObject <QLPreviewItem>
+@interface ICAttachmentModel : NSObject <ICAttachmentModelUI, QLPreviewItem>
 {
-    NSArray *_searchStrings;
     BOOL _previewGenerationOperationCancelled;
     BOOL _mergeableDataDirty;
-    BOOL _hasAdditionalSearchIndexStrings;
     ICAttachment *_attachment;
 }
 
@@ -25,65 +24,75 @@
 @property (readonly, nonatomic) BOOL canSaveURLWithOtherAttachments;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL generateAsynchronousPreviews;
-@property (readonly, nonatomic) BOOL generatePreviewsDuringCloudActivity;
-@property (readonly, nonatomic) CDUnknownBlockType genericBrickThumbnailCreator;
-@property (readonly, nonatomic) CDUnknownBlockType genericListThumbnailCreator;
-@property BOOL hasAdditionalSearchIndexStrings; // @synthesize hasAdditionalSearchIndexStrings=_hasAdditionalSearchIndexStrings;
+@property (readonly, nonatomic) NSString *hardLinkVersion;
 @property (readonly, nonatomic) BOOL hasPreviews;
 @property (readonly, nonatomic) BOOL hasThumbnailImage;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct CGSize intrinsicContentSize;
 @property (nonatomic, getter=isMergeableDataDirty) BOOL mergeableDataDirty; // @synthesize mergeableDataDirty=_mergeableDataDirty;
-@property (readonly, nonatomic) BOOL needToGeneratePreviews;
 @property (readonly, nonatomic) BOOL needsFullSizePreview;
 @property BOOL previewGenerationOperationCancelled; // @synthesize previewGenerationOperationCancelled=_previewGenerationOperationCancelled;
+@property (readonly, nonatomic) NSString *previewImageTypeUTI;
 @property (readonly, nonatomic) NSString *previewItemTitle;
 @property (readonly, nonatomic) NSURL *previewItemURL;
-@property (readonly, nonatomic) NSArray *quicklookPreviewItems;
-@property (readonly, nonatomic) BOOL requiresNetworkToGeneratePreview;
-@property (readonly, copy) NSArray *searchStrings;
+@property (readonly, nonatomic) NSURL *saveURL;
 @property (readonly, nonatomic) BOOL showThumbnailInNoteList;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsQuickLook;
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
 + (void)deletePreviewItemHardLinkURLs;
-+ (struct UIImage *)fileIconForURL:(id)arg1 withPreferredSize:(struct CGSize)arg2;
-+ (void)populateLocationSearchStringsIfPossible:(id)arg1 forAttachment:(id)arg2;
 - (void).cxx_destruct;
-- (id)activityItems;
+- (void)addLocation;
+- (id)additionalIndexableTextContentInNote;
+- (void)attachmentAwakeFromFetch;
 - (void)attachmentDidRefresh:(BOOL)arg1;
 - (id)attachmentModelType;
 - (void)attachmentWillRefresh:(BOOL)arg1;
 - (void)attachmentWillTurnIntoFault;
+- (id)attributesForSharingHTMLWithTagName:(id *)arg1 textContent:(id *)arg2;
+- (BOOL)canConvertToHTMLForSharing;
+- (id)correctedHardlinkURLFileExtensionForExtention:(id)arg1;
+- (id)dataForQuickLook;
+- (id)dataForTypeIdentifier:(id)arg1;
+- (void)dealloc;
 - (void)deleteSubAttachments;
-- (void)didCancelPreviewGeneratorOperation;
-- (struct UIImage *)fileIconWithPreferredSize:(struct CGSize)arg1;
+- (id)fileURLForTypeIdentifier:(id)arg1;
 - (id)generateHardLinkURLIfNecessaryForURL:(id)arg1;
 - (id)generateHardLinkURLIfNecessaryForURL:(id)arg1 withFileName:(id)arg2;
-- (void)generatePreviewsInOperation:(id)arg1;
-- (id)generateSearchIndexStringsOperation;
 - (id)hardLinkFolderPath;
 - (id)initWithAttachment:(id)arg1;
-- (void)invalidateSearchStrings;
 - (BOOL)isReadyToPresent;
-- (id)itemProvider;
-- (void)mergeWithMergeableData:(id)arg1;
-- (int)populateSearchStrings:(id)arg1;
+- (id)localizedFallbackSubtitleIOS;
+- (id)localizedFallbackSubtitleMac;
+- (id)localizedFallbackTitle;
+- (BOOL)mergeWithMergeableData:(id)arg1;
+- (id)mergeableDataForCopying;
+- (void)noteWillAddOrRemovePassword;
 - (long long)previewImageOrientation;
 - (struct CGAffineTransform)previewImageOrientationTransform;
-- (id)previewImageTypeUTI;
+- (id)providerDataTypes;
+- (id)providerFileTypes;
+- (BOOL)providesStandaloneTitleForNote;
+- (BOOL)providesTextContentInNote;
+- (void)regenerateTextContentInNote;
+- (id)searchableTextContent;
+- (id)searchableTextContentForLocation;
+- (id)searchableTextContentInNote;
 - (short)sectionForSubAttachments;
 - (BOOL)shouldCropImage;
 - (BOOL)shouldGeneratePreviewAfterChangeInSubAttachmentWithIdentifier:(id)arg1;
+- (BOOL)shouldShowInContentInfoText;
 - (BOOL)shouldSyncPreviewImageToCloud:(id)arg1;
+- (id)standaloneTitleForNote;
+- (id)textContentInNote;
 - (id)titleForSubAttachment:(id)arg1;
 - (void)undeleteSubAttachments;
 - (void)updateAfterLoadWithSubAttachmentIdentifierMap:(id)arg1;
 - (void)updateAttachmentMarkedForDeletionStateAttachmentIsInNote:(BOOL)arg1;
 - (void)updateAttachmentSize;
 - (void)updateFileBasedAttributes;
+- (void)willMarkAttachmentForDeletion;
 - (void)writeMergeableData;
 
 @end

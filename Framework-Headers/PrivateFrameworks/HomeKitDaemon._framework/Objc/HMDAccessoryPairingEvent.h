@@ -16,10 +16,12 @@
     BOOL _addViaWAC;
     AWDHomeKitVendorInformation *_vendorInfo;
     long long _linkType;
+    long long _certificationStatus;
 }
 
 @property (readonly, nonatomic, getter=isAddOperation) BOOL addOperation; // @synthesize addOperation=_addOperation;
 @property (nonatomic, getter=isAddViaWAC) BOOL addViaWAC; // @synthesize addViaWAC=_addViaWAC;
+@property (nonatomic) long long certificationStatus; // @synthesize certificationStatus=_certificationStatus;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -29,14 +31,18 @@
 
 + (void)initialize;
 + (id)pairingAccessory:(id)arg1;
++ (id)pairingAccessoryWithDescription:(id)arg1;
 + (id)removingAccessory:(id)arg1 hapAccessory:(id)arg2;
 + (id)uuid;
 - (void).cxx_destruct;
 - (unsigned int)AWDMessageType;
+- (id)initWithAccessoryDescription:(id)arg1;
 - (id)initWithUnpairedAccessory:(id)arg1 pairedAccessory:(id)arg2 hapAccessory:(id)arg3 isAddOperation:(BOOL)arg4;
 - (id)metricForAWD;
 - (void)pairedAccessory:(id)arg1;
-- (void)pairedToServer:(id)arg1;
+- (void)pairedToServer:(id)arg1 certificationStatus:(long long)arg2;
+- (void)setAddedViaWAC:(BOOL)arg1;
+- (void)setcertificationStatus:(long long)arg1;
 
 @end
 

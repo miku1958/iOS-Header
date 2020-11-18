@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithPayload:(id)arg1;
 - (long long)write:(int)arg1;
+- (long long)writeInternal:(CDUnknownBlockType)arg1;
 
 @end
 

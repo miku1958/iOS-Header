@@ -12,7 +12,6 @@
 
 - (BOOL)canBecomeFirstResponder;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

@@ -23,18 +23,17 @@
 @property (strong, nonatomic) FBSystemServiceServer *server; // @synthesize server=_server;
 
 + (id)sharedInstance;
-- (void)_activateApplication:(id)arg1 options:(id)arg2 source:(id)arg3 originalSource:(id)arg4 withResult:(CDUnknownBlockType)arg5;
+- (void)_activateApplication:(id)arg1 requestID:(unsigned int)arg2 options:(id)arg3 source:(id)arg4 originalSource:(id)arg5 withResult:(CDUnknownBlockType)arg6;
 - (BOOL)_isTrustedRequestToOpenApplication:(id)arg1 options:(id)arg2 source:(id)arg3 originalSource:(id)arg4;
 - (BOOL)_isWhitelistedLaunchSuspendedApp:(id)arg1;
-- (void)_logPendedActivationRequestForMismatchedClientSequenceNumber:(unsigned long long)arg1 clientCacheGUID:(id)arg2 ourSequenceNumber:(unsigned long long)arg3 ourCacheGUID:(id)arg4;
 - (unsigned long long)_mapShutdownOptionsToOptions:(id)arg1;
 - (void)_performExitTasksForRelaunch:(BOOL)arg1;
-- (void)_reallyActivateApplication:(id)arg1 options:(id)arg2 source:(id)arg3 originalSource:(id)arg4 isTrusted:(BOOL)arg5 sequenceNumber:(unsigned long long)arg6 cacheGUID:(id)arg7 ourSequenceNumber:(unsigned long long)arg8 ourCacheGUID:(id)arg9 withResult:(CDUnknownBlockType)arg10;
-- (BOOL)_requireEntitlementToOpenURL:(id)arg1;
+- (void)_reallyActivateApplication:(id)arg1 requestID:(unsigned int)arg2 options:(id)arg3 source:(id)arg4 originalSource:(id)arg5 isTrusted:(BOOL)arg6 sequenceNumber:(unsigned long long)arg7 cacheGUID:(id)arg8 ourSequenceNumber:(unsigned long long)arg9 ourCacheGUID:(id)arg10 withResult:(CDUnknownBlockType)arg11;
+- (BOOL)_requireEntitlementToOpenURL:(id)arg1 options:(id)arg2;
 - (BOOL)_shouldPendRequestForClientSequenceNumber:(unsigned long long)arg1 clientCacheGUID:(id)arg2 ourSequenceNumber:(unsigned long long)arg3 ourCacheGUID:(id)arg4;
 - (void)_shutdownWithFBSOptions:(id)arg1;
 - (void)_terminateProcess:(id)arg1 forReason:(long long)arg2 andReport:(BOOL)arg3 withDescription:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)activateApplication:(id)arg1 options:(id)arg2 source:(id)arg3 originalSource:(id)arg4 withResult:(CDUnknownBlockType)arg5;
+- (void)activateApplication:(id)arg1 requestID:(unsigned int)arg2 options:(id)arg3 source:(id)arg4 originalSource:(id)arg5 withResult:(CDUnknownBlockType)arg6;
 - (void)canActivateApplication:(id)arg1 source:(id)arg2 withResult:(CDUnknownBlockType)arg3;
 - (void)dataReset:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;

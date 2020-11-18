@@ -11,12 +11,12 @@
 #import <RemoteUI/RUITableFooterDelegate-Protocol.h>
 #import <RemoteUI/RUITopLevelPageElement-Protocol.h>
 
-@class NSString, PSPasscodeField, RUIHTMLHeaderElement, RUIHTMLHeaderView, RUIHeaderElement, RUIObjectModel, RUIPage, UIColor, UITextField, UIView;
+@class NSString, PSPasscodeField, RUIHTMLHeaderElement, RUIHTMLHeaderView, RUIHeaderElement, RUIObjectModel, RUIPage, UIColor, UIScrollView, UITextField, UIView;
 @protocol RUIHeader, RemoteUITableFooter;
 
 @interface RUIPasscodeView : RUIElement <RUITableFooterDelegate, PSPasscodeFieldDelegate, CAAnimationDelegate, RUITopLevelPageElement>
 {
-    UIView *_containerView;
+    UIScrollView *_containerView;
     UIView<RUIHeader> *_headerView;
     RUIHTMLHeaderView *_HTMLHeaderView;
     UITextField *_complexPasscodeField;
@@ -65,11 +65,13 @@
 - (id)footerView;
 - (void)footerView:(id)arg1 activatedLinkWithURL:(id)arg2;
 - (id)headerView;
-- (id)init;
+- (id)initWithAttributes:(id)arg1 parent:(id)arg2;
 - (void)passcodeField:(id)arg1 enteredPasscode:(id)arg2;
 - (id)passcodeView;
+- (void)performAction:(int)arg1 forElement:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)populatePostbackDictionary:(id)arg1;
 - (id)sourceURL;
+- (id)subElementWithID:(id)arg1;
 - (void)submitPIN;
 - (id)titleLabel;
 - (id)view;

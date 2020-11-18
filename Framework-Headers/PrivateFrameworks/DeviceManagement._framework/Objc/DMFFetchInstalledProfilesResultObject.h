@@ -4,22 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskResultObject.h>
+#import <DeviceManagement/DMFFetchProfilesResultObject.h>
 
-@class NSArray;
-
-@interface DMFFetchInstalledProfilesResultObject : CATTaskResultObject
+@interface DMFFetchInstalledProfilesResultObject : DMFFetchProfilesResultObject
 {
-    NSArray *_profiles;
 }
-
-@property (copy, nonatomic) NSArray *profiles; // @synthesize profiles=_profiles;
-
-+ (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithProfiles:(id)arg1;
 
 @end
 

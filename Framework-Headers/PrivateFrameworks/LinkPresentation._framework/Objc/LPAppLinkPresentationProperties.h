@@ -46,6 +46,7 @@
 @property (strong, nonatomic) LPVideo *video; // @synthesize video=_video;
 
 - (void).cxx_destruct;
+- (long long)style;
 
 @end
 

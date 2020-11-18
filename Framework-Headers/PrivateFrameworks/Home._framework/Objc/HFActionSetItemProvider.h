@@ -6,12 +6,13 @@
 
 #import <Home/HFItemProvider.h>
 
-@class HMRoom, NSMutableSet;
+@class HMHome, HMRoom, NSMutableSet;
 @protocol HFCharacteristicValueSource;
 
 @interface HFActionSetItemProvider : HFItemProvider
 {
     BOOL _onlyShowsFavorites;
+    HMHome *_home;
     HMRoom *_room;
     CDUnknownBlockType _filter;
     unsigned long long _actionSetItemStyle;
@@ -22,6 +23,7 @@
 @property (readonly, nonatomic) unsigned long long actionSetItemStyle; // @synthesize actionSetItemStyle=_actionSetItemStyle;
 @property (strong, nonatomic) NSMutableSet *actionSetItems; // @synthesize actionSetItems=_actionSetItems;
 @property (copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
+@property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (nonatomic) BOOL onlyShowsFavorites; // @synthesize onlyShowsFavorites=_onlyShowsFavorites;
 @property (strong, nonatomic) id<HFCharacteristicValueSource> overrideValueSource; // @synthesize overrideValueSource=_overrideValueSource;
 @property (strong, nonatomic) HMRoom *room; // @synthesize room=_room;
@@ -30,6 +32,7 @@
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_favoriteFilter;
 - (CDUnknownBlockType)_roomFilter;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithHome:(id)arg1;
 - (id)initWithHome:(id)arg1 actionSetItemStyle:(unsigned long long)arg2;
 - (id)invalidationReasons;

@@ -18,8 +18,6 @@
 @property long long sourceType; // @synthesize sourceType=_sourceType;
 
 + (id)_stringForColor:(id)arg1 sourceType:(long long)arg2;
-+ (id)colorForName:(id)arg1;
-+ (void)initColorNames;
 - (void).cxx_destruct;
 - (id)_colorFromParseObject:(id)arg1 sourceType:(long long *)arg2;
 - (id)_keywordKolorFromParseToken:(id)arg1;

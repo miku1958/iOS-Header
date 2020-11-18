@@ -19,6 +19,7 @@
 @property (nonatomic) struct __CFHost *host; // @synthesize host=_host;
 @property (strong, nonatomic) NSString *serviceString; // @synthesize serviceString=_serviceString;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (void)finishCoreDAVTaskWithError:(id)arg1;

@@ -46,6 +46,8 @@
 - (id)_handleGetGuidedAccessAvailability:(id)arg1;
 - (id)_handleGetZoomInitialFocusRect:(id)arg1;
 - (void)_handleGuidedAccessAutomationCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_handleGuidedAccessCurrentModeAndSessionApp:(id)arg1;
+- (id)_handleGuidedAccessEffectiveAppBundleIdentifier:(id)arg1;
 - (id)_handleGuidedAccessIgnoredRegions:(id)arg1;
 - (id)_handleHomeClickSwallowedForGuidedAccess:(id)arg1;
 - (id)_handleInPreBoardMode:(id)arg1;
@@ -69,10 +71,12 @@
 - (void)_handleSetGuidedAccessEnabledByRequestingApp:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_handleSetInPreBoardMode:(id)arg1;
 - (id)_handleSetSessionIsLoginSession:(id)arg1;
+- (id)_handleSetSwitchControlHasScreenSwitch:(id)arg1;
 - (id)_handleSetSwitchControlRendersDeviceUnusable:(id)arg1;
 - (id)_handleSetZoomInitialFocusRect:(id)arg1;
 - (id)_handleSupportsAdaptation:(id)arg1;
 - (id)_handleSupportsBlueLightReduction:(id)arg1;
+- (id)_handleToggleGuidedAccess:(id)arg1;
 - (id)_handleTripleClickHomeButtonFired:(id)arg1;
 - (id)_handleUserEventOccurred:(id)arg1;
 - (id)_handleZoomAdjustment:(id)arg1;

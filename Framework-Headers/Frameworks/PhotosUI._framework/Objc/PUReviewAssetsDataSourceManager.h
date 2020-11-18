@@ -9,10 +9,11 @@
 #import <PhotosUI/PUReviewDataSourceChangeObserver-Protocol.h>
 
 @class NSString, PUReviewDataSource;
-@protocol PUDisplayAssetCollection;
+@protocol PUDisplayAssetCollection, PUReviewAssetsDataSourceManagerDelegate;
 
 @interface PUReviewAssetsDataSourceManager : PUAssetsDataSourceManager <PUReviewDataSourceChangeObserver>
 {
+    id<PUReviewAssetsDataSourceManagerDelegate> _reviewDelegate;
     PUReviewDataSource *__reviewDataSource;
     id<PUDisplayAssetCollection> __containingAssetCollection;
 }
@@ -22,14 +23,15 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<PUReviewAssetsDataSourceManagerDelegate> reviewDelegate; // @synthesize reviewDelegate=_reviewDelegate;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_updateWithReviewDataSource:(id)arg1;
+- (void)_updateWithReviewDataSource:(id)arg1 changeDetails:(id)arg2;
 - (void)dealloc;
 - (id)init;
 - (id)initWithReviewDataSource:(id)arg1;
-- (void)reviewDataSourceDidChange:(id)arg1;
+- (void)reviewDataSourceDidChange:(id)arg1 changeDetails:(id)arg2;
 
 @end
 

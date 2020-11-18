@@ -8,5 +8,9 @@
 
 @protocol UIKBEmojiHitTestResponder <NSObject>
 - (void)deactivateActiveKey;
+- (void)finishSliderBehaviorFeedback;
+- (BOOL)isTrackpadMode;
+- (void)prepareSliderBehaviorFeedback;
+- (void)provideSliderBehaviorFeedback;
 @end
 

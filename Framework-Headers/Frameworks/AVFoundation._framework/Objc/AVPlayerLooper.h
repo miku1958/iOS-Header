@@ -19,7 +19,6 @@
 @property (readonly) long long status;
 
 + (void)initialize;
-+ (id)keyPathsForValuesAffectingLoopingEnabled;
 + (id)playerLooperWithPlayer:(id)arg1 templateItem:(id)arg2;
 + (id)playerLooperWithPlayer:(id)arg1 templateItem:(id)arg2 timeRange:(CDStruct_e83c9415)arg3;
 - (int)_calculateNumberOfCopiesNeeded;
@@ -33,7 +32,6 @@
 - (void)disableLooping;
 - (id)init;
 - (id)initWithPlayer:(id)arg1 templateItem:(id)arg2 timeRange:(CDStruct_e83c9415)arg3;
-- (BOOL)isLoopingEnabled;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 
 @end

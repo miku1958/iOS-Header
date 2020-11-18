@@ -18,7 +18,8 @@
     NPKProtoPass *_pass;
     NSData *_previousManifestHash;
     unsigned int _resyncID;
-    CDStruct_a41f3871 _has;
+    unsigned int _syncID;
+    CDStruct_02c44088 _has;
 }
 
 @property (strong, nonatomic) NPKProtoCatalog *catalog; // @synthesize catalog=_catalog;
@@ -27,11 +28,13 @@
 @property (readonly, nonatomic) BOOL hasLibraryHash;
 @property (readonly, nonatomic) BOOL hasPreviousManifestHash;
 @property (nonatomic) BOOL hasResyncID;
+@property (nonatomic) BOOL hasSyncID;
 @property (nonatomic) unsigned int lastKnownResyncID; // @synthesize lastKnownResyncID=_lastKnownResyncID;
 @property (strong, nonatomic) NPKProtoHash *libraryHash; // @synthesize libraryHash=_libraryHash;
 @property (strong, nonatomic) NPKProtoPass *pass; // @synthesize pass=_pass;
 @property (strong, nonatomic) NSData *previousManifestHash; // @synthesize previousManifestHash=_previousManifestHash;
 @property (nonatomic) unsigned int resyncID; // @synthesize resyncID=_resyncID;
+@property (nonatomic) unsigned int syncID; // @synthesize syncID=_syncID;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

@@ -18,7 +18,7 @@
 @property (strong, nonatomic) CoreDAVItem *prop; // @synthesize prop=_prop;
 
 + (id)copyParseRules;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 

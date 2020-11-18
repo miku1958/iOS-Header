@@ -17,12 +17,14 @@
     BOOL _usesCustomTextAlignment;
     id<RUITableFooterDelegate> _delegate;
     NSURL *_linkURL;
+    CDUnknownBlockType _linkAction;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<RUITableFooterDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) CDUnknownBlockType linkAction; // @synthesize linkAction=_linkAction;
 @property (readonly, nonatomic) UIButton *linkButton;
 @property (readonly, nonatomic) RUILinkLabel *linkLabel; // @synthesize linkLabel=_linkLabel;
 @property (strong, nonatomic) NSURL *linkURL; // @synthesize linkURL=_linkURL;

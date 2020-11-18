@@ -11,7 +11,6 @@
 
 @interface HKRingGroupController : HKAnimatableObject
 {
-    BOOL _ringStartingStateIsDirty;
     long long *_iconAnimationFrameNumbers;
     long long _numberOfRings;
     double _ringDiameter;
@@ -46,7 +45,7 @@
 - (double)_adjustedDurationForRingWithIndex:(long long)arg1 startPercentage:(double)arg2 targetPercentage:(double)arg3 defaultDuration:(double)arg4;
 - (void)_configureIconWithStartingPercentage:(double)arg1 forRingAtIndex:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (unsigned long long)_lastRingFrameNumberForRingAtIndex:(unsigned long long)arg1;
-- (void)_markRingStartingStateDirty;
+- (void)_markRingGroupAsDirty;
 - (id)_newAnimatablePropertyForType:(unsigned long long)arg1;
 - (void)_removeAllRingAnimationsForPropertyType:(unsigned long long)arg1;
 - (double)_ringPercentageAdjustedForProximityToFull:(double)arg1 withRingDiameter:(double)arg2 thickness:(double)arg3;
@@ -59,6 +58,12 @@
 - (BOOL)_setFloatValue:(float)arg1 forIconPropertyType:(unsigned long long)arg2 ofRingAtIndex:(long long)arg3 animated:(BOOL)arg4;
 - (void)_setFloatValue:(float)arg1 forRingPropertyType:(unsigned long long)arg2 ofRingAtIndex:(long long)arg3 animated:(BOOL)arg4;
 - (BOOL)_setFloatValue:(float)arg1 fromCurrentValue:(float)arg2 forRingPropertyType:(unsigned long long)arg3 ofRingAtIndex:(long long)arg4 animated:(BOOL)arg5 duration:(double)arg6 completion:(CDUnknownBlockType)arg7;
+- (BOOL)_setRingDiameter:(double)arg1;
+- (BOOL)_setRingIconSize:(double)arg1;
+- (BOOL)_setRingInterspacing:(double)arg1;
+- (BOOL)_setRingScale:(double)arg1;
+- (BOOL)_setRingThickness:(double)arg1;
+- (BOOL)_setZRotation:(double)arg1;
 - (void)_updateRingDiameters;
 - (void)_updateRingIconProperties;
 - (void)_updateRingThicknesses;

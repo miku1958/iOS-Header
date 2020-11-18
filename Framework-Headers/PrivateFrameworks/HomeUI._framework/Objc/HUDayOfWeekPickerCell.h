@@ -9,7 +9,7 @@
 #import <HomeUI/HUCellProtocol-Protocol.h>
 
 @class HFItem, NSArray, NSSet, NSString, UIStackView;
-@protocol HUDayOfWeekPickerCellDelegate;
+@protocol HUDayOfWeekPickerCellDelegate, HUResizableCellDelegate;
 
 @interface HUDayOfWeekPickerCell : UITableViewCell <HUCellProtocol>
 {
@@ -27,6 +27,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
+@property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;
 @property (strong, nonatomic) NSSet *selectedRecurrences; // @synthesize selectedRecurrences=_selectedRecurrences;
 @property (readonly) Class superclass;
 

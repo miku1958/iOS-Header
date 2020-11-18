@@ -26,6 +26,7 @@
 - (id)objectForKey:(id)arg1 withConstructor:(CDUnknownBlockType)arg2;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)popObjectforKey:(id)arg1;
+- (void)removeAllObjects;
 - (void)removeObjectForKey:(id)arg1;
 - (id)replaceObject:(id)arg1 forKey:(id)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2;

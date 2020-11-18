@@ -24,7 +24,7 @@
 @property (readonly, copy, nonatomic) NSDictionary *formValues; // @synthesize formValues=_formValues;
 
 - (void).cxx_destruct;
-- (id)_classificationCorrectionsForControlWithMetadata:(id)arg1;
+- (id)_classificationCorrectionsForControlWithMetadata:(id)arg1 wasIdentifiedAsAddressBookField:(BOOL *)arg2;
 - (id)init;
 - (id)initWithDomain:(id)arg1 formMetadata:(id)arg2 formValues:(id)arg3;
 - (void)processCorrections;

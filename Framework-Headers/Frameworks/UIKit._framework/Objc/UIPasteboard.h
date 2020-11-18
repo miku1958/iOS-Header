@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) NSURL *URL;
 @property (copy, nonatomic) NSArray *URLs;
+@property (readonly, copy, nonatomic) NSArray *availableTypes;
 @property (readonly, nonatomic) long long changeCount;
 @property (copy, nonatomic) UIColor *color;
 @property (copy, nonatomic) NSArray *colors;
@@ -23,6 +24,7 @@
 @property (readonly, nonatomic) BOOL hasURLs;
 @property (copy, nonatomic) UIImage *image;
 @property (copy, nonatomic) NSArray *images;
+@property (copy, nonatomic) NSArray *itemProviders;
 @property (copy, nonatomic) NSArray *items;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) long long numberOfItems;
@@ -39,15 +41,22 @@
 + (void)removePasteboardWithName:(id)arg1;
 - (BOOL)_hasStrings;
 - (void)addItems:(id)arg1;
+- (BOOL)canInstantiateObjectsOfClass:(Class)arg1;
 - (BOOL)containsPasteboardTypes:(id)arg1;
 - (BOOL)containsPasteboardTypes:(id)arg1 inItemSet:(id)arg2;
 - (id)dataForPasteboardType:(id)arg1;
 - (id)dataForPasteboardType:(id)arg1 inItemSet:(id)arg2;
+- (id)itemProvidersForInstantiatingObjectsOfClass:(Class)arg1;
 - (id)itemSetWithPasteboardTypes:(id)arg1;
 - (id)pasteboardTypesForItemSet:(id)arg1;
 - (void)setData:(id)arg1 forPasteboardType:(id)arg2;
+- (void)setItemProviders:(id)arg1 localOnly:(BOOL)arg2 expirationDate:(id)arg3;
+- (void)setItemProviders:(id)arg1 options:(id)arg2;
 - (void)setItems:(id)arg1 options:(id)arg2;
 - (void)setName:(id)arg1;
+- (void)setObjects:(id)arg1;
+- (void)setObjects:(id)arg1 localOnly:(BOOL)arg2 expirationDate:(id)arg3;
+- (void)setObjects:(id)arg1 options:(id)arg2;
 - (void)setPersistent:(BOOL)arg1;
 - (void)setValue:(id)arg1 forPasteboardType:(id)arg2;
 - (id)valueForPasteboardType:(id)arg1;

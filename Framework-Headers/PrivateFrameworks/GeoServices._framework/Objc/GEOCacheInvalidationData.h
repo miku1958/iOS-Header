@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 
@@ -21,7 +21,7 @@
 @property (readonly, nonatomic) unsigned int version; // @synthesize version=_version;
 @property (readonly, nonatomic) NSArray *versionDomains; // @synthesize versionDomains=_versionDomains;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithTimestamp:(double)arg1 ttl:(double)arg2 version:(unsigned int)arg3 domains:(id)arg4;
 
 @end

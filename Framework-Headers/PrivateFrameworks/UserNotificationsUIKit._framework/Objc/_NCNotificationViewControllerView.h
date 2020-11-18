@@ -6,27 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-#import <UserNotificationsUIKit/NCBlurring-Protocol.h>
-
-@class NSString;
-@protocol NCBlurring;
-
-@interface _NCNotificationViewControllerView : UIView <NCBlurring>
+@interface _NCNotificationViewControllerView : UIView
 {
-    UIView<NCBlurring> *_blurringView;
     UIView *_contentView;
 }
 
-@property (weak, nonatomic) UIView<NCBlurring> *blurringView; // @synthesize blurringView=_blurringView;
 @property (weak, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (nonatomic) double inputRadius;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

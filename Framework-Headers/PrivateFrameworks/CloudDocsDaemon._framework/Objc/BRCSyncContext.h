@@ -30,6 +30,8 @@ __attribute__((visibility("hidden")))
     BRCThrottleBase *_applyThrottle;
     BRCThrottleBase *_downloadThrottle;
     BRCThrottleBase *_uploadThrottle;
+    BRCThrottleBase *_uploadFileModifiedThrottle;
+    BRCThrottleBase *_perItemSyncUpThrottle;
     BRCTransferStream *_uploadStream;
     BRCTransferStream *_downloadStream;
 }
@@ -42,14 +44,17 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BRCTransferStream *downloadStream; // @synthesize downloadStream=_downloadStream;
 @property (readonly, nonatomic) BRCThrottleBase *downloadThrottle; // @synthesize downloadThrottle=_downloadThrottle;
 @property (readonly, nonatomic) BOOL isShared; // @synthesize isShared=_isShared;
+@property (readonly, nonatomic) BRCThrottleBase *perItemSyncUpThrottle; // @synthesize perItemSyncUpThrottle=_perItemSyncUpThrottle;
 @property (readonly, nonatomic) BRCThrottleBase *readerThrottle; // @synthesize readerThrottle=_readerThrottle;
 @property (readonly, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
+@property (readonly, nonatomic) BRCThrottleBase *uploadFileModifiedThrottle; // @synthesize uploadFileModifiedThrottle=_uploadFileModifiedThrottle;
 @property (readonly, nonatomic) BRCTransferStream *uploadStream; // @synthesize uploadStream=_uploadStream;
 @property (readonly, nonatomic) BRCThrottleBase *uploadThrottle; // @synthesize uploadThrottle=_uploadThrottle;
 
-+ (id)_contextIdentifierForAppLibrary:(id)arg1;
-+ (id)_contextIdentifierForZone:(id)arg1 metadata:(BOOL)arg2;
-+ (id)_sourceAppIdentifierForZone:(id)arg1;
++ (id)_contextIdentifierForMangledID:(id)arg1 metadata:(BOOL)arg2;
++ (id)_sourceAppIdentifierForMangledID:(id)arg1;
++ (id)contextIdentifierForMangledID:(id)arg1;
++ (id)transferContextForServerZone:(id)arg1 appLibrary:(id)arg2;
 - (void).cxx_destruct;
 - (void)_armForegroundGraceTimerForClientDescription:(id)arg1;
 - (id)_database;

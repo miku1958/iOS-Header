@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class _BRCLogSection, brc_task_tracker;
+@class brc_task_tracker;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -15,13 +15,13 @@ __attribute__((visibility("hidden")))
     int _startTracingCode;
     int _endTracingCode;
     brc_task_tracker *_tracker;
-    _BRCLogSection *_sections;
+    unsigned long long _sections;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (nonatomic) int endTracingCode; // @synthesize endTracingCode=_endTracingCode;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (strong, nonatomic) _BRCLogSection *sections; // @synthesize sections=_sections;
+@property (nonatomic) unsigned long long sections; // @synthesize sections=_sections;
 @property (nonatomic) int startTracingCode; // @synthesize startTracingCode=_startTracingCode;
 @property (strong, nonatomic) brc_task_tracker *tracker; // @synthesize tracker=_tracker;
 

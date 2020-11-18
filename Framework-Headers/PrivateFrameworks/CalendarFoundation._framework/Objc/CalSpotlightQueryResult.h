@@ -10,11 +10,13 @@
 
 @interface CalSpotlightQueryResult : NSObject
 {
+    BOOL _naturalLanguageSuggestedEvent;
     NSString *_identifier;
     NSString *_title;
 }
 
 @property (strong) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic, getter=isNaturalLanguageSuggestedEvent) BOOL naturalLanguageSuggestedEvent; // @synthesize naturalLanguageSuggestedEvent=_naturalLanguageSuggestedEvent;
 @property (strong) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;

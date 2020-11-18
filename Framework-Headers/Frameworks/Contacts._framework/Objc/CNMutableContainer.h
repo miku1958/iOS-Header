@@ -19,7 +19,7 @@
 @property (copy, nonatomic) CNContainer *snapshot; // @dynamic snapshot;
 @property (nonatomic) long long type;
 
-- (void)adoptValuesFromAndSetSnaphot:(id)arg1;
+- (void)adoptValuesFromAndSetSnapshot:(id)arg1;
 - (id)copy;
 - (id)freeze;
 - (id)freezeWithSelfAsSnapshot;

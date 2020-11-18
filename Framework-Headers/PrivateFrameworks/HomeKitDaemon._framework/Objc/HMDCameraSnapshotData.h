@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class HAPOSTransaction, HMDVideoResolution, NSData;
+@class HMDVideoResolution, HMFOSTransaction, NSData;
 
-@interface HMDCameraSnapshotData : NSObject
+@interface HMDCameraSnapshotData : HMFObject
 {
     NSData *_snapshotData;
-    HAPOSTransaction *_snapshotDataTrasaction;
+    HMFOSTransaction *_snapshotDataTrasaction;
     HMDVideoResolution *_videoResolution;
 }
 
 @property (readonly, nonatomic) NSData *snapshotData; // @synthesize snapshotData=_snapshotData;
-@property (readonly, nonatomic) HAPOSTransaction *snapshotDataTrasaction; // @synthesize snapshotDataTrasaction=_snapshotDataTrasaction;
+@property (readonly, nonatomic) HMFOSTransaction *snapshotDataTrasaction; // @synthesize snapshotDataTrasaction=_snapshotDataTrasaction;
 @property (readonly, nonatomic) HMDVideoResolution *videoResolution; // @synthesize videoResolution=_videoResolution;
 
 - (void).cxx_destruct;

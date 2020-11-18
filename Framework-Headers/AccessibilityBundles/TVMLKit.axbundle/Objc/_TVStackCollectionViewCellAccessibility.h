@@ -12,6 +12,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityScrollingEnabled;
 - (BOOL)_accessibilitySupportsSemanticContext;
 
 @end

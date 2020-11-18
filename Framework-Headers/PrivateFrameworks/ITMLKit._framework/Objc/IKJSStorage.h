@@ -13,13 +13,16 @@
 
 @interface IKJSStorage : IKJSObject <IKJSStorage>
 {
-    unsigned int _usesExternalDataStore:1;
+    struct {
+        BOOL usesExternalDataStore;
+        BOOL externalStorageHasDictionaryRepresentation;
+    } _flags;
     id<IKAppDataStoring> _appStorage;
     NSMutableDictionary *_storageDict;
     NSObject<OS_dispatch_queue> *_storageQueue;
 }
 
-@property (weak, nonatomic) id<IKAppDataStoring> appStorage; // @synthesize appStorage=_appStorage;
+@property (readonly, weak, nonatomic) id<IKAppDataStoring> appStorage; // @synthesize appStorage=_appStorage;
 @property (readonly, nonatomic) unsigned long long length;
 @property (strong, nonatomic) NSMutableDictionary *storageDict; // @synthesize storageDict=_storageDict;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *storageQueue; // @synthesize storageQueue=_storageQueue;
@@ -30,6 +33,7 @@
 - (id)getItem:(id)arg1;
 - (id)initWithAppContext:(id)arg1 appStorage:(id)arg2;
 - (id)key:(unsigned long long)arg1;
+- (id)keysAndValues;
 - (void)removeItem:(id)arg1;
 - (void)setItem:(id)arg1:(id)arg2;
 

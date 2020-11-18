@@ -22,10 +22,11 @@
 @property (nonatomic) unsigned int clientPort; // @synthesize clientPort=_clientPort;
 @property (nonatomic) int key; // @synthesize key=_key;
 @property (copy, nonatomic) NSDictionary *payload; // @synthesize payload=_payload;
-@property (readonly, nonatomic) NSString *senderBundleId;
+@property (readonly, copy, nonatomic) NSString *senderBundleId;
 
 + (id)archivedMessageFromData:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

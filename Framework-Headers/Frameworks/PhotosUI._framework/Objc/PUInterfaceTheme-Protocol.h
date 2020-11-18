@@ -6,7 +6,7 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class NSAttributedString, NSDictionary, NSString, PUPhotoDecoration, PUStackView, UIButton, UIColor, UIFont, UIFontDescriptor, UIImage, UILabel, UINavigationController, UISwitch, UITableView, UITableViewCell, UITextField;
+@class NSAttributedString, NSDictionary, NSString, PUFeedTextCell, PUPhotoDecoration, PUStackView, UIButton, UIColor, UIFont, UIFontDescriptor, UIImage, UILabel, UINavigationController, UIProgressView, UISwitch, UITableView, UITableViewCell, UITextField, UITextView;
 
 @protocol PUInterfaceTheme <NSObject>
 
@@ -44,7 +44,6 @@
 @property (readonly, nonatomic) double cloudFeedSeparatorHeight;
 @property (readonly, nonatomic) NSDictionary *cloudFeedWhiteDefaultTextAttributes;
 @property (readonly, nonatomic) NSDictionary *cloudFeedWhiteEmphasizedTextAttributes;
-@property (readonly, nonatomic) UIColor *cloudStatusHighlightColor;
 @property (readonly, nonatomic) struct UIEdgeInsets commentsButtonTextInset;
 @property (readonly, nonatomic) UIImage *compactLoadErrorIcon;
 @property (readonly, nonatomic) struct UIEdgeInsets contentCommentsButtonImageInset;
@@ -79,8 +78,11 @@
 @property (readonly, nonatomic) UIColor *photoCollectionViewSecondScreenBackgroundColor;
 @property (readonly, nonatomic) UIColor *photoEditingActiveFilterTitleColor;
 @property (readonly, nonatomic) UIColor *photoEditingAdjustmentsBarBackgroundColor;
+@property (readonly, nonatomic) UIColor *photoEditingAdjustmentsBarCurrentPositionMarkerColor;
+@property (readonly, nonatomic) UIColor *photoEditingAdjustmentsBarDisabledColor;
 @property (readonly, nonatomic) UIColor *photoEditingAdjustmentsBarHighlightColor;
 @property (readonly, nonatomic) UIColor *photoEditingAdjustmentsBarMainColor;
+@property (readonly, nonatomic) UIColor *photoEditingAdjustmentsBarOriginalPositionMarkerColor;
 @property (readonly, nonatomic) UIColor *photoEditingAdjustmentsBarPlayheadColor;
 @property (readonly, nonatomic) UIColor *photoEditingAdjustmentsModeLabelColor;
 @property (readonly, nonatomic) UIFont *photoEditingAdjustmentsModeLabelFont;
@@ -88,6 +90,8 @@
 @property (readonly, nonatomic) UIColor *photoEditingAdjustmentsModePickerValueColor;
 @property (readonly, nonatomic) UIFont *photoEditingAdjustmentsModePickerValueFont;
 @property (readonly, nonatomic) UIColor *photoEditingAdjustmentsToolBackgroundColor;
+@property (readonly, nonatomic) UIColor *photoEditingAutoEnhanceDisabledColor;
+@property (readonly, nonatomic) UIColor *photoEditingAutoEnhanceEnabledColor;
 @property (readonly, nonatomic) UIColor *photoEditingBackgroundColor;
 @property (readonly, nonatomic) UIColor *photoEditingCropButtonColor;
 @property (readonly, nonatomic) UIColor *photoEditingCropButtonSelectedColor;
@@ -95,13 +99,21 @@
 @property (readonly, nonatomic) UIFont *photoEditingCropTiltWheelFont;
 @property (readonly, nonatomic) UIColor *photoEditingCropToggleButtonColor;
 @property (readonly, nonatomic) UIFont *photoEditingCropToggleButtonFont;
+@property (readonly, nonatomic) UIColor *photoEditingDepthBadgeDisabledColor;
+@property (readonly, nonatomic) UIColor *photoEditingDepthBadgeDisabledTextColor;
+@property (readonly, nonatomic) UIColor *photoEditingDepthBadgeEnabledColor;
+@property (readonly, nonatomic) UIColor *photoEditingDepthBadgeEnabledTextColor;
+@property (readonly, nonatomic) UIColor *photoEditingDepthButtonDisabledColor;
+@property (readonly, nonatomic) UIColor *photoEditingDepthButtonEnabledColor;
 @property (readonly, nonatomic) UIFont *photoEditingFilterTitleFont;
 @property (readonly, nonatomic) UIColor *photoEditingInactiveFilterTitleColor;
 @property (readonly, nonatomic) UIColor *photoEditingIrisDisabledColor;
 @property (readonly, nonatomic) UIColor *photoEditingIrisEnabledColor;
+@property (readonly, nonatomic) UIColor *photoEditingKeyPhotoSelectionNormalColor;
 @property (readonly, nonatomic) UIColor *photoEditingOverlayBadgeBackgroundColor;
 @property (readonly, nonatomic) UIColor *photoEditingOverlayBadgeColor;
 @property (readonly, nonatomic) UIFont *photoEditingOverlayBadgeFont;
+@property (readonly, nonatomic) UIColor *photoEditingPopoverBackgroundColor;
 @property (readonly, nonatomic) UIFont *photoEditingToolbarButtonCompactFont;
 @property (readonly, nonatomic) UIFont *photoEditingToolbarButtonNormalFont;
 @property (readonly, nonatomic) UIColor *photoEditingToolbarDestructiveButtonColor;
@@ -118,20 +130,28 @@
 @property (readonly, nonatomic) UIColor *scrubberPlaceholderColor;
 @property (readonly, nonatomic) UIFont *searchRecentLabelFont;
 @property (readonly, nonatomic) UIColor *searchRecentLabelTextColor;
+@property (readonly, nonatomic) double searchSingleTitleBottomBaselineDistance;
+@property (readonly, nonatomic) double searchSingleTitleTopBaselineDistance;
+@property (readonly, nonatomic) double searchSubtitleBottomBaselineDistance;
 @property (readonly, nonatomic) UIFont *searchSubtitleLabelFont;
 @property (readonly, nonatomic) UIColor *searchSubtitleTextColor;
 @property (readonly, nonatomic) UIColor *searchTableViewBackgroundColor;
 @property (readonly, nonatomic) UIFont *searchTitleLabelFont;
+@property (readonly, nonatomic) double searchTitleSubtitleBaselineDistance;
+@property (readonly, nonatomic) double searchTitleTopBaselineDistance;
+@property (readonly, nonatomic) NSDictionary *sectionHeaderNotTappableTextAttributes;
 @property (readonly, nonatomic) UIFont *sharedAlbumCommentCardAlbumTitleFont;
 @property (readonly, nonatomic) UIFont *sharedAlbumCommentCardButtonFont;
 @property (readonly, nonatomic) UIFont *sharedAlbumCommentCardTextFont;
 @property (readonly, nonatomic) UIFont *sharedAlbumCommentCardTitleFont;
-@property (readonly, nonatomic) UIImage *slideshowAirplayImage;
 @property (readonly, nonatomic) UIColor *slideshowChromeBarTintColor;
 @property (readonly, nonatomic) UIColor *slideshowMusicHeaderBackgroundColor;
 @property (readonly, nonatomic) UIColor *slideshowMusicHeaderTextColor;
 @property (readonly, nonatomic) UIColor *slideshowSeparatorColor;
 @property (readonly, nonatomic) struct UIEdgeInsets slideshowSeparatorInset;
+@property (readonly, nonatomic) NSDictionary *textBlockBelowArtSubTitleTextAttributes;
+@property (readonly, nonatomic) NSDictionary *textBlockBelowArtTitleEmphasizedTextAttributes;
+@property (readonly, nonatomic) NSDictionary *textBlockBelowArtTitleTextAttributes;
 @property (readonly, nonatomic) UIColor *toolbarAirPlayButtonColor;
 @property (readonly, nonatomic) UIColor *toolbarCommentsHiddenButtonImageColor;
 @property (readonly, nonatomic) NSDictionary *toolbarCommentsHiddenButtonTextAttributes;
@@ -165,7 +185,9 @@
 - (void)configureBannerLabel:(UILabel *)arg1;
 - (void)configureBannerStackView:(PUStackView *)arg1;
 - (void)configureCloudFeedCommentButton:(UIButton *)arg1 withCount:(long long)arg2;
+- (void)configureCloudFeedGroupHeaderTextCell:(PUFeedTextCell *)arg1 contentInsets:(struct UIEdgeInsets)arg2 withText:(NSString *)arg3;
 - (void)configureCloudFeedInvitationReplyButton:(UIButton *)arg1;
+- (void)configureCloudFeedSectionHeaderTextCell:(PUFeedTextCell *)arg1 contentInsets:(struct UIEdgeInsets)arg2 descriptionAttributedText:(NSAttributedString *)arg3 detailAttributedText:(NSAttributedString *)arg4;
 - (void)configureCloudFeedStackView:(PUStackView *)arg1 withStackSize:(struct CGSize)arg2;
 - (void)configureEditPluginListCellLabel:(UILabel *)arg1;
 - (void)configureEditPluginListNavigationController:(UINavigationController *)arg1;
@@ -174,7 +196,9 @@
 - (void)configureEditPluginUserDefaultsCell:(UITableViewCell *)arg1 withIcon:(UIImage *)arg2 title:(NSString *)arg3;
 - (void)configureEditPluginUserDefaultsTableView:(UITableView *)arg1;
 - (void)configureMapViewAnnotationCountLabel:(UILabel *)arg1;
+- (void)configurePhotoCollectionGlobalFooterProgressView:(UIProgressView *)arg1 paused:(BOOL)arg2;
 - (void)configurePhotoCollectionGlobalFooterSubtitleLabel:(UILabel *)arg1;
+- (void)configurePhotoCollectionGlobalFooterSubtitleTextView:(UITextView *)arg1;
 - (void)configurePhotoCollectionGlobalFooterTitleLabel:(UILabel *)arg1;
 - (void)configurePhotoCollectionHeaderDateLabel:(UILabel *)arg1 forStyle:(long long)arg2;
 - (void)configurePhotoCollectionHeaderLocationsLabel:(UILabel *)arg1 forStyle:(long long)arg2;
@@ -184,18 +208,24 @@
 - (void)configureSearchTitleLabel:(UILabel *)arg1;
 - (void)configureSlideshowMusicHeaderTitleLabel:(UILabel *)arg1;
 - (UIButton *)createCloudFeedCommentButton;
-- (UIFontDescriptor *)photoCollectionGlobalFooterSubtitleLabelFontDescriptor;
-- (UIFontDescriptor *)photoCollectionGlobalFooterTitleLabelFontDescriptor;
+- (UIColor *)photoCollectionCloudQuotaBannerBackgroundColorHighlighted:(BOOL)arg1;
+- (UIFont *)photoCollectionCloudQuotaBannerFont;
+- (UIColor *)photoCollectionCloudQuotaBannerLinkTextColorHighlighted:(BOOL)arg1;
+- (UIFont *)photoCollectionCloudQuotaBannerLinkTextFont;
+- (long long)photoCollectionCloudQuotaBannerTextAlignment;
+- (UIColor *)photoCollectionCloudQuotaBannerTextColorHighlighted:(BOOL)arg1;
+- (struct NSDirectionalEdgeInsets)photoCollectionCloudQuotaBannerTextMargins;
+- (NSDictionary *)photoCollectionGlobalFooterSubtitleTextViewAttributesDisabled:(BOOL)arg1;
+- (NSDictionary *)photoCollectionGlobalFooterSubtitleTextViewLinkTextAttributes;
 - (NSDictionary *)photoCollectionHeaderActionButtonAttributesForStyle:(long long)arg1;
 - (UIFontDescriptor *)photoCollectionHeaderActionButtonFontDescriptorForStyle:(long long)arg1;
 - (UIColor *)photoCollectionHeaderBackgroundColorForBackgroundStyle:(unsigned long long)arg1;
-- (UIFontDescriptor *)photoCollectionHeaderDateLabelFontDescriptorForStyle:(long long)arg1;
 - (UIImage *)photoCollectionHeaderDisclosureIconForStyle:(long long)arg1;
 - (struct UIOffset)photoCollectionHeaderLocationIconOffsetForStyle:(long long)arg1;
-- (UIFontDescriptor *)photoCollectionHeaderLocationLabelFontDescriptorForStyle:(long long)arg1;
+- (UIFontDescriptor *)photoCollectionHeaderSubtitleFontDescriptorForStyle:(long long)arg1;
 - (UIFontDescriptor *)photoCollectionHeaderTitleLabelFontDescriptorForStyle:(long long)arg1;
 - (NSDictionary *)searchDefaultAttributes;
-- (NSDictionary *)searchHighlightedAttributes;
+- (NSDictionary *)searchDimmedAttributes;
 - (UIColor *)tintColorForBarStyle:(long long)arg1;
 - (UIImage *)topLevelNavigationBarBackButtonBackgroundImageForState:(unsigned long long)arg1 barMetrics:(long long)arg2;
 - (UIImage *)topLevelNavigationBarButtonBackgroundImageForState:(unsigned long long)arg1 barMetrics:(long long)arg2;

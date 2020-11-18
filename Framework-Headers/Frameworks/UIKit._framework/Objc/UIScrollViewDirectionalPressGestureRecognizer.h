@@ -6,11 +6,13 @@
 
 #import <UIKit/_UIRepeatingPressGestureRecognizer.h>
 
-@class UIScrollView;
+@class UIScrollView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIScrollViewDirectionalPressGestureRecognizer : _UIRepeatingPressGestureRecognizer
 {
+    BOOL _hasBeenModified;
+    UIView *_originalView;
     UIScrollView *_scrollView;
     long long _activePressType;
 }
@@ -19,9 +21,15 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 
 - (void).cxx_destruct;
+- (void)_addToViewIfAllowed:(id)arg1;
+- (void)_resetToOriginalViewIfAllowed;
+- (void)_setEnabledIfAllowed:(BOOL)arg1;
 - (BOOL)_shouldReceivePress:(id)arg1;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)reset;
+- (void)setAllowedPressTypes:(id)arg1;
+- (void)setAllowedTouchTypes:(id)arg1;
+- (void)setEnabled:(BOOL)arg1;
 
 @end
 

@@ -35,26 +35,28 @@
     WBUFormDataController *_dataController;
 }
 
+@property (readonly, nonatomic) BOOL canAutoFillCreditCardData;
 @property (weak, nonatomic) WBUFormDataController *dataController; // @synthesize dataController=_dataController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<WBUFormAutoFillFrameHandle> frame;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL shouldOfferActionAutoFillCredentials;
+@property (readonly, nonatomic) BOOL shouldOfferToAutoFillCreditCardData;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL textFieldLooksLikeCreditCardNumericFormField;
 @property (readonly, nonatomic) NSString *textFieldValue;
 @property (readonly, nonatomic) UIView<WBUFormAutoFillWebView> *webView;
 
 + (BOOL)_shouldSaveCredentialsInProtectionSpace:(id)arg1;
-+ (void)getMatchesFromFormProtectionSpace:(id)arg1 matchesFromOtherProtectionSpaces:(id)arg2 withFormURL:(id)arg3 credentialMatches:(id)arg4 lastGeneratedPassword:(id)arg5 currentUser:(id)arg6 currentPassword:(id)arg7;
++ (void)getMatchesFromFormProtectionSpace:(id)arg1 matchesFromOtherProtectionSpaces:(id)arg2 withFormURL:(id)arg3 credentialMatches:(id)arg4 lastGeneratedPassword:(id)arg5 currentUser:(id)arg6 currentPassword:(id)arg7 forUserNamesOnly:(BOOL)arg8;
 - (void).cxx_destruct;
 - (long long)_action;
 - (long long)_actionForLoginForm;
 - (void)_autoFillCreditCardData;
-- (void)_autoFillFormWithCreditCardData:(id)arg1;
 - (void)_autoFillValues:(id)arg1 setAutoFilled:(BOOL)arg2;
 - (void)_autoFillWithSet:(id)arg1;
-- (BOOL)_canAutoFillCreditCardData;
+- (id)_bestTextFieldMetadataForMetadata:(id)arg1;
 - (void)_captureCreditCardDataWithCameraAndFill;
 - (void)_ensureFormMetadata;
 - (void)_gatherFormValuesWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -82,9 +84,12 @@
 - (void)annotateForm:(long long)arg1 withValues:(id)arg2;
 - (void)autoFill;
 - (void)autoFillDisplayData:(id)arg1 setAutoFilled:(BOOL)arg2;
+- (void)autoFillFormWithCreditCardData:(id)arg1;
+- (void)autoFillFormWithCreditCardDataAfterAuthenticationIfNeeded:(id)arg1;
 - (void)autoFillGeneratedPassword:(id)arg1 inForm:(long long)arg2;
 - (void)autoFillValues:(id)arg1 setAutoFilled:(BOOL)arg2 andFocusField:(id)arg3;
 - (void)autoFillValues:(id)arg1 setAutoFilled:(BOOL)arg2 andFocusFieldAfterFilling:(BOOL)arg3 fieldToFocus:(id)arg4;
+- (void)autoFillValuesAfterAuthenticationIfNeeded:(id)arg1;
 - (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
 - (void)contactPickerDidCancel:(id)arg1;
 - (void)creditCardCaptureViewController:(id)arg1 didCaptureCreditCard:(id)arg2;
@@ -93,6 +98,7 @@
 - (void)dismissCustomAutoFill;
 - (void)fetchFormMetadataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fillCredential:(id)arg1 setAutoFilled:(BOOL)arg2;
+- (void)fillCredentialAfterAuthenticationIfNeeded:(id)arg1;
 - (void)fillGeneratedPassword:(id)arg1 inField:(id)arg2;
 - (void)getLoginFormUser:(id *)arg1 password:(id *)arg2 userIsAutoFilled:(BOOL *)arg3 passwordIsAutoFilled:(BOOL *)arg4;
 - (void)getTextFieldMetadata:(id *)arg1 formMetadata:(id *)arg2;
@@ -110,6 +116,7 @@
 - (void)switchToCustomInputViewWithMatches:(id)arg1 contact:(id)arg2;
 - (void)textDidChangeInForm:(id)arg1 textField:(id)arg2;
 - (id)titleOfAutoFillButton;
+- (void)updateCachedFormMetadataAfterFilling:(id)arg1;
 
 @end
 

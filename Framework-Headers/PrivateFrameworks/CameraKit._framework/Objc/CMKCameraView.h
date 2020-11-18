@@ -7,6 +7,7 @@
 #import <UIKit/UIView.h>
 
 #import <CameraKit/CMKBottomBarDelegate-Protocol.h>
+#import <CameraKit/CMKLowDiskSpaceAlertControllerDelegate-Protocol.h>
 #import <CameraKit/CMKModeDialDataSource-Protocol.h>
 #import <CameraKit/CMKStillImageCaptureRequestDelegate-Protocol.h>
 #import <CameraKit/CMKTimerButtonDelegate-Protocol.h>
@@ -17,10 +18,10 @@
 #import <CameraKit/UIAccelerometerDelegate-Protocol.h>
 #import <CameraKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CALayer, CMKAnimationDelegate, CMKAvalancheIndicatorView, CMKBlurredSnapshotView, CMKBottomBar, CMKCameraSpec, CMKCaptureController, CMKDisabledModeOverlayView, CMKElapsedTimeView, CMKExposureBiasTextView, CMKFilterButton, CMKFlashBadge, CMKFlashButton, CMKFlipButton, CMKGridView, CMKHDRBadge, CMKHDRButton, CMKHardwareLockIndicatorView, CMKImageWell, CMKLowDiskSpaceAlertView, CMKModeDial, CMKMotionController, CMKPanoramaView, CMKPhysicalCaptureRecognizer, CMKPreviewView, CMKShutterButton, CMKShutterIndicatorView, CMKSlalomIndicatorView, CMKTimerButton, CMKTimerIndicatorView, CMKTopBar, CMKTorchPatternController, CMKZoomSlider, NSDate, NSMutableArray, NSMutableSet, NSObject, NSString, NSTimer, PLCameraIrisAnimationView, PLCameraOverlayTextLabelView, PLPreviewOverlayView, UIAlertView, UIImageView, UILongPressGestureRecognizer, UIPanGestureRecognizer, UISwipeGestureRecognizer, UITapGestureRecognizer;
+@class CALayer, CMKAnimationDelegate, CMKAvalancheIndicatorView, CMKBlurredSnapshotView, CMKBottomBar, CMKCameraSpec, CMKCaptureController, CMKDisabledModeOverlayView, CMKElapsedTimeView, CMKExposureBiasTextView, CMKFilterButton, CMKFlashBadge, CMKFlashButton, CMKFlipButton, CMKGridView, CMKHDRBadge, CMKHDRButton, CMKHardwareLockIndicatorView, CMKImageWell, CMKLowDiskSpaceAlertController, CMKModeDial, CMKMotionController, CMKPanoramaView, CMKPhysicalCaptureRecognizer, CMKPreviewView, CMKShutterButton, CMKShutterIndicatorView, CMKSlalomIndicatorView, CMKTimerButton, CMKTimerIndicatorView, CMKTopBar, CMKTorchPatternController, CMKZoomSlider, NSDate, NSMutableArray, NSMutableSet, NSObject, NSString, NSTimer, PLCameraIrisAnimationView, PLCameraOverlayTextLabelView, PLPreviewOverlayView, UIAlertController, UIImageView, UILongPressGestureRecognizer, UIPanGestureRecognizer, UISwipeGestureRecognizer, UITapGestureRecognizer;
 @protocol OS_dispatch_source;
 
-@interface CMKCameraView : UIView <CMKModeDialDataSource, CMKTopBarDelegate, CMKBottomBarDelegate, CMKZoomSliderDelegate, CMKTimerButtonDelegate, CMKStillImageCaptureRequestDelegate, PLCameraControllerDelegate, PLCameraPanoramaViewDelegate, UIGestureRecognizerDelegate, UIAccelerometerDelegate>
+@interface CMKCameraView : UIView <CMKModeDialDataSource, CMKTopBarDelegate, CMKBottomBarDelegate, CMKZoomSliderDelegate, CMKTimerButtonDelegate, CMKStillImageCaptureRequestDelegate, CMKLowDiskSpaceAlertControllerDelegate, PLCameraControllerDelegate, PLCameraPanoramaViewDelegate, UIGestureRecognizerDelegate, UIAccelerometerDelegate>
 {
     int _captureOrientation;
     CMKCaptureController *_cameraController;
@@ -56,8 +57,8 @@
     NSMutableArray *_openIrisDidFinishSelectors;
     NSMutableArray *_closeIrisDidFinishSelectors;
     long long _modeToOpenIris;
-    UIAlertView *_torchDisabledAlert;
-    CMKLowDiskSpaceAlertView *_diskSpaceAlert;
+    UIAlertController *_torchDisabledAlert;
+    CMKLowDiskSpaceAlertController *_diskSpaceAlert;
     BOOL _gridIsOn;
     BOOL _internalOnlyDisableIrisViews;
     id _delegate;
@@ -737,10 +738,11 @@
 - (void)_zoomSliderDidEndDragging:(id)arg1;
 - (id)_zoomSliderOffsetConstraintsForView:(id)arg1;
 - (void)_zoomSliderValueDidChange:(id)arg1 forEvent:(id)arg2;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
+- (void)alertControllerWillShowSettings:(id)arg1;
 - (void)animateBlurForSuspension;
 - (struct CGRect)aspectFaceRectFromSquareFaceRect:(struct CGRect)arg1 angle:(double)arg2;
 - (BOOL)bottomBarShouldHideElapsedTimeView:(id)arg1;
+- (BOOL)bottomBarShouldHideFlashButton:(id)arg1;
 - (BOOL)bottomBarShouldHideFlipButton:(id)arg1;
 - (BOOL)bottomBarShouldHideHDRButton:(id)arg1;
 - (BOOL)bottomBarShouldHideTimerButton:(id)arg1;
@@ -771,8 +773,8 @@
 - (void)cameraControllerRemoteShutterCanceled:(id)arg1;
 - (void)cameraControllerRemoteShutterNeedsReadiness:(id)arg1;
 - (void)cameraControllerRemoteShutterPressed:(id)arg1 countdown:(unsigned long long)arg2;
-- (void)cameraControllerRemoteShutterStartVideoCapture:(id)arg1;
-- (void)cameraControllerRemoteShutterStopVideoCapture:(id)arg1;
+- (BOOL)cameraControllerRemoteShutterStartVideoCapture:(id)arg1;
+- (BOOL)cameraControllerRemoteShutterStopVideoCapture:(id)arg1;
 - (void)cameraControllerRemoteShutterToggleCameraDevice:(id)arg1;
 - (void)cameraControllerServerError:(id)arg1;
 - (void)cameraControllerSessionDidStart:(id)arg1;
@@ -845,7 +847,7 @@
 - (BOOL)startVideoCapture;
 - (void)stopPreview;
 - (void)stopPreviewAnimated:(BOOL)arg1;
-- (void)stopVideoCapture;
+- (BOOL)stopVideoCapture;
 - (void)swipedToNextCameraMode;
 - (void)swipedToPreviousCameraMode;
 - (void)takePicture;

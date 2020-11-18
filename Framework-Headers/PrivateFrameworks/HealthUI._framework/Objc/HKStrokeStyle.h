@@ -14,10 +14,14 @@
 {
     int _lineCap;
     int _lineJoin;
+    int _blendMode;
     UIColor *_strokeColor;
     double _lineWidth;
+    long long _dashStyle;
 }
 
+@property (nonatomic) int blendMode; // @synthesize blendMode=_blendMode;
+@property (nonatomic) long long dashStyle; // @synthesize dashStyle=_dashStyle;
 @property (nonatomic) int lineCap; // @synthesize lineCap=_lineCap;
 @property (nonatomic) int lineJoin; // @synthesize lineJoin=_lineJoin;
 @property (nonatomic) double lineWidth; // @synthesize lineWidth=_lineWidth;

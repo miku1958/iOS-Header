@@ -32,8 +32,7 @@ struct __DDQueryOffset {
 struct __DDResult {
     struct __CFRuntimeBase {
         unsigned long long _field1;
-        unsigned char _field2[4];
-        unsigned int _field3;
+        _Atomic unsigned long long _field2;
     } _field1;
     struct __DDQueryRange {
         struct __DDQueryOffset _field1;

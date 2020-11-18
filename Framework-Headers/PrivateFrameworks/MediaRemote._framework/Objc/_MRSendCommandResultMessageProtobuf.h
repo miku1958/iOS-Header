@@ -8,26 +8,35 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+@class NSMutableArray;
+
 @interface _MRSendCommandResultMessageProtobuf : PBCodable <NSCopying>
 {
     CDStruct_9f2792e4 _handlerReturnStatus;
     unsigned int _errorCode;
+    NSMutableArray *_handlerReturnStatusDatas;
     CDStruct_70a7dc3e _has;
 }
 
 @property (nonatomic) unsigned int errorCode; // @synthesize errorCode=_errorCode;
 @property (readonly, nonatomic) unsigned int *handlerReturnStatus;
 @property (readonly, nonatomic) unsigned long long handlerReturnStatusCount;
+@property (strong, nonatomic) NSMutableArray *handlerReturnStatusDatas; // @synthesize handlerReturnStatusDatas=_handlerReturnStatusDatas;
 @property (nonatomic) BOOL hasErrorCode;
 
++ (Class)handlerReturnStatusDataType;
 - (void)addHandlerReturnStatus:(unsigned int)arg1;
+- (void)addHandlerReturnStatusData:(id)arg1;
 - (void)clearHandlerReturnStatus;
+- (void)clearHandlerReturnStatusDatas;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned int)handlerReturnStatusAtIndex:(unsigned long long)arg1;
+- (id)handlerReturnStatusDataAtIndex:(unsigned long long)arg1;
+- (unsigned long long)handlerReturnStatusDatasCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

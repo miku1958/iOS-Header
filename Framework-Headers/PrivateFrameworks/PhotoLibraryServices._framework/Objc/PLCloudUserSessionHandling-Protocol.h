@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@protocol PLCloudUserSessionHandling
+#import <PhotoLibraryServices/NSObject-Protocol.h>
+
+@protocol PLCloudUserSessionHandling <NSObject>
 - (void)endUserSessionWithCompletionHandler:(void (^)(void))arg1;
 @end
 

@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
-
-#import <HomeKitDaemon/NSSecureCoding-Protocol.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSDictionary, NSString;
 
-@interface HMDHAPMetadataAssistantCharacteristic : NSObject <NSSecureCoding>
+@interface HMDHAPMetadataAssistantCharacteristic : HMFObject
 {
     BOOL _supportsLocalization;
     NSString *_name;
@@ -29,14 +27,9 @@
 @property (strong, nonatomic) NSDictionary *values; // @synthesize values=_values;
 @property (strong, nonatomic) NSString *writeHAPCharacteristicName; // @synthesize writeHAPCharacteristicName=_writeHAPCharacteristicName;
 
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
-- (void)dump;
-- (void)encodeWithCoder:(id)arg1;
-- (id)generateDictionary;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 readHAPCharacteristic:(id)arg2 writeHAPCharacteristic:(id)arg3 format:(id)arg4;
 
 @end

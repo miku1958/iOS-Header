@@ -8,7 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSString, _MRNowPlayingInfoProtobuf, _MRPlaybackQueueContextProtobuf, _MRPlaybackQueueProtobuf, _MRSupportedCommandsProtobuf;
+@class NSString, _MRNowPlayingInfoProtobuf, _MRNowPlayingPlayerPathProtobuf, _MRPlaybackQueueCapabilitiesProtobuf, _MRPlaybackQueueProtobuf, _MRPlaybackQueueRequestProtobuf, _MRSupportedCommandsProtobuf;
 
 @interface _MRSetStateMessageProtobuf : PBCodable <NSCopying>
 {
@@ -16,8 +16,10 @@
     NSString *_displayName;
     _MRNowPlayingInfoProtobuf *_nowPlayingInfo;
     _MRPlaybackQueueProtobuf *_playbackQueue;
-    _MRPlaybackQueueContextProtobuf *_playbackQueueContext;
+    _MRPlaybackQueueCapabilitiesProtobuf *_playbackQueueCapabilities;
     unsigned int _playbackState;
+    _MRNowPlayingPlayerPathProtobuf *_playerPath;
+    _MRPlaybackQueueRequestProtobuf *_request;
     _MRSupportedCommandsProtobuf *_supportedCommands;
     struct {
         unsigned int playbackState:1;
@@ -30,13 +32,17 @@
 @property (readonly, nonatomic) BOOL hasDisplayName;
 @property (readonly, nonatomic) BOOL hasNowPlayingInfo;
 @property (readonly, nonatomic) BOOL hasPlaybackQueue;
-@property (readonly, nonatomic) BOOL hasPlaybackQueueContext;
+@property (readonly, nonatomic) BOOL hasPlaybackQueueCapabilities;
 @property (nonatomic) BOOL hasPlaybackState;
+@property (readonly, nonatomic) BOOL hasPlayerPath;
+@property (readonly, nonatomic) BOOL hasRequest;
 @property (readonly, nonatomic) BOOL hasSupportedCommands;
 @property (strong, nonatomic) _MRNowPlayingInfoProtobuf *nowPlayingInfo; // @synthesize nowPlayingInfo=_nowPlayingInfo;
 @property (strong, nonatomic) _MRPlaybackQueueProtobuf *playbackQueue; // @synthesize playbackQueue=_playbackQueue;
-@property (strong, nonatomic) _MRPlaybackQueueContextProtobuf *playbackQueueContext; // @synthesize playbackQueueContext=_playbackQueueContext;
+@property (strong, nonatomic) _MRPlaybackQueueCapabilitiesProtobuf *playbackQueueCapabilities; // @synthesize playbackQueueCapabilities=_playbackQueueCapabilities;
 @property (nonatomic) unsigned int playbackState; // @synthesize playbackState=_playbackState;
+@property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
+@property (strong, nonatomic) _MRPlaybackQueueRequestProtobuf *request; // @synthesize request=_request;
 @property (strong, nonatomic) _MRSupportedCommandsProtobuf *supportedCommands; // @synthesize supportedCommands=_supportedCommands;
 
 - (void)copyTo:(id)arg1;

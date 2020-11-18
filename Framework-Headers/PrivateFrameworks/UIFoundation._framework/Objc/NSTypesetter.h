@@ -12,6 +12,8 @@
 }
 
 + (BOOL)_usesATSTypesetter;
++ (BOOL)allowsDefaultLineBreakStrategy;
++ (unsigned long long)defaultLineBreakStrategy;
 + (long long)defaultStringDrawingTypesetterBehavior;
 + (long long)defaultTypesetterBehavior;
 + (void)initialize;

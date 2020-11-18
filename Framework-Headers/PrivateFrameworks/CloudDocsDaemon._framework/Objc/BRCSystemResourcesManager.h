@@ -8,7 +8,7 @@
 
 #import <CloudDocsDaemon/BRReachabilityObserver-Protocol.h>
 
-@class BRReachabilityMonitor, NSDate, NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, NSString;
+@class BRReachabilityMonitor, NSDate, NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, NSString, br_pacer;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -19,8 +19,7 @@ __attribute__((visibility("hidden")))
     NSHashTable *_reachabilityObservers;
     BRReachabilityMonitor *_reachabilityMonitor;
     unsigned int _reachabilityFlags;
-    BOOL _isNetworkReachable;
-    NSObject<OS_dispatch_source> *_isNetworkReachableTimer;
+    NSObject<OS_dispatch_source> *_reachabilityFlagsTimer;
     NSHashTable *_powerObservers;
     int _powerNotifyToken;
     BOOL _powerLevelOK;
@@ -33,6 +32,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_source> *_lowDiskTimer;
     NSHashTable *_lowMemoryObservers;
     NSObject<OS_dispatch_source> *_memoryNotificationEventSource;
+    br_pacer *_memoryNotificationCoalescePacer;
     NSMapTable *_processObservers;
     NSHashTable *_appListObservers;
 }
@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 
 + (id)manager;
 - (void).cxx_destruct;
+- (void)__resetReachability;
 - (id)_createMonitoringObjectForProcessID:(int)arg1 observer:(id)arg2;
 - (void)_didReceiveMemoryWarning;
 - (void)_initAppListObservers;
@@ -67,11 +68,10 @@ __attribute__((visibility("hidden")))
 - (void)_resetLowDiskManager;
 - (void)_resetPowerManager;
 - (void)_resetReachability;
-- (void)_setNetworkReachable:(BOOL)arg1;
-- (void)_setNetworkReachableWithCoalescing:(BOOL)arg1;
 - (void)_setPowerLevel:(BOOL)arg1;
 - (void)_setPowerLevelWithCoalescing:(BOOL)arg1;
 - (void)_setReachabilityFlags:(unsigned int)arg1;
+- (void)_setReachabilityFlagsWithCoalescing:(unsigned int)arg1;
 - (void)addAppListObserver:(id)arg1;
 - (void)addLowDiskObserver:(id)arg1 forDevice:(int)arg2;
 - (void)addLowMemoryObserver:(id)arg1;

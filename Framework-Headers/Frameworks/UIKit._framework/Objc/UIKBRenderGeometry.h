@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _paddedFrame;
     struct CGRect _displayFrame;
     struct CGRect _symbolFrame;
+    struct UIEdgeInsets _layoutMargins;
 }
 
 @property (nonatomic) int concaveCorner; // @synthesize concaveCorner=_concaveCorner;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct UIEdgeInsets displayInsets;
 @property (nonatomic) long long flickDirection; // @synthesize flickDirection=_flickDirection;
 @property (nonatomic) struct CGRect frame; // @synthesize frame=_frame;
+@property (nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
 @property (nonatomic) struct CGRect paddedFrame; // @synthesize paddedFrame=_paddedFrame;
 @property (readonly, nonatomic) struct UIEdgeInsets paddedInsets;
 @property (nonatomic) int popupBias; // @synthesize popupBias=_popupBias;
@@ -51,8 +53,9 @@ __attribute__((visibility("hidden")))
 + (id)geometryWithFrame:(struct CGRect)arg1 paddedFrame:(struct CGRect)arg2;
 + (id)geometryWithShape:(id)arg1;
 + (id)sortedGeometries:(id)arg1 leftToRight:(BOOL)arg2;
-- (id)_copyForDirection:(long long)arg1 positionFactor:(double)arg2 sizeFactor:(double)arg3 scale:(double)arg4;
-- (unsigned long long)adjustForTranslucentGapsInFrameWithSize_10Key:(struct CGSize)arg1 centerX:(double)arg2 isInBottomRow:(BOOL)arg3;
+- (id)_copyForDirection:(long long)arg1 positionFactor:(double)arg2 inwardSizeFactor:(double)arg3 outwardSizeFactor:(double)arg4 perpendicularSizeFactor:(double)arg5 sizeAspectRatio:(double)arg6 scale:(double)arg7;
+- (void)adjustForConsistentGapsWithSize:(struct CGSize)arg1 inFrame:(struct CGRect)arg2;
+- (unsigned long long)adjustForTranslucentGapsInFrameWithSize_10Key:(struct CGSize)arg1 centerX:(double)arg2 bottomEdge:(BOOL)arg3 topEdge:(BOOL)arg4;
 - (unsigned long long)adjustForTranslucentGapsWithSize:(struct CGSize)arg1 inFrame:(struct CGRect)arg2;
 - (void)adjustToTopWithInsets:(struct UIEdgeInsets)arg1;
 - (void)applyInsets:(struct UIEdgeInsets)arg1;
@@ -64,7 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (id)iPadVariantGeometries:(unsigned long long)arg1 rowLimit:(long long)arg2;
-- (id)iPhoneVariantGeometries:(unsigned long long)arg1;
+- (id)iPhoneVariantGeometries:(unsigned long long)arg1 annotationIndex:(unsigned long long)arg2;
 - (id)initWithShape:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)makeIntegralWithScale:(double)arg1;

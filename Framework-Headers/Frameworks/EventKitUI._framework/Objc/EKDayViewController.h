@@ -151,6 +151,7 @@
 - (void)applicationWillResignActive;
 - (BOOL)blockableScrollViewShouldAllowScrolling;
 - (void)bringEventToFront:(id)arg1;
+- (void)cleanUpAfterGestureFailureForEventGestureController:(id)arg1;
 - (id)createEventForEventGestureController:(id)arg1;
 - (id)createOccurrenceViewForEventGestureController:(id)arg1;
 - (id)currentPresentationController;
@@ -182,8 +183,11 @@
 - (id)eventGestureController:(id)arg1 occurrenceViewAtPoint:(struct CGPoint)arg2;
 - (id)eventGestureController:(id)arg1 occurrenceViewForOccurrence:(id)arg2;
 - (struct CGPoint)eventGestureController:(id)arg1 pointAtDate:(double)arg2 isAllDay:(BOOL)arg3;
+- (void)eventGestureController:(id)arg1 requestsPresentationOfViewController:(id)arg2;
+- (void)eventGestureController:(id)arg1 requestsShowEvent:(id)arg2;
 - (double)eventGestureController:(id)arg1 widthForOccurrenceViewOfDays:(unsigned long long)arg2;
 - (double)eventGestureController:(id)arg1 yPositionPerhapsMatchingAllDayOccurrence:(id)arg2 atPoint:(struct CGPoint)arg3;
+- (void)eventGestureControllerDidEndDragSession:(id)arg1;
 - (BOOL)eventGestureControllerShouldAllowLongPress:(id)arg1;
 - (id)eventsForStartDate:(id)arg1 endDate:(id)arg2;
 - (void)externallyEndedGestureDragging;

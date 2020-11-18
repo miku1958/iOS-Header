@@ -10,7 +10,7 @@
 
 @interface MPCMediaPlayerLegacyItem : MPCPlayerItem
 {
-    CDStruct_45e4ec31 _snapshot;
+    CDStruct_fce57115 _snapshot;
     MPAVItem *_avItem;
 }
 
@@ -30,7 +30,7 @@
 - (id)artworkCatalog;
 - (id)composerName;
 - (void)dealloc;
-- (CDStruct_45e4ec31)durationSnapshot;
+- (CDStruct_fce57115)durationSnapshot;
 - (id)initWithAVItem:(id)arg1;
 - (BOOL)isExplicit;
 - (id)modelGenericObjectRepresentation;

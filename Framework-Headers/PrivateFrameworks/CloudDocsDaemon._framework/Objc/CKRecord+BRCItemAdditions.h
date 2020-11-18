@@ -26,6 +26,7 @@
 - (id)brc_oplockMergeEtag;
 - (BOOL)brc_safeToGetURL;
 - (id)brc_updateDroppedReason;
+- (void)sanitizeShortTokenFields;
 - (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
 @end
 

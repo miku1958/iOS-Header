@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) WKUserContentController *userContentController;
 
 + (id)_contentBlockerLoaderConnection;
++ (void)_createContentExtensionsDirectoryWithURL:(id)arg1;
 + (id)contentBlockerStore;
 + (void)getStateOfContentBlockerWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)reloadContentBlockerWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -29,6 +30,7 @@
 - (void)_beginContentBlockerDiscovery;
 - (void)_loadContentBlockerWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addObserver:(id)arg1;
+- (void)compileContentBlockersAfterDeviceRestore;
 - (id)displayNameForExtension:(id)arg1;
 - (BOOL)extensionIsEnabled:(id)arg1;
 - (void)reloadUserContentController;

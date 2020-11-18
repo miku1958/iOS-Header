@@ -9,6 +9,9 @@
 @class NSDictionary;
 
 @protocol IKJSApplication <JSExport>
+
+@property (readonly, nonatomic) NSDictionary *traitCollection;
+
 - (void)reload:(NSDictionary *)arg1:(id)arg2;
 @end
 

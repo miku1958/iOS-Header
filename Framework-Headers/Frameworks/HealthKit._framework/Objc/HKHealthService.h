@@ -9,7 +9,7 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class NSString, NSUUID;
+@class CBPeripheral, NSData, NSString, NSUUID;
 
 @interface HKHealthService : NSObject <NSCopying, NSSecureCoding>
 {
@@ -18,11 +18,15 @@
     NSString *_name;
     double _lastConnection;
     NSString *_serviceId;
+    NSData *_advertisementData;
+    CBPeripheral *_peripheral;
 }
 
+@property (strong, nonatomic) NSData *advertisementData; // @synthesize advertisementData=_advertisementData;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) double lastConnection; // @synthesize lastConnection=_lastConnection;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (strong, nonatomic) CBPeripheral *peripheral; // @synthesize peripheral=_peripheral;
 @property (copy, nonatomic) NSString *serviceId; // @synthesize serviceId=_serviceId;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 

@@ -68,6 +68,7 @@
 - (void)clearSecondFactorEntry;
 - (void)dealloc;
 - (BOOL)disablesAutomaticKeyboardDismissal;
+- (void)dismissAndShowiForgot;
 - (id)initWithAlertStyle:(long long)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)setPasscodeFieldDisabled:(BOOL)arg1;

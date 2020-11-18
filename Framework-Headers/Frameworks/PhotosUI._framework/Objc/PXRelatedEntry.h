@@ -8,13 +8,13 @@
 
 #import <PhotosUICore/PXRelatedEntry-Protocol.h>
 
-@class NSString, PHAsset, PHAssetCollection, PHObject;
+@class NSString, PHAssetCollection, PHFetchResult, PHObject;
 
 @interface PXRelatedEntry : NSObject <PXRelatedEntry>
 {
     NSString *_relatedTitleFontName;
     PHAssetCollection *_assetCollection;
-    PHAsset *_keyAsset;
+    PHFetchResult *_keyAssetFetchResult;
     PHObject *_referenceObject;
     NSString *_relatedLocalizedTitle;
 }
@@ -23,11 +23,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) PHAsset *keyAsset; // @synthesize keyAsset=_keyAsset;
+@property (readonly, nonatomic) PHFetchResult *keyAssetFetchResult; // @synthesize keyAssetFetchResult=_keyAssetFetchResult;
 @property (readonly, nonatomic, getter=isPlaceholder) BOOL placeholder;
 @property (readonly, nonatomic) PHObject *referenceObject; // @synthesize referenceObject=_referenceObject;
 @property (readonly, nonatomic) PHAssetCollection *relatedAssetCollection;
-@property (readonly, nonatomic) PHAsset *relatedKeyAsset;
+@property (readonly, nonatomic) PHFetchResult *relatedKeyAssetFetchResult;
 @property (readonly, nonatomic) NSString *relatedLocalizedSubtitle;
 @property (strong, nonatomic) NSString *relatedLocalizedTitle; // @synthesize relatedLocalizedTitle=_relatedLocalizedTitle;
 @property (readonly, nonatomic) PHObject *relatedReferenceObject;
@@ -37,7 +37,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithAssetCollection:(id)arg1 keyAsset:(id)arg2 referenceObject:(id)arg3;
+- (id)initWithAssetCollection:(id)arg1 keyAssetFetchResult:(id)arg2 referenceObject:(id)arg3;
 
 @end
 

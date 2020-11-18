@@ -21,8 +21,6 @@
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (CDUnknownBlockType)genericBrickThumbnailCreator;
-- (CDUnknownBlockType)genericListThumbnailCreator;
 - (id)initWithAttachment:(id)arg1;
 - (void)updateFileBasedAttributes;
 

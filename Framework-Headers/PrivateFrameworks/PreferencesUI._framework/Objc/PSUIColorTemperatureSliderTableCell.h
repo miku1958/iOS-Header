@@ -12,9 +12,10 @@
 {
     UILabel *_coolerLabel;
     UILabel *_warmerLabel;
+    double _horizontalMargin;
+    double _verticalMargin;
 }
 
-+ (double)preferredHeight;
 - (void).cxx_destruct;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
 - (void)layoutSubviews;

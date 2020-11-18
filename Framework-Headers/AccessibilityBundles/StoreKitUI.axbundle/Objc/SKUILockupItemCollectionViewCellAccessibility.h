@@ -13,9 +13,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityHitTestReverseOrder;
-- (id)accessibilityContainerElements;
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;
+- (id)accessibilityElements;
 - (id)accessibilityLabel;
 - (long long)indexOfAccessibilityElement:(id)arg1;
 

@@ -6,35 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary, NSError, NSString;
+@class AVCapturePhoto, CAMStillImageCaptureCoordinationInfo, NSArray, NSDate, NSDictionary, NSError, NSString;
 
 @interface CAMStillImageCaptureResult : NSObject
 {
+    BOOL _shouldPersistEffectFilterName;
     BOOL _expectingPairedVideo;
-    struct opaqueCMSampleBuffer *_stillImageFullsizeSampleBuffer;
+    AVCapturePhoto *_capturePhoto;
     NSDate *_captureDate;
     NSDictionary *_metadata;
     NSError *_error;
+    NSArray *_adjustmentFilters;
+    NSString *_persistenceUUID;
+    CAMStillImageCaptureCoordinationInfo *_coordinationInfo;
 }
 
-@property (readonly, nonatomic, getter=isHDRImageWithCorrespondingOriginal) BOOL HDRImageWithCorrespondingOriginal;
+@property (readonly, nonatomic) NSArray *adjustmentFilters; // @synthesize adjustmentFilters=_adjustmentFilters;
 @property (readonly, nonatomic) NSDate *captureDate; // @synthesize captureDate=_captureDate;
+@property (readonly, nonatomic) AVCapturePhoto *capturePhoto; // @synthesize capturePhoto=_capturePhoto;
 @property (readonly, nonatomic) NSDictionary *compactMetadata;
+@property (readonly, nonatomic) CAMStillImageCaptureCoordinationInfo *coordinationInfo; // @synthesize coordinationInfo=_coordinationInfo;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic, getter=isExpectingPairedVideo) BOOL expectingPairedVideo; // @synthesize expectingPairedVideo=_expectingPairedVideo;
 @property (readonly, copy, nonatomic) NSString *imageGroupIdentifier;
 @property (readonly, copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
-@property (readonly, nonatomic, getter=isOriginal) BOOL original;
-@property (readonly, nonatomic, getter=isOriginalForHDR) BOOL originalForHDR;
-@property (readonly, nonatomic, getter=isOriginalForPortraitEffect) BOOL originalForPortraitEffect;
-@property (readonly, nonatomic, getter=isPortraitEffectImageWithCorrespondingOriginal) BOOL portraitEffectImageWithCorrespondingOriginal;
-@property (readonly, nonatomic, getter=isProcessedImageWithCorrespondingOriginal) BOOL processedImageWithCorrespondingOriginal;
-@property (readonly, nonatomic) struct opaqueCMSampleBuffer *stillImageFullsizeSampleBuffer; // @synthesize stillImageFullsizeSampleBuffer=_stillImageFullsizeSampleBuffer;
+@property (readonly, copy, nonatomic) NSString *persistenceUUID; // @synthesize persistenceUUID=_persistenceUUID;
+@property (readonly, nonatomic) BOOL shouldPersistEffectFilterName; // @synthesize shouldPersistEffectFilterName=_shouldPersistEffectFilterName;
 
 - (void).cxx_destruct;
+- (id)_captureDateFromMetadata:(id)arg1;
 - (void)dealloc;
 - (id)description;
-- (id)initWithFullsizeSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 error:(id)arg2;
 
 @end
 

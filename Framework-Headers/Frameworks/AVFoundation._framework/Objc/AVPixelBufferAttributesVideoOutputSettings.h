@@ -8,7 +8,7 @@
 
 #import <AVFoundation/AVDecodedVideoSettingsForFig-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @interface AVPixelBufferAttributesVideoOutputSettings : AVVideoOutputSettings <AVDecodedVideoSettingsForFig>
 {
@@ -16,6 +16,7 @@
     NSDictionary *_VTCleanApertureDictionary;
 }
 
+@property (readonly, nonatomic) NSString *fieldMode;
 @property (readonly, nonatomic) NSDictionary *pixelBufferAttributes;
 
 + (id)_videoOutputSettingsWithVideoSettingsDictionary:(id)arg1 exceptionReason:(id *)arg2;

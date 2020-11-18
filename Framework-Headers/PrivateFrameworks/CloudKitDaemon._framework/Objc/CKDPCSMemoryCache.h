@@ -7,19 +7,19 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol NSObject, OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface CKDPCSMemoryCache : NSObject
 {
     BOOL _memoryStatusChanged;
-    int _evictNoticeToken;
     unsigned long long _maxEntries;
     double _minAge;
     NSMutableDictionary *_cacheEntries;
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_source> *_memoryNotificationSource;
     unsigned long long _memoryStatus;
+    id<NSObject> _memoryCacheEvictNotificationObserver;
     double _oldestCacheEntry;
     unsigned long long _memoryCacheRequestCount;
     unsigned long long _memoryCacheHitCount;
@@ -31,10 +31,10 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
 @property (strong, nonatomic) NSMutableDictionary *cacheEntries; // @synthesize cacheEntries=_cacheEntries;
-@property int evictNoticeToken; // @synthesize evictNoticeToken=_evictNoticeToken;
 @property (nonatomic) unsigned long long maxEntries; // @synthesize maxEntries=_maxEntries;
 @property unsigned long long memoryCacheDeleteCount; // @synthesize memoryCacheDeleteCount=_memoryCacheDeleteCount;
 @property unsigned long long memoryCacheEvictCount; // @synthesize memoryCacheEvictCount=_memoryCacheEvictCount;
+@property (strong, nonatomic) id<NSObject> memoryCacheEvictNotificationObserver; // @synthesize memoryCacheEvictNotificationObserver=_memoryCacheEvictNotificationObserver;
 @property unsigned long long memoryCacheHighwaterCount; // @synthesize memoryCacheHighwaterCount=_memoryCacheHighwaterCount;
 @property unsigned long long memoryCacheHitCount; // @synthesize memoryCacheHitCount=_memoryCacheHitCount;
 @property unsigned long long memoryCacheRequestCount; // @synthesize memoryCacheRequestCount=_memoryCacheRequestCount;

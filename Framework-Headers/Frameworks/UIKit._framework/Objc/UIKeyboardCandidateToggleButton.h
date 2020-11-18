@@ -19,9 +19,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKBThemedView *themedView; // @synthesize themedView=_themedView;
 
 + (id)arrowImageName;
+- (void).cxx_destruct;
 - (void)_setRenderConfig:(id)arg1;
 - (id)arrowColorForState:(unsigned long long)arg1;
-- (void)dealloc;
+- (void)dimKeys:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGRect)labelFrameFromFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

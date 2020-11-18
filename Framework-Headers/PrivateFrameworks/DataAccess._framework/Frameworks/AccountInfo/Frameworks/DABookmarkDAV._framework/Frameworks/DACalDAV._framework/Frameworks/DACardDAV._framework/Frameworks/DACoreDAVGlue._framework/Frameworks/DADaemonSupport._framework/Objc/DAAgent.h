@@ -36,6 +36,7 @@
 - (void)processMeetingRequestDatas:(id)arg1 deliveryIdsToClear:(id)arg2 deliveryIdsToSoftClear:(id)arg3 inFolderWithId:(id)arg4 callback:(CDUnknownBlockType)arg5;
 - (void)refreshFolderListRequireChangedFolders:(BOOL)arg1 isUserRequested:(BOOL)arg2;
 - (void)requestAgentStopMonitoringWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)saveXpcActivity:(id)arg1;
 - (void)shutdown;
 - (void)startMonitoring;
 - (id)stateString;

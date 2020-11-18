@@ -31,10 +31,11 @@
     BOOL _requestsFullScreenPresentation;
     BOOL _hideClearActionInList;
     unsigned long long _messageNumberOfLines;
-    BOOL _ignoreAttachmentImageThumbnailCrop;
     BOOL _preemptsPresentedNotification;
     BOOL _revealsAdditionalContentOnPresentation;
+    BOOL _suppressesTitleWhenLocked;
     BOOL _suppressesSubtitleWhenLocked;
+    BOOL _suppressesBodyWhenLocked;
     unsigned long long _contentPreviewSetting;
     BOOL _coalescesWhenLocked;
     BOOL _preventsAutomaticLock;
@@ -54,7 +55,6 @@
 @property (readonly, nonatomic) BOOL dismissAutomatically; // @synthesize dismissAutomatically=_dismissAutomatically;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hideClearActionInList; // @synthesize hideClearActionInList=_hideClearActionInList;
-@property (readonly, nonatomic) BOOL ignoreAttachmentImageThumbnailCrop; // @synthesize ignoreAttachmentImageThumbnailCrop=_ignoreAttachmentImageThumbnailCrop;
 @property (readonly, nonatomic) unsigned long long lockScreenPersistence; // @synthesize lockScreenPersistence=_lockScreenPersistence;
 @property (readonly, nonatomic) unsigned long long lockScreenPriority; // @synthesize lockScreenPriority=_lockScreenPriority;
 @property (readonly, nonatomic) unsigned long long messageNumberOfLines; // @synthesize messageNumberOfLines=_messageNumberOfLines;
@@ -69,7 +69,9 @@
 @property (readonly, nonatomic) BOOL silencedByMenuButtonPress; // @synthesize silencedByMenuButtonPress=_silencedByMenuButtonPress;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL suppressesAlertsWhenAppIsActive; // @synthesize suppressesAlertsWhenAppIsActive=_suppressesAlertsWhenAppIsActive;
+@property (readonly, nonatomic) BOOL suppressesBodyWhenLocked; // @synthesize suppressesBodyWhenLocked=_suppressesBodyWhenLocked;
 @property (readonly, nonatomic) BOOL suppressesSubtitleWhenLocked; // @synthesize suppressesSubtitleWhenLocked=_suppressesSubtitleWhenLocked;
+@property (readonly, nonatomic) BOOL suppressesTitleWhenLocked; // @synthesize suppressesTitleWhenLocked=_suppressesTitleWhenLocked;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

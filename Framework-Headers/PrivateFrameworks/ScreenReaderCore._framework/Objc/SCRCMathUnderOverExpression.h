@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) SCRCMathExpression *over; // @synthesize over=_over;
 @property (strong, nonatomic) SCRCMathExpression *under; // @synthesize under=_under;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)dollarCodeDescriptionWithNumberOfOuterRadicals:(unsigned long long)arg1 treePosition:(id)arg2;
 - (unsigned long long)fractionLevel;

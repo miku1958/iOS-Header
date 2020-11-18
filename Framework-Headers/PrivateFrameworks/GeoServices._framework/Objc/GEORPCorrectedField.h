@@ -34,10 +34,10 @@
 @property (nonatomic) BOOL isMarkedIncorrect; // @synthesize isMarkedIncorrect=_isMarkedIncorrect;
 @property (strong, nonatomic) NSString *originalValue; // @synthesize originalValue=_originalValue;
 
+- (void).cxx_destruct;
 - (int)StringAsField:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)fieldAsString:(int)arg1;

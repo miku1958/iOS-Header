@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDFairPlaySAPSessionDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDFairPlaySAPSession, HMFTimer, NSOperationQueue, NSString, NSURLSession;
+@class HMDFairPlaySAPSession, HMFTimer, NSObject, NSOperationQueue, NSString, NSURLSession;
 @protocol OS_dispatch_queue;
 
-@interface HMDRelayActivationSession : NSObject <HMDFairPlaySAPSessionDelegate, HMFTimerDelegate, HMFLogging>
+@interface HMDRelayActivationSession : HMFObject <HMDFairPlaySAPSessionDelegate, HMFTimerDelegate, HMFLogging>
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     unsigned long long _state;

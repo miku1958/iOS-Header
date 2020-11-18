@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFNetMonitorDelegate-Protocol.h>
@@ -12,13 +12,15 @@
 #import <HMFoundation/NSURLSessionDelegate-Protocol.h>
 #import <HMFoundation/_HMFNetServiceMonitorDelegate-Protocol.h>
 
-@class HMFExponentialBackoffTimer, HMFNetMonitor, HMFNetService, NSOperationQueue, NSString, NSURL, NSURLSession, _HMFNetServiceMonitor;
+@class HMFExponentialBackoffTimer, HMFNetMonitor, HMFNetService, NSObject, NSOperationQueue, NSString, NSURL, NSURLSession, _HMFNetServiceMonitor;
 @protocol HMFHTTPClientDelegate, OS_dispatch_queue;
 
-@interface HMFHTTPClient : NSObject <HMFLogging, HMFNetMonitorDelegate, _HMFNetServiceMonitorDelegate, HMFTimerDelegate, NSURLSessionDelegate>
+@interface HMFHTTPClient : HMFObject <HMFLogging, HMFNetMonitorDelegate, _HMFNetServiceMonitorDelegate, HMFTimerDelegate, NSURLSessionDelegate>
 {
     BOOL _reachable;
+    BOOL _pinging;
     BOOL _allowAnonymousConnection;
+    BOOL _active;
     NSURL *_baseURL;
     HMFNetService *_netService;
     id<HMFHTTPClientDelegate> _delegate;
@@ -32,6 +34,7 @@
     HMFExponentialBackoffTimer *_delegatedPingTimer;
 }
 
+@property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
 @property (nonatomic) BOOL allowAnonymousConnection; // @synthesize allowAnonymousConnection=_allowAnonymousConnection;
 @property (readonly, copy, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
@@ -43,6 +46,7 @@
 @property (readonly, copy, nonatomic) HMFNetService *netService; // @synthesize netService=_netService;
 @property (readonly, nonatomic) _HMFNetServiceMonitor *netServiceMonitor; // @synthesize netServiceMonitor=_netServiceMonitor;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
+@property (nonatomic, getter=isPinging) BOOL pinging; // @synthesize pinging=_pinging;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) HMFNetMonitor *reachabilityMonitor; // @synthesize reachabilityMonitor=_reachabilityMonitor;
 @property (readonly, nonatomic) NSOperationQueue *reachabilityProbeQueue; // @synthesize reachabilityProbeQueue=_reachabilityProbeQueue;

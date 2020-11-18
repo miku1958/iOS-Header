@@ -45,7 +45,9 @@
 @property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSMutableArray *visits; // @synthesize visits=_visits;
 
++ (Class)visitsType;
 - (void).cxx_destruct;
+- (int)StringAsLocationOfInterestType:(id)arg1;
 - (void)addVisits:(id)arg1;
 - (void)clearVisits;
 - (void)copyTo:(id)arg1;
@@ -53,8 +55,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
-- (id)initWithLocationOfInterest:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)locationOfInterestTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)visitsAtIndex:(unsigned long long)arg1;

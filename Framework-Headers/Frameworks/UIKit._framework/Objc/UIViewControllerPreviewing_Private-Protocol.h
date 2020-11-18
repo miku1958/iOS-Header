@@ -6,11 +6,11 @@
 
 #import <UIKit/UIViewControllerPreviewing-Protocol.h>
 
-@class UIGestureRecognizer;
+@class UIView;
 
 @protocol UIViewControllerPreviewing_Private <UIViewControllerPreviewing>
 
-@property (readonly, nonatomic) UIGestureRecognizer *presentationGestureRecognizer;
+@property (strong, nonatomic) UIView *customViewForInteractiveHighlight;
 
 @end
 

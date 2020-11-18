@@ -27,6 +27,7 @@
 - (BOOL)matchesASCIIString:(const char *)arg1 matchType:(int)arg2;
 - (BOOL)matchesUTF8String:(const char *)arg1;
 - (BOOL)matchesUTF8String:(const char *)arg1 matchType:(int)arg2;
+- (BOOL)matchesUTF8String:(const char *)arg1 matchType:(int)arg2 matchOptions:(int)arg3;
 
 @end
 

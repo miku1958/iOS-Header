@@ -8,48 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOABExperimentAssignment, GEOPlaceDataCacheLogMessage, GEOStateTimingUsageLogMessage, GEOSuggestionsUsageLogMessage, GEOTileSetStateUsageLogMessage, GEOUserActionUsageLogMessage;
-
 @interface GEOShortSessionUsageLogMessage : PBCodable <NSCopying>
 {
-    struct GEOSessionID _sessionId;
-    double _relativeTimestamp;
-    GEOPlaceDataCacheLogMessage *_placeDataCacheLogMessage;
-    unsigned int _sequenceNumber;
-    GEOStateTimingUsageLogMessage *_stateTimingLogMessage;
-    GEOSuggestionsUsageLogMessage *_suggestionsLogMessage;
-    GEOTileSetStateUsageLogMessage *_tileSetStateUsageLogMessage;
-    GEOABExperimentAssignment *_tilesAbExperimentAssignment;
-    GEOUserActionUsageLogMessage *_userActionLogMessage;
-    struct {
-        unsigned int sessionId:1;
-        unsigned int relativeTimestamp:1;
-        unsigned int sequenceNumber:1;
-    } _has;
 }
-
-@property (readonly, nonatomic) BOOL hasPlaceDataCacheLogMessage;
-@property (nonatomic) BOOL hasRelativeTimestamp;
-@property (nonatomic) BOOL hasSequenceNumber;
-@property (nonatomic) BOOL hasSessionId;
-@property (readonly, nonatomic) BOOL hasStateTimingLogMessage;
-@property (readonly, nonatomic) BOOL hasSuggestionsLogMessage;
-@property (readonly, nonatomic) BOOL hasTileSetStateUsageLogMessage;
-@property (readonly, nonatomic) BOOL hasTilesAbExperimentAssignment;
-@property (readonly, nonatomic) BOOL hasUserActionLogMessage;
-@property (strong, nonatomic) GEOPlaceDataCacheLogMessage *placeDataCacheLogMessage; // @synthesize placeDataCacheLogMessage=_placeDataCacheLogMessage;
-@property (nonatomic) double relativeTimestamp; // @synthesize relativeTimestamp=_relativeTimestamp;
-@property (nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
-@property (nonatomic) struct GEOSessionID sessionId; // @synthesize sessionId=_sessionId;
-@property (strong, nonatomic) GEOStateTimingUsageLogMessage *stateTimingLogMessage; // @synthesize stateTimingLogMessage=_stateTimingLogMessage;
-@property (strong, nonatomic) GEOSuggestionsUsageLogMessage *suggestionsLogMessage; // @synthesize suggestionsLogMessage=_suggestionsLogMessage;
-@property (strong, nonatomic) GEOTileSetStateUsageLogMessage *tileSetStateUsageLogMessage; // @synthesize tileSetStateUsageLogMessage=_tileSetStateUsageLogMessage;
-@property (strong, nonatomic) GEOABExperimentAssignment *tilesAbExperimentAssignment; // @synthesize tilesAbExperimentAssignment=_tilesAbExperimentAssignment;
-@property (strong, nonatomic) GEOUserActionUsageLogMessage *userActionLogMessage; // @synthesize userActionLogMessage=_userActionLogMessage;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

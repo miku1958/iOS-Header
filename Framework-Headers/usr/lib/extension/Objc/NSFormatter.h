@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSCoding-Protocol.h>
-#import <extension/NSCopying-Protocol.h>
+#import <Foundation/NSCoding-Protocol.h>
+#import <Foundation/NSCopying-Protocol.h>
 
 @interface NSFormatter : NSObject <NSCopying, NSCoding>
 {

@@ -8,8 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 @interface GEOPDPhotoFilter : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     struct GEOPDPhotoSizeFilterValue *_photoSizeFilters;
     unsigned long long _photoSizeFiltersCount;
     unsigned long long _photoSizeFiltersSpace;
@@ -17,7 +20,9 @@
 
 @property (readonly, nonatomic) struct GEOPDPhotoSizeFilterValue *photoSizeFilters;
 @property (readonly, nonatomic) unsigned long long photoSizeFiltersCount;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)addPhotoSizeFilter:(struct GEOPDPhotoSizeFilterValue)arg1;
 - (void)clearPhotoSizeFilters;
 - (void)copyTo:(id)arg1;

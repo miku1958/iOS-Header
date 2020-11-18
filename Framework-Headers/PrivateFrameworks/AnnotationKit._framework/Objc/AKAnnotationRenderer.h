@@ -21,6 +21,7 @@
 + (Class)_rendererClassForAnnotation:(id)arg1;
 + (void)_testRenderAnnotation:(id)arg1 intoContext:(struct CGContext *)arg2 forDisplay:(BOOL)arg3 pageControllerOrNil:(id)arg4;
 + (void)_transformContextToModelCoordinates:(struct CGContext *)arg1 forAnnotation:(id)arg2 forDisplay:(BOOL)arg3 pageControllerOrNil:(id)arg4;
++ (BOOL)annotationShouldAvoidRedrawDuringLiveResize:(id)arg1;
 + (struct CGSize)draggingBoundsInsetsForAnnotation:(id)arg1;
 + (struct CGRect)drawingBoundsOfAnnotation:(id)arg1;
 + (struct CGPath *)newTextExclusionPathForAnnotation:(id)arg1 withOptionalAnnotationRect:(struct CGRect)arg2;

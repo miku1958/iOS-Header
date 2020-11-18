@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface UIKBHandwritingCandidateViewCell : UICollectionViewCell
 {
     TIKeyboardCandidate *_candidate;
-    CDStruct_961fb75c _visualStyling;
+    CDStruct_227bb23d _visualStyling;
     long long _leftBorderEdge;
     long long _rightBorderEdge;
     UILabel *_label;
@@ -31,13 +31,13 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKeyboardCandidatePocketShadow *rightHardBorder; // @synthesize rightHardBorder=_rightHardBorder;
 @property (strong, nonatomic) UILabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
 @property (strong, nonatomic) UIKBThemedView *themedView; // @synthesize themedView=_themedView;
-@property (nonatomic) CDStruct_961fb75c visualStyling; // @synthesize visualStyling=_visualStyling;
+@property (nonatomic) CDStruct_227bb23d visualStyling; // @synthesize visualStyling=_visualStyling;
 
 + (id)labelFontForText:(id)arg1;
 + (BOOL)needsThemedView;
 + (id)secondaryLabelFont;
 + (double)systemFontSize;
-+ (double)widthForCandidate:(id)arg1 visualStyling:(CDStruct_961fb75c)arg2;
++ (double)widthForCandidate:(id)arg1 visualStyling:(CDStruct_227bb23d)arg2;
 - (void).cxx_destruct;
 - (BOOL)_canDrawContent;
 - (void)_setRenderConfig:(id)arg1;

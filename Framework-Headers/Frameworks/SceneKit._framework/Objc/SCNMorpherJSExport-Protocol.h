@@ -11,9 +11,13 @@
 @protocol SCNMorpherJSExport <JSExport>
 
 @property (nonatomic) long long calculationMode;
+@property (strong, nonatomic) NSArray *channelTargetCounts;
+@property (strong, nonatomic) NSArray *channelTargetWeights;
 @property (copy, nonatomic) NSString *name;
 @property (readonly, nonatomic) SCNMorpher *presentationMorpher;
 @property (copy, nonatomic) NSArray *targets;
+@property BOOL unifiesNormals;
+@property (strong, nonatomic) NSArray *weights;
 
 + (SCNMorpher *)morpher;
 - (void)addAnimation:(CAAnimation *)arg1 forKey:(NSString *)arg2;

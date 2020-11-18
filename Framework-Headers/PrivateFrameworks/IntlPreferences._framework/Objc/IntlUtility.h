@@ -27,12 +27,12 @@
 + (id)displayNameForNumberingSystemWithIdentifier:(id)arg1 localeIdentifier:(id)arg2 short:(BOOL)arg3;
 + (void)enumeratePreferredCalendarsForLocaleID:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 + (id)filterLanguageList:(id)arg1 forRegion:(id)arg2 fromLanguages:(id)arg3;
++ (BOOL)forceCapitalizationInLanguageLists;
++ (long long)formattingContextFromIUDisplayNameContext:(unsigned long long)arg1;
 + (BOOL)isLunarCalendarDefaultOn;
 + (BOOL)isLunarCalendarDefaultOnForLanguage:(id)arg1 locale:(id)arg2;
 + (BOOL)isYearlessDate:(id)arg1 forCalendar:(id)arg2;
-+ (id)languageCharSetList;
 + (id)languageIdentifierFromIdentifier:(id)arg1 withRegion:(id)arg2;
-+ (id)languageNameOverrides;
 + (id)localeForCalendarID:(id)arg1;
 + (id)localeForCalendarID:(id)arg1 andLocale:(id)arg2;
 + (id)lunarCalendarsForLocaleID:(id)arg1;
@@ -55,7 +55,6 @@
 + (long long)yearlessYearForMonth:(long long)arg1 withCalendar:(id)arg2;
 - (id)ICUdisplayNameForLanguage:(id)arg1 capitalization:(struct ULocaleDisplayNames *)arg2;
 - (BOOL)canRenderLanguage:(id)arg1;
-- (void)dealloc;
 - (id)displayNameForDialect:(id)arg1 context:(unsigned long long)arg2 displayLanguage:(id)arg3;
 - (id)displayNameForLabelForLunarCalendarID:(id)arg1 displayLanguage:(id)arg2;
 - (id)displayNameForLanguage:(id)arg1 context:(unsigned long long)arg2 displayLanguage:(id)arg3;

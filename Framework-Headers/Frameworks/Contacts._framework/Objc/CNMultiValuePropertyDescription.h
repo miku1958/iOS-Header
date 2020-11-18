@@ -28,8 +28,13 @@
 - (id)CNLabeledValueLabelFromABMultiValueLabel:(struct __CFString *)arg1;
 - (id)CNLabeledValueValueFromABMultiValueValue:(void *)arg1;
 - (id)CNLabeledValueValueFromABMultiValueValue:(void *)arg1 destinationClass:(Class)arg2 settersByABKeys:(id)arg3;
+- (id)CNLabeledValueValueFromABMultiValueValueBytes:(char *)arg1 length:(unsigned long long)arg2;
+- (id)CNMutableValueForABMultivalue;
 - (id)CNValueFromABValue:(void *)arg1;
 - (unsigned int)abPropertyType;
+- (BOOL)applyABMultivalueValueBytes:(char *)arg1 length:(unsigned long long)arg2 identifier:(id)arg3 legacyIdentifier:(int)arg4 label:(id)arg5 toCNMultivalueRepresentation:(id)arg6;
+- (BOOL)applyCNValue:(id)arg1 toArray:(id)arg2 identifier:(id)arg3 legacyIdentifier:(int)arg4 label:(id)arg5;
+- (BOOL)applyDictionary:(id)arg1 identifier:(id)arg2 legacyIdentifier:(int)arg3 label:(id)arg4 toCNMultivalueRepresentation:(id)arg5;
 - (void)assertValueType:(id)arg1;
 - (BOOL)isEqualIgnoringIdentifiersForContact:(id)arg1 other:(id)arg2;
 - (BOOL)isValidMultiValueValue:(id)arg1 error:(id *)arg2;

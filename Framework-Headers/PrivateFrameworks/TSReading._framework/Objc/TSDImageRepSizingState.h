@@ -14,6 +14,7 @@
     TSDImageProvider *mProvider;
     struct CGPath *mMaskPath;
     BOOL mIncludesAdjustments;
+    BOOL mWideGamutCanvas;
     int mStatus;
     struct CGImage *mSizedImage;
     long long mSizedImageOrientation;
@@ -27,10 +28,11 @@
 @property (nonatomic) BOOL sizedImageIncludesAdjustments; // @synthesize sizedImageIncludesAdjustments=mIncludesAdjustments;
 @property (nonatomic) long long sizedImageOrientation; // @synthesize sizedImageOrientation=mSizedImageOrientation;
 @property (nonatomic) int status; // @synthesize status=mStatus;
+@property (readonly, nonatomic) BOOL wideGamut; // @synthesize wideGamut=mWideGamutCanvas;
 
 - (void)dealloc;
 - (void)generateSizedImage;
-- (id)initWithDesiredSize:(struct CGSize)arg1 provider:(id)arg2 maskPath:(struct CGPath *)arg3;
+- (id)initWithDesiredSize:(struct CGSize)arg1 provider:(id)arg2 maskPath:(struct CGPath *)arg3 wideGamutCanvas:(BOOL)arg4;
 
 @end
 

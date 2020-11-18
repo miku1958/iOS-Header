@@ -26,6 +26,7 @@
     NSMutableSet *_temporaryAttachmentURLs;
     NSString *__imMessageGUID;
     NSString *_messageGUID;
+    NSString *_sessionGUID;
     NSString *_bundleID;
     NSArray *_consumedPayloads;
     NSString *_guidOfLastMessageInSession;
@@ -55,9 +56,11 @@
 @property (nonatomic) BOOL payloadInShelf; // @synthesize payloadInShelf=_payloadInShelf;
 @property (strong, nonatomic) NSArray *pendingAttachmentData; // @synthesize pendingAttachmentData=_pendingAttachmentData;
 @property (strong, nonatomic) IMPluginPayload *pluginPayload; // @synthesize pluginPayload=_pluginPayload;
+@property (strong, nonatomic) NSString *sessionGUID; // @synthesize sessionGUID=_sessionGUID;
 @property (readonly, nonatomic, getter=isShowingLatestMessageAsBreadcrumb) BOOL showingLatestMessageAsBreadcrumb; // @synthesize showingLatestMessageAsBreadcrumb=_showingLatestMessageAsBreadcrumb;
 @property (readonly, strong, nonatomic) NSAttributedString *statusAttributedString;
 @property (readonly, strong, nonatomic) NSString *statusString;
+@property (readonly, nonatomic) BOOL supportsDynamicSize;
 @property (strong, nonatomic) NSMutableSet *temporaryAttachmentURLs; // @synthesize temporaryAttachmentURLs=_temporaryAttachmentURLs;
 @property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
 @property (readonly, nonatomic) BOOL wantsReplyFromContentView;
@@ -75,6 +78,7 @@
 - (void)_removeTemporaryAttachmentURLs;
 - (id)_replaceHandleWithContactNameInString:(id)arg1;
 - (BOOL)_senderIsSameBetweenPayload:(id)arg1 andOtherPayload:(id)arg2;
+- (id)_summaryText;
 - (void)_updatePayload:(id)arg1 messageID:(long long)arg2 messageGUID:(id)arg3;
 - (void)_updateTemporaryAttachmentURLsForPluginPayload;
 - (unsigned long long)_updateWithPluginPayload:(id)arg1 messageID:(long long)arg2 messageGUID:(id)arg3;

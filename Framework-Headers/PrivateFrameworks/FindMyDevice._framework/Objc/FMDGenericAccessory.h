@@ -10,24 +10,20 @@
 #import <FindMyDevice/FMDAudioAccessory-Protocol.h>
 #import <FindMyDevice/NSSecureCoding-Protocol.h>
 
-@class NSString, NSURL;
+@class FMDAccessoryIdentifier, NSString, NSURL;
 
 @interface FMDGenericAccessory : NSObject <NSSecureCoding, FMDAudioAccessory, FMDAccessory>
 {
-    unsigned int _deviceVendor;
-    unsigned int _deviceProductId;
-    NSString *_accessoryIdentifier;
+    FMDAccessoryIdentifier *_accessoryIdentifier;
     NSString *_audioRoutingIdentifier;
     NSURL *_audioURL;
 }
 
-@property (strong, nonatomic) NSString *accessoryIdentifier; // @synthesize accessoryIdentifier=_accessoryIdentifier;
+@property (strong, nonatomic) FMDAccessoryIdentifier *accessoryIdentifier; // @synthesize accessoryIdentifier=_accessoryIdentifier;
 @property (strong, nonatomic) NSString *audioRoutingIdentifier; // @synthesize audioRoutingIdentifier=_audioRoutingIdentifier;
 @property (strong, nonatomic) NSURL *audioURL; // @synthesize audioURL=_audioURL;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) unsigned int deviceProductId; // @synthesize deviceProductId=_deviceProductId;
-@property (nonatomic) unsigned int deviceVendor; // @synthesize deviceVendor=_deviceVendor;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL playingSound;
 @property (readonly) Class superclass;
@@ -36,7 +32,6 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithAccessory:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 
 @end

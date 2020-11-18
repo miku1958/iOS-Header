@@ -16,6 +16,9 @@
     IDSAccountController *_accountController;
     BOOL _activatingAccount;
     BOOL _deactivatingAccount;
+    IMDIDSService *_subService;
+    NSString *_subServiceName;
+    IMDIDSService *_mainService;
 }
 
 @property (readonly, strong, nonatomic) NSArray *accountsLoadedFromIdentityServices;
@@ -23,7 +26,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) IDSAccountController *idsAccountController; // @synthesize idsAccountController=_accountController;
+@property (readonly, nonatomic) BOOL isSubService;
+@property (nonatomic) IMDIDSService *mainService; // @synthesize mainService=_mainService;
+@property (strong, nonatomic) IMDIDSService *subService; // @synthesize subService=_subService;
+@property (strong, nonatomic) NSString *subServiceName; // @synthesize subServiceName=_subServiceName;
 @property (readonly) Class superclass;
 
 - (void)_loadIDSAccountController;
@@ -48,9 +54,13 @@
 - (void)enableAccount:(id)arg1;
 - (id)imdAccountLoginFromIDSAccountWithType:(int)arg1 login:(id)arg2;
 - (id)initWithBundle:(id)arg1;
+- (id)initWithBundle:(id)arg1 isMainService:(BOOL)arg2;
+- (id)initWithBundle:(id)arg1 subServiceName:(id)arg2;
+- (id)mockAccountController;
 - (id)newAccountWithAccountDefaults:(id)arg1 accountID:(id)arg2;
 - (void)refreshRegistrationForAccount:(id)arg1;
 - (void)registrationFailedForAccount:(id)arg1 needsDeletion:(id)arg2;
+- (void)setMockAccountController:(id)arg1;
 
 @end
 

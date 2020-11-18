@@ -26,6 +26,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRect:(struct CGRect)arg1;
+- (id)initWithRect:(struct CGRect)arg1 exclusiveTouchSubRect:(struct CGRect)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

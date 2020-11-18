@@ -12,6 +12,7 @@
 
 - (id)_activitySummary;
 - (void)_queue_start;
+- (BOOL)_shouldExecuteWhenProtectedDataIsUnavailable;
 
 @end
 

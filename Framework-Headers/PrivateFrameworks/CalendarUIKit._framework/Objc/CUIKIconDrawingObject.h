@@ -15,6 +15,7 @@
     CDUnknownBlockType _dateNameBlock;
     long long _dateNameFormatType;
     long long _format;
+    UIFont *_dateNameFont;
     struct CGSize _canvasSize;
 }
 
@@ -22,7 +23,7 @@
 @property struct CGSize canvasSize; // @synthesize canvasSize=_canvasSize;
 @property (readonly, nonatomic) double dateNameBaselineVerticalInset;
 @property (copy) CDUnknownBlockType dateNameBlock; // @synthesize dateNameBlock=_dateNameBlock;
-@property (readonly, nonatomic) UIFont *dateNameFont;
+@property (readonly, nonatomic) UIFont *dateNameFont; // @synthesize dateNameFont=_dateNameFont;
 @property long long dateNameFormatType; // @synthesize dateNameFormatType=_dateNameFormatType;
 @property (readonly, nonatomic) double dateNameHorizontalInset;
 @property (copy) NSString *dayNumber; // @synthesize dayNumber=_dayNumber;
@@ -44,8 +45,14 @@
 - (void)_drawDayNumber;
 - (void)_drawDayNumberForHomeScreenStyledIcon;
 - (void)_drawDayNumberForNotificationIcon;
+- (BOOL)_shouldUseJ207SmallerFont:(id)arg1;
+- (id)_systemG2FromFont:(id)arg1;
+- (id)dateNameFont:(id)arg1;
+- (id)dateNameFont:(id)arg1 size:(double)arg2;
+- (double)dateNameFontSizeForName:(id)arg1;
 - (void)draw;
 - (id)initWithCalendar:(id)arg1 dayNumber:(id)arg2 dateNameBlock:(CDUnknownBlockType)arg3 dateNameFormatType:(long long)arg4 canvasSize:(struct CGSize)arg5 format:(long long)arg6;
+- (double)resizeAttributedString:(id)arg1 withDateName:(id)arg2 font:(id)arg3 ctx:(id)arg4 maxSize:(struct CGSize)arg5;
 
 @end
 

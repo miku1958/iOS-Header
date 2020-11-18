@@ -6,7 +6,7 @@
 
 #import <PhotosPlayer/ISObservable.h>
 
-@class AVPlayer, AVPlayerItem, AVPlayerLooper, AVQueuePlayer, NSArray, NSError, NSMutableDictionary, NSObject;
+@class AVPlayer, AVPlayerItem, AVQueuePlayer, AVVideoComposition, ISWrappedAVAudioSession, NSArray, NSError, NSMutableDictionary, NSObject;
 @protocol ISWrappedAVPlayerDelegate, OS_dispatch_queue;
 
 @interface ISWrappedAVPlayer : ISObservable
@@ -15,8 +15,8 @@
     NSObject<OS_dispatch_queue> *_ivarQueue;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     AVPlayer *_playerQueue_avPlayer;
+    ISWrappedAVAudioSession *_playerQueue_wrappedAudioSession;
     AVQueuePlayer *_playerQueue_avQueuePlayer;
-    AVPlayerLooper *_playerQueue_avPlayerLooper;
     id _playerQueue_playerItemDidPlayToEndObserver;
     AVPlayerItem *_ivarQueue_currentItem;
     long long _ivarQueue_status;
@@ -30,12 +30,12 @@
     CDStruct_1b6d18a9 _ivarQueue_itemForwardPlaybackEndTime;
     CDStruct_1b6d18a9 _ivarQueue_itemDuration;
     BOOL _ivarQueue_itemPlaybackBufferFull;
+    AVVideoComposition *_ivarQueue_itemVideoComposition;
     BOOL _ivarQueue_itemIsLikelyToKeepUp;
     BOOL _ivarQueue_itemPlaybackBufferEmpty;
     NSArray *_ivarQueue_currentItemLoadedTimeRanges;
     NSMutableDictionary *_observersByID;
     void *_ivarQueueIdentifier;
-    void *_playerQueueIdentifier;
     id<ISWrappedAVPlayerDelegate> _delegate;
 }
 
@@ -45,17 +45,13 @@
 + (id)observedAVPKeys;
 - (void).cxx_destruct;
 - (void)_assertOnIvarQueue;
-- (void)_assertOnPlayerQueue;
-- (void)_handleLooperItemsDidChange;
 - (id)_initWithAVPlayer:(id)arg1;
 - (BOOL)_isOnIvarQueue;
-- (BOOL)_isOnPlayerQueue;
 - (id)_nextObserverUID;
 - (id)_nilOrValue:(id)arg1;
 - (void)_performIvarRead:(CDUnknownBlockType)arg1;
 - (void)_performIvarWrite:(CDUnknownBlockType)arg1;
 - (void)_performPlayerTransaction:(CDUnknownBlockType)arg1;
-- (void)_performPlayerTransaction:(CDUnknownBlockType)arg1 sync:(BOOL)arg2;
 - (void)_playerItemDidPlayToEnd:(id)arg1;
 - (id)_playerQueue_avPlayer;
 - (id)_playerQueue_avQueuePlayer;
@@ -74,6 +70,7 @@
 - (BOOL)currentItemPlaybackBufferEmpty;
 - (BOOL)currentItemPlaybackBufferFull;
 - (long long)currentItemStatus;
+- (id)currentItemVideoComposition;
 - (CDStruct_1b6d18a9)currentTime;
 - (void)dealloc;
 - (id)error;
@@ -95,14 +92,15 @@
 - (void)setActionAtItemEnd:(long long)arg1;
 - (void)setAllowsExternalPlayback:(BOOL)arg1;
 - (void)setAudioEnabled:(BOOL)arg1;
-- (void)setAudioSession:(id)arg1;
 - (void)setDimensionsOfReservedVideoMemory:(struct CGSize)arg1;
 - (void)setItemBlendsVideoFrames:(BOOL)arg1;
 - (void)setItemForwardEndPlaybackTime:(CDStruct_1b6d18a9)arg1;
 - (void)setLoopingEnabled:(BOOL)arg1;
+- (void)setLoopingEnabled:(BOOL)arg1 withTemplateItem:(id)arg2;
 - (void)setRate:(float)arg1;
 - (void)setRate:(float)arg1 time:(CDStruct_1b6d18a9)arg2 atHostTime:(CDStruct_1b6d18a9)arg3;
 - (void)setVolume:(float)arg1;
+- (void)setWrappedAudioSession:(id)arg1;
 - (long long)status;
 - (float)volume;
 

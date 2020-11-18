@@ -46,7 +46,6 @@
 - (void).cxx_destruct;
 - (void)_fetchNewAccessories;
 - (void)_fetchNewAccessoriesWithPrivacyCheck;
-- (void)_handleBridgeStatusNotification:(id)arg1;
 - (void)_handleNewAccessoriesFound:(id)arg1;
 - (void)_handleNewAccessoriesRemoved:(id)arg1;
 - (void)_registerNotificationHandlers;

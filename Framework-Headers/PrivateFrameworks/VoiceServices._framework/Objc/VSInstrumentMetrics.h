@@ -13,24 +13,39 @@
 @interface VSInstrumentMetrics : NSObject <NSSecureCoding>
 {
     BOOL _isWarmStart;
+    BOOL _isSynthesisCached;
     NSString *_utterance;
     NSString *_voiceAssetKey;
     unsigned long long _requestCreatedTimestamp;
+    unsigned long long _synthesisBeginTimestamp;
+    unsigned long long _synthesisEndTimestamp;
     unsigned long long _speechBeginTimestamp;
     unsigned long long _speechEndTimestamp;
+    unsigned long long _audioStartTimestampDiffs;
+    double _audioDuration;
 }
 
+@property double audioDuration; // @synthesize audioDuration=_audioDuration;
+@property unsigned long long audioStartTimestampDiffs; // @synthesize audioStartTimestampDiffs=_audioStartTimestampDiffs;
+@property BOOL isSynthesisCached; // @synthesize isSynthesisCached=_isSynthesisCached;
 @property BOOL isWarmStart; // @synthesize isWarmStart=_isWarmStart;
 @property unsigned long long requestCreatedTimestamp; // @synthesize requestCreatedTimestamp=_requestCreatedTimestamp;
 @property unsigned long long speechBeginTimestamp; // @synthesize speechBeginTimestamp=_speechBeginTimestamp;
 @property unsigned long long speechEndTimestamp; // @synthesize speechEndTimestamp=_speechEndTimestamp;
+@property unsigned long long synthesisBeginTimestamp; // @synthesize synthesisBeginTimestamp=_synthesisBeginTimestamp;
+@property unsigned long long synthesisEndTimestamp; // @synthesize synthesisEndTimestamp=_synthesisEndTimestamp;
 @property (copy) NSString *utterance; // @synthesize utterance=_utterance;
 @property (copy) NSString *voiceAssetKey; // @synthesize voiceAssetKey=_voiceAssetKey;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (double)_clockFactor;
+- (double)audioQueueLatency;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (double)synthesisLatency;
+- (double)ttsSynthesisLatency;
+- (double)ttsTotalLatency;
 
 @end
 

@@ -8,21 +8,23 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEOSupportedTileSets : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_tileSets;
 }
 
 @property (strong, nonatomic) NSMutableArray *tileSets; // @synthesize tileSets=_tileSets;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)tileSetType;
+- (void).cxx_destruct;
 - (void)addTileSet:(id)arg1;
 - (void)clearTileSets;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

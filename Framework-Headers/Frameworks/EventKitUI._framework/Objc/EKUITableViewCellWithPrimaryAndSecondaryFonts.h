@@ -10,9 +10,10 @@
 {
 }
 
++ (void)_clearFontCaches;
 + (BOOL)allowLargestFontSizesForWidth:(double)arg1;
-+ (void)clearFontCaches;
 + (id)constrainedPrimaryTextLabelFont;
++ (void)initialize;
 + (id)primaryTextLabelFontForWidth:(double)arg1;
 + (id)scalablePrimaryTextLabelFont;
 + (id)secondaryTextLabelFont;

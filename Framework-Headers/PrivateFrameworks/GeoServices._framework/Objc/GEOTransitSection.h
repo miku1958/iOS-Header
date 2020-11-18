@@ -37,6 +37,7 @@
 @property (readonly, nonatomic) unsigned int *stepIndexs;
 @property (readonly, nonatomic) unsigned long long stepIndexsCount;
 
+- (void).cxx_destruct;
 - (unsigned int)actionSheetArtworkIndexAtIndex:(unsigned long long)arg1;
 - (void)addActionSheetArtworkIndex:(unsigned int)arg1;
 - (void)addRouteDetailsArtworkIndex:(unsigned int)arg1;

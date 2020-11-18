@@ -28,6 +28,7 @@
 @property (copy, nonatomic) NSString *serverIdentifier; // @synthesize serverIdentifier=_serverIdentifier;
 @property (nonatomic) BOOL shouldRegisterClientCallbackSourceOnMainRunloop; // @synthesize shouldRegisterClientCallbackSourceOnMainRunloop=_shouldRegisterClientCallbackSourceOnMainRunloop;
 
+- (void).cxx_destruct;
 - (BOOL)_connectIfNecessary;
 - (void)_connectServerIfNecessary;
 - (void)_didConnectToClient;

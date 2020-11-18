@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOTileKeyList;
 
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     unsigned int bytesLoaded;
     unsigned int bytesLoadedFromNetwork;
     unsigned int generation;
+    unsigned int numRetries;
     unsigned int hasError:1;
     unsigned int hasLifetimeError:1;
     unsigned int nearManeuver:1;
@@ -27,8 +28,8 @@ __attribute__((visibility("hidden")))
     unsigned int preempted:1;
 }
 
+- (void).cxx_destruct;
 - (double)dataRateKB;
-- (void)dealloc;
 - (double)networkDataRateKB;
 - (BOOL)okToLoad;
 - (void)resetErrors;

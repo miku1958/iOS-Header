@@ -58,6 +58,7 @@
 - (BOOL)hasAnyData;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (void)recordFieldPresenceStatistics;
 
 @end

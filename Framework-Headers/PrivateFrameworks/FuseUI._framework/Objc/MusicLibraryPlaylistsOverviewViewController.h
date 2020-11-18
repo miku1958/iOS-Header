@@ -15,7 +15,7 @@
 #import <FuseUI/SKUITabBarItemRootViewController-Protocol.h>
 #import <FuseUI/UIViewControllerRestoration-Protocol.h>
 
-@class MusicActionableHeaderView, MusicClientContext, MusicHairlineView, MusicLibraryBrowseCollectionViewController, MusicLibraryTopBarController, MusicMatchLoadingViewController, MusicPlaylistsWithNewActionViewConfiguration, MusicSwitcherButtonContainerView, MusicVerticalScrollingContainerViewController, NSDictionary, NSString, SKUIClientContext, SKUIProxyScrollView, UIAlertController, UISwitch;
+@class MusicActionableHeaderView, MusicClientContext, MusicHairlineView, MusicLibraryBrowseCollectionViewController, MusicLibraryTopBarController, MusicPlaylistsWithNewActionViewConfiguration, MusicSwitcherButtonContainerView, MusicVerticalScrollingContainerViewController, NSDictionary, NSString, SKUIClientContext, SKUIProxyScrollView, UIAlertController, UISwitch;
 
 @interface MusicLibraryPlaylistsOverviewViewController : UIViewController <MusicActionableHeaderViewDelegate, MusicLibraryBrowseCollectionViewControllerDelegate, MusicNoContentViewDelegate, MusicSwitcherButtonContainerViewDelegate, UIViewControllerRestoration, SKUIProxyScrollViewDelegate, SKUITabBarItemRootViewController, MusicClientContextConsuming>
 {
@@ -25,7 +25,6 @@
     MusicHairlineView *_hairlineView;
     BOOL _hasSubscribedPlaylistsCapability;
     MusicSwitcherButtonContainerView *_librarySwitcherButtonContainerView;
-    MusicMatchLoadingViewController *_matchLoadingViewController;
     UIViewController *_noContentViewController;
     unsigned long long _playlistsConfigurationOptions;
     MusicPlaylistsWithNewActionViewConfiguration *_playlistsViewConfiguration;
@@ -38,7 +37,6 @@
     NSString *_selectedFilter;
     BOOL _selectedFilterIsCuratorID;
     MusicPlaylistsWithNewActionViewConfiguration *_selectedPlaylistsViewConfiguration;
-    BOOL _shouldShowMatchLoadingView;
     BOOL _shouldShowNoContentView;
     MusicLibraryTopBarController *_topBarController;
     MusicVerticalScrollingContainerViewController *_verticalScrollingContainerViewController;
@@ -68,7 +66,6 @@
 - (void)_handlePlaylistsOverviewFilterAlertControllerDismissal;
 - (void)_loadRecentlyAddedPlaylistsHeaderView;
 - (void)_loadRecentlyAddedPlaylistsViewController;
-- (id)_matchLoadingViewController;
 - (void)_musicLibraryPlaylistsOverviewViewControllerCommonInitialization;
 - (id)_newLibraryPlaylistsViewConfiguration;
 - (id)_noContentViewController;
@@ -83,12 +80,10 @@
 - (void)_updateChildViewController;
 - (void)_updateCuratorsMapping;
 - (void)_updateLibrarySwitcherButtonWithVerticalContainerItemsReload:(BOOL)arg1;
-- (void)_updateMatchLoadingViewVisibility;
 - (void)_updatePlaylistNoContentViewVisibilityForceReload:(BOOL)arg1;
 - (void)_updatePlaylistsHeaderMetricsAllowingInvalidationOfVerticalScrollingContainerLayout:(BOOL)arg1;
 - (void)_updateRecentlyAddedPlaylistsHeaderMetricsAllowingInvalidationOfVerticalScrollingContainerLayout:(BOOL)arg1;
 - (void)_updateRecentlyAddedViewMoreButton;
-- (void)_updateShouldShowMatchLoadingView;
 - (void)_updateSizeOfLibrarySwitcherButtonContainerView;
 - (void)_updateSizeOfPlaylistsHeaderView;
 - (void)_updateSizeOfRecentlyAddedPlaylistsHeaderView;

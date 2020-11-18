@@ -12,15 +12,16 @@
 {
     NSURL *_principalURL;
     NSString *_displayName;
-    NSSet *_addresses;
+    NSSet *_preferredAddresses;
 }
 
-@property (strong, nonatomic) NSSet *addresses; // @synthesize addresses=_addresses;
 @property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (strong, nonatomic) NSSet *preferredAddresses; // @synthesize preferredAddresses=_preferredAddresses;
 @property (strong, nonatomic) NSURL *principalURL; // @synthesize principalURL=_principalURL;
 
 + (id)resultFromResponseItem:(id)arg1;
 - (void).cxx_destruct;
+- (id)addresses;
 - (id)description;
 
 @end

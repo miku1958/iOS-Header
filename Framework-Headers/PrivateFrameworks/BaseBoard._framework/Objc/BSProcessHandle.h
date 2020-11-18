@@ -43,9 +43,8 @@
 + (id)processHandleForTaskNameRight:(id)arg1;
 + (id)processHandleForXPCConnection:(id)arg1;
 + (BOOL)supportsSecureCoding;
-- (BOOL)_currentProcess;
 - (id)_initWithPID:(int)arg1 bundleID:(id)arg2;
-- (BOOL)_isRunning;
+- (BOOL)_isRunningWithCertainty:(out BOOL *)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

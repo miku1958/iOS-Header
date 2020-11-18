@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class HFCharacteristicValueBatchReadResponse, HFCharacteristicValueDisplayMetadata, NSDictionary;
+@class HFCharacteristicBatchReadResponse, HFCharacteristicValueDisplayMetadata, NSDictionary;
 
 @interface HFServiceLikeItemUpdateResponse : NSObject
 {
     HFCharacteristicValueDisplayMetadata *_displayMetadata;
-    HFCharacteristicValueBatchReadResponse *_readResponse;
+    HFCharacteristicBatchReadResponse *_readResponse;
     NSDictionary *_standardResults;
 }
 
 @property (readonly, nonatomic) HFCharacteristicValueDisplayMetadata *displayMetadata; // @synthesize displayMetadata=_displayMetadata;
-@property (readonly, nonatomic) HFCharacteristicValueBatchReadResponse *readResponse; // @synthesize readResponse=_readResponse;
+@property (readonly, nonatomic) HFCharacteristicBatchReadResponse *readResponse; // @synthesize readResponse=_readResponse;
 @property (readonly, nonatomic) NSDictionary *standardResults; // @synthesize standardResults=_standardResults;
 
 - (void).cxx_destruct;

@@ -16,8 +16,8 @@
 @property (strong, nonatomic) NSMutableSet *supportedReports; // @synthesize supportedReports=_supportedReports;
 
 + (id)copyParseRules;
+- (void).cxx_destruct;
 - (void)addSupportedReport:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (BOOL)supportsReportWithNameSpace:(id)arg1 andName:(id)arg2;

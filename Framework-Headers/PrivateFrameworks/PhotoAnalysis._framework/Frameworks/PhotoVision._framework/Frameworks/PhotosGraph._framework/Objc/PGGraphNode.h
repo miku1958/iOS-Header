@@ -6,25 +6,124 @@
 
 #import "MANode.h"
 
-@interface PGGraphNode : MANode
+#import <PhotosGraph/PGGraphAddressNode-Protocol.h>
+#import <PhotosGraph/PGGraphAreaNode-Protocol.h>
+#import <PhotosGraph/PGGraphCollectionNode-Protocol.h>
+#import <PhotosGraph/PGGraphDateNode-Protocol.h>
+#import <PhotosGraph/PGGraphHolidayNode-Protocol.h>
+#import <PhotosGraph/PGGraphMeaningNode-Protocol.h>
+#import <PhotosGraph/PGGraphMobilityNode-Protocol.h>
+#import <PhotosGraph/PGGraphMomentNode-Protocol.h>
+#import <PhotosGraph/PGGraphPersonNode-Protocol.h>
+#import <PhotosGraph/PGGraphSocialGroupNode-Protocol.h>
+
+@class NSDateComponents, NSString;
+
+@interface PGGraphNode : MANode <PGGraphMobilityNode, PGGraphPersonNode, PGGraphMeaningNode, PGGraphSocialGroupNode, PGGraphDateNode, PGGraphAddressNode, PGGraphCollectionNode, PGGraphHolidayNode, PGGraphMomentNode, PGGraphAreaNode>
 {
 }
 
+@property (strong, nonatomic) NSDateComponents *anniversaryDateComponents;
+@property (strong, nonatomic) NSDateComponents *birthdayDateComponents;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) BOOL happensPartiallyAtHome;
+@property (readonly) BOOL happensPartiallyAtMyHomeOrWork;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) BOOL isBlacklisted;
+@property (readonly) BOOL isInterestingForMemories;
+@property (readonly, nonatomic) unsigned long long locationMobilityType;
+@property (readonly, nonatomic) unsigned long long mobilityType;
+@property (readonly) unsigned long long numberOfAssetsWithPeople;
+@property (readonly) BOOL personIsUserCreated;
+@property (readonly, nonatomic) unsigned long long rank;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+
++ (id)_specialDateComponentsForDate:(id)arg1;
++ (id)_specialDateDateComponentsFromTimeInterval:(double)arg1;
 + (id)addressNodesFromEventNodes:(id)arg1;
++ (unsigned long long)partOfDayForPartOfDayNode:(id)arg1;
++ (id)sortEventsByDateSortDescriptors;
++ (double)specialDateTimeIntervalForDate:(id)arg1;
++ (double)specialDateTimeIntervalForDateComponents:(id)arg1;
++ (id)stringValueForPartOfDay:(unsigned long long)arg1;
 - (id)UUID;
 - (void)_enumerateDeepNeighborsWithLabel:(id)arg1 domain:(unsigned short)arg2 edgeType:(unsigned long long)arg3 shouldStop:(BOOL *)arg4 block:(CDUnknownBlockType)arg5;
+- (void)_enumeratePartOfDayWithThreshold:(float)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (unsigned long long)_partOfDayWithThreshold:(float)arg1;
 - (id)_stringValueForPropertyWithKey:(id)arg1;
+- (void)addressEnumerateAreaNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (id)areaNodes;
+- (BOOL)belongsToBestSocialGroup;
+- (BOOL)belongsToDefaultMemoryAssetCollections;
 - (id)bestAddressNode;
 - (struct CLLocationCoordinate2D)bestLocationCoordinate;
+- (BOOL)collectionEndsBeforeLocalDate:(id)arg1;
+- (void)collectionEnumerateChildCollectionNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)collectionEnumerateMeaningNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)collectionEnumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (id)collectionMeaningLabels;
+- (id)collectionMeaningNodes;
+- (id)collectionMomentNodes;
+- (unsigned long long)collectionNumberOfAssets;
+- (id)collectionSortedMomentNodes;
+- (BOOL)collectionStartsAfterLocalDate:(id)arg1;
+- (id)collectionUpgradingMeaningLabelForWeekend;
 - (double)contentScore;
+- (double)contentScoreAverage;
 - (struct CLLocationCoordinate2D)coordinate;
 - (unsigned long long)countOfDeepNeighborsWithLabel:(id)arg1 usingOutEdges:(BOOL)arg2 inDomain:(unsigned short)arg3;
+- (void)dateEnumerateHolidayNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)dateEnumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)deepNeighborsWithLabel:(id)arg1 usingOutEdges:(BOOL)arg2 inDomain:(unsigned short)arg3;
+- (BOOL)diameterIsLargerThanDiameter:(double)arg1;
 - (void)enumerateDeepNeighborsWithLabel:(id)arg1 usingOutEdges:(BOOL)arg2 inDomain:(unsigned short)arg3 andBlock:(CDUnknownBlockType)arg4;
+- (void)enumeratePartOfDayUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateSignificantPartOfDayUsingBlock:(CDUnknownBlockType)arg1;
 - (id)firstDeepNeighborWithLabel:(id)arg1 usingOutEdges:(BOOL)arg2 inDomain:(unsigned short)arg3;
 - (double)graphScore;
+- (BOOL)hasParentCollection;
 - (BOOL)isFavorite;
+- (BOOL)isFrequentSocialGroup;
 - (BOOL)isInteresting;
+- (BOOL)isOcean;
+- (BOOL)isSmartInteresting;
 - (BOOL)isUserCreated;
 - (BOOL)isWeekend;
 - (id)keywordDescription;
@@ -35,21 +134,46 @@
 - (id)localEndDate;
 - (id)localIdentifier;
 - (id)localStartDate;
+- (BOOL)locationIsImproved;
 - (id)matchingDescription;
+- (id)meaningLabels;
+- (double)meaningScore;
+- (BOOL)momentEndsBeforeLocalDate:(id)arg1;
+- (void)momentEnumerateAddressNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)momentEnumerateCelebratedHolidayNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)momentEnumerateCollectionNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)momentEnumerateDateNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)momentEnumerateMeaningNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)momentEnumeratePersonNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)momentEnumerateRemoteAddressNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (double)momentMeaningScore;
+- (BOOL)momentStartsAfterLocalDate:(id)arg1;
 - (id)name;
 - (id)nameAsSocialGroupNode;
+- (double)neighborScore;
 - (id)nextEvent;
 - (unsigned long long)numberOfAssets;
+- (unsigned long long)partOfDay;
+- (void)personEnumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)personEnumerateSocialGroupNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (id)personMomentNodes;
 - (double)personScore;
+- (id)personSocialGroupNodes;
 - (id)previousEvent;
+- (id)sameMonthEvents;
 - (id)sameWeekDateNodes;
 - (id)sameWeekendEvents;
-- (double)timeInterval;
+- (unsigned long long)significantPartOfDay;
+- (void)socialGroupEnumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)socialGroupEnumeratePersonNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (id)socialGroupMomentNodes;
+- (id)socialGroupPersonNodes;
 - (long long)timeValue;
 - (double)timestampTZEnd;
 - (double)timestampTZStart;
 - (double)timestampUTCEnd;
 - (double)timestampUTCStart;
+- (unsigned long long)totalNumberOfPersons;
 - (id)universalEndDate;
 - (id)universalStartDate;
 - (id)weekendNode;

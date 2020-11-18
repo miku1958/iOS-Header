@@ -6,16 +6,13 @@
 
 #import <AVFoundation/AVAssetInspectorLoader.h>
 
-@class AVAssetInspector, AVWeakReference, NSDictionary, NSMutableArray, NSObject, NSURL;
+@class AVAssetInspector, AVWeakReference, NSMutableArray, NSObject, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface AVFigAssetInspectorLoader : AVAssetInspectorLoader
 {
     struct OpaqueFigAsset *_figAsset;
     int _figAssetCreationStatus;
-    unsigned long long _figAssetCreationFlags;
-    NSDictionary *_figAssetCreationOptions;
-    long long _figAssetOnce;
     AVWeakReference *_weakReferenceToAsset;
     AVAssetInspector *_assetInspector;
     long long _assetInspectorOnce;
@@ -24,7 +21,7 @@
     NSMutableArray *_loadingBatches;
     BOOL _loadingCanceled;
     BOOL _registeredForFigAssetNotifications;
-    BOOL _shouldRespondToFigAssetPropertyLoading;
+    BOOL _shouldRespondToFigAssetURLSessionPropertyLoading;
     BOOL _isRespondingToFigAssetPropertyLoading;
     BOOL _URLSessionOperationQueueAvailable;
     BOOL _URLSessionDataDelegateAvailable;
@@ -53,7 +50,6 @@
 - (id)_loadingBatches;
 - (struct OpaqueFigSimpleMutex *)_loadingMutex;
 - (void)_postDidFailToCompleteURLSessionSetUpNotificationIfAppropriate;
-- (void)_postURLSessionSetUpDidCompleteNotificationIfAppropriate;
 - (void)_removeFigAssetNotifications;
 - (void)_setFragmentMindingInterval:(double)arg1;
 - (void)_setIsAssociatedWithFragmentMinder:(BOOL)arg1;
@@ -81,6 +77,7 @@
 - (void)loadValuesAsynchronouslyForKeys:(id)arg1 keysForCollectionKeys:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)lyrics;
 - (id)originalNetworkContentURL;
+- (void)postURLSessionSetUpDidCompleteNotificationIfAppropriate;
 - (id)resolvedURL;
 - (long long)statusOfValueForKey:(id)arg1 error:(id *)arg2;
 

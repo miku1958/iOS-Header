@@ -9,7 +9,7 @@
 #import <EventKitUI/EKDayOccurrenceViewDelegate-Protocol.h>
 #import <EventKitUI/EKUITintColorUpdateDelegate-Protocol.h>
 
-@class EKEvent, EKUIVisualEffectView, NSMutableArray, UIColor, UILabel, UIScrollView;
+@class EKDayOccurrenceView, EKEvent, EKUIVisualEffectView, NSMutableArray, UIColor, UILabel, UIScrollView;
 @protocol EKDayAllDayViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -25,10 +25,13 @@ __attribute__((visibility("hidden")))
     BOOL _showSelection;
     EKEvent *_selectedEvent;
     BOOL _usesSmallText;
+    BOOL _showBirthdayCount;
+    long long _birthdayCount;
     UIView *_dividerLineViewTop;
     UIView *_dividerLineViewBottom;
     EKUIVisualEffectView *_dividerLineSuperview;
     UIColor *_dividerLineVisualEffectColor;
+    EKDayOccurrenceView *_birthdayCountOccurrenceView;
     BOOL _showsBorderLines;
     BOOL _showsLabel;
     BOOL _hideOccurrenceBackground;
@@ -47,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hideOccurrenceBackground; // @synthesize hideOccurrenceBackground=_hideOccurrenceBackground;
 @property (nonatomic) int maxVisibleRows; // @synthesize maxVisibleRows=_maxVisibleRows;
 @property (readonly, nonatomic) double naturalHeight;
+@property (nonatomic) BOOL showBirthdayCountInsteadOfEvents;
 @property (nonatomic) BOOL showsBorderLines; // @synthesize showsBorderLines=_showsBorderLines;
 @property (nonatomic) BOOL showsLabel; // @synthesize showsLabel=_showsLabel;
 @property (nonatomic) BOOL showsSelection;
@@ -61,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (id)_findSelectedCopySubviewOfView:(id)arg1;
 - (double)_height;
 - (id)_selectedCopyView;
+- (void)_setUpBirthdayCountViewIfNeeded;
 - (void)addViewToScroller:(id)arg1;
 - (void)configureOccurrenceViewForGestureController:(id)arg1;
 - (BOOL)containsEvent:(id)arg1;

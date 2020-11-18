@@ -11,14 +11,15 @@
 @interface HDDataCollectionObserverState : NSObject <NSCopying>
 {
     BOOL _isInBackground;
-    BOOL _hasActiveWorkout;
+    BOOL _hasRunningWorkout;
 }
 
-@property (nonatomic) BOOL hasActiveWorkout; // @synthesize hasActiveWorkout=_hasActiveWorkout;
-@property (nonatomic) BOOL isInBackground; // @synthesize isInBackground=_isInBackground;
+@property (readonly, nonatomic) BOOL hasRunningWorkout; // @synthesize hasRunningWorkout=_hasRunningWorkout;
+@property (readonly, nonatomic) BOOL isInBackground; // @synthesize isInBackground=_isInBackground;
 
-+ (id)dataCollectionObserverStateInBackground:(BOOL)arg1 hasActiveWorkout:(BOOL)arg2;
++ (id)dataCollectionObserverStateInBackground:(BOOL)arg1 hasRunningWorkout:(BOOL)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

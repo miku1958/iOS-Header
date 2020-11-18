@@ -40,6 +40,7 @@
 + (BOOL)_acceptsComplicationType:(unsigned long long)arg1 family:(long long)arg2;
 - (void).cxx_destruct;
 - (void)_activate;
+- (void)_applyAnimationMode;
 - (void)_applyCachingMode;
 - (void)_applyUpdatingMode;
 - (void)_cancelDelayedBlocks;
@@ -60,10 +61,13 @@
 - (void)_suspendRightBoundaryDate:(id)arg1;
 - (void)_updateCurrentTemplate;
 - (void)_updateDimStateForCurrentTimeline;
+- (void)_updateIsComplicationActive:(BOOL)arg1;
 - (void)_updateTimeTravelBoundaries;
 - (void)addDisplayWrapper:(id)arg1;
 - (void)appendEntries:(id)arg1;
 - (id)complicationApplicationIdentifier;
+- (void)didTouchDown;
+- (void)didTouchUpInside;
 - (BOOL)hasTapAction;
 - (id)initWithComplication:(id)arg1 family:(long long)arg2;
 - (void)invalidateEntries;

@@ -4,17 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthKit/_HKBinarySample.h>
+#import <HealthKit/HKSample.h>
+
+#import <HealthKit/_HKBinarySample-Protocol.h>
 
 @class NSString, _HKStringSampleType;
 
-@interface _HKStringSample : _HKBinarySample
+@interface _HKStringSample : HKSample <_HKBinarySample>
 {
     NSString *_stringValue;
+    _HKStringSampleType *_stringType;
 }
 
-@property (readonly) _HKStringSampleType *stringType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) _HKStringSampleType *stringType; // @synthesize stringType=_stringType;
 @property (readonly) NSString *stringValue;
+@property (readonly) Class superclass;
 
 + (BOOL)_isConcreteObjectClass;
 + (id)stringSampleWithType:(id)arg1 stringValue:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 device:(id)arg5 metadata:(id)arg6;

@@ -8,10 +8,11 @@
 
 #import <CoreThemeDefinition/NSCopying-Protocol.h>
 
-@class NSArray, NSDate, NSSet, NSString, NSURL;
+@class NSArray, NSDate, NSSet, NSString, NSURL, NSValue;
 
 @interface TDNamedAssetImportInfo : NSObject <NSCopying>
 {
+    BOOL _preservesVectorRepresentation;
     BOOL _optOutOfThinning;
     BOOL _isFlippable;
     BOOL _cubeMap;
@@ -45,6 +46,10 @@
     long long _texturePixelFormat;
     long long _textureInterpretation;
     NSArray *_textureInfos;
+    struct CGColor *_cgColor;
+    long long _colorSpaceID;
+    NSArray *_colorComponents;
+    NSValue *_iconSize;
     struct CGSize _resizableSliceSize;
     struct CGSize _canvasSize;
     CDStruct_3c058996 _sliceInsets;
@@ -54,6 +59,9 @@
 @property (nonatomic) struct CGRect alignmentRect; // @synthesize alignmentRect=_alignmentRect;
 @property (nonatomic) unsigned long long arrayIndex; // @synthesize arrayIndex=_arrayIndex;
 @property (nonatomic) struct CGSize canvasSize; // @synthesize canvasSize=_canvasSize;
+@property (readonly, nonatomic) struct CGColor *cgColor; // @synthesize cgColor=_cgColor;
+@property (copy, nonatomic) NSArray *colorComponents; // @synthesize colorComponents=_colorComponents;
+@property (nonatomic) long long colorSpaceID; // @synthesize colorSpaceID=_colorSpaceID;
 @property (nonatomic) long long compressionType; // @synthesize compressionType=_compressionType;
 @property (copy, nonatomic) NSArray *containedImageNames; // @synthesize containedImageNames=_containedImageNames;
 @property (nonatomic) BOOL cubeMap; // @synthesize cubeMap=_cubeMap;
@@ -61,6 +69,7 @@
 @property (copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property (nonatomic) unsigned long long graphicsClass; // @synthesize graphicsClass=_graphicsClass;
 @property (nonatomic) long long graphicsFeatureSetClass; // @synthesize graphicsFeatureSetClass=_graphicsFeatureSetClass;
+@property (copy, nonatomic) NSValue *iconSize; // @synthesize iconSize=_iconSize;
 @property (nonatomic) long long idiom; // @synthesize idiom=_idiom;
 @property (nonatomic) BOOL isFlippable; // @synthesize isFlippable=_isFlippable;
 @property (nonatomic) BOOL isTemplate;
@@ -72,6 +81,7 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) long long nameIdentifier; // @synthesize nameIdentifier=_nameIdentifier;
 @property (nonatomic) BOOL optOutOfThinning; // @synthesize optOutOfThinning=_optOutOfThinning;
+@property (nonatomic) BOOL preservesVectorRepresentation; // @synthesize preservesVectorRepresentation=_preservesVectorRepresentation;
 @property (nonatomic) long long renditionType; // @synthesize renditionType=_renditionType;
 @property (nonatomic) struct CGSize resizableSliceSize; // @synthesize resizableSliceSize=_resizableSliceSize;
 @property (nonatomic) long long resizingMode; // @synthesize resizingMode=_resizingMode;
@@ -95,6 +105,7 @@
 - (id)description;
 - (id)init;
 - (long long)renditionSubtype;
+- (void)setCGColor:(struct CGColor *)arg1;
 
 @end
 

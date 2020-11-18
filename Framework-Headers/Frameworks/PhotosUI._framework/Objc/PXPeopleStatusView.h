@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSLayoutConstraint, UIButton, UILabel, UIStackView;
+@class NSArray, NSLayoutConstraint, UIActivityIndicatorView, UIButton, UILabel, UIStackView;
 
 @interface PXPeopleStatusView : UIView
 {
@@ -19,9 +19,11 @@
     NSArray *_constraints;
     NSLayoutConstraint *_stackViewY;
     NSLayoutConstraint *_continueButtonBottom;
+    UIActivityIndicatorView *_activityIndicator;
     struct UIEdgeInsets _contentInsets;
 }
 
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property (strong, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
 @property (nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
 @property (strong, nonatomic) UIButton *continueButton; // @synthesize continueButton=_continueButton;
@@ -35,6 +37,7 @@
 
 - (void).cxx_destruct;
 - (void)_createViews;
+- (id)_goButtonBackgroundImageWithColor:(id)arg1;
 - (void)commonInit;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

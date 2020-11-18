@@ -9,12 +9,13 @@
 #import <UIKit/UIViewControllerAnimatedTransitioningEx-Protocol.h>
 #import <UIKit/_UIBasicAnimationFactory-Protocol.h>
 
-@class NSString, NSUUID, UIView, _UINavigationInteractiveTransitionBase, _UIParallaxDimmingView;
+@class NSString, NSUUID, UIColor, UIView, _UINavigationInteractiveTransitionBase, _UIParallaxDimmingView;
 @protocol UIViewControllerContextTransitioning;
 
 @interface _UINavigationParallaxTransition : NSObject <_UIBasicAnimationFactory, UIViewControllerAnimatedTransitioningEx>
 {
     NSUUID *_currentRunningAnimationsUUID;
+    NSUUID *_currentTrackingAnimatorsAnimationsUUID;
     BOOL _interactionAborted;
     BOOL _clipUnderlapWhileTransitioning;
     BOOL __shouldReverseLayoutDirection;
@@ -28,6 +29,7 @@
     UIView *_clipUnderView;
     long long _transitionStyle;
     double _transitionGap;
+    UIColor *_overrideDimmingColor;
 }
 
 @property (nonatomic, setter=_setShouldReverseLayoutDirection:) BOOL _shouldReverseLayoutDirection; // @synthesize _shouldReverseLayoutDirection=__shouldReverseLayoutDirection;
@@ -43,11 +45,14 @@
 @property (nonatomic) BOOL interactionAborted; // @synthesize interactionAborted=_interactionAborted;
 @property (nonatomic) _UINavigationInteractiveTransitionBase *interactionController; // @synthesize interactionController=_interactionController;
 @property (nonatomic) long long operation; // @synthesize operation=_operation;
+@property (strong, nonatomic) UIColor *overrideDimmingColor; // @synthesize overrideDimmingColor=_overrideDimmingColor;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id<UIViewControllerContextTransitioning> transitionContext; // @synthesize transitionContext=_transitionContext;
 @property (nonatomic) double transitionGap; // @synthesize transitionGap=_transitionGap;
 @property (nonatomic) long long transitionStyle; // @synthesize transitionStyle=_transitionStyle;
 
++ (double)defaultSlidingTransitionDuration;
++ (void)setDefaultSlidingTransitionDuration:(double)arg1;
 - (void).cxx_destruct;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
 - (void)_stopTransitionImmediately;

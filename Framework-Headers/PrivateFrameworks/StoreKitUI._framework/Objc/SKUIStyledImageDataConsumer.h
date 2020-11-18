@@ -89,6 +89,7 @@
 - (id)_radialBlurImageWithBounds:(struct CGRect)arg1 contentRect:(struct CGRect)arg2 drawBlock:(CDUnknownBlockType)arg3;
 - (id)_roundedBorderWithBounds:(struct CGRect)arg1 contentRect:(struct CGRect)arg2 drawBlock:(CDUnknownBlockType)arg3;
 - (id)_scaledImageWithBounds:(struct CGRect)arg1 contentRect:(struct CGRect)arg2 drawBlock:(CDUnknownBlockType)arg3;
+- (id)_uberBannerImageWithBounds:(struct CGRect)arg1 inputSize:(struct CGSize)arg2 drawBlock:(CDUnknownBlockType)arg3;
 - (id)_uberImageWithBounds:(struct CGRect)arg1 inputSize:(struct CGSize)arg2 drawBlock:(CDUnknownBlockType)arg3;
 - (id)imageForColor:(id)arg1;
 - (id)imageForColor:(id)arg1 size:(struct CGSize)arg2;

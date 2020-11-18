@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (struct CGPoint)abcKeyTextOffset;
 - (id)activeControlKeyTraits;
+- (double)capitalAbcSymbolSize;
 - (id)controlKeyBackgroundColorName;
 - (id)controlKeyDividerColorName;
 - (id)controlKeyForegroundColorName;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)globeKeyTextOffset;
 - (double)interkeyGapsCenterXOfKeyplaneFrame:(struct CGRect)arg1;
 - (long long)lightHighQualityEnabledBlendForm;
+- (struct CGPoint)longVowelSignKeyTextOffset;
 - (double)numberPadKeyPrimarySymbolSize;
 - (struct CGPoint)numberPadKeyPrimaryTextOffset;
 - (struct CGPoint)numberPadKeySecondaryTextOffset;
@@ -34,7 +36,10 @@ __attribute__((visibility("hidden")))
 - (void)setupColumnLayoutSegmentsWithControlWidth:(double)arg1;
 - (id)shiftedControlKeyTraits;
 - (id)shiftedWhiteControlKeyTraits;
+- (BOOL)shouldShowBottomRowEdge;
+- (BOOL)shouldShowTopRowEdge;
 - (struct UIEdgeInsets)topEdgeAdjustmentInsets;
+- (BOOL)useRoundCorner;
 
 @end
 

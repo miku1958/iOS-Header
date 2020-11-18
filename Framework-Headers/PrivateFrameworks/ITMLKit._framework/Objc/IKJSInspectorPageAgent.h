@@ -6,26 +6,33 @@
 
 #import <objc/NSObject.h>
 
+#import <ITMLKit/IKNetworkRequestLoader-Protocol.h>
 #import <ITMLKit/RWIProtocolPageDomainHandler-Protocol.h>
 
-@class IKJSInspectorController, NSString;
+@class IKJSInspectorController, NSString, RWIProtocolPageFrameResourceTree;
 
-@interface IKJSInspectorPageAgent : NSObject <RWIProtocolPageDomainHandler>
+@interface IKJSInspectorPageAgent : NSObject <IKNetworkRequestLoader, RWIProtocolPageDomainHandler>
 {
     IKJSInspectorController *_controller;
+    RWIProtocolPageFrameResourceTree *_resourceTree;
+    NSString *_currentFrameIdentifier;
 }
 
 @property (readonly, weak, nonatomic) IKJSInspectorController *controller; // @synthesize controller=_controller;
+@property (strong, nonatomic) NSString *currentFrameIdentifier; // @synthesize currentFrameIdentifier=_currentFrameIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) RWIProtocolPageFrameResourceTree *resourceTree; // @synthesize resourceTree=_resourceTree;
 @property (readonly) Class superclass;
 
++ (id)_pageFromDOMDocument:(id)arg1;
 - (void).cxx_destruct;
 - (void)addScriptToEvaluateOnLoadWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 scriptSource:(id)arg3;
 - (void)archiveWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2;
 - (void)deleteCookieWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 cookieName:(id)arg3 url:(id)arg4;
 - (void)disableWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2;
+- (void)documentDidChange;
 - (void)enableWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2;
 - (void)getCompositingBordersVisibleWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2;
 - (void)getCookiesWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2;
@@ -33,7 +40,7 @@
 - (void)getResourceTreeWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2;
 - (id)initWithInspectorController:(id)arg1;
 - (void)navigateWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 url:(id)arg3;
-- (void)reloadWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 ignoreCache:(BOOL *)arg3 scriptToEvaluateOnLoad:(id *)arg4;
+- (void)reloadWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 ignoreCache:(BOOL *)arg3 revalidateAllResources:(BOOL *)arg4 scriptToEvaluateOnLoad:(id *)arg5;
 - (void)removeScriptToEvaluateOnLoadWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 identifier:(id)arg3;
 - (void)searchInResourceWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 frameId:(id)arg3 url:(id)arg4 query:(id)arg5 caseSensitive:(BOOL *)arg6 isRegex:(BOOL *)arg7;
 - (void)searchInResourceWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 frameId:(id)arg3 url:(id)arg4 query:(id)arg5 caseSensitive:(BOOL *)arg6 isRegex:(BOOL *)arg7 requestId:(id *)arg8;

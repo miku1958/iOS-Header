@@ -6,7 +6,7 @@
 
 #import <CoreBluetooth/CBManager.h>
 
-@class NSLock, NSMapTable, NSMutableArray, NSMutableDictionary, NSNumber;
+@class NSHashTable, NSLock, NSMapTable, NSMutableArray, NSMutableDictionary, NSNumber;
 @protocol CBPeripheralManagerDelegate;
 
 @interface CBPeripheralManager : CBManager
@@ -22,6 +22,9 @@
         unsigned int isReadyToUpdate:1;
         unsigned int centralDidConnect:1;
         unsigned int centralDidUpdateConnectionParameters:1;
+        unsigned int didPublishL2CAPChannel:1;
+        unsigned int didUnpublishL2CAPChannel:1;
+        unsigned int didOpenL2CAPChannel:1;
     } _delegateFlags;
     BOOL _isAdvertising;
     BOOL _readyForUpdates;
@@ -32,6 +35,7 @@
     NSMutableDictionary *_characteristicIDs;
     NSLock *_updateLock;
     NSNumber *_multipleAdvertisingSupported;
+    NSHashTable *_l2capChannels;
 }
 
 @property (readonly, strong, nonatomic) NSMapTable *centrals; // @synthesize centrals=_centrals;
@@ -39,6 +43,7 @@
 @property (weak, nonatomic) id<CBPeripheralManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL isAdvertising; // @synthesize isAdvertising=_isAdvertising;
 @property (readonly, nonatomic, getter=supportsMultipleAdvertising) BOOL isSupportingMultipleAdvertising;
+@property (readonly, strong, nonatomic) NSHashTable *l2capChannels; // @synthesize l2capChannels=_l2capChannels;
 @property (strong, nonatomic) NSNumber *multipleAdvertisingSupported; // @synthesize multipleAdvertisingSupported=_multipleAdvertisingSupported;
 @property (readonly, nonatomic) BOOL readyForUpdates; // @synthesize readyForUpdates=_readyForUpdates;
 @property (readonly, strong, nonatomic) NSMutableArray *services; // @synthesize services=_services;
@@ -51,10 +56,15 @@
 - (id)centralWithInfo:(id)arg1;
 - (void)dealloc;
 - (void)forEachCentral:(CDUnknownBlockType)arg1;
+- (void)handleAdvertisingAddressChanged:(id)arg1;
 - (void)handleAdvertisingStarted:(id)arg1;
 - (void)handleAdvertisingStopped:(id)arg1;
 - (void)handleConnectionParametersUpdated:(id)arg1;
 - (void)handleGetAttributeValue:(id)arg1;
+- (void)handleL2CAPChannelClosed:(id)arg1;
+- (void)handleL2CAPChannelOpened:(id)arg1;
+- (void)handleL2CAPChannelPublished:(id)arg1;
+- (void)handleL2CAPChannelUnpublished:(id)arg1;
 - (void)handleMsg:(unsigned short)arg1 args:(id)arg2;
 - (void)handleNotificationAdded:(id)arg1;
 - (void)handleNotificationRemoved:(id)arg1;
@@ -68,8 +78,12 @@
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 options:(id)arg3;
 - (BOOL)isMsgAllowedAlways:(unsigned short)arg1;
 - (BOOL)isMsgAllowedWhenOff:(unsigned short)arg1;
+- (id)l2capChannelForPeer:(id)arg1 withPsm:(unsigned short)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)peerWithInfo:(id)arg1;
+- (void)publishL2CAPChannel:(unsigned short)arg1 requiresEncryption:(BOOL)arg2 options:(id)arg3;
+- (void)publishL2CAPChannelWithEncryption:(BOOL)arg1;
+- (void)removeAllL2CAPChannels;
 - (void)removeAllServices;
 - (void)removeService:(id)arg1;
 - (void)respondToRequest:(id)arg1 withResult:(long long)arg2;
@@ -77,6 +91,7 @@
 - (void)setDesiredConnectionLatency:(long long)arg1 forCentral:(id)arg2;
 - (void)startAdvertising:(id)arg1;
 - (void)stopAdvertising;
+- (void)unpublishL2CAPChannel:(unsigned short)arg1;
 - (BOOL)updateValue:(id)arg1 forCharacteristic:(id)arg2 onSubscribedCentrals:(id)arg3;
 
 @end

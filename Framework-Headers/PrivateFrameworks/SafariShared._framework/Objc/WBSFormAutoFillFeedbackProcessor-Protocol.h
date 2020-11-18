@@ -6,13 +6,13 @@
 
 #import <SafariShared/NSObject-Protocol.h>
 
-@class NSDictionary, NSString;
+@class WBSFormAutoFillCorrectionSet;
 @protocol WBSFormAutoFillFeedbackDomainPolicyProvider;
 
 @protocol WBSFormAutoFillFeedbackProcessor <NSObject>
 
 @property (strong, nonatomic) id<WBSFormAutoFillFeedbackDomainPolicyProvider> domainPolicyProvider;
 
-- (void)sendFeedbackWithCorrections:(NSDictionary *)arg1 forFingerprint:(NSString *)arg2 onDomain:(NSString *)arg3;
+- (void)sendFeedbackWithCorrectionSet:(WBSFormAutoFillCorrectionSet *)arg1;
 @end
 

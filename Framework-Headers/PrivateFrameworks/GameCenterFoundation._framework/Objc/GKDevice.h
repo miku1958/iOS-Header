@@ -38,6 +38,7 @@
 - (id)init;
 - (BOOL)isDevelopmentDevice;
 - (BOOL)isFocusDevice;
+- (BOOL)isProductType:(unsigned int)arg1;
 - (id)processNameHeader;
 - (id)protocolVersionHeader;
 - (void)removeLockStatusObserver:(id)arg1;

@@ -24,11 +24,6 @@ struct MecabraCandidateBase {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned long long _field1;
-    unsigned long long _field2;
-} CDStruct_4bcfbbae;
-
-typedef struct {
     long long _field1;
     long long _field2;
 } CDStruct_912cb5d2;

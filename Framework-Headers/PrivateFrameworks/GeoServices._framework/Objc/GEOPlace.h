@@ -9,10 +9,11 @@
 #import <GeoServices/GEOURLSerializable-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAddress, GEOBusiness, GEOLatLng, GEOMapRegion, GEOStructuredAddress, GEOTimezone, NSMutableArray, NSString;
+@class GEOAddress, GEOBusiness, GEOLatLng, GEOMapRegion, GEOStructuredAddress, GEOTimezone, NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPlace : PBCodable <GEOURLSerializable, NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     double _area;
     long long _geoId;
     long long _uID;
@@ -96,6 +97,7 @@
 @property (strong, nonatomic) GEOTimezone *timezone; // @synthesize timezone=_timezone;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (nonatomic) long long uID; // @synthesize uID=_uID;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)_placesFromDirectionsAction:(id)arg1 hasCurrentLocation:(BOOL *)arg2 currentLocationIndex:(unsigned long long *)arg3 options:(id *)arg4;
 + (id)_placesFromPresentAction:(id)arg1 hasCurrentLocation:(BOOL *)arg2 currentLocationIndex:(unsigned long long *)arg3 options:(id *)arg4;
@@ -112,6 +114,7 @@
 + (Class)entryPointType;
 + (id)placeForPlaceData:(id)arg1;
 + (Class)roadAccessPointsType;
+- (void).cxx_destruct;
 - (int)StringAsAddressGeocodeAccuracy:(id)arg1;
 - (int)StringAsReferenceFrame:(id)arg1;
 - (int)StringAsType:(id)arg1;
@@ -137,7 +140,6 @@
 - (CDStruct_c3b9c2ee)coordinate;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)dictionaryRepresentation;
 - (id)entryPointAtIndex:(unsigned long long)arg1;
 - (unsigned long long)entryPointsCount;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSUUID;
 
-@interface HMDWatchSync : NSObject
+@interface HMDWatchSync : HMFObject
 {
     BOOL _inProgress;
     unsigned long long _syncOption;

@@ -39,9 +39,9 @@
 @property (nonatomic) unsigned int timestampVal; // @synthesize timestampVal=_timestampVal;
 @property (strong, nonatomic) NSString *timezone; // @synthesize timezone=_timezone;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)dictionaryRepresentation;
 - (BOOL)displayTimeZone;
 - (BOOL)isEqual:(id)arg1;

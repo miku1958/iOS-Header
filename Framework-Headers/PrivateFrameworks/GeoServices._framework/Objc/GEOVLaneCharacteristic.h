@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *laneTypes; // @synthesize laneTypes=_laneTypes;
 @property (nonatomic) unsigned int roadLaneCount; // @synthesize roadLaneCount=_roadLaneCount;
 
+- (void).cxx_destruct;
 - (void)addLaneDirection:(id)arg1;
 - (void)addLaneDivider:(id)arg1;
 - (void)addLaneType:(id)arg1;
@@ -36,7 +37,6 @@ __attribute__((visibility("hidden")))
 - (void)clearLaneTypes;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

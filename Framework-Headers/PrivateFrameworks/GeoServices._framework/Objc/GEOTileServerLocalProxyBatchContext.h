@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOTileKeyList, GEOTileRequester;
 
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOTileKeyList *pendingNetworkList; // @synthesize pendingNetworkList=_pendingNetworkList;
 @property (strong, nonatomic) GEOTileRequester *tileRequester; // @synthesize tileRequester=_tileRequester;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

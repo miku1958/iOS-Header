@@ -4,58 +4,57 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class GEOComposedRoute, GEODirectionsRequest, NSArray, NSMutableArray, NSSet;
-@protocol GEOTransitRoutingIncidentMessage;
+#import <GeoServices/NSSecureCoding-Protocol.h>
 
-@interface GEORouteSet : NSObject
+@class GEOComposedRoute, GEODirectionsRequest, GEODirectionsResponse, NSArray, NSMutableArray, NSSet;
+
+@interface GEORouteSet : NSObject <NSSecureCoding>
 {
     NSArray *_waypoints;
     int _mainTransportType;
     NSMutableArray *_pages;
     GEODirectionsRequest *_originalRequest;
+    GEODirectionsResponse *_originalResponse;
+    GEODirectionsRequest *_lastRerouteRequest;
+    GEODirectionsResponse *_lastRerouteResponse;
     NSMutableArray *_routes;
-    NSMutableArray *_routesAndGaps;
     NSMutableArray *_routesAndContingencies;
     GEOComposedRoute *_preferredRoute;
     NSMutableArray *_advisoryNotices;
     NSMutableArray *_incidentsOffRoute;
-    id<GEOTransitRoutingIncidentMessage> _transitRoutingIncidentMessage;
-    BOOL _transitModePreferencesIgnored;
     NSSet *_supportedTransportTypesForSubsequentRequests;
     BOOL _lazyLoad;
     long long _selectedRouteIndex;
 }
 
-@property (readonly, nonatomic) BOOL allTransitRoutesBlockedByIncident;
 @property (readonly, nonatomic) NSArray *incidentsOffRoute; // @synthesize incidentsOffRoute=_incidentsOffRoute;
 @property (readonly, nonatomic) int mainTransportType; // @synthesize mainTransportType=_mainTransportType;
 @property (readonly, nonatomic) GEODirectionsRequest *originalRequest; // @synthesize originalRequest=_originalRequest;
 @property (readonly, nonatomic) GEOComposedRoute *preferredRoute; // @synthesize preferredRoute=_preferredRoute;
 @property (readonly, nonatomic) NSArray *routes; // @synthesize routes=_routes;
 @property (readonly, nonatomic) NSArray *routesAndContingencies; // @synthesize routesAndContingencies=_routesAndContingencies;
-@property (readonly, nonatomic) NSArray *routesAndGaps; // @synthesize routesAndGaps=_routesAndGaps;
-@property (readonly, nonatomic) NSSet *supportedTransportTypesForSubsequentRequests; // @synthesize supportedTransportTypesForSubsequentRequests=_supportedTransportTypesForSubsequentRequests;
-@property (readonly, nonatomic) BOOL transitModePreferencesIgnored; // @synthesize transitModePreferencesIgnored=_transitModePreferencesIgnored;
-@property (readonly, nonatomic) id<GEOTransitRoutingIncidentMessage> transitRoutingIncidentMessage; // @synthesize transitRoutingIncidentMessage=_transitRoutingIncidentMessage;
+@property (readonly, nonatomic) NSSet *supportedTransportTypesForSubsequentRequests;
 @property (readonly, nonatomic) NSArray *waypoints; // @synthesize waypoints=_waypoints;
 
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_appendNewPage:(id)arg1;
 - (void)_clearRoutes;
-- (void)_clearWeakReferences;
 - (id)_pageForRoute:(id)arg1;
 - (void)_prependNewPage:(id)arg1;
 - (void)_updatePage:(id)arg1;
 - (void)addRouteForReroute:(id)arg1 request:(id)arg2 response:(id)arg3;
 - (void)addRoutesForRequest:(id)arg1 response:(id)arg2;
 - (id)alternateStartRoutesLookup:(id)arg1;
-- (void)dealloc;
 - (id)directionsResponseID:(id)arg1;
 - (id)displayHints:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)fullRouteAtIndex:(unsigned long long)arg1;
 - (unsigned long long)indexOfRouteInLazyRoutes:(id)arg1;
 - (unsigned long long)indexOfSuggestedRoute:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithWaypoints:(id)arg1 transport:(int)arg2 lazyLoad:(BOOL)arg3 selectedRouteIndex:(long long)arg4;
 - (BOOL)isNavigable:(id)arg1;
 - (id)partialRouteAtIndex:(unsigned long long)arg1;

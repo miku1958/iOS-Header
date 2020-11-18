@@ -4,22 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/NSCopying-Protocol.h>
 
 @interface PLImageGeometry : NSObject <NSCopying>
 {
-    long long _appliedOrientation;
+    long long _inputOrientation;
+    long long _userOrientation;
     struct CGRect _inputRect;
 }
 
-@property (nonatomic) long long appliedOrientation; // @synthesize appliedOrientation=_appliedOrientation;
+@property (nonatomic) long long appliedOrientation;
 @property (readonly, nonatomic) struct CGAffineTransform appliedTransform;
+@property (readonly, nonatomic) long long inputOrientation; // @synthesize inputOrientation=_inputOrientation;
 @property (readonly, nonatomic) struct CGRect inputRect; // @synthesize inputRect=_inputRect;
 @property (readonly, nonatomic, getter=isMirrored) BOOL mirrored;
 @property (readonly, nonatomic) struct CGRect outputRect;
 @property (readonly, nonatomic, getter=isSizeInverted) BOOL sizeInverted;
+@property (nonatomic) long long userOrientation; // @synthesize userOrientation=_userOrientation;
 
 + (id)geometryWithInputSize:(struct CGSize)arg1 initialOrientation:(long long)arg2;
 + (id)geometryWithOutputSize:(struct CGSize)arg1 appliedOrientation:(long long)arg2;
@@ -32,7 +35,7 @@
 - (void)flipHorizontally;
 - (void)flipVertically;
 - (id)init;
-- (id)initWithInputSize:(struct CGSize)arg1;
+- (id)initWithInputSize:(struct CGSize)arg1 inputOrientation:(long long)arg2;
 - (struct CGRect)inputRectForOutputRect:(struct CGRect)arg1;
 - (struct CGRect)normalizeRect:(struct CGRect)arg1 basis:(long long)arg2;
 - (struct CGRect)outputRectForInputRect:(struct CGRect)arg1;

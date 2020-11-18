@@ -19,6 +19,7 @@
 @property (readonly, copy, nonatomic) NSString *testName; // @synthesize testName=_testName;
 
 - (void).cxx_destruct;
+- (void)failedTestwithReason:(id)arg1;
 - (id)initWithTestName:(id)arg1;
 - (void)startSubtestWithName:(id)arg1;
 - (void)startTesting;

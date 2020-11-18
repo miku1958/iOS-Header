@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)sharedPolicy;
 - (id)init;
 - (id)initWithMergeType:(unsigned long long)arg1;
 - (void)mergeEncryptedData:(id)arg1 forNote:(id)arg2 mergeConflict:(id)arg3;

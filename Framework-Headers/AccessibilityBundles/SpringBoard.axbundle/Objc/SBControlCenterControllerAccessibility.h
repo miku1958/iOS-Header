@@ -14,8 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_beginPresentation;
-- (void)_endPresentation;
+- (void)_didEndTransition;
+- (void)_willBeginTransition;
 
 @end
 

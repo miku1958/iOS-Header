@@ -4,11 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreMotion/CLNotifierServiceProtocol-Protocol.h>
+#import <CoreMotion/CLNotifierServiceClientProtocol-Protocol.h>
 
-@protocol CLGeomagneticModelProviderClientProtocol <CLNotifierServiceProtocol>
-- (void)doAsync:(void (^)(struct CLGeomagneticModelProviderClient *))arg1;
-- (void)doAsync:(void (^)(struct CLGeomagneticModelProviderClient *))arg1 withReply:(void (^)(void))arg2;
-- (BOOL)syncgetDoSync:(void (^)(struct CLGeomagneticModelProviderClient *))arg1;
+@protocol CLGeomagneticModelProviderClientProtocol <CLNotifierServiceClientProtocol>
 @end
 

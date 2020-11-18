@@ -10,12 +10,11 @@
 
 @interface ASDRestoreApplicationsRequestResponse : ASDRequestResponse
 {
-    BOOL _success;
     NSArray *_results;
 }
 
 @property (readonly, nonatomic) NSArray *results; // @synthesize results=_results;
-@property (readonly, nonatomic) BOOL success; // @synthesize success=_success;
+@property BOOL success; // @dynamic success;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

@@ -18,6 +18,7 @@
     struct CGRect _frame;
 }
 
+@property (readonly, weak, nonatomic, getter=_debugAssociatedObject) id debugAssociatedObject;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, setter=_setFrame:) struct CGRect frame; // @synthesize frame=_frame;
@@ -31,22 +32,22 @@
 + (id)_regionsByOccludingRegions:(id)arg1 beneathRegions:(id)arg2;
 - (void).cxx_destruct;
 - (void)_addOccludingRegion:(id)arg1;
-- (unsigned long long)_boundariesBlockingFocusMovement:(id)arg1;
+- (unsigned long long)_boundariesBlockingFocusMovementRequest:(id)arg1;
 - (BOOL)_canBeOccludedByRegionsAbove;
 - (BOOL)_canOccludeRegionsBelow;
 - (id)_defaultFocusItem;
-- (id)_destinationItemForFocusMovement:(id)arg1 inMap:(id)arg2;
 - (void)_didParticipateAsDestinationRegionInFocusUpdate:(id)arg1;
 - (void)_drawDebugQuickLookImageWithInfo:(id)arg1 inContext:(struct CGContext *)arg2;
-- (unsigned long long)_effectiveBoundariesBlockingFocusMovement:(id)arg1;
+- (unsigned long long)_effectiveBoundariesBlockingFocusMovementRequest:(id)arg1;
 - (unsigned long long)_effectiveFocusableBoundariesForHeading:(unsigned long long)arg1;
 - (unsigned long long)_focusableBoundaries;
+- (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inMap:(id)arg2;
 - (id)_occludingRegions;
 - (long long)_preferredDistanceComparisonType;
 - (id)_resizeToRect:(struct CGRect)arg1;
 - (BOOL)_shouldCropRegionToSearchArea;
 - (BOOL)_shouldDrawDebugQuickLookImageWithInfo:(id)arg1;
-- (id)_subregionWithFrame:(struct CGRect)arg1 occludedByRegion:(id)arg2;
+- (id)_subregionWithFrame:(struct CGRect)arg1;
 - (id)_visibleSubregionsWhenOccludedByRegion:(id)arg1;
 - (void)_willParticipateAsDestinationRegionInFocusUpdate:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

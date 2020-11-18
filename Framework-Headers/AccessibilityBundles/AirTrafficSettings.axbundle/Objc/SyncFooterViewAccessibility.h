@@ -13,7 +13,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)accessibilityContainerElements;
+- (id)accessibilityElements;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)updateProgress:(id)arg1 dataSource:(id)arg2;
 

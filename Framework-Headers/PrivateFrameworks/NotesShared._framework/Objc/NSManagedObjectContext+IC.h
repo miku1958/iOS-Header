@@ -13,6 +13,6 @@
 @property (strong, nonatomic) NSString *debugName;
 
 - (BOOL)ic_save;
-- (BOOL)ic_saveWithErrorLogFormat:(id)arg1;
+- (BOOL)ic_saveWithLogDescription:(id)arg1;
 @end
 

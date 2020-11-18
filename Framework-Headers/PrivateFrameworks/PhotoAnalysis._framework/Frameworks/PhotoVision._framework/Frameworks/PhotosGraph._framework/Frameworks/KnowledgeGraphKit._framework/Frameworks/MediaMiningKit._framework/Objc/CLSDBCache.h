@@ -39,6 +39,7 @@
 - (void)invalidateDiskCaches;
 - (void)invalidateMemoryCaches;
 - (BOOL)save;
+- (id)urlForGraphApplicationData;
 
 @end
 

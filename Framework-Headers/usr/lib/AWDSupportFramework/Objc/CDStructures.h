@@ -43,9 +43,9 @@ typedef struct {
 
 typedef struct {
     unsigned int timestamp:1;
-    unsigned int domain:1;
-    unsigned int error:1;
-} CDStruct_6e486683;
+    unsigned int isNearby:1;
+    unsigned int messageCommand:1;
+} CDStruct_bae645a8;
 
 typedef struct {
     unsigned int duration:1;
@@ -56,6 +56,11 @@ typedef struct {
     unsigned int timestamp:1;
     unsigned int count:1;
 } CDStruct_eca94db9;
+
+typedef struct {
+    unsigned int timestamp:1;
+    unsigned int enabled:1;
+} CDStruct_93f1cf87;
 
 typedef struct {
     unsigned int timestamp:1;

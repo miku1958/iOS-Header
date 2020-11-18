@@ -18,5 +18,8 @@
 - (void)recursiveContainerSyncTask:(CoreDAVRecursiveContainerSyncTaskGroup *)arg1 receivedAddedOrModifiedFolder:(id)arg2;
 - (void)recursiveContainerSyncTask:(CoreDAVRecursiveContainerSyncTaskGroup *)arg1 retrievedAddedOrModifiedActions:(NSSet *)arg2 removed:(NSSet *)arg3;
 - (BOOL)setLocalETag:(NSString *)arg1 forItemWithURL:(NSURL *)arg2;
+
+@optional
+- (void)moveTaskFromURL:(NSURL *)arg1 toURL:(NSURL *)arg2 finishedWithIgnoredError:(NSError *)arg3;
 @end
 

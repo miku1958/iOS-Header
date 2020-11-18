@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSLock, NSMapTable, VKPIconPack;
 
@@ -19,13 +19,13 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)_artworkForBaseImage:(struct CGImage *)arg1 additionalImage:(struct CGImage *)arg2 fullBleedColor:(struct CGColor *)arg3 style:(struct VKIconStyleInfo *)arg4 contentScale:(double)arg5 hasText:(BOOL)arg6;
+- (id)_artworkForBaseImage:(struct CGImage *)arg1 additionalImage:(struct CGImage *)arg2 fullBleedColor:(struct CGColor *)arg3 style:(struct Style *)arg4 extraStyle:(struct ExtraStyle *)arg5 contentScale:(double)arg6 hasText:(BOOL)arg7;
 - (struct CGImage *)_createImageForIconInfo:(id)arg1 contentScale:(double)arg2;
 - (struct CGImage *)_createImageForName:(id)arg1 contentScale:(double)arg2 size:(long long)arg3;
 - (struct CGColor *)_newFullBleedColorForName:(id)arg1 contentScale:(double)arg2;
-- (id)artworkForName:(id)arg1 style:(struct VKIconStyleInfo *)arg2 contentScale:(double)arg3 size:(long long)arg4 hasText:(BOOL)arg5 includeFullBleedColor:(BOOL)arg6;
-- (id)artworkForStyleAttributeKey:(unsigned int)arg1 longValue:(unsigned long long)arg2 style:(struct VKIconStyleInfo *)arg3 contentScale:(double)arg4 size:(long long)arg5 includeFullBleedColor:(BOOL)arg6;
-- (id)artworkForStyleAttributeKey:(unsigned int)arg1 value:(unsigned int)arg2 style:(struct VKIconStyleInfo *)arg3 contentScale:(double)arg4 size:(long long)arg5 hasText:(BOOL)arg6 includeFullBleedColor:(BOOL)arg7;
+- (id)artworkForName:(id)arg1 style:(struct Style *)arg2 extraStyle:(struct ExtraStyle *)arg3 contentScale:(double)arg4 size:(long long)arg5 hasText:(BOOL)arg6 includeFullBleedColor:(BOOL)arg7 resourceNames:(id)arg8;
+- (id)artworkForStyleAttributeKey:(unsigned int)arg1 longValue:(unsigned long long)arg2 style:(struct Style *)arg3 extraStyle:(struct ExtraStyle *)arg4 contentScale:(double)arg5 size:(long long)arg6 includeFullBleedColor:(BOOL)arg7 resourceNames:(id)arg8;
+- (id)artworkForStyleAttributeKey:(unsigned int)arg1 value:(unsigned int)arg2 style:(struct Style *)arg3 extraStyle:(struct ExtraStyle *)arg4 contentScale:(double)arg5 size:(long long)arg6 hasText:(BOOL)arg7 includeFullBleedColor:(BOOL)arg8 resourceNames:(id)arg9;
 - (void)dealloc;
 - (id)init;
 - (id)initWithIconPack:(id)arg1;

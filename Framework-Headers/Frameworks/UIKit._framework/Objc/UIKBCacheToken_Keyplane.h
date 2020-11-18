@@ -12,11 +12,12 @@ __attribute__((visibility("hidden")))
 @interface UIKBCacheToken_Keyplane : UIKBCacheToken
 {
     struct CGSize _size;
-    CDUnion_2c5a7b77 _style;
+    CDUnion_bf7716c0 _style;
     NSString *_geometrySetName;
     NSString *_keySetName;
     NSString *_cachedGestureKeySetName;
     NSString *_annotations;
+    NSString *_locale;
 }
 
 + (id)tokenForKeyplane:(id)arg1;
@@ -26,10 +27,10 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)isUsableForCacheToken:(id)arg1 withRenderFlags:(long long)arg2;
 - (void)setSize:(struct CGSize)arg1;
-- (void)setStyling:(CDStruct_961fb75c)arg1;
+- (void)setStyling:(CDStruct_227bb23d)arg1;
 - (struct CGSize)size;
-- (id)stringForSplitState:(BOOL)arg1;
-- (CDStruct_961fb75c)styling;
+- (id)stringForSplitState:(BOOL)arg1 handBias:(long long)arg2;
+- (CDStruct_227bb23d)styling;
 
 @end
 

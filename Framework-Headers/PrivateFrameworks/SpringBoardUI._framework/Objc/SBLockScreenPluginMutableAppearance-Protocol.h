@@ -15,6 +15,7 @@
 @property (nonatomic, getter=isHidden) BOOL hidden;
 @property (strong, nonatomic) SBLockScreenLegibilitySettings *legibilitySettings;
 @property (nonatomic) long long notificationBehavior;
+@property (nonatomic) struct CGRect presentationRegion;
 @property (nonatomic) long long presentationStyle;
 @property (nonatomic) unsigned long long restrictedCapabilities;
 

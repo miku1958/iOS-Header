@@ -40,11 +40,11 @@
 @property (nonatomic) unsigned long long uid; // @synthesize uid=_uid;
 
 + (Class)featureHandleType;
+- (void).cxx_destruct;
 - (void)addFeatureHandle:(id)arg1;
 - (void)clearFeatureHandles;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)featureHandleAtIndex:(unsigned long long)arg1;

@@ -6,10 +6,13 @@
 
 #import <Photos/PHCollectionList.h>
 
-@class NSDate;
+@class NSData, NSDate;
 
 @interface PHMomentList : PHCollectionList
 {
+    NSData *_reverseLocationData;
+    BOOL _reverseLocationDataIsValid;
+    BOOL _reverseLocationDataContainsLocation;
     short _granularityLevel;
     short _generationType;
     int _sortIndex;
@@ -21,21 +24,25 @@
 @property (readonly, nonatomic) NSDate *representativeDate; // @synthesize representativeDate=_representativeDate;
 @property (readonly, nonatomic) int sortIndex; // @synthesize sortIndex=_sortIndex;
 
-+ (id)_transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 + (id)entityKeyForPropertyKey:(id)arg1;
-+ (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
 + (id)fetchType;
 + (id)identifierCode;
 + (id)managedEntityName;
 + (BOOL)managedObjectSupportsTrashedState;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
++ (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 - (void).cxx_destruct;
+- (void)_decodeTitlesIfNeeded;
 - (Class)changeRequestClass;
 - (BOOL)collectionHasFixedOrder;
 - (long long)collectionListType;
 - (id)description;
+- (BOOL)hasLocalizedTitle;
+- (BOOL)hasLocationInfo;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (BOOL)isMeaningful;
+- (id)localizedLocationNames;
+- (id)localizedTitle;
 
 @end
 

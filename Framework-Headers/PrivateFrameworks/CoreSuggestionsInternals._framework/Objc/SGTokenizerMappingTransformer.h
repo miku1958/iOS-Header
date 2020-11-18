@@ -8,19 +8,29 @@
 
 #import <CoreSuggestionsInternals/PMLTransformerProtocol-Protocol.h>
 
-@class NSLinguisticTagger;
+@class NSLinguisticTagger, NSString;
 
 @interface SGTokenizerMappingTransformer : NSObject <PMLTransformerProtocol>
 {
     NSLinguisticTagger *_tagger;
+    BOOL _nameTagging;
+    NSString *_punctuationMapping;
+    NSString *_personalNameMapping;
+    NSString *_locale;
+    void *_nlpTagger;
+    int _linguisticDataNotificationToken;
 }
 
-@property (strong) NSLinguisticTagger *tagger; // @synthesize tagger=_tagger;
-
 + (id)forLocale:(id)arg1;
++ (id)forLocale:(id)arg1 withNameTagging:(BOOL)arg2 personalNameMapping:(id)arg3 punctuationMapping:(id)arg4;
++ (id)forLocale:(id)arg1 withPersonalNameMapping:(id)arg2;
 - (void).cxx_destruct;
-- (id)initForLocale:(id)arg1;
+- (void)_registerForNotifications;
+- (void)dealloc;
+- (id)initForLocale:(id)arg1 withNameTagging:(BOOL)arg2 personalNameMapping:(id)arg3 punctuationMapping:(id)arg4;
 - (id)transform:(id)arg1;
+- (void)transformWithCoreNLP:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)transformWithNLLinguisticTagger:(id)arg1 block:(CDUnknownBlockType)arg2;
 
 @end
 

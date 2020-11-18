@@ -24,6 +24,7 @@
 - (id)init;
 - (unsigned char)isAccessRestricted;
 - (void)simulate:(long long)arg1;
+- (void)simulateIfAccessPromptDisplayedThenUserGrantedAccess:(BOOL)arg1;
 - (void)simulateIfAccessPromptDisplayedThenUserGrantedAccess:(BOOL)arg1 withDelay:(unsigned int)arg2;
 
 @end

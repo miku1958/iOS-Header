@@ -6,24 +6,33 @@
 
 #import <objc/NSObject.h>
 
+#import <SearchFoundation/NSCopying-Protocol.h>
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFTableAlignmentSchema-Protocol.h>
 
-@class NSArray, NSDictionary;
+@class NSArray, NSData, NSDictionary, NSString;
 
-@interface SFTableAlignmentSchema : NSObject <NSSecureCoding>
+@interface SFTableAlignmentSchema : NSObject <SFTableAlignmentSchema, NSSecureCoding, NSCopying>
 {
     NSArray *_tableColumnAlignment;
     NSDictionary *_metadata;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSArray *tableColumnAlignment; // @synthesize tableColumnAlignment=_tableColumnAlignment;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)tableColumnAlignment:(unsigned long long)arg1;
+- (id)initWithProtobuf:(id)arg1;
 
 @end
 

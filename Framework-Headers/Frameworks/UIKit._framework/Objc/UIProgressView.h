@@ -26,6 +26,8 @@
     UIVisualEffectView *_effectView;
     NSProgress *_observedProgress;
     NSObservation *_progressObservation;
+    UIView *_shadowView;
+    double _currentCornerRadius;
     UIImage *_trackImage;
     UIImage *_progressImage;
 }
@@ -52,6 +54,7 @@
 - (id)_defaultTrackColorForCurrentStyle;
 - (id)_effectiveContentView;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
+- (void)_layoutShadow;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (id)_progressColor;
 - (void)_reducedTransparencyDidChange:(id)arg1;
@@ -61,8 +64,11 @@
 - (void)_setProgressAnimated:(float)arg1 duration:(double)arg2 delay:(double)arg3 options:(unsigned long long)arg4;
 - (void)_setProgressColor:(id)arg1;
 - (void)_setupProgressViewCommon;
+- (void)_setupShadow;
+- (double)_shadowOpacityForUserInterfaceStyle:(long long)arg1;
 - (BOOL)_shouldTintProgress;
 - (BOOL)_shouldTintTrack;
+- (void)_updateCornerRadiusWithSize:(struct CGSize)arg1;
 - (void)_updateImages;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (long long)barStyle;
@@ -78,6 +84,7 @@
 - (void)setProgress:(float)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

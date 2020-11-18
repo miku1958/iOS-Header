@@ -13,17 +13,21 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilitySupplementaryFooterViews;
 - (id)_axGetPDFView;
+- (id)_axGetPage;
 - (id)_axLineSelections;
 - (struct CGPDFPage *)_axPageRef;
+- (id)_axPageViewElements;
+- (void)_axSetPageViewElements:(id)arg1;
 - (struct CGPDFSelection *)_lineSelectionForSelection:(struct CGPDFSelection *)arg1;
 - (id)accessibilityContentForLineNumber:(long long)arg1;
+- (id)accessibilityElements;
 - (struct CGRect)accessibilityFrameForLineNumber:(long long)arg1;
 - (long long)accessibilityLineNumberForPoint:(struct CGPoint)arg1;
 - (id)accessibilityPageContent;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
+- (void)setNeedsTilesUpdate;
 
 @end
 

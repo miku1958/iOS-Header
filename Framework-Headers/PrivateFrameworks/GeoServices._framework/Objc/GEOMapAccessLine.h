@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOMapLine-Protocol.h>
 
@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)dealloc;
 - (double)distanceFromCoordinate:(CDStruct_c3b9c2ee)arg1 outSegmentCoordinate:(struct PolylineCoordinate *)arg2;
 - (id)initWithMap:(id)arg1 edge:(shared_ptr_035a2da2)arg2;
 

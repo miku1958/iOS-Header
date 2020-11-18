@@ -28,11 +28,15 @@
 + (double)pinFixedDigitEntryFieldBottomYDistanceFromNumberPadTopButton:(BOOL)arg1;
 + (double)pinFixedDigitEntryFieldIndicatorDiameter;
 + (double)pinFixedDigitEntryFieldIndicatorPaddingWidth;
++ (double)pinFixedDigitEntryFieldIndicatorStrokeSize;
++ (double)pinKeyboardEntryFieldOffset:(BOOL)arg1;
 + (double)pinKeypadEntryFieldOffsetForSubtitle;
++ (double)pinKeypadStatusSubtitleTitleExtraOffset;
 + (id)pinKeypadStatusSubtitleViewTitleFont;
-+ (double)pinKeypadStatusTitleBaselineOffset:(BOOL)arg1;
++ (double)pinKeypadStatusTitleBaselineOffsetFromEntryField;
++ (double)pinKeypadStatusTitleBaselineOffsetFromEntryFieldIncludingSubtitle;
 + (double)pinKeypadStatusTitleBaselineOffsetFromTitle;
-+ (double)pinKeypadStatusTitleBaselineOffsetIncludingSubtitle:(BOOL)arg1;
++ (double)pinKeypadStatusTitleExtraOffsetIncludingSubtitle;
 + (id)pinKeypadStatusTitleViewTitleFont;
 + (double)pinLongNumericEntryFieldBottomYDistanceFromNumberPadTopButton;
 + (double)pinNumberPadAncillaryButtonOffset;
@@ -42,6 +46,8 @@
 + (double)pinNumberPadButtonPaddingHeight;
 + (double)pinNumberPadButtonPaddingWidth;
 + (double)pinNumberPadWidth;
++ (double)proudLockOffsetFromTopOfScreen;
++ (double)scaledFontSize:(double)arg1 withMaximumFontSizeCategory:(id)arg2;
 + (double)slideToUnlockFontSize;
 + (struct UIEdgeInsets)slideToUnlockInsets;
 + (double)slideToUnlockOverlayMargin;

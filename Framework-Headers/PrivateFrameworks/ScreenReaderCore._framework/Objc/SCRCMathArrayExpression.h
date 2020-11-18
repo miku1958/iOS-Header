@@ -17,9 +17,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *mathMLAttributes;
 @property (readonly, nonatomic) NSString *mathMLTag;
 
+- (void).cxx_destruct;
 - (id)childSpeakableSegmentsWithSpeakingStyle:(int)arg1 upToDepth:(unsigned long long)arg2 parentTreePosition:(id)arg3 childIndex:(unsigned long long *)arg4;
 - (id)children;
-- (void)dealloc;
 - (id)description;
 - (BOOL)hasSimpleArrayOfChildren;
 - (id)initWithDictionary:(id)arg1;

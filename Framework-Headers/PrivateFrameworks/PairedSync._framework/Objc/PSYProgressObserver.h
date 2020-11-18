@@ -37,6 +37,7 @@
 - (void)_updateState;
 - (id)init;
 - (id)initWithQueue:(id)arg1;
+- (void)supportsMigrationSync;
 - (void)syncSessionObserver:(id)arg1 didInvalidateSyncSession:(id)arg2;
 - (void)syncSessionObserver:(id)arg1 didReceiveUpdate:(id)arg2;
 - (void)syncSessionObserver:(id)arg1 receivedSyncSession:(id)arg2;

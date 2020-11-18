@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 
 + (id)customAttributes;
 - (BOOL)_isIdentity;
-- (id)_kernel;
 - (struct vec2)_scale;
 - (id)outputImage;
 

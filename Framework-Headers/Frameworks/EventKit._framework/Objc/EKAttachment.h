@@ -20,10 +20,22 @@
 @property (readonly, nonatomic) BOOL isBinary;
 @property (readonly, nonatomic) NSURL *localURL;
 
++ (Class)frozenClass;
+- (id)XPropertiesData;
 - (long long)compareFileNames:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)init;
-- (BOOL)isEqual:(id)arg1;
+- (id)externalId;
+- (id)fileNameRaw;
+- (id)fileSizeRaw;
+- (void)setExternalId:(id)arg1;
+- (void)setFileFormat:(id)arg1;
+- (void)setFileNameRaw:(id)arg1;
+- (void)setFileSizeRaw:(id)arg1;
+- (void)setIsBinary:(BOOL)arg1;
+- (void)setLocalURL:(id)arg1;
+- (void)setURL:(id)arg1;
+- (void)setXPropertiesData:(id)arg1;
 
 @end
 

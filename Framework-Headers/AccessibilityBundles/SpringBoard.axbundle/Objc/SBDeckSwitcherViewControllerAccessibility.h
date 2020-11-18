@@ -13,7 +13,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityNonVisibleElements:(BOOL)arg1;
 - (id)_accessibilityNonVisibleElementsAfterVisible;
 - (id)_accessibilityNonVisibleElementsBeforeVisible;

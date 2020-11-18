@@ -13,13 +13,13 @@
     unsigned long long _mode;
     NSArray *_overrides;
     unsigned long long _privilegeTypes;
-    int _recordID;
     NSDateComponents *_fromComponents;
     NSDateComponents *_toComponents;
     BBSettingsGateway *_bbGateway;
     unsigned long long _overrideType;
     BOOL _valid;
     BOOL _isEffectiveWhileUnlocked;
+    int _recordID;
     NSArray *_behaviorOverrides;
     long long _overrideStatus;
 }

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUSettings.h>
+#import <PhotosUICore/PXSettings.h>
 
-@interface PUTilingViewSettings : PUSettings
+@interface PUTilingViewSettings : PXSettings
 {
     BOOL _useSpringAnimations;
     BOOL _useSystemSpringAnimations;
@@ -19,6 +19,7 @@
     BOOL _tintTiles;
     BOOL _showVisibleRects;
     BOOL _rotateDisappearingTiles;
+    BOOL _showSnapshottableTiles;
     double _animationDragCoefficient;
     double _springAnimationDuration;
     double _defaultAnimationDuration;
@@ -37,6 +38,7 @@
 @property (nonatomic) double defaultAnimationDuration; // @synthesize defaultAnimationDuration=_defaultAnimationDuration;
 @property (nonatomic) double interactiveTransitionBackgroundDimming; // @synthesize interactiveTransitionBackgroundDimming=_interactiveTransitionBackgroundDimming;
 @property (nonatomic) BOOL rotateDisappearingTiles; // @synthesize rotateDisappearingTiles=_rotateDisappearingTiles;
+@property (nonatomic) BOOL showSnapshottableTiles; // @synthesize showSnapshottableTiles=_showSnapshottableTiles;
 @property (nonatomic) BOOL showVisibleRects; // @synthesize showVisibleRects=_showVisibleRects;
 @property (nonatomic) double springAnimationDuration; // @synthesize springAnimationDuration=_springAnimationDuration;
 @property (nonatomic) BOOL tintTiles; // @synthesize tintTiles=_tintTiles;
@@ -49,6 +51,7 @@
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
+- (id)parentSettings;
 - (void)setDefaultValues;
 
 @end

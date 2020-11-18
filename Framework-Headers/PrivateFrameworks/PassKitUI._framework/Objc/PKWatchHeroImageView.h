@@ -19,11 +19,16 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isCompactWatch;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_bridgeHeroImage;
 - (id)_bridgeWallpaperImage;
+- (struct CGSize)_heroBackgroundImageSize;
+- (struct CGSize)_heroWatchImageSize;
+- (id)_resizeImage:(id)arg1 toSize:(struct CGSize)arg2;
+- (id)_watchDeviceImage;
 - (struct CGSize)imageSize;
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;

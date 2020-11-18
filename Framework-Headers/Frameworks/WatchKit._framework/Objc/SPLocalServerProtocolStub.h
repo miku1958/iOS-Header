@@ -26,7 +26,6 @@
 - (void)fetchInfoForApplicationWithContainingApplicationBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchInstalledApplicationsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchInstalledComplicationsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)fetchInstalledGlancesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchProvisioningProfilesForApplicationWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchProvisioningProfilesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchWatchAppBundleIDForCompanionAppBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;

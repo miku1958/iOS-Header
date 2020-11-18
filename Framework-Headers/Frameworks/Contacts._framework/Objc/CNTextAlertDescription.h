@@ -21,7 +21,8 @@
 
 - (void *)ABValueForABPerson:(void *)arg1;
 - (id)CNValueForContact:(id)arg1;
-- (int)abPropertyID:(int *)arg1;
+- (BOOL)abPropertyID:(int *)arg1;
+- (BOOL)applyABMultivalueValueBytes:(char *)arg1 length:(unsigned long long)arg2 identifier:(id)arg3 legacyIdentifier:(int)arg4 label:(id)arg5 toCNMultivalueRepresentation:(id)arg6;
 - (void)decodeUsingCoder:(id)arg1 contact:(id)arg2;
 - (void)encodeUsingCoder:(id)arg1 contact:(id)arg2;
 - (id)init;

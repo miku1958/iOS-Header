@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <GeoServices/NSCopying-Protocol.h>
 
 @class NSNumber, NSString;
 
-@interface GEOUserSessionEntity : NSObject
+@interface GEOUserSessionEntity : NSObject <NSCopying>
 {
     struct GEOSessionID _sessionID;
     unsigned int _sequenceNumber;
@@ -28,11 +30,12 @@
 @property (readonly, nonatomic) NSString *sessionUUIDString;
 
 - (BOOL)_isValidSessionIDHighOrLowString:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)init;
 - (id)initWithSessionEntityString:(id)arg1;
 - (id)initWithSessionID:(struct GEOSessionID)arg1 sessionCreationTime:(double)arg2 sequenceNumber:(unsigned int)arg3;
 - (unsigned int)rawSequenceNumber;
+- (double)sessionRelativeTimestampForEventTime:(double)arg1;
 - (void)updateSessionIDFromUUIDString:(id)arg1;
 - (void)updateWithSessionEntityString:(id)arg1;
 

@@ -12,6 +12,7 @@
 
 + (id)clientIDForOAuthType:(unsigned long long)arg1;
 + (id)clientRedirect;
++ (id)clientRedirectForOAuthType:(unsigned long long)arg1;
 + (id)defaultScopeForOAuthType:(unsigned long long)arg1;
 + (id)scopeForUpgradingFromBasicCreds;
 

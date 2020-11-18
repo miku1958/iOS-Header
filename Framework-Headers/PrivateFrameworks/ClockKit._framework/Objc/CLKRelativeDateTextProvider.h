@@ -16,9 +16,13 @@
     NSString *_sessionCacheKey;
     long long _sessionTimePeriod;
     double _elapsedTime;
+    BOOL _sessionInProgress;
     BOOL _disableSmallCapUnits;
+    BOOL _shrinkUnitsInCJK;
+    BOOL _disableOffsetPrefix;
     BOOL _twoDigitMinuteZeroPadding;
     BOOL _wantsSubseconds;
+    BOOL _pauseTimerAtZero;
     NSDate *_date;
     long long _relativeDateStyle;
     unsigned long long _calendarUnits;
@@ -27,9 +31,12 @@
 
 @property (nonatomic) unsigned long long calendarUnits; // @synthesize calendarUnits=_calendarUnits;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (nonatomic) BOOL disableOffsetPrefix; // @synthesize disableOffsetPrefix=_disableOffsetPrefix;
 @property (nonatomic) BOOL disableSmallCapUnits; // @synthesize disableSmallCapUnits=_disableSmallCapUnits;
 @property (strong, nonatomic) NSDate *overrideDate; // @synthesize overrideDate=_overrideDate;
+@property (nonatomic) BOOL pauseTimerAtZero; // @synthesize pauseTimerAtZero=_pauseTimerAtZero;
 @property (nonatomic) long long relativeDateStyle; // @synthesize relativeDateStyle=_relativeDateStyle;
+@property (nonatomic) BOOL shrinkUnitsInCJK; // @synthesize shrinkUnitsInCJK=_shrinkUnitsInCJK;
 @property (nonatomic) BOOL twoDigitMinuteZeroPadding; // @synthesize twoDigitMinuteZeroPadding=_twoDigitMinuteZeroPadding;
 @property (nonatomic) BOOL wantsSubseconds; // @synthesize wantsSubseconds=_wantsSubseconds;
 
@@ -44,9 +51,10 @@
 - (id)_initWithJSONObjectRepresentation:(id)arg1;
 - (id)_sessionAttributedTextForIndex:(unsigned long long)arg1 withStyle:(id)arg2;
 - (id)_sessionCacheKey;
+- (id)_signPrefixString;
 - (void)_startSessionWithDate:(id)arg1;
-- (id)_stringWithSign:(id)arg1;
 - (long long)_timePeriodForElapsedTime:(double)arg1;
+- (BOOL)_timerIsPausedAtZero;
 - (long long)_updateFrequency;
 - (void)_validate;
 - (id)copyWithZone:(struct _NSZone *)arg1;

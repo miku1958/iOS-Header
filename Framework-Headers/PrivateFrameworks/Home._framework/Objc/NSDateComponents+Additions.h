@@ -7,14 +7,21 @@
 #import <Foundation/NSDateComponents.h>
 
 @interface NSDateComponents (Additions)
++ (unsigned long long)_hf_allPossibleComponents;
 + (id)hf_biweeklyIntervalComponents;
++ (id)hf_componentsWithHour:(long long)arg1 minute:(long long)arg2;
 + (id)hf_dailyIntervalComponents;
++ (id)hf_dailyWeekdayIntervalComponents;
 + (id)hf_monthlyIntervalComponents;
 + (id)hf_weeklyIntervalComponents;
 + (id)hf_yearlyIntervalComponents;
++ (id)hf_zeroDateComponentsWithComponents:(unsigned long long)arg1 calendar:(id)arg2;
+- (id)hf_absoluteValue;
+- (long long)hf_compareNextMatchingDate:(id)arg1;
+- (long long)hf_compareNextMatchingDate:(id)arg1 withCalendar:(id)arg2;
 - (BOOL)hf_isEqualToHomeKitRecurrence:(id)arg1;
-- (id)hf_longLocalizedHomeKitRecurrenceDescription;
-- (id)hf_shortLocalizedHomeKitRecurrenceDescription;
+- (id)hf_negativeValue;
 - (double)hf_timeInterval;
+- (unsigned long long)hf_validComponents;
 @end
 

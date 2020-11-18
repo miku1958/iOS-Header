@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOWaypointID, GEOWaypointLocation, GEOWaypointPlace;
+@class GEOWaypointID, GEOWaypointLocation, GEOWaypointPlace, PBUnknownFields;
 
 @interface GEOWaypointTyped : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     GEOWaypointID *_waypointId;
     GEOWaypointLocation *_waypointLocation;
     GEOWaypointPlace *_waypointPlace;
@@ -33,15 +34,16 @@
 @property (nonatomic) BOOL hasWaypointType;
 @property (nonatomic) BOOL isCurrentLocation; // @synthesize isCurrentLocation=_isCurrentLocation;
 @property (nonatomic) BOOL isLocationOfInterest; // @synthesize isLocationOfInterest=_isLocationOfInterest;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOWaypointID *waypointId; // @synthesize waypointId=_waypointId;
 @property (strong, nonatomic) GEOWaypointLocation *waypointLocation; // @synthesize waypointLocation=_waypointLocation;
 @property (strong, nonatomic) GEOWaypointPlace *waypointPlace; // @synthesize waypointPlace=_waypointPlace;
 @property (nonatomic) int waypointType; // @synthesize waypointType=_waypointType;
 
+- (void).cxx_destruct;
 - (int)StringAsWaypointType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -25,8 +25,8 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 
+- (void).cxx_destruct;
 - (id)_nextURL;
-- (void)dealloc;
 - (id)initWithStorage:(id)arg1 nameSpace:(id)arg2 withOptions:(unsigned long long)arg3 withoutOptions:(unsigned long long)arg4 ordering:(int)arg5;
 - (id)nextObject;
 

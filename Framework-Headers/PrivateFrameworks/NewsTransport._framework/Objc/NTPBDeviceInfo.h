@@ -12,25 +12,36 @@
 
 @interface NTPBDeviceInfo : PBCodable <NSCopying>
 {
+    long long _deviceDstOffset;
+    long long _deviceUtcOffset;
+    NSString *_deviceOsVersion;
     NSMutableArray *_devicePreferredLanguages;
     NSString *_devicePushToken;
     NSString *_deviceTimezone;
     int _deviceTokenEnv;
     NSString *_deviceType;
     struct {
+        unsigned int deviceDstOffset:1;
+        unsigned int deviceUtcOffset:1;
         unsigned int deviceTokenEnv:1;
     } _has;
 }
 
+@property (nonatomic) long long deviceDstOffset; // @synthesize deviceDstOffset=_deviceDstOffset;
+@property (strong, nonatomic) NSString *deviceOsVersion; // @synthesize deviceOsVersion=_deviceOsVersion;
 @property (strong, nonatomic) NSMutableArray *devicePreferredLanguages; // @synthesize devicePreferredLanguages=_devicePreferredLanguages;
 @property (strong, nonatomic) NSString *devicePushToken; // @synthesize devicePushToken=_devicePushToken;
 @property (strong, nonatomic) NSString *deviceTimezone; // @synthesize deviceTimezone=_deviceTimezone;
 @property (nonatomic) int deviceTokenEnv; // @synthesize deviceTokenEnv=_deviceTokenEnv;
 @property (strong, nonatomic) NSString *deviceType; // @synthesize deviceType=_deviceType;
+@property (nonatomic) long long deviceUtcOffset; // @synthesize deviceUtcOffset=_deviceUtcOffset;
+@property (nonatomic) BOOL hasDeviceDstOffset;
+@property (readonly, nonatomic) BOOL hasDeviceOsVersion;
 @property (readonly, nonatomic) BOOL hasDevicePushToken;
 @property (readonly, nonatomic) BOOL hasDeviceTimezone;
 @property (nonatomic) BOOL hasDeviceTokenEnv;
 @property (readonly, nonatomic) BOOL hasDeviceType;
+@property (nonatomic) BOOL hasDeviceUtcOffset;
 
 + (Class)devicePreferredLanguageType;
 - (void).cxx_destruct;

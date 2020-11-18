@@ -8,23 +8,29 @@
 
 #import <NanoTimeKitCompanion/NTKTimelineEntryModelCacheDataSource-Protocol.h>
 
-@class CLLocation, NSNumber, NSString, NTKTimelineEntryModelCache;
+@class CLLocation, NSString, NSTimer, NTKTimelineEntryModelCache;
 
 @interface NTKSunriseComplicationDataSource : NTKComplicationDataSource <NTKTimelineEntryModelCacheDataSource>
 {
     NTKTimelineEntryModelCache *_entryModelCache;
-    struct NSNumber *_token;
-    CLLocation *_location;
+    BOOL _isWaitingForGeocodeRequest;
+    struct NSString *_token;
+    CLLocation *_displayedLocation;
     NSString *_locationName;
+    CLLocation *_delayedLocation;
+    NSTimer *_geocodeRequestDelayTimer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) CLLocation *delayedLocation; // @synthesize delayedLocation=_delayedLocation;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) CLLocation *displayedLocation; // @synthesize displayedLocation=_displayedLocation;
+@property (strong, nonatomic) NSTimer *geocodeRequestDelayTimer; // @synthesize geocodeRequestDelayTimer=_geocodeRequestDelayTimer;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
+@property (nonatomic) BOOL isWaitingForGeocodeRequest; // @synthesize isWaitingForGeocodeRequest=_isWaitingForGeocodeRequest;
 @property (strong, nonatomic) NSString *locationName; // @synthesize locationName=_locationName;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSNumber *token; // @synthesize token=_token;
+@property (strong, nonatomic) NSString *token; // @synthesize token=_token;
 
 + (BOOL)acceptsComplicationFamily:(long long)arg1;
 + (BOOL)acceptsComplicationType:(unsigned long long)arg1;
@@ -34,11 +40,16 @@
 - (id)_animationGroupForNoLocation;
 - (id)_currentEntry:(BOOL)arg1;
 - (id)_entryModelsForDate:(id)arg1 nextEvaluationDate:(id *)arg2;
+- (void)_geocodeRequestDelayTimerTriggerred;
+- (void)_handleLocation:(id)arg1 error:(id)arg2;
 - (void)_invalidate;
 - (BOOL)_needCurrentEventEntry;
+- (BOOL)_needsToSendGeocodingRequest;
 - (void)_startObserving;
 - (void)_stopObserving;
 - (id)_timelineEntryFromModel:(id)arg1;
+- (void)becomeActive;
+- (void)becomeInactive;
 - (id)currentSwitcherTemplate;
 - (void)dealloc;
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;

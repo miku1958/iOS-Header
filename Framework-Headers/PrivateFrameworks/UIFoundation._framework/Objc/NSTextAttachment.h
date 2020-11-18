@@ -17,6 +17,12 @@
     NSString *_uti;
     NSString *_cacheKey;
     struct CGRect _bounds;
+    double _layoutPadding;
+    struct {
+        unsigned int _allowsTextAttachmentView:1;
+        unsigned int _embeddingType:4;
+        unsigned int _standaloneAlignment:3;
+    } _taFlags;
     NSFileWrapper *_fileWrapper;
     UIImage *_image;
     UITextAttachmentView *_wrapperView;
@@ -35,20 +41,37 @@
 
 + (id)imageCache;
 + (void)initialize;
++ (void)registerTextAttachmentClass:(Class)arg1 forFileType:(id)arg2;
++ (void)registerTextAttachmentViewProviderClass:(Class)arg1 forFileType:(id)arg2;
++ (Class)textAttachmentClassForFileType:(id)arg1;
++ (Class)textAttachmentViewProviderClassForFileType:(id)arg1;
 - (id)_cacheKey;
 - (id)_image;
 - (void)_invalidateWrapperView;
+- (BOOL)allowsTextAttachmentView;
 - (struct CGRect)attachmentBoundsForTextContainer:(id)arg1 proposedLineFragment:(struct CGRect)arg2 glyphPosition:(struct CGPoint)arg3 characterIndex:(unsigned long long)arg4;
 - (id)attachmentCell;
 - (void)dealloc;
+- (void)detachView:(id)arg1 fromParentView:(id)arg2;
 - (struct CGRect)drawingBounds;
+- (long long)embeddingType;
 - (void)encodeWithCoder:(id)arg1;
 - (id)imageForBounds:(struct CGRect)arg1 textContainer:(id)arg2 characterIndex:(unsigned long long)arg3;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1 ofType:(id)arg2;
 - (id)initWithFileWrapper:(id)arg1;
+- (double)lineLayoutPadding;
+- (void)placeView:(id)arg1 withFrame:(struct CGRect)arg2 inParentView:(id)arg3 characterIndex:(unsigned long long)arg4 layoutManager:(id)arg5;
+- (void)setAllowsTextAttachmentView:(BOOL)arg1;
 - (void)setDrawingBounds:(struct CGRect)arg1;
+- (void)setEmbeddingType:(long long)arg1;
+- (void)setLineLayoutPadding:(double)arg1;
+- (void)setStandaloneAlignment:(long long)arg1;
+- (long long)standaloneAlignment;
+- (Class)textAttachmentViewProviderClass;
+- (BOOL)usesTextAttachmentView;
+- (id)viewProviderForParentView:(id)arg1 characterIndex:(unsigned long long)arg2 layoutManager:(id)arg3;
 
 @end
 

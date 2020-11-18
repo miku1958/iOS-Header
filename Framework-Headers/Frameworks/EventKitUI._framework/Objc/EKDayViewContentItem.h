@@ -12,7 +12,15 @@
 
 @interface EKDayViewContentItem : NSObject <CUIKSingleDayTimelineViewItem>
 {
+    struct CGRect _stagedFrame;
     struct CGRect _unPinnedViewFrame;
+    double _visibleHeight;
+    BOOL _visibleHeightLocked;
+    double _travelTimeHeight;
+    BOOL _usesSmallText;
+    BOOL _isProposedTime;
+    BOOL _isLoadingAsync;
+    EKEvent *_event;
     unsigned long long _eventIndex;
     EKDayOccurrenceView *_view;
     EKCalendarDate *_startDate;
@@ -28,10 +36,12 @@
 @property (readonly, nonatomic) NSDate *end;
 @property (copy, nonatomic) EKCalendarDate *endDate; // @synthesize endDate=_endDate;
 @property (readonly, nonatomic) double enoughHeightForOneLine;
-@property (readonly, nonatomic) EKEvent *event;
+@property (strong, nonatomic) EKEvent *event; // @synthesize event=_event;
 @property (readonly, nonatomic) unsigned long long eventIndex; // @synthesize eventIndex=_eventIndex;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hideTravelTime;
+@property (nonatomic) BOOL isLoadingAsync; // @synthesize isLoadingAsync=_isLoadingAsync;
+@property (nonatomic) BOOL isProposedTime; // @synthesize isProposedTime=_isProposedTime;
 @property (readonly, nonatomic) NSDate *start;
 @property (copy, nonatomic) EKCalendarDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly, copy, nonatomic) EKCalendarDate *startDateIncludingTravelTime;
@@ -40,6 +50,7 @@
 @property (nonatomic) double topPinningProximity; // @synthesize topPinningProximity=_topPinningProximity;
 @property (nonatomic) double travelTime; // @synthesize travelTime=_travelTime;
 @property struct CGRect unPinnedViewFrame;
+@property (nonatomic) BOOL usesSmallText; // @synthesize usesSmallText=_usesSmallText;
 @property (strong, nonatomic) EKDayOccurrenceView *view; // @synthesize view=_view;
 @property (readonly, nonatomic) double viewMaxNaturalTextHeight;
 @property (readonly) BOOL visibleHeightLocked;
@@ -49,6 +60,7 @@
 - (id)initWithEventIndex:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isPinned;
+- (void)resetVisibleHeight;
 - (void)setStagedFrame:(struct CGRect)arg1;
 - (void)setTravelTimeHeight:(double)arg1;
 - (void)setVisibleHeight:(double)arg1;

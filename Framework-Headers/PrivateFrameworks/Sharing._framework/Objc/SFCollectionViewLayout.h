@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSArray *preparedUpdateItems; // @synthesize preparedUpdateItems=_preparedUpdateItems;
 
 - (void).cxx_destruct;
-- (double)_evaluateHorizontalItemOffsetForItemSize:(struct CGSize)arg1 containerWidth:(double)arg2 inset:(struct UIEdgeInsets)arg3;
+- (double)_evaluateHorizontalItemOffsetForItemSize:(struct CGSize)arg1 inset:(struct UIEdgeInsets)arg2 containerWidth:(double)arg3 offscreenPeekInFactor:(float)arg4;
 - (struct UIEdgeInsets)_evaluateInsetForSectionAtIndex:(long long)arg1;
 - (struct CGSize)_evaluatePreferredItemSizeForItemsAtIndexPaths:(id)arg1;
 - (id)_indexPathsForItemsInSection:(long long)arg1;

@@ -34,6 +34,7 @@
 + (id)settingsControllerModule;
 + (id)sharedInstance;
 - (long long)_defaultDataSourceType;
+- (id)parentSettings;
 - (void)setDefaultValues;
 
 @end

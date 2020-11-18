@@ -8,7 +8,7 @@
 
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSFileHandle, NSNumber, NSString, NSXPCListenerEndpoint;
+@class NSDictionary, NSFileHandle, NSNumber, NSString, NSURL, NSXPCListenerEndpoint;
 
 @interface AFSpeechRequestOptions : NSObject <NSSecureCoding>
 {
@@ -21,11 +21,14 @@
     BOOL _usePrelisteningMode;
     BOOL _pendCallbacksUntilAfterContinuation;
     BOOL _useBorealisBuffer;
+    BOOL _suppressStopAlert;
     long long _activationEvent;
     NSString *_activationDeviceIdentifier;
     NSString *_serverCommandId;
     double _homeButtonDownEventTime;
+    unsigned long long _homeButtonDownEventMachAbsoluteTime;
     double _activationEventTime;
+    unsigned long long _activationEventMachAbsoluteTime;
     double _expectedActivationEventTime;
     NSNumber *_homeButtonUpFromBeep;
     long long _audioFileType;
@@ -33,25 +36,34 @@
     NSDictionary *_voiceTriggerEventInfo;
     NSString *_recordDeviceIdentifier;
     NSXPCListenerEndpoint *_speechRecordingEventListeningEndpoint;
+    NSNumber *_notifyState;
+    NSURL *_audioFileURL;
+    unsigned long long _bargeInOptions;
 }
 
 @property (nonatomic) BOOL acousticIdEnabled; // @synthesize acousticIdEnabled=_acousticIdEnabled;
 @property (copy, nonatomic) NSString *activationDeviceIdentifier; // @synthesize activationDeviceIdentifier=_activationDeviceIdentifier;
 @property (nonatomic) long long activationEvent; // @synthesize activationEvent=_activationEvent;
+@property (nonatomic) unsigned long long activationEventMachAbsoluteTime; // @synthesize activationEventMachAbsoluteTime=_activationEventMachAbsoluteTime;
 @property (nonatomic) double activationEventTime; // @synthesize activationEventTime=_activationEventTime;
 @property (strong, nonatomic) NSFileHandle *audioFileHandle; // @synthesize audioFileHandle=_audioFileHandle;
 @property (nonatomic) long long audioFileType; // @synthesize audioFileType=_audioFileType;
+@property (copy, nonatomic) NSURL *audioFileURL; // @synthesize audioFileURL=_audioFileURL;
+@property (nonatomic) unsigned long long bargeInOptions; // @synthesize bargeInOptions=_bargeInOptions;
 @property (copy, nonatomic) NSString *btDeviceAddress;
 @property (nonatomic) double expectedActivationEventTime; // @synthesize expectedActivationEventTime=_expectedActivationEventTime;
+@property (nonatomic) unsigned long long homeButtonDownEventMachAbsoluteTime; // @synthesize homeButtonDownEventMachAbsoluteTime=_homeButtonDownEventMachAbsoluteTime;
 @property (nonatomic) double homeButtonDownEventTime; // @synthesize homeButtonDownEventTime=_homeButtonDownEventTime;
 @property (copy, nonatomic) NSNumber *homeButtonUpFromBeep; // @synthesize homeButtonUpFromBeep=_homeButtonUpFromBeep;
 @property (nonatomic) BOOL isEyesFree; // @synthesize isEyesFree=_isEyesFree;
 @property (nonatomic) BOOL isInitialBringUp; // @synthesize isInitialBringUp=_isInitialBringUp;
+@property (copy, nonatomic) NSNumber *notifyState; // @synthesize notifyState=_notifyState;
 @property (nonatomic) BOOL pendCallbacksUntilAfterContinuation; // @synthesize pendCallbacksUntilAfterContinuation=_pendCallbacksUntilAfterContinuation;
 @property (copy, nonatomic) NSString *recordDeviceIdentifier; // @synthesize recordDeviceIdentifier=_recordDeviceIdentifier;
 @property (nonatomic) BOOL releaseAudioSessionOnRecordingCompletion; // @synthesize releaseAudioSessionOnRecordingCompletion=_releaseAudioSessionOnRecordingCompletion;
 @property (copy, nonatomic) NSString *serverCommandId; // @synthesize serverCommandId=_serverCommandId;
 @property (strong, nonatomic) NSXPCListenerEndpoint *speechRecordingEventListeningEndpoint; // @synthesize speechRecordingEventListeningEndpoint=_speechRecordingEventListeningEndpoint;
+@property (nonatomic) BOOL suppressStopAlert; // @synthesize suppressStopAlert=_suppressStopAlert;
 @property (nonatomic) BOOL useAutomaticEndpointing; // @synthesize useAutomaticEndpointing=_useAutomaticEndpointing;
 @property (nonatomic) BOOL useBorealisBuffer; // @synthesize useBorealisBuffer=_useBorealisBuffer;
 @property (nonatomic) BOOL usePrelisteningMode; // @synthesize usePrelisteningMode=_usePrelisteningMode;

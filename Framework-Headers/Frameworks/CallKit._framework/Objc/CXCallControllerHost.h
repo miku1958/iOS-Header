@@ -34,6 +34,7 @@
 @property (strong, nonatomic) NSXPCListener *xpcListener; // @synthesize xpcListener=_xpcListener;
 
 - (void).cxx_destruct;
+- (id)_callsForCallControllerHostConnection:(id)arg1;
 - (void)_performDelegateCallback:(CDUnknownBlockType)arg1;
 - (void)addOrUpdateCall:(id)arg1;
 - (void)callControllerHostConnection:(id)arg1 requestCalls:(CDUnknownBlockType)arg2;

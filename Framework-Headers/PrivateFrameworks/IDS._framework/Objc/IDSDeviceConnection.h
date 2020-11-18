@@ -4,21 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSInputStream, NSOutputStream, _IDSDeviceConnection;
+@class NSDictionary, NSInputStream, NSOutputStream, _IDSDeviceConnection;
 
 @interface IDSDeviceConnection : NSObject
 {
     _IDSDeviceConnection *_internal;
 }
 
-@property (readonly, strong, nonatomic) _IDSDeviceConnection *_internal;
-@property (readonly, strong, nonatomic) NSInputStream *inputStream;
+@property (readonly, nonatomic) _IDSDeviceConnection *_internal;
+@property (readonly, nonatomic) NSInputStream *inputStream;
+@property (readonly, nonatomic) NSDictionary *metrics;
 @property (readonly, nonatomic) unsigned long long mtu;
-@property (readonly, strong, nonatomic) NSOutputStream *outputStream;
+@property (readonly, nonatomic) NSOutputStream *outputStream;
 @property (readonly, nonatomic) int socket;
 
+- (void).cxx_destruct;
 - (void)close;
 - (void)dealloc;
 - (id)description;

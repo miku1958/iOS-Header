@@ -27,7 +27,6 @@
     BOOL _resetConfigDisplayTimeHasElapsed;
     BOOL _keychainSyncPeerAvailable;
     BOOL _cloudDataSyncPeerAvailable;
-    int _circleNotificationToken;
     NSUUID *_uuid;
     HMFMessageDispatcher *_msgDispatcher;
     NSObject<OS_dispatch_source> *_popupTimer;
@@ -42,7 +41,6 @@
     HMDHomeManager *_homeManager;
 }
 
-@property (nonatomic) int circleNotificationToken; // @synthesize circleNotificationToken=_circleNotificationToken;
 @property (nonatomic) BOOL cloudDataSyncCompleted; // @synthesize cloudDataSyncCompleted=_cloudDataSyncCompleted;
 @property (strong, nonatomic) HMFTimer *cloudDataSyncInProgressTimer; // @synthesize cloudDataSyncInProgressTimer=_cloudDataSyncInProgressTimer;
 @property (nonatomic, getter=isCloudDataSyncPeerAvailable) BOOL cloudDataSyncPeerAvailable; // @synthesize cloudDataSyncPeerAvailable=_cloudDataSyncPeerAvailable;
@@ -80,9 +78,8 @@
 - (void)_clearResetConfigDisplayTimer;
 - (BOOL)_cloudSyncinProgressCheck:(id)arg1 supressPopup:(BOOL)arg2 sendCanceledError:(BOOL *)arg3 dataSyncState:(unsigned long long *)arg4;
 - (void)_handleAccountStatusChanged:(id)arg1;
-- (void)_handleCircleChangedNotification;
 - (void)_postNotificationForDataSyncInProgress:(BOOL)arg1 dataSyncState:(unsigned long long)arg2;
-- (void)_registerForCircleChangeNotifications;
+- (void)_registerForMessages;
 - (void)_resetCloudDataSyncTimer;
 - (void)_stallCloudDataSyncTimer;
 - (void)_stallResetConfigDisplayTimer;
@@ -102,7 +99,8 @@
 - (BOOL)acceptMessage:(id)arg1 target:(id)arg2 errorReason:(id *)arg3;
 - (BOOL)dataSyncInProgressWithState:(unsigned long long *)arg1;
 - (void)dealloc;
-- (id)initWithName:(id)arg1 homeManager:(id)arg2 messageDispatcher:(id)arg3 serverTokenAvailable:(BOOL)arg4 localDataDecryptionFailed:(BOOL)arg5 totalHomes:(long long)arg6 currentAccount:(id)arg7;
+- (void)handleKeychainSyncStateChangedNotification:(id)arg1;
+- (id)initWithName:(id)arg1 homeManager:(id)arg2 messageDispatcher:(id)arg3 serverTokenAvailable:(BOOL)arg4 homeDataHasBeenDecrypted:(BOOL)arg5 localDataDecryptionFailed:(BOOL)arg6 totalHomes:(long long)arg7 currentAccount:(id)arg8;
 - (BOOL)isLocalDataDecryptionFailed;
 - (BOOL)isiCloudSwitchEnabled;
 - (void)resetConfiguration;
@@ -114,6 +112,7 @@
 - (void)updateNetworkConnectivity:(BOOL)arg1;
 - (void)updateServerTokenAvailable:(BOOL)arg1;
 - (void)updateTotalHomes:(long long)arg1;
+- (void)updateWithoutDataSynCheckServerTokenAvailable:(BOOL)arg1;
 - (void)updateiCloudSwitchState:(BOOL)arg1;
 
 @end

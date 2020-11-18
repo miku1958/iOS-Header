@@ -24,6 +24,7 @@
     SUObjectPool *_objectPool;
     ISURLRequestPerformance *_performanceMetrics;
     long long _scheduledOrientation;
+    BOOL _shouldSignRequests;
     SUStorePageProtocol *_storePageProtocol;
     long long _style;
     NSURL *_url;
@@ -37,6 +38,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL shouldSignRequests; // @synthesize shouldSignRequests=_shouldSignRequests;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL viewIsReady; // @synthesize viewIsReady=_viewIsReady;

@@ -12,28 +12,28 @@
 {
 }
 
-@property (nonatomic) BOOL commentChanged;
-@property (copy, nonatomic) NSDate *lastModified;
-@property (nonatomic) long long participantRole;
-@property (nonatomic) long long participantStatus;
-@property (nonatomic) long long participantType;
-@property (nonatomic) long long pendingStatus;
-@property (nonatomic) BOOL proposedStartDateChanged;
-@property (nonatomic) BOOL statusChanged;
+@property (nonatomic) BOOL commentChanged; // @dynamic commentChanged;
+@property (copy, nonatomic) NSDate *lastModified; // @dynamic lastModified;
+@property (nonatomic) long long participantRole; // @dynamic participantRole;
+@property (nonatomic) long long participantType; // @dynamic participantType;
+@property (nonatomic) int pendingStatus; // @dynamic pendingStatus;
+@property (nonatomic) BOOL proposedStartDateChanged; // @dynamic proposedStartDateChanged;
+@property (nonatomic) int status; // @dynamic status;
+@property (nonatomic) BOOL statusChanged; // @dynamic statusChanged;
 
 + (id)attendeeWithEmailAddress:(id)arg1 name:(id)arg2;
 + (id)attendeeWithName:(id)arg1 emailAddress:(id)arg2 address:(id)arg3;
 + (id)defaultPropertiesToLoad;
 + (id)relations;
-- (void)_setFlag:(unsigned int)arg1 value:(BOOL)arg2;
-- (BOOL)_valueForFlag:(unsigned int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (int)entityType;
+- (unsigned int)flags;
 - (id)initWithAddress:(id)arg1 name:(id)arg2;
 - (id)initWithEmailAddress:(id)arg1 name:(id)arg2;
 - (id)initWithName:(id)arg1 emailAddress:(id)arg2 address:(id)arg3;
 - (id)owner;
+- (void)setFlags:(unsigned int)arg1;
 - (void)setOwner:(id)arg1;
 
 @end

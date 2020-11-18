@@ -9,10 +9,13 @@
 #import <AXFrontBoardUtils/FBProcessManagerObserver-Protocol.h>
 #import <AXFrontBoardUtils/FBProcessObserver-Protocol.h>
 
-@class NSString;
+@class AXDispatchTimer, NSSet, NSString;
 
 @interface AXFrontBoardProcessWatcher : NSObject <FBProcessManagerObserver, FBProcessObserver>
 {
+    id _observerToken;
+    AXDispatchTimer *_appTransitionTimer;
+    NSSet *_cachedFocusedAppPIDs;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,7 +23,14 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)_accessibilitySpokenNameForProcess:(id)arg1;
++ (id)accessibilitySpokenNameForProcess:(id)arg1;
++ (id)processForBundleIdentifier:(id)arg1;
++ (void)validateFocusedAppsWithEvent:(long long)arg1;
+- (void).cxx_destruct;
+- (id)_processDescriptionForPID:(int)arg1;
+- (BOOL)_processStateChangeIsTaskStateChangeFrom:(id)arg1 to:(id)arg2;
+- (BOOL)_processStateChangeIsVisibilityStateChangeFrom:(id)arg1 to:(id)arg2;
+- (void)_validateFocusedApps:(long long)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)process:(id)arg1 stateDidChangeFromState:(id)arg2 toState:(id)arg3;

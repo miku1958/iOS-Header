@@ -18,12 +18,12 @@
     BOOL _didUpdate;
     BOOL _blacklisted;
     BOOL _ignoringParentAppearState;
-    unsigned int _maskedCorners;
     WGWidgetInfo *_widgetInfo;
     id<WGWidgetHostingViewControllerDelegate> _delegate;
     id<WGWidgetHostingViewControllerHost> _host;
     long long _activeDisplayMode;
     double _cornerRadius;
+    unsigned long long _maskedCorners;
     NSString *_appBundleID;
     WGWidgetLifeCycleSequence *_activeLifeCycleSequence;
     long long _connectionState;
@@ -41,7 +41,6 @@
     CDUnknownBlockType _remoteViewControllerDisconnectionHandler;
     NSDate *_lastUnanticipatedDisconnectionDate;
     NSMapTable *_openAppearanceTransactions;
-    NSMapTable *_openActiveDisplayModeChangeTransactions;
     _WGBrokenWidgetView *_brokenView;
     NSMutableDictionary *_sequenceIDsToOutstandingWidgetUpdateCompletionHandlers;
     struct CGRect _snapshotViewBounds;
@@ -73,8 +72,7 @@
 @property (nonatomic, setter=_setImplementsPerformUpdate:) BOOL implementsPerformUpdate; // @synthesize implementsPerformUpdate=_implementsPerformUpdate;
 @property (readonly, nonatomic) long long largestAvailableDisplayMode;
 @property (strong, nonatomic, getter=_lastUnanticipatedDisconnectionDate, setter=_setLastUnanticipatedDisconnectionDate:) NSDate *lastUnanticipatedDisconnectionDate; // @synthesize lastUnanticipatedDisconnectionDate=_lastUnanticipatedDisconnectionDate;
-@property (nonatomic) unsigned int maskedCorners; // @synthesize maskedCorners=_maskedCorners;
-@property (readonly, nonatomic, getter=_openActiveDisplayModeChangeTransactions) NSMapTable *openActiveDisplayModeChangeTransactions; // @synthesize openActiveDisplayModeChangeTransactions=_openActiveDisplayModeChangeTransactions;
+@property (nonatomic) unsigned long long maskedCorners; // @synthesize maskedCorners=_maskedCorners;
 @property (readonly, nonatomic, getter=_openAppearanceTransactions) NSMapTable *openAppearanceTransactions; // @synthesize openAppearanceTransactions=_openAppearanceTransactions;
 @property (readonly, nonatomic, getter=_proxyConnectionQueue) NSObject<OS_dispatch_queue> *proxyConnectionQueue; // @synthesize proxyConnectionQueue=_proxyConnectionQueue;
 @property (readonly, nonatomic, getter=_proxyRequestQueue) NSObject<OS_dispatch_queue> *proxyRequestQueue; // @synthesize proxyRequestQueue=_proxyRequestQueue;
@@ -111,7 +109,6 @@
 - (void)_captureLayerTree:(CDUnknownBlockType)arg1;
 - (void)_captureSnapshotAndBeginDisappearanceTransitionForSequence:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_connectRemoteViewControllerForReason:(id)arg1 sequence:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (double)_contentWidth;
 - (void)_disconnectRemoteViewControllerForReason:(id)arg1 sequence:(id)arg2 coalesce:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_disconnectRemoteViewControllerForSequence:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_disconnectionTimerDidFire:(id)arg1;
@@ -122,7 +119,6 @@
 - (void)_enqueueRemoteServiceRequest:(CDUnknownBlockType)arg1 withDescription:(id)arg2;
 - (void)_enqueueRequest:(CDUnknownBlockType)arg1 inQueue:(id)arg2 trampolinedToMainQueue:(BOOL)arg3 withDescription:(id)arg4;
 - (void)_finishDisconnectingRemoteViewControllerForSequence:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_handleRequestedViewHeight:(double)arg1 usingAutolayout:(BOOL)arg2 requestIdentifier:(id)arg3;
 - (BOOL)_hasOutstandingUpdateRequestForSequence:(id)arg1;
 - (void)_initiateNewSequenceIfNecessary;
 - (void)_insertAppropriateContentView;
@@ -134,6 +130,7 @@
 - (void)_invalidateSnapshotWithForce:(BOOL)arg1 removingSnapshotFilesForActiveDisplayMode:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_isActiveSequence:(id)arg1;
 - (void)_loadSnapshotViewFromDiskIfNecessary:(CDUnknownBlockType)arg1;
+- (BOOL)_managingContainerIsVisible;
 - (struct UIEdgeInsets)_marginInsets;
 - (struct CGSize)_maxSizeForDisplayMode:(long long)arg1;
 - (void)_noteOutstandingUpdateRequestForSequence:(id)arg1;
@@ -144,6 +141,7 @@
 - (void)_registerUpdateRequestCompletionHandler:(CDUnknownBlockType)arg1 forSequence:(id)arg2;
 - (void)_removeAllSnapshotFilesDueToIssue:(BOOL)arg1;
 - (void)_removeAllSnapshotFilesForActiveDisplayMode;
+- (void)_removeAllSnapshotFilesInActiveDisplayModeForContentSizeCategory:(id)arg1;
 - (void)_removeAllSnapshotFilesMatchingPredicate:(id)arg1 dueToIssue:(BOOL)arg2;
 - (void)_removeItemAsynchronouslyAtURL:(id)arg1;
 - (void)_removeItemAtURL:(id)arg1;
@@ -157,11 +155,10 @@
 - (BOOL)_shouldRemoveSnapshotWhenNotVisible;
 - (id)_snapshotIdentifierForLayoutMode:(long long)arg1;
 - (void)_synchronizeGeometryWithSnapshot;
-- (double)_updatePreferredContentSizeWithHeight:(double)arg1;
+- (void)_updatePreferredContentSizeWithHeight:(double)arg1;
 - (CDUnknownBlockType)_updateRequestForSequence:(id)arg1;
 - (void)_updateWidgetWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_validateSnapshotViewForActiveLayoutMode;
-- (double)_validatedHeightForHeight:(double)arg1 enforcingDisplayMode:(BOOL)arg2;
 - (id)_widgetSnapshotURLForLayoutMode:(long long)arg1 ensuringDirectoryExists:(BOOL)arg2;
 - (id)_widgetSnapshotURLForSnapshotIdentifier:(id)arg1;
 - (id)_widgetSnapshotURLForSnapshotIdentifier:(id)arg1 ensuringDirectoryExists:(BOOL)arg2;
@@ -172,12 +169,14 @@
 - (void)invalidateCachedSnapshotWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)invalidateCachedSnapshotWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)isLinkedOnOrAfterSystemVersion:(id)arg1;
+- (void)managingContainerDidDisappear:(id)arg1;
+- (void)managingContainerWillAppear:(id)arg1;
 - (void)maximumSizeDidChangeForDisplayMode:(long long)arg1;
-- (void)parentContainerDidDisappear:(id)arg1;
-- (void)parentContainerWillAppear:(id)arg1;
+- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)setActiveDisplayMode:(long long)arg1;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

@@ -6,6 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
+@class NSNumber;
 @protocol OS_dispatch_queue;
 
 @interface MPPlaybackUserDefaults : NSObject
@@ -27,6 +28,8 @@
 @property (nonatomic) long long musicShuffleType;
 @property (readonly, nonatomic) unsigned long long preferredVideosAssetQualityOnCellular;
 @property (readonly, nonatomic) unsigned long long preferredVideosAssetQualityOnWifi;
+@property (copy, nonatomic, getter=isPrivateListeningEnabled) NSNumber *privateListeningEnabled;
+@property (readonly, nonatomic) BOOL shouldUseNewQueueManagement;
 @property (readonly, nonatomic) BOOL soundCheckEnabled;
 
 + (id)standardUserDefaults;

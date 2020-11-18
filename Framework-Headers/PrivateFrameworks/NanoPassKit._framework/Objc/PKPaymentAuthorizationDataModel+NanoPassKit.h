@@ -7,6 +7,11 @@
 #import <PassKitCore/PKPaymentAuthorizationDataModel.h>
 
 @interface PKPaymentAuthorizationDataModel (NanoPassKit)
+- (BOOL)_hasNonPeerPaymentAcceptedPasses;
+- (BOOL)npkIsPeerPayment;
+- (BOOL)npkIsSplitPeerPayment;
+- (BOOL)npkIsSplitPeerPaymentWithAnotherPaymentMethod;
+- (BOOL)npkIsSplitPeerPaymentWithoutAnotherPaymentMethod;
 - (void)npkSetPassAndPaymentApplicationForAID:(id)arg1;
 @end
 

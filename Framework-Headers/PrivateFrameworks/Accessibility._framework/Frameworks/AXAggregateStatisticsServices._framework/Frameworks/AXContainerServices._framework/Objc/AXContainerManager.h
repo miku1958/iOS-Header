@@ -16,7 +16,7 @@
 @property (strong, nonatomic) AXUIClient *containerServerClient; // @synthesize containerServerClient=_containerServerClient;
 
 + (id)sharedManager;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)deleteFileAtAccessibilityContainerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)readDataForFileAtAccessibilityContainerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)writeData:(id)arg1 toFileAtAccessibilityContainerPath:(id)arg2 completion:(CDUnknownBlockType)arg3;

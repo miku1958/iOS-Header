@@ -8,6 +8,7 @@
 
 @interface PXWidgetSpec : PXFeatureSpec
 {
+    double _distanceBetweenMainContentBottomAndCaptionBaseline;
     unsigned long long _detailsOptions;
     double _distanceBetweenTopAndFirstHeaderBaseline;
     double _distanceBetweenTopAndHeaderlessWidgetContentTop;
@@ -39,6 +40,7 @@
 @property (nonatomic) double distanceBetweenHeaderBaselineAndHeaderBottom; // @synthesize distanceBetweenHeaderBaselineAndHeaderBottom=_distanceBetweenHeaderBaselineAndHeaderBottom;
 @property (nonatomic) double distanceBetweenHeaderBaselineAndWidgetContentTop; // @synthesize distanceBetweenHeaderBaselineAndWidgetContentTop=_distanceBetweenHeaderBaselineAndWidgetContentTop;
 @property (nonatomic) double distanceBetweenHeaderTopAndHeaderBaseline; // @synthesize distanceBetweenHeaderTopAndHeaderBaseline=_distanceBetweenHeaderTopAndHeaderBaseline;
+@property (readonly, nonatomic) double distanceBetweenMainContentBottomAndCaptionBaseline; // @synthesize distanceBetweenMainContentBottomAndCaptionBaseline=_distanceBetweenMainContentBottomAndCaptionBaseline;
 @property (nonatomic) double distanceBetweenTopAndFirstHeaderBaseline; // @synthesize distanceBetweenTopAndFirstHeaderBaseline=_distanceBetweenTopAndFirstHeaderBaseline;
 @property (nonatomic) double distanceBetweenTopAndHeaderlessWidgetContentTop; // @synthesize distanceBetweenTopAndHeaderlessWidgetContentTop=_distanceBetweenTopAndHeaderlessWidgetContentTop;
 @property (nonatomic) double distanceBetweenWidgetContentBottomAndFooterBaseline; // @synthesize distanceBetweenWidgetContentBottomAndFooterBaseline=_distanceBetweenWidgetContentBottomAndFooterBaseline;

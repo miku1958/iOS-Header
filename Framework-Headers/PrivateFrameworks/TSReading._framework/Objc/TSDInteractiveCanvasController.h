@@ -310,6 +310,7 @@
 - (double)i_adjustViewScale:(double)arg1;
 - (struct CGSize)i_canvasCenterOffsetForProposedViewScale:(double)arg1 originalViewScale:(double)arg2;
 - (void)i_canvasContentsScaleDidChange;
+- (void)i_canvasWideGamutValueDidChange;
 - (struct CGRect)i_clippingBoundsForScrollViewEnclosingCanvas;
 - (id)i_currentAnimation;
 - (void)i_cvcWillBecomeFirstResponder;

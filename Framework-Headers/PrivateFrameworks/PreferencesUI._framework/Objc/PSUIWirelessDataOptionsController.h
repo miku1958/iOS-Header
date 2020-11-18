@@ -30,8 +30,6 @@
 - (void).cxx_destruct;
 - (void)_createAppSpecifiersForVisibleApps:(id)arg1 hiddenApps:(id)arg2 unknownApps:(id)arg3 internalProcesses:(id)arg4;
 - (id)_dataUsageForApplicationSpecifier:(id)arg1;
-- (id)_dataUsageStringForAppSpecifier:(id)arg1 includeHeader:(BOOL)arg2;
-- (id)_dataUsageWithHeaderForApplicationSpecifier:(id)arg1;
 - (id)_groupSpecifier;
 - (void)_handleCellularPlanChangedNotification:(id)arg1;
 - (void)_handleNewCarrierNotification:(id)arg1;

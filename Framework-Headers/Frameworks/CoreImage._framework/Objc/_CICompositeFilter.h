@@ -19,9 +19,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 
 + (id)_kernel;
-+ (id)_kernel_source;
 + (id)customAttributes;
-- (struct CGRect)_extentForInputExtent:(struct CGRect)arg1 backgroundExtent:(struct CGRect)arg2;
 - (id)outputImage;
 
 @end

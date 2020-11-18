@@ -9,8 +9,10 @@
 @interface NSBundle (RPExtensions)
 + (id)_rpFrameworkBundle;
 + (id)_rpLocalizedAppNameFromBundleID:(id)arg1;
-+ (id)_rpLocalizedStringFromFrameworkBundleWithKey:(id)arg1 bundleID:(id)arg2;
-+ (id)localizedDictionaryForLanguage:(id)arg1;
++ (id)_rpLocalizedStringFromFrameworkBundleWithKey:(id)arg1;
++ (id)baseIdentifier:(id)arg1;
++ (id)fallbackBundle;
++ (id)localizedBundle;
 - (id)_rpLocalizedAppName;
 @end
 

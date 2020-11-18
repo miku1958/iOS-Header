@@ -20,6 +20,7 @@
     struct CGPoint _center;
     struct CGSize _size;
     struct CGRect _contentsRect;
+    struct UIEdgeInsets _hitTestOutset;
     CDStruct_6c514524 _expandedRectInsets;
     struct CGAffineTransform _transform;
 }
@@ -31,6 +32,7 @@
 @property (readonly, nonatomic) NSString *dataSourceIdentifier;
 @property (nonatomic) CDStruct_6c514524 expandedRectInsets; // @synthesize expandedRectInsets=_expandedRectInsets;
 @property (readonly, nonatomic) struct CGRect frame;
+@property (readonly, nonatomic) struct UIEdgeInsets hitTestOutset; // @synthesize hitTestOutset=_hitTestOutset;
 @property (readonly, nonatomic) NSIndexPath *indexPath;
 @property (nonatomic, setter=_setSize:) struct CGSize size; // @synthesize size=_size;
 @property (strong, nonatomic, setter=_setTileIdentifier:) PUTileIdentifier *tileIdentifier; // @synthesize tileIdentifier=_tileIdentifier;
@@ -46,6 +48,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 transform:(struct CGAffineTransform)arg5 zPosition:(double)arg6 contentsRect:(struct CGRect)arg7 coordinateSystem:(id)arg8;
+- (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 transform:(struct CGAffineTransform)arg5 zPosition:(double)arg6 contentsRect:(struct CGRect)arg7 hitTestOutset:(struct UIEdgeInsets)arg8 coordinateSystem:(id)arg9;
 - (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 transform:(struct CGAffineTransform)arg5 zPosition:(double)arg6 coordinateSystem:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isGeometryEqualToLayoutInfo:(id)arg1;

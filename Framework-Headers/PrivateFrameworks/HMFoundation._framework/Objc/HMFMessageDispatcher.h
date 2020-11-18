@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HMFoundation/HMFMessageTransportDelegate-Protocol.h>
 
-@class HMFMessageTransport, NSMutableDictionary, NSString;
+@class HMFMessageTransport, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMFMessageDispatcher : NSObject <HMFMessageTransportDelegate>
+@interface HMFMessageDispatcher : HMFObject <HMFMessageTransportDelegate>
 {
-    BOOL _remoteSource;
+    BOOL _remote;
     HMFMessageTransport *_transport;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSMutableDictionary *_notificationHandlers;
@@ -23,7 +23,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableDictionary *notificationHandlers; // @synthesize notificationHandlers=_notificationHandlers;
-@property (nonatomic, getter=isRemoteSource) BOOL remoteSource; // @synthesize remoteSource=_remoteSource;
+@property (nonatomic, getter=isRemote) BOOL remote; // @synthesize remote=_remote;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) HMFMessageTransport *transport; // @synthesize transport=_transport;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;

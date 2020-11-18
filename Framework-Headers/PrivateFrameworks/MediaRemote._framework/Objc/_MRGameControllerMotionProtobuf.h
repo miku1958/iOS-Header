@@ -12,13 +12,19 @@
 
 @interface _MRGameControllerMotionProtobuf : PBCodable <NSCopying>
 {
+    _MRGameControllerAccelerationProtobuf *_attitude;
     _MRGameControllerAccelerationProtobuf *_gravity;
+    _MRGameControllerAccelerationProtobuf *_rotation;
     _MRGameControllerAccelerationProtobuf *_userAcceleration;
 }
 
+@property (strong, nonatomic) _MRGameControllerAccelerationProtobuf *attitude; // @synthesize attitude=_attitude;
 @property (strong, nonatomic) _MRGameControllerAccelerationProtobuf *gravity; // @synthesize gravity=_gravity;
+@property (readonly, nonatomic) BOOL hasAttitude;
 @property (readonly, nonatomic) BOOL hasGravity;
+@property (readonly, nonatomic) BOOL hasRotation;
 @property (readonly, nonatomic) BOOL hasUserAcceleration;
+@property (strong, nonatomic) _MRGameControllerAccelerationProtobuf *rotation; // @synthesize rotation=_rotation;
 @property (strong, nonatomic) _MRGameControllerAccelerationProtobuf *userAcceleration; // @synthesize userAcceleration=_userAcceleration;
 
 - (void)copyTo:(id)arg1;

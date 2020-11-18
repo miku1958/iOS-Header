@@ -9,7 +9,7 @@
 #import <VectorKit/MDSnapshotMap-Protocol.h>
 #import <VectorKit/VKMapModelDelegate-Protocol.h>
 
-@class NSArray, NSString, VKMapModel;
+@class NSString, VKMapModel;
 
 __attribute__((visibility("hidden")))
 @interface VKMapImageCanvas : VKImageCanvas <VKMapModelDelegate, MDSnapshotMap>
@@ -17,25 +17,20 @@ __attribute__((visibility("hidden")))
     VKMapModel *_mapModel;
 }
 
-@property (strong, nonatomic) NSArray *customFeatureDataSources;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) unsigned char labelScaleFactor;
-@property (nonatomic) BOOL localizeLabels;
 @property (nonatomic) BOOL showsBuildings;
-@property (nonatomic) BOOL showsPointsOfInterest;
+@property (nonatomic) BOOL showsVenues;
 @property (readonly) Class superclass;
 
-- (void)addCustomFeatureDataSource:(id)arg1;
 - (void)cancelTileRequests;
 - (void)clearScene;
 - (void)dealloc;
-- (id)initWithTarget:(id)arg1 device:(struct Device *)arg2 homeQueue:(id)arg3 manifestConfiguration:(id)arg4 locale:(id)arg5;
-- (id)initWithTarget:(id)arg1 device:(struct Device *)arg2 homeQueue:(id)arg3 manifestConfiguration:(id)arg4 locale:(id)arg5 localizeLabels:(BOOL)arg6 mapType:(long long)arg7;
-- (id)initWithTarget:(id)arg1 device:(struct Device *)arg2 homeQueue:(id)arg3 manifestConfiguration:(id)arg4 locale:(id)arg5 mapPurpose:(unsigned long long)arg6;
+- (id)initWithMapEngine:(struct MapEngine *)arg1;
+- (id)initWithMapEngine:(struct MapEngine *)arg1 localizeLabels:(BOOL)arg2 mapType:(long long)arg3;
 - (BOOL)isShowingNoDataPlaceholders;
-- (id)mapModel:(id)arg1 painterForOverlay:(id)arg2;
+- (struct LabelSettings *)labelSettings;
 - (void)mapModel:(id)arg1 selectedLabelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)mapModel:(id)arg1 selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)mapModel:(id)arg1 willTransitionFrom:(long long)arg2 to:(long long)arg3 duration:(double)arg4;
@@ -47,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)mapModelDidUpdateMinMaxZoomLevel:(id)arg1;
 - (void)mapModelLabelsDidLayout:(id)arg1;
 - (void)mapModelWillBecomeFullyDrawn:(id)arg1;
-- (void)removeCustomFeatureDataSource:(id)arg1;
+- (void)setEmphasis:(unsigned char)arg1;
 - (void)setMapDisplayStyle:(struct DisplayStyle)arg1;
 - (void)setMapType:(long long)arg1;
 - (void)update;

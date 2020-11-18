@@ -27,7 +27,8 @@
 + (id)_resultWithPersistentID:(long long)arg1 bundleID:(id)arg2 status:(long long)arg3 error:(id)arg4;
 + (id)resultWithExistingActivity:(long long)arg1 bundleID:(id)arg2;
 + (id)resultWithInvalidActivity:(long long)arg1 bundleID:(id)arg2;
-+ (id)resultWithValidActivity:(long long)arg1;
++ (id)resultWithRestrictedActivity:(long long)arg1 bundleID:(id)arg2;
++ (id)resultWithValidActivity:(long long)arg1 bundleID:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

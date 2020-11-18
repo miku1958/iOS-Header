@@ -4,39 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Home/HFControlItem.h>
+#import <Home/HFRangeControlItem.h>
 
-@class NSNumber, NSSet, NSString;
-
-@interface HFTemperatureThresholdControlItem : HFControlItem
+@interface HFTemperatureThresholdControlItem : HFRangeControlItem
 {
-    NSString *_minimumCharacteristicType;
-    NSString *_maximumCharacteristicType;
-    NSSet *_thresholdCharacteristicsSet;
 }
 
-@property (strong, nonatomic) NSString *maximumCharacteristicType; // @synthesize maximumCharacteristicType=_maximumCharacteristicType;
-@property (readonly, copy, nonatomic) NSNumber *maximumCharacteristicTypeStepValue;
-@property (readonly, copy, nonatomic) NSNumber *maximumValue;
-@property (strong, nonatomic) NSString *minimumCharacteristicType; // @synthesize minimumCharacteristicType=_minimumCharacteristicType;
-@property (readonly, copy, nonatomic) NSNumber *minimumCharacteristicTypeStepValue;
-@property (readonly, copy, nonatomic) NSNumber *minimumValue;
-@property (readonly, copy, nonatomic) NSNumber *stepValue;
-@property (readonly, copy, nonatomic) NSString *targetCharacteristicType;
-@property (strong, nonatomic) NSSet *thresholdCharacteristicsSet; // @synthesize thresholdCharacteristicsSet=_thresholdCharacteristicsSet;
-
-+ (Class)valueClass;
-- (void).cxx_destruct;
-- (id)_maximumCharacteristicTypeMetadata;
-- (id)_minimumCharacteristicTypeMetadata;
-- (id)_targetCharacteristicTypeMetadata;
-- (id)characteristicValuesForValue:(id)arg1;
-- (id)copyWithCharacteristicTypes:(id)arg1 valueSource:(id)arg2;
-- (id)initWithValueSource:(id)arg1 characteristicTypes:(id)arg2 displayResults:(id)arg3;
-- (id)initWithValueSource:(id)arg1 minimumCharacteristicType:(id)arg2 maximumCharacteristicType:(id)arg3 displayResults:(id)arg4;
+- (id)initWithValueSource:(id)arg1 displayResults:(id)arg2;
+- (unsigned long long)rangeModeWithCharacteristicValuesKeyedByType:(id)arg1;
 - (id)readOnlyCharacteristicTypes;
-- (unsigned long long)temperatureMode;
-- (id)valueForCharacteristicValues:(id)arg1;
+- (id)targetCharacteristicTypeWithCharacteristicValuesKeyedByType:(id)arg1;
 
 @end
 

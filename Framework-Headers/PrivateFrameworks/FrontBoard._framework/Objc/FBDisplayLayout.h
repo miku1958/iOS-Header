@@ -6,15 +6,15 @@
 
 #import <Foundation/NSObject.h>
 
-#import <FrontBoard/FBDisplayManagerObserver-Protocol.h>
+#import <FrontBoard/FBSDisplayObserving-Protocol.h>
 
-@class FBSDisplay, FBSDisplayLayout, FBSDisplayLayoutTransitionContext, NSMutableSet, NSString;
+@class FBSDisplayIdentity, FBSDisplayLayout, FBSDisplayLayoutTransitionContext, NSMutableSet, NSString;
 @protocol FBDisplayLayoutDelegate;
 
-@interface FBDisplayLayout : NSObject <FBDisplayManagerObserver>
+@interface FBDisplayLayout : NSObject <FBSDisplayObserving>
 {
-    FBSDisplay *_display;
-    unsigned long long _displayType;
+    long long _displayType;
+    FBSDisplayIdentity *_displayIdentity;
     long long _backlightLevel;
     long long _interfaceOrientation;
     FBSDisplayLayout *_currentLayout;
@@ -31,7 +31,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) id<FBDisplayLayoutDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) unsigned long long displayType; // @synthesize displayType=_displayType;
+@property (readonly, nonatomic) long long displayType; // @synthesize displayType=_displayType;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property (readonly) Class superclass;
@@ -48,11 +48,11 @@
 - (void)addElementAssertion:(id)arg1;
 - (void)beginTransition:(id)arg1;
 - (void)dealloc;
-- (void)displayManager:(id)arg1 didConnectDisplay:(id)arg2;
-- (void)displayManager:(id)arg1 didDisconnectDisplay:(id)arg2;
+- (void)displayMonitor:(id)arg1 didConnectIdentity:(id)arg2 withConfiguration:(id)arg3;
+- (void)displayMonitor:(id)arg1 willDisconnectIdentity:(id)arg2;
 - (void)endTransition:(id)arg1;
 - (void)flush;
-- (id)initWithDisplayType:(unsigned long long)arg1 delegate:(id)arg2;
+- (id)initWithDisplayType:(long long)arg1 delegate:(id)arg2;
 - (void)removeElementAssertion:(id)arg1;
 - (void)updateElementAssertion:(id)arg1;
 

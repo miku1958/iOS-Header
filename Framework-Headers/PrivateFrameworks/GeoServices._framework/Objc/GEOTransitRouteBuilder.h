@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOMapRegion, GEOTransitDecoderData, GEOTransitSuggestedRoute, NSMutableArray, NSMutableData;
 
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     GEOTransitDecoderData *_decoderData;
 }
 
+- (void).cxx_destruct;
 - (struct _NSRange)_appendPointData:(id)arg1 withContinuity:(BOOL)arg2;
 - (void)_buildArrivalStepInfo:(id)arg1;
 - (void)_buildExpandedWalkingStepInfos:(id)arg1;

@@ -6,24 +6,25 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOActiveTileGroup, GEOResourceManifestConfiguration, NSNumber, NSObject, NSString;
+@class GEOActiveTileGroup, GEOResourceManifestConfiguration, NSArray, NSNumber, NSObject, NSProgress, NSString;
 @protocol GEOResourceManifestServerProxyDelegate, OS_dispatch_queue;
 
 @protocol GEOResourceManifestServerProxy <NSObject>
 
 @property (readonly, nonatomic) GEOActiveTileGroup *activeTileGroup;
-@property (nonatomic) id<GEOResourceManifestServerProxyDelegate> delegate;
+@property (weak, nonatomic) id<GEOResourceManifestServerProxyDelegate> delegate;
 
 - (void)activateResourceScale:(int)arg1;
 - (void)activateResourceScenario:(int)arg1;
 - (NSString *)authToken;
+- (void)cancelCurrentManifestUpdate;
 - (void)closeConnection;
 - (GEOResourceManifestConfiguration *)configuration;
 - (void)deactivateResourceScale:(int)arg1;
 - (void)deactivateResourceScenario:(int)arg1;
-- (void)forceUpdate:(void (^)(NSError *))arg1;
+- (void)forceUpdate:(long long)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)getResourceManifestWithHandler:(void (^)(GEOResourceManifestDownload *, NSError *))arg1;
-- (id)initWithDelegate:(id<GEOResourceManifestServerProxyDelegate>)arg1 configuration:(GEOResourceManifestConfiguration *)arg2;
+- (id)initWithDelegate:(id<GEOResourceManifestServerProxyDelegate>)arg1 configuration:(GEOResourceManifestConfiguration *)arg2 additionalMigrationTaskClasses:(NSArray *)arg3;
 - (void)openConnection;
 - (void)performOpportunisticResourceLoading;
 - (oneway void)resetActiveTileGroup;
@@ -31,5 +32,6 @@
 - (oneway void)setActiveTileGroupIdentifier:(NSNumber *)arg1;
 - (void)setManifestToken:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)updateIfNecessary:(void (^)(NSError *))arg1;
+- (NSProgress *)updateProgress;
 @end
 

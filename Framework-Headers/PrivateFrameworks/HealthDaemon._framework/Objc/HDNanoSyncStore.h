@@ -9,7 +9,7 @@
 #import <HealthDaemon/HDSyncStore-Protocol.h>
 #import <HealthDaemon/NRDevicePropertyObserver-Protocol.h>
 
-@class HDNanoPairingEntity, HDNanoSyncRestoreSession, HDProfile, IDSDevice, NRDevice, NSDate, NSError, NSMutableArray, NSMutableDictionary, NSString, NSUUID;
+@class HDNanoPairingEntity, HDNanoSyncRestoreSession, HDProfile, IDSDevice, NRDevice, NSArray, NSDate, NSError, NSMutableArray, NSMutableDictionary, NSString, NSUUID;
 @protocol HDNanoSyncStoreDelegate;
 
 @interface HDNanoSyncStore : NSObject <NRDevicePropertyObserver, HDSyncStore>
@@ -27,6 +27,7 @@
     NSDate *_lastCompleteIncomingSyncDate;
     NSError *_lastCompleteIncomingSyncError;
     NSMutableDictionary *_expectedSequenceNumbers;
+    NSArray *_orderedSyncEntities;
     BOOL _master;
     BOOL _needsSyncOnUnlock;
     HDProfile *_profile;
@@ -63,10 +64,8 @@
 @property (readonly, copy) NSString *sourceBundleIdentifier;
 @property (readonly) Class superclass;
 
-+ (id)_coralVersionSyncEntityClassesForCompanion:(BOOL)arg1;
-+ (id)_daytonaVersionSyncEntityClassesForCompanion:(BOOL)arg1;
++ (id)_allOrderedNanoSyncEntities;
 + (id)_observedDeviceProperties;
-+ (id)_orderedNanoSyncEntitiesForProtocolVersion:(int)arg1 direction:(unsigned long long)arg2;
 + (id)nanoSyncStoreWithProfile:(id)arg1 device:(id)arg2 delegate:(id)arg3;
 + (id)orderedSyncEntitiesForProtocolVersion:(int)arg1 companion:(BOOL)arg2;
 - (void).cxx_destruct;
@@ -77,10 +76,12 @@
 - (void)addIncomingSyncObserverWithTimeout:(double)arg1 timeoutHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addPendingRequestContext:(id)arg1 forUUID:(id)arg2;
 - (id)beginRestoreSessionWithUUID:(id)arg1 timeout:(double)arg2 timeoutHandler:(CDUnknownBlockType)arg3;
+- (BOOL)canRecieveSyncObjectsForEntityClass:(Class)arg1;
 - (void)configureOutgoingResponse:(id)arg1;
 - (id)createRequestWithMessageID:(unsigned short)arg1;
 - (void)dealloc;
 - (void)device:(id)arg1 propertyDidChange:(id)arg2 fromValue:(id)arg3;
+- (id)deviceInfo;
 - (id)diagnosticDescription;
 - (void)didReceiveRequestWithChangeSet:(id)arg1;
 - (BOOL)enforceSyncEntityOrdering;
@@ -92,12 +93,15 @@
 - (void)removeExpiredIncomingSyncObservers;
 - (void)removePendingRequestContextForUUID:(id)arg1;
 - (void)setExpectedSequenceNumber:(long long)arg1 forSyncEntityClass:(Class)arg2;
+- (BOOL)shouldContinueAfterAnchorValidationError:(id)arg1;
+- (BOOL)shouldEnforceSequenceOrdering;
 - (BOOL)supportsSpeculativeChangesForSyncEntityClass:(Class)arg1;
 - (id)syncEntityDependenciesForSyncEntity:(Class)arg1;
+- (long long)syncEpoch;
 - (long long)syncProvenance;
 - (id)syncStoreDefaultSourceBundleIdentifier;
-- (id)syncStoreDefaultSourceUUID;
 - (id)syncStoreIdentifier;
+- (id)syncStoreTypeIdentifier;
 - (BOOL)validatePairingUUIDsWithIncomingMessage:(id)arg1;
 - (BOOL)validateVersionWithIncomingMessage:(id)arg1;
 

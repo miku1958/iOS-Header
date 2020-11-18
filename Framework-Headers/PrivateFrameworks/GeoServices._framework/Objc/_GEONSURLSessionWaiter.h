@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
-@class GEONSURLSharedSession, NSMutableData, NSString, NSURLResponse;
+@class NSMutableData, NSString, NSURLResponse, NSURLSession;
 
 __attribute__((visibility("hidden")))
 @interface _GEONSURLSessionWaiter : NSObject <NSURLSessionDataDelegate>
 {
-    GEONSURLSharedSession *_session;
+    NSURLSession *_session;
     CDUnknownBlockType _callback;
     NSMutableData *_data;
     NSURLResponse *_response;
@@ -23,13 +23,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) GEONSURLSharedSession *session; // @synthesize session=_session;
+@property (strong, nonatomic) NSURLSession *session; // @synthesize session=_session;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
-- (void)dealloc;
 
 @end
 

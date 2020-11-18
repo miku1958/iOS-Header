@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
+#import <GeoServices/GEODataStateCapturing-Protocol.h>
 #import <GeoServices/GEOResourceFiltersManagerDelegate-Protocol.h>
 #import <GeoServices/GEOResourceManifestServerProxy-Protocol.h>
 #import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
-@class GEOActiveTileGroup, GEOResourceFiltersManager, GEOResourceLoader, GEOResourceManifestConfiguration, GEOResourceManifestDownload, NSError, NSLock, NSMutableArray, NSMutableData, NSString, NSTimer, NSURLSession, NSURLSessionTask, NSURLSessionTaskMetrics;
-@protocol GEOResourceManifestServerProxyDelegate;
+@class GEOActiveTileGroup, GEOResourceFiltersManager, GEOResourceManifestConfiguration, GEOResourceManifestDownload, NSArray, NSError, NSLock, NSMutableArray, NSMutableData, NSProgress, NSString, NSTimer, NSURLSession, NSURLSessionTask, NSURLSessionTaskMetrics, _GEOResourceManifestServerLocalProxyMigrationState;
+@protocol GEOResourceManifestServerProxyDelegate, NSObject;
 
 __attribute__((visibility("hidden")))
-@interface GEOResourceManifestServerLocalProxy : NSObject <NSURLSessionDataDelegate, GEOResourceFiltersManagerDelegate, GEOResourceManifestServerProxy>
+@interface GEOResourceManifestServerLocalProxy : NSObject <NSURLSessionDataDelegate, GEOResourceFiltersManagerDelegate, GEODataStateCapturing, GEOResourceManifestServerProxy>
 {
     id<GEOResourceManifestServerProxyDelegate> _delegate;
     NSURLSession *_session;
@@ -29,51 +30,56 @@ __attribute__((visibility("hidden")))
     NSTimer *_tileGroupUpdateTimer;
     GEOResourceManifestDownload *_resourceManifest;
     GEOActiveTileGroup *_activeTileGroup;
-    GEOResourceLoader *_resourceLoader;
-    NSString *_loadingTileGroupUniqueIdentifier;
+    id<NSObject> _newActiveTileGroupTransaction;
     BOOL _started;
     unsigned long long _manifestRetryCount;
     double _lastManifestRetryTimestamp;
+    NSURLSessionTaskMetrics *_taskMetrics;
     unsigned long long _tileGroupRetryCount;
     double _lastTileGroupRetryTimestamp;
     NSString *_authToken;
     NSLock *_authTokenLock;
     NSError *_lastResourceManifestLoadError;
     NSMutableArray *_manifestUpdateCompletionHandlers;
+    long long _currentManifestUpdateType;
     double _lastManifestRequestStartTime;
     GEOResourceFiltersManager *_filtersManager;
-    NSURLSessionTaskMetrics *_taskMetrics;
+    NSArray *_tileGroupMigrators;
+    unsigned long long _stateCaptureHandle;
+    _GEOResourceManifestServerLocalProxyMigrationState *_tileGroupMigrationState;
+    NSProgress *_updateProgress;
+    NSProgress *_currentUpdateProgress;
 }
 
-@property (readonly, nonatomic) GEOActiveTileGroup *activeTileGroup;
+@property (strong, nonatomic) GEOActiveTileGroup *activeTileGroup;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<GEOResourceManifestServerProxyDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<GEOResourceManifestServerProxyDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
 - (void)_activeTileGroupOverridesChanged:(id)arg1;
+- (void)_cancelMigrationTasks;
 - (void)_cancelSession;
-- (void)_changeActiveTileGroup:(id)arg1 activeScales:(id)arg2 activeScenarios:(id)arg3 loadedResources:(id)arg4 unloadedConditionalResources:(id)arg5 flushTileCache:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)_changeActiveTileGroup:(id)arg1 activeScales:(id)arg2 activeScenarios:(id)arg3 migrationTasks:(id)arg4 flushTileCache:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_cleanupSession;
 - (void)_considerChangingActiveTileGroup;
 - (void)_countryProvidersDidChange:(id)arg1;
 - (void)_forceChangeActiveTileGroup:(id)arg1 flushTileCache:(BOOL)arg2 ignoreIdentifier:(BOOL)arg3;
-- (BOOL)_hasAllowableFallbackResourceForResource:(id)arg1;
 - (id)_idealTileGroupToUse;
 - (void)_loadFromDisk;
-- (void)_loadImmediateResources:(id)arg1 conditionalWifiResources:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_manifestURL;
 - (void)_networkDefaultsDidChange:(id)arg1;
 - (void)_notifyManifestUpdateCompletionHandlers:(id)arg1;
 - (void)_reachabilityChanged:(id)arg1;
-- (id)_resourcesForTileGroup:(id)arg1 fromResourceManifest:(id)arg2 regional:(BOOL)arg3 includeAttribution:(BOOL)arg4 scales:(id)arg5 scenarios:(id)arg6;
 - (void)_scheduleTileGroupUpdateTimerWithTimeInterval:(double)arg1;
 - (void)_scheduleUpdateTimerWithTimeInterval:(double)arg1;
+- (void)_startOpportunisticMigrationToTileGroup:(id)arg1 inResourceManifest:(id)arg2 activeScales:(id)arg3 activeScenarios:(id)arg4;
 - (void)_startServer;
 - (void)_tileGroupTimerFired:(id)arg1;
 - (void)_updateManifest;
@@ -85,15 +91,18 @@ __attribute__((visibility("hidden")))
 - (void)activateResourceScale:(int)arg1;
 - (void)activateResourceScenario:(int)arg1;
 - (id)authToken;
+- (void)cancelCurrentManifestUpdate;
+- (id)captureStateDataWithHints:(struct os_state_hints_s *)arg1;
 - (void)closeConnection;
 - (id)configuration;
+- (void)createMigratorsWithAdditionalMigrationTaskClasses:(id)arg1;
 - (void)deactivateResourceScale:(int)arg1;
 - (void)deactivateResourceScenario:(int)arg1;
 - (void)dealloc;
 - (void)filtersManagerDidChangeActiveFilters:(id)arg1;
-- (void)forceUpdate:(CDUnknownBlockType)arg1;
+- (void)forceUpdate:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getResourceManifestWithHandler:(CDUnknownBlockType)arg1;
-- (id)initWithDelegate:(id)arg1 configuration:(id)arg2;
+- (id)initWithDelegate:(id)arg1 configuration:(id)arg2 additionalMigrationTaskClasses:(id)arg3;
 - (void)openConnection;
 - (void)performOpportunisticResourceLoading;
 - (oneway void)resetActiveTileGroup;
@@ -102,6 +111,7 @@ __attribute__((visibility("hidden")))
 - (oneway void)setActiveTileGroupIdentifier:(id)arg1;
 - (void)setManifestToken:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateIfNecessary:(CDUnknownBlockType)arg1;
+- (id)updateProgress;
 
 @end
 

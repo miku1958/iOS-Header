@@ -6,11 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NCLongLookPresentationController;
+@class UIPresentationController;
+@protocol NCLongLookPresentationController;
 
 @interface UIViewController (NCLongLookPresentationControllerAdditions)
 
-@property (readonly, nonatomic) NCLongLookPresentationController *longLookPresentationController;
+@property (readonly, nonatomic) UIPresentationController<NCLongLookPresentationController> *longLookPresentationController;
 
 @end
 

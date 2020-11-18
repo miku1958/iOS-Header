@@ -8,10 +8,14 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class GEORouteTrafficDetail, PBUnknownFields;
+
 @interface GEOPDETA : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     unsigned int _distance;
     unsigned int _historicTravelTime;
+    GEORouteTrafficDetail *_routeTrafficDetail;
     unsigned int _time;
     int _transportType;
     struct {
@@ -25,14 +29,16 @@
 @property (nonatomic) unsigned int distance; // @synthesize distance=_distance;
 @property (nonatomic) BOOL hasDistance;
 @property (nonatomic) BOOL hasHistoricTravelTime;
+@property (readonly, nonatomic) BOOL hasRouteTrafficDetail;
 @property (nonatomic) BOOL hasTime;
 @property (nonatomic) BOOL hasTransportType;
 @property (nonatomic) unsigned int historicTravelTime; // @synthesize historicTravelTime=_historicTravelTime;
+@property (strong, nonatomic) GEORouteTrafficDetail *routeTrafficDetail; // @synthesize routeTrafficDetail=_routeTrafficDetail;
 @property (nonatomic) unsigned int time; // @synthesize time=_time;
 @property (nonatomic) int transportType; // @synthesize transportType=_transportType;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
-+ (id)etaForPlaceData:(id)arg1 transportType:(int)arg2;
-+ (int)recommendedTransportTypeForPlaceData:(id)arg1;
+- (void).cxx_destruct;
 - (int)StringAsTransportType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

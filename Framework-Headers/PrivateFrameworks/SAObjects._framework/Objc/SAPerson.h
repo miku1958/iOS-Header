@@ -17,6 +17,7 @@
 @property (copy, nonatomic) NSArray *addresses;
 @property (copy, nonatomic) NSDate *birthday;
 @property (copy, nonatomic) NSString *company;
+@property (copy, nonatomic) NSString *companyPhonetic;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *emails;

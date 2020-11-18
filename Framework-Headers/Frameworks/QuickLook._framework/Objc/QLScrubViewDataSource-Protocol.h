@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class QLScrubView, QLThumbnailOperation;
+@class QLScrubView;
 
 @protocol QLScrubViewDataSource
 - (long long)numberOfPagesInScrubView:(QLScrubView *)arg1;
 - (struct CGSize)scrubView:(QLScrubView *)arg1 pageSizeAtIndex:(unsigned long long)arg2;
-- (QLThumbnailOperation *)scrubView:(QLScrubView *)arg1 thumbnailOperationForPageAtIndex:(unsigned long long)arg2;
+- (void)scrubView:(QLScrubView *)arg1 thumbnailForPage:(long long)arg2 size:(struct CGSize)arg3 withCompletionBlock:(void (^)(UIImage *))arg4;
 @end
 

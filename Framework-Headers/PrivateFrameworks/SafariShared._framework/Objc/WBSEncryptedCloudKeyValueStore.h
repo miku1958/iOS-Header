@@ -39,6 +39,7 @@
 - (void)setArray:(id)arg1 forKey:(id)arg2;
 - (void)setDictionary:(id)arg1 forKey:(id)arg2;
 - (void)synchronize;
+- (void)synchronizeWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

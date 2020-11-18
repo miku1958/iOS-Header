@@ -13,17 +13,21 @@
 {
     EMFEmojiPreferencesClient *_preferencesClient;
     NSObject<OS_dispatch_queue> *_clientDispatchQueue;
+    NSArray *_localRecentsWithClient;
+    NSArray *_localRecentsWithoutClient;
 }
 
 @property (readonly, nonatomic) BOOL hasDisplayedSkinToneHelp;
 @property (nonatomic) unsigned long long maximumRecentsCount;
+@property (readonly, nonatomic) EMFEmojiPreferencesClient *preferencesClient;
 @property (strong, nonatomic) NSArray *recents;
 @property (nonatomic) long long selectedCategoryType;
 @property (strong, nonatomic) NSDictionary *skinToneBaseKeyPreferences;
 
 + (id)sharedInstance;
-- (void)_createPreferencesClientIfNecessary;
 - (void)_usageForEmoji:(id)arg1 language:(id)arg2 mode:(id)arg3 typingName:(id)arg4;
+- (void)clearEmojiKeyboardPreferenceClient;
+- (void)clearLocalRecentsCache;
 - (void)dealloc;
 - (void)didDisplaySkinToneHelp;
 - (long long)emojiCategoryDefaultsIndex:(id)arg1;
@@ -32,12 +36,14 @@
 - (void)emojiUsed:(id)arg1 language:(id)arg2;
 - (id)emojiWithoutDuplicateRecents:(id)arg1;
 - (void)handleRead:(id)arg1;
+- (void)handleSuspend:(id)arg1;
 - (void)handleWrite:(id)arg1;
 - (BOOL)hasLastUsedVariantForEmojiString:(id)arg1;
 - (id)init;
 - (id)lastUsedVariantEmojiForEmojiString:(id)arg1;
 - (void)readEmojiDefaults;
 - (id)recentEmojiAtIndex:(long long)arg1 size:(unsigned long long *)arg2;
+- (void)refreshLocalRecents;
 - (void)setEmojiCategoryDefaultsIndex:(long long)arg1 forCategory:(id)arg2;
 - (id)typingNameForEmoji:(id)arg1 language:(id)arg2;
 - (void)updateSkinToneBaseKey:(id)arg1 variantUsed:(id)arg2;

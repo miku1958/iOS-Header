@@ -12,32 +12,29 @@
 {
     BOOL _completed;
     NSString *_relatedUniqueIdentifier;
-    unsigned long long _buddyScore;
     NSString *_itemIdentifier;
-    NSDate *_lastUsedDate;
     NSDate *_interestingDate;
     NSString *_domainIdentifier;
     long long _incomingCount;
     long long _outgoingCount;
     NSString *_relatedBundleID;
-    double _contactCDRank;
+    struct ranking_index_score_t _buddyScore;
 }
 
-@property unsigned long long buddyScore; // @synthesize buddyScore=_buddyScore;
+@property struct ranking_index_score_t buddyScore; // @synthesize buddyScore=_buddyScore;
 @property (strong) NSArray *compatibilityDescriptions;
 @property BOOL completed; // @synthesize completed=_completed;
-@property double contactCDRank; // @synthesize contactCDRank=_contactCDRank;
 @property (strong) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
 @property long long incomingCount; // @synthesize incomingCount=_incomingCount;
 @property (strong) NSDate *interestingDate; // @synthesize interestingDate=_interestingDate;
 @property (strong) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
-@property (strong) NSDate *lastUsedDate; // @synthesize lastUsedDate=_lastUsedDate;
 @property long long outgoingCount; // @synthesize outgoingCount=_outgoingCount;
 @property (strong) NSString *relatedBundleID; // @synthesize relatedBundleID=_relatedBundleID;
 @property (strong) NSString *relatedUniqueIdentifier; // @synthesize relatedUniqueIdentifier=_relatedUniqueIdentifier;
 
 - (void).cxx_destruct;
 - (Class)classForCoder;
+- (id)debugDescription;
 - (BOOL)hasDetail;
 - (id)init;
 

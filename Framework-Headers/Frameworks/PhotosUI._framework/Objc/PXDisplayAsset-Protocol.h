@@ -14,9 +14,11 @@
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
 @property (readonly, nonatomic) unsigned long long mediaSubtypes;
-@property (readonly, nonatomic) unsigned long long mediaType;
+@property (readonly, nonatomic) long long mediaType;
+@property (readonly, nonatomic) long long playbackStyle;
+@property (readonly, nonatomic) long long playbackVariation;
 
-- (unsigned long long)isContentEqualTo:(id<PXDisplayAsset>)arg1;
+- (long long)isContentEqualTo:(id<PXDisplayAsset>)arg1;
 
 @optional
 @end

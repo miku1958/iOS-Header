@@ -13,7 +13,7 @@
 }
 
 @property (readonly, nonatomic) BOOL faceTimeNonWiFiEntitled;
-@property (readonly, strong, nonatomic) NSDictionary *registrationState;
+@property (readonly, nonatomic) NSDictionary *registrationState;
 
 + (id)sharedInstance;
 - (void)_cleanupMachInfo;

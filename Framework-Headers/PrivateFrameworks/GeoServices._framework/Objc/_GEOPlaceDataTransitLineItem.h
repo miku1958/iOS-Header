@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOTransitLineItem-Protocol.h>
 
-@class GEOMapRegion, NSArray, NSString;
+@class GEOMapItemIdentifier, GEOMapRegion, NSArray, NSString;
 @protocol GEOEncyclopedicInfo, GEOMapItemTransitInfo, GEOTransitArtworkDataSource, GEOTransitAttribution, GEOTransitLine, GEOTransitSystem;
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     id<GEOEncyclopedicInfo> _encyclopedicInfo;
 }
 
+@property (readonly, nonatomic) id<GEOTransitArtworkDataSource> alternateArtwork;
 @property (readonly, nonatomic) id<GEOTransitArtworkDataSource> artwork;
 @property (readonly, nonatomic) id<GEOTransitAttribution> attribution;
 @property (readonly, copy) NSString *debugDescription;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasIncidentComponent;
 @property (readonly, nonatomic) BOOL hasLineColorString;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) GEOMapItemIdentifier *identifier;
 @property (readonly, nonatomic) NSArray *incidents;
 @property (readonly, nonatomic) BOOL isIncidentsTTLExpired;
 @property (readonly, nonatomic) NSArray *labelItems;
@@ -46,7 +48,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<GEOTransitSystem> system;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithMapItem:(id)arg1;
 
 @end

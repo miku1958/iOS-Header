@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithObservedObject:(id)arg1 keyPath:(id)arg2 options:(id)arg3;
+- (void)requireExpectedConcurrency;
 
 @end
 

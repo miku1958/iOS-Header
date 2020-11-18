@@ -16,7 +16,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_generationQueue; // @synthesize _generationQueue=__generationQueue;
 
 - (void).cxx_destruct;
-- (id)_extractedIsolatedColorspacePropertiesFromMetadata:(id)arg1;
+- (id)_neededColorspacePropertiesFromMetadata:(id)arg1;
 - (void *)_newRotatedSurface:(void *)arg1 withOrientation:(long long)arg2;
 - (void *)_newThumbnailOfFormat:(long long)arg1 inOrientation:(long long)arg2 withPixelFormat:(unsigned int)arg3 usingSurface:(void *)arg4;
 - (void *)_newThumbnailOfSize:(struct CGSize)arg1 inOrientation:(long long)arg2 withPixelFormat:(unsigned int)arg3 usingSurface:(void *)arg4;

@@ -53,6 +53,7 @@
 - (void)loadContentsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadView;
 - (void)playVideo;
+- (BOOL)shouldTestVisibilityAtPoint:(struct CGPoint)arg1;
 - (id)viewControllerForActionFromAdPlayer:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 

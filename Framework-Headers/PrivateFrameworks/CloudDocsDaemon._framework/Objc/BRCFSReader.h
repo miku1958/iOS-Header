@@ -10,20 +10,19 @@
 #import <CloudDocsDaemon/BRCModule-Protocol.h>
 #import <CloudDocsDaemon/BRCSuspendable-Protocol.h>
 
-@class BRCCountedSet, BRCRelativePath, NSMutableSet, NSObject, NSString, _BRCLogSection, brc_task_tracker;
+@class BRCAsyncDirectoryEnumerator, BRCCountedSet, BRCFairSource, NSMutableSet, NSObject, NSString, brc_task_tracker;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
 
 @interface BRCFSReader : BRCFSSchedulerBase <BRCModule, BRCSuspendable, BRCFSEventsDelegate>
 {
     BRCCountedSet *_coordinatedReaders;
     BOOL _readerCountReachedMax;
-    BRCRelativePath *_currentScan;
-    NSObject<OS_dispatch_source> *_scanContinuationSource;
+    BRCAsyncDirectoryEnumerator *_currentScan;
     NSMutableSet *_lostSet;
     NSObject<OS_dispatch_queue> *_lostScanQueue;
-    NSObject<OS_dispatch_source> *_lostScanSource;
+    BRCFairSource *_lostScanSource;
     NSObject<OS_dispatch_source> *_lostScanDelay;
-    _BRCLogSection *_lostScanDelaySection;
+    unsigned long long _lostScanDelaySection;
     brc_task_tracker *_taskTracker;
     BOOL _resumed;
     NSObject<OS_dispatch_group> *_lostScanGroup;
@@ -41,15 +40,13 @@
 - (void).cxx_destruct;
 - (void)_attemptSchedulingCoordinatedReadForItem:(id)arg1 path:(id)arg2;
 - (unsigned long long)_backoffBeforeProcessingLostItemWithStamp:(unsigned long long)arg1 appLibrary:(id)arg2;
-- (BOOL)_canRetryThrottleID:(long long)arg1 zone:(id)arg2;
 - (void)_cancelScan;
 - (void)_close;
-- (void)_continueScan;
-- (void)_createOrRetryThrottleID:(long long)arg1 zone:(id)arg2 state:(int)arg3 throttle:(id)arg4 hasBeenTried:(BOOL)arg5;
-- (void)_delayThrottleID:(long long)arg1 zone:(id)arg2 by:(double)arg3;
+- (void)_delayJobID:(id)arg1 by:(double)arg2;
 - (void)_didResolvedDocumentID:(unsigned int)arg1 fileID:(unsigned long long)arg2 zone:(id)arg3;
 - (BOOL)_fetchNextLostItemID:(id *)arg1 parentID:(id *)arg2 appLibraryRowID:(id *)arg3 tooManyScans:(BOOL *)arg4 stamp:(long long *)arg5;
 - (void)_finishCurrentRelpathScan;
+- (void)_finishedScanWithError:(int)arg1;
 - (void)_fseventOnDocument:(id)arg1 flags:(unsigned int)arg2 options:(unsigned long long)arg3 item:(id)arg4 lookup:(id)arg5;
 - (void)_fseventOnDocument:(id)arg1 flags:(unsigned int)arg2 options:(unsigned long long)arg3 item:(id)arg4 lookup:(id)arg5 unresolvedLastPathComponent:(id)arg6;
 - (void)_lostScanSchedule;
@@ -58,33 +55,37 @@
 - (void)_processLostItem:(id)arg1;
 - (void)_processLostItem:(id)arg1 resolvedToPath:(id)arg2;
 - (unsigned long long)_readCoordinationCount;
+- (void)_refaultItem:(id)arg1 withFaultPath:(id)arg2;
 - (void)_resolveDocumentID:(unsigned int)arg1 zone:(id)arg2;
-- (void)_retriedThrottleID:(long long)arg1 zone:(id)arg2 state:(int)arg3;
 - (void)_scanDirectory:(id)arg1 atPath:(id)arg2 lookup:(id)arg3;
 - (void)_scanDone:(id)arg1 atPath:(id)arg2 lookup:(id)arg3;
 - (void)_scheduleCoordinatedReadForItem:(id)arg1 path:(id)arg2;
-- (BOOL)_scheduleOne:(id)arg1;
-- (void)_slowScanDirectoryAtPath:(id)arg1;
-- (void)_startScanOfAppLibrary:(id)arg1;
+- (void)_scheduleReadJobWithID:(id)arg1;
+- (BOOL)_slowScanDirectoryAtPath:(id)arg1;
+- (void)_startScanOfRegularAppLibrary:(id)arg1;
 - (void)_startScanOfRelpath:(id)arg1;
+- (BOOL)canRetryJobWithID:(id)arg1;
+- (BOOL)canScheduleMoreJobs;
 - (void)cancel;
-- (void)createThrottleID:(long long)arg1 zone:(id)arg2 state:(int)arg3;
+- (void)createReadingJobForItem:(id)arg1 state:(int)arg2;
 - (void)dealloc;
+- (void)deleteReadingJobForItem:(id)arg1;
+- (id)descriptionForItem:(id)arg1 context:(id)arg2;
 - (void)endReadCoordinationInAppLibrary:(id)arg1;
 - (void)fseventAtPath:(id)arg1 flags:(unsigned int)arg2;
 - (void)fseventAtPath:(id)arg1 flags:(unsigned int)arg2 options:(unsigned long long)arg3 unresolvedLastPathComponent:(id)arg4;
 - (void)fseventAtPath:(id)arg1 flags:(unsigned int)arg2 unresolvedLastPathComponent:(id)arg3;
-- (void)fseventInsideSharedEnclosure:(id)arg1 flags:(unsigned int)arg2;
 - (void)fseventOnAlias:(id)arg1 flags:(unsigned int)arg2 lookup:(id)arg3;
 - (void)fseventOnContainer:(id)arg1 flags:(unsigned int)arg2;
+- (void)fseventOnDeadPath:(id)arg1 item:(id)arg2;
 - (void)fseventOnDirectory:(id)arg1 flags:(unsigned int)arg2 lookup:(id)arg3;
 - (void)fseventOnDocument:(id)arg1 flags:(unsigned int)arg2 lookup:(id)arg3;
 - (void)fseventOnDocument:(id)arg1 flags:(unsigned int)arg2 options:(unsigned long long)arg3 lookup:(id)arg4;
 - (void)fseventOnDocument:(id)arg1 flags:(unsigned int)arg2 options:(unsigned long long)arg3 lookup:(id)arg4 unresolvedLastPathComponent:(id)arg5;
 - (void)fseventOnRoot:(id)arg1 flags:(unsigned int)arg2;
-- (void)fseventOnSharedRoot:(id)arg1 flags:(unsigned int)arg2;
 - (void)fseventOnSymlink:(id)arg1 flags:(unsigned int)arg2 lookup:(id)arg3;
 - (void)fseventOnURL:(id)arg1 dbFlags:(unsigned int)arg2;
+- (void)fseventRecursiveAtRoot:(id)arg1 withReason:(id)arg2;
 - (id)initWithAccountSession:(id)arg1;
 - (id)itemForCreatedDocumentsDirectory:(id)arg1 appLibrary:(id)arg2 path:(id)arg3;
 - (id)lookupAndReadItemUnderCoordinationAtURL:(id)arg1;
@@ -96,6 +97,7 @@
 - (void)scanContainerDocumentsIfNeeded:(id)arg1;
 - (void)schedule;
 - (void)scheduleAppLibraryForLostScan:(id)arg1;
+- (void)setState:(int)arg1 forItem:(id)arg2;
 - (BOOL)startReadCoordinationInAppLibrary:(id)arg1;
 - (void)suspend;
 - (BOOL)thumbnailChangedForItem:(id)arg1 relpath:(id)arg2 url:(id)arg3 error:(id *)arg4;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_queue;
 
@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy, nonatomic) CDUnknownBlockType callback; // @synthesize callback=_callback;
-@property (nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

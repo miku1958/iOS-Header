@@ -17,6 +17,7 @@
     BOOL _pauseSpokenAudio;
     BOOL _muteSpeechOverride;
     BOOL _speechEnabled;
+    unsigned long long _maxAlternateRoutesCount;
     BOOL _drivingVoiceGuidance;
     BOOL _walkingVoiceGuidance;
     BOOL _beepBeforeInstruction;
@@ -25,16 +26,15 @@
     double _initialRequestDelay;
     double _backgroundTimeWindow;
     long long _fakeTrafficIncidentAlert;
-    long long _acceptFasterReroute;
     double _alightSignalTimeBuffer;
     double _initialTraceSpeedMultiplier;
     BOOL _shouldLoadInitialRouteFromTrace;
     BOOL _shouldLoadReroutesFromTrace;
     BOOL _shouldLoadETAUpdatesFromTrace;
     BOOL _isTracePlaybackCameraTestMode;
+    BOOL _shouldUseGuidanceEventManager;
 }
 
-@property (readonly, nonatomic) long long acceptFasterReroute; // @synthesize acceptFasterReroute=_acceptFasterReroute;
 @property (readonly, nonatomic) double alightSignalTimeBuffer; // @synthesize alightSignalTimeBuffer=_alightSignalTimeBuffer;
 @property (readonly, nonatomic) double backgroundTimeWindow; // @synthesize backgroundTimeWindow=_backgroundTimeWindow;
 @property (readonly, nonatomic) BOOL beepBeforeInstruction; // @synthesize beepBeforeInstruction=_beepBeforeInstruction;
@@ -45,17 +45,18 @@
 @property (readonly, nonatomic) double initialRequestDelay; // @synthesize initialRequestDelay=_initialRequestDelay;
 @property (readonly, nonatomic) double initialTraceSpeedMultiplier; // @synthesize initialTraceSpeedMultiplier=_initialTraceSpeedMultiplier;
 @property (readonly, nonatomic) BOOL isTracePlaybackCameraTestMode; // @synthesize isTracePlaybackCameraTestMode=_isTracePlaybackCameraTestMode;
+@property (readonly, nonatomic) unsigned long long maxAlternateRoutesCount; // @synthesize maxAlternateRoutesCount=_maxAlternateRoutesCount;
 @property (readonly, nonatomic) BOOL muteSpeechOverride; // @synthesize muteSpeechOverride=_muteSpeechOverride;
 @property (readonly, nonatomic) BOOL pauseSpokenAudio; // @synthesize pauseSpokenAudio=_pauseSpokenAudio;
 @property (readonly, nonatomic) BOOL shouldLoadETAUpdatesFromTrace; // @synthesize shouldLoadETAUpdatesFromTrace=_shouldLoadETAUpdatesFromTrace;
 @property (readonly, nonatomic) BOOL shouldLoadInitialRouteFromTrace; // @synthesize shouldLoadInitialRouteFromTrace=_shouldLoadInitialRouteFromTrace;
 @property (readonly, nonatomic) BOOL shouldLoadReroutesFromTrace; // @synthesize shouldLoadReroutesFromTrace=_shouldLoadReroutesFromTrace;
+@property (readonly, nonatomic) BOOL shouldUseGuidanceEventManager; // @synthesize shouldUseGuidanceEventManager=_shouldUseGuidanceEventManager;
 @property (readonly, nonatomic) BOOL speechEnabled; // @synthesize speechEnabled=_speechEnabled;
 @property (readonly, nonatomic) NSString *voiceLanguage; // @synthesize voiceLanguage=_voiceLanguage;
 @property (readonly, nonatomic) unsigned long long voiceVolume; // @synthesize voiceVolume=_voiceVolume;
 @property (readonly, nonatomic) BOOL walkingVoiceGuidance; // @synthesize walkingVoiceGuidance=_walkingVoiceGuidance;
 
-+ (id)_mapsSettings;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;

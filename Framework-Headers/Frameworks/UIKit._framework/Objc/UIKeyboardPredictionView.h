@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSDate, NSMutableArray, NSString, NSTimer, TIKeyboardCandidate, UIKBBackgroundView, UIKBKeyView, UIKeyboardPredictionBarGrabber, UIKeyboardPredictionCell, UILabel, UITextSuggestion, UITouch;
+@class LAContext, NSArray, NSDate, NSMutableArray, NSString, NSTimer, TIKeyboardCandidate, UIKBBackgroundView, UIKBKeyView, UIKeyboardPredictionBarGrabber, UIKeyboardPredictionCell, UILabel, UITextSuggestion, UITouch;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardPredictionView : UIView
@@ -19,8 +19,13 @@ __attribute__((visibility("hidden")))
     NSMutableArray *m_oneTextCells;
     NSMutableArray *m_emojiCells;
     NSMutableArray *m_textAndEmojiCells;
+    NSMutableArray *m_safariCredentialThreeExtraTextCells;
+    NSMutableArray *m_safariCredentialTwoExtraTextCells;
+    NSMutableArray *m_safariCredentialOneExtraTextCells;
+    NSMutableArray *m_safariCredentialZeroExtraTextCells;
     UIKeyboardPredictionCell *m_lastCell;
     unsigned long long m_activeIndex;
+    long long m_pendingAutofillCandidateIndex;
     double m_width;
     BOOL m_lightKeyboard;
     NSString *m_openQuote;
@@ -39,6 +44,7 @@ __attribute__((visibility("hidden")))
     UIKBKeyView *m_collapsedView;
     int _notifyBatterySaverToken;
     unsigned long long m_numberOfVisibleCells;
+    LAContext *m_myContext;
     int _state;
     UITouch *_activeTouch;
     UITextSuggestion *_currentFirstTextSuggestion;
@@ -64,6 +70,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSTimer *updateTimer; // @synthesize updateTimer=_updateTimer;
 
 + (id)activeInstance;
++ (id)cellWidthOptions;
++ (unsigned long long)maxNumberOfAutofillCandidate;
 + (unsigned long long)numberOfCandidates;
 + (double)overlapHeight;
 + (double)predictionViewHeightForState:(int)arg1 orientation:(long long)arg2;
@@ -71,6 +79,7 @@ __attribute__((visibility("hidden")))
 + (double)predictionViewWidthForOrientation:(long long)arg1;
 + (id)resultCountToSingleCellWidth;
 + (id)sharedInstance;
+- (void)_commitPrediction:(id)arg1;
 - (void)_setPredictions:(id)arg1 autocorrection:(id)arg2 emojiList:(id)arg3;
 - (void)acceptCandidate;
 - (void)acceptCandidateAtCell:(id)arg1;
@@ -78,6 +87,7 @@ __attribute__((visibility("hidden")))
 - (void)activateCandidateAtPoint:(struct CGPoint)arg1;
 - (id)autocorrection;
 - (void)commitPrediction:(id)arg1;
+- (void)contentSizeDidChange:(id)arg1;
 - (id)createCells:(unsigned long long)arg1;
 - (void)deactivateCandidate;
 - (void)dealloc;
@@ -101,11 +111,14 @@ __attribute__((visibility("hidden")))
 - (void)removeMessage;
 - (void)setActiveCellWithIndex:(unsigned long long)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)setFrameForCells;
 - (void)setFrameForCells:(id)arg1 start:(double)arg2 width:(double)arg3 height:(double)arg4;
+- (BOOL)setOriginalUserInput:(id)arg1 asTypedText:(id)arg2;
 - (void)setPredictionViewState:(int)arg1 animate:(BOOL)arg2;
 - (void)setPredictionViewState:(int)arg1 animate:(BOOL)arg2 notify:(BOOL)arg3;
 - (void)setPredictions:(id)arg1 autocorrection:(id)arg2 emojiList:(id)arg3;
 - (void)setTouchedCellState:(int)arg1;
+- (BOOL)shouldAuthCommitPrediction;
 - (void)showMessageWithSize:(struct CGSize)arg1;
 - (int)stateForCurrentPreferences;
 - (void)suppressLayoutSubviewsForCellLabels:(BOOL)arg1;

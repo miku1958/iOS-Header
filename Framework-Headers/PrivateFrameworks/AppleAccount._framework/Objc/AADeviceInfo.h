@@ -21,6 +21,8 @@
 + (id)appleIDClientIdentifier;
 + (id)clientInfoHeader;
 + (id)infoDictionary;
++ (BOOL)isInternalBuild;
++ (BOOL)isMultiUserMode;
 + (id)osVersion;
 + (id)productVersion;
 + (id)serialNumber;

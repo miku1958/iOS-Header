@@ -40,6 +40,7 @@
 @property (readonly, nonatomic) NSString *uuid;
 
 + (id)_changeRequestForAssetCollection:(id)arg1 optionalAssets:(id)arg2;
++ (BOOL)canGenerateUUIDWithoutEntitlements;
 + (id)changeRequestForAssetCollection:(id)arg1;
 + (id)changeRequestForAssetCollection:(id)arg1 assets:(id)arg2;
 + (id)creationRequestForAssetCollectionWithTitle:(id)arg1;
@@ -54,7 +55,6 @@
 - (void)addAssets:(id)arg1;
 - (BOOL)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
 - (BOOL)applyMutationsToManagedObject:(id)arg1 error:(id *)arg2;
-- (BOOL)canGenerateUUIDLocally;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (void)didMutate;
 - (void)encodeToXPCDict:(id)arg1;
@@ -64,8 +64,8 @@
 - (void)insertAsset:(id)arg1 inAssetsAtIndex:(unsigned long long)arg2;
 - (void)insertAssets:(id)arg1 atIndexes:(id)arg2;
 - (void)moveAssetsAtIndexes:(id)arg1 toIndex:(unsigned long long)arg2;
-- (id)mutations;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
+- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (void)removeAsset:(id)arg1;
 - (void)removeAssetFromAssetsAtIndex:(unsigned long long)arg1;
 - (void)removeAssets:(id)arg1;

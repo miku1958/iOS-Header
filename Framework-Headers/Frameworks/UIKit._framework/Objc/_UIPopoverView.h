@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     UIPopoverController *_popoverController;
 }
 
+@property (copy, nonatomic) UIColor *arrowBackgroundColor;
 @property (nonatomic) unsigned long long arrowDirection;
 @property (nonatomic) double arrowOffset;
 @property (nonatomic) long long backgroundStyle;
@@ -39,34 +40,30 @@ __attribute__((visibility("hidden")))
 - (BOOL)_allowsCustomizationOfContent;
 - (BOOL)_backgroundNeedsSeperateBlending;
 - (void)_hideArrow;
-- (BOOL)_isIgnoringTapsInDimmingView;
 - (void)_layoutToolbarShine;
 - (BOOL)_needsLayoutOnAnimatedFrameChangeForNewFrame:(struct CGRect)arg1;
 - (void)_setCornerRadius:(double)arg1;
 - (void)_setFrame:(struct CGRect)arg1 arrowOffset:(double)arg2;
-- (void)_setIgnoreTapsInDimmingView:(BOOL)arg1;
 - (void)_setPopoverContentView:(id)arg1;
 - (void)_showArrow;
 - (struct CGRect)_snapshotBounds;
 - (int)_style;
 - (void)_updateContentBlendingColor;
-- (id)_viewForModalPresentationOfViewController:(id)arg1;
 - (id)backgroundView;
 - (id)contentView;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 backgroundViewClass:(Class)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 backgroundViewClass:(Class)arg2 embeddedInView:(BOOL)arg3;
 - (void)layoutSubviews;
+- (void)prepareForAnimatedTransitioningWithCoordinator:(id)arg1;
 - (void)setUseToolbarShine:(BOOL)arg1;
 - (id)standardChromeView;
-- (BOOL)toolbarIsVisible;
 - (id)toolbarShine;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
-- (id)viewController;
 - (void)willMoveToWindow:(id)arg1;
 
 @end

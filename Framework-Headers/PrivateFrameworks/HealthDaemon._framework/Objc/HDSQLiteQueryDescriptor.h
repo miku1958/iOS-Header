@@ -19,6 +19,7 @@
     NSArray *_orderingProperties;
     HDSQLitePredicate *_predicate;
     NSString *_groupBy;
+    NSArray *_preferredEntityJoinOrder;
 }
 
 @property (nonatomic) Class entityClass; // @synthesize entityClass=_entityClass;
@@ -27,13 +28,17 @@
 @property (copy, nonatomic) NSArray *orderingDirections; // @synthesize orderingDirections=_orderingDirections;
 @property (copy, nonatomic) NSArray *orderingProperties; // @synthesize orderingProperties=_orderingProperties;
 @property (copy, nonatomic) HDSQLitePredicate *predicate; // @synthesize predicate=_predicate;
+@property (copy, nonatomic) NSArray *preferredEntityJoinOrder; // @synthesize preferredEntityJoinOrder=_preferredEntityJoinOrder;
 @property (nonatomic) BOOL returnsDistinctEntities; // @synthesize returnsDistinctEntities=_returnsDistinctEntities;
 
 - (void).cxx_destruct;
+- (id)_SQLForDeleteWithError:(id *)arg1;
+- (id)_SQLForSelectWithProperties:(id)arg1;
+- (id)_SQLForSelectWithProperties:(id)arg1 columns:(id)arg2;
+- (CDUnknownBlockType)_joinClauseComparatorWithPreferredEntityOrder:(id)arg1;
 - (id)_joinClauseForProperties:(id)arg1;
-- (id)_newSelectSQLWithProperties:(id)arg1;
-- (id)_newSelectSQLWithProperties:(id)arg1 columns:(id)arg2;
-- (id)_sortedJoinClauses:(id)arg1;
+- (id)_sortedJoinClauses:(id)arg1 preferredOrder:(id)arg2 baseTables:(id)arg3;
+- (id)_sortedJoinClauses:(id)arg1 withTables:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

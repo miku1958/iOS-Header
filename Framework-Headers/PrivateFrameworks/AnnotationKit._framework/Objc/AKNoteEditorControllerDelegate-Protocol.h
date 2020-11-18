@@ -6,11 +6,11 @@
 
 #import <AnnotationKit/NSObject-Protocol.h>
 
-@class AKNoteAnnotation, AKNoteEditorController, UIView, UIViewController;
+@class AKNoteEditorController, AKPopupAnnotation, UIView, UIViewController;
 
 @protocol AKNoteEditorControllerDelegate <NSObject>
 - (unsigned long long)edgeForNoteEditor:(AKNoteEditorController *)arg1;
-- (BOOL)handleEditAnnotation:(AKNoteAnnotation *)arg1;
+- (BOOL)handleEditAnnotation:(AKPopupAnnotation *)arg1;
 - (void)noteEditorDidBeginEditing:(AKNoteEditorController *)arg1;
 - (void)noteEditorDidFinishEditing:(AKNoteEditorController *)arg1;
 - (void)noteEditorWillDismissFromFullScreen:(AKNoteEditorController *)arg1;

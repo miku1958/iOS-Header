@@ -27,6 +27,7 @@
 @property (nonatomic) int schedulestatus;
 @property (strong, nonatomic) NSString *x_apple_inviterName;
 @property (nonatomic) BOOL x_apple_self_invited;
+@property (strong, nonatomic) NSString *x_apple_telephone;
 
 + (id)ICSStringFromCalendarUser:(int)arg1;
 + (id)ICSStringFromParticipationStatus:(int)arg1;
@@ -45,12 +46,16 @@
 - (id)emailAddress;
 - (void)fixAddress;
 - (BOOL)hasEmailAddress;
+- (BOOL)hasPhoneNumber;
 - (id)initWithEmailAddress:(id)arg1;
+- (id)initWithPhoneNumber:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (BOOL)isEmailAddress;
 - (BOOL)isHTTPAddress;
 - (BOOL)isHTTPSAddress;
+- (BOOL)isPhoneNumber;
 - (id)parametersToObscure;
+- (id)phoneNumber;
 - (id)propertiesToObscure;
 - (void)setURL:(id)arg1;
 - (void)setX_calendarserver_email:(id)arg1;

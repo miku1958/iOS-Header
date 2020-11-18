@@ -4,30 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <FrontBoardUIServices/FBUISceneClient-Protocol.h>
 
-@class FBUISceneIdentity, NSString;
+@class NSString;
 @protocol FBUISceneHostProxy;
 
 @interface FBUISceneClient : NSObject <FBUISceneClient>
 {
-    FBUISceneIdentity *_identity;
+    NSString *_identifier;
     id<FBUISceneHostProxy> _hostProxy;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSString *sceneIdentifier;
 @property (readonly) Class superclass;
 
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)didInvalidateSceneHost:(id)arg1;
-- (id)initWithIdentity:(id)arg1;
+- (id)initWithIdentifier:(id)arg1;
 - (void)registerWithDelegate:(id)arg1;
 - (void)sceneHost:(id)arg1 destroySceneWithTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sceneHost:(id)arg1 didReceiveActions:(id)arg2;

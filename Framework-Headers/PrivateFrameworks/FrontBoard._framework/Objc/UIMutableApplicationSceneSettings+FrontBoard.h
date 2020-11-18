@@ -7,6 +7,7 @@
 #import <UIKit/UIMutableApplicationSceneSettings.h>
 
 @interface UIMutableApplicationSceneSettings (FrontBoard)
+- (BOOL)fb_isUnderLock;
 - (BOOL)isEffectivelyBackgrounded;
 @end
 

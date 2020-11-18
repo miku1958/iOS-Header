@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDCodableProvenance, HDCodableSource, NSMutableArray, NSString;
+@class HDCodableGeneratedObjectCollection, HDCodableProvenance, HDCodableSource, NSMutableArray, NSString;
 
 @interface HDCodableObjectCollection : PBCodable <NSCopying>
 {
@@ -21,6 +21,7 @@
     NSMutableArray *_fitnessFriendAchievements;
     NSMutableArray *_fitnessFriendActivitySnapshots;
     NSMutableArray *_fitnessFriendWorkouts;
+    HDCodableGeneratedObjectCollection *_generatedObjectCollection;
     NSMutableArray *_locationSeries;
     HDCodableProvenance *_provenance;
     NSMutableArray *_quantitySamples;
@@ -38,6 +39,8 @@
 @property (strong, nonatomic) NSMutableArray *fitnessFriendAchievements; // @synthesize fitnessFriendAchievements=_fitnessFriendAchievements;
 @property (strong, nonatomic) NSMutableArray *fitnessFriendActivitySnapshots; // @synthesize fitnessFriendActivitySnapshots=_fitnessFriendActivitySnapshots;
 @property (strong, nonatomic) NSMutableArray *fitnessFriendWorkouts; // @synthesize fitnessFriendWorkouts=_fitnessFriendWorkouts;
+@property (strong, nonatomic) HDCodableGeneratedObjectCollection *generatedObjectCollection; // @synthesize generatedObjectCollection=_generatedObjectCollection;
+@property (readonly, nonatomic) BOOL hasGeneratedObjectCollection;
 @property (readonly, nonatomic) BOOL hasProvenance;
 @property (readonly, nonatomic) BOOL hasSource;
 @property (readonly, nonatomic) BOOL hasSourceBundleIdentifier;
@@ -48,6 +51,18 @@
 @property (strong, nonatomic) NSString *sourceBundleIdentifier; // @synthesize sourceBundleIdentifier=_sourceBundleIdentifier;
 @property (strong, nonatomic) NSMutableArray *workouts; // @synthesize workouts=_workouts;
 
++ (Class)activityCachesType;
++ (Class)binarySamplesType;
++ (Class)categorySamplesType;
++ (Class)cdaDocumentSamplesType;
++ (Class)correlationsType;
++ (Class)deletedSamplesType;
++ (Class)fitnessFriendAchievementsType;
++ (Class)fitnessFriendActivitySnapshotsType;
++ (Class)fitnessFriendWorkoutsType;
++ (Class)locationSeriesType;
++ (Class)quantitySamplesType;
++ (Class)workoutsType;
 - (void).cxx_destruct;
 - (id)activityCachesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)activityCachesCount;
@@ -99,13 +114,13 @@
 - (unsigned long long)fitnessFriendWorkoutsCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isEquivalentToObjectCollection:(id)arg1;
 - (id)locationSeriesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)locationSeriesCount;
 - (void)mergeFrom:(id)arg1;
 - (id)quantitySamplesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)quantitySamplesCount;
 - (BOOL)readFrom:(id)arg1;
+- (BOOL)unitTest_isEquivalentToObjectCollection:(id)arg1;
 - (id)workoutsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)workoutsCount;
 - (void)writeTo:(id)arg1;

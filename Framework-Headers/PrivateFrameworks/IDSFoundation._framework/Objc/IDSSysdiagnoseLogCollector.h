@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface IDSSysdiagnoseLogCollector : NSObject
 {
@@ -13,7 +13,6 @@
 + (id)sharedInstance;
 - (void)_collectSysdiagnoseLog:(CDUnknownBlockType)arg1;
 - (void)collectSysdiagnoseLog:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

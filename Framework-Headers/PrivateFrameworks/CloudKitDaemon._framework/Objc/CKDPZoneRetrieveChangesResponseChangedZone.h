@@ -8,26 +8,37 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPRecordZoneIdentifier;
+@class CKDPRecordZoneIdentifier, CKDPZoneCapabilities;
 
 __attribute__((visibility("hidden")))
 @interface CKDPZoneRetrieveChangesResponseChangedZone : PBCodable <NSCopying>
 {
+    CKDPZoneCapabilities *_capabilities;
     int _changeType;
+    int _deleteType;
     CKDPRecordZoneIdentifier *_zoneIdentifier;
-    CDStruct_f5f6ac14 _has;
+    struct {
+        unsigned int changeType:1;
+        unsigned int deleteType:1;
+    } _has;
 }
 
+@property (strong, nonatomic) CKDPZoneCapabilities *capabilities; // @synthesize capabilities=_capabilities;
 @property (nonatomic) int changeType; // @synthesize changeType=_changeType;
+@property (nonatomic) int deleteType; // @synthesize deleteType=_deleteType;
+@property (readonly, nonatomic) BOOL hasCapabilities;
 @property (nonatomic) BOOL hasChangeType;
+@property (nonatomic) BOOL hasDeleteType;
 @property (readonly, nonatomic) BOOL hasZoneIdentifier;
 @property (strong, nonatomic) CKDPRecordZoneIdentifier *zoneIdentifier; // @synthesize zoneIdentifier=_zoneIdentifier;
 
 - (void).cxx_destruct;
 - (int)StringAsChangeType:(id)arg1;
+- (int)StringAsDeleteType:(id)arg1;
 - (id)changeTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)deleteTypeAsString:(int)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

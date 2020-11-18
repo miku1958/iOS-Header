@@ -20,7 +20,7 @@
 - (BOOL)_axShowingEffects;
 - (void)_showFocusAtPoint:(struct CGPoint)arg1 startAnimating:(BOOL)arg2;
 - (struct CGPoint)accessibilityActivationPoint;
-- (id)accessibilityContainerElements;
+- (id)accessibilityElements;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

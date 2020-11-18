@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 @protocol OS_dispatch_group, OS_dispatch_queue;
@@ -21,7 +21,8 @@
     int _CPLNotifyRegistrationToken;
     BOOL _CPLPrefetchingCancelled;
     NSObject<OS_dispatch_group> *_CPLPrefetchingWaitGroup;
-    int _prefetchCount;
+    BOOL _cachingAllowed;
+    int _requestCount;
     BOOL _didCompleteCPLPrefetchingWithSuccessOrError;
     BOOL _CPLPrefetchingWasCancelled;
     int _bestFormat;
@@ -33,6 +34,7 @@
 @property BOOL CPLPrefetchingWasCancelled; // @synthesize CPLPrefetchingWasCancelled=_CPLPrefetchingWasCancelled;
 @property (readonly, copy, nonatomic) NSString *assetUUID; // @synthesize assetUUID=_assetUUID;
 @property (nonatomic) int bestFormat; // @synthesize bestFormat=_bestFormat;
+@property (nonatomic) BOOL cachingAllowed; // @synthesize cachingAllowed=_cachingAllowed;
 @property BOOL didCompleteCPLPrefetchingWithSuccessOrError; // @synthesize didCompleteCPLPrefetchingWithSuccessOrError=_didCompleteCPLPrefetchingWithSuccessOrError;
 @property (readonly, nonatomic) int format; // @synthesize format=_format;
 @property (readonly, nonatomic) long long imageType; // @synthesize imageType=_imageType;
@@ -44,13 +46,12 @@
 - (id)cachedImageIfAvailable:(BOOL *)arg1;
 - (void)cancelPreheatRequestWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (long long)decrementPrefetchCount;
+- (long long)decrementRequestCount;
 - (id)description;
-- (BOOL)hasPrefetchCount;
-- (long long)incrementPrefetchCount;
+- (long long)incrementRequestCount;
 - (id)initForCPLPrefetchingWithAssetUUID:(id)arg1 format:(int)arg2;
 - (BOOL)isCancelled;
-- (void)resetPrefetchCount;
+- (BOOL)isRetained;
 - (void)startPreheatRequestWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

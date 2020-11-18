@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *sectionBulletinLists; // @synthesize sectionBulletinLists=_sectionBulletinLists;
 
++ (Class)sectionBulletinListType;
 - (void).cxx_destruct;
 - (void)addSectionBulletinList:(id)arg1;
 - (void)clearSectionBulletinLists;

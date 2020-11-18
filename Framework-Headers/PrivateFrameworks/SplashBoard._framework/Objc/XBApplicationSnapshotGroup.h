@@ -27,13 +27,13 @@
 @property (readonly, copy, nonatomic) NSSet *snapshots; // @synthesize snapshots=_snapshots;
 @property (readonly) Class superclass;
 
-- (id)_commonInit;
+- (void).cxx_destruct;
+- (void)_commonInit;
 - (id)_initWithIdentifier:(id)arg1 containerIdentity:(id)arg2;
 - (void)_invalidate;
 - (void)_manifestQueueDecode_setStore:(id)arg1;
 - (BOOL)_validateWithContainerIdentity:(id)arg1;
 - (void)addSnapshot:(id)arg1;
-- (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

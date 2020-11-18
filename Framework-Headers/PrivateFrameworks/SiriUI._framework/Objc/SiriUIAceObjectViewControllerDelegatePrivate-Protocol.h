@@ -10,9 +10,9 @@
 @protocol SiriUIViewController;
 
 @protocol SiriUIAceObjectViewControllerDelegatePrivate <NSObject>
-- (void)removeSiriViewController:(id<SiriUIViewController>)arg1;
 - (void)siriViewController:(id<SiriUIViewController>)arg1 startCorrectedSpeechRequestWithText:(NSString *)arg2 correctionIdentifier:(id)arg3 userSelectionResults:(AFUserUtteranceSelectionResults *)arg4;
 - (void)siriViewControllerDidEndEditing:(id<SiriUIViewController>)arg1;
+- (void)siriViewControllerRequestTearDownEditingViewController:(id<SiriUIViewController>)arg1;
 - (void)siriViewControllerRequestToPin:(id<SiriUIViewController>)arg1;
 - (BOOL)siriViewControllerShouldPreventUserInteraction:(id<SiriUIViewController>)arg1;
 - (void)siriViewControllerWillBeginEditing:(id<SiriUIViewController>)arg1;

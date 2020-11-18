@@ -30,6 +30,8 @@
 @property (readonly) Class superclass;
 @property (strong) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
++ (void)_removeFilesAtURL:(id)arg1;
++ (void)performUninstallationCleanup;
 + (id)sharedDeviceConnection;
 - (void).cxx_destruct;
 - (void)_invalidateXPCConnection;
@@ -48,8 +50,6 @@
 - (void)fetchInstalledCompatibleApplicationsWithDevice:(id)arg1 withErrorCompletion:(CDUnknownBlockType)arg2;
 - (void)fetchInstalledComplicationsForPairedDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchInstalledComplicationsWithErrorCompletion:(CDUnknownBlockType)arg1;
-- (void)fetchInstalledGlancesForPairedDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)fetchInstalledGlancesWithErrorCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchProvisioningProfilesForApplicationWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchProvisioningProfilesForApplicationWithBundleID:(id)arg1 forPairedDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchProvisioningProfilesForPairedDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -71,9 +71,11 @@
 - (void)removeObserver:(id)arg1;
 - (void)removeProvisioningProfileWithID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeProvisioningProfileWithID:(id)arg1 fromPairedDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)retryPendingAppInstallationsForPairedDevice:(id)arg1;
 - (void)setAllExistingAppsShouldBeInstalled:(BOOL)arg1 forNewDevice:(id)arg2;
 - (void)setAlwaysInstall:(id)arg1;
 - (void)setAlwaysInstall:(id)arg1 forDevice:(id)arg2;
+- (void)updateInstallProgressForApplication:(id)arg1 progress:(double)arg2 phase:(unsigned long long)arg3;
 - (void)updatePreferencesForApplicationWithIdentifier:(id)arg1 preferences:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updatePreferencesForApplicationWithIdentifier:(id)arg1 preferences:(id)arg2 forPairedDevice:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)updatedInstallStateForApplicationsWithInfo:(id)arg1;

@@ -18,8 +18,9 @@
 
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1;
 + (id)_swatchImageForColorOption:(id)arg1;
-+ (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void).cxx_destruct;
+- (id)_additionalPrelaunchApplicationIdentifiers;
+- (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyColor:(id)arg1 toComplicationView:(id)arg2;
 - (void)_applyComplicationViewColor:(id)arg1;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
@@ -45,7 +46,9 @@
 - (BOOL)_needsForegroundContainerView;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_prepareForEditing;
+- (void)_prepareTimeViewForReuse:(id)arg1;
 - (void)_startScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (double)_timeTravelCaptionLabelMaxWidth;
 - (struct CGPoint)_timeTravelStatusModuleCenter;
 - (void)_unloadSnapshotContentViews;

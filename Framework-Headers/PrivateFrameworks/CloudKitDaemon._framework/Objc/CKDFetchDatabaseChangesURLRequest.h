@@ -15,11 +15,13 @@ __attribute__((visibility("hidden")))
 {
     NSMutableArray *_changedZoneIDs;
     NSMutableArray *_deletedZoneIDs;
+    NSMutableArray *_purgedZoneIDs;
     unsigned long long _resultsLimit;
     NSData *_serverChangeTokenData;
     long long _status;
     CDUnknownBlockType _zoneChangedBlock;
     CDUnknownBlockType _zoneDeletedBlock;
+    CDUnknownBlockType _zonePurgedBlock;
     CKRecordZoneID *_recordZoneID;
     NSData *_previousServerChangeTokenData;
 }
@@ -30,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSData *previousServerChangeTokenData; // @synthesize previousServerChangeTokenData=_previousServerChangeTokenData;
+@property (readonly, nonatomic) NSArray *purgedZoneIDs; // @synthesize purgedZoneIDs=_purgedZoneIDs;
 @property (strong, nonatomic) CKRecordZoneID *recordZoneID; // @synthesize recordZoneID=_recordZoneID;
 @property (nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
 @property (strong, nonatomic) NSData *serverChangeTokenData; // @synthesize serverChangeTokenData=_serverChangeTokenData;
@@ -37,13 +40,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType zoneChangedBlock; // @synthesize zoneChangedBlock=_zoneChangedBlock;
 @property (copy, nonatomic) CDUnknownBlockType zoneDeletedBlock; // @synthesize zoneDeletedBlock=_zoneDeletedBlock;
+@property (copy, nonatomic) CDUnknownBlockType zonePurgedBlock; // @synthesize zonePurgedBlock=_zonePurgedBlock;
 
 - (void).cxx_destruct;
+- (id)generateRequestOperations;
 - (id)initWithPreviousServerChangeTokenData:(id)arg1;
 - (int)operationType;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 
 @end
 

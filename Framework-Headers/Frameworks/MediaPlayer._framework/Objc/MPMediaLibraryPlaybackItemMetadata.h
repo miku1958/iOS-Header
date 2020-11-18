@@ -13,12 +13,16 @@
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     BOOL _hasValidMediaItemValuesForProperties;
+    BOOL _hasEvaluatedOfflineHLS;
+    BOOL _isOfflineHLS;
     MPMediaItem *_mediaItem;
     NSDictionary *_mediaItemValuesForProperties;
+    NSDictionary *_playbackKeys;
     NSObject<OS_dispatch_queue> *_writeQueue;
 }
 
 @property (strong, nonatomic) MPMediaItem *mediaItem;
+@property (strong, nonatomic, getter=_writeQueue) NSObject<OS_dispatch_queue> *writeQueue; // @synthesize writeQueue=_writeQueue;
 
 + (id)_highQualityCachedAssetDestinationDirectory;
 + (id)_lowQualityCachedAssetDestinationDirectory;
@@ -28,6 +32,8 @@
 - (void)_invalidateMediaItemProperties;
 - (id)_mediaItemValuesForProperties;
 - (void)_mediaLibraryDidChangeNotification:(id)arg1;
+- (id)_onqueue_mediaItemValuesForProperties;
+- (void)_persistURI:(id)arg1 persistentContentKey:(id)arg2;
 - (id)albumArtistName;
 - (long long)albumStoreAdamID;
 - (id)albumTitle;
@@ -48,16 +54,19 @@
 - (long long)endpointType;
 - (double)expectedDuration;
 - (unsigned long long)hash;
+- (id)hlsOfflinePlaybackKeys;
 - (id)iTunesStoreContentDSID;
 - (id)iTunesStoreContentID;
 - (id)init;
 - (id)initWithMediaItem:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isExplicitTrack;
+- (BOOL)isOfflineHLS;
 - (BOOL)isSubscriptionRequired;
 - (id)localNetworkContentURL;
 - (long long)mediaLibraryPersistentID;
 - (id)modelGenericObject;
+- (BOOL)prefersStoreContentInfo;
 - (id)protectedContentSupportStorageURL;
 - (void)setCachedLocalPlaybackAssetFilePath:(id)arg1 protectionType:(unsigned long long)arg2 assetQuality:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)shouldRememberBookmarkTime;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSData, NSDictionary;
 
-@interface HAPWACScannerIEUtility : NSObject
+@interface HAPWACScannerIEUtility : HMFObject
 {
     NSData *_ieData;
     const char *_iePtr;

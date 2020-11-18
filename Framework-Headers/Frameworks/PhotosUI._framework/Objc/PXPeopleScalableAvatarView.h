@@ -19,8 +19,10 @@
 @property (strong, nonatomic) id<PXPerson> person; // @synthesize person=_person;
 
 - (void).cxx_destruct;
+- (void)_updateImageAndWait:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)setPersonAndWaitForImage:(id)arg1;
 - (void)updateImage;
 - (void)viewScaleDidChange;
 

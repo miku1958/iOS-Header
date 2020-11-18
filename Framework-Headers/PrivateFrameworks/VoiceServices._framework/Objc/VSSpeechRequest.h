@@ -8,19 +8,19 @@
 
 #import <VoiceServices/NSSecureCoding-Protocol.h>
 
-@class NSAttributedString, NSString, NSURL;
+@class NSAttributedString, NSDictionary, NSString, NSURL;
 
 @interface VSSpeechRequest : NSObject <NSSecureCoding>
 {
+    BOOL _shouldCache;
+    BOOL _disableCompactVoiceFallback;
     BOOL _useCustomVoice;
-    BOOL _maintainsInput;
     BOOL _audioSessionIDIsValid;
+    BOOL _maintainsInput;
     unsigned int _audioSessionID;
     unsigned int _audioQueueFlags;
     NSString *_text;
-    NSAttributedString *_attributedText;
     NSString *_languageCode;
-    NSString *_voiceName;
     long long _footprint;
     long long _voiceType;
     long long _gender;
@@ -28,9 +28,13 @@
     double _rate;
     double _pitch;
     double _volume;
-    NSString *_clientBundleIdentifier;
+    NSDictionary *_contextInfo;
     NSURL *_resourceListURL;
     NSURL *_resourceSearchPathURL;
+    NSAttributedString *_attributedText;
+    NSString *_voiceName;
+    NSString *_clientBundleIdentifier;
+    unsigned long long _requestCreatedTimestamp;
     CDUnknownBlockType _stopHandler;
     CDUnknownBlockType _pauseHandler;
 }
@@ -40,6 +44,8 @@
 @property (nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 @property (nonatomic) BOOL audioSessionIDIsValid; // @synthesize audioSessionIDIsValid=_audioSessionIDIsValid;
 @property (copy, nonatomic) NSString *clientBundleIdentifier; // @synthesize clientBundleIdentifier=_clientBundleIdentifier;
+@property (copy, nonatomic) NSDictionary *contextInfo; // @synthesize contextInfo=_contextInfo;
+@property (nonatomic) BOOL disableCompactVoiceFallback; // @synthesize disableCompactVoiceFallback=_disableCompactVoiceFallback;
 @property (nonatomic) long long footprint; // @synthesize footprint=_footprint;
 @property (nonatomic) long long gender; // @synthesize gender=_gender;
 @property (copy, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
@@ -48,8 +54,10 @@
 @property (copy, nonatomic) CDUnknownBlockType pauseHandler; // @synthesize pauseHandler=_pauseHandler;
 @property (nonatomic) double pitch; // @synthesize pitch=_pitch;
 @property (nonatomic) double rate; // @synthesize rate=_rate;
+@property (nonatomic) unsigned long long requestCreatedTimestamp; // @synthesize requestCreatedTimestamp=_requestCreatedTimestamp;
 @property (copy, nonatomic) NSURL *resourceListURL; // @synthesize resourceListURL=_resourceListURL;
 @property (copy, nonatomic) NSURL *resourceSearchPathURL; // @synthesize resourceSearchPathURL=_resourceSearchPathURL;
+@property (nonatomic) BOOL shouldCache; // @synthesize shouldCache=_shouldCache;
 @property (copy, nonatomic) CDUnknownBlockType stopHandler; // @synthesize stopHandler=_stopHandler;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (nonatomic) BOOL useCustomVoice; // @synthesize useCustomVoice=_useCustomVoice;
@@ -59,9 +67,12 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)contextInfoString;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isSimilarTo:(id)arg1;
 
 @end
 

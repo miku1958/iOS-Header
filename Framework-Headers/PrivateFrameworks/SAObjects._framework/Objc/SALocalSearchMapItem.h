@@ -30,6 +30,7 @@
 @property (copy, nonatomic) NSData *resultDetourInfoData;
 @property (copy, nonatomic) NSString *spokenAddress;
 @property (copy, nonatomic) NSString *spokenName;
+@property (copy, nonatomic) NSString *suggestionsEntryType;
 
 + (id)mapItem;
 + (id)mapItemWithDictionary:(id)arg1 context:(id)arg2;

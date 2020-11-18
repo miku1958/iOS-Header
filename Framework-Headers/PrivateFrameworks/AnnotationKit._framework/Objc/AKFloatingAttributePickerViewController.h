@@ -40,7 +40,6 @@
 @property (strong, nonatomic) UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
 
 - (void).cxx_destruct;
-- (id)_separatorColorForToolbarColor:(id)arg1;
 - (id)convertTextAttributes:(id)arg1;
 - (id)initWithController:(id)arg1;
 - (void)setRightButtonItems:(id)arg1 animated:(BOOL)arg2;

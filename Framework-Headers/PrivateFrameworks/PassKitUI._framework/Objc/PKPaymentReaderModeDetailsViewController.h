@@ -17,7 +17,7 @@
 @property (readonly, nonatomic) PKPaymentSetupProduct *product; // @synthesize product=_product;
 
 - (void).cxx_destruct;
-- (void)_pushReaderModeProvisioning;
+- (void)_pushReaderModeProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_registerLocalDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_showTerms;
 - (id)defaultFields;

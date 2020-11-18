@@ -6,34 +6,47 @@
 
 #import <objc/NSObject.h>
 
+#import <CallKit/CXCopying-Protocol.h>
 #import <CallKit/NSSecureCoding-Protocol.h>
 
-@class NSUUID;
+@class NSString, NSUUID;
 
-@interface CXCall : NSObject <NSSecureCoding>
+@interface CXCall : NSObject <NSSecureCoding, CXCopying>
 {
     BOOL _outgoing;
     BOOL _onHold;
     BOOL _hasConnected;
     BOOL _hasEnded;
+    BOOL _endpointOnCurrentDevice;
+    BOOL _hostedOnCurrentDevice;
     NSUUID *_UUID;
 }
 
-@property (copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
+@property (readonly, copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isEndpointOnCurrentDevice) BOOL endpointOnCurrentDevice; // @synthesize endpointOnCurrentDevice=_endpointOnCurrentDevice;
 @property (nonatomic) BOOL hasConnected; // @synthesize hasConnected=_hasConnected;
 @property (nonatomic) BOOL hasEnded; // @synthesize hasEnded=_hasEnded;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isHostedOnCurrentDevice) BOOL hostedOnCurrentDevice; // @synthesize hostedOnCurrentDevice=_hostedOnCurrentDevice;
 @property (nonatomic, getter=isOnHold) BOOL onHold; // @synthesize onHold=_onHold;
 @property (nonatomic, getter=isOutgoing) BOOL outgoing; // @synthesize outgoing=_outgoing;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToCall:(id)arg1;
+- (id)sanitizedCopy;
+- (id)sanitizedCopyWithZone:(struct _NSZone *)arg1;
+- (void)updateCopy:(id)arg1 withZone:(struct _NSZone *)arg2;
+- (void)updateSanitizedCopy:(id)arg1 withZone:(struct _NSZone *)arg2;
 
 @end
 

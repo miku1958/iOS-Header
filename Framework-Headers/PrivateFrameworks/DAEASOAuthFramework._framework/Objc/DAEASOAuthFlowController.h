@@ -15,8 +15,8 @@
 {
     CDUnknownBlockType _completion;
     unsigned long long _oauthType;
-    NSString *_tokenRequestURI;
     NSString *_oauthURI;
+    NSString *_tokenRequestURI;
     NSString *_username;
 }
 

@@ -6,13 +6,14 @@
 
 #import <SpriteKit/SKNode.h>
 
-@class NSString, UIColor;
+@class NSAttributedString, NSString, UIColor;
 
 @interface SKLabelNode : SKNode
 {
     struct SKCLabelNode *_skcLabelNode;
 }
 
+@property (copy, nonatomic) NSAttributedString *attributedText;
 @property (nonatomic) long long blendMode;
 @property (strong, nonatomic) UIColor *color;
 @property (nonatomic) double colorBlendFactor;
@@ -20,19 +21,26 @@
 @property (copy, nonatomic) NSString *fontName;
 @property (nonatomic) double fontSize;
 @property (nonatomic) long long horizontalAlignmentMode;
+@property (nonatomic) long long lineBreakMode;
+@property (nonatomic) long long numberOfLines;
+@property (nonatomic) double preferredMaxLayoutWidth;
 @property (copy, nonatomic) NSString *text;
 @property (nonatomic) long long verticalAlignmentMode;
 
 + (id)_labelNodeWithFontNamed:(id)arg1;
 + (id)_labelNodeWithFontTexture:(id)arg1 fontDataString:(id)arg2;
++ (id)labelNodeWithAttributedText:(id)arg1;
 + (id)labelNodeWithFontNamed:(id)arg1;
 + (id)labelNodeWithText:(id)arg1;
 - (void)_didMakeBackingNode;
 - (id)_getTextSprites;
 - (void)_initialize;
 - (struct SKCNode *)_makeBackingNode;
+- (id)attributedString;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)debugHierarchyPropertyDescriptions;
+- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (struct CGRect)frame;
@@ -41,6 +49,7 @@
 - (id)initWithFontNamed:(id)arg1;
 - (BOOL)isEqualToNode:(id)arg1;
 - (void)setFont:(struct __CTFont *)arg1;
+- (void)setUIFont:(id)arg1;
 
 @end
 

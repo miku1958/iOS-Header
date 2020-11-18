@@ -25,6 +25,7 @@
 - (id)_axMessageTime;
 - (id)_axStickerDescription;
 - (id)accessibilityCustomActions;
+- (id)accessibilityDropPointDescriptors;
 - (BOOL)accessibilityPerformCustomAction:(long long)arg1;
 - (BOOL)isAccessibilityElement;
 

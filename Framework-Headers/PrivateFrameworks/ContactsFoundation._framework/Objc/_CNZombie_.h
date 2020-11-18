@@ -4,7 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-__attribute__((visibility("hidden")))
 @interface _CNZombie_
 {
     Class isa;

@@ -38,8 +38,11 @@
 + (struct CGAffineTransform)centeredCircleToEllipseTransform:(struct CGRect)arg1;
 + (struct CGPoint)compareVectorDirectionsFirstVector:(struct CGPoint)arg1 secondVector:(struct CGPoint)arg2;
 + (long long)concatExifOrientation:(long long)arg1 withExifOrientation:(long long)arg2;
++ (struct CGRect)constrainRect:(struct CGRect)arg1 withinRect:(struct CGRect)arg2;
 + (struct CGPoint)convertModelToScreenOrientationForPoint:(struct CGPoint)arg1 relativeToRect:(struct CGRect)arg2 withPageController:(id)arg3;
 + (struct CGRect)convertModelToScreenOrientationForRect:(struct CGRect)arg1 withPageController:(id)arg2;
++ (struct CGRect)convertRect:(struct CGRect)arg1 fromScreenPointsToView:(id)arg2;
++ (struct CGRect)convertRect:(struct CGRect)arg1 fromViewToScreenPixels:(id)arg2 useNativeScale:(BOOL)arg3;
 + (struct CGPoint)convertScreenToModelOrientationForPoint:(struct CGPoint)arg1 relativeToRect:(struct CGRect)arg2 withPageController:(id)arg3;
 + (struct CGRect)convertScreenToModelOrientationForRect:(struct CGRect)arg1 withPageController:(id)arg2;
 + (double)distanceBetweenPoints:(struct CGPoint)arg1 andPoint:(struct CGPoint)arg2;
@@ -65,6 +68,7 @@
 + (BOOL)isPointOnLeft:(struct CGPoint)arg1 ofRayWithFirstPoint:(struct CGPoint)arg2 andSecondPoint:(struct CGPoint)arg3;
 + (BOOL)isUnpresentablePoint:(struct CGPoint)arg1;
 + (BOOL)isUnpresentableRect:(struct CGRect)arg1;
++ (BOOL)isUnpresentableSize:(struct CGSize)arg1;
 + (double)lengthOfVector:(struct CGVector)arg1;
 + (struct CGPath *)newPathWithPath:(struct CGPath *)arg1 applyingExifOrientation:(long long)arg2 aboutCenter:(struct CGPoint)arg3;
 + (struct CGVector)normalizeVector:(struct CGVector)arg1;

@@ -19,7 +19,10 @@
     NSString *_configPath;
     BOOL _detectUtterances;
     BOOL _concatenateUtterances;
+    BOOL _recognizeEagerCandidates;
+    BOOL _farField;
     NSData *_userProfileData;
+    double _endpointStart;
     double _maximumRecognitionDuration;
     NSDictionary *_recognitionReplacements;
     NSDictionary *_recognitionConfidenceSubtraction;
@@ -27,10 +30,13 @@
 
 @property (nonatomic) BOOL concatenateUtterances; // @synthesize concatenateUtterances=_concatenateUtterances;
 @property (nonatomic) BOOL detectUtterances; // @synthesize detectUtterances=_detectUtterances;
+@property (nonatomic) double endpointStart; // @synthesize endpointStart=_endpointStart;
+@property (nonatomic) BOOL farField; // @synthesize farField=_farField;
 @property (nonatomic) double maximumRecognitionDuration; // @synthesize maximumRecognitionDuration=_maximumRecognitionDuration;
 @property (readonly, nonatomic) _EARSpeechModelInfo *modelInfo;
 @property (copy, nonatomic) NSDictionary *recognitionConfidenceSubtraction; // @synthesize recognitionConfidenceSubtraction=_recognitionConfidenceSubtraction;
 @property (copy, nonatomic) NSDictionary *recognitionReplacements; // @synthesize recognitionReplacements=_recognitionReplacements;
+@property (nonatomic) BOOL recognizeEagerCandidates; // @synthesize recognizeEagerCandidates=_recognizeEagerCandidates;
 @property (copy, nonatomic) NSData *userProfileData; // @synthesize userProfileData=_userProfileData;
 
 + (void)initialize;
@@ -40,17 +46,21 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)cancelRecognition;
+- (void)getFormatterWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 overrides:(id)arg2;
 - (id)initWithConfiguration:(id)arg1 overrides:(id)arg2 generalVoc:(id)arg3 lexiconEnh:(id)arg4 itnEnh:(id)arg5;
 - (id)initWithConfiguration:(id)arg1 useQuasarFormatter:(BOOL)arg2;
 - (id)initWithConfiguration:(id)arg1 withGeneralVoc:(id)arg2 withLexiconEnh:(id)arg3 withItnEnh:(id)arg4;
 - (id)initWithConfiguration:(id)arg1 withLanguage:(id)arg2 withSdapiConfig:(id)arg3;
+- (id)recognitionResultsWithAudioData:(id)arg1 userProfileData:(id)arg2 language:(id)arg3 task:(id)arg4 samplingRate:(unsigned long long)arg5;
 - (id)recognitionResultsWithAudioData:(id)arg1 userProfileData:(id)arg2 language:(id)arg3 task:(id)arg4 samplingRate:(unsigned long long)arg5 extraLanguageModel:(id)arg6;
 - (id)recognitionStatistics;
 - (shared_ptr_9f04d411)requestParametersWithUserProfileData:(id)arg1 task:(id)arg2 samplingRate:(unsigned long long)arg3 resultStream:(shared_ptr_5cb47a18)arg4 extraLanguageModel:(id)arg5 symbolTableList:(const shared_ptr_ca83464d *)arg6;
 - (id)runRecognitionWithResultStream:(id)arg1;
 - (id)runRecognitionWithResultStream:(id)arg1 language:(id)arg2 task:(id)arg3 samplingRate:(unsigned long long)arg4;
+- (id)runRecognitionWithResultStream:(id)arg1 language:(id)arg2 task:(id)arg3 samplingRate:(unsigned long long)arg4 userProfileData:(id)arg5;
+- (void)setAlternateRawRecognitionTokenSausage:(id)arg1;
 - (void)updateUserProfileData:(id)arg1;
 
 @end

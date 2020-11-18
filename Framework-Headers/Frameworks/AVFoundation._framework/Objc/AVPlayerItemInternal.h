@@ -16,6 +16,7 @@
     AVWeakReference *weakReference;
     AVPropertyStorage *propertyStorage;
     NSObject<OS_dispatch_queue> *figConfigurationQueue;
+    NSObject<OS_dispatch_queue> *figPlaybackItemAccessorQueue;
     NSObject<OS_dispatch_queue> *seekQueue;
     struct OpaqueFigSimpleMutex *seekIDMutex;
     struct OpaqueVTPixelBufferAttributesMediator *pixelBufferAttributeMediator;
@@ -35,12 +36,16 @@
     struct OpaqueCMTimebase *figTimebase;
     BOOL didBecomeReadyForInspectionOfTracks;
     BOOL didBecomeReadyForInspectionOfPresentationSize;
+    BOOL didBecomeReadyForInspectionOfDuration;
+    BOOL didBecomeReadyForInspectionOfMediaSelectionOptions;
     AVAsset *assetWithFigPlaybackItem;
     NSArray *trackIDsForAssetWithFigPlaybackItem;
     BOOL needTimedMetadataNotification;
     BOOL didBecomeReadyForBasicInspection;
     id<AVPlayerItemDelegate> delegate;
     AVAudioMix *audioMix;
+    long long status;
+    NSError *error;
     BOOL needToSeekAfterCreatingFigPlaybackItem;
     CDStruct_1b6d18a9 initialTime;
     unsigned int initialSetTimeFlags;
@@ -102,7 +107,7 @@
     BOOL allowProgressiveStartup;
     BOOL allowProgressiveResume;
     struct CGSize IFramePrefetchTargetDimensions;
-    struct CGSize preferredPeakPresentationSize;
+    struct CGSize preferredMaximumResolution;
     double preferredPeakBitRate;
     CDStruct_1b6d18a9 maximumTrailingBufferDuration;
     CDStruct_1b6d18a9 maximumForwardBufferDuration;
@@ -110,14 +115,10 @@
     BOOL suppressesAudioOnlyVariants;
     NSString *videoApertureMode;
     unsigned int RTCReportingFlags;
-    long long status;
-    NSError *error;
     NSArray *timedMetadata;
     NSMutableArray *handlersToCallWhenReadyForEnqueueing;
     BOOL haveInitialSamples;
     BOOL haveCPEProtector;
-    BOOL didBecomeReadyForInspectionOfMediaSelectionOptions;
-    BOOL didBecomeReadyForInspectionOfDuration;
     BOOL didInformObserversAboutAvailabilityOfTracks;
     BOOL didFireKVOForAssetForNonStreamingItem;
     BOOL usesMinimalLatencyForVideoCompositionRendering;

@@ -10,10 +10,23 @@
 {
 }
 
++ (int)deviceClass;
++ (BOOL)hasOrbCapability;
++ (id)localizedProductName;
++ (double)mainScreenScale;
 + (BOOL)naui_isPad;
 + (BOOL)naui_isUsingLandscapeOrientation;
 + (BOOL)naui_shouldUseLargeiPadLayout;
 + (BOOL)naui_shouldUseLargeiPadLayoutForSize:(struct CGSize)arg1;
++ (id)operatingSystemName;
++ (id)productBuildVersion;
++ (id)productClass;
++ (id)productHardwareModel;
++ (id)productHardwareModelName;
++ (id)productType;
++ (id)productVersion;
++ (id)uniqueDeviceIdentifier;
+- (id)init;
 
 @end
 

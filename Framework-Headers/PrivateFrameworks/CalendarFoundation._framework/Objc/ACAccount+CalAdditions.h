@@ -27,6 +27,7 @@
 @property (readonly) BOOL calIsExchangeAccount;
 @property (readonly) BOOL calIsGenericCalDAVAccount;
 @property (readonly) BOOL calIsMissingParentAccount;
+@property (readonly) BOOL calIsRestrictedForCalendar;
 @property BOOL calLocalDataMigrationHasTakenPlace;
 @property (copy) NSString *calMainPrincipalUID;
 @property (copy) NSNumber *calPort;

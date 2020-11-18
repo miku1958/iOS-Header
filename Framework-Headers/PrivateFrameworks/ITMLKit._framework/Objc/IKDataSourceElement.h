@@ -31,7 +31,9 @@
 @property (readonly, nonatomic) IKElementChangeSet *itemsChangeset;
 @property (readonly, nonatomic) NSArray *prototypes;
 
++ (unsigned long long)updateTypeForChangeInAttribute:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
 - (void).cxx_destruct;
+- (id)actualElementForProxyElement:(id)arg1 jsContext:(id)arg2;
 - (id)additionalKeysToResolveForDOMBindingController:(id)arg1;
 - (void)appDocumentDidMarkStylesDirty;
 - (id)applyUpdatesWithElement:(id)arg1;
@@ -43,14 +45,16 @@
 - (void)domBindingController:(id)arg1 didResolveKeys:(id)arg2;
 - (BOOL)domBindingController:(id)arg1 doKeysAffectChildren:(id)arg2;
 - (BOOL)domBindingController:(id)arg1 doKeysAffectSubtree:(id)arg2;
-- (id)elementForItemAtIndex:(long long)arg1 loadIfNeeded:(BOOL)arg2;
+- (id)elementForItemAtIndex:(long long)arg1;
 - (void)enumerateItemElementsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)firstItemElement;
 - (id)initWithDOMElement:(id)arg1 parent:(id)arg2 elementFactory:(id)arg3;
 - (id)lastItemElement;
+- (void)loadIndex:(long long)arg1;
 - (long long)numberOfItems;
 - (id)prototypeForItemAtIndex:(long long)arg1;
 - (void)resetProperty:(unsigned long long)arg1;
+- (void)resetUpdates;
 - (void)unloadIndex:(long long)arg1;
 
 @end

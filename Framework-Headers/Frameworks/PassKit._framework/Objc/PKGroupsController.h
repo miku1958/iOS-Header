@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <PassKitCore/PKPassLibraryDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSString, PKCatalog, PKPassLibrary;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSSet, NSString, PKCatalog, PKPassLibrary, PKPaymentService;
 @protocol PKGroupsControllerDelegate;
 
 @interface PKGroupsController : NSObject <PKPassLibraryDelegate>
 {
     PKPassLibrary *_passLibrary;
+    PKPaymentService *_paymentService;
     unsigned long long _filters;
     unsigned long long _passTypeMask;
     NSMutableArray *_groups;
@@ -26,16 +27,21 @@
     PKCatalog *_catalogBeforeReordering;
     NSMutableArray *_enqueuedUpdates;
     NSArray *_localPasses;
+    NSSet *_expressPassesInformation;
     BOOL _limitedMode;
     BOOL _activePassesOnly;
+    int _expressPassesInformationToken;
     BOOL _reorderingEnabled;
     BOOL _shouldSeparatePaymentPasses;
     id<PKGroupsControllerDelegate> _delegate;
+    NSArray *_filteredPassUniqueIDs;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKGroupsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSArray *filteredPassUniqueIDs; // @synthesize filteredPassUniqueIDs=_filteredPassUniqueIDs;
+@property (readonly, nonatomic) BOOL filteringEnabled;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL reorderingEnabled; // @synthesize reorderingEnabled=_reorderingEnabled;
 @property (nonatomic) BOOL shouldSeparatePaymentPasses; // @synthesize shouldSeparatePaymentPasses=_shouldSeparatePaymentPasses;
@@ -44,6 +50,7 @@
 - (void).cxx_destruct;
 - (id)_copyRemoteCatalog;
 - (unsigned long long)_destinationIndexForGroupID:(id)arg1 catalogGroups:(id)arg2 skippingNewGroupsAfterIndex:(unsigned long long)arg3;
+- (id)_displayablePassesDictionaryFromSet:(id)arg1;
 - (void)_fixIndex:(unsigned long long)arg1;
 - (void)_fixIndicesFrom:(unsigned long long)arg1;
 - (void)_fixIndicesFrom:(unsigned long long)arg1 through:(unsigned long long)arg2;
@@ -54,7 +61,6 @@
 - (void)_insertGroup:(id)arg1 atIndex:(unsigned long long)arg2 notify:(BOOL)arg3;
 - (void)_insertLocalGroupsIntoCatalog:(id)arg1 withPassesByUniqueID:(id)arg2;
 - (void)_moveGroup:(id)arg1 fromIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3 notify:(BOOL)arg4;
-- (id)_passesDictionaryFromSet:(id)arg1;
 - (void)_performEnqueuedUpdates;
 - (void)_performOrEnqueueUpdate:(CDUnknownBlockType)arg1;
 - (void)_placeGroup:(id)arg1 atIndex:(unsigned long long)arg2 notify:(BOOL)arg3;
@@ -67,7 +73,9 @@
 - (id)groupAtIndex:(unsigned long long)arg1;
 - (unsigned long long)groupCount;
 - (unsigned long long)groupIndexForPassUniqueID:(id)arg1;
+- (id)groups;
 - (void)handleUserPassDelete:(id)arg1;
+- (void)handleUserPassesDelete:(id)arg1;
 - (unsigned long long)indexOfGroup:(id)arg1;
 - (unsigned long long)indexOfSeparationGroup;
 - (id)init;
@@ -78,6 +86,7 @@
 - (void)moveGroupAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (void)objectSettingsDidChangeNotification:(id)arg1;
 - (void)passLibrary:(id)arg1 receivedUpdatedCatalog:(id)arg2 passes:(id)arg3;
+- (id)passWithUniqueID:(id)arg1;
 - (void)preloadGroupsAndFrontFaceImages;
 - (void)reloadGroups;
 - (void)reloadGroupsAndNotify:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

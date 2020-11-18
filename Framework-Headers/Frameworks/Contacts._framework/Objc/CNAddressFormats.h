@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface CNAddressFormats : NSObject
@@ -15,7 +15,10 @@ __attribute__((visibility("hidden")))
 + (id)addressFormats;
 + (id)countryCodeByGlobalDefaultsLookup;
 + (id)countryCodeByLocaleLookup;
++ (id)defaultKeyboardSettingsDictionary;
 + (id)fallbackCountryCode;
++ (id)makeSupportedCountries;
++ (id)supportedCountries;
 + (id)usaStateAbbreviations;
 + (id)usaStateNames;
 

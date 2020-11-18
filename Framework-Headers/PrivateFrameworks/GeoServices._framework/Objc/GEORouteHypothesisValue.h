@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
@@ -32,24 +32,24 @@
 @property (readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly) BOOL isStaleToPurgeFromDisk;
 @property (readonly) BOOL isStaleToRefresh;
-@property (readonly, strong, nonatomic) GEORouteHypothesisMonitor *monitor; // @synthesize monitor=_monitor;
+@property (readonly, nonatomic) GEORouteHypothesisMonitor *monitor; // @synthesize monitor=_monitor;
 @property (readonly, nonatomic) GEOComposedWaypoint *origin; // @synthesize origin=_origin;
 @property (nonatomic) BOOL prediction; // @synthesize prediction=_prediction;
 @property (nonatomic) long long rowId; // @synthesize rowId=_rowId;
-@property (readonly, strong, nonatomic) GEOMapServiceTraits *traits; // @synthesize traits=_traits;
+@property (readonly, nonatomic) GEOMapServiceTraits *traits; // @synthesize traits=_traits;
 @property (nonatomic) int transportType; // @synthesize transportType=_transportType;
 @property (nonatomic) double updatedTimeStamp; // @synthesize updatedTimeStamp=_updatedTimeStamp;
 @property (nonatomic) double valueRefreshTimeStamp; // @synthesize valueRefreshTimeStamp=_valueRefreshTimeStamp;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (BOOL)aggresiveArrivalIsAfterExpiration;
 - (BOOL)canBePersistedToDisk;
 - (void)commonInit;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSource:(id)arg1 toDestination:(id)arg2 transportType:(int)arg3 arrivalDate:(id)arg4 expirationDate:(id)arg5 traits:(id)arg6;
+- (id)initWithSource:(id)arg1 toDestination:(id)arg2 transportType:(int)arg3 arrivalDate:(id)arg4 expirationDate:(id)arg5 traceName:(id)arg6 traits:(id)arg7;
 
 @end
 

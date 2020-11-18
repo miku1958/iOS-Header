@@ -6,16 +6,14 @@
 
 #import <FrontBoardUIServices/FBUIUserAgent-Protocol.h>
 
-@class FBSDisplay, FBSScene, FBSSerialQueue;
+@class FBSSerialQueue;
 @protocol FBUIProcessManagerInternal, FBUISceneManager;
 
 @protocol FBUIUserAgentInternal <FBUIUserAgent>
 
 @property (nonatomic, getter=isSystemApp) BOOL systemApp;
 
-- (FBSDisplay *)mainDisplay;
 - (FBSSerialQueue *)mainQueue;
-- (FBSScene *)mainScene;
 - (id<FBUIProcessManagerInternal>)processManager;
 - (id<FBUISceneManager>)sceneManager;
 @end

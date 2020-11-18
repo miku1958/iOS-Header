@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)switcherContentController:(id)arg1 deletedItem:(id)arg2;
+- (void)switcherContentController:(id)arg1 deletedAppLayout:(id)arg2 forReason:(long long)arg3;
 - (void)viewDidAppear:(BOOL)arg1;
 
 @end

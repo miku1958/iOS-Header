@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+@class NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface BRInterface : NSObject
 {
+    NSMutableDictionary *_timestampDict;
     BOOL _isReady;
     NSObject<OS_dispatch_queue> *_queue;
     unsigned long long _maxAssetSlots;
@@ -29,9 +31,11 @@
 - (BOOL)disableStates:(id)arg1 clearAsset:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)enableStates:(id)arg1 error:(id *)arg2;
 - (id)init;
+- (BOOL)playState:(unsigned long long)arg1 forSpeed:(unsigned long long)arg2 error:(id *)arg3;
 - (void)scheduleReadyNotificationWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)setConfigs:(id)arg1 withAssets:(id)arg2 forStates:(id)arg3 error:(id *)arg4;
 - (BOOL)setGlobalConfigs:(id)arg1 error:(id *)arg2;
+- (void)timestampWithLabel:(id)arg1;
 
 @end
 

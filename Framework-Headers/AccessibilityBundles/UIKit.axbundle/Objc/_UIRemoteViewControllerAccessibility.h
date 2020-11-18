@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)__setViewServiceIsDisplayingPopover:(BOOL)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityLoadAccessibilityInformation:(BOOL)arg1;
 - (id)_accessibilityResponderElement;

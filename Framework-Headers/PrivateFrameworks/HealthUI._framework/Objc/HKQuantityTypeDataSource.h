@@ -6,18 +6,19 @@
 
 #import <HealthUI/HKHealthQueryChartCacheDataSource.h>
 
-@class HKQuantityType, HKUnitController;
+@class HKQuantityType, HKUnitPreferenceController;
 
 @interface HKQuantityTypeDataSource : HKHealthQueryChartCacheDataSource
 {
-    HKUnitController *_unitController;
     CDUnknownBlockType _mappingFunction;
     unsigned long long _statisticsOptions;
+    HKUnitPreferenceController *_unitController;
     CDUnknownBlockType _userInfoCreationBlock;
 }
 
 @property (readonly, nonatomic) HKQuantityType *quantityType;
 @property (readonly, nonatomic) unsigned long long statisticsOptions; // @synthesize statisticsOptions=_statisticsOptions;
+@property (readonly, nonatomic) HKUnitPreferenceController *unitController; // @synthesize unitController=_unitController;
 @property (copy, nonatomic) CDUnknownBlockType userInfoCreationBlock; // @synthesize userInfoCreationBlock=_userInfoCreationBlock;
 
 - (void).cxx_destruct;
@@ -25,8 +26,8 @@
 - (CDUnknownBlockType)_createMappingFunction;
 - (id)_dailyAverageQueriesWithStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_defaultQueriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)initWithUnitController:(id)arg1 options:(unsigned long long)arg2 dataUnit:(id)arg3 healthStore:(id)arg4;
-- (CDUnknownBlockType)mappingFunction;
+- (id)initWithUnitController:(id)arg1 options:(unsigned long long)arg2 displayType:(id)arg3 healthStore:(id)arg4;
+- (CDUnknownBlockType)mappingFunctionForContext:(id)arg1;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end

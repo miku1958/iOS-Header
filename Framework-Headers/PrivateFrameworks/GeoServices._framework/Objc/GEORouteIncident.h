@@ -64,12 +64,12 @@
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (nonatomic) long long updateTime; // @synthesize updateTime=_updateTime;
 
+- (void).cxx_destruct;
 - (int)StringAsLaneClosureType:(id)arg1;
 - (int)StringAsSignificance:(id)arg1;
 - (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -18,10 +18,10 @@
 + (id)viewControllerWithRestorationIdentifierPath:(id)arg1 coder:(id)arg2;
 - (void).cxx_destruct;
 - (Class)_classForChildren;
+- (BOOL)hideSearchField;
 - (id)init;
 - (id)initWithModel:(id)arg1;
 - (void)itemsOrSelectionDidChange:(BOOL)arg1;
-- (BOOL)shouldShowSearch;
 
 @end
 

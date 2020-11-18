@@ -13,16 +13,16 @@
     Class _targetClass;
 }
 
-@property (nonatomic) id caller; // @synthesize caller=_caller;
-@property (nonatomic) Class targetClass; // @synthesize targetClass=_targetClass;
+@property (weak, nonatomic) id caller; // @synthesize caller=_caller;
+@property (weak, nonatomic) Class targetClass; // @synthesize targetClass=_targetClass;
 @property (nonatomic) BOOL warnAboutUnknownSelectors; // @synthesize warnAboutUnknownSelectors=_warnAboutUnknownSelectors;
 
 + (void)methodDoesNotExistSentinal;
 + (id)methodNotFoundSentinal;
 + (id)trampolineWithCaller:(id)arg1 targetClass:(Class)arg2;
+- (void).cxx_destruct;
 - (CDUnknownFunctionPointerType)_findIMPForSelector:(SEL)arg1;
 - (BOOL)callerIsClass;
-- (void)dealloc;
 - (id)description;
 - (void)forwardInvocation:(id)arg1;
 - (id)initWithCaller:(id)arg1 targetClass:(Class)arg2;

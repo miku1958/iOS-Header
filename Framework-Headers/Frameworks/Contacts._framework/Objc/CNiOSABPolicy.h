@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     BOOL _abSourceIsContentReadonly;
 }
 
+- (id)_orderedLabels:(id)arg1 withOrder:(id)arg2;
 - (void)dealloc;
 - (id)initWithAddressBookPolicy:(void *)arg1 readOnly:(BOOL)arg2;
 - (BOOL)isReadonly;

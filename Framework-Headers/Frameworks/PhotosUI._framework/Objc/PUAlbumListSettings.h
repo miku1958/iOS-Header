@@ -4,22 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUSettings.h>
+#import <PhotosUICore/PXSettings.h>
 
 __attribute__((visibility("hidden")))
-@interface PUAlbumListSettings : PUSettings
+@interface PUAlbumListSettings : PXSettings
 {
     BOOL _allowPlacesAlbum;
     BOOL _allowPeopleAlbum;
     BOOL _allowScenesAlbum;
+    BOOL _allowMemoriesAlbum;
+    BOOL _allowNavigationTitleEditing;
 }
 
+@property (nonatomic) BOOL allowMemoriesAlbum; // @synthesize allowMemoriesAlbum=_allowMemoriesAlbum;
+@property (nonatomic) BOOL allowNavigationTitleEditing; // @synthesize allowNavigationTitleEditing=_allowNavigationTitleEditing;
 @property (nonatomic) BOOL allowPeopleAlbum; // @synthesize allowPeopleAlbum=_allowPeopleAlbum;
 @property (nonatomic) BOOL allowPlacesAlbum; // @synthesize allowPlacesAlbum=_allowPlacesAlbum;
 @property (nonatomic) BOOL allowScenesAlbum; // @synthesize allowScenesAlbum=_allowScenesAlbum;
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
+- (id)parentSettings;
 - (void)setDefaultValues;
 
 @end

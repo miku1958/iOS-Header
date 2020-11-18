@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOComposedRoute, GEOLocationShifter, GEONavigationMatchResult, GEORoadMatcher, GEORouteMatcher;
 
@@ -22,11 +22,12 @@
 @property (strong, nonatomic) GEONavigationMatchResult *previousMatchResult; // @synthesize previousMatchResult=_previousMatchResult;
 @property (strong, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 
+- (void).cxx_destruct;
 - (id)_routeMatcherForRoute:(id)arg1;
-- (void)dealloc;
 - (id)initWithRoute:(id)arg1;
 - (id)matchLocation:(id)arg1 transportType:(int)arg2;
 - (void)resetToLocation:(id)arg1;
+- (void)setShouldSnapRouteMatchToRoute:(BOOL)arg1;
 - (int)transportType;
 - (id)updateForReroute:(id)arg1 location:(id)arg2;
 

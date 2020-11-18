@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
-@class HMDDevice, IDSService, NSString;
+@class HMDDevice, IDSService, NSObject, NSString;
 @protocol HMDCompanionManagerDelegate, OS_dispatch_queue;
 
-@interface HMDCompanionManager : NSObject <HMFLogging, IDSServiceDelegate>
+@interface HMDCompanionManager : HMFObject <HMFLogging, IDSServiceDelegate>
 {
     HMDDevice *_companion;
     id<HMDCompanionManagerDelegate> _delegate;

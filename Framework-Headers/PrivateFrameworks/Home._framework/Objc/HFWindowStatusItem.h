@@ -10,12 +10,10 @@
 {
 }
 
-- (id)_entireHomeFormatString;
+- (id)_formatStringTypeComponent;
 - (id)_isOpenCharacteristicType;
 - (CDUnknownBlockType)_isOpenTest;
-- (id)_multipleOpenRoomsFormatString;
 - (id)_serviceType;
-- (id)_singleOpenRoomFormatString;
 
 @end
 

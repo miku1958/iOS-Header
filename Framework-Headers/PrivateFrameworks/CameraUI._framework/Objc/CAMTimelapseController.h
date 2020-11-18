@@ -8,12 +8,11 @@
 
 #import <CameraUI/CAMNebulaDaemonTimelapseClientProtocol-Protocol.h>
 #import <CameraUI/CAMStillImageCaptureRequestDelegate-Protocol.h>
-#import <CameraUI/UIAlertViewDelegate-Protocol.h>
 
 @class CAMFocusResult, CAMLocationController, CAMMotionController, CAMNebulaDaemonProxyManager, CAMPersistenceController, CAMTimelapseState, CUCaptureController, NSCountedSet, NSDate, NSMutableSet, NSString;
 @protocol CAMTimelapseControllerDelegate, OS_dispatch_source;
 
-@interface CAMTimelapseController : NSObject <CAMStillImageCaptureRequestDelegate, UIAlertViewDelegate, CAMNebulaDaemonTimelapseClientProtocol>
+@interface CAMTimelapseController : NSObject <CAMStillImageCaptureRequestDelegate, CAMNebulaDaemonTimelapseClientProtocol>
 {
     BOOL __ignoringTimerCallbacksForTearDown;
     BOOL __ignoringTimerCallbacksWaitingForCaptureResponse;
@@ -72,7 +71,7 @@
 - (void)_notifyInsufficientDiskSpaceForStartingCaptureWithNeededBytes:(long long)arg1 availableBytes:(long long)arg2;
 - (void)_prepareForTimelapseCaptureSetModeAndDevice:(BOOL)arg1;
 - (void)_previewStarted:(id)arg1;
-- (void)_reserveDiskSpaceForTimelapseUUID:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (void)_reserveDiskSpaceForTimelapseUUID:(id)arg1 preferHEVC:(BOOL)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (void)_resetIgnoringTimerCallbacksWaitingForCaptureResponse;
 - (void)_restoreCaptureStateFromDisk;
 - (void)_saveStateToDisk:(id)arg1;

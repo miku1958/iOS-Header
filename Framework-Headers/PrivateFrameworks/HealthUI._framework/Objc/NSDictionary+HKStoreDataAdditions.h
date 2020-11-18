@@ -17,10 +17,11 @@
 @property (readonly, nonatomic) NSNumber *hk_storeID;
 @property (readonly, nonatomic) NSString *hk_title;
 
-- (id)_defaultOffer;
 - (id)_hk_artwork;
 - (id)_hk_bestImageURLForWidth:(double)arg1 fromArtworkArray:(id)arg2;
 - (id)_hk_circularArtwork;
+- (id)_hk_defaultOffer;
+- (id)_hk_lookupItem;
 - (id)hk_bestCircularImageURLForWidth:(double)arg1;
 - (id)hk_bestImageURLForWidth:(double)arg1;
 @end

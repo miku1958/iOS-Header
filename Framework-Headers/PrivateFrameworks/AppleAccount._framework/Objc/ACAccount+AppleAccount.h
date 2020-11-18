@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) ACAccount *aa_fmfAccount;
 @property (readonly, nonatomic) ACAccount *aa_fmipAccount;
 @property (readonly, nonatomic) NSString *aa_fmipToken;
+@property (readonly, nonatomic) NSString *aa_formattedUsername;
 @property (readonly, nonatomic) NSString *aa_hsaToken;
 @property (nonatomic, setter=aa_setCloudDocsMigrationComplete:) BOOL aa_isCloudDocsMigrationComplete;
 @property (readonly, nonatomic) BOOL aa_isManagedAppleID;
@@ -53,12 +54,8 @@
 
 + (id)aa_dataclassesBoundToPrimaryAppleAccount;
 + (id)aa_dataclassesBoundToSingleAppleAccount;
-+ (void)load;
 - (id)aa_authTokenWithError:(id *)arg1;
 - (id)aa_hsaTokenWithError:(id *)arg1;
-- (BOOL)aa_isPCSErrorTransient:(struct __CFError *)arg1;
-- (BOOL)aa_needsPCSRepair;
-- (BOOL)aa_needsPCSRepairWithAuthToken:(id)arg1;
 - (void)aa_setHSAToken:(id)arg1;
 - (void)aa_setMapsToken:(id)arg1;
 - (void)aa_setUseCellular:(BOOL)arg1 forDataclass:(id)arg2;

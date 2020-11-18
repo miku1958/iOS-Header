@@ -20,6 +20,7 @@
 @property (strong, nonatomic) SALocalSearchMapItem *itemDestination;
 @property (strong, nonatomic) SALocalSearchMapItem *itemSource;
 @property (copy, nonatomic) NSString *language;
+@property (copy, nonatomic) NSString *preferredDirectionsMode;
 @property (copy, nonatomic) NSNumber *regionOfInterestRadiusInMiles;
 @property (nonatomic) BOOL searchAlongRoute;
 @property (strong, nonatomic) SALocalSearchMapItemList *searchItems;

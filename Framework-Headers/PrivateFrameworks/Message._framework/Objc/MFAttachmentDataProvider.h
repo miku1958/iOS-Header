@@ -6,42 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <Message/MFAttachmentDataProviderProtocol-Protocol.h>
+@class NSURL;
 
-@class NSString, NSURL;
-
-@interface MFAttachmentDataProvider : NSObject <MFAttachmentDataProviderProtocol>
+@interface MFAttachmentDataProvider : NSObject
 {
     NSURL *_url;
-    long long _isPartialDownload;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 @property (strong) NSURL *url; // @synthesize url=_url;
 
 + (id)dataProviderWithPath:(id)arg1;
 + (id)dataProviderWithURL:(id)arg1;
 - (id)_fileAttributes:(id)arg1;
 - (BOOL)_isFileURL;
-- (BOOL)_partialDownload;
 - (id)_path;
-- (BOOL)_setPartialDownload:(BOOL)arg1;
-- (BOOL)append:(id)arg1 isComplete:(BOOL)arg2;
 - (id)data;
-- (void)dataWithRange:(struct _NSRange)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)errorWithMessage:(id)arg1 code:(long long)arg2;
 - (BOOL)exists;
-- (void)fetchDataForAttachment:(id)arg1 withDataConsumer:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)fetchLocalDataForAttachment:(id)arg1;
-- (id)init;
 - (id)initWithURL:(id)arg1;
-- (id)messageForAttachment:(id)arg1;
 - (BOOL)save:(id)arg1;
-- (id)storageLocationForAttachment:(id)arg1 withMessage:(id)arg2;
 
 @end
 

@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDCameraNetworkConfig, HMDCameraSessionID, NSString;
+@class HMDCameraNetworkConfig, HMDCameraSessionID, NSObject, NSString;
 @protocol HMDCameraRemoteStreamProtocol, OS_dispatch_queue;
 
-@interface HMDStreamInterface : NSObject <HMFLogging>
+@interface HMDStreamInterface : HMFObject <HMFLogging>
 {
     int _localRTPSocket;
     unsigned long long _streamInterfaceState;

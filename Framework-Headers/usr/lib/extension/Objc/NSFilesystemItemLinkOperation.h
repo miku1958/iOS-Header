@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSFilesystemItemCopyOperation.h>
+#import <Foundation/NSFilesystemItemCopyOperation.h>
 
 __attribute__((visibility("hidden")))
 @interface NSFilesystemItemLinkOperation : NSFilesystemItemCopyOperation

@@ -15,10 +15,12 @@ __attribute__((visibility("hidden")))
     BOOL _lightKeyboard;
 }
 
+@property (nonatomic) BOOL lightKeyboard; // @synthesize lightKeyboard=_lightKeyboard;
+
 + (id)darkKeyboardProvider;
 + (id)lightKeyboardProvider;
 - (void).cxx_destruct;
-- (void)configureButton:(id)arg1 fromBarItem:(id)arg2;
+- (void)configureButton:(id)arg1 withAppearanceDelegate:(id)arg2 fromBarItem:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)updateButton:(id)arg1 forSelectedState:(BOOL)arg2;

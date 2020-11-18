@@ -23,6 +23,7 @@
 
 + (id)_validiTunesBundles;
 + (BOOL)isItunesBundleID:(id)arg1;
++ (BOOL)isItunesOrFirstPartyBundleID:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)_init;

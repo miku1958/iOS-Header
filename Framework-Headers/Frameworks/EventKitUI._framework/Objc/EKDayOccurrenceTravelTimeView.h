@@ -50,6 +50,8 @@
 @property (strong) UIImageView *travelTimeIcon; // @synthesize travelTimeIcon=_travelTimeIcon;
 @property (strong) UILabel *travelTimeLabel; // @synthesize travelTimeLabel=_travelTimeLabel;
 
++ (void)initialize;
++ (double)minimumNaturalHeightForPrimaryTextUsingSmallText:(BOOL)arg1;
 - (void).cxx_destruct;
 - (double)_iconScale;
 - (struct UIEdgeInsets)_parentPadding;
@@ -61,7 +63,6 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithReusableTravelTimeView:(id)arg1;
 - (void)layoutSubviews;
-- (double)minimumNaturalHeightForPrimaryText;
 
 @end
 

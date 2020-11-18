@@ -23,7 +23,7 @@
 }
 
 @property (readonly) unsigned int bitfieldWidth;
-@property (readonly) VMUClassInfo *destinationLayout;
+@property (readonly, nonatomic) VMUClassInfo *destinationLayout;
 @property (readonly, nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (readonly, nonatomic) BOOL isArrayEntries;
 @property (readonly, nonatomic) BOOL isArraySize;
@@ -35,16 +35,18 @@
 @property (readonly, nonatomic) BOOL isStorageImplPointer;
 @property (readonly, nonatomic) BOOL isValueField;
 @property (readonly, nonatomic) BOOL isValuesPointer;
-@property (readonly) NSString *ivarName; // @synthesize ivarName=_ivarName;
+@property (readonly, nonatomic) NSString *ivarName; // @synthesize ivarName=_ivarName;
 @property (readonly) unsigned int offset; // @synthesize offset=_offset;
 @property (readonly) unsigned int scanType; // @synthesize scanType=_scanType;
 @property (readonly) unsigned int scannableSize; // @synthesize scannableSize=_scannable;
 @property (readonly) unsigned int size; // @synthesize size=_size;
 @property (readonly) unsigned int stride; // @synthesize stride=_stride;
-@property (readonly) NSArray *subFieldArray; // @synthesize subFieldArray=_subFieldArray;
-@property (readonly) NSString *typeName; // @synthesize typeName=_typeName;
+@property (readonly, nonatomic) NSArray *subFieldArray; // @synthesize subFieldArray=_subFieldArray;
+@property (readonly, nonatomic) NSString *typeName; // @synthesize typeName=_typeName;
 @property (readonly) NSString *typedDescription;
 
+- (void).cxx_destruct;
+- (id)_fullIvarNameAtOffset:(unsigned int)arg1 leafOffset:(unsigned int *)arg2 depth:(unsigned int)arg3;
 - (id)_getFieldAtOffset:(unsigned int)arg1;
 - (void)_setDestinationLayout:(id)arg1;
 - (void)_setFlags:(unsigned int)arg1;
@@ -55,9 +57,9 @@
 - (void)_setSize:(unsigned int)arg1;
 - (void)_setStride:(unsigned int)arg1;
 - (void)_setTypeName:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)descriptionOfFieldValueInObjectMemory:(void *)arg1 scanner:(id)arg2;
+- (id)fullIvarNameAtOffset:(unsigned int)arg1;
 - (id)getLeafFieldAtOffset:(unsigned int)arg1 leafOffset:(unsigned int *)arg2;
 - (unsigned long long)hash;
 - (id)initStorageEntryFieldWithName:(id)arg1 type:(id)arg2 kind:(unsigned int)arg3 scan:(unsigned int)arg4 offset:(unsigned int)arg5 size:(unsigned int)arg6 stride:(unsigned int)arg7 subFieldArray:(id)arg8;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, PLClientServerTransaction;
 
@@ -61,6 +61,7 @@
 - (void)appendDelayedMomentDataToXPCMessage:(id)arg1;
 - (void)appendDelayedSearchIndexUpdatesToXPCMessage:(id)arg1;
 - (void)dealloc;
+- (void)forceAlbumCountUpdate:(id)arg1;
 - (id)initWithClientTransaction:(id)arg1;
 - (void)persistDelayedActionsScope:(id)arg1;
 - (void)popDelayedAlbumCountUpdates:(id *)arg1;
@@ -88,7 +89,6 @@
 - (void)recordMemoryForSearchIndexUpdate:(id)arg1;
 - (void)recordNeedsUpdateUnverifiedFaceCountThreshold;
 - (void)recordPersonForSearchIndexUpdate:(id)arg1;
-- (void)recordPersonReferenceForSearchIndexUpdate:(id)arg1;
 
 @end
 

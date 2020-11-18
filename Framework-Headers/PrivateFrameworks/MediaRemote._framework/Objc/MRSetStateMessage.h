@@ -6,23 +6,13 @@
 
 #import <MediaRemote/MRProtocolMessage.h>
 
-@class NSArray, NSDictionary, NSString;
-
 @interface MRSetStateMessage : MRProtocolMessage
 {
-    NSArray *_supportedCommands;
-    NSDictionary *_nowPlayingInfo;
 }
 
-@property (readonly, nonatomic) NSString *displayID;
-@property (readonly, nonatomic) NSString *displayName;
-@property (readonly, nonatomic) NSDictionary *nowPlayingInfo;
-@property (readonly, nonatomic) void *playbackQueue;
-@property (readonly, nonatomic) unsigned int playbackState;
-@property (readonly, nonatomic) NSArray *supportedCommands;
+@property (readonly, nonatomic) void *state;
 
-- (void)dealloc;
-- (id)initWithNowPlayingState:(id)arg1;
+- (id)initWithNowPlayingState:(void *)arg1;
 - (unsigned long long)type;
 
 @end

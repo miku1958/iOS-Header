@@ -13,6 +13,7 @@
 @interface EKUIInviteesViewRespondedInviteesSection : NSObject <EKUIInviteesViewSection>
 {
     BOOL _editable;
+    int _responseType;
     CDUnknownBlockType _participantTapped;
     CDUnknownBlockType _participantRemoved;
     NSMutableArray *_participants;
@@ -31,6 +32,7 @@
 @property (copy, nonatomic) CDUnknownBlockType participantRemoved; // @synthesize participantRemoved=_participantRemoved;
 @property (copy, nonatomic) CDUnknownBlockType participantTapped; // @synthesize participantTapped=_participantTapped;
 @property (strong, nonatomic) NSMutableArray *participants; // @synthesize participants=_participants;
+@property (nonatomic) int responseType; // @synthesize responseType=_responseType;
 @property (nonatomic) unsigned long long reuseIdentifierVersion; // @synthesize reuseIdentifierVersion=_reuseIdentifierVersion;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType tableViewCellHook; // @synthesize tableViewCellHook=_tableViewCellHook;
@@ -46,6 +48,7 @@
 - (long long)editingStyleForRow:(id)arg1;
 - (double)estimatedHeightForRow:(id)arg1;
 - (id)headerTitle;
+- (id)initWithResponseType:(int)arg1;
 - (unsigned long long)numberOfRows;
 - (void)reloadAndRegisterReusableCellsWithTableView:(id)arg1;
 - (BOOL)sectionShouldBeShown;

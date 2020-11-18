@@ -21,9 +21,12 @@
 + (void)localPasteboardDidAddItems:(id)arg1 forGeneration:(unsigned long long)arg2;
 + (void)localPasteboardDidPasteGeneration:(unsigned long long)arg1;
 + (id)remotePasteboard;
++ (void)startPreventingPasteboardSharing;
++ (void)stopPreventingPasteboardSharing;
 - (void)prefetchRemotePasteboardTypes:(id)arg1;
 - (void)requestRemotePasteboardDataForProcess:(int)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)requestRemotePasteboardTypesForProcess:(int)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (BOOL)returnPasteboardDataBeforeArchives;
 
 @end
 

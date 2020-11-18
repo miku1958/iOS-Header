@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/NSSecureCoding-Protocol.h>
 
@@ -16,15 +16,18 @@
     BOOL _isVideo;
     BOOL _isPhotoIris;
     BOOL _isDeletable;
+    unsigned short _playbackVariation;
     NSString *_GUID;
     NSString *_personID;
     NSDictionary *_metaData;
     NSNumber *_width;
     NSNumber *_height;
     NSDate *_timestamp;
+    NSString *_derivativeUTI;
 }
 
 @property (readonly, strong, nonatomic) NSString *GUID; // @synthesize GUID=_GUID;
+@property (readonly, strong, nonatomic) NSString *derivativeUTI; // @synthesize derivativeUTI=_derivativeUTI;
 @property (readonly, strong, nonatomic) NSNumber *height; // @synthesize height=_height;
 @property (readonly, nonatomic) BOOL isDeletable; // @synthesize isDeletable=_isDeletable;
 @property (readonly, nonatomic) BOOL isMine; // @synthesize isMine=_isMine;
@@ -32,6 +35,7 @@
 @property (readonly, nonatomic) BOOL isVideo; // @synthesize isVideo=_isVideo;
 @property (readonly, strong, nonatomic) NSDictionary *metaData; // @synthesize metaData=_metaData;
 @property (readonly, strong, nonatomic) NSString *personID; // @synthesize personID=_personID;
+@property (readonly, nonatomic) unsigned short playbackVariation; // @synthesize playbackVariation=_playbackVariation;
 @property (readonly, strong, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 @property (readonly, strong, nonatomic) NSNumber *width; // @synthesize width=_width;
 

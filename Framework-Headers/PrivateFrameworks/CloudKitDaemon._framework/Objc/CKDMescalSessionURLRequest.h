@@ -20,11 +20,11 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)allowsAnonymousAccount;
+- (id)generateRequestOperations;
 - (id)initWithSessionData:(id)arg1;
 - (int)operationType;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 - (BOOL)requiresDeviceID;
 - (BOOL)requiresSignature;
 

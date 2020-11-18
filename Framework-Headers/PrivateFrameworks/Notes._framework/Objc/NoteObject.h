@@ -38,6 +38,7 @@
 @property (readonly, nonatomic) BOOL isBeingMarkedForDeletion;
 @property (strong, nonatomic) NSNumber *isBookkeepingEntry; // @dynamic isBookkeepingEntry;
 @property (readonly, nonatomic) BOOL isMarkedForDeletion;
+@property (readonly, nonatomic) BOOL isModernNote;
 @property (nonatomic) BOOL isPlainText;
 @property (strong, nonatomic) NSDate *modificationDate; // @dynamic modificationDate;
 @property (readonly, nonatomic) NSURL *noteId;
@@ -50,14 +51,16 @@
 @property (strong, nonatomic) NSString *title; // @dynamic title;
 
 + (BOOL)didChooseToMigrateNote:(id)arg1 context:(struct NoteContext *)arg2;
-+ (id)searchIndexableObjectWithIdentifier:(id)arg1 includeDeleted:(BOOL)arg2 inNoteContext:(id)arg3;
+- (id)accountName;
 - (id)authorsExcludingCurrentUser;
 - (BOOL)belongsToCollection:(id)arg1;
 - (BOOL)containsAttachments;
 - (id)contentAsPlainTextPreservingNewlines;
 - (id)contentInfoText;
+- (id)dataForTypeIdentifier:(id)arg1;
 - (id)dateForCurrentSortType;
 - (id)defaultTitleForEmptyNote;
+- (id)folderName;
 - (id)identifier;
 - (BOOL)ignoreInSearchIndexer;
 - (BOOL)isHiddenFromSearch;
@@ -65,17 +68,13 @@
 - (BOOL)isSharedViaICloud;
 - (void)markForDeletion;
 - (id)noteAsPlainTextWithoutTitle;
-- (id)objectIdentifier;
-- (void)releaseMemoryForIndexing;
 - (id)searchDomainIdentifier;
-- (id)searchIndexStringsOutHasAdditionalStrings:(BOOL *)arg1;
-- (id)searchIndexableTitleUsingContentTextIfNecessary:(id)arg1;
 - (BOOL)searchResultCanBeDeletedFromNoteContext;
+- (unsigned long long)searchResultType;
 - (unsigned long long)searchResultsSection;
 - (id)searchableContentKeyPaths;
 - (id)searchableItemAttributeSet;
 - (id)searchableItemIdentifier;
-- (BOOL)shouldUpdateIndexForChangedValues:(id)arg1;
 - (id)trimmedTitle;
 - (long long)visibilityTestingType;
 

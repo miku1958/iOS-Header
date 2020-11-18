@@ -26,6 +26,7 @@
 
 + (Class)configKeyValueType;
 + (Class)debugExperimentBranchType;
+- (void).cxx_destruct;
 - (void)addConfigKeyValue:(id)arg1;
 - (void)addDebugExperimentBranch:(id)arg1;
 - (void)clearConfigKeyValues;
@@ -34,7 +35,6 @@
 - (unsigned long long)configKeyValuesCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)debugExperimentBranchAtIndex:(unsigned long long)arg1;
 - (unsigned long long)debugExperimentBranchsCount;
 - (id)description;

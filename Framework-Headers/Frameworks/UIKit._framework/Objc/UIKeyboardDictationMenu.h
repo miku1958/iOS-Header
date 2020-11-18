@@ -21,9 +21,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)performShowAnimation;
 - (struct CGSize)preferredSize;
-- (void)show;
 - (BOOL)usesDimmingView;
 - (BOOL)usesTable;
+- (void)willShow;
 
 @end
 

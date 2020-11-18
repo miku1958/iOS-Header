@@ -7,11 +7,10 @@
 #import <UIKit/UIControl.h>
 
 #import <MPUFoundation/MPUTransportButton-Protocol.h>
-#import <MPUFoundation/MPUVibrantContentDisabling-Protocol.h>
 
 @class MPUTransportButtonEventHandler, NSString, UIButton, UIColor, UIImage, UIImageView;
 
-@interface MPUHalfTintedTransportButton : UIControl <MPUVibrantContentDisabling, MPUTransportButton>
+@interface MPUHalfTintedTransportButton : UIControl <MPUTransportButton>
 {
     UIButton *_regularButton;
     UIButton *_tintedButton;
@@ -52,7 +51,6 @@
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isEnabled;
-- (id)layersNotWantingVibrancy;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)setEnabled:(BOOL)arg1;

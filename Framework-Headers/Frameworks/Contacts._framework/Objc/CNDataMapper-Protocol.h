@@ -6,21 +6,19 @@
 
 #import <Contacts/NSObject-Protocol.h>
 
-@class CNChangeHistory, CNChangeHistoryFetchRequest, CNContact, CNContactFetchRequest, CNContactStore, CNContactsEnvironment, CNContainer, CNPolicy, CNSaveRequest, NSArray, NSDictionary, NSNumber, NSPredicate, NSString, NSURL;
-@protocol CNBatchFetchEnumerator, CNCancelable, CNKeyDescriptor;
+@class CNChangeHistoryAnchor, CNChangeHistoryFetchRequest, CNChangeHistoryResult, CNContact, CNContactFetchRequest, CNContactStore, CNContactsEnvironment, CNContainer, CNObservable, CNPolicy, CNSaveRequest, NSArray, NSDictionary, NSNumber, NSPredicate, NSString, NSURL;
+@protocol CNCancelable, CNKeyDescriptor;
 
 @protocol CNDataMapper <NSObject>
 - (NSArray *)accountsMatchingPredicate:(NSPredicate *)arg1 error:(id *)arg2;
-- (NSArray *)contactsForFetchRequest:(CNContactFetchRequest *)arg1 error:(id *)arg2;
-- (NSArray *)contactsForFetchRequest:(CNContactFetchRequest *)arg1 matchInfos:(id *)arg2 error:(id *)arg3;
+- (CNObservable *)contactObservableForFetchRequest:(CNContactFetchRequest *)arg1;
 - (NSArray *)containersMatchingPredicate:(NSPredicate *)arg1 error:(id *)arg2;
 - (NSString *)defaultContainerIdentifier;
 - (BOOL)executeSaveRequest:(CNSaveRequest *)arg1 error:(id *)arg2;
 - (BOOL)executeSaveRequest:(CNSaveRequest *)arg1 response:(id *)arg2 error:(id *)arg3;
 - (NSArray *)groupsMatchingPredicate:(NSPredicate *)arg1 error:(id *)arg2;
 - (id)initWithContactsEnvironment:(CNContactsEnvironment *)arg1;
-- (NSString *)meContactIdentifierWithError:(id *)arg1;
-- (NSArray *)membersOfGroupWithIdentifier:(NSString *)arg1 keysToFetch:(NSArray *)arg2 error:(id *)arg3;
+- (NSArray *)meContactIdentifiers:(id *)arg1;
 - (CNPolicy *)policyForContainerWithIdentifier:(NSString *)arg1 error:(id *)arg2;
 - (void)requestAccessForEntityType:(long long)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (BOOL)requestAccessForEntityType:(long long)arg1 error:(id *)arg2;
@@ -38,26 +36,22 @@
 - (BOOL)_saveCustomPropertyValuesForRemoteRecords:(NSArray *)arg1 error:(id *)arg2;
 - (NSArray *)_smartGroupsForAccountsWithIdentifiers:(NSArray *)arg1 contactStore:(CNContactStore *)arg2;
 - (NSArray *)_smartGroupsMatchingPredicate:(NSPredicate *)arg1 contactStore:(CNContactStore *)arg2;
-- (id<CNBatchFetchEnumerator>)batchEnumeratorForFetchRequest:(CNContactFetchRequest *)arg1;
-- (CNChangeHistory *)changeHistoryWithFetchRequest:(CNChangeHistoryFetchRequest *)arg1 error:(id *)arg2;
-- (BOOL)clearChangeHistoryForClient:(NSString *)arg1 toSequenceNumber:(long long)arg2 error:(id *)arg3;
+- (CNChangeHistoryResult *)changeHistoryWithFetchRequest:(CNChangeHistoryFetchRequest *)arg1 error:(id *)arg2;
+- (BOOL)clearChangeHistoryForClientIdentifier:(NSString *)arg1 toChangeAnchor:(CNChangeHistoryAnchor *)arg2 error:(id *)arg3;
 - (NSString *)contactIdentifierWithMatchingDictionary:(NSDictionary *)arg1;
-- (NSArray *)contactIdentifiersForFetchRequest:(CNContactFetchRequest *)arg1 error:(id *)arg2;
 - (CNContact *)contactWithUserActivityUserInfo:(NSDictionary *)arg1 keysToFetch:(NSArray *)arg2;
-- (NSArray *)contactsWithIdentifiers:(NSArray *)arg1 keysToFetch:(NSArray *)arg2 error:(id *)arg3;
 - (id<CNKeyDescriptor>)descriptorForRequiredKeysForMatchingDictionary;
 - (id<CNCancelable>)executeFetchRequest:(CNContactFetchRequest *)arg1 progressiveResults:(void (^)(NSArray *, NSDictionary *))arg2 completion:(void (^)(NSError *))arg3;
 - (NSArray *)groupsWithIdentifiers:(NSArray *)arg1 error:(id *)arg2;
 - (NSString *)identifierWithError:(id *)arg1;
 - (NSDictionary *)matchingDictionaryForContact:(CNContact *)arg1;
-- (BOOL)registerClientForChangeHistory:(NSString *)arg1 error:(id *)arg2;
+- (BOOL)registerChangeHistoryClientIdentifier:(NSString *)arg1 error:(id *)arg2;
 - (BOOL)setBestMeIfNeededForGivenName:(NSString *)arg1 familyName:(NSString *)arg2 email:(NSString *)arg3 error:(id *)arg4;
 - (BOOL)setMeContact:(CNContact *)arg1 error:(id *)arg2;
 - (BOOL)setMeContact:(CNContact *)arg1 forContainer:(CNContainer *)arg2 error:(id *)arg3;
 - (void)setNotificationSource:(id)arg1;
 - (NSNumber *)unifiedContactCountWithError:(id *)arg1;
-- (NSArray *)unifiedContactsMatchingPredicate:(NSPredicate *)arg1 keysToFetch:(NSArray *)arg2 error:(id *)arg3;
-- (BOOL)unregisterClientForChangeHistory:(NSString *)arg1 error:(id *)arg2;
+- (BOOL)unregisterChangeHistoryClientIdentifier:(NSString *)arg1 error:(id *)arg2;
 - (NSArray *)usedLabelsForPropertyWithKey:(NSString *)arg1 error:(id *)arg2;
 - (NSDictionary *)userActivityUserInfoForContact:(CNContact *)arg1;
 @end

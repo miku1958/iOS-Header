@@ -6,23 +6,25 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class NSOperationQueue, NSString, VSOptional;
+@class NSOperationQueue, NSString, VSAuditToken, VSOptional;
 
-__attribute__((visibility("hidden")))
 @interface VSIdentityProviderFetchOperation : VSAsyncOperation
 {
     BOOL _fetchFromStoreOnly;
     NSString *_identityProviderID;
+    VSAuditToken *_auditToken;
     VSOptional *_result;
     NSOperationQueue *_privateQueue;
 }
 
+@property (copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (nonatomic) BOOL fetchFromStoreOnly; // @synthesize fetchFromStoreOnly=_fetchFromStoreOnly;
 @property (copy, nonatomic) NSString *identityProviderID; // @synthesize identityProviderID=_identityProviderID;
 @property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;
 
 - (void).cxx_destruct;
+- (id)_fetchAllOperation;
 - (void)cancel;
 - (void)executionDidBegin;
 - (id)init;

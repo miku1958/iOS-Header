@@ -26,9 +26,9 @@
 @property (readonly, nonatomic) double proportionalSize; // @synthesize proportionalSize=_proportionalSize;
 @property (readonly) Class superclass;
 
-+ (id)_rootUnitWithDefinition:(CDStruct_875ffba5)arg1;
++ (id)_rootUnitWithDefinition:(CDStruct_bafa805a)arg1;
 + (id)_uniquedRootUnit:(id)arg1;
-+ (id)_uniquedRootUnitFromDefinition:(CDStruct_875ffba5)arg1;
++ (id)_uniquedRootUnitFromDefinition:(CDStruct_bafa805a)arg1;
 + (id)_uniquedUnitWithPrefix:(id)arg1 conversionConstant:(id)arg2 rootUnit:(id)arg3;
 + (id)_uniquedUnitWithPrefix:(id)arg1 rootUnit:(id)arg2;
 + (BOOL)supportsSecureCoding;

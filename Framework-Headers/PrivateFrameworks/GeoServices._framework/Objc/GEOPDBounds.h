@@ -8,23 +8,35 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapRegion;
+@class GEOMapRegion, PBUnknownFields;
 
 @interface GEOPDBounds : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     GEOMapRegion *_displayMapRegion;
     GEOMapRegion *_mapRegion;
+    float _maxZoom;
+    float _minZoom;
+    struct {
+        unsigned int maxZoom:1;
+        unsigned int minZoom:1;
+    } _has;
 }
 
 @property (strong, nonatomic) GEOMapRegion *displayMapRegion; // @synthesize displayMapRegion=_displayMapRegion;
 @property (readonly, nonatomic) BOOL hasDisplayMapRegion;
 @property (readonly, nonatomic) BOOL hasMapRegion;
+@property (nonatomic) BOOL hasMaxZoom;
+@property (nonatomic) BOOL hasMinZoom;
 @property (strong, nonatomic) GEOMapRegion *mapRegion; // @synthesize mapRegion=_mapRegion;
+@property (nonatomic) float maxZoom; // @synthesize maxZoom=_maxZoom;
+@property (nonatomic) float minZoom; // @synthesize minZoom=_minZoom;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)boundsInfoForPlaceData:(id)arg1;
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

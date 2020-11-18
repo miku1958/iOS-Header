@@ -22,6 +22,7 @@
     NSObject<OS_dispatch_queue> *_delegateQueue;
     int _daemonStartedNotifyToken;
     int _syncSwitchNotifyToken;
+    NSMutableDictionary *_nrDevices;
     id<PSYInitialSyncStateObserverDelegate> _delegate;
 }
 
@@ -37,10 +38,14 @@
 - (void)_queue_notifyCanRetryFailedRequests;
 - (void)_queue_querySyncState;
 - (void)_queue_updateSyncStates:(id)arg1 notifyDelegateOfChanges:(BOOL)arg2;
+- (void)_registerMonitorAllNRDevicesForMigrationChanges:(CDUnknownBlockType)arg1;
+- (void)_registerMonitorNRDevice:(id)arg1 forMigrationChanges:(CDUnknownBlockType)arg2;
+- (void)_unregisterNRDeviceMonitors;
 - (void)dealloc;
 - (oneway void)didUpdateSyncForPairingID:(id)arg1;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
+- (void)requestInitialNonMigrationSyncStateForPairingIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestInitialSyncStateForPairingIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestSyncStateForPairingIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)syncProviderWithErrorHandler:(CDUnknownBlockType)arg1;

@@ -9,7 +9,7 @@
 #import <PassKitUI/PKPassFooterContentViewDelegate-Protocol.h>
 
 @class NSObject, NSString, PKPassFooterContentView, PKPassView, PKPaymentSessionHandle;
-@protocol OS_dispatch_group, OS_dispatch_source;
+@protocol OS_dispatch_group, OS_dispatch_source, PKPassFooterViewDelegate;
 
 @interface PKPassFooterView : UIView <PKPassFooterContentViewDelegate>
 {
@@ -19,20 +19,25 @@
     NSObject<OS_dispatch_source> *_sessionStartTimer;
     long long _paymentApplicationState;
     BOOL _isBackgrounded;
+    BOOL _acquiringSession;
     unsigned long long _sessionToken;
     unsigned char _visibility;
     unsigned char _contentViewVisibility;
     NSObject<OS_dispatch_group> *_sessionDelayGroup;
+    BOOL _userIntentRequired;
     long long _state;
+    id<PKPassFooterViewDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<PKPassFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isPassAuthorized;
+@property (readonly, nonatomic, getter=isPassAuthorized) BOOL passAuthorized;
 @property (strong, nonatomic) PKPassView *passView; // @synthesize passView=_passView;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic, getter=isUserIntentRequired) BOOL userIntentRequired; // @synthesize userIntentRequired=_userIntentRequired;
 
 - (void).cxx_destruct;
 - (void)_acquireContactlessInterfaceSessionWithHandler:(CDUnknownBlockType)arg1;
@@ -50,8 +55,8 @@
 - (void)_handleEnterBackgroundNotification:(id)arg1;
 - (void)_handleEnterForegroundNotification:(id)arg1;
 - (void)_lostModeButtonTapped;
-- (void)_setContentView:(id)arg1;
 - (void)_setContentView:(id)arg1 animated:(BOOL)arg2;
+- (void)_setUserIntentRequired:(BOOL)arg1;
 - (void)_startContactlessInterfaceSessionWithSessionAvailable:(CDUnknownBlockType)arg1 sessionUnavailable:(CDUnknownBlockType)arg2;
 - (void)configureForState:(long long)arg1 context:(id)arg2 passView:(id)arg3;
 - (void)dealloc;
@@ -60,6 +65,7 @@
 - (id)initWithPassView:(id)arg1 state:(long long)arg2 context:(id)arg3;
 - (void)layoutSubviews;
 - (void)passFooterContentViewDidBeginAuthenticating:(id)arg1;
+- (void)passFooterContentViewDidChangeUserIntentRequirement:(id)arg1;
 - (void)passFooterContentViewDidEndAuthenticating:(id)arg1;
 - (void)passFooterContentViewRequestsSessionSuppression:(id)arg1;
 - (void)willBecomeHiddenAnimated:(BOOL)arg1;

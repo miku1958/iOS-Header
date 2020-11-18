@@ -20,11 +20,11 @@
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)popularNearbyResultType;
+- (void).cxx_destruct;
 - (void)addPopularNearbyResult:(id)arg1;
 - (void)clearPopularNearbyResults;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

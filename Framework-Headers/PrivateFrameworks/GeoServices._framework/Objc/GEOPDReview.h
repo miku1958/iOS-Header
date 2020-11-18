@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDRating, GEOPDUser, NSMutableArray, NSString;
+@class GEOPDRating, GEOPDUser, NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPDReview : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     double _reviewTime;
     GEOPDRating *_rating;
     NSString *_reviewId;
@@ -31,15 +32,17 @@
 @property (nonatomic) double reviewTime; // @synthesize reviewTime=_reviewTime;
 @property (strong, nonatomic) GEOPDUser *reviewer; // @synthesize reviewer=_reviewer;
 @property (strong, nonatomic) NSMutableArray *snippets; // @synthesize snippets=_snippets;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)reviewsForPlaceData:(id)arg1;
 + (Class)snippetType;
+- (void).cxx_destruct;
 - (id)_bestSnippet;
+- (id)_bestSnippetLocale;
 - (void)addSnippet:(id)arg1;
 - (void)clearSnippets;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

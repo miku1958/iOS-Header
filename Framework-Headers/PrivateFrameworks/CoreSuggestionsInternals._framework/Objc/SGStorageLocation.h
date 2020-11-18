@@ -17,6 +17,7 @@
     unsigned long long _locationType;
     NSString *_label;
     NSString *_address;
+    NSString *_airportCode;
     double _latitude;
     double _longitude;
     double _accuracy;
@@ -26,6 +27,7 @@
 
 @property (readonly, nonatomic) double accuracy; // @synthesize accuracy=_accuracy;
 @property (readonly, nonatomic) NSString *address; // @synthesize address=_address;
+@property (readonly, nonatomic) NSString *airportCode; // @synthesize airportCode=_airportCode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSData *handle; // @synthesize handle=_handle;
@@ -45,17 +47,19 @@
 - (void)encodeWithCoder:(id)arg1;
 - (double)geocodeAccuracy;
 - (id)geocodeAddress;
+- (id)geocodeAirportCode;
 - (id)geocodeHandle;
 - (BOOL)geocodeIsEnd;
 - (BOOL)geocodeIsStart;
 - (id)geocodeLabel;
 - (double)geocodeLatitude;
 - (double)geocodeLongitude;
+- (id)geocodedLocationWithLabel:(id)arg1 address:(id)arg2 latitude:(double)arg3 longitude:(double)arg4 accuracy:(double)arg5 handle:(id)arg6;
 - (id)geocodedLocationWithLatitude:(double)arg1 longitude:(double)arg2 accuracy:(double)arg3 handle:(id)arg4;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithType:(unsigned long long)arg1 label:(id)arg2 address:(id)arg3 accuracy:(double)arg4 quality:(double)arg5;
-- (id)initWithType:(unsigned long long)arg1 label:(id)arg2 address:(id)arg3 latitude:(double)arg4 longitude:(double)arg5 accuracy:(double)arg6 quality:(double)arg7 handle:(id)arg8;
-- (id)initWithType:(unsigned long long)arg1 label:(id)arg2 latitude:(double)arg3 longitude:(double)arg4 accuracy:(double)arg5 quality:(double)arg6;
+- (id)initWithType:(unsigned long long)arg1 label:(id)arg2 address:(id)arg3 airportCode:(id)arg4 accuracy:(double)arg5 quality:(double)arg6;
+- (id)initWithType:(unsigned long long)arg1 label:(id)arg2 address:(id)arg3 airportCode:(id)arg4 latitude:(double)arg5 longitude:(double)arg6 accuracy:(double)arg7 quality:(double)arg8 handle:(id)arg9;
+- (id)initWithType:(unsigned long long)arg1 label:(id)arg2 airportCode:(id)arg3 latitude:(double)arg4 longitude:(double)arg5 accuracy:(double)arg6 quality:(double)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToStorageLocation:(id)arg1;
 

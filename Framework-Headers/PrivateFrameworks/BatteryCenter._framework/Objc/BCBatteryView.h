@@ -4,30 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/_UIBatteryView.h>
 
-@class UIImageView;
-
-@interface BCBatteryView : UIView
+@interface BCBatteryView : _UIBatteryView
 {
-    UIImageView *_shellImageView;
-    UIImageView *_highCapacityFillImageView;
-    UIImageView *_lowCapacityFillImageView;
     BOOL _lowBattery;
-    unsigned long long _percentCharge;
 }
 
-@property (nonatomic, getter=isLowBattery) BOOL lowBattery; // @synthesize lowBattery=_lowBattery;
-@property (nonatomic) unsigned long long percentCharge; // @synthesize percentCharge=_percentCharge;
+@property (nonatomic, getter=isLowBattery) BOOL lowBattery;
 
-+ (id)chargeGlyph;
-- (void).cxx_destruct;
-- (id)_batteryColorForLowCapacity:(BOOL)arg1;
-- (struct UIEdgeInsets)_edgeInsetsForBatteryInsidesForScale:(double)arg1;
-- (void)_setPercentCharge:(unsigned long long)arg1 force:(BOOL)arg2;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutSubviews;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (id)init;
+- (id)initWithSizeCategory:(long long)arg1;
 
 @end
 

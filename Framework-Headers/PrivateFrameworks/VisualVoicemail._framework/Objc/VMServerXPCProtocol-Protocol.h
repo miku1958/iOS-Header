@@ -6,20 +6,23 @@
 
 #import <VisualVoicemail/NSObject-Protocol.h>
 
-@class NSString, VMVoicemailGreeting;
+@class NSArray, NSString, VMVoicemailGreeting;
 
 @protocol VMServerXPCProtocol <NSObject>
-- (void)allVoicemails:(void (^)(NSArray *))arg1;
+- (void)allVoicemails:(void (^)(NSOrderedSet *))arg1;
 - (void)changePassword:(NSString *)arg1 completionBlock:(void (^)(NSError *))arg2;
 - (void)removeAllVoicemails;
 - (void)removeVoicemailFromTrashWithIdentifier:(long long)arg1;
 - (void)reportTranscriptionProblemForIdentifier:(long long)arg1;
 - (void)reportTranscriptionRatedAccurate:(BOOL)arg1 forIdentifier:(long long)arg2;
-- (void)requestInitialState:(void (^)(VMVoicemailCapabilities *, NSArray *, BOOL, BOOL, BOOL))arg1;
+- (void)requestInitialState:(void (^)(VMVoicemailCapabilities *, NSOrderedSet *, BOOL, BOOL, BOOL))arg1;
+- (void)retrieveDataForIdentifier:(long long)arg1;
 - (void)retrieveVoicemailGreeting:(void (^)(VMVoicemailGreeting *, NSError *))arg1;
 - (void)setDeletedForIdentifier:(long long)arg1;
+- (void)setDeletedForIdentifiers:(NSArray *)arg1;
 - (void)setReadForIdentifier:(long long)arg1;
-- (void)setTrashedForIdentifier:(long long)arg1;
+- (void)setReadForIdentifiers:(NSArray *)arg1;
+- (void)setTrashedForIdentifiers:(NSArray *)arg1;
 - (void)setVoicemailGreeting:(VMVoicemailGreeting *)arg1 completionBlock:(void (^)(NSError *))arg2;
 - (void)synchronize;
 @end

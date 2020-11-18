@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (void)controllerWillShowSignatureCaptureView:(id)arg1;
 - (void)controllerWillShowSignatureManagerView:(id)arg1;
 - (void)editDetectedForAnnotationController:(id)arg1;
-- (void)penStrokeCompletedForAnnotationController:(id)arg1;
 
 @end
 

@@ -21,12 +21,12 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType shareTokenModifiedBlock; // @synthesize shareTokenModifiedBlock=_shareTokenModifiedBlock;
 
 - (void).cxx_destruct;
+- (id)generateRequestOperations;
 - (id)initWithShareTokenInfos:(id)arg1;
 - (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 
 @end
 

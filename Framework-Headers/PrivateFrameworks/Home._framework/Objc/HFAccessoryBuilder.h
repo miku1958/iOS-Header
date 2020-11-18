@@ -40,6 +40,7 @@
 - (id)accessories;
 - (id)commitItem;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
+- (id)removeItemFromHome;
 
 @end
 

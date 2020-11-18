@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType notificationMarkedRead; // @synthesize notificationMarkedRead=_notificationMarkedRead;
 @property (strong, nonatomic) NSMutableSet *successfulNotificationIDs; // @synthesize successfulNotificationIDs=_successfulNotificationIDs;
 
++ (long long)isPredominatelyDownload;
 - (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleNotificationID:(id)arg1 withResponse:(id)arg2;

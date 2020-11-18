@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableSet;
 
@@ -16,6 +16,7 @@
 
 @property (readonly, nonatomic) BOOL isAwaitingAcknowledgement;
 
+- (void).cxx_destruct;
 - (void)_accessDelegateIdentifiersInCriticalSectionWithBlock:(CDUnknownBlockType)arg1;
 - (id)awaitAcknowledgementFromServiceDelegate:(id)arg1;
 - (void)dealloc;

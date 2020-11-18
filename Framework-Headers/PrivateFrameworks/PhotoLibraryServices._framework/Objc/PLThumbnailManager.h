@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSLock, NSMutableArray, NSMutableDictionary, NSMutableSet;
 @protocol PLThumbPersistenceManager;
@@ -32,10 +32,15 @@
 + (BOOL)_compareAsset:(id)arg1 toMetadata:(id)arg2;
 + (int)_configurationThumbnailFormat;
 + (int)_configurationThumbnailVersion;
++ (id)_fastThumbPersistenceManagers;
 + (id)_fetchCameraPreviewWellMetadata;
++ (id)_imageTableSpecifications;
++ (id)_preheatItemSourcesByFormatID;
 + (void)_recordRebuildThumbnailsAttempt;
 + (void)_refetchAndSaveCameraPreviewWellImage;
 + (void)_saveCameraPreviewWellImage:(struct CGImage *)arg1 assetUUID:(id)arg2;
++ (id)_slowThumbPersistenceManagers;
++ (id)_supportedTableFormats;
 + (int)_supportedThumbnailFormatIDFromGeneralFormatID:(int)arg1;
 + (BOOL)_thumbnailChangeContainsOnlyTableDeprecationsFromVersion:(int)arg1 toVersion:(int)arg2 fromFormat:(int)arg3 toFormat:(int)arg4;
 + (void)_updateCameraPreviewWellMetadataFromAsset:(id)arg1;
@@ -68,26 +73,22 @@
 + (int)thumbnailVersionCurrent;
 + (BOOL)useImageTableForFormat:(int)arg1;
 - (id)_dataForAsset:(id)arg1 format:(int)arg2 width:(int *)arg3 height:(int *)arg4 bytesPerRow:(int *)arg5 dataWidth:(int *)arg6 dataHeight:(int *)arg7 imageDataOffset:(int *)arg8 imageDataFormat:(int *)arg9;
-- (id)_dataForInFlightAsset:(id)arg1 format:(int)arg2 width:(int *)arg3 height:(int *)arg4 bytesPerRow:(int *)arg5 dataWidth:(int *)arg6 dataHeight:(int *)arg7 imageDataOffset:(int *)arg8;
 - (void)_discardAlreadyFailedAssetObjectIDsForRebuild;
-- (void)_horse_setThumbnailsForPhoto:(id)arg1 withImage:(id)arg2;
 - (long long)_rebuildAssetThumbnailsWithLimit:(int)arg1 error:(id *)arg2;
+- (void)_setThumbnailsWithIdentifier:(id)arg1 thumbnailIndex:(unsigned long long)arg2 image:(id)arg3 assetUUID:(id)arg4;
 - (id)_tableDescriptions;
 - (id)_thumbManagerForFormatID:(int)arg1;
 - (id)beginThumbnailSafePropertyUpdatesOnAsset:(id)arg1;
-- (BOOL)copyThumbnailsFromAsset:(id)arg1 toAsset:(id)arg2;
 - (id)dataForPhoto:(id)arg1 format:(int)arg2 allowPlaceholder:(BOOL)arg3 width:(int *)arg4 height:(int *)arg5 bytesPerRow:(int *)arg6 dataWidth:(int *)arg7 dataHeight:(int *)arg8 imageDataOffset:(int *)arg9;
 - (void)dealloc;
 - (void)deleteThumbnailsWithIdentifier:(id)arg1 orIndex:(unsigned long long)arg2 uuid:(id)arg3;
 - (void)discardCachedThumbnailDownscalerContexts;
 - (void)endThumbnailSafePropertyUpdatesOnAsset:(id)arg1 withToken:(id)arg2;
 - (id)init;
-- (id)newThumbnailForAsset:(id)arg1 format:(id)arg2;
+- (struct CGImage *)newImageForAsset:(id)arg1 format:(id)arg2;
 - (id)placeholderDataForFormat:(int)arg1 photoImageSize:(struct CGSize)arg2 width:(int *)arg3 height:(int *)arg4 bytesPerRow:(int *)arg5 dataWidth:(int *)arg6 dataHeight:(int *)arg7 imageDataOffset:(int *)arg8;
-- (struct __CFDictionary *)placeholderThumbnailDataByFormatID;
 - (id)preheatItemSourceForFormatID:(int)arg1;
-- (void)setThumbnails:(struct __CFDictionary *)arg1 forPhoto:(id)arg2;
-- (void)setThumbnailsForPhoto:(id)arg1 withImage:(id)arg2;
+- (void)setThumbnailsForAsset:(id)arg1 withImage:(id)arg2;
 - (id)thumbnailJPEGPathForPhoto:(id)arg1;
 
 @end

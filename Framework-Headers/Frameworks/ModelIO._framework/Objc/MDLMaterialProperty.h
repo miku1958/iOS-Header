@@ -25,11 +25,10 @@
     MDLMaterialProperty *_overrider;
     MDLMaterialProperty *_overridee;
     unsigned long long _type;
-    NSURL *_URLValue;
     CDStruct_14d5dc5e _matrix4x4;
 }
 
-@property (copy, nonatomic) NSURL *URLValue; // @synthesize URLValue=_URLValue;
+@property (copy, nonatomic) NSURL *URLValue;
 @property (nonatomic) struct CGColor *color;
 @property (nonatomic) MISSING_TYPE *float2Value;
 @property (nonatomic) MISSING_TYPE *float3Value;
@@ -41,9 +40,10 @@
 @property (nonatomic) unsigned long long semantic;
 @property (copy, nonatomic) NSString *stringValue;
 @property (strong, nonatomic) MDLTextureSampler *textureSamplerValue;
-@property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
+@property (nonatomic) unsigned long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
+- (void)clear;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 semantic:(unsigned long long)arg2;
@@ -59,7 +59,6 @@
 - (id)initWithName:(id)arg1 semantic:(unsigned long long)arg2 textureSampler:(id)arg3;
 - (void)setMatrix4x4Value:(CDStruct_14d5dc5e)arg1;
 - (void)setProperties:(id)arg1;
-- (void)setUrl:(id)arg1;
 
 @end
 

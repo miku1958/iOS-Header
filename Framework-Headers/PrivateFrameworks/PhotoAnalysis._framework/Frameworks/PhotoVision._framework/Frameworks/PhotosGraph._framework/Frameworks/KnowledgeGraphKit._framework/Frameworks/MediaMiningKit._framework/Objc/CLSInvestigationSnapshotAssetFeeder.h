@@ -29,6 +29,7 @@
 - (id)endDate;
 - (id)endDateComponents;
 - (void)enumerateItemsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateItemsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)initWithSnapshotBundle:(id)arg1;
 - (id)itemAtIndex:(unsigned long long)arg1;
 - (id)itemMetadataAtIndex:(unsigned long long)arg1 withKeys:(id)arg2;

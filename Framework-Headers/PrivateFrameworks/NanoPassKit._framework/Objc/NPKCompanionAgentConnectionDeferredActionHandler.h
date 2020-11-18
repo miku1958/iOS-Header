@@ -14,9 +14,11 @@
     NSMutableDictionary *_deferredActions;
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSMutableDictionary *_deferredSharedPaymentWebServiceContexts;
+    NSMutableDictionary *_deferredAddedPaymentPasses;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *deferredActions; // @synthesize deferredActions=_deferredActions;
+@property (strong, nonatomic) NSMutableDictionary *deferredAddedPaymentPasses; // @synthesize deferredAddedPaymentPasses=_deferredAddedPaymentPasses;
 @property (strong, nonatomic) NSMutableDictionary *deferredSharedPaymentWebServiceContexts; // @synthesize deferredSharedPaymentWebServiceContexts=_deferredSharedPaymentWebServiceContexts;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 
@@ -29,7 +31,11 @@
 - (void)_handleDevicePairingFailure:(id)arg1;
 - (void)_handleDeviceUnpaired:(id)arg1;
 - (void)_performDeferredActions;
+- (void)addDeferredPaymentPass:(id)arg1 forDevice:(id)arg2;
 - (void)dealloc;
+- (id)deferredPaymentPassUniqueIDsForDevice:(id)arg1;
+- (id)deferredPaymentPassWithUniqueID:(id)arg1 forDevice:(id)arg2;
+- (id)deferredPaymentPassesForDevice:(id)arg1;
 - (id)deferredSharedPaymentWebServiceContextForDevice:(id)arg1;
 - (id)init;
 - (void)performActionWhenCompanionAgentIsAvailable:(CDUnknownBlockType)arg1 forDevice:(id)arg2;

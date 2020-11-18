@@ -15,10 +15,17 @@
 
 + (id)addressValueForFormatKey:(id)arg1 postalAddress:(id)arg2;
 + (id)attributedStringFromPostalAddress:(id)arg1 style:(long long)arg2 withDefaultAttributes:(id)arg3;
++ (id)fieldArrangementWithString:(id)arg1;
++ (id)fieldLabelMapWithPlist:(id)arg1;
 + (id)getCountryCodeFromPostalAddress:(id)arg1;
++ (id)localizedCountryNameForISOCountryCode:(id)arg1;
++ (id)localizedStringForPostalAddressString:(id)arg1;
 + (id)postalAddressPropertyKeyForFormatPropertyKey:(id)arg1;
 + (id)singleLineStringFromPostalAddress:(id)arg1 addCountryName:(BOOL)arg2;
++ (id)specificationForCountry:(id)arg1;
++ (id)specificationWithAddressFormatPlist:(id)arg1;
 + (id)stringFromPostalAddress:(id)arg1 style:(long long)arg2;
++ (id)supportedCountries;
 - (id)_addressPropertyKeyForDDResult:(struct __DDResult *)arg1 hasCountry:(BOOL *)arg2;
 - (id)attributedStringForObjectValue:(id)arg1 withDefaultAttributes:(id)arg2;
 - (id)attributedStringFromPostalAddress:(id)arg1 name:(id)arg2 organization:(id)arg3 attributes:(id)arg4;

@@ -13,6 +13,7 @@
 @interface _MRNowPlayingClientProtobuf : PBCodable <NSCopying>
 {
     NSString *_bundleIdentifier;
+    NSString *_displayName;
     int _nowPlayingVisibility;
     NSString *_parentApplicationBundleIdentifier;
     int _processIdentifier;
@@ -26,7 +27,9 @@
 }
 
 @property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, nonatomic) BOOL hasBundleIdentifier;
+@property (readonly, nonatomic) BOOL hasDisplayName;
 @property (nonatomic) BOOL hasNowPlayingVisibility;
 @property (readonly, nonatomic) BOOL hasParentApplicationBundleIdentifier;
 @property (nonatomic) BOOL hasProcessIdentifier;

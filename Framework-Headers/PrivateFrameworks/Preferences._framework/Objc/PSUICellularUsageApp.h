@@ -13,13 +13,21 @@
     NSString *_bundleIdentifier;
     NSString *_displayName;
     double _totalBytesUsed;
-    double _roamingBytesUsed;
+    double _totalRoamingBytesUsed;
+    double _bytesUsedThisCycle;
+    double _roamingBytesUsedThisCycle;
+    double _bytesUsedLastCycle;
+    double _roamingBytesUsedLastCycle;
 }
 
 @property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (nonatomic) double bytesUsedLastCycle; // @synthesize bytesUsedLastCycle=_bytesUsedLastCycle;
+@property (nonatomic) double bytesUsedThisCycle; // @synthesize bytesUsedThisCycle=_bytesUsedThisCycle;
 @property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property (nonatomic) double roamingBytesUsed; // @synthesize roamingBytesUsed=_roamingBytesUsed;
+@property (nonatomic) double roamingBytesUsedLastCycle; // @synthesize roamingBytesUsedLastCycle=_roamingBytesUsedLastCycle;
+@property (nonatomic) double roamingBytesUsedThisCycle; // @synthesize roamingBytesUsedThisCycle=_roamingBytesUsedThisCycle;
 @property (nonatomic) double totalBytesUsed; // @synthesize totalBytesUsed=_totalBytesUsed;
+@property (nonatomic) double totalRoamingBytesUsed; // @synthesize totalRoamingBytesUsed=_totalRoamingBytesUsed;
 
 - (void).cxx_destruct;
 - (id)description;

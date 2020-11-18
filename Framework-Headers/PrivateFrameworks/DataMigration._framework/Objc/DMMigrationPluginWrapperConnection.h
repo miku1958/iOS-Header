@@ -4,14 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <DataMigration/DMXPCConnection.h>
+#import <objc/NSObject.h>
 
-@interface DMMigrationPluginWrapperConnection : DMXPCConnection
+@class DMXPCConnection;
+
+@interface DMMigrationPluginWrapperConnection : NSObject
 {
+    DMXPCConnection *_connection;
 }
 
 + (id)connection;
+- (void).cxx_destruct;
 - (void)handleMessage:(id)arg1;
+- (id)init;
+- (void)invalidate;
+- (int)pid;
+- (void)resume;
 - (void)runPluginAtPath:(id)arg1 withContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

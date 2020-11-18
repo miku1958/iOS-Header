@@ -4,24 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+@protocol CNContactsLogger;
 
 @interface CNTCC : NSObject
 {
     long long _simulateType;
     BOOL _simulateAccessPrompt;
     BOOL _simulateAccessPromptGranted;
-    unsigned int _simulateAccessPromptDelay;
+    double _simulateAccessPromptDelay;
+    id<CNContactsLogger> _logger;
 }
 
+@property (readonly, nonatomic) id<CNContactsLogger> logger; // @synthesize logger=_logger;
+
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)_simulateQueue;
 - (int)accessPreflight;
 - (void)accessRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned char)checkAuditToken:(CDStruct_6ad76789)arg1;
+- (id)init;
+- (id)initWithEnvironment:(id)arg1;
 - (unsigned char)isAccessRestricted;
 - (void)simulate:(long long)arg1;
-- (void)simulateIfAccessPromptDisplayedThenUserGrantedAccess:(BOOL)arg1 withDelay:(unsigned int)arg2;
+- (void)simulateIfAccessPromptDisplayedThenUserGrantedAccess:(BOOL)arg1 withDelay:(double)arg2;
 
 @end
 

@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <AssistantServices/AFAnalyticsObserver-Protocol.h>
+#import <AssistantServices/AFInvalidating-Protocol.h>
 
 @class NSString, NSXPCConnection;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
-@interface AFAnalyticsObserverConnection : NSObject <AFAnalyticsObserver>
+@interface AFAnalyticsObserverConnection : NSObject <AFAnalyticsObserver, AFInvalidating>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_semaphore> *_semaphore;
@@ -30,8 +31,10 @@
 - (void)_connectionInterrupted;
 - (void)_connectionInvalidated;
 - (void)dealloc;
-- (oneway void)didObserveEvents:(id)arg1;
+- (oneway void)didObserveEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)flushWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithObservation:(CDUnknownBlockType)arg1;
+- (void)invalidate;
 - (void)waitUntilInvalidated;
 
 @end

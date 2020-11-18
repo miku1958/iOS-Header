@@ -14,7 +14,10 @@
     unsigned long long textBytesCharCount;
     unsigned short *textBytes;
     IKCSSToken *reconsumeToken;
+    IKCSSToken *_currentToken;
 }
+
+@property (readonly, nonatomic) IKCSSToken *currentToken; // @synthesize currentToken=_currentToken;
 
 + (BOOL)isDigit:(unsigned short)arg1;
 + (BOOL)isHexDigit:(unsigned short)arg1;
@@ -33,6 +36,7 @@
 - (id)_consumeBackslash:(unsigned long long)arg1 consumed:(unsigned long long *)arg2;
 - (void)_consumeBadUrlRemnants:(unsigned long long)arg1 consumed:(unsigned long long *)arg2;
 - (id)_consumeCaret:(unsigned long long)arg1 consumed:(unsigned long long *)arg2;
+- (id)_consumeComment:(unsigned long long)arg1 consumed:(unsigned long long *)arg2;
 - (id)_consumeDollar:(unsigned long long)arg1 consumed:(unsigned long long *)arg2;
 - (id)_consumeDot:(unsigned long long)arg1 consumed:(unsigned long long *)arg2;
 - (unsigned short)_consumeEscapedCodePoint:(unsigned long long)arg1 consumed:(unsigned long long *)arg2;

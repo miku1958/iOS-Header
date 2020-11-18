@@ -7,7 +7,7 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @class PXAssetsDataSource, PXAssetsScene, PXAssetsTilingLayout, PXTilingChange;
-@protocol PXTileIdentifierConverter;
+@protocol PXTileIdentifierConverter, PXTileTransitionAnimationCoordinator;
 
 @protocol PXAssetsSceneDelegate <NSObject>
 - (PXAssetsTilingLayout *)assetsScene:(PXAssetsScene *)arg1 layoutForDataSource:(PXAssetsDataSource *)arg2;
@@ -15,6 +15,7 @@
 @optional
 - (void)assetsScene:(PXAssetsScene *)arg1 didTransitionToDataSource:(PXAssetsDataSource *)arg2;
 - (id<PXTileIdentifierConverter>)assetsScene:(PXAssetsScene *)arg1 tileIdentifierConverterForChange:(PXTilingChange *)arg2;
+- (id<PXTileTransitionAnimationCoordinator>)assetsScene:(PXAssetsScene *)arg1 transitionAnimationCoordinatorForChange:(PXTilingChange *)arg2;
 - (void)assetsScene:(PXAssetsScene *)arg1 willTransitionToDataSource:(PXAssetsDataSource *)arg2;
 @end
 

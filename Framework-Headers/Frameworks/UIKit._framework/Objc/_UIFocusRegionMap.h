@@ -6,26 +6,27 @@
 
 #import <Foundation/NSObject.h>
 
-@class UIView, _UIFocusRegionMapSnapshot;
+@class UIFocusSystem, UIView, _UIFocusRegionMapSnapshot;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusRegionMap : NSObject
 {
     UIView *_rootView;
-    UIView *_favoredFocusCandidateView;
+    UIFocusSystem *_focusSystem;
     _UIFocusRegionMapSnapshot *_lastSnapshot;
     struct CGRect _minimumSearchArea;
 }
 
-@property (weak, nonatomic) UIView *favoredFocusCandidateView; // @synthesize favoredFocusCandidateView=_favoredFocusCandidateView;
+@property (strong, nonatomic) UIFocusSystem *focusSystem; // @synthesize focusSystem=_focusSystem;
 @property (strong, nonatomic) _UIFocusRegionMapSnapshot *lastSnapshot; // @synthesize lastSnapshot=_lastSnapshot;
 @property (nonatomic) struct CGRect minimumSearchArea; // @synthesize minimumSearchArea=_minimumSearchArea;
 @property (weak, nonatomic) UIView *rootView; // @synthesize rootView=_rootView;
 
 - (void).cxx_destruct;
-- (id)_closestFocusableRegionInArray:(id)arg1 toPoint:(struct CGPoint)arg2 usingHeading:(unsigned long long)arg3;
 - (id)_closestFocusableRegionInArray:(id)arg1 toPoint:(struct CGPoint)arg2 usingHeading:(unsigned long long)arg3 withFocusedView:(id)arg4 consideringFavoredRegion:(BOOL)arg5 includingFocusedView:(BOOL)arg6;
 - (BOOL)_containsFocusableRegionForView:(id)arg1;
+- (id)_contextWithSourceView:(id)arg1 focusedContainerGuide:(id)arg2 movement:(id)arg3;
+- (id)_contextWithSourceView:(id)arg1 focusedRegion:(id)arg2 movement:(id)arg3;
 - (struct CGPoint)_focusCandidateSearchOriginForFocusedFrame:(struct CGRect)arg1 heading:(unsigned long long)arg2 minimumSearchArea:(struct CGRect)arg3;
 - (struct CGRect)_focusCandidateSearchRectForFocusedFrame:(struct CGRect)arg1 heading:(unsigned long long)arg2 minimumSearchArea:(struct CGRect)arg3;
 - (id)_nearestCandidateForFocusMovement:(id)arg1 fromFocusedView:(id)arg2 withFocusedRect:(struct CGRect)arg3 includingFocusedView:(BOOL)arg4;
@@ -33,11 +34,9 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_viewSearchRectForFocusedFrame:(struct CGRect)arg1 focusCandidateSearchRect:(struct CGRect)arg2 includesFocusedFrame:(BOOL)arg3;
 - (struct CGRect)_viewSearchRectForSnapshotRect:(struct CGRect)arg1;
 - (id)debugQuickLookObject;
-- (id)inferredPreferredFocusedSubviewForView:(id)arg1;
-- (id)initWithRootView:(id)arg1;
+- (id)initWithRootView:(id)arg1 focusSystem:(id)arg2;
 - (id)linearlyOrderedCandidatesForFocusMovement:(id)arg1 fromView:(id)arg2 indexForFocusedView:(unsigned long long *)arg3;
 - (id)linearlyOrderedFocusRegionMapEntriesForFocusMovement:(id)arg1 fromView:(id)arg2;
-- (id)nearestCandidateForFocusMovement:(id)arg1 fromView:(id)arg2;
 - (id)nearestCandidateFromRect:(struct CGRect)arg1;
 
 @end

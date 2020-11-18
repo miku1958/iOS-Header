@@ -9,10 +9,11 @@
 #import <GeoServices/GEOTransitNamedItem-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOStyleAttributes, NSMutableArray, NSString;
+@class GEOLatLng, GEOStyleAttributes, NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPBTransitHall : PBCodable <GEOTransitNamedItem, NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     unsigned long long _muid;
     unsigned int _hallIndex;
     GEOLatLng *_location;
@@ -45,17 +46,19 @@
 @property (nonatomic) unsigned int stationIndex; // @synthesize stationIndex=_stationIndex;
 @property (strong, nonatomic) GEOStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) NSMutableArray *zoomNames; // @synthesize zoomNames=_zoomNames;
 
 + (Class)zoomNameType;
+- (void).cxx_destruct;
 - (void)addZoomName:(id)arg1;
 - (id)bestName;
 - (id)bestNameWithLocale:(out id *)arg1;
 - (void)clearZoomNames;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)dictionaryRepresentation;
+- (id)identifier;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

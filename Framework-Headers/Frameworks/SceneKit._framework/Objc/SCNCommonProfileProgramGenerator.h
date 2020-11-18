@@ -6,10 +6,9 @@
 
 #import <Foundation/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface SCNCommonProfileProgramGenerator : NSObject
 {
-    struct _opaque_pthread_mutex_t _programMutex;
+    struct os_unfair_lock_s _programMutex;
     struct __CFDictionary *_shaders;
     struct __CFDictionary *_trackedResourcesToHashcode;
 }
@@ -21,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)emptyShaderCache;
 - (id)init;
-- (struct __C3DFXProgram *)programWithHashCode:(struct __C3DRendererElementProgramHashCode *)arg1 trackedResource:(id)arg2 introspectionDataPtr:(void *)arg3;
+- (struct __C3DFXProgram *)programWithHashCode:(struct __C3DRendererElementProgramHashCode *)arg1 engineContext:(struct __C3DEngineContext *)arg2 trackedResource:(id)arg3 introspectionDataPtr:(void *)arg4;
 - (void)releaseProgramForResource:(id)arg1;
 
 @end

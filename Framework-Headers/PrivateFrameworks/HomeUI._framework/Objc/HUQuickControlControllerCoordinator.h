@@ -57,17 +57,16 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) HFOverrideCharacteristicValueSource *valueSource; // @synthesize valueSource=_valueSource;
 
-+ (id)_prioritizedControlControllers;
 - (void).cxx_destruct;
 - (id)_characteristicUpdateSuppressionReasonForController:(id)arg1;
 - (id)_controllerForControllableCharacteristic:(id)arg1;
-- (void)_createControlControllers;
+- (void)_createControlControllersForControlItems:(id)arg1;
 - (id)_itemToUseForIconAndStatus;
 - (void)_updateIconDescriptorNotifyingDelegate:(BOOL)arg1;
 - (void)_updateReachabilityStateNotifiyingDelegate:(BOOL)arg1;
 - (void)_updateStatusTextNotifyingDelegate:(BOOL)arg1;
 - (void)dealloc;
-- (id)initWithItem:(id)arg1 home:(id)arg2 delegate:(id)arg3;
+- (id)initWithItem:(id)arg1 controlItems:(id)arg2 home:(id)arg3 delegate:(id)arg4;
 - (void)itemManager:(id)arg1 didUpdateResultsForItem:(id)arg2 atIndexPath:(id)arg3;
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
 - (void)quickControlController:(id)arg1 didUpdateOverrideStatusWithPrimaryText:(id)arg2 secondaryText:(id)arg3;

@@ -16,6 +16,7 @@
     NSMutableDictionary *_frameworkPayload;
     NSString *_title;
     NSURL *_webpageURL;
+    NSURL *_referrerURL;
     SFCompanionAdvertiser *_advertiser;
     SFCompanionAdvertiser *_resumerAdvertiser;
     NSMutableSet *_dirtyPayloadIdentifiers;
@@ -35,7 +36,6 @@
     BOOL _userActivityWasCreatedSent;
     BOOL _indexInProcess;
     long long _inWillSaveCallback;
-    CSSearchableItemAttributeSet *_contentAttributeSet;
     NSDate *_expirationDate;
     NSString *_contentUserAction;
     NSString *_teamIdentifier;
@@ -102,6 +102,7 @@
 @property (strong) NSMutableDictionary *payloadDataCache; // @synthesize payloadDataCache=_payloadDataCache;
 @property (strong) NSMutableDictionary *payloadObjects; // @synthesize payloadObjects=_payloadObjects;
 @property (strong) NSMutableDictionary *payloadUpdateBlocks; // @synthesize payloadUpdateBlocks=_payloadUpdateBlocks;
+@property (copy) NSURL *referrerURL; // @dynamic referrerURL;
 @property (copy) NSSet *requiredUserInfoKeys; // @dynamic requiredUserInfoKeys;
 @property (copy) NSSet *requiredUserInfoKeys; // @synthesize requiredUserInfoKeys=_requiredUserInfoKeys;
 @property BOOL sendToServerPending; // @synthesize sendToServerPending=_sendToServerPending;
@@ -132,7 +133,6 @@
 + (BOOL)determineIfUserActivityIsCurrent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)fetchUserActivityWithUUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)fetchUserActivityWithUUID:(id)arg1 intervalToWaitForDocumentSynchronizationToComplete:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
-+ (void)initialize;
 + (BOOL)isIndexPendingForUUID:(id)arg1;
 + (id)observers;
 + (id)registerForSuggestedActionNudgeOfType:(unsigned long long)arg1 withOptions:(id)arg2 block:(CDUnknownBlockType)arg3;
@@ -158,7 +158,7 @@
 - (id)callWillSaveDelegateIfDirtyAndPackageUpData:(BOOL)arg1 clearDirty:(BOOL)arg2;
 - (id)contentAttributes;
 - (id)contentType;
-- (id)copyWithNewUUID;
+- (id)copyWithNewUUID:(BOOL)arg1;
 - (BOOL)createUserActivityDataWithSaving:(BOOL)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)createUserActivityStringsWithSaving:(BOOL)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;

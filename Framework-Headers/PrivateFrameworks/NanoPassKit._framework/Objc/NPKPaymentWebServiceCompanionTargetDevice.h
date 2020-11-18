@@ -40,7 +40,9 @@
 
 - (void).cxx_destruct;
 - (BOOL)_deviceIsDaytonaOrLater;
-- (void)_getPairingInfoWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)_deviceIsFortuneOrLater;
+- (BOOL)_deviceSupportAccessExpressMode;
+- (void)_getPairingInfoAndSetAuthRandomIfNotPaired:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_sendProtobuf:(id)arg1 responseExpected:(BOOL)arg2;
 - (id)_sendProtobuf:(id)arg1 responseExpected:(BOOL)arg2 extraOptions:(id)arg3;
 - (id)_serialNumbersOfAllPairedDevices;
@@ -51,7 +53,8 @@
 - (void)archiveContext:(id)arg1;
 - (id)bridgedClientInfo;
 - (void)cancelOutstandingEnableServiceModeRequests;
-- (void)cancelOutstandingSetDefaultExpressFelicaTransitPassRequests;
+- (void)cancelOutstandingSetDefaultExpressPassRequestsWithExpressMode:(id)arg1;
+- (BOOL)claimSecureElementForCurrentUser;
 - (void)configurationDataResponse:(id)arg1;
 - (id)deviceDescriptionForPaymentWebService:(id)arg1;
 - (id)deviceName;
@@ -72,10 +75,13 @@
 - (void)handleShowPaymentSetupRequest:(id)arg1;
 - (void)handleTransactionDefaultsNeededRequest:(id)arg1;
 - (void)handleUpdatedAppletState:(id)arg1;
+- (void)handleUpdatedPeerPaymentWebServiceContext:(id)arg1;
 - (void)handleValueAddedServiceTransactions:(id)arg1;
+- (void)handleWebServiceContextDidChangeRequest:(id)arg1;
 - (void)handleWebServiceContextNeededRequest:(id)arg1;
 - (id)init;
 - (id)initWithContext:(unsigned long long)arg1 responseQueue:(id)arg2;
+- (unsigned long long)maximumPaymentCards;
 - (void)noteProvisioningDidBegin;
 - (void)noteProvisioningDidEnd;
 - (void)noteProvisioningUserInterfaceDidAppear;
@@ -90,6 +96,7 @@
 - (id)paymentWebService:(id)arg1 filterVerificationChannels:(id)arg2;
 - (void)paymentWebService:(id)arg1 handlePotentialExpressPass:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)paymentWebService:(id)arg1 hasPassesOfType:(unsigned long long)arg2;
+- (id)paymentWebService:(id)arg1 passesOfType:(unsigned long long)arg2;
 - (void)paymentWebService:(id)arg1 provisioningDataWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 queueConnectionToTrustedServiceManagerForPushTopic:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 registrationDataWithAuthToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -101,10 +108,16 @@
 - (void)paymentWebService:(id)arg1 validateAddPreconditionsWithCompletion:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 validateTransferPreconditionsWithCompletion:(CDUnknownBlockType)arg2;
 - (void)paymentWebServiceDidUpdateConfiguration:(id)arg1;
+- (void)peerPaymentRegisterResponse:(id)arg1;
+- (void)peerPaymentRegisterWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)peerPaymentUnregisterResponse:(id)arg1;
+- (void)peerPaymentUnregisterWithCompletion:(CDUnknownBlockType)arg1;
 - (void)pendingRemovalResponse:(id)arg1;
 - (void)preconditionNotMet:(id)arg1;
 - (void)preferredAIDRequest:(id)arg1;
 - (void)preferredAIDResponse:(id)arg1;
+- (void)provisionPeerPaymentPassResponse:(id)arg1;
+- (void)provisionPeerPaymentPassWithCompletion:(CDUnknownBlockType)arg1;
 - (void)provisioningDataResponse:(id)arg1;
 - (void)queueTSMConnectionResponse:(id)arg1;
 - (void)registrationDataResponse:(id)arg1;
@@ -113,19 +126,24 @@
 - (void)secureElementCardsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)secureElementGetAppletsResponse:(id)arg1;
 - (id)secureElementIdentifiers;
+- (unsigned long long)secureElementOwnershipStateForCurrentUser;
 - (void)secureElementRemoveAppletsResponse:(id)arg1;
+- (void)sendCompanionMigratedEventToWatch;
 - (void)sendPaymentOptionsDefaultsToWatch;
 - (void)sendWebServiceContextToWatch:(id)arg1;
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(BOOL)arg4 error:(id)arg5;
 - (void)service:(id)arg1 account:(id)arg2 incomingUnhandledProtobuf:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)service:(id)arg1 activeAccountsChanged:(id)arg2;
 - (void)service:(id)arg1 devicesChanged:(id)arg2;
-- (void)setDefaultExpressFelicaTransitPassIdentifier:(id)arg1 applicationIdentifier:(id)arg2 requestAuthorization:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)setExpressFelicaTransitPassResponse:(id)arg1;
+- (void)setExpressPassResponse:(id)arg1;
+- (void)setExpressWithPassInformation:(id)arg1 requestAuthorization:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setMaximumPaymentCards:(unsigned long long)arg1;
 - (void)setNewAuthRandomIfNecessaryAtBeginningOfProvisioningFlow:(CDUnknownBlockType)arg1;
 - (void)setNewAuthRandomResponse:(id)arg1;
 - (void)signDataResponse:(id)arg1;
 - (BOOL)supportsAutomaticPassPresentation;
+- (BOOL)supportsExpressModeForExpressPassType:(long long)arg1;
+- (id)trustedDeviceEnrollmentInfoForWebService:(id)arg1;
 - (void)updatePaymentPass:(id)arg1;
 - (void)updatePushToken:(id)arg1;
 

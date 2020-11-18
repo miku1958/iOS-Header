@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSCache, NSMapTable, NSMutableDictionary;
 @protocol OS_dispatch_queue;
@@ -19,7 +19,6 @@
 
 - (void).cxx_destruct;
 - (void)_executeRetrievalBlock:(CDUnknownBlockType)arg1 forKey:(id)arg2;
-- (void)_queue_executeDeliveryBlocksForKey:(id)arg1 withItem:(id)arg2;
 - (id)init;
 - (id)initWithCache:(id)arg1;
 - (void)retrieveItemForKey:(id)arg1 retrievalBlock:(CDUnknownBlockType)arg2 deliveryBlock:(CDUnknownBlockType)arg3;

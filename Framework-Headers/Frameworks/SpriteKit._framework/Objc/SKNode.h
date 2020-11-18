@@ -29,6 +29,7 @@
     BOOL _userInteractionEnabled;
     BOOL _performFullCapture;
     SKReachConstraints *_reachConstraints;
+    long long _focusBehavior;
     GKEntity *_entity;
 }
 
@@ -40,6 +41,7 @@
 @property (nonatomic) BOOL _showBounds;
 @property (readonly, nonatomic) struct CGSize _size;
 @property (readonly, nonatomic) struct CGRect _untransformedBounds;
+@property (readonly, nonatomic) struct CGSize _untransformedSize;
 @property (nonatomic) double alpha;
 @property (copy, nonatomic) NSDictionary *attributeValues;
 @property (readonly, nonatomic) BOOL canBecomeFocused;
@@ -49,6 +51,7 @@
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) GKEntity *entity;
 @property (weak, nonatomic) GKEntity *entity; // @synthesize entity=_entity;
+@property (nonatomic) long long focusBehavior; // @synthesize focusBehavior=_focusBehavior;
 @property (readonly, nonatomic) struct CGRect frame;
 @property (readonly, nonatomic) CDStruct_14d5dc5e globalAccumulatedBoundingVerts;
 @property (readonly, nonatomic) CDStruct_14d5dc5e globalBoundingVerts;
@@ -94,7 +97,9 @@
 - (void)_getBasePhysicsScale:(float *)arg1 yScale:(float *)arg2;
 - (void)_getWorldTransform:(float *)arg1 positionY:(float *)arg2 rotation:(float *)arg3 xScale:(float *)arg4 yScale:(float *)arg5;
 - (void)_initAccessibility;
+- (BOOL)_isEffectivelyHidden;
 - (BOOL)_isEligibleForFocus;
+- (BOOL)_isEligibleForFocusInteraction;
 - (struct SKCNode *)_makeBackingNode;
 - (id)_parentFocusEnvironment;
 - (BOOL)_pathFromPhysicsBodyToPoints:(MISSING_TYPE ***)arg1 outSize:(unsigned long long *)arg2;
@@ -123,8 +128,12 @@
 - (struct CGPoint)convertPointToParent:(struct CGPoint)arg1;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)createDebugHierarchyVisualRepresentation;
 - (id)createFullCaptureData;
 - (void)dealloc;
+- (id)debugHierarchyChildGroupingID;
+- (id)debugHierarchyObjectsInGroupWithID:(id)arg1 outOptions:(id *)arg2;
+- (id)debugHierarchyPropertyDescriptions;
 - (void)debugPrint;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;

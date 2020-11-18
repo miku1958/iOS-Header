@@ -7,7 +7,6 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (CalClassAdditions)
-+ (id)_phoneURLScheme;
 + (id)ellipsisString;
 + (id)stringWithContentsOfFile:(id)arg1 usingEncoding:(unsigned long long)arg2;
 + (id)stringWithFileSystemRepresentation:(const char *)arg1;
@@ -18,15 +17,18 @@
 - (id)appendSlashIfNeeded;
 - (BOOL)containsCaseAndDiacriticInsensitive:(id)arg1;
 - (BOOL)containsCaseInsensitive:(id)arg1;
+- (id)directionalityIsolatedString;
 - (BOOL)hasMailto;
 - (BOOL)hasPrefixCaseAndDiacriticInsensitive:(id)arg1;
 - (BOOL)hasPrefixCaseInsensitive:(id)arg1;
 - (BOOL)hasSuffixCaseInsensitive:(id)arg1;
+- (BOOL)hasTel;
 - (id)hostFromEmail;
 - (BOOL)isAddressBookURL;
 - (BOOL)isEqualAsURL:(id)arg1;
 - (BOOL)isEqualToStringCaseInsensitive:(id)arg1;
 - (BOOL)isMailURL;
+- (BOOL)isMessagesURL;
 - (BOOL)isPathToAppleScript;
 - (BOOL)isPathToBackupFile;
 - (BOOL)isPathToICalBookmark;
@@ -42,6 +44,7 @@
 - (id)safeFilename;
 - (id)searchAndReplaceString:(id)arg1 withString:(id)arg2;
 - (id)stringAddingMailto;
+- (id)stringAddingTel;
 - (id)stringByDecodingSlashes;
 - (id)stringByEncodingSlashes;
 - (id)stringByRemovingCharactersInSet:(id)arg1;
@@ -55,6 +58,7 @@
 - (id)stringByURLUnescapingAllReservedCharacters;
 - (id)stringByURLUnquoting;
 - (id)stringRemovingMailto;
+- (id)stringRemovingTel;
 - (id)trimChar:(unsigned short)arg1;
 - (id)trimCommas;
 - (id)trimFinalChar:(unsigned short)arg1;

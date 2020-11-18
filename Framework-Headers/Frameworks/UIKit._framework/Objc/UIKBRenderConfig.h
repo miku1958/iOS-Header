@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) long long backdropStyle;
+@property (readonly, nonatomic) long long blurEffectStyle;
 @property (nonatomic) double blurRadius; // @synthesize blurRadius=_blurRadius;
 @property (nonatomic) double blurSaturation; // @synthesize blurSaturation=_blurSaturation;
 @property (nonatomic) long long forceQuality; // @synthesize forceQuality=_forceQuality;

@@ -19,7 +19,6 @@
 + (id)taskMemoryCacheForTask:(unsigned int)arg1;
 - (BOOL)copyRange:(struct _VMURange)arg1 to:(void *)arg2;
 - (void)dealloc;
-- (void)finalize;
 - (void)flushMemoryCache;
 - (id)initWithTask:(unsigned int)arg1;
 - (int)peekAtAddress:(unsigned long long)arg1 size:(unsigned long long)arg2 returnsBuf:(void **)arg3;

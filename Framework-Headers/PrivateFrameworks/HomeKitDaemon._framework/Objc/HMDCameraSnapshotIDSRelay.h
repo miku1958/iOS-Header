@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
-@class HAPOSTransaction, HMDCameraSessionID, IDSService, NSString;
+@class HMDCameraSessionID, HMFOSTransaction, IDSService, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDCameraSnapshotIDSRelay : NSObject <IDSServiceDelegate, HMFLogging>
+@interface HMDCameraSnapshotIDSRelay : HMFObject <IDSServiceDelegate, HMFLogging>
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDCameraSessionID *_sessionID;
     IDSService *_idsStreamService;
-    HAPOSTransaction *_snapshotRelayTransaction;
+    HMFOSTransaction *_snapshotRelayTransaction;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,7 +25,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) IDSService *idsStreamService; // @synthesize idsStreamService=_idsStreamService;
 @property (readonly, nonatomic) HMDCameraSessionID *sessionID; // @synthesize sessionID=_sessionID;
-@property (strong, nonatomic) HAPOSTransaction *snapshotRelayTransaction; // @synthesize snapshotRelayTransaction=_snapshotRelayTransaction;
+@property (strong, nonatomic) HMFOSTransaction *snapshotRelayTransaction; // @synthesize snapshotRelayTransaction=_snapshotRelayTransaction;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 

@@ -31,6 +31,7 @@
 - (void)_setImageData:(id)arg1 forProperty:(id)arg2;
 - (void)_setImageNamed:(id)arg1 forProperty:(id)arg2;
 - (void)_setupWithDescription:(id)arg1 forController:(id)arg2;
+- (void)didRegisterWithRemoteInterface;
 - (id)init;
 - (void)setAccessibilityHint:(id)arg1;
 - (void)setAccessibilityIdentifier:(id)arg1;

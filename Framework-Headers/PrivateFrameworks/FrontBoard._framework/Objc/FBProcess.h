@@ -27,6 +27,8 @@
     FBWorkspace *_workspace;
     NSHashTable *_observers;
     id<FBProcessDelegate> _delegate;
+    long long _backgroundingPolicy;
+    BOOL _supportsSuspendOnLock;
     int _pid;
     BOOL _running;
     BSProcessDeathWatcher *_processDeathObserver;
@@ -34,6 +36,7 @@
     long long _executableOnSystemPartition;
 }
 
+@property (readonly, nonatomic) long long backgroundingPolicy; // @synthesize backgroundingPolicy=_backgroundingPolicy;
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<FBProcessDelegate> delegate;
@@ -55,21 +58,27 @@
 @property (readonly, nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
 @property (readonly, copy, nonatomic) FBProcessState *state;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=_queue_supportsSuspendOnLock, setter=_queue_setSupportsSuspendOnLock:) BOOL supportsSuspendOnLock; // @synthesize supportsSuspendOnLock=_supportsSuspendOnLock;
 @property (readonly, strong, nonatomic) BSMachPortTaskNameRight *taskNameRight;
 @property (readonly, nonatomic) long long type;
 @property (readonly, strong, nonatomic) FBWorkspace *workspace; // @synthesize workspace=_workspace;
 
 - (void).cxx_destruct;
 - (id)_createWorkspace;
+- (int)_effectiveVisibilityForSceneSettings:(id)arg1 underLock:(BOOL)arg2;
+- (int)_effectiveVisibilityForVisibility:(int)arg1 underLock:(BOOL)arg2;
+- (BOOL)_isEffectivelyForegroundForSceneSettings:(id)arg1 underLock:(BOOL)arg2;
 - (id)_queue;
 - (void)_queue_callExitObservers;
 - (void)_queue_configureWithHandle:(id)arg1;
+- (BOOL)_queue_consideredUnderLock;
 - (int)_queue_effectiveVisibilityForVisibility:(int)arg1;
 - (void)_queue_enumerateObserversWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)_queue_executableLivesOnSystemPartition;
 - (BOOL)_queue_isForeground;
 - (id)_queue_newWatchdogForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_processDidExit;
+- (void)_queue_sceneLifecycleStateChanged:(id)arg1;
 - (void)_queue_toggleProcessDeathObserver:(BOOL)arg1;
 - (void)_queue_updateStateWithBlock:(CDUnknownBlockType)arg1;
 - (void)_terminateWithRequest:(id)arg1 forWatchdog:(id)arg2;

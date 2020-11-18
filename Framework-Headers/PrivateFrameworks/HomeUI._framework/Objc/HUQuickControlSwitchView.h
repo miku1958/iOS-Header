@@ -32,6 +32,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithProfile:(id)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 
 @end

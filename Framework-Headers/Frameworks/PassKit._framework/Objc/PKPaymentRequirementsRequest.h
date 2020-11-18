@@ -13,11 +13,13 @@
     PKPaymentCredential *_paymentCredential;
     NSString *_cardholderName;
     NSString *_primaryAccountNumber;
+    NSString *_referrerIdentifier;
 }
 
 @property (copy, nonatomic) NSString *cardholderName; // @synthesize cardholderName=_cardholderName;
 @property (strong, nonatomic) PKPaymentCredential *paymentCredential; // @synthesize paymentCredential=_paymentCredential;
 @property (copy, nonatomic) NSString *primaryAccountNumber; // @synthesize primaryAccountNumber=_primaryAccountNumber;
+@property (copy, nonatomic) NSString *referrerIdentifier; // @synthesize referrerIdentifier=_referrerIdentifier;
 
 - (void).cxx_destruct;
 - (id)_cardDictionary;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOComposedRoute, GEOComposedRouteSection, GEOMapRequest, NSArray;
 
@@ -20,7 +20,7 @@
     unsigned int _routeStartIndex;
     unsigned int _routeEndIndex;
     unsigned int _unsnappedPointCount;
-    CDStruct_b2fbf00d *_unsnappedPoints;
+    CDStruct_6e3f967a *_unsnappedPoints;
 }
 
 @property (readonly) NSArray *edges; // @synthesize edges=_edges;
@@ -30,7 +30,7 @@
 @property (readonly) const struct RouteMapMatchingSection *mapMatchingSection;
 @property (readonly) unsigned int routeEndIndex; // @synthesize routeEndIndex=_routeEndIndex;
 @property (readonly) unsigned int routeStartIndex; // @synthesize routeStartIndex=_routeStartIndex;
-@property (readonly) GEOComposedRouteSection *section; // @synthesize section=_section;
+@property (readonly, weak) GEOComposedRouteSection *section; // @synthesize section=_section;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

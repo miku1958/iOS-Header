@@ -9,7 +9,7 @@
 #import <MediaMiningKit/CLSClueCollectionJSExports-Protocol.h>
 #import <MediaMiningKit/NSCoding-Protocol.h>
 
-@class CLSInputPeopleClue, NSMapTable;
+@class CLSInputPeopleClue, CLSMeaningClue, NSMapTable;
 @protocol OS_dispatch_queue;
 
 @interface CLSClueCollection : NSObject <NSCoding, CLSClueCollectionJSExports>
@@ -22,6 +22,7 @@
     NSMapTable *_meaningCluesByKey;
 }
 
+@property (readonly) CLSMeaningClue *locationMobilityClue;
 @property (strong, nonatomic) CLSInputPeopleClue *mePersonClue; // @synthesize mePersonClue=_mePersonClue;
 @property (readonly) unsigned long long numberOfDays;
 @property (readonly) unsigned long long numberOfLocations;
@@ -36,7 +37,7 @@
 - (id)_healthHeartBeatString;
 - (id)_healthSpeedString;
 - (void)_incrementVersionCount;
-- (id)_locationSpanString;
+- (id)_locationMobilityString;
 - (id)_locationString;
 - (void)_mergeInputClue:(id)arg1;
 - (void)_mergeMeaningClue:(id)arg1;
@@ -55,7 +56,7 @@
 - (unsigned long long)clueHealthHeartBeat;
 - (unsigned long long)clueHealthSpeed;
 - (unsigned long long)clueLocation;
-- (unsigned long long)clueLocationSpan;
+- (unsigned long long)clueLocationMobility;
 - (unsigned long long)clueMeaningBeatsSentenceActivity;
 - (unsigned long long)clueMeaningBeatsSentenceLocation;
 - (unsigned long long)clueMeaningBeatsSentenceTimeEvent;
@@ -75,6 +76,7 @@
 - (void)enumerateLocationClues:(CDUnknownBlockType)arg1;
 - (void)enumeratePeopleClues:(CDUnknownBlockType)arg1;
 - (void)enumerateTimeClues:(CDUnknownBlockType)arg1;
+- (void)enumerateTimeOfDayClues:(CDUnknownBlockType)arg1;
 - (BOOL)hasMeaningClueWithKey:(id)arg1 andValue:(id)arg2;
 - (BOOL)hasMeaningClueWithKey:(id)arg1 value:(id)arg2 andMinimumScore:(double)arg3;
 - (BOOL)hasOutputClueWithKey:(id)arg1 andValue:(id)arg2;

@@ -14,11 +14,13 @@
 @property (readonly, nonatomic) SCNMaterialProperty *ambientOcclusion;
 @property (nonatomic) BOOL avoidsOverLighting;
 @property (nonatomic) long long blendMode;
+@property (nonatomic) long long colorBufferWriteMask;
 @property (nonatomic) long long cullMode;
 @property (readonly, nonatomic) SCNMaterialProperty *diffuse;
+@property (readonly, nonatomic) SCNMaterialProperty *displacement;
 @property (nonatomic, getter=isDoubleSided) BOOL doubleSided;
 @property (readonly, nonatomic) SCNMaterialProperty *emission;
-@property (nonatomic) long long fillMode;
+@property (nonatomic) unsigned long long fillMode;
 @property (nonatomic) double fresnelExponent;
 @property (nonatomic) double indexOfRefraction;
 @property (copy, nonatomic) NSString *lightingModelName;
@@ -34,7 +36,6 @@
 @property (readonly, nonatomic) SCNMaterialProperty *reflective;
 @property (readonly, nonatomic) SCNMaterialProperty *roughness;
 @property (readonly, nonatomic) SCNMaterialProperty *selfIllumination;
-@property (nonatomic) double selfIlluminationOcclusion;
 @property (nonatomic) double shininess;
 @property (readonly, nonatomic) SCNMaterialProperty *specular;
 @property (nonatomic) double transparency;

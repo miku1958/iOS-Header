@@ -13,6 +13,7 @@
     UIWindow *_presentationWindow;
 }
 
+- (void).cxx_destruct;
 - (void)_cleanUpPresentationWindow;
 - (void)_voiceOverStatusChanged;
 - (void)dealloc;

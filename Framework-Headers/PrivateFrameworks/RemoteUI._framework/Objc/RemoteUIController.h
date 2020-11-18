@@ -72,6 +72,7 @@
 - (void)dealloc;
 - (id)dismissObjectModelsAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
+- (BOOL)isListeningForHSATokenAutoFill;
 - (void)loadData:(id)arg1 baseURL:(id)arg2;
 - (void)loadRequest:(id)arg1;
 - (void)loadRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -99,6 +100,8 @@
 - (void)setHandlerForButtonsMatching:(CDUnknownBlockType)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)setHandlerForElementName:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)setHandlerForElementsMatching:(CDUnknownBlockType)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)startListeningForHSATokenAutoFill;
+- (void)stopListeningForHSATokenAutoFill;
 - (unsigned long long)supportedInterfaceOrientationsForObjectModel:(id)arg1 page:(id)arg2;
 - (id)viewControllerForAlertPresentation;
 

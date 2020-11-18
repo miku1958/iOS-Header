@@ -10,30 +10,8 @@
 
 @interface GEOCacheHitLogMessage : PBCodable <NSCopying>
 {
-    unsigned int _cacheHitCount;
-    unsigned int _cacheMissCount;
-    int _cacheType;
-    int _tileSetStyle;
-    struct {
-        unsigned int cacheHitCount:1;
-        unsigned int cacheMissCount:1;
-        unsigned int cacheType:1;
-        unsigned int tileSetStyle:1;
-    } _has;
 }
 
-@property (nonatomic) unsigned int cacheHitCount; // @synthesize cacheHitCount=_cacheHitCount;
-@property (nonatomic) unsigned int cacheMissCount; // @synthesize cacheMissCount=_cacheMissCount;
-@property (nonatomic) int cacheType; // @synthesize cacheType=_cacheType;
-@property (nonatomic) BOOL hasCacheHitCount;
-@property (nonatomic) BOOL hasCacheMissCount;
-@property (nonatomic) BOOL hasCacheType;
-@property (nonatomic) BOOL hasTileSetStyle;
-@property (nonatomic) int tileSetStyle; // @synthesize tileSetStyle=_tileSetStyle;
-
-- (int)StringAsCacheType:(id)arg1;
-- (int)StringAsTileSetStyle:(id)arg1;
-- (id)cacheTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -42,7 +20,6 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)tileSetStyleAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

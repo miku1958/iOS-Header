@@ -6,14 +6,19 @@
 
 #import <VoiceServices/NSObject-Protocol.h>
 
-@class NSError, NSString, VSInstrumentMetrics;
+@class NSArray, NSError, NSString, VSInstrumentMetrics;
 
 @protocol VSSpeechServiceDelegate <NSObject>
+- (oneway void)presynthesizedAudioRequestDidStart;
+- (oneway void)presynthesizedAudioRequestDidStopAtEnd:(BOOL)arg1 error:(NSError *)arg2;
+- (oneway void)presynthesizedAudioRequestSuccessWithInstrumentMetrics:(VSInstrumentMetrics *)arg1 error:(NSError *)arg2;
 - (oneway void)speechRequestDidContinue;
 - (oneway void)speechRequestDidPause;
+- (oneway void)speechRequestDidReceiveTimingInfo:(NSArray *)arg1;
 - (oneway void)speechRequestDidStart;
 - (oneway void)speechRequestDidStopWithSuccess:(BOOL)arg1 phonemesSpoken:(NSString *)arg2 error:(NSError *)arg3;
 - (oneway void)speechRequestMark:(long long)arg1 didStartForRange:(struct _NSRange)arg2;
 - (oneway void)speechRequestSuccessWithInstrumentMetrics:(VSInstrumentMetrics *)arg1;
+- (oneway void)synthesisRequestDidFinishWithInstrumentMetrics:(VSInstrumentMetrics *)arg1 error:(NSError *)arg2;
 @end
 

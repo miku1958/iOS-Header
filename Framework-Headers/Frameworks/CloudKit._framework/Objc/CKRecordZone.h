@@ -9,10 +9,13 @@
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKContainerID, CKRecordZoneID, CKServerChangeToken, NSData, NSString;
+@class CKContainerID, CKEncryptedDate, CKRecordZoneID, CKServerChangeToken, NSData, NSDate, NSString;
 
 @interface CKRecordZone : NSObject <NSSecureCoding, NSCopying>
 {
+    BOOL _needsZoneishPCSRolled;
+    BOOL _zoneKeyRollAllowed;
+    BOOL _serializeProtectionData;
     int _deviceCount;
     CKRecordZoneID *_zoneID;
     unsigned long long _capabilities;
@@ -21,6 +24,11 @@
     NSData *_clientChangeToken;
     NSData *_protectionData;
     NSString *_protectionEtag;
+    NSData *_zoneishProtectionData;
+    NSDate *_zonePCSModificationDate;
+    CKEncryptedDate *_encryptedLastZoneishPCSRollDate;
+    NSData *_pcsKeyID;
+    NSData *_zoneishKeyID;
     NSString *_previousProtectionEtag;
     long long _assetQuotaUsage;
     long long _metadataQuotaUsage;
@@ -33,11 +41,19 @@
 @property (strong, nonatomic) CKServerChangeToken *currentServerChangeToken; // @synthesize currentServerChangeToken=_currentServerChangeToken;
 @property (readonly, nonatomic) NSData *currentServerContinuationToken;
 @property (nonatomic) int deviceCount; // @synthesize deviceCount=_deviceCount;
+@property (strong, nonatomic) CKEncryptedDate *encryptedLastZoneishPCSRollDate; // @synthesize encryptedLastZoneishPCSRollDate=_encryptedLastZoneishPCSRollDate;
 @property (nonatomic) long long metadataQuotaUsage; // @synthesize metadataQuotaUsage=_metadataQuotaUsage;
+@property (nonatomic) BOOL needsZoneishPCSRolled; // @synthesize needsZoneishPCSRolled=_needsZoneishPCSRolled;
+@property (strong, nonatomic) NSData *pcsKeyID; // @synthesize pcsKeyID=_pcsKeyID;
 @property (strong, nonatomic) NSString *previousProtectionEtag; // @synthesize previousProtectionEtag=_previousProtectionEtag;
 @property (strong, nonatomic) NSData *protectionData; // @synthesize protectionData=_protectionData;
 @property (strong, nonatomic) NSString *protectionEtag; // @synthesize protectionEtag=_protectionEtag;
+@property (nonatomic) BOOL serializeProtectionData; // @synthesize serializeProtectionData=_serializeProtectionData;
 @property (strong, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
+@property (nonatomic) BOOL zoneKeyRollAllowed; // @synthesize zoneKeyRollAllowed=_zoneKeyRollAllowed;
+@property (strong, nonatomic) NSDate *zonePCSModificationDate; // @synthesize zonePCSModificationDate=_zonePCSModificationDate;
+@property (strong, nonatomic) NSData *zoneishKeyID; // @synthesize zoneishKeyID=_zoneishKeyID;
+@property (strong, nonatomic) NSData *zoneishProtectionData; // @synthesize zoneishProtectionData=_zoneishProtectionData;
 
 + (id)defaultRecordZone;
 + (BOOL)supportsSecureCoding;

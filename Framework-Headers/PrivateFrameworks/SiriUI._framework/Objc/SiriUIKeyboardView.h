@@ -8,13 +8,17 @@
 
 #import <SiriUI/UITextFieldDelegate-Protocol.h>
 
-@class NSString, UIButton, UITextField;
+@class NSArray, NSString, SiriUIAudioRoutePickerButton, SiriUIContentButton, SiriUIHelpButton, UITextField;
 @protocol SiriUIKeyboardViewDelegate;
 
 @interface SiriUIKeyboardView : UIInputView <UITextFieldDelegate>
 {
-    UIButton *_helpButton;
-    UIButton *_dismissButton;
+    SiriUIHelpButton *_helpButton;
+    SiriUIAudioRoutePickerButton *_audioRoutePickerButton;
+    SiriUIContentButton *_reportBugButton;
+    double _interKeyboardAccessoryViewPadding;
+    double _verticalCompensation;
+    NSArray *_originalInstalledLanguageIdentifiers;
     UITextField *_textField;
     id<SiriUIKeyboardViewDelegate> _delegate;
 }
@@ -26,27 +30,45 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITextField *textField; // @synthesize textField=_textField;
 
++ (double)_keyboardAccessoryViewHeight;
++ (double)_paddingBetweenKeyboardAndInputAccessoryViewWhenMinimized:(BOOL)arg1;
++ (id)_textFieldFont;
++ (double)_textFieldHeight;
 + (double)heightForWidthSizeClass:(BOOL)arg1;
++ (id)inputAccessoryViewBackgroundColor;
 - (void).cxx_destruct;
-- (id)_createDismissButton:(struct CGRect)arg1;
+- (void)_audioRouteButtonTapped:(id)arg1;
+- (void)_configureAudioRoutePickerForAccessibility;
+- (void)_configureReportBugButton;
+- (void)_configureReportButtonForAccessibility;
 - (id)_createHelpButton:(struct CGRect)arg1;
+- (void)_createReportBugButtonWithTemplateImage:(id)arg1;
 - (id)_createTextFieldWithFrame:(struct CGRect)arg1;
-- (void)_dismissButtonLongPressed:(id)arg1;
-- (void)_dismissButtonTapped:(id)arg1;
+- (struct CGRect)_defaultFrame;
 - (void)_helpButtonLongPressed:(id)arg1;
 - (void)_helpButtonTapped:(id)arg1;
-- (BOOL)_isDefaultDismissKeyboardButtonVisible;
-- (BOOL)_isSoftKeyboardWithoutDefaultDismissButtonMinimized;
-- (void)_keyboardDidHide:(id)arg1;
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
+- (void)_loadReportBugButtonTemplateImageInBackgroundWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_reportBugButtonLongPressed;
+- (void)_reportBugButtonTapped;
+- (BOOL)_showsReportBugButton;
+- (void)_undoTextFieldEdit:(id)arg1;
+- (double)_visibleHeightFromNotification:(id)arg1;
+- (BOOL)becomeFirstResponder;
 - (void)dealloc;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 inputViewStyle:(long long)arg2;
 - (void)layoutSubviews;
-- (void)setKeyboardEnabled:(BOOL)arg1;
+- (BOOL)resignFirstResponder;
+- (void)safeAreaInsetsDidChange;
+- (void)setAudioRoutePickerBluetoothOn:(BOOL)arg1;
+- (void)setShowAudioRoutePicker:(BOOL)arg1;
 - (void)setText:(id)arg1;
+- (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
+- (BOOL)textFieldShouldBeginEditing:(id)arg1;
+- (BOOL)textFieldShouldClear:(id)arg1;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 
 @end

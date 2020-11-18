@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/ADBannerViewInternalDelegate-Protocol.h>
 #import <iAd/ADInterstitialAdDelegate-Protocol.h>
@@ -65,6 +65,7 @@
 - (void)bannerViewWillLoadAd:(id)arg1;
 - (BOOL)canPresentSharedInterstitialAdWithResultMessage:(id *)arg1;
 - (BOOL)claimSharedMediaPlayerVideoAdWithError:(id *)arg1;
+- (void)dealloc;
 - (void)disablePolicyEngine;
 - (void)enablePolicyEngine;
 - (void)finishedPresentingSharedInterstitialAd;

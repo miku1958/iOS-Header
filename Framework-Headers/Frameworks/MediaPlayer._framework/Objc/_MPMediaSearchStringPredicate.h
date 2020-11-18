@@ -24,6 +24,7 @@
 @property (readonly) Class superclass;
 
 + (id)predicateWithSearchString:(id)arg1 forProperties:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)ML3PredicateForContainer;
 - (id)ML3PredicateForTrack;

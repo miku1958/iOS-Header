@@ -17,7 +17,7 @@
     CDUnknownBlockType _comparator;
 }
 
-@property (readonly, strong, nonatomic) NSSortDescriptor *NSSortDescriptor;
+@property (readonly, nonatomic) NSSortDescriptor *NSSortDescriptor;
 @property (nonatomic) BOOL ascending; // @synthesize ascending=_ascending;
 @property (copy, nonatomic) CDUnknownBlockType comparator; // @synthesize comparator=_comparator;
 @property (readonly, copy) NSString *debugDescription;
@@ -28,8 +28,8 @@
 
 + (id)_propertyKeyForSnapshotKey:(unsigned long long)arg1 overriddenForNil:(BOOL *)arg2;
 + (id)sortDescriptorWithKey:(unsigned long long)arg1 ascending:(BOOL)arg2 comparator:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
 - (id)_stringForKey:(unsigned long long)arg1;
-- (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)initWithKey:(unsigned long long)arg1 ascending:(BOOL)arg2 comparator:(CDUnknownBlockType)arg3;

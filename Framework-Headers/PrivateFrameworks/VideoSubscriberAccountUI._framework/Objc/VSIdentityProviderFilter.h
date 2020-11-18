@@ -6,19 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface VSIdentityProviderFilter : NSObject
 {
-    BOOL _shouldExcludeUnsupportedProviders;
     NSArray *_allIdentityProviders;
     NSArray *_supportedAccountProviderIDs;
+    NSString *_searchQuery;
 }
 
 @property (copy, nonatomic) NSArray *allIdentityProviders; // @synthesize allIdentityProviders=_allIdentityProviders;
 @property (readonly, copy, nonatomic) NSArray *filteredIdentityProviders;
-@property (nonatomic) BOOL shouldExcludeUnsupportedProviders; // @synthesize shouldExcludeUnsupportedProviders=_shouldExcludeUnsupportedProviders;
+@property (copy, nonatomic) NSString *searchQuery; // @synthesize searchQuery=_searchQuery;
 @property (copy, nonatomic) NSArray *supportedAccountProviderIDs; // @synthesize supportedAccountProviderIDs=_supportedAccountProviderIDs;
 
 + (id)keyPathsForValuesAffectingFilteredIdentityProviders;

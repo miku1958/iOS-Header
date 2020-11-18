@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSLayoutAnchor.h>
+#import <Foundation/NSLayoutAnchor.h>
 
 @interface NSLayoutDimension : NSLayoutAnchor
 {
@@ -27,12 +27,12 @@
 - (id)minusDimension:(id)arg1;
 - (id)plus:(double)arg1;
 - (id)plusDimension:(id)arg1;
-- (id)relationshipEqualToConstant:(double)arg1;
-- (id)relationshipEqualToConstant:(double)arg1 priority:(float)arg2 identifier:(id)arg3;
-- (id)relationshipGreaterThanOrEqualToConstant:(double)arg1;
-- (id)relationshipGreaterThanOrEqualToConstant:(double)arg1 priority:(float)arg2 identifier:(id)arg3;
-- (id)relationshipLessThanOrEqualToConstant:(double)arg1;
-- (id)relationshipLessThanOrEqualToConstant:(double)arg1 priority:(float)arg2 identifier:(id)arg3;
+- (id)ruleEqualToConstant:(double)arg1;
+- (id)ruleEqualToConstant:(double)arg1 priority:(float)arg2 identifier:(id)arg3;
+- (id)ruleGreaterThanOrEqualToConstant:(double)arg1;
+- (id)ruleGreaterThanOrEqualToConstant:(double)arg1 priority:(float)arg2 identifier:(id)arg3;
+- (id)ruleLessThanOrEqualToConstant:(double)arg1;
+- (id)ruleLessThanOrEqualToConstant:(double)arg1 priority:(float)arg2 identifier:(id)arg3;
 - (id)times:(double)arg1;
 - (BOOL)validateOtherAttribute:(long long)arg1;
 

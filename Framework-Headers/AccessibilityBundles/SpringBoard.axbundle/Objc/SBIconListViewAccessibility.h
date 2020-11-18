@@ -13,11 +13,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityEmptyListDropString;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (BOOL)_accessibilityIsListViewEmptyForDragAndDrop;
 - (BOOL)_accessibilityProvidesScannerGroupElements;
 - (id)_accessibilityScannerGroupElements;
 - (id)_accessibilityUserTestingChildren;
-- (id)accessibilityCustomActions;
+- (id)accessibilityDropPointDescriptors;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
 

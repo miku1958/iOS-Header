@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUAccessoryViewCellProtocol-Protocol.h>
 
-@class HFItem, HUGridServiceCellLayoutOptions, HUGridServiceCellTextView, HUIconView, HUVisualEffectContainerView, NSString, UIActivityIndicatorView, UILabel, UIView;
+@class HFItem, HUGridServiceCellLayoutOptions, HUGridServiceCellTextView, HUIconView, HUVisualEffectContainerView, NSString, UIActivityIndicatorView, UILabel, UIView, UIVisualEffectView;
 @protocol NACancelable;
 
 @interface HUGridServiceCell : HUGridCell <HUAccessoryViewCellProtocol>
@@ -23,6 +23,7 @@
     HUIconView *_iconView;
     HUGridServiceCellTextView *_serviceTextView;
     UILabel *_coloredDescriptionLabel;
+    UIVisualEffectView *_descriptionLabelEffectView;
     id<NACancelable> _showUpdatingStateAfterDelayToken;
     id<NACancelable> _showProgressIndicatorAfterDelayToken;
     UIView *_overrideAccessoryView;
@@ -35,6 +36,7 @@
 @property (strong, nonatomic) UILabel *coloredDescriptionLabel; // @synthesize coloredDescriptionLabel=_coloredDescriptionLabel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIVisualEffectView *descriptionLabelEffectView; // @synthesize descriptionLabelEffectView=_descriptionLabelEffectView;
 @property (nonatomic) BOOL disableContinuousIconAnimation;
 @property (strong, nonatomic) HUVisualEffectContainerView *exclamationView; // @synthesize exclamationView=_exclamationView;
 @property (nonatomic) BOOL hasUpdatedUISinceLastReuse; // @synthesize hasUpdatedUISinceLastReuse=_hasUpdatedUISinceLastReuse;
@@ -58,14 +60,13 @@
 + (Class)layoutOptionsClass;
 - (void).cxx_destruct;
 - (void)_createExclamationViewIfNecessary;
-- (void)_getDescription:(id *)arg1 nameTextColor:(id *)arg2 descriptionTextColor:(id *)arg3 forPrimaryState:(long long)arg4;
-- (void)_setServiceItem:(id)arg1 updateUI:(BOOL)arg2;
+- (id)_descriptionTextAttributesWithColor:(id)arg1;
 - (void)_setupServiceCell;
-- (void)_updateAccessoryViewWithPrimaryState:(long long)arg1;
-- (void)_updateIconWithPrimaryState:(long long)arg1 animated:(BOOL)arg2;
+- (id)_textConfiguration;
+- (void)_updateAccessoryView;
+- (void)_updateIconAnimated:(BOOL)arg1;
 - (void)_updateSecondaryContentDisplayStyle;
-- (void)_updateTextWithPrimaryState:(long long)arg1;
-- (void)_updateUIWithAnimation:(BOOL)arg1 overridePrimaryState:(long long)arg2;
+- (void)_updateText;
 - (void)displayStyleDidChange;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

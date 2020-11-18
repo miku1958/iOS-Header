@@ -12,10 +12,14 @@
 {
     unsigned long long _options;
     Class _barsControllerClass;
+    CDUnknownBlockType _unlockDeviceHandler;
+    CDUnknownBlockType _unlockDeviceStatus;
 }
 
 @property (strong, nonatomic) Class barsControllerClass; // @synthesize barsControllerClass=_barsControllerClass;
 @property (nonatomic) unsigned long long options; // @synthesize options=_options;
+@property (copy, nonatomic) CDUnknownBlockType unlockDeviceHandler; // @synthesize unlockDeviceHandler=_unlockDeviceHandler;
+@property (copy, nonatomic) CDUnknownBlockType unlockDeviceStatus; // @synthesize unlockDeviceStatus=_unlockDeviceStatus;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

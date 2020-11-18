@@ -40,8 +40,28 @@
 - (void)didPlayMiroMovieForAssetCollection:(id)arg1;
 - (void)didViewDetailsForAssetCollection:(id)arg1;
 - (id)init;
+- (void)logBootstrapMergeCandidateFaceCountVerifiedConfirmed:(unsigned long long)arg1 verifiedRejected:(unsigned long long)arg2 unverifiedConfirmed:(unsigned long long)arg3 unverifiedRejected:(unsigned long long)arg4;
+- (void)logBootstrapMergeCandidatesVerifiedConfirmed:(unsigned long long)arg1 verifiedRejected:(unsigned long long)arg2 unverifiedConfirmed:(unsigned long long)arg3 unverifiedRejected:(unsigned long long)arg4;
+- (void)logConfirmAdditionalCVMLFaceCountConfirmed:(unsigned long long)arg1 rejected:(unsigned long long)arg2;
+- (void)logConfirmAdditionalMergeCandidateFaceCountVerifiedConfirmed:(unsigned long long)arg1 verifiedRejected:(unsigned long long)arg2 unverifiedConfirmed:(unsigned long long)arg3 unverifiedRejected:(unsigned long long)arg4;
+- (void)logConfirmAdditionalMergeCandidatesVerifiedConfirmed:(unsigned long long)arg1 verifiedRejected:(unsigned long long)arg2 unverifiedConfirmed:(unsigned long long)arg3 unverifiedRejected:(unsigned long long)arg4;
+- (void)logConfirmAdditionalSuggestionsConfirmed:(unsigned long long)arg1 rejected:(unsigned long long)arg2;
 - (void)logCounterValuesForLogState:(unsigned long long)arg1 duration:(double)arg2;
 - (void)logCounterValuesForLogSubState:(unsigned long long)arg1 duration:(double)arg2;
+- (void)logInterestingMemoryNotificationRespondedCount;
+- (void)logInterestingMemoryNotificationSeenCount;
+- (void)logMergeCandidateInlineControlWithSignature:(unsigned long long)arg1;
+- (void)logNamingTypeSelection:(unsigned long long)arg1;
+- (void)logPeopleAddToPeopleHome;
+- (void)logPeopleConfirmAdditionalViewCount;
+- (void)logPeopleDetailCount;
+- (void)logPeopleDetailKeyPhotoChanged;
+- (void)logPeopleDetailNotThisPerson;
+- (void)logPeopleDetailShowFaces;
+- (void)logPeopleHomeCount;
+- (void)logPeopleHomeFavoritePersonCount:(unsigned long long)arg1 totalPersonCount:(unsigned long long)arg2;
+- (void)logPeopleMeSuggestionConfirmed:(BOOL)arg1;
+- (void)logPeopleRemoveFromPeopleHome;
 - (void)willViewDetailsWithCurrentContext:(id)arg1;
 - (void)willViewMemoriesFeedView;
 

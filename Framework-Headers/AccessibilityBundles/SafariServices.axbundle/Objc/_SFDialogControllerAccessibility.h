@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_dismissDialogWithAdditionalAnimations:(CDUnknownBlockType)arg1;
-- (void)_presentDialog:(id)arg1 forWebProcessID:(int)arg2 withAdditionalAnimations:(CDUnknownBlockType)arg3;
+- (long long)_presentDialog:(id)arg1 forWebProcessID:(int)arg2 withAdditionalAnimations:(CDUnknownBlockType)arg3;
 
 @end
 

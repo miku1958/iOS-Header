@@ -6,7 +6,7 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class NSArray, NSDictionary;
+@class NSArray, NSDictionary, NSMutableDictionary;
 
 @interface CKPublishAssetsOperation : CKDatabaseOperation
 {
@@ -16,11 +16,13 @@
     CDUnknownBlockType _assetPublishedBlock;
     CDUnknownBlockType _publishAssetCompletionBlock;
     NSArray *_recordIDs;
+    NSMutableDictionary *_perItemErrorsByRecordID;
 }
 
 @property (nonatomic) unsigned long long URLOptions; // @synthesize URLOptions=_URLOptions;
 @property (copy, nonatomic) CDUnknownBlockType assetPublishedBlock; // @synthesize assetPublishedBlock=_assetPublishedBlock;
 @property (strong, nonatomic) NSDictionary *fileNamesByAssetFieldNames; // @synthesize fileNamesByAssetFieldNames=_fileNamesByAssetFieldNames;
+@property (strong, nonatomic) NSMutableDictionary *perItemErrorsByRecordID; // @synthesize perItemErrorsByRecordID=_perItemErrorsByRecordID;
 @property (copy, nonatomic) CDUnknownBlockType publishAssetCompletionBlock; // @synthesize publishAssetCompletionBlock=_publishAssetCompletionBlock;
 @property (strong, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
 @property (nonatomic) unsigned long long requestedTTL; // @synthesize requestedTTL=_requestedTTL;

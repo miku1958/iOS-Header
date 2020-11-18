@@ -9,6 +9,7 @@
 @class NSArray, NSDictionary, NSURL, SFFormAutoFillFrameHandle, WBSFormMetadata;
 
 @protocol SFFormMetadataObserver <NSObject>
+- (void)autoFillDidFinishWithUpdatedFormMetadata:(WBSFormMetadata *)arg1;
 - (void)didCollectFormMetadataForPreFilling:(NSDictionary *)arg1 atURL:(NSURL *)arg2 ancestorFramesOfFormToPreFill:(NSArray *)arg3;
 - (void)didCollectURLsForPreFilling:(NSArray *)arg1 atURL:(NSURL *)arg2;
 - (void)didFillGeneratedPasswordInForm:(WBSFormMetadata *)arg1 inFrame:(SFFormAutoFillFrameHandle *)arg2;

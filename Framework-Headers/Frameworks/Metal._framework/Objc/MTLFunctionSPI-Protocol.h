@@ -6,12 +6,20 @@
 
 #import <Metal/MTLFunction-Protocol.h>
 
-@class NSString;
+@class MTLFunctionReflection, MTLType, NSArray, NSString;
+@protocol MTLIndirectArgumentEncoder;
 
 @protocol MTLFunctionSPI <MTLFunction>
 
+@property (readonly) NSArray *arguments;
 @property (readonly, copy) NSString *filePath;
 @property (readonly) long long lineNumber;
+@property (readonly) MTLType *returnType;
 
+- (const CDStruct_41a22ec7 *)bitCodeHash;
+- (id<MTLIndirectArgumentEncoder>)newIndirectArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
+- (id<MTLIndirectArgumentEncoder>)newIndirectArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2;
+- (MTLFunctionReflection *)reflectionWithOptions:(unsigned long long)arg1;
+- (void)reflectionWithOptions:(unsigned long long)arg1 completionHandler:(void (^)(MTLFunctionReflection *))arg2;
 @end
 

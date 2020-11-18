@@ -10,12 +10,13 @@
 #import <Message/MFDiagnosticsGenerator-Protocol.h>
 #import <Message/MFLibrarySearchableIndexVerifierDataSource-Protocol.h>
 
-@class CSSearchableIndex, MFCoalescer, MFLazyCache, MFWeakSet, NSMutableArray, NSMutableSet, NSString, _MFLibrarySearchableIndexPendingRemovals;
-@protocol MFLibrarySearchableIndexDataSource, OS_dispatch_queue, OS_dispatch_source, OS_os_activity;
+@class CSSearchableIndex, MFCancelationToken, MFCoalescer, MFLazyCache, MFWeakSet, NSMutableArray, NSMutableSet, NSString, _MFLibrarySearchableIndexBudgetConfiguration, _MFLibrarySearchableIndexPendingRemovals;
+@protocol MFLibrarySearchableIndexDataSource, MFScheduler, OS_dispatch_queue, OS_dispatch_source, OS_os_activity;
 
 @interface MFLibrarySearchableIndex : NSObject <MFDiagnosticsGenerator, CSSearchableIndexDelegate, MFLibrarySearchableIndexVerifierDataSource>
 {
     NSString *_indexName;
+    MFCancelationToken *_cancelationToken;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_source> *_coalescingTimer;
     long long _resumeCount;
@@ -32,6 +33,7 @@
     _MFLibrarySearchableIndexPendingRemovals *_pendingIdentifierRemovals;
     NSObject<OS_dispatch_queue> *_indexingQueue;
     NSObject<OS_dispatch_queue> *_dataSourceQueue;
+    id<MFScheduler> _indexingBatchScheduler;
     MFLazyCache *_searchResultsCache;
     MFWeakSet *_middleware;
     BOOL _isForeground;
@@ -44,9 +46,11 @@
     BOOL _scheduledRefresh;
     BOOL _scheduledVerification;
     id<MFLibrarySearchableIndexDataSource> _dataSource;
+    _MFLibrarySearchableIndexBudgetConfiguration *_budgetConfiguration;
     CSSearchableIndex *_csIndex;
 }
 
+@property (readonly, nonatomic) _MFLibrarySearchableIndexBudgetConfiguration *budgetConfiguration; // @synthesize budgetConfiguration=_budgetConfiguration;
 @property (strong, nonatomic) CSSearchableIndex *csIndex; // @synthesize csIndex=_csIndex;
 @property (nonatomic) id<MFLibrarySearchableIndexDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
@@ -73,10 +77,11 @@
 - (void)_getDomainRemovals:(id *)arg1 identifierRemovals:(id *)arg2;
 - (void)_indexItems:(id)arg1 fromRefresh:(BOOL)arg2;
 - (void)_invalidateCache;
+- (void)_logIndexingPowerEventWithIdentifier:(id)arg1 additionalEventData:(id)arg2 usePersistentLog:(BOOL)arg3;
 - (long long)_nextTransaction;
 - (void)_noteNeedsLastClientStateFetch;
 - (void)_persistRemainingIndexingBudgetValue:(id)arg1;
-- (void)_powerStateChanged:(id)arg1;
+- (void)_powerStateChanged;
 - (id)_processDomainRemovals:(id)arg1;
 - (void)_processIdentifierRemovals:(id)arg1;
 - (void)_processIndexingBatch:(id)arg1 clientState:(id)arg2;
@@ -87,11 +92,13 @@
 - (void)_queueRefresh;
 - (void)_queueTransitionActive:(BOOL)arg1;
 - (void)_registerDistantFutureSpotlightVerification;
+- (void)_reindexAllSearchableItemsWithOptions:(unsigned long long)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
 - (void)_resetIndexingBudgetTimer;
 - (void)_scheduleDataSourceRefresh;
 - (void)_scheduleProcessPendingItems;
 - (void)_scheduleResetIndexingBudgetTimer;
 - (void)_scheduleSpotlightVerification;
+- (void)_scheduleSpotlightVerificationOnIndexingQueueWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_startCoalescingTimer;
 - (void)_stopCoalescingTimer;
 - (double)_throttleRequestedSize:(unsigned long long *)arg1 action:(CDUnknownBlockType)arg2;
@@ -106,16 +113,17 @@
 - (id)identifiersMatchingCriterion:(id)arg1;
 - (void)indexItems:(id)arg1;
 - (id)indexedEmptySubjectIdentifers;
-- (id)init;
 - (id)initWithName:(id)arg1 dataSource:(id)arg2;
 - (id)librarySearchableIndexForSearchableIndexVerifier:(id)arg1;
 - (double)persistedRemainingIndexingBudget;
 - (void)refresh;
+- (void)reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg1;
+- (void)reindexSearchableItemsWithIdentifiers:(id)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
 - (void)removeAllItems;
 - (void)removeItemsForDomainIdentifier:(id)arg1;
 - (void)removeItemsWithIdentifiers:(id)arg1;
 - (void)removeItemsWithIdentifiers:(id)arg1 reasons:(id)arg2;
-- (void)requestSpotlightDiagnosticsForMessageRowId:(id)arg1;
+- (id)requestSpotlightDiagnosticsForMessageRowId:(id)arg1;
 - (void)resume;
 - (void)searchableIndex:(id)arg1 reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg2;
 - (void)searchableIndex:(id)arg1 reindexSearchableItemsWithIdentifiers:(id)arg2 acknowledgementHandler:(CDUnknownBlockType)arg3;

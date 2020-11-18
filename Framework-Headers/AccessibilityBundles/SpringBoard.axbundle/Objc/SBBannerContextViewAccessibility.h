@@ -14,8 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)accessibilityPerformEscape;
-- (BOOL)accessibilityScroll:(long long)arg1;
-- (unsigned long long)accessibilityTraits;
 
 @end
 

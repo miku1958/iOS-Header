@@ -6,10 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSMutableDictionary, NSXPCConnection;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+#import <RTCReporting/RTCReportingDeallocNotifierDelegate-Protocol.h>
 
-@interface RTCReporting : NSObject
+@class NSArray, NSMutableDictionary, NSXPCConnection, RTCReportingDeallocNotifier;
+@protocol OS_dispatch_queue, OS_dispatch_source, RTCReportingMessageSentNotifier;
+
+@interface RTCReporting : NSObject <RTCReportingDeallocNotifierDelegate>
 {
     NSObject<OS_dispatch_queue> *_reportingQueue;
     CDUnknownBlockType _loggingBlock;
@@ -19,44 +21,42 @@
     int _intervalMultiplier;
     NSMutableDictionary *_periodicServiceDict;
     NSArray *_enabledBackendNames;
+    RTCReportingDeallocNotifier *_strongDeallocNotifier;
+    id _weakDeallocNotifier;
+    id _weakMessageSentDelegate;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType messageLoggingBlock; // @synthesize messageLoggingBlock=_loggingBlock;
+@property (nonatomic) id<RTCReportingMessageSentNotifier> messageSentDelegate;
 
 + (id)getPersistentIdentifierForDNU:(BOOL)arg1;
 + (id)newHierarchyTokenFromParentToken:(id)arg1;
 + (void)regeneratePersistentIdentifierForDNU:(BOOL)arg1;
-+ (BOOL)sendMsgToServer:(int)arg1 serverStoreBagName:(id)arg2 defaultSvrIP:(id)arg3 defaultSvrPort:(unsigned short)arg4 componentType:(int)arg5 version:(unsigned short)arg6 sessionID:(unsigned int)arg7 eventID:(unsigned short)arg8 method:(unsigned short)arg9 respCode:(unsigned short)arg10 dict:(id)arg11;
 + (BOOL)sendOneMessageWithSessionInfo:(id)arg1 userInfo:(id)arg2 category:(unsigned short)arg3 type:(unsigned short)arg4 payload:(id)arg5 error:(id *)arg6;
 - (void)_myPeriodicTask:(unsigned short)arg1 type:(unsigned short)arg2;
+- (void)aboutToDealloc;
 - (void)dealloc;
 - (void)fetchReportingStatesWithUserInfo:(id)arg1 fetchComplete:(CDUnknownBlockType)arg2;
 - (void)finishSession;
 - (BOOL)flushMessages;
 - (void)flushMessagesWithCompletion:(CDUnknownBlockType)arg1;
-- (int)getUploadflag;
 - (id)initWithSessionInfo:(id)arg1 userInfo:(id)arg2 frameworksToCheck:(id)arg3;
 - (id)initWithSessionInfo:(id)arg1 userInfo:(id)arg2 frameworksToCheck:(id)arg3 aggregationBlock:(CDUnknownBlockType)arg4;
-- (id)initWithSessionInfo:(int)arg1 version:(unsigned short)arg2 sessionID:(unsigned int)arg3;
-- (id)initWithSessionInfo:(int)arg1 version:(unsigned short)arg2 sessionID:(unsigned int)arg3 frameworksToCheck:(id)arg4;
-- (BOOL)registerPeriodicTask:(id)arg1 needToUpDate:(BOOL)arg2 needToReport:(BOOL)arg3 service_block:(CDUnknownBlockType)arg4;
+- (void)notifyMessageWasSent:(id)arg1;
 - (BOOL)registerPeriodicTaskForModule:(unsigned int)arg1 needToUpdate:(BOOL)arg2 needToReport:(BOOL)arg3 serviceBlock:(CDUnknownBlockType)arg4;
+- (oneway void)release;
+- (id)retain;
 - (BOOL)sendMessageWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3 error:(id *)arg4;
 - (BOOL)sendMessageWithDictionary:(id)arg1 error:(id *)arg2;
-- (void)sendMsgWithMethod:(unsigned short)arg1 respCode:(unsigned short)arg2 dict:(id)arg3;
 - (BOOL)serverSupportsFileUpload;
-- (BOOL)setReportToServer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (BOOL)setReportToServer:(int)arg1 serverStoreBagName:(id)arg2 defaultSvrIP:(id)arg3 defaultSvrPort:(unsigned short)arg4 msgBlock:(CDUnknownBlockType)arg5;
-- (void)setUserInfoDict:(id)arg1;
+- (BOOL)setDigestKey:(id)arg1 algorithm:(int)arg2;
 - (void)startConfigurationWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (BOOL)startLogTimerWithInterval:(int)arg1 reportingFrequency:(int)arg2 reportingMethod:(unsigned short)arg3 reportingStatus:(unsigned short)arg4;
 - (void)startLogTimerWithInterval:(int)arg1 reportingMultiplier:(int)arg2 category:(unsigned short)arg3 type:(unsigned short)arg4;
 - (void)stopLogTimer;
-- (BOOL)stopLogTimerForSession;
-- (BOOL)unregisterPeriodTask:(id)arg1 unservice_block:(CDUnknownBlockType)arg2;
 - (BOOL)unregisterPeriodTaskForModule:(unsigned int)arg1;
+- (void)updateSharedDataForKey:(id)arg1 value:(id)arg2;
+- (void)updateSharedDataWithDictionary:(id)arg1;
 - (BOOL)uploadDataArray:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (BOOL)uploadFileWithName:(id)arg1;
 - (BOOL)uploadFileWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

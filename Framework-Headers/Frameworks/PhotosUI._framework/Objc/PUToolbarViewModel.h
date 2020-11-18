@@ -13,12 +13,14 @@
     NSArray *_toolbarItems;
     UIView *_accessoryView;
     double _accessoryViewTopOutset;
+    double _accessoryViewMaximumHeight;
     double _maximumHeight;
     UIViewController *__viewController;
 }
 
 @property (weak, nonatomic, setter=_setViewController:) UIViewController *_viewController; // @synthesize _viewController=__viewController;
 @property (strong, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
+@property (nonatomic) double accessoryViewMaximumHeight; // @synthesize accessoryViewMaximumHeight=_accessoryViewMaximumHeight;
 @property (nonatomic) double accessoryViewTopOutset; // @synthesize accessoryViewTopOutset=_accessoryViewTopOutset;
 @property (readonly, nonatomic) PUToolbarViewModelChange *currentChange;
 @property (nonatomic) double maximumHeight; // @synthesize maximumHeight=_maximumHeight;

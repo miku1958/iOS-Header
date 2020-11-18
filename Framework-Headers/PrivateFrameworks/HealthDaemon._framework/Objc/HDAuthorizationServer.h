@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class HDClient, HDProfile, NSMutableArray, NSUUID;
+@class HDProfile, HDXPCClient, NSMutableArray, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HDAuthorizationServer : NSObject
 {
     int _invalidated;
-    HDClient *_client;
+    HDXPCClient *_client;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableArray *_authorizationRequestIdentifiers;
@@ -20,7 +20,7 @@
 }
 
 @property (strong, nonatomic) NSMutableArray *authorizationRequestIdentifiers; // @synthesize authorizationRequestIdentifiers=_authorizationRequestIdentifiers;
-@property (readonly) HDClient *client; // @synthesize client=_client;
+@property (readonly) HDXPCClient *client; // @synthesize client=_client;
 @property (nonatomic) int invalidated; // @synthesize invalidated=_invalidated;
 @property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
@@ -33,7 +33,6 @@
 - (void)_queue_beginAuthorizationRequestDelegateTransactionWithSessionIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_enqueueAuthorizationRequestForBundleIdentifier:(id)arg1 writeTypes:(id)arg2 readTypes:(id)arg3 authorizationNeededHandler:(CDUnknownBlockType)arg4 requestCompletionHandler:(CDUnknownBlockType)arg5;
 - (void)_setAuthorizationStatusesEntitled:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (BOOL)_shouldBypassAuthorization;
 - (id)allAuthorizationRecordsForBundleIdentifier:(id)arg1 error:(id *)arg2;
 - (id)allAuthorizationRecordsForType:(id)arg1 error:(id *)arg2;
 - (id)allDocumentAuthorizationRecordsForType:(id)arg1 bundleIdentifier:(id)arg2 error:(id *)arg3;
@@ -41,21 +40,19 @@
 - (id)authorizationStatusForType:(id)arg1 error:(id *)arg2;
 - (void)beginAuthorizationRequestDelegateTransactionWithRequestRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginAuthorizationRequestDelegateTransactionWithSessionIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)clientSourceIdentifierWithError:(id *)arg1;
 - (void)endAuthorizationRequestDelegateTransactionWithSessionIdentifier:(id)arg1 error:(id)arg2;
 - (void)enqueueAuthorizationRequestToWriteTypes:(id)arg1 readTypes:(id)arg2 authorizationNeededHandler:(CDUnknownBlockType)arg3 requestCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)enqueueObjectAuthorizationRequestForSamples:(id)arg1 promptIfNeeded:(BOOL)arg2 authorizationNeededHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)filterSamplesForReadAuthorization:(id)arg1;
 - (void)handleAuthorizationRequestsForBundleIdentifier:(id)arg1 promptHandler:(CDUnknownBlockType)arg2 requestCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)handleAuthorizationRequestsWithPromptHandler:(CDUnknownBlockType)arg1 requestCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)handleObjectAuthorizationRequestsWithPromptHandler:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithClient:(id)arg1 profile:(id)arg2 queue:(id)arg3;
 - (void)invalidate;
 - (BOOL)isAuthorizationStatusDeterminedForTypes:(id)arg1 error:(id *)arg2;
-- (BOOL)isAuthorizedToReadType:(id)arg1 withRestrictedSourceIdentifier:(id *)arg2 authorizationAnchor:(id *)arg3;
 - (void)performIfAuthorizedToDeleteObjectsWithTypes:(id)arg1 onQueue:(id)arg2 usingBlock:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4;
 - (void)performIfAuthorizedToReadTypes:(id)arg1 onQueue:(id)arg2 usingBlock:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4;
 - (void)performIfAuthorizedToSaveObjectsWithTypes:(id)arg1 onQueue:(id)arg2 usingBlock:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4;
+- (id)readAuthorizationStatusForType:(id)arg1 error:(id *)arg2;
 - (id)readAuthorizationWithTypes:(id)arg1 error:(id *)arg2;
 - (void)requestAuthorizationForBundleIdentifier:(id)arg1 writeTypes:(id)arg2 readTypes:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)resetAuthorizationStatusForBundleIdentifier:(id)arg1 error:(id *)arg2;

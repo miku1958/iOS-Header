@@ -14,6 +14,7 @@
     BOOL _crossfadeEnabled;
     BOOL _audioEnabled;
     BOOL _playIsSticky;
+    BOOL _longExposureVitality;
     BOOL _playDuringHint;
     BOOL _showStateOverlay;
     BOOL _prerollBeforePlaying;
@@ -24,6 +25,7 @@
     float _vitalityEaseMinRate;
     double _photoTransitionAdjustment;
     double _minimumPhotoTransitionDuration;
+    double _minimumColorAdjustedPhotoTransitionDuration;
     double _vitalityEaseDuration;
     long long _startBehavior;
     double _forceTouchTimeoutInterval;
@@ -52,7 +54,9 @@
 @property (nonatomic) double forceScrubRewindFactor; // @synthesize forceScrubRewindFactor=_forceScrubRewindFactor;
 @property (nonatomic) double forceTouchTimeoutInterval; // @synthesize forceTouchTimeoutInterval=_forceTouchTimeoutInterval;
 @property (nonatomic) double forceTouchTimeoutMinimumProgress; // @synthesize forceTouchTimeoutMinimumProgress=_forceTouchTimeoutMinimumProgress;
+@property (nonatomic) BOOL longExposureVitality; // @synthesize longExposureVitality=_longExposureVitality;
 @property (nonatomic) BOOL loopingEnabled; // @synthesize loopingEnabled=_loopingEnabled;
+@property (nonatomic) double minimumColorAdjustedPhotoTransitionDuration; // @synthesize minimumColorAdjustedPhotoTransitionDuration=_minimumColorAdjustedPhotoTransitionDuration;
 @property (nonatomic) double minimumPhotoTransitionDuration; // @synthesize minimumPhotoTransitionDuration=_minimumPhotoTransitionDuration;
 @property (nonatomic) double photoTransitionAdjustment; // @synthesize photoTransitionAdjustment=_photoTransitionAdjustment;
 @property (nonatomic) BOOL playDuringHint; // @synthesize playDuringHint=_playDuringHint;

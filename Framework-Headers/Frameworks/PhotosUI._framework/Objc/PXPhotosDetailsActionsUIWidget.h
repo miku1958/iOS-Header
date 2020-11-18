@@ -14,15 +14,17 @@
 #import <PhotosUICore/PXReusableObjectPoolDelegate-Protocol.h>
 #import <PhotosUICore/PXTileSource-Protocol.h>
 #import <PhotosUICore/PXTilingControllerTransitionDelegate-Protocol.h>
-#import <PhotosUICore/PXWidget-Protocol.h>
+#import <PhotosUICore/PXUIWidget-Protocol.h>
+#import <PhotosUICore/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSArray, NSMutableSet, NSString, PHFetchResult, PXActionPerformer, PXActionRowTile, PXPhotoKitAssetCollectionActionManager, PXPhotosDataSource, PXPhotosDetailsActionsSpecManager, PXPhotosDetailsContext, PXReusableObjectPool, PXSectionedSelectionManager, PXTilingController, PXUIScrollViewController, PXWidgetSpec;
-@protocol PXActionPerformerDelegate, PXAnonymousView, PXTileAnimator, PXWidgetDelegate;
+@class NSArray, NSMutableSet, NSString, PHFetchResult, PXActionPerformer, PXActionRowTile, PXOneUpPresentation, PXPhotoKitAssetCollectionActionManager, PXPhotosDataSource, PXPhotosDetailsActionsSpecManager, PXPhotosDetailsContext, PXReusableObjectPool, PXSectionedSelectionManager, PXTilingController, PXUIScrollViewController, PXWidgetSpec;
+@protocol PXActionPerformerDelegate, PXAnonymousView, PXTileAnimator, PXWidgetDelegate, PXWidgetUnlockDelegate;
 
-@interface PXPhotosDetailsActionsUIWidget : NSObject <PXPhotosDataSourceChangeObserver, PXTileSource, PXTilingControllerTransitionDelegate, PXReusableObjectPoolDelegate, PXActionRowTileDelegate, PXActionPerformerDelegate, PXChangeObserver, PXPhotoLibraryUIChangeObserver, PXWidget>
+@interface PXPhotosDetailsActionsUIWidget : NSObject <PXPhotosDataSourceChangeObserver, PXTileSource, PXTilingControllerTransitionDelegate, PXReusableObjectPoolDelegate, PXActionRowTileDelegate, PXActionPerformerDelegate, PXChangeObserver, PXPhotoLibraryUIChangeObserver, UIPopoverPresentationControllerDelegate, PXUIWidget>
 {
     BOOL _isPerformingChanges;
     BOOL _isPerformingUpdates;
+    BOOL _ensureTransition;
     struct {
         BOOL peopleFetchResult;
         BOOL actionManager;
@@ -34,6 +36,7 @@
     BOOL _allowRevealInMomentAction;
     BOOL _allowCreateMemoryAction;
     id<PXWidgetDelegate> _widgetDelegate;
+    id<PXWidgetUnlockDelegate> _widgetUnlockDelegate;
     PXWidgetSpec *_spec;
     PXPhotosDetailsContext *_context;
     id<PXActionPerformerDelegate> _actionPerformerDelegate;
@@ -52,6 +55,7 @@
     PXActionRowTile *__measuringActionRowTile;
     double __rowHeight;
     PXActionPerformer *__activePerformer;
+    struct CGPoint _lastNormalizedTapPosition;
 }
 
 @property (strong, nonatomic, setter=_setActivePerformer:) PXActionPerformer *_activePerformer; // @synthesize _activePerformer=__activePerformer;
@@ -84,10 +88,12 @@
 @property (readonly, nonatomic) BOOL hasContentForCurrentInput;
 @property (readonly, nonatomic) BOOL hasLoadedContentData;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct CGPoint lastNormalizedTapPosition; // @synthesize lastNormalizedTapPosition=_lastNormalizedTapPosition;
 @property (readonly, nonatomic) NSString *localizedCaption;
 @property (readonly, nonatomic) NSString *localizedDisclosureTitle;
 @property (readonly, nonatomic) NSString *localizedSubtitle;
 @property (readonly, nonatomic) NSString *localizedTitle;
+@property (strong, nonatomic) PXOneUpPresentation *oneUpPresentation;
 @property (nonatomic, getter=isSelecting) BOOL selecting;
 @property (readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
 @property (strong, nonatomic) PXWidgetSpec *spec; // @synthesize spec=_spec;
@@ -96,6 +102,7 @@
 @property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled;
 @property (weak, nonatomic) id<PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
+@property (weak, nonatomic) id<PXWidgetUnlockDelegate> widgetUnlockDelegate; // @synthesize widgetUnlockDelegate=_widgetUnlockDelegate;
 
 - (void).cxx_destruct;
 - (id)_createNewLayout;
@@ -104,6 +111,7 @@
 - (void)_invalidateActionManager;
 - (void)_invalidateAllowedActionTypes;
 - (void)_invalidateLayout;
+- (void)_invalidateLayoutEnsureTransition;
 - (void)_invalidatePeopleFetchResult;
 - (void)_invalidatePerformableActionTypes;
 - (void)_invalidateRowHeight;
@@ -120,13 +128,14 @@
 - (void)_updateRowHeightIfNeeded;
 - (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;
 - (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
-- (void)actionRowTileSelected:(id)arg1;
+- (void)actionRowTileSelected:(id)arg1 tapPositionInTile:(struct CGPoint)arg2;
 - (void)checkInTile:(void *)arg1 withIdentifier:(struct PXTileIdentifier)arg2;
 - (void *)checkOutTileForIdentifier:(struct PXTileIdentifier)arg1 layout:(id)arg2;
 - (void)configureActionButtonTile:(id)arg1 withIdentifier:(struct PXTileIdentifier)arg2;
 - (id)init;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
+- (void)prepareForPopoverPresentation:(id)arg1;
 - (void)reusableObjectPool:(id)arg1 didCreateReusableObject:(id)arg2;
 - (void)reusableObjectPool:(id)arg1 didEvictReusableObject:(id)arg2;
 - (id)tilingController:(id)arg1 tileIdentifierConverterForChange:(id)arg2;

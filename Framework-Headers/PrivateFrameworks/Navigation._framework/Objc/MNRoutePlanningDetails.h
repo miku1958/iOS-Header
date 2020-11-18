@@ -8,7 +8,7 @@
 
 #import <Navigation/NSCopying-Protocol.h>
 
-@class GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEOLocation, GEORouteAttributes, NSString;
+@class GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEOLocation, GEORoute, GEORouteAttributes, NSString;
 
 @interface MNRoutePlanningDetails : PBCodable <NSCopying>
 {
@@ -17,12 +17,15 @@
     int _navigationType;
     GEOComposedWaypoint *_origin;
     GEODirectionsRequest *_request;
+    NSString *_requestingAppIdentifier;
     GEODirectionsResponse *_response;
+    GEORoute *_route;
     GEORouteAttributes *_routeAttributes;
     unsigned int _routeIndex;
     NSString *_traceFileName;
     int _transportType;
     BOOL _copyTracesToCrashReporterDirectory;
+    BOOL _fullGuidance;
     BOOL _guidancePromptsEnabled;
     BOOL _isForReconnecting;
     BOOL _isTraceRecording;
@@ -32,6 +35,7 @@
         unsigned int routeIndex:1;
         unsigned int transportType:1;
         unsigned int copyTracesToCrashReporterDirectory:1;
+        unsigned int fullGuidance:1;
         unsigned int guidancePromptsEnabled:1;
         unsigned int isForReconnecting:1;
         unsigned int isTraceRecording:1;
@@ -41,9 +45,11 @@
 
 @property (nonatomic) BOOL copyTracesToCrashReporterDirectory; // @synthesize copyTracesToCrashReporterDirectory=_copyTracesToCrashReporterDirectory;
 @property (strong, nonatomic) GEOComposedWaypoint *destination; // @synthesize destination=_destination;
+@property (nonatomic) BOOL fullGuidance; // @synthesize fullGuidance=_fullGuidance;
 @property (nonatomic) BOOL guidancePromptsEnabled; // @synthesize guidancePromptsEnabled=_guidancePromptsEnabled;
 @property (nonatomic) BOOL hasCopyTracesToCrashReporterDirectory;
 @property (readonly, nonatomic) BOOL hasDestination;
+@property (nonatomic) BOOL hasFullGuidance;
 @property (nonatomic) BOOL hasGuidancePromptsEnabled;
 @property (nonatomic) BOOL hasIsForReconnecting;
 @property (nonatomic) BOOL hasIsTraceRecording;
@@ -51,7 +57,9 @@
 @property (nonatomic) BOOL hasNavigationType;
 @property (readonly, nonatomic) BOOL hasOrigin;
 @property (readonly, nonatomic) BOOL hasRequest;
+@property (readonly, nonatomic) BOOL hasRequestingAppIdentifier;
 @property (readonly, nonatomic) BOOL hasResponse;
+@property (readonly, nonatomic) BOOL hasRoute;
 @property (readonly, nonatomic) BOOL hasRouteAttributes;
 @property (nonatomic) BOOL hasRouteIndex;
 @property (nonatomic) BOOL hasShouldPrepare;
@@ -63,7 +71,9 @@
 @property (nonatomic) int navigationType; // @synthesize navigationType=_navigationType;
 @property (strong, nonatomic) GEOComposedWaypoint *origin; // @synthesize origin=_origin;
 @property (strong, nonatomic) GEODirectionsRequest *request; // @synthesize request=_request;
+@property (strong, nonatomic) NSString *requestingAppIdentifier; // @synthesize requestingAppIdentifier=_requestingAppIdentifier;
 @property (strong, nonatomic) GEODirectionsResponse *response; // @synthesize response=_response;
+@property (strong, nonatomic) GEORoute *route; // @synthesize route=_route;
 @property (strong, nonatomic) GEORouteAttributes *routeAttributes; // @synthesize routeAttributes=_routeAttributes;
 @property (nonatomic) unsigned int routeIndex; // @synthesize routeIndex=_routeIndex;
 @property (nonatomic) BOOL shouldPrepare; // @synthesize shouldPrepare=_shouldPrepare;

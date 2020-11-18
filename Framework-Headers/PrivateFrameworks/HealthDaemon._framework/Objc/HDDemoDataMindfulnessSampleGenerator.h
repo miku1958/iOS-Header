@@ -8,9 +8,14 @@
 
 @interface HDDemoDataMindfulnessSampleGenerator : HDDemoDataBaseSampleGenerator
 {
+    BOOL _didGenerateMindfulnessMinute;
     double _nextMindfulSessionSampleTime;
 }
 
+@property (nonatomic) BOOL didGenerateMindfulnessMinute; // @synthesize didGenerateMindfulnessMinute=_didGenerateMindfulnessMinute;
+@property (nonatomic) double nextMindfulSessionSampleTime; // @synthesize nextMindfulSessionSampleTime=_nextMindfulSessionSampleTime;
+
+- (id)_heartRatesFromMindfulSessionSample:(id)arg1 demoPerson:(id)arg2 atTime:(double)arg3;
 - (id)_mindfulSessionSampleForDemoPerson:(id)arg1 atTime:(double)arg2 startDate:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (void)generateSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;

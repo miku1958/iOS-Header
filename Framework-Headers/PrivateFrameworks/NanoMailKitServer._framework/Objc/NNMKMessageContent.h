@@ -15,11 +15,13 @@
     BOOL _mainAlternativeValid;
     BOOL _partiallyLoaded;
     NSString *_messageId;
+    NSString *_externalReferenceId;
     NSData *_textData;
     NSArray *_attachments;
 }
 
 @property (strong, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
+@property (strong, nonatomic) NSString *externalReferenceId; // @synthesize externalReferenceId=_externalReferenceId;
 @property (nonatomic) BOOL mainAlternativeValid; // @synthesize mainAlternativeValid=_mainAlternativeValid;
 @property (strong, nonatomic) NSString *messageId; // @synthesize messageId=_messageId;
 @property (nonatomic) BOOL partiallyLoaded; // @synthesize partiallyLoaded=_partiallyLoaded;

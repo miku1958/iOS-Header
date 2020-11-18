@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSExpression.h>
+#import <Foundation/NSExpression.h>
 
 @class NSArray;
 
@@ -14,6 +14,7 @@
     NSArray *_arguments;
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)_expressionWithSubstitutionVariables:(id)arg1;
 - (void)acceptVisitor:(id)arg1 flags:(unsigned long long)arg2;
 - (id)arguments;

@@ -6,7 +6,7 @@
 
 #import <CloudDocsUI/_UIContainerHuggingTableViewController.h>
 
-@class NSArray, NSString;
+@class NSArray;
 @protocol _UIDocumentPickerOverviewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     BOOL _manage;
     id<_UIDocumentPickerOverviewDelegate> _delegate;
     NSArray *_allPickers;
-    NSString *_currentExtensionIdentifier;
     NSArray *_auxiliaryOptions;
     NSArray *_fileTypes;
     unsigned long long _mode;
@@ -23,7 +22,6 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSArray *allPickers; // @synthesize allPickers=_allPickers;
 @property (strong, nonatomic) NSArray *auxiliaryOptions; // @synthesize auxiliaryOptions=_auxiliaryOptions;
-@property (strong, nonatomic) NSString *currentExtensionIdentifier; // @synthesize currentExtensionIdentifier=_currentExtensionIdentifier;
 @property (weak, nonatomic) id<_UIDocumentPickerOverviewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSArray *fileTypes; // @synthesize fileTypes=_fileTypes;
 @property (nonatomic) BOOL manage; // @synthesize manage=_manage;
@@ -38,13 +36,10 @@ __attribute__((visibility("hidden")))
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
-- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateContents;
 - (void)updatePreferredContentSize;
-- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

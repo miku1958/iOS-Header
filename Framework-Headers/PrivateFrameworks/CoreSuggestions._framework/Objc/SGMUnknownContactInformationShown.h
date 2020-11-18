@@ -17,7 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)trackEventWithScalar:(unsigned long long)arg1;
+- (void)trackEventWithScalar:(unsigned long long)arg1 app:(struct SGMContactDetailUsedApp_)arg2 wasSuggestedContact:(struct SGMTypeSafeBool_)arg3;
 
 @end
 

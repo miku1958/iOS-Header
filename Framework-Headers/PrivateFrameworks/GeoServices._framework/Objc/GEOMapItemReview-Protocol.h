@@ -13,6 +13,7 @@
 @property (readonly, nonatomic, getter=_date) NSDate *date;
 @property (readonly, nonatomic, getter=_identifier) NSString *identifier;
 @property (readonly, nonatomic, getter=_localizedSnippet) NSString *localizedSnippet;
+@property (readonly, nonatomic, getter=_localizedSnippetLocale) NSString *localizedSnippetLocale;
 @property (readonly, nonatomic, getter=_maxScore) double maxScore;
 @property (readonly, nonatomic, getter=_normalizedScore) double normalizedScore;
 @property (readonly, nonatomic, getter=_reviewerImageURLString) NSString *reviewerImageURLString;

@@ -8,7 +8,6 @@
 
 @class SKScene;
 
-__attribute__((visibility("hidden")))
 @interface SCNTextureSpriteKitSource : SCNTextureOffscreenRenderingSource
 {
     SKScene *_scene;
@@ -21,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (double)__updateTextureWithSKScene:(id)arg1 engineContext:(struct __C3DEngineContext *)arg2 sampler:(struct __C3DTextureSampler *)arg3;
 - (void)cleanup:(struct __C3DRendererContext *)arg1;
 - (void)dealloc;
-- (void)renderWithEngineContext:(struct __C3DEngineContext *)arg1 nextFrameTime:(double *)arg2;
+- (void)renderWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 - (struct __C3DTexture *)textureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 
 @end

@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_xpc_object> *_object;
 }
 
-@property (nonatomic) NSObject<OS_xpc_object> *object; // @synthesize object=_object;
+@property (strong, nonatomic) NSObject<OS_xpc_object> *object; // @synthesize object=_object;
 
 + (id)object:(id)arg1;
 + (BOOL)supportsSecureCoding;

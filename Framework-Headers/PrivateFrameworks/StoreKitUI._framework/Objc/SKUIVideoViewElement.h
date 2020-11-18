@@ -14,10 +14,12 @@
     long long _itemIdentifier;
     long long _playbackStyle;
     SKUIImageViewElement *_thumbnailImage;
+    long long _kind;
 }
 
 @property (readonly, nonatomic) NSArray *assets;
 @property (readonly, nonatomic) long long itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
+@property (readonly, nonatomic) long long kind; // @synthesize kind=_kind;
 @property (readonly, nonatomic) long long playbackStyle; // @synthesize playbackStyle=_playbackStyle;
 @property (readonly, nonatomic) SKUIImageViewElement *thumbnailImage; // @synthesize thumbnailImage=_thumbnailImage;
 

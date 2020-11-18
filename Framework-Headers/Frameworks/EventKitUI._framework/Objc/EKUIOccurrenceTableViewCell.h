@@ -23,6 +23,7 @@
     UIImageView *_angleStripeBackgroundView;
     UIImageView *_accessoryImageView;
     NSArray *_ekUIOccurrenceTableViewCellConstraints;
+    BOOL _areCurrentCellConstraintsForLargeText;
     UIVisualEffectView *_primaryVisualEffectParentView;
     UIVisualEffectView *_secondaryVisualEffectParentView;
     BOOL _travelTimeTemplate;
@@ -63,7 +64,6 @@
     BOOL _isAllDay;
     BOOL _isRecurring;
     BOOL _isBirthday;
-    BOOL _isFacebook;
     BOOL _tentative;
     BOOL _declined;
     BOOL _needsReply;
@@ -84,9 +84,7 @@
 @property (strong, nonatomic) UIVisualEffect *secondaryVisualEffect; // @synthesize secondaryVisualEffect=_secondaryVisualEffect;
 
 + (id)_allDayLocalizedString;
-+ (id)_birthdayIcon;
 + (void)_clearCaches;
-+ (id)_facebookIcon;
 + (id)_needsReplyAngledStripeBackground;
 + (id)_needsReplyDot;
 + (id)_nowLocalizedString;
@@ -119,6 +117,7 @@
 + (id)tentativeStripeColor;
 + (BOOL)vibrant;
 - (void).cxx_destruct;
+- (id)_birthdayIcon;
 - (void)_countdownTimerFired;
 - (id)_createParentVisualEffectViewWithVisualEffect:(id)arg1;
 - (void)_createViewsForReuseIdentifier:(id)arg1;
@@ -129,6 +128,8 @@
 - (double)_rightMarginForTimeViewsFromTimeWidth:(double)arg1;
 - (id)_selectedBackgroundViewWithColor:(id)arg1;
 - (void)_setUpConstraints;
+- (id)_setUpLargeTextConstraints;
+- (id)_setUpStandardConstraints;
 - (id)_sharedNumberFormatter;
 - (id)_textForBottomTimeLabel;
 - (id)_textForCountdownLabelWithCurrentDate:(id)arg1;
@@ -141,14 +142,17 @@
 - (void)_updateColorBarColor;
 - (void)_updateContentForSizeCategoryChange:(id)arg1;
 - (void)_updateCountdownLabel;
+- (void)_updateNumberOfLinesForLabel:(id)arg1 isRightAlignedInStandardLayout:(BOOL)arg2;
 - (void)_updatePrimaryTextLabel;
 - (void)_updateSecondaryTextLabel;
 - (void)_updateTopTimeLabel;
 - (void)_updateTravelDepartureTimeLabel;
 - (void)_updateTravelTimeLabel;
 - (double)_verticalSpacingBottomToBaselineForBottomLabel;
+- (double)_verticalSpacingPrimaryLabelToTimeLabel;
 - (double)_verticalSpacingTopToBaselineForBottomLabel;
 - (double)_verticalSpacingTopToBaselineForTopLabel;
+- (double)_verticalSpacingTopToTopForNonPrimaryLabel;
 - (double)_widthForTimeViews;
 - (id)accessoryImage;
 - (void)contentCategorySizeChanged;
@@ -161,7 +165,6 @@
 - (BOOL)isBirthday;
 - (BOOL)isCancelled;
 - (BOOL)isDeclined;
-- (BOOL)isFacebook;
 - (BOOL)isPast;
 - (BOOL)isTentative;
 - (BOOL)needsReply;

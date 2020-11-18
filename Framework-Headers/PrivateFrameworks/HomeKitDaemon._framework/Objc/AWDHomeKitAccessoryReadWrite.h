@@ -16,17 +16,22 @@
     NSMutableArray *_characteristics;
     unsigned int _duration;
     int _errorCode;
+    int _source;
     NSString *_transaction;
+    NSString *_transportProtocolVersion;
     int _transportType;
     AWDHomeKitVendorInformation *_vendorDetails;
     BOOL _isRemote;
+    BOOL _isTimedWrite;
     BOOL _isWrite;
     struct {
         unsigned int timestamp:1;
         unsigned int duration:1;
         unsigned int errorCode:1;
+        unsigned int source:1;
         unsigned int transportType:1;
         unsigned int isRemote:1;
+        unsigned int isTimedWrite:1;
         unsigned int isWrite:1;
     } _has;
 }
@@ -37,20 +42,27 @@
 @property (nonatomic) BOOL hasDuration;
 @property (nonatomic) BOOL hasErrorCode;
 @property (nonatomic) BOOL hasIsRemote;
+@property (nonatomic) BOOL hasIsTimedWrite;
 @property (nonatomic) BOOL hasIsWrite;
+@property (nonatomic) BOOL hasSource;
 @property (nonatomic) BOOL hasTimestamp;
 @property (readonly, nonatomic) BOOL hasTransaction;
+@property (readonly, nonatomic) BOOL hasTransportProtocolVersion;
 @property (nonatomic) BOOL hasTransportType;
 @property (readonly, nonatomic) BOOL hasVendorDetails;
 @property (nonatomic) BOOL isRemote; // @synthesize isRemote=_isRemote;
+@property (nonatomic) BOOL isTimedWrite; // @synthesize isTimedWrite=_isTimedWrite;
 @property (nonatomic) BOOL isWrite; // @synthesize isWrite=_isWrite;
+@property (nonatomic) int source; // @synthesize source=_source;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property (strong, nonatomic) NSString *transaction; // @synthesize transaction=_transaction;
+@property (strong, nonatomic) NSString *transportProtocolVersion; // @synthesize transportProtocolVersion=_transportProtocolVersion;
 @property (nonatomic) int transportType; // @synthesize transportType=_transportType;
 @property (strong, nonatomic) AWDHomeKitVendorInformation *vendorDetails; // @synthesize vendorDetails=_vendorDetails;
 
 + (Class)characteristicsType;
 - (void).cxx_destruct;
+- (int)StringAsSource:(id)arg1;
 - (int)StringAsTransportType:(id)arg1;
 - (void)addCharacteristics:(id)arg1;
 - (id)characteristicsAtIndex:(unsigned long long)arg1;
@@ -64,6 +76,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)sourceAsString:(int)arg1;
 - (id)transportTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

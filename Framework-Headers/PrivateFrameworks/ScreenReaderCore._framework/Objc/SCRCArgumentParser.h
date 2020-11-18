@@ -22,6 +22,7 @@
 + (id)commandPath;
 + (id)processIdentifier;
 + (id)versionString;
+- (void).cxx_destruct;
 - (id)_displayHelp:(id)arg1;
 - (id)_displayVersion:(id)arg1;
 - (void)addSubcommand:(id)arg1;

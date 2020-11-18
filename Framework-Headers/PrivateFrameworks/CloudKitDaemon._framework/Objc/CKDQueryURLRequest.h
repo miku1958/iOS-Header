@@ -8,7 +8,7 @@
 
 #import <CloudKitDaemon/CKDURLRequestPipelining-Protocol.h>
 
-@class CKQuery, CKRecordZoneID, NSArray, NSData, NSMutableArray, NSString;
+@class CKQuery, CKRecordZoneID, NSArray, NSData, NSMutableArray, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDQueryURLRequest : CKDURLRequest <CKDURLRequestPipelining>
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _limit;
     CKRecordZoneID *_zoneID;
     NSArray *_requestedFields;
+    NSSet *_desiredAssetKeys;
     CDUnknownBlockType _recordResponseBlock;
     NSData *_resultsCursor;
 }
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSData *cursor; // @synthesize cursor=_cursor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSSet *desiredAssetKeys; // @synthesize desiredAssetKeys=_desiredAssetKeys;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property (strong, nonatomic) CKQuery *query; // @synthesize query=_query;
@@ -40,12 +42,12 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)allowsAnonymousAccount;
+- (id)generateRequestOperations;
 - (id)initWithQuery:(id)arg1 cursor:(id)arg2 limit:(unsigned long long)arg3 requestedFields:(id)arg4 zoneID:(id)arg5;
 - (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (id)requestOperations;
 - (id)zoneIDsToLock;
 
 @end

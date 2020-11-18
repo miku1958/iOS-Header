@@ -17,6 +17,7 @@
     MPMediaLibraryConnectionAssertion *_connectionAssertion;
     unsigned long long _feederRevisionID;
     BOOL _hasValidItems;
+    BOOL _isSiriInitiated;
     MPMediaQuery *_query;
     NSArray *_queryItems;
     MPShuffleController *_shuffleController;
@@ -25,8 +26,6 @@
     unsigned long long _currentInvalidationRevision;
     NSDictionary *_startTimeModifications;
     NSDictionary *_endTimeModifications;
-    NSString *_requestingBundleIdentifier;
-    NSString *_requestingBundleVersion;
     BOOL _isPlaylistQueueFeeder;
     MPMediaItem *_cloudDialogAllowedMediaItem;
 }

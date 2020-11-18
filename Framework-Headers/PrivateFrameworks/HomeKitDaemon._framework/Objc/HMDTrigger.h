@@ -4,38 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDBulletinIdentifiers-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDDevice, HMDHome, HMDUser, HMFMessageDispatcher, NSDate, NSDictionary, NSMutableArray, NSString, NSUUID;
+@class HMDDevice, HMDHome, HMDUser, HMFMessageDispatcher, NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDTrigger : NSObject <HMDBulletinIdentifiers, HMFMessageReceiver, NSSecureCoding, HMFDumpState>
+@interface HMDTrigger : HMFObject <HMDBulletinIdentifiers, HMFMessageReceiver, NSSecureCoding, HMFDumpState, HMFLogging, HMDBackingStoreObjectProtocol>
 {
     BOOL _active;
-    BOOL _activeOnLocalDevice;
     NSString *_name;
     NSUUID *_uuid;
     HMDHome *_home;
     HMDUser *_owner;
     HMDDevice *_owningDevice;
-    NSMutableArray *_currentActionSets;
+    NSMutableArray *_actionSetUUIDs;
+    NSMutableDictionary *_actionSetMappings;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_msgDispatcher;
+    unsigned long long _triggerType;
     NSDate *_mostRecentFireDate;
 }
 
 @property (readonly, nonatomic) NSDictionary *actionContext;
+@property (strong, nonatomic) NSMutableDictionary *actionSetMappings; // @synthesize actionSetMappings=_actionSetMappings;
+@property (strong, nonatomic) NSMutableArray *actionSetUUIDs; // @synthesize actionSetUUIDs=_actionSetUUIDs;
+@property (readonly, nonatomic) NSArray *actionSets;
 @property (nonatomic) BOOL active; // @synthesize active=_active;
-@property (nonatomic, getter=isActiveOnLocalDevice) BOOL activeOnLocalDevice; // @synthesize activeOnLocalDevice=_activeOnLocalDevice;
 @property (readonly, nonatomic) NSDictionary *bulletinContext;
+@property (readonly, nonatomic, getter=isConfigured) BOOL configured;
 @property (readonly, copy, nonatomic) NSString *contextID;
 @property (readonly, copy, nonatomic) NSUUID *contextSPIUniqueIdentifier;
-@property (strong, nonatomic) NSMutableArray *currentActionSets; // @synthesize currentActionSets=_currentActionSets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -48,42 +53,68 @@
 @property (readonly, nonatomic, getter=isOwnedByThisDevice) BOOL ownedByThisDevice;
 @property (strong, nonatomic) HMDUser *owner; // @synthesize owner=_owner;
 @property (strong, nonatomic) HMDDevice *owningDevice; // @synthesize owningDevice=_owningDevice;
+@property (readonly, nonatomic) BOOL requiresDataVersion4;
 @property (readonly) Class superclass;
+@property (nonatomic) unsigned long long triggerType; // @synthesize triggerType=_triggerType;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_directlyExecuteActionSetsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_actionSetsUpdated:(id)arg1 message:(id)arg2;
+- (void)_activate:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_executeActionSets:(id)arg1 captureCurrentState:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_executeActionSetsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_fillBaseObjectChangeModel:(id)arg1;
 - (void)_handleActivateTriggerRequest:(id)arg1;
+- (void)_handleAddActionSetRequest:(id)arg1;
+- (void)_handleAddTriggerOwnedActionSetRequest:(id)arg1;
+- (void)_handleRemoveActionSetRequest:(id)arg1 postUpdate:(BOOL)arg2;
+- (void)_handleRemoveTriggerOwnedActionSetRequest:(id)arg1 postUpdate:(BOOL)arg2;
 - (void)_handleRenameRequest:(id)arg1;
-- (void)_handleUpdateActionSetRequest:(id)arg1;
+- (void)_handleTriggerUpdate:(id)arg1 message:(id)arg2;
+- (void)_handleUpdateActionSetRequest:(id)arg1 postUpdate:(BOOL)arg2;
+- (BOOL)_isTriggerFiredNotificationEntitled;
+- (void)_recentFireDateUpdated:(id)arg1;
 - (void)_registerForMessages;
-- (id)_updateActionSet:(id)arg1 add:(BOOL)arg2;
-- (id)actionSetWithUUID:(id)arg1;
-- (id)actionSets;
-- (void)activate:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)activateOnLocalDevice;
+- (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
+- (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (void)activateAfterResidentChangeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)activateWithCompletion:(CDUnknownBlockType)arg1;
+- (id)backingStoreObjects:(long long)arg1;
 - (void)checkForNoActions;
+- (BOOL)compatible:(id)arg1 user:(id)arg2;
 - (void)configure:(id)arg1 messageDispatcher:(id)arg2 queue:(id)arg3;
 - (void)dealloc;
 - (id)dumpState;
+- (id)emptyModelObject;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fixupForReplacementAccessory:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithName:(id)arg1;
+- (id)initWithModel:(id)arg1 home:(id)arg2 message:(id)arg3;
+- (id)initWithName:(id)arg1 uuid:(id)arg2;
 - (void)invalidate;
+- (id)logIdentifier;
+- (void)markChangedForMessage:(id)arg1;
+- (void)markChangedForMessage:(id)arg1 triggerModel:(id)arg2;
+- (BOOL)modelContainsTriggerFired:(id)arg1;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(id)arg2;
 - (void)reEvaluate;
-- (void)refreshActivate;
 - (void)removeAccessory:(id)arg1;
-- (void)removeActionSet:(id)arg1;
+- (void)removeActionSet:(id)arg1 postUpdate:(BOOL)arg2;
 - (void)removeCharacteristic:(id)arg1;
 - (void)removeService:(id)arg1;
 - (void)sendTriggerFiredNotification:(id)arg1;
+- (void)setEnabled:(BOOL)arg1 message:(id)arg2;
+- (BOOL)shouldActivateOnLocalDevice;
 - (BOOL)shouldEncodeLastFireDate:(id)arg1;
+- (void)timerFired:(id)arg1;
+- (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
+- (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (void)triggerFired;
-- (unsigned long long)triggerType;
 - (void)userDidConfirmExecute:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

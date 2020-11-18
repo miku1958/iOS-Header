@@ -18,7 +18,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithBookmarkAndHistoryCompletionMatch:(PassRefPtr_8dece646)arg1;
+- (id)initWithBookmarkAndHistoryCompletionMatch:(Ref_ba1e7e0b *)arg1 userInput:(id)arg2;
 - (id)originalURLString;
 - (id)parsecDomainIdentifier;
 - (id)title;

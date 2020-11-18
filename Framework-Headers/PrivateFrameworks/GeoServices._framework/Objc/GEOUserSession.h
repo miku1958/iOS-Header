@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class GEOUserSessionEntity, NSData, NSLock;
+@class GEOUserSessionEntity, GEOUserSessionSnapshot, NSData, NSLock;
 
 @interface GEOUserSession : NSObject
 {
@@ -18,6 +18,8 @@
     BOOL _shareSessionWithMaps;
     GEOUserSessionEntity *_mapsUserSessionEntity;
     BOOL _zeroSessionIDMode;
+    struct GEOSessionID _cohortSessionID;
+    double _cohortSessionStartTime;
     NSLock *_lock;
     NSData *_navigationDirectionsID;
     struct GEOSessionID _navigationSessionID;
@@ -29,22 +31,27 @@
     struct GEOSessionID _zeroSessionID;
 }
 
+@property (readonly) GEOUserSessionEntity *cohortSessionEntity;
+@property (readonly) GEOUserSessionEntity *longSessionEntity;
 @property (strong, nonatomic) GEOUserSessionEntity *mapsUserSessionEntity; // @synthesize mapsUserSessionEntity=_mapsUserSessionEntity;
 @property (readonly) GEOUserSessionEntity *navSessionEntity;
 @property BOOL shareSessionWithMaps; // @synthesize shareSessionWithMaps=_shareSessionWithMaps;
 @property (readonly) struct GEOSessionID usageCollectionSessionID;
+@property (readonly) GEOUserSessionSnapshot *userSessionSnapshot;
 @property BOOL zeroSessionIDMode; // @synthesize zeroSessionIDMode=_zeroSessionIDMode;
 
 + (BOOL)isGeod;
-+ (void)registerGEOLogFacility;
 + (void)setIsGeod;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)_defaultForKey:(id)arg1;
 - (void)_generateNewNavSessionID;
 - (double)_getCFAbsoluteCurrentTime;
 - (void)_mapsSessionEntityWithCallback:(CDUnknownBlockType)arg1;
+- (void)_renewCohortSessionID;
 - (void)_renewUsageCollectionSessionID;
 - (void)_resetSessionID;
+- (void)_safe_renewCohortSessionID;
 - (void)_safe_renewUsageCollectionSessionID;
 - (void)_setDefault:(id)arg1 forKey:(id)arg2;
 - (void)_updateNavSessionID;

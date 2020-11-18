@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HMDCameraSessionID, HMFMessage, HMFTimer, NSNumber, NSString;
 @protocol HMDCameraStreamControlManagerProtocol;
 
-@interface HMDCameraStreamManagerSession : NSObject
+@interface HMDCameraStreamManagerSession : HMFObject
 {
     id<HMDCameraStreamControlManagerProtocol> _streamControlManager;
     HMDCameraSessionID *_sessionID;

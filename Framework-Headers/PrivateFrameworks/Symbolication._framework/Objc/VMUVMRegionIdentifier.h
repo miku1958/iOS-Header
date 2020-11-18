@@ -18,8 +18,8 @@
 }
 
 + (id)descriptionForRange:(struct _VMURange)arg1 inSortedRegions:(id)arg2 options:(unsigned long long)arg3;
+- (void).cxx_destruct;
 - (int)_recordRegionsAroundAddress:(unsigned long long)arg1 regionDescriptionOptions:(unsigned long long)arg2;
-- (void)dealloc;
 - (id)descriptionForMallocZoneTotalsWithOptions:(unsigned long long)arg1 memorySizeDivisor:(unsigned int)arg2;
 - (id)descriptionForRange:(struct _VMURange)arg1;
 - (id)descriptionForRange:(struct _VMURange)arg1 options:(unsigned long long)arg2;

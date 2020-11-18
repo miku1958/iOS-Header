@@ -35,8 +35,8 @@ __attribute__((visibility("hidden")))
 - (id)isPackageObj;
 - (id)sizeObj;
 - (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
-- (void)updateFromFSAtPath:(id)arg1;
-- (void)updateLocationAndMetaFromFSAtPath:(id)arg1 updateFilename:(BOOL)arg2;
+- (void)updateFromFSAtPath:(id)arg1 filenameOverride:(id)arg2;
+- (void)updateLocationAndMetaFromFSAtPath:(id)arg1 updateFilename:(BOOL)arg2 filenameOverride:(id)arg3;
 
 @end
 

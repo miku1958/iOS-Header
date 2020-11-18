@@ -9,8 +9,7 @@
 #import <NanoRegistry/NRMutableStateParentDelegate-Protocol.h>
 #import <NanoRegistry/NSFastEnumeration-Protocol.h>
 
-@class NSMutableDictionary, NSObject, NSUUID;
-@protocol OS_dispatch_queue;
+@class NSMutableDictionary, NSUUID;
 
 @interface NRMutableDevice : NRMutableStateBase <NRMutableStateParentDelegate, NSFastEnumeration>
 {
@@ -20,10 +19,11 @@
 
 @property (strong, nonatomic) NSMutableDictionary *childMap; // @synthesize childMap=_childMap;
 @property (readonly, nonatomic) BOOL isActive;
+@property (readonly, nonatomic) BOOL isArchived;
 @property (readonly, nonatomic) BOOL isPaired;
+@property (readonly, nonatomic) BOOL migratable;
 @property (readonly, nonatomic) NSUUID *pairingID;
 @property (strong, nonatomic) NSMutableDictionary *properties; // @synthesize properties=_properties;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 
 + (id)diffFrom:(id)arg1 to:(id)arg2;
 + (id)diffsToActivate:(BOOL)arg1 withDate:(id)arg2;

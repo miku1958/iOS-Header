@@ -26,18 +26,14 @@
 + (BOOL)dismissAutomaticallyAfterExtensionCompletion;
 + (id)matchmakerExtension;
 - (void)applicationWillEnterForeground;
-- (void)cancelMatching;
-- (void)cancelPendingInviteToPlayer:(id)arg1;
-- (id)contextForRequestIdentifier;
 - (void)dealloc;
-- (void)finishWithError:(id)arg1;
+- (void)extensionIsCanceling;
+- (id)extensionObjectProxy;
 - (void)inviterCancelled;
-- (void)remoteViewControllerIsCanceling;
-- (void)sendData:(id)arg1;
+- (void)messageFromExtension:(id)arg1;
 - (void)setAcceptedInviteInternal:(id)arg1;
 - (void)setAutomatchFailedWithError:(id)arg1;
 - (void)setAutomatchPlayerCount:(long long)arg1;
-- (void)setBrowsingForNearbyPlayers:(BOOL)arg1;
 - (void)setDefaultInvitationMessage:(id)arg1;
 - (void)setExistingPlayers:(id)arg1;
 - (void)setFailedWithError:(id)arg1;
@@ -48,9 +44,7 @@
 - (void)setPlayer:(id)arg1 connected:(BOOL)arg2;
 - (void)setPlayer:(id)arg1 responded:(long long)arg2;
 - (void)setPlayer:(id)arg1 sentData:(id)arg2;
-- (void)setShareInvitees:(id)arg1;
 - (void)shareMatchWithRequest:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)startMatchingWithRequest:(id)arg1;
 
 @end
 

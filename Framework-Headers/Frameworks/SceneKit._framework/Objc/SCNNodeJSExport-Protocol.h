@@ -41,8 +41,16 @@
 @property (nonatomic) struct SCNVector3 scale;
 @property (strong, nonatomic) SCNSkinner *skinner;
 @property (nonatomic) struct SCNMatrix4 transform;
+@property (readonly, nonatomic) struct SCNVector3 worldFront;
+@property (nonatomic) struct SCNVector4 worldOrientation;
+@property (nonatomic) struct SCNVector3 worldPosition;
+@property (readonly, nonatomic) struct SCNVector3 worldRight;
 @property (readonly, nonatomic) struct SCNMatrix4 worldTransform;
+@property (readonly, nonatomic) struct SCNVector3 worldUp;
 
++ (struct SCNVector3)localFront;
++ (struct SCNVector3)localRight;
++ (struct SCNVector3)localUp;
 + (id)node;
 + (SCNNode *)nodeWithGeometry:(SCNGeometry *)arg1;
 + (id)nodeWithMDLObject:(MDLObject *)arg1;
@@ -61,6 +69,8 @@
 - (struct SCNVector3)convertPosition:(struct SCNVector3)arg1 toNode:(SCNNode *)arg2;
 - (struct SCNMatrix4)convertTransform:(struct SCNMatrix4)arg1 fromNode:(SCNNode *)arg2;
 - (struct SCNMatrix4)convertTransform:(struct SCNMatrix4)arg1 toNode:(SCNNode *)arg2;
+- (struct SCNVector3)convertVector:(struct SCNVector3)arg1 fromNode:(SCNNode *)arg2;
+- (struct SCNVector3)convertVector:(struct SCNVector3)arg1 toNode:(SCNNode *)arg2;
 - (id)copy;
 - (void)enumerateChildNodesUsingBlock:(void (^)(SCNNode *, BOOL *))arg1;
 - (void)enumerateHierarchyUsingBlock:(void (^)(SCNNode *, BOOL *))arg1;
@@ -70,6 +80,10 @@
 - (BOOL)hasActions;
 - (NSArray *)hitTestWithSegmentFromPoint:(struct SCNVector3)arg1 toPoint:(struct SCNVector3)arg2 options:(NSDictionary *)arg3;
 - (void)insertChildNode:(SCNNode *)arg1 atIndex:(unsigned long long)arg2;
+- (void)localRotateBy:(struct SCNVector4)arg1;
+- (void)localTranslateBy:(struct SCNVector3)arg1;
+- (void)lookAt:(struct SCNVector3)arg1;
+- (void)lookAt:(struct SCNVector3)arg1 up:(struct SCNVector3)arg2 localFront:(struct SCNVector3)arg3;
 - (void)pauseAnimationForKey:(NSString *)arg1;
 - (void)removeActionForKey:(NSString *)arg1;
 - (void)removeAllActions;
@@ -82,12 +96,14 @@
 - (void)removeParticleSystem:(SCNParticleSystem *)arg1;
 - (void)replaceChildNode:(SCNNode *)arg1 with:(SCNNode *)arg2;
 - (void)resumeAnimationForKey:(NSString *)arg1;
+- (void)rotateBy:(struct SCNVector4)arg1 aroundTarget:(struct SCNVector3)arg2;
 - (void)runAction:(SCNAction *)arg1;
 - (void)runAction:(SCNAction *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)runAction:(SCNAction *)arg1 forKey:(NSString *)arg2;
 - (void)runAction:(SCNAction *)arg1 forKey:(NSString *)arg2 completionHandler:(void (^)(void))arg3;
 - (void)setValue:(id)arg1 forKey:(NSString *)arg2;
 - (void)setValue:(id)arg1 forKeyPath:(NSString *)arg2;
+- (void)setWorldTransform:(struct SCNMatrix4)arg1;
 - (id)valueForKey:(NSString *)arg1;
 - (id)valueForKeyPath:(NSString *)arg1;
 @end

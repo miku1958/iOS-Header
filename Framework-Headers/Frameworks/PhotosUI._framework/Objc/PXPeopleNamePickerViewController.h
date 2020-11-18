@@ -7,19 +7,20 @@
 #import <UIKit/UIViewController.h>
 
 #import <PhotosUICore/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <PhotosUICore/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <PhotosUICore/UITableViewDelegate-Protocol.h>
 #import <PhotosUICore/UITextFieldDelegate-Protocol.h>
 
-@class NSArray, NSString, PXPeopleNamePickerResultsTableViewController, PXPeopleNamePickerTitleView;
+@class NSArray, NSLayoutConstraint, NSString, PXPeopleNamePickerResultsTableViewController, PXPeopleNamePickerTitleView;
 @protocol PXPeopleNamePickerViewControllerDelegate;
 
-@interface PXPeopleNamePickerViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UIPopoverPresentationControllerDelegate, UIAdaptivePresentationControllerDelegate>
+@interface PXPeopleNamePickerViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UIAdaptivePresentationControllerDelegate>
 {
     PXPeopleNamePickerTitleView *_titleView;
     id<PXPeopleNamePickerViewControllerDelegate> _delegate;
-    PXPeopleNamePickerResultsTableViewController *_resultsController;
     NSArray *_savedRightBarItems;
+    double _yOffset;
+    NSLayoutConstraint *_resultsViewBottomConstraint;
+    PXPeopleNamePickerResultsTableViewController *_resultsController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,27 +28,30 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PXPeopleNamePickerResultsTableViewController *resultsController; // @synthesize resultsController=_resultsController;
+@property (strong, nonatomic) NSLayoutConstraint *resultsViewBottomConstraint; // @synthesize resultsViewBottomConstraint=_resultsViewBottomConstraint;
 @property (strong, nonatomic) NSArray *savedRightBarItems; // @synthesize savedRightBarItems=_savedRightBarItems;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PXPeopleNamePickerTitleView *titleView; // @synthesize titleView=_titleView;
+@property (nonatomic) double yOffset; // @synthesize yOffset=_yOffset;
 
 - (void).cxx_destruct;
 - (void)_applicationDidEnterBackground;
+- (void)_changePlaceholderTextOfTextField:(id)arg1 toColor:(id)arg2;
 - (void)_hideResultsView;
-- (void)_keyboardWillChangeFrame:(id)arg1;
-- (void)_refreshResultsViewSizeWithNewKeyboardHeight:(double)arg1;
-- (void)_setupNavigationBarForEditing:(BOOL)arg1 animated:(BOOL)arg2;
-- (BOOL)_shouldPresentResultsInPopover;
+- (void)_keyboardDidShow:(id)arg1;
+- (void)_keyboardWillHide:(id)arg1;
 - (void)_showResultsView;
 - (double)_titleViewMaxWidthForEditing:(BOOL)arg1;
-- (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
+- (void)adjustForAccessoryViewYOffset:(double)arg1;
+- (void)endNamingSession;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)initWithPeople:(id)arg1;
-- (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
+- (id)initWithPerson:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
+- (void)textFieldDidBeginEditing:(id)arg1;
+- (void)textFieldDidEndEditing:(id)arg1;
 - (BOOL)textFieldShouldBeginEditing:(id)arg1;
 - (BOOL)textFieldShouldEndEditing:(id)arg1;
 - (BOOL)textFieldShouldReturn:(id)arg1;

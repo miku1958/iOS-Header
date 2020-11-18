@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 
@@ -23,15 +23,16 @@
     BOOL _isLocalAccountVisible;
 }
 
-@property (readonly, strong, nonatomic) NSSet *accounts;
+@property (readonly, nonatomic) NSSet *accounts;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, strong, nonatomic) NSSet *enabledAccounts;
+@property (readonly, nonatomic) NSSet *enabledAccounts;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) NSSet *internalAccounts;
-@property (readonly, strong, nonatomic) NSString *serviceName;
+@property (readonly, nonatomic) NSSet *internalAccounts;
+@property (readonly, nonatomic) NSString *serviceName;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_callDelegatesRespondingToSelector:(SEL)arg1 withPreCallbacksBlock:(CDUnknownBlockType)arg2 callbackBlock:(CDUnknownBlockType)arg3 postCallbacksBlock:(CDUnknownBlockType)arg4;
 - (void)_callDelegatesRespondingToSelector:(SEL)arg1 withPreCallbacksBlock:(CDUnknownBlockType)arg2 callbackBlock:(CDUnknownBlockType)arg3 postCallbacksBlock:(CDUnknownBlockType)arg4 group:(id)arg5;
 - (void)_callDelegatesWithBlock:(CDUnknownBlockType)arg1;

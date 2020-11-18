@@ -4,76 +4,110 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDBulletinIdentifiers-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
+#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessory, HMDApplicationData, HMDBulletinBoardNotification, NSArray, NSNumber, NSString, NSUUID;
+@class HMDApplicationData, HMDBulletinBoardNotification, HMDHAPAccessory, HMDHome, HMFMessageDispatcher, NSArray, NSMutableDictionary, NSNumber, NSObject, NSString, NSUUID;
+@protocol OS_dispatch_queue;
 
-@interface HMDService : NSObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState>
+@interface HMDService : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState, HMDBackingStoreObjectProtocol, HMFMessageReceiver>
 {
     BOOL _hidden;
     BOOL _primary;
-    HMDAccessory *_accessory;
+    HMDApplicationData *_appData;
+    NSUUID *_uuid;
+    NSNumber *_instanceID;
+    HMDHAPAccessory *_accessory;
     NSString *_name;
     NSString *_associatedServiceType;
     NSArray *_characteristics;
     NSString *_serviceType;
-    HMDApplicationData *_appData;
     HMDBulletinBoardNotification *_bulletinBoardNotification;
-    NSString *_providedName;
-    NSNumber *_instanceID;
+    NSObject<OS_dispatch_queue> *_propertyQueue;
+    HMFMessageDispatcher *_messageDispatcher;
     NSArray *_linkedServices;
+    NSUUID *_cachedAccessoryUUID;
+    NSMutableDictionary *_deviceLastRequestPresenceDateMap;
+    NSString *_providedName;
 }
 
-@property (readonly, weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
+@property (readonly, weak, nonatomic) HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
 @property (strong, nonatomic) HMDApplicationData *appData; // @synthesize appData=_appData;
 @property (readonly, nonatomic) NSString *associatedServiceType; // @synthesize associatedServiceType=_associatedServiceType;
 @property (strong, nonatomic) HMDBulletinBoardNotification *bulletinBoardNotification; // @synthesize bulletinBoardNotification=_bulletinBoardNotification;
+@property (strong, nonatomic) NSUUID *cachedAccessoryUUID; // @synthesize cachedAccessoryUUID=_cachedAccessoryUUID;
 @property (copy, nonatomic) NSArray *characteristics; // @synthesize characteristics=_characteristics;
 @property (readonly, copy, nonatomic) NSString *contextID;
 @property (readonly, copy, nonatomic) NSUUID *contextSPIUniqueIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSMutableDictionary *deviceLastRequestPresenceDateMap; // @synthesize deviceLastRequestPresenceDateMap=_deviceLastRequestPresenceDateMap;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
+@property (readonly, nonatomic) HMDHome *home;
 @property (copy, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
 @property (strong, nonatomic) NSArray *linkedServices; // @synthesize linkedServices=_linkedServices;
-@property (copy, nonatomic, getter=getName) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, nonatomic) NSUUID *messageTargetUUID;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (getter=isPrimary) BOOL primary; // @synthesize primary=_primary;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (strong, nonatomic) NSString *providedName; // @synthesize providedName=_providedName;
 @property (readonly, copy, nonatomic) NSString *serviceIdentifier;
 @property (strong, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *type;
+@property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
++ (id)generateUUIDWithAccessoryUUID:(id)arg1 serviceID:(id)arg2;
 + (BOOL)supportsSecureCoding;
++ (BOOL)validateProvidedName:(id)arg1;
 - (void).cxx_destruct;
 - (void)_createNotification;
+- (void)_handleSetAppData:(id)arg1;
 - (void)_readRequiredBTLECharacteristicValuesForceReadName:(BOOL)arg1 forceReadFWVersion:(BOOL)arg2;
+- (void)_recalculateUUID;
+- (void)_registerForMessages;
 - (void)_setServiceProperties:(id)arg1;
 - (void)_shouldServiceBeHidden;
 - (BOOL)_supportsBulletinNotification;
-- (void)_updateName:(id)arg1;
-- (void)_updateProvidedName:(id)arg1;
+- (void)_transactionServiceUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (id)_updateProvidedName:(id)arg1;
+- (void)appDataRemoved:(id)arg1 message:(id)arg2;
+- (void)appDataUpdated:(id)arg1 message:(id)arg2;
 - (id)assistantObject;
+- (id)backingStoreObjects:(long long)arg1;
 - (void)configureBulletinNotification:(CDUnknownBlockType)arg1;
 - (void)configureMsgDispatcher:(id)arg1;
 - (id)configureWithService:(id)arg1 accessory:(id)arg2;
+- (id)configureWithService:(id)arg1 accessory:(id)arg2 shouldRead:(BOOL)arg3;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)findCharacteristic:(id)arg1;
 - (id)findCharacteristicWithType:(id)arg1;
+- (id)gatherRequiredReadRequestsForceReadName:(BOOL)arg1 forceReadFWVersion:(BOOL)arg2;
 - (id)getConfiguredName;
+- (id)init;
+- (id)initWithAccessory:(id)arg1 instance:(id)arg2 uuid:(id)arg3;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithService:(id)arg1 accessory:(id)arg2;
+- (id)initWithTransaction:(id)arg1 accessory:(id)arg2;
+- (BOOL)listsEqual:(id)arg1 to:(id)arg2;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (BOOL)shouldEnableDaemonRelaunch;
-- (void)updateAccessory:(id)arg1;
+- (BOOL)shouldIncludePresenceForDeviceWithDestination:(id)arg1;
+- (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
+- (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (BOOL)updateAssociatedServiceType:(id)arg1 error:(id *)arg2;
+- (BOOL)updateCharacteristics:(id)arg1;
 - (void)updateLastKnownValues;
-- (void)updateName:(id)arg1;
+- (id)updateName:(id)arg1;
+- (void)updatePresenceRequestTimeForDeviceWithDestination:(id)arg1;
 - (id)url;
 
 @end

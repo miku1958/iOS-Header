@@ -6,14 +6,16 @@
 
 #import <SceneKit/SCNNode.h>
 
-@class NSURL;
+@class NSMutableDictionary, NSURL;
 
 @interface SCNReferenceNode : SCNNode
 {
     NSURL *_referenceURL;
-    NSURL *_catalogURL;
     BOOL _loaded;
+    NSMutableDictionary *_overrides;
     long long _loadingPolicy;
+    NSURL *_catalogURL;
+    NSURL *_sourceDocumentURL;
 }
 
 @property (readonly, getter=isLoaded) BOOL loaded;
@@ -22,10 +24,21 @@
 
 + (id)referenceNodeWithURL:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void)_applyOverride:(id)arg1 forKeyPath:(id)arg2;
+- (void)_applyOverrides;
+- (void)_applyUnsharing:(id)arg1 alreadyShared:(id)arg2;
 - (id)_catalog;
+- (void)_diffNode:(id)arg1 with:(id)arg2 path:(id)arg3;
+- (void)_diffObject:(id)arg1 with:(id)arg2 path:(id)arg3;
 - (BOOL)_isAReference;
+- (BOOL)_isNameUnique:(id)arg1;
+- (id)_loadReferencedSceneWithURL:(id)arg1 catalog:(id)arg2;
 - (void)_loadWithCatalog:(id)arg1;
+- (void)_loadWithURL:(id)arg1;
+- (void)_loadWithURL:(id)arg1 catalog:(id)arg2;
 - (id)_resolveURL;
+- (void)addOverride:(id)arg1 forKeyPath:(id)arg2;
+- (void)collectOverrides;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
@@ -33,6 +46,11 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (void)load;
+- (id)overrides;
+- (void)removeAllOverrides;
+- (void)removeForKeyPath:(id)arg1;
+- (void)setOverride:(id)arg1 forKeyPath:(id)arg2;
+- (void)setOverrides:(id)arg1;
 - (void)unload;
 
 @end

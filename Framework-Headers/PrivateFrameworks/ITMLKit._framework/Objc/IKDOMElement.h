@@ -26,6 +26,7 @@
     id<IKStyleableElement> parentStyleableElement;
 }
 
+@property (readonly, nonatomic) BOOL _isPrototypeElement;
 @property (readonly, copy, nonatomic) IKDOMNamedNodeMap *attributes;
 @property (readonly, nonatomic) unsigned long long childElementCount;
 @property (readonly, nonatomic) IKDOMHTMLCollection *children;
@@ -42,8 +43,10 @@
 @property (readonly) Class superclass;
 @property (readonly, strong, nonatomic) NSString *tagName;
 
++ (id)_filteredAttributes;
 - (void).cxx_destruct;
 - (id)_attributes;
+- (void)_markUpdatedForChangeInAttribute:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
 - (id)asPrivateIKJSDOMElement;
 - (id)childElementByTagName:(id)arg1;
 - (id)childElements;
@@ -52,7 +55,11 @@
 - (id)domb_dataBinding;
 - (void)domb_setDataBinding:(id)arg1;
 - (id)dse_appDataSet;
+- (id)dse_jsDataItems;
 - (void)dse_setAppDataSet:(id)arg1;
+- (void)dse_setJSDataItems:(id)arg1;
+- (void)dse_setUsedPrototypesByType:(id)arg1;
+- (id)dse_usedPrototypesByType;
 - (id)getAttribute:(id)arg1;
 - (id)getElementsByTagName:(id)arg1;
 - (BOOL)hasAttribute:(id)arg1;

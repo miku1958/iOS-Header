@@ -6,12 +6,13 @@
 
 #import <PhotoLibraryServices/PLCloudSharingJob.h>
 
-@class AssetCollectionInfo, MSASAssetCollection, NSArray, NSDictionary, NSString;
+@class AssetCollectionInfo, MSASAssetCollection, NSArray, NSDictionary, NSMutableArray, NSString;
 
 @interface PLCloudSharedAssetSaveJob : PLCloudSharingJob
 {
     BOOL _replacingOriginalWithDerivative;
     AssetCollectionInfo *_currentAssetCollectionInfo;
+    NSMutableArray *_pendingDownloadNotifications;
     BOOL _isVideo;
     NSString *_currentFilePath;
     NSString *_currentCloudAssetGUID;
@@ -48,11 +49,17 @@
 + (void)processMetadataForAssetCollections:(id)arg1 inAlbum:(id)arg2 personID:(id)arg3 info:(id)arg4;
 + (void)replaceRecentlyUploadedOriginalWithDerivativeForCollection:(id)arg1 inAlbum:(id)arg2 personID:(id)arg3;
 + (void)saveCloudSharedAssetAtPath:(id)arg1 forAssetCollection:(id)arg2 mediaAssetType:(unsigned long long)arg3 albumGUID:(id)arg4 personID:(id)arg5 info:(id)arg6 shouldPrioritize:(BOOL)arg7;
+- (void)_addDownloadNotification:(id)arg1;
 - (BOOL)_createPlaceHolderInSharedAlbum:(id)arg1;
+- (void)_incrementDerivativesCount:(long long)arg1 thumbnailsCount:(long long)arg2;
 - (unsigned long long)_insertionIndexForAsset:(id)arg1 inAlbum:(id)arg2;
 - (BOOL)_parseISO6709String:(id)arg1 outLatitude:(double *)arg2 outLongitude:(double *)arg3;
+- (void)_performSaveTransactionAndWaitOnLibrary:(id)arg1 transaction:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_prefetchLimitForDerivatives:(long long *)arg1 thumbnails:(long long *)arg2;
 - (void)_processInFlightCommentsForAsset:(id)arg1 inAlbum:(id)arg2 inPhotoLibrary:(id)arg3;
+- (BOOL)_processInflightAsset:(id)arg1 mediaAssetType:(unsigned long long)arg2;
 - (BOOL)_processSaveAssetWithPlaceholderKind:(short)arg1 withAssetDataFilePath:(id)arg2;
+- (void)_updateAsset:(id)arg1 withImageFileURL:(id)arg2;
 - (void)_updatePhotoIrisPropertiesIfNecessaryForAsset:(id)arg1 inManagedObjectContext:(id)arg2;
 - (short)attemptLightweightReimportAssetData;
 - (long long)daemonOperation;
@@ -70,7 +77,6 @@
 - (short)placeHolderKindFromAssetMetadataType:(unsigned long long)arg1;
 - (void)run;
 - (void)runDaemonSide;
-- (void)saveJobAssetWithPlaceholderKind:(short)arg1;
 
 @end
 

@@ -21,9 +21,10 @@
 - (HDExtendedDatabaseTransaction *)extendedDatabaseTransactionForIdentifier:(NSUUID *)arg1;
 - (void)finalizeExtendedTransactionForIdentifier:(NSUUID *)arg1;
 - (void)performAsynchronously:(void (^)(void))arg1;
-- (BOOL)performJournalMergeUsingBlock:(BOOL (^)(HDSQLiteDatabase *, id *))arg1 error:(id *)arg2;
+- (BOOL)performJournalMergeWithOptions:(unsigned long long)arg1 error:(id *)arg2 block:(BOOL (^)(HDSQLiteDatabase *, id *))arg3;
 - (BOOL)performTransactionWithOptions:(unsigned long long)arg1 error:(id *)arg2 usingBlock:(BOOL (^)(HDSQLiteDatabase *, id *))arg3 inaccessibilityHandler:(BOOL (^)(NSError *, id *))arg4;
 - (void)performWhenDataProtectedByFirstUnlockIsAvailable:(void (^)(void))arg1;
+- (BOOL)performWithSecondaryJournal:(long long)arg1 error:(id *)arg2 block:(BOOL (^)(id *))arg3;
 - (void)removeProtectedDataObserver:(id<HDDatabaseProtectedDataObserver>)arg1;
 @end
 

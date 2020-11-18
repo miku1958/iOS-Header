@@ -41,7 +41,6 @@
 - (void)getActiveAlertBehaviorOverridesWithHandler:(CDUnknownBlockType)arg1;
 - (void)getAspectRatioForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)getBulletinsForPublisherMatchIDs:(id)arg1 sectionID:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (void)getBulletinsPublishedAfterDate:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getBulletinsWithHandler:(CDUnknownBlockType)arg1;
 - (void)getDataForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)getObserverDebugInfo:(CDUnknownBlockType)arg1;
@@ -58,6 +57,7 @@
 - (void)handleResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (unsigned long long)incrementedTransactionIDForBulletinID:(id)arg1;
 - (id)initWithServer:(id)arg1 connection:(id)arg2 calloutQueue:(id)arg3;
+- (id)initWithServer:(id)arg1 connection:(id)arg2 queue:(id)arg3 calloutQueue:(id)arg4;
 - (void)noteAlertBehaviorOverrideStateChanged:(id)arg1;
 - (void)noteAlertBehaviorOverridesChanged:(id)arg1;
 - (void)noteServerReceivedResponseForBulletin:(id)arg1;
@@ -69,7 +69,6 @@
 - (void)setObserverFeed:(unsigned long long)arg1 asLightsAndSirensGateway:(id)arg2 priority:(unsigned long long)arg3;
 - (void)setObserverFeed:(unsigned long long)arg1 attachToLightsAndSirensGateway:(id)arg2;
 - (id)transactionBulletinIDs;
-- (void)updateBulletin:(id)arg1;
 - (void)updateBulletin:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)updateSectionInfo:(id)arg1;
 - (void)updateSectionOrder:(id)arg1;

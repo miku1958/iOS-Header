@@ -14,12 +14,14 @@
 @interface _UIActionSheetPresentationController : UIPopoverPresentationController <_UIActionSheetCompactPresentationControllerDelegate>
 {
     BOOL _dismissActionUsesShorterHeightWhenCompactVertically;
+    BOOL _avoidsKeyboardDisabled;
     NSString *_dismissActionTitle;
     id<UIActionSheetPresentationControllerDelegate> _actionSheetDelegate;
     _UIActionSheetCompactPresentationController *_compactPresentationController;
 }
 
 @property (weak, nonatomic) id<UIActionSheetPresentationControllerDelegate> actionSheetDelegate; // @synthesize actionSheetDelegate=_actionSheetDelegate;
+@property (nonatomic) BOOL avoidsKeyboardDisabled; // @synthesize avoidsKeyboardDisabled=_avoidsKeyboardDisabled;
 @property (strong, nonatomic) _UIActionSheetCompactPresentationController *compactPresentationController; // @synthesize compactPresentationController=_compactPresentationController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -37,8 +39,10 @@
 - (id)_visualStyleForTraitCollection:(id)arg1;
 - (void)actionSheetCompactPresentationControllerDidDismiss:(id)arg1;
 - (BOOL)actionSheetCompactPresentationControllerShouldPresentInCurrentContext:(id)arg1;
+- (void)beginPseudoAlertPresentationMode;
 - (void)dealloc;
 - (void)dimmingViewWasTapped:(id)arg1;
+- (void)endPseudoAlertPresentationMode;
 
 @end
 

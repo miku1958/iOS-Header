@@ -42,8 +42,8 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)estimatedBatchSize;
-- (id)extractDeletesFromBatchDeletedRecordIdentifiers:(id *)arg1 trashedRecordIdentifiers:(id *)arg2;
 - (void)extractInitialDownloadBatch:(id *)arg1 shouldConsiderRecordFilter:(CDUnknownBlockType)arg2;
+- (BOOL)hasChangeWithIdentifier:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRecords:(id)arg1;
@@ -51,7 +51,7 @@
 - (id)localResourceOfType:(unsigned long long)arg1 forItemWithCloudIdentifier:(id)arg2;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (void)removeRecordWithIdentifier:(id)arg1;
-- (void)sortBatch;
+- (BOOL)sortBatchWithError:(id *)arg1;
 - (id)summaryDescription;
 
 @end

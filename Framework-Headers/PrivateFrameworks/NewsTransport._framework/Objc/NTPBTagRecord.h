@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString, NTPBFeedConfiguration, NTPBRecordBase;
+@class NSData, NSMutableArray, NSString, NTPBFeedConfiguration, NTPBPublisherPaidDescriptionStrings, NTPBRecordBase;
 
 @interface NTPBTagRecord : PBCodable <NSCopying>
 {
@@ -29,10 +29,14 @@
     NSString *_coverArticleListID;
     NSString *_coverImageURL;
     NTPBFeedConfiguration *_feedConfiguration;
+    int _groupingAvailability;
     NSMutableArray *_iAdCategories;
     NSMutableArray *_iAdKeywords;
     NSString *_logoURL;
     NSString *_name;
+    NSString *_nameCompact;
+    NSData *_nameImageCompactMetadata;
+    NSString *_nameImageCompactURL;
     NSString *_nameImageForDarkBackgroundURL;
     NSString *_nameImageMaskURL;
     NSString *_nameImageMaskWidgetHQURL;
@@ -43,6 +47,7 @@
     NSMutableArray *_pinnedArticleIDs;
     NSString *_primaryAudience;
     NSString *_publisherPaidAuthorizationURL;
+    NTPBPublisherPaidDescriptionStrings *_publisherPaidDescriptionStrings;
     NSMutableArray *_publisherPaidFeldsparablePurchaseIDs;
     NSString *_publisherPaidVerificationURL;
     NSString *_publisherPaidWebaccessURL;
@@ -57,6 +62,7 @@
     BOOL _hideAccessoryText;
     BOOL _isDeprecated;
     BOOL _isExplicitContent;
+    BOOL _isHidden;
     BOOL _isNotificationEnabled;
     BOOL _isPublic;
     BOOL _publisherPaidLeakyPaywallOptOut;
@@ -70,10 +76,12 @@
         unsigned int score:1;
         unsigned int tagNameImageBaselineShift:1;
         unsigned int tagNameImageScaleFactor:1;
+        unsigned int groupingAvailability:1;
         unsigned int type:1;
         unsigned int hideAccessoryText:1;
         unsigned int isDeprecated:1;
         unsigned int isExplicitContent:1;
+        unsigned int isHidden:1;
         unsigned int isNotificationEnabled:1;
         unsigned int isPublic:1;
         unsigned int publisherPaidLeakyPaywallOptOut:1;
@@ -94,6 +102,7 @@
 @property (strong, nonatomic) NTPBFeedConfiguration *feedConfiguration; // @synthesize feedConfiguration=_feedConfiguration;
 @property (nonatomic) unsigned long long forYouCutoffTime; // @synthesize forYouCutoffTime=_forYouCutoffTime;
 @property (nonatomic) unsigned long long forYouMaximumArticleCount; // @synthesize forYouMaximumArticleCount=_forYouMaximumArticleCount;
+@property (nonatomic) int groupingAvailability; // @synthesize groupingAvailability=_groupingAvailability;
 @property (nonatomic) BOOL hasAllowedAdTypes;
 @property (readonly, nonatomic) BOOL hasBase;
 @property (readonly, nonatomic) BOOL hasChannelDefaultSectionID;
@@ -103,14 +112,19 @@
 @property (readonly, nonatomic) BOOL hasFeedConfiguration;
 @property (nonatomic) BOOL hasForYouCutoffTime;
 @property (nonatomic) BOOL hasForYouMaximumArticleCount;
+@property (nonatomic) BOOL hasGroupingAvailability;
 @property (nonatomic) BOOL hasHideAccessoryText;
 @property (nonatomic) BOOL hasIsDeprecated;
 @property (nonatomic) BOOL hasIsExplicitContent;
+@property (nonatomic) BOOL hasIsHidden;
 @property (nonatomic) BOOL hasIsNotificationEnabled;
 @property (nonatomic) BOOL hasIsPublic;
 @property (readonly, nonatomic) BOOL hasLogoURL;
 @property (nonatomic) BOOL hasMinimumNewsVersion;
 @property (readonly, nonatomic) BOOL hasName;
+@property (readonly, nonatomic) BOOL hasNameCompact;
+@property (readonly, nonatomic) BOOL hasNameImageCompactMetadata;
+@property (readonly, nonatomic) BOOL hasNameImageCompactURL;
 @property (readonly, nonatomic) BOOL hasNameImageForDarkBackgroundURL;
 @property (readonly, nonatomic) BOOL hasNameImageMaskURL;
 @property (readonly, nonatomic) BOOL hasNameImageMaskWidgetHQURL;
@@ -120,6 +134,7 @@
 @property (readonly, nonatomic) BOOL hasParentID;
 @property (readonly, nonatomic) BOOL hasPrimaryAudience;
 @property (readonly, nonatomic) BOOL hasPublisherPaidAuthorizationURL;
+@property (readonly, nonatomic) BOOL hasPublisherPaidDescriptionStrings;
 @property (nonatomic) BOOL hasPublisherPaidLeakyPaywallOptOut;
 @property (readonly, nonatomic) BOOL hasPublisherPaidVerificationURL;
 @property (nonatomic) BOOL hasPublisherPaidWebOptIn;
@@ -135,11 +150,15 @@
 @property (strong, nonatomic) NSMutableArray *iAdKeywords; // @synthesize iAdKeywords=_iAdKeywords;
 @property (nonatomic) BOOL isDeprecated; // @synthesize isDeprecated=_isDeprecated;
 @property (nonatomic) BOOL isExplicitContent; // @synthesize isExplicitContent=_isExplicitContent;
+@property (nonatomic) BOOL isHidden; // @synthesize isHidden=_isHidden;
 @property (nonatomic) BOOL isNotificationEnabled; // @synthesize isNotificationEnabled=_isNotificationEnabled;
 @property (nonatomic) BOOL isPublic; // @synthesize isPublic=_isPublic;
 @property (strong, nonatomic) NSString *logoURL; // @synthesize logoURL=_logoURL;
 @property (nonatomic) long long minimumNewsVersion; // @synthesize minimumNewsVersion=_minimumNewsVersion;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (strong, nonatomic) NSString *nameCompact; // @synthesize nameCompact=_nameCompact;
+@property (strong, nonatomic) NSData *nameImageCompactMetadata; // @synthesize nameImageCompactMetadata=_nameImageCompactMetadata;
+@property (strong, nonatomic) NSString *nameImageCompactURL; // @synthesize nameImageCompactURL=_nameImageCompactURL;
 @property (strong, nonatomic) NSString *nameImageForDarkBackgroundURL; // @synthesize nameImageForDarkBackgroundURL=_nameImageForDarkBackgroundURL;
 @property (strong, nonatomic) NSString *nameImageMaskURL; // @synthesize nameImageMaskURL=_nameImageMaskURL;
 @property (strong, nonatomic) NSString *nameImageMaskWidgetHQURL; // @synthesize nameImageMaskWidgetHQURL=_nameImageMaskWidgetHQURL;
@@ -150,6 +169,7 @@
 @property (strong, nonatomic) NSMutableArray *pinnedArticleIDs; // @synthesize pinnedArticleIDs=_pinnedArticleIDs;
 @property (strong, nonatomic) NSString *primaryAudience; // @synthesize primaryAudience=_primaryAudience;
 @property (strong, nonatomic) NSString *publisherPaidAuthorizationURL; // @synthesize publisherPaidAuthorizationURL=_publisherPaidAuthorizationURL;
+@property (strong, nonatomic) NTPBPublisherPaidDescriptionStrings *publisherPaidDescriptionStrings; // @synthesize publisherPaidDescriptionStrings=_publisherPaidDescriptionStrings;
 @property (strong, nonatomic) NSMutableArray *publisherPaidFeldsparablePurchaseIDs; // @synthesize publisherPaidFeldsparablePurchaseIDs=_publisherPaidFeldsparablePurchaseIDs;
 @property (nonatomic) BOOL publisherPaidLeakyPaywallOptOut; // @synthesize publisherPaidLeakyPaywallOptOut=_publisherPaidLeakyPaywallOptOut;
 @property (strong, nonatomic) NSString *publisherPaidVerificationURL; // @synthesize publisherPaidVerificationURL=_publisherPaidVerificationURL;

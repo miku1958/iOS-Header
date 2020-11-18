@@ -8,7 +8,6 @@
 
 @class NSHashTable, PUViewControllerSpecChange, UITraitCollection;
 
-__attribute__((visibility("hidden")))
 @interface PUViewControllerSpec : NSObject
 {
     BOOL _presentedForSecondScreen;

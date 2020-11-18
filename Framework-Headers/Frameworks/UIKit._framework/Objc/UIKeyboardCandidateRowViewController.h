@@ -24,19 +24,20 @@ __attribute__((visibility("hidden")))
     Class _cellClass;
 }
 
-@property (nonatomic) id<UIKeyboardCandidateListDelegate> candidateListDelegate; // @synthesize candidateListDelegate=_candidateListDelegate;
+@property (weak, nonatomic) id<UIKeyboardCandidateListDelegate> candidateListDelegate; // @synthesize candidateListDelegate=_candidateListDelegate;
 @property (strong, nonatomic) TIKeyboardCandidateResultSet *candidateSet; // @synthesize candidateSet=_candidateSet;
 @property (readonly, nonatomic) NSArray *candidates;
 @property (strong, nonatomic) Class cellClass; // @synthesize cellClass=_cellClass;
 @property (readonly, nonatomic) UIKBCandidateCollectionView *collectionView;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<UIKeyboardCandidateRowViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<UIKeyboardCandidateRowViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL showsHiddenCandidates; // @synthesize showsHiddenCandidates=_showsHiddenCandidates;
 @property (readonly) Class superclass;
 
 + (double)suggestedHeightForCellClass:(Class)arg1;
+- (void).cxx_destruct;
 - (void)_reloadCandidates;
 - (void)_showCandidateAtIndex:(unsigned long long)arg1 scrollCellToVisible:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)_stepSelectedCandidateInDirection:(BOOL)arg1;
@@ -49,10 +50,10 @@ __attribute__((visibility("hidden")))
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (id)currentCandidate;
 - (unsigned long long)currentIndex;
-- (void)dealloc;
 - (BOOL)hasCandidates;
 - (id)initWithCellClass:(Class)arg1;
 - (BOOL)isExtendedList;
+- (BOOL)isFloatingList;
 - (id)keyboardBehaviors;
 - (void)loadView;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
@@ -63,12 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)setUIKeyboardCandidateListDelegate:(id)arg1;
 - (BOOL)showCandidate:(id)arg1;
 - (void)showCandidateAtIndex:(unsigned long long)arg1;
-- (void)showNextCandidate;
-- (void)showNextPage;
-- (void)showNextRow;
-- (void)showPreviousCandidate;
-- (void)showPreviousPage;
-- (void)showPreviousRow;
+- (void)showCandidateInForwardDirection:(BOOL)arg1 granularity:(int)arg2;
 - (struct CGSize)sizeOfDummyItemForCollectionView:(id)arg1 layout:(id)arg2;
 - (id)statisticsIdentifier;
 - (double)suggestedHeight;

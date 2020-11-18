@@ -27,6 +27,9 @@
 @property (strong, nonatomic) id<CKDURLRequestPipelining> request; // @synthesize request=_request;
 
 - (void).cxx_destruct;
+- (void)addPerRequestCallbackBlock:(CDUnknownBlockType)arg1;
+- (void)cancelAndDisablePerRequestCallbackBlocks;
+- (void)disablePerRequestCallbackBlocks;
 - (id)initWithRequest:(id)arg1 operation:(id)arg2;
 
 @end

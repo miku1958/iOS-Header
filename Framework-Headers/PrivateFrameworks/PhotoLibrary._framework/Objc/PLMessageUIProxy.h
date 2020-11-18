@@ -18,7 +18,7 @@
 + (Class)MFRecipientTableViewCellClass;
 + (Class)MFSearchShadowViewClass;
 + (BOOL)canSendMail;
-+ (id)newABUnknownPersonViewControllerWithEmailAddress:(id)arg1;
++ (id)newCNUnknownPersonViewControllerWithEmailAddress:(id)arg1;
 + (id)newComposeViewController;
 
 @end

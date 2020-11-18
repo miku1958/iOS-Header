@@ -19,6 +19,10 @@
 - (void)_axRememberTargetter:(id)arg1;
 - (void)_updateAccessibilityLabelForImage:(id)arg1;
 - (id)accessibilityLabel;
+- (id)accessibilityLocalizationBundleID;
+- (id)accessibilityLocalizationBundlePath;
+- (id)accessibilityLocalizedStringKey;
+- (id)accessibilityLocalizedStringTableName;
 - (unsigned long long)accessibilityTraits;
 - (id)createViewForNavigationItem:(id)arg1;
 - (id)createViewForToolbar:(id)arg1;
@@ -26,6 +30,9 @@
 - (id)initWithImage:(id)arg1 landscapeImagePhone:(id)arg2 style:(long long)arg3 target:(id)arg4 action:(SEL)arg5;
 - (id)initWithImage:(id)arg1 style:(long long)arg2 target:(id)arg3 action:(SEL)arg4;
 - (BOOL)isAccessibilityElement;
+- (void)setAccessibilityAttributedHint:(id)arg1;
+- (void)setAccessibilityAttributedLabel:(id)arg1;
+- (void)setAccessibilityAttributedValue:(id)arg1;
 - (void)setAccessibilityHint:(id)arg1;
 - (void)setAccessibilityIdentifier:(id)arg1;
 - (void)setAccessibilityLabel:(id)arg1;

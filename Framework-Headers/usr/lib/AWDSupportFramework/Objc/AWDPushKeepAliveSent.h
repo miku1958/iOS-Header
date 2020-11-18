@@ -14,38 +14,58 @@
 {
     unsigned long long _timestamp;
     unsigned int _connectionType;
+    unsigned int _currentGrowthStage;
     unsigned int _dualChannelState;
     NSString *_guid;
     unsigned int _keepAliveACKDuration;
+    unsigned int _keepAliveVersion;
+    unsigned int _lastKeepAliveInterval;
     int _linkQuality;
     unsigned int _nextKeepAliveInterval;
+    unsigned int _timeSinceConnected;
     unsigned int _timeSinceLastKeepAlive;
+    unsigned int _timeSinceLastSuccessfulKeepAlive;
     struct {
         unsigned int timestamp:1;
         unsigned int connectionType:1;
+        unsigned int currentGrowthStage:1;
         unsigned int dualChannelState:1;
         unsigned int keepAliveACKDuration:1;
+        unsigned int keepAliveVersion:1;
+        unsigned int lastKeepAliveInterval:1;
         unsigned int linkQuality:1;
         unsigned int nextKeepAliveInterval:1;
+        unsigned int timeSinceConnected:1;
         unsigned int timeSinceLastKeepAlive:1;
+        unsigned int timeSinceLastSuccessfulKeepAlive:1;
     } _has;
 }
 
 @property (nonatomic) unsigned int connectionType; // @synthesize connectionType=_connectionType;
+@property (nonatomic) unsigned int currentGrowthStage; // @synthesize currentGrowthStage=_currentGrowthStage;
 @property (nonatomic) unsigned int dualChannelState; // @synthesize dualChannelState=_dualChannelState;
 @property (strong, nonatomic) NSString *guid; // @synthesize guid=_guid;
 @property (nonatomic) BOOL hasConnectionType;
+@property (nonatomic) BOOL hasCurrentGrowthStage;
 @property (nonatomic) BOOL hasDualChannelState;
 @property (readonly, nonatomic) BOOL hasGuid;
 @property (nonatomic) BOOL hasKeepAliveACKDuration;
+@property (nonatomic) BOOL hasKeepAliveVersion;
+@property (nonatomic) BOOL hasLastKeepAliveInterval;
 @property (nonatomic) BOOL hasLinkQuality;
 @property (nonatomic) BOOL hasNextKeepAliveInterval;
+@property (nonatomic) BOOL hasTimeSinceConnected;
 @property (nonatomic) BOOL hasTimeSinceLastKeepAlive;
+@property (nonatomic) BOOL hasTimeSinceLastSuccessfulKeepAlive;
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) unsigned int keepAliveACKDuration; // @synthesize keepAliveACKDuration=_keepAliveACKDuration;
+@property (nonatomic) unsigned int keepAliveVersion; // @synthesize keepAliveVersion=_keepAliveVersion;
+@property (nonatomic) unsigned int lastKeepAliveInterval; // @synthesize lastKeepAliveInterval=_lastKeepAliveInterval;
 @property (nonatomic) int linkQuality; // @synthesize linkQuality=_linkQuality;
 @property (nonatomic) unsigned int nextKeepAliveInterval; // @synthesize nextKeepAliveInterval=_nextKeepAliveInterval;
+@property (nonatomic) unsigned int timeSinceConnected; // @synthesize timeSinceConnected=_timeSinceConnected;
 @property (nonatomic) unsigned int timeSinceLastKeepAlive; // @synthesize timeSinceLastKeepAlive=_timeSinceLastKeepAlive;
+@property (nonatomic) unsigned int timeSinceLastSuccessfulKeepAlive; // @synthesize timeSinceLastSuccessfulKeepAlive=_timeSinceLastSuccessfulKeepAlive;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 
 - (void)copyTo:(id)arg1;

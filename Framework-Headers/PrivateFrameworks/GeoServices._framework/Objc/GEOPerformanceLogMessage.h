@@ -8,22 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
-
 @interface GEOPerformanceLogMessage : PBCodable <NSCopying>
 {
-    NSString *_perfEventKey;
-    NSString *_perfEventValue;
 }
-
-@property (readonly, nonatomic) BOOL hasPerfEventKey;
-@property (readonly, nonatomic) BOOL hasPerfEventValue;
-@property (strong, nonatomic) NSString *perfEventKey; // @synthesize perfEventKey=_perfEventKey;
-@property (strong, nonatomic) NSString *perfEventValue; // @synthesize perfEventValue=_perfEventValue;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

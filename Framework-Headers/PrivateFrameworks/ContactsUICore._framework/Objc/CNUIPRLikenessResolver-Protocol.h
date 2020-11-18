@@ -11,6 +11,7 @@
 
 @protocol CNUIPRLikenessResolver <NSObject>
 + (id<CNKeyDescriptor>)descriptorForRequiredKeys;
+- (CNObservable *)basicMonogramObservableFromString:(CNObservable *)arg1;
 - (CNObservable *)likenessesForContact:(CNContact *)arg1;
 - (id<CNUIPlaceholderProviderFactory>)placeholderProviderFactory;
 - (id<CNCancelable>)resolveLikenessesForContacts:(NSArray *)arg1 withContentHandler:(void (^)(NSArray *))arg2;

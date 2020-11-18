@@ -9,7 +9,7 @@
 #import <WebKit/DDDetectionControllerInteractionDelegate-Protocol.h>
 #import <WebKit/WKActionSheetDelegate-Protocol.h>
 
-@class NSString, UIView;
+@class NSString;
 @protocol WKActionSheetAssistantDelegate;
 
 __attribute__((visibility("hidden")))
@@ -18,13 +18,18 @@ __attribute__((visibility("hidden")))
     struct WeakObjCPtr<id<WKActionSheetAssistantDelegate>> _delegate;
     struct RetainPtr<WKActionSheet> _interactionSheet;
     RetainPtr_5a40b48a _elementInfo;
-    UIView *_view;
+    optional_b0042d51 _positionInformation;
+    struct WeakObjCPtr<UIView> _view;
+    BOOL _needsLinkIndicator;
+    BOOL _isPresentingDDUserInterface;
+    BOOL _hasPendingActionSheet;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WKActionSheetAssistantDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL needsLinkIndicator; // @synthesize needsLinkIndicator=_needsLinkIndicator;
 @property (readonly) Class superclass;
 
 - (id).cxx_construct;
@@ -42,11 +47,14 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)initialPresentationRectInHostViewForSheet;
 - (BOOL)isShowingSheet;
 - (BOOL)presentSheet;
+- (struct CGRect)presentationRectForElementUsingClosestIndicatedRect;
+- (struct CGRect)presentationRectForIndicatedElement;
 - (struct CGRect)presentationRectInHostViewForSheet;
 - (void)showDataDetectorsSheet;
 - (void)showImageSheet;
 - (void)showLinkSheet;
 - (id)superviewForSheet;
+- (BOOL)synchronouslyRetrievePositionInformation;
 - (void)updatePositionInformation;
 - (void)updateSheetPosition;
 

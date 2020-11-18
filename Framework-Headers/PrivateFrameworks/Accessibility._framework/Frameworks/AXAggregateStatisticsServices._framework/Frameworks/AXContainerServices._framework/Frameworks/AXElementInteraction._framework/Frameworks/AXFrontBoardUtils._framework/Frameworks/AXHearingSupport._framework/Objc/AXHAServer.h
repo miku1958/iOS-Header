@@ -14,6 +14,7 @@
 @interface AXHAServer : AXHeardServer <AXHARemoteUpdateProtocol>
 {
     NSMutableDictionary *_responseBlocks;
+    BOOL _hearingAidReachableForAudioTransfer;
     BOOL _hearingAidConnectedOrReachable;
     NSArray *_availableHearingAids;
     NSArray *_availableControllers;
@@ -23,11 +24,12 @@
 @property (strong, nonatomic) NSArray *availableControllers; // @synthesize availableControllers=_availableControllers;
 @property (strong, nonatomic) NSArray *availableHearingAids; // @synthesize availableHearingAids=_availableHearingAids;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<AXHAServerDelegate> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<AXHAServerDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hearingAidConnectedOrReachable; // @synthesize hearingAidConnectedOrReachable=_hearingAidConnectedOrReachable;
 @property (readonly, nonatomic) BOOL hearingAidReachable;
+@property (nonatomic) BOOL hearingAidReachableForAudioTransfer; // @synthesize hearingAidReachableForAudioTransfer=_hearingAidReachableForAudioTransfer;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableDictionary *updates; // @synthesize updates=_updates;
 
@@ -53,6 +55,7 @@
 - (void)stopLiveListen;
 - (void)unregisterUpdateListener:(id)arg1;
 - (void)updateProperty:(unsigned long long)arg1 forDeviceID:(id)arg2;
+- (BOOL)updateReachabilityAndWait:(BOOL)arg1;
 - (void)writeValue:(id)arg1 forProperty:(unsigned long long)arg2 forDeviceID:(id)arg3;
 
 @end

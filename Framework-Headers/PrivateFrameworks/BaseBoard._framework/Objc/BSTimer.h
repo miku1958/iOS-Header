@@ -31,8 +31,8 @@
 @property (readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
 
 + (id)scheduledTimerWithFireInterval:(double)arg1 queue:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_callOutQueue_noteTimerFired;
 - (void)_queue_cancel;
-- (void)_queue_noteTimerFired;
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithFireInterval:(double)arg1 queue:(id)arg2 handler:(CDUnknownBlockType)arg3;

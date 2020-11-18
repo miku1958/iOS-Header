@@ -9,10 +9,12 @@
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INIntent, INIntentResponse, NSDate, NSDateInterval, NSString;
+@class INIntent, INIntentResponse, NSDate, NSDateInterval, NSString, SAUISnippet;
 
 @interface INInteraction : NSObject <NSSecureCoding, NSCopying>
 {
+    BOOL _donatedBySiri;
+    SAUISnippet *_snippet;
     INIntent *_intent;
     INIntentResponse *_intentResponse;
     long long _intentHandlingStatus;
@@ -22,6 +24,8 @@
     NSString *_groupIdentifier;
 }
 
+@property (readonly, nonatomic) BOOL _donatedBySiri; // @synthesize _donatedBySiri;
+@property (strong, nonatomic, setter=_setSnippet:) SAUISnippet *_snippet; // @synthesize _snippet;
 @property (strong, nonatomic) NSDate *date;
 @property (copy, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
 @property (nonatomic) long long direction; // @synthesize direction=_direction;
@@ -36,19 +40,22 @@
 + (void)deleteAllInteractionsWithCompletion:(CDUnknownBlockType)arg1;
 + (void)deleteInteractionsWithGroupIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)deleteInteractionsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)load;
++ (void)initialize;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (void)_donateInteractionWithBundleId:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_setDonatedBySiri:(BOOL)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)donateInteractionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIntent:(id)arg1 response:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (id)parameterValueForParameter:(id)arg1;
 
 @end
 

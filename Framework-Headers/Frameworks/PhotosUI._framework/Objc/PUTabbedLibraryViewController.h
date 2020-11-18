@@ -24,6 +24,7 @@
     NSMutableDictionary *_filteredAlbumListsByContentMode;
     PUMomentsZoomLevelManager *_zoomLevelManager;
     NSMutableIndexSet *_everDisplayedContentModes;
+    BOOL _shouldNavigateToAllPhotosAlbum;
     PUImportViewController *_importViewController;
     NSArray *_excludedContentModes;
 }
@@ -36,6 +37,7 @@
 @property (nonatomic) int selectedContentMode;
 @property (readonly, nonatomic) UINavigationController *selectedNavigationController;
 @property (strong, nonatomic) PUSessionInfo *sessionInfo; // @synthesize sessionInfo=_sessionInfo;
+@property (nonatomic) BOOL shouldNavigateToAllPhotosAlbum; // @synthesize shouldNavigateToAllPhotosAlbum=_shouldNavigateToAllPhotosAlbum;
 @property (readonly) Class superclass;
 
 + (BOOL)_shouldForwardViewWillTransitionToSize;
@@ -55,6 +57,7 @@
 - (void)_navigateToAsset:(id)arg1 andPerformAction:(int)arg2 inAlbum:(struct NSObject *)arg3 animated:(BOOL)arg4;
 - (void)_navigateToContentMode:(int)arg1 defaultLocationIfNeverDisplayed:(BOOL)arg2 animated:(BOOL)arg3;
 - (BOOL)_navigateToDefaultLocationInNavigationController:(id)arg1 animated:(BOOL)arg2;
+- (id)_navigateToMemories;
 - (BOOL)_navigateToRootOfCurrentTabAnimated:(BOOL)arg1;
 - (id)_navigationControllerForContentMode:(int)arg1;
 - (Class)_navigationControllerLayoutTransitioningClass:(id)arg1;
@@ -76,6 +79,7 @@
 - (BOOL)cloudFeedInvitationForAlbumIsAvailableForNavigation:(id)arg1;
 - (BOOL)cloudFeedIsAvailableForNavigation;
 - (BOOL)commentIsAvailableForNavigation:(id)arg1 inAsset:(id)arg2;
+- (int)contentModeForTabIdentifier:(unsigned long long)arg1;
 - (BOOL)contentModeIsAvailableForNavigation:(int)arg1;
 - (void)dealloc;
 - (id)initWithSpec:(id)arg1;
@@ -99,6 +103,7 @@
 - (void)navigateToRevealCloudFeedAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)navigateToRevealCloudFeedComment:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)navigateToRevealCloudFeedInvitationForAlbum:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)navigateToRevealTheMostRecentMemoryAnimated:(BOOL)arg1;
 - (id)navigationController:(id)arg1 animationControllerForOperation:(long long)arg2 fromViewController:(id)arg3 toViewController:(id)arg4;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (id)navigationController:(id)arg1 interactionControllerForAnimationController:(id)arg2;

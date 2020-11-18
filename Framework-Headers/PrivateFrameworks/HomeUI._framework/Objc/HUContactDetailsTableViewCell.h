@@ -6,23 +6,36 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class CNAvatarView;
+@class CNAvatarView, CNContact, NSArray, NSString, UIImage, UIImageView, UILabel, UIView;
 
 @interface HUContactDetailsTableViewCell : UITableViewCell
 {
     CNAvatarView *_avatarView;
+    UIImageView *_photoView;
+    UIView *_containerView;
+    UILabel *_titleLabel;
+    UILabel *_descriptionLabel;
+    NSArray *_constraints;
 }
 
-@property (strong, nonatomic) CNAvatarView *avatarView; // @synthesize avatarView=_avatarView;
+@property (readonly, nonatomic) CNAvatarView *avatarView; // @synthesize avatarView=_avatarView;
+@property (strong, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
+@property (strong, nonatomic) CNContact *contact;
+@property (readonly, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
+@property (readonly, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
+@property (strong, nonatomic) NSString *descriptionText;
+@property (strong, nonatomic) UIImage *photo;
+@property (readonly, nonatomic) UIImageView *photoView; // @synthesize photoView=_photoView;
+@property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (strong, nonatomic) NSString *titleText;
 
-+ (id)identifier;
-+ (double)preferredHeight;
++ (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
-- (void)_updateCellStyle;
-- (id)init;
-- (id)initWithReuseIdentifier:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
+- (void)updateConstraints;
 
 @end
 

@@ -36,6 +36,7 @@
 + (id)dataByConvertingDoublesToFloats:(const double *)arg1 count:(long long)arg2;
 + (id)dataWithPointArray:(const struct CGPoint *)arg1 count:(long long)arg2 bytesPerComponent:(long long *)arg3;
 + (id)dataWithVector3Array:(const struct SCNVector3 *)arg1 count:(long long)arg2 bytesPerComponent:(long long *)arg3;
++ (id)geometrySourceWithColorComponents:(const float *)arg1 count:(long long)arg2 hasAlpha:(BOOL)arg3 colorSpace:(struct CGColorSpace *)arg4;
 + (id)geometrySourceWithData:(id)arg1 semantic:(id)arg2 vectorCount:(long long)arg3 floatComponents:(BOOL)arg4 componentsPerVector:(long long)arg5 bytesPerComponent:(long long)arg6 dataOffset:(long long)arg7 dataStride:(long long)arg8;
 + (id)geometrySourceWithMDLVertexAttribute:(id)arg1 mesh:(id)arg2;
 + (id)geometrySourceWithMeshSourceRef:(struct __C3DMeshSource *)arg1;
@@ -43,8 +44,10 @@
 + (id)geometrySourceWithTextureCoordinates:(const struct CGPoint *)arg1 count:(long long)arg2;
 + (id)geometrySourceWithVertices:(const struct SCNVector3 *)arg1 count:(long long)arg2;
 + (BOOL)supportsSecureCoding;
+- (const void *)__CFObject;
 - (void)_clearC3DCache;
 - (short)_componentType;
+- (void)_printData;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -55,6 +58,8 @@
 - (id)initWithMeshSource:(struct __C3DMeshSource *)arg1;
 - (struct __C3DMeshSource *)meshSource;
 - (id)mkSemantic;
+- (id)scene;
+- (struct __C3DScene *)sceneRef;
 - (void)setMkSemantic:(id)arg1;
 
 @end

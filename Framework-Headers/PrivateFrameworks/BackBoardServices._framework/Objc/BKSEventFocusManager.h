@@ -56,6 +56,8 @@
 - (void)reallyFlushWithSet:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)setForegroundApplicationOnMainDisplay:(id)arg1 pid:(int)arg2;
+- (void)touchDetachedForIdentifier:(unsigned int)arg1 context:(unsigned int)arg2 pid:(int)arg3;
+- (void)touchUpOccuredForIdentifier:(unsigned int)arg1 detached:(BOOL)arg2 context:(unsigned int)arg3 pid:(int)arg4;
 
 @end
 

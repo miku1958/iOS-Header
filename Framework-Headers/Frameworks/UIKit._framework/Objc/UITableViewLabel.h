@@ -6,18 +6,32 @@
 
 #import <UIKit/UILabel.h>
 
-@class UITableViewCell;
+@class NSAttributedString, UITableViewCell;
 
 __attribute__((visibility("hidden")))
 @interface UITableViewLabel : UILabel
 {
+    long long _savedNumberOfLines;
+    double _firstParagraphFirstLineHeadIndent;
+    NSAttributedString *_shadowAttributedText;
     UITableViewCell *_tableCell;
 }
 
 @property (weak, nonatomic) UITableViewCell *tableCell; // @synthesize tableCell=_tableCell;
 
 - (void).cxx_destruct;
+- (BOOL)_attributedStringHasParagraphStyleWithNonzeroFirstLineHeadIndent:(id)arg1;
+- (void)_cleanupErrantFirstLineHeadIndent;
+- (void)_clearNumberOfLines;
+- (id)_disabledFontColor;
+- (void)_restoreNumberOfLines;
+- (void)_setFirstParagraphFirstLineHeadIndent:(double)arg1;
+- (void)_setNumberOfLinesForAXLayoutIfNecessary;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)setAttributedText:(id)arg1;
 - (void)setText:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

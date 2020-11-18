@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IDS/IDSDaemonProtocol-Protocol.h>
 
@@ -37,6 +37,7 @@
     BOOL _acquiringDaemonConnection;
     BOOL _autoReconnect;
     BOOL _hasBeenSuspended;
+    BOOL _fatalErrorOccured;
     int _curXPCMessagePriority;
     NSMutableSet *_notificationServices;
 }
@@ -45,11 +46,11 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_remoteMessageQueue; // @synthesize _remoteMessageQueue;
 @property (nonatomic) int curXPCMessagePriority; // @synthesize curXPCMessagePriority=_curXPCMessagePriority;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isConnecting;
-@property (readonly, strong, nonatomic) IDSDaemonListener *listener; // @synthesize listener=_daemonListener;
+@property (readonly, nonatomic) IDSDaemonListener *listener; // @synthesize listener=_daemonListener;
 @property (readonly, nonatomic) NSString *listenerID; // @synthesize listenerID=_listenerID;
 @property (readonly) Class superclass;
 
@@ -57,6 +58,7 @@
 + (void)_blockUntilSendQueueIsEmpty;
 + (void)_setApplicationWillTerminate;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_agentDidLaunchNotification:(id)arg1;
 - (void)_blockUntilSendQueueIsEmpty;
 - (void)_connectToDaemonWithLaunch:(BOOL)arg1 services:(id)arg2 commands:(id)arg3 capabilities:(unsigned int)arg4;
@@ -97,7 +99,7 @@
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)remoteObjectDiedNotification:(id)arg1;
 - (BOOL)remoteObjectExists;
-- (BOOL)removeListenerID:(id)arg1;
+- (void)removeListenerID:(id)arg1;
 - (void)sendXPCObject:(id)arg1 objectContext:(id)arg2;
 - (id)services;
 - (id)servicesForListenerID:(id)arg1;

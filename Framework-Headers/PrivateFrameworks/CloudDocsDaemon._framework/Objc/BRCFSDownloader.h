@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CloudDocsDaemon/BRCFSSchedulerBase.h>
+#import <CloudDocsDaemon/BRCFSTransferScheduler.h>
 
 #import <CloudDocsDaemon/BRCModule-Protocol.h>
 
-@class BRCDeadlineScheduler, NSDate, NSMutableDictionary, NSString, brc_task_tracker;
+@class BRCDeadlineScheduler, BRCFairScheduler, NSDate, NSMutableDictionary, NSString, brc_task_tracker;
 
 __attribute__((visibility("hidden")))
-@interface BRCFSDownloader : BRCFSSchedulerBase <BRCModule>
+@interface BRCFSDownloader : BRCFSTransferScheduler <BRCModule>
 {
-    BOOL _initialKickDone;
     brc_task_tracker *_tracker;
+    BRCFairScheduler *_fairScheduler;
     unsigned long long _activeDownloadsSize;
     NSDate *_lastDownloadRefresh;
+    double _activeDownloadSizeRefreshInterval;
     NSMutableDictionary *_willRetryOperationProgress;
     BRCDeadlineScheduler *_downloadsDeadlineScheduler;
 }
@@ -31,12 +32,11 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_appLibraryForDownload:(id)arg1 kind:(int)arg2 operationID:(id)arg3;
 - (void)_bumpThrottleForDownload:(id)arg1 throttle:(id)arg2;
-- (void)_cancelThrottles:(id)arg1 state:(int)arg2;
+- (void)_cancelJobs:(id)arg1 state:(int)arg2;
 - (void)_close;
-- (void)_deleteThrottleID:(long long)arg1;
-- (void)_fetchStamps:(struct throttle_stamps *)arg1 now:(long long)arg2 throttle:(id)arg3 throttleID:(long long)arg4 kind:(int)arg5 etag:(id)arg6;
+- (void)_createDownloadingJobForItem:(id)arg1 state:(int)arg2 kind:(int)arg3 etag:(id)arg4 userInitiated:(BOOL)arg5;
 - (void)_finishDownloadCleanup:(id)arg1;
-- (void)_finishedDownload:(id)arg1 kind:(int)arg2 operationID:(id)arg3 error:(id)arg4;
+- (void)_finishedDownload:(id)arg1 syncContext:(id)arg2 operationID:(id)arg3 error:(id)arg4;
 - (BOOL)_hasLosersToDelete:(id)arg1 serverItem:(id)arg2;
 - (void)_postponeLoserForWinner:(long long)arg1 etag:(id)arg2;
 - (id)_sanitizeRecord:(id)arg1;
@@ -53,8 +53,9 @@ __attribute__((visibility("hidden")))
 - (void)cancelAndCleanupItemDownload:(id)arg1 kind:(int)arg2 etag:(id)arg3;
 - (void)cancelAndCleanupItemDownloads:(id)arg1;
 - (void)close;
-- (void)createThrottleForItem:(id)arg1 state:(int)arg2 kind:(int)arg3 etag:(id)arg4 userInitiated:(BOOL)arg5;
-- (id)descriptionForThrottleID:(long long)arg1 zone:(id)arg2 now:(long long)arg3 context:(id)arg4;
+- (void)deleteDownloadingJobForItem:(id)arg1;
+- (void)deleteJobsMatching:(id)arg1;
+- (id)descriptionForItem:(id)arg1 context:(id)arg2;
 - (void)evictLosersOnItem:(id)arg1 atURL:(id)arg2 applySchedulerState:(int *)arg3;
 - (BOOL)hasAdditionsToApplyForItem:(id)arg1 serverItem:(id)arg2;
 - (BOOL)hasThumbnailToApplyForItem:(id)arg1;
@@ -62,9 +63,10 @@ __attribute__((visibility("hidden")))
 - (id)initWithAccountSession:(id)arg1;
 - (BOOL)isDownloadingItem:(id)arg1;
 - (BOOL)makeContentLive:(id)arg1;
-- (void)rescheduleThrottlesForPendingDiskSpaceWithAvailableSpace:(unsigned long long)arg1;
-- (void)rescheduleThrottlesPendingInitialSyncInZone:(id)arg1;
-- (void)rescheduleThrottlesPendingWinnerForItem:(id)arg1;
+- (void)performFirstSchedulingAfterStartupInDB:(id)arg1;
+- (void)rescheduleJobsForPendingDiskSpaceWithAvailableSpace:(unsigned long long)arg1;
+- (void)rescheduleJobsPendingInitialSyncInZone:(id)arg1;
+- (void)rescheduleJobsPendingWinnerForItem:(id)arg1;
 - (void)resume;
 - (void)schedule;
 - (void)scheduleContentDownloadForItem:(id)arg1 serverItem:(id)arg2 userInitiated:(BOOL)arg3;

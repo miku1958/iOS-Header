@@ -17,11 +17,13 @@
     double _defaultWindowLevel;
     struct CGPoint _hostedWindowOffset;
     NSDictionary *_perScreenOptions;
+    UIScreen *__intendedScreen;
     unsigned long long _activeRemoteViewCount;
     unsigned long long _windowLevelCount;
     double _windowLevelStack[5];
     struct CGSize _hostedSceneSize;
     BOOL _manualHostingOverride;
+    struct UIEdgeInsets _hostedSafeInsets;
 }
 
 @property (readonly) UIScreen *_intendedScreen;
@@ -32,11 +34,12 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct CGRect hostedFrame;
+@property (nonatomic) struct UIEdgeInsets hostedSafeInsets; // @synthesize hostedSafeInsets=_hostedSafeInsets;
 @property (nonatomic) struct CGSize hostedSceneSize; // @synthesize hostedSceneSize=_hostedSceneSize;
 @property (nonatomic) struct CGPoint hostedWindowOffset; // @synthesize hostedWindowOffset=_hostedWindowOffset;
 @property (readonly) Class superclass;
 
-+ (id)_sharedTextEffectsWindowforScreen:(id)arg1 aboveStatusBar:(BOOL)arg2 allowHosted:(BOOL)arg3 matchesStatusBarOrientationOnAccess:(BOOL)arg4;
++ (id)_sharedTextEffectsWindowforScreen:(id)arg1 aboveStatusBar:(BOOL)arg2 allowHosted:(BOOL)arg3 matchesStatusBarOrientationOnAccess:(BOOL)arg4 shouldCreateIfNecessary:(BOOL)arg5;
 + (id)activeTextEffectsWindowForScreen:(id)arg1;
 + (void)lowerTextEffectsWindowsForHideNotificationCenter;
 + (void)raiseTextEffectsWindowsForShowNotificationCenter;
@@ -66,7 +69,6 @@
 - (void)_sceneBoundsDidChange;
 - (struct CGRect)_sceneReferenceBounds;
 - (void)_setWindowLevel:(double)arg1;
-- (BOOL)_shouldParticipateInVirtualResizing;
 - (BOOL)_shouldResizeWithScene;
 - (BOOL)_shouldTextEffectsWindowBeHostedForView:(id)arg1;
 - (BOOL)_shouldTintStatusBar;
@@ -77,6 +79,8 @@
 - (id)aboveStatusBarWindow;
 - (struct CGRect)actualSceneBounds;
 - (struct CGRect)actualSceneBoundsForLandscape:(BOOL)arg1;
+- (struct CGRect)actualSceneFrame;
+- (struct CGRect)actualSceneFrameForOrientation:(long long)arg1;
 - (void)bringSubviewToFront:(id)arg1;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromView:(id)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromWindow:(id)arg2;

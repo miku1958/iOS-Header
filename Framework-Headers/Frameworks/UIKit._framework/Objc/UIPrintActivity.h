@@ -6,15 +6,29 @@
 
 #import <UIKit/UIActivity.h>
 
-@class UIViewController;
+#import <UIKit/UIManagedConfigurationRestrictableActivity-Protocol.h>
+#import <UIKit/UIPrintInteractionControllerActivityDelegate-Protocol.h>
 
-@interface UIPrintActivity : UIActivity
+@class NSString, UIViewController, UIWindow;
+
+@interface UIPrintActivity : UIActivity <UIManagedConfigurationRestrictableActivity, UIPrintInteractionControllerActivityDelegate>
 {
+    BOOL _sourceIsManaged;
+    NSString *_sourceApplicationBundleID;
     UIViewController *_wrapperViewController;
+    UIWindow *_windowHoldingActivityViewController;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *sourceApplicationBundleID; // @synthesize sourceApplicationBundleID=_sourceApplicationBundleID;
+@property (nonatomic) BOOL sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
+@property (readonly) Class superclass;
+@property (strong) UIWindow *windowHoldingActivityViewController; // @synthesize windowHoldingActivityViewController=_windowHoldingActivityViewController;
 @property (strong) UIViewController *wrapperViewController; // @synthesize wrapperViewController=_wrapperViewController;
 
++ (unsigned long long)_xpcAttributes;
 - (void).cxx_destruct;
 - (id)_activityImage;
 - (id)_embeddedActivityViewController;
@@ -27,6 +41,7 @@
 - (void)prepareWithActivityItems:(id)arg1;
 - (id)printInteractionController;
 - (id)printInteractionControllerParentViewController:(id)arg1;
+- (id)printInteractionControllerWindowForPresentation:(id)arg1;
 
 @end
 

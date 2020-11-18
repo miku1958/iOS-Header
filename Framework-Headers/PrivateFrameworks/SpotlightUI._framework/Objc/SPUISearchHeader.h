@@ -6,18 +6,21 @@
 
 #import <UIKit/UIView.h>
 
+#import <SpotlightUI/MFAtomTextViewDelegate-Protocol.h>
 #import <SpotlightUI/UITextFieldDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSString, SPSearchQueryContext, SPUITextField, UIButton, _UILegibilitySettings;
+@class NSArray, NSLayoutConstraint, NSString, SPSearchEntity, SPUITextField, UIButton, _UILegibilitySettings;
 @protocol SPUISearchHeaderDelegate;
 
-@interface SPUISearchHeader : UIView <UITextFieldDelegate>
+@interface SPUISearchHeader : UIView <UITextFieldDelegate, MFAtomTextViewDelegate>
 {
+    BOOL _offersCompletions;
     BOOL _willClear;
-    BOOL _isShowingCornerRadius;
+    BOOL _searchTextScheduledForProcessing;
     id<SPUISearchHeaderDelegate> _delegate;
     unsigned long long _suggestionID;
     _UILegibilitySettings *_legibilitySettings;
+    SPSearchEntity *_searchEntity;
     SPUITextField *_searchField;
     UIButton *_cancelButton;
     NSLayoutConstraint *_searchFieldTrailingConstraint;
@@ -28,49 +31,61 @@
 @property (strong) UIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property (strong) NSLayoutConstraint *cancelButtonTrailingConstraint; // @synthesize cancelButtonTrailingConstraint=_cancelButtonTrailingConstraint;
 @property (readonly, nonatomic) NSString *currentQuery;
-@property (readonly, nonatomic) SPSearchQueryContext *currentQueryContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<SPUISearchHeaderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isShowingCornerRadius; // @synthesize isShowingCornerRadius=_isShowingCornerRadius;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
+@property BOOL offersCompletions; // @synthesize offersCompletions=_offersCompletions;
+@property (strong) NSArray *representedObjects;
+@property (strong, nonatomic) SPSearchEntity *searchEntity; // @synthesize searchEntity=_searchEntity;
 @property (strong) SPUITextField *searchField; // @synthesize searchField=_searchField;
 @property (strong) NSLayoutConstraint *searchFieldTrailingConstraint; // @synthesize searchFieldTrailingConstraint=_searchFieldTrailingConstraint;
+@property BOOL searchTextScheduledForProcessing; // @synthesize searchTextScheduledForProcessing=_searchTextScheduledForProcessing;
 @property unsigned long long suggestionID; // @synthesize suggestionID=_suggestionID;
 @property (readonly) Class superclass;
 @property (strong) NSLayoutConstraint *widthConstraint; // @synthesize widthConstraint=_widthConstraint;
 @property BOOL willClear; // @synthesize willClear=_willClear;
 
-+ (BOOL)isJ99;
 - (void).cxx_destruct;
+- (void)_searchWithSearchEntity:(id)arg1 fromSuggestion:(BOOL)arg2;
+- (void)_updateClearButtonVisibility;
 - (void)addInputMethodInformationToQueryContext:(id)arg1;
+- (id)atomTextView:(id)arg1 atomViewForRepresentedObject:(id)arg2;
+- (id)atomTextView:(id)arg1 representedObjectsFromPasteboard:(id)arg2;
+- (BOOL)atomTextView:(id)arg1 storeRepresentedObjects:(id)arg2 onPasteboard:(id)arg3;
 - (id)backdropVisualEffectView;
+- (void)beginDictation;
 - (void)cancelButtonClicked:(id)arg1;
 - (BOOL)cancelButtonIsVisible;
+- (void)changeOrientation:(id)arg1;
 - (void)clearSearchFieldWhyQuery:(unsigned long long)arg1 allowZKW:(BOOL)arg2;
+- (id)currentQueryContextWithString:(id)arg1;
+- (void)dictationButtonPressed;
 - (void)enableDictationIfRequired;
 - (void)focusSearchField;
+- (void)focusSearchFieldAndBeginDictation:(BOOL)arg1;
 - (id)init;
 - (BOOL)isOnDarkBackground;
-- (void)linkWithKeyboardController:(id)arg1;
-- (id)nextResponder;
+- (void)performTestSearchWithQuery:(id)arg1 event:(unsigned long long)arg2 sourcePreference:(long long)arg3;
 - (BOOL)searchFieldIsFocused;
-- (void)searchForSuggestedQuery:(id)arg1;
-- (void)setRoundedCornerVisible:(BOOL)arg1;
+- (void)searchForQuery:(id)arg1 forSuggestions:(BOOL)arg2;
+- (void)searchForSuggestion:(id)arg1;
+- (void)setSearchEntity:(id)arg1 fromSuggestion:(BOOL)arg2;
+- (void)setupKeyboardSupportForResultViewController:(id)arg1;
 - (void)showCancelButton:(BOOL)arg1 animated:(BOOL)arg2;
+- (id)supportedPasteboardTypesForAtomTextView:(id)arg1;
 - (void)textDidChange:(id)arg1;
 - (void)textDidChange:(id)arg1 whyQuery:(unsigned long long)arg2 allowZKW:(BOOL)arg3;
-- (void)textFieldDidBeginEditing:(id)arg1;
-- (BOOL)textFieldShouldBeginEditing:(id)arg1;
+- (void)textDidChange:(id)arg1 whyQuery:(unsigned long long)arg2 allowZKW:(BOOL)arg3 sourcePreference:(unsigned long long)arg4 engagedSuggestion:(id)arg5;
+- (void)textFieldDidBeginEditing;
 - (BOOL)textFieldShouldClear:(id)arg1;
-- (BOOL)textFieldShouldReturn:(id)arg1;
-- (void)textInputModeChanged:(id)arg1;
+- (BOOL)textFieldShouldReturn;
 - (double)topPadding;
+- (void)triggerSearchForUnlock;
 - (void)unfocusSearchField;
 - (void)updateBlurProgress:(double)arg1;
 - (void)updateColors;
-- (void)updateKeyboardSuggestions:(id)arg1;
 
 @end
 

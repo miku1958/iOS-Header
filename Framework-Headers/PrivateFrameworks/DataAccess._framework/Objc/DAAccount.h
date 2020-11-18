@@ -7,7 +7,7 @@
 #import <Foundation/NSObject.h>
 
 @class ACAccount, DAStatusReport, DATaskManager, DATrustHandler, NSArray, NSData, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, NSURL;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_xpc_object;
 
 @interface DAAccount : NSObject
 {
@@ -20,6 +20,9 @@
     struct __CFURLStorageSession *_storageSession;
     NSString *_clientToken;
     DATaskManager *_taskManager;
+    NSObject<OS_xpc_object> *_xpcActivity;
+    int _continueCount;
+    BOOL _isFetchingAutomatically;
     BOOL _shouldFailAllTasks;
     BOOL _isValidating;
     DATrustHandler *_trustHandler;
@@ -96,6 +99,7 @@
 - (int)accountIntPropertyForKey:(id)arg1;
 - (id)accountPropertyForKey:(id)arg1;
 - (id)accountTypeIdentifier;
+- (void)addToCoreDAVLoggingDelegates;
 - (id)addUsernameToURL:(id)arg1;
 - (id)additionalHeaderValues;
 - (BOOL)autodiscoverAccountConfigurationWithConsumer:(id)arg1;
@@ -115,6 +119,7 @@
 - (id)customConnectionProperties;
 - (id)dataclassProperties;
 - (void)dealloc;
+- (void)decrementXpcActivityContinueCount;
 - (id)defaultContactsFolder;
 - (id)defaultContainerIdentifierForDADataclass:(long long)arg1;
 - (id)defaultEventsFolder;
@@ -133,13 +138,17 @@
 - (id)exceptionsDict;
 - (struct __CFData *)exceptionsForDigest:(id)arg1;
 - (id)getAppleIDSession;
+- (BOOL)getFetchingAutomaticallyState;
 - (id)getPendingQueryQueue;
 - (void)getRootFolderWithConsumer:(id)arg1;
 - (BOOL)handleCertificateError:(id)arg1;
 - (BOOL)handleTrustChallenge:(id)arg1;
+- (BOOL)handleTrustChallenge:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleValidationError:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)hasXpcActivity;
 - (id)hostFromDataclassPropertiesForDataclass:(id)arg1;
 - (id)inboxFolder;
+- (void)incrementXpcActivityContinueCount;
 - (void)ingestBackingAccountInfoProperties;
 - (id)initWithBackingAccountInfo:(id)arg1;
 - (BOOL)isActiveSyncAccount;
@@ -174,6 +183,8 @@
 - (void)removeClientCertificateData;
 - (void)removeConsumerForTask:(id)arg1;
 - (void)removeDBSyncData;
+- (void)removeFromCoreDAVLoggingDelegates;
+- (void)removeXpcActivity;
 - (id)reportShareRequestAsJunkForCalendar:(id)arg1 consumer:(id)arg2;
 - (id)requestCalendarAvailabilityForStartDate:(id)arg1 endDate:(id)arg2 ignoredEventID:(id)arg3 addresses:(id)arg4 consumer:(id)arg5;
 - (void)resetAccountID;
@@ -184,7 +195,9 @@
 - (void)retrieveOofSettingsForConsumer:(id)arg1;
 - (void)saveAccountProperties;
 - (void)saveAccountPropertiesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)saveFetchingAutomaticallyState:(BOOL)arg1;
 - (BOOL)saveModifiedPropertiesOnBackingAccount;
+- (void)saveXpcActivity:(id)arg1;
 - (BOOL)searchQueriesRunning;
 - (BOOL)sendEmailsForCalEvents:(id)arg1 consumer:(id)arg2;
 - (id)sentItemsFolder;
@@ -198,6 +211,7 @@
 - (void)setIdentityCertificatePersistentID:(id)arg1 managedByProfile:(BOOL)arg2;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (void)setToDosNumberOfPastDaysToSync:(int)arg1;
+- (BOOL)shouldCancelTaskDueToOnPowerFetchMode;
 - (BOOL)shouldRemoveDBSyncDataOnAccountChange;
 - (void)shutdown;
 - (id)spinnerIdentifiers;

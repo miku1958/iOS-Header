@@ -15,9 +15,8 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAnnotateScrollView;
-- (id)accessibilityContainerElements;
-- (id)accessibilityCustomRotorItemsAtIndex:(long long)arg1;
-- (id)accessibilityCustomRotorTitles;
+- (id)accessibilityCustomRotors;
+- (id)accessibilityElements;
 - (id)initWithFrame:(struct CGRect)arg1 orientation:(long long)arg2 daysToDisplay:(long long)arg3;
 
 @end

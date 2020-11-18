@@ -6,20 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccountStore, NSSet;
+@class ACAccount, ACAccountStore, NSRecursiveLock, NSSet;
 
 @interface SGAccountsAdapter : NSObject
 {
     NSSet *_usernamesCache;
     ACAccountStore *_accountStore;
+    NSRecursiveLock *_primaryICloudAccountLock;
+    ACAccount *_cachedPrimaryICloudAccount;
 }
 
++ (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)accountsStoreDidChange:(id)arg1;
 - (void)dealloc;
 - (BOOL)hasCalendarAccount:(id)arg1;
 - (id)init;
+- (id)primaryICloudCalendarAccount;
 - (void)refreshCacheFromAccountsService;
 - (void)registerNotificationObserver;
 - (void)removeNotificationObserver;

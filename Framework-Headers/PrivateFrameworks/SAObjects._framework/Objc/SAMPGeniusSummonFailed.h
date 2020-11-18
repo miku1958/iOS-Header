@@ -31,6 +31,7 @@
 - (id)groupIdentifier;
 - (id)initWithErrorCode:(long long)arg1;
 - (id)initWithReason:(id)arg1;
+- (BOOL)requiresResponse;
 
 @end
 

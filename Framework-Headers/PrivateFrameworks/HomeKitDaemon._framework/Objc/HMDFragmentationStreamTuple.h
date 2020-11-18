@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HAPFragmentationStream, HMFMessage, NSDate, NSString;
 
-@interface HMDFragmentationStreamTuple : NSObject
+@interface HMDFragmentationStreamTuple : HMFObject
 {
     HAPFragmentationStream *_fragmentationStream;
-    NSString *_homeUUID;
+    NSString *_objectUUID;
     HMFMessage *_lastMessage;
     NSDate *_expirationDate;
 }
@@ -19,13 +19,13 @@
 @property (readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly, nonatomic, getter=isExpired) BOOL expired;
 @property (readonly, nonatomic) HAPFragmentationStream *fragmentationStream; // @synthesize fragmentationStream=_fragmentationStream;
-@property (readonly, nonatomic) NSString *homeUUID; // @synthesize homeUUID=_homeUUID;
 @property (strong, nonatomic) HMFMessage *lastMessage; // @synthesize lastMessage=_lastMessage;
+@property (readonly, nonatomic) NSString *objectUUID; // @synthesize objectUUID=_objectUUID;
 
-+ (id)tupleWithFragmentationStreamForHome:(id)arg1 delegate:(id)arg2;
++ (id)tupleWithFragmentationStreamForObject:(id)arg1 delegate:(id)arg2;
 - (void).cxx_destruct;
 - (void)close;
-- (id)initWithFragmentationStreamForHome:(id)arg1 delegate:(id)arg2;
+- (id)initWithFragmentationStreamForObject:(id)arg1 delegate:(id)arg2;
 
 @end
 

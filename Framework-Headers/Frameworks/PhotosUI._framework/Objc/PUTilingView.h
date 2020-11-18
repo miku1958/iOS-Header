@@ -99,6 +99,7 @@
 @property (weak, nonatomic) id<PUTilingViewTileTransitionDelegate> tileTransitionDelegate; // @synthesize tileTransitionDelegate=_tileTransitionDelegate;
 @property (weak, nonatomic) id<PUTilingViewTileUseDelegate> tileUseDelegate; // @synthesize tileUseDelegate=_tileUseDelegate;
 
++ (unsigned long long)_defaultEdgesScrollingContentIntoSafeArea;
 - (void).cxx_destruct;
 - (void)_adjustScrollViewPagingDeceleration;
 - (void)_applyPendingUpdates;
@@ -145,7 +146,7 @@
 - (id)initWithFrame:(struct CGRect)arg1 layout:(id)arg2;
 - (void)insertItemAtIndexPath:(id)arg1 dataSource:(id)arg2;
 - (void)invalidateLayout:(id)arg1 withContext:(id)arg2;
-- (void)layoutSubviews;
+- (void)layoutSublayersOfLayer:(id)arg1;
 - (void)moveItemFromIndexPath:(id)arg1 toIndexPath:(id)arg2 dataSource:(id)arg3;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1;
 - (id)presentedTileControllerWithIndexPath:(id)arg1 kind:(id)arg2 dataSourceIdentifier:(id)arg3;

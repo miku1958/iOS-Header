@@ -13,11 +13,11 @@
 __attribute__((visibility("hidden")))
 @interface VKMapTile : VKTile <NSCopying>
 {
-    VKTile *_tiles[34];
-    unsigned long long _states[34];
-    double _stateDates[34];
-    id _stateMetas[34];
-    Box_3d7e3c2c _localBounds[34];
+    VKTile *_tiles[33];
+    unsigned long long _states[33];
+    double _stateDates[33];
+    id _stateMetas[33];
+    Box_3d7e3c2c _localBounds[33];
     VKRasterTile *_rasterized;
     BOOL _needsRasterization;
     float _maximumStyleZ;
@@ -31,17 +31,20 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_setTile:(id)arg1 state:(unsigned long long)arg2 metadata:(id)arg3 forLayer:(unsigned long long)arg4 timestamp:(double)arg5;
+- (void)_setTile:(id)arg1 state:(unsigned long long)arg2 metadata:(id)arg3 forLayer:(unsigned char)arg4 timestamp:(double)arg5;
+- (void)clear;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)detailedDescription;
 - (id)detailedDescriptionDictionaryRepresentation;
 - (id)initWithKey:(const struct VKTileKey *)arg1;
-- (Box_3d7e3c2c)localBoundsForLayer:(unsigned long long)arg1;
-- (void)setTile:(id)arg1 state:(unsigned long long)arg2 metadata:(id)arg3 forLayer:(unsigned long long)arg4;
-- (id)tileForLayer:(unsigned long long)arg1;
-- (unsigned long long)tileStateForLayer:(unsigned long long)arg1;
+- (Box_3d7e3c2c)localBoundsForLayer:(unsigned char)arg1;
+- (void)populateDebugNode:(shared_ptr_eafb90f9)arg1;
+- (void)setTile:(id)arg1 state:(unsigned long long)arg2 metadata:(id)arg3 forLayer:(unsigned char)arg4;
+- (id)tileForLayer:(unsigned char)arg1;
+- (unsigned long long)tileStateForLayer:(unsigned char)arg1;
+- (double)timeTileEnteredStateForLayer:(unsigned char)arg1;
 - (void)updateViewDependentStateWithContext:(struct LayoutContext *)arg1;
 
 @end

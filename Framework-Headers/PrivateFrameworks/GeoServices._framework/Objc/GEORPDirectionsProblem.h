@@ -46,6 +46,7 @@
 + (Class)clientSuggestedRouteType;
 + (Class)instructionCorrectionType;
 + (Class)problematicRouteIndexType;
+- (void).cxx_destruct;
 - (void)addClientSuggestedRoute:(id)arg1;
 - (void)addInstructionCorrection:(id)arg1;
 - (void)addProblematicRouteIndex:(id)arg1;
@@ -56,7 +57,6 @@
 - (unsigned long long)clientSuggestedRoutesCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

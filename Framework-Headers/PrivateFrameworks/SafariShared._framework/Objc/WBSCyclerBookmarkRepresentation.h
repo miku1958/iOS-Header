@@ -9,14 +9,16 @@
 #import <SafariShared/NSCopying-Protocol.h>
 #import <SafariShared/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface WBSCyclerBookmarkRepresentation : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_uniqueIdentifier;
     NSString *_title;
+    NSDictionary *_extraAttributes;
 }
 
+@property (copy, nonatomic) NSDictionary *extraAttributes; // @synthesize extraAttributes=_extraAttributes;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
@@ -28,6 +30,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTitle:(id)arg1 uniqueIdentifier:(id)arg2;
 - (BOOL)isEquivalent:(id)arg1;
+- (id)pairsOfBookmarksWithDifferingExtraAttributesComparedTo:(id)arg1;
 
 @end
 

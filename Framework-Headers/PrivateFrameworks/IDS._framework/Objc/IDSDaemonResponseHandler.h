@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_queue;
 
@@ -17,7 +17,7 @@
 @property (readonly, nonatomic) id block; // @synthesize block=_block;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithBlock:(id)arg1 queue:(id)arg2;
 
 @end

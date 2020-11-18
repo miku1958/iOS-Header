@@ -9,8 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface SFDialogTextField : UITextField
 {
+    unsigned long long _stackPosition;
 }
 
+@property (nonatomic) unsigned long long stackPosition; // @synthesize stackPosition=_stackPosition;
+
+- (id)_placeholderColor;
 - (struct CGRect)editingRectForBounds:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGRect)textRectForBounds:(struct CGRect)arg1;

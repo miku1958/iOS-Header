@@ -25,9 +25,11 @@ __attribute__((visibility("hidden")))
     NSString *_cacheKey;
     UIImage *_renderedImage;
     long long _contentColorFormat;
+    long long _assetIdiom;
     struct CGSize _size;
 }
 
+@property (readonly, nonatomic) long long assetIdiom; // @synthesize assetIdiom=_assetIdiom;
 @property (strong, nonatomic) NSString *cacheKey; // @synthesize cacheKey=_cacheKey;
 @property (nonatomic) BOOL colorDetectMode; // @synthesize colorDetectMode=_colorDetectMode;
 @property (readonly, nonatomic) long long contentColorFormat; // @synthesize contentColorFormat=_contentColorFormat;
@@ -43,7 +45,7 @@ __attribute__((visibility("hidden")))
 
 + (void)clearInternalCaches;
 + (struct CGContext *)imageContextWithSize:(struct CGSize)arg1 scale:(double)arg2 colorFormat:(long long)arg3 opaque:(BOOL)arg4 invert:(BOOL)arg5;
-+ (id)rendererWithContext:(struct CGContext *)arg1 withSize:(struct CGSize)arg2 withScale:(double)arg3 opaque:(BOOL)arg4 renderFlags:(long long)arg5;
++ (id)rendererWithContext:(struct CGContext *)arg1 withSize:(struct CGSize)arg2 withScale:(double)arg3 opaque:(BOOL)arg4 renderFlags:(long long)arg5 assetIdiom:(long long)arg6;
 - (void)_addDetectedColor:(struct CGColor *)arg1;
 - (void)_completeCacheImageWithTraitsIfNecessary:(id)arg1;
 - (struct CGPath *)_deleteGlyphPaths;
@@ -69,20 +71,23 @@ __attribute__((visibility("hidden")))
 - (void)drawShiftPath:(BOOL)arg1 weight:(double)arg2 transform:(struct CGAffineTransform)arg3 color:(struct CGColor *)arg4;
 - (void)ensureContext;
 - (void)forceColorFormat:(long long)arg1;
-- (id)initWithContext:(struct CGContext *)arg1 withSize:(struct CGSize)arg2 withScale:(double)arg3 opaque:(BOOL)arg4 renderFlags:(long long)arg5;
+- (id)initWithContext:(struct CGContext *)arg1 withSize:(struct CGSize)arg2 withScale:(double)arg3 opaque:(BOOL)arg4 renderFlags:(long long)arg5 assetIdiom:(long long)arg6;
 - (BOOL)loadCachedImageForHashString:(id)arg1;
 - (id)pathForConcaveCornerWithGeometry:(id)arg1;
 - (id)pathForFlickGeometry:(id)arg1;
 - (id)pathForFlickPopupGeometries:(id)arg1;
+- (id)pathForFlickWidth:(double)arg1 height:(double)arg2 handleLength:(double)arg3 keyMiddle:(struct CGPoint)arg4 angle:(double)arg5;
 - (id)pathForRenderGeometry:(id)arg1;
 - (id)pathForSplitGeometry:(id)arg1;
 - (void)renderBackgroundTraits:(id)arg1;
 - (void)renderBackgroundTraits:(id)arg1 allowCaching:(BOOL)arg2;
+- (void)renderDivotEffect:(id)arg1 withTraits:(id)arg2;
 - (void)renderEdgeEffect:(id)arg1 withTraits:(id)arg2;
 - (void)renderKeyContents:(id)arg1 withTraits:(id)arg2;
 - (unsigned long long)renderKeyImageContents:(id)arg1 withTraits:(id)arg2 status:(unsigned long long)arg3;
 - (BOOL)renderKeyPathContents:(id)arg1 withTraits:(id)arg2;
 - (unsigned long long)renderKeyStringContents:(id)arg1 withTraits:(id)arg2 status:(unsigned long long)arg3;
+- (void)renderNullEffect:(id)arg1 withTraits:(id)arg2;
 - (void)renderShadowEffect:(id)arg1 withTraits:(id)arg2;
 
 @end

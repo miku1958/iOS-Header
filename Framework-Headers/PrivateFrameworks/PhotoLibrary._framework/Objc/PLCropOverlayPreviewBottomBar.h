@@ -27,6 +27,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)safeAreaInsetsDidChange;
 - (void)setBackgroundStyle:(long long)arg1 animated:(BOOL)arg2;
 
 @end

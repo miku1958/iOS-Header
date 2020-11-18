@@ -4,26 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CIContext, CIFilter, CIImage, EAGLContext, NSDictionary, PLPhotoEditModel;
-@protocol OS_dispatch_queue;
+@class NSDictionary, NUBufferRenderClient, NUComposition, NUImageExportClient, NUImagePropertiesClient, NUPriority, NURenderContext, NUVideoExportClient, NUVideoPropertiesClient, PLEditSource, PLPhotoEditModel;
 
 @interface PLPhotoEditRenderer : NSObject
 {
-    NSObject<OS_dispatch_queue> *__renderingQueue;
-    CIContext *_generatingCIContext;
-    CIContext *_drawingCIContext;
-    EAGLContext *_lastUsedEAGLContext;
-    CIFilter *_effectFilter;
-    CIFilter *_smartToneFilter;
-    CIFilter *_localLightFilter;
-    CIFilter *_smartColorFilter;
-    CIFilter *_smartBWFilter;
-    CIFilter *_faceBalanceFilter;
-    CIFilter *_redEyeFilter;
-    CIImage *_cachedEditedImage;
-    PLPhotoEditModel *_photoEditModelInCachedEditedImage;
     NSDictionary *__smartToneAdjustments;
     double _smartToneLevelInCachedAdjustments;
     NSDictionary *_smartToneStatisticsInCachedAdjustments;
@@ -33,17 +19,23 @@
     NSDictionary *__smartBWAdjustments;
     double _smartBWLevelInCachedAdjustments;
     NSDictionary *_smartBWStatisticsInCachedAdjustments;
-    CIImage *_originalImage;
+    NUBufferRenderClient *_renderClient;
+    NUImagePropertiesClient *_propertiesClient;
+    NUImageExportClient *_imageExportClient;
+    NUVideoExportClient *_videoExportClient;
+    NUVideoPropertiesClient *_videoPropertiesClient;
+    NURenderContext *_videoRenderContext;
+    NUPriority *_priority;
+    NURenderContext *_geometryContext;
+    NURenderContext *_smartToneAutoCalculatorContext;
+    PLEditSource *_editSource;
     PLPhotoEditModel *_photoEditModel;
-    unsigned long long _renderMode;
     long long _smartFiltersCubeSize;
 }
 
-@property (strong, nonatomic) CIImage *originalImage; // @synthesize originalImage=_originalImage;
-@property (readonly, strong, nonatomic) CIImage *outputImage;
-@property (readonly, nonatomic) struct CGSize outputImageSize;
+@property (readonly, strong, nonatomic) NUComposition *composition;
+@property (readonly, strong, nonatomic) PLEditSource *editSource; // @synthesize editSource=_editSource;
 @property (strong, nonatomic) PLPhotoEditModel *photoEditModel; // @synthesize photoEditModel=_photoEditModel;
-@property (nonatomic) unsigned long long renderMode; // @synthesize renderMode=_renderMode;
 @property (readonly, nonatomic) double smartBWBaseGrain;
 @property (readonly, nonatomic) double smartBWBaseHue;
 @property (readonly, nonatomic) double smartBWBaseNeutralGamma;
@@ -62,30 +54,29 @@
 @property (readonly, nonatomic) double smartToneBaseShadows;
 
 + (id)_editedImagePropertiesFromOriginalImageProperties:(id)arg1 preserveRegions:(BOOL)arg2;
++ (id)compositionWithModel:(id)arg1 source:(id)arg2;
 + (BOOL)currentDeviceShouldAllowLocalLight;
++ (void)initialize;
++ (BOOL)isSupportedAutoLoopRecipe:(id)arg1;
 + (id)newImageDataFromCGImage:(struct CGImage *)arg1 withCompressionQuality:(double)arg2 metadataSourceImageURL:(id)arg3 preserveRegionsInMetadata:(BOOL)arg4;
-- (id)_editedGeometryImageWithBaseImage:(id)arg1;
-- (id)_editedImage;
-- (void)_handleAssetDidLoadForVideoComposition:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (id)_imageByApplyingEdits:(id)arg1 toImage:(id)arg2 randomSeed:(unsigned long long)arg3 isVideoFrame:(BOOL)arg4;
-- (id)_imageByApplyingEditsToImage:(id)arg1;
-- (void)_invalidateCachedFilters;
-- (BOOL)_isOrientationMirrored;
-- (struct CGImage *)_newCGImageFromEditedCIImage:(id)arg1;
-- (struct CGColorSpace *)_newOutputColorSpace;
-- (id)_renderingQueue;
++ (void)updatePhotoEditModel:(id)arg1 fromPortraitMetadata:(id)arg2;
+- (void).cxx_destruct;
+- (void)_exportLivePhotoVideoToURL:(id)arg1 preset:(id)arg2 composition:(id)arg3 metadata:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_generateJPEGImageDataForComposition:(id)arg1 withCompressionQuality:(double)arg2 livePhotoPairingIdentifier:(id)arg3 properties:(id)arg4 depthData:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)_smartBWAdjustments;
 - (double)_smartBWBaseValueForKey:(id)arg1 defaultValue:(double)arg2;
 - (id)_smartColorAdjustments;
 - (id)_smartToneAdjustments;
-- (id)_videoEditModel;
-- (void)createEditedImageWithCompletion:(CDUnknownBlockType)arg1;
-- (void)dealloc;
-- (void)drawEditedImageInContext:(id)arg1 inRect:(struct CGRect)arg2 viewportWidth:(int)arg3 viewportHeight:(int)arg4;
-- (void)generateEditedImageDataWithCompressionQuality:(double)arg1 metadataSourceImageURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)init;
-- (struct CGImage *)newEditedImage;
-- (void)prepareVideoCompositionForAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)applySourceChangesToModel:(id)arg1 source:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)calculateLongExposureFusionParametersWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)exportVideoToURL:(id)arg1 preset:(id)arg2 livePhotoPairingIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)generateJPEGImageDataWithCompressionQuality:(double)arg1 livePhotoPairingIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)getGeometryForComposition:(id)arg1;
+- (id)initWithEditSource:(id)arg1;
+- (id)initWithEditSource:(id)arg1 renderPriority:(long long)arg2;
+- (void)renderImageWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)renderImageWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2 renderMode:(long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)renderVideoWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

@@ -25,6 +25,7 @@
 
 - (void).cxx_destruct;
 - (id)CNContactEmailAddressesKey;
+- (id)CNContactPhoneNumbersKey;
 - (id)CNLabelWork;
 - (Class)_CNContactClass;
 - (Class)_CNContactStoreClass;

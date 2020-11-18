@@ -6,9 +6,11 @@
 
 #import <CameraUI/CAMExpandableMenuButton.h>
 
-@class NSArray, UIImageView;
+#import <CameraUI/CAMAccessibilityHUDImageProvider-Protocol.h>
 
-@interface CAMHDRButton : CAMExpandableMenuButton
+@class NSArray, NSString, UIImageView;
+
+@interface CAMHDRButton : CAMExpandableMenuButton <CAMAccessibilityHUDImageProvider>
 {
     BOOL _allowsAutomaticHDR;
     BOOL _allowsHDROn;
@@ -21,14 +23,19 @@
 @property (readonly, nonatomic) UIImageView *_glyphView; // @synthesize _glyphView=__glyphView;
 @property (nonatomic) BOOL allowsAutomaticHDR; // @synthesize allowsAutomaticHDR=_allowsAutomaticHDR;
 @property (nonatomic) BOOL allowsHDROn; // @synthesize allowsHDROn=_allowsHDROn;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_commonCAMHDRButtonInitialization;
-- (id)_currentGlyphImage;
+- (id)_currentGlyphImageForAccessibilityHUD:(BOOL)arg1;
 - (void)_updateAllowedModes;
 - (void)_updateCurrentGlyphImage;
 - (void)_updateFromAllowedModesChangeWithCurrentMode:(long long)arg1;
 - (id)headerView;
+- (id)imageForAccessibilityHUD;
 - (unsigned long long)indexForMode:(long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithLayoutStyle:(long long)arg1;

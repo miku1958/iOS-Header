@@ -4,16 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKit/_UIFocusEnvironmentPrivate-Protocol.h>
 
-@class UIScreen, _UIFocusedItemRegion;
-@protocol UIFocusItem, _UIFocusRegionSearchContext;
+@class _UIFocusRegion;
+@protocol UICoordinateSpace, UIFocusItem, _UIFocusRegionSearchContext;
 
-@protocol _UIFocusRegionContainer <NSObject>
+@protocol _UIFocusRegionContainer <_UIFocusEnvironmentPrivate>
+- (id<UICoordinateSpace>)_preferredFocusRegionCoordinateSpace;
+- (_UIFocusRegion *)_regionForFocusedItem:(id<UIFocusItem>)arg1 inCoordinateSpace:(id<UICoordinateSpace>)arg2;
 - (void)_searchForFocusRegionsInContext:(id<_UIFocusRegionSearchContext>)arg1;
-- (BOOL)_shouldSearchForFocusRegionsInContext:(id<_UIFocusRegionSearchContext>)arg1;
-
-@optional
-- (_UIFocusedItemRegion *)_regionForFocusedItem:(id<UIFocusItem>)arg1 inScreen:(UIScreen *)arg2;
 @end
 

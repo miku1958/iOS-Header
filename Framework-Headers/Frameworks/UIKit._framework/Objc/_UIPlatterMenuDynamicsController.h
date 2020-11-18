@@ -8,8 +8,8 @@
 
 #import <UIKit/_UIPlatterMenuPanningTransformerDelegate-Protocol.h>
 
-@class NSString, UIAttachmentBehavior, UICollisionBehavior, UIDynamicAnimator, UIDynamicItemBehavior, UIView, _UIDynamicItemObservingBehavior, _UIFeedbackStatesBehavior, _UIPlatterMenuPanningTransformer, _UIPlatterMenuSnapBehavior;
-@protocol _UIPlatterMenuDynamicsControllerDelegate;
+@class NSString, UIAttachmentBehavior, UICollisionBehavior, UIDynamicAnimator, UIDynamicItemBehavior, UIView, _UIDynamicItemObservingBehavior, _UIPlatterMenuPanningTransformer, _UIPlatterMenuSnapBehavior, _UIStatesFeedbackGenerator;
+@protocol UIDynamicItem, _UIPlatterMenuDynamicsControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIPlatterMenuDynamicsController : NSObject <_UIPlatterMenuPanningTransformerDelegate>
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     UIView *_containerView;
     UIView *_platterView;
     UIView *_menuView;
+    id<UIDynamicItem> _platterItem;
     _UIPlatterMenuPanningTransformer *_panningLockTransformer;
     long long _state;
     double _leadingSwipeEdgeMultiplier;
@@ -39,7 +40,7 @@ __attribute__((visibility("hidden")))
     UICollisionBehavior *_platterMenuCollisionBounds;
     _UIDynamicItemObservingBehavior *_observingBehavior;
     long long _didPresentCount;
-    _UIFeedbackStatesBehavior *_swipeFeedbackBehavior;
+    _UIStatesFeedbackGenerator *_swipeFeedbackGenerator;
     struct CGPoint _initialTouchPoint;
 }
 
@@ -65,6 +66,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIDynamicItemBehavior *noRotationBehavior; // @synthesize noRotationBehavior=_noRotationBehavior;
 @property (strong, nonatomic) _UIDynamicItemObservingBehavior *observingBehavior; // @synthesize observingBehavior=_observingBehavior;
 @property (strong, nonatomic) _UIPlatterMenuPanningTransformer *panningLockTransformer; // @synthesize panningLockTransformer=_panningLockTransformer;
+@property (weak, nonatomic) id<UIDynamicItem> platterItem; // @synthesize platterItem=_platterItem;
 @property (strong, nonatomic) UIDynamicItemBehavior *platterItemBehavior; // @synthesize platterItemBehavior=_platterItemBehavior;
 @property (strong, nonatomic) UIAttachmentBehavior *platterMenuAttachmentBehavior; // @synthesize platterMenuAttachmentBehavior=_platterMenuAttachmentBehavior;
 @property (strong, nonatomic) UICollisionBehavior *platterMenuCollisionBounds; // @synthesize platterMenuCollisionBounds=_platterMenuCollisionBounds;
@@ -73,16 +75,17 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) UIView *platterView; // @synthesize platterView=_platterView;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) _UIFeedbackStatesBehavior *swipeFeedbackBehavior; // @synthesize swipeFeedbackBehavior=_swipeFeedbackBehavior;
+@property (strong, nonatomic) _UIStatesFeedbackGenerator *swipeFeedbackGenerator; // @synthesize swipeFeedbackGenerator=_swipeFeedbackGenerator;
 @property (nonatomic) BOOL trailingSwipeActionViewSelected; // @synthesize trailingSwipeActionViewSelected=_trailingSwipeActionViewSelected;
 @property (nonatomic) double trailingSwipeEdgeMultiplier; // @synthesize trailingSwipeEdgeMultiplier=_trailingSwipeEdgeMultiplier;
 
 - (void).cxx_destruct;
 - (void)_activateFeedbackIfNeeded;
+- (void)_animateToPlatterDismissedWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_animateToPlatterPresentedWithVelocity:(struct CGVector)arg1;
 - (void)_beginInYLockedStatePresented;
 - (void)_configureAnimator;
-- (void)_configureFeedbackBehavior;
+- (void)_configureFeedbackGenerator;
 - (void)_deactivateFeedbackIfNeeded;
 - (void)_fireConfirmFeedbackIfNeededForInitialSelectionState:(BOOL)arg1 finalSelectionState:(BOOL)arg2;
 - (BOOL)_isPlatterInYLockedPosition;
@@ -113,6 +116,7 @@ __attribute__((visibility("hidden")))
 - (void)performActionsAndEnterState:(long long)arg1;
 - (void)performActionsAndEnterState:(long long)arg1 velocity:(struct CGVector)arg2 underDirectManipulation:(BOOL)arg3;
 - (struct CGPoint)platterCenter;
+- (BOOL)platterPanned;
 - (void)resetAnimator;
 - (void)resetAnimatorToDefaultBehaviors;
 - (void)stopObservingBehavior;

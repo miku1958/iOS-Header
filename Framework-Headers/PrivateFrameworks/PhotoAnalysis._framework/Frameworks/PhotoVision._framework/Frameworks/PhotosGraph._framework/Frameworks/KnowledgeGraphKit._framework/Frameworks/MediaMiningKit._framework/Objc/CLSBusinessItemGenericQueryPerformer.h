@@ -17,25 +17,30 @@
     id<GEOMapServiceBatchSpatialLookupTicket> _businessGenericTicket;
     NSArray *_regions;
     BOOL _isCancelled;
+    double _precision;
+    CDStruct_dd9df0da _statistics;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
+@property (nonatomic) double precision; // @synthesize precision=_precision;
+@property (nonatomic) CDStruct_dd9df0da statistics; // @synthesize statistics=_statistics;
 @property (readonly) Class superclass;
 
++ (double)defaultPrecision;
 + (double)defaultRadiusForCategories:(id)arg1;
 + (unsigned long long)numberOfRegionsPerBatch;
-+ (double)precision;
-+ (id)queryForRegions:(id)arg1;
-+ (BOOL)shouldQueryItemsForRegion:(id)arg1 selectedRegions:(id)arg2;
++ (id)queryWithTemplate:(id)arg1 forRegions:(id)arg2;
 - (void).cxx_destruct;
-- (void)cacheItems:(id)arg1;
+- (unsigned long long)cacheItems:(id)arg1;
 - (void)cancel;
-- (id)initWithRegions:(id)arg1 categories:(id)arg2;
+- (id)init;
+- (id)initWithRegions:(id)arg1 categories:(id)arg2 precision:(double)arg3;
 - (id)regionFromMapItem:(id)arg1;
 - (id)regions;
+- (BOOL)shouldQueryItemsForRegion:(id)arg1 selectedRegions:(id)arg2;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1;
 
 @end

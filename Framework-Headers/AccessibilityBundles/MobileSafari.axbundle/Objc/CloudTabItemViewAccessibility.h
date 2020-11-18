@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityCloseIcloudTabAction:(id)arg1;
 - (BOOL)_accessibilityRetainsCustomRotorActionSetting;
+- (BOOL)_accessibilityScrollToVisible;
 - (id)accessibilityCustomActions;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;

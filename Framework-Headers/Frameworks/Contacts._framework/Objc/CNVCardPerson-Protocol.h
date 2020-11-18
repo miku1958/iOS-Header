@@ -56,7 +56,6 @@
 @property (readonly) NSArray *unknownProperties;
 @property (readonly) NSArray *urls;
 
-- (NSData *)jpegImageDataOfAllowableKinds:(NSArray *)arg1 maximumLength:(unsigned long long)arg2 cropRects:(id *)arg3;
 - (NSData *)largeImageHashOfType:(NSString *)arg1;
 @end
 

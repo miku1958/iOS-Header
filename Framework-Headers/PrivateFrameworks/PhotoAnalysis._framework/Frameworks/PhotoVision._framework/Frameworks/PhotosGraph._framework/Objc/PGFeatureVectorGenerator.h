@@ -10,12 +10,14 @@
 
 @interface PGFeatureVectorGenerator : NSObject
 {
+    BOOL _isDryTesting;
     NSDate *_localDate;
     CLLocation *_location;
     NSArray *_peopleNames;
     PGManager *_manager;
 }
 
+@property BOOL isDryTesting; // @synthesize isDryTesting=_isDryTesting;
 @property (strong, nonatomic) NSDate *localDate; // @synthesize localDate=_localDate;
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (readonly, weak) PGManager *manager; // @synthesize manager=_manager;

@@ -16,7 +16,6 @@
 @property (weak, nonatomic) MPCMediaPlayerLegacyPlayer *mpcPlayer; // @synthesize mpcPlayer=_mpcPlayer;
 
 - (void).cxx_destruct;
-- (id)_additionalKeysForNowPlayingItem:(id)arg1;
 - (void)_createNowPlayingInfoForItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

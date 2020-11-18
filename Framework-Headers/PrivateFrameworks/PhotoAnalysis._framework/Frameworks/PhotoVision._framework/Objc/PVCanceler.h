@@ -9,10 +9,14 @@
 @interface PVCanceler : NSObject
 {
     BOOL _canceled;
+    CDUnknownBlockType _updateBlock;
 }
 
-@property BOOL canceled; // @synthesize canceled=_canceled;
+@property (nonatomic) BOOL canceled; // @synthesize canceled=_canceled;
+@property (copy, nonatomic) CDUnknownBlockType updateBlock; // @synthesize updateBlock=_updateBlock;
 
++ (id)cancelerWithUpdateBlock:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 
 @end
 

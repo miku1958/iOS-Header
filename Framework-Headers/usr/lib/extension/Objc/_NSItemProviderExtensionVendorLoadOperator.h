@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/_NSItemProviderLoading-Protocol.h>
+#import <Foundation/_NSItemProviderLoading-Protocol.h>
 
 @class NSString, NSUUID;
 

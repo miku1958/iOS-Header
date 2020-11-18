@@ -6,9 +6,12 @@
 
 #import <UIKit/UIActivity.h>
 
-@class NSExtension, NSExtensionItem, NSString, UIImage, UIViewController, _UIActivityBundleHelper;
+#import <UIKit/UIActivityExtensionItemDataSource-Protocol.h>
+#import <UIKit/UIActivityExtensionItemDataTarget-Protocol.h>
 
-@interface UIApplicationExtensionActivity : UIActivity
+@class NSDate, NSExtension, NSExtensionItem, NSString, UIImage, UIViewController, _UIActivityBundleHelper;
+
+@interface UIApplicationExtensionActivity : UIActivity <UIActivityExtensionItemDataSource, UIActivityExtensionItemDataTarget>
 {
     NSExtension *_applicationExtension;
     NSExtensionItem *__injectedExtensionItem;
@@ -21,27 +24,36 @@
     UIImage *_renderedActivityImage;
     UIImage *_renderedActivitySettingsImage;
     CDUnknownBlockType _extensionRequestCleanupCompletion;
+    NSDate *_installationDate;
 }
 
 @property (strong, nonatomic) NSExtensionItem *_injectedExtensionItem; // @synthesize _injectedExtensionItem=__injectedExtensionItem;
 @property (strong, nonatomic) _UIActivityBundleHelper *activityBundleHelper; // @synthesize activityBundleHelper=_activityBundleHelper;
 @property (strong, nonatomic) NSExtension *applicationExtension; // @synthesize applicationExtension=_applicationExtension;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) id extensionContextIdentifier; // @synthesize extensionContextIdentifier=_extensionContextIdentifier;
 @property (copy, nonatomic) CDUnknownBlockType extensionRequestCleanupCompletion; // @synthesize extensionRequestCleanupCompletion=_extensionRequestCleanupCompletion;
 @property (strong, nonatomic) UIViewController *extensionViewController; // @synthesize extensionViewController=_extensionViewController;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSDate *installationDate; // @synthesize installationDate=_installationDate;
 @property (copy, nonatomic) NSString *localizedExtensionBundleName; // @synthesize localizedExtensionBundleName=_localizedExtensionBundleName;
 @property (copy, nonatomic) CDUnknownBlockType presenterCompletion; // @synthesize presenterCompletion=_presenterCompletion;
-@property (nonatomic) UIViewController *presenterViewController; // @synthesize presenterViewController=_presenterViewController;
+@property (weak, nonatomic) UIViewController *presenterViewController; // @synthesize presenterViewController=_presenterViewController;
 @property (strong, nonatomic) UIImage *renderedActivityImage; // @synthesize renderedActivityImage=_renderedActivityImage;
 @property (strong, nonatomic) UIImage *renderedActivitySettingsImage; // @synthesize renderedActivitySettingsImage=_renderedActivitySettingsImage;
+@property (readonly) Class superclass;
 
++ (id)_activityExtensionItemsForActivityItemValues:(id)arg1 extensionItemDataRequest:(id)arg2;
 + (id)_applicationExtensionActivitiesForItems:(id)arg1;
 + (long long)activityCategory;
++ (id)preparedActivityExtensionItemDataForActivityItemValues:(id)arg1 extensionItemDataRequest:(id)arg2;
 - (void).cxx_destruct;
 - (id)_activityImage;
 - (id)_activitySettingsImage;
-- (BOOL)_canBeExcludedByActivityViewController:(id)arg1;
+- (BOOL)_canBeExcludeWhenMatchingWithContext:(id)arg1;
 - (void)_cleanup;
+- (long long)_defaultSortGroup;
 - (BOOL)_dismissActivityFromViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_injectedJavaScriptResult:(id)arg1;
 - (void)_instantiateExtensionViewControllerWithInputItems:(id)arg1;
@@ -52,8 +64,8 @@
 - (id)activityType;
 - (BOOL)canPerformWithActivityItems:(id)arg1;
 - (void)dealloc;
-- (id)debugDescription;
 - (id)initWithApplicationExtension:(id)arg1;
+- (void)prepareWithActivityExtensionItemData:(id)arg1;
 - (void)prepareWithActivityItems:(id)arg1;
 
 @end

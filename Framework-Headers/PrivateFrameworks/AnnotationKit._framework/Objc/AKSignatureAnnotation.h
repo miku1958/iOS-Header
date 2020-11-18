@@ -41,6 +41,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)keysForValuesToObserveForRedrawing;
 - (id)keysForValuesToObserveForUndo;
+- (BOOL)shouldBurnIn;
 - (void)translateBy:(struct CGPoint)arg1;
 
 @end

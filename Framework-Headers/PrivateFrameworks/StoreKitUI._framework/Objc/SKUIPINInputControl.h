@@ -41,6 +41,9 @@
 @property (nonatomic) long long numberOfCharacters; // @synthesize numberOfCharacters=_numberOfCharacters;
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry; // @synthesize secureTextEntry=_secureTextEntry;
+@property (nonatomic) long long smartDashesType;
+@property (nonatomic) long long smartInsertDeleteType;
+@property (nonatomic) long long smartQuotesType;
 @property (nonatomic) long long spellCheckingType;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;

@@ -6,85 +6,129 @@
 
 #import <HomeKitDaemon/HMDTrigger.h>
 
-#import <HomeKitDaemon/HMDLocationDelegate-Protocol.h>
-#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDEventDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMFTimer, NSArray, NSMutableArray, NSPredicate, NSString;
+@class HMDEventTriggerExecutionSession, HMDEventTriggerUserConfirmationSession, HMDPredicateUtilities, NSArray, NSMutableArray, NSPredicate, NSString;
 
-@interface HMDEventTrigger : HMDTrigger <HMFTimerDelegate, HMDLocationDelegate>
+@interface HMDEventTrigger : HMDTrigger <HMDEventDelegate, HMFLogging>
 {
-    HMFTimer *_secureTriggerConfirmationTimer;
-    NSMutableArray *_characteristicEvents;
-    NSMutableArray *_locationEvents;
+    BOOL _migratedEventsToRecords;
+    BOOL _executeOnce;
+    NSMutableArray *_events;
     NSPredicate *_evaluationCondition;
     NSArray *_recurrences;
+    HMDPredicateUtilities *_predicateUtilities;
+    HMDEventTriggerExecutionSession *_executionSession;
+    HMDEventTriggerUserConfirmationSession *_userConfirmationSession;
+    unsigned long long _activationType;
+    unsigned long long _activationState;
 }
 
-@property (strong, nonatomic) NSMutableArray *characteristicEvents; // @synthesize characteristicEvents=_characteristicEvents;
+@property (nonatomic) unsigned long long activationState; // @synthesize activationState=_activationState;
+@property (nonatomic) unsigned long long activationType; // @synthesize activationType=_activationType;
+@property (readonly, nonatomic) NSArray *calendarEvents;
+@property (readonly, nonatomic) NSArray *charThresholdEvents;
+@property (readonly, nonatomic) NSArray *characteristicBaseEvents;
+@property (readonly, nonatomic) NSArray *characteristicEvents;
+@property (readonly, nonatomic) BOOL computedActive;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSPredicate *evaluationCondition; // @synthesize evaluationCondition=_evaluationCondition;
+@property (readonly, nonatomic) NSArray *durationEvents;
+@property (readonly, nonatomic) NSArray *endEvents;
+@property (strong, nonatomic) NSPredicate *evaluationCondition; // @synthesize evaluationCondition=_evaluationCondition;
+@property (readonly, nonatomic) NSMutableArray *events; // @synthesize events=_events;
+@property (nonatomic) BOOL executeOnce; // @synthesize executeOnce=_executeOnce;
+@property (strong, nonatomic) HMDEventTriggerExecutionSession *executionSession; // @synthesize executionSession=_executionSession;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSMutableArray *locationEvents; // @synthesize locationEvents=_locationEvents;
+@property (readonly, nonatomic) NSArray *locationEvents;
+@property (nonatomic) BOOL migratedEventsToRecords; // @synthesize migratedEventsToRecords=_migratedEventsToRecords;
+@property (strong, nonatomic) HMDPredicateUtilities *predicateUtilities; // @synthesize predicateUtilities=_predicateUtilities;
+@property (readonly, nonatomic) NSArray *presenceEvents;
 @property (readonly, nonatomic) NSArray *recurrences; // @synthesize recurrences=_recurrences;
-@property (strong, nonatomic) HMFTimer *secureTriggerConfirmationTimer; // @synthesize secureTriggerConfirmationTimer=_secureTriggerConfirmationTimer;
+@property (readonly, nonatomic) NSArray *significantTimeEvents;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSArray *timeEvents;
+@property (readonly, nonatomic) NSArray *triggerEvents;
+@property (strong, nonatomic) HMDEventTriggerUserConfirmationSession *userConfirmationSession; // @synthesize userConfirmationSession=_userConfirmationSession;
 
 + (BOOL)__validateRecurrences:(id)arg1;
-+ (id)rewriteNowAdjustedForHomeTimeZone:(id)arg1;
++ (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_activate:(BOOL)arg1 characteristicEvents:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_activateLocationEvents:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (BOOL)_compareEventValue:(id)arg1 withCharacteristic:(id)arg2;
-- (void)_deactivateOnNoEvents;
-- (void)_evaluateFiringTrigger;
-- (void)_handleAccessoryCharacteristicsChangedNotification:(id)arg1;
+- (void)_activateAfterResidentChangeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_activateEvents:(CDUnknownBlockType)arg1;
+- (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_addEventToEventTrigger:(id)arg1;
+- (BOOL)_checkAddEventModel:(id)arg1 message:(id)arg2;
+- (void)_computeActivation;
+- (void)_evaluationConditionUpdated:(id)arg1 message:(id)arg2;
+- (void)_eventTriggerRecurrencesUpdated:(id)arg1 message:(id)arg2;
+- (void)_executeOnceUpdated:(id)arg1 message:(id)arg2;
+- (void)_handleAddEventModel:(id)arg1 message:(id)arg2;
 - (void)_handleAddEventToEventTrigger:(id)arg1;
-- (void)_handleLocationAuthorization:(int)arg1;
+- (void)_handleCharacteristicRemove:(id)arg1 eventsToRemove:(id)arg2;
+- (void)_handleEventTriggerUpdate:(id)arg1 message:(id)arg2;
 - (void)_handleLocationAuthorizationMessage:(id)arg1;
+- (void)_handleRemoveEventModel:(id)arg1 message:(id)arg2;
 - (void)_handleRemoveEventsFromEventTrigger:(id)arg1;
-- (void)_handleRetrieveLocationEventForEventTrigger:(id)arg1;
-- (void)_handleUpdateEventForEventTrigger:(id)arg1;
 - (void)_handleUpdateEventTriggerCondition:(id)arg1;
+- (void)_handleUpdateEventTriggerExecuteOnce:(id)arg1;
 - (void)_handleUpdateEventTriggerRecurrences:(id)arg1;
-- (void)_reevaluateIfRelaunchRequired:(BOOL)arg1;
+- (void)_handleUpdateEventsOnEventTrigger:(id)arg1;
+- (void)_handleUpdateOwningDevice:(id)arg1;
+- (void)_handleUserPermissionRequest:(id)arg1;
+- (BOOL)_isTriggerFiredNotificationEntitled;
+- (void)_migrateEventsToRecords;
+- (void)_reevaluateIfRelaunchRequired;
 - (void)_registerForMessages;
-- (BOOL)_removeEvents:(id)arg1;
-- (id)_rewritePredicate:(id)arg1 currentCharacteristicInPredicate:(id *)arg2 characteristicsToRead:(id)arg3;
-- (void)_saveChanges:(id)arg1;
-- (void)_sortEvents:(id)arg1;
-- (id)_updatePredicate:(id)arg1 currentCharacteristicInPredicate:(id *)arg2 conditionModified:(BOOL *)arg3 removedAccessory:(id)arg4;
-- (void)activate:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)activateOnLocalDevice;
-- (id)addDeltaToNow:(id)arg1;
-- (BOOL)checkForNoEvents;
-- (id)compareValueOfCharacteristic:(id)arg1 againstValue:(id)arg2 operatorType:(id)arg3;
+- (void)_removeEvents:(id)arg1;
+- (void)_removeEventsFromEventTrigger:(id)arg1;
+- (void)_resetExecutionState;
+- (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
+- (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (void)_updateCondition:(id)arg1;
+- (void)_updateEventTriggerCondition:(id)arg1;
+- (void)_updateEventTriggerExecuteOnce:(id)arg1;
+- (void)_updateEventTriggerRecurrences:(id)arg1;
+- (id)_updateEventsOnEventTrigger:(id)arg1;
+- (void)_updateOwningDevice:(id)arg1;
+- (void)_userDidConfirmExecute:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)addEventsFromMessage:(id)arg1;
+- (id)backingStoreObjects:(long long)arg1;
+- (BOOL)checkSharedEventTriggerActivationResidentRequirement:(id)arg1;
+- (BOOL)compatible:(id)arg1 user:(id)arg2;
 - (void)configure:(id)arg1 messageDispatcher:(id)arg2 queue:(id)arg3;
-- (BOOL)containsSecureActionSet;
-- (id)dateComponentsFromDate:(id)arg1;
-- (id)dateTodayMatchingComponents:(id)arg1;
+- (BOOL)containsRecurrences;
+- (id)createEventModel:(id)arg1 endEvent:(BOOL)arg2 message:(id)arg3 checkForSupport:(BOOL)arg4 error:(id *)arg5;
 - (void)dealloc;
-- (void)didEnterRegion:(id)arg1;
-- (void)didExitRegion:(id)arg1;
+- (id)didOccurEvent:(id)arg1 causingDevice:(id)arg2;
 - (id)dumpState;
+- (id)emptyModelObject;
 - (void)encodeWithCoder:(id)arg1;
-- (void)executeTriggerAfterEvaluatingCondition:(id)arg1;
+- (void)executionComplete:(id)arg1 error:(id)arg2;
 - (void)fixupForReplacementAccessory:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithName:(id)arg1 events:(id)arg2 recurrences:(id)arg3 evaluationCondition:(id)arg4;
+- (id)initWithModel:(id)arg1 home:(id)arg2 message:(id)arg3;
 - (void)invalidate;
 - (BOOL)isEventTriggerOnLocalDeviceForAccessory:(id)arg1;
 - (BOOL)isEventTriggerOnRemoteGatewayForAccessory:(id)arg1;
+- (id)metric:(BOOL)arg1;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
+- (void)processEventRecords:(id)arg1 message:(id)arg2;
 - (void)removeAccessory:(id)arg1;
 - (void)removeCharacteristic:(id)arg1;
 - (void)removeService:(id)arg1;
+- (void)removeUser:(id)arg1;
+- (BOOL)requiresDataVersion4;
+- (void)resetExecutionState;
 - (void)sendTriggerFiredNotification:(id)arg1;
+- (BOOL)shouldActivateOnLocalDevice;
 - (BOOL)shouldEncodeLastFireDate:(id)arg1;
-- (id)sunrise;
-- (id)sunset;
-- (void)timerDidFire:(id)arg1;
+- (void)takeOverOwnershipOfTrigger;
+- (void)timerFired:(id)arg1;
 - (unsigned long long)triggerType;
+- (void)userDidConfirmExecute:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

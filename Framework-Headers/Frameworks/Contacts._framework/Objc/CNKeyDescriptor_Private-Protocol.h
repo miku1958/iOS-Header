@@ -6,13 +6,14 @@
 
 #import <Contacts/CNKeyDescriptor-Protocol.h>
 
-@class NSSet, NSString;
+@class CNContactKeyVector, NSString;
 
 @protocol CNKeyDescriptor_Private <CNKeyDescriptor>
 - (void)_cn_executeGetterForRepresentedKeys:(id (^)(NSString *))arg1;
+- (CNContactKeyVector *)_cn_optionalKeys;
+- (CNContactKeyVector *)_cn_requiredKeys;
 
 @optional
 - (NSString *)_cn_recursiveDescriptionWithPrefix:(NSString *)arg1;
-- (NSSet *)_cn_requiredKeys;
 @end
 

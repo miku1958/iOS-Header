@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMFTimer, NSMutableDictionary, NSSet, NSString;
+@class HMFTimer, NSMutableDictionary, NSObject, NSSet, NSString;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
-@interface HMDXPCRequestTracker : NSObject <HMFTimerDelegate>
+@interface HMDXPCRequestTracker : HMFObject <HMFTimerDelegate>
 {
     NSString *_clientName;
     NSObject<OS_dispatch_queue> *_propertyQueue;

@@ -10,7 +10,6 @@
 {
 }
 
-@property (readonly, nonatomic) BOOL suppressThermalWarning; // @dynamic suppressThermalWarning;
 @property (nonatomic) BOOL wasConnectedToWiFiWhenBrickedForThermalConditions; // @dynamic wasConnectedToWiFiWhenBrickedForThermalConditions;
 
 - (void)_bindAndRegisterDefaults;

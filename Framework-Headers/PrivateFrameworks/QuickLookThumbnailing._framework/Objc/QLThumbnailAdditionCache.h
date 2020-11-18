@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSCache;
 
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)cacheAddition:(id)arg1 forDocumentID:(id)arg2;
 - (id)init;
 - (void)purgeCachedAdditionForItemAtURL:(id)arg1;

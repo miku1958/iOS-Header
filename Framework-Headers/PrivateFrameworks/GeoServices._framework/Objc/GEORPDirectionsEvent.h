@@ -56,11 +56,11 @@
 @property (nonatomic) int synthesizedStepManeuverType; // @synthesize synthesizedStepManeuverType=_synthesizedStepManeuverType;
 @property (nonatomic) int type; // @synthesize type=_type;
 
+- (void).cxx_destruct;
 - (int)StringAsSynthesizedStepManeuverType:(id)arg1;
 - (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

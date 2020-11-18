@@ -16,8 +16,11 @@
 @property (readonly) id second; // @synthesize second=_second;
 
 + (id)pairWithFirst:(id)arg1 second:(id)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
+- (id)description;
+- (unsigned long long)hash;
 - (id)initWithFirst:(id)arg1 second:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

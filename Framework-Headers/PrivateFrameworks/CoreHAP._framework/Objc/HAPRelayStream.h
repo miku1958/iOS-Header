@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @protocol HAPStreamDelegate;
 
-@interface HAPRelayStream : NSObject
+@interface HAPRelayStream : HMFObject
 {
     id<HAPStreamDelegate> _delegate;
     unsigned long long _mtu;

@@ -21,9 +21,12 @@
 @property (copy, nonatomic) NSString *extensionIdentifier; // @synthesize extensionIdentifier=_extensionIdentifier;
 
 - (void).cxx_destruct;
+- (void)_requestTransaction:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithQueue:(id)arg1;
 - (void)requestTransaction:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)requestTransactionWithAction:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)requestTransactionWithActions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

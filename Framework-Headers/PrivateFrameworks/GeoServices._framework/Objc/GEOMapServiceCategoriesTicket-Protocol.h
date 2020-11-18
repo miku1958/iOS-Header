@@ -6,7 +6,7 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOMapServiceTraits, NSDictionary;
+@class GEOApplicationAuditToken, GEOMapServiceTraits, NSDictionary;
 
 @protocol GEOMapServiceCategoriesTicket <NSObject>
 
@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) GEOMapServiceTraits *traits;
 
 - (void)cancel;
+- (void)submitWithHandler:(void (^)(NSArray *, NSError *))arg1 auditToken:(GEOApplicationAuditToken *)arg2 networkActivity:(void (^)(BOOL))arg3;
 - (void)submitWithHandler:(void (^)(NSArray *, NSError *))arg1 networkActivity:(void (^)(BOOL))arg2;
 @end
 

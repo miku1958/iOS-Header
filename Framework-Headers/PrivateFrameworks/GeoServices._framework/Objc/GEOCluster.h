@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) int *indexs;
 @property (readonly, nonatomic) unsigned long long indexsCount;
 
+- (void).cxx_destruct;
 - (void)addIndex:(int)arg1;
 - (void)clearIndexs;
 - (void)copyTo:(id)arg1;

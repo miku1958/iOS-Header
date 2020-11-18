@@ -15,7 +15,7 @@
     long long _heartSpriteImageColumnCount;
     NSBundle *_resourceBundle;
     unsigned long long _state;
-    double _heartRate;
+    double _beatsPerMinute;
     BOOL _delayedStartMeasuringAnimation;
     BOOL _isBeatingHeart;
     BOOL _animationsSuspended;
@@ -33,15 +33,15 @@
 
 - (void).cxx_destruct;
 - (void)_beatFullHeartOnce;
-- (void)_finishedHeartBeat;
+- (void)_finishedHeartbeat;
 - (id)_loadHeartMeasuringImage;
 - (void)_resumeAnimations;
 - (void)_startBeatingHeart;
 - (void)_startMeasuringAnimationAnimated:(BOOL)arg1;
 - (void)_suspendAnimations;
-- (id)initWithFrame:(struct CGRect)arg1 heartSpriteImageName:(id)arg2 spriteFrameCount:(long long)arg3 spriteColumnCount:(long long)arg4 resourceBundle:(id)arg5;
+- (id)initWithFrame:(struct CGRect)arg1 heartFilledImageName:(id)arg2 heartSpriteImageName:(id)arg3 spriteFrameCount:(long long)arg4 spriteColumnCount:(long long)arg5 resourceBundle:(id)arg6;
 - (void)layoutSubviews;
-- (void)setHeartRate:(double)arg1;
+- (void)setBeatsPerMinute:(double)arg1;
 - (void)setReloadArrowImage:(id)arg1;
 - (void)setReloadHeartOutlineImage:(id)arg1;
 - (void)setState:(unsigned long long)arg1;

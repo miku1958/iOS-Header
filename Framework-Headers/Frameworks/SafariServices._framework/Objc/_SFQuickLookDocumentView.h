@@ -6,10 +6,13 @@
 
 #import <UIKit/UIScrollView.h>
 
-@class NSArray, NSLayoutConstraint, UIStackView, UIView, _SFQuickLookDocumentInfoView;
+#import <SafariServices/UIDragInteractionDelegate-Protocol.h>
+#import <SafariServices/UIDragInteractionDelegate_Private-Protocol.h>
+
+@class NSArray, NSLayoutConstraint, NSString, UIStackView, UIView, _SFQuickLookDocumentInfoView;
 @protocol _SFQuickLookDocumentViewDelegate;
 
-@interface _SFQuickLookDocumentView : UIScrollView
+@interface _SFQuickLookDocumentView : UIScrollView <UIDragInteractionDelegate, UIDragInteractionDelegate_Private>
 {
     UIView *_wrapperView;
     UIView *_contentView;
@@ -21,13 +24,20 @@
     id<_SFQuickLookDocumentViewDelegate> _quickLookDocumentViewDelegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<_SFQuickLookDocumentViewDelegate> quickLookDocumentViewDelegate; // @synthesize quickLookDocumentViewDelegate=_quickLookDocumentViewDelegate;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_actionButtonTapped:(id)arg1;
+- (id)_api_dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
 - (void)_configureOrientationBasedConstraints:(long long)arg1;
+- (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (void)_setUpLayoutConstraints;
 - (void)_updatePropertiesDefinedByContentSizeCategory;
+- (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (struct CGRect)frameForButtonAtIndex:(unsigned long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

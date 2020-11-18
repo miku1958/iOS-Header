@@ -11,25 +11,26 @@
 __attribute__((visibility("hidden")))
 @interface _LSDocumentProxyBindingQuery : _LSQuery
 {
-    BOOL _withTypeOwner;
-    BOOL _airDropStyle;
+    BOOL _withTypeDeclarer;
+    unsigned char _style;
     LSDocumentProxy *_documentProxy;
     NSString *_handlerRank;
 }
 
-@property (readonly, nonatomic) BOOL airDropStyle; // @synthesize airDropStyle=_airDropStyle;
 @property (readonly, strong, nonatomic) LSDocumentProxy *documentProxy; // @synthesize documentProxy=_documentProxy;
 @property (readonly, copy, nonatomic) NSString *handlerRank; // @synthesize handlerRank=_handlerRank;
-@property (readonly, nonatomic) BOOL withTypeOwner; // @synthesize withTypeOwner=_withTypeOwner;
+@property (readonly, nonatomic) unsigned char style; // @synthesize style=_style;
+@property (readonly, nonatomic) BOOL withTypeDeclarer; // @synthesize withTypeDeclarer=_withTypeDeclarer;
 
 + (BOOL)supportsSecureCoding;
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (BOOL)_requiresDatabaseMappingEntitlement;
 - (BOOL)_shouldCacheResolvedResults;
-- (int)calculatePriorityForApp:(id)arg1 cloudOwner:(id)arg2 preferredHandler:(id)arg3;
+- (int)calculatePriorityForApp:(id)arg1 cloudOwner:(id)arg2 preferredHandler:(id)arg3 typeIsWildcard:(BOOL)arg4;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDocumentProxy:(id)arg1 withTypeOwner:(BOOL)arg2 airDropStyle:(BOOL)arg3 handlerRank:(id)arg4;
+- (id)initWithDocumentProxy:(id)arg1 withTypeDeclarer:(BOOL)arg2 style:(unsigned char)arg3 handlerRank:(id)arg4;
 
 @end
 

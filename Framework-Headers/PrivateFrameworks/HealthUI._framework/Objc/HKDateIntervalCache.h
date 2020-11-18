@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HKValueRange, NSArray, NSDate, NSDateComponents;
+@class HKValueRange, NSArray, NSCalendar, NSDate, NSDateComponents;
 
 @interface HKDateIntervalCache : NSObject
 {
@@ -15,21 +15,31 @@
     double _previousTimeInterval;
     BOOL _datesInvalidated;
     NSArray *_cachedDates;
+    NSCalendar *_currentCalendarOverride;
     unsigned long long _dateAnchorUnit;
+    NSDateComponents *_referenceSpacingComponents;
     NSDateComponents *_dateSpacingComponents;
+    NSDateComponents *_minorDateSpacingComponents;
     HKValueRange *_dateRange;
 }
 
 @property (nonatomic) unsigned long long dateAnchorUnit; // @synthesize dateAnchorUnit=_dateAnchorUnit;
+@property (readonly, nonatomic) NSArray *datePoints;
 @property (readonly, nonatomic) HKValueRange *dateRange; // @synthesize dateRange=_dateRange;
 @property (strong, nonatomic) NSDateComponents *dateSpacingComponents; // @synthesize dateSpacingComponents=_dateSpacingComponents;
-@property (readonly, nonatomic) NSArray *dates;
+@property (strong, nonatomic) NSDateComponents *minorDateSpacingComponents; // @synthesize minorDateSpacingComponents=_minorDateSpacingComponents;
+@property (strong, nonatomic) NSDateComponents *referenceSpacingComponents; // @synthesize referenceSpacingComponents=_referenceSpacingComponents;
 
 - (void).cxx_destruct;
+- (id)_currentCalendar;
+- (id)_firstDateAfter:(id)arg1 matchingComponents:(id)arg2 calendar:(id)arg3;
 - (id)_generateCachedDates;
 - (void)_invalidateCachedDates;
 - (id)_maxAnchorDateFromDate:(id)arg1;
 - (id)_minAnchorDateFromDate:(id)arg1;
+- (unsigned long long)_minimumCalendarUnitForComponents:(id)arg1;
+- (id)_nextDateForDate:(id)arg1 components:(id)arg2 calendar:(id)arg3;
+- (void)_setCurrentCalendar:(id)arg1;
 - (void)_updateAnchorDates;
 - (id)init;
 - (BOOL)setDateRange:(id)arg1;

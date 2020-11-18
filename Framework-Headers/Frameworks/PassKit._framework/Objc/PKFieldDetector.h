@@ -4,31 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
-@class NSHashTable, PKFieldProperties;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@class NSHashTable, NSLock, PKFieldProperties;
+@protocol OS_dispatch_queue, PKFieldDetectorDelegate;
 
 @interface PKFieldDetector : NSObject
 {
     NSHashTable *_observers;
+    NSLock *_observersLock;
     PKFieldProperties *_fieldProperties;
-    BOOL _fieldPresent;
-    unsigned long long _fieldDetectSessionRetryCount;
     NSObject<OS_dispatch_queue> *_fieldDetectorSerialQueue;
-    NSObject<OS_dispatch_queue> *_observersConcurrentQueue;
     NSObject<OS_dispatch_queue> *_replyQueue;
-    NSObject<OS_dispatch_source> *_valueAddedServiceLookupTimer;
-    unsigned long long _valueAddedServiceLookupSynchronizer;
-    unsigned long long _valueAddedServiceLookupTechnology;
-    unsigned long long _valueAddedServiceLookupMode;
+    id<PKFieldDetectorDelegate> _delegate;
 }
 
+@property (weak, nonatomic) id<PKFieldDetectorDelegate> delegate;
 @property (readonly, weak, nonatomic) PKFieldProperties *fieldProperties;
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
+- (id)initWithDelegate:(id)arg1;
 - (void)registerObserver:(id)arg1;
 - (void)setPersistentFieldDetectionEnabled:(BOOL)arg1;
 - (void)unregisterObserver:(id)arg1;

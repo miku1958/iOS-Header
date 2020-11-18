@@ -6,7 +6,7 @@
 
 #import <UIKit/UINavigationController.h>
 
-@class MSMessage, NSArray, NSMutableArray, NSString;
+@class MSMessage, NSArray, NSString;
 @protocol MFMessageComposeViewControllerDelegate;
 
 @interface MFMessageComposeViewController : UINavigationController
@@ -16,7 +16,6 @@
     NSString *_body;
     NSString *_subject;
     MSMessage *_message;
-    NSMutableArray *_mutableAttachmentURLs;
     unsigned long long _currentAttachedVideoCount;
     unsigned long long _currentAttachedAudioCount;
     unsigned long long _currentAttachedImageCount;
@@ -30,7 +29,6 @@
 @property (nonatomic) unsigned long long currentAttachedVideoCount; // @synthesize currentAttachedVideoCount=_currentAttachedVideoCount;
 @property (copy, nonatomic) MSMessage *message; // @synthesize message=_message;
 @property (nonatomic) id<MFMessageComposeViewControllerDelegate> messageComposeDelegate; // @synthesize messageComposeDelegate=_messageComposeDelegate;
-@property (copy, nonatomic) NSMutableArray *mutableAttachmentURLs; // @synthesize mutableAttachmentURLs=_mutableAttachmentURLs;
 @property (copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
 
@@ -51,7 +49,6 @@
 + (double)maxTrimDurationForAudio;
 + (double)maxTrimDurationForVideo;
 - (id)_MIMETypeForURL:(id)arg1;
-- (id)_buildAttachmentInfoForAttachmentURL:(id)arg1 andAlternameFilename:(id)arg2;
 - (id)_contentTypeForMIMEType:(id)arg1;
 - (BOOL)_isAudioMIMEType:(id)arg1;
 - (BOOL)_isImageMIMEType:(id)arg1;
@@ -68,12 +65,14 @@
 - (void)dealloc;
 - (void)disableUserAttachments;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)mutableAttachmentURLs;
 - (void)setModalPresentationStyle:(long long)arg1;
 - (void)smsComposeControllerCancelled:(id)arg1;
 - (void)smsComposeControllerSendStarted:(id)arg1;
 - (void)smsComposeControllerShouldSendMessageWithText:(id)arg1 toRecipients:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

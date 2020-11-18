@@ -31,7 +31,6 @@
 + (id)keyPathsForValuesAffectingVideoScaled;
 + (Class)layerClass;
 - (void).cxx_destruct;
-- (BOOL)_isPlayingOnSecondScreen;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -17,7 +17,7 @@
 - (void)_axSpeakInfo;
 - (BOOL)accessibilityPerformEscape;
 - (void)presentMedicalID;
-- (void)showSOSDialCancelled;
+- (void)showSOSDialCanceled;
 - (void)showSOSDialCountdown;
 - (void)showSOSNotificationCanceled;
 - (void)showSOSNotificationCountdown;

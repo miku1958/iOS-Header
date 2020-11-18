@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType uploadProgressBlock; // @synthesize uploadProgressBlock=_uploadProgressBlock;
 @property (strong, nonatomic) NSMapTable *uploadTasksByPackages; // @synthesize uploadTasksByPackages=_uploadTasksByPackages;
 
++ (long long)isPredominatelyDownload;
 - (void).cxx_destruct;
 - (id)CKStatusReportLogGroups;
 - (void)_closeAllPackages;
@@ -72,7 +73,7 @@ __attribute__((visibility("hidden")))
 - (void)_uploadPackageSectionsWithTask:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)cancel;
 - (void)finishWithError:(id)arg1;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2 assetsToUpload:(id)arg3;
+- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
 - (BOOL)makeStateTransition;
 - (id)nameForState:(unsigned long long)arg1;

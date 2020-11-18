@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSMutableURLRequest, NSString, NSURL, NSURLRequest, NSURLResponse, WebArchive, WebFrame, WebResource;
+@class NSArray, NSData, NSDictionary, NSMutableURLRequest, NSString, NSURL, NSURLRequest, NSURLResponse, WebArchive, WebFrame, WebResource;
 @protocol WebDocumentRepresentation;
 
 @interface WebDataSource : NSObject
@@ -14,6 +14,8 @@
     void *_private;
 }
 
+@property (readonly, nonatomic) NSDictionary *_quickLookContent;
+@property (copy, nonatomic, setter=_setQuickLookContent:) NSDictionary *_quickLookContent;
 @property (readonly, copy, nonatomic) NSData *data;
 @property (readonly, nonatomic) NSURLRequest *initialRequest;
 @property (readonly, nonatomic, getter=isLoading) BOOL loading;
@@ -38,7 +40,7 @@
 - (struct DocumentLoader *)_documentLoader;
 - (void)_finishedLoading;
 - (id)_imageElementWithImageResource:(id)arg1;
-- (id)_initWithDocumentLoader:(PassRefPtr_a1b5a79e)arg1;
+- (id)_initWithDocumentLoader:(Ref_3e0aa115 *)arg1;
 - (BOOL)_isDocumentHTML;
 - (id)_mainDocumentError;
 - (void)_makeRepresentation;

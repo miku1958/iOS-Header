@@ -18,7 +18,7 @@
 @property (strong, nonatomic) NSDictionary *payload; // @synthesize payload=_payload;
 
 + (id)messageWithPayload:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithPayload:(id)arg1;
 

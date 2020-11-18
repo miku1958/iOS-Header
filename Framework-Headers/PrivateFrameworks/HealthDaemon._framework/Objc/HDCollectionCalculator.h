@@ -6,28 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class HKStatisticsCollection;
 
 @interface HDCollectionCalculator : NSObject
 {
+    HKStatisticsCollection *_collection;
+    long long _currentPeriodIndex;
+    BOOL _bucketSetup;
+    BOOL _shouldComputeEndDate;
     BOOL _detailBySource;
-    NSArray *_bucketBoundaries;
+    BOOL _firstValueAdded;
     double _currentStartDate;
     double _currentEndDate;
     unsigned long long _currentBucket;
 }
 
-@property (readonly, nonatomic) NSArray *bucketBoundaries; // @synthesize bucketBoundaries=_bucketBoundaries;
 @property (readonly, nonatomic) unsigned long long currentBucket; // @synthesize currentBucket=_currentBucket;
 @property (readonly, nonatomic) double currentEndDate; // @synthesize currentEndDate=_currentEndDate;
 @property (readonly, nonatomic) double currentStartDate; // @synthesize currentStartDate=_currentStartDate;
 @property (nonatomic) BOOL detailBySource; // @synthesize detailBySource=_detailBySource;
+@property (readonly, nonatomic) BOOL firstValueAdded; // @synthesize firstValueAdded=_firstValueAdded;
 
 - (void).cxx_destruct;
+- (void)_didAddFirstValue;
 - (void)addValue:(double)arg1 startTime:(double)arg2 endTime:(double)arg3 sourceID:(long long)arg4;
 - (BOOL)advanceBucket;
+- (double)endDateForBucket:(unsigned long long)arg1;
 - (BOOL)hasData;
-- (id)initWithBucketBoundaries:(id)arg1;
+- (id)initForSingleStatistics;
+- (id)initWithStatisticsCollection:(id)arg1;
+- (void)setStartTime:(double)arg1 endTime:(double)arg2;
+- (double)startDateForBucket:(unsigned long long)arg1;
 
 @end
 

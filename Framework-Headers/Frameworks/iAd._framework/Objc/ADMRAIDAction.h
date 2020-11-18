@@ -4,20 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/NSCopying-Protocol.h>
 #import <iAd/NSSecureCoding-Protocol.h>
 
-@class NSURL;
+@class NSDictionary, NSURL;
 
 @interface ADMRAIDAction : NSObject <NSSecureCoding, NSCopying>
 {
     long long _type;
     NSURL *_url;
+    NSDictionary *_calendarEventInfo;
     struct CGSize _maximumExpandedSize;
 }
 
+@property (strong, nonatomic) NSDictionary *calendarEventInfo; // @synthesize calendarEventInfo=_calendarEventInfo;
 @property (nonatomic) struct CGSize maximumExpandedSize; // @synthesize maximumExpandedSize=_maximumExpandedSize;
 @property (readonly, nonatomic) BOOL opensNewsLink;
 @property (nonatomic) long long type; // @synthesize type=_type;

@@ -28,8 +28,8 @@
 
 - (void).cxx_destruct;
 - (void)_addWidgetButtonTapped:(id)arg1;
-- (id)_shortLookViewIfLoaded;
-- (id)_shortLookViewLoadingIfNecessary:(BOOL)arg1;
+- (id)_platterViewIfLoaded;
+- (id)_platterViewLoadingIfNecessary:(BOOL)arg1;
 - (id)initWithWidgetInfo:(id)arg1;
 - (BOOL)isWidgetExtensionVisible:(id)arg1;
 - (long long)largestAvailableDisplayModeForWidget:(id)arg1;
@@ -38,6 +38,7 @@
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)remoteViewControllerDidConnectForWidget:(id)arg1;
 - (void)remoteViewControllerViewDidAppearForWidget:(id)arg1;
+- (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (long long)userSpecifiedDisplayModeForWidget:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

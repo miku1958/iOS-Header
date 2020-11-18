@@ -8,9 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 __attribute__((visibility("hidden")))
 @interface GEOTileGroup : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     struct GEOTileSetRegion *_hybridUnavailableRegions;
     unsigned long long _hybridUnavailableRegionsCount;
     unsigned long long _hybridUnavailableRegionsSpace;
@@ -49,9 +52,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long textureIndexsCount;
 @property (readonly, nonatomic) struct GEOVersionedTileSet *tileSets;
 @property (readonly, nonatomic) unsigned long long tileSetsCount;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (readonly, nonatomic) unsigned int *xmlIndexs;
 @property (readonly, nonatomic) unsigned long long xmlIndexsCount;
 
+- (void).cxx_destruct;
 - (void)addAttributionIndex:(unsigned int)arg1;
 - (void)addFontIndex:(unsigned int)arg1;
 - (void)addHybridUnavailableRegion:(struct GEOTileSetRegion)arg1;

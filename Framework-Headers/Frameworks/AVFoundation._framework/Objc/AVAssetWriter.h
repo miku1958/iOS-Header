@@ -51,6 +51,7 @@
 - (void)endSessionAtSourceTime:(CDStruct_1b6d18a9)arg1;
 - (void)finalize;
 - (BOOL)finishWriting;
+- (id)finishWritingDelegate;
 - (void)finishWritingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithURL:(id)arg1 fileType:(id)arg2 error:(id *)arg3;
@@ -61,12 +62,16 @@
 - (float)preferredRate;
 - (struct CGAffineTransform)preferredTransform;
 - (float)preferredVolume;
+- (void)setFinishWritingDelegate:(id)arg1;
 - (void)setMovieFragmentInterval:(CDStruct_1b6d18a9)arg1;
 - (void)setMovieTimeScale:(int)arg1;
 - (void)setOverallDurationHint:(CDStruct_1b6d18a9)arg1;
 - (void)setPreferredRate:(float)arg1;
 - (void)setPreferredTransform:(struct CGAffineTransform)arg1;
 - (void)setPreferredVolume:(float)arg1;
+- (void)setWritesSinglePassUsingPredeterminedFileSize:(long long)arg1 mediaDataSize:(long long)arg2;
+- (long long)singlePassFileSize;
+- (long long)singlePassMediaDataSize;
 - (void)startSessionAtSourceTime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)startWriting;
 

@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)setLayerHighlightImage:(id)arg1;
+- (BOOL)showsTouchWhenHighlighted;
 - (double)updateContentsAndWidth;
 - (BOOL)usesAdvancedActions;
 

@@ -14,6 +14,7 @@
 + (void)fetchMigrationStateAndUserRecordWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)fetchMigrationStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)saveDidChooseToMigrate:(BOOL)arg1 didFinishMigration:(BOOL)arg2 didMigrateOnMac:(BOOL)arg3 toACAccount:(id)arg4 inStore:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
++ (void)updateAllLegacyAccountMigrationStates;
 + (void)updateLegacyAccountMigrationStateForModernAccount:(id)arg1;
 
 @end

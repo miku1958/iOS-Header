@@ -19,6 +19,7 @@
     NSMutableSet *_transientDevices;
     NSMutableDictionary *_txtRecord;
     NSMutableArray *_clientTransports;
+    BOOL _serverEnabled;
     HMDHTTPDevice *_currentDevice;
     HMDHTTPServerMessageTransport *_serverTransport;
     NSObject<OS_dispatch_queue> *_clientQueue;
@@ -35,6 +36,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property (getter=isServerEnabled) BOOL serverEnabled; // @synthesize serverEnabled=_serverEnabled;
 @property (readonly, nonatomic) HMDHTTPServerMessageTransport *serverTransport; // @synthesize serverTransport=_serverTransport;
 @property (readonly) Class superclass;
 
@@ -47,14 +49,18 @@
 - (void)_handleReceivedRequestMessage:(id)arg1 fromDevice:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_sendMessage:(id)arg1 destination:(id)arg2 timeout:(double)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (id)_serviceForDevice:(id)arg1;
+- (void)_startServerWithDevice:(id)arg1;
+- (void)_stopServer;
 - (void)addClientTransport:(id)arg1;
 - (BOOL)canSendMessage:(id)arg1;
 - (void)client:(id)arg1 didReceiveMessage:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)client:(id)arg1 didStopWithError:(id)arg2;
 - (id)clientTransportForDevice:(id)arg1;
+- (id)clientTransportForService:(id)arg1;
 - (void)configureWithDevice:(id)arg1;
 - (id)descriptionWithPointer:(BOOL)arg1;
 - (id)deviceForHTTPDevice:(id)arg1;
+- (void)handleServerEnabled:(BOOL)arg1;
 - (id)init;
 - (id)initWithAccountRegistry:(id)arg1;
 - (BOOL)isDeviceConnected:(id)arg1;
@@ -64,6 +70,7 @@
 - (void)netServiceBrowser:(id)arg1 didStopBrowsingWithError:(id)arg2;
 - (long long)qualityOfService;
 - (void)removeAllClientTransports;
+- (void)removeClientTransport:(id)arg1;
 - (void)removeTXTRecordValueForKey:(id)arg1;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)server:(id)arg1 didAddDevice:(id)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/GEOTransitSystem-Protocol.h>
 
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) GEOStyleAttributes *styleAttributes;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithSystem:(id)arg1;
 
 @end

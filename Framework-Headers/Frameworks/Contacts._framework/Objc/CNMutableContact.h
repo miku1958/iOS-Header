@@ -6,7 +6,7 @@
 
 #import <Contacts/CNContact.h>
 
-@class CNActivityAlert, NSArray, NSData, NSDateComponents, NSDictionary, NSSet, NSString;
+@class CNActivityAlert, CNContactKeyVector, NSArray, NSData, NSDate, NSDateComponents, NSDictionary, NSString;
 
 @interface CNMutableContact : CNContact
 {
@@ -14,7 +14,7 @@
 }
 
 @property (copy, nonatomic) NSDictionary *activityAlerts; // @dynamic activityAlerts;
-@property (copy, nonatomic) NSSet *availableKeys;
+@property (copy, nonatomic) CNContactKeyVector *availableKeyDescriptor;
 @property (copy, nonatomic) NSDateComponents *birthday; // @dynamic birthday;
 @property (copy, nonatomic) NSArray *calendarURIs; // @dynamic calendarURIs;
 @property (copy, nonatomic) CNActivityAlert *callAlert; // @dynamic callAlert;
@@ -22,6 +22,7 @@
 @property (copy) NSString *companyName; // @dynamic companyName;
 @property (copy, nonatomic) NSArray *contactRelations; // @dynamic contactRelations;
 @property (nonatomic) long long contactType; // @dynamic contactType;
+@property (copy, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property (nonatomic) struct CGRect cropRect;
 @property (copy, nonatomic) NSArray *dates; // @dynamic dates;
 @property (copy, nonatomic) NSString *departmentName; // @dynamic departmentName;
@@ -42,6 +43,7 @@
 @property (copy) NSString *maidenName; // @dynamic maidenName;
 @property (copy, nonatomic) NSString *mapsData;
 @property (copy, nonatomic) NSString *middleName; // @dynamic middleName;
+@property (copy, nonatomic) NSDate *modificationDate; // @dynamic modificationDate;
 @property (copy, nonatomic) NSString *namePrefix; // @dynamic namePrefix;
 @property (copy, nonatomic) NSString *nameSuffix; // @dynamic nameSuffix;
 @property (copy) NSString *nameTitle; // @dynamic nameTitle;
@@ -80,18 +82,19 @@
 
 + (id)imageDataDescriptions;
 + (id)unifyContacts:(id)arg1;
-- (void)adoptValuesFromAndSetSnaphot:(id)arg1;
 - (id)copyWithSelfAsSnapshot;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)freeze;
 - (id)freezeWithSelfAsSnapshot;
 - (id)initWithContact:(id)arg1;
-- (id)modificationDate;
+- (void)overwriteStateFromContact:(id)arg1;
 - (BOOL)preferredForImage;
 - (BOOL)preferredForName;
-- (void)setModificationDate:(id)arg1;
+- (void)resetToNewContact;
+- (void)setFrozenSelfAsSnapshot;
 - (void)setNilValueForKey:(id)arg1;
 - (void)updateImageDataAvailableFromCurrentState;
+- (void)updateStateFromContact:(id)arg1;
 
 @end
 

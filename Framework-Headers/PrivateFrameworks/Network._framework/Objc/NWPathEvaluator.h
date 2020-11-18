@@ -33,7 +33,10 @@
 - (void)dealloc;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initWithBrowseDescriptor:(id)arg1 parameters:(id)arg2;
 - (id)initWithEndpoint:(id)arg1 parameters:(id)arg2;
+- (id)initWithEvaluator:(id)arg1 parameters:(id)arg2;
+- (id)initWithListenParameters:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)matchesEndpoint:(id)arg1 parameters:(id)arg2;
 - (BOOL)requestNexus;

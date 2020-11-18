@@ -26,6 +26,7 @@
     NSUUID *_supersedingUUID;
     id<PKPlugIn> _supersededBy;
     NSUUID *_multipleInstanceUUID;
+    NSString *_serviceExtension;
     NSDictionary *_discoveryExtensions;
     NSArray *_sandboxExtensions;
     id _queuedHostPrincipal;
@@ -72,6 +73,7 @@
 @property (strong) Protocol *queuedHostProtocol; // @synthesize queuedHostProtocol=_queuedHostProtocol;
 @property (strong) NSArray *sandboxExtensions; // @synthesize sandboxExtensions=_sandboxExtensions;
 @property (strong) id<PKCorePlugInProtocol> service; // @synthesize service=_service;
+@property (strong) NSString *serviceExtension; // @synthesize serviceExtension=_serviceExtension;
 @property (strong) NSDictionary *sourceForm; // @synthesize sourceForm=_sourceForm;
 @property (readonly) BOOL spent;
 @property unsigned long long state; // @synthesize state=_state;

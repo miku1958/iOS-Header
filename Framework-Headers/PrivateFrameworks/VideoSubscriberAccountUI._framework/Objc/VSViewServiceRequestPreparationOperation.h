@@ -6,32 +6,42 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class NSArray, NSXPCConnection, VSIdentityProviderAvailabilityInfoCenter, VSOptional;
+@class NSArray, NSOperationQueue, NSXPCConnection, VSAuditToken, VSIdentityProviderAvailabilityInfoCenter, VSOptional, VSStoreURLBag;
 
 __attribute__((visibility("hidden")))
 @interface VSViewServiceRequestPreparationOperation : VSAsyncOperation
 {
     BOOL _requestAllowsPrivacyUI;
     BOOL _requestRequiresPrivacyUI;
+    BOOL _shouldInferFeaturedProviders;
     BOOL _accountModificationAllowed;
     int _hostProcessIdentifier;
+    VSAuditToken *_auditToken;
     NSArray *_supportedIdentityProviderIdentifiers;
+    NSArray *_featuredIdentityProviderIdentifiers;
     VSOptional *_currentAccount;
     VSOptional *_result;
+    NSOperationQueue *_privateQueue;
     NSXPCConnection *_privacyServiceConnection;
     VSIdentityProviderAvailabilityInfoCenter *_availabilityInfoCenter;
+    VSStoreURLBag *_bag;
     CDStruct_4c969caf _hostAuditToken;
 }
 
 @property (nonatomic, getter=isAccountModificationAllowed) BOOL accountModificationAllowed; // @synthesize accountModificationAllowed=_accountModificationAllowed;
+@property (copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (strong, nonatomic) VSIdentityProviderAvailabilityInfoCenter *availabilityInfoCenter; // @synthesize availabilityInfoCenter=_availabilityInfoCenter;
+@property (strong, nonatomic) VSStoreURLBag *bag; // @synthesize bag=_bag;
 @property (strong, nonatomic) VSOptional *currentAccount; // @synthesize currentAccount=_currentAccount;
+@property (copy, nonatomic) NSArray *featuredIdentityProviderIdentifiers; // @synthesize featuredIdentityProviderIdentifiers=_featuredIdentityProviderIdentifiers;
 @property (nonatomic) CDStruct_4c969caf hostAuditToken; // @synthesize hostAuditToken=_hostAuditToken;
 @property (nonatomic) int hostProcessIdentifier; // @synthesize hostProcessIdentifier=_hostProcessIdentifier;
 @property (strong, nonatomic) NSXPCConnection *privacyServiceConnection; // @synthesize privacyServiceConnection=_privacyServiceConnection;
+@property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property (nonatomic) BOOL requestAllowsPrivacyUI; // @synthesize requestAllowsPrivacyUI=_requestAllowsPrivacyUI;
 @property (nonatomic) BOOL requestRequiresPrivacyUI; // @synthesize requestRequiresPrivacyUI=_requestRequiresPrivacyUI;
 @property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;
+@property (nonatomic) BOOL shouldInferFeaturedProviders; // @synthesize shouldInferFeaturedProviders=_shouldInferFeaturedProviders;
 @property (copy, nonatomic) NSArray *supportedIdentityProviderIdentifiers; // @synthesize supportedIdentityProviderIdentifiers=_supportedIdentityProviderIdentifiers;
 
 - (void).cxx_destruct;
@@ -41,8 +51,9 @@ __attribute__((visibility("hidden")))
 - (void)_checkSupportedProviders;
 - (void)_determineProviderDisplayName;
 - (void)_finishWithError:(id)arg1;
+- (void)_finishWithSupportedProviders:(id)arg1;
 - (id)_privacyServiceWithErrorHandler:(CDUnknownBlockType)arg1;
-- (void)_promptForPrivacyWithDisplayName:(id)arg1;
+- (void)_promptForPrivacyWithDisplayName:(id)arg1 providerID:(id)arg2;
 - (void)cancel;
 - (void)dealloc;
 - (void)executionDidBegin;

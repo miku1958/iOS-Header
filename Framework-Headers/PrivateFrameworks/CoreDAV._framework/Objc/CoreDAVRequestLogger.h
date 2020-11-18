@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 @protocol CoreDAVAccountInfoProvider;
@@ -18,8 +18,8 @@
 
 @property (strong, nonatomic) NSArray *headerSortDescriptors; // @synthesize headerSortDescriptors=_headerSortDescriptors;
 
+- (void).cxx_destruct;
 - (id)_inflateRequestBody:(id)arg1;
-- (void)dealloc;
 - (void)finishCoreDAVResponse;
 - (id)initWithProvider:(id)arg1;
 - (void)logCoreDAVRequest:(id)arg1 withTaskIdentifier:(id)arg2;

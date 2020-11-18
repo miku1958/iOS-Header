@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <Metal/MTLType.h>
 
 @class NSArray;
 
-@interface MTLStructType : NSObject
+@interface MTLStructType : MTLType
 {
 }
 

@@ -34,6 +34,7 @@
 - (BOOL)MPSD_hasDownloadableItem;
 - (BOOL)MPSD_hasDownloadingItem;
 - (id)_artworkCatalogRepresentativeItem;
+- (void)_enumerateItemPersistentIDsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)albumArtistArtworkCatalog;
 - (id)artistArtworkCatalog;
 - (id)artworkCatalog;

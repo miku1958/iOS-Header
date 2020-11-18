@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface PLCPLPlistHandler : NSObject
 {
@@ -12,7 +12,7 @@
 
 + (id)_cplPlistPath;
 + (void)deleteCPLPlist;
-+ (id)readCPLPlist;
++ (id)readCPLPlistWithError:(id *)arg1;
 + (void)saveCPLPlistVersion:(id)arg1 forVersionKey:(id)arg2;
 + (void)saveStoreUUID:(id)arg1;
 

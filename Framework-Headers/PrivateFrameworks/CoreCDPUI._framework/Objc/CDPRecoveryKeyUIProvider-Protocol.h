@@ -13,5 +13,6 @@
 
 @optional
 - (void)cdpContext:(CDPContext *)arg1 presentRecoveryKeyWithValidator:(id<CDPRecoveryKeyValidator>)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)cdpContext:(CDPContext *)arg1 promptForRecoveryKeyWithValidator:(id<CDPRecoveryKeyValidator>)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 @end
 

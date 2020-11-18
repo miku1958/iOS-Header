@@ -14,7 +14,6 @@
 - (BOOL)sendDeviceInfoOnProvision;
 - (BOOL)sendFirstDayOfWeekInRecurrence;
 - (unsigned char)shortProtocolVersion;
-- (BOOL)supportsAttendeesInExceptions;
 - (BOOL)supportsGALPhotos;
 - (BOOL)useEventIdsInMeetingResponse;
 

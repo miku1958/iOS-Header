@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitCore/PKPaymentOverlayableRequest.h>
+#import <PassKitCore/PKPaymentWebServiceRequest.h>
 
 @class NSString, PKPaymentPass, PKVerificationChannel;
 
-@interface PKPaymentVerificationUpdateRequest : PKPaymentOverlayableRequest
+@interface PKPaymentVerificationUpdateRequest : PKPaymentWebServiceRequest
 {
     NSString *_stepIdentifier;
     PKPaymentPass *_pass;

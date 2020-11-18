@@ -6,15 +6,15 @@
 
 #import <AuthKit/NSObject-Protocol.h>
 
-@class NSDictionary, NSError, NSString;
+@class AKAccountRecoveryContext, NSError, NSString;
 
 @protocol AKAppleIDAuthenticationLimitedUIProvider <NSObject>
 - (void)dismissBasicLoginUIWithCompletion:(void (^)(BOOL, NSError *))arg1;
-- (void)dismissICSCRecoveryUIWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)dismissNativeRecoveryUIWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)dismissSecondFactorUIWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)presentBasicLoginUIWithCompletion:(void (^)(NSString *, NSString *, NSDictionary *, NSError *))arg1;
-- (void)presentICSCRecoveryUIWithInfo:(NSDictionary *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)presentLoginAlertWithError:(NSError *)arg1 title:(NSString *)arg2 message:(NSString *)arg3 completion:(void (^)(NSString *, NSString *, NSDictionary *, NSError *))arg4;
+- (void)presentNativeRecoveryUIWithContext:(AKAccountRecoveryContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)presentSecondFactorAlertWithError:(NSError *)arg1 title:(NSString *)arg2 message:(NSString *)arg3 completion:(void (^)(NSNumber *, NSError *))arg4;
 - (void)presentSecondFactorUIWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 @end

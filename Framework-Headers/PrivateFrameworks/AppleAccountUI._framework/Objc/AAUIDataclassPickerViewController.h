@@ -43,7 +43,6 @@
 - (void)_delegate_signOutViewControllerDidCancel;
 - (void)_delegate_signOutViewControllerDidCompleteWithDataclassActions:(id)arg1;
 - (void)_dismissAdditionalInformation:(id)arg1;
-- (BOOL)_hasPaymentPasses;
 - (id)_nextBarButtonItem;
 - (void)_nextButtonSelected:(id)arg1;
 - (id)_signOutFooterText;

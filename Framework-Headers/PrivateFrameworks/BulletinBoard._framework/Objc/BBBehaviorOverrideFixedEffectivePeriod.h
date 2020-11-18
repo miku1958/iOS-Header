@@ -32,6 +32,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStartDate:(id)arg1 effectiveInterval:(double)arg2 identifier:(id)arg3;
+- (BOOL)isEqual:(id)arg1;
 - (id)nextTransitionDateAfterDate:(id)arg1;
 
 @end

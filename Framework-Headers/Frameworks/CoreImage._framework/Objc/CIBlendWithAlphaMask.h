@@ -4,27 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreImage/CIFilter.h>
-
-@class CIImage;
+#import <CoreImage/CIBlendWithMask.h>
 
 __attribute__((visibility("hidden")))
-@interface CIBlendWithAlphaMask : CIFilter
+@interface CIBlendWithAlphaMask : CIBlendWithMask
 {
-    CIImage *inputImage;
-    CIImage *inputBackgroundImage;
-    CIImage *inputMaskImage;
 }
-
-@property (strong, nonatomic) CIImage *inputBackgroundImage; // @synthesize inputBackgroundImage;
-@property (strong, nonatomic) CIImage *inputImage; // @synthesize inputImage;
-@property (strong, nonatomic) CIImage *inputMaskImage; // @synthesize inputMaskImage;
 
 + (id)customAttributes;
 - (id)_kernel;
-- (id)_kernelNoB;
-- (id)_kernelNoF;
-- (id)outputImage;
+- (float)_maskFillColorValue;
 
 @end
 

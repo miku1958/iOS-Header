@@ -11,11 +11,11 @@
 @interface _AAUIDataclassOptionCache : NSObject
 {
     struct NSDictionary *_dataclassOptions;
-    NSArray *_sortedDataclasses;
+    NSArray *_filteredDataclasses;
 }
 
 @property (copy, nonatomic) NSDictionary *dataclassOptions; // @synthesize dataclassOptions=_dataclassOptions;
-@property (copy, nonatomic) NSArray *sortedDataclasses; // @synthesize sortedDataclasses=_sortedDataclasses;
+@property (copy, nonatomic) NSArray *filteredDataclasses; // @synthesize filteredDataclasses=_filteredDataclasses;
 
 - (void).cxx_destruct;
 - (id)initWithDataclassOptions:(struct NSDictionary *)arg1;

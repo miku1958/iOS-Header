@@ -10,7 +10,7 @@
 
 @interface _PASNotificationDescriptor : NSObject
 {
-    _Atomic int isCanceled;
+    _Atomic BOOL isCanceled;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_group> *_group;
     CDUnknownBlockType _handler;

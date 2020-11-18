@@ -33,6 +33,9 @@
 @property (nonatomic) BOOL showSubTitle; // @synthesize showSubTitle=_showSubTitle;
 @property (readonly, nonatomic) UILabel *subTextLabel; // @synthesize subTextLabel=_subTextLabel;
 
++ (double)heightForCellWithMinimum:(double)arg1 hasSubTitle:(BOOL)arg2;
++ (id)subTitleFont;
++ (id)titleFont;
 - (void).cxx_destruct;
 - (void)_addButtonPressed:(id)arg1;
 - (id)_stringForPassState:(unsigned long long)arg1;

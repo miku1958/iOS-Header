@@ -15,6 +15,8 @@
 - (void)_xref_dispose;
 - (id)debugDescription;
 - (id)init;
+- (oneway void)release;
+- (id)retain;
 
 @end
 

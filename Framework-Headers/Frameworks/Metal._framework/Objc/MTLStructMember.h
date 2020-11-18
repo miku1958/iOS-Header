@@ -12,6 +12,7 @@
 {
 }
 
+@property (readonly) unsigned long long argumentIndex; // @dynamic argumentIndex;
 @property (readonly) unsigned long long dataType; // @dynamic dataType;
 @property (readonly) NSString *name; // @dynamic name;
 @property (readonly) unsigned long long offset; // @dynamic offset;
@@ -19,7 +20,10 @@
 + (id)alloc;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 - (id)arrayType;
+- (id)indirectArgumentType;
+- (id)pointerType;
 - (id)structType;
+- (id)textureReferenceType;
 
 @end
 

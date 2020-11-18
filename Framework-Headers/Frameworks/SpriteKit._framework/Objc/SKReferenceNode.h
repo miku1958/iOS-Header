@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSString *referenceFileName;
 @property (strong, nonatomic) NSURL *referenceURL;
 
++ (id)nodeWithFileNamed:(id)arg1;
 + (id)referenceNodeWithFileNamed:(id)arg1;
 + (id)referenceNodeWithURL:(id)arg1;
 - (void).cxx_destruct;
@@ -30,6 +31,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFileNamed:(id)arg1;
 - (id)initWithURL:(id)arg1;
+- (void)resolveNodeFromArchiveData:(id)arg1;
 - (void)resolveReferenceNode;
 - (id)resolvedNode;
 

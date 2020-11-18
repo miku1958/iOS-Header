@@ -6,13 +6,17 @@
 
 #import <PhotosUIFramework/__PUVideoTileViewControllerAccessibility_super.h>
 
-@interface PUVideoTileViewControllerAccessibility : __PUVideoTileViewControllerAccessibility_super
+#import <PhotosUIFramework/AXFullScreenTileControllerDelegate-Protocol.h>
+
+@interface PUVideoTileViewControllerAccessibility : __PUVideoTileViewControllerAccessibility_super <AXFullScreenTileControllerDelegate>
 {
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_axApplyCustomAction:(id)arg1;
+- (id)_axMainImageView;
 - (void)_updateImage;
 - (void)setAssetViewModel:(id)arg1;
 

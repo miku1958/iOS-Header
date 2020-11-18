@@ -8,8 +8,8 @@
 
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSIndexPath, NSString, PXUIAutoScroller, UILongPressGestureRecognizer, UIView, _UIFeedbackDragSnappingBehavior;
-@protocol PUCollectionViewReorderDelegate;
+@class NSIndexPath, NSString, PXUIAutoScroller, UILongPressGestureRecognizer, UIView, _UIDragSnappingFeedbackGenerator;
+@protocol PUCollectionViewReorderDelegate, PUCollectionViewSelectionDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PUCollectionView : UICollectionView <UIGestureRecognizerDelegate>
@@ -21,14 +21,16 @@ __attribute__((visibility("hidden")))
     struct CGPoint _draggedViewCenterOffset;
     PXUIAutoScroller *_autoScroller;
     id<PUCollectionViewReorderDelegate> _reorderDelegate;
-    _UIFeedbackDragSnappingBehavior *__feedbackDragBehavior;
+    id<PUCollectionViewSelectionDelegate> _selectionDelegate;
+    _UIDragSnappingFeedbackGenerator *__feedbackDragBehavior;
 }
 
-@property (readonly, nonatomic) _UIFeedbackDragSnappingBehavior *_feedbackDragBehavior; // @synthesize _feedbackDragBehavior=__feedbackDragBehavior;
+@property (readonly, nonatomic) _UIDragSnappingFeedbackGenerator *_feedbackDragBehavior; // @synthesize _feedbackDragBehavior=__feedbackDragBehavior;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<PUCollectionViewReorderDelegate> reorderDelegate; // @synthesize reorderDelegate=_reorderDelegate;
+@property (weak, nonatomic) id<PUCollectionViewSelectionDelegate> selectionDelegate; // @synthesize selectionDelegate=_selectionDelegate;
 @property (readonly) Class superclass;
 
 + (id)_reuseKeyForSupplementaryViewOfKind:(id)arg1 withReuseIdentifier:(id)arg2;
@@ -36,9 +38,11 @@ __attribute__((visibility("hidden")))
 - (void)_handleDrag:(id)arg1;
 - (id)_reorderableLayout;
 - (void)_updateDragUsingIndexPathUpdateBlock:(CDUnknownBlockType)arg1;
+- (void)adjustedContentInsetDidChange;
 - (void)dealloc;
 - (void)deleteItemsAtIndexPaths:(id)arg1;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (id)indexPathsForSelectedItems;
 - (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2;
 - (void)insertItemsAtIndexPaths:(id)arg1;
 - (void)moveItemAtIndexPath:(id)arg1 toIndexPath:(id)arg2;

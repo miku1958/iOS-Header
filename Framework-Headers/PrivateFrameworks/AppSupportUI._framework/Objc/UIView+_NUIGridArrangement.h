@@ -6,11 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <AppSupportUI/_NUIGridArrangementItem-Protocol.h>
+#import <AppSupportUI/NUIArrangementItem-Protocol.h>
 
 @class NSString;
 
-@interface UIView (_NUIGridArrangement) <_NUIGridArrangementItem>
+@interface UIView (_NUIGridArrangement) <NUIArrangementItem>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

@@ -31,9 +31,11 @@
 - (id)colorForTouchContentSelected;
 - (id)colorForTouchFocusLayer;
 - (id)colorForTouchFocusLayerSelected;
-- (void)focusedViewDidChange;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)layoutSubviews;
 - (void)setHidden:(BOOL)arg1;
+- (BOOL)shouldUpdateButtonOpacityForKnobUnfocused;
+- (id)tintColorForUnhighlightedTextLabel;
 - (void)updateButtonOpacityForKnobUnfocused;
 - (void)willMoveToWindow:(id)arg1;
 

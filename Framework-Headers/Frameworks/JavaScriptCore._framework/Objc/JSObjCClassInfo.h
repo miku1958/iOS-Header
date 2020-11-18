@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@class JSContext;
-
 __attribute__((visibility("hidden")))
 @interface JSObjCClassInfo : NSObject
 {
-    JSContext *m_context;
     Class m_class;
     BOOL m_block;
     struct OpaqueJSClass *m_classRef;
@@ -21,12 +18,12 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (pair_bfa3637f)allocateConstructorAndPrototype;
-- (struct JSObject *)constructor;
+- (pair_bfa3637f)allocateConstructorAndPrototypeInContext:(id)arg1;
+- (struct JSObject *)constructorInContext:(id)arg1;
 - (void)dealloc;
-- (id)initWithContext:(id)arg1 forClass:(Class)arg2;
-- (struct JSObject *)prototype;
-- (struct JSObject *)wrapperForObject:(id)arg1;
+- (id)initForClass:(Class)arg1;
+- (struct JSObject *)prototypeInContext:(id)arg1;
+- (struct JSObject *)wrapperForObject:(id)arg1 inContext:(id)arg2;
 
 @end
 

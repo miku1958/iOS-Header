@@ -14,8 +14,8 @@
     CHDrawing *_drawing;
 }
 
-@property (nonatomic) CHDrawing *drawing; // @synthesize drawing=_drawing;
-@property (nonatomic) CHDrawing *strokes; // @synthesize strokes=_strokes;
+@property (strong, nonatomic) CHDrawing *drawing; // @synthesize drawing=_drawing;
+@property (strong, nonatomic) CHDrawing *strokes; // @synthesize strokes=_strokes;
 
 - (void)addPoint: /* Error: Ran out of types for this method. */;
 - (void)clear;

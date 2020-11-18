@@ -13,6 +13,7 @@
 
 + (void)dummySelector:(id)arg1;
 + (void)initialize;
++ (BOOL)isAvailable;
 - (void)dealloc;
 - (void)deallocPrivate;
 - (id)deviceOrientationBlocking;

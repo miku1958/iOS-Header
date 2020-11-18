@@ -6,32 +6,28 @@
 
 #import <TextInput/TIKeyboardCandidateSingle.h>
 
-@class NSString, TIProactiveTrigger;
+@class NSString, TIProactiveTrigger, _ICPredictedItem;
 
 @interface TIZephyrCandidate : TIKeyboardCandidateSingle
 {
     BOOL _isFromPhraseDictionary;
     BOOL _isFromTextChecker;
     BOOL _isSecureContentCandidate;
-    BOOL _isSendCurrentLocation;
-    BOOL _fromBundleIdWhitelistedForMetrics;
-    BOOL _targetBundleIdWhitelistedForMetrics;
     unsigned int _usageTrackingMask;
     unsigned long long _wordOriginFeedbackID;
     TIProactiveTrigger *_proactiveTrigger;
     NSString *_fromBundleId;
     unsigned long long _ageForConnectionsMetrics;
+    _ICPredictedItem *_proactivePredictedItem;
     NSString *_label;
 }
 
 @property (nonatomic) unsigned long long ageForConnectionsMetrics; // @synthesize ageForConnectionsMetrics=_ageForConnectionsMetrics;
 @property (copy, nonatomic) NSString *fromBundleId; // @synthesize fromBundleId=_fromBundleId;
-@property (nonatomic) BOOL fromBundleIdWhitelistedForMetrics; // @synthesize fromBundleIdWhitelistedForMetrics=_fromBundleIdWhitelistedForMetrics;
 @property (nonatomic) BOOL isFromPhraseDictionary; // @synthesize isFromPhraseDictionary=_isFromPhraseDictionary;
 @property (nonatomic) BOOL isFromTextChecker; // @synthesize isFromTextChecker=_isFromTextChecker;
-@property (nonatomic) BOOL isSendCurrentLocation; // @synthesize isSendCurrentLocation=_isSendCurrentLocation;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
-@property (nonatomic) BOOL targetBundleIdWhitelistedForMetrics; // @synthesize targetBundleIdWhitelistedForMetrics=_targetBundleIdWhitelistedForMetrics;
+@property (copy, nonatomic) _ICPredictedItem *proactivePredictedItem; // @synthesize proactivePredictedItem=_proactivePredictedItem;
 
 + (BOOL)supportsSecureCoding;
 + (int)type;
@@ -41,7 +37,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3;
 - (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4;
-- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4 secureContentCandidate:(BOOL)arg5 proactiveTrigger:(id)arg6;
+- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4 secureContentCandidate:(BOOL)arg5 proactiveTrigger:(id)arg6 proactivePredictedItem:(id)arg7;
 - (id)initWithCandidateResultSetCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isAutocorrection;

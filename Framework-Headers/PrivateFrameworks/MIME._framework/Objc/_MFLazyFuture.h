@@ -7,18 +7,20 @@
 #import <MIME/MFFuture.h>
 
 @class MFPromise, NSConditionLock;
+@protocol MFScheduler;
 
 @interface _MFLazyFuture : MFFuture
 {
     NSConditionLock *_stateLock;
+    id<MFScheduler> _scheduler;
     CDUnknownBlockType _block;
     MFPromise *_promise;
 }
 
+- (void).cxx_destruct;
 - (void)addFailureBlock:(CDUnknownBlockType)arg1;
 - (void)addSuccessBlock:(CDUnknownBlockType)arg1;
-- (void)dealloc;
-- (id)initWithBlock:(CDUnknownBlockType)arg1;
+- (id)initWithScheduler:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (BOOL)isCancelled;
 - (BOOL)isFinished;
 - (void)onScheduler:(id)arg1 addFailureBlock:(CDUnknownBlockType)arg2;

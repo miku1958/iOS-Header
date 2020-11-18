@@ -11,7 +11,7 @@
 #import <UIKit/UITextInputAdditions-Protocol.h>
 #import <UIKit/UITextInput_Internal-Protocol.h>
 
-@class NSArray, NSDictionary, NSHashTable, NSLayoutManager, NSSet, NSString, UIResponder, UITextChecker, UITextInputTraits, UITextPosition, UITextRange, UIView, _UIDictationAttachment, _UITextInputControllerTokenizer, _UITextKitTextRange, _UITextServiceSession, _UITextUndoManager, _UITextUndoOperationTyping;
+@class NSArray, NSDictionary, NSHashTable, NSLayoutManager, NSSet, NSString, UIResponder, UITextChecker, UITextInputTraits, UITextPasteController, UITextPosition, UITextRange, UIView, _UIDictationAttachment, _UITextInputControllerTokenizer, _UITextKitTextRange, _UITextServiceSession, _UITextUndoManager, _UITextUndoOperationTyping;
 @protocol UITextInput, UITextInputControllerDelegate, UITextInputDelegate, UITextInputPrivate, UITextInputTokenizer;
 
 @interface UITextInputController : NSObject <UITextInput_Internal, UITextInput, UITextInputAdditions, UIResponderStandardEditActions>
@@ -19,6 +19,7 @@
     id<UITextInputDelegate> _inputDelegate;
     _UITextKitTextRange *_selectedTextRange;
     _UITextInputControllerTokenizer *_tokenizer;
+    UITextPasteController *_pasteController;
     NSLayoutManager *_layoutManager;
     NSHashTable *_observedScrollViews;
     _UITextServiceSession *_definitionSession;
@@ -28,6 +29,7 @@
     UITextInputTraits *_textInputTraits;
     struct _NSRange _markedTextRange;
     struct _NSRange _markedTextSelection;
+    NSDictionary *_markedTextStyle;
     struct {
         unsigned int delegateRespondsToTextInputShouldBeginEditing:1;
         unsigned int delegateRespondsToTextInputShouldChangeCharactersInRangeReplacementText:1;
@@ -91,6 +93,9 @@
 @property (nonatomic) struct _NSRange selectedRange;
 @property (copy) UITextRange *selectedTextRange;
 @property (nonatomic) long long selectionAffinity;
+@property (nonatomic) long long smartDashesType;
+@property (nonatomic) long long smartInsertDeleteType;
+@property (nonatomic) long long smartQuotesType;
 @property (nonatomic) long long spellCheckingType;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *textContentType;
@@ -102,6 +107,7 @@
 - (void).cxx_destruct;
 - (void)_addShortcut:(id)arg1;
 - (void)_addToTypingAttributes:(id)arg1 value:(id)arg2;
+- (id)_attributedStringForInsertionOfAttributedString:(id)arg1;
 - (id)_attributesForReplacementInRange:(struct _NSRange)arg1;
 - (BOOL)_canHandleResponderAction:(SEL)arg1;
 - (void)_cancelDictationIfNecessaryForChangeInRange:(struct _NSRange)arg1;
@@ -114,7 +120,6 @@
 - (id)_characterPositionForPoint:(struct CGPoint)arg1;
 - (id)_clampedpositionFromPosition:(id)arg1 offset:(int)arg2;
 - (void)_clearSelectionUI;
-- (void)_commonInitWithLayoutManager:(id)arg1;
 - (void)_coordinateSelectionChange:(CDUnknownBlockType)arg1;
 - (void)_copySelectionToClipboard;
 - (void)_define:(id)arg1;
@@ -143,10 +148,12 @@
 - (BOOL)_hasMarkedText;
 - (BOOL)_hasMarkedTextOrRangedSelection;
 - (int)_indexForTextPosition:(id)arg1;
+- (id)_initWithLayoutManager:(id)arg1;
 - (void)_insertAttributedText:(id)arg1 fromKeyboard:(BOOL)arg2;
 - (void)_insertAttributedTextWithoutClosingTyping:(id)arg1;
 - (void)_insertDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2 replacingRange:(struct _NSRange)arg3 resultLength:(unsigned long long *)arg4;
 - (void)_insertText:(id)arg1 fromKeyboard:(BOOL)arg2;
+- (id)_intersectionOfRange:(id)arg1 andRange:(id)arg2;
 - (void)_invalidateEmptyStringAttributes;
 - (void)_invalidateTypingAttributes;
 - (BOOL)_isDisplayingLookupViewController;
@@ -176,6 +183,8 @@
 - (struct _NSRange)_nsrangeForTextRange:(id)arg1;
 - (long long)_opposingDirectionFromDirection:(long long)arg1;
 - (id)_parentScrollView;
+- (void)_pasteAttributedString:(id)arg1 pasteAsRichText:(BOOL)arg2;
+- (void)_pasteRawAttributedString:(id)arg1 asRichText:(BOOL)arg2;
 - (void)_performWhileSuppressingDelegateNotifications:(CDUnknownBlockType)arg1;
 - (void)_phraseBoundaryGesture:(id)arg1;
 - (id)_positionAtStartOfWords:(unsigned long long)arg1 beforePosition:(id)arg2;
@@ -183,6 +192,8 @@
 - (id)_positionFromPosition:(id)arg1 pastTextUnit:(long long)arg2 inDirection:(long long)arg3;
 - (id)_positionWithinRange:(id)arg1 farthestInDirection:(long long)arg2;
 - (void)_promptForReplace:(id)arg1;
+- (BOOL)_range:(id)arg1 containsRange:(id)arg2;
+- (BOOL)_range:(id)arg1 intersectsRange:(id)arg2;
 - (struct _NSRange)_rangeForBackwardsDelete;
 - (id)_rangeOfEnclosingWord:(id)arg1;
 - (id)_rangeOfLineEnclosingPosition:(id)arg1;
@@ -197,6 +208,7 @@
 - (void)_removeShareController;
 - (void)_removeShortcutController;
 - (void)_replaceCurrentWordWithText:(id)arg1;
+- (void)_replaceDocumentWithText:(id)arg1;
 - (void)_resetShowingTextStyle:(id)arg1;
 - (void)_scrollRectToVisible:(struct CGRect)arg1 animated:(BOOL)arg2;
 - (void)_selectAll;
@@ -236,6 +248,8 @@
 - (void)_teardownTextContainerView:(id)arg1;
 - (id)_textColorForCaretSelection;
 - (void)_textContainerDidChangeView:(id)arg1;
+- (id)_textInputTraits;
+- (id)_textRangeFromNSRange:(struct _NSRange)arg1;
 - (id)_textStorage;
 - (void)_textStorageDidProcessEditing:(id)arg1;
 - (void)_toggleFontTrait:(int)arg1;
@@ -243,7 +257,10 @@
 - (void)_undoManagerWillUndo:(id)arg1;
 - (BOOL)_undoRedoInProgress;
 - (void)_unmarkText;
+- (void)_updateEmptyStringAttributes;
 - (void)_updateFirstTextView;
+- (void)_updatePasteController;
+- (void)_updateRangeForSmartDelete;
 - (void)_updateSelectionWithTextRange:(id)arg1 withAffinityDownstream:(BOOL)arg2;
 - (BOOL)_usesAsynchronousProtocol;
 - (unsigned long long)_validCaretPositionFromCharacterIndex:(unsigned long long)arg1 downstream:(BOOL)arg2;
@@ -256,6 +273,7 @@
 - (void)changeWillBeUndone:(id)arg1;
 - (id)characterRangeAtPoint:(struct CGPoint)arg1;
 - (id)characterRangeByExtendingPosition:(id)arg1 inDirection:(long long)arg2;
+- (void)checkSmartPunctuationForWordInRange:(id)arg1;
 - (void)checkSpellingForSelectionChangeIfNecessary;
 - (void)checkSpellingForWordInRange:(id)arg1;
 - (void)clearText;
@@ -265,6 +283,7 @@
 - (long long)comparePosition:(id)arg1 toPosition:(id)arg2;
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
+- (void)dealloc;
 - (void)decreaseSize:(id)arg1;
 - (void)delegateWillChangeAttributedText:(id)arg1;
 - (void)deleteBackward;
@@ -275,7 +294,6 @@
 - (void)forwardInvocation:(id)arg1;
 - (struct CGRect)frameForDictationResultPlaceholder:(id)arg1;
 - (void)increaseSize:(id)arg1;
-- (id)initWithLayoutManager:(id)arg1;
 - (void)insertDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
 - (void)insertText:(id)arg1;
 - (id)interactionAssistant;
@@ -288,6 +306,7 @@
 - (struct _NSRange)nsRangeForTextRange:(id)arg1;
 - (long long)offsetFromPosition:(id)arg1 toPosition:(id)arg2;
 - (void)paste:(id)arg1;
+- (void)pasteItemProviders:(id)arg1;
 - (id)positionFromPosition:(id)arg1 inDirection:(long long)arg2 offset:(long long)arg3;
 - (id)positionFromPosition:(id)arg1 offset:(long long)arg2;
 - (id)positionWithinRange:(id)arg1 farthestInDirection:(long long)arg2;

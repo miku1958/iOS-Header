@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOComposedRoute, NSArray, NSDate, NSDictionary, NSMutableArray;
 
@@ -33,16 +33,17 @@
 @property (strong, nonatomic) NSMutableArray *mutableLocations; // @synthesize mutableLocations=_mutableLocations;
 @property (nonatomic) CDStruct_c3b9c2ee origin; // @synthesize origin=_origin;
 @property (readonly, nonatomic) NSDictionary *pointTimestamps; // @synthesize pointTimestamps=_pointTimestamps;
-@property (readonly, strong, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
+@property (readonly, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 @property (strong, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
 @property (nonatomic) double verticalAccuracy; // @synthesize verticalAccuracy=_verticalAccuracy;
 @property (nonatomic) CDStruct_c3b9c2ee walkingEnd; // @synthesize walkingEnd=_walkingEnd;
 @property (nonatomic) CDStruct_c3b9c2ee walkingStart; // @synthesize walkingStart=_walkingStart;
 
+- (void).cxx_destruct;
 - (void)addLocation:(CDStruct_c3b9c2ee)arg1 withCourse:(double)arg2 altitude:(double)arg3 speed:(double)arg4 transport:(int)arg5;
-- (void)dealloc;
 - (double)estimateDuration;
 - (void)generateLocations;
+- (void)generateLocationsWithSpeedOverride:(double)arg1;
 - (id)initWithRoute:(id)arg1;
 - (void)simulateWalkingFrom:(CDStruct_c3b9c2ee)arg1 to:(CDStruct_c3b9c2ee)arg2;
 

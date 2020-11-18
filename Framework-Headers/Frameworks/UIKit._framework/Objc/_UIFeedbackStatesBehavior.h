@@ -4,33 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIFeedbackGenerator.h>
+#import <UIKit/_UIStatesFeedbackGenerator.h>
 
-@class NSString, _UIFeedback, _UIFeedbackStatesBehaviorConfiguration;
-@protocol _UIFeedbackContinuousPlayable;
-
-@interface _UIFeedbackStatesBehavior : UIFeedbackGenerator
+@interface _UIFeedbackStatesBehavior : _UIStatesFeedbackGenerator
 {
-    BOOL _approachActivated;
-    NSString *_currentState;
-    _UIFeedback<_UIFeedbackContinuousPlayable> *_playingContinuousFeedback;
 }
 
-@property (nonatomic, getter=_approachActivated, setter=_setApproachActivated:) BOOL approachActivated; // @synthesize approachActivated=_approachActivated;
-@property (strong, nonatomic) NSString *currentState; // @synthesize currentState=_currentState;
-@property (strong, nonatomic) _UIFeedback<_UIFeedbackContinuousPlayable> *playingContinuousFeedback; // @synthesize playingContinuousFeedback=_playingContinuousFeedback;
-@property (readonly, nonatomic, getter=_statesConfiguration) _UIFeedbackStatesBehaviorConfiguration *statesConfiguration;
-
-+ (Class)_configurationClass;
-+ (id)behaviorWithConfiguration:(id)arg1 coordinateSpace:(id)arg2;
 + (id)statesBehaviorWithCoordinateSpace:(id)arg1 configuration:(id)arg2;
 + (id)statesBehaviorWithStyle:(long long)arg1 coordinateSpace:(id)arg2;
-- (void).cxx_destruct;
-- (id)_configurationFromState:(id)arg1 toState:(id)arg2;
-- (id)_stats_key;
-- (void)_stopPlayingContinuousFeedback;
-- (void)transitionToState:(id)arg1 ended:(BOOL)arg2;
-- (void)transitionToState:(id)arg1 updated:(double)arg2;
 
 @end
 

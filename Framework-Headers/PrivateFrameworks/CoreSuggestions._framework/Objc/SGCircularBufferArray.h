@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (void)addObject:(id)arg1;
 - (id)allObjects;
+- (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)initWithCapacity:(unsigned long long)arg1;
 

@@ -10,6 +10,7 @@
 - (id)brc_documentName;
 - (id)brc_sharedDocumentDisplayName;
 - (id)brc_sharedDocumentExtension;
-- (void)brc_updateWithLogicalName:(id)arg1;
+- (void)brc_updateWithLogicalName:(id)arg1 isFolder:(BOOL)arg2;
+- (BOOL)isFolderShare;
 @end
 

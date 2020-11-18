@@ -25,6 +25,9 @@ __attribute__((visibility("hidden")))
 - (int)interactionType;
 - (id)localizedName;
 - (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;
+- (id)notificationIconBundleIdentifier;
+- (id)notificationTitle;
+- (id)notificationURL;
 - (void)performFromView:(id)arg1;
 - (id)viewController;
 

@@ -6,44 +6,63 @@
 
 #import <objc/NSObject.h>
 
-@class ASAsset, NSDictionary, NSString, _PASNotificationTracker;
+#import <ProactiveSupport/_PASAssetProtocol-Protocol.h>
+
+@class ASAsset, NSDictionary, NSMutableDictionary, NSString, _PASNotificationTracker;
 @protocol OS_dispatch_queue;
 
-@interface _PASAsset : NSObject
+@interface _PASAsset : NSObject <_PASAssetProtocol>
 {
     NSString *_bundleIdentifier;
-    NSString *_defaultBundlePath;
-    unsigned long long _compatibilityVersion;
     NSDictionary *_requiredMobileAssetProperties;
     NSObject<OS_dispatch_queue> *_notificationQueue;
-    unsigned long long _defaultBundleVersion;
     int _installNotificationToken;
     int _metadataNotificationToken;
     _PASNotificationTracker *_updateNotificationTracker;
     struct _opaque_pthread_mutex_t _lock;
+    NSString *_defaultBundlePath;
+    unsigned long long _defaultBundleVersion;
     unsigned long long _bestAvailableVersion;
+    unsigned long long _bestAssetVersionObserved;
     ASAsset *_bestAvailableAsset;
-    double _delay;
+    NSMutableDictionary *_overrides;
+    unsigned long long _compatibilityVersion;
 }
 
 @property (readonly, nonatomic) NSString *assetType;
 @property (readonly, nonatomic) unsigned long long assetVersion;
+@property (readonly, nonatomic) unsigned long long bestAssetVersionObserved;
 @property (readonly, nonatomic) unsigned long long compatibilityVersion; // @synthesize compatibilityVersion=_compatibilityVersion;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_assetDescription;
-- (void)_downloadInitialAssetMetadata;
-- (id)_initWithBundleIdentifier:(id)arg1 defaultBundlePath:(id)arg2 compatibilityVersion:(unsigned long long)arg3 matchingKeysAndValues:(id)arg4 notificationQueue:(id)arg5;
-- (void)_issueUpdateNotifications;
+- (id)_initWithBundleIdentifier:(id)arg1 defaultBundlePath:(id)arg2 compatibilityVersion:(unsigned long long)arg3 matchingKeysAndValues:(id)arg4 notificationQueue:(id)arg5 enableAssetUpdates:(BOOL)arg6;
+- (void)_issueUpdateNotificationsWithCallback:(CDUnknownBlockType)arg1;
 - (void)_loadDefaultBundleVersion;
 - (void)_updateAssetMetadata;
+- (void)addOverridePath:(id)arg1 forResource:(id)arg2 ofType:(id)arg3;
+- (id)bundlePath;
+- (void)callAssetUpdateHandlers;
+- (void)clearOverrides;
 - (void)dealloc;
 - (BOOL)deregisterUpdateHandlerAsyncWithToken:(id)arg1;
 - (BOOL)deregisterUpdateHandlerWithToken:(id)arg1;
+- (id)init;
 - (id)initWithAssetTypeDescriptorPath:(id)arg1 defaultBundlePath:(id)arg2 matchingKeysAndValues:(id)arg3 notificationQueue:(id)arg4;
+- (id)initWithAssetTypeDescriptorPath:(id)arg1 defaultBundlePath:(id)arg2 matchingKeysAndValues:(id)arg3 notificationQueue:(id)arg4 enableAssetUpdates:(BOOL)arg5;
+- (void)invokeWithBundleOverride:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)pathForResourceWithName:(id)arg1 extension:(id)arg2;
 - (id)pathForResourceWithName:(id)arg1 extension:(id)arg2 assetVersion:(unsigned long long *)arg3;
+- (id)pathForResourceWithNameAndExtension:(struct _PASTuple2 *)arg1;
+- (id)pathForResourceWithNameAndExtension:(struct _PASTuple2 *)arg1 assetVersion:(unsigned long long *)arg2;
+- (id)pathsForResourcesWithNames:(id)arg1;
 - (id)pathsForResourcesWithNames:(id)arg1 assetVersion:(unsigned long long *)arg2;
 - (id)registerUpdateHandler:(CDUnknownBlockType)arg1;
+- (void)setBundlePath:(id)arg1;
 
 @end
 

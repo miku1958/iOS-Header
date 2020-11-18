@@ -76,6 +76,7 @@
 - (void)_handleConnectionIdleTimeout;
 - (void)_handleSecuritySession:(id)arg1 setupExchangeData:(id)arg2;
 - (void)_kickConnectionIdleTimer;
+- (void)_markNotifyingCharacteristicUpdatedForCharacteristic:(id)arg1;
 - (unsigned long long)_outstandingRequests;
 - (BOOL)_parsePairingService:(id)arg1;
 - (BOOL)_parseServices;
@@ -105,7 +106,7 @@
 - (void)_verifyServiceSignature:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_writeValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)accessoryServer:(id)arg1 didUpdateValueForCharacteristic:(id)arg2;
-- (void)addPairingWithIdentifier:(id)arg1 publicKey:(id)arg2 admin:(BOOL)arg3 completionQueue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)addPairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)controlOutputStream:(id)arg1 didCloseWithError:(id)arg2;
 - (void)controlOutputStream:(id)arg1 didReceiveRequestToSendControlPacket:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)controlOutputStreamDidComplete:(id)arg1;
@@ -115,10 +116,12 @@
 - (id)initWithServer:(id)arg1 instanceID:(id)arg2 parsedServices:(id)arg3 keyStore:(id)arg4;
 - (void)invalidate;
 - (BOOL)isPaired;
+- (void)listPairingsWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)mergeObject:(id)arg1;
 - (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)readValueForCharacteristic:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)removePairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)removePairingForCurrentControllerWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)removePairingWithIdentifier:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)securitySession:(id)arg1 didCloseWithError:(id)arg2;
 - (id)securitySession:(id)arg1 didReceiveLocalPairingIdentityRequestWithError:(id *)arg2;
 - (id)securitySession:(id)arg1 didReceiveRequestForPeerPairingIdentityWithIdentifier:(id)arg2 error:(id *)arg3;

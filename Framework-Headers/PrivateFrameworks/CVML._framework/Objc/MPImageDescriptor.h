@@ -63,6 +63,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithImageData:(id)arg1 andQualityCriteria:(id)arg2 context:(id)arg3 error:(id *)arg4;
 - (id)initWithImageData:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (id)initWithRawColorGaborDescriptor:(id)arg1;
+- (unsigned long long)serializeStateIntoData:(id)arg1 startingAtByteOffset:(unsigned long long)arg2 error:(id *)arg3;
+- (unsigned long long)serializedLength;
 
 @end
 

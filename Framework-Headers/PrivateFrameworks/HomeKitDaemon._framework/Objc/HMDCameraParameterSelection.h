@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class HMDCameraAudioParameterSelection, HMDCameraSessionID, HMDCameraVideoParameterSelection, NSString;
 
-@interface HMDCameraParameterSelection : NSObject <HMFLogging>
+@interface HMDCameraParameterSelection : HMFObject <HMFLogging>
 {
     HMDCameraSessionID *_sessionID;
     HMDCameraVideoParameterSelection *_videoParameterSelection;

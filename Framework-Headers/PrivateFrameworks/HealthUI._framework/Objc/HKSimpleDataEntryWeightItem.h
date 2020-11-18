@@ -4,16 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HealthUI/HKSimpleDataEntryItem.h>
 
-#import <HealthUI/HKSimpleDataEntryItemType-Protocol.h>
 #import <HealthUI/UIPickerViewDataSource-Protocol.h>
 #import <HealthUI/UIPickerViewDelegate-Protocol.h>
 
 @class HKSimpleDataEntryPlainTextCell, NSNumber, NSString, UIPickerView;
-@protocol HKSimpleDataEntryItemDelegate;
 
-@interface HKSimpleDataEntryWeightItem : NSObject <UIPickerViewDelegate, UIPickerViewDataSource, HKSimpleDataEntryItemType>
+@interface HKSimpleDataEntryWeightItem : HKSimpleDataEntryItem <UIPickerViewDelegate, UIPickerViewDataSource>
 {
     HKSimpleDataEntryPlainTextCell *_cell;
     NSString *_title;
@@ -23,15 +21,11 @@
     long long _numberOfRowsForPicker;
     NSNumber *_defaultValue;
     NSNumber *_kilogramValue;
-    id<HKSimpleDataEntryItemDelegate> _delegate;
-    unsigned long long _placeholderType;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<HKSimpleDataEntryItemDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) unsigned long long placeholderType; // @synthesize placeholderType=_placeholderType;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -44,7 +38,6 @@
 - (void)_valueDidChange;
 - (void)beginEditing;
 - (id)cell;
-- (void)doneButtonTapped:(id)arg1;
 - (id)formattedKeyAndValue;
 - (id)initWithTitle:(id)arg1 registrantModelKey:(id)arg2 weightInKg:(id)arg3 defaultWeightInKg:(id)arg4;
 - (void)localeDidChange:(id)arg1;

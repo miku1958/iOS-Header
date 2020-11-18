@@ -6,23 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class AAGrandSlamSigner, ABMonogrammer, ACAccount, ACAccountStore, NSOperationQueue;
+@class AAGrandSlamSigner, ACAccount, ACAccountStore, CNMonogrammer, NSOperationQueue;
 
 @interface AAUIProfilePictureStore : NSObject
 {
     ACAccount *_account;
     ACAccountStore *_accountStore;
     AAGrandSlamSigner *_grandSlamSigner;
-    ABMonogrammer *_monogrammer;
+    CNMonogrammer *_monogrammer;
     NSOperationQueue *_networkingQueue;
     BOOL _didBeginUsingAddressBookSingleton;
     double _pictureDiameter;
-    long long _pictureStyle;
+    long long _monogramType;
 }
 
+@property (nonatomic) long long monogramType; // @synthesize monogramType=_monogramType;
 @property (nonatomic) double pictureDiameter; // @synthesize pictureDiameter=_pictureDiameter;
-@property (nonatomic) long long pictureStyle; // @synthesize pictureStyle=_pictureStyle;
+@property (nonatomic) long long pictureStyle;
 
++ (long long)CNMonogrammerStyleFromAAUIMonogramType:(long long)arg1;
++ (long long)aauiMonogramTypeForABStyle:(long long)arg1;
++ (long long)abMonogramStyleForAAUIType:(long long)arg1;
 - (void).cxx_destruct;
 - (id)_correctlySizedImageFromImage:(id)arg1;
 - (id)_fallbackProfilePictureForPersonWithFirstName:(id)arg1 lastName:(id)arg2;
@@ -36,6 +40,7 @@
 - (void)_invalidateMonogrammer;
 - (id)_meCardPicture;
 - (void)_meCardRawImageAndCropRect:(CDUnknownBlockType)arg1;
+- (id)_monogramContactImage:(id)arg1;
 - (id)_monogramPersonImage:(void *)arg1;
 - (id)_monogrammer;
 - (void *)_onAddressBookQueue_copyPersonWithImageDataMatchingFamilyMember:(id)arg1;

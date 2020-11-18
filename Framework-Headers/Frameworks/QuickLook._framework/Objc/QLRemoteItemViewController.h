@@ -8,7 +8,7 @@
 
 #import <QuickLook/QLPrintingProtocol-Protocol.h>
 
-@class NSDictionary, NSExtension, NSLayoutConstraint, QLRemotePreviewHostContext, _UIRemoteViewController;
+@class NSDictionary, NSExtension, NSLayoutConstraint, QLRemotePreviewHostContext, QLRemotePreviewHostViewController;
 @protocol QLPrintingProtocol;
 
 __attribute__((visibility("hidden")))
@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
 {
     NSExtension *_extension;
     id _request;
-    QLRemotePreviewHostContext *_serviceContext;
-    _UIRemoteViewController *_remoteViewController;
+    QLRemotePreviewHostContext *_hostContext;
+    QLRemotePreviewHostViewController *_remoteViewController;
     NSDictionary *_hostConfiguration;
     NSLayoutConstraint *_topConstraint;
     NSLayoutConstraint *_bottomConstraint;
@@ -26,21 +26,25 @@ __attribute__((visibility("hidden")))
     BOOL _fullScreen;
 }
 
++ (Class)transformerClass;
 - (void).cxx_destruct;
 - (BOOL)canEnterFullScreen;
+- (BOOL)canPinchToDismiss;
 - (BOOL)canSwipeToDismiss;
 - (void)dealloc;
-- (void)loadPreviewControllerWithPreviewItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)init;
+- (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)numberOfPagesWithSize:(struct CGSize)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)pdfDataForPageAtIndex:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)prepareForDrawingPages:(struct _NSRange)arg1;
-- (void)previewBecameFullScreen:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)prepareForDrawingPages:(struct _NSRange)arg1 ofSize:(struct CGSize)arg2;
+- (void)previewControllerDidUpdatePreferredContentSize:(id)arg1;
+- (void)previewControllerDidUpdateTitle:(id)arg1;
 - (void)previewDidAppear:(BOOL)arg1;
 - (void)previewDidDisappear:(BOOL)arg1;
 - (void)previewWillAppear:(BOOL)arg1;
 - (void)previewWillDisappear:(BOOL)arg1;
-- (void)previewWillFinishAppearing;
 - (id)printer;
+- (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 
 @end

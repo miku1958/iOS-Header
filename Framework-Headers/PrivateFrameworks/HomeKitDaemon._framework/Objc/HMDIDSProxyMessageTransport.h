@@ -29,7 +29,7 @@
 - (BOOL)isSecure;
 - (long long)qualityOfService;
 - (id)remoteMessageFromMessage:(id)arg1;
-- (id)sendMessage:(id)arg1 destination:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
+- (id)sendMessage:(id)arg1 destination:(id)arg2 timeout:(double)arg3 options:(unsigned long long)arg4 error:(id *)arg5;
 - (void)service:(id)arg1 account:(id)arg2 incomingMessage:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (id)watchDeviceForDevice:(id)arg1;
 

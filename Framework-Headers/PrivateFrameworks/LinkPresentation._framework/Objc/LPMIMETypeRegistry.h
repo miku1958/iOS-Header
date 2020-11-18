@@ -12,6 +12,7 @@
 
 + (BOOL)isHTMLType:(id)arg1;
 + (BOOL)isImageType:(id)arg1;
++ (BOOL)isVideoType:(id)arg1;
 
 @end
 

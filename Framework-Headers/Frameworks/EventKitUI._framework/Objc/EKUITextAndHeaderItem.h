@@ -12,10 +12,12 @@
 {
     NSString *_text;
     NSString *_header;
+    long long _lines;
 }
 
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (strong, nonatomic) NSString *header; // @synthesize header=_header;
+@property (nonatomic) long long lines; // @synthesize lines=_lines;
 @property (strong, nonatomic) NSString *text; // @synthesize text=_text;
 
 + (id)itemWithText:(id)arg1 andHeader:(id)arg2;

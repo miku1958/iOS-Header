@@ -34,12 +34,18 @@ __attribute__((visibility("hidden")))
 - (void)setCancellable:(BOOL)arg1;
 - (void)setCancellationHandler:(CDUnknownBlockType)arg1;
 - (void)setCompletedUnitCount:(long long)arg1;
+- (void)setEstimatedTimeRemaining:(id)arg1;
+- (void)setFileCompletedCount:(id)arg1;
+- (void)setFileOperationKind:(id)arg1;
+- (void)setFileTotalCount:(id)arg1;
+- (void)setFileURL:(id)arg1;
 - (void)setKind:(id)arg1;
 - (void)setLocalizedDescription:(id)arg1;
 - (void)setPausable:(BOOL)arg1;
 - (void)setPausingHandler:(CDUnknownBlockType)arg1;
 - (void)setPrioritizable:(BOOL)arg1;
 - (void)setPrioritizationHandler:(CDUnknownBlockType)arg1;
+- (void)setThroughput:(id)arg1;
 - (void)setTotalUnitCount:(long long)arg1;
 - (void)setUserInfoObject:(id)arg1 forKey:(id)arg2;
 - (void)unpublish;

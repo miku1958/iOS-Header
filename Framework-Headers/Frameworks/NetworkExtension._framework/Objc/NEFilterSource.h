@@ -6,18 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableData, NSString, NSURL, NSURLRequest, NSURLResponse, NSUUID;
+@class NSMutableData, NSString, NSURL, NSURLRequest, NSURLResponse, NSUUID, NWPathEvaluator;
 @protocol OS_dispatch_queue;
 
 @interface NEFilterSource : NSObject
 {
     BOOL _registered;
     BOOL _expectRemediation;
+    int _sourceAppPid;
+    unsigned int _controlUnit;
     long long _status;
     NSURL *_url;
     long long _direction;
     unsigned long long _socketIdentifier;
+    NSString *_sourceAppIdentifier;
     NSMutableData *_pendingData;
+    NWPathEvaluator *_evaluator;
     NSUUID *_flowUUID;
     unsigned long long _lastPendingDataStartIndex;
     unsigned long long _lastSendDataLength;
@@ -34,9 +38,11 @@
     NSURL *_parentURL;
 }
 
+@property unsigned int controlUnit; // @synthesize controlUnit=_controlUnit;
 @property (strong) NSURLRequest *currentRequest; // @synthesize currentRequest=_currentRequest;
 @property (strong) NSURLResponse *currentResponse; // @synthesize currentResponse=_currentResponse;
 @property (readonly) long long direction; // @synthesize direction=_direction;
+@property (strong) NWPathEvaluator *evaluator; // @synthesize evaluator=_evaluator;
 @property BOOL expectRemediation; // @synthesize expectRemediation=_expectRemediation;
 @property (strong) NSUUID *flowUUID; // @synthesize flowUUID=_flowUUID;
 @property unsigned long long lastPendingDataStartIndex; // @synthesize lastPendingDataStartIndex=_lastPendingDataStartIndex;
@@ -52,15 +58,14 @@
 @property (strong) NSString *remediationButtonText; // @synthesize remediationButtonText=_remediationButtonText;
 @property (strong) NSString *remediationURL; // @synthesize remediationURL=_remediationURL;
 @property (readonly) unsigned long long socketIdentifier; // @synthesize socketIdentifier=_socketIdentifier;
+@property (copy) NSString *sourceAppIdentifier; // @synthesize sourceAppIdentifier=_sourceAppIdentifier;
+@property int sourceAppPid; // @synthesize sourceAppPid=_sourceAppPid;
 @property (readonly) long long status; // @synthesize status=_status;
-@property (readonly) NSURL *url; // @synthesize url=_url;
+@property (strong) NSURL *url; // @synthesize url=_url;
 @property (strong) NSString *urlAppendString; // @synthesize urlAppendString=_urlAppendString;
 
-+ (unsigned int)checkPolicyFilterUnit;
-+ (void)connectToAgentWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (void)connectToFilterUnit:(unsigned int)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (BOOL)filterRequired;
-+ (unsigned int)filterUnit;
-+ (void)initializeGlobals;
 - (void).cxx_destruct;
 - (void)addData:(id)arg1 withCompletionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dataCompleteWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -18,9 +18,9 @@
 @property (readonly, nonatomic) BOOL hasManeuver;
 @property (strong, nonatomic) NSString *maneuver; // @synthesize maneuver=_maneuver;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

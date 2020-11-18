@@ -4,21 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSLock, NSMapTable;
+@protocol _GEODirectionsRequesterServerProxy;
 
 @interface GEODirectionsRequester : NSObject
 {
-    NSMapTable *_pendingRequests;
-    NSLock *_pendingRequestsLock;
+    id<_GEODirectionsRequesterServerProxy> _serverProxy;
 }
 
 + (id)sharedRequester;
++ (void)useLocalProxy;
++ (void)useProxy:(Class)arg1;
++ (void)useRemoteProxy;
+- (void).cxx_destruct;
 - (void)cancelRequest:(id)arg1;
-- (void)dealloc;
 - (void)finalizeRequest:(id)arg1;
 - (id)init;
+- (void)startRequest:(id)arg1 auditToken:(id)arg2 skipFinalize:(BOOL)arg3 isDoomRequest:(BOOL)arg4 requestPriority:(id)arg5 finished:(CDUnknownBlockType)arg6 networkActivity:(CDUnknownBlockType)arg7 error:(CDUnknownBlockType)arg8;
 - (void)startRequest:(id)arg1 finished:(CDUnknownBlockType)arg2 networkActivity:(CDUnknownBlockType)arg3 error:(CDUnknownBlockType)arg4;
 
 @end

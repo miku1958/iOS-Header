@@ -33,6 +33,7 @@
 @property (nonatomic) BOOL removeSentinel; // @synthesize removeSentinel=_removeSentinel;
 @property (nonatomic) BOOL sentinelExists; // @synthesize sentinelExists=_sentinelExists;
 
++ (Class)appleLanguagesType;
 - (void).cxx_destruct;
 - (void)addAppleLanguages:(id)arg1;
 - (id)appleLanguagesAtIndex:(unsigned long long)arg1;

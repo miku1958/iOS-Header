@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <CoreHAP/NSCopying-Protocol.h>
+#import <CoreHAP/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSNumber;
 
-@interface HAPMetadataConstraints : NSObject <NSCopying>
+@interface HAPMetadataConstraints : HMFObject <NSCopying, NSSecureCoding>
 {
     NSNumber *_minimumValue;
     NSNumber *_maximumValue;
@@ -27,9 +28,12 @@
 @property (strong, nonatomic) NSNumber *stepValue; // @synthesize stepValue=_stepValue;
 @property (copy, nonatomic) NSArray *validValues; // @synthesize validValues=_validValues;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqualToMetadataConstraints:(id)arg1;
 
 @end

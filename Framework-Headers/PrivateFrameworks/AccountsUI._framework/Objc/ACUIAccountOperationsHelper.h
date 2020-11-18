@@ -23,7 +23,7 @@
 @property BOOL isSavingAccount; // @synthesize isSavingAccount=_isSavingAccount;
 
 - (void).cxx_destruct;
-- (id)_desiredDataclassActionsFromPossibleActions:(id)arg1 forAccount:(id)arg2;
+- (id)_desiredDataclassActionsFromPossibleActions:(id)arg1 forAccount:(id)arg2 withError:(id *)arg3;
 - (id)initWithAccountStore:(id)arg1;
 - (void)removeAccount:(id)arg1;
 - (void)saveAccount:(id)arg1;

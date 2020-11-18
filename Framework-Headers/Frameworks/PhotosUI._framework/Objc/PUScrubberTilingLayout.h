@@ -22,8 +22,10 @@ __attribute__((visibility("hidden")))
     struct {
         BOOL respondsToAspectRatioForItemAtIndexPath;
         BOOL respondsToExpandedWidthForItemAtIndexPath;
+        BOOL respondsToShouldShowTimeIndicatorForExpandedItemAtIndexPath;
     } _delegateFlags;
     BOOL _onlyShowExpandedItem;
+    BOOL _showPlayheadForExpandedItem;
     BOOL _snapToExpandedItem;
     id<PUScrubberTilingLayoutDelegate> _delegate;
     double _playheadVerticalOverhang;
@@ -57,6 +59,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL onlyShowExpandedItem; // @synthesize onlyShowExpandedItem=_onlyShowExpandedItem;
 @property (strong, nonatomic) NSIndexPath *overrideLoupeIndexPath; // @synthesize overrideLoupeIndexPath=_overrideLoupeIndexPath;
 @property (nonatomic) double playheadVerticalOverhang; // @synthesize playheadVerticalOverhang=_playheadVerticalOverhang;
+@property (nonatomic) BOOL showPlayheadForExpandedItem; // @synthesize showPlayheadForExpandedItem=_showPlayheadForExpandedItem;
 @property (nonatomic) double slitAspectRatio; // @synthesize slitAspectRatio=_slitAspectRatio;
 @property (nonatomic) BOOL snapToExpandedItem; // @synthesize snapToExpandedItem=_snapToExpandedItem;
 
@@ -69,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (double)_loupeAmountFor:(id)arg1;
 - (double)_normalizedTransitionProgressFrom:(id)arg1 withAbscissa:(double)arg2 outNeighborIndexPath:(out id *)arg3;
 - (struct CGRect)_rectForItemAtIndexPath:(id)arg1 withLoupeTransform:(BOOL)arg2 withExpanded:(BOOL)arg3;
+- (BOOL)_shouldShowTimeIndicatorForExpandedItemAtIndexPath:(id)arg1;
 - (struct CGSize)_slitSize;
 - (double)_transformedHorizontalOffsetForIndexPath:(id)arg1;
 - (struct CGSize)_transformedSizeForIndexPath:(id)arg1;

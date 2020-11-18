@@ -6,14 +6,20 @@
 
 #import <ITMLKit/IKCSSRule.h>
 
+#import <ITMLKit/NSCopying-Protocol.h>
+
 @class IKCSSMediaQuery;
 
-@interface IKCSSAtMediaRule : IKCSSRule
+@interface IKCSSAtMediaRule : IKCSSRule <NSCopying>
 {
     IKCSSMediaQuery *_mediaQuery;
+    struct _NSRange _queryRange;
 }
 
+@property (nonatomic) struct _NSRange queryRange; // @synthesize queryRange=_queryRange;
+
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithMediaQuery:(id)arg1;
 - (id)mediaQuery;

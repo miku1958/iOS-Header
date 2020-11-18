@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     BOOL _canRender;
     BOOL _canProcess;
     BOOL _removingObserverWithContext;
+    BOOL _installedParamTreeObserver;
     AUAudioUnitBusArray_XH *_inputBusses;
     AUAudioUnitBusArray_XH *_outputBusses;
     struct unique_ptr<AUProcAndUserData, std::__1::default_delete<AUProcAndUserData>> _elementCountListenerToken;
@@ -58,11 +59,14 @@ __attribute__((visibility("hidden")))
 - (id)parameterTree;
 - (id)parametersForOverviewWithCount:(long long)arg1;
 - (void)propertiesChanged:(id)arg1;
+- (BOOL)providesUserInterface;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2 context:(void *)arg3;
 - (void)requestViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)reset;
+- (void)selectViewConfiguration:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
+- (id)supportedViewConfigurations:(id)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 
 @end

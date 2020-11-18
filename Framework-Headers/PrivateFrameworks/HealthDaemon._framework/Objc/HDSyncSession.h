@@ -12,12 +12,12 @@
 @interface HDSyncSession : NSObject
 {
     BOOL _attemptWhileLocking;
+    id<HDSyncSessionDelegate> _delegate;
     id<HDSyncStore> _syncStore;
     NSUUID *_sessionUUID;
     NSDate *_startDate;
     NSCalendar *_calendar;
     NSString *_reason;
-    id<HDSyncSessionDelegate> _delegate;
 }
 
 @property (readonly, nonatomic) BOOL attemptWhileLocking; // @synthesize attemptWhileLocking=_attemptWhileLocking;
@@ -30,15 +30,17 @@
 
 - (void).cxx_destruct;
 - (id)description;
+- (id)excludedSyncStores;
 - (id)init;
 - (id)initWithSyncStore:(id)arg1 attemptWhileLocking:(BOOL)arg2 reason:(id)arg3 delegate:(id)arg4;
 - (long long)maxEncodedBytesPerMessageForSyncEntityClass:(Class)arg1;
 - (id)newChangeWithSyncEntityClass:(Class)arg1;
 - (id)predicateForSyncEntityClass:(Class)arg1;
 - (void)sendChanges:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)syncDidBeginWithProfile:(id)arg1 error:(id *)arg2;
 - (void)syncDidFinishWithSuccess:(BOOL)arg1 error:(id)arg2;
-- (unsigned long long)syncObjectLimitForEntityClass:(Class)arg1;
 - (void)syncWillBegin;
+- (BOOL)transactionDidEndWithError:(id *)arg1;
 
 @end
 

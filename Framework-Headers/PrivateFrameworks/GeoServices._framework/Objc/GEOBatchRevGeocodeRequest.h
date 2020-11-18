@@ -30,6 +30,7 @@
 
 + (Class)locationType;
 + (Class)serviceTagType;
+- (void).cxx_destruct;
 - (int)StringAsAdditionalPlaceTypes:(id)arg1;
 - (void)addAdditionalPlaceType:(int)arg1;
 - (void)addLocation:(id)arg1;

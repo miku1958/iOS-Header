@@ -6,27 +6,29 @@
 
 #import <HomeUI/HUGridCell.h>
 
-@class HFItem, HUCameraView, HUDecayingTimer, HUGridCameraCellLayoutOptions, NSArray, UILabel;
+@class HFItem, HUCameraView, HUGridCameraCellLayoutOptions, NADecayingTimer, NSArray, UILabel, UIView;
 
 @interface HUGridCameraCell : HUGridCell
 {
     HFItem *_item;
     HUGridCameraCellLayoutOptions *_layoutOptions;
+    UIView *_topBarView;
     UILabel *_titleLabel;
     UILabel *_descriptionLabel;
     HUCameraView *_cameraView;
     NSArray *_allConstraints;
-    NSArray *_descriptionLabelConstraints;
-    HUDecayingTimer *_descriptionLabelUpdateTimer;
+    NSArray *_labelsConstraints;
+    NADecayingTimer *_descriptionLabelUpdateTimer;
 }
 
 @property (strong, nonatomic) NSArray *allConstraints; // @synthesize allConstraints=_allConstraints;
 @property (strong, nonatomic) HUCameraView *cameraView; // @synthesize cameraView=_cameraView;
 @property (strong, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
-@property (strong, nonatomic) NSArray *descriptionLabelConstraints; // @synthesize descriptionLabelConstraints=_descriptionLabelConstraints;
-@property (strong, nonatomic) HUDecayingTimer *descriptionLabelUpdateTimer; // @synthesize descriptionLabelUpdateTimer=_descriptionLabelUpdateTimer;
+@property (strong, nonatomic) NADecayingTimer *descriptionLabelUpdateTimer; // @synthesize descriptionLabelUpdateTimer=_descriptionLabelUpdateTimer;
+@property (strong, nonatomic) NSArray *labelsConstraints; // @synthesize labelsConstraints=_labelsConstraints;
 @property (strong, nonatomic) HUGridCameraCellLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (strong, nonatomic) UIView *topBarView; // @synthesize topBarView=_topBarView;
 
 + (Class)layoutOptionsClass;
 + (BOOL)requiresConstraintBasedLayout;
@@ -38,7 +40,6 @@
 - (void)_updateLabelsAppearance;
 - (struct CGRect)cameraViewFrame;
 - (void)dealloc;
-- (void)displayStyleDidChange;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)item;
 - (void)layoutOptionsDidChange;

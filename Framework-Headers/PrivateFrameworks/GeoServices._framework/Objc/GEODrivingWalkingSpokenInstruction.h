@@ -36,11 +36,11 @@
 @property (nonatomic) unsigned int shortChainedInstructionIndex; // @synthesize shortChainedInstructionIndex=_shortChainedInstructionIndex;
 
 + (Class)executionStageType;
+- (void).cxx_destruct;
 - (void)addExecutionStage:(id)arg1;
 - (void)clearExecutionStages;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)executionStageAtIndex:(unsigned long long)arg1;

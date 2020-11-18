@@ -6,15 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class CPLFeatureVersionHistory, NSData, NSDictionary;
+@class CPLAccountFlags, CPLFeatureVersionHistory, NSData, NSDictionary;
 
 @interface CPLLibraryInfo : NSObject
 {
     NSDictionary *_assetCounts;
     CPLFeatureVersionHistory *_featureVersionHistory;
     NSData *_lastKnownSyncAnchor;
+    NSData *_accountFlagsData;
 }
 
+@property (readonly, nonatomic) CPLAccountFlags *accountFlags;
+@property (copy, nonatomic) NSData *accountFlagsData; // @synthesize accountFlagsData=_accountFlagsData;
 @property (copy, nonatomic) NSDictionary *assetCounts; // @synthesize assetCounts=_assetCounts;
 @property (strong, nonatomic) CPLFeatureVersionHistory *featureVersionHistory; // @synthesize featureVersionHistory=_featureVersionHistory;
 @property (copy, nonatomic) NSData *lastKnownSyncAnchor; // @synthesize lastKnownSyncAnchor=_lastKnownSyncAnchor;

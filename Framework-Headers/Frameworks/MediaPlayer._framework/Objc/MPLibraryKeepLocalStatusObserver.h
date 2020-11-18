@@ -7,11 +7,10 @@
 #import <Foundation/NSObject.h>
 
 #import <MediaPlayer/MPMediaDownloadObserver-Protocol.h>
-#import <MediaPlayer/MPStoreDownloadManagerObserver-Protocol.h>
 
 @class MPLibraryKeepLocalStatusObserverConfiguration, NSSet, NSString;
 
-@interface MPLibraryKeepLocalStatusObserver : NSObject <MPStoreDownloadManagerObserver, MPMediaDownloadObserver>
+@interface MPLibraryKeepLocalStatusObserver : NSObject <MPMediaDownloadObserver>
 {
     NSSet *_activeDownloads;
     MPLibraryKeepLocalStatusObserverConfiguration *_configuration;
@@ -34,9 +33,8 @@
 - (BOOL)_updateActiveDownloadsAllowingDownloadRemoval:(BOOL)arg1;
 - (void)_updateCurrentStatus;
 - (void)dealloc;
-- (void)downloadManager:(id)arg1 didAddActiveDownloads:(id)arg2 removeActiveDownloads:(id)arg3;
-- (void)downloadManager:(id)arg1 didFinishAsset:(id)arg2 withError:(id)arg3;
-- (void)downloadManager:(id)arg1 downloadsDidProgress:(id)arg2;
+- (void)downloadManager:(id)arg1 didEnqueueAssetDownloads:(id)arg2 didRemoveAssetDownloads:(id)arg3;
+- (void)downloadManager:(id)arg1 didUpdateDownloadProgress:(id)arg2;
 - (id)init;
 
 @end

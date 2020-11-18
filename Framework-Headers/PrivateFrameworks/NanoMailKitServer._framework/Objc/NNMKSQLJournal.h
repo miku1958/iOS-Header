@@ -28,6 +28,7 @@
 - (id)_nextFilePath;
 - (id)_sortedJournalFiles;
 - (void)appendSQLStatement:(id)arg1;
+- (void)dealloc;
 - (void)flushIfNeeded;
 - (id)initWithPath:(id)arg1;
 - (void)mergeUsingBlock:(CDUnknownBlockType)arg1;

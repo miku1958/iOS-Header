@@ -8,11 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString;
+@class NSData, NSMutableArray, NSString, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOResource : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     struct GEOTileSetRegion *_regions;
     unsigned long long _regionsCount;
     unsigned long long _regionsSpace;
@@ -42,8 +43,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct GEOTileSetRegion *regions;
 @property (readonly, nonatomic) unsigned long long regionsCount;
 @property (nonatomic) int resourceType; // @synthesize resourceType=_resourceType;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)filterType;
+- (void).cxx_destruct;
 - (int)StringAsConnectionType:(id)arg1;
 - (int)StringAsResourceType:(id)arg1;
 - (BOOL)_geo_isRelevantForScales:(id)arg1 scenarios:(id)arg2;

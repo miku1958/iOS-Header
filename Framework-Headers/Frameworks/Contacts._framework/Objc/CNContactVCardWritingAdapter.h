@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Contacts/CNVCardPerson-Protocol.h>
 
@@ -68,9 +68,8 @@ __attribute__((visibility("hidden")))
 
 + (id)adapterWithContact:(id)arg1;
 + (id)descriptorForAllSupportedKeys;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithContact:(id)arg1;
-- (id)jpegImageDataOfAllowableKinds:(id)arg1 maximumLength:(unsigned long long)arg2 cropRects:(id *)arg3;
 - (id)largeImageHashOfType:(id)arg1;
 - (id)vCardPropertyItemsForProperty:(id)arg1;
 - (id)vCardPropertyItemsForProperty:(id)arg1 valueTransform:(CDUnknownBlockType)arg2;

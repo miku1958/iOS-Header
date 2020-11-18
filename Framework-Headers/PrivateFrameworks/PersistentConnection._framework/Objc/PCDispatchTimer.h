@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSDate *fireDate;
 @property (readonly, nonatomic) BOOL isValid;
 
+- (void).cxx_destruct;
 - (void)_callTarget;
 - (void)_cleanupTimer;
 - (void)dealloc;

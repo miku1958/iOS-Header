@@ -33,14 +33,13 @@
     BOOL _outputObscuredDueToInsufficientExternalProtection;
     unsigned long long _usesAudioOnlyModeForExternalPlaybackRevisionID;
     unsigned long long _usesExternalPlaybackWhileExternalScreenIsActiveRevisionID;
-    float _playerRate;
+    float _rawRate;
 }
 
 @property (readonly, nonatomic) long long _externalProtectionStatus;
 @property (readonly, nonatomic) AVPlayer *_player;
 @property (nonatomic) long long actionAtItemEnd;
 @property (readonly, nonatomic) BOOL allowsExternalPlayback;
-@property (nonatomic, getter=isClosedCaptionDisplayEnabled) BOOL closedCaptionDisplayEnabled;
 @property (readonly, nonatomic) AVPlayerItem *currentItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) long long defaultItemEQPresetType; // @synthesize defaultItemEQPresetType=_defaultItemEQPresetType;
@@ -57,8 +56,8 @@
 @property (readonly, nonatomic) BOOL outputObscuredDueToInsufficientExternalProtection;
 @property (copy, nonatomic) CDUnknownBlockType playbackQueueCommitHandler; // @synthesize playbackQueueCommitHandler=_playbackQueueCommitHandler;
 @property (readonly, nonatomic) id playerAVAudioSession;
-@property (readonly, nonatomic) float playerRate; // @synthesize playerRate=_playerRate;
 @property (nonatomic) float rate;
+@property (readonly, nonatomic) float rawRate; // @synthesize rawRate=_rawRate;
 @property (readonly, nonatomic) long long status;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL usesAudioOnlyModeForExternalPlayback;
@@ -67,7 +66,7 @@
 - (void).cxx_destruct;
 - (BOOL)_CALayerDestinationIsTVOut;
 - (void)_currentItemDidChangeNotification:(id)arg1;
-- (BOOL)_resumePlayback:(double)arg1 error:(id *)arg2;
+- (BOOL)_resumePlayback:(double)arg1;
 - (void)_setCALayerDestinationIsTVOut:(BOOL)arg1;
 - (void)_setClientName:(id)arg1;
 - (void)_setEQPreset:(int)arg1;

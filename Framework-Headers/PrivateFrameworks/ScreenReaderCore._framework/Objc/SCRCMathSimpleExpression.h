@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
 
 @property (copy, nonatomic) NSString *content; // @synthesize content=_content;
 
+- (void).cxx_destruct;
 - (id)_functionNames;
 - (BOOL)canBeUsedWithBase;
-- (void)dealloc;
 - (id)description;
 - (id)dollarCodeDescriptionWithNumberOfOuterRadicals:(unsigned long long)arg1 treePosition:(id)arg2;
 - (id)initWithDictionary:(id)arg1;

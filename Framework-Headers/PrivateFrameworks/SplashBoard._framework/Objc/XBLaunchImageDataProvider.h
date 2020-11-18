@@ -14,18 +14,19 @@
 {
     XBDisplaySnapshot *_snapshot;
     UIImage *_cachedImage;
+    XBSnapshotDataProviderContext *_context;
 }
 
-@property (readonly, strong, nonatomic) XBSnapshotDataProviderContext *context;
+@property (readonly, strong, nonatomic) XBSnapshotDataProviderContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)_invalidateSnapshotData;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)fetchImage;
 - (id)initWithRequest:(id)arg1 contextID:(unsigned int)arg2;
+- (void)invalidateImage;
 
 @end
 

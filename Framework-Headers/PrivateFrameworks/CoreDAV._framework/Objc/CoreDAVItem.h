@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreDAV/CoreDAVItem-Protocol.h>
 
@@ -33,9 +33,9 @@
 
 + (id)copyParseRules;
 + (id)parseRuleCache;
+- (void).cxx_destruct;
 - (id)childrenToWrite;
 - (id)copyParseRules;
-- (void)dealloc;
 - (id)generateXMLString;
 - (id)hashString;
 - (id)init;

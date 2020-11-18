@@ -16,10 +16,14 @@
     unsigned long long _height;
 }
 
+@property (readonly, copy, nonatomic) NSString *colorGamut;
 @property (readonly, copy, nonatomic) NSString *colorMode;
+@property (readonly, copy, nonatomic) NSString *hdrMode;
 @property (readonly, nonatomic) unsigned long long height;
+@property (readonly, nonatomic) unsigned long long internalRepresentation;
 @property (readonly, nonatomic) BOOL isVirtual;
 @property (readonly, nonatomic) double pixelAspectRatio;
+@property (readonly, nonatomic) unsigned long long preferredScale;
 @property (readonly, nonatomic) double refreshRate;
 @property (readonly, nonatomic) unsigned long long width;
 

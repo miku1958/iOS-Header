@@ -64,6 +64,7 @@
 - (BOOL)isEqualToEntity:(id)arg1;
 - (BOOL)isFromForwardedMessage;
 - (BOOL)isInhuman;
+- (BOOL)isNaturalLanguageEvent;
 - (BOOL)isPartiallyDownloaded;
 - (id)loadOrigin:(id)arg1;
 - (id)tags;

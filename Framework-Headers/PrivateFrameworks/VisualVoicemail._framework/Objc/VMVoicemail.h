@@ -6,11 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
+#import <VisualVoicemail/NSCopying-Protocol.h>
+#import <VisualVoicemail/NSMutableCopying-Protocol.h>
 #import <VisualVoicemail/NSSecureCoding-Protocol.h>
 
 @class NSData, NSDate, NSString, NSURL, VMVoicemailTranscript;
 
-@interface VMVoicemail : NSObject <NSSecureCoding>
+@interface VMVoicemail : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
     unsigned long long _remoteUID;
     unsigned long long _identifier;
@@ -20,73 +22,68 @@
     double _duration;
     NSURL *_dataURL;
     NSURL *_transcriptionURL;
+    NSString *_callbackISOCountryCode;
+    NSString *_senderISOCountryCode;
     unsigned long long _flags;
-    struct __CFPhoneNumber *_senderPhoneNumber;
-    struct __CFPhoneNumber *_callbackPhoneNumber;
 }
 
-@property (readonly, nonatomic, getter=isBlocked) BOOL blocked;
-@property (readonly, nonatomic) NSString *callbackDestinationID; // @synthesize callbackDestinationID=_callbackDestinationID;
+@property (nonatomic, getter=isBlocked) BOOL blocked;
+@property (copy, nonatomic) NSString *callbackDestinationID; // @synthesize callbackDestinationID=_callbackDestinationID;
+@property (copy, nonatomic) NSString *callbackISOCountryCode; // @synthesize callbackISOCountryCode=_callbackISOCountryCode;
 @property (readonly, nonatomic) NSString *callbackNumber;
-@property (nonatomic) struct __CFPhoneNumber *callbackPhoneNumber; // @synthesize callbackPhoneNumber=_callbackPhoneNumber;
 @property (readonly, copy, nonatomic) NSData *data;
-@property (readonly, nonatomic, getter=isDataAvailable) BOOL dataAvailable;
+@property (nonatomic, getter=isDataAvailable) BOOL dataAvailable;
 @property (readonly, nonatomic) NSString *dataPath;
-@property (readonly, nonatomic) NSURL *dataURL; // @synthesize dataURL=_dataURL;
-@property (readonly, nonatomic) NSDate *date; // @synthesize date=_date;
-@property (readonly, nonatomic, getter=isDeleted) BOOL deleted;
-@property (readonly, nonatomic, getter=isDetached) BOOL detached;
-@property (readonly, nonatomic, getter=isDownloading) BOOL downloading;
-@property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
+@property (strong, nonatomic) NSURL *dataURL; // @synthesize dataURL=_dataURL;
+@property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (nonatomic, getter=isDeleted) BOOL deleted;
+@property (nonatomic, getter=isDetached) BOOL detached;
+@property (nonatomic, getter=isDownloading) BOOL downloading;
+@property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (nonatomic) unsigned long long flags;
 @property (nonatomic) unsigned long long flags; // @synthesize flags=_flags;
 @property (readonly, nonatomic) BOOL hasCallbackNumber;
-@property (readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic, getter=isRead) BOOL read;
-@property (readonly, nonatomic) unsigned long long remoteUID; // @synthesize remoteUID=_remoteUID;
+@property (nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
+@property (nonatomic, getter=isRead) BOOL read;
+@property (nonatomic) unsigned long long remoteUID; // @synthesize remoteUID=_remoteUID;
 @property (readonly, nonatomic) NSString *sender;
-@property (readonly, nonatomic) NSString *senderDestinationID; // @synthesize senderDestinationID=_senderDestinationID;
-@property (nonatomic) struct __CFPhoneNumber *senderPhoneNumber; // @synthesize senderPhoneNumber=_senderPhoneNumber;
-@property (readonly, nonatomic, getter=isTemporary) BOOL temporary;
+@property (copy, nonatomic) NSString *senderDestinationID; // @synthesize senderDestinationID=_senderDestinationID;
+@property (copy, nonatomic) NSString *senderISOCountryCode; // @synthesize senderISOCountryCode=_senderISOCountryCode;
+@property (nonatomic, getter=isTemporary) BOOL temporary;
 @property (readonly, nonatomic) VMVoicemailTranscript *transcript;
+@property (nonatomic, getter=isTranscriptionAvailable) BOOL transcriptionAvailable;
 @property (readonly, nonatomic, getter=isTranscriptionRated) BOOL transcriptionRated;
 @property (readonly, nonatomic) unsigned long long transcriptionState;
-@property (readonly, nonatomic) NSURL *transcriptionURL; // @synthesize transcriptionURL=_transcriptionURL;
-@property (readonly, nonatomic, getter=isTrashed) BOOL trashed;
+@property (strong, nonatomic) NSURL *transcriptionURL; // @synthesize transcriptionURL=_transcriptionURL;
+@property (nonatomic, getter=isTrashed) BOOL trashed;
 @property (readonly, nonatomic, getter=isUnread) BOOL unread;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)contactUsingContactStore:(id)arg1;
 - (id)contactUsingContactStore:(id)arg1 withKeysToFetch:(id)arg2;
-- (void)dealloc;
-- (id)debugDescription;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)displayLabelUsingContactStore:(id)arg1;
 - (id)displayNameUsingContactStore:(id)arg1;
 - (BOOL)doesNotHaveFlags:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)flagDescription;
 - (BOOL)hasFlags:(unsigned long long)arg1;
+- (BOOL)hasSameContent:(id)arg1;
 - (BOOL)hasSameFlags:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1;
-- (id)initWithData:(id)arg1 audioDataURL:(id)arg2 transcriptURL:(id)arg3;
-- (id)initWithRecord:(void *)arg1;
-- (id)initWithVoicemailMessage:(id)arg1 audioDataURL:(id)arg2 transcriptURL:(id)arg3;
+- (id)initWithMessage:(id)arg1;
+- (id)initWithRecord:(const void *)arg1;
+- (id)initWithVoicemailMessage:(id)arg1;
 - (BOOL)isContactSuggested:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToMessage:(id)arg1;
 - (BOOL)isTranscribing;
-- (BOOL)isTranscriptionAvailable;
-- (void)setBlocked:(BOOL)arg1;
-- (void)setDataAvailable:(BOOL)arg1;
-- (void)setDeleted:(BOOL)arg1;
-- (void)setDetached:(BOOL)arg1;
-- (void)setDownloading:(BOOL)arg1;
-- (void)setRead:(BOOL)arg1;
-- (void)setTemporary:(BOOL)arg1;
-- (void)setTranscriptionAvailable:(BOOL)arg1;
-- (void)setTrashed:(BOOL)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (void)setFlag:(unsigned long long)arg1 enabled:(BOOL)arg2;
 - (BOOL)wasTranscriptionAttempted;
 
 @end

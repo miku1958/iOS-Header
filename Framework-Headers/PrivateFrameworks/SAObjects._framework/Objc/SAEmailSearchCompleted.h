@@ -28,6 +28,7 @@
 - (id)encodedClassName;
 - (id)groupIdentifier;
 - (id)initWithEmailResults:(id)arg1;
+- (BOOL)requiresResponse;
 
 @end
 

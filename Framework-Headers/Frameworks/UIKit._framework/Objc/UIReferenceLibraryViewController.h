@@ -10,7 +10,7 @@
 #import <UIKit/UITableViewDataSource-Protocol.h>
 #import <UIKit/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UINavigationController, UITableViewController, UIWindow;
+@class NSArray, NSString, UINavigationController, UITableViewController;
 
 @interface UIReferenceLibraryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate>
 {
@@ -20,11 +20,11 @@
     UITableViewController *_multiDefViewController;
     UIViewController *_longDefViewController;
     long long _oldPopoverStyle;
-    UIWindow *_rotationDecider;
+    BOOL _enableRotation;
+    BOOL _previousIgnoreOrientation;
     CDUnknownBlockType _dismissCompletionHandler;
 }
 
-@property (strong, nonatomic, setter=_setRotationDecider:) UIWindow *_rotationDecider; // @synthesize _rotationDecider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType dismissCompletionHandler; // @synthesize dismissCompletionHandler=_dismissCompletionHandler;
@@ -56,10 +56,12 @@
 - (void)_installDoneButtonOnViewControllerIfNeeded:(id)arg1;
 - (void)_installRequiredElementsOnViewController:(id)arg1;
 - (id)_localizedDictionaryTitleAttributes;
+- (long long)_preferredInterfaceOrientationGivenCurrentOrientation:(long long)arg1;
 - (id)_pressedButtonImage;
 - (void)_searchWeb:(id)arg1;
 - (void)_setPopoverController:(id)arg1;
 - (void)_willBecomeContentViewControllerOfPopover:(id)arg1;
+- (BOOL)enableRotation;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
@@ -67,6 +69,8 @@
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)pushDownloadManager:(id)arg1;
+- (void)setEnableRotation:(BOOL)arg1;
+- (BOOL)shouldAutorotate;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -77,6 +81,7 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
+- (void)window:(id)arg1 setupWithInterfaceOrientation:(long long)arg2;
 
 @end
 

@@ -25,6 +25,7 @@
 - (void)setLanguageCode:(id)arg1;
 - (void)setLayer:(long long)arg1;
 - (void)setMarksOutputTrackAsEnabled:(BOOL)arg1;
+- (void)setMediaDataLocation:(id)arg1;
 - (void)setMediaTimeScale:(int)arg1;
 - (void)setMetadata:(id)arg1;
 - (void)setNaturalSize:(struct CGSize)arg1;
@@ -37,7 +38,6 @@
 - (void)setSampleReferenceBaseURL:(id)arg1;
 - (void)setSourcePixelBufferAttributes:(id)arg1;
 - (void)setTransform:(struct CGAffineTransform)arg1;
-- (void)setWritesMediaDataToBeginningOfFile:(BOOL)arg1;
 - (long long)status;
 
 @end

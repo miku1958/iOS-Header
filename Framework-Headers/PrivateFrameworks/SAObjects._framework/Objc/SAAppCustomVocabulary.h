@@ -13,6 +13,7 @@
 }
 
 @property (copy, nonatomic) NSString *intentSlotValue;
+@property (copy, nonatomic) NSString *vocabularyIdentifier;
 
 + (id)appCustomVocabulary;
 + (id)appCustomVocabularyWithDictionary:(id)arg1 context:(id)arg2;

@@ -8,31 +8,38 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAutomobileOptions, GEOTransitOptions, GEOWalkingOptions;
+@class GEOAutomobileOptions, GEOTransitOptions, GEOWalkingOptions, PBUnknownFields;
 
 @interface GEOPDETAFilter : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _transportTypes;
     GEOAutomobileOptions *_automobileOptions;
     GEOTransitOptions *_transitOptions;
     GEOWalkingOptions *_walkingOptions;
     BOOL _includeHistoricTravelTime;
+    BOOL _includeRouteTrafficDetail;
     struct {
         unsigned int includeHistoricTravelTime:1;
+        unsigned int includeRouteTrafficDetail:1;
     } _has;
 }
 
 @property (strong, nonatomic) GEOAutomobileOptions *automobileOptions; // @synthesize automobileOptions=_automobileOptions;
 @property (readonly, nonatomic) BOOL hasAutomobileOptions;
 @property (nonatomic) BOOL hasIncludeHistoricTravelTime;
+@property (nonatomic) BOOL hasIncludeRouteTrafficDetail;
 @property (readonly, nonatomic) BOOL hasTransitOptions;
 @property (readonly, nonatomic) BOOL hasWalkingOptions;
 @property (nonatomic) BOOL includeHistoricTravelTime; // @synthesize includeHistoricTravelTime=_includeHistoricTravelTime;
+@property (nonatomic) BOOL includeRouteTrafficDetail; // @synthesize includeRouteTrafficDetail=_includeRouteTrafficDetail;
 @property (strong, nonatomic) GEOTransitOptions *transitOptions; // @synthesize transitOptions=_transitOptions;
 @property (readonly, nonatomic) int *transportTypes;
 @property (readonly, nonatomic) unsigned long long transportTypesCount;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOWalkingOptions *walkingOptions; // @synthesize walkingOptions=_walkingOptions;
 
+- (void).cxx_destruct;
 - (int)StringAsTransportTypes:(id)arg1;
 - (void)addTransportType:(int)arg1;
 - (void)clearTransportTypes;

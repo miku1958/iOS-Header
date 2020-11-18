@@ -25,6 +25,7 @@
     unsigned int _isDisplayStringFromAddressBook:1;
     void *_addressBook;
     NSString *_addressIdentifier;
+    double _firstLineIndent;
 }
 
 @property (readonly, nonatomic) NSString *addressIdentifier;
@@ -32,9 +33,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct UIEdgeInsets edgeInsets; // @dynamic edgeInsets;
+@property (nonatomic) double firstLineIndent; // @synthesize firstLineIndent=_firstLineIndent;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hidesVIPIndicator; // @dynamic hidesVIPIndicator;
 @property (nonatomic) BOOL isPrimaryAddressAtom; // @dynamic isPrimaryAddressAtom;
+@property (readonly, nonatomic) long long numberOfLines;
 @property (nonatomic) unsigned long long presentationOptions; // @dynamic presentationOptions;
 @property (nonatomic) double scale; // @dynamic scale;
 @property (nonatomic) BOOL separatorHidden; // @dynamic separatorHidden;

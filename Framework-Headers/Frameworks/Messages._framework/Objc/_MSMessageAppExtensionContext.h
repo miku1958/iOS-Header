@@ -6,44 +6,52 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <Messages/_MSMessageComposeExtensionProtocol-Protocol.h>
+#import <Messages/_MSMessageComposeExtensionImplProtocol-Protocol.h>
 
-@class MSConversation, NSMapTable, NSString;
+@class MSConversation, NSString, UIViewController;
+@protocol _MSMessageComposeExtensionImplProtocol, _MSMessageComposeHostImplProtocol;
 
-@interface _MSMessageAppExtensionContext : NSExtensionContext <_MSMessageComposeExtensionProtocol>
+@interface _MSMessageAppExtensionContext : NSExtensionContext <_MSMessageComposeExtensionImplProtocol>
 {
-    MSConversation *_activeConversation;
+    id<_MSMessageComposeHostImplProtocol> _hostContext;
     unsigned long long _presentationStyle;
-    NSMapTable *_conversationsByIdentifier;
+    id<_MSMessageComposeExtensionImplProtocol> _containingContext;
+    MSConversation *_activeConversation;
     struct __CFRunLoopObserver *_principalObjectCreationObserver;
     struct CGRect _initialFrameOfHostView;
 }
 
 @property (strong, nonatomic) MSConversation *activeConversation; // @synthesize activeConversation=_activeConversation;
-@property (readonly, nonatomic) NSMapTable *conversationsByIdentifier; // @synthesize conversationsByIdentifier=_conversationsByIdentifier;
+@property (strong, nonatomic) id<_MSMessageComposeExtensionImplProtocol> containingContext; // @synthesize containingContext=_containingContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) id<_MSMessageComposeHostImplProtocol> hostContext; // @synthesize hostContext=_hostContext;
 @property (readonly, nonatomic) struct CGRect initialFrameOfHostView; // @synthesize initialFrameOfHostView=_initialFrameOfHostView;
 @property (nonatomic) unsigned long long presentationStyle; // @synthesize presentationStyle=_presentationStyle;
 @property (readonly, nonatomic) struct __CFRunLoopObserver *principalObjectCreationObserver; // @synthesize principalObjectCreationObserver=_principalObjectCreationObserver;
+@property (readonly, weak, nonatomic) UIViewController *stickerViewController;
 @property (readonly) Class superclass;
+@property (readonly, weak, nonatomic) UIViewController *viewController;
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
-+ (id)activeExtensionContext;
++ (id)_extensionContextHostProtocolAllowedClassesForItems;
 - (void).cxx_destruct;
 - (void)_becomeActiveWithConversationState:(id)arg1 presentationState:(id)arg2;
+- (void)_canSendMessage:(id)arg1 conversationState:(id)arg2 associatedText:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_conversationDidChangeWithConversationState:(id)arg1;
 - (void)_didCancelSendingMessage:(id)arg1 conversationState:(id)arg2;
 - (void)_didReceiveMessage:(id)arg1 conversationState:(id)arg2;
 - (void)_didStartSendingMessage:(id)arg1 conversationState:(id)arg2;
 - (void)_handlePrincipalObjectCreated;
+- (void)_handleTextInputPayload:(id)arg1 withPayloadID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_hostDidBeginDeferredTeardown;
 - (void)_installPrincipalObjectObserver;
 - (void)_presentationDidChangeToPresentationState:(id)arg1;
 - (void)_presentationWillChangeToPresentationState:(id)arg1;
 - (void)_remoteViewDidBecomeReadyForDisplay;
+- (void)_requestContentSizeThatFits:(id)arg1 presentationStyle:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_requestSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_resignActive;
 - (void)_uninstallPrincipalObjectObserverIfNeeded;
@@ -57,12 +65,11 @@
 - (id)remoteProxy;
 - (void)requestPresentationStyle:(unsigned long long)arg1;
 - (void)requestPresentationStyleExpanded:(BOOL)arg1;
-- (void)stageAppItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)stageMediaItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)stageRichLink:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)requestResize;
+- (void)stageAppItem:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)stageMediaItem:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)stageRichLink:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)startDragMediaItem:(id)arg1 frameInRemoteView:(struct CGRect)arg2 fence:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)updatedConversationForConversationState:(id)arg1;
-- (id)viewController;
 
 @end
 

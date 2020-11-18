@@ -12,27 +12,23 @@ __attribute__((visibility("hidden")))
 }
 
 - (BOOL)canDisplayMultipleRightBarButtonItems;
-- (struct UIEdgeInsets)collectionsLevelSectionHeaderContentInset;
 - (struct UIEdgeInsets)collectionsLevelSectionHeaderHighlightInset;
 - (struct CGSize)collectionsLevelThumbnailSize;
-- (double)collectionsSectionHeaderHeight;
 - (long long)collectionsSectionHeaderStyle;
-- (void)configureCollectionsLevelGridLayout:(id)arg1 forWidth:(double)arg2;
-- (void)configureFullMomentsLevelGridLayout:(id)arg1 forWidth:(double)arg2;
-- (void)configureYearsLevelGridLayout:(id)arg1 forWidth:(double)arg2;
+- (void)configureCollectionsLevelGridLayout:(id)arg1 forWidth:(double)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
+- (void)configureFullMomentsLevelGridLayout:(id)arg1 forWidth:(double)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
+- (void)configureYearsLevelGridLayout:(id)arg1 forWidth:(double)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
+- (BOOL)dynamicLayoutEnabled;
 - (struct UIEdgeInsets)fullMomentsLevelSectionHeaderHighlightInset;
 - (struct CGSize)fullMomentsLevelThumbnailSize;
-- (double)fullMomentsSectionHeaderHeight;
 - (long long)fullMomentsSectionHeaderStyle;
 - (struct UIEdgeInsets)magnifiedDragEdgeInsets;
 - (struct CGSize)magnifiedImageSize;
 - (double)magnifiedYOffset;
-- (id)mapViewControllerSpec;
 - (id)newGridSpec;
-- (struct UIEdgeInsets)yearsLevelSectionHeaderContentInset;
+- (void)updateGridLayoutUsingFloatingHeaders:(id)arg1;
 - (struct UIEdgeInsets)yearsLevelSectionHeaderHighlightInset;
 - (struct CGSize)yearsLevelThumbnailSize;
-- (double)yearsSectionHeaderHeight;
 - (long long)yearsSectionHeaderStyle;
 
 @end

@@ -12,6 +12,7 @@
 {
     BOOL _shouldFetchAssetContent;
     BOOL _shouldFetchAssetContentInMemory;
+    BOOL _dropInMemoryAssetContentASAP;
     BOOL _isFetchCurrentUserOperation;
     NSArray *_recordIDs;
     NSArray *_desiredKeys;
@@ -20,7 +21,6 @@
     CDUnknownBlockType _fetchRecordsCompletionBlock;
     NSMutableSet *_packagesToDestroy;
     NSMutableDictionary *_assetInfoByArrayIndexByRecordKeyByRecordID;
-    NSMutableDictionary *_signaturesOfAssetsByRecordIDAndKey;
     NSDictionary *_assetTransferOptionsByRecordTypeAndKey;
     NSMutableDictionary *_recordIDsToRecords;
     NSMutableDictionary *_recordErrors;
@@ -34,6 +34,7 @@
 @property (strong, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
 @property (copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (copy, nonatomic) NSDictionary *desiredPackageFileIndices; // @synthesize desiredPackageFileIndices=_desiredPackageFileIndices;
+@property (nonatomic) BOOL dropInMemoryAssetContentASAP; // @synthesize dropInMemoryAssetContentASAP=_dropInMemoryAssetContentASAP;
 @property (copy, nonatomic) CDUnknownBlockType fetchRecordsCompletionBlock; // @synthesize fetchRecordsCompletionBlock=_fetchRecordsCompletionBlock;
 @property (nonatomic) BOOL isFetchCurrentUserOperation; // @synthesize isFetchCurrentUserOperation=_isFetchCurrentUserOperation;
 @property (strong, nonatomic) NSMutableSet *packagesToDestroy; // @synthesize packagesToDestroy=_packagesToDestroy;
@@ -46,7 +47,6 @@
 @property (strong, nonatomic) NSDictionary *recordIDsToVersionETags; // @synthesize recordIDsToVersionETags=_recordIDsToVersionETags;
 @property (nonatomic) BOOL shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
 @property (nonatomic) BOOL shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
-@property (strong, nonatomic) NSMutableDictionary *signaturesOfAssetsByRecordIDAndKey; // @synthesize signaturesOfAssetsByRecordIDAndKey=_signaturesOfAssetsByRecordIDAndKey;
 @property (strong, nonatomic) NSDictionary *webSharingIdentityDataByRecordID; // @synthesize webSharingIdentityDataByRecordID=_webSharingIdentityDataByRecordID;
 
 + (id)fetchCurrentUserRecordOperation;

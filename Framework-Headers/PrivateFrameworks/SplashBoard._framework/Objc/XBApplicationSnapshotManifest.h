@@ -20,12 +20,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) XBApplicationSnapshotManifestImpl *manifestImpl; // @synthesize manifestImpl=_manifestImpl;
+@property (readonly, weak, nonatomic) XBApplicationSnapshotManifestImpl *manifestImpl; // @synthesize manifestImpl=_manifestImpl;
 @property (readonly) Class superclass;
 
 + (id)debugDescription;
 + (void)deleteAllSystemSnapshots;
 + (void)initialize;
++ (unsigned long long)maximumInFlightDataSize;
+- (void).cxx_destruct;
 - (void)beginSnapshotAccessTransaction:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)createSnapshotWithGroupID:(id)arg1;
 - (id)createVariantForSnapshot:(id)arg1 withIdentifier:(id)arg2;

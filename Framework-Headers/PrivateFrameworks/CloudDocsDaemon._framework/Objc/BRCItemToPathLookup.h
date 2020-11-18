@@ -16,7 +16,6 @@
     BRCRelativePath *_parentPath;
     BRCRelativePath *_matchByFileID;
     BRCRelativePath *_matchByDocumentID;
-    BRCRelativePath *_matchByEnclosure;
     BRCRelativePath *_matchByPath;
     unsigned long long _parentFileID;
     BOOL _fileSystemIDMayStillExist;
@@ -24,7 +23,6 @@
     struct {
         unsigned int byFileID:1;
         unsigned int byDocumentID:1;
-        unsigned int byEnclosure:1;
         unsigned int byPath:1;
         unsigned int parent:1;
     } _fetched;
@@ -38,13 +36,10 @@
 @property (readonly, nonatomic) BOOL fileSystemIDMayStillExist;
 @property (readonly, nonatomic) BRCRelativePath *parentPath;
 
-+ (id)_resolveEnclosureWithEnclosureFd:(int)arg1 serverZone:(id)arg2 expectedDocumentID:(unsigned int)arg3 expectedFileName:(id)arg4 cleanupFaults:(BOOL)arg5;
 + (id)lookupForItem:(id)arg1;
 + (id)lookupForServerItem:(id)arg1 cleanupFaults:(BOOL)arg2;
-+ (id)resolveEnclosureWithPath:(id)arg1 cleanupFaults:(BOOL)arg2;
 - (void).cxx_destruct;
 - (BOOL)_fetchByDocumentID;
-- (BOOL)_fetchByEnclosure;
 - (BOOL)_fetchByFileID;
 - (BOOL)_fetchByPath;
 - (void)_fetchParent;

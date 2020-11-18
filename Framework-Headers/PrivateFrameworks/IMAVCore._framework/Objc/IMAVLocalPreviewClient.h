@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IMAVCore/AVConferencePreviewClientDelegate-Protocol.h>
 #import <IMAVCore/IMSystemMonitorListener-Protocol.h>
@@ -36,14 +36,13 @@
 - (void)avChat:(id)arg1 setLocalPortraitRatio:(struct CGSize)arg2 localLandscapeRatio:(struct CGSize)arg3;
 - (void)beginAnimationToPIP;
 - (void)beginAnimationToPreview;
-- (void)cameraDidBecomeAvailable:(unsigned int)arg1;
+- (void)cameraDidBecomeAvailableForUniqueID:(id)arg1;
 - (void)dealloc;
 - (void)didChangeLocalScreenAttributes:(id)arg1;
 - (void)didChangeLocalVideoAttributes:(id)arg1;
 - (void)didPausePreview;
-- (void)didReceiveCommError;
-- (void)didReceiveErrorFromCamera:(unsigned int)arg1 error:(id)arg2;
-- (void)didReceiveFirstPreviewFrameFromCamera:(unsigned int)arg1;
+- (void)didReceiveErrorFromCameraUniqueID:(id)arg1 error:(id)arg2;
+- (void)didReceiveFirstPreviewFrameFromCameraUniqueID:(id)arg1;
 - (void)didStartPreview;
 - (void)didStopPreview;
 - (void)endAnimationToPIP;

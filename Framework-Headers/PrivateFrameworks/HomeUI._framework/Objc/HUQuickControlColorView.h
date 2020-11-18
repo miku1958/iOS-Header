@@ -10,12 +10,13 @@
 #import <HomeUI/HUQuickControlColorPickerViewInteractionDelegate-Protocol.h>
 #import <HomeUI/HUQuickControlInteractiveView-Protocol.h>
 
-@class HFColorPalette, HFColorPaletteColor, HUColorPaletteView, HUColorPickerView, HUQuickControlCircleButton, HUQuickControlSegmentedControl, HUQuickControlViewProfile, NSLayoutConstraint, NSString;
+@class HFColorPalette, HFColorPaletteColor, HUColorPaletteView, HUColorPickerView, HUQuickControlCircleButton, HUQuickControlColorViewProfile, HUQuickControlSegmentedControl, NSLayoutConstraint, NSString;
 @protocol HUQuickControlColorViewInteractionDelegate, HUQuickControlInteractiveView;
 
 @interface HUQuickControlColorView : UIView <HUQuickControlColorPickerViewInteractionDelegate, HUQuickControlColorPaletteViewInteractionDelegate, HUQuickControlInteractiveView>
 {
-    HUQuickControlViewProfile *_profile;
+    BOOL _showPickerModeControl;
+    HUQuickControlColorViewProfile *_profile;
     id<HUQuickControlColorViewInteractionDelegate> _interactionDelegate;
     HFColorPalette *_colorPalette;
     unsigned long long _activeMode;
@@ -40,10 +41,11 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<HUQuickControlColorViewInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
-@property (copy, nonatomic) HUQuickControlViewProfile *profile; // @synthesize profile=_profile;
+@property (copy, nonatomic) HUQuickControlColorViewProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) id secondaryValue;
 @property (strong, nonatomic) HFColorPaletteColor *selectedColor; // @synthesize selectedColor=_selectedColor;
 @property (readonly, nonatomic, getter=isSelectedColorInPalette) BOOL selectedColorInPalette;
+@property (nonatomic) BOOL showPickerModeControl; // @synthesize showPickerModeControl=_showPickerModeControl;
 @property (nonatomic) long long sizeSubclass;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) HUQuickControlCircleButton *switchButton; // @synthesize switchButton=_switchButton;

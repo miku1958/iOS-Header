@@ -25,8 +25,8 @@
 
 + (id)appWithPID:(int)arg1 bundleID:(id)arg2;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_commonInit;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

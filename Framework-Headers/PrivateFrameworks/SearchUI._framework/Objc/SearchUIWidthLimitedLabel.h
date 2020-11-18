@@ -21,6 +21,7 @@
 @property (readonly) Class superclass;
 @property double width; // @synthesize width;
 
+- (struct CGSize)originalFittingSizeForSize:(struct CGSize)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 
 @end

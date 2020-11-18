@@ -39,7 +39,7 @@
     NSURL *_defaultCalendarURL;
     NSString *_uid;
     id<CalDAVAccount> _account;
-    NSSet *_calendarUserAddresses;
+    NSSet *_preferredCalendarUserAddresses;
     NSString *_fullName;
     NSString *_principalPath;
     NSString *_inboxCTag;
@@ -51,6 +51,7 @@
     NSMutableDictionary *_calendarUserAddressesPerCalendar;
     NSURL *_preferredCalendarUserAddress;
     NSString *_preferredCalendarEmailAddress;
+    NSString *_preferredCalendarPhoneNumber;
     NSMutableSet *_addedCalendars;
     NSMutableSet *_modifiedCalendars;
     CalDAVRefreshContext *_refreshContext;
@@ -66,7 +67,6 @@
 @property (strong, nonatomic) NSString *calendarHomePushKey; // @synthesize calendarHomePushKey=_calendarHomePushKey;
 @property (strong, nonatomic) NSString *calendarHomeSyncToken;
 @property (strong, nonatomic) NSURL *calendarHomeURL; // @synthesize calendarHomeURL=_calendarHomeURL;
-@property (strong, nonatomic) NSSet *calendarUserAddresses; // @synthesize calendarUserAddresses=_calendarUserAddresses;
 @property (strong, nonatomic) NSMutableDictionary *calendarUserAddressesPerCalendar; // @synthesize calendarUserAddressesPerCalendar=_calendarUserAddressesPerCalendar;
 @property (readonly, nonatomic) NSSet *calendars;
 @property (nonatomic) BOOL calendarsAreDirty; // @synthesize calendarsAreDirty=_calendarsAreDirty;
@@ -98,7 +98,9 @@
 @property (strong, nonatomic) NSString *notificationURLString; // @synthesize notificationURLString=_notificationURLString;
 @property (strong, nonatomic) NSURL *outboxURL; // @synthesize outboxURL=_outboxURL;
 @property (strong, nonatomic) NSString *preferredCalendarEmailAddress; // @synthesize preferredCalendarEmailAddress=_preferredCalendarEmailAddress;
+@property (strong, nonatomic) NSString *preferredCalendarPhoneNumber; // @synthesize preferredCalendarPhoneNumber=_preferredCalendarPhoneNumber;
 @property (strong, nonatomic) NSURL *preferredCalendarUserAddress; // @synthesize preferredCalendarUserAddress=_preferredCalendarUserAddress;
+@property (strong, nonatomic) NSSet *preferredCalendarUserAddresses; // @synthesize preferredCalendarUserAddresses=_preferredCalendarUserAddresses;
 @property (strong, nonatomic) NSString *principalPath; // @synthesize principalPath=_principalPath;
 @property (strong, nonatomic) NSURL *principalURL;
 @property (strong, nonatomic) NSDictionary *pushTransports; // @synthesize pushTransports=_pushTransports;
@@ -128,7 +130,7 @@
 - (id)additionalHeaderValues;
 - (id)calendarOfType:(int)arg1 atURL:(id)arg2 withOptions:(id)arg3;
 - (BOOL)calendarUserAddressIsEquivalentToURL:(id)arg1;
-- (id)calendarUserAddressesForCalendar:(id)arg1;
+- (id)calendarUserAddresses;
 - (BOOL)clearCalendarChanges;
 - (id)clientToken;
 - (void)clientTokenRequestedByServer;
@@ -154,6 +156,7 @@
 - (unsigned long long)oauthVariant;
 - (id)password;
 - (long long)port;
+- (id)preferredCalendarUserAddressesForCalendar:(id)arg1;
 - (void)prepareCalendarsForSyncWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)promptUserForNewCoreDAVPasswordWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)removeCalendar:(id)arg1;
@@ -161,7 +164,7 @@
 - (id)scheme;
 - (id)serverComplianceClasses;
 - (id)serverRoot;
-- (void)setCalendarUserAddresses:(id)arg1 forCalendar:(id)arg2;
+- (void)setPreferredCalendarUserAddresses:(id)arg1 forCalendar:(id)arg2;
 - (BOOL)shouldCompressRequests;
 - (BOOL)shouldFailAllTasks;
 - (BOOL)shouldHandleHTTPCookiesForURL:(id)arg1;

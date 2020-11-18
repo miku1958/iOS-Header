@@ -4,15 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CNContactVCardSerialization : NSObject
 {
 }
 
++ (void)contactsWithData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)contactsWithData:(id)arg1 error:(id *)arg2;
++ (void)contactsWithData:(id)arg1 scheduler:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)contactsWithMECARDString:(id)arg1 error:(id *)arg2;
 + (id)dataWithContacts:(id)arg1 error:(id *)arg2;
++ (void)dataWithContacts:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)dataWithContacts:(id)arg1 options:(id)arg2 error:(id *)arg3;
++ (id)dataWithContacts:(id)arg1 options:(id)arg2 error:(id *)arg3 environment:(id)arg4;
++ (void)dataWithContacts:(id)arg1 options:(id)arg2 scheduler:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)descriptorForRequiredKeys;
 + (id)descriptorForRequiredKeysWithOptions:(id)arg1;
 + (id)descriptorForRequiredKeysWithOptions:(id)arg1 description:(id)arg2;

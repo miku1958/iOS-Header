@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/BBRemoteDataProvider-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class BBDataProviderProxy, HMDHomeManager, NSMutableDictionary, NSString;
 
-@interface HMDBulletinProvider : NSObject <NSSecureCoding, BBRemoteDataProvider>
+@interface HMDBulletinProvider : HMFObject <NSSecureCoding, BBRemoteDataProvider>
 {
     BBDataProviderProxy *_proxy;
     NSMutableDictionary *_bulletins;
@@ -23,7 +23,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
-@property (nonatomic) BBDataProviderProxy *proxy; // @synthesize proxy=_proxy;
+@property (strong, nonatomic) BBDataProviderProxy *proxy; // @synthesize proxy=_proxy;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
@@ -44,6 +44,7 @@
 - (void)removeBulletin:(id)arg1;
 - (void)removeBulletinWithRecordID:(id)arg1;
 - (id)sectionDisplayName;
+- (id)sectionIcon;
 - (id)sectionIdentifier;
 - (id)sectionParameters;
 - (id)sortDescriptors;

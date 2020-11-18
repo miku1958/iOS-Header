@@ -11,13 +11,13 @@
 @interface NTKZeusAnalogFaceView : NTKSpriteKitAnalogFaceView
 {
     BOOL _isEditing;
+    BOOL _showHandsInColorEditing;
 }
 
 @property (readonly, nonatomic) NTKZeusAnalogScene *analogScene; // @dynamic analogScene;
 
 + (id)_swatchColorForColorOption:(id)arg1;
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1;
-+ (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
@@ -27,6 +27,8 @@
 - (void)_configureReusableTimeView:(id)arg1;
 - (BOOL)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (double)_handAlphaForEditing:(BOOL)arg1;
+- (id)_handInlayColorForFaceColor:(unsigned long long)arg1;
+- (id)_handStrokeColorForFaceColor:(unsigned long long)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
@@ -37,9 +39,13 @@
 - (void)_prepareForStatusChange:(BOOL)arg1;
 - (void)_prepareTimeViewForReuse:(id)arg1;
 - (double)_secondHandAlphaForDensity:(unsigned long long)arg1 isEditing:(BOOL)arg2;
+- (id)_secondHandColorForFaceColor:(unsigned long long)arg1;
+- (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (struct CGPoint)_timeTravelStatusModuleCenter;
 - (BOOL)_timeViewBehindContentForEditMode:(long long)arg1;
+- (void)_updateDateComplicationPositionIfNecessary;
 - (double)_verticalPaddingForStatusBar;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

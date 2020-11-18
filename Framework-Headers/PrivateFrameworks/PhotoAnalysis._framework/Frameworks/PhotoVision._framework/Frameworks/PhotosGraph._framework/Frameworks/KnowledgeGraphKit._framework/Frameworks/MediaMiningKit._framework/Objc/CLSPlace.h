@@ -29,6 +29,7 @@
 + (id)placeWithLocation:(id)arg1;
 + (id)placeWithPlacemark:(id)arg1;
 - (void).cxx_destruct;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqualToPlace:(id)arg1;

@@ -4,28 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotoLibraryServices/CVMLPhotosFaceRepresentation-Protocol.h>
 #import <PhotoLibraryServices/NSObject-Protocol.h>
+#import <PhotoLibraryServices/PFPhotosFaceRepresentation-Protocol.h>
+#import <PhotoLibraryServices/PLSyncableObject-Protocol.h>
 
-@class NSDate, NSSet;
+@class NSDate, NSSet, NSString;
 @protocol PLSyncablePerson;
 
-@protocol PLSyncableDetectedFace <NSObject, CVMLPhotosFaceRepresentation>
+@protocol PLSyncableDetectedFace <NSObject, PFPhotosFaceRepresentation, PLSyncableObject>
 
 @property (copy, nonatomic) NSDate *adjustmentVersion;
 @property (nonatomic) double centerX;
 @property (nonatomic) double centerY;
 @property (nonatomic) short cloudLocalState;
+@property (nonatomic) int cloudNameSource;
 @property (nonatomic) int faceAlgorithmVersion;
 @property (nonatomic) BOOL hidden;
+@property (readonly, nonatomic) BOOL isTrainingFace;
 @property (nonatomic) BOOL manual;
-@property (nonatomic) BOOL nameSourceUser;
+@property (nonatomic) int nameSource;
 @property (strong, nonatomic) id<PLSyncablePerson> person;
 @property (strong, nonatomic) id<PLSyncablePerson> personBeingKeyFace;
 @property (strong, nonatomic) NSSet *rejectedPersons;
 @property (nonatomic) double size;
-@property (nonatomic) int sourceHeight;
-@property (nonatomic) int sourceWidth;
+@property (nonatomic) long long sourceHeight;
+@property (nonatomic) long long sourceWidth;
+@property (nonatomic) int trainingType;
 
+- (NSString *)pointerDescription;
+- (NSString *)syncDescription;
 @end
 

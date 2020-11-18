@@ -10,6 +10,8 @@
 {
 }
 
+@property (readonly, nonatomic) unsigned int byteCapacity; // @dynamic byteCapacity;
+@property (nonatomic) unsigned int byteLength; // @dynamic byteLength;
 @property (readonly, nonatomic) void *data;
 @property (readonly, nonatomic) long long maximumPacketSize;
 @property (readonly, nonatomic) unsigned int packetCapacity;

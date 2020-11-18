@@ -11,6 +11,9 @@
 }
 
 + (BOOL)isLanguageSupportedByNSLinguisticTaggerForLanguageIdentification:(id)arg1;
++ (BOOL)isLanguageSupportedBySmartPunctuation:(id)arg1;
++ (BOOL)isLanguageSupportedForLemmatization:(id)arg1;
++ (BOOL)isLanguageSupportedForPartOfSpeech:(id)arg1;
 + (id)normalizeForPersonalization:(id)arg1;
 + (BOOL)prefixInArray:(id)arg1 withArray:(id)arg2;
 + (id)removeEmoji:(id)arg1;

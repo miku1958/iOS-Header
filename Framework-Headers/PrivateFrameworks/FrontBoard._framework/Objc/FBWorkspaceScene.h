@@ -12,7 +12,7 @@
 #import <FrontBoard/FBSceneClient-Protocol.h>
 #import <FrontBoard/FBWorkspaceServerSceneEventHandler-Protocol.h>
 
-@class FBSSceneClientSettings, FBSSceneSettings, FBSSceneSpecification, FBSSerialQueue, FBUISceneIdentity, FBWorkspace, NSMutableArray, NSString;
+@class FBSSceneClientSettings, FBSSceneSettings, FBSSceneSpecification, FBSSerialQueue, FBWorkspace, NSMutableArray, NSString;
 @protocol FBSSceneHostAgent, FBSceneHost, OS_dispatch_queue;
 
 @interface FBWorkspaceScene : NSObject <FBWorkspaceServerSceneEventHandler, FBSSceneHandle, FBSSceneAgentProxy, BSDescriptionProviding, FBSceneClient>
@@ -22,7 +22,6 @@
     NSObject<OS_dispatch_queue> *_workspaceQueue;
     NSString *_identifier;
     FBSSceneSpecification *_specification;
-    FBUISceneIdentity *_identity;
     FBSSceneSettings *_settings;
     FBSSceneClientSettings *_clientSettings;
     BOOL _handledInitialSettingsDiff;
@@ -42,7 +41,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) id<FBSceneHost> host; // @synthesize host=_host;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, copy, nonatomic) FBUISceneIdentity *identity; // @synthesize identity=_identity;
 @property (readonly, weak, nonatomic) FBWorkspace *parentWorkspace; // @synthesize parentWorkspace=_workspace;
 @property (copy, nonatomic, getter=_workspaceQueue_sceneSettings, setter=_workspaceQueue_setSceneSettings:) FBSSceneSettings *sceneSettings; // @synthesize sceneSettings=_settings;
 @property (nonatomic, getter=_workspaceQueue_hasSentCreationEvent, setter=_workspaceQueue_setSentCreationEvent:) BOOL sentCreationEvent; // @synthesize sentCreationEvent=_sentCreationEvent;
@@ -70,12 +68,11 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)host:(id)arg1 configureWithDefinition:(id)arg2 parameters:(id)arg3;
-- (void)host:(id)arg1 configureWithInitialClientSettings:(id)arg2;
 - (void)host:(id)arg1 didInvalidateWithTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)host:(id)arg1 didReceiveActions:(id)arg2;
 - (void)host:(id)arg1 didUpdateSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)hostProcess;
-- (id)initWithParentWorkspace:(id)arg1 identity:(id)arg2;
+- (id)initWithParentWorkspace:(id)arg1 identifier:(id)arg2;
 - (void)invalidate;
 - (id)openSessionWithName:(id)arg1 executionPolicy:(id)arg2;
 - (id)parameters;

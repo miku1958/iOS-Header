@@ -25,6 +25,7 @@
 
 - (long long)compareBuildVersion:(id)arg1 withPrecision:(long long)arg2;
 - (long long)compareBuildVersionString:(id)arg1 withPrecision:(long long)arg2;
+- (void)dealloc;
 - (id)description;
 - (id)initWithString:(id)arg1;
 

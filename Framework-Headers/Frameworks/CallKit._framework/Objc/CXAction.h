@@ -41,7 +41,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fail;
-- (void)failWithError:(id)arg1;
 - (void)fulfill;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

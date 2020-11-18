@@ -212,12 +212,13 @@ struct Context {
     unsigned int _field13;
     unsigned int _field14;
     unsigned int _field15;
-    struct ObjectCache *_field16;
-    id _field17;
-    unsigned int _field18;
-    float _field19;
-    struct Commit *_field20;
-    struct Generic _field21;
+    unsigned int _field16;
+    struct ObjectCache *_field17;
+    id _field18;
+    unsigned int _field19;
+    float _field20;
+    struct Commit *_field21;
+    struct Generic _field22;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -238,6 +239,9 @@ struct Data {
     unsigned int :4;
     unsigned int :4;
     unsigned int :4;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -290,6 +294,8 @@ struct Display {
     double _field19;
     unsigned int _field20;
     struct DisplayShmemInfo _field21;
+    unsigned int _field22;
+    struct EDIDAttributes _field23;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -334,6 +340,13 @@ struct DisplayShmemInfo {
 
 struct DisplayTimings;
 
+struct EDIDAttributes {
+    int dolbyVision;
+    int pqEOTF;
+    int bt2020YCC;
+    int hdrStaticMetadataType1;
+};
+
 struct Ext;
 
 struct Generic {
@@ -369,12 +382,11 @@ struct Layer {
     struct Atomic _field2;
     struct Data _field3;
     struct Ref<CA::Render::Object> _field4;
-    struct Ref<CA::Render::Object> _field5;
-    struct Ref<CA::Render::TypedArray<CA::Render::Layer>> _field6;
-    struct Layer *_field7;
-    struct Ref<CA::Render::Layer::Ext> _field8;
-    struct Ref<CA::Render::TypedArray<CA::Render::Animation>> _field9;
-    struct Ref<CA::Render::Handle> _field10;
+    struct Ref<CA::Render::TypedArray<CA::Render::Layer>> _field5;
+    struct Layer *_field6;
+    struct Ref<CA::Render::Layer::Ext> _field7;
+    struct Ref<CA::Render::TypedArray<CA::Render::Animation>> _field8;
+    struct Ref<CA::Render::Handle> _field9;
 };
 
 struct LayoutList;
@@ -396,7 +408,7 @@ struct Mode {
             unsigned int height:16;
             unsigned int refresh_rate:24;
             unsigned int is_virtual:1;
-            unsigned int pixel_format:2;
+            unsigned int pixel_format:4;
             unsigned int color_range:2;
         } s;
         unsigned long long uint64;
@@ -509,13 +521,23 @@ struct Server {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
+    unsigned int :1;
 };
 
 struct Shape;
 
 struct Shared;
 
-struct Shmem;
+struct Shmem {
+    CDUnknownFunctionPointerType *_field1;
+    struct Atomic _field2;
+    unsigned long long _field3;
+    void *_field4;
+    unsigned int _field5;
+    struct Atomic _field6;
+    CDUnknownFunctionPointerType _field7;
+    void *_field8;
+};
 
 struct SpinLock {
     CDStruct_fcaf9308 _field1;
@@ -590,6 +612,7 @@ struct Vector;
 
 struct Weak<const void *> {
     id _field1;
+    BOOL _field2;
 };
 
 struct Weak<id> {
@@ -617,6 +640,7 @@ struct _CAEAGLNativeWindow {
     struct CAEAGLBuffer *_field18;
     id _field19;
     struct Atomic _field20;
+    unsigned long long _field21;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;

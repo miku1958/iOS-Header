@@ -6,14 +6,13 @@
 
 #import <UIKit/UICollectionViewController.h>
 
-#import <PhotosUICore/PXPeopleStripCollectionViewCellDataSource-Protocol.h>
 #import <PhotosUICore/UICollectionViewDataSourcePrefetching-Protocol.h>
 #import <PhotosUICore/UICollectionViewDelegateFlowLayout-Protocol.h>
 
 @class NSString, PXPeopleDataSource, PXPeopleStripCollectionViewCell;
 @protocol PXPeopleStripCollectionViewControllerDelegate;
 
-@interface PXPeopleStripCollectionViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching, PXPeopleStripCollectionViewCellDataSource>
+@interface PXPeopleStripCollectionViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching>
 {
     id<PXPeopleStripCollectionViewControllerDelegate> _delegate;
     PXPeopleDataSource *_dataSource;
@@ -34,11 +33,7 @@
 - (void)collectionView:(id)arg1 prefetchItemsAtIndexPaths:(id)arg2;
 - (struct CGPoint)collectionView:(id)arg1 targetContentOffsetForProposedContentOffset:(struct CGPoint)arg2;
 - (void)contentWidthChanged;
-- (id)currentLabelFont;
 - (id)initWithDataSource:(id)arg1 delegate:(id)arg2;
-- (id)nameStringForPeople:(id)arg1 withWidth:(double)arg2;
-- (long long)numberOfSectionsInCollectionView:(id)arg1;
-- (double)verticalSpacingForFaceAndText;
 - (void)viewDidLoad;
 
 @end

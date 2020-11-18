@@ -8,7 +8,7 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPRecord, CKDPRecordSaveRequestConflictLoserUpdate, CKDPRecordSaveRequestShareIdUpdate, CKDPRecordSaveRequestShareSaveInfo, NSMutableArray, NSString;
+@class CKDPRecord, CKDPRecordSaveRequestConflictLoserUpdate, CKDPRecordSaveRequestShareIdUpdate, CKDPRequestedFields, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDPRecordSaveRequest : PBRequest <NSCopying>
@@ -17,10 +17,10 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_conflictLosersToResolves;
     NSString *_etag;
     NSMutableArray *_fieldsToDeleteIfExistOnMerges;
-    CKDPRecordSaveRequestShareSaveInfo *_oBSOLETEShareSaveInfo;
     NSString *_parentChainProtectionInfoTag;
     CKDPRecord *_record;
     NSString *_recordProtectionInfoTag;
+    CKDPRequestedFields *_requestedFields;
     int _saveSemantics;
     NSString *_shareEtag;
     CKDPRecordSaveRequestShareIdUpdate *_shareIDUpdate;
@@ -39,19 +39,19 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasConflictLoserUpdate;
 @property (readonly, nonatomic) BOOL hasEtag;
 @property (nonatomic) BOOL hasMerge;
-@property (readonly, nonatomic) BOOL hasOBSOLETEShareSaveInfo;
 @property (readonly, nonatomic) BOOL hasParentChainProtectionInfoTag;
 @property (readonly, nonatomic) BOOL hasRecord;
 @property (readonly, nonatomic) BOOL hasRecordProtectionInfoTag;
+@property (readonly, nonatomic) BOOL hasRequestedFields;
 @property (nonatomic) BOOL hasSaveSemantics;
 @property (readonly, nonatomic) BOOL hasShareEtag;
 @property (readonly, nonatomic) BOOL hasShareIDUpdate;
 @property (readonly, nonatomic) BOOL hasZoneProtectionInfoTag;
 @property (nonatomic) BOOL merge; // @synthesize merge=_merge;
-@property (strong, nonatomic) CKDPRecordSaveRequestShareSaveInfo *oBSOLETEShareSaveInfo; // @synthesize oBSOLETEShareSaveInfo=_oBSOLETEShareSaveInfo;
 @property (strong, nonatomic) NSString *parentChainProtectionInfoTag; // @synthesize parentChainProtectionInfoTag=_parentChainProtectionInfoTag;
 @property (strong, nonatomic) CKDPRecord *record; // @synthesize record=_record;
 @property (strong, nonatomic) NSString *recordProtectionInfoTag; // @synthesize recordProtectionInfoTag=_recordProtectionInfoTag;
+@property (strong, nonatomic) CKDPRequestedFields *requestedFields; // @synthesize requestedFields=_requestedFields;
 @property (nonatomic) int saveSemantics; // @synthesize saveSemantics=_saveSemantics;
 @property (strong, nonatomic) NSString *shareEtag; // @synthesize shareEtag=_shareEtag;
 @property (strong, nonatomic) CKDPRecordSaveRequestShareIdUpdate *shareIDUpdate; // @synthesize shareIDUpdate=_shareIDUpdate;

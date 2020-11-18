@@ -36,6 +36,7 @@
 @property (readonly, nonatomic) NSString *irisStillImageUUID;
 @property (readonly, nonatomic) NSURL *irisVideoPersistenceURL;
 @property (readonly, copy, nonatomic) NSURL *localPersistenceURL; // @synthesize localPersistenceURL=_localPersistenceURL;
+@property (readonly, nonatomic) unsigned long long mediaSubtypes;
 @property (readonly, nonatomic) unsigned long long mediaType;
 @property (readonly, nonatomic) unsigned long long numberOfRepresentedAssets;
 @property (readonly, copy, nonatomic) NSURL *persistenceURL;

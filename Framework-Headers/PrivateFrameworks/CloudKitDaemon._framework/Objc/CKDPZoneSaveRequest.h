@@ -13,13 +13,10 @@
 __attribute__((visibility("hidden")))
 @interface CKDPZoneSaveRequest : PBRequest <NSCopying>
 {
-    NSString *_etag;
     CKDPZone *_recordZone;
     NSString *_zoneProtectionInfoTag;
 }
 
-@property (strong, nonatomic) NSString *etag; // @synthesize etag=_etag;
-@property (readonly, nonatomic) BOOL hasEtag;
 @property (readonly, nonatomic) BOOL hasRecordZone;
 @property (readonly, nonatomic) BOOL hasZoneProtectionInfoTag;
 @property (strong, nonatomic) CKDPZone *recordZone; // @synthesize recordZone=_recordZone;

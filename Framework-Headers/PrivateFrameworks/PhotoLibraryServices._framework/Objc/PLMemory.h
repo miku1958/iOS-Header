@@ -16,12 +16,14 @@
 }
 
 @property (strong, nonatomic) NSData *assetListPredicate; // @dynamic assetListPredicate;
+@property (strong, nonatomic) NSData *blacklistedFeature; // @dynamic blacklistedFeature;
 @property (nonatomic) short category; // @dynamic category;
 @property (nonatomic) short cloudLocalState; // @dynamic cloudLocalState;
 @property (strong, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property (strong, nonatomic) NSSet *curatedAssets; // @dynamic curatedAssets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSSet *extendedCuratedAssets; // @dynamic extendedCuratedAssets;
 @property (nonatomic) BOOL favorite; // @dynamic favorite;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PLManagedAsset *keyAsset; // @dynamic keyAsset;
@@ -31,32 +33,42 @@
 @property (strong, nonatomic) NSSet *movieCuratedAssets; // @dynamic movieCuratedAssets;
 @property (strong, nonatomic) NSData *movieData; // @dynamic movieData;
 @property (nonatomic) BOOL needsPersistenceUpdate; // @synthesize needsPersistenceUpdate=_needsPersistenceUpdate;
+@property (nonatomic) short notificationState; // @dynamic notificationState;
 @property (nonatomic) BOOL pending; // @dynamic pending;
+@property (nonatomic) long long pendingPlayCount; // @dynamic pendingPlayCount;
+@property (nonatomic) long long pendingShareCount; // @dynamic pendingShareCount;
+@property (nonatomic) long long pendingViewCount; // @dynamic pendingViewCount;
 @property (strong, nonatomic) NSData *photosGraphData; // @dynamic photosGraphData;
 @property (nonatomic) long long photosGraphVersion; // @dynamic photosGraphVersion;
+@property (nonatomic) long long playCount; // @dynamic playCount;
 @property (nonatomic) BOOL rejected; // @dynamic rejected;
 @property (strong, nonatomic) NSSet *representativeAssets; // @dynamic representativeAssets;
 @property (nonatomic) double score; // @dynamic score;
+@property (nonatomic) long long shareCount; // @dynamic shareCount;
 @property (nonatomic) short subcategory; // @dynamic subcategory;
 @property (strong, nonatomic) NSString *subtitle; // @dynamic subtitle;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title; // @dynamic title;
 @property (nonatomic) BOOL userCreated; // @dynamic userCreated;
 @property (strong, nonatomic) NSString *uuid; // @dynamic uuid;
+@property (nonatomic) long long viewCount; // @dynamic viewCount;
 
++ (id)_memoriesMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(long long)arg3 inManagedObjectContext:(id)arg4;
++ (BOOL)_shouldPrefetchMemoryMovieCuratedAssetsInPhotoLibrary:(id)arg1;
 + (id)baseSearchIndexPredicate;
 + (void)deleteMemoriesWithObjectIDs:(id)arg1 inPhotoLibrary:(id)arg2;
 + (void)deletePendingMemoriesCreatedBefore:(id)arg1 inPhotoLibrary:(id)arg2;
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)insertIntoPhotoLibrary:(id)arg1 withUUID:(id)arg2 title:(id)arg3 subtitle:(id)arg4 creationDate:(id)arg5;
-+ (id)memoriesMatchingPredicate:(id)arg1 inManagedObjectContext:(id)arg2;
++ (id)memoriesToPrefetchInPhotoLibrary:(id)arg1;
 + (id)memoriesToUploadInPhotoLibrary:(id)arg1 limit:(long long)arg2;
-+ (id)memoriesWithUUID:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)memoriesWithUUIDs:(id)arg1 inPhotoLibrary:(id)arg2;
 + (id)memoryWithUUID:(id)arg1 inPhotoLibrary:(id)arg2;
-+ (void)resetCloudStateInPhotoLibrary:(id)arg1;
++ (void)resetCloudStateInPhotoLibrary:(id)arg1 hardReset:(BOOL)arg2;
 - (id)assetUUIDsForPreviewWithCount:(unsigned long long)arg1;
+- (id)calculateKeyAsset;
+- (id)cplFullRecord;
 - (id)cplMemoryChange;
 - (void)delete;
 - (void)didSave;
@@ -69,7 +81,6 @@
 - (id)searchIndexContents;
 - (BOOL)supportsCloudUpload;
 - (void)updateWithCPLMemoryChange:(id)arg1 inPhotoLibrary:(id)arg2;
-- (id)updatedKeyAsset;
 - (void)willSave;
 
 @end

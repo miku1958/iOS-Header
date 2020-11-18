@@ -21,7 +21,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL valid; // @synthesize valid=_valid;
 
-+ (void)becameFatallyBlocked:(id)arg1;
++ (void)becameFatallyBlocked:(id)arg1 index:(unsigned long long)arg2;
 + (id)getSilo;
 + (BOOL)isSupported;
 + (void)performSyncOnSilo:(id)arg1 invoker:(CDUnknownBlockType)arg2;

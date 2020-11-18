@@ -6,11 +6,10 @@
 
 #import <GeoServices/GEORouteMatcher.h>
 
-@class GEOMapAccess, GEOMotionContext, NSArray;
+@class GEOMotionContext, NSArray;
 
 @interface GEOTransitRouteMatcher : GEORouteMatcher
 {
-    GEOMapAccess *_mapAccess;
     GEOMotionContext *_motionContext;
     NSArray *_stationsOnRoute;
     NSArray *_routeMatchUpdaters;
@@ -20,6 +19,7 @@
 
 @property (readonly, nonatomic) double distanceToClosestWalkingSegment; // @synthesize distanceToClosestWalkingSegment=_distanceToClosestWalkingSegment;
 
+- (void).cxx_destruct;
 - (void)_considerCandidateMatch:(id)arg1;
 - (void)_finishRouteMatch:(id)arg1 previousRouteMatch:(id)arg2 forLocation:(id)arg3;
 - (void)_insertUpdater:(id)arg1 into:(id)arg2;
@@ -28,10 +28,8 @@
 - (void)_startRouteMatch;
 - (id)_stepForPointIndex:(unsigned int)arg1 previousStep:(id)arg2;
 - (BOOL)_stepsInSameRange:(id)arg1 nextStep:(id)arg2;
-- (void)dealloc;
 - (id)initWithRoute:(id)arg1 motionContext:(id)arg2;
 - (BOOL)isStationCoordinateOnRoute:(CDStruct_c3b9c2ee)arg1;
-- (id)mapAccess;
 - (id)motionContext;
 - (id)route;
 

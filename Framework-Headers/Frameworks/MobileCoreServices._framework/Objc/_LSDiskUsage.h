@@ -10,33 +10,37 @@
 #import <MobileCoreServices/NSSecureCoding-Protocol.h>
 
 @class NSMutableDictionary, NSNumber, NSString;
-@protocol OS_dispatch_queue;
 
 @interface _LSDiskUsage : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_bundleIdentifier;
     NSMutableDictionary *_usage;
-    NSObject<OS_dispatch_queue> *_queue;
+    id _validationToken;
 }
 
 @property (readonly, nonatomic) NSNumber *dynamicUsage; // @dynamic dynamicUsage;
 @property (readonly, nonatomic) NSNumber *onDemandResourcesUsage; // @dynamic onDemandResourcesUsage;
+@property (readonly, nonatomic) NSNumber *sharedUsage; // @dynamic sharedUsage;
 @property (readonly, nonatomic) NSNumber *staticUsage; // @dynamic staticUsage;
 
 + (id)ODRConnection;
 + (id)ODRUsageForBundleIdentifier:(id)arg1 error:(id *)arg2;
-+ (id)dynamicUsageForBundleIdentifier:(id)arg1 error:(id *)arg2;
++ (id)_serverQueue;
++ (id)mobileInstallationQueue;
++ (id)propertyQueue;
 + (BOOL)supportsSecureCoding;
++ (id)usageFromMobileInstallationForBundleIdentifier:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 - (BOOL)_fetchWithXPCConnection:(id)arg1 error:(id *)arg2;
-- (id)_initWithBundleIdentifier:(id)arg1 alreadyKnownUsage:(id)arg2;
+- (id)_initWithBundleIdentifier:(id)arg1 alreadyKnownUsage:(id)arg2 validationToken:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)fetchClientSideWithError:(id *)arg1;
-- (BOOL)fetchServerSideWithError:(id *)arg1;
+- (BOOL)fetchServerSideWithConnection:(id)arg1 error:(id *)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (void)removeAllCachedUsageValues;
 
 @end
 

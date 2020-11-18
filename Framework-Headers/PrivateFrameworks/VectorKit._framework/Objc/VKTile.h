@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class VKTilePool;
 
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) const Matrix_08d701e4 *matrix;
 @property (readonly, nonatomic) const Matrix_99e705ad *shaderMatrix;
 @property (readonly, nonatomic) double tileWidth;
-@property (readonly) shared_ptr_696716c4 viewConstantData;
+@property (readonly, nonatomic) const shared_ptr_696716c4 *viewConstantData;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

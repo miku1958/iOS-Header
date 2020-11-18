@@ -27,6 +27,7 @@
 - (struct CGColor *)evaluatedColorFromSHVector: /* Error: Ran out of types for this method. */;
 - (void)generateCubemapFromLight:(unsigned long long)arg1;
 - (void)generateSphericalHarmonicsFromLight:(unsigned long long)arg1;
+- (id)generateTexture:(unsigned long long)arg1;
 - (id)initWithIESProfile:(id)arg1;
 - (void)setSphericalHarmonicsCoefficients:(id)arg1;
 

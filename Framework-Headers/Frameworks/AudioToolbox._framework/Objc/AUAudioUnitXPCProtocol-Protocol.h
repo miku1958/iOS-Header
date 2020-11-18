@@ -6,7 +6,7 @@
 
 #import <AudioToolbox/_AURemoteParameterSynchronization-Protocol.h>
 
-@class AUAudioUnitProperty, AVAudioFormat, CAXPCObject, NSData, NSString;
+@class AUAudioUnitProperty, AUAudioUnitViewConfiguration, AVAudioFormat, CAXPCObject, NSArray, NSData, NSString;
 
 @protocol AUAudioUnitXPCProtocol <_AURemoteParameterSynchronization>
 - (void)addPropertyObserver:(AUAudioUnitProperty *)arg1 context:(unsigned long long)arg2;
@@ -23,10 +23,13 @@
 - (void)parametersForOverviewWithCount:(long long)arg1 reply:(void (^)(NSArray *))arg2;
 - (void)removePropertyObserver:(AUAudioUnitProperty *)arg1 context:(unsigned long long)arg2;
 - (void)reset;
+- (void)selectViewConfiguration:(AUAudioUnitViewConfiguration *)arg1;
 - (void)setBusCount:(unsigned long long)arg1 scope:(unsigned int)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)setBusFormat:(unsigned int)arg1 scope:(unsigned int)arg2 format:(AVAudioFormat *)arg3 reply:(void (^)(NSArray *, NSError *))arg4;
 - (void)setValue:(id)arg1 forKey:(NSString *)arg2 reply:(void (^)(NSArray *))arg3;
 - (void)setValue:(id)arg1 forProperty:(AUAudioUnitProperty *)arg2 reply:(void (^)(NSArray *))arg3;
+- (void)setWorkIntervalPort:(CAXPCObject *)arg1;
+- (void)supportedViewConfigurations:(NSArray *)arg1 reply:(void (^)(NSIndexSet *))arg2;
 - (void)uninitialize:(void (^)(void))arg1;
 - (void)valueForKey:(NSString *)arg1 reply:(void (^)(id))arg2;
 - (void)valueForProperty:(AUAudioUnitProperty *)arg1 reply:(void (^)(id))arg2;

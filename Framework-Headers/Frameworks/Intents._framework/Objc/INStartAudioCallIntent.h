@@ -18,7 +18,7 @@
 @property (readonly, copy, nonatomic) NSArray *contacts;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) long long destinationType;
+@property (readonly, nonatomic) long long destinationType;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long preferredCallProvider;
 @property (readonly) Class superclass;
@@ -27,12 +27,14 @@
 
 - (id)_dictionaryRepresentation;
 - (id)_metadata;
-- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
+- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_typedBackingStore;
 - (id)domain;
 - (id)initWithContacts:(id)arg1;
+- (id)initWithDestinationType:(long long)arg1 contacts:(id)arg2;
 - (id)parametersByName;
 - (void)setContacts:(id)arg1;
+- (void)setDestinationType:(long long)arg1;
 - (void)setDomain:(id)arg1;
 - (void)setParametersByName:(id)arg1;
 - (void)setUseSpeaker:(BOOL)arg1;

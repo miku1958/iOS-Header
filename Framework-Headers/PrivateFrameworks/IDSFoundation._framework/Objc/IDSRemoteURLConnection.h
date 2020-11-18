@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, NSURLRequest;
 @protocol OS_xpc_object;
@@ -40,6 +40,7 @@
 @property BOOL requireIDSHost; // @synthesize requireIDSHost=_requireIDSHost;
 @property BOOL shouldUsePipelining; // @synthesize shouldUsePipelining=_shouldUsePipelining;
 
+- (void).cxx_destruct;
 - (BOOL)_connect;
 - (BOOL)_disconnect;
 - (void)_disconnected;

@@ -18,6 +18,7 @@
 @property (copy, nonatomic) NSString *displayName;
 @property (copy, nonatomic) NSString *handle;
 @property (copy, nonatomic) INImage *image;
+@property (nonatomic) BOOL isMe;
 @property (copy, nonatomic) NSPersonNameComponents *nameComponents;
 @property (copy, nonatomic) INPersonHandle *personHandle;
 @property (copy, nonatomic) NSString *relationship;

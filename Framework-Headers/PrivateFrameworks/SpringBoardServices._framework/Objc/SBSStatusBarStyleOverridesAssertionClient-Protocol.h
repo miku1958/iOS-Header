@@ -6,9 +6,10 @@
 
 #import <SpringBoardServices/NSObject-Protocol.h>
 
-@class NSSet;
+@class NSSet, SBSStatusBarTapContextImpl;
 
 @protocol SBSStatusBarStyleOverridesAssertionClient <NSObject>
 - (void)invalidateStatusBarStyleOverridesAssertionsWithIdentifiers:(NSSet *)arg1;
+- (void)statusBarTappedWithContext:(SBSStatusBarTapContextImpl *)arg1 reply:(void (^)(void))arg2;
 @end
 

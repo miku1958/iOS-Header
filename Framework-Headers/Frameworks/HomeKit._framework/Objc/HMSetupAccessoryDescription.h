@@ -9,28 +9,59 @@
 #import <HomeKit/NSCopying-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class NSString, NSUUID;
+@class HMAccessoryCategory, HMSetupAccessoryPayload, NSString, NSUUID;
 
 @interface HMSetupAccessoryDescription : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _supportsIP;
+    BOOL _supportsBTLE;
+    BOOL _supportsWAC;
+    BOOL _paired;
     BOOL _addAndSetupAccessories;
+    BOOL _legacyAPI;
+    NSString *_setupID;
+    NSString *_setupCode;
+    HMAccessoryCategory *_category;
     NSUUID *_accessoryUUID;
     NSString *_accessoryName;
     NSString *_appIdentifier;
+    NSUUID *_homeUUID;
+    NSString *_homeName;
+    HMSetupAccessoryPayload *_setupAccessoryPayload;
 }
 
-@property (readonly, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
-@property (readonly, nonatomic) NSUUID *accessoryUUID; // @synthesize accessoryUUID=_accessoryUUID;
-@property (readonly, nonatomic) BOOL addAndSetupAccessories; // @synthesize addAndSetupAccessories=_addAndSetupAccessories;
-@property (readonly, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
+@property (strong, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
+@property (strong, nonatomic) NSUUID *accessoryUUID; // @synthesize accessoryUUID=_accessoryUUID;
+@property (nonatomic) BOOL addAndSetupAccessories; // @synthesize addAndSetupAccessories=_addAndSetupAccessories;
+@property (strong, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
+@property (readonly, nonatomic) HMAccessoryCategory *category; // @synthesize category=_category;
+@property (readonly, nonatomic) NSString *homeName; // @synthesize homeName=_homeName;
+@property (readonly, nonatomic) NSUUID *homeUUID; // @synthesize homeUUID=_homeUUID;
+@property (nonatomic) BOOL legacyAPI; // @synthesize legacyAPI=_legacyAPI;
+@property (readonly, nonatomic, getter=isPaired) BOOL paired; // @synthesize paired=_paired;
+@property (strong, nonatomic) HMSetupAccessoryPayload *setupAccessoryPayload; // @synthesize setupAccessoryPayload=_setupAccessoryPayload;
+@property (readonly, nonatomic) NSString *setupCode; // @synthesize setupCode=_setupCode;
+@property (readonly, nonatomic) NSString *setupID; // @synthesize setupID=_setupID;
+@property (readonly, nonatomic) BOOL supportsBTLE; // @synthesize supportsBTLE=_supportsBTLE;
+@property (readonly, nonatomic) BOOL supportsIP; // @synthesize supportsIP=_supportsIP;
+@property (readonly, nonatomic) BOOL supportsWAC; // @synthesize supportsWAC=_supportsWAC;
 
++ (id)setupAccessoryProgressAsString:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initToSetupAccessories:(id)arg1;
-- (id)initWithAccessoryUUID:(id)arg1 accessoryName:(id)arg2 appID:(id)arg3;
+- (unsigned long long)hash;
+- (id)initToSetupAccessories:(id)arg1 legacyAPI:(BOOL)arg2 homeName:(id)arg3 homeUUID:(id)arg4;
+- (id)initToSetupAccessoriesWithSetupAccessoryPayload:(id)arg1 appID:(id)arg2 homeName:(id)arg3 homeUUID:(id)arg4;
+- (id)initWithAccessoryUUID:(id)arg1 accessoryName:(id)arg2 appID:(id)arg3 homeName:(id)arg4 homeUUID:(id)arg5;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (void)updateAppIdentifier:(id)arg1;
+- (void)updateWithAccessory:(id)arg1;
+- (void)updateWithSetupAccessoryPayload:(id)arg1;
 
 @end
 

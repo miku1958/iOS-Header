@@ -39,6 +39,8 @@
 
 + (void)clearFollowupWithController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+- (id)followupActionForLink:(id)arg1;
+- (id)followupActionForLink:(id)arg1 needsFlow:(BOOL)arg2;
 - (id)init;
 - (id)initWithServerDictionary:(id)arg1;
 - (void)postFollowupWithController:(id)arg1;

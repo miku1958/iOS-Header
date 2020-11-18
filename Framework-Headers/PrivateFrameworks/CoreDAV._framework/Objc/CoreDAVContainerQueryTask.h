@@ -19,13 +19,13 @@
     Class _appSpecificDataItemClass;
 }
 
-@property (nonatomic) id<CoreDAVContainerQueryTaskDelegate> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<CoreDAVContainerQueryTaskDelegate> delegate; // @dynamic delegate;
 
 + (id)_copySearchTermsFromSearchString:(id)arg1;
+- (void).cxx_destruct;
 - (id)_initWithSearchTerms:(id)arg1 searchLimit:(unsigned long long)arg2 atURL:(id)arg3 appSpecificDataItemClass:(Class)arg4;
 - (void)addFiltersToXMLData:(id)arg1;
 - (id)copyDefaultParserForContentType:(id)arg1;
-- (void)dealloc;
 - (void)finishCoreDAVTaskWithError:(id)arg1;
 - (id)httpMethod;
 - (id)initWithSearchString:(id)arg1 searchLimit:(unsigned long long)arg2 atURL:(id)arg3 appSpecificDataItemClass:(Class)arg4;

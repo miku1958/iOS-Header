@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
@@ -19,13 +19,19 @@
 
 + (id)counterInfoWithDictionary:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_formattedString;
-- (void)dealloc;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)nonZeroResultTypesForType:(unsigned char)arg1;
 - (unsigned long long)numberOfRequestsForType:(unsigned char)arg1 result:(unsigned char)arg2;
+- (unsigned long long)recvBytes;
+- (unsigned long long)recvBytesForType:(unsigned char)arg1;
+- (unsigned long long)xmitBytes;
+- (unsigned long long)xmitBytesForType:(unsigned char)arg1;
 
 @end
 

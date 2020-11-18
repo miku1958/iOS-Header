@@ -34,7 +34,7 @@
 - (oneway void)speechRecordingDidCancel;
 - (oneway void)speechRecordingDidEnd;
 - (oneway void)speechRecordingDidFail:(id)arg1;
-- (oneway void)speechRecordingWillBeginWithLevelsSharedMem:(id)arg1;
+- (oneway void)speechRecordingWillBeginWithInputAudioPowerXPCWrapper:(id)arg1;
 
 @end
 

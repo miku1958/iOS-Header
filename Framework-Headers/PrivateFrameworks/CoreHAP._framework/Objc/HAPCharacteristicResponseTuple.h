@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class HAPCharacteristic, NSError;
 
-@interface HAPCharacteristicResponseTuple : NSObject
+@interface HAPCharacteristicResponseTuple : HMFObject
 {
     HAPCharacteristic *_characteristic;
     NSError *_error;

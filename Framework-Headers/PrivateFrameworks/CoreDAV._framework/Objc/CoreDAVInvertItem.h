@@ -16,7 +16,7 @@
 @property (strong, nonatomic) CoreDAVPrincipalItem *principal; // @synthesize principal=_principal;
 
 + (id)copyParseRules;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 - (void)write:(id)arg1;

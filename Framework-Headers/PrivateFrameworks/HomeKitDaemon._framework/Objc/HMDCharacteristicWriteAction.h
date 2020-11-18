@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDActionSet, HMDCharacteristic, NSUUID;
 
-@interface HMDCharacteristicWriteAction : NSObject <NSSecureCoding>
+@interface HMDCharacteristicWriteAction : HMFObject <NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
     NSUUID *_uuid;
     HMDActionSet *_actionSet;
@@ -25,13 +26,17 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)configure:(id)arg1 actionSet:(id)arg2;
+- (void)_processWriteActionModelUpdated:(id)arg1 message:(id)arg2;
+- (id)actionInformation;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
-- (id)initWithCharacteristic:(id)arg1 targetValue:(id)arg2;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithUUID:(id)arg1 characteristic:(id)arg2 targetValue:(id)arg3 actionSet:(id)arg4;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (void)replaceCharacteristic:(id)arg1;
+- (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
+- (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 
 @end
 

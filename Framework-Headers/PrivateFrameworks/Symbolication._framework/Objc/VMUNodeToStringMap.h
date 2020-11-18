@@ -20,6 +20,7 @@
 + (void)_claimUnarchivingOfClass:(id)arg1;
 + (void)initialize;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (unsigned int)_indexForString:(id)arg1;
 - (unsigned int)count;
 - (void)dealloc;

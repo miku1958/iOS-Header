@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSLock, NSMapTable;
 
@@ -15,9 +15,9 @@
 }
 
 + (id)sharedThrottler;
+- (void).cxx_destruct;
 - (id)_throttlePolicyForKey:(id)arg1;
 - (BOOL)allowRequestForKey:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (unsigned long long)throttleStateLevelForKey:(id)arg1;
 - (double)throttleStateResetTimeRemainingForKey:(id)arg1;

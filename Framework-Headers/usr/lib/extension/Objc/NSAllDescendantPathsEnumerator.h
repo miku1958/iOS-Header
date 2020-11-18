@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSDirectoryEnumerator.h>
+#import <Foundation/NSDirectoryEnumerator.h>
 
 @class NSArray, NSFileAttributes, NSString;
 

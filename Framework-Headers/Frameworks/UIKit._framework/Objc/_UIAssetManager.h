@@ -21,10 +21,8 @@
     NSBundle *_bundle;
     NSMapTable *_assetMap;
     CUIMutableCatalog *_runtimeCatalog;
-    long long onceToken_runtimeCatalog;
+    struct os_unfair_lock_s _runtimeCatalogCreationLock;
     UITraitCollection *_preferredTraitCollection;
-    _UIAssetManager *_starkAssetManager;
-    long long _starkAssetManagerOnceToken;
     BOOL _isStarkAssetManager;
     BOOL _isStandaloneAssetManager;
     struct os_unfair_lock_s _assetMapLock;
@@ -67,7 +65,8 @@
 - (id)_insertAssetIntoMap:(id)arg1 forName:(id)arg2;
 - (id)_insertAssetIntoMap:(id)arg1 forName:(id)arg2 lock:(BOOL)arg3;
 - (void)_performBlockWithAssetLock:(CDUnknownBlockType)arg1;
-- (BOOL)_starkAssetManager;
+- (id)_starkAssetManager;
+- (id)colorNamed:(id)arg1 withTraitCollection:(id)arg2;
 - (id)dataNamed:(id)arg1;
 - (void)dealloc;
 - (id)description;

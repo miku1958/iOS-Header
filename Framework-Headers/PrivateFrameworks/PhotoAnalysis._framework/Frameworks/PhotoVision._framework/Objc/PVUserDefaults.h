@@ -14,26 +14,16 @@
 + (double)_doubleValueForKey:(id)arg1 defaultValue:(double)arg2;
 + (float)_floatValueForKey:(id)arg1 defaultValue:(float)arg2;
 + (int)_intValueForKey:(id)arg1 defaultValue:(int)arg2;
-+ (long long)countRenameFromThreshold;
-+ (long long)countRenameToThreshold;
-+ (BOOL)faceAutonamingEnabled;
-+ (float)faceAutonamingThreshold;
-+ (long long)faceClusteringDelay;
-+ (BOOL)faceClusteringLogEnabled;
-+ (BOOL)faceClusteringPerfLogEnabled;
 + (float)faceClusteringThreshold;
-+ (long long)faceCountToEnableFacesNamingFlow;
-+ (long long)faceGroupCountToEnableFacesNamingFlow;
-+ (float)faceMergeFaceOverlapThreshold;
 + (float)faceMergeFaceprintDistanceThreshold;
 + (float)facePrimarySuggestionsThreshold;
-+ (float)faceRecallThreshold;
-+ (void)initialize;
-+ (long long)maxFaceCountForClustering;
-+ (long long)minFaceCountToTriggerClustering;
-+ (long long)percentRenameFromThreshold;
-+ (long long)percentRenameToThreshold;
-+ (BOOL)personMergingEnabled;
++ (unsigned long long)maxFaceCountForClustering;
++ (unsigned long long)minFaceCountToTriggerClustering;
++ (unsigned long long)minimumFaceGroupSizeForCreatingMergeCandidates;
++ (unsigned long long)minimumSuggestionSize;
++ (BOOL)personBuilderMergeCandidatesDisabled;
++ (BOOL)personBuildingDisabled;
++ (BOOL)quarantineTwinsOnAssetEnabled;
 + (BOOL)suggestionsLogEnabled;
 
 @end

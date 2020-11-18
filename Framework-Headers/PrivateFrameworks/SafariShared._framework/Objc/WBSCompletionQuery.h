@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURLRequest;
+#import <SafariShared/NSCopying-Protocol.h>
 
-@interface WBSCompletionQuery : NSObject
+@class NSArray, NSString, NSURLRequest;
+
+@interface WBSCompletionQuery : NSObject <NSCopying>
 {
     NSString *_normalizedQueryStringForParsec;
     BOOL _forLastSearch;
     NSString *_queryString;
+    NSArray *_querySuggestions;
     NSString *_rewrittenQueryStringFromParsec;
     long long _queryID;
     unsigned long long _triggerEvent;
@@ -31,8 +34,9 @@
 @property (copy, nonatomic) NSString *parsecFeedbackQueryIdentifier; // @synthesize parsecFeedbackQueryIdentifier=_parsecFeedbackQueryIdentifier;
 @property (nonatomic) duration_6174cf92 parsecLatency; // @synthesize parsecLatency=_parsecLatency;
 @property (copy, nonatomic) NSURLRequest *parsecSearchRequest; // @synthesize parsecSearchRequest=_parsecSearchRequest;
-@property (nonatomic) long long queryID; // @synthesize queryID=_queryID;
+@property (readonly, nonatomic) long long queryID; // @synthesize queryID=_queryID;
 @property (readonly, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
+@property (copy) NSArray *querySuggestions; // @synthesize querySuggestions=_querySuggestions;
 @property (copy, nonatomic) NSString *rewrittenQueryStringFromParsec; // @synthesize rewrittenQueryStringFromParsec=_rewrittenQueryStringFromParsec;
 @property (copy, nonatomic) NSString *searchSuggestionProviderIdentifier; // @synthesize searchSuggestionProviderIdentifier=_searchSuggestionProviderIdentifier;
 @property (nonatomic) duration_6174cf92 searchSuggestionProviderLatency; // @synthesize searchSuggestionProviderLatency=_searchSuggestionProviderLatency;
@@ -42,8 +46,12 @@
 + (void)initialize;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)_initWithQueryString:(id)arg1 queryID:(long long)arg2 timestamp:(time_point_e708cccf)arg3 indexInFeedbackArray:(unsigned long long)arg4 triggerEvent:(unsigned long long)arg5;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (id)init;
 - (id)initWithQueryString:(id)arg1;
+- (id)initWithQueryString:(id)arg1 queryID:(long long)arg2;
 
 @end
 

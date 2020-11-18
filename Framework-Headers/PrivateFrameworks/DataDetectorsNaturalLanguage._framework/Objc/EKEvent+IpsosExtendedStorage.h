@@ -6,17 +6,27 @@
 
 #import <EventKit/EKEvent.h>
 
-@class IPEventClassificationType;
+@class IPEventClassificationType, IPMessageUnit, NSArray;
 
 @interface EKEvent (IpsosExtendedStorage)
 
 @property BOOL ipsos_allDayPreferred;
+@property double ipsos_confidence;
+@property (strong) NSArray *ipsos_dataFeatures;
+@property BOOL ipsos_disableTimeAdjustment;
 @property (readonly) double ipsos_duration;
+@property unsigned long long ipsos_eventAttributes;
 @property (strong) IPEventClassificationType *ipsos_eventClassificationType;
+@property unsigned long long ipsos_eventStatus;
+@property double ipsos_experimentalConfidence;
 @property BOOL ipsos_isDateTimeTenseDependent;
 @property BOOL ipsos_isEndTimeApproximate;
 @property BOOL ipsos_isEventTimeOnlyAndReferrengingToSentDate;
 @property BOOL ipsos_isTimeApproximate;
+@property BOOL ipsos_isTimeOffset;
+@property (strong) IPMessageUnit *ipsos_messageUnit;
+@property BOOL ipsos_timeNeedsMeridianGuess;
+@property unsigned long long ipsos_usedBubblesCount;
 @property BOOL ipsos_usesDefaultClassificationTypeStartTime;
 
 - (id)ipsos_betterDescription;

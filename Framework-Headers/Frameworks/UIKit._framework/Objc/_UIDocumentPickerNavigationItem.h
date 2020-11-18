@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithTitle:(id)arg1 leftBarButtonItem:(id)arg2 rightBarButtonItem:(id)arg3;
+- (id)initWithTitle:(id)arg1 rightBarButtonItem:(id)arg2;
 - (void)setLeftBarButtonItem:(id)arg1 animated:(BOOL)arg2;
 - (void)setLeftBarButtonItems:(id)arg1 animated:(BOOL)arg2;
 - (void)setRightBarButtonItem:(id)arg1 animated:(BOOL)arg2;

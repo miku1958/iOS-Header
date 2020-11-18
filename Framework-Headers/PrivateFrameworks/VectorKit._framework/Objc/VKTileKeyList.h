@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/NSCopying-Protocol.h>
 #import <VectorKit/NSFastEnumeration-Protocol.h>
@@ -37,6 +37,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithMaxCapacity:(unsigned long long)arg1;
 - (BOOL)isEqualToList:(id)arg1;
 - (id)listWithout:(id)arg1;
+- (void)removeAllKeys;
+- (void)removeAllListNodes;
 - (BOOL)removeKey:(const struct VKTileKey *)arg1;
 - (void)removeKeysMatchingPredicate:(CDUnknownBlockType)arg1;
 - (void)sort:(CDUnknownBlockType)arg1;

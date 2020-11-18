@@ -16,5 +16,6 @@
 - (NSSet *)exposedPlatformItemKinds;
 - (BOOL)performActionForLibraryItem:(SKUILibraryItem *)arg1;
 - (void)removeMediaItemsForLibraryItems:(NSArray *)arg1;
+- (SKUILibraryItemState *)stateForLibraryItemAfterLibraryIntegration:(SKUILibraryItem *)arg1;
 @end
 

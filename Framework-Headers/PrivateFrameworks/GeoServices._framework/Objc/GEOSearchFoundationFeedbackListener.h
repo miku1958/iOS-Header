@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GeoServices/SFFeedbackListener-Protocol.h>
 
@@ -22,7 +22,7 @@
 @property (readonly) Class superclass;
 
 + (id)feedbackListenerForParsec;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)didEngageResult:(id)arg1;
 - (void)didEngageSection:(id)arg1;
 - (void)didRankSections:(id)arg1;

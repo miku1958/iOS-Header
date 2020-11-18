@@ -35,7 +35,9 @@
 - (void)currentItemTracksChanged;
 - (void)dealloc;
 - (void)getHudSetting;
+- (float)getScaleFactorForDisplaySize:(struct CGSize)arg1;
 - (id)getTrackFormatDesc:(id)arg1;
+- (id)getVideoRange:(struct opaqueCMFormatDescription *)arg1;
 - (BOOL)hudEnabled;
 - (id)init;
 - (void)readHudSettingsAndCallCompletionHandler:(CDUnknownBlockType)arg1;

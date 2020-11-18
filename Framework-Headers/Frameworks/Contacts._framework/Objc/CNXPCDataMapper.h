@@ -4,44 +4,54 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Contacts/CNDataMapper-Protocol.h>
 
 @class NSString, NSXPCConnection;
+@protocol CNContactsLogger, CNXPCDataMapperService;
 
 @interface CNXPCDataMapper : NSObject <CNDataMapper>
 {
     NSXPCConnection *_connection;
+    id<CNContactsLogger> _logger;
+    id<CNXPCDataMapperService> _serviceProxy;
 }
 
 @property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) id<CNContactsLogger> logger; // @synthesize logger=_logger;
+@property (strong, nonatomic) id<CNXPCDataMapperService> serviceProxy; // @synthesize serviceProxy=_serviceProxy;
 @property (readonly) Class superclass;
 
-+ (void)configureInterface:(id)arg1;
++ (id)contactBuffersDecoderForFetchRequest:(id)arg1;
++ (id)serviceProtocolInterface;
+- (void).cxx_destruct;
 - (id)accountsMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)changeHistoryWithFetchRequest:(id)arg1 error:(id *)arg2;
-- (BOOL)clearChangeHistoryForClient:(id)arg1 toSequenceNumber:(long long)arg2 error:(id *)arg3;
+- (BOOL)clearChangeHistoryForClientIdentifier:(id)arg1 toChangeAnchor:(id)arg2 error:(id *)arg3;
+- (id)contactObservableForFetchRequest:(id)arg1;
 - (id)contactWithUserActivityUserInfo:(id)arg1 keysToFetch:(id)arg2;
-- (id)contactsForFetchRequest:(id)arg1 error:(id *)arg2;
-- (id)contactsForFetchRequest:(id)arg1 matchInfos:(id *)arg2 error:(id *)arg3;
 - (id)containersMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)defaultContainerIdentifier;
 - (id)executeFetchRequest:(id)arg1 progressiveResults:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)executeSaveRequest:(id)arg1 error:(id *)arg2;
 - (BOOL)executeSaveRequest:(id)arg1 response:(id *)arg2 error:(id *)arg3;
+- (BOOL)fetchAndDecodeEncodedContactsForFetchRequest:(id)arg1 error:(id *)arg2 cancelationToken:(id)arg3 batchHandler:(CDUnknownBlockType)arg4;
+- (BOOL)fetchContactsForFetchRequest:(id)arg1 error:(id *)arg2 batchHandler:(CDUnknownBlockType)arg3;
+- (BOOL)fetchEncodedContactsForFetchRequest:(id)arg1 error:(id *)arg2 cancelationToken:(id)arg3 batchHandler:(CDUnknownBlockType)arg4;
 - (id)groupsMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)identifierWithError:(id *)arg1;
 - (id)init;
 - (id)initWithContactsEnvironment:(id)arg1;
-- (id)meContactIdentifierWithError:(id *)arg1;
-- (id)membersOfGroupWithIdentifier:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
+- (id)initWithContactsEnvironment:(id)arg1 connection:(id)arg2;
+- (id)meContactIdentifiers:(id *)arg1;
 - (id)policyForContainerWithIdentifier:(id)arg1 error:(id *)arg2;
-- (BOOL)registerClientForChangeHistory:(id)arg1 error:(id *)arg2;
+- (BOOL)registerChangeHistoryClientIdentifier:(id)arg1 error:(id *)arg2;
+- (BOOL)reindexSearchableItemsWithIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)remoteResultForSelector:(SEL)arg1 error:(id *)arg2;
 - (id)remoteResultForSelector:(SEL)arg1 parameters:(id)arg2 error:(id *)arg3;
 - (id)remoteResultForSelector:(SEL)arg1 query:(id)arg2 error:(id *)arg3;
@@ -54,7 +64,7 @@
 - (BOOL)setMeContact:(id)arg1 forContainer:(id)arg2 error:(id *)arg3;
 - (id)subgroupsOfGroupWithIdentifier:(id)arg1 error:(id *)arg2;
 - (id)unifiedContactCountWithError:(id *)arg1;
-- (BOOL)unregisterClientForChangeHistory:(id)arg1 error:(id *)arg2;
+- (BOOL)unregisterChangeHistoryClientIdentifier:(id)arg1 error:(id *)arg2;
 - (id)userActivityUserInfoForContact:(id)arg1;
 
 @end

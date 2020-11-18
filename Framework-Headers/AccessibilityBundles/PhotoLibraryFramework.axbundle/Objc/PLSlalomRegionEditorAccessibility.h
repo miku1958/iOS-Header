@@ -16,7 +16,7 @@
 - (void)_accessibilityDecrementMockSlider:(id)arg1 largeStep:(BOOL)arg2;
 - (void)_accessibilityIncrementMockSlider:(id)arg1 largeStep:(BOOL)arg2;
 - (double)_accessibilitySliderDeltaForFrame:(struct CGRect)arg1;
-- (id)accessibilityContainerElements;
+- (id)accessibilityElements;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)dealloc;
 - (BOOL)isAccessibilityElement;

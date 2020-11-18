@@ -64,6 +64,7 @@
 + (id)playerItemWithAsset:(id)arg1;
 + (id)playerItemWithAsset:(id)arg1 automaticallyLoadedAssetKeys:(id)arg2;
 + (id)playerItemWithURL:(id)arg1;
++ (long long)propertyStorageCachePolicy;
 - (struct CGSize)IFramePrefetchTargetDimensions;
 - (unsigned int)RTCReportingFlags;
 - (int)_CreateSeekID;
@@ -135,6 +136,8 @@
 - (id)_isExternalProtectionRequiredForPlaybackInternal;
 - (BOOL)_isNonForcedSubtitleDisplayEnabled;
 - (BOOL)_isReadyForBasicInspection;
+- (BOOL)_isReadyForInspectionOfDuration;
+- (BOOL)_isReadyForInspectionOfMediaSelectionOptions;
 - (BOOL)_isReadyForInspectionOfPresentationSize;
 - (BOOL)_isReadyForInspectionOfTracks;
 - (id)_keysAndValuesForCanPlayAndCanStepPropertiesWhenReadyToPlayWithNotificationPayload:(id)arg1;
@@ -147,11 +150,15 @@
 - (void)_makeReadyForEnqueueingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_markAsNeedingNewAssetWithFigPlaybackItem;
 - (void)_markAsReadyForBasicInspection;
+- (void)_markAsReadyForInspectionOfDuration;
+- (void)_markAsReadyForInspectionOfMediaSelectionOptions;
 - (void)_markAsReadyForInspectionOfPresentationSize;
 - (void)_markAsReadyForInspectionOfTracks;
 - (void)_markAssetWithFigPlaybackItemAsNeedingNewTracks;
 - (CDStruct_1b6d18a9)_maximumForwardBufferDuration;
 - (id)_mediaKind;
+- (id)_mediaOptionsSelectedByClient;
+- (id)_mediaOptionsSelectedByClientForKey:(id)arg1;
 - (id)_metadataCollectors;
 - (id)_metadataOutputForKey:(id)arg1;
 - (id)_metadataOutputsForKeys;
@@ -204,6 +211,7 @@
 - (void)_removeFromItems;
 - (void)_removeFromPlayQueueOfFigPlayerOfAttachedPlayer;
 - (void)_removeLegibleOutput:(id)arg1;
+- (void)_removeMediaOptionsSelectedByClient;
 - (void)_removeMetadataCollector:(id)arg1;
 - (void)_removeMetadataOutput:(id)arg1;
 - (void)_removeSyncLayer:(id)arg1;
@@ -226,6 +234,7 @@
 - (void)_setAudioTapProcessor:(struct opaqueMTAudioProcessingTap *)arg1 forTrackID:(int)arg2;
 - (void)_setAudioTimePitchAlgorithm:(id)arg1 forTrackID:(int)arg2;
 - (void)_setEQPreset:(int)arg1;
+- (void)_setMediaOptionsSelectedByClient:(id)arg1 forKey:(id)arg2;
 - (void)_setRampInOutInfo:(id)arg1;
 - (void)_setSuppressesVideoLayers:(BOOL)arg1;
 - (void)_setSyncLayersOnFigPlaybackItem:(id)arg1;
@@ -248,6 +257,7 @@
 - (id)_tracksWithFPTrackIDArray:(id)arg1 fromFigPlaybackItem:(struct OpaqueFigPlaybackItem *)arg2;
 - (void)_unregisterInvokeAndReleasePendingSeekCompletionHandlerForSeekID:(int)arg1 finished:(BOOL)arg2;
 - (void)_updateLegibleSuppressionOnFigPlaybackItem:(struct OpaqueFigPlaybackItem *)arg1 basedOnOutputs:(id)arg2;
+- (void)_updatePropertyCacheAndTriggerKVOForPlayer:(id)arg1 usingKeys:(id)arg2;
 - (void)_updateTaggedMetadataArray:(id)arg1;
 - (void)_updateTimebase;
 - (void)_updateVideoSuppressionOnFigPlaybackItem:(struct OpaqueFigPlaybackItem *)arg1 basedOnOutputs:(id)arg2;
@@ -323,6 +333,7 @@
 - (long long)playbackLikelyToKeepUpTrigger;
 - (BOOL)playerAppliesAutomaticMediaSelectionToGroup:(id)arg1;
 - (double)preferredForwardBufferDuration;
+- (struct CGSize)preferredMaximumResolution;
 - (double)preferredPeakBitRate;
 - (struct CGSize)preferredPeakPresentationSize;
 - (struct CGSize)presentationSize;
@@ -340,6 +351,7 @@
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1 toleranceBefore:(CDStruct_1b6d18a9)arg2 toleranceAfter:(CDStruct_1b6d18a9)arg3;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1 toleranceBefore:(CDStruct_1b6d18a9)arg2 toleranceAfter:(CDStruct_1b6d18a9)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)seekableTimeRanges;
+- (double)seekableTimeRangesLastModifiedTime;
 - (BOOL)seekingWaitsForVideoCompositionRendering;
 - (void)selectMediaOption:(id)arg1 inMediaSelectionGroup:(id)arg2;
 - (void)selectMediaOptionAutomaticallyInMediaSelectionGroup:(id)arg1;
@@ -372,6 +384,7 @@
 - (void)setNonForcedSubtitleDisplayEnabled:(BOOL)arg1;
 - (void)setPlaybackLikelyToKeepUpTrigger:(long long)arg1;
 - (void)setPreferredForwardBufferDuration:(double)arg1;
+- (void)setPreferredMaximumResolution:(struct CGSize)arg1;
 - (void)setPreferredPeakBitRate:(double)arg1;
 - (void)setPreferredPeakPresentationSize:(struct CGSize)arg1;
 - (void)setRTCReportingFlags:(unsigned int)arg1;

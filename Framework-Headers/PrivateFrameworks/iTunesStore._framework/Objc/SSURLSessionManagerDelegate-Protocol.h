@@ -6,12 +6,18 @@
 
 #import <iTunesStore/NSObject-Protocol.h>
 
-@class NSData, NSError, NSHTTPURLResponse, NSString, NSURLAuthenticationChallenge, NSURLCache, NSURLRequest, NSURLResponse, NSURLSession, NSURLSessionDataTask, NSURLSessionTask, SSHTTPArchive, SSMetricsLoadURLEvent;
+@class NSData, NSError, NSHTTPURLResponse, NSNumber, NSString, NSURLAuthenticationChallenge, NSURLCache, NSURLRequest, NSURLResponse, NSURLSession, NSURLSessionDataTask, NSURLSessionTask, SSBag, SSHTTPArchive, SSMetricsLoadURLEvent, SSURLRequestProperties;
 
 @protocol SSURLSessionManagerDelegate <NSObject>
 
 @property (readonly, nonatomic) NSURLCache *URLCache;
 @property (readonly, nonatomic) NSString *URLCacheID;
+@property (readonly, nonatomic) SSBag *bag;
+@property (readonly, nonatomic) BOOL isURLBagRequest;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentage;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSessionDuration;
+@property (readonly, nonatomic) SSURLRequestProperties *requestProperties;
 @property (readonly, nonatomic) BOOL shouldDisableCellular;
 @property (readonly, nonatomic) BOOL shouldRequireCellular;
 @property (readonly, nonatomic) BOOL shouldSetCookies;

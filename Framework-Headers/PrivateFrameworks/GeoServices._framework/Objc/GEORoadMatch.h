@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
 @interface GEORoadMatch : NSObject
 {
-    CDStruct_2244da21 *_roadFeature;
+    CDStruct_a2ef2718 *_roadFeature;
     NSString *_roadName;
     CDStruct_2c43369c _coordinateOnRoad;
     double _courseOnRoad;
@@ -25,13 +25,14 @@
 @property (nonatomic) double distanceFromJunction; // @synthesize distanceFromJunction=_distanceFromJunction;
 @property (nonatomic) double distanceFromRoad; // @synthesize distanceFromRoad=_distanceFromRoad;
 @property (nonatomic) double junctionRadius; // @synthesize junctionRadius=_junctionRadius;
-@property (readonly, nonatomic) CDStruct_2244da21 *roadFeature; // @synthesize roadFeature=_roadFeature;
+@property (readonly, nonatomic) CDStruct_a2ef2718 *roadFeature; // @synthesize roadFeature=_roadFeature;
 @property (copy, nonatomic) NSString *roadName; // @synthesize roadName=_roadName;
 @property (nonatomic) double roadWidth; // @synthesize roadWidth=_roadWidth;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithCoordinateOnRoad:(CDStruct_c3b9c2ee)arg1 courseOnRoad:(double)arg2;
-- (void)setRoadFeature:(CDStruct_2244da21 *)arg1;
+- (void)setRoadFeature:(CDStruct_a2ef2718 *)arg1;
 
 @end
 

@@ -26,6 +26,7 @@
 @property (readonly, copy, nonatomic) NSString *format; // @synthesize format=_format;
 @property (nonatomic) BOOL supportsLayeredImage; // @synthesize supportsLayeredImage=_supportsLayeredImage;
 
++ (id)artworkURLFromTemplate:(id)arg1 forSize:(struct CGSize)arg2 format:(id)arg3;
 - (void).cxx_destruct;
 - (id)_sizeDescription:(struct CGSize)arg1;
 - (id)artworkSizeTemplateURL;

@@ -17,6 +17,7 @@
 @property (readonly, nonatomic) BOOL isInterfaceUsable;
 @property (readonly, nonatomic) BOOL isInternetReachable;
 @property (readonly, nonatomic) BOOL isLTEWithCDRX;
+@property (readonly, nonatomic) BOOL isNetworkingPowerExpensiveToUse;
 @property (readonly, nonatomic) BOOL isPoorLinkQuality;
 @property (readonly, nonatomic) BOOL isRadioHot;
 @property (readonly, nonatomic) int linkQuality;

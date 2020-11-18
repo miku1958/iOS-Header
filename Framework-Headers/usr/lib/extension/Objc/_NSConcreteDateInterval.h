@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSDateInterval.h>
+#import <Foundation/NSDateInterval.h>
 
 @class NSDate;
 
+__attribute__((visibility("hidden")))
 @interface _NSConcreteDateInterval : NSDateInterval
 {
     NSDate *_startDate;

@@ -10,17 +10,20 @@
 #import <CoreHAP/HAPBTLEControlOutputStreamDelegate-Protocol.h>
 #import <CoreHAP/HAPPairSetupSessionClientDelegate-Protocol.h>
 #import <CoreHAP/HAPSecuritySessionDelegate-Protocol.h>
+#import <CoreHAP/HMFLogging-Protocol.h>
 #import <CoreHAP/HMFTimerDelegate-Protocol.h>
 
-@class HAPCharacteristic, HAPPairSetupSession, HAPSecuritySession, HMFTimer, NSMapTable, NSMutableArray, NSOperationQueue, NSString, _HAPBTLEDiscoveryContext;
+@class HAPBLEAccessoryCache, HAPCharacteristic, HAPPairSetupSession, HAPSecuritySession, HMFTimer, NSMapTable, NSMutableArray, NSOperationQueue, NSString, _HAPBTLEDiscoveryContext;
 
-@interface _HAPAccessoryServerBTLE200 : HAPAccessoryServerBTLE <CBPeripheralDelegate, HAPBTLEControlOutputStreamDelegate, HAPPairSetupSessionClientDelegate, HAPSecuritySessionDelegate, HMFTimerDelegate>
+@interface _HAPAccessoryServerBTLE200 : HAPAccessoryServerBTLE <CBPeripheralDelegate, HAPBTLEControlOutputStreamDelegate, HAPPairSetupSessionClientDelegate, HAPSecuritySessionDelegate, HMFTimerDelegate, HMFLogging>
 {
+    BOOL _hasValidCache;
     BOOL _verified;
     BOOL _badPairSetupCode;
     BOOL _pairing;
     BOOL _supportsMFiPairSetup;
     HAPSecuritySession *_securitySession;
+    HAPBLEAccessoryCache *_accessoryCache;
     long long _connectionState;
     CDUnknownBlockType _connectionCompletionHandler;
     HMFTimer *_connectionIdleTimer;
@@ -42,6 +45,7 @@
     NSMapTable *_characteristicEnableEventCompletionHandlers;
 }
 
+@property (strong) HAPBLEAccessoryCache *accessoryCache; // @synthesize accessoryCache=_accessoryCache;
 @property (nonatomic, getter=isBadSetupCode) BOOL badPairSetupCode; // @synthesize badPairSetupCode=_badPairSetupCode;
 @property (readonly, nonatomic) NSMapTable *characteristicEnableEventCompletionHandlers; // @synthesize characteristicEnableEventCompletionHandlers=_characteristicEnableEventCompletionHandlers;
 @property (readonly, nonatomic) NSMapTable *characteristicWriteCompletionHandlers; // @synthesize characteristicWriteCompletionHandlers=_characteristicWriteCompletionHandlers;
@@ -52,6 +56,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _HAPBTLEDiscoveryContext *discoveryContext; // @synthesize discoveryContext=_discoveryContext;
+@property BOOL hasValidCache; // @synthesize hasValidCache=_hasValidCache;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HAPCharacteristic *identifyCharacteristic; // @synthesize identifyCharacteristic=_identifyCharacteristic;
 @property (nonatomic) double pairSetupBackoffTimeInterval; // @synthesize pairSetupBackoffTimeInterval=_pairSetupBackoffTimeInterval;
@@ -71,9 +76,14 @@
 @property (nonatomic) BOOL supportsMFiPairSetup; // @synthesize supportsMFiPairSetup=_supportsMFiPairSetup;
 @property (nonatomic, getter=isVerified) BOOL verified; // @synthesize verified=_verified;
 
++ (id)configurationRequestForCharacteristic:(id)arg1 isBroadcasted:(BOOL)arg2 interval:(unsigned long long)arg3 error:(id *)arg4;
++ (id)configurationRequestForService:(id)arg1 configRequestType:(unsigned char)arg2 error:(id *)arg3;
 + (id)executeWriteRequestForCharacteristic:(id)arg1 options:(long long)arg2 error:(id *)arg3;
 + (BOOL)isHAPDescriptor:(id)arg1;
 + (BOOL)isHAPService:(id)arg1;
++ (id)logCategory;
++ (BOOL)parseCharacteristicConfigurationResponse:(id)arg1 error:(id *)arg2;
++ (BOOL)parseProtocolConfigurationResponse:(id)arg1 key:(id *)arg2 stateNumber:(id *)arg3 error:(id *)arg4;
 + (BOOL)parseReadResponse:(id)arg1 value:(id *)arg2 error:(id *)arg3;
 + (id)parseServiceSignatureResponse:(id)arg1 serviceInstanceID:(id)arg2 serviceType:(id)arg3 error:(id *)arg4;
 + (id)parseSignatureResponse:(id)arg1 error:(id *)arg2;
@@ -84,32 +94,42 @@
 + (id)signatureRequestForService:(id)arg1 characteristic:(id)arg2 requiresAuthentication:(BOOL)arg3 error:(id *)arg4;
 + (id)writeRequestForCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 options:(long long)arg4 error:(id *)arg5;
 - (void).cxx_destruct;
+- (void)_cacheServices:(id)arg1;
 - (void)_cancelAllQueuedOperationsWithError:(id)arg1;
 - (void)_cancelConnectionWithError:(id)arg1;
 - (BOOL)_cancelDiscoveryWithError:(id)arg1;
 - (id)_characteristicForCBCharacteristic:(id)arg1;
 - (void)_checkForAuthPrompt;
+- (void)_configureBroadcastKeyGeneration:(unsigned char)arg1 service:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)_configureCharacteristics:(id)arg1 queue:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_createPrimaryAccessoryFromAdvertisementData;
 - (id)_decryptData:(id)arg1 error:(id *)arg2;
 - (BOOL)_delegateRespondsToSelector:(SEL)arg1;
 - (void)_discoverCharacteristic:(id)arg1;
-- (void)_discoverService:(id)arg1;
+- (void)_discoverCharacteristicsForService:(id)arg1;
 - (void)_discoverServices;
 - (void)_discoverWithType:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_enableBroadcastEvent:(BOOL)arg1 interval:(unsigned long long)arg2 forCharacteristic:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_enableEvent:(BOOL)arg1 forCharacteristic:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3 queue:(id)arg4;
 - (void)_enableEvent:(BOOL)arg1 toCharacteristic:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_enableEvents:(BOOL)arg1 forCharacteristics:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3 queue:(id)arg4;
 - (id)_encryptDataAndGenerateAuthTag:(id)arg1 error:(id *)arg2;
 - (void)_enqueueRequest:(id)arg1;
 - (void)_establishSecureSession;
+- (void)_generateBroadcastKey:(unsigned char)arg1 queue:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (id)_getCBCharacteristic:(id)arg1 instanceId:(id)arg2 service:(id)arg3;
+- (id)_getCBService:(id)arg1 instanceOrder:(unsigned long long)arg2;
+- (id)_getCachedService:(id)arg1;
 - (id)_getCharacteristicInstanceID:(id)arg1 error:(id *)arg2;
 - (void)_getPairingFeaturesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)_getProtocolInfoService;
 - (id)_getServiceInstanceID:(id)arg1;
 - (void)_handleCompletedDiscovery;
 - (void)_handleConnectionIdleTimeout;
 - (void)_handleConnectionWithError:(id)arg1;
+- (void)_handleDiscoveredCharacteristicsForService:(id)arg1 error:(id)arg2;
 - (void)_handleDiscoveredCharactersitic:(id)arg1 error:(id)arg2;
-- (void)_handleDiscoveredService:(id)arg1 error:(id)arg2;
+- (void)_handleDiscoveredDescriptors:(id)arg1;
 - (void)_handleDiscoveredServices:(id)arg1 error:(id)arg2;
 - (void)_handleEventIndicationForCharacteristic:(id)arg1;
 - (void)_handleHAPNotificationStateUpdateForCharacteristic:(id)arg1 error:(id)arg2;
@@ -123,6 +143,7 @@
 - (void)_handleResponseData:(id)arg1 fromCharacteristic:(id)arg2 error:(id)arg3;
 - (void)_handleSecuritySessionSetupExchangeData:(id)arg1;
 - (void)_handleWriteCompletionForCharacteristic:(id)arg1 error:(id)arg2;
+- (id)_hapServicesFromCache;
 - (void)_kickConnectionIdleTimer;
 - (unsigned long long)_maximumControlWriteLengthForRequest:(id)arg1;
 - (void)_notifyDelegateOfReceivedEncryptedAuthenticatedData:(id)arg1 forCharacteristic:(id)arg2;
@@ -159,12 +180,14 @@
 - (void)_sendData:(id)arg1 toCharacteristic:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_sendPairingRequestData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_sendRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_serviceCacheFromHAPService:(id)arg1 serviceOrder:(unsigned long long)arg2;
 - (id)_serviceForCBService:(id)arg1;
 - (void)_suspendAllOperations;
 - (void)_suspendConnectionIdleTimer;
 - (void)_updateConnectionIdleTime:(unsigned char)arg1;
 - (void)_writeValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (BOOL)addPairingWithIdentifier:(id)arg1 publicKey:(id)arg2 admin:(BOOL)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)addPairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)configureCharacteristics:(id)arg1 queue:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)connectWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)continuePairingAfterAuthPrompt;
 - (void)controlOutputStream:(id)arg1 didCloseWithError:(id)arg2;
@@ -176,12 +199,13 @@
 - (void)disconnectWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)discoverAccessories;
 - (void)enableEvents:(BOOL)arg1 forCharacteristics:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3 queue:(id)arg4;
-- (id)getLocalPairingIdentityAndAllowCreation:(BOOL)arg1 error:(id *)arg2;
+- (void)generateBroadcastKey:(unsigned char)arg1 queue:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (id)getLocalPairingIdentityWithError:(id *)arg1;
 - (void)handleConnectionWithPeripheral:(id)arg1 withError:(id)arg2;
 - (void)handleDisconnectionWithError:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)hapBLEProtocolVersion;
 - (void)identifyWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(BOOL)arg6 configNumber:(id)arg7 category:(id)arg8 connectionIdleTime:(unsigned char)arg9 browser:(id)arg10 keyStore:(id)arg11;
+- (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(BOOL)arg6 connectReason:(unsigned char)arg7 configNumber:(id)arg8 category:(id)arg9 setupHash:(id)arg10 connectionIdleTime:(unsigned char)arg11 browser:(id)arg12 keyStore:(id)arg13;
 - (BOOL)isHAPCharacteristic:(id)arg1;
 - (BOOL)isSecuritySessionOpen;
 - (void)listPairingsWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -202,8 +226,8 @@
 - (void)peripheral:(id)arg1 didUpdateValueForDescriptor:(id)arg2 error:(id)arg3;
 - (void)peripheral:(id)arg1 didWriteValueForCharacteristic:(id)arg2 error:(id)arg3;
 - (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)removePairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)removePairingForCurrentControllerOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (BOOL)removePairingWithIdentifier:(id)arg1 publicKey:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)securitySession:(id)arg1 didCloseWithError:(id)arg2;
 - (id)securitySession:(id)arg1 didReceiveLocalPairingIdentityRequestWithError:(id *)arg2;
 - (id)securitySession:(id)arg1 didReceiveRequestForPeerPairingIdentityWithIdentifier:(id)arg2 error:(id *)arg3;

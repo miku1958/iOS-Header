@@ -32,10 +32,10 @@
 @property (strong) UITapGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
 
 - (void).cxx_destruct;
-- (BOOL)_hitTestAnnotationsIncludingPOI:(BOOL)arg1 atPointInWindow:(struct CGPoint)arg2 outAnnotation:(id *)arg3;
 - (void)_penDrawingQuiesced;
 - (void)applyToAllSelectedAnnotationsRotateEvent:(id)arg1 orRecognizer:(id)arg2;
 - (void)forwardRecognizerToMainHandleEvent:(id)arg1;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithController:(id)arg1;

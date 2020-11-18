@@ -12,8 +12,10 @@
 {
     NSMutableString *_plainString;
     BOOL _extractLinks;
+    NSMutableString *_mutablePlainString;
 }
 
+@property (readonly, nonatomic) NSMutableString *mutablePlainString; // @synthesize mutablePlainString=_mutablePlainString;
 @property (readonly, nonatomic) NSString *plainString;
 
 - (void)dealloc;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, SGContact, SGContactMatch;
 
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 
 + (void)fetchLinkedIdentifiersForContactSuggestionMatches:(id)arg1 fromSuggestionService:(id)arg2;
 + (id)suggestionFromContactMatch:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

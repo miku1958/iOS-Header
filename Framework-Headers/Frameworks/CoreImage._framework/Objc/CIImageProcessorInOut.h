@@ -13,8 +13,10 @@ __attribute__((visibility("hidden")))
 {
     struct CGRect _region;
     struct __IOSurface *_surface;
+    BOOL _usesSRGB;
     struct Context *_context;
     id<MTLTexture> _mtlTexture;
+    BOOL _surfaceLocked;
 }
 
 @property (readonly, nonatomic) unsigned long long bytesPerRow;
@@ -22,10 +24,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct __CVBuffer *pixelBuffer;
 @property (readonly, nonatomic) struct CGRect region; // @synthesize region=_region;
 @property (readonly, nonatomic) struct __IOSurface *surface;
+@property (readonly, nonatomic) BOOL usesSRGBTransferFunction;
 
 - (void)dealloc;
 - (id)description;
-- (id)initWithSurface:(struct __IOSurface *)arg1 texture:(struct Texture)arg2 bounds:(struct CGRect)arg3 context:(struct Context *)arg4;
+- (id)initWithSurface:(struct __IOSurface *)arg1 texture:(struct Texture)arg2 allowSRGB:(BOOL)arg3 bounds:(struct CGRect)arg4 context:(struct Context *)arg5;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 
@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 
 + (id)diffMultiValue:(id)arg1 toMultiValue:(id)arg2;
 + (id)emptyDiff;
+- (void).cxx_destruct;
 - (BOOL)applyToABPerson:(void *)arg1 propertyDescription:(id)arg2 error:(id *)arg3;
-- (void)dealloc;
 - (id)description;
 - (id)initWithUpdates:(id)arg1;
 - (BOOL)isEmpty;

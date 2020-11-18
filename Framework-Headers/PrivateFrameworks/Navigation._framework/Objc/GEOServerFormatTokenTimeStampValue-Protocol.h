@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <Navigation/NSCoding-Protocol.h>
 #import <Navigation/NSObject-Protocol.h>
 
 @class NSString, NSTimeZone;
 
-@protocol GEOServerFormatTokenTimeStampValue <NSObject>
+@protocol GEOServerFormatTokenTimeStampValue <NSObject, NSCoding>
 
 @property (readonly, nonatomic) NSString *formatPattern;
 @property (readonly, nonatomic) double timeStamp;

@@ -9,7 +9,7 @@
 #import <Intents/INIntentSlotDescriptionExport-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface INIntentSlotDescription : NSObject <INIntentSlotDescriptionExport, NSCopying>
 {
@@ -21,20 +21,20 @@
     NSString *_dataPropertyName;
     long long _valueType;
     long long _valueStyle;
-    SEL _resolveSelector;
-    SEL _deprecatedResolveSelector;
+    NSArray *_resolveSelectorStrings;
 }
 
 @property (readonly, copy, nonatomic) NSString *dataPropertyName; // @synthesize dataPropertyName=_dataPropertyName;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) SEL deprecatedResolveSelector; // @synthesize deprecatedResolveSelector=_deprecatedResolveSelector;
+@property (readonly, nonatomic) SEL deprecatedResolveSelector;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *facadePropertyName; // @synthesize facadePropertyName=_facadePropertyName;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isExtended; // @synthesize isExtended=_isExtended;
 @property (readonly, nonatomic) BOOL isPrivate; // @synthesize isPrivate=_isPrivate;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) SEL resolveSelector; // @synthesize resolveSelector=_resolveSelector;
+@property (readonly, nonatomic) SEL resolveSelector;
+@property (readonly, copy, nonatomic) NSArray *resolveSelectorStrings; // @synthesize resolveSelectorStrings=_resolveSelectorStrings;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long tag; // @synthesize tag=_tag;
 @property (readonly, nonatomic) long long valueStyle; // @synthesize valueStyle=_valueStyle;
@@ -44,6 +44,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithName:(id)arg1 tag:(unsigned long long)arg2 facadePropertyName:(id)arg3 dataPropertyName:(id)arg4 valueType:(long long)arg5 valueStyle:(long long)arg6 isExtended:(BOOL)arg7 isPrivate:(BOOL)arg8 resolveSelector:(SEL)arg9;
 - (id)initWithName:(id)arg1 tag:(unsigned long long)arg2 facadePropertyName:(id)arg3 dataPropertyName:(id)arg4 valueType:(long long)arg5 valueStyle:(long long)arg6 isExtended:(BOOL)arg7 isPrivate:(BOOL)arg8 resolveSelector:(SEL)arg9 deprecatedResolveSelector:(SEL)arg10;
+- (id)initWithName:(id)arg1 tag:(unsigned long long)arg2 facadePropertyName:(id)arg3 dataPropertyName:(id)arg4 valueType:(long long)arg5 valueStyle:(long long)arg6 isExtended:(BOOL)arg7 isPrivate:(BOOL)arg8 resolveSelectors:(SEL)arg9;
 - (BOOL)isEqual:(id)arg1;
 
 @end

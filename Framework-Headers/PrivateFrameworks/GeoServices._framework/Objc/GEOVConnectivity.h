@@ -18,11 +18,11 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSMutableArray *junctions; // @synthesize junctions=_junctions;
 
+- (void).cxx_destruct;
 - (void)addJunction:(id)arg1;
 - (void)clearJunctions;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

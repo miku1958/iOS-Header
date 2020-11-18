@@ -17,12 +17,13 @@
     double _subtitleAlpha;
     SBFLockScreenDateSubtitleDateView *_dateSubtitleView;
     SBFLockScreenDateSubtitleView *_customSubtitleView;
-    BOOL _useDashBoardValues;
     NSHashTable *_replicatedViews;
+    BOOL _useCompactDateFormat;
     NSDate *_date;
     UIColor *_overrideTextColor;
     _UILegibilitySettings *_legibilitySettings;
     double _alignmentPercent;
+    double _dateToTimeStretch;
     double _timeLegibilityStrength;
     double _subtitleLegibilityStrength;
 }
@@ -31,6 +32,7 @@
 @property (readonly, nonatomic) double contentAlpha;
 @property (strong, nonatomic) SBFLockScreenDateSubtitleView *customSubtitleView; // @synthesize customSubtitleView=_customSubtitleView;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (nonatomic) double dateToTimeStretch; // @synthesize dateToTimeStretch=_dateToTimeStretch;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -42,28 +44,27 @@
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_overrideTextColor;
 @property (readonly, nonatomic) double timeBaselineOffsetFromOrigin;
 @property (nonatomic) double timeLegibilityStrength; // @synthesize timeLegibilityStrength=_timeLegibilityStrength;
+@property (nonatomic) BOOL useCompactDateFormat; // @synthesize useCompactDateFormat=_useCompactDateFormat;
 
 + (double)defaultHeight;
++ (id)timeFont;
 - (void).cxx_destruct;
+- (struct UIEdgeInsets)_cachedGlyphInsetsTimeFontForString:(id)arg1;
 - (void)_enumerateReplicateViews:(CDUnknownBlockType)arg1;
-- (void)_layoutDateView;
-- (void)_layoutLegacyDateLabel;
-- (void)_layoutLegacyTimeLabel;
-- (void)_layoutSubtitleViews;
-- (id)_legacyTimeFont;
 - (void)_setSubtitleAlpha:(double)arg1;
 - (struct CGRect)_subtitleViewFrameForView:(id)arg1 alignmentPercent:(double)arg2;
-- (id)_timeFont;
 - (id)_timeLabel;
 - (struct CGRect)_timeLabelFrameForAlignmentPercent:(double)arg1;
+- (struct UIEdgeInsets)_timeLabelInsetsForTimeString:(id)arg1;
 - (void)_updateLabelAlpha;
 - (void)_updateLabels;
-- (id)initForDashBoard:(BOOL)arg1 withFrame:(struct CGRect)arg2;
+- (void)_updateUsesCompactDateFormat;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (struct CGRect)presentationExtentForAlignmentPercent:(double)arg1;
 - (id)replicate;
 - (void)setContentAlpha:(double)arg1 withSubtitleVisible:(BOOL)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateFormat;
 
 @end

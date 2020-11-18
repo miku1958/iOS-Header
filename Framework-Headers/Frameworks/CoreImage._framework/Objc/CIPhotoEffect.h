@@ -19,6 +19,9 @@ __attribute__((visibility("hidden")))
 + (id)customAttributes;
 - (int)_defaultVersion;
 - (int)_maxVersion;
+- (id)cubeColorSpaceName;
+- (id)cubeName;
+- (id)cubePath;
 - (id)init;
 - (id)outputImage;
 - (void)setDefaults;

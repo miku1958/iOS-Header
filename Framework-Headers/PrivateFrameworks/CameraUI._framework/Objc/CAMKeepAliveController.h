@@ -35,6 +35,7 @@
 - (void)_teardownHeartbeat;
 - (void)dealloc;
 - (id)init;
+- (void)sendCameraRollVisibilityChangedMessage:(BOOL)arg1;
 - (void)startKeepAliveSession;
 - (void)stopKeepAliveSession;
 

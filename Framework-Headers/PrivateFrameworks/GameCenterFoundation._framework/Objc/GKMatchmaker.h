@@ -38,7 +38,7 @@
 @property (copy, nonatomic) CDUnknownBlockType inviteeResponseHandler; // @synthesize inviteeResponseHandler=_inviteeResponseHandler;
 @property (strong, nonatomic) NSSet *invitees; // @synthesize invitees=_invitees;
 @property (strong) NSDictionary *inviteesByUserID; // @synthesize inviteesByUserID=_inviteesByUserID;
-@property (nonatomic) NSObject<OS_dispatch_queue> *lookForInviteQueue; // @synthesize lookForInviteQueue=_lookForInviteQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *lookForInviteQueue; // @synthesize lookForInviteQueue=_lookForInviteQueue;
 @property (strong, nonatomic) GKMatch *match; // @synthesize match=_match;
 @property int matching; // @synthesize matching=_matching;
 @property (nonatomic) BOOL nearbyAdvertising; // @synthesize nearbyAdvertising=_nearbyAdvertising;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -19,7 +19,7 @@
 
 - (void).cxx_destruct;
 - (id)dictionaryToSecItemFormat:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 accessGroup:(id)arg2;
+- (id)initWithIdentifier:(id)arg1 accessGroup:(id)arg2 serviceName:(id)arg3;
 - (id)objectForKey:(id)arg1;
 - (void)resetKeychainItem;
 - (id)secItemFormatToDictionary:(id)arg1;

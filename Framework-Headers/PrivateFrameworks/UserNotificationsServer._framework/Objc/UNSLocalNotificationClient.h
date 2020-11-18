@@ -40,6 +40,7 @@
 - (void)_invalidatePendingNotificationRecordTimers;
 - (id)_pendingNotificationRecords;
 - (void)_postDarwinSnoozeNotifications:(id)arg1;
+- (void)_queue_triggerDidFireForDate:(id)arg1;
 - (void)_queue_triggerDidFireForRegion:(id)arg1;
 - (void)_queue_triggerDidFireForTimer:(id)arg1;
 - (id)_sanitizeNotificationRecords:(id)arg1;

@@ -9,14 +9,13 @@
 #import <CoreParsec/PARRanker-Protocol.h>
 
 @class NSArray, NSString, PARRankerParameters, PARSession;
-@protocol IFCentroidModel, IFCentroidStore, OS_dispatch_queue;
+@protocol IFCentroidModel, IFCentroidStore;
 
 @interface PARRanker : NSObject <PARRanker>
 {
+    PARRankerParameters *_parameters;
     id<IFCentroidStore> _store;
     id<IFCentroidModel> _model;
-    PARRankerParameters *_parameters;
-    NSObject<OS_dispatch_queue> *_queue;
     NSArray *_topicsForRequest;
     PARSession *_session;
 }
@@ -38,12 +37,6 @@
 + (BOOL)resultOutsideMovementRange:(id)arg1 otherResult:(id)arg2 rankingAlgorithm:(id)arg3;
 + (BOOL)resultOutsideRankingRange:(id)arg1 rankingAlgorithm:(id)arg2;
 - (void).cxx_destruct;
-- (void)_addFeatureVectors:(id)arg1 update:(BOOL)arg2;
-- (void)_enqueueAsynchronousWriteBlock:(CDUnknownBlockType)arg1;
-- (id)_featureVectorFromURL:(id)arg1 topicModel:(id)arg2;
-- (void)_periodicTask;
-- (void)_rank:(id)arg1 withAlgorithms:(id)arg2 enableSectionRanking:(BOOL)arg3;
-- (void)_setTopicsForRequest;
 - (void)addFeatureVectorsFromFeedbackItems:(id)arg1;
 - (void)addFeatureVectorsFromURLs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (unsigned long long)addFeatureVectorsFromURLsAndTopicModel:(id)arg1 topicModel:(id)arg2;
@@ -51,7 +44,7 @@
 - (void)deleteFeatureVectorsWithDomains:(id)arg1;
 - (double)domainScoreForResult:(id)arg1 rankingAlgorithm:(id)arg2;
 - (id)generatePersonalizationScore:(id)arg1 rankingAlgorithm:(id)arg2;
-- (id)getSectionName:(unsigned long long)arg1;
+- (id)getSectionName:(int)arg1;
 - (id)getURLTopics:(id)arg1 topicModel:(id)arg2;
 - (id)initWithParameters:(id)arg1 client:(id)arg2 store:(id)arg3 session:(id)arg4;
 - (double)mediaTypeScoreForResult:(id)arg1 rankingAlgorithm:(id)arg2;

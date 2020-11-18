@@ -4,13 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <QuartzCore/CALayer.h>
+#import <QuartzCore/CAShapeLayer.h>
 
-@interface AKBoxLayer : CALayer
+@interface AKBoxLayer : CAShapeLayer
 {
+    double _borderWidthScale;
+    double _boxCornerRadius;
+    double _nominalBorderWidth;
 }
 
-- (id)init;
+@property (nonatomic) double borderWidthScale;
+@property double boxCornerRadius; // @synthesize boxCornerRadius=_boxCornerRadius;
+@property double nominalBorderWidth; // @synthesize nominalBorderWidth=_nominalBorderWidth;
+
+- (void)_updateBoxPath;
+- (id)initWithBorderWidth:(double)arg1 cornerRadius:(double)arg2;
+- (void)setBounds:(struct CGRect)arg1;
 
 @end
 

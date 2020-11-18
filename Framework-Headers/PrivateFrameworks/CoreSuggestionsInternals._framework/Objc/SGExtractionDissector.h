@@ -6,14 +6,13 @@
 
 #import <CoreSuggestionsInternals/SGPipelineDissector.h>
 
-@class NSXPCConnection, SGAsset;
+@class NSXPCConnection;
 @protocol SGReverseTemplateJS;
 
 @interface SGExtractionDissector : SGPipelineDissector
 {
     NSXPCConnection *_xpcConnection;
     id<SGReverseTemplateJS> _reverseTemplateJS;
-    SGAsset *_asset;
 }
 
 + (id)addParams:(id)arg1 toParameterizedString:(id)arg2;
@@ -21,12 +20,21 @@
 + (id)addressDictionaryToString:(id)arg1;
 + (id)parseISO8601:(id)arg1;
 - (void).cxx_destruct;
+- (void)addEnrichmentsToEntityForOutputItems:(id)arg1 exceptions:(id)arg2 jsMessageLogs:(id)arg3 entity:(id)arg4 startTime:(unsigned long long)arg5;
 - (void)dissectInternal:(id)arg1 inContext:(id)arg2;
-- (id)entityForOutputItem:(id)arg1 templateShortname:(id)arg2 parentEntity:(id)arg3 outputIssueTypes:(id)arg4 outputInfos:(id)arg5;
+- (void)dissectURL:(id)arg1 title:(id)arg2 htmlPayload:(id)arg3 entity:(id)arg4;
+- (id)entityForOutputItem:(id)arg1 parentEntity:(id)arg2 outputExceptions:(id)arg3 outputInfos:(id)arg4;
 - (id)eventsFromSchemaOrgItems:(id)arg1;
+- (BOOL)exceedsMaxHTMLContentLength:(unsigned long long)arg1;
 - (id)init;
+- (BOOL)isStructuredEventCandidateForURL:(id)arg1 title:(id)arg2;
 - (id)jsonLdOutputFromEntity:(id)arg1;
+- (id)jsonLdOutputFromPackedJSEntity:(id)arg1;
+- (id)jsonLdOutputFromURL:(id)arg1 title:(id)arg2 payload:(id)arg3 extractionDate:(id)arg4;
+- (struct _PASTuple3 *)outputFromPackedJSEntity:(id)arg1 documentType:(unsigned long long)arg2 isDownloaded:(BOOL)arg3 forEntity:(id)arg4;
 - (id)packedEntityForJS:(id)arg1;
+- (id)packedJSEntityFromURL:(id)arg1 title:(id)arg2 payload:(id)arg3;
+- (id)packedJSEntityFromURL:(id)arg1 title:(id)arg2 payload:(id)arg3 creationTimestamp:(double)arg4;
 - (BOOL)shouldIgnorePipelineEntity:(id)arg1;
 
 @end

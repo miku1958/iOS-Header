@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSArray, NSNumber, NSString;
 
@@ -40,6 +40,8 @@
 @property (strong, nonatomic) NSNumber *outputValue; // @synthesize outputValue=_outputValue;
 
 + (id)currencyCacheLastRefreshDate;
++ (id)dispatchQueue;
++ (void)initialize;
 + (BOOL)refreshCurrencyCache;
 - (double)_doubleWithoutUnrelevantDecimalsForNumber:(id)arg1;
 - (id)_localizedPluralizedStringsforNumber:(id)arg1 unit:(id)arg2;
@@ -49,7 +51,6 @@
 - (void)_performUnitPluralization;
 - (void)_standardizeInputAndOutputUnits;
 - (id)_unitInfoForNormalizedName:(id)arg1;
-- (id)_unitsInfo;
 - (void)_updateInputValueFromMatch:(id)arg1;
 - (void)dealloc;
 - (id)initWithInput:(id)arg1;

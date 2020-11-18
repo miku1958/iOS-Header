@@ -40,6 +40,7 @@
 - (BOOL)_recoverFromCrashWithRecoveryHandler:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (void)_removeIdentityFromUncommittedFiles:(id)arg1;
 - (void)checkFileSizeForIdentity:(id)arg1;
+- (BOOL)checkIsEmpty;
 - (BOOL)closeWithError:(id *)arg1;
 - (BOOL)commitFileWithIdentity:(id)arg1 error:(id *)arg2;
 - (BOOL)compactStorage:(id *)arg1;

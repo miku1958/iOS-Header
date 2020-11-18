@@ -6,24 +6,20 @@
 
 #import <PhotosUICore/PXPhotosDetailsBarsController.h>
 
-@class PHPerson, PXPeopleNamePickerTitleView;
+@class PHPerson, UIButton;
 
 @interface PXPeopleDetailBarsController : PXPhotosDetailsBarsController
 {
-    unsigned long long _mode;
-    PXPeopleNamePickerTitleView *_peopleTitleView;
+    UIButton *_peopleTitleView;
     PHPerson *_person;
 }
 
-@property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
-@property (strong, nonatomic) PXPeopleNamePickerTitleView *peopleTitleView; // @synthesize peopleTitleView=_peopleTitleView;
+@property (strong, nonatomic) UIButton *peopleTitleView; // @synthesize peopleTitleView=_peopleTitleView;
 @property (strong, nonatomic) PHPerson *person; // @synthesize person=_person;
 
 - (void).cxx_destruct;
-- (void)_cancelAction:(id)arg1;
 - (id)createAssetActionManager;
 - (id)createTitleView;
-- (void)updateBars;
 
 @end
 

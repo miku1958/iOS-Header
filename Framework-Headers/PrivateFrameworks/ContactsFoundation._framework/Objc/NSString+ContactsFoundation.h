@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (ContactsFoundation)
++ (id)_cn_LTRControlCharacters;
 + (BOOL)_cn_isBlank:(id)arg1;
 - (id)_cn_SHA256HashStringWithSalt:(id)arg1;
 - (BOOL)_cn_caseInsensitiveIsEqual:(id)arg1;
@@ -23,6 +24,7 @@
 - (id)_cn_nameComponentTokens;
 - (id)_cn_nameComponentTokensUsingLocale:(id)arg1 inferredNameOrder:(long long *)arg2;
 - (struct _NSRange)_cn_rangeFromIndex:(unsigned long long)arg1;
+- (id)_cn_resultWithAllCharacters:(CDUnknownBlockType)arg1;
 - (id)_cn_stringByAddingPercentEscapesIfNecessary;
 - (id)_cn_stringByAddingPercentEscapesToEntireURL;
 - (id)_cn_stringByDeletingCharactersInSet:(id)arg1;

@@ -16,6 +16,7 @@
 {
     BOOL _keyDown;
     unsigned short _keyCode;
+    unsigned short _alternativeKeyCode;
     unsigned int _usagePage;
     unsigned int _modifierState;
     NSString *_unmodifiedInput;
@@ -23,6 +24,7 @@
     NSString *_shiftModifiedInput;
 }
 
+@property (nonatomic) unsigned short alternativeKeyCode; // @synthesize alternativeKeyCode=_alternativeKeyCode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -36,10 +38,10 @@
 @property (nonatomic) unsigned int usagePage; // @synthesize usagePage=_usagePage;
 
 + (BOOL)supportsSecureCoding;
-- (id)_hardwareKeyboardLayout;
+- (void).cxx_destruct;
+- (struct __GSKeyboard *)_getUIKitKeyboardRef;
 - (id)accessibilityEventRepresentationTabularDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)translateKeycode;

@@ -11,6 +11,7 @@
 }
 
 + (id)client;
++ (id)contactID;
 + (id)interactionType;
 + (id)suggestionType;
 

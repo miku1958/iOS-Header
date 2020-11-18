@@ -20,7 +20,6 @@
 + (void)addLegacyTombstoneForFolder:(id)arg1;
 + (void)addLegacyTombstoneForNote:(id)arg1;
 + (id)addLegacyTombstoneWithObjectIdentifier:(id)arg1 type:(short)arg2 account:(id)arg3;
-+ (id)allCloudObjectsInContext:(id)arg1;
 + (id)allLegacyTombstones;
 + (id)existingCloudObjectForRecordID:(id)arg1 context:(id)arg2;
 + (BOOL)hasTombstonePrefix:(id)arg1;

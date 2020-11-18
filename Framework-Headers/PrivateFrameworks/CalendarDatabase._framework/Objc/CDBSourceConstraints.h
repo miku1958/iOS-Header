@@ -10,7 +10,7 @@
 {
     int _maxAlarmsAllowed;
     int _maxRecurrencesAllowed;
-    CDStruct_ce1b7935 _flags;
+    CDStruct_8c90384f _flags;
 }
 
 @property (nonatomic) BOOL alarmTriggerIntervalConstrainedToRecurrenceInterval;
@@ -18,12 +18,13 @@
 @property (nonatomic) BOOL allowsEvents;
 @property (nonatomic) BOOL allowsProposeNewTime;
 @property (nonatomic) BOOL allowsTasks;
+@property (nonatomic) BOOL attendeesUseDeletedByOrganizerStatus;
 @property (nonatomic) BOOL canSetAvailability;
 @property (nonatomic) BOOL declinedStatusChangeRequiresNoPendingStatus;
 @property (nonatomic) BOOL deliverySourceOrExternalIDRequiredForResponse;
 @property (nonatomic) BOOL eventAvalabilityLimited;
 @property (nonatomic) BOOL eventDurationConstrainedToRecurrenceInterval;
-@property (nonatomic) CDStruct_ce1b7935 flags; // @synthesize flags=_flags;
+@property (nonatomic) CDStruct_8c90384f flags; // @synthesize flags=_flags;
 @property (nonatomic) BOOL futureStartDateLimitedToOccurrenceCacheBounds;
 @property (nonatomic) BOOL inviteesCanSeeAttendeeStatuses;
 @property (nonatomic) BOOL isFacebook;
@@ -37,6 +38,7 @@
 @property (nonatomic) BOOL prohibitsMultipleDaysInMonthlyRecurrence;
 @property (nonatomic) BOOL prohibitsMultipleMonthsInYearlyRecurrence;
 @property (nonatomic) BOOL prohibitsPrivateEventsWithAttendees;
+@property (nonatomic) BOOL prohibitsSlicingEventsWithAttendees;
 @property (nonatomic) BOOL prohibitsYearlyRecurrenceInterval;
 @property (nonatomic) BOOL proposedStatusRequiredForResponse;
 @property (nonatomic) BOOL recurrenceSeriesMustIncludeMoreThanFirstOccurrence;
@@ -64,6 +66,7 @@
 @property (nonatomic) BOOL supportsJunkReporting;
 @property (nonatomic) BOOL supportsLocationDirectorySearches;
 @property (nonatomic) BOOL supportsOutgoingInvitations;
+@property (nonatomic) BOOL supportsPhoneNumbers;
 @property (nonatomic) BOOL supportsPrivateEvents;
 @property (nonatomic) BOOL supportsRecurrencesOnDetachedEvents;
 @property (nonatomic) BOOL supportsReminderActions;

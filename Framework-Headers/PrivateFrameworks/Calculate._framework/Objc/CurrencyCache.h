@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <Calculate/NSXMLParserDelegate-Protocol.h>
 
@@ -20,7 +20,7 @@
     NSNumber *_currentRate;
     NSMutableString *_currentString;
     NSMutableDictionary *_mutableCurrencyCache;
-    NSObject<OS_dispatch_queue> *_persistenceQueue;
+    NSObject<OS_dispatch_queue> *_serializer;
 }
 
 @property (strong, nonatomic) NSDictionary *currencyData; // @synthesize currencyData=_currencyData;
@@ -28,13 +28,15 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDate *lastRefreshDate; // @synthesize lastRefreshDate=_lastRefreshDate;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *persistenceQueue; // @synthesize persistenceQueue=_persistenceQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *serializer; // @synthesize serializer=_serializer;
 @property (readonly) Class superclass;
 @property (readonly) unsigned long long uuid; // @synthesize uuid=_uuid;
 
 + (id)shared;
 - (void)_loadPersistedCurrencyCache;
-- (void)_persistCurrencyCache;
+- (void)_queue_loadPersistedCurrencyCache;
+- (void)_queue_persistCurrencyCache;
+- (BOOL)_queue_refresh;
 - (void)dealloc;
 - (id)init;
 - (void)parser:(id)arg1 didEndElement:(id)arg2 namespaceURI:(id)arg3 qualifiedName:(id)arg4;

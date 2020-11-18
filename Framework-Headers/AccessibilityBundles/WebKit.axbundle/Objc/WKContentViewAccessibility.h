@@ -27,10 +27,19 @@
 - (void)_didRelaunchProcess;
 - (void)_processDidExit;
 - (void)_setAccessibilityWebProcessToken:(id)arg1;
-- (id)accessibilityContainerElements;
+- (id)accessibilityDragSourceDescriptors;
+- (id)accessibilityElements;
+- (struct CGRect)accessibilityFrame;
 - (unsigned long long)accessibilityTraits;
+- (void)copy:(id)arg1;
+- (void)cut:(id)arg1;
 - (void)dealloc;
 - (BOOL)isAccessibilityElement;
+- (void)paste:(id)arg1;
+- (void)selectAll:(id)arg1;
+- (void)toggleBoldface:(id)arg1;
+- (void)toggleItalics:(id)arg1;
+- (void)toggleUnderline:(id)arg1;
 
 @end
 

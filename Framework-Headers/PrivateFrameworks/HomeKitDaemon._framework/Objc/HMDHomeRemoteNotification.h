@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class NSString;
 
-@interface HMDHomeRemoteNotification : NSObject <HMFLogging>
+@interface HMDHomeRemoteNotification : HMFObject <HMFLogging>
 {
     NSString *_updateIdentifier;
     id _value;

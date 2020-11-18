@@ -8,7 +8,7 @@
 
 #import <CompanionSync/NSFilePresenter-Protocol.h>
 
-@class NSOperationQueue, NSString, NSURL;
+@class NSOperationQueue, NSSet, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface SYStatisticStore : NSObject <NSFilePresenter>
@@ -29,6 +29,7 @@
     struct sqlite3_stmt *_logFileActivity;
     struct sqlite3_stmt *_updateFileOutgoing;
     long long _lastIncomingRowID;
+    NSObject<OS_dispatch_queue> *_preemption_queue;
     NSObject<OS_dispatch_queue> *_operations_queue;
     NSOperationQueue *_presenterOperationQueue;
 }
@@ -36,6 +37,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) NSSet *observedPresentedItemUbiquityAttributes;
 @property (readonly, strong) NSOperationQueue *presentedItemOperationQueue;
 @property (readonly, copy) NSURL *presentedItemURL;
 @property (readonly, copy) NSURL *primaryPresentedItemURL;

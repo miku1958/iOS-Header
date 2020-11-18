@@ -27,6 +27,7 @@
 + (id)getProcessIds;
 + (BOOL)isProcessRunning:(int)arg1;
 + (int)processParentId:(int)arg1;
+- (void).cxx_destruct;
 - (id)_infoFromCommandLine:(int)arg1;
 - (id)arguments;
 - (long long)compare:(id)arg1;
@@ -36,7 +37,6 @@
 - (void)dealloc;
 - (id)description;
 - (id)envVars;
-- (void)finalize;
 - (id)firstArgument;
 - (unsigned long long)hash;
 - (id)init;

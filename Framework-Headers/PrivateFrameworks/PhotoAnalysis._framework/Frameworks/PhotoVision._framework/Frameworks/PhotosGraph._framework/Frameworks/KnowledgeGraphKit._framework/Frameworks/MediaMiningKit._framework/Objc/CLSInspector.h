@@ -19,12 +19,9 @@
     NSMutableDictionary *_informantClassesByFamilyIdentifier;
 }
 
-+ (void)cacheLocationsForRegions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 + (void)invalidateAllSharedCaches;
-+ (void)invalidateLocationCache;
 + (void)invalidateSharedPersistentCaches;
 + (void)invalidateSharedTransientCaches;
-+ (void)requestLocationsForRegions:(id)arg1 cacheTestObject:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
 + (id)sharedInspector;
 - (void).cxx_destruct;
 - (void)cancelAllInvestigations;

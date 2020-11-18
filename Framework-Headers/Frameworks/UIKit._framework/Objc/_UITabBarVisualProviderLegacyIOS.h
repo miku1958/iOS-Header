@@ -17,12 +17,14 @@ __attribute__((visibility("hidden")))
     UIScrollView *_itemsScrollView;
     UIView *_focusedItemHighlightView;
     UIMotionEffect *_focusedItemHighlightMotionEffect;
+    BOOL _usingHorizontalLayout;
 }
 
 - (void).cxx_destruct;
 - (void)_applyAppearanceCustomizationsToItem:(id)arg1;
-- (id)_backdropGroupName;
 - (void)_cleanupAdaptiveBackdrop;
+- (void)_configureItems:(id)arg1;
+- (void)_determineHorizontalLayout;
 - (id)_focusedItemHighlightView;
 - (BOOL)_focusedItemHighlightViewIsVisible;
 - (struct CGRect)_layoutRegion;
@@ -33,8 +35,8 @@ __attribute__((visibility("hidden")))
 - (void)_setFocusedItemHightlightVisible:(BOOL)arg1;
 - (struct CGRect)_shadowFrameForBounds:(struct CGRect)arg1 height:(double)arg2;
 - (id)_shim_accessoryView;
+- (id)_shim_backdropGroupName;
 - (id)_shim_compatibilityBackgroundView;
-- (BOOL)_shim_hasBackdrop;
 - (void)_shim_layoutItemsOnly;
 - (void)_shim_setAccessoryView:(id)arg1;
 - (void)_shim_setBackdropGroupName:(id)arg1;
@@ -60,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)preferredFocusedView;
 - (void)prepare;
 - (void)setSemanticContentAttribute:(long long)arg1;
+- (void)tabBarSizeChanged:(struct CGSize)arg1;
 - (void)teardown;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateArchivedSubviews:(id)arg1;

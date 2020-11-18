@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreDAV/CoreDAVLeafDataPayload-Protocol.h>
 
@@ -28,7 +28,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *syncKey; // @synthesize syncKey=_syncKey;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithURL:(id)arg1 eTag:(id)arg2 dataPayload:(id)arg3 inContainerWithURL:(id)arg4 withAccountInfoProvider:(id)arg5;
 
 @end

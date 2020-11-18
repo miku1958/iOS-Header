@@ -20,6 +20,7 @@
 - (id)_dataFromObject:(id)arg1;
 - (void)_handleError:(id)arg1 format:(id)arg2;
 - (id)_objectFromData:(id)arg1;
+- (void)_obliterateWithReason:(id)arg1 preserveCopy:(BOOL)arg2 generateStackshot:(BOOL)arg3;
 - (BOOL)_openDB;
 - (BOOL)_reallyOpenDB;
 - (void)_recordMappingOfRequest:(id)arg1 toResponse:(id)arg2;
@@ -37,6 +38,7 @@
 - (void)invalidate;
 - (id)messageIDsForPendingOutgoingMessagesWithType:(int)arg1 deviceID:(id)arg2;
 - (id)objectForKey:(id)arg1;
+- (void)obliterateWithReason:(id)arg1 preserveCopy:(BOOL)arg2;
 - (void)removeAllObjects;
 - (void)removeObjectForKey:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2 expires:(double)arg3;

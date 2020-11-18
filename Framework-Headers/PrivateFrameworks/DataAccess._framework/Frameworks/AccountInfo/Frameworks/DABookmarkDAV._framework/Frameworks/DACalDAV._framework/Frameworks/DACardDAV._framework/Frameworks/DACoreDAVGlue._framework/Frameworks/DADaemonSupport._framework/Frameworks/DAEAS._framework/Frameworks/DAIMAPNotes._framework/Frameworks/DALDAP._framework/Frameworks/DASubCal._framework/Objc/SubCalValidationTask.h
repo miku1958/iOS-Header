@@ -49,6 +49,7 @@
 - (void)_tryQuickValidationCurrentData:(id)arg1;
 - (void)didFinish;
 - (void)handleTrustChallenge:(id)arg1 forSubCalURLRequest:(id)arg2;
+- (void)handleTrustChallenge:(id)arg1 forSubCalURLRequest:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)performDelegateCallbackWithError:(id)arg1;
 - (void)performTask;
 - (void)subCalURLRequest:(id)arg1 didRedirectToURL:(id)arg2;

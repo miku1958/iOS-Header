@@ -33,6 +33,7 @@
 @property (readonly, nonatomic) BOOL metadataModified;
 
 - (void).cxx_destruct;
+- (void)_continue;
 - (void)_handleEndSession:(id)arg1 response:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_handleEndSessionResponse:(id)arg1 error:(id *)arg2;
 - (void)_handleRestartSession:(id)arg1 response:(id)arg2 completion:(CDUnknownBlockType)arg3;

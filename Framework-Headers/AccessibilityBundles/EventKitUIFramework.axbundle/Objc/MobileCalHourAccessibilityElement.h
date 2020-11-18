@@ -19,6 +19,8 @@
 
 - (void).cxx_destruct;
 - (BOOL)_accessibilityIsSpeakThisElement;
+- (struct CGRect)_frameInDayGridView;
+- (id)accessibilityDropPointDescriptors;
 - (struct CGRect)accessibilityFrame;
 - (struct CGRect)accessibilityFrameForScrolling;
 - (id)accessibilityLabel;

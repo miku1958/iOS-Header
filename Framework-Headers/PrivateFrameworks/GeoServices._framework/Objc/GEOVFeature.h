@@ -135,6 +135,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (nonatomic) long long uID; // @synthesize uID=_uID;
 
+- (void).cxx_destruct;
 - (void)addExtrusionHeight:(int)arg1;
 - (void)addLabelOffset:(int)arg1;
 - (void)addShieldLabelOffset:(int)arg1;

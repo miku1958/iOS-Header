@@ -21,7 +21,7 @@
 @property (copy, nonatomic) NSString *note; // @synthesize note=_note;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithDarwinNotification:(id)arg1;
 - (void)performForChangedDefault:(id)arg1;
 

@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewCell.h>
+#import <HealthUI/HKSimpleDataEntryCell.h>
 
-#import <HealthUI/HKSimpleDataEntryCellType-Protocol.h>
 #import <HealthUI/UITextFieldDelegate-Protocol.h>
 
 @class NSString, UIButton, UILabel, UITextField, UIView;
 @protocol HKSimpleDataEntryCellDelegate;
 
-@interface HKOrganDonationAddressCell : UITableViewCell <UITextFieldDelegate, HKSimpleDataEntryCellType>
+@interface HKOrganDonationAddressCell : HKSimpleDataEntryCell <UITextFieldDelegate>
 {
     UILabel *_titleLabel;
     UIView *_addressContainerView;
@@ -36,7 +35,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HKSimpleDataEntryCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL editDisabled;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UITextField *stateTextField; // @synthesize stateTextField=_stateTextField;
 @property (strong, nonatomic) UITextField *streetOneTextField; // @synthesize streetOneTextField=_streetOneTextField;
@@ -48,12 +46,12 @@
 - (void)_setupFonts;
 - (void)_setupLayoutConstraints;
 - (void)_stateShadowButtonTapped:(id)arg1;
+- (void)beginEditing;
+- (BOOL)editDisabled;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)textFieldDidBeginEditing:(id)arg1;
+- (void)setEditDisabled:(BOOL)arg1;
 - (void)textFieldDidChangeValue:(id)arg1;
-- (void)textFieldDidEndEditing:(id)arg1;
 - (BOOL)textFieldShouldBeginEditing:(id)arg1;
-- (void)toggleMissingState:(BOOL)arg1 forKey:(id)arg2;
 
 @end
 

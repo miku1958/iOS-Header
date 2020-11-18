@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class HMDApplicationInfo, NSHashTable;
+@class HMDApplicationInfo, NSArray, NSHashTable, NSObject;
 @protocol OS_dispatch_queue;
 
-@interface HMDProcessInfo : NSObject
+@interface HMDProcessInfo : HMFObject
 {
     BOOL _viewService;
     int _pid;
     unsigned long long _state;
     HMDApplicationInfo *_appInfo;
+    NSArray *_runningReasons;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSHashTable *_connectionProxies;
 }
@@ -27,6 +28,7 @@
 @property (readonly, nonatomic, getter=isForegrounded) BOOL foreground;
 @property (readonly, nonatomic) int pid; // @synthesize pid=_pid;
 @property (readonly, nonatomic) unsigned long long proxyCount;
+@property (strong, nonatomic) NSArray *runningReasons; // @synthesize runningReasons=_runningReasons;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly, nonatomic, getter=isSuspended) BOOL suspended;
 @property (readonly, nonatomic, getter=isTerminated) BOOL terminated;

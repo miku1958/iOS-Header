@@ -4,16 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIScrollView.h>
+#import <UIKit/UIView.h>
 
-@class BFFPaneHeaderView_RemoteUI, RUIChoiceViewElement, RUIElement, RUISubHeaderElement, UIButton, UIView;
+@class BFFPaneHeaderView_RemoteUI, RUIChoiceViewElement, RUIElement, RUISubHeaderElement, UIButton, UIScrollView, _UIBackdropView;
 @protocol RUIHeader;
 
-@interface RUIChoiceView : UIScrollView
+@interface RUIChoiceView : UIView
 {
     BFFPaneHeaderView_RemoteUI *_headerView;
     UIButton *_bigChoice;
     UIButton *_smallChoice;
+    _UIBackdropView *_trayBackdrop;
+    UIView *_buttonTray;
+    UIScrollView *_scrollView;
+    BOOL _usesTwoButtonLayout;
     RUIChoiceViewElement *_target;
     RUIElement *_header;
     RUISubHeaderElement *_subHeader;
@@ -23,9 +27,11 @@
 @property (readonly, nonatomic) UIView<RUIHeader> *headerView;
 @property (strong, nonatomic) RUISubHeaderElement *subHeader; // @synthesize subHeader=_subHeader;
 @property (weak, nonatomic) RUIChoiceViewElement *target; // @synthesize target=_target;
+@property (nonatomic) BOOL usesTwoButtonLayout; // @synthesize usesTwoButtonLayout=_usesTwoButtonLayout;
 
 - (void).cxx_destruct;
 - (void)choiceTapped:(id)arg1;
+- (id)init;
 - (void)layoutSubviews;
 - (void)setFirstChoiceTitle:(id)arg1;
 - (void)setHeaderTitle:(id)arg1;

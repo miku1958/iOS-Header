@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -14,6 +14,7 @@
     struct _opaque_pthread_mutex_t _requestContextMapLock;
 }
 
+- (void).cxx_destruct;
 - (void)_accessRequestContextMapInCriticalSectionWithBlock:(CDUnknownBlockType)arg1;
 - (id)_criticalFindRequestContextWithResponseHandler:(id)arg1;
 - (id)_criticalInvalidateTimeoutAndReturnHandlerForRequestID:(id)arg1;

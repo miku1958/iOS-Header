@@ -34,15 +34,15 @@
 @property (readonly, nonatomic) FBProcess *process;
 @property (readonly) Class superclass;
 
-- (id)_createSceneClientWithIdentity:(id)arg1;
-- (void)_invalidateSceneClientWithIdentity:(id)arg1;
+- (id)_createSceneClientWithIdentifier:(id)arg1 specification:(id)arg2;
+- (void)_invalidateSceneClientWithIdentifier:(id)arg1;
 - (id)_queue;
 - (void)_queue_enumerateScenes:(CDUnknownBlockType)arg1;
 - (void)_queue_fireInvalidationAction;
 - (void)_queue_invalidateAllScenes;
 - (void)_queue_sceneDidInvalidate:(id)arg1;
 - (void)_queue_willInvalidateAllScenes;
-- (Class)_sceneClassForIdentity:(id)arg1;
+- (Class)_sceneClassForSpecification:(id)arg1;
 - (id)_server;
 - (Class)_serverClass;
 - (void)beginTransaction;

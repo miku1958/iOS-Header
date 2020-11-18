@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSNumber.h>
+#import <Foundation/NSNumber.h>
 
 __attribute__((visibility("hidden")))
 @interface NSPlaceholderValue : NSNumber
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)autorelease;
 - (void)dealloc;
 - (void)getValue:(void *)arg1;
+- (void)getValue:(void *)arg1 size:(unsigned long long)arg2;
 - (id)init;
 - (id)initWithBytes:(const void *)arg1 objCType:(const char *)arg2;
 - (id)initWithCoder:(id)arg1;

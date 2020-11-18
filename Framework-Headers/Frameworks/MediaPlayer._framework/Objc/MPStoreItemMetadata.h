@@ -15,6 +15,7 @@
 {
     NSDictionary *_downloadAssetDictionary;
     NSDictionary *_downloadMetadataDictionary;
+    NSDate *_expirationDate;
     BOOL _hasOverrideChildStorePlatformDictionaries;
     NSArray *_overrideChildStorePlatformDictionaries;
     NSDictionary *_storePlatformDictionary;
@@ -28,8 +29,10 @@
 @property (readonly, nonatomic) MPStoreArtworkRequestToken *artworkRequestToken;
 @property (readonly, copy, nonatomic) NSArray *artworkTrackIDs;
 @property (readonly, nonatomic, getter=isBeats1) BOOL beats1;
+@property (readonly, copy, nonatomic) NSString *cacheableItemIdentifier;
 @property (readonly, copy, nonatomic) NSArray *childStoreItemMetadatas;
 @property (readonly, copy, nonatomic) NSArray *childrenStoreIDs;
+@property (readonly, copy, nonatomic) NSString *cloudUniversalLibraryID;
 @property (readonly, copy, nonatomic) NSString *collectionName;
 @property (readonly, copy, nonatomic) id collectionStoreID;
 @property (readonly, nonatomic, getter=isCompilation) BOOL compilation;
@@ -44,6 +47,8 @@
 @property (readonly, copy, nonatomic) NSString *editorNotes;
 @property (readonly, copy, nonatomic) NSDictionary *effectiveStorePlatformDictionary;
 @property (readonly, nonatomic) long long episodeCount;
+@property (readonly, copy, nonatomic) NSDate *expirationDate;
+@property (readonly, nonatomic, getter=isExpired) BOOL expired;
 @property (readonly, nonatomic, getter=isExplicitContent) BOOL explicitContent;
 @property (readonly, nonatomic) long long explicitRating;
 @property (readonly, copy, nonatomic) NSArray *genreNames;
@@ -62,12 +67,13 @@
 @property (readonly, copy, nonatomic) NSArray *movieClips;
 @property (readonly, nonatomic) long long movieClipsCount;
 @property (readonly, copy, nonatomic) NSString *name;
-@property (readonly, copy, nonatomic) NSString *nameForDisplay;
+@property (readonly, copy, nonatomic) NSString *nameRaw;
 @property (readonly, copy, nonatomic) NSArray *offers;
 @property (readonly, copy, nonatomic) MPStoreItemMetadata *parentStoreItemMetadata; // @synthesize parentStoreItemMetadata=_parentStoreItemMetadata;
 @property (readonly, copy, nonatomic) NSArray *playlistIdentifiers;
+@property (readonly, copy, nonatomic) NSString *playlistType;
 @property (readonly, copy, nonatomic) NSNumber *popularity;
-@property (readonly, copy, nonatomic) id pumpkinProfileID;
+@property (readonly, nonatomic, getter=isPrivatePerson) BOOL privatePerson;
 @property (readonly, copy, nonatomic) NSDate *releaseDate;
 @property (readonly, nonatomic) long long seasonNumber;
 @property (readonly, copy, nonatomic) NSString *shortEditorNotes;
@@ -75,9 +81,11 @@
 @property (readonly, copy, nonatomic) NSURL *shortURL;
 @property (readonly, copy, nonatomic) NSNumber *shouldBookmarkPlayPosition;
 @property (readonly, nonatomic) BOOL showComposer;
+@property (readonly, copy, nonatomic) id socialProfileID;
 @property (readonly, copy, nonatomic) id storeID;
 @property (readonly, nonatomic) long long trackCount;
 @property (readonly, nonatomic) long long trackNumber;
+@property (readonly, nonatomic, getter=isVerifiedPerson) BOOL verifiedPerson;
 @property (readonly, copy, nonatomic) NSString *versionHash;
 @property (readonly, copy, nonatomic) NSString *videoSubtype;
 @property (readonly, copy, nonatomic) NSString *workName;
@@ -102,10 +110,13 @@
 - (id)editorNotesWithStyle:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)flowcaseEditorialArtworkRequestToken;
+- (BOOL)hasMetadataForRequestReason:(unsigned long long)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDownloadAssetDictionary:(id)arg1;
 - (id)initWithStorePlatformDictionary:(id)arg1;
+- (id)initWithStorePlatformDictionary:(id)arg1 expirationDate:(id)arg2;
 - (id)initWithStorePlatformDictionary:(id)arg1 parentStoreItemMetadata:(id)arg2;
+- (id)initWithStorePlatformDictionary:(id)arg1 parentStoreItemMetadata:(id)arg2 expirationDate:(id)arg3;
 - (BOOL)isMasteredForITunes;
 - (id)metadataByAppendingMetadata:(id)arg1;
 - (id)metadataWithChildStorePlatformDictionaries:(id)arg1;

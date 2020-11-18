@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)viewDidLoad;
+- (void)viewDidAppear:(BOOL)arg1;
 
 @end
 

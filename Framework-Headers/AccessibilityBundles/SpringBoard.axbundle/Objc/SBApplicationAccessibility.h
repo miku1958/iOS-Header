@@ -13,9 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_updateProcess:(id)arg1 withState:(id)arg2;
 - (id)accessibilityLabel;
-- (void)setFlag:(long long)arg1 forStateSetting:(unsigned int)arg2;
-- (void)updateProcessState:(id)arg1;
 
 @end
 

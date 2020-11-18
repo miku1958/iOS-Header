@@ -9,15 +9,16 @@
 #import <ITMLKit/IKJSDOMEventTarget-Protocol.h>
 #import <ITMLKit/IKJSDOMNode-Protocol.h>
 #import <ITMLKit/NSObject-Protocol.h>
-#import <ITMLKit/_IKDOMNode-Protocol.h>
-#import <ITMLKit/_IKDOMNodeProxy-Protocol.h>
+#import <ITMLKit/_IKJSDOMNode-Protocol.h>
+#import <ITMLKit/_IKJSDOMNodeProxy-Protocol.h>
 
-@class IKDOMDocument, IKDOMNodeData, IKDOMNodeList, IKJSDataItem, JSManagedValue, NSHashTable, NSMutableDictionary, NSString;
+@class IKDOMDocument, IKDOMNodeData, IKDOMNodeList, IKJSDataItem, JSManagedValue, JSValue, NSHashTable, NSMutableDictionary, NSString;
 
-@interface IKDOMNode : IKJSObject <NSObject, IKJSDOMNode, _IKDOMNodeProxy, _IKDOMNode, IKJSDOMEventTarget>
+@interface IKDOMNode : IKJSObject <NSObject, IKJSDOMNode, _IKJSDOMNodeProxy, _IKJSDOMNode, IKJSDOMEventTarget>
 {
     struct _xmlNode *_nodePtr;
-    IKJSDataItem *_dataItem;
+    JSManagedValue *_managedDataItem;
+    IKJSDataItem *_boxedDataItem;
     JSManagedValue *_managedOwnerDocument;
     JSManagedValue *_managedParent;
     JSManagedValue *_managedChildNodeList;
@@ -25,17 +26,20 @@
     NSHashTable *_domObservers;
     long long _ITMLID;
     JSManagedValue *_managedSelf;
+    NSString *_identifier;
 }
 
 @property (nonatomic) long long ITMLID; // @synthesize ITMLID=_ITMLID;
+@property (strong, nonatomic) IKJSDataItem *boxedDataItem;
 @property (readonly, strong, nonatomic) IKDOMNodeList *childNodes;
-@property (strong, nonatomic) IKJSDataItem *dataItem;
+@property (weak, nonatomic) JSValue *dataItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSHashTable *domObservers; // @synthesize domObservers=_domObservers;
 @property (strong, nonatomic) NSMutableDictionary *eventListenersMap; // @synthesize eventListenersMap=_eventListenersMap;
 @property (readonly, strong, nonatomic) IKDOMNode *firstChild;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, strong, nonatomic) IKDOMNodeData *jsNodeData;
 @property (readonly, strong, nonatomic) IKDOMNode *lastChild;
 @property (strong, nonatomic) JSManagedValue *managedChildNodeList; // @synthesize managedChildNodeList=_managedChildNodeList;
@@ -52,6 +56,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *textContent;
 
++ (id)ITMLIDStringforITMLID:(unsigned long long)arg1;
 + (id)_eventListenerMapKeyForType:(id)arg1 useCapture:(BOOL)arg2;
 + (void)handleNodeParentDidChange:(struct _xmlNode *)arg1;
 + (void)handleNodeWillRelease:(struct _xmlNode *)arg1;
@@ -59,6 +64,7 @@
 - (void).cxx_destruct;
 - (struct _xmlNode *)_appendNode:(struct _xmlNode *)arg1;
 - (void)_childrenUpdatedWithUpdatedChildNodes:(id)arg1 withDocument:(id)arg2;
+- (BOOL)_enumerateNodesWithBlock:(CDUnknownBlockType)arg1;
 - (struct _xmlNode *)_insertNode:(struct _xmlNode *)arg1 refNode:(struct _xmlNode *)arg2 operation:(unsigned long long)arg3;
 - (void)_linkManagedObjects;
 - (void)_markSubtreeUpdatesForAncestorsOfNode:(id)arg1;
@@ -70,7 +76,7 @@
 - (void)addDOMObserver:(id)arg1;
 - (void)addEventListener:(id)arg1:(id)arg2:(BOOL)arg3;
 - (id)appendChild:(id)arg1;
-- (id)asPrivateIKDOMNode;
+- (id)asPrivateIKJSDOMNode;
 - (unsigned long long)childElementCount;
 - (id)childNodesAsArray;
 - (id)children;
@@ -79,6 +85,7 @@
 - (BOOL)contains:(id)arg1;
 - (void)dealloc;
 - (BOOL)dispatchEvent:(id)arg1;
+- (void)enumerateEventListenersUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateEventListernersForType:(id)arg1 xmlAttribute:(id)arg2 phase:(long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (id)firstElementChild;
 - (id)getFeature:(id)arg1:(id)arg2;

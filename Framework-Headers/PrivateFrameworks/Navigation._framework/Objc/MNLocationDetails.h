@@ -17,11 +17,13 @@
     double _distanceFromRoute;
     double _horizontalAccuracy;
     long long _shieldType;
+    long long _speedLimitShieldType;
     double _timestamp;
     unsigned long long _transitID;
     GEOLocation *_location;
     unsigned int _locationState;
     int _rampType;
+    int _rawReferenceFrame;
     GEOLatLng *_roadCoordinate;
     unsigned int _roadLineType;
     NSString *_roadName;
@@ -39,10 +41,12 @@
         unsigned int distanceFromRoute:1;
         unsigned int horizontalAccuracy:1;
         unsigned int shieldType:1;
+        unsigned int speedLimitShieldType:1;
         unsigned int timestamp:1;
         unsigned int transitID:1;
         unsigned int locationState:1;
         unsigned int rampType:1;
+        unsigned int rawReferenceFrame:1;
         unsigned int roadLineType:1;
         unsigned int speedLimit:1;
         unsigned int stepIndex:1;
@@ -64,6 +68,7 @@
 @property (readonly, nonatomic) BOOL hasLocation;
 @property (nonatomic) BOOL hasLocationState;
 @property (nonatomic) BOOL hasRampType;
+@property (nonatomic) BOOL hasRawReferenceFrame;
 @property (readonly, nonatomic) BOOL hasRoadCoordinate;
 @property (nonatomic) BOOL hasRoadLineType;
 @property (readonly, nonatomic) BOOL hasRoadName;
@@ -73,6 +78,7 @@
 @property (nonatomic) BOOL hasShieldType;
 @property (nonatomic) BOOL hasSpeedLimit;
 @property (nonatomic) BOOL hasSpeedLimitIsMPH;
+@property (nonatomic) BOOL hasSpeedLimitShieldType;
 @property (nonatomic) BOOL hasStepIndex;
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) BOOL hasTransitID;
@@ -82,6 +88,7 @@
 @property (strong, nonatomic) GEOLocation *location; // @synthesize location=_location;
 @property (nonatomic) unsigned int locationState; // @synthesize locationState=_locationState;
 @property (nonatomic) int rampType; // @synthesize rampType=_rampType;
+@property (nonatomic) int rawReferenceFrame; // @synthesize rawReferenceFrame=_rawReferenceFrame;
 @property (strong, nonatomic) GEOLatLng *roadCoordinate; // @synthesize roadCoordinate=_roadCoordinate;
 @property (nonatomic) unsigned int roadLineType; // @synthesize roadLineType=_roadLineType;
 @property (strong, nonatomic) NSString *roadName; // @synthesize roadName=_roadName;
@@ -91,6 +98,7 @@
 @property (nonatomic) long long shieldType; // @synthesize shieldType=_shieldType;
 @property (nonatomic) unsigned int speedLimit; // @synthesize speedLimit=_speedLimit;
 @property (nonatomic) BOOL speedLimitIsMPH; // @synthesize speedLimitIsMPH=_speedLimitIsMPH;
+@property (nonatomic) long long speedLimitShieldType; // @synthesize speedLimitShieldType=_speedLimitShieldType;
 @property (nonatomic) unsigned int stepIndex; // @synthesize stepIndex=_stepIndex;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) unsigned long long transitID; // @synthesize transitID=_transitID;
@@ -100,6 +108,7 @@
 + (id)locationWithLocationDetails:(id)arg1 route:(id)arg2;
 - (void).cxx_destruct;
 - (int)StringAsRampType:(id)arg1;
+- (int)StringAsRawReferenceFrame:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -108,6 +117,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)rampTypeAsString:(int)arg1;
+- (id)rawReferenceFrameAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

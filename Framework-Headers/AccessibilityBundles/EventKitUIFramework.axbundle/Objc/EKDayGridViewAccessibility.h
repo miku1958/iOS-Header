@@ -17,7 +17,7 @@
 - (BOOL)_accessibilityHideEmptyHours;
 - (void)_accessibilityOccurrencesChanged:(id)arg1;
 - (void)_axResetChildren;
-- (id)accessibilityContainerElements;
+- (id)accessibilityElements;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 backgroundColor:(id)arg2 opaque:(BOOL)arg3 numberOfDaysToDisplay:(unsigned long long)arg4;
 - (BOOL)isAccessibilityElement;

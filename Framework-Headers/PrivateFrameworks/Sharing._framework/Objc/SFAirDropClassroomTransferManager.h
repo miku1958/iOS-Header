@@ -27,7 +27,7 @@
 - (id)exportedInterface;
 - (id)machServiceName;
 - (id)remoteObjectInterface;
-- (BOOL)shouldAutomaticallyDispatchIncomingInvocations;
+- (BOOL)shouldEscapeXpcTryCatch;
 - (void)transferWithIdentifierWasAccepted:(id)arg1;
 - (void)transferWithIdentifierWasDeclined:(id)arg1;
 - (void)updateTransferWithIdentifier:(id)arg1 withState:(long long)arg2 information:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

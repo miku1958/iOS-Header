@@ -11,37 +11,39 @@
 @interface PHPerson : PHObject
 {
     BOOL _inPersonNamingModel;
-    BOOL _verified;
     NSString *_name;
     NSString *_displayName;
     long long _type;
-    long long _manualOrder;
+    unsigned long long _manualOrder;
     NSString *_personUri;
     long long _faceCount;
     NSDictionary *_contactMatchingDictionary;
+    long long _verifiedType;
 }
 
 @property (readonly, nonatomic) NSDictionary *contactMatchingDictionary; // @synthesize contactMatchingDictionary=_contactMatchingDictionary;
 @property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, nonatomic) long long faceCount; // @synthesize faceCount=_faceCount;
 @property (readonly, nonatomic, getter=isInPersonNamingModel) BOOL inPersonNamingModel; // @synthesize inPersonNamingModel=_inPersonNamingModel;
-@property (readonly, nonatomic) long long manualOrder; // @synthesize manualOrder=_manualOrder;
+@property (readonly, nonatomic) unsigned long long manualOrder; // @synthesize manualOrder=_manualOrder;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSString *personUri; // @synthesize personUri=_personUri;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
-@property (readonly, nonatomic, getter=isVerified) BOOL verified; // @synthesize verified=_verified;
+@property (readonly, nonatomic, getter=isVerified) BOOL verified;
+@property (readonly, nonatomic) long long verifiedType; // @synthesize verifiedType=_verifiedType;
 
-+ (id)_convertFaceSuggestionToFaceCollection:(id)arg1 options:(id)arg2;
-+ (long long)_faceSuggestionForPerson:(id)arg1 confirmedFaceCollections:(id)arg2 rejectedFaceCollections:(id)arg3 options:(id)arg4 fromClient:(id)arg5 completion:(CDUnknownBlockType)arg6;
-+ (id)_faceSuggestionMarkedAsConfirmed:(BOOL)arg1 fromFaceCollection:(id)arg2 options:(id)arg3;
-+ (id)_packageSuggestionList:(id)arg1 options:(id)arg2;
-+ (id)_transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
++ (id)_convertToPersonSuggestion:(id)arg1;
++ (id)_packageSuggestionList:(id)arg1;
++ (id)_personSuggestionMarkedAsConfirmed:(BOOL)arg1 fromPersonSuggestion:(id)arg2;
++ (long long)_personSuggestionsForPerson:(id)arg1 confirmedPersonSuggestions:(id)arg2 rejectedPersonSuggestions:(id)arg3 fromClient:(id)arg4 completion:(CDUnknownBlockType)arg5;
++ (id)_verifiedPersonWithLocalIdentifier:(id)arg1 fromPhotoLibrary:(id)arg2;
 + (id)displayNameFromContact:(id)arg1;
 + (id)entityKeyForPropertyKey:(id)arg1;
-+ (id)faceSuggestionForPerson:(id)arg1 confirmedFaceCollections:(id)arg2 rejectedFaceCollections:(id)arg3 options:(id)arg4;
-+ (long long)faceSuggestionForPerson:(id)arg1 confirmedFaceCollections:(id)arg2 rejectedFaceCollections:(id)arg3 options:(id)arg4 completion:(CDUnknownBlockType)arg5;
-+ (id)fetchAssociatedPersonForFaceGroup:(id)arg1 withOptions:(id)arg2;
++ (id)fetchAssociatedPersonsGroupedByFaceGroupLocalIdentifierForFaceGroups:(id)arg1 options:(id)arg2;
 + (id)fetchHomePersonUUIDsGroupedByAssetUUIDForAssetUUIDs:(id)arg1 options:(id)arg2;
++ (id)fetchInvalidMergeCandidatePersonsForPerson:(id)arg1 options:(id)arg2;
++ (id)fetchMergeCandidatePersonsForPerson:(id)arg1 options:(id)arg2;
++ (id)fetchPersonAssociatedWithFaceGroup:(id)arg1 options:(id)arg2;
 + (id)fetchPersonCountGroupedByAssetLocalIdentifierForAssets:(id)arg1 options:(id)arg2;
 + (id)fetchPersonWithFace:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsForAssetCollection:(id)arg1 options:(id)arg2;
@@ -55,13 +57,23 @@
 + (id)fetchType;
 + (id)fullNameFromContact:(id)arg1;
 + (id)identifierCode;
++ (id)localIdentifierExpressionForFetchRequests;
 + (id)managedEntityName;
++ (BOOL)managedObjectSupportsKeyFaces;
 + (BOOL)managedObjectSupportsPersonFilters;
++ (id)personSuggestionsForPerson:(id)arg1 confirmedPersonSuggestions:(id)arg2 rejectedPersonSuggestions:(id)arg3;
++ (long long)personSuggestionsForPerson:(id)arg1 confirmedPersonSuggestions:(id)arg2 rejectedPersonSuggestions:(id)arg3 completion:(CDUnknownBlockType)arg4;
++ (id)personToKeepForCloudConistencyFromPersons:(id)arg1;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
++ (long long)suggestVerifiedPersonForFace:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (long long)suggestVerifiedPersonForPerson:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
++ (long long)updateKeyFacesOfPersons:(id)arg1 forceUpdate:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (Class)changeRequestClass;
 - (id)description;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
+- (void)markAsNeedingKeyFace;
 
 @end
 

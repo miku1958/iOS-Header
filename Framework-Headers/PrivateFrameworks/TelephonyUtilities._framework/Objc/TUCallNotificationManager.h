@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray;
 
@@ -20,7 +20,7 @@
 - (void)_postNotificationName:(id)arg1 object:(id)arg2 userInfo:(id)arg3;
 - (void)audioPropertiesChangedForCall:(id)arg1;
 - (void)cameraTypeChangedForCall:(id)arg1;
-- (void)conferenceParticipantCallsChangedForCallCenter:(id)arg1 conferenceParticipantCalls:(id)arg2;
+- (void)conferenceParticipantCallsChangedForCallContainer:(id)arg1 conferenceParticipantCalls:(id)arg2;
 - (void)connectedChangedForCall:(id)arg1;
 - (void)connectingChangedForCall:(id)arg1;
 - (void)deferNotificationsUntilAfterPerformingBlock:(CDUnknownBlockType)arg1;
@@ -29,7 +29,6 @@
 - (void)endpointOnCurrentDeviceChangedForCall:(id)arg1;
 - (void)faceTimeIDStatusChangedForCall:(id)arg1;
 - (void)hardPauseDigitsStateChangedForCall:(id)arg1;
-- (void)hasAudioFinishedChangedForCall:(id)arg1;
 - (void)hasSentInvitationChangedForCall:(id)arg1;
 - (void)hasUpdatedAudioChangedForCall:(id)arg1;
 - (void)isEmergencyChangedForCall:(id)arg1;
@@ -45,14 +44,17 @@
 - (void)postNotificationsForCall:(id)arg1 afterUpdatesInBlock:(CDUnknownBlockType)arg2;
 - (void)postNotificationsForCall:(id)arg1 usingComparisonCall:(id)arg2;
 - (void)postNotificationsForCall:(id)arg1 usingComparisonCall:(id)arg2 afterUpdatesInBlock:(CDUnknownBlockType)arg3;
-- (void)postNotificationsForCallCenter:(id)arg1 afterUpdatesInBlock:(CDUnknownBlockType)arg2;
+- (void)postNotificationsForCallContainer:(id)arg1 afterUpdatesInBlock:(CDUnknownBlockType)arg2;
+- (void)prefersExclusiveAccessToCellularNetworkChangedForCall:(id)arg1;
 - (void)remoteAspectRatioChangedForCall:(id)arg1;
 - (void)remoteCameraOrientationChangedForCall:(id)arg1;
 - (void)remoteScreenAspectRatioChangedForCall:(id)arg1;
 - (void)remoteScreenOrientationChangedForCall:(id)arg1;
+- (void)remoteUplinkMutedChangedForCall:(id)arg1;
 - (void)remoteVideoContentRectChangedForCall:(id)arg1;
 - (void)shouldSuppressRingtoneChangedForCall:(id)arg1;
 - (void)statusChangedForCall:(id)arg1;
+- (void)supportsTTYWithVoiceChangedForCall:(id)arg1;
 - (void)ttyTypeChangedForCall:(id)arg1;
 - (void)videoDegradedChangedForCall:(id)arg1;
 - (void)videoPausedChangedForCall:(id)arg1;

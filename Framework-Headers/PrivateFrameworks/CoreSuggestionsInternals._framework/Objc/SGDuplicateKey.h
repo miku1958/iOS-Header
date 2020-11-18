@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreSuggestionsInternals/NSCopying-Protocol.h>
+
 @class NSData;
 @protocol SGEntityKey;
 
-@interface SGDuplicateKey : NSObject
+@interface SGDuplicateKey : NSObject <NSCopying>
 {
     long long _entityType;
     NSObject<SGEntityKey> *_entityKey;
@@ -26,13 +28,14 @@
 + (id)duplicateKeyForEmailWithSource:(id)arg1 messageId:(id)arg2;
 + (id)duplicateKeyForInteractionWithBundleId:(id)arg1 personHandle:(id)arg2;
 + (id)duplicateKeyForMessage:(id)arg1 fromSource:(id)arg2;
-+ (id)duplicateKeyForNaturalLanguageEventWithStartDate:(id)arg1 endDate:(id)arg2 title:(id)arg3 parentKey:(id)arg4;
++ (id)duplicateKeyForNaturalLanguageEventWithStartDate:(id)arg1 endDate:(id)arg2 title:(id)arg3 participants:(id)arg4 parentKey:(id)arg5;
 + (id)duplicateKeyForPseudoContactWithIdentity:(id)arg1 parentKey:(id)arg2;
 + (id)duplicateKeyForPseudoEventWithGroupId:(id)arg1 parentKey:(id)arg2;
 + (id)duplicateKeyForSchemaOrg;
 + (id)duplicateKeyForSearchableItem:(id)arg1;
 + (id)duplicateKeyForTextMessageWithSource:(id)arg1 uniqueIdentifier:(id)arg2;
 + (id)duplicateKeyForUnrecognizedContactWithIdentity:(id)arg1;
++ (id)duplicateKeyForWebPageFromSource:(id)arg1;
 - (void).cxx_destruct;
 - (id)contactDetailKey;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -55,6 +58,7 @@
 - (id)serialize;
 - (id)textMessageKey;
 - (id)unrecognizedContactKey;
+- (id)webPageKey;
 
 @end
 

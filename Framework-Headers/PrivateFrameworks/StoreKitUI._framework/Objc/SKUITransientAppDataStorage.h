@@ -8,7 +8,7 @@
 
 #import <StoreKitUI/IKAppDataStoring-Protocol.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface SKUITransientAppDataStorage : NSObject <IKAppDataStoring>
@@ -18,7 +18,11 @@
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableDictionary *storage; // @synthesize storage=_storage;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)clear;

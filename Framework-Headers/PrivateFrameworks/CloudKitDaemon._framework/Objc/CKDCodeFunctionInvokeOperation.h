@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSData *serializedResponse; // @synthesize serializedResponse=_serializedResponse;
 @property (readonly, copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 
++ (long long)isPredominatelyDownload;
 - (void).cxx_destruct;
 - (void)_invokeFunction;
 - (id)activityCreate;

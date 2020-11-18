@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class IDSDataChannelLinkContext, NSData, NSMutableArray, NSMutableDictionary;
-@protocol OS_nw_connection, OS_nw_path_evaluator;
+@protocol OS_dispatch_semaphore, OS_nw_connection, OS_nw_path_evaluator;
 
 @interface _IDSDatagramChannel : NSObject
 {
@@ -15,8 +15,11 @@
     int _socketDescriptor;
     CDUnknownBlockType _eventHandler;
     CDUnknownBlockType _readHandler;
+    CDUnknownBlockType _readHandlerWithOptions;
     BOOL _connected;
     struct os_unfair_lock_s _writeLock;
+    _Atomic int _readState;
+    NSObject<OS_dispatch_semaphore> *_readSema;
     NSObject<OS_nw_connection> *_connection;
     BOOL _hasMetadata;
     BOOL _sentFirstReadLinkInfo;
@@ -31,8 +34,14 @@
     BOOL _defaultLinkID;
     NSData *_preConnectionData;
     NSMutableArray *_sendingMetadata;
+    BOOL _needsMediaEncryptionInfo;
+    unsigned long long _outgoingBytes;
+    unsigned long long _incomingBytes;
+    double _lastOutgoingStatReport;
+    double _lastIncomingStatReport;
 }
 
+- (void).cxx_destruct;
 - (id)init;
 
 @end

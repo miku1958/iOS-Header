@@ -23,9 +23,12 @@
     struct {
         unsigned int _directionState:2;
         unsigned int _drawsOutside:1;
-        unsigned int _reserved:29;
+        unsigned int _standaloneAttachment:1;
+        unsigned int _reserved:28;
     } _flags;
 }
+
+@property (readonly, getter=isStandaloneTextAttachment) BOOL standaloneTextAttachment;
 
 - (long long)_charIndexToBreakLineByWordWrappingAtIndex:(long long)arg1 lineFragmentWidth:(double)arg2 hyphenate:(BOOL *)arg3;
 - (id)_copyRenderingContextWithGlyphOrigin:(double)arg1;

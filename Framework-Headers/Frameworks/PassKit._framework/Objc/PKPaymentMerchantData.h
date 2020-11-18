@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSData, NSString, PKPaymentMerchantSession;
 
@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (id)encode;
 - (id)init;
+- (id)initWithMerchantIdentifier:(id)arg1 applicationData:(id)arg2;
 - (id)initWithPaymentRequest:(id)arg1;
 
 @end

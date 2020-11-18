@@ -18,16 +18,29 @@
 + (void)_postGroupedValue:(float)arg1 key:(id)arg2;
 + (void)_postRawValue:(long long)arg1 key:(id)arg2;
 + (BOOL)_reportingEnabled;
++ (void)reportCellRighSwipeActionChanged:(id)arg1;
++ (void)reportCellRighSwipeActionIgnored;
++ (void)reportCellSwipeActionTypeExecuted:(id)arg1;
++ (void)reportComposedMessageSendFailure;
++ (void)reportComposedMessageSizeInBytes:(unsigned long long)arg1;
 + (void)reportContentDisplayedForMessageWithId:(id)arg1 hasMainAlternative:(BOOL)arg2 hasTextAlternative:(BOOL)arg3;
 + (void)reportContentReceivedForMessageWithId:(id)arg1 sizeInBytes:(unsigned long long)arg2 fullSyncVersion:(unsigned long long)arg3 dateSynced:(id)arg4;
-+ (void)reportFullSyncReceivedFullSyncVersion:(unsigned long long)arg1 syncedMailboxType:(unsigned long long)arg2 dateSynced:(id)arg3;
++ (void)reportFetchOlderMessages;
 + (void)reportFullSyncRequestedFromWatch:(BOOL)arg1 corruptionDetected:(BOOL)arg2 migrationRelated:(BOOL)arg3 idsFailureRelated:(BOOL)arg4 fullSyncVersionMatchRelated:(BOOL)arg5;
 + (void)reportHaltSyncRequestedFromWatch:(BOOL)arg1;
 + (void)reportImageAttachmentReceivedForMessageWithId:(id)arg1 contentId:(id)arg2 sizeInBytes:(unsigned long long)arg3 fullSyncVersion:(unsigned long long)arg4 dateSynced:(id)arg5;
++ (void)reportMailAttachmentHandoffAdvertisedByNotification:(BOOL)arg1;
++ (void)reportMailAttachmentHandoffContinuedByNotification:(BOOL)arg1;
++ (void)reportMailLinkHandoffAdvertisedByNotification:(BOOL)arg1;
++ (void)reportMailLinkHandoffContinuedByNotification:(BOOL)arg1;
++ (void)reportMailboxSelectionChanged:(id)arg1 fromWatch:(BOOL)arg2;
 + (void)reportMessageDeletionReceivedForMessageWithId:(id)arg1 fullSyncVersion:(unsigned long long)arg2 dateSynced:(id)arg3;
 + (void)reportMessageReceivedWithId:(id)arg1 willGenerateNotification:(BOOL)arg2 fullSyncVersion:(unsigned long long)arg3 dateSynced:(id)arg4;
++ (void)reportMessageRepliedFromApp:(BOOL)arg1;
 + (void)reportMessageUpdateReceivedForMessageWithId:(id)arg1 fullSyncVersion:(unsigned long long)arg2 dateSynced:(id)arg3;
 + (void)reportMoreMessagesReceivedConversationSpecific:(BOOL)arg1 fullSyncVersion:(unsigned long long)arg2 dateSynced:(id)arg3;
++ (void)reportNewMessageComposedFromApp:(BOOL)arg1 mailto:(BOOL)arg2;
++ (void)reportNotificationAction:(unsigned long long)arg1;
 + (void)reportRenderedNotificationUsingLocalContent:(BOOL)arg1 mailboxSynced:(BOOL)arg2 messageSynced:(BOOL)arg3 contentDownloaded:(BOOL)arg4;
 
 @end

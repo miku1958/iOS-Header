@@ -6,15 +6,18 @@
 
 #import <MarkupUI/NSObject-Protocol.h>
 
-@class AKAnnotation, AKController, AKPageModelController, CALayer, NSArray, NSData, NSIndexSet, NSUndoManager, UIView, UIViewController;
+@class AKAnnotation, AKController, AKPageModelController, CALayer, NSArray, NSData, NSIndexSet, NSUndoManager, UIGestureRecognizer, UIView, UIViewController;
 
 @protocol AKControllerDelegateProtocol <NSObject>
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromModelToOverlayWithPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromOverlayToModelWithPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
+- (void)installDrawingGestureRecognizer:(UIGestureRecognizer *)arg1 forPageAtIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 - (struct CGRect)maxPageRectWithPageIndex:(unsigned long long)arg1 forAnnotationController:(AKController *)arg2;
 - (NSData *)newContentSnapshotPDFDataIncludingAdornments:(BOOL)arg1 atScale:(double)arg2 inRect:(struct CGRect)arg3 onOverlayAtPageIndex:(unsigned long long)arg4 forAnnotationController:(AKController *)arg5;
 - (UIViewController *)popoverPresentingViewControllerForAnnotationController:(AKController *)arg1;
 - (NSUndoManager *)undoManagerForAnnotationController:(AKController *)arg1;
+- (void)uninstallDrawingGestureRecognizer:(UIGestureRecognizer *)arg1 forPageAtIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
+- (void)updateDrawingGestureRecognizer:(UIGestureRecognizer *)arg1 forPageAtIndex:(unsigned long long)arg2 withPriority:(BOOL)arg3 forAnnotationController:(AKController *)arg4;
 
 @optional
 - (NSIndexSet *)characterIndexesForQuadPoints:(NSArray *)arg1 onPageAtIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
@@ -40,11 +43,11 @@
 - (void)penStrokeCompletedForAnnotationController:(AKController *)arg1;
 - (void)placeAuxiliaryView:(UIView *)arg1 forAnnotationController:(AKController *)arg2;
 - (void)positionSketchOverlay:(UIView *)arg1 forAnnotationController:(AKController *)arg2;
-- (struct CGRect)postioningRectForCandidatePicker;
 - (NSArray *)quadPointsForCharacterIndexes:(NSIndexSet *)arg1 onPageAtIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 - (void)removeAuxiliaryView:(UIView *)arg1 forAnnotationController:(AKController *)arg2;
 - (void)setAllowsNativeRenderingOfHighlightableSelection:(BOOL)arg1 forAnnotationController:(AKController *)arg2;
 - (BOOL)shouldPlaceFormElementAtPoint:(struct CGPoint)arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 - (BOOL)shouldPlaceProposedFormElementAtRect:(struct CGRect)arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
+- (struct CGRect)visibleRectOfOverlayAtPageIndex:(unsigned long long)arg1 forAnnotationController:(AKController *)arg2;
 @end
 

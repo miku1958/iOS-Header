@@ -7,14 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <Speech/AFDictationDelegate-Protocol.h>
+#import <Speech/CXCallObserverDelegate-Protocol.h>
 
-@class AFDictationConnection, NSLocale, NSOperationQueue, NSString;
+@class AFDictationConnection, CXCallObserver, NSLocale, NSOperationQueue, NSString;
 @protocol NSObject, SFSpeechRecognizerDelegate;
 
-@interface SFSpeechRecognizer : NSObject <AFDictationDelegate>
+@interface SFSpeechRecognizer : NSObject <CXCallObserverDelegate, AFDictationDelegate>
 {
     AFDictationConnection *_dictationConnection;
     NSString *_languageCode;
+    CXCallObserver *_callObserver;
     id<NSObject> _facetimeObserver;
     id<NSObject> _foregroundObserver;
     id<NSObject> _preferencesObserver;
@@ -26,7 +28,6 @@
 
 @property (readonly, nonatomic, getter=_isAvailableForForcedOfflineRecognition) BOOL _availableForForcedOfflineRecognition;
 @property (readonly, nonatomic, getter=isAvailable) BOOL available;
-@property (readonly, nonatomic, getter=isAvailableForRecordingRecognition) BOOL availableForRecordingRecognition;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) long long defaultTaskHint; // @synthesize defaultTaskHint=_defaultTaskHint;
 @property (weak, nonatomic) id<SFSpeechRecognizerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -45,14 +46,13 @@
 - (void)_informDelegateOfAvailabilityChange;
 - (void)_informDelegateOfPreferencesChange;
 - (BOOL)_isInternalTaskHint:(long long)arg1;
-- (id)_recognitionTaskWithResultHandler:(CDUnknownBlockType)arg1;
 - (void)_requestOfflineDictationSupportWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_sendEngagementFeedback:(long long)arg1 requestIdentifier:(id)arg2;
+- (void)callObserver:(id)arg1 callChanged:(id)arg2;
 - (void)dealloc;
 - (void)dictationConnnectionDidChangeAvailability:(id)arg1;
 - (id)init;
 - (id)initWithLocale:(id)arg1;
-- (void)prepareWithRequest:(id)arg1;
 - (id)recognitionTaskWithRequest:(id)arg1 delegate:(id)arg2;
 - (id)recognitionTaskWithRequest:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 

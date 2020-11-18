@@ -57,6 +57,8 @@
 @property (copy, nonatomic, getter=_thumbnail, setter=_setThumbnail:) UIImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 
 - (void).cxx_destruct;
+- (void)_cloudSharingControllerDidModifyPrimarySwitch:(BOOL)arg1;
+- (void)_cloudSharingControllerDidModifySecondarySwitch:(BOOL)arg1;
 - (id)_customPresentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (void)_didDismiss;
 - (void)_dismissForActivityRepresentation:(CDUnknownBlockType)arg1;
@@ -73,6 +75,7 @@
 - (void)_updatePresentationStyleForLegacyAppearance;
 - (void)dealloc;
 - (id)initWithFileURL:(id)arg1;
+- (id)initWithFileURL:(id)arg1 error:(id *)arg2;
 
 @end
 

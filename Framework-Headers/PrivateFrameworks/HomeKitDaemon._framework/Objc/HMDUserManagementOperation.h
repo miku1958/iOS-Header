@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessory, HMDAccessoryInvitation, HMDUser, HMDUserManagementOperationManager, HMFTimer, NSArray, NSDate, NSDictionary, NSMutableArray, NSString, NSUUID;
+@class HAPPairingIdentity, HMDAccessory, HMDAccessoryInvitation, HMDUser, HMDUserManagementOperationManager, HMFTimer, NSArray, NSDate, NSDictionary, NSMutableArray, NSObject, NSString, NSUUID;
 @protocol HMDUserManagementOperationDelegate, OS_dispatch_queue;
 
-@interface HMDUserManagementOperation : NSObject <HMFTimerDelegate, NSSecureCoding>
+@interface HMDUserManagementOperation : HMFObject <HMFTimerDelegate, NSSecureCoding>
 {
     NSMutableArray *_dependencies;
     BOOL _executing;
@@ -26,6 +26,7 @@
     HMDUser *_user;
     HMDAccessory *_accessory;
     NSDate *_expirationDate;
+    HAPPairingIdentity *_ownerPairingIdentity;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFTimer *_expirationTimer;
@@ -55,6 +56,7 @@
 @property (nonatomic) BOOL lastOperationFailed; // @synthesize lastOperationFailed=_lastOperationFailed;
 @property (strong, nonatomic) HMDUserManagementOperationManager *operationManager; // @synthesize operationManager=_operationManager;
 @property (readonly, nonatomic) unsigned long long operationType; // @synthesize operationType=_operationType;
+@property (strong, nonatomic) HAPPairingIdentity *ownerPairingIdentity; // @synthesize ownerPairingIdentity=_ownerPairingIdentity;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic, getter=isReady) BOOL ready;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
@@ -62,20 +64,22 @@
 @property (readonly, nonatomic) HMDUser *user; // @synthesize user=_user;
 
 + (id)addUserManagementOperationForUser:(id)arg1 accessory:(id)arg2;
++ (id)operationWithDictionary:(id)arg1 home:(id)arg2;
 + (id)removeUserManagementOperationForUser:(id)arg1 accessory:(id)arg2;
 + (id)shortDescription;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (long long)_accessoryInvitationState;
-- (void)_addPairingToAccessory:(id)arg1 identifier:(id)arg2 publicKey:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_addPairingToAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_endBackoffTimer;
 - (BOOL)_isFinished;
-- (void)_removePairingFromAccessory:(id)arg1 identifier:(id)arg2 publicKey:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_removePairingFromAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setupExpirationTimer;
 - (void)_startBackoffTimer;
 - (void)addDependency:(id)arg1;
 - (void)cancel;
 - (id)descriptionWithPointer:(BOOL)arg1;
+- (id)dictionaryEncoding;
 - (void)encodeWithCoder:(id)arg1;
 - (void)executeWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
@@ -83,6 +87,7 @@
 - (id)initWithOperationType:(unsigned long long)arg1 user:(id)arg2 accessory:(id)arg3 expiration:(id)arg4;
 - (BOOL)isValid;
 - (BOOL)mergeWithOperation:(id)arg1;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (double)nextBackoffInterval;
 - (id)shortDescription;
 - (void)timerDidFire:(id)arg1;

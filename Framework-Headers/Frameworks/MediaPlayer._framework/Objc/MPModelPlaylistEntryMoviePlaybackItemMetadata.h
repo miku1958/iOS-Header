@@ -23,7 +23,6 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)modelGenericObject;
 - (id)movie;
-- (id)mqf_playbackItemMetadataModelObject;
 - (void)setMovie:(id)arg1;
 
 @end

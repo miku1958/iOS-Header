@@ -8,7 +8,7 @@
 
 #import <ModelIO/MDLNamed-Protocol.h>
 
-@class MDLMaterial, MDLSubmeshTopology, NSString;
+@class MDLMaterial, MDLSubmeshTopology, NSArray, NSString;
 @protocol MDLMeshBuffer;
 
 @interface MDLSubmesh : NSObject <MDLNamed>
@@ -20,8 +20,10 @@
     long long _geometryType;
     MDLSubmeshTopology *_topology;
     NSString *_name;
+    NSArray *_faceIndexing;
 }
 
+@property (strong, nonatomic) NSArray *faceIndexing; // @synthesize faceIndexing=_faceIndexing;
 @property (readonly, nonatomic) long long geometryType; // @synthesize geometryType=_geometryType;
 @property (readonly, strong, nonatomic) id<MDLMeshBuffer> indexBuffer; // @synthesize indexBuffer=_indexBuffer;
 @property (readonly, nonatomic) unsigned long long indexCount; // @synthesize indexCount=_indexCount;
@@ -32,11 +34,11 @@
 
 - (void).cxx_destruct;
 - (struct MDLAABB)boundingBoxForMesh:(id)arg1;
-- (void)dealloc;
 - (void)debugPrintToFile:(struct __sFILE *)arg1;
 - (id)indexBufferAsIndexType:(unsigned long long)arg1;
 - (id)initWithIndexBuffer:(id)arg1 indexCount:(unsigned long long)arg2 indexType:(unsigned long long)arg3 geometryType:(long long)arg4 material:(id)arg5;
 - (id)initWithMDLSubmesh:(id)arg1 indexType:(unsigned long long)arg2 geometryType:(long long)arg3;
+- (id)initWithName:(id)arg1 indexBuffer:(id)arg2 indexCount:(unsigned long long)arg3 indexType:(unsigned long long)arg4 faceIndexing:(id)arg5 geometryType:(long long)arg6 material:(id)arg7 topology:(id)arg8;
 - (id)initWithName:(id)arg1 indexBuffer:(id)arg2 indexCount:(unsigned long long)arg3 indexType:(unsigned long long)arg4 geometryType:(long long)arg5 material:(id)arg6;
 - (id)initWithName:(id)arg1 indexBuffer:(id)arg2 indexCount:(unsigned long long)arg3 indexType:(unsigned long long)arg4 geometryType:(long long)arg5 material:(id)arg6 topology:(id)arg7;
 

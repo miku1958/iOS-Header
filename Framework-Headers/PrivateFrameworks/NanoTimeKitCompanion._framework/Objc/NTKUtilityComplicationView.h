@@ -34,6 +34,7 @@
     UIView *_highlightView;
     NTKFaceColorScheme *_colorScheme;
     UIColor *_overrideColor;
+    UIColor *_platterColor;
     CLKComplicationTemplate *_complicationTemplate;
     struct CGSize _maxSize;
     struct UIEdgeInsets _touchEdgeInsets;
@@ -57,6 +58,7 @@
 @property (nonatomic) double minimumWidth; // @synthesize minimumWidth=_minimumWidth;
 @property (strong, nonatomic) UIColor *overrideColor; // @synthesize overrideColor=_overrideColor;
 @property (nonatomic) unsigned long long placement; // @synthesize placement=_placement;
+@property (strong, nonatomic) UIColor *platterColor; // @synthesize platterColor=_platterColor;
 @property (strong, nonatomic) UIColor *shadowColor; // @synthesize shadowColor=_shadowColor;
 @property (nonatomic) BOOL shouldUseBackgroundPlatter; // @synthesize shouldUseBackgroundPlatter=_shouldUseBackgroundPlatter;
 @property (nonatomic) BOOL shouldUseTemplateColors;
@@ -96,6 +98,7 @@
 - (void)_updateLabelsForFontChange;
 - (double)_widthThatFits;
 - (void)applyFaceColor:(unsigned long long)arg1 units:(unsigned long long)arg2;
+- (void)applyTransitionFraction:(double)arg1 fromFaceColor:(unsigned long long)arg2 toFaceColor:(unsigned long long)arg3 units:(unsigned long long)arg4 brightenedUnits:(unsigned long long)arg5;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutLabelVertically:(id)arg1;
 - (void)layoutSubviews;

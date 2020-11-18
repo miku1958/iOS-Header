@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <GeoServices/NSCoding-Protocol.h>
 #import <GeoServices/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray;
 
-@protocol GEOServerFormattedString <NSObject>
+@protocol GEOServerFormattedString <NSObject, NSCoding>
 
-@property (readonly, nonatomic) NSString *formatString;
 @property (readonly, nonatomic) NSArray *formatStrings;
 @property (readonly, nonatomic) NSArray *formatTokens;
 @property (readonly, nonatomic) NSArray *separators;

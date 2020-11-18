@@ -8,7 +8,7 @@
 
 #import <CloudDocsDaemon/BRCTransfer-Protocol.h>
 
-@class BRCItemID, BRCProgress, CKRecord, CKRecordID, NSNumber, NSString;
+@class BRCClientZone, BRCItemID, BRCProgress, CKRecord, CKRecordID, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRCDownload : NSObject <BRCTransfer>
@@ -23,8 +23,10 @@ __attribute__((visibility("hidden")))
     BOOL _progressPublished;
     CKRecordID *_recordID;
     unsigned long long _doneSize;
+    BRCClientZone *_clientZone;
 }
 
+@property (readonly, nonatomic) BRCClientZone *clientZone; // @synthesize clientZone=_clientZone;
 @property (nonatomic) unsigned long long doneSize; // @synthesize doneSize=_doneSize;
 @property (readonly, nonatomic) NSString *etag; // @synthesize etag=_etag;
 @property (readonly, nonatomic) BRCItemID *itemID; // @synthesize itemID=_itemID;

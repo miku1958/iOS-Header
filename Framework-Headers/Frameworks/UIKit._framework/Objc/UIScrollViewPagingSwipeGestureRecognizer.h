@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     int _directionalFailureCount;
 }
 
++ (BOOL)_shouldDefaultToTouches;
 - (void).cxx_destruct;
 - (void)_processNewLocation:(struct CGPoint)arg1;
 - (void)_resetGestureRecognizer;

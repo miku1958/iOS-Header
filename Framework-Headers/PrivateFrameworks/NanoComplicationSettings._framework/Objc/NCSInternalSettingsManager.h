@@ -33,7 +33,6 @@
 - (id)complicationIdentifierForComplicationDefinitionAtIndex:(unsigned long long)arg1;
 - (void)enumerateAllComplicationDefinitionsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateComplicationDefinitionsUsingBlock:(CDUnknownBlockType)arg1;
-- (BOOL)hasMaximumNumberOfActiveComplications;
 - (id)init;
 - (void)loadSettings;
 - (void)moveComplicationDefinitionFromIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;

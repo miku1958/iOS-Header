@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <CloudDocsDaemon/BRCLifeCycle-Protocol.h>
+#import <CloudDocsDaemon/BRCSuspendable-Protocol.h>
 
 @class BRCAccountSession, BRCDeadlineSource, BRCSyncContext, NSArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface BRCTransferStream : NSObject <BRCLifeCycle>
+@interface BRCTransferStream : NSObject <BRCLifeCycle, BRCSuspendable>
 {
     BRCAccountSession *_session;
     BRCSyncContext *_syncContext;

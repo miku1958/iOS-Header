@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <EventKitUI/EKUIConstrainedFontsTableViewCell.h>
+#import <EventKitUI/EKUITableViewCell.h>
 
-@class UIImage, UIImageView;
+@class NSString, NSTextAttachment, UIColor, UIImage, UIImageView;
 
-@interface EKCalendarChooserCell : EKUIConstrainedFontsTableViewCell
+@interface EKCalendarChooserCell : EKUITableViewCell
 {
     BOOL _showCheckmarksOnLeft;
     BOOL _checked;
@@ -18,23 +18,37 @@
     UIImage *_colorDotHighlighted;
     UIImageView *_colorDotView;
     UIImageView *_checkmarkView;
+    UIColor *_checkMarkColor;
+    NSTextAttachment *_colorDotAttachment;
+    BOOL _showingSelectionCheckmark;
+    BOOL _multiSelectStyle;
+    NSString *_textLabelText;
+    UIColor *_selectionCheckmarkColor;
 }
 
 @property (nonatomic) BOOL checked; // @synthesize checked=_checked;
+@property (nonatomic) BOOL multiSelectStyle; // @synthesize multiSelectStyle=_multiSelectStyle;
+@property (strong, nonatomic) UIColor *selectionCheckmarkColor; // @synthesize selectionCheckmarkColor=_selectionCheckmarkColor;
 @property (nonatomic) BOOL shouldAnimate; // @synthesize shouldAnimate=_shouldAnimate;
 @property (nonatomic) BOOL showCheckmarksOnLeft; // @synthesize showCheckmarksOnLeft=_showCheckmarksOnLeft;
+@property (nonatomic) BOOL showingSelectionCheckmark; // @synthesize showingSelectionCheckmark=_showingSelectionCheckmark;
 @property (nonatomic) BOOL showsColorDot; // @synthesize showsColorDot=_showsColorDot;
+@property (strong, nonatomic) NSString *textLabelText; // @synthesize textLabelText=_textLabelText;
 
 - (void).cxx_destruct;
+- (id)_multiselectBackgroundColor;
+- (void)_updateTextLabelTextWithColorDot;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (void)setAccessoryType:(long long)arg1;
 - (void)setColorDotHighlightedImage:(id)arg1;
 - (void)setColorDotImage:(id)arg1;
 - (void)setContentAlpha:(double)arg1;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setShowCheckmarksOnLeft:(BOOL)arg1 animated:(BOOL)arg2;
-- (double)textLeftIndent;
+- (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
+- (double)textLeadingIndent;
+- (void)updateSelectionCheckmark;
 
 @end
 

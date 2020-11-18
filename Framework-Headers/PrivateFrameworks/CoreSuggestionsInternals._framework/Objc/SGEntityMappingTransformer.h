@@ -13,23 +13,17 @@
 @interface SGEntityMappingTransformer : NSObject <PMLTransformerProtocol>
 {
     NSDataDetector *_dataDetector;
-    NSString *_phoneMapping;
     NSString *_emailMapping;
-    NSString *_addressMapping;
     NSString *_linkMapping;
-    NSString *_dateMapping;
 }
 
-@property (strong) NSString *addressMapping; // @synthesize addressMapping=_addressMapping;
 @property (strong) NSDataDetector *dataDetector; // @synthesize dataDetector=_dataDetector;
-@property (strong) NSString *dateMapping; // @synthesize dateMapping=_dateMapping;
 @property (strong) NSString *emailMapping; // @synthesize emailMapping=_emailMapping;
 @property (strong) NSString *linkMapping; // @synthesize linkMapping=_linkMapping;
-@property (strong) NSString *phoneMapping; // @synthesize phoneMapping=_phoneMapping;
 
-+ (id)withPhoneMapping:(id)arg1 emailMapping:(id)arg2 linkMapping:(id)arg3 addressMapping:(id)arg4 andDateMapping:(id)arg5;
++ (id)withEmailMapping:(id)arg1 linkMapping:(id)arg2;
 - (void).cxx_destruct;
-- (id)initWithPhoneMapping:(id)arg1 emailMapping:(id)arg2 linkMapping:(id)arg3 addressMapping:(id)arg4 andDateMapping:(id)arg5;
+- (id)initWithEmailMapping:(id)arg1 linkMapping:(id)arg2;
 - (id)transform:(id)arg1;
 
 @end

@@ -24,6 +24,7 @@
 - (BOOL)disableStates:(id)arg1 clearAsset:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)enableStates:(id)arg1 error:(id *)arg2;
 - (id)init;
+- (BOOL)playState:(unsigned long long)arg1 forSpeed:(unsigned long long)arg2 error:(id *)arg3;
 - (void)scheduleReadyNotificationOnDispatchQueue:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (BOOL)setConfigs:(id)arg1 withAssets:(id)arg2 forStates:(id)arg3 error:(id *)arg4;
 - (BOOL)setGlobalConfigs:(id)arg1 error:(id *)arg2;

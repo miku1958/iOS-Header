@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/NSSecureCoding-Protocol.h>
 
@@ -32,22 +32,28 @@
     NSURL *_contentURL;
     NSString *_contentString;
     long long _maximumPretapRequestCount;
+    NSArray *_matchClauses;
+    NSArray *_excludeTags;
+    long long _adPrivacyMarkPosition;
     struct CGSize _portraitSize;
     struct CGSize _landscapeSize;
     struct CGSize _containerSize;
 }
 
 @property (copy, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
+@property (nonatomic) long long adPrivacyMarkPosition; // @synthesize adPrivacyMarkPosition=_adPrivacyMarkPosition;
 @property (strong, nonatomic) NSURL *audioURL; // @synthesize audioURL=_audioURL;
 @property (copy, nonatomic) NSString *batchResponseIdentifier; // @synthesize batchResponseIdentifier=_batchResponseIdentifier;
 @property (nonatomic) struct CGSize containerSize; // @synthesize containerSize=_containerSize;
 @property (strong, nonatomic) NSString *contentString; // @synthesize contentString=_contentString;
 @property (strong, nonatomic) NSURL *contentURL; // @synthesize contentURL=_contentURL;
 @property (copy, nonatomic) NSString *descriptionForLCD; // @synthesize descriptionForLCD=_descriptionForLCD;
+@property (strong, nonatomic) NSArray *excludeTags; // @synthesize excludeTags=_excludeTags;
 @property (nonatomic) BOOL hasAction; // @synthesize hasAction=_hasAction;
 @property (copy, nonatomic) NSString *headlineForLCD; // @synthesize headlineForLCD=_headlineForLCD;
 @property (nonatomic) struct CGSize landscapeSize; // @synthesize landscapeSize=_landscapeSize;
 @property (strong, nonatomic) NSURL *logoImageURL; // @synthesize logoImageURL=_logoImageURL;
+@property (strong, nonatomic) NSArray *matchClauses; // @synthesize matchClauses=_matchClauses;
 @property (nonatomic) long long maximumPretapRequestCount; // @synthesize maximumPretapRequestCount=_maximumPretapRequestCount;
 @property (nonatomic) double minimumIntervalBetweenPresentations; // @synthesize minimumIntervalBetweenPresentations=_minimumIntervalBetweenPresentations;
 @property (strong, nonatomic) NSDictionary *nativeMediaCreativeMetadata; // @synthesize nativeMediaCreativeMetadata=_nativeMediaCreativeMetadata;

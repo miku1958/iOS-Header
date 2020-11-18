@@ -20,6 +20,7 @@
 @property (nonatomic) long long number; // @synthesize number=_number;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

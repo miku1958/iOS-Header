@@ -6,9 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSCoding-Protocol.h>
-#import <extension/NSISVariableDelegate-Protocol.h>
-#import <extension/NSLayoutItem-Protocol.h>
+#import <Foundation/NSCoding-Protocol.h>
+#import <Foundation/NSISVariableDelegate-Protocol.h>
+#import <Foundation/NSLayoutItem-Protocol.h>
 
 @class NSISVariable, NSString;
 @protocol NSLayoutItem;
@@ -34,6 +34,7 @@
 @property (readonly) struct CGRect layoutFrame; // @synthesize layoutFrame=_layoutFrame;
 @property (readonly) NSISVariable *minXVariable; // @synthesize minXVariable=_minXVariable;
 @property (readonly) NSISVariable *minYVariable; // @synthesize minYVariable=_minYVariable;
+@property (setter=nsli_setPiercingToken:) unsigned long long nsli_piercingToken;
 @property id<NSLayoutItem> owningView;
 @property (readonly) Class superclass;
 @property (readonly) NSISVariable *widthVariable; // @synthesize widthVariable=_widthVariable;

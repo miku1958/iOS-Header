@@ -4,27 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppStoreDaemon/ASDBaseClient.h>
+#import <objc/NSObject.h>
 
-#import <AppStoreDaemon/ASDRequestClient-Protocol.h>
+#import <AppStoreDaemon/ASDRequestDelegate-Protocol.h>
+#import <AppStoreDaemon/NSSecureCoding-Protocol.h>
 
-@class NSString, NSXPCConnection;
+@class NSUUID;
+@protocol ASDRequestObserver, ASDRequestProxy;
 
-@interface ASDRequest : ASDBaseClient <ASDRequestClient>
+@interface ASDRequest : NSObject <ASDRequestDelegate, NSSecureCoding>
 {
-    NSXPCConnection *_connection;
+    id<ASDRequestObserver> _observer;
+    NSUUID *_requestID;
+    id<ASDRequestProxy> _proxy;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (weak) id<ASDRequestObserver> observer; // @synthesize observer=_observer;
+@property (strong) id<ASDRequestProxy> proxy; // @synthesize proxy=_proxy;
+@property (readonly, nonatomic) NSUUID *requestID; // @synthesize requestID=_requestID;
 
++ (id)_sharedBroker;
++ (void)cancelAllRequestsWithErrorHandler:(CDUnknownBlockType)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_handleResponse:(id)arg1 error:(id)arg2;
-- (void)_startRequestType:(unsigned long long)arg1 withOptions:(id)arg2;
-- (void)dealloc;
-- (void)requestCompletedWithResponse:(id)arg1 error:(id)arg2;
+- (void)_callErrorHandler:(CDUnknownBlockType)arg1 withError:(id)arg2;
+- (void)_callErrorHandler:(CDUnknownBlockType)arg1 withError:(id)arg2 orDefaultCode:(unsigned long long)arg3;
+- (void)_cancelWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)_notifyObserverOfCompletionWithError:(id)arg1;
+- (void)_startWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)_submitRequestWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)init;
+- (id)initWithCoder:(id)arg1;
+- (void)receiveResponse:(id)arg1;
 
 @end
 

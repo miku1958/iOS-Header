@@ -16,7 +16,6 @@
 + (id)cjkSpacersToWhiteSpace:(id)arg1;
 + (id)cleanName:(id)arg1;
 + (id)handleLastNameFirstOrder:(id)arg1;
-+ (void)initialize;
 + (BOOL)isCommonNameWord:(id)arg1;
 + (BOOL)isCommonVietnameseSurname:(id)arg1;
 + (BOOL)isDifficultName:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <Home/HMHomeDelegate-Protocol.h>
 
-@class CLLocation, HMActionSet, HMHome, HMResidentDevice, HMRoom, HMServiceGroup, HMUser, NSArray, NSSet;
+@class CLLocation, HMActionSet, HMHome, HMResidentDevice, HMRoom, HMServiceGroup, HMUser, NSArray, NSSet, NSString;
 
 @protocol HFHomeObserver <HMHomeDelegate>
 
@@ -20,7 +20,11 @@
 - (void)home:(HMHome *)arg1 didUpdateApplicationDataForActionSet:(HMActionSet *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateApplicationDataForRoom:(HMRoom *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateApplicationDataForServiceGroup:(HMServiceGroup *)arg2;
+- (void)home:(HMHome *)arg1 didUpdateAutomaticSoftwareUpdateEnabled:(BOOL)arg2;
 - (void)home:(HMHome *)arg1 didUpdateLocation:(CLLocation *)arg2;
+- (void)home:(HMHome *)arg1 didUpdateMediaPassword:(NSString *)arg2;
+- (void)home:(HMHome *)arg1 didUpdateMediaPeerToPeerEnabled:(BOOL)arg2;
+- (void)home:(HMHome *)arg1 didUpdateMinimumMediaUserPrivilege:(long long)arg2;
 - (void)home:(HMHome *)arg1 didUpdateStateForOutgoingInvitations:(NSArray *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateWallpaperForRoom:(HMRoom *)arg2;
 - (void)home:(HMHome *)arg1 didWriteValuesForCharacteristics:(NSSet *)arg2 failedCharacteristics:(NSSet *)arg3;

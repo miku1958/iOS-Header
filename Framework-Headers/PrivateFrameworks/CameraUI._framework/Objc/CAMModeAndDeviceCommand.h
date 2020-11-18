@@ -25,7 +25,7 @@
 
 - (void).cxx_destruct;
 - (id)_desiredInputsWithContext:(id)arg1;
-- (id)_desiredOutputsWithContext:(id)arg1;
+- (id)_desiredOutputsWithContext:(id)arg1 shouldUseThumbnailOutputForFilters:(BOOL)arg2;
 - (id)_existingInputsWithContext:(id)arg1 without:(id)arg2;
 - (id)_existingOutputsWithContext:(id)arg1 without:(id)arg2;
 - (BOOL)_isStillImageMode:(long long)arg1;
@@ -34,7 +34,9 @@
 - (void)_performPostConfigurationSetupForGraphConfiguration:(id)arg1 withContext:(id)arg2;
 - (void)_sanitizeDeviceUsingContext:(id)arg1;
 - (BOOL)_shouldEnableLivePhotoCaptureForMode:(long long)arg1 device:(long long)arg2;
+- (id)_specificEncodingBehaviorCommandForGraphConfiguration:(id)arg1;
 - (id)_specificFramerateCommandForGraphConfiguration:(id)arg1 withContext:(id)arg2;
+- (id)_specificPreparePhotoSettingsCommandForGraphConfiguration:(id)arg1;
 - (BOOL)_wantsLowLightBoostForMode:(long long)arg1 device:(long long)arg2;
 - (BOOL)_wantsQuadraHighResolutionForMode:(long long)arg1 device:(long long)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;

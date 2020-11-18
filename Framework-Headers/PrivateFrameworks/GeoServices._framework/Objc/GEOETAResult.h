@@ -39,12 +39,12 @@
 @property (nonatomic) int status; // @synthesize status=_status;
 
 + (Class)sortedETAType;
+- (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
 - (void)addSortedETA:(id)arg1;
 - (void)clearSortedETAs;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -6,11 +6,14 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSString, UIBezierPath;
+@class NSArray, NSAttributedString, NSString, UIBezierPath;
 
 @interface NSObject (UIAccessibility)
 
 @property (nonatomic) struct CGPoint accessibilityActivationPoint; // @dynamic accessibilityActivationPoint;
+@property (copy, nonatomic) NSAttributedString *accessibilityAttributedHint;
+@property (copy, nonatomic) NSAttributedString *accessibilityAttributedLabel;
+@property (copy, nonatomic) NSAttributedString *accessibilityAttributedValue;
 @property (nonatomic) BOOL accessibilityElementsHidden; // @dynamic accessibilityElementsHidden;
 @property (nonatomic) struct CGRect accessibilityFrame; // @dynamic accessibilityFrame;
 @property (copy, nonatomic) NSArray *accessibilityHeaderElements;
@@ -25,6 +28,12 @@
 @property (nonatomic) BOOL isAccessibilityElement; // @dynamic isAccessibilityElement;
 @property (nonatomic) BOOL shouldGroupAccessibilityChildren; // @dynamic shouldGroupAccessibilityChildren;
 
+- (id)_internalAccessibilityAttributedHint;
+- (id)_internalAccessibilityAttributedLabel;
+- (id)_internalAccessibilityAttributedValue;
+- (void)_internalSetAccessibilityAttributedHint:(id)arg1;
+- (void)_internalSetAccessibilityAttributedLabel:(id)arg1;
+- (void)_internalSetAccessibilityAttributedValue:(id)arg1;
 - (id)accessibilityContainer;
 - (void)setAccessibilityContainer:(id)arg1;
 - (id)storedAccessibilityActivationPoint;

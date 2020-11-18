@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSProgressRegistrar-Protocol.h>
-#import <extension/NSXPCListenerDelegate-Protocol.h>
+#import <Foundation/NSProgressRegistrar-Protocol.h>
+#import <Foundation/NSXPCListenerDelegate-Protocol.h>
 
 @class NSFileAccessNode, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
@@ -16,7 +16,9 @@
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_publishersByID;
+    NSMutableDictionary *_publisherTransactionsByID;
     NSMutableDictionary *_subscribersByID;
+    NSMutableDictionary *_subscriberTransactionsByID;
     NSFileAccessNode *_rootFileAccessNode;
     NSMutableSet *_pendingFileSubscriberIDs;
 }

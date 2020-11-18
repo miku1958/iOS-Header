@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) struct CGSize naturalSize;
 @property (readonly, nonatomic) NSArray *tracks;
 
++ (BOOL)expectsPropertyRevisedNotifications;
 + (void)initialize;
 + (BOOL)supportsSecureCoding;
 - (id)_assetInspector;

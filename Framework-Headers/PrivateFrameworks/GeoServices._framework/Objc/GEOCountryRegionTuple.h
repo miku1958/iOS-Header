@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBUnknownFields;
 
 @interface GEOCountryRegionTuple : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSString *_countryCode;
     NSString *_region;
 }
@@ -20,10 +21,11 @@
 @property (readonly, nonatomic) BOOL hasCountryCode;
 @property (readonly, nonatomic) BOOL hasRegion;
 @property (strong, nonatomic) NSString *region; // @synthesize region=_region;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

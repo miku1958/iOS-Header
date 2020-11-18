@@ -11,8 +11,7 @@
 
 @interface PKPassFooterContentView : UIView
 {
-    BOOL _isVisibleAsFooter;
-    BOOL _isPassAuthorized;
+    BOOL _userIntentRequired;
     long long _style;
     id<PKPassFooterContentViewDelegate> _delegate;
     PKPass *_pass;
@@ -25,15 +24,16 @@
 @property (readonly, nonatomic) UIView *bottomRule; // @synthesize bottomRule=_bottomRule;
 @property (nonatomic) id<PKPassFooterContentViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) UIButton *infoButton; // @synthesize infoButton=_infoButton;
-@property (readonly, nonatomic) BOOL isPassAuthorized; // @synthesize isPassAuthorized=_isPassAuthorized;
-@property (readonly, nonatomic) BOOL isVisibleAsFooter; // @synthesize isVisibleAsFooter=_isVisibleAsFooter;
 @property (readonly, nonatomic) PKPass *pass; // @synthesize pass=_pass;
+@property (readonly, nonatomic, getter=isPassAuthorized) BOOL passAuthorized;
 @property (readonly, nonatomic) PKPaymentPass *paymentPass;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
+@property (readonly, nonatomic, getter=isUserIntentRequired) BOOL userIntentRequired; // @synthesize userIntentRequired=_userIntentRequired;
 
 - (void).cxx_destruct;
 - (double)_bottomRulePadding;
 - (void)_infoButtonPressed:(id)arg1;
+- (void)_setUserIntentRequired:(BOOL)arg1;
 - (void)dealloc;
 - (void)didBecomeHiddenAnimated:(BOOL)arg1;
 - (void)didBecomeVisibleAnimated:(BOOL)arg1;

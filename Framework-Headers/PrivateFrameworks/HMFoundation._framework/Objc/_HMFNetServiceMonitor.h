@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFNetServiceBrowserDelegate-Protocol.h>
 
-@class HMFNetService, HMFNetServiceBrowser, NSString;
+@class HMFNetService, HMFNetServiceBrowser, NSObject, NSString;
 @protocol OS_dispatch_queue, _HMFNetServiceMonitorDelegate;
 
-@interface _HMFNetServiceMonitor : NSObject <HMFNetServiceBrowserDelegate, HMFLogging>
+@interface _HMFNetServiceMonitor : HMFObject <HMFNetServiceBrowserDelegate, HMFLogging>
 {
     BOOL _reachable;
     HMFNetService *_netService;

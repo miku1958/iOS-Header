@@ -18,7 +18,6 @@
 @property (readonly, nonatomic) HUInstructionsItem *instructionsItem; // @synthesize instructionsItem=_instructionsItem;
 
 - (void).cxx_destruct;
-- (id)allCellClasses;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)childViewControllersToPreload;
 - (id)initWithInstructionsItem:(id)arg1 contentViewController:(id)arg2;

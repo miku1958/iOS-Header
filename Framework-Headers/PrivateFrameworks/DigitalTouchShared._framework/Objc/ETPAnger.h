@@ -8,11 +8,15 @@
 
 #import <DigitalTouchShared/NSCopying-Protocol.h>
 
+@class NSData;
+
 @interface ETPAnger : PBCodable <NSCopying>
 {
+    NSData *_delays;
     float _duration;
     float _normalizedCenterX;
     float _normalizedCenterY;
+    NSData *_points;
     struct {
         unsigned int duration:1;
         unsigned int normalizedCenterX:1;
@@ -20,13 +24,18 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSData *delays; // @synthesize delays=_delays;
 @property (nonatomic) float duration; // @synthesize duration=_duration;
+@property (readonly, nonatomic) BOOL hasDelays;
 @property (nonatomic) BOOL hasDuration;
 @property (nonatomic) BOOL hasNormalizedCenterX;
 @property (nonatomic) BOOL hasNormalizedCenterY;
+@property (readonly, nonatomic) BOOL hasPoints;
 @property (nonatomic) float normalizedCenterX; // @synthesize normalizedCenterX=_normalizedCenterX;
 @property (nonatomic) float normalizedCenterY; // @synthesize normalizedCenterY=_normalizedCenterY;
+@property (strong, nonatomic) NSData *points; // @synthesize points=_points;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;

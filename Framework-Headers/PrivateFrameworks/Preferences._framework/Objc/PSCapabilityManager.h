@@ -27,11 +27,10 @@
 - (void)setOverrideValue:(id)arg1 forKey:(id)arg2;
 - (id)supportsAutoWhiteBalanceCapability;
 - (id)supportsDisplayZoomCapability;
-- (id)supportsEmergencySOSCapability;
-- (id)supportsEmergencySOSSelectableNumberOfClicksCapability;
 - (id)supportsInEDUModeCapability;
 - (id)supportsInStoreDemoModeCapability;
 - (id)supportsNightShiftCapability;
+- (id)supportsPSShowStorageCapability;
 - (id)supportsRaiseToWakeCapability;
 
 @end

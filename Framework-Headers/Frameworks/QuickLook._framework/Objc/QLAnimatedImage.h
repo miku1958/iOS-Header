@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)frameCount;
 - (void)generateDurations;
 - (long long)indexForTime:(double)arg1;
-- (id)initWithContentsOfURL:(id)arg1;
+- (id)initWithImageSource:(struct CGImageSource *)arg1;
 - (BOOL)time:(double)arg1 belongsToIndex:(unsigned long long)arg2;
 
 @end

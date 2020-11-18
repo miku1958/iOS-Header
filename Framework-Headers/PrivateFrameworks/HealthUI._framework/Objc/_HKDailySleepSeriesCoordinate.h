@@ -9,12 +9,13 @@
 #import <HealthUI/HKGraphSeriesBlockCoordinate-Protocol.h>
 
 @class NSArray, NSString;
+@protocol HKGraphSeriesBlockCoordinateInfo;
 
 @interface _HKDailySleepSeriesCoordinate : NSObject <HKGraphSeriesBlockCoordinate>
 {
     NSArray *_yValues;
     double _xValue;
-    id _userInfo;
+    id<HKGraphSeriesBlockCoordinateInfo> _userInfo;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,7 +24,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double startXValue;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
+@property (readonly, nonatomic) id<HKGraphSeriesBlockCoordinateInfo> userInfo; // @synthesize userInfo=_userInfo;
 @property (readonly, nonatomic) double xValue; // @synthesize xValue=_xValue;
 @property (readonly, nonatomic) NSArray *yValues; // @synthesize yValues=_yValues;
 

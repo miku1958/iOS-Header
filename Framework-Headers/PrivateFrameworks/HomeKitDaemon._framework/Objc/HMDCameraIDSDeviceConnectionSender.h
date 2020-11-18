@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/HMDCameraPowerAssertionProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDCameraRemoteStreamSenderProtocol-Protocol.h>
 
-@class AVCPacketRelay, HAPOSTransaction, HMDCameraSessionID, NSNumber, NSObject, NSString;
+@class AVCPacketRelay, HMDCameraSessionID, HMFOSTransaction, NSNumber, NSObject, NSString;
 @protocol HMDCameraIDSDeviceConnectionSenderDelegate, OS_dispatch_queue;
 
 @interface HMDCameraIDSDeviceConnectionSender : HMDCameraIDSDeviceConnection <HMDCameraRemoteStreamSenderProtocol, HMDCameraPowerAssertionProtocol>
@@ -19,7 +19,7 @@
     NSString *_destinationID;
     AVCPacketRelay *_videoPacketRelay;
     AVCPacketRelay *_audioPacketRelay;
-    HAPOSTransaction *_packetRelayTransaction;
+    HMFOSTransaction *_packetRelayTransaction;
 }
 
 @property (strong, nonatomic) AVCPacketRelay *audioPacketRelay; // @synthesize audioPacketRelay=_audioPacketRelay;
@@ -30,7 +30,7 @@
 @property (readonly, copy, nonatomic) NSString *destinationID; // @synthesize destinationID=_destinationID;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSNumber *mtu;
-@property (strong, nonatomic) HAPOSTransaction *packetRelayTransaction; // @synthesize packetRelayTransaction=_packetRelayTransaction;
+@property (strong, nonatomic) HMFOSTransaction *packetRelayTransaction; // @synthesize packetRelayTransaction=_packetRelayTransaction;
 @property (readonly, nonatomic) HMDCameraSessionID *sessionID;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) AVCPacketRelay *videoPacketRelay; // @synthesize videoPacketRelay=_videoPacketRelay;

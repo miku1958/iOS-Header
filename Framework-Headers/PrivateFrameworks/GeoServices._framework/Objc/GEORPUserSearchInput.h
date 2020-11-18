@@ -36,10 +36,10 @@
 @property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 @property (strong, nonatomic) NSString *singleLineAddressString; // @synthesize singleLineAddressString=_singleLineAddressString;
 
+- (void).cxx_destruct;
 - (int)StringAsOrigin:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

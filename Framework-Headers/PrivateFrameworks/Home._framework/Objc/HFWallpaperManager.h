@@ -14,6 +14,7 @@
 
 @interface HFWallpaperManager : NSObject <HFHomeManagerObserver, HFHomeObserver>
 {
+    BOOL _wallpaperSourceRegistered;
     id<HFNamedWallpaperSource> _namedWallpaperSource;
     HFWallpaperFileManager *_fileManager;
     HFWallpaperLegacyFileManager *_legacyFileManager;
@@ -35,11 +36,13 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 @property (strong, nonatomic) NSMutableDictionary *wallpaperSlices; // @synthesize wallpaperSlices=_wallpaperSlices;
+@property (readonly, nonatomic) BOOL wallpaperSourceRegistered; // @synthesize wallpaperSourceRegistered=_wallpaperSourceRegistered;
 @property (strong, nonatomic) NSMutableDictionary *wallpapers; // @synthesize wallpapers=_wallpapers;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_logUserMetricsAfterSettingWallpaper;
+- (id)_queue_originalImageForWallpaper:(id)arg1;
 - (void)_queue_pruneUnusedWallpapers;
 - (void)_queue_setWallpaper:(id)arg1 image:(id)arg2 forHomeKitIdentifier:(id)arg3;
 - (id)_queue_wallpaperForHomeKitObject:(id)arg1 createIfNeeded:(BOOL)arg2;

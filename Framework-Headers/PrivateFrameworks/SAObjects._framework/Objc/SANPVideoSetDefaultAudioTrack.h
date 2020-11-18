@@ -6,9 +6,13 @@
 
 #import <SAObjects/SABaseClientBoundCommand.h>
 
+@class NSString;
+
 @interface SANPVideoSetDefaultAudioTrack : SABaseClientBoundCommand
 {
 }
+
+@property (copy, nonatomic) NSString *languageOptionChangeUserSetting;
 
 + (id)setDefaultAudioTrack;
 + (id)setDefaultAudioTrackWithDictionary:(id)arg1 context:(id)arg2;

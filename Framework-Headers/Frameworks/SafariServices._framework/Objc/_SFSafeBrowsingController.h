@@ -35,15 +35,16 @@
 + (id)_localizedStringsForSafeBrowsing;
 - (void).cxx_destruct;
 - (void)_fraudulentWebsiteCheckCompletedForURL:(id)arg1 withResult:(id)arg2 error:(id)arg3;
+- (void)_safeBrowsingCheckFinishedWithSecurityInfo:(id)arg1;
 - (id)_securityWarningPageURL;
 - (void)_setUpSafeBrowsingObserverInterface;
+- (int)_wbsAnalyticsSafeBrowsingProviderFromProvider:(id)arg1;
 - (void)cancelCheckForFraudulentWebsites;
 - (void)commitProvisionalSecurityInfo;
 - (void)didRespondToSafeBrowsingWarningWithResult:(long long)arg1;
 - (void)hideSecurityWarningPage;
 - (id)initWithWebView:(id)arg1;
 - (void)invalidate;
-- (void)safeBrowsingCheckFinishedWithSecurityInfo:(id)arg1;
 - (id)safeBrowsingControllerProxy;
 - (void)showSecurityWarningPageWithSecurityInfo:(id)arg1;
 - (void)startCheckingFraudulentWebSitesWithURL:(id)arg1;

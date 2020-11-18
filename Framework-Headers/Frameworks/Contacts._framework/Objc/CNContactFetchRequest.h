@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Contacts/NSSecureCoding-Protocol.h>
 
@@ -15,14 +15,18 @@
     BOOL _rankSort;
     BOOL _mutableObjects;
     BOOL _unifyResults;
+    BOOL _disallowsEncodedFetch;
     BOOL _onlyMainStore;
     BOOL _allowsBatching;
     NSPredicate *_predicate;
     NSArray *_keysToFetch;
     long long _sortOrder;
+    unsigned long long _batchSize;
 }
 
 @property (nonatomic) BOOL allowsBatching; // @synthesize allowsBatching=_allowsBatching;
+@property (nonatomic) unsigned long long batchSize; // @synthesize batchSize=_batchSize;
+@property (nonatomic) BOOL disallowsEncodedFetch; // @synthesize disallowsEncodedFetch=_disallowsEncodedFetch;
 @property (copy, nonatomic) NSArray *keysToFetch; // @synthesize keysToFetch=_keysToFetch;
 @property (nonatomic) BOOL mutableObjects; // @synthesize mutableObjects=_mutableObjects;
 @property (nonatomic) BOOL onlyMainStore; // @synthesize onlyMainStore=_onlyMainStore;
@@ -32,14 +36,15 @@
 @property (nonatomic) BOOL unifyResults; // @synthesize unifyResults=_unifyResults;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)effectiveKeysToFetch;
+- (id)effectivePredicate;
 - (void)encodeWithCoder:(id)arg1;
-- (void)executeFetchWithDataMapper:(id)arg1 observer:(id)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithKeysToFetch:(id)arg1;
+- (BOOL)requiresMeContactAuthorization;
 
 @end
 

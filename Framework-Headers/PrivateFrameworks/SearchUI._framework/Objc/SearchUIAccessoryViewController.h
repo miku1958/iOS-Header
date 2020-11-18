@@ -27,6 +27,7 @@
 - (void)didEngageAction:(unsigned long long)arg1 destination:(unsigned long long)arg2 actionPerformed:(BOOL)arg3;
 - (id)initWithUIStyle:(unsigned long long)arg1 cell:(id)arg2;
 - (id)setupViewWithStyle:(unsigned long long)arg1;
+- (BOOL)shouldTopAlignForAccessibilityContentSizes;
 - (BOOL)shouldVerticallyCenter;
 - (void)updateWithResult:(id)arg1;
 - (void)updateWithResult:(id)arg1 resultForFeedback:(id)arg2;

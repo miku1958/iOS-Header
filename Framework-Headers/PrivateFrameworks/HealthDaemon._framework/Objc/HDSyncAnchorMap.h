@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <HealthDaemon/HDSyncAnchorMap-Protocol.h>
+#import <HealthDaemon/NSSecureCoding-Protocol.h>
 
 @class NSMutableDictionary, NSString;
 
-@interface HDSyncAnchorMap : NSObject <HDSyncAnchorMap>
+@interface HDSyncAnchorMap : NSObject <HDSyncAnchorMap, NSSecureCoding>
 {
     NSMutableDictionary *_anchorsByObjectType;
 }
@@ -21,10 +22,17 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)anchorMapWithAnchorMap:(id)arg1;
++ (BOOL)supportsSecureCoding;
++ (id)syncAnchorMapWithSyncAnchorRangeMap:(id)arg1;
 - (void).cxx_destruct;
 - (unsigned long long)anchorCount;
 - (long long)anchorForSyncEntityClass:(Class)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (void)enumerateAnchorsAndSyncEntitiesWithBlock:(CDUnknownBlockType)arg1;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isAllZero;
+- (BOOL)isEqual:(id)arg1;
 - (void)setAnchor:(long long)arg1 forSyncEntity:(Class)arg2;
 
 @end

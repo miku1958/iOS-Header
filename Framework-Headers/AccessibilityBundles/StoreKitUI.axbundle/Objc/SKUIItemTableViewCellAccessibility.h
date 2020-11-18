@@ -15,7 +15,6 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityHitTestReverseOrder;
 - (id)accessibilityLabel;
-- (void)dealloc;
 
 @end
 

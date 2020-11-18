@@ -16,7 +16,8 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly) BOOL hasDoneAFirstSynchronization;
+@property (readonly) BOOL hasFinishedAFullSync;
+@property (readonly) BOOL hasFinishedInitialSync;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CPLPlatformObject *platformObject;
 @property (readonly) Class superclass;
@@ -30,14 +31,15 @@
 - (id)cloudChangeBatchFromBatch:(id)arg1 usingMapping:(id)arg2 isFinal:(BOOL)arg3 withError:(id *)arg4;
 - (BOOL)commitStagedChangesWithError:(id *)arg1;
 - (BOOL)confirmAllRecordsWithError:(id *)arg1;
-- (id)confirmedRecordWithIdentifier:(id)arg1;
 - (BOOL)deleteRecordWithIdentifier:(id)arg1 isFinal:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)disableInitialQueriesWithError:(id *)arg1;
 - (BOOL)discardStagedChangesWithError:(id *)arg1;
+- (id)downloadTransportGroup;
 - (void)getCommittedRecord:(id *)arg1 stagedRecord:(id *)arg2 forIdentifier:(id)arg3;
 - (BOOL)hasRecordWithIdentifier:(id)arg1;
 - (id)initialSyncAnchor;
 - (BOOL)markInitialQueryIsDoneForRecordsOfClass:(Class)arg1 error:(id *)arg2;
+- (id)recordWithIdentifier:(id)arg1 isConfirmed:(BOOL *)arg2;
 - (id)recordWithIdentifier:(id)arg1 isFinal:(BOOL)arg2;
 - (id)recordsOfClass:(Class)arg1 isFinal:(BOOL)arg2;
 - (id)recordsWithRelatedIdentifier:(id)arg1 isFinal:(BOOL)arg2;
@@ -49,8 +51,15 @@
 - (id)resourceOfType:(unsigned long long)arg1 forRecordWithIdentifier:(id)arg2 error:(id *)arg3;
 - (BOOL)setInitialSyncAnchor:(id)arg1 error:(id *)arg2;
 - (BOOL)setSyncAnchor:(id)arg1 error:(id *)arg2;
+- (BOOL)setupAnchorResetTransportGroupWithError:(id *)arg1;
+- (BOOL)setupInitialSyncTransportGroupsWithError:(id *)arg1;
+- (BOOL)setupResetSyncTransportGroupWithError:(id *)arg1;
+- (BOOL)storeDownloadTransportGroup:(id)arg1 error:(id *)arg2;
+- (BOOL)storeUploadTransportGroup:(id)arg1 error:(id *)arg2;
 - (id)syncAnchor;
+- (BOOL)updateInitialSyncTransportGroupEstimatedSize:(unsigned long long)arg1 assetCount:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)updateRecord:(id)arg1 isFinal:(BOOL)arg2 error:(id *)arg3;
+- (id)uploadTransportGroup;
 
 @end
 

@@ -12,13 +12,18 @@
 {
     HapticClient *_client;
     BOOL _resourcesAllocated;
+    unsigned long long _behavior;
     NSArray *_channelArray;
 }
 
+@property (nonatomic) unsigned long long behavior; // @synthesize behavior=_behavior;
 @property (readonly, nonatomic) NSArray *channels;
 @property (readonly) HapticClient *client; // @synthesize client=_client;
+@property (readonly) double currentMediaTime;
+@property (readonly) double hapticLatency;
 @property (readonly) BOOL resourcesAllocated; // @synthesize resourcesAllocated=_resourcesAllocated;
 
++ (BOOL)isSupported;
 - (void).cxx_destruct;
 - (void)allocateRenderResourcesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
@@ -26,15 +31,18 @@
 - (BOOL)detachHapticSequence:(unsigned long long)arg1 atTime:(double)arg2;
 - (BOOL)enableSequenceLooping:(unsigned long long)arg1 enable:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)finishWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (unsigned long long)getBehavior;
 - (id)initAndReturnError:(id *)arg1;
 - (void)invalidateChannels;
-- (BOOL)loadHapticPreset:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (BOOL)loadHapticEvent:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (BOOL)loadHapticPattern:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (BOOL)loadHapticSequence:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (BOOL)playHapticSequence:(unsigned long long)arg1 atTime:(double)arg2 offset:(double)arg3;
 - (BOOL)prepareHapticSequence:(unsigned long long)arg1 error:(id *)arg2;
 - (void)prewarmWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)releaseChannels;
 - (BOOL)setNumberOfChannels:(unsigned long long)arg1 error:(id *)arg2;
+- (BOOL)setSequenceParam:(unsigned long long)arg1 atTime:(double)arg2 channel:(unsigned long long)arg3 param:(unsigned long long)arg4 value:(float)arg5 error:(id *)arg6;
 - (void)startRunningWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)stopHapticSequence:(unsigned long long)arg1 atTime:(double)arg2;
 - (void)stopPrewarm;

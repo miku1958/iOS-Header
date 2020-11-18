@@ -13,19 +13,27 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityAnnotateFakeBackButton;
-- (id)_accessibilityFuzzyHitTestElements;
+- (BOOL)_accessibilityAllowOutOfBoundsHitTestAtPoint:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)_accessibilityFauxBackButton;
+- (id)_accessibilityFetchCachedNavBarElements;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)_accessibilityNavBarElements;
 - (BOOL)_accessibilityOnlyComparesByXAxis;
-- (BOOL)_canHandleStatusBarMouseEvents:(struct __GSEvent *)arg1;
-- (void)_setLeftViews:(id)arg1 rightViews:(id)arg2;
+- (void)_accessibilitySetFauxBackButton:(id)arg1;
+- (void)_accessibilitySetNavBarElements:(id)arg1;
+- (void)_accessibility_navigationBarContentsDidChange;
+- (id)accessibilityElements;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (BOOL)accessibilityPerformEscape;
 - (unsigned long long)accessibilityTraits;
-- (void)layoutSubviews;
+- (void)addSubview:(id)arg1;
+- (void)insertSubview:(id)arg1 aboveSubview:(id)arg2;
+- (void)insertSubview:(id)arg1 atIndex:(long long)arg2;
+- (void)insertSubview:(id)arg1 belowSubview:(id)arg2;
 - (BOOL)shouldGroupAccessibilityChildren;
+- (void)willRemoveSubview:(id)arg1;
 
 @end
 

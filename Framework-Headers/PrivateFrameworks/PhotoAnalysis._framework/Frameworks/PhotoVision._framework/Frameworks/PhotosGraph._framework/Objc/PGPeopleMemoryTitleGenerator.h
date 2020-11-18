@@ -21,7 +21,9 @@
 - (id)_birthdayTitleForPeople;
 - (void)_generateTitleAndSubtitleWithResult:(CDUnknownBlockType)arg1;
 - (BOOL)_person:(id)arg1 isPresentInAnyMomentOfMoments:(id)arg2;
+- (id)_timeTitleForEarlyMoments;
 - (id)_timeTitleForPeople;
+- (id)_titleForEarlyMoments;
 - (id)_titleForPeople;
 - (id)_titleForSocialGroup;
 - (BOOL)_useSplitTimeTitlesIfNeeded;

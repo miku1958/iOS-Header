@@ -22,6 +22,7 @@
     struct CGSize mUnscaledSize;
     double mViewScale;
     double mContentsScale;
+    BOOL mWideGamut;
     struct {
         unsigned int layout:1;
         unsigned int reps:1;
@@ -41,8 +42,10 @@
 @property (nonatomic) BOOL allowsFontSubpixelQuantization; // @synthesize allowsFontSubpixelQuantization=mAllowsFontSubpixelQuantization;
 @property (nonatomic) struct CGColor *backgroundColor; // @synthesize backgroundColor=mBackgroundColor;
 @property (readonly, nonatomic) TSDInteractiveCanvasController *canvasController;
+@property (readonly, nonatomic) BOOL canvasIsWideGamut;
 @property (readonly, nonatomic) TSKChangeNotifier *changeNotifier;
 @property (nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=mContentInset;
+@property (readonly, nonatomic) double contentsScale;
 @property (nonatomic) id<TSDCanvasDelegate> delegate; // @synthesize delegate=mDelegate;
 @property (readonly, nonatomic) TSKDocumentRoot *documentRoot;
 @property (copy, nonatomic) NSArray *infosToDisplay; // @synthesize infosToDisplay=mInfos;
@@ -57,7 +60,6 @@
 
 - (void)addBitmapsToRenderingQualityInfo:(id)arg1 inContext:(struct CGContext *)arg2;
 - (id)allReps;
-- (double)contentsScale;
 - (struct CGPoint)convertBoundsToUnscaledPoint:(struct CGPoint)arg1;
 - (struct CGRect)convertBoundsToUnscaledRect:(struct CGRect)arg1;
 - (struct CGSize)convertBoundsToUnscaledSize:(struct CGSize)arg1;
@@ -69,18 +71,19 @@
 - (struct CGRect)i_approximateScaledFrameOfEditingMenuAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)i_clipRectForCreatingRepsFromLayouts;
 - (void)i_clipsImagesToBounds:(BOOL)arg1;
-- (struct CGContext *)i_createContextToDrawImageInScaledRect:(struct CGRect)arg1 withTargetIntegralSize:(struct CGSize)arg2 returningBounds:(struct CGRect *)arg3 integralBounds:(struct CGRect *)arg4 forceSRGB:(BOOL)arg5;
+- (struct CGContext *)i_createContextToDrawImageInScaledRect:(struct CGRect)arg1 withTargetIntegralSize:(struct CGSize)arg2 returningBounds:(struct CGRect *)arg3 integralBounds:(struct CGRect *)arg4;
 - (void)i_drawBackgroundInContext:(struct CGContext *)arg1;
 - (void)i_drawBackgroundInContext:(struct CGContext *)arg1 bounds:(struct CGRect)arg2;
 - (void)i_drawRepsInContext:(struct CGContext *)arg1;
 - (void)i_drawRepsInContext:(struct CGContext *)arg1 distort:(struct CGAffineTransform)arg2;
 - (struct CGImage *)i_image;
-- (struct CGImage *)i_imageInScaledRect:(struct CGRect)arg1 forceSRGB:(BOOL)arg2;
-- (struct CGImage *)i_imageInScaledRect:(struct CGRect)arg1 withTargetIntegralSize:(struct CGSize)arg2 distortedToMatch:(BOOL)arg3 forceSRGB:(BOOL)arg4;
+- (struct CGImage *)i_imageInScaledRect:(struct CGRect)arg1;
+- (struct CGImage *)i_imageInScaledRect:(struct CGRect)arg1 withTargetIntegralSize:(struct CGSize)arg2 distortedToMatch:(BOOL)arg3;
 - (BOOL)i_needsLayout;
 - (struct CGImage *)i_newImageInContext:(struct CGContext *)arg1 bounds:(struct CGRect)arg2 integralBounds:(struct CGRect)arg3 distortedToMatch:(BOOL)arg4;
 - (void)i_registerRep:(id)arg1;
 - (void)i_setCanvasController:(id)arg1;
+- (void)i_setCanvasIsWideGamut:(BOOL)arg1;
 - (void)i_setContentsScale:(double)arg1;
 - (void)i_setInfosToDisplay:(id)arg1 updatingLayoutController:(BOOL)arg2;
 - (void)i_unregisterRep:(id)arg1;

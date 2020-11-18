@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
-@class BRCSyncContext, BRCThrottle, NSDate, NSError, NSObject, NSUUID, _BRCLogSection;
+@class BRCSyncContext, BRCThrottle, CKOperationGroup, NSDate, NSError, NSObject, NSUUID;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source, OS_os_activity, OS_os_transaction;
 
 __attribute__((visibility("hidden")))
@@ -31,7 +31,8 @@ __attribute__((visibility("hidden")))
     BRCThrottle *_operationFailureThrottle;
     CDUnknownBlockType _mainBlock;
     CDUnknownBlockType _finishBlock;
-    _BRCLogSection *_logSections;
+    unsigned long long _logSections;
+    CKOperationGroup *_operationGroup;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
@@ -39,7 +40,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isExecuting) BOOL executing;
 @property (copy, nonatomic) CDUnknownBlockType finishBlock; // @synthesize finishBlock=_finishBlock;
 @property (nonatomic, getter=isFinished) BOOL finished; // @synthesize finished=_finished;
-@property (readonly, nonatomic) _BRCLogSection *logSections; // @synthesize logSections=_logSections;
+@property (strong, nonatomic) CKOperationGroup *group; // @synthesize group=_operationGroup;
+@property (readonly, nonatomic) unsigned long long logSections; // @synthesize logSections=_logSections;
 @property (copy, nonatomic) CDUnknownBlockType mainBlock; // @synthesize mainBlock=_mainBlock;
 @property (nonatomic) BRCThrottle *operationFailureThrottle; // @synthesize operationFailureThrottle=_operationFailureThrottle;
 @property (readonly, nonatomic) NSUUID *operationID;
@@ -65,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)finishIfCancelled;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)init;
+- (id)initWithName:(id)arg1;
 - (id)initWithName:(id)arg1 syncContext:(id)arg2;
 - (id)initWithName:(id)arg1 syncContext:(id)arg2 group:(id)arg3;
 - (BOOL)isConcurrent;

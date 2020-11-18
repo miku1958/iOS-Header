@@ -8,7 +8,7 @@
 
 #import <PhotosFormats/PFRWSampleBufferChannelDelegate-Protocol.h>
 
-@class AVAsset, AVAssetReader, AVAssetWriter, NSArray, NSString, NSURL;
+@class AVAsset, AVAssetReader, AVAssetWriter, AVAssetWriterInput, NSArray, NSString, NSURL;
 @protocol OS_dispatch_queue, PFAVReaderWriterAdjustDelegate;
 
 @interface PFAVReaderWriter : NSObject <PFRWSampleBufferChannelDelegate>
@@ -23,8 +23,10 @@
     CDUnknownBlockType _progressBlock;
     CDUnknownBlockType _completionBlock;
     BOOL _writeInProgress;
+    CDStruct_1b6d18a9 _stillImagetime;
     id<PFAVReaderWriterAdjustDelegate> _delegate;
     AVAsset *_asset;
+    AVAssetWriterInput *_metadataInput;
     NSURL *_outputURL;
     CDStruct_e83c9415 _timeRange;
 }
@@ -34,6 +36,7 @@
 @property (weak, nonatomic) id<PFAVReaderWriterAdjustDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) AVAssetWriterInput *metadataInput; // @synthesize metadataInput=_metadataInput;
 @property (copy, nonatomic) NSURL *outputURL; // @synthesize outputURL=_outputURL;
 @property (readonly) Class superclass;
 @property (nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
@@ -43,6 +46,7 @@
 - (void)cancel;
 - (id)init;
 - (id)initWithAsset:(id)arg1;
+- (id)initWithAsset:(id)arg1 stillImageTime:(CDStruct_1b6d18a9)arg2;
 - (void)readingAndWritingDidFinishSuccessfully:(BOOL)arg1 withError:(id)arg2;
 - (void)sampleBufferChannel:(id)arg1 didReadSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
 - (void)sampleBufferChannel:(id)arg1 didReadSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 andMadeWriteSampleBuffer:(struct __CVBuffer *)arg3;

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAlert, GEOETAServiceResponseSummary, GEOPBTransitRoutingIncidentMessage, GEOPDDatasetABStatus, GEORouteDisplayHints, GEOStyleAttributes, GEOTransitDecoderData, NSData, NSMutableArray, NSString;
+@class GEOAlert, GEOClientMetrics, GEOETAServiceResponseSummary, GEOPBTransitRoutingIncidentMessage, GEOPDDatasetABStatus, GEORouteDisplayHints, GEOStyleAttributes, GEOTransitDecoderData, NSData, NSMutableArray, NSString;
 
 @interface GEODirectionsResponse : PBCodable <NSCopying>
 {
@@ -18,26 +18,30 @@
     struct GEOProblemDetail *_problemDetails;
     unsigned long long _problemDetailsCount;
     unsigned long long _problemDetailsSpace;
+    GEOClientMetrics *_clientMetrics;
+    NSString *_dataVersion;
     GEOPDDatasetABStatus *_datasetAbStatus;
     GEOTransitDecoderData *_decoderData;
     NSData *_directionsResponseID;
     GEORouteDisplayHints *_displayHints;
     GEOETAServiceResponseSummary *_etaServiceSummary;
     GEOAlert *_failureAlert;
-    NSData *_graphV3;
     NSMutableArray *_incidentsOffRoutes;
     NSMutableArray *_incidentsOnRoutes;
     int _instructionSignFillColor;
     int _liveRouteSavingsSeconds;
     int _localDistanceUnits;
+    NSData *_nonRecommendedRoutesCache;
     NSMutableArray *_placeSearchResponses;
     NSMutableArray *_routes;
     unsigned int _selectedRouteIndex;
     NSMutableArray *_serviceGaps;
+    NSString *_serviceVersion;
     NSData *_sessionState;
     int _status;
     GEOStyleAttributes *_styleAttributes;
     NSMutableArray *_suggestedRoutes;
+    NSMutableArray *_trafficCameras;
     NSString *_transitDataVersion;
     GEOPBTransitRoutingIncidentMessage *_transitIncidentMessage;
     BOOL _isNavigable;
@@ -54,6 +58,8 @@
     } _has;
 }
 
+@property (strong, nonatomic) GEOClientMetrics *clientMetrics;
+@property (strong, nonatomic) NSString *dataVersion; // @synthesize dataVersion=_dataVersion;
 @property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus; // @synthesize datasetAbStatus=_datasetAbStatus;
 @property (nonatomic) unsigned long long debugLatencyMs;
 @property (strong, nonatomic) GEOTransitDecoderData *decoderData; // @synthesize decoderData=_decoderData;
@@ -61,7 +67,8 @@
 @property (strong, nonatomic) GEORouteDisplayHints *displayHints; // @synthesize displayHints=_displayHints;
 @property (strong, nonatomic) GEOETAServiceResponseSummary *etaServiceSummary;
 @property (strong, nonatomic) GEOAlert *failureAlert; // @synthesize failureAlert=_failureAlert;
-@property (strong, nonatomic) NSData *graphV3; // @synthesize graphV3=_graphV3;
+@property (readonly, nonatomic) BOOL hasClientMetrics;
+@property (readonly, nonatomic) BOOL hasDataVersion;
 @property (readonly, nonatomic) BOOL hasDatasetAbStatus;
 @property (nonatomic) BOOL hasDebugLatencyMs;
 @property (readonly, nonatomic) BOOL hasDecoderData;
@@ -69,13 +76,14 @@
 @property (readonly, nonatomic) BOOL hasDisplayHints;
 @property (readonly, nonatomic) BOOL hasEtaServiceSummary;
 @property (readonly, nonatomic) BOOL hasFailureAlert;
-@property (readonly, nonatomic) BOOL hasGraphV3;
 @property (nonatomic) BOOL hasInstructionSignFillColor;
 @property (nonatomic) BOOL hasIsNavigable;
 @property (nonatomic) BOOL hasLiveRouteSavingsSeconds;
 @property (nonatomic) BOOL hasLocalDistanceUnits;
+@property (readonly, nonatomic) BOOL hasNonRecommendedRoutesCache;
 @property (nonatomic) BOOL hasRouteDeviatesFromOriginal;
 @property (nonatomic) BOOL hasSelectedRouteIndex;
+@property (readonly, nonatomic) BOOL hasServiceVersion;
 @property (readonly, nonatomic) BOOL hasSessionState;
 @property (readonly, nonatomic) BOOL hasStyleAttributes;
 @property (nonatomic) BOOL hasTimepointUsed;
@@ -87,6 +95,7 @@
 @property (nonatomic) BOOL isNavigable; // @synthesize isNavigable=_isNavigable;
 @property (nonatomic) int liveRouteSavingsSeconds; // @synthesize liveRouteSavingsSeconds=_liveRouteSavingsSeconds;
 @property (nonatomic) int localDistanceUnits; // @synthesize localDistanceUnits=_localDistanceUnits;
+@property (strong, nonatomic) NSData *nonRecommendedRoutesCache; // @synthesize nonRecommendedRoutesCache=_nonRecommendedRoutesCache;
 @property (strong, nonatomic) NSMutableArray *placeSearchResponses; // @synthesize placeSearchResponses=_placeSearchResponses;
 @property (readonly, nonatomic) struct GEOProblemDetail *problemDetails;
 @property (readonly, nonatomic) unsigned long long problemDetailsCount;
@@ -94,6 +103,7 @@
 @property (strong, nonatomic) NSMutableArray *routes; // @synthesize routes=_routes;
 @property (nonatomic) unsigned int selectedRouteIndex; // @synthesize selectedRouteIndex=_selectedRouteIndex;
 @property (strong, nonatomic) NSMutableArray *serviceGaps; // @synthesize serviceGaps=_serviceGaps;
+@property (strong, nonatomic) NSString *serviceVersion; // @synthesize serviceVersion=_serviceVersion;
 @property (strong, nonatomic) NSData *sessionState; // @synthesize sessionState=_sessionState;
 @property (nonatomic) int status; // @synthesize status=_status;
 @property (strong, nonatomic) GEOStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
@@ -101,6 +111,7 @@
 @property (readonly, nonatomic) int *supportedTransportTypes;
 @property (readonly, nonatomic) unsigned long long supportedTransportTypesCount;
 @property (nonatomic) struct GEOTimepoint timepointUsed; // @synthesize timepointUsed=_timepointUsed;
+@property (strong, nonatomic) NSMutableArray *trafficCameras; // @synthesize trafficCameras=_trafficCameras;
 @property (strong, nonatomic) NSString *transitDataVersion; // @synthesize transitDataVersion=_transitDataVersion;
 @property (strong, nonatomic) GEOPBTransitRoutingIncidentMessage *transitIncidentMessage; // @synthesize transitIncidentMessage=_transitIncidentMessage;
 
@@ -110,6 +121,8 @@
 + (Class)routeType;
 + (Class)serviceGapType;
 + (Class)suggestedRouteType;
++ (Class)trafficCameraType;
+- (void).cxx_destruct;
 - (int)StringAsInstructionSignFillColor:(id)arg1;
 - (int)StringAsLocalDistanceUnits:(id)arg1;
 - (int)StringAsStatus:(id)arg1;
@@ -123,6 +136,7 @@
 - (void)addServiceGap:(id)arg1;
 - (void)addSuggestedRoute:(id)arg1;
 - (void)addSupportedTransportType:(int)arg1;
+- (void)addTrafficCamera:(id)arg1;
 - (void)clearIncidentsOffRoutes;
 - (void)clearIncidentsOnRoutes;
 - (void)clearPlaceSearchResponses;
@@ -131,6 +145,7 @@
 - (void)clearServiceGaps;
 - (void)clearSuggestedRoutes;
 - (void)clearSupportedTransportTypes;
+- (void)clearTrafficCameras;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -161,6 +176,8 @@
 - (unsigned long long)suggestedRoutesCount;
 - (int)supportedTransportTypeAtIndex:(unsigned long long)arg1;
 - (id)supportedTransportTypesAsString:(int)arg1;
+- (id)trafficCameraAtIndex:(unsigned long long)arg1;
+- (unsigned long long)trafficCamerasCount;
 - (void)writeTo:(id)arg1;
 
 @end

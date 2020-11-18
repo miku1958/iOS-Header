@@ -128,6 +128,8 @@
 - (void)p_guidedPanWithGesture:(id)arg1;
 - (void)p_handleSingleTapGesture:(id)arg1;
 - (void)p_handleTapForEditMenu:(id)arg1;
+- (BOOL)p_shouldUseWideGamut;
+- (void)p_updateWideGamut;
 - (id)p_willPresentError:(id)arg1;
 - (void)p_zoomWithGesture:(id)arg1;
 - (void)presentError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -152,6 +154,7 @@
 - (id)viewController;
 - (void)viewDidLoad;
 - (id)viewForGestureRecognizer:(id)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 

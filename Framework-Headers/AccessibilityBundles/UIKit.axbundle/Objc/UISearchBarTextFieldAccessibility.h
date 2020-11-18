@@ -16,6 +16,10 @@
 - (void)_accessibilityEditingModeChanged;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)accessibilityLabel;
+- (id)accessibilityLocalizationBundleID;
+- (id)accessibilityLocalizationBundlePath;
+- (id)accessibilityLocalizedStringKey;
+- (id)accessibilityLocalizedStringTableName;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 

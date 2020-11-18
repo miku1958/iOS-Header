@@ -9,48 +9,76 @@
 #import <SafariServices/SFServiceViewControllerProtocol-Protocol.h>
 #import <SafariServices/_SFActivityDelegate-Protocol.h>
 
-@class NSString, _SFWebViewUsageMonitor;
+@class NSDate, NSString, SFBrowserPersonaAnalyticsHelper, SFUserNotification, WKProcessPool, _SFWebViewUsageMonitor;
 
 __attribute__((visibility("hidden")))
 @interface SFBrowserServiceViewController : _SFBrowserContentViewController <_SFActivityDelegate, SFServiceViewControllerProtocol>
 {
-    CDUnknownBlockType _customActivitiesFetchCompletionHandler;
+    CDUnknownBlockType _activityViewControllerInfoFetchCompletionHandler;
     _SFWebViewUsageMonitor *_usageMonitor;
+    NSDate *_lastHostApplicationSuspendDate;
+    WKProcessPool *_processPool;
+    BOOL _canNotifyHostApplicationOfRedirects;
+    BOOL _isExpectingClientRedirect;
+    BOOL _hasBegunFirstNavigation;
+    SFBrowserPersonaAnalyticsHelper *_cachedAnalyticsHelper;
+    BOOL _isBeingUsedForLinkPreview;
+    SFUserNotification *_userNotification;
+    NSString *_hostApplicationCallbackURLScheme;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *hostApplicationCallbackURLScheme; // @synthesize hostApplicationCallbackURLScheme=_hostApplicationCallbackURLScheme;
+@property (nonatomic) BOOL isBeingUsedForLinkPreview; // @synthesize isBeingUsedForLinkPreview=_isBeingUsedForLinkPreview;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) SFUserNotification *userNotification; // @synthesize userNotification=_userNotification;
 
 + (id)_exportedInterface;
 + (id)_remoteViewControllerInterface;
 - (void).cxx_destruct;
+- (id)_analyticsHelper;
+- (id)_applicationPayloadForOpeningInSafari;
 - (void)_closeDatabasesOnBackgroundingOrDismissal;
 - (void)_didLoadWebView;
 - (void)_dismiss;
-- (void)_fetchCustomActivitiesForURL:(id)arg1 title:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)_ensureWebsiteDataStoreURL:(id)arg1 cookieStoreURL:(id)arg2;
+- (void)_fetchActivityViewControllerInfoForURL:(id)arg1 title:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_getSafariDataSharingModeWithPrivacyPrompt:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_hostApplicationDidEnterBackground;
 - (void)_hostApplicationWillEnterForeground;
-- (void)_notifyInitialLoadDidFinish:(BOOL)arg1;
+- (BOOL)_notifyInitialLoadDidFinish:(BOOL)arg1;
+- (unsigned long long)_persona;
 - (void)_recordHostAppIdAndURLForTapToRadar:(id)arg1;
+- (BOOL)_redirectToHostAppWithExpectedCallbackSchemeIfPossible:(id)arg1;
 - (BOOL)_redirectToHostAppWithNavigationResult:(id)arg1 options:(id)arg2;
 - (void)_updateRemoteSwipeGestureState;
-- (void)_updateStatusBarAppearance;
+- (id)_webDataStoreRootURL;
 - (void)_willAppearInRemoteViewController;
 - (void)dealloc;
+- (void)decideCookieSharingForURL:(id)arg1 callbackURLScheme:(id)arg2;
 - (void)didDetectRemoteViewControllerViewIsHidden;
 - (void)didDetectUserInteractionFromHostApp;
-- (void)didFetchHostAppCustomActivities:(id)arg1;
+- (void)didFetchCustomActivities:(id)arg1 excludedActivityTypes:(id)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadURL:(id)arg1;
+- (void)openCurrentURLInSafari;
 - (id)processPool;
 - (id)processPoolConfiguration;
 - (void)repostNotificationInViewService:(id)arg1;
 - (void)safariActivity:(id)arg1 didFinish:(BOOL)arg2;
+- (void)setDismissButtonStyle:(long long)arg1;
 - (void)setIsRunningTransitionAnimation:(BOOL)arg1;
-- (void)setShowingLinkPreview:(BOOL)arg1;
+- (void)updateScrollViewIndicatorVerticalInsets:(struct UIEdgeInsets)arg1 horizontalInsets:(struct UIEdgeInsets)arg2;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)webViewController:(id)arg1 didFinishDocumentLoadForNavigation:(id)arg2;
+- (void)webViewController:(id)arg1 didReceiveServerRedirectForProvisionalNavigation:(id)arg2;
+- (void)webViewController:(id)arg1 didStartProvisionalNavigation:(id)arg2;
+- (void)webViewController:(id)arg1 willPerformClientRedirectToURL:(id)arg2 withDelay:(double)arg3;
+- (void)webViewControllerDidCancelClientRedirect:(id)arg1;
+- (id)websiteDataStoreConfiguration;
 
 @end
 

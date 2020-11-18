@@ -16,7 +16,11 @@
 
 @property (readonly, nonatomic) NSString *dailySnapshotKey;
 @property (readonly, nonatomic) NSString *localizedName;
+@property (readonly, nonatomic) NSString *localizedNameForAction;
+@property (readonly, nonatomic) long long swatchStyle;
 
++ (id)optionsDescription;
++ (struct CGSize)sizeForSwatchStyle:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)JSONObjectRepresentation;
 - (id)description;
@@ -24,6 +28,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithJSONObjectRepresentation:(id)arg1;
 - (BOOL)isValidOption;
+- (BOOL)optionExistsInOSVersion:(unsigned int)arg1;
 
 @end
 

@@ -8,13 +8,14 @@
 
 #import <Intents/INSearchCallHistoryIntentResponseExport-Protocol.h>
 
-@class NSString, _INPBSearchCallHistoryIntentResponse;
+@class NSArray, NSString, _INPBSearchCallHistoryIntentResponse;
 
 @interface INSearchCallHistoryIntentResponse : INIntentResponse <INSearchCallHistoryIntentResponseExport>
 {
     _INPBSearchCallHistoryIntentResponse *_responseMessagePBRepresentation;
 }
 
+@property (copy, nonatomic) NSArray *callRecords;
 @property (readonly, nonatomic) long long code;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -35,6 +36,8 @@
 - (id)initWithBackingStore:(id)arg1;
 - (id)initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (id)initWithCoder:(id)arg1;
+- (id)propertiesByName;
+- (void)setPropertiesByName:(id)arg1;
 
 @end
 

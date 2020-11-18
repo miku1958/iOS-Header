@@ -50,7 +50,7 @@
 - (id)initWithPerson:(id)arg1;
 - (void)noMoreSuggestionsAvailableForSuggestionManager:(id)arg1;
 - (void)suggestionDidDisplay;
-- (void)suggestionManager:(id)arg1 hasNewSuggestionAvailable:(id)arg2;
+- (void)suggestionManager:(id)arg1 hasNewSuggestionsAvailable:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)undoButtonTapped:(id)arg1;
 - (void)updateViewConstraints;

@@ -14,13 +14,13 @@
     FTMessageDelivery *_delivery;
 }
 
-@property (strong) FTMessageDelivery *_delivery; // @synthesize _delivery;
-@property (strong) NSArray *_regions; // @synthesize _regions;
+@property (strong) FTMessageDelivery *delivery; // @synthesize delivery=_delivery;
 @property (readonly) BOOL isLoaded;
 @property (readonly) BOOL isLoading;
-@property (readonly) NSArray *regions;
+@property (strong) NSArray *regions; // @synthesize regions=_regions;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_buildMessageDeliveryIfNeeded;
 - (void)dealloc;
 - (void)flushRegions;

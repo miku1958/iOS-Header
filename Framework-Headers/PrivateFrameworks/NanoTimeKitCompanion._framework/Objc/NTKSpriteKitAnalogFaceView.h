@@ -42,6 +42,7 @@
 - (void)_loadScene;
 - (BOOL)_needsForegroundContainerView;
 - (void)_prepareForEditing;
+- (void)_prepareForSnapshotting;
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
 - (void)_renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1;
 - (void)_setContentViewsOpaque:(BOOL)arg1;

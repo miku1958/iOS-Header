@@ -26,12 +26,12 @@
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)spanDataType;
+- (void).cxx_destruct;
 - (int)StringAsStringType:(id)arg1;
 - (void)addSpanData:(id)arg1;
 - (void)clearSpanDatas;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -19,7 +19,7 @@
     struct __CFBoolean *_wasDarkboot;
     FBDisplayLayoutTransition *_interfaceOrientationTransition;
     FBSceneClientProviderInvalidationAction *_invalidationAction;
-    NSMutableDictionary *_scenesByIdentifier;
+    NSMutableDictionary *_localSceneInfoByIdentifier;
     NSMapTable *_hostsByIdentifier;
 }
 
@@ -51,9 +51,8 @@
 - (BOOL)canOpenURL:(id)arg1;
 - (void)endTransaction;
 - (id)fbsSceneWithIdentifier:(id)arg1;
-- (BOOL)handleDoubleHeightStatusBarTap:(long long)arg1;
+- (BOOL)handleDoubleHeightStatusBarTapWithStyleOverride:(int)arg1;
 - (void)host:(id)arg1 configureWithDefinition:(id)arg2 parameters:(id)arg3;
-- (void)host:(id)arg1 configureWithInitialClientSettings:(id)arg2;
 - (void)host:(id)arg1 didInvalidateWithTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)host:(id)arg1 didReceiveActions:(id)arg2;
 - (void)host:(id)arg1 didUpdateSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;

@@ -9,10 +9,11 @@
 #import <GeoServices/GEOTransitNamedItem-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, NSMutableArray, NSString;
+@class GEOLatLng, NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPBTransitStation : PBCodable <GEOTransitNamedItem, NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     unsigned long long _muid;
     GEOLatLng *_location;
     NSString *_nameDisplayString;
@@ -42,17 +43,19 @@
 @property (nonatomic) unsigned int stationIndex; // @synthesize stationIndex=_stationIndex;
 @property (nonatomic) int structureType; // @synthesize structureType=_structureType;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) NSMutableArray *zoomNames; // @synthesize zoomNames=_zoomNames;
 
 + (Class)zoomNameType;
+- (void).cxx_destruct;
 - (int)StringAsStructureType:(id)arg1;
 - (void)addZoomName:(id)arg1;
 - (id)bestName;
 - (void)clearZoomNames;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)dictionaryRepresentation;
+- (id)identifier;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

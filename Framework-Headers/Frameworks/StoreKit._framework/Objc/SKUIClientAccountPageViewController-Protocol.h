@@ -10,6 +10,8 @@
 
 @protocol SKUIClientAccountPageViewController <NSObject>
 - (void)didPrepareWithResult:(NSNumber *)arg1 error:(NSError *)arg2;
-- (void)dismissViewController;
+- (void)dismissViewControllerWithResult:(NSNumber *)arg1 error:(NSError *)arg2;
+- (void)overrideCreditCardPresentationWithCompletion:(void (^)(SUCreditCardReaderOutput *))arg1;
+- (void)overrideRedeemCameraWithCompletion:(void (^)(SKUIRedeem *, NSError *))arg1;
 @end
 

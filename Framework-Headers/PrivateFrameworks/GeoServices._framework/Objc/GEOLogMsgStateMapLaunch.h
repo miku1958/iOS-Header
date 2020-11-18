@@ -21,9 +21,9 @@
 @property (strong, nonatomic) NSString *launchUri; // @synthesize launchUri=_launchUri;
 @property (strong, nonatomic) NSString *sourceAppId; // @synthesize sourceAppId=_sourceAppId;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/MDRenderTarget-Protocol.h>
 
 @class NSString;
+@protocol GGLRenderQueueSource;
 
 __attribute__((visibility("hidden")))
 @interface GGLImageCanvas : NSObject <MDRenderTarget>
@@ -16,15 +17,28 @@ __attribute__((visibility("hidden")))
     struct RenderTargetFormat _resolvedRenderTargetFormat;
     struct CGSize _size;
     double _contentScale;
-    struct Device {
-        int;
-        shared_ptr_807ec9ac;
-        struct unique_ptr<md::SharedDeviceResources, std::__1::default_delete<md::SharedDeviceResources>>;
-    } *_device;
+    struct CGRect _bounds;
     BOOL _canMakeImage;
     BOOL _recreateRenderTarget;
     BOOL _allowAlpha;
+    id<GGLRenderQueueSource> _renderSource;
     struct RenderTargetFormat _format;
+    shared_ptr_807ec9ac _device;
+    struct Renderer {
+        CDUnknownFunctionPointerType *;
+        struct Device *;
+        unsigned long long;
+        unsigned long long;
+        unsigned long long;
+        BOOL;
+        float;
+        struct vector<std::__1::shared_ptr<ggl::DebugRenderer>, std::__1::allocator<std::__1::shared_ptr<ggl::DebugRenderer>>>;
+        struct unique_ptr<ggl::RenderQueue, std::__1::default_delete<ggl::RenderQueue>>;
+        struct shared_ptr<ggl::CommonLibrary>;
+        struct unique_ptr<ggl::RenderResourceFences, std::__1::default_delete<ggl::RenderResourceFences>>;
+        struct Texture2D *;
+        struct unique_ptr<ggl::CommandBuffer, std::__1::default_delete<ggl::CommandBuffer>>;
+    } *_renderer;
     struct unique_ptr<ggl::RenderTarget, std::__1::default_delete<ggl::RenderTarget>> _renderTarget;
     struct unique_ptr<ggl::Texture, std::__1::default_delete<ggl::Texture>> _colorBuffer;
     struct unique_ptr<ggl::RenderBuffer, std::__1::default_delete<ggl::RenderBuffer>> _depthStencilBuffer;
@@ -34,16 +48,18 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL allowAlpha; // @synthesize allowAlpha=_allowAlpha;
 @property (readonly, nonatomic) float averageFPS;
+@property (nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property (nonatomic) double contentScale; // @synthesize contentScale=_contentScale;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) struct Device *device;
 @property (readonly, nonatomic) struct RenderTarget *finalRenderTarget;
 @property (readonly, nonatomic) const struct RenderTargetFormat *format;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct Texture2D *imageTexture;
 @property (readonly, nonatomic) BOOL multiSample; // @synthesize multiSample=_useMultisampling;
+@property (nonatomic) id<GGLRenderQueueSource> renderSource; // @synthesize renderSource=_renderSource;
 @property (readonly, nonatomic) struct RenderTarget *renderTarget;
+@property (readonly, nonatomic) struct Renderer *renderer;
 @property (readonly, nonatomic) struct RenderTargetFormat resolvedRenderTargetFormat; // @synthesize resolvedRenderTargetFormat=_resolvedRenderTargetFormat;
 @property (readonly, nonatomic) BOOL shouldRasterize;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
@@ -52,13 +68,15 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_createRenderTarget;
-- (void)_destroyRenderTarget;
-- (shared_ptr_edb96180)bitmapDataWithRenderer:(struct Renderer *)arg1;
+- (shared_ptr_fa6aa836)bitmapData:(struct Texture *)arg1;
+- (void)createRenderTarget;
+- (void)dealloc;
+- (void)destroyRenderTarget;
 - (void)didDrawView;
 - (struct Texture *)finalSurface;
-- (id)initWithSize:(struct CGSize)arg1 device:(struct Device *)arg2 scale:(double)arg3 useMultisampling:(BOOL)arg4;
-- (struct CGImage *)newImageWithRenderer:(struct Renderer *)arg1;
+- (BOOL)hasRenderTarget;
+- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 useMultisampling:(BOOL)arg3 device:(struct Device *)arg4;
+- (void)renderWithTimestamp:(double)arg1 completion:(function_30b369b8)arg2;
 - (void)willDrawView;
 
 @end

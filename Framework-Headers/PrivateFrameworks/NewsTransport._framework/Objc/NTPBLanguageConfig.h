@@ -22,6 +22,7 @@
     NSString *_forYouConfigId;
     NSString *_hiddenFeedId;
     NSString *_languageTag;
+    NSMutableArray *_mediaSharingBlacklistedChannelIds;
     NSMutableArray *_onboardingTagIds;
     NSMutableArray *_preSubscribedFeedIds;
     NSMutableArray *_preSubscribedNotificationsChannelIds;
@@ -58,6 +59,7 @@
 @property (readonly, nonatomic) BOOL hasWidgetSectionConfigId;
 @property (strong, nonatomic) NSString *hiddenFeedId; // @synthesize hiddenFeedId=_hiddenFeedId;
 @property (strong, nonatomic) NSString *languageTag; // @synthesize languageTag=_languageTag;
+@property (strong, nonatomic) NSMutableArray *mediaSharingBlacklistedChannelIds; // @synthesize mediaSharingBlacklistedChannelIds=_mediaSharingBlacklistedChannelIds;
 @property (strong, nonatomic) NSMutableArray *onboardingTagIds; // @synthesize onboardingTagIds=_onboardingTagIds;
 @property (strong, nonatomic) NSMutableArray *preSubscribedFeedIds; // @synthesize preSubscribedFeedIds=_preSubscribedFeedIds;
 @property (strong, nonatomic) NSMutableArray *preSubscribedNotificationsChannelIds; // @synthesize preSubscribedNotificationsChannelIds=_preSubscribedNotificationsChannelIds;
@@ -68,15 +70,18 @@
 @property (strong, nonatomic) NSString *trendingTagId; // @synthesize trendingTagId=_trendingTagId;
 @property (strong, nonatomic) NSString *widgetSectionConfigId; // @synthesize widgetSectionConfigId=_widgetSectionConfigId;
 
++ (Class)mediaSharingBlacklistedChannelIdsType;
 + (Class)onboardingTagIdsType;
 + (Class)preSubscribedFeedIdsType;
 + (Class)preSubscribedNotificationsChannelIdsType;
 + (Class)recommendedNotificationChannelsType;
 - (void).cxx_destruct;
+- (void)addMediaSharingBlacklistedChannelIds:(id)arg1;
 - (void)addOnboardingTagIds:(id)arg1;
 - (void)addPreSubscribedFeedIds:(id)arg1;
 - (void)addPreSubscribedNotificationsChannelIds:(id)arg1;
 - (void)addRecommendedNotificationChannels:(id)arg1;
+- (void)clearMediaSharingBlacklistedChannelIds;
 - (void)clearOnboardingTagIds;
 - (void)clearPreSubscribedFeedIds;
 - (void)clearPreSubscribedNotificationsChannelIds;
@@ -86,6 +91,8 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)mediaSharingBlacklistedChannelIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)mediaSharingBlacklistedChannelIdsCount;
 - (void)mergeFrom:(id)arg1;
 - (id)onboardingTagIdsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)onboardingTagIdsCount;

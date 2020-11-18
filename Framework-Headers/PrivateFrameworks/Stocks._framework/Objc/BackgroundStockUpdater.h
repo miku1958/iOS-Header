@@ -6,17 +6,31 @@
 
 #import <Stocks/StockUpdater.h>
 
-@class NSURLSession;
+#import <Stocks/NSURLSessionTaskDelegate-Protocol.h>
 
-@interface BackgroundStockUpdater : StockUpdater
+@class NSDate, NSString, NSURLSession;
+
+@interface BackgroundStockUpdater : StockUpdater <NSURLSessionTaskDelegate>
 {
+    NSDate *_earliestBeginDate;
+    CDUnknownBlockType _finishEventsHandler;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSDate *earliestBeginDate; // @synthesize earliestBeginDate=_earliestBeginDate;
+@property (copy, nonatomic) CDUnknownBlockType finishEventsHandler; // @synthesize finishEventsHandler=_finishEventsHandler;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSURLSession *session;
+@property (readonly) Class superclass;
 
+- (void).cxx_destruct;
+- (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
+- (void)URLSessionDidFinishEventsForBackgroundURLSession:(id)arg1;
 - (id)_backgroundSession;
 - (void)_createDefaultSession;
-- (void)reestablishBackgroundSession;
+- (void)failWithError:(id)arg1;
+- (void)reestablishBackgroundSessionForManager:(id)arg1 withFinishEventsHandler:(CDUnknownBlockType)arg2;
 - (id)taskForRequest:(id)arg1 delegate:(id)arg2;
 
 @end

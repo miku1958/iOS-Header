@@ -25,9 +25,9 @@
 + (id)authenticateExtension;
 + (BOOL)dismissAutomaticallyAfterExtensionCompletion;
 - (void)dealloc;
-- (void)remoteViewControllerIsCanceling;
-- (void)remoteViewControllerIsFinishing;
-- (void)unlockRotation;
+- (void)extensionIsCanceling;
+- (void)extensionIsFinishing;
+- (void)messageFromExtension:(id)arg1;
 
 @end
 

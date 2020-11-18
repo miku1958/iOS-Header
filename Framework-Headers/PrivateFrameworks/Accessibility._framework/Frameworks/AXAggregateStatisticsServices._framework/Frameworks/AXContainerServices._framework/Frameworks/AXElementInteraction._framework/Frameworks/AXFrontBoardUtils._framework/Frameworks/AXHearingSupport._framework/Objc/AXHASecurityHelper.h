@@ -8,20 +8,20 @@
 
 #import <AXHearingSupport/AXIDCManagerSecurityDelegate-Protocol.h>
 
-@class AXHAAccessQueue, NSArray, NSString;
+@class NSArray, NSString;
+@protocol OS_dispatch_queue;
 
 @interface AXHASecurityHelper : NSObject <AXIDCManagerSecurityDelegate>
 {
     struct __SecIdentity *_appleIDIdentity;
+    NSObject<OS_dispatch_queue> *_securityQueue;
     NSArray *_certificateDescription;
-    AXHAAccessQueue *_securityQueue;
 }
 
 @property (strong, nonatomic) NSArray *certificateDescription; // @synthesize certificateDescription=_certificateDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) AXHAAccessQueue *securityQueue; // @synthesize securityQueue=_securityQueue;
 @property (readonly) Class superclass;
 
 + (id)sharedHelper;

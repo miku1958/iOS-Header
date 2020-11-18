@@ -16,10 +16,11 @@
     NSArray *_visibleArrangedSubviews;
     double _preferredMaxLayoutWidth;
     struct nui_size_cache _cachedIntrinsicSizes;
-    struct unordered_map<const UIView *, nui_size_cache, std::__1::hash<const UIView *>, std::__1::equal_to<const UIView *>, std::__1::allocator<std::__1::pair<const UIView *const, nui_size_cache>>> _cachedSystemLayoutSizes;
     struct {
-        unsigned int hiddenArrangedSubviewCount:8;
-        unsigned int inLayoutPass:1;
+        unsigned int hiddenArrangedSubviewCount:16;
+        unsigned int inBatch:1;
+        unsigned int delayState:2;
+        unsigned int inLayoutPass:2;
         unsigned int determiningPreferredMaxLayoutWidth:1;
         unsigned int inSecondConstraintsPass:1;
         unsigned int delegateDidInvalidateIntrinsicContentSize:1;
@@ -30,9 +31,11 @@
     } _containerFlags;
     BOOL _baselineRelativeArrangement;
     BOOL _layoutMarginsRelativeArrangement;
+    long long _asynchronousMeasurement;
 }
 
 @property (copy, nonatomic) NSArray *arrangedSubviews;
+@property (nonatomic) long long asynchronousMeasurement; // @synthesize asynchronousMeasurement=_asynchronousMeasurement;
 @property (nonatomic, getter=isBaselineRelativeArrangement) BOOL baselineRelativeArrangement; // @synthesize baselineRelativeArrangement=_baselineRelativeArrangement;
 @property (weak, nonatomic) id<NUIContainerViewDelegate> delegate;
 @property (nonatomic, getter=isLayoutMarginsRelativeArrangement) BOOL layoutMarginsRelativeArrangement; // @synthesize layoutMarginsRelativeArrangement=_layoutMarginsRelativeArrangement;
@@ -41,8 +44,10 @@
 + (void)initialize;
 + (BOOL)isDebugBoundingBoxesEnabled;
 + (Class)layerClass;
++ (BOOL)requiresConstraintBasedLayout;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_addAsSubviewIfNeeded:(id)arg1;
 - (void)_beginObservingSubviewVisibility:(id)arg1;
 - (void)_didRemoveSubview:(id)arg1;
 - (void)_endObservingSubviewVisibility:(id)arg1;
@@ -53,6 +58,7 @@
 - (void)_prepareForSecondIntrinsicContentSizeCalculationWithLayoutEngineBounds:(struct CGRect)arg1;
 - (void)_resetToBeginningOfDoublePass;
 - (void)_setInSecondConstraintsPass:(BOOL)arg1;
+- (BOOL)_verifyInternalConsistencyWarningOnly:(BOOL)arg1;
 - (void)addArrangedSubview:(id)arg1;
 - (id)arrangedDescription;
 - (void)assertNotInLayoutPass:(BOOL)arg1;
@@ -62,6 +68,7 @@
 - (id)description;
 - (void)didInsertArrangedSubview:(id)arg1 atIndex:(long long)arg2;
 - (void)didRemoveArrangedSubview:(id)arg1 atIndex:(long long)arg2;
+- (struct UIEdgeInsets)effectiveLayoutMargins;
 - (unsigned long long)indexOfArrangedSubview:(id)arg1;
 - (id)initWithArrangedSubviews:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -70,7 +77,8 @@
 - (struct CGSize)intrinsicContentSize;
 - (void)intrinsicContentSizeDidInvalidateForArrangedSubview:(id)arg1;
 - (void)invalidateIntrinsicContentSize;
-- (void)invalidateIntrinsicContentSizeRequiringArrangedSubviewRemeasurement:(BOOL)arg1;
+- (BOOL)invalidateIntrinsicContentSizeRequiringArrangedSubviewRemeasurement:(BOOL)arg1;
+- (BOOL)isInBatchUpdate;
 - (BOOL)isInLayoutPass;
 - (BOOL)isLayoutSizeDependentOnPerpendicularAxis;
 - (BOOL)layoutArrangedSubviewsInBounds:(struct CGRect)arg1;
@@ -78,9 +86,12 @@
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)performBatchUpdates:(CDUnknownBlockType)arg1;
 - (void)removeArrangedSubview:(id)arg1;
+- (void)replaceArrangedSubview:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setNeedsLayout;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (BOOL)supportsAsynchronousMeasurement;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (void)updateConstraints;
 - (id)viewForFirstBaselineLayout;

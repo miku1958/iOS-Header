@@ -15,7 +15,6 @@
     NSArray *_mergeFormats;
     NSArray *_continueFormats;
     NSArray *_maneuverFormats;
-    BOOL _useNames;
 }
 
 @property (readonly, nonatomic) long long context;
@@ -26,35 +25,14 @@
 @property (strong, nonatomic) NSString *roadName;
 @property (nonatomic) BOOL suppressFallback;
 @property (nonatomic) BOOL suppressNames;
-@property (nonatomic) BOOL useNames; // @synthesize useNames=_useNames;
 
-+ (id)contentsWithStep:(id)arg1 transportType:(int)arg2 destination:(id)arg3 useNames:(BOOL)arg4;
++ (id)contentsWithStep:(id)arg1 transportType:(int)arg2 destination:(id)arg3;
 - (void).cxx_destruct;
 - (id)_instructionsForFormats:(id)arg1;
 - (void)_populateFromStep:(id)arg1;
-- (id)_signInstructionForArrivalWithShorterAlternatives:(id *)arg1;
-- (id)_signInstructionForBranchWithShorterAlternatives:(id *)arg1;
-- (id)_signInstructionForChangeHighwaysWithShorterAlternatives:(id *)arg1;
-- (id)_signInstructionForContinueWithShorterAlternatives:(id *)arg1;
-- (id)_signInstructionForExitWithShorterAlternatives:(id *)arg1;
-- (id)_signInstructionForFerryWithShorterAlternatives:(id *)arg1;
-- (id)_signInstructionForRoundaboutWithShorterAlternatives:(id *)arg1;
-- (id)_signInstructionForStartWithShorterAlternatives:(id *)arg1;
-- (id)_signInstructionForTurnWithShorterAlternatives:(id *)arg1;
-- (id)_signInstructionForUTurnWithShorterAlternatives:(id *)arg1;
-- (id)_signWalkingInstructionForContinueWithShorterAlternatives:(id *)arg1;
-- (id)_signWalkingInstructionForLeftWithShorterAlternatives:(id *)arg1;
-- (id)_signWalkingInstructionForRightWithShorterAlternatives:(id *)arg1;
-- (id)_signWalkingInstructionForRoundaboutWithShorterAlternatives:(id *)arg1;
-- (id)_signWalkingInstructionForStartWithShorterAlternatives:(id *)arg1;
-- (id)_signWalkingInstructionForTurnWithShorterAlternatives:(id *)arg1;
-- (id)_signWalkingInstructionForUTurnWithShorterAlternatives:(id *)arg1;
+- (id)description;
 - (id)instructionForStage:(unsigned long long)arg1 distance:(double)arg2;
 - (id)instructionWithShorterAlternatives;
-- (BOOL)useDestinationName;
-- (BOOL)useIntersectionName;
-- (BOOL)useRoadName;
-- (BOOL)useTowardNames;
 
 @end
 

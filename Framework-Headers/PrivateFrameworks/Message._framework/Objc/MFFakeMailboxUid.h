@@ -21,13 +21,13 @@
 @property (nonatomic) BOOL fakeIsSpecialMailboxUid; // @synthesize fakeIsSpecialMailboxUid=_fakeIsSpecialMailboxUid;
 @property (copy, nonatomic) NSString *fakeURLString; // @synthesize fakeURLString=_fakeURLString;
 
+- (void).cxx_destruct;
 - (id)URLString;
-- (void)dealloc;
 - (id)fullPath;
 - (id)initWithAccount:(id)arg1 URLString:(id)arg2 fullPath:(id)arg3;
 - (id)initWithAccount:(id)arg1 URLString:(id)arg2 fullPath:(id)arg3 isSpecial:(BOOL)arg4;
-- (BOOL)isSelectable;
 - (BOOL)isSpecialMailboxUid;
+- (BOOL)isStore;
 - (id)store;
 
 @end

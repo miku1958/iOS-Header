@@ -21,13 +21,14 @@
     GEOAddressObject *_addressObject;
 }
 
+- (void).cxx_destruct;
 - (id)_clientAttributes;
 - (BOOL)_hasResolvablePartialInformation;
 - (id)_place;
+- (BOOL)_responseStatusIsIncomplete;
 - (id)addressDictionary;
 - (id)addressObject;
 - (CDStruct_c3b9c2ee)coordinate;
-- (void)dealloc;
 - (id)description;
 - (id)eventDate;
 - (id)eventName;

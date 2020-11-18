@@ -30,9 +30,10 @@
 - (struct CGSize)_constrainedSizeForDesiredSize:(struct CGSize)arg1;
 - (id)_errorHandlingRemoteViewControllerProxy;
 - (void)addChildViewController:(id)arg1;
-- (void)configureWithInteraction:(id)arg1 context:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)configureForParameters:(id)arg1 ofInteraction:(id)arg2 interactiveBehavior:(unsigned long long)arg3 context:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)queryRepresentedPropertiesWithCompletion:(CDUnknownBlockType)arg1;
-- (void)requestDesiredSize;
+- (void)viewWasCancelled;
 - (void)viewWillLayoutSubviews;
 
 @end

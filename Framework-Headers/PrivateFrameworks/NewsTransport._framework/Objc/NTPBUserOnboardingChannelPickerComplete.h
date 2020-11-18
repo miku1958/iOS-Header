@@ -13,11 +13,13 @@
 @interface NTPBUserOnboardingChannelPickerComplete : PBCodable <NSCopying>
 {
     NSMutableArray *_channelIds;
+    int _channelPickerPresentationReason;
     NSMutableArray *_topicIds;
     int _totalChannelSelections;
     int _totalTopicSelections;
     BOOL _fromPersonalizeNews;
     struct {
+        unsigned int channelPickerPresentationReason:1;
         unsigned int totalChannelSelections:1;
         unsigned int totalTopicSelections:1;
         unsigned int fromPersonalizeNews:1;
@@ -25,7 +27,9 @@
 }
 
 @property (strong, nonatomic) NSMutableArray *channelIds; // @synthesize channelIds=_channelIds;
+@property (nonatomic) int channelPickerPresentationReason; // @synthesize channelPickerPresentationReason=_channelPickerPresentationReason;
 @property (nonatomic) BOOL fromPersonalizeNews; // @synthesize fromPersonalizeNews=_fromPersonalizeNews;
+@property (nonatomic) BOOL hasChannelPickerPresentationReason;
 @property (nonatomic) BOOL hasFromPersonalizeNews;
 @property (nonatomic) BOOL hasTotalChannelSelections;
 @property (nonatomic) BOOL hasTotalTopicSelections;
@@ -36,10 +40,12 @@
 + (Class)channelIdType;
 + (Class)topicIdType;
 - (void).cxx_destruct;
+- (int)StringAsChannelPickerPresentationReason:(id)arg1;
 - (void)addChannelId:(id)arg1;
 - (void)addTopicId:(id)arg1;
 - (id)channelIdAtIndex:(unsigned long long)arg1;
 - (unsigned long long)channelIdsCount;
+- (id)channelPickerPresentationReasonAsString:(int)arg1;
 - (void)clearChannelIds;
 - (void)clearTopicIds;
 - (id)copyWithZone:(struct _NSZone *)arg1;

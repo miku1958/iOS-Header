@@ -6,17 +6,19 @@
 
 #import <CoreSuggestionsInternals/SGEntity.h>
 
-@class NSArray, NSData, NSIndexSet, NSMutableArray, NSMutableDictionary, NSString, SGMessage;
+@class NSArray, NSData, NSIndexSet, NSMutableArray, NSMutableDictionary, NSNumber, NSSet, NSString, SGMessage;
 
 @interface SGPipelineEntity : SGEntity
 {
     NSMutableArray *_enrichments;
+    NSMutableArray *_externalEnrichments;
     NSString *_plainTextContentCache;
     BOOL _plainTextContentCacheGenerated;
     struct _opaque_pthread_mutex_t _plainTextContentCacheLock;
     BOOL _fullDownloadRequested;
     CDStruct_f96224e3 _inhumanFeatures;
     struct _opaque_pthread_mutex_t _dissectorLock;
+    NSNumber *_isAppleInternalConversation;
     BOOL _contactInformationExtracted;
     BOOL _pendingGeocode;
     NSIndexSet *_plainTextQuotedRegions;
@@ -31,17 +33,22 @@
     SGMessage *_message;
     NSData *_contentHash;
     NSArray *_invalidatedMessageIdentifiers;
+    NSArray *_authorMatchingContacts;
+    NSSet *_authorMatchingContactsKeys;
     struct _NSRange _plainTextSigRange;
 }
 
 @property (readonly, nonatomic) NSArray *addresses;
 @property (readonly, nonatomic) NSString *authorEmail;
+@property (strong, nonatomic) NSArray *authorMatchingContacts; // @synthesize authorMatchingContacts=_authorMatchingContacts;
+@property (strong, nonatomic) NSSet *authorMatchingContactsKeys; // @synthesize authorMatchingContactsKeys=_authorMatchingContactsKeys;
 @property (nonatomic) BOOL contactInformationExtracted; // @synthesize contactInformationExtracted=_contactInformationExtracted;
 @property (strong, nonatomic) NSData *contentHash; // @synthesize contentHash=_contentHash;
 @property (nonatomic) struct __DDResult *dataDetectorsSignature; // @synthesize dataDetectorsSignature=_dataDetectorsSignature;
 @property (readonly, nonatomic) NSArray *emailAddresses;
 @property (readonly, nonatomic) NSMutableDictionary *emailToCanonicalEmailCache; // @synthesize emailToCanonicalEmailCache=_emailToCanonicalEmailCache;
 @property (strong, nonatomic) NSArray *enrichments; // @synthesize enrichments=_enrichments;
+@property (strong, nonatomic) NSArray *externalEnrichments; // @synthesize externalEnrichments=_externalEnrichments;
 @property (readonly, getter=hasFullDownloadBeenRequested) BOOL fullDownloadRequested;
 @property (readonly, nonatomic) unsigned long long *htmlOffsets; // @synthesize htmlOffsets=_htmlOffsets;
 @property (readonly, nonatomic) CDStruct_f96224e3 *inhumanFeatures;
@@ -60,18 +67,26 @@
 
 + (id)address:(id)arg1 forIdentity:(id)arg2 parent:(id)arg3 curated:(BOOL)arg4 context:(id)arg5 contextRangeOfInterest:(struct _NSRange)arg6 extractionType:(unsigned long long)arg7;
 + (id)emailAddress:(id)arg1 forIdentity:(id)arg2 parent:(id)arg3 curated:(BOOL)arg4 context:(id)arg5 contextRangeOfInterest:(struct _NSRange)arg6 extractionType:(unsigned long long)arg7;
++ (id)fromCloudKitRecord:(id)arg1 parentEntity:(id)arg2;
++ (id)instantMessageAddress:(id)arg1 forIdentity:(id)arg2 parent:(id)arg3 curated:(BOOL)arg4 context:(id)arg5 contextRangeOfInterest:(struct _NSRange)arg6 extractionType:(unsigned long long)arg7;
 + (id)phoneNumber:(id)arg1 forIdentity:(id)arg2 parent:(id)arg3 curated:(BOOL)arg4 context:(id)arg5 contextRangeOfInterest:(struct _NSRange)arg6 extractionType:(unsigned long long)arg7;
++ (id)socialProfile:(id)arg1 forIdentity:(id)arg2 parent:(id)arg3 curated:(BOOL)arg4 context:(id)arg5 contextRangeOfInterest:(struct _NSRange)arg6 extractionType:(unsigned long long)arg7;
 - (void).cxx_destruct;
 - (void)acquireDissectorLock;
 - (void)addCuratedEmailAddress:(id)arg1;
 - (void)addCuratedPhoneNumber:(id)arg1;
 - (void)addCuratedPostalAddress:(id)arg1;
 - (void)addDetectedEmailAddress:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionType:(unsigned long long)arg5;
+- (void)addDetectedInstantMessageAddress:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionType:(unsigned long long)arg5;
 - (void)addDetectedPhoneNumber:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionType:(unsigned long long)arg5;
 - (void)addDetectedPostalAddress:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionType:(unsigned long long)arg5;
+- (void)addDetectedSocialProfile:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionType:(unsigned long long)arg5;
 - (void)addDetection:(id)arg1 forIdentity:(id)arg2 extractionType:(unsigned long long)arg3;
 - (void)addEmailAddressEnrichment:(id)arg1;
 - (void)addEnrichment:(id)arg1;
+- (void)addExternalEnrichment:(id)arg1;
+- (void)addInstantMessageAddressEnrichment:(id)arg1;
+- (void)addSocialProfileEnrichment:(id)arg1;
 - (void)addUnrecognizedLookupEmailAddress:(id)arg1;
 - (void)addUnrecognizedLookupPhoneNumber:(id)arg1;
 - (void)chopOffContentAfterIndex:(unsigned long long)arg1;
@@ -90,10 +105,13 @@
 - (id)initWithPseudoContactWithKey:(id)arg1 parent:(id)arg2 name:(id)arg3;
 - (id)initWithTextMessage:(id)arg1 fromSource:(id)arg2;
 - (id)initWithUnrecognizedContactWithKey:(id)arg1;
+- (BOOL)isAppleInternalConversation;
+- (BOOL)isAuthorKnownAppleContact;
 - (BOOL)isEvent;
 - (BOOL)isPerson;
 - (void)releaseDissectorLock;
 - (void)requestFullDownload;
+- (void)runWithDissectorLock:(CDUnknownBlockType)arg1;
 - (void)setAuthor:(id)arg1;
 - (void)setCreationTimestamp:(struct SGUnixTimestamp_)arg1;
 - (void)setLastModifiedTimestamp:(struct SGUnixTimestamp_)arg1;
@@ -101,6 +119,7 @@
 - (void)setPlainTextLines:(id)arg1 utf8Offsets:(id)arg2 isAscii:(BOOL)arg3;
 - (void)stripContactInformation;
 - (void)stripEventInformation;
+- (id)toCloudKitRecordWithId:(id)arg1;
 
 @end
 

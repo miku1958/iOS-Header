@@ -6,14 +6,18 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HAPAccessoryServer, HAPAccessoryServerBrowser, NSError, NSNumber, NSString;
+@class HAPAccessoryServer, HAPAccessoryServerBrowser, NSArray, NSData, NSError, NSNumber, NSString;
 
 @protocol HAPAccessoryServerBrowserDelegate <NSObject>
+- (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 accessoryServer:(HAPAccessoryServer *)arg2 didUpdateValuesForCharacteristics:(NSArray *)arg3 stateNumber:(NSNumber *)arg4 broadcast:(BOOL)arg5;
 - (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didChangeReachability:(BOOL)arg2 forAccessoryServerWithIdentifier:(NSString *)arg3;
 - (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didFailToDiscoverAccessoryServerWithIdentifier:(NSString *)arg2;
 - (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didFindAccessoryServer:(HAPAccessoryServer *)arg2 stateChanged:(BOOL)arg3 stateNumber:(NSNumber *)arg4;
 - (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didRemoveAccessoryServer:(HAPAccessoryServer *)arg2 error:(NSError *)arg3;
 - (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didStartDiscoveringWithError:(NSError *)arg2;
 - (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didStopDiscoveringWithError:(NSError *)arg2;
+- (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 getCacheForAccessoryWithIdentifier:(NSString *)arg2 withCompletion:(void (^)(NSData *))arg3;
+- (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 removeCacheForAccessoryWithIdentifier:(NSString *)arg2;
+- (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 saveCache:(NSData *)arg2 serverIdentifier:(NSString *)arg3;
 @end
 

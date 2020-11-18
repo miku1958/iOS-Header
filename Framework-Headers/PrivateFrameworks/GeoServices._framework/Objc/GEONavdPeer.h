@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEONavdClientInfo, NSMutableDictionary, NSXPCConnection;
 
@@ -20,9 +20,11 @@
 @property (readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (nonatomic) BOOL expectingUpdates; // @synthesize expectingUpdates=_expectingUpdates;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (BOOL)hasEntitlement:(id)arg1;
 - (id)initWithXPCConnection:(id)arg1;
+- (void)updateConnection:(id)arg1;
 
 @end
 

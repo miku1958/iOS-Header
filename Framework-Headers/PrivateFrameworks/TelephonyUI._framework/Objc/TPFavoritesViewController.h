@@ -6,7 +6,7 @@
 
 #import <UIKit/UICollectionViewController.h>
 
-@class CNAvatarViewControllerSettings, CNContactFormatter, CNContactStore, NSArray, NSIndexSet, TPFavoritesController, UIView;
+@class CNAvatarViewControllerSettings, CNContactFormatter, NSArray, NSIndexSet, TPFavoritesController, UIView;
 
 @interface TPFavoritesViewController : UICollectionViewController
 {
@@ -16,16 +16,14 @@
     NSArray *_favoritesEntries;
     CNAvatarViewControllerSettings *_avatarViewControllerSettings;
     CNContactFormatter *_contactFormatter;
-    CNContactStore *_contactStore;
     NSIndexSet *_sections;
 }
 
 @property (strong, nonatomic) CNAvatarViewControllerSettings *avatarViewControllerSettings; // @synthesize avatarViewControllerSettings=_avatarViewControllerSettings;
 @property (strong, nonatomic) CNContactFormatter *contactFormatter; // @synthesize contactFormatter=_contactFormatter;
-@property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property (nonatomic) BOOL contentUnavailable; // @synthesize contentUnavailable=_contentUnavailable;
 @property (strong, nonatomic) UIView *contentUnavailableView; // @synthesize contentUnavailableView=_contentUnavailableView;
-@property (strong, nonatomic) TPFavoritesController *favoritesController; // @synthesize favoritesController=_favoritesController;
+@property (readonly, nonatomic) TPFavoritesController *favoritesController; // @synthesize favoritesController=_favoritesController;
 @property (copy, nonatomic) NSArray *favoritesEntries; // @synthesize favoritesEntries=_favoritesEntries;
 @property (strong, nonatomic) NSIndexSet *sections; // @synthesize sections=_sections;
 
@@ -37,7 +35,6 @@
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (void)commonInit;
-- (id)contactForFavoritesEntry:(id)arg1 keyDescriptors:(id)arg2;
 - (void)dealloc;
 - (void)didReceiveMemoryWarning;
 - (id)favoritesEntryAtIndex:(long long)arg1;
@@ -51,6 +48,7 @@
 - (void)refreshView;
 - (void)refreshViewAnimated:(BOOL)arg1;
 - (void)setContentUnavailable:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setFavoritesController:(id)arg1;
 - (void)setFavoritesEntries:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/GEOResourceManifestTileGroupObserver-Protocol.h>
 
@@ -19,6 +19,7 @@
     NSMapTable *_atlases;
     NSLock *_atlasesLock;
     NSArray *_nonRegionalResourceNames;
+    struct mutex _nonRegionalResourceNamesLock;
     struct read_write_lock _nameToStyleManagerLock;
     struct map<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>, NSStringMapComparison, std::__1::allocator<std::__1::pair<const geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>>>> _nameToStyleManager;
     BOOL _shouldCacheAtlases;
@@ -41,27 +42,29 @@
 - (id)_forEachIconPackWithContentScale:(double)arg1 iconSize:(long long)arg2 resourceNames:(id)arg3 visitUntilMatch:(CDUnknownBlockType)arg4;
 - (BOOL)_getIconStyleDescriptorForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(double)arg3 iconStyleDescriptor:(struct VKIconStyleDescriptor *)arg4;
 - (BOOL)_getIconStyleDescriptorForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(double)arg3 iconStyleDescriptor:(struct VKIconStyleDescriptor *)arg4 transitMode:(BOOL)arg5;
-- (BOOL)_getIconStyleDescriptorForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(double)arg3 iconStyleDescriptor:(struct VKIconStyleDescriptor *)arg4 transitMode:(BOOL)arg5 interactive:(BOOL)arg6;
+- (BOOL)_getIconStyleDescriptorForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(double)arg3 iconStyleDescriptor:(struct VKIconStyleDescriptor *)arg4 transitMode:(BOOL)arg5 interactive:(BOOL)arg6 navMode:(BOOL)arg7;
 - (id)_nonRegionalPacks;
-- (id)artworkForFeatureID:(unsigned long long)arg1 withResourceNames:(id)arg2 style:(struct VKIconStyleInfo *)arg3 contentScale:(double)arg4 size:(long long)arg5;
-- (id)artworkForName:(id)arg1 withResourceNames:(id)arg2 style:(struct VKIconStyleInfo *)arg3 contentScale:(double)arg4 size:(long long)arg5;
-- (id)artworkForName:(id)arg1 withResourceNames:(id)arg2 style:(struct VKIconStyleInfo *)arg3 contentScale:(double)arg4 size:(long long)arg5 hasText:(BOOL)arg6;
-- (id)artworkForStyleAttributeKey:(unsigned int)arg1 attributeValue:(unsigned int)arg2 withResourceNames:(id)arg3 style:(struct VKIconStyleInfo *)arg4 contentScale:(double)arg5 size:(long long)arg6;
-- (id)artworkForStyleAttributeKey:(unsigned int)arg1 attributeValue:(unsigned int)arg2 withResourceNames:(id)arg3 style:(struct VKIconStyleInfo *)arg4 contentScale:(double)arg5 size:(long long)arg6 hasText:(BOOL)arg7;
-- (id)artworkForStyleAttributeKey:(unsigned int)arg1 longAttributeValue:(unsigned long long)arg2 withResourceNames:(id)arg3 style:(struct VKIconStyleInfo *)arg4 contentScale:(double)arg5 size:(long long)arg6;
+- (id)artworkForFeatureID:(unsigned long long)arg1 withResourceNames:(id)arg2 style:(struct Style *)arg3 extraStyle:(struct ExtraStyle *)arg4 contentScale:(double)arg5 size:(long long)arg6;
+- (id)artworkForName:(id)arg1 withResourceNames:(id)arg2 style:(struct Style *)arg3 extraStyle:(struct ExtraStyle *)arg4 contentScale:(double)arg5 size:(long long)arg6;
+- (id)artworkForName:(id)arg1 withResourceNames:(id)arg2 style:(struct Style *)arg3 extraStyle:(struct ExtraStyle *)arg4 contentScale:(double)arg5 size:(long long)arg6 hasText:(BOOL)arg7;
+- (id)artworkForStyleAttributeKey:(unsigned int)arg1 attributeValue:(unsigned int)arg2 withResourceNames:(id)arg3 style:(struct Style *)arg4 extraStyle:(struct ExtraStyle *)arg5 contentScale:(double)arg6 size:(long long)arg7;
+- (id)artworkForStyleAttributeKey:(unsigned int)arg1 attributeValue:(unsigned int)arg2 withResourceNames:(id)arg3 style:(struct Style *)arg4 extraStyle:(struct ExtraStyle *)arg5 contentScale:(double)arg6 size:(long long)arg7 hasText:(BOOL)arg8;
+- (id)artworkForStyleAttributeKey:(unsigned int)arg1 longAttributeValue:(unsigned long long)arg2 withResourceNames:(id)arg3 style:(struct Style *)arg4 extraStyle:(struct ExtraStyle *)arg5 contentScale:(double)arg6 size:(long long)arg7;
 - (void)dealloc;
 - (id)iconForIconAttributeKey:(unsigned int)arg1 attributeValue:(unsigned int)arg2 size:(long long)arg3 contentScale:(double)arg4;
 - (id)iconForStyleAttributes:(id)arg1 styleManager:(shared_ptr_a3c46825)arg2 contentScale:(double)arg3 size:(long long)arg4 customIconID:(unsigned long long)arg5 transparent:(BOOL)arg6;
 - (id)iconForStyleAttributes:(id)arg1 styleManager:(shared_ptr_a3c46825)arg2 contentScale:(double)arg3 size:(long long)arg4 customIconID:(unsigned long long)arg5 transparent:(BOOL)arg6 overrides:(struct QueryOverrides)arg7;
 - (id)iconForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(double)arg3 size:(long long)arg4 customIconID:(unsigned long long)arg5 transparent:(BOOL)arg6 transitMode:(BOOL)arg7 interactive:(BOOL)arg8;
-- (id)iconForTransitSystemID:(unsigned int)arg1 size:(long long)arg2 contentScale:(double)arg3;
+- (id)iconForTransitSystemType:(unsigned int)arg1 size:(long long)arg2 contentScale:(double)arg3;
 - (id)iconForTransitType:(unsigned int)arg1 size:(long long)arg2 contentScale:(double)arg3;
-- (long long)iconStyleForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(double)arg3;
+- (unsigned char)iconStyleForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(double)arg3;
 - (id)imageForName:(id)arg1 contentScale:(double)arg2;
 - (id)imageForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(double)arg3 size:(long long)arg4 customIconID:(unsigned long long)arg5;
 - (id)imageForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(double)arg3 size:(long long)arg4 customIconID:(unsigned long long)arg5 transparent:(BOOL)arg6;
 - (id)imageForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(double)arg3 size:(long long)arg4 customIconID:(unsigned long long)arg5 transparent:(BOOL)arg6 transitMode:(BOOL)arg7;
 - (id)imageForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(double)arg3 size:(long long)arg4 customIconID:(unsigned long long)arg5 transparent:(BOOL)arg6 transitMode:(BOOL)arg7 interactive:(BOOL)arg8;
+- (id)imageForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(double)arg3 size:(long long)arg4 customIconID:(unsigned long long)arg5 transparent:(BOOL)arg6 transitMode:(BOOL)arg7 interactive:(BOOL)arg8 navMode:(BOOL)arg9;
+- (id)imageForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 iconText:(const char *)arg3 contentScale:(double)arg4 size:(long long)arg5 customIconID:(unsigned long long)arg6 transparent:(BOOL)arg7 transitMode:(BOOL)arg8 interactive:(BOOL)arg9 navMode:(BOOL)arg10;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 resourceManager:(id)arg2 stylesheetVendor:(shared_ptr_dd2d1f5e)arg3 shouldCacheAtlases:(BOOL)arg4;
 - (id)initWithConfiguration:(id)arg1 shouldCacheAtlases:(BOOL)arg2;

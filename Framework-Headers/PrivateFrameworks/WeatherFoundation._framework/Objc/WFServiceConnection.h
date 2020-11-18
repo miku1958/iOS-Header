@@ -50,6 +50,7 @@
 - (void)enqueueRequest:(id)arg1 waitUntilDone:(BOOL)arg2;
 - (id)init;
 - (void)invalidate;
+- (void)invalidateCache;
 - (void)serviceDidReceiveResponse:(id)arg1;
 - (void)taskIdentifier:(CDUnknownBlockType)arg1;
 

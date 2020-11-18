@@ -10,11 +10,11 @@
 {
 }
 
-+ (id)_complicationSlotDescriptors;
-+ (long long)_customEditModeForUniqueConfiguration;
-+ (id)_customEditModes;
-+ (id)_defaultOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;
 + (id)_initialDefaultComplicationForSlot:(id)arg1;
+- (id)_complicationSlotDescriptors;
+- (long long)_customEditModeForUniqueConfiguration;
+- (id)_customEditModes;
+- (id)_defaultOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (long long)_editModeForOldEncodingIndex:(long long)arg1;
 - (unsigned long long)_indexOfOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (unsigned long long)_numberOfOptionsForCustomEditMode:(long long)arg1 slot:(id)arg2;

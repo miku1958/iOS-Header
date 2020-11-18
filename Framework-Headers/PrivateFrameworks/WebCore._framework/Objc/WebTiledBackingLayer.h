@@ -14,24 +14,28 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)acceleratesDrawing;
 - (id)actionForKey:(id)arg1;
 - (double)contentsScale;
 - (struct TileController *)createTileController:(struct PlatformCALayer *)arg1;
 - (void)dealloc;
+- (BOOL)drawsAsynchronously;
 - (id)init;
 - (id)initWithLayer:(id)arg1;
 - (void)invalidate;
 - (BOOL)isOpaque;
-- (void)setAcceleratesDrawing:(BOOL)arg1;
 - (void)setBorderColor:(struct CGColor *)arg1;
 - (void)setBorderWidth:(double)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setContentsScale:(double)arg1;
+- (void)setDrawsAsynchronously:(BOOL)arg1;
 - (void)setNeedsDisplay;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 - (void)setOpaque:(BOOL)arg1;
+- (void)setSupportsSubpixelAntialiasedText:(BOOL)arg1;
+- (void)setWantsDeepColorBackingStore:(BOOL)arg1;
+- (BOOL)supportsSubpixelAntialiasedText;
 - (struct TiledBacking *)tiledBacking;
+- (BOOL)wantsDeepColorBackingStore;
 
 @end
 

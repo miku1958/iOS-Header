@@ -34,6 +34,7 @@
 + (id)abbreviatedDescriptionWithImageType:(int)arg1;
 + (id)descriptionWithImageType:(int)arg1;
 + (id)imageWithImage:(id)arg1;
+- (void).cxx_destruct;
 - (struct CGImage *)CGImage;
 - (id)CIImage;
 - (id)UIImage;

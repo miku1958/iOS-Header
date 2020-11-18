@@ -11,7 +11,7 @@
 #import <VideoSubscriberAccountUI/VSMessageQueueDelegate-Protocol.h>
 #import <VideoSubscriberAccountUI/VSWebAuthenticationViewController-Protocol.h>
 
-@class NSString, VSViewModel, VSWebAuthenticationViewModel;
+@class NSString, UIActivityIndicatorView, UIWebView, VSViewModel, VSWebAuthenticationViewModel;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -20,8 +20,11 @@ __attribute__((visibility("hidden")))
     BOOL _cancellationAllowed;
     id<VSAuthenticationViewControllerDelegate> _delegate;
     VSWebAuthenticationViewModel *_viewModel;
+    UIWebView *_webView;
+    UIActivityIndicatorView *_activityIndicator;
 }
 
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property (nonatomic, getter=isCancellationAllowed) BOOL cancellationAllowed; // @synthesize cancellationAllowed=_cancellationAllowed;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VSAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -30,10 +33,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGSize preferredLogoSize;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) VSViewModel *viewModel;
+@property (strong, nonatomic) UIWebView *webView; // @synthesize webView=_webView;
 
 - (void).cxx_destruct;
 - (void)_cancelButtonPressed:(id)arg1;
 - (id)_canonicalRequestForRequest:(id)arg1;
+- (void)_didBeginActivity;
+- (void)_didEndActivity;
 - (void)_retrieveMessages;
 - (void)_sendMessage:(id)arg1;
 - (void)_sendMessages:(id)arg1;
@@ -41,16 +47,15 @@ __attribute__((visibility("hidden")))
 - (void)_stopObservingViewModel:(id)arg1;
 - (void)dealloc;
 - (void)didAddMessagesToMessageQueue:(id)arg1;
-- (void)loadView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setViewModel:(id)arg1;
+- (void)uiWebView:(id)arg1 didFirstLayoutInFrame:(id)arg2;
 - (id)uiWebView:(id)arg1 resource:(id)arg2 willSendRequest:(id)arg3 redirectResponse:(id)arg4 fromDataSource:(id)arg5;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
-- (id)webView;
 - (BOOL)webView:(id)arg1 shouldStartLoadWithRequest:(id)arg2 navigationType:(long long)arg3;
 - (void)webViewDidFinishLoad:(id)arg1;
 - (void)webViewDidStartLoad:(id)arg1;

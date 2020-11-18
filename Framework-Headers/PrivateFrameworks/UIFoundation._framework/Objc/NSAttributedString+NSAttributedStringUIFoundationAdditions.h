@@ -16,14 +16,13 @@
 - (BOOL)_atStartOfTextTable:(id)arg1 atIndex:(unsigned long long)arg2;
 - (BOOL)_atStartOfTextTableRow:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)_documentFromRange:(struct _NSRange)arg1 document:(id)arg2 documentAttributes:(id)arg3 subresources:(id *)arg4;
-- (id)_initWithDOMRange:(id)arg1;
+- (id)_htmlDocumentFragmentString:(struct _NSRange)arg1 documentAttributes:(id)arg2 subresources:(id *)arg3;
 - (id)_initWithRTFSelector:(SEL)arg1 argument:(id)arg2 documentAttributes:(id *)arg3;
 - (id)_initWithURLFunnel:(id)arg1 options:(id)arg2 documentAttributes:(id *)arg3;
 - (BOOL)_isStringDrawingTextStorage;
 - (unsigned long long)_lineBreakBeforeIndex:(unsigned long long)arg1 withinRange:(struct _NSRange)arg2 usesAlternativeBreaker:(BOOL)arg3;
 - (struct _NSRange)_rangeOfTextTableRow:(id)arg1 atIndex:(unsigned long long)arg2;
 - (struct _NSRange)_rangeOfTextTableRow:(id)arg1 atIndex:(unsigned long long)arg2 completeRow:(BOOL *)arg3;
-- (void)_readDocumentFragment:(id)arg1 fromRange:(struct _NSRange)arg2 documentAttributes:(id)arg3 subresources:(id *)arg4;
 - (BOOL)containsAttachments;
 - (BOOL)containsAttachmentsInRange:(struct _NSRange)arg1;
 - (id)dataFromRange:(struct _NSRange)arg1 documentAttributes:(id)arg2 error:(id *)arg3;

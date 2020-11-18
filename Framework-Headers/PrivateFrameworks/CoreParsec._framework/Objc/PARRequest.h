@@ -12,9 +12,8 @@
 
 @interface PARRequest : NSObject <NSSecureCoding>
 {
+    unsigned long long _queryId;
     BOOL _verboseReply;
-    long long _queryId;
-    unsigned long long _clientQueryId;
     double _scale;
     NSString *_keyboardLocale;
     NSString *_keyboardInputMode;
@@ -23,11 +22,11 @@
     NSDictionary *_headerItems;
 }
 
-@property (nonatomic) unsigned long long clientQueryId; // @synthesize clientQueryId=_clientQueryId;
+@property (readonly, nonatomic) unsigned long long clientQueryId;
 @property (copy, nonatomic) NSDictionary *headerItems; // @synthesize headerItems=_headerItems;
 @property (copy, nonatomic) NSString *keyboardInputMode; // @synthesize keyboardInputMode=_keyboardInputMode;
 @property (copy, nonatomic) NSString *keyboardLocale; // @synthesize keyboardLocale=_keyboardLocale;
-@property (nonatomic) long long queryId; // @synthesize queryId=_queryId;
+@property (readonly, nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
 @property (copy, nonatomic) NSArray *queryItems; // @synthesize queryItems=_queryItems;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 @property (nonatomic) unsigned long long triggerEvent; // @synthesize triggerEvent=_triggerEvent;
@@ -35,12 +34,12 @@
 
 + (id)cardRequestWithURL:(id)arg1;
 + (id)cardRequestWithURL:(id)arg1 queryId:(unsigned long long)arg2;
-+ (id)flightRequestForId:(id)arg1;
-+ (id)flightRequestForQuery:(id)arg1 timezone:(id)arg2 dateComponents:(id)arg3;
++ (id)flightRequestForQuery:(id)arg1 date:(id)arg2 appBundleId:(id)arg3;
 + (id)lookupRequestWithString:(id)arg1 queryContext:(id)arg2 domain:(id)arg3 lookupSelectionType:(long long)arg4 appBundleId:(id)arg5;
 + (id)lookupRequestWithString:(id)arg1 queryContext:(id)arg2 domain:(id)arg3 lookupSelectionType:(long long)arg4 appBundleId:(id)arg5 queryId:(unsigned long long)arg6;
 + (id)moreResultsRequestWithURL:(id)arg1;
 + (id)moreResultsRequestWithURL:(id)arg1 queryId:(unsigned long long)arg2;
++ (id)searchRequestWithEngagedSuggestion:(id)arg1 queryId:(unsigned long long)arg2;
 + (id)searchRequestWithString:(id)arg1;
 + (id)searchRequestWithString:(id)arg1 triggerEvent:(unsigned long long)arg2;
 + (id)searchRequestWithString:(id)arg1 triggerEvent:(unsigned long long)arg2 queryId:(unsigned long long)arg3;
@@ -51,6 +50,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (Class)responseClass;
+- (void)setQueryId:(unsigned long long)arg1;
 
 @end
 

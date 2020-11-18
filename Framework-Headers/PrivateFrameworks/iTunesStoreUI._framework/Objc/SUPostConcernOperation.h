@@ -8,7 +8,7 @@
 
 #import <iTunesStoreUI/ISStoreURLOperationDelegate-Protocol.h>
 
-@class NSString, SUConcernItem;
+@class NSNumber, NSString, SUConcernItem;
 
 @interface SUPostConcernOperation : ISOperation <ISStoreURLOperationDelegate>
 {
@@ -23,6 +23,9 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property unsigned long long itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentage;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
+@property (readonly, nonatomic) NSNumber *metricsLoadURLSessionDuration;
 @property (readonly) Class superclass;
 
 - (id)_httpBody;

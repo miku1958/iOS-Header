@@ -29,6 +29,7 @@
 @property (strong, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)acceptConnection:(int)arg1;
 - (void)closeConnectionWithError:(id)arg1;
 - (void)dealloc;

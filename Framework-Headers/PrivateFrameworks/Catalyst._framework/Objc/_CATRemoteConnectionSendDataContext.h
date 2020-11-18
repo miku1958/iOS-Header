@@ -19,6 +19,7 @@
 }
 
 @property (nonatomic) unsigned long long bytesWritten; // @synthesize bytesWritten=_bytesWritten;
+@property (readonly, nonatomic) unsigned long long clientBytesWritten;
 @property (readonly, copy, nonatomic) NSData *data; // @synthesize data=_data;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -29,6 +30,7 @@
 
 - (void).cxx_destruct;
 - (id)bufferedDataWithError:(id *)arg1;
+- (unsigned long long)headerLength;
 - (id)initWithData:(id)arg1 userInfo:(id)arg2;
 
 @end

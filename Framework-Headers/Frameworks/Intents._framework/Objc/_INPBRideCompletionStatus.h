@@ -8,12 +8,14 @@
 
 #import <Intents/NSCopying-Protocol.h>
 
-@class PBUnknownFields, _INPBCurrencyAmountValue, _INPBUserActivity;
+@class NSMutableArray, PBUnknownFields, _INPBCurrencyAmountValue, _INPBUserActivity;
 
 @interface _INPBRideCompletionStatus : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    CDStruct_95bda58d _feedbackTypes;
     _INPBUserActivity *_completionUserActivity;
+    NSMutableArray *_defaultTippingOptions;
     _INPBCurrencyAmountValue *_paymentAmount;
     BOOL _canceled;
     BOOL _canceledByService;
@@ -30,9 +32,12 @@
 }
 
 @property (nonatomic) BOOL canceled; // @synthesize canceled=_canceled;
-@property (nonatomic) BOOL canceledByService;
+@property (nonatomic) BOOL canceledByService; // @synthesize canceledByService=_canceledByService;
 @property (nonatomic) BOOL completed; // @synthesize completed=_completed;
 @property (strong, nonatomic) _INPBUserActivity *completionUserActivity; // @synthesize completionUserActivity=_completionUserActivity;
+@property (strong, nonatomic) NSMutableArray *defaultTippingOptions; // @synthesize defaultTippingOptions=_defaultTippingOptions;
+@property (readonly, nonatomic) int *feedbackTypes;
+@property (readonly, nonatomic) unsigned long long feedbackTypesCount;
 @property (nonatomic) BOOL hasCanceled;
 @property (nonatomic) BOOL hasCanceledByService;
 @property (nonatomic) BOOL hasCompleted;
@@ -45,15 +50,27 @@
 @property (strong, nonatomic) _INPBCurrencyAmountValue *paymentAmount; // @synthesize paymentAmount=_paymentAmount;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)defaultTippingOptionsType;
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsFeedbackTypes:(id)arg1;
+- (void)addDefaultTippingOptions:(id)arg1;
+- (void)addFeedbackType:(int)arg1;
+- (void)clearDefaultTippingOptions;
+- (void)clearFeedbackTypes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (id)defaultTippingOptionsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)defaultTippingOptionsCount;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (int)feedbackTypeAtIndex:(unsigned long long)arg1;
+- (id)feedbackTypesAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setFeedbackTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 
 @end
