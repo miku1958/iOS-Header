@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)_transformerRegistry;
 + (BOOL)allowsReverseTransformation;
 + (void)setValueTransformer:(id)arg1 forName:(id)arg2;
 + (Class)transformedValueClass;

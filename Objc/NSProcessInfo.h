@@ -59,7 +59,7 @@
 - (void)performActivityWithOptions:(unsigned long long)arg1 reason:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)performExpiringActivityWithReason:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)setArguments:(id)arg1;
-- (id)userFullName;
+- (long long)thermalState;
 - (id)userHomeDirectory;
 
 @end

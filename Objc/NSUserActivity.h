@@ -44,6 +44,7 @@
 @property (copy) NSDate *expirationDate;
 @property (copy) NSSet *keywords;
 @property BOOL needsSave;
+@property (copy) NSURL *referrerURL; // @dynamic referrerURL;
 @property (copy) NSSet *requiredUserInfoKeys;
 @property BOOL supportsContinuationStreams; // @dynamic supportsContinuationStreams;
 @property (copy) NSString *title; // @dynamic title;
@@ -58,6 +59,7 @@
 + (BOOL)_supportsUserActivityAppLinks;
 + (void)_unregisterUserActivityType:(id)arg1 dynamicActivityType:(id)arg2;
 + (id)_userFacingErrorForLaunchServicesError:(id)arg1 userInfo:(id)arg2;
+- (void).cxx_destruct;
 - (void)_addKeywordsFromArray:(id)arg1;
 - (BOOL)_createUserActivityDataWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_createUserActivityStringsWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

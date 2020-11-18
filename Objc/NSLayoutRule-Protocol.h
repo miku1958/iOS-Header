@@ -9,11 +9,11 @@
 
 @class NSArray, NSString;
 
-@protocol NSLayoutRelationship <NSObject, NSCopying>
+@protocol NSLayoutRule <NSObject, NSCopying>
 
 @property (readonly, copy) NSString *identifier;
-@property (readonly, copy) NSString *relationshipDescription;
+@property (readonly, copy) NSString *ruleDescription;
 
-- (NSArray *)makeChildrenRelationships;
+- (NSArray *)makeChildRules;
 @end
 

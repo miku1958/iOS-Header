@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSLayoutRelationship-Protocol.h>
+#import <Foundation/NSLayoutRule-Protocol.h>
 
 @class NSDictionary, NSLayoutRect, NSString;
 
-@interface NSVisualFormatLayoutRelationship : NSObject <NSLayoutRelationship>
+@interface NSVisualFormatLayoutRule : NSObject <NSLayoutRule>
 {
     NSString *_visualFormatString;
     unsigned long long _formatOptions;
@@ -23,15 +23,16 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSString *identifier;
-@property (readonly, copy) NSString *relationshipDescription;
+@property (readonly, copy) NSString *ruleDescription;
 @property (readonly) Class superclass;
 
-+ (id)relationshipWithVisualFormat:(id)arg1 options:(unsigned long long)arg2 metrics:(id)arg3 rects:(id)arg4 containerRect:(id)arg5;
++ (id)ruleWithVisualFormat:(id)arg1 options:(unsigned long long)arg2 metrics:(id)arg3 rects:(id)arg4 containerRect:(id)arg5;
++ (id)ruleWithVisualFormat:(id)arg1 options:(unsigned long long)arg2 metrics:(id)arg3 views:(id)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithVisualFormat:(id)arg1 options:(unsigned long long)arg2 metrics:(id)arg3 rects:(id)arg4 containerRect:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
-- (id)makeChildrenRelationships;
+- (id)makeChildRules;
 
 @end
 

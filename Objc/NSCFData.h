@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (BOOL)_compact;
 - (id)_createDispatchData;
+- (BOOL)_providesConcreteBacking;
 - (BOOL)allowsWeakReference;
 - (const void *)bytes;
 - (id)copyWithZone:(struct _NSZone *)arg1;

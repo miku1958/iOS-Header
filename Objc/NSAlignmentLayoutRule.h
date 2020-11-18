@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSLayoutRelationship-Protocol.h>
+#import <Foundation/NSLayoutRule-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface NSAlignmentLayoutRelationship : NSObject <NSLayoutRelationship>
+@interface NSAlignmentLayoutRule : NSObject <NSLayoutRule>
 {
     NSArray *_alignedAnchors;
 }
@@ -20,7 +20,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSString *identifier;
-@property (readonly, copy) NSString *relationshipDescription;
+@property (readonly, copy) NSString *ruleDescription;
 @property (readonly) Class superclass;
 
 + (id)alignmentWithAnchors:(id)arg1;
@@ -28,7 +28,7 @@
 - (void)dealloc;
 - (id)initWithAlignedAnchors:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)makeChildrenRelationships;
+- (id)makeChildRules;
 
 @end
 

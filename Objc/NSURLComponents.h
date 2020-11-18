@@ -24,6 +24,7 @@
 @property (copy) NSString *percentEncodedPassword;
 @property (copy) NSString *percentEncodedPath;
 @property (copy) NSString *percentEncodedQuery;
+@property (copy) NSArray *percentEncodedQueryItems;
 @property (copy) NSString *percentEncodedUser;
 @property (copy) NSNumber *port;
 @property (copy) NSString *query;

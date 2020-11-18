@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSLayoutRelationship-Protocol.h>
+#import <Foundation/NSLayoutRule-Protocol.h>
 
 @class NSLayoutPoint, NSString;
 
-@interface NSLayoutPointRelationship : NSObject <NSLayoutRelationship>
+@interface NSLayoutPointRule : NSObject <NSLayoutRule>
 {
     NSLayoutPoint *_firstLayoutPoint;
     NSLayoutPoint *_secondLayoutPoint;
@@ -21,7 +21,7 @@
 @property (readonly, copy) NSLayoutPoint *firstLayoutPoint; // @synthesize firstLayoutPoint=_firstLayoutPoint;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSString *identifier;
-@property (readonly, copy) NSString *relationshipDescription;
+@property (readonly, copy) NSString *ruleDescription;
 @property (readonly, copy) NSLayoutPoint *secondLayoutPoint; // @synthesize secondLayoutPoint=_secondLayoutPoint;
 @property (readonly) Class superclass;
 
@@ -29,7 +29,7 @@
 - (void)dealloc;
 - (id)initWithFirstLayoutPoint:(id)arg1 secondLayoutPoint:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (id)makeChildrenRelationships;
+- (id)makeChildRules;
 
 @end
 

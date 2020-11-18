@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSLayoutRelationship-Protocol.h>
+#import <Foundation/NSLayoutRule-Protocol.h>
 
 @class NSArray, NSLayoutRect, NSString;
 
-@interface NSStackInContainerRelationship : NSObject <NSLayoutRelationship>
+@interface NSStackInContainerRule : NSObject <NSLayoutRule>
 {
     NSArray *_stackedRects;
     NSLayoutRect *_containingRect;
@@ -24,7 +24,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSString *identifier;
 @property (readonly) long long orientation; // @synthesize orientation=_orientation;
-@property (readonly, copy) NSString *relationshipDescription;
+@property (readonly, copy) NSString *ruleDescription;
 @property (readonly) double spacing; // @synthesize spacing=_spacing;
 @property (readonly, copy) NSArray *stackedRects; // @synthesize stackedRects=_stackedRects;
 @property (readonly) Class superclass;
@@ -36,7 +36,7 @@
 - (void)dealloc;
 - (id)initWithOrientation:(long long)arg1 stackedRects:(id)arg2 containingRect:(id)arg3 spacing:(double)arg4;
 - (BOOL)isEqual:(id)arg1;
-- (id)makeChildrenRelationships;
+- (id)makeChildRules;
 
 @end
 

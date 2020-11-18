@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)handleCanceledServer;
 - (id)idForFileReactor:(id)arg1;
 - (id)initWithServer:(id)arg1 queue:(id)arg2;
+- (BOOL)itemHasPresentersAtURL:(id)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)performBarrier;
 - (void)performBarrierAsync:(CDUnknownBlockType)arg1;
@@ -60,6 +61,8 @@ __attribute__((visibility("hidden")))
 - (oneway void)revokeSubarbitrationClaimForID:(id)arg1;
 - (oneway void)tiePresenterForID:(id)arg1 toItemAtURL:(id)arg2;
 - (oneway void)writerWithPurposeID:(id)arg1 didChangeItemAtURL:(id)arg2;
+- (oneway void)writerWithPurposeID:(id)arg1 didChangeSharingOfItemAtURL:(id)arg2;
+- (oneway void)writerWithPurposeID:(id)arg1 didChangeUbiquityAttributes:(id)arg2 ofItemAtURL:(id)arg3;
 - (oneway void)writerWithPurposeID:(id)arg1 didChangeUbiquityOfItemAtURL:(id)arg2;
 - (oneway void)writerWithPurposeID:(id)arg1 didDisconnectItemAtURL:(id)arg2;
 - (oneway void)writerWithPurposeID:(id)arg1 didMakeItemDisappearAtURL:(id)arg2;

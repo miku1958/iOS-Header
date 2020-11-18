@@ -42,7 +42,7 @@
 @property (strong, nonatomic, setter=_setExtensionBundle:) NSBundle *_extensionBundle; // @synthesize _extensionBundle=__extensionBundle;
 @property (strong, nonatomic, setter=_setExtensionContexts:) NSMutableDictionary *_extensionContexts; // @synthesize _extensionContexts=__extensionContexts;
 @property (strong, nonatomic, setter=_setExtensionExpirationsIdentifiers:) NSMutableDictionary *_extensionExpirationIdentifiers; // @synthesize _extensionExpirationIdentifiers=__extensionExpirationIdentifiers;
-@property (strong, nonatomic, setter=_setExtensionProcessAssertion:) BKSProcessAssertion *_extensionProcessAssertion; // @synthesize _extensionProcessAssertion=__extensionProcessAssertion;
+@property (strong, setter=_setExtensionProcessAssertion:) BKSProcessAssertion *_extensionProcessAssertion; // @synthesize _extensionProcessAssertion=__extensionProcessAssertion;
 @property (strong, nonatomic, setter=_setExtensionServiceConnections:) NSMutableDictionary *_extensionServiceConnections; // @synthesize _extensionServiceConnections=__extensionServiceConnections;
 @property (copy, nonatomic, getter=_extensionState, setter=_setExtensionState:) NSDictionary *_extensionState; // @dynamic _extensionState;
 @property (readonly, nonatomic, getter=_isMarkedNew) BOOL _markedNew;
@@ -74,6 +74,8 @@
 + (BOOL)evaluateActivationRule:(id)arg1 withExtensionItemsRepresentation:(id)arg2;
 + (id)extensionWithIdentifier:(id)arg1 error:(id *)arg2;
 + (id)extensionWithIdentifier:(id)arg1 excludingDisabledExtensions:(BOOL)arg2 error:(id *)arg3;
++ (void)extensionWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)extensionWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)extensionsWithMatchingAttributes:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)extensionsWithMatchingAttributes:(id)arg1 error:(id *)arg2;
 + (void)initialize;
@@ -85,6 +87,7 @@
 - (void)_didCreateExtensionContext:(id)arg1;
 - (void)_didShowExtensionManagementInterface;
 - (void)_didShowNewExtensionIndicator;
+- (void)_dropAssertion;
 - (id)_extensionContextForUUID:(id)arg1;
 - (void)_hostDidBecomeActiveNote:(id)arg1;
 - (void)_hostDidEnterBackgroundNote:(id)arg1;

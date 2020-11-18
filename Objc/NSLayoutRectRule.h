@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSLayoutRelationship-Protocol.h>
+#import <Foundation/NSLayoutRule-Protocol.h>
 
 @class NSLayoutRect, NSString;
 
-@interface NSLayoutRectRelationship : NSObject <NSLayoutRelationship>
+@interface NSLayoutRectRule : NSObject <NSLayoutRule>
 {
     NSLayoutRect *_firstLayoutRect;
     NSLayoutRect *_secondLayoutRect;
@@ -23,7 +23,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSString *identifier;
 @property long long relation; // @synthesize relation=_relation;
-@property (readonly, copy) NSString *relationshipDescription;
+@property (readonly, copy) NSString *ruleDescription;
 @property (readonly, copy) NSLayoutRect *secondLayoutRect; // @synthesize secondLayoutRect=_secondLayoutRect;
 @property (readonly) Class superclass;
 
@@ -32,7 +32,7 @@
 - (id)initWithFirstLayoutRect:(id)arg1 secondLayoutRect:(id)arg2;
 - (id)initWithFirstLayoutRect:(id)arg1 secondLayoutRect:(id)arg2 relation:(long long)arg3;
 - (BOOL)isEqual:(id)arg1;
-- (id)makeChildrenRelationships;
+- (id)makeChildRules;
 
 @end
 

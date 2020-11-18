@@ -34,6 +34,7 @@
 @property (readonly) struct CGRect layoutFrame; // @synthesize layoutFrame=_layoutFrame;
 @property (readonly) NSISVariable *minXVariable; // @synthesize minXVariable=_minXVariable;
 @property (readonly) NSISVariable *minYVariable; // @synthesize minYVariable=_minYVariable;
+@property (setter=nsli_setPiercingToken:) unsigned long long nsli_piercingToken;
 @property id<NSLayoutItem> owningView;
 @property (readonly) Class superclass;
 @property (readonly) NSISVariable *widthVariable; // @synthesize widthVariable=_widthVariable;

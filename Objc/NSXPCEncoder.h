@@ -16,22 +16,34 @@ __attribute__((visibility("hidden")))
     NSXPCConnection *_connection;
     struct __CFDictionary *_replacedByDelegateObjects;
     id<NSXPCEncoderDelegate> _delegate;
-    BOOL _askForReplacement;
-    void **_encoder;
+    struct {
+        unsigned long long collectionSizeOffset[384];
+        long long collectionRecursionIndex;
+        unsigned long long dataLen;
+        unsigned long long dataSize;
+        char *data;
+        BOOL isVM;
+        BOOL isStack;
+    } _encoder;
     unsigned long long _genericIndex;
+    BOOL _topLevelDictionary;
+    BOOL _finished;
+    BOOL _askForReplacement;
 }
 
 @property NSXPCConnection *_connection; // @synthesize _connection;
 @property id<NSXPCEncoderDelegate> delegate; // @synthesize delegate=_delegate;
 
-+ (id)_dataWithXPCObject:(id)arg1;
 - (void)_checkObject:(id)arg1;
 - (void)_encodeArrayOfObjects:(id)arg1 forKey:(id)arg2;
-- (void)_encodeCString:(const char *)arg1 forKey:(id)arg2;
+- (void)_encodeCString:(const char *)arg1 length:(unsigned long long)arg2 forKey:(id)arg3;
+- (void)_encodeInvocation:(id)arg1 isReply:(BOOL)arg2 into:(id)arg3;
+- (void)_encodeInvocationObjectArgumentsOnly:(id *)arg1 count:(unsigned long long)arg2 typeString:(const char *)arg3 selector:(SEL)arg4 isReply:(BOOL)arg5 into:(id)arg6;
 - (void)_encodeObject:(id)arg1;
-- (void)_insertIntoXPCObject:(id)arg1;
+- (void)_encodeUnkeyedObject:(id)arg1;
 - (id)_newRootXPCObject;
 - (id)_replaceObject:(id)arg1;
+- (void)_startTopLevelDictionary;
 - (BOOL)allowsKeyedCoding;
 - (id)connection;
 - (void)dealloc;
@@ -46,12 +58,12 @@ __attribute__((visibility("hidden")))
 - (void)encodeInt64:(long long)arg1 forKey:(id)arg2;
 - (void)encodeInt:(int)arg1 forKey:(id)arg2;
 - (void)encodeInteger:(long long)arg1 forKey:(id)arg2;
-- (void)encodeInvocation:(id)arg1;
 - (void)encodeObject:(id)arg1;
 - (void)encodeObject:(id)arg1 forKey:(id)arg2;
 - (void)encodeValueOfObjCType:(const char *)arg1 at:(const void *)arg2;
 - (void)encodeXPCObject:(id)arg1 forKey:(id)arg2;
 - (id)init;
+- (id)initWithStackSpace:(char *)arg1 size:(unsigned long long)arg2;
 
 @end
 

@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSLayoutRelationship-Protocol.h>
+#import <Foundation/NSLayoutRule-Protocol.h>
 
 @class NSLayoutAnchor, NSString;
 
-@interface NSLayoutAnchorRelationship : NSObject <NSLayoutRelationship>
+@interface NSLayoutAnchorRule : NSObject <NSLayoutRule>
 {
     NSLayoutAnchor *_firstAnchor;
     NSLayoutAnchor *_secondAnchor;
@@ -30,7 +30,7 @@
 @property (readonly) double multiplier; // @synthesize multiplier=_multiplier;
 @property (readonly) float priority; // @synthesize priority=_priority;
 @property (readonly) long long relation; // @synthesize relation=_relation;
-@property (readonly, copy) NSString *relationshipDescription;
+@property (readonly, copy) NSString *ruleDescription;
 @property (readonly, copy) NSLayoutAnchor *secondAnchor; // @synthesize secondAnchor=_secondAnchor;
 @property (readonly) Class superclass;
 
@@ -38,7 +38,7 @@
 - (void)dealloc;
 - (id)initWithFirstAnchor:(id)arg1 secondAnchor:(id)arg2 relation:(long long)arg3 multiplier:(double)arg4 constant:(double)arg5 priority:(float)arg6 identifier:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
-- (id)makeChildrenRelationships;
+- (id)makeChildRules;
 - (id)makeLayoutConstraint;
 
 @end

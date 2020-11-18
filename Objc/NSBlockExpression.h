@@ -14,6 +14,7 @@
     NSArray *_arguments;
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)_expressionWithSubstitutionVariables:(id)arg1;
 - (void)acceptVisitor:(id)arg1 flags:(unsigned long long)arg2;
 - (id)arguments;

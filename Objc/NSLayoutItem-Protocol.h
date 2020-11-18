@@ -6,10 +6,13 @@
 
 #import <Foundation/NSObject-Protocol.h>
 
-@class NSArray, NSISEngine, NSISLinearExpression, NSISVariable, NSLayoutAnchor, NSLayoutConstraint, NSString;
+@class NSArray, NSISEngine, NSISLinearExpression, NSISVariable, NSLayoutAnchor, NSLayoutConstraint, NSLayoutRect, NSString;
 @protocol NSLayoutItem;
 
 @protocol NSLayoutItem <NSObject>
+
+@property (setter=nsli_setPiercingToken:) unsigned long long nsli_piercingToken;
+
 - (unsigned long long)nsli_autoresizingMask;
 - (struct CGSize)nsli_convertSizeFromEngineSpace:(struct CGSize)arg1;
 - (struct CGSize)nsli_convertSizeToEngineSpace:(struct CGSize)arg1;
@@ -36,6 +39,8 @@
 - (BOOL)nsli_isRTL;
 - (id<NSLayoutItem>)nsli_itemDescribingLayoutDirectionForConstraint:(NSLayoutConstraint *)arg1 toItem:(id<NSLayoutItem>)arg2;
 - (NSLayoutAnchor *)nsli_layoutAnchorForAttribute:(long long)arg1;
+- (id<NSLayoutItem>)nsli_layoutMarginsItem;
+- (NSLayoutRect *)nsli_layoutRect;
 - (BOOL)nsli_lowersExpressionRelativeToConstraintContainer;
 - (double)nsli_marginOffsetForAttribute:(long long)arg1;
 - (NSISVariable *)nsli_minXVariable;

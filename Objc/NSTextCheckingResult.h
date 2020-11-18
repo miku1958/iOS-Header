@@ -52,6 +52,7 @@
 - (id)orthography;
 - (id)phoneNumber;
 - (struct _NSRange)rangeAtIndex:(unsigned long long)arg1;
+- (struct _NSRange)rangeWithName:(id)arg1;
 - (id)referenceDate;
 - (id)regularExpression;
 - (id)replacementString;

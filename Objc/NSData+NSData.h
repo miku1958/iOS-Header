@@ -8,6 +8,8 @@
 
 @interface NSData (NSData)
 + (BOOL)_base64DecodingAlwaysSucceedsForOptions:(unsigned long long)arg1;
++ (id)_newZeroingDataWithBytes:(const void *)arg1 length:(unsigned long long)arg2;
++ (id)_newZeroingDataWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 deallocator:(CDUnknownBlockType)arg3;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)data;
 + (id)dataWithBytes:(const void *)arg1 length:(unsigned long long)arg2;
@@ -18,6 +20,7 @@
 + (id)dataWithContentsOfMappedFile:(id)arg1;
 + (id)dataWithContentsOfURL:(id)arg1;
 + (id)dataWithContentsOfURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
++ (id)dataWithContentsOfURL:(id)arg1 options:(unsigned long long)arg2 maxLength:(unsigned long long)arg3 error:(id *)arg4;
 + (id)dataWithData:(id)arg1;
 - (BOOL)_allowsDirectEncoding;
 - (id)_asciiDescription;
@@ -30,6 +33,7 @@
 - (id)_initWithBase64EncodedObject:(id)arg1 options:(unsigned long long)arg2;
 - (BOOL)_isCompact;
 - (BOOL)_isDispatchData;
+- (BOOL)_providesConcreteBacking;
 - (id)base64EncodedDataWithOptions:(unsigned long long)arg1;
 - (id)base64EncodedStringWithOptions:(unsigned long long)arg1;
 - (id)base64Encoding;
@@ -56,10 +60,12 @@
 - (id)initWithContentsOfFile:(id)arg1;
 - (id)initWithContentsOfFile:(id)arg1 error:(id *)arg2;
 - (id)initWithContentsOfFile:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
+- (id)initWithContentsOfFile:(id)arg1 options:(unsigned long long)arg2 maxLength:(unsigned long long)arg3 error:(id *)arg4;
 - (id)initWithContentsOfMappedFile:(id)arg1;
 - (id)initWithContentsOfMappedFile:(id)arg1 error:(id *)arg2;
 - (id)initWithContentsOfURL:(id)arg1;
 - (id)initWithContentsOfURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
+- (id)initWithContentsOfURL:(id)arg1 options:(unsigned long long)arg2 maxLength:(unsigned long long)arg3 error:(id *)arg4;
 - (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToData:(id)arg1;

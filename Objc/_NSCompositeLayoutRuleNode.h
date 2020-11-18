@@ -4,25 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/_NSLayoutRelationshipNode.h>
+#import <Foundation/_NSLayoutRuleNode.h>
 
-#import <Foundation/_NSLayoutRelationshipNodeParent-Protocol.h>
+#import <Foundation/_NSLayoutRuleNodeParent-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString;
 
-@interface _NSCompositeLayoutRelationshipNode : _NSLayoutRelationshipNode <_NSLayoutRelationshipNodeParent>
+@interface _NSCompositeLayoutRuleNode : _NSLayoutRuleNode <_NSLayoutRuleNodeParent>
 {
     NSMutableArray *_childNodes;
 }
 
-@property (readonly, copy) NSArray *_childRelationshipNodes;
+@property (readonly, copy) NSArray *_childRuleNodes;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)_addChildRelationshipNode:(id)arg1;
-- (void)_removeChildRelationshipNode:(id)arg1;
+- (void)_addChildRuleNode:(id)arg1;
+- (void)_removeChildRuleNode:(id)arg1;
 - (id)childNodesCreatingIfNecessary;
 - (void)dealloc;
 

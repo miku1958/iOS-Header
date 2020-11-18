@@ -26,7 +26,10 @@
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)currentQueue;
 + (id)mainQueue;
-- (id)__;
+- (id)__graphDescription;
+- (void)_fc_addUncancellableOperationForReactorID:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_fc_addUncancellableOperationWithBlock:(CDUnknownBlockType)arg1;
+- (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
 - (void)addOperation:(id)arg1;
 - (void)addOperationWithBlock:(CDUnknownBlockType)arg1;
 - (void)addOperations:(id)arg1 waitUntilFinished:(BOOL)arg2;
@@ -35,6 +38,7 @@
 - (id)description;
 - (id)init;
 - (BOOL)overcommitsOperations;
+- (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)setOvercommitsOperations:(BOOL)arg1;
 - (void)waitUntilAllOperationsAreFinished;
 

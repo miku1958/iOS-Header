@@ -52,6 +52,7 @@
 - (id)decodeTopLevelObjectOfClass:(Class)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (id)decodeTopLevelObjectOfClasses:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (void)decodeValueOfObjCType:(const char *)arg1 at:(void *)arg2;
+- (void)decodeValueOfObjCType:(const char *)arg1 at:(void *)arg2 size:(unsigned long long)arg3;
 - (void)decodeValuesOfObjCTypes:(const char *)arg1;
 - (long long)decodingFailurePolicy;
 - (void)encodeArrayOfObjCType:(const char *)arg1 count:(unsigned long long)arg2 at:(const void *)arg3;

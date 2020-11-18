@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/_NSLayoutRelationshipNode.h>
+#import <Foundation/_NSLayoutRuleNode.h>
 
 @class NSLayoutConstraint;
 
-@interface _NSConstraintDescriptionLayoutRelationshipNode : _NSLayoutRelationshipNode
+@interface _NSConstraintDescriptionLayoutRuleNode : _NSLayoutRuleNode
 {
     NSLayoutConstraint *_ownedConstraint;
 }

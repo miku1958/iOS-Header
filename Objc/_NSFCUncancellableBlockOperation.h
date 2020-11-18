@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/_NSXPCDistantObjectWithError.h>
+#import <Foundation/NSBlockOperation.h>
 
 __attribute__((visibility("hidden")))
-@interface _NSXPCDistantObjectSynchronousWithError : _NSXPCDistantObjectWithError
+@interface _NSFCUncancellableBlockOperation : NSBlockOperation
 {
 }
 
-- (BOOL)_sync;
+- (void)cancel;
 
 @end
 

@@ -27,6 +27,7 @@
 - (id)initWithData:(id)arg1 encoding:(unsigned long long)arg2;
 - (id)initWithFormat:(id)arg1 locale:(id)arg2 arguments:(struct __va_list_tag [1])arg3;
 - (id)initWithString:(id)arg1;
+- (id)initWithValidatedFormat:(id)arg1 validFormatSpecifiers:(id)arg2 locale:(id)arg3 arguments:(struct __va_list_tag [1])arg4 error:(id *)arg5;
 - (unsigned long long)length;
 - (oneway void)release;
 - (id)retain;

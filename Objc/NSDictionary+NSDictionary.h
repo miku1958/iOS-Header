@@ -9,6 +9,7 @@
 @interface NSDictionary (NSDictionary)
 + (id)dictionaryWithContentsOfFile:(id)arg1;
 + (id)dictionaryWithContentsOfURL:(id)arg1;
++ (id)dictionaryWithContentsOfURL:(id)arg1 error:(id *)arg2;
 + (id)newWithContentsOf:(id)arg1 immutable:(BOOL)arg2;
 + (BOOL)supportsSecureCoding;
 - (id)_stringToWrite;
@@ -18,7 +19,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContentsOfFile:(id)arg1;
 - (id)initWithContentsOfURL:(id)arg1;
+- (id)initWithContentsOfURL:(id)arg1 error:(id *)arg2;
 - (BOOL)writeToFile:(id)arg1 atomically:(BOOL)arg2;
 - (BOOL)writeToURL:(id)arg1 atomically:(BOOL)arg2;
+- (BOOL)writeToURL:(id)arg1 error:(id *)arg2;
 @end
 
