@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPBTransitScheduleLookupParameters, GEOPDAddressObjectGeocodingParameters, GEOPDAutocompleteParameters, GEOPDBatchCategoryLookupParameters, GEOPDBatchMerchantLookupBrandParameters, GEOPDBatchPopularNearbySearchParameters, GEOPDBatchSpatialLookupParameters, GEOPDBrandLookupParameters, GEOPDCanonicalLocationSearchParameters, GEOPDCategorySearchParameters, GEOPDClusterGeocodingParameters, GEOPDExternalTransitLookupParameters, GEOPDFeatureIdGeocodingParameters, GEOPDGeocodingParameters, GEOPDGroundViewLabelParameters, GEOPDInitialOfflineSuggestionParameters, GEOPDIpGeoLookupParameters, GEOPDLocationDirectedSearchParameters, GEOPDMapsIdentifierPlaceLookupParameters, GEOPDMerchantLookupParameters, GEOPDNearbySearchParameters, GEOPDOfflineAreaLookupParameters, GEOPDOfflinePolygonQuadNodesParameters, GEOPDOfflineProactiveRegionsParameters, GEOPDOfflineSuggestedRegionsParameters, GEOPDOfflineUpdateManifestParameters, GEOPDPlaceCollectionLookupParameters, GEOPDPlaceLookupParameters, GEOPDPlaceRefinementParameters, GEOPDPopularNearbySearchParameters, GEOPDReverseGeocodingParameters, GEOPDSearchBrowseCategorySuggestionParameters, GEOPDSearchFieldPlaceholderParameters, GEOPDSearchParameters, GEOPDSearchZeroKeywordCategorySuggestionParameters, GEOPDSearchZeroKeywordWithSearchResultsSuggestionParameters, GEOPDSiriSearchParameters, GEOPDTransitVehiclePositionParameters, GEOPDVendorSpecificPlaceRefinementParameters, GEOPDWifiFingerprintParameters, PBDataReader, PBUnknownFields;
+@class GEOPBTransitScheduleLookupParameters, GEOPDAddressObjectGeocodingParameters, GEOPDAutocompleteParameters, GEOPDBatchCategoryLookupParameters, GEOPDBatchMerchantLookupBrandParameters, GEOPDBatchPopularNearbySearchParameters, GEOPDBatchSpatialLookupParameters, GEOPDBrandLookupParameters, GEOPDCanonicalLocationSearchParameters, GEOPDCategorySearchParameters, GEOPDClusterGeocodingParameters, GEOPDExternalTransitLookupParameters, GEOPDFeatureIdGeocodingParameters, GEOPDGeocodingParameters, GEOPDGroundViewLabelParameters, GEOPDInitialOfflineSuggestionParameters, GEOPDIpGeoLookupParameters, GEOPDLocationDirectedSearchParameters, GEOPDMapsIdentifierPlaceLookupParameters, GEOPDMerchantLookupParameters, GEOPDNearbySearchParameters, GEOPDOfflineAreaLookupParameters, GEOPDOfflinePolygonQuadNodesParameters, GEOPDOfflineProactiveRegionsParameters, GEOPDOfflineSuggestedRegionsParameters, GEOPDOfflineUpdateManifestParameters, GEOPDPlaceCollectionLookupParameters, GEOPDPlaceLookupParameters, GEOPDPlaceRefinementParameters, GEOPDPopularNearbySearchParameters, GEOPDReverseGeocodingParameters, GEOPDSearchBrowseCategorySuggestionParameters, GEOPDSearchFieldPlaceholderParameters, GEOPDSearchParameters, GEOPDSearchZeroKeywordCategorySuggestionParameters, GEOPDSearchZeroKeywordWithSearchResultsSuggestionParameters, GEOPDSiriSearchParameters, GEOPDTerritoryLookupParameters, GEOPDTransitVehiclePositionParameters, GEOPDVendorSpecificPlaceRefinementParameters, GEOPDWifiFingerprintParameters, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDPlaceRequestParameters : PBCodable <NSCopying>
@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
     GEOPDSearchZeroKeywordCategorySuggestionParameters *_searchZeroKeywordCategorySuggestionParameters;
     GEOPDSearchZeroKeywordWithSearchResultsSuggestionParameters *_searchZeroKeywordWithSearchResultsSuggestionParameters;
     GEOPDSiriSearchParameters *_siriSearchParameters;
+    GEOPDTerritoryLookupParameters *_territoryLookupParameters;
     GEOPBTransitScheduleLookupParameters *_transitScheduleLookupParameter;
     GEOPDTransitVehiclePositionParameters *_transitVehiclePositionParameters;
     GEOPDVendorSpecificPlaceRefinementParameters *_vendorSpecificPlaceRefinementParameters;
@@ -96,6 +97,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_searchZeroKeywordCategorySuggestionParameters:1;
         unsigned int read_searchZeroKeywordWithSearchResultsSuggestionParameters:1;
         unsigned int read_siriSearchParameters:1;
+        unsigned int read_territoryLookupParameters:1;
         unsigned int read_transitScheduleLookupParameter:1;
         unsigned int read_transitVehiclePositionParameters:1;
         unsigned int read_vendorSpecificPlaceRefinementParameters:1;
@@ -137,6 +139,7 @@ __attribute__((visibility("hidden")))
         unsigned int wrote_searchZeroKeywordCategorySuggestionParameters:1;
         unsigned int wrote_searchZeroKeywordWithSearchResultsSuggestionParameters:1;
         unsigned int wrote_siriSearchParameters:1;
+        unsigned int wrote_territoryLookupParameters:1;
         unsigned int wrote_transitScheduleLookupParameter:1;
         unsigned int wrote_transitVehiclePositionParameters:1;
         unsigned int wrote_vendorSpecificPlaceRefinementParameters:1;
@@ -195,6 +198,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasSearchZeroKeywordCategorySuggestionParameters;
 @property (readonly, nonatomic) BOOL hasSearchZeroKeywordWithSearchResultsSuggestionParameters;
 @property (readonly, nonatomic) BOOL hasSiriSearchParameters;
+@property (readonly, nonatomic) BOOL hasTerritoryLookupParameters;
 @property (readonly, nonatomic) BOOL hasTransitScheduleLookupParameter;
 @property (readonly, nonatomic) BOOL hasTransitVehiclePositionParameters;
 @property (readonly, nonatomic) BOOL hasVendorSpecificPlaceRefinementParameters;
@@ -220,6 +224,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOPDSearchZeroKeywordCategorySuggestionParameters *searchZeroKeywordCategorySuggestionParameters;
 @property (strong, nonatomic) GEOPDSearchZeroKeywordWithSearchResultsSuggestionParameters *searchZeroKeywordWithSearchResultsSuggestionParameters;
 @property (strong, nonatomic) GEOPDSiriSearchParameters *siriSearchParameters;
+@property (strong, nonatomic) GEOPDTerritoryLookupParameters *territoryLookupParameters;
 @property (strong, nonatomic) GEOPBTransitScheduleLookupParameters *transitScheduleLookupParameter;
 @property (strong, nonatomic) GEOPDTransitVehiclePositionParameters *transitVehiclePositionParameters;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
@@ -264,6 +269,7 @@ __attribute__((visibility("hidden")))
 - (void)_readSearchZeroKeywordCategorySuggestionParameters;
 - (void)_readSearchZeroKeywordWithSearchResultsSuggestionParameters;
 - (void)_readSiriSearchParameters;
+- (void)_readTerritoryLookupParameters;
 - (void)_readTransitScheduleLookupParameter;
 - (void)_readTransitVehiclePositionParameters;
 - (void)_readVendorSpecificPlaceRefinementParameters;

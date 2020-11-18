@@ -91,6 +91,7 @@
 - (void)linkWithTransaction:(id)arg1 sessionMetrics:(id)arg2;
 - (id)subflowCounts;
 - (id)tcpInfo;
+- (void)tlsMetadataReceived:(id)arg1;
 - (void)wait;
 
 @end

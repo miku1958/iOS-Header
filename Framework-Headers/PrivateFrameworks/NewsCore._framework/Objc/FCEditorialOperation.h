@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCCloudContext, FCSpotlightOperationResult, FCVideoArticlesOperationResult, NSArray, NSError;
+@class FCCloudContext, FCSpotlightOperationResult, NSArray, NSError;
 @protocol FCCoreConfiguration;
 
 @interface FCEditorialOperation : FCOperation
@@ -14,8 +14,6 @@
     id<FCCoreConfiguration> _configuration;
     FCCloudContext *_context;
     NSArray *_trendingHeadlines;
-    FCVideoArticlesOperationResult *_topVideosResult;
-    FCVideoArticlesOperationResult *_moreVideosResult;
     FCSpotlightOperationResult *_spotlightResult;
     NSError *_error;
     CDUnknownBlockType _catchUpCompletionHandler;
@@ -27,9 +25,7 @@
 @property (strong, nonatomic) FCCloudContext *context; // @synthesize context=_context;
 @property (copy) NSArray *editorialSectionGroups; // @synthesize editorialSectionGroups=_editorialSectionGroups;
 @property (strong) NSError *error; // @synthesize error=_error;
-@property (strong) FCVideoArticlesOperationResult *moreVideosResult; // @synthesize moreVideosResult=_moreVideosResult;
 @property (strong) FCSpotlightOperationResult *spotlightResult; // @synthesize spotlightResult=_spotlightResult;
-@property (strong) FCVideoArticlesOperationResult *topVideosResult; // @synthesize topVideosResult=_topVideosResult;
 @property (copy) NSArray *trendingHeadlines; // @synthesize trendingHeadlines=_trendingHeadlines;
 
 - (void).cxx_destruct;

@@ -6,23 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSString;
+@class MISSING_TYPE, NSArray, NSString;
 
 @interface TSNewsActivityData : NSObject
 {
     MISSING_TYPE *activity;
     MISSING_TYPE *identifier;
     MISSING_TYPE *object;
+    MISSING_TYPE *traits;
 }
 
 @property (nonatomic, readonly) long long activity; // @synthesize activity;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) id object; // @synthesize object;
+@property (nonatomic, readonly) NSArray *traits;
 
++ (long long)convertToArticleTraitWithTrait:(long long)arg1;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithActivity:(long long)arg1 identifier:(id)arg2;
 - (id)initWithActivity:(long long)arg1 identifier:(id)arg2 object:(id)arg3;
+- (id)initWithActivity:(long long)arg1 identifier:(id)arg2 object:(id)arg3 traits:(id)arg4;
 
 @end
 

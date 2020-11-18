@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCCloudContext, NSArray, NSString;
+@class FCCloudContext, FCEdgeCacheHint, NSArray, NSString;
 @protocol FCChannelProviding;
 
 @interface FCChannelSectionHeadlinesFetchOperation : FCOperation
@@ -20,11 +20,13 @@
     double _sectionsCacheTimeToLive;
     id<FCChannelProviding> _channel;
     NSArray *_sectionHeadlinesGroups;
+    FCEdgeCacheHint *_edgeCacheHint;
 }
 
 @property (readonly, nonatomic) id<FCChannelProviding> channel; // @synthesize channel=_channel;
 @property (readonly, nonatomic) NSString *channelID; // @synthesize channelID=_channelID;
 @property (readonly, nonatomic) FCCloudContext *cloudContext; // @synthesize cloudContext=_cloudContext;
+@property (readonly, nonatomic) FCEdgeCacheHint *edgeCacheHint; // @synthesize edgeCacheHint=_edgeCacheHint;
 @property (copy) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
 @property (readonly, nonatomic) double fetchWindow; // @synthesize fetchWindow=_fetchWindow;
 @property (readonly, nonatomic) unsigned long long maxHeadlinesCount; // @synthesize maxHeadlinesCount=_maxHeadlinesCount;
@@ -37,13 +39,13 @@
 - (id)_channelPromiseWithTagsByID:(id)arg1 parentChannelID:(id)arg2;
 - (id)_configurationPromise;
 - (id)_createFeedRequestWithFeedID:(id)arg1 feedRange:(id)arg2;
-- (id)_feedItemsPromiseWithChannel:(id)arg1 configuration:(id)arg2;
+- (id)_feedItemsPromiseWithChannel:(id)arg1 sectionsByID:(id)arg2 configuration:(id)arg3;
 - (id)_feedItemsTransformationWithConfiguration:(id)arg1;
 - (id)_headlinesAssembledBySectionFromFeedItemMap:(id)arg1 sectionIDsByFeedID:(id)arg2 sectionsByID:(id)arg3;
 - (id)_headlinesPromiseWithFeedItems:(id)arg1 sectionsByID:(id)arg2 configuration:(id)arg3;
 - (id)_sectionsPromiseWithTagsByID:(id)arg1 sectionIDs:(id)arg2;
 - (id)init;
-- (id)initWithCloudContext:(id)arg1 channelID:(id)arg2 maxHeadlinesCount:(unsigned long long)arg3 maxHeadlinesPerFeed:(unsigned long long)arg4 fetchWindow:(double)arg5 sectionsCacheTimeToLive:(double)arg6;
+- (id)initWithCloudContext:(id)arg1 channelID:(id)arg2 maxHeadlinesCount:(unsigned long long)arg3 maxHeadlinesPerFeed:(unsigned long long)arg4 fetchWindow:(double)arg5 sectionsCacheTimeToLive:(double)arg6 edgeCacheHint:(id)arg7;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (BOOL)validateOperation;

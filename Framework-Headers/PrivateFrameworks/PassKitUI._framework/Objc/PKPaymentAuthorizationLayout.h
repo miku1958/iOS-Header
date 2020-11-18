@@ -11,6 +11,7 @@
 @interface PKPaymentAuthorizationLayout : NSObject
 {
     BOOL _isAMPPayment;
+    BOOL _isInstallment;
     BOOL _shouldSuppressTotal;
     long long _style;
     double _contentHorizontalMargin;
@@ -24,6 +25,7 @@
 @property (readonly, nonatomic) double contentHorizontalMargin; // @synthesize contentHorizontalMargin=_contentHorizontalMargin;
 @property (readonly, nonatomic) double glyphDimension; // @synthesize glyphDimension=_glyphDimension;
 @property (readonly, nonatomic) BOOL isAMPPayment; // @synthesize isAMPPayment=_isAMPPayment;
+@property (readonly, nonatomic) BOOL isInstallment; // @synthesize isInstallment=_isInstallment;
 @property (readonly, nonatomic) NSString *localizedNavigationTitle; // @synthesize localizedNavigationTitle=_localizedNavigationTitle;
 @property (readonly, nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 @property (readonly, nonatomic) unsigned long long requestor; // @synthesize requestor=_requestor;

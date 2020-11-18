@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *isCloudKitReachablePromise;
     MISSING_TYPE *minimumTimer;
     MISSING_TYPE *maximumTimer;
-    MISSING_TYPE *emailSignupDetectionManager;
     MISSING_TYPE *appActivityMonitor;
     MISSING_TYPE *networkReachability;
 }

@@ -8,12 +8,13 @@
 
 #import <Transparency/TransparencyVerifiable-Protocol.h>
 
-@class NSData, NSMutableArray, SignedMapHead, TransparencyMapEntryVerifier;
+@class NSData, NSMutableArray, SignedMapHead, TransparencyManagedDataStore, TransparencyMapEntryVerifier;
 
 @interface MapEntry : GPBMessage <TransparencyVerifiable>
 {
 }
 
+@property (strong) TransparencyManagedDataStore *dataStore;
 @property (nonatomic) BOOL hasSmh; // @dynamic hasSmh;
 @property (strong, nonatomic) NSMutableArray *hashesOfPeersInPathToRootArray; // @dynamic hashesOfPeersInPathToRootArray;
 @property (readonly, nonatomic) unsigned long long hashesOfPeersInPathToRootArray_Count; // @dynamic hashesOfPeersInPathToRootArray_Count;
@@ -22,7 +23,7 @@
 @property (strong) TransparencyMapEntryVerifier *verifier;
 
 + (id)descriptor;
-- (BOOL)verifyWithError:(id *)arg1;
+- (unsigned long long)verifyWithError:(id *)arg1;
 
 @end
 

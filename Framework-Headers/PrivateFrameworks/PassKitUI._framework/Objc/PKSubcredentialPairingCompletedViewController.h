@@ -16,6 +16,7 @@
 @interface PKSubcredentialPairingCompletedViewController : PKExplanationViewController <PKExplanationViewDelegate, PKSubcredentialPairingFlowControllerOperation, PKViewControllerPreflightable>
 {
     BOOL _isLastOperation;
+    BOOL _isPassExpress;
     PKHeroCardExplainationHeaderView *_heroCardView;
     UIViewController *_nextVC;
     PKSubcredentialPairingFlowControllerContext *_provisioningContext;

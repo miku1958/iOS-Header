@@ -4,21 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
-@class MISSING_TYPE, UIView;
+@class MISSING_TYPE;
 
-@interface _TtC7NewsUI220MastheadViewProvider : _TtCs12_SwiftObject
+__attribute__((visibility("hidden")))
+@interface _TtC7NewsUI220MastheadViewProvider : NSObject
 {
     MISSING_TYPE *mastheadView;
-    MISSING_TYPE *renderer;
+    MISSING_TYPE *titleViewStyler;
     MISSING_TYPE *layoutAttributesFactory;
-    MISSING_TYPE *model;
     MISSING_TYPE *margins;
+    MISSING_TYPE *model;
 }
 
-@property (nonatomic, readonly) UIView *view;
-
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 

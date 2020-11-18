@@ -14,7 +14,10 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy, nonatomic) NSString *application; // @dynamic application;
+@property (nonatomic) long long consistencyVerified; // @dynamic consistencyVerified;
 @property (strong, nonatomic) NSSet *failures; // @dynamic failures;
+@property (nonatomic) long long inclusionVerified; // @dynamic inclusionVerified;
+@property (nonatomic) BOOL isMapHead; // @dynamic isMapHead;
 @property (nonatomic) long long logBeginTime; // @dynamic logBeginTime;
 @property (strong, nonatomic) NSData *logHeadHash; // @dynamic logHeadHash;
 @property (nonatomic) long long logType; // @dynamic logType;
@@ -22,7 +25,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long revision; // @dynamic revision;
 @property (nonatomic) long long signatureVerified; // @dynamic signatureVerified;
 @property (strong, nonatomic) NSData *sth; // @dynamic sth;
-@property (nonatomic) long long verificationResult; // @dynamic verificationResult;
 
 + (id)fetchRequest;
 

@@ -11,20 +11,22 @@
 @interface PKSubcredentialProvisioningAcceptRemoteDeviceInvitationConfiguration : PKSubcredentialProvisioningConfiguration
 {
     BOOL _canRequestInvitation;
+    BOOL _declineRelatedInvitations;
     PKAppletSubcredentialSharingInvitation *_invitation;
     PKPaymentWebService *_remoteDeviceWebService;
     PKPaymentWebService *_localDeviceWebService;
 }
 
 @property (readonly, nonatomic) BOOL canRequestInvitation; // @synthesize canRequestInvitation=_canRequestInvitation;
+@property (readonly, nonatomic) BOOL declineRelatedInvitations; // @synthesize declineRelatedInvitations=_declineRelatedInvitations;
 @property (readonly, nonatomic) PKAppletSubcredentialSharingInvitation *invitation; // @synthesize invitation=_invitation;
 @property (readonly, nonatomic) PKPaymentWebService *localDeviceWebService; // @synthesize localDeviceWebService=_localDeviceWebService;
 @property (readonly, nonatomic) PKPaymentWebService *remoteDeviceWebService; // @synthesize remoteDeviceWebService=_remoteDeviceWebService;
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithInvitation:(id)arg1 canRequestInvitation:(BOOL)arg2 localDeviceWebService:(id)arg3 remoteDeviceWebService:(id)arg4;
-- (id)initWithInvitation:(id)arg1 canRequestInvitation:(BOOL)arg2 localDeviceWebService:(id)arg3 remoteDeviceWebService:(id)arg4 configurationType:(long long)arg5;
+- (id)initWithInvitation:(id)arg1 canRequestInvitation:(BOOL)arg2 declineRelatedInvitations:(BOOL)arg3 localDeviceWebService:(id)arg4 remoteDeviceWebService:(id)arg5;
+- (id)initWithInvitation:(id)arg1 canRequestInvitation:(BOOL)arg2 declineRelatedInvitations:(BOOL)arg3 localDeviceWebService:(id)arg4 remoteDeviceWebService:(id)arg5 configurationType:(long long)arg6;
 - (long long)startingState;
 - (id)transitionTable;
 

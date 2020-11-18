@@ -17,11 +17,13 @@ __attribute__((visibility("hidden")))
     AVBackgroundView *_backgroundView;
     _TVImageView *_episodeImageView;
     VUILabel *_nextEpisodeLabel;
+    VUILabel *_headerLabel;
     TVImageProxy *_episodeImageProxy;
     VUICountDownProgressIndicator *_autoPlayIndicator;
     NSNumber *_autoPlayDuration;
     NSNumber *_defaultAutoPlayDuration;
     NSString *_title;
+    NSString *_header;
 }
 
 @property (strong, nonatomic) NSNumber *autoPlayDuration; // @synthesize autoPlayDuration=_autoPlayDuration;
@@ -32,6 +34,8 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<VUIPostPlayViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) TVImageProxy *episodeImageProxy; // @synthesize episodeImageProxy=_episodeImageProxy;
 @property (strong, nonatomic) _TVImageView *episodeImageView; // @synthesize episodeImageView=_episodeImageView;
+@property (strong, nonatomic) NSString *header; // @synthesize header=_header;
+@property (strong, nonatomic) VUILabel *headerLabel; // @synthesize headerLabel=_headerLabel;
 @property (strong, nonatomic) VUILabel *nextEpisodeLabel; // @synthesize nextEpisodeLabel=_nextEpisodeLabel;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
@@ -43,8 +47,8 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)_layoutWithSize:(struct CGSize)arg1 metricsOnly:(BOOL)arg2;
 - (void)_setupViews;
 - (void)_startAutoPlayAnimation;
-- (id)initWithFrame:(struct CGRect)arg1 andEpisodeArtworkURLStringFormat:(id)arg2 andTitle:(id)arg3;
-- (id)initWithFrame:(struct CGRect)arg1 andTVImageProxy:(id)arg2 andTitle:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 andEpisodeArtworkURLStringFormat:(id)arg2 andTitle:(id)arg3 andHeader:(id)arg4;
+- (id)initWithFrame:(struct CGRect)arg1 andTVImageProxy:(id)arg2 andTitle:(id)arg3 andHeader:(id)arg4;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)startAutoPlayTimer;

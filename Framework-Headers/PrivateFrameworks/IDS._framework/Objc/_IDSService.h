@@ -62,6 +62,7 @@
 - (void)_callDelegatesWithBlock:(CDUnknownBlockType)arg1;
 - (void)_callDelegatesWithBlock:(CDUnknownBlockType)arg1 group:(id)arg2;
 - (void)_callIsActiveChanged;
+- (BOOL)_canAccount:(id)arg1 sendWithFromID:(id)arg2;
 - (void)_disableAccount:(id)arg1;
 - (void)_enableAccount:(id)arg1;
 - (id)_filteredAccountsFrom:(id)arg1;
@@ -78,7 +79,7 @@
 - (BOOL)_sendSimulatorMessage:(id)arg1 fromAccount:(id)arg2 toDestinations:(id)arg3 priority:(long long)arg4 options:(id)arg5 identifier:(id *)arg6 error:(id *)arg7;
 - (BOOL)_sendSimulatorProtobuf:(id)arg1 fromAccount:(id)arg2 toDestinations:(id)arg3 priority:(long long)arg4 options:(id)arg5 identifier:(id *)arg6 error:(id *)arg7;
 - (id)_sendingAccountForAccount:(id)arg1;
-- (id)_sendingAccountForAccount:(id)arg1 destination:(id)arg2;
+- (id)_sendingAccountForAccount:(id)arg1 destination:(id)arg2 fromID:(id)arg3;
 - (void)_setupIDSWakeListenerIfNeeded;
 - (void)_setupNewConnectionForAccount:(id)arg1;
 - (void)_stopAwaitingQuickSwitchAcknowledgementFromDelegateWithIdentifier:(id)arg1;

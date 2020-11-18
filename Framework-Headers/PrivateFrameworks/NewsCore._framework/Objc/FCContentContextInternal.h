@@ -8,8 +8,8 @@
 
 #import <NewsCore/FCContentContextInternal-Protocol.h>
 
-@class FCArticleListRecordSource, FCArticleRecordSource, FCCKContentDatabase, FCChannelMembershipController, FCFeedDatabase, FCForYouConfigRecordSource, FCIssueListRecordSource, FCIssueRecordSource, FCPurchaseLookupRecordSource, FCResourceRecordSource, FCTagListRecordSource, FCTagRecordSource, FCWidgetSectionConfigRecordSource, NSArray, NSString;
-@protocol FCAssetKeyManagerType;
+@class FCAVAssetDownloadManager, FCArticleListRecordSource, FCArticleRecordSource, FCAudioConfigRecordSource, FCCKContentDatabase, FCChannelMembershipController, FCFeedDatabase, FCForYouConfigRecordSource, FCIssueListRecordSource, FCIssueRecordSource, FCPurchaseLookupRecordSource, FCResourceRecordSource, FCTagListRecordSource, FCTagRecordSource, FCWidgetSectionConfigRecordSource, NSArray, NSString;
+@protocol FCAVAssetFactoryType, FCAssetKeyManagerType;
 
 @interface FCContentContextInternal : NSObject <FCContentContextInternal>
 {
@@ -24,14 +24,20 @@
     FCWidgetSectionConfigRecordSource *_widgetSectionConfigRecordSource;
     FCIssueRecordSource *_issueRecordSource;
     FCIssueListRecordSource *_issueListRecordSource;
+    FCAudioConfigRecordSource *_audioConfigRecordSource;
     FCFeedDatabase *_feedDatabase;
     FCCKContentDatabase *_contentDatabase;
     id<FCAssetKeyManagerType> _assetKeyManager;
+    id<FCAVAssetFactoryType> _avAssetFactory;
+    FCAVAssetDownloadManager *_avAssetDownloadManager;
 }
 
 @property (strong, nonatomic) FCArticleListRecordSource *articleListRecordSource; // @synthesize articleListRecordSource=_articleListRecordSource;
 @property (strong, nonatomic) FCArticleRecordSource *articleRecordSource; // @synthesize articleRecordSource=_articleRecordSource;
 @property (strong, nonatomic) id<FCAssetKeyManagerType> assetKeyManager; // @synthesize assetKeyManager=_assetKeyManager;
+@property (strong, nonatomic) FCAudioConfigRecordSource *audioConfigRecordSource; // @synthesize audioConfigRecordSource=_audioConfigRecordSource;
+@property (strong, nonatomic) FCAVAssetDownloadManager *avAssetDownloadManager; // @synthesize avAssetDownloadManager=_avAssetDownloadManager;
+@property (strong, nonatomic) id<FCAVAssetFactoryType> avAssetFactory; // @synthesize avAssetFactory=_avAssetFactory;
 @property (strong, nonatomic) FCChannelMembershipController *channelMembershipController; // @synthesize channelMembershipController=_channelMembershipController;
 @property (strong, nonatomic) FCCKContentDatabase *contentDatabase; // @synthesize contentDatabase=_contentDatabase;
 @property (readonly, copy) NSString *debugDescription;

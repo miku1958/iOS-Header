@@ -31,6 +31,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_audioDailyBriefingFeedGroupEmitterFromConfiguration:(id)arg1 emitterIdentifiersSeen:(id)arg2;
 - (id)_sortedConfigurableGroupEmittersWithForYouGroupsConfiguration:(id)arg1 forYouConfig:(id)arg2;
 - (id)allEmitterClasses;
 - (void)d_fetchAllHeadlinesWithCloudContext:(id)arg1 sinceDate:(id)arg2 filter:(BOOL)arg3 personalize:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;

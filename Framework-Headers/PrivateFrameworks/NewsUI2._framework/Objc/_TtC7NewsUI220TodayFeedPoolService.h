@@ -6,8 +6,12 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC7NewsUI220TodayFeedPoolService : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *cloudContext;
+    MISSING_TYPE *magazineFeedServiceConfigFetcher;
 }
 
 @end

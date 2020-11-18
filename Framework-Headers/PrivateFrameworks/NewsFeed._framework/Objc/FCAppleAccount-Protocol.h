@@ -7,6 +7,7 @@
 #import <NewsFeed/NSObject-Protocol.h>
 
 @class ACAccount, NSString;
+@protocol FCAppleAccountObserver;
 
 @protocol FCAppleAccount <NSObject>
 
@@ -21,16 +22,21 @@
 @property (nonatomic, readonly) BOOL userSignedInToiCloud;
 @property (nonatomic, readonly) NSString *userStoreFrontID;
 
+- (void)addObserver:(id<FCAppleAccountObserver>)arg1;
 - (void)checkAllDevicesRunningMinimumiOSVersion:(CDStruct_912cb5d2)arg1 macOSVersion:(CDStruct_912cb5d2)arg2 orInactiveForTimeInterval:(double)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)checkAlliOSDevicesRunningMinimumOSVersion:(CDStruct_912cb5d2)arg1 orInactiveForTimeInterval:(double)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (NSString *)currentStoreFrontID;
+- (id)getGSToken;
+- (void)getGSTokenWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
 - (NSString *)iCloudAccountDSID;
 - (NSString *)iTunesAccountDSID;
 - (NSString *)iTunesAccountName;
+- (void)invalidateGSTokenCache;
 - (BOOL)isPrimaryAccountEmailAddress;
 - (BOOL)isPrivateDataSyncingEnabled;
 - (BOOL)isUserSignedInToiCloud;
 - (BOOL)isUserSignedIntoiTunes;
 - (void)loadStoreFrontWithCompletionHandler:(void (^)(void))arg1;
+- (void)removeObserver:(id<FCAppleAccountObserver>)arg1;
 @end
 

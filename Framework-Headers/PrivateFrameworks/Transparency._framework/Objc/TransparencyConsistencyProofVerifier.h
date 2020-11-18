@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 - (id)initWithTrustedKeyStore:(id)arg1;
 - (BOOL)verifyConsistencyProof:(id)arg1 startHash:(id)arg2 startSize:(unsigned long long)arg3 endHash:(id)arg4 endSize:(unsigned long long)arg5 error:(id *)arg6;
-- (BOOL)verifyConsistencyProof:(id)arg1 startLogHead:(id)arg2 endLogHead:(id)arg3 error:(id *)arg4;
+- (unsigned long long)verifyConsistencyProof:(id)arg1 startLogHead:(id)arg2 endLogHead:(id)arg3 error:(id *)arg4;
 
 @end
 

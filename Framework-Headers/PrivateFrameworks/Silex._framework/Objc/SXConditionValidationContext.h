@@ -25,6 +25,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long horizontalSizeClass;
 @property (readonly, nonatomic) SXLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
+@property (readonly, nonatomic) unsigned long long newsletterSubscriptionStatus;
 @property (readonly, nonatomic) unsigned long long numberOfColumns;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL testing;

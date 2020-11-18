@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 
 @property (copy, nonatomic) NSString *application; // @dynamic application;
 @property (copy, nonatomic) NSUUID *downloadId; // @dynamic downloadId;
+@property (nonatomic) long long downloadType; // @dynamic downloadType;
 @property (nonatomic) double requestTime; // @dynamic requestTime;
 @property (strong, nonatomic) NSData *response; // @dynamic response;
 @property (nonatomic) long long startSLHRevision; // @dynamic startSLHRevision;

@@ -9,5 +9,6 @@
 @interface NSFileManager (FCAdditions)
 - (void)fc_quicklyClearDirectory:(id)arg1 callbackQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)fc_removeContentsOfDirectoryAtURL:(id)arg1;
+- (unsigned long long)fc_sizeOfItemAtURL:(id)arg1 error:(id *)arg2;
 @end
 

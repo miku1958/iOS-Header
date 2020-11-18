@@ -15,11 +15,11 @@
 {
     BOOL _shouldExportJSONSidecar;
     BOOL _unsafeWaitingOnSave;
+    NSString *_storeDirectory;
     NSString *_name;
     unsigned long long _storeSize;
     NSMutableDictionary *_unsafeObjectsByKey;
     id<NFLocking> _lock;
-    NSString *_storeDirectory;
     unsigned long long _clientVersion;
     unsigned long long _optionsMask;
     FCKeyValueStoreClassRegistry *_classRegistry;
@@ -42,7 +42,7 @@
 @property (copy, nonatomic) CDUnknownBlockType objectHandler; // @synthesize objectHandler=_objectHandler;
 @property (nonatomic) unsigned long long optionsMask; // @synthesize optionsMask=_optionsMask;
 @property (nonatomic) BOOL shouldExportJSONSidecar; // @synthesize shouldExportJSONSidecar=_shouldExportJSONSidecar;
-@property (strong, nonatomic) NSString *storeDirectory; // @synthesize storeDirectory=_storeDirectory;
+@property (readonly, nonatomic) NSString *storeDirectory; // @synthesize storeDirectory=_storeDirectory;
 @property (nonatomic) unsigned long long storeSize; // @synthesize storeSize=_storeSize;
 @property (strong, nonatomic) NSMutableDictionary *unsafeObjectsByKey; // @synthesize unsafeObjectsByKey=_unsafeObjectsByKey;
 @property (nonatomic) BOOL unsafeWaitingOnSave; // @synthesize unsafeWaitingOnSave=_unsafeWaitingOnSave;
@@ -84,6 +84,7 @@
 - (void)removeAllObjects;
 - (void)removeObjectForKey:(id)arg1;
 - (void)removeObjectsForKeys:(id)arg1;
+- (void)replaceContentsWithDictionary:(id)arg1;
 - (void)save;
 - (void)saveWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setBoolValue:(BOOL)arg1 forKey:(id)arg2;

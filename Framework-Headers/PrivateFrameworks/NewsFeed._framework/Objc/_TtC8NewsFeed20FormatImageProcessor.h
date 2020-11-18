@@ -6,8 +6,11 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC8NewsFeed20FormatImageProcessor : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *complexImageProcessor;
 }
 
 - (id)process:(id)arg1;

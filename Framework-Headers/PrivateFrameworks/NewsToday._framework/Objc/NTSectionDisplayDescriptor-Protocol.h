@@ -6,19 +6,16 @@
 
 #import <NewsToday/NSCopying-Protocol.h>
 
-@class NSString, NSURL, NTPBDiscoverMoreVideosInfo;
+@class NSString, NSURL;
 
 @protocol NTSectionDisplayDescriptor <NSCopying>
 
 @property (readonly, copy, nonatomic) NSString *actionTitle;
 @property (readonly, copy, nonatomic) NSURL *actionURL;
 @property (readonly, copy, nonatomic) NSString *backgroundGradientColor;
-@property (readonly, copy, nonatomic) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo;
-@property (readonly, nonatomic) BOOL displaysAsVideoPlaylist;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, copy, nonatomic) NSString *nameColor;
 @property (readonly, nonatomic) BOOL useNameColorInWidget;
-@property (readonly, nonatomic) BOOL videoPlaysMutedByDefault;
 
 @end
 

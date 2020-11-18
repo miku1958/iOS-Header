@@ -17,6 +17,7 @@
 + (id)actionSheetUnfollow;
 + (id)blockActivity;
 + (id)followChannelActivity;
++ (id)headphones;
 + (id)saveActivity;
 + (id)saveSelectedActivity;
 + (id)showLessActivity;

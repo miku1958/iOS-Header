@@ -12,12 +12,16 @@ __attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed31DebugFormatEditorViewController : UIViewController
 {
     MISSING_TYPE *delegate;
+    MISSING_TYPE *editor;
     MISSING_TYPE *packages;
-    MISSING_TYPE *styler;
     MISSING_TYPE *errorViewController;
-    MISSING_TYPE *$__lazy_storage_$_updatedLabel;
     MISSING_TYPE *canvasViewController;
-    MISSING_TYPE *canvasUserInterfaceStyle;
+    MISSING_TYPE *scrollView;
+    MISSING_TYPE *rulerView;
+    MISSING_TYPE *$__lazy_storage_$_overlayView;
+    MISSING_TYPE *contentView;
+    MISSING_TYPE *statusView;
+    MISSING_TYPE *zoomLabel;
 }
 
 - (void).cxx_destruct;

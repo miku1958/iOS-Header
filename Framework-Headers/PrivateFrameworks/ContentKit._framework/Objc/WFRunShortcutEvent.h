@@ -16,11 +16,13 @@
     NSString *_key;
     NSString *_runSource;
     NSString *_automationType;
+    NSString *_galleryIdentifier;
 }
 
 @property (nonatomic) unsigned int actionCount; // @synthesize actionCount=_actionCount;
 @property (copy, nonatomic) NSString *automationType; // @synthesize automationType=_automationType;
 @property (nonatomic) BOOL completed; // @synthesize completed=_completed;
+@property (copy, nonatomic) NSString *galleryIdentifier; // @synthesize galleryIdentifier=_galleryIdentifier;
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;
 @property (copy, nonatomic) NSString *runSource; // @synthesize runSource=_runSource;
 @property (nonatomic) int source; // @synthesize source=_source;

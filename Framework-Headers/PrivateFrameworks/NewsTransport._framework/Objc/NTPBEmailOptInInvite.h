@@ -14,11 +14,13 @@
 {
     NSString *_articleId;
     int _emailOptInInviteLocation;
+    int _newsletterSubscriptionType;
     NSString *_parentFeedId;
     int _parentFeedType;
     int _userAction;
     struct {
         unsigned int emailOptInInviteLocation:1;
+        unsigned int newsletterSubscriptionType:1;
         unsigned int parentFeedType:1;
         unsigned int userAction:1;
     } _has;
@@ -28,9 +30,11 @@
 @property (nonatomic) int emailOptInInviteLocation; // @synthesize emailOptInInviteLocation=_emailOptInInviteLocation;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (nonatomic) BOOL hasEmailOptInInviteLocation;
+@property (nonatomic) BOOL hasNewsletterSubscriptionType;
 @property (readonly, nonatomic) BOOL hasParentFeedId;
 @property (nonatomic) BOOL hasParentFeedType;
 @property (nonatomic) BOOL hasUserAction;
+@property (nonatomic) int newsletterSubscriptionType; // @synthesize newsletterSubscriptionType=_newsletterSubscriptionType;
 @property (strong, nonatomic) NSString *parentFeedId; // @synthesize parentFeedId=_parentFeedId;
 @property (nonatomic) int parentFeedType; // @synthesize parentFeedType=_parentFeedType;
 @property (nonatomic) int userAction; // @synthesize userAction=_userAction;

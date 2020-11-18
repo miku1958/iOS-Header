@@ -14,6 +14,8 @@
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *magazineConfigurationService;
     MISSING_TYPE *personalizationService;
+    MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *paidAccessChecker;
 }
 
 @end

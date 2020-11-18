@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI223MagazineFeedDataManager : _TtCs12_SwiftObject
+__attribute__((visibility("hidden")))
+@interface _TtC7NewsUI223MagazineFeedDataManager : NSObject
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *feedServiceConfigFetcher;
@@ -21,10 +22,16 @@
     MISSING_TYPE *pluginManager;
     MISSING_TYPE *lastRefreshDate;
     MISSING_TYPE *tagService;
-    MISSING_TYPE *notificationManager;
+    MISSING_TYPE *notificationPrompter;
     MISSING_TYPE *bundlePurchasePrewarmer;
     MISSING_TYPE *subscriptionService;
+    MISSING_TYPE *_persistedConfigurationDate;
+    MISSING_TYPE *readingHistory;
+    MISSING_TYPE *readingList;
 }
+
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 

@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, NSURL;
+@class NSArray, NSDictionary, NSMutableDictionary, NSURL;
 
 @interface PKRemoteAssetManifest : NSObject
 {
     NSURL *_fileURL;
     NSURL *_passURL;
     NSMutableDictionary *_remoteAssets;
+    NSArray *_encryptedDeviceSpecificRemoteAssetFilenames;
 }
 
+@property (readonly, nonatomic) NSArray *encryptedDeviceSpecificRemoteAssetFilenames; // @synthesize encryptedDeviceSpecificRemoteAssetFilenames=_encryptedDeviceSpecificRemoteAssetFilenames;
 @property (readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property (readonly, nonatomic) NSDictionary *remoteAssets; // @synthesize remoteAssets=_remoteAssets;
 

@@ -95,7 +95,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isInStation;
 - (id)processUpdateWithAppletHistory:(id)arg1 concreteTransactions:(id *)arg2 ephemeralTransaction:(id *)arg3;
-- (id)processUpdateWithAppletHistory:(id)arg1 concreteTransactions:(id *)arg2 ephemeralTransaction:(id *)arg3 mutatedBalances:(id *)arg4 balanceLabelDictionary:(id)arg5;
+- (id)processUpdateWithAppletHistory:(id)arg1 concreteTransactions:(id *)arg2 ephemeralTransaction:(id *)arg3 mutatedBalances:(id *)arg4 balanceLabelDictionary:(id)arg5 unitDictionary:(id)arg6;
 - (id)transitPassPropertiesWithPaymentApplication:(id)arg1;
 
 @end

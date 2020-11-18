@@ -17,6 +17,7 @@
 - (void)delayEndDate:(void (^)(NSDate *, NSError *))arg1;
 - (void)deviceHasSufficientSpaceForDownload:(void (^)(BOOL, NSError *))arg1;
 - (void)downloadAndInstallState:(void (^)(SUDownload *, SUInstallPolicy *, _SUAutoInstallOperationModel *, NSError *))arg1;
+- (void)enableAutomaticDownload:(BOOL)arg1;
 - (void)enableAutomaticUpdateV2:(BOOL)arg1;
 - (void)extraSpaceNeededForDownloadWithoutAppPurging:(void (^)(NSNumber *, NSError *))arg1;
 - (void)getMandatorySoftwareUpdateDictionary:(void (^)(NSDictionary *, NSError *))arg1;
@@ -24,6 +25,7 @@
 - (void)installUpdateWithOptions:(NSArray *)arg1 withResult:(void (^)(BOOL, NSError *))arg2;
 - (void)isAutoUpdateEnabled:(void (^)(BOOL, NSError *))arg1;
 - (void)isAutoUpdateScheduled:(void (^)(BOOL, NSError *))arg1;
+- (void)isAutomaticDownloadEnabled:(void (^)(BOOL, NSError *))arg1;
 - (void)isAutomaticUpdateV2Enabled:(void (^)(BOOL, NSError *))arg1;
 - (void)isDelayingUpdates:(void (^)(BOOL, NSError *))arg1;
 - (void)isDownloading:(void (^)(BOOL, NSError *))arg1;

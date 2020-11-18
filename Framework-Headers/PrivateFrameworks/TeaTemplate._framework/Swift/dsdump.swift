@@ -25,6 +25,10 @@
  {
 	// method
  }
+ protocol TeaTemplate.LayoutDecodable // 1 requirements
+ {
+	// getter
+ }
  protocol TeaTemplate.ConditionType // 1 requirements
  {
 	// method
@@ -41,11 +45,8 @@
 	// class associated type access function
 	// method
  }
- protocol TeaTemplate.LayoutItemApplicable // 5 requirements
+ protocol TeaTemplate.LayoutItemApplicable // 2 requirements
  {
-	// class base protocol
-	// class base protocol
-	// method
 	// method
 	// method
  }
@@ -53,19 +54,23 @@
  {
 	// getter
  }
- protocol TeaTemplate.LayoutType // 4 requirements
+ protocol TeaTemplate.LayoutNullable // 1 requirements
  {
-	// class base protocol
-	// class base protocol
+	// getter
+ }
+ protocol TeaTemplate.LayoutType // 2 requirements
+ {
 	// getter
 	// class init
  }
- protocol TeaTemplate.LayoutValueLiteral // 5 requirements
+ protocol TeaTemplate.LayoutValueLiteral // 3 requirements
  {
 	// class base protocol
 	// class base protocol
-	// getter
-	// class init
+	// class base protocol
+ }
+ protocol TeaTemplate.LayoutAdjustable // 1 requirements
+ {
 	// method
  }
 
@@ -77,35 +82,41 @@
 
  enum __C.UIUserInterfaceLayoutDirection { }
 
- struct __C.CGPoint {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : =ü
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : =ü
- }
-
  struct __C.CGSize {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : =ü
+	var width : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : =ü
+	var height : }®
+ }
+
+ struct __C.CGPoint {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var x : }®
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var y : }®
+ }
+
+ struct __C.UIRectCorner {
+
+	// Properties
+	let rawValue : UInt
  }
 
  struct __C.UIEdgeInsets {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : =ü
+	var top : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : =ü
+	var left : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : =ü
+	var bottom : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : =ü
+	var right : }®
  }
 
  struct __C.CGRect {
@@ -129,23 +140,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let rawValue : Int
  }
 
+ enum TeaTemplate.ColumnLayoutSize {
+
+	// Properties
+	case large  
+	case small  
+ }
+
+ class TeaTemplate.StackBuilder {
  struct TeaTemplate.LayoutOptions {
 
 	// Properties
 	let boundingSize : CGSize // +0x0
 	let viewportSize : CGSize // +0x10
-	let traitCollection : UITraitCollection // +0x20
-	let layoutMargins : UIEdgeInsets // +0x28
-	let origin : CGPoint // +0x48
-	let layoutDirection : UIUserInterfaceLayoutDirection // +0x58
-	let contentSizeCategory : UIContentSizeCategory // +0x60
+	let windowSize : CGSize // +0x20
+	let traitCollection : UITraitCollection // +0x30
+	let layoutMargins : UIEdgeInsets // +0x38
+	let origin : CGPoint // +0x58
+	let layoutDirection : UIUserInterfaceLayoutDirection // +0x68
+	let contentSizeCategory : UIContentSizeCategory // +0x70
  }
 
  enum TeaTemplate.DimensionSizerTrait {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case offset : =ü
+	case offset : }®
 	case flexibleArea  
 	case anchored  
  }
@@ -219,9 +239,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case fixed : =ü
+	case fixed : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case scaledFixed : =ü
+	case scaledFixed : }®
 	case columns : ColumnSize
 	case invert : DimensionSizing
 	case sizer : DimensionSizerType
@@ -281,9 +301,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let column : Column // +0x0
 	var traits : Traits // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let hSpacing : =ü // +0x10
+	let hSpacing : }® // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let vSpacing : =ü // +0x18
+	let vSpacing : }® // +0x18
 	let bounds : CGRect // +0x20
 	let layoutMargins : UIEdgeInsets // +0x40
  }
@@ -349,21 +369,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaTemplate.IfNode {
  class TeaTemplate.LayoutItemList {
- enum TeaTemplate.CodingKeys {
-
-	// Properties
-	case values  
-	case sources  
- }
-
  class TeaTemplate.Log {
  class TeaTemplate.LayoutItem {
- enum TeaTemplate.CodingKeys {
-
-	// Properties
-	case value  
- }
-
  struct TeaTemplate.FillSizer { }
 
  class TeaTemplate.Logging : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -432,9 +439,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case min : =ü
+	case min : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case max : =ü
+	case max : }®
+ }
+
+ enum TeaTemplate.LayoutDecoderError {
+
+	// Properties
+	case typeMismatch : (actual: Any?, expected: String)
+	case expectedLayoutDecodable : (actual: Any)
+	case notImplemented  
+	case expectedNonNil  
  }
 
  struct TeaTemplate.SizeToFitDimensionSizer { }
@@ -450,13 +466,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case setWidth : =ü
+	case setWidth : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case setHeight : =ü
+	case setHeight : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case setMinX : =ü
+	case setMinX : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case setMinY : =ü
+	case setMinY : }®
 	case setBounds : CGRect
 	case identity  
  }
@@ -466,9 +482,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let origin : =ü // +0x0
+	let origin : }® // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let size : =ü // +0x8
+	let size : }® // +0x8
  }
 
  class TeaTemplate.LayoutBuilder {
@@ -490,7 +506,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let percentage : =ü // +0x0
+	let percentage : }® // +0x0
  }
 
  struct TeaTemplate.BoolCondition {
@@ -540,6 +556,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let offset : CGPoint // +0x28
  }
 
+ enum TeaTemplate.LayoutDecoderObject {
+
+	// Properties
+	case layout : [String : Any]
+	case layoutAttributes : [String : Any]
+ }
+
  struct TeaTemplate.FlexibleTextSizer {
 
 	// Properties
@@ -579,7 +602,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let constraints : SizeConstraints // +0x0
-	let fixedSizer : FixedSizer // +0x10
  }
 
  class TeaTemplate.Inspect {
@@ -596,13 +618,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case size : CGSize
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case width : =ü
+	case width : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case height : =ü
+	case height : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case scaledWidth : =ü
+	case scaledWidth : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case scaledHeight : =ü
+	case scaledHeight : }®
  }
 
  struct TeaTemplate.FixedSizer {
@@ -611,12 +633,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let fixed : Fixed // +0x0
  }
 
+ class TeaTemplate.Stack {
+ class TeaTemplate.StackLayer {
  struct TeaTemplate.FixedDimensionSizer {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let size : =ü // +0x0
+	let size : }® // +0x0
 	let scaled : Bool // +0x8
+ }
+
+ class TeaTemplate.LayoutDecoder {
+ class TeaTemplate._LayoutDecoder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let object : LayoutDecoderObject // +0x10 (0x9)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var codingPath :  empty-list  // +0x20 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var userInfo :  empty-list  // +0x28 (0x8)
+
+	// Swift methods
  }
 
  class TeaTemplate.Prop {
@@ -664,7 +701,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case fixed : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case percentage : =ü
+	case percentage : }®
  }
 
  struct TeaTemplate.ColumnSizer {
@@ -686,7 +723,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case textLines : 9ì
+	case textLines : √õ
 	case alt : AltTextLogic
 	case and : AltTextLogic
 	case or : AltTextLogic
@@ -703,6 +740,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case lte  
  }
 
+ struct TeaTemplate.ClipToBoundsSizer {
+
+	// Properties
+	let sizer : SizerType // +0x0
+ }
+
  struct TeaTemplate.DimensionWiseSizer {
 
 	// Properties
@@ -716,6 +759,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let condition : ConditionType // +0x0
  }
 
+ class TeaTemplate.LayoutKeyedDecodingContainer {
  class TeaTemplate.ColumnDebugView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
@@ -727,13 +771,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let rightMarginView : UIView // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x47320  @objc ColumnDebugView.initWithCoder: <stripped>
-	0x47b80  @objc ColumnDebugView.layoutSubviews <stripped>
-	0x47ce0  @objc ColumnDebugView.initWithFrame: <stripped>
-	0x47be0  @objc ColumnDebugView..cxx_destruct <stripped>
+	0x4b960  @objc ColumnDebugView.initWithCoder: <stripped>
+	0x4c270  @objc ColumnDebugView.layoutSubviews <stripped>
+	0x4c3d0  @objc ColumnDebugView.initWithFrame: <stripped>
+	0x4c2d0  @objc ColumnDebugView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x46a70  class func ColumnDebugView.__allocating_init(columnSystem:) // init 
+	0x4b0b0  class func ColumnDebugView.__allocating_init(columnSystem:) // init 
  }
 
  class TeaTemplate.Layout {
@@ -775,13 +819,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case minWidth : =ü
+	case minWidth : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case maxWidth : =ü
+	case maxWidth : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case minHeight : =ü
+	case minHeight : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case maxHeight : =ü
+	case maxHeight : }®
  }
 
  struct TeaTemplate.InsetSizer {
@@ -795,7 +839,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let percentage : =ü // +0x0
+	let percentage : }® // +0x0
  }
 
  struct TeaTemplate.ZeroSizer { }
@@ -812,29 +856,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case percentage : =ü
+	case percentage : }®
 	case size : DimensionSizing
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case width : =ü
+	case width : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case height : =ü
+	case height : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case scaledWidth : =ü
+	case scaledWidth : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case scaledHeight : =ü
+	case scaledHeight : }®
 	case ratio : Ratio
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case flexiblePercentage : =ü
+	case flexiblePercentage : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case flexibleMaxHeight : =ü
+	case flexibleMaxHeight : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case flexibleMaxWidth : =ü
+	case flexibleMaxWidth : }®
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case flexibleMaxSize : #ô
 	case flexibleText : (String?, font: UIFont)
 	case flexibleAttributedText : NSAttributedString?
 	case altFlexibleAttributedText : AltText
 	case columns : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case columnPercentage : =ü
+	case columnPercentage : }®
 	case columnSpec : ColumnSpec
 	case columnRowSpan : Aspect
 	case text : (String?, font: UIFont)
@@ -861,9 +907,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case width : =ü
+	case width : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case height : =ü
+	case height : }®
 	case aspect : Aspect
  }
 
@@ -871,7 +917,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case custom : =ü
+	case custom : }®
 	case x1x1  
 	case x4x3  
 	case x3x4  
@@ -879,23 +925,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class TeaTemplate.ListBuilder {
- enum TeaTemplate.LayoutValue {
-
-	// Properties
-	case rect : CGRect
-	case size : CGSize
-	case int : Int
-	case uint : UInt
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case float : =ü
-	case double : Double
-	case bool : Bool
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case data : œç
-	case string : String
-	case nil  
- }
-
  enum TeaTemplate.Positioning {
 
 	// Properties
@@ -906,21 +935,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case adjustWidth : PositioningAdjustment
 	case adjustHeight : PositioningAdjustment
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case minWidth : =ü
+	case minWidth : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case maxWidth : =ü
+	case maxWidth : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case minHeight : =ü
+	case minHeight : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case maxHeight : =ü
+	case maxHeight : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case scaleHeight : =ü
+	case scaleHeight : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case scaleWidth : =ü
+	case scaleWidth : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case scaleHeightWithOrigin : =ü
+	case scaleHeightWithOrigin : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case scaleWidthWithOrigin : =ü
+	case scaleWidthWithOrigin : }®
 	case minAspectRatio : Ratio
 	case firstBaseline : UIFont
 	case baseline : UIFont
@@ -936,6 +965,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case invert  
 	case resize  
 	case noIntegral  
+	case clipToBounds  
  }
 
  enum TeaTemplate.Anchor {
@@ -961,7 +991,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case fixed : =ü
+	case fixed : }®
 	case vSpacing  
 	case hSpacing  
  }
@@ -998,9 +1028,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case width : =ü
+	case width : }®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case height : =ü
+	case height : }®
  }
 
  struct TeaTemplate.OffsetScaleSizer {

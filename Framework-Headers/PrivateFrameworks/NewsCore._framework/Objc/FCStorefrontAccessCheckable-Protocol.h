@@ -13,6 +13,7 @@
 @property (readonly, copy, nonatomic) NSArray *allowedStorefrontIDs;
 @property (readonly, copy, nonatomic) NSArray *blockedStorefrontIDs;
 @property (readonly, copy, nonatomic) NSString *identifier;
+@property (readonly, copy, nonatomic) NSString *sourceChannelID;
 
 @end
 

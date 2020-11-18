@@ -21,6 +21,7 @@
 - (void)database_reportSQLiteCorruptionWithResultCode:(int)arg1 type:(long long)arg2 profile:(id)arg3;
 - (void)database_reportUnprotectedDatabaseIdentifier:(id)arg1 doesNotMatchProtectedDatabaseIdentifier:(id)arg2;
 - (id)initWithDaemon:(id)arg1;
+- (BOOL)isEventUsed:(id)arg1;
 - (void)sendEvent:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)submitEvent:(id)arg1;
 

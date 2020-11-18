@@ -11,17 +11,21 @@
 @interface _TtC8NewsFeed22WebEmbedViewController : UIViewController
 {
     MISSING_TYPE *reuseIdentifier;
-    MISSING_TYPE *debugButton;
-    MISSING_TYPE *embedURL;
+    MISSING_TYPE *onReuse;
+    MISSING_TYPE *webLinkPresentingViewController;
     MISSING_TYPE *contentFrame;
+    MISSING_TYPE *debugButton;
+    MISSING_TYPE *interactionProvider;
+    MISSING_TYPE *contentFrameChanged;
+    MISSING_TYPE *embedURL;
+    MISSING_TYPE *dataFeedURL;
+    MISSING_TYPE *location;
+    MISSING_TYPE *sourceURL;
     MISSING_TYPE *webContentViewController;
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *errorProvider;
     MISSING_TYPE *presentationManager;
-    MISSING_TYPE *interactionProvider;
     MISSING_TYPE *configurationProvider;
-    MISSING_TYPE *onReuse;
-    MISSING_TYPE *webLinkPresentingViewController;
     MISSING_TYPE *stateMachine;
     MISSING_TYPE *errorState;
     MISSING_TYPE *activityIndicator;

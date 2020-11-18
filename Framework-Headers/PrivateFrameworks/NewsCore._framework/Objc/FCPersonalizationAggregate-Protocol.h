@@ -6,13 +6,14 @@
 
 #import <NewsCore/NSObject-Protocol.h>
 
-@class NSDate, NSString;
+@class NSDate, NSDictionary, NSString;
 @protocol FCPersonalizationAggregate;
 
 @protocol FCPersonalizationAggregate <NSObject>
 
 @property (readonly, nonatomic) double clicks;
 @property (readonly, nonatomic) double confidence;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic) unsigned long long eventCount;
 @property (readonly, nonatomic) NSString *featureKey;
 @property (readonly, nonatomic) double impressions;

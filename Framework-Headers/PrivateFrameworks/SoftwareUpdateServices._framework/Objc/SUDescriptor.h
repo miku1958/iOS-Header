@@ -47,6 +47,7 @@
     NSDate *_releaseDate;
     unsigned long long _mdmDelayInterval;
     NSString *_assetID;
+    BOOL _hideInstallAlert;
     BOOL _downloadableOverCellular;
     BOOL _streamingZipCapable;
     NSString *_criticalDownloadPolicy;
@@ -65,6 +66,7 @@
 @property (nonatomic) unsigned long long downloadSize; // @synthesize downloadSize=_downloadSize;
 @property (nonatomic, getter=isDownloadable) BOOL downloadable; // @synthesize downloadable=_downloadable;
 @property (nonatomic, getter=isDownloadableOverCellular) BOOL downloadableOverCellular; // @synthesize downloadableOverCellular=_downloadableOverCellular;
+@property (nonatomic) BOOL hideInstallAlert; // @synthesize hideInstallAlert=_hideInstallAlert;
 @property (nonatomic) unsigned long long installationSize; // @synthesize installationSize=_installationSize;
 @property (nonatomic) unsigned long long mdmDelayInterval; // @synthesize mdmDelayInterval=_mdmDelayInterval;
 @property (nonatomic) unsigned long long minimumSystemPartitionSize; // @synthesize minimumSystemPartitionSize=_minimumSystemPartitionSize;

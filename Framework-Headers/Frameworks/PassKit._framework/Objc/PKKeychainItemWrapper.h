@@ -15,8 +15,10 @@
     BOOL _invisible;
     unsigned long long type;
     NSString *_label;
+    unsigned long long _accessibility;
 }
 
+@property (nonatomic) unsigned long long accessibility; // @synthesize accessibility=_accessibility;
 @property (strong, nonatomic) NSMutableDictionary *genericPasswordQuery; // @synthesize genericPasswordQuery;
 @property (strong, nonatomic) NSMutableDictionary *keychainItemData; // @synthesize keychainItemData;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
@@ -24,10 +26,12 @@
 
 - (void).cxx_destruct;
 - (void)_resetKeychainItem:(BOOL)arg1;
+- (void)applyAccessibilityValueToDictionary:(id)arg1;
 - (void)applySynchronizableValueToDictionary:(id)arg1;
 - (id)dictionaryToSecItemFormat:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 accessGroup:(id)arg2 serviceName:(id)arg3;
 - (id)initWithIdentifier:(id)arg1 accessGroup:(id)arg2 serviceName:(id)arg3 type:(unsigned long long)arg4 invisible:(BOOL)arg5;
+- (id)initWithIdentifier:(id)arg1 accessGroup:(id)arg2 serviceName:(id)arg3 type:(unsigned long long)arg4 invisible:(BOOL)arg5 accessibility:(unsigned long long)arg6;
 - (id)objectForKey:(id)arg1;
 - (void)resetKeychainItem;
 - (void)resetLocalKeychainItem;

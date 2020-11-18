@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSString, PSPhotosPolicyController;
+@protocol PSSystemPolicyForAppDelegate;
 
 @interface PSSystemPolicyForApp : NSObject
 {
@@ -14,9 +15,11 @@
     BOOL _forcePolicyOptions;
     PSPhotosPolicyController *_photosPrivacyController;
     NSString *_bundleIdentifier;
+    id<PSSystemPolicyForAppDelegate> _delegate;
 }
 
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (weak, nonatomic) id<PSSystemPolicyForAppDelegate> delegate; // @synthesize delegate=_delegate;
 
 + (BOOL)isServiceRestricted:(id)arg1;
 - (void).cxx_destruct;

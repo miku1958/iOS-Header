@@ -19,7 +19,9 @@
 
 - (void).cxx_destruct;
 - (id)initWithKeyStore:(id)arg1 application:(id)arg2;
-- (BOOL)verifyInclusionProofWithMapEntry:(id)arg1 perAppLogEntry:(id)arg2 topLevelTreeEntry:(id)arg3 error:(id *)arg4;
+- (void)setInclusionVerifiedForMapHead:(id)arg1;
+- (unsigned long long)verifyInclusionProofWithMapEntry:(id)arg1 perAppLogEntry:(id)arg2 topLevelTreeEntry:(id)arg3 error:(id *)arg4;
+- (unsigned long long)verifyPerApplicationTreeEntry:(id)arg1 mapHead:(id)arg2 topLevelTreeEntry:(id)arg3 error:(id *)arg4;
 
 @end
 

@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
 {
     WebAppViewController *_webApp;
     UIWindow *_window;
+    BOOL _wasSuspendedUnderLock;
+    BOOL _sceneHasEverEnteredForeground;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,9 +26,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIWindow *window;
 
 - (void).cxx_destruct;
+- (void)_tearDownWindowAndWebApp;
 - (void)scene:(id)arg1 willConnectToSession:(id)arg2 options:(id)arg3;
 - (void)sceneDidBecomeActive:(id)arg1;
 - (void)sceneDidDisconnect:(id)arg1;
+- (void)sceneDidEnterBackground:(id)arg1;
 - (void)sceneWillEnterForeground:(id)arg1;
 
 @end

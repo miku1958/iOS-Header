@@ -63,7 +63,7 @@
 - (BOOL)_shouldIgnoreDidScrollWithScrollView:(id)arg1;
 - (void)accessibilityHandleRequestToGoBackForPageViewControllerScrollView:(id)arg1;
 - (void)accessibilityHandleRequestToGoForewardForPageViewControllerScrollView:(id)arg1;
-- (void)addViewController:(id)arg1;
+- (void)addViewController:(id)arg1 fromScroll:(BOOL)arg2;
 - (void)callLastViewAppearanceMethods;
 - (BOOL)canSwitchToNextViewController;
 - (BOOL)canSwitchToPreviousViewController;

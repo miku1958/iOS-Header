@@ -14,7 +14,6 @@
 + (void)execute:(id)arg1 catId:(id)arg2 parameters:(id)arg3 globals:(id)arg4 callback:(id)arg5 completion:(CDUnknownBlockType)arg6;
 + (void)execute:(id)arg1 catId:(id)arg2 parameters:(id)arg3 globals:(id)arg4 callback:(id)arg5 options:(int)arg6 completion:(CDUnknownBlockType)arg7;
 + (void)execute:(id)arg1 catId:(id)arg2 parameters:(id)arg3 globals:(id)arg4 completion:(CDUnknownBlockType)arg5;
-+ (id)getPublicationUrl;
 + (id)resolve:(id)arg1 propName:(id)arg2 parameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end

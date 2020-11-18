@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSString, NTPBArticleIDsTodaySectionSpecificConfig, NTPBArticleListTodaySectionSpecificConfig, NTPBDiscoverMoreVideosInfo, NTPBForYouTodaySectionSpecificConfig, NTPBItemsTodaySectionSpecificConfig, NTPBPersonalizedSectionPresenceConfig, NTPBPersonalizedTodaySectionSpecificConfig;
+@class NSString, NTPBArticleIDsTodaySectionSpecificConfig, NTPBArticleListTodaySectionSpecificConfig, NTPBForYouTodaySectionSpecificConfig, NTPBItemsTodaySectionSpecificConfig, NTPBPersonalizedSectionPresenceConfig, NTPBPersonalizedTodaySectionSpecificConfig;
 
 @interface NTPBTodaySectionConfig : PBCodable <NSCopying>
 {
@@ -30,7 +30,6 @@
     NTPBArticleListTodaySectionSpecificConfig *_articleListTodaySectionConfig;
     NSString *_backgroundGradientColor;
     NSString *_compactName;
-    NTPBDiscoverMoreVideosInfo *_discoverMoreVideosInfo;
     NTPBForYouTodaySectionSpecificConfig *_forYouTodaySectionConfig;
     NSString *_groupActionTitle;
     NSString *_groupActionUrl;
@@ -47,13 +46,10 @@
     NSString *_referralBarName;
     int _sectionType;
     int _seenArticlesFilterMethod;
-    BOOL _displaysAsVideoPlaylist;
     BOOL _glanceable;
-    BOOL _openVideoPlaylistInApp;
     BOOL _presenceDeterminedByPersonalization;
     BOOL _shownInFavoritesOnlyMode;
     BOOL _useNameColorInWidget;
-    BOOL _videoPlaysMutedByDefault;
     struct {
         unsigned int cachedResultCutoffTime:1;
         unsigned int fallbackOrder:1;
@@ -68,13 +64,10 @@
         unsigned int readArticlesFilterMethod:1;
         unsigned int sectionType:1;
         unsigned int seenArticlesFilterMethod:1;
-        unsigned int displaysAsVideoPlaylist:1;
         unsigned int glanceable:1;
-        unsigned int openVideoPlaylistInApp:1;
         unsigned int presenceDeterminedByPersonalization:1;
         unsigned int shownInFavoritesOnlyMode:1;
         unsigned int useNameColorInWidget:1;
-        unsigned int videoPlaysMutedByDefault:1;
     } _has;
 }
 
@@ -83,8 +76,6 @@
 @property (strong, nonatomic) NSString *backgroundGradientColor; // @synthesize backgroundGradientColor=_backgroundGradientColor;
 @property (nonatomic) unsigned long long cachedResultCutoffTime; // @synthesize cachedResultCutoffTime=_cachedResultCutoffTime;
 @property (strong, nonatomic) NSString *compactName; // @synthesize compactName=_compactName;
-@property (strong, nonatomic) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo; // @synthesize discoverMoreVideosInfo=_discoverMoreVideosInfo;
-@property (nonatomic) BOOL displaysAsVideoPlaylist; // @synthesize displaysAsVideoPlaylist=_displaysAsVideoPlaylist;
 @property (nonatomic) unsigned long long fallbackOrder; // @synthesize fallbackOrder=_fallbackOrder;
 @property (strong, nonatomic) NTPBForYouTodaySectionSpecificConfig *forYouTodaySectionConfig; // @synthesize forYouTodaySectionConfig=_forYouTodaySectionConfig;
 @property (nonatomic) BOOL glanceable; // @synthesize glanceable=_glanceable;
@@ -95,8 +86,6 @@
 @property (readonly, nonatomic) BOOL hasBackgroundGradientColor;
 @property (nonatomic) BOOL hasCachedResultCutoffTime;
 @property (readonly, nonatomic) BOOL hasCompactName;
-@property (readonly, nonatomic) BOOL hasDiscoverMoreVideosInfo;
-@property (nonatomic) BOOL hasDisplaysAsVideoPlaylist;
 @property (nonatomic) BOOL hasFallbackOrder;
 @property (readonly, nonatomic) BOOL hasForYouTodaySectionConfig;
 @property (nonatomic) BOOL hasGlanceable;
@@ -111,7 +100,6 @@
 @property (nonatomic) BOOL hasMinimumStoriesAllocation;
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasNameColor;
-@property (nonatomic) BOOL hasOpenVideoPlaylistInApp;
 @property (readonly, nonatomic) BOOL hasPersonalizationFeatureID;
 @property (readonly, nonatomic) BOOL hasPersonalizedPresenceConfig;
 @property (nonatomic) BOOL hasPersonalizedPresenceFeatureClickPrior;
@@ -126,7 +114,6 @@
 @property (nonatomic) BOOL hasSeenArticlesMinimumTimeSinceFirstSeenToFilter;
 @property (nonatomic) BOOL hasShownInFavoritesOnlyMode;
 @property (nonatomic) BOOL hasUseNameColorInWidget;
-@property (nonatomic) BOOL hasVideoPlaysMutedByDefault;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) unsigned long long interSectionFilteringOptions; // @synthesize interSectionFilteringOptions=_interSectionFilteringOptions;
 @property (nonatomic) unsigned long long intraSectionFilteringOptions; // @synthesize intraSectionFilteringOptions=_intraSectionFilteringOptions;
@@ -136,7 +123,6 @@
 @property (nonatomic) unsigned long long minimumStoriesAllocation; // @synthesize minimumStoriesAllocation=_minimumStoriesAllocation;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSString *nameColor; // @synthesize nameColor=_nameColor;
-@property (nonatomic) BOOL openVideoPlaylistInApp; // @synthesize openVideoPlaylistInApp=_openVideoPlaylistInApp;
 @property (strong, nonatomic) NSString *personalizationFeatureID; // @synthesize personalizationFeatureID=_personalizationFeatureID;
 @property (strong, nonatomic) NTPBPersonalizedSectionPresenceConfig *personalizedPresenceConfig; // @synthesize personalizedPresenceConfig=_personalizedPresenceConfig;
 @property (nonatomic) unsigned long long personalizedPresenceFeatureClickPrior; // @synthesize personalizedPresenceFeatureClickPrior=_personalizedPresenceFeatureClickPrior;
@@ -153,7 +139,6 @@
 @property (nonatomic) unsigned long long seenArticlesMinimumTimeSinceFirstSeenToFilter; // @synthesize seenArticlesMinimumTimeSinceFirstSeenToFilter=_seenArticlesMinimumTimeSinceFirstSeenToFilter;
 @property (nonatomic) BOOL shownInFavoritesOnlyMode; // @synthesize shownInFavoritesOnlyMode=_shownInFavoritesOnlyMode;
 @property (nonatomic) BOOL useNameColorInWidget; // @synthesize useNameColorInWidget=_useNameColorInWidget;
-@property (nonatomic) BOOL videoPlaysMutedByDefault; // @synthesize videoPlaysMutedByDefault=_videoPlaysMutedByDefault;
 
 - (void)addQueueMembership:(unsigned long long)arg1;
 - (void)clearQueueMemberships;

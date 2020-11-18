@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *headline;
     MISSING_TYPE *origin;
+    MISSING_TYPE *headlineState;
 }
 
 @end

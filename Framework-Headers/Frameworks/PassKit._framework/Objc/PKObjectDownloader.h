@@ -25,6 +25,9 @@
 + (id)sharedImageAssetDownloader;
 - (void).cxx_destruct;
 - (void)_handleResponseForURL:(id)arg1 data:(id)arg2 response:(id)arg3 error:(id)arg4;
+- (id)_logStringFromCachedResponse:(id)arg1 data:(id)arg2;
+- (id)_logStringFromRequest:(id)arg1;
+- (id)_logStringFromResponse:(id)arg1 data:(id)arg2;
 - (void)_scheduleDownload:(id)arg1 forURL:(id)arg2;
 - (void)_schedulePendingDownloads;
 - (id)cachedDataForURL:(id)arg1;

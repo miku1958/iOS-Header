@@ -301,6 +301,7 @@
 - (void)_updateWebKitExperimentalFeatures;
 - (void)_updateWebViewLayoutSize;
 - (void)_updateWebViewShrinkToFit;
+- (void)_willBeginUserInitiatedNavigation;
 - (void)_willCommitContextMenuForWebView:(id)arg1 withAnimator:(id)arg2;
 - (void)_willPresentContextMenu;
 - (void)activityViewController:(id)arg1 prepareActivity:(id)arg2 completion:(CDUnknownBlockType)arg3;

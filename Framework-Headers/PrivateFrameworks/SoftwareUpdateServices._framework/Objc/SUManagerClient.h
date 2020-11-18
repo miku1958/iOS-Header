@@ -79,6 +79,7 @@
 - (void)downloadDidStart:(id)arg1;
 - (void)downloadProgressDidChange:(id)arg1;
 - (void)downloadWasInvalidatedForNewUpdateAvailable:(id)arg1;
+- (void)enableAutomaticDownload:(BOOL)arg1;
 - (void)enableAutomaticUpdateV2:(BOOL)arg1;
 - (void)extraSpaceNeededForDownloadWithoutAppPurging:(CDUnknownBlockType)arg1;
 - (void)getMandatorySoftwareUpdateDictionary:(CDUnknownBlockType)arg1;
@@ -98,6 +99,7 @@
 - (void)invalidate;
 - (void)isAutoUpdateEnabled:(CDUnknownBlockType)arg1;
 - (void)isAutoUpdateScheduled:(CDUnknownBlockType)arg1;
+- (BOOL)isAutomaticDownloadEnabled;
 - (BOOL)isAutomaticUpdateV2Enabled;
 - (void)isDelayingUpdates:(CDUnknownBlockType)arg1;
 - (void)isDownloading:(CDUnknownBlockType)arg1;

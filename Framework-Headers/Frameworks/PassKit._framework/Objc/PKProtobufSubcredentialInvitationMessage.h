@@ -15,6 +15,7 @@
     NSString *_dataString;
     NSString *_phoneInvitation;
     int _status;
+    NSString *_uniqueIdentifier;
     unsigned int _version;
     NSString *_watchInvitation;
     CDStruct_47fe53f2 _has;
@@ -24,9 +25,11 @@
 @property (readonly, nonatomic) BOOL hasDataString;
 @property (readonly, nonatomic) BOOL hasPhoneInvitation;
 @property (nonatomic) BOOL hasStatus;
+@property (readonly, nonatomic) BOOL hasUniqueIdentifier;
 @property (readonly, nonatomic) BOOL hasWatchInvitation;
 @property (strong, nonatomic) NSString *phoneInvitation; // @synthesize phoneInvitation=_phoneInvitation;
 @property (nonatomic) int status; // @synthesize status=_status;
+@property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (nonatomic) unsigned int version; // @synthesize version=_version;
 @property (strong, nonatomic) NSString *watchInvitation; // @synthesize watchInvitation=_watchInvitation;
 

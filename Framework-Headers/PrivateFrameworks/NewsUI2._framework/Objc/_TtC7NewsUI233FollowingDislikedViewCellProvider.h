@@ -11,7 +11,7 @@
 @interface _TtC7NewsUI233FollowingDislikedViewCellProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *followingRowViewRenderer;
+    MISSING_TYPE *tagViewRenderer;
 }
 
 @end

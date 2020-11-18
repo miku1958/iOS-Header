@@ -10,7 +10,7 @@
 
 @interface _TtC8NewsFeed16FollowingManager : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *notificationManager;
+    MISSING_TYPE *notificationPrompter;
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *alertPresenter;
 }

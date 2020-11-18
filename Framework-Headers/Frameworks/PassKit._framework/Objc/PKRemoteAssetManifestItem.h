@@ -35,6 +35,7 @@
 @property (copy, nonatomic) NSDictionary *manifest; // @synthesize manifest=_manifest;
 @property (copy, nonatomic) NSURL *passURL; // @synthesize passURL=_passURL;
 @property (copy, nonatomic) NSString *publicKeyHash; // @synthesize publicKeyHash=_publicKeyHash;
+@property (readonly, weak, nonatomic) NSString *relativeEncryptedContentsLocalPath;
 @property (readonly, weak, nonatomic) NSString *relativeLocalPath;
 @property (copy, nonatomic) NSURL *remoteURL; // @synthesize remoteURL=_remoteURL;
 @property (copy, nonatomic) NSString *seid; // @synthesize seid=_seid;

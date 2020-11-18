@@ -10,5 +10,6 @@
 
 @property (nonatomic, setter=ts_setIsEligibleForPrediction:) BOOL ts_isEligibleForPrediction;
 
+- (long long)ts_executionContext;
 @end
 

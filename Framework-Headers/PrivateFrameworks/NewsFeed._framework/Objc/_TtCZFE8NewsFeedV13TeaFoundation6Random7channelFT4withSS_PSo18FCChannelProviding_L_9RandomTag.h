@@ -20,6 +20,7 @@
 - (id)initChannelFromNotificationWithIdentifier:(id)arg1 name:(id)arg2 nameImageAssetHandle:(id)arg3 nameImageMaskAssetHandle:(id)arg4;
 - (id)initForTestingWithTagType:(unsigned long long)arg1 identifier:(id)arg2 name:(id)arg3;
 - (id)initWithData:(id)arg1 context:(id)arg2;
+- (id)initWithTagRecord:(id)arg1 assetManager:(id)arg2 interestToken:(id)arg3;
 - (id)initWithTagType:(unsigned long long)arg1 identifier:(id)arg2 name:(id)arg3;
 
 @end

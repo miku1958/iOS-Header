@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *newsroomService;
     MISSING_TYPE *$__lazy_storage_$_urlSessionPool;
+    MISSING_TYPE *uploadQueue;
 }
 
 @end

@@ -17,7 +17,6 @@
     id<NTTodayResultsFetchDescriptor> _fetchDescriptor;
     id<NTReadablePrivateDataStorage> _privateDataStorage;
     id<FCContentContext> _contentContext;
-    CDUnknownBlockType _sessionProvider;
     FCAsyncSerialQueue *_serialQueue;
     NSObject *_latestResultRecordsHoldToken;
 }
@@ -31,14 +30,13 @@
 @property (strong, nonatomic) NSObject *latestResultRecordsHoldToken; // @synthesize latestResultRecordsHoldToken=_latestResultRecordsHoldToken;
 @property (readonly, nonatomic) id<NTReadablePrivateDataStorage> privateDataStorage; // @synthesize privateDataStorage=_privateDataStorage;
 @property (readonly, nonatomic) FCAsyncSerialQueue *serialQueue; // @synthesize serialQueue=_serialQueue;
-@property (readonly, copy, nonatomic) CDUnknownBlockType sessionProvider; // @synthesize sessionProvider=_sessionProvider;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_fetchLatestResultsWithOperationInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchLatestResultsWithOperationInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)initWithFetchDescriptor:(id)arg1 privateDataStorage:(id)arg2 contentContext:(id)arg3 sessionProvider:(CDUnknownBlockType)arg4 fetchQueue:(id)arg5;
+- (id)initWithFetchDescriptor:(id)arg1 privateDataStorage:(id)arg2 contentContext:(id)arg3 fetchQueue:(id)arg4;
 
 @end
 

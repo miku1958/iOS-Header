@@ -7,13 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <CoreUtils/CXCallObserverDelegate-Protocol.h>
+#import <CoreUtils/CoreTelephonyClientDelegate-Protocol.h>
 #import <CoreUtils/FMFSessionDelegate-Protocol.h>
 
-@class CUBluetoothClient, CUNetInterfaceMonitor, CUSystemMonitor, CUWiFiManager, CXCallObserver, NSArray, NSData, NSMutableArray, NSMutableSet, NSString;
+@class CUBluetoothClient, CUNetInterfaceMonitor, CUSystemMonitor, CUWiFiManager, CXCallObserver, CoreTelephonyClient, NSArray, NSData, NSMutableArray, NSMutableSet, NSString, RTRoutineManager;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface CUSystemMonitorImp : NSObject <FMFSessionDelegate, CXCallObserverDelegate>
+@interface CUSystemMonitorImp : NSObject <FMFSessionDelegate, CXCallObserverDelegate, CoreTelephonyClientDelegate>
 {
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSMutableSet *_monitors;
@@ -51,6 +52,14 @@ __attribute__((visibility("hidden")))
     BOOL _primaryAppleIDIsHSA2;
     int _primaryAppleIDNotifyToken;
     BOOL _primaryAppleIDObserving;
+    CoreTelephonyClient *_regionCTClient;
+    struct __CTServerConnection *_regionCTServerCnx;
+    NSString *_regionISOCountryCode;
+    NSString *_regionMobileCountryCode;
+    RTRoutineManager *_regionRoutineManager;
+    NSString *_regionRoutineCountry;
+    int _regionRoutineNotifyToken;
+    NSString *_regionRoutineState;
     CDStruct_83abfce7 _rotatingIdentifier48;
     NSData *_rotatingIdentifierData;
     NSObject<OS_dispatch_source> *_rotatingIdentifierTimer;
@@ -94,6 +103,7 @@ __attribute__((visibility("hidden")))
 - (void)_firstUnlockMonitorStop;
 - (BOOL)_hasMonitorPassingTest:(CDUnknownBlockType)arg1;
 - (void)_invokeBlock:(CDUnknownBlockType)arg1 passingTest:(CDUnknownBlockType)arg2;
+- (void)_locationsOfInterestDidChange:(BOOL)arg1;
 - (void)_manateeChanged:(id)arg1;
 - (void)_manateeMonitorStart;
 - (void)_manateeMonitorStop;
@@ -110,6 +120,11 @@ __attribute__((visibility("hidden")))
 - (void)_primaryAppleIDChanged:(id)arg1;
 - (void)_primaryAppleIDMonitorStart;
 - (void)_primaryAppleIDMonitorStop;
+- (void)_regionMonitorGet;
+- (void)_regionMonitorStart;
+- (void)_regionMonitorStop;
+- (void)_regionMonitorUpdateLocationsOfInterest:(id)arg1;
+- (void)_regionMonitorUpdateMCC:(id)arg1;
 - (void)_rotatingIdentifierMonitorStart;
 - (void)_rotatingIdentifierMonitorStop;
 - (void)_rotatingIdentifierTimerFired;
@@ -132,6 +147,7 @@ __attribute__((visibility("hidden")))
 - (void)_wifiMonitorStop;
 - (void)addMonitor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)callObserver:(id)arg1 callChanged:(id)arg2;
+- (void)cellMonitorUpdate:(id)arg1 info:(id)arg2;
 - (id)init;
 - (void)removeMonitor:(id)arg1;
 - (void)updateWithQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;

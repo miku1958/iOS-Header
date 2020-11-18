@@ -17,6 +17,9 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *blueprintViewController;
     MISSING_TYPE *blueprintSelectionProvider;
     MISSING_TYPE *sharingActivityProviderFactory;
+    MISSING_TYPE *barCompressionManager;
+    MISSING_TYPE *refreshStateMachine;
+    MISSING_TYPE *refreshControl;
     MISSING_TYPE *isBeingUsedAsPlugin;
     MISSING_TYPE *pluggableDelegate;
 }
@@ -27,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

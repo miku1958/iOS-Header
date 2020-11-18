@@ -7,7 +7,6 @@
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
 @class MISSING_TYPE;
-@protocol TSEmailSignupEventHandlerTypeDelegate;
 
 @interface _TtC7NewsUI223EmailSignupEventHandler : _TtCs12_SwiftObject
 {
@@ -15,12 +14,6 @@
     MISSING_TYPE *interactor;
     MISSING_TYPE *router;
 }
-
-@property (nonatomic, weak) id<TSEmailSignupEventHandlerTypeDelegate> delegate; // @synthesize delegate;
-
-- (void)emailSignUpViewControllerNotNowButtonTapped;
-- (void)emailSignUpViewControllerSignUpButtonTapped;
-- (void)viewAppeared;
 
 @end
 

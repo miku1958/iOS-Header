@@ -10,21 +10,21 @@
 #import <NewsUI/UIScrollViewDelegate-Protocol.h>
 #import <NewsUI/WKNavigationDelegatePrivate-Protocol.h>
 
-@class FCArticle, NSString, SWCrashRetryThrottler, WKWebView;
-@protocol NULoadingDelegate;
+@class NSString, SWCrashRetryThrottler, WKWebView;
+@protocol FCHeadlineProviding, NULoadingDelegate;
 
 @interface NUArticleWebViewController : UIViewController <UIScrollViewDelegate, WKNavigationDelegatePrivate, NULoadable>
 {
     id<NULoadingDelegate> _loadingDelegate;
-    FCArticle *_article;
+    id<FCHeadlineProviding> _headline;
     WKWebView *_webView;
     SWCrashRetryThrottler *_webCrashRetryThrottler;
 }
 
-@property (readonly, nonatomic) FCArticle *article; // @synthesize article=_article;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<FCHeadlineProviding> headline; // @synthesize headline=_headline;
 @property (weak, nonatomic) id<NULoadingDelegate> loadingDelegate; // @synthesize loadingDelegate=_loadingDelegate;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) SWCrashRetryThrottler *webCrashRetryThrottler; // @synthesize webCrashRetryThrottler=_webCrashRetryThrottler;
@@ -35,7 +35,7 @@
 - (void)_webView:(id)arg1 renderingProgressDidChange:(unsigned long long)arg2;
 - (void)_webViewWebProcessDidCrash:(id)arg1;
 - (void)dealloc;
-- (id)initWithArticle:(id)arg1;
+- (id)initWithHeadline:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLayoutSubviews;

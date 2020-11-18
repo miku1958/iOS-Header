@@ -37,6 +37,7 @@
 - (id)serviceName;
 - (void)setSpecifier:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)willBeginAuthWithContext:(id)arg1;
 
 @end
 

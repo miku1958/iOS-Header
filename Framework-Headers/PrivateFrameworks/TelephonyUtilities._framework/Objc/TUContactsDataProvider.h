@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class TUContactsDataProviderIgnoredHandles;
+@class TUContactsDataProviderAppleCareHandles;
 @protocol TUContactsDataSource;
 
 @interface TUContactsDataProvider : NSObject
@@ -14,11 +14,11 @@
     BOOL _useAsianNameFormat;
     CDUnknownBlockType _localeSupportsPrefixHintForFetchRequest;
     id<TUContactsDataSource> _contactsDataSource;
-    TUContactsDataProviderIgnoredHandles *_ignoredHandles;
+    TUContactsDataProviderAppleCareHandles *_appleCareHandles;
 }
 
+@property (copy, nonatomic) TUContactsDataProviderAppleCareHandles *appleCareHandles; // @synthesize appleCareHandles=_appleCareHandles;
 @property (readonly, nonatomic) id<TUContactsDataSource> contactsDataSource; // @synthesize contactsDataSource=_contactsDataSource;
-@property (copy, nonatomic) TUContactsDataProviderIgnoredHandles *ignoredHandles; // @synthesize ignoredHandles=_ignoredHandles;
 @property (copy, nonatomic) CDUnknownBlockType localeSupportsPrefixHintForFetchRequest; // @synthesize localeSupportsPrefixHintForFetchRequest=_localeSupportsPrefixHintForFetchRequest;
 @property (nonatomic) BOOL useAsianNameFormat; // @synthesize useAsianNameFormat=_useAsianNameFormat;
 

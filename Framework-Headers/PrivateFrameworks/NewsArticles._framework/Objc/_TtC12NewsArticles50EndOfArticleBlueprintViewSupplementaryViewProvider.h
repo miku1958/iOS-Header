@@ -14,6 +14,7 @@
     MISSING_TYPE *feedItemSupplementaryRenderer;
     MISSING_TYPE *publisherViewRenderer;
     MISSING_TYPE *titleViewRenderer;
+    MISSING_TYPE *didTapButton;
 }
 
 @end

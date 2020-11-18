@@ -248,6 +248,7 @@
 - (void).cxx_destruct;
 - (id)_formatBalanceAdjustmentAmount:(id)arg1;
 - (id)_latestDisputeEvent;
+- (id)_preformattedStringForMultipleAmounts;
 - (id)_transactionSourceString;
 - (id)_transactionTypeString;
 - (id)_transitSubtypeString;
@@ -258,6 +259,7 @@
 - (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)formattedStringForMultipleAmounts;
 - (id)formattedTransitTransactionMessage:(BOOL)arg1;
 - (BOOL)hasCloudArchivableDeviceData;
 - (unsigned long long)hash;
@@ -267,8 +269,10 @@
 - (BOOL)isCloudArchivableDeviceDataEqual:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPaymentTransaction:(id)arg1;
+- (BOOL)isZeroTransaction;
 - (unsigned long long)itemType;
 - (id)recordTypesAndNamesIncludingServerData:(BOOL)arg1;
+- (id)transactionAmountsForMultipleAmounts;
 - (id)updateReasonsDescription;
 
 @end

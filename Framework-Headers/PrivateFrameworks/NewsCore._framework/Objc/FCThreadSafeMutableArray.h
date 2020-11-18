@@ -21,6 +21,7 @@
 - (void)addObjectsFromArray:(id)arg1;
 - (void)enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)readWriteWithAccessor:(CDUnknownBlockType)arg1;
 
 @end
 

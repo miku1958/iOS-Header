@@ -75,7 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)setExtension:(id)arg1 value:(id)arg2;
 - (void)writeDelimitedToCodedOutputStream:(id)arg1;
 - (void)writeDelimitedToOutputStream:(id)arg1;
-- (void)writeExtensionsToCodedOutputStream:(id)arg1 range:(struct GPBExtensionRange)arg2;
+- (void)writeExtensionsToCodedOutputStream:(id)arg1 range:(struct GPBExtensionRange)arg2 sortedExtensions:(id)arg3;
 - (void)writeField:(id)arg1 toCodedOutputStream:(id)arg2;
 - (void)writeToCodedOutputStream:(id)arg1;
 - (void)writeToOutputStream:(id)arg1;

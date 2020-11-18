@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *issueCoverViewRenderer;
     MISSING_TYPE *publisherLogoImageCache;
-    MISSING_TYPE *traitCollection;
     MISSING_TYPE *rendererTool;
 }
 

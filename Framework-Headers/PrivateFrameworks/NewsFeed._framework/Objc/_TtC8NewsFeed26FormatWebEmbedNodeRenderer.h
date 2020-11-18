@@ -10,7 +10,7 @@
 
 @interface _TtC8NewsFeed26FormatWebEmbedNodeRenderer : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *traitCollection;
+    MISSING_TYPE *reuseProtector;
 }
 
 @end

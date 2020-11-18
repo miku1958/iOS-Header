@@ -20,7 +20,6 @@
 @property (copy, nonatomic) NSArray *accessories; // @dynamic accessories;
 @property (strong, nonatomic) HMDAccount *account; // @dynamic account;
 @property (copy, nonatomic) HMDApplicationData *applicationData; // @dynamic applicationData;
-@property (nonatomic) unsigned long long assistantGenerationCounter; // @dynamic assistantGenerationCounter;
 @property (copy, nonatomic) NSArray *cloudZones; // @dynamic cloudZones;
 @property (copy, nonatomic) NSString *currentDevice; // @dynamic currentDevice;
 @property (copy, nonatomic) NSUUID *dataTag; // @dynamic dataTag;

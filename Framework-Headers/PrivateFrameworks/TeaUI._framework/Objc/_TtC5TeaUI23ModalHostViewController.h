@@ -13,6 +13,8 @@
     MISSING_TYPE *style;
     MISSING_TYPE *viewController;
     MISSING_TYPE *closeButton;
+    MISSING_TYPE *transitionEffectView;
+    MISSING_TYPE *effect;
 }
 
 - (void).cxx_destruct;

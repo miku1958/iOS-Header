@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *tracker;
+    MISSING_TYPE *audioPlaybackContext;
     MISSING_TYPE *issueSessionManager;
     MISSING_TYPE *channelDataFactory;
     MISSING_TYPE *scienceDataFactory;

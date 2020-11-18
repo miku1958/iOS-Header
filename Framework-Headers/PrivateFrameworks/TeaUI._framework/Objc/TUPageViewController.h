@@ -20,13 +20,13 @@
     id<TUPageViewControllerDataSource> _dataSource;
     id<TUPageViewControllerDelegate> _delegate;
     UIViewController *_visibleViewController;
+    UIViewController *_secondaryVisibleViewController;
+    UIViewController *_previousViewController;
+    UIViewController *_nextViewController;
     double _pageGutter;
     TUPageViewControllerScrollView *_scrollView;
     NSObject<OS_dispatch_group> *_idleDispatchGroup;
     UIViewController *_managedForViewController;
-    UIViewController *_previousViewController;
-    UIViewController *_nextViewController;
-    UIViewController *_possibleNextViewController;
     UIViewController *_originalVisibleViewController;
     UIViewController *_appearingViewController;
     UIViewController *_disappearingViewController;
@@ -50,11 +50,11 @@
 @property (nonatomic) double pageGutter; // @synthesize pageGutter=_pageGutter;
 @property (readonly, nonatomic) struct CGSize pageSize;
 @property (nonatomic) BOOL pagingEnabled;
-@property (strong, nonatomic) UIViewController *possibleNextViewController; // @synthesize possibleNextViewController=_possibleNextViewController;
 @property (strong, nonatomic) UIViewController *previousViewController; // @synthesize previousViewController=_previousViewController;
 @property (strong, nonatomic) NSMutableArray *replayViewTransitions; // @synthesize replayViewTransitions=_replayViewTransitions;
 @property (readonly, nonatomic) TUPageViewControllerScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (readonly, nonatomic) BOOL scrollViewStartedScrolling; // @synthesize scrollViewStartedScrolling=_scrollViewStartedScrolling;
+@property (readonly, nonatomic) UIViewController *secondaryVisibleViewController; // @synthesize secondaryVisibleViewController=_secondaryVisibleViewController;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) struct CGSize transitioningSize; // @synthesize transitioningSize=_transitioningSize;
 @property (strong, nonatomic) UIViewController *visibleViewController; // @synthesize visibleViewController=_visibleViewController;
@@ -65,7 +65,7 @@
 - (BOOL)_shouldIgnoreDidScrollWithScrollView:(id)arg1;
 - (void)accessibilityHandleRequestToGoBackForPageViewControllerScrollView:(id)arg1;
 - (void)accessibilityHandleRequestToGoForewardForPageViewControllerScrollView:(id)arg1;
-- (void)addViewController:(id)arg1;
+- (void)addViewController:(id)arg1 fromScroll:(BOOL)arg2;
 - (struct CGRect)calculateScrollViewFrameFromViewBounds:(struct CGRect)arg1;
 - (void)callLastViewAppearanceMethods;
 - (BOOL)canSwitchToNextViewController;
@@ -90,6 +90,7 @@
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
+- (void)setSecondaryVisibleViewController:(id)arg1;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (void)switchToNextViewController;
 - (void)switchToPreviousViewController;

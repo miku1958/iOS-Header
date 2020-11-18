@@ -66,9 +66,9 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : #F
+	var width : ±?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : #F
+	var height : ±?
  }
 
  struct __C.CGRect {
@@ -82,9 +82,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : #F
+	var x : ±?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : #F
+	var y : ±?
  }
 
  class TeaDB.KeyValueStore {
@@ -151,7 +151,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case bool : Bool
 	case double : Double
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case blob : ÒC
+	case blob : ó=
 	case null  
  }
 
@@ -173,7 +173,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let queue : OS_dispatch_queue // +0x18 (0x8)
 
 	// Swift methods
-	0x112c0  class func Database.__allocating_init(location:) // init 
+	0x12050  class func Database.__allocating_init(location:) // init 
  }
 
  enum TeaDB.Location {
@@ -251,7 +251,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let handle : +D // +0x10 (0x8)
+	let handle : Ÿ= // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -276,6 +276,42 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case id  
 	case version  
+ }
+
+ class TeaDB.MixedKeyValueStore {
+ struct TeaDB.Promises {
+
+	// Properties
+	var kvs : MixedKeyValueStore
+ }
+
+ struct TeaDB.MKVSEntity {
+
+	// Properties
+	var id : Column
+	var updatedAt : Column
+	var valueJson : Column
+ }
+
+ struct TeaDB.MKVSEntry {
+
+	// Properties
+	var entity : MKVSEntity
+	var value : B
+ }
+
+ enum TeaDB.TranslationError {
+
+	// Properties
+	case missingRoot  
+ }
+
+ enum TeaDB.CodingKeys {
+
+	// Properties
+	case id  
+	case updatedAt  
+	case valueJson  
  }
 
  class TeaDB.Statement {
@@ -303,7 +339,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let handle : +D // +0x10 (0x8)
+	let handle : Ÿ= // +0x10 (0x8)
 
 	// Swift methods
  }

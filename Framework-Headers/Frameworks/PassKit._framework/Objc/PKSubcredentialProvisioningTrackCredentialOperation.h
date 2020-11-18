@@ -12,7 +12,7 @@
 {
     BOOL _performingOperation;
     BOOL _hasTrackedCredential;
-    BOOL _firstTransactionSucceeded;
+    BOOL _firstTransactionCompleted;
     PKAppletSubcredential *_subcredential;
     NSData *_trackingAttestation;
     CDUnknownBlockType _completionHandler;

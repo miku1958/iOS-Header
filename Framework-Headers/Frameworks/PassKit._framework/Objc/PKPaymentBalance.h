@@ -21,6 +21,7 @@
     NSString *_localizedTitle;
     NSString *_localizedDescription;
     NSDate *_lastUpdateDate;
+    NSString *_preformattedString;
 }
 
 @property (copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
@@ -33,6 +34,7 @@
 @property (copy, nonatomic) NSDate *lastUpdateDate; // @synthesize lastUpdateDate=_lastUpdateDate;
 @property (copy, nonatomic) NSString *localizedDescription; // @synthesize localizedDescription=_localizedDescription;
 @property (copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
+@property (copy, nonatomic) NSString *preformattedString; // @synthesize preformattedString=_preformattedString;
 @property (copy, nonatomic) NSDecimalNumber *value; // @synthesize value=_value;
 
 + (BOOL)supportsSecureCoding;

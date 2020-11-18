@@ -22,6 +22,7 @@
     NSDictionary *_interfaceProtocolMapping;
     NSString *_activeInterfaceProtocolKey;
     NSDictionary *_serviceExceptions;
+    NSDictionary *_applicationExceptions;
     NSDictionary *_allowedCaptiveNetworkPlugins;
 }
 
@@ -29,6 +30,7 @@
 @property (getter=isAllowAllCaptiveNetworkPlugins) BOOL allowAllCaptiveNetworkPlugins; // @synthesize allowAllCaptiveNetworkPlugins=_allowAllCaptiveNetworkPlugins;
 @property (getter=isAllowCaptiveWebSheet) BOOL allowCaptiveWebSheet; // @synthesize allowCaptiveWebSheet=_allowCaptiveWebSheet;
 @property (copy) NSDictionary *allowedCaptiveNetworkPlugins; // @synthesize allowedCaptiveNetworkPlugins=_allowedCaptiveNetworkPlugins;
+@property (copy) NSDictionary *applicationExceptions; // @synthesize applicationExceptions=_applicationExceptions;
 @property (getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (copy) NSDictionary *interfaceProtocolMapping; // @synthesize interfaceProtocolMapping=_interfaceProtocolMapping;
 @property (copy) NSDictionary *serviceExceptions; // @synthesize serviceExceptions=_serviceExceptions;

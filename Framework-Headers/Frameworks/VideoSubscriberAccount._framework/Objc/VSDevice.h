@@ -6,21 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class NSOperationQueue, VSRemoteNotifier;
+#import <VideoSubscriberAccount/VSRemoteNotifierDelegate-Protocol.h>
 
-@interface VSDevice : NSObject
+@class MCProfileConnection, NSOperationQueue, NSString, VSRemoteNotifier;
+@protocol VSDeviceDelegate;
+
+@interface VSDevice : NSObject <VSRemoteNotifierDelegate>
 {
+    id<VSDeviceDelegate> _delegate;
     CDUnknownFunctionPointerType _copyAnswer;
     NSOperationQueue *_privateQueue;
     VSRemoteNotifier *_setTopBoxStateRemoteNotifier;
+    MCProfileConnection *_profileConnection;
 }
 
 @property (nonatomic) CDUnknownFunctionPointerType copyAnswer; // @synthesize copyAnswer=_copyAnswer;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<VSDeviceDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long deviceType;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
+@property (strong, nonatomic) MCProfileConnection *profileConnection; // @synthesize profileConnection=_profileConnection;
 @property (readonly, nonatomic, getter=isRunningACustomerBuild) BOOL runningACustomerBuild;
 @property (readonly, nonatomic, getter=isRunningAnInternalBuild) BOOL runningAnInternalBuild;
 @property (strong, nonatomic) VSRemoteNotifier *setTopBoxStateRemoteNotifier; // @synthesize setTopBoxStateRemoteNotifier=_setTopBoxStateRemoteNotifier;
+@property (readonly) Class superclass;
 
 + (unsigned long long)_deviceTypeWithCopyAnswer:(CDUnknownFunctionPointerType)arg1;
 + (BOOL)_getMobileGestaltBoolean:(struct __CFString *)arg1 withCopyAnswer:(CDUnknownFunctionPointerType)arg2;
@@ -29,10 +40,13 @@
 + (id)currentDevice;
 - (void).cxx_destruct;
 - (id)accountDeletionConfirmationMessageForIdentityProviderDisplayName:(id)arg1;
+- (void)cloudConfigurationDidChange;
+- (void)dealloc;
 - (id)developerIdentityProviderDeletionConfirmationMessage;
 - (void)fetchDeviceManagedSetTopBoxProfileWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSetTopBoxProfileWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)refreshSetTopBoxProfile:(CDUnknownBlockType)arg1;
 - (BOOL)setIgnoreSetTopBoxProfile:(BOOL)arg1;
 
 @end

@@ -5,11 +5,12 @@
 //
 
 @class NSArray, NSSet, NSString;
+@protocol FCTagProviding;
 
 @protocol FCForYouBridgedFeedGroup
 
 @property (nonatomic, readonly) NSArray *assetHandles;
-@property (nonatomic, readonly) NSString *backingTagID;
+@property (nonatomic, readonly) id<FCTagProviding> backingTag;
 @property (nonatomic, readonly) NSSet *equivalentTopicIDs;
 @property (nonatomic, readonly) NSArray *headlines;
 @property (nonatomic, readonly) NSString *identifier;

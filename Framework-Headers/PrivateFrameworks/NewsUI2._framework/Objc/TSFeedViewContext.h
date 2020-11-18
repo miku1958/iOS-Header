@@ -13,20 +13,21 @@
     MISSING_TYPE *presentationReason;
     MISSING_TYPE *feedPickerSection;
     MISSING_TYPE *feedPickerType;
+    MISSING_TYPE *displayRank;
+    MISSING_TYPE *externalAnalyticsFeedReferrer;
+    MISSING_TYPE *previousArticleID;
+    MISSING_TYPE *previousArticleVersion;
+    MISSING_TYPE *showSubscribedAlert;
+    MISSING_TYPE *referral;
     MISSING_TYPE *sourceURL;
+    MISSING_TYPE *title;
     MISSING_TYPE *sourceApplication;
     MISSING_TYPE *userActivityType;
     MISSING_TYPE *sourceSearchText;
     MISSING_TYPE *adPreviewID;
     MISSING_TYPE *adPreviewSessionID;
-    MISSING_TYPE *maximumAdRequestsForCurrentAdPreviewID;
-    MISSING_TYPE *displayRank;
-    MISSING_TYPE *externalAnalyticsFeedReferrer;
-    MISSING_TYPE *referral;
-    MISSING_TYPE *previousArticleID;
-    MISSING_TYPE *previousArticleVersion;
-    MISSING_TYPE *showSubscribedAlert;
     MISSING_TYPE *adQToken;
+    MISSING_TYPE *maximumAdRequestsForCurrentAdPreviewID;
 }
 
 @property (nonatomic, copy) NSString *adPreviewID;
@@ -45,6 +46,7 @@
 @property (nonatomic, copy) NSString *sourceApplication;
 @property (nonatomic, copy) NSString *sourceSearchText;
 @property (nonatomic, copy) NSURL *sourceURL;
+@property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *userActivityType;
 
 - (void).cxx_destruct;

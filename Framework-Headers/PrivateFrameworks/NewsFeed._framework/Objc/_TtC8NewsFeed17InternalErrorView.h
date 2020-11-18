@@ -13,6 +13,7 @@
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *messageLabel;
+    MISSING_TYPE *debugButton;
 }
 
 - (void).cxx_destruct;

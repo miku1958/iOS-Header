@@ -15,6 +15,7 @@
 - (BOOL)canAddSecureElementPassWithConfiguration:(PKAddSecureElementPassConfiguration *)arg1;
 - (void)commutePlanReminderForCommutePlan:(PKTransitCommutePlan *)arg1 pass:(PKPaymentPass *)arg2 withCompletion:(void (^)(PKPaymentCommutePlanReminder *))arg3;
 - (void)connect;
+- (void)credentialedPassUniqueIDsWithReply:(void (^)(NSSet *))arg1;
 - (void)defaultCard:(void (^)(NSString *))arg1;
 - (void)defaultPaymentApplicationForPassWithUniqueID:(NSString *)arg1 completion:(void (^)(PKPaymentApplication *))arg2;
 - (void)deletePaymentTransactionWithIdentifier:(NSString *)arg1 passUniqueIdentifier:(NSString *)arg2 fromDeviceWithPairingID:(NSUUID *)arg3 completion:(void (^)(NSError *))arg4;

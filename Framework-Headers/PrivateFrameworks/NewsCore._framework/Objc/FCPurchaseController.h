@@ -30,6 +30,7 @@
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
+@property (readonly, nonatomic) NSSet *allPurchaseIDs;
 @property (readonly, nonatomic) NSSet *allPurchasedTagIDs;
 @property (readonly, nonatomic) NSSet *allTagIDs;
 @property (strong, nonatomic) FCCloudContext *cloudContext; // @synthesize cloudContext=_cloudContext;
@@ -54,6 +55,7 @@
 - (id)_allPurchasedTagIDs;
 - (void)_applicationDidEnterBackground;
 - (void)_entitlementCheckWithIgnoreCache:(BOOL)arg1 restorableBundleIAPs:(id)arg2 callbackQueue:(id)arg3 completion:(CDUnknownBlockType)arg4 serialCompletion:(CDUnknownBlockType)arg5;
+- (void)_enumerateValidPurchasesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_initializeAppStorePurchaseDiscoveredList;
 - (void)_removeFromPurchasedChannelsListWithTagIDs:(id)arg1;
 - (id)_webAccessEntryIDForTagID:(id)arg1;

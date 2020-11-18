@@ -55,44 +55,44 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : 3|
+	var x : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : 3|
+	var y : c}
  }
 
  struct __C.UIEdgeInsets {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : 3|
+	var top : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : 3|
+	var left : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : 3|
+	var bottom : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : 3|
+	var right : c}
  }
 
  struct __C.UIEdgeInsets {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : 3|
+	var top : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : 3|
+	var left : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : 3|
+	var bottom : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : 3|
+	var right : c}
  }
 
  struct __C.CGSize {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : 3|
+	var width : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : 3|
+	var height : c}
  }
 
  enum __C.VUISizeClass { }
@@ -101,44 +101,44 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : 3|
+	var width : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : 3|
+	var height : c}
  }
 
  struct __C.TVCornerRadii {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var topLeft : 3|
+	var topLeft : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var topRight : 3|
+	var topRight : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottomLeft : 3|
+	var bottomLeft : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottomRight : 3|
+	var bottomRight : c}
  }
 
  struct __C.UIEdgeInsets {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : 3|
+	var top : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : 3|
+	var left : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : 3|
+	var bottom : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : 3|
+	var right : c}
  }
 
  struct __C.CGSize {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : 3|
+	var width : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : 3|
+	var height : c}
  }
 
  struct __C.CGRect {
@@ -152,31 +152,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : 3|
+	var width : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : 3|
+	var height : c}
  }
 
  struct __C.CGPoint {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : 3|
+	var x : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : 3|
+	var y : c}
  }
 
  struct __C.UIEdgeInsets {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : 3|
+	var top : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : 3|
+	var left : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : 3|
+	var bottom : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : 3|
+	var right : c}
  }
 
  enum __C.VUISizeClass { }
@@ -185,26 +185,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var topLeft : 3|
+	var topLeft : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var topRight : 3|
+	var topRight : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottomLeft : 3|
+	var bottomLeft : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottomRight : 3|
+	var bottomRight : c}
  }
 
  struct __C.UIEdgeInsets {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : 3|
+	var top : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : 3|
+	var left : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : 3|
+	var bottom : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : 3|
+	var right : c}
  }
 
  struct __C.AutoresizingMask {
@@ -217,18 +217,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : 3|
+	var width : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : 3|
+	var height : c}
  }
 
  struct __C.CGSize {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : 3|
+	var width : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : 3|
+	var height : c}
  }
 
  struct __C.CGRect {
@@ -243,44 +243,44 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var topLeft : 3|
+	var topLeft : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var topRight : 3|
+	var topRight : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottomLeft : 3|
+	var bottomLeft : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottomRight : 3|
+	var bottomRight : c}
  }
 
  struct __C.UIEdgeInsets {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : 3|
+	var top : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : 3|
+	var left : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : 3|
+	var bottom : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : 3|
+	var right : c}
  }
 
  struct __C.CGSize {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : 3|
+	var width : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : 3|
+	var height : c}
  }
 
  struct __C.CGPoint {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : 3|
+	var x : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : 3|
+	var y : c}
  }
 
  enum __C.VUIGridType { }
@@ -305,57 +305,57 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : 3|
+	var width : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : 3|
+	var height : c}
  }
 
  struct __C.UIEdgeInsets {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : 3|
+	var top : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : 3|
+	var left : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : 3|
+	var bottom : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : 3|
+	var right : c}
  }
 
  struct __C.TVCornerRadii {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var topLeft : 3|
+	var topLeft : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var topRight : 3|
+	var topRight : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottomLeft : 3|
+	var bottomLeft : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottomRight : 3|
+	var bottomRight : c}
  }
 
  struct __C.UIEdgeInsets {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : 3|
+	var top : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : 3|
+	var left : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : 3|
+	var bottom : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : 3|
+	var right : c}
  }
 
  struct __C.CGPoint {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : 3|
+	var x : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : 3|
+	var y : c}
  }
 
  struct __C.TVRowMetrics {
@@ -363,7 +363,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var rowType : TVRowMetricsType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rowHeight : 3|
+	var rowHeight : c}
 	var rowPadding : __Unnamed_struct_rowPadding
 	var rowInset : __Unnamed_struct_rowPadding
 	var rowInsetAlt : __Unnamed_struct_rowPadding
@@ -374,9 +374,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : 3|
+	var width : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : 3|
+	var height : c}
  }
 
  class __C.CGColor {
@@ -384,22 +384,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : 3|
+	var top : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : 3|
+	var left : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : 3|
+	var bottom : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : 3|
+	var right : c}
  }
 
  struct __C.__Unnamed_struct_rowPadding {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : 3|
+	var top : c}
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : 3|
+	var bottom : c}
  }
 
  enum __C.TVRowMetricsType { }
@@ -576,7 +576,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var currentPageDidChange : (_:)? // +0x8 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let capMargin : 3| // +0x18 (0x8)
+	let capMargin : c} // +0x18 (0x8)
 	let pageControlBackgroundColor : UIColor // +0x20 (0x8)
 	let currentPageIndicatorTintColor : UIColor // +0x28 (0x8)
 	let pageIndicatorTintColor : UIColor // +0x30 (0x8)
@@ -585,26 +585,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var roundedPageControlView : UIPageControl? // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2e39d0  @objc PageControlView.currentPageDidChange <stripped>
-	0x2e3b60  @objc PageControlView.setCurrentPageDidChange: <stripped>
-	0x2e3d00  @objc PageControlView.numberOfPages <stripped>
-	0x2e4370  @objc PageControlView.initWithCoder: <stripped>
-	0x2e4650  @objc PageControlView.sizeThatFits: <stripped>
-	0x2e4940  @objc PageControlView.layoutSubviews <stripped>
-	0x2e4bb0  @objc PageControlView.traitCollectionDidChange: <stripped>
-	0x2e4d00  @objc PageControlView.moveToPage: <stripped>
-	0x2e4e30  @objc PageControlView.addNumberOfPages: <stripped>
-	0x2e4f20  @objc PageControlView.initWithFrame: <stripped>
-	0x2e4ea0  @objc PageControlView..cxx_destruct <stripped>
+	0x2e4870  @objc PageControlView.currentPageDidChange <stripped>
+	0x2e4a00  @objc PageControlView.setCurrentPageDidChange: <stripped>
+	0x2e4ba0  @objc PageControlView.numberOfPages <stripped>
+	0x2e5210  @objc PageControlView.initWithCoder: <stripped>
+	0x2e54f0  @objc PageControlView.sizeThatFits: <stripped>
+	0x2e57e0  @objc PageControlView.layoutSubviews <stripped>
+	0x2e5a50  @objc PageControlView.traitCollectionDidChange: <stripped>
+	0x2e5ba0  @objc PageControlView.moveToPage: <stripped>
+	0x2e5cd0  @objc PageControlView.addNumberOfPages: <stripped>
+	0x2e5dc0  @objc PageControlView.initWithFrame: <stripped>
+	0x2e5d40  @objc PageControlView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2e3a80  func <stripped> // getter 
-	0x2e3bf0  func <stripped> // setter 
-	0x2e3cb0  func <stripped> // modifyCoroutine 
-	0x2e3d40  func <stripped> // getter 
-	0x2e3e30  class func <stripped> // init 
-	0x2e4c80  func <stripped> // method 
-	0x2e4db0  func <stripped> // method 
+	0x2e4920  func <stripped> // getter 
+	0x2e4a90  func <stripped> // setter 
+	0x2e4b50  func <stripped> // modifyCoroutine 
+	0x2e4be0  func <stripped> // getter 
+	0x2e4cd0  class func <stripped> // init 
+	0x2e5b20  func <stripped> // method 
+	0x2e5c50  func <stripped> // method 
  }
 
  enum VideosUI.VideosColorType {
@@ -673,7 +673,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class VideosUI.VideosColorFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x2e6fa0  class func <stripped> // init 
+	0x2e7e40  class func <stripped> // init 
  }
 
  class VideosUI.ChannelLogoView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -684,11 +684,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var viewModel : ViewModel // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2e8550  @objc ChannelLogoView.sizeThatFits: <stripped>
-	0x2e85b0  @objc ChannelLogoView.layoutSubviews <stripped>
-	0x2e8cc0  @objc ChannelLogoView.initWithFrame: <stripped>
-	0x2e8d50  @objc ChannelLogoView.initWithCoder: <stripped>
-	0x2e8c70  @objc ChannelLogoView..cxx_destruct <stripped>
+	0x2e93f0  @objc ChannelLogoView.sizeThatFits: <stripped>
+	0x2e9450  @objc ChannelLogoView.layoutSubviews <stripped>
+	0x2e9b60  @objc ChannelLogoView.initWithFrame: <stripped>
+	0x2e9bf0  @objc ChannelLogoView.initWithCoder: <stripped>
+	0x2e9b10  @objc ChannelLogoView..cxx_destruct <stripped>
  }
 
  class VideosUI.AdaptivePageControlView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -700,24 +700,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var movingLayer : CALayer // +0x28 (0x8)
 	var rightLayer : CALayer // +0x30 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var widthOfMovingBar : 3| // +0x38 (0x8)
+	var widthOfMovingBar : c} // +0x38 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var distanceToMove : 3| // +0x40 (0x8)
+	var distanceToMove : c} // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var totalWidthOfTheScrollBar : 3| // +0x48 (0x8)
+	var totalWidthOfTheScrollBar : c} // +0x48 (0x8)
 	var currentPage : Int // +0x50 (0x8)
 	var layout : AdaptivePageControlLayout // +0x58 (0x8)
 	var panGestureStartPoint : CGPoint // +0x60 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x2e9420  @objc AdaptivePageControlView.initWithFrame: <stripped>
-	0x2e9450  @objc AdaptivePageControlView.initWithCoder: <stripped>
-	0x2e9890  @objc AdaptivePageControlView.sizeThatFits: <stripped>
-	0x2ea0d0  @objc AdaptivePageControlView.layoutSubviews <stripped>
-	0x2ea260  @objc AdaptivePageControlView..cxx_destruct <stripped>
+	0x2ea2c0  @objc AdaptivePageControlView.initWithFrame: <stripped>
+	0x2ea2f0  @objc AdaptivePageControlView.initWithCoder: <stripped>
+	0x2ea730  @objc AdaptivePageControlView.sizeThatFits: <stripped>
+	0x2eaf70  @objc AdaptivePageControlView.layoutSubviews <stripped>
+	0x2eb100  @objc AdaptivePageControlView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2e91f0  class func <stripped> // init 
+	0x2ea090  class func <stripped> // init 
  }
 
  enum VideosUI.Direction {
@@ -734,13 +734,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var initialRequestSent : Bool // +0x38 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x2eb5f0  @objc DocumentRequestViewController.initWithCoder: <stripped>
-	0x2eb6f0  @objc DocumentRequestViewController.dealloc <stripped>
-	0x2eb8c0  @objc DocumentRequestViewController.viewWillAppear: <stripped>
-	0x2eb770  @objc DocumentRequestViewController..cxx_destruct <stripped>
+	0x2ec490  @objc DocumentRequestViewController.initWithCoder: <stripped>
+	0x2ec590  @objc DocumentRequestViewController.dealloc <stripped>
+	0x2ec760  @objc DocumentRequestViewController.viewWillAppear: <stripped>
+	0x2ec610  @objc DocumentRequestViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2eb470  class func <stripped> // init 
+	0x2ec310  class func <stripped> // init 
  }
 
  class VideosUI.LargeNavigationHeaderView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -754,31 +754,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var accessoryView : UIView? // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2ee540  @objc LargeNavigationHeaderView.layoutSubviews <stripped>
-	0x2ee5b0  @objc LargeNavigationHeaderView.sizeThatFits: <stripped>
-	0x2ee830  @objc LargeNavigationHeaderView.initWithFrame: <stripped>
-	0x2ee860  @objc LargeNavigationHeaderView.initWithCoder: <stripped>
-	0x2ee640  @objc LargeNavigationHeaderView..cxx_destruct <stripped>
+	0x2ef3e0  @objc LargeNavigationHeaderView.layoutSubviews <stripped>
+	0x2ef450  @objc LargeNavigationHeaderView.sizeThatFits: <stripped>
+	0x2ef6d0  @objc LargeNavigationHeaderView.initWithFrame: <stripped>
+	0x2ef700  @objc LargeNavigationHeaderView.initWithCoder: <stripped>
+	0x2ef4e0  @objc LargeNavigationHeaderView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2ed1e0  func <stripped> // getter 
-	0x2ed220  func <stripped> // setter 
-	0x2ed270  func <stripped> // modifyCoroutine 
-	0x2ed350  func <stripped> // getter 
-	0x2ed390  func <stripped> // setter 
-	0x2ed3e0  func <stripped> // modifyCoroutine 
-	0x2ed430  func <stripped> // getter 
-	0x2ed450  func <stripped> // setter 
-	0x2ed4d0  func <stripped> // modifyCoroutine 
-	0x2ed5a0  func <stripped> // getter 
-	0x2ed5c0  func <stripped> // setter 
-	0x2ed5f0  func <stripped> // modifyCoroutine 
-	0x2ed670  func <stripped> // getter 
-	0x2ed690  func <stripped> // setter 
-	0x2ed6b0  func <stripped> // modifyCoroutine 
-	0x2ed740  func <stripped> // getter 
-	0x2ed7a0  func <stripped> // setter 
-	0x2ed7d0  func <stripped> // modifyCoroutine 
+	0x2ee080  func <stripped> // getter 
+	0x2ee0c0  func <stripped> // setter 
+	0x2ee110  func <stripped> // modifyCoroutine 
+	0x2ee1f0  func <stripped> // getter 
+	0x2ee230  func <stripped> // setter 
+	0x2ee280  func <stripped> // modifyCoroutine 
+	0x2ee2d0  func <stripped> // getter 
+	0x2ee2f0  func <stripped> // setter 
+	0x2ee370  func <stripped> // modifyCoroutine 
+	0x2ee440  func <stripped> // getter 
+	0x2ee460  func <stripped> // setter 
+	0x2ee490  func <stripped> // modifyCoroutine 
+	0x2ee510  func <stripped> // getter 
+	0x2ee530  func <stripped> // setter 
+	0x2ee550  func <stripped> // modifyCoroutine 
+	0x2ee5e0  func <stripped> // getter 
+	0x2ee640  func <stripped> // setter 
+	0x2ee670  func <stripped> // modifyCoroutine 
  }
 
  class VideosUI.MessageLockupViewLayout : ViewLayout {
@@ -792,24 +792,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var chevronImageMargin : UIEdgeInsets // +0x148 (0x20)
 
 	// Swift methods
-	0x2eed40  func <stripped> // getter 
-	0x2eed70  func <stripped> // setter 
-	0x2eedb0  func <stripped> // getter 
-	0x2eedf0  func <stripped> // setter 
-	0x2eee30  func <stripped> // getter 
-	0x2eee70  func <stripped> // setter 
-	0x2eeeb0  func <stripped> // getter 
-	0x2eeef0  func <stripped> // setter 
-	0x2eef30  func <stripped> // getter 
-	0x2eef80  func <stripped> // setter 
-	0x2ef000  func <stripped> // getter 
-	0x2ef050  func <stripped> // setter 
-	0x2ef0d0  func <stripped> // method 
-	0x2ef130  func <stripped> // method 
-	0x2ef180  func <stripped> // method 
-	0x2ef200  func <stripped> // method 
-	0x2ef260  func <stripped> // method 
-	0x2ef2b0  func <stripped> // method 
+	0x2efbe0  func <stripped> // getter 
+	0x2efc10  func <stripped> // setter 
+	0x2efc50  func <stripped> // getter 
+	0x2efc90  func <stripped> // setter 
+	0x2efcd0  func <stripped> // getter 
+	0x2efd10  func <stripped> // setter 
+	0x2efd50  func <stripped> // getter 
+	0x2efd90  func <stripped> // setter 
+	0x2efdd0  func <stripped> // getter 
+	0x2efe20  func <stripped> // setter 
+	0x2efea0  func <stripped> // getter 
+	0x2efef0  func <stripped> // setter 
+	0x2eff70  func <stripped> // method 
+	0x2effd0  func <stripped> // method 
+	0x2f0020  func <stripped> // method 
+	0x2f00a0  func <stripped> // method 
+	0x2f0100  func <stripped> // method 
+	0x2f0150  func <stripped> // method 
  }
 
  class VideosUI.PageSwipeUpViewLayout : ViewLayout {
@@ -818,11 +818,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let textLayout : TextLayout // +0x108 (0x8)
 	let chevronImageLayout : ImageLayout // +0x110 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let baselineMarginToChevron : 3| // +0x118 (0x8)
+	let baselineMarginToChevron : c} // +0x118 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let heightOfGradientView : 3| // +0x120 (0x8)
+	let heightOfGradientView : c} // +0x120 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let topMarginOfChevron : 3| // +0x128 (0x8)
+	let topMarginOfChevron : c} // +0x128 (0x8)
  }
 
  class VideosUI.ViewModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -840,31 +840,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _document : Document // +0x60 (0x8)
 
 	// Swift methods
-	0x2f0330  func <stripped> // getter 
-	0x2f0340  func <stripped> // getter 
-	0x2f0370  func <stripped> // setter 
-	0x2f03b0  func <stripped> // getter 
-	0x2f0420  func <stripped> // setter 
-	0x2f0450  func <stripped> // modifyCoroutine 
-	0x2f0510  func <stripped> // getter 
-	0x2f0540  func <stripped> // setter 
-	0x2f0580  func <stripped> // getter 
-	0x2f05b0  func <stripped> // setter 
-	0x2f05f0  func <stripped> // getter 
-	0x2f0620  func <stripped> // setter 
-	0x2f0660  func <stripped> // getter 
-	0x2f06b0  func <stripped> // setter 
-	0x2f0700  func <stripped> // getter 
-	0x2f0750  func <stripped> // setter 
-	0x2f07b0  class func <stripped> // init 
-	0x2f0a20  func <stripped> // method 
-	0x2f0c90  func <stripped> // method 
+	0x2f11d0  func <stripped> // getter 
+	0x2f11e0  func <stripped> // getter 
+	0x2f1210  func <stripped> // setter 
+	0x2f1250  func <stripped> // getter 
+	0x2f12c0  func <stripped> // setter 
+	0x2f12f0  func <stripped> // modifyCoroutine 
+	0x2f13b0  func <stripped> // getter 
+	0x2f13e0  func <stripped> // setter 
+	0x2f1420  func <stripped> // getter 
+	0x2f1450  func <stripped> // setter 
+	0x2f1490  func <stripped> // getter 
+	0x2f14c0  func <stripped> // setter 
+	0x2f1500  func <stripped> // getter 
+	0x2f1550  func <stripped> // setter 
+	0x2f15a0  func <stripped> // getter 
+	0x2f15f0  func <stripped> // setter 
+	0x2f1650  class func <stripped> // init 
+	0x2f18c0  func <stripped> // method 
+	0x2f1b30  func <stripped> // method 
  }
 
  class VideosUI.JSService : IKJSObject /System/Library/PrivateFrameworks/ITMLKit.framework/ITMLKit {
 	// ObjC -> Swift bridged methods
-	0x2f3c70  @objc JSService.initWithAppContext: <stripped>
-	0x2f3cd0  @objc JSService.init <stripped>
+	0x2f4b10  @objc JSService.initWithAppContext: <stripped>
+	0x2f4b70  @objc JSService.init <stripped>
  }
 
  class VideosUI.DecoratedShelfView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -875,20 +875,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let contentView : ContentView // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2f3d30  @objc DecoratedShelfView.preferredFocusEnvironments <stripped>
-	0x2f3dc0  @objc DecoratedShelfView.initWithFrame: <stripped>
-	0x2f3de0  @objc DecoratedShelfView.initWithCoder: <stripped>
-	0x2f3f80  @objc DecoratedShelfView.sizeThatFits: <stripped>
-	0x2f4060  @objc DecoratedShelfView.layoutSubviews <stripped>
-	0x2f43c0  @objc DecoratedShelfView..cxx_destruct <stripped>
+	0x2f4bd0  @objc DecoratedShelfView.preferredFocusEnvironments <stripped>
+	0x2f4c60  @objc DecoratedShelfView.initWithFrame: <stripped>
+	0x2f4c80  @objc DecoratedShelfView.initWithCoder: <stripped>
+	0x2f4e20  @objc DecoratedShelfView.sizeThatFits: <stripped>
+	0x2f4f00  @objc DecoratedShelfView.layoutSubviews <stripped>
+	0x2f5260  @objc DecoratedShelfView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2f4090  func <stripped> // method 
+	0x2f4f30  func <stripped> // method 
  }
 
  class VideosUI.VideosUI : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2f5210  @objc VideosUI.init <stripped>
+	0x2f60b0  @objc VideosUI.init <stripped>
  }
 
  class VideosUI.HangerView : UIControl /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -901,11 +901,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_visualEffect : UIVisualEffectView? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2f5b60  @objc HangerView.layoutSubviews <stripped>
-	0x2f5ce0  @objc HangerView.sizeThatFits: <stripped>
-	0x2f6030  @objc HangerView.initWithFrame: <stripped>
-	0x2f6060  @objc HangerView.initWithCoder: <stripped>
-	0x2f5f10  @objc HangerView..cxx_destruct <stripped>
+	0x2f6a00  @objc HangerView.layoutSubviews <stripped>
+	0x2f6b80  @objc HangerView.sizeThatFits: <stripped>
+	0x2f6ed0  @objc HangerView.initWithFrame: <stripped>
+	0x2f6f00  @objc HangerView.initWithCoder: <stripped>
+	0x2f6db0  @objc HangerView..cxx_destruct <stripped>
  }
 
  enum VideosUI.HangerImageType {
@@ -938,19 +938,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var scrollViewMonitor : ScrollViewMonitor // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2f6a80  @objc DecoratedShelfViewController.loadView <stripped>
-	0x2f6e00  @objc DecoratedShelfViewController.viewWillAppear: <stripped>
-	0x2f7000  @objc DecoratedShelfViewController.viewDidAppear: <stripped>
-	0x2f7270  @objc DecoratedShelfViewController.viewDidLayoutSubviews <stripped>
-	0x2f7550  @objc DecoratedShelfViewController.viewWillTransitionToSize:withTransitionCoordinator: <stripped>
-	0x2f8790  @objc DecoratedShelfViewController.impressionableElementsContainedInDocument: <stripped>
-	0x2f88a0  @objc DecoratedShelfViewController.initWithNibName:bundle: <stripped>
-	0x2f8920  @objc DecoratedShelfViewController.initWithCoder: <stripped>
-	0x2f8850  @objc DecoratedShelfViewController..cxx_destruct <stripped>
+	0x2f7920  @objc DecoratedShelfViewController.loadView <stripped>
+	0x2f7ca0  @objc DecoratedShelfViewController.viewWillAppear: <stripped>
+	0x2f7ea0  @objc DecoratedShelfViewController.viewDidAppear: <stripped>
+	0x2f8110  @objc DecoratedShelfViewController.viewDidLayoutSubviews <stripped>
+	0x2f83f0  @objc DecoratedShelfViewController.viewWillTransitionToSize:withTransitionCoordinator: <stripped>
+	0x2f9630  @objc DecoratedShelfViewController.impressionableElementsContainedInDocument: <stripped>
+	0x2f9740  @objc DecoratedShelfViewController.initWithNibName:bundle: <stripped>
+	0x2f97c0  @objc DecoratedShelfViewController.initWithCoder: <stripped>
+	0x2f96f0  @objc DecoratedShelfViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2f75b0  func <stripped> // method 
-	0x2f7ee0  func <stripped> // method 
+	0x2f8450  func <stripped> // method 
+	0x2f8d80  func <stripped> // method 
  }
 
  struct VideosUI.LayoutTraits {
@@ -968,10 +968,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var imageLayout : ImageLayout // +0x110 (0x8)
 
 	// Swift methods
-	0x2ffeb0  func <stripped> // getter 
-	0x2ffef0  func <stripped> // setter 
-	0x2fff30  func <stripped> // getter 
-	0x2fff70  func <stripped> // setter 
+	0x300d50  func <stripped> // getter 
+	0x300d90  func <stripped> // setter 
+	0x300dd0  func <stripped> // getter 
+	0x300e10  func <stripped> // setter 
  }
 
  class VideosUI.ErrorView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -984,28 +984,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var debugTextLabel2 : VUILabel? // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x300e20  @objc ErrorView.layoutSubviews <stripped>
-	0x300ea0  @objc ErrorView.sizeThatFits: <stripped>
-	0x3010e0  @objc ErrorView.initWithFrame: <stripped>
-	0x301110  @objc ErrorView.initWithCoder: <stripped>
-	0x300f30  @objc ErrorView..cxx_destruct <stripped>
+	0x301cc0  @objc ErrorView.layoutSubviews <stripped>
+	0x301d40  @objc ErrorView.sizeThatFits: <stripped>
+	0x301f80  @objc ErrorView.initWithFrame: <stripped>
+	0x301fb0  @objc ErrorView.initWithCoder: <stripped>
+	0x301dd0  @objc ErrorView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x300310  func <stripped> // getter 
-	0x300350  func <stripped> // setter 
-	0x3003a0  func <stripped> // modifyCoroutine 
-	0x3003f0  func <stripped> // getter 
-	0x300410  func <stripped> // setter 
-	0x300440  func <stripped> // modifyCoroutine 
-	0x3004c0  func <stripped> // getter 
-	0x3004e0  func <stripped> // setter 
-	0x300510  func <stripped> // modifyCoroutine 
-	0x3005c0  func <stripped> // getter 
-	0x3005e0  func <stripped> // setter 
-	0x300610  func <stripped> // modifyCoroutine 
-	0x300690  func <stripped> // getter 
-	0x3006f0  func <stripped> // setter 
-	0x300720  func <stripped> // modifyCoroutine 
+	0x3011b0  func <stripped> // getter 
+	0x3011f0  func <stripped> // setter 
+	0x301240  func <stripped> // modifyCoroutine 
+	0x301290  func <stripped> // getter 
+	0x3012b0  func <stripped> // setter 
+	0x3012e0  func <stripped> // modifyCoroutine 
+	0x301360  func <stripped> // getter 
+	0x301380  func <stripped> // setter 
+	0x3013b0  func <stripped> // modifyCoroutine 
+	0x301460  func <stripped> // getter 
+	0x301480  func <stripped> // setter 
+	0x3014b0  func <stripped> // modifyCoroutine 
+	0x301530  func <stripped> // getter 
+	0x301590  func <stripped> // setter 
+	0x3015c0  func <stripped> // modifyCoroutine 
  }
 
  enum VideosUI.ViewModelResult {
@@ -1035,16 +1035,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var titleTextLayout : VUITextLayout? // +0x108 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottomMargin : 3| // +0x110 (0x8)
+	var bottomMargin : c} // +0x110 (0x8)
 
 	// Swift methods
-	0x3020a0  func <stripped> // getter 
-	0x3020e0  func <stripped> // setter 
-	0x302120  func <stripped> // method 
-	0x302170  func <stripped> // method 
-	0x3021e0  func <stripped> // method 
-	0x302230  func <stripped> // getter 
-	0x302260  func <stripped> // setter 
+	0x302f40  func <stripped> // getter 
+	0x302f80  func <stripped> // setter 
+	0x302fc0  func <stripped> // method 
+	0x303010  func <stripped> // method 
+	0x303080  func <stripped> // method 
+	0x3030d0  func <stripped> // getter 
+	0x303100  func <stripped> // setter 
  }
 
  class VideosUI.MessageLockupView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1060,39 +1060,39 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dividerView : UIView? // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x303cd0  @objc MessageLockupView.handleTapGestureWithSender: <stripped>
-	0x305460  @objc MessageLockupView.layoutSubviews <stripped>
-	0x3054d0  @objc MessageLockupView.sizeThatFits: <stripped>
-	0x3057c0  @objc MessageLockupView.initWithFrame: <stripped>
-	0x3057f0  @objc MessageLockupView.initWithCoder: <stripped>
-	0x305560  @objc MessageLockupView..cxx_destruct <stripped>
+	0x304b70  @objc MessageLockupView.handleTapGestureWithSender: <stripped>
+	0x306300  @objc MessageLockupView.layoutSubviews <stripped>
+	0x306370  @objc MessageLockupView.sizeThatFits: <stripped>
+	0x306660  @objc MessageLockupView.initWithFrame: <stripped>
+	0x306690  @objc MessageLockupView.initWithCoder: <stripped>
+	0x306400  @objc MessageLockupView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x302560  func <stripped> // getter 
-	0x302580  func <stripped> // setter 
-	0x3025d0  func <stripped> // modifyCoroutine 
-	0x302610  func <stripped> // getter 
-	0x302680  func <stripped> // setter 
-	0x302700  func <stripped> // modifyCoroutine 
-	0x302750  func <stripped> // getter 
-	0x302770  func <stripped> // setter 
-	0x302790  func <stripped> // modifyCoroutine 
-	0x302820  func <stripped> // getter 
-	0x302840  func <stripped> // setter 
-	0x302870  func <stripped> // modifyCoroutine 
-	0x302920  func <stripped> // getter 
-	0x302940  func <stripped> // setter 
-	0x302970  func <stripped> // modifyCoroutine 
-	0x3029f0  func <stripped> // getter 
-	0x302a50  func <stripped> // setter 
-	0x302ad0  func <stripped> // modifyCoroutine 
-	0x302ba0  func <stripped> // getter 
-	0x302bc0  func <stripped> // setter 
-	0x302bf0  func <stripped> // modifyCoroutine 
-	0x302c70  func <stripped> // getter 
-	0x302cd0  func <stripped> // setter 
-	0x302d00  func <stripped> // modifyCoroutine 
-	0x303c70  func <stripped> // method 
+	0x303400  func <stripped> // getter 
+	0x303420  func <stripped> // setter 
+	0x303470  func <stripped> // modifyCoroutine 
+	0x3034b0  func <stripped> // getter 
+	0x303520  func <stripped> // setter 
+	0x3035a0  func <stripped> // modifyCoroutine 
+	0x3035f0  func <stripped> // getter 
+	0x303610  func <stripped> // setter 
+	0x303630  func <stripped> // modifyCoroutine 
+	0x3036c0  func <stripped> // getter 
+	0x3036e0  func <stripped> // setter 
+	0x303710  func <stripped> // modifyCoroutine 
+	0x3037c0  func <stripped> // getter 
+	0x3037e0  func <stripped> // setter 
+	0x303810  func <stripped> // modifyCoroutine 
+	0x303890  func <stripped> // getter 
+	0x3038f0  func <stripped> // setter 
+	0x303970  func <stripped> // modifyCoroutine 
+	0x303a40  func <stripped> // getter 
+	0x303a60  func <stripped> // setter 
+	0x303a90  func <stripped> // modifyCoroutine 
+	0x303b10  func <stripped> // getter 
+	0x303b70  func <stripped> // setter 
+	0x303ba0  func <stripped> // modifyCoroutine 
+	0x304b10  func <stripped> // method 
  }
 
  enum VideosUI.DeviceType {
@@ -1113,18 +1113,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_vuiButtonLayout : VUIButtonLayout? // +0x110 (0x8)
 
 	// Swift methods
-	0x30a170  func <stripped> // getter 
-	0x30a190  func <stripped> // setter 
-	0x30a1a0  func <stripped> // modifyCoroutine 
-	0x30a1f0  func <stripped> // getter 
-	0x30a210  func <stripped> // setter 
-	0x30a230  func <stripped> // modifyCoroutine 
-	0x30a290  func <stripped> // getter 
-	0x30a330  func <stripped> // setter 
-	0x30a350  func <stripped> // modifyCoroutine 
-	0x30a420  func <stripped> // getter 
-	0x30a440  func <stripped> // getter 
-	0x30a500  class func <stripped> // init 
+	0x30b010  func <stripped> // getter 
+	0x30b030  func <stripped> // setter 
+	0x30b040  func <stripped> // modifyCoroutine 
+	0x30b090  func <stripped> // getter 
+	0x30b0b0  func <stripped> // setter 
+	0x30b0d0  func <stripped> // modifyCoroutine 
+	0x30b130  func <stripped> // getter 
+	0x30b1d0  func <stripped> // setter 
+	0x30b1f0  func <stripped> // modifyCoroutine 
+	0x30b2c0  func <stripped> // getter 
+	0x30b2e0  func <stripped> // getter 
+	0x30b3a0  class func <stripped> // init 
  }
 
  enum VideosUI.ButtonType {
@@ -1159,26 +1159,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var continuousBorder : AdaptiveLayoutProperty // +0x130 (0x8)
 
 	// Swift methods
-	0x30b280  func <stripped> // getter 
-	0x30c1f0  func <stripped> // getter 
-	0x30c290  func <stripped> // getter 
-	0x30c2d0  func <stripped> // setter 
-	0x30c360  func <stripped> // modifyCoroutine 
-	0x30c430  func <stripped> // getter 
-	0x30c470  func <stripped> // setter 
-	0x30c500  func <stripped> // modifyCoroutine 
-	0x30c5d0  func <stripped> // getter 
-	0x30c610  func <stripped> // setter 
-	0x30c6a0  func <stripped> // modifyCoroutine 
-	0x30c770  func <stripped> // getter 
-	0x30c7b0  func <stripped> // setter 
-	0x30c840  func <stripped> // modifyCoroutine 
-	0x30c910  func <stripped> // getter 
-	0x30c950  func <stripped> // setter 
-	0x30c9e0  func <stripped> // modifyCoroutine 
-	0x30cab0  func <stripped> // getter 
-	0x30caf0  func <stripped> // setter 
-	0x30cb80  func <stripped> // modifyCoroutine 
+	0x30c120  func <stripped> // getter 
+	0x30d090  func <stripped> // getter 
+	0x30d130  func <stripped> // getter 
+	0x30d170  func <stripped> // setter 
+	0x30d200  func <stripped> // modifyCoroutine 
+	0x30d2d0  func <stripped> // getter 
+	0x30d310  func <stripped> // setter 
+	0x30d3a0  func <stripped> // modifyCoroutine 
+	0x30d470  func <stripped> // getter 
+	0x30d4b0  func <stripped> // setter 
+	0x30d540  func <stripped> // modifyCoroutine 
+	0x30d610  func <stripped> // getter 
+	0x30d650  func <stripped> // setter 
+	0x30d6e0  func <stripped> // modifyCoroutine 
+	0x30d7b0  func <stripped> // getter 
+	0x30d7f0  func <stripped> // setter 
+	0x30d880  func <stripped> // modifyCoroutine 
+	0x30d950  func <stripped> // getter 
+	0x30d990  func <stripped> // setter 
+	0x30da20  func <stripped> // modifyCoroutine 
  }
 
  enum VideosUI.ScaleMode {
@@ -1199,8 +1199,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var computedAttributedString : NSAttributedString? // +0x88 (0x8)
 
 	// Swift methods
-	0x30d7f0  class func <stripped> // init 
-	0x30e310  func <stripped> // method 
+	0x30e690  class func <stripped> // init 
+	0x30f1b0  func <stripped> // method 
  }
 
  enum VideosUI.TextValueType {
@@ -1232,7 +1232,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var focusAlign : String?
 	var focusMargin : UIEdgeInsets
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var focusSizeIncrease : ë{
+	var focusSizeIncrease : ¡|
 	var acceptsFocus : Bool?
 	var centerGrowth : Bool?
 	var borderRadii : AdaptiveLayoutProperty
@@ -1241,88 +1241,88 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var currentSizeClass : VUISizeClass
 	var currentTraitCollection : UITraitCollection?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sizeClassPublisher : ?s
+	let sizeClassPublisher : ot
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutTraitsProvider : Åv
+	let layoutTraitsProvider : ±w
 
 	// Swift methods
-	0x30f2f0  func <stripped> // getter 
-	0x30f320  func <stripped> // setter 
-	0x30f3b0  func <stripped> // modifyCoroutine 
-	0x30f470  func <stripped> // getter 
-	0x30f4a0  func <stripped> // setter 
-	0x30f530  func <stripped> // modifyCoroutine 
-	0x30f5f0  func <stripped> // getter 
-	0x30f620  func <stripped> // setter 
-	0x30f6b0  func <stripped> // modifyCoroutine 
-	0x30f770  func <stripped> // getter 
-	0x30f7a0  func <stripped> // setter 
-	0x30f830  func <stripped> // modifyCoroutine 
-	0x30f8f0  func <stripped> // getter 
-	0x30f920  func <stripped> // setter 
-	0x30f9b0  func <stripped> // modifyCoroutine 
-	0x30fa70  func <stripped> // getter 
-	0x30faa0  func <stripped> // setter 
-	0x30fb30  func <stripped> // modifyCoroutine 
-	0x30fbf0  func <stripped> // getter 
-	0x30fc20  func <stripped> // setter 
-	0x30fcb0  func <stripped> // modifyCoroutine 
-	0x30fd70  func <stripped> // getter 
-	0x30fda0  func <stripped> // setter 
-	0x30fe30  func <stripped> // modifyCoroutine 
-	0x30fef0  func <stripped> // getter 
-	0x30ff20  func <stripped> // setter 
-	0x30ffb0  func <stripped> // modifyCoroutine 
-	0x310070  func <stripped> // getter 
-	0x3100a0  func <stripped> // setter 
-	0x310130  func <stripped> // modifyCoroutine 
-	0x3101f0  func <stripped> // getter 
-	0x310220  func <stripped> // setter 
-	0x3102b0  func <stripped> // modifyCoroutine 
-	0x310370  func <stripped> // getter 
-	0x3103a0  func <stripped> // setter 
-	0x310430  func <stripped> // modifyCoroutine 
-	0x3104f0  func <stripped> // getter 
-	0x310520  func <stripped> // setter 
+	0x310190  func <stripped> // getter 
+	0x3101c0  func <stripped> // setter 
+	0x310250  func <stripped> // modifyCoroutine 
+	0x310310  func <stripped> // getter 
+	0x310340  func <stripped> // setter 
+	0x3103d0  func <stripped> // modifyCoroutine 
+	0x310490  func <stripped> // getter 
+	0x3104c0  func <stripped> // setter 
 	0x310550  func <stripped> // modifyCoroutine 
-	0x310580  func <stripped> // getter 
-	0x3105b0  func <stripped> // setter 
-	0x3105e0  func <stripped> // modifyCoroutine 
 	0x310610  func <stripped> // getter 
 	0x310640  func <stripped> // setter 
 	0x3106d0  func <stripped> // modifyCoroutine 
 	0x310790  func <stripped> // getter 
-	0x3107d0  func <stripped> // setter 
-	0x310860  func <stripped> // modifyCoroutine 
-	0x310930  func <stripped> // getter 
-	0x310980  func <stripped> // setter 
-	0x310a00  func <stripped> // modifyCoroutine 
-	0x310a40  func <stripped> // getter 
-	0x310a90  func <stripped> // setter 
-	0x310ad0  func <stripped> // modifyCoroutine 
-	0x310b10  func <stripped> // getter 
-	0x310b40  func <stripped> // setter 
-	0x310b90  func <stripped> // modifyCoroutine 
-	0x310bd0  func <stripped> // getter 
-	0x310c00  func <stripped> // setter 
-	0x310c30  func <stripped> // modifyCoroutine 
-	0x310c70  func <stripped> // getter 
-	0x310ca0  func <stripped> // setter 
+	0x3107c0  func <stripped> // setter 
+	0x310850  func <stripped> // modifyCoroutine 
+	0x310910  func <stripped> // getter 
+	0x310940  func <stripped> // setter 
+	0x3109d0  func <stripped> // modifyCoroutine 
+	0x310a90  func <stripped> // getter 
+	0x310ac0  func <stripped> // setter 
+	0x310b50  func <stripped> // modifyCoroutine 
+	0x310c10  func <stripped> // getter 
+	0x310c40  func <stripped> // setter 
 	0x310cd0  func <stripped> // modifyCoroutine 
-	0x310d10  func <stripped> // getter 
-	0x310d50  func <stripped> // setter 
-	0x310e30  func <stripped> // modifyCoroutine 
-	0x310f70  func <stripped> // getter 
-	0x310fb0  func <stripped> // setter 
-	0x310ff0  func <stripped> // modifyCoroutine 
-	0x311030  func <stripped> // getter 
-	0x311070  func <stripped> // setter 
-	0x3110b0  func <stripped> // modifyCoroutine 
-	0x311100  class func <stripped> // init 
-	0x311990  func <stripped> // method 
-	0x3119a0  func <stripped> // method 
-	0x311fc0  func <stripped> // method 
-	0x312050  func <stripped> // method 
+	0x310d90  func <stripped> // getter 
+	0x310dc0  func <stripped> // setter 
+	0x310e50  func <stripped> // modifyCoroutine 
+	0x310f10  func <stripped> // getter 
+	0x310f40  func <stripped> // setter 
+	0x310fd0  func <stripped> // modifyCoroutine 
+	0x311090  func <stripped> // getter 
+	0x3110c0  func <stripped> // setter 
+	0x311150  func <stripped> // modifyCoroutine 
+	0x311210  func <stripped> // getter 
+	0x311240  func <stripped> // setter 
+	0x3112d0  func <stripped> // modifyCoroutine 
+	0x311390  func <stripped> // getter 
+	0x3113c0  func <stripped> // setter 
+	0x3113f0  func <stripped> // modifyCoroutine 
+	0x311420  func <stripped> // getter 
+	0x311450  func <stripped> // setter 
+	0x311480  func <stripped> // modifyCoroutine 
+	0x3114b0  func <stripped> // getter 
+	0x3114e0  func <stripped> // setter 
+	0x311570  func <stripped> // modifyCoroutine 
+	0x311630  func <stripped> // getter 
+	0x311670  func <stripped> // setter 
+	0x311700  func <stripped> // modifyCoroutine 
+	0x3117d0  func <stripped> // getter 
+	0x311820  func <stripped> // setter 
+	0x3118a0  func <stripped> // modifyCoroutine 
+	0x3118e0  func <stripped> // getter 
+	0x311930  func <stripped> // setter 
+	0x311970  func <stripped> // modifyCoroutine 
+	0x3119b0  func <stripped> // getter 
+	0x3119e0  func <stripped> // setter 
+	0x311a30  func <stripped> // modifyCoroutine 
+	0x311a70  func <stripped> // getter 
+	0x311aa0  func <stripped> // setter 
+	0x311ad0  func <stripped> // modifyCoroutine 
+	0x311b10  func <stripped> // getter 
+	0x311b40  func <stripped> // setter 
+	0x311b70  func <stripped> // modifyCoroutine 
+	0x311bb0  func <stripped> // getter 
+	0x311bf0  func <stripped> // setter 
+	0x311cd0  func <stripped> // modifyCoroutine 
+	0x311e10  func <stripped> // getter 
+	0x311e50  func <stripped> // setter 
+	0x311e90  func <stripped> // modifyCoroutine 
+	0x311ed0  func <stripped> // getter 
+	0x311f10  func <stripped> // setter 
+	0x311f50  func <stripped> // modifyCoroutine 
+	0x311fa0  class func <stripped> // init 
+	0x312830  func <stripped> // method 
+	0x312840  func <stripped> // method 
+	0x312e60  func <stripped> // method 
+	0x312ef0  func <stripped> // method 
  }
 
  enum VideosUI.Position {
@@ -1374,11 +1374,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var relations : ViewModelType
 
 	// ObjC -> Swift bridged methods
-	0x313830  @objc RelationalLayout.copyWithZone: <stripped>
+	0x3146d0  @objc RelationalLayout.copyWithZone: <stripped>
 
 	// Swift methods
-	0x313750  class func <stripped> // init 
-	0x312d00  class func <stripped> // init 
+	0x3145f0  class func <stripped> // init 
+	0x313ba0  class func <stripped> // init 
  }
 
  struct VideosUI.Properties {
@@ -1401,10 +1401,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bottomMarginForPageControl : 3| // +0x8 (0x8)
+	let bottomMarginForPageControl : c} // +0x8 (0x8)
 	var templateModel : ViewModel // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastContentOffset : 3| // +0x18 (0x8)
+	var lastContentOffset : c} // +0x18 (0x8)
 	var lastScrollDirection : ScrollDirection // +0x20 (0x1)
 	var currentPage : Int // +0x28 (0x8)
 	var $__lazy_storage_$_imageProxyQueue : [TVImageProxy]? // +0x30 (0x8)
@@ -1412,25 +1412,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_rightSwipeGestureRecognizer : UISwipeGestureRecognizer? // +0x60 (0x8)
 	var $__lazy_storage_$_leftSwipeGestureRecognizer : UISwipeGestureRecognizer? // +0x68 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var playbackEventSubscriber : Ww // +0x70 (0x8)
+	var playbackEventSubscriber : áx // +0x70 (0x8)
 	var currentPageView : PageContentView // +0x78 (0x8)
 	var $__lazy_storage_$_reusableViews : PageContentView // +0x80 (0x8)
 	var $__lazy_storage_$_pageControl : PageControlView // +0x88 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x317380  @objc PaginationTemplateController.preferredFocusEnvironments <stripped>
-	0x3175d0  @objc PaginationTemplateController.init <stripped>
-	0x3175f0  @objc PaginationTemplateController.initWithNibName:bundle: <stripped>
-	0x317610  @objc PaginationTemplateController.initWithCoder: <stripped>
-	0x317980  @objc PaginationTemplateController.viewDidLayoutSubviews <stripped>
-	0x317b10  @objc PaginationTemplateController.viewWillTransitionToSize:withTransitionCoordinator: <stripped>
-	0x318940  @objc PaginationTemplateController..cxx_destruct <stripped>
+	0x318220  @objc PaginationTemplateController.preferredFocusEnvironments <stripped>
+	0x318470  @objc PaginationTemplateController.init <stripped>
+	0x318490  @objc PaginationTemplateController.initWithNibName:bundle: <stripped>
+	0x3184b0  @objc PaginationTemplateController.initWithCoder: <stripped>
+	0x318820  @objc PaginationTemplateController.viewDidLayoutSubviews <stripped>
+	0x3189b0  @objc PaginationTemplateController.viewWillTransitionToSize:withTransitionCoordinator: <stripped>
+	0x3197e0  @objc PaginationTemplateController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x316ff0  func <stripped> // modifyCoroutine 
-	0x317070  func <stripped> // getter 
-	0x317260  func <stripped> // modifyCoroutine 
-	0x317c30  func <stripped> // method 
+	0x317e90  func <stripped> // modifyCoroutine 
+	0x317f10  func <stripped> // getter 
+	0x318100  func <stripped> // modifyCoroutine 
+	0x318ad0  func <stripped> // method 
  }
 
  struct VideosUI.LRUCache {
@@ -1549,19 +1549,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_alphaImageLayout : ImageLayout // +0x128 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x324f70  @objc DecoratedShelfLayout.copyWithZone: <stripped>
+	0x325e10  @objc DecoratedShelfLayout.copyWithZone: <stripped>
 
 	// Swift methods
-	0x3245b0  func <stripped> // getter 
-	0x324620  func <stripped> // setter 
-	0x324640  func <stripped> // getter 
-	0x3246b0  func <stripped> // setter 
-	0x3246d0  func <stripped> // getter 
-	0x324750  func <stripped> // setter 
-	0x324770  func <stripped> // getter 
-	0x3247e0  func <stripped> // setter 
-	0x324800  func <stripped> // getter 
-	0x324870  func <stripped> // setter 
+	0x325450  func <stripped> // getter 
+	0x3254c0  func <stripped> // setter 
+	0x3254e0  func <stripped> // getter 
+	0x325550  func <stripped> // setter 
+	0x325570  func <stripped> // getter 
+	0x3255f0  func <stripped> // setter 
+	0x325610  func <stripped> // getter 
+	0x325680  func <stripped> // setter 
+	0x3256a0  func <stripped> // getter 
+	0x325710  func <stripped> // setter 
  }
 
  class VideosUI.JSPromiseOperation : IKJSObject /System/Library/PrivateFrameworks/ITMLKit.framework/ITMLKit {
@@ -1570,22 +1570,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var loadImmediately : Bool // +0x8 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x325260  @objc JSPromiseOperation.loadImmediately <stripped>
-	0x3252a0  @objc JSPromiseOperation.setLoadImmediately: <stripped>
-	0x325430  @objc JSPromiseOperation.initWithPromiseFunction:cancelFunction: <stripped>
-	0x325540  @objc JSPromiseOperation.dealloc <stripped>
-	0x325920  @objc JSPromiseOperation.initWithAppContext: <stripped>
-	0x325950  @objc JSPromiseOperation.init <stripped>
-	0x325600  @objc JSPromiseOperation..cxx_destruct <stripped>
+	0x326100  @objc JSPromiseOperation.loadImmediately <stripped>
+	0x326140  @objc JSPromiseOperation.setLoadImmediately: <stripped>
+	0x3262d0  @objc JSPromiseOperation.initWithPromiseFunction:cancelFunction: <stripped>
+	0x3263e0  @objc JSPromiseOperation.dealloc <stripped>
+	0x3267c0  @objc JSPromiseOperation.initWithAppContext: <stripped>
+	0x3267f0  @objc JSPromiseOperation.init <stripped>
+	0x3264a0  @objc JSPromiseOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3252e0  class func <stripped> // init 
+	0x326180  class func <stripped> // init 
  }
 
  class VideosUI.UIFactory : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x325fc0  @objc UIFactory.init <stripped>
-	0x326010  @objc UIFactory..cxx_destruct <stripped>
+	0x326e60  @objc UIFactory.init <stripped>
+	0x326eb0  @objc UIFactory..cxx_destruct <stripped>
  }
 
  enum VideosUI.DocumentRef {
@@ -1624,22 +1624,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var lastExpandableViewFrame : CGRect // +0x60 (0x20)
 	var lastPanelFrame : CGRect // +0x80 (0x20)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var initialExpandableHeight : 3| // +0xa0 (0x8)
+	var initialExpandableHeight : c} // +0xa0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var maxExpandableHeight : 3| // +0xa8 (0x8)
+	var maxExpandableHeight : c} // +0xa8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scrollDraggedOffset : 3| // +0xb0 (0x8)
+	var scrollDraggedOffset : c} // +0xb0 (0x8)
 	var isScrollable : Bool // +0xb8 (0x1)
 	var isPartiallyExpanded : Bool // +0xb9 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x32b390  @objc VerticalStackView.sizeThatFits: <stripped>
-	0x32b460  @objc VerticalStackView.layoutSubviews <stripped>
-	0x32b550  @objc VerticalStackView.traitCollectionDidChange: <stripped>
-	0x32b900  @objc VerticalStackView.bottomMarginWithBaselineMargin: <stripped>
-	0x32c4e0  @objc VerticalStackView.initWithFrame: <stripped>
-	0x32c510  @objc VerticalStackView.initWithCoder: <stripped>
-	0x32c200  @objc VerticalStackView..cxx_destruct <stripped>
+	0x32c230  @objc VerticalStackView.sizeThatFits: <stripped>
+	0x32c300  @objc VerticalStackView.layoutSubviews <stripped>
+	0x32c3f0  @objc VerticalStackView.traitCollectionDidChange: <stripped>
+	0x32c7a0  @objc VerticalStackView.bottomMarginWithBaselineMargin: <stripped>
+	0x32d380  @objc VerticalStackView.initWithFrame: <stripped>
+	0x32d3b0  @objc VerticalStackView.initWithCoder: <stripped>
+	0x32d0a0  @objc VerticalStackView..cxx_destruct <stripped>
  }
 
  enum VideosUI.ImageViewFactory { }
@@ -1653,7 +1653,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_textualButtonViewLayout : ButtonLayout // +0x120 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3354b0  @objc CollectionHeaderViewLayout.copyWithZone: <stripped>
+	0x336350  @objc CollectionHeaderViewLayout.copyWithZone: <stripped>
  }
 
  struct VideosUI.DisplayGuide {
@@ -1664,7 +1664,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var gridType : VUIGridType // +0x18
 	let numberOfColumns : UInt? // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let windowWidth : 3| // +0x38
+	let windowWidth : c} // +0x38
  }
 
  struct VideosUI.Logger {
@@ -1691,10 +1691,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var appleTVChannelImageViewLayout : ImageLayout // +0x110 (0x8)
 
 	// Swift methods
-	0x3368f0  func <stripped> // getter 
-	0x336930  func <stripped> // setter 
-	0x336970  func <stripped> // getter 
-	0x3369b0  func <stripped> // setter 
+	0x337790  func <stripped> // getter 
+	0x3377d0  func <stripped> // setter 
+	0x337810  func <stripped> // getter 
+	0x337850  func <stripped> // setter 
  }
 
  class VideosUI.VideoViewModel : ViewModel {
@@ -1721,40 +1721,40 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cornerRadiusOfBar : 3| // +0x108 (0x8)
+	var cornerRadiusOfBar : c} // +0x108 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var capMargin : 3| // +0x110 (0x8)
+	var capMargin : c} // +0x110 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var distanceBetweenBars : 3| // +0x118 (0x8)
+	var distanceBetweenBars : c} // +0x118 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minimumWidthOfMovingBar : 3| // +0x120 (0x8)
+	var minimumWidthOfMovingBar : c} // +0x120 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var maxWidthOfMovingBar : 3| // +0x128 (0x8)
+	var maxWidthOfMovingBar : c} // +0x128 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var barWidth : 3| // +0x130 (0x8)
+	var barWidth : c} // +0x130 (0x8)
 	var bgColor : UIColor // +0x138 (0x8)
 	var movingBarColor : UIColor // +0x140 (0x8)
 	var staticBarColor : UIColor // +0x148 (0x8)
 
 	// Swift methods
-	0x338c20  func <stripped> // getter 
-	0x338c50  func <stripped> // setter 
-	0x338c90  func <stripped> // getter 
-	0x338cc0  func <stripped> // setter 
-	0x338d00  func <stripped> // getter 
-	0x338d30  func <stripped> // setter 
-	0x338d70  func <stripped> // getter 
-	0x338da0  func <stripped> // setter 
-	0x338de0  func <stripped> // getter 
-	0x338e10  func <stripped> // setter 
-	0x338e50  func <stripped> // getter 
-	0x338e80  func <stripped> // setter 
-	0x338ec0  func <stripped> // getter 
-	0x338ef0  func <stripped> // setter 
-	0x338f30  func <stripped> // getter 
-	0x338f60  func <stripped> // setter 
-	0x338fa0  func <stripped> // getter 
-	0x338fd0  func <stripped> // setter 
+	0x339ac0  func <stripped> // getter 
+	0x339af0  func <stripped> // setter 
+	0x339b30  func <stripped> // getter 
+	0x339b60  func <stripped> // setter 
+	0x339ba0  func <stripped> // getter 
+	0x339bd0  func <stripped> // setter 
+	0x339c10  func <stripped> // getter 
+	0x339c40  func <stripped> // setter 
+	0x339c80  func <stripped> // getter 
+	0x339cb0  func <stripped> // setter 
+	0x339cf0  func <stripped> // getter 
+	0x339d20  func <stripped> // setter 
+	0x339d60  func <stripped> // getter 
+	0x339d90  func <stripped> // setter 
+	0x339dd0  func <stripped> // getter 
+	0x339e00  func <stripped> // setter 
+	0x339e40  func <stripped> // getter 
+	0x339e70  func <stripped> // setter 
  }
 
  class VideosUI.DocumentServiceRequest : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1765,9 +1765,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var promiseOperation : VideosEnginePromiseOperation // +0x20 (0x8)
 
 	// Swift methods
-	0x3395d0  class func <stripped> // init 
-	0x339610  func <stripped> // method 
-	0x339cb0  func <stripped> // method 
+	0x33a470  class func <stripped> // init 
+	0x33a4b0  func <stripped> // method 
+	0x33ab50  func <stripped> // method 
  }
 
  struct VideosUI.VideoEngineDocumentRequest {
@@ -1786,11 +1786,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var buttonView : VUIButton? // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x33c280  @objc CollectionHeaderView.sizeThatFits: <stripped>
-	0x33c2e0  @objc CollectionHeaderView.layoutSubviews <stripped>
-	0x33cbb0  @objc CollectionHeaderView.initWithFrame: <stripped>
-	0x33cbe0  @objc CollectionHeaderView.initWithCoder: <stripped>
-	0x33ca80  @objc CollectionHeaderView..cxx_destruct <stripped>
+	0x33d120  @objc CollectionHeaderView.sizeThatFits: <stripped>
+	0x33d180  @objc CollectionHeaderView.layoutSubviews <stripped>
+	0x33da50  @objc CollectionHeaderView.initWithFrame: <stripped>
+	0x33da80  @objc CollectionHeaderView.initWithCoder: <stripped>
+	0x33d920  @objc CollectionHeaderView..cxx_destruct <stripped>
  }
 
  class VideosUI.VerticalStackLayout : ViewLayout {
@@ -1812,35 +1812,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var stackType : StackType // +0x170 (0x1)
 
 	// Swift methods
-	0x33cce0  func <stripped> // getter 
-	0x33cd10  func <stripped> // setter 
-	0x33cd50  func <stripped> // getter 
-	0x33cdc0  func <stripped> // setter 
-	0x33cde0  func <stripped> // getter 
-	0x33ce50  func <stripped> // setter 
-	0x33ce70  func <stripped> // getter 
-	0x33cee0  func <stripped> // setter 
-	0x33cf00  func <stripped> // getter 
-	0x33cf70  func <stripped> // setter 
-	0x33cf90  func <stripped> // getter 
-	0x33d000  func <stripped> // setter 
-	0x33d020  func <stripped> // getter 
-	0x33d090  func <stripped> // setter 
-	0x33d0b0  func <stripped> // getter 
-	0x33d120  func <stripped> // setter 
-	0x33d140  func <stripped> // getter 
-	0x33d1b0  func <stripped> // setter 
-	0x33d1d0  func <stripped> // getter 
-	0x33d240  func <stripped> // setter 
-	0x33d260  func <stripped> // getter 
-	0x33d2e0  func <stripped> // setter 
-	0x33d300  func <stripped> // getter 
-	0x33d380  func <stripped> // setter 
-	0x33d3a0  func <stripped> // getter 
-	0x33d410  func <stripped> // setter 
-	0x33e980  func <stripped> // getter 
-	0x33e9b0  func <stripped> // setter 
-	0x33eb00  class func <stripped> // init 
+	0x33db80  func <stripped> // getter 
+	0x33dbb0  func <stripped> // setter 
+	0x33dbf0  func <stripped> // getter 
+	0x33dc60  func <stripped> // setter 
+	0x33dc80  func <stripped> // getter 
+	0x33dcf0  func <stripped> // setter 
+	0x33dd10  func <stripped> // getter 
+	0x33dd80  func <stripped> // setter 
+	0x33dda0  func <stripped> // getter 
+	0x33de10  func <stripped> // setter 
+	0x33de30  func <stripped> // getter 
+	0x33dea0  func <stripped> // setter 
+	0x33dec0  func <stripped> // getter 
+	0x33df30  func <stripped> // setter 
+	0x33df50  func <stripped> // getter 
+	0x33dfc0  func <stripped> // setter 
+	0x33dfe0  func <stripped> // getter 
+	0x33e050  func <stripped> // setter 
+	0x33e070  func <stripped> // getter 
+	0x33e0e0  func <stripped> // setter 
+	0x33e100  func <stripped> // getter 
+	0x33e180  func <stripped> // setter 
+	0x33e1a0  func <stripped> // getter 
+	0x33e220  func <stripped> // setter 
+	0x33e240  func <stripped> // getter 
+	0x33e2b0  func <stripped> // setter 
+	0x33f820  func <stripped> // getter 
+	0x33f850  func <stripped> // setter 
+	0x33f9a0  class func <stripped> // init 
  }
 
  enum VideosUI.StackType {
@@ -1866,27 +1866,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var darkUIColor : UIColor? // +0x18 (0x8)
 	var _dynamicUIColor : UIColor? // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_color : Ài // +0x28 (0x8)
+	var $__lazy_storage_$_color : ˚j // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3422f0  @objc VideosColor.copyWithZone: <stripped>
+	0x343190  @objc VideosColor.copyWithZone: <stripped>
 
 	// Swift methods
-	0x341510  func <stripped> // getter 
-	0x341550  func <stripped> // setter 
-	0x341590  func <stripped> // modifyCoroutine 
-	0x3415c0  func <stripped> // getter 
-	0x341600  func <stripped> // setter 
-	0x341640  func <stripped> // modifyCoroutine 
-	0x341680  func <stripped> // getter 
-	0x3416e0  func <stripped> // setter 
-	0x341700  func <stripped> // modifyCoroutine 
-	0x3417a0  func <stripped> // getter 
-	0x341900  class func <stripped> // init 
-	0x341970  class func <stripped> // init 
-	0x341fc0  class func <stripped> // init 
-	0x342040  class func <stripped> // init 
-	0x342100  func <stripped> // method 
+	0x3423b0  func <stripped> // getter 
+	0x3423f0  func <stripped> // setter 
+	0x342430  func <stripped> // modifyCoroutine 
+	0x342460  func <stripped> // getter 
+	0x3424a0  func <stripped> // setter 
+	0x3424e0  func <stripped> // modifyCoroutine 
+	0x342520  func <stripped> // getter 
+	0x342580  func <stripped> // setter 
+	0x3425a0  func <stripped> // modifyCoroutine 
+	0x342640  func <stripped> // getter 
+	0x3427a0  class func <stripped> // init 
+	0x342810  class func <stripped> // init 
+	0x342e60  class func <stripped> // init 
+	0x342ee0  class func <stripped> // init 
+	0x342fa0  func <stripped> // method 
  }
 
  enum VideosUI.ImageDescriptor { }
@@ -1947,25 +1947,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _viewElement : IKViewElement?
 
 	// ObjC -> Swift bridged methods
-	0x346f80  @objc MessageLockupViewController.processTouchEventWithSender: <stripped>
-	0x347510  @objc MessageLockupViewController.viewDidAppear: <stripped>
-	0x347650  @objc MessageLockupViewController.viewDidDisappear: <stripped>
-	0x347700  @objc MessageLockupViewController.initWithNibName:bundle: <stripped>
-	0x347780  @objc MessageLockupViewController.initWithCoder: <stripped>
-	0x3476b0  @objc MessageLockupViewController..cxx_destruct <stripped>
+	0x347e20  @objc MessageLockupViewController.processTouchEventWithSender: <stripped>
+	0x3483b0  @objc MessageLockupViewController.viewDidAppear: <stripped>
+	0x3484f0  @objc MessageLockupViewController.viewDidDisappear: <stripped>
+	0x3485a0  @objc MessageLockupViewController.initWithNibName:bundle: <stripped>
+	0x348620  @objc MessageLockupViewController.initWithCoder: <stripped>
+	0x348550  @objc MessageLockupViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x346c30  func <stripped> // getter 
-	0x346c50  func <stripped> // setter 
-	0x346c70  func <stripped> // modifyCoroutine 
-	0x346cc0  func <stripped> // getter 
-	0x346d30  func <stripped> // setter 
-	0x346da0  func <stripped> // modifyCoroutine 
-	0x346e70  func <stripped> // getter 
-	0x346de0  func <stripped> // setter 
-	0x346ea0  func <stripped> // modifyCoroutine 
-	0x346f70  func <stripped> // method 
-	0x346fd0  func <stripped> // method 
+	0x347ad0  func <stripped> // getter 
+	0x347af0  func <stripped> // setter 
+	0x347b10  func <stripped> // modifyCoroutine 
+	0x347b60  func <stripped> // getter 
+	0x347bd0  func <stripped> // setter 
+	0x347c40  func <stripped> // modifyCoroutine 
+	0x347d10  func <stripped> // getter 
+	0x347c80  func <stripped> // setter 
+	0x347d40  func <stripped> // modifyCoroutine 
+	0x347e10  func <stripped> // method 
+	0x347e70  func <stripped> // method 
  }
 
  class VideosUI.MessageLockupContainerView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1975,14 +1975,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var messageLockupView : MessageLockupView
 
 	// ObjC -> Swift bridged methods
-	0x3477c0  @objc MessageLockupContainerView.layoutSubviews <stripped>
-	0x347860  @objc MessageLockupContainerView.sizeThatFits: <stripped>
-	0x347d00  @objc MessageLockupContainerView.initWithFrame: <stripped>
-	0x347d90  @objc MessageLockupContainerView.initWithCoder: <stripped>
-	0x347cc0  @objc MessageLockupContainerView..cxx_destruct <stripped>
+	0x348660  @objc MessageLockupContainerView.layoutSubviews <stripped>
+	0x348700  @objc MessageLockupContainerView.sizeThatFits: <stripped>
+	0x348ba0  @objc MessageLockupContainerView.initWithFrame: <stripped>
+	0x348c30  @objc MessageLockupContainerView.initWithCoder: <stripped>
+	0x348b60  @objc MessageLockupContainerView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3478c0  func <stripped> // method 
+	0x348760  func <stripped> // method 
  }
 
  class VideosUI.ErrorTemplateLayout : ViewLayout {
@@ -1994,14 +1994,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var debugTextLayout2 : TextLayout // +0x120 (0x8)
 
 	// Swift methods
-	0x348300  func <stripped> // getter 
-	0x348340  func <stripped> // setter 
-	0x348380  func <stripped> // getter 
-	0x3483c0  func <stripped> // setter 
-	0x348400  func <stripped> // getter 
-	0x348440  func <stripped> // setter 
-	0x348480  func <stripped> // getter 
-	0x3484c0  func <stripped> // setter 
+	0x3491a0  func <stripped> // getter 
+	0x3491e0  func <stripped> // setter 
+	0x349220  func <stripped> // getter 
+	0x349260  func <stripped> // setter 
+	0x3492a0  func <stripped> // getter 
+	0x3492e0  func <stripped> // setter 
+	0x349320  func <stripped> // getter 
+	0x349360  func <stripped> // setter 
  }
 
  enum VideosUI.ButtonViewFactory { }
@@ -2013,7 +2013,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var document : Document // +0x18 (0x8)
 
 	// Swift methods
-	0x349f00  class func <stripped> // init 
+	0x34ada0  class func <stripped> // init 
  }
 
  class VideosUI.UnitTestCardLayout : ViewLayout {
@@ -2022,8 +2022,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var titleTextLayout : TextLayout // +0x108 (0x8)
 
 	// Swift methods
-	0x34a330  func <stripped> // getter 
-	0x34a370  func <stripped> // setter 
+	0x34b1d0  func <stripped> // getter 
+	0x34b210  func <stripped> // setter 
  }
 
  class VideosUI.DocumentViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2036,32 +2036,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var opaqueBackground : Bool // +0x28 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x34a890  @objc DocumentViewController.initWithCoder: <stripped>
-	0x34aa10  @objc DocumentViewController.loadView <stripped>
-	0x34b010  @objc DocumentViewController.viewDidLoad <stripped>
-	0x34b040  @objc DocumentViewController.viewDidAppear: <stripped>
-	0x34b300  @objc DocumentViewController.viewDidLayoutSubviews <stripped>
-	0x34b430  @objc DocumentViewController.willMoveToParentViewController: <stripped>
-	0x34b480  @objc DocumentViewController.preferredStatusBarStyle <stripped>
-	0x34b520  @objc DocumentViewController.preferredFocusEnvironments <stripped>
-	0x34b790  @objc DocumentViewController.supportedInterfaceOrientations <stripped>
-	0x34b960  @objc DocumentViewController.overrideTraitCollectionForChildViewController: <stripped>
-	0x34ba40  @objc DocumentViewController.traitCollectionDidChange: <stripped>
-	0x34baf0  @objc DocumentViewController.childViewControllerForStatusBarHidden <stripped>
-	0x34bb40  @objc DocumentViewController.shouldAutomaticallyForwardAppearanceMethods <stripped>
-	0x34bc50  @objc DocumentViewController.initWithNibName:bundle: <stripped>
-	0x34bc00  @objc DocumentViewController..cxx_destruct <stripped>
+	0x34b730  @objc DocumentViewController.initWithCoder: <stripped>
+	0x34b8b0  @objc DocumentViewController.loadView <stripped>
+	0x34beb0  @objc DocumentViewController.viewDidLoad <stripped>
+	0x34bee0  @objc DocumentViewController.viewDidAppear: <stripped>
+	0x34c1a0  @objc DocumentViewController.viewDidLayoutSubviews <stripped>
+	0x34c2d0  @objc DocumentViewController.willMoveToParentViewController: <stripped>
+	0x34c320  @objc DocumentViewController.preferredStatusBarStyle <stripped>
+	0x34c3c0  @objc DocumentViewController.preferredFocusEnvironments <stripped>
+	0x34c630  @objc DocumentViewController.supportedInterfaceOrientations <stripped>
+	0x34c800  @objc DocumentViewController.overrideTraitCollectionForChildViewController: <stripped>
+	0x34c8e0  @objc DocumentViewController.traitCollectionDidChange: <stripped>
+	0x34c990  @objc DocumentViewController.childViewControllerForStatusBarHidden <stripped>
+	0x34c9e0  @objc DocumentViewController.shouldAutomaticallyForwardAppearanceMethods <stripped>
+	0x34caf0  @objc DocumentViewController.initWithNibName:bundle: <stripped>
+	0x34caa0  @objc DocumentViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x34a640  func <stripped> // getter 
-	0x34a680  func <stripped> // setter 
-	0x34a6d0  func <stripped> // getter 
-	0x34a710  func <stripped> // setter 
-	0x34a760  func <stripped> // getter 
-	0x34a790  func <stripped> // setter 
-	0x34a7d0  func <stripped> // modifyCoroutine 
-	0x34a820  class func <stripped> // init 
-	0x34bb60  func <stripped> // method 
+	0x34b4e0  func <stripped> // getter 
+	0x34b520  func <stripped> // setter 
+	0x34b570  func <stripped> // getter 
+	0x34b5b0  func <stripped> // setter 
+	0x34b600  func <stripped> // getter 
+	0x34b630  func <stripped> // setter 
+	0x34b670  func <stripped> // modifyCoroutine 
+	0x34b6c0  class func <stripped> // init 
+	0x34ca00  func <stripped> // method 
  }
 
  enum VideosUI.DocumentUpdateType {
@@ -2082,7 +2082,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var navigationBar : ViewModel // +0x20 (0x8)
 
 	// Swift methods
-	0x34e660  class func <stripped> // init 
+	0x34f500  class func <stripped> // init 
  }
 
  class VideosUI.PageContentView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2090,21 +2090,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var backgroundMediaController : VUIBackgroundMediaController? // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _playbackState : Ih // +0x4fa82c (0x0)
+	var _playbackState : yi // +0xc962058b (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var playbackDidStartObserver : Ww // +0x8d48004f (0x8)
+	var playbackDidStartObserver : áx // +0x358b48c3 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var playbackDidStopObserver : Ww // +0xef894c00 (0x8)
-	var verticalStackView : VerticalStackView // +0x4c0042c3 (0x8)
-	var viewModel : ViewModel // +0x48c68949 (0x8)
-	var backgroundViewModel : ViewModel // +0xe8c78948 (0x8)
+	var playbackDidStopObserver : áx // +0xe92d8b4c (0x8)
+	var verticalStackView : VerticalStackView // +0x8b480847 (0x8)
+	var viewModel : ViewModel // +0x3bd8e8c7 (0x8)
+	var backgroundViewModel : ViewModel // +0x3bb0e800 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3503c0  @objc PageContentView.layoutSubviews <stripped>
-	0x3506d0  @objc PageContentView.traitCollectionDidChange: <stripped>
-	0x351250  @objc PageContentView.initWithFrame: <stripped>
-	0x351280  @objc PageContentView.initWithCoder: <stripped>
-	0x351010  @objc PageContentView..cxx_destruct <stripped>
+	0x351260  @objc PageContentView.layoutSubviews <stripped>
+	0x351570  @objc PageContentView.traitCollectionDidChange: <stripped>
+	0x3520f0  @objc PageContentView.initWithFrame: <stripped>
+	0x352120  @objc PageContentView.initWithCoder: <stripped>
+	0x351eb0  @objc PageContentView..cxx_destruct <stripped>
  }
 
  enum VideosUI.PlaybackState {
@@ -2123,11 +2123,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_viewLayout : FooterViewLayout // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x352620  @objc FooterView.layoutSubviews <stripped>
-	0x3526b0  @objc FooterView.sizeThatFits: <stripped>
-	0x352d40  @objc FooterView.initWithFrame: <stripped>
-	0x352e00  @objc FooterView.initWithCoder: <stripped>
-	0x352d00  @objc FooterView..cxx_destruct <stripped>
+	0x3534c0  @objc FooterView.layoutSubviews <stripped>
+	0x353550  @objc FooterView.sizeThatFits: <stripped>
+	0x353be0  @objc FooterView.initWithFrame: <stripped>
+	0x353ca0  @objc FooterView.initWithCoder: <stripped>
+	0x353ba0  @objc FooterView..cxx_destruct <stripped>
  }
 
  class VideosUI.ExpandableView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2138,11 +2138,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_scrollView : UIScrollView? // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3549d0  @objc ExpandableView.layoutSubviews <stripped>
-	0x354a60  @objc ExpandableView.sizeThatFits: <stripped>
-	0x3551c0  @objc ExpandableView.initWithFrame: <stripped>
-	0x355280  @objc ExpandableView.initWithCoder: <stripped>
-	0x355180  @objc ExpandableView..cxx_destruct <stripped>
+	0x355870  @objc ExpandableView.layoutSubviews <stripped>
+	0x355900  @objc ExpandableView.sizeThatFits: <stripped>
+	0x356060  @objc ExpandableView.initWithFrame: <stripped>
+	0x356120  @objc ExpandableView.initWithCoder: <stripped>
+	0x356020  @objc ExpandableView..cxx_destruct <stripped>
  }
 
  class VideosUI.ErrorTemplateController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2151,16 +2151,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var template : ViewModel // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x355500  @objc ErrorTemplateController.loadView <stripped>
-	0x3564b0  @objc ErrorTemplateController.initWithNibName:bundle: <stripped>
-	0x356590  @objc ErrorTemplateController.initWithCoder: <stripped>
-	0x356490  @objc ErrorTemplateController..cxx_destruct <stripped>
+	0x3563a0  @objc ErrorTemplateController.loadView <stripped>
+	0x357350  @objc ErrorTemplateController.initWithNibName:bundle: <stripped>
+	0x357430  @objc ErrorTemplateController.initWithCoder: <stripped>
+	0x357330  @objc ErrorTemplateController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x355420  func <stripped> // getter 
-	0x355460  func <stripped> // setter 
-	0x3554b0  func <stripped> // modifyCoroutine 
-	0x355580  func <stripped> // method 
+	0x3562c0  func <stripped> // getter 
+	0x356300  func <stripped> // setter 
+	0x356350  func <stripped> // modifyCoroutine 
+	0x356420  func <stripped> // method 
  }
 
  class VideosUI.TextLayout : ViewLayout {
@@ -2182,49 +2182,49 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var alwaysFocusable : Bool? // +0x180 (0x1)
 
 	// Swift methods
-	0x356640  func <stripped> // getter 
-	0x358060  func <stripped> // getter 
-	0x3580a0  func <stripped> // setter 
-	0x358130  func <stripped> // modifyCoroutine 
-	0x358200  func <stripped> // getter 
-	0x358240  func <stripped> // setter 
-	0x3582d0  func <stripped> // modifyCoroutine 
-	0x3583a0  func <stripped> // getter 
-	0x3583e0  func <stripped> // setter 
-	0x358470  func <stripped> // modifyCoroutine 
-	0x358540  func <stripped> // getter 
-	0x358580  func <stripped> // setter 
-	0x358610  func <stripped> // modifyCoroutine 
-	0x3586e0  func <stripped> // getter 
-	0x358720  func <stripped> // setter 
-	0x3587b0  func <stripped> // modifyCoroutine 
-	0x358880  func <stripped> // getter 
-	0x3588c0  func <stripped> // setter 
-	0x358950  func <stripped> // modifyCoroutine 
-	0x358a20  func <stripped> // getter 
-	0x358a60  func <stripped> // setter 
-	0x358af0  func <stripped> // modifyCoroutine 
-	0x358bc0  func <stripped> // getter 
-	0x358c00  func <stripped> // setter 
-	0x358c90  func <stripped> // modifyCoroutine 
-	0x358d60  func <stripped> // getter 
-	0x358da0  func <stripped> // setter 
-	0x358e30  func <stripped> // modifyCoroutine 
+	0x3574e0  func <stripped> // getter 
 	0x358f00  func <stripped> // getter 
-	0x358f30  func <stripped> // setter 
-	0x358f80  func <stripped> // modifyCoroutine 
-	0x358fc0  func <stripped> // getter 
-	0x358ff0  func <stripped> // setter 
-	0x359040  func <stripped> // modifyCoroutine 
-	0x359080  func <stripped> // getter 
-	0x3590c0  func <stripped> // setter 
-	0x359150  func <stripped> // modifyCoroutine 
-	0x359220  func <stripped> // getter 
-	0x359260  func <stripped> // setter 
-	0x3592a0  func <stripped> // modifyCoroutine 
-	0x3592f0  func <stripped> // getter 
-	0x359320  func <stripped> // setter 
-	0x359350  func <stripped> // modifyCoroutine 
+	0x358f40  func <stripped> // setter 
+	0x358fd0  func <stripped> // modifyCoroutine 
+	0x3590a0  func <stripped> // getter 
+	0x3590e0  func <stripped> // setter 
+	0x359170  func <stripped> // modifyCoroutine 
+	0x359240  func <stripped> // getter 
+	0x359280  func <stripped> // setter 
+	0x359310  func <stripped> // modifyCoroutine 
+	0x3593e0  func <stripped> // getter 
+	0x359420  func <stripped> // setter 
+	0x3594b0  func <stripped> // modifyCoroutine 
+	0x359580  func <stripped> // getter 
+	0x3595c0  func <stripped> // setter 
+	0x359650  func <stripped> // modifyCoroutine 
+	0x359720  func <stripped> // getter 
+	0x359760  func <stripped> // setter 
+	0x3597f0  func <stripped> // modifyCoroutine 
+	0x3598c0  func <stripped> // getter 
+	0x359900  func <stripped> // setter 
+	0x359990  func <stripped> // modifyCoroutine 
+	0x359a60  func <stripped> // getter 
+	0x359aa0  func <stripped> // setter 
+	0x359b30  func <stripped> // modifyCoroutine 
+	0x359c00  func <stripped> // getter 
+	0x359c40  func <stripped> // setter 
+	0x359cd0  func <stripped> // modifyCoroutine 
+	0x359da0  func <stripped> // getter 
+	0x359dd0  func <stripped> // setter 
+	0x359e20  func <stripped> // modifyCoroutine 
+	0x359e60  func <stripped> // getter 
+	0x359e90  func <stripped> // setter 
+	0x359ee0  func <stripped> // modifyCoroutine 
+	0x359f20  func <stripped> // getter 
+	0x359f60  func <stripped> // setter 
+	0x359ff0  func <stripped> // modifyCoroutine 
+	0x35a0c0  func <stripped> // getter 
+	0x35a100  func <stripped> // setter 
+	0x35a140  func <stripped> // modifyCoroutine 
+	0x35a190  func <stripped> // getter 
+	0x35a1c0  func <stripped> // setter 
+	0x35a1f0  func <stripped> // modifyCoroutine 
  }
 
  enum VideosUI.ContentSizeCategory {
@@ -2321,11 +2321,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var scrollView : weak UIScrollView? // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var contentOffsetSubscriber : Ww // +0x18 (0x8)
+	var contentOffsetSubscriber : áx // +0x18 (0x8)
 
 	// Swift methods
-	0x35be80  class func <stripped> // init 
-	0x35bee0  func <stripped> // method 
+	0x35cd20  class func <stripped> // init 
+	0x35cd80  func <stripped> // method 
  }
 
  class VideosUI.PageSwipeUpView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2337,15 +2337,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_chevronView : UIImageView? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x35c5c0  @objc PageSwipeUpView.initWithCoder: <stripped>
-	0x35cb00  @objc PageSwipeUpView.sizeThatFits: <stripped>
-	0x35cb60  @objc PageSwipeUpView.layoutSubviews <stripped>
-	0x35cc70  @objc PageSwipeUpView.initWithFrame: <stripped>
-	0x35cc10  @objc PageSwipeUpView..cxx_destruct <stripped>
+	0x35d460  @objc PageSwipeUpView.initWithCoder: <stripped>
+	0x35d9a0  @objc PageSwipeUpView.sizeThatFits: <stripped>
+	0x35da00  @objc PageSwipeUpView.layoutSubviews <stripped>
+	0x35db10  @objc PageSwipeUpView.initWithFrame: <stripped>
+	0x35dab0  @objc PageSwipeUpView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x35c3e0  func <stripped> // getter 
-	0x35c580  class func <stripped> // init 
+	0x35d280  func <stripped> // getter 
+	0x35d420  class func <stripped> // init 
  }
 
  class VideosUI.LargeNavigationHeaderViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2355,15 +2355,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _pageHeaderView : LargeNavigationHeaderView // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x35d7c0  @objc LargeNavigationHeaderViewController.initWithNibName:bundle: <stripped>
-	0x35d840  @objc LargeNavigationHeaderViewController.initWithCoder: <stripped>
-	0x35d780  @objc LargeNavigationHeaderViewController..cxx_destruct <stripped>
+	0x35e660  @objc LargeNavigationHeaderViewController.initWithNibName:bundle: <stripped>
+	0x35e6e0  @objc LargeNavigationHeaderViewController.initWithCoder: <stripped>
+	0x35e620  @objc LargeNavigationHeaderViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x35d580  func <stripped> // getter 
-	0x35d4f0  func <stripped> // setter 
-	0x35d5b0  func <stripped> // modifyCoroutine 
-	0x35d680  func <stripped> // method 
+	0x35e420  func <stripped> // getter 
+	0x35e390  func <stripped> // setter 
+	0x35e450  func <stripped> // modifyCoroutine 
+	0x35e520  func <stripped> // method 
  }
 
  enum VideosUI.ShelfLockupStyle {
@@ -2395,35 +2395,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var opacityMaskLayer : CALayer? // +0xe0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3615f0  @objc ContentView.sizeThatFits: <stripped>
-	0x3616d0  @objc ContentView.layoutSubviews <stripped>
-	0x3619a0  @objc ContentView.traitCollectionDidChange: <stripped>
-	0x362c10  @objc ContentView.initWithFrame: <stripped>
-	0x362c40  @objc ContentView.initWithCoder: <stripped>
-	0x3628a0  @objc ContentView..cxx_destruct <stripped>
+	0x362490  @objc ContentView.sizeThatFits: <stripped>
+	0x362570  @objc ContentView.layoutSubviews <stripped>
+	0x362840  @objc ContentView.traitCollectionDidChange: <stripped>
+	0x363ab0  @objc ContentView.initWithFrame: <stripped>
+	0x363ae0  @objc ContentView.initWithCoder: <stripped>
+	0x363740  @objc ContentView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x35e200  func <stripped> // getter 
-	0x35e230  func <stripped> // setter 
-	0x35e270  func <stripped> // modifyCoroutine 
-	0x35e2b0  func <stripped> // getter 
-	0x35e2f0  func <stripped> // setter 
-	0x35e330  func <stripped> // modifyCoroutine 
-	0x35e380  func <stripped> // getter 
-	0x35e3f0  func <stripped> // setter 
-	0x35e460  func <stripped> // modifyCoroutine 
-	0x35e720  func <stripped> // getter 
-	0x35e760  func <stripped> // setter 
-	0x35e7d0  func <stripped> // modifyCoroutine 
-	0x35e930  func <stripped> // getter 
-	0x35e970  func <stripped> // setter 
-	0x35ea50  func <stripped> // modifyCoroutine 
-	0x35eb10  func <stripped> // getter 
-	0x35eb80  func <stripped> // setter 
-	0x35ebf0  func <stripped> // modifyCoroutine 
-	0x35ece0  func <stripped> // getter 
-	0x35ed30  func <stripped> // setter 
-	0x35edc0  func <stripped> // modifyCoroutine 
 	0x35f0a0  func <stripped> // getter 
-	0x3619f0  func <stripped> // method 
+	0x35f0d0  func <stripped> // setter 
+	0x35f110  func <stripped> // modifyCoroutine 
+	0x35f150  func <stripped> // getter 
+	0x35f190  func <stripped> // setter 
+	0x35f1d0  func <stripped> // modifyCoroutine 
+	0x35f220  func <stripped> // getter 
+	0x35f290  func <stripped> // setter 
+	0x35f300  func <stripped> // modifyCoroutine 
+	0x35f5c0  func <stripped> // getter 
+	0x35f600  func <stripped> // setter 
+	0x35f670  func <stripped> // modifyCoroutine 
+	0x35f7d0  func <stripped> // getter 
+	0x35f810  func <stripped> // setter 
+	0x35f8f0  func <stripped> // modifyCoroutine 
+	0x35f9b0  func <stripped> // getter 
+	0x35fa20  func <stripped> // setter 
+	0x35fa90  func <stripped> // modifyCoroutine 
+	0x35fb80  func <stripped> // getter 
+	0x35fbd0  func <stripped> // setter 
+	0x35fc60  func <stripped> // modifyCoroutine 
+	0x35ff40  func <stripped> // getter 
+	0x362890  func <stripped> // method 
  }

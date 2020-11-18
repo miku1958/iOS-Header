@@ -10,7 +10,6 @@
 
 @interface _TtC8NewsFeed24CoverChannelViewRenderer : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *traitCollection;
     MISSING_TYPE *rendererTool;
     MISSING_TYPE *imageCache;
 }

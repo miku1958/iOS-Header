@@ -1,7 +1,8 @@
- protocol TeaActivities.Navigator // 4 requirements
+ protocol TeaActivities.Navigator // 5 requirements
  {
 	// class associated conformance access function
 	// class associated type access function
+	// method
 	// method
 	// method
  }
@@ -62,6 +63,7 @@
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let navigateBlock :  empty-list 
+	let newWindowBlock : (_:)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let previewBlock :  empty-list 
  }
@@ -90,6 +92,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum TeaActivities.StackNavigatorError {
 
 	// Properties
+	case userActivityNotConfigured  
 	case failedToReachDesiredActivity  
 	case infiniteNavigationLoop  
 	case poppedRootRouter  

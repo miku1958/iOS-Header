@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long mutationTime; // @dynamic mutationTime;
 @property (nonatomic) double receiptTime; // @dynamic receiptTime;
 @property (strong, nonatomic) KTRequest *request; // @dynamic request;
-@property (nonatomic) BOOL signatureVerified; // @dynamic signatureVerified;
+@property (nonatomic) long long signatureVerified; // @dynamic signatureVerified;
 @property (strong, nonatomic) NSData *smt; // @dynamic smt;
 @property (nonatomic) long long verificationResult; // @dynamic verificationResult;
 

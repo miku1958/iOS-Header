@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, TSAnalyticsReferral, TSNewsReferralItemWidgetVideoPlaylist, UIViewController;
+@class NSArray, TSAnalyticsReferral, UIViewController;
 
 @protocol TSVideoPlayerModuleType
 - (UIViewController *)createViewControllerWithArticleIDs:(NSArray *)arg1 referral:(TSAnalyticsReferral *)arg2;
-- (UIViewController *)createViewControllerWithWidgetVideoPlaylist:(TSNewsReferralItemWidgetVideoPlaylist *)arg1 referral:(TSAnalyticsReferral *)arg2;
 @end
 

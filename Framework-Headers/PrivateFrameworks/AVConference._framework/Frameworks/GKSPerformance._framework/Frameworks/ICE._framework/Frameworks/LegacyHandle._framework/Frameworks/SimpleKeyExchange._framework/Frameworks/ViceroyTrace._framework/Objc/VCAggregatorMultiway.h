@@ -53,6 +53,11 @@ __attribute__((visibility("hidden")))
     unsigned int _lastReportedUplinkPacketsReceived;
     unsigned int _lastReportedUplinkPacketsSent;
     unsigned int _lastReportedUplinkBytesSent;
+    unsigned int _videoDegradedTotalCounter;
+    unsigned int _videoDegradedMaxPercentOfParticipant;
+    unsigned int _significantVideoStallMaxPercentOfParticipant;
+    unsigned int _significantAudioErasureMaxPercentOfParticipant;
+    unsigned int _totalDuplicationTicks;
     double _sessionCreatedTime;
     BOOL _isFullsizeUI;
     BOOL _isDuplicationEnabled;
@@ -75,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)audioEnabled:(id)arg1;
 - (unsigned int)audioErasureCount;
 - (double)audioErasureTotalTime;
+- (unsigned int)currentDegragedParticipantCount;
 - (BOOL)currentUISize;
 - (void)dealloc;
 - (void)finalizeCall:(id)arg1;
@@ -99,11 +105,11 @@ __attribute__((visibility("hidden")))
 - (void)processDownlinkTargetBitrate:(unsigned int)arg1;
 - (void)processEventWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3;
 - (void)processInternalErrorDetectedWithCode:(id)arg1;
-- (void)processNumberOfParticipants:(unsigned int)arg1;
 - (void)processParticipantTimingInfo:(id)arg1;
 - (void)processRTEvent:(id)arg1;
 - (void)processSessionInit;
 - (void)processSessionStart;
+- (void)processStatsForNumberOfParticipants:(unsigned int)arg1;
 - (void)processUISizeEventForParticipant:(id)arg1 isFullSize:(BOOL)arg2;
 - (void)processUplinkActualBitrate:(unsigned int)arg1;
 - (void)processUplinkBWEstimation:(unsigned int)arg1;

@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCEditorialOperation, FCForYouConfig, FCMyArticlesOperation, FCSpotlightOperationResult, FCTopStoriesOperation, FCTopStoriesOperationResult, FCVideoArticlesOperationResult, NFUnfairLock, NSArray, NSDictionary, NSError, NSHashTable, NSMapTable, NSOperationQueue;
+@class FCEditorialOperation, FCForYouConfig, FCForYouConfigHeadlinesOperation, FCMyArticlesOperation, FCSpotlightOperationResult, FCTopStoriesOperation, FCTopStoriesOperationResult, NFUnfairLock, NSArray, NSDictionary, NSError, NSHashTable, NSMapTable, NSOperationQueue;
 @protocol FCChannelProviding;
 
 @interface FCForYouCatchUpOperation : FCOperation
@@ -15,6 +15,7 @@
     FCMyArticlesOperation *_myArticlesOperation;
     FCTopStoriesOperation *_topStoriesOperation;
     FCEditorialOperation *_editorialOperation;
+    FCForYouConfigHeadlinesOperation *_forYouConfigOperation;
     NSOperationQueue *_operationQueue;
     NSHashTable *_conditionWaiters;
     NFUnfairLock *_conditionWaitersLock;
@@ -27,7 +28,7 @@
 @property (strong, nonatomic) FCEditorialOperation *editorialOperation; // @synthesize editorialOperation=_editorialOperation;
 @property (readonly, copy) NSDictionary *feedContextByFeedID;
 @property (readonly, copy, nonatomic) FCForYouConfig *forYouConfig;
-@property (readonly, copy, nonatomic) FCVideoArticlesOperationResult *moreVideosResult;
+@property (strong, nonatomic) FCForYouConfigHeadlinesOperation *forYouConfigOperation; // @synthesize forYouConfigOperation=_forYouConfigOperation;
 @property (strong, nonatomic) FCMyArticlesOperation *myArticlesOperation; // @synthesize myArticlesOperation=_myArticlesOperation;
 @property (readonly, copy, nonatomic) NSArray *nonEditorialFeedItems;
 @property (readonly, copy, nonatomic) NSMapTable *nonEditorialScoreProfiles;
@@ -36,7 +37,6 @@
 @property (readonly, copy, nonatomic) id<FCChannelProviding> topStoriesChannel;
 @property (strong, nonatomic) FCTopStoriesOperation *topStoriesOperation; // @synthesize topStoriesOperation=_topStoriesOperation;
 @property (readonly, copy, nonatomic) FCTopStoriesOperationResult *topStoriesResult;
-@property (readonly, copy, nonatomic) FCVideoArticlesOperationResult *topVideosResult;
 @property (readonly, copy, nonatomic) NSArray *trendingHeadlines;
 
 + (id)sharedCatchUpOperationForEdition:(id)arg1 contentTypes:(long long)arg2 configuration:(id)arg3 context:(id)arg4;

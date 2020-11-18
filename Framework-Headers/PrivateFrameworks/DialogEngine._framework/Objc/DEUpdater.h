@@ -21,6 +21,7 @@
     NSURL *_updateDir;
     NSURL *_storageBase;
     NSURL *_overlayBase;
+    NSURL *_tmpBase;
     DEManifest *_builtinManifest;
     DEManifest *_latestManifest;
     DEWorkQueues *_queues;
@@ -43,16 +44,20 @@
 @property (strong, nonatomic) DEWorkQueues *queues; // @synthesize queues=_queues;
 @property (strong, nonatomic) DEUpdaterState *state; // @synthesize state=_state;
 @property (strong, nonatomic) NSURL *storageBase; // @synthesize storageBase=_storageBase;
+@property (strong, nonatomic) NSURL *tmpBase; // @synthesize tmpBase=_tmpBase;
 @property (strong, nonatomic) NSURL *updateDir; // @synthesize updateDir=_updateDir;
 
 + (id)appendPublicationName:(id)arg1;
-+ (id)clientReleaseForUpdater;
 + (BOOL)copyFrom:(id)arg1 to:(id)arg2;
++ (id)getPublicationURL:(id)arg1 manifestDir:(id)arg2;
++ (id)getPublicationURL:(id)arg1 manifestDir:(id)arg2 URLVersion:(id)arg3;
 + (id)getUpdateDirFor:(id)arg1;
 + (id)loadPublication:(id)arg1;
-+ (BOOL)package:(id)arg1 to:(id)arg2 includePrefixes:(id)arg3 excludePrefixes:(id)arg4 includeSuffixes:(id)arg5 excludeSuffixes:(id)arg6 overrides:(id)arg7 keyId:(unsigned long long)arg8 multipart:(BOOL)arg9 updating:(id)arg10;
-+ (BOOL)prepareDistribution:(id)arg1 withManifestDir:(id)arg2 disabled:(BOOL)arg3 in:(id)arg4 keyId:(unsigned long long)arg5 multipart:(BOOL)arg6;
++ (BOOL)package:(id)arg1 summary:(id)arg2 to:(id)arg3 manifestDest:(id)arg4 overrides:(id)arg5 keyId:(unsigned long long)arg6 multipart:(BOOL)arg7 updating:(id)arg8;
++ (BOOL)prepareDistribution:(id)arg1 withManifestDir:(id)arg2 disabled:(BOOL)arg3 in:(id)arg4 tag:(id)arg5 keyId:(unsigned long long)arg6 multipart:(BOOL)arg7;
++ (BOOL)putManifest:(id)arg1 summary:(id)arg2 overrides:(id)arg3;
 + (void)remove:(id)arg1 from:(id)arg2;
++ (id)summarize:(id)arg1;
 - (void).cxx_destruct;
 - (void)checkOverlay:(id)arg1 version:(id)arg2;
 - (id)chooseURLFor:(id)arg1 version:(id)arg2 versionFound:(BOOL *)arg3;
@@ -72,7 +77,7 @@
 - (BOOL)linkToOverlay:(id)arg1 from:(id)arg2 replace:(BOOL)arg3;
 - (BOOL)loadState;
 - (void)prepare:(id)arg1 version:(id)arg2 encryptedVersion:(id)arg3 linkOnlyIfLatest:(BOOL)arg4 publication:(id)arg5 block:(CDUnknownBlockType)arg6;
-- (BOOL)prepareBuiltinManifest;
+- (BOOL)prepareBuiltinManifest:(BOOL)arg1;
 - (id)prepared:(id)arg1 version:(id)arg2;
 - (void)removeFromOverlay:(id)arg1;
 - (void)removeFromStorage:(id)arg1;

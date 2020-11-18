@@ -15,6 +15,8 @@
     MISSING_TYPE *assetManager;
     MISSING_TYPE *fontManager;
     MISSING_TYPE *cloudContext;
+    MISSING_TYPE *resourceService;
+    MISSING_TYPE *webArchiveService;
     MISSING_TYPE *$__lazy_storage_$_ignoreCache;
     MISSING_TYPE *$__lazy_storage_$_loadPackagesFromDebugServerDropbox;
 }

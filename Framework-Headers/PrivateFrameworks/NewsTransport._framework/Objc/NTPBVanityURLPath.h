@@ -12,11 +12,14 @@
 
 @interface NTPBVanityURLPath : PBCodable <NSCopying>
 {
+    NSString *_destinationParameters;
     NSString *_destinationPath;
     NSString *_sourcePath;
 }
 
+@property (strong, nonatomic) NSString *destinationParameters; // @synthesize destinationParameters=_destinationParameters;
 @property (strong, nonatomic) NSString *destinationPath; // @synthesize destinationPath=_destinationPath;
+@property (readonly, nonatomic) BOOL hasDestinationParameters;
 @property (strong, nonatomic) NSString *sourcePath; // @synthesize sourcePath=_sourcePath;
 
 - (void).cxx_destruct;

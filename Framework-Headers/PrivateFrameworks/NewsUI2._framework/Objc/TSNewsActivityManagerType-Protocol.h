@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class TSBridgedNewsActivity;
+@class TSNewsActivityData;
 
 @protocol TSNewsActivityManagerType
-- (void)deregisterActivity:(TSBridgedNewsActivity *)arg1;
-- (void)registerCurrentActivity:(TSBridgedNewsActivity *)arg1;
+- (void)deregisterActivityWithData:(TSNewsActivityData *)arg1;
+- (void)registerCurrentActivityWithData:(TSNewsActivityData *)arg1;
 @end
 

@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class DEContext, DEDistribution, NSDictionary, NSString;
+@protocol OS_os_log;
 
 @interface DEExecutor : NSObject
 {
@@ -26,6 +27,8 @@
     CDUnknownBlockType _callback;
     DEDistribution *_distribution;
     NSString *_voiceGender;
+    NSObject<OS_os_log> *_log;
+    unsigned long long _signpost;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType callback; // @synthesize callback=_callback;
@@ -37,10 +40,12 @@
 @property (strong, nonatomic) NSDictionary *globalParameters; // @synthesize globalParameters=_globalParameters;
 @property (nonatomic) BOOL grounding; // @synthesize grounding=_grounding;
 @property (strong, nonatomic) NSString *locale; // @synthesize locale=_locale;
+@property (strong, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property (nonatomic) BOOL multiuser; // @synthesize multiuser=_multiuser;
 @property (strong, nonatomic) NSDictionary *parameters; // @synthesize parameters=_parameters;
 @property (strong, nonatomic) NSString *pluginName; // @synthesize pluginName=_pluginName;
 @property (nonatomic) BOOL resetState; // @synthesize resetState=_resetState;
+@property (nonatomic) unsigned long long signpost; // @synthesize signpost=_signpost;
 @property (strong, nonatomic) NSString *templateDir; // @synthesize templateDir=_templateDir;
 @property (nonatomic) BOOL test; // @synthesize test=_test;
 @property (strong, nonatomic) NSString *voiceGender; // @synthesize voiceGender=_voiceGender;
@@ -50,10 +55,17 @@
 + (void)executeWithJson:(id)arg1 paramsString:(id)arg2 localeString:(id)arg3 callback:(CDUnknownBlockType)arg4 completionBlock:(CDUnknownBlockType)arg5;
 + (CDUnknownBlockType)prepareCallback:(CDUnknownBlockType)arg1 forContext:(struct Context *)arg2;
 - (void).cxx_destruct;
+- (void)checkProfile;
+- (id)consumeContext:(struct Context *)arg1 localePath:(basic_string_a1f69cfb)arg2;
+- (basic_string_a1f69cfb)consumeContextForJson:(struct Context *)arg1;
+- (id)execute;
 - (void)executeWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)executeWithParams:(id)arg1 locale:(id)arg2;
 - (void)executeWithParams:(id)arg1 locale:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (struct Context *)getContext;
 - (id)init;
+- (void)setupProfile;
+- (void)updateContext:(struct Context *)arg1 localePath:(basic_string_a1f69cfb)arg2;
 
 @end
 

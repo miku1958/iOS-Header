@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *dataManager;
-    MISSING_TYPE *coordinator;
+    MISSING_TYPE *tracker;
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *purchaseSessionID;
     MISSING_TYPE *purchaseID;

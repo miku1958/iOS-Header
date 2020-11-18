@@ -9,19 +9,21 @@
 #import <PassKitCore/PKAppletSubcredentialPairingSessionDelegate-Protocol.h>
 #import <PassKitCore/PKSubcredentialProvisioningOperationDelegate-Protocol.h>
 
-@class NSString, PKAppletSubcredential, PKAssertion, PKPaymentPass, PKSubcredentialProvisioningConfiguration, PKSubcredentialProvisioningOperation, PKSubcredentialProvisioningTransitionTable;
+@class NSString, PKAppletSubcredential, PKAssertion, PKPaymentPass, PKSubcredentialProvisioningConfiguration, PKSubcredentialProvisioningOperation, PKSubcredentialProvisioningOperationContext, PKSubcredentialProvisioningTransitionTable;
 @protocol OS_dispatch_queue, PKSubcredentialProvisioningControllerDelegate;
 
 @interface PKSubcredentialProvisioningController : NSObject <PKSubcredentialProvisioningOperationDelegate, PKAppletSubcredentialPairingSessionDelegate>
 {
     PKSubcredentialProvisioningConfiguration *_configuration;
+    PKSubcredentialProvisioningOperationContext *_context;
     PKSubcredentialProvisioningTransitionTable *_transitionTable;
     NSObject<OS_dispatch_queue> *_operationSerialQueue;
     struct os_unfair_lock_s _stateLock;
     BOOL _hasStarted;
     BOOL _hasBeenCanceled;
     PKAssertion *_userNotificationAssertion;
-    PKAssertion *_contactlessInterfaceSupressionAssertion;
+    PKAssertion *_fieldDetectSuppressionAssertion;
+    PKAssertion *_contactlessInterfaceSuppressionAssertion;
     PKSubcredentialProvisioningOperation *_currentOperation;
     long long _currentState;
     PKPaymentPass *_provisionedPass;
@@ -49,6 +51,7 @@
 - (void)appletSubcredentialPairingSessionDidFirstTransaction:(id)arg1 withError:(id)arg2;
 - (void)cancelProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cleanUpProvisioningAfterError:(BOOL)arg1;
+- (void)declineRelatedInvitationsIfNecessary;
 - (void)finishProvisioningWithError:(id)arg1 state:(long long)arg2;
 - (id)init;
 - (void)operation:(id)arg1 addedCredential:(id)arg2;

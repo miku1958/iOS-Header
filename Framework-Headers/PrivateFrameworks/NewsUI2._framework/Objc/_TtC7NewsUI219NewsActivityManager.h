@@ -14,9 +14,9 @@
 }
 
 - (void).cxx_destruct;
-- (void)deregisterActivity:(id)arg1;
+- (void)deregisterActivityWithData:(id)arg1;
 - (id)init;
-- (void)registerCurrentActivity:(id)arg1;
+- (void)registerCurrentActivityWithData:(id)arg1;
 
 @end
 

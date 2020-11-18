@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) BOOL fontScaling;
 @property (readonly, nonatomic) BOOL hangingPunctuation;
 @property (readonly, nonatomic) long long hyphenation;
+@property (readonly, nonatomic) BOOL lineBalancing;
 @property (readonly, nonatomic) long long lineHeight;
 @property (readonly, nonatomic) SXTextStyle *linkStyle;
 @property (readonly, nonatomic) long long paragraphSpacingAfter;

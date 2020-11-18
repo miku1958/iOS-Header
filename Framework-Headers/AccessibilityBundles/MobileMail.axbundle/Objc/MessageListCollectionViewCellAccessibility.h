@@ -36,6 +36,7 @@
 - (void)_axPostAnnouncementForActionCompletionIfNecessary;
 - (void)_axProcessMailLabel:(id)arg1 children:(id)arg2;
 - (id)_privateAccessibilityCustomActions;
+- (void)accessibilityElementDidBecomeFocused;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

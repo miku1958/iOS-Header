@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsFeed/TSProcessedImageRequestType-Protocol.h>
-
 @class MISSING_TYPE, NSDictionary, NSString;
 
-@interface NEThumbnailProcessorRequest : NSObject <TSProcessedImageRequestType>
+@interface NEThumbnailProcessorRequest : NSObject
 {
     MISSING_TYPE *assetHandles;
     MISSING_TYPE *thumbnailFrame;
@@ -18,6 +16,7 @@
     MISSING_TYPE *scale;
     MISSING_TYPE *roundedCorners;
     MISSING_TYPE *cornerRadius;
+    MISSING_TYPE *border;
 }
 
 @property (nonatomic, readonly) NSDictionary *assetHandles;

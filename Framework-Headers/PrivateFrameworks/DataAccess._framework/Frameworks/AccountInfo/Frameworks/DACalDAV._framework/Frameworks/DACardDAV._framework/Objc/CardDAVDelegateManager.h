@@ -24,8 +24,7 @@
 - (void).cxx_destruct;
 - (id)account;
 - (id)addChildWithDelegateInfo:(id)arg1;
-- (id)collectDelegateInfo;
-- (id)collectExpiredDelegateInfo;
+- (id)collectDelegateInfoReturningError:(id *)arg1;
 - (id)existingChildAccountsWithProperty:(id)arg1;
 - (id)initWithDelegateInfoProvider:(id)arg1 accountID:(id)arg2;
 - (id)removeAccount:(id)arg1;

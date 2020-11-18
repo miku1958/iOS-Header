@@ -18,6 +18,7 @@
 @property (copy, nonatomic) NSString *directoryPath; // @synthesize directoryPath=_directoryPath;
 @property (copy, nonatomic) NSMutableDictionary *fileURLsByKey; // @synthesize fileURLsByKey=_fileURLsByKey;
 @property (copy, nonatomic) NSString *preferredExtension; // @synthesize preferredExtension=_preferredExtension;
+@property (readonly, nonatomic) NSString *rootDirectory;
 
 - (void).cxx_destruct;
 - (id)_filePathForKey:(id)arg1;
@@ -30,6 +31,7 @@
 - (id)fileURLForKey:(id)arg1;
 - (id)initWithDirectoryAtPath:(id)arg1 preferredAssetPathExtension:(id)arg2;
 - (id)moveFileAtPath:(id)arg1 withKey:(id)arg2;
+- (id)moveFileAtURL:(id)arg1 withKey:(id)arg2;
 - (BOOL)removeAllFiles;
 - (BOOL)removeAllFilesExceptKeys:(id)arg1;
 - (BOOL)removeFileWithKey:(id)arg1;

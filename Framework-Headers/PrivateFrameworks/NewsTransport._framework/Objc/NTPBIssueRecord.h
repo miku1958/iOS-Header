@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores, NSMutableArray, NSString, NTPBDate, NTPBRecordBase;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSMutableArray, NSString, NTPBDate, NTPBRecordBase;
 
 @interface NTPBIssueRecord : PBCodable <NSCopying>
 {
@@ -32,6 +32,10 @@
     NSString *_metadataURL;
     NSString *_notificationDescription;
     NSString *_pdfResourceArchiveURL;
+    COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVector;
+    COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVectorAlt;
+    NSString *_personalizationVectorAltFullURL;
+    NSString *_personalizationVectorFullURL;
     NTPBDate *_publishDate;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores *_scores;
     NSString *_title;
@@ -80,6 +84,10 @@
 @property (nonatomic) BOOL hasMinimumNewsVersion;
 @property (readonly, nonatomic) BOOL hasNotificationDescription;
 @property (readonly, nonatomic) BOOL hasPdfResourceArchiveURL;
+@property (readonly, nonatomic) BOOL hasPersonalizationVector;
+@property (readonly, nonatomic) BOOL hasPersonalizationVectorAlt;
+@property (readonly, nonatomic) BOOL hasPersonalizationVectorAltFullURL;
+@property (readonly, nonatomic) BOOL hasPersonalizationVectorFullURL;
 @property (readonly, nonatomic) BOOL hasPublishDate;
 @property (readonly, nonatomic) BOOL hasScores;
 @property (readonly, nonatomic) BOOL hasTitle;
@@ -94,6 +102,10 @@
 @property (nonatomic) long long minimumNewsVersion; // @synthesize minimumNewsVersion=_minimumNewsVersion;
 @property (strong, nonatomic) NSString *notificationDescription; // @synthesize notificationDescription=_notificationDescription;
 @property (strong, nonatomic) NSString *pdfResourceArchiveURL; // @synthesize pdfResourceArchiveURL=_pdfResourceArchiveURL;
+@property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector; // @synthesize personalizationVector=_personalizationVector;
+@property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt; // @synthesize personalizationVectorAlt=_personalizationVectorAlt;
+@property (strong, nonatomic) NSString *personalizationVectorAltFullURL; // @synthesize personalizationVectorAltFullURL=_personalizationVectorAltFullURL;
+@property (strong, nonatomic) NSString *personalizationVectorFullURL; // @synthesize personalizationVectorFullURL=_personalizationVectorFullURL;
 @property (strong, nonatomic) NTPBDate *publishDate; // @synthesize publishDate=_publishDate;
 @property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores *scores; // @synthesize scores=_scores;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;

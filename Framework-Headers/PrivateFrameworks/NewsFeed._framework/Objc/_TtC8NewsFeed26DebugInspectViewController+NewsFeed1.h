@@ -8,6 +8,6 @@
 
 @interface _TtC8NewsFeed26DebugInspectViewController (NewsFeed1)
 - (void)doDismiss;
-- (void)doOptions;
+- (void)doTapToRadar;
 @end
 

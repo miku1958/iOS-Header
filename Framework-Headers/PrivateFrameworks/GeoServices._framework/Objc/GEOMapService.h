@@ -128,6 +128,7 @@
 - (id)ticketForSpatialLookupParameters:(id)arg1 traits:(id)arg2;
 - (id)ticketForSpatialPlaceLookupParameters:(id)arg1 traits:(id)arg2;
 - (id)ticketForSpotlightCategoryListWithTraits:(id)arg1;
+- (id)ticketForTerritoryForLocations:(id)arg1 shiftLocationsIfNeeded:(BOOL)arg2 traits:(id)arg3;
 - (id)ticketForTransitDeparturesAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripID:(unsigned long long)arg3 traits:(id)arg4;
 - (id)ticketForTransitIdentifiers:(id)arg1 endDateForPlacecardSchedulesForThisBatch:(id)arg2 traits:(id)arg3;
 - (id)ticketForTransitLines:(id)arg1 withTraits:(id)arg2;

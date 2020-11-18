@@ -613,7 +613,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let identifier : String // +0x10 (0x10)
 	let kind : Kind // +0x20 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDate : ¦ // +0x59 (0x0)
+	let startDate : ¦ // +0x5b (0x0)
 
 	// Swift methods
  }

@@ -15,6 +15,7 @@
 - (void)userInfo:(FCUserInfo *)arg1 didRemoveAccessTokenForTagID:(NSString *)arg2 userInitiated:(BOOL)arg3;
 - (void)userInfoDidChangeDateLastViewedSaved:(FCUserInfo *)arg1 fromCloud:(BOOL)arg2;
 - (void)userInfoDidChangeEditorialArticleVersion:(FCUserInfo *)arg1;
+- (void)userInfoDidChangeEndOfAudioTrackNotificationsEnabled:(FCUserInfo *)arg1 fromCloud:(BOOL)arg2;
 - (void)userInfoDidChangeFeldsparID:(FCUserInfo *)arg1 fromCloud:(BOOL)arg2;
 - (void)userInfoDidChangeMarketingNotificationsEnabled:(FCUserInfo *)arg1 fromCloud:(BOOL)arg2;
 - (void)userInfoDidChangeNewIssueNotificationsEnabled:(FCUserInfo *)arg1 fromCloud:(BOOL)arg2;

@@ -19,6 +19,7 @@
     NSData *_nanoRegistryData;
     unsigned int _version;
     NSData *_walletData;
+    BOOL _autoDownloadEnabled;
     BOOL _autoUpdateEnabled;
     BOOL _didSeeTrueTonePane;
     BOOL _findMyiPhoneOptIn;
@@ -30,6 +31,7 @@
         unsigned int appAnalyticsOptIn:1;
         unsigned int deviceAnalyticsOptIn:1;
         unsigned int homeButtonHapticKind:1;
+        unsigned int autoDownloadEnabled:1;
         unsigned int autoUpdateEnabled:1;
         unsigned int didSeeTrueTonePane:1;
         unsigned int findMyiPhoneOptIn:1;
@@ -40,11 +42,13 @@
 }
 
 @property (nonatomic) unsigned int appAnalyticsOptIn; // @synthesize appAnalyticsOptIn=_appAnalyticsOptIn;
+@property (nonatomic) BOOL autoDownloadEnabled; // @synthesize autoDownloadEnabled=_autoDownloadEnabled;
 @property (nonatomic) BOOL autoUpdateEnabled; // @synthesize autoUpdateEnabled=_autoUpdateEnabled;
 @property (nonatomic) unsigned int deviceAnalyticsOptIn; // @synthesize deviceAnalyticsOptIn=_deviceAnalyticsOptIn;
 @property (nonatomic) BOOL didSeeTrueTonePane; // @synthesize didSeeTrueTonePane=_didSeeTrueTonePane;
 @property (nonatomic) BOOL findMyiPhoneOptIn; // @synthesize findMyiPhoneOptIn=_findMyiPhoneOptIn;
 @property (nonatomic) BOOL hasAppAnalyticsOptIn;
+@property (nonatomic) BOOL hasAutoDownloadEnabled;
 @property (nonatomic) BOOL hasAutoUpdateEnabled;
 @property (nonatomic) BOOL hasDeviceAnalyticsOptIn;
 @property (nonatomic) BOOL hasDidSeeTrueTonePane;

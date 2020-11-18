@@ -6,18 +6,15 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSAttributedString, NSString, UILabel, UITextView;
+@class NSAttributedString, UITextView;
 
 @interface HKMedicalIDEmergencyAccessLearnMoreCell : UITableViewCell
 {
-    UILabel *_titleLabel;
     UITextView *_bodyTextView;
-    NSString *_title;
     NSAttributedString *_body;
 }
 
 @property (copy, nonatomic) NSAttributedString *body; // @synthesize body=_body;
-@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
 - (void)_addSubviews;

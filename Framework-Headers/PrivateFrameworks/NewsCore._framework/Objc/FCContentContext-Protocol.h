@@ -8,7 +8,7 @@
 #import <NewsCore/NSObject-Protocol.h>
 
 @class FCArticleController, FCAssetManager, FCFlintResourceManager, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCTagController, NSArray, NSString, NSURL;
-@protocol FCBackgroundTaskable, FCContentContextInternal, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext, FCWebArchiveSource;
+@protocol FCAVAssetPrewarming, FCBackgroundTaskable, FCContentContextInternal, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext, FCWebArchiveSource;
 
 @protocol FCContentContext <NSObject, FCCacheFlushing>
 
@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) FCArticleController *articleController;
 @property (readonly, nonatomic) NSURL *assetCacheDirectoryURL;
 @property (readonly, nonatomic) FCAssetManager *assetManager;
+@property (readonly, nonatomic) id<FCAVAssetPrewarming> avAssetPrewarmer;
 @property (readonly, weak, nonatomic) id<FCBackgroundTaskable> backgroundTaskable;
 @property (readonly, nonatomic) id<FCCoreConfigurationManager> configurationManager;
 @property (readonly, copy, nonatomic) NSString *contentDirectory;

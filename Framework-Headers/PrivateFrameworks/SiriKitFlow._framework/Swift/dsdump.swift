@@ -485,7 +485,7 @@
 	let nlContext : NLContextUpdate // +0x18 (0xb8)
 
 	// Swift methods
-	0xcbf0  class func ResponseChunk.__allocating_init(views:nlContext:) // init 
+	0xcbe0  class func ResponseChunk.__allocating_init(views:nlContext:) // init 
  }
 
  class SiriKitFlow.AnySiriKitFlowFrame {
@@ -504,7 +504,7 @@
 	let reason : String? // +0x18 (0x10)
 
 	// Swift methods
-	0x101f0  class func CommandFailure.__allocating_init(errorCode:reason:) // init 
+	0x101e0  class func CommandFailure.__allocating_init(errorCode:reason:) // init 
  }
 
  class SiriKitFlow.SiriKitDisambiguationItemComponent : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -517,9 +517,9 @@
 	let allowedOnLockScreen : Bool
 
 	// Swift methods
-	0x10410  func SiriKitDisambiguationItemComponent.toDisplayString(deviceLocked:) // method 
-	0x10450  func SiriKitDisambiguationItemComponent.toSpokenString(deviceLocked:) // method 
-	0x10490  class func static SiriKitDisambiguationItemComponent.makeBuilder(_:) // method 
+	0x10400  func SiriKitDisambiguationItemComponent.toDisplayString(deviceLocked:) // method 
+	0x10440  func SiriKitDisambiguationItemComponent.toSpokenString(deviceLocked:) // method 
+	0x10480  class func static SiriKitDisambiguationItemComponent.makeBuilder(_:) // method 
  }
 
  class SiriKitFlow.Builder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -532,15 +532,15 @@
 	var allowedOnLockScreen : Bool
 
 	// Swift methods
-	0x10500  class func SiriKitDisambiguationItemComponent.Builder.__allocating_init(_:) // init 
-	0x105d0  func SiriKitDisambiguationItemComponent.Builder.withPrint(_:) // method 
-	0x10600  func SiriKitDisambiguationItemComponent.Builder.withPrintOnLockScreen(_:) // method 
-	0x10630  func SiriKitDisambiguationItemComponent.Builder.withSpeak(_:) // method 
-	0x10660  func SiriKitDisambiguationItemComponent.Builder.withSpeakOnLockScreen(_:) // method 
-	0x10690  func SiriKitDisambiguationItemComponent.Builder.withAllowedOnLockScreen(_:) // method 
-	0x106b0  func SiriKitDisambiguationItemComponent.Builder.showOnLockScreen() // method 
-	0x106d0  func SiriKitDisambiguationItemComponent.Builder.hideOnLockScreen() // method 
-	0x106f0  func SiriKitDisambiguationItemComponent.Builder.build() // method 
+	0x104f0  class func SiriKitDisambiguationItemComponent.Builder.__allocating_init(_:) // init 
+	0x105c0  func SiriKitDisambiguationItemComponent.Builder.withPrint(_:) // method 
+	0x105f0  func SiriKitDisambiguationItemComponent.Builder.withPrintOnLockScreen(_:) // method 
+	0x10620  func SiriKitDisambiguationItemComponent.Builder.withSpeak(_:) // method 
+	0x10650  func SiriKitDisambiguationItemComponent.Builder.withSpeakOnLockScreen(_:) // method 
+	0x10680  func SiriKitDisambiguationItemComponent.Builder.withAllowedOnLockScreen(_:) // method 
+	0x106a0  func SiriKitDisambiguationItemComponent.Builder.showOnLockScreen() // method 
+	0x106c0  func SiriKitDisambiguationItemComponent.Builder.hideOnLockScreen() // method 
+	0x106e0  func SiriKitDisambiguationItemComponent.Builder.build() // method 
  }
 
  class SiriKitFlow.SiriKitDisambiguationItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -551,14 +551,14 @@
 	let allowLineWrapForDisplayText : Bool
 
 	// Swift methods
-	0x108b0  class func SiriKitDisambiguationItem.__allocating_init(components:utterance:allowLineWrapForDisplayText:) // init 
-	0x10920  class func static SiriKitDisambiguationItem.allowedItems(disambiguationItems:deviceLockedForDisambiguation:) // method 
-	0x10930  func SiriKitDisambiguationItem.getFirstComponent() // method 
-	0x109e0  func SiriKitDisambiguationItem.getSecondComponent() // method 
-	0x10a90  func SiriKitDisambiguationItem.getThirdComponent() // method 
-	0x10b40  func SiriKitDisambiguationItem.toDisplayString(deviceLocked:) // method 
-	0x10e00  func SiriKitDisambiguationItem.toSpokenString(deviceLocked:) // method 
-	0x11310  func SiriKitDisambiguationItem.makeNewItemForLockScreen() // method 
+	0x108a0  class func SiriKitDisambiguationItem.__allocating_init(components:utterance:allowLineWrapForDisplayText:) // init 
+	0x10910  class func static SiriKitDisambiguationItem.allowedItems(disambiguationItems:deviceLockedForDisambiguation:) // method 
+	0x10920  func SiriKitDisambiguationItem.getFirstComponent() // method 
+	0x109d0  func SiriKitDisambiguationItem.getSecondComponent() // method 
+	0x10a80  func SiriKitDisambiguationItem.getThirdComponent() // method 
+	0x10b30  func SiriKitDisambiguationItem.toDisplayString(deviceLocked:) // method 
+	0x10df0  func SiriKitDisambiguationItem.toSpokenString(deviceLocked:) // method 
+	0x11300  func SiriKitDisambiguationItem.makeNewItemForLockScreen() // method 
  }
 
  class SiriKitFlow.OfferToContinueFlowFrame : ConfirmationFlowFrame { }
@@ -611,8 +611,8 @@
 	let conceptType : String // +0x30 (0x10)
 
 	// Swift methods
-	0x150e0  class func SemanticValueConcept.__allocating_init(label:value:) // init 
-	0x15180  func SemanticValueConcept.encode(protoJsonCoding:) // method 
+	0x150d0  class func SemanticValueConcept.__allocating_init(label:value:) // init 
+	0x15170  func SemanticValueConcept.encode(protoJsonCoding:) // method 
  }
 
  struct SiriKitFlow.ConfirmedParameterDetails {
@@ -655,8 +655,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let conceptType : String // +0x30 (0x10)
 
 	// Swift methods
-	0x1e2e0  class func ParameterNeedsValueConcept.__allocating_init(app:parameterName:intent:) // init 
-	0x1e390  func ParameterNeedsValueConcept.encode(protoJsonCoding:) // method 
+	0x1e2d0  class func ParameterNeedsValueConcept.__allocating_init(app:parameterName:intent:) // init 
+	0x1e380  func ParameterNeedsValueConcept.encode(protoJsonCoding:) // method 
  }
 
  class SiriKitFlow.ResolveNeedsDisambiguationFlowFrame {
@@ -673,15 +673,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let typeNamesByValueType : INIntentSlotValueType // +0x58 (0x8)
 
 	// Swift methods
-	0x1f900  class func ParameterUnsupportedConcept.__allocating_init(app:parameterName:intentResolutionResult:intent:multicardinalValueIndex:typeNamesByValueType:) // init 
-	0x1fa20  func ParameterUnsupportedConcept.encode(protoJsonCoding:) // method 
-	0x202b0  func ParameterUnsupportedConcept.extractParameterValue(parameterName:multicardinalValueIndex:decodedIntent:) // method 
+	0x1f8f0  class func ParameterUnsupportedConcept.__allocating_init(app:parameterName:intentResolutionResult:intent:multicardinalValueIndex:typeNamesByValueType:) // init 
+	0x1fa10  func ParameterUnsupportedConcept.encode(protoJsonCoding:) // method 
+	0x202a0  func ParameterUnsupportedConcept.extractParameterValue(parameterName:multicardinalValueIndex:decodedIntent:) // method 
  }
 
  class SiriKitFlow.ProtoJsonCoder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x20890  class func ProtoJsonCoder.__allocating_init() // init 
-	0x208c0  func ProtoJsonCoder.toJsonDictionary(data:typeName:) // method 
+	0x20880  class func ProtoJsonCoder.__allocating_init() // init 
+	0x208b0  func ProtoJsonCoder.toJsonDictionary(data:typeName:) // method 
  }
 
  enum SiriKitFlow.Cardinality {
@@ -758,10 +758,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let aceServiceInvoker : AceServiceInvoker // +0x20 (0x28)
 
 	// Swift methods
-	0x2a770  class func ScriptedFlowExecutor.__allocating_init(aceServiceInvoker:) // init 
-	0x2a870  func ScriptedFlowExecutor.execute<A>(flowName:parameters:_:) // method 
-	0x2b950  func ScriptedFlowExecutor.createClientFlowCommand(withParameters:) // method 
-	0x2bd20  func ScriptedFlowExecutor.createParametersAsJSON(flowName:parameters:) // method 
+	0x2a760  class func ScriptedFlowExecutor.__allocating_init(aceServiceInvoker:) // init 
+	0x2a860  func ScriptedFlowExecutor.execute<A>(flowName:parameters:_:) // method 
+	0x2b940  func ScriptedFlowExecutor.createClientFlowCommand(withParameters:) // method 
+	0x2bd10  func ScriptedFlowExecutor.createParametersAsJSON(flowName:parameters:) // method 
  }
 
  enum SiriKitFlow.ScriptedFlowError {
@@ -877,25 +877,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var deviceState : DeviceState // +0x10 (0x28)
 
 	// Swift methods
-	0x349e0  func RefreshableDeviceState.deviceState.getter // getter 
-	0x34a20  func RefreshableDeviceState.deviceState.setter // setter 
-	0x34a70  func RefreshableDeviceState.deviceState.modify // modifyCoroutine 
-	0x34ab0  func RefreshableDeviceState.interactionType.getter // getter 
-	0x34b80  func RefreshableDeviceState.inputOrigin.getter // getter 
-	0x34c50  func RefreshableDeviceState.multiUserState.getter // getter 
-	0x34d20  func RefreshableDeviceState.isCarPlay.getter // getter 
-	0x34de0  func RefreshableDeviceState.isCarDNDMode.getter // getter 
-	0x34ea0  func RefreshableDeviceState.isEyesFree.getter // getter 
-	0x34f60  func RefreshableDeviceState.isHomePod.getter // getter 
-	0x35020  func RefreshableDeviceState.isLockedWithPasscode.getter // getter 
-	0x350e0  func RefreshableDeviceState.isMac.getter // getter 
-	0x351a0  func RefreshableDeviceState.isTextToSpeechEnabled.getter // getter 
-	0x35260  func RefreshableDeviceState.isWatch.getter // getter 
-	0x35320  func RefreshableDeviceState.isVoiceTriggerEnabled.getter // getter 
-	0x353e0  func RefreshableDeviceState.siriLocale.getter // getter 
-	0x354b0  func RefreshableDeviceState.sessionHandOffContinuityID.getter // getter 
-	0x35580  func RefreshableDeviceState.siriVoiceGender.getter // getter 
-	0x330c0  class func RefreshableDeviceState.__allocating_init() // init 
+	0x349d0  func RefreshableDeviceState.deviceState.getter // getter 
+	0x34a10  func RefreshableDeviceState.deviceState.setter // setter 
+	0x34a60  func RefreshableDeviceState.deviceState.modify // modifyCoroutine 
+	0x34aa0  func RefreshableDeviceState.interactionType.getter // getter 
+	0x34b70  func RefreshableDeviceState.inputOrigin.getter // getter 
+	0x34c40  func RefreshableDeviceState.multiUserState.getter // getter 
+	0x34d10  func RefreshableDeviceState.isCarPlay.getter // getter 
+	0x34dd0  func RefreshableDeviceState.isCarDNDMode.getter // getter 
+	0x34e90  func RefreshableDeviceState.isEyesFree.getter // getter 
+	0x34f50  func RefreshableDeviceState.isHomePod.getter // getter 
+	0x35010  func RefreshableDeviceState.isLockedWithPasscode.getter // getter 
+	0x350d0  func RefreshableDeviceState.isMac.getter // getter 
+	0x35190  func RefreshableDeviceState.isTextToSpeechEnabled.getter // getter 
+	0x35250  func RefreshableDeviceState.isWatch.getter // getter 
+	0x35310  func RefreshableDeviceState.isVoiceTriggerEnabled.getter // getter 
+	0x353d0  func RefreshableDeviceState.siriLocale.getter // getter 
+	0x354a0  func RefreshableDeviceState.sessionHandOffContinuityID.getter // getter 
+	0x35570  func RefreshableDeviceState.siriVoiceGender.getter // getter 
+	0x330b0  class func RefreshableDeviceState.__allocating_init() // init 
  }
 
  class SiriKitFlow.IntentConfirmationConcept : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -909,9 +909,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let conceptType : String // +0x30 (0x10)
 
 	// Swift methods
-	0x369f0  class func IntentConfirmationConcept.__allocating_init(app:intent:intentResponse:) // init 
-	0x36a90  class func IntentConfirmationConcept.__allocating_init(app:intent:intentResponse:nlIntent:) // init 
-	0x36b40  func IntentConfirmationConcept.encode(protoJsonCoding:) // method 
+	0x369e0  class func IntentConfirmationConcept.__allocating_init(app:intent:intentResponse:) // init 
+	0x36a80  class func IntentConfirmationConcept.__allocating_init(app:intent:intentResponse:nlIntent:) // init 
+	0x36b30  func IntentConfirmationConcept.encode(protoJsonCoding:) // method 
  }
 
  class SiriKitFlow.ResolveParameterResult {
@@ -935,15 +935,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let metricsLogger : SAMetricsLogger // +0x38 (0x8)
 
 	// Swift methods
-	0x39940  class func TaskLoggingService.__allocating_init(metricsState:aceServiceInvoker:) // init 
-	0x39aa0  func TaskLoggingService.logSiriKitTask(app:intent:activityType:statusReason:parameterName:statusDescription:) // method 
-	0x3a910  func TaskLoggingService.logHandleIntentStep<A>(delegate:app:intent:intentResponse:activityType:statusReason:descriptionCode:) // method 
-	0x3eb60  func TaskLoggingService.logConfirmIntentStep<A>(delegate:app:intent:intentResponse:activityType:statusReason:descriptionCode:) // method 
-	0x3b9e0  func TaskLoggingService.logResolutionStep<A>(delegate:app:intent:intentResolutionResult:parameterName:activityType:statusReason:descriptionCode:) // method 
-	0x3cad0  func TaskLoggingService.logNonSiriKitTask(app:taskType:activityType:statusReason:attribute:) // method 
-	0x3d7e0  func TaskLoggingService.createTaskContentString(metricsState:taskType:stepType:statusReason:activities:) // method 
-	0x3dfb0  func TaskLoggingService.createRequestContentString(metricsState:siriKitRequestEvent:) // method 
-	0x3e490  func TaskLoggingService.checkLastTaskStep(activityType:) // method 
+	0x39930  class func TaskLoggingService.__allocating_init(metricsState:aceServiceInvoker:) // init 
+	0x39a90  func TaskLoggingService.logSiriKitTask(app:intent:activityType:statusReason:parameterName:statusDescription:) // method 
+	0x3a900  func TaskLoggingService.logHandleIntentStep<A>(delegate:app:intent:intentResponse:activityType:statusReason:descriptionCode:) // method 
+	0x3eb50  func TaskLoggingService.logConfirmIntentStep<A>(delegate:app:intent:intentResponse:activityType:statusReason:descriptionCode:) // method 
+	0x3b9d0  func TaskLoggingService.logResolutionStep<A>(delegate:app:intent:intentResolutionResult:parameterName:activityType:statusReason:descriptionCode:) // method 
+	0x3cac0  func TaskLoggingService.logNonSiriKitTask(app:taskType:activityType:statusReason:attribute:) // method 
+	0x3d7d0  func TaskLoggingService.createTaskContentString(metricsState:taskType:stepType:statusReason:activities:) // method 
+	0x3dfa0  func TaskLoggingService.createRequestContentString(metricsState:siriKitRequestEvent:) // method 
+	0x3e480  func TaskLoggingService.checkLastTaskStep(activityType:) // method 
  }
 
  struct SiriKitFlow.TemplatingResult {
@@ -975,8 +975,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let typeNamesByValueType : INIntentSlotValueType // +0x48 (0x8)
 
 	// Swift methods
-	0x3f580  class func ParameterNeedsDisambiguationConcept.__allocating_init(app:parameterName:intentResolutionResult:intent:typeNamesByValueType:) // init 
-	0x3f660  func ParameterNeedsDisambiguationConcept.encode(protoJsonCoding:) // method 
+	0x3f570  class func ParameterNeedsDisambiguationConcept.__allocating_init(app:parameterName:intentResolutionResult:intent:typeNamesByValueType:) // init 
+	0x3f650  func ParameterNeedsDisambiguationConcept.encode(protoJsonCoding:) // method 
  }
 
  enum SiriKitFlow.SAMetricsCategory {
@@ -991,10 +991,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let aceServiceInvoker : AceServiceInvoker // +0x10 (0x28)
 
 	// Swift methods
-	0x40c50  class func SAMetricsLogger.__allocating_init(aceServiceInvoker:) // init 
-	0x40f00  func SAMetricsLogger.logViaSAMetrics(category:eventInformation:timings:originalCommandId:) // method 
-	0x411d0  func SAMetricsLogger.resetFlowTaskState() // method 
-	0x41310  func SAMetricsLogger.createSAMetricsEventInformation(interactionId:flowTask:requestEvent:resultCandidateId:appBundleId:) // method 
+	0x40c40  class func SAMetricsLogger.__allocating_init(aceServiceInvoker:) // init 
+	0x40ef0  func SAMetricsLogger.logViaSAMetrics(category:eventInformation:timings:originalCommandId:) // method 
+	0x411c0  func SAMetricsLogger.resetFlowTaskState() // method 
+	0x41300  func SAMetricsLogger.createSAMetricsEventInformation(interactionId:flowTask:requestEvent:resultCandidateId:appBundleId:) // method 
  }
 
  class SiriKitFlow.IntentHandledConcept : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1008,8 +1008,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let conceptType : String // +0x30 (0x10)
 
 	// Swift methods
-	0x41600  class func IntentHandledConcept.__allocating_init(app:intent:intentResponse:nlIntent:) // init 
-	0x416b0  func IntentHandledConcept.encode(protoJsonCoding:) // method 
+	0x415f0  class func IntentHandledConcept.__allocating_init(app:intent:intentResponse:nlIntent:) // init 
+	0x416a0  func IntentHandledConcept.encode(protoJsonCoding:) // method 
  }
 
  enum SiriKitFlow.OfferBehaviorFlowFrameResult {
@@ -1045,20 +1045,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let ttsEnabled : Bool // +0x10 (0x1)
 
 	// Swift methods
-	0x44ba0  class func ViewFactory.__allocating_init(ttsSupressed:) // init 
-	0x44bf0  class func ViewFactory.__allocating_init(ttsEnabled:) // init 
-	0x44c30  func ViewFactory.makeUtteranceViews(template:listenAfterSpeaking:canUseServerTTS:) // method 
-	0x45000  func ViewFactory.makeCancellationView(cancelTemplate:snippets:canUseServerTTS:) // method 
-	0x450b0  func ViewFactory.makeClarificationView(aceViews:) // method 
-	0x450d0  func ViewFactory.makeClarificationView(clarificationTemplate:snippets:buttons:disambiguationList:listenAfterSpeaking:canUseServerTTS:) // method 
-	0x45110  func ViewFactory.makeClarificationWithButtonsView(clarificationTemplate:snippets:buttons:disambiguationList:listenAfterSpeaking:canUseServerTTS:) // method 
-	0x451c0  func ViewFactory.makeCompletionView(aceViews:) // method 
-	0x452a0  func ViewFactory.makeCompletionView(templateResult:snippets:listenAfterSpeaking:canUseServerTTS:) // method 
-	0x452c0  func ViewFactory.makeConfirmationView(templateResult:snippets:listenAfterSpeaking:canUseServerTTS:) // method 
-	0x452e0  func ViewFactory.makeConfirmedView(templateResult:snippets:listenAfterSpeaking:canUseServerTTS:) // method 
-	0x45300  func ViewFactory.makeSummaryView(templateResult:snippets:listenAfterSpeaking:canUseServerTTS:) // method 
-	0x453c0  func ViewFactory.makeErrorView(aceViews:) // method 
-	0x453e0  func ViewFactory.makeDialogView(dialogPhase:templateResult:snippets:buttons:disambiguationList:listenAfterSpeaking:canUseServerTTS:) // method 
+	0x44b90  class func ViewFactory.__allocating_init(ttsSupressed:) // init 
+	0x44be0  class func ViewFactory.__allocating_init(ttsEnabled:) // init 
+	0x44c20  func ViewFactory.makeUtteranceViews(template:listenAfterSpeaking:canUseServerTTS:) // method 
+	0x44ff0  func ViewFactory.makeCancellationView(cancelTemplate:snippets:canUseServerTTS:) // method 
+	0x450a0  func ViewFactory.makeClarificationView(aceViews:) // method 
+	0x450c0  func ViewFactory.makeClarificationView(clarificationTemplate:snippets:buttons:disambiguationList:listenAfterSpeaking:canUseServerTTS:) // method 
+	0x45100  func ViewFactory.makeClarificationWithButtonsView(clarificationTemplate:snippets:buttons:disambiguationList:listenAfterSpeaking:canUseServerTTS:) // method 
+	0x451b0  func ViewFactory.makeCompletionView(aceViews:) // method 
+	0x45290  func ViewFactory.makeCompletionView(templateResult:snippets:listenAfterSpeaking:canUseServerTTS:) // method 
+	0x452b0  func ViewFactory.makeConfirmationView(templateResult:snippets:listenAfterSpeaking:canUseServerTTS:) // method 
+	0x452d0  func ViewFactory.makeConfirmedView(templateResult:snippets:listenAfterSpeaking:canUseServerTTS:) // method 
+	0x452f0  func ViewFactory.makeSummaryView(templateResult:snippets:listenAfterSpeaking:canUseServerTTS:) // method 
+	0x453b0  func ViewFactory.makeErrorView(aceViews:) // method 
+	0x453d0  func ViewFactory.makeDialogView(dialogPhase:templateResult:snippets:buttons:disambiguationList:listenAfterSpeaking:canUseServerTTS:) // method 
  }
 
  class SiriKitFlow.EnableTCCFlow {
@@ -1070,8 +1070,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let conceptType : String // +0x18 (0x10)
 
 	// Swift methods
-	0x47c60  class func BaseConcept.__allocating_init(app:) // init 
-	0x47ce0  func BaseConcept.encode(protoJsonCoding:) // method 
+	0x47c50  class func BaseConcept.__allocating_init(app:) // init 
+	0x47cd0  func BaseConcept.encode(protoJsonCoding:) // method 
  }
 
  struct SiriKitFlow.DucTemplatingResult {
@@ -1103,33 +1103,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var activityType : String // +0x70 (0x10)
 
 	// Swift methods
-	0x48850  func DefaultFlowActivity.locale.getter // getter 
-	0x48890  func DefaultFlowActivity.locale.setter // setter 
-	0x488d0  func DefaultFlowActivity.locale.modify // modifyCoroutine 
-	0x48990  func DefaultFlowActivity.platform.getter // getter 
-	0x489d0  func DefaultFlowActivity.platform.setter // setter 
-	0x48a10  func DefaultFlowActivity.platform.modify // modifyCoroutine 
-	0x48ad0  func DefaultFlowActivity.activityName.getter // getter 
-	0x48b10  func DefaultFlowActivity.activityName.setter // setter 
-	0x48b50  func DefaultFlowActivity.activityName.modify // modifyCoroutine 
-	0x48c20  func DefaultFlowActivity.message.getter // getter 
-	0x48c60  func DefaultFlowActivity.message.setter // setter 
-	0x48cb0  func DefaultFlowActivity.message.modify // modifyCoroutine 
-	0x48d70  func DefaultFlowActivity.origin.getter // getter 
-	0x48db0  func DefaultFlowActivity.origin.setter // setter 
-	0x48df0  func DefaultFlowActivity.origin.modify // modifyCoroutine 
-	0x48eb0  func DefaultFlowActivity.timestamp.getter // getter 
-	0x48ee0  func DefaultFlowActivity.timestamp.setter // setter 
-	0x48f20  func DefaultFlowActivity.timestamp.modify // modifyCoroutine 
-	0x48fe0  func DefaultFlowActivity.duration.getter // getter 
-	0x49010  func DefaultFlowActivity.duration.setter // setter 
-	0x49050  func DefaultFlowActivity.duration.modify // modifyCoroutine 
-	0x49110  func DefaultFlowActivity.activityType.getter // getter 
-	0x49150  func DefaultFlowActivity.activityType.setter // setter 
-	0x49190  func DefaultFlowActivity.activityType.modify // modifyCoroutine 
-	0x48750  class func DefaultFlowActivity.__allocating_init(metricsState:activityName:activityType:) // init 
-	0x49400  class func DefaultFlowActivity.__allocating_init(from:) // init 
-	0x498f0  func DefaultFlowActivity.encode(to:) // method 
+	0x48840  func DefaultFlowActivity.locale.getter // getter 
+	0x48880  func DefaultFlowActivity.locale.setter // setter 
+	0x488c0  func DefaultFlowActivity.locale.modify // modifyCoroutine 
+	0x48980  func DefaultFlowActivity.platform.getter // getter 
+	0x489c0  func DefaultFlowActivity.platform.setter // setter 
+	0x48a00  func DefaultFlowActivity.platform.modify // modifyCoroutine 
+	0x48ac0  func DefaultFlowActivity.activityName.getter // getter 
+	0x48b00  func DefaultFlowActivity.activityName.setter // setter 
+	0x48b40  func DefaultFlowActivity.activityName.modify // modifyCoroutine 
+	0x48c10  func DefaultFlowActivity.message.getter // getter 
+	0x48c50  func DefaultFlowActivity.message.setter // setter 
+	0x48ca0  func DefaultFlowActivity.message.modify // modifyCoroutine 
+	0x48d60  func DefaultFlowActivity.origin.getter // getter 
+	0x48da0  func DefaultFlowActivity.origin.setter // setter 
+	0x48de0  func DefaultFlowActivity.origin.modify // modifyCoroutine 
+	0x48ea0  func DefaultFlowActivity.timestamp.getter // getter 
+	0x48ed0  func DefaultFlowActivity.timestamp.setter // setter 
+	0x48f10  func DefaultFlowActivity.timestamp.modify // modifyCoroutine 
+	0x48fd0  func DefaultFlowActivity.duration.getter // getter 
+	0x49000  func DefaultFlowActivity.duration.setter // setter 
+	0x49040  func DefaultFlowActivity.duration.modify // modifyCoroutine 
+	0x49100  func DefaultFlowActivity.activityType.getter // getter 
+	0x49140  func DefaultFlowActivity.activityType.setter // setter 
+	0x49180  func DefaultFlowActivity.activityType.modify // modifyCoroutine 
+	0x48740  class func DefaultFlowActivity.__allocating_init(metricsState:activityName:activityType:) // init 
+	0x493f0  class func DefaultFlowActivity.__allocating_init(from:) // init 
+	0x498e0  func DefaultFlowActivity.encode(to:) // method 
  }
 
  enum SiriKitFlow.CodingKeys {
@@ -1159,34 +1159,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var appVersion : String // +0xe8 (0x10)
 
 	// Swift methods
-	0x4b1b0  func SiriKitFlowActivity.slotName.getter // getter 
-	0x4b200  func SiriKitFlowActivity.slotName.setter // setter 
-	0x4b250  func SiriKitFlowActivity.slotName.modify // modifyCoroutine 
-	0x4b310  func SiriKitFlowActivity.eventReliabilityCode.getter // getter 
-	0x4b360  func SiriKitFlowActivity.eventReliabilityCode.setter // setter 
-	0x4b3b0  func SiriKitFlowActivity.eventReliabilityCode.modify // modifyCoroutine 
-	0x4b480  func SiriKitFlowActivity.errorCodeDescription.getter // getter 
-	0x4b4d0  func SiriKitFlowActivity.errorCodeDescription.setter // setter 
-	0x4b520  func SiriKitFlowActivity.errorCodeDescription.modify // modifyCoroutine 
-	0x4b5f0  func SiriKitFlowActivity.build.getter // getter 
-	0x4b640  func SiriKitFlowActivity.build.setter // setter 
-	0x4b690  func SiriKitFlowActivity.build.modify // modifyCoroutine 
-	0x4b750  func SiriKitFlowActivity.isSiriKit.getter // getter 
-	0x4b780  func SiriKitFlowActivity.isSiriKit.setter // setter 
-	0x4b7c0  func SiriKitFlowActivity.isSiriKit.modify // modifyCoroutine 
-	0x4b890  func SiriKitFlowActivity.isSiriKitSupportedApp.getter // getter 
-	0x4b8c0  func SiriKitFlowActivity.isSiriKitSupportedApp.setter // setter 
-	0x4b900  func SiriKitFlowActivity.isSiriKitSupportedApp.modify // modifyCoroutine 
-	0x4b9d0  func SiriKitFlowActivity.appName.getter // getter 
-	0x4ba20  func SiriKitFlowActivity.appName.setter // setter 
-	0x4ba70  func SiriKitFlowActivity.appName.modify // modifyCoroutine 
-	0x4bb40  func SiriKitFlowActivity.appBundleId.getter // getter 
-	0x4bb90  func SiriKitFlowActivity.appBundleId.setter // setter 
-	0x4bbe0  func SiriKitFlowActivity.appBundleId.modify // modifyCoroutine 
-	0x4bcb0  func SiriKitFlowActivity.appVersion.getter // getter 
-	0x4bd00  func SiriKitFlowActivity.appVersion.setter // setter 
-	0x4bd50  func SiriKitFlowActivity.appVersion.modify // modifyCoroutine 
-	0x4b0b0  class func SiriKitFlowActivity.__allocating_init(metricsState:app:activityType:) // init 
+	0x4b1a0  func SiriKitFlowActivity.slotName.getter // getter 
+	0x4b1f0  func SiriKitFlowActivity.slotName.setter // setter 
+	0x4b240  func SiriKitFlowActivity.slotName.modify // modifyCoroutine 
+	0x4b300  func SiriKitFlowActivity.eventReliabilityCode.getter // getter 
+	0x4b350  func SiriKitFlowActivity.eventReliabilityCode.setter // setter 
+	0x4b3a0  func SiriKitFlowActivity.eventReliabilityCode.modify // modifyCoroutine 
+	0x4b470  func SiriKitFlowActivity.errorCodeDescription.getter // getter 
+	0x4b4c0  func SiriKitFlowActivity.errorCodeDescription.setter // setter 
+	0x4b510  func SiriKitFlowActivity.errorCodeDescription.modify // modifyCoroutine 
+	0x4b5e0  func SiriKitFlowActivity.build.getter // getter 
+	0x4b630  func SiriKitFlowActivity.build.setter // setter 
+	0x4b680  func SiriKitFlowActivity.build.modify // modifyCoroutine 
+	0x4b740  func SiriKitFlowActivity.isSiriKit.getter // getter 
+	0x4b770  func SiriKitFlowActivity.isSiriKit.setter // setter 
+	0x4b7b0  func SiriKitFlowActivity.isSiriKit.modify // modifyCoroutine 
+	0x4b880  func SiriKitFlowActivity.isSiriKitSupportedApp.getter // getter 
+	0x4b8b0  func SiriKitFlowActivity.isSiriKitSupportedApp.setter // setter 
+	0x4b8f0  func SiriKitFlowActivity.isSiriKitSupportedApp.modify // modifyCoroutine 
+	0x4b9c0  func SiriKitFlowActivity.appName.getter // getter 
+	0x4ba10  func SiriKitFlowActivity.appName.setter // setter 
+	0x4ba60  func SiriKitFlowActivity.appName.modify // modifyCoroutine 
+	0x4bb30  func SiriKitFlowActivity.appBundleId.getter // getter 
+	0x4bb80  func SiriKitFlowActivity.appBundleId.setter // setter 
+	0x4bbd0  func SiriKitFlowActivity.appBundleId.modify // modifyCoroutine 
+	0x4bca0  func SiriKitFlowActivity.appVersion.getter // getter 
+	0x4bcf0  func SiriKitFlowActivity.appVersion.setter // setter 
+	0x4bd40  func SiriKitFlowActivity.appVersion.modify // modifyCoroutine 
+	0x4b0a0  class func SiriKitFlowActivity.__allocating_init(metricsState:app:activityType:) // init 
  }
 
  enum SiriKitFlow.CodingKeys {
@@ -1221,17 +1221,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var aceServiceInvoker : AceServiceInvoker // +0x10 (0x28)
 
 	// Swift methods
-	0x4d860  func RefreshableAceServiceInvoker.aceServiceInvoker.getter // getter 
-	0x4d8a0  func RefreshableAceServiceInvoker.aceServiceInvoker.setter // setter 
-	0x4d8f0  func RefreshableAceServiceInvoker.aceServiceInvoker.modify // modifyCoroutine 
-	0x4d930  func RefreshableAceServiceInvoker.submit<A>(_:completion:) // method 
-	0x4da20  func RefreshableAceServiceInvoker.submitToCompanion<A>(_:completion:) // method 
-	0x4db10  func RefreshableAceServiceInvoker.submitAndForget(_:) // method 
-	0x4dbe0  func RefreshableAceServiceInvoker.submitAndForget(_:) // method 
-	0x4dcb0  func RefreshableAceServiceInvoker.submitAllSerial(_:_:) // method 
-	0x4dd90  func RefreshableAceServiceInvoker.submitAllSerial(_:_:) // method 
-	0x4de90  func RefreshableAceServiceInvoker.peerInfo() // method 
-	0x4d5d0  class func RefreshableAceServiceInvoker.__allocating_init() // init 
+	0x4d850  func RefreshableAceServiceInvoker.aceServiceInvoker.getter // getter 
+	0x4d890  func RefreshableAceServiceInvoker.aceServiceInvoker.setter // setter 
+	0x4d8e0  func RefreshableAceServiceInvoker.aceServiceInvoker.modify // modifyCoroutine 
+	0x4d920  func RefreshableAceServiceInvoker.submit<A>(_:completion:) // method 
+	0x4da10  func RefreshableAceServiceInvoker.submitToCompanion<A>(_:completion:) // method 
+	0x4db00  func RefreshableAceServiceInvoker.submitAndForget(_:) // method 
+	0x4dbd0  func RefreshableAceServiceInvoker.submitAndForget(_:) // method 
+	0x4dca0  func RefreshableAceServiceInvoker.submitAllSerial(_:_:) // method 
+	0x4dd80  func RefreshableAceServiceInvoker.submitAllSerial(_:_:) // method 
+	0x4de80  func RefreshableAceServiceInvoker.peerInfo() // method 
+	0x4d5c0  class func RefreshableAceServiceInvoker.__allocating_init() // init 
  }
 
  struct SiriKitFlow.ScriptedDucFlowResults {
@@ -1283,11 +1283,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let groupReturning : Any // +0x60 (0x20)
 
 	// Swift methods
-	0x4f830  func AnyFrameAndActionGroupReturning.debugDescription.getter // getter 
-	0x4f9c0  class func AnyFrameAndActionGroupReturning.__allocating_init<A, B>(frame:groupReturning:) // init 
-	0x4fdf0  func AnyFrameAndActionGroupReturning.makeGroupReturningFrameOperation(_:) // method 
-	0x4fe10  func AnyFrameAndActionGroupReturning.unbox<A>() // method 
-	0x4ff00  func AnyFrameAndActionGroupReturning.unbox<A>() // method 
+	0x4f820  func AnyFrameAndActionGroupReturning.debugDescription.getter // getter 
+	0x4f9b0  class func AnyFrameAndActionGroupReturning.__allocating_init<A, B>(frame:groupReturning:) // init 
+	0x4fde0  func AnyFrameAndActionGroupReturning.makeGroupReturningFrameOperation(_:) // method 
+	0x4fe00  func AnyFrameAndActionGroupReturning.unbox<A>() // method 
+	0x4fef0  func AnyFrameAndActionGroupReturning.unbox<A>() // method 
  }
 
  enum SiriKitFlow.ConfirmationFlowFrameState {
@@ -1307,17 +1307,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let renderer : ResponseChunkRendering // +0x38 (0x28)
 
 	// Swift methods
-	0x50550  func ConfirmationFlowFrame.namespace.getter // getter 
-	0x50590  func ConfirmationFlowFrame.namespace.setter // setter 
-	0x505d0  func ConfirmationFlowFrame.namespace.modify // modifyCoroutine 
-	0x50600  func ConfirmationFlowFrame.state.getter // getter 
-	0x50630  func ConfirmationFlowFrame.state.setter // setter 
-	0x50660  func ConfirmationFlowFrame.state.modify // modifyCoroutine 
-	0x50ae0  class func ConfirmationFlowFrame.__allocating_init(renderer:dialogFactoryFn:) // init 
-	0x506a0  func ConfirmationFlowFrame.onInput(controller:input:completion:) // method 
-	0x50830  func ConfirmationFlowFrame.execute(controller:completion:) // method 
-	0x50850  func ConfirmationFlowFrame.action(renderer:args:completion:) // method 
-	0x50980  func ConfirmationFlowFrame.exit(controller:) // method 
+	0x50540  func ConfirmationFlowFrame.namespace.getter // getter 
+	0x50580  func ConfirmationFlowFrame.namespace.setter // setter 
+	0x505c0  func ConfirmationFlowFrame.namespace.modify // modifyCoroutine 
+	0x505f0  func ConfirmationFlowFrame.state.getter // getter 
+	0x50620  func ConfirmationFlowFrame.state.setter // setter 
+	0x50650  func ConfirmationFlowFrame.state.modify // modifyCoroutine 
+	0x50ad0  class func ConfirmationFlowFrame.__allocating_init(renderer:dialogFactoryFn:) // init 
+	0x50690  func ConfirmationFlowFrame.onInput(controller:input:completion:) // method 
+	0x50820  func ConfirmationFlowFrame.execute(controller:completion:) // method 
+	0x50840  func ConfirmationFlowFrame.action(renderer:args:completion:) // method 
+	0x50970  func ConfirmationFlowFrame.exit(controller:) // method 
  }
 
  class SiriKitFlow.ScriptedDucTemplatingService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1328,8 +1328,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let protoJsonEncoder : ProtoJsonCoding // +0x0 (0x28)
 
 	// Swift methods
-	0x51980  class func ScriptedDucTemplatingService.__allocating_init(scriptExecutor:scriptedDucFlowParameters:protoJsonEncoder:) // init 
-	0x51a60  func ScriptedDucTemplatingService.execute(ducFamily:ducId:parameters:locale:_:) // method 
+	0x51970  class func ScriptedDucTemplatingService.__allocating_init(scriptExecutor:scriptedDucFlowParameters:protoJsonEncoder:) // init 
+	0x51a50  func ScriptedDucTemplatingService.execute(ducFamily:ducId:parameters:locale:_:) // method 
  }
 
  enum SiriKitFlow.RCHFlowFrameConstants { }
@@ -1344,14 +1344,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let chunkProvider :  empty-list  // +0x58 (0x10)
 
 	// Swift methods
-	0x53900  func RenderResponseChunkAction.nextAction.getter // getter 
-	0x53960  func RenderResponseChunkAction.nextAction.setter // setter 
-	0x539d0  func RenderResponseChunkAction.nextAction.modify // modifyCoroutine 
-	0x53aa0  func RenderResponseChunkAction.debugDescription.getter // getter 
-	0x53ae0  func RenderResponseChunkAction.debugDescription.setter // setter 
-	0x53b20  func RenderResponseChunkAction.debugDescription.modify // modifyCoroutine 
-	0x53b50  class func RenderResponseChunkAction.__allocating_init(provider:nextState:renderer:debugDescription:) // init 
-	0x53e10  func RenderResponseChunkAction.run(_:) // method 
+	0x538f0  func RenderResponseChunkAction.nextAction.getter // getter 
+	0x53950  func RenderResponseChunkAction.nextAction.setter // setter 
+	0x539c0  func RenderResponseChunkAction.nextAction.modify // modifyCoroutine 
+	0x53a90  func RenderResponseChunkAction.debugDescription.getter // getter 
+	0x53ad0  func RenderResponseChunkAction.debugDescription.setter // setter 
+	0x53b10  func RenderResponseChunkAction.debugDescription.modify // modifyCoroutine 
+	0x53b40  class func RenderResponseChunkAction.__allocating_init(provider:nextState:renderer:debugDescription:) // init 
+	0x53e00  func RenderResponseChunkAction.run(_:) // method 
  }
 
  enum SiriKitFlow.Metrics { }
@@ -1371,14 +1371,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var metricsState : MetricsState // +0x10 (0x28)
 
 	// Swift methods
-	0x54c20  func RefreshableMetricsState.metricsState.getter // getter 
-	0x54c60  func RefreshableMetricsState.metricsState.setter // setter 
-	0x54cb0  func RefreshableMetricsState.metricsState.modify // modifyCoroutine 
-	0x54cf0  func RefreshableMetricsState.taskId.getter // getter 
-	0x54dc0  func RefreshableMetricsState.interactionId.getter // getter 
-	0x54e90  func RefreshableMetricsState.resultCandidateId.getter // getter 
-	0x54f60  func RefreshableMetricsState.taskStepStartTime.getter // getter 
-	0x543b0  class func RefreshableMetricsState.__allocating_init() // init 
+	0x54c10  func RefreshableMetricsState.metricsState.getter // getter 
+	0x54c50  func RefreshableMetricsState.metricsState.setter // setter 
+	0x54ca0  func RefreshableMetricsState.metricsState.modify // modifyCoroutine 
+	0x54ce0  func RefreshableMetricsState.taskId.getter // getter 
+	0x54db0  func RefreshableMetricsState.interactionId.getter // getter 
+	0x54e80  func RefreshableMetricsState.resultCandidateId.getter // getter 
+	0x54f50  func RefreshableMetricsState.taskStepStartTime.getter // getter 
+	0x543a0  class func RefreshableMetricsState.__allocating_init() // init 
  }
 
  enum SiriKitFlow.ColorFactory { }
@@ -1391,14 +1391,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : GuidedConversationFlowDelegate // +0x30 (0x10)
 
 	// Swift methods
-	0x55a90  func GroupHandlingFlowFrame.namespace.getter // getter 
-	0x55ad0  func GroupHandlingFlowFrame.namespace.setter // setter 
-	0x55b10  func GroupHandlingFlowFrame.namespace.modify // modifyCoroutine 
-	0x55b50  class func GroupHandlingFlowFrame.__allocating_init(group:delegate:) // init 
-	0x55d80  func GroupHandlingFlowFrame.onInput(controller:input:completion:) // method 
-	0x55e40  func GroupHandlingFlowFrame.execute(controller:completion:) // method 
-	0x55e60  func GroupHandlingFlowFrame.action(renderer:args:completion:) // method 
-	0x56940  func GroupHandlingFlowFrame.exit(controller:) // method 
+	0x55a80  func GroupHandlingFlowFrame.namespace.getter // getter 
+	0x55ac0  func GroupHandlingFlowFrame.namespace.setter // setter 
+	0x55b00  func GroupHandlingFlowFrame.namespace.modify // modifyCoroutine 
+	0x55b40  class func GroupHandlingFlowFrame.__allocating_init(group:delegate:) // init 
+	0x55d70  func GroupHandlingFlowFrame.onInput(controller:input:completion:) // method 
+	0x55e30  func GroupHandlingFlowFrame.execute(controller:completion:) // method 
+	0x55e50  func GroupHandlingFlowFrame.action(renderer:args:completion:) // method 
+	0x56930  func GroupHandlingFlowFrame.exit(controller:) // method 
  }
 
  enum SiriKitFlow.ProtoJsonEncodingError {
@@ -1466,8 +1466,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let valueTypeNamesByValueType : INIntentSlotValueType // +0x58 (0x8)
 
 	// Swift methods
-	0x5e8b0  class func IntentSlotDucConcept.__allocating_init(app:intent:parameterName:value:typeName:valueTypeNamesByValueType:) // init 
-	0x5ea10  func IntentSlotDucConcept.encode(protoJsonCoding:) // method 
+	0x5e8a0  class func IntentSlotDucConcept.__allocating_init(app:intent:parameterName:value:typeName:valueTypeNamesByValueType:) // init 
+	0x5ea00  func IntentSlotDucConcept.encode(protoJsonCoding:) // method 
  }
 
  struct SiriKitFlow.Input {
@@ -1490,8 +1490,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let completion : (_:)
 
 	// Swift methods
-	0x604c0  class func AnyChildCompletion.__allocating_init<A>(_:) // init 
-	0x60610  func AnyChildCompletion.completion(exitValue:) // method 
+	0x604b0  class func AnyChildCompletion.__allocating_init<A>(_:) // init 
+	0x60600  func AnyChildCompletion.completion(exitValue:) // method 
  }
 
  struct SiriKitFlow.ExecuteResponse {
@@ -1511,10 +1511,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let _exit : ()
 
 	// Swift methods
-	0x608b0  class func AnyFlow.__allocating_init<A>(_:) // init 
-	0x60c20  func AnyFlow.on(input:) // method 
-	0x60c40  func AnyFlow.execute(completion:) // method 
-	0x60c60  func AnyFlow.exitValue.getter // getter 
+	0x608a0  class func AnyFlow.__allocating_init<A>(_:) // init 
+	0x60c10  func AnyFlow.on(input:) // method 
+	0x60c30  func AnyFlow.execute(completion:) // method 
+	0x60c50  func AnyFlow.exitValue.getter // getter 
  }
 
  class SiriKitFlow.FlowToFlowFrameAdapter {
@@ -1541,7 +1541,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let initialGroup : ActionGrouping // +0x10 (0x10)
 
 	// Swift methods
-	0x63930  class func PaginatedConversationFlowSource.__allocating_init<A>(items:delegate:) // init 
+	0x63920  class func PaginatedConversationFlowSource.__allocating_init<A>(items:delegate:) // init 
  }
 
  enum SiriKitFlow.CasinoFactory { }
@@ -1552,10 +1552,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let aceService : AceServiceInvoker // +0x10 (0x28)
 
 	// Swift methods
-	0x66650  class func ContactsController.__allocating_init(aceService:) // init 
-	0x66770  func ContactsController.searchForContacts(firstName:lastName:fullName:completion:) // method 
-	0x66f10  func ContactsController.findMeCard(completion:) // method 
-	0x674c0  func ContactsController.setRelationship(relationship:contact:completion:) // method 
+	0x66640  class func ContactsController.__allocating_init(aceService:) // init 
+	0x66760  func ContactsController.searchForContacts(firstName:lastName:fullName:completion:) // method 
+	0x66f00  func ContactsController.findMeCard(completion:) // method 
+	0x674b0  func ContactsController.setRelationship(relationship:contact:completion:) // method 
  }
 
  class SiriKitFlow.DefaultAceViewProvider {
@@ -1571,17 +1571,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : GuidedConversationFlowDelegate // +0x48 (0x10)
 
 	// Swift methods
-	0x6a350  func GuidedConversationFlowFrame.namespace.getter // getter 
-	0x6a390  func GuidedConversationFlowFrame.namespace.setter // setter 
-	0x6a3d0  func GuidedConversationFlowFrame.namespace.modify // modifyCoroutine 
-	0x6a4a0  func GuidedConversationFlowFrame.delegate.getter // getter 
-	0x6a4d0  func GuidedConversationFlowFrame.delegate.setter // setter 
-	0x6a520  func GuidedConversationFlowFrame.delegate.modify // modifyCoroutine 
-	0x6a600  class func GuidedConversationFlowFrame.__allocating_init(source:) // init 
-	0x6a760  func GuidedConversationFlowFrame.onInput(controller:input:completion:) // method 
-	0x6a8c0  func GuidedConversationFlowFrame.execute(controller:completion:) // method 
-	0x6a960  func GuidedConversationFlowFrame.action(renderer:args:completion:) // method 
-	0x6ad10  func GuidedConversationFlowFrame.exit(controller:) // method 
+	0x6a340  func GuidedConversationFlowFrame.namespace.getter // getter 
+	0x6a380  func GuidedConversationFlowFrame.namespace.setter // setter 
+	0x6a3c0  func GuidedConversationFlowFrame.namespace.modify // modifyCoroutine 
+	0x6a490  func GuidedConversationFlowFrame.delegate.getter // getter 
+	0x6a4c0  func GuidedConversationFlowFrame.delegate.setter // setter 
+	0x6a510  func GuidedConversationFlowFrame.delegate.modify // modifyCoroutine 
+	0x6a5f0  class func GuidedConversationFlowFrame.__allocating_init(source:) // init 
+	0x6a750  func GuidedConversationFlowFrame.onInput(controller:input:completion:) // method 
+	0x6a8b0  func GuidedConversationFlowFrame.execute(controller:completion:) // method 
+	0x6a950  func GuidedConversationFlowFrame.action(renderer:args:completion:) // method 
+	0x6ad00  func GuidedConversationFlowFrame.exit(controller:) // method 
  }
 
  enum SiriKitFlow.State {
@@ -1721,10 +1721,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let machineUtterance : String // +0x20 (0x10)
 
 	// Swift methods
-	0x76a50  class func UpdateNLContextFlowFrame.__allocating_init(machineUtterance:) // init 
-	0x76af0  func UpdateNLContextFlowFrame.onInput(controller:input:completion:) // method 
-	0x76bb0  func UpdateNLContextFlowFrame.execute(controller:completion:) // method 
-	0x76e00  func UpdateNLContextFlowFrame.action(renderer:args:completion:) // method 
+	0x76a40  class func UpdateNLContextFlowFrame.__allocating_init(machineUtterance:) // init 
+	0x76ae0  func UpdateNLContextFlowFrame.onInput(controller:input:completion:) // method 
+	0x76ba0  func UpdateNLContextFlowFrame.execute(controller:completion:) // method 
+	0x76df0  func UpdateNLContextFlowFrame.action(renderer:args:completion:) // method 
  }
 
  class SiriKitFlow.HandoffSessionToCompanionFlowFrame : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1739,15 +1739,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var commandsToSend : [SABaseCommand] // +0xb0 (0x8)
 
 	// Swift methods
-	0x773f0  func HandoffSessionToCompanionFlowFrame.commandsToSend.getter // getter 
-	0x77430  func HandoffSessionToCompanionFlowFrame.commandsToSend.setter // setter 
-	0x77470  func HandoffSessionToCompanionFlowFrame.commandsToSend.modify // modifyCoroutine 
-	0x774c0  class func HandoffSessionToCompanionFlowFrame.__allocating_init(handoffDialog:notificationText:sessionHandOffContinuityID:) // init 
-	0x777a0  class func HandoffSessionToCompanionFlowFrame.__allocating_init(handoffDialog:notificationText:sessionHandOffContinuityID:deviceState:) // init 
-	0x77a90  class func HandoffSessionToCompanionFlowFrame.__allocating_init(handoffDialog:notificationText:sessionHandOffContinuityID:deviceState:aceServiceInvoker:) // init 
-	0x77d40  func HandoffSessionToCompanionFlowFrame.onInput(controller:input:completion:) // method 
-	0x77e00  func HandoffSessionToCompanionFlowFrame.execute(controller:completion:) // method 
-	0x77f70  func HandoffSessionToCompanionFlowFrame.action(renderer:args:completion:) // method 
+	0x773e0  func HandoffSessionToCompanionFlowFrame.commandsToSend.getter // getter 
+	0x77420  func HandoffSessionToCompanionFlowFrame.commandsToSend.setter // setter 
+	0x77460  func HandoffSessionToCompanionFlowFrame.commandsToSend.modify // modifyCoroutine 
+	0x774b0  class func HandoffSessionToCompanionFlowFrame.__allocating_init(handoffDialog:notificationText:sessionHandOffContinuityID:) // init 
+	0x77790  class func HandoffSessionToCompanionFlowFrame.__allocating_init(handoffDialog:notificationText:sessionHandOffContinuityID:deviceState:) // init 
+	0x77a80  class func HandoffSessionToCompanionFlowFrame.__allocating_init(handoffDialog:notificationText:sessionHandOffContinuityID:deviceState:aceServiceInvoker:) // init 
+	0x77d30  func HandoffSessionToCompanionFlowFrame.onInput(controller:input:completion:) // method 
+	0x77df0  func HandoffSessionToCompanionFlowFrame.execute(controller:completion:) // method 
+	0x77f60  func HandoffSessionToCompanionFlowFrame.action(renderer:args:completion:) // method 
  }
 
  enum SiriKitFlow.HandoffToCompanionAceCommands { }
@@ -1760,8 +1760,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let cancelGroup : ActionGrouping // +0x30 (0x10)
 
 	// Swift methods
-	0x78c00  class func CommonConfirmationReturning.__allocating_init(yesGroup:noGroup:cancelGroup:) // init 
-	0x78cc0  func CommonConfirmationReturning.getNextGroup(frameExitValue:) // method 
+	0x78bf0  class func CommonConfirmationReturning.__allocating_init(yesGroup:noGroup:cancelGroup:) // init 
+	0x78cb0  func CommonConfirmationReturning.getNextGroup(frameExitValue:) // method 
  }
 
  class SiriKitFlow.InterstitialViewsFlowFrame {
@@ -1793,16 +1793,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var commandsToSend : [SABaseCommand] // +0x88 (0x8)
 
 	// Swift methods
-	0x7e3b0  func RequestDeviceUnlockAndRestartFlowFrame.commandsToSend.getter // getter 
-	0x7e3f0  func RequestDeviceUnlockAndRestartFlowFrame.commandsToSend.setter // setter 
-	0x7e430  func RequestDeviceUnlockAndRestartFlowFrame.commandsToSend.modify // modifyCoroutine 
-	0x7e480  class func RequestDeviceUnlockAndRestartFlowFrame.__allocating_init(deviceUnlockDialog:machineUtterance:) // init 
-	0x7e6c0  class func RequestDeviceUnlockAndRestartFlowFrame.__allocating_init(deviceUnlockDialog:machineUtterance:deviceState:) // init 
-	0x7e900  class func RequestDeviceUnlockAndRestartFlowFrame.__allocating_init(deviceUnlockDialog:machineUtterance:deviceState:aceServiceInvoker:) // init 
-	0x7ec40  func RequestDeviceUnlockAndRestartFlowFrame.onInput(controller:input:completion:) // method 
-	0x7ed00  func RequestDeviceUnlockAndRestartFlowFrame.execute(controller:completion:) // method 
-	0x7eec0  func RequestDeviceUnlockAndRestartFlowFrame.action(renderer:args:completion:) // method 
-	0x7f140  func RequestDeviceUnlockAndRestartFlowFrame.commandsToRunMachineUtterance() // method 
+	0x7e3a0  func RequestDeviceUnlockAndRestartFlowFrame.commandsToSend.getter // getter 
+	0x7e3e0  func RequestDeviceUnlockAndRestartFlowFrame.commandsToSend.setter // setter 
+	0x7e420  func RequestDeviceUnlockAndRestartFlowFrame.commandsToSend.modify // modifyCoroutine 
+	0x7e470  class func RequestDeviceUnlockAndRestartFlowFrame.__allocating_init(deviceUnlockDialog:machineUtterance:) // init 
+	0x7e6b0  class func RequestDeviceUnlockAndRestartFlowFrame.__allocating_init(deviceUnlockDialog:machineUtterance:deviceState:) // init 
+	0x7e8f0  class func RequestDeviceUnlockAndRestartFlowFrame.__allocating_init(deviceUnlockDialog:machineUtterance:deviceState:aceServiceInvoker:) // init 
+	0x7ec30  func RequestDeviceUnlockAndRestartFlowFrame.onInput(controller:input:completion:) // method 
+	0x7ecf0  func RequestDeviceUnlockAndRestartFlowFrame.execute(controller:completion:) // method 
+	0x7eeb0  func RequestDeviceUnlockAndRestartFlowFrame.action(renderer:args:completion:) // method 
+	0x7f130  func RequestDeviceUnlockAndRestartFlowFrame.commandsToRunMachineUtterance() // method 
  }
 
  class SiriKitFlow.ResponseChunkRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1811,8 +1811,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let aceServiceInvoker : AceServiceInvoker // +0x10 (0x28)
 
 	// Swift methods
-	0x7f8b0  class func ResponseChunkRenderer.__allocating_init(aceServiceInvoker:) // init 
-	0x7f910  func ResponseChunkRenderer.render(chunk:_:) // method 
+	0x7f8a0  class func ResponseChunkRenderer.__allocating_init(aceServiceInvoker:) // init 
+	0x7f900  func ResponseChunkRenderer.render(chunk:_:) // method 
  }
 
  enum SiriKitFlow.TaskType {
@@ -1960,13 +1960,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var transition : ActionGroupTransition // +0x30 (0x10)
 
 	// Swift methods
-	0x8f4d0  func StaticActionGroup.initialAction.getter // getter 
-	0x8f510  func StaticActionGroup.initialAction.setter // setter 
-	0x8f560  func StaticActionGroup.initialAction.modify // modifyCoroutine 
-	0x8f650  func StaticActionGroup.transition.getter // getter 
-	0x8f690  func StaticActionGroup.transition.setter // setter 
-	0x8f6d0  func StaticActionGroup.transition.modify // modifyCoroutine 
-	0x8f370  class func StaticActionGroup.__allocating_init(actions:transition:debugDescription:) // init 
+	0x8f4c0  func StaticActionGroup.initialAction.getter // getter 
+	0x8f500  func StaticActionGroup.initialAction.setter // setter 
+	0x8f550  func StaticActionGroup.initialAction.modify // modifyCoroutine 
+	0x8f640  func StaticActionGroup.transition.getter // getter 
+	0x8f680  func StaticActionGroup.transition.setter // setter 
+	0x8f6c0  func StaticActionGroup.transition.modify // modifyCoroutine 
+	0x8f360  class func StaticActionGroup.__allocating_init(actions:transition:debugDescription:) // init 
  }
 
  class SiriKitFlow.AppConcept : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1977,8 +1977,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let conceptType : String // +0x18 (0x10)
 
 	// Swift methods
-	0x8fc50  class func AppConcept.__allocating_init(app:) // init 
-	0x8fcd0  func AppConcept.encode(protoJsonCoding:) // method 
+	0x8fc40  class func AppConcept.__allocating_init(app:) // init 
+	0x8fcc0  func AppConcept.encode(protoJsonCoding:) // method 
  }
 
  class SiriKitFlow.ParameterNeedsConfirmationConcept : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1993,8 +1993,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let typeNamesByValueType : INIntentSlotValueType // +0x48 (0x8)
 
 	// Swift methods
-	0x8ffa0  class func ParameterNeedsConfirmationConcept.__allocating_init(app:parameterName:intentResolutionResult:intent:typeNamesByValueType:) // init 
-	0x90080  func ParameterNeedsConfirmationConcept.encode(protoJsonCoding:) // method 
+	0x8ff90  class func ParameterNeedsConfirmationConcept.__allocating_init(app:parameterName:intentResolutionResult:intent:typeNamesByValueType:) // init 
+	0x90070  func ParameterNeedsConfirmationConcept.encode(protoJsonCoding:) // method 
  }
 
  class SiriKitFlow.DialogButtonsResult : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2004,7 +2004,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let link : String // +0x20 (0x10)
 
 	// Swift methods
-	0x90d50  class func DialogButtonsResult.__allocating_init(label:link:) // init 
+	0x90d40  class func DialogButtonsResult.__allocating_init(label:link:) // init 
  }
 
  enum SiriKitFlow.ButtonViewFactory { }
@@ -2027,9 +2027,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let ducTemplatingService : ScriptedDucTemplatingService // +0x10 (0x8)
 
 	// Swift methods
-	0x99930  class func DucTemplateExecutor.__allocating_init(aceServiceInvoker:deviceState:localContext:) // init 
-	0x99a50  func DucTemplateExecutor.execute(ducFamily:ducId:parameters:locale:_:) // method 
-	0x99b10  func DucTemplateExecutor.execute(ducFamily:ducId:parameters:locale:_:) // method 
+	0x99920  class func DucTemplateExecutor.__allocating_init(aceServiceInvoker:deviceState:localContext:) // init 
+	0x99a40  func DucTemplateExecutor.execute(ducFamily:ducId:parameters:locale:_:) // method 
+	0x99b00  func DucTemplateExecutor.execute(ducFamily:ducId:parameters:locale:_:) // method 
  }
 
  enum SiriKitFlow.DucLogging { }
@@ -2042,7 +2042,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let value : Any // +0x20 (0x20)
 
 	// Swift methods
-	0x9fd10  func StringListTemplatingParameter.encode(protoJsonCoding:) // method 
+	0x9fd00  func StringListTemplatingParameter.encode(protoJsonCoding:) // method 
  }
 
  enum SiriKitFlow.CommonFlowFrameConstants { }
@@ -2133,8 +2133,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let parameterName : String // +0x20 (0x10)
 
 	// Swift methods
-	0xa5340  func SiriKitParameterMetadata.debugDescription.getter // getter 
-	0xa52f0  class func SiriKitParameterMetadata.__allocating_init(parameterName:shouldResolve:confirmationStates:) // init 
+	0xa5330  func SiriKitParameterMetadata.debugDescription.getter // getter 
+	0xa52e0  class func SiriKitParameterMetadata.__allocating_init(parameterName:shouldResolve:confirmationStates:) // init 
  }
 
  struct SiriKitFlow.DucTemplatingLocalContext {
@@ -2155,14 +2155,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : GuidedConversationFlowDelegate // +0x30 (0x10)
 
 	// Swift methods
-	0xa7fb0  func ActionHandlingFlowFrame.namespace.getter // getter 
-	0xa7ff0  func ActionHandlingFlowFrame.namespace.setter // setter 
-	0xa8030  func ActionHandlingFlowFrame.namespace.modify // modifyCoroutine 
-	0xa8120  func ActionHandlingFlowFrame.currentAction.getter // getter 
-	0xa7e10  class func ActionHandlingFlowFrame.__allocating_init(initialAction:delegate:) // init 
-	0xa8260  func ActionHandlingFlowFrame.onInput(controller:input:completion:) // method 
-	0xa8320  func ActionHandlingFlowFrame.execute(controller:completion:) // method 
-	0xa8340  func ActionHandlingFlowFrame.action(renderer:args:completion:) // method 
+	0xa7fa0  func ActionHandlingFlowFrame.namespace.getter // getter 
+	0xa7fe0  func ActionHandlingFlowFrame.namespace.setter // setter 
+	0xa8020  func ActionHandlingFlowFrame.namespace.modify // modifyCoroutine 
+	0xa8110  func ActionHandlingFlowFrame.currentAction.getter // getter 
+	0xa7e00  class func ActionHandlingFlowFrame.__allocating_init(initialAction:delegate:) // init 
+	0xa8250  func ActionHandlingFlowFrame.onInput(controller:input:completion:) // method 
+	0xa8310  func ActionHandlingFlowFrame.execute(controller:completion:) // method 
+	0xa8330  func ActionHandlingFlowFrame.action(renderer:args:completion:) // method 
  }
 
  class SiriKitFlow.AppInformationResolver : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AppInformationWrapper {
@@ -2173,12 +2173,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let app : [F // +0x18 (0x8)
 
 	// Swift methods
-	0xa8ca0  class func AppInformationResolver.__allocating_init(app:) // init 
-	0xa8e00  func AppInformationResolver.resolveAppName.getter // getter 
-	0xa8f00  func AppInformationResolver.resolveAppBundleId.getter // getter 
-	0xa8f20  func AppInformationResolver.resolveAppVersion.getter // getter 
-	0xa8f40  func AppInformationResolver.resolveBuild.getter // getter 
-	0xa9080  func AppInformationResolver.isSiriKitSupportedApp.getter // getter 
+	0xa8c90  class func AppInformationResolver.__allocating_init(app:) // init 
+	0xa8df0  func AppInformationResolver.resolveAppName.getter // getter 
+	0xa8ef0  func AppInformationResolver.resolveAppBundleId.getter // getter 
+	0xa8f10  func AppInformationResolver.resolveAppVersion.getter // getter 
+	0xa8f30  func AppInformationResolver.resolveBuild.getter // getter 
+	0xa9070  func AppInformationResolver.isSiriKitSupportedApp.getter // getter 
  }
 
  class SiriKitFlow.SiriKitAceViewBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2194,21 +2194,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let deviceState : DeviceState // +0x48 (0x28)
 
 	// Swift methods
-	0xa9a10  class func static SiriKitAceViewBuilder.makeBuilder(deviceState:) // method 
-	0xa9ab0  class func static SiriKitAceViewBuilder.makeBuilderFromLaunchAppCommand(launchAppCommand:buttonLabel:) // method 
-	0xa9b50  class func static SiriKitAceViewBuilder.makeBuilderFromLaunchAppCommand(launchAppCommand:buttonLabel:deviceState:) // method 
-	0xa9d70  func SiriKitAceViewBuilder.addSnippet(snippet:) // method 
-	0xa9e80  func SiriKitAceViewBuilder.withUtteranceViews(utteranceViews:) // method 
-	0xa9ee0  func SiriKitAceViewBuilder.addDomainObjectPicker(domainObjectPicker:) // method 
-	0xa9f10  func SiriKitAceViewBuilder.addTipView(tipView:) // method 
-	0xa9fe0  func SiriKitAceViewBuilder.withDisambiguationList(disambiguationList:) // method 
-	0xaa010  func SiriKitAceViewBuilder.withTipViews(tipViews:) // method 
-	0xaa140  func SiriKitAceViewBuilder.withButtonGroups(buttonGroups:) // method 
-	0xaa190  func SiriKitAceViewBuilder.addButtonGroup(buttonGroup:) // method 
-	0xaa2a0  func SiriKitAceViewBuilder.withButtons(buttons:) // method 
-	0xaa2f0  func SiriKitAceViewBuilder.addButton(button:) // method 
-	0xaa400  func SiriKitAceViewBuilder.build() // method 
-	0xaaa80  func SiriKitAceViewBuilder.isCarPlayWithDisambiguationListAndTextButNoSnippet() // method 
+	0xa9a00  class func static SiriKitAceViewBuilder.makeBuilder(deviceState:) // method 
+	0xa9aa0  class func static SiriKitAceViewBuilder.makeBuilderFromLaunchAppCommand(launchAppCommand:buttonLabel:) // method 
+	0xa9b40  class func static SiriKitAceViewBuilder.makeBuilderFromLaunchAppCommand(launchAppCommand:buttonLabel:deviceState:) // method 
+	0xa9d60  func SiriKitAceViewBuilder.addSnippet(snippet:) // method 
+	0xa9e70  func SiriKitAceViewBuilder.withUtteranceViews(utteranceViews:) // method 
+	0xa9ed0  func SiriKitAceViewBuilder.addDomainObjectPicker(domainObjectPicker:) // method 
+	0xa9f00  func SiriKitAceViewBuilder.addTipView(tipView:) // method 
+	0xa9fd0  func SiriKitAceViewBuilder.withDisambiguationList(disambiguationList:) // method 
+	0xaa000  func SiriKitAceViewBuilder.withTipViews(tipViews:) // method 
+	0xaa130  func SiriKitAceViewBuilder.withButtonGroups(buttonGroups:) // method 
+	0xaa180  func SiriKitAceViewBuilder.addButtonGroup(buttonGroup:) // method 
+	0xaa290  func SiriKitAceViewBuilder.withButtons(buttons:) // method 
+	0xaa2e0  func SiriKitAceViewBuilder.addButton(button:) // method 
+	0xaa3f0  func SiriKitAceViewBuilder.build() // method 
+	0xaaa70  func SiriKitAceViewBuilder.isCarPlayWithDisambiguationListAndTextButNoSnippet() // method 
  }
 
  class SiriKitFlow.SiriKitDisambiguationList : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2220,10 +2220,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let requestUnlockForEmptyOrDuplicateItems : Bool // +0x21 (0x1)
 
 	// Swift methods
-	0xad520  class func SiriKitDisambiguationList.__allocating_init(rawItems:disambiguationItems:shouldReadItemsInVox:requestUnlockForEmptyOrDuplicateItems:) // init 
-	0xad8d0  func SiriKitDisambiguationList.makeSpeakableListItems(deviceIsLocked:) // method 
-	0xadbd0  func SiriKitDisambiguationList.shouldRequestUnlockForDisambiguation(deviceLockedForDisambiguation:) // method 
-	0xadc70  class func static SiriKitDisambiguationList.countDuplicateDisambiguationItems(_:deviceLocked:) // method 
+	0xad510  class func SiriKitDisambiguationList.__allocating_init(rawItems:disambiguationItems:shouldReadItemsInVox:requestUnlockForEmptyOrDuplicateItems:) // init 
+	0xad8c0  func SiriKitDisambiguationList.makeSpeakableListItems(deviceIsLocked:) // method 
+	0xadbc0  func SiriKitDisambiguationList.shouldRequestUnlockForDisambiguation(deviceLockedForDisambiguation:) // method 
+	0xadc60  class func static SiriKitDisambiguationList.countDuplicateDisambiguationItems(_:deviceLocked:) // method 
  }
 
  struct SiriKitFlow.UnsetRelationshipPerson {
@@ -2246,11 +2246,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let renderer : UnsetRelationshipResponseGenerating // +0xe8 (0x28)
 
 	// Swift methods
-	0xb2020  class func UnsetRelationshipFlow.__allocating_init(config:deviceState:) // init 
-	0xb2370  func UnsetRelationshipFlow.on(input:) // method 
-	0xb2900  func UnsetRelationshipFlow.updateStateFrom(nlIntent:) // method 
-	0xb2d80  func UnsetRelationshipFlow.execute(completion:) // method 
-	0xb5980  func UnsetRelationshipFlow.exitValue.getter // getter 
+	0xb2010  class func UnsetRelationshipFlow.__allocating_init(config:deviceState:) // init 
+	0xb2360  func UnsetRelationshipFlow.on(input:) // method 
+	0xb28f0  func UnsetRelationshipFlow.updateStateFrom(nlIntent:) // method 
+	0xb2d70  func UnsetRelationshipFlow.execute(completion:) // method 
+	0xb5970  func UnsetRelationshipFlow.exitValue.getter // getter 
  }
 
  enum SiriKitFlow.UnsetRelationshipResult {
@@ -2316,8 +2316,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let conceptType : String // +0x38 (0x10)
 
 	// Swift methods
-	0xb97c0  class func ErrorWithCodeConcept.__allocating_init(app:errorCode:intent:intentResponse:) // init 
-	0xb9890  func ErrorWithCodeConcept.encode(protoJsonCoding:) // method 
+	0xb97b0  class func ErrorWithCodeConcept.__allocating_init(app:errorCode:intent:intentResponse:) // init 
+	0xb9880  func ErrorWithCodeConcept.encode(protoJsonCoding:) // method 
  }
 
  class SiriKitFlow.DefaultNLContextProvider {
@@ -2365,13 +2365,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var pairs : [(String, String)] // +0x10 (0x8)
 
 	// Swift methods
-	0xbbec0  func MachineUtteranceBuilder.pairs.getter // getter 
-	0xbbef0  func MachineUtteranceBuilder.pairs.setter // setter 
-	0xbbf30  func MachineUtteranceBuilder.pairs.modify // modifyCoroutine 
-	0xba150  class func MachineUtteranceBuilder.__allocating_init() // init 
-	0xbc040  func MachineUtteranceBuilder.addMapping(node:value:) // method 
-	0xbc120  func MachineUtteranceBuilder.addMappingIfPresent(node:value:) // method 
-	0xbc1c0  func MachineUtteranceBuilder.build() // method 
+	0xbbeb0  func MachineUtteranceBuilder.pairs.getter // getter 
+	0xbbee0  func MachineUtteranceBuilder.pairs.setter // setter 
+	0xbbf20  func MachineUtteranceBuilder.pairs.modify // modifyCoroutine 
+	0xba140  class func MachineUtteranceBuilder.__allocating_init() // init 
+	0xbc030  func MachineUtteranceBuilder.addMapping(node:value:) // method 
+	0xbc110  func MachineUtteranceBuilder.addMappingIfPresent(node:value:) // method 
+	0xbc1b0  func MachineUtteranceBuilder.build() // method 
  }
 
  enum SiriKitFlow.CodingKeys {
@@ -2474,10 +2474,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let intentCancelledByParameterRejection : Bool // +0x30 (0x1)
 
 	// Swift methods
-	0xbfc30  class func static ParameterResolutionResult.makeResolveResolutionResult(intent:resolutionResultsByName:lastParameterProcessedName:) // method 
-	0xbfce0  class func static ParameterResolutionResult.makeIntentCancelledByParameterRejectionResult(intent:rejectedParameterName:) // method 
-	0xbfdc0  func ParameterResolutionResult.allParametersResolved.getter // getter 
-	0xc0110  func ParameterResolutionResult.needsExecuteIntent.getter // getter 
+	0xbfc20  class func static ParameterResolutionResult.makeResolveResolutionResult(intent:resolutionResultsByName:lastParameterProcessedName:) // method 
+	0xbfcd0  class func static ParameterResolutionResult.makeIntentCancelledByParameterRejectionResult(intent:rejectedParameterName:) // method 
+	0xbfdb0  func ParameterResolutionResult.allParametersResolved.getter // getter 
+	0xc0100  func ParameterResolutionResult.needsExecuteIntent.getter // getter 
  }
 
  enum SiriKitFlow.ResolveConfirmError {
@@ -2523,7 +2523,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let appResolutionStateProviding : ³F // +0x20 (0x28)
 
 	// Swift methods
-	0xc2510  class func Parse.ServerConversion.__allocating_init(siriKitIntent:confirmationState:appResolutionStateProviding:) // init 
+	0xc2500  class func Parse.ServerConversion.__allocating_init(siriKitIntent:confirmationState:appResolutionStateProviding:) // init 
  }
 
  struct SiriKitFlow.OrdinalDisplayHintsBuilder {
@@ -2548,14 +2548,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let synapseDucFamily : String // +0x88 (0x10)
 
 	// Swift methods
-	0xc6e50  class func UnsetRelationshipResponseGenerator.__allocating_init(config:aceService:ducExecutor:viewFactory:locale:) // init 
-	0xc7a60  func UnsetRelationshipResponseGenerator.processUnsupportedPlatform(relationship:completion:) // method 
-	0xc7cd0  func UnsetRelationshipResponseGenerator.processPromptForRelationship(relationship:completion:) // method 
-	0xc81a0  func UnsetRelationshipResponseGenerator.processDisambiguateContacts(contacts:completion:) // method 
-	0xc8cc0  func UnsetRelationshipResponseGenerator.processContactNotFound(relationship:completion:) // method 
-	0xc8f40  func UnsetRelationshipResponseGenerator.processConfirmToSave(relationship:contact:completion:) // method 
-	0xc9640  func UnsetRelationshipResponseGenerator.processSavedContact(relationship:contact:completion:) // method 
-	0xc98d0  func UnsetRelationshipResponseGenerator.localizeRelationship(relationship:_:) // method 
+	0xc6e40  class func UnsetRelationshipResponseGenerator.__allocating_init(config:aceService:ducExecutor:viewFactory:locale:) // init 
+	0xc7a50  func UnsetRelationshipResponseGenerator.processUnsupportedPlatform(relationship:completion:) // method 
+	0xc7cc0  func UnsetRelationshipResponseGenerator.processPromptForRelationship(relationship:completion:) // method 
+	0xc8190  func UnsetRelationshipResponseGenerator.processDisambiguateContacts(contacts:completion:) // method 
+	0xc8cb0  func UnsetRelationshipResponseGenerator.processContactNotFound(relationship:completion:) // method 
+	0xc8f30  func UnsetRelationshipResponseGenerator.processConfirmToSave(relationship:contact:completion:) // method 
+	0xc9630  func UnsetRelationshipResponseGenerator.processSavedContact(relationship:contact:completion:) // method 
+	0xc98c0  func UnsetRelationshipResponseGenerator.localizeRelationship(relationship:_:) // method 
  }
 
  struct SiriKitFlow.CATPerson: CATParamCodable {
@@ -2588,12 +2588,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let error : AP // +0x20 (0x8)
 
 	// Swift methods
-	0xce370  func ErrorAction.debugDescription.getter // getter 
-	0xce500  func ErrorAction.nextAction.getter // getter 
-	0xce540  func ErrorAction.nextAction.setter // setter 
-	0xce590  func ErrorAction.nextAction.modify // modifyCoroutine 
-	0xce5f0  class func ErrorAction.__allocating_init(_:) // init 
-	0xce690  func ErrorAction.run(_:) // method 
+	0xce360  func ErrorAction.debugDescription.getter // getter 
+	0xce4f0  func ErrorAction.nextAction.getter // getter 
+	0xce530  func ErrorAction.nextAction.setter // setter 
+	0xce580  func ErrorAction.nextAction.modify // modifyCoroutine 
+	0xce5e0  class func ErrorAction.__allocating_init(_:) // init 
+	0xce680  func ErrorAction.run(_:) // method 
  }
 
  class SiriKitFlow.RawDucTemplatingParameter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2603,6 +2603,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let conceptType : String // +0x30 (0x10)
 
 	// Swift methods
-	0xce910  class func RawDucTemplatingParameter.__allocating_init(_:) // init 
-	0xce9e0  func RawDucTemplatingParameter.encode(protoJsonCoding:) // method 
+	0xce900  class func RawDucTemplatingParameter.__allocating_init(_:) // init 
+	0xce9d0  func RawDucTemplatingParameter.encode(protoJsonCoding:) // method 
  }

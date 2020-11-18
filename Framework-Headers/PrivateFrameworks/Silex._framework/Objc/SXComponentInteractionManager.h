@@ -14,6 +14,7 @@
 
 @interface SXComponentInteractionManager : NSObject <UIGestureRecognizerDelegate, SXComponentInteractionManager>
 {
+    BOOL _wantsPointyHand;
     id<SXComponentInteractionHandlerManager> _interactionHandlerManager;
     SXViewport *_viewport;
     UITapGestureRecognizer *_tapGestureRecognizer;
@@ -36,6 +37,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property (readonly, nonatomic) SXViewport *viewport; // @synthesize viewport=_viewport;
+@property (nonatomic) BOOL wantsPointyHand; // @synthesize wantsPointyHand=_wantsPointyHand;
 
 - (void).cxx_destruct;
 - (void)animateHighlight:(BOOL)arg1 forComponentView:(id)arg2;

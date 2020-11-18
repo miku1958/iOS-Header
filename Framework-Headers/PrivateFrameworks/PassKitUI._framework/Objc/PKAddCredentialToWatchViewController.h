@@ -6,6 +6,7 @@
 
 #import <PassKitUI/PKExplanationViewController.h>
 
+#import <PassKitUI/PKExplanationViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentAuthorizationCoordinatorDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentAuthorizationCoordinatorPrivateDelegate-Protocol.h>
 #import <PassKitUI/PKSubcredentialRemoteDevicePairingFlowControllerOperation-Protocol.h>
@@ -14,7 +15,7 @@
 @class NSString, PKAppletSubcredentialSharingSession, PKPaymentAuthorizationCoordinator, PKSubcredentialPairingFlowControllerContext, PKWatchHeroCardExplainationHeaderView;
 @protocol PKSubcredentialPairingFlowControllerProtocol, PKSubcredentialProvisioningFlowController, PKSubcredentialProvisioningViewModelProtocol;
 
-@interface PKAddCredentialToWatchViewController : PKExplanationViewController <PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate, PKSubcredentialRemoteDevicePairingFlowControllerOperation, PKViewControllerPreflightable>
+@interface PKAddCredentialToWatchViewController : PKExplanationViewController <PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate, PKExplanationViewControllerDelegate, PKSubcredentialRemoteDevicePairingFlowControllerOperation, PKViewControllerPreflightable>
 {
     PKAppletSubcredentialSharingSession *_sharingSession;
     id<PKSubcredentialProvisioningViewModelProtocol> _provisioningViewModel;
@@ -38,6 +39,7 @@
 - (void).cxx_destruct;
 - (void)advanceToNextState;
 - (void)dealloc;
+- (void)explanationViewControllerDidSelectCancel:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (id)initWithFlowController:(id)arg1 context:(id)arg2;

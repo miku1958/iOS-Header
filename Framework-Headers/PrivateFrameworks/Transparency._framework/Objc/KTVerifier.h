@@ -41,6 +41,7 @@
 - (id)initWithApplication:(id)arg1;
 - (void)invokeXPCAsynchronousCallWithBlock:(CDUnknownBlockType)arg1 failureBlock:(CDUnknownBlockType)arg2;
 - (void)invokeXPCSynchronousCallWithBlock:(CDUnknownBlockType)arg1 failureBlock:(CDUnknownBlockType)arg2;
+- (void)resetRequestToPending:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)validateEnrollmentUri:(id)arg1 accountID:(id)arg2 loggableData:(id)arg3 insertResponse:(id)arg4 error:(id *)arg5;
 - (void)validateEnrollmentUri:(id)arg1 accountID:(id)arg2 loggableData:(id)arg3 insertResponse:(id)arg4 promiseCompletionBlock:(CDUnknownBlockType)arg5;
 - (id)validateEnrollmentUri:(id)arg1 accountID:(id)arg2 loggableData:(id)arg3 queryRequest:(id)arg4 insertResponse:(id)arg5 error:(id *)arg6;

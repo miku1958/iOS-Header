@@ -11,13 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed29DebugFormatMainViewController : UISplitViewController
 {
-    MISSING_TYPE *key;
+    MISSING_TYPE *editor;
     MISSING_TYPE *reloadState;
     MISSING_TYPE *inventoryViewController;
     MISSING_TYPE *inventoryContainerController;
     MISSING_TYPE *editorViewController;
     MISSING_TYPE *editorContainerController;
     MISSING_TYPE *layoutViewController;
+    MISSING_TYPE *bindingViewController;
     MISSING_TYPE *formatManager;
     MISSING_TYPE *packages;
 }
@@ -25,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 
 @end

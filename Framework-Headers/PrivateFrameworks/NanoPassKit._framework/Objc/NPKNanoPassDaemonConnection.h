@@ -32,6 +32,8 @@
 - (void)remoteServiceDidSuspend:(id)arg1;
 - (void)startSubcredentialProvisioningOnLocalDeviceMatchingInvitation:(id)arg1 shouldFetchAnonymizationSaltFromRemoteDevice:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)startSubcredentialProvisioningOnRemoteDeviceForInvitation:(id)arg1;
+- (void)statusForReceivedInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)statusForSentInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

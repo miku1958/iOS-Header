@@ -8,22 +8,19 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, NTPBCardStyle, NTPBColor, NTPBColorGradient, NTPBDate, NTPBDiscoverMoreVideosInfo;
+@class NSMutableArray, NSString, NTPBCardStyle, NTPBColor, NTPBDate;
 
 @interface NTPBFeedViewportGroup : PBCodable <NSCopying>
 {
     CDStruct_95bda58d _assetURLStringRefs;
     unsigned long long _mergeID;
     unsigned long long _options;
-    NTPBColorGradient *_backgroundGradient;
     NSString *_bridgedGroupIdentifier;
     NTPBCardStyle *_cardStyle;
     NTPBDate *_creationDate;
     int _ctaTextRef;
     NTPBCardStyle *_darkCardStyle;
-    NTPBColorGradient *_darkStyleBackgroundGradient;
     NTPBColor *_darkStyleTitleColor;
-    NTPBDiscoverMoreVideosInfo *_discoverMoreVideosInfo;
     NTPBDate *_editionFeedEndDate;
     NTPBDate *_editionFeedStartDate;
     NTPBDate *_editionKeyDate;
@@ -37,7 +34,6 @@
     NTPBColor *_titleColor;
     int _titleRef;
     int _type;
-    NSMutableArray *_videoPlaylistHeadlines;
     BOOL _isFirstFromEdition;
     BOOL _usesPlaceholderHeadlines;
     struct {
@@ -57,28 +53,22 @@
 
 @property (readonly, nonatomic) int *assetURLStringRefs;
 @property (readonly, nonatomic) unsigned long long assetURLStringRefsCount;
-@property (strong, nonatomic) NTPBColorGradient *backgroundGradient; // @synthesize backgroundGradient=_backgroundGradient;
 @property (strong, nonatomic) NSString *bridgedGroupIdentifier; // @synthesize bridgedGroupIdentifier=_bridgedGroupIdentifier;
 @property (strong, nonatomic) NTPBCardStyle *cardStyle; // @synthesize cardStyle=_cardStyle;
 @property (strong, nonatomic) NTPBDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (nonatomic) int ctaTextRef; // @synthesize ctaTextRef=_ctaTextRef;
 @property (strong, nonatomic) NTPBCardStyle *darkCardStyle; // @synthesize darkCardStyle=_darkCardStyle;
-@property (strong, nonatomic) NTPBColorGradient *darkStyleBackgroundGradient; // @synthesize darkStyleBackgroundGradient=_darkStyleBackgroundGradient;
 @property (strong, nonatomic) NTPBColor *darkStyleTitleColor; // @synthesize darkStyleTitleColor=_darkStyleTitleColor;
-@property (strong, nonatomic) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo; // @synthesize discoverMoreVideosInfo=_discoverMoreVideosInfo;
 @property (strong, nonatomic) NTPBDate *editionFeedEndDate; // @synthesize editionFeedEndDate=_editionFeedEndDate;
 @property (strong, nonatomic) NTPBDate *editionFeedStartDate; // @synthesize editionFeedStartDate=_editionFeedStartDate;
 @property (strong, nonatomic) NTPBDate *editionKeyDate; // @synthesize editionKeyDate=_editionKeyDate;
 @property (nonatomic) int eyebrowTextRef; // @synthesize eyebrowTextRef=_eyebrowTextRef;
-@property (readonly, nonatomic) BOOL hasBackgroundGradient;
 @property (readonly, nonatomic) BOOL hasBridgedGroupIdentifier;
 @property (readonly, nonatomic) BOOL hasCardStyle;
 @property (readonly, nonatomic) BOOL hasCreationDate;
 @property (nonatomic) BOOL hasCtaTextRef;
 @property (readonly, nonatomic) BOOL hasDarkCardStyle;
-@property (readonly, nonatomic) BOOL hasDarkStyleBackgroundGradient;
 @property (readonly, nonatomic) BOOL hasDarkStyleTitleColor;
-@property (readonly, nonatomic) BOOL hasDiscoverMoreVideosInfo;
 @property (readonly, nonatomic) BOOL hasEditionFeedEndDate;
 @property (readonly, nonatomic) BOOL hasEditionFeedStartDate;
 @property (readonly, nonatomic) BOOL hasEditionKeyDate;
@@ -107,20 +97,16 @@
 @property (nonatomic) int titleRef; // @synthesize titleRef=_titleRef;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (nonatomic) BOOL usesPlaceholderHeadlines; // @synthesize usesPlaceholderHeadlines=_usesPlaceholderHeadlines;
-@property (strong, nonatomic) NSMutableArray *videoPlaylistHeadlines; // @synthesize videoPlaylistHeadlines=_videoPlaylistHeadlines;
 
 + (Class)headlinesType;
 + (Class)issueIDsType;
-+ (Class)videoPlaylistHeadlinesType;
 - (void)addAssetURLStringRef:(int)arg1;
 - (void)addHeadlines:(id)arg1;
 - (void)addIssueIDs:(id)arg1;
-- (void)addVideoPlaylistHeadlines:(id)arg1;
 - (int)assetURLStringRefAtIndex:(unsigned long long)arg1;
 - (void)clearAssetURLStringRefs;
 - (void)clearHeadlines;
 - (void)clearIssueIDs;
-- (void)clearVideoPlaylistHeadlines;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
@@ -134,8 +120,6 @@
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setAssetURLStringRefs:(int *)arg1 count:(unsigned long long)arg2;
-- (id)videoPlaylistHeadlinesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)videoPlaylistHeadlinesCount;
 - (void)writeTo:(id)arg1;
 
 @end

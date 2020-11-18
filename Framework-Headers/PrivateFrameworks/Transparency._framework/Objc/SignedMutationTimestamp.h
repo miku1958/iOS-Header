@@ -24,7 +24,7 @@
 + (id)descriptor;
 - (id)copyManagedObjectWithError:(id *)arg1;
 - (id)parsedMutationWithError:(id *)arg1;
-- (BOOL)verifyWithError:(id *)arg1;
+- (unsigned long long)verifyWithError:(id *)arg1;
 
 @end
 

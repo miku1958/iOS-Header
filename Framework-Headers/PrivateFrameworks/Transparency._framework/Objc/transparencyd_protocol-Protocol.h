@@ -31,6 +31,7 @@
 - (void)logSoftFailureForEventNamed:(NSString *)arg1 withAttributes:(NSDictionary *)arg2;
 - (void)logSuccessForEventNamed:(NSString *)arg1;
 - (void)noteEventNamed:(NSString *)arg1;
+- (void)resetRequestToPending:(NSUUID *)arg1 block:(void (^)(NSError *))arg2;
 - (void)runDutyCycle:(void (^)(NSError *))arg1;
 - (void)runDutyCycleForActivity:(NSObject<OS_xpc_object> *)arg1;
 - (void)validateEnrollmentUri:(NSString *)arg1 application:(NSString *)arg2 accountID:(NSData *)arg3 loggableData:(KTLoggableData *)arg4 queryRequest:(NSData *)arg5 queryResponse:(NSData *)arg6 promiseCompletionBlock:(void (^)(NSString *, NSUUID *, NSError *))arg7;

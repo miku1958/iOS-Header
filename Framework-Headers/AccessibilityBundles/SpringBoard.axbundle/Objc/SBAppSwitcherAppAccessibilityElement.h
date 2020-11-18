@@ -34,6 +34,7 @@
 - (id)_accessibilityScrollAncestor;
 - (id)_accessibilityScrollStatus;
 - (BOOL)_accessibilityScrollToVisible;
+- (BOOL)_accessibilitySetNativeFocus;
 - (BOOL)_accessibilityUpdatesSwitchMenu;
 - (BOOL)_axIsAppActive;
 - (BOOL)accessibilityActivate;

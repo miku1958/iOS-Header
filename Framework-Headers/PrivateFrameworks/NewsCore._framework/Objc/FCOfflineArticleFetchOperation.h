@@ -16,12 +16,12 @@
     NSString *_articleID;
     FCHeadline *_headline;
     id _thumbnailFetchedObject;
-    id _classificationFetchedObject;
     id _contentFetchedObject;
+    id _audioFetchedObject;
 }
 
 @property (copy, nonatomic) NSString *articleID; // @synthesize articleID=_articleID;
-@property (strong, nonatomic) id classificationFetchedObject; // @synthesize classificationFetchedObject=_classificationFetchedObject;
+@property (strong, nonatomic) id audioFetchedObject; // @synthesize audioFetchedObject=_audioFetchedObject;
 @property (strong, nonatomic) id contentFetchedObject; // @synthesize contentFetchedObject=_contentFetchedObject;
 @property (strong, nonatomic) id<FCContentContext> context; // @synthesize context=_context;
 @property (strong, nonatomic) id<FCFlintHelper> flintHelper; // @synthesize flintHelper=_flintHelper;
@@ -32,6 +32,7 @@
 - (id)completeFetchOperation;
 - (id)fetchContentWithCompletion:(CDUnknownBlockType)arg1;
 - (id)fetchHeadlineWithCompletion:(CDUnknownBlockType)arg1;
+- (id)fetchNarrativeTrackWithCompletion:(CDUnknownBlockType)arg1;
 - (id)fetchThumbnailWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithContext:(id)arg1 flintHelper:(id)arg2 articleID:(id)arg3;
 

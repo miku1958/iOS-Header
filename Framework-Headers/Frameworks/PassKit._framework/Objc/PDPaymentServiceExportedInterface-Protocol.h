@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSArray, NSCalendar, NSData, NSDate, NSError, NSSet, NSString, NSUUID, PKAppletSubcredential, PKAppletSubcredentialSharingInvitationRequest, PKApplyWebServiceApplicationDeleteRequest, PKApplyWebServiceApplyRequest, PKApplyWebServiceDocumentSubmissionRequest, PKApplyWebServiceTermsRequest, PKExpressPassInformation, PKMerchant, PKPaymentApplication, PKPaymentProductsActionRequest, PKPaymentTransaction, PKPaymentWebServiceContext, PKPlaceholderPassConfiguration;
+@class NSArray, NSCalendar, NSData, NSDate, NSError, NSSet, NSString, NSUUID, PKAppletSubcredential, PKAppletSubcredentialSharingInvitation, PKAppletSubcredentialSharingInvitationRequest, PKApplyWebServiceApplicationDeleteRequest, PKApplyWebServiceApplyRequest, PKApplyWebServiceDocumentSubmissionRequest, PKApplyWebServiceTermsRequest, PKExpressPassInformation, PKMerchant, PKPaymentApplication, PKPaymentProductsActionRequest, PKPaymentTransaction, PKPaymentWebServiceContext, PKPlaceholderPassConfiguration;
 
 @protocol PDPaymentServiceExportedInterface <PDXPCServiceExportedInterface>
 - (void)accountAttestationAnonymizationSaltWithCompletion:(void (^)(NSString *, NSError *))arg1;
@@ -14,15 +14,18 @@
 - (void)addSharingInvitationReceipts:(NSArray *)arg1 onCredentialWithIdentifier:(NSString *)arg2 withCompletion:(void (^)(BOOL))arg3;
 - (void)addSubcredential:(PKAppletSubcredential *)arg1 fromSharingInvitationWithIdentifier:(NSString *)arg2 completion:(void (^)(BOOL))arg3;
 - (void)approvedTransactionsForPassWithUniqueIdentifier:(NSString *)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 startDate:(NSDate *)arg4 endDate:(NSDate *)arg5 limit:(long long)arg6 completion:(void (^)(NSSet *))arg7;
+- (void)canAcceptInvitation:(PKAppletSubcredentialSharingInvitation *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)cashbackByPeriodFromPassUniqueIdentifier:(NSString *)arg1 withStartDate:(NSDate *)arg2 endDate:(NSDate *)arg3 calendar:(NSCalendar *)arg4 calendarUnit:(unsigned long long)arg5 type:(long long)arg6 completion:(void (^)(NSArray *))arg7;
 - (void)categoryVisualizationMagnitudesForPassUniqueID:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)conflictingExpressPassIdentifiersForPassInformation:(PKExpressPassInformation *)arg1 withCompletion:(void (^)(NSSet *))arg2;
 - (void)conflictingExpressPassIdentifiersForPassInformation:(PKExpressPassInformation *)arg1 withReferenceExpressState:(NSSet *)arg2 completion:(void (^)(NSSet *))arg3;
 - (void)credentialWithIdentifier:(NSString *)arg1 completion:(void (^)(PKAppletSubcredential *))arg2;
+- (void)declineRelatedSharingInvitationsIfNecessary:(PKAppletSubcredentialSharingInvitation *)arg1 withCompletion:(void (^)(BOOL))arg2;
 - (void)defaultPaymentPassUniqueIdentifier:(void (^)(NSString *))arg1;
 - (void)deleteTransactionReceiptWithUniqueID:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)didReceiveSharingInvitationRequest:(PKAppletSubcredentialSharingInvitationRequest *)arg1 withCompletion:(void (^)(BOOL))arg2;
 - (void)didReceiveSharingInvitationWithIdentifier:(NSString *)arg1 fromOriginatorIDSHandle:(NSString *)arg2 sharingSessionIdentifier:(NSUUID *)arg3 metadata:(NSData *)arg4 completion:(void (^)(BOOL))arg5;
+- (void)didUpdateSharingInvitationWithIdentifier:(NSString *)arg1 reason:(long long)arg2 completion:(void (^)(BOOL))arg3;
 - (void)disbursementVoucherWithDisbursementSource:(unsigned long long)arg1 disbursementTarget:(unsigned long long)arg2 bundleIdentifier:(NSString *)arg3 teamIdentifier:(NSString *)arg4 completion:(void (^)(PKDisbursementVoucher *))arg5;
 - (void)downloadAllPaymentPassesWithHandler:(void (^)(void))arg1;
 - (void)enforceUpgradedPasscodePolicyWithCompletion:(void (^)(BOOL, NSError *))arg1;
@@ -41,6 +44,7 @@
 - (void)installmentPlanTransactionsForPassUniqueIdentifier:(NSString *)arg1 accountIdentifier:(NSString *)arg2 withRedemptionType:(long long)arg3 startDate:(NSDate *)arg4 endDate:(NSDate *)arg5 completion:(void (^)(NSSet *))arg6;
 - (void)installmentPlansWithTransactionReferenceIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)installmentTransactionsForInstallmentPlanIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
+- (void)isPassExpressWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)mapsMerchantsWithCompletion:(void (^)(NSSet *))arg1;
 - (void)noteAccountDeletedWithCompletion:(void (^)(void))arg1;
 - (void)passOwnershipTokenWithIdentifier:(NSString *)arg1 completion:(void (^)(NSString *))arg2;

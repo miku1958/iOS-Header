@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *browseButtonViewRenderer;
     MISSING_TYPE *settingsButtonViewRenderer;
-    MISSING_TYPE *followingRowViewRenderer;
+    MISSING_TYPE *tagViewRenderer;
     MISSING_TYPE *delegate;
 }
 

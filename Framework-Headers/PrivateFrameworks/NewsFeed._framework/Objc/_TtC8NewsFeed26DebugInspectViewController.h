@@ -11,10 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed26DebugInspectViewController : UIViewController
 {
+    MISSING_TYPE *cloudContext;
     MISSING_TYPE *key;
     MISSING_TYPE *result;
     MISSING_TYPE *factory;
     MISSING_TYPE *dataSource;
+    MISSING_TYPE *inspector;
+    MISSING_TYPE *reporter;
     MISSING_TYPE *tableView;
 }
 

@@ -16,6 +16,7 @@
     NSString *_storefrontID;
     NSString *_localizedStorefrontID;
     NSArray *_defaultSupportedStoreFronts;
+    NSDictionary *_keyedPaywallConfigurationsByType;
     NSDictionary *_paywallConfigurationsByType;
     NSDictionary *_magazineGenresByGenre;
     NSDictionary *_subscriptionButtonConfigurationsByType;
@@ -27,6 +28,26 @@
 @property (readonly, nonatomic) unsigned long long appLaunchUpsellPaidVisibility;
 @property (readonly, nonatomic) long long appLaunchUpsellRequiredAppLaunchCount;
 @property (readonly, nonatomic) unsigned long long articleHardPaywallType;
+@property (readonly, nonatomic) long long audioCloseIdlePlayerAfterTime;
+@property (readonly, nonatomic) NSString *audioDailyBriefingFeatureName;
+@property (readonly, nonatomic) NSArray *audioFeedPaywallPositions;
+@property (readonly, nonatomic) unsigned long long audioFeedPaywallSubtype;
+@property (readonly, nonatomic) long long audioFinishedAtTimeFromEnd;
+@property (readonly, nonatomic) long long audioOfflineArticlesMaxCountCriticalStorage;
+@property (readonly, nonatomic) long long audioOfflineArticlesMaxCountLowStorage;
+@property (readonly, nonatomic) long long audioOfflineArticlesMaxCountNormalStorage;
+@property (readonly, nonatomic) NSDictionary *audioPaywallConfigurationsByType;
+@property (readonly, nonatomic) long long audioRecentlyPlayedMaxCount;
+@property (readonly, nonatomic) BOOL audioRefreshForceWakeEnabled;
+@property (readonly, nonatomic) long long audioRefreshForceWakeRandomizationWindow;
+@property (readonly, nonatomic) long long audioRefreshTimeGMT;
+@property (readonly, nonatomic) long long audioRewindToParagraphStartAfterTime;
+@property (readonly, nonatomic) long long audioSuggestionsMaxAge;
+@property (readonly, nonatomic) long long audioSuggestionsMaxCount;
+@property (readonly, nonatomic) long long audioSuggestionsRecycleAfterTime;
+@property (readonly, nonatomic) NSString *audioUpsellArticleID;
+@property (readonly, nonatomic) NSString *audioUpsellInstanceID;
+@property (readonly, nonatomic) long long audioUpsellMaxDisplayCount;
 @property (readonly, nonatomic) long long bundleSubscriptionsGlobalMeteredCount;
 @property (readonly, nonatomic, getter=isCategoriesDownloadButtonEnabled) BOOL categoriesDownloadButtonEnabled;
 @property (strong, nonatomic) NSDictionary *configDict; // @synthesize configDict=_configDict;
@@ -54,10 +75,11 @@
 @property (readonly, nonatomic, getter=isFreeBadgeEnabledForSubscribers) BOOL freeBadgeEnabledForSubscribers;
 @property (readonly, nonatomic) NSString *freeBadgeTitle;
 @property (readonly, nonatomic) NSArray *groupWhitelistedTagIds;
+@property (strong, nonatomic) NSDictionary *keyedPaywallConfigurationsByType; // @synthesize keyedPaywallConfigurationsByType=_keyedPaywallConfigurationsByType;
 @property (readonly, copy, nonatomic) NSString *localizedStorefrontID; // @synthesize localizedStorefrontID=_localizedStorefrontID;
 @property (readonly, nonatomic) long long lowStorageAutomaticIssueDownloadTTL;
 @property (readonly, nonatomic) long long lowStorageManualIssueDownloadTTL;
-@property (readonly, nonatomic) unsigned long long magazineFeedPaywallType;
+@property (readonly, nonatomic) unsigned long long magazineFeedPaywallSubtype;
 @property (strong, nonatomic) NSDictionary *magazineGenresByGenre; // @synthesize magazineGenresByGenre=_magazineGenresByGenre;
 @property (readonly, nonatomic, getter=areMagazinesEnabled) BOOL magazinesEnabled;
 @property (readonly, nonatomic) long long minFollowedMagazinesToHideSuggestionsCompact;
@@ -66,6 +88,7 @@
 @property (readonly, nonatomic) long long minimumArticlesInANFIssueBeforeRead;
 @property (readonly, nonatomic) long long minimumPagesInPDFIssueBeforeRead;
 @property (readonly, nonatomic) long long minimumReadIssuesInMyMagazines;
+@property (readonly, nonatomic, getter=isNarrativeAudioEnabled) BOOL narrativeAudioEnabled;
 @property (readonly, nonatomic) long long newIssuesCheckLocalTime;
 @property (readonly, nonatomic) long long newIssuesNotificationDeliveryLocalTime;
 @property (readonly, nonatomic) long long normalStorageAutomaticIssueDownloadTTL;
@@ -100,6 +123,7 @@
 + (id)renewalLandingPageByLocalizedStorefrontID;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)defaultAudioPaywallConfigs;
 - (id)defaultMagazineGenres;
 - (id)defaultPaywallConfigs;
 - (id)defaultSubscriptionButtonConfigs;
@@ -109,6 +133,7 @@
 - (id)initWithConfigDictionary:(id)arg1 storefrontID:(id)arg2;
 - (id)initWithConfigDictionary:(id)arg1 storefrontID:(id)arg2 localizedStorefrontID:(id)arg3 defaultSupportedStoreFronts:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
+- (id)paywallConfigurationsByTypeForKey:(id)arg1;
 
 @end
 

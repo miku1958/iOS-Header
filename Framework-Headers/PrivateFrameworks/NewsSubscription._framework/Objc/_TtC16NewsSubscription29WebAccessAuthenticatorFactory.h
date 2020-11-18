@@ -11,7 +11,6 @@
 @interface _TtC16NewsSubscription29WebAccessAuthenticatorFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *purchaseController;
-    MISSING_TYPE *paywallCoordinator;
 }
 
 @end

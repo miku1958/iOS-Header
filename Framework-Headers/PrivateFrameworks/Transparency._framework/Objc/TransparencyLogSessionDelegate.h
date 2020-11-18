@@ -9,10 +9,12 @@
 #import <Transparency/NSURLSessionDelegate-Protocol.h>
 
 @class NSString, TransparencyManagedDataStore;
+@protocol OS_dispatch_workloop;
 
 @interface TransparencyLogSessionDelegate : NSObject <NSURLSessionDelegate>
 {
     TransparencyManagedDataStore *_dataStore;
+    NSObject<OS_dispatch_workloop> *_workloop;
 }
 
 @property (strong) TransparencyManagedDataStore *dataStore; // @synthesize dataStore=_dataStore;
@@ -20,6 +22,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (strong) NSObject<OS_dispatch_workloop> *workloop; // @synthesize workloop=_workloop;
 
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
@@ -29,7 +32,7 @@
 - (void)handleConsistencyProofDownloadFailure:(id)arg1 task:(id)arg2 error:(id)arg3;
 - (void)handleQueryResponseDownload:(id)arg1 downloadData:(id)arg2;
 - (void)handleQueryResponseDownloadFailure:(id)arg1 task:(id)arg2 error:(id)arg3;
-- (id)initWithDataStore:(id)arg1;
+- (id)initWithDataStore:(id)arg1 workloop:(id)arg2;
 - (BOOL)isResponseForConsistencyProofDownload:(id)arg1;
 - (void)markRequestDownloadFailure:(id)arg1 error:(id)arg2;
 

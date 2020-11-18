@@ -10,7 +10,7 @@
 #import <NewsUI/NFCopying-Protocol.h>
 #import <NewsUI/NSObject-Protocol.h>
 
-@class FCArticleContentManifest, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
+@class FCArticleAudioTrack, FCArticleContentManifest, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
 @protocol FCChannelProviding, FCContentContext, FCHeadlineStocksFields, FCNativeAdProviding;
 
 @protocol FCHeadlineProviding <NSObject, NFCopying, FCFeedElement, FCClassifiable, FCFeedTransformationItem>
@@ -46,6 +46,7 @@
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) BOOL isBlockedExplicitContent;
 @property (readonly, nonatomic) BOOL isDraft;
+@property (readonly, nonatomic) BOOL isFullTrackAvailableToAll;
 @property (readonly, nonatomic) BOOL isLocalDraft;
 @property (readonly, nonatomic) BOOL isTopStory;
 @property (readonly, nonatomic, getter=isIssueOnly) BOOL issueOnly;
@@ -58,6 +59,9 @@
 @property (readonly, copy, nonatomic) FCIssue *masterIssue;
 @property (readonly, nonatomic) long long minimumNewsVersion;
 @property (readonly, copy, nonatomic) NSArray *moreFromPublisherArticleIDs;
+@property (readonly, nonatomic) FCArticleAudioTrack *narrativeTrack;
+@property (readonly, nonatomic) FCArticleAudioTrack *narrativeTrackSample;
+@property (readonly, nonatomic) NSString *narrativeTrackTextRanges;
 @property (readonly, nonatomic) BOOL needsRapidUpdates;
 @property (readonly, nonatomic, getter=isPaid) BOOL paid;
 @property (readonly, nonatomic, getter=isPressRelease) BOOL pressRelease;

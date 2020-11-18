@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *offlineAlertControllerFactory;
     MISSING_TYPE *mastheadStyleOptionsProvider;
     MISSING_TYPE *sharingActivityProviderFactory;
+    MISSING_TYPE *bundlePurchasePrewarmer;
+    MISSING_TYPE *paidBundleConfigurationManager;
     MISSING_TYPE *heightChangeRelayoutThreshold;
     MISSING_TYPE *viewportFromLastRelayout;
     MISSING_TYPE *isBeingUsedAsPlugin;

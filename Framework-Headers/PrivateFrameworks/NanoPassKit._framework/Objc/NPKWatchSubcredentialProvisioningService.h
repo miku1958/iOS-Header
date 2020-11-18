@@ -12,6 +12,7 @@
 
 - (void)fetchAccountAttestationAnonymizationSaltOnRemoteDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchAccountAttestationAnonymizationSaltResponse:(id)arg1;
+- (id)init;
 - (void)registerProtobufActionsForService:(id)arg1;
 - (void)sendAcceptSubcredentialProvisioningRequestForInvitation:(id)arg1 metadata:(id)arg2;
 

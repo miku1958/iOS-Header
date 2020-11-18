@@ -13,17 +13,22 @@
 @interface ENTemporaryExposureKey : NSObject <CUXPCCodable>
 {
     unsigned char _transmissionRiskLevel;
+    unsigned int _diagnosisReportType;
     unsigned int _rollingPeriod;
     unsigned int _rollingStartNumber;
+    long long _daysSinceOnsetOfSymptoms;
     NSData *_keyData;
 }
 
+@property (nonatomic) long long daysSinceOnsetOfSymptoms; // @synthesize daysSinceOnsetOfSymptoms=_daysSinceOnsetOfSymptoms;
+@property (nonatomic) unsigned int diagnosisReportType; // @synthesize diagnosisReportType=_diagnosisReportType;
 @property (copy, nonatomic) NSData *keyData; // @synthesize keyData=_keyData;
 @property (nonatomic) unsigned int rollingPeriod; // @synthesize rollingPeriod=_rollingPeriod;
 @property (nonatomic) unsigned int rollingStartNumber; // @synthesize rollingStartNumber=_rollingStartNumber;
 @property (nonatomic) unsigned char transmissionRiskLevel; // @synthesize transmissionRiskLevel=_transmissionRiskLevel;
 
 - (void).cxx_destruct;
+- (id)description;
 - (void)encodeWithXPCObject:(id)arg1;
 - (id)initWithXPCObject:(id)arg1 error:(id *)arg2;
 

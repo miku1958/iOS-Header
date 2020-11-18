@@ -18,6 +18,7 @@
     NSArray *_installedAppBundleIdentifiers;
     NSArray *_subscribedAppBundleIdentifiers;
     NSArray *_testAppBundleIdentifiers;
+    NSArray *_nonConformingAppBundleIdentifiers;
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_refreshQueue;
     BOOL _appLibraryNeedsRefresh;
@@ -34,6 +35,8 @@
 - (void).cxx_destruct;
 - (id)_bundleIdentifiersfromProxies:(id)arg1;
 - (void)_handleInvalidationWithReason:(id)arg1;
+- (id)_nonConformingAppBundleIdentifiers;
+- (id)_nonConformingAppProxies;
 - (id)_refreshAppLibrary;
 - (void)_subscriptionsDidChangeNotification:(id)arg1;
 - (id)allAppBundleIdentifiers;

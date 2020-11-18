@@ -11,6 +11,7 @@
 @interface _TtC13NewsAnalytics15SessionObserver : NSObject
 {
     MISSING_TYPE *sessionManager;
+    MISSING_TYPE *tracker;
     MISSING_TYPE *cloudContext;
     MISSING_TYPE *client;
     MISSING_TYPE *window;

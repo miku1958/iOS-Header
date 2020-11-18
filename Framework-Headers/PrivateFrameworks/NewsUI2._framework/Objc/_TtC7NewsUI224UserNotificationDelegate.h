@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7NewsUI224UserNotificationDelegate : NSObject
 {
-    MISSING_TYPE *notificationResponseHandlerManager;
+    MISSING_TYPE *notificationHandlerManager;
     MISSING_TYPE *notificationOpenSettingsHandler;
     MISSING_TYPE *navigator;
 }

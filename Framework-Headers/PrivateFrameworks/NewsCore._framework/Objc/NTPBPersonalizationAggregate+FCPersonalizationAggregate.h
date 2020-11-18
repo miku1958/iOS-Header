@@ -9,7 +9,7 @@
 #import <NewsCore/FCMutablePersonalizationAggregate-Protocol.h>
 #import <NewsCore/FCPersonalizationAggregate-Protocol.h>
 
-@class NSDate, NSString;
+@class NSDate, NSDictionary, NSString;
 
 @interface NTPBPersonalizationAggregate (FCPersonalizationAggregate) <FCPersonalizationAggregate, FCMutablePersonalizationAggregate>
 
@@ -17,6 +17,7 @@
 @property (readonly, nonatomic) double confidence;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic) unsigned long long eventCount;
 @property (readonly, nonatomic) NSString *featureKey;
 @property (readonly) unsigned long long hash;

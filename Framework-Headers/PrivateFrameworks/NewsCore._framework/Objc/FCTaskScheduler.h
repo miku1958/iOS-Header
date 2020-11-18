@@ -10,7 +10,9 @@
 {
 }
 
++ (id)backgroundDownloadOperationQueue;
 + (void)disableOptionalPrefetching;
++ (void)enableBackgroundDownloadsInSpiteOfHighPriorityTasks;
 + (void)executeOptionalPrefetchBlock:(CDUnknownBlockType)arg1;
 + (id)lowPriorityOperationQueue;
 + (id)lowPriorityQueue;

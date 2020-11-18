@@ -16,6 +16,7 @@
     MISSING_TYPE *articleOfflineManager;
     MISSING_TYPE *offlineIssueManager;
     MISSING_TYPE *offlineAlertControllerFactory;
+    MISSING_TYPE *featureAvailability;
     MISSING_TYPE *readingList;
 }
 

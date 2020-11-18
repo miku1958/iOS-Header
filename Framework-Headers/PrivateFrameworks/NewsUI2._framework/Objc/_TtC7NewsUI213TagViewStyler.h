@@ -11,7 +11,7 @@
 @interface _TtC7NewsUI213TagViewStyler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *headlineFontMetrics;
-    MISSING_TYPE *subheadlineFontMetrics;
+    MISSING_TYPE *subtitleFontMetrics;
 }
 
 @end

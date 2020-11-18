@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)cleanupActiveRequests;
 - (void)dealloc;
 - (id)initWithStreamToken:(long long)arg1;
 - (void)stream:(id)arg1 addAudioSampleBuffer:(struct opaqueVCAudioBufferList *)arg2 timestamp:(unsigned int)arg3;

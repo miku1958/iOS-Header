@@ -1378,13 +1378,14 @@ struct MediaSessionManageriOS {
     struct Ref<WTF::AggregateLogger, WTF::DumbPtrTraits<WTF::AggregateLogger>> _field16;
     BOOL _field17;
     BOOL _field18;
-    struct String _field19;
-    double _field20;
+    BOOL _field19;
+    struct String _field20;
     double _field21;
-    unsigned long long _field22;
-    struct GenericTaskQueue<WebCore::Timer> _field23;
-    struct RetainPtr<WebMediaSessionHelper> _field24;
-    BOOL _field25;
+    double _field22;
+    unsigned long long _field23;
+    struct GenericTaskQueue<WebCore::Timer> _field24;
+    struct RetainPtr<WebMediaSessionHelper> _field25;
+    BOOL _field26;
 };
 
 struct MediaStream;

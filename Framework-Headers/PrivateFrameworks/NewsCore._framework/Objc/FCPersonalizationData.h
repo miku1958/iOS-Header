@@ -57,17 +57,21 @@
 + (BOOL)requiresPushNotificationSupport;
 - (void).cxx_destruct;
 - (void)_applicationDidEnterBackground;
+- (void)_applicationDidEnterForeground;
 - (void)_closeOpenChangeGroupFromInstance:(id)arg1;
 - (id)_instanceIdentifier;
 - (void)_reloadTreatment;
 - (void)_updateWithRemoteRecord:(id)arg1 profile:(id)arg2;
 - (void)_writeToLocalStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)activityObservingApplicationDidEnterBackground;
+- (void)activityObservingApplicationWillTerminate;
+- (void)activityObservingApplicationWindowDidBecomeBackground;
+- (void)activityObservingApplicationWindowDidBecomeForeground;
 - (void)addObserver:(id)arg1;
 - (id)aggregateForFeatureKey:(id)arg1;
 - (id)aggregatesForFeatureKeys:(id)arg1;
 - (id)aggregatesForFeatures:(id)arg1;
 - (id)baselineAggregateWithConfigurableValues:(id)arg1;
+- (void)cacheGSToken;
 - (BOOL)canHelpRestoreZoneName:(id)arg1;
 - (void)clearPersonalizationData;
 - (void)configurationManager:(id)arg1 configurationDidChange:(id)arg2;
@@ -84,6 +88,8 @@
 - (void)prepareAggregatesForUseWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)recordsForRestoringZoneName:(id)arg1;
 - (void)removeObserver:(id)arg1;
+- (void)saveReadableAggregates;
+- (void)submitPersonalizationVector;
 - (void)syncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateFeatures:(id)arg1 withAction:(unsigned long long)arg2 displayRank:(long long)arg3 groupRank:(long long)arg4 groupType:(long long)arg5 individually:(BOOL)arg6 configurableValues:(id)arg7 featuresUpdatedBlock:(CDUnknownBlockType)arg8;
 

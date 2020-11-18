@@ -23,8 +23,9 @@
 + (id)peerIndexAtDepth:(unsigned long long)arg1 leafIndex:(id)arg2;
 - (void).cxx_destruct;
 - (id)initWithPositon:(id)arg1 trustedKeyStore:(id)arg2;
+- (void)storeSMHSignatureFailure:(unsigned long long)arg1 smh:(id)arg2 error:(id *)arg3;
 - (BOOL)verifyInclusionOfMapLeaf:(id)arg1 position:(id)arg2 treeHead:(id)arg3 treeId:(unsigned long long)arg4 hashPath:(id)arg5 error:(id *)arg6;
-- (BOOL)verifyMapEntryWithMapLeaf:(id)arg1 hashesToRoot:(id)arg2 signedMapHead:(id)arg3 error:(id *)arg4;
+- (unsigned long long)verifyMapEntryWithMapLeaf:(id)arg1 hashesToRoot:(id)arg2 signedMapHead:(id)arg3 error:(id *)arg4;
 
 @end
 

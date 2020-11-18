@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
     BOOL _useRateControl;
     unsigned int _pixelFormat;
     NSMutableDictionary *_customFeatureListStrings;
+    unsigned int _qualityIndex;
 }
 
 @property (nonatomic) long long codecType; // @synthesize codecType=_codecType;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long keyFrameInterval; // @synthesize keyFrameInterval=_keyFrameInterval;
 @property (nonatomic) int mode; // @synthesize mode=_mode;
 @property (nonatomic) unsigned int pixelFormat; // @synthesize pixelFormat=_pixelFormat;
+@property (nonatomic) unsigned int qualityIndex; // @synthesize qualityIndex=_qualityIndex;
 @property (nonatomic) unsigned long long recommendedMTU; // @synthesize recommendedMTU=_recommendedMTU;
 @property (nonatomic) struct opaqueRTCReporting *reportingAgent; // @synthesize reportingAgent=_reportingAgent;
 @property (nonatomic) int reportingParentID; // @synthesize reportingParentID=_reportingParentID;

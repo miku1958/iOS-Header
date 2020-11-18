@@ -11,7 +11,7 @@
 @interface _TtC7NewsUI220FollowingDataManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *notificationManager;
+    MISSING_TYPE *notificationPrompter;
     MISSING_TYPE *subscriptionService;
     MISSING_TYPE *tagService;
     MISSING_TYPE *editorialService;

@@ -26,12 +26,18 @@
 @property (readonly, nonatomic) BOOL hasArticleBeenMarkedOffensive;
 @property (readonly, nonatomic) BOOL hasArticleBeenRead;
 @property (readonly, nonatomic) BOOL hasArticleBeenSeen;
+@property (readonly, nonatomic) BOOL hasArticleCompletedListening;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier;
+@property (readonly, copy, nonatomic) NSDate *lastListenedAt;
 @property (readonly, copy, nonatomic) NSDate *lastVisitedAt;
+@property (readonly, nonatomic) double listeningProgress;
+@property (readonly, copy, nonatomic) NSDate *listeningProgressSavedAt;
 @property (readonly, nonatomic) long long maxVersionRead;
 @property (readonly, nonatomic) long long maxVersionSeen;
 @property (readonly, nonatomic) long long readCount;
+@property (readonly, copy, nonatomic) NSString *readingPosition;
+@property (readonly, copy, nonatomic) NSDate *readingPositionSavedAt;
 @property (readonly, copy, nonatomic) NSString *sourceChannelTagID;
 @property (readonly) Class superclass;
 
@@ -46,7 +52,11 @@
 - (void)setHasArticleBeenMarkedOffensive:(BOOL)arg1;
 - (void)setHasArticleBeenRead:(BOOL)arg1;
 - (void)setHasArticleBeenSeen:(BOOL)arg1;
+- (void)setHasArticleCompletedListening:(BOOL)arg1;
+- (void)setLastListenedAt:(id)arg1;
 - (void)setLastVisitedAt:(id)arg1;
+- (void)setListeningProgressSavedAt:(id)arg1;
+- (void)setReadingPositionSavedAt:(id)arg1;
 - (void)writeToKeyValuePair:(id)arg1;
 @end
 

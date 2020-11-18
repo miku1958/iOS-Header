@@ -12,6 +12,7 @@
 
 @interface NTPBReadingHistoryItem : PBCodable <NSCopying>
 {
+    double _listeningProgress;
     long long _maxVersionRead;
     long long _maxVersionSeen;
     long long _readCount;
@@ -20,9 +21,14 @@
     NTPBDate *_firstSeenDate;
     NTPBDate *_firstSeenDateOfMaxVersionSeen;
     unsigned int _flags;
+    NTPBDate *_lastListened;
     NTPBDate *_lastVisitedDate;
+    NTPBDate *_listeningProgressSavedDate;
+    NSString *_readingPosition;
+    NTPBDate *_readingPositionSavedDate;
     NSString *_sourceChannelTagID;
     struct {
+        unsigned int listeningProgress:1;
         unsigned int maxVersionRead:1;
         unsigned int maxVersionSeen:1;
         unsigned int readCount:1;
@@ -40,15 +46,25 @@
 @property (readonly, nonatomic) BOOL hasFirstSeenDate;
 @property (readonly, nonatomic) BOOL hasFirstSeenDateOfMaxVersionSeen;
 @property (nonatomic) BOOL hasFlags;
+@property (readonly, nonatomic) BOOL hasLastListened;
 @property (readonly, nonatomic) BOOL hasLastVisitedDate;
+@property (nonatomic) BOOL hasListeningProgress;
+@property (readonly, nonatomic) BOOL hasListeningProgressSavedDate;
 @property (nonatomic) BOOL hasMaxVersionRead;
 @property (nonatomic) BOOL hasMaxVersionSeen;
 @property (nonatomic) BOOL hasReadCount;
+@property (readonly, nonatomic) BOOL hasReadingPosition;
+@property (readonly, nonatomic) BOOL hasReadingPositionSavedDate;
 @property (readonly, nonatomic) BOOL hasSourceChannelTagID;
+@property (strong, nonatomic) NTPBDate *lastListened; // @synthesize lastListened=_lastListened;
 @property (strong, nonatomic) NTPBDate *lastVisitedDate; // @synthesize lastVisitedDate=_lastVisitedDate;
+@property (nonatomic) double listeningProgress; // @synthesize listeningProgress=_listeningProgress;
+@property (strong, nonatomic) NTPBDate *listeningProgressSavedDate; // @synthesize listeningProgressSavedDate=_listeningProgressSavedDate;
 @property (nonatomic) long long maxVersionRead; // @synthesize maxVersionRead=_maxVersionRead;
 @property (nonatomic) long long maxVersionSeen; // @synthesize maxVersionSeen=_maxVersionSeen;
 @property (nonatomic) long long readCount; // @synthesize readCount=_readCount;
+@property (strong, nonatomic) NSString *readingPosition; // @synthesize readingPosition=_readingPosition;
+@property (strong, nonatomic) NTPBDate *readingPositionSavedDate; // @synthesize readingPositionSavedDate=_readingPositionSavedDate;
 @property (strong, nonatomic) NSString *sourceChannelTagID; // @synthesize sourceChannelTagID=_sourceChannelTagID;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -60,6 +60,7 @@
     BOOL _bypassAuthenticator;
     BOOL _isPad;
     BOOL _isAMPPayment;
+    BOOL _isInstallment;
     BOOL _needsFinalCallback;
     long long _preferencesStyle;
     struct __IOHIDEventSystemClient *_hidSystemClient;

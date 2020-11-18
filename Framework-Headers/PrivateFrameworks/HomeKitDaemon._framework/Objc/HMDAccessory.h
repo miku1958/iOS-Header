@@ -44,6 +44,7 @@
     long long _deprecatedTargetNetworkProtectionMode;
     long long _currentNetworkProtectionMode;
     long long _networkClientLAN;
+    NSUUID *_networkClientProfileFingerprint;
     long long _wiFiCredentialType;
     NSArray *_allowedHosts;
     NSData *_wiFiUniquePreSharedKey;
@@ -103,6 +104,7 @@
 @property (strong, nonatomic) HMDAccessoryNetworkAccessViolation *networkAccessViolation; // @synthesize networkAccessViolation=_networkAccessViolation;
 @property (strong, nonatomic) NSNumber *networkClientIdentifier; // @synthesize networkClientIdentifier=_networkClientIdentifier;
 @property (nonatomic) long long networkClientLAN; // @synthesize networkClientLAN=_networkClientLAN;
+@property (strong, nonatomic) NSUUID *networkClientProfileFingerprint; // @synthesize networkClientProfileFingerprint=_networkClientProfileFingerprint;
 @property (strong, nonatomic) NSUUID *networkRouterUUID; // @synthesize networkRouterUUID=_networkRouterUUID;
 @property (nonatomic, getter=isPrimary) BOOL primary; // @synthesize primary=_primary;
 @property (strong, nonatomic) HMFVersion *primaryProfileVersion; // @synthesize primaryProfileVersion=_primaryProfileVersion;
@@ -193,7 +195,7 @@
 - (void)removeAdvertisement:(id)arg1;
 - (void)removeCloudData;
 - (id)runtimeState;
-- (void)saveCurrentNetworkProtectionMode:(long long)arg1 assignedLAN:(long long)arg2 appliedFirewallWANRules:(id)arg3;
+- (void)saveCurrentNetworkProtectionMode:(long long)arg1 assignedLAN:(long long)arg2 appliedFirewallWANRules:(id)arg3 profileFingerprint:(id)arg4;
 - (void)saveNetworkAccessViolation:(id)arg1;
 - (void)saveNetworkClientIdentifier:(id)arg1 networkRouterUUID:(id)arg2;
 - (void)saveWiFiUniquePreSharedKey:(id)arg1 credentialType:(long long)arg2;

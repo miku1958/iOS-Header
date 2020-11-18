@@ -22,6 +22,7 @@
 - (void)addPlugin:(id)arg1;
 - (BOOL)containsPluginForViewController:(id)arg1;
 - (id)init;
+- (id)pluginForIdentifier:(id)arg1;
 - (void)removeAll;
 - (void)removePlugin:(id)arg1;
 - (BOOL)stashViewController:(id)arg1;

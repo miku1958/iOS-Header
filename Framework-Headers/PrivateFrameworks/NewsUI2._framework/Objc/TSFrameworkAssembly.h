@@ -12,13 +12,14 @@
 
 @interface TSFrameworkAssembly : NSObject <NFFrameworkAssembly>
 {
-    MISSING_TYPE *assemblies;
+    MISSING_TYPE *appConfiguration;
 }
 
 @property (nonatomic, readonly) NSArray *assemblies;
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)initWithNewsAppConfiguration:(id)arg1;
 
 @end
 

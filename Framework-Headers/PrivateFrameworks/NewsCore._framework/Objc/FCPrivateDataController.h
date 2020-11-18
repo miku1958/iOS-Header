@@ -104,6 +104,7 @@
 - (void)markAsDirty;
 - (void)mergeLocalStoreWithCloud;
 - (void)performFirstSyncWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)performFirstSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)prepareForUse;
 - (id)pruneRecords:(id)arg1 forZoneName:(id)arg2;
 - (void)recordSyncManager:(id)arg1 stateDidChange:(id)arg2;

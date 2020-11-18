@@ -14,6 +14,7 @@
     MISSING_TYPE *currentPage;
     MISSING_TYPE *providers;
     MISSING_TYPE *providerState;
+    MISSING_TYPE *featureAvailability;
 }
 
 @end

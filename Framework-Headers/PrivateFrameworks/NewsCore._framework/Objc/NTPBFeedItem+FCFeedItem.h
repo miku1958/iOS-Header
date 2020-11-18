@@ -9,7 +9,7 @@
 #import <NewsCore/FCClassifiable-Protocol.h>
 #import <NewsCore/FCFeedTransformationItem-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, NSArray, NSDate, NSString;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSArray, NSDate, NSString;
 @protocol FCChannelProviding;
 
 @interface NTPBFeedItem (FCFeedItem) <FCClassifiable, FCFeedTransformationItem>
@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
 @property (readonly, nonatomic) double globalUserFeedback;
 @property (readonly, nonatomic) unsigned long long halfLife;
+@property (readonly, nonatomic) BOOL hasAudioTrack;
 @property (readonly, nonatomic) BOOL hasGlobalUserFeedback;
 @property (readonly, nonatomic) BOOL hasVideo;
 @property (readonly) unsigned long long hash;
@@ -40,6 +41,8 @@
 @property (readonly, nonatomic) long long minimumNewsVersion;
 @property (readonly, nonatomic) unsigned long long order;
 @property (readonly, nonatomic, getter=isPaid) BOOL paid;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt;
 @property (readonly, copy, nonatomic) NSDate *publishDate;
 @property (readonly, nonatomic) unsigned long long publishDateMilliseconds;
 @property (readonly, nonatomic) long long publisherArticleVersion;

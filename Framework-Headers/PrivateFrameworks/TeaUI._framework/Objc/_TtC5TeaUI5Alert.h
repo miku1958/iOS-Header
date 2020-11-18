@@ -13,6 +13,9 @@
     MISSING_TYPE *acceptBlock;
     MISSING_TYPE *rejectBlock;
     MISSING_TYPE *neutralBlock;
+    MISSING_TYPE *acceptBlockV1;
+    MISSING_TYPE *rejectBlockV1;
+    MISSING_TYPE *neutralBlockV1;
     MISSING_TYPE *alertController;
 }
 

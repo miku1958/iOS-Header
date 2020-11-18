@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSMutableSet, NSString;
 
 @interface FCLocalRegion : NSObject
 {
@@ -14,17 +14,26 @@
     NSArray *_autoFavoriteTagIDs;
     NSArray *_localVersionedTagIDs;
     NSString *_name;
+    NSMutableSet *_areas;
+    struct CGRect _rect;
 }
 
-@property (strong, nonatomic) NSArray *autoFavoriteTagIDs; // @synthesize autoFavoriteTagIDs=_autoFavoriteTagIDs;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) NSArray *localVersionedTagIDs; // @synthesize localVersionedTagIDs=_localVersionedTagIDs;
+@property (strong, nonatomic) NSMutableSet *areas; // @synthesize areas=_areas;
+@property (readonly, nonatomic) NSArray *autoFavoriteTagIDs; // @synthesize autoFavoriteTagIDs=_autoFavoriteTagIDs;
+@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) NSArray *localVersionedTagIDs; // @synthesize localVersionedTagIDs=_localVersionedTagIDs;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (nonatomic) struct CGRect rect; // @synthesize rect=_rect;
 
 - (void).cxx_destruct;
+- (void)addLocalArea:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (struct CGRect)rectForEntireRegion;
 
 @end
 

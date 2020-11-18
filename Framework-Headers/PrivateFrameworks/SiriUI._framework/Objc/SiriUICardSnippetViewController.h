@@ -50,6 +50,8 @@
 - (void)_forwardProgressEvent:(unsigned long long)arg1 toCardViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)_forwardProgressEventToCardViewController:(unsigned long long)arg1;
 - (void)_insertCardViewController:(id)arg1;
+- (void)_instrumentCardSectionInteractionForId:(id)arg1 previousTurn:(id)arg2;
+- (id)_instrumentationManager;
 - (id)_metricsContextOfEventsForCard:(id)arg1;
 - (id)_metricsContextOfEventsForCardSection:(id)arg1 inCard:(id)arg2;
 - (void)_removeCardViewControllerFromParentViewController:(id)arg1;

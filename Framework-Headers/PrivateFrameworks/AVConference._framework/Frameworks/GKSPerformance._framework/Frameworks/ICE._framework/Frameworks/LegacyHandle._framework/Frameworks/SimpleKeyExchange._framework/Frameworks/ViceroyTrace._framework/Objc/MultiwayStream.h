@@ -33,7 +33,14 @@ __attribute__((visibility("hidden")))
     unsigned int _videoFrameImcompleteNextTSCounter;
     unsigned int _videoFrameTotalIncompleteCounter;
     unsigned int _decodedVideoFrameEnqueueCounter;
+    unsigned int _evictedFramesLikelyRecoverableCount;
+    unsigned int _evictedFramesTrackedCount;
+    unsigned int _evictedFramesAnalysisValidIntervals;
+    double _evictedFramesAverageLatePacketDelay;
 }
+
+@property (readonly) double currentStallTime; // @synthesize currentStallTime=_currentStallTime;
+@property (readonly) double totalAudioErasureTime; // @synthesize totalAudioErasureTime=_totalAudioErasureTime;
 
 - (unsigned int)RTPeriod;
 - (unsigned short)audioErasureCount;
@@ -44,6 +51,10 @@ __attribute__((visibility("hidden")))
 - (unsigned short)averageJitterReportCounter;
 - (void)dealloc;
 - (unsigned int)decodedVideoFrameEnqueueCounter;
+- (double)evictedFramesAnalysisValidIntervals;
+- (double)evictedFramesAverageLatePacketDelay;
+- (unsigned int)evictedFramesLikelyRecoverableCount;
+- (unsigned int)evictedFramesTrackedCount;
 - (id)initStreamWithID:(id)arg1;
 - (unsigned int)oooPacketCount;
 - (void)processData:(id)arg1;

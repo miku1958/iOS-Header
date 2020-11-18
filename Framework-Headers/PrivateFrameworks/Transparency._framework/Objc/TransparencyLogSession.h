@@ -6,31 +6,28 @@
 
 #import <objc/NSObject.h>
 
-#import <Transparency/NSURLSessionDelegate-Protocol.h>
-
-@class NSString, NSURLSession;
+@class NSURLSession;
 @protocol OS_dispatch_workloop;
 
-@interface TransparencyLogSession : NSObject <NSURLSessionDelegate>
+@interface TransparencyLogSession : NSObject
 {
-    NSObject<OS_dispatch_workloop> *_workloop;
     unsigned long long _fetchCount;
     unsigned long long _downloadCount;
     NSURLSession *_backgroundSession;
     NSURLSession *_foregroundSession;
+    NSObject<OS_dispatch_workloop> *_callbackWorkloop;
+    NSObject<OS_dispatch_workloop> *_networkingWorkloop;
 }
 
 @property (strong) NSURLSession *backgroundSession; // @synthesize backgroundSession=_backgroundSession;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
+@property (strong) NSObject<OS_dispatch_workloop> *callbackWorkloop; // @synthesize callbackWorkloop=_callbackWorkloop;
 @property unsigned long long downloadCount; // @synthesize downloadCount=_downloadCount;
 @property unsigned long long fetchCount; // @synthesize fetchCount=_fetchCount;
 @property (strong) NSURLSession *foregroundSession; // @synthesize foregroundSession=_foregroundSession;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-@property (strong) NSObject<OS_dispatch_workloop> *workloop; // @synthesize workloop=_workloop;
+@property (strong) NSObject<OS_dispatch_workloop> *networkingWorkloop; // @synthesize networkingWorkloop=_networkingWorkloop;
 
 + (id)createErrorFromURLResonse:(id)arg1 data:(id)arg2 allowEmptyData:(BOOL)arg3 error:(id)arg4;
++ (void)dispatchToQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (id)createAuthenticatedBackgroundSession:(id)arg1 delegateQueue:(id)arg2;
 - (id)createAuthenticatedForegroundSession;

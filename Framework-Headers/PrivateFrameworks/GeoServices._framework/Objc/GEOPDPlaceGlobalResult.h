@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAddressObjectGeocodingResult, GEOPDAutocompleteResult, GEOPDBatchCategoryLookupResult, GEOPDBatchMerchantLookupBrandResult, GEOPDBatchPopularNearbySearchResult, GEOPDBatchSpatialLookupResult, GEOPDBrandLookupResult, GEOPDCanonicalLocationSearchResult, GEOPDCategorySearchResult, GEOPDClusterGeocodingResult, GEOPDExternalTransitLookupResult, GEOPDFeatureIdGeocodingResult, GEOPDGeocodingResult, GEOPDGroundViewLabelResult, GEOPDInitialOfflineSuggestionResult, GEOPDIpGeoLookupResult, GEOPDLocationDirectedSearchResult, GEOPDMapsIdentifierPlaceLookupResult, GEOPDMerchantLookupResult, GEOPDNearbySearchResult, GEOPDOfflineAreaLookupResult, GEOPDOfflinePolygonQuadNodesResult, GEOPDOfflineProactiveRegionsResult, GEOPDOfflineSuggestedRegionsResult, GEOPDOfflineUpdateManifestResult, GEOPDPlaceCollectionLookupResult, GEOPDPlaceGlobalCommonResult, GEOPDPlaceLookupResult, GEOPDPlaceRefinementResult, GEOPDPopularNearbySearchResult, GEOPDReverseGeocodingResult, GEOPDSearchBrowseCategorySuggestionResult, GEOPDSearchFieldPlaceholderResult, GEOPDSearchResult, GEOPDSearchZeroKeywordCategorySuggestionResult, GEOPDSearchZeroKeywordWithSearchResultsSuggestionResult, GEOPDSiriSearchResult, GEOPDTransitScheduleLookupResult, GEOPDVendorSpecificPlaceRefinementResult, GEOPDWifiFingerprintResult, PBDataReader, PBUnknownFields;
+@class GEOPDAddressObjectGeocodingResult, GEOPDAutocompleteResult, GEOPDBatchCategoryLookupResult, GEOPDBatchMerchantLookupBrandResult, GEOPDBatchPopularNearbySearchResult, GEOPDBatchSpatialLookupResult, GEOPDBrandLookupResult, GEOPDCanonicalLocationSearchResult, GEOPDCategorySearchResult, GEOPDClusterGeocodingResult, GEOPDExternalTransitLookupResult, GEOPDFeatureIdGeocodingResult, GEOPDGeocodingResult, GEOPDGroundViewLabelResult, GEOPDInitialOfflineSuggestionResult, GEOPDIpGeoLookupResult, GEOPDLocationDirectedSearchResult, GEOPDMapsIdentifierPlaceLookupResult, GEOPDMerchantLookupResult, GEOPDNearbySearchResult, GEOPDOfflineAreaLookupResult, GEOPDOfflinePolygonQuadNodesResult, GEOPDOfflineProactiveRegionsResult, GEOPDOfflineSuggestedRegionsResult, GEOPDOfflineUpdateManifestResult, GEOPDPlaceCollectionLookupResult, GEOPDPlaceGlobalCommonResult, GEOPDPlaceLookupResult, GEOPDPlaceRefinementResult, GEOPDPopularNearbySearchResult, GEOPDReverseGeocodingResult, GEOPDSearchBrowseCategorySuggestionResult, GEOPDSearchFieldPlaceholderResult, GEOPDSearchResult, GEOPDSearchZeroKeywordCategorySuggestionResult, GEOPDSearchZeroKeywordWithSearchResultsSuggestionResult, GEOPDSiriSearchResult, GEOPDTerritoryLookupResult, GEOPDTransitScheduleLookupResult, GEOPDVendorSpecificPlaceRefinementResult, GEOPDWifiFingerprintResult, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDPlaceGlobalResult : PBCodable <NSCopying>
@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
     GEOPDSearchZeroKeywordCategorySuggestionResult *_searchZeroKeywordCategorySuggestionResult;
     GEOPDSearchZeroKeywordWithSearchResultsSuggestionResult *_searchZeroKeywordWithSearchResultsSuggestionResult;
     GEOPDSiriSearchResult *_siriSearchResult;
+    GEOPDTerritoryLookupResult *_territoryLookupResult;
     GEOPDTransitScheduleLookupResult *_transitScheduleLookupResult;
     GEOPDVendorSpecificPlaceRefinementResult *_vendorSpecificPlaceRefinementResult;
     GEOPDWifiFingerprintResult *_wifiFingerprintResult;
@@ -97,6 +98,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_searchZeroKeywordCategorySuggestionResult:1;
         unsigned int read_searchZeroKeywordWithSearchResultsSuggestionResult:1;
         unsigned int read_siriSearchResult:1;
+        unsigned int read_territoryLookupResult:1;
         unsigned int read_transitScheduleLookupResult:1;
         unsigned int read_vendorSpecificPlaceRefinementResult:1;
         unsigned int read_wifiFingerprintResult:1;
@@ -138,6 +140,7 @@ __attribute__((visibility("hidden")))
         unsigned int wrote_searchZeroKeywordCategorySuggestionResult:1;
         unsigned int wrote_searchZeroKeywordWithSearchResultsSuggestionResult:1;
         unsigned int wrote_siriSearchResult:1;
+        unsigned int wrote_territoryLookupResult:1;
         unsigned int wrote_transitScheduleLookupResult:1;
         unsigned int wrote_vendorSpecificPlaceRefinementResult:1;
         unsigned int wrote_wifiFingerprintResult:1;
@@ -196,6 +199,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasSearchZeroKeywordCategorySuggestionResult;
 @property (readonly, nonatomic) BOOL hasSearchZeroKeywordWithSearchResultsSuggestionResult;
 @property (readonly, nonatomic) BOOL hasSiriSearchResult;
+@property (readonly, nonatomic) BOOL hasTerritoryLookupResult;
 @property (readonly, nonatomic) BOOL hasTransitScheduleLookupResult;
 @property (readonly, nonatomic) BOOL hasVendorSpecificPlaceRefinementResult;
 @property (readonly, nonatomic) BOOL hasWifiFingerprintResult;
@@ -221,6 +225,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOPDSearchZeroKeywordCategorySuggestionResult *searchZeroKeywordCategorySuggestionResult;
 @property (strong, nonatomic) GEOPDSearchZeroKeywordWithSearchResultsSuggestionResult *searchZeroKeywordWithSearchResultsSuggestionResult;
 @property (strong, nonatomic) GEOPDSiriSearchResult *siriSearchResult;
+@property (strong, nonatomic) GEOPDTerritoryLookupResult *territoryLookupResult;
 @property (strong, nonatomic) GEOPDTransitScheduleLookupResult *transitScheduleLookupResult;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOPDVendorSpecificPlaceRefinementResult *vendorSpecificPlaceRefinementResult;
@@ -265,6 +270,7 @@ __attribute__((visibility("hidden")))
 - (void)_readSearchZeroKeywordCategorySuggestionResult;
 - (void)_readSearchZeroKeywordWithSearchResultsSuggestionResult;
 - (void)_readSiriSearchResult;
+- (void)_readTerritoryLookupResult;
 - (void)_readTransitScheduleLookupResult;
 - (void)_readVendorSpecificPlaceRefinementResult;
 - (void)_readWifiFingerprintResult;

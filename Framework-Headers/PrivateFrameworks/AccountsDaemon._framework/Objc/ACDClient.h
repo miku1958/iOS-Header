@@ -37,6 +37,7 @@
 - (void).cxx_destruct;
 - (id)_displayNameFromBundleInfoDictionaryForPID:(int)arg1;
 - (id)_displayNameFromLaunchServicesForPID:(int)arg1;
+- (id)_rawValueForEntitlement:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (BOOL)hasEntitlement:(id)arg1;

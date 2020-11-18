@@ -6,13 +6,17 @@
 
 #import <Preferences/PSListController.h>
 
+#import <Preferences/PSSystemPolicyForAppDelegate-Protocol.h>
+
 @class PSSystemPolicyForApp;
 
-@interface PSAppListController : PSListController
+@interface PSAppListController : PSListController <PSSystemPolicyForAppDelegate>
 {
     PSSystemPolicyForApp *_systemPolicy;
+    PSSystemPolicyForApp *_appPolicy;
 }
 
+@property (strong, nonatomic) PSSystemPolicyForApp *appPolicy; // @synthesize appPolicy=_appPolicy;
 @property (strong, nonatomic) PSSystemPolicyForApp *systemPolicy; // @synthesize systemPolicy=_systemPolicy;
 
 + (id)allowedPrivacyBundles;

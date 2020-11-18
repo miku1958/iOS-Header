@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable;
+@class NSMapTable, SVMediaPlaybackController;
 @protocol OS_dispatch_semaphore;
 
 @interface SVAudioSession : NSObject
@@ -14,9 +14,11 @@
     BOOL _audioSessionActive;
     NSObject<OS_dispatch_semaphore> *_semaphore;
     NSMapTable *_players;
+    SVMediaPlaybackController *_playbackController;
 }
 
 @property (nonatomic, getter=isAudioSessionActive) BOOL audioSessionActive; // @synthesize audioSessionActive=_audioSessionActive;
+@property (readonly, nonatomic) SVMediaPlaybackController *playbackController; // @synthesize playbackController=_playbackController;
 @property (readonly, nonatomic) NSMapTable *players; // @synthesize players=_players;
 @property (readonly, nonatomic) NSObject<OS_dispatch_semaphore> *semaphore; // @synthesize semaphore=_semaphore;
 
@@ -26,9 +28,10 @@
 - (void)addInterestForPlayer:(id)arg1 withMode:(int)arg2;
 - (BOOL)canDeactivateAudioSession;
 - (void)deactivateAudioSessionCategory;
-- (id)desiredAudioSessionCategory;
+- (id)desiredAudioSessionConfiguration;
 - (id)init;
 - (BOOL)needsToSetupAudioSessionCategory;
+- (void)registerPlaybackControlForPlayer:(id)arg1 withMode:(int)arg2;
 - (void)removeInterestForPlayer:(id)arg1;
 - (void)setupAudioSessionCategory;
 - (BOOL)shouldActivateAudioSession;

@@ -7093,23 +7093,24 @@ struct WebProcessProxy {
     struct RefPtr<WTF::RefCounter<WebKit::ForegroundWebProcessCounterType>::Count, WTF::DumbPtrTraits<WTF::RefCounter<WebKit::ForegroundWebProcessCounterType>::Count>> _field28;
     struct RefPtr<WTF::RefCounter<WebKit::BackgroundWebProcessCounterType>::Count, WTF::DumbPtrTraits<WTF::RefCounter<WebKit::BackgroundWebProcessCounterType>::Count>> _field29;
     BOOL _field30;
-    struct HashMap<WTF::String, unsigned long long, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<unsigned long long>> _field31;
-    struct Optional<WebCore::RegistrableDomain> _field32;
-    BOOL _field33;
-    int _field34;
-    struct Vector<WTF::CompletionHandler<void (bool)>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _field35;
-    struct RefCounter<WebKit::VisibleWebPageCounterType> _field36;
-    struct RefPtr<WebKit::WebsiteDataStore, WTF::DumbPtrTraits<WebKit::WebsiteDataStore>> _field37;
-    BOOL _field38;
-    struct unique_ptr<WebKit::UserMediaCaptureManagerProxy, std::__1::default_delete<WebKit::UserMediaCaptureManagerProxy>> _field39;
-    unsigned int _field40;
+    struct unique_ptr<WebCore::DeferrableOneShotTimer, std::__1::default_delete<WebCore::DeferrableOneShotTimer>> _field31;
+    struct HashMap<WTF::String, unsigned long long, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<unsigned long long>> _field32;
+    struct Optional<WebCore::RegistrableDomain> _field33;
+    BOOL _field34;
+    int _field35;
+    struct Vector<WTF::CompletionHandler<void (bool)>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _field36;
+    struct RefCounter<WebKit::VisibleWebPageCounterType> _field37;
+    struct RefPtr<WebKit::WebsiteDataStore, WTF::DumbPtrTraits<WebKit::WebsiteDataStore>> _field38;
+    BOOL _field39;
+    struct unique_ptr<WebKit::UserMediaCaptureManagerProxy, std::__1::default_delete<WebKit::UserMediaCaptureManagerProxy>> _field40;
     unsigned int _field41;
-    BOOL _field42;
+    unsigned int _field42;
     BOOL _field43;
     BOOL _field44;
-    struct Optional<WebKit::WebProcessProxy::UseLazyStop> _field45;
-    unsigned int _field46;
-    struct Optional<WebKit::WebProcessProxy::ServiceWorkerInformation> _field47;
+    BOOL _field45;
+    struct Optional<WebKit::WebProcessProxy::UseLazyStop> _field46;
+    unsigned int _field47;
+    struct Optional<WebKit::WebProcessProxy::ServiceWorkerInformation> _field48;
 };
 
 struct WebProtectionSpace;
@@ -7485,6 +7486,12 @@ struct unique_ptr<WebCore::DOMImplementation, std::__1::default_delete<WebCore::
 struct unique_ptr<WebCore::DOMTimerHoldingTank, std::__1::default_delete<WebCore::DOMTimerHoldingTank>> {
     struct __compressed_pair<WebCore::DOMTimerHoldingTank *, std::__1::default_delete<WebCore::DOMTimerHoldingTank>> {
         struct DOMTimerHoldingTank *_field1;
+    } _field1;
+};
+
+struct unique_ptr<WebCore::DeferrableOneShotTimer, std::__1::default_delete<WebCore::DeferrableOneShotTimer>> {
+    struct __compressed_pair<WebCore::DeferrableOneShotTimer *, std::__1::default_delete<WebCore::DeferrableOneShotTimer>> {
+        struct DeferrableOneShotTimer *_field1;
     } _field1;
 };
 

@@ -33,6 +33,7 @@
 - (void)_setUpSubcredentialProvisioningService;
 - (void)_trackOutstandingRequestWithMessageIdentifier:(id)arg1 completionHandler:(id)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (id)init;
+- (BOOL)isPairedDeviceConnected;
 - (void)registerProtobufActionsForService:(id)arg1;
 - (id)sendProtobuf:(id)arg1 responseExpected:(BOOL)arg2;
 - (id)sendProtobuf:(id)arg1 responseExpected:(BOOL)arg2 extraOptions:(id)arg3;

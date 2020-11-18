@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *thumbnailImageCache;
     MISSING_TYPE *publisherLogoImageCache;
-    MISSING_TYPE *traitCollection;
     MISSING_TYPE *rendererTool;
 }
 

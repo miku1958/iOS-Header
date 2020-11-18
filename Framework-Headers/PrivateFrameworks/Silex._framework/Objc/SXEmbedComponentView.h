@@ -12,11 +12,12 @@
 #import <Silex/WKNavigationDelegate-Protocol.h>
 #import <Silex/WKScriptMessageHandler-Protocol.h>
 #import <Silex/WKUIDelegate-Protocol.h>
+#import <Silex/_WKFullscreenDelegate-Protocol.h>
 
 @class NFMultiDelegate, NSMutableSet, NSString, SWCrashRetryThrottler, SXEmbedResource, SXRelatedWebViewCache, UIActivityIndicatorView, UILabel, WKNavigation, WKWebView, WKWebsiteDataStore;
 @protocol SWReachabilityProvider, SXComponentActionHandler, SXEmbedService, SXEmbedType, SXLayoutInvalidator;
 
-@interface SXEmbedComponentView : SXComponentView <WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler, UIGestureRecognizerDelegate, UIScrollViewDelegate, SXViewportChangeListener>
+@interface SXEmbedComponentView : SXComponentView <WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler, UIGestureRecognizerDelegate, UIScrollViewDelegate, SXViewportChangeListener, _WKFullscreenDelegate>
 {
     BOOL _failedLoading;
     BOOL _isCurrentlyLoadingEmbedData;
@@ -75,8 +76,8 @@
 
 - (void).cxx_destruct;
 - (id)HTMLByEnclosingHTML:(id)arg1 withHTML:(id)arg2;
-- (void)_webViewDidEnterFullscreen:(id)arg1;
-- (void)_webViewDidExitFullscreen:(id)arg1;
+- (void)_webViewDidEnterElementFullscreen:(id)arg1;
+- (void)_webViewDidExitElementFullscreen:(id)arg1;
 - (void)_webViewWebProcessDidCrash:(id)arg1;
 - (void)addScriptMessageHandlers;
 - (BOOL)allowHierarchyRemoval;

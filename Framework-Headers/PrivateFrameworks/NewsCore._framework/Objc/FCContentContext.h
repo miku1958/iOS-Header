@@ -10,14 +10,17 @@
 #import <NewsCore/FCCoreConfigurationObserving-Protocol.h>
 #import <NewsCore/FCNetworkReachabilityRequirementObserving-Protocol.h>
 
-@class FCArticleController, FCAssetManager, FCContentContextInternal, FCContextConfiguration, FCFlintResourceManager, FCNetworkBehaviorMonitor, FCTagController, NSString, NSURL;
-@protocol FCAssetKeyCacheType, FCAssetKeyManagerType, FCAssetKeyServiceType, FCBackgroundTaskable, FCCoreConfigurationManager, FCNetworkReachabilityRequirement, FCNewsAppConfigurationManager, FCPPTContext, FCWebArchiveSource;
+@class FCAVAssetDownloadManager, FCArticleController, FCAssetManager, FCContentContextInternal, FCContextConfiguration, FCFlintResourceManager, FCNetworkBehaviorMonitor, FCTagController, NSString, NSURL;
+@protocol FCAVAssetCacheType, FCAVAssetFactoryType, FCAVAssetKeyCacheType, FCAVAssetKeyManagerType, FCAVAssetKeyServiceType, FCAVAssetPrewarming, FCAVAssetResourceLoaderType, FCAssetKeyCacheType, FCAssetKeyManagerType, FCAssetKeyServiceType, FCBackgroundTaskable, FCCoreConfigurationManager, FCNetworkReachabilityRequirement, FCNewsAppConfigurationManager, FCPPTContext, FCWebArchiveSource;
 
 @interface FCContentContext : NSObject <FCNetworkReachabilityRequirementObserving, FCCoreConfigurationObserving, FCContentContext>
 {
     id<FCCoreConfigurationManager> _configurationManager;
     FCArticleController *_articleController;
     FCAssetManager *_assetManager;
+    id<FCAVAssetCacheType> _avAssetCache;
+    FCAVAssetDownloadManager *_avAssetDownloadManager;
+    id<FCAVAssetPrewarming> _avAssetPrewarmer;
     FCFlintResourceManager *_flintResourceManager;
     FCTagController *_tagController;
     FCNetworkBehaviorMonitor *_networkBehaviorMonitor;
@@ -33,6 +36,11 @@
     id<FCAssetKeyServiceType> _assetKeyService;
     id<FCAssetKeyCacheType> _assetKeyCache;
     id<FCAssetKeyManagerType> _assetKeyManager;
+    id<FCAVAssetFactoryType> _avAssetFactory;
+    id<FCAVAssetKeyServiceType> _avAssetKeyService;
+    id<FCAVAssetKeyCacheType> _avAssetKeyCache;
+    id<FCAVAssetKeyManagerType> _avAssetKeyManager;
+    id<FCAVAssetResourceLoaderType> _avAssetResourceLoader;
     id<FCNetworkReachabilityRequirement> _supportedCountryNetworkReachabilityRequirement;
 }
 
@@ -43,6 +51,14 @@
 @property (strong, nonatomic) id<FCAssetKeyManagerType> assetKeyManager; // @synthesize assetKeyManager=_assetKeyManager;
 @property (strong, nonatomic) id<FCAssetKeyServiceType> assetKeyService; // @synthesize assetKeyService=_assetKeyService;
 @property (readonly, nonatomic) FCAssetManager *assetManager; // @synthesize assetManager=_assetManager;
+@property (strong, nonatomic) id<FCAVAssetCacheType> avAssetCache; // @synthesize avAssetCache=_avAssetCache;
+@property (strong, nonatomic) FCAVAssetDownloadManager *avAssetDownloadManager; // @synthesize avAssetDownloadManager=_avAssetDownloadManager;
+@property (strong, nonatomic) id<FCAVAssetFactoryType> avAssetFactory; // @synthesize avAssetFactory=_avAssetFactory;
+@property (strong, nonatomic) id<FCAVAssetKeyCacheType> avAssetKeyCache; // @synthesize avAssetKeyCache=_avAssetKeyCache;
+@property (strong, nonatomic) id<FCAVAssetKeyManagerType> avAssetKeyManager; // @synthesize avAssetKeyManager=_avAssetKeyManager;
+@property (strong, nonatomic) id<FCAVAssetKeyServiceType> avAssetKeyService; // @synthesize avAssetKeyService=_avAssetKeyService;
+@property (readonly, nonatomic) id<FCAVAssetPrewarming> avAssetPrewarmer; // @synthesize avAssetPrewarmer=_avAssetPrewarmer;
+@property (strong, nonatomic) id<FCAVAssetResourceLoaderType> avAssetResourceLoader; // @synthesize avAssetResourceLoader=_avAssetResourceLoader;
 @property (readonly, weak, nonatomic) id<FCBackgroundTaskable> backgroundTaskable; // @synthesize backgroundTaskable=_backgroundTaskable;
 @property (readonly, nonatomic) id<FCCoreConfigurationManager> configurationManager; // @synthesize configurationManager=_configurationManager;
 @property (copy, nonatomic) NSString *contentDirectory; // @synthesize contentDirectory=_contentDirectory;

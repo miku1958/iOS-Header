@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)revokeControlApplicationWithBundleIdentifier:(id)arg1;
 - (void)updateApplicationWithBundleIdentifier:(id)arg1 withStatus:(BOOL)arg2;
 - (BOOL)validateBundleIdentifier:(id)arg1 withNotification:(id)arg2;
-- (BOOL)validateBundleIdentifierInstallDate:(id)arg1 control:(BOOL)arg2;
+- (BOOL)validateBundleIdentifierInstalled:(id)arg1 control:(BOOL)arg2;
 - (BOOL)validateControlApplicationBundleIdentifier:(id)arg1 withNotification:(id)arg2;
 
 @end

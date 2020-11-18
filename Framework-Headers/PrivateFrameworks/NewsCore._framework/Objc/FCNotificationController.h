@@ -44,6 +44,7 @@
 - (void)refreshNotificationsFromAppleNews;
 - (void)registerDeviceToken:(id)arg1;
 - (BOOL)registerNotificationsForTagID:(id)arg1 isPaid:(BOOL)arg2;
+- (void)setEndOfAudioTrackNotificationsEnabled:(BOOL)arg1;
 - (BOOL)setMarketingNotificationsEnabled:(BOOL)arg1 error:(id *)arg2;
 - (void)setNewIssueNotificationsEnabled:(BOOL)arg1;
 - (BOOL)unregisterNotificationsForTagID:(id)arg1;

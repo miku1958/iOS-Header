@@ -19,7 +19,11 @@
 @property (strong, nonatomic) NSArray *bbox; // @synthesize bbox=_bbox;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isBboxValid; // @synthesize isBboxValid=_isBboxValid;
-@property (strong, nonatomic) NSArray *regionIds; // @synthesize regionIds=_regionIds;
+@property (readonly, nonatomic) double maxLat;
+@property (readonly, nonatomic) double maxLon;
+@property (readonly, nonatomic) double minLat;
+@property (readonly, nonatomic) double minLon;
+@property (readonly, nonatomic) NSArray *regionIds; // @synthesize regionIds=_regionIds;
 
 - (void).cxx_destruct;
 - (BOOL)containsLocation:(id)arg1;

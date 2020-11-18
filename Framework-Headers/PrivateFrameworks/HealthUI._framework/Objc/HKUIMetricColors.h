@@ -40,6 +40,7 @@
 + (id)reproductiveHealthColors;
 + (id)respiratoryColors;
 + (id)sleepColors;
++ (id)symptomsColors;
 + (id)unknownCategoryClinicalColors;
 + (id)vitalsClinicalColors;
 + (id)vitalsColors;

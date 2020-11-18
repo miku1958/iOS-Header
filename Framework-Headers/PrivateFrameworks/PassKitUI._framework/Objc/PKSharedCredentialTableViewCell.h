@@ -20,6 +20,7 @@
 - (id)initWithGroup:(id)arg1 groupController:(id)arg2 reuseIdentifier:(id)arg3 delegate:(id)arg4;
 - (void)layoutSubviews;
 - (id)localizedGroupState;
+- (void)updateCellWithContact:(id)arg1;
 
 @end
 

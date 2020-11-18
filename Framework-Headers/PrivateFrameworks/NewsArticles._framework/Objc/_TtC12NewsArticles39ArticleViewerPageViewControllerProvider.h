@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *articleModule;
     MISSING_TYPE *replicaModule;
+    MISSING_TYPE *rssModule;
     MISSING_TYPE *interstitialAdModule;
 }
 

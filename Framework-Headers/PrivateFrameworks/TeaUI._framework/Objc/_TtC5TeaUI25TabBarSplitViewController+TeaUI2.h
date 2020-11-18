@@ -6,13 +6,14 @@
 
 #import <TeaUI/_TtC5TeaUI25TabBarSplitViewController.h>
 
-@class NSArray;
+#import <TeaUI/UISplitViewControllerDelegate-Protocol.h>
 
-@interface _TtC5TeaUI25TabBarSplitViewController (TeaUI2)
-
-@property (nonatomic, readonly) NSArray *keyCommands;
-
-- (void)toggleResponderPane;
-- (void)toggleSideBarVisibility;
+@interface _TtC5TeaUI25TabBarSplitViewController (TeaUI2) <UISplitViewControllerDelegate>
+- (BOOL)splitViewController:(id)arg1 collapseSecondaryViewController:(id)arg2 ontoPrimaryViewController:(id)arg3;
+- (id)splitViewController:(id)arg1 separateSecondaryViewControllerFromPrimaryViewController:(id)arg2;
+- (BOOL)splitViewController:(id)arg1 showDetailViewController:(id)arg2 sender:(id)arg3;
+- (BOOL)splitViewController:(id)arg1 showViewController:(id)arg2 sender:(id)arg3;
+- (void)splitViewController:(id)arg1 willChangeToDisplayMode:(long long)arg2;
+- (long long)targetDisplayModeForActionInSplitViewController:(id)arg1;
 @end
 

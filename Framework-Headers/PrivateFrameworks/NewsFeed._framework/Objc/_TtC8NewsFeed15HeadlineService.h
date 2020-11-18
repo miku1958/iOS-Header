@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *tagService;
     MISSING_TYPE *coreConfigurationManager;
-    MISSING_TYPE *contentContext;
+    MISSING_TYPE *cloudContext;
     MISSING_TYPE *paidAccessChecker;
 }
 

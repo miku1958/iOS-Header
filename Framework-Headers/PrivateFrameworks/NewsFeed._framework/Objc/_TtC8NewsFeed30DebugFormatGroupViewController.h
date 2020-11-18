@@ -12,11 +12,11 @@ __attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed30DebugFormatGroupViewController : UIViewController
 {
     MISSING_TYPE *columnOptions;
-    MISSING_TYPE *compilerResult;
-    MISSING_TYPE *result;
     MISSING_TYPE *layout;
+    MISSING_TYPE *result;
     MISSING_TYPE *tableView;
     MISSING_TYPE *sections;
+    MISSING_TYPE *editor;
 }
 
 - (void).cxx_destruct;

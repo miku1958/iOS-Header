@@ -122,6 +122,7 @@ __attribute__((visibility("hidden")))
 
 - (id)activeConnectionRegistry;
 - (int)addConnection:(id)arg1;
+- (void)addTelemetryForConnection:(id)arg1 dictionary:(id)arg2;
 - (void)checkiRATSuggestion;
 - (void)checkiRATSuggestionDefaultValue;
 - (void)checkpointPrimaryConnection:(id)arg1;

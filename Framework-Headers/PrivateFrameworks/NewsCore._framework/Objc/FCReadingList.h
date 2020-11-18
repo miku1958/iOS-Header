@@ -6,29 +6,31 @@
 
 #import <NewsCore/FCPrivateDataController.h>
 
+#import <NewsCore/FCOfflineArticleContributing-Protocol.h>
 #import <NewsCore/FCOperationThrottlerDelegate-Protocol.h>
-#import <NewsCore/FCReadingListContentControllerObserving-Protocol.h>
 
-@class FCCloudContext, FCMTWriterLock, FCReadingListContentController, NSMutableDictionary, NSString;
+@class FCCloudContext, FCMTWriterLock, FCObservable, NSMutableDictionary, NSString;
 @protocol FCOperationThrottler;
 
-@interface FCReadingList : FCPrivateDataController <FCReadingListContentControllerObserving, FCOperationThrottlerDelegate>
+@interface FCReadingList : FCPrivateDataController <FCOperationThrottlerDelegate, FCOfflineArticleContributing>
 {
+    FCObservable *_articleIDsToDownload;
+    long long _articleDownloadOptions;
     NSMutableDictionary *_entriesByArticleID;
-    FCReadingListContentController *_readingListContentController;
     FCCloudContext *_cloudContext;
     id<FCOperationThrottler> _articleIDsAvailableForOfflineReadingUpdateThrottler;
     FCMTWriterLock *_itemsLock;
 }
 
+@property (readonly, nonatomic) long long articleDownloadOptions; // @synthesize articleDownloadOptions=_articleDownloadOptions;
 @property (strong, nonatomic) id<FCOperationThrottler> articleIDsAvailableForOfflineReadingUpdateThrottler; // @synthesize articleIDsAvailableForOfflineReadingUpdateThrottler=_articleIDsAvailableForOfflineReadingUpdateThrottler;
+@property (readonly, nonatomic) FCObservable *articleIDsToDownload; // @synthesize articleIDsToDownload=_articleIDsToDownload;
 @property (strong, nonatomic) FCCloudContext *cloudContext; // @synthesize cloudContext=_cloudContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableDictionary *entriesByArticleID; // @synthesize entriesByArticleID=_entriesByArticleID;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) FCMTWriterLock *itemsLock; // @synthesize itemsLock=_itemsLock;
-@property (strong, nonatomic) FCReadingListContentController *readingListContentController; // @synthesize readingListContentController=_readingListContentController;
 @property (readonly) Class superclass;
 
 + (id)backingRecordIDs;
@@ -53,22 +55,19 @@
 - (void)addArticleToReadingList:(id)arg1 eventInitiationLevel:(long long)arg2 origin:(unsigned long long)arg3;
 - (void)addObserver:(id)arg1;
 - (id)allKnownRecordNamesWithinRecordZoneWithID:(id)arg1;
-- (id)allNonConsumedArticleIDsInReadingList;
-- (id)allNonConsumedArticleIDsInReadingListForOfflineReading;
+- (id)allNonConsumedArticleIDs;
+- (id)allNonConsumedArticleIDsIntersectingSet:(id)arg1;
 - (id)allSortedArticleIDsInReadingList;
 - (BOOL)canHelpRestoreZoneName:(id)arg1;
 - (unsigned long long)countOfAllArticlesSavedOutsideOfNewsSince:(id)arg1;
 - (id)dateArticleWasAdded:(id)arg1;
-- (void)enableDownloadingForOfflineReading;
 - (void)expressInterestInOfflineArticlesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
-- (BOOL)isArticleAvailableForOfflineReading:(id)arg1;
 - (BOOL)isArticleOnReadingList:(id)arg1;
 - (void)loadLocalCachesFromStore;
-- (void)notifyWhenFinishedDownloadingForOfflineReadingWithTimeout:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (void)operationThrottler:(id)arg1 performAsyncOperationWithCompletion:(CDUnknownBlockType)arg2;
-- (void)readingListContentControllerDidUpdateArticleAvailabilityInOfflineMode:(id)arg1;
+- (void)prepareToContributeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)recordsForRestoringZoneName:(id)arg1;
 - (void)removeArticleFromReadingList:(id)arg1;
 - (void)removeObserver:(id)arg1;

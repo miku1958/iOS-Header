@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI222ContentPrefetchManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *articlePrefetcher;
+    MISSING_TYPE *articleAudioPrewarmer;
 }
 
 @end

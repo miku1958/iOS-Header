@@ -38,6 +38,7 @@
 @property (readonly, nonatomic) NSArray *externalAnalyticsConfigurations;
 @property (readonly, nonatomic) long long feedContentExposureTestMaximumInterval;
 @property (readonly, nonatomic) NSString *feedNavigationConfigJSON;
+@property (readonly, nonatomic) BOOL forYouGroupShouldPromoteAccessibleHeadline;
 @property (readonly, nonatomic) FCIAdConfiguration *iAdConfig;
 @property (readonly, nonatomic) double interstitialAdLoadDelay;
 @property (readonly, nonatomic) BOOL isExpired;
@@ -49,6 +50,8 @@
 @property (readonly, nonatomic) long long maximumTrendingGroupSizeiPhone;
 @property (readonly, nonatomic) NSArray *mediaSharingBlacklistedChannelIDs;
 @property (readonly, nonatomic) long long newFavoriteNotificationAlertsFrequency;
+@property (readonly, nonatomic) double newsletterSubscriptionStatusCacheTimeout;
+@property (readonly, nonatomic) long long newsletterSubscriptionType;
 @property (readonly, nonatomic) long long notificationArticleCacheTimeout;
 @property (readonly, nonatomic) long long notificationArticleWithRapidUpdatesCacheTimeout;
 @property (readonly, nonatomic) NSArray *onboardingFeedIDs;
@@ -62,12 +65,17 @@
 @property (readonly, nonatomic) double prerollLoadingTimeout;
 @property (readonly, nonatomic) NTPBDiscoverMoreVideosInfo *shareDiscoverMoreVideosInfo;
 @property (readonly, nonatomic) long long stateRestorationAllowedTimeWindow;
+@property (readonly, nonatomic) long long subscriptionsGracePeriodForTokenVerificationSeconds;
+@property (readonly, nonatomic) long long subscriptionsPlacardGlobalMaximumPerDay;
+@property (readonly, nonatomic) long long subscriptionsPlacardPublisherFrequencyInSeconds;
 @property (readonly, nonatomic) BOOL terminateAppOnBackgroundAfterJoiningOrLeavingExperiment;
 @property (readonly, nonatomic) double tileProminenceScoreBalanceValue;
 @property (readonly, copy, nonatomic) NSArray *topStoriesPublishDates;
 @property (readonly, nonatomic) NSString *translationMapResourceID;
 @property (readonly, nonatomic) unsigned long long trendingStyle;
 @property (readonly, nonatomic) BOOL universalLinksEnabled;
+@property (readonly, nonatomic) NSString *userVectorModelResourceId;
+@property (readonly, nonatomic) NSString *userVectorWhitelistResourceId;
 @property (readonly, nonatomic) NSString *webEmbedContentBlockerOverrides;
 @property (readonly, nonatomic) NSString *webEmbedContentBlockers;
 @property (readonly, nonatomic) NSString *widgetConfigID;

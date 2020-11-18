@@ -20,7 +20,6 @@
 @property (readonly, nonatomic) NSData *backingTagRecordData;
 @property (readonly, nonatomic) NSArray *blockedStorefrontIDs;
 @property (readonly, nonatomic) long long contentProvider;
-@property (readonly, copy, nonatomic) NSString *coverArticleListID;
 @property (readonly, nonatomic) FCAssetHandle *coverImageAssetHandle;
 @property (readonly, nonatomic) FCAssetHandle *feedNavImageAssetHandle;
 @property (readonly, copy, nonatomic) FCColor *groupDarkStyleTitleColor;
@@ -35,9 +34,12 @@
 @property (readonly, nonatomic) BOOL isDeprecated;
 @property (readonly, nonatomic) BOOL isExplicitContent;
 @property (readonly, nonatomic) BOOL isHidden;
+@property (readonly, nonatomic) BOOL isInternal;
+@property (readonly, nonatomic) BOOL isLocal;
 @property (readonly, nonatomic) BOOL isNotificationEnabled;
 @property (readonly, nonatomic) BOOL isPublic;
 @property (readonly, nonatomic) BOOL isRealTimeTrackingEnabled;
+@property (readonly, nonatomic) BOOL isSandbox;
 @property (readonly, nonatomic) BOOL isSubscribable;
 @property (readonly, copy, nonatomic) NSString *language;
 @property (readonly, nonatomic) NSDate *loadDate;
@@ -67,6 +69,7 @@
 @property (readonly, copy, nonatomic) NSString *subtitle;
 @property (readonly, nonatomic) unsigned long long tagType;
 @property (readonly, copy, nonatomic) id<FCFeedTheming> theme;
+@property (readonly, nonatomic) unsigned long long userFacingTagType;
 @property (readonly, copy, nonatomic) NSString *versionKey;
 
 - (NSURL *)authorizationURL;

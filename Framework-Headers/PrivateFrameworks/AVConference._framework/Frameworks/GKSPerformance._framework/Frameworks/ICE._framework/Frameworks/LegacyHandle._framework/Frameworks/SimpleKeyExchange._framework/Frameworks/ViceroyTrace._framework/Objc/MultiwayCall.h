@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
     unsigned int _videoDegradedTotalCounter;
     double _videoDegradedTotalTime;
     double _videoDegradedStartTime;
+    double _videoDegradedMaxLength;
 }
 
 @property int adjustedDuration; // @synthesize adjustedDuration=_adjustedDuration;
@@ -60,6 +61,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSMutableDictionary *streams; // @synthesize streams=_streams;
 @property unsigned int timeToHearFirstRemoteAudioFrame; // @synthesize timeToHearFirstRemoteAudioFrame=_timeToHearFirstRemoteAudioFrame;
 @property unsigned int timeToSeeFirstRemoteVideoFrame; // @synthesize timeToSeeFirstRemoteVideoFrame=_timeToSeeFirstRemoteVideoFrame;
+@property double videoDegradedMaxLength; // @synthesize videoDegradedMaxLength=_videoDegradedMaxLength;
 @property double videoDegradedStartTime; // @synthesize videoDegradedStartTime=_videoDegradedStartTime;
 @property unsigned int videoDegradedTotalCounter; // @synthesize videoDegradedTotalCounter=_videoDegradedTotalCounter;
 @property double videoDegradedTotalTime; // @synthesize videoDegradedTotalTime=_videoDegradedTotalTime;

@@ -15,6 +15,9 @@
     MISSING_TYPE *notificationConfiguration;
     MISSING_TYPE *userInfo;
     MISSING_TYPE *bundleSubscriptionManager;
+    MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *configurationManager;
+    MISSING_TYPE *newsletterManager;
 }
 
 @end

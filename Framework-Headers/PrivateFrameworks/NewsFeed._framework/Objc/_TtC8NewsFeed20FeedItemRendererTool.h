@@ -11,8 +11,6 @@
 @interface _TtC8NewsFeed20FeedItemRendererTool : _TtCs12_SwiftObject
 {
     MISSING_TYPE *rendererEnvironment;
-    MISSING_TYPE *debugInspectViewLayoutViewFactory;
-    MISSING_TYPE *fontManager;
     MISSING_TYPE *debugEnabled;
     MISSING_TYPE *debugColors;
     MISSING_TYPE *shineImageFactory;

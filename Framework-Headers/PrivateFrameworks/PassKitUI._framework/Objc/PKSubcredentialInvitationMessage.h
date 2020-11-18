@@ -18,6 +18,7 @@
 @property (copy, nonatomic) PKAppletSubcredentialSharingInvitation *phoneInvitation;
 @property (nonatomic) unsigned long long status;
 @property (readonly, nonatomic) MSMessage *underlyingMessage; // @synthesize underlyingMessage=_underlyingMessage;
+@property (copy, nonatomic) NSString *uniqueIdentifier;
 @property (copy, nonatomic) PKAppletSubcredentialSharingInvitation *watchInvitation;
 
 - (void).cxx_destruct;

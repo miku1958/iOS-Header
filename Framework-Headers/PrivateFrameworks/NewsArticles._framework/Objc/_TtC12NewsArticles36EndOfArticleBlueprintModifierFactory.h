@@ -11,12 +11,9 @@
 @interface _TtC12NewsArticles36EndOfArticleBlueprintModifierFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *options;
-    MISSING_TYPE *bundleSubscriptionManager;
-    MISSING_TYPE *paidBundleConfigManager;
     MISSING_TYPE *feedContext;
     MISSING_TYPE *featureAvailability;
-    MISSING_TYPE *paidAccessChecker;
-    MISSING_TYPE *readingList;
+    MISSING_TYPE *sectionFactory;
 }
 
 @end

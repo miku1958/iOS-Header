@@ -9,7 +9,7 @@
 #import <SiriActivation/NSCopying-Protocol.h>
 #import <SiriActivation/NSSecureCoding-Protocol.h>
 
-@class AFBulletin, AFRequestInfo, AFSpeechRequestOptions, NSArray, NSDictionary, NSNumber, NSString, NSURL, SAGuidanceCheckForGuideUpdateContext, SASPronunciationContext;
+@class AFBulletin, AFRequestInfo, AFSpeechRequestOptions, NSArray, NSDictionary, NSNumber, NSString, NSURL, NSUUID, SAGuidanceCheckForGuideUpdateContext, SASPronunciationContext;
 
 @interface SASRequestOptions : NSObject <NSCopying, NSSecureCoding>
 {
@@ -43,6 +43,7 @@
     AFRequestInfo *_requestInfo;
     AFSpeechRequestOptions *_speechRequestOptions;
     NSString *_uiPresentationIdentifier;
+    NSUUID *_previousTurnIdentifier;
     NSArray *_contextAppInfosForSiriViewController;
     NSDictionary *_testingContext;
     unsigned long long _currentLockState;
@@ -70,6 +71,7 @@
 @property (readonly, nonatomic, getter=isMessagesDirectAction) BOOL messagesDirectAction;
 @property (copy, nonatomic) NSDictionary *messagesDirectActionContext; // @synthesize messagesDirectActionContext=_messagesDirectActionContext;
 @property (nonatomic) BOOL predictedRecordRouteIsZLL; // @synthesize predictedRecordRouteIsZLL=_predictedRecordRouteIsZLL;
+@property (strong, nonatomic) NSUUID *previousTurnIdentifier; // @synthesize previousTurnIdentifier=_previousTurnIdentifier;
 @property (strong, nonatomic) SASPronunciationContext *pronunciationContext; // @synthesize pronunciationContext=_pronunciationContext;
 @property (nonatomic, getter=isPronunciationRequest) BOOL pronunciationRequest; // @synthesize pronunciationRequest=_pronunciationRequest;
 @property (nonatomic) BOOL releaseAudioSessionOnRecordingCompletion; // @synthesize releaseAudioSessionOnRecordingCompletion=_releaseAudioSessionOnRecordingCompletion;

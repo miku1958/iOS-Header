@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AMSBag, AMSMediaTask, LSApplicationProxy, NSDictionary, NSError, NSMutableArray, NSString, NSURL, SFLaunchRequest;
+@class AMSBag, AMSMediaTask, LSApplicationProxy, NSArray, NSDictionary, NSError, NSMutableArray, NSString, NSURL, SFLaunchRequest;
 @protocol OS_dispatch_queue;
 
 @interface SFAppContent : NSObject
@@ -22,12 +22,12 @@
     AMSMediaTask *_amsTask;
     NSMutableArray *_infoFetchRequests;
     SFLaunchRequest *_launchRequest;
-    NSString *_adamID;
+    NSArray *_adamIDs;
     NSURL *_amsURLOverride;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
 }
 
-@property (strong, nonatomic) NSString *adamID; // @synthesize adamID=_adamID;
+@property (strong, nonatomic) NSArray *adamIDs; // @synthesize adamIDs=_adamIDs;
 @property (strong, nonatomic) NSURL *amsURLOverride; // @synthesize amsURLOverride=_amsURLOverride;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (readonly, nonatomic) BOOL installed;
@@ -47,7 +47,7 @@
 - (id)_launchOptions;
 - (void)_launchWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchNameAndIconWithSize:(struct CGSize)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithAdamID:(id)arg1;
+- (id)initWithAdamIDs:(id)arg1;
 - (void)launchWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

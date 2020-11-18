@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface TSNotificationService : NSObject <UNUserNotificationCenterDelegate>
 {
-    MISSING_TYPE *kOptions;
+    MISSING_TYPE *options;
 }
 
 - (void)fetchNotificationSettingsWith:(CDUnknownBlockType)arg1;

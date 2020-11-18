@@ -9,11 +9,10 @@
 #import <PassKitUI/PKSubcredentialInvitationFlowControllerProtocol-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_queue, PKSubcredentialProvisioningFlowControllerDelegate;
+@protocol PKSubcredentialProvisioningFlowControllerDelegate;
 
 @interface PKSubcredentialInvitationFlowController : NSObject <PKSubcredentialInvitationFlowControllerProtocol>
 {
-    NSObject<OS_dispatch_queue> *_queue;
     id<PKSubcredentialProvisioningFlowControllerDelegate> _delegate;
 }
 
@@ -23,10 +22,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (void)invitationFromRemoteDeviceWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)canAttemptLocalDeviceProvisioningWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)canAttemptRemoteDeviceProvisioningWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (BOOL)isPassPersonalizedOrPersonalizing:(id)arg1;
++ (id)localDevicePassMatchingPairedTerminalIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (id)alertForOperation:(id)arg1 withError:(id)arg2 retryHandler:(CDUnknownBlockType)arg3 cancelationHandler:(CDUnknownBlockType)arg4;
-- (id)initWithDelegate:(id)arg1 queue:(id)arg2;
+- (id)initWithDelegate:(id)arg1;
 - (id)localDeviceProvisioningViewModelForOperation:(id)arg1;
 - (id)localizedIssuerNameForProvisioningOperation:(id)arg1;
 - (void)nextViewControllerFromProvisioningOperation:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

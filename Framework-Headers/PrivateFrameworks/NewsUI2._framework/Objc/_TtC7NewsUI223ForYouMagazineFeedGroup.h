@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class MISSING_TYPE, NSArray, NSSet, NSString;
+@protocol FCTagProviding;
 
 __attribute__((visibility("hidden")))
 @interface _TtC7NewsUI223ForYouMagazineFeedGroup : NSObject
@@ -18,7 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic, readonly) NSArray *assetHandles;
-@property (nonatomic, readonly) NSString *backingTagID;
+@property (nonatomic, readonly) id<FCTagProviding> backingTag;
 @property (nonatomic, readonly) NSSet *equivalentTopicIDs;
 @property (nonatomic, readonly) NSArray *headlines;
 @property (nonatomic, readonly) NSString *identifier;

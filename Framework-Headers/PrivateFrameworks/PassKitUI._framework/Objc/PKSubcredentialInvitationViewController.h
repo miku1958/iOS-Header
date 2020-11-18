@@ -21,7 +21,7 @@
     id<PKSubcredentialProvisioningViewModelProtocol> _remoteProvisioningViewModel;
     NSString *_contactName;
     PKPeerPaymentContactResolver *_contactResolver;
-    BOOL _shouldAttemptRemoteDeviceProvisioning;
+    BOOL _shouldSurfaceRemoteDeviceProvisioningErrors;
     PKSubcredentialInvitationFlowControllerContext *_provisioningContext;
     id<PKSubcredentialInvitationFlowControllerProtocol> _flowController;
 }

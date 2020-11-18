@@ -11,7 +11,7 @@
 @interface _TtC7NewsUI230FollowingDislikedLayoutBuilder : _TtCs12_SwiftObject
 {
     MISSING_TYPE *titleViewLayoutAttributesFactory;
-    MISSING_TYPE *followingRowViewLayoutAttributesFactory;
+    MISSING_TYPE *tagViewLayoutAttributesFactory;
 }
 
 @end

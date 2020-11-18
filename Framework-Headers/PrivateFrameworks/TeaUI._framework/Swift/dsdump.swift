@@ -27,6 +27,13 @@
 	// modify coroutine
 	// method
  }
+ protocol TeaUI.SwipeActionable // 4 requirements
+ {
+	// getter
+	// getter
+	// getter
+	// getter
+ }
  protocol TeaUI.BlueprintLayoutPipelineSubProcessorType // 1 requirements
  {
 	// method
@@ -124,6 +131,10 @@
  protocol TeaUI.SelectionBehaviorProviding // 1 requirements
  {
 	// getter
+ }
+ protocol TeaUI.SwipeActionDelegate // 1 requirements
+ {
+	// method
  }
  protocol TeaUI.PageBlueprintManagerType // 2 requirements
  {
@@ -340,8 +351,9 @@
 	// modify coroutine
 	// method
  }
- protocol TeaUI.BlueprintImpressionManagerType // 8 requirements
+ protocol TeaUI.BlueprintImpressionManagerType // 9 requirements
  {
+	// method
 	// method
 	// method
 	// method
@@ -432,6 +444,10 @@
 	// method
 	// method
  }
+ protocol TeaUI.ContextMenuPreviewable // 1 requirements
+ {
+	// method
+ }
  protocol TeaUI.KeyCommandTraverseProviderDelegate // 4 requirements
  {
 	// method
@@ -451,8 +467,11 @@
 	// method
 	// method
  }
- protocol TeaUI.AlertPresenter // 4 requirements
+ protocol TeaUI.AlertPresenter // 7 requirements
  {
+	// method
+	// method
+	// method
 	// method
 	// method
 	// method
@@ -465,6 +484,9 @@
  protocol TeaUI.NavigationItemStylable // 1 requirements
  {
 	// getter
+ }
+ protocol TeaUI.ContextMenuCancellable // 0 requirements
+ {
  }
  protocol TeaUI.Refreshable // 1 requirements
  {
@@ -603,9 +625,10 @@
  {
 	// method
  }
- protocol TeaUI.BlueprintViewDragDelegateType // 2 requirements
+ protocol TeaUI.BlueprintViewDragDelegateType // 3 requirements
  {
 	// class associated type access function
+	// method
 	// method
  }
  protocol TeaUI.BlueprintDiffType // 12 requirements
@@ -670,6 +693,10 @@
 	// method
 	// method
  }
+ protocol TeaUI.BlueprintViewUpdateDeferring // 1 requirements
+ {
+	// method
+ }
  protocol TeaUI.ObservingBarCompressible // 2 requirements
  {
 	// class base protocol
@@ -732,6 +759,17 @@
  {
 	// method
  }
+ protocol TeaUI.BlueprintViewDragReorderDelegateType // 2 requirements
+ {
+	// method
+	// method
+ }
+ protocol TeaUI.BlueprintViewDynamicReorderingLayoutType // 3 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+ }
  protocol TeaUI.AccessibilityAnnouncerType // 1 requirements
  {
 	// method
@@ -744,6 +782,15 @@
  {
 	// class base protocol
 	// getter
+ }
+ protocol TeaUI.SwipeActionDataSource // 6 requirements
+ {
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
  }
  protocol TeaUI.PageViewControllerProviderType // 3 requirements
  {
@@ -794,12 +841,13 @@
 	// class associated type access function
 	// method
  }
- protocol TeaUI.BlueprintViewControllerDelegateType // 21 requirements
+ protocol TeaUI.BlueprintViewControllerDelegateType // 22 requirements
  {
 	// class associated conformance access function
 	// class associated conformance access function
 	// class associated type access function
 	// class associated type access function
+	// method
 	// method
 	// method
 	// method
@@ -889,10 +937,16 @@
 	// getter
 	// method
  }
- protocol TeaUI.PageViewControllerDelegateType // 6 requirements
+ protocol TeaUI.Droppable // 1 requirements
+ {
+	// method
+ }
+ protocol TeaUI.PageViewControllerDelegateType // 8 requirements
  {
 	// class associated conformance access function
 	// class associated type access function
+	// method
+	// method
 	// method
 	// method
 	// method
@@ -942,8 +996,9 @@
 	// getter
 	// getter
  }
- protocol TeaUI.ModalHostViewControllerFactoryType // 1 requirements
+ protocol TeaUI.ModalHostViewControllerFactoryType // 2 requirements
  {
+	// method
 	// method
  }
  protocol TeaUI.ShortcutItemHandlerType // 2 requirements
@@ -988,9 +1043,11 @@
 	// method
 	// method
  }
- protocol TeaUI.ContextMenuProviding // 1 requirements
+ protocol TeaUI.ContextMenuProviding // 3 requirements
  {
 	// getter
+	// method
+	// method
  }
  protocol TeaUI.BlueprintManualHeaderImpressionDelegate // 2 requirements
  {
@@ -1071,6 +1128,11 @@
 	// method
 	// method
  }
+ protocol TeaUI.SwipeActionAppearance // 2 requirements
+ {
+	// getter
+	// getter
+ }
  protocol TeaUI.BlueprintModifierType // 6 requirements
  {
 	// class associated conformance access function
@@ -1091,9 +1153,10 @@
 	// method
 	// method
  }
- protocol TeaUI.BlueprintLayoutSectionDecorationItemType // 1 requirements
+ protocol TeaUI.BlueprintLayoutSectionDecorationItemType // 2 requirements
  {
 	// class getter
+	// method
  }
  protocol TeaUI.LayerProviderType // 4 requirements
  {
@@ -1129,11 +1192,21 @@
  protocol TeaUI.LayerType // 0 requirements
  {
  }
- protocol TeaUI.BlueprintViewDataSourceType // 4 requirements
+ protocol TeaUI.BlueprintViewDataSourceType // 7 requirements
  {
 	// class base protocol
 	// class associated type access function
+	// getter
+	// setter
+	// modify coroutine
 	// method
+	// method
+ }
+ protocol TeaUI.EmptyStateStylerType // 4 requirements
+ {
+	// getter
+	// getter
+	// getter
 	// method
  }
  protocol TeaUI.FullscreenTransitionCoverable // 1 requirements
@@ -1144,9 +1217,10 @@
  {
 	// getter
  }
- protocol TeaUI.ModalHostable // 5 requirements
+ protocol TeaUI.ModalHostable // 6 requirements
  {
 	// getter
+	// method
 	// method
 	// method
 	// method
@@ -1168,8 +1242,10 @@
 	// getter
 	// method
  }
- protocol TeaUI.Alertable // 9 requirements
+ protocol TeaUI.Alertable // 11 requirements
  {
+	// getter
+	// getter
 	// getter
 	// getter
 	// getter
@@ -1195,11 +1271,14 @@
 	// method
 	// method
  }
- protocol TeaUI.BlueprintViewDelegateType // 16 requirements
+ protocol TeaUI.BlueprintViewDelegateType // 19 requirements
  {
 	// class base protocol
 	// class associated type access function
 	// class associated type access function
+	// getter
+	// setter
+	// modify coroutine
 	// getter
 	// setter
 	// modify coroutine
@@ -1279,6 +1358,7 @@
 
  enum __C.State { }
 
+ class __C.CFArray {
  struct __C.OpenURLOptionsKey {
 
 	// Properties
@@ -1289,8 +1369,6 @@
 
  enum __C.UIStatusBarStyle { }
 
- enum __C.RenderingMode { }
-
  enum __C.UIUserInterfaceLayoutDirection { }
 
  struct __C.UIContentSizeCategory {
@@ -1298,6 +1376,8 @@
 	// Properties
 	var _rawValue : NSString
  }
+
+ enum __C.RenderingMode { }
 
  struct __C.CACornerMask {
 
@@ -1309,22 +1389,22 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : 9€
+	var top : y.
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : 9€
+	var left : y.
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : 9€
+	var bottom : y.
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : 9€
+	var right : y.
  }
 
  struct __C.CGPoint {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : 9€
+	var x : y.
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : 9€
+	var y : y.
  }
 
  struct __C.Identifier {
@@ -1343,8 +1423,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let rawValue : UInt
  }
-
- enum __C.CGBlendMode { }
 
  struct __C.UIRectCorner {
 
@@ -1366,13 +1444,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class __C.CGImage {
+ enum __C.CGBlendMode { }
+
  struct __C.CGSize {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : 9€
+	var width : y.
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : 9€
+	var height : y.
  }
 
  struct __C.NSStringDrawingOptions {
@@ -1406,8 +1486,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : iÚ
+	let rawValue : G
  }
+
+ enum __C.EditingStyle { }
 
  enum __C.Orientation { }
 
@@ -1429,7 +1511,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : 9€
+	let rawValue : y.
+ }
+
+ struct __C.CGAffineTransform {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var a : y.
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var b : y.
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var c : y.
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var d : y.
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var tx : y.
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var ty : y.
  }
 
  struct __C.AnimationOptions {
@@ -1446,9 +1545,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaUI.StatusBarView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x103a0  @objc StatusBarView.initWithFrame: <stripped>
-	0x10450  @objc StatusBarView.initWithCoder: <stripped>
-	0x105a0  @objc StatusBarView.layoutSubviews <stripped>
+	0x11760  @objc StatusBarView.initWithFrame: <stripped>
+	0x11810  @objc StatusBarView.initWithCoder: <stripped>
+	0x11960  @objc StatusBarView.layoutSubviews <stripped>
  }
 
  class TeaUI.BlurStatusBarView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1457,10 +1556,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let barView : BarView
 
 	// ObjC -> Swift bridged methods
-	0x10730  @objc BlurStatusBarView.initWithFrame: <stripped>
-	0x107e0  @objc BlurStatusBarView.initWithCoder: <stripped>
-	0x10910  @objc BlurStatusBarView.layoutSubviews <stripped>
-	0x109c0  @objc BlurStatusBarView..cxx_destruct <stripped>
+	0x11af0  @objc BlurStatusBarView.initWithFrame: <stripped>
+	0x11ba0  @objc BlurStatusBarView.initWithCoder: <stripped>
+	0x11cd0  @objc BlurStatusBarView.layoutSubviews <stripped>
+	0x11d80  @objc BlurStatusBarView..cxx_destruct <stripped>
  }
 
  class TeaUI.ShortcutItemHandlerManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1496,23 +1595,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lruCache : ù⁄ // +0x8 (0x8)
+	var lruCache : Ÿ- // +0x8 (0x8)
 	let accessor : TSMemoryCacheAccessorType // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x15640  @objc MemoryImageCache.initWithMaxSize:accessor: <stripped>
-	0x15870  @objc MemoryImageCache.imageForKey: <stripped>
-	0x15c30  @objc MemoryImageCache.cacheImage:forKey:expires: <stripped>
-	0x15f60  @objc MemoryImageCache.init <stripped>
-	0x15ee0  @objc MemoryImageCache..cxx_destruct <stripped>
+	0x17290  @objc MemoryImageCache.initWithMaxSize:accessor: <stripped>
+	0x174c0  @objc MemoryImageCache.imageForKey: <stripped>
+	0x17880  @objc MemoryImageCache.cacheImage:forKey:expires: <stripped>
+	0x17bb0  @objc MemoryImageCache.init <stripped>
+	0x17b30  @objc MemoryImageCache..cxx_destruct <stripped>
 
 	// Swift methods
-	0x155b0  class func MemoryImageCache.__allocating_init(maxSize:accessor:) // init 
+	0x17200  class func MemoryImageCache.__allocating_init(maxSize:accessor:) // init 
  }
 
  class TeaUI.SettingsAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x16dd0  @objc SettingsAssembly.init <stripped>
+	0x18af0  @objc SettingsAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -1524,20 +1623,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var controller : weak UIViewController?
 	let provider : KeyCommandProviderType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var selector : =‘
+	var selector : q'
 
 	// Swift methods
-	0x17df0  class func KeyCommandRegistry.__allocating_init(provider:) // init 
-	0x17f70  func <stripped> // method 
-	0x17fc0  func <stripped> // method 
-	0x18260  func <stripped> // method 
+	0x19b10  class func KeyCommandRegistry.__allocating_init(provider:) // init 
+	0x19c90  func <stripped> // method 
+	0x19ce0  func <stripped> // method 
+	0x19f80  func <stripped> // method 
  }
 
  class TeaUI.KeyCommandHandlerRegistry : KeyCommandRegistry { }
 
  class TeaUI.ContainerEnviromentProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x1a6c0  class func ContainerEnviromentProvider.__allocating_init() // init 
+	0x1c3e0  class func ContainerEnviromentProvider.__allocating_init() // init 
  }
 
  class TeaUI.WindowToolbar2Item {
@@ -1550,16 +1649,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var visibleRectAccessor : CGRect // +0x28 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x1bf70  @objc BlueprintManualImpressionUpdateProvider.setVisibileViewAccessor:visibleRectAccessor: <stripped>
-	0x1c1f0  @objc BlueprintManualImpressionUpdateProvider.updateImpressionsForView:withVisibleRect: <stripped>
-	0x1c310  @objc BlueprintManualImpressionUpdateProvider.endImpressions <stripped>
-	0x1c4a0  @objc BlueprintManualImpressionUpdateProvider.init <stripped>
-	0x1c370  @objc BlueprintManualImpressionUpdateProvider..cxx_destruct <stripped>
+	0x1dcf0  @objc BlueprintManualImpressionUpdateProvider.setVisibileViewAccessor:visibleRectAccessor: <stripped>
+	0x1df70  @objc BlueprintManualImpressionUpdateProvider.updateImpressionsForView:withVisibleRect: <stripped>
+	0x1e090  @objc BlueprintManualImpressionUpdateProvider.endImpressions <stripped>
+	0x1e220  @objc BlueprintManualImpressionUpdateProvider.init <stripped>
+	0x1e0f0  @objc BlueprintManualImpressionUpdateProvider..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1bed0  func <stripped> // method 
-	0x1c0d0  func <stripped> // method 
-	0x1c280  func <stripped> // method 
+	0x1dc50  func <stripped> // method 
+	0x1de50  func <stripped> // method 
+	0x1e000  func <stripped> // method 
  }
 
  enum TeaUI.ContextMenuOptions {
@@ -1611,7 +1710,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var provider : KeyCommandRegistrationProviderType // +0x20 (0x10)
 
 	// Swift methods
-	0x1f700  class func KeyCommandUnownedProvider.__allocating_init(provider:) // init 
+	0x21470  class func KeyCommandUnownedProvider.__allocating_init(provider:) // init 
  }
 
  class TeaUI.BlueprintViewContextMenuInteractor {
@@ -1622,13 +1721,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var triggeringViewController : weak UIViewController? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x206b0  @objc PreviewViewController.initWithCoder: <stripped>
-	0x20800  @objc PreviewViewController.viewDidLoad <stripped>
-	0x20830  @objc PreviewViewController.viewDidDisappear: <stripped>
-	0x208d0  @objc PreviewViewController.viewWillAppear: <stripped>
-	0x20c60  @objc PreviewViewController.viewWillLayoutSubviews <stripped>
-	0x20cf0  @objc PreviewViewController.initWithNibName:bundle: <stripped>
-	0x20cc0  @objc PreviewViewController..cxx_destruct <stripped>
+	0x22420  @objc PreviewViewController.initWithCoder: <stripped>
+	0x22570  @objc PreviewViewController.viewDidLoad <stripped>
+	0x225a0  @objc PreviewViewController.viewDidDisappear: <stripped>
+	0x22640  @objc PreviewViewController.viewWillAppear: <stripped>
+	0x229d0  @objc PreviewViewController.viewWillLayoutSubviews <stripped>
+	0x22a60  @objc PreviewViewController.initWithNibName:bundle: <stripped>
+	0x22a30  @objc PreviewViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1638,6 +1737,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let asset : Asset // +0x0
 	let position : Position // +0x10
+	let overscrollPinPosition : DecorationOverscrollPinPosition // +0x21
+	let identifier : String // +0x28
  }
 
  enum TeaUI.Asset {
@@ -1645,8 +1746,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case anchor : ImageProvider
 	case repeat : ImageProvider
-	case anchorImage : Anchor
-	case repeatImage : Direction
  }
 
  enum TeaUI.ImageProvider {
@@ -1655,6 +1754,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case image : UIImage
 	case assetHandleProvider : (_:)
 	case dynamicProvider : ImageProvider
+	case requestProvider : (cache: TSImageCacheType, provider: (_:))
  }
 
  enum TeaUI.Direction {
@@ -1694,19 +1794,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let patternView : UIView // +0x8 (0x8)
-	var model : PatternSectionDecorationItem // +0x10 (0x21)
-	var token : String // +0x38 (0x10)
+	var model : PatternSectionDecorationItem // +0x10 (0x38)
+	var token : String // +0x48 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x22620  @objc PatternSectionDecorationView.initWithFrame: <stripped>
-	0x22650  @objc PatternSectionDecorationView.initWithCoder: <stripped>
-	0x227c0  @objc PatternSectionDecorationView.layoutSubviews <stripped>
-	0x22870  @objc PatternSectionDecorationView.willMoveToSuperview: <stripped>
-	0x229c0  @objc PatternSectionDecorationView.didMoveToSuperview <stripped>
-	0x22e60  @objc PatternSectionDecorationView.applyLayoutAttributes: <stripped>
-	0x231d0  @objc PatternSectionDecorationView.traitCollectionDidChange: <stripped>
-	0x23250  @objc PatternSectionDecorationView.gutterViewBoundsDidChange <stripped>
-	0x23d80  @objc PatternSectionDecorationView..cxx_destruct <stripped>
+	0x24560  @objc PatternSectionDecorationView.initWithFrame: <stripped>
+	0x24590  @objc PatternSectionDecorationView.initWithCoder: <stripped>
+	0x247a0  @objc PatternSectionDecorationView.layoutSubviews <stripped>
+	0x24850  @objc PatternSectionDecorationView.willMoveToSuperview: <stripped>
+	0x249a0  @objc PatternSectionDecorationView.didMoveToSuperview <stripped>
+	0x24e70  @objc PatternSectionDecorationView.applyLayoutAttributes: <stripped>
+	0x24fa0  @objc PatternSectionDecorationView.traitCollectionDidChange: <stripped>
+	0x250f0  @objc PatternSectionDecorationView.gutterViewBoundsDidChange <stripped>
+	0x260a0  @objc PatternSectionDecorationView..cxx_destruct <stripped>
  }
 
  class TeaUI.PluginManager : NSObject /usr/lib/libobjc.A.dylib {
@@ -1717,24 +1817,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var pluginViewControllers : Plugin // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x25f10  @objc PluginManager.pluginContainerController <stripped>
-	0x25f90  @objc PluginManager.setPluginContainerController: <stripped>
-	0x26410  @objc PluginManager.addPlugin: <stripped>
-	0x26690  @objc PluginManager.removePlugin: <stripped>
-	0x26920  @objc PluginManager.removeAll <stripped>
-	0x26a40  @objc PluginManager.containsPluginForViewController: <stripped>
-	0x26bf0  @objc PluginManager.stashViewController: <stripped>
-	0x271b0  @objc PluginManager.init <stripped>
-	0x27090  @objc PluginManager..cxx_destruct <stripped>
+	0x28750  @objc PluginManager.pluginContainerController <stripped>
+	0x287d0  @objc PluginManager.setPluginContainerController: <stripped>
+	0x28ac0  @objc PluginManager.pluginForIdentifier: <stripped>
+	0x28ea0  @objc PluginManager.addPlugin: <stripped>
+	0x29120  @objc PluginManager.removePlugin: <stripped>
+	0x293b0  @objc PluginManager.removeAll <stripped>
+	0x294d0  @objc PluginManager.containsPluginForViewController: <stripped>
+	0x29680  @objc PluginManager.stashViewController: <stripped>
+	0x29c40  @objc PluginManager.init <stripped>
+	0x29b20  @objc PluginManager..cxx_destruct <stripped>
  }
 
  class TeaUI.ManualBlueprintLayoutCollectionSectionSupplementarySolver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	let layoutDirection : BlueprintLayoutDirection // +0x10 (0x1)
-	let layoutOptions : BlueprintLayoutOptions // +0x18 (0xc0)
+	let layoutOptions : BlueprintLayoutOptions // +0x18 (0xd0)
 
 	// Swift methods
+ }
+
+ struct TeaUI.BlueprintAnimation {
+
+	// Properties
+	let animatorType : BlueprintAnimatorType // +0x0
+	let context : Any? // +0x10
  }
 
  class TeaUI.ScrollTracker : NSObject /usr/lib/libobjc.A.dylib {
@@ -1743,8 +1851,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var callbacks : Callback // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2a4e0  @objc ScrollTracker.init <stripped>
-	0x2a430  @objc ScrollTracker..cxx_destruct <stripped>
+	0x2d3e0  @objc ScrollTracker.init <stripped>
+	0x2d330  @objc ScrollTracker..cxx_destruct <stripped>
  }
 
  enum TeaUI.Result {
@@ -1763,10 +1871,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaUI.ForwardingTouchToolbar : UIToolbar /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x2b610  @objc ForwardingTouchToolbar.hitTest:withEvent: <stripped>
-	0x2b930  @objc ForwardingTouchToolbar.pointInside:withEvent: <stripped>
-	0x2bae0  @objc ForwardingTouchToolbar.initWithFrame: <stripped>
-	0x2bbd0  @objc ForwardingTouchToolbar.initWithCoder: <stripped>
+	0x2e510  @objc ForwardingTouchToolbar.hitTest:withEvent: <stripped>
+	0x2e830  @objc ForwardingTouchToolbar.pointInside:withEvent: <stripped>
+	0x2e9e0  @objc ForwardingTouchToolbar.initWithFrame: <stripped>
+	0x2ead0  @objc ForwardingTouchToolbar.initWithCoder: <stripped>
  }
 
  class TeaUI.DebugCollector {
@@ -1779,16 +1887,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let viewController : UIViewController // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2c0d0  @objc PluginModel.identifier <stripped>
-	0x2c150  @objc PluginModel.revision <stripped>
-	0x2c190  @objc PluginModel.size <stripped>
-	0x2c1d0  @objc PluginModel.viewController <stripped>
-	0x2c330  @objc PluginModel.hash <stripped>
-	0x2c560  @objc PluginModel.init <stripped>
-	0x2c4d0  @objc PluginModel..cxx_destruct <stripped>
+	0x2efd0  @objc PluginModel.identifier <stripped>
+	0x2f050  @objc PluginModel.revision <stripped>
+	0x2f090  @objc PluginModel.size <stripped>
+	0x2f0d0  @objc PluginModel.viewController <stripped>
+	0x2f230  @objc PluginModel.hash <stripped>
+	0x2f460  @objc PluginModel.init <stripped>
+	0x2f3d0  @objc PluginModel..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2c210  func <stripped> // getter 
+	0x2f110  func <stripped> // getter 
  }
 
  struct TeaUI.SizeLayoutAttributes: BlueprintLayoutSizeAttributesType {
@@ -1829,11 +1937,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var onChange : PageSheetPresentationChange // +0x20 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x2d990  @objc PageSheetPresentationObserver.presentationTransitionDidEndWithNotification: <stripped>
-	0x2db80  @objc PageSheetPresentationObserver.dismissalTransitionDidEndWithNotification: <stripped>
+	0x30890  @objc PageSheetPresentationObserver.presentationTransitionDidEndWithNotification: <stripped>
+	0x30a80  @objc PageSheetPresentationObserver.dismissalTransitionDidEndWithNotification: <stripped>
 
 	// Swift methods
-	0x2d760  class func PageSheetPresentationObserver.__allocating_init(viewController:) // init 
+	0x30660  class func PageSheetPresentationObserver.__allocating_init(viewController:) // init 
  }
 
  class TeaUI.PageBlueprintProvider {
@@ -1844,36 +1952,36 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var currentView : UIView? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2e290  @objc SwappableView.initWithCoder: <stripped>
-	0x2e820  @objc SwappableView.initWithFrame: <stripped>
-	0x2e730  @objc SwappableView..cxx_destruct <stripped>
+	0x311b0  @objc SwappableView.initWithCoder: <stripped>
+	0x31740  @objc SwappableView.initWithFrame: <stripped>
+	0x31650  @objc SwappableView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2e310  class func SwappableView.__allocating_init(defaultView:) // init 
+	0x31230  class func SwappableView.__allocating_init(defaultView:) // init 
  }
 
  class TeaUI.PromiseViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let promise : Ω– // +0x8 (0x8)
+	let promise : k# // +0x8 (0x8)
 	var contentViewController : UIViewController? // +0x10 (0x8)
 	let coverViewManager : CoverViewManager // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigationItemStyle : iŒ // +0x20 (0x8)
+	let navigationItemStyle : ! // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x30ac0  @objc PromiseViewController.childViewControllerForHomeIndicatorAutoHidden <stripped>
-	0x2eb80  @objc PromiseViewController.initWithCoder: <stripped>
-	0x2f970  @objc PromiseViewController.viewDidLoad <stripped>
-	0x2f9f0  @objc PromiseViewController.traitCollectionDidChange: <stripped>
-	0x2fa80  @objc PromiseViewController.childViewControllerForStatusBarStyle <stripped>
-	0x30ad0  @objc PromiseViewController.childViewControllerForStatusBarHidden <stripped>
-	0x2fc00  @objc PromiseViewController.initWithNibName:bundle: <stripped>
-	0x2fb10  @objc PromiseViewController..cxx_destruct <stripped>
+	0x33ca0  @objc PromiseViewController.childViewControllerForHomeIndicatorAutoHidden <stripped>
+	0x31aa0  @objc PromiseViewController.initWithCoder: <stripped>
+	0x32980  @objc PromiseViewController.viewDidLoad <stripped>
+	0x32a00  @objc PromiseViewController.traitCollectionDidChange: <stripped>
+	0x32a90  @objc PromiseViewController.childViewControllerForStatusBarStyle <stripped>
+	0x33cb0  @objc PromiseViewController.childViewControllerForStatusBarHidden <stripped>
+	0x32c10  @objc PromiseViewController.initWithNibName:bundle: <stripped>
+	0x32b20  @objc PromiseViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2ea90  class func PromiseViewController.__allocating_init(_:) // init 
+	0x319b0  class func PromiseViewController.__allocating_init(_:) // init 
  }
 
  enum TeaUI.Errors {
@@ -1881,6 +1989,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case alert : Alertable
 	case alertPresenter : AlertPresenter
+	case externalPresentation : ()
 	case failedToCreateContent  
 	case unknown  
  }
@@ -1892,6 +2001,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case static  
 	case dynamic  
+ }
+
+ enum TeaUI.BlueprintDropAction {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case move : Ø
+	case cancel  
+	case copy  
+	case forbidden  
  }
 
  struct TeaUI.UserActivityHandlerPattern {
@@ -1933,8 +2052,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let runOptions : BlueprintPipelineRunOptions // +0x50 (0x2)
 
 	// Swift methods
-	0x34f10  func <stripped> // method 
-	0x35ba0  func <stripped> // method 
+	0x38920  func <stripped> // method 
+	0x395b0  func <stripped> // method 
  }
 
  enum TeaUI.Signpost {
@@ -1977,9 +2096,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case dimContent : 9…
+	case dimContent : ©
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case scale : +…
+	case scale : õ
 	case custom : SelectionStyleType
 	case keyboard : SelectionBehavior
 	case none  
@@ -2002,9 +2121,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let onButtonTap : Action // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3a160  @objc SectionFooterView.initWithFrame: <stripped>
-	0x3a190  @objc SectionFooterView.initWithCoder: <stripped>
-	0x3a1e0  @objc SectionFooterView..cxx_destruct <stripped>
+	0x3db70  @objc SectionFooterView.initWithFrame: <stripped>
+	0x3dba0  @objc SectionFooterView.initWithCoder: <stripped>
+	0x3dbf0  @objc SectionFooterView..cxx_destruct <stripped>
  }
 
  class TeaUI.BridgedGutterViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2013,24 +2132,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let gutterViewController : GutterViewController // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3aa20  @objc BridgedGutterViewController.initWithChildViewController:childScrollViewProducer:gutterBreakpoints: <stripped>
-	0x3ab50  @objc BridgedGutterViewController.initWithCoder: <stripped>
-	0x3aba0  @objc BridgedGutterViewController.viewDidLoad <stripped>
-	0x3ac60  @objc BridgedGutterViewController.viewWillLayoutSubviews <stripped>
-	0x3ad60  @objc BridgedGutterViewController.navigationItem <stripped>
-	0x3b2b0  @objc BridgedGutterViewController.childViewControllerForStatusBarHidden <stripped>
-	0x3ad90  @objc BridgedGutterViewController.childViewControllerForStatusBarStyle <stripped>
-	0x3b2c0  @objc BridgedGutterViewController.childViewControllerForHomeIndicatorAutoHidden <stripped>
-	0x3aea0  @objc BridgedGutterViewController.initWithNibName:bundle: <stripped>
-	0x3ade0  @objc BridgedGutterViewController..cxx_destruct <stripped>
+	0x3e430  @objc BridgedGutterViewController.initWithChildViewController:childScrollViewProducer:gutterBreakpoints: <stripped>
+	0x3e560  @objc BridgedGutterViewController.initWithCoder: <stripped>
+	0x3e5b0  @objc BridgedGutterViewController.viewDidLoad <stripped>
+	0x3e670  @objc BridgedGutterViewController.viewWillLayoutSubviews <stripped>
+	0x3e770  @objc BridgedGutterViewController.navigationItem <stripped>
+	0x3ecc0  @objc BridgedGutterViewController.childViewControllerForStatusBarHidden <stripped>
+	0x3e7a0  @objc BridgedGutterViewController.childViewControllerForStatusBarStyle <stripped>
+	0x3ecd0  @objc BridgedGutterViewController.childViewControllerForHomeIndicatorAutoHidden <stripped>
+	0x3e8b0  @objc BridgedGutterViewController.initWithNibName:bundle: <stripped>
+	0x3e7f0  @objc BridgedGutterViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3a960  class func BridgedGutterViewController.__allocating_init(childViewController:childScrollViewProducer:gutterBreakpoints:) // init 
+	0x3e370  class func BridgedGutterViewController.__allocating_init(childViewController:childScrollViewProducer:gutterBreakpoints:) // init 
+ }
+
+ enum TeaUI.SwipeActionPresentation {
+
+	// Properties
+	case scaleUp  
  }
 
  class TeaUI.CopyLinkCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x3bbc0  class func CopyLinkCommandHandler.__allocating_init() // init 
+	0x3f850  class func CopyLinkCommandHandler.__allocating_init() // init 
  }
 
  class TeaUI.ContextMenuGroup : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2042,8 +2167,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let items : ContextMenuGroupable // +0x30 (0x8)
 
 	// Swift methods
-	0x3bdf0  class func ContextMenuGroup.__allocating_init(title:image:style:items:) // init 
-	0x3c1c0  class func ContextMenuGroup.__allocating_init(title:image:style:items:) // init 
+	0x3fa80  class func ContextMenuGroup.__allocating_init(title:image:style:items:) // init 
  }
 
  class TeaUI.BouncingButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2052,17 +2176,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let onTap : Action // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3d640  @objc BouncingButton.initWithFrame: <stripped>
-	0x3d6c0  @objc BouncingButton.initWithCoder: <stripped>
-	0x3d6e0  @objc BouncingButton.touchesBegan:withEvent: <stripped>
-	0x3d700  @objc BouncingButton.touchesEnded:withEvent: <stripped>
-	0x3d720  @objc BouncingButton.touchesCancelled:withEvent: <stripped>
-	0x3dd90  @objc BouncingButton..cxx_destruct <stripped>
+	0x404f0  @objc BouncingButton.initWithFrame: <stripped>
+	0x40570  @objc BouncingButton.initWithCoder: <stripped>
+	0x40590  @objc BouncingButton.touchesBegan:withEvent: <stripped>
+	0x405b0  @objc BouncingButton.touchesEnded:withEvent: <stripped>
+	0x405d0  @objc BouncingButton.touchesCancelled:withEvent: <stripped>
+	0x40c40  @objc BouncingButton..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3d830  func <stripped> // method 
-	0x3da40  func <stripped> // method 
-	0x3dd20  func <stripped> // method 
+	0x406e0  func <stripped> // method 
+	0x408f0  func <stripped> // method 
+	0x40bd0  func <stripped> // method 
  }
 
  class TeaUI.TransitionContainerViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2077,14 +2201,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let transition : Transition // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3e260  @objc TransitionContainerViewController.initWithRootViewController:identifier: <stripped>
-	0x3e390  @objc TransitionContainerViewController.initWithCoder: <stripped>
-	0x3e3b0  @objc TransitionContainerViewController.description <stripped>
-	0x3e680  @objc TransitionContainerViewController.initWithNibName:bundle: <stripped>
-	0x3e570  @objc TransitionContainerViewController..cxx_destruct <stripped>
+	0x41110  @objc TransitionContainerViewController.initWithRootViewController:identifier: <stripped>
+	0x41240  @objc TransitionContainerViewController.initWithCoder: <stripped>
+	0x41260  @objc TransitionContainerViewController.description <stripped>
+	0x41530  @objc TransitionContainerViewController.initWithNibName:bundle: <stripped>
+	0x41420  @objc TransitionContainerViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3e2d0  class func TransitionContainerViewController.__allocating_init(rootViewController:identifier:transition:) // init 
+	0x41180  class func TransitionContainerViewController.__allocating_init(rootViewController:identifier:transition:) // init 
  }
 
  class TeaUI.BlueprintTableViewDragDelegate {
@@ -2093,7 +2217,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case failed : ›Â
+	case failed : ﬂ9
+	case none  
+	case changes  
+ }
+
+ enum TeaUI.BlueprintPipelinePromiseResult {
+
+	// Properties
 	case none  
 	case changes  
  }
@@ -2102,10 +2233,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let observableBlueprintLayoutCollection : %∆ // +0x10 (0x8)
+	let observableBlueprintLayoutCollection : Ö // +0x10 (0x8)
 
 	// Swift methods
-	0x43910  class func BlueprintLayoutCollectionProvider.__allocating_init() // init 
+	0x46b50  class func BlueprintLayoutCollectionProvider.__allocating_init() // init 
  }
 
  class TeaUI.BridgedCommandCenter : NSObject /usr/lib/libobjc.A.dylib {
@@ -2114,23 +2245,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let commandCenter : CommandCenter // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x445f0  @objc BridgedCommandCenter.executeCommand: <stripped>
-	0x447e0  @objc BridgedCommandCenter.canExecuteCommand: <stripped>
-	0x44e40  @objc BridgedCommandCenter.addContextProvider:forCommand:completion: <stripped>
-	0x453e0  @objc BridgedCommandCenter.removeContextProvider: <stripped>
-	0x45720  @objc BridgedCommandCenter.removeContextProvider:forCommand: <stripped>
-	0x45970  @objc BridgedCommandCenter.stateForCommand: <stripped>
-	0x45a60  @objc BridgedCommandCenter.init <stripped>
-	0x459f0  @objc BridgedCommandCenter..cxx_destruct <stripped>
+	0x47860  @objc BridgedCommandCenter.executeCommand: <stripped>
+	0x47a50  @objc BridgedCommandCenter.canExecuteCommand: <stripped>
+	0x480b0  @objc BridgedCommandCenter.addContextProvider:forCommand:completion: <stripped>
+	0x48650  @objc BridgedCommandCenter.removeContextProvider: <stripped>
+	0x48990  @objc BridgedCommandCenter.removeContextProvider:forCommand: <stripped>
+	0x48be0  @objc BridgedCommandCenter.stateForCommand: <stripped>
+	0x48cd0  @objc BridgedCommandCenter.init <stripped>
+	0x48c60  @objc BridgedCommandCenter..cxx_destruct <stripped>
 
 	// Swift methods
-	0x43e10  class func BridgedCommandCenter.__allocating_init(commandCenter:) // init 
-	0x440a0  func <stripped> // method 
-	0x44610  func <stripped> // method 
-	0x44830  func <stripped> // method 
-	0x44f20  func <stripped> // method 
-	0x45450  func <stripped> // method 
-	0x45780  func <stripped> // method 
+	0x47080  class func BridgedCommandCenter.__allocating_init(commandCenter:) // init 
+	0x47310  func <stripped> // method 
+	0x47880  func <stripped> // method 
+	0x47aa0  func <stripped> // method 
+	0x48190  func <stripped> // method 
+	0x486c0  func <stripped> // method 
+	0x489f0  func <stripped> // method 
  }
 
  struct TeaUI.PageBlueprintPrewarmerOptions {
@@ -2171,7 +2302,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Kƒ // +0x10 (0x28)
+	let resolver : ´ // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var layout :  empty-list  // +0x38 (0x8)
 
@@ -2184,16 +2315,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : NavigationControllerStyler // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x481b0  @objc NavigationController.pushViewController:animated: <stripped>
-	0x48240  @objc NavigationController.popViewControllerAnimated: <stripped>
-	0x48440  @objc NavigationController.popToViewController:animated: <stripped>
-	0x48650  @objc NavigationController.popToRootViewControllerAnimated: <stripped>
-	0x486c0  @objc NavigationController.accessibilityPerformEscape <stripped>
-	0x48910  @objc NavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
-	0x48a70  @objc NavigationController.initWithRootViewController: <stripped>
-	0x48bf0  @objc NavigationController.initWithNibName:bundle: <stripped>
-	0x48dc0  @objc NavigationController.initWithCoder: <stripped>
-	0x48800  @objc NavigationController..cxx_destruct <stripped>
+	0x4b400  @objc NavigationController.initWithRootViewController:navigationBarClass: <stripped>
+	0x4b570  @objc NavigationController.initWithRootViewController: <stripped>
+	0x4b680  @objc NavigationController.initWithCoder: <stripped>
+	0x4b800  @objc NavigationController.pushViewController:animated: <stripped>
+	0x4b890  @objc NavigationController.popViewControllerAnimated: <stripped>
+	0x4ba90  @objc NavigationController.popToViewController:animated: <stripped>
+	0x4bca0  @objc NavigationController.popToRootViewControllerAnimated: <stripped>
+	0x4bd10  @objc NavigationController.accessibilityPerformEscape <stripped>
+	0x4bf00  @objc NavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
+	0x4bfd0  @objc NavigationController.initWithNibName:bundle: <stripped>
+	0x4be50  @objc NavigationController..cxx_destruct <stripped>
  }
 
  class TeaUI.NavigationControllerStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2204,7 +2336,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cornerRadius : 9€ // +0x10 (0x8)
+	var cornerRadius : y. // +0x10 (0x8)
 	var maskedCorners : CACornerMask // +0x18 (0x8)
 	var identifier : String? // +0x20 (0x10)
 	let context : Context // +0x30 (0x1)
@@ -2214,17 +2346,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var shineOptions : ShineOptions // +0x50 (0x48)
 
 	// ObjC -> Swift bridged methods
-	0x4b440  @objc ShineView.initWithFrame: <stripped>
-	0x4b4c0  @objc ShineView.initWithCoder: <stripped>
-	0x4b5b0  @objc ShineView..cxx_destruct <stripped>
+	0x4e900  @objc ShineView.initWithFrame: <stripped>
+	0x4e980  @objc ShineView.initWithCoder: <stripped>
+	0x4ea70  @objc ShineView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x4a700  func <stripped> // getter 
-	0x4a730  func <stripped> // setter 
-	0x4a7f0  func <stripped> // modifyCoroutine 
-	0x4a9b0  func <stripped> // getter 
-	0x4a9e0  func <stripped> // setter 
-	0x4aa50  func <stripped> // modifyCoroutine 
+	0x4dbc0  func <stripped> // getter 
+	0x4dbf0  func <stripped> // setter 
+	0x4dcb0  func <stripped> // modifyCoroutine 
+	0x4de70  func <stripped> // getter 
+	0x4dea0  func <stripped> // setter 
+	0x4df10  func <stripped> // modifyCoroutine 
  }
 
  class TeaUI.SegmentedControl {
@@ -2234,11 +2366,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let identifier : String // +0x0
 	let sizer : ShineSizer // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rotateRadians : 9€ // +0x20
+	let rotateRadians : y. // +0x20
 	let transform : ShineTransform // +0x28
 	let blends : ShineBlend // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scale : 9€ // +0x40
+	let scale : y. // +0x40
  }
 
  class TeaUI.ErrorView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2253,13 +2385,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let keyboardObserver : KeyboardObserver // +0x70 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x51cc0  @objc ErrorView.initWithCoder: <stripped>
-	0x52510  @objc ErrorView.layoutSubviews <stripped>
-	0x526c0  @objc ErrorView.initWithFrame: <stripped>
-	0x52570  @objc ErrorView..cxx_destruct <stripped>
+	0x55180  @objc ErrorView.initWithCoder: <stripped>
+	0x559d0  @objc ErrorView.layoutSubviews <stripped>
+	0x55b80  @objc ErrorView.initWithFrame: <stripped>
+	0x55a30  @objc ErrorView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x51ba0  class func ErrorView.__allocating_init(model:styler:) // init 
+	0x55060  class func ErrorView.__allocating_init(model:styler:) // init 
  }
 
  struct TeaUI.BlueprintSection {
@@ -2267,7 +2399,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var descriptor : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var items : È¡
+	var items : I
+ }
+
+ enum TeaUI.URLHandlerRoute {
+
+	// Properties
+	case openURL  
+	case userActivity  
+	case sceneConnect  
  }
 
  struct TeaUI.UserActivityHandlerMatch {
@@ -2281,7 +2421,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case padding : 9€
+	case padding : y.
  }
 
  class TeaUI.StackedBlueprintLayoutCollectionSectionSolver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2289,9 +2429,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let supplementarySolver : BlueprintLayoutCollectionSectionSupplementarySolverType // +0x10 (0x28)
 	let layoutDirection : BlueprintLayoutDirection // +0x38 (0x1)
-	let layoutOptions : BlueprintLayoutOptions // +0x40 (0xc0)
-	let fillStyle : FillStyle // +0x100 (0x1)
-	let options : StackedOption // +0x108 (0x8)
+	let layoutOptions : BlueprintLayoutOptions // +0x40 (0xd0)
+	let fillStyle : FillStyle // +0x110 (0x1)
+	let options : StackedOption // +0x118 (0x8)
 
 	// Swift methods
  }
@@ -2323,6 +2463,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaUI.ViewControllerCollectionViewCell {
  class TeaUI.CommandBarButtonItem {
+ enum TeaUI.EmptyStatePosition {
+
+	// Properties
+	case center  
+	case topThird  
+	case auto  
+	case inCard  
+ }
+
  class TeaUI.CardContainerController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
@@ -2332,50 +2481,50 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let rootViewController : UIViewController // +0x70 (0x8)
 	var dimmingColor : UIColor // +0x78 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dimmingAlpha : 9€ // +0x80 (0x8)
+	var dimmingAlpha : y. // +0x80 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cardItemStack : o¡ // +0x0 (0x0)
+	var cardItemStack : ≥ // +0x0 (0x0)
 	let dimmingView : CardDimmingView // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventManager : ˚æ // +0x0 (0x8)
+	let eventManager : ? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5dd20  @objc CardContainerController.childViewControllerForStatusBarStyle <stripped>
-	0x6d2f0  @objc CardContainerController.childViewControllerForStatusBarHidden <stripped>
-	0x5e150  @objc CardContainerController.initWithCoder: <stripped>
-	0x5fdd0  @objc CardContainerController.initWithNibName:bundle: <stripped>
-	0x5fc90  @objc CardContainerController..cxx_destruct <stripped>
+	0x61b50  @objc CardContainerController.childViewControllerForStatusBarStyle <stripped>
+	0x71120  @objc CardContainerController.childViewControllerForStatusBarHidden <stripped>
+	0x61f80  @objc CardContainerController.initWithCoder: <stripped>
+	0x63c00  @objc CardContainerController.initWithNibName:bundle: <stripped>
+	0x63ac0  @objc CardContainerController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x5c240  func <stripped> // getter 
-	0x5c280  func <stripped> // setter 
-	0x5c300  func <stripped> // modifyCoroutine 
-	0x5c470  func <stripped> // getter 
-	0x5c490  func <stripped> // setter 
-	0x5c4e0  func <stripped> // modifyCoroutine 
-	0x5cb40  func <stripped> // getter 
-	0x5cbd0  func <stripped> // setter 
-	0x5cca0  func <stripped> // modifyCoroutine 
-	0x5ce10  func <stripped> // getter 
-	0x5d090  func <stripped> // getter 
-	0x5d140  func <stripped> // getter 
-	0x5d230  func <stripped> // getter 
-	0x5d5a0  func <stripped> // getter 
-	0x5d5f0  func <stripped> // setter 
-	0x5d610  func <stripped> // modifyCoroutine 
-	0x5d760  func <stripped> // getter 
-	0x5d790  func <stripped> // setter 
-	0x5d8d0  func <stripped> // modifyCoroutine 
-	0x5db40  func <stripped> // method 
-	0x5de10  class func CardContainerController.__allocating_init(rootViewController:) // init 
-	0x5e170  func <stripped> // method 
-	0x5e200  func <stripped> // method 
-	0x5e290  func <stripped> // method 
-	0x5f380  func <stripped> // method 
-	0x5f8b0  func <stripped> // method 
-	0x5f940  func <stripped> // method 
-	0x5fb30  func <stripped> // method 
-	0x5fbc0  func <stripped> // method 
+	0x60070  func <stripped> // getter 
+	0x600b0  func <stripped> // setter 
+	0x60130  func <stripped> // modifyCoroutine 
+	0x602a0  func <stripped> // getter 
+	0x602c0  func <stripped> // setter 
+	0x60310  func <stripped> // modifyCoroutine 
+	0x60970  func <stripped> // getter 
+	0x60a00  func <stripped> // setter 
+	0x60ad0  func <stripped> // modifyCoroutine 
+	0x60c40  func <stripped> // getter 
+	0x60ec0  func <stripped> // getter 
+	0x60f70  func <stripped> // getter 
+	0x61060  func <stripped> // getter 
+	0x613d0  func <stripped> // getter 
+	0x61420  func <stripped> // setter 
+	0x61440  func <stripped> // modifyCoroutine 
+	0x61590  func <stripped> // getter 
+	0x615c0  func <stripped> // setter 
+	0x61700  func <stripped> // modifyCoroutine 
+	0x61970  func <stripped> // method 
+	0x61c40  class func CardContainerController.__allocating_init(rootViewController:) // init 
+	0x61fa0  func <stripped> // method 
+	0x62030  func <stripped> // method 
+	0x620c0  func <stripped> // method 
+	0x631b0  func <stripped> // method 
+	0x636e0  func <stripped> // method 
+	0x63770  func <stripped> // method 
+	0x63960  func <stripped> // method 
+	0x639f0  func <stripped> // method 
  }
 
  class TeaUI.CardItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2414,7 +2563,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let kind : CollectionViewSupplementaryKind
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let indexPath : ´∫
+	let indexPath : Á
 	let index : Int
  }
 
@@ -2428,14 +2577,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let mainLRU : MemoryImageCache
 
 	// ObjC -> Swift bridged methods
-	0x6e370  @objc ImageCache.initWithUnderlyingCache:processor:downloader: <stripped>
-	0x6e460  @objc ImageCache.dealloc <stripped>
-	0x6e510  @objc ImageCache.didReceiveMemoryWarning: <stripped>
-	0x6e610  @objc ImageCache.init <stripped>
-	0x6e4b0  @objc ImageCache..cxx_destruct <stripped>
+	0x721a0  @objc ImageCache.initWithUnderlyingCache:processor:downloader: <stripped>
+	0x72290  @objc ImageCache.dealloc <stripped>
+	0x72340  @objc ImageCache.didReceiveMemoryWarning: <stripped>
+	0x72440  @objc ImageCache.init <stripped>
+	0x722e0  @objc ImageCache..cxx_destruct <stripped>
 
 	// Swift methods
-	0x6e200  class func ImageCache.__allocating_init(underlyingCache:processor:downloader:) // init 
+	0x72030  class func ImageCache.__allocating_init(underlyingCache:processor:downloader:) // init 
  }
 
  enum TeaUI.ImageCacheError { }
@@ -2446,7 +2595,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let request : TSProcessedImageRequestType
 	var image : UIImage?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var error : á”
+	var error : #'
 	let downloader : TSImageDownloaderType
 	let processor : TSImageProcessorType
 	let underlyingCache : TSSharedImageCacheType
@@ -2455,9 +2604,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var canceled : Bool
 
 	// ObjC -> Swift bridged methods
-	0x6ff80  @objc ImageCacheOperation.main <stripped>
-	0x70070  @objc ImageCacheOperation.init <stripped>
-	0x6ffe0  @objc ImageCacheOperation..cxx_destruct <stripped>
+	0x73ee0  @objc ImageCacheOperation.main <stripped>
+	0x73fd0  @objc ImageCacheOperation.init <stripped>
+	0x73f40  @objc ImageCacheOperation..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2469,7 +2618,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let trigger : Trigger // +0x38 (0x11)
 
 	// Swift methods
-	0x70f50  class func BlueprintInfiniteScrollBuilder.__allocating_init(infiniteScrollProvider:trigger:) // init 
+	0x74f50  class func BlueprintInfiniteScrollBuilder.__allocating_init(infiniteScrollProvider:trigger:) // init 
  }
 
  enum TeaUI.Trigger {
@@ -2486,8 +2635,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let optionsBlock : Options // +0x10 (0x10)
 
 	// Swift methods
-	0x74700  class func ViewTransitionThroughColorAnimator.__allocating_init(optionsBlock:) // init 
-	0x748e0  func <stripped> // method 
+	0x78730  class func ViewTransitionThroughColorAnimator.__allocating_init(optionsBlock:) // init 
+	0x78910  func <stripped> // method 
  }
 
  struct TeaUI.Options {
@@ -2506,7 +2655,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : KeyCommandScrollProviderDelegate // +0x28 (0x10)
 
 	// Swift methods
-	0x75790  class func KeyCommandScrollProvider.__allocating_init(scrollView:) // init 
+	0x797c0  class func KeyCommandScrollProvider.__allocating_init(scrollView:) // init 
  }
 
  class TeaUI.ConfigurableSingleton : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2517,7 +2666,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let alpha : 9€ // +0x0
+	let alpha : y. // +0x0
 	let hideOnSelect : Bool // +0x8
  }
 
@@ -2526,39 +2675,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var extendedDelegate : TabBarSplitViewControllerDelegate // +0x8 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventManager : çπ // +0x18 (0x8)
-	var presentationContextCache : TabBarSplitViewPresentationContextCache // +0x20 (0x8)
-	var fullscreenTransitionCoverManager : FullscreenTransitionCoverManager // +0x28 (0x8)
-	var appearanceViewControllers : [UIViewController] // +0x30 (0x8)
+	let eventManager : Ø // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var restoreStateCache : áª // +0x38 (0x8)
-	let options : Options // +0x40 (0x8)
-	var hasPerformedInitialLayout : Bool // +0x48 (0x1)
-	var splitViewFocus : TabBarSplitViewFocus // +0x50 (0x8)
+	var presentationContextCache :  // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var stagedModalContextCache :  // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var modalContextCache : ô // +0x0 (0x0)
+	var fullscreenTransitionCoverManager : FullscreenTransitionCoverManager // +0x0 (0x8)
+	var appearanceViewControllers : [UIViewController] // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var restoreStateCache : ç // +0x0 (0x8)
+	let options : Options // +0x0 (0x8)
+	var hasPerformedInitialLayout : Bool // +0x0 (0x1)
+	var splitViewFocus : TabBarSplitViewFocus // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x79a90  @objc TabBarSplitViewController.initWithCoder: <stripped>
-	0x79bb0  @objc TabBarSplitViewController.loadView <stripped>
-	0x79be0  @objc TabBarSplitViewController.childViewControllerForStatusBarStyle <stripped>
-	0x79e20  @objc TabBarSplitViewController.childViewControllerForStatusBarHidden <stripped>
-	0x86ef0  @objc TabBarSplitViewController.childViewControllerForHomeIndicatorAutoHidden <stripped>
-	0x79e60  @objc TabBarSplitViewController.viewControllers <stripped>
-	0x79f10  @objc TabBarSplitViewController.setViewControllers: <stripped>
-	0x7b840  @objc TabBarSplitViewController.traitCollectionDidChange: <stripped>
-	0x7b890  @objc TabBarSplitViewController.viewDidLoad <stripped>
-	0x7b8c0  @objc TabBarSplitViewController.viewWillAppear: <stripped>
-	0x7bb00  @objc TabBarSplitViewController.viewDidAppear: <stripped>
-	0x7bb40  @objc TabBarSplitViewController.viewDidLayoutSubviews <stripped>
-	0x7bbb0  @objc TabBarSplitViewController.viewWillTransitionToSize:withTransitionCoordinator: <stripped>
-	0x7bc60  @objc TabBarSplitViewController.didReceiveMemoryWarning <stripped>
-	0x7be40  @objc TabBarSplitViewController.initWithNibName:bundle: <stripped>
-	0x7bd30  @objc TabBarSplitViewController..cxx_destruct <stripped>
+	0x7d9c0  @objc TabBarSplitViewController.initWithCoder: <stripped>
+	0x7db80  @objc TabBarSplitViewController.initWithNibName:bundle: <stripped>
+	0x7da10  @objc TabBarSplitViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x796a0  func <stripped> // getter 
-	0x796e0  func <stripped> // setter 
-	0x79760  func <stripped> // modifyCoroutine 
-	0x79850  class func TabBarSplitViewController.__allocating_init(tabBarController:options:) // init 
+	0x7d5d0  func <stripped> // getter 
+	0x7d610  func <stripped> // setter 
+	0x7d690  func <stripped> // modifyCoroutine 
+	0x7d780  class func TabBarSplitViewController.__allocating_init(tabBarController:options:) // init 
  }
 
  struct TeaUI.Options {
@@ -2580,8 +2721,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var layouts : WindowToolbar2Layout // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x87010  @objc WindowToolbar2Manager.init <stripped>
-	0x870a0  @objc WindowToolbar2Manager..cxx_destruct <stripped>
+	0x8bb60  @objc WindowToolbar2Manager.init <stripped>
+	0x8bbf0  @objc WindowToolbar2Manager..cxx_destruct <stripped>
  }
 
  enum TeaUI.BlueprintLayoutCollectionPinTrait {
@@ -2589,7 +2730,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case edge : Edge
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case fixed : 9€
+	case fixed : y.
 	case section  
 	case none  
  }
@@ -2605,9 +2746,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deltaX : 9€ // +0x0
+	let deltaX : y. // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deltaY : 9€ // +0x8
+	let deltaY : y. // +0x8
  }
 
  class TeaUI.ObjectReuseManager {
@@ -2616,7 +2757,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rangeSet : ˚¥
+	var rangeSet : 	
 	var markers : Marker
 	let layoutDirection : BlueprintLayoutDirection
  }
@@ -2639,7 +2780,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case maxWidth : 9€
+	case maxWidth : y.
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	case breakpoints :  empty-list 
 	case none  
@@ -2654,11 +2795,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let contentView : UIView // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x8b620  @objc CardViewTitleView.initWithFrame: <stripped>
-	0x8b6a0  @objc CardViewTitleView.initWithCoder: <stripped>
-	0x8c030  @objc CardViewTitleView.layoutSubviews <stripped>
-	0x8c100  @objc CardViewTitleView.hitTest:withEvent: <stripped>
-	0x8c210  @objc CardViewTitleView..cxx_destruct <stripped>
+	0x90030  @objc CardViewTitleView.initWithFrame: <stripped>
+	0x900b0  @objc CardViewTitleView.initWithCoder: <stripped>
+	0x90a40  @objc CardViewTitleView.layoutSubviews <stripped>
+	0x90b10  @objc CardViewTitleView.hitTest:withEvent: <stripped>
+	0x90c20  @objc CardViewTitleView..cxx_destruct <stripped>
  }
 
  class TeaUI.BlueprintGutterViewManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2670,14 +2811,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var viewController : weak UIViewController? // +0x28 (0x8)
 
 	// Swift methods
-	0x8c5e0  class func BlueprintGutterViewManager.__allocating_init() // init 
+	0x90f90  class func BlueprintGutterViewManager.__allocating_init() // init 
  }
 
  struct TeaUI.URLHandlerMatch {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : I≥
+	let url : W
 	let pattern : URLHandlerPattern
 	let values : Values
  }
@@ -2699,15 +2840,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var shineImage : ShineImage // +0x58 (0x8)
 	var shineOffset : CGPoint // +0x60 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var shineScale : 9€ // +0x70 (0x8)
+	var shineScale : y. // +0x70 (0x8)
 	var shineImageLayer : NonAnimatingLayer // +0x78 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x8e8a0  @objc ShineImageLayer.init <stripped>
-	0x8ebb0  @objc ShineImageLayer.initWithLayer: <stripped>
-	0x8ec00  @objc ShineImageLayer.initWithCoder: <stripped>
-	0x8f630  @objc ShineImageLayer.layoutSublayers <stripped>
-	0x8f710  @objc ShineImageLayer..cxx_destruct <stripped>
+	0x932b0  @objc ShineImageLayer.init <stripped>
+	0x935c0  @objc ShineImageLayer.initWithLayer: <stripped>
+	0x93610  @objc ShineImageLayer.initWithCoder: <stripped>
+	0x94040  @objc ShineImageLayer.layoutSublayers <stripped>
+	0x94120  @objc ShineImageLayer..cxx_destruct <stripped>
  }
 
  class TeaUI.BlueprintTableViewDelegate {
@@ -2716,9 +2857,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let indexPath : ´∫
+	let indexPath : Á
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adjustedOffset : 9€
+	let adjustedOffset : y.
  }
 
  enum TeaUI.ShineSizer {
@@ -2735,7 +2876,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case min : Expression
 	case expr : Expression
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case value : 9€
+	case value : y.
 	case width  
 	case height  
  }
@@ -2745,6 +2886,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case first  
 	case directional  
+ }
+
+ struct TeaUI.ImageBorder {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let lineWidth : y. // +0x0
+	let color : CGColor // +0x8
+	let blendMode : BlendMode // +0x10
+ }
+
+ enum TeaUI.BlendMode {
+
+	// Properties
+	case darken  
+	case lighten  
  }
 
  class TeaUI.BarCompressionManager : NSObject /usr/lib/libobjc.A.dylib {
@@ -2758,19 +2915,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var toolbarAnimation : TUBarCompressionAnimating? // +0x50 (0x8)
 	var barState : State // +0x58 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let applicationStateManager : ´Ø // +0x60 (0x28)
+	let applicationStateManager : u // +0x60 (0x28)
 	var observingToken : Swift.AnyObject? // +0x88 (0x8)
 	var lastContentOffset : CGPoint // +0x90 (0x10)
 	var initialContentOffset : CGPoint // +0xa0 (0x10)
 	var scrollDebounce : Debounce // +0xb0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xa4a00  @objc BarCompressionManager.voiceOverStatusDidChange <stripped>
-	0xa4f80  @objc BarCompressionManager.init <stripped>
-	0xa4e90  @objc BarCompressionManager..cxx_destruct <stripped>
+	0xacc10  @objc BarCompressionManager.voiceOverStatusDidChange <stripped>
+	0xad190  @objc BarCompressionManager.init <stripped>
+	0xad0a0  @objc BarCompressionManager..cxx_destruct <stripped>
 
 	// Swift methods
-	0xa3b10  class func BarCompressionManager.__allocating_init(applicationStateManager:) // init 
+	0xabd20  class func BarCompressionManager.__allocating_init(applicationStateManager:) // init 
  }
 
  enum TeaUI.State {
@@ -2799,9 +2956,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaUI.EditingHeaderFooterTableView : TSTableView {
 	// ObjC -> Swift bridged methods
-	0xa6d90  @objc EditingHeaderFooterTableView.setEditing:animated: <stripped>
-	0xa6f20  @objc EditingHeaderFooterTableView.initWithFrame:style: <stripped>
-	0xa7010  @objc EditingHeaderFooterTableView.initWithCoder: <stripped>
+	0xaefa0  @objc EditingHeaderFooterTableView.setEditing:animated: <stripped>
+	0xaf130  @objc EditingHeaderFooterTableView.initWithFrame:style: <stripped>
+	0xaf220  @objc EditingHeaderFooterTableView.initWithCoder: <stripped>
  }
 
  enum TeaUI.BlueprintViewAction {
@@ -2814,6 +2971,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum TeaUI.Action {
 
 	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case move : Q¸
 	case custom : (name: String)
 	case delete  
 	case insert  
@@ -2835,6 +2994,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case edit  
 	case swipe  
 	case keyCommand  
+	case drop  
  }
 
  class TeaUI.BlueprintViewActionRequest {
@@ -2871,6 +3031,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case cancelled  
  }
 
+ class TeaUI.SwipeActionAnimationDelegate : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	let swipeState : SwipeActionState // +0x0 (0x0)
+	let completion : SwipeActionState // +0x0 (0x10)
+
+	// ObjC -> Swift bridged methods
+	0xb3840  @objc SwipeActionAnimationDelegate.animationDidStop:finished: <stripped>
+	0xb3990  @objc SwipeActionAnimationDelegate.init <stripped>
+	0xb3920  @objc SwipeActionAnimationDelegate..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
  struct TeaUI.MenuItem {
 
 	// Properties
@@ -2884,13 +3058,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class TeaUI.BlueprintLayoutProvider {
- struct TeaUI.TabBarSplitViewPresentationContextCache {
+ struct TeaUI.URLHandlerOpenOptions {
 
 	// Properties
-	var cache : TabBarSplitViewPresentationContext // +0x0
+	let sourceApplication : String? // +0x0
+	let annotation : Any? // +0x10
+	let openInPlace : Bool // +0x30
  }
 
  class TeaUI.LayeredViewProvider {
+ struct TeaUI.ContextMenuContext {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let indexPath : Á
+	let blueprint : Blueprint
+	let layoutBlueprint : BlueprintLayout
+	let rendererEnvironment : RendererEnvironmentType
+ }
+
  class TeaUI.MotionLayer {
  class TeaUI.ApplicationBackgroundFetchScheduler : NSObject /usr/lib/libobjc.A.dylib {
 
@@ -2898,14 +3084,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let application : UIApplication
 
 	// ObjC -> Swift bridged methods
-	0xadd50  @objc ApplicationBackgroundFetchScheduler.initWithApplication: <stripped>
-	0xaddc0  @objc ApplicationBackgroundFetchScheduler.setMinimumBackgroundFetchInterval: <stripped>
-	0xaddf0  @objc ApplicationBackgroundFetchScheduler.prepareForUseWithApplicationDelegate: <stripped>
-	0xade50  @objc ApplicationBackgroundFetchScheduler.init <stripped>
-	0xade00  @objc ApplicationBackgroundFetchScheduler..cxx_destruct <stripped>
+	0xbaaa0  @objc ApplicationBackgroundFetchScheduler.initWithApplication: <stripped>
+	0xbab10  @objc ApplicationBackgroundFetchScheduler.setMinimumBackgroundFetchInterval: <stripped>
+	0xbab40  @objc ApplicationBackgroundFetchScheduler.prepareForUseWithApplicationDelegate: <stripped>
+	0xbaba0  @objc ApplicationBackgroundFetchScheduler.init <stripped>
+	0xbab50  @objc ApplicationBackgroundFetchScheduler..cxx_destruct <stripped>
 
 	// Swift methods
-	0xadcd0  class func ApplicationBackgroundFetchScheduler.__allocating_init(application:) // init 
+	0xbaa20  class func ApplicationBackgroundFetchScheduler.__allocating_init(application:) // init 
  }
 
  class TeaUI.BackgroundTasksBackgroundFetchScheduler : NSObject /usr/lib/libobjc.A.dylib {
@@ -2916,14 +3102,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var minimumBackgroundFetchInterval : Double
 
 	// ObjC -> Swift bridged methods
-	0xadf80  @objc BackgroundTasksBackgroundFetchScheduler.initWithApplication:taskIdentifier: <stripped>
-	0xae430  @objc BackgroundTasksBackgroundFetchScheduler.setMinimumBackgroundFetchInterval: <stripped>
-	0xae830  @objc BackgroundTasksBackgroundFetchScheduler.prepareForUseWithApplicationDelegate: <stripped>
-	0xae940  @objc BackgroundTasksBackgroundFetchScheduler.init <stripped>
-	0xae8b0  @objc BackgroundTasksBackgroundFetchScheduler..cxx_destruct <stripped>
+	0xbacd0  @objc BackgroundTasksBackgroundFetchScheduler.initWithApplication:taskIdentifier: <stripped>
+	0xbb180  @objc BackgroundTasksBackgroundFetchScheduler.setMinimumBackgroundFetchInterval: <stripped>
+	0xbb580  @objc BackgroundTasksBackgroundFetchScheduler.prepareForUseWithApplicationDelegate: <stripped>
+	0xbb690  @objc BackgroundTasksBackgroundFetchScheduler.init <stripped>
+	0xbb600  @objc BackgroundTasksBackgroundFetchScheduler..cxx_destruct <stripped>
 
 	// Swift methods
-	0xade80  class func BackgroundTasksBackgroundFetchScheduler.__allocating_init(application:taskIdentifier:) // init 
+	0xbabd0  class func BackgroundTasksBackgroundFetchScheduler.__allocating_init(application:taskIdentifier:) // init 
  }
 
  class TeaUI.Command {
@@ -2956,6 +3142,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let path : String? // +0x20
 	let fragment : String? // +0x30
 	let params : Param // +0x40
+	let conditions : Condition // +0x48
  }
 
  enum TeaUI.Param {
@@ -2966,6 +3153,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case exists : String
 	case notExists : String
 	case optionalExists : String
+ }
+
+ enum TeaUI.Condition {
+
+	// Properties
+	case startsWith : String
+	case length : Int
  }
 
  class TeaUI.Action {
@@ -2984,31 +3178,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let viewController : UIViewController & TUPluggable // +0x20 (0x8)
 	var layoutRevision : Int // +0x28 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var layoutRevisionLock : √® // +0x30 (0x8)
+	var layoutRevisionLock : È˘ // +0x30 (0x8)
 	var previousSize : CGSize // +0x38 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var previousSizeLock : √® // +0x48 (0x8)
+	var previousSizeLock : È˘ // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xb12c0  @objc Plugin.initializeWithCompletion: <stripped>
-	0xb1670  @objc Plugin.relayoutWithCompletion: <stripped>
-	0xb17f0  @objc Plugin.init <stripped>
-	0xb1740  @objc Plugin..cxx_destruct <stripped>
+	0xbe540  @objc Plugin.initializeWithCompletion: <stripped>
+	0xbe8f0  @objc Plugin.relayoutWithCompletion: <stripped>
+	0xbea70  @objc Plugin.init <stripped>
+	0xbe9c0  @objc Plugin..cxx_destruct <stripped>
 
 	// Swift methods
-	0xb0c80  func <stripped> // getter 
-	0xb0cc0  func <stripped> // setter 
-	0xb0d10  func <stripped> // modifyCoroutine 
-	0xb0de0  class func Plugin.__allocating_init(identifier:viewController:) // init 
-	0xb0e60  func <stripped> // method 
-	0xb12e0  func <stripped> // method 
+	0xbdf00  func <stripped> // getter 
+	0xbdf40  func <stripped> // setter 
+	0xbdf90  func <stripped> // modifyCoroutine 
+	0xbe060  class func Plugin.__allocating_init(identifier:viewController:) // init 
+	0xbe0e0  func <stripped> // method 
+	0xbe560  func <stripped> // method 
  }
 
  struct TeaUI.BlueprintImpressionManagerOptions {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let requiredPercentVisible : 9€ // +0x0
+	let requiredPercentVisible : y. // +0x0
 	let requiredMinimumDurationInSeconds : Double // +0x8
  }
 
@@ -3041,7 +3235,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDate : ë§
+	let startDate : ∑ı
 	let startTrigger : BlueprintImpressionTrigger
  }
 
@@ -3061,27 +3255,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _backgroundColor : UIColor? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xbce20  @objc PillButton.initWithFrame: <stripped>
-	0xbcea0  @objc PillButton.initWithCoder: <stripped>
-	0xbd040  @objc PillButton.layoutSubviews <stripped>
-	0xbd070  @objc PillButton.sizeThatFits: <stripped>
-	0xbd120  @objc PillButton.backgroundColor <stripped>
-	0xbd200  @objc PillButton.setBackgroundColor: <stripped>
-	0xbd2d0  @objc PillButton.isHighlighted <stripped>
-	0xbd2f0  @objc PillButton.setHighlighted: <stripped>
-	0xbd490  @objc PillButton.isEnabled <stripped>
-	0xbd4f0  @objc PillButton.setEnabled: <stripped>
-	0xbd6a0  @objc PillButton..cxx_destruct <stripped>
+	0xca9f0  @objc PillButton.contentOffset <stripped>
+	0xcaa70  @objc PillButton.setContentOffset: <stripped>
+	0xcae80  @objc PillButton.initWithFrame: <stripped>
+	0xcaf00  @objc PillButton.initWithCoder: <stripped>
+	0xcb0a0  @objc PillButton.layoutSubviews <stripped>
+	0xcb0d0  @objc PillButton.sizeThatFits: <stripped>
+	0xcb180  @objc PillButton.backgroundColor <stripped>
+	0xcb260  @objc PillButton.setBackgroundColor: <stripped>
+	0xcb330  @objc PillButton.isHighlighted <stripped>
+	0xcb350  @objc PillButton.setHighlighted: <stripped>
+	0xcb560  @objc PillButton.isEnabled <stripped>
+	0xcb5c0  @objc PillButton.setEnabled: <stripped>
+	0xcb730  @objc PillButton..cxx_destruct <stripped>
 
 	// Swift methods
-	0xbcac0  func <stripped> // getter 
-	0xbcb00  func <stripped> // setter 
-	0xbcb50  func <stripped> // modifyCoroutine 
+	0xcaa30  func <stripped> // getter 
+	0xcaad0  func <stripped> // setter 
+	0xcabb0  func <stripped> // modifyCoroutine 
  }
 
  class TeaUI.BlueprintLayoutVisualRankBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib, BlueprintLayoutVisualRankBuilderType {
 	// Swift methods
-	0xbd8b0  class func BlueprintLayoutVisualRankBuilder.__allocating_init() // init 
+	0xcb970  class func BlueprintLayoutVisualRankBuilder.__allocating_init() // init 
  }
 
  class TeaUI.CardSplitViewController : UISplitViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3090,25 +3286,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let primaryCardContainerController : CardContainerController // +0x8 (0x8)
 	var preservedItems : CardSplitViewPreservedItem // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventManager : C¶ // +0x18 (0x8)
+	let eventManager : q˜ // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xbec50  @objc CardSplitViewController.initWithCoder: <stripped>
-	0xbed30  @objc CardSplitViewController.loadView <stripped>
-	0xbedf0  @objc CardSplitViewController.viewDidLoad <stripped>
-	0xbee20  @objc CardSplitViewController.viewWillAppear: <stripped>
-	0xbeee0  @objc CardSplitViewController.viewDidAppear: <stripped>
-	0xbef50  @objc CardSplitViewController.viewControllers <stripped>
-	0xbf000  @objc CardSplitViewController.setViewControllers: <stripped>
-	0xbfa10  @objc CardSplitViewController.traitCollectionDidChange: <stripped>
-	0xbfaf0  @objc CardSplitViewController.childViewControllerForStatusBarStyle <stripped>
-	0xbfd30  @objc CardSplitViewController.childViewControllerForStatusBarHidden <stripped>
-	0xbfd70  @objc CardSplitViewController.viewDidLayoutSubviews <stripped>
-	0xbff00  @objc CardSplitViewController.initWithNibName:bundle: <stripped>
-	0xbfe20  @objc CardSplitViewController..cxx_destruct <stripped>
+	0xccc80  @objc CardSplitViewController.initWithCoder: <stripped>
+	0xccd60  @objc CardSplitViewController.loadView <stripped>
+	0xcce20  @objc CardSplitViewController.viewDidLoad <stripped>
+	0xcce50  @objc CardSplitViewController.viewWillAppear: <stripped>
+	0xccf10  @objc CardSplitViewController.viewDidAppear: <stripped>
+	0xccf80  @objc CardSplitViewController.viewControllers <stripped>
+	0xcd030  @objc CardSplitViewController.setViewControllers: <stripped>
+	0xcda40  @objc CardSplitViewController.traitCollectionDidChange: <stripped>
+	0xcdb20  @objc CardSplitViewController.childViewControllerForStatusBarStyle <stripped>
+	0xcdd60  @objc CardSplitViewController.childViewControllerForStatusBarHidden <stripped>
+	0xcdda0  @objc CardSplitViewController.viewDidLayoutSubviews <stripped>
+	0xcdf30  @objc CardSplitViewController.initWithNibName:bundle: <stripped>
+	0xcde50  @objc CardSplitViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xbe910  class func CardSplitViewController.__allocating_init(cardContainerController:) // init 
+	0xcc930  class func CardSplitViewController.__allocating_init(cardContainerController:) // init 
  }
 
  enum TeaUI.Event {
@@ -3129,6 +3325,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum TeaUI.CoverView {
 
 	// Properties
+	case empty : EmptyStateModel
 	case error : (title: String, description: String)
 	case error2 : ErrorModel
 	case activityIndicator : ActivityIndicatorCoverStylerType
@@ -3151,17 +3348,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let onTap : Action // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xc87a0  @objc TappableLabel.initWithFrame: <stripped>
-	0xc8900  @objc TappableLabel.initWithCoder: <stripped>
-	0xc8670  @objc TappableLabel..cxx_destruct <stripped>
+	0xd6b30  @objc TappableLabel.initWithFrame: <stripped>
+	0xd6c90  @objc TappableLabel.initWithCoder: <stripped>
+	0xd6a00  @objc TappableLabel..cxx_destruct <stripped>
  }
 
  class TeaUI.SettingsNavigationController : UINavigationController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0xc8f60  @objc SettingsNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
-	0xc9040  @objc SettingsNavigationController.initWithRootViewController: <stripped>
-	0xc9120  @objc SettingsNavigationController.initWithNibName:bundle: <stripped>
-	0xc9240  @objc SettingsNavigationController.initWithCoder: <stripped>
+	0xd72f0  @objc SettingsNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
+	0xd73d0  @objc SettingsNavigationController.initWithRootViewController: <stripped>
+	0xd74b0  @objc SettingsNavigationController.initWithNibName:bundle: <stripped>
+	0xd75d0  @objc SettingsNavigationController.initWithCoder: <stripped>
  }
 
  class TeaUI.SettingsViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3173,17 +3370,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let tableView : UITableView
 
 	// ObjC -> Swift bridged methods
-	0xc93b0  @objc SettingsViewController.initWithCoder: <stripped>
-	0xc9890  @objc SettingsViewController.viewDidLoad <stripped>
-	0xc98c0  @objc SettingsViewController.viewWillAppear: <stripped>
-	0xc9930  @objc SettingsViewController.viewWillDisappear: <stripped>
-	0xc99b0  @objc SettingsViewController.viewDidLayoutSubviews <stripped>
-	0xc9a90  @objc SettingsViewController.doDone <stripped>
-	0xc9be0  @objc SettingsViewController.initWithNibName:bundle: <stripped>
-	0xc9c40  @objc SettingsViewController..cxx_destruct <stripped>
+	0xd7740  @objc SettingsViewController.initWithCoder: <stripped>
+	0xd7d70  @objc SettingsViewController.viewDidLoad <stripped>
+	0xd7da0  @objc SettingsViewController.viewWillAppear: <stripped>
+	0xd7e10  @objc SettingsViewController.viewWillDisappear: <stripped>
+	0xd7e90  @objc SettingsViewController.viewDidLayoutSubviews <stripped>
+	0xd7f70  @objc SettingsViewController.doDone <stripped>
+	0xd80c0  @objc SettingsViewController.initWithNibName:bundle: <stripped>
+	0xd8120  @objc SettingsViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xc8de0  class func SettingsViewController.__allocating_init(layout:actionHandler:) // init 
+	0xd7170  class func SettingsViewController.__allocating_init(layout:actionHandler:) // init 
  }
 
  enum TeaUI.Scaling {
@@ -3208,12 +3405,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_backing : UIVisualEffectView? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xd60e0  @objc CloseButton.init <stripped>
-	0xd6100  @objc CloseButton.initWithCoder: <stripped>
-	0xd61c0  @objc CloseButton.intrinsicContentSize <stripped>
-	0xd62b0  @objc CloseButton.sizeThatFits: <stripped>
-	0xd6420  @objc CloseButton.initWithFrame: <stripped>
-	0xd6350  @objc CloseButton..cxx_destruct <stripped>
+	0xe6730  @objc CloseButton.init <stripped>
+	0xe6750  @objc CloseButton.initWithCoder: <stripped>
+	0xe6810  @objc CloseButton.intrinsicContentSize <stripped>
+	0xe6900  @objc CloseButton.sizeThatFits: <stripped>
+	0xe6a70  @objc CloseButton.initWithFrame: <stripped>
+	0xe69a0  @objc CloseButton..cxx_destruct <stripped>
  }
 
  enum TeaUI.Style {
@@ -3229,10 +3426,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var gradientDescriptor : GradientDescriptor // +0x8 (0x31)
 
 	// ObjC -> Swift bridged methods
-	0xd75f0  @objc GradientView.traitCollectionDidChange: <stripped>
-	0xd7860  @objc GradientView.initWithFrame: <stripped>
-	0xd7a20  @objc GradientView.initWithCoder: <stripped>
-	0xd76a0  @objc GradientView..cxx_destruct <stripped>
+	0xe7cb0  @objc GradientView.traitCollectionDidChange: <stripped>
+	0xe81d0  @objc GradientView.initWithFrame: <stripped>
+	0xe8390  @objc GradientView.initWithCoder: <stripped>
+	0xe8010  @objc GradientView..cxx_destruct <stripped>
  }
 
  struct TeaUI.Menu {
@@ -3252,22 +3449,57 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let gradientDescriptor : GradientDescriptor // +0x0
+	let gradientSize : Size // +0x38
+	let overscrollPinPosition : DecorationOverscrollPinPosition // +0x51
+ }
+
+ struct TeaUI.Size {
+
+	// Properties
+	let width : Value // +0x0
+	let height : Value // +0x10
+ }
+
+ enum TeaUI.Value {
+
+	// Properties
+	case fixed : Double
+	case fill  
  }
 
  class TeaUI.GradientSectionDecorationView : UICollectionReusableView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var gradientDescriptor : GradientDescriptor // +0x8 (0x31)
+	var gradientView : GradientView // +0x8 (0x8)
+	var gradientSize : Size // +0x10 (0x19)
+	var overscrollPinPosition : DecorationOverscrollPinPosition // +0x29 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0xd8fb0  @objc GradientSectionDecorationView.willMoveToSuperview: <stripped>
-	0xd9100  @objc GradientSectionDecorationView.didMoveToSuperview <stripped>
-	0xd9a40  @objc GradientSectionDecorationView.applyLayoutAttributes: <stripped>
-	0xd9ad0  @objc GradientSectionDecorationView.traitCollectionDidChange: <stripped>
-	0xd9b70  @objc GradientSectionDecorationView.gutterViewBoundsDidChange <stripped>
-	0xd9d60  @objc GradientSectionDecorationView.initWithFrame: <stripped>
-	0xd9ed0  @objc GradientSectionDecorationView.initWithCoder: <stripped>
-	0xd9bc0  @objc GradientSectionDecorationView..cxx_destruct <stripped>
+	0xe9910  @objc GradientSectionDecorationView.willMoveToSuperview: <stripped>
+	0xe9a60  @objc GradientSectionDecorationView.didMoveToSuperview <stripped>
+	0xe9e20  @objc GradientSectionDecorationView.initWithFrame: <stripped>
+	0xe9ea0  @objc GradientSectionDecorationView.initWithCoder: <stripped>
+	0xea160  @objc GradientSectionDecorationView.layoutSubviews <stripped>
+	0xea4c0  @objc GradientSectionDecorationView.applyLayoutAttributes: <stripped>
+	0xea530  @objc GradientSectionDecorationView.gutterViewBoundsDidChange <stripped>
+	0xea580  @objc GradientSectionDecorationView..cxx_destruct <stripped>
+ }
+
+ class TeaUI.ProgressView : UIProgressView /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var overrideHeight : y. // +0x8 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0xeaf50  @objc ProgressView.sizeThatFits: <stripped>
+	0xeb150  @objc ProgressView.initWithFrame: <stripped>
+	0xeb2b0  @objc ProgressView.initWithCoder: <stripped>
+
+	// Swift methods
+	0xeae60  func <stripped> // getter 
+	0xeae90  func <stripped> // setter 
+	0xeaed0  func <stripped> // modifyCoroutine 
  }
 
  struct TeaUI.BlueprintPipelineProcessingResult {
@@ -3303,17 +3535,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var onDidHideBlock :  empty-list  // +0x60 (0x10)
 
 	// Swift methods
-	0xefb30  class func KeyboardObserver.__allocating_init() // init 
+	0x102940  class func KeyboardObserver.__allocating_init() // init 
  }
 
  class TeaUI.SettingActionHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SettingActionHandlerType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var actions : %ÿ // +0x0 (0x0)
+	var actions : a+ // +0x0 (0x0)
 
 	// Swift methods
-	0xf08d0  class func SettingActionHandler.__allocating_init() // init 
+	0x1036e0  class func SettingActionHandler.__allocating_init() // init 
  }
 
  class TeaUI.TouchInsetsButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3322,15 +3554,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var touchInsets : UIEdgeInsets // +0x8 (0x20)
 
 	// ObjC -> Swift bridged methods
-	0xf2b50  @objc TouchInsetsButton.pointInside:withEvent: <stripped>
-	0xf2cd0  @objc TouchInsetsButton.layoutSubviews <stripped>
-	0xf2e90  @objc TouchInsetsButton.initWithFrame: <stripped>
-	0xf2ff0  @objc TouchInsetsButton.initWithCoder: <stripped>
+	0x105960  @objc TouchInsetsButton.pointInside:withEvent: <stripped>
+	0x105ae0  @objc TouchInsetsButton.layoutSubviews <stripped>
+	0x105ca0  @objc TouchInsetsButton.initWithFrame: <stripped>
+	0x105e00  @objc TouchInsetsButton.initWithCoder: <stripped>
 
 	// Swift methods
-	0xf29e0  func <stripped> // getter 
-	0xf2a30  func <stripped> // setter 
-	0xf2aa0  func <stripped> // modifyCoroutine 
+	0x1057f0  func <stripped> // getter 
+	0x105840  func <stripped> // setter 
+	0x1058b0  func <stripped> // modifyCoroutine 
  }
 
  class TeaUI.Debounce {
@@ -3340,7 +3572,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let blueprint : Blueprint
 	let item : BlueprintItem
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDate : ë§
+	let startDate : ∑ı
 	let startTrigger : BlueprintImpressionTrigger
 	let sessionIdentifier : String
 	let frame : CGRect
@@ -3358,20 +3590,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let imageView : UIImageView
-	var identifier : String?
+	var loadingIdentifier : String?
 	var _backgroundColor : UIColor?
 
 	// ObjC -> Swift bridged methods
-	0xf59b0  @objc ImageView.backgroundColor <stripped>
-	0xf5a10  @objc ImageView.setBackgroundColor: <stripped>
-	0xf5d60  @objc ImageView.initWithFrame: <stripped>
-	0xf5de0  @objc ImageView.initWithCoder: <stripped>
-	0xf5e30  @objc ImageView..cxx_destruct <stripped>
+	0x108720  @objc ImageView.backgroundColor <stripped>
+	0x108780  @objc ImageView.setBackgroundColor: <stripped>
+	0x108ad0  @objc ImageView.initWithFrame: <stripped>
+	0x108b50  @objc ImageView.initWithCoder: <stripped>
+	0x108ba0  @objc ImageView..cxx_destruct <stripped>
 
 	// Swift methods
-	0xf5910  func <stripped> // getter 
-	0xf5850  func <stripped> // setter 
-	0xf5940  func <stripped> // modifyCoroutine 
+	0x1085d0  func <stripped> // getter 
+	0x108540  func <stripped> // setter 
+	0x108600  func <stripped> // modifyCoroutine 
+	0x1086f0  func <stripped> // getter 
  }
 
  class TeaUI.ImageViewLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
@@ -3380,24 +3613,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var coordinateWithLayer : CALayer?
 
 	// ObjC -> Swift bridged methods
-	0xf6c60  @objc ImageViewLayer.cornerRadius <stripped>
-	0xf6c80  @objc ImageViewLayer.setCornerRadius: <stripped>
-	0xf6d70  @objc ImageViewLayer.maskedCorners <stripped>
-	0xf6da0  @objc ImageViewLayer.setMaskedCorners: <stripped>
-	0xf6e90  @objc ImageViewLayer.shadowPath <stripped>
-	0xf6eb0  @objc ImageViewLayer.setShadowPath: <stripped>
-	0xf6ee0  @objc ImageViewLayer.shadowOffset <stripped>
-	0xf6f10  @objc ImageViewLayer.setShadowOffset: <stripped>
-	0xf6f90  @objc ImageViewLayer.shadowOpacity <stripped>
-	0xf6fc0  @objc ImageViewLayer.setShadowOpacity: <stripped>
-	0xf7040  @objc ImageViewLayer.shadowColor <stripped>
-	0xf70b0  @objc ImageViewLayer.setShadowColor: <stripped>
-	0xf7190  @objc ImageViewLayer.shadowRadius <stripped>
-	0xf71f0  @objc ImageViewLayer.setShadowRadius: <stripped>
-	0xf72c0  @objc ImageViewLayer.init <stripped>
-	0xf7300  @objc ImageViewLayer.initWithLayer: <stripped>
-	0xf73b0  @objc ImageViewLayer.initWithCoder: <stripped>
-	0xf72a0  @objc ImageViewLayer..cxx_destruct <stripped>
+	0x109890  @objc ImageViewLayer.cornerRadius <stripped>
+	0x1098b0  @objc ImageViewLayer.setCornerRadius: <stripped>
+	0x1099a0  @objc ImageViewLayer.maskedCorners <stripped>
+	0x1099d0  @objc ImageViewLayer.setMaskedCorners: <stripped>
+	0x109ac0  @objc ImageViewLayer.shadowPath <stripped>
+	0x109ae0  @objc ImageViewLayer.setShadowPath: <stripped>
+	0x109b10  @objc ImageViewLayer.shadowOffset <stripped>
+	0x109b40  @objc ImageViewLayer.setShadowOffset: <stripped>
+	0x109bc0  @objc ImageViewLayer.shadowOpacity <stripped>
+	0x109bf0  @objc ImageViewLayer.setShadowOpacity: <stripped>
+	0x109c70  @objc ImageViewLayer.shadowColor <stripped>
+	0x109ce0  @objc ImageViewLayer.setShadowColor: <stripped>
+	0x109dc0  @objc ImageViewLayer.shadowRadius <stripped>
+	0x109e20  @objc ImageViewLayer.setShadowRadius: <stripped>
+	0x109ef0  @objc ImageViewLayer.init <stripped>
+	0x109f30  @objc ImageViewLayer.initWithLayer: <stripped>
+	0x109fe0  @objc ImageViewLayer.initWithCoder: <stripped>
+	0x109ed0  @objc ImageViewLayer..cxx_destruct <stripped>
  }
 
  class TeaUI.ButtonWindowToolbar2ItemHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ButtonWindowToolbar2ItemHandlerType {
@@ -3416,6 +3649,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let modifierFlags : UIKeyModifierFlags // +0x10
  }
 
+ struct TeaUI.SwipeActionMenu {
+
+	// Properties
+	let actions : SwipeAction // +0x0
+ }
+
  enum TeaUI.CardViewInteractiveState {
 
 	// Properties
@@ -3432,20 +3671,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let identifier : String // +0x8 (0x10)
 	var loadedViewController : UIViewController? // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventManager : }õ // +0x20 (0x8)
+	let eventManager : ÂÎ // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xf8c40  @objc LazyViewController.initWithCoder: <stripped>
-	0xf8d50  @objc LazyViewController.viewDidLoad <stripped>
-	0xf8e20  @objc LazyViewController.viewWillAppear: <stripped>
-	0xf8f90  @objc LazyViewController.viewWillLayoutSubviews <stripped>
-	0xf9bc0  @objc LazyViewController.childViewControllerForStatusBarHidden <stripped>
-	0xf8fc0  @objc LazyViewController.childViewControllerForStatusBarStyle <stripped>
-	0xf9140  @objc LazyViewController.initWithNibName:bundle: <stripped>
-	0xf9050  @objc LazyViewController..cxx_destruct <stripped>
+	0x10be30  @objc LazyViewController.initWithCoder: <stripped>
+	0x10bf40  @objc LazyViewController.viewDidLoad <stripped>
+	0x10c010  @objc LazyViewController.viewWillAppear: <stripped>
+	0x10c180  @objc LazyViewController.viewWillLayoutSubviews <stripped>
+	0x10cdb0  @objc LazyViewController.childViewControllerForStatusBarHidden <stripped>
+	0x10c1b0  @objc LazyViewController.childViewControllerForStatusBarStyle <stripped>
+	0x10c330  @objc LazyViewController.initWithNibName:bundle: <stripped>
+	0x10c240  @objc LazyViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xf89e0  class func LazyViewController.__allocating_init(identifier:trigger:_:) // init 
+	0x10bbd0  class func LazyViewController.__allocating_init(identifier:trigger:_:) // init 
  }
 
  enum TeaUI.Trigger {
@@ -3464,12 +3703,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaUI.ColorSectionDecorationView : UICollectionReusableView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0xfa020  @objc ColorSectionDecorationView.willMoveToSuperview: <stripped>
-	0xfa170  @objc ColorSectionDecorationView.didMoveToSuperview <stripped>
-	0xfa330  @objc ColorSectionDecorationView.applyLayoutAttributes: <stripped>
-	0xfa3a0  @objc ColorSectionDecorationView.gutterViewBoundsDidChange <stripped>
-	0xfa4f0  @objc ColorSectionDecorationView.initWithFrame: <stripped>
-	0xfa5e0  @objc ColorSectionDecorationView.initWithCoder: <stripped>
+	0x10d270  @objc ColorSectionDecorationView.willMoveToSuperview: <stripped>
+	0x10d3c0  @objc ColorSectionDecorationView.didMoveToSuperview <stripped>
+	0x10d590  @objc ColorSectionDecorationView.applyLayoutAttributes: <stripped>
+	0x10d600  @objc ColorSectionDecorationView.gutterViewBoundsDidChange <stripped>
+	0x10d750  @objc ColorSectionDecorationView.initWithFrame: <stripped>
+	0x10d840  @objc ColorSectionDecorationView.initWithCoder: <stripped>
  }
 
  class TeaUI.SelectedBackgroundView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3477,14 +3716,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var insets : UIEdgeInsets // +0x8 (0x20)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cornerRadius : 9€ // +0x28 (0x8)
+	var cornerRadius : y. // +0x28 (0x8)
 	var styling : Styling // +0x30 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0xfaf40  @objc SelectedBackgroundView.initWithFrame: <stripped>
-	0xfafb0  @objc SelectedBackgroundView.layoutSubviews <stripped>
-	0xfb140  @objc SelectedBackgroundView.initWithCoder: <stripped>
-	0xfb270  @objc SelectedBackgroundView.traitCollectionDidChange: <stripped>
+	0x10e1a0  @objc SelectedBackgroundView.initWithFrame: <stripped>
+	0x10e210  @objc SelectedBackgroundView.layoutSubviews <stripped>
+	0x10e3a0  @objc SelectedBackgroundView.initWithCoder: <stripped>
+	0x10e4d0  @objc SelectedBackgroundView.traitCollectionDidChange: <stripped>
  }
 
  enum TeaUI.Styling {
@@ -3503,34 +3742,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var linkPresentationSource : Any? // +0x20 (0x20)
 
 	// ObjC -> Swift bridged methods
-	0xfbad0  @objc SharingActivityProvider.activityItemSources <stripped>
-	0xfbb60  @objc SharingActivityProvider.setActivityItemSources: <stripped>
-	0xfbc60  @objc SharingActivityProvider.activities <stripped>
-	0xfbca0  @objc SharingActivityProvider.setActivities: <stripped>
-	0xfbd60  @objc SharingActivityProvider.excludedActivityTypes <stripped>
-	0xfbe50  @objc SharingActivityProvider.setExcludedActivityTypes: <stripped>
-	0xfc060  @objc SharingActivityProvider.linkPresentationSource <stripped>
-	0xfc120  @objc SharingActivityProvider.setLinkPresentationSource: <stripped>
-	0xfc310  @objc SharingActivityProvider.activityItems <stripped>
-	0xfc570  @objc SharingActivityProvider.initWithActivityItems:activitySources:excludedActivityTypes:linkPresentationSource: <stripped>
-	0xfc790  @objc SharingActivityProvider.init <stripped>
-	0xfc6f0  @objc SharingActivityProvider..cxx_destruct <stripped>
+	0x10ed30  @objc SharingActivityProvider.activityItemSources <stripped>
+	0x10edc0  @objc SharingActivityProvider.setActivityItemSources: <stripped>
+	0x10eec0  @objc SharingActivityProvider.activities <stripped>
+	0x10ef00  @objc SharingActivityProvider.setActivities: <stripped>
+	0x10efc0  @objc SharingActivityProvider.excludedActivityTypes <stripped>
+	0x10f0b0  @objc SharingActivityProvider.setExcludedActivityTypes: <stripped>
+	0x10f2c0  @objc SharingActivityProvider.linkPresentationSource <stripped>
+	0x10f380  @objc SharingActivityProvider.setLinkPresentationSource: <stripped>
+	0x10f570  @objc SharingActivityProvider.activityItems <stripped>
+	0x10f7d0  @objc SharingActivityProvider.initWithActivityItems:activitySources:excludedActivityTypes:linkPresentationSource: <stripped>
+	0x10f9f0  @objc SharingActivityProvider.init <stripped>
+	0x10f950  @objc SharingActivityProvider..cxx_destruct <stripped>
 
 	// Swift methods
-	0xfbb40  func <stripped> // getter 
-	0xfbbc0  func <stripped> // setter 
-	0xfbc20  func <stripped> // modifyCoroutine 
-	0xfbc80  func <stripped> // getter 
-	0xfbcc0  func <stripped> // setter 
-	0xfbd20  func <stripped> // modifyCoroutine 
-	0xfbdf0  func <stripped> // getter 
-	0xfbed0  func <stripped> // setter 
-	0xfc010  func <stripped> // modifyCoroutine 
-	0xfc0e0  func <stripped> // getter 
-	0xfc1c0  func <stripped> // setter 
-	0xfc2d0  func <stripped> // modifyCoroutine 
-	0xfc370  func <stripped> // getter 
-	0xfc4c0  class func SharingActivityProvider.__allocating_init(activityItems:activitySources:excludedActivityTypes:linkPresentationSource:) // init 
+	0x10eda0  func <stripped> // getter 
+	0x10ee20  func <stripped> // setter 
+	0x10ee80  func <stripped> // modifyCoroutine 
+	0x10eee0  func <stripped> // getter 
+	0x10ef20  func <stripped> // setter 
+	0x10ef80  func <stripped> // modifyCoroutine 
+	0x10f050  func <stripped> // getter 
+	0x10f130  func <stripped> // setter 
+	0x10f270  func <stripped> // modifyCoroutine 
+	0x10f340  func <stripped> // getter 
+	0x10f420  func <stripped> // setter 
+	0x10f530  func <stripped> // modifyCoroutine 
+	0x10f5d0  func <stripped> // getter 
+	0x10f720  class func SharingActivityProvider.__allocating_init(activityItems:activitySources:excludedActivityTypes:linkPresentationSource:) // init 
  }
 
  enum TeaUI.MotionDisabledTransform {
@@ -3539,6 +3778,47 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case scale : Double
 	case fixed : Transform
 	case none  
+ }
+
+ class TeaUI.ComplexImageProcessorRequest : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let assetHandles : [String : TSAssetHandleType] // +0x10 (0x8)
+	let cacheIdentifier : String // +0x18 (0x10)
+	let assetHandle : TSAssetHandleType // +0x28 (0x8)
+	let instructions : Instruction // +0x30 (0x8)
+	let size : CGSize // +0x38 (0x11)
+	let imageRenderingMode : RenderingMode // +0x50 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x111880  @objc ComplexImageProcessorRequest.assetHandles <stripped>
+	0x1118f0  @objc ComplexImageProcessorRequest.cacheIdentifier <stripped>
+
+	// Swift methods
+	0x111960  class func ComplexImageProcessorRequest.__allocating_init(assetHandle:instructions:size:imageRenderingMode:) // init 
+ }
+
+ enum TeaUI.Mask {
+
+	// Properties
+	case gradient : Gradient
+ }
+
+ enum TeaUI.Blend {
+
+	// Properties
+	case gradient : Gradient
+	case color : CGBlendMode
+ }
+
+ enum TeaUI.Instruction {
+
+	// Properties
+	case mask : Mask
+	case blend : Blend
+	case coreImageFilter : CoreImageFilterDescriptor
+	case resize : CGSize
+	case cropped : CGSize
  }
 
  enum TeaUI.BlueprintResponderBehavior {
@@ -3562,13 +3842,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let textField : UITextField // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xfdfd0  @objc TextFieldTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0xfe020  @objc TextFieldTableViewCell.initWithCoder: <stripped>
-	0xfe170  @objc TextFieldTableViewCell.textFieldDidEndEditing: <stripped>
-	0xfe1f0  @objc TextFieldTableViewCell..cxx_destruct <stripped>
+	0x113b60  @objc TextFieldTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x113bb0  @objc TextFieldTableViewCell.initWithCoder: <stripped>
+	0x113d00  @objc TextFieldTableViewCell.textFieldDidEndEditing: <stripped>
+	0x113d80  @objc TextFieldTableViewCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0xfe0e0  func <stripped> // method 
+	0x113c70  func <stripped> // method 
  }
 
  class TeaUI.BootstrapperViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3578,9 +3858,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var onboardingViewController : UIViewController? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xfe400  @objc BootstrapperViewController.initWithCoder: <stripped>
-	0xfe4d0  @objc BootstrapperViewController.initWithNibName:bundle: <stripped>
-	0xfe490  @objc BootstrapperViewController..cxx_destruct <stripped>
+	0x113f90  @objc BootstrapperViewController.initWithCoder: <stripped>
+	0x114060  @objc BootstrapperViewController.initWithNibName:bundle: <stripped>
+	0x114020  @objc BootstrapperViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3625,7 +3905,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case secondary  
  }
 
+ class TeaUI.PassthroughView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
+	// ObjC -> Swift bridged methods
+	0x1279e0  @objc PassthroughView.hitTest:withEvent: <stripped>
+	0x127bd0  @objc PassthroughView.initWithFrame: <stripped>
+	0x127cd0  @objc PassthroughView.initWithCoder: <stripped>
+ }
+
  class TeaUI.BlueprintCollectionViewDragDelegate {
+ class TeaUI.DragSessionData : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var initialIndexPath : Á // +0x0 (0x0)
+
+	// Swift methods
+ }
+
+ class TeaUI.BlueprintCollectionViewDragDelegate2 {
+ class TeaUI.BlueprintCollectionViewDragDelegate3 {
  class TeaUI.KeyCommandTraverseProvider {
  enum TeaUI.StartBehavior {
 
@@ -3647,7 +3945,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let memoryCache : MemoryImageCache // +0x10 (0x8)
 
 	// Swift methods
-	0x115090  class func SharedImageCache.__allocating_init() // init 
+	0x133380  class func SharedImageCache.__allocating_init() // init 
  }
 
  enum TeaUI.ErrorPosition {
@@ -3670,11 +3968,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var scrollLock : ScrollLock // +0x30 (0x31)
 
 	// ObjC -> Swift bridged methods
-	0x1164c0  @objc CardViewScrollViewCoordinator.init <stripped>
-	0x116420  @objc CardViewScrollViewCoordinator..cxx_destruct <stripped>
+	0x1347b0  @objc CardViewScrollViewCoordinator.init <stripped>
+	0x134710  @objc CardViewScrollViewCoordinator..cxx_destruct <stripped>
 
 	// Swift methods
-	0x115ec0  class func CardViewScrollViewCoordinator.__allocating_init(scrollView:) // init 
+	0x1341b0  class func CardViewScrollViewCoordinator.__allocating_init(scrollView:) // init 
  }
 
  enum TeaUI.ScrollLock {
@@ -3697,8 +3995,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let source : Source // +0x88 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x117f20  @objc MotionData.init <stripped>
-	0x117ec0  @objc MotionData..cxx_destruct <stripped>
+	0x136210  @objc MotionData.init <stripped>
+	0x1361b0  @objc MotionData..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3737,28 +4035,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case dynamic  
  }
 
+ struct TeaUI.EmptyStateModel {
+
+	// Properties
+	let title : String? // +0x0
+	let description : String? // +0x10
+ }
+
  class TeaUI.MotionContainerView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 	var isMotionEnabled : Bool // +0x8 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x119410  @objc MotionContainerView.layoutSubviews <stripped>
-	0x119440  @objc MotionContainerView.transformWithMotionData: <stripped>
-	0x1194d0  @objc MotionContainerView.isMotionEnabled <stripped>
-	0x119510  @objc MotionContainerView.setIsMotionEnabled: <stripped>
-	0x1197c0  @objc MotionContainerView.initWithFrame: <stripped>
-	0x119900  @objc MotionContainerView.initWithCoder: <stripped>
+	0x137cb0  @objc MotionContainerView.layoutSubviews <stripped>
+	0x137ce0  @objc MotionContainerView.transformWithMotionData: <stripped>
+	0x137d70  @objc MotionContainerView.isMotionEnabled <stripped>
+	0x137db0  @objc MotionContainerView.setIsMotionEnabled: <stripped>
+	0x138060  @objc MotionContainerView.initWithFrame: <stripped>
+	0x1381a0  @objc MotionContainerView.initWithCoder: <stripped>
 
 	// Swift methods
-	0x1186e0  func <stripped> // method 
-	0x118730  func <stripped> // getter 
-	0x118760  func <stripped> // setter 
-	0x1187e0  func <stripped> // modifyCoroutine 
-	0x118890  func <stripped> // method 
-	0x118aa0  func <stripped> // method 
-	0x118c90  func <stripped> // method 
-	0x118eb0  func <stripped> // method 
+	0x136f80  func <stripped> // method 
+	0x136fd0  func <stripped> // getter 
+	0x137000  func <stripped> // setter 
+	0x137080  func <stripped> // modifyCoroutine 
+	0x137130  func <stripped> // method 
+	0x137340  func <stripped> // method 
+	0x137530  func <stripped> // method 
+	0x137750  func <stripped> // method 
  }
 
  class TeaUI.RightArrow : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3767,10 +4072,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var arrowColor : UIColor? // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x119de0  @objc RightArrow.initWithFrame: <stripped>
-	0x119f50  @objc RightArrow.initWithCoder: <stripped>
-	0x11a390  @objc RightArrow.drawRect: <stripped>
-	0x11a430  @objc RightArrow..cxx_destruct <stripped>
+	0x138680  @objc RightArrow.initWithFrame: <stripped>
+	0x1387f0  @objc RightArrow.initWithCoder: <stripped>
+	0x138c30  @objc RightArrow.drawRect: <stripped>
+	0x138cd0  @objc RightArrow..cxx_destruct <stripped>
  }
 
  class TeaUI.BarView : UIVisualEffectView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3782,10 +4087,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let separatorView : UIView // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x11a9b0  @objc BarView.initWithEffect: <stripped>
-	0x11a9f0  @objc BarView.initWithCoder: <stripped>
-	0x11acf0  @objc BarView.layoutSubviews <stripped>
-	0x11ad50  @objc BarView..cxx_destruct <stripped>
+	0x139250  @objc BarView.initWithEffect: <stripped>
+	0x139290  @objc BarView.initWithCoder: <stripped>
+	0x139590  @objc BarView.layoutSubviews <stripped>
+	0x1395f0  @objc BarView..cxx_destruct <stripped>
  }
 
  enum TeaUI.BlueprintPipelineError {
@@ -3806,9 +4111,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case viewAction : Blueprint
 	case viewActionWithAnimation : Blueprint
 	case moved : Blueprint
+	case draggedAndDropped : Blueprint
 	case bookmark : BlueprintBookmark
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case failed : Iß
+	case failed : Õˆ
 	case noChanges  
  }
 
@@ -3824,7 +4130,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var coverView : UIView? // +0x68 (0x8)
 
 	// Swift methods
-	0x131bf0  class func CoverViewManager.__allocating_init() // init 
+	0x152710  class func CoverViewManager.__allocating_init() // init 
  }
 
  struct TeaUI.BlueprintLayoutSection {
@@ -3832,7 +4138,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let descriptor : A
 	let framePosition : BlueprintLayoutSectionFramePosition
-	let viewState : BlueprintLayoutSectionViewState
+	var viewState : BlueprintLayoutSectionViewState
 	var items : BlueprintLayoutItem
  }
 
@@ -3841,21 +4147,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let point : CGPoint // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minX : 9€ // +0x20 (0x8)
+	let minX : y. // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maxX : 9€ // +0x28 (0x8)
+	let maxX : y. // +0x28 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minY : 9€ // +0x30 (0x8)
+	let minY : y. // +0x30 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maxY : 9€ // +0x38 (0x8)
+	let maxY : y. // +0x38 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minWidth : 9€ // +0x40 (0x8)
+	let minWidth : y. // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maxWidth : 9€ // +0x48 (0x8)
+	let maxWidth : y. // +0x48 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minHeight : 9€ // +0x50 (0x8)
+	let minHeight : y. // +0x50 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maxHeight : 9€ // +0x58 (0x8)
+	let maxHeight : y. // +0x58 (0x8)
 
 	// Swift methods
  }
@@ -3871,8 +4177,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class TeaUI.BlueprintCollectionViewDataSource {
  class TeaUI.HiddenView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x137950  @objc HiddenView.initWithFrame: <stripped>
-	0x1379b0  @objc HiddenView.initWithCoder: <stripped>
+	0x158290  @objc HiddenView.initWithFrame: <stripped>
+	0x1582f0  @objc HiddenView.initWithCoder: <stripped>
  }
 
  struct TeaUI.BlueprintLayoutOptions {
@@ -3880,16 +4186,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let layoutViewportConfiguration : ViewportConfiguration // +0x0
 	let viewport : CGSize // +0x8
-	let readableViewportFrame : CGRect // +0x18
-	let visibleViewportFrame : CGRect // +0x38
+	let windowSize : CGSize // +0x18
+	let readableViewportFrame : CGRect // +0x28
+	let visibleViewportFrame : CGRect // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let screenScale : 9€ // +0x58
-	let traitCollection : UITraitCollection // +0x60
-	let appTraitCollection : UITraitCollection // +0x68
-	let contentSizeCategory : UIContentSizeCategory // +0x70
-	let layoutMargins : UIEdgeInsets // +0x78
-	let unadjustedLayoutMargins : UIEdgeInsets // +0x98
-	let layoutDirection : UIUserInterfaceLayoutDirection // +0xb8
+	let screenScale : y. // +0x68
+	let traitCollection : UITraitCollection // +0x70
+	let appTraitCollection : UITraitCollection // +0x78
+	let contentSizeCategory : UIContentSizeCategory // +0x80
+	let layoutMargins : UIEdgeInsets // +0x88
+	let unadjustedLayoutMargins : UIEdgeInsets // +0xa8
+	let layoutDirection : UIUserInterfaceLayoutDirection // +0xc8
  }
 
  enum TeaUI.ViewportConfiguration {
@@ -3924,18 +4231,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let appTraitEnvironmentProvider : () // +0x40 (0x10)
 
 	// Swift methods
-	0x139310  class func BlueprintLayoutOptionsProvider.__allocating_init(view:contentSizeCategoryProvider:appTraitEnvironmentProvider:) // init 
+	0x159e60  class func BlueprintLayoutOptionsProvider.__allocating_init(view:contentSizeCategoryProvider:appTraitEnvironmentProvider:) // init 
  }
 
  struct TeaUI.BlueprintLayoutCollectionPinAdjuster {
 
 	// Properties
 	let layoutOptions : BlueprintLayoutOptions // +0x0
-	let layoutDirection : BlueprintLayoutDirection // +0xc0
-	var sectionToPinnedLayoutAttributes : BlueprintLayoutCollectionLayoutAttributes // +0xc8
-	var sectionUnionFrames : CGRect // +0xd0
-	var sectionHeaderUnionFrames : CGRect // +0xd8
-	var sectionPinnedHeaderFrames : CGRect // +0xe0
+	let layoutDirection : BlueprintLayoutDirection // +0xd0
+	var sectionToPinnedLayoutAttributes : BlueprintLayoutCollectionLayoutAttributes // +0xd8
+	var sectionUnionFrames : CGRect // +0xe0
+	var sectionHeaderUnionFrames : CGRect // +0xe8
+	var sectionPinnedHeaderFrames : CGRect // +0xf0
+ }
+
+ class TeaUI.SwipeActionView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	let button : UIButton // +0x8 (0x8)
+	let onTap : Action // +0x10 (0x8)
+	let swipeAction : SwipeContextualAction // +0x18 (0x28)
+
+	// ObjC -> Swift bridged methods
+	0x162370  @objc SwipeActionView.initWithFrame: <stripped>
+	0x1623b0  @objc SwipeActionView.initWithCoder: <stripped>
+	0x162400  @objc SwipeActionView.layoutSubviews <stripped>
+	0x162540  @objc SwipeActionView..cxx_destruct <stripped>
+
+	// Swift methods
  }
 
  struct TeaUI.CardViewBehavior {
@@ -3985,17 +4308,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let onboardingViewControllerFactory : ViewControllerFactoryType // +0x30 (0x28)
 	var onboardingViewDismissalAnimator : ViewTransitionAnimatorType // +0x58 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var deferredPromise : Åã // +0x0 (0x0)
+	var deferredPromise : °Ÿ // +0x0 (0x0)
 	var deferringGroup : OS_dispatch_group // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1423e0  @objc Bootstrapper.startBootstrappingWithWindow:shouldOnboard: <stripped>
-	0x1428a0  @objc Bootstrapper.afterBootstrapOnQueue:runBootstrapCallbackBlock: <stripped>
-	0x142b20  @objc Bootstrapper.init <stripped>
-	0x142a60  @objc Bootstrapper..cxx_destruct <stripped>
+	0x163af0  @objc Bootstrapper.startBootstrappingWithWindow:shouldOnboard: <stripped>
+	0x163fb0  @objc Bootstrapper.afterBootstrapOnQueue:runBootstrapCallbackBlock: <stripped>
+	0x164230  @objc Bootstrapper.init <stripped>
+	0x164170  @objc Bootstrapper..cxx_destruct <stripped>
 
 	// Swift methods
-	0x141d30  class func Bootstrapper.__allocating_init(mainViewControllerFactory:onboardingViewControllerFactory:onboardingViewDismissalAnimator:) // init 
+	0x163440  class func Bootstrapper.__allocating_init(mainViewControllerFactory:onboardingViewControllerFactory:onboardingViewDismissalAnimator:) // init 
  }
 
  enum TeaUI.BlueprintImpressionTrigger {
@@ -4007,6 +4330,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case scroll  
 	case view  
 	case boundsChange  
+	case reload  
  }
 
  enum TeaUI.BlueprintImpressionTriggerSource {
@@ -4022,9 +4346,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let blueprint : Blueprint
 	let item : BlueprintItem
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDate : ë§
+	let startDate : ∑ı
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let endDate : ë§
+	let endDate : ∑ı
 	let startTrigger : BlueprintImpressionTrigger
 	let endTrigger : BlueprintImpressionTrigger
 	let sessionIdentifier : String
@@ -4052,9 +4376,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDate : ë§
+	let startDate : ∑ı
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let endDate : ë§
+	let endDate : ∑ı
 	let startTrigger : BlueprintImpressionSessionTrigger
 	let endTrigger : BlueprintImpressionSessionTrigger
 	let number : UInt
@@ -4071,18 +4395,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var direction : SegmentedColorViewDirection // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x145f50  @objc SegmentedColorView.startColor <stripped>
-	0x145f90  @objc SegmentedColorView.setStartColor: <stripped>
-	0x146100  @objc SegmentedColorView.endColor <stripped>
-	0x1461b0  @objc SegmentedColorView.setEndColor: <stripped>
-	0x146400  @objc SegmentedColorView.numberOfSegments <stripped>
-	0x146440  @objc SegmentedColorView.setNumberOfSegments: <stripped>
-	0x146610  @objc SegmentedColorView.direction <stripped>
-	0x1466b0  @objc SegmentedColorView.setDirection: <stripped>
-	0x146aa0  @objc SegmentedColorView.initWithFrame: <stripped>
-	0x146ad0  @objc SegmentedColorView.initWithCoder: <stripped>
-	0x147120  @objc SegmentedColorView.drawRect: <stripped>
-	0x1471c0  @objc SegmentedColorView..cxx_destruct <stripped>
+	0x167660  @objc SegmentedColorView.startColor <stripped>
+	0x1676a0  @objc SegmentedColorView.setStartColor: <stripped>
+	0x167810  @objc SegmentedColorView.endColor <stripped>
+	0x1678c0  @objc SegmentedColorView.setEndColor: <stripped>
+	0x167b10  @objc SegmentedColorView.numberOfSegments <stripped>
+	0x167b50  @objc SegmentedColorView.setNumberOfSegments: <stripped>
+	0x167d20  @objc SegmentedColorView.direction <stripped>
+	0x167dc0  @objc SegmentedColorView.setDirection: <stripped>
+	0x1681b0  @objc SegmentedColorView.initWithFrame: <stripped>
+	0x1681e0  @objc SegmentedColorView.initWithCoder: <stripped>
+	0x168830  @objc SegmentedColorView.drawRect: <stripped>
+	0x1688d0  @objc SegmentedColorView..cxx_destruct <stripped>
  }
 
  class TeaUI.BlueprintCollectionViewLayout {
@@ -4091,9 +4415,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let supplementarySolver : BlueprintLayoutCollectionSectionSupplementarySolverType // +0x10 (0x28)
 	let layoutDirection : BlueprintLayoutDirection // +0x38 (0x1)
-	let layoutOptions : BlueprintLayoutOptions // +0x40 (0xc0)
+	let layoutOptions : BlueprintLayoutOptions // +0x40 (0xd0)
 
 	// Swift methods
+ }
+
+ class TeaUI.ComplexImageProcessor : NSObject /usr/lib/libobjc.A.dylib {
+	// ObjC -> Swift bridged methods
+	0x16f540  @objc ComplexImageProcessor.process: <stripped>
+	0x16f610  @objc ComplexImageProcessor.init <stripped>
  }
 
  struct TeaUI.SectionFooterViewLayoutAttributes {
@@ -4107,7 +4437,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaUI.RendererAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x14bd60  @objc RendererAssembly.init <stripped>
+	0x172960  @objc RendererAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -4118,8 +4448,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : weak TUMotionManagerObserver? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x14c140  @objc MotionManagerObserverProxy.motionManager:didUpdateMotionData: <stripped>
-	0x14c1f0  @objc MotionManagerObserverProxy.motionManager:motionEnabled: <stripped>
+	0x172d10  @objc MotionManagerObserverProxy.motionManager:didUpdateMotionData: <stripped>
+	0x172dc0  @objc MotionManagerObserverProxy.motionManager:motionEnabled: <stripped>
 
 	// Swift methods
  }
@@ -4140,7 +4470,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : 9€ // +0x0
+	let height : y. // +0x0
  }
 
  enum TeaUI.AppState {
@@ -4166,9 +4496,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var environment : AppEnvironment
 
 	// Swift methods
-	0x14d1f0  func <stripped> // getter 
-	0x14d220  class func App.__allocating_init(application:monitor:environment:) // init 
-	0x14d2c0  func <stripped> // getter 
+	0x173dc0  func <stripped> // getter 
+	0x173df0  class func App.__allocating_init(application:monitor:environment:) // init 
+	0x173e90  func <stripped> // getter 
  }
 
  enum TeaUI.AppMonitorEvent { }
@@ -4181,21 +4511,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var onWindowWillBecomeForegroundBlock : ()? // +0x20 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x14d4e0  @objc AppMonitor.isActive <stripped>
-	0x14d550  @objc AppMonitor.setIsActive: <stripped>
-	0x14d6c0  @objc AppMonitor.onWindowDidBecomeBackgroundWithBlock: <stripped>
-	0x14d750  @objc AppMonitor.onWindowWillBecomeForegroundWithBlock: <stripped>
-	0x14d8a0  @objc AppMonitor.triggerWithEvent: <stripped>
-	0x14d9e0  @objc AppMonitor.init <stripped>
-	0x14d910  @objc AppMonitor..cxx_destruct <stripped>
+	0x1740b0  @objc AppMonitor.isActive <stripped>
+	0x174120  @objc AppMonitor.setIsActive: <stripped>
+	0x174290  @objc AppMonitor.onWindowDidBecomeBackgroundWithBlock: <stripped>
+	0x174320  @objc AppMonitor.onWindowWillBecomeForegroundWithBlock: <stripped>
+	0x174470  @objc AppMonitor.triggerWithEvent: <stripped>
+	0x1745b0  @objc AppMonitor.init <stripped>
+	0x1744e0  @objc AppMonitor..cxx_destruct <stripped>
 
 	// Swift methods
-	0x14d520  func <stripped> // getter 
-	0x14d590  func <stripped> // setter 
-	0x14d650  func <stripped> // modifyCoroutine 
-	0x14d6a0  func <stripped> // method 
-	0x14d6e0  func <stripped> // method 
-	0x14d800  func <stripped> // method 
+	0x1740f0  func <stripped> // getter 
+	0x174160  func <stripped> // setter 
+	0x174220  func <stripped> // modifyCoroutine 
+	0x174270  func <stripped> // method 
+	0x1742b0  func <stripped> // method 
+	0x1743d0  func <stripped> // method 
  }
 
  class TeaUI.CachedFont : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4205,22 +4535,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var cachedFont : UIFont? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x14e260  @objc CachedFont.contentSizeCategoryDidChange: <stripped>
+	0x174e30  @objc CachedFont.contentSizeCategoryDidChange: <stripped>
 
 	// Swift methods
-	0x14e110  class func CachedFont.__allocating_init(_:) // init 
+	0x174ce0  class func CachedFont.__allocating_init(_:) // init 
  }
 
  class TeaUI.DebugDataSource : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sections : sà // +0x0 (0x0)
+	var sections : ç÷ // +0x0 (0x0)
 
 	// Swift methods
-	0x14e430  class func DebugDataSource.__allocating_init() // init 
-	0x14e6a0  func <stripped> // method 
-	0x14ec00  func <stripped> // method 
+	0x175000  class func DebugDataSource.__allocating_init() // init 
+	0x175270  func <stripped> // method 
+	0x1757d0  func <stripped> // method 
+ }
+
+ class TeaUI.ActionButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	let onTap : Action // +0x8 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x176c20  @objc ActionButton.initWithFrame: <stripped>
+	0x176ca0  @objc ActionButton.initWithCoder: <stripped>
+	0x176cf0  @objc ActionButton..cxx_destruct <stripped>
  }
 
  enum TeaUI.CommandState {
@@ -4229,6 +4570,36 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case binary : Bool
 	case unknown  
 	case indecisive  
+ }
+
+ class TeaUI.SwipeActionContainerView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	let swipeActionViews : SwipeActionView // +0x8 (0x8)
+	var isAutoActionEnabled : Bool // +0x10 (0x1)
+	var isAutoActionActivated : Bool // +0x11 (0x1)
+	var presentation : SwipeActionPresentation // +0x12 (0x1)
+	let pinningEdge : PinningEdge // +0x13 (0x1)
+	let feedbackGenerator : UISelectionFeedbackGenerator // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let swipeActionViewWidth : y. // +0x20 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minimumSwipeActionAreaWidth : y. // +0x28 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x177a20  @objc SwipeActionContainerView.initWithCoder: <stripped>
+	0x178070  @objc SwipeActionContainerView.layoutSubviews <stripped>
+	0x179480  @objc SwipeActionContainerView.initWithFrame: <stripped>
+	0x179450  @objc SwipeActionContainerView..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ enum TeaUI.PinningEdge {
+
+	// Properties
+	case left  
+	case right  
  }
 
  class TeaUI.MastheadViewController {
@@ -4241,18 +4612,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let imageRenderingMode : RenderingMode // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1547d0  @objc ProcessedImageRequest.assetHandles <stripped>
-	0x154840  @objc ProcessedImageRequest.cacheIdentifier <stripped>
+	0x180020  @objc ProcessedImageRequest.assetHandles <stripped>
+	0x180090  @objc ProcessedImageRequest.cacheIdentifier <stripped>
 
 	// Swift methods
-	0x154760  class func ProcessedImageRequest.__allocating_init(assetHandle:size:imageRenderingMode:) // init 
+	0x17ffa0  class func ProcessedImageRequest.__allocating_init(assetHandle:size:imageRenderingMode:userInterfaceStyle:) // init 
  }
 
  struct TeaUI.MastheadViewMiniLayoutAttributes {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : 9€ // +0x0
+	let height : y. // +0x0
  }
 
  class TeaUI.KeyCommandScrollExclusionProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4262,7 +4633,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : KeyCommandScrollExclusionProviderDelegate // +0x20 (0x10)
 
 	// Swift methods
-	0x155370  class func KeyCommandScrollExclusionProvider.__allocating_init() // init 
+	0x180a20  class func KeyCommandScrollExclusionProvider.__allocating_init() // init 
  }
 
  class TeaUI.ShineImageRendererPipelineProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4271,12 +4642,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let rendererEnvironment : RendererEnvironmentType // +0x10 (0x28)
 
 	// Swift methods
-	0x156ec0  class func ShineImageRendererPipelineProcessor.__allocating_init(rendererEnvironment:) // init 
+	0x182570  class func ShineImageRendererPipelineProcessor.__allocating_init(rendererEnvironment:) // init 
  }
 
  class TeaUI.WindowToolbar2Items : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x15c820  @objc WindowToolbar2Items.init <stripped>
+	0x187ee0  @objc WindowToolbar2Items.init <stripped>
  }
 
  class TeaUI.ShareWindowToolbar2Item {
@@ -4290,9 +4661,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case vPadding : 9€
+	case vPadding : y.
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case hPadding : 9€
+	case hPadding : y.
  }
 
  class TeaUI.FlowBlueprintLayoutCollectionSectionSolver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4300,8 +4671,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let supplementarySolver : BlueprintLayoutCollectionSectionSupplementarySolverType // +0x10 (0x28)
 	let layoutDirection : BlueprintLayoutDirection // +0x38 (0x1)
-	let layoutOptions : BlueprintLayoutOptions // +0x40 (0xc0)
-	let options : FlowOption // +0x100 (0x8)
+	let layoutOptions : BlueprintLayoutOptions // +0x40 (0xd0)
+	let options : FlowOption // +0x110 (0x8)
 
 	// Swift methods
  }
@@ -4324,18 +4695,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let context : Context // +0xa1 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x15ed20  @objc ShineImageRequest.init <stripped>
-	0x15ec20  @objc ShineImageRequest..cxx_destruct <stripped>
+	0x18a3e0  @objc ShineImageRequest.init <stripped>
+	0x18a2e0  @objc ShineImageRequest..cxx_destruct <stripped>
 
 	// Swift methods
-	0x15e1d0  class func ShineImageRequest.__allocating_init(shineOptions:shineColor:bounds:offset:whenStatic:) // init 
+	0x189890  class func ShineImageRequest.__allocating_init(shineOptions:shineColor:bounds:offset:whenStatic:) // init 
  }
 
  enum TeaUI.StaticModel {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case roundCorners : Ñ
+	case roundCorners : Y“
 	case text : NSAttributedString
 	case image : (UIImage, identifier: String)
 	case none  
@@ -4354,7 +4725,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let color : ShineColor // +0x0
 	let blendModeBlock : CGBlendMode // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let alphaBlock : ÀÉ // +0x48
+	let alphaBlock : •— // +0x48
  }
 
  class TeaUI.TouchInsetsLabel : UILabel /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -4363,14 +4734,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var touchInsets : UIEdgeInsets // +0x8 (0x20)
 
 	// ObjC -> Swift bridged methods
-	0x15fff0  @objc TouchInsetsLabel.pointInside:withEvent: <stripped>
-	0x1602a0  @objc TouchInsetsLabel.initWithFrame: <stripped>
-	0x160400  @objc TouchInsetsLabel.initWithCoder: <stripped>
+	0x18b6a0  @objc TouchInsetsLabel.pointInside:withEvent: <stripped>
+	0x18b950  @objc TouchInsetsLabel.initWithFrame: <stripped>
+	0x18bab0  @objc TouchInsetsLabel.initWithCoder: <stripped>
 
 	// Swift methods
-	0x15fdd0  func <stripped> // getter 
-	0x15fe20  func <stripped> // setter 
-	0x15fe90  func <stripped> // modifyCoroutine 
+	0x18b480  func <stripped> // getter 
+	0x18b4d0  func <stripped> // setter 
+	0x18b540  func <stripped> // modifyCoroutine 
  }
 
  class TeaUI.BlockBarButtonItem : UIBarButtonItem /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -4381,17 +4752,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var customContentView : UIView? // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x160c40  @objc BlockBarButtonItem.barButtonItemPressedWithSender: <stripped>
-	0x160cd0  @objc BlockBarButtonItem.accessibilityLabel <stripped>
-	0x160e40  @objc BlockBarButtonItem.setAccessibilityLabel: <stripped>
-	0x161070  @objc BlockBarButtonItem.init <stripped>
-	0x161100  @objc BlockBarButtonItem.initWithCoder: <stripped>
-	0x160f20  @objc BlockBarButtonItem..cxx_destruct <stripped>
+	0x18c2f0  @objc BlockBarButtonItem.barButtonItemPressedWithSender: <stripped>
+	0x18c380  @objc BlockBarButtonItem.accessibilityLabel <stripped>
+	0x18c4f0  @objc BlockBarButtonItem.setAccessibilityLabel: <stripped>
+	0x18c720  @objc BlockBarButtonItem.init <stripped>
+	0x18c7b0  @objc BlockBarButtonItem.initWithCoder: <stripped>
+	0x18c5d0  @objc BlockBarButtonItem..cxx_destruct <stripped>
 
 	// Swift methods
-	0x160600  func <stripped> // getter 
-	0x160650  func <stripped> // setter 
-	0x1606a0  func <stripped> // modifyCoroutine 
+	0x18bcb0  func <stripped> // getter 
+	0x18bd00  func <stripped> // setter 
+	0x18bd50  func <stripped> // modifyCoroutine 
  }
 
  struct TeaUI.CardViewLayoutOptions {
@@ -4408,11 +4779,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case topPadding : kÉ
+	case topPadding : E—
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case height : kÉ
+	case height : E—
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case ratio : 9€
+	case ratio : y.
  }
 
  class TeaUI.SeparatorView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -4425,13 +4796,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _backgroundColor : UIColor? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1622e0  @objc SeparatorView.isHidden <stripped>
-	0x162340  @objc SeparatorView.setHidden: <stripped>
-	0x162480  @objc SeparatorView.backgroundColor <stripped>
-	0x162500  @objc SeparatorView.setBackgroundColor: <stripped>
-	0x1627f0  @objc SeparatorView.initWithFrame: <stripped>
-	0x162870  @objc SeparatorView.initWithCoder: <stripped>
-	0x162a80  @objc SeparatorView..cxx_destruct <stripped>
+	0x18d990  @objc SeparatorView.isHidden <stripped>
+	0x18d9f0  @objc SeparatorView.setHidden: <stripped>
+	0x18db30  @objc SeparatorView.backgroundColor <stripped>
+	0x18dbb0  @objc SeparatorView.setBackgroundColor: <stripped>
+	0x18dea0  @objc SeparatorView.initWithFrame: <stripped>
+	0x18df20  @objc SeparatorView.initWithCoder: <stripped>
+	0x18e130  @objc SeparatorView..cxx_destruct <stripped>
  }
 
  enum TeaUI.VisibilityStyle {
@@ -4459,12 +4830,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case cell : ıÄ
+	case cell : œŒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case header : ıÄ
+	case header : œŒ
  }
 
  enum TeaUI.BridgedCommandState { }
+
+ class TeaUI.SwipeActionSnapshotView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	let view : UIView? // +0x8 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x18ef60  @objc SwipeActionSnapshotView.initWithCoder: <stripped>
+	0x18efb0  @objc SwipeActionSnapshotView.layoutSubviews <stripped>
+	0x18f0d0  @objc SwipeActionSnapshotView.initWithFrame: <stripped>
+	0x18f0b0  @objc SwipeActionSnapshotView..cxx_destruct <stripped>
+
+	// Swift methods
+ }
 
  struct TeaUI.SnapBlueprintBookmarkOptions {
 
@@ -4487,9 +4872,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let label : UILabel // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x166380  @objc LabelBarButtonItem.init <stripped>
-	0x166460  @objc LabelBarButtonItem.initWithCoder: <stripped>
-	0x166510  @objc LabelBarButtonItem..cxx_destruct <stripped>
+	0x191d50  @objc LabelBarButtonItem.init <stripped>
+	0x191e30  @objc LabelBarButtonItem.initWithCoder: <stripped>
+	0x191ee0  @objc LabelBarButtonItem..cxx_destruct <stripped>
  }
 
  struct TeaUI.Move {
@@ -4503,13 +4888,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var deletedIndices : ˚¥
+	var deletedIndices : 	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var insertedIndices : ˚¥
+	var insertedIndices : 	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var updatedIndices : ˚¥
+	var updatedIndices : 	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var updatedSectionDescriptorIndices : ˚¥
+	var updatedSectionDescriptorIndices : 	
 	var movedIndices : Move
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var deletedIndexPaths :  empty-list 
@@ -4547,13 +4932,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : I≥ // +0x0 (0x0)
+	let url : W // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let urlComponents : i| // +0x0 (0x0)
+	let urlComponents : E  // +0x0 (0x0)
 	let queryParamValues : Values // +0x0 (0x8)
 
 	// Swift methods
-	0x173770  class func URLHandlerMatcher.__allocating_init(url:) // init 
+	0x19f980  class func URLHandlerMatcher.__allocating_init(url:) // init 
  }
 
  enum TeaUI.Errors {
@@ -4564,6 +4949,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case pathMismatch : (expected: String?, actual: String?)
 	case pathCountMismatch : (expected: Int, actual: Int)
 	case pathPartMismatch : (expected: String, actual: String)
+	case additionalConditionsMismatch : Condition
+	case unknownCheck : (condition: String)
 	case fragmentMismatch : (expected: String?, actual: String?)
 	case paramMismatch : Param
 	case noMatch  
@@ -4574,14 +4961,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var pinTrait : BlueprintLayoutCollectionPinTrait // +0x8 (0x9)
 	var rubberbandEdge : RubberbandEdge // +0x11 (0x1)
-	var model : Any? // +0x18 (0x20)
-	var source : Source // +0x2d0000 (0x0)
+	var model : BlueprintLayoutSectionDecorationItemType // +0x18 (0x28)
+	var source : Source // +0x329000 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x179d20  @objc BlueprintLayoutCollectionLayoutAttributes.copyWithZone: <stripped>
-	0x17a080  @objc BlueprintLayoutCollectionLayoutAttributes.isEqual: <stripped>
-	0x17a450  @objc BlueprintLayoutCollectionLayoutAttributes.init <stripped>
-	0x17a2c0  @objc BlueprintLayoutCollectionLayoutAttributes..cxx_destruct <stripped>
+	0x1a60e0  @objc BlueprintLayoutCollectionLayoutAttributes.copyWithZone: <stripped>
+	0x1a6610  @objc BlueprintLayoutCollectionLayoutAttributes.isEqual: <stripped>
+	0x1a69e0  @objc BlueprintLayoutCollectionLayoutAttributes.init <stripped>
+	0x1a6850  @objc BlueprintLayoutCollectionLayoutAttributes..cxx_destruct <stripped>
  }
 
  enum TeaUI.RubberbandEdge {
@@ -4621,6 +5008,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case right  
  }
 
+ class TeaUI.SwipeActionCollectionView : UICollectionView /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	let swipeActionManager : SwipeActionManager // +0x8 (0x8)
+	var dependencyCleanupBlocks : [()] // +0x10 (0x8)
+	var coordinatingResetBlocks : [()] // +0x18 (0x8)
+	var coordinatingCancelBlocks : [()] // +0x20 (0x8)
+	var updateGroup : OS_dispatch_group // +0x28 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x1a90a0  @objc SwipeActionCollectionView.initWithFrame:collectionViewLayout: <stripped>
+	0x1a91e0  @objc SwipeActionCollectionView.dealloc <stripped>
+	0x1a9270  @objc SwipeActionCollectionView.initWithCoder: <stripped>
+	0x1a9a90  @objc SwipeActionCollectionView.didMoveToWindow <stripped>
+	0x1a9c90  @objc SwipeActionCollectionView.handlePanGestureWithGestureRecognizer: <stripped>
+	0x1a9db0  @objc SwipeActionCollectionView.handleFromCoordinatingGestureWithGestureRecognizer: <stripped>
+	0x1a9200  @objc SwipeActionCollectionView..cxx_destruct <stripped>
+ }
+
  class TeaUI.FullBleedCollectionReusableView {
  class TeaUI.ViewControllerTransitionManager : NSObject /usr/lib/libobjc.A.dylib {
 
@@ -4629,10 +5035,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var states :  empty-list  // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x17e580  @objc ViewControllerTransitionManager.init <stripped>
-	0x17e5f0  @objc ViewControllerTransitionManager.endTransitionWithViewController: <stripped>
-	0x17e7e0  @objc ViewControllerTransitionManager.beginTransitionWithViewController:transition:animated: <stripped>
-	0x17e8c0  @objc ViewControllerTransitionManager..cxx_destruct <stripped>
+	0x1acd30  @objc ViewControllerTransitionManager.init <stripped>
+	0x1acda0  @objc ViewControllerTransitionManager.endTransitionWithViewController: <stripped>
+	0x1acf90  @objc ViewControllerTransitionManager.beginTransitionWithViewController:transition:animated: <stripped>
+	0x1ad070  @objc ViewControllerTransitionManager..cxx_destruct <stripped>
  }
 
  enum TeaUI.Transition {
@@ -4675,7 +5081,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaUI.OverlayAlertAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1815c0  @objc OverlayAlertAssembly.init <stripped>
+	0x1aff10  @objc OverlayAlertAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -4685,17 +5091,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let supplementarySolver : BlueprintLayoutCollectionSectionSupplementarySolverType // +0x10 (0x28)
 	let layoutDirection : BlueprintLayoutDirection // +0x38 (0x1)
-	let layoutOptions : BlueprintLayoutOptions // +0x40 (0xc0)
+	let layoutOptions : BlueprintLayoutOptions // +0x40 (0xd0)
 
 	// Swift methods
  }
 
  class TeaUI.ImageProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x181f40  @objc ImageProcessor.process: <stripped>
+	0x1b0890  @objc ImageProcessor.process: <stripped>
 
 	// Swift methods
-	0x181ce0  class func ImageProcessor.__allocating_init() // init 
+	0x1b0630  class func ImageProcessor.__allocating_init() // init 
  }
 
  class TeaUI.BlueprintLayoutCollectionPipelineProcessor {
@@ -4708,7 +5114,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaUI.ManagerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x184eb0  @objc ManagerAssembly.init <stripped>
+	0x1b3860  @objc ManagerAssembly.init <stripped>
  }
 
  struct TeaUI.Accessibility { }
@@ -4751,11 +5157,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var parentDelegate : CardViewAnimationCoordinatorDelegate
 	var behavior : CardViewBehavior
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let presentationState : Ix
+	let presentationState : ≈
 	var coordinatingCoordinators : CoordinatingCoordinator
 	var initialCoordinatingPresentationState : CardViewPresentationState
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dimmingAlpha : 9€
+	var dimmingAlpha : y.
 	var animatingPresentationState : CardViewPresentationState
 	var coordinatingPresentationState : CardViewPresentationState
 	let rootView : UIView
@@ -4768,17 +5174,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var session : Session
 
 	// ObjC -> Swift bridged methods
-	0x189db0  @objc CardViewAnimationCoordinator.handleWithRecognizer: <stripped>
-	0x18bb80  @objc CardViewAnimationCoordinator.init <stripped>
-	0x18bc00  @objc CardViewAnimationCoordinator..cxx_destruct <stripped>
+	0x1b9b60  @objc CardViewAnimationCoordinator.handleWithRecognizer: <stripped>
+	0x1bb930  @objc CardViewAnimationCoordinator.init <stripped>
+	0x1bb9b0  @objc CardViewAnimationCoordinator..cxx_destruct <stripped>
 
 	// Swift methods
-	0x188fb0  func <stripped> // getter 
-	0x189040  func <stripped> // getter 
-	0x189060  func <stripped> // method 
-	0x189e50  func <stripped> // method 
-	0x18b1e0  func <stripped> // method 
-	0x18ba20  func <stripped> // method 
+	0x1b8d60  func <stripped> // getter 
+	0x1b8df0  func <stripped> // getter 
+	0x1b8e10  func <stripped> // method 
+	0x1b9c00  func <stripped> // method 
+	0x1baf90  func <stripped> // method 
+	0x1bb7d0  func <stripped> // method 
  }
 
  class TeaUI.CoordinatingCoordinator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4794,17 +5200,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let startLocation : CGPoint // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDiff : 9€ // +0x10
+	let startDiff : y. // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let zeroY : 9€ // +0x18
+	let zeroY : y. // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minY : 9€ // +0x20
+	let minY : y. // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let midY : 9€ // +0x28
+	let midY : y. // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maxY : 9€ // +0x30
+	let maxY : y. // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dismissedY : 9€ // +0x38
+	let dismissedY : y. // +0x38
  }
 
  enum TeaUI.LockState {
@@ -4820,9 +5226,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let blueprint : Blueprint
 	let section : BlueprintSection
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDate : ë§
+	let startDate : ∑ı
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let endDate : ë§
+	let endDate : ∑ı
 	let startTrigger : BlueprintImpressionTrigger
 	let endTrigger : BlueprintImpressionTrigger
 	let sessionIdentifier : String
@@ -4842,14 +5248,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var canExecute : CommandCenterType // +0x68 (0x10)
 
 	// Swift methods
-	0x1922f0  class func ContextMenuItem.__allocating_init(title:image:style:options:) // init 
-	0x192250  class func ContextMenuItem.__allocating_init<A>(command:context:title:image:style:options:) // init 
-	0x192c60  class func ContextMenuItem.__allocating_init(command:title:image:style:options:) // init 
-	0x192f80  class func ContextMenuItem.__allocating_init<A, B>(command:context:title:image:style:options:) // init 
-	0x1932a0  class func ContextMenuItem.__allocating_init<A, B>(command:context:title:image:style:options:) // init 
-	0x193c50  class func ContextMenuItem.__allocating_init<A>(command:title:image:style:options:) // init 
-	0x193e40  class func ContextMenuItem.__allocating_init<A, B>(command:context:title:image:style:options:) // init 
-	0x194450  class func ContextMenuItem.__allocating_init<A>(command:title:image:style:options:) // init 
+	0x1c20e0  class func ContextMenuItem.__allocating_init(title:image:style:options:) // init 
+	0x1c2040  class func ContextMenuItem.__allocating_init<A>(command:context:title:image:style:options:) // init 
+	0x1c2a50  class func ContextMenuItem.__allocating_init(command:title:image:style:options:) // init 
+	0x1c2d70  class func ContextMenuItem.__allocating_init<A, B>(command:context:title:image:style:options:) // init 
+	0x1c3090  class func ContextMenuItem.__allocating_init<A, B>(command:context:title:image:style:options:) // init 
+	0x1c3a40  class func ContextMenuItem.__allocating_init<A>(command:title:image:style:options:) // init 
+	0x1c3c30  class func ContextMenuItem.__allocating_init<A, B>(command:context:title:image:style:options:) // init 
+	0x1c4240  class func ContextMenuItem.__allocating_init<A>(command:title:image:style:options:) // init 
  }
 
  enum TeaUI.SelectionStyle {
@@ -4886,10 +5292,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum TeaUI.Action {
 
 	// Properties
-	case reloadWithAnimation : BlueprintAnimatorType
+	case reloadWithAnimation : BlueprintAnimation
 	case changes : BlueprintDiffType
 	case changesWithAnimation : BlueprintDiffType
 	case moved : BlueprintDiffType
+	case draggedAndDropped : BlueprintDiffType
 	case reload  
 	case bookmark  
  }
@@ -4898,7 +5305,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let layoutOptions : BlueprintLayoutOptions // +0x0
-	let layoutDirection : BlueprintLayoutDirection // +0xc0
+	let layoutDirection : BlueprintLayoutDirection // +0xd0
  }
 
  enum TeaUI.ScreenError {
@@ -4915,15 +5322,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let tableViewSource : DebugTableViewSource // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x19ab90  @objc DebugSubViewController.initWithCoder: <stripped>
-	0x19ada0  @objc DebugSubViewController.viewDidLoad <stripped>
-	0x19ae90  @objc DebugSubViewController.viewWillLayoutSubviews <stripped>
-	0x19af70  @objc DebugSubViewController.doDone <stripped>
-	0x19b0a0  @objc DebugSubViewController.initWithNibName:bundle: <stripped>
-	0x19afc0  @objc DebugSubViewController..cxx_destruct <stripped>
+	0x1cb460  @objc DebugSubViewController.initWithCoder: <stripped>
+	0x1cb670  @objc DebugSubViewController.viewDidLoad <stripped>
+	0x1cb760  @objc DebugSubViewController.viewWillLayoutSubviews <stripped>
+	0x1cb840  @objc DebugSubViewController.doDone <stripped>
+	0x1cb970  @objc DebugSubViewController.initWithNibName:bundle: <stripped>
+	0x1cb890  @objc DebugSubViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x19aab0  class func DebugSubViewController.__allocating_init(dataSource:title:) // init 
+	0x1cb380  class func DebugSubViewController.__allocating_init(dataSource:title:) // init 
  }
 
  struct TeaUI.RendererState {
@@ -4949,13 +5356,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isLiveResizing : Bool // +0x11 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x19be30  @objc RendererEnvironment.didStartLiveResizing: <stripped>
-	0x19be40  @objc RendererEnvironment.didEndLiveResizing: <stripped>
-	0x19bf30  @objc RendererEnvironment.init <stripped>
-	0x19bf90  @objc RendererEnvironment..cxx_destruct <stripped>
+	0x1cc700  @objc RendererEnvironment.didStartLiveResizing: <stripped>
+	0x1cc710  @objc RendererEnvironment.didEndLiveResizing: <stripped>
+	0x1cc800  @objc RendererEnvironment.init <stripped>
+	0x1cc860  @objc RendererEnvironment..cxx_destruct <stripped>
 
 	// Swift methods
-	0x19b540  class func RendererEnvironment.__allocating_init(scrollView:testing:) // init 
+	0x1cbe10  class func RendererEnvironment.__allocating_init(scrollView:testing:) // init 
  }
 
  class TeaUI.BlueprintTraversalCollectionProvider {
@@ -4968,10 +5375,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var registries : KeyCommandHandlerRegistry // +0x40 (0x8)
 	var controller : weak UIViewController? // +0x48 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var selector : =‘ // +0x50 (0x8)
+	var selector : q' // +0x50 (0x8)
 
 	// Swift methods
-	0x19f940  class func KeyCommandManager.__allocating_init(providers:) // init 
+	0x1d02c0  class func KeyCommandManager.__allocating_init(providers:) // init 
  }
 
  class TeaUI.OverlayAlertView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -4983,16 +5390,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let subtitleLabel : UILabel // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1a1a70  @objc OverlayAlertView.initWithCoder: <stripped>
-	0x1a1ec0  @objc OverlayAlertView.init <stripped>
-	0x1a1ee0  @objc OverlayAlertView.initWithFrame: <stripped>
-	0x1a1f40  @objc OverlayAlertView..cxx_destruct <stripped>
+	0x1d23f0  @objc OverlayAlertView.initWithCoder: <stripped>
+	0x1d2840  @objc OverlayAlertView.init <stripped>
+	0x1d2860  @objc OverlayAlertView.initWithFrame: <stripped>
+	0x1d28c0  @objc OverlayAlertView..cxx_destruct <stripped>
  }
 
  class TeaUI.Images : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1a2810  @objc Images.init <stripped>
-	0x1a27b0  @objc Images..cxx_destruct <stripped>
+	0x1d3220  @objc Images.init <stripped>
+	0x1d31c0  @objc Images..cxx_destruct <stripped>
  }
 
  enum TeaUI.BarViewSeparator {
@@ -5009,10 +5416,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaUI.DebugNavigationController : UINavigationController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1a2bb0  @objc DebugNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
-	0x1a2c40  @objc DebugNavigationController.initWithRootViewController: <stripped>
-	0x1a2c80  @objc DebugNavigationController.initWithNibName:bundle: <stripped>
-	0x1a2d50  @objc DebugNavigationController.initWithCoder: <stripped>
+	0x1d3760  @objc DebugNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
+	0x1d37f0  @objc DebugNavigationController.initWithRootViewController: <stripped>
+	0x1d3830  @objc DebugNavigationController.initWithNibName:bundle: <stripped>
+	0x1d3900  @objc DebugNavigationController.initWithCoder: <stripped>
  }
 
  class TeaUI.DebugViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -5024,28 +5431,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let tableViewSource : DebugTableViewSource
 
 	// ObjC -> Swift bridged methods
-	0x1a2e70  @objc DebugViewController.initWithCoder: <stripped>
-	0x1a3c00  @objc DebugViewController.viewDidLoad <stripped>
-	0x1a3cf0  @objc DebugViewController.viewWillLayoutSubviews <stripped>
-	0x1a3dd0  @objc DebugViewController.doDone <stripped>
-	0x1a3df0  @objc DebugViewController.doSettings <stripped>
-	0x1a3fb0  @objc DebugViewController.initWithNibName:bundle: <stripped>
-	0x1a3e90  @objc DebugViewController..cxx_destruct <stripped>
+	0x1d3a20  @objc DebugViewController.initWithCoder: <stripped>
+	0x1d4610  @objc DebugViewController.viewDidLoad <stripped>
+	0x1d4700  @objc DebugViewController.viewWillLayoutSubviews <stripped>
+	0x1d47e0  @objc DebugViewController.doDone <stripped>
+	0x1d4800  @objc DebugViewController.doSettings <stripped>
+	0x1d49c0  @objc DebugViewController.initWithNibName:bundle: <stripped>
+	0x1d48a0  @objc DebugViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1a2db0  class func DebugViewController.__allocating_init(dataSource:settingsPresentable:) // init 
+	0x1d3960  class func DebugViewController.__allocating_init(dataSource:settingsPresentable:) // init 
  }
 
  class TeaUI.DebugInfoTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1a40f0  @objc DebugInfoTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x1a4100  @objc DebugInfoTableViewCell.initWithCoder: <stripped>
+	0x1d4b00  @objc DebugInfoTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x1d4b10  @objc DebugInfoTableViewCell.initWithCoder: <stripped>
  }
 
  class TeaUI.DebugSubtitleTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1a4150  @objc DebugSubtitleTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x1a4200  @objc DebugSubtitleTableViewCell.initWithCoder: <stripped>
+	0x1d4b60  @objc DebugSubtitleTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x1d4c10  @objc DebugSubtitleTableViewCell.initWithCoder: <stripped>
  }
 
  enum TeaUI.TableViewCellViewLayout {
@@ -5113,23 +5520,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let touchInsets : UIEdgeInsets // +0x8 (0x20)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var spacing : 9€ // +0x28 (0x8)
+	var spacing : y. // +0x28 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rightMargin : 9€ // +0x30 (0x8)
+	var rightMargin : y. // +0x30 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var leftMargin : 9€ // +0x38 (0x8)
+	var leftMargin : y. // +0x38 (0x8)
 	var itemSize : CGSize // +0x40 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cellHeight : 9€ // +0x50 (0x8)
+	let cellHeight : y. // +0x50 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1ad120  @objc AccessoryContainerView.initWithCoder: <stripped>
-	0x1ad440  @objc AccessoryContainerView.layoutSubviews <stripped>
-	0x1ad560  @objc AccessoryContainerView.pointInside:withEvent: <stripped>
-	0x1ad7c0  @objc AccessoryContainerView.initWithFrame: <stripped>
+	0x1ddb20  @objc AccessoryContainerView.initWithCoder: <stripped>
+	0x1dde40  @objc AccessoryContainerView.layoutSubviews <stripped>
+	0x1ddf60  @objc AccessoryContainerView.pointInside:withEvent: <stripped>
+	0x1de1c0  @objc AccessoryContainerView.initWithFrame: <stripped>
 
 	// Swift methods
-	0x1aca70  class func AccessoryContainerView.__allocating_init(height:views:) // init 
+	0x1dd470  class func AccessoryContainerView.__allocating_init(height:views:) // init 
  }
 
  enum TeaUI.AccessoryType {
@@ -5155,7 +5562,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaUI.ImageDeserializer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x1afd80  class func ImageDeserializer.__allocating_init() // init 
+	0x1e0780  class func ImageDeserializer.__allocating_init() // init 
  }
 
  enum TeaUI.ImageError {
@@ -5176,7 +5583,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var caches : Sp // +0x10 (0x8)
+	var caches : ≈º // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -5218,10 +5625,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let switchControl : UISwitch // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1b58e0  @objc SwitchTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x1b5930  @objc SwitchTableViewCell.initWithCoder: <stripped>
-	0x1b5950  @objc SwitchTableViewCell.valueChanged <stripped>
-	0x1b5a00  @objc SwitchTableViewCell..cxx_destruct <stripped>
+	0x1e6310  @objc SwitchTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x1e6360  @objc SwitchTableViewCell.initWithCoder: <stripped>
+	0x1e6380  @objc SwitchTableViewCell.valueChanged <stripped>
+	0x1e6430  @objc SwitchTableViewCell..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -5235,7 +5642,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaUI.Previewing : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1bd510  @objc Previewing.init <stripped>
+	0x1ee0a0  @objc Previewing.init <stripped>
  }
 
  struct TeaUI.BlueprintTraversalCollection {
@@ -5255,7 +5662,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let element : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let indexPath : ´∫
+	let indexPath : Á
  }
 
  struct TeaUI.URLHandlerContext {
@@ -5263,27 +5670,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let match : URLHandlerMatch
 	let options : OpenURLOptionsKey
+	let options2 : URLHandlerOpenOptions
  }
 
  class TeaUI.BlueprintInfiniteScrollManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, BlueprintInfiniteScrollProviderType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let observableInfiniteScroll : ≠j // +0x10 (0x8)
+	let observableInfiniteScroll : ∑ // +0x10 (0x8)
 	var inflightRequests : Set<String> // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rangeCache : ˚¥ // +0x0 (0x0)
+	var rangeCache : 	 // +0x0 (0x0)
 
 	// Swift methods
-	0x1c14e0  class func BlueprintInfiniteScrollManager.__allocating_init(infiniteScroll:) // init 
+	0x1f24e0  class func BlueprintInfiniteScrollManager.__allocating_init(infiniteScroll:) // init 
  }
 
  struct TeaUI.Rec709Luma { }
 
  class TeaUI.OptionTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1c3690  @objc OptionTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x1c3730  @objc OptionTableViewCell.initWithCoder: <stripped>
+	0x1f4d50  @objc OptionTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x1f4df0  @objc OptionTableViewCell.initWithCoder: <stripped>
  }
 
  class TeaUI.TabBarNavigationController : NavigationController {
@@ -5294,16 +5702,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var viewControllerDepth : Int // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1c3e60  @objc TabBarNavigationController.initWithRootViewController: <stripped>
-	0x1c3ea0  @objc TabBarNavigationController.initWithCoder: <stripped>
-	0x1c3f10  @objc TabBarNavigationController.viewControllers <stripped>
-	0x1c3fc0  @objc TabBarNavigationController.setViewControllers: <stripped>
-	0x1c4250  @objc TabBarNavigationController.tabBarItem <stripped>
-	0x1c42f0  @objc TabBarNavigationController.setTabBarItem: <stripped>
-	0x1c4380  @objc TabBarNavigationController.description <stripped>
-	0x1c4620  @objc TabBarNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
-	0x1c46f0  @objc TabBarNavigationController.initWithNibName:bundle: <stripped>
-	0x1c4790  @objc TabBarNavigationController..cxx_destruct <stripped>
+	0x1f55a0  @objc TabBarNavigationController.initWithRootViewController: <stripped>
+	0x1f5660  @objc TabBarNavigationController.initWithCoder: <stripped>
+	0x1f56d0  @objc TabBarNavigationController.viewControllers <stripped>
+	0x1f5780  @objc TabBarNavigationController.setViewControllers: <stripped>
+	0x1f5a10  @objc TabBarNavigationController.tabBarItem <stripped>
+	0x1f5ab0  @objc TabBarNavigationController.setTabBarItem: <stripped>
+	0x1f5b40  @objc TabBarNavigationController.description <stripped>
+	0x1f5de0  @objc TabBarNavigationController.initWithRootViewController:navigationBarClass: <stripped>
+	0x1f5e80  @objc TabBarNavigationController..cxx_destruct <stripped>
  }
 
  class TeaUI.BlueprintViewportMonitor : NSObject /usr/lib/libobjc.A.dylib {
@@ -5313,11 +5720,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let options : Options // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1c7780  @objc BlueprintViewportMonitor.init <stripped>
-	0x1c7710  @objc BlueprintViewportMonitor..cxx_destruct <stripped>
+	0x1f8d90  @objc BlueprintViewportMonitor.init <stripped>
+	0x1f8d20  @objc BlueprintViewportMonitor..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1c7150  class func BlueprintViewportMonitor.__allocating_init(options:) // init 
+	0x1f8760  class func BlueprintViewportMonitor.__allocating_init(options:) // init 
  }
 
  struct TeaUI.Options {
@@ -5328,8 +5735,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaUI.RadialGradientView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1c9690  @objc RadialGradientView.initWithFrame: <stripped>
-	0x1c9780  @objc RadialGradientView.initWithCoder: <stripped>
+	0x1facc0  @objc RadialGradientView.initWithFrame: <stripped>
+	0x1fadb0  @objc RadialGradientView.initWithCoder: <stripped>
  }
 
  class TeaUI.RadialGradientLayer : CAGradientLayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
@@ -5338,11 +5745,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var gradientDescriptor : GradientDescriptor
 
 	// ObjC -> Swift bridged methods
-	0x1c9f30  @objc RadialGradientLayer.init <stripped>
-	0x1ca2e0  @objc RadialGradientLayer.initWithLayer: <stripped>
-	0x1ca420  @objc RadialGradientLayer.initWithCoder: <stripped>
-	0x1ca890  @objc RadialGradientLayer.drawInContext: <stripped>
-	0x1ca8e0  @objc RadialGradientLayer..cxx_destruct <stripped>
+	0x1fb560  @objc RadialGradientLayer.init <stripped>
+	0x1fb910  @objc RadialGradientLayer.initWithLayer: <stripped>
+	0x1fba50  @objc RadialGradientLayer.initWithCoder: <stripped>
+	0x1fbec0  @objc RadialGradientLayer.drawInContext: <stripped>
+	0x1fbf10  @objc RadialGradientLayer..cxx_destruct <stripped>
  }
 
  class TeaUI.BlueprintInfiniteScrollRequest : _SwiftObject /usr/lib/swift/libswiftCore.dylib, BlueprintInfiniteScrollRequestType {
@@ -5358,25 +5765,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct TeaUI.BlueprintViewportScrollData {
 
 	// Properties
-	let scrollBounds : CGRect // +0x0
+	let scrollView : UIScrollView // +0x0
  }
 
  struct TeaUI.ScaleContentSelectionStyle {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let factor : 9€ // +0x0
+	let factor : y. // +0x0
  }
 
  class TeaUI.StackedBlueprintLayoutCollectionSectionSupplementarySolver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	let layoutDirection : BlueprintLayoutDirection // +0x10 (0x1)
-	let layoutOptions : BlueprintLayoutOptions // +0x18 (0xc0)
+	let layoutOptions : BlueprintLayoutOptions // +0x18 (0xd0)
 
 	// Swift methods
  }
 
+ class TeaUI.OpenInNewWindowCommandHandler {
  struct TeaUI.BackgroundSelectionStyle {
 
 	// Properties
@@ -5389,11 +5797,39 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var sessions : PageViewSession // +0x10 (0x8)
 
 	// Swift methods
-	0x1cbc80  class func PageSessionManager.__allocating_init() // init 
+	0x1fd570  class func PageSessionManager.__allocating_init() // init 
+ }
+
+ class TeaUI.EmptyStateView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	var emptyPosition : EmptyStatePosition // +0x8 (0x1)
+	let model : EmptyStateModel // +0x10 (0x20)
+	let styler : EmptyStateStylerType // +0x30 (0x28)
+	let label : UILabel // +0x58 (0x8)
+	let scrollView : UIScrollView // +0x60 (0x8)
+	let visualEffectView : UIVisualEffectView? // +0x68 (0x8)
+	let keyboardObserver : KeyboardObserver // +0x70 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x1ff3b0  @objc EmptyStateView.initWithCoder: <stripped>
+	0x1ffc00  @objc EmptyStateView.layoutSubviews <stripped>
+	0x1ffce0  @objc EmptyStateView.initWithFrame: <stripped>
+	0x1ffd40  @objc EmptyStateView..cxx_destruct <stripped>
+
+	// Swift methods
+	0x1ff1c0  class func EmptyStateView.__allocating_init(model:styler:) // init 
  }
 
  class TeaUI.MotionView {
  class TeaUI.ModernPageBlueprintPrewarmer {
+ enum TeaUI.DropProposal {
+
+	// Properties
+	case unspecified  
+	case move  
+ }
+
  enum TeaUI.PageViewControllerShowTrigger {
 
 	// Properties
@@ -5411,15 +5847,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : TabBarStylerType // +0x38 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x1d3d50  @objc TabBarController.initWithCoder: <stripped>
-	0x1d3de0  @objc TabBarController.viewControllers <stripped>
-	0x1d3eb0  @objc TabBarController.setViewControllers: <stripped>
-	0x1d45f0  @objc TabBarController.viewDidLoad <stripped>
-	0x1d4840  @objc TabBarController.initWithNibName:bundle: <stripped>
-	0x1d4740  @objc TabBarController..cxx_destruct <stripped>
+	0x207780  @objc TabBarController.initWithCoder: <stripped>
+	0x207810  @objc TabBarController.viewControllers <stripped>
+	0x2078e0  @objc TabBarController.setViewControllers: <stripped>
+	0x208020  @objc TabBarController.viewDidLoad <stripped>
+	0x208270  @objc TabBarController.initWithNibName:bundle: <stripped>
+	0x208170  @objc TabBarController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1d38c0  class func TabBarController.__allocating_init(tabBarNavigationControllers:primaryTabBarItemIndex:styler:useCustomBarView:) // init 
+	0x2072f0  class func TabBarController.__allocating_init(tabBarNavigationControllers:primaryTabBarItemIndex:styler:useCustomBarView:) // init 
  }
 
  class TeaUI.Commands : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -5455,10 +5891,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let fallbackTransition : Transition // +0x38 (0x8)
 
 	// Swift methods
-	0x1d91e0  class func TransitionFactory.__allocating_init(factory:fallbackTransition:) // init 
+	0x20cc10  class func TransitionFactory.__allocating_init(factory:fallbackTransition:) // init 
  }
 
  class TeaUI.BlueprintViewController {
+ struct TeaUI.TabBarSplitViewModalContext {
+
+	// Properties
+	let modalViewController : UIViewController // +0x0
+	let presentationStyle : PresentationStyle // +0x8
+	let presentationContext : TabBarSplitViewPresentationContext // +0x10
+ }
+
+ enum TeaUI.PresentationStyle {
+
+	// Properties
+	case sheet : SheetPresentationOptions
+	case modal  
+ }
+
+ struct TeaUI.SheetPresentationOptions {
+
+	// Properties
+	let wantsBottomAttachedInCompactHeight : Bool // +0x0
+	let widthFollowsPreferredContentSizeWhenBottomAttached : Bool // +0x1
+	let shouldDismissWhenTappedOutside : Bool // +0x2
+ }
+
  enum TeaUI.BlueprintLayoutSectionFramePosition {
 
 	// Properties
@@ -5490,9 +5949,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let style : Style // +0x10 (0x8)
 
 	// Swift methods
-	0x1e7170  func <stripped> // getter 
-	0x1e7180  func <stripped> // getter 
-	0x1e7210  func <stripped> // getter 
+	0x21b800  func <stripped> // getter 
+	0x21b810  func <stripped> // getter 
+	0x21b8a0  func <stripped> // getter 
  }
 
  enum TeaUI.Style {
@@ -5518,6 +5977,36 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class TeaUI.LayeredViewRenderer {
+ class TeaUI.SwipeActionManager : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	let panGestureRecognizer : UIPanGestureRecognizer // +0x8 (0x8)
+	let tapGestureRecognizer : UITapGestureRecognizer // +0x10 (0x8)
+	let deferGroup : OS_dispatch_group // +0x18 (0x8)
+	var collectionView : weak UICollectionView? // +0x20 (0x8)
+	var dataSource : SwipeActionDataSource // +0x28 (0x10)
+	var delegate : SwipeActionDelegate // +0x38 (0x10)
+	var swipeState : SwipeActionState // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rubberbandFactor : y. // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let maximumSwipeVelocity : y. // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let springStiffness : y. // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let snapOpenPercentage : y. // +0x0 (0x8)
+	let fadeDuration : Double // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let fadeOffset : y. // +0x0 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x21d9a0  @objc SwipeActionManager.init <stripped>
+	0x21f210  @objc SwipeActionManager.gestureRecognizerShouldBegin: <stripped>
+	0x220890  @objc SwipeActionManager.handlePanGestureWithRecognizer: <stripped>
+	0x220a60  @objc SwipeActionManager.handleTapGestureWithRecognizer: <stripped>
+	0x2234b0  @objc SwipeActionManager..cxx_destruct <stripped>
+ }
+
  class TeaUI.ShineImage : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
@@ -5527,8 +6016,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let backgroundImage : UIImage? // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1e8cd0  @objc ShineImage.init <stripped>
-	0x1e8c40  @objc ShineImage..cxx_destruct <stripped>
+	0x224b50  @objc ShineImage.init <stripped>
+	0x224ac0  @objc ShineImage..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -5552,52 +6041,52 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isFullscreen : Bool
 
 	// ObjC -> Swift bridged methods
-	0x1e9940  @objc CardView.initWithCoder: <stripped>
-	0x1e9f00  @objc CardView.layoutSubviews <stripped>
-	0x1e9f50  @objc CardView.toggleExpansion <stripped>
-	0x1e9f80  @objc CardView.accessibilityLabel <stripped>
-	0x1ea0e0  @objc CardView.setAccessibilityLabel: <stripped>
-	0x1ea200  @objc CardView.initWithFrame: <stripped>
-	0x1ea260  @objc CardView..cxx_destruct <stripped>
+	0x2257c0  @objc CardView.initWithCoder: <stripped>
+	0x225d80  @objc CardView.layoutSubviews <stripped>
+	0x225dd0  @objc CardView.toggleExpansion <stripped>
+	0x225e00  @objc CardView.accessibilityLabel <stripped>
+	0x225f60  @objc CardView.setAccessibilityLabel: <stripped>
+	0x226080  @objc CardView.initWithFrame: <stripped>
+	0x2260e0  @objc CardView..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class TeaUI.GrabberView : _UIGrabber /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1e9630  @objc GrabberView.initWithFrame: <stripped>
-	0x1e9660  @objc GrabberView.initWithCoder: <stripped>
+	0x2254b0  @objc GrabberView.initWithFrame: <stripped>
+	0x2254e0  @objc GrabberView.initWithCoder: <stripped>
  }
 
  class TeaUI.ContentOverlayButtonView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1e9720  @objc ContentOverlayButtonView.initWithFrame: <stripped>
-	0x1e9740  @objc ContentOverlayButtonView.initWithCoder: <stripped>
+	0x2255a0  @objc ContentOverlayButtonView.initWithFrame: <stripped>
+	0x2255c0  @objc ContentOverlayButtonView.initWithCoder: <stripped>
  }
 
  class TeaUI.BarView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1e9780  @objc BarView.initWithFrame: <stripped>
-	0x1e9810  @objc BarView.initWithCoder: <stripped>
+	0x225600  @objc BarView.initWithFrame: <stripped>
+	0x225690  @objc BarView.initWithCoder: <stripped>
  }
 
  class TeaUI.ClippingView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1e98b0  @objc ClippingView.initWithFrame: <stripped>
-	0x1e98d0  @objc ClippingView.initWithCoder: <stripped>
+	0x225730  @objc ClippingView.initWithFrame: <stripped>
+	0x225750  @objc ClippingView.initWithCoder: <stripped>
  }
 
  struct TeaUI.Layout {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let barHeight : 9€ // +0x0
+	let barHeight : y. // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleViewHeight : 9€ // +0x8
+	let titleViewHeight : y. // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let grabberTopPadding : 9€ // +0x10
+	let grabberTopPadding : y. // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cornerRadius : 9€ // +0x18
+	let cornerRadius : y. // +0x18
  }
 
  class TeaUI.DownloadButton : TouchInsetsButton {
@@ -5615,28 +6104,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let progressLayer : CAShapeLayer // +0x88 (0x8)
 	var buttonState : ButtonState // +0x90 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var downloadProgressDisposable : ªc // +0x98 (0x28)
+	var downloadProgressDisposable : gØ // +0x98 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var downloadStateDisposable : ªc // +0xc0 (0x28)
+	var downloadStateDisposable : gØ // +0xc0 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x1ec9b0  @objc DownloadButton.init <stripped>
-	0x1ed1c0  @objc DownloadButton.initWithFrame: <stripped>
-	0x1ed1f0  @objc DownloadButton.initWithCoder: <stripped>
-	0x1ed220  @objc DownloadButton.accessibilityActivate <stripped>
-	0x1ed550  @objc DownloadButton.layoutSubviews <stripped>
-	0x1ed5c0  @objc DownloadButton.tintColorDidChange <stripped>
-	0x1ed620  @objc DownloadButton.startingButtonTappedWithSender: <stripped>
-	0x1ed760  @objc DownloadButton..cxx_destruct <stripped>
+	0x228850  @objc DownloadButton.init <stripped>
+	0x229060  @objc DownloadButton.initWithFrame: <stripped>
+	0x229090  @objc DownloadButton.initWithCoder: <stripped>
+	0x2290c0  @objc DownloadButton.accessibilityActivate <stripped>
+	0x2293f0  @objc DownloadButton.layoutSubviews <stripped>
+	0x229460  @objc DownloadButton.tintColorDidChange <stripped>
+	0x2294c0  @objc DownloadButton.startingButtonTappedWithSender: <stripped>
+	0x229600  @objc DownloadButton..cxx_destruct <stripped>
  }
 
  enum TeaUI.DownloadState {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case failed : Iß
+	case inProgress : Ø%
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case failed : Õˆ
 	case notStarted  
-	case inProgress  
 	case finished  
  }
 
@@ -5666,21 +6156,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let presentationControllerFactory : (_:_:_:)? // +0x30 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x1ef9b0  @objc Transition.init <stripped>
-	0x1ef900  @objc Transition..cxx_destruct <stripped>
+	0x22b820  @objc Transition.init <stripped>
+	0x22b770  @objc Transition..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1ef790  class func Transition.__allocating_init(presentationTransitionFactory:dismissalTransitionFactory:presentationControllerFactory:) // init 
+	0x22b600  class func Transition.__allocating_init(presentationTransitionFactory:dismissalTransitionFactory:presentationControllerFactory:) // init 
  }
 
  class TeaUI.ModalHostViewControllerFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ModalHostViewControllerFactoryType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let applicationStateManager : ´Ø // +0x10 (0x28)
+	let applicationStateManager : u // +0x10 (0x28)
 
 	// Swift methods
-	0x1eff00  class func ModalHostViewControllerFactory.__allocating_init(applicationStateManager:) // init 
+	0x22bd70  class func ModalHostViewControllerFactory.__allocating_init(applicationStateManager:) // init 
  }
 
  class TeaUI.BlueprintPipelineQueues : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -5690,7 +6180,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let processingQueue : OS_dispatch_queue // +0x18 (0x8)
 	var trackingQueues : Set<UInt> // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lock : √® // +0x28 (0x8)
+	let lock : È˘ // +0x28 (0x8)
 
 	// Swift methods
  }
@@ -5702,7 +6192,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let onExecuteBlock : Commands // +0x18 (0x10)
 
 	// Swift methods
-	0x1f14a0  class func CommandExecutionSource.__allocating_init(sourceView:onExecute:) // init 
+	0x22d510  class func CommandExecutionSource.__allocating_init(sourceView:onExecute:) // init 
  }
 
  class TeaUI.ConfigurableSingleton : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -5713,17 +6203,53 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lruCache : qd // +0x8 (0x8)
+	var lruCache : %∞ // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lock : √® // +0x10 (0x8)
+	let lock : È˘ // +0x10 (0x8)
 	var inflightRequests : ShineImage // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1f32a0  @objc ShineImageFactory.init <stripped>
-	0x1f32c0  @objc ShineImageFactory.didReceiveMemoryWarning <stripped>
-	0x1f3810  @objc ShineImageFactory.shineImageForRequest:completion: <stripped>
-	0x1f3990  @objc ShineImageFactory.syncShineImageForRequest: <stripped>
-	0x1f4c90  @objc ShineImageFactory..cxx_destruct <stripped>
+	0x22f310  @objc ShineImageFactory.init <stripped>
+	0x22f330  @objc ShineImageFactory.didReceiveMemoryWarning <stripped>
+	0x22f880  @objc ShineImageFactory.shineImageForRequest:completion: <stripped>
+	0x22fa00  @objc ShineImageFactory.syncShineImageForRequest: <stripped>
+	0x230d00  @objc ShineImageFactory..cxx_destruct <stripped>
+ }
+
+ struct TeaUI.SwipeActionState {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let indexPath : Á
+	let translateNeighborData : NeighborData
+	let fadeNeighborData : NeighborData
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let originPosition : y.
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minPosition : y.
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let maxPosition : y.
+	let swipeActionContainerView : SwipeActionContainerView
+	let swipeActions : SwipeContextualAction
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let originalZPosition : y.
+	let originalAllowsSelection : Bool
+	let snapshotView : UIView?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var initialPosition : y.
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let boundaryTest : ≠¨
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let boundaryValue : y.
+ }
+
+ struct TeaUI.NeighborData {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let indexPath : Á
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let zPosition : y.
  }
 
  class TeaUI.SectionFooterViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SectionFooterViewLayoutAttributesFactoryType {
@@ -5749,7 +6275,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let nativeScreenSize : CGSize // +0x0
 	let boundingSize : CGSize // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scale : 9€ // +0x20
+	let scale : y. // +0x20
  }
 
  enum TeaUI.BlueprintViewItemVisibility {
@@ -5768,6 +6294,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case pinToEdge  
  }
 
+ struct TeaUI.SwipeContextualAction {
+
+	// Properties
+	let image : UIImage // +0x0
+	let backgroundColor : UIColor // +0x8
+	let isEnabled : Bool // +0x10
+	let actionBlockRunOption : ActionBlockRunOption // +0x11
+	let actionBlock : () // +0x18
+ }
+
  struct TeaUI.DynamicValue {
 
 	// Properties
@@ -5779,18 +6315,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pages : a
+	let pages : Y¨
  }
 
  class TeaUI.RTLAdjuster : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let locale : „_ // +0x10 (0x28)
+	let locale : 1´ // +0x10 (0x28)
 	let bounds : CGRect // +0x38 (0x20)
 
 	// Swift methods
-	0x1fc790  class func RTLAdjuster.__allocating_init(locale:bounds:) // init 
+	0x23ca20  class func RTLAdjuster.__allocating_init(locale:bounds:) // init 
  }
 
  enum TeaUI.Alignment {
@@ -5802,8 +6338,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaUI.BlankReusableView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1fcf60  @objc BlankReusableView.initWithFrame: <stripped>
-	0x1fd010  @objc BlankReusableView.initWithCoder: <stripped>
+	0x23d1f0  @objc BlankReusableView.initWithFrame: <stripped>
+	0x23d2a0  @objc BlankReusableView.initWithCoder: <stripped>
  }
 
  class TeaUI.TableViewHeaderFooterView {
@@ -5865,7 +6401,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDate : ë§
+	let startDate : ∑ı
 	let trigger : BlueprintImpressionSessionTrigger
 	let number : UInt
  }
@@ -5880,13 +6416,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let slider : UISlider // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2002c0  @objc SliderTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x200310  @objc SliderTableViewCell.initWithCoder: <stripped>
-	0x2004a0  @objc SliderTableViewCell.valueChanged <stripped>
-	0x200500  @objc SliderTableViewCell..cxx_destruct <stripped>
+	0x240540  @objc SliderTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x240590  @objc SliderTableViewCell.initWithCoder: <stripped>
+	0x240720  @objc SliderTableViewCell.valueChanged <stripped>
+	0x240780  @objc SliderTableViewCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0x200330  func <stripped> // method 
+	0x2405b0  func <stripped> // method 
  }
 
  enum TeaUI.TabBarSplitViewFocus { }
@@ -5899,9 +6435,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let assemblies : [NFAssembly] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x201390  @objc Assembly.assemblies <stripped>
-	0x2015e0  @objc Assembly.init <stripped>
-	0x201430  @objc Assembly..cxx_destruct <stripped>
+	0x241610  @objc Assembly.assemblies <stripped>
+	0x241860  @objc Assembly.init <stripped>
+	0x2416b0  @objc Assembly..cxx_destruct <stripped>
  }
 
  struct TeaUI.SectionFooterViewLayoutOptions {
@@ -5909,9 +6445,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let layoutOptions : BlueprintLayoutOptions // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let topPadding : 9€ // +0xc0
+	let topPadding : y. // +0xd0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bottomPadding : 9€ // +0xc8
+	let bottomPadding : y. // +0xd8
  }
 
  struct TeaUI.Container { }
@@ -5969,10 +6505,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let activityItemConfiguration : UIActivityItemsConfiguration? // +0x18 (0x8)
 
 	// Swift methods
-	0x206170  class func ContextMenu.__allocating_init(groups:) // init 
-	0x2061c0  class func ContextMenu.__allocating_init(groups:activityItemConfiguration:) // init 
-	0x206210  class func ContextMenu.__allocating_init(groups:) // init 
-	0x206290  class func ContextMenu.__allocating_init(groups:activityItemConfiguration:) // init 
+	0x246990  class func ContextMenu.__allocating_init(groups:) // init 
+	0x2469e0  class func ContextMenu.__allocating_init(groups:activityItemConfiguration:) // init 
+	0x246a30  class func ContextMenu.__allocating_init(groups:) // init 
+	0x246ab0  class func ContextMenu.__allocating_init(groups:activityItemConfiguration:) // init 
  }
 
  struct TeaUI.BlueprintLayoutCollection {
@@ -5981,14 +6517,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var contentSize : CGSize // +0x0
 	let layoutDirection : BlueprintLayoutDirection // +0x10
 	let screenCalculator : BlueprintLayoutCollectionScreenCalculator // +0x18
-	var pinAdjuster : BlueprintLayoutCollectionPinAdjuster // +0xe0
+	var pinAdjuster : BlueprintLayoutCollectionPinAdjuster // +0xf0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var indexPathToLayoutAttributes :  empty-list  // +0x1c8
+	var indexPathToLayoutAttributes :  empty-list  // +0x1e8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var indexPathToSupplementaryLayoutAttribtues :  empty-list  // +0x1d0
+	var indexPathToSupplementaryLayoutAttribtues :  empty-list  // +0x1f0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var indexPathToDecorationLayoutAttributes :  empty-list  // +0x1d8
-	var screenRectToLayoutAttributes : BlueprintLayoutCollectionLayoutAttributes // +0x1e0
+	var indexPathToDecorationLayoutAttributes :  empty-list  // +0x1f8
+	var screenRectToLayoutAttributes : BlueprintLayoutCollectionLayoutAttributes // +0x200
  }
 
  enum TeaUI.MastheadDisplayMode { }
@@ -5996,32 +6532,42 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class TeaUI.MastheadStyleOptions : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let mastheadTextColor : UIColor?
+	let mastheadTextColor : UIColor? // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x20bf80  @objc MastheadStyleOptions.initWithMastheadTextColor: <stripped>
-	0x20c070  @objc MastheadStyleOptions.init <stripped>
-	0x20c000  @objc MastheadStyleOptions..cxx_destruct <stripped>
+	0x2508b0  @objc MastheadStyleOptions.initWithMastheadTextColor: <stripped>
+	0x250a30  @objc MastheadStyleOptions.init <stripped>
+	0x2509c0  @objc MastheadStyleOptions..cxx_destruct <stripped>
 
 	// Swift methods
-	0x20bf00  class func MastheadStyleOptions.__allocating_init(mastheadTextColor:) // init 
+	0x250830  class func MastheadStyleOptions.__allocating_init(mastheadTextColor:) // init 
+ }
+
+ enum TeaUI.MastheadStatusBarMode {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case fullBleed : Û¶
+	case default  
  }
 
  class TeaUI.MastheadDisplayOptions : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let displayMode : MastheadDisplayMode
+	let statusBarMode : MastheadStatusBarMode
 	let styleOptions : MastheadStyleOptions
+	let displayMode : MastheadDisplayMode
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let statusBarVisiblityOffset : £[
+	let statusBarVisiblityOffset : —¶
 
 	// ObjC -> Swift bridged methods
-	0x20c180  @objc MastheadDisplayOptions.initWithDisplayMode:styleOptions:statusBarVisiblityOffset: <stripped>
-	0x20c230  @objc MastheadDisplayOptions.init <stripped>
-	0x20c300  @objc MastheadDisplayOptions..cxx_destruct <stripped>
+	0x250c40  @objc MastheadDisplayOptions.initWithDisplayMode:styleOptions:statusBarVisiblityOffset: <stripped>
+	0x250e90  @objc MastheadDisplayOptions.init <stripped>
+	0x250ec0  @objc MastheadDisplayOptions..cxx_destruct <stripped>
 
 	// Swift methods
-	0x20bd70  class func MastheadDisplayOptions.__allocating_init(displayMode:styleOptions:statusBarVisiblityOffset:) // init 
+	0x2506d0  class func MastheadDisplayOptions.__allocating_init(displayMode:styleOptions:statusBarVisiblityOffset:) // init 
+	0x250c80  class func MastheadDisplayOptions.__allocating_init(statusBarMode:styleOptions:) // init 
  }
 
  class TeaUI.BlueprintManualImpressionManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -6034,14 +6580,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let manualImpressionUpdateProvider : BlueprintManualImpressionUpdateProvider // +0x80 (0x8)
 
 	// Swift methods
-	0x20c450  func <stripped> // getter 
-	0x20c480  func <stripped> // setter 
-	0x20c4f0  func <stripped> // modifyCoroutine 
-	0x20c670  func <stripped> // getter 
-	0x20c6a0  func <stripped> // setter 
-	0x20c6f0  func <stripped> // modifyCoroutine 
-	0x20c7d0  class func BlueprintManualImpressionManager.__allocating_init(impressionManager:manualImpressionUpdateProvider:app:) // init 
-	0x20ce70  func <stripped> // method 
+	0x251170  func <stripped> // getter 
+	0x2511a0  func <stripped> // setter 
+	0x251210  func <stripped> // modifyCoroutine 
+	0x251390  func <stripped> // getter 
+	0x2513c0  func <stripped> // setter 
+	0x251410  func <stripped> // modifyCoroutine 
+	0x2514f0  class func BlueprintManualImpressionManager.__allocating_init(impressionManager:manualImpressionUpdateProvider:app:) // init 
+	0x251b90  func <stripped> // method 
  }
 
  enum TeaUI.TabBarNavigationBarVisiblity {
@@ -6094,6 +6640,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class TeaUI.BlueprintProvider {
+ enum TeaUI.BlueprintDragBehavior {
+
+	// Properties
+	case default  
+	case enabled  
+	case disabled  
+ }
+
  class TeaUI.BlueprintViewProvider {
  class TeaUI.CommandContextStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
@@ -6112,9 +6666,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let closure : (_:)? // +0x28
  }
 
+ enum TeaUI.CoreImageFilterDescriptor {
+
+	// Properties
+	case blendWithAlphaMask : (inputImage: CIImage, inputMaskImage: CIImage)
+	case median  
+	case linearToSRGBToneCurve  
+	case sRGBToneCurveToLinear  
+	case colorInvert  
+	case maskToAlpha  
+	case maximumComponent  
+	case minimumComponent  
+	case photoEffectChrome  
+	case photoEffectFade  
+	case photoEffectInstant  
+	case photoEffectMono  
+	case photoEffectNoir  
+	case photoEffectProcess  
+	case photoEffectTonal  
+	case photoEffectTransfer  
+	case sepiaTone  
+ }
+
  class TeaUI.AppAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x222150  @objc AppAssembly.init <stripped>
+	0x269790  @objc AppAssembly.init <stripped>
  }
 
  class TeaUI.GutterViewController {
@@ -6125,18 +6701,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let labelBackgroundView : UIView // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2239d0  @objc MotionDebugView.initWithFrame: <stripped>
-	0x223a00  @objc MotionDebugView.initWithCoder: <stripped>
-	0x223db0  @objc MotionDebugView.didMoveToWindow <stripped>
-	0x223f80  @objc MotionDebugView.layoutSubviews <stripped>
-	0x224000  @objc MotionDebugView.safeAreaInsetsDidChange <stripped>
-	0x2240a0  @objc MotionDebugView..cxx_destruct <stripped>
+	0x26b010  @objc MotionDebugView.initWithFrame: <stripped>
+	0x26b040  @objc MotionDebugView.initWithCoder: <stripped>
+	0x26b3f0  @objc MotionDebugView.didMoveToWindow <stripped>
+	0x26b5c0  @objc MotionDebugView.layoutSubviews <stripped>
+	0x26b640  @objc MotionDebugView.safeAreaInsetsDidChange <stripped>
+	0x26b6e0  @objc MotionDebugView..cxx_destruct <stripped>
  }
 
  class TeaUI.ApplicationContentSizeCategoryProvider : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x225090  @objc ApplicationContentSizeCategoryProvider.currentContentSizeCategory <stripped>
-	0x2251b0  @objc ApplicationContentSizeCategoryProvider.init <stripped>
+	0x26c6d0  @objc ApplicationContentSizeCategoryProvider.currentContentSizeCategory <stripped>
+	0x26c7f0  @objc ApplicationContentSizeCategoryProvider.init <stripped>
  }
 
  class TeaUI.DebugSchedule : UIWindow /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -6148,14 +6724,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var timer : NSTimer? // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x225550  @objc DebugSchedule.initWithCoder: <stripped>
-	0x2256f0  @objc DebugSchedule.layoutSubviews <stripped>
-	0x2259d0  @objc DebugSchedule.initWithWindowScene: <stripped>
-	0x225ab0  @objc DebugSchedule.initWithFrame: <stripped>
-	0x225910  @objc DebugSchedule..cxx_destruct <stripped>
+	0x26cb90  @objc DebugSchedule.initWithCoder: <stripped>
+	0x26cd30  @objc DebugSchedule.layoutSubviews <stripped>
+	0x26d010  @objc DebugSchedule.initWithWindowScene: <stripped>
+	0x26d0f0  @objc DebugSchedule.initWithFrame: <stripped>
+	0x26cf50  @objc DebugSchedule..cxx_destruct <stripped>
 
 	// Swift methods
-	0x225240  class func DebugSchedule.__allocating_init(after:block:) // init 
+	0x26c880  class func DebugSchedule.__allocating_init(after:block:) // init 
  }
 
  class TeaUI.StepperTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -6167,13 +6743,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let stepper : UIStepper // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2261a0  @objc StepperTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x226200  @objc StepperTableViewCell.initWithCoder: <stripped>
-	0x226350  @objc StepperTableViewCell.valueChanged <stripped>
-	0x2263b0  @objc StepperTableViewCell..cxx_destruct <stripped>
+	0x26d850  @objc StepperTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x26d8b0  @objc StepperTableViewCell.initWithCoder: <stripped>
+	0x26da00  @objc StepperTableViewCell.valueChanged <stripped>
+	0x26da60  @objc StepperTableViewCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0x226220  func <stripped> // method 
+	0x26d8d0  func <stripped> // method 
  }
 
  enum TeaUI.BlueprintModifierTrait {
@@ -6184,6 +6760,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class TeaUI.BlueprintModifier {
+ struct TeaUI.Circle {
+
+	// Properties
+	let center : CGPoint // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let radius : y. // +0x10
+ }
+
+ struct TeaUI.RadialGradientDescriptor {
+
+	// Properties
+	let fromCircle : Circle // +0x0
+	let toCircle : Circle // +0x18
+	let colors : CGColor // +0x30
+	let cfColors : CFArray // +0x40
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let locations :  empty-list  // +0x48
+ }
+
  struct TeaUI.KeyboardSelectionStyle {
 
 	// Properties
@@ -6225,8 +6820,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let alternate : CommandMenuItem // +0xa0 (0x8)
 
 	// Swift methods
-	0x2286d0  class func <stripped> // init 
-	0x228800  class func <stripped> // init 
+	0x2705e0  class func <stripped> // init 
+	0x270710  class func <stripped> // init 
  }
 
  enum TeaUI.Item {
@@ -6240,13 +6835,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ enum TeaUI.DecorationOverscrollPinPosition {
+
+	// Properties
+	case top  
+	case topRight  
+	case topLeft  
+ }
+
  class TeaUI.WeakView : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	var view : weak UIView? // +0x10 (0x8)
 
 	// Swift methods
-	0x229760  class func WeakView.__allocating_init(view:) // init 
+	0x2724d0  class func WeakView.__allocating_init(view:) // init 
  }
 
  class TeaUI.SegmentedViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -6256,22 +6859,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var segmentViewControllers : Segmentable // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x229950  @objc SegmentedViewController.initWithNibName:bundle: <stripped>
-	0x2299f0  @objc SegmentedViewController.initWithCoder: <stripped>
-	0x22a0a0  @objc SegmentedViewController.viewWillAppear: <stripped>
-	0x22a110  @objc SegmentedViewController..cxx_destruct <stripped>
+	0x2726c0  @objc SegmentedViewController.initWithNibName:bundle: <stripped>
+	0x272a30  @objc SegmentedViewController.initWithCoder: <stripped>
+	0x2731a0  @objc SegmentedViewController.viewWillAppear: <stripped>
+	0x273210  @objc SegmentedViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x229a10  func <stripped> // method 
-	0x229b90  func <stripped> // method 
+	0x272a50  func <stripped> // method 
+	0x272c00  func <stripped> // method 
+	0x272c90  func <stripped> // method 
  }
 
  class TeaUI.ImageDownloader : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x22af40  @objc ImageDownloader.downloadImageAndStoreFilePathInAssetHandle:usingDispatchGroup: <stripped>
+	0x274130  @objc ImageDownloader.downloadImageAndStoreFilePathInAssetHandle:usingDispatchGroup: <stripped>
 
 	// Swift methods
-	0x22aef0  class func ImageDownloader.__allocating_init() // init 
+	0x2740e0  class func ImageDownloader.__allocating_init() // init 
  }
 
  struct TeaUI.CommandContextProvider {
@@ -6305,9 +6909,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let onTap : Action // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x22bf40  @objc SegmentedControlButton.initWithCoder: <stripped>
-	0x22c120  @objc SegmentedControlButton.initWithFrame: <stripped>
-	0x22c180  @objc SegmentedControlButton..cxx_destruct <stripped>
+	0x275130  @objc SegmentedControlButton.initWithCoder: <stripped>
+	0x275310  @objc SegmentedControlButton.initWithFrame: <stripped>
+	0x275370  @objc SegmentedControlButton..cxx_destruct <stripped>
  }
 
  struct TeaUI.CoverViewOptions {
@@ -6324,13 +6928,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let label : UILabel // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x22c5a0  @objc ActivityIndicatorLoadingView.initWithCoder: <stripped>
-	0x22c6d0  @objc ActivityIndicatorLoadingView.layoutSubviews <stripped>
-	0x22c7f0  @objc ActivityIndicatorLoadingView.initWithFrame: <stripped>
-	0x22c850  @objc ActivityIndicatorLoadingView..cxx_destruct <stripped>
+	0x275790  @objc ActivityIndicatorLoadingView.initWithCoder: <stripped>
+	0x2758c0  @objc ActivityIndicatorLoadingView.layoutSubviews <stripped>
+	0x2759e0  @objc ActivityIndicatorLoadingView.initWithFrame: <stripped>
+	0x275a40  @objc ActivityIndicatorLoadingView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x22c490  class func ActivityIndicatorLoadingView.__allocating_init(style:color:backgroundColor:activityText:) // init 
+	0x275680  class func ActivityIndicatorLoadingView.__allocating_init(style:color:backgroundColor:activityText:) // init 
+ }
+
+ class TeaUI.ImageAssetHandle : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	var fallbackImage : UIImage? // +0x8 (0x8)
+	var uniqueKey : String // +0x10 (0x10)
+
+	// ObjC -> Swift bridged methods
+	0x276200  @objc ImageAssetHandle.filePath <stripped>
+	0x276220  @objc ImageAssetHandle.fallbackImage <stripped>
+	0x2762b0  @objc ImageAssetHandle.setFallbackImage: <stripped>
+	0x2763b0  @objc ImageAssetHandle.uniqueKey <stripped>
+	0x276460  @objc ImageAssetHandle.setUniqueKey: <stripped>
+	0x276560  @objc ImageAssetHandle.downloadWithGroup: <stripped>
+	0x276630  @objc ImageAssetHandle.init <stripped>
+	0x2765a0  @objc ImageAssetHandle..cxx_destruct <stripped>
+
+	// Swift methods
+	0x2760d0  class func ImageAssetHandle.__allocating_init(image:uniqueKey:) // init 
  }
 
  struct TeaUI.FrameLayoutAttributes: BlueprintLayoutFrameAttributesType {
@@ -6353,14 +6977,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let rootViewController : TabBarController // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x22d420  @objc TabBarContainerController.initWithCoder: <stripped>
-	0x22d5f0  @objc TabBarContainerController.viewDidLoad <stripped>
-	0x22d620  @objc TabBarContainerController.viewWillLayoutSubviews <stripped>
-	0x22d820  @objc TabBarContainerController.childViewControllerForStatusBarHidden <stripped>
-	0x22d720  @objc TabBarContainerController.childViewControllerForStatusBarStyle <stripped>
-	0x22d830  @objc TabBarContainerController.childViewControllerForHomeIndicatorAutoHidden <stripped>
-	0x22d740  @objc TabBarContainerController.initWithNibName:bundle: <stripped>
-	0x22d7a0  @objc TabBarContainerController..cxx_destruct <stripped>
+	0x276c40  @objc TabBarContainerController.initWithCoder: <stripped>
+	0x276e10  @objc TabBarContainerController.viewDidLoad <stripped>
+	0x276e40  @objc TabBarContainerController.viewWillLayoutSubviews <stripped>
+	0x277040  @objc TabBarContainerController.childViewControllerForStatusBarHidden <stripped>
+	0x276f40  @objc TabBarContainerController.childViewControllerForStatusBarStyle <stripped>
+	0x277050  @objc TabBarContainerController.childViewControllerForHomeIndicatorAutoHidden <stripped>
+	0x276f60  @objc TabBarContainerController.initWithNibName:bundle: <stripped>
+	0x276fc0  @objc TabBarContainerController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -6388,13 +7012,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let coreMotionManager : CMMotionManager // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x22e4d0  @objc MotionManager.init <stripped>
-	0x22e6a0  @objc MotionManager.addObserver: <stripped>
-	0x22e6c0  @objc MotionManager.removeObserver: <stripped>
-	0x22f480  @objc MotionManager.handleReduceMotionChanged <stripped>
-	0x22f4f0  @objc MotionManager.applicationDidEnterBackground <stripped>
-	0x22f630  @objc MotionManager.applicationDidBecomeActive <stripped>
-	0x22f690  @objc MotionManager..cxx_destruct <stripped>
+	0x277cf0  @objc MotionManager.init <stripped>
+	0x277ec0  @objc MotionManager.addObserver: <stripped>
+	0x277ee0  @objc MotionManager.removeObserver: <stripped>
+	0x278ca0  @objc MotionManager.handleReduceMotionChanged <stripped>
+	0x278d10  @objc MotionManager.applicationDidEnterBackground <stripped>
+	0x278e50  @objc MotionManager.applicationDidBecomeActive <stripped>
+	0x278eb0  @objc MotionManager..cxx_destruct <stripped>
  }
 
  class TeaUI.GutterView : UIScrollView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -6408,18 +7032,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var boundsObservers : NSHashTable<TUGutterViewBoundsObserver> // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x231600  @objc GutterView.initWithCoder: <stripped>
-	0x2316e0  @objc GutterView.layoutMarginsDidChange <stripped>
-	0x231be0  @objc GutterView.layoutSubviews <stripped>
-	0x231c10  @objc GutterView.contentOffset <stripped>
-	0x231c40  @objc GutterView.setContentOffset: <stripped>
-	0x231e90  @objc GutterView.addGutterViewBoundsObserver: <stripped>
-	0x231eb0  @objc GutterView.removeGutterViewBoundsObserver: <stripped>
-	0x231ff0  @objc GutterView.initWithFrame: <stripped>
-	0x232050  @objc GutterView..cxx_destruct <stripped>
+	0x27ae20  @objc GutterView.initWithCoder: <stripped>
+	0x27af00  @objc GutterView.layoutMarginsDidChange <stripped>
+	0x27b400  @objc GutterView.layoutSubviews <stripped>
+	0x27b430  @objc GutterView.contentOffset <stripped>
+	0x27b460  @objc GutterView.setContentOffset: <stripped>
+	0x27b6b0  @objc GutterView.addGutterViewBoundsObserver: <stripped>
+	0x27b6d0  @objc GutterView.removeGutterViewBoundsObserver: <stripped>
+	0x27b810  @objc GutterView.initWithFrame: <stripped>
+	0x27b870  @objc GutterView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x231010  class func GutterView.__allocating_init(contentView:childScrollView:gutters:) // init 
+	0x27a830  class func GutterView.__allocating_init(contentView:childScrollView:gutters:) // init 
  }
 
  struct TeaUI.ShortcutItemHandlerMatch {
@@ -6429,25 +7053,50 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let pattern : ShortcutItemHandlerPattern // +0x8
  }
 
+ struct TeaUI.SwipeAction {
+
+	// Properties
+	let identifier : String // +0x0
+	var imageBlock : CommandCenterType // +0x10
+	var isEnabledBlock : CommandCenterType // +0x20
+	let style : Style // +0x30
+	let actionBlockRunOption : ActionBlockRunOption // +0x31
+	var actionBlock : CommandCenterType // +0x38
+	let backgroundColorBlock : CommandCenterType // +0x48
+ }
+
+ enum TeaUI.Style {
+
+	// Properties
+	case normal  
+	case destructive  
+ }
+
+ enum TeaUI.ActionBlockRunOption {
+
+	// Properties
+	case onTap  
+	case onCellClose  
+ }
+
  class TeaUI.CardDimmingView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 	var preventTouches : Bool // +0x8 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x233740  @objc CardDimmingView.hitTest:withEvent: <stripped>
-	0x2337c0  @objc CardDimmingView.initWithFrame: <stripped>
-	0x233820  @objc CardDimmingView.initWithCoder: <stripped>
+	0x27e220  @objc CardDimmingView.hitTest:withEvent: <stripped>
+	0x27e2a0  @objc CardDimmingView.initWithFrame: <stripped>
+	0x27e300  @objc CardDimmingView.initWithCoder: <stripped>
  }
 
  class TeaUI.CardNavigationController : NavigationController {
 	// ObjC -> Swift bridged methods
-	0x233990  @objc CardNavigationController.viewDidLoad <stripped>
-	0x233a90  @objc CardNavigationController.viewWillAppear: <stripped>
-	0x233c10  @objc CardNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
-	0x233cf0  @objc CardNavigationController.initWithRootViewController: <stripped>
-	0x233e40  @objc CardNavigationController.initWithNibName:bundle: <stripped>
-	0x233fa0  @objc CardNavigationController.initWithCoder: <stripped>
+	0x27e470  @objc CardNavigationController.viewDidLoad <stripped>
+	0x27e570  @objc CardNavigationController.viewWillAppear: <stripped>
+	0x27e6e0  @objc CardNavigationController.initWithRootViewController:navigationBarClass: <stripped>
+	0x27e7a0  @objc CardNavigationController.initWithRootViewController: <stripped>
+	0x27e870  @objc CardNavigationController.initWithCoder: <stripped>
  }
 
  class TeaUI.BlueprintCachePipelineProcessor {
@@ -6494,42 +7143,42 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let accessQueue : OS_dispatch_queue
 
 	// ObjC -> Swift bridged methods
-	0x237720  @objc MemoryCacheAccessQueue.accessWithBlock: <stripped>
-	0x2379a0  @objc MemoryCacheAccessQueue.accessValueWithBlock: <stripped>
-	0x237c50  @objc MemoryCacheAccessQueue.init <stripped>
-	0x237c90  @objc MemoryCacheAccessQueue..cxx_destruct <stripped>
+	0x282020  @objc MemoryCacheAccessQueue.accessWithBlock: <stripped>
+	0x2822a0  @objc MemoryCacheAccessQueue.accessValueWithBlock: <stripped>
+	0x282550  @objc MemoryCacheAccessQueue.init <stripped>
+	0x282590  @objc MemoryCacheAccessQueue..cxx_destruct <stripped>
 
 	// Swift methods
-	0x237540  func <stripped> // method 
-	0x2378e0  func <stripped> // method 
+	0x281e40  func <stripped> // method 
+	0x2821e0  func <stripped> // method 
  }
 
  class TeaUI.MemoryCacheAccessMainWriter : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lock : √®
+	let lock : È˘
 
 	// ObjC -> Swift bridged methods
-	0x237d00  @objc MemoryCacheAccessMainWriter.accessWithBlock: <stripped>
-	0x237e10  @objc MemoryCacheAccessMainWriter.accessValueWithBlock: <stripped>
-	0x237fb0  @objc MemoryCacheAccessMainWriter.init <stripped>
-	0x2380b0  @objc MemoryCacheAccessMainWriter..cxx_destruct <stripped>
+	0x282600  @objc MemoryCacheAccessMainWriter.accessWithBlock: <stripped>
+	0x282710  @objc MemoryCacheAccessMainWriter.accessValueWithBlock: <stripped>
+	0x2828b0  @objc MemoryCacheAccessMainWriter.init <stripped>
+	0x2829b0  @objc MemoryCacheAccessMainWriter..cxx_destruct <stripped>
 
 	// Swift methods
-	0x237cb0  func <stripped> // method 
-	0x237d70  func <stripped> // method 
+	0x2825b0  func <stripped> // method 
+	0x282670  func <stripped> // method 
  }
 
  class TeaUI.MemoryCacheAccessMain : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2380f0  @objc MemoryCacheAccessMain.accessWithBlock: <stripped>
-	0x238160  @objc MemoryCacheAccessMain.accessValueWithBlock: <stripped>
-	0x238270  @objc MemoryCacheAccessMain.init <stripped>
+	0x2829f0  @objc MemoryCacheAccessMain.accessWithBlock: <stripped>
+	0x282a60  @objc MemoryCacheAccessMain.accessValueWithBlock: <stripped>
+	0x282b70  @objc MemoryCacheAccessMain.init <stripped>
 
 	// Swift methods
-	0x2380d0  func <stripped> // method 
-	0x238140  func <stripped> // method 
+	0x2829d0  func <stripped> // method 
+	0x282a40  func <stripped> // method 
  }
 
  struct TeaUI.WebViewSession {
@@ -6537,7 +7186,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDate : ë§
+	let startDate : ∑ı
 	let trigger : Trigger
  }
 
@@ -6546,6 +7195,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case view  
 	case app  
+ }
+
+ struct TeaUI.EmptyStateStyler: EmptyStateStylerType {
+
+	// Properties
+	let backgroundColor : UIColor // +0x0
+	let visualEffect : UIVisualEffect? // +0x8
+	let textColor : UIColor // +0x10
  }
 
  enum TeaUI.MenuItemState {
@@ -6572,7 +7229,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var transitioning : Bool // +0x28 (0x1)
 
 	// Swift methods
-	0x238f60  class func FullscreenTransitionCoverManager.__allocating_init(_:) // init 
+	0x2844c0  class func FullscreenTransitionCoverManager.__allocating_init(_:) // init 
  }
 
  class TeaUI.PinningBlueprintCollectionViewLayout {
@@ -6588,7 +7245,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case maxWidth : 9€
+	case maxWidth : y.
 	case default  
 	case breakpoints  
  }
@@ -6613,13 +7270,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var currentBackgroundColorHighlighted : CGColor // +0x68 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x240330  @objc TwoLabelButton.initWithFrame: <stripped>
-	0x2403b0  @objc TwoLabelButton.initWithCoder: <stripped>
-	0x2408e0  @objc TwoLabelButton.layoutSubviews <stripped>
-	0x240d10  @objc TwoLabelButton.touchesBegan:withEvent: <stripped>
-	0x2411e0  @objc TwoLabelButton.touchesCancelled:withEvent: <stripped>
-	0x2416e0  @objc TwoLabelButton.touchesEnded:withEvent: <stripped>
-	0x2423f0  @objc TwoLabelButton..cxx_destruct <stripped>
+	0x28b8b0  @objc TwoLabelButton.initWithFrame: <stripped>
+	0x28b930  @objc TwoLabelButton.initWithCoder: <stripped>
+	0x28be60  @objc TwoLabelButton.layoutSubviews <stripped>
+	0x28c290  @objc TwoLabelButton.touchesBegan:withEvent: <stripped>
+	0x28c760  @objc TwoLabelButton.touchesCancelled:withEvent: <stripped>
+	0x28cc60  @objc TwoLabelButton.touchesEnded:withEvent: <stripped>
+	0x28d970  @objc TwoLabelButton..cxx_destruct <stripped>
  }
 
  enum TeaUI.AnimationTrigger {
@@ -6656,15 +7313,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var style : ModalHostViewStyle // +0x8 (0x1)
 	let viewController : UIViewController // +0x10 (0x8)
 	let closeButton : CloseButton // +0x18 (0x8)
+	let transitionEffectView : UIVisualEffectView // +0x20 (0x8)
+	let effect : UIVisualEffect? // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2436e0  @objc ModalHostViewController.initWithCoder: <stripped>
-	0x243790  @objc ModalHostViewController.closeButtonPressedWithSender: <stripped>
-	0x243be0  @objc ModalHostViewController.initWithNibName:bundle: <stripped>
-	0x243c40  @objc ModalHostViewController..cxx_destruct <stripped>
+	0x28ed50  @objc ModalHostViewController.initWithCoder: <stripped>
+	0x28ee30  @objc ModalHostViewController.closeButtonPressedWithSender: <stripped>
+	0x28f450  @objc ModalHostViewController.initWithNibName:bundle: <stripped>
+	0x28f4b0  @objc ModalHostViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x243420  class func ModalHostViewController.__allocating_init(viewController:style:) // init 
+	0x28e9a0  class func ModalHostViewController.__allocating_init(viewController:style:) // init 
+	0x28eab0  class func ModalHostViewController.__allocating_init(viewController:style:effect:) // init 
+ }
+
+ struct TeaUI.StateCommandColor {
+
+	// Properties
+	let colorBlock : (_:)
+	let defaultColor : UIColor
  }
 
  class TeaUI.DebugTableViewSource : NSObject /usr/lib/libobjc.A.dylib {
@@ -6674,8 +7341,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var controller : weak UIViewController? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x245bb0  @objc DebugTableViewSource.init <stripped>
-	0x245c10  @objc DebugTableViewSource..cxx_destruct <stripped>
+	0x2922a0  @objc DebugTableViewSource.init <stripped>
+	0x292300  @objc DebugTableViewSource..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -6686,7 +7353,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var animators : BlueprintAnimatorType // +0x10 (0x8)
 
 	// Swift methods
-	0x24a1e0  class func BlueprintAnimatorManager.__allocating_init() // init 
+	0x296b60  class func BlueprintAnimatorManager.__allocating_init() // init 
+ }
+
+ enum TeaUI.SwipeActionInsets {
+
+	// Properties
+	case custom : UIEdgeInsets
+	case zero  
+	case columnSystem  
  }
 
  class TeaUI.ButtonWindowToolbar2Item {
@@ -6695,6 +7370,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case navigation : Navigation
 	case modal : ModalPane
+	case stickyModal : ModalPane
 	case tabBar : BarItem
 	case multi : TabBarSplitViewPresentation
  }
@@ -6742,9 +7418,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var metadata : Any?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sections : ±L
+	var sections : Wñ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var itemToSection : GM
+	var itemToSection : Ìñ
 	var caches : BlueprintCaches
  }
 
@@ -6762,10 +7438,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var acceptBlock : ()? // +0x10 (0x10)
 	var rejectBlock : ()? // +0x20 (0x10)
 	var neutralBlock : ()? // +0x30 (0x10)
-	var alertController : UIAlertController? // +0x40 (0x8)
+	var acceptBlockV1 : (_:)? // +0x40 (0x10)
+	var rejectBlockV1 : (_:)? // +0x50 (0x10)
+	var neutralBlockV1 : (_:)? // +0x60 (0x10)
+	var alertController : UIAlertController? // +0x70 (0x8)
 
 	// Swift methods
-	0x253d60  class func Alert.__allocating_init(type:) // init 
+	0x2a0ba0  class func Alert.__allocating_init(type:) // init 
  }
 
  class TeaUI.ModernPageViewController {
@@ -6786,6 +7465,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  struct TeaUI.Navigation { }
 
+ class TeaUI.ForwardingTouchNavigationBar : UINavigationBar /System/Library/Frameworks/UIKit.framework/UIKit {
+	// ObjC -> Swift bridged methods
+	0x2a35c0  @objc ForwardingTouchNavigationBar.hitTest:withEvent: <stripped>
+	0x2a3900  @objc ForwardingTouchNavigationBar.pointInside:withEvent: <stripped>
+	0x2a3ab0  @objc ForwardingTouchNavigationBar.initWithFrame: <stripped>
+	0x2a3ba0  @objc ForwardingTouchNavigationBar.initWithCoder: <stripped>
+ }
+
  class TeaUI.Localized : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
  }
@@ -6802,30 +7489,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let nonAnimatingDelegate : NonAnimatingDelegate
 
 	// ObjC -> Swift bridged methods
-	0x2563c0  @objc NonAnimatingLayer.init <stripped>
-	0x2565b0  @objc NonAnimatingLayer.initWithLayer: <stripped>
-	0x2566e0  @objc NonAnimatingLayer.initWithCoder: <stripped>
-	0x2568d0  @objc NonAnimatingLayer..cxx_destruct <stripped>
+	0x2a4110  @objc NonAnimatingLayer.init <stripped>
+	0x2a4300  @objc NonAnimatingLayer.initWithLayer: <stripped>
+	0x2a4430  @objc NonAnimatingLayer.initWithCoder: <stripped>
+	0x2a4620  @objc NonAnimatingLayer..cxx_destruct <stripped>
  }
 
  class TeaUI.NonAnimatingDelegate : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x256790  @objc NonAnimatingDelegate.actionForLayer:forKey: <stripped>
-	0x256820  @objc NonAnimatingDelegate.init <stripped>
+	0x2a44e0  @objc NonAnimatingDelegate.actionForLayer:forKey: <stripped>
+	0x2a4570  @objc NonAnimatingDelegate.init <stripped>
 
 	// Swift methods
  }
 
  class TeaUI.DebugAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x256be0  @objc DebugAssembly.init <stripped>
+	0x2a4930  @objc DebugAssembly.init <stripped>
  }
 
  enum TeaUI.PageBlueprintChangeResult {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case failed : ›Â
+	case failed : ﬂ9
 	case none  
 	case changes  
  }
@@ -6835,7 +7522,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case reload : PageBlueprint
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case failed : ›Â
+	case failed : ﬂ9
 	case noChanges  
  }
 
@@ -6843,7 +7530,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case snap : 1G
+	case snap : ïê
 	case custom : String
 	case none  
 	case restoreViewport  
@@ -6861,19 +7548,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resolver : «I // +0x8 (0x28)
+	var resolver : 3ì // +0x8 (0x28)
 	var isAllowed : Bool // +0x30 (0x1)
 	var isPresenting : Bool // +0x31 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x2590c0  @objc DebugWindow.initWithFrame: <stripped>
-	0x259330  @objc DebugWindow.initWithCoder: <stripped>
-	0x259920  @objc DebugWindow.motionBegan:withEvent: <stripped>
-	0x2599f0  @objc DebugWindow.initWithWindowScene: <stripped>
-	0x259a50  @objc DebugWindow..cxx_destruct <stripped>
+	0x2a6e10  @objc DebugWindow.initWithFrame: <stripped>
+	0x2a70a0  @objc DebugWindow.initWithCoder: <stripped>
+	0x2a7690  @objc DebugWindow.motionBegan:withEvent: <stripped>
+	0x2a7760  @objc DebugWindow.initWithWindowScene: <stripped>
+	0x2a77c0  @objc DebugWindow..cxx_destruct <stripped>
 
 	// Swift methods
-	0x258a00  class func DebugWindow.__allocating_init(frame:resolver:) // init 
+	0x2a6e40  class func DebugWindow.__allocating_init(windowScene:resolver:) // init 
+	0x2a6750  class func DebugWindow.__allocating_init(frame:resolver:) // init 
  }
 
  class TeaUI.MenuManager : UIResponder /System/Library/Frameworks/UIKit.framework/UIKit, MenuManagerType {
@@ -6885,14 +7573,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var alternateMenuItems : MenuItemContainer // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x25c1c0  @objc MenuManager.buildMenuWithBuilder: <stripped>
-	0x25c4b0  @objc MenuManager.validateCommand: <stripped>
-	0x25c540  @objc MenuManager.canPerformAction:withSender: <stripped>
-	0x25c6c0  @objc MenuManager.init <stripped>
-	0x25c610  @objc MenuManager..cxx_destruct <stripped>
+	0x2aa0a0  @objc MenuManager.buildMenuWithBuilder: <stripped>
+	0x2aa390  @objc MenuManager.validateCommand: <stripped>
+	0x2aa420  @objc MenuManager.canPerformAction:withSender: <stripped>
+	0x2aa5a0  @objc MenuManager.init <stripped>
+	0x2aa4f0  @objc MenuManager..cxx_destruct <stripped>
 
 	// Swift methods
-	0x25ad60  class func MenuManager.__allocating_init(menu:commandCenter:) // init 
+	0x2a8c40  class func MenuManager.__allocating_init(menu:commandCenter:) // init 
  }
 
  enum TeaUI.MenuItemContainer {
@@ -6906,6 +7594,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case insets : UIEdgeInsets
 	case insetsWithCorners : UIEdgeInsets
+	case insetsWithRectCorners : UIEdgeInsets
 	case default  
  }
 
@@ -6918,7 +7607,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let block : () // +0x38 (0x10)
 
 	// Swift methods
-	0x25f3f0  class func KeyCommandBlock.__allocating_init(key:flags:title:block:) // init 
+	0x2ad480  class func KeyCommandBlock.__allocating_init(key:flags:title:block:) // init 
  }
 
  enum TeaUI.ShineColor {
@@ -6926,6 +7615,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case solid : UIColor
 	case gradient : GradientDescriptor
+ }
+
+ enum TeaUI.Gradient {
+
+	// Properties
+	case linear : GradientDescriptor
+	case radial : RadialGradientDescriptor
  }
 
  struct TeaUI.GradientDescriptor {

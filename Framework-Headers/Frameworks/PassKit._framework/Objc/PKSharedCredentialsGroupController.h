@@ -6,20 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSHashTable, PKPaymentPass, PKPaymentWebService, PKPeerPaymentContactResolver;
+@class NSArray, NSHashTable, PKAppletSubcredential, PKPaymentPass, PKPaymentWebService, PKPeerPaymentContactResolver;
 @protocol OS_dispatch_queue;
 
 @interface PKSharedCredentialsGroupController : NSObject
 {
     PKPeerPaymentContactResolver *_contactResolver;
     PKPaymentWebService *_webService;
+    PKAppletSubcredential *_credential;
     NSObject<OS_dispatch_queue> *_queue;
     NSHashTable *_delegates;
     struct os_unfair_lock_s _delegateLock;
-    NSDictionary *_sharedCredentialsForCredential;
-    NSDictionary *_invitationReceiptsForCredential;
-    NSDictionary *_credentialForIdentifier;
-    BOOL _canSendInvitation;
     BOOL _sharingEnabled;
     NSArray *_groups;
     PKPaymentPass *_pass;
@@ -38,6 +35,7 @@
 - (void)fetchContactForGroup:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)immobilizerTokenCountWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithPass:(id)arg1 contactResolver:(id)arg2 webService:(id)arg3 queue:(id)arg4;
+- (unsigned long long)numberOfOutstandingSharingSession;
 - (void)parseCredentialsOnPass:(id)arg1;
 - (void)removeDelegate:(id)arg1;
 - (void)revokeGroup:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

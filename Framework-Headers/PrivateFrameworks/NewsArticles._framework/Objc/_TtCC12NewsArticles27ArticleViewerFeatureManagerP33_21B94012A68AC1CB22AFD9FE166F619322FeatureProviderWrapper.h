@@ -13,6 +13,10 @@
     MISSING_TYPE *feature;
     MISSING_TYPE *createAnimationBlock;
     MISSING_TYPE *shouldShowBlock;
+    MISSING_TYPE *navigationBarPaletteHeightBlock;
+    MISSING_TYPE *shouldShowOnScrollAppearanceBlock;
+    MISSING_TYPE *createScrollAppearanceAnimationBlock;
+    MISSING_TYPE *pageVisibilityDidChangeBlock;
     MISSING_TYPE *inToolbar;
 }
 

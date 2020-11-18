@@ -6,23 +6,27 @@
 
 #import <PassKitCore/PKSubcredentialProvisioningLocalDeviceConfiguration.h>
 
-@class PKAppletSubcredentialSharingInvitation, PKAppletSubcredentialSharingInvitationMetadata, PKAppletSubcredentialSharingSession;
+@class PKAppletSubcredentialSharingInvitation, PKAppletSubcredentialSharingInvitationMetadata, PKAppletSubcredentialSharingSession, PKPaymentWebService;
 
 @interface PKSubcredentialProvisioningAcceptInvitationConfiguration : PKSubcredentialProvisioningLocalDeviceConfiguration
 {
+    BOOL _declineRelatedInvitations;
     PKAppletSubcredentialSharingSession *_session;
     PKAppletSubcredentialSharingInvitation *_invitation;
     PKAppletSubcredentialSharingInvitationMetadata *_metadata;
+    PKPaymentWebService *_remoteDeviceWebService;
 }
 
+@property (readonly, nonatomic) BOOL declineRelatedInvitations; // @synthesize declineRelatedInvitations=_declineRelatedInvitations;
 @property (readonly, nonatomic) PKAppletSubcredentialSharingInvitation *invitation; // @synthesize invitation=_invitation;
 @property (readonly, nonatomic) PKAppletSubcredentialSharingInvitationMetadata *metadata; // @synthesize metadata=_metadata;
+@property (readonly, nonatomic) PKPaymentWebService *remoteDeviceWebService; // @synthesize remoteDeviceWebService=_remoteDeviceWebService;
 @property (readonly, weak, nonatomic) PKAppletSubcredentialSharingSession *session; // @synthesize session=_session;
 
 - (void).cxx_destruct;
 - (id)description;
+- (id)initWithSession:(id)arg1 invitation:(id)arg2 metadata:(id)arg3 declineRelatedInvitations:(BOOL)arg4 localDeviceWebService:(id)arg5 remoteDeviceWebService:(id)arg6;
 - (id)initWithSession:(id)arg1 invitation:(id)arg2 metadata:(id)arg3 webService:(id)arg4;
-- (id)initWithSession:(id)arg1 invitation:(id)arg2 webService:(id)arg3;
 - (long long)startingState;
 - (id)transitionTable;
 

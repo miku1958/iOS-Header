@@ -169,7 +169,7 @@
 - (void)speechSynthesis:(id)arg1 prepareForSpeakingWithOptions:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)speechSynthesisConnectionIsRecording:(id)arg1;
 - (void)speechSynthesisDidFinish:(id)arg1;
-- (void)startCorrectedRequestWithText:(id)arg1 correctionIdentifier:(id)arg2 userSelectionResults:(id)arg3;
+- (void)startCorrectedRequestWithText:(id)arg1 correctionIdentifier:(id)arg2 userSelectionResults:(id)arg3 turnIdentifier:(id)arg4;
 - (void)startRequestWithOptions:(id)arg1;
 - (void)startRequestWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)stateMachine:(id)arg1 descriptionForEvent:(long long)arg2;

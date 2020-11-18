@@ -8,20 +8,28 @@
 
 #import <ExposureNotification/CUXPCCodable-Protocol.h>
 
-@class NSDictionary;
+@class NSArray, NSDictionary;
 
 @interface ENExposureDetectionSummary : NSObject <CUXPCCodable>
 {
     unsigned char _maximumRiskScore;
+    NSArray *_attenuationDurations;
     long long _daysSinceLastExposure;
     unsigned long long _matchedKeyCount;
+    double _maximumRiskScoreFullRange;
     NSDictionary *_metadata;
+    double _riskScoreSumFullRange;
+    NSArray *_daySummaries;
 }
 
+@property (copy, nonatomic) NSArray *attenuationDurations; // @synthesize attenuationDurations=_attenuationDurations;
+@property (copy, nonatomic) NSArray *daySummaries; // @synthesize daySummaries=_daySummaries;
 @property (nonatomic) long long daysSinceLastExposure; // @synthesize daysSinceLastExposure=_daysSinceLastExposure;
 @property (nonatomic) unsigned long long matchedKeyCount; // @synthesize matchedKeyCount=_matchedKeyCount;
 @property (nonatomic) unsigned char maximumRiskScore; // @synthesize maximumRiskScore=_maximumRiskScore;
+@property (nonatomic) double maximumRiskScoreFullRange; // @synthesize maximumRiskScoreFullRange=_maximumRiskScoreFullRange;
 @property (readonly, copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
+@property (nonatomic) double riskScoreSumFullRange; // @synthesize riskScoreSumFullRange=_riskScoreSumFullRange;
 
 - (void).cxx_destruct;
 - (id)description;

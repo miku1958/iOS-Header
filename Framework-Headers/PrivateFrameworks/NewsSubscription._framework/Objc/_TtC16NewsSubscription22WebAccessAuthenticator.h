@@ -11,7 +11,6 @@
 @interface _TtC16NewsSubscription22WebAccessAuthenticator : _TtCs12_SwiftObject
 {
     MISSING_TYPE *purchaseController;
-    MISSING_TYPE *paywallCoordinator;
     MISSING_TYPE *authenticationURL;
     MISSING_TYPE *tagID;
     MISSING_TYPE *session;

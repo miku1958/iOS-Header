@@ -12,14 +12,17 @@ __attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed31DebugFormatLayoutViewController : UIViewController
 {
     MISSING_TYPE *tableView;
-    MISSING_TYPE *selectionView;
+    MISSING_TYPE *overlayView;
     MISSING_TYPE *tree;
+    MISSING_TYPE *editor;
 }
 
 - (void).cxx_destruct;
+- (void)didTapOnOverlay:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 
 @end

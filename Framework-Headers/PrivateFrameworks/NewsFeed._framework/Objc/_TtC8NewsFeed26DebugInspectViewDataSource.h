@@ -14,6 +14,8 @@
     MISSING_TYPE *placeholderImage;
     MISSING_TYPE *emptyImage;
     MISSING_TYPE *naImage;
+    MISSING_TYPE *desiredItemIdentifiers;
+    MISSING_TYPE *undesiredItemIdentifiers;
     MISSING_TYPE *key;
     MISSING_TYPE *sections;
     MISSING_TYPE *feedItemImages;

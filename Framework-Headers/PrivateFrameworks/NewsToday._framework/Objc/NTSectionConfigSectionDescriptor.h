@@ -8,15 +8,12 @@
 
 #import <NewsToday/NTSectionDescriptor-Protocol.h>
 
-@class NSString, NSURL, NTPBDiscoverMoreVideosInfo;
+@class NSString, NSURL;
 @protocol NTSectionFetchDescriptor;
 
 @interface NTSectionConfigSectionDescriptor : NSObject <NTSectionDescriptor>
 {
-    BOOL _displaysAsVideoPlaylist;
     BOOL _useNameColorInWidget;
-    BOOL _videoPlaysMutedByDefault;
-    BOOL _openVideoPlaylistInApp;
     int _readArticlesFilterMethod;
     int _seenArticlesFilterMethod;
     int _leadingCellPromotionPolicy;
@@ -33,7 +30,6 @@
     unsigned long long _fallbackOrder;
     long long _supplementalInterSectionFilterOptions;
     long long _supplementalIntraSectionFilterOptions;
-    NTPBDiscoverMoreVideosInfo *_discoverMoreVideosInfo;
     NSString *_backgroundGradientColor;
     NSString *_actionTitle;
     NSURL *_actionURL;
@@ -47,8 +43,6 @@
 @property (readonly, copy, nonatomic) NSString *compactName; // @synthesize compactName=_compactName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy, nonatomic) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo; // @synthesize discoverMoreVideosInfo=_discoverMoreVideosInfo;
-@property (readonly, nonatomic) BOOL displaysAsVideoPlaylist; // @synthesize displaysAsVideoPlaylist=_displaysAsVideoPlaylist;
 @property (readonly, nonatomic) unsigned long long fallbackOrder; // @synthesize fallbackOrder=_fallbackOrder;
 @property (copy, nonatomic) NSObject<NTSectionFetchDescriptor> *fetchDescriptor; // @synthesize fetchDescriptor=_fetchDescriptor;
 @property (readonly) unsigned long long hash;
@@ -58,7 +52,6 @@
 @property (readonly, nonatomic) unsigned long long minimumStoriesAllocation; // @synthesize minimumStoriesAllocation=_minimumStoriesAllocation;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, copy, nonatomic) NSString *nameColor; // @synthesize nameColor=_nameColor;
-@property (readonly, nonatomic) BOOL openVideoPlaylistInApp; // @synthesize openVideoPlaylistInApp=_openVideoPlaylistInApp;
 @property (readonly, copy, nonatomic) NSString *personalizationFeatureID; // @synthesize personalizationFeatureID=_personalizationFeatureID;
 @property (readonly, nonatomic) int readArticlesFilterMethod; // @synthesize readArticlesFilterMethod=_readArticlesFilterMethod;
 @property (readonly, copy, nonatomic) NSString *referralBarName; // @synthesize referralBarName=_referralBarName;
@@ -68,7 +61,6 @@
 @property (readonly, nonatomic) long long supplementalInterSectionFilterOptions; // @synthesize supplementalInterSectionFilterOptions=_supplementalInterSectionFilterOptions;
 @property (readonly, nonatomic) long long supplementalIntraSectionFilterOptions; // @synthesize supplementalIntraSectionFilterOptions=_supplementalIntraSectionFilterOptions;
 @property (readonly, nonatomic) BOOL useNameColorInWidget; // @synthesize useNameColorInWidget=_useNameColorInWidget;
-@property (readonly, nonatomic) BOOL videoPlaysMutedByDefault; // @synthesize videoPlaysMutedByDefault=_videoPlaysMutedByDefault;
 
 - (void).cxx_destruct;
 - (id)assembleResultsWithCatchUpOperation:(id)arg1;

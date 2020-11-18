@@ -11,7 +11,7 @@
 #import <NewsCore/FCCacheFlushing-Protocol.h>
 
 @class FCAssetStore, FCCacheCoordinator, FCKeyValueStore, FCNetworkBehaviorMonitor, NFUnfairLock, NSMapTable, NSString, NSURL;
-@protocol FCAssetKeyManagerType, OS_dispatch_queue;
+@protocol FCAVAssetFactoryType, FCAssetKeyManagerType, OS_dispatch_queue;
 
 @interface FCAssetManager : NSObject <FCAssetHandleDelegate, FCCacheCoordinatorDelegate, FCCacheFlushing>
 {
@@ -26,12 +26,14 @@
     NFUnfairLock *_assetHandlesLock;
     FCNetworkBehaviorMonitor *_networkBehaviorMonitor;
     id<FCAssetKeyManagerType> _keyManager;
+    id<FCAVAssetFactoryType> _avAssetFactory;
     NSObject<OS_dispatch_queue> *_initQueue;
 }
 
 @property (strong, nonatomic) NSMapTable *assetHandles; // @synthesize assetHandles=_assetHandles;
 @property (strong, nonatomic) NFUnfairLock *assetHandlesLock; // @synthesize assetHandlesLock=_assetHandlesLock;
 @property (strong, nonatomic) FCAssetStore *assetStore; // @synthesize assetStore=_assetStore;
+@property (strong, nonatomic) id<FCAVAssetFactoryType> avAssetFactory; // @synthesize avAssetFactory=_avAssetFactory;
 @property (strong, nonatomic) FCCacheCoordinator *cacheCoordinator; // @synthesize cacheCoordinator=_cacheCoordinator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -70,7 +72,7 @@
 - (void)d_resetAssetHandle:(id)arg1;
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1;
 - (id)init;
-- (id)initWithName:(id)arg1 directory:(id)arg2 keyManager:(id)arg3 networkBehaviorMonitor:(id)arg4;
+- (id)initWithName:(id)arg1 directory:(id)arg2 keyManager:(id)arg3 avAssetFactory:(id)arg4 networkBehaviorMonitor:(id)arg5;
 - (id)operationToFetchDataProviderForAssetHandle:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)saveWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)t_save;

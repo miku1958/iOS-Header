@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
     struct WeakObjCPtr<WKWebView> _webView;
     struct RetainPtr<WKDeferringGestureRecognizer> _deferringGestureRecognizerForImmediatelyResettableGestures;
     struct RetainPtr<WKDeferringGestureRecognizer> _deferringGestureRecognizerForDelayedResettableGestures;
+    struct RetainPtr<WKDeferringGestureRecognizer> _deferringGestureRecognizerForSyntheticTapGestures;
     struct RetainPtr<UIWebTouchEventsGestureRecognizer> _touchEventGestureRecognizer;
     BOOL _touchEventsCanPreventNativeGestures;
     BOOL _preventsPanningInXAxis;
@@ -347,6 +348,7 @@ __attribute__((visibility("hidden")))
 - (id)_dataForPreviewItemController:(id)arg1 atPosition:(struct CGPoint)arg2 type:(long long *)arg3;
 - (void)_decreaseListLevel:(id)arg1;
 - (void)_decreaseListLevelForWebView:(id)arg1;
+- (id)_deferringGestureRecognizers;
 - (void)_define:(id)arg1;
 - (void)_defineForWebView:(id)arg1;
 - (void)_deleteByWord;

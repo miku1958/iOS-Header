@@ -11,8 +11,8 @@
 @interface FCFeedPersonalizedItemScoreProfile : NSObject
 {
     double _featureCtr;
-    double _paidNonpaidSubscriptionCtr;
     double _subscribedChannelCtr;
+    double _paidNonpaidSubscriptionCtr;
     double _autoSubscribeCtr;
     double _computedGlobalScoreCoefficient;
     double _userFeedbackScore;
@@ -22,6 +22,7 @@
     double _diversifiedPersonalizationScore;
     NSDictionary *_cohortMemberships;
     NSDictionary *_articleCohortMemberships;
+    unsigned long long _groupingReason;
 }
 
 @property (nonatomic) double agedPersonalizationScore; // @synthesize agedPersonalizationScore=_agedPersonalizationScore;
@@ -32,6 +33,7 @@
 @property (nonatomic) double diversifiedPersonalizationScore; // @synthesize diversifiedPersonalizationScore=_diversifiedPersonalizationScore;
 @property (nonatomic) double featureCtr; // @synthesize featureCtr=_featureCtr;
 @property (nonatomic) double firstPassPersonalizationScore; // @synthesize firstPassPersonalizationScore=_firstPassPersonalizationScore;
+@property (nonatomic) unsigned long long groupingReason; // @synthesize groupingReason=_groupingReason;
 @property (nonatomic) double paidNonpaidSubscriptionCtr; // @synthesize paidNonpaidSubscriptionCtr=_paidNonpaidSubscriptionCtr;
 @property (nonatomic) double personalizationScore; // @synthesize personalizationScore=_personalizationScore;
 @property (nonatomic) double subscribedChannelCtr; // @synthesize subscribedChannelCtr=_subscribedChannelCtr;

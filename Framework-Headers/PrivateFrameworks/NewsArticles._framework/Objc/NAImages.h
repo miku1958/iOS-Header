@@ -11,13 +11,20 @@
 }
 
 + (id)copyLinkActivity;
++ (id)delete;
 + (id)downloadIssueActivity;
++ (id)iconArticleMarkingShare;
 + (id)iconTextSizeControl;
 + (id)iconTextSizeControlCompact;
 + (id)ignoreSuggestionActivity;
 + (id)leftArrow;
 + (id)openChannelActivity;
 + (id)openInSafariActivity;
++ (id)play;
++ (id)playLast;
++ (id)playNext;
++ (id)playing;
++ (id)readStory;
 + (id)removeIssueActivity;
 + (id)removeIssueFromMyMagazinesActivity;
 + (id)reportActivity;

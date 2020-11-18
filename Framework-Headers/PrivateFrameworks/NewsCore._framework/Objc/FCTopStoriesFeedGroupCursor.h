@@ -6,20 +6,14 @@
 
 #import <NewsCore/FCFeedGroupEmittingCursor.h>
 
-@class NSArray, NSDate;
+@class NSArray;
 
 @interface FCTopStoriesFeedGroupCursor : FCFeedGroupEmittingCursor
 {
-    BOOL _collapsed;
-    NSDate *_publishDate;
     NSArray *_articleIDs;
-    NSDate *_optionalStoriesLastRefreshDate;
 }
 
 @property (copy, nonatomic) NSArray *articleIDs; // @synthesize articleIDs=_articleIDs;
-@property (nonatomic, getter=isCollapsed) BOOL collapsed; // @synthesize collapsed=_collapsed;
-@property (copy, nonatomic) NSDate *optionalStoriesLastRefreshDate; // @synthesize optionalStoriesLastRefreshDate=_optionalStoriesLastRefreshDate;
-@property (copy, nonatomic) NSDate *publishDate; // @synthesize publishDate=_publishDate;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

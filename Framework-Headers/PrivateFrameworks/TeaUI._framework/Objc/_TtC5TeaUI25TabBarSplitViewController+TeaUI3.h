@@ -6,12 +6,13 @@
 
 #import <TeaUI/_TtC5TeaUI25TabBarSplitViewController.h>
 
-#import <TeaUI/TSTabBarSplitViewFocusable-Protocol.h>
+@class NSArray;
 
-@interface _TtC5TeaUI25TabBarSplitViewController (TeaUI3) <TSTabBarSplitViewFocusable>
+@interface _TtC5TeaUI25TabBarSplitViewController (TeaUI3)
 
-@property (nonatomic, readonly) long long currentSplitViewFocus;
+@property (nonatomic, readonly) NSArray *keyCommands;
 
-- (void)toggleSplitViewFocusTo:(long long)arg1;
+- (void)toggleResponderPane;
+- (void)toggleSideBarVisibility;
 @end
 

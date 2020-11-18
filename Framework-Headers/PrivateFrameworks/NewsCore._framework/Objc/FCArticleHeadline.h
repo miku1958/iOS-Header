@@ -9,7 +9,7 @@
 #import <NewsCore/FCArticleAccessCheckable-Protocol.h>
 #import <NewsCore/FCHeadlineStocksFields-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, FCCoverArt, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCInterestToken, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSDate, NSString, NSURL, NTPBArticleRecord;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCCoverArt, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCInterestToken, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSDate, NSString, NSURL, NTPBArticleRecord;
 @protocol FCChannelProviding;
 
 @interface FCArticleHeadline : FCHeadline <FCHeadlineStocksFields, FCArticleAccessCheckable>
@@ -87,6 +87,11 @@
     NSArray *_linkedArticleIDs;
     NSArray *_linkedIssueIDs;
     long long _bodyTextLength;
+    FCArticleAudioTrack *_narrativeTrack;
+    FCArticleAudioTrack *_narrativeTrackSample;
+    NSString *_narrativeTrackTextRanges;
+    COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVector;
+    COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVectorAlt;
     NTPBArticleRecord *_articleRecord;
     FCInterestToken *_articleInterestToken;
     long long _behaviorFlags;
@@ -106,6 +111,7 @@
 @property (readonly, nonatomic) long long minimumNewsVersion; // @synthesize minimumNewsVersion=_minimumNewsVersion;
 @property (readonly, nonatomic, getter=isPaid) BOOL paid; // @synthesize paid=_paid;
 @property (readonly, copy, nonatomic) id<FCChannelProviding> sourceChannel; // @synthesize sourceChannel=_sourceChannel;
+@property (readonly, copy, nonatomic) NSString *sourceChannelID;
 @property (readonly, copy, nonatomic) NSString *stocksClusterID;
 @property (readonly, copy, nonatomic) NSString *stocksMetadataJSON;
 @property (readonly, copy, nonatomic) NSString *stocksScoresJSON;
@@ -114,7 +120,9 @@
 + (BOOL)_fakeArticlesTimestamp;
 + (BOOL)_forceArticlesToBeShownAsSponsored;
 + (BOOL)_simulateTopStoriesBadges;
++ (id)_tempOverrideMIMETypeForURL:(id)arg1;
 - (void).cxx_destruct;
+- (void)_adoptNarrativeTrackFromArticleRecord:(id)arg1 assetManager:(id)arg2;
 - (id)accessoryText;
 - (id)articleID;
 - (id)articleRecirculationConfigJSON;
@@ -130,6 +138,7 @@
 - (id)experimentalTitleMetadata;
 - (id)globalCohorts;
 - (unsigned long long)halfLife;
+- (BOOL)hasAudioTrack;
 - (BOOL)hasThumbnail;
 - (id)iAdCategories;
 - (id)iAdKeywords;
@@ -152,7 +161,12 @@
 - (id)linkedIssueIDs;
 - (id)masterIssue;
 - (id)moreFromPublisherArticleIDs;
+- (id)narrativeTrack;
+- (id)narrativeTrackSample;
+- (id)narrativeTrackTextRanges;
 - (BOOL)needsRapidUpdates;
+- (id)personalizationVector;
+- (id)personalizationVectorAlt;
 - (id)primaryAudience;
 - (id)publishDate;
 - (long long)publisherArticleVersion;

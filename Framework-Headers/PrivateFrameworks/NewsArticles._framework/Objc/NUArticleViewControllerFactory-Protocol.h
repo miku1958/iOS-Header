@@ -6,7 +6,7 @@
 
 #import <NewsArticles/NSObject-Protocol.h>
 
-@class FCArticle, FCIssue, NUArticleViewController, NUArticleWebViewController;
+@class FCArticle, FCIssue, NUArticleViewController;
 
 @protocol NUArticleViewControllerFactory <NSObject>
 
@@ -14,6 +14,5 @@
 
 - (NUArticleViewController *)createArticleViewControllerWithArticle:(FCArticle *)arg1;
 - (NUArticleViewController *)createArticleViewControllerWithArticle:(FCArticle *)arg1 issue:(FCIssue *)arg2;
-- (NUArticleWebViewController *)createArticleWebViewControllerWithArticle:(FCArticle *)arg1;
 @end
 

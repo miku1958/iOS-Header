@@ -11,7 +11,7 @@
 #import <VideosUI/VUIPostPlayViewDelegate-Protocol.h>
 #import <VideosUI/VideosExtrasContextDelegate-Protocol.h>
 
-@class AVExternalPlaybackController, AVPlayerViewController, NSDate, NSString, TVPStateMachine, UIButton, UIImage, UIViewController, VUINowPlayingFeatureMonitor, VUIPlayer, VUIPostPlayView, VUIVideoAdvisoryLogoImageDownloader, VUIVideoAdvisoryView, VideosExtrasContext, VideosExtrasPresenter;
+@class AVExternalPlaybackController, AVPlayerViewController, NSDate, NSNumber, NSString, TVPStateMachine, UIButton, UIImage, UIViewController, VUINowPlayingFeatureMonitor, VUIPlayer, VUIPostPlayView, VUIVideoAdvisoryLogoImageDownloader, VUIVideoAdvisoryView, VideosExtrasContext, VideosExtrasPresenter;
 @protocol TVPMediaItem;
 
 @interface VUIPlaybackManager : NSObject <AVPlayerViewControllerDelegatePrivate, VideosExtrasContextDelegate, VUINowPlayingFeatureMonitorDelegate, VUIPostPlayViewDelegate>
@@ -39,6 +39,7 @@
     VUIPostPlayView *_postPlayView;
     unsigned long long _autoPlayedVideosCount;
     NSDate *_initialPlaybackStartDate;
+    NSNumber *_postPlayImpressionTime;
     VUIVideoAdvisoryLogoImageDownloader *_logoImageDownloader;
     UIImage *_ratingImage;
     VUIVideoAdvisoryView *_ratingView;
@@ -69,6 +70,7 @@
 @property (strong, nonatomic) AVPlayerViewController *mainAVPlayerViewController; // @synthesize mainAVPlayerViewController=_mainAVPlayerViewController;
 @property (strong, nonatomic) VUIPlayer *mainPlayer; // @synthesize mainPlayer=_mainPlayer;
 @property (copy, nonatomic) NSString *mostRecentMediaType; // @synthesize mostRecentMediaType=_mostRecentMediaType;
+@property (strong, nonatomic) NSNumber *postPlayImpressionTime; // @synthesize postPlayImpressionTime=_postPlayImpressionTime;
 @property (strong, nonatomic) NSString *postPlayItemId; // @synthesize postPlayItemId=_postPlayItemId;
 @property (strong, nonatomic) VUIPostPlayView *postPlayView; // @synthesize postPlayView=_postPlayView;
 @property (weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;

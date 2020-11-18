@@ -23,9 +23,9 @@
 + (id)articleExcerptHTML;
 - (void).cxx_destruct;
 - (id)embedCSSIntoExcerptHTML:(id)arg1 scale:(double)arg2;
-- (id)excerptHTMLToProcessedHTML:(id)arg1 article:(id)arg2 scale:(double)arg3;
-- (id)initWithArticle:(id)arg1 excerptHTML:(id)arg2 scale:(double)arg3;
-- (id)paragraphShortExcerptHTML:(id)arg1 article:(id)arg2;
+- (id)excerptHTMLToProcessedHTML:(id)arg1 headline:(id)arg2 scale:(double)arg3;
+- (id)initWitHeadline:(id)arg1 excerptHTML:(id)arg2 scale:(double)arg3;
+- (id)paragraphShortExcerptHTML:(id)arg1 headline:(id)arg2;
 - (id)stripHTMLTagsFromExcerptHTML:(id)arg1;
 
 @end

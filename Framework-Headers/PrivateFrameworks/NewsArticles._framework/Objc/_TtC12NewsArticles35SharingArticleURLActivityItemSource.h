@@ -13,6 +13,7 @@
     MISSING_TYPE *headline;
     MISSING_TYPE *sourceChannelPublic;
     MISSING_TYPE *articleURL;
+    MISSING_TYPE *mailShareLinkText;
 }
 
 - (void).cxx_destruct;

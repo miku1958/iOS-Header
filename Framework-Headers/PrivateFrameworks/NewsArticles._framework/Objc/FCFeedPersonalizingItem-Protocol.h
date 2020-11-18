@@ -6,7 +6,7 @@
 
 #import <NewsArticles/NSObject-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, NSArray, NSDate, NSString;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSArray, NSDate, NSString;
 
 @protocol FCFeedPersonalizingItem <NSObject>
 
@@ -16,12 +16,15 @@
 @property (nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
 @property (nonatomic, readonly) double globalUserFeedback;
 @property (nonatomic, readonly) unsigned long long halfLife;
+@property (nonatomic, readonly) BOOL hasAudioTrack;
 @property (nonatomic, readonly) BOOL hasGlobalUserFeedback;
 @property (nonatomic, readonly) BOOL hasVideo;
 @property (nonatomic, readonly) BOOL hiddenFromAutoFavorites;
 @property (nonatomic, readonly) BOOL isFeatured;
 @property (nonatomic, readonly) NSString *itemID;
 @property (nonatomic, readonly) BOOL paid;
+@property (nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector;
+@property (nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt;
 @property (nonatomic, readonly) NSDate *publishDate;
 @property (nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *publisherCohorts;
 @property (nonatomic, readonly) NSString *publisherID;

@@ -27,8 +27,8 @@
 @property (strong) TransparencyConsistencyProofVerifier *verifier;
 
 + (id)descriptor;
-- (void)setResult:(BOOL)arg1 treeHead:(id)arg2 error:(id)arg3;
-- (BOOL)verifyWithError:(id *)arg1;
+- (void)setResult:(unsigned long long)arg1 treeHead:(id)arg2 error:(id)arg3;
+- (unsigned long long)verifyWithError:(id *)arg1;
 
 @end
 

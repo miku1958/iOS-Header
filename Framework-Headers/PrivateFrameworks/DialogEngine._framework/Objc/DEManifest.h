@@ -11,19 +11,23 @@
 @interface DEManifest : NSObject
 {
     NSDictionary *_contents;
+    NSData *_summary;
     NSData *_version;
     NSData *_keyVersion;
 }
 
 @property (strong, nonatomic) NSDictionary *contents; // @synthesize contents=_contents;
 @property (strong, nonatomic) NSData *keyVersion; // @synthesize keyVersion=_keyVersion;
+@property (strong, nonatomic) NSData *summary; // @synthesize summary=_summary;
 @property (strong, nonatomic) NSData *version; // @synthesize version=_version;
 
 + (id)manifestWithContentsOfURL:(id)arg1 encrypted:(BOOL)arg2;
-+ (BOOL)write:(id)arg1 toURL:(id)arg2 keyId:(unsigned long long)arg3 multipart:(BOOL)arg4;
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithContents:(id)arg1 version:(id)arg2 keyVersion:(id)arg3;
+- (id)initWithContents:(id)arg1 summary:(id)arg2;
+- (id)initWithContents:(id)arg1 summary:(id)arg2 version:(id)arg3 keyVersion:(id)arg4;
+- (BOOL)writeToURL:(id)arg1;
+- (BOOL)writeToURL:(id)arg1 keyId:(unsigned long long)arg2 multipart:(BOOL)arg3;
 
 @end
 

@@ -12,6 +12,7 @@
 {
     BOOL _useCKVR;
     BOOL _recoveryPassphraseMutable;
+    int _reqVersion;
     NSString *_decodedLabel;
     NSDate *_escrowDate;
     NSData *_recoveryBlob;
@@ -38,17 +39,19 @@
 @property (strong) NSData *recoveryBlob; // @synthesize recoveryBlob=_recoveryBlob;
 @property (copy, nonatomic) NSString *recoveryPassphrase; // @synthesize recoveryPassphrase=_recoveryPassphrase;
 @property (nonatomic) BOOL recoveryPassphraseMutable; // @synthesize recoveryPassphraseMutable=_recoveryPassphraseMutable;
+@property (nonatomic) int reqVersion; // @synthesize reqVersion=_reqVersion;
 @property (readonly, nonatomic) struct ccsrp_ctx *srp; // @synthesize srp=_srp;
 @property (readonly, nonatomic) BOOL useCKVR; // @synthesize useCKVR=_useCKVR;
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)decodedEscrowRecordFromData:(id)arg1;
+- (id)decodedEscrowRecordFromData:(id)arg1 stingray:(BOOL)arg2 enroll:(BOOL)arg3 env:(id)arg4 duplicate:(BOOL)arg5;
 - (id)encodedEscrowRecordWithPublicKey:(struct __SecKey *)arg1 error:(id *)arg2;
 - (id)initWithDSID:(id)arg1 escrowRecordContents:(id)arg2 recoveryPassphrase:(id)arg3 recordID:(id)arg4 recordLabel:(id)arg5;
-- (id)initWithDSID:(id)arg1 escrowRecordContents:(id)arg2 recoveryPassphrase:(id)arg3 recordID:(id)arg4 recordLabel:(id)arg5 ckvrFlag:(BOOL)arg6;
+- (id)initWithDSID:(id)arg1 escrowRecordContents:(id)arg2 recoveryPassphrase:(id)arg3 recordID:(id)arg4 recordLabel:(id)arg5 ckvrFlag:(BOOL)arg6 reqVersion:(int)arg7;
 - (id)initWithRequest:(id)arg1;
-- (id)initWithRequest:(id)arg1 ckvrFlag:(BOOL)arg2;
+- (id)initWithRequest:(id)arg1 ckvrFlag:(BOOL)arg2 reqVersion:(int)arg3;
+- (id)initWithRequest:(id)arg1 reqVersion:(int)arg2;
 - (id)recoveryResponseForBlob:(id)arg1;
 - (id)srpInitBlob;
 - (unsigned long long)srpKeySize;

@@ -26,7 +26,7 @@
 
 + (id)descriptor;
 - (id)mapLeafWithError:(id *)arg1;
-- (BOOL)verifyWithError:(id *)arg1;
+- (unsigned long long)verifyWithError:(id *)arg1;
 
 @end
 

@@ -92,7 +92,7 @@
 - (BOOL)pageHasExhaustedGroupsWithTypes:(id)arg1;
 - (BOOL)pageHasPrecedingGroupWithSourceIdentifier:(id)arg1;
 - (BOOL)pageIsWaitingForFirstGroupFromSourceIdentifier:(id)arg1;
-- (BOOL)pageWillContainExpandedNewGroupWithSourceIdentifier:(id)arg1;
+- (BOOL)pageWillContainNewGroupWithSourceIdentifier:(id)arg1;
 - (BOOL)pageWillHaveGroupWithSourceIdentifier:(id)arg1;
 - (id)precedingAdjacentHeadlinesFromGroupType:(long long)arg1;
 - (id)precedingAndPendingTopicIDsInSession;

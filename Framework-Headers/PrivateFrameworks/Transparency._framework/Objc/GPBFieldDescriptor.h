@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 
 - (void)dealloc;
 - (id)init;
-- (id)initWithFieldDescription:(void *)arg1 includesDefault:(BOOL)arg2 syntax:(unsigned char)arg3;
+- (id)initWithFieldDescription:(void *)arg1 includesDefault:(BOOL)arg2 usesClassRefs:(BOOL)arg3 proto3OptionalKnown:(BOOL)arg4 syntax:(unsigned char)arg5;
 - (BOOL)isValidEnumValue:(int)arg1;
 - (id)textFormatName;
 

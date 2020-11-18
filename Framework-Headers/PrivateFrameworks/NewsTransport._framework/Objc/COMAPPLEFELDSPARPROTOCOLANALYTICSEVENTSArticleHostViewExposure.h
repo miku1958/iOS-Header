@@ -129,6 +129,8 @@
     BOOL _didBounce;
     BOOL _didExpandDuringView;
     BOOL _didOpenInSafari;
+    BOOL _isAudioEligible;
+    BOOL _isAudioEngaged;
     BOOL _isBreakingNewsArticle;
     BOOL _isCoverArticle;
     BOOL _isDigitalReplicaAd;
@@ -147,7 +149,7 @@
     BOOL _isVideoInFeed;
     BOOL _subscriptionOnlyArticle;
     BOOL _viewFromNotificationDirectOpen;
-    CDStruct_c335251c _has;
+    CDStruct_5b8c9b53 _has;
 }
 
 @property (nonatomic) int activeTimeSpent; // @synthesize activeTimeSpent=_activeTimeSpent;
@@ -264,6 +266,8 @@
 @property (readonly, nonatomic) BOOL hasIadNativeCampaign;
 @property (readonly, nonatomic) BOOL hasIadNativeCampaignAd;
 @property (readonly, nonatomic) BOOL hasIadNativeLine;
+@property (nonatomic) BOOL hasIsAudioEligible;
+@property (nonatomic) BOOL hasIsAudioEngaged;
 @property (nonatomic) BOOL hasIsBreakingNewsArticle;
 @property (nonatomic) BOOL hasIsCoverArticle;
 @property (nonatomic) BOOL hasIsDigitalReplicaAd;
@@ -342,6 +346,8 @@
 @property (strong, nonatomic) NSString *iadNativeCampaign; // @synthesize iadNativeCampaign=_iadNativeCampaign;
 @property (strong, nonatomic) NSString *iadNativeCampaignAd; // @synthesize iadNativeCampaignAd=_iadNativeCampaignAd;
 @property (strong, nonatomic) NSString *iadNativeLine; // @synthesize iadNativeLine=_iadNativeLine;
+@property (nonatomic) BOOL isAudioEligible; // @synthesize isAudioEligible=_isAudioEligible;
+@property (nonatomic) BOOL isAudioEngaged; // @synthesize isAudioEngaged=_isAudioEngaged;
 @property (nonatomic) BOOL isBreakingNewsArticle; // @synthesize isBreakingNewsArticle=_isBreakingNewsArticle;
 @property (nonatomic) BOOL isCoverArticle; // @synthesize isCoverArticle=_isCoverArticle;
 @property (nonatomic) BOOL isDigitalReplicaAd; // @synthesize isDigitalReplicaAd=_isDigitalReplicaAd;

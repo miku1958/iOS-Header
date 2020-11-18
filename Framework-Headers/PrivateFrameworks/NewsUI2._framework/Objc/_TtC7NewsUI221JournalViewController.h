@@ -13,11 +13,8 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *tableView;
     MISSING_TYPE *magazineFeedJournal;
-    MISSING_TYPE *feedPersonalizer;
-    MISSING_TYPE *tagController;
     MISSING_TYPE *journalGroup;
-    MISSING_TYPE *privateDataDirectory;
-    MISSING_TYPE *paidAccessChecker;
+    MISSING_TYPE *cloudContext;
 }
 
 - (void).cxx_destruct;

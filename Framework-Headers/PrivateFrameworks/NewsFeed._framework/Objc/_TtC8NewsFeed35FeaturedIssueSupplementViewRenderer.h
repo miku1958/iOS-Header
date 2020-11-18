@@ -11,7 +11,6 @@
 @interface _TtC8NewsFeed35FeaturedIssueSupplementViewRenderer : _TtCs12_SwiftObject
 {
     MISSING_TYPE *publisherLogoImageCache;
-    MISSING_TYPE *traitCollection;
     MISSING_TYPE *rendererTool;
 }
 

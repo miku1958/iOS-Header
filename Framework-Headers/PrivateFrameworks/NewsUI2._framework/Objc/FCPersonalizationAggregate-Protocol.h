@@ -6,13 +6,14 @@
 
 #import <NewsUI2/NSObject-Protocol.h>
 
-@class NSDate, NSString;
+@class NSDate, NSDictionary, NSString;
 @protocol FCPersonalizationAggregate;
 
 @protocol FCPersonalizationAggregate <NSObject>
 
 @property (nonatomic, readonly) double clicks;
 @property (nonatomic, readonly) double confidence;
+@property (nonatomic, readonly) NSDictionary *dictionaryRepresentation;
 @property (nonatomic, readonly) unsigned long long eventCount;
 @property (nonatomic, readonly) NSString *featureKey;
 @property (nonatomic, readonly) double impressions;

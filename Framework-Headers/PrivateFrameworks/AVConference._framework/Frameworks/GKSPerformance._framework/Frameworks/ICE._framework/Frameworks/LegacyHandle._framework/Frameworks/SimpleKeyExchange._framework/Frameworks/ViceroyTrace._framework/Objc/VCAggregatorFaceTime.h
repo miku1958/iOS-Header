@@ -113,6 +113,10 @@ __attribute__((visibility("hidden")))
     unsigned int _totalDuplicationDuration;
     unsigned int _wifiToCellHandoverCount;
     unsigned int _cellToWifiHandoverCount;
+    unsigned int _evictedFramesLikelyRecoverableCount;
+    unsigned int _evictedFramesTrackedCount;
+    unsigned int _evictedFramesAnalysisValidIntervals;
+    double _evictedFramesAverageLatePacketDelay;
     BOOL _isDuplicationEnabled;
     BOOL _remoteFaceTimeSwitchesAvailable;
     double _duplicationStartTime;
@@ -155,6 +159,7 @@ __attribute__((visibility("hidden")))
 - (int)shortTermAverageTBRForSegment:(id)arg1;
 - (void)startNewSegment;
 - (void)updateAdaptiveLearningStats:(unsigned int)arg1 payload:(id)arg2;
+- (void)updateCellTech:(id)arg1;
 - (void)updateConnectionTelemetry:(id)arg1;
 - (void)updateConnectionTimes:(id)arg1;
 - (void)updateErrorCode:(id)arg1;

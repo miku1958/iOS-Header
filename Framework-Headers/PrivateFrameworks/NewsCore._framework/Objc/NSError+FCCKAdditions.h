@@ -7,15 +7,19 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (FCCKAdditions)
++ (id)fc_authUserAccountInvalid;
 + (id)fc_belowMinimumVersionError;
 + (id)fc_blockedInCurrentStorefrontErrorWithIdentifiers:(id)arg1;
 + (id)fc_canaryDownError;
++ (id)fc_emptyM3UPlaylistError;
 + (id)fc_encryptionErrorWithCode:(unsigned long long)arg1;
 + (id)fc_encryptionErrorWithCode:(unsigned long long)arg1 description:(id)arg2;
 + (id)fc_encryptionErrorWithCode:(unsigned long long)arg1 descriptionFormat:(id)arg2;
 + (id)fc_errorWithCode:(long long)arg1 description:(id)arg2;
 + (id)fc_errorWithCode:(long long)arg1 description:(id)arg2 additionalUserInfo:(id)arg3;
++ (id)fc_expiredAVAssetCertificateError;
 + (id)fc_feedDroppedError;
++ (id)fc_invalidAVAssetKeyURIError;
 + (id)fc_invalidBookmarkErrorWithUserInfo:(id)arg1;
 + (id)fc_invalidChannelErrorForTagID:(id)arg1;
 + (id)fc_invalidGapErrorWithUserInfo:(id)arg1;
@@ -32,11 +36,15 @@
 + (id)fc_operationCancelledErrorWithAdditionalUserInfo:(id)arg1;
 + (id)fc_partialFailureErrorWithUserInfo:(id)arg1;
 + (id)fc_requestDroppedErrorForDroppedFeeds:(unsigned long long)arg1 totalFeeds:(unsigned long long)arg2;
++ (id)fc_unauthorizedAVAssetCertificateError;
++ (id)fc_unauthorizedAVAssetKeyErrorWithKeyURI:(id)arg1;
 + (id)fc_unauthorizedAssetKeyErrorWithWrappingKeyID:(id)arg1;
 + (id)fc_unzipFailedErrorWithErrorCode:(int)arg1;
 - (BOOL)fc_hasCKErrorWithCodePassingTest:(CDUnknownBlockType)arg1;
 - (BOOL)fc_hasIdentityLostError;
 - (BOOL)fc_hasIdentityStillSyncingError;
+- (BOOL)fc_isAVUnauthorizedError;
+- (BOOL)fc_isBlockedInStoreFrontError;
 - (BOOL)fc_isCKErrorWithCode:(long long)arg1;
 - (BOOL)fc_isCKErrorWithCodePassingTest:(CDUnknownBlockType)arg1;
 - (BOOL)fc_isCKUnknownItemError;

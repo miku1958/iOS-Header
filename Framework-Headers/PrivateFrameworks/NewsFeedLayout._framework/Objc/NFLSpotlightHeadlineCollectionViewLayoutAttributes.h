@@ -6,17 +6,22 @@
 
 #import <NewsFeedLayout/NFLHeadlineCollectionViewLayoutAttributes.h>
 
+@class NSAttributedString;
+
 @interface NFLSpotlightHeadlineCollectionViewLayoutAttributes : NFLHeadlineCollectionViewLayoutAttributes
 {
     double _shadowRadius;
     double _shadowOpacity;
+    NSAttributedString *_titleAttributedString;
     struct CGSize _shadowOffset;
 }
 
 @property (nonatomic) struct CGSize shadowOffset; // @synthesize shadowOffset=_shadowOffset;
 @property (nonatomic) double shadowOpacity; // @synthesize shadowOpacity=_shadowOpacity;
 @property (nonatomic) double shadowRadius; // @synthesize shadowRadius=_shadowRadius;
+@property (copy, nonatomic) NSAttributedString *titleAttributedString; // @synthesize titleAttributedString=_titleAttributedString;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)populateWithProtobuf:(id)arg1 normalizedWithFeedGutter:(double)arg2;
 - (id)protobufRepresentationnormalizedWithFeedGutter:(double)arg1;

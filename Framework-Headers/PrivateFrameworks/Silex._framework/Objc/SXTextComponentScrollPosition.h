@@ -12,12 +12,16 @@
     double _relativeTextOffset;
 }
 
-@property (nonatomic) long long characterIndex; // @synthesize characterIndex=_characterIndex;
-@property (nonatomic) double relativeTextOffset; // @synthesize relativeTextOffset=_relativeTextOffset;
+@property (readonly, nonatomic) long long characterIndex; // @synthesize characterIndex=_characterIndex;
+@property (readonly, nonatomic) double relativeTextOffset; // @synthesize relativeTextOffset=_relativeTextOffset;
 
 + (BOOL)supportsSecureCoding;
+- (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithComponentIdentifier:(id)arg1 canvasWidth:(double)arg2 relativePageOffset:(double)arg3 characterIndex:(long long)arg4 relativeTextOffset:(double)arg5;
+- (id)initWithDictionaryRepresentation:(id)arg1 exactly:(BOOL)arg2;
+- (BOOL)jsonDictionaryRepresentationIsValid:(id)arg1 exactly:(BOOL)arg2;
 
 @end
 

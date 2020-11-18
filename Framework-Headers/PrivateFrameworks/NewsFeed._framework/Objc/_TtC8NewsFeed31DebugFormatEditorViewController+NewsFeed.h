@@ -11,10 +11,7 @@
 - (void)doDismiss;
 - (void)doLightDarkModeWithSender:(id)arg1;
 - (void)doOptionsWithSender:(id)arg1;
-- (void)doToggleMissingPropertiesWithSender:(id)arg1;
-- (void)doToggleShowCellContentsWithSender:(id)arg1;
-- (void)doToggleShowColumnsWithSender:(id)arg1;
 - (void)doToggleSidebar;
-- (void)doToggleWildcardSlotFallbackWithSender:(id)arg1;
+- (void)resetZoom;
 @end
 

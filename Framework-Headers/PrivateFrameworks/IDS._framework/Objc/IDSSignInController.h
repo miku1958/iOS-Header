@@ -23,6 +23,7 @@
     double _signInTimeout;
     double _signInFuzz;
     IDSCTAdapter *_CTAdapter;
+    NSString *_listenerGUID;
 }
 
 @property (strong, nonatomic) IDSCTAdapter *CTAdapter; // @synthesize CTAdapter=_CTAdapter;
@@ -32,6 +33,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableDictionary *initialStateByService; // @synthesize initialStateByService=_initialStateByService;
+@property (strong, nonatomic) NSString *listenerGUID; // @synthesize listenerGUID=_listenerGUID;
 @property (strong, nonatomic) id<_IDSPasswordManager> passwordManager; // @synthesize passwordManager=_passwordManager;
 @property (strong, nonatomic) NSMutableDictionary *serviceNameAccountControllerMap; // @synthesize serviceNameAccountControllerMap=_serviceNameAccountControllerMap;
 @property (nonatomic) double signInFuzz; // @synthesize signInFuzz=_signInFuzz;
@@ -58,6 +60,7 @@
 - (void)accountController:(id)arg1 accountAdded:(id)arg2;
 - (void)accountController:(id)arg1 accountDisabled:(id)arg2;
 - (void)accountController:(id)arg1 accountRemoved:(id)arg2;
+- (void)dealloc;
 - (void)disableUserType:(unsigned long long)arg1 onService:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)enableUserType:(unsigned long long)arg1 onService:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;

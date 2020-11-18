@@ -8,12 +8,11 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDecimalNumber, NSString, NSURL, PKPaymentDeviceMetadata;
+@class NSString, NSURL, PKPaymentDeviceMetadata, PKPaymentInstallmentConfiguration;
 
 @interface PKApplyWebServiceTermsRequest : PKApplyWebServiceRequest <NSSecureCoding>
 {
     BOOL _termsAccepted;
-    BOOL _isInstallment;
     NSString *_applicationIdentifier;
     NSString *_applicationTermsIdentifier;
     NSString *_offerTermsIdentifier;
@@ -21,17 +20,14 @@
     NSString *_pathIdentifier;
     NSURL *_baseURL;
     PKPaymentDeviceMetadata *_deviceMetadata;
-    NSDecimalNumber *_installmentAmount;
-    NSString *_installmentCurrencyCode;
+    PKPaymentInstallmentConfiguration *_installmentConfiguration;
 }
 
 @property (copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property (copy, nonatomic) NSString *applicationTermsIdentifier; // @synthesize applicationTermsIdentifier=_applicationTermsIdentifier;
 @property (strong, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property (strong, nonatomic) PKPaymentDeviceMetadata *deviceMetadata; // @synthesize deviceMetadata=_deviceMetadata;
-@property (strong, nonatomic) NSDecimalNumber *installmentAmount; // @synthesize installmentAmount=_installmentAmount;
-@property (copy, nonatomic) NSString *installmentCurrencyCode; // @synthesize installmentCurrencyCode=_installmentCurrencyCode;
-@property (nonatomic) BOOL isInstallment; // @synthesize isInstallment=_isInstallment;
+@property (strong, nonatomic) PKPaymentInstallmentConfiguration *installmentConfiguration; // @synthesize installmentConfiguration=_installmentConfiguration;
 @property (copy, nonatomic) NSString *offerTermsIdentifier; // @synthesize offerTermsIdentifier=_offerTermsIdentifier;
 @property (copy, nonatomic) NSString *pathIdentifier; // @synthesize pathIdentifier=_pathIdentifier;
 @property (copy, nonatomic) NSString *pathTermsIdentifier; // @synthesize pathTermsIdentifier=_pathTermsIdentifier;

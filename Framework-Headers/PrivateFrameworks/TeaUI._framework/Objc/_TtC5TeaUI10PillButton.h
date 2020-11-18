@@ -16,6 +16,7 @@
 }
 
 @property (nonatomic, strong) UIColor *backgroundColor;
+@property (nonatomic) struct CGPoint contentOffset; // @synthesize contentOffset;
 @property (nonatomic) BOOL enabled;
 @property (nonatomic) BOOL highlighted;
 

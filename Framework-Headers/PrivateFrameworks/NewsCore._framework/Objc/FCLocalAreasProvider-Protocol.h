@@ -10,7 +10,6 @@
 
 @protocol FCLocalAreasProvider <NSObject>
 - (NSSet *)autoFavoriteTagIDsForLocation:(CLLocation *)arg1;
-- (NSSet *)localVersionedTagIDsForLocation:(CLLocation *)arg1;
 - (NSArray *)regionsForLocation:(CLLocation *)arg1;
 @end
 

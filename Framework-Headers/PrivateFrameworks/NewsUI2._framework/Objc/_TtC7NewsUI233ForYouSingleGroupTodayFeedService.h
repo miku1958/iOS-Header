@@ -13,6 +13,8 @@
     MISSING_TYPE *group;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *paidBundleConfigManager;
+    MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *paidAccessChecker;
 }
 
 @end

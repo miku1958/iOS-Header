@@ -10,7 +10,7 @@
 #import <NewsToday/NSSecureCoding-Protocol.h>
 #import <NewsToday/NTSectionDisplayDescriptor-Protocol.h>
 
-@class NSArray, NSOrderedSet, NSString, NSURL, NTPBDiscoverMoreVideosInfo, NTPBSectionDisplayDescriptor, SFRankingFeedback;
+@class NSOrderedSet, NSString, NSURL, NTPBSectionDisplayDescriptor, SFRankingFeedback;
 
 @interface NTSection : NSObject <NTSectionDisplayDescriptor, NSCopying, NSSecureCoding>
 {
@@ -18,7 +18,6 @@
     NSString *_identifier;
     NSString *_personalizationFeatureID;
     NSOrderedSet *_items;
-    NSArray *_videoPlaylistHeadlines;
     SFRankingFeedback *_rankingFeedback;
     NSString *_referralBarName;
     NSString *_actionTitle;
@@ -29,9 +28,7 @@
 @property (copy, nonatomic) NSString *actionTitle; // @synthesize actionTitle=_actionTitle;
 @property (copy, nonatomic) NSURL *actionURL; // @synthesize actionURL=_actionURL;
 @property (readonly, copy, nonatomic) NSString *backgroundGradientColor;
-@property (readonly, copy, nonatomic) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo;
 @property (copy, nonatomic) NTPBSectionDisplayDescriptor *displayDescriptor; // @synthesize displayDescriptor=_displayDescriptor;
-@property (readonly, nonatomic) BOOL displaysAsVideoPlaylist;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSOrderedSet *items; // @synthesize items=_items;
 @property (readonly, copy, nonatomic) NSString *name;
@@ -41,8 +38,6 @@
 @property (copy, nonatomic) SFRankingFeedback *rankingFeedback; // @synthesize rankingFeedback=_rankingFeedback;
 @property (copy, nonatomic) NSString *referralBarName; // @synthesize referralBarName=_referralBarName;
 @property (readonly, nonatomic) BOOL useNameColorInWidget;
-@property (readonly, copy, nonatomic) NSArray *videoPlaylistHeadlines; // @synthesize videoPlaylistHeadlines=_videoPlaylistHeadlines;
-@property (readonly, nonatomic) BOOL videoPlaysMutedByDefault;
 
 + (id)_itemClassesByType;
 + (BOOL)supportsSecureCoding;
@@ -53,7 +48,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 actionTitle:(id)arg2 actionURL:(id)arg3 personalizationFeatureID:(id)arg4 items:(id)arg5 videoPlaylistHeadlines:(id)arg6 rankingFeedback:(id)arg7 displayDescriptor:(id)arg8 referralBarName:(id)arg9 openVideoPlaylistInApp:(BOOL)arg10;
+- (id)initWithIdentifier:(id)arg1 actionTitle:(id)arg2 actionURL:(id)arg3 personalizationFeatureID:(id)arg4 items:(id)arg5 rankingFeedback:(id)arg6 displayDescriptor:(id)arg7 referralBarName:(id)arg8;
 - (BOOL)isEqual:(id)arg1;
 
 @end

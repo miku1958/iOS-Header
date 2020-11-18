@@ -38,9 +38,12 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadRemoteViewController;
 - (void)loadView;
+- (long long)modalPresentationStyle;
+- (long long)modalTransitionStyle;
 - (void)setRemoteVC:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)shouldAutorotate;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
+- (unsigned long long)supportedInterfaceOrientations;
 - (void)viewWillLayoutSubviews;
 
 @end

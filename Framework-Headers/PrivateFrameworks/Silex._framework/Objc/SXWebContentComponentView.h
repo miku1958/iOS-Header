@@ -77,6 +77,7 @@
 - (void)loadComponent:(id)arg1;
 - (void)loadWebContent;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentWithHeight:(double)arg1;
 - (void)reachabilityChanged:(BOOL)arg1;
 - (void)reloadWebContent;
 - (BOOL)useLightForegroundColor;

@@ -8,17 +8,17 @@
 
 #import <NanoPassKit/NSCopying-Protocol.h>
 
+@class NSData;
+
 @interface NPKProtoCanAcceptInvitationResponse : PBCodable <NSCopying>
 {
-    BOOL _canAcceptInvitation;
-    struct {
-        unsigned int canAcceptInvitation:1;
-    } _has;
+    NSData *_errorData;
 }
 
-@property (nonatomic) BOOL canAcceptInvitation; // @synthesize canAcceptInvitation=_canAcceptInvitation;
-@property (nonatomic) BOOL hasCanAcceptInvitation;
+@property (strong, nonatomic) NSData *errorData; // @synthesize errorData=_errorData;
+@property (readonly, nonatomic) BOOL hasErrorData;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

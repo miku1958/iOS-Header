@@ -94,6 +94,7 @@
     float _subtitleFrameWidth;
     float _subtitleFrameX;
     float _subtitleFrameY;
+    NSData *_titleAttributedString;
     NSData *_titleColor;
     float _titleFontLineHeight;
     NSString *_titleFontName;
@@ -304,6 +305,7 @@
 @property (nonatomic) BOOL hasSubtitleFrameWidth;
 @property (nonatomic) BOOL hasSubtitleFrameX;
 @property (nonatomic) BOOL hasSubtitleFrameY;
+@property (readonly, nonatomic) BOOL hasTitleAttributedString;
 @property (readonly, nonatomic) BOOL hasTitleColor;
 @property (nonatomic) BOOL hasTitleFontLineHeight;
 @property (readonly, nonatomic) BOOL hasTitleFontName;
@@ -358,6 +360,7 @@
 @property (nonatomic) float subtitleFrameWidth; // @synthesize subtitleFrameWidth=_subtitleFrameWidth;
 @property (nonatomic) float subtitleFrameX; // @synthesize subtitleFrameX=_subtitleFrameX;
 @property (nonatomic) float subtitleFrameY; // @synthesize subtitleFrameY=_subtitleFrameY;
+@property (strong, nonatomic) NSData *titleAttributedString; // @synthesize titleAttributedString=_titleAttributedString;
 @property (strong, nonatomic) NSData *titleColor; // @synthesize titleColor=_titleColor;
 @property (nonatomic) float titleFontLineHeight; // @synthesize titleFontLineHeight=_titleFontLineHeight;
 @property (strong, nonatomic) NSString *titleFontName; // @synthesize titleFontName=_titleFontName;

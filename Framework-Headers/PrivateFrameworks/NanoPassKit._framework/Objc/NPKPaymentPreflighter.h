@@ -55,6 +55,8 @@
 - (void).cxx_destruct;
 - (void)_checkCompanioniCloudAccount;
 - (void)_checkPasscodeEnabledAndUnlockedState;
+- (void)_checkPasscodeEnabledAndUnlockedStateRequiringPasscode:(BOOL)arg1 requiringUnlock:(BOOL)arg2;
+- (void)_checkPasscodeEnabledState;
 - (void)_checkSpaceAvailableOnSecureElement;
 - (void)_checkWatchConnected;
 - (void)_checkWatchiCloudAccount;
@@ -68,6 +70,7 @@
 - (id)_errorForWristDetectNeeded;
 - (void)_finishPresentingSetupControllerIfReadyWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (void)_setAuthRandomIfNecessary;
+- (void)acceptInvitationPreflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addCardPreflightWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithWebService:(id)arg1 companionAgentConnection:(id)arg2;
 - (void)transferToCompanionPreflightWithCompletion:(CDUnknownBlockType)arg1;

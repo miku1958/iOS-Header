@@ -95,6 +95,8 @@
 @property (readonly, nonatomic) BOOL isEventAllDay;
 @property (readonly, nonatomic, getter=_isStandaloneBrand) BOOL isStandAloneBrand;
 @property (readonly, nonatomic, getter=_isTransitDisplayFeature) BOOL isTransitDisplayFeature;
+@property (readonly, nonatomic, getter=_iso3166CountryCode) NSString *iso3166CountryCode;
+@property (readonly, nonatomic, getter=_iso3166SubdivisionCode) NSString *iso3166SubdivisionCode;
 @property (readonly, nonatomic, getter=_linkedServices) NSArray *linkedServices;
 @property (readonly, nonatomic, getter=_mapsCategoryId) NSString *mapsCategoryId;
 @property (readonly, nonatomic, getter=_messageLink) GEOMessageLink *messageLink;

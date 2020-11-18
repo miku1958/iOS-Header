@@ -30,6 +30,7 @@
     NSString *_customEntitlement;
     NSString *_agentDomain;
     NSString *_agentType;
+    NSString *_signingIdentifier;
 }
 
 @property (copy) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
@@ -46,6 +47,7 @@
 @property (getter=isNegative) BOOL negative; // @synthesize negative=_negative;
 @property int pid; // @synthesize pid=_pid;
 @property unsigned char prefix; // @synthesize prefix=_prefix;
+@property (copy) NSString *signingIdentifier; // @synthesize signingIdentifier=_signingIdentifier;
 @property (copy) NWAddressEndpoint *startAddress; // @synthesize startAddress=_startAddress;
 @property unsigned int trafficClassEnd; // @synthesize trafficClassEnd=_trafficClassEnd;
 @property unsigned int trafficClassStart; // @synthesize trafficClassStart=_trafficClassStart;
@@ -81,6 +83,7 @@
 + (id)remoteAddressStart:(id)arg1 end:(id)arg2;
 + (id)requiredAgentDomain:(id)arg1 agentType:(id)arg2;
 + (id)scopedInterface:(id)arg1;
++ (id)signingIdentifier:(id)arg1;
 + (id)trafficClassStart:(unsigned int)arg1 end:(unsigned int)arg2;
 + (id)uid:(unsigned int)arg1;
 + (id)usesModernNetworkAPI;

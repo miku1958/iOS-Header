@@ -14,7 +14,6 @@
 @interface FCGreatStoriesYouMissedGroupEmitter : NSObject <FCFeedGroupEmitting>
 {
     id<FCContentContext> _context;
-    unsigned long long _limit;
 }
 
 @property (strong, nonatomic) id<FCContentContext> context; // @synthesize context=_context;
@@ -25,7 +24,6 @@
 @property (readonly, copy, nonatomic) NSSet *emittableGroupTypes;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isRequiredByFollowingEmitters;
-@property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property (readonly, nonatomic) long long requiredForYouContentTypes;
 @property (readonly, nonatomic) BOOL requiresHeavyweightContent;
 @property (readonly, nonatomic) BOOL shouldEmitContentInFavoritesOnlyMode;
@@ -33,7 +31,6 @@
 
 + (BOOL)greatStoriesMayEmit:(id)arg1;
 + (id)groupEmitterIdentifier;
-+ (void)setShouldEmitOverride:(BOOL)arg1;
 - (void).cxx_destruct;
 - (id)operationToEmitGroupWithContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;
 - (BOOL)wantsToEmitGroupInContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;

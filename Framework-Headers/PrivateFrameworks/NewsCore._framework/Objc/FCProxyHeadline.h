@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCHeadlineProviding-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
 @protocol FCChannelProviding, FCHeadlineMetadata, FCHeadlineProviding, FCHeadlineStocksFields, FCNativeAdProviding;
 
 @interface FCProxyHeadline : NSProxy <FCHeadlineProviding>
@@ -53,6 +53,7 @@
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
 @property (readonly, nonatomic) double globalUserFeedback;
 @property (readonly, nonatomic) unsigned long long halfLife;
+@property (readonly, nonatomic) BOOL hasAudioTrack;
 @property (readonly, nonatomic) BOOL hasGlobalUserFeedback;
 @property (readonly, nonatomic) BOOL hasThumbnail;
 @property (readonly, nonatomic) BOOL hasVideo;
@@ -66,6 +67,7 @@
 @property (readonly, nonatomic) BOOL isBlockedExplicitContent;
 @property (readonly, nonatomic) BOOL isDraft;
 @property (readonly, nonatomic) BOOL isFeatured;
+@property (readonly, nonatomic) BOOL isFullTrackAvailableToAll;
 @property (readonly, nonatomic) BOOL isLocalDraft;
 @property (readonly, nonatomic) BOOL isTopStory;
 @property (readonly, nonatomic, getter=isIssueOnly) BOOL issueOnly;
@@ -79,10 +81,15 @@
 @property (readonly, copy, nonatomic) FCIssue *masterIssue;
 @property (readonly, nonatomic) long long minimumNewsVersion;
 @property (readonly, copy, nonatomic) NSArray *moreFromPublisherArticleIDs;
+@property (readonly, nonatomic) FCArticleAudioTrack *narrativeTrack;
+@property (readonly, nonatomic) FCArticleAudioTrack *narrativeTrackSample;
+@property (readonly, nonatomic) NSString *narrativeTrackTextRanges;
 @property (readonly, nonatomic) BOOL needsRapidUpdates;
 @property (readonly, nonatomic) unsigned long long order;
 @property (readonly, copy, nonatomic) id<FCHeadlineProviding> originalHeadline;
 @property (readonly, nonatomic, getter=isPaid) BOOL paid;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt;
 @property (readonly, nonatomic, getter=isPressRelease) BOOL pressRelease;
 @property (readonly, copy, nonatomic) NSString *primaryAudience;
 @property (readonly, copy, nonatomic) NSDate *publishDate;

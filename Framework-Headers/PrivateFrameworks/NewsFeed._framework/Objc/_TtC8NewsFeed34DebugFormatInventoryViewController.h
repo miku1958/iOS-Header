@@ -14,13 +14,14 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *packages;
     MISSING_TYPE *columnOptions;
     MISSING_TYPE *sections;
-    MISSING_TYPE *formatCompiler;
-    MISSING_TYPE *compilerResult;
-    MISSING_TYPE *compilerQueue;
-    MISSING_TYPE *compilerLabel;
     MISSING_TYPE *tableView;
     MISSING_TYPE *groupViewController;
     MISSING_TYPE *versionLabel;
+    MISSING_TYPE *coverViewManager;
+    MISSING_TYPE *$__lazy_storage_$_uploadBarButtonItem;
+    MISSING_TYPE *$__lazy_storage_$_updatedLabel;
+    MISSING_TYPE *styler;
+    MISSING_TYPE *editor;
 }
 
 - (void).cxx_destruct;

@@ -17,6 +17,7 @@
     long long _minimumNewsVersion;
     unsigned long long _nameImageBaselineShift;
     double _nameImageScaleFactor;
+    long long _propertyFlags;
     long long _score;
     NSMutableArray *_allowedStorefrontIDs;
     NSString *_archiveIssueListID;
@@ -26,7 +27,6 @@
     NSString *_channelDefaultSectionID;
     NSMutableArray *_channelSectionFeedConfigurations;
     NSMutableArray *_channelSectionIDs;
-    NSString *_coverArticleListID;
     NSString *_coverImageURL;
     NTPBFeedConfiguration *_feedConfiguration;
     NSString *_feedNavImageURL;
@@ -80,6 +80,7 @@
         unsigned int minimumNewsVersion:1;
         unsigned int nameImageBaselineShift:1;
         unsigned int nameImageScaleFactor:1;
+        unsigned int propertyFlags:1;
         unsigned int score:1;
         unsigned int groupingAvailability:1;
         unsigned int type:1;
@@ -104,7 +105,6 @@
 @property (strong, nonatomic) NSMutableArray *channelSectionFeedConfigurations; // @synthesize channelSectionFeedConfigurations=_channelSectionFeedConfigurations;
 @property (strong, nonatomic) NSMutableArray *channelSectionIDs; // @synthesize channelSectionIDs=_channelSectionIDs;
 @property (nonatomic) long long contentProvider; // @synthesize contentProvider=_contentProvider;
-@property (strong, nonatomic) NSString *coverArticleListID; // @synthesize coverArticleListID=_coverArticleListID;
 @property (strong, nonatomic) NSString *coverImageURL; // @synthesize coverImageURL=_coverImageURL;
 @property (strong, nonatomic) NTPBFeedConfiguration *feedConfiguration; // @synthesize feedConfiguration=_feedConfiguration;
 @property (strong, nonatomic) NSString *feedNavImageURL; // @synthesize feedNavImageURL=_feedNavImageURL;
@@ -115,7 +115,6 @@
 @property (nonatomic) BOOL hasBehaviorFlags;
 @property (readonly, nonatomic) BOOL hasChannelDefaultSectionID;
 @property (nonatomic) BOOL hasContentProvider;
-@property (readonly, nonatomic) BOOL hasCoverArticleListID;
 @property (readonly, nonatomic) BOOL hasCoverImageURL;
 @property (readonly, nonatomic) BOOL hasFeedConfiguration;
 @property (readonly, nonatomic) BOOL hasFeedNavImageURL;
@@ -145,6 +144,7 @@
 @property (readonly, nonatomic) BOOL hasPaidBundlePaywallConfigurationJson;
 @property (readonly, nonatomic) BOOL hasParentID;
 @property (readonly, nonatomic) BOOL hasPrimaryAudience;
+@property (nonatomic) BOOL hasPropertyFlags;
 @property (readonly, nonatomic) BOOL hasPublisherPaidAuthorizationURL;
 @property (readonly, nonatomic) BOOL hasPublisherPaidDescriptionStrings;
 @property (nonatomic) BOOL hasPublisherPaidLeakyPaywallOptOut;
@@ -188,6 +188,7 @@
 @property (strong, nonatomic) NSString *paidBundlePaywallConfigurationJson; // @synthesize paidBundlePaywallConfigurationJson=_paidBundlePaywallConfigurationJson;
 @property (strong, nonatomic) NSString *parentID; // @synthesize parentID=_parentID;
 @property (strong, nonatomic) NSString *primaryAudience; // @synthesize primaryAudience=_primaryAudience;
+@property (nonatomic) long long propertyFlags; // @synthesize propertyFlags=_propertyFlags;
 @property (strong, nonatomic) NSString *publisherPaidAuthorizationURL; // @synthesize publisherPaidAuthorizationURL=_publisherPaidAuthorizationURL;
 @property (strong, nonatomic) NSMutableArray *publisherPaidBundlePurchaseIDs; // @synthesize publisherPaidBundlePurchaseIDs=_publisherPaidBundlePurchaseIDs;
 @property (strong, nonatomic) NTPBPublisherPaidDescriptionStrings *publisherPaidDescriptionStrings; // @synthesize publisherPaidDescriptionStrings=_publisherPaidDescriptionStrings;

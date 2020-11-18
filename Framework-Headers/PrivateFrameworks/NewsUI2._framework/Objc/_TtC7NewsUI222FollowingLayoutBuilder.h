@@ -14,7 +14,7 @@
     MISSING_TYPE *followingFooterViewLayoutAttributesFactory;
     MISSING_TYPE *browseButtonViewLayoutAttributesFactory;
     MISSING_TYPE *settingsButtonViewLayoutAttributesFactory;
-    MISSING_TYPE *followingRowViewLayoutAttributesFactory;
+    MISSING_TYPE *tagViewLayoutAttributesFactory;
 }
 
 @end

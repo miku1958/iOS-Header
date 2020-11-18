@@ -12,10 +12,14 @@
 
 @interface PKSubcredentialInvitationFlowControllerContext : PKSubcredentialProvisioningFlowControllerContext <NSCopying>
 {
+    BOOL _acceptLocalDeviceInvitation;
+    BOOL _acceptRemoteDeviceInvitation;
     PKAppletSubcredentialSharingInvitation *_localDeviceInvitation;
     PKAppletSubcredentialSharingInvitation *_remoteDeviceInvitation;
 }
 
+@property (nonatomic) BOOL acceptLocalDeviceInvitation; // @synthesize acceptLocalDeviceInvitation=_acceptLocalDeviceInvitation;
+@property (nonatomic) BOOL acceptRemoteDeviceInvitation; // @synthesize acceptRemoteDeviceInvitation=_acceptRemoteDeviceInvitation;
 @property (strong, nonatomic) PKAppletSubcredentialSharingInvitation *localDeviceInvitation; // @synthesize localDeviceInvitation=_localDeviceInvitation;
 @property (strong, nonatomic) PKAppletSubcredentialSharingInvitation *remoteDeviceInvitation; // @synthesize remoteDeviceInvitation=_remoteDeviceInvitation;
 

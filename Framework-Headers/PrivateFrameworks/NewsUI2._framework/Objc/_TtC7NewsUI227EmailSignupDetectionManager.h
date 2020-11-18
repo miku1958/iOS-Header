@@ -14,8 +14,11 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *appConfigurationManager;
     MISSING_TYPE *appLaunchUpsellManager;
     MISSING_TYPE *delegate;
-    MISSING_TYPE *emailSignUpAppLaunchCurrentCount;
+    MISSING_TYPE *appStartup;
     MISSING_TYPE *appleAccount;
+    MISSING_TYPE *userInfo;
+    MISSING_TYPE *newsletterManager;
+    MISSING_TYPE *bundleSubscriptionManager;
 }
 
 - (void).cxx_destruct;

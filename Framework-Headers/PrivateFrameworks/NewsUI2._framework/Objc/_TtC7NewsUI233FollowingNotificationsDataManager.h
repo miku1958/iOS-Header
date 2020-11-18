@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *subscriptionService;
     MISSING_TYPE *tagService;
     MISSING_TYPE *userNotificationCenter;
+    MISSING_TYPE *configurationManager;
+    MISSING_TYPE *newsletterManager;
 }
 
 - (void).cxx_destruct;

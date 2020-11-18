@@ -29,7 +29,9 @@
 @property (strong, nonatomic) NSString *uti; // @synthesize uti=_uti;
 @property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
-+ (BOOL)isValidOriginalURL:(id)arg1 pathManager:(id)arg2;
++ (id)fileIdentifierForValidOriginalURL:(id)arg1;
++ (id)fileIdentifierForValidOriginalURL:(id)arg1 originalsDirectoryName:(id)arg2;
++ (BOOL)isValidOriginalURL:(id)arg1;
 + (id)uuidFromURL:(id)arg1;
 - (void).cxx_destruct;
 - (id)description;

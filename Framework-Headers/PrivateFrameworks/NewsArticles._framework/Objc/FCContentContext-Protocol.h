@@ -8,7 +8,7 @@
 #import <NewsArticles/NSObject-Protocol.h>
 
 @class FCArticleController, FCAssetManager, FCFlintResourceManager, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCTagController, NSArray, NSString, NSURL;
-@protocol FCBackgroundTaskable, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext, FCWebArchiveSource;
+@protocol FCAVAssetPrewarming, FCBackgroundTaskable, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext, FCWebArchiveSource;
 
 @protocol FCContentContext <NSObject, FCCacheFlushing>
 
@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) FCArticleController *articleController;
 @property (nonatomic, readonly) NSURL *assetCacheDirectoryURL;
 @property (nonatomic, readonly) FCAssetManager *assetManager;
+@property (nonatomic, readonly) id<FCAVAssetPrewarming> avAssetPrewarmer;
 @property (nonatomic, readonly) id<FCBackgroundTaskable> backgroundTaskable;
 @property (nonatomic, readonly) id<FCCoreConfigurationManager> configurationManager;
 @property (nonatomic, readonly) NSString *contentDirectory;

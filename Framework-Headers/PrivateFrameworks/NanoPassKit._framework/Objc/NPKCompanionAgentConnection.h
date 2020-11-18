@@ -68,6 +68,7 @@
 - (BOOL)canAddSecureElementPassWithConfiguration:(id)arg1;
 - (void)commutePlanReminderForCommutePlan:(id)arg1 pass:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)consistencyCheckWithCompletion:(CDUnknownBlockType)arg1;
+- (void)credentialedPassUniqueIDsSynchronous:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)defaultCardUniqueID:(CDUnknownBlockType)arg1;
 - (void)defaultPaymentApplicationForPassWithUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;

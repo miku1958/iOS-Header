@@ -10,8 +10,9 @@
 
 @interface TSMastheadDisplayOptions : NSObject
 {
-    MISSING_TYPE *displayMode;
+    MISSING_TYPE *statusBarMode;
     MISSING_TYPE *styleOptions;
+    MISSING_TYPE *displayMode;
     MISSING_TYPE *statusBarVisiblityOffset;
 }
 

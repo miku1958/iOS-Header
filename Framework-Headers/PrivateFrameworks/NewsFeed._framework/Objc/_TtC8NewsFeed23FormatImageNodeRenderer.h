@@ -13,7 +13,6 @@
     MISSING_TYPE *imageCache;
     MISSING_TYPE *rendererTool;
     MISSING_TYPE *assetManager;
-    MISSING_TYPE *traitCollection;
 }
 
 @end

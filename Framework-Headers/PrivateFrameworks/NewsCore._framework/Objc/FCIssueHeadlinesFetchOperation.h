@@ -6,20 +6,19 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCCachePolicy, NSArray, NSDictionary;
-@protocol FCContentContext;
+@class FCCachePolicy, FCCloudContext, NSArray, NSDictionary;
 
 @interface FCIssueHeadlinesFetchOperation : FCOperation
 {
     FCCachePolicy *_cachePolicy;
     CDUnknownBlockType _fetchCompletionHandler;
-    id<FCContentContext> _context;
+    FCCloudContext *_context;
     NSArray *_issueIDs;
     NSDictionary *_resultHeadlinesByIssue;
 }
 
 @property (copy, nonatomic) FCCachePolicy *cachePolicy; // @synthesize cachePolicy=_cachePolicy;
-@property (strong, nonatomic) id<FCContentContext> context; // @synthesize context=_context;
+@property (strong, nonatomic) FCCloudContext *context; // @synthesize context=_context;
 @property (copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
 @property (strong, nonatomic) NSArray *issueIDs; // @synthesize issueIDs=_issueIDs;
 @property (strong, nonatomic) NSDictionary *resultHeadlinesByIssue; // @synthesize resultHeadlinesByIssue=_resultHeadlinesByIssue;

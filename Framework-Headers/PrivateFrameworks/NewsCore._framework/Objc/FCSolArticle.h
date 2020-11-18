@@ -18,9 +18,11 @@
     NSString *_publisherID;
     double _score;
     NSSet *_whitelistedTopicIDs;
+    unsigned long long _groupingReason;
 }
 
 @property (nonatomic) BOOL accessible; // @synthesize accessible=_accessible;
+@property (nonatomic) unsigned long long groupingReason; // @synthesize groupingReason=_groupingReason;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSString *publisherID; // @synthesize publisherID=_publisherID;
 @property (nonatomic) double score; // @synthesize score=_score;
@@ -33,6 +35,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithID:(id)arg1 publisherID:(id)arg2 accessible:(BOOL)arg3 whitelistedTopicIDs:(id)arg4;
 - (id)initWithID:(id)arg1 publisherID:(id)arg2 score:(double)arg3 accessible:(BOOL)arg4;
 - (id)initWithID:(id)arg1 publisherID:(id)arg2 score:(double)arg3 accessible:(BOOL)arg4 whitelistedTopicIDs:(id)arg5;
 - (BOOL)isEqual:(id)arg1;

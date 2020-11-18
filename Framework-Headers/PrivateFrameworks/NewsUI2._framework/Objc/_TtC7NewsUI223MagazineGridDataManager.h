@@ -11,7 +11,7 @@
 @interface _TtC7NewsUI223MagazineGridDataManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *notificationManager;
+    MISSING_TYPE *notificationPrompter;
     MISSING_TYPE *magazineGridModelLoader;
     MISSING_TYPE *subscriptionService;
     MISSING_TYPE *tagService;

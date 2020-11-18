@@ -6,11 +6,12 @@
 
 #import <NewsUI2/NSObject-Protocol.h>
 
-@class FCIssueReadingHistory, FCKeyValueStore, FCNetworkBehaviorMonitor, FCPersonalizationData, FCPrivateChannelMembershipController, FCReadingHistory, FCReadingList, FCSubscriptionList, FCTagSettings, FCUserInfo, NSString;
+@class FCAudioPlaylist, FCIssueReadingHistory, FCKeyValueStore, FCNetworkBehaviorMonitor, FCPersonalizationData, FCPrivateChannelMembershipController, FCReadingHistory, FCReadingList, FCSubscriptionList, FCTagSettings, FCUserInfo, NSString;
 @protocol FCPushNotificationHandling;
 
 @protocol FCPrivateDataContext <NSObject>
 
+@property (nonatomic, readonly) FCAudioPlaylist *audioPlaylist;
 @property (nonatomic, readonly) FCIssueReadingHistory *issueReadingHistory;
 @property (nonatomic, readonly) FCNetworkBehaviorMonitor *networkBehaviorMonitor;
 @property (nonatomic, readonly) FCPersonalizationData *personalizationData;

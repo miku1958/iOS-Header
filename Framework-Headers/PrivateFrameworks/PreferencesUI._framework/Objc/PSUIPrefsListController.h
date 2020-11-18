@@ -59,6 +59,7 @@
     PSSpecifier *_homeKitSpecifier;
     PSSpecifier *_healthKitSpecifier;
     PSSpecifier *_emergencySOSSpecifier;
+    PSSpecifier *_exposureNotificationSpecifier;
     BOOL _wifiValueIsClean;
     BOOL _bluetoothValueIsClean;
     NSArray *_originalSpecifiers;
@@ -109,6 +110,7 @@
 - (BOOL)_canSelectSpecifierAtIndexPath:(id)arg1;
 - (void)_configureImageViewForRow:(id)arg1;
 - (void)_downArrowKeyPressed;
+- (BOOL)_exposureNotificationAvailable;
 - (void)_handleOnsiteProfileInstallation;
 - (void)_insertOrRemovePaymentSpecifierAsNeededCompletion:(CDUnknownBlockType)arg1;
 - (void)_loadThirdPartySpecifiersIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
@@ -128,6 +130,7 @@
 - (void)_setupAppleAccountSpecifier:(id)arg1 title:(id)arg2;
 - (void)_setupAppleAccountSpecifierForLogin:(id)arg1;
 - (void)_setupCachedAppleAccountSpecifier:(id)arg1;
+- (BOOL)_shouldPresentModernThirdPartyAppListForBundleIdentifier:(id)arg1;
 - (void)_showControllerFromSpecifier:(id)arg1;
 - (void)_showDetailTargetDidChange:(id)arg1;
 - (BOOL)_showSOS;
@@ -238,6 +241,7 @@
 - (void)updateClassroomSpecifierWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateEthernet;
 - (void)updateEthernetWithCompletion:(CDUnknownBlockType)arg1;
+- (void)updateExposureNotificationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateFollowupSpecifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateHomeKitSpecifierWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updatePersonalHotspot;

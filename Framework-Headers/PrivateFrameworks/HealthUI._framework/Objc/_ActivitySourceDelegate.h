@@ -31,7 +31,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) HKUnitPreferenceController *unitPreferenceController; // @synthesize unitPreferenceController=_unitPreferenceController;
-@property (strong, nonatomic) id<HKDateRangeDataUpdateDelegate> updateDelegate; // @synthesize updateDelegate=_updateDelegate;
+@property (weak, nonatomic) id<HKDateRangeDataUpdateDelegate> updateDelegate; // @synthesize updateDelegate=_updateDelegate;
 
 - (void).cxx_destruct;
 - (double)_centerOffsetForTimeScope:(long long)arg1 startDate:(id)arg2 calendar:(id)arg3;

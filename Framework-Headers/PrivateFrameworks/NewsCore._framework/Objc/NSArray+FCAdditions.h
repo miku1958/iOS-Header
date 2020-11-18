@@ -42,6 +42,7 @@
 - (BOOL)fc_containsObjectsAtBack:(id)arg1;
 - (BOOL)fc_containsObjectsAtFront:(id)arg1;
 - (BOOL)fc_containsObjectsWithValue:(id)arg1 forKey:(id)arg2;
+- (double)fc_cosineDistanceToArray:(id)arg1;
 - (unsigned long long)fc_countOfObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)fc_dictionaryOfSortedObjectsWithKeyBlock:(CDUnknownBlockType)arg1;
 - (id)fc_dictionaryOfTransformedSortedObjectsWithKeyBlock:(CDUnknownBlockType)arg1 valueBlock:(CDUnknownBlockType)arg2;
@@ -56,8 +57,10 @@
 - (void)fc_enumerateObjectsInReverse:(BOOL)arg1 usingSkipAheadBlock:(CDUnknownBlockType)arg2;
 - (void)fc_enumerateObjectsPairwiseUsingBlock:(CDUnknownBlockType)arg1;
 - (void)fc_enumerateSideBySideWithArray:(id)arg1 reverse:(BOOL)arg2 block:(CDUnknownBlockType)arg3;
+- (double)fc_euclideanDistanceToArray:(id)arg1;
 - (struct _NSRange)fc_expandIndex:(unsigned long long)arg1 toIncludeAdjacentObjectsPassingTest:(CDUnknownBlockType)arg2;
 - (id)fc_firstObjectFromIndex:(unsigned long long)arg1 passingTest:(CDUnknownBlockType)arg2;
+- (id)fc_firstObjectOfClass:(Class)arg1;
 - (id)fc_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)fc_firstObjectWithValue:(id)arg1 forKey:(id)arg2;
 - (unsigned long long)fc_indexOfFirstObjectWithValue:(id)arg1 forKey:(id)arg2;

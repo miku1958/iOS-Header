@@ -104,6 +104,7 @@
 - (void)_reloadRecycledGroupedNotificationCells;
 - (void)_reloadRecycledNotificationCellForRequest:(id)arg1;
 - (void)_scrollToTopIfNecessaryAndPerformBlock:(CDUnknownBlockType)arg1;
+- (BOOL)_shouldAllowInteractionWithNotificationViewController:(id)arg1;
 - (void)_toggleGroupedState;
 - (void)_updateSummaryTextForNewLeadingNotificationRequest:(id)arg1 oldLeadingNotificationRequest:(id)arg2;
 - (BOOL)adjustForContentSizeCategoryChange;

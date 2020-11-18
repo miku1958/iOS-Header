@@ -22,7 +22,9 @@
 @property BOOL permanentContext; // @synthesize permanentContext=_permanentContext;
 
 + (id)deserializeLoggableDatas:(id)arg1 error:(id *)arg2;
++ (void)reportCoreDataEventForEntity:(id)arg1 hardFailure:(BOOL)arg2 write:(BOOL)arg3 code:(long long)arg4 underlyingError:(id)arg5;
 + (void)reportCoreDataEventForEntity:(id)arg1 write:(BOOL)arg2 code:(long long)arg3 underlyingError:(id)arg4;
++ (void)reportCoreDataPersistEventForLocation:(id)arg1 underlyingError:(id)arg2;
 + (id)serializeLoggableDatas:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)clearState:(id *)arg1;
@@ -34,7 +36,7 @@
 - (unsigned long long)countTotalRequestsForApplication:(id)arg1 error:(id *)arg2;
 - (unsigned long long)countTotalSMTsForApplication:(id)arg1 error:(id *)arg2;
 - (unsigned long long)countTotalSTHsForApplication:(id)arg1 error:(id *)arg2;
-- (id)createDownloadRecord:(id)arg1;
+- (id)createDownloadRecord:(unsigned long long)arg1 application:(id)arg2;
 - (void)createKTRequestID:(id)arg1 request:(id)arg2;
 - (id)createRequest;
 - (id)createRequestFailure;
@@ -46,31 +48,31 @@
 - (id)createSignedMutationTimestampsFailure;
 - (id)createSignedTreeHeadFailure;
 - (id)createTreeHead;
-- (id)createTreeHead:(id)arg1 application:(id)arg2 logBeginTime:(long long)arg3 logHeadHash:(id)arg4 logType:(long long)arg5 revision:(long long)arg6;
-- (void)deleteCompletedRequest:(id)arg1;
-- (BOOL)deleteDownloadRecord:(id)arg1 error:(id *)arg2;
+- (id)createTreeHead:(id)arg1 isMapHead:(BOOL)arg2 application:(id)arg3 logBeginTime:(long long)arg4 logHeadHash:(id)arg5 logType:(long long)arg6 revision:(long long)arg7;
+- (BOOL)deleteDownloadRecord:(unsigned long long)arg1 application:(id)arg2 error:(id *)arg3;
 - (BOOL)deleteDownloadRecordById:(id)arg1 error:(id *)arg2;
+- (BOOL)deleteDownloadRecords:(id)arg1 error:(id *)arg2;
 - (void)deleteObject:(id)arg1;
 - (void)deleteObjectSet:(id)arg1;
 - (BOOL)deleteSMTs:(id)arg1 mutationTimeLessThan:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)deleteSTHs:(id)arg1 logBeginMsLessThan:(unsigned long long)arg2 error:(id *)arg3;
 - (id)downloadRecords:(id *)arg1;
 - (id)fetchCompletedRequests:(id)arg1 olderThan:(id)arg2 error:(id *)arg3;
-- (id)fetchDownloadRecord:(id)arg1 error:(id *)arg2;
+- (id)fetchDownloadRecord:(unsigned long long)arg1 application:(id)arg2 error:(id *)arg3;
 - (id)fetchDownloadRecordById:(id)arg1 error:(id *)arg2;
 - (id)fetchRequestForUUID:(id)arg1 error:(id *)arg2;
 - (id)fetchRequestWithUri:(id)arg1 application:(id)arg2 accountID:(id)arg3 loggableDatas:(id)arg4 youngerThan:(id)arg5 error:(id *)arg6;
 - (id)fetchRequestsForURI:(id)arg1 error:(id *)arg2;
-- (id)fetchTreeHead:(id)arg1 application:(id)arg2 logBeginTime:(long long)arg3 logType:(long long)arg4 revision:(long long)arg5 error:(id *)arg6;
-- (id)fetchTreeHeadsWithoutHash:(id)arg1 application:(id)arg2 logBeginTime:(long long)arg3 logType:(long long)arg4 revision:(long long)arg5 error:(id *)arg6;
+- (id)fetchTreeHead:(id)arg1 isMapHead:(BOOL)arg2 application:(id)arg3 logBeginTime:(long long)arg4 logType:(long long)arg5 revision:(long long)arg6 error:(id *)arg7;
+- (id)fetchTreeHeadsWithoutHash:(id)arg1 isMapHead:(BOOL)arg2 application:(id)arg3 logBeginTime:(long long)arg4 logType:(long long)arg5 revision:(long long)arg6 error:(id *)arg7;
 - (void)garbageCollectRequests:(id)arg1 olderThan:(id)arg2 error:(id *)arg3;
 - (void)garbageCollectSTHs:(id)arg1 logBeginMs:(unsigned long long)arg2 olderThan:(id)arg3 error:(id *)arg4;
 - (void)gargabeCollectEntity:(id)arg1 predicate:(id)arg2 error:(id *)arg3;
 - (BOOL)hasPendingDownloadForUUID:(id)arg1 error:(id *)arg2;
-- (BOOL)haveTreeHead:(id)arg1 application:(id)arg2 logBeginTime:(long long)arg3 logType:(long long)arg4 revision:(long long)arg5 error:(id *)arg6;
+- (BOOL)haveTreeHead:(id)arg1 isMapHead:(BOOL)arg2 application:(id)arg3 logBeginTime:(long long)arg4 logType:(long long)arg5 revision:(long long)arg6 error:(id *)arg7;
 - (id)initWithController:(id)arg1;
 - (id)initWithController:(id)arg1 context:(id)arg2;
-- (id)latestVerifiedTreeHeadRevision:(id)arg1 logBeginMs:(unsigned long long)arg2 error:(id *)arg3;
+- (id)latestConsistencyVerifiedTreeHeadRevision:(id)arg1 logBeginMs:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)logMetricsForApplication:(id)arg1 error:(id *)arg2;
 - (BOOL)logRequestMetricsForApplication:(id)arg1 error:(id *)arg2;
 - (BOOL)logSMTMetricsForApplication:(id)arg1 error:(id *)arg2;
@@ -111,7 +113,7 @@
 - (unsigned long long)treeHeadCount:(id *)arg1;
 - (id)treeHeads:(id *)arg1;
 - (id)treeHeadsForApplication:(id)arg1 error:(id *)arg2;
-- (id)unverifiedRevisions:(id)arg1 logBeginMs:(unsigned long long)arg2 error:(id *)arg3;
+- (id)unverifiedRevisions:(id)arg1 isMapHead:(BOOL)arg2 inclusion:(BOOL)arg3 logBeginMs:(unsigned long long)arg4 error:(id *)arg5;
 
 @end
 

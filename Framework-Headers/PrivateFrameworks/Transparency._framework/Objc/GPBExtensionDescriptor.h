@@ -15,11 +15,10 @@ __attribute__((visibility("hidden")))
 {
     struct GPBExtensionDescription *description_;
     CDUnion_88782d86 defaultValue_;
-    Class containingMessageClass_;
 }
 
 @property (readonly, nonatomic) int alternateWireType;
-@property (readonly, nonatomic) Class containingMessageClass; // @synthesize containingMessageClass=containingMessageClass_;
+@property (readonly, nonatomic) Class containingMessageClass;
 @property (readonly, nonatomic) unsigned char dataType;
 @property (readonly, nonatomic) id defaultValue;
 @property (readonly, nonatomic) GPBEnumDescriptor *enumDescriptor;
@@ -34,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithExtensionDescription:(struct GPBExtensionDescription *)arg1;
+- (id)initWithExtensionDescription:(struct GPBExtensionDescription *)arg1 usesClassRefs:(BOOL)arg2;
 - (const char *)singletonNameC;
 
 @end

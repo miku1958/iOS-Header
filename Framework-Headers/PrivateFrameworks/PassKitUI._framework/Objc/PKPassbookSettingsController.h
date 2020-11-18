@@ -14,7 +14,7 @@
 #import <PassKitUI/PKSubcredentialProvisioningFlowControllerDelegate-Protocol.h>
 #import <PassKitUI/PKSwitchSpinnerTableCellDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString, PKAccountService, PKExpressPassController, PKPaymentPreference, PKPaymentPreferenceCard, PKPaymentPreferencesViewController, PKPaymentSetupAboutViewController, PKPaymentVerificationController, PKPaymentWebService, PKPeerPaymentAccount, PKPeerPaymentAccountResolutionController, PKPeerPaymentWebService, PSSpecifier;
+@class NSArray, NSMutableDictionary, NSString, PKAccountService, PKExpressPassController, PKPaymentPreference, PKPaymentPreferenceCard, PKPaymentPreferencesViewController, PKPaymentSetupAboutViewController, PKPaymentVerificationController, PKPaymentWebService, PKPeerPaymentAccount, PKPeerPaymentAccountResolutionController, PKPeerPaymentWebService, PSSpecifier;
 @protocol PKPassLibraryDataProvider, PKPassbookPeerPaymentSettingsDelegate, PKPassbookSettingsDataSource, PKPassbookSettingsDelegate, PKPaymentDataProvider, PKPaymentOptionsProtocol;
 
 @interface PKPassbookSettingsController : NSObject <PKPaymentServiceDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKPaymentDataProviderDelegate, PKSwitchSpinnerTableCellDelegate, PKSubcredentialProvisioningFlowControllerDelegate, PKPaymentVerificationControllerDelegate, PKPaymentPassTableCellDelegate>
@@ -65,10 +65,8 @@
     NSMutableDictionary *_latestTransitBalanceModel;
     id<PKPaymentDataProvider> _companionPaymentDataProvider;
     int _notifyToken;
-    NSSet *_credentialInvitations;
-    NSDictionary *_credentialInvitationForPass;
-    NSSet *_passesThatMayRequestCredentialInvitations;
-    BOOL _credentialSharingAllowed;
+    BOOL _ownerCredentialSharingAllowed;
+    BOOL _canAcceptCredentialInvitations;
     id<PKPassbookSettingsDelegate> _delegate;
 }
 
@@ -83,6 +81,7 @@
 - (id)_bridgeSpecifiers;
 - (void)_checkPairedDeviceSupportOfHiddenPassesAndRefreshUIIfNecessary;
 - (id)_companionPassSpecifiers;
+- (void)_credentialPairingContextForPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)_currentDefaultPaymentPass;
 - (id)_defaultContactEmailSpecifier;
 - (id)_defaultContactPhoneSpecifier;
@@ -106,6 +105,7 @@
 - (id)_handoffSwitchSettingForSpecifier:(id)arg1;
 - (BOOL)_isPeerPaymentRegistered;
 - (id)_lockscreenSwitchGroupSpecifiers;
+- (id)_matchingInvitationForPass:(id)arg1 withInvitations:(id)arg2;
 - (void)_openExpressTransitSettings:(id)arg1;
 - (void)_openPrivacyLink;
 - (id)_otherPassSpecifiers;
@@ -119,7 +119,7 @@
 - (id)_peerPaymentSwitchSpecifier;
 - (void)_peerPaymentWebServiceDidChangeNotification:(id)arg1;
 - (void)_performPhoneToWatchProvisioningForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_presentCredentialSetupViewControllerForPaymentPass:(id)arg1 invitation:(id)arg2 shouldRequestInvitation:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_presentCredentialSetupViewControllerForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_presentFeatureNotEnabledForDemoForSpecifier:(id)arg1;
 - (void)_presentPaymentSetupViewController:(id)arg1 paymentPass:(id)arg2;
 - (void)_presentPeerPaymentReOpenCardFlowForSpecifier:(id)arg1;
@@ -127,7 +127,6 @@
 - (void)_presentPeerPaymentSetupFlowForSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentPeerPaymentSetupFlowWithAmount:(id)arg1 flowState:(unsigned long long)arg2 senderAddress:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_refreshCompanionGroupSpecififiers;
-- (void)_refreshCredentialInvitationsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_refreshPasses;
 - (void)_regionConfigurationDidChangeNotification;
 - (void)_registerForPeerPaymentWithSpecifier:(id)arg1;
@@ -153,7 +152,6 @@
 - (void)_updateCardsGroupSpecifier;
 - (void)_updateCompanionGroupSpecifier;
 - (void)_updateCompanionPassesAddButton;
-- (void)_updateCredentialInvitaionMapping;
 - (void)_updateDefaultCardsPreferences;
 - (void)_updateTransitExpressPassIdentifiersWithReload:(BOOL)arg1;
 - (BOOL)_useAlternateExpressTitle;
@@ -161,6 +159,7 @@
 - (void)addCardTapped;
 - (void)addCardTappedForPaymentPassWithUniqueID:(id)arg1;
 - (void)addCardTappedForPaymentPassWithUniqueID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (BOOL)canShareCompanionPass:(id)arg1;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1 dataSource:(id)arg2 context:(long long)arg3;
 - (void)openExpressTransitSettings:(id)arg1 withPassUniqueIdentifier:(id)arg2;

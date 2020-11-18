@@ -20,7 +20,6 @@
     WKWebView *_excerptWebView;
     NUArticleExcerptReadMoreButton *_readMoreButton;
     id<UIScrollViewDelegate> _delegate;
-    UIScrollView *_imageScrollView;
     UIScrollView *_contentScrollView;
     UIView *_hairlineSeparatorView;
     UIView *_contentView;
@@ -38,7 +37,6 @@
 @property (readonly, nonatomic) UILabel *headlineDateLabel; // @synthesize headlineDateLabel=_headlineDateLabel;
 @property (readonly, nonatomic) UIImageView *headlineImageView; // @synthesize headlineImageView=_headlineImageView;
 @property (readonly, nonatomic) UILabel *headlineTitleLabel; // @synthesize headlineTitleLabel=_headlineTitleLabel;
-@property (readonly, nonatomic) UIScrollView *imageScrollView; // @synthesize imageScrollView=_imageScrollView;
 @property (readonly, nonatomic) NFMultiDelegate *multiDelegate; // @synthesize multiDelegate=_multiDelegate;
 @property (readonly, nonatomic) NUArticleExcerptReadMoreButton *readMoreButton; // @synthesize readMoreButton=_readMoreButton;
 @property (readonly) Class superclass;
@@ -51,6 +49,7 @@
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)updateImageAspectRatio;
 
 @end
 

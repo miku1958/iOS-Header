@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCOperationThrottlerDelegate-Protocol.h>
 
-@class FCCacheCoordinatorFlushPolicy, FCThreadSafeMutableDictionary, NFUnfairLock, NSArray, NSCountedSet, NSMutableSet, NSString;
+@class FCCacheCoordinatorFlushPolicy, FCThreadSafeMutableDictionary, NFUnfairLock, NSCountedSet, NSMutableSet, NSSet, NSString;
 @protocol FCCacheCoordinatorDelegate, FCCacheCoordinatorLocking, FCOperationThrottler;
 
 @interface FCCacheCoordinator : NSObject <FCOperationThrottlerDelegate>
@@ -34,8 +34,8 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NFUnfairLock *interestLock; // @synthesize interestLock=_interestLock;
 @property (strong, nonatomic) NSCountedSet *interestedKeys; // @synthesize interestedKeys=_interestedKeys;
-@property (readonly, nonatomic) NSArray *keysWithNonZeroInterest;
-@property (readonly, nonatomic) NSArray *keysWithZeroInterest;
+@property (readonly, nonatomic) NSSet *keysWithNonZeroInterest;
+@property (readonly, nonatomic) NSSet *keysWithZeroInterest;
 @property (strong, nonatomic) NSMutableSet *storedKeys; // @synthesize storedKeys=_storedKeys;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id<FCCacheCoordinatorLocking> underlyingLock; // @synthesize underlyingLock=_underlyingLock;

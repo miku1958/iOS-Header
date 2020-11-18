@@ -52,6 +52,7 @@
 @property (readonly, nonatomic) NSString *articleRecirculationConfigJSON;
 @property (readonly, nonatomic) long long articleRecirculationPopularFeedQueryTimeRange;
 @property (readonly, nonatomic, getter=isArticleToolbarCompressionEnabled) BOOL articleToolbarCompressionEnabled;
+@property (readonly, nonatomic) NSString *audioConfigRecordID;
 @property (readonly, nonatomic) long long autoRefreshMinimumInterval;
 @property (readonly, nonatomic) long long autoScrollToTopFeedTimeout;
 @property (readonly, nonatomic) unsigned long long bestOfBundleFeedGroupKind;
@@ -89,6 +90,7 @@
 @property (readonly, nonatomic) long long feedContentExposureTestMaximumInterval;
 @property (readonly, nonatomic) double feedLineHeightMultiplier;
 @property (readonly, nonatomic) NSString *feedNavigationConfigJSON;
+@property (readonly, nonatomic) BOOL forYouGroupShouldPromoteAccessibleHeadline;
 @property (readonly, nonatomic) FCForYouGroupsConfiguration *forYouGroupsConfiguration; // @synthesize forYouGroupsConfiguration=_forYouGroupsConfiguration;
 @property (readonly, nonatomic) NSString *forYouRecordConfigID;
 @property (readonly, copy, nonatomic) FCVideoGroupsConfig *forYouVideoGroupsConfig; // @synthesize forYouVideoGroupsConfig=_forYouVideoGroupsConfig;
@@ -98,7 +100,6 @@
 @property (readonly, nonatomic) double interstitialAdLoadDelay;
 @property (readonly, nonatomic) BOOL isDefaultConfiguration;
 @property (readonly, nonatomic) BOOL isExpired;
-@property (readonly, nonatomic) BOOL isSpecialEventsMicaAnimationDisabled;
 @property (readonly, nonatomic) NSString *issueArticleRecirculationConfigJSON;
 @property (readonly, nonatomic) NSDictionary *languageConfigDictionary; // @synthesize languageConfigDictionary=_languageConfigDictionary;
 @property (readonly, nonatomic) NSDate *lastModificationDate; // @synthesize lastModificationDate=_lastModificationDate;
@@ -120,8 +121,9 @@
 @property (readonly, nonatomic) long long minimumDurationBetweenTrendingGroupsWeekday;
 @property (readonly, nonatomic) long long minimumDurationBetweenTrendingGroupsWeekend;
 @property (readonly, nonatomic) double minimumTrendingUnseenRatio;
-@property (readonly, nonatomic) NSString *moreVideosChannelID;
 @property (readonly, nonatomic) long long newFavoriteNotificationAlertsFrequency;
+@property (readonly, nonatomic) double newsletterSubscriptionStatusCacheTimeout;
+@property (readonly, nonatomic) long long newsletterSubscriptionType;
 @property (readonly, nonatomic) long long notificationArticleCacheTimeout;
 @property (readonly, nonatomic) long long notificationArticleWithRapidUpdatesCacheTimeout;
 @property (readonly, nonatomic) long long notificationEnabledChannelsRefreshFrequency;
@@ -143,6 +145,7 @@
 @property (readonly, nonatomic, getter=isPrivateDataEncryptionMigrationDesired) BOOL privateDataEncryptionMigrationDesired; // @synthesize privateDataEncryptionMigrationDesired=_privateDataEncryptionMigrationDesired;
 @property (readonly, nonatomic) BOOL privateDataEncryptionMigrationRequiresAllDevicesRunningTigris; // @synthesize privateDataEncryptionMigrationRequiresAllDevicesRunningTigris=_privateDataEncryptionMigrationRequiresAllDevicesRunningTigris;
 @property (readonly, nonatomic, getter=isPrivateDataMigrationCleanupEnabled) BOOL privateDataMigrationCleanupEnabled; // @synthesize privateDataMigrationCleanupEnabled=_privateDataMigrationCleanupEnabled;
+@property (readonly, nonatomic) BOOL recordBothPersonalizationVectors;
 @property (readonly, nonatomic) long long savedArticlesCutoffTime;
 @property (readonly, nonatomic) long long savedArticlesMaximumCountCellular;
 @property (readonly, nonatomic) long long savedArticlesMaximumCountWiFi;
@@ -165,13 +168,15 @@
 @property (readonly, nonatomic) NSString *todayFeedKnobs;
 @property (readonly, nonatomic) FCTopStoriesConfiguration *topStoriesConfig; // @synthesize topStoriesConfig=_topStoriesConfig;
 @property (readonly, copy, nonatomic) NSArray *topStoriesPublishDates;
-@property (readonly, nonatomic) NSString *topVideosChannelID;
 @property (readonly, nonatomic) NSString *translationMapResourceID;
 @property (readonly, nonatomic) unsigned long long trendingStyle;
 @property (readonly, nonatomic) NSString *trendingTagID;
 @property (readonly, nonatomic) long long trendingTopicsRefreshRate;
 @property (readonly, nonatomic) BOOL universalLinksEnabled;
+@property (readonly, nonatomic) BOOL usePersonalizationVectorAlt;
 @property (readonly, nonatomic) BOOL useSecureConnectionForAssets;
+@property (readonly, nonatomic) NSString *userVectorModelResourceId;
+@property (readonly, nonatomic) NSString *userVectorWhitelistResourceId;
 @property (readonly, nonatomic) NSString *webEmbedContentBlockerOverrides;
 @property (readonly, nonatomic) NSString *webEmbedContentBlockers;
 @property (readonly, nonatomic) FCWidgetConfig *widgetConfig; // @synthesize widgetConfig=_widgetConfig;
@@ -180,6 +185,7 @@
 @property (readonly, nonatomic) unsigned int widgetMinimumNumberOfTimesPreseenToBeSeen;
 
 + (id)configurationWithData:(id)arg1 storefrontID:(id)arg2 preferredLanguageTags:(id)arg3;
++ (id)defaultAudioConfigRecordIDByLocalizedStorefrontID;
 + (id)defaultConfigurationForStoreFrontID:(id)arg1;
 + (id)defaultForYouRecordConfigIDByLocalizedStorefrontID;
 + (id)defaultMagazinesConfigRecordIDByLocalizedStorefrontID;

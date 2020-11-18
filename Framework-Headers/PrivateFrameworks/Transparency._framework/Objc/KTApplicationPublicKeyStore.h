@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSDictionary, NSString, TransparencyTrustedKeyStore, VRFPublicKey;
+@class NSArray, NSData, NSDate, NSDictionary, NSString, TransparencyTrustedKeyStore, VRFPublicKey;
 
 @interface KTApplicationPublicKeyStore : NSObject
 {
@@ -16,6 +16,7 @@
     TransparencyTrustedKeyStore *_tltKeyStore;
     unsigned long long _patLogBeginningMs;
     unsigned long long _tltLogBeginningMs;
+    NSDate *_receiptTime;
     NSString *_application;
     NSData *_patConfigProof;
     NSDictionary *_trustedAppSigningKeys;
@@ -27,9 +28,11 @@
 
 @property (strong) TransparencyTrustedKeyStore *appKeyStore; // @synthesize appKeyStore=_appKeyStore;
 @property (strong) NSString *application; // @synthesize application=_application;
+@property (readonly) BOOL inResetWindow;
 @property (strong) NSData *patConfigProof; // @synthesize patConfigProof=_patConfigProof;
 @property unsigned long long patLogBeginningMs; // @synthesize patLogBeginningMs=_patLogBeginningMs;
 @property (readonly) BOOL ready;
+@property (strong) NSDate *receiptTime; // @synthesize receiptTime=_receiptTime;
 @property (strong) TransparencyTrustedKeyStore *tltKeyStore; // @synthesize tltKeyStore=_tltKeyStore;
 @property unsigned long long tltLogBeginningMs; // @synthesize tltLogBeginningMs=_tltLogBeginningMs;
 @property (strong) NSArray *trustedAppLeafs; // @synthesize trustedAppLeafs=_trustedAppLeafs;
@@ -51,7 +54,7 @@
 - (BOOL)processDiskState:(id)arg1 dataStore:(id)arg2 error:(id *)arg3;
 - (BOOL)processKeyData:(id)arg1 tltLeafs:(id)arg2 intermediates:(id)arg3 patConfigProof:(id)arg4 dataStore:(id)arg5 saveTreeHeads:(BOOL)arg6 error:(id *)arg7;
 - (BOOL)processPublicKeysResponse:(id)arg1 dataStore:(id)arg2 error:(id *)arg3;
-- (void)startLogBeginTimesSampler;
+- (void)startKeyStoreStateSampler;
 - (BOOL)verifyCertificates:(id)arg1 intermediates:(id)arg2 application:(id)arg3 error:(id *)arg4;
 
 @end

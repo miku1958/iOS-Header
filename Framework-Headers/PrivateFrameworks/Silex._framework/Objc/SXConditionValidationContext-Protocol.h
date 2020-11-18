@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) double contentScaleFactor;
 @property (readonly, nonatomic) NSString *contentSizeCategory;
 @property (readonly, nonatomic) long long horizontalSizeClass;
+@property (readonly, nonatomic) unsigned long long newsletterSubscriptionStatus;
 @property (readonly, nonatomic) unsigned long long numberOfColumns;
 @property (readonly, nonatomic) BOOL testing;
 @property (readonly, nonatomic) long long userInterfaceStyle;

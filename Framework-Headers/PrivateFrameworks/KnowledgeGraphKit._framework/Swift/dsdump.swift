@@ -280,7 +280,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let domain : ã, // +0x50 (0x3)
+	let domain : Õ, // +0x50 (0x3)
 	let label : String? // +0x58 (0x10)
 	let properties : [String : Swift.AnyObject]? // +0x68 (0x8)
 	var $__lazy_storage_$_abstractNode : MAAbstractNode? // +0x70 (0x8)
@@ -389,11 +389,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let kind : MASparseMatrixKind // +0x10 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rows : ]& // +0x18 (0x8)
+	let rows : O& // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let columns : ]& // +0x20 (0x8)
+	let columns : O& // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var matrix : % // +0x28 (0x8)
+	var matrix : q% // +0x28 (0x8)
 
 	// Swift methods
  }

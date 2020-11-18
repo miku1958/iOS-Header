@@ -8,7 +8,7 @@
 
 #import <NewsToday/NTSectionDescriptor-Protocol.h>
 
-@class NSString, NSURL, NTPBDiscoverMoreVideosInfo;
+@class NSString, NSURL;
 @protocol NTSectionDescriptor, NTSectionQueueDescriptor;
 
 @interface NTNewsTodayResultsSourceFetchHelperSectionDescriptor : NSObject <NTSectionDescriptor>
@@ -24,8 +24,6 @@
 @property (readonly, copy, nonatomic) NSString *compactName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy, nonatomic) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo;
-@property (readonly, nonatomic) BOOL displaysAsVideoPlaylist;
 @property (readonly, nonatomic) unsigned long long fallbackOrder;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier;
@@ -34,7 +32,6 @@
 @property (readonly, nonatomic) unsigned long long minimumStoriesAllocation;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, copy, nonatomic) NSString *nameColor;
-@property (readonly, nonatomic) BOOL openVideoPlaylistInApp;
 @property (readonly, copy, nonatomic) id<NTSectionQueueDescriptor> parentSectionQueueDescriptor; // @synthesize parentSectionQueueDescriptor=_parentSectionQueueDescriptor;
 @property (readonly, copy, nonatomic) NSString *personalizationFeatureID;
 @property (readonly, nonatomic) int readArticlesFilterMethod;
@@ -46,7 +43,6 @@
 @property (readonly, nonatomic) long long supplementalInterSectionFilterOptions;
 @property (readonly, nonatomic) long long supplementalIntraSectionFilterOptions;
 @property (readonly, nonatomic) BOOL useNameColorInWidget;
-@property (readonly, nonatomic) BOOL videoPlaysMutedByDefault;
 
 - (void).cxx_destruct;
 - (id)assembleResultsWithCatchUpOperation:(id)arg1;

@@ -20,6 +20,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)canAcceptInvitationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithConfiguration:(id)arg1 context:(id)arg2 delegate:(id)arg3;
 - (void)initializeAccountAttestationIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performOperation;

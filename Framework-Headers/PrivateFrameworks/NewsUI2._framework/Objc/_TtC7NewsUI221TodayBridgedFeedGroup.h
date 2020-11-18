@@ -7,6 +7,7 @@
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
 @class MISSING_TYPE, NSArray, NSSet, NSString;
+@protocol FCTagProviding;
 
 @interface _TtC7NewsUI221TodayBridgedFeedGroup : _TtCs12_SwiftObject
 {
@@ -14,7 +15,7 @@
 }
 
 @property (nonatomic, readonly) NSArray *assetHandles;
-@property (nonatomic, readonly) NSString *backingTagID;
+@property (nonatomic, readonly) id<FCTagProviding> backingTag;
 @property (nonatomic, readonly) NSSet *equivalentTopicIDs;
 @property (nonatomic, readonly) NSArray *headlines;
 @property (nonatomic, readonly) NSString *identifier;

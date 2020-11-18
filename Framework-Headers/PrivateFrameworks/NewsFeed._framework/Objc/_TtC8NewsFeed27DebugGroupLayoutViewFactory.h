@@ -23,6 +23,8 @@
     MISSING_TYPE *webEmbedViewRenderer;
     MISSING_TYPE *webEmbedViewControllerFactory;
     MISSING_TYPE *internalErrorViewRenderer;
+    MISSING_TYPE *audioTrackViewRenderer;
+    MISSING_TYPE *audioDailyBriefingViewRenderer;
 }
 
 @end

@@ -23,7 +23,6 @@
     NSArray *_UUIDsOfRemovedHomes;
     NSArray *_cloudZones;
     NSArray *_incomingInvitations;
-    unsigned long long _assistantGenerationCounter;
     NSString *_currentDevice;
     NSArray *_pendingReasonSaved;
     NSArray *_pendingUserManagementOperations;
@@ -40,7 +39,6 @@
 @property (readonly, copy, nonatomic) NSArray *accessories; // @synthesize accessories=_accessories;
 @property (readonly, nonatomic) HMDAccount *account; // @synthesize account=_account;
 @property (readonly, copy, nonatomic) HMDApplicationData *applicationData; // @synthesize applicationData=_applicationData;
-@property (readonly, nonatomic) unsigned long long assistantGenerationCounter; // @synthesize assistantGenerationCounter=_assistantGenerationCounter;
 @property (readonly, copy, nonatomic) NSArray *cloudZones; // @synthesize cloudZones=_cloudZones;
 @property (readonly, copy, nonatomic) NSString *currentDevice; // @synthesize currentDevice=_currentDevice;
 @property (readonly, copy, nonatomic) NSUUID *dataTag; // @synthesize dataTag=_dataTag;

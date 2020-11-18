@@ -8,18 +8,22 @@
 
 #import <GeoServices/_GEOLocationShifterProxy-Protocol.h>
 
-@class NSString;
+@class NSCache, NSNumber, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface _GEOLocationShifterRemoteProxy : NSObject <_GEOLocationShifterProxy>
 {
     NSObject<OS_dispatch_queue> *_queue;
+    NSNumber *_shiftingEnabled;
+    NSNumber *_shiftingFxnVersion;
+    NSCache *_shiftFunctionCache;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSCache *memoryCache;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 @property (readonly) Class superclass;
 

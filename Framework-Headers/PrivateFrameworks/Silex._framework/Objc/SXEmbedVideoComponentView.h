@@ -10,11 +10,12 @@
 #import <Silex/WKNavigationDelegate-Protocol.h>
 #import <Silex/WKNavigationDelegatePrivate-Protocol.h>
 #import <Silex/WKUIDelegate-Protocol.h>
+#import <Silex/_WKFullscreenDelegate-Protocol.h>
 
 @class NSString, SWCrashRetryThrottler, UIActivityIndicatorView, WKWebView, WKWebsiteDataStore;
 @protocol SXComponentActionHandler;
 
-@interface SXEmbedVideoComponentView : SXMediaComponentView <WKNavigationDelegate, WKNavigationDelegatePrivate, WKUIDelegate, SXViewportChangeListener>
+@interface SXEmbedVideoComponentView : SXMediaComponentView <WKNavigationDelegate, WKNavigationDelegatePrivate, WKUIDelegate, SXViewportChangeListener, _WKFullscreenDelegate>
 {
     BOOL _webViewIsLoaded;
     BOOL _isPresentingFullscreen;
@@ -39,8 +40,8 @@
 
 + (id)sharedConfiguration;
 - (void).cxx_destruct;
-- (void)_webViewDidEnterFullscreen:(id)arg1;
-- (void)_webViewDidExitFullscreen:(id)arg1;
+- (void)_webViewDidEnterElementFullscreen:(id)arg1;
+- (void)_webViewDidExitElementFullscreen:(id)arg1;
 - (void)_webViewWebProcessDidCrash:(id)arg1;
 - (BOOL)allowHierarchyRemoval;
 - (unsigned long long)analyticsMediaType;

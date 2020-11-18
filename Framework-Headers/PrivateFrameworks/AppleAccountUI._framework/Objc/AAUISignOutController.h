@@ -50,8 +50,10 @@
 - (id)footerTextForDataclassPickerViewController:(id)arg1;
 - (id)initWithAccount:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)messageTextForDataclassPickerViewController:(id)arg1;
 - (void)prepareInViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
+- (id)titleTextForDataclassPickerViewController:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;

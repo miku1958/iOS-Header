@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString, VCHistogram;
+@class NSMutableDictionary, NSNumber, NSString, VCHistogram;
 @protocol VCAdaptiveLearningDelegate;
 
 @interface CallSegment : NSObject
@@ -120,6 +120,11 @@
     NSString *_duplicationConnectionConfig;
     NSString *_duplicationConnectionFamily;
     NSMutableDictionary *_fecStatsDict;
+    unsigned int _evictedFramesLikelyRecoverableCount;
+    unsigned int _evictedFramesTrackedCount;
+    unsigned int _evictedFramesAnalysisValidIntervals;
+    double _evictedFramesAverageLatePacketDelay;
+    NSNumber *_IPVersion;
     int _interval;
     int _frequency;
     NSString *_segmentName;
@@ -133,6 +138,7 @@
 
 @property unsigned int BBQueueTooLargeCount; // @synthesize BBQueueTooLargeCount=_BBQueueTooLargeCount;
 @property unsigned int BBRateTooLowCount; // @synthesize BBRateTooLowCount=_BBRateTooLowCount;
+@property (copy) NSNumber *IPVersion; // @synthesize IPVersion=_IPVersion;
 @property (readonly) VCHistogram *JBQSize; // @synthesize JBQSize=_JBQSize;
 @property (readonly) VCHistogram *JBTarget; // @synthesize JBTarget=_JBTarget;
 @property (readonly) VCHistogram *JBUnclippedTarget; // @synthesize JBUnclippedTarget=_JBUnclippedTarget;
@@ -178,6 +184,10 @@
 @property int duration; // @synthesize duration=_duration;
 @property unsigned int encodedVideoFrameCounter; // @synthesize encodedVideoFrameCounter=_encodedVideoFrameCounter;
 @property unsigned int errorCode; // @synthesize errorCode=_errorCode;
+@property unsigned int evictedFramesAnalysisValidIntervals; // @synthesize evictedFramesAnalysisValidIntervals=_evictedFramesAnalysisValidIntervals;
+@property double evictedFramesAverageLatePacketDelay; // @synthesize evictedFramesAverageLatePacketDelay=_evictedFramesAverageLatePacketDelay;
+@property unsigned int evictedFramesLikelyRecoverableCount; // @synthesize evictedFramesLikelyRecoverableCount=_evictedFramesLikelyRecoverableCount;
+@property unsigned int evictedFramesTrackedCount; // @synthesize evictedFramesTrackedCount=_evictedFramesTrackedCount;
 @property (readonly) NSMutableDictionary *fecStatsDict; // @synthesize fecStatsDict=_fecStatsDict;
 @property (readonly) VCHistogram *framerate; // @synthesize framerate=_framerate;
 @property (readonly) VCHistogram *latency; // @synthesize latency=_latency;
@@ -240,6 +250,7 @@
 + (id)interfaceCategoryForType:(id)arg1;
 + (id)newSegmentNameWithComponents:(id)arg1 remoteInterface:(id)arg2 connectionType:(id)arg3 duplicationIndicator:(id)arg4;
 - (unsigned int)RTPeriod;
+- (id)celltechTelemetry;
 - (void)changeDuplicationWithType:(unsigned short)arg1 payload:(id)arg2;
 - (void)dealloc;
 - (id)initWithDictionary:(id)arg1;

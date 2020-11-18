@@ -33,10 +33,10 @@
 - (id)autoFavoriteTagIDsForLocation:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)filterOuterRegions:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1;
-- (id)localVersionedTagIDsForLocation:(id)arg1;
 - (id)regionsForLocation:(id)arg1;
 
 @end

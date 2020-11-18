@@ -10,7 +10,7 @@
 #import <NewsSubscription/NFCopying-Protocol.h>
 #import <NewsSubscription/NSObject-Protocol.h>
 
-@class FCArticleContentManifest, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
+@class FCArticleAudioTrack, FCArticleContentManifest, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
 @protocol FCChannelProviding, FCContentContext, FCHeadlineStocksFields, FCNativeAdProviding;
 
 @protocol FCHeadlineProviding <NSObject, NFCopying, FCFeedElement, FCClassifiable, FCFeedTransformationItem>
@@ -46,6 +46,7 @@
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) BOOL isBlockedExplicitContent;
 @property (nonatomic, readonly) BOOL isDraft;
+@property (nonatomic, readonly) BOOL isFullTrackAvailableToAll;
 @property (nonatomic, readonly) BOOL isLocalDraft;
 @property (nonatomic, readonly) BOOL isTopStory;
 @property (nonatomic, readonly) BOOL issueOnly;
@@ -58,6 +59,9 @@
 @property (nonatomic, readonly) FCIssue *masterIssue;
 @property (nonatomic, readonly) long long minimumNewsVersion;
 @property (nonatomic, readonly) NSArray *moreFromPublisherArticleIDs;
+@property (nonatomic, readonly) FCArticleAudioTrack *narrativeTrack;
+@property (nonatomic, readonly) FCArticleAudioTrack *narrativeTrackSample;
+@property (nonatomic, readonly) NSString *narrativeTrackTextRanges;
 @property (nonatomic, readonly) BOOL needsRapidUpdates;
 @property (nonatomic, readonly) BOOL paid;
 @property (nonatomic, readonly) BOOL pressRelease;

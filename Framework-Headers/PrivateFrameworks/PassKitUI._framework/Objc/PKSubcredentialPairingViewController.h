@@ -36,7 +36,6 @@
 - (void)advanceToNextState;
 - (void)dealloc;
 - (void)handleCancelButton;
-- (void)handleErrorFromDeviceRegistration:(id)arg1;
 - (void)hostApplicationDidEnterBackground;
 - (id)initWithFlowController:(id)arg1 context:(id)arg2;
 - (id)pairingSessionWithDelegate:(id)arg1;

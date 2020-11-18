@@ -14,6 +14,7 @@
     unsigned long long _recentlyInterruptedNavigationCount;
     _WKUserInitiatedAction *_userInitiatedAction;
     NSTimer *_timerForRevertingToCommittedURL;
+    BOOL _hasCommittedChromeInitiatedLoad;
     BOOL _UIShouldReflectCommittedURLInsteadOfCurrentURL;
     long long _navigationSource;
 }
@@ -29,6 +30,7 @@
 - (void)didCommitNavigation;
 - (void)didFailProvisionalNavigationWithError:(id)arg1;
 - (void)didStartProvisionalNavigationWithUserInitiatedAction:(id)arg1;
+- (void)willStartNewBrowserChromeInitiatedNavigation;
 
 @end
 

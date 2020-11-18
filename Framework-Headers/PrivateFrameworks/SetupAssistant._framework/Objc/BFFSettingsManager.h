@@ -23,6 +23,7 @@
     NSArray *_stashedFlowSkipIdentifiers;
     NSNumber *_stashedScreenTimeEnabled;
     NSNumber *_stashedAutoUpdateEnabled;
+    NSNumber *_stashedAutoDownloadEnabled;
     NSData *_stashedAccessibilityData;
     NSDictionary *_stashedDeviceToDeviceMigrationSuccessInfo;
     NSNumber *_stashedUserInterfaceStyleMode;
@@ -31,7 +32,6 @@
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_applyAssistantPreferences;
-- (void)_applyAutoUpdatePreferences;
 - (void)_applyLocationServices;
 - (void)_applyLocationServicesSettings;
 - (void)_applyScreenTimePreferences;
@@ -39,6 +39,7 @@
 - (void)_applyStashedFlowSkipIdentifiers;
 - (void)_applyStashedManagedConfiguration;
 - (void)_applyStashedPreferences;
+- (void)_applyUpdatePreferences;
 - (void)_applyUserInterfaceStyleMode;
 - (BOOL)_commitStash;
 - (id)_preferencesForDomain:(id)arg1;
@@ -65,6 +66,7 @@
 - (void)reset;
 - (void)setAssistantEnabled:(BOOL)arg1;
 - (void)setAssistantVoiceTriggerEnabled:(BOOL)arg1;
+- (void)setAutoDownloadEnabled:(BOOL)arg1;
 - (void)setAutoUpdateEnabled:(BOOL)arg1;
 - (void)setBool:(BOOL)arg1 forDomain:(id)arg2 key:(id)arg3;
 - (void)setBool:(BOOL)arg1 forManagedConfigurationSetting:(id)arg2;

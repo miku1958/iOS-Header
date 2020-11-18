@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     unsigned int _actionCount;
     NSString *_automationType;
+    NSString *_galleryIdentifier;
     NSString *_key;
     NSString *_runSource;
     int _source;
@@ -29,9 +30,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int actionCount; // @synthesize actionCount=_actionCount;
 @property (strong, nonatomic) NSString *automationType; // @synthesize automationType=_automationType;
 @property (nonatomic) BOOL completed; // @synthesize completed=_completed;
+@property (strong, nonatomic) NSString *galleryIdentifier; // @synthesize galleryIdentifier=_galleryIdentifier;
 @property (nonatomic) BOOL hasActionCount;
 @property (readonly, nonatomic) BOOL hasAutomationType;
 @property (nonatomic) BOOL hasCompleted;
+@property (readonly, nonatomic) BOOL hasGalleryIdentifier;
 @property (readonly, nonatomic) BOOL hasKey;
 @property (readonly, nonatomic) BOOL hasRunSource;
 @property (nonatomic) BOOL hasSource;

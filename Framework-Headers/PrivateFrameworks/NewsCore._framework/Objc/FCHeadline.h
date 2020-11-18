@@ -9,7 +9,7 @@
 #import <NewsCore/FCFeedElement-Protocol.h>
 #import <NewsCore/FCHeadlineProviding-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
 @protocol FCChannelProviding, FCHeadlineStocksFields, FCNativeAdProviding;
 
 @interface FCHeadline : NSObject <FCHeadlineProviding, FCFeedElement>
@@ -35,6 +35,7 @@
     BOOL _issueOnly;
     BOOL _showBundleSoftPaywall;
     BOOL _useTransparentNavigationBar;
+    BOOL _hasAudioTrack;
     BOOL _bundlePaid;
     FCHeadlineThumbnail *_thumbnailLQ;
     FCHeadlineThumbnail *_thumbnail;
@@ -104,6 +105,11 @@
     NSData *_backingArticleRecordData;
     FCIssue *_masterIssue;
     long long _bodyTextLength;
+    FCArticleAudioTrack *_narrativeTrack;
+    FCArticleAudioTrack *_narrativeTrackSample;
+    NSString *_narrativeTrackTextRanges;
+    COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVector;
+    COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVectorAlt;
     NSString *_identifier;
     NSURL *_headlineURL;
     NSString *_titleCompact;
@@ -146,6 +152,7 @@
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts; // @synthesize globalCohorts=_globalCohorts;
 @property (nonatomic) double globalUserFeedback; // @synthesize globalUserFeedback=_globalUserFeedback;
 @property (nonatomic) unsigned long long halfLife; // @synthesize halfLife=_halfLife;
+@property (readonly, nonatomic) BOOL hasAudioTrack; // @synthesize hasAudioTrack=_hasAudioTrack;
 @property (readonly, nonatomic) BOOL hasGlobalUserFeedback;
 @property (nonatomic) BOOL hasThumbnail; // @synthesize hasThumbnail=_hasThumbnail;
 @property (readonly, nonatomic) BOOL hasVideo;
@@ -160,6 +167,7 @@
 @property (readonly, nonatomic) BOOL isBlockedExplicitContent;
 @property (readonly, nonatomic) BOOL isDraft; // @synthesize isDraft=_isDraft;
 @property (readonly, nonatomic) BOOL isFeatured;
+@property (readonly, nonatomic) BOOL isFullTrackAvailableToAll;
 @property (readonly, nonatomic) BOOL isLocalDraft; // @synthesize isLocalDraft=_isLocalDraft;
 @property (readonly, nonatomic) BOOL isTopStory;
 @property (readonly, nonatomic, getter=isIssueOnly) BOOL issueOnly; // @synthesize issueOnly=_issueOnly;
@@ -173,9 +181,14 @@
 @property (readonly, copy, nonatomic) FCIssue *masterIssue; // @synthesize masterIssue=_masterIssue;
 @property (readonly, nonatomic) long long minimumNewsVersion;
 @property (readonly, copy, nonatomic) NSArray *moreFromPublisherArticleIDs; // @synthesize moreFromPublisherArticleIDs=_moreFromPublisherArticleIDs;
+@property (readonly, nonatomic) FCArticleAudioTrack *narrativeTrack; // @synthesize narrativeTrack=_narrativeTrack;
+@property (readonly, nonatomic) FCArticleAudioTrack *narrativeTrackSample; // @synthesize narrativeTrackSample=_narrativeTrackSample;
+@property (readonly, nonatomic) NSString *narrativeTrackTextRanges; // @synthesize narrativeTrackTextRanges=_narrativeTrackTextRanges;
 @property (readonly, nonatomic) BOOL needsRapidUpdates; // @synthesize needsRapidUpdates=_needsRapidUpdates;
 @property (readonly, nonatomic) unsigned long long order;
 @property (nonatomic, getter=isPaid) BOOL paid; // @synthesize paid=_paid;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector; // @synthesize personalizationVector=_personalizationVector;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt; // @synthesize personalizationVectorAlt=_personalizationVectorAlt;
 @property (readonly, nonatomic, getter=isPressRelease) BOOL pressRelease; // @synthesize pressRelease=_pressRelease;
 @property (readonly, copy, nonatomic) NSString *primaryAudience; // @synthesize primaryAudience=_primaryAudience;
 @property (copy, nonatomic) NSDate *publishDate; // @synthesize publishDate=_publishDate;

@@ -24,7 +24,8 @@
 + (id)descriptor;
 - (id)copyManagedObject:(id *)arg1;
 - (id)createManagedObjectWithError:(id *)arg1;
-- (BOOL)verifyWithError:(id *)arg1;
+- (void)storeSignatureResult:(unsigned long long)arg1 signatureError:(id *)arg2;
+- (unsigned long long)verifyWithError:(id *)arg1;
 
 @end
 

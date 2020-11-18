@@ -14,9 +14,7 @@
     MISSING_TYPE *paywallType;
     MISSING_TYPE *softPaywallHeightProvider;
     MISSING_TYPE *deferredHardPaywallHeightProvider;
-    MISSING_TYPE *softPaywallViewController;
-    MISSING_TYPE *hardPaywallViewController;
-    MISSING_TYPE *deferredHardPaywallViewController;
+    MISSING_TYPE *paywallViewControllerWrapper;
     MISSING_TYPE *delegate;
     MISSING_TYPE *internalDelegate;
 }

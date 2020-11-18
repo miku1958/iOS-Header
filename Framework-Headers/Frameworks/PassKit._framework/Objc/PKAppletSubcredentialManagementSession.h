@@ -13,7 +13,7 @@
 + (id)createSessionWithDelegate:(id)arg1;
 - (void)decryptData:(id)arg1 withCredential:(id)arg2 ephemeralPublicKey:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)immobilizerTokensCountForCredential:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)listCredentialsWithSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)listCredentialsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeSharedCredentialsWithIdentifiers:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)rescindInvitations:(id)arg1 onCredential:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)revokeCredential:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

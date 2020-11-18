@@ -6,11 +6,10 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSObject;
-@protocol OS_dispatch_queue, PKSubcredentialProvisioningFlowControllerDelegate, PKSubcredentialProvisioningFlowControllerOperation;
+@protocol PKSubcredentialProvisioningFlowControllerDelegate, PKSubcredentialProvisioningFlowControllerOperation;
 
 @protocol PKSubcredentialProvisioningFlowController <NSObject>
-- (id)initWithDelegate:(id<PKSubcredentialProvisioningFlowControllerDelegate>)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2;
+- (id)initWithDelegate:(id<PKSubcredentialProvisioningFlowControllerDelegate>)arg1;
 - (void)nextViewControllerFromProvisioningOperation:(id<PKSubcredentialProvisioningFlowControllerOperation>)arg1 withCompletion:(void (^)(UIViewController *))arg2;
 - (void)provisioningFinishedWithOperation:(id<PKSubcredentialProvisioningFlowControllerOperation>)arg1;
 - (void)provisioningWasCanceledWithOperation:(id<PKSubcredentialProvisioningFlowControllerOperation>)arg1;

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *coverView;
     MISSING_TYPE *callToActionLabel;
+    MISSING_TYPE *coverDateLabel;
 }
 
 - (void).cxx_destruct;

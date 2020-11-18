@@ -63,6 +63,7 @@
 @property (readonly, nonatomic) BOOL disableManagedRequest; // @synthesize disableManagedRequest=_disableManagedRequest;
 @property (readonly, nonatomic) BOOL disableUserWiFiOnlyPeriod; // @synthesize disableUserWiFiOnlyPeriod=_disableUserWiFiOnlyPeriod;
 @property (readonly, nonatomic) BOOL forceFullReplacement; // @synthesize forceFullReplacement=_forceFullReplacement;
+@property (nonatomic, setter=enableAutomaticDownload:) BOOL isAutomaticDownloadEnabled;
 @property (nonatomic, setter=enableAutomaticUpdateV2:) BOOL isAutomaticUpdateV2Enabled; // @synthesize isAutomaticUpdateV2Enabled=_automaticUpdateV2Enabled;
 @property (readonly, nonatomic) NSNumber *mandatorySUFlags; // @synthesize mandatorySUFlags=_mandatorySUFlags;
 @property (nonatomic) id<SUPreferencesObserver> observer; // @synthesize observer=_observer;
@@ -75,6 +76,8 @@
 @property (readonly, nonatomic) NSNumber *updateDelayInterval; // @synthesize updateDelayInterval=_updateDelayInterval;
 
 + (id)sharedInstance;
+- (BOOL)_autoDownloadDisableDefaultValue;
+- (BOOL)_autoInstallDefaultValue;
 - (id)_copyNumberPreferenceForKey:(id)arg1;
 - (void *)_copyPreferenceForKey:(struct __CFString *)arg1 ofType:(unsigned long long)arg2;
 - (id)_copyStringPreferenceForKey:(id)arg1;
@@ -83,6 +86,7 @@
 - (void)_loadPreferences;
 - (id)_mandatorySUFlagsForPreferences;
 - (void)_setBooleanPreferenceForKey:(id)arg1 value:(BOOL)arg2;
+- (BOOL)_setupAutomaticUpdateV2Enabled;
 - (void)dealloc;
 - (id)init;
 - (BOOL)isKeySetInPreferences:(id)arg1;

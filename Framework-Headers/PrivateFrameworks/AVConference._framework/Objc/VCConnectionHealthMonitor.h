@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     struct ConnectionStatsHistory _peerStatsHistory;
     id _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
+    BOOL _firstPacketReceived;
 }
 
 @property id<VCConnectionHealthMonitorDelegate> delegate; // @synthesize delegate=_delegate;

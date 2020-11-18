@@ -34,7 +34,9 @@
 - (void).cxx_destruct;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
+- (id)accessibilityElements;
 - (struct CGRect)accessibilityFrameForScrolling;
+- (id)accessibilityHitTest:(struct CGPoint)arg1;
 - (id)accessibilityNextTextNavigationElement;
 - (id)accessibilityPreviousTextNavigationElement;
 - (BOOL)accessibilitySupportsTextSelection;
@@ -53,6 +55,7 @@
 - (id)siblings;
 - (id)storage;
 - (id)supportedCustomRotors;
+- (id)sxaxLinkElements;
 - (id)sxaxNameForEditRotorAction:(id)arg1;
 - (id)sxaxSupportedEditRotorActions;
 - (BOOL)updateFromVisualPosition;

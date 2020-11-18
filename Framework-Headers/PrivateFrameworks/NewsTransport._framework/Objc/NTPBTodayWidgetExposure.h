@@ -8,28 +8,35 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSString;
 
 @interface NTPBTodayWidgetExposure : PBCodable <NSCopying>
 {
+    long long _contentFetchDate;
     int _widgetAppearanceType;
     int _widgetArticleCount;
     int _widgetHeadlineExposureCount;
+    NSString *_widgetIdentifier;
     NSMutableArray *_widgetPersonalizationFeatureCTRPairs;
     NSMutableArray *_widgetSectionsArticleCountPairs;
     struct {
+        unsigned int contentFetchDate:1;
         unsigned int widgetAppearanceType:1;
         unsigned int widgetArticleCount:1;
         unsigned int widgetHeadlineExposureCount:1;
     } _has;
 }
 
+@property (nonatomic) long long contentFetchDate; // @synthesize contentFetchDate=_contentFetchDate;
+@property (nonatomic) BOOL hasContentFetchDate;
 @property (nonatomic) BOOL hasWidgetAppearanceType;
 @property (nonatomic) BOOL hasWidgetArticleCount;
 @property (nonatomic) BOOL hasWidgetHeadlineExposureCount;
+@property (readonly, nonatomic) BOOL hasWidgetIdentifier;
 @property (nonatomic) int widgetAppearanceType; // @synthesize widgetAppearanceType=_widgetAppearanceType;
 @property (nonatomic) int widgetArticleCount; // @synthesize widgetArticleCount=_widgetArticleCount;
 @property (nonatomic) int widgetHeadlineExposureCount; // @synthesize widgetHeadlineExposureCount=_widgetHeadlineExposureCount;
+@property (strong, nonatomic) NSString *widgetIdentifier; // @synthesize widgetIdentifier=_widgetIdentifier;
 @property (strong, nonatomic) NSMutableArray *widgetPersonalizationFeatureCTRPairs; // @synthesize widgetPersonalizationFeatureCTRPairs=_widgetPersonalizationFeatureCTRPairs;
 @property (strong, nonatomic) NSMutableArray *widgetSectionsArticleCountPairs; // @synthesize widgetSectionsArticleCountPairs=_widgetSectionsArticleCountPairs;
 

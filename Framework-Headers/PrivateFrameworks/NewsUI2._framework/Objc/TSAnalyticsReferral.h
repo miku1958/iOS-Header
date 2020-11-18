@@ -24,8 +24,8 @@
 }
 
 @property (nonatomic, readonly) BOOL appOpenedByUserActivity; // @synthesize appOpenedByUserActivity;
-@property (nonatomic, readonly) long long appSessionStartMethod; // @synthesize appSessionStartMethod;
-@property (nonatomic, readonly) long long appSessionStartNotificationType; // @synthesize appSessionStartNotificationType;
+@property (nonatomic, readonly) int appSessionStartMethod; // @synthesize appSessionStartMethod;
+@property (nonatomic, readonly) int appSessionStartNotificationType; // @synthesize appSessionStartNotificationType;
 @property (nonatomic, readonly) NSString *campaignID;
 @property (nonatomic, readonly) NSString *campaignType;
 @property (nonatomic, readonly) NSString *creativeID;
@@ -37,7 +37,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithUserActivityType:(id)arg1 creativeID:(id)arg2 campaignID:(id)arg3 campaignType:(id)arg4 referringApplication:(id)arg5 referringURL:(id)arg6 widgetModeGroupID:(id)arg7 widgetEngagement:(id)arg8 appOpenedByUserActivity:(BOOL)arg9 appSessionStartMethod:(long long)arg10 appSessionStartNotificationType:(long long)arg11;
+- (id)initWithUserActivityType:(id)arg1 creativeID:(id)arg2 campaignID:(id)arg3 campaignType:(id)arg4 referringApplication:(id)arg5 referringURL:(id)arg6 widgetModeGroupID:(id)arg7 widgetEngagement:(id)arg8 appOpenedByUserActivity:(BOOL)arg9 appSessionStartMethod:(int)arg10 appSessionStartNotificationType:(int)arg11;
 
 @end
 

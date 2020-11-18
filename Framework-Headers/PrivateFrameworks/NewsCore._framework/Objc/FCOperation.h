@@ -17,6 +17,7 @@
 {
     BOOL _executing;
     BOOL _finished;
+    BOOL _isBackgroundDownloadOperation;
     BOOL _childOperationsCancelled;
     long long _relativePriority;
     unsigned long long _retryCount;
@@ -40,6 +41,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *finishedGroup; // @synthesize finishedGroup=_finishedGroup;
 @property (readonly, nonatomic) BOOL hasOperationStarted;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isBackgroundDownloadOperation; // @synthesize isBackgroundDownloadOperation=_isBackgroundDownloadOperation;
 @property (nonatomic) double operationEndTime; // @synthesize operationEndTime=_operationEndTime;
 @property (readonly, copy, nonatomic) NSString *operationID; // @synthesize operationID=_operationID;
 @property (nonatomic) double operationStartTime; // @synthesize operationStartTime=_operationStartTime;

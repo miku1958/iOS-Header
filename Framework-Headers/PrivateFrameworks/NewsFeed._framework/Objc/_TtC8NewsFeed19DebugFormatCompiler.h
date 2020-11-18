@@ -10,7 +10,7 @@
 
 @interface _TtC8NewsFeed19DebugFormatCompiler : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *uploadService;
+    MISSING_TYPE *compilerQueue;
 }
 
 @end

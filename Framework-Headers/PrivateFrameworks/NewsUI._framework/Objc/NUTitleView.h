@@ -19,12 +19,14 @@
     NUFadeViewAnimator *_fadeAnimator;
     NUAnimationQueue *_animationQueue;
     NSObject<OS_dispatch_semaphore> *_lingerSemaphore;
+    struct CGRect _lastLayoutBounds;
 }
 
 @property (readonly, nonatomic) NUAnimationQueue *animationQueue; // @synthesize animationQueue=_animationQueue;
 @property (weak, nonatomic) id<NUTitleViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NUFadeViewAnimator *fadeAnimator; // @synthesize fadeAnimator=_fadeAnimator;
 @property (strong, nonatomic) NUCrossFadeTitleView *incomingTitleView; // @synthesize incomingTitleView=_incomingTitleView;
+@property (nonatomic) struct CGRect lastLayoutBounds; // @synthesize lastLayoutBounds=_lastLayoutBounds;
 @property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *lingerSemaphore; // @synthesize lingerSemaphore=_lingerSemaphore;
 @property (readonly, nonatomic) NUSlideViewAnimator *slideAnimator; // @synthesize slideAnimator=_slideAnimator;
 @property (strong, nonatomic) id<NUTitleViewStyler> styler; // @synthesize styler=_styler;

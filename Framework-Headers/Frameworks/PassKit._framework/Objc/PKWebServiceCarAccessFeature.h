@@ -6,17 +6,17 @@
 
 #import <PassKitCore/PKWebServiceRegionFeature.h>
 
-@class NSArray;
+@class NSArray, PKOSVersionRequirementRange;
 
 @interface PKWebServiceCarAccessFeature : PKWebServiceRegionFeature
 {
-    BOOL _allowSharing;
-    BOOL _allowSharingToWatch;
+    PKOSVersionRequirementRange *_ownerSharingOSVersionRequirement;
+    PKOSVersionRequirementRange *_friendSharingOSVersionRequirement;
     NSArray *_supportedTerminals;
 }
 
-@property (readonly, nonatomic) BOOL allowSharing; // @synthesize allowSharing=_allowSharing;
-@property (readonly, nonatomic) BOOL allowSharingToWatch; // @synthesize allowSharingToWatch=_allowSharingToWatch;
+@property (readonly, nonatomic) PKOSVersionRequirementRange *friendSharingOSVersionRequirement; // @synthesize friendSharingOSVersionRequirement=_friendSharingOSVersionRequirement;
+@property (readonly, nonatomic) PKOSVersionRequirementRange *ownerSharingOSVersionRequirement; // @synthesize ownerSharingOSVersionRequirement=_ownerSharingOSVersionRequirement;
 @property (readonly, copy, nonatomic) NSArray *supportedTerminals; // @synthesize supportedTerminals=_supportedTerminals;
 
 - (void).cxx_destruct;

@@ -6,13 +6,15 @@
 
 #import <UIKit/UISplitViewController.h>
 
-@class MISSING_TYPE, NSArray, UIViewController;
+@class MISSING_TYPE;
 
 @interface _TtC5TeaUI25TabBarSplitViewController : UISplitViewController
 {
     MISSING_TYPE *extendedDelegate;
     MISSING_TYPE *eventManager;
     MISSING_TYPE *presentationContextCache;
+    MISSING_TYPE *stagedModalContextCache;
+    MISSING_TYPE *modalContextCache;
     MISSING_TYPE *fullscreenTransitionCoverManager;
     MISSING_TYPE *appearanceViewControllers;
     MISSING_TYPE *restoreStateCache;
@@ -21,22 +23,9 @@
     MISSING_TYPE *splitViewFocus;
 }
 
-@property (nonatomic, readonly) UIViewController *childViewControllerForHomeIndicatorAutoHidden;
-@property (nonatomic, readonly) UIViewController *childViewControllerForStatusBarHidden;
-@property (nonatomic, readonly) UIViewController *childViewControllerForStatusBarStyle;
-@property (nonatomic, copy) NSArray *viewControllers;
-
 - (void).cxx_destruct;
-- (void)didReceiveMemoryWarning;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)loadView;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidLayoutSubviews;
-- (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

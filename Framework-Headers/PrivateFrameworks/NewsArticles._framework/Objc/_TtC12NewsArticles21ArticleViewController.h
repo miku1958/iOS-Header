@@ -28,6 +28,7 @@
     MISSING_TYPE *footerProvider;
     MISSING_TYPE *footers;
     MISSING_TYPE *headerProvider;
+    MISSING_TYPE *headers;
     MISSING_TYPE *urlHandler;
     MISSING_TYPE *paywallPreparationEventManager;
     MISSING_TYPE *deferredHardPaywallIsVisible;

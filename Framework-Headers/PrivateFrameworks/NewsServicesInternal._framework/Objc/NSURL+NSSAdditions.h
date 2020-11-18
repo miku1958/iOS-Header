@@ -22,7 +22,6 @@
 + (id)nss_NewsURLForSaved;
 + (id)nss_NewsURLForTagID:(id)arg1;
 + (id)nss_NewsURLForWebLinkURL:(id)arg1;
-+ (id)nss_NewsURLForWidgetVideoPlaylist;
 + (id)nss_NewsURLWithPathComponents:(id)arg1 internal:(BOOL)arg2;
 - (id)_nss_URLByAppendingQueryItem:(id)arg1;
 - (id)_nss_valueForQueryParameterWithKey:(id)arg1;
@@ -35,6 +34,5 @@
 - (BOOL)nss_isNewsArticleVideoURL;
 - (BOOL)nss_isNewsTagURL;
 - (BOOL)nss_isNewsURL;
-- (BOOL)nss_isNewsWidgetVideoPlaylist;
 @end
 

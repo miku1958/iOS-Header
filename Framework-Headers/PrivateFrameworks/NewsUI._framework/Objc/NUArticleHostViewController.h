@@ -67,10 +67,12 @@
 - (void)loadingDidUpdateProgress:(double)arg1;
 - (id)loadingTextForArticle:(id)arg1;
 - (void)loadingWillStart;
+- (void)reload;
 - (void)reportEvent:(id)arg1;
 - (BOOL)resignFirstResponder;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 
 @end
 

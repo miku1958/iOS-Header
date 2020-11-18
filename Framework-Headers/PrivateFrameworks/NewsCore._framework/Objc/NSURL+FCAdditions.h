@@ -21,12 +21,15 @@
 - (id)fc_feldsparTagID;
 - (BOOL)fc_isEqualToURL:(id)arg1;
 - (BOOL)fc_isFeldsparInterstitialPreviewURL;
+- (BOOL)fc_isHTTPScheme;
 - (BOOL)fc_isHardPaywallNewsArticleURL:(out id *)arg1;
 - (BOOL)fc_isNewsArticleURL;
 - (BOOL)fc_isNewsIssueURL;
 - (BOOL)fc_isNewsTagURL;
 - (BOOL)fc_isNewsURL;
 - (BOOL)fc_isResourceURL;
+- (BOOL)fc_isStoreURL;
+- (BOOL)fc_isWebArchiveURL;
 - (id)fc_resourceID;
 @end
 

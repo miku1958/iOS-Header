@@ -103,6 +103,7 @@
 @property (readonly, nonatomic) BOOL supportsCellularData; // @synthesize supportsCellularData=_supportsCellularData;
 @property (readonly, nonatomic) BOOL supportsFrontFacingCamera; // @synthesize supportsFrontFacingCamera=_supportsFrontCamera;
 @property (readonly, nonatomic) BOOL supportsFunCam;
+@property (readonly, nonatomic) BOOL supportsHDRdecoding;
 @property (readonly, nonatomic) BOOL supportsHandoff; // @synthesize supportsHandoff=_supportsHandoff;
 @property (readonly, nonatomic) BOOL supportsKeySharing;
 @property (readonly, nonatomic) BOOL supportsMMS; // @synthesize supportsMMS=_supportsMMS;

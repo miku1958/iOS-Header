@@ -6,16 +6,29 @@
 
 #import <UIKit/UITableView.h>
 
+@class NSObject;
+@protocol OS_dispatch_group;
+
 @interface TSTableView : UITableView
 {
     BOOL _tsaxPrefersCustomReorderMessage;
+    NSObject<OS_dispatch_group> *_touchDeferGroup;
+    long long _touchDeferCounter;
 }
 
+@property (nonatomic) long long touchDeferCounter; // @synthesize touchDeferCounter=_touchDeferCounter;
+@property (readonly, nonatomic) NSObject<OS_dispatch_group> *touchDeferGroup; // @synthesize touchDeferGroup=_touchDeferGroup;
 @property (nonatomic) BOOL tsaxPrefersCustomReorderMessage; // @synthesize tsaxPrefersCustomReorderMessage=_tsaxPrefersCustomReorderMessage;
 
 + (long long)ts_preferredStyleForStyle:(long long)arg1;
+- (void).cxx_destruct;
 - (id)_accessibilityReorderMessageForNewIndexPath:(id)arg1 swappedWithRow:(long long)arg2 movingDown:(BOOL)arg3;
+- (void)_deferWhenTouchingWithBlock:(CDUnknownBlockType)arg1;
 - (id)contextualActionForDeletingRowAtIndexPath:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 
 @end
 

@@ -113,6 +113,8 @@
 @property (readonly, nonatomic) BOOL isEventAllDay;
 @property (readonly, nonatomic, getter=_isStandaloneBrand) BOOL isStandAloneBrand;
 @property (readonly, nonatomic, getter=_isTransitDisplayFeature) BOOL isTransitDisplayFeature;
+@property (readonly, nonatomic, getter=_iso3166CountryCode) NSString *iso3166CountryCode;
+@property (readonly, nonatomic, getter=_iso3166SubdivisionCode) NSString *iso3166SubdivisionCode;
 @property (readonly, nonatomic, getter=_linkedServices) NSArray *linkedServices;
 @property (readonly, nonatomic, getter=_mapsCategoryId) NSString *mapsCategoryId;
 @property (readonly, nonatomic, getter=_messageLink) GEOMessageLink *messageLink;
@@ -198,6 +200,7 @@
 - (id)_groundViewLabel;
 - (BOOL)_hasLocalizedCategoryNamesForType:(unsigned int)arg1;
 - (BOOL)_hasMoreForAttribution:(id)arg1 requirement:(int)arg2;
+- (id)_iso3166Value;
 - (id)_localizedCategoryNamesForType:(unsigned int)arg1;
 - (id)_logoPathForAttribution:(id)arg1 requirement:(int)arg2 scale:(double)arg3;
 - (id)_mapItemBySettingIsTransitDisplayFeature:(BOOL)arg1;

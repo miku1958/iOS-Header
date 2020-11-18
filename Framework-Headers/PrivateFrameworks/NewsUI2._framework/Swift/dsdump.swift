@@ -1,10 +1,20 @@
- protocol NewsUI2.FeedCursorFactoryType // 6 requirements
+ protocol NewsUI2.AudioFeedSectionFactoryType // 1 requirements
  {
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
-	// class associated type access function
+	// method
+ }
+ protocol NewsUI2.SearchMoreTagsBlueprintViewCellProviderDelegate // 2 requirements
+ {
+	// getter
+	// method
+ }
+ protocol NewsUI2.AudioPlaybackControllable // 7 requirements
+ {
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
 	// method
  }
  protocol NewsUI2.MagazineFeedRouterType // 4 requirements
@@ -19,17 +29,32 @@
 	// method
 	// method
  }
- protocol NewsUI2.FeedConfigType // 6 requirements
+ protocol NewsUI2.AudioDailyBriefingStoreType // 1 requirements
  {
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
-	// getter
-	// getter
 	// method
  }
  protocol NewsUI2.MagazineGridBlueprintViewCellProviderDelegate // 2 requirements
  {
+	// method
+	// method
+ }
+ protocol NewsUI2.HistoryFeedInteractorType // 9 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.HistoryFeedInteractorTypeDelegate // 5 requirements
+ {
+	// method
+	// method
+	// method
 	// method
 	// method
  }
@@ -66,6 +91,9 @@
  {
 	// method
  }
+ protocol NewsUI2.SearchBlueprintViewCellProviderDelegate // 0 requirements
+ {
+ }
  protocol NewsUI2.ChannelIssuesInteractorType // 8 requirements
  {
 	// getter
@@ -86,10 +114,6 @@
  {
 	// method
  }
- protocol NewsUI2.SpecialEventsServiceType // 1 requirements
- {
-	// method
- }
  protocol NewsUI2.FollowingViewCellProviderDelegate // 10 requirements
  {
 	// getter
@@ -103,7 +127,14 @@
 	// method
 	// method
  }
+ protocol NewsUI2.WebEmbedViewStylerType // 0 requirements
+ {
+ }
  protocol NewsUI2.ForYouTitleViewLayoutAttributesFactoryType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.WebEmbedViewRendererType // 1 requirements
  {
 	// method
  }
@@ -113,9 +144,25 @@
 	// method
 	// method
  }
+ protocol NewsUI2.AudioPlaybackQueue // 4 requirements
+ {
+	// class associated conformance access function
+	// class associated type access function
+	// getter
+	// getter
+ }
  protocol NewsUI2.HeadlineFooterViewComposable // 1 requirements
  {
 	// getter
+ }
+ protocol NewsUI2.HistoryFeedTrackerType // 6 requirements
+ {
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
  }
  protocol NewsUI2.ChannelSectionHeadlinesServiceType // 1 requirements
  {
@@ -129,24 +176,20 @@
  {
 	// method
  }
- protocol NewsUI2.FeedRulesType // 1 requirements
- {
-	// getter
- }
- protocol NewsUI2.SpecialEventsBlueprintViewCellProviderDelegate // 2 requirements
- {
-	// method
-	// method
- }
  protocol NewsUI2.SeparatorViewContainerViewRendererType // 1 requirements
  {
 	// method
+ }
+ protocol NewsUI2.AudioMPContentItemFactoryType // 2 requirements
+ {
+	// method
+	// getter
  }
  protocol NewsUI2.ForYouTitleViewRendererType // 1 requirements
  {
 	// method
  }
- protocol NewsUI2.FollowingInteractorType // 21 requirements
+ protocol NewsUI2.FollowingInteractorType // 18 requirements
  {
 	// getter
 	// setter
@@ -166,11 +209,8 @@
 	// method
 	// method
 	// method
-	// method
-	// method
-	// method
  }
- protocol NewsUI2.FollowingInteractorTypeDelegate // 10 requirements
+ protocol NewsUI2.FollowingInteractorTypeDelegate // 18 requirements
  {
 	// method
 	// method
@@ -182,26 +222,12 @@
 	// method
 	// method
 	// method
- }
- protocol NewsUI2.SearchMoreInteractorType // 14 requirements
- {
-	// getter
-	// setter
-	// modify coroutine
-	// getter
-	// setter
-	// modify coroutine
 	// method
 	// method
 	// method
 	// method
 	// method
 	// method
-	// method
-	// method
- }
- protocol NewsUI2.SearchMoreInteractorTypeDelegate // 2 requirements
- {
 	// method
 	// method
  }
@@ -228,12 +254,43 @@
 	// method
 	// method
  }
+ protocol NewsUI2.EmailSignupEventHandlerType // 8 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// method
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.EmailSignupEventHandlerTypeDelegate // 0 requirements
+ {
+ }
  protocol NewsUI2.SectionDescriptorGroupTypeProviderType // 1 requirements
  {
 	// getter
  }
  protocol NewsUI2.NotificationSwitchRendererType // 1 requirements
  {
+	// method
+ }
+ protocol NewsUI2.TagFeedDataManagerType // 4 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// method
+ }
+ protocol NewsUI2.TagFeedDataManagerTypeDelegate // 2 requirements
+ {
+	// method
+	// method
+ }
+ protocol NewsUI2.SearchMoreArticlesDataManagerType // 2 requirements
+ {
+	// method
 	// method
  }
  protocol NewsUI2.MagazineConfigurationServiceType // 5 requirements
@@ -249,6 +306,10 @@
 	// getter
 	// getter
 	// method
+	// method
+ }
+ protocol NewsUI2.TagFeedPluginFactoryType // 1 requirements
+ {
 	// method
  }
  protocol NewsUI2.FollowingNotificationsHeaderLabelTextProviderType // 1 requirements
@@ -271,33 +332,36 @@
  {
 	// method
  }
- protocol NewsUI2.MagazineFeedBlueprintModifierFactoryType // 12 requirements
+ protocol NewsUI2.NowPlayingRouterType // 1 requirements
  {
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
 	// method
  }
- protocol NewsUI2.KnobsConfigType // 4 requirements
+ protocol NewsUI2.MagazineFeedBlueprintModifierFactoryType // 13 requirements
  {
+	// class associated conformance access function
+	// class associated conformance access function
 	// class associated type access function
-	// getter
-	// getter
-	// getter
+	// class associated type access function
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
  }
  protocol NewsUI2.MagazineCategoriesBlueprintViewCellProviderDelegate // 0 requirements
  {
  }
- protocol NewsUI2.SpecialEventsWebEmbedConfigurationProviderType // 1 requirements
+ protocol NewsUI2.HistoryFeedModuleType // 1 requirements
  {
+	// method
+ }
+ protocol NewsUI2.TagFeedStylerType // 2 requirements
+ {
+	// method
 	// method
  }
  protocol NewsUI2.MagazineGridStylerType // 3 requirements
@@ -306,16 +370,8 @@
 	// method
 	// method
  }
- protocol NewsUI2.FeedServiceFetchResultType // 1 requirements
+ protocol NewsUI2.AudioCompletedListeningProcessorType // 1 requirements
  {
-	// getter
- }
- protocol NewsUI2.TopVideosRouterType // 5 requirements
- {
-	// method
-	// method
-	// method
-	// method
 	// method
  }
  protocol NewsUI2.FollowingRouterType // 18 requirements
@@ -352,6 +408,15 @@
  {
 	// method
  }
+ protocol NewsUI2.ChannelIssuesModuleType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.WebEmbedViewLayoutAttributesFactoryType // 2 requirements
+ {
+	// method
+	// method
+ }
  protocol NewsUI2.FeedAvailabilityServiceType // 3 requirements
  {
 	// method
@@ -359,6 +424,10 @@
 	// method
  }
  protocol NewsUI2.TopicClusteringServiceType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.TagViewLayoutAttributesFactoryType // 1 requirements
  {
 	// method
  }
@@ -395,7 +464,15 @@
 	// getter
 	// getter
  }
- protocol NewsUI2.FollowingDislikedInteractorType // 8 requirements
+ protocol NewsUI2.SearchMoreTagsModuleType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.AudioFeedDataPrewarmerType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.FollowingDislikedInteractorType // 6 requirements
  {
 	// getter
 	// setter
@@ -403,11 +480,10 @@
 	// method
 	// method
 	// method
-	// method
-	// method
  }
- protocol NewsUI2.FollowingDislikedInteractorTypeDelegate // 1 requirements
+ protocol NewsUI2.FollowingDislikedInteractorTypeDelegate // 2 requirements
  {
+	// method
 	// method
  }
  protocol NewsUI2.MagazineFeedVideoPaywallViewStylerType // 7 requirements
@@ -427,16 +503,19 @@
 	// getter
 	// getter
  }
- protocol NewsUI2.NewspaperGroupServiceType // 1 requirements
- {
-	// method
- }
  protocol NewsUI2.FollowingHeaderViewStylerType // 1 requirements
  {
 	// method
  }
- protocol NewsUI2.MastheadViewStylerType // 7 requirements
+ protocol NewsUI2.MastheadViewStylerType // 14 requirements
  {
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
 	// method
 	// method
 	// method
@@ -445,12 +524,31 @@
 	// method
 	// method
  }
- protocol NewsUI2.TopOfFeedRouterType // 0 requirements
+ protocol NewsUI2.AudioPlaylistStoreType // 4 requirements
  {
+	// getter
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.AudioFeedBlueprintModifierFactoryType // 8 requirements
+ {
+	// class associated conformance access function
+	// class associated conformance access function
+	// class associated type access function
+	// class associated type access function
+	// method
+	// method
+	// method
+	// method
  }
  protocol NewsUI2.NotificationSettingModifing // 1 requirements
  {
 	// method
+ }
+ protocol NewsUI2.AudioTabVisibilityManagerType // 1 requirements
+ {
+	// getter
  }
  protocol NewsUI2.BootstrapperObserver // 1 requirements
  {
@@ -476,12 +574,16 @@
 	// method
 	// method
  }
- protocol NewsUI2.TodayBlueprintModifierFactoryType // 5 requirements
+ protocol NewsUI2.TodayBlueprintModifierFactoryType // 9 requirements
  {
 	// class associated conformance access function
 	// class associated conformance access function
 	// class associated type access function
 	// class associated type access function
+	// method
+	// method
+	// method
+	// method
 	// method
  }
  protocol NewsUI2.IssueErrorAlertPresenterFactoryType // 1 requirements
@@ -490,16 +592,6 @@
  }
  protocol NewsUI2.FollowingFooterViewRendererType // 1 requirements
  {
-	// method
- }
- protocol NewsUI2.TopVideosBlueprintModifierFactoryType // 7 requirements
- {
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
-	// method
-	// method
 	// method
  }
  protocol NewsUI2.MyMagazinesEventHandlerType // 12 requirements
@@ -526,8 +618,29 @@
  {
 	// method
  }
+ protocol NewsUI2.LocalNewsGroupServiceType // 1 requirements
+ {
+	// method
+ }
  protocol NewsUI2.MagazineCategoriesRouterType // 1 requirements
  {
+	// method
+ }
+ protocol NewsUI2.AudioPlayerType // 14 requirements
+ {
+	// class associated conformance access function
+	// class associated type access function
+	// method
+	// method
+	// method
+	// method
+	// getter
+	// getter
+	// getter
+	// getter
+	// getter
+	// method
+	// method
 	// method
  }
  protocol NewsUI2.WelcomeViewAnimatorType // 2 requirements
@@ -541,32 +654,26 @@
 	// method
 	// method
  }
- protocol NewsUI2.MoreVideosRouterType // 5 requirements
- {
-	// method
-	// method
-	// method
-	// method
-	// method
- }
  protocol NewsUI2.MyMagazinesSectionHeaderViewLayoutAttributesFactoryType // 1 requirements
  {
+	// method
+ }
+ protocol NewsUI2.AudioScheduledRefreshManagerType // 3 requirements
+ {
+	// class base protocol
+	// class base protocol
 	// method
  }
  protocol NewsUI2.OfflineIssuePruningRuleProviderType // 1 requirements
  {
 	// getter
  }
+ protocol NewsUI2.TagFeedRouterType // 2 requirements
+ {
+	// method
+	// method
+ }
  protocol NewsUI2.FollowingDislikedRouterType // 0 requirements
- {
- }
- protocol NewsUI2.TopOfFeedInteractorType // 3 requirements
- {
-	// getter
-	// setter
-	// modify coroutine
- }
- protocol NewsUI2.TopOfFeedInteractorTypeDelegate // 0 requirements
  {
  }
  protocol NewsUI2.WelcomeViewRendererType // 1 requirements
@@ -610,12 +717,31 @@
 	// method
 	// method
  }
+ protocol NewsUI2.AudioPlaybackConductorType // 3 requirements
+ {
+	// class associated conformance access function
+	// class associated type access function
+	// getter
+ }
  protocol NewsUI2.OffensiveViewStylerType // 5 requirements
  {
 	// getter
 	// getter
 	// getter
 	// getter
+	// method
+ }
+ protocol NewsUI2.AudioFeedRouterType // 2 requirements
+ {
+	// method
+	// method
+ }
+ protocol NewsUI2.SavedFeedBlueprintViewCellProviderDelegate // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.NowPlayingActivityViewControllerFactoryType // 1 requirements
+ {
 	// method
  }
  protocol NewsUI2.MyMagazinesModuleType // 1 requirements
@@ -656,8 +782,9 @@
 	// method
 	// method
  }
- protocol NewsUI2.MagazineFeedInteractorTypeDelegate // 12 requirements
+ protocol NewsUI2.MagazineFeedInteractorTypeDelegate // 13 requirements
  {
+	// method
 	// method
 	// method
 	// method
@@ -681,7 +808,22 @@
  {
 	// method
  }
- protocol NewsUI2.FollowingRowViewRendererType // 1 requirements
+ protocol NewsUI2.TagViewRendererType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.FollowingNotificationsTrackerType // 8 requirements
+ {
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.NotificationRegistererType // 1 requirements
  {
 	// method
  }
@@ -753,8 +895,9 @@
 	// modify coroutine
 	// method
  }
- protocol NewsUI2.TodaySectionFactoryType // 1 requirements
+ protocol NewsUI2.TodaySectionFactoryType // 2 requirements
  {
+	// method
 	// method
  }
  protocol NewsUI2.ChannelIssuesBlueprintViewCellProviderDelegate // 1 requirements
@@ -788,10 +931,21 @@
 	// method
 	// method
  }
- protocol NewsUI2.AppLaunchUpsellManagerType // 3 requirements
+ protocol NewsUI2.WebEmbedStylerType // 2 requirements
+ {
+	// method
+	// getter
+ }
+ protocol NewsUI2.TodayModuleType // 2 requirements
+ {
+	// method
+	// method
+ }
+ protocol NewsUI2.AppLaunchUpsellManagerType // 4 requirements
  {
 	// class base protocol
 	// getter
+	// method
 	// method
  }
  protocol NewsUI2.MagazineCategoriesEventHandlerType // 8 requirements
@@ -808,6 +962,25 @@
  protocol NewsUI2.MagazineCategoriesEventHandlerTypeDelegate // 0 requirements
  {
  }
+ protocol NewsUI2.SearchInteractorType // 5 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// method
+	// method
+ }
+ protocol NewsUI2.SearchInteractorTypeDelegate // 0 requirements
+ {
+ }
+ protocol NewsUI2.SearchBlueprintModifierFactoryType // 5 requirements
+ {
+	// class associated conformance access function
+	// class associated conformance access function
+	// class associated type access function
+	// class associated type access function
+	// method
+ }
  protocol NewsUI2.MagazineFeedPaywallViewType // 7 requirements
  {
 	// getter
@@ -818,16 +991,25 @@
 	// getter
 	// getter
  }
+ protocol NewsUI2.TodayConfigManagerType // 3 requirements
+ {
+	// getter
+	// method
+	// method
+ }
  protocol NewsUI2.ChannelIssuesGroupTitleViewLayoutAttributesFactoryType // 1 requirements
  {
 	// method
  }
- protocol NewsUI2.EmailSignupDetectionManagerType // 4 requirements
+ protocol NewsUI2.EmailSignupDetectionManagerType // 7 requirements
  {
-	// method
 	// getter
 	// setter
 	// modify coroutine
+	// getter
+	// setter
+	// modify coroutine
+	// method
  }
  protocol NewsUI2.EmailSignupDetectionManagerTypeDelegate // 1 requirements
  {
@@ -839,6 +1021,13 @@
 	// class associated type access function
 	// class associated type access function
 	// class associated type access function
+	// method
+ }
+ protocol NewsUI2.SearchMoreTagsStylerType // 4 requirements
+ {
+	// method
+	// method
+	// method
 	// method
  }
  protocol NewsUI2.SavedServiceType // 5 requirements
@@ -897,23 +1086,66 @@
 	// method
 	// method
  }
+ protocol NewsUI2.TagFeedBlueprintViewCellProviderDelegate // 0 requirements
+ {
+ }
  protocol NewsUI2.SubscriptionsFoundModuleType // 1 requirements
  {
 	// method
  }
- protocol NewsUI2.SpecialEventsBlueprintModifierFactoryType // 8 requirements
+ protocol NewsUI2.SavedFeedInteractorType // 8 requirements
  {
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
+	// getter
+	// setter
+	// modify coroutine
+	// method
 	// method
 	// method
 	// method
 	// method
  }
- protocol NewsUI2.SearchMoreViewCellProviderDelegate // 1 requirements
+ protocol NewsUI2.SavedFeedInteractorTypeDelegate // 5 requirements
  {
+	// method
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.HistoryFeedEventHandlerType // 15 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.HistoryFeedEventHandlerTypeDelegate // 5 requirements
+ {
+	// method
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.FollowingNotificationsSectionFooterViewStylerType // 2 requirements
+ {
+	// getter
+	// method
+ }
+ protocol NewsUI2.AudioConfigurationManagerType // 2 requirements
+ {
+	// getter
 	// method
  }
  protocol NewsUI2.SidebarTableViewCellRendererType // 1 requirements
@@ -932,73 +1164,31 @@
 	// method
 	// method
  }
- protocol NewsUI2.TodayFeedPersonalizationServiceType // 1 requirements
- {
-	// class base protocol
- }
  protocol NewsUI2.OfflineIssuePrunerType // 2 requirements
  {
 	// class base protocol
 	// method
  }
- protocol NewsUI2.SpecialEventsLayoutTypeProviderType // 1 requirements
+ protocol NewsUI2.AudioFeedModuleType // 1 requirements
  {
 	// method
  }
- protocol NewsUI2.ArticleTransitionAnimatorCellType // 1 requirements
+ protocol NewsUI2.NewsMastheadViewProviderType // 2 requirements
  {
-	// method
+	// class base protocol
+	// class base protocol
  }
- protocol NewsUI2.ArticleTransitionAnimatorType // 0 requirements
+ protocol NewsUI2.TagFeedTrackerType // 6 requirements
  {
- }
- protocol NewsUI2.HistoryEventHandlerType // 11 requirements
- {
-	// getter
-	// setter
-	// modify coroutine
 	// method
 	// method
 	// method
 	// method
 	// method
 	// method
-	// method
-	// method
- }
- protocol NewsUI2.HistoryEventHandlerTypeDelegate // 0 requirements
- {
  }
  protocol NewsUI2.ReportConcernViewPresenterDelegate // 1 requirements
  {
-	// method
- }
- protocol NewsUI2.SpecialEventsStylerType // 5 requirements
- {
-	// method
-	// method
-	// method
-	// method
-	// method
- }
- protocol NewsUI2.FeedGroupJournalParameterProviderType // 3 requirements
- {
-	// class associated conformance access function
-	// class associated type access function
-	// getter
- }
- protocol NewsUI2.FeedGroupEmitterType // 11 requirements
- {
-	// class base protocol
-	// class base protocol
-	// class base protocol
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
-	// method
-	// method
-	// method
 	// method
  }
  protocol NewsUI2.SubscriptionDetectionManagerType // 3 requirements
@@ -1011,15 +1201,27 @@
  {
 	// method
  }
+ protocol NewsUI2.SearchMoreTagsInteractorType // 7 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.SearchMoreTagsInteractorTypeDelegate // 2 requirements
+ {
+	// method
+	// method
+ }
  protocol NewsUI2.MagazineCategoryViewLayoutAttributesFactoryType // 1 requirements
  {
 	// method
  }
- protocol NewsUI2.SearchMoreDataManagerType // 4 requirements
+ protocol NewsUI2.AudioFeedSectionDecorationFactoryType // 1 requirements
  {
-	// getter
-	// getter
-	// method
 	// method
  }
  protocol NewsUI2.MainStylerType // 2 requirements
@@ -1031,7 +1233,25 @@
  {
 	// method
  }
- protocol NewsUI2.FollowingNotificationsEventHandlerType // 9 requirements
+ protocol NewsUI2.SearchMoreArticlesModuleType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.FollowingTrackerType // 11 requirements
+ {
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.FollowingNotificationsEventHandlerType // 12 requirements
  {
 	// getter
 	// setter
@@ -1042,10 +1262,18 @@
 	// method
 	// method
 	// method
+	// method
+	// method
+	// method
  }
  protocol NewsUI2.FollowingNotificationsEventHandlerTypeDelegate // 3 requirements
  {
 	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.SavedFeedRouterType // 2 requirements
+ {
 	// method
 	// method
  }
@@ -1069,6 +1297,9 @@
 	// method
 	// method
  }
+ protocol NewsUI2.WebEmbedRouterType // 0 requirements
+ {
+ }
  protocol NewsUI2.HeadlineViewLayoutAttributesProviderType // 1 requirements
  {
 	// method
@@ -1084,22 +1315,10 @@
  {
 	// method
  }
- protocol NewsUI2.MoreVideosStylerType // 3 requirements
+ protocol NewsUI2.HistoryFeedRouterType // 3 requirements
  {
 	// method
 	// method
-	// method
- }
- protocol NewsUI2.SpecialEventsTitleViewRendererType // 1 requirements
- {
-	// method
- }
- protocol NewsUI2.FeedPoolServiceType // 5 requirements
- {
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
 	// method
  }
  protocol NewsUI2.NotificationToggling // 1 requirements
@@ -1114,25 +1333,9 @@
 	// getter
 	// getter
  }
- protocol NewsUI2.FeedProxyModuleType // 1 requirements
+ protocol NewsUI2.WebEmbedModuleType // 1 requirements
  {
 	// method
- }
- protocol NewsUI2.SavedEventHandlerType // 10 requirements
- {
-	// getter
-	// setter
-	// modify coroutine
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
- }
- protocol NewsUI2.SavedEventHandlerTypeDelegate // 0 requirements
- {
  }
  protocol NewsUI2.FollowingDislikedStylerType // 3 requirements
  {
@@ -1160,15 +1363,11 @@
  {
 	// method
  }
- protocol NewsUI2.HistoryBlueprintViewCellProviderDelegate // 1 requirements
- {
-	// method
- }
  protocol NewsUI2.FollowingNotificationsRouterType // 1 requirements
  {
 	// method
  }
- protocol NewsUI2.FollowingRowModelType // 8 requirements
+ protocol NewsUI2.TagViewModelType // 8 requirements
  {
 	// getter
 	// getter
@@ -1183,8 +1382,9 @@
  {
 	// getter
  }
- protocol NewsUI2.SearchMoreRouterType // 1 requirements
+ protocol NewsUI2.SearchStylerType // 2 requirements
  {
+	// method
 	// method
  }
  protocol NewsUI2.FollowingDislikedModuleType // 1 requirements
@@ -1195,32 +1395,7 @@
  {
 	// method
  }
- protocol NewsUI2.HistoryStylerType // 1 requirements
- {
-	// method
- }
  protocol NewsUI2.TopicMagazineFeedGroupClustererType // 1 requirements
- {
-	// method
- }
- protocol NewsUI2.FeedServiceType // 6 requirements
- {
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
-	// class associated type access function
-	// method
- }
- protocol NewsUI2.FeedPoolManagerType // 5 requirements
- {
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
-	// method
- }
- protocol NewsUI2.TopVideosBlueprintViewSupplementaryViewProviderDelegate // 1 requirements
  {
 	// method
  }
@@ -1259,8 +1434,9 @@
 	// method
 	// method
  }
- protocol NewsUI2.MagazineFeedEventHandlerTypeDelegate // 10 requirements
+ protocol NewsUI2.MagazineFeedEventHandlerTypeDelegate // 11 requirements
  {
+	// method
 	// method
 	// method
 	// method
@@ -1287,39 +1463,28 @@
  {
 	// method
  }
- protocol NewsUI2.FeedServiceConfigType // 10 requirements
- {
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
-	// getter
-	// getter
-	// getter
-	// getter
-	// getter
-	// getter
- }
  protocol NewsUI2.FollowingHeaderViewRendererType // 1 requirements
  {
 	// method
  }
- protocol NewsUI2.MoreVideosDataManagerType // 4 requirements
+ protocol NewsUI2.TagFeedBlueprintModifierFactoryType // 7 requirements
  {
-	// getter
-	// setter
-	// modify coroutine
+	// class associated conformance access function
+	// class associated conformance access function
+	// class associated type access function
+	// class associated type access function
+	// method
+	// method
 	// method
  }
- protocol NewsUI2.MoreVideosDataManagerDelegate // 1 requirements
- {
-	// method
- }
- protocol NewsUI2.MagazineFeedStylerType // 4 requirements
+ protocol NewsUI2.MagazineFeedStylerType // 3 requirements
  {
 	// getter
 	// method
 	// method
+ }
+ protocol NewsUI2.NotificationCategoriesRegistererType // 1 requirements
+ {
 	// method
  }
  protocol NewsUI2.MagazineFeedGroupConfigType // 8 requirements
@@ -1333,33 +1498,12 @@
 	// getter
 	// getter
  }
- protocol NewsUI2.SpecialEventsEventHandlerType // 17 requirements
- {
-	// getter
-	// setter
-	// modify coroutine
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
- }
- protocol NewsUI2.SpecialEventsEventHandlerTypeDelegate // 2 requirements
- {
-	// method
-	// method
- }
  protocol NewsUI2.FollowingDislikedViewCellProviderDelegate // 0 requirements
  {
+ }
+ protocol NewsUI2.ChannelFontServiceType // 1 requirements
+ {
+	// method
  }
  protocol NewsUI2.MagazineActivityNavigatorType // 2 requirements
  {
@@ -1371,6 +1515,15 @@
 	// class base protocol
 	// class base protocol
 	// getter
+	// method
+ }
+ protocol NewsUI2.SavedFeedTrackerType // 6 requirements
+ {
+	// method
+	// method
+	// method
+	// method
+	// method
 	// method
  }
  protocol NewsUI2.MagazineFeedDataPrewarmerType // 3 requirements
@@ -1388,6 +1541,22 @@
 	// method
 	// method
  }
+ protocol NewsUI2.AudioFeedDataManagerType // 6 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.AudioFeedDataManagerTypeDelegate // 4 requirements
+ {
+	// method
+	// method
+	// method
+	// method
+ }
  protocol NewsUI2.MagazineFeedServiceType // 1 requirements
  {
 	// method
@@ -1400,7 +1569,7 @@
  {
 	// method
  }
- protocol NewsUI2.FollowingNotificationsDataManagerType // 7 requirements
+ protocol NewsUI2.FollowingNotificationsDataManagerType // 8 requirements
  {
 	// getter
 	// setter
@@ -1409,10 +1578,16 @@
 	// method
 	// method
 	// method
+	// method
  }
  protocol NewsUI2.FollowingNotificationsDataManagerTypeDelegate // 3 requirements
  {
 	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.SavedFeedStylerType // 2 requirements
+ {
 	// method
 	// method
  }
@@ -1441,11 +1616,18 @@
 	// setter
 	// modify coroutine
  }
- protocol NewsUI2.FollowingDislikedEventHandlerType // 8 requirements
+ protocol NewsUI2.OptionSetPrintable // 3 requirements
+ {
+	// class base protocol
+	// class base protocol
+	// class getter
+ }
+ protocol NewsUI2.FollowingDislikedEventHandlerType // 9 requirements
  {
 	// getter
 	// setter
 	// modify coroutine
+	// method
 	// method
 	// method
 	// method
@@ -1475,14 +1657,15 @@
 	// method
 	// method
  }
- protocol NewsUI2.FeedContentConfigType // 6 requirements
+ protocol NewsUI2.TodayTrackerType // 7 requirements
  {
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
-	// getter
-	// getter
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
  }
  protocol NewsUI2.MagazineFeedGroupTitleViewStylerType // 3 requirements
  {
@@ -1490,33 +1673,49 @@
 	// method
 	// method
  }
- protocol NewsUI2.SpecialEventsBlueprintViewSupplementaryViewProviderDelegate // 1 requirements
- {
-	// method
- }
  protocol NewsUI2.OffensiveViewComposable // 1 requirements
  {
 	// getter
+ }
+ protocol NewsUI2.WebEmbedDataManagerType // 0 requirements
+ {
+ }
+ protocol NewsUI2.AudioHeadlineConverterType // 2 requirements
+ {
+	// method
+	// method
+ }
+ protocol NewsUI2.AudioFeedTitleViewStylerType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.AudioFeedTrackFactoryType // 1 requirements
+ {
+	// method
  }
  protocol NewsUI2.TitleViewRendererType // 1 requirements
  {
 	// method
  }
- protocol NewsUI2.FeedPoolType // 5 requirements
+ protocol NewsUI2.NewspaperGroupServiceType // 1 requirements
  {
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
+	// method
+ }
+ protocol NewsUI2.TagFeedSectionFactoryType // 2 requirements
+ {
+	// method
+	// method
+ }
+ protocol NewsUI2.AudioConfigurationServiceType // 1 requirements
+ {
 	// method
  }
  protocol NewsUI2.WelcomeRouterType // 1 requirements
  {
 	// method
  }
- protocol NewsUI2.NotificationResponseHandling // 2 requirements
+ protocol NewsUI2.HistoryFeedBlueprintViewCellProviderDelegate // 1 requirements
  {
-	// getter
 	// method
  }
  protocol NewsUI2.TagWrapping // 1 requirements
@@ -1527,7 +1726,17 @@
  {
 	// method
  }
- protocol NewsUI2.TodayDataManagerType // 2 requirements
+ protocol NewsUI2.TodayDataManagerType // 7 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.TodayDataManagerTypeDelegate // 2 requirements
  {
 	// method
 	// method
@@ -1538,13 +1747,6 @@
  }
  protocol NewsUI2.LikeButtonStylerType // 1 requirements
  {
-	// method
- }
- protocol NewsUI2.SavedRouterType // 4 requirements
- {
-	// method
-	// method
-	// method
 	// method
  }
  protocol NewsUI2.MagazineCategoriesInteractorType // 7 requirements
@@ -1568,12 +1770,6 @@
  {
 	// method
  }
- protocol NewsUI2.FeedGroupType // 3 requirements
- {
-	// class base protocol
-	// class base protocol
-	// getter
- }
  protocol NewsUI2.HistoryServiceType // 10 requirements
  {
 	// method
@@ -1591,15 +1787,23 @@
  {
 	// method
  }
- protocol NewsUI2.SavedBlueprintViewCellProviderDelegate // 1 requirements
- {
-	// method
- }
- protocol NewsUI2.FollowingEventHandlerType // 25 requirements
+ protocol NewsUI2.WebEmbedEventHandlerType // 5 requirements
  {
 	// getter
 	// setter
 	// modify coroutine
+	// method
+	// method
+ }
+ protocol NewsUI2.WebEmbedEventHandlerTypeDelegate // 0 requirements
+ {
+ }
+ protocol NewsUI2.FollowingEventHandlerType // 26 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// method
 	// method
 	// method
 	// method
@@ -1643,6 +1847,28 @@
 	// class getter
 	// class getter
  }
+ protocol NewsUI2.AudioFeedInteractorType // 10 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.AudioFeedInteractorTypeDelegate // 6 requirements
+ {
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+ }
  protocol NewsUI2.FollowingFooterViewLayoutAttributesFactoryType // 1 requirements
  {
 	// method
@@ -1677,23 +1903,12 @@
 	// method
 	// method
  }
+ protocol NewsUI2.AudioFeedTitleViewRendererType // 1 requirements
+ {
+	// method
+ }
  protocol NewsUI2.IssueModelFactoryType // 1 requirements
  {
-	// method
- }
- protocol NewsUI2.SavedStylerType // 1 requirements
- {
-	// method
- }
- protocol NewsUI2.SearchMoreServiceFactoryType // 2 requirements
- {
-	// method
-	// method
- }
- protocol NewsUI2.MoreVideosBlueprintViewCellProviderDelegate // 3 requirements
- {
-	// method
-	// method
 	// method
  }
  protocol NewsUI2.FollowingNotificationsModifierFactoryType // 7 requirements
@@ -1718,9 +1933,9 @@
  {
 	// class base protocol
  }
- protocol NewsUI2.FeedGroupConfigType // 1 requirements
+ protocol NewsUI2.NowPlayingEventHandlerType // 1 requirements
  {
-	// getter
+	// method
  }
  protocol NewsUI2.MyMagazinesBlueprintViewCellProviderDelegate // 1 requirements
  {
@@ -1737,6 +1952,10 @@
  protocol NewsUI2.EmailSignupDataManagerType // 0 requirements
  {
  }
+ protocol NewsUI2.FollowingNotificationsSectionFooterViewLayoutAttributesFactoryType // 1 requirements
+ {
+	// method
+ }
  protocol NewsUI2.PaidBundleBackgroundWorkerFactoryType // 1 requirements
  {
 	// method
@@ -1750,13 +1969,7 @@
  {
 	// method
  }
- protocol NewsUI2.SavedDataManagerType // 3 requirements
- {
-	// getter
-	// setter
-	// modify coroutine
- }
- protocol NewsUI2.SavedDataManagerDelegate // 1 requirements
+ protocol NewsUI2.SearchModuleType // 1 requirements
  {
 	// method
  }
@@ -1764,18 +1977,45 @@
  {
 	// method
  }
- protocol NewsUI2.TopVideosBlueprintViewCellProviderDelegate // 3 requirements
+ protocol NewsUI2.SearchEventHandlerType // 13 requirements
  {
+	// getter
+	// setter
+	// modify coroutine
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
 	// method
 	// method
 	// method
  }
- protocol NewsUI2.FollowingRowViewStylerType // 6 requirements
+ protocol NewsUI2.SearchEventHandlerTypeDelegate // 0 requirements
+ {
+ }
+ protocol NewsUI2.TagViewStylerType // 6 requirements
  {
 	// getter
 	// getter
 	// method
 	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.WebEmbedTrackerType // 2 requirements
+ {
+	// method
+	// method
+ }
+ protocol NewsUI2.SearchMoreArticlesBlueprintModifierFactoryType // 6 requirements
+ {
+	// class associated conformance access function
+	// class associated conformance access function
+	// class associated type access function
+	// class associated type access function
 	// method
 	// method
  }
@@ -1787,17 +2027,12 @@
 	// class associated type access function
 	// method
  }
- protocol NewsUI2.AnalyticsScienceDataFactoryType // 1 requirements
+ protocol NewsUI2.ChannelSectionsHeroSelectorType // 1 requirements
  {
 	// method
  }
- protocol NewsUI2.SpecialEventsTitleViewStylerType // 6 requirements
+ protocol NewsUI2.AnalyticsScienceDataFactoryType // 1 requirements
  {
-	// method
-	// method
-	// getter
-	// method
-	// method
 	// method
  }
  protocol NewsUI2.FamilySharingDetectionManagerType // 3 requirements
@@ -1816,24 +2051,13 @@
 	// method
 	// method
  }
- protocol NewsUI2.MastheadViewRendererType // 2 requirements
+ protocol NewsUI2.HistoryFeedSectionFactoryType // 1 requirements
  {
-	// method
 	// method
  }
- protocol NewsUI2.SavedInteractorType // 8 requirements
+ protocol NewsUI2.MastheadViewRendererType // 3 requirements
  {
-	// getter
-	// setter
-	// modify coroutine
 	// method
-	// method
-	// method
-	// method
-	// method
- }
- protocol NewsUI2.SavedInteractorTypeDelegate // 2 requirements
- {
 	// method
 	// method
  }
@@ -1852,6 +2076,10 @@
  {
 	// method
  }
+ protocol NewsUI2.AudioFeedTitleViewLayoutAttributesFactoryType // 1 requirements
+ {
+	// method
+ }
  protocol NewsUI2.MainDataManagerType // 3 requirements
  {
 	// getter
@@ -1864,14 +2092,42 @@
 	// method
 	// method
  }
+ protocol NewsUI2.SearchServiceType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.AudioActionSheetProviderType // 1 requirements
+ {
+	// method
+ }
  protocol NewsUI2.MagazineFeedPaywallViewRendererProviderType // 1 requirements
  {
 	// method
  }
- protocol NewsUI2.FeedGroupScorerType // 3 requirements
+ protocol NewsUI2.NowPlayingTrackerType // 2 requirements
  {
-	// class associated conformance access function
-	// class associated type access function
+	// method
+	// method
+ }
+ protocol NewsUI2.SearchMoreArticlesInteractorType // 8 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// method
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.SearchMoreArticlesInteractorTypeDelegate // 2 requirements
+ {
+	// method
+	// method
+ }
+ protocol NewsUI2.AudioFeedGroupEmitterFactoryType // 2 requirements
+ {
+	// class base protocol
 	// method
  }
  protocol NewsUI2.NotificationConfigurationType // 4 requirements
@@ -1881,21 +2137,6 @@
 	// getter
 	// method
  }
- protocol NewsUI2.TopVideosDataManagerType // 7 requirements
- {
-	// getter
-	// setter
-	// modify coroutine
-	// getter
-	// setter
-	// modify coroutine
-	// method
- }
- protocol NewsUI2.TopVideosDataManagerDelegate // 2 requirements
- {
-	// method
-	// method
- }
  protocol NewsUI2.HeadlineServiceType // 4 requirements
  {
 	// method
@@ -1903,43 +2144,7 @@
 	// method
 	// method
  }
- protocol NewsUI2.TopVideosInteractorType // 12 requirements
- {
-	// getter
-	// setter
-	// modify coroutine
-	// getter
-	// setter
-	// modify coroutine
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
- }
- protocol NewsUI2.TopVideosInteractorTypeDelegate // 2 requirements
- {
-	// method
-	// method
- }
- protocol NewsUI2.SearchMoreModifierFactoryType // 9 requirements
- {
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
-	// method
-	// method
-	// method
-	// method
-	// method
- }
  protocol NewsUI2.FollowingModuleType // 1 requirements
- {
-	// method
- }
- protocol NewsUI2.SpecialEventsTitleViewLayoutAttributesFactoryType // 1 requirements
  {
 	// method
  }
@@ -1950,21 +2155,10 @@
 	// method
 	// method
  }
- protocol NewsUI2.HistoryInteractorType // 10 requirements
+ protocol NewsUI2.SearchMoreArticlesStylerType // 4 requirements
  {
-	// getter
-	// setter
-	// modify coroutine
 	// method
 	// method
-	// method
-	// method
-	// method
-	// method
-	// method
- }
- protocol NewsUI2.HistoryInteractorTypeDelegate // 2 requirements
- {
 	// method
 	// method
  }
@@ -1972,15 +2166,11 @@
  {
 	// method
  }
- protocol NewsUI2.SpecialEventsDataManagerType // 5 requirements
+ protocol NewsUI2.AudioFeedSectionImageDecorationFactoryType // 1 requirements
  {
-	// getter
-	// setter
-	// modify coroutine
-	// method
 	// method
  }
- protocol NewsUI2.SpecialEventsDataManagerDelegate // 1 requirements
+ protocol NewsUI2.EmailSignupModuleType // 1 requirements
  {
 	// method
  }
@@ -2000,15 +2190,21 @@
 	// class associated type access function
 	// method
  }
- protocol NewsUI2.TopOfFeedStylerType // 1 requirements
+ protocol NewsUI2.SearchMoreTagsBlueprintModifierFactoryType // 7 requirements
  {
+	// class associated conformance access function
+	// class associated conformance access function
+	// class associated type access function
+	// class associated type access function
+	// method
+	// method
 	// method
  }
  protocol NewsUI2.MagazineFeedGroupTitleViewRendererType // 1 requirements
  {
 	// method
  }
- protocol NewsUI2.TodayInteractorType // 13 requirements
+ protocol NewsUI2.TodayInteractorType // 9 requirements
  {
 	// getter
 	// setter
@@ -2019,26 +2215,33 @@
 	// method
 	// method
 	// method
+ }
+ protocol NewsUI2.TodayInteractorTypeDelegate // 6 requirements
+ {
+	// method
+	// method
 	// method
 	// method
 	// method
 	// method
  }
- protocol NewsUI2.TodayInteractorTypeDelegate // 2 requirements
+ protocol NewsUI2.EmailSignupRouterType // 3 requirements
  {
 	// method
 	// method
- }
- protocol NewsUI2.EmailSignupRouterType // 1 requirements
- {
 	// method
  }
- protocol NewsUI2.MagazineFeedPoolSortableItem // 4 requirements
+ protocol NewsUI2.ShareLinkContextProviderType // 1 requirements
  {
 	// getter
-	// getter
-	// getter
-	// getter
+ }
+ protocol NewsUI2.AudioSuggestionHistoryProviderType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.AudioSuggestionsServiceType // 1 requirements
+ {
+	// method
  }
  protocol NewsUI2.TitleViewStylerType // 6 requirements
  {
@@ -2049,28 +2252,21 @@
 	// method
 	// method
  }
- protocol NewsUI2.MoreVideosEventHandlerType // 15 requirements
+ protocol NewsUI2.SearchMoreArticlesBlueprintViewCellProviderDelegate // 1 requirements
  {
-	// getter
-	// setter
-	// modify coroutine
-	// getter
-	// setter
-	// modify coroutine
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
 	// method
  }
- protocol NewsUI2.MoreVideosEventHandlerTypeDelegate // 0 requirements
+ protocol NewsUI2.AudioSuggestionsStoreType // 3 requirements
  {
+	// getter
+	// method
+	// method
  }
  protocol NewsUI2.MoreActionsSheetActivityViewControllerProviderType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.SearchDataManagerType // 1 requirements
  {
 	// method
  }
@@ -2083,22 +2279,70 @@
  {
 	// method
  }
- protocol NewsUI2.HistoryModifierFactoryType // 8 requirements
- {
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
-	// method
-	// method
-	// method
-	// method
- }
  protocol NewsUI2.MagazineFeedPaywallModuleType // 1 requirements
  {
 	// method
  }
- protocol NewsUI2.SpecialEventsInteractorType // 14 requirements
+ protocol NewsUI2.NewsWeatherServiceType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.SearchMoreTagsEventHandlerType // 15 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.SearchMoreTagsEventHandlerTypeDelegate // 0 requirements
+ {
+ }
+ protocol NewsUI2.AudioFeedPlacardStylerType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.AudioDataManagerType // 11 requirements
+ {
+	// getter
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// getter
+	// getter
+	// getter
+	// getter
+ }
+ protocol NewsUI2.MagazineFeedPersonalizationServiceType // 4 requirements
+ {
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.HistoryFeedStylerType // 2 requirements
+ {
+	// method
+	// method
+ }
+ protocol NewsUI2.FollowingNotificationsSectionFooterViewRendererType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.SavedFeedEventHandlerType // 14 requirements
  {
 	// getter
 	// setter
@@ -2115,27 +2359,19 @@
 	// method
 	// method
  }
- protocol NewsUI2.SpecialEventsInteractorTypeDelegate // 4 requirements
+ protocol NewsUI2.SavedFeedEventHandlerTypeDelegate // 5 requirements
  {
+	// method
 	// method
 	// method
 	// method
 	// method
  }
- protocol NewsUI2.TagViewRendererType // 1 requirements
+ protocol NewsUI2.AudioListeningProgressProviderType // 4 requirements
  {
+	// class associated conformance access function
+	// class associated type access function
 	// method
- }
- protocol NewsUI2.MagazineFeedPersonalizationServiceType // 4 requirements
- {
-	// method
-	// method
-	// method
-	// method
- }
- protocol NewsUI2.SearchMoreServiceType // 2 requirements
- {
-	// getter
 	// method
  }
  protocol NewsUI2.FollowingBadgingCoordinatorType // 5 requirements
@@ -2150,17 +2386,12 @@
  {
 	// method
  }
- protocol NewsUI2.MoreVideosBlueprintModifierFactoryType // 6 requirements
+ protocol NewsUI2.NotificationServiceType // 11 requirements
  {
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
+	// getter
 	// method
 	// method
- }
- protocol NewsUI2.NotificationServiceType // 7 requirements
- {
+	// method
 	// method
 	// method
 	// method
@@ -2169,16 +2400,51 @@
 	// method
 	// method
  }
- protocol NewsUI2.TagViewStylerType // 5 requirements
+ protocol NewsUI2.AudioFeedStylerType // 4 requirements
  {
 	// getter
 	// getter
-	// method
 	// method
 	// method
  }
  protocol NewsUI2.LegacyArticleProxyModuleType // 1 requirements
  {
+	// method
+ }
+ protocol NewsUI2.AudioFeedEventHandlerType // 24 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.AudioFeedEventHandlerTypeDelegate // 6 requirements
+ {
+	// method
+	// method
+	// method
+	// method
+	// method
 	// method
  }
  protocol NewsUI2.TodayFeedServiceType // 1 requirements
@@ -2232,71 +2498,81 @@
  {
 	// method
  }
+ protocol NewsUI2.FollowingDislikedTrackerType // 4 requirements
+ {
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.SavedFeedModuleType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.SearchRouterType // 0 requirements
+ {
+ }
  protocol NewsUI2.OfflineProviding // 2 requirements
  {
-	// getter
+	// class base protocol
 	// method
  }
- protocol NewsUI2.FeatureAvailabilityType // 3 requirements
- {
-	// getter
-	// getter
-	// getter
- }
- protocol NewsUI2.SearchMoreEventHandlerType // 14 requirements
+ protocol NewsUI2.SearchMoreTagsDataManagerType // 6 requirements
  {
 	// getter
 	// setter
 	// modify coroutine
-	// getter
-	// setter
-	// modify coroutine
-	// method
-	// method
-	// method
-	// method
-	// method
 	// method
 	// method
 	// method
  }
- protocol NewsUI2.SearchMoreEventHandlerTypeDelegate // 2 requirements
+ protocol NewsUI2.SearchMoreTagsDataManagerTypeDelegate // 1 requirements
  {
-	// method
 	// method
  }
  protocol NewsUI2.MyMagazinesSectionHeaderSeparatorViewStylerType // 1 requirements
  {
 	// method
  }
- protocol NewsUI2.MagazineFeedGroupEmitterFactoryType // 2 requirements
+ protocol NewsUI2.MagazineFeedGroupEmitterFactoryType // 1 requirements
  {
-	// method
 	// method
  }
- protocol NewsUI2.SavedBlueprintModifierFactoryType // 7 requirements
+ protocol NewsUI2.SearchTrackerType // 6 requirements
  {
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
+	// method
+	// method
+	// method
 	// method
 	// method
 	// method
  }
- protocol NewsUI2.FeedGroupEmitterFactoryType // 8 requirements
+ protocol NewsUI2.AudioPlaybackTrackerType // 7 requirements
  {
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
-	// class associated type access function
 	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.AudioPlaybackContextType // 1 requirements
+ {
 	// method
  }
  protocol NewsUI2.MagazineCategoryViewRendererType // 1 requirements
  {
+	// method
+ }
+ protocol NewsUI2.SavedFeedBlueprintModifierFactoryType // 7 requirements
+ {
+	// class associated conformance access function
+	// class associated conformance access function
+	// class associated type access function
+	// class associated type access function
+	// method
+	// method
 	// method
  }
  protocol NewsUI2.MainEventHandlerType // 1 requirements
@@ -2323,8 +2599,10 @@
 	// method
 	// method
  }
- protocol NewsUI2.TodayStylerType // 2 requirements
+ protocol NewsUI2.TodayStylerType // 4 requirements
  {
+	// getter
+	// method
 	// method
 	// method
  }
@@ -2332,9 +2610,35 @@
  {
 	// method
  }
- protocol NewsUI2.OfflineIssueManagerType // 6 requirements
+ protocol NewsUI2.AudioRecentlyPlayedStoreType // 3 requirements
+ {
+	// getter
+	// method
+	// method
+ }
+ protocol NewsUI2.HistoryFeedDataManagerType // 7 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.HistoryFeedDataManagerTypeDelegate // 2 requirements
+ {
+	// method
+	// method
+ }
+ protocol NewsUI2.TagFeedModuleType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.OfflineIssueManagerType // 7 requirements
  {
 	// class base protocol
+	// method
 	// method
 	// method
 	// method
@@ -2354,26 +2658,7 @@
 	// method
 	// method
  }
- protocol NewsUI2.MagazineFeedSectionFactoryType // 1 requirements
- {
-	// method
- }
- protocol NewsUI2.MoreVideosInteractorType // 12 requirements
- {
-	// getter
-	// setter
-	// modify coroutine
-	// getter
-	// setter
-	// modify coroutine
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
- }
- protocol NewsUI2.MoreVideosInteractorTypeDelegate // 2 requirements
+ protocol NewsUI2.MagazineFeedSectionFactoryType // 2 requirements
  {
 	// method
 	// method
@@ -2386,15 +2671,14 @@
  {
 	// method
  }
- protocol NewsUI2.FeedGroupKnobsRulesType // 3 requirements
- {
-	// class associated conformance access function
-	// class associated type access function
-	// method
- }
  protocol NewsUI2.MagazineFeedBlueprintViewCellProviderDelegate // 3 requirements
  {
 	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.SearchMoreArticlesRouterType // 2 requirements
+ {
 	// method
 	// method
  }
@@ -2419,10 +2703,12 @@
 	// class associated type access function
 	// method
  }
- protocol NewsUI2.TopOfFeedDataManagerType // 0 requirements
+ protocol NewsUI2.AudioStateFactoryType // 2 requirements
  {
+	// method
+	// method
  }
- protocol NewsUI2.TodayEventHandlerType // 13 requirements
+ protocol NewsUI2.TodayEventHandlerType // 17 requirements
  {
 	// getter
 	// setter
@@ -2437,51 +2723,62 @@
 	// method
 	// method
 	// method
+	// method
+	// method
+	// method
+	// method
  }
- protocol NewsUI2.TodayEventHandlerTypeDelegate // 1 requirements
+ protocol NewsUI2.TodayEventHandlerTypeDelegate // 5 requirements
  {
+	// method
+	// method
+	// method
+	// method
 	// method
  }
  protocol NewsUI2.MagazineFeedPaywallViewRendererType // 1 requirements
  {
 	// method
  }
- protocol NewsUI2.TodayFeedGroupConfigType // 6 requirements
+ protocol NewsUI2.HistoryFeedBlueprintModifierFactoryType // 8 requirements
  {
-	// class base protocol
-	// class base protocol
-	// getter
-	// getter
-	// getter
-	// getter
+	// class associated conformance access function
+	// class associated conformance access function
+	// class associated type access function
+	// class associated type access function
+	// method
+	// method
+	// method
+	// method
  }
  protocol NewsUI2.MagazineFeedPaywallViewLayoutAttributesFactoryProviderType // 1 requirements
  {
 	// method
  }
- protocol NewsUI2.SpecialEventsRouterType // 5 requirements
+ protocol NewsUI2.AudioFeedTrackerType // 13 requirements
  {
 	// method
 	// method
 	// method
 	// method
 	// method
- }
- protocol NewsUI2.SpecialEventsAdjustmentInsetsFactoryType // 1 requirements
- {
 	// method
- }
- protocol NewsUI2.SpecialEventsEmbedViewRendererType // 1 requirements
- {
 	// method
- }
- protocol NewsUI2.SpecialEventsEmbedViewStylerType // 0 requirements
- {
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
  }
  protocol NewsUI2.ChannelIssuesRouterType // 3 requirements
  {
 	// method
 	// method
+	// method
+ }
+ protocol NewsUI2.AudioPlaybackOptionsAlertPresenterType // 1 requirements
+ {
 	// method
  }
  protocol NewsUI2.MagazineGridModelLoaderTypeDelegate // 1 requirements
@@ -2497,8 +2794,33 @@
 	// getter
 	// method
  }
+ protocol NewsUI2.TagFeedServiceConfigFetcherType // 2 requirements
+ {
+	// getter
+	// method
+ }
  protocol NewsUI2.MagazineGridModuleType // 2 requirements
  {
+	// method
+	// method
+ }
+ protocol NewsUI2.Dockable // 6 requirements
+ {
+	// getter
+	// getter
+	// setter
+	// modify coroutine
+	// method
+	// method
+ }
+ protocol NewsUI2.SearchMoreTagsTrackerType // 8 requirements
+ {
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
 	// method
 	// method
  }
@@ -2520,24 +2842,34 @@
  {
 	// method
  }
- protocol NewsUI2.HistoryRouterType // 4 requirements
+ protocol NewsUI2.AnalyticsChannelDataFactoryType // 2 requirements
  {
 	// method
 	// method
-	// method
-	// method
  }
- protocol NewsUI2.TopOfFeedEventHandlerType // 3 requirements
+ protocol NewsUI2.TagFeedEventHandlerType // 13 requirements
  {
 	// getter
 	// setter
 	// modify coroutine
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
  }
- protocol NewsUI2.TopOfFeedEventHandlerTypeDelegate // 0 requirements
+ protocol NewsUI2.TagFeedEventHandlerTypeDelegate // 1 requirements
  {
+	// method
  }
- protocol NewsUI2.AnalyticsChannelDataFactoryType // 2 requirements
+ protocol NewsUI2.MastheadableDelegate // 3 requirements
  {
+	// method
 	// method
 	// method
  }
@@ -2577,29 +2909,22 @@
  {
 	// method
  }
- protocol NewsUI2.TopVideosEventHandlerType // 16 requirements
+ protocol NewsUI2.TagFeedInteractorType // 7 requirements
  {
 	// getter
 	// setter
 	// modify coroutine
-	// getter
-	// setter
-	// modify coroutine
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
 	// method
 	// method
 	// method
 	// method
  }
- protocol NewsUI2.TopVideosEventHandlerTypeDelegate // 0 requirements
+ protocol NewsUI2.TagFeedInteractorTypeDelegate // 2 requirements
  {
+	// method
+	// method
  }
- protocol NewsUI2.Theming // 20 requirements
+ protocol NewsUI2.Theming // 24 requirements
  {
 	// class base protocol
 	// getter
@@ -2613,6 +2938,9 @@
 	// getter
 	// getter
 	// getter
+	// getter
+	// getter
+	// getter
 	// method
 	// getter
 	// getter
@@ -2621,8 +2949,9 @@
 	// getter
 	// getter
 	// getter
+	// getter
  }
- protocol NewsUI2.EmailSignupInteractorType // 6 requirements
+ protocol NewsUI2.EmailSignupInteractorType // 8 requirements
  {
 	// getter
 	// setter
@@ -2630,9 +2959,13 @@
 	// method
 	// method
 	// method
+	// method
+	// method
  }
- protocol NewsUI2.EmailSignupInteractorTypeDelegate // 1 requirements
+ protocol NewsUI2.EmailSignupInteractorTypeDelegate // 3 requirements
  {
+	// method
+	// method
 	// method
  }
  protocol NewsUI2.MagazineFeedPaywallImageProviderType // 2 requirements
@@ -2640,10 +2973,29 @@
 	// method
 	// method
  }
- protocol NewsUI2.SearchMoreDataManagerFactoryType // 2 requirements
+ protocol NewsUI2.AudioFeedPlacardRendererType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.WebEmbedInteractorType // 3 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+ }
+ protocol NewsUI2.WebEmbedInteractorTypeDelegate // 0 requirements
+ {
+ }
+ protocol NewsUI2.SearchMoreTagsRouterType // 2 requirements
  {
 	// method
 	// method
+ }
+ protocol NewsUI2.AudioPlayable // 3 requirements
+ {
+	// class base protocol
+	// class base protocol
+	// getter
  }
  protocol NewsUI2.MagazineFeedDataManagerType // 16 requirements
  {
@@ -2664,43 +3016,17 @@
 	// method
 	// method
  }
- protocol NewsUI2.MagazineFeedDataManagerTypeDelegate // 3 requirements
+ protocol NewsUI2.MagazineFeedDataManagerTypeDelegate // 4 requirements
  {
+	// method
 	// method
 	// method
 	// method
  }
- protocol NewsUI2.FeedCursorType // 20 requirements
- {
-	// class base protocol
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
-	// getter
-	// getter
-	// getter
-	// getter
-	// getter
-	// getter
-	// getter
-	// getter
-	// getter
-	// getter
-	// getter
-	// getter
-	// getter
-	// getter
-	// method
-	// method
- }
- protocol NewsUI2.TopVideosStylerType // 3 requirements
+ protocol NewsUI2.SearchMoreArticlesTrackerType // 6 requirements
  {
 	// method
 	// method
-	// method
- }
- protocol NewsUI2.SearchMoreStylerType // 4 requirements
- {
 	// method
 	// method
 	// method
@@ -2727,29 +3053,7 @@
 	// method
 	// method
  }
- protocol NewsUI2.HistoryDataManagerType // 6 requirements
- {
-	// getter
-	// setter
-	// modify coroutine
-	// method
-	// method
-	// method
- }
- protocol NewsUI2.HistoryDataManagerDelegate // 1 requirements
- {
-	// method
- }
- protocol NewsUI2.NewspaperGroupPersonalizerType // 2 requirements
- {
-	// method
-	// method
- }
- protocol NewsUI2.SpecialEventsEmbedViewLayoutAttributesFactoryType // 1 requirements
- {
-	// method
- }
- protocol NewsUI2.FollowingNotificationsInteractorType // 9 requirements
+ protocol NewsUI2.SearchMoreArticlesEventHandlerType // 14 requirements
  {
 	// getter
 	// setter
@@ -2760,9 +3064,56 @@
 	// method
 	// method
 	// method
+	// method
+	// method
+	// method
+	// method
+	// method
  }
- protocol NewsUI2.FollowingNotificationsInteractorTypeDelegate // 2 requirements
+ protocol NewsUI2.SearchMoreArticlesEventHandlerTypeDelegate // 1 requirements
  {
+	// method
+ }
+ protocol NewsUI2.SavedFeedDataManagerType // 6 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.SavedFeedDataManagerTypeDelegate // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.AudioFeedPlacardLayoutAttributesFactoryType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsUI2.ChannelSectionsGroupPersonalizerType // 2 requirements
+ {
+	// method
+	// method
+ }
+ protocol NewsUI2.FollowingNotificationsInteractorType // 8 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// method
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsUI2.FollowingNotificationsInteractorTypeDelegate // 7 requirements
+ {
+	// method
+	// method
+	// method
+	// method
+	// method
 	// method
 	// method
  }
@@ -2830,7 +3181,7 @@
 
  class NewsUI2.FollowingNotificationsAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xe630  @objc FollowingNotificationsAssembly.init <stripped>
+	0xf3d0  @objc FollowingNotificationsAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -2841,26 +3192,52 @@
 	let contentViewController : UIViewController // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xea60  @objc SimpleContainerViewController.initWithCoder: <stripped>
-	0xeab0  @objc SimpleContainerViewController.childViewControllerForStatusBarStyle <stripped>
-	0xee50  @objc SimpleContainerViewController.childViewControllerForStatusBarHidden <stripped>
-	0xebf0  @objc SimpleContainerViewController.initWithNibName:bundle: <stripped>
-	0xeb30  @objc SimpleContainerViewController..cxx_destruct <stripped>
+	0xf850  @objc SimpleContainerViewController.initWithCoder: <stripped>
+	0xf8a0  @objc SimpleContainerViewController.childViewControllerForStatusBarStyle <stripped>
+	0xfc40  @objc SimpleContainerViewController.childViewControllerForStatusBarHidden <stripped>
+	0xf9e0  @objc SimpleContainerViewController.initWithNibName:bundle: <stripped>
+	0xf920  @objc SimpleContainerViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xe960  class func SimpleContainerViewController.__allocating_init(contentViewController:) // init 
+	0xf750  class func SimpleContainerViewController.__allocating_init(contentViewController:) // init 
  }
 
- class NewsUI2.FeedCursorFactory {
- enum NewsUI2.FeedCursorFactoryErrors {
+ struct NewsUI2.TagFeedContentConfig {
 
 	// Properties
-	case noNewConfig  
+	let feedConfig : TagFeedConfig
+	let knobsConfig : TagFeedKnobsConfig
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case feedConfig  
+	case knobsConfig  
  }
 
  class NewsUI2.RendererAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x22be0  @objc RendererAssembly.init <stripped>
+	0x14860  @objc RendererAssembly.init <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioFeedSectionFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioFeedSectionFactoryType {
+
+	// Properties
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x10 (0x8)
+	let coreConfigurationManager : FCCoreConfigurationManager // +0x18 (0x8)
+	let paidAccessChecker : FCPaidAccessCheckerType // +0x20 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.SearchMoreTagsBlueprintViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var delegate : SearchMoreTagsBlueprintViewCellProviderDelegate // +0x10 (0x10)
+	let tagViewRenderer : TagViewRendererType // +0x20 (0x28)
 
 	// Swift methods
  }
@@ -2869,12 +3246,24 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var delegate : µ˜ // +0x10 (0x10)
+	var delegate : UX	 // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x20 (0x8)
+	let tracker : 9P	 // +0x20 (0x8)
 
 	// Swift methods
  }
+
+ struct NewsUI2.AudioFeedServiceConfig {
+
+	// Properties
+	let rules : AudioFeedRules
+	let contentConfig : AudioConfig
+	let paidBundleConfig : FCPaidBundleConfiguration
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let cachePolicy : ©ß	
+ }
+
+ struct NewsUI2.AudioFeedRules { }
 
  class NewsUI2.ForYouTitleViewPropertiesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
@@ -2885,11 +3274,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var controller : weak UIViewController? // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x18 (0x28)
+	let resolver : È_	 // +0x18 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x40 (0x8)
+	let tracker : 9P	 // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x48 (0x8)
+	let navigator : =e	 // +0x48 (0x8)
 
 	// Swift methods
  }
@@ -2910,23 +3299,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let imageProvider : MagazineFeedPaywallImageProviderType // +0x18 (0x28)
 	let layoutAttributesProvider : MagazineFeedPaywallViewLayoutAttributesFactoryProviderType // +0x40 (0x28)
 	let imageCache : TSImageCacheType // +0x68 (0x8)
-	let magazineFeedPaywallConfig : MagazineFeedPaywallConfig // +0x0 (0x0)
+	let feedPaywallConfig : FeedPaywallConfig // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintLayoutOptionsProvider : √ // +0x0 (0x28)
-
-	// Swift methods
- }
-
- class NewsUI2.SpecialEventsBlueprintLayoutBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let headlineLayoutAttributesProvider : HeadlineViewLayoutAttributesProviderType // +0x10 (0x28)
-	let feedLayoutOptionsFactory : FeedLayoutOptionsFactory // +0x38 (0x8)
-	let adjustmentInsetsFactory : SpecialEventsAdjustmentInsetsFactoryType // +0x40 (0x28)
-	let embedLayoutAttributesFactory : SpecialEventsEmbedViewLayoutAttributesFactoryType // +0x68 (0x28)
-	let headlineViewModelFactory : HeadlineViewModelFactoryType // +0x90 (0x28)
-	let layoutTypeProvider : SpecialEventsLayoutTypeProviderType // +0xb8 (0x28)
-	let titleViewLayoutAttributesFactory : SpecialEventsTitleViewLayoutAttributesFactoryType // +0xe0 (0x28)
+	let blueprintLayoutOptionsProvider : SÅ	 // +0x0 (0x28)
 
 	// Swift methods
  }
@@ -2937,131 +3312,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutOptions : -	
+	let layoutOptions : ón	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let top : A
+	let top : õ_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : A
+	let height : õ_	
  }
 
- class NewsUI2.TopOfFeedHeadlineContext : NSObject /usr/lib/libobjc.A.dylib {
+ class NewsUI2.AudioDailyBriefingStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioDailyBriefingStoreType {
 
 	// Properties
-	let position : Int // +0x8 (0x8)
-	let count : Int // +0x10 (0x8)
-	let moduleExposureID : String? // +0x18 (0x10)
-	let specialEventsOperationResultType : FCSpecialEventsOperationResultType // +0x28 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x31030  @objc TopOfFeedHeadlineContext.position <stripped>
-	0x31050  @objc TopOfFeedHeadlineContext.count <stripped>
-	0x31070  @objc TopOfFeedHeadlineContext.moduleExposureID <stripped>
-	0x310d0  @objc TopOfFeedHeadlineContext.specialEventsOperationResultType <stripped>
-	0x31140  @objc TopOfFeedHeadlineContext.init <stripped>
-	0x31120  @objc TopOfFeedHeadlineContext..cxx_destruct <stripped>
-
-	// Swift methods
- }
-
- class NewsUI2.BridgedNewsActivity : NSObject /usr/lib/libobjc.A.dylib {
-
-	// Properties
-	let newsActivity : NewsActivity // +0xfeedfacf (0x0)
-
-	// ObjC -> Swift bridged methods
-	0x311a0  @objc BridgedNewsActivity.enumValue <stripped>
-	0x31a00  @objc BridgedNewsActivity.headlineData <stripped>
-	0x31c20  @objc BridgedNewsActivity.feedData <stripped>
-	0x31e60  @objc BridgedNewsActivity.videoData <stripped>
-	0x32000  @objc BridgedNewsActivity.adPreviewIdentifier <stripped>
-	0x320b0  @objc BridgedNewsActivity.init <stripped>
-	0x32060  @objc BridgedNewsActivity..cxx_destruct <stripped>
-
-	// Swift methods
- }
-
- class NewsUI2.BridgedNewsActivityHeadlineData : NSObject /usr/lib/libobjc.A.dylib {
-
-	// Properties
-	let articleID : String
-	let articleContext : ArticleContext
-	let articlePresentationStyle : ArticlePresentationStyle
-	let showShareSheet : Bool
-	let forceArticleUpdate : Bool
-	let headline : FCHeadlineProviding?
-
-	// ObjC -> Swift bridged methods
-	0x320e0  @objc BridgedNewsActivityHeadlineData.articleID <stripped>
-	0x32160  @objc BridgedNewsActivityHeadlineData.articleContext <stripped>
-	0x321c0  @objc BridgedNewsActivityHeadlineData.articlePresentationStyle <stripped>
-	0x32200  @objc BridgedNewsActivityHeadlineData.showShareSheet <stripped>
-	0x32230  @objc BridgedNewsActivityHeadlineData.forceArticleUpdate <stripped>
-	0x32260  @objc BridgedNewsActivityHeadlineData.headline <stripped>
-	0x322e0  @objc BridgedNewsActivityHeadlineData.presentationReason <stripped>
-	0x32390  @objc BridgedNewsActivityHeadlineData.init <stripped>
-	0x32310  @objc BridgedNewsActivityHeadlineData..cxx_destruct <stripped>
-
-	// Swift methods
- }
-
- class NewsUI2.BridgedNewsActivityFeedData : NSObject /usr/lib/libobjc.A.dylib {
-
-	// Properties
-	let tag : FCTagProviding
-	let feedViewContext : FeedViewContext
-
-	// ObjC -> Swift bridged methods
-	0x323c0  @objc BridgedNewsActivityFeedData.tag <stripped>
-	0x32410  @objc BridgedNewsActivityFeedData.feedViewContext <stripped>
-	0x32500  @objc BridgedNewsActivityFeedData.init <stripped>
-	0x32480  @objc BridgedNewsActivityFeedData..cxx_destruct <stripped>
-
-	// Swift methods
- }
-
- class NewsUI2.BridgedNewsActivityVideoData : NSObject /usr/lib/libobjc.A.dylib {
-
-	// Properties
-	let articleIDs : [String]?
-	let widgetPlaylist : NewsReferralItemWidgetVideoPlaylist
-	let analyticsReferral : AnalyticsReferral
-
-	// ObjC -> Swift bridged methods
-	0x32530  @objc BridgedNewsActivityVideoData.articleIDs <stripped>
-	0x325a0  @objc BridgedNewsActivityVideoData.widgetPlaylist <stripped>
-	0x32600  @objc BridgedNewsActivityVideoData.analyticsReferral <stripped>
-	0x326e0  @objc BridgedNewsActivityVideoData.init <stripped>
-	0x32660  @objc BridgedNewsActivityVideoData..cxx_destruct <stripped>
-
-	// Swift methods
- }
-
- enum NewsUI2.BridgedNewsActivityEnum { }
-
- class NewsUI2.BridgedNewsActivityFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let tagService : TagServiceType
-	let headlineService : HeadlineServiceType
-	let headlineModelFactory : HeadlineModelFactoryType
-
-	// ObjC -> Swift bridged methods
-	0x327f0  @objc BridgedNewsActivityFactory.forYouFeedWithFeedViewContext:articleViewContext:analyticsReferral: <stripped>
-	0x32880  @objc BridgedNewsActivityFactory.feedWithTag:feedViewContext: <stripped>
-	0x32b90  @objc BridgedNewsActivityFactory.feedWithTagIdentifier:feedViewContext:completion: <stripped>
-	0x32d80  @objc BridgedNewsActivityFactory.headlineWithHeadlineProviding:articleContext:articlePresentationStyle:showShareSheet:forceArticleUpdate: <stripped>
-	0x32ed0  @objc BridgedNewsActivityFactory.unrealizedHeadlineWithArticleID:articleContext:articlePresentationStyle:showShareSheet:forceArticleUpdate: <stripped>
-	0x32fc0  @objc BridgedNewsActivityFactory.editorialArticleWithIdentifier:articleViewContext: <stripped>
-	0x33090  @objc BridgedNewsActivityFactory.saved <stripped>
-	0x330a0  @objc BridgedNewsActivityFactory.history <stripped>
-	0x330b0  @objc BridgedNewsActivityFactory.videoPlayerWithWidgetPlaylist:analyticsReferral: <stripped>
-	0x33180  @objc BridgedNewsActivityFactory.videoPlayerWithArticleIDs:analyticsReferral: <stripped>
-	0x33260  @objc BridgedNewsActivityFactory.pickYourFavorites <stripped>
-	0x33270  @objc BridgedNewsActivityFactory.previewWithHeadline: <stripped>
-	0x33320  @objc BridgedNewsActivityFactory.notifications <stripped>
-	0x33330  @objc BridgedNewsActivityFactory.adPreviewWithIdentifier: <stripped>
-	0x333f0  @objc BridgedNewsActivityFactory.manageSubscriptions <stripped>
-	0x33490  @objc BridgedNewsActivityFactory.webLinkWithURL: <stripped>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineService : ±≠	 // +0x10 (0x28)
+	let subscriptionController : FCSubscriptionController // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineCache : ”`	 // +0x40 (0x8)
 
 	// Swift methods
  }
@@ -3071,30 +3336,49 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var delegate : MagazineGridBlueprintViewCellProviderDelegate // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedItemRenderer : 7 // +0x20 (0x10)
+	let feedItemRenderer : ≠§	 // +0x20 (0x10)
 	let offlineIssueManager : OfflineIssueManagerType // +0x30 (0x10)
 
 	// Swift methods
  }
 
+ class NewsUI2.OfflineIssueBackgroundDownloader : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let offlineIssueManager : OfflineIssueManagerType // +0x10 (0x10)
+
+	// Swift methods
+ }
+
+ class NewsUI2.HistoryFeedInteractor {
  class NewsUI2.BridgedNewsActivityData : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 	let activity : BridgedNewsActivity2 // +0x8 (0x8)
 	let identifier : String // +0x10 (0x10)
 	let object : Swift.AnyObject? // +0x20 (0x8)
+	let traits : [NSNumber] // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x34730  @objc BridgedNewsActivityData.activity <stripped>
-	0x34770  @objc BridgedNewsActivityData.identifier <stripped>
-	0x347f0  @objc BridgedNewsActivityData.object <stripped>
-	0x34910  @objc BridgedNewsActivityData.initWithActivity:identifier: <stripped>
-	0x34a90  @objc BridgedNewsActivityData.initWithActivity:identifier:object: <stripped>
-	0x34bd0  @objc BridgedNewsActivityData.init <stripped>
-	0x34b50  @objc BridgedNewsActivityData..cxx_destruct <stripped>
+	0x2f5d0  @objc BridgedNewsActivityData.activity <stripped>
+	0x2f610  @objc BridgedNewsActivityData.identifier <stripped>
+	0x2f690  @objc BridgedNewsActivityData.object <stripped>
+	0x2f6e0  @objc BridgedNewsActivityData.traits <stripped>
+	0x2f8e0  @objc BridgedNewsActivityData.initWithActivity:identifier: <stripped>
+	0x2fad0  @objc BridgedNewsActivityData.initWithActivity:identifier:object: <stripped>
+	0x2fc90  @objc BridgedNewsActivityData.initWithActivity:identifier:object:traits: <stripped>
+	0x2fe90  @objc BridgedNewsActivityData.init <stripped>
+	0x2fe00  @objc BridgedNewsActivityData..cxx_destruct <stripped>
 
 	// Swift methods
-	0x349a0  class func BridgedNewsActivityData.__allocating_init(activity:identifier:object:) // init 
+	0x2f9b0  class func BridgedNewsActivityData.__allocating_init(activity:identifier:object:) // init 
+	0x2fb70  class func BridgedNewsActivityData.__allocating_init(activity:identifier:object:traits:) // init 
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case unknownConversion  
  }
 
  enum NewsUI2.TodayFeedGroup {
@@ -3102,6 +3386,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case curated : CuratedGroup
 	case newspaper : NewspaperGroup
+	case localNews : LocalNewsGroup
+	case trending : TrendingTodayFeedGroup
+	case forYou : ForYouTodayFeedGroup
+	case audioDailyBriefing : AudioDailyBriefingTodayFeedGroup
+	case topic : TopicTodayFeedGroup
+	case magazine : MagazineFeedGroup
  }
 
  class NewsUI2.DislikeButtonRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, DislikeButtonRendererType {
@@ -3112,11 +3402,58 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ struct NewsUI2.AudioFeedState {
+
+	// Properties
+	let groups : AudioFeedGroup // +0x0
+ }
+
  struct NewsUI2.Notifications { }
 
  class NewsUI2.VideoPlayerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x36100  @objc VideoPlayerAssembly.init <stripped>
+	0x54750  @objc VideoPlayerAssembly.init <stripped>
+ }
+
+ class NewsUI2.NewsWebArchiveURLSchemeHandlerFactory : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let webArchiveService : Õ®	 // +0x8 (0x28)
+
+	// ObjC -> Swift bridged methods
+	0x54960  @objc NewsWebArchiveURLSchemeHandlerFactory.createURLSchemeHandlerWithTask: <stripped>
+	0x54a70  @objc NewsWebArchiveURLSchemeHandlerFactory.init <stripped>
+	0x54a50  @objc NewsWebArchiveURLSchemeHandlerFactory..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.AdContext : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	var qToken : String? // +0x8 (0x10)
+	var previewID : String? // +0x18 (0x10)
+	var previewSessionID : String? // +0x28 (0x10)
+	var maximumAdRequestsForCurrentAdPreviewID : Int? // +0x38 (0x9)
+
+	// ObjC -> Swift bridged methods
+	0x54ff0  @objc AdContext.init <stripped>
+	0x54eb0  @objc AdContext..cxx_destruct <stripped>
+
+	// Swift methods
+	0x54b30  func AdContext.qToken.getter // getter 
+	0x54b70  func AdContext.qToken.setter // setter 
+	0x54b90  func AdContext.qToken.modify // modifyCoroutine 
+	0x54bd0  func AdContext.previewID.getter // getter 
+	0x54bf0  func AdContext.previewID.setter // setter 
+	0x54c10  func AdContext.previewID.modify // modifyCoroutine 
+	0x54c50  func AdContext.previewSessionID.getter // getter 
+	0x54cc0  func AdContext.previewSessionID.setter // setter 
+	0x54d30  func AdContext.previewSessionID.modify // modifyCoroutine 
+	0x54d70  func AdContext.maximumAdRequestsForCurrentAdPreviewID.getter // getter 
+	0x54db0  func AdContext.maximumAdRequestsForCurrentAdPreviewID.setter // setter 
+	0x54e00  func AdContext.maximumAdRequestsForCurrentAdPreviewID.modify // modifyCoroutine 
  }
 
  class NewsUI2.FollowingDislikedModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingDislikedModifierFactoryType {
@@ -3135,9 +3472,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- class NewsUI2.SoftPaywallAssembly : NSObject /usr/lib/libobjc.A.dylib {
+ class NewsUI2.BundleSoftPaywallAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x37070  @objc SoftPaywallAssembly.init <stripped>
+	0x55e30  @objc BundleSoftPaywallAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -3157,7 +3494,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let tagService : TagServiceType // +0x10 (0x10)
 	let subscriptionService : SubscriptionServiceType // +0x20 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let alertPresenter : k // +0x30 (0x28)
+	let alertPresenter : ßi	 // +0x30 (0x28)
 
 	// Swift methods
  }
@@ -3180,6 +3517,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let tagModel : TagModel // +0x0
  }
 
+ struct NewsUI2.SearchMoreTagsResult {
+
+	// Properties
+	let models : SearchMoreTagsModel // +0x0
+	let location : SearchMoreTagsLocation // +0x8
+ }
+
+ enum NewsUI2.SearchMoreTagsLocation {
+
+	// Properties
+	case cursor : Int
+	case topOfFeed  
+	case endOfFeed  
+ }
+
+ class NewsUI2.SearchBlueprintViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var delegate : SearchBlueprintViewCellProviderDelegate // +0x10 (0x10)
+	let tagViewRenderer : TagViewRendererType // +0x20 (0x28)
+
+	// Swift methods
+ }
+
  class NewsUI2.ChannelIssuesInteractor {
  class NewsUI2.StubHeadlineDraggableStatusProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
@@ -3192,28 +3553,47 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let followingFooterViewLayoutAttributesFactory : FollowingFooterViewLayoutAttributesFactory // +0x38 (0x8)
 	let browseButtonViewLayoutAttributesFactory : FollowingBrowseButtonViewLayoutAttributesFactory // +0x40 (0x8)
 	let settingsButtonViewLayoutAttributesFactory : FollowingSettingsButtonViewLayoutAttributesFactory // +0x48 (0x8)
-	let followingRowViewLayoutAttributesFactory : FollowingRowViewLayoutAttributesFactory // +0x50 (0x8)
+	let tagViewLayoutAttributesFactory : TagViewLayoutAttributesFactoryType // +0x50 (0x28)
 
 	// Swift methods
  }
 
- class NewsUI2.SearchMoreAssembly : NSObject /usr/lib/libobjc.A.dylib {
-	// ObjC -> Swift bridged methods
-	0x44320  @objc SearchMoreAssembly.init <stripped>
+ enum NewsUI2.SearchMoreArticlesSectionDescriptor {
 
-	// Swift methods
+	// Properties
+	case gap  
+	case headline  
  }
 
  class NewsUI2.ArticleAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x45020  @objc ArticleAssembly.init <stripped>
+	0x61900  @objc ArticleAssembly.init <stripped>
+ }
+
+ struct NewsUI2.AudioSuggestionsFeedGroupConfig {
+
+	// Properties
+	let latestAudioArticleListID : String // +0x0
+	let featuredAudioArticleListID : String? // +0x10
+	let articlesOverrides : AudioConfigArticle // +0x20
+	let identifier : String // +0x28
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case latestAudioArticleListID  
+	case featuredAudioArticleListID  
+	case articlesOverrides  
+	case identifier  
  }
 
  struct NewsUI2.TrendingMagazineFeedGroupEmitter {
 
 	// Properties
-	let config : TrendingMagazineFeedGroupConfig // +0x0
-	let knobs : TrendingMagazineFeedGroupKnobs // +0x88
+	let config : TrendingMagazineFeedGroupConfig
+	let knobs : TrendingMagazineFeedGroupKnobs
+	let name : String
  }
 
  struct NewsUI2.OfflineIssuePruningRule {
@@ -3227,7 +3607,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintProvider : µˆ // +0x10 (0x8)
+	let blueprintProvider : o\	 // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -3240,12 +3620,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let dismissalTransitionFactory : (_:)
 
 	// ObjC -> Swift bridged methods
-	0x4d240  @objc BridgedNewsActivitySender.initWithViewController:presentationTransitionFactory:dismissalTransitionFactory: <stripped>
-	0x4d460  @objc BridgedNewsActivitySender.init <stripped>
-	0x4d3c0  @objc BridgedNewsActivitySender..cxx_destruct <stripped>
+	0x68aa0  @objc BridgedNewsActivitySender.initWithViewController:presentationTransitionFactory:dismissalTransitionFactory: <stripped>
+	0x68cc0  @objc BridgedNewsActivitySender.init <stripped>
+	0x68c20  @objc BridgedNewsActivitySender..cxx_destruct <stripped>
 
 	// Swift methods
-	0x4d140  class func BridgedNewsActivitySender.__allocating_init(viewController:presentationTransitionFactory:dismissalTransitionFactory:) // init 
+	0x689a0  class func BridgedNewsActivitySender.__allocating_init(viewController:presentationTransitionFactory:dismissalTransitionFactory:) // init 
  }
 
  class NewsUI2.Factory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3254,24 +3634,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let wrappedSender : BridgedNewsActivitySender
 
 	// Swift methods
- }
-
- class NewsUI2.SpecialEventsService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SpecialEventsServiceType {
-
-	// Properties
-	let appConfigurationManager : FCNewsAppConfigurationManager // +0x10 (0x8)
-	let context : FCCloudContext // +0x18 (0x8)
-	let headlineModelFactory : HeadlineModelFactoryType // +0x20 (0x28)
-	let assetManager : FCAssetManager // +0x48 (0x8)
-	let fontRegistration : NUFontRegistration // +0x50 (0x8)
-
-	// Swift methods
- }
-
- enum NewsUI2.SpecialEventsServiceError {
-
-	// Properties
-	case noData  
  }
 
  class NewsUI2.HeadlineViewFooterViewStyleFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3298,17 +3660,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case hidden  
  }
 
- class NewsUI2.SpecialEventsWebEmbedErrorView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
-
-	// Properties
-	let label : UILabel // +0x8 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x53540  @objc SpecialEventsWebEmbedErrorView.initWithFrame: <stripped>
-	0x53570  @objc SpecialEventsWebEmbedErrorView.initWithCoder: <stripped>
-	0x535f0  @objc SpecialEventsWebEmbedErrorView..cxx_destruct <stripped>
- }
-
  struct NewsUI2.Options { }
 
  struct NewsUI2.Masthead { }
@@ -3318,17 +3669,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  struct NewsUI2.Bridged { }
 
- class NewsUI2.FollowingRowViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let styler : FollowingRowViewStylerType // +0x10 (0x28)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cache : ˘È // +0x38 (0x8)
-
-	// Swift methods
- }
-
- struct NewsUI2.FollowingRowViewLayoutAttributes {
+ struct NewsUI2.TagViewLayoutAttributes {
 
 	// Properties
 	let titleFrame : CGRect // +0x0
@@ -3341,8 +3682,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let badgeViewFrame : CGRect // +0x78
 	let accessoryOptions : AccessoryOptions // +0x98
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : A // +0xa0
+	let height : õ_	 // +0xa0
 	let shouldLayoutForLargeText : Bool // +0xa8
+ }
+
+ class NewsUI2.AudioPlayableContentManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let delegate : MPPlayableContentDelegate // +0x10 (0x8)
+	let dataSource : MPPlayableContentDataSource // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let playableSlot : πL	 // +0x20 (0x8)
+
+	// Swift methods
+ }
+
+ struct NewsUI2.AudioDailyBriefingFeedGroupConfig {
+
+	// Properties
+	let articles : AudioConfigArticle
+	let ttl : Double?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let userLocalExpiry : ÛI	
+	let identifier : String
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case articles  
+	case ttl  
+	case userLocalExpiry  
+	case identifier  
  }
 
  struct NewsUI2.ArticleOfflineModel { }
@@ -3362,16 +3733,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let initialTags : FollowingTagModel // +0x38
 	let userInfo : FCUserInfo // +0x40
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x48
+	let featureAvailability : TSFeatureAvailabilityType // +0x50
+	let configurationManager : FCNewsAppConfigurationManager // +0x58
+	let newsletterManager : FCNewsletterManager // +0x60
+	let systemNotificationsEnabled : Bool // +0x68
+ }
+
+ class NewsUI2.CarPlayAvailabilityManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
  }
 
  struct NewsUI2.WebEmbedModel {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : ã÷
+	let url : ›6	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let actionURL : S⁄
-	let headline : FCHeadlineProviding?
+	let indexFileURLPromise : ùa	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let dataURLPromise : ùa	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let actionURL : ◊6	
+	let isLiveUpdating : Bool
+	let headlineModel : HeadlineModel
  }
 
  enum NewsUI2.WelcomeError { }
@@ -3381,19 +3765,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.FollowingPrewarmModifier {
 
 	// Properties
-	let featureAvailability : FeatureAvailabilityType // +0x0
-	let tagService : TagServiceType // +0x28
-	let editorialService : FollowingEditorialServiceType // +0x38
-	let appConfigurationManager : FCNewsAppConfigurationManager // +0x48
-	let followingBadgingCoordinator : FollowingBadgingCoordinatorType // +0x50
-	let magazinesBadgingCoordinator : MagazinesBadgingCoordinatorType // +0x78
-	let notificationConfiguration : NotificationConfigurationType // +0xa0
-	let todayMagazineDisplay : FollowingTodayMagazineDisplay // +0xc8
-	let suggestionStatusProvider : TSSiriSuggestionStatusProvider // +0xd0
-	let purchaseController : FCPurchaseController // +0xd8
-	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0xe0
+	let featureAvailability : TSFeatureAvailabilityType // +0x0
+	let tagService : TagServiceType // +0x8
+	let editorialService : FollowingEditorialServiceType // +0x18
+	let appConfigurationManager : FCNewsAppConfigurationManager // +0x28
+	let followingBadgingCoordinator : FollowingBadgingCoordinatorType // +0x30
+	let magazinesBadgingCoordinator : MagazinesBadgingCoordinatorType // +0x58
+	let notificationConfiguration : NotificationConfigurationType // +0x80
+	let todayMagazineDisplay : FollowingTodayMagazineDisplay // +0xa8
+	let suggestionStatusProvider : TSSiriSuggestionStatusProvider // +0xb0
+	let purchaseController : FCPurchaseController // +0xb8
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0xc0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let familySharingStatusManager : ùÈ // +0xe8
+	let familySharingStatusManager : O	 // +0xc8
  }
 
  enum NewsUI2.FollowingTodayMagazineDisplay {
@@ -3419,24 +3803,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case allowsFollowing  
  }
 
- struct NewsUI2.SpecialEventsTitleViewLayoutAttributes {
-
-	// Properties
-	let model : SpecialEventsTitleModel
-	let titleLabelFrame : CGRect
-	let actionLabelFrame : CGRect
-	let rightArrowFrame : CGRect
-	let frame : CGRect
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let kind : q¯
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pinTrait : ˘
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rubberbandTrait : ˝˚
-	let traitCollection : UITraitCollection
+ class NewsUI2.WebEmbedViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WebEmbedViewStylerType {
+	// Swift methods
  }
 
- class NewsUI2.FollowingRowImageApplier : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ class NewsUI2.TagImageApplier : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	let imageCache : TSImageCacheType // +0x10 (0x8)
@@ -3445,13 +3816,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- class NewsUI2.TodayFeedPool : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ struct NewsUI2.TodayFeedPool {
 
 	// Properties
-	var consumedHeadlineIdentifiers : Set<String> // +0x10 (0x8)
-	let headlines : [FCHeadlineProviding] // +0x18 (0x8)
+	let config : FCCoreConfiguration // +0x0
+	let headlines : TodayFeedPoolContent // +0x8
+	let tags : TodayFeedPoolContent // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let trending : ÁI	 // +0x48
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let myHeadlines : ŸI	 // +0x50
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let magazines : ÀI	 // +0x58
+ }
 
-	// Swift methods
+ struct NewsUI2.MyHeadlines {
+
+	// Properties
+	let scoreProfiles : [String : FCFeedPersonalizedItemScoreProfile] // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scoredHeadlines :  empty-list  // +0x8
+	let decayedPublisherDiversificationPenalty : Double // +0x10
+ }
+
+ struct NewsUI2.Trending {
+
+	// Properties
+	let headlines : [FCHeadlineProviding] // +0x0
+	let tags : [FCTagProviding] // +0x8
  }
 
  struct NewsUI2.OfflineModel {
@@ -3473,9 +3865,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cache : Y // +0x10 (0x8)
+	var cache : uf	 // +0x10 (0x8)
 
 	// Swift methods
+ }
+
+ struct NewsUI2.SearchMoreTagsExpandModifier {
+
+	// Properties
+	let expandResult : SearchMoreTagsResult // +0x0
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case sectionNotFound  
  }
 
  class NewsUI2.WelcomeView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3487,11 +3891,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let footer : Footer
 
 	// ObjC -> Swift bridged methods
-	0x6e810  @objc WelcomeView.accessibilityViewIsModal <stripped>
-	0x6e820  @objc WelcomeView.setAccessibilityViewIsModal: <stripped>
-	0x6ec20  @objc WelcomeView.initWithFrame: <stripped>
-	0x6ec40  @objc WelcomeView.initWithCoder: <stripped>
-	0x6f8e0  @objc WelcomeView..cxx_destruct <stripped>
+	0x808f0  @objc WelcomeView.accessibilityViewIsModal <stripped>
+	0x80900  @objc WelcomeView.setAccessibilityViewIsModal: <stripped>
+	0x80d00  @objc WelcomeView.initWithFrame: <stripped>
+	0x80d20  @objc WelcomeView.initWithCoder: <stripped>
+	0x819c0  @objc WelcomeView..cxx_destruct <stripped>
  }
 
  class NewsUI2.TitleGroup : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3502,9 +3906,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let welcomeSubTitleLabel : UILabel
 
 	// ObjC -> Swift bridged methods
-	0x6f110  @objc TitleGroup.initWithFrame: <stripped>
-	0x6f130  @objc TitleGroup.initWithCoder: <stripped>
-	0x6f170  @objc TitleGroup..cxx_destruct <stripped>
+	0x811f0  @objc TitleGroup.initWithFrame: <stripped>
+	0x81210  @objc TitleGroup.initWithCoder: <stripped>
+	0x81250  @objc TitleGroup..cxx_destruct <stripped>
  }
 
  class NewsUI2.SiriGroup : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3514,9 +3918,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let textLabel : UILabel
 
 	// ObjC -> Swift bridged methods
-	0x6f3e0  @objc SiriGroup.initWithFrame: <stripped>
-	0x6f400  @objc SiriGroup.initWithCoder: <stripped>
-	0x6f470  @objc SiriGroup..cxx_destruct <stripped>
+	0x814c0  @objc SiriGroup.initWithFrame: <stripped>
+	0x814e0  @objc SiriGroup.initWithCoder: <stripped>
+	0x81550  @objc SiriGroup..cxx_destruct <stripped>
  }
 
  class NewsUI2.Footer : UIVisualEffectView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3528,40 +3932,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let privacyLink : UIButton
 
 	// ObjC -> Swift bridged methods
-	0x6f4b0  @objc Footer.initWithEffect: <stripped>
-	0x6f4f0  @objc Footer.initWithCoder: <stripped>
-	0x6f530  @objc Footer..cxx_destruct <stripped>
+	0x81590  @objc Footer.initWithEffect: <stripped>
+	0x815d0  @objc Footer.initWithCoder: <stripped>
+	0x81610  @objc Footer..cxx_destruct <stripped>
  }
 
  class NewsUI2.ContinueButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onTap : ˝˙
+	let onTap : o`	
 
 	// ObjC -> Swift bridged methods
-	0x6f560  @objc ContinueButton.isHighlighted <stripped>
-	0x6f590  @objc ContinueButton.setHighlighted: <stripped>
-	0x6f770  @objc ContinueButton.initWithFrame: <stripped>
-	0x6f7c0  @objc ContinueButton.initWithCoder: <stripped>
-	0x6f890  @objc ContinueButton..cxx_destruct <stripped>
+	0x81640  @objc ContinueButton.isHighlighted <stripped>
+	0x81670  @objc ContinueButton.setHighlighted: <stripped>
+	0x81850  @objc ContinueButton.initWithFrame: <stripped>
+	0x818a0  @objc ContinueButton.initWithCoder: <stripped>
+	0x81970  @objc ContinueButton..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
- class NewsUI2.SpecialEventsTitleView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
+ class NewsUI2.WebEmbedViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WebEmbedViewRendererType {
 
 	// Properties
-	let titleLabel : UILabel // +0x8 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let actionLabel : µÈ // +0x10 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rightArrow : Ë // +0x18 (0x8)
+	let styler : WebEmbedViewStylerType // +0x10 (0x28)
 
-	// ObjC -> Swift bridged methods
-	0x72030  @objc SpecialEventsTitleView.initWithFrame: <stripped>
-	0x72060  @objc SpecialEventsTitleView.initWithCoder: <stripped>
-	0x720b0  @objc SpecialEventsTitleView..cxx_destruct <stripped>
+	// Swift methods
  }
 
  enum NewsUI2.FeedViewReferrer {
@@ -3577,23 +3974,65 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case history  
  }
 
+ struct NewsUI2.TagFeedServiceConfig {
+
+	// Properties
+	let rules : TagFeedRules
+	let contentConfig : TagFeedContentConfig
+	let paidBundleConfig : FCPaidBundleConfiguration
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let cachePolicy : ©ß	
+	let feedDescriptor : FCFeedDescriptor
+ }
+
  struct NewsUI2.TopicMagazineFeedGroup {
 
 	// Properties
-	let identifier : String // +0x0
-	let topic : FCTag // +0x10
-	let groupTitleColor : UIColor? // +0x18
-	let groupDarkStyleTitleColor : UIColor? // +0x20
-	let headlines : [FCHeadlineProviding] // +0x28
-	let paidVisibility : FeedGroupPaidVisibility // +0x30
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x31
-	let rankMultiplier : Double // +0x38
-	let namespace : String? // +0x40
+	let identifier : String
+	let topic : FCTag
+	let groupTitleColor : UIColor?
+	let groupDarkStyleTitleColor : UIColor?
+	let headlines : [FCHeadlineProviding]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let rankMultiplier : Double
+	let namespace : String?
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case type  
+ }
+
+ enum NewsUI2.TagFeedGroupConfig {
+
+	// Properties
+	case articleList : ArticleListTagFeedGroupConfig
+	case issueList : IssueListTagFeedGroupConfig
+ }
+
+ class NewsUI2.AudioEditorialHeroFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let groupConfig : AudioFeedGroupConfig // +0x0 (0x0)
+	let config : AudioEditorialHeroFeedGroupConfig // +0x6f635f5f (0x0)
+	let track : AudioFeedTrack // +0x0 (0x0)
+
+	// Swift methods
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case noHeroTrack  
  }
 
  class NewsUI2.BootstrapAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x73cb0  @objc BootstrapAssembly.init <stripped>
+	0x887a0  @objc BootstrapAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -3605,44 +4044,87 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum NewsUI2.MastheadModel {
 
 	// Properties
+	case audioFeed : AudioNowPlayingPlaybackState
+	case overrides : MastheadModel
 	case forYouFeed  
+	case todayFeed  
 	case magazineFeed  
+ }
+
+ struct NewsUI2.MastheadModelOverrides {
+
+	// Properties
+	let logo : String? // +0x0
+	let name : String? // +0x10
+	let serviceName : String? // +0x20
+	let description : String? // +0x30
+ }
+
+ class NewsUI2.AudioInProgressHeroObserver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineService : ±≠	 // +0x18 (0x28)
+
+	// Swift methods
  }
 
  class NewsUI2.ForYouTodayPluginFactory : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
+	let resolver : È_	 // +0x8 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x30 (0x8)
+	let tracker : 9P	 // +0x30 (0x8)
 	let layoutOptionsProvider : PluginLayoutOptionsProvider // +0x38 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paidBundleConfigManager : è$ // +0x40 (0x28)
+	let paidBundleConfigManager : ì	 // +0x40 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webEmbedViewControllerReuseManager : wÏ // +0x68 (0x8)
+	let webEmbedViewControllerReuseManager : WO	 // +0x68 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x75ab0  @objc ForYouTodayPluginFactory.createPluginWithIdentifier:group: <stripped>
-	0x75c30  @objc ForYouTodayPluginFactory.init <stripped>
-	0x75b80  @objc ForYouTodayPluginFactory..cxx_destruct <stripped>
+	0x8cfb0  @objc ForYouTodayPluginFactory.createPluginWithIdentifier:group: <stripped>
+	0x8d130  @objc ForYouTodayPluginFactory.init <stripped>
+	0x8d080  @objc ForYouTodayPluginFactory..cxx_destruct <stripped>
 
 	// Swift methods
+ }
+
+ class NewsUI2.AudioPlayableContentDelegate : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let queue : wA	 // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let playbackState : eA	 // +0x10 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x90930  @objc AudioPlayableContentDelegate.init <stripped>
+	0x90900  @objc AudioPlayableContentDelegate..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case audioTrackNotFoundInPlaybackQueue  
  }
 
  class NewsUI2.PaidBundleBackgroundWorkerManager : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let backgroundFetchManager : …· // +0x8 (0x8)
+	let backgroundFetchManager : ÌA	 // +0x8 (0x8)
 	let workerFactory : PaidBundleBackgroundWorkerFactoryType // +0x10 (0x28)
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x38 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var registeredWorkers :  empty-list  // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x77460  @objc PaidBundleBackgroundWorkerManager.init <stripped>
-	0x77410  @objc PaidBundleBackgroundWorkerManager..cxx_destruct <stripped>
+	0x91c50  @objc PaidBundleBackgroundWorkerManager.init <stripped>
+	0x91c00  @objc PaidBundleBackgroundWorkerManager..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3655,15 +4137,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ class NewsUI2.SearchMoreTagsContext : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	var searchResults : FCStreamingResults<FCTagProviding> // +0x8 (0x8)
+	var searchType : SearchContentType // +0x10 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x92780  @objc SearchMoreTagsContext.searchResults <stripped>
+	0x927a0  @objc SearchMoreTagsContext.setSearchResults: <stripped>
+	0x927d0  @objc SearchMoreTagsContext.searchType <stripped>
+	0x927f0  @objc SearchMoreTagsContext.setSearchType: <stripped>
+	0x928c0  @objc SearchMoreTagsContext.initWithSearchType:searchResults: <stripped>
+	0x929c0  @objc SearchMoreTagsContext.init <stripped>
+	0x92950  @objc SearchMoreTagsContext..cxx_destruct <stripped>
+
+	// Swift methods
+	0x92810  class func SearchMoreTagsContext.__allocating_init(searchType:searchResults:) // init 
+ }
+
  class NewsUI2.DeliveredNotificationsRemover : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 	let notificationService : NotificationServiceType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x78480  @objc DeliveredNotificationsRemover.removeDeliveredNotificationFor: <stripped>
-	0x78620  @objc DeliveredNotificationsRemover.init <stripped>
-	0x78600  @objc DeliveredNotificationsRemover..cxx_destruct <stripped>
+	0x92f10  @objc DeliveredNotificationsRemover.removeDeliveredNotificationFor: <stripped>
+	0x930b0  @objc DeliveredNotificationsRemover.init <stripped>
+	0x93090  @objc DeliveredNotificationsRemover..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3679,9 +4180,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var userActionStateAXDescription : String? // +0x30 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x78bc0  @objc HeadlineViewFooterView.initWithFrame: <stripped>
-	0x78bf0  @objc HeadlineViewFooterView.initWithCoder: <stripped>
-	0x78c80  @objc HeadlineViewFooterView..cxx_destruct <stripped>
+	0x935a0  @objc HeadlineViewFooterView.initWithFrame: <stripped>
+	0x935d0  @objc HeadlineViewFooterView.initWithCoder: <stripped>
+	0x93660  @objc HeadlineViewFooterView..cxx_destruct <stripped>
  }
 
  struct NewsUI2.Sharing { }
@@ -3707,9 +4208,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let dislikeButton : DislikeButton // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x7a030  @objc ForYouTitleView.initWithFrame: <stripped>
-	0x7a060  @objc ForYouTitleView.initWithCoder: <stripped>
-	0x7a0b0  @objc ForYouTitleView..cxx_destruct <stripped>
+	0x9a490  @objc ForYouTitleView.initWithFrame: <stripped>
+	0x9a4c0  @objc ForYouTitleView.initWithCoder: <stripped>
+	0x9a510  @objc ForYouTitleView..cxx_destruct <stripped>
+ }
+
+ class NewsUI2.HistoryFeedTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HistoryFeedTrackerType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x10 (0x8)
+	let contentPrefetchManager : ContentPrefetchManagerType // +0x18 (0x28)
+	let scienceDataFactory : AnalyticsScienceDataFactoryType // +0x40 (0x28)
+	let channelDataFactory : AnalyticsChannelDataFactoryType // +0x68 (0x28)
+
+	// Swift methods
  }
 
  class NewsUI2.FollowingNotificationsViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3718,15 +4231,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : FollowingNotificationsStylerType // +0x8 (0x28)
 	let eventHandler : FollowingNotificationsEventHandlerType // +0x30 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController : U // +0x40 (0x8)
-	let headerView : FollowingTableHeaderView // +0x48 (0x8)
-	let disabledViewProvider : FollowingNotificationsDisabledViewProviderType // +0x50 (0x28)
-	var followingNotificationsPrewarm : FollowingNotificationsPrewarm // +0x78 (0x8)
+	let blueprintViewController : e{	 // +0x40 (0x8)
+	var blueprintReadableContentGuide : UILayoutGuide // +0x48 (0x8)
+	var headerView : UIView? // +0x50 (0x8)
+	let disabledViewProvider : FollowingNotificationsDisabledViewProviderType // +0x58 (0x28)
+	var followingNotificationsPrewarm : FollowingNotificationsPrewarm // +0x80 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x7a3d0  @objc FollowingNotificationsViewController.initWithCoder: <stripped>
-	0x7a3f0  @objc FollowingNotificationsViewController.initWithNibName:bundle: <stripped>
-	0x7a450  @objc FollowingNotificationsViewController..cxx_destruct <stripped>
+	0x9bf80  @objc FollowingNotificationsViewController.initWithCoder: <stripped>
+	0x9c040  @objc FollowingNotificationsViewController.initWithNibName:bundle: <stripped>
+	0x9c0a0  @objc FollowingNotificationsViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3747,6 +4261,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class NewsUI2.AnimatedCollectionViewCell {
+ class NewsUI2.EmailSignupViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	let model : EmailSignupModel // +0x8 (0x80)
+	let eventHandler : EmailSignupEventHandlerType // +0x88 (0x10)
+	let obController : OBWelcomeController // +0x98 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0xa3610  @objc EmailSignupViewController.initWithCoder: <stripped>
+	0xa3a30  @objc EmailSignupViewController.viewDidLoad <stripped>
+	0xa3a60  @objc EmailSignupViewController.viewDidAppear: <stripped>
+	0xa3ae0  @objc EmailSignupViewController.viewWillDisappear: <stripped>
+	0xa3b60  @objc EmailSignupViewController.viewDidDisappear: <stripped>
+	0xa3c00  @objc EmailSignupViewController.signMeUp <stripped>
+	0xa3c70  @objc EmailSignupViewController.notNow <stripped>
+	0xa4330  @objc EmailSignupViewController.viewWillLayoutSubviews <stripped>
+	0xa4360  @objc EmailSignupViewController.traitCollectionDidChange: <stripped>
+	0xa4500  @objc EmailSignupViewController.initWithNibName:bundle: <stripped>
+	0xa4440  @objc EmailSignupViewController..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
  struct NewsUI2.MagazineCategory {
 
 	// Properties
@@ -3764,13 +4301,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let allowDuplicatesAcrossGroups : Bool
 	let allowMutedChannels : Bool
 	let allowPaywallContent : Bool
+	let allowContentRefresh : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let content : À
+	let content : uá	
 	let identifier : String
 	let maxNewsVersion : String?
 	let minNewsVersion : String?
-	let paidVisibility : FeedGroupPaidVisibility
-	let position : FeedGroupPosition
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
 	let subtype : String
  }
 
@@ -3780,6 +4320,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case allowDuplicatesAcrossGroups  
 	case allowMutedChannels  
 	case allowPaywallContent  
+	case allowContentRefresh  
 	case content  
 	case identifier  
 	case maxNewsVersion  
@@ -3790,6 +4331,56 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case subtype  
  }
 
+ class NewsUI2.SearchMoreTagsViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	let styler : SearchMoreTagsStylerType // +0x8 (0x28)
+	let eventHandler : SearchMoreTagsEventHandlerType // +0x30 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let blueprintViewController : âJ	 // +0x40 (0x8)
+	let searchContentType : SearchContentType // +0x48 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0xa7ec0  @objc SearchMoreTagsViewController.initWithCoder: <stripped>
+	0xa7f80  @objc SearchMoreTagsViewController.initWithNibName:bundle: <stripped>
+	0xa7f40  @objc SearchMoreTagsViewController..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ struct NewsUI2.IssueListTagFeedGroupConfig {
+
+	// Properties
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+	let kind : TagFeedGroupKind
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case identifier  
+	case paidVisibility  
+	case position  
+	case kind  
+ }
+
+ enum NewsUI2.SearchModel {
+
+	// Properties
+	case channel : SearchMoreTagModel
+ }
+
+ enum NewsUI2.SavedFeedSectionDescriptor {
+
+	// Properties
+	case gap  
+	case headline  
+ }
+
  class NewsUI2.ForYouSingleGroupMagazineFeedService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
@@ -3797,6 +4388,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x18 (0x8)
 	let magazineConfigurationService : MagazineConfigurationServiceType // +0x20 (0x28)
 	let personalizationService : MagazineFeedPersonalizationServiceType // +0x48 (0x28)
+	let featureAvailability : TSFeatureAvailabilityType // +0x70 (0x8)
+	let paidAccessChecker : FCPaidAccessCheckerType // +0x78 (0x8)
 
 	// Swift methods
  }
@@ -3820,25 +4413,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let messageLabel : UILabel // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x8ffa0  @objc MagazineFeedRefreshControl.initWithFrame: <stripped>
-	0x8ffc0  @objc MagazineFeedRefreshControl.initWithCoder: <stripped>
-	0x90230  @objc MagazineFeedRefreshControl.layoutSubviews <stripped>
-	0x90260  @objc MagazineFeedRefreshControl.handleRefresh <stripped>
-	0x902d0  @objc MagazineFeedRefreshControl.init <stripped>
-	0x902b0  @objc MagazineFeedRefreshControl..cxx_destruct <stripped>
+	0xb0330  @objc MagazineFeedRefreshControl.initWithFrame: <stripped>
+	0xb0350  @objc MagazineFeedRefreshControl.initWithCoder: <stripped>
+	0xb05c0  @objc MagazineFeedRefreshControl.layoutSubviews <stripped>
+	0xb05f0  @objc MagazineFeedRefreshControl.handleRefresh <stripped>
+	0xb0660  @objc MagazineFeedRefreshControl.init <stripped>
+	0xb0640  @objc MagazineFeedRefreshControl..cxx_destruct <stripped>
  }
 
  class NewsUI2.MenuAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x960f0  @objc MenuAssembly.init <stripped>
+	0xb65e0  @objc MenuAssembly.init <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.VideoPlayerModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x97080  @objc VideoPlayerModule.createViewControllerWithArticleIDs:referral: <stripped>
-	0x97120  @objc VideoPlayerModule.createViewControllerWithWidgetVideoPlaylist:referral: <stripped>
+	0xb7570  @objc VideoPlayerModule.createViewControllerWithArticleIDs:referral: <stripped>
 
 	// Swift methods
  }
@@ -3849,6 +4441,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var styler : OffensiveViewStylerType // +0x10 (0x28)
 
 	// Swift methods
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case invalidIdentifier : String
+ }
+
+ struct NewsUI2.TodayExpandBlueprintModifier {
+
+	// Properties
+	let expandResult : TodayExpandResult // +0x0
+	let sectionFactory : TodaySectionFactoryType // +0x20
  }
 
  class NewsUI2.OfflineAlertControllerFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, OfflineAlertControllerFactoryType {
@@ -3865,21 +4470,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : TodayBlueprintViewCellProviderDelegate // +0x10 (0x10)
 	let baseStyler : BaseStylerType // +0x20 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedItemRenderer : 7 // +0x48 (0x10)
-
-	// Swift methods
- }
-
- class NewsUI2.SpecialEventsBlueprintViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let imageOnSideRenderer : HeadlineViewImageOnSideRenderer // +0x10 (0x8)
-	let noImageRenderer : HeadlineViewNoImageRenderer // +0x18 (0x8)
-	let wrappedImageOnSideRenderer : HeadlineViewWrappedImageOnSideRenderer // +0x20 (0x8)
-	let embedViewRenderer : SpecialEventsEmbedViewRendererType // +0x28 (0x28)
-	var delegate : SpecialEventsBlueprintViewCellProviderDelegate // +0x50 (0x10)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let embedViewControllerReuseManager : Y„ // +0x60 (0x8)
+	let feedItemRenderer : ≠§	 // +0x48 (0x10)
 
 	// Swift methods
  }
@@ -3888,13 +4479,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var delegate : ˚Œ // +0x10 (0x10)
+	var delegate : c*	 // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let pages :  empty-list  // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issue : ç  // +0x0 (0x0)
+	let issue : e$	 // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x0 (0x8)
+	let tracker : 9P	 // +0x0 (0x8)
 
 	// Swift methods
  }
@@ -3903,6 +4494,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let baseStyler : BaseStylerType // +0x10 (0x28)
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioMPContentItemFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioMPContentItemFactoryType {
+
+	// Properties
+	let listeningProgressProvider : NewsAudioListeningProgressProvider // +0x10 (0x8)
+	let thumbnailImageCache : TSImageCacheType // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let playbackState : eA	 // +0x20 (0x8)
+	var contentItems : [String : MPContentItem] // +0x28 (0x8)
 
 	// Swift methods
  }
@@ -3917,16 +4520,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class NewsUI2.FollowingInteractor {
- class NewsUI2.SearchMoreLayoutBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ struct NewsUI2.TodayReloadRequest {
 
 	// Properties
-	let tagViewLayoutAttributesFactory : TagViewLayoutAttributesFactory // +0x10 (0x8)
-	let headlineLayoutAttributesProvider : HeadlineViewLayoutAttributesProviderType // +0x18 (0x28)
-	let feedLayoutOptionsFactory : FeedLayoutOptionsFactory // +0x40 (0x8)
-	let headlineViewModelFactory : HeadlineViewModelFactoryType // +0x48 (0x28)
-	let spinnerLayoutAttributesFactory : SpinnerFooterViewLayoutAttributesFactoryType // +0x70 (0x28)
+	let headlineIDs : Set<String> // +0x0
+ }
 
-	// Swift methods
+ class NewsUI2.AudioAssembly : NSObject /usr/lib/libobjc.A.dylib {
+	// ObjC -> Swift bridged methods
+	0xd0cb0  @objc AudioAssembly.init <stripped>
  }
 
  struct NewsUI2.FollowingEditorialItemRefreshModifier {
@@ -3946,7 +4548,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- class NewsUI2.SearchMoreInteractor {
+ enum NewsUI2.TagFeedModel {
+
+	// Properties
+	case headline : Contextual
+	case promotedHeadline : Contextual
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case plugin : K4	
+ }
+
+ struct NewsUI2.Contextual {
+
+	// Properties
+	let model : A
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let context : …x	
+	let feedDescriptor : FCFeedDescriptor
+ }
+
+ enum NewsUI2.TagFeedGapLocation {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case cursor : ´x	
+	case topOfFeed  
+ }
+
  enum NewsUI2.FollowingLayoutModel {
 
 	// Properties
@@ -3964,48 +4591,64 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case manageSubscriptions : FollowingButtonModel
  }
 
+ struct NewsUI2.AudioDailyBriefingFeedGroup {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+	let identifier : String
+	let track : AudioFeedTrack
+ }
+
  class NewsUI2.FollowingModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingModifierFactoryType {
 
 	// Properties
-	let featureAvailability : FeatureAvailabilityType // +0x10 (0x28)
-	let tagService : TagServiceType // +0x38 (0x10)
-	let subscriptionService : SubscriptionServiceType // +0x48 (0x10)
-	let editorialService : FollowingEditorialServiceType // +0x58 (0x10)
-	let appConfigurationManager : FCNewsAppConfigurationManager // +0x68 (0x8)
-	let followingBadgingCoordinator : FollowingBadgingCoordinatorType // +0x70 (0x28)
-	let magazinesBadgingCoordinator : MagazinesBadgingCoordinatorType // +0x98 (0x28)
-	let notificationConfiguration : NotificationConfigurationType // +0xc0 (0x28)
-	let tagReorderService : TagReorderServiceType // +0xe8 (0x28)
-	let suggestionStatusProvider : TSSiriSuggestionStatusProvider // +0x110 (0x8)
-	let purchaseController : FCPurchaseController // +0x118 (0x8)
-	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x120 (0x8)
+	let featureAvailability : TSFeatureAvailabilityType // +0x10 (0x8)
+	let tagService : TagServiceType // +0x18 (0x10)
+	let subscriptionService : SubscriptionServiceType // +0x28 (0x10)
+	let editorialService : FollowingEditorialServiceType // +0x38 (0x10)
+	let appConfigurationManager : FCNewsAppConfigurationManager // +0x48 (0x8)
+	let followingBadgingCoordinator : FollowingBadgingCoordinatorType // +0x50 (0x28)
+	let magazinesBadgingCoordinator : MagazinesBadgingCoordinatorType // +0x78 (0x28)
+	let notificationConfiguration : NotificationConfigurationType // +0xa0 (0x28)
+	let tagReorderService : TagReorderServiceType // +0xc8 (0x28)
+	let suggestionStatusProvider : TSSiriSuggestionStatusProvider // +0xf0 (0x8)
+	let purchaseController : FCPurchaseController // +0xf8 (0x8)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x100 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let familySharingStatusManager : ùÈ // +0x128 (0x10)
+	let familySharingStatusManager : O	 // +0x108 (0x10)
 
 	// Swift methods
  }
 
- class NewsUI2.EmailSignupEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ class NewsUI2.ShareLinkProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var delegate : weak TSEmailSignupEventHandlerTypeDelegate? // +0x10 (0x8)
-	let interactor : EmailSignupInteractorType // +0x18 (0x10)
-	let router : EmailSignupRouterType // +0x28 (0x28)
-
-	// ObjC -> Swift bridged methods
-	0xb08a0  @objc EmailSignupEventHandler.delegate <stripped>
-	0xb08c0  @objc EmailSignupEventHandler.setDelegate: <stripped>
-	0xb08e0  @objc EmailSignupEventHandler.emailSignUpViewControllerSignUpButtonTapped <stripped>
-	0xb0900  @objc EmailSignupEventHandler.emailSignUpViewControllerNotNowButtonTapped <stripped>
-	0xb0a10  @objc EmailSignupEventHandler.viewAppeared <stripped>
+	let context : ShareLinkContext // +0x10 (0x1)
 
 	// Swift methods
  }
 
- struct NewsUI2.SpecialEventsSnapBlueprintBookmarkOptionsFactory {
+ class NewsUI2.EmailSignupEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, EmailSignupEventHandlerType {
 
 	// Properties
-	let feedLayoutOptionsFactory : FeedLayoutOptionsFactory // +0x0
+	var delegate : EmailSignupEventHandlerTypeDelegate // +0x10 (0x10)
+	let interactor : EmailSignupInteractorType // +0x20 (0x10)
+	let router : EmailSignupRouterType // +0x30 (0x28)
+
+	// Swift methods
+ }
+
+ struct NewsUI2.HeadlineViewImageOnSideLayoutAttributes {
+
+	// Properties
+	var frame : CGRect // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let screenScale : õ_	 // +0x20
+	let thumbnailImageViewFrame : CGRect // +0x28
+	let textViewLayoutAttributes : HeadlineViewPositionComposedAttributes // +0x48
+	let footerViewLayoutAttributes : HeadlineViewPositionComposedAttributes // +0xf0
+	let offensiveViewLayoutAttributes : OffensiveViewLayoutAttributes // +0x1b0
  }
 
  enum NewsUI2.ImageOnSideViewType {
@@ -4015,18 +4658,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case compact6Column : HeadlineViewTheme
 	case veryCompact6Column : HeadlineViewTheme
 	case standard12Column : HeadlineViewTheme
- }
-
- struct NewsUI2.HeadlineViewImageOnSideLayoutAttributes {
-
-	// Properties
-	var frame : CGRect // +0x0
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let screenScale : A // +0x20
-	let thumbnailImageViewFrame : CGRect // +0x28
-	let textViewLayoutAttributes : HeadlineViewPositionComposedAttributes // +0x48
-	let footerViewLayoutAttributes : HeadlineViewPositionComposedAttributes // +0xf0
-	let offensiveViewLayoutAttributes : OffensiveViewLayoutAttributes // +0x1b0
  }
 
  class NewsUI2.HeadlineViewNoImagePropertiesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4043,11 +4674,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let size : HeadlineViewSize // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleToBottomElementSpacing : A // +0x18
+	let titleToBottomElementSpacing : õ_	 // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let excerptToBottomElementSpacing : A // +0x20
+	let excerptToBottomElementSpacing : õ_	 // +0x20
 	let footerProperties : HeadlineViewFooterViewProperties // +0x28
 	let textViewProperties : HeadlineViewTextViewProperties // +0x50
+ }
+
+ class NewsUI2.AlacarteSubscriptionURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let patterns :  empty-list  // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x18 (0x8)
+
+	// Swift methods
  }
 
  class NewsUI2.NotificationSwitchRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, NotificationSwitchRendererType {
@@ -4069,12 +4711,49 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ class NewsUI2.TagFeedDataManager : NSObject /usr/lib/libobjc.A.dylib, TagFeedDataManagerType {
+
+	// Properties
+	var delegate : TagFeedDataManagerTypeDelegate // +0x8 (0x10)
+	let feedServiceConfigFetcher : TagFeedServiceConfigFetcherType // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedService : —s	 // +0x40 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let pluginManager : É0	 // +0x48 (0x8)
+	let pluginFactory : TagFeedPluginFactoryType // +0x50 (0x28)
+	let accessQueue : OS_dispatch_queue // +0x78 (0x8)
+	let readingHistory : FCReadingHistory // +0x80 (0x8)
+	let readingList : FCReadingList // +0x88 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0xe1cd0  @objc TagFeedDataManager.init <stripped>
+	0xe1c40  @objc TagFeedDataManager..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.SearchMoreArticlesDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreArticlesDataManagerType {
+
+	// Properties
+	let articleStreamingResults : FCStreamingResults<FCArticleSearchResult> // +0x10 (0x8)
+	let numberOfSearchResultsPerQuery : Int // +0x18 (0x8)
+
+	// Swift methods
+ }
+
+ struct NewsUI2.TagFeedPrewarmBlueprintModifier {
+
+	// Properties
+	let prewarmResult : TagFeedPrewarmResult // +0x0
+	let sectionFactory : TagFeedSectionFactoryType // +0x8
+ }
+
  class NewsUI2.MagazineConfigurationService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineConfigurationServiceType {
 
 	// Properties
 	let dataService : MagazineConfigurationDataServiceType // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bundleVersion : ˇŒ // +0x0 (0x0)
+	let bundleVersion : ç'	 // +0x0 (0x0)
 	var $__lazy_storage_$_dateFormatter : NSDateFormatter? // +0x0 (0x8)
 
 	// Swift methods
@@ -4085,7 +4764,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let magazineConfigurationManager : FCMagazinesConfigurationManager // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paidBundleConfigurationManager : è$ // +0x18 (0x28)
+	let paidBundleConfigurationManager : ì	 // +0x18 (0x28)
 
 	// Swift methods
  }
@@ -4110,7 +4789,61 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let jsonData : º // +0x0
+	let jsonData : 5	 // +0x0
+ }
+
+ struct NewsUI2.SavedFeedRefreshResult {
+
+	// Properties
+	let addedHeadlines : [FCHeadlineProviding] // +0x0
+	let removedHeadlineIDs : [String] // +0x8
+	let readingList : [String] // +0x10
+ }
+
+ struct NewsUI2.LocalNewsTodayGroupEmitter {
+
+	// Properties
+	let config : LocalNewsTodayFeedGroupConfig
+	let knobs : LocalNewsTodayFeedGroupKnobs
+	let localNewsGroupService : LocalNewsGroupServiceType
+	let name : String
+ }
+
+ struct NewsUI2.Cursor {
+
+	// Properties
+	let channels : Channel // +0x0
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case noChannelIDs  
+	case noCursor  
+ }
+
+ class NewsUI2.AudioArtworkImageRequestFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
+ class NewsUI2.TagFeedPluginFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TagFeedPluginFactoryType {
+
+	// Properties
+	let module : ChannelIssuesModuleType // +0x10 (0x28)
+
+	// Swift methods
+ }
+
+ struct NewsUI2.AudioRecentlyPlayedFeedGroupConfig {
+
+	// Properties
+	let identifier : String // +0x0
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case identifier  
  }
 
  class NewsUI2.FollowingNotificationsHeaderLabelTextProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingNotificationsHeaderLabelTextProviderType {
@@ -4131,8 +4864,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x50 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xb8320  @objc MagazinesBadgingCoordinator.init <stripped>
-	0xb82c0  @objc MagazinesBadgingCoordinator..cxx_destruct <stripped>
+	0xf3cf0  @objc MagazinesBadgingCoordinator.init <stripped>
+	0xf3c90  @objc MagazinesBadgingCoordinator..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.NowPlayingRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, NowPlayingRouterType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x18 (0x8)
 
 	// Swift methods
  }
@@ -4153,26 +4897,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let subscriptionChanges : SubscriptionChange // +0x0
  }
 
- class NewsUI2.TagViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ enum NewsUI2.SearchLayoutSectionDescriptor {
 
 	// Properties
-	let styler : TagViewStylerType // +0x10 (0x28)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cache : {À // +0x38 (0x8)
-
-	// Swift methods
- }
-
- struct NewsUI2.TagViewLayoutAttributes {
-
-	// Properties
-	let titleFrame : CGRect // +0x0
-	let titleNumberOfLines : Int // +0x20
-	let subtitleFrame : CGRect // +0x28
-	let imageViewFrame : CGRect // +0x48
-	let accessoryOptions : AccessoryOptions // +0x68
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : A // +0x70
+	case blank  
  }
 
  class NewsUI2.MagazineCategoriesBlueprintViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4184,27 +4912,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- class NewsUI2.SpecialEventsWebEmbedConfigurationProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SpecialEventsWebEmbedConfigurationProviderType {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let locale : yπ // +0x5f4e20 (0x0)
-	let storeFront : String? // +0x494c4 (0x10)
-
-	// Swift methods
- }
-
  struct NewsUI2.MagazineCategoryConfig {
 
 	// Properties
 	let title : String
 	let identifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let iconUrl1x : S⁄
+	let iconUrl1x : ◊6	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let iconUrl2x : S⁄
+	let iconUrl2x : ◊6	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let iconUrl3x : S⁄
+	let iconUrl3x : ◊6	
 	let channels : Channel
  }
 
@@ -4227,7 +4945,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let name : String?
 	let accessoryText : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let imageURL : S⁄
+	let imageURL : ◊6	
  }
 
  enum NewsUI2.Keys {
@@ -4239,11 +4957,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case coverUrl  
  }
 
+ class NewsUI2.HistoryFeedModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HistoryFeedModuleType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x38 (0x8)
+
+	// Swift methods
+ }
+
  class NewsUI2.OffensiveViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLabelPadding : A // +0x10 (0x8)
+	let titleLabelPadding : õ_	 // +0x10 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.TagFeedStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TagFeedStylerType {
+
+	// Properties
+	let baseStyler : BaseStylerType // +0x10 (0x28)
 
 	// Swift methods
  }
@@ -4252,28 +4989,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let baseStyler : BaseStylerType // +0x10 (0x28)
-
-	// Swift methods
- }
-
- class NewsUI2.FeedServiceFetchResult {
- enum NewsUI2.Result {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case nextGroup : B
-	case lastGroup : FeedJournal
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case endOfFeed : Ø
-	case noNewContent  
- }
-
- class NewsUI2.TopVideosRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TopVideosRouterType {
-
-	// Properties
-	var controller : TopVideosViewController // +0x10 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x18 (0x28)
 
 	// Swift methods
  }
@@ -4295,12 +5010,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case muted  
  }
 
- class NewsUI2.SearchResultTagModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ class NewsUI2.AudioCompletedListeningProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioCompletedListeningProcessorType {
 
 	// Properties
-	let tagModel : TagModel // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidBundleConfigManager : ì	 // +0x10 (0x28)
 
 	// Swift methods
+ }
+
+ struct NewsUI2.FeaturedIssueMagazineFeedGroupEmitter {
+
+	// Properties
+	let config : FeaturedIssueMagazineFeedGroupConfig
+	let knobs : FeaturedIssueMagazineFeedGroupKnobs
+	let diversityPenalty : Double
+	let requiredNumberOfHeadlines : Int
+	let name : String
  }
 
  enum NewsUI2.Errors {
@@ -4309,24 +5035,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case alreadyExistsInFeed  
  }
 
- struct NewsUI2.FeaturedIssueMagazineFeedGroupEmitter {
-
-	// Properties
-	let config : FeaturedIssueMagazineFeedGroupConfig // +0x0
-	let knobs : FeaturedIssueMagazineFeedGroupKnobs // +0xa0
-	let diversityPenalty : Double // +0xd0
-	let requiredNumberOfHeadlines : Int // +0xd8
- }
-
  class NewsUI2.FollowingRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingRouterType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x10 (0x28)
+	let resolver : È_	 // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x38 (0x8)
+	let tracker : 9P	 // +0x38 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x40 (0x8)
+	let navigator : =e	 // +0x40 (0x8)
 
 	// Swift methods
  }
@@ -4335,8 +5052,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case notAvailable  
-	case explictContent  
+	case explicitContent  
 	case accessDenied  
+ }
+
+ enum NewsUI2.FeedAvailablity {
+
+	// Properties
+	case available : FeedModel
+	case notAvailable : FeedModel
+	case notFound : (identifier: String)
  }
 
  class NewsUI2.OfflineIssueAutoDownloader : NSObject /usr/lib/libobjc.A.dylib {
@@ -4346,11 +5071,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let offlineIssueManager : OfflineIssueManagerType // +0x10 (0x10)
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let triggerDeduper : á∆ // +0x28 (0x8)
+	let triggerDeduper : ·	 // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xd4c00  @objc OfflineIssueAutoDownloader.init <stripped>
-	0xd4bb0  @objc OfflineIssueAutoDownloader..cxx_destruct <stripped>
+	0x1047c0  @objc OfflineIssueAutoDownloader.init <stripped>
+	0x104770  @objc OfflineIssueAutoDownloader..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4359,7 +5084,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let underlyingPrewarmer : ˘« // +0x10 (0x8)
+	let underlyingPrewarmer : Û	 // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -4368,13 +5093,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let state : √≈ // +0x10 (0x8)
+	let state : 	 // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let badgeIssueIDs : µ≈ // +0x18 (0x8)
+	let badgeIssueIDs : ˇ	 // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let testDataLoader : 7∆ // +0x20 (0x8)
+	let testDataLoader : °	 // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueService : Ÿπ // +0x28 (0x28)
+	let issueService : „	 // +0x28 (0x28)
 
 	// Swift methods
  }
@@ -4393,22 +5118,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case recentIssueIDs  
  }
 
- class NewsUI2.SavedLayoutBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let headlineLayoutAttributesProvider : HeadlineViewLayoutAttributesProviderType // +0x10 (0x28)
-	let feedLayoutOptionsFactory : FeedLayoutOptionsFactory // +0x38 (0x8)
-	let headlineViewModelFactory : HeadlineViewModelFactoryType // +0x40 (0x28)
-
-	// Swift methods
- }
-
  class NewsUI2.WelcomeViewStylerFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WelcomeViewStylerFactoryType {
 
 	// Properties
 	let colorStyler : WelcomeColorStylerType // +0x10 (0x28)
 
 	// Swift methods
+ }
+
+ class NewsUI2.AudioFeedHeaderViewSupplementaryLayoutAttributes : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let frame : CGRect // +0x10 (0x20)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let kind : m2	 // +0x827360 (0x0)
+
+	// Swift methods
+	0x108410  class func AudioFeedHeaderViewSupplementaryLayoutAttributes.__allocating_init(kind:frame:) // init 
  }
 
  class NewsUI2.FollowingSettingsButtonViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingSettingsButtonViewStylerType {
@@ -4428,35 +5154,50 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- class NewsUI2.ChannelIssuesModule : NSObject /usr/lib/libobjc.A.dylib {
+ class NewsUI2.ChannelIssuesModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ChannelIssuesModuleType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
+	let resolver : È_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x30 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0xdbd30  @objc ChannelIssuesModule.createPluginFactoryForParentView: <stripped>
-	0xdbe40  @objc ChannelIssuesModule.init <stripped>
-	0xdbdc0  @objc ChannelIssuesModule..cxx_destruct <stripped>
+	let tracker : 9P	
 
 	// Swift methods
+ }
+
+ class NewsUI2.Deprecated_ChannelIssuesModule : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	
+
+	// ObjC -> Swift bridged methods
+	0x1092d0  @objc Deprecated_ChannelIssuesModule.createPluginFactoryForParentView: <stripped>
+	0x1093e0  @objc Deprecated_ChannelIssuesModule.init <stripped>
+	0x109360  @objc Deprecated_ChannelIssuesModule..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ struct NewsUI2.TodayRelayoutBlueprintModifier {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let pluginModels : String // +0x0
  }
 
  struct NewsUI2.Startup { }
 
- class NewsUI2.TopVideosAssembly : NSObject /usr/lib/libobjc.A.dylib {
-	// ObjC -> Swift bridged methods
-	0xdf430  @objc TopVideosAssembly.init <stripped>
-
-	// Swift methods
- }
-
- enum NewsUI2.HistorySection {
+ class NewsUI2.WebEmbedViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WebEmbedViewLayoutAttributesFactoryType {
 
 	// Properties
-	case blank  
+	let styler : WebEmbedViewStylerType // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var cache : o	 // +0x38 (0x8)
+
+	// Swift methods
  }
 
  struct NewsUI2.MagazineCategoriesPrewarmBlueprintModifier {
@@ -4468,21 +5209,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.CategoriesMagazineFeedGroup {
 
 	// Properties
-	let identifier : String // +0x0
-	let groupTitle : String // +0x10
-	let groupTitleColor : UIColor? // +0x20
-	let groupSubtitle : String? // +0x28
-	let categories : MagazineCategory // +0x38
-	let paidVisibility : FeedGroupPaidVisibility // +0x40
-	let rankMultiplier : Double // +0x48
+	let identifier : String
+	let groupTitle : String
+	let groupTitleColor : UIColor?
+	let groupSubtitle : String?
+	let categories : MagazineCategory
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+	let rankMultiplier : Double
  }
 
  class NewsUI2.ArticleNotificationResponseHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x10 (0x8)
-	let pattern : NotificationResponsePattern // +0x18 (0x10)
+	let navigator : =e	 // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -4497,15 +5238,39 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ enum NewsUI2.FeedAvailabilityServiceErrors {
+
+	// Properties
+	case tagNotFound  
+ }
+
+ enum NewsUI2.SavedFeedRouteModel {
+
+	// Properties
+	case article : ArticleRouteModel
+ }
+
  class NewsUI2.PaywallRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x10 (0x28)
+	let resolver : È_	 // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x38 (0x8)
+	let navigator : =e	 // +0x38 (0x8)
 	let configurationManager : FCNewsAppConfigurationManager // +0x40 (0x8)
 	let paywallType : FCPaywallType // +0x48 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioSessionInterruptionHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let currentlyPlayingObservable :  empty-list  // +0x10 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x10e8f0  @objc AudioSessionInterruptionHandler.handleInterruption: <stripped>
 
 	// Swift methods
  }
@@ -4542,7 +5307,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let topic : FCTag // +0x0
-	let scoredHeadlines : ScoredHeadline // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scoredHeadlines :  empty-list  // +0x8
  }
 
  enum NewsUI2.Size {
@@ -4551,6 +5317,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case small  
 	case medium  
 	case large  
+ }
+
+ class NewsUI2.TagFeedBlueprintLayoutBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedLayoutSolver : WX	 // +0x10 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.TagViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TagViewLayoutAttributesFactoryType {
+
+	// Properties
+	let styler : TagViewStylerType // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var cache : è	 // +0x38 (0x8)
+
+	// Swift methods
+ }
+
+ enum NewsUI2.AudioFeedLayoutModel {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case dailyBriefing : G\	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case track : G\	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case plugin : ù	
+	case placard : AudioFeedPlacardMessage
  }
 
  class NewsUI2.MagazineCategoryURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4573,6 +5370,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ enum NewsUI2.HistoryFeedRouteModel {
+
+	// Properties
+	case article : ArticleRouteModel
+ }
+
  class NewsUI2.IssueBookmarkProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, IssueBookmarkProviderType {
 
 	// Properties
@@ -4587,44 +5390,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var delegate : TodayBlueprintViewSupplementaryViewProviderDelegate // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedItemSupplementaryRenderer : i˜ // +0x20 (0x10)
+	let feedItemSupplementaryRenderer : M[	 // +0x20 (0x10)
 
 	// Swift methods
  }
 
- class NewsUI2.SpecialEventsNavigationObserver : NSObject /usr/lib/libobjc.A.dylib {
+ struct NewsUI2.AudioFeedTitleViewLayoutAttributes {
 
 	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var onObservation :  empty-list  // +0x8 (0x10)
-
-	// ObjC -> Swift bridged methods
-	0xea210  @objc SpecialEventsNavigationObserver.init <stripped>
-	0xea1f0  @objc SpecialEventsNavigationObserver..cxx_destruct <stripped>
-
-	// Swift methods
- }
-
- class NewsUI2.SavedViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
-
-	// Properties
-	let styler : SavedStylerType // +0x8 (0x28)
-	let eventHandler : SavedEventHandlerType // +0x30 (0x10)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController : «∆ // +0x40 (0x8)
-	let activityFactory : NUArticleActivityFactory // +0x48 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0xea3a0  @objc SavedViewController.initWithCoder: <stripped>
-	0xea470  @objc SavedViewController.initWithNibName:bundle: <stripped>
-	0xea420  @objc SavedViewController..cxx_destruct <stripped>
-
-	// Swift methods
+	let frame : CGRect // +0x0
+	let titleFrame : CGRect // +0x20
+	let useLargeTitle : Bool // +0x40
  }
 
  struct NewsUI2.FollowingFooterViewStyler: FollowingFooterViewStylerType { }
 
- class NewsUI2.FollowingRowView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
+ class NewsUI2.TagView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 	let titleLabel : UILabel // +0x8 (0x8)
@@ -4635,15 +5416,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _likeButton : LikeButton // +0x30 (0x8)
 	var _dislikeButton : DislikeButton // +0x38 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let isEditing : °' // +0x40 (0x8)
+	let isEditing : ˘ã	 // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var keyCommandBlocks :  empty-list  // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xeb7a0  @objc FollowingRowView.initWithFrame: <stripped>
-	0xeb7d0  @objc FollowingRowView.initWithCoder: <stripped>
-	0xeb7f0  @objc FollowingRowView.title <stripped>
-	0xeb930  @objc FollowingRowView..cxx_destruct <stripped>
+	0x125ef0  @objc TagView.initWithFrame: <stripped>
+	0x125f20  @objc TagView.initWithCoder: <stripped>
+	0x125f40  @objc TagView.title <stripped>
+	0x126080  @objc TagView..cxx_destruct <stripped>
  }
 
  struct NewsUI2.AdDataModel: AdDataModelType {
@@ -4652,6 +5433,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let nativeAdBannerView : NABannerViewProviding? // +0x0
 	let qToken : String? // +0x8
 	let successfullyInsertedNativeAd : Bool // +0x18
+ }
+
+ class NewsUI2.SearchMoreTagsModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreTagsModuleType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x38 (0x8)
+
+	// Swift methods
+ }
+
+ enum NewsUI2.TagFeedRouteModel {
+
+	// Properties
+	case article : ArticleRouteModel
  }
 
  struct NewsUI2.FollowingNewIssuesBadgeUpdateModifier {
@@ -4666,24 +5464,97 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case invalidBlueprint  
  }
 
+ class NewsUI2.WebEmbedURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let patterns :  empty-list  // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x18 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioFeedDataLazyPrewarmer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioFeedDataPrewarmerType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let underlyingPrewarmer : π	
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioFeedDataPrewarmer : NSObject /usr/lib/libobjc.A.dylib, AudioFeedDataPrewarmerType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let session : ;	
+
+	// ObjC -> Swift bridged methods
+	0x129370  @objc AudioFeedDataPrewarmer.init <stripped>
+	0x129350  @objc AudioFeedDataPrewarmer..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.Session : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let state : '	 // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let deferredPromise : q	 // +0x0 (0x0)
+	let workQueue : OS_dispatch_queue // +0x0 (0x8)
+	let audioDataManager : AudioDataManagerType // +0x0 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedService : SZ	 // +0x0 (0x8)
+	let audioConfigurationManager : AudioConfigurationManagerType // +0x0 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidBundleConfigurationManager : ì	 // +0x0 (0x28)
+
+	// Swift methods
+ }
+
+ enum NewsUI2.State {
+
+	// Properties
+	case notStarted  
+	case running  
+	case ready  
+	case cancelled  
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case cannotPrewarmPlugin  
+ }
+
  class NewsUI2.FollowingDislikedInteractor {
+ struct NewsUI2.TopicTodayFeedGroupEmitterCursor {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let result : ·U	
+ }
+
  class NewsUI2.MagazineFeedArticle : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 	let articleID : String // +0x8 (0x10)
 	let title : String? // +0x18 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let displayDate : cÛ // +0x45545f5f (0x0)
-	let storyType : String? // +0x0 (0x10)
-	let shortExcerpt : String? // +0x63e2f0 (0x10)
+	let displayDate : ÛI	 // +0x7079745f (0x0)
+	let storyType : String? // +0x45545f5f (0x10)
+	let shortExcerpt : String? // +0x0 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0xee420  @objc MagazineFeedArticle.title <stripped>
-	0xee440  @objc MagazineFeedArticle.displayDate <stripped>
-	0xee4d0  @objc MagazineFeedArticle.storyType <stripped>
-	0xee4f0  @objc MagazineFeedArticle.shortExcerpt <stripped>
-	0xef040  @objc MagazineFeedArticle.init <stripped>
-	0xeefa0  @objc MagazineFeedArticle..cxx_destruct <stripped>
+	0x12fc90  @objc MagazineFeedArticle.title <stripped>
+	0x12fcb0  @objc MagazineFeedArticle.displayDate <stripped>
+	0x12fd40  @objc MagazineFeedArticle.storyType <stripped>
+	0x12fd60  @objc MagazineFeedArticle.shortExcerpt <stripped>
+	0x1308b0  @objc MagazineFeedArticle.init <stripped>
+	0x130810  @objc MagazineFeedArticle..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4708,19 +5579,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.BestOfBundleMagazineFeedGroupEmitter {
 
 	// Properties
-	let config : BestOfBundleMagazineFeedGroupConfig // +0x0
-	let knobs : BestOfBundleMagazineFeedGroupKnobs // +0x88
-	let personalizer : MagazineFeedPersonalizationServiceType // +0xa8
-	let feedGroupKind : FCFeedGroupKind // +0xd0
+	let config : BestOfBundleMagazineFeedGroupConfig
+	let knobs : BestOfBundleMagazineFeedGroupKnobs
+	let personalizer : MagazineFeedPersonalizationServiceType
+	let feedGroupKind : FCFeedGroupKind
+	let name : String
  }
 
  class NewsUI2.MagazineFeedVideoPaywallViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineFeedVideoPaywallViewStylerType {
 
 	// Properties
-	let variant : MagazineFeedPaywallSizeVariant // +0x10 (0x1)
+	let variant : FeedPaywallSizeVariant // +0x10 (0x1)
 	let model : MagazineFeedPaywallViewModel // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let textColor : õ∫ // +0x0 (0x0)
+	let textColor : …	 // +0x0 (0x0)
 
 	// Swift methods
  }
@@ -4734,40 +5606,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let tertiaryColor : UIColor // +0x18
  }
 
- struct NewsUI2.NewspaperGroupService: NewspaperGroupServiceType {
-
-	// Properties
-	let sectionHeadlinesService : ChannelSectionHeadlinesServiceType // +0x0
-	let channelPromotedArticlesService : ChannelPromotedArticlesServiceType // +0x28
-	let personalizer : NewspaperGroupPersonalizerType // +0x50
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let formatService : ´Ò // +0x78
-	let tagService : TagServiceType // +0xa0
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let fontManager : ãÌ // +0xb0
- }
-
- enum NewsUI2.Errors {
-
-	// Properties
-	case invalidChannelID : (channelID: String)
-	case noCompatiblePackageForChannelID : (channelID: String)
-	case heroSelectionFailed : (channelID: String)
-	case noPromotedArticles : (channelID: String)
-	case allPromotedArticlesHaveLowQualityThumbnailImage : (channelID: String)
-	case noArticlesInDefaultSection : (channelID: String)
-	case fontCacheMiss : (channelID: String)
-	case fontDownloadFailure : (channelID: String, fonts: [FCLoadableFont])
-	case notEnoughHerosForLayout : (channelID: String)
-	case notEnoughSectionsForLayout : (channelID: String)
- }
-
  class NewsUI2.StubFeaturedIssueMagazineFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let config : FeaturedIssueMagazineFeedGroupConfig // +0x10 (0xa0)
+	let config : FeaturedIssueMagazineFeedGroupConfig // +0x0 (0x0)
 
 	// Swift methods
+ }
+
+ struct NewsUI2.EmailSignupModel {
+
+	// Properties
+	let identifier : String // +0x0
+	let subscribeTo : FCNewsletterSubscription // +0x10
+	let existingSubscription : FCNewsletterSubscription // +0x18
+	let forceShow : Bool // +0x20
+	let headerImage : UIImage // +0x28
+	let titleText : String // +0x30
+	let bodyText : String // +0x40
+	let privacyIdentifier : String? // +0x50
+	let signMeUpButtonText : String // +0x60
+	let notNowButtonText : String // +0x70
  }
 
  struct NewsUI2.FollowingHeaderViewStyler: FollowingHeaderViewStylerType { }
@@ -4777,9 +5636,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let baseStyler : BaseStylerType // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scrollingBehavior : Õ¡ // +0x0 (0x0)
+	let scrollingBehavior : €	 // +0x0 (0x0)
 
 	// Swift methods
+ }
+
+ struct NewsUI2.TagFeedExpandContext {
+
+	// Properties
+	let pluginLayoutOptionsProvider : PluginLayoutOptionsProvider // +0x0
  }
 
  class NewsUI2.MagazineFeedViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -4788,31 +5653,94 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : MagazineFeedStylerType // +0x8 (0x28)
 	let eventHandler : MagazineFeedEventHandlerType // +0x30 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController : ôæ // +0x40 (0x8)
+	let blueprintViewController : }	 // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintSelectionProvider : k∆ // +0x48 (0x10)
+	let blueprintSelectionProvider : ﬂ"	 // +0x48 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let barCompressionManager : Sª // +0x58 (0x8)
+	let barCompressionManager : O	 // +0x58 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let alertPresenter : k // +0x60 (0x28)
+	let alertPresenter : ßi	 // +0x60 (0x28)
 	let offlineAlertControllerFactory : OfflineAlertControllerFactoryType // +0x88 (0x28)
 	let mastheadStyleOptionsProvider : MastheadStyleOptionsProviderType // +0xb0 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sharingActivityProviderFactory : +∏ // +0xd8 (0x28)
+	let sharingActivityProviderFactory : U%	 // +0xd8 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let heightChangeRelayoutThreshold : A // +0x100 (0x8)
-	var viewportFromLastRelayout : CGSize // +0x108 (0x10)
-	var isBeingUsedAsPlugin : Bool // +0x118 (0x1)
-	var pluggableDelegate : weak TUPluggableDelegate? // +0x120 (0x8)
+	let bundlePurchasePrewarmer : A	 // +0x100 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidBundleConfigurationManager : ì	 // +0x110 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let heightChangeRelayoutThreshold : õ_	 // +0x138 (0x8)
+	var viewportFromLastRelayout : CGSize // +0x140 (0x10)
+	var isBeingUsedAsPlugin : Bool // +0x150 (0x1)
+	var pluggableDelegate : weak TUPluggableDelegate? // +0x158 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1009b0  @objc MagazineFeedViewController.isBeingUsedAsPlugin <stripped>
-	0x1009c0  @objc MagazineFeedViewController.setIsBeingUsedAsPlugin: <stripped>
-	0x100ad0  @objc MagazineFeedViewController.pluggableDelegate <stripped>
-	0x100af0  @objc MagazineFeedViewController.setPluggableDelegate: <stripped>
-	0x100b10  @objc MagazineFeedViewController.initWithCoder: <stripped>
-	0x100c10  @objc MagazineFeedViewController.initWithNibName:bundle: <stripped>
-	0x100b60  @objc MagazineFeedViewController..cxx_destruct <stripped>
+	0x13a040  @objc MagazineFeedViewController.isBeingUsedAsPlugin <stripped>
+	0x13a050  @objc MagazineFeedViewController.setIsBeingUsedAsPlugin: <stripped>
+	0x13a080  @objc MagazineFeedViewController.pluggableDelegate <stripped>
+	0x13a0a0  @objc MagazineFeedViewController.setPluggableDelegate: <stripped>
+	0x13a0c0  @objc MagazineFeedViewController.initWithCoder: <stripped>
+	0x13a1e0  @objc MagazineFeedViewController.initWithNibName:bundle: <stripped>
+	0x13a110  @objc MagazineFeedViewController..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ struct NewsUI2.IssueListTagFeedGroup {
+
+	// Properties
+	let identifier : String
+	let issues : [FCIssue]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+	let channel : FCChannelProviding
+	let title : String
+ }
+
+ class NewsUI2.AudioOfflineArticleContributor : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	let articleIDsToDownload : FCObservable<NSArray> // +0x8 (0x8)
+	let articleDownloadOptions : FCArticleDownloadOptions // +0x10 (0x8)
+	let audioDataManager : AudioDataManagerType // +0x18 (0x28)
+	let scheduledRefreshManager : AudioScheduledRefreshManagerType // +0x40 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidBundleConfigManager : ì	 // +0x50 (0x28)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x78 (0x8)
+	let storageLevelProvider : AppStorageLevelProviderType // +0x80 (0x28)
+
+	// ObjC -> Swift bridged methods
+	0x140b90  @objc AudioOfflineArticleContributor.articleIDsToDownload <stripped>
+	0x140bb0  @objc AudioOfflineArticleContributor.articleDownloadOptions <stripped>
+	0x141970  @objc AudioOfflineArticleContributor.prepareToContributeWithCompletionHandler: <stripped>
+	0x141ab0  @objc AudioOfflineArticleContributor.init <stripped>
+	0x141b10  @objc AudioOfflineArticleContributor..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioPlaylistStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioPlaylistStoreType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var playlistUpdatedSignal : M-	 // +0x10 (0x8)
+	let audioPlaylist : FCAudioPlaylistType // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineService : ±≠	 // +0x20 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineCache : ”`	 // +0x48 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.EmailSignupURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let patterns :  empty-list  // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x18 (0x8)
+	let newsletterManager : FCNewsletterManager // +0x20 (0x8)
 
 	// Swift methods
  }
@@ -4821,24 +5749,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onTap : ˝˙ // +0x8 (0x8)
+	let onTap : o`	 // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x10afa0  @objc AdMarkerButton.initWithFrame: <stripped>
-	0x10b060  @objc AdMarkerButton.initWithCoder: <stripped>
-	0x10af80  @objc AdMarkerButton..cxx_destruct <stripped>
+	0x144000  @objc AdMarkerButton.initWithFrame: <stripped>
+	0x1440c0  @objc AdMarkerButton.initWithCoder: <stripped>
+	0x143fe0  @objc AdMarkerButton..cxx_destruct <stripped>
  }
 
- class NewsUI2.TopVideosModule : NSObject /usr/lib/libobjc.A.dylib {
+ class NewsUI2.AudioFeedBlueprintModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioFeedBlueprintModifierFactoryType {
 
 	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
-
-	// ObjC -> Swift bridged methods
-	0x10b3f0  @objc TopVideosModule.createPluginFactoryForParentView: <stripped>
-	0x10b4a0  @objc TopVideosModule.init <stripped>
-	0x10b500  @objc TopVideosModule..cxx_destruct <stripped>
+	let audioFeedSectionFactory : AudioFeedSectionFactoryType // +0x10 (0x28)
 
 	// Swift methods
  }
@@ -4848,18 +5770,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let magazineFeedServiceConfigFetcher : MagazineFeedServiceConfigFetcherType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let magazineFeedService : Ø
+	let magazineFeedService : S	
 	let personalizationService : MagazineFeedPersonalizationServiceType
 	var knownCursors : [String : FCForYouMagazineFeedCursor]
 	var knownGroups : [String : FCForYouBridgedFeedGroup]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lock : ù¨
+	var lock : 5	
 
 	// ObjC -> Swift bridged methods
-	0x10b780  @objc ForYouMagazineFeedManager.cursorForTopOfFeed <stripped>
-	0x10c510  @objc ForYouMagazineFeedManager.fetchNextGroupFromCursor:completion: <stripped>
-	0x10c5a0  @objc ForYouMagazineFeedManager.knownCursorForIdentifier: <stripped>
-	0x10c640  @objc ForYouMagazineFeedManager.knownGroupForIdentifier:headlines:assetHandles: <stripped>
+	0x144a90  @objc ForYouMagazineFeedManager.cursorForTopOfFeed <stripped>
+	0x145820  @objc ForYouMagazineFeedManager.fetchNextGroupFromCursor:completion: <stripped>
+	0x1458b0  @objc ForYouMagazineFeedManager.knownCursorForIdentifier: <stripped>
+	0x145950  @objc ForYouMagazineFeedManager.knownGroupForIdentifier:headlines:assetHandles: <stripped>
 
 	// Swift methods
  }
@@ -4873,14 +5795,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let assetHandles : [FCAssetHandle]
 
 	// ObjC -> Swift bridged methods
-	0x10cf20  @objc ForYouMagazineFeedGroup.identifier <stripped>
-	0x10cf40  @objc ForYouMagazineFeedGroup.headlines <stripped>
-	0x10cf90  @objc ForYouMagazineFeedGroup.assetHandles <stripped>
-	0x10cfe0  @objc ForYouMagazineFeedGroup.equivalentTopicIDs <stripped>
-	0x10d030  @objc ForYouMagazineFeedGroup.webEmbedURLs <stripped>
-	0x10d070  @objc ForYouMagazineFeedGroup.backingTagID <stripped>
-	0x10d130  @objc ForYouMagazineFeedGroup.init <stripped>
-	0x10d0b0  @objc ForYouMagazineFeedGroup..cxx_destruct <stripped>
+	0x146160  @objc ForYouMagazineFeedGroup.identifier <stripped>
+	0x146180  @objc ForYouMagazineFeedGroup.headlines <stripped>
+	0x1461d0  @objc ForYouMagazineFeedGroup.assetHandles <stripped>
+	0x146220  @objc ForYouMagazineFeedGroup.equivalentTopicIDs <stripped>
+	0x146270  @objc ForYouMagazineFeedGroup.webEmbedURLs <stripped>
+	0x1462b0  @objc ForYouMagazineFeedGroup.backingTag <stripped>
+	0x146370  @objc ForYouMagazineFeedGroup.init <stripped>
+	0x1462f0  @objc ForYouMagazineFeedGroup..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4888,13 +5810,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsUI2.ForYouMagazineFeedLocationCursor : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let feedLocation : FeedLocation
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedLocation : ŸQ	
 	let identifier : String
 
 	// ObjC -> Swift bridged methods
-	0x10d1e0  @objc ForYouMagazineFeedLocationCursor.identifier <stripped>
-	0x10d280  @objc ForYouMagazineFeedLocationCursor.init <stripped>
-	0x10d200  @objc ForYouMagazineFeedLocationCursor..cxx_destruct <stripped>
+	0x146420  @objc ForYouMagazineFeedLocationCursor.identifier <stripped>
+	0x1464c0  @objc ForYouMagazineFeedLocationCursor.init <stripped>
+	0x146440  @objc ForYouMagazineFeedLocationCursor..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4906,9 +5829,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let identifier : String
 
 	// ObjC -> Swift bridged methods
-	0x10d3b0  @objc ForYouMagazineFeedGroupsCursor.identifier <stripped>
-	0x10d440  @objc ForYouMagazineFeedGroupsCursor.init <stripped>
-	0x10d410  @objc ForYouMagazineFeedGroupsCursor..cxx_destruct <stripped>
+	0x1465f0  @objc ForYouMagazineFeedGroupsCursor.identifier <stripped>
+	0x146680  @objc ForYouMagazineFeedGroupsCursor.init <stripped>
+	0x146650  @objc ForYouMagazineFeedGroupsCursor..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4926,20 +5849,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case topic : TitleModel
  }
 
- class NewsUI2.TopOfFeedRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TopOfFeedRouterType {
-
-	// Properties
-	var controller : weak UIViewController? // +0x10 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x18 (0x28)
-
-	// Swift methods
- }
-
  class NewsUI2.MagazineFeedServiceProxy : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let magazineFeedService : FeedService // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let magazineFeedService : ÉO	 // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -4951,22 +5865,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsUI2.StubIssuesMagazineFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let config : IssuesMagazineFeedGroupConfig // +0x10 (0x80)
+	let config : IssuesMagazineFeedGroupConfig // +0x0 (0x0)
 
 	// Swift methods
- }
-
- struct NewsUI2.SearchMoreExpandModifier {
-
-	// Properties
-	let dataManager : SearchMoreDataManagerType // +0x0
-	let identifier : String // +0x10
- }
-
- enum NewsUI2.SavedLayoutSection {
-
-	// Properties
-	case blank  
  }
 
  enum NewsUI2.FollowingNotificationModify {
@@ -4976,12 +5877,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case disable : FollowingNotificationsModel
  }
 
+ class NewsUI2.AudioTabVisibilityManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioTabVisibilityManagerType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let audioTabVisibilitySignal : ø-	 // +0x10 (0x8)
+
+	// Swift methods
+ }
+
  class NewsUI2.StubFeaturedArticleMagazineFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let config : FeaturedArticleMagazineFeedGroupConfig // +0x10 (0xa9)
+	let config : FeaturedArticleMagazineFeedGroupConfig // +0x0 (0x0)
 
 	// Swift methods
+ }
+
+ struct NewsUI2.TagFeedReloadBlueprintModifier {
+
+	// Properties
+	let reloadRequest : TagFeedReloadRequest // +0x0
+	let sectionFactory : TagFeedSectionFactoryType // +0x8
  }
 
  class NewsUI2.TagReorderService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TagReorderServiceType {
@@ -4994,32 +5911,74 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  enum NewsUI2.BridgedNewsActivity2 { }
 
+ enum NewsUI2.NewsArticleTraits { }
+
  class NewsUI2.WelcomeInteractor : NSObject /usr/lib/libobjc.A.dylib, WelcomeInteractorType {
 
 	// Properties
 	var delegate : WelcomeInteractorTypeDelegate // +0x8 (0x10)
 	let dataManager : TSWelcomeDataManagerType // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var userTypePromise : „ß // +0x0 (0x0)
+	var userTypePromise : Ì // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedLoadedPromise : ”ß // +0x0 (0x0)
+	let feedLoadedPromise : › // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minimumTimePromise : ”ß // +0x0 (0x0)
+	let minimumTimePromise : › // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maximumTimePromise : ”ß // +0x0 (0x0)
+	let maximumTimePromise : › // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var isCloudKitReachablePromise : …ß // +0x0 (0x0)
+	var isCloudKitReachablePromise : ” // +0x0 (0x0)
 	var minimumTimer : NSTimer? // +0x0 (0x8)
 	var maximumTimer : NSTimer? // +0x0 (0x8)
-	var emailSignupDetectionManager : EmailSignupDetectionManagerType // +0x0 (0x10)
 	let appActivityMonitor : FCAppActivityMonitor // +0x0 (0x8)
 	let networkReachability : FCNetworkReachabilityType // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x11f610  @objc WelcomeInteractor.init <stripped>
-	0x11f4d0  @objc WelcomeInteractor..cxx_destruct <stripped>
+	0x168900  @objc WelcomeInteractor.init <stripped>
+	0x1687d0  @objc WelcomeInteractor..cxx_destruct <stripped>
 
 	// Swift methods
+ }
+
+ class NewsUI2.NotificationPromptManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let appConfigurationManager : FCNewsAppConfigurationManager // +0x10 (0x8)
+	let notificationConfiguration : NotificationConfigurationType // +0x18 (0x28)
+	let notificationService : NotificationServiceType // +0x40 (0x28)
+	let pptContext : FCPPTContext // +0x68 (0x8)
+	let settings : NotificationPrompterSettings // +0x70 (0x18)
+	var authorizationStatus : NotificationAuthorizationStatus // +0x88 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x169c30  @objc NotificationPromptManager.subscribeNotificationPromptForTagID: <stripped>
+	0x169d60  @objc NotificationPromptManager.notificationPrompt <stripped>
+
+	// Swift methods
+ }
+
+ struct NewsUI2.NotificationPrompterSettings {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let lastDeclinedNotificationAlertDate : ÁF	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let initialNotificationPromptShown : ÒF	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let notificationAlertFrequency : _	 // +0x10
+ }
+
+ struct NewsUI2.TopicTodayFeedGroup {
+
+	// Properties
+	let identifier : String
+	let formatGroup : FormatFeedGroup
+ }
+
+ enum NewsUI2.NowPlayingRouteModel {
+
+	// Properties
+	case article : ArticleRouteModel
  }
 
  class NewsUI2.TodayBlueprintModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TodayBlueprintModifierFactoryType {
@@ -5058,6 +6017,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case bestOfBundle : BestOfBundleMagazineFeedGroup
 	case format : FormatFeedGroup
 	case newspaper : NewspaperGroup
+ }
+
+ struct NewsUI2.MagazineTodayFeedGroupKnobs {
+
+	// Properties
+	let rankMultiplier : Double // +0x0
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case rankMultiplier  
  }
 
  class NewsUI2.IssueErrorAlertPresenterFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, IssueErrorAlertPresenterFactoryType {
@@ -5104,6 +6075,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case maxAge  
  }
 
+ class NewsUI2.AMSNotificationHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let userInfo : FCUserInfo // +0x10 (0x8)
+	let notificationService : NotificationServiceType // +0x18 (0x28)
+
+	// Swift methods
+ }
+
+ class NewsUI2.AlertNewsletterUnexpectedError : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
  class NewsUI2.FollowingFooterViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingFooterViewRendererType {
 
 	// Properties
@@ -5116,39 +6100,81 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutOptions : -	
+	let layoutOptions : ón	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let topPadding : A
+	let topPadding : õ_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bottomPadding : A
+	let bottomPadding : õ_	
  }
 
  struct NewsUI2.MagazineFeedPaywallLayoutOptions {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintLayoutOptions : -	
+	let blueprintLayoutOptions : ón	
 	let parentSafeAreaInsets : UIEdgeInsets
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let topOffset : A
+	let topOffset : õ_	
 	let forceDefaultStyling : Bool
  }
 
- class NewsUI2.TopVideosBlueprintModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TopVideosBlueprintModifierFactoryType {
+ class NewsUI2.CloseButton {
+ enum NewsUI2.AudioPlaybackState {
 
 	// Properties
-	let headlineModelFactory : HeadlineModelFactoryType // +0x10 (0x28)
-
-	// Swift methods
+	case playing : AudioPlaybackRate
+	case paused : AudioPlaybackRate
+	case stopped  
  }
 
- class NewsUI2.CloseButton {
  class NewsUI2.MyMagazinesEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MyMagazinesEventHandlerType {
 
 	// Properties
 	var delegate : MyMagazinesEventHandlerTypeDelegate // +0x10 (0x10)
 	let interactor : MyMagazinesInteractorType // +0x20 (0x10)
 	let router : MyMagazinesRouterType // +0x30 (0x28)
+
+	// Swift methods
+ }
+
+ struct NewsUI2.HistoryFeedReloadRequest {
+
+	// Properties
+	let headlineIDs : Set<String> // +0x0
+ }
+
+ struct NewsUI2.TagFeedConfig {
+
+	// Properties
+	let tagID : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publishDate : ÛI	
+	let groups : TagFeedGroupConfig
+	let desiredHeadlineCount : Int
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case tagID  
+	case publishDate  
+	case groups  
+	case desiredHeadlineCount  
+ }
+
+ class NewsUI2.AudioActionHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let headlineConverter : AudioHeadlineConverterType // +0x10 (0x28)
+	let actionSheetProvider : AudioActionSheetProviderType // +0x38 (0x28)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x60 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let commandCenter : •	 // +0x68 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let playbackState : Ò-	 // +0x90 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x194940  @objc AudioActionHandler.performActionsFor:willPerform: <stripped>
 
 	// Swift methods
  }
@@ -5161,16 +6187,50 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ class NewsUI2.LocalNewsGroupService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LocalNewsGroupServiceType {
+
+	// Properties
+	let sectionHeadlinesService : ChannelSectionHeadlinesServiceType // +0x10 (0x28)
+	let personalizer : ChannelSectionsGroupPersonalizerType // +0x38 (0x28)
+	let heroSelector : ChannelSectionsHeroSelectorType // +0x60 (0x28)
+	let channelFontService : ChannelFontServiceType // +0x88 (0x28)
+	let weatherService : NewsWeatherServiceType // +0xb0 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let formatService : £H	 // +0xd8 (0x28)
+	let subscriptionController : FCSubscriptionController // +0x100 (0x8)
+	let locationManager : TSLocationDetectionManagerType // +0x108 (0x8)
+	let localAreasManager : FCLocalAreasManager // +0x110 (0x8)
+	let suggestionStatusProvider : TSSiriSuggestionStatusProvider // +0x118 (0x8)
+
+	// Swift methods
+	0x1951b0  func <stripped> // method 
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case invalidChannelID : (channelID: String)
+	case notSubscribedToChannel : (channelID: String)
+	case noCompatiblePackageForChannelID : (channelID: String)
+	case noArticlesInDefaultSection : (channelID: String)
+	case notEnoughHerosForLayout : (channelID: String)
+	case notEnoughSectionsForLayout : (channelID: String)
+	case missingGeoForChannel : (channelID: String)
+	case channelNotInLocalAreasForCurrentLocation : (channelID: String)
+	case noLocationAvailable  
+	case noLocalAreasMappingAvailable  
+ }
+
  class NewsUI2.MagazineCategoriesRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineCategoriesRouterType {
 
 	// Properties
 	var controller : weak UIViewController? // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x18 (0x28)
+	let resolver : È_	 // +0x18 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x40 (0x8)
+	let tracker : 9P	 // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x48 (0x8)
+	let navigator : =e	 // +0x48 (0x8)
 
 	// Swift methods
  }
@@ -5185,17 +6245,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let traitCollection : UITraitCollection
 	let statusBarFrame : CGRect
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let displayOptions : √Ø
+	let displayOptions : ›	
 
 	// ObjC -> Swift bridged methods
-	0x13dc50  @objc BridgedMastheadViewLayoutOptions.layoutMargins <stripped>
-	0x13dca0  @objc BridgedMastheadViewLayoutOptions.traitCollection <stripped>
-	0x13df80  @objc BridgedMastheadViewLayoutOptions.initWithBounds:layoutMargins:traitCollection:statusBarFrame:displayOptions: <stripped>
-	0x13e0e0  @objc BridgedMastheadViewLayoutOptions.init <stripped>
-	0x13e070  @objc BridgedMastheadViewLayoutOptions..cxx_destruct <stripped>
+	0x19d0f0  @objc BridgedMastheadViewLayoutOptions.layoutMargins <stripped>
+	0x19d140  @objc BridgedMastheadViewLayoutOptions.traitCollection <stripped>
+	0x19d420  @objc BridgedMastheadViewLayoutOptions.initWithBounds:layoutMargins:traitCollection:statusBarFrame:displayOptions: <stripped>
+	0x19d580  @objc BridgedMastheadViewLayoutOptions.init <stripped>
+	0x19d510  @objc BridgedMastheadViewLayoutOptions..cxx_destruct <stripped>
 
 	// Swift methods
-	0x13dd50  class func BridgedMastheadViewLayoutOptions.__allocating_init(bounds:layoutMargins:traitCollection:statusBarFrame:displayOptions:) // init 
+	0x19d1f0  class func BridgedMastheadViewLayoutOptions.__allocating_init(bounds:layoutMargins:traitCollection:statusBarFrame:displayOptions:) // init 
  }
 
  enum NewsUI2.MastheadModelType { }
@@ -5203,18 +6263,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsUI2.BridgedMastheadModel : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let mastheadModel : MastheadModel // +0x8 (0x1)
+	let mastheadModel : MastheadModel
 
 	// ObjC -> Swift bridged methods
-	0x13e1e0  @objc BridgedMastheadModel.appName <stripped>
-	0x13e390  @objc BridgedMastheadModel.formattedDate <stripped>
-	0x13e4d0  @objc BridgedMastheadModel.initWithType: <stripped>
-	0x13e5c0  @objc BridgedMastheadModel.init <stripped>
+	0x19d680  @objc BridgedMastheadModel.appName <stripped>
+	0x19d7d0  @objc BridgedMastheadModel.formattedDate <stripped>
+	0x19d960  @objc BridgedMastheadModel.initWithType: <stripped>
+	0x19da80  @objc BridgedMastheadModel.init <stripped>
+	0x19da10  @objc BridgedMastheadModel..cxx_destruct <stripped>
 
 	// Swift methods
-	0x13e280  func BridgedMastheadModel.appName.getter // getter 
-	0x13e3d0  func BridgedMastheadModel.formattedDate.getter // getter 
-	0x13e3f0  class func BridgedMastheadModel.__allocating_init(type:) // init 
+	0x19d740  func BridgedMastheadModel.appName.getter // getter 
+	0x19d830  func BridgedMastheadModel.formattedDate.getter // getter 
+	0x19d850  class func BridgedMastheadModel.__allocating_init(type:) // init 
  }
 
  class NewsUI2.BridgedMastheadViewProviderFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -5224,7 +6285,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let layoutAttributesFactory : MastheadViewLayoutAttributesFactoryType
 
 	// ObjC -> Swift bridged methods
-	0x13ec10  @objc BridgedMastheadViewProviderFactory.createMastheadViewProviderForModel: <stripped>
+	0x19e100  @objc BridgedMastheadViewProviderFactory.createMastheadViewProviderForModel: <stripped>
 
 	// Swift methods
  }
@@ -5235,8 +6296,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let baseStyler : BaseStylerType
 
 	// ObjC -> Swift bridged methods
-	0x13ec80  @objc BridgedMastheadTheme.mastheadHeadingColor <stripped>
-	0x13ed10  @objc BridgedMastheadTheme.mastheadSubheadingColor <stripped>
+	0x19e170  @objc BridgedMastheadTheme.mastheadHeadingColor <stripped>
+	0x19e200  @objc BridgedMastheadTheme.mastheadSubheadingColor <stripped>
 
 	// Swift methods
  }
@@ -5245,18 +6306,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : A
+	let height : õ_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let topToText : A
+	let topToText : õ_	
 
 	// ObjC -> Swift bridged methods
-	0x13edc0  @objc BridgedMastheadViewLayoutAttributes.height <stripped>
-	0x13ee00  @objc BridgedMastheadViewLayoutAttributes.topToText <stripped>
-	0x13ef00  @objc BridgedMastheadViewLayoutAttributes.initWithHeight:topToText: <stripped>
-	0x13ef90  @objc BridgedMastheadViewLayoutAttributes.init <stripped>
+	0x19e2b0  @objc BridgedMastheadViewLayoutAttributes.height <stripped>
+	0x19e2f0  @objc BridgedMastheadViewLayoutAttributes.topToText <stripped>
+	0x19e3f0  @objc BridgedMastheadViewLayoutAttributes.initWithHeight:topToText: <stripped>
+	0x19e480  @objc BridgedMastheadViewLayoutAttributes.init <stripped>
 
 	// Swift methods
-	0x13ee40  class func BridgedMastheadViewLayoutAttributes.__allocating_init(height:topToText:) // init 
+	0x19e330  class func BridgedMastheadViewLayoutAttributes.__allocating_init(height:topToText:) // init 
  }
 
  class NewsUI2.BridgedMastheadViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -5265,7 +6326,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let layoutAttributesFactory : MastheadViewLayoutAttributesFactoryType
 
 	// ObjC -> Swift bridged methods
-	0x13f340  @objc BridgedMastheadViewLayoutAttributesFactory.makeLayoutAttributesForModelType:withOptions: <stripped>
+	0x19e960  @objc BridgedMastheadViewLayoutAttributesFactory.makeLayoutAttributesForModelType:withOptions: <stripped>
 
 	// Swift methods
  }
@@ -5273,23 +6334,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.FeaturedIssueArticleMagazineFeedGroupConfig {
 
 	// Properties
-	let kind : MagazineFeedGroupKind // +0x0
-	let identifier : String // +0x8
-	let position : FeedGroupPosition // +0x18
-	let groupTitle : String // +0x20
-	let groupTitleColor : String // +0x30
-	let groupDarkStyleTitleColor : String // +0x40
-	let groupSubtitle : String? // +0x50
-	let issueID : String // +0x60
-	let featuredArticle : MagazineFeedArticle // +0x70
-	let additionalArticles : MagazineFeedArticle // +0x78
-	let availableInForYou : Bool // +0x80
-	let availableInMagazineFeed : Bool // +0x81
-	let paidVisibility : FeedGroupPaidVisibility // +0x82
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x83
-	let allowDuplicatesAcrossGroups : Bool // +0x84
-	let minNewsVersion : String? // +0x88
-	let maxNewsVersion : String? // +0x98
+	let kind : MagazineFeedGroupKind
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+	let groupTitle : String
+	let groupTitleColor : String
+	let groupDarkStyleTitleColor : String
+	let groupSubtitle : String?
+	let issue : MagazineFeedIssue
+	let featuredArticle : MagazineFeedArticle
+	let additionalArticles : MagazineFeedArticle
+	let availableInForYou : Bool
+	let availableInMagazineFeed : Bool
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let allowDuplicatesAcrossGroups : Bool
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
  }
 
  enum NewsUI2.Keys {
@@ -5302,6 +6366,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case groupDarkStyleTitleColor  
 	case groupSubtitle  
 	case issueID  
+	case issue  
 	case featuredArticle  
 	case featuredArticleID  
 	case additionalArticles  
@@ -5315,11 +6380,45 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case maxNewsVersion  
  }
 
- struct NewsUI2.SearchMoreArticlePrewarmModifier {
+ class NewsUI2.NewsActivityInfoDeserializer : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var initialArticleResults : [FCArticleSearchResult] // +0x0
-	let headlineModelFactory : HeadlineModelFactoryType // +0x8
+	let analyticsReferralFactory : AnalyticsReferralFactory // +0x8 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x1a2d60  @objc NewsActivityInfoDeserializer.init <stripped>
+	0x1a2cf0  @objc NewsActivityInfoDeserializer..cxx_destruct <stripped>
+
+	// Swift methods
+	0x1a1fe0  func NewsActivityInfoDeserializer.deserialize(activityType:executionContext:from:) // method 
+	0x1a25d0  func <stripped> // method 
+	0x1a27a0  func <stripped> // method 
+	0x1a2ac0  func <stripped> // method 
+ }
+
+ enum NewsUI2.DeserializationError {
+
+	// Properties
+	case unrecognizedActivityType : (activityType: String)
+	case missingRequiredField : (field: String)
+	case wrongType : (field: String)
+ }
+
+ class NewsUI2.UserActivityHandlerAssembly : NSObject /usr/lib/libobjc.A.dylib {
+	// ObjC -> Swift bridged methods
+	0x1a3370  @objc UserActivityHandlerAssembly.init <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioPlayer {
+ enum NewsUI2.AudioPlaybackRate {
+
+	// Properties
+	case two  
+	case oneAndAHalf  
+	case one  
+	case threeQuarters  
  }
 
  enum NewsUI2.MagazineFeedGroupFilterOption {
@@ -5328,6 +6427,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case none  
 	case seen  
 	case read  
+ }
+
+ class NewsUI2.NoopAudioAssembly : NSObject /usr/lib/libobjc.A.dylib {
+	// ObjC -> Swift bridged methods
+	0x1a9aa0  @objc NoopAudioAssembly.init <stripped>
  }
 
  enum NewsUI2.FollowingSelectionModel {
@@ -5371,21 +6475,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- class NewsUI2.MoreVideosRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MoreVideosRouterType {
+ enum NewsUI2.SearchLayoutModel {
 
 	// Properties
-	var controller : MoreVideosViewController // +0x10 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x18 (0x28)
-
-	// Swift methods
+	case channel : SearchMoreTagModel
  }
 
- enum NewsUI2.FeedCachePolicy {
-
-	// Properties
-	case default  
-	case cachedOnly  
+ class NewsUI2.TrackerAssembly : NSObject /usr/lib/libobjc.A.dylib {
+	// ObjC -> Swift bridged methods
+	0x1acc50  @objc TrackerAssembly.init <stripped>
  }
 
  class NewsUI2.MyMagazinesSectionHeaderViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MyMagazinesSectionHeaderViewLayoutAttributesFactoryType {
@@ -5404,10 +6502,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ class NewsUI2.AudioScheduledRefreshManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioScheduledRefreshManagerType {
+
+	// Properties
+	let dataManager : AudioDataManagerType // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidBundleConfigManager : ì	 // +0x38 (0x28)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x60 (0x8)
+	let offlineArticleManager : FCOfflineArticleManagerType // +0x68 (0x8)
+	let activityScheduler : FCBackgroundActivityScheduler // +0x70 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let refreshDeduper : ]Ò // +0x78 (0x8)
+
+	// Swift methods
+ }
+
  class NewsUI2.StubPaywallMagazineFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let config : PaywallMagazineFeedGroupConfig // +0x10 (0x48)
+	let config : PaywallMagazineFeedGroupConfig // +0x0 (0x0)
 
 	// Swift methods
  }
@@ -5422,16 +6535,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ class NewsUI2.TagFeedRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TagFeedRouterType {
+
+	// Properties
+	var controller : weak UIViewController? // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x40 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x48 (0x8)
+
+	// Swift methods
+ }
+
  class NewsUI2.FollowingDislikedRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingDislikedRouterType {
 
 	// Properties
 	var controller : weak UIViewController? // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x18 (0x28)
+	let resolver : È_	 // +0x18 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x40 (0x8)
+	let tracker : 9P	 // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x48 (0x8)
+	let navigator : =e	 // +0x48 (0x8)
 
 	// Swift methods
  }
@@ -5442,49 +6569,47 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let tagModel : TagModel // +0x0
  }
 
- class NewsUI2.TopOfFeedInteractor : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TopOfFeedInteractorType {
+ struct NewsUI2.LocalNewsGroup {
 
 	// Properties
-	var delegate : TopOfFeedInteractorTypeDelegate // +0x10 (0x10)
-	let dataManager : TopOfFeedDataManagerType // +0x20 (0x10)
-
-	// Swift methods
+	let identifier : String
+	let formatGroup : FormatFeedGroup
+	let channel : FCChannelProviding
+	let sections : [FCSectionProviding]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let weather : ÒD	
+	let additionalAssetHandles : [FCAssetHandle]
  }
 
  struct NewsUI2.IssuesMagazineFeedGroup {
 
 	// Properties
-	let identifier : String // +0x0
-	let groupTitle : String // +0x10
-	let groupTitleColor : UIColor? // +0x20
-	let groupSubtitle : String? // +0x28
-	let issues : [FCIssue] // +0x38
-	let paidVisibility : FeedGroupPaidVisibility // +0x40
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x41
-	let rankMultiplier : Double // +0x48
-	let allowDuplicatesAcrossGroups : Bool // +0x50
+	let identifier : String
+	let groupTitle : String
+	let groupTitleColor : UIColor?
+	let groupSubtitle : String?
+	let issues : [FCIssue]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let rankMultiplier : Double
+	let allowDuplicatesAcrossGroups : Bool
  }
 
  class NewsUI2.MagazineFeedModule : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
+	let resolver : È_	 // +0x8 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x30 (0x8)
+	let tracker : 9P	 // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1487c0  @objc MagazineFeedModule.createViewController <stripped>
-	0x148900  @objc MagazineFeedModule.createPluggableViewController <stripped>
-	0x148a60  @objc MagazineFeedModule.init <stripped>
-	0x1489e0  @objc MagazineFeedModule..cxx_destruct <stripped>
-
-	// Swift methods
- }
-
- class NewsUI2.TopOfFeedAssembly : NSObject /usr/lib/libobjc.A.dylib {
-	// ObjC -> Swift bridged methods
-	0x149280  @objc TopOfFeedAssembly.init <stripped>
+	0x1b3c30  @objc MagazineFeedModule.createViewController <stripped>
+	0x1b3d50  @objc MagazineFeedModule.createPluggableViewController <stripped>
+	0x1b3eb0  @objc MagazineFeedModule.init <stripped>
+	0x1b3e30  @objc MagazineFeedModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -5497,40 +6622,55 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ struct NewsUI2.FollowingNotificationsSectionFooterViewLayoutOptions {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let layoutOptions : ón	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let topMargin : õ_	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bottomMargin : õ_	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let leftMargin : õ_	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rightMargin : õ_	
+ }
+
  class NewsUI2.BlockingPluginManager : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pluginManager : ì£ // +0x8 (0x8)
+	let pluginManager : É0	 // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var plugins : String // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var pluginModels : String // +0x18 (0x8)
 	var viewControllers : [String : UIViewController] // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dataLock : ù¨ // +0x28 (0x8)
+	var dataLock : 5	 // +0x28 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var viewControllersLock : ù¨ // +0x30 (0x8)
+	var viewControllersLock : 5	 // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x14aa70  @objc BlockingPluginManager.pluginManager <stripped>
-	0x14ac70  @objc BlockingPluginManager.init <stripped>
-	0x14ad40  @objc BlockingPluginManager.containsPluginForIdentifier: <stripped>
-	0x14afe0  @objc BlockingPluginManager.registerAndInitializePlugin: <stripped>
-	0x14b3d0  @objc BlockingPluginManager.relayoutAll <stripped>
-	0x14b470  @objc BlockingPluginManager.waitForSizeForIdentifier: <stripped>
-	0x14b600  @objc BlockingPluginManager.viewControllerForIdentifier: <stripped>
-	0x14b870  @objc BlockingPluginManager.removeAll <stripped>
-	0x14bd60  @objc BlockingPluginManager..cxx_destruct <stripped>
+	0x1b58a0  @objc BlockingPluginManager.pluginManager <stripped>
+	0x1b5aa0  @objc BlockingPluginManager.init <stripped>
+	0x1b5b70  @objc BlockingPluginManager.containsPluginForIdentifier: <stripped>
+	0x1b5e10  @objc BlockingPluginManager.registerAndInitializePlugin: <stripped>
+	0x1b6200  @objc BlockingPluginManager.relayoutAll <stripped>
+	0x1b62a0  @objc BlockingPluginManager.waitForSizeForIdentifier: <stripped>
+	0x1b6430  @objc BlockingPluginManager.viewControllerForIdentifier: <stripped>
+	0x1b66a0  @objc BlockingPluginManager.removeAll <stripped>
+	0x1b6ba0  @objc BlockingPluginManager..cxx_destruct <stripped>
 
 	// Swift methods
-	0x14ac90  func BlockingPluginManager.containsPlugin(for:) // method 
-	0x14adc0  func BlockingPluginManager.registerAndInitialize(plugin:) // method 
-	0x14b030  func BlockingPluginManager.relayoutAll() // method 
-	0x14b400  func BlockingPluginManager.waitForSize(for:) // method 
-	0x14b560  func BlockingPluginManager.viewController(for:) // method 
-	0x14b700  func BlockingPluginManager.removeAll() // method 
-	0x14b8a0  func <stripped> // method 
+	0x1b5ac0  func BlockingPluginManager.containsPlugin(for:) // method 
+	0x1b5bf0  func BlockingPluginManager.registerAndInitialize(plugin:) // method 
+	0x1b5e60  func BlockingPluginManager.relayoutAll() // method 
+	0x1b6230  func BlockingPluginManager.waitForSize(for:) // method 
+	0x1b6390  func BlockingPluginManager.viewController(for:) // method 
+	0x1b6530  func BlockingPluginManager.removeAll() // method 
+	0x1b66d0  func <stripped> // method 
  }
 
  class NewsUI2.MagazineGridEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineGridEventHandlerType {
@@ -5549,8 +6689,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let notificationService : NotificationServiceType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x14dfc0  @objc NotificationAuthorizationRequester.init <stripped>
-	0x14dfa0  @objc NotificationAuthorizationRequester..cxx_destruct <stripped>
+	0x1b8e90  @objc NotificationAuthorizationRequester.init <stripped>
+	0x1b8e70  @objc NotificationAuthorizationRequester..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -5559,18 +6699,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
+	let resolver : È_	 // +0x8 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x30 (0x8)
+	let tracker : 9P	 // +0x30 (0x8)
 	let layoutOptionsProvider : PluginLayoutOptionsProvider // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x14ebf0  @objc ForYouMagazinesPluginFactory.createPluginWithIdentifier:group: <stripped>
-	0x14ed50  @objc ForYouMagazinesPluginFactory.init <stripped>
-	0x14ecc0  @objc ForYouMagazinesPluginFactory..cxx_destruct <stripped>
+	0x1b9980  @objc ForYouMagazinesPluginFactory.createPluginWithIdentifier:group: <stripped>
+	0x1b9ae0  @objc ForYouMagazinesPluginFactory.init <stripped>
+	0x1b9a50  @objc ForYouMagazinesPluginFactory..cxx_destruct <stripped>
 
 	// Swift methods
-	0x14e230  class func ForYouMagazinesPluginFactory.__allocating_init(resolver:tracker:layoutOptionsProvider:) // init 
+	0x1b8ef0  class func ForYouMagazinesPluginFactory.__allocating_init(resolver:tracker:layoutOptionsProvider:) // init 
  }
 
  class NewsUI2.FollowingBrowseButtonViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -5578,7 +6718,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let styler : FollowingBrowseButtonViewStylerType // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cache : Ûõ // +0x38 (0x8)
+	var cache : ›Ô // +0x38 (0x8)
 
 	// Swift methods
  }
@@ -5588,8 +6728,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let buttonFrame : CGRect // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : A // +0x20
+	let height : õ_	 // +0x20
 	let shouldLayoutForLargeText : Bool // +0x28
+ }
+
+ class NewsUI2.AudioFeedPlacardView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	let titleLabel : UILabel // +0x8 (0x8)
+	let detailLabel : UILabel // +0x10 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x1ba540  @objc AudioFeedPlacardView.initWithFrame: <stripped>
+	0x1ba570  @objc AudioFeedPlacardView.initWithCoder: <stripped>
+	0x1ba5c0  @objc AudioFeedPlacardView..cxx_destruct <stripped>
  }
 
  struct NewsUI2.MagazineFeedPoolIssue {
@@ -5606,35 +6758,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : MagazineFeedBlueprintViewSupplementaryProviderDelegate // +0x10 (0x10)
 	let groupTitleViewRenderer : MagazineFeedGroupTitleViewRendererType // +0x20 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedItemSupplementaryRenderer : i˜ // +0x48 (0x10)
+	let feedItemSupplementaryRenderer : M[	 // +0x48 (0x10)
 	let separatorViewContainerViewRenderer : SeparatorViewContainerViewRendererType // +0x58 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sectionFooterViewRenderer : {≠ // +0x80 (0x28)
+	let sectionFooterViewRenderer : Y	 // +0x80 (0x28)
 
 	// Swift methods
  }
 
- class NewsUI2.SpecialEventsTitleModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let title : String // +0x10 (0x10)
-	let action : SpecialEventsAction // +0x20 (0x8)
-
-	// Swift methods
- }
-
- class NewsUI2.FeedAssembly : NSObject /usr/lib/libobjc.A.dylib {
-	// ObjC -> Swift bridged methods
-	0x155940  @objc FeedAssembly.init <stripped>
- }
-
- enum NewsUI2.EmailSignupAnalyticEvent {
-
-	// Properties
-	case signup : (emailSignUpPresentationStartDate: NSDate)
-	case decline : (emailSignUpPresentationStartDate: NSDate)
- }
-
+ class NewsUI2.AudioPlaybackConductor {
  struct NewsUI2.OffensiveViewStyler: OffensiveViewStylerType {
 
 	// Properties
@@ -5649,11 +6781,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let backgroundColor : UIColor // +0x10
  }
 
+ enum NewsUI2.SearchMoreArticlesRouteModel {
+
+	// Properties
+	case article : ArticleRouteModel
+ }
+
+ enum NewsUI2.SearchMoreTagsSectionDescriptor {
+
+	// Properties
+	case tags  
+	case gap  
+ }
+
  struct NewsUI2.MagazineGridItemTraitChangeModifier {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let item : °ˇ
+	let item : e	
 	let action : UserAction
  }
 
@@ -5683,15 +6828,67 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ class NewsUI2.AudioFeedRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioFeedRouterType {
+
+	// Properties
+	var controller : weak UIViewController? // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x40 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x48 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.SavedFeedBlueprintViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var delegate : SavedFeedBlueprintViewCellProviderDelegate // +0x10 (0x10)
+	let baseStyler : BaseStylerType // +0x20 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedItemRenderer : ≠§	 // +0x48 (0x10)
+
+	// Swift methods
+ }
+
+ class NewsUI2.NowPlayingActivityViewControllerFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, NowPlayingActivityViewControllerFactoryType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let sharingActivityItemFactory : õJ	 // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let sharingActivityProviderFactory : U%	 // +0x38 (0x28)
+	let reportConcernModule : TSReportConcernModuleType // +0x60 (0x8)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x68 (0x8)
+
+	// Swift methods
+ }
+
+ enum NewsUI2.SearchMoreArticlesLayoutModel {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case feedItem : G\	
+ }
+
  class NewsUI2.MyMagazinesModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MyMagazinesModuleType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x10 (0x28)
+	let resolver : È_	 // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x38 (0x8)
+	let tracker : 9P	 // +0x38 (0x8)
 
 	// Swift methods
+ }
+
+ enum NewsUI2.ShareLinkContext {
+
+	// Properties
+	case none  
+	case audioPlayer  
  }
 
  class NewsUI2.MagazineFeedVideoPaywallView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -5701,12 +6898,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let largeTextLabel : UILabel // +0x10 (0x8)
 	let smallTextLabel : UILabel // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButton : Öú // +0x20 (0x8)
+	let subscribeButton : ˚Ì // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x15a270  @objc MagazineFeedVideoPaywallView.initWithFrame: <stripped>
-	0x15a2a0  @objc MagazineFeedVideoPaywallView.initWithCoder: <stripped>
-	0x15a310  @objc MagazineFeedVideoPaywallView..cxx_destruct <stripped>
+	0x1cc2f0  @objc MagazineFeedVideoPaywallView.initWithFrame: <stripped>
+	0x1cc320  @objc MagazineFeedVideoPaywallView.initWithCoder: <stripped>
+	0x1cc390  @objc MagazineFeedVideoPaywallView..cxx_destruct <stripped>
  }
 
  struct NewsUI2.FeaturedArticleMagazineFeedGroupKnobs {
@@ -5731,6 +6928,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case rankMultiplier  
  }
 
+ class NewsUI2.SearchBlueprintViewHeaderProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
  class NewsUI2.MagazineFeedInteractor {
  class NewsUI2.HeadlineViewAnimatedViewProperties : NSObject /usr/lib/libobjc.A.dylib {
 
@@ -5739,20 +6940,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var thumbnailViewForAnimator : UIImageView? // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x16acb0  @objc HeadlineViewAnimatedViewProperties.thumbnailImageViewFrame <stripped>
-	0x16ad50  @objc HeadlineViewAnimatedViewProperties.setThumbnailImageViewFrame: <stripped>
-	0x16ae70  @objc HeadlineViewAnimatedViewProperties.thumbnailViewForAnimator <stripped>
-	0x16af00  @objc HeadlineViewAnimatedViewProperties.setThumbnailViewForAnimator: <stripped>
-	0x16b0c0  @objc HeadlineViewAnimatedViewProperties.init <stripped>
-	0x16b050  @objc HeadlineViewAnimatedViewProperties..cxx_destruct <stripped>
+	0x1dd7c0  @objc HeadlineViewAnimatedViewProperties.thumbnailImageViewFrame <stripped>
+	0x1dd860  @objc HeadlineViewAnimatedViewProperties.setThumbnailImageViewFrame: <stripped>
+	0x1dd980  @objc HeadlineViewAnimatedViewProperties.thumbnailViewForAnimator <stripped>
+	0x1dda10  @objc HeadlineViewAnimatedViewProperties.setThumbnailViewForAnimator: <stripped>
+	0x1ddbd0  @objc HeadlineViewAnimatedViewProperties.init <stripped>
+	0x1ddb60  @objc HeadlineViewAnimatedViewProperties..cxx_destruct <stripped>
 
 	// Swift methods
-	0x16ad00  func HeadlineViewAnimatedViewProperties.thumbnailImageViewFrame.getter // getter 
-	0x16adb0  func HeadlineViewAnimatedViewProperties.thumbnailImageViewFrame.setter // setter 
-	0x16ae20  func HeadlineViewAnimatedViewProperties.thumbnailImageViewFrame.modify // modifyCoroutine 
-	0x16aec0  func HeadlineViewAnimatedViewProperties.thumbnailViewForAnimator.getter // getter 
-	0x16af60  func HeadlineViewAnimatedViewProperties.thumbnailViewForAnimator.setter // setter 
-	0x16afb0  func HeadlineViewAnimatedViewProperties.thumbnailViewForAnimator.modify // modifyCoroutine 
+	0x1dd810  func HeadlineViewAnimatedViewProperties.thumbnailImageViewFrame.getter // getter 
+	0x1dd8c0  func HeadlineViewAnimatedViewProperties.thumbnailImageViewFrame.setter // setter 
+	0x1dd930  func HeadlineViewAnimatedViewProperties.thumbnailImageViewFrame.modify // modifyCoroutine 
+	0x1dd9d0  func HeadlineViewAnimatedViewProperties.thumbnailViewForAnimator.getter // getter 
+	0x1dda70  func HeadlineViewAnimatedViewProperties.thumbnailViewForAnimator.setter // setter 
+	0x1ddac0  func HeadlineViewAnimatedViewProperties.thumbnailViewForAnimator.modify // modifyCoroutine 
  }
 
  enum NewsUI2.HeadlineViewRequestType {
@@ -5808,11 +7009,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var controller : weak UIViewController? // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x18 (0x28)
+	let resolver : È_	 // +0x18 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x40 (0x8)
+	let tracker : 9P	 // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x48 (0x8)
+	let navigator : =e	 // +0x48 (0x8)
 
 	// Swift methods
  }
@@ -5826,18 +7027,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.TopicMagazineFeedGroupConfig {
 
 	// Properties
-	let kind : MagazineFeedGroupKind // +0x0
-	let identifier : String // +0x8
-	let position : FeedGroupPosition // +0x18
-	let groupTitleColors : [String] // +0x20
-	let groupDarkStyleTitleColors : [String] // +0x28
-	let availableInForYou : Bool // +0x30
-	let availableInMagazineFeed : Bool // +0x31
-	let paidVisibility : FeedGroupPaidVisibility // +0x32
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x33
-	let allowDuplicatesAcrossGroups : Bool // +0x34
-	let minNewsVersion : String? // +0x38
-	let maxNewsVersion : String? // +0x48
+	let kind : MagazineFeedGroupKind
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+	let groupTitleColors : [String]
+	let groupDarkStyleTitleColors : [String]
+	let availableInForYou : Bool
+	let availableInMagazineFeed : Bool
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let allowDuplicatesAcrossGroups : Bool
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
  }
 
  enum NewsUI2.Keys {
@@ -5858,24 +7062,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case maxNewsVersion  
  }
 
- enum NewsUI2.Errors {
-
-	// Properties
-	case noChannelIDs  
- }
-
  struct NewsUI2.NewspaperTodayGroupEmitter {
 
 	// Properties
 	let config : NewspaperGroupConfig
 	let knobs : NewspaperGroupKnobs
 	let newspaperGroupService : NewspaperGroupServiceType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let personalizationService : ˘+	
+	let name : String
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case noMoreNewspapers  
  }
 
  class NewsUI2.ForYouBridgedConfigurationParser : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1747d0  @objc ForYouBridgedConfigurationParser.configurationWithForYouConfigurationJSON:appConfiguration:error: <stripped>
-	0x1751d0  @objc ForYouBridgedConfigurationParser.init <stripped>
+	0x1ede10  @objc ForYouBridgedConfigurationParser.configurationWithForYouConfigurationJSON:appConfiguration:error: <stripped>
+	0x1ee6f0  @objc ForYouBridgedConfigurationParser.init <stripped>
  }
 
  enum NewsUI2.Errors {
@@ -5884,13 +7091,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case utf8DecodingFailed  
  }
 
- class NewsUI2.FollowingRowViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingRowViewRendererType {
+ class NewsUI2.AnalyticsReferralFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
+ class NewsUI2.TagViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TagViewRendererType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rendererEnvironment :  // +0x10 (0x28)
-	let styler : FollowingRowViewStylerType // +0x38 (0x28)
-	let imageApplier : FollowingRowImageApplier // +0x60 (0x8)
+	let rendererEnvironment : üt	 // +0x10 (0x28)
+	let styler : TagViewStylerType // +0x38 (0x28)
+	let imageApplier : TagImageApplier // +0x60 (0x8)
 	let likeButtonRenderer : LikeButtonRendererType // +0x68 (0x28)
 	let dislikeButtonRenderer : DislikeButtonRendererType // +0x90 (0x28)
 	let notificationSwitchRenderer : NotificationSwitchRendererType // +0xb8 (0x28)
@@ -5902,10 +7113,56 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- class NewsUI2.SearchResultHeadlineModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ class NewsUI2.FollowingNotificationsTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingNotificationsTrackerType {
 
 	// Properties
-	let headlineModel : HeadlineModel // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x10 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.SearchViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	let styler : SearchStylerType // +0x8 (0x28)
+	let eventHandler : SearchEventHandlerType // +0x30 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let blueprintViewController : } // +0x40 (0x8)
+	var searchBar : weak UISearchBar? // +0x48 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let searchAction : o`	 // +0x50 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x1fd7e0  @objc SearchViewController.initWithCoder: <stripped>
+	0x1fd930  @objc SearchViewController.initWithNibName:bundle: <stripped>
+	0x1fd8d0  @objc SearchViewController..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.NotificationRegisterer : NSObject /usr/lib/libobjc.A.dylib, NotificationRegistererType {
+
+	// Properties
+	let authorizationRequester : NotificationAuthorizationRequesterType // +0x8 (0x28)
+	let categoriesRegisterer : NotificationCategoriesRegistererType // +0x30 (0x28)
+
+	// ObjC -> Swift bridged methods
+	0x1ff070  @objc NotificationRegisterer.init <stripped>
+	0x1ff040  @objc NotificationRegisterer..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.SpotlightURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let patterns :  empty-list  // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x18 (0x8)
+	let configurationManager : FCNewsAppConfigurationManager // +0x20 (0x8)
+	let articleContextFactory : ArticleContextFactory // +0x28 (0x8)
 
 	// Swift methods
  }
@@ -5914,7 +7171,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x10 (0x8)
+	let navigator : =e	 // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -5938,60 +7195,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ enum NewsUI2.AudioFeedRouteModel {
+
+	// Properties
+	case article : ArticleRouteModel
+ }
+
  class NewsUI2.MagazineGridInteractor {
  class NewsUI2.IssueDownloadService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, IssueDownloadServiceType {
 
 	// Properties
-	let cloudContext : FCCloudContext // +0x10 (0x8)
+	let contentContext : FCContentContext // +0x10 (0x8)
+	let flintHelper : FCFlintHelper // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layeredMediaAssetHandlesProvider : /– // +0x18 (0x28)
-	let highPriorityDownloadQueue : NSOperationQueue // +0x40 (0x8)
+	let layeredMediaAssetHandlesProvider : â,	 // +0x20 (0x28)
+	let highPriorityDownloadQueue : NSOperationQueue // +0x48 (0x8)
 
 	// Swift methods
  }
 
- class NewsUI2.MastheadView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
+ enum NewsUI2.IssueDownloadError {
 
 	// Properties
-	let leftContentView : UIView // +0x8 (0x8)
-	let rightContentView : UIView // +0x10 (0x8)
-	let titleLabel : UILabel // +0x18 (0x8)
-	let titleMaskLabel : UILabel // +0x20 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleShineView : ’¶ // +0x28 (0x8)
-	let iconImageView : UIImageView // +0x30 (0x8)
-	let lineView : UIView // +0x38 (0x8)
-	let sauceView : UIImageView // +0x40 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x1866b0  @objc MastheadView.initWithFrame: <stripped>
-	0x1866e0  @objc MastheadView.initWithCoder: <stripped>
-	0x186790  @objc MastheadView.willMoveToWindow: <stripped>
-	0x1867e0  @objc MastheadView.layoutSubviews <stripped>
-	0x186850  @objc MastheadView.canBecomeFocused <stripped>
-	0x186890  @objc MastheadView..cxx_destruct <stripped>
+	case unknown  
  }
 
- struct NewsUI2.SpecialEventsEmbedViewLayoutAttributes {
-
-	// Properties
-	var frame : CGRect // +0x0
-	var contentInsets : UIEdgeInsets // +0x20
- }
-
+ class NewsUI2.MastheadView {
  class NewsUI2.FeedModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeedModelType {
 
 	// Properties
 	let feedDescriptor : FCFeedDescriptor // +0x10 (0x8)
 
 	// Swift methods
- }
-
- enum NewsUI2.HistoryModel {
-
-	// Properties
-	case headline : HistoryHeadlineModel
-	case spinner : (cursor: Int)
  }
 
  class NewsUI2.ChannelSectionHeadlinesFetchOperationFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ChannelSectionHeadlinesFetchOperationFactoryType {
@@ -6002,17 +7237,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- class NewsUI2.SearchMoreViewHeaderProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-	// Swift methods
- }
-
- enum NewsUI2.FeedGroupEmitterOutput {
+ class NewsUI2.NewsActivityManager : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	case nextGroup : (A, Any?)
-	case lastGroup : A
-	case none : (reason: String)
-	case skip : (reason: String)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var newsUserActivityManager : wÿ // +0x8 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x208f50  @objc NewsActivityManager.init <stripped>
+	0x209010  @objc NewsActivityManager.registerCurrentActivityWithData: <stripped>
+	0x2092f0  @objc NewsActivityManager.deregisterActivityWithData: <stripped>
+	0x209370  @objc NewsActivityManager..cxx_destruct <stripped>
+ }
+
+ enum NewsUI2.SearchMoreArticlesLayoutSectionDescriptor {
+
+	// Properties
+	case articleList  
+ }
+
+ struct NewsUI2.HistoryFeedPrewarmBlueprintModifier {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedContext : …x	
+	let prewarmResult : HistoryFeedExpandResult
+	let headlineModelFactory : HeadlineModelFactoryType
  }
 
  struct NewsUI2.MagazineKnobsConfig {
@@ -6047,25 +7297,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  struct NewsUI2.Features { }
 
- struct NewsUI2.SpecialEventsAnalyticsMetaData {
-
-	// Properties
-	var type : FCSpecialEventsOperationResultType // +0x0
- }
-
- enum NewsUI2.SpecialEventsAnalyticEvent {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case cellExposure : «í
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case headlineCellExposure : cí
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case moduleExposure : õ
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case linkTapped : óy
- }
-
  class NewsUI2.MagazineCategoriesDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineCategoriesDataManagerType {
 	// Swift methods
  }
@@ -6089,11 +7320,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let subtitle : String? // +0x30 (0x10)
 	let subtitleColor : UIColor? // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let actionURL : S⁄ // +0x0 (0x0)
-	let attributes : EditorialAttributes // +0x77735f5f (0x8)
-	let thumbnailImageSource : EditorialThumbnailImageSource // +0x6f72705f (0x19)
-	let tagModel : FollowingTagModel // +0x45545f5f (0x8)
-	let headline : FCHeadlineProviding? // +0x0 (0x8)
+	let actionURL : ◊6	 // +0x45545f5f (0x0)
+	let attributes : EditorialAttributes // +0x0 (0x8)
+	let thumbnailImageSource : EditorialThumbnailImageSource // +0x880210 (0x19)
+	let tagModel : FollowingTagModel // +0x744 (0x8)
+	let headline : FCHeadlineProviding? // +0x880210 (0x8)
 
 	// Swift methods
  }
@@ -6105,19 +7336,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case tag : (tag: FCTagProviding)
  }
 
- struct NewsUI2.SpecialEventsTitleViewLayoutOptions {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutOptions : -	
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rigthArrowWidth : A
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let marginBetweenTitleAndActionLabel : A
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let marginBetweenActionLabelAndRightArrow : A
- }
-
  class NewsUI2.MagazineFeedPoolService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
@@ -6125,13 +7343,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let personalizationService : MagazineFeedPersonalizationServiceType // +0x18 (0x28)
 	let historyService : HistoryServiceType // +0x40 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueService : Ÿπ // +0x68 (0x28)
+	let issueService : „	 // +0x68 (0x28)
 
 	// Swift methods
-	0x1965d0  func <stripped> // method 
-	0x196f10  func <stripped> // getter 
-	0x197320  func <stripped> // method 
-	0x1995c0  func <stripped> // method 
+	0x20f7d0  func <stripped> // method 
+	0x2100d0  func <stripped> // getter 
+	0x2104e0  func <stripped> // method 
+	0x2126e0  func <stripped> // method 
  }
 
  enum NewsUI2.Errors {
@@ -6153,77 +7371,42 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- struct NewsUI2.HeadlineViewModel {
-
-	// Properties
-	let title : String
-	let excerpt : String?
-	let accessoryText : String?
-	let sponsoredBy : String?
-	let publisherName : String
-	let attributes : HeadlineViewModelAttributes
-	let shareable : HeadlineViewModelShareable
-	let likedState : HeadlineLikeState
-	let savedState : HeadlineSavedState
-	let offensiveState : HeadlineOffensiveState
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publishDate : Sw
-	let thumbnail : HeadlineViewModelThumbnailContainer
-	let publisherBanner : HeadlineViewModelBannerContainer
- }
-
- struct NewsUI2.HeadlineViewModelBannerContainer {
-
-	// Properties
-	let bannerImageForWhiteBackground : TSAssetHandleType? // +0x0
-	let bannerImageForThemeBackground : TSAssetHandleType? // +0x8
-	let bannerImageForMask : TSAssetHandleType? // +0x10
- }
-
- struct NewsUI2.HeadlineViewModelThumbnailContainer {
-
-	// Properties
-	let thumbnailLQ : HeadlineThumbnail // +0x0
-	let thumbnail : HeadlineThumbnail // +0x18
-	let thumbnailMedium : HeadlineThumbnail // +0x30
-	let thumbnailHQ : HeadlineThumbnail // +0x48
-	let thumbnailUltraHQ : HeadlineThumbnail // +0x60
-	let thumbnailFocalFrame : CGRect // +0x78
- }
-
- enum NewsUI2.HeadlineViewModelShareable {
-
-	// Properties
-	case unshareable  
-	case shareable  
- }
-
- enum NewsUI2.HeadlineViewModelAttributes {
-
-	// Properties
-	case none  
-	case subscription  
-	case sponsored  
-	case nativeAd  
- }
-
- struct NewsUI2.HeadlineThumbnail {
-
-	// Properties
-	let assetHandle : TSAssetHandleType // +0x0
-	let size : CGSize // +0x8
- }
-
  class NewsUI2.SubscriptionsFoundAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1a13f0  @objc SubscriptionsFoundAssembly.init <stripped>
+	0x217eb0  @objc SubscriptionsFoundAssembly.init <stripped>
 
 	// Swift methods
  }
 
+ class NewsUI2.ArticleContextFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let analyticsReferralFactory : AnalyticsReferralFactory // +0x10 (0x8)
+	let adContextFactory : AdContextFactory // +0x18 (0x8)
+
+	// Swift methods
+ }
+
+ enum NewsUI2.ArticleOpenedFromLocation {
+
+	// Properties
+	case unknown  
+	case link  
+	case widget  
+	case notification  
+	case spotlightNewsletter  
+	case editorPicksNewsletter  
+	case editorialArticle  
+	case endOfArticle  
+	case following  
+	case moreFromPublisher  
+	case related  
+	case article  
+ }
+
  class NewsUI2.CommandAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1a2a00  @objc CommandAssembly.init <stripped>
+	0x21baa0  @objc CommandAssembly.init <stripped>
  }
 
  class NewsUI2.AnalyticTracker {
@@ -6238,27 +7421,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let producer : AnalyticEventProducer // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1a36d0  @objc AnalyticEvent.producer <stripped>
-	0x1a37b0  @objc AnalyticEvent.stringForKey: <stripped>
-	0x1a38f0  @objc AnalyticEvent.boolForKey: <stripped>
-	0x1a3a00  @objc AnalyticEvent.integerForKey: <stripped>
-	0x1a3b20  @objc AnalyticEvent.tagForKey: <stripped>
-	0x1a3c70  @objc AnalyticEvent.dateForKey: <stripped>
-	0x1a3e70  @objc AnalyticEvent.rectForKey: <stripped>
-	0x1a3fd0  @objc AnalyticEvent.headlineForKey: <stripped>
-	0x1a4110  @objc AnalyticEvent.identifiersForKey: <stripped>
-	0x1a4250  @objc AnalyticEvent.init <stripped>
-	0x1a41e0  @objc AnalyticEvent..cxx_destruct <stripped>
+	0x21c890  @objc AnalyticEvent.producer <stripped>
+	0x21c970  @objc AnalyticEvent.stringForKey: <stripped>
+	0x21cab0  @objc AnalyticEvent.boolForKey: <stripped>
+	0x21cbc0  @objc AnalyticEvent.integerForKey: <stripped>
+	0x21cce0  @objc AnalyticEvent.tagForKey: <stripped>
+	0x21ce30  @objc AnalyticEvent.dateForKey: <stripped>
+	0x21d030  @objc AnalyticEvent.rectForKey: <stripped>
+	0x21d190  @objc AnalyticEvent.headlineForKey: <stripped>
+	0x21d2d0  @objc AnalyticEvent.identifiersForKey: <stripped>
+	0x21d410  @objc AnalyticEvent.init <stripped>
+	0x21d3a0  @objc AnalyticEvent..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1a3710  func AnalyticEvent.string(for:) // method 
-	0x1a3860  func AnalyticEvent.bool(for:) // method 
-	0x1a3970  func AnalyticEvent.int(for:) // method 
-	0x1a3a80  func AnalyticEvent.tag(for:) // method 
-	0x1a3b40  func AnalyticEvent.date(for:) // method 
-	0x1a3d60  func AnalyticEvent.rect(for:) // method 
-	0x1a3f30  func AnalyticEvent.headline(for:) // method 
-	0x1a4070  func AnalyticEvent.identifiers(for:) // method 
+	0x21c8d0  func AnalyticEvent.string(for:) // method 
+	0x21ca20  func AnalyticEvent.bool(for:) // method 
+	0x21cb30  func AnalyticEvent.int(for:) // method 
+	0x21cc40  func AnalyticEvent.tag(for:) // method 
+	0x21cd00  func AnalyticEvent.date(for:) // method 
+	0x21cf20  func AnalyticEvent.rect(for:) // method 
+	0x21d0f0  func AnalyticEvent.headline(for:) // method 
+	0x21d230  func AnalyticEvent.identifiers(for:) // method 
  }
 
  struct NewsUI2.EmptyMetadata { }
@@ -6269,15 +7452,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let headlineModelFactory : HeadlineModelFactoryType // +0x0
  }
 
- class NewsUI2.ForYouTitleViewStyleFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ class NewsUI2.MagazineTodayFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let config : MagazineTodayFeedGroupConfig // +0x0 (0x0)
+	let knobs : MagazineTodayFeedGroupKnobs // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let magazineFeedService : ÉO	 // +0x0 (0x8)
+	let name : String // +0x0 (0x10)
+
 	// Swift methods
  }
 
- struct NewsUI2.ForYouTitleViewStyle {
-
-	// Properties
-	let titleFont : UIFont // +0x0
-	let subtitleFont : UIFont // +0x8
+ class NewsUI2.ForYouTitleViewStyleFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
  }
 
  class NewsUI2.ChannelIssuesBlueprintViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -6285,7 +7473,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var delegate : ChannelIssuesBlueprintViewCellProviderDelegate // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedItemRenderer : 7 // +0x20 (0x10)
+	let feedItemRenderer : ≠§	 // +0x20 (0x10)
 	let offlineIssueManager : OfflineIssueManagerType // +0x30 (0x10)
 
 	// Swift methods
@@ -6296,16 +7484,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedFormatPackages : 'F
-	let position : FeedGroupPosition
+	let feedFormatPackages : ´	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
 	let channels : Channel
 	let groupSubtitle : String?
 	let minNewsVersion : String?
 	let maxNewsVersion : String?
 	let availableInForYou : Bool
 	let availableInMagazineFeed : Bool
-	let paidVisibility : FeedGroupPaidVisibility
-	let paidVisibilityInForYou : FeedGroupPaidVisibility
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
 	let allowDuplicateArticlesAcrossGroups : Bool
 	let kind : MagazineFeedGroupKind
 	let minNumberOfArticlesPerSection : Int
@@ -6352,12 +7543,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case identifier  
  }
 
- struct NewsUI2.SpecialEventsBookmarkBlueprintModifier {
-
-	// Properties
-	let headline : FCHeadlineProviding // +0x0
- }
-
  enum NewsUI2.MagazineFeedGroupTitleViewVariant {
 
 	// Properties
@@ -6377,7 +7562,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	var delegate : FollowingDataManagerTypeDelegate // +0x10 (0x10)
-	let notificationManager : TSNotificationManagerType // +0x20 (0x8)
+	let notificationPrompter : TSNotificationManagerType // +0x20 (0x8)
 	let subscriptionService : SubscriptionServiceType // +0x28 (0x10)
 	let tagService : TagServiceType // +0x38 (0x10)
 	var editorialService : EditorialServiceType // +0x48 (0x28)
@@ -6387,7 +7572,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let userNotificationCenter : UNUserNotificationCenter // +0xe8 (0x8)
 	let purchaseController : FCPurchaseController // +0xf0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let familySharingStatusManager : ùÈ // +0xf8 (0x10)
+	let familySharingStatusManager : O	 // +0xf8 (0x10)
 
 	// Swift methods
  }
@@ -6405,27 +7590,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedLayoutSolver : À¿ // +0x10 (0x8)
+	let feedLayoutSolver : WX	 // +0x10 (0x8)
 
 	// Swift methods
  }
 
- class NewsUI2.TodayPluginConfig : NSObject /usr/lib/libobjc.A.dylib {
-	// ObjC -> Swift bridged methods
-	0x1aed20  @objc TodayPluginConfig.init <stripped>
+ class NewsUI2.WebEmbedStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WebEmbedStylerType {
+
+	// Properties
+	let baseStyler : BaseStylerType // +0x10 (0x28)
+
+	// Swift methods
  }
 
- class NewsUI2.TodayModule : NSObject /usr/lib/libobjc.A.dylib {
+ class NewsUI2.TodayModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TodayModuleType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛
-
-	// ObjC -> Swift bridged methods
-	0x1aedd0  @objc TodayModule.createViewController <stripped>
-	0x1aee70  @objc TodayModule.createPluggableViewController <stripped>
-	0x1aefb0  @objc TodayModule.init <stripped>
-	0x1aef40  @objc TodayModule..cxx_destruct <stripped>
+	let resolver : È_	 // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x38 (0x8)
 
 	// Swift methods
  }
@@ -6435,17 +7619,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let appActivationURLHandler : AppActivationURLHandler // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bootstrapper : ˚à // +0x18 (0x8)
+	let bootstrapper : Ÿ // +0x18 (0x8)
 	let pptContext : FCPPTContext // +0x20 (0x8)
 	let configurationManager : FCCoreConfigurationManager // +0x28 (0x8)
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x30 (0x8)
 	let userInfo : FCUserInfo // +0x38 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let router : ÈÖ // +0x40 (0x28)
+	let router : ´’ // +0x40 (0x28)
 	var didUpdateAfterInitialLaunch : Bool // +0x68 (0x1)
 	var formalAppLaunchWasExplicit : Bool // +0x69 (0x1)
 	var openingURL : Bool // +0x6a (0x1)
 	var continuingUserActivity : Bool // +0x6b (0x1)
+
+	// Swift methods
+ }
+
+ class NewsUI2.TagFeedAssembly : NSObject /usr/lib/libobjc.A.dylib {
+	// ObjC -> Swift bridged methods
+	0x240200  @objc TagFeedAssembly.init <stripped>
+ }
+
+ class NewsUI2.Item : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let animation : Animation // +0x10 (0x41)
+	let kind : Kind // +0x51 (0x1)
+	let snapshot : UIView // +0x58 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let startIndexPath : Òπ // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let endIndexPath : Òπ // +0x0 (0x0)
+	let startFrame : CGRect // +0x77735f5f (0x21)
+	let endFrame : CGRect // +0x7061635f (0x21)
 
 	// Swift methods
  }
@@ -6490,21 +7695,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case shouldFilterFollowedChannels  
  }
 
+ struct NewsUI2.SavedFeedOfflineModel { }
+
  class NewsUI2.StubMagazineConfigurationService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
  }
 
+ class NewsUI2.SearchInteractor {
  class NewsUI2.TagViewLayoutOptions : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minimumHeight : A // +0x10 (0x8)
+	let minimumHeight : õ_	 // +0x10 (0x8)
 	let accessoryOptions : AccessoryOptions // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutOptions : -	 // +0x6b7484 (0x0)
+	let layoutOptions : ón	 // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let width : A // +0x2914 (0x8)
-	let allowSuggestedDescription : Bool // +0x6b7484 (0x1)
+	let width : õ_	 // +0x2 (0x8)
+	let allowSuggestedDescription : Bool // +0x0 (0x1)
 
 	// Swift methods
  }
@@ -6516,9 +7724,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var compactItemSize : CGSize // +0x18 (0x10)
 	var largeItemSize : CGSize // +0x28 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var spacing : A // +0x38 (0x8)
+	var spacing : õ_	 // +0x38 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var padding : A // +0x40 (0x8)
+	var padding : õ_	 // +0x40 (0x8)
 
 	// Swift methods
  }
@@ -6539,6 +7747,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let style : ThemeStyle
 	let backgroundColor : UIColor
+	let secondaryBackgroundColor : UIColor
+	let tertiaryBackgroundColor : UIColor
 	let foregroundColor : UIColor
 	let headerSecondaryForegroundColor : UIColor
 	let secondaryForegroundColor : UIColor
@@ -6547,12 +7757,87 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let separatorColor : UIColor
 	let paletteLightGrayColor : UIColor
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sectionGradientDescriptor : Ìã
+	let sectionGradientDescriptor : =◊
 	let defaultShineColor : UIColor
 	let mastheadSubheadingColor : UIColor
 	let mastheadFullBleedHeadingColor : UIColor
 	let mastheadFullBleedSubheadingColor : UIColor
+	let mastheadFullBleedSubheadingAlternateColor : UIColor
 	let accessoryColor : UIColor
+ }
+
+ struct NewsUI2.Overrides {
+
+	// Properties
+	let title : String?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let imageUrl : ◊6	
+	let displayDate : String?
+ }
+
+ struct NewsUI2.AudioConfigArticle {
+
+	// Properties
+	let articleID : String
+	let featureName : String?
+	let overrides : Overrides
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let expirationInLocalTime : ÛI	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let gradientDescriptor : #◊
+	let notificationConfig : NotificationConfig
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case title  
+	case imageUrl  
+	case displayDate  
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case articleID  
+	case accessoryText  
+	case featuredName  
+	case expirationInLocalTime  
+	case imageGradient  
+	case notificationConfig  
+	case title  
+	case imageUrl  
+	case displayDate  
+ }
+
+ class NewsUI2.SearchBlueprintModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchBlueprintModifierFactoryType {
+	// Swift methods
+ }
+
+ class NewsUI2.TodayConfigManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TodayConfigManagerType {
+
+	// Properties
+	let decoder : MultiDateFormatJSONDecoder // +0x10 (0x8)
+	let cloudContext : FCCloudContext // +0x18 (0x8)
+	let appConfigManager : FCCoreConfigurationManager // +0x20 (0x8)
+	let assetManager : FCAssetManager // +0x28 (0x8)
+	let cachePolicy : FCCachePolicy // +0x30 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _currentConfiguration : À // +0x38 (0x8)
+
+	// Swift methods
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case failedToEncodeUTF8 : String
+	case selfReleasedBeforeAppConfigCompletion  
+	case selfReleasedBeforeRecordChainCompletion  
+	case unknownFailureFetchingAppConfig  
+	case unknownFailureFetchingForYouConfig  
+	case missingForYouConfigRecord  
+	case missingTodayFeedConfiguration  
  }
 
  class NewsUI2.ChannelIssuesGroupTitleViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ChannelIssuesGroupTitleViewLayoutAttributesFactoryType {
@@ -6578,12 +7863,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let appConfigurationManager : FCNewsAppConfigurationManager // +0x8 (0x8)
 	let appLaunchUpsellManager : AppLaunchUpsellManagerType // +0x10 (0x10)
 	var delegate : EmailSignupDetectionManagerTypeDelegate // +0x20 (0x10)
-	let emailSignUpAppLaunchCurrentCount : String // +0x30 (0x10)
-	let appleAccount : FCAppleAccount // +0x40 (0x8)
+	var appStartup : Bool // +0x30 (0x1)
+	let appleAccount : FCAppleAccount // +0x38 (0x8)
+	let userInfo : FCUserInfo // +0x40 (0x8)
+	let newsletterManager : FCNewsletterManager // +0x48 (0x8)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x50 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1b9b60  @objc EmailSignupDetectionManager.init <stripped>
-	0x1b9b00  @objc EmailSignupDetectionManager..cxx_destruct <stripped>
+	0x258060  @objc EmailSignupDetectionManager.init <stripped>
+	0x257fe0  @objc EmailSignupDetectionManager..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -6597,43 +7885,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsUI2.StubOrderedArticleListMagazineFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let config : OrderedArticleListMagazineFeedGroupConfig // +0x10 (0x80)
+	let config : OrderedArticleListMagazineFeedGroupConfig // +0x0 (0x0)
 
 	// Swift methods
  }
 
  class NewsUI2.FactoryAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1bcb80  @objc FactoryAssembly.init <stripped>
+	0x25b9d0  @objc FactoryAssembly.init <stripped>
 
 	// Swift methods
  }
 
- struct NewsUI2.SearchMoreSubscriptionModifier {
-
-	// Properties
-	let subscriptionService : SubscriptionServiceType // +0x0
-	let subscribe : SearchMoreSubscribe // +0x10
- }
-
- enum NewsUI2.SearchMoreSubscribeError {
-
-	// Properties
-	case tagNotFound : SearchResultTagModel
- }
-
- enum NewsUI2.SearchMoreSubscribe {
-
-	// Properties
-	case subscribe : SearchResultTagModel
-	case unsubscribe : SearchResultTagModel
- }
-
  class NewsUI2.SeeMoreButton {
+ class NewsUI2.SearchMoreTagsStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreTagsStylerType {
+
+	// Properties
+	let baseStyler : BaseStylerType // +0x10 (0x28)
+
+	// Swift methods
+ }
+
  class NewsUI2.SavedServiceObserverProxy : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SavedServiceObserver {
 
 	// Properties
-	var delegate : SavedServiceObserver // +0x10 (0x10)
+	var delegate : SavedServiceObserver
 
 	// Swift methods
  }
@@ -6649,8 +7925,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let headlineService : HeadlineServiceType
 
 	// ObjC -> Swift bridged methods
-	0x1bf110  @objc SavedService.init <stripped>
-	0x1bf0a0  @objc SavedService..cxx_destruct <stripped>
+	0x25d140  @objc SavedService.init <stripped>
+	0x25d0d0  @objc SavedService..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -6666,7 +7942,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x10 (0x8)
+	let navigator : =e	 // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -6674,56 +7950,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.RecommendedIssuesMagazineFeedGroup {
 
 	// Properties
-	let groupTitle : String // +0x0
-	let groupTitleColor : UIColor? // +0x10
-	let groupDarkStyleTitleColor : UIColor? // +0x18
-	let groupSubtitle : String? // +0x20
-	let identifier : String // +0x30
-	let issues : IssueModel // +0x40
-	let paidVisibility : FeedGroupPaidVisibility // +0x48
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x49
-	let rankMultiplier : Double // +0x50
-	let namespace : String? // +0x58
+	let groupTitle : String
+	let groupTitleColor : UIColor?
+	let groupDarkStyleTitleColor : UIColor?
+	let groupSubtitle : String?
+	let identifier : String
+	let issues : IssueModel
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let rankMultiplier : Double
+	let namespace : String?
+ }
+
+ struct NewsUI2.AudioConfig {
+
+	// Properties
+	let feedConfig : AudioFeedConfiguration
+	let knobsConfig : AudioFeedKnobsConfiguration
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case feedConfig  
+	case knobsConfig  
  }
 
  class NewsUI2.DislikeButtonStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, DislikeButtonStylerType {
-	// Swift methods
- }
-
- class NewsUI2.TopVideosViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
-
-	// Properties
-	let styler : TopVideosStylerType // +0x8 (0x28)
-	let eventHandler : TopVideosEventHandlerType // +0x30 (0x10)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController : -— // +0x40 (0x8)
-	let headlineModelFactory : HeadlineModelFactoryType // +0x48 (0x28)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sharingActivityProviderFactory : +∏ // +0x70 (0x28)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let gradientView : —Ç // +0x98 (0x8)
-	let config : HeadlineGroupConfig // +0xa0 (0x8)
-	var routableDelegate : weak TSVideoGroupViewControllerDelegate? // +0xa8 (0x8)
-	var groupRankProvider : weak TSGroupRankProvider? // +0xb0 (0x8)
-	var feedViewExposureID : String? // +0xb8 (0x10)
-	var isBeingUsedAsPlugin : Bool // +0xc8 (0x1)
-	var pluggableDelegate : weak TUPluggableDelegate? // +0xd0 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x1c21b0  @objc TopVideosViewController.routableDelegate <stripped>
-	0x1c21d0  @objc TopVideosViewController.setRoutableDelegate: <stripped>
-	0x1c21f0  @objc TopVideosViewController.groupRankProvider <stripped>
-	0x1c2210  @objc TopVideosViewController.setGroupRankProvider: <stripped>
-	0x1c2230  @objc TopVideosViewController.feedViewExposureID <stripped>
-	0x1c2290  @objc TopVideosViewController.setFeedViewExposureID: <stripped>
-	0x1c22d0  @objc TopVideosViewController.isBeingUsedAsPlugin <stripped>
-	0x1c22e0  @objc TopVideosViewController.setIsBeingUsedAsPlugin: <stripped>
-	0x1c22f0  @objc TopVideosViewController.pluggableDelegate <stripped>
-	0x1c2310  @objc TopVideosViewController.setPluggableDelegate: <stripped>
-	0x1c2330  @objc TopVideosViewController.initWithCoder: <stripped>
-	0x1c2350  @objc TopVideosViewController.initWithNibName:bundle: <stripped>
-	0x1c23b0  @objc TopVideosViewController..cxx_destruct <stripped>
-
 	// Swift methods
  }
 
@@ -6738,27 +7993,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutOptions : -	
+	let layoutOptions : ón	
 	let contentViewEdgeInsets : UIEdgeInsets
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let verticalTextPadding : A
+	let verticalTextPadding : õ_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let leadingIconPadding : A
+	let leadingIconPadding : õ_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let leadingTextPadding : A
+	let leadingTextPadding : õ_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let trailingTextPadding : A
+	let trailingTextPadding : õ_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let verticalIconPadding : A
+	let verticalIconPadding : õ_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paddingBetweenCells : A
+	let paddingBetweenCells : õ_	
  }
 
  enum NewsUI2.MagazineFeedGroupTitleViewTitleStyle {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case shine : ØÖ
+	case shine : Œ
 	case solidColor : UIColor
  }
 
@@ -6768,13 +8023,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsUI2.LegacyArticleViewerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1c5c00  @objc LegacyArticleViewerAssembly.init <stripped>
+	0x262330  @objc LegacyArticleViewerAssembly.init <stripped>
  }
 
  class NewsUI2.ContentPrefetchManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ContentPrefetchManagerType {
 
 	// Properties
 	let articlePrefetcher : NUArticlePrefetcherType // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let articleAudioPrewarmer : o$	 // +0x18 (0x28)
 
 	// Swift methods
  }
@@ -6806,26 +8063,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case unknown : String
  }
 
- class NewsUI2.MoreVideosPluginFactory : NSObject /usr/lib/libobjc.A.dylib {
+ class NewsUI2.StubTopicMagazineFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
-	let layoutOptionsProvider : PluginLayoutOptionsProvider // +0x30 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x1ce2b0  @objc MoreVideosPluginFactory.createPluginWithIdentifier:usingConfig: <stripped>
-	0x1ce400  @objc MoreVideosPluginFactory.init <stripped>
-	0x1ce380  @objc MoreVideosPluginFactory..cxx_destruct <stripped>
+	let config : TopicMagazineFeedGroupConfig // +0x0 (0x0)
 
 	// Swift methods
  }
 
- class NewsUI2.StubTopicMagazineFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ class NewsUI2.TagFeedBlueprintViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let config : TopicMagazineFeedGroupConfig // +0x10 (0x58)
+	var delegate : TagFeedBlueprintViewCellProviderDelegate // +0x10 (0x10)
+	let baseStyler : BaseStylerType // +0x20 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedItemRenderer : ≠§	 // +0x48 (0x10)
 
+	// Swift methods
+ }
+
+ class NewsUI2.AdContextFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
  }
 
@@ -6833,11 +8090,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
+	let resolver : È_	 // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x1cf150  @objc SubscriptionsFoundModule.init <stripped>
-	0x1cf1b0  @objc SubscriptionsFoundModule..cxx_destruct <stripped>
+	0x26caf0  @objc SubscriptionsFoundModule.init <stripped>
+	0x26cb50  @objc SubscriptionsFoundModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -6858,26 +8115,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case removeIssuePrompt  
  }
 
- class NewsUI2.MoreVideosModule : NSObject /usr/lib/libobjc.A.dylib {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
-
-	// ObjC -> Swift bridged methods
-	0x1cf920  @objc MoreVideosModule.createPluginFactoryForParentView: <stripped>
-	0x1cfa20  @objc MoreVideosModule.init <stripped>
-	0x1cf9b0  @objc MoreVideosModule..cxx_destruct <stripped>
-
-	// Swift methods
- }
-
+ class NewsUI2.SavedFeedInteractor {
  class NewsUI2.MagazineFeedAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1d5ef0  @objc MagazineFeedAssembly.init <stripped>
+	0x275360  @objc MagazineFeedAssembly.init <stripped>
 
 	// Swift methods
-	0x1cfcd0  func <stripped> // method 
  }
 
  class NewsUI2.NoContentView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -6889,10 +8132,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let subtitleFontMetrics : UIFontMetrics // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1d6330  @objc NoContentView.initWithCoder: <stripped>
-	0x1d6790  @objc NoContentView.layoutSubviews <stripped>
-	0x1d6840  @objc NoContentView.initWithFrame: <stripped>
-	0x1d67f0  @objc NoContentView..cxx_destruct <stripped>
+	0x2759d0  @objc NoContentView.initWithCoder: <stripped>
+	0x275e30  @objc NoContentView.layoutSubviews <stripped>
+	0x275ee0  @objc NoContentView.initWithFrame: <stripped>
+	0x275e90  @objc NoContentView..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ struct NewsUI2.HistoryFeedRefreshResult {
+
+	// Properties
+	let addedHeadlines : [FCHeadlineProviding] // +0x0
+	let removedHeadlineIDs : [String] // +0x8
+	let readingHistory : [String] // +0x10
+ }
+
+ class NewsUI2.ArticleAudioPrewarmer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let headlineConverter : AudioHeadlineConverterType // +0x10 (0x28)
+	let avAssetPrewarmer : FCAVAssetPrewarming // +0x38 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.HistoryFeedEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HistoryFeedEventHandlerType {
+
+	// Properties
+	var delegate : HistoryFeedEventHandlerTypeDelegate // +0x10 (0x10)
+	let interactor : HistoryFeedInteractorType // +0x20 (0x10)
+	let router : HistoryFeedRouterType // +0x30 (0x28)
+	let tracker : HistoryFeedTrackerType // +0x58 (0x28)
 
 	// Swift methods
  }
@@ -6901,7 +8172,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case feedItem : ı≤
+	case feedItem : G\	
+ }
+
+ class NewsUI2.FollowingNotificationsSectionFooterViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingNotificationsSectionFooterViewStylerType {
+
+	// Properties
+	let footnoteFontMetrics : UIFontMetrics // +0x10 (0x8)
+
+	// Swift methods
  }
 
  class NewsUI2.LikeButton {
@@ -6916,29 +8195,113 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintLayoutOptionsProvider : √ // +0x8 (0x28)
+	let blueprintLayoutOptionsProvider : SÅ	 // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x1d9410  @objc PluginLayoutOptionsProvider.init <stripped>
-	0x1d9470  @objc PluginLayoutOptionsProvider..cxx_destruct <stripped>
+	0x2798e0  @objc PluginLayoutOptionsProvider.init <stripped>
+	0x279940  @objc PluginLayoutOptionsProvider..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
+ class NewsUI2.AudioRemoteCommandCenterManager : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	let center : MPRemoteCommandCenter // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let playingItemState : Ò-	 // +0x10 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x27c330  @objc AudioRemoteCommandCenterManager.init <stripped>
+	0x27c390  @objc AudioRemoteCommandCenterManager..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioConfigurationManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioConfigurationManagerType {
+
+	// Properties
+	let service : AudioConfigurationServiceType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _cachedConfig : ˚∏
+
+	// Swift methods
+ }
+
+ class NewsUI2.NoopAudioConfigurationManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioConfigurationManagerType {
+	// Swift methods
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case audioDisabled  
+ }
+
  class NewsUI2.FeedNavImageProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1d9a80  @objc FeedNavImageProcessor.process: <stripped>
-	0x1d9b00  @objc FeedNavImageProcessor.init <stripped>
+	0x27d250  @objc FeedNavImageProcessor.process: <stripped>
+	0x27d2d0  @objc FeedNavImageProcessor.init <stripped>
+ }
+
+ enum NewsUI2.HistoryFeedModel {
+
+	// Properties
+	case gap : HistoryFeedGapLocation
+	case headline : Contextual
+ }
+
+ struct NewsUI2.Contextual {
+
+	// Properties
+	let model : A
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let context : …x	
+	let namespace : String?
+ }
+
+ enum NewsUI2.HistoryFeedGapLocation {
+
+	// Properties
+	case cursor : (reamingingHeadlineIDs: [String])
+	case topOfFeed  
+	case endOfFeed  
  }
 
  class NewsUI2.MagazineFeedPaywallAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1dbe10  @objc MagazineFeedPaywallAssembly.init <stripped>
+	0x2821b0  @objc MagazineFeedPaywallAssembly.init <stripped>
  }
 
  class NewsUI2.ProxyFeedGroupEmitterFactory {
  class NewsUI2.StubMagazineFeedGroupEmitterFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
+ }
+
+ struct NewsUI2.ForYouTodayFeedGroupConfig {
+
+	// Properties
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let content : uá	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+	let allowDuplicatesAcrossGroups : Bool
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case identifier  
+	case position  
+	case content  
+	case allowDuplicatesAcrossGroups  
+	case minNewsVersion  
+	case maxNewsVersion  
  }
 
  class NewsUI2.FollowingTableHeaderView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -6948,11 +8311,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var headerPadding : UIEdgeInsets // +0x10 (0x20)
 
 	// ObjC -> Swift bridged methods
-	0x1dd800  @objc FollowingTableHeaderView.initWithFrame: <stripped>
-	0x1dd830  @objc FollowingTableHeaderView.initWithCoder: <stripped>
-	0x1ddaa0  @objc FollowingTableHeaderView.layoutSubviews <stripped>
-	0x1ddad0  @objc FollowingTableHeaderView.sizeThatFits: <stripped>
-	0x1ddd20  @objc FollowingTableHeaderView..cxx_destruct <stripped>
+	0x2850c0  @objc FollowingTableHeaderView.initWithFrame: <stripped>
+	0x2850f0  @objc FollowingTableHeaderView.initWithCoder: <stripped>
+	0x285360  @objc FollowingTableHeaderView.layoutSubviews <stripped>
+	0x285390  @objc FollowingTableHeaderView.sizeThatFits: <stripped>
+	0x2855e0  @objc FollowingTableHeaderView..cxx_destruct <stripped>
+ }
+
+ class NewsUI2.NotificationsURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let patterns :  empty-list  // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x18 (0x8)
+
+	// Swift methods
  }
 
  class NewsUI2.DownloadIssueCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -6962,7 +8336,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x20 (0x8)
 	let offlineAlertControllerFactory : OfflineAlertControllerFactoryType // +0x28 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x50 (0x8)
+	let tracker : 9P	 // +0x50 (0x8)
 	let channelDataFactory : AnalyticsChannelDataFactoryType // +0x58 (0x28)
 
 	// Swift methods
@@ -6972,8 +8346,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let titleViewLayoutAttributesFactory : TitleViewLayoutAttributesFactoryType // +0x10 (0x28)
-	let followingRowViewLayoutAttributesFactory : FollowingRowViewLayoutAttributesFactory // +0x38 (0x8)
+	let footerViewLayoutAttributesFactory : FollowingNotificationsSectionFooterViewLayoutAttributesFactoryType // +0x38 (0x28)
+	let tagViewLayoutAttributesFactory : TagViewLayoutAttributesFactoryType // +0x60 (0x28)
 
+	// Swift methods
+ }
+
+ class NewsUI2.AudioIntents : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
  }
 
@@ -6981,14 +8360,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let actionURL : ã÷
+	let actionURL : ›6	
  }
 
- enum NewsUI2.FeedLocation {
+ class NewsUI2.HistoryFeedBlueprintLayoutBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	case topOfFeed : A
-	case cursor : B
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedLayoutSolver : WX	 // +0x10 (0x8)
+
+	// Swift methods
  }
 
  struct NewsUI2.ForYouTitleViewLayoutAttributes {
@@ -7000,11 +8381,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let likeButtonImageFrame : CGRect
 	let dislikeButtonImageFrame : CGRect
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var kind : q¯
+	var kind : m2	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pinTrait : ˘
+	let pinTrait : À
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rubberbandTrait : ˝˚
+	let rubberbandTrait : ˜Õ
  }
 
  struct NewsUI2.NewspaperGroup {
@@ -7012,15 +8393,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String
 	let formatGroup : FormatFeedGroup
-	let metadata : Metadata
+	let channel : FCChannelProviding
+	let sections : [FCSectionProviding]
 	let additionalAssetHandles : [FCAssetHandle]
  }
 
- struct NewsUI2.Metadata {
+ class NewsUI2.AudioErrorHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let channel : FCChannelProviding // +0x0
-	let sections : [FCSectionProviding] // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let currentError : πÙ // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let commandCenter : Ûª // +0x18 (0x8)
+
+	// Swift methods
+ }
+
+ enum NewsUI2.TagFeedSectionDescriptor {
+
+	// Properties
+	case headlines : ArticleListTagFeedGroup
+	case issues : Plugin
+ }
+
+ struct NewsUI2.Plugin {
+
+	// Properties
+	let identifier : String
+	let group : A
  }
 
  enum NewsUI2.MagazineGridItemModel {
@@ -7031,11 +8431,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class NewsUI2.TodayFeedPoolService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let cloudContext : FCCloudContext // +0x10 (0x8)
+	let magazineFeedServiceConfigFetcher : NetworkMagazineFeedServiceConfigFetcher // +0x18 (0x8)
+
 	// Swift methods
  }
 
- class NewsUI2.SpecialEventsBlueprintModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SpecialEventsBlueprintModifierFactoryType {
-	// Swift methods
+ enum NewsUI2.TodayFeedPoolServiceError {
+
+	// Properties
+	case trendingMissingHeldRecords  
+	case myHeadlinesMissingFeedItems  
+	case freedOperation  
+	case noPoolPromise  
  }
 
  struct NewsUI2.ChannelSupergroupKnobs {
@@ -7050,22 +8460,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case rankMultiplier  
  }
 
- class NewsUI2.SearchMoreViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	var delegate : SearchMoreViewCellProviderDelegate // +0x10 (0x10)
-	let tagViewRenderer : TagViewRendererType // +0x20 (0x28)
-	let imageOnSideRenderer : HeadlineViewImageOnSideRenderer // +0x48 (0x8)
-	let noImageRenderer : HeadlineViewNoImageRenderer // +0x50 (0x8)
-	let wrappedImageOnSideRenderer : HeadlineViewWrappedImageOnSideRenderer // +0x58 (0x8)
-
-	// Swift methods
- }
-
  class NewsUI2.SidebarTableViewCellRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SidebarTableViewCellRendererType {
 
 	// Properties
-	let imageApplier : FollowingRowImageApplier // +0x10 (0x8)
+	let imageApplier : TagImageApplier // +0x10 (0x8)
 	let styler : SidebarTableViewCellStyler // +0x18 (0x8)
 
 	// Swift methods
@@ -7074,12 +8472,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsUI2.Assembly : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let assemblies : [NFAssembly] // +0x8 (0x8)
+	let appConfiguration : FCNewsAppConfiguration // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1ea880  @objc Assembly.assemblies <stripped>
-	0x1ea9f0  @objc Assembly.init <stripped>
-	0x1ea950  @objc Assembly..cxx_destruct <stripped>
+	0x2963f0  @objc Assembly.initWithNewsAppConfiguration: <stripped>
+	0x296440  @objc Assembly.assemblies <stripped>
+	0x297020  @objc Assembly.init <stripped>
+	0x296fb0  @objc Assembly..cxx_destruct <stripped>
+
+	// Swift methods
+	0x296340  class func Assembly.__allocating_init(appConfiguration:) // init 
+	0x2964a0  func Assembly.assemblies.getter // getter 
  }
 
  class NewsUI2.JournalDetailViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -7089,31 +8492,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let dataSource : JournalDataSource
 
 	// ObjC -> Swift bridged methods
-	0x1eaf20  @objc JournalDetailViewController.initWithDataSource: <stripped>
-	0x1eaf60  @objc JournalDetailViewController.initWithCoder: <stripped>
-	0x1eb090  @objc JournalDetailViewController.initWithNibName:bundle: <stripped>
-	0x1eafb0  @objc JournalDetailViewController..cxx_destruct <stripped>
+	0x297d70  @objc JournalDetailViewController.initWithDataSource: <stripped>
+	0x297db0  @objc JournalDetailViewController.initWithCoder: <stripped>
+	0x297ee0  @objc JournalDetailViewController.initWithNibName:bundle: <stripped>
+	0x297e00  @objc JournalDetailViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1eaeb0  class func JournalDetailViewController.__allocating_init(dataSource:) // init 
+	0x297d00  class func JournalDetailViewController.__allocating_init(dataSource:) // init 
  }
 
  class NewsUI2.JournalDetailDefaultTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1ec8c0  @objc JournalDetailDefaultTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x1ec8d0  @objc JournalDetailDefaultTableViewCell.initWithCoder: <stripped>
+	0x299ee0  @objc JournalDetailDefaultTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x299ef0  @objc JournalDetailDefaultTableViewCell.initWithCoder: <stripped>
  }
 
  class NewsUI2.JournalDetailValueTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1ec930  @objc JournalDetailValueTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x1ec940  @objc JournalDetailValueTableViewCell.initWithCoder: <stripped>
+	0x299f50  @objc JournalDetailValueTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x299f60  @objc JournalDetailValueTableViewCell.initWithCoder: <stripped>
  }
 
  class NewsUI2.JournalDetailSubtitleTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1ec9a0  @objc JournalDetailSubtitleTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x1eca50  @objc JournalDetailSubtitleTableViewCell.initWithCoder: <stripped>
+	0x299fc0  @objc JournalDetailSubtitleTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x29a070  @objc JournalDetailSubtitleTableViewCell.initWithCoder: <stripped>
  }
 
  enum NewsUI2.DataSource {
@@ -7142,28 +8545,39 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  struct NewsUI2.MagazineFeed { }
 
- struct NewsUI2.DebugFeedConfig { }
-
+ class NewsUI2.ConfigOverrides {
  struct NewsUI2.Sauce { }
 
  struct NewsUI2.TodayFeed { }
 
- enum NewsUI2.MoreVideosLayoutSectionDescriptor {
+ class NewsUI2.ConfigOverrides {
+ struct NewsUI2.AudioFeed { }
 
-	// Properties
-	case forYou : ForYouTitleViewModel
- }
-
+ class NewsUI2.ConfigOverrides {
  class NewsUI2.TodayRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TodayRouterType {
 
 	// Properties
-	var controller : weak UIViewController? // +0x10 (0x8)
+	var controller : weak UIViewController?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x18 (0x28)
+	let resolver : È_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x40 (0x8)
+	let tracker : 9P	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x48 (0x8)
+	let navigator : =e	
+
+	// Swift methods
+ }
+
+ class NewsUI2.BridgedTodayRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TodayRouterType {
+
+	// Properties
+	var controller : weak UIViewController?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	
 
 	// Swift methods
  }
@@ -7171,21 +8585,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsUI2.TodayBridgedGroupConfig : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let config : TodayFeedGroupConfig // +0x0 (0x0)
-	let bridgedGroupType : FCForYouBridgedFeedGroupType // +0x0 (0x8)
-	let channelID : String? // +0x0 (0x10)
+	let config : TodayFeedGroupConfig // +0x3 (0x0)
+	let bridgedGroupType : FCForYouBridgedFeedGroupType // +0x9 (0x8)
+	let channelID : String? // +0x6f675f5f (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x1f00a0  @objc TodayBridgedGroupConfig.identifier <stripped>
-	0x1f01d0  @objc TodayBridgedGroupConfig.bridgedGroupType <stripped>
-	0x1f01f0  @objc TodayBridgedGroupConfig.channelID <stripped>
-	0x1f0250  @objc TodayBridgedGroupConfig.backingTagID <stripped>
-	0x1f0450  @objc TodayBridgedGroupConfig.init <stripped>
-	0x1f03e0  @objc TodayBridgedGroupConfig..cxx_destruct <stripped>
+	0x29d670  @objc TodayBridgedGroupConfig.identifier <stripped>
+	0x29d7f0  @objc TodayBridgedGroupConfig.bridgedGroupType <stripped>
+	0x29d810  @objc TodayBridgedGroupConfig.channelID <stripped>
+	0x29d870  @objc TodayBridgedGroupConfig.backingTagID <stripped>
+	0x29db20  @objc TodayBridgedGroupConfig.init <stripped>
+	0x29dab0  @objc TodayBridgedGroupConfig..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1f0100  func <stripped> // getter 
-	0x1f02b0  func <stripped> // getter 
+	0x29d6d0  func <stripped> // getter 
+	0x29d8d0  func <stripped> // getter 
  }
 
  class NewsUI2.MagazineCategoriesBlueprintViewSupplementaryViewProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -7196,6 +8610,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case format : Data
+	case empty  
 	case gap  
  }
 
@@ -7212,21 +8627,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case feedGroup : S´
+	case feedGroup : ±ı
  }
 
  enum NewsUI2.Footer {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case feedItem : ≠¨
+	case feedItem : 3˙
  }
 
  enum NewsUI2.Header {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case feedItem : ≠¨
+	case feedItem : 3˙
  }
 
  enum NewsUI2.FollowingModel {
@@ -7248,6 +8663,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  struct NewsUI2.Demo { }
 
+ struct NewsUI2.LocalNewsTodayFeedGroupKnobs {
+
+	// Properties
+	let fetchWindow : Double // +0x0
+	let sectionsCacheTimeToLive : Double // +0x8
+	let heroSelectionStrategy : HeroSelectionStrategy // +0x10
+	let rankMultiplier : Double // +0x18
+	let minOccurrence : Int // +0x20
+	let maxOccurrence : Int // +0x28
+ }
+
+ enum NewsUI2.Keys {
+
+	// Properties
+	case fetchWindow  
+	case sectionsCacheTimeToLive  
+	case heroSelectionStrategy  
+	case rankMultiplier  
+	case minOccurrence  
+	case maxOccurrence  
+ }
+
  class NewsUI2.SidebarTableViewCellStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SidebarTableViewCellStylerType {
 	// Swift methods
  }
@@ -7268,20 +8705,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let offlineUnknownReasonMessage : String // +0x90
  }
 
- class NewsUI2.TodayFeedPersonalizationService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TodayFeedPersonalizationServiceType {
-	// Swift methods
- }
+ struct NewsUI2.Audio { }
 
  class NewsUI2.OfflineIssuePruner : _SwiftObject /usr/lib/swift/libswiftCore.dylib, OfflineIssuePrunerType {
 
 	// Properties
 	let offlineList : FCOfflineIssueList // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueService : Ÿπ // +0x18 (0x28)
+	let issueService : „	 // +0x18 (0x28)
 	let storageLevelProvider : AppStorageLevelProviderType // +0x40 (0x28)
 	let ruleProvider : OfflineIssuePruningRuleProviderType // +0x68 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pruneDeduper : á∆ // +0x90 (0x8)
+	let pruneDeduper : ·	 // +0x90 (0x8)
 
 	// Swift methods
  }
@@ -7304,17 +8739,49 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case filled  
  }
 
- struct NewsUI2.SavedChangeHeadlineModifier {
+ class NewsUI2.SearchMoreArticlesContext : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let savedChanges : SavedDataManagerChange // +0x0
+	var searchResults : FCStreamingResults<FCArticleSearchResult> // +0x8 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x2ab180  @objc SearchMoreArticlesContext.searchResults <stripped>
+	0x2ab1a0  @objc SearchMoreArticlesContext.setSearchResults: <stripped>
+	0x2ab250  @objc SearchMoreArticlesContext.initWithSearchResults: <stripped>
+	0x2ab340  @objc SearchMoreArticlesContext.init <stripped>
+	0x2ab2d0  @objc SearchMoreArticlesContext..cxx_destruct <stripped>
+
+	// Swift methods
+	0x2ab1d0  class func SearchMoreArticlesContext.__allocating_init(searchResults:) // init 
+ }
+
+ struct NewsUI2.TodayReloadBlueprintModifier {
+
+	// Properties
+	let reloadRequest : TodayReloadRequest // +0x0
+	let sectionFactory : TodaySectionFactoryType // +0x8
+ }
+
+ class NewsUI2.AudioFeedModule : NSObject /usr/lib/libobjc.A.dylib, AudioFeedModuleType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x8 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x30 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x2acd60  @objc AudioFeedModule.init <stripped>
+	0x2acce0  @objc AudioFeedModule..cxx_destruct <stripped>
+
+	// Swift methods
  }
 
  struct NewsUI2.MyMagazinesSectionHeaderViewLayoutOptions {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutOptions : -	
+	let layoutOptions : ón	
 	let insets : UIEdgeInsets
  }
 
@@ -7328,14 +8795,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.PaywallMagazineFeedGroupConfig {
 
 	// Properties
-	let kind : MagazineFeedGroupKind // +0x0
-	let identifier : String // +0x8
-	let position : FeedGroupPosition // +0x18
-	let availableInForYou : Bool // +0x20
-	let availableInMagazineFeed : Bool // +0x21
-	let paidVisibility : FeedGroupPaidVisibility // +0x22
-	let minNewsVersion : String? // +0x28
-	let maxNewsVersion : String? // +0x38
+	let kind : MagazineFeedGroupKind
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+	let availableInForYou : Bool
+	let availableInMagazineFeed : Bool
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
  }
 
  enum NewsUI2.Keys {
@@ -7349,52 +8818,55 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case maxNewsVersion  
  }
 
- class NewsUI2.SpecialEventsLayoutTypeProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SpecialEventsLayoutTypeProviderType {
-	// Swift methods
- }
-
  class NewsUI2.DebugMenuCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let debugWindow : Öp // +0x10 (0x8)
+	let debugWindow : ≈≥ // +0x10 (0x8)
 
 	// Swift methods
  }
 
- class NewsUI2.MastheadViewProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ class NewsUI2.MastheadViewProvider : NSObject /usr/lib/libobjc.A.dylib, NewsMastheadViewProviderType {
 
 	// Properties
-	let mastheadView : MastheadView // +0x10 (0x8)
-	let renderer : MastheadViewRendererType // +0x18 (0x28)
-	let layoutAttributesFactory : MastheadViewLayoutAttributesFactoryType // +0x40 (0x28)
-	let model : MastheadModel // +0x68 (0x1)
+	let mastheadView : MastheadView // +0x8 (0x8)
+	let titleViewStyler : MastheadTitleViewStyler // +0x10 (0x8)
+	let layoutAttributesFactory : MastheadViewLayoutAttributesFactoryType // +0x18 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let margins : Uw // +0x0 (0x0)
+	let margins : wª // +0x0 (0x0)
+	var model : MastheadModel // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x200370  @objc MastheadViewProvider.view <stripped>
+	0x2b0c20  @objc MastheadViewProvider.init <stripped>
+	0x2b0c80  @objc MastheadViewProvider..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
- class NewsUI2.HeadlineGroupConfig : NSObject /usr/lib/libobjc.A.dylib {
+ class NewsUI2.MastheadTitleViewStyler : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let headlines : [FCHeadlineProviding] // +0x8 (0x8)
-	let groupID : String // +0x10 (0x10)
-	let groupTitle : String // +0x20 (0x10)
-	let groupSubtitle : String? // +0x30 (0x10)
-	let backgroundColorGradient : FCColorGradient? // +0x40 (0x8)
-	let channelID : String // +0x48 (0x10)
+	let renderer : MastheadViewRendererType // +0x8 (0x28)
+	let traitCollection : UITraitCollection // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x200da0  @objc HeadlineGroupConfig.initWithHeadlines:groupID:groupTitle:groupSubtitle:backgroundColorGradient:channelID: <stripped>
-	0x200fc0  @objc HeadlineGroupConfig.init <stripped>
-	0x200ef0  @objc HeadlineGroupConfig..cxx_destruct <stripped>
+	0x2b1220  @objc MastheadTitleViewStyler.styleTitleText:styleType:boundingSize: <stripped>
+	0x2b1310  @objc MastheadTitleViewStyler.init <stripped>
+	0x2b12e0  @objc MastheadTitleViewStyler..cxx_destruct <stripped>
 
 	// Swift methods
-	0x200c10  class func HeadlineGroupConfig.__allocating_init(headlines:groupID:groupTitle:groupSubtitle:backgroundColorGradient:channelID:) // init 
+ }
+
+ enum NewsUI2.SearchContentType { }
+
+ class NewsUI2.TagFeedTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TagFeedTrackerType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x10 (0x8)
+
+	// Swift methods
  }
 
  enum NewsUI2.FooterViewType {
@@ -7434,14 +8906,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let adMarkerButtonFrame : CGRect // +0x80
  }
 
+ struct NewsUI2.SearchMoreArticlesExpandModifier {
+
+	// Properties
+	let expandResult : SearchMoreArticlesResult
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedContext : …x	
+	let headlineModelFactory : HeadlineModelFactoryType
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case sectionNotFound  
+ }
+
  struct NewsUI2.FormatFeedGroup {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let content : _©
-	let paidVisibility : FeedGroupPaidVisibility
-	let paidVisibilityInForYou : FeedGroupPaidVisibility
+	let content : ¯
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
 	let rankMultiplier : Double
+	let softMaxPaidArticlesForFreeUsersSmall : Int?
+	let softMaxPaidArticlesForFreeUsersLarge : Int?
+	let softMinPaidArticlesForFreeUsersSmall : Int?
+	let softMinPaidArticlesForFreeUsersLarge : Int?
  }
 
  enum NewsUI2.FollowingDislikedLayoutModel {
@@ -7451,39 +8944,76 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case topic : FollowingTagModel
  }
 
- class NewsUI2.HistoryEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HistoryEventHandlerType {
+ enum NewsUI2.SearchMoreTagsModel {
 
 	// Properties
-	var delegate : HistoryEventHandlerTypeDelegate // +0x10 (0x10)
-	let interactor : HistoryInteractorType // +0x20 (0x10)
-	let router : HistoryRouterType // +0x30 (0x28)
-
-	// Swift methods
+	case tag : SearchMoreTagModel
+	case gap : SearchMoreTagsLocation
  }
 
- class NewsUI2.HistoryDeleteHeadlineModifier : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ struct NewsUI2.AudioFeedConfiguration {
 
 	// Properties
-	let historyService : HistoryServiceType // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let historyBlueprintViewActionRequest : z // +0x38 (0x8)
-	let historyHeadlineModel : HistoryHeadlineModel // +0x40 (0x8)
-	let historyChangeHeadlineModifier : HistoryChangeHeadlineModifier // +0x48 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var localBlueprint : Ç // +0x0 (0x0)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var localCompletion :  empty-list  // +0x0 (0x10)
-
-	// Swift methods
-	0x202c60  func <stripped> // method 
+	let publishDate : ÛI	
+	let callToAction : CallToAction
+	let groups : AudioFeedGroupConfig
+	let dailyBriefingKind : DailyBriefingKind
+	let configurablesBuilders : Configurables
  }
 
- enum NewsUI2.HistoryDeleteHeadlineModifierError {
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case publishDate  
+	case callToAction  
+	case groups  
+ }
+
+ enum NewsUI2.DailyBriefingKind {
+
+	// Properties
+	case audioFeed  
+	case todayFeed  
+ }
+
+ struct NewsUI2.CallToAction {
+
+	// Properties
+	let title : String? // +0x0
+ }
+
+ struct NewsUI2.NotificationConfig {
+
+	// Properties
+	let title : String? // +0x0
+	let subtitle : String? // +0x10
+	let body : String? // +0x20
+	let notificationTriggeredAtTimeFromEnd : Double? // +0x30
+	let timeToSend : Double? // +0x40
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case title  
+	case subtitle  
+	case body  
+	case notificationTriggeredAtTimeFromEnd  
+	case timeToSend  
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case title  
+ }
+
+ struct NewsUI2.WebEmbedResource {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case changeModifierError : '∞
-	case actionNotPermitted  
+	let url : ›6	
  }
 
  class NewsUI2.FollowingEditorialModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -7495,6 +9025,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class NewsUI2.App {
+ class NewsUI2.NewsActivityInfo : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	let type : NewsActivityType2 // +0x8 (0x1)
+	let identifier : String // +0x10 (0x10)
+	let title : String? // +0x20 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let url : ◊6	 // +0x54534e4f (0x0)
+
+	// ObjC -> Swift bridged methods
+	0x2bf360  @objc NewsActivityInfo.init <stripped>
+	0x2bf2e0  @objc NewsActivityInfo..cxx_destruct <stripped>
+
+	// Swift methods
+	0x2bf730  func <stripped> // method 
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case type  
+	case identifier  
+	case title  
+	case url  
+ }
+
  class NewsUI2.EditorialItem : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
@@ -7504,90 +9060,63 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var subtitleColor : String? // +0x38 (0x10)
 	var attributes : [Int] // +0x48 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var actionURL : S⁄ // +0x666e695f (0x0)
-	var thumbnailImage : UIImage? // +0x45545f5f (0x8)
-	var backingTag : FCTagProviding? // +0x0 (0x8)
-	var headline : FCHeadlineProviding? // +0x6c24d4 (0x8)
+	var actionURL : ◊6	 // +0x8c41c0 (0x0)
+	var thumbnailImage : UIImage? // +0x5328 (0x8)
+	var backingTag : FCTagProviding? // +0x8c41c0 (0x8)
+	var headline : FCHeadlineProviding? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x205050  @objc EditorialItem.identifier <stripped>
-	0x205090  @objc EditorialItem.setIdentifier: <stripped>
-	0x205110  @objc EditorialItem.title <stripped>
-	0x205200  @objc EditorialItem.setTitle: <stripped>
-	0x205330  @objc EditorialItem.subtitle <stripped>
-	0x205370  @objc EditorialItem.setSubtitle: <stripped>
-	0x2053f0  @objc EditorialItem.subtitleColor <stripped>
-	0x2054f0  @objc EditorialItem.setSubtitleColor: <stripped>
-	0x205640  @objc EditorialItem.attributes <stripped>
-	0x2056e0  @objc EditorialItem.setAttributes: <stripped>
-	0x2057e0  @objc EditorialItem.actionURL <stripped>
-	0x2058c0  @objc EditorialItem.setActionURL: <stripped>
-	0x205ae0  @objc EditorialItem.thumbnailImage <stripped>
-	0x205b70  @objc EditorialItem.setThumbnailImage: <stripped>
-	0x205c60  @objc EditorialItem.backingTag <stripped>
-	0x205ca0  @objc EditorialItem.setBackingTag: <stripped>
-	0x205d20  @objc EditorialItem.headline <stripped>
-	0x205de0  @objc EditorialItem.setHeadline: <stripped>
-	0x206080  @objc EditorialItem.initWithIdentifier:title:subtitle:subtitleColor:attributes:actionURL:thumbnailImage:backingTag:headline: <stripped>
-	0x2063d0  @objc EditorialItem.init <stripped>
-	0x2062d0  @objc EditorialItem..cxx_destruct <stripped>
+	0x2bff80  @objc EditorialItem.identifier <stripped>
+	0x2bffc0  @objc EditorialItem.setIdentifier: <stripped>
+	0x2c0040  @objc EditorialItem.title <stripped>
+	0x2c0130  @objc EditorialItem.setTitle: <stripped>
+	0x2c0260  @objc EditorialItem.subtitle <stripped>
+	0x2c02a0  @objc EditorialItem.setSubtitle: <stripped>
+	0x2c0320  @objc EditorialItem.subtitleColor <stripped>
+	0x2c0420  @objc EditorialItem.setSubtitleColor: <stripped>
+	0x2c0570  @objc EditorialItem.attributes <stripped>
+	0x2c0610  @objc EditorialItem.setAttributes: <stripped>
+	0x2c0710  @objc EditorialItem.actionURL <stripped>
+	0x2c07f0  @objc EditorialItem.setActionURL: <stripped>
+	0x2c0a10  @objc EditorialItem.thumbnailImage <stripped>
+	0x2c0aa0  @objc EditorialItem.setThumbnailImage: <stripped>
+	0x2c0b90  @objc EditorialItem.backingTag <stripped>
+	0x2c0bd0  @objc EditorialItem.setBackingTag: <stripped>
+	0x2c0c50  @objc EditorialItem.headline <stripped>
+	0x2c0d10  @objc EditorialItem.setHeadline: <stripped>
+	0x2c0fb0  @objc EditorialItem.initWithIdentifier:title:subtitle:subtitleColor:attributes:actionURL:thumbnailImage:backingTag:headline: <stripped>
+	0x2c1300  @objc EditorialItem.init <stripped>
+	0x2c1200  @objc EditorialItem..cxx_destruct <stripped>
 
 	// Swift methods
-	0x205070  func EditorialItem.identifier.getter // getter 
-	0x2050b0  func EditorialItem.identifier.setter // setter 
-	0x2050d0  func EditorialItem.identifier.modify // modifyCoroutine 
-	0x205190  func EditorialItem.title.getter // getter 
-	0x205280  func EditorialItem.title.setter // setter 
-	0x2052f0  func EditorialItem.title.modify // modifyCoroutine 
-	0x205350  func EditorialItem.subtitle.getter // getter 
-	0x205390  func EditorialItem.subtitle.setter // setter 
-	0x2053b0  func EditorialItem.subtitle.modify // modifyCoroutine 
-	0x205480  func EditorialItem.subtitleColor.getter // getter 
-	0x205590  func EditorialItem.subtitleColor.setter // setter 
-	0x205600  func EditorialItem.subtitleColor.modify // modifyCoroutine 
-	0x2056a0  func EditorialItem.attributes.getter // getter 
-	0x205740  func EditorialItem.attributes.setter // setter 
-	0x205790  func EditorialItem.attributes.modify // modifyCoroutine 
-	0x205880  func EditorialItem.actionURL.getter // getter 
-	0x205990  func EditorialItem.actionURL.setter // setter 
-	0x205aa0  func EditorialItem.actionURL.modify // modifyCoroutine 
-	0x205b30  func EditorialItem.thumbnailImage.getter // getter 
-	0x205bd0  func EditorialItem.thumbnailImage.setter // setter 
-	0x205c20  func EditorialItem.thumbnailImage.modify // modifyCoroutine 
-	0x205c80  func EditorialItem.backingTag.getter // getter 
-	0x205cc0  func EditorialItem.backingTag.setter // setter 
-	0x205ce0  func EditorialItem.backingTag.modify // modifyCoroutine 
-	0x205d80  func EditorialItem.headline.getter // getter 
-	0x205e50  func EditorialItem.headline.setter // setter 
-	0x205eb0  func EditorialItem.headline.modify // modifyCoroutine 
-	0x205ef0  class func EditorialItem.__allocating_init(identifier:title:subtitle:subtitleColor:attributes:actionURL:thumbnailImage:backingTag:headline:) // init 
- }
-
- enum NewsUI2.SpecialEventsLayoutSectionDescriptor {
-
-	// Properties
-	case headers : SpecialEventsStyle
- }
-
- enum NewsUI2.AlertArticleUnavailable {
-
-	// Properties
-	case blocked : FCContentAccessBlockedReason
-	case serverUnavailable  
-	case doesNotExist  
- }
-
- class NewsUI2.TopVideosBlueprintLayoutBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let headlineLayoutAttributesProvider : HeadlineViewLayoutAttributesProviderType // +0x10 (0x28)
-	let feedLayoutOptionsFactory : FeedLayoutOptionsFactory // +0x38 (0x8)
-	let headlineViewModelFactory : HeadlineViewModelFactoryType // +0x40 (0x28)
-	let forYouTitleViewLayoutAttributesFactory : ForYouTitleViewLayoutAttributesFactoryType // +0x68 (0x28)
-	let forYouTitleViewPropertiesFactory : ForYouTitleViewPropertiesFactory // +0x90 (0x8)
-	let forYouTitleViewStyleFactory : ForYouTitleViewStyleFactory // +0x98 (0x8)
-
-	// Swift methods
+	0x2bffa0  func EditorialItem.identifier.getter // getter 
+	0x2bffe0  func EditorialItem.identifier.setter // setter 
+	0x2c0000  func EditorialItem.identifier.modify // modifyCoroutine 
+	0x2c00c0  func EditorialItem.title.getter // getter 
+	0x2c01b0  func EditorialItem.title.setter // setter 
+	0x2c0220  func EditorialItem.title.modify // modifyCoroutine 
+	0x2c0280  func EditorialItem.subtitle.getter // getter 
+	0x2c02c0  func EditorialItem.subtitle.setter // setter 
+	0x2c02e0  func EditorialItem.subtitle.modify // modifyCoroutine 
+	0x2c03b0  func EditorialItem.subtitleColor.getter // getter 
+	0x2c04c0  func EditorialItem.subtitleColor.setter // setter 
+	0x2c0530  func EditorialItem.subtitleColor.modify // modifyCoroutine 
+	0x2c05d0  func EditorialItem.attributes.getter // getter 
+	0x2c0670  func EditorialItem.attributes.setter // setter 
+	0x2c06c0  func EditorialItem.attributes.modify // modifyCoroutine 
+	0x2c07b0  func EditorialItem.actionURL.getter // getter 
+	0x2c08c0  func EditorialItem.actionURL.setter // setter 
+	0x2c09d0  func EditorialItem.actionURL.modify // modifyCoroutine 
+	0x2c0a60  func EditorialItem.thumbnailImage.getter // getter 
+	0x2c0b00  func EditorialItem.thumbnailImage.setter // setter 
+	0x2c0b50  func EditorialItem.thumbnailImage.modify // modifyCoroutine 
+	0x2c0bb0  func EditorialItem.backingTag.getter // getter 
+	0x2c0bf0  func EditorialItem.backingTag.setter // setter 
+	0x2c0c10  func EditorialItem.backingTag.modify // modifyCoroutine 
+	0x2c0cb0  func EditorialItem.headline.getter // getter 
+	0x2c0d80  func EditorialItem.headline.setter // setter 
+	0x2c0de0  func EditorialItem.headline.modify // modifyCoroutine 
+	0x2c0e20  class func EditorialItem.__allocating_init(identifier:title:subtitle:subtitleColor:attributes:actionURL:thumbnailImage:backingTag:headline:) // init 
  }
 
  class NewsUI2.ReportConcernViewPresenter : NSObject /usr/lib/libobjc.A.dylib {
@@ -7596,61 +9125,51 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : ReportConcernViewPresenterDelegate // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x20aa90  @objc ReportConcernViewPresenter.presentReportConcernViewForHeadline: <stripped>
-	0x20ab80  @objc ReportConcernViewPresenter.init <stripped>
-	0x20ab60  @objc ReportConcernViewPresenter..cxx_destruct <stripped>
+	0x2c1820  @objc ReportConcernViewPresenter.presentReportConcernViewForHeadline: <stripped>
+	0x2c1910  @objc ReportConcernViewPresenter.init <stripped>
+	0x2c18f0  @objc ReportConcernViewPresenter..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
- class NewsUI2.SpecialEventsStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SpecialEventsStylerType {
+ class NewsUI2.FeedViewContextFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let baseStyler : BaseStylerType // +0x10 (0x28)
-	let application : UIApplication // +0x38 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let topMarginSpecialEventsToNavBarCompactLayouts : A // +0x40 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let topMarginSpecialEventsToNavBarRegularLayouts : A // +0x48 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let topMarginSpecialEventsToNavBarRegularLayoutsMac : A // +0x50 (0x8)
+	let analyticsReferralFactory : AnalyticsReferralFactory // +0x10 (0x8)
+	let adContextFactory : AdContextFactory // +0x18 (0x8)
 
 	// Swift methods
  }
 
  class NewsUI2.DatabaseAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x20c0e0  @objc DatabaseAssembly.init <stripped>
+	0x2c2df0  @objc DatabaseAssembly.init <stripped>
 
 	// Swift methods
  }
 
- class NewsUI2.NewsReferralItemWidgetVideoPlaylist : NSObject /usr/lib/libobjc.A.dylib {
+ class NewsUI2.AudioQueueCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let widgetArticleList : NewsReferralItemWidgetArticleList // +0x8 (0x8)
-	let preferredMuteState : Bool // +0x10 (0x1)
-	let videoGroupsConfig : FCVideoGroupsConfig // +0x18 (0x8)
-	let discoverMoreVideosInfo : NTPBDiscoverMoreVideosInfo // +0x20 (0x8)
-	let prerollLoadingTimeout : Double // +0x28 (0x8)
-	let onboardingVersion : FCOnboardingVersionNumber // +0x30 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x20c3b0  @objc NewsReferralItemWidgetVideoPlaylist.widgetArticleList <stripped>
-	0x20c3f0  @objc NewsReferralItemWidgetVideoPlaylist.preferredMuteState <stripped>
-	0x20c420  @objc NewsReferralItemWidgetVideoPlaylist.videoGroupsConfig <stripped>
-	0x20c460  @objc NewsReferralItemWidgetVideoPlaylist.discoverMoreVideosInfo <stripped>
-	0x20c4a0  @objc NewsReferralItemWidgetVideoPlaylist.prerollLoadingTimeout <stripped>
-	0x20c4e0  @objc NewsReferralItemWidgetVideoPlaylist.onboardingVersion <stripped>
-	0x20c670  @objc NewsReferralItemWidgetVideoPlaylist.initWithWidgetArticleList:preferredMuteState:videoGroupsConfig:discoverMoreVideosInfo:prerollLoadingTimeout:onboardingVersion: <stripped>
-	0x20c800  @objc NewsReferralItemWidgetVideoPlaylist.init <stripped>
-	0x20c760  @objc NewsReferralItemWidgetVideoPlaylist..cxx_destruct <stripped>
+	let dataManager : AudioDataManagerType // +0x10 (0x28)
+	var playbackConductor : AudioPlaybackConductor // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let playNowIgnoringPlaylistSlot : πL	 // +0x40 (0x8)
+	let headlineConverter : AudioHeadlineConverterType // +0x48 (0x28)
+	let offlineManager : OfflineManager // +0x70 (0x8)
+	let offlineArticleManager : FCOfflineArticleManagerType // +0x78 (0x8)
+	let offlineAlertControllerFactory : OfflineAlertControllerFactoryType // +0x80 (0x28)
+	let audioPlaybackTracker : AudioPlaybackTrackerType // +0xa8 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let alertPresenter : ßi	 // +0xd0 (0x28)
+	let audioConfigManager : AudioConfigurationManagerType // +0xf8 (0x28)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x120 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let audioTabVisibilitySignal : ø-	 // +0x128 (0x8)
 
 	// Swift methods
-	0x20c520  class func NewsReferralItemWidgetVideoPlaylist.__allocating_init(widgetArticleList:preferredMuteState:videoGroupsConfig:discoverMoreVideosInfo:prerollLoadingTimeout:onboardingVersion:) // init 
  }
 
- class NewsUI2.FeedGroupEmitter {
  struct NewsUI2.FollowingSubscriptionChangeIgnoreModifier {
 
 	// Properties
@@ -7661,7 +9180,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var publishDate : cÛ
+	var publishDate : ÛI	
 	var groups : TodayFeedGroupConfig
 	let topStories : TodayFeedGroupConfig
  }
@@ -7681,12 +9200,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let purchaseController : FCPurchaseController // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x21cf20  @objc SubscriptionDetectionManager.purchasesDiscoveredWithNotification: <stripped>
+	0x2ccc40  @objc SubscriptionDetectionManager.purchasesDiscoveredWithNotification: <stripped>
 
 	// Swift methods
-	0x21cab0  func <stripped> // method 
+	0x2cc7d0  func <stripped> // method 
  }
 
+ class NewsUI2.SearchMoreArticlesBlueprintViewSupplementaryViewProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
+ class NewsUI2.SearchMoreTagsInteractor {
  class NewsUI2.MagazineCategoryViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineCategoryViewLayoutAttributesFactoryType {
 
 	// Properties
@@ -7698,7 +9222,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsUI2.StubMyMagazinesMagazineFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let config : MyMagazinesMagazineFeedGroupConfig // +0x10 (0x58)
+	let config : MyMagazinesMagazineFeedGroupConfig // +0x0 (0x0)
 
 	// Swift methods
  }
@@ -7707,32 +9231,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case feedItem : ı≤
+	case feedItem : G\	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case plugin : Ûg
+	case plugin : K4	
  }
 
- struct NewsUI2.HistoryExpandModifier {
+ class NewsUI2.AudioFeedSectionDecorationFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioFeedSectionDecorationFactoryType {
 
 	// Properties
-	let identifier : String // +0x0
-	let historyService : HistoryServiceType // +0x10
- }
-
- enum NewsUI2.ModifierError {
-
-	// Properties
-	case invalidIdentifier  
- }
-
- class NewsUI2.SearchMoreDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreDataManagerType {
-
-	// Properties
-	let notificationManager : TSNotificationManagerType // +0x10 (0x8)
-	let searchMoreService : SearchMoreServiceType // +0x18 (0x28)
-	let tagService : TagServiceType // +0x40 (0x10)
+	let imageFactory : AudioFeedSectionImageDecorationFactoryType // +0x10 (0x28)
+	let baseStyler : BaseStylerType // +0x38 (0x28)
 
 	// Swift methods
+ }
+
+ struct NewsUI2.GeoLocation {
+
+	// Properties
+	let latitude : Double // +0x0
+	let longitude : Double // +0x8
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case latitude  
+	case longitude  
  }
 
  class NewsUI2.HeadlineViewWrappedImageOnSideStyleFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -7758,7 +9282,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let sectionHeaderRenderer : MyMagazinesSectionHeaderViewRendererType // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedItemSupplementaryRenderer : i˜ // +0x38 (0x10)
+	let feedItemSupplementaryRenderer : M[	 // +0x38 (0x10)
 	let separatorRenderer : MyMagazinesSectionHeaderSeparatorViewRendererType // +0x48 (0x28)
 
 	// Swift methods
@@ -7775,8 +9299,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsUI2.ChannelPromotedArticlesService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ChannelPromotedArticlesServiceType {
 
 	// Properties
-	let tagService : TagServiceType // +0x10 (0x10)
-	let headlineService : HeadlineServiceType // +0x20 (0x28)
+	let headlineService : HeadlineServiceType // +0x10 (0x28)
 
 	// Swift methods
  }
@@ -7784,15 +9307,51 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum NewsUI2.Errors {
 
 	// Properties
-	case missingDefaultSection  
 	case invalidPromotedArticles  
 	case expiredPromotedArticles  
+	case failedToResolveTag  
 	case unknown  
  }
 
  class NewsUI2.CoordinatorAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x223c30  @objc CoordinatorAssembly.init <stripped>
+	0x2d5ba0  @objc CoordinatorAssembly.init <stripped>
+ }
+
+ class NewsUI2.SearchMoreArticlesModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreArticlesModuleType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x38 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.PublisherLogoProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let imageCache : TSImageCacheType // +0x10 (0x8)
+
+	// Swift methods
+	0x2d63d0  func PublisherLogoProvider.publisherLogo(tag:imageSize:userInterfaceStyle:) // method 
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case assetNotAvailable  
+	case imageNotAvailable  
+ }
+
+ class NewsUI2.FollowingTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingTrackerType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x10 (0x8)
+
+	// Swift methods
  }
 
  struct NewsUI2.TodayExpandRequest {
@@ -7800,6 +9359,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String
 	let location : TodayGapLocation
+	let context : TodayExpandContext
+ }
+
+ struct NewsUI2.AudioFeedPaywallFeedGroup {
+
+	// Properties
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+	let feedPaywallConfig : FeedPaywallConfig
  }
 
  class NewsUI2.FollowingNotificationsEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingNotificationsEventHandlerType {
@@ -7808,13 +9377,43 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : FollowingNotificationsEventHandlerTypeDelegate // +0x10 (0x10)
 	let interactor : FollowingNotificationsInteractorType // +0x20 (0x10)
 	let router : FollowingNotificationsRouterType // +0x30 (0x28)
+	let tracker : FollowingNotificationsTrackerType // +0x58 (0x28)
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioFeedBlueprintLayoutBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedLayoutSolver : WX	 // +0x10 (0x8)
+	let audioFeedTitleViewLayoutAttributesFactory : AudioFeedTitleViewLayoutAttributesFactoryType // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedLayoutContextFactory : «Í // +0x40 (0x28)
+	let sectionDecorationFactory : AudioFeedSectionDecorationFactoryType // +0x68 (0x28)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x90 (0x8)
+	let audioFeedPlacardLayoutAttributesFactory : AudioFeedPlacardLayoutAttributesFactoryType // +0x98 (0x28)
 
 	// Swift methods
  }
 
  class NewsUI2.MagazineGridAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x22ae80  @objc MagazineGridAssembly.init <stripped>
+	0x2ef4c0  @objc MagazineGridAssembly.init <stripped>
+ }
+
+ class NewsUI2.SavedFeedRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SavedFeedRouterType {
+
+	// Properties
+	var controller : weak UIViewController? // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x40 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x48 (0x8)
+
+	// Swift methods
  }
 
  class NewsUI2.WelcomeViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WelcomeViewStylerType {
@@ -7831,38 +9430,52 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleFontSize : A // +0x0
+	let titleFontSize : õ_	 // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleKern : A // +0x8
+	let titleKern : õ_	 // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLineHeightMultiple : A // +0x10
+	let titleLineHeightMultiple : õ_	 // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleFontSize : A // +0x18
+	let subtitleFontSize : õ_	 // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleHeightMultiple : A // +0x20
+	let subtitleHeightMultiple : õ_	 // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleKern : A // +0x28
+	let subtitleKern : õ_	 // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let siriFontSize : A // +0x30
+	let siriFontSize : õ_	 // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let siriHeightMultiple : A // +0x38
+	let siriHeightMultiple : õ_	 // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let continueButtonTitleFontSize : A // +0x40
+	let continueButtonTitleFontSize : õ_	 // +0x40
+ }
+
+ class NewsUI2.WebEmbedRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WebEmbedRouterType {
+
+	// Properties
+	var controller : weak UIViewController? // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x40 (0x8)
+
+	// Swift methods
  }
 
  struct NewsUI2.BestOfBundleMagazineFeedGroup {
 
 	// Properties
-	let identifier : String // +0x0
-	let groupTitle : String // +0x10
-	let groupTitleColor : UIColor? // +0x20
-	let groupDarkStyleTitleColor : UIColor? // +0x28
-	let groupSubtitle : String? // +0x30
-	let paidVisibility : FeedGroupPaidVisibility // +0x40
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x41
-	let rankMultiplier : Double // +0x48
-	let allowDuplicatesAcrossGroups : Bool // +0x50
-	let feedGroupKind : BestOfBundleFeedGroupKind // +0x58
+	let identifier : String
+	let groupTitle : String
+	let groupTitleColor : UIColor?
+	let groupDarkStyleTitleColor : UIColor?
+	let groupSubtitle : String?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let rankMultiplier : Double
+	let allowDuplicatesAcrossGroups : Bool
+	let feedGroupKind : BestOfBundleFeedGroupKind
  }
 
  enum NewsUI2.BestOfBundleFeedGroupKind {
@@ -7876,12 +9489,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedLayoutSolver : À¿ // +0x10 (0x8)
+	let feedLayoutSolver : WX	 // +0x10 (0x8)
 	let assetManager : FCAssetManager // +0x18 (0x8)
 	let baseStyler : BaseStylerType // +0x20 (0x28)
 	let groupTitleViewLayoutAttributesFactory : MagazineFeedGroupTitleViewLayoutAttributesFactoryType // +0x48 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sectionFooterViewLayoutAttributesFactory : ¡å // +0x70 (0x28)
+	let sectionFooterViewLayoutAttributesFactory : ´” // +0x70 (0x28)
 
 	// Swift methods
  }
@@ -7911,22 +9524,54 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let layoutAttributes : A
  }
 
- class NewsUI2.PaywallCoordinator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ struct NewsUI2.TrendingTodayFeedGroupConfig {
+
+	// Properties
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let content : uá	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+	let allowDuplicatesAcrossGroups : Bool
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case identifier  
+	case position  
+	case content  
+	case allowDuplicatesAcrossGroups  
+	case minNewsVersion  
+	case maxNewsVersion  
+ }
+
+ class NewsUI2.PaywallTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x10 (0x8)
+	let tracker : 9P	 // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paywallModel : Û[ // +0x0 (0x0)
+	let paywallModel : #ù // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var articleData : ’R // +0x0 (0x50)
+	var feedData : ó // +0x0 (0x18)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var campaignData : %S // +0x0 (0x30)
+	var groupData : Eó // +0x0 (0x48)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var adReferralData : ΩS // +0x0 (0x10)
+	var sectionData : çë // +0x0 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var articleData : -ë // +0x0 (0x50)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var campaignData : ïë // +0x0 (0x30)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var adReferralData : Eí // +0x0 (0x10)
 
 	// Swift methods
-	0x23b360  func <stripped> // getter 
+	0x303350  func <stripped> // getter 
  }
 
  class NewsUI2.ImageHeadlineView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -7940,9 +9585,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var axElement : AXElement
 
 	// ObjC -> Swift bridged methods
-	0x23cd60  @objc ImageHeadlineView.initWithFrame: <stripped>
-	0x23ce30  @objc ImageHeadlineView.initWithCoder: <stripped>
-	0x23d3c0  @objc ImageHeadlineView..cxx_destruct <stripped>
+	0x305410  @objc ImageHeadlineView.initWithFrame: <stripped>
+	0x3054e0  @objc ImageHeadlineView.initWithCoder: <stripped>
+	0x305a70  @objc ImageHeadlineView..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -7953,20 +9598,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var representedView : ImageHeadlineView
 
 	// ObjC -> Swift bridged methods
-	0x23ce90  @objc AXElement.accessibilityFrame <stripped>
-	0x23cff0  @objc AXElement.setAccessibilityFrame: <stripped>
-	0x23d000  @objc AXElement.accessibilityValue <stripped>
-	0x23d290  @objc AXElement.setAccessibilityValue: <stripped>
-	0x23d2f0  @objc AXElement.initWithAccessibilityContainer: <stripped>
-	0x23d340  @objc AXElement.init <stripped>
-	0x23d2d0  @objc AXElement..cxx_destruct <stripped>
+	0x305540  @objc AXElement.accessibilityFrame <stripped>
+	0x3056a0  @objc AXElement.setAccessibilityFrame: <stripped>
+	0x3056b0  @objc AXElement.accessibilityValue <stripped>
+	0x305940  @objc AXElement.setAccessibilityValue: <stripped>
+	0x3059a0  @objc AXElement.initWithAccessibilityContainer: <stripped>
+	0x3059f0  @objc AXElement.init <stripped>
+	0x305980  @objc AXElement..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.TopicTodayFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let config : TopicTodayFeedGroupConfig // +0x0 (0x0)
+	let knobs : TopicTodayFeedGroupKnobs // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let formatService : £H	 // +0x0 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let topicClusterService : %„ // +0x0 (0x8)
+	let topicColorProvider : TSTopicColorProviderType // +0x0 (0x8)
+	let name : String // +0x6f635f5f (0x10)
 
 	// Swift methods
  }
 
  class NewsUI2.WelcomeAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x23f200  @objc WelcomeAssembly.init <stripped>
+	0x30b900  @objc WelcomeAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -7975,12 +9635,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
+	let resolver : È_	 // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x23f550  @objc SavedModule.createViewController <stripped>
-	0x23f640  @objc SavedModule.init <stripped>
-	0x23f5d0  @objc SavedModule..cxx_destruct <stripped>
+	0x30bc50  @objc SavedModule.createViewController <stripped>
+	0x30bd40  @objc SavedModule.init <stripped>
+	0x30bcd0  @objc SavedModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -7996,38 +9656,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let maxOccurrence : Int // +0x28
  }
 
- enum NewsUI2.HeroSelectionStrategy {
-
-	// Properties
-	case promoted : Promoted
-	case personalization  
- }
-
- struct NewsUI2.Promoted {
-
-	// Properties
-	let timeToLive : Double // +0x0
- }
-
- enum NewsUI2.CodingKeys {
-
-	// Properties
-	case timeToLive  
- }
-
- enum NewsUI2.Errors {
-
-	// Properties
-	case unknownHeroSelectionStrategy  
- }
-
- enum NewsUI2.CodingKeys {
-
-	// Properties
-	case type  
-	case data  
- }
-
  enum NewsUI2.CodingKeys {
 
 	// Properties
@@ -8037,6 +9665,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case rankMultiplier  
 	case minOccurrence  
 	case maxOccurrence  
+ }
+
+ struct NewsUI2.ForYouTodayFeedGroup {
+
+	// Properties
+	let identifier : String
+	let formatGroup : FormatFeedGroup
  }
 
  class NewsUI2.HeadlineViewLayoutAttributesProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HeadlineViewLayoutAttributesProviderType {
@@ -8059,6 +9694,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ struct NewsUI2.NewIssueMagazineFeedGroupEmitter {
+
+	// Properties
+	let config : NewIssueMagazineFeedGroupConfig
+	let knobs : NewIssueMagazineFeedGroupKnobs
+	let personalizationService : MagazineFeedPersonalizationServiceType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineService : ±≠	
+	let currentIssuesChecker : FCCurrentIssuesChecker
+	let requiredNumberOfHeadlines : Int
+	let name : String
+ }
+
  enum NewsUI2.Errors {
 
 	// Properties
@@ -8071,18 +9719,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case noMagazineFeedPool  
  }
 
- struct NewsUI2.NewIssueMagazineFeedGroupEmitter {
-
-	// Properties
-	let config : NewIssueMagazineFeedGroupConfig // +0x0
-	let knobs : NewIssueMagazineFeedGroupKnobs // +0x88
-	let personalizationService : MagazineFeedPersonalizationServiceType // +0xc0
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineService : Só // +0xe8
-	let currentIssuesChecker : FCCurrentIssuesChecker // +0x110
-	let requiredNumberOfHeadlines : Int // +0x118
- }
-
  enum NewsUI2.ArticleContextPresentationReason { }
 
  enum NewsUI2.ArticlePresentationStyle { }
@@ -8091,52 +9727,60 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : S⁄ // +0x6c24d4 (0x0)
-	let sourceApplication : String? // +0x0 (0x10)
-	let previousArticleID : String? // +0x0 (0x10)
-	let previousArticleVersion : String? // +0x0 (0x10)
-	let adPreviewSessionID : String? // +0x68655f5f (0x10)
-	let adPreviewID : String? // +0x656d (0x10)
-	let adQToken : String? // +0x45545f5f (0x10)
+	let url : ◊6	 // +0x0 (0x0)
+	let title : String? // +0x41445f5f (0x10)
+	let sourceApplication : String? // +0x54534e4f (0x10)
+	let previousArticleID : String? // +0x8c94e8 (0x10)
+	let previousArticleVersion : String? // +0x2b190 (0x10)
+	let adPreviewSessionID : String? // +0x8c94e8 (0x10)
+	let adPreviewID : String? // +0x0 (0x10)
+	let adQToken : String? // +0x0 (0x10)
 	let maximumAdRequestsForCurrentAdPreviewID : Int // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userActionDate : cÛ // +0x6d5610 (0x0)
-	let presentationReason : ArticleContextPresentationReason // +0xd5c0 (0x8)
-	let notificationID : String? // +0x6d5610 (0x10)
-	let notificationSenderChannelID : String? // +0x0 (0x10)
-	var referral : AnalyticsReferral // +0x0 (0x8)
+	let userActionDate : ÛI	 // +0x66635f5f (0x0)
+	let presentationReason : ArticleContextPresentationReason // +0x676e (0x8)
+	let notificationID : String? // +0x41445f5f (0x10)
+	let notificationSenderChannelID : String? // +0x54534e4f (0x10)
+	let shouldAutoPlayVideo : Bool // +0x8f4678 (0x1)
+	var referral : AnalyticsReferral // +0x240 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x248b20  @objc ArticleContext.url <stripped>
-	0x248b70  @objc ArticleContext.sourceApplication <stripped>
-	0x248bb0  @objc ArticleContext.previousArticleID <stripped>
-	0x248bf0  @objc ArticleContext.previousArticleVersion <stripped>
-	0x248c30  @objc ArticleContext.adPreviewSessionID <stripped>
-	0x248c70  @objc ArticleContext.adPreviewID <stripped>
-	0x248cb0  @objc ArticleContext.adQToken <stripped>
-	0x248cf0  @objc ArticleContext.maximumAdRequestsForCurrentAdPreviewID <stripped>
-	0x248d30  @objc ArticleContext.userActionDate <stripped>
-	0x248e20  @objc ArticleContext.presentationReason <stripped>
-	0x248e60  @objc ArticleContext.notificationID <stripped>
-	0x248ea0  @objc ArticleContext.notificationSenderChannelID <stripped>
-	0x248f70  @objc ArticleContext.referral <stripped>
-	0x249000  @objc ArticleContext.setReferral: <stripped>
-	0x249320  @objc ArticleContext.initWithUrl:sourceApplication:previousArticleID:previousArticleVersion:adPreviewSessionID:adPreviewID:adQToken:maximumAdRequestsForCurrentAdPreviewID:userActionDate:presentationReason:notificationID:notificationSenderChannelID:referral: <stripped>
-	0x249900  @objc ArticleContext.init <stripped>
-	0x2497b0  @objc ArticleContext..cxx_destruct <stripped>
+	0x313a50  @objc ArticleContext.url <stripped>
+	0x313aa0  @objc ArticleContext.title <stripped>
+	0x313ae0  @objc ArticleContext.sourceApplication <stripped>
+	0x313b20  @objc ArticleContext.previousArticleID <stripped>
+	0x313b60  @objc ArticleContext.previousArticleVersion <stripped>
+	0x313ba0  @objc ArticleContext.adPreviewSessionID <stripped>
+	0x313be0  @objc ArticleContext.adPreviewID <stripped>
+	0x313c20  @objc ArticleContext.adQToken <stripped>
+	0x313c60  @objc ArticleContext.maximumAdRequestsForCurrentAdPreviewID <stripped>
+	0x313ca0  @objc ArticleContext.userActionDate <stripped>
+	0x313d90  @objc ArticleContext.presentationReason <stripped>
+	0x313dd0  @objc ArticleContext.notificationID <stripped>
+	0x313e10  @objc ArticleContext.notificationSenderChannelID <stripped>
+	0x313ee0  @objc ArticleContext.shouldAutoPlayVideo <stripped>
+	0x313f10  @objc ArticleContext.referral <stripped>
+	0x313fa0  @objc ArticleContext.setReferral: <stripped>
+	0x3141c0  @objc ArticleContext.initWithUrl:title:sourceApplication:previousArticleID:previousArticleVersion:adPreviewSessionID:adPreviewID:adQToken:maximumAdRequestsForCurrentAdPreviewID:userActionDate:presentationReason:notificationID:notificationSenderChannelID:referral:shouldAutoPlayVideo: <stripped>
+	0x314710  @objc ArticleContext.init <stripped>
+	0x314770  @objc ArticleContext..cxx_destruct <stripped>
 
 	// Swift methods
-	0x248fc0  func ArticleContext.referral.getter // getter 
-	0x249060  func ArticleContext.referral.setter // setter 
-	0x2490b0  func ArticleContext.referral.modify // modifyCoroutine 
-	0x249100  class func ArticleContext.__allocating_init(url:sourceApplication:previousArticleID:previousArticleVersion:adPreviewSessionID:adPreviewID:adQToken:maximumAdRequestsForCurrentAdPreviewID:userActionDate:presentationReason:notificationID:notificationSenderChannelID:referral:) // init 
+	0x313f60  func ArticleContext.referral.getter // getter 
+	0x314000  func ArticleContext.referral.setter // setter 
+	0x314050  func ArticleContext.referral.modify // modifyCoroutine 
+	0x3137c0  class func ArticleContext.__allocating_init(url:title:sourceApplication:previousArticleID:previousArticleVersion:adPreviewSessionID:adPreviewID:adQToken:maximumAdRequestsForCurrentAdPreviewID:userActionDate:presentationReason:notificationID:notificationSenderChannelID:referral:shouldAutoPlayVideo:) // init 
  }
 
  class NewsUI2.StubFeaturedIssueArticleMagazineFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let config : FeaturedIssueArticleMagazineFeedGroupConfig // +0x10 (0xa8)
+	let config : FeaturedIssueArticleMagazineFeedGroupConfig // +0x0 (0x0)
 
+	// Swift methods
+ }
+
+ class NewsUI2.TopSpotImageProcessing : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
  }
 
@@ -8147,31 +9791,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isEnabled : Bool // +0x18 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x24a920  @objc ShareButtonWindowToolbarItemHandler.isEnabled <stripped>
-	0x24a990  @objc ShareButtonWindowToolbarItemHandler.setIsEnabled: <stripped>
-	0x24ac00  @objc ShareButtonWindowToolbarItemHandler.initWithActivityProviderAccessor: <stripped>
-	0x24adf0  @objc ShareButtonWindowToolbarItemHandler.installHandler <stripped>
-	0x24af10  @objc ShareButtonWindowToolbarItemHandler.uninstallHandler <stripped>
-	0x24b0f0  @objc ShareButtonWindowToolbarItemHandler.init <stripped>
-	0x24b080  @objc ShareButtonWindowToolbarItemHandler..cxx_destruct <stripped>
+	0x317490  @objc ShareButtonWindowToolbarItemHandler.isEnabled <stripped>
+	0x317500  @objc ShareButtonWindowToolbarItemHandler.setIsEnabled: <stripped>
+	0x317770  @objc ShareButtonWindowToolbarItemHandler.initWithActivityProviderAccessor: <stripped>
+	0x317960  @objc ShareButtonWindowToolbarItemHandler.installHandler <stripped>
+	0x317a80  @objc ShareButtonWindowToolbarItemHandler.uninstallHandler <stripped>
+	0x317c60  @objc ShareButtonWindowToolbarItemHandler.init <stripped>
+	0x317bf0  @objc ShareButtonWindowToolbarItemHandler..cxx_destruct <stripped>
 
 	// Swift methods
-	0x24ab00  class func ShareButtonWindowToolbarItemHandler.__allocating_init(activityProviderAccessor:) // init 
- }
-
- class NewsUI2.MoreVideosStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MoreVideosStylerType {
-
-	// Properties
-	let baseStyler : BaseStylerType // +0x10 (0x28)
-
-	// Swift methods
+	0x317670  class func ShareButtonWindowToolbarItemHandler.__allocating_init(activityProviderAccessor:) // init 
  }
 
  struct NewsUI2.MagazineGridBuildBlueprintModifier {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueService : Ÿπ // +0x0
+	let issueService : „	 // +0x0
 	let issueModelFactory : IssueModelFactoryType // +0x28
 	let gridModel : MagazineGridModel // +0x50
 	let paidAccessChecker : FCPaidAccessCheckerType // +0x80
@@ -8180,93 +9816,77 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let offlineIssueManager : OfflineIssueManagerType // +0xa8
  }
 
- enum NewsUI2.MoreVideoAnalyticEvent {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case cellExposure : ;_
- }
-
  class NewsUI2.SeparatorViewContainerView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separator : ŸZ // +0x8 (0x8)
+	let separator : Àõ // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2515d0  @objc SeparatorViewContainerView.initWithFrame: <stripped>
-	0x251600  @objc SeparatorViewContainerView.initWithCoder: <stripped>
-	0x251650  @objc SeparatorViewContainerView..cxx_destruct <stripped>
+	0x31c410  @objc SeparatorViewContainerView.initWithFrame: <stripped>
+	0x31c440  @objc SeparatorViewContainerView.initWithCoder: <stripped>
+	0x31c490  @objc SeparatorViewContainerView..cxx_destruct <stripped>
  }
 
  struct NewsUI2.OrderedArticleListMagazineFeedGroup {
 
 	// Properties
-	let identifier : String // +0x0
-	let groupTitle : String // +0x10
-	let groupTitleColor : UIColor? // +0x20
-	let groupSubtitle : String? // +0x28
-	let headlines : [FCHeadlineProviding] // +0x38
-	let paidVisibility : FeedGroupPaidVisibility // +0x40
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x41
-	let rankMultiplier : Double // +0x48
-	let allowDuplicatesAcrossGroups : Bool // +0x50
- }
-
- class NewsUI2.EditorialAttributesProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let showingBadge : Bool // +0x10 (0x1)
-
-	// ObjC -> Swift bridged methods
-	0x251e30  @objc EditorialAttributesProvider.showingBadge <stripped>
-
-	// Swift methods
- }
-
- class NewsUI2.NewsActivityInfo : NSObject /usr/lib/libobjc.A.dylib {
-
-	// Properties
-	let type : NewsActivityType // +0x8 (0x1)
-	let identifier : String // +0x10 (0x10)
-	let title : String // +0x20 (0x10)
+	let identifier : String
+	let groupTitle : String
+	let groupTitleColor : UIColor?
+	let groupSubtitle : String?
+	let headlines : [FCHeadlineProviding]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : S⁄ // +0x0 (0x0)
-
-	// ObjC -> Swift bridged methods
-	0x251f30  @objc NewsActivityInfo.init <stripped>
-	0x251ec0  @objc NewsActivityInfo..cxx_destruct <stripped>
-
-	// Swift methods
-	0x252300  func <stripped> // method 
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let rankMultiplier : Double
+	let allowDuplicatesAcrossGroups : Bool
  }
 
- enum NewsUI2.CodingKeys {
+ class NewsUI2.AudioPlaybackCommandHandler : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	case type  
-	case identifier  
-	case title  
-	case url  
+	let dataManager : AudioDataManagerType // +0x8 (0x28)
+	let playbackConductor : AudioPlaybackConductor // +0x30 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let playNowIgnoringPlaylistSlot : πL	 // +0x38 (0x8)
+	let audioPlaybackTracker : AudioPlaybackTrackerType // +0x40 (0x28)
+	let playbackQueue : NewsAudioPlaybackQueue // +0x68 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resumeSlot : πL	 // +0x70 (0x8)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x78 (0x8)
+	let offlineManager : OfflineManager // +0x80 (0x8)
+	let offlineArticleManager : FCOfflineArticleManagerType // +0x88 (0x8)
+	let offlineAlertControllerFactory : OfflineAlertControllerFactoryType // +0x90 (0x28)
+
+	// ObjC -> Swift bridged methods
+	0x31d280  @objc AudioPlaybackCommandHandler.init <stripped>
+	0x31d2e0  @objc AudioPlaybackCommandHandler..cxx_destruct <stripped>
+
+	// Swift methods
  }
 
  struct NewsUI2.TrendingMagazineFeedGroupConfig {
 
 	// Properties
-	let kind : MagazineFeedGroupKind // +0x0
-	let identifier : String // +0x8
-	let articleListID : String // +0x18
-	let position : FeedGroupPosition // +0x28
-	let groupTitle : String // +0x30
-	let groupTitleColor : String // +0x40
-	let groupSubtitle : String? // +0x50
-	let availableInForYou : Bool // +0x60
-	let availableInMagazineFeed : Bool // +0x61
-	let paidVisibility : FeedGroupPaidVisibility // +0x62
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x63
-	let allowDuplicatesAcrossGroups : Bool // +0x64
-	let minNewsVersion : String? // +0x68
-	let maxNewsVersion : String? // +0x78
+	let kind : MagazineFeedGroupKind
+	let identifier : String
+	let articleListID : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+	let groupTitle : String
+	let groupTitleColor : String
+	let groupSubtitle : String?
+	let availableInForYou : Bool
+	let availableInMagazineFeed : Bool
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let allowDuplicatesAcrossGroups : Bool
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
  }
 
  enum NewsUI2.Keys {
@@ -8290,15 +9910,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.MyMagazinesMagazineFeedGroupConfig {
 
 	// Properties
-	let kind : MagazineFeedGroupKind // +0x0
-	let identifier : String // +0x8
-	let groupSubtitle : String? // +0x18
-	let position : FeedGroupPosition // +0x28
-	let availableInForYou : Bool // +0x30
-	let availableInMagazineFeed : Bool // +0x31
-	let paidVisibility : FeedGroupPaidVisibility // +0x32
-	let minNewsVersion : String? // +0x38
-	let maxNewsVersion : String? // +0x48
+	let kind : MagazineFeedGroupKind
+	let identifier : String
+	let groupSubtitle : String?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+	let availableInForYou : Bool
+	let availableInMagazineFeed : Bool
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
  }
 
  enum NewsUI2.Keys {
@@ -8313,36 +9935,56 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case maxNewsVersion  
  }
 
+ class NewsUI2.SavedURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let patterns :  empty-list  // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x18 (0x8)
+
+	// Swift methods
+ }
+
  enum NewsUI2.MagazineGridSectionDescriptor {
 
 	// Properties
 	case none  
  }
 
- class NewsUI2.SpecialEventsTitleViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SpecialEventsTitleViewRendererType {
+ struct NewsUI2.AudioPlaylistFeedGroupConfig {
 
 	// Properties
-	let styler : SpecialEventsTitleViewStylerType // +0x10 (0x28)
-
-	// Swift methods
+	let identifier : String // +0x0
  }
 
- enum NewsUI2.FeedPoolCachePolicy {
+ enum NewsUI2.CodingKeys {
 
 	// Properties
-	case default  
-	case cachedOnly  
-	case preferCached  
+	case identifier  
  }
 
  struct NewsUI2.MyMagazinesBuildBlueprintModifier {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let storeState : 	Û
+	let storeState : gS	
 	let issueModelFactory : IssueModelFactoryType
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType
 	let offlineIssueManager : OfflineIssueManagerType
+ }
+
+ class NewsUI2.ForYouTodayFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let config : ForYouTodayFeedGroupConfig // +0x0 (0x0)
+	let knobs : ForYouTodayFeedGroupKnobs // +0x0 (0x19)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let formatService : £H	 // +0x0 (0x28)
+	let paidAccessChecker : FCPaidAccessCheckerType // +0x0 (0x8)
+	let name : String // +0x8f4678 (0x10)
+
+	// Swift methods
  }
 
  class NewsUI2.MagazineFeedGroupTitleView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -8350,28 +9992,64 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let titleLabel : UILabel // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleContainerView : ’¶ // +0x10 (0x8)
+	let titleContainerView : !¯ // +0x10 (0x8)
 	let subtitleLabel : UILabel // +0x18 (0x8)
 	let likeButton : LikeButton // +0x20 (0x8)
 	let dislikeButton : DislikeButton // +0x28 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var navigateToChannelAction : ˜i // +0x30 (0x8)
+	var navigateToChannelAction : À´ // +0x30 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var debugFeedAction : ˜i // +0x38 (0x8)
+	var debugFeedAction : À´ // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x258db0  @objc MagazineFeedGroupTitleView.initWithFrame: <stripped>
-	0x258de0  @objc MagazineFeedGroupTitleView.initWithCoder: <stripped>
-	0x258e30  @objc MagazineFeedGroupTitleView..cxx_destruct <stripped>
+	0x327f30  @objc MagazineFeedGroupTitleView.initWithFrame: <stripped>
+	0x327f60  @objc MagazineFeedGroupTitleView.initWithCoder: <stripped>
+	0x327fb0  @objc MagazineFeedGroupTitleView..cxx_destruct <stripped>
  }
 
  struct NewsUI2.TodayExpandResult {
 
 	// Properties
 	let identifier : String // +0x0
-	let fetchResult : FeedServiceFetchResult // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pluginModel : a¢ // +0x18
+	let fetchResult : oŸ // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let pluginModel : Ìˆ // +0x18
+ }
+
+ struct NewsUI2.AudioDailyBriefingInTodayFeedGroupConfig {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+	let articles : AudioConfigArticle
+	let groupTitle : String?
+	let groupSubtitle : String?
+	let callToAction : CallToAction
+	let ttl : Double?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let userLocalExpiry : ÛI	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
+	let identifier : String
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case position  
+	case articles  
+	case groupTitle  
+	case groupSubtitle  
+	case callToAction  
+	case ttl  
+	case userLocalExpiry  
+	case paidVisibility  
+	case minNewsVersion  
+	case maxNewsVersion  
+	case identifier  
  }
 
  struct NewsUI2.FollowingNotificationsToggleModifier {
@@ -8397,8 +10075,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case articleWithTraits : Article
 	case articleDeeplink : Article
 	case articleDeeplinkShare : LegacyArticle
+	case articlePreview : (articleIdentifier: String, channelIdentifier: String)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case articleWebLink : ›6	
 	case campaignLandingPage : CampaignRouteModel
 	case editorialArticle : EditorialArticle
+	case emailSignup : EmailSignupModel
 	case feed : Feed
 	case feedL2 : Feed
 	case followingDisliked : FollowingTagModel
@@ -8412,12 +10094,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case subscriptionsFound : (foundTagIDs: [String])
 	case videoPlayer : VideoPlaylist
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case webLink : Á?
+	case webEmbed : ›6	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case financeLink : ã÷
+	case webLink : ız
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case financeLink : ›6	
 	case purchaseComplete : Feed
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case subscriptionOffers : !í
+	case audioFeed  
 	case browseChannels  
-	case emailSignup  
 	case following  
 	case forYouFeed  
 	case history  
@@ -8425,6 +10111,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case manageSubscriptions  
 	case myMagazines  
 	case saved  
+	case systemAppleAccountLogin  
 	case systemNotifications  
 	case systemFamilySharing  
 	case familySetup  
@@ -8495,23 +10182,48 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case bridged : (identifier: String, viewController: UIViewController)
+	case article : (results: FCStreamingResults<FCArticleSearchResult>)
+	case channels : (results: FCStreamingResults<FCTagProviding>)
+	case topics : (results: FCStreamingResults<FCTagProviding>)
  }
 
  enum NewsUI2.VideoPlaylist {
 
 	// Properties
 	case articles : AnalyticsReferral
-	case widget : NewsReferralItemWidgetVideoPlaylist
  }
 
  enum NewsUI2.Alert {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case alert : Èf
+	case alert : 3®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case alertable : ”g
+	case alertable : u©
 	case alertController : UIAlertController
+ }
+
+ class NewsUI2.HistoryFeedRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HistoryFeedRouterType {
+
+	// Properties
+	var controller : weak UIViewController? // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x40 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x48 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioPlayingItemHistoryRecorder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let playableSlot : πL	 // +0x10 (0x8)
+
+	// Swift methods
  }
 
  struct NewsUI2.NotificationsMarketingRowModel: NotificationToggling,  TaglessNotificationRowModelType {
@@ -8519,7 +10231,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let title : String // +0x0
 	let type : TaglessNotification // +0x10
-	let thumbnailImageSource : FollowingRowThumbnailImageSource // +0x18
+	let thumbnailImageSource : TagThumbnailImageSource // +0x18
 	let identifier : String // +0x30
 	let visibleOrder : Int // +0x40
 	let notificationSetting : NotificationSetting // +0x48
@@ -8530,7 +10242,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let title : String // +0x0
 	let type : TaglessNotification // +0x10
-	let thumbnailImageSource : FollowingRowThumbnailImageSource // +0x18
+	let thumbnailImageSource : TagThumbnailImageSource // +0x18
+	let identifier : String // +0x30
+	let visibleOrder : Int // +0x40
+	let notificationSetting : NotificationSetting // +0x48
+ }
+
+ struct NewsUI2.NotificationsEndOfAudioTrackRowModel: NotificationToggling,  TaglessNotificationRowModelType {
+
+	// Properties
+	let type : TaglessNotification // +0x0
+	let thumbnailImageSource : TagThumbnailImageSource // +0x8
+	let identifier : String // +0x20
+	let visibleOrder : Int // +0x30
+	let title : String // +0x38
+	let notificationSetting : NotificationSetting // +0x48
+ }
+
+ struct NewsUI2.NotificationsNewsletterRowModel: NotificationToggling,  TaglessNotificationRowModelType {
+
+	// Properties
+	let title : String // +0x0
+	let type : TaglessNotification // +0x10
+	let thumbnailImageSource : TagThumbnailImageSource // +0x18
 	let identifier : String // +0x30
 	let visibleOrder : Int // +0x40
 	let notificationSetting : NotificationSetting // +0x48
@@ -8541,6 +10275,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case newIssues  
 	case marketing  
+	case endOfAudioTrack  
+	case newsletter  
  }
 
  struct NewsUI2.MagazineFeedExpandRequest {
@@ -8551,21 +10287,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let context : MagazineFeedExpandContext
  }
 
- class NewsUI2.FeedProxyModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeedProxyModuleType {
+ class NewsUI2.WebEmbedModule : NSObject /usr/lib/libobjc.A.dylib, WebEmbedModuleType {
 
 	// Properties
-	let feedModule : TSFeedModuleType // +0x10 (0x8)
-	let feedService : FeedAvailabilityServiceType // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x8 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x30 (0x8)
 
-	// Swift methods
- }
-
- class NewsUI2.SavedEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SavedEventHandlerType {
-
-	// Properties
-	var delegate : SavedEventHandlerTypeDelegate // +0x10 (0x10)
-	let interactor : SavedInteractorType // +0x20 (0x10)
-	let router : SavedRouterType // +0x30 (0x28)
+	// ObjC -> Swift bridged methods
+	0x3370e0  @objc WebEmbedModule.init <stripped>
+	0x337060  @objc WebEmbedModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -8579,9 +10311,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ class NewsUI2.NowPlayingViewCoordinator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
  class NewsUI2.KeyCommandAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x267530  @objc KeyCommandAssembly.init <stripped>
+	0x337890  @objc KeyCommandAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -8589,9 +10325,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.OrderedArticleListMagazineFeedGroupEmitter {
 
 	// Properties
-	let config : OrderedArticleListMagazineFeedGroupConfig // +0x0
-	let knobs : OrderedArticleListMagazineFeedGroupKnobs // +0x80
-	let diversityPenalty : Double // +0xa8
+	let config : OrderedArticleListMagazineFeedGroupConfig
+	let knobs : OrderedArticleListMagazineFeedGroupKnobs
+	let diversityPenalty : Double
+	let name : String
  }
 
  class NewsUI2.MagazineFeedPaywallInteractor : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineFeedPaywallInteractorType {
@@ -8600,7 +10337,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : MagazineFeedPaywallInteractorTypeDelegate // +0x10 (0x10)
 	let dataManager : MagazineFeedPaywallDataManagerType // +0x20 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var coordinator : üO // +0x30 (0x28)
+	var tracker : Oè // +0x30 (0x28)
 	let configurationManager : FCCoreConfigurationManager // +0x58 (0x8)
 	var purchaseSessionID : String // +0x60 (0x10)
 	let purchaseID : String // +0x70 (0x10)
@@ -8612,8 +10349,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let newspaperGroupService : NewspaperGroupServiceType // +0x10 (0x28)
+	let localNewsGroupService : LocalNewsGroupServiceType // +0x38 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let formatService : ´Ò // +0x38 (0x28)
+	let formatService : £H	 // +0x60 (0x28)
+	let audioHeadlineConverter : AudioHeadlineConverterType // +0x88 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineService : ±≠	 // +0xb0 (0x28)
+	let audioConfigurationManager : AudioConfigurationManagerType // +0xd8 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let topicClusterService : %„ // +0x100 (0x8)
+	let topicColorProvider : TSTopicColorProviderType // +0x108 (0x8)
+	let featureAvailability : TSFeatureAvailabilityType // +0x110 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let magazineFeedService : ÉO	 // +0x118 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let personalizationService : ˘+	 // +0x120 (0x28)
+	let subscriptionController : FCSubscriptionController // +0x148 (0x8)
+	let readingHistory : FCReadingHistory // +0x150 (0x8)
+	let paidAccessChecker : FCPaidAccessCheckerType // +0x158 (0x8)
 
 	// Swift methods
  }
@@ -8622,31 +10375,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let baseStyler : BaseStylerType // +0x10 (0x28)
-
-	// Swift methods
- }
-
- class NewsUI2.SpecialEventsModule : NSObject /usr/lib/libobjc.A.dylib {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
-
-	// ObjC -> Swift bridged methods
-	0x26a530  @objc SpecialEventsModule.createViewController <stripped>
-	0x26a670  @objc SpecialEventsModule.init <stripped>
-	0x26a600  @objc SpecialEventsModule..cxx_destruct <stripped>
-
-	// Swift methods
- }
-
- class NewsUI2.HistoryBlueprintViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let imageOnSideRenderer : HeadlineViewImageOnSideRenderer // +0x10 (0x8)
-	let noImageRenderer : HeadlineViewNoImageRenderer // +0x18 (0x8)
-	let wrappedImageOnSideRenderer : HeadlineViewWrappedImageOnSideRenderer // +0x20 (0x8)
-	var delegate : HistoryBlueprintViewCellProviderDelegate // +0x28 (0x10)
 
 	// Swift methods
  }
@@ -8682,22 +10410,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var controller : weak UIViewController? // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x18 (0x28)
+	let resolver : È_	 // +0x18 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x40 (0x8)
+	let tracker : 9P	 // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x48 (0x8)
+	let navigator : =e	 // +0x48 (0x8)
 
 	// Swift methods
  }
 
- enum NewsUI2.FollowingRowAttributes {
+ enum NewsUI2.SearchSectionDescriptor {
+
+	// Properties
+	case channels  
+ }
+
+ struct NewsUI2.HistoryFeedRefreshBlueprintModifier {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedContext : …x	
+	let refreshResult : HistoryFeedRefreshResult
+	let headlineModelFactory : HeadlineModelFactoryType
+ }
+
+ enum NewsUI2.TagViewAttributes {
 
 	// Properties
 	case badge  
  }
 
- enum NewsUI2.FollowingRowThumbnailImageSource {
+ enum NewsUI2.TagThumbnailImageSource {
 
 	// Properties
 	case bundle : (identifier: String)
@@ -8705,43 +10448,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case tag : (tag: FCTagProviding)
  }
 
- struct NewsUI2.FeedJournalGroup {
-
-	// Properties
-	let result : EmitResult
- }
-
- struct NewsUI2.FeedJournal {
-
-	// Properties
-	var entries : FeedJournalEntry
- }
-
- enum NewsUI2.EmitResult {
-
-	// Properties
-	case success : (group: A, score: Double)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case failed : '∞
- }
-
- enum NewsUI2.Errors {
-
-	// Properties
-	case noGroupEmitted  
- }
-
- struct NewsUI2.FeedJournalEntry {
-
-	// Properties
-	let emittedGroups : FeedJournalGroup
- }
-
  class NewsUI2.AppStorageLevelProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AppStorageLevelProviderType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lazyObservableStorageLevel : K // +0x10 (0x8)
+	var lazyObservableStorageLevel : ã // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -8754,12 +10465,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case critical  
  }
 
- class NewsUI2.SearchMoreRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreRouterType {
+ enum NewsUI2.TagFeedRules {
 
 	// Properties
-	var controller : weak UIViewController? // +0x10 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x18 (0x28)
+	case tagFeed  
+ }
+
+ class NewsUI2.SearchStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchStylerType {
+
+	// Properties
+	let baseStyler : BaseStylerType // +0x10 (0x28)
 
 	// Swift methods
  }
@@ -8768,13 +10483,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
+	let resolver : È_	 // +0x8 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x30 (0x8)
+	let tracker : 9P	 // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2704c0  @objc FollowingDislikedModule.init <stripped>
-	0x270490  @objc FollowingDislikedModule..cxx_destruct <stripped>
+	0x3433e0  @objc FollowingDislikedModule.init <stripped>
+	0x3433b0  @objc FollowingDislikedModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -8783,14 +10498,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let styler : FollowingSettingsButtonViewStylerType // +0x10 (0x28)
-
-	// Swift methods
- }
-
- class NewsUI2.HistoryStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HistoryStylerType {
-
-	// Properties
-	let baseStyler : BaseStylerType // +0x10 (0x28)
 
 	// Swift methods
  }
@@ -8804,35 +10511,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- class NewsUI2.FeedService {
- enum NewsUI2.Errors {
+ struct NewsUI2.WebEmbedViewLayoutAttributes {
 
 	// Properties
-	case failedToScore : FeedGroupEmitter
- }
-
- struct NewsUI2.FeedEmitterResult {
-
-	// Properties
-	let emitter : FeedGroupEmitter
-	let output : FeedGroupEmitterOutput
- }
-
- struct NewsUI2.FeedScoredResult {
-
-	// Properties
-	let score : Double
-	let result : FeedEmitterResult
- }
-
- class NewsUI2.HistoryBlueprintViewHeaderProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-	// Swift methods
- }
-
- enum NewsUI2.TopVideosModel {
-
-	// Properties
-	case headline : TopVideosHeadlineModel
+	let frame : CGRect // +0x0
  }
 
  class NewsUI2.SidebarTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -8842,10 +10524,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var styler : SidebarTableViewCellStyler // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2c3370  @objc SidebarTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x2c33d0  @objc SidebarTableViewCell.initWithCoder: <stripped>
-	0x2c3630  @objc SidebarTableViewCell.layoutSubviews <stripped>
-	0x2c3690  @objc SidebarTableViewCell..cxx_destruct <stripped>
+	0x3491b0  @objc SidebarTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x349210  @objc SidebarTableViewCell.initWithCoder: <stripped>
+	0x349470  @objc SidebarTableViewCell.layoutSubviews <stripped>
+	0x3494d0  @objc SidebarTableViewCell..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -8854,68 +10536,64 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resolver : 5> // +0x8 (0x28)
+	var resolver : Ü // +0x8 (0x28)
 	var window : UIWindow? // +0x30 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var windowToolbarManager : {O // +0x38 (0x28)
+	var windowToolbarManager : ãô // +0x38 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sessionObserver : 19 // +0x60 (0x8)
+	var sessionObserver : — // +0x60 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_menuManager : yG // +0x68 (0x10)
+	var $__lazy_storage_$_menuManager : ë // +0x68 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x2c39c0  @objc AppDelegate.window <stripped>
-	0x2c3a30  @objc AppDelegate.setWindow: <stripped>
-	0x2c3f00  @objc AppDelegate.bootstrapWithApplication: <stripped>
-	0x2c3f60  @objc AppDelegate.bootstrapWithContainer:application: <stripped>
-	0x2c3f90  @objc AppDelegate.bootstrapWithWindow:application: <stripped>
-	0x2c41f0  @objc AppDelegate.init <stripped>
-	0x2c4050  @objc AppDelegate..cxx_destruct <stripped>
+	0x349800  @objc AppDelegate.window <stripped>
+	0x349870  @objc AppDelegate.setWindow: <stripped>
+	0x349d40  @objc AppDelegate.bootstrapWithApplication: <stripped>
+	0x349da0  @objc AppDelegate.bootstrapWithContainer:application: <stripped>
+	0x349dd0  @objc AppDelegate.bootstrapWithWindow:application: <stripped>
+	0x34a030  @objc AppDelegate.init <stripped>
+	0x349e90  @objc AppDelegate..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2c3840  func AppDelegate.resolver.getter // getter 
-	0x2c38e0  func AppDelegate.resolver.setter // setter 
-	0x2c3980  func AppDelegate.resolver.modify // modifyCoroutine 
-	0x2c3a10  func AppDelegate.window.getter // getter 
-	0x2c3a90  func AppDelegate.window.setter // setter 
-	0x2c3ab0  func AppDelegate.window.modify // modifyCoroutine 
-	0x2c3af0  func AppDelegate.sessionObserver.getter // getter 
-	0x2c3b50  func AppDelegate.sessionObserver.setter // setter 
-	0x2c3bb0  func AppDelegate.sessionObserver.modify // modifyCoroutine 
-	0x2c3c00  func AppDelegate.bootstrap(application:) // method 
-	0x2c3f50  func AppDelegate.bootstrap(container:application:) // method 
-	0x2c3f80  func AppDelegate.bootstrap(window:application:) // method 
+	0x349680  func AppDelegate.resolver.getter // getter 
+	0x349720  func AppDelegate.resolver.setter // setter 
+	0x3497c0  func AppDelegate.resolver.modify // modifyCoroutine 
+	0x349850  func AppDelegate.window.getter // getter 
+	0x3498d0  func AppDelegate.window.setter // setter 
+	0x3498f0  func AppDelegate.window.modify // modifyCoroutine 
+	0x349930  func AppDelegate.sessionObserver.getter // getter 
+	0x349990  func AppDelegate.sessionObserver.setter // setter 
+	0x3499f0  func AppDelegate.sessionObserver.modify // modifyCoroutine 
+	0x349a40  func AppDelegate.bootstrap(application:) // method 
+	0x349d90  func AppDelegate.bootstrap(container:application:) // method 
+	0x349dc0  func AppDelegate.bootstrap(window:application:) // method 
  }
 
  class NewsUI2.ForYouMagazineFeedAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2c5890  @objc ForYouMagazineFeedAssembly.init <stripped>
+	0x34d040  @objc ForYouMagazineFeedAssembly.init <stripped>
  }
 
  class NewsUI2.StubMyMagazinesStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let state : √≈ // +0x10 (0x8)
+	let state : 	 // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let badgeIssueIDs : µ≈ // +0x18 (0x8)
+	let badgeIssueIDs : ˇ	 // +0x18 (0x8)
 
 	// Swift methods
  }
 
- class NewsUI2.FeedPoolManager {
- struct NewsUI2.Key {
+ struct NewsUI2.TrendingTodayFeedGroup {
 
 	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let date : Sw
-	let cachePolicy : FeedPoolCachePolicy
+	let identifier : String
+	let formatGroup : FormatFeedGroup
  }
 
- enum NewsUI2.SearchMoreSectionDescriptor {
-
-	// Properties
-	case searchMore  
+ class NewsUI2.AlertNewsletterAlreadySubscribed : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
  }
 
  class NewsUI2.MagazineFeedLayoutSauceSolver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -8942,13 +10620,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case every : Int
  }
 
- class NewsUI2.TopVideosBlueprintViewSupplementaryViewProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ struct NewsUI2.AudioDailyBriefingTodayFeedGroupConfig {
 
 	// Properties
-	let forYouTitleViewRenderer : ForYouTitleViewRendererType // +0x10 (0x28)
-	var delegate : TopVideosBlueprintViewSupplementaryViewProviderDelegate // +0x38 (0x10)
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let content : uá	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
+ }
 
-	// Swift methods
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case identifier  
+	case position  
+	case type  
+	case content  
+	case paidVisibility  
+	case minNewsVersion  
+	case maxNewsVersion  
  }
 
  class NewsUI2.MagazineFeedEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineFeedEventHandlerType {
@@ -8978,6 +10673,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case full  
+	case noBundle  
+	case noAlaCarte  
 	case none  
  }
 
@@ -9031,6 +10728,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ class NewsUI2.Plan : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let beforeSnapshot : Snapshot // +0x10 (0x8)
+	let afterSnapshot : Snapshot // +0x18 (0x8)
+	let context : Context // +0x20 (0x31)
+	let items : Item // +0x58 (0x8)
+
+	// Swift methods
+ }
+
+ enum NewsUI2.Animation {
+
+	// Properties
+	case slide : CGRect
+	case transport : CGRect
+	case fadeIn : CGRect
+	case scaleAndFadeOut  
+	case fadeOut  
+ }
+
  class NewsUI2.HistoryCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
@@ -9049,30 +10767,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- struct NewsUI2.ForYouTitleViewModel {
-
-	// Properties
-	let titleModel : TitleModel // +0x0
-	let likeButtonFillState : ButtonFillState // +0x38
-	let dislikeButtonFillState : ButtonFillState // +0x39
- }
-
  class NewsUI2.ChannelIssuesGroupTitleView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 	let titleLabel : UILabel // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2ce420  @objc ChannelIssuesGroupTitleView.initWithFrame: <stripped>
-	0x2ce450  @objc ChannelIssuesGroupTitleView.initWithCoder: <stripped>
-	0x2ce4a0  @objc ChannelIssuesGroupTitleView..cxx_destruct <stripped>
- }
-
- class NewsUI2.SpecialEventsAssembly : NSObject /usr/lib/libobjc.A.dylib {
-	// ObjC -> Swift bridged methods
-	0x2d2ca0  @objc SpecialEventsAssembly.init <stripped>
-
-	// Swift methods
+	0x363d10  @objc ChannelIssuesGroupTitleView.initWithFrame: <stripped>
+	0x363d40  @objc ChannelIssuesGroupTitleView.initWithCoder: <stripped>
+	0x363d90  @objc ChannelIssuesGroupTitleView..cxx_destruct <stripped>
  }
 
  class NewsUI2.FollowingHeaderViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingHeaderViewRendererType {
@@ -9084,24 +10787,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- enum NewsUI2.SavedSection {
-
-	// Properties
-	case blank  
- }
-
  class NewsUI2.ForYouTodayFeedManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x10 (0x8)
-	let feedGroupEmitterFactory : TodayFeedGroupEmitterFactory // +0x18 (0x8)
-	let emitterQueue : OS_dispatch_queue // +0x20 (0x8)
+	let configurationManager : FCCoreConfigurationManager // +0x10 (0x8)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x18 (0x8)
+	let feedGroupEmitterFactory : TodayFeedGroupEmitterFactory // +0x20 (0x8)
+	let emitterQueue : OS_dispatch_queue // +0x28 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let store : ∑8 // +0x28 (0x8)
+	let store : óà // +0x30 (0x8)
+	let paidAccessChecker : FCPaidAccessCheckerType // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2d6870  @objc ForYouTodayFeedManager.fetchGroupsWithGroupConfigs:forYouConfig:precedingArticleIDs:prefetchedHeadlinesByID:assetManager:completion: <stripped>
-	0x2d7c00  @objc ForYouTodayFeedManager.knownGroupForIdentifier:headlines:assetHandles: <stripped>
+	0x366810  @objc ForYouTodayFeedManager.fetchGroupsWithGroupConfigs:forYouConfig:precedingArticleIDs:prefetchedHeadlinesByID:assetManager:completion: <stripped>
+	0x3683d0  @objc ForYouTodayFeedManager.knownGroupForIdentifier:headlines:assetHandles: <stripped>
 
 	// Swift methods
  }
@@ -9119,35 +10818,36 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case noPersistentStore  
  }
 
- class NewsUI2.MoreVideosDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MoreVideosDataManagerType {
+ class NewsUI2.AudioRecentlyPlayedFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var delegate : MoreVideosDataManagerDelegate // +0x10 (0x10)
-	let historyService : HistoryServiceType // +0x20 (0x28)
-	let savedService : SavedServiceType // +0x48 (0x28)
+	let groupConfig : AudioFeedGroupConfig // +0x0 (0x0)
+	let config : AudioRecentlyPlayedFeedGroupConfig // +0x0 (0x10)
+	let tracks : AudioFeedTrack // +0x0 (0x8)
 
 	// Swift methods
- }
-
- enum NewsUI2.MoreVideosDataManagerChange {
-
-	// Properties
-	case changed : HeadlineModel
-	case none  
  }
 
  class NewsUI2.ForYouMagazinesModule : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
+	let resolver : È_	 // +0x8 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x30 (0x8)
+	let tracker : 9P	 // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2dd3a0  @objc ForYouMagazinesModule.createPluginFactoryForParentView: <stripped>
-	0x2dd450  @objc ForYouMagazinesModule.init <stripped>
-	0x2dd4b0  @objc ForYouMagazinesModule..cxx_destruct <stripped>
+	0x36ea50  @objc ForYouMagazinesModule.createPluginFactoryForParentView: <stripped>
+	0x36eb00  @objc ForYouMagazinesModule.init <stripped>
+	0x36eb60  @objc ForYouMagazinesModule..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.TagFeedBlueprintModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TagFeedBlueprintModifierFactoryType {
+
+	// Properties
+	let sectionFactory : TagFeedSectionFactoryType // +0x10 (0x28)
 
 	// Swift methods
  }
@@ -9160,17 +10860,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- struct NewsUI2.SpecialEventsRefreshBlueprintModifier {
+ class NewsUI2.NotificationCategoriesRegisterer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, NotificationCategoriesRegistererType {
 
 	// Properties
-	let models : SpecialEventsModel // +0x0
-	let style : SpecialEventsStyle // +0x8
- }
+	let notificationService : NotificationServiceType // +0x10 (0x28)
 
- enum NewsUI2.SpecialEventsRefreshError {
-
-	// Properties
-	case noData  
+	// Swift methods
  }
 
  enum NewsUI2.ButtonFillState {
@@ -9185,20 +10880,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x10 (0x8)
+	let navigator : =e	 // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issue : #) // +0x0 (0x0)
+	let issue : áu // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x0 (0x8)
+	let tracker : 9P	 // +0x0 (0x8)
 
 	// Swift methods
  }
 
- class NewsUI2.HistoryHeadlineModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ class NewsUI2.SavedFeedViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let headlineModel : HeadlineModel // +0x10 (0x8)
+	let styler : SavedFeedStylerType // +0x8 (0x28)
+	let eventHandler : SavedFeedEventHandlerType // +0x30 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let blueprintViewController : è // +0x40 (0x8)
 
+	// ObjC -> Swift bridged methods
+	0x371930  @objc SavedFeedViewController.initWithCoder: <stripped>
+	0x3719f0  @objc SavedFeedViewController.initWithNibName:bundle: <stripped>
+	0x3719b0  @objc SavedFeedViewController..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.TagFeedBlueprintViewSupplementaryViewProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
  }
 
@@ -9229,21 +10936,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case type  
  }
 
- enum NewsUI2.SpecialEventsModel {
-
-	// Properties
-	case embed : SpecialEventsEmbedModel
-	case headline : SpecialEventsHeadlineModel
- }
-
- enum NewsUI2.WrappedImageOnSideViewType {
-
-	// Properties
-	case standard6Column : HeadlineViewTheme
-	case compact6Column : HeadlineViewTheme
-	case veryCompact6Column : HeadlineViewTheme
- }
-
  struct NewsUI2.HeadlineViewWrappedImageOnSideLayoutAttributes {
 
 	// Properties
@@ -9255,33 +10947,50 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let publisherImageViewFrame : CGRect // +0x90
 	let thumbnailImageViewFrame : CGRect // +0xb0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let screenScale : A // +0xd0
+	let screenScale : õ_	 // +0xd0
 	let footerViewLayoutAttributes : HeadlineViewPositionComposedAttributes // +0xd8
 	let offensiveViewLayoutAttributes : OffensiveViewLayoutAttributes // +0x198
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let removableSpace : A // +0x1f8
+	let removableSpace : õ_	 // +0x1f8
+ }
+
+ enum NewsUI2.WrappedImageOnSideViewType {
+
+	// Properties
+	case standard6Column : HeadlineViewTheme
+	case compact6Column : HeadlineViewTheme
+	case veryCompact6Column : HeadlineViewTheme
+ }
+
+ class NewsUI2.AudioPlaylistFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let groupConfig : AudioFeedGroupConfig // +0x626f5f5f (0x0)
+	let config : AudioPlaylistFeedGroupConfig // +0x0 (0x10)
+	let tracks : AudioFeedTrack // +0x0 (0x8)
+
+	// Swift methods
+ }
+
+ struct NewsUI2.SearchMoreTagsPrewarmBlueprintModifier {
+
+	// Properties
+	let prewarmResult : SearchMoreTagsResult // +0x0
  }
 
  class NewsUI2.StubTrendingMagazineFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let config : TrendingMagazineFeedGroupConfig // +0x10 (0x88)
+	let config : TrendingMagazineFeedGroupConfig // +0x0 (0x0)
 
 	// Swift methods
  }
 
  class NewsUI2.FollowingAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2f51d0  @objc FollowingAssembly.init <stripped>
+	0x387ae0  @objc FollowingAssembly.init <stripped>
 
 	// Swift methods
- }
-
- enum NewsUI2.FeedGroupPosition {
-
-	// Properties
-	case slot : [Int]
-	case open  
  }
 
  struct NewsUI2.MagazineCategoryViewLayoutAttributes {
@@ -9292,34 +11001,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let iconImageViewFrame : CGRect // +0x40
 	let titleLabelFrame : CGRect // +0x60
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let screenScale : A // +0x80
- }
-
- class NewsUI2.SpecialEventsEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SpecialEventsEventHandlerType {
-
-	// Properties
-	var delegate : SpecialEventsEventHandlerTypeDelegate // +0x10 (0x10)
-	let interactor : SpecialEventsInteractorType // +0x20 (0x10)
-	let router : SpecialEventsRouterType // +0x30 (0x28)
-
-	// Swift methods
+	let screenScale : õ_	 // +0x80
  }
 
  class NewsUI2.SharrowButton {
- class NewsUI2.TagView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
+ struct NewsUI2.TodayExpandContext {
 
 	// Properties
-	let titleLabel : UILabel // +0x8 (0x8)
-	let imageView : UIImageView // +0x10 (0x8)
-	let subtitleLabel : UILabel // +0x18 (0x8)
-	let notificationSwitch : NotificationSwitch // +0x20 (0x8)
-	let likeButton : LikeButton // +0x28 (0x8)
-	let dislikeButton : DislikeButton // +0x30 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x2f7010  @objc TagView.initWithFrame: <stripped>
-	0x2f7040  @objc TagView.initWithCoder: <stripped>
-	0x2f7090  @objc TagView..cxx_destruct <stripped>
+	let pluginLayoutOptionsProvider : PluginLayoutOptionsProvider // +0x0
  }
 
  class NewsUI2.HeadlineViewImageOnSideRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -9333,6 +11022,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ enum NewsUI2.TagFeedGroupKind {
+
+	// Properties
+	case issueList  
+	case articleList  
+ }
+
  struct NewsUI2.AlertSystemNotificationsDisabled { }
 
  enum NewsUI2.NewsActivityType2 {
@@ -9340,8 +11036,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case adPreview  
 	case article  
+	case audioFeed  
 	case emailSignup  
 	case forYouFeed  
+	case editorial  
 	case feed  
 	case history  
 	case issue  
@@ -9357,7 +11055,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	var delegate : FollowingDislikedViewCellProviderDelegate // +0x10 (0x10)
-	let followingRowViewRenderer : FollowingRowViewRendererType // +0x20 (0x28)
+	let tagViewRenderer : TagViewRendererType // +0x20 (0x28)
 
 	// Swift methods
  }
@@ -9368,15 +11066,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case channel : TitleModel
 	case recommended : TitleModel
 	case features : TitleModel
+	case email : TitleModel
+ }
+
+ class NewsUI2.ChannelFontService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ChannelFontServiceType {
+
+	// Properties
+	let tagService : TagServiceType // +0x10 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let fontManager : Ìπ // +0x20 (0x8)
+
+	// Swift methods
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case fontCacheMiss : (channelID: String)
+	case fontDownloadFailure : (channelID: String, fonts: [FCLoadableFont])
  }
 
  class NewsUI2.MagazineActivityNavigator : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineActivityNavigatorType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let configurationManager : è$ // +0x10 (0x28)
+	let configurationManager : ì	 // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : & // +0x0 (0x0)
+	let navigator : =e	 // +0x38 (0x8)
 
 	// Swift methods
  }
@@ -9389,25 +11105,40 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ class NewsUI2.SavedFeedTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SavedFeedTrackerType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x10 (0x8)
+	let contentPrefetchManager : ContentPrefetchManagerType // +0x18 (0x28)
+	let scienceDataFactory : AnalyticsScienceDataFactoryType // +0x40 (0x28)
+	let channelDataFactory : AnalyticsChannelDataFactoryType // +0x68 (0x28)
+
+	// Swift methods
+ }
+
  struct NewsUI2.FeaturedIssueMagazineFeedGroupConfig {
 
 	// Properties
-	let kind : MagazineFeedGroupKind // +0x0
-	let identifier : String // +0x8
-	let position : FeedGroupPosition // +0x18
-	let groupTitle : String // +0x20
-	let groupTitleColor : String // +0x30
-	let groupBackgroundColor : String? // +0x40
-	let groupSubtitle : String? // +0x50
-	let issueID : String // +0x60
-	let additionalArticles : MagazineFeedArticle // +0x70
-	let availableInForYou : Bool // +0x78
-	let availableInMagazineFeed : Bool // +0x79
-	let paidVisibility : FeedGroupPaidVisibility // +0x7a
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x7b
-	let allowDuplicatesAcrossGroups : Bool // +0x7c
-	let minNewsVersion : String? // +0x80
-	let maxNewsVersion : String? // +0x90
+	let kind : MagazineFeedGroupKind
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+	let groupTitle : String
+	let groupTitleColor : String
+	let groupBackgroundColor : String?
+	let groupSubtitle : String?
+	let issue : MagazineFeedIssue
+	let additionalArticles : MagazineFeedArticle
+	let availableInForYou : Bool
+	let availableInMagazineFeed : Bool
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let allowDuplicatesAcrossGroups : Bool
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
  }
 
  enum NewsUI2.Keys {
@@ -9420,6 +11151,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case groupBackgroundColor  
 	case groupSubtitle  
 	case issueID  
+	case issue  
 	case additionalArticles  
 	case additionalArticleIDs  
 	case availableInForYou  
@@ -9431,78 +11163,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case maxNewsVersion  
  }
 
- enum NewsUI2.NewsActivityType {
-
-	// Properties
-	case unrealizedHeadline  
-	case headline  
-	case feed  
-	case forYou  
-	case editorial  
-	case saved  
-	case history  
-	case videoPlaylist  
-	case pickYourFavorites  
-	case preview  
-	case notifications  
-	case adPreview  
-	case manageSubscriptions  
- }
-
- enum NewsUI2.BridgedStackNavigationStepResult { }
-
- enum NewsUI2.NewsActivity {
-
-	// Properties
-	case editorial : ArticleContext
-	case tagFeed : TagModel
-	case headline : HeadlineModel
-	case unrealizedHeadline : ArticleContext
-	case videoPlayer : VideoPlayerModelType
-	case preview : (headline: FCHeadlineProviding)
-	case adPreview : (identifier: String)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case webLink : Á?
-	case forYou  
-	case saved  
-	case history  
-	case pickYourFavorites  
-	case notifications  
-	case manageSubscriptions  
- }
-
- enum NewsUI2.VideoPlayerModelType {
-
-	// Properties
-	case articles : (articleIDs: [String])
-	case widget : NewsReferralItemWidgetVideoPlaylist
- }
-
- class NewsUI2.TopVideosPluginFactory : NSObject /usr/lib/libobjc.A.dylib {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
-	let layoutOptionsProvider : PluginLayoutOptionsProvider // +0x30 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x301d20  @objc TopVideosPluginFactory.createPluginWithIdentifier:usingConfig: <stripped>
-	0x301e10  @objc TopVideosPluginFactory.init <stripped>
-	0x301e70  @objc TopVideosPluginFactory..cxx_destruct <stripped>
-
-	// Swift methods
-	0x301a60  class func TopVideosPluginFactory.__allocating_init(resolver:layoutOptionsProvider:) // init 
- }
-
  class NewsUI2.MagazineFeedDataPrewarmer : NSObject /usr/lib/libobjc.A.dylib, MagazineFeedDataPrewarmerType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let session : ’& // +0x8 (0x8)
+	let session : wu // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x302b90  @objc MagazineFeedDataPrewarmer.init <stripped>
-	0x302bf0  @objc MagazineFeedDataPrewarmer..cxx_destruct <stripped>
+	0x393ac0  @objc MagazineFeedDataPrewarmer.init <stripped>
+	0x393b20  @objc MagazineFeedDataPrewarmer..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -9511,9 +11180,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let state : ¡&
+	let state : cu
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let loadedOffline : ≥&
+	let loadedOffline : Uu
 	var $__lazy_storage_$_name : String?
 	let identifier : String
 	let feedRules : MagazineFeedRules
@@ -9522,14 +11191,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let feedService : MagazineFeedServiceType
 	let feedConfigurationService : MagazineConfigurationServiceType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paidBundleConfiguration : ©&
+	let paidBundleConfiguration : Ku
 	let offlineManager : OfflineManager
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deferredPromise : q$
+	let deferredPromise : {r
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var startDate : Sw
+	var startDate : ≠^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let prewarmerResult : s&
+	let prewarmerResult : u
 
 	// Swift methods
  }
@@ -9546,7 +11215,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.MagazineFeedDataPrewarmerResult {
 
 	// Properties
-	let fetchResults : FeedServiceFetchResult
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let fetchResults :  empty-list 
 	let serviceConfig : MagazineFeedServiceConfig
  }
 
@@ -9554,7 +11224,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueService : Ÿπ // +0x10 (0x28)
+	let issueService : „	 // +0x10 (0x28)
 	let issueModelFactory : IssueModelFactoryType // +0x38 (0x28)
 	let paidAccessChecker : FCPaidAccessCheckerType // +0x60 (0x8)
 	let subscriptionService : SubscriptionServiceType // +0x68 (0x10)
@@ -9564,26 +11234,63 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ struct NewsUI2.SavedFeedRefreshBlueprintModifier {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedContext : …x	
+	let refreshResult : SavedFeedRefreshResult
+	let headlineModelFactory : HeadlineModelFactoryType
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case sectionNotFound  
+ }
+
  class NewsUI2.StylerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x30b890  @objc StylerAssembly.init <stripped>
+	0x3a0b90  @objc StylerAssembly.init <stripped>
 
 	// Swift methods
-	0x30b2d0  func <stripped> // method 
+	0x3a0650  func <stripped> // method 
  }
 
  class NewsUI2.TodayFeedServiceProxy : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let todayFeedService : FeedService // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let todayFeedService : Éº // +0x10 (0x8)
 
 	// Swift methods
  }
 
  class NewsUI2.Images : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x30d840  @objc Images.init <stripped>
-	0x30d7e0  @objc Images..cxx_destruct <stripped>
+	0x3a2a90  @objc Images.init <stripped>
+	0x3a2a30  @objc Images..cxx_destruct <stripped>
+ }
+
+ class NewsUI2.AudioFeedDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioFeedDataManagerType {
+
+	// Properties
+	var delegate : AudioFeedDataManagerTypeDelegate // +0x10 (0x10)
+	let dataPrewarmer : AudioFeedDataPrewarmerType // +0x20 (0x28)
+	let audioDataManager : AudioDataManagerType // +0x48 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let playbackState : eA	 // +0x70 (0x8)
+	let workQueue : OS_dispatch_queue // +0x78 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedService : SZ	 // +0x80 (0x8)
+	let audioConfigurationManager : AudioConfigurationManagerType // +0x88 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidBundleConfigurationManager : ì	 // +0xb0 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let pluginManager : É0	 // +0xd8 (0x8)
+	let paywallModule : MagazineFeedPaywallModuleType // +0xe0 (0x28)
+
+	// Swift methods
  }
 
  struct NewsUI2.MagazineFeedRefreshBlueprintModifier {
@@ -9595,7 +11302,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsUI2.EmailSignupAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x30ecc0  @objc EmailSignupAssembly.init <stripped>
+	0x3a75b0  @objc EmailSignupAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -9609,22 +11316,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ struct NewsUI2.HistoryFeedExpandBlueprintModifier {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedContext : …x	
+	let expandResult : HistoryFeedExpandResult
+	let headlineModelFactory : HeadlineModelFactoryType
+ }
+
  class NewsUI2.MagazineCategoryService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineCategoryServiceType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let assetHandleFactory : çd // +0x10 (0x28)
+	let assetHandleFactory : ’}	 // +0x10 (0x28)
 	let tagService : TagServiceType // +0x38 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paidBundleConfigManager : è$ // +0x48 (0x28)
-
-	// Swift methods
- }
-
- class NewsUI2.MoreVideosHeadlineModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let headlineModel : HeadlineModel // +0x10 (0x8)
+	let paidBundleConfigManager : ì	 // +0x48 (0x28)
 
 	// Swift methods
  }
@@ -9651,30 +11359,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let size : HeadlineViewSize // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleToBottomElementSpacing : A // +0x18
+	let titleToBottomElementSpacing : õ_	 // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let excerptToBottomElementSpacing : A // +0x20
+	let excerptToBottomElementSpacing : õ_	 // +0x20
 	let footerProperties : HeadlineViewFooterViewProperties // +0x28
 	let textViewProperties : HeadlineViewTextViewProperties // +0x50
 	let imageSize : CGSize // +0x70
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let imageToTextSpacing : A // +0x80
+	let imageToTextSpacing : õ_	 // +0x80
 	let imagePosition : ImageOnSideImagePosition // +0x88
- }
-
- struct NewsUI2.MoreVideosChangeHeadlineModifier {
-
-	// Properties
-	let moreVideosDataChanges : MoreVideosDataManagerChange // +0x0
  }
 
  class NewsUI2.OpenChannelCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x10 (0x8)
+	let navigator : =e	 // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x18 (0x8)
+	let tracker : 9P	 // +0x18 (0x8)
 	let tagService : TagServiceType // +0x20 (0x10)
 
 	// Swift methods
@@ -9687,11 +11389,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let subscriptionService : SubscriptionServiceType // +0x18 (0x10)
 	let tagService : TagServiceType // +0x28 (0x10)
 	let userNotificationCenter : UNUserNotificationCenter // +0x38 (0x8)
+	let configurationManager : FCNewsAppConfigurationManager // +0x40 (0x8)
+	let newsletterManager : FCNewsletterManager // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x313f50  @objc FollowingNotificationsDataManager.determineSystemNotificationSettingsStatus <stripped>
-	0x314030  @objc FollowingNotificationsDataManager.init <stripped>
-	0x314090  @objc FollowingNotificationsDataManager..cxx_destruct <stripped>
+	0x3ad230  @objc FollowingNotificationsDataManager.determineSystemNotificationSettingsStatus <stripped>
+	0x3ad310  @objc FollowingNotificationsDataManager.init <stripped>
+	0x3ad370  @objc FollowingNotificationsDataManager..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -9699,10 +11403,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.FeaturedArticleMagazineFeedGroupEmitter {
 
 	// Properties
-	let config : FeaturedArticleMagazineFeedGroupConfig // +0x0
-	let knobs : FeaturedArticleMagazineFeedGroupKnobs // +0xb0
-	let diversityPenalty : Double // +0xe0
-	let tagService : TagServiceType // +0xe8
+	let config : FeaturedArticleMagazineFeedGroupConfig
+	let knobs : FeaturedArticleMagazineFeedGroupKnobs
+	let diversityPenalty : Double
+	let tagService : TagServiceType
+	let name : String
+ }
+
+ class NewsUI2.SavedFeedStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SavedFeedStylerType {
+
+	// Properties
+	let baseStyler : BaseStylerType // +0x10 (0x28)
+
+	// Swift methods
  }
 
  class NewsUI2.CacheMagazineFeedServiceConfigFetcher : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineFeedServiceConfigFetcherType {
@@ -9735,16 +11448,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case invalidIdentifier  
  }
 
- class NewsUI2.MoreVideosBlueprintViewSupplementaryViewProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let forYouTitleViewRenderer : ForYouTitleViewRendererType // +0x10 (0x28)
-
+ class NewsUI2.MagazineFeedVideoPaywallViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
  }
 
- class NewsUI2.MagazineFeedVideoPaywallViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-	// Swift methods
+ struct NewsUI2.TagFeedPool {
+
+	// Properties
+	let tag : FCTagProviding // +0x0
+	let headlines : [FCHeadlineProviding] // +0x8
+	let issues : [FCIssue] // +0x10
  }
 
  class NewsUI2.MagazineFeedGroupTitleViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineFeedGroupTitleViewLayoutAttributesFactoryType {
@@ -9753,6 +11466,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : MagazineFeedGroupTitleViewStylerType // +0x10 (0x28)
 
 	// Swift methods
+ }
+
+ struct NewsUI2.TagFeedExpandResult {
+
+	// Properties
+	let identifier : String // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let fetchResult : Ip	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let pluginModel : Ìˆ // +0x18
  }
 
  class NewsUI2.LocalDraftsDeviceListener : NSObject /usr/lib/libobjc.A.dylib, LocalDraftsDeviceListenerType {
@@ -9767,9 +11490,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_session : MCSession? // +0x58 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x31e150  @objc LocalDraftsDeviceListener.init <stripped>
-	0x31e1c0  @objc LocalDraftsDeviceListener.dealloc <stripped>
-	0x31e230  @objc LocalDraftsDeviceListener..cxx_destruct <stripped>
+	0x3b7900  @objc LocalDraftsDeviceListener.init <stripped>
+	0x3b7970  @objc LocalDraftsDeviceListener.dealloc <stripped>
+	0x3b79e0  @objc LocalDraftsDeviceListener..cxx_destruct <stripped>
  }
 
  struct NewsUI2.ReceivedFile {
@@ -9782,20 +11505,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.BestOfBundleMagazineFeedGroupConfig {
 
 	// Properties
-	let kind : MagazineFeedGroupKind // +0x0
-	let identifier : String // +0x8
-	let position : FeedGroupPosition // +0x18
-	let groupTitle : String // +0x20
-	let groupTitleColor : String // +0x30
-	let groupDarkStyleTitleColor : String // +0x40
-	let groupSubtitle : String? // +0x50
-	let availableInForYou : Bool // +0x60
-	let availableInMagazineFeed : Bool // +0x61
-	let paidVisibility : FeedGroupPaidVisibility // +0x62
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x63
-	let allowDuplicatesAcrossGroups : Bool // +0x64
-	let minNewsVersion : String? // +0x68
-	let maxNewsVersion : String? // +0x78
+	let kind : MagazineFeedGroupKind
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+	let groupTitle : String
+	let groupTitleColor : String
+	let groupDarkStyleTitleColor : String
+	let groupSubtitle : String?
+	let availableInForYou : Bool
+	let availableInMagazineFeed : Bool
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let allowDuplicatesAcrossGroups : Bool
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
  }
 
  enum NewsUI2.Keys {
@@ -9816,6 +11542,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case maxNewsVersion  
  }
 
+ class NewsUI2.SearchAssembly : NSObject /usr/lib/libobjc.A.dylib {
+	// ObjC -> Swift bridged methods
+	0x3bdff0  @objc SearchAssembly.init <stripped>
+ }
+
  struct NewsUI2.AlertWebSubscriptionRemoval {
 
 	// Properties
@@ -9828,6 +11559,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : FollowingDislikedEventHandlerTypeDelegate // +0x10 (0x10)
 	let interactor : FollowingDislikedInteractorType // +0x20 (0x10)
 	let router : FollowingDislikedRouterType // +0x30 (0x28)
+	let tracker : FollowingDislikedTrackerType // +0x58 (0x28)
 
 	// Swift methods
  }
@@ -9836,7 +11568,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	var delegate : MagazineGridDataManagerTypeDelegate // +0x10 (0x10)
-	let notificationManager : TSNotificationManagerType // +0x20 (0x8)
+	let notificationPrompter : TSNotificationManagerType // +0x20 (0x8)
 	var magazineGridModelLoader : MagazineGridModelLoaderType // +0x28 (0x28)
 	let subscriptionService : SubscriptionServiceType // +0x50 (0x10)
 	let tagService : TagServiceType // +0x60 (0x10)
@@ -9850,12 +11582,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case noTagModelInResult  
  }
 
- class NewsUI2.FollowingNotificationsViewHeaderProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ class NewsUI2.FollowingNotificationsViewHeaderFooterProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	let followingHeaderViewRenderer : FollowingHeaderViewRendererType // +0x10 (0x28)
+	let followingFooterViewRenderer : FollowingNotificationsSectionFooterViewRendererType // +0x38 (0x28)
 
 	// Swift methods
+ }
+
+ struct NewsUI2.MagazineTodayFeedGroupConfig {
+
+	// Properties
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+	let allowDuplicatesAcrossGroups : Bool
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case identifier  
+	case position  
+	case allowDuplicatesAcrossGroups  
+	case paidVisibility  
+	case minNewsVersion  
+	case maxNewsVersion  
  }
 
  struct NewsUI2.Advertisement { }
@@ -9878,17 +11635,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- class NewsUI2.HardPaywallAssembly : NSObject /usr/lib/libobjc.A.dylib {
+ class NewsUI2.BundleHardPaywallAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x324330  @objc HardPaywallAssembly.init <stripped>
+	0x3c2e80  @objc BundleHardPaywallAssembly.init <stripped>
 
 	// Swift methods
- }
-
- enum NewsUI2.TopVideosLayoutSectionDescriptor {
-
-	// Properties
-	case forYou : ForYouTitleViewModel
  }
 
  class NewsUI2.DemoMagazineConfigurationDataService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -9896,9 +11647,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let returnJSON : String? // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let assetService : £ // +0x20 (0x28)
+	let assetService : ÒW // +0x20 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paidBundleConfigurationManager : è$ // +0x48 (0x28)
+	let paidBundleConfigurationManager : ì	 // +0x48 (0x28)
 
 	// Swift methods
  }
@@ -9909,14 +11660,69 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case missingDemoData  
  }
 
+ enum NewsUI2.AudioFeedGroupConfig {
+
+	// Properties
+	case dailyBriefing : AudioDailyBriefingFeedGroupConfig
+	case dailyBriefingInToday : AudioDailyBriefingInTodayFeedGroupConfig
+	case editorialHero : AudioEditorialHeroFeedGroupConfig
+	case suggestions : AudioSuggestionsFeedGroupConfig
+	case playlist : AudioPlaylistFeedGroupConfig
+	case recentlyPlayed : AudioRecentlyPlayedFeedGroupConfig
+	case paywall : AudioFeedPaywallFeedGroupConfig
+ }
+
+ enum NewsUI2.CodingTypeUpperCase {
+
+	// Properties
+	case DAILYBRIEFING  
+	case DAILYBRIEFINGINTODAY  
+	case HERO  
+	case SUGGESTEDARTICLES  
+ }
+
+ enum NewsUI2.CodingType {
+
+	// Properties
+	case dailyBriefing  
+	case dailyBriefingInToday  
+	case editorialHero  
+	case suggestedArticles  
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case type  
+	case articles  
+	case ttlSeconds  
+	case userLocalExpiry  
+	case groupTitle  
+	case groupSubtitle  
+	case callToAction  
+	case latestAudioArticleListID  
+	case featuredAudioArticleListID  
+	case articleOverrides  
+	case position  
+	case minNewsVersion  
+	case maxNewsVersion  
+	case identifier  
+ }
+
  struct NewsUI2.TodayFeedGroupKnobs {
 
 	// Properties
 	let newspaperKnobs : NewspaperGroupKnobs // +0x0
-	let curatedKnobsDictionary : CuratedTodayFeedGroupKnobs // +0x30
+	let localNewsKnobs : LocalNewsTodayFeedGroupKnobs // +0x30
+	let trendingKnobs : TrendingTodayFeedGroupKnobs // +0x60
+	let forYouKnobs : ForYouTodayFeedGroupKnobs // +0x68
+	let audioDailyBriefingKnobs : AudioDailyBriefingTodayFeedGroupKnobs // +0x88
+	let topicKnobs : TopicTodayFeedGroupKnobs // +0x90
+	let magazineKnobs : MagazineTodayFeedGroupKnobs // +0x98
+	let curatedKnobs : CuratedTodayFeedGroupKnobs // +0xa0
  }
 
- struct NewsUI2.KnobsKey {
+ struct NewsUI2.CodingKeys {
 
 	// Properties
 	var stringValue : String // +0x0
@@ -9926,18 +11732,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.RecommendedIssuesMagazineFeedGroupConfig {
 
 	// Properties
-	let kind : MagazineFeedGroupKind // +0x0
-	let identifier : String // +0x8
-	let position : FeedGroupPosition // +0x18
-	let groupTitleColor : String // +0x20
-	let groupDarkStyleTitleColor : String // +0x30
-	let groupSubtitle : String? // +0x40
-	let availableInForYou : Bool // +0x50
-	let availableInMagazineFeed : Bool // +0x51
-	let paidVisibility : FeedGroupPaidVisibility // +0x52
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x53
-	let minNewsVersion : String? // +0x58
-	let maxNewsVersion : String? // +0x68
+	let kind : MagazineFeedGroupKind
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+	let groupTitleColor : String
+	let groupDarkStyleTitleColor : String
+	let groupSubtitle : String?
+	let availableInForYou : Bool
+	let availableInMagazineFeed : Bool
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
  }
 
  enum NewsUI2.Keys {
@@ -9956,18 +11765,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case maxNewsVersion  
  }
 
+ class NewsUI2.TodayTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TodayTrackerType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let blueprintProvider : o\	 // +0x18 (0x8)
+	let scienceDataFactory : AnalyticsScienceDataFactoryType // +0x20 (0x28)
+	let channelDataFactory : AnalyticsChannelDataFactoryType // +0x48 (0x28)
+	var sectionPositionProvider : TodaySectionPositionProviderType // +0x70 (0x28)
+	let contentPrefetchManager : ContentPrefetchManagerType // +0x98 (0x28)
+	let liveUpdatingImpressionDelegate : TSLiveUpdatingImpressionDelegate // +0xc0 (0x8)
+
+	// Swift methods
+ }
+
  struct NewsUI2.FormatFeedGroupEmitter {
 
 	// Properties
 	let config : FormatFeedGroupConfig
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let service : ´Ò
- }
-
- struct NewsUI2.TopVideosChangeHeadlineModifier {
-
-	// Properties
-	let topVideosDataChanges : TopVideosDataManagerChange // +0x0
+	let service : £H	
+	let name : String
  }
 
  class NewsUI2.FollowingViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -9975,8 +11795,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let browseButtonViewRenderer : FollowingBrowseButtonViewRenderer // +0x10 (0x8)
 	let settingsButtonViewRenderer : FollowingSettingsButtonViewRenderer // +0x18 (0x8)
-	let followingRowViewRenderer : FollowingRowViewRendererType // +0x20 (0x28)
+	let tagViewRenderer : TagViewRendererType // +0x20 (0x28)
 	var delegate : FollowingViewCellProviderDelegate // +0x48 (0x10)
+
+	// Swift methods
+ }
+
+ class NewsUI2.SearchMoreArticlesViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	let styler : SearchMoreArticlesStylerType // +0x8 (0x28)
+	let eventHandler : SearchMoreArticlesEventHandlerType // +0x30 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let blueprintViewController : Ωs // +0x40 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x3dc130  @objc SearchMoreArticlesViewController.initWithCoder: <stripped>
+	0x3dc1f0  @objc SearchMoreArticlesViewController.initWithNibName:bundle: <stripped>
+	0x3dc1b0  @objc SearchMoreArticlesViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -9987,8 +11823,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let categories : MagazineCategory
 
 	// ObjC -> Swift bridged methods
-	0x330020  @objc MagazineCategoriesConfig.init <stripped>
-	0x32ffb0  @objc MagazineCategoriesConfig..cxx_destruct <stripped>
+	0x3dd110  @objc MagazineCategoriesConfig.init <stripped>
+	0x3dd0a0  @objc MagazineCategoriesConfig..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -9997,14 +11833,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛
+	let resolver : È_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ
+	let tracker : 9P	
 
 	// ObjC -> Swift bridged methods
-	0x3302c0  @objc MagazineCategoriesModule.createPluginWithIdentifier:layoutOptionsProvider:config: <stripped>
-	0x3303e0  @objc MagazineCategoriesModule.init <stripped>
-	0x330380  @objc MagazineCategoriesModule..cxx_destruct <stripped>
+	0x3dd3b0  @objc MagazineCategoriesModule.createPluginWithIdentifier:layoutOptionsProvider:config: <stripped>
+	0x3dd4d0  @objc MagazineCategoriesModule.init <stripped>
+	0x3dd470  @objc MagazineCategoriesModule..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.NewsWebLinkURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let patterns :  empty-list  // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x18 (0x8)
 
 	// Swift methods
  }
@@ -10024,6 +11871,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case reorderFailed  
  }
 
+ class NewsUI2.HistoryURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let patterns :  empty-list  // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x18 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.SubscriptionOffersTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x10 (0x8)
+	let channelDataFactory : AnalyticsChannelDataFactoryType // +0x18 (0x28)
+
+	// Swift methods
+ }
+
  class NewsUI2.MagazineFeedGroupTitleViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineFeedGroupTitleViewStylerType {
 
 	// Properties
@@ -10032,43 +11900,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- struct NewsUI2.SavedExpandModifier {
-
-	// Properties
-	let identifier : String // +0x0
-	let savedService : SavedServiceType // +0x10
- }
-
- enum NewsUI2.ModifierError {
-
-	// Properties
-	case invalidIdentifier  
- }
-
- class NewsUI2.SpecialEventsBlueprintViewSupplementaryViewProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let titleViewRenderer : SpecialEventsTitleViewRendererType // +0x10 (0x28)
-	var delegate : SpecialEventsBlueprintViewSupplementaryViewProviderDelegate // +0x38 (0x10)
-
-	// Swift methods
- }
-
- struct NewsUI2.NewspaperGroupModel {
+ struct NewsUI2.ChannelSectionsGroupModel {
 
 	// Properties
 	let channel : FCChannelProviding
-	let defaultSection : NewspaperGroupSectionModel
-	let sections : NewspaperGroupSectionModel
+	let defaultSection : ChannelSectionsGroupSectionModel
+	let sections : ChannelSectionsGroupSectionModel
  }
 
  struct NewsUI2.ChannelSupergroupConfig {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let themes : ı
+	let themes : I	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedFormatPackages : +[
+	let feedFormatPackages : c≤
+	let geoLocation : GeoLocation
  }
 
  enum NewsUI2.Keys {
@@ -10076,6 +11923,78 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case themes  
 	case feedFormatPackages  
+	case geoLocation  
+ }
+
+ enum NewsUI2.TagFeedGroup {
+
+	// Properties
+	case articleList : ArticleListTagFeedGroup
+	case issueList : IssueListTagFeedGroup
+ }
+
+ enum NewsUI2.AudioFeedTitleViewModel {
+
+	// Properties
+	case playlist : (title: String)
+	case suggestions : (title: String)
+	case recentlyPlayed : (title: String)
+ }
+
+ class NewsUI2.ReadStoryCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
+ enum NewsUI2.Context {
+
+	// Properties
+	case delete : RowContext
+	case move : MoveContext
+	case replace : TopItemMoveContext
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case invalidDiff : String
+	case invalidKind : String
+	case missingDestination : Kind
+	case invalidAnimation : String
+ }
+
+ enum NewsUI2.Replacement {
+
+	// Properties
+	case move : SectionContext
+	case deleting  
+ }
+
+ struct NewsUI2.SectionContext {
+
+	// Properties
+	let remainingItems : Int // +0x0
+	let index : Int // +0x8
+ }
+
+ struct NewsUI2.TopItemMoveContext {
+
+	// Properties
+	let from : SectionContext // +0x0
+	let to : SectionContext // +0x10
+ }
+
+ struct NewsUI2.MoveContext {
+
+	// Properties
+	let from : RowContext // +0x0
+	let to : SectionContext // +0x18
+ }
+
+ struct NewsUI2.RowContext {
+
+	// Properties
+	let section : SectionContext // +0x0
+	let index : Int // +0x10
  }
 
  enum NewsUI2.MagazineFeedModel {
@@ -10090,7 +12009,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case featuredIssueHeadline : Contextual
 	case webEmbed : Contextual
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case plugin : Ûg
+	case plugin : K4	
  }
 
  struct NewsUI2.Contextual {
@@ -10098,7 +12017,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let model : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let context : Ø
+	let context : …x	
 	let style : Style
 	let namespace : String?
  }
@@ -10106,7 +12025,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum NewsUI2.MagazineFeedGapLocation {
 
 	// Properties
-	case cursor : FeedLocation
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case cursor : õl	
 	case topOfFeed  
  }
 
@@ -10124,9 +12044,44 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let showAnywayButton : ShowAnywayButton // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3451f0  @objc OffensiveView.initWithFrame: <stripped>
-	0x345220  @objc OffensiveView.initWithCoder: <stripped>
-	0x345330  @objc OffensiveView..cxx_destruct <stripped>
+	0x3f7f40  @objc OffensiveView.initWithFrame: <stripped>
+	0x3f7f70  @objc OffensiveView.initWithCoder: <stripped>
+	0x3f8080  @objc OffensiveView..cxx_destruct <stripped>
+ }
+
+ class NewsUI2.WebEmbedDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WebEmbedDataManagerType {
+	// Swift methods
+ }
+
+ class NewsUI2.TagFeedGroupEmitterFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
+ class NewsUI2.AudioHeadlineConverter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioHeadlineConverterType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let state : „^
+	let trackFactory : AudioFeedTrackFactoryType
+	let configurationManager : AudioConfigurationManagerType
+
+	// Swift methods
+ }
+
+ class NewsUI2.NoopAudioHeadlineConverter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioHeadlineConverterType {
+	// Swift methods
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case audioDisabled  
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case missingConfig  
  }
 
  class NewsUI2.MagazineCategoryGridModelLoader : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -10136,23 +12091,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let title : String? // +0x20 (0x10)
 	let configService : MagazineCategoryConfigServiceType // +0x30 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paidBundleConfigManager : è$ // +0x58 (0x28)
+	let paidBundleConfigManager : ì	 // +0x58 (0x28)
 	let categoryService : MagazineCategoryServiceType // +0x80 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueService : Ÿπ // +0xa8 (0x28)
+	let issueService : „	 // +0xa8 (0x28)
 	let issueModelFactory : IssueModelFactoryType // +0xd0 (0x28)
 	let tagService : TagServiceType // +0xf8 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let assetHandleFactory : çd // +0x108 (0x28)
+	let assetHandleFactory : ’}	 // +0x108 (0x28)
 	var delegate : MagazineGridModelLoaderTypeDelegate // +0x130 (0x10)
 
 	// Swift methods
  }
 
- struct NewsUI2.HistoryPrewarmModifier {
+ struct NewsUI2.PaywallMagazineFeedGroupEmitter {
 
 	// Properties
-	let historyService : HistoryServiceType // +0x0
+	let config : PaywallMagazineFeedGroupConfig
+	let knobs : PaywallMagazineFeedGroupKnobs
+	let appConfigurationManager : FCNewsAppConfigurationManager
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bundlePurchasePrewarmer : A	
+	let name : String
  }
 
  enum NewsUI2.Errors {
@@ -10167,16 +12127,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let group : PaywallMagazineFeedGroup
  }
 
- struct NewsUI2.PaywallMagazineFeedGroupEmitter {
-
-	// Properties
-	let config : PaywallMagazineFeedGroupConfig // +0x0
-	let knobs : PaywallMagazineFeedGroupKnobs // +0x48
-	let appConfigurationManager : FCNewsAppConfigurationManager // +0x50
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bundlePurchasePrewarmer : sx // +0x58
- }
-
  class NewsUI2.FeedNavImageAssetHandle : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
@@ -10188,20 +12138,40 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let feedNavImageStyler : NEFeedNavImageStylerType // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x355d10  @objc FeedNavImageAssetHandle.filePath <stripped>
-	0x355dd0  @objc FeedNavImageAssetHandle.setFilePath: <stripped>
-	0x355ee0  @objc FeedNavImageAssetHandle.fallbackImage <stripped>
-	0x355f70  @objc FeedNavImageAssetHandle.setFallbackImage: <stripped>
-	0x356070  @objc FeedNavImageAssetHandle.uniqueKey <stripped>
-	0x356210  @objc FeedNavImageAssetHandle.initWithIdentifier:feedNavImage:feedNavImageSize:feedNavImageStyler: <stripped>
-	0x3562d0  @objc FeedNavImageAssetHandle.initWithTag:feedNavImageSize:feedNavImageStyler: <stripped>
-	0x356870  @objc FeedNavImageAssetHandle.downloadWithGroup: <stripped>
-	0x356910  @objc FeedNavImageAssetHandle.init <stripped>
-	0x356970  @objc FeedNavImageAssetHandle..cxx_destruct <stripped>
+	0x40a2e0  @objc FeedNavImageAssetHandle.filePath <stripped>
+	0x40a3a0  @objc FeedNavImageAssetHandle.setFilePath: <stripped>
+	0x40a4b0  @objc FeedNavImageAssetHandle.fallbackImage <stripped>
+	0x40a540  @objc FeedNavImageAssetHandle.setFallbackImage: <stripped>
+	0x40a640  @objc FeedNavImageAssetHandle.uniqueKey <stripped>
+	0x40a7e0  @objc FeedNavImageAssetHandle.initWithIdentifier:feedNavImage:feedNavImageSize:feedNavImageStyler: <stripped>
+	0x40a8a0  @objc FeedNavImageAssetHandle.initWithTag:feedNavImageSize:feedNavImageStyler: <stripped>
+	0x40ae40  @objc FeedNavImageAssetHandle.downloadWithGroup: <stripped>
+	0x40aee0  @objc FeedNavImageAssetHandle.init <stripped>
+	0x40af40  @objc FeedNavImageAssetHandle..cxx_destruct <stripped>
 
 	// Swift methods
-	0x355280  class func FeedNavImageAssetHandle.__allocating_init(identifier:feedNavImage:feedNavImageSize:feedNavImageStyler:) // init 
-	0x355370  class func FeedNavImageAssetHandle.__allocating_init(tag:feedNavImageSize:feedNavImageStyler:) // init 
+	0x409850  class func FeedNavImageAssetHandle.__allocating_init(identifier:feedNavImage:feedNavImageSize:feedNavImageStyler:) // init 
+	0x409940  class func FeedNavImageAssetHandle.__allocating_init(tag:feedNavImageSize:feedNavImageStyler:) // init 
+ }
+
+ class NewsUI2.AudioFeedTitleViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioFeedTitleViewStylerType {
+
+	// Properties
+	let headlineFontMetrics : UIFontMetrics // +0x10 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioFeedTrackFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioFeedTrackFactoryType {
+
+	// Properties
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidBundleConfigManager : ì	 // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let assetHandleFactory : ’}	 // +0x40 (0x28)
+
+	// Swift methods
  }
 
  struct NewsUI2.MyMagazinesSectionHeaderSeparatorViewLayoutAttributes {
@@ -10217,10 +12187,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let curatedBatchID : String?
 
 	// ObjC -> Swift bridged methods
-	0x357cf0  @objc BridgedFeedArticleContext.groupID <stripped>
-	0x357d30  @objc BridgedFeedArticleContext.curatedBatchID <stripped>
-	0x357eb0  @objc BridgedFeedArticleContext.init <stripped>
-	0x357e20  @objc BridgedFeedArticleContext..cxx_destruct <stripped>
+	0x40eaa0  @objc BridgedFeedArticleContext.groupID <stripped>
+	0x40eae0  @objc BridgedFeedArticleContext.curatedBatchID <stripped>
+	0x40ec60  @objc BridgedFeedArticleContext.init <stripped>
+	0x40ebd0  @objc BridgedFeedArticleContext..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -10232,17 +12202,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let myNavigationItem : UINavigationItem
 
 	// ObjC -> Swift bridged methods
-	0x357f20  @objc BridgedFeedArticlePreviewViewController.initWithCoder: <stripped>
-	0x358510  @objc BridgedFeedArticlePreviewViewController.childViewControllerForStatusBarHidden <stripped>
-	0x357f70  @objc BridgedFeedArticlePreviewViewController.childViewControllerForStatusBarStyle <stripped>
-	0x357fc0  @objc BridgedFeedArticlePreviewViewController.navigationItem <stripped>
-	0x358130  @objc BridgedFeedArticlePreviewViewController.initWithNibName:bundle: <stripped>
-	0x3581b0  @objc BridgedFeedArticlePreviewViewController..cxx_destruct <stripped>
+	0x40ecd0  @objc BridgedFeedArticlePreviewViewController.initWithCoder: <stripped>
+	0x40f2c0  @objc BridgedFeedArticlePreviewViewController.childViewControllerForStatusBarHidden <stripped>
+	0x40ed20  @objc BridgedFeedArticlePreviewViewController.childViewControllerForStatusBarStyle <stripped>
+	0x40ed70  @objc BridgedFeedArticlePreviewViewController.navigationItem <stripped>
+	0x40eee0  @objc BridgedFeedArticlePreviewViewController.initWithNibName:bundle: <stripped>
+	0x40ef60  @objc BridgedFeedArticlePreviewViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x357c90  class func BridgedFeedArticlePreviewViewController.__allocating_init(viewController:navigationItem:) // init 
-	0x358000  func BridgedFeedArticlePreviewViewController.tabBarSplitViewPresentation(for:) // method 
-	0x358070  func BridgedFeedArticlePreviewViewController.set(previewing:) // method 
+	0x40ea40  class func BridgedFeedArticlePreviewViewController.__allocating_init(viewController:navigationItem:) // init 
+	0x40edb0  func BridgedFeedArticlePreviewViewController.tabBarSplitViewPresentation(for:) // method 
+	0x40ee20  func BridgedFeedArticlePreviewViewController.set(previewing:) // method 
  }
 
  class NewsUI2.TitleViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TitleViewRendererType {
@@ -10268,16 +12238,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let titleFont : UIFont // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLineHeight : A // +0x8
+	let titleLineHeight : õ_	 // +0x8
 	let titleColor : UIColor // +0x10
 	let excerptFont : UIFont // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let excerptLineHeight : A // +0x20
+	let excerptLineHeight : õ_	 // +0x20
 	let excerptColor : UIColor // +0x28
 	let publisherFont : UIFont // +0x30
 	let publisherColor : UIColor // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLogoTheme : _T // +0x40
+	let publisherLogoTheme : #© // +0x40
 	let publisherLayout : HeadlineViewTextViewPublisherLayout // +0x48
  }
 
@@ -10288,10 +12258,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case showing  
  }
 
+ struct NewsUI2.NewspaperGroupService: NewspaperGroupServiceType {
+
+	// Properties
+	let sectionHeadlinesService : ChannelSectionHeadlinesServiceType // +0x0
+	let personalizer : ChannelSectionsGroupPersonalizerType // +0x28
+	let heroSelector : ChannelSectionsHeroSelectorType // +0x50
+	let channelFontService : ChannelFontServiceType // +0x78
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let formatService : £H	 // +0xa0
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case invalidChannelID : (channelID: String)
+	case noCompatiblePackageForChannelID : (channelID: String)
+	case noArticlesInDefaultSection : (channelID: String)
+	case notEnoughHerosForLayout : (channelID: String)
+	case notEnoughSectionsForLayout : (channelID: String)
+ }
+
  enum NewsUI2.TodayFeedRules {
 
 	// Properties
 	case todayFeed  
+ }
+
+ struct NewsUI2.TagFeedSectionFactory: TagFeedSectionFactoryType {
+
+	// Properties
+	let headlineModelFactory : HeadlineModelFactoryType // +0x0
+	let feedDescriptor : FCFeedDescriptor // +0x28
  }
 
  struct NewsUI2.MagazineFeedConfig {
@@ -10299,7 +12297,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let groups : MagazineFeedGroupConfig
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publishDate : cÛ
+	let publishDate : ÛI	
  }
 
  enum NewsUI2.Keys {
@@ -10309,17 +12307,92 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case publishDate  
  }
 
+ struct NewsUI2.Configurables {
+
+	// Properties
+	let title : String?
+	let featureName : String?
+	let imageAssetHandle : TSAssetHandleType?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let expiration : ÛI	
+	let notificationConfig : NotificationConfig
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let gradientDescriptor : #◊
+ }
+
+ struct NewsUI2.AudioFeedTrack {
+
+	// Properties
+	let headline : FCHeadlineProviding
+	let track : FCArticleAudioTrack
+	let flags : Flags
+	let configurables : Configurables
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case noAllNarrativeTracks  
+	case missingNarrativeTrack  
+	case missingSampleTrack  
+ }
+
+ struct NewsUI2.Flags {
+
+	// Properties
+	let rawValue : Int // +0x0
+ }
+
+ enum NewsUI2.SavedFeedModel {
+
+	// Properties
+	case gap : SavedFeedGapLocation
+	case headline : Contextual
+ }
+
+ struct NewsUI2.Contextual {
+
+	// Properties
+	let model : A
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let context : …x	
+	let namespace : String?
+ }
+
+ enum NewsUI2.SavedFeedGapLocation {
+
+	// Properties
+	case cursor : (reamingingHeadlineIDs: [String])
+	case topOfFeed  
+	case endOfFeed  
+ }
+
+ struct NewsUI2.TodayUpdatePluginModelModifier {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let plugin : Òs // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let pluginModel : K4	 // +0x8
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case pluginNotFound  
+ }
+
  class NewsUI2.SubscriptionsStartupTask : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let group : ˘ // +0x15b8 (0x0)
+	let group : ˜X // +0x10000000 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let manageSubscriptionsURLProvider : Î // +0x0 (0x28)
+	let manageSubscriptionsURLProvider : ^ // +0x0 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bundlePurchasePrewarmer : sx // +0x0 (0x10)
+	let bundlePurchasePrewarmer : A	 // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let familySharingStatusManager : ùÈ // +0x0 (0x10)
+	let familySharingStatusManager : O	 // +0x0 (0x10)
 
 	// Swift methods
  }
@@ -10329,6 +12402,49 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let prewarmResult : TodayPrewarmResult // +0x0
 	let sectionFactory : TodaySectionFactoryType // +0x8
+ }
+
+ struct NewsUI2.AudioFeedPaywallFeedGroupConfig {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	 // +0x0
+	let identifier : String // +0x8
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case position  
+	case identifier  
+ }
+
+ enum NewsUI2.AudioFeedSectionDescriptor {
+
+	// Properties
+	case dailyBriefing : AudioDailyBriefingFeedGroup
+	case playlist : AudioPlaylistFeedGroup
+	case suggestions : AudioSuggestionsFeedGroup
+	case recentlyPlayed : AudioRecentlyPlayedFeedGroup
+	case paywall : AudioFeedPaywallFeedGroup
+	case placard  
+ }
+
+ class NewsUI2.AudioConfigurationService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioConfigurationServiceType {
+
+	// Properties
+	let contentContext : FCContentContext // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var paidBundleConfigManager : ì	 // +0x18 (0x28)
+
+	// Swift methods
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case debugFeedConfigInvalidURL : String
+	case selfLost  
  }
 
  struct NewsUI2.MagazineConfig {
@@ -10345,27 +12461,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case magazinesKnobsConfig  
  }
 
- class NewsUI2.SearchMoreArticleService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let headlineModelFactory : HeadlineModelFactoryType // +0x10 (0x28)
-	var articleStreamingResults : FCArticleStreamingResults<FCArticleSearchResult> // +0x38 (0x8)
-	var noMoreSearchResults : Bool // +0x40 (0x1)
-
-	// Swift methods
- }
-
  struct NewsUI2.CampaignRouteModel {
 
 	// Properties
 	let articleID : String // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let postPurchaseBehavior : ª	 // +0x10
+	let postPurchaseBehavior : œM // +0x10
 	let sourceChannelID : String? // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let purchaseTraits :  empty-list  // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paywallType :  // +0x30
+	let paywallType : ÔZ // +0x30
  }
 
  class NewsUI2.WelcomeRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WelcomeRouterType {
@@ -10373,37 +12479,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var controller : weak UIViewController? // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x18 (0x28)
+	let resolver : È_	 // +0x18 (0x28)
 
 	// Swift methods
  }
 
- enum NewsUI2.NotificationResponsePattern {
+ class NewsUI2.HistoryFeedBlueprintViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	case category : String
-	case any  
- }
-
- enum NewsUI2.NotificationResponseError {
-
-	// Properties
-	case responseHandlerMismatch  
- }
-
- class NewsUI2.NotificationResponseHandlerManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	var handlers : WeakHandler
-
-	// Swift methods
- }
-
- class NewsUI2.WeakHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	var handler : NotificationResponseHandling
-	var keepAliveObject : weak Swift.AnyObject?
+	var delegate : HistoryFeedBlueprintViewCellProviderDelegate // +0x10 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedItemRenderer : ≠§	 // +0x20 (0x10)
 
 	// Swift methods
  }
@@ -10414,38 +12500,36 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let configurationManager : FCCoreConfigurationManager // +0x8 (0x8)
 	let styler : MagazineFeedPaywallStylerType // +0x10 (0x28)
 	let eventHandler : MagazineFeedPaywallEventHandlerType // +0x38 (0x10)
-	let config : MagazineFeedPaywallConfig // +0x0 (0x0)
+	let config : FeedPaywallConfig // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintLayoutOptionsProvider : √ // +0x0 (0x28)
+	let blueprintLayoutOptionsProvider : SÅ	 // +0x0 (0x28)
 	let paywallLayoutAttributesFactory : MagazineFeedPaywallViewLayoutAttributesFactoryType // +0x0 (0x28)
 	let paywallRenderer : MagazineFeedPaywallViewRendererType // +0x0 (0x28)
 	let paywallView : MagazineFeedPaywallViewType // +0x0 (0x10)
 	let imageCache : TSImageCacheType // +0x0 (0x8)
 	let assetManager : FCAssetManager // +0x0 (0x8)
+	var isBeingUsedAsPlugin : Bool // +0x0 (0x1)
+	var pluggableDelegate : weak TUPluggableDelegate? // +0x626f5f5f (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let applicationStateManager : Ä // +0x0 (0x28)
-	var isBeingUsedAsPlugin : Bool // +0x721490 (0x1)
-	var pluggableDelegate : weak TUPluggableDelegate? // +0x0 (0x8)
+	let purchasingSpinnerViewControllerFactory : yª // +0x0 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchasingSpinnerViewControllerFactory : x // +0x0 (0x28)
+	var $__lazy_storage_$_spinnerViewController : ?\ // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_spinnerViewController : E // +0x0 (0x8)
+	let purchasePresenter : Q∫ // +0x0 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchasePresenter : Ÿv // +0x0 (0x28)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastRenderedVerticalContentOffset : A // +0x0 (0x8)
+	var lastRenderedVerticalContentOffset : õ_	 // +0x0 (0x8)
 	var imageResult : PaywallImageRetrievalResult // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var videoFilePath : S⁄ // +0x0 (0x0)
+	var videoFilePath : ◊6	 // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x365850  @objc MagazineFeedPaywallViewController.isBeingUsedAsPlugin <stripped>
-	0x365860  @objc MagazineFeedPaywallViewController.setIsBeingUsedAsPlugin: <stripped>
-	0x365870  @objc MagazineFeedPaywallViewController.pluggableDelegate <stripped>
-	0x365890  @objc MagazineFeedPaywallViewController.setPluggableDelegate: <stripped>
-	0x365a70  @objc MagazineFeedPaywallViewController.initWithCoder: <stripped>
-	0x365a90  @objc MagazineFeedPaywallViewController.initWithNibName:bundle: <stripped>
-	0x365af0  @objc MagazineFeedPaywallViewController..cxx_destruct <stripped>
+	0x435ef0  @objc MagazineFeedPaywallViewController.isBeingUsedAsPlugin <stripped>
+	0x435f00  @objc MagazineFeedPaywallViewController.setIsBeingUsedAsPlugin: <stripped>
+	0x435f10  @objc MagazineFeedPaywallViewController.pluggableDelegate <stripped>
+	0x435f30  @objc MagazineFeedPaywallViewController.setPluggableDelegate: <stripped>
+	0x436110  @objc MagazineFeedPaywallViewController.initWithCoder: <stripped>
+	0x436130  @objc MagazineFeedPaywallViewController.initWithNibName:bundle: <stripped>
+	0x436190  @objc MagazineFeedPaywallViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -10467,24 +12551,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- class NewsUI2.HistorySaveHeadlineModifier : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let savedService : SavedServiceType // +0x10 (0x28)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let historyBlueprintViewActionRequest : z // +0x38 (0x8)
-	let historyHeadlineModel : HistoryHeadlineModel // +0x40 (0x8)
-	let historyChangeHeadlineModifier : HistoryChangeHeadlineModifier // +0x48 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var localBlueprint : Ç // +0x0 (0x0)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var localCompletion :  empty-list  // +0x0 (0x10)
-
-	// Swift methods
-	0x368810  func <stripped> // method 
- }
-
- class NewsUI2.ProxyFeedPoolManager {
  class NewsUI2.StubMagazineFeedPoolManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
  }
@@ -10537,36 +12603,84 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- class NewsUI2.HistoryViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
+ class NewsUI2.ArticlePreviewURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let styler : HistoryStylerType // +0x8 (0x28)
-	let eventHandler : HistoryEventHandlerType // +0x30 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController : Ω // +0x40 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x36db20  @objc HistoryViewController.initWithCoder: <stripped>
-	0x36db70  @objc HistoryViewController.clearButtonPressedWithSender: <stripped>
-	0x36dc70  @objc HistoryViewController.initWithNibName:bundle: <stripped>
-	0x36dc30  @objc HistoryViewController..cxx_destruct <stripped>
+	let navigator : =e	 // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let previewManager : ÒI // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let patterns :  empty-list  // +0x40 (0x8)
 
 	// Swift methods
  }
 
- class NewsUI2.TodayDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TodayDataManagerType {
+ struct NewsUI2.TagFeedGroupKnobs { }
+
+ enum NewsUI2.CodingKeys { }
+
+ class NewsUI2.TodayDataManager : NSObject /usr/lib/libobjc.A.dylib, TodayDataManagerType {
 
 	// Properties
-	let feedService : TodayFeedServiceType // +0x10 (0x28)
-	let feedServiceConfigFetcher : TodayFeedServiceConfigFetcherType // +0x38 (0x28)
-	let paidBundleConfiguration : FCPaidBundleConfiguration // +0x60 (0x8)
-	let accessQueue : OS_dispatch_queue // +0x68 (0x8)
+	var delegate : TodayDataManagerTypeDelegate // +0x8 (0x10)
+	let feedService : TodayFeedServiceType // +0x18 (0x28)
+	let feedServiceConfigFetcher : TodayFeedServiceConfigFetcherType // +0x40 (0x28)
+	let paidBundleConfiguration : FCPaidBundleConfiguration // +0x68 (0x8)
+	let accessQueue : OS_dispatch_queue // +0x70 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let pluginManager : É0	 // +0x78 (0x8)
+	let pluginFactory : TodayPluginFactory // +0x80 (0x8)
+	let readingHistory : FCReadingHistory // +0x88 (0x8)
+	let readingList : FCReadingList // +0x90 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x43f5f0  @objc TodayDataManager.init <stripped>
+	0x43f550  @objc TodayDataManager..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.ChannelIssuesGroupTitleViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ChannelIssuesGroupTitleViewStylerType {
 	// Swift methods
+ }
+
+ class NewsUI2.AudioAutoClosePlayerHandler : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let playbackState : eA	 // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidBundleConfigManager : ì	 // +0x10 (0x28)
+	let carSessionStatus : CARSessionStatus // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var pausedAt : ÛI	 // +0x983a50 (0x0)
+
+	// ObjC -> Swift bridged methods
+	0x440f30  @objc AudioAutoClosePlayerHandler.init <stripped>
+	0x440f90  @objc AudioAutoClosePlayerHandler..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ struct NewsUI2.AudioState {
+
+	// Properties
+	var topOfFeedTrack : AudioFeedTrack
+	var upNextTracksData : UpNextTrackData
+	var suggestedTracks : AudioFeedTrack
+	var recentlyPlayedTracks : AudioFeedTrack
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var expirationDate : ≠^
+	let trackMap : AudioFeedTrack
+ }
+
+ enum NewsUI2.UpNextTrackData {
+
+	// Properties
+	case tracks : AudioFeedTrack
+	case suggestion : AudioFeedTrack
+	case empty  
  }
 
  enum NewsUI2.MagazineFeedSectionDescriptor {
@@ -10596,7 +12710,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case curated : CuratedGroup
 	case newspaper : NewspaperGroup
+	case localNews : LocalNewsGroup
+	case trending : TrendingTodayFeedGroup
+	case forYou : ForYouTodayFeedGroup
+	case audioDailyBriefing : AudioDailyBriefingTodayFeedGroup
+	case topic : TopicTodayFeedGroup
+	case magazine : Plugin
 	case gap  
+ }
+
+ struct NewsUI2.Plugin {
+
+	// Properties
+	let identifier : String
+	let group : A
  }
 
  struct NewsUI2.IssueModel {
@@ -10642,12 +12769,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- class NewsUI2.SavedRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SavedRouterType {
+ class NewsUI2.InterstitialPreviewURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var controller : weak UIViewController? // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x18 (0x28)
+	let patterns :  empty-list  // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x18 (0x8)
 
 	// Swift methods
  }
@@ -10656,9 +12784,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let plugin : ù% // +0x0
+	let plugin : Òs // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let newPluginModel : Ûg // +0x8
+	let newPluginModel : K4	 // +0x8
  }
 
  enum NewsUI2.ModifierError {
@@ -10671,12 +12799,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onTap : ˝˙ // +0x8 (0x8)
+	let onTap : o`	 // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x386240  @objc ShowAnywayButton.initWithFrame: <stripped>
-	0x386300  @objc ShowAnywayButton.initWithCoder: <stripped>
-	0x386220  @objc ShowAnywayButton..cxx_destruct <stripped>
+	0x483f30  @objc ShowAnywayButton.initWithFrame: <stripped>
+	0x483ff0  @objc ShowAnywayButton.initWithCoder: <stripped>
+	0x483f10  @objc ShowAnywayButton..cxx_destruct <stripped>
+ }
+
+ enum NewsUI2.AudioNowPlayingPlaybackState {
+
+	// Properties
+	case playing : AudioPlaybackRate
+	case paused : AudioPlaybackRate
+	case stopped  
  }
 
  class NewsUI2.MagazineCategoriesInteractor {
@@ -10685,31 +12821,82 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let button : UIButton // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onTap : ˝˙ // +0x10 (0x8)
+	let onTap : o`	 // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let isEditing : °' // +0x18 (0x8)
+	let isEditing : ˘ã	 // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x386a30  @objc FollowingSettingsButtonView.initWithFrame: <stripped>
-	0x386a60  @objc FollowingSettingsButtonView.initWithCoder: <stripped>
-	0x386ab0  @objc FollowingSettingsButtonView..cxx_destruct <stripped>
+	0x4858b0  @objc FollowingSettingsButtonView.initWithFrame: <stripped>
+	0x4858e0  @objc FollowingSettingsButtonView.initWithCoder: <stripped>
+	0x485930  @objc FollowingSettingsButtonView..cxx_destruct <stripped>
+ }
+
+ class NewsUI2.AudioListeningProgressRecorder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let playbackStateObserver : eA	 // +0x10 (0x8)
+
+	// Swift methods
  }
 
  struct NewsUI2.MagazineFeedExpandResult {
 
 	// Properties
 	let identifier : String // +0x0
-	let fetchResult : FeedServiceFetchResult // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pluginModel : a¢ // +0x18
+	let fetchResult : çÄ	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let pluginModel : Ìˆ // +0x18
  }
 
- class NewsUI2.SubscriptionURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ class NewsUI2.BundleSubscriptionURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let patterns :  empty-list  // +0x10 (0x8)
 	let magazineActivityNavigator : MagazineActivityNavigatorType // +0x18 (0x28)
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioFeedViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	let styler : AudioFeedStylerType // +0x8 (0x28)
+	let eventHandler : AudioFeedEventHandlerType // +0x30 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let backgroundView : X // +0x40 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let blueprintViewController : a // +0x48 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let barCompressionManager : O	 // +0x50 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let sharingActivityProviderFactory : U%	 // +0x58 (0x28)
+	var mastheadViewProviderDelegate : MastheadableDelegate // +0x80 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let audioTabVisibilitySignal : ø-	 // +0x90 (0x8)
+	let readingHistory : FCReadingHistory // +0x98 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x487810  @objc AudioFeedViewController.initWithCoder: <stripped>
+	0x4879d0  @objc AudioFeedViewController.initWithNibName:bundle: <stripped>
+	0x487930  @objc AudioFeedViewController..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.HistoryFeedAssembly : NSObject /usr/lib/libobjc.A.dylib {
+	// ObjC -> Swift bridged methods
+	0x48e0b0  @objc HistoryFeedAssembly.init <stripped>
+ }
+
+ class NewsUI2.AudioSuggestionsFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let groupConfig : AudioFeedGroupConfig // +0x0 (0x0)
+	let config : AudioSuggestionsFeedGroupConfig // +0x0 (0x38)
+	let tracks : AudioFeedTrack // +0x0 (0x8)
 
 	// Swift methods
  }
@@ -10733,9 +12920,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var controller : weak UIViewController? // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x18 (0x28)
+	let resolver : È_	 // +0x18 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x40 (0x8)
+	let navigator : =e	 // +0x40 (0x8)
 	let configurationManager : FCNewsAppConfigurationManager // +0x48 (0x8)
 
 	// Swift methods
@@ -10743,7 +12930,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsUI2.ServiceAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x38e8f0  @objc ServiceAssembly.init <stripped>
+	0x495f80  @objc ServiceAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -10751,20 +12938,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.OrderedArticleListMagazineFeedGroupConfig {
 
 	// Properties
-	let kind : MagazineFeedGroupKind // +0x0
-	let identifier : String // +0x8
-	let position : FeedGroupPosition // +0x18
-	let groupTitle : String // +0x20
-	let groupTitleColor : String // +0x30
-	let groupSubtitle : String? // +0x40
-	let articles : MagazineFeedArticle // +0x50
-	let availableInForYou : Bool // +0x58
-	let availableInMagazineFeed : Bool // +0x59
-	let paidVisibility : FeedGroupPaidVisibility // +0x5a
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x5b
-	let allowDuplicatesAcrossGroups : Bool // +0x5c
-	let minNewsVersion : String? // +0x60
-	let maxNewsVersion : String? // +0x70
+	let kind : MagazineFeedGroupKind
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+	let groupTitle : String
+	let groupTitleColor : String
+	let groupSubtitle : String?
+	let articles : MagazineFeedArticle
+	let availableInForYou : Bool
+	let availableInMagazineFeed : Bool
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let allowDuplicatesAcrossGroups : Bool
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
  }
 
  enum NewsUI2.Keys {
@@ -10805,8 +12995,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let headlineService : HeadlineServiceType
 
 	// ObjC -> Swift bridged methods
-	0x391650  @objc HistoryService.init <stripped>
-	0x3916b0  @objc HistoryService..cxx_destruct <stripped>
+	0x499550  @objc HistoryService.init <stripped>
+	0x4995b0  @objc HistoryService..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -10838,6 +13028,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case noNewContent  
  }
 
+ enum NewsUI2.HistoryFeedSectionDescriptor {
+
+	// Properties
+	case gap  
+	case headline  
+ }
+
  enum NewsUI2.FollowingSectionLayoutDescriptor {
 
 	// Properties
@@ -10850,31 +13047,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case settings : TitleModel
  }
 
- class NewsUI2.SavedBlueprintViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ class NewsUI2.WebEmbedEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WebEmbedEventHandlerType {
 
 	// Properties
-	let imageOnSideRenderer : HeadlineViewImageOnSideRenderer // +0x10 (0x8)
-	let noImageRenderer : HeadlineViewNoImageRenderer // +0x18 (0x8)
-	let wrappedImageOnSideRenderer : HeadlineViewWrappedImageOnSideRenderer // +0x20 (0x8)
-	var delegate : SavedBlueprintViewCellProviderDelegate // +0x28 (0x10)
+	var delegate : WebEmbedEventHandlerTypeDelegate // +0x10 (0x10)
+	let interactor : WebEmbedInteractorType // +0x20 (0x10)
+	let router : WebEmbedRouterType // +0x30 (0x28)
+	let tracker : WebEmbedTrackerType // +0x58 (0x28)
 
 	// Swift methods
- }
-
- enum NewsUI2.HistoryLayoutModel {
-
-	// Properties
-	case headline : HistoryHeadlineModel
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case spinner :  first-element-marker 
- }
-
- enum NewsUI2.HistoryHeadlineLayoutAttributes {
-
-	// Properties
-	case imageOnSide : HeadlineViewImageOnSideLayoutAttributes
-	case noImage : HeadlineViewNoImageLayoutAttributes
-	case wrappedImageOnSide : HeadlineViewWrappedImageOnSideLayoutAttributes
  }
 
  class NewsUI2.FollowingEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingEventHandlerType {
@@ -10883,6 +13064,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : FollowingEventHandlerTypeDelegate // +0x10 (0x10)
 	let interactor : FollowingInteractorType // +0x20 (0x10)
 	let router : FollowingRouterType // +0x30 (0x28)
+	let tracker : FollowingTrackerType // +0x58 (0x28)
 
 	// Swift methods
  }
@@ -10891,24 +13073,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let identifier : String
-	let paidVisibility : FeedGroupPaidVisibility
-	let paidVisibilityInForYou : FeedGroupPaidVisibility
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
 	let rankMultiplier : Double
-	let magazineFeedPaywallConfig : MagazineFeedPaywallConfig
+	let feedPaywallConfig : FeedPaywallConfig
  }
 
- struct NewsUI2.SavedPrewarmModifier {
-
-	// Properties
-	let savedService : SavedServiceType // +0x0
- }
-
+ class NewsUI2.AudioFeedInteractor {
  class NewsUI2.FollowingFooterViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingFooterViewLayoutAttributesFactoryType {
 
 	// Properties
 	let styler : FollowingFooterViewStylerType // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cache : • // +0x38 (0x8)
+	var cache : ÕG // +0x38 (0x8)
 
 	// Swift methods
  }
@@ -10933,7 +13112,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let config : CuratedTodayFeedGroupConfig // +0x0 (0x0)
 	let knobs : CuratedTodayFeedGroupKnobs // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let formatService : ´Ò // +0x0 (0x28)
+	let formatService : £H	 // +0x0 (0x28)
 
 	// Swift methods
  }
@@ -10948,12 +13127,49 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ class NewsUI2.AudioFeedAnimator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let blueprintProvider : [ // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let viewProvider : âS // +0x18 (0x8)
+
+	// Swift methods
+ }
+
  class NewsUI2.MyMagazinesSectionHeaderViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MyMagazinesSectionHeaderViewStylerType {
 
 	// Properties
 	let baseStyler : BaseStylerType // +0x10 (0x28)
 
 	// Swift methods
+ }
+
+ struct NewsUI2.AudioEditorialHeroFeedGroupConfig {
+
+	// Properties
+	let articles : AudioConfigArticle
+	let ttl : Double?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let userLocalExpiry : ÛI	
+	let identifier : String
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case articles  
+	case ttl  
+	case userLocalExpiry  
+	case identifier  
+ }
+
+ enum NewsUI2.TagFeedLayoutSectionDescriptor {
+
+	// Properties
+	case empty  
+	case headlines  
  }
 
  class NewsUI2.HeadlineViewFooterViewPropertiesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HeadlineViewFooterViewPropertiesFactoryType {
@@ -10964,12 +13180,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessoryLabelToAgeLabelSpacing : A // +0x0
+	let accessoryLabelToAgeLabelSpacing : õ_	 // +0x0
 	let sharrowSize : CGSize // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessoryViewToSharrowPadding : A // +0x18
+	let accessoryViewToSharrowPadding : õ_	 // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let decorationLabelToSubscriptionLabelSpacing : A // +0x20
+	let decorationLabelToSubscriptionLabelSpacing : õ_	 // +0x20
  }
 
  class NewsUI2.TagModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TagModelType {
@@ -11012,11 +13228,55 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case unknown  
  }
 
- class NewsUI2.DeferredHardPaywallAssembly : NSObject /usr/lib/libobjc.A.dylib {
+ class NewsUI2.DeferredBundleHardPaywallAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3b1540  @objc DeferredHardPaywallAssembly.init <stripped>
+	0x4b3a90  @objc DeferredBundleHardPaywallAssembly.init <stripped>
 
 	// Swift methods
+ }
+
+ enum NewsUI2.SearchMoreArticlesModel {
+
+	// Properties
+	case gap : SearchMoreArticlesGapLocation
+	case headline : Contextual
+ }
+
+ struct NewsUI2.Contextual {
+
+	// Properties
+	let model : A
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let context : …x	
+	let namespace : String?
+ }
+
+ enum NewsUI2.SearchMoreArticlesGapLocation {
+
+	// Properties
+	case cursor : Int
+	case topOfFeed  
+	case endOfFeed  
+ }
+
+ class NewsUI2.SearchMoreTagsAssembly : NSObject /usr/lib/libobjc.A.dylib {
+	// ObjC -> Swift bridged methods
+	0x4b8c70  @objc SearchMoreTagsAssembly.init <stripped>
+ }
+
+ struct NewsUI2.AudioFeedUpdatePluginModelModifier {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let plugin : Òs // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let newPluginModel : K4	 // +0x8
+ }
+
+ enum NewsUI2.ModifierError {
+
+	// Properties
+	case pluginNotFound  
  }
 
  struct NewsUI2.OffensiveViewLayoutAttributes {
@@ -11039,30 +13299,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.FeaturedArticleMagazineFeedGroup {
 
 	// Properties
-	let identifier : String // +0x0
-	let groupTitle : String // +0x10
-	let groupTitleColor : UIColor? // +0x20
-	let groupSubtitle : String? // +0x28
-	let featuredHeadline : FCHeadlineProviding // +0x38
-	let additionalHeadlines : [FCHeadlineProviding] // +0x40
-	let paidVisibility : FeedGroupPaidVisibility // +0x48
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x49
-	let rankMultiplier : Double // +0x50
-	let allowDuplicatesAcrossGroups : Bool // +0x58
-	let tagModel : MagazineFeedTagModel // +0x60
+	let identifier : String
+	let groupTitle : String
+	let groupTitleColor : UIColor?
+	let groupSubtitle : String?
+	let featuredHeadline : FCHeadlineProviding
+	let additionalHeadlines : [FCHeadlineProviding]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let rankMultiplier : Double
+	let allowDuplicatesAcrossGroups : Bool
+	let tagModel : MagazineFeedTagModel
  }
 
- struct NewsUI2.ScoredHeadline {
+ enum NewsUI2.SearchMoreTagsLayoutSectionDescriptor {
 
 	// Properties
-	let headline : FCHeadlineProviding // +0x0
-	let score : Double // +0x8
+	case blank  
  }
 
  class NewsUI2.StubArticleListMagazineFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let config : ArticleListMagazineFeedGroupConfig // +0x10 (0x80)
+	let config : ArticleListMagazineFeedGroupConfig // +0x0 (0x0)
 
 	// Swift methods
  }
@@ -11077,21 +13338,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let offlineIssueManager : OfflineIssueManagerType // +0x48
  }
 
- class NewsUI2.SpecialEventsWebEmbedViewControllerFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x10 (0x28)
-
+ class NewsUI2.SearchMoreTagsBlueprintViewHeaderProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
  }
+
+ struct NewsUI2.RemoveAudio { }
 
  class NewsUI2.TitleViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TitleViewLayoutAttributesFactoryType {
 
 	// Properties
 	let styler : TitleViewStylerType // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cache : ã // +0x38 (0x8)
+	var cache : @ // +0x38 (0x8)
 
 	// Swift methods
  }
@@ -11104,7 +13362,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let subtitleFrame : CGRect // +0x40
 	let chevronFrame : CGRect // +0x68
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : A // +0x90
+	let height : õ_	 // +0x90
 	let shouldLayoutForLargeText : Bool // +0x98
  }
 
@@ -11112,11 +13370,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutOptions : -	
+	let layoutOptions : ón	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let topPadding : A
+	let topPadding : õ_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bottomPadding : A
+	let bottomPadding : õ_	
+ }
+
+ class NewsUI2.AudioFeedTitleViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioFeedTitleViewRendererType {
+
+	// Properties
+	let styler : AudioFeedTitleViewStylerType // +0x10 (0x28)
+
+	// Swift methods
  }
 
  class NewsUI2.IssueModelFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, IssueModelFactoryType {
@@ -11124,40 +13390,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let issueReadingHistory : FCIssueReadingHistoryType // +0x10 (0x8)
 	let personalizer : FCFeedPersonalizing // +0x18 (0x8)
-	let featureAvailability : FeatureAvailabilityType // +0x20 (0x28)
-	let subscriptionController : FCSubscriptionController // +0x48 (0x8)
-	let subscriptionService : SubscriptionServiceType // +0x50 (0x10)
-	let offlineIssueManager : OfflineIssueManagerType // +0x60 (0x10)
-
-	// Swift methods
- }
-
- class NewsUI2.SavedStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SavedStylerType {
-
-	// Properties
-	let baseStyler : BaseStylerType // +0x10 (0x28)
-
-	// Swift methods
- }
-
- class NewsUI2.SearchMoreServiceFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreServiceFactoryType {
-
-	// Properties
-	let headlineModelFactory : HeadlineModelFactoryType // +0x10 (0x28)
-	let tagService : TagServiceType // +0x38 (0x10)
-
-	// Swift methods
- }
-
- class NewsUI2.MagazineFeedDiversificationService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-	// Swift methods
- }
-
- class NewsUI2.MoreVideosBlueprintViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let videoOnTopRenderer : HeadlineViewVideoOnTopRenderer // +0x10 (0x8)
-	var delegate : MoreVideosBlueprintViewCellProviderDelegate // +0x18 (0x10)
+	let featureAvailability : TSFeatureAvailabilityType // +0x20 (0x8)
+	let subscriptionController : FCSubscriptionController // +0x28 (0x8)
+	let subscriptionService : SubscriptionServiceType // +0x30 (0x10)
+	let offlineIssueManager : OfflineIssueManagerType // +0x40 (0x10)
 
 	// Swift methods
  }
@@ -11170,8 +13406,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let notificationConfiguration : NotificationConfigurationType // +0x30 (0x28)
 	let userInfo : FCUserInfo // +0x58 (0x8)
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x60 (0x8)
+	let featureAvailability : TSFeatureAvailabilityType // +0x68 (0x8)
+	let configurationManager : FCNewsAppConfigurationManager // +0x70 (0x8)
+	let newsletterManager : FCNewsletterManager // +0x78 (0x8)
 
 	// Swift methods
+ }
+
+ struct NewsUI2.TagFeedExpandRequest {
+
+	// Properties
+	let identifier : String
+	let location : TagFeedGapLocation
+	let context : TagFeedExpandContext
  }
 
  class NewsUI2.FollowingNotificationsDisabledViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingNotificationsDisabledViewRendererType {
@@ -11188,77 +13435,79 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsUI2.IssueAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3c19f0  @objc IssueAssembly.init <stripped>
- }
-
- enum NewsUI2.MoreVideosModel {
-
-	// Properties
-	case headline : MoreVideosHeadlineModel
+	0x4c3830  @objc IssueAssembly.init <stripped>
  }
 
  class NewsUI2.PaywallViewData : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : u˝
+	let viewData : €9
 
 	// ObjC -> Swift bridged methods
-	0x3c2950  @objc PaywallViewData.initWithViewSessionID:viewType:viewAction: <stripped>
-	0x3c2a80  @objc PaywallViewData.init <stripped>
-	0x3c2a10  @objc PaywallViewData..cxx_destruct <stripped>
+	0x4c3d30  @objc PaywallViewData.initWithViewSessionID:viewType:viewAction: <stripped>
+	0x4c3e60  @objc PaywallViewData.init <stripped>
+	0x4c3df0  @objc PaywallViewData..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3c27c0  class func PaywallViewData.__allocating_init(viewSessionID:viewType:viewAction:) // init 
+	0x4c3ba0  class func PaywallViewData.__allocating_init(viewSessionID:viewType:viewAction:) // init 
  }
 
  class NewsUI2.PaywallGroupData : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : í
+	let groupData : É‚
 
 	// ObjC -> Swift bridged methods
-	0x3c2cd0  @objc PaywallGroupData.initWithGroupType:groupID:groupCount:groupPosition:groupedArticleIDs:groupedIssueIDs: <stripped>
-	0x3c2ee0  @objc PaywallGroupData.init <stripped>
-	0x3c2e40  @objc PaywallGroupData..cxx_destruct <stripped>
+	0x4c40b0  @objc PaywallGroupData.initWithGroupType:groupID:groupCount:groupPosition:groupedArticleIDs:groupedIssueIDs: <stripped>
+	0x4c42c0  @objc PaywallGroupData.init <stripped>
+	0x4c4220  @objc PaywallGroupData..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3c2ab0  class func PaywallGroupData.__allocating_init(groupType:groupID:groupCount:groupPosition:groupedArticleIDs:groupedIssueIDs:) // init 
+	0x4c3e90  class func PaywallGroupData.__allocating_init(groupType:groupID:groupCount:groupPosition:groupedArticleIDs:groupedIssueIDs:) // init 
  }
 
  class NewsUI2.PaywallEventData : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : u˝
+	let viewData : €9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : ’R
+	let articleData : -ë
 	let channel : FCChannelProviding?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : /˝
+	let feedData : ó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : g˝
+	let groupData : Eó
 	let referral : AnalyticsReferral
 	let qToken : String?
 
 	// ObjC -> Swift bridged methods
-	0x3c3060  @objc PaywallEventData.initWithPaywallViewData:headline:channel:feed:paywallGroupData:referral:qToken: <stripped>
-	0x3c32a0  @objc PaywallEventData.init <stripped>
-	0x3c3180  @objc PaywallEventData..cxx_destruct <stripped>
+	0x4c4440  @objc PaywallEventData.initWithPaywallViewData:headline:channel:feed:paywallGroupData:referral:qToken: <stripped>
+	0x4c4680  @objc PaywallEventData.init <stripped>
+	0x4c4560  @objc PaywallEventData..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3c2f10  class func PaywallEventData.__allocating_init(paywallViewData:headline:channel:feed:paywallGroupData:referral:qToken:) // init 
+	0x4c42f0  class func PaywallEventData.__allocating_init(paywallViewData:headline:channel:feed:paywallGroupData:referral:qToken:) // init 
  }
 
  class NewsUI2.MainModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MainModuleType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x10 (0x28)
+	let resolver : È_	 // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x38 (0x8)
-	let featureAvailability : FeatureAvailabilityType // +0x40 (0x28)
+	let tracker : 9P	 // +0x38 (0x8)
+	let featureAvailability : TSFeatureAvailabilityType // +0x40 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.NowPlayingEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, NowPlayingEventHandlerType {
+
+	// Properties
+	let router : NowPlayingRouterType // +0x10 (0x28)
 
 	// Swift methods
  }
@@ -11269,9 +13518,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let label : UILabel // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3c63f0  @objc MyMagazinesSectionHeaderView.initWithFrame: <stripped>
-	0x3c6420  @objc MyMagazinesSectionHeaderView.initWithCoder: <stripped>
-	0x3c6470  @objc MyMagazinesSectionHeaderView..cxx_destruct <stripped>
+	0x4c8040  @objc MyMagazinesSectionHeaderView.initWithFrame: <stripped>
+	0x4c8070  @objc MyMagazinesSectionHeaderView.initWithCoder: <stripped>
+	0x4c80c0  @objc MyMagazinesSectionHeaderView..cxx_destruct <stripped>
  }
 
  class NewsUI2.HeadlineViewTextViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -11282,10 +13531,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ struct NewsUI2.AudioPlaylistFeedGroup {
+
+	// Properties
+	let tracks : AudioFeedTrack
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+	let identifier : String
+ }
+
  class NewsUI2.StubCategoriesMagazineFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let config : CategoriesMagazineFeedGroupConfig // +0x10 (0x60)
+	let config : CategoriesMagazineFeedGroupConfig // +0x0 (0x0)
 
 	// Swift methods
  }
@@ -11296,7 +13554,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var delegate : MyMagazinesBlueprintViewCellProviderDelegate // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedItemRenderer : 7 // +0x20 (0x10)
+	let feedItemRenderer : ≠§	 // +0x20 (0x10)
 	let offlineIssueManager : OfflineIssueManagerType // +0x30 (0x10)
 
 	// Swift methods
@@ -11312,6 +13570,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ class NewsUI2.TodayPluginFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let blueprintProvider : o\	 // +0x40 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.IssueListTagFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let config : IssueListTagFeedGroupConfig // +0x0 (0x0)
+
+	// Swift methods
+ }
+
  class NewsUI2.EmailSignupDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, EmailSignupDataManagerType {
 	// Swift methods
  }
@@ -11322,9 +13601,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var interestToken : Any? // +0x10 (0x20)
 	let identifier : String // +0x30 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let state :  // +0x40 (0x8)
+	let state : ›p	 // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let progress : ˇ // +0x48 (0x8)
+	let progress : œp	 // +0x48 (0x8)
 	var cancelHandler : ()? // +0x50 (0x10)
 
 	// Swift methods
@@ -11338,20 +13617,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : MyMagazinesStylerType // +0x18 (0x28)
 	let eventHandler : MyMagazinesEventHandlerType // +0x40 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController : ´ // +0x50 (0x8)
+	let blueprintViewController : iI // +0x50 (0x8)
 	let offlineAlertControllerFactory : OfflineAlertControllerFactoryType // +0x58 (0x28)
 	var lastComputedSize : CGSize // +0x80 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventManager : ’˚ // +0x90 (0x8)
+	let eventManager : s7 // +0x90 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3c8e60  @objc MyMagazinesViewController.isBeingUsedAsPlugin <stripped>
-	0x3c8e70  @objc MyMagazinesViewController.setIsBeingUsedAsPlugin: <stripped>
-	0x3c8e80  @objc MyMagazinesViewController.pluggableDelegate <stripped>
-	0x3c8ea0  @objc MyMagazinesViewController.setPluggableDelegate: <stripped>
-	0x3c8f50  @objc MyMagazinesViewController.initWithCoder: <stripped>
-	0x3c9010  @objc MyMagazinesViewController.initWithNibName:bundle: <stripped>
-	0x3c8fa0  @objc MyMagazinesViewController..cxx_destruct <stripped>
+	0x4cbc00  @objc MyMagazinesViewController.isBeingUsedAsPlugin <stripped>
+	0x4cbc10  @objc MyMagazinesViewController.setIsBeingUsedAsPlugin: <stripped>
+	0x4cbc20  @objc MyMagazinesViewController.pluggableDelegate <stripped>
+	0x4cbc40  @objc MyMagazinesViewController.setPluggableDelegate: <stripped>
+	0x4cbcf0  @objc MyMagazinesViewController.initWithCoder: <stripped>
+	0x4cbdb0  @objc MyMagazinesViewController.initWithNibName:bundle: <stripped>
+	0x4cbd40  @objc MyMagazinesViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -11362,20 +13641,68 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case viewDidDisappear  
  }
 
- class NewsUI2.PaidBundleBackgroundWorkerFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PaidBundleBackgroundWorkerFactoryType {
+ class NewsUI2.TagFeedViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
+	let feedDescriptor : FCFeedDescriptor // +0x8 (0x8)
+	let styler : TagFeedStylerType // +0x10 (0x28)
+	let eventHandler : TagFeedEventHandlerType // +0x38 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x10 (0x28)
+	let blueprintViewController : Å‡ // +0x48 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x4cdd80  @objc TagFeedViewController.initWithCoder: <stripped>
+	0x4cddd0  @objc TagFeedViewController.initWithNibName:bundle: <stripped>
+	0x4cde30  @objc TagFeedViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
- class NewsUI2.TodayPluginFeedServiceConfigFetcher : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TodayFeedServiceConfigFetcherType {
+ class NewsUI2.FollowingNotificationsSectionFooterViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingNotificationsSectionFooterViewLayoutAttributesFactoryType {
 
 	// Properties
-	let name : String // +0x10 (0x10)
-	let todayFeedServiceConfig : TodayFeedServiceConfig // +0x0 (0x0)
+	let styler : FollowingNotificationsSectionFooterViewStylerType // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var cache : a9 // +0x38 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.PaidBundleBackgroundWorkerFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PaidBundleBackgroundWorkerFactoryType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x10 (0x28)
+
+	// Swift methods
+ }
+
+ class NewsUI2.NetworkTodayFeedServiceConfigFetcher : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TodayFeedServiceConfigFetcherType {
+
+	// Properties
+	let name : String
+	let configManager : TodayConfigManagerType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidBundleConfigManager : ì	
+
+	// Swift methods
+ }
+
+ class NewsUI2.CacheTodayFeedServiceConfigFetcher : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TodayFeedServiceConfigFetcherType {
+
+	// Properties
+	let name : String
+	let configManager : TodayConfigManagerType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidBundleConfigManager : ì	
+
+	// Swift methods
+ }
+
+ class NewsUI2.SearchBlueprintLayoutBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let tagViewLayoutAttributesFactory : TagViewLayoutAttributesFactoryType // +0x10 (0x28)
 
 	// Swift methods
  }
@@ -11386,14 +13713,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let frame : CGRect // +0x0
 	let labelFrame : CGRect // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let labelCapInset : A // +0x40
+	let labelCapInset : õ_	 // +0x40
  }
 
  class NewsUI2.SubscriptionsRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x10 (0x8)
+	let navigator : =e	 // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -11408,30 +13735,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let sourceView : UIView // +0x38
  }
 
- class NewsUI2.TopVideosHeadlineModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let headlineModel : HeadlineModel // +0x10 (0x8)
-
-	// Swift methods
- }
-
  struct NewsUI2.NewIssueMagazineFeedGroupConfig {
 
 	// Properties
-	let kind : MagazineFeedGroupKind // +0x0
-	let identifier : String // +0x8
-	let position : FeedGroupPosition // +0x18
-	let groupTitle : String // +0x20
-	let groupTitleColor : String // +0x30
-	let groupDarkStyleTitleColor : String // +0x40
-	let groupSubtitle : String? // +0x50
-	let availableInForYou : Bool // +0x60
-	let availableInMagazineFeed : Bool // +0x61
-	let paidVisibility : FeedGroupPaidVisibility // +0x62
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x63
-	let minNewsVersion : String? // +0x68
-	let maxNewsVersion : String? // +0x78
+	let kind : MagazineFeedGroupKind
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+	let groupTitle : String
+	let groupTitleColor : String
+	let groupDarkStyleTitleColor : String
+	let groupSubtitle : String?
+	let availableInForYou : Bool
+	let availableInMagazineFeed : Bool
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
  }
 
  enum NewsUI2.Keys {
@@ -11455,7 +13777,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let titleViewLayoutAttributesFactory : TitleViewLayoutAttributesFactoryType // +0x10 (0x28)
-	let followingRowViewLayoutAttributesFactory : FollowingRowViewLayoutAttributesFactory // +0x38 (0x8)
+	let tagViewLayoutAttributesFactory : TagViewLayoutAttributesFactoryType // +0x38 (0x28)
 
 	// Swift methods
  }
@@ -11469,12 +13791,47 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ struct NewsUI2.ColorStop {
+
+	// Properties
+	let color : UIColor // +0x0
+	let location : Double // +0x8
+ }
+
+ struct NewsUI2.Point {
+
+	// Properties
+	let x : Double // +0x0
+	let y : Double // +0x8
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case startPoint  
+	case endPoint  
+	case colorStops  
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case color  
+	case location  
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case x  
+	case y  
+ }
+
  class NewsUI2.SupportNotificationResponseHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x10 (0x8)
-	let pattern : NotificationResponsePattern // +0x18 (0x10)
+	let navigator : =e	 // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -11487,28 +13844,51 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let flintDocumentURLAssetHandlesByRemoteURL :  empty-list  // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3cfc50  @objc NewsReferralItemWidgetArticleList.JSONArray <stripped>
-	0x3cfcc0  @objc NewsReferralItemWidgetArticleList.flintDocumentURLAssetHandlesByRemoteURL <stripped>
-	0x3cfe40  @objc NewsReferralItemWidgetArticleList.initWithJSONArray:flintDocumentURLAssetHandlesByRemoteURL: <stripped>
-	0x3cffa0  @objc NewsReferralItemWidgetArticleList.init <stripped>
-	0x3cff20  @objc NewsReferralItemWidgetArticleList..cxx_destruct <stripped>
+	0x4d9180  @objc NewsReferralItemWidgetArticleList.JSONArray <stripped>
+	0x4d91f0  @objc NewsReferralItemWidgetArticleList.flintDocumentURLAssetHandlesByRemoteURL <stripped>
+	0x4d9370  @objc NewsReferralItemWidgetArticleList.initWithJSONArray:flintDocumentURLAssetHandlesByRemoteURL: <stripped>
+	0x4d94d0  @objc NewsReferralItemWidgetArticleList.init <stripped>
+	0x4d9450  @objc NewsReferralItemWidgetArticleList..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3cfd90  class func NewsReferralItemWidgetArticleList.__allocating_init(JSONArray:flintDocumentURLAssetHandlesByRemoteURL:) // init 
+	0x4d92c0  class func NewsReferralItemWidgetArticleList.__allocating_init(JSONArray:flintDocumentURLAssetHandlesByRemoteURL:) // init 
  }
 
  struct NewsUI2.TrendingMagazineFeedGroup {
 
 	// Properties
-	let identifier : String // +0x0
-	let groupTitle : String // +0x10
-	let groupTitleColor : UIColor? // +0x20
-	let groupSubtitle : String? // +0x28
-	let headlines : [FCHeadlineProviding] // +0x38
-	let paidVisibility : FeedGroupPaidVisibility // +0x40
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x41
-	let rankMultiplier : Double // +0x48
-	let allowDuplicatesAcrossGroups : Bool // +0x50
+	let identifier : String
+	let groupTitle : String
+	let groupTitleColor : UIColor?
+	let groupSubtitle : String?
+	let headlines : [FCHeadlineProviding]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let rankMultiplier : Double
+	let allowDuplicatesAcrossGroups : Bool
+ }
+
+ enum NewsUI2.AudioFeedModel {
+
+	// Properties
+	case dailyBriefing : Contextual
+	case playlistTrack : Contextual
+	case suggestedTrack : Contextual
+	case recentlyPlayedTrack : Contextual
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case plugin : K4	
+	case placard : AudioFeedPlacardMessage
+ }
+
+ struct NewsUI2.Contextual {
+
+	// Properties
+	let model : A
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let context : …x	
+	let namespace : String?
  }
 
  struct NewsUI2.CuratedTodayFeedGroupKnobs {
@@ -11521,6 +13901,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case rankMultiplier  
+ }
+
+ class NewsUI2.SearchModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchModuleType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x38 (0x8)
+
+	// Swift methods
+ }
+
+ struct NewsUI2.NewspaperMagazineFeedGroupEmitter {
+
+	// Properties
+	let config : NewspaperGroupConfig
+	let knobs : NewspaperGroupKnobs
+	let newspaperGroupService : NewspaperGroupServiceType
+	let feedPersonalizingEngine : FCFeedPersonalizing
+	let name : String
  }
 
  enum NewsUI2.Errors {
@@ -11538,45 +13939,50 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let previouslyFailedToEmit : Set<String> // +0x8
  }
 
- struct NewsUI2.NewspaperMagazineFeedGroupEmitter {
+ struct NewsUI2.TagFeedReloadRequest {
 
 	// Properties
-	let config : NewspaperGroupConfig
-	let knobs : NewspaperGroupKnobs
-	let newspaperGroupService : NewspaperGroupServiceType
-	let feedPersonalizingEngine : FCFeedPersonalizing
+	let headlineIDs : Set<String> // +0x0
  }
 
- class NewsUI2.SavedDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SavedDataManagerType {
+ class NewsUI2.HistoryModule : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var delegate : SavedDataManagerDelegate // +0x10 (0x10)
-	let savedService : SavedServiceType // +0x20 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x8 (0x28)
+
+	// ObjC -> Swift bridged methods
+	0x4e4d10  @objc HistoryModule.createViewController <stripped>
+	0x4e4e00  @objc HistoryModule.init <stripped>
+	0x4e4d90  @objc HistoryModule..cxx_destruct <stripped>
 
 	// Swift methods
- }
-
- enum NewsUI2.SavedDataManagerChange {
-
-	// Properties
-	case added : SavedHeadlineModel
-	case removed : SavedHeadlineModel
  }
 
  struct NewsUI2.FeaturedIssueMagazineFeedGroup {
 
 	// Properties
-	let identifier : String // +0x0
-	let groupTitle : String // +0x10
-	let groupTitleColor : UIColor? // +0x20
-	let groupBackgroundColor : UIColor? // +0x28
-	let groupSubtitle : String? // +0x30
-	let issue : FCIssue // +0x40
-	let additionalHeadlines : [FCHeadlineProviding] // +0x48
-	let paidVisibility : FeedGroupPaidVisibility // +0x50
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x51
-	let rankMultiplier : Double // +0x58
-	let allowDuplicatesAcrossGroups : Bool // +0x60
+	let identifier : String
+	let groupTitle : String
+	let groupTitleColor : UIColor?
+	let groupBackgroundColor : UIColor?
+	let groupSubtitle : String?
+	let issue : FCIssue
+	let additionalHeadlines : [FCHeadlineProviding]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let rankMultiplier : Double
+	let allowDuplicatesAcrossGroups : Bool
+ }
+
+ struct NewsUI2.AudioFeedTitleViewLayoutOptions {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let layoutOptions : ón	
+	let useLargeTitle : Bool
  }
 
  class NewsUI2.ChannelIssuesGroupConfig : NSObject /usr/lib/libobjc.A.dylib {
@@ -11587,35 +13993,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let title : String // +0x18 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x3d5060  @objc ChannelIssuesGroupConfig.initWithIssueIDs:channel:title: <stripped>
-	0x3d51c0  @objc ChannelIssuesGroupConfig.init <stripped>
-	0x3d5130  @objc ChannelIssuesGroupConfig..cxx_destruct <stripped>
+	0x4e5f20  @objc ChannelIssuesGroupConfig.initWithIssueIDs:channel:title: <stripped>
+	0x4e6010  @objc ChannelIssuesGroupConfig.init <stripped>
+	0x4e6070  @objc ChannelIssuesGroupConfig..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3d4f70  class func ChannelIssuesGroupConfig.__allocating_init(issueIDs:channel:title:) // init 
+	0x4e5dc0  class func ChannelIssuesGroupConfig.__allocating_init(issueIDs:channel:title:) // init 
  }
 
  class NewsUI2.FollowingNotificationsViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	var delegate : FollowingNotificationsViewCellProviderDelegate // +0x10 (0x10)
-	let followingRowViewRenderer : FollowingRowViewRendererType // +0x20 (0x28)
-
-	// Swift methods
- }
-
- class NewsUI2.MoreVideosAssembly : NSObject /usr/lib/libobjc.A.dylib {
-	// ObjC -> Swift bridged methods
-	0x3d8ec0  @objc MoreVideosAssembly.init <stripped>
-
-	// Swift methods
- }
-
- class NewsUI2.TopVideosBlueprintViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let videoOnTopRenderer : HeadlineViewVideoOnTopRenderer // +0x10 (0x8)
-	var delegate : TopVideosBlueprintViewCellProviderDelegate // +0x18 (0x10)
+	let tagViewRenderer : TagViewRendererType // +0x20 (0x28)
 
 	// Swift methods
  }
@@ -11630,17 +14020,40 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ class NewsUI2.SearchEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchEventHandlerType {
+
+	// Properties
+	var delegate : SearchEventHandlerTypeDelegate // +0x10 (0x10)
+	let interactor : SearchInteractorType // +0x20 (0x10)
+	let router : SearchRouterType // +0x30 (0x28)
+	let tracker : SearchTrackerType // +0x58 (0x28)
+
+	// Swift methods
+ }
+
+ class NewsUI2.TagURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let patterns :  empty-list  // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x18 (0x8)
+	let feedViewContextFactory : FeedViewContextFactory // +0x20 (0x8)
+
+	// Swift methods
+ }
+
  class NewsUI2.TodayBridgedConfig : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let todayConfig : TodayConfig // +0x568 (0x0)
-	let groupConfigs : [FCForYouBridgedFeedGroupConfig] // +0x722a48 (0x8)
+	let todayConfig : TodayConfig // +0x726176 (0x0)
+	let groupConfigs : [FCForYouBridgedFeedGroupConfig] // +0x41445f5f (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3db190  @objc TodayBridgedConfig.groupConfigs <stripped>
-	0x3db9e0  @objc TodayBridgedConfig.copyWithZone: <stripped>
-	0x3dba70  @objc TodayBridgedConfig.init <stripped>
-	0x3dbad0  @objc TodayBridgedConfig..cxx_destruct <stripped>
+	0x4e87e0  @objc TodayBridgedConfig.groupConfigs <stripped>
+	0x4e8cf0  @objc TodayBridgedConfig.copyWithZone: <stripped>
+	0x4e8d80  @objc TodayBridgedConfig.init <stripped>
+	0x4e8de0  @objc TodayBridgedConfig..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -11648,17 +14061,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.IssuesMagazineFeedGroupEmitter {
 
 	// Properties
-	let config : IssuesMagazineFeedGroupConfig // +0x0
-	let knobs : IssuesMagazineFeedGroupKnobs // +0x80
+	let config : IssuesMagazineFeedGroupConfig
+	let knobs : IssuesMagazineFeedGroupKnobs
+	let name : String
  }
 
- class NewsUI2.FollowingRowViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingRowViewStylerType {
+ class NewsUI2.TagViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TagViewStylerType {
 
 	// Properties
 	let headlineFontMetrics : UIFontMetrics // +0x10 (0x8)
 	let subtitleFontMetrics : UIFontMetrics // +0x18 (0x8)
 
 	// Swift methods
+ }
+
+ struct NewsUI2.SearchPrewarmBlueprintModifier {
+
+	// Properties
+	let searchResults : SearchModel // +0x0
  }
 
  class NewsUI2.TitleView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -11669,12 +14089,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let subtitleLabel : UILabel // +0x18 (0x8)
 	let chevron : UIImageView // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let action : ˝˙ // +0x28 (0x8)
+	let action : o`	 // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3e02d0  @objc TitleView.initWithFrame: <stripped>
-	0x3e0300  @objc TitleView.initWithCoder: <stripped>
-	0x3e0350  @objc TitleView..cxx_destruct <stripped>
+	0x4eebc0  @objc TitleView.initWithFrame: <stripped>
+	0x4eebf0  @objc TitleView.initWithCoder: <stripped>
+	0x4eec40  @objc TitleView..cxx_destruct <stripped>
  }
 
  class NewsUI2.ArticleRecirculationConfigurationService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -11691,20 +14111,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case failedToLoadConfig  
  }
 
+ class NewsUI2.WebEmbedTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WebEmbedTrackerType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x10 (0x8)
+
+	// Swift methods
+ }
+
  struct NewsUI2.FeaturedIssueArticleMagazineFeedGroup {
 
 	// Properties
-	let identifier : String // +0x0
-	let groupTitle : String // +0x10
-	let groupTitleColor : UIColor? // +0x20
-	let groupSubtitle : String? // +0x28
-	let featuredHeadline : FCHeadlineProviding // +0x38
-	let issue : FCIssue // +0x40
-	let additionalHeadlines : [FCHeadlineProviding] // +0x48
-	let paidVisibility : FeedGroupPaidVisibility // +0x50
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x51
-	let rankMultiplier : Double // +0x58
-	let allowDuplicatesAcrossGroups : Bool // +0x60
+	let identifier : String
+	let groupTitle : String
+	let groupTitleColor : UIColor?
+	let groupSubtitle : String?
+	let featuredHeadline : FCHeadlineProviding
+	let issue : FCIssue
+	let additionalHeadlines : [FCHeadlineProviding]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let rankMultiplier : Double
+	let allowDuplicatesAcrossGroups : Bool
  }
 
  class NewsUI2.CacheFlushingManager : NSObject /usr/lib/libobjc.A.dylib {
@@ -11715,10 +14146,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let preFlushGroup : OS_dispatch_group // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3e1800  @objc CacheFlushingManager.addPreFlushTask: <stripped>
-	0x3e1970  @objc CacheFlushingManager.enableFlushing <stripped>
-	0x3e1b20  @objc CacheFlushingManager.init <stripped>
-	0x3e1a90  @objc CacheFlushingManager..cxx_destruct <stripped>
+	0x4f0a40  @objc CacheFlushingManager.addPreFlushTask: <stripped>
+	0x4f0bb0  @objc CacheFlushingManager.enableFlushing <stripped>
+	0x4f0d60  @objc CacheFlushingManager.init <stripped>
+	0x4f0cd0  @objc CacheFlushingManager..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -11736,33 +14167,42 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case invalidBlueprint  
  }
 
- class NewsUI2.HistoryModule : NSObject /usr/lib/libobjc.A.dylib {
+ class NewsUI2.AudioFeedBlueprintViewSupplementaryViewProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
+	let titleViewRenderer : AudioFeedTitleViewRendererType // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
-
-	// ObjC -> Swift bridged methods
-	0x3e2a50  @objc HistoryModule.createViewController <stripped>
-	0x3e2b40  @objc HistoryModule.init <stripped>
-	0x3e2ad0  @objc HistoryModule..cxx_destruct <stripped>
+	let feedItemSupplementaryRenderer : M[	 // +0x38 (0x10)
 
 	// Swift methods
+ }
+
+ enum NewsUI2.HistoryFeedLayoutSectionDescriptor {
+
+	// Properties
+	case articleList  
  }
 
  class NewsUI2.IssueTableOfContentsArticleCoordinator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var delegate : CË // +0x10 (0x10)
+	var delegate : y" // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x20 (0x8)
+	let tracker : 9P	 // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleCoordinator : áT // +0x28 (0x28)
+	let articleCoordinator : ï // +0x28 (0x28)
 	let sessionManager : AAViewingSessionManagerType // +0x50 (0x8)
 	let issue : FCIssue // +0x58 (0x8)
 
 	// Swift methods
+ }
+
+ enum NewsUI2.SearchMoreTagsLayoutModel {
+
+	// Properties
+	case tag : SearchMoreTagModel
+	case spinner : SpinnerFooterViewLayoutAttributes
  }
 
  enum NewsUI2.FollowingNotificationsLayoutDescriptor {
@@ -11771,6 +14211,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case channel : TitleModel
 	case recommended : TitleModel
 	case features : TitleModel
+ }
+
+ enum NewsUI2.HeroSelectionStrategy {
+
+	// Properties
+	case promoted : Promoted
+	case personalization  
+ }
+
+ struct NewsUI2.Promoted {
+
+	// Properties
+	let timeToLive : Double // +0x0
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case timeToLive  
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case unknownHeroSelectionStrategy  
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case type  
+	case data  
  }
 
  class NewsUI2.StubHeadlineOffensiveStatusProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -11796,42 +14268,77 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let action : MagazineFeedSubscribe // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let result : ÎÚ // +0x8
+	let result : ª. // +0x8
+ }
+
+ struct NewsUI2.TagFeedUpdatePluginModelModifier {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let plugin : Òs // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let pluginModel : K4	 // +0x8
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case pluginNotFound  
+ }
+
+ class NewsUI2.SearchMoreArticlesBlueprintModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreArticlesBlueprintModifierFactoryType {
+
+	// Properties
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidBundleConfigManager : ì	 // +0x18 (0x28)
+	let headlineModelFactory : HeadlineModelFactoryType // +0x40 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedContext : …x	 // +0x0 (0x0)
+	let featureAvailability : TSFeatureAvailabilityType // +0x0 (0x8)
+
+	// Swift methods
+ }
+
+ struct NewsUI2.MagazineFeedReloadRequest {
+
+	// Properties
+	let headlineIDs : Set<String> // +0x0
  }
 
  class NewsUI2.AnalyticsReferral : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let userActivityType : String // +0x8 (0x10)
-	let creativeID : String // +0x18 (0x10)
-	let campaignID : String // +0x28 (0x10)
-	let campaignType : String // +0x38 (0x10)
-	let referringApplication : String // +0x48 (0x10)
-	let referringURL : String // +0x58 (0x10)
-	let widgetModeGroupID : String // +0x68 (0x10)
-	let widgetEngagement : NTPBWidgetEngagement // +0x78 (0x8)
+	let userActivityType : String? // +0x8 (0x10)
+	let creativeID : String? // +0x18 (0x10)
+	let campaignID : String? // +0x28 (0x10)
+	let campaignType : String? // +0x38 (0x10)
+	let referringApplication : String? // +0x48 (0x10)
+	let referringURL : String? // +0x58 (0x10)
+	let widgetModeGroupID : String? // +0x68 (0x10)
+	let widgetEngagement : NTPBWidgetEngagement? // +0x78 (0x8)
 	let appOpenedByUserActivity : Bool // +0x80 (0x1)
-	let appSessionStartMethod : Int // +0x88 (0x8)
-	let appSessionStartNotificationType : Int // +0x90 (0x8)
+	let appSessionStartMethod : NTPBAppSessionStart_SessionStartMethod // +0x84 (0x4)
+	let appSessionStartNotificationType : NTPBAppSessionStart_NotificationType // +0x88 (0x4)
 
 	// ObjC -> Swift bridged methods
-	0x3e66c0  @objc AnalyticsReferral.userActivityType <stripped>
-	0x3e6700  @objc AnalyticsReferral.creativeID <stripped>
-	0x3e6740  @objc AnalyticsReferral.campaignID <stripped>
-	0x3e6780  @objc AnalyticsReferral.campaignType <stripped>
-	0x3e67c0  @objc AnalyticsReferral.referringApplication <stripped>
-	0x3e6800  @objc AnalyticsReferral.referringURL <stripped>
-	0x3e6840  @objc AnalyticsReferral.widgetModeGroupID <stripped>
-	0x3e68f0  @objc AnalyticsReferral.widgetEngagement <stripped>
-	0x3e6930  @objc AnalyticsReferral.appOpenedByUserActivity <stripped>
-	0x3e6960  @objc AnalyticsReferral.appSessionStartMethod <stripped>
-	0x3e69a0  @objc AnalyticsReferral.appSessionStartNotificationType <stripped>
-	0x3e6c60  @objc AnalyticsReferral.initWithUserActivityType:creativeID:campaignID:campaignType:referringApplication:referringURL:widgetModeGroupID:widgetEngagement:appOpenedByUserActivity:appSessionStartMethod:appSessionStartNotificationType: <stripped>
-	0x3e6e70  @objc AnalyticsReferral.init <stripped>
-	0x3e6d80  @objc AnalyticsReferral..cxx_destruct <stripped>
+	0x4fac90  @objc AnalyticsReferral.userActivityType <stripped>
+	0x4facd0  @objc AnalyticsReferral.creativeID <stripped>
+	0x4fad10  @objc AnalyticsReferral.campaignID <stripped>
+	0x4fad50  @objc AnalyticsReferral.campaignType <stripped>
+	0x4fad90  @objc AnalyticsReferral.referringApplication <stripped>
+	0x4fadd0  @objc AnalyticsReferral.referringURL <stripped>
+	0x4fae10  @objc AnalyticsReferral.widgetModeGroupID <stripped>
+	0x4faee0  @objc AnalyticsReferral.widgetEngagement <stripped>
+	0x4faf40  @objc AnalyticsReferral.appOpenedByUserActivity <stripped>
+	0x4faf70  @objc AnalyticsReferral.appSessionStartMethod <stripped>
+	0x4fafa0  @objc AnalyticsReferral.appSessionStartNotificationType <stripped>
+	0x4fb110  @objc AnalyticsReferral.initWithUserActivityType:creativeID:campaignID:campaignType:referringApplication:referringURL:widgetModeGroupID:widgetEngagement:appOpenedByUserActivity:appSessionStartMethod:appSessionStartNotificationType: <stripped>
+	0x4fb360  @objc AnalyticsReferral.init <stripped>
+	0x4fb3c0  @objc AnalyticsReferral..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3e69e0  class func AnalyticsReferral.__allocating_init(userActivityType:creativeID:campaignID:campaignType:referringApplication:referringURL:widgetModeGroupID:widgetEngagement:appOpenedByUserActivity:appSessionStartMethod:appSessionStartNotificationType:) // init 
+	0x4fab50  class func AnalyticsReferral.__allocating_init(userActivityType:creativeID:campaignID:campaignType:referringApplication:referringURL:widgetModeGroupID:widgetEngagement:appOpenedByUserActivity:appSessionStartMethod:appSessionStartNotificationType:) // init 
  }
 
  class NewsUI2.ChannelIssuesBlueprintModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ChannelIssuesBlueprintModifierFactoryType {
@@ -11852,6 +14359,54 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var initialTagModel : TagModel // +0x30
  }
 
+ enum NewsUI2.AudioFeedLayoutSectionDescriptor {
+
+	// Properties
+	case dailyBriefing : Data
+	case playlist : Data
+	case suggestions : Data
+	case recentlyPlayed : Data
+	case paywall : Data
+	case placard  
+ }
+
+ struct NewsUI2.Data {
+
+	// Properties
+	let group : A
+	let decorations : Decoration
+	let headers : Header
+	let footers : Footer
+ }
+
+ enum NewsUI2.Footer {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case feedItem : 7t
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case empty : ?{
+ }
+
+ enum NewsUI2.Header {
+
+	// Properties
+	case title : AudioFeedTitleViewModel
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case empty : ?{
+ }
+
+ enum NewsUI2.Decoration {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case gradient : E@
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case pattern : ∑?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case fill : π=
+ }
+
  enum NewsUI2.MyMagazinesSectionDescriptor {
 
 	// Properties
@@ -11860,12 +14415,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case downloaded  
  }
 
- struct NewsUI2.MoreVideosPrewarmBlueprintModifier {
+ struct NewsUI2.AudioFeedRefreshBlueprintModifier {
 
 	// Properties
-	let models : MoreVideosHeadlineModel // +0x0
-	let groupTitle : String // +0x8
-	let groupSubtitle : String? // +0x18
+	let state : AudioFeedState // +0x0
+	let audioFeedSectionFactory : AudioFeedSectionFactoryType // +0x8
  }
 
  class NewsUI2.MagazineFeedURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -11874,6 +14428,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let patterns :  empty-list  // +0x10 (0x8)
 	let magazineActivityNavigator : MagazineActivityNavigatorType // +0x18 (0x28)
+
+	// Swift methods
+ }
+
+ class NewsUI2.ForYouTodayConfigFetcher : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let name : String // +0x10 (0x10)
+	let todayFeedServiceConfig : TodayFeedServiceConfig // +0x0 (0x0)
 
 	// Swift methods
  }
@@ -11891,36 +14454,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let sectionFactory : MagazineFeedSectionFactoryType // +0x20
  }
 
- enum NewsUI2.SearchMoreLayoutModel {
-
-	// Properties
-	case headline : SearchResultHeadlineModel
-	case tag : SearchResultTagModel
-	case spinner : SpinnerFooterViewLayoutAttributes
- }
-
- enum NewsUI2.SearchMoreHeadlineLayoutAttributes {
-
-	// Properties
-	case imageOnSide : HeadlineViewImageOnSideLayoutAttributes
-	case noImage : HeadlineViewNoImageLayoutAttributes
-	case wrappedImageOnSide : HeadlineViewWrappedImageOnSideLayoutAttributes
- }
-
  class NewsUI2.ForYouTodayModule : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
+	let resolver : È_	 // +0x8 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x30 (0x8)
+	let tracker : 9P	 // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3f33b0  @objc ForYouTodayModule.createPluginFactoryForParentView: <stripped>
-	0x3f34c0  @objc ForYouTodayModule.init <stripped>
-	0x3f3440  @objc ForYouTodayModule..cxx_destruct <stripped>
+	0x50bd00  @objc ForYouTodayModule.createPluginFactoryForParentView: <stripped>
+	0x50be10  @objc ForYouTodayModule.init <stripped>
+	0x50bd90  @objc ForYouTodayModule..cxx_destruct <stripped>
 
 	// Swift methods
+ }
+
+ class NewsUI2.ChannelSectionsHeroSelector : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ChannelSectionsHeroSelectorType {
+
+	// Properties
+	let channelPromotedArticlesService : ChannelPromotedArticlesServiceType // +0x10 (0x28)
+	let personalizer : ChannelSectionsGroupPersonalizerType // +0x38 (0x28)
+
+	// Swift methods
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case heroSelectionFailed : (channelID: String)
+	case noPromotedArticles : (channelID: String)
+	case allPromotedArticlesHaveLowQualityThumbnailImage : (channelID: String)
  }
 
  class NewsUI2.MagazineFeedPaywallView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -11928,20 +14492,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let image : UIImageView? // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scrim : Qı // +0x10 (0x8)
+	let scrim : µ0 // +0x10 (0x8)
 	let badgeImageView : UIImageView? // +0x18 (0x8)
 	let largeTextLabel : UILabel // +0x20 (0x8)
 	let smallTextLabel : UILabel // +0x28 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButton : Öú // +0x30 (0x8)
+	let subscribeButton : ˚Ì // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3f3a50  @objc MagazineFeedPaywallView.initWithFrame: <stripped>
-	0x3f3a80  @objc MagazineFeedPaywallView.initWithCoder: <stripped>
-	0x3f3ad0  @objc MagazineFeedPaywallView..cxx_destruct <stripped>
+	0x50dc90  @objc MagazineFeedPaywallView.initWithFrame: <stripped>
+	0x50dcc0  @objc MagazineFeedPaywallView.initWithCoder: <stripped>
+	0x50dd10  @objc MagazineFeedPaywallView..cxx_destruct <stripped>
  }
 
  class NewsUI2.MagazineFeedOfflineIssueIndicationUpdater {
+ struct NewsUI2.SavedFeedExpandResult {
+
+	// Properties
+	let identifier : String // +0x0
+	let headlines : [FCHeadlineProviding] // +0x10
+	let location : SavedFeedGapLocation // +0x18
+ }
+
  class NewsUI2.AnalyticsScienceDataFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AnalyticsScienceDataFactoryType {
 
 	// Properties
@@ -11951,25 +14523,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- struct NewsUI2.SpecialEventsTitleViewStyler: SpecialEventsTitleViewStylerType {
-
-	// Properties
-	let titleFontMetrics : UIFontMetrics // +0x0
-	let actionFontMetrics : UIFontMetrics // +0x8
- }
-
- enum NewsUI2.FeedGroupPaidVisibility {
-
-	// Properties
-	case paid  
-	case unpaid  
-	case both  
-	case neither  
- }
-
  class NewsUI2.ForYouTodayAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3f5af0  @objc ForYouTodayAssembly.init <stripped>
+	0x50f1c0  @objc ForYouTodayAssembly.init <stripped>
  }
 
  class NewsUI2.ChannelIssuesViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -11978,23 +14534,62 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : ChannelIssuesStylerType // +0x8 (0x28)
 	let eventHandler : ChannelIssuesEventHandlerType // +0x30 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController : ë¸ // +0x40 (0x8)
+	let blueprintViewController : Á8 // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let gradientView : —Ç // +0x48 (0x8)
+	let gradientView : X // +0x48 (0x8)
 	let offlineAlertControllerFactory : OfflineAlertControllerFactoryType // +0x50 (0x28)
 	var isBeingUsedAsPlugin : Bool // +0x78 (0x1)
 	var pluggableDelegate : weak TUPluggableDelegate? // +0x80 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3f5d30  @objc ChannelIssuesViewController.isBeingUsedAsPlugin <stripped>
-	0x3f5d40  @objc ChannelIssuesViewController.setIsBeingUsedAsPlugin: <stripped>
-	0x3f5d50  @objc ChannelIssuesViewController.pluggableDelegate <stripped>
-	0x3f5d70  @objc ChannelIssuesViewController.setPluggableDelegate: <stripped>
-	0x3f5d90  @objc ChannelIssuesViewController.initWithCoder: <stripped>
-	0x3f5e50  @objc ChannelIssuesViewController.initWithNibName:bundle: <stripped>
-	0x3f5de0  @objc ChannelIssuesViewController..cxx_destruct <stripped>
+	0x50f400  @objc ChannelIssuesViewController.isBeingUsedAsPlugin <stripped>
+	0x50f410  @objc ChannelIssuesViewController.setIsBeingUsedAsPlugin: <stripped>
+	0x50f420  @objc ChannelIssuesViewController.pluggableDelegate <stripped>
+	0x50f440  @objc ChannelIssuesViewController.setPluggableDelegate: <stripped>
+	0x50f460  @objc ChannelIssuesViewController.initWithCoder: <stripped>
+	0x50f520  @objc ChannelIssuesViewController.initWithNibName:bundle: <stripped>
+	0x50f4b0  @objc ChannelIssuesViewController..cxx_destruct <stripped>
 
 	// Swift methods
+ }
+
+ class NewsUI2.AudioDailyBriefingTodayFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let todayFeedGroupConfig : AudioDailyBriefingTodayFeedGroupConfig
+	let knobs : AudioDailyBriefingTodayFeedGroupKnobs
+	let audioConfigurationManager : AudioConfigurationManagerType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let formatService : £H	
+	let headlineConverter : AudioHeadlineConverterType
+	let featureAvailability : TSFeatureAvailabilityType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineService : ±≠	
+	let subscriptionController : FCSubscriptionController
+	let readingHistory : FCReadingHistory
+	let name : String
+
+	// Swift methods
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case noDailyBriefing  
+	case noDailyBriefingChannel  
+	case dailyBriefingStoreConfigMismatch  
+	case dailyBriefingExpired  
+	case dailyBriefingCompletedListening  
+ }
+
+ struct NewsUI2.DailyBriefingTodayFeedGroupModel {
+
+	// Properties
+	let groupTitle : String
+	let groupSubtitle : String
+	let cta : String
+	let track : AudioFeedTrack
+	let tagID : String
  }
 
  class NewsUI2.FamilySharingDetectionManager : NSObject /usr/lib/libobjc.A.dylib, FamilySharingDetectionManagerType {
@@ -12005,8 +14600,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3f7a40  @objc FamilySharingDetectionManager.init <stripped>
-	0x3f7a00  @objc FamilySharingDetectionManager..cxx_destruct <stripped>
+	0x516250  @objc FamilySharingDetectionManager.init <stripped>
+	0x516210  @objc FamilySharingDetectionManager..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -12025,16 +14620,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x10 (0x8)
+	let navigator : =e	 // +0x10 (0x8)
 
 	// Swift methods
+ }
+
+ struct NewsUI2.MagazineFeedIssue {
+
+	// Properties
+	let issueID : String // +0x0
+	let title : String? // +0x10
+	let excerpt : String? // +0x20
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case issueID  
+	case title  
+	case excerpt  
+ }
+
+ struct NewsUI2.HistoryFeedSectionFactory: HistoryFeedSectionFactoryType {
+
+	// Properties
+	let headlineModelFactory : HeadlineModelFactoryType // +0x0
  }
 
  class NewsUI2.StubOfflineIssueManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueIDsAvailableOffline : %Ï // +0x10 (0x8)
+	let issueIDsAvailableOffline : …$ // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -12050,57 +14667,117 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let styler : MastheadViewStylerType // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let shineImageFactory : %ˆ // +0x38 (0x8)
+	let shineImageFactory : w0 // +0x38 (0x8)
 
 	// Swift methods
  }
 
- class NewsUI2.SavedInteractor {
  class NewsUI2.WelcomeModule : NSObject /usr/lib/libobjc.A.dylib, WelcomeModuleType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
+	let resolver : È_	 // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x3fc600  @objc WelcomeModule.init <stripped>
-	0x3fc6e0  @objc WelcomeModule..cxx_destruct <stripped>
+	0x51b040  @objc WelcomeModule.init <stripped>
+	0x51b120  @objc WelcomeModule..cxx_destruct <stripped>
 
 	// Swift methods
+ }
+
+ struct NewsUI2.SearchMoreArticlesResult {
+
+	// Properties
+	let headlines : [FCHeadlineProviding] // +0x0
+	let location : SearchMoreArticlesGapLocation // +0x8
+ }
+
+ class NewsUI2.FeedAudioPlaybackCommandHandler : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	let playbackConductor : AudioPlaybackConductor // +0x8 (0x8)
+	let readingHistory : FCReadingHistory // +0x10 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x51bad0  @objc FeedAudioPlaybackCommandHandler.init <stripped>
+	0x51bb30  @objc FeedAudioPlaybackCommandHandler..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ struct NewsUI2.AudioFeedGroupKnobs {
+
+	// Properties
+	let dailyBriefing : DailyBriefingFeedGroupKnobs // +0x0
+ }
+
+ struct NewsUI2.AudioFeedKnobsConfiguration {
+
+	// Properties
+	var minGroups : Int // +0x0
+	var maxGroups : Int // +0x8
+	var groupKnobs : AudioFeedGroupKnobs // +0x0
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case dailyBriefing  
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case minGroups  
+	case maxGroups  
+	case groupKnobs  
+ }
+
+ struct NewsUI2.DailyBriefingFeedGroupKnobs { }
+
+ enum NewsUI2.CodingKeys { }
+
+ struct NewsUI2.AudioEditorialHeroFeedGroup {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var paidVisibility : Îç	
+	var identifier : String
+	let track : AudioFeedTrack
  }
 
  class NewsUI2.MyMagazinesStore : NSObject /usr/lib/libobjc.A.dylib, MyMagazinesStoreType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let state : √≈ // +0x8 (0x8)
+	let state : 	 // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let badgeIssueIDs : µ≈ // +0x10 (0x8)
+	let badgeIssueIDs : ˇ	 // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let currentIssues : ¡È // +0x18 (0x8)
+	let currentIssues : á" // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let recentlyReadIssues : ≥È // +0x20 (0x8)
+	let recentlyReadIssues : y" // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let downloadedIssues : ≥È // +0x28 (0x8)
+	let downloadedIssues : y" // +0x28 (0x8)
 	let currentIssuesChecker : FCCurrentIssuesChecker // +0x30 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueService : Ÿπ // +0x38 (0x28)
+	let issueService : „	 // +0x38 (0x28)
 	let issueReadingHistory : FCIssueReadingHistoryType // +0x60 (0x8)
 	let subscriptionController : FCSubscriptionController // +0x68 (0x8)
 	let offlineIssueList : FCOfflineIssueList // +0x70 (0x8)
 	let offlineIssueManager : OfflineIssueManagerType // +0x78 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paidBundleConfigManager : è$ // +0x88 (0x28)
+	let paidBundleConfigManager : ì	 // +0x88 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let persistentStore : Ô // +0xb0 (0x8)
+	let persistentStore : I) // +0xb0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_lazyInitializingPromise : œÎ // +0xb8 (0x8)
+	var $__lazy_storage_$_lazyInitializingPromise : M% // +0xb8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let firstFullRefresh : ”ß // +0x0 (0x0)
+	let firstFullRefresh : › // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x3fdb20  @objc MyMagazinesStore.init <stripped>
-	0x3fdb80  @objc MyMagazinesStore..cxx_destruct <stripped>
+	0x5203b0  @objc MyMagazinesStore.init <stripped>
+	0x520410  @objc MyMagazinesStore..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -12136,11 +14813,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let issue : FCIssue
 	let followState : FollowState
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let followDate : cÛ
+	let followDate : ÛI	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let downloadedAt : cÛ
+	let downloadedAt : ÛI	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lastReadDate : cÛ
+	let lastReadDate : ÛI	
  }
 
  enum NewsUI2.CodingKeys {
@@ -12181,11 +14858,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- enum NewsUI2.SavedModel {
+ class NewsUI2.AudioFeedTitleViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioFeedTitleViewLayoutAttributesFactoryType {
 
 	// Properties
-	case headline : SavedHeadlineModel
-	case spinner : (cursor: Int)
+	let styler : AudioFeedTitleViewStylerType // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var cache : Û  // +0x38 (0x8)
+
+	// Swift methods
  }
 
  class NewsUI2.FollowingNotificationsDisabledView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -12195,13 +14875,50 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let subtitleLabel : UILabel // +0x10 (0x8)
 	let button : UIButton // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onButtonTap : ˝˙ // +0x20 (0x8)
+	let onButtonTap : o`	 // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x412560  @objc FollowingNotificationsDisabledView.initWithFrame: <stripped>
-	0x412590  @objc FollowingNotificationsDisabledView.initWithCoder: <stripped>
-	0x412980  @objc FollowingNotificationsDisabledView.layoutSubviews <stripped>
-	0x4129e0  @objc FollowingNotificationsDisabledView..cxx_destruct <stripped>
+	0x533980  @objc FollowingNotificationsDisabledView.initWithFrame: <stripped>
+	0x5339b0  @objc FollowingNotificationsDisabledView.initWithCoder: <stripped>
+	0x533da0  @objc FollowingNotificationsDisabledView.layoutSubviews <stripped>
+	0x533dd0  @objc FollowingNotificationsDisabledView.sizeThatFits: <stripped>
+	0x533e10  @objc FollowingNotificationsDisabledView..cxx_destruct <stripped>
+ }
+
+ class NewsUI2.NowPlayingViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	var isDocked : Bool // +0x8 (0x1)
+	let nowPlayingViewController : NUNowPlayingViewController // +0x10 (0x8)
+	let tracker : NowPlayingTracker // +0x18 (0x8)
+	let eventHandler : NowPlayingEventHandlerType // +0x20 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let playbackState : eA	 // +0x48 (0x8)
+	let publisherImageCache : TSImageCacheType // +0x50 (0x8)
+	let nowPlayingImageCache : TSImageCacheType // +0x58 (0x8)
+	var currentTrack : AudioFeedTrack // +0x0 (0x0)
+	let activityViewControllerFactory : NowPlayingActivityViewControllerFactoryType // +0x0 (0x28)
+	let miniPlayerView : NUNowPlayingDockedView // +0x0 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x534ae0  @objc NowPlayingViewController.initWithCoder: <stripped>
+	0x534c40  @objc NowPlayingViewController.viewDidLoad <stripped>
+	0x534c70  @objc NowPlayingViewController.viewWillLayoutSubviews <stripped>
+	0x535130  @objc NowPlayingViewController.viewDidAppear: <stripped>
+	0x535170  @objc NowPlayingViewController.viewDidDisappear: <stripped>
+	0x5377d0  @objc NowPlayingViewController.initWithNibName:bundle: <stripped>
+	0x537830  @objc NowPlayingViewController..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ struct NewsUI2.AudioRecentlyPlayedFeedGroup {
+
+	// Properties
+	let tracks : AudioFeedTrack
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+	let identifier : String
  }
 
  class NewsUI2.HeadlineViewVideoOnTopRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -12226,8 +14943,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let purchaseProvider : FCPurchaseProviderType // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4143f0  @objc PaidBundleChangeNotificationModifier.init <stripped>
-	0x414390  @objc PaidBundleChangeNotificationModifier..cxx_destruct <stripped>
+	0x53ba60  @objc PaidBundleChangeNotificationModifier.init <stripped>
+	0x53ba00  @objc PaidBundleChangeNotificationModifier..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -12236,14 +14953,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onValueChanged : ˝˙ // +0x8 (0x8)
+	let onValueChanged : o`	 // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var toggleState : iz // +0x41445f5f (0x0)
+	var toggleState : 3ø // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x4146b0  @objc NotificationSwitch.initWithCoder: <stripped>
-	0x4146f0  @objc NotificationSwitch.initWithFrame: <stripped>
-	0x414d60  @objc NotificationSwitch..cxx_destruct <stripped>
+	0x53bd20  @objc NotificationSwitch.initWithCoder: <stripped>
+	0x53bd60  @objc NotificationSwitch.initWithFrame: <stripped>
+	0x53c3d0  @objc NotificationSwitch..cxx_destruct <stripped>
  }
 
  class NewsUI2.HeadlineViewTextViewPropertiesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -12255,11 +14972,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let allowsExcerpt : Bool // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLogoHeight : A // +0x8
+	let publisherLogoHeight : õ_	 // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLogoToTitleSpacing : A // +0x10
+	let publisherLogoToTitleSpacing : õ_	 // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleToExcerptSpacing : A // +0x18
+	let titleToExcerptSpacing : õ_	 // +0x18
  }
 
  class NewsUI2.MainDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MainDataManagerType {
@@ -12277,11 +14994,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let rules : TodayFeedRules
-	let forceRefresh : Bool
-	let persistPublishDate : Bool
 	let contentConfig : TodayConfig
-	var paidBundleConfig : FCPaidBundleConfiguration
-	var cachePolicy : FeedPoolCachePolicy
+	let contentConfigData : TodayConfigData
+	let paidBundleConfig : FCPaidBundleConfiguration
+	let appConfig : FCCoreConfiguration
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let cachePolicy : ©ß	
+	let dateRange : FCDateRange?
  }
 
  class NewsUI2.FeedLayoutOptionsFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -12297,58 +15016,94 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var title : String? // +0x18 (0x10)
 	var flags : UIKeyModifierFlags // +0x28 (0x9)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var selector : Õ’ // +0x38 (0x8)
+	var selector : Ø	 // +0x38 (0x8)
 	var controller : weak UIViewController? // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x418200  @objc BridgedKeyCommand.initWithKey:flags:title:controller:selector: <stripped>
-	0x418400  @objc BridgedKeyCommand.init <stripped>
-	0x418360  @objc BridgedKeyCommand..cxx_destruct <stripped>
+	0x543390  @objc BridgedKeyCommand.initWithKey:flags:title:controller:selector: <stripped>
+	0x543590  @objc BridgedKeyCommand.init <stripped>
+	0x5434f0  @objc BridgedKeyCommand..cxx_destruct <stripped>
 
 	// Swift methods
-	0x418110  class func BridgedKeyCommand.__allocating_init(key:flags:title:controller:selector:) // init 
-	0x4182b0  func BridgedKeyCommand.performFunctionForController() // method 
+	0x5432a0  class func BridgedKeyCommand.__allocating_init(key:flags:title:controller:selector:) // init 
+	0x543440  func BridgedKeyCommand.performFunctionForController() // method 
  }
 
  class NewsUI2.BridgedKeyCommandUnownedProvider : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var invalidator : œÎ // +0x8 (0x10)
+	var invalidator : ˘$ // +0x8 (0x10)
 	var keys : BridgedKeyCommand // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4187f0  @objc BridgedKeyCommandUnownedProvider.init <stripped>
-	0x4187c0  @objc BridgedKeyCommandUnownedProvider..cxx_destruct <stripped>
+	0x543980  @objc BridgedKeyCommandUnownedProvider.init <stripped>
+	0x543950  @objc BridgedKeyCommandUnownedProvider..cxx_destruct <stripped>
  }
 
  class NewsUI2.BridgedKeyCommandManager : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var keyCommandManager : √Ó
+	var keyCommandManager : =(
 	var hasBeenTraversed : Bool
 	let keyCommandProvider : BridgedKeyCommandUnownedProvider
 
 	// ObjC -> Swift bridged methods
-	0x418ad0  @objc BridgedKeyCommandManager.hasBeenTraversed <stripped>
-	0x418b40  @objc BridgedKeyCommandManager.setHasBeenTraversed: <stripped>
-	0x418cd0  @objc BridgedKeyCommandManager.init <stripped>
-	0x418d50  @objc BridgedKeyCommandManager.registerController:withSelector: <stripped>
-	0x418f10  @objc BridgedKeyCommandManager.registerKeys: <stripped>
-	0x418f90  @objc BridgedKeyCommandManager.invalidate <stripped>
-	0x419080  @objc BridgedKeyCommandManager.handleKeyPressWithCommand: <stripped>
-	0x4191c0  @objc BridgedKeyCommandManager.handleKeyPressWithKey:flags: <stripped>
-	0x419330  @objc BridgedKeyCommandManager.registerProviderWithScrollView: <stripped>
-	0x419440  @objc BridgedKeyCommandManager.keyCommands <stripped>
-	0x419500  @objc BridgedKeyCommandManager..cxx_destruct <stripped>
+	0x543c60  @objc BridgedKeyCommandManager.hasBeenTraversed <stripped>
+	0x543cd0  @objc BridgedKeyCommandManager.setHasBeenTraversed: <stripped>
+	0x543e60  @objc BridgedKeyCommandManager.init <stripped>
+	0x543ee0  @objc BridgedKeyCommandManager.registerController:withSelector: <stripped>
+	0x5440a0  @objc BridgedKeyCommandManager.registerKeys: <stripped>
+	0x544120  @objc BridgedKeyCommandManager.invalidate <stripped>
+	0x544210  @objc BridgedKeyCommandManager.handleKeyPressWithCommand: <stripped>
+	0x544350  @objc BridgedKeyCommandManager.handleKeyPressWithKey:flags: <stripped>
+	0x5444c0  @objc BridgedKeyCommandManager.registerProviderWithScrollView: <stripped>
+	0x5445d0  @objc BridgedKeyCommandManager.keyCommands <stripped>
+	0x544690  @objc BridgedKeyCommandManager..cxx_destruct <stripped>
+ }
+
+ class NewsUI2.SearchService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchServiceType {
+
+	// Properties
+	let context : FCContentContext // +0x10 (0x8)
+
+	// Swift methods
+ }
+
+ enum NewsUI2.SearchServiceErrors {
+
+	// Properties
+	case noResultsFound  
+ }
+
+ class NewsUI2.AudioActionSheetProvider : NSObject /usr/lib/libobjc.A.dylib, AudioActionSheetProviderType {
+
+	// Properties
+	let headlineConverter : AudioHeadlineConverterType // +0x8 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let listeningProgressManager : Á$	 // +0x30 (0x28)
+
+	// ObjC -> Swift bridged methods
+	0x546480  @objc AudioActionSheetProvider.init <stripped>
+	0x5464e0  @objc AudioActionSheetProvider..cxx_destruct <stripped>
+
+	// Swift methods
+	0x5462d0  func AudioActionSheetProvider.sheet(for:willPerform:) // method 
+ }
+
+ enum NewsUI2.SavedFeedLayoutModel {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case feedItem : G\	
  }
 
  class NewsUI2.MyMagazinesBlueprintLayoutBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedLayoutSolver : À¿ // +0x10 (0x8)
+	let feedLayoutSolver : WX	 // +0x10 (0x8)
 	let sectionHeaderLayoutAttributesFactory : MyMagazinesSectionHeaderViewLayoutAttributesFactoryType // +0x18 (0x28)
 	let separatorLayoutAttributesFactory : MyMagazinesSectionHeaderSeparatorViewLayoutAttributesFactoryType // +0x40 (0x28)
 
@@ -12377,6 +15132,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case minNumberOfItems  
  }
 
+ struct NewsUI2.HistoryFeedOfflineModel { }
+
  class NewsUI2.HeadlineViewImageOnSidePropertiesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
@@ -12391,13 +15148,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let size : HeadlineViewSize // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let textViewToFooterViewSpacing : A // +0x18
+	let textViewToFooterViewSpacing : õ_	 // +0x18
 	let footerProperties : HeadlineViewFooterViewProperties // +0x20
 	let textViewProperties : HeadlineViewTextViewProperties // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let imageAspectRatio : A // +0x68
+	let imageAspectRatio : õ_	 // +0x68
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let imageToTextSpacing : A // +0x70
+	let imageToTextSpacing : õ_	 // +0x70
 	let imagePosition : ImageOnSideImagePosition // +0x78
  }
 
@@ -12408,27 +15165,62 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case right  
  }
 
+ struct NewsUI2.MagazineTodayFeedGroupEmitterCursor {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let fetchResult : k:	 // +0x0
+ }
+
  class NewsUI2.MagazineFeedPaywallViewRendererProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineFeedPaywallViewRendererProviderType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x10 (0x28)
+	let resolver : È_	 // +0x10 (0x28)
 
 	// Swift methods
+ }
+
+ class NewsUI2.AudioFeedAssembly : NSObject /usr/lib/libobjc.A.dylib {
+	// ObjC -> Swift bridged methods
+	0x5531a0  @objc AudioFeedAssembly.init <stripped>
  }
 
  class NewsUI2.ArticleCoordinator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var delegate : CË // +0x10 (0x10)
+	var delegate : y" // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x20 (0x8)
-	let issueSessionManager : AAViewingSessionManagerType // +0x28 (0x8)
-	let channelDataFactory : AnalyticsChannelDataFactoryType // +0x30 (0x28)
-	let scienceDataFactory : AnalyticsScienceDataFactoryType // +0x58 (0x28)
-	let externalEventSubmitter : TSExternalEventSubmitter // +0x80 (0x8)
-	let issue : FCIssue? // +0x88 (0x8)
+	let tracker : 9P	 // +0x20 (0x8)
+	let audioPlaybackContext : AudioPlaybackContextType // +0x28 (0x28)
+	let issueSessionManager : AAViewingSessionManagerType // +0x50 (0x8)
+	let channelDataFactory : AnalyticsChannelDataFactoryType // +0x58 (0x28)
+	let scienceDataFactory : AnalyticsScienceDataFactoryType // +0x80 (0x28)
+	let externalEventSubmitter : TSExternalEventSubmitter // +0xa8 (0x8)
+	let issue : FCIssue? // +0xb0 (0x8)
+
+	// Swift methods
+ }
+
+ struct NewsUI2.AudioDailyBriefingTodayFeedGroup {
+
+	// Properties
+	let identifier : String
+	let formatGroup : FormatFeedGroup
+ }
+
+ class NewsUI2.AlertNewsletterUserNotSignedIn : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
+ class NewsUI2.NowPlayingTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib, NowPlayingTrackerType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x10 (0x8)
+	let channelDataFactory : AnalyticsChannelDataFactoryType // +0x18 (0x28)
+	let scienceDataFactory : AnalyticsScienceDataFactoryType // +0x40 (0x28)
 
 	// Swift methods
  }
@@ -12439,87 +15231,91 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var presentationReason : NSNumber? // +0x8 (0x8)
 	var feedPickerSection : NSNumber? // +0x10 (0x8)
 	var feedPickerType : NSNumber? // +0x18 (0x8)
+	var displayRank : NSNumber? // +0x20 (0x8)
+	var externalAnalyticsFeedReferrer : NSNumber? // +0x28 (0x8)
+	var previousArticleID : String? // +0x30 (0x10)
+	var previousArticleVersion : NSNumber? // +0x40 (0x8)
+	var showSubscribedAlert : Bool // +0x48 (0x1)
+	var referral : AnalyticsReferral // +0x50 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sourceURL : S⁄ // +0x638 (0x0)
-	var sourceApplication : String? // +0x722fb0 (0x10)
-	var userActivityType : String? // +0x0 (0x10)
+	var sourceURL : ◊6	 // +0x5bbb0 (0x0)
+	var title : String? // +0x0 (0x10)
+	var sourceApplication : String? // +0x0 (0x10)
+	var userActivityType : String? // +0x1 (0x10)
 	var sourceSearchText : String? // +0x0 (0x10)
-	var adPreviewID : String? // +0x0 (0x10)
-	var adPreviewSessionID : String? // +0x626f5f5f (0x10)
-	var maximumAdRequestsForCurrentAdPreviewID : NSNumber? // +0x6567616d (0x8)
-	var displayRank : NSNumber? // +0x54534e4f (0x8)
-	var externalAnalyticsFeedReferrer : NSNumber? // +0x722fb0 (0x8)
-	var referral : AnalyticsReferral // +0x41445f5f (0x8)
-	var previousArticleID : String? // +0x54534e4f (0x10)
-	var previousArticleVersion : NSNumber? // +0x7235e8 (0x8)
-	var showSubscribedAlert : Bool // +0x8 (0x1)
-	var adQToken : String? // +0x7235e8 (0x10)
+	var adPreviewID : String? // +0x6f635f5f (0x10)
+	var adPreviewSessionID : String? // +0x0 (0x10)
+	var adQToken : String? // +0x41445f5f (0x10)
+	var maximumAdRequestsForCurrentAdPreviewID : NSNumber? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x425410  @objc FeedViewContext.presentationReason <stripped>
-	0x425450  @objc FeedViewContext.setPresentationReason: <stripped>
-	0x425470  @objc FeedViewContext.feedPickerSection <stripped>
-	0x4254b0  @objc FeedViewContext.setFeedPickerSection: <stripped>
-	0x4254d0  @objc FeedViewContext.feedPickerType <stripped>
-	0x425510  @objc FeedViewContext.setFeedPickerType: <stripped>
-	0x425530  @objc FeedViewContext.sourceURL <stripped>
-	0x425610  @objc FeedViewContext.setSourceURL: <stripped>
-	0x4256e0  @objc FeedViewContext.sourceApplication <stripped>
-	0x425720  @objc FeedViewContext.setSourceApplication: <stripped>
-	0x425740  @objc FeedViewContext.userActivityType <stripped>
-	0x425780  @objc FeedViewContext.setUserActivityType: <stripped>
-	0x4257a0  @objc FeedViewContext.sourceSearchText <stripped>
-	0x4257e0  @objc FeedViewContext.setSourceSearchText: <stripped>
-	0x425800  @objc FeedViewContext.adPreviewID <stripped>
-	0x425840  @objc FeedViewContext.setAdPreviewID: <stripped>
-	0x425860  @objc FeedViewContext.adPreviewSessionID <stripped>
-	0x4258a0  @objc FeedViewContext.setAdPreviewSessionID: <stripped>
-	0x4258c0  @objc FeedViewContext.maximumAdRequestsForCurrentAdPreviewID <stripped>
-	0x425900  @objc FeedViewContext.setMaximumAdRequestsForCurrentAdPreviewID: <stripped>
-	0x425920  @objc FeedViewContext.displayRank <stripped>
-	0x425960  @objc FeedViewContext.setDisplayRank: <stripped>
-	0x425980  @objc FeedViewContext.externalAnalyticsFeedReferrer <stripped>
-	0x4259c0  @objc FeedViewContext.setExternalAnalyticsFeedReferrer: <stripped>
-	0x4259e0  @objc FeedViewContext.referral <stripped>
-	0x425a20  @objc FeedViewContext.setReferral: <stripped>
-	0x425a40  @objc FeedViewContext.previousArticleID <stripped>
-	0x425a80  @objc FeedViewContext.setPreviousArticleID: <stripped>
-	0x425aa0  @objc FeedViewContext.previousArticleVersion <stripped>
-	0x425b60  @objc FeedViewContext.setPreviousArticleVersion: <stripped>
-	0x425be0  @objc FeedViewContext.showSubscribedAlert <stripped>
-	0x425c50  @objc FeedViewContext.setShowSubscribedAlert: <stripped>
-	0x425c90  @objc FeedViewContext.adQToken <stripped>
-	0x425d90  @objc FeedViewContext.setAdQToken: <stripped>
-	0x425e50  @objc FeedViewContext.setWithPresentationReason: <stripped>
-	0x425e90  @objc FeedViewContext.setWithFeedPickerSection: <stripped>
-	0x425f40  @objc FeedViewContext.setWithFeedPickerType: <stripped>
-	0x426130  @objc FeedViewContext.setWithSourceURL: <stripped>
-	0x426260  @objc FeedViewContext.setWithSourceApplication: <stripped>
-	0x4262a0  @objc FeedViewContext.setWithUserActivityType: <stripped>
-	0x4262e0  @objc FeedViewContext.setWithSourceSearchText: <stripped>
-	0x426320  @objc FeedViewContext.setWithAdPreviewID: <stripped>
-	0x426360  @objc FeedViewContext.setWithAdPreviewSessionID: <stripped>
-	0x4263a0  @objc FeedViewContext.setWithAdQToken: <stripped>
-	0x4263e0  @objc FeedViewContext.setWithMaximumAdRequestsForCurrentAdPreviewID: <stripped>
-	0x426400  @objc FeedViewContext.setWithDisplayRank: <stripped>
-	0x426440  @objc FeedViewContext.setWithExternalAnalyticsFeedReferrer: <stripped>
-	0x4264c0  @objc FeedViewContext.setWithReferral: <stripped>
-	0x4265b0  @objc FeedViewContext.setWithPreviousArticleID: <stripped>
-	0x4266d0  @objc FeedViewContext.setWithPreviousArticleVersion: <stripped>
-	0x4267c0  @objc FeedViewContext.setWithShowSubscribedAlert: <stripped>
-	0x426b30  @objc FeedViewContext.init <stripped>
-	0x426b80  @objc FeedViewContext..cxx_destruct <stripped>
+	0x558dd0  @objc FeedViewContext.presentationReason <stripped>
+	0x558e10  @objc FeedViewContext.setPresentationReason: <stripped>
+	0x558e30  @objc FeedViewContext.feedPickerSection <stripped>
+	0x558e70  @objc FeedViewContext.setFeedPickerSection: <stripped>
+	0x558e90  @objc FeedViewContext.feedPickerType <stripped>
+	0x558ed0  @objc FeedViewContext.setFeedPickerType: <stripped>
+	0x558ef0  @objc FeedViewContext.displayRank <stripped>
+	0x558f30  @objc FeedViewContext.setDisplayRank: <stripped>
+	0x558f50  @objc FeedViewContext.externalAnalyticsFeedReferrer <stripped>
+	0x558f90  @objc FeedViewContext.setExternalAnalyticsFeedReferrer: <stripped>
+	0x558fb0  @objc FeedViewContext.previousArticleID <stripped>
+	0x558ff0  @objc FeedViewContext.setPreviousArticleID: <stripped>
+	0x559060  @objc FeedViewContext.previousArticleVersion <stripped>
+	0x5590a0  @objc FeedViewContext.setPreviousArticleVersion: <stripped>
+	0x559120  @objc FeedViewContext.showSubscribedAlert <stripped>
+	0x559190  @objc FeedViewContext.setShowSubscribedAlert: <stripped>
+	0x5591d0  @objc FeedViewContext.referral <stripped>
+	0x559210  @objc FeedViewContext.setReferral: <stripped>
+	0x559290  @objc FeedViewContext.sourceURL <stripped>
+	0x559370  @objc FeedViewContext.setSourceURL: <stripped>
+	0x5594d0  @objc FeedViewContext.title <stripped>
+	0x559510  @objc FeedViewContext.setTitle: <stripped>
+	0x559590  @objc FeedViewContext.sourceApplication <stripped>
+	0x5595d0  @objc FeedViewContext.setSourceApplication: <stripped>
+	0x559650  @objc FeedViewContext.userActivityType <stripped>
+	0x559690  @objc FeedViewContext.setUserActivityType: <stripped>
+	0x559710  @objc FeedViewContext.sourceSearchText <stripped>
+	0x559750  @objc FeedViewContext.setSourceSearchText: <stripped>
+	0x5597d0  @objc FeedViewContext.adPreviewID <stripped>
+	0x559810  @objc FeedViewContext.setAdPreviewID: <stripped>
+	0x559890  @objc FeedViewContext.adPreviewSessionID <stripped>
+	0x5598d0  @objc FeedViewContext.setAdPreviewSessionID: <stripped>
+	0x559950  @objc FeedViewContext.adQToken <stripped>
+	0x559a50  @objc FeedViewContext.setAdQToken: <stripped>
+	0x559ba0  @objc FeedViewContext.maximumAdRequestsForCurrentAdPreviewID <stripped>
+	0x559c60  @objc FeedViewContext.setMaximumAdRequestsForCurrentAdPreviewID: <stripped>
+	0x559db0  @objc FeedViewContext.setWithPresentationReason: <stripped>
+	0x559df0  @objc FeedViewContext.setWithFeedPickerSection: <stripped>
+	0x559ea0  @objc FeedViewContext.setWithFeedPickerType: <stripped>
+	0x55a090  @objc FeedViewContext.setWithSourceURL: <stripped>
+	0x55a1c0  @objc FeedViewContext.setWithSourceApplication: <stripped>
+	0x55a200  @objc FeedViewContext.setWithUserActivityType: <stripped>
+	0x55a240  @objc FeedViewContext.setWithSourceSearchText: <stripped>
+	0x55a280  @objc FeedViewContext.setWithAdPreviewID: <stripped>
+	0x55a2c0  @objc FeedViewContext.setWithAdPreviewSessionID: <stripped>
+	0x55a300  @objc FeedViewContext.setWithAdQToken: <stripped>
+	0x55a340  @objc FeedViewContext.setWithMaximumAdRequestsForCurrentAdPreviewID: <stripped>
+	0x55a360  @objc FeedViewContext.setWithDisplayRank: <stripped>
+	0x55a3a0  @objc FeedViewContext.setWithExternalAnalyticsFeedReferrer: <stripped>
+	0x55a420  @objc FeedViewContext.setWithReferral: <stripped>
+	0x55a510  @objc FeedViewContext.setWithPreviousArticleID: <stripped>
+	0x55a630  @objc FeedViewContext.setWithPreviousArticleVersion: <stripped>
+	0x55a720  @objc FeedViewContext.setWithShowSubscribedAlert: <stripped>
+	0x55aab0  @objc FeedViewContext.init <stripped>
+	0x55ab00  @objc FeedViewContext..cxx_destruct <stripped>
  }
 
+ class NewsUI2.SearchMoreArticlesInteractor {
  class NewsUI2.PPTRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x10 (0x8)
+	let navigator : =e	 // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x426f20  @objc PPTRouter.routeToHeadlineForAritlceID: <stripped>
-	0x4270d0  @objc PPTRouter.routeToFeedWithTag: <stripped>
+	0x55c440  @objc PPTRouter.routeToHeadlineForAritlceID: <stripped>
+	0x55c5f0  @objc PPTRouter.routeToFeedWithTag: <stripped>
 
 	// Swift methods
  }
@@ -12538,8 +15334,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let payload :  empty-list 
 
 	// ObjC -> Swift bridged methods
-	0x428970  @objc UserNotification.init <stripped>
-	0x4289f0  @objc UserNotification..cxx_destruct <stripped>
+	0x55df10  @objc UserNotification.init <stripped>
+	0x55df90  @objc UserNotification..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -12548,7 +15344,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case pending : ü“
+	case pending : I
 	case unscheduled  
 	case delivered  
  }
@@ -12558,10 +15354,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case article : (articleID: String)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case url : “
+	case url : ¡
 	case issue : IssueData
 	case channelSupport  
 	case marketing  
+	case endOfTrack  
 	case unknown  
  }
 
@@ -12570,7 +15367,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let issues : Issue
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lastTargetedDeliveryDate : Sw
+	let lastTargetedDeliveryDate : ≠^
 	let identifier : String
  }
 
@@ -12598,6 +15395,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case notificationDescription  
  }
 
+ class NewsUI2.AudioFeedGroupEmitterFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioFeedGroupEmitterFactoryType {
+
+	// Properties
+	let audioDataManager : AudioDataManagerType // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineService : ±≠	 // +0x38 (0x28)
+	let appConfigurationManager : FCNewsAppConfigurationManager // +0x60 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bundlePurchasePrewarmer : A	 // +0x68 (0x10)
+
+	// Swift methods
+ }
+
  class NewsUI2.NotificationConfigurationManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, NotificationConfigurationType {
 
 	// Properties
@@ -12610,11 +15420,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let article : i⁄
+	let article : 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleBlueprintProvider : ÎŸ
+	let articleBlueprintProvider : s
+
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let observer : À◊
+	let observer : +
 	let context : Context
  }
 
@@ -12623,7 +15434,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let shouldAutoPlayVideo : Bool // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedMetadataAdContextProvider : +Ÿ // +0x8
+	let feedMetadataAdContextProvider : õ	 // +0x8
 	let bridgedFeedContext : BridgedFeedArticleContext // +0x10
  }
 
@@ -12631,31 +15442,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var delegate : ÌŸ // +0x10 (0x10)
+	var delegate : u
+ // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x20 (0x8)
+	let tracker : 9P	 // +0x20 (0x8)
 
 	// Swift methods
  }
 
- class NewsUI2.TopVideosDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TopVideosDataManagerType {
+ struct NewsUI2.FollowingNotificationsSectionFooterViewLayoutAttributes {
 
 	// Properties
-	var delegate : TopVideosDataManagerDelegate // +0x10 (0x10)
-	var channelID : String? // +0x20 (0x10)
-	let historyService : HistoryServiceType // +0x30 (0x28)
-	let savedService : SavedServiceType // +0x58 (0x28)
-	let subscriptionService : SubscriptionServiceType // +0x80 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let height : õ_	 // +0x0
+	let labelFrame : CGRect // +0x8
+ }
 
+ class NewsUI2.SavedFeedBlueprintViewSupplementaryViewProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
  }
 
- enum NewsUI2.TopVideosDataManagerChange {
+ struct NewsUI2.SavedFeedPrewarmBlueprintModifier {
 
 	// Properties
-	case headlineChanged : HeadlineModel
-	case likeButtonStateChanged : ButtonFillState
-	case none  
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedContext : …x	
+	let prewarmResult : SavedFeedExpandResult
+	let headlineModelFactory : HeadlineModelFactoryType
  }
 
  class NewsUI2.HeadlineService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HeadlineServiceType {
@@ -12676,7 +15489,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case headlinesFetchOperation : '∞
+	case headlinesFetchOperation : °i
 	case headlinesServiceError : (message: String)
  }
 
@@ -12686,18 +15499,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case unknown  
  }
 
- class NewsUI2.TopVideosInteractor {
- class NewsUI2.SearchMoreModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreModifierFactoryType {
-
-	// Properties
-	let headlineModelFactory : HeadlineModelFactoryType // +0x10 (0x28)
-	let tagService : TagServiceType // +0x38 (0x10)
-	let subscriptionService : SubscriptionServiceType // +0x48 (0x10)
-
-	// Swift methods
+ class NewsUI2.SavedFeedAssembly : NSObject /usr/lib/libobjc.A.dylib {
+	// ObjC -> Swift bridged methods
+	0x568350  @objc SavedFeedAssembly.init <stripped>
  }
 
- struct NewsUI2.SearchMoreRelayoutModifier { }
+ struct NewsUI2.AudioFeedPrewarmBlueprintModifier {
+
+	// Properties
+	let state : AudioFeedState // +0x0
+	let audioFeedSectionFactory : AudioFeedSectionFactoryType // +0x8
+	let synchronous : Bool // +0x30
+ }
 
  class NewsUI2.FollowingFooterView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
@@ -12705,14 +15518,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let backgroundView : UIView // +0x8 (0x8)
 	let stripe : UIView // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let topHairline : ŸZ // +0x18 (0x8)
+	let topHairline : Àõ // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bottomHairline : ŸZ // +0x20 (0x8)
+	let bottomHairline : Àõ // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x42f5f0  @objc FollowingFooterView.initWithFrame: <stripped>
-	0x42f620  @objc FollowingFooterView.initWithCoder: <stripped>
-	0x42f6a0  @objc FollowingFooterView..cxx_destruct <stripped>
+	0x569190  @objc FollowingFooterView.initWithFrame: <stripped>
+	0x5691c0  @objc FollowingFooterView.initWithCoder: <stripped>
+	0x569240  @objc FollowingFooterView..cxx_destruct <stripped>
+ }
+
+ class NewsUI2.NowPlayingActivityViewController : UIActivityViewController /System/Library/Frameworks/UIKit.framework/UIKit {
+	// ObjC -> Swift bridged methods
+	0x569690  @objc NowPlayingActivityViewController._shouldShowSystemActivityType: <stripped>
+	0x5696a0  @objc NowPlayingActivityViewController.initWithActivityItems:applicationActivities: <stripped>
+	0x5697b0  @objc NowPlayingActivityViewController.initWithAssetIdentifiers:activityItems:applicationActivities: <stripped>
  }
 
  enum NewsUI2.MagazineFeedGroupKind {
@@ -12749,19 +15569,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x10 (0x28)
+	let resolver : È_	 // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x38 (0x8)
-
-	// Swift methods
- }
-
- class NewsUI2.SpecialEventsTitleViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SpecialEventsTitleViewLayoutAttributesFactoryType {
-
-	// Properties
-	let styler : SpecialEventsTitleViewStylerType // +0x10 (0x28)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cache : ‡ // +0x38 (0x8)
+	let tracker : 9P	 // +0x38 (0x8)
 
 	// Swift methods
  }
@@ -12788,16 +15598,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String
 	let formatGroup : FormatFeedGroup
-	let metadata : Metadata
+	let subtype : String
  }
 
- struct NewsUI2.Metadata {
-
-	// Properties
-	let subtype : String // +0x0
- }
-
- class NewsUI2.HistoryInteractor {
  struct NewsUI2.CategoriesMagazineFeedGroupKnobs {
 
 	// Properties
@@ -12810,11 +15613,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case maxOccurrence  
  }
 
+ class NewsUI2.SearchMoreArticlesStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreArticlesStylerType {
+
+	// Properties
+	let baseStyler : BaseStylerType // +0x10 (0x28)
+
+	// Swift methods
+ }
+
  enum NewsUI2.TodayLayoutModel {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case feedItem : ı≤
+	case feedItem : G\	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case plugin : K4	
  }
 
  class NewsUI2.HeadlineViewImageOnSideLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -12831,44 +15644,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
+	let resolver : È_	 // +0x8 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x30 (0x8)
+	let tracker : 9P	 // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x434be0  @objc FollowingNotificationsModule.createViewController <stripped>
-	0x434c90  @objc FollowingNotificationsModule.init <stripped>
-	0x434cf0  @objc FollowingNotificationsModule..cxx_destruct <stripped>
+	0x56f960  @objc FollowingNotificationsModule.createViewController <stripped>
+	0x56fa10  @objc FollowingNotificationsModule.init <stripped>
+	0x56fa70  @objc FollowingNotificationsModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
- class NewsUI2.SpecialEventsDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SpecialEventsDataManagerType {
+ class NewsUI2.AudioFeedSectionImageDecorationFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioFeedSectionImageDecorationFactoryType {
 
 	// Properties
-	var delegate : SpecialEventsDataManagerDelegate // +0x10 (0x10)
-	let specialEventsService : SpecialEventsServiceType // +0x20 (0x28)
-	let historyService : HistoryServiceType // +0x48 (0x28)
-	let savedService : SavedServiceType // +0x70 (0x28)
+	let imageCache : TSImageCacheType // +0x10 (0x8)
 
 	// Swift methods
- }
-
- enum NewsUI2.SpecialEventsDataManagerChange {
-
-	// Properties
-	case changed : HeadlineModel
  }
 
  class NewsUI2.EndOfArticleCoordinator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var tracker : YÒ // +0x10 (0x8)
+	var tracker : 9P	 // +0x10 (0x8)
 	let channelDataFactory : AnalyticsChannelDataFactoryType // +0x18 (0x28)
 	let scienceDataFactory : AnalyticsScienceDataFactoryType // +0x40 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleFooterContext : {– // +0x68 (0x8)
+	let articleFooterContext : ˇ // +0x68 (0x8)
 
 	// Swift methods
  }
@@ -12877,14 +15681,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x10 (0x28)
+	let resolver : È_	 // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let splitViewController : „Î // +0x38 (0x8)
+	let splitViewController : E // +0x38 (0x8)
 	let issueOfflineManager : OfflineManager // +0x40 (0x8)
 	let articleOfflineManager : OfflineManager // +0x48 (0x8)
 	let offlineIssueManager : OfflineIssueManagerType // +0x50 (0x10)
 	let offlineAlertControllerFactory : OfflineAlertControllerFactoryType // +0x60 (0x28)
-	let readingList : FCReadingList // +0x88 (0x8)
+	let featureAvailability : TSFeatureAvailabilityType // +0x88 (0x8)
+	let readingList : FCReadingList // +0x90 (0x8)
 
 	// Swift methods
  }
@@ -12913,21 +15718,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.ArticleListMagazineFeedGroupEmitter {
 
 	// Properties
-	let config : ArticleListMagazineFeedGroupConfig // +0x0
-	let knobs : ArticleListMagazineFeedGroupKnobs // +0x80
-	let diversityPenalty : Double // +0xb0
+	let config : ArticleListMagazineFeedGroupConfig
+	let knobs : ArticleListMagazineFeedGroupKnobs
+	let diversityPenalty : Double
+	let name : String
  }
 
- class NewsUI2.EmailSignupModule : NSObject /usr/lib/libobjc.A.dylib {
+ class NewsUI2.EmailSignupModule : NSObject /usr/lib/libobjc.A.dylib, EmailSignupModuleType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
+	let resolver : È_	 // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x43eae0  @objc EmailSignupModule.createViewController <stripped>
-	0x43ebf0  @objc EmailSignupModule.init <stripped>
-	0x43ec50  @objc EmailSignupModule..cxx_destruct <stripped>
+	0x57a650  @objc EmailSignupModule.init <stripped>
+	0x57a6b0  @objc EmailSignupModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -12936,8 +15741,54 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x10 (0x8)
+	let tracker : 9P	 // +0x10 (0x8)
 	let channelDataFactory : AnalyticsChannelDataFactoryType // +0x18 (0x28)
+
+	// Swift methods
+ }
+
+ class NewsUI2.ForYouFeedURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let patterns :  empty-list  // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x18 (0x8)
+
+	// Swift methods
+ }
+
+ struct NewsUI2.AudioFeedPlacardLayoutAttributes {
+
+	// Properties
+	let frame : CGRect // +0x0
+	let titleLabelFrame : CGRect // +0x20
+	let detailLabelFrame : CGRect // +0x40
+ }
+
+ class NewsUI2.AudioFeedURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let patterns :  empty-list  // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineProviderFactory : m#	 // +0x20 (0x28)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x48 (0x8)
+	let featureAvailability : TSFeatureAvailabilityType // +0x50 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x58 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioOptionsURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let patterns :  empty-list  // +0x10 (0x8)
+	let audioPlaybackOptionsPresenter : AudioPlaybackOptionsAlertPresenterType // +0x18 (0x28)
 
 	// Swift methods
  }
@@ -12945,22 +15796,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsUI2.JournalDataSource : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let feedPersonalizer : FCFeedPersonalizing // +0x8 (0x8)
-	let tagController : FCTagController // +0x10 (0x8)
-	let privateDataDirectory : String // +0x18 (0x10)
-	let paidAccessChecker : FCPaidAccessCheckerType // +0x28 (0x8)
+	let cloudContext : FCCloudContext // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineModels : Â // +0x30 (0x8)
-	let configModels : ConfigEntry // +0x38 (0x8)
-	let groupTitle : String // +0x40 (0x10)
+	let headlineModels : ≠p	 // +0x10 (0x8)
+	let configModels : ConfigEntry // +0x18 (0x8)
+	let groupTitle : String // +0x20 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x444d20  @objc JournalDataSource.initWithFeedPersonalizer:tagController:privateDataDirectory:group:paidAccessChecker: <stripped>
-	0x4495c0  @objc JournalDataSource.init <stripped>
-	0x4494e0  @objc JournalDataSource..cxx_destruct <stripped>
+	0x581ad0  @objc JournalDataSource.initWithCloudContext:group: <stripped>
+	0x586890  @objc JournalDataSource.init <stripped>
+	0x5867e0  @objc JournalDataSource..cxx_destruct <stripped>
 
 	// Swift methods
-	0x4449b0  class func JournalDataSource.__allocating_init(feedPersonalizer:tagController:privateDataDirectory:group:paidAccessChecker:) // init 
+	0x5817c0  class func JournalDataSource.__allocating_init(cloudContext:group:) // init 
  }
 
  struct NewsUI2.ConfigEntry {
@@ -12974,23 +15822,48 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let visible : Bool // +0x0
-	let title : String? // +0x8
-	let tileProminenceScore : Double // +0x18
-	let metadata : ConfigEntry // +0x20
-	let scoreProfile : ScoreProfileEntry // +0x28
-	let personalizationFeatures : AggregateModel // +0x30
-	let topics : Topic // +0x38
-	let globalCohorts : AggregateModel // +0x40
-	let userCohorts : ScoreProfileEntry // +0x48
-	let articleCohorts : AggregateModel // +0x50
+	var desired : Bool? // +0x1
+	let seen : Bool // +0x2
+	let read : Bool // +0x3
+	let isFeatured : Bool? // +0x4
+	let hasAudio : Bool? // +0x5
+	let title : String // +0x8
+	let publisherName : String // +0x18
+	let publishDate : Double? // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let halfLife : o≈	 // +0x38
+	let score : Double // +0x40
+	let accessible : Bool // +0x48
+	let isPaid : Bool // +0x49
+	let inBundle : Bool // +0x4a
+	let inALaCarte : Bool // +0x4b
+	let metadata : ConfigEntry // +0x50
+	let scoreProfile : ScoreProfileEntry // +0x58
+	let personalizationFeatures : AggregateModel // +0x60
+	let topics : Topic // +0x68
+	let globalCohorts : AggregateModel // +0x70
+	let userCohorts : ScoreProfileEntry // +0x78
+	let articleCohorts : AggregateModel // +0x80
  }
 
  enum NewsUI2.CodingKeys {
 
 	// Properties
 	case visible  
+	case desired  
+	case seen  
+	case read  
+	case isFeatured  
+	case hasAudio  
 	case title  
-	case tileProminenceScore  
+	case publisherName  
+	case publishDate  
+	case halfLife  
+	case score  
+	case accessible  
+	case isPaid  
+	case inBundle  
+	case inALaCarte  
 	case metadata  
 	case scoreProfile  
 	case personalizationFeatures  
@@ -13023,6 +15896,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let ctr : Double // +0x28
 	let clicks : Double // +0x30
 	let impressions : Double // +0x38
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let eventCount : ˝^ // +0x40
+	let isMuted : Bool? // +0x49
  }
 
  struct NewsUI2.ScoreProfileEntry {
@@ -13048,6 +15924,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case ctr  
 	case clicks  
 	case impressions  
+	case eventCount  
+	case isMuted  
  }
 
  enum NewsUI2.CodingKeys {
@@ -13078,14 +15956,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- enum NewsUI2.SearchMoreModel {
-
-	// Properties
-	case headline : SearchResultHeadlineModel
-	case tag : SearchResultTagModel
-	case spinner : (identifier: String)
- }
-
  class NewsUI2.PlayButtonHeadlineView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
@@ -13097,24 +15967,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let footerView : HeadlineViewFooterView // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x458020  @objc PlayButtonHeadlineView.initWithFrame: <stripped>
-	0x4580e0  @objc PlayButtonHeadlineView.initWithCoder: <stripped>
-	0x458190  @objc PlayButtonHeadlineView..cxx_destruct <stripped>
+	0x5964e0  @objc PlayButtonHeadlineView.initWithFrame: <stripped>
+	0x5965a0  @objc PlayButtonHeadlineView.initWithCoder: <stripped>
+	0x596650  @objc PlayButtonHeadlineView..cxx_destruct <stripped>
  }
 
  struct NewsUI2.CategoriesMagazineFeedGroupConfig {
 
 	// Properties
-	let kind : MagazineFeedGroupKind // +0x0
-	let identifier : String // +0x8
-	let groupSubtitle : String? // +0x18
-	let categories : MagazineCategoryConfig // +0x28
-	let position : FeedGroupPosition // +0x30
-	let availableInForYou : Bool // +0x38
-	let availableInMagazineFeed : Bool // +0x39
-	let paidVisibility : FeedGroupPaidVisibility // +0x3a
-	let minNewsVersion : String? // +0x40
-	let maxNewsVersion : String? // +0x50
+	let kind : MagazineFeedGroupKind
+	let identifier : String
+	let groupSubtitle : String?
+	let categories : MagazineCategoryConfig
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+	let availableInForYou : Bool
+	let availableInMagazineFeed : Bool
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
  }
 
  enum NewsUI2.Keys {
@@ -13130,23 +16002,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case maxNewsVersion  
  }
 
- class NewsUI2.SpecialEventsAction : NSObject /usr/lib/libobjc.A.dylib {
+ struct NewsUI2.AudioSuggestionsFeedGroup {
 
 	// Properties
-	let title : String? // +0x8 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let actionURL : ã÷ // +0x0 (0x0)
-
-	// ObjC -> Swift bridged methods
-	0x45a750  @objc SpecialEventsAction.initWithActionURL:title: <stripped>
-	0x45a860  @objc SpecialEventsAction.init <stripped>
-	0x45a8c0  @objc SpecialEventsAction..cxx_destruct <stripped>
-
-	// Swift methods
-	0x45a650  class func SpecialEventsAction.__allocating_init(actionURL:title:) // init 
+	var paidVisibility : Îç	
+	var identifier : String
+	let tracks : AudioFeedTrack
  }
 
- class NewsUI2.RecordIDURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ class NewsUI2.SearchMoreArticlesBlueprintLayoutBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedLayoutSolver : WX	 // +0x10 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.IssueURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
@@ -13162,6 +16036,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let feedModel : FeedModel // +0x0
  }
 
+ enum NewsUI2.HistoryFeedLayoutModel {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case feedItem : G\	
+ }
+
  struct NewsUI2.IssueOfflineModel { }
 
  struct NewsUI2.MagazineFeedFailedData {
@@ -13169,6 +16050,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String
 	let feedLocation : MagazineFeedGapLocation
+ }
+
+ class NewsUI2.SearchMoreTagsBlueprintModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreTagsBlueprintModifierFactoryType {
+	// Swift methods
+ }
+
+ class NewsUI2.LocalRegionManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let locationManager : TSLocationDetectionManagerType // +0x10 (0x8)
+	let localAreasManager : FCLocalAreasManager // +0x18 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x59e040  @objc LocalRegionManager.fetchRegions: <stripped>
+
+	// Swift methods
  }
 
  class NewsUI2.HeadlineViewNoImageStyleFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -13189,24 +16086,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let offensiveViewStyle : OffensiveViewStyle // +0x80
  }
 
- class NewsUI2.TopOfFeedStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TopOfFeedStylerType {
-
-	// Properties
-	let baseStyler : BaseStylerType // +0x10 (0x28)
-
-	// Swift methods
- }
-
  class NewsUI2.SiriSuggestionStatusProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	let userInfo : FCUserInfo // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x460630  @objc SiriSuggestionStatusProvider.isOptedInToSiriSuggestions <stripped>
+	0x5a0350  @objc SiriSuggestionStatusProvider.isOptedInToSiriSuggestions <stripped>
 
 	// Swift methods
-	0x460650  func SiriSuggestionStatusProvider.isOptedInToSiriSuggestions.getter // getter 
+	0x5a0370  func SiriSuggestionStatusProvider.isOptedInToSiriSuggestions.getter // getter 
+ }
+
+ class NewsUI2.TodayMagazineFeedDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var delegate : MagazineFeedDataManagerTypeDelegate // +0x10 (0x10)
+	var group : MagazineFeedGroup // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var feedContext : …x	 // +0x0 (0x0)
+
+	// Swift methods
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case notAllowInPlugin  
  }
 
  class NewsUI2.FollowingViewHeaderFooterProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -13219,7 +16125,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let followingHeaderViewRenderer : FollowingHeaderViewRendererType // +0x50 (0x28)
 	let followingFooterViewRenderer : FollowingFooterViewRendererType // +0x78 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let collapsibleStateManager : øA // +0xa0 (0x8)
+	let collapsibleStateManager : ]ë // +0xa0 (0x8)
 
 	// Swift methods
  }
@@ -13245,7 +16151,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let cachePrewarmer : MagazineFeedDataPrewarmer // +0x10 (0x8)
 	let networkPrewarmer : MagazineFeedDataPrewarmer // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deferredNetworkReloadPromise : q$ // +0x0 (0x0)
+	let deferredNetworkReloadPromise : {r // +0x0 (0x0)
 
 	// Swift methods
  }
@@ -13263,7 +16169,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case resolved : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case rejected : ıJ
+	case rejected : =∂	
  }
 
  class NewsUI2.MagazineFeedGroupTitleViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineFeedGroupTitleViewRendererType {
@@ -13271,18 +16177,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let styler : MagazineFeedGroupTitleViewStylerType // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let shineImageFactory : %ˆ // +0x38 (0x8)
+	let shineImageFactory : w0 // +0x38 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintProvider : g∏ // +0x40 (0x8)
+	let blueprintProvider : 	 // +0x40 (0x8)
 	let likeButtonRenderer : LikeButtonRendererType // +0x48 (0x28)
 	let dislikeButtonRenderer : DislikeButtonRendererType // +0x70 (0x28)
-	let feedPersonalizer : FCFeedPersonalizing // +0x98 (0x8)
-	let tagController : FCTagController // +0xa0 (0x8)
-	let privateDataDirectory : String // +0xa8 (0x10)
-	let paidAccessChecker : FCPaidAccessCheckerType // +0xb8 (0x8)
-	var debugEnabled : Bool // +0xc0 (0x1)
+	let cloudContext : FCCloudContext // +0x98 (0x8)
+	var debugEnabled : Bool // +0xa0 (0x1)
 
 	// Swift methods
+ }
+
+ struct NewsUI2.FollowingNotificationsSectionFooterModel {
+
+	// Properties
+	var text : String? // +0x0
  }
 
  class NewsUI2.MagazineGridViewController : TUViewController /System/Library/PrivateFrameworks/TeaUI.framework/TeaUI {
@@ -13291,31 +16200,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : MagazineGridStylerType // +0x8 (0x28)
 	let eventHandler : MagazineGridEventHandlerType // +0x30 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController : gl // +0x40 (0x8)
+	let blueprintViewController : WØ // +0x40 (0x8)
 	let offlineAlertControllerFactory : OfflineAlertControllerFactoryType // +0x48 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let alertPresenter : k // +0x70 (0x28)
+	let alertPresenter : ßi	 // +0x70 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x46ba40  @objc MagazineGridViewController.initWithCoder: <stripped>
-	0x46ba90  @objc MagazineGridViewController.initWithNibName:bundle: <stripped>
-	0x46baf0  @objc MagazineGridViewController..cxx_destruct <stripped>
+	0x5abe40  @objc MagazineGridViewController.initWithCoder: <stripped>
+	0x5abe90  @objc MagazineGridViewController.initWithNibName:bundle: <stripped>
+	0x5abef0  @objc MagazineGridViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.TodayInteractor {
- class NewsUI2.SearchMoreModule : NSObject /usr/lib/libobjc.A.dylib {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
-
-	// ObjC -> Swift bridged methods
-	0x473a90  @objc SearchMoreModule.createViewControllerFor:channelStreamingResults:topicStreamingResults:articleStreamingResults: <stripped>
-	0x473b80  @objc SearchMoreModule.init <stripped>
-	0x473be0  @objc SearchMoreModule..cxx_destruct <stripped>
-
+ class NewsUI2.NewsActivitySerializer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
  }
 
@@ -13324,7 +16223,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var controller : weak UIViewController? // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x18 (0x28)
+	let resolver : È_	 // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x40 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x48 (0x8)
 
 	// Swift methods
  }
@@ -13337,22 +16240,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- struct NewsUI2.TopVideosChangeDislikeButtonStateModifier {
-
-	// Properties
-	let topVideosDataChange : TopVideosDataManagerChange // +0x0
- }
-
  class NewsUI2.MainAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4771a0  @objc MainAssembly.init <stripped>
-
-	// Swift methods
- }
-
- class NewsUI2.SavedAssembly : NSObject /usr/lib/libobjc.A.dylib {
-	// ObjC -> Swift bridged methods
-	0x47a100  @objc SavedAssembly.init <stripped>
+	0x5b58a0  @objc MainAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -13369,20 +16259,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var assetHandles : [String : TSAssetHandleType] // +0x8 (0x8)
 	let feedNavImageSize : CGSize // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scale : A // +0x20 (0x8)
+	let scale : õ_	 // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cornerRadius : A // +0x28 (0x8)
+	let cornerRadius : õ_	 // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x47a800  @objc FeedNavImageProcessorRequest.assetHandles <stripped>
-	0x47a8c0  @objc FeedNavImageProcessorRequest.setAssetHandles: <stripped>
-	0x47aa10  @objc FeedNavImageProcessorRequest.initWithFeedNavImageAssetHandle:feedNavImageSize:feedNavImageStyler:scale: <stripped>
-	0x47aa90  @objc FeedNavImageProcessorRequest.cacheIdentifier <stripped>
-	0x47ad60  @objc FeedNavImageProcessorRequest.init <stripped>
-	0x47adc0  @objc FeedNavImageProcessorRequest..cxx_destruct <stripped>
+	0x5b6100  @objc FeedNavImageProcessorRequest.assetHandles <stripped>
+	0x5b61c0  @objc FeedNavImageProcessorRequest.setAssetHandles: <stripped>
+	0x5b6310  @objc FeedNavImageProcessorRequest.initWithFeedNavImageAssetHandle:feedNavImageSize:feedNavImageStyler:scale: <stripped>
+	0x5b6390  @objc FeedNavImageProcessorRequest.cacheIdentifier <stripped>
+	0x5b6660  @objc FeedNavImageProcessorRequest.init <stripped>
+	0x5b66c0  @objc FeedNavImageProcessorRequest..cxx_destruct <stripped>
 
 	// Swift methods
-	0x47a6c0  class func FeedNavImageProcessorRequest.__allocating_init(feedNavImageAssetHandle:feedNavImageSize:feedNavImageStyler:scale:) // init 
+	0x5b5fc0  class func FeedNavImageProcessorRequest.__allocating_init(feedNavImageAssetHandle:feedNavImageSize:feedNavImageStyler:scale:) // init 
  }
 
  struct NewsUI2.ChannelIssuesGroupTitleViewLayoutAttributes {
@@ -13392,15 +16282,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let titleLabelFrame : CGRect // +0x20
  }
 
- class NewsUI2.SpecialEventsEmbedModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ struct NewsUI2.TagFeedKnobsConfig {
 
 	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : ã÷ // +0x41445f5f (0x0)
-	let title : String? // +0x0 (0x10)
-	let action : SpecialEventsAction // +0x7cfc30 (0x8)
+	let groupKnobs : TagFeedGroupKnobs // +0x0
+	let minGroups : Int // +0x0
+	let maxGroups : Int // +0x8
+ }
 
-	// Swift methods
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case groupKnobs  
+	case minGroups  
+	case maxGroups  
  }
 
  class NewsUI2.NewIssueNotificationBackgroundAppRefreshRequester : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -13408,7 +16303,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let activityScheduler : FCBackgroundActivityScheduler // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paidBundleConfigManager : è$ // +0x18 (0x28)
+	let paidBundleConfigManager : ì	 // +0x18 (0x28)
 
 	// Swift methods
  }
@@ -13417,9 +16312,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let start : Sw
+	let start : ≠^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let end : Sw
+	let end : ≠^
  }
 
  struct NewsUI2.FormatFeedGroupConfig {
@@ -13427,12 +16322,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let kind : MagazineFeedGroupKind
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let content : À
-	let position : FeedGroupPosition
+	let content : uá	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
 	let availableInForYou : Bool
 	let availableInMagazineFeed : Bool
-	let paidVisibility : FeedGroupPaidVisibility
-	let paidVisibilityInForYou : FeedGroupPaidVisibility
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
 	let allowDuplicatesAcrossGroups : Bool
 	let minNewsVersion : String?
 	let maxNewsVersion : String?
@@ -13469,16 +16367,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var subtitleColor : UIColor? // +0x10
  }
 
+ class NewsUI2.ShareLinkContextProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ShareLinkContextProviderType {
+
+	// Properties
+	let context : ShareLinkContext // +0x10 (0x1)
+
+	// Swift methods
+	0x5bb0a0  class func ShareLinkContextProvider.__allocating_init(context:) // init 
+ }
+
  class NewsUI2.FeedNavImageStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	let topicColorProvider : TSTopicColorProviderType
 
 	// ObjC -> Swift bridged methods
-	0x47ed80  @objc FeedNavImageStyler.tagTitleFont <stripped>
-	0x47edd0  @objc FeedNavImageStyler.tagColorFor: <stripped>
-	0x47ee70  @objc FeedNavImageStyler.cornerRadius <stripped>
-	0x47ee80  @objc FeedNavImageStyler.padding <stripped>
+	0x5bb150  @objc FeedNavImageStyler.tagTitleFont <stripped>
+	0x5bb1a0  @objc FeedNavImageStyler.tagColorFor: <stripped>
+	0x5bb240  @objc FeedNavImageStyler.cornerRadius <stripped>
+	0x5bb250  @objc FeedNavImageStyler.padding <stripped>
 
 	// Swift methods
  }
@@ -13490,12 +16397,45 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let feedNavImageStyler : NEFeedNavImageStylerType
 
 	// ObjC -> Swift bridged methods
-	0x47eed0  @objc TopicColorFeedNavImageStyler.tagTitleFont <stripped>
-	0x47ef00  @objc TopicColorFeedNavImageStyler.tagColorFor: <stripped>
-	0x47ef10  @objc TopicColorFeedNavImageStyler.cornerRadius <stripped>
-	0x47ef30  @objc TopicColorFeedNavImageStyler.padding <stripped>
+	0x5bb2a0  @objc TopicColorFeedNavImageStyler.tagTitleFont <stripped>
+	0x5bb2d0  @objc TopicColorFeedNavImageStyler.tagColorFor: <stripped>
+	0x5bb2e0  @objc TopicColorFeedNavImageStyler.cornerRadius <stripped>
+	0x5bb300  @objc TopicColorFeedNavImageStyler.padding <stripped>
 
 	// Swift methods
+ }
+
+ class NewsUI2.AudioSuggestionsService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioSuggestionsServiceType {
+
+	// Properties
+	let contentContext : FCContentContext // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidBundleConfigManager : ì	 // +0x18 (0x28)
+	let audioPlaylist : FCAudioPlaylistType // +0x40 (0x8)
+	let readingHistory : FCReadingHistory // +0x48 (0x8)
+	let subscriptionController : FCSubscriptionController // +0x50 (0x8)
+	let personalizer : FCFeedPersonalizing // +0x58 (0x8)
+
+	// Swift methods
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case missingHeadlines  
+ }
+
+ struct NewsUI2.FilterOptions {
+
+	// Properties
+	let rawValue : Int // +0x0
+ }
+
+ struct NewsUI2.Candidates {
+
+	// Properties
+	let recent : [FCHeadlineProviding] // +0x0
+	let featured : [FCHeadlineProviding] // +0x8
  }
 
  class NewsUI2.OfflineManager {
@@ -13506,29 +16446,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case online  
  }
 
- class NewsUI2.NewsActivityInfoDeserializer : NSObject /usr/lib/libobjc.A.dylib {
-
-	// Properties
-	let bridgedNewsActivityFactory : TSBridgedNewsActivityFactoryType // +0x8 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x4824b0  @objc NewsActivityInfoDeserializer.deserializeWithActivityType:from:error:completion: <stripped>
-	0x482630  @objc NewsActivityInfoDeserializer.init <stripped>
-	0x4826c0  @objc NewsActivityInfoDeserializer..cxx_destruct <stripped>
-
-	// Swift methods
-	0x480ec0  func NewsActivityInfoDeserializer.deserialize(activityType:from:completion:) // method 
- }
-
- enum NewsUI2.DeserializationError {
-
-	// Properties
-	case unrecognizedActivityType : (activityType: String)
-	case missingRequiredField : (field: String)
-	case wrongType : (field: String)
- }
-
- class NewsUI2.TodayConfigJSONDecoder {
+ class NewsUI2.MultiDateFormatJSONDecoder {
  enum NewsUI2.Errors {
 
 	// Properties
@@ -13544,58 +16462,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var entitlementsOverrideProvider : FCEntitlementsOverrideProviderType? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x483870  @objc StubBundleSubscriptionManager.cachedSubscription <stripped>
-	0x483880  @objc StubBundleSubscriptionManager.bundleSubscription <stripped>
-	0x483890  @objc StubBundleSubscriptionManager.entitlementsOverrideProvider <stripped>
-	0x4838b0  @objc StubBundleSubscriptionManager.setEntitlementsOverrideProvider: <stripped>
-	0x4838f0  @objc StubBundleSubscriptionManager.refreshBundleSubscriptionWithCachePolicy:completion: <stripped>
-	0x483910  @objc StubBundleSubscriptionManager.addObserver: <stripped>
-	0x483920  @objc StubBundleSubscriptionManager.removeObserver: <stripped>
-	0x483930  @objc StubBundleSubscriptionManager.bundleSubscriptionLookupEntry <stripped>
-	0x483960  @objc StubBundleSubscriptionManager.renewalNoticeShownWithPurchaseID: <stripped>
-	0x483970  @objc StubBundleSubscriptionManager.forceExpireBundleSubscriptionBasedOnInternalSettings <stripped>
-	0x483980  @objc StubBundleSubscriptionManager.prewarmBundleTagIDsWithPurchaseID: <stripped>
-	0x483990  @objc StubBundleSubscriptionManager.clearBundleSubscription <stripped>
-	0x4839a0  @objc StubBundleSubscriptionManager.prepareForUseWithCompletion: <stripped>
+	0x5c1f10  @objc StubBundleSubscriptionManager.cachedSubscription <stripped>
+	0x5c1f20  @objc StubBundleSubscriptionManager.bundleSubscription <stripped>
+	0x5c1f30  @objc StubBundleSubscriptionManager.entitlementsOverrideProvider <stripped>
+	0x5c1f50  @objc StubBundleSubscriptionManager.setEntitlementsOverrideProvider: <stripped>
+	0x5c1f90  @objc StubBundleSubscriptionManager.refreshBundleSubscriptionWithCachePolicy:completion: <stripped>
+	0x5c1fb0  @objc StubBundleSubscriptionManager.addObserver: <stripped>
+	0x5c1fc0  @objc StubBundleSubscriptionManager.removeObserver: <stripped>
+	0x5c1fd0  @objc StubBundleSubscriptionManager.bundleSubscriptionLookupEntry <stripped>
+	0x5c2000  @objc StubBundleSubscriptionManager.renewalNoticeShownWithPurchaseID: <stripped>
+	0x5c2010  @objc StubBundleSubscriptionManager.forceExpireBundleSubscriptionBasedOnInternalSettings <stripped>
+	0x5c2020  @objc StubBundleSubscriptionManager.prewarmBundleTagIDsWithPurchaseID: <stripped>
+	0x5c2030  @objc StubBundleSubscriptionManager.clearBundleSubscription <stripped>
+	0x5c2040  @objc StubBundleSubscriptionManager.prepareForUseWithCompletion: <stripped>
 
 	// Swift methods
- }
-
- struct NewsUI2.SpecialEventsConfig {
-
-	// Properties
-	let type : FCSpecialEventsOperationResultType // +0x0
-	let models : SpecialEventsModel // +0x8
-	let style : SpecialEventsStyle // +0x10
- }
-
- struct NewsUI2.SpecialEventsStyle {
-
-	// Properties
-	let titleText : String? // +0x0
-	let titleColor : FCColor? // +0x10
-	let fontName : String? // +0x18
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let fontSize : A // +0x28
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let fontSizeiPad : A // +0x30
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let fontTracking : A // +0x38
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let fontTrackingiPad : A // +0x40
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleOffsetHeight : A // +0x48
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleOffsetHeightiPad : A // +0x50
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleOffsetY : A // +0x58
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleOffsetYiPad : A // +0x60
-	let micaAssetHandle : FCAssetHandle? // +0x68
-	let micaAssetHandleiPad : FCAssetHandle? // +0x70
-	let micaEnabled : Bool // +0x78
-	let action : SpecialEventsAction // +0x80
-	let backgroundColorGradient : FCColorGradient // +0x88
  }
 
  class NewsUI2.LocationDetectionManager : NSObject /usr/lib/libobjc.A.dylib {
@@ -13604,11 +16485,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let locationManager : CLLocationManager // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x484c90  @objc LocationDetectionManager.init <stripped>
-	0x484d10  @objc LocationDetectionManager.locationServicesEnabled <stripped>
-	0x484d30  @objc LocationDetectionManager.authorized <stripped>
-	0x484d90  @objc LocationDetectionManager.fetchLocationWithCompletion: <stripped>
-	0x484e40  @objc LocationDetectionManager..cxx_destruct <stripped>
+	0x5c2160  @objc LocationDetectionManager.init <stripped>
+	0x5c21e0  @objc LocationDetectionManager.locationServicesEnabled <stripped>
+	0x5c2200  @objc LocationDetectionManager.authorized <stripped>
+	0x5c2260  @objc LocationDetectionManager.fetchLocationWithCompletion: <stripped>
+	0x5c2310  @objc LocationDetectionManager..cxx_destruct <stripped>
  }
 
  class NewsUI2.SpinnerView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -13617,13 +16498,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let activityIndicatorView : UIActivityIndicatorView // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4852d0  @objc SpinnerView.initWithFrame: <stripped>
-	0x4853e0  @objc SpinnerView.initWithCoder: <stripped>
-	0x4854f0  @objc SpinnerView.layoutSubviews <stripped>
-	0x485600  @objc SpinnerView..cxx_destruct <stripped>
+	0x5c27a0  @objc SpinnerView.initWithFrame: <stripped>
+	0x5c28b0  @objc SpinnerView.initWithCoder: <stripped>
+	0x5c29c0  @objc SpinnerView.layoutSubviews <stripped>
+	0x5c2ad0  @objc SpinnerView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x485570  func SpinnerView.prepareForReuse() // method 
+	0x5c2a40  func SpinnerView.prepareForReuse() // method 
  }
 
  struct NewsUI2.TitleViewStyler: TitleViewStylerType {
@@ -13634,11 +16515,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let actionButtonFontMetrics : UIFontMetrics // +0x10
  }
 
+ class NewsUI2.SearchMoreArticlesBlueprintViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var delegate : SearchMoreArticlesBlueprintViewCellProviderDelegate // +0x10 (0x10)
+	let baseStyler : BaseStylerType // +0x20 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedItemRenderer : ≠§	 // +0x48 (0x10)
+
+	// Swift methods
+ }
+
  struct NewsUI2.LightTheme {
 
 	// Properties
 	let style : ThemeStyle
 	let backgroundColor : UIColor
+	let secondaryBackgroundColor : UIColor
+	let tertiaryBackgroundColor : UIColor
 	let foregroundColor : UIColor
 	let keyColor : UIColor
 	let headerSecondaryForegroundColor : UIColor
@@ -13647,22 +16541,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let separatorColor : UIColor
 	let paletteLightGrayColor : UIColor
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sectionGradientDescriptor : Ìã
+	let sectionGradientDescriptor : =◊
 	let defaultShineColor : UIColor
 	let mastheadSubheadingColor : UIColor
 	let mastheadFullBleedHeadingColor : UIColor
 	let mastheadFullBleedSubheadingColor : UIColor
- }
-
- class NewsUI2.MoreVideosEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MoreVideosEventHandlerType {
-
-	// Properties
-	var delegate : MoreVideosEventHandlerTypeDelegate // +0x10 (0x10)
-	let interactor : MoreVideosInteractorType // +0x20 (0x10)
-	let router : MoreVideosRouterType // +0x30 (0x28)
-	var channelID : String? // +0x58 (0x10)
-
-	// Swift methods
+	let mastheadFullBleedSubheadingAlternateColor : UIColor
  }
 
  class NewsUI2.HeadlineViewTextView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -13674,9 +16558,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let publisherLabel : UILabel // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x487310  @objc HeadlineViewTextView.initWithFrame: <stripped>
-	0x487340  @objc HeadlineViewTextView.initWithCoder: <stripped>
-	0x4873c0  @objc HeadlineViewTextView..cxx_destruct <stripped>
+	0x5c4e80  @objc HeadlineViewTextView.initWithFrame: <stripped>
+	0x5c4eb0  @objc HeadlineViewTextView.initWithCoder: <stripped>
+	0x5c4f30  @objc HeadlineViewTextView..cxx_destruct <stripped>
+ }
+
+ class NewsUI2.AudioPostLisentingSessionHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let playingItemState : Ò-	 // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x18 (0x8)
+	let configurationManager : FCCoreConfigurationManager // +0x20 (0x8)
+	let upsellDisplayCountKey : String // +0x28 (0x10)
+	let upsellInstanceIDKey : String // +0x38 (0x10)
+
+	// Swift methods
  }
 
  struct NewsUI2.OrderedArticleListMagazineFeedGroupKnobs {
@@ -13699,12 +16597,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case rankMultiplier  
  }
 
- struct NewsUI2.SearchMoreTagPrewarmModifier {
+ struct NewsUI2.Dock { }
+
+ enum NewsUI2.Animation {
 
 	// Properties
-	var initialTagResults : [FCTagProviding] // +0x0
-	let tagService : TagServiceType // +0x8
+	case none  
+	case default  
  }
+
+ class NewsUI2.AudioSuggestionsStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioSuggestionsStoreType {
+
+	// Properties
+	let suggestionsService : AudioSuggestionsServiceType // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineService : ±≠	 // +0x38 (0x28)
+	let readingHistory : FCReadingHistory // +0x60 (0x8)
+	let subscriptionController : FCSubscriptionController // +0x68 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let persistentStore :  // +0x70 (0x8)
+	let storeQueue : OS_dispatch_queue // +0x78 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let refreshDeduper : ó˘ // +0x80 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidBundleConfigManager : ì	 // +0x88 (0x28)
+
+	// Swift methods
+ }
+
+ struct NewsUI2.StoreDescriptor { }
 
  class NewsUI2.HeadlineViewImageOnSideStyleFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
@@ -13728,18 +16649,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ class NewsUI2.SearchDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchDataManagerType {
+
+	// Properties
+	let searchService : SearchServiceType // +0x10 (0x28)
+	let tagService : TagServiceType // +0x38 (0x10)
+
+	// Swift methods
+ }
+
  class NewsUI2.BridgedPaywallFactory : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x8 (0x8)
+	let tracker : 9P	 // +0x8 (0x8)
 	let analyticsChannelDataFactory : AnalyticsChannelDataFactoryType // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x38 (0x28)
+	let resolver : È_	 // +0x38 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x48b120  @objc BridgedPaywallFactory.init <stripped>
-	0x48b180  @objc BridgedPaywallFactory..cxx_destruct <stripped>
+	0x5ce570  @objc BridgedPaywallFactory.init <stripped>
+	0x5ce5d0  @objc BridgedPaywallFactory..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -13754,28 +16684,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsUI2.StubFormatService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x48c490  func StubFormatService.resolve(content:pool:options:) // method 
+	0x5cf790  func StubFormatService.resolve(content:pool:options:) // method 
  }
 
  class NewsUI2.MyMagazinesSectionHeaderSeparatorViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MyMagazinesSectionHeaderSeparatorViewLayoutAttributesFactoryType {
-	// Swift methods
- }
-
- class NewsUI2.SearchMoreTagService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let tagService : TagServiceType // +0x10 (0x10)
-	var tagStreamingResults : FCStreamingResults<FCTagProviding> // +0x20 (0x8)
-	var noMoreSearchResults : Bool // +0x28 (0x1)
-
-	// Swift methods
- }
-
- class NewsUI2.HistoryModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HistoryModifierFactoryType {
-
-	// Properties
-	let historyService : HistoryServiceType // +0x10 (0x28)
-
 	// Swift methods
  }
 
@@ -13795,28 +16707,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x10 (0x28)
+	let resolver : È_	 // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x38 (0x8)
+	let tracker : 9P	 // +0x38 (0x8)
 	let configurationManager : FCCoreConfigurationManager // +0x40 (0x8)
 
 	// Swift methods
  }
 
- struct NewsUI2.MagazineFeedVideoPaywallModel {
+ struct NewsUI2.FeedVideoPaywallModel {
 
 	// Properties
-	let variant : MagazineFeedPaywallSizeVariant
+	let variant : FeedPaywallSizeVariant
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let videoURL : S⁄
+	let videoURL : ◊6	
 	let videoWidth : Int
 	let videoHeight : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let image1xURL : S⁄
+	let image1xURL : ◊6	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let image2xURL : S⁄
+	let image2xURL : ◊6	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let image3xURL : S⁄
+	let image3xURL : ◊6	
 	let backgroundColor : UIColor
 	let mastheadTextColor : UIColor?
 	let buttonColor : UIColor?
@@ -13826,42 +16738,42 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let largeText : String
 	let smallText : String
 	let subscriptionButtonText : String
-	let subscriptionButtonTarget : MagazineFeedPaywallSubscriptionTarget
+	let subscriptionButtonTarget : FeedPaywallSubscriptionTarget
  }
 
- struct NewsUI2.MagazineFeedRegularPaywallModel {
+ struct NewsUI2.FeedRegularPaywallModel {
 
 	// Properties
-	let variant : MagazineFeedPaywallSizeVariant
+	let variant : FeedPaywallSizeVariant
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let image1xURL : S⁄
+	let image1xURL : ◊6	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let image2xURL : S⁄
+	let image2xURL : ◊6	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let image3xURL : S⁄
+	let image3xURL : ◊6	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let darkStyleImage1xURL : S⁄
+	let darkStyleImage1xURL : ◊6	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let darkStyleImage2xURL : S⁄
+	let darkStyleImage2xURL : ◊6	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let darkStyleImage3xURL : S⁄
+	let darkStyleImage3xURL : ◊6	
 	let gradientPercentHeight : Double
 	let textTopPadding : Int
 	let backgroundColor : UIColor
 	let largeText : String
 	let smallText : String
 	let subscriptionButtonText : String
-	let subscriptionButtonTarget : MagazineFeedPaywallSubscriptionTarget
+	let subscriptionButtonTarget : FeedPaywallSubscriptionTarget
  }
 
- enum NewsUI2.MagazineFeedPaywallModel {
+ enum NewsUI2.FeedPaywallModel {
 
 	// Properties
-	case regular : MagazineFeedRegularPaywallModel
-	case video : MagazineFeedVideoPaywallModel
+	case regular : FeedRegularPaywallModel
+	case video : FeedVideoPaywallModel
  }
 
- enum NewsUI2.MagazineFeedPaywallSizeVariant {
+ enum NewsUI2.FeedPaywallSizeVariant {
 
 	// Properties
 	case small  
@@ -13869,20 +16781,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case large  
  }
 
- struct NewsUI2.MagazineFeedPaywallConfig {
+ struct NewsUI2.FeedPaywallConfig {
 
 	// Properties
-	let small : MagazineFeedPaywallModel
-	let medium : MagazineFeedPaywallModel
-	let large : MagazineFeedPaywallModel
-	let paywallType : FCMagazineFeedPaywallType
+	let small : FeedPaywallModel
+	let medium : FeedPaywallModel
+	let large : FeedPaywallModel
+	let paywallType : FeedPaywallType
  }
 
- enum NewsUI2.MagazineFeedPaywallSubscriptionTarget {
+ enum NewsUI2.FeedPaywallSubscriptionTarget {
 
 	// Properties
 	case landingPage : (articleID: String)
 	case osloSheet  
+ }
+
+ enum NewsUI2.FeedPaywallType {
+
+	// Properties
+	case magazine : FCFeedPaywallSubtype
+	case audio : FCFeedPaywallSubtype
+ }
+
+ struct NewsUI2.TopicMagazineFeedGroupEmitter {
+
+	// Properties
+	let config : TopicMagazineFeedGroupConfig
+	let knobs : TopicMagazineFeedGroupKnobs
+	let clusterer : TopicMagazineFeedGroupClustererType
+	let personalizer : MagazineFeedPersonalizationServiceType
+	let name : String
  }
 
  struct NewsUI2.Cursor {
@@ -13891,56 +16820,36 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let groups : TopicMagazineFeedGroup // +0x0
  }
 
- struct NewsUI2.TopicMagazineFeedGroupEmitter {
+ class NewsUI2.NewsWeatherService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, NewsWeatherServiceType {
 
 	// Properties
-	let config : TopicMagazineFeedGroupConfig // +0x0
-	let knobs : TopicMagazineFeedGroupKnobs // +0x58
-	let clusterer : TopicMagazineFeedGroupClustererType // +0x78
-	let personalizer : MagazineFeedPersonalizationServiceType // +0xa0
- }
-
- class NewsUI2.MoreVideosViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
-
-	// Properties
-	let styler : MoreVideosStylerType // +0x8 (0x28)
-	let eventHandler : MoreVideosEventHandlerType // +0x30 (0x10)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController :  // +0x40 (0x8)
-	let headlineModelFactory : HeadlineModelFactoryType // +0x48 (0x28)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sharingActivityProviderFactory : +∏ // +0x70 (0x28)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let gradientView : —Ç // +0x98 (0x8)
-	let config : HeadlineGroupConfig // +0xa0 (0x8)
-	var routableDelegate : weak TSVideoGroupViewControllerDelegate? // +0xa8 (0x8)
-	var groupRankProvider : weak TSGroupRankProvider? // +0xb0 (0x8)
-	var feedViewExposureID : String? // +0xb8 (0x10)
-	var isBeingUsedAsPlugin : Bool // +0xc8 (0x1)
-	var pluggableDelegate : weak TUPluggableDelegate? // +0xd0 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x49e570  @objc MoreVideosViewController.routableDelegate <stripped>
-	0x49e590  @objc MoreVideosViewController.setRoutableDelegate: <stripped>
-	0x49e5b0  @objc MoreVideosViewController.groupRankProvider <stripped>
-	0x49e5d0  @objc MoreVideosViewController.setGroupRankProvider: <stripped>
-	0x49e5f0  @objc MoreVideosViewController.feedViewExposureID <stripped>
-	0x49e650  @objc MoreVideosViewController.setFeedViewExposureID: <stripped>
-	0x49e690  @objc MoreVideosViewController.isBeingUsedAsPlugin <stripped>
-	0x49e6a0  @objc MoreVideosViewController.setIsBeingUsedAsPlugin: <stripped>
-	0x49e6b0  @objc MoreVideosViewController.pluggableDelegate <stripped>
-	0x49e6d0  @objc MoreVideosViewController.setPluggableDelegate: <stripped>
-	0x49e6f0  @objc MoreVideosViewController.initWithCoder: <stripped>
-	0x49e710  @objc MoreVideosViewController.initWithNibName:bundle: <stripped>
-	0x49e770  @objc MoreVideosViewController..cxx_destruct <stripped>
+	let wrapper : WeatherServiceWrapper // +0x10 (0x8)
 
 	// Swift methods
+ }
+
+ enum NewsUI2.NewsWeatherErrors {
+
+	// Properties
+	case missingComponent : String
+	case mismatchedComponentType : (String, String)
+	case requestTimedOut : Double
+	case missingOrInvalidConditionCode  
+	case invalidRequest  
+	case unknown  
  }
 
  class NewsUI2.StubRecommendedIssuesMagazineFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let config : RecommendedIssuesMagazineFeedGroupConfig // +0x10 (0x78)
+	let config : RecommendedIssuesMagazineFeedGroupConfig // +0x0 (0x0)
+
+	// Swift methods
+ }
+
+ class NewsUI2.ANFParsingService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// ObjC -> Swift bridged methods
+	0x5e32f0  @objc ANFParsingService.resourceIDsFromFlintDocumentData: <stripped>
 
 	// Swift methods
  }
@@ -13951,32 +16860,54 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : TodayStylerType // +0x8 (0x28)
 	let eventHandler : TodayEventHandlerType // +0x30 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController : œ” // +0x40 (0x8)
+	let blueprintViewController : G // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintSelectionProvider : k∆ // +0x48 (0x10)
+	let blueprintSelectionProvider : ﬂ"	 // +0x48 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sharingActivityProviderFactory : +∏ // +0x58 (0x28)
-	var isBeingUsedAsPlugin : Bool // +0x80 (0x1)
-	var pluggableDelegate : weak TUPluggableDelegate? // +0x88 (0x8)
+	let sharingActivityProviderFactory : U%	 // +0x58 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let barCompressionManager : O	 // +0x80 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let refreshStateMachine : d	 // +0x88 (0x8)
+	let refreshControl : UIRefreshControl // +0x90 (0x8)
+	var isBeingUsedAsPlugin : Bool // +0x98 (0x1)
+	var pluggableDelegate : weak TUPluggableDelegate? // +0xa0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4a1da0  @objc TodayViewController.isBeingUsedAsPlugin <stripped>
-	0x4a1db0  @objc TodayViewController.setIsBeingUsedAsPlugin: <stripped>
-	0x4a1de0  @objc TodayViewController.pluggableDelegate <stripped>
-	0x4a1e00  @objc TodayViewController.setPluggableDelegate: <stripped>
-	0x4a1e20  @objc TodayViewController.initWithCoder: <stripped>
-	0x4a2070  @objc TodayViewController.viewWillAppear: <stripped>
-	0x4a2150  @objc TodayViewController.initWithNibName:bundle: <stripped>
-	0x4a20e0  @objc TodayViewController..cxx_destruct <stripped>
+	0x5e37d0  @objc TodayViewController.isBeingUsedAsPlugin <stripped>
+	0x5e37e0  @objc TodayViewController.setIsBeingUsedAsPlugin: <stripped>
+	0x5e3810  @objc TodayViewController.pluggableDelegate <stripped>
+	0x5e3830  @objc TodayViewController.setPluggableDelegate: <stripped>
+	0x5e3850  @objc TodayViewController.initWithCoder: <stripped>
+	0x5e3940  @objc TodayViewController.initWithNibName:bundle: <stripped>
+	0x5e38a0  @objc TodayViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.SharingAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4a43c0  @objc SharingAssembly.init <stripped>
+	0x5e70e0  @objc SharingAssembly.init <stripped>
 
 	// Swift methods
+ }
+
+ struct NewsUI2.ForYouTodayFeedGroupKnobs {
+
+	// Properties
+	let rankMultiplier : Double // +0x0
+	let minNumberOfItems : Int // +0x8
+	let maxNumberOfItems : Int // +0x10
+	let shouldPromoteAccessibleHeadline : Bool // +0x18
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case rankMultiplier  
+	case minNumberOfItems  
+	case maxNumberOfItems  
+	case shouldPromoteAccessibleHeadline  
  }
 
  enum NewsUI2.FollowingDislikedDescriptor {
@@ -13986,21 +16917,48 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case topic : TitleModel
  }
 
+ class NewsUI2.SearchMoreTagsEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreTagsEventHandlerType {
+
+	// Properties
+	var delegate : SearchMoreTagsEventHandlerTypeDelegate // +0x10 (0x10)
+	let interactor : SearchMoreTagsInteractorType // +0x20 (0x10)
+	let router : SearchMoreTagsRouterType // +0x30 (0x28)
+	let tracker : SearchMoreTagsTrackerType // +0x58 (0x28)
+
+	// Swift methods
+ }
+
  struct NewsUI2.Onboarding { }
+
+ class NewsUI2.AudioFeedBlueprintViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let dailyBriefingRenderer : Âh // +0x10 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let audioTrackRenderer : Uh // +0x20 (0x10)
+	let audioFeedPlacardRenderer : AudioFeedPlacardRendererType // +0x30 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let playbackState : eA	 // +0x40 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let listeningProgressManager : Á$	 // +0x48 (0x28)
+
+	// Swift methods
+ }
 
  class NewsUI2.BridgedTodayBlueprint : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprint : Õ // +0x0 (0x0)
+	let blueprint : ë˚ // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x4a4e40  @objc BridgedTodayBlueprint.pageableHeadlinesForGroupWithID: <stripped>
-	0x4a5040  @objc BridgedTodayBlueprint.init <stripped>
-	0x4a4fb0  @objc BridgedTodayBlueprint..cxx_destruct <stripped>
+	0x5eac00  @objc BridgedTodayBlueprint.pageableHeadlinesForGroupWithID: <stripped>
+	0x5eae90  @objc BridgedTodayBlueprint.init <stripped>
+	0x5eae00  @objc BridgedTodayBlueprint..cxx_destruct <stripped>
 
 	// Swift methods
-	0x4a4e30  func BridgedTodayBlueprint.pageableHeadlinesForGroup(with:) // method 
+	0x5eabf0  func BridgedTodayBlueprint.pageableHeadlinesForGroup(with:) // method 
  }
 
  class NewsUI2.TodayBridgedBlueprintManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -14009,13 +16967,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var providersByID : String // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lock : ù¨ // +0x18 (0x8)
+	let lock : 5	 // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4a51d0  @objc TodayBridgedBlueprintManager.blueprintForIdentifier: <stripped>
+	0x5eb020  @objc TodayBridgedBlueprintManager.blueprintForIdentifier: <stripped>
 
 	// Swift methods
-	0x4a5070  func <stripped> // method 
+	0x5eaec0  func <stripped> // method 
  }
 
  struct NewsUI2.PaywallMagazineFeedGroupKnobs {
@@ -14028,6 +16986,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case maxOccurrence  
+ }
+
+ class NewsUI2.AudioFeedPlacardStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioFeedPlacardStylerType {
+	// Swift methods
  }
 
  struct NewsUI2.FollowingDislikedPrewarmModifier {
@@ -14046,21 +17008,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let dislikeButtonFrame : CGRect // +0x80
 	let variant : MagazineFeedGroupTitleViewVariant // +0xa0
 	let titleStyle : MagazineFeedGroupTitleViewTitleStyle // +0xa8
- }
-
- class NewsUI2.SpecialEventsInteractor {
- class NewsUI2.TagViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TagViewRendererType {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rendererEnvironment :  // +0x10 (0x28)
-	let styler : TagViewStylerType // +0x38 (0x28)
-	let imageCache : TSImageCacheType // +0x60 (0x8)
-	let likeButtonRenderer : LikeButtonRendererType // +0x68 (0x28)
-	let dislikeButtonRenderer : DislikeButtonRendererType // +0x90 (0x28)
-	let notificationSwitchRenderer : NotificationSwitchRendererType // +0xb8 (0x28)
-
-	// Swift methods
+	let titleAttributedString : NSAttributedString // +0xb8
  }
 
  struct NewsUI2.UserSegmentation { }
@@ -14081,13 +17029,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let contentView : UIView // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let iconImageView : Ÿ€ // +0x10 (0x8)
+	let iconImageView : ô // +0x10 (0x8)
 	let titleLabel : UILabel // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4afe60  @objc MagazineCategoryView.initWithFrame: <stripped>
-	0x4afe90  @objc MagazineCategoryView.initWithCoder: <stripped>
-	0x4afee0  @objc MagazineCategoryView..cxx_destruct <stripped>
+	0x5f13c0  @objc MagazineCategoryView.initWithFrame: <stripped>
+	0x5f13f0  @objc MagazineCategoryView.initWithCoder: <stripped>
+	0x5f1440  @objc MagazineCategoryView..cxx_destruct <stripped>
  }
 
  class NewsUI2.MagazineCategoriesViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -14096,40 +17044,54 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : MagazineCategoriesStylerType // +0x8 (0x28)
 	let eventHandler : MagazineCategoriesEventHandlerType // +0x30 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController : µ– // +0x40 (0x8)
+	let blueprintViewController : u // +0x40 (0x8)
 	let config : MagazineCategoriesConfig // +0x48 (0x8)
 	var isBeingUsedAsPlugin : Bool // +0x50 (0x1)
 	var pluggableDelegate : weak TUPluggableDelegate? // +0x58 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4b0110  @objc MagazineCategoriesViewController.isBeingUsedAsPlugin <stripped>
-	0x4b0120  @objc MagazineCategoriesViewController.setIsBeingUsedAsPlugin: <stripped>
-	0x4b0130  @objc MagazineCategoriesViewController.pluggableDelegate <stripped>
-	0x4b0150  @objc MagazineCategoriesViewController.setPluggableDelegate: <stripped>
-	0x4b0170  @objc MagazineCategoriesViewController.initWithCoder: <stripped>
-	0x4b0270  @objc MagazineCategoriesViewController.initWithNibName:bundle: <stripped>
-	0x4b0210  @objc MagazineCategoriesViewController..cxx_destruct <stripped>
+	0x5f1670  @objc MagazineCategoriesViewController.isBeingUsedAsPlugin <stripped>
+	0x5f1680  @objc MagazineCategoriesViewController.setIsBeingUsedAsPlugin: <stripped>
+	0x5f1690  @objc MagazineCategoriesViewController.pluggableDelegate <stripped>
+	0x5f16b0  @objc MagazineCategoriesViewController.setPluggableDelegate: <stripped>
+	0x5f16d0  @objc MagazineCategoriesViewController.initWithCoder: <stripped>
+	0x5f17d0  @objc MagazineCategoriesViewController.initWithNibName:bundle: <stripped>
+	0x5f1770  @objc MagazineCategoriesViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
- class NewsUI2.TopOfFeedViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
+ class NewsUI2.AudioDataManager : NSObject /usr/lib/libobjc.A.dylib, AudioDataManagerType {
 
 	// Properties
-	let styler : TopOfFeedStylerType // +0x8 (0x28)
-	let eventHandler : TopOfFeedEventHandlerType // +0x30 (0x10)
-	var presentedChildViewController : UIViewController & TSTopOfFeedType? // +0x40 (0x8)
-	var delegate : weak TSTopOfFeedContainerTypeDelegate? // +0x48 (0x8)
-	var routableDelegate : weak TSTopOfFeedRoutableFeedDelegate? // +0x50 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let state : „^ // +0x8 (0x8)
+	let configurationManager : AudioConfigurationManagerType // +0x10 (0x28)
+	let readingHistory : FCReadingHistory // +0x38 (0x8)
+	let dailyBriefingStore : AudioDailyBriefingStoreType // +0x40 (0x28)
+	let playlistStore : AudioPlaylistStoreType // +0x68 (0x28)
+	let recentlyPlayedStore : AudioRecentlyPlayedStoreType // +0x90 (0x28)
+	let suggestionsStore : AudioSuggestionsStoreType // +0xb8 (0x28)
+	let reloadQueue : OS_dispatch_queue // +0xe0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let audioTabVisibilitySignal : ø-	 // +0xe8 (0x8)
+	let audioStateFactory : AudioStateFactoryType // +0xf0 (0x28)
+	let completedListeningProcessor : AudioCompletedListeningProcessorType // +0x118 (0x28)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x140 (0x8)
+	var expirationTimer : NSTimer? // +0x148 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let topOfFeedTrack : πL	 // +0x150 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let upNextTracks : wA	 // +0x158 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let suggestedTracks : wA	 // +0x160 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let recentlyPlayedTracks : wA	 // +0x168 (0x8)
+	var ignoreStoreUpdates : Bool // +0x170 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x4b1990  @objc TopOfFeedViewController.delegate <stripped>
-	0x4b19b0  @objc TopOfFeedViewController.setDelegate: <stripped>
-	0x4b19d0  @objc TopOfFeedViewController.routableDelegate <stripped>
-	0x4b19f0  @objc TopOfFeedViewController.setRoutableDelegate: <stripped>
-	0x4b1a10  @objc TopOfFeedViewController.initWithCoder: <stripped>
-	0x4b1a30  @objc TopOfFeedViewController.initWithNibName:bundle: <stripped>
-	0x4b1a90  @objc TopOfFeedViewController..cxx_destruct <stripped>
+	0x5f3e40  @objc AudioDataManager.init <stripped>
+	0x5f3ea0  @objc AudioDataManager..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -14149,6 +17111,50 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case missingScoreForItem : FCFeedPersonalizingItem
  }
 
+ struct NewsUI2.SearchMoreArticlesPrewarmBlueprintModifier {
+
+	// Properties
+	let prewarmResult : SearchMoreArticlesResult
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedContext : …x	
+	let headlineModelFactory : HeadlineModelFactoryType
+ }
+
+ class NewsUI2.HistoryFeedStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HistoryFeedStylerType {
+
+	// Properties
+	let baseStyler : BaseStylerType // +0x10 (0x28)
+
+	// Swift methods
+ }
+
+ class NewsUI2.FollowingNotificationsSectionFooterViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingNotificationsSectionFooterViewRendererType {
+
+	// Properties
+	let styler : FollowingNotificationsSectionFooterViewStylerType // +0x10 (0x28)
+
+	// Swift methods
+ }
+
+ class NewsUI2.SavedFeedEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SavedFeedEventHandlerType {
+
+	// Properties
+	var delegate : SavedFeedEventHandlerTypeDelegate // +0x10 (0x10)
+	let interactor : SavedFeedInteractorType // +0x20 (0x10)
+	let router : SavedFeedRouterType // +0x30 (0x28)
+	let tracker : SavedFeedTrackerType // +0x58 (0x28)
+
+	// Swift methods
+ }
+
+ struct NewsUI2.TodayConfigData {
+
+	// Properties
+	let recordID : String // +0x0
+	let headlines : [String : FCHeadlineProviding] // +0x10
+	let tags : [String : FCTag] // +0x18
+ }
+
  struct NewsUI2.TitleModel {
 
 	// Properties
@@ -14162,8 +17168,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x10 (0x8)
-	let pattern : NotificationResponsePattern // +0x18 (0x10)
+	let navigator : =e	 // +0x10 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.SearchMoreTagModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let tagModel : TagModel // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -14175,11 +17188,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let identifier : String // +0x20 (0x10)
 	let store : MyMagazinesStoreType // +0x30 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueService : Ÿπ // +0x58 (0x28)
+	let issueService : „	 // +0x58 (0x28)
 	let issueModelFactory : IssueModelFactoryType // +0x80 (0x28)
 	let tagService : TagServiceType // +0xa8 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_lazyInitializingPromise : Å¡ // +0xb8 (0x8)
+	var $__lazy_storage_$_lazyInitializingPromise : ΩÌ // +0xb8 (0x8)
 
 	// Swift methods
  }
@@ -14192,14 +17205,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case myMagazinesStoreBug  
  }
 
- enum NewsUI2.HistoryLayoutSection {
-
-	// Properties
-	case blank  
- }
-
- enum NewsUI2.SearchContentType { }
-
  class NewsUI2.FollowingBadgingCoordinator : NSObject /usr/lib/libobjc.A.dylib, FollowingBadgingCoordinatorType {
 
 	// Properties
@@ -14208,26 +17213,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let userInfo : FCUserInfo // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4bf8c0  @objc FollowingBadgingCoordinator.init <stripped>
-	0x4bf920  @objc FollowingBadgingCoordinator..cxx_destruct <stripped>
-
-	// Swift methods
- }
-
- class NewsUI2.HistoryLayoutBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let headlineLayoutAttributesProvider : HeadlineViewLayoutAttributesProviderType // +0x10 (0x28)
-	let feedLayoutOptionsFactory : FeedLayoutOptionsFactory // +0x38 (0x8)
-	let headlineViewModelFactory : HeadlineViewModelFactoryType // +0x40 (0x28)
-
-	// Swift methods
- }
-
- class NewsUI2.MoreVideosBlueprintModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MoreVideosBlueprintModifierFactoryType {
-
-	// Properties
-	let headlineModelFactory : HeadlineModelFactoryType // +0x10 (0x28)
+	0x609750  @objc FollowingBadgingCoordinator.init <stripped>
+	0x6097b0  @objc FollowingBadgingCoordinator..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -14245,14 +17232,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let showBanners : Bool
 
 	// ObjC -> Swift bridged methods
-	0x4c2290  @objc NotificationSettings.authorizationStatus <stripped>
-	0x4c22d0  @objc NotificationSettings.sound <stripped>
-	0x4c2300  @objc NotificationSettings.badge <stripped>
-	0x4c2330  @objc NotificationSettings.showOnLockScreen <stripped>
-	0x4c2360  @objc NotificationSettings.showInNotificationCenter <stripped>
-	0x4c2390  @objc NotificationSettings.showBanners <stripped>
-	0x4c23c0  @objc NotificationSettings.initWithSystemSettings: <stripped>
-	0x4c2450  @objc NotificationSettings.init <stripped>
+	0x60a090  @objc NotificationSettings.authorizationStatus <stripped>
+	0x60a0d0  @objc NotificationSettings.sound <stripped>
+	0x60a100  @objc NotificationSettings.badge <stripped>
+	0x60a130  @objc NotificationSettings.showOnLockScreen <stripped>
+	0x60a160  @objc NotificationSettings.showInNotificationCenter <stripped>
+	0x60a190  @objc NotificationSettings.showBanners <stripped>
+	0x60a1c0  @objc NotificationSettings.initWithSystemSettings: <stripped>
+	0x60a250  @objc NotificationSettings.init <stripped>
 
 	// Swift methods
  }
@@ -14260,11 +17247,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsUI2.NotificationService : NSObject /usr/lib/libobjc.A.dylib, NotificationServiceType {
 
 	// Properties
-	let kOptions : UNAuthorizationOptions
+	let options : UNAuthorizationOptions
 
 	// ObjC -> Swift bridged methods
-	0x4c24f0  @objc NotificationService.fetchNotificationSettingsWith: <stripped>
-	0x4c3e70  @objc NotificationService.init <stripped>
+	0x60a2f0  @objc NotificationService.fetchNotificationSettingsWith: <stripped>
+	0x60c260  @objc NotificationService.init <stripped>
  }
 
  class NewsUI2.NewsArticlesRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -14272,48 +17259,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let tagService : TagServiceType // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x20 (0x8)
+	let navigator : =e	 // +0x20 (0x8)
 
 	// Swift methods
  }
 
- enum NewsUI2.SearchMoreAnalyticEvent {
+ class NewsUI2.AudioFeedStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioFeedStylerType {
 
 	// Properties
-	case subscribe : SearchResultTagModel
-	case unsubscribe : SearchResultTagModel
-	case notificationStateChange : SearchResultTagModel
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case viewExposure : â¬
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case tagCellExposure : ƒ
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case headlineCellExposure : œ√
-	case feedSelection : SearchResultTagModel
- }
-
- enum NewsUI2.NotificationAction {
-
-	// Properties
-	case subscribe  
-	case unsubscribe  
-	case notNow  
-	case autoSubscribe  
- }
-
- class NewsUI2.TagViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TagViewStylerType {
-
-	// Properties
-	let headlineFontMetrics : UIFontMetrics // +0x10 (0x8)
-	let subheadlineFontMetrics : UIFontMetrics // +0x18 (0x8)
+	let baseStyler : BaseStylerType // +0x10 (0x28)
 
 	// Swift methods
  }
 
  class NewsUI2.LegacyArticleViewerModule : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4c7900  @objc LegacyArticleViewerModule.createViewControllerForArticleID:headline:articleContext:articlePresentationStyle:showShareSheet:forceArticleUpdate: <stripped>
-	0x4c7980  @objc LegacyArticleViewerModule.init <stripped>
+	0x60e770  @objc LegacyArticleViewerModule.createViewControllerForArticleID:headline:articleContext:articlePresentationStyle:showShareSheet:forceArticleUpdate: <stripped>
+	0x60e7f0  @objc LegacyArticleViewerModule.init <stripped>
  }
 
  class NewsUI2.LegacyArticleProxyModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LegacyArticleProxyModuleType {
@@ -14324,15 +17286,40 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- enum NewsUI2.SearchMoreLayoutDescriptor {
+ class NewsUI2.AMSHandleNotificationDiscerner : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	case blank  
+	let pushHandler : AMSPushHandler // +0x8 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x60ea20  @objc AMSHandleNotificationDiscerner.init <stripped>
+	0x60e9b0  @objc AMSHandleNotificationDiscerner..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioFeedEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioFeedEventHandlerType {
+
+	// Properties
+	var delegate : AudioFeedEventHandlerTypeDelegate // +0x10 (0x10)
+	let interactor : AudioFeedInteractorType // +0x20 (0x10)
+	let router : AudioFeedRouterType // +0x30 (0x28)
+	let tracker : AudioFeedTrackerType // +0x58 (0x28)
+
+	// Swift methods
+ }
+
+ class NewsUI2.MailShareLinkTextProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let context : ShareLinkContext // +0x10 (0x1)
+
+	// Swift methods
  }
 
  class NewsUI2.MagazineCategoriesAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4caab0  @objc MagazineCategoriesAssembly.init <stripped>
+	0x612580  @objc MagazineCategoriesAssembly.init <stripped>
  }
 
  enum NewsUI2.MagazineFeedGroupKnobsRules {
@@ -14363,15 +17350,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- enum NewsUI2.SpecialEventsSectionDescriptor {
-
-	// Properties
-	case specialEvents : SpecialEventsStyle
- }
-
  class NewsUI2.AppAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4ce150  @objc AppAssembly.init <stripped>
+	0x615990  @objc AppAssembly.init <stripped>
  }
 
  struct NewsUI2.MyMagazinesMagazineFeedGroupKnobs {
@@ -14392,12 +17373,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case none  
  }
 
+ struct NewsUI2.TopicTodayFeedGroupConfig {
+
+	// Properties
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let content : uá	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+	let allowDuplicatesAcrossGroups : Bool
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case identifier  
+	case position  
+	case content  
+	case allowDuplicatesAcrossGroups  
+	case minNewsVersion  
+	case maxNewsVersion  
+ }
+
  class NewsUI2.MyMagazinesInteractor {
  class NewsUI2.MagazineFeedSectionPositionProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineFeedSectionPositionProviderType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintProvider : g∏ // +0x10 (0x8)
+	let blueprintProvider : 	 // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -14414,27 +17421,99 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ class NewsUI2.FollowingDislikedTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingDislikedTrackerType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x10 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.DockContainerViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	var rootViewController : UIViewController // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let lazyDockableViewController : 2	 // +0x10 (0x8)
+	var presentationMode : PresentationMode // +0x18 (0x1)
+	let dockView : UIView // +0x20 (0x8)
+	var $__lazy_storage_$_dockHeightConstraint : NSLayoutConstraint? // +0x28 (0x8)
+	var $__lazy_storage_$_dockedView : UIView? // +0x30 (0x8)
+	var $__lazy_storage_$_expandedViewController : Dockable // +0x38 (0x10)
+
+	// ObjC -> Swift bridged methods
+	0x61be20  @objc DockContainerViewController.initWithCoder: <stripped>
+	0x61be40  @objc DockContainerViewController.childViewControllerForStatusBarStyle <stripped>
+	0x61c620  @objc DockContainerViewController.viewDidLoad <stripped>
+	0x61c650  @objc DockContainerViewController.shouldAutorotate <stripped>
+	0x61c670  @objc DockContainerViewController.canBecomeFirstResponder <stripped>
+	0x61cb90  @objc DockContainerViewController.viewDidLayoutSubviews <stripped>
+	0x61ce50  @objc DockContainerViewController.presentViewController:animated:completion: <stripped>
+	0x61cf10  @objc DockContainerViewController.showViewController:sender: <stripped>
+	0x61cfe0  @objc DockContainerViewController.showDetailViewController:sender: <stripped>
+	0x61d280  @objc DockContainerViewController.dismissViewControllerAnimated:completion: <stripped>
+	0x61d650  @objc DockContainerViewController.dockedViewTapped <stripped>
+	0x61d680  @objc DockContainerViewController.initWithNibName:bundle: <stripped>
+	0x61d6e0  @objc DockContainerViewController..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ enum NewsUI2.PresentationMode {
+
+	// Properties
+	case hidden  
+	case docked  
+	case expanded  
+ }
+
+ class NewsUI2.SavedFeedModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SavedFeedModuleType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x38 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.SearchRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchRouterType {
+
+	// Properties
+	var controller : weak UIViewController? // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x40 (0x8)
+
+	// Swift methods
+ }
+
  class NewsUI2.StubOfflineProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, OfflineProviding {
 
 	// Properties
 	let offlineReason : FCOfflineReason // +0x10 (0x8)
 
 	// Swift methods
-	0x4d24f0  class func StubOfflineProvider.__allocating_init(offlineReason:) // init 
+	0x6205a0  class func StubOfflineProvider.__allocating_init(offlineReason:) // init 
  }
 
  struct NewsUI2.MyMagazinesMagazineFeedGroup {
 
 	// Properties
-	let identifier : String // +0x0
-	let groupTitle : String // +0x10
-	let groupTitleColor : UIColor? // +0x20
-	let groupDarkStyleTitleColor : UIColor? // +0x28
-	let groupSubtitle : String? // +0x30
-	let paidVisibility : FeedGroupPaidVisibility // +0x40
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x41
-	let rankMultiplier : Double // +0x48
-	let knobs : MyMagazinesMagazineFeedGroupKnobs // +0x50
+	let identifier : String
+	let groupTitle : String
+	let groupTitleColor : UIColor?
+	let groupDarkStyleTitleColor : UIColor?
+	let groupSubtitle : String?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let rankMultiplier : Double
+	let knobs : MyMagazinesMagazineFeedGroupKnobs
  }
 
  struct NewsUI2.FollowingSubscriptionChangeMutedModifier {
@@ -14465,11 +17544,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case rankMultiplier  
  }
 
- class NewsUI2.FeatureAvailability : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeatureAvailabilityType {
+ class NewsUI2.FeatureAvailability : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	let appConfiguration : FCNewsAppConfiguration? // +0x10 (0x8)
 	let privateDataContext : FCPrivateDataContext // +0x18 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x6242e0  @objc FeatureAvailability.appleMagazineContent <stripped>
+	0x624430  @objc FeatureAvailability.allowSharingAlways <stripped>
+	0x624500  @objc FeatureAvailability.useTodayModule <stripped>
+	0x624520  @objc FeatureAvailability.useHistoryFeedModule <stripped>
+	0x624540  @objc FeatureAvailability.useSavedFeedModule <stripped>
+	0x624560  @objc FeatureAvailability.useTagFeedModule <stripped>
+	0x624580  @objc FeatureAvailability.useSearchModule <stripped>
+	0x6245a0  @objc FeatureAvailability.narrativeAudio <stripped>
 
 	// Swift methods
  }
@@ -14482,13 +17571,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case disabled  
  }
 
- class NewsUI2.SearchMoreEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreEventHandlerType {
+ enum NewsUI2.Audio {
 
 	// Properties
-	var delegate : SearchMoreEventHandlerTypeDelegate // +0x10 (0x10)
-	var searchContentType : SearchContentType // +0x20 (0x8)
-	let interactor : SearchMoreInteractorType // +0x28 (0x10)
-	let router : SearchMoreRouterType // +0x38 (0x28)
+	case default  
+	case enabled  
+	case disabled  
+ }
+
+ class NewsUI2.SearchMoreTagsDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreTagsDataManagerType {
+
+	// Properties
+	var delegate : SearchMoreTagsDataManagerTypeDelegate // +0x10 (0x10)
+	let tagService : TagServiceType // +0x20 (0x10)
+	let subscriptionService : SubscriptionServiceType // +0x30 (0x10)
+	let tagStreamingResults : FCStreamingResults<FCTagProviding> // +0x40 (0x8)
+	let numberOfSearchResultsPerQuery : Int // +0x48 (0x8)
 
 	// Swift methods
  }
@@ -14501,12 +17599,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ class NewsUI2.AlertNewsletterUnsupportedRegion : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
+ class NewsUI2.WebEmbedContainerViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let modalHostStyle : è› // +0x8 (0x8)
+	let styler : WebEmbedStylerType // +0x10 (0x28)
+	let layoutAttributesFactory : WebEmbedViewLayoutAttributesFactoryType // +0x38 (0x28)
+	let eventHandler : WebEmbedEventHandlerType // +0x60 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let webEmbedViewController : ¡- // +0x70 (0x8)
+	let resource : WebEmbedResource // +0x0 (0x0)
+	let embedLocation : SWLocation // +0x0 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x626690  @objc WebEmbedContainerViewController.initWithCoder: <stripped>
+	0x626790  @objc WebEmbedContainerViewController.initWithNibName:bundle: <stripped>
+	0x6266e0  @objc WebEmbedContainerViewController..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
  class NewsUI2.MagazineFeedGroupEmitterFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineFeedGroupEmitterFactoryType {
 
 	// Properties
 	let tagService : TagServiceType // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineService : Só // +0x20 (0x28)
+	let headlineService : ±≠	 // +0x20 (0x28)
 	let topicClusteringService : TopicClusteringServiceType // +0x48 (0x28)
 	let personalizationService : MagazineFeedPersonalizationServiceType // +0x70 (0x28)
 	let magazineCategoryService : MagazineCategoryServiceType // +0x98 (0x28)
@@ -14515,57 +17638,137 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let offlineIssueList : FCOfflineIssueList // +0xd0 (0x8)
 	let appConfigurationManager : FCNewsAppConfigurationManager // +0xd8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bundlePurchasePrewarmer : sx // +0xe0 (0x10)
+	let bundlePurchasePrewarmer : A	 // +0xe0 (0x10)
 	let diversityPenalty : Double // +0xf0 (0x8)
 	let issueModelFactory : IssueModelFactoryType // +0xf8 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueService : Ÿπ // +0x120 (0x28)
+	let issueService : „	 // +0x120 (0x28)
 	let sectionHeadlinesService : ChannelSectionHeadlinesServiceType // +0x148 (0x28)
 	let channelPromotedArticlesService : ChannelPromotedArticlesServiceType // +0x170 (0x28)
 	let newspaperGroupService : NewspaperGroupServiceType // +0x198 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let formatService : ´Ò // +0x1c0 (0x28)
+	let formatService : £H	 // +0x1c0 (0x28)
 	let feedPersonalizingEngine : FCFeedPersonalizing // +0x1e8 (0x8)
 
 	// Swift methods
-	0x4d6d00  func <stripped> // method 
+	0x627860  func <stripped> // method 
  }
 
  class NewsUI2.StubFCIssueReadingHistoryType : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x4d90a0  @objc StubFCIssueReadingHistoryType.markIssueWithID:asVisitedWithBookmark: <stripped>
-	0x4d90b0  @objc StubFCIssueReadingHistoryType.markIssueAsBadgedWithID: <stripped>
-	0x4d90c0  @objc StubFCIssueReadingHistoryType.markIssueAsEngagedWithID: <stripped>
-	0x4d90d0  @objc StubFCIssueReadingHistoryType.markIssueAsSeenWithID: <stripped>
-	0x4d90e0  @objc StubFCIssueReadingHistoryType.markIssueAsRemovedFromMyMagazinesWithID: <stripped>
-	0x4d90f0  @objc StubFCIssueReadingHistoryType.hasIssueWithIDBeenVisited: <stripped>
-	0x4d9100  @objc StubFCIssueReadingHistoryType.hasIssueWithIDBeenBadged: <stripped>
-	0x4d9110  @objc StubFCIssueReadingHistoryType.hasIssueWithIDBeenEngaged: <stripped>
-	0x4d9120  @objc StubFCIssueReadingHistoryType.hasIssueWithIDBeenSeen: <stripped>
-	0x4d9200  @objc StubFCIssueReadingHistoryType.bookmarkForLastVisitToIssueWithID: <stripped>
-	0x4d9210  @objc StubFCIssueReadingHistoryType.lastVisitedDateForIssueWithID: <stripped>
-	0x4d9220  @objc StubFCIssueReadingHistoryType.lastEngagedDateForIssueWithID: <stripped>
-	0x4d9130  @objc StubFCIssueReadingHistoryType.lastSeenDateForIssueWithID: <stripped>
-	0x4d9230  @objc StubFCIssueReadingHistoryType.lastRemovedFromMyMagazinesDateForIssueWithID: <stripped>
-	0x4d9140  @objc StubFCIssueReadingHistoryType.mostRecentlyVisitedIssueID <stripped>
-	0x4d9240  @objc StubFCIssueReadingHistoryType.recentlyVisitedIssueIDs <stripped>
-	0x4d9250  @objc StubFCIssueReadingHistoryType.recentlyEngagedIssueIDs <stripped>
-	0x4d9150  @objc StubFCIssueReadingHistoryType.allEngagedIssueIDs <stripped>
-	0x4d9190  @objc StubFCIssueReadingHistoryType.addObserver: <stripped>
-	0x4d91a0  @objc StubFCIssueReadingHistoryType.removeObserver: <stripped>
+	0x62a970  @objc StubFCIssueReadingHistoryType.markIssueWithID:asVisitedWithBookmark: <stripped>
+	0x62a980  @objc StubFCIssueReadingHistoryType.markIssueAsBadgedWithID: <stripped>
+	0x62a990  @objc StubFCIssueReadingHistoryType.markIssueAsEngagedWithID: <stripped>
+	0x62a9a0  @objc StubFCIssueReadingHistoryType.markIssueAsSeenWithID: <stripped>
+	0x62a9b0  @objc StubFCIssueReadingHistoryType.markIssueAsRemovedFromMyMagazinesWithID: <stripped>
+	0x62a9c0  @objc StubFCIssueReadingHistoryType.hasIssueWithIDBeenVisited: <stripped>
+	0x62a9d0  @objc StubFCIssueReadingHistoryType.hasIssueWithIDBeenBadged: <stripped>
+	0x62a9e0  @objc StubFCIssueReadingHistoryType.hasIssueWithIDBeenEngaged: <stripped>
+	0x62a9f0  @objc StubFCIssueReadingHistoryType.hasIssueWithIDBeenSeen: <stripped>
+	0x62aad0  @objc StubFCIssueReadingHistoryType.bookmarkForLastVisitToIssueWithID: <stripped>
+	0x62aae0  @objc StubFCIssueReadingHistoryType.lastVisitedDateForIssueWithID: <stripped>
+	0x62aaf0  @objc StubFCIssueReadingHistoryType.lastEngagedDateForIssueWithID: <stripped>
+	0x62aa00  @objc StubFCIssueReadingHistoryType.lastSeenDateForIssueWithID: <stripped>
+	0x62ab00  @objc StubFCIssueReadingHistoryType.lastRemovedFromMyMagazinesDateForIssueWithID: <stripped>
+	0x62aa10  @objc StubFCIssueReadingHistoryType.mostRecentlyVisitedIssueID <stripped>
+	0x62ab10  @objc StubFCIssueReadingHistoryType.recentlyVisitedIssueIDs <stripped>
+	0x62ab20  @objc StubFCIssueReadingHistoryType.recentlyEngagedIssueIDs <stripped>
+	0x62aa20  @objc StubFCIssueReadingHistoryType.allEngagedIssueIDs <stripped>
+	0x62aa60  @objc StubFCIssueReadingHistoryType.addObserver: <stripped>
+	0x62aa70  @objc StubFCIssueReadingHistoryType.removeObserver: <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.URLHandlerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4da090  @objc URLHandlerAssembly.init <stripped>
+	0x62cd10  @objc URLHandlerAssembly.init <stripped>
  }
 
- class NewsUI2.SavedBlueprintModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SavedBlueprintModifierFactoryType {
+ class NewsUI2.SearchTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchTrackerType {
 
 	// Properties
-	let savedService : SavedServiceType // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x10 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.EndOfTrackNotificationScheduler : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	let notificationService : NotificationServiceType // +0x8 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var dailyBriefing : πL	 // +0x30 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let currentlyPlaying : eA	 // +0x38 (0x8)
+	let readingHistory : FCReadingHistory // +0x40 (0x8)
+	var currentlyPlayingObservableToken : NSObject? // +0x48 (0x8)
+	var schedulerState : SchedulerState // +0x50 (0x31)
+
+	// ObjC -> Swift bridged methods
+	0x62e5c0  @objc EndOfTrackNotificationScheduler.init <stripped>
+	0x62e620  @objc EndOfTrackNotificationScheduler..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ enum NewsUI2.SchedulerState {
+
+	// Properties
+	case waitingForDailyNotificationToStop : (title: String, subtitle: String, body: String)
+	case sent : (latestNotificationArticleID: String)
+	case notSent  
+ }
+
+ class NewsUI2.AudioSessionManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioPlaybackContextType,  AudioPlaybackTrackerType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let sessionManager : ü 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let sessionObserver : a’
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var nextTrackTracker : GO	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let playbackState : eA	
+	let channelDataFactory : AnalyticsChannelDataFactoryType
+	let scienceDataFactory : AnalyticsScienceDataFactoryType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidBundleConfigManager : ì	
+	var itemSession : Session
+	var onNextTrack : AudioFeedTrack
+
+	// Swift methods
+ }
+
+ class NewsUI2.Session : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	
+	var lastPlaybackPosition : Double
+	var totalTimePlayed : Double
+	var deltaTimePlayed : Double
+
+	// Swift methods
+ }
+
+ class NewsUI2.NoopAudioSessionManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioPlaybackContextType,  AudioPlaybackTrackerType {
+	// ObjC -> Swift bridged methods
+	0x633400  @objc NoopAudioSessionManager.captureArticleViewContextWithSessionID: <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.SavedFeedBlueprintLayoutBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedLayoutSolver : WX	 // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -14588,9 +17791,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case maxNumberOfItems  
  }
 
+ struct NewsUI2.HistoryFeedExpandResult {
+
+	// Properties
+	let identifier : String // +0x0
+	let headlines : [FCHeadlineProviding] // +0x10
+	let location : HistoryFeedGapLocation // +0x18
+ }
+
  class NewsUI2.PPTAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4db570  @objc PPTAssembly.init <stripped>
+	0x6368c0  @objc PPTAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -14604,23 +17815,65 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ class NewsUI2.SavedFeedBlueprintModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SavedFeedBlueprintModifierFactoryType {
+
+	// Properties
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidBundleConfigManager : ì	 // +0x18 (0x28)
+	let headlineModelFactory : HeadlineModelFactoryType // +0x40 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedContext : …x	 // +0x0 (0x0)
+	let featureAvailability : TSFeatureAvailabilityType // +0x0 (0x8)
+
+	// Swift methods
+ }
+
  struct NewsUI2.MyMagazinesMagazineFeedGroupEmitter {
 
 	// Properties
-	let config : MyMagazinesMagazineFeedGroupConfig // +0x0
-	let knobs : MyMagazinesMagazineFeedGroupKnobs // +0x58
+	let config : MyMagazinesMagazineFeedGroupConfig
+	let knobs : MyMagazinesMagazineFeedGroupKnobs
+	let name : String
+ }
+
+ class NewsUI2.NewsWebArchiveURLSchemeHandler : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	let task : WKURLSchemeTask // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let webArchiveService : Õ®	 // +0x10 (0x28)
+
+	// ObjC -> Swift bridged methods
+	0x638de0  @objc NewsWebArchiveURLSchemeHandler.task <stripped>
+	0x639b20  @objc NewsWebArchiveURLSchemeHandler.start <stripped>
+	0x639b50  @objc NewsWebArchiveURLSchemeHandler.cancel <stripped>
+	0x639b60  @objc NewsWebArchiveURLSchemeHandler.finish <stripped>
+	0x639b70  @objc NewsWebArchiveURLSchemeHandler.init <stripped>
+	0x639bd0  @objc NewsWebArchiveURLSchemeHandler..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case invalidWebArchiveURL : ◊6	
+	case triedToReferenceExternalFile : String
+	case failedToCreateHTTPURLResponse  
  }
 
  class NewsUI2.ReplicaAdvertisementCoordinator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var delegate : y® // +0x10 (0x10)
+	var delegate : gœ // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let advertisement : ¶ // +0x0 (0x0)
+	let advertisement : ÂÃ // +0x0 (0x0)
 	let issue : FCIssue // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x0 (0x8)
+	let tracker : 9P	 // +0x0 (0x8)
 	let issueSessionManager : AAViewingSessionManagerType // +0x0 (0x8)
 	let channelDataFactory : AnalyticsChannelDataFactoryType // +0x0 (0x28)
 	let scienceDataFactory : AnalyticsScienceDataFactoryType // +0x0 (0x28)
@@ -14648,15 +17901,40 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ struct NewsUI2.AudioFeedPlacardMessage {
+
+	// Properties
+	let title : String // +0x0
+	let detail : String // +0x10
+ }
+
+ struct NewsUI2.TagFeedPrewarmResult {
+
+	// Properties
+	let expandResults : TagFeedExpandResult // +0x0
+ }
+
  class NewsUI2.MagazineFeedPaywallViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineFeedPaywallViewStylerType {
 
 	// Properties
-	let variant : MagazineFeedPaywallSizeVariant // +0x10 (0x1)
+	let variant : FeedPaywallSizeVariant // +0x10 (0x1)
 	let model : MagazineFeedPaywallViewModel // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let textColor : õ∫ // +0x0 (0x0)
+	let textColor : …	 // +0x0 (0x0)
 
 	// Swift methods
+ }
+
+ struct NewsUI2.SearchMoreTagsUpdateModifier {
+
+	// Properties
+	let updatedModels : SearchMoreTagsModel // +0x0
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case sectionNotFound  
  }
 
  enum NewsUI2.MoreActionsSheetLocation {
@@ -14672,7 +17950,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sharingActivityItemFactory : ÂÎ // +0x10 (0x28)
+	let sharingActivityItemFactory : õJ	 // +0x10 (0x28)
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x38 (0x8)
 	let issueSubscriptionController : FCSubscriptionController // +0x40 (0x8)
 
@@ -14681,26 +17959,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsUI2.ToolbarAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4e2a90  @objc ToolbarAssembly.init <stripped>
+	0x6413a0  @objc ToolbarAssembly.init <stripped>
  }
 
  struct NewsUI2.IssuesMagazineFeedGroupConfig {
 
 	// Properties
-	let kind : MagazineFeedGroupKind // +0x0
-	let identifier : String // +0x8
-	let position : FeedGroupPosition // +0x18
-	let groupTitle : String // +0x20
-	let groupTitleColor : String // +0x30
-	let groupSubtitle : String? // +0x40
-	let issueIDs : [String] // +0x50
-	let availableInForYou : Bool // +0x58
-	let availableInMagazineFeed : Bool // +0x59
-	let paidVisibility : FeedGroupPaidVisibility // +0x5a
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x5b
-	let allowDuplicatesAcrossGroups : Bool // +0x5c
-	let minNewsVersion : String? // +0x60
-	let maxNewsVersion : String? // +0x70
+	let kind : MagazineFeedGroupKind
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+	let groupTitle : String
+	let groupTitleColor : String
+	let groupSubtitle : String?
+	let issueIDs : [String]
+	let availableInForYou : Bool
+	let availableInMagazineFeed : Bool
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let allowDuplicatesAcrossGroups : Bool
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
  }
 
  enum NewsUI2.Keys {
@@ -14725,25 +18006,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	var searchProvider : TSFollowingSearchProviderType? // +0x8 (0x8)
-	let styler : FollowingStylerType // +0x10 (0x28)
-	let eventHandler : FollowingEventHandlerType // +0x38 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController : ]; // +0x48 (0x8)
+	var lazySearchViewController : Õx // +0x10 (0x8)
+	let styler : FollowingStylerType // +0x18 (0x28)
+	let eventHandler : FollowingEventHandlerType // +0x40 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintSelectionProvider : k∆ // +0x50 (0x10)
-	let purchaseController : FCPurchaseController // +0x60 (0x8)
-	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x68 (0x8)
+	let blueprintViewController : ãä // +0x50 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let alertPresenter : k // +0x70 (0x28)
+	let blueprintSelectionProvider : ﬂ"	 // +0x58 (0x10)
+	let purchaseController : FCPurchaseController // +0x68 (0x8)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x70 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var previousSelectedIndexPath : Ωü // +0x1 (0x0)
+	let alertPresenter : ßi	 // +0x78 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var previousSelectedIndexPath : Òπ // +0x65542f73 (0x0)
+	let featureAvailability : TSFeatureAvailabilityType // +0x676e6974 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4e4970  @objc FollowingViewController.initWithCoder: <stripped>
-	0x4e4e90  @objc FollowingViewController.delete: <stripped>
-	0x4e5080  @objc FollowingViewController.canPerformAction:withSender: <stripped>
-	0x4e5120  @objc FollowingViewController.initWithNibName:bundle: <stripped>
-	0x4e5180  @objc FollowingViewController..cxx_destruct <stripped>
+	0x6438e0  @objc FollowingViewController.initWithCoder: <stripped>
+	0x643e00  @objc FollowingViewController.delete: <stripped>
+	0x643ff0  @objc FollowingViewController.canPerformAction:withSender: <stripped>
+	0x644090  @objc FollowingViewController.initWithNibName:bundle: <stripped>
+	0x6440f0  @objc FollowingViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -14760,10 +18044,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class NewsUI2.URLNotificationResponseHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let pattern : NotificationResponsePattern // +0x10 (0x10)
-
 	// Swift methods
  }
 
@@ -14775,13 +18055,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- enum NewsUI2.TopOfFeedRefreshResult { }
-
  class NewsUI2.ChannelIssuesDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ChannelIssuesDataManagerType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueService : Ÿπ // +0x10 (0x28)
+	let issueService : „	 // +0x10 (0x28)
 
 	// Swift methods
  }
@@ -14791,13 +18069,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case curated  
 	case newspaper  
+	case localNews  
+	case trending  
+	case forYou  
+	case audioDailyBriefing  
+	case topic  
+	case magazine  
  }
 
  class NewsUI2.ManagerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4efaa0  @objc ManagerAssembly.init <stripped>
+	0x650870  @objc ManagerAssembly.init <stripped>
 
 	// Swift methods
+	0x64d360  func <stripped> // method 
  }
 
  class NewsUI2.FollowingURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -14806,27 +18091,124 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let patterns :  empty-list  // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : & // +0x0 (0x0)
+	let navigator : =e	 // +0x18 (0x8)
 
 	// Swift methods
  }
 
- enum NewsUI2.MoreVideosLayoutModel {
+ class NewsUI2.NewsUserActivityHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	case headline : MoreVideosHeadlineModel
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let patterns :  empty-list  // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : ´Û // +0x0 (0x0)
+	let userActivityDeserializer : NewsActivityInfoDeserializer // +0x0 (0x8)
+
+	// Swift methods
+	0x6512c0  func <stripped> // method 
  }
 
- enum NewsUI2.MoreVideoLayoutAttributes {
+ class NewsUI2.AudioRecentlyPlayedStore : NSObject /usr/lib/libobjc.A.dylib, AudioRecentlyPlayedStoreType {
 
 	// Properties
-	case videoOnTop : HeadlineViewVideoOnTopLayoutAttributes
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var recentlyPlayedUpdatedSignal : M-	 // +0x8 (0x8)
+	let readingHistory : FCReadingHistory // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineService : ±≠	 // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineCache : ”`	 // +0x40 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidBundleConfigManager : ì	 // +0x48 (0x28)
+
+	// ObjC -> Swift bridged methods
+	0x651b90  @objc AudioRecentlyPlayedStore.init <stripped>
+	0x651bf0  @objc AudioRecentlyPlayedStore..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.HistoryFeedDataManager : NSObject /usr/lib/libobjc.A.dylib, HistoryFeedDataManagerType {
+
+	// Properties
+	var delegate : HistoryFeedDataManagerTypeDelegate // +0x8 (0x10)
+	let clearReadingHistoryManager : FCClearableReadingHistory // +0x18 (0x8)
+	let newsletterManager : FCNewsletterManager // +0x20 (0x8)
+	let personalizationData : FCPersonalizationData // +0x28 (0x8)
+	let readingHistory : FCReadingHistory // +0x30 (0x8)
+	let readingList : FCReadingList // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineService : ±≠	 // +0x40 (0x28)
+	let accessQueue : OS_dispatch_queue // +0x68 (0x8)
+	let chunkSize : Int // +0x70 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x655ad0  @objc HistoryFeedDataManager.init <stripped>
+	0x655b30  @objc HistoryFeedDataManager..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.BrowseChannelsURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let patterns :  empty-list  // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x18 (0x8)
+
+	// Swift methods
+ }
+
+ struct NewsUI2.AudioDailyBriefingTodayFeedGroupKnobs {
+
+	// Properties
+	let rankMultiplier : Double // +0x0
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case rankMultiplier  
  }
 
  struct NewsUI2.AlertFeedUnavailable {
 
 	// Properties
 	let feedModel : FeedModel // +0x0
+ }
+
+ struct NewsUI2.ArticleListTagFeedGroup {
+
+	// Properties
+	let identifier : String
+	let headlines : [FCHeadlineProviding]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+ }
+
+ struct NewsUI2.TopicTodayFeedGroupKnobs {
+
+	// Properties
+	let rankMultiplier : Double // +0x0
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case rankMultiplier  
+ }
+
+ class NewsUI2.TagFeedModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TagFeedModuleType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x38 (0x8)
+
+	// Swift methods
  }
 
  class NewsUI2.OfflineIssueManager : NSObject /usr/lib/libobjc.A.dylib, OfflineIssueManagerType {
@@ -14838,16 +18220,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let issueOfflineManager : OfflineManager // +0x60 (0x8)
 	let networkReachability : FCNetworkReachability // +0x68 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cachedIssuesPromise : ≠ // +0x70 (0x8)
+	var cachedIssuesPromise : I’ // +0x70 (0x8)
 	var downloads : IssueDownload // +0x78 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let downloadsLock : ù¨ // +0x80 (0x8)
+	let downloadsLock : 5	 // +0x80 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueIDsAvailableOffline : %Ï // +0x88 (0x8)
+	let issueIDsAvailableOffline : …$ // +0x88 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4f87a0  @objc OfflineIssueManager.init <stripped>
-	0x4f8800  @objc OfflineIssueManager..cxx_destruct <stripped>
+	0x65e010  @objc OfflineIssueManager.init <stripped>
+	0x65e070  @objc OfflineIssueManager..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -14893,8 +18275,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var editorialItemProvider : TSEditorialItemProvider // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4fb520  @objc EditorialService.init <stripped>
-	0x4fb580  @objc EditorialService..cxx_destruct <stripped>
+	0x6641e0  @objc EditorialService.init <stripped>
+	0x664240  @objc EditorialService..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -14921,7 +18303,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case rankMultiplier  
  }
 
- class NewsUI2.SavedBlueprintViewHeaderProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ class NewsUI2.ArticleListTagFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let config : ArticleListTagFeedGroupConfig // +0x0 (0x0)
+
 	// Swift methods
  }
 
@@ -14929,7 +18315,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case feedItem : ı≤
+	case feedItem : G\	
  }
 
  struct NewsUI2.MagazineFeedSectionFactory: MagazineFeedSectionFactoryType {
@@ -14939,7 +18325,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let issueModelFactory : IssueModelFactoryType // +0x28
  }
 
- class NewsUI2.MoreVideosInteractor {
  class NewsUI2.SpinnerFooterViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SpinnerFooterViewLayoutAttributesFactoryType {
 	// Swift methods
  }
@@ -14949,29 +18334,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let spinnerViewFrame : CGRect // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : A // +0x20
+	let height : õ_	 // +0x20
  }
 
- enum NewsUI2.MoreVideosSectionDescriptor {
+ struct NewsUI2.AudioFeedDragAndDropBlueprintModifier {
 
 	// Properties
-	case forYou : ForYouTitleViewModel
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let item : -k	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let targetIndexPath : ÀΩ
  }
 
- class NewsUI2.HistoryAssembly : NSObject /usr/lib/libobjc.A.dylib {
-	// ObjC -> Swift bridged methods
-	0x50a7c0  @objc HistoryAssembly.init <stripped>
+ class NewsUI2.ModalNavigationController {
+ class NewsUI2.AudioSeekCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let playbackController : AudioPlaybackControllable // +0x10 (0x28)
+	let audioPlaybackTracker : AudioPlaybackTrackerType // +0x38 (0x28)
 
 	// Swift methods
  }
 
- class NewsUI2.ModalNavigationController {
  struct NewsUI2.FollowingDislikedRemoveDislikeModifier {
 
 	// Properties
 	let subscriptionService : SubscriptionServiceType // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let request : ı∆ // +0x10
+	let request : É	 // +0x10
  }
 
  enum NewsUI2.AlertIssueUnavailable {
@@ -15036,33 +18426,45 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case gradient : ›∑
+	case gradient : E@
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case pattern : _∑
+	case pattern : ∑?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case feedGroup : S´
+	case feedGroup : ±ı
  }
 
  enum NewsUI2.Footer {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case empty : YË
+	case empty : ?{
 	case separator : SeparatorViewContainerViewLayoutAttributes
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case sectionFooter : Å≤
+	case sectionFooter : ‡
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case feedItem : ≠¨
+	case feedItem : 3˙
  }
 
  enum NewsUI2.Header {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case empty : YË
+	case empty : ?{
 	case groupTitle : MagazineFeedGroupTitleViewModel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case feedItem : ≠¨
+	case feedItem : 3˙
+ }
+
+ class NewsUI2.TrendingTodayFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let config : TrendingTodayFeedGroupConfig // +0x0 (0x0)
+	let knobs : TrendingTodayFeedGroupKnobs // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let formatService : £H	 // +0x0 (0x28)
+	let name : String // +0x73676e (0x10)
+
+	// Swift methods
  }
 
  class NewsUI2.MagazineFeedBlueprintViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -15071,30 +18473,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : MagazineFeedBlueprintViewCellProviderDelegate // +0x10 (0x10)
 	let baseStyler : BaseStylerType // +0x20 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedItemRenderer : 7 // +0x48 (0x10)
+	let feedItemRenderer : ≠§	 // +0x48 (0x10)
 	let offlineIssueManager : OfflineIssueManagerType // +0x58 (0x10)
+
+	// Swift methods
+ }
+
+ class NewsUI2.SearchMoreArticlesRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreArticlesRouterType {
+
+	// Properties
+	var controller : weak UIViewController? // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x40 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x48 (0x8)
 
 	// Swift methods
  }
 
  class NewsUI2.MyMagazinesAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x522080  @objc MyMagazinesAssembly.init <stripped>
- }
-
- enum NewsUI2.SpecialEventsLayoutModel {
-
-	// Properties
-	case headline : SpecialEventsHeadlineModel
-	case embed : SpecialEventsEmbedModel
- }
-
- enum NewsUI2.SpecialEventsHeadlineLayoutAttributes {
-
-	// Properties
-	case imageOnSide : HeadlineViewImageOnSideLayoutAttributes
-	case noImage : HeadlineViewNoImageLayoutAttributes
-	case wrappedImageOnSide : HeadlineViewWrappedImageOnSideLayoutAttributes
+	0x68ba50  @objc MyMagazinesAssembly.init <stripped>
  }
 
  class NewsUI2.FollowingBrowseButtonViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingBrowseButtonViewRendererType {
@@ -15125,18 +18526,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var controller : weak UIViewController? // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x18 (0x28)
+	let resolver : È_	 // +0x18 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x40 (0x8)
+	let tracker : 9P	 // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x48 (0x8)
+	let navigator : =e	 // +0x48 (0x8)
 
 	// Swift methods
  }
 
  class NewsUI2.SubscriptionsAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x52cb90  @objc SubscriptionsAssembly.init <stripped>
+	0x68d870  @objc SubscriptionsAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -15144,24 +18545,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsUI2.BridgedNewsActivityNavigator : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let featureAvailability : FeatureAvailabilityType // +0x8 (0x28)
+	let featureAvailability : TSFeatureAvailabilityType // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x30 (0x8)
+	let navigator : =e	 // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x38 (0x8)
+	let tracker : 9P	 // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x52dd00  @objc BridgedNewsActivityNavigator.navigateWithActivityData: <stripped>
-	0x52e0d0  @objc BridgedNewsActivityNavigator.init <stripped>
-	0x52e040  @objc BridgedNewsActivityNavigator..cxx_destruct <stripped>
+	0x68e190  @objc BridgedNewsActivityNavigator.navigateWithActivityData: <stripped>
+	0x68e510  @objc BridgedNewsActivityNavigator.navigateWithoutAnimationWithActivityData: <stripped>
+	0x68e620  @objc BridgedNewsActivityNavigator.init <stripped>
+	0x68e590  @objc BridgedNewsActivityNavigator..cxx_destruct <stripped>
 
 	// Swift methods
- }
-
- enum NewsUI2.Errors {
-
-	// Properties
-	case unknownConversion  
  }
 
  class NewsUI2.NewIssueLocalNotificationScheduler : NSObject /usr/lib/libobjc.A.dylib, NewIssueLocalNotificationSchedulerType {
@@ -15171,25 +18567,66 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let secondsPerDay : Double // +0x18 (0x8)
 	let notificationService : NotificationServiceType // +0x20 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let calendar : Åè // +0x0 (0x0)
+	let calendar : S∑ // +0x0 (0x0)
 	let secondsPastMidnightToDeliverNotification : Double // +0x0 (0x8)
 	let issueReadingHistory : FCIssueReadingHistoryType // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x532bb0  @objc NewIssueLocalNotificationScheduler.init <stripped>
-	0x532b00  @objc NewIssueLocalNotificationScheduler..cxx_destruct <stripped>
+	0x691c30  @objc NewIssueLocalNotificationScheduler.init <stripped>
+	0x691b80  @objc NewIssueLocalNotificationScheduler..cxx_destruct <stripped>
 
 	// Swift methods
-	0x52fd60  class func NewIssueLocalNotificationScheduler.__allocating_init(notificationService:secondsPastMidnightToDeliverNotification:calendar:issueReadingHistory:) // init 
+	0x68ede0  class func NewIssueLocalNotificationScheduler.__allocating_init(notificationService:secondsPastMidnightToDeliverNotification:calendar:issueReadingHistory:) // init 
+ }
+
+ struct NewsUI2.TodayConfigFetchResult {
+
+	// Properties
+	let config : TodayConfig
+	let configData : TodayConfigData
+	let appConfig : FCCoreConfiguration
+ }
+
+ class NewsUI2.TagNotificationStatusChangeNotifier : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let channelSupportThreadIdentifier : String // +0x10 (0x10)
+	let notifyOfEnabledTagsDelay : Double // +0x20 (0x8)
+	let notifyOfAvailableTagsDelay : Double // +0x28 (0x8)
+	let notificationConfiguration : NotificationConfigurationType // +0x30 (0x28)
+	let notificationService : NotificationServiceType // +0x58 (0x28)
+
+	// Swift methods
  }
 
  class NewsUI2.ArticleViewerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x5342b0  @objc ArticleViewerAssembly.init <stripped>
+	0x69a780  @objc ArticleViewerAssembly.init <stripped>
  }
 
- class NewsUI2.TopOfFeedDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TopOfFeedDataManagerType {
-	// Swift methods
+ struct NewsUI2.AudioStoreResults {
+
+	// Properties
+	let dailyBriefingHeadlines : [FCHeadlineProviding] // +0x0
+	let playlistHeadlines : [FCHeadlineProviding] // +0x8
+	let recentlyPlayedHeadlines : [FCHeadlineProviding] // +0x10
+	let suggestedHeadlines : [FCHeadlineProviding] // +0x18
+ }
+
+ enum NewsUI2.Modifier {
+
+	// Properties
+	case playlist : Modification
+	case recentlyPlayed : Modification
+	case suggestions : Modification
+	case none  
+ }
+
+ enum NewsUI2.Modification {
+
+	// Properties
+	case insert : (headline: FCHeadlineProviding, index: Int)
+	case remove : (index: Int)
  }
 
  class NewsUI2.WelcomeViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -15203,12 +18640,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var startedFirstAnimation : Bool // +0xa0 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x5345d0  @objc WelcomeViewController.initWithCoder: <stripped>
-	0x534640  @objc WelcomeViewController.showPrivacyText <stripped>
-	0x534650  @objc WelcomeViewController.initWithNibName:bundle: <stripped>
-	0x5346b0  @objc WelcomeViewController..cxx_destruct <stripped>
+	0x6a1240  @objc WelcomeViewController.initWithCoder: <stripped>
+	0x6a12b0  @objc WelcomeViewController.showPrivacyText <stripped>
+	0x6a12c0  @objc WelcomeViewController.initWithNibName:bundle: <stripped>
+	0x6a1320  @objc WelcomeViewController..cxx_destruct <stripped>
 
 	// Swift methods
+ }
+
+ struct NewsUI2.AlertAudioPlaybackFailed {
+
+	// Properties
+	let reason : Reason // +0x0
+ }
+
+ enum NewsUI2.Reason {
+
+	// Properties
+	case unknown  
+	case unauthorized  
  }
 
  class NewsUI2.ForYouSingleGroupTodayFeedService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -15217,7 +18667,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let group : FCForYouBridgedFeedGroup // +0x10 (0x8)
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paidBundleConfigManager : è$ // +0x20 (0x28)
+	let paidBundleConfigManager : ì	 // +0x20 (0x28)
+	let featureAvailability : TSFeatureAvailabilityType // +0x48 (0x8)
+	let paidAccessChecker : FCPaidAccessCheckerType // +0x50 (0x8)
 
 	// Swift methods
  }
@@ -15228,36 +18680,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case badGroup  
  }
 
- class NewsUI2.SpecialEventsViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
+ enum NewsUI2.Errors {
 
 	// Properties
-	let styler : SpecialEventsStylerType // +0x8 (0x28)
-	let eventHandler : SpecialEventsEventHandlerType // +0x30 (0x10)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController : G // +0x40 (0x8)
-	let pageControl : UIPageControl // +0x48 (0x8)
-	let micaPlayerFactory : TSMicaPlayerFactoryType // +0x50 (0x8)
-	var micaPlayer : TSMicaPlayerType? // +0x58 (0x8)
-	var style : SpecialEventsStyle // +0x60 (0x90)
-	var delegate : weak TSTopOfFeedTypeDelegate? // +0xf0 (0x8)
-	var routableDelegate : weak TSTopOfFeedRoutableFeedDelegate? // +0xf8 (0x8)
-	let closeButton : CloseButton // +0x100 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x536690  @objc SpecialEventsViewController.delegate <stripped>
-	0x5366b0  @objc SpecialEventsViewController.setDelegate: <stripped>
-	0x5366d0  @objc SpecialEventsViewController.routableDelegate <stripped>
-	0x5366f0  @objc SpecialEventsViewController.setRoutableDelegate: <stripped>
-	0x536710  @objc SpecialEventsViewController.initWithCoder: <stripped>
-	0x536730  @objc SpecialEventsViewController.initWithNibName:bundle: <stripped>
-	0x536790  @objc SpecialEventsViewController..cxx_destruct <stripped>
-
-	// Swift methods
+	case missingHeadlineInFetchOperation  
+	case missingLandingPageArticleID  
  }
 
  class NewsUI2.FollowingDislikedAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x53c980  @objc FollowingDislikedAssembly.init <stripped>
+	0x6a8610  @objc FollowingDislikedAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -15280,7 +18712,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let screenScale : A // +0x0
+	let screenScale : õ_	 // +0x0
 	let titleLabelFrame : CGRect // +0x8
 	let excerptLabelFrame : CGRect // +0x28
 	let publisherLabelFrame : CGRect // +0x48
@@ -15293,8 +18725,41 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let offlineIssueManager : OfflineIssueManagerType // +0x10 (0x10)
 	let offlineIssueList : FCOfflineIssueList // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x28 (0x8)
+	let tracker : 9P	 // +0x28 (0x8)
 	let channelDataFactory : AnalyticsChannelDataFactoryType // +0x30 (0x28)
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioNowPlayingInfoCenterManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let playingItemState : Ò-	 // +0x10 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioPlayableContentDataSource : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let queue : wA	 // +0x8 (0x8)
+	let contentItemFactory : AudioMPContentItemFactoryType // +0x10 (0x28)
+	let listeningProgressProvider : NewsAudioListeningProgressProvider // +0x38 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x6ad4d0  @objc AudioPlayableContentDataSource.init <stripped>
+	0x6ad530  @objc AudioPlayableContentDataSource..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioStateFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioStateFactoryType {
+
+	// Properties
+	let trackFactory : AudioFeedTrackFactoryType // +0x10 (0x28)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x38 (0x8)
 
 	// Swift methods
  }
@@ -15309,12 +18774,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case settings : TitleModel
  }
 
+ class NewsUI2.FollowingNotificationsSectionFooterView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	let textLabel : UILabel // +0x8 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x6b7280  @objc FollowingNotificationsSectionFooterView.initWithFrame: <stripped>
+	0x6b7360  @objc FollowingNotificationsSectionFooterView.initWithCoder: <stripped>
+	0x6b7440  @objc FollowingNotificationsSectionFooterView..cxx_destruct <stripped>
+ }
+
  struct NewsUI2.TodayKnobsConfig {
 
 	// Properties
 	let groupKnobs : TodayFeedGroupKnobs // +0x0
-	let maxGroups : Int // +0x38
-	let minGroups : Int // +0x40
+	let maxGroups : Int // +0xa8
+	let minGroups : Int // +0xb0
  }
 
  enum NewsUI2.CodingKeys {
@@ -15323,6 +18799,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case groupKnobs  
 	case maxGroups  
 	case minGroups  
+ }
+
+ struct NewsUI2.HistoryFeedReloadBlueprintModifier {
+
+	// Properties
+	let reloadRequest : HistoryFeedReloadRequest // +0x0
+	let sectionFactory : HistoryFeedSectionFactoryType // +0x8
  }
 
  enum NewsUI2.FollowingAnalyticsSection { }
@@ -15343,23 +18826,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case mute : FollowingTagModel
 	case ignore : FollowingTagModel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case viewExposure : óü
+	case viewExposure : ôÀ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case cellExposure : 3°
+	case cellExposure : ÖÕ
 	case feedSelection : FollowingTagModel
 	case reorder : FollowingTagModel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case forYouExposure : —†
+	case forYouExposure : #Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case editorialExposure : †
+	case editorialExposure : —Ã
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case tagCellExposure : †
+	case tagCellExposure : kÃ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case savedExposure : πü
+	case savedExposure : Ã
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case historyExposure : Wü
+	case historyExposure : ©À
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case browseExposure : —†
+	case browseExposure : #Õ
 	case tocExposure : AreaPresentationReason
  }
 
@@ -15414,20 +18897,43 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsUI2.BridgedAlertArticleUnavailable : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let alert : AlertArticleUnavailable // +0x8 (0x9)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let alert : „¥ // +0xc (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x543e70  @objc BridgedAlertArticleUnavailable.initWithBlockedReason: <stripped>
-	0x543fb0  @objc BridgedAlertArticleUnavailable.initWithType: <stripped>
-	0x544030  @objc BridgedAlertArticleUnavailable.title <stripped>
-	0x544070  @objc BridgedAlertArticleUnavailable.message <stripped>
-	0x5441b0  @objc BridgedAlertArticleUnavailable.init <stripped>
+	0x6bc610  @objc BridgedAlertArticleUnavailable.initWithBlockedReason: <stripped>
+	0x6bc860  @objc BridgedAlertArticleUnavailable.initWithType: <stripped>
+	0x6bc880  @objc BridgedAlertArticleUnavailable.title <stripped>
+	0x6bc8c0  @objc BridgedAlertArticleUnavailable.message <stripped>
+	0x6bca20  @objc BridgedAlertArticleUnavailable.init <stripped>
+	0x6bc9a0  @objc BridgedAlertArticleUnavailable..cxx_destruct <stripped>
 
 	// Swift methods
-	0x543db0  class func BridgedAlertArticleUnavailable.__allocating_init(blockedReason:) // init 
-	0x543eb0  class func BridgedAlertArticleUnavailable.__allocating_init(type:) // init 
-	0x544050  func BridgedAlertArticleUnavailable.title.getter // getter 
-	0x5440f0  func BridgedAlertArticleUnavailable.message.getter // getter 
+	0x6bc4b0  class func BridgedAlertArticleUnavailable.__allocating_init(blockedReason:) // init 
+	0x6bc6b0  class func BridgedAlertArticleUnavailable.__allocating_init(type:) // init 
+	0x6bc8a0  func BridgedAlertArticleUnavailable.title.getter // getter 
+	0x6bc950  func BridgedAlertArticleUnavailable.message.getter // getter 
+ }
+
+ class NewsUI2.HistoryFeedViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	let styler : HistoryFeedStylerType // +0x8 (0x28)
+	let eventHandler : HistoryFeedEventHandlerType // +0x30 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let blueprintViewController : }_ // +0x40 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x6bcb10  @objc HistoryFeedViewController.initWithCoder: <stripped>
+	0x6bcb60  @objc HistoryFeedViewController.initWithNibName:bundle: <stripped>
+	0x6bcbc0  @objc HistoryFeedViewController..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
+ class NewsUI2.WebEmbedAssembly : NSObject /usr/lib/libobjc.A.dylib {
+	// ObjC -> Swift bridged methods
+	0x6bf4a0  @objc WebEmbedAssembly.init <stripped>
  }
 
  class NewsUI2.TodayEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TodayEventHandlerType {
@@ -15436,6 +18942,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : TodayEventHandlerTypeDelegate // +0x10 (0x10)
 	let interactor : TodayInteractorType // +0x20 (0x10)
 	let router : TodayRouterType // +0x30 (0x28)
+	let tracker : TodayTrackerType // +0x58 (0x28)
 
 	// Swift methods
  }
@@ -15474,12 +18981,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let footerView : HeadlineViewFooterView // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x546ad0  @objc NoImageHeadlineView.initWithFrame: <stripped>
-	0x546b90  @objc NoImageHeadlineView.initWithCoder: <stripped>
-	0x546c40  @objc NoImageHeadlineView..cxx_destruct <stripped>
+	0x6c2670  @objc NoImageHeadlineView.initWithFrame: <stripped>
+	0x6c2730  @objc NoImageHeadlineView.initWithCoder: <stripped>
+	0x6c27e0  @objc NoImageHeadlineView..cxx_destruct <stripped>
  }
 
- struct NewsUI2.NewspaperGroupSectionModel {
+ struct NewsUI2.ChannelSectionsGroupSectionModel {
 
 	// Properties
 	let identifier : String
@@ -15488,13 +18995,57 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let headlines : [FCHeadlineProviding]
 	let score : Double
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : ã÷
+	let url : ›6	
+ }
+
+ class NewsUI2.AudioDailyBriefingAudioFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let groupConfig : AudioFeedGroupConfig // +0x18 (0x0)
+	let config : AudioDailyBriefingFeedGroupConfig // +0x0 (0x0)
+	let track : AudioFeedTrack // +0x0 (0x0)
+
+	// Swift methods
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case noDailyBriefing  
  }
 
  enum NewsUI2.ChannelIssuesModel {
 
 	// Properties
 	case issue : IssueModel
+ }
+
+ struct NewsUI2.TrendingTodayFeedGroupKnobs {
+
+	// Properties
+	let rankMultiplier : Double // +0x0
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case rankMultiplier  
+ }
+
+ class NewsUI2.HistoryFeedBlueprintModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HistoryFeedBlueprintModifierFactoryType {
+
+	// Properties
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidBundleConfigManager : ì	 // +0x18 (0x28)
+	let headlineModelFactory : HeadlineModelFactoryType // +0x40 (0x28)
+	let sectionFactory : HistoryFeedSectionFactoryType // +0x68 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedContext : …x	 // +0x0 (0x0)
+	let featureAvailability : TSFeatureAvailabilityType // +0x0 (0x8)
+	let paidAccessChecker : FCPaidAccessCheckerType // +0x0 (0x8)
+
+	// Swift methods
  }
 
  enum NewsUI2.FollowingNotificationsModel {
@@ -15509,12 +19060,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case curated : CuratedTodayFeedGroupConfig
 	case newspaper : NewspaperGroupConfig
+	case localNews : LocalNewsTodayFeedGroupConfig
+	case trending : TrendingTodayFeedGroupConfig
+	case forYou : ForYouTodayFeedGroupConfig
+	case audioDailyBriefing : AudioDailyBriefingTodayFeedGroupConfig
+	case topic : TopicTodayFeedGroupConfig
+	case magazine : MagazineTodayFeedGroupConfig
  }
 
  enum NewsUI2.CodingKeys {
 
 	// Properties
 	case type  
+ }
+
+ struct NewsUI2.AudioFeedPaywallFeedGroupEmitter {
+
+	// Properties
+	let groupConfig : AudioFeedGroupConfig
+	let config : AudioFeedPaywallFeedGroupConfig
+	let appConfigurationManager : FCNewsAppConfigurationManager
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bundlePurchasePrewarmer : A	
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case unknown  
  }
 
  struct NewsUI2.AlertUnmuteAllowInForYouAlert {
@@ -15527,11 +19100,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var delegate : Aç // +0x10 (0x10)
+	var delegate : o¥ // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let observer : À◊ // +0x20 (0x10)
+	let observer : + // +0x20 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x30 (0x8)
+	let tracker : 9P	 // +0x30 (0x8)
 
 	// Swift methods
  }
@@ -15544,29 +19117,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let headline : Headline
 
 	// ObjC -> Swift bridged methods
-	0x54b720  @objc JournalAdditionalDetailViewController.initWithCoder: <stripped>
-	0x54b740  @objc JournalAdditionalDetailViewController.initWithNibName:bundle: <stripped>
-	0x54b7a0  @objc JournalAdditionalDetailViewController..cxx_destruct <stripped>
+	0x6cf8b0  @objc JournalAdditionalDetailViewController.initWithCoder: <stripped>
+	0x6cf8d0  @objc JournalAdditionalDetailViewController.initWithNibName:bundle: <stripped>
+	0x6cf930  @objc JournalAdditionalDetailViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.JournalAdditionalDetailDefaultTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x54e910  @objc JournalAdditionalDetailDefaultTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x54e920  @objc JournalAdditionalDetailDefaultTableViewCell.initWithCoder: <stripped>
+	0x6d2bf0  @objc JournalAdditionalDetailDefaultTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x6d2c00  @objc JournalAdditionalDetailDefaultTableViewCell.initWithCoder: <stripped>
  }
 
  class NewsUI2.JournalAdditionalDetailValueTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x54e9a0  @objc JournalAdditionalDetailValueTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x54e9b0  @objc JournalAdditionalDetailValueTableViewCell.initWithCoder: <stripped>
+	0x6d2c80  @objc JournalAdditionalDetailValueTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x6d2c90  @objc JournalAdditionalDetailValueTableViewCell.initWithCoder: <stripped>
  }
 
  class NewsUI2.JournalAdditionalDetailSubtitleTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x54ea30  @objc JournalAdditionalDetailSubtitleTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x54eae0  @objc JournalAdditionalDetailSubtitleTableViewCell.initWithCoder: <stripped>
+	0x6d2d10  @objc JournalAdditionalDetailSubtitleTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x6d2dc0  @objc JournalAdditionalDetailSubtitleTableViewCell.initWithCoder: <stripped>
  }
 
  enum NewsUI2.DataSource {
@@ -15586,10 +19159,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x10 (0x28)
+	let resolver : È_	 // +0x10 (0x28)
 
 	// Swift methods
-	0x54f700  func <stripped> // method 
+	0x6d3ae0  func <stripped> // method 
+ }
+
+ class NewsUI2.NewsAssetURLSchemeHandlerFactory : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let assetFetchService : ÒW // +0x8 (0x28)
+
+	// ObjC -> Swift bridged methods
+	0x6d3ea0  @objc NewsAssetURLSchemeHandlerFactory.createURLSchemeHandlerWithTask: <stripped>
+	0x6d3ef0  @objc NewsAssetURLSchemeHandlerFactory.init <stripped>
+	0x6d3f50  @objc NewsAssetURLSchemeHandlerFactory..cxx_destruct <stripped>
+
+	// Swift methods
+	0x6d3c60  func <stripped> // method 
+ }
+
+ struct NewsUI2.MagazineFeedReloadBlueprintModifier {
+
+	// Properties
+	let reloadRequest : MagazineFeedReloadRequest // +0x0
+	let sectionFactory : MagazineFeedSectionFactoryType // +0x8
  }
 
  struct NewsUI2.MagazineFeedRelayoutBlueprintModifier {
@@ -15602,55 +19197,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsUI2.TodayBridgedFeedGroup : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let group : TodayFeedGroup // +0x18 (0x0)
+	let group : TodayFeedGroup // +0x10000 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x5507e0  @objc TodayBridgedFeedGroup.assetHandles <stripped>
-	0x5508f0  @objc TodayBridgedFeedGroup.headlines <stripped>
-	0x550950  @objc TodayBridgedFeedGroup.webEmbedURLs <stripped>
-	0x550ad0  @objc TodayBridgedFeedGroup.equivalentTopicIDs <stripped>
-	0x550e20  @objc TodayBridgedFeedGroup.identifier <stripped>
-	0x550ed0  @objc TodayBridgedFeedGroup.backingTagID <stripped>
+	0x6d6510  @objc TodayBridgedFeedGroup.assetHandles <stripped>
+	0x6d67c0  @objc TodayBridgedFeedGroup.headlines <stripped>
+	0x6d68a0  @objc TodayBridgedFeedGroup.webEmbedURLs <stripped>
+	0x6d6970  @objc TodayBridgedFeedGroup.equivalentTopicIDs <stripped>
+	0x6d6c40  @objc TodayBridgedFeedGroup.identifier <stripped>
+	0x6d6ca0  @objc TodayBridgedFeedGroup.backingTag <stripped>
 
-	// Swift methods
- }
-
- class NewsUI2.SpecialEventsRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SpecialEventsRouterType {
-
-	// Properties
-	var controller : SpecialEventsViewController // +0x10 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x18 (0x28)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintImpressionActiveSessionProvider : oÏ // +0x40 (0x28)
-
-	// Swift methods
- }
-
- class NewsUI2.SpecialEventsAdjustmentInsetsFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SpecialEventsAdjustmentInsetsFactoryType {
-	// Swift methods
- }
-
- class NewsUI2.SpecialEventsEmbedViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SpecialEventsEmbedViewRendererType {
-
-	// Properties
-	let styler : SpecialEventsEmbedViewStylerType // +0x10 (0x28)
-
-	// Swift methods
- }
-
- class NewsUI2.SpecialEventsHeadlineModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	var title : String? // +0x10 (0x10)
-	let action : SpecialEventsAction // +0x20 (0x8)
-	let style : SpecialEventsStyle // +0x28 (0x90)
-	let headlineModel : HeadlineModel // +0xb8 (0x8)
-
-	// Swift methods
- }
-
- class NewsUI2.SpecialEventsEmbedViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SpecialEventsEmbedViewStylerType {
 	// Swift methods
  }
 
@@ -15668,54 +19224,86 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let size : HeadlineViewSize // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleToBottomElementSpacing : A // +0x18
+	let titleToBottomElementSpacing : õ_	 // +0x18
 	let footerProperties : HeadlineViewFooterViewProperties // +0x20
 	let textViewProperties : HeadlineViewTextViewProperties // +0x48
 	let videoThumbnailSize : CGSize // +0x68
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bottomVideoPadding : A // +0x78
+	let bottomVideoPadding : õ_	 // +0x78
+ }
+
+ struct NewsUI2.TodayFeedPoolContent {
+
+	// Properties
+	let reserved : [A]
+	let available : [A]
+	let consumedIdentifiers : Set<String>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyPath : 
  }
 
  class NewsUI2.JournalNavigationController : UINavigationController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x553390  @objc JournalNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
-	0x553470  @objc JournalNavigationController.initWithRootViewController: <stripped>
-	0x5535c0  @objc JournalNavigationController.initWithNibName:bundle: <stripped>
-	0x553720  @objc JournalNavigationController.initWithCoder: <stripped>
+	0x6d9500  @objc JournalNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
+	0x6d95e0  @objc JournalNavigationController.initWithRootViewController: <stripped>
+	0x6d9730  @objc JournalNavigationController.initWithNibName:bundle: <stripped>
+	0x6d9890  @objc JournalNavigationController.initWithCoder: <stripped>
  }
 
  class NewsUI2.JournalViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 	let tableView : UITableView // +0x8 (0x8)
-	let magazineFeedJournal : FeedJournal // +0x10 (0x8)
-	let feedPersonalizer : FCFeedPersonalizing // +0x18 (0x8)
-	let tagController : FCTagController // +0x20 (0x8)
-	let journalGroup : FeedJournalGroup // +0x0 (0x0)
-	let privateDataDirectory : String // +0x0 (0x10)
-	let paidAccessChecker : FCPaidAccessCheckerType // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let magazineFeedJournal : çÉ	 // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let journalGroup : a|	 // +0x0 (0x0)
+	let cloudContext : FCCloudContext // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5537a0  @objc JournalViewController.initWithCoder: <stripped>
-	0x5537c0  @objc JournalViewController.initWithNibName:bundle: <stripped>
-	0x5537f0  @objc JournalViewController..cxx_destruct <stripped>
+	0x6d9910  @objc JournalViewController.initWithCoder: <stripped>
+	0x6d9930  @objc JournalViewController.initWithNibName:bundle: <stripped>
+	0x6d9960  @objc JournalViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.JournalTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x554720  @objc JournalTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x5547c0  @objc JournalTableViewCell.initWithCoder: <stripped>
+	0x6daaf0  @objc JournalTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x6dab90  @objc JournalTableViewCell.initWithCoder: <stripped>
  }
 
- class NewsUI2.SpecialEventsRefreshBlueprintAnimator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ class NewsUI2.Item : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewProvider : iF // +0x10 (0x8)
+	let view : UIView // +0x10 (0x8)
+	let kind : Kind // +0x18 (0x1)
+	let snapshot : UIView // +0x20 (0x8)
+	let layoutAttributes : UICollectionViewLayoutAttributes // +0x28 (0x8)
+	let absoluteFrame : CGRect // +0x30 (0x20)
 
 	// Swift methods
+ }
+
+ enum NewsUI2.Kind {
+
+	// Properties
+	case trackContent  
+	case trackCell  
+	case header  
+	case footer  
+	case dailyBriefing  
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case noView : UICollectionViewLayoutAttributes
+	case invalidCell : UICollectionViewCell
+	case noSnapshot : UIView
+	case invalidHeader : UICollectionViewLayoutAttributes
+	case invalidFooter : UICollectionViewLayoutAttributes
  }
 
  struct NewsUI2.MagazineFeedPaywallViewModel {
@@ -15723,12 +19311,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let image : UIImage?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let videoFileURL : S⁄
+	let videoFileURL : ◊6	
 	let videoWidth : Int
 	let videoHeight : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let topOffset : A
-	let variant : MagazineFeedPaywallSizeVariant
+	let topOffset : õ_	
+	let variant : FeedPaywallSizeVariant
 	let gradientPercentHeight : Double
 	let textTopPadding : Int
 	let backgroundColor : UIColor
@@ -15742,16 +19330,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let subscribeButtonTitle : String
  }
 
+ class NewsUI2.AudioFeedTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioFeedTrackerType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x10 (0x8)
+	let readingHistory : FCReadingHistory // +0x18 (0x8)
+	let contentPrefetchManager : ContentPrefetchManagerType // +0x20 (0x28)
+	let channelDataFactory : AnalyticsChannelDataFactoryType // +0x48 (0x28)
+	let scienceDataFactory : AnalyticsScienceDataFactoryType // +0x70 (0x28)
+
+	// Swift methods
+ }
+
+ enum NewsUI2.TagFeedLayoutModel {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case feedItem : G\	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case plugin : K4	
+ }
+
  class NewsUI2.ChannelIssuesRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ChannelIssuesRouterType {
 
 	// Properties
 	var controller : weak UIViewController? // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x18 (0x28)
+	let resolver : È_	 // +0x18 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x40 (0x8)
+	let tracker : 9P	 // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x48 (0x8)
+	let navigator : =e	 // +0x48 (0x8)
 
 	// Swift methods
  }
@@ -15778,23 +19388,40 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case rankMultiplier  
  }
 
+ class NewsUI2.AudioPlaybackOptionsAlertPresenter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioPlaybackOptionsAlertPresenterType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineProviderFactory : m#	
+	let actionSheetProvider : AudioActionSheetProviderType
+
+	// Swift methods
+ }
+
+ class NewsUI2.NoopAudioPlaybackOptionsAlertPresenter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioPlaybackOptionsAlertPresenterType {
+	// Swift methods
+ }
+
  struct NewsUI2.ArticleListMagazineFeedGroupConfig {
 
 	// Properties
-	let kind : MagazineFeedGroupKind // +0x0
-	let identifier : String // +0x8
-	let position : FeedGroupPosition // +0x18
-	let groupTitle : String // +0x20
-	let groupTitleColor : String // +0x30
-	let groupSubtitle : String? // +0x40
-	let articles : MagazineFeedArticle // +0x50
-	let availableInForYou : Bool // +0x58
-	let availableInMagazineFeed : Bool // +0x59
-	let paidVisibility : FeedGroupPaidVisibility // +0x5a
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x5b
-	let allowDuplicatesAcrossGroups : Bool // +0x5c
-	let minNewsVersion : String? // +0x60
-	let maxNewsVersion : String? // +0x70
+	let kind : MagazineFeedGroupKind
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+	let groupTitle : String
+	let groupTitleColor : String
+	let groupSubtitle : String?
+	let articles : MagazineFeedArticle
+	let availableInForYou : Bool
+	let availableInMagazineFeed : Bool
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let allowDuplicatesAcrossGroups : Bool
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
  }
 
  enum NewsUI2.Keys {
@@ -15815,12 +19442,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case maxNewsVersion  
  }
 
- struct NewsUI2.SpecialEventsChangeHeadlineModifier {
-
-	// Properties
-	let specialEventsChanges : SpecialEventsDataManagerChange // +0x0
- }
-
  class NewsUI2.KnownMagazineGridModelLoader : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineGridModelLoaderType {
 
 	// Properties
@@ -15831,29 +19452,53 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ struct NewsUI2.NewspaperTodayGroupEmitterCursor {
+
+	// Properties
+	let groups : NewspaperGroup // +0x0
+ }
+
  struct NewsUI2.NewIssueMagazineFeedGroup {
 
 	// Properties
-	let identifier : String // +0x0
-	let groupTitle : String // +0x10
-	let groupTitleColor : UIColor? // +0x20
-	let groupDarkStyleTitleColor : UIColor? // +0x28
-	let groupSubtitle : String? // +0x30
-	let issue : FCIssue // +0x40
-	let headlines : [FCHeadlineProviding] // +0x48
-	let paidVisibility : FeedGroupPaidVisibility // +0x50
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x51
-	let rankMultiplier : Double // +0x58
-	let namespace : String? // +0x60
+	let identifier : String
+	let groupTitle : String
+	let groupTitleColor : UIColor?
+	let groupDarkStyleTitleColor : UIColor?
+	let groupSubtitle : String?
+	let issue : FCIssue
+	let headlines : [FCHeadlineProviding]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let rankMultiplier : Double
+	let namespace : String?
+ }
+
+ class NewsUI2.AudioFeedPoolService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
+ struct NewsUI2.AudioFeedPool { }
+
+ class NewsUI2.HardCodedTagFeedServiceConfigFetcher : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TagFeedServiceConfigFetcherType {
+
+	// Properties
+	let name : String // +0x10 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidBundleConfigManager : ì	 // +0x20 (0x28)
+
+	// Swift methods
  }
 
  class NewsUI2.MagazineGridModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineGridModuleType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x10 (0x28)
+	let resolver : È_	 // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x38 (0x8)
+	let tracker : 9P	 // +0x38 (0x8)
 
 	// Swift methods
  }
@@ -15865,15 +19510,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case tagless : TaglessNotificationRowModelType
  }
 
+ class NewsUI2.NewsAudioPlaybackQueue : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let playNowIgnoringPlaylistSlot : πL	 // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let queue : wA	 // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let carplayQueue : wA	 // +0x20 (0x8)
+	let audioDataManager : AudioDataManagerType // +0x28 (0x28)
+	var carplayState : AudioState // +0x0 (0x0)
+
+	// Swift methods
+ }
+
  struct NewsUI2.MagazineFeedServiceConfig {
 
 	// Properties
 	let rules : MagazineFeedRules
-	let forceRefresh : Bool
-	let persistPublishDate : Bool
 	let contentConfig : MagazineConfig
 	let paidBundleConfig : FCPaidBundleConfiguration
-	let cachePolicy : FeedPoolCachePolicy
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let cachePolicy : ©ß	
+ }
+
+ class NewsUI2.SearchMoreTagsTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreTagsTrackerType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x10 (0x8)
+
+	// Swift methods
  }
 
  class NewsUI2.StubMagazineFeedPersonalizationService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -15888,9 +19556,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let colorPaletteProvider : ¡A // +0x10 (0x28)
+	let colorPaletteProvider : ß≥	 // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let defaultTitleFontSize : A // +0x38 (0x8)
+	let defaultTitleFontSize : õ_	 // +0x38 (0x8)
 
 	// Swift methods
  }
@@ -15906,17 +19574,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsUI2.UserNotificationDelegate : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let notificationResponseHandlerManager : NotificationResponseHandlerManager // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let notificationHandlerManager : Eπ // +0x8 (0x8)
 	let notificationOpenSettingsHandler : UserNotificationsOpenSettingsHandler // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : g // +0x18 (0x8)
+	let navigator : =e	 // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x560620  @objc UserNotificationDelegate.userNotificationCenter:willPresentNotification:withCompletionHandler: <stripped>
-	0x5606b0  @objc UserNotificationDelegate.userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler: <stripped>
-	0x560750  @objc UserNotificationDelegate.userNotificationCenter:openSettingsForNotification: <stripped>
-	0x560840  @objc UserNotificationDelegate.init <stripped>
-	0x560800  @objc UserNotificationDelegate..cxx_destruct <stripped>
+	0x6edf20  @objc UserNotificationDelegate.userNotificationCenter:willPresentNotification:withCompletionHandler: <stripped>
+	0x6ee200  @objc UserNotificationDelegate.userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler: <stripped>
+	0x6ee2e0  @objc UserNotificationDelegate.userNotificationCenter:openSettingsForNotification: <stripped>
+	0x6ee3d0  @objc UserNotificationDelegate.init <stripped>
+	0x6ee390  @objc UserNotificationDelegate..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -15936,12 +19605,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var frame : CGRect // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let screenScale : A // +0x20
+	let screenScale : õ_	 // +0x20
 	let textViewLayoutAttributes : HeadlineViewPositionComposedAttributes // +0x28
 	let footerViewLayoutAttributes : HeadlineViewPositionComposedAttributes // +0xd0
 	let offensiveViewLayoutAttributes : OffensiveViewLayoutAttributes // +0x190
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let removableSpace : A // +0x1f0
+	let removableSpace : õ_	 // +0x1f0
  }
 
  enum NewsUI2.MagazineCategoriesLayoutModel {
@@ -15958,35 +19627,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- class NewsUI2.HistoryRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HistoryRouterType {
-
-	// Properties
-	var controller : weak UIViewController? // +0x10 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x18 (0x28)
-
-	// Swift methods
- }
-
  struct NewsUI2.FeaturedArticleMagazineFeedGroupConfig {
 
 	// Properties
-	let kind : MagazineFeedGroupKind // +0x0
-	let identifier : String // +0x8
-	let position : FeedGroupPosition // +0x18
-	let groupTitle : String // +0x20
-	let groupTitleColor : String // +0x30
-	let groupSubtitle : String? // +0x40
-	let featuredArticle : MagazineFeedArticle // +0x50
-	let additionalArticles : MagazineFeedArticle // +0x58
-	let availableInForYou : Bool // +0x60
-	let availableInMagazineFeed : Bool // +0x61
-	let paidVisibility : FeedGroupPaidVisibility // +0x62
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x63
-	let allowDuplicatesAcrossGroups : Bool // +0x64
-	let minNewsVersion : String? // +0x68
-	let maxNewsVersion : String? // +0x78
-	let tag : MagazineFeedGroupTag // +0x88
+	let kind : MagazineFeedGroupKind
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+	let groupTitle : String
+	let groupTitleColor : String
+	let groupSubtitle : String?
+	let featuredArticle : MagazineFeedArticle
+	let additionalArticles : MagazineFeedArticle
+	let availableInForYou : Bool
+	let availableInMagazineFeed : Bool
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let allowDuplicatesAcrossGroups : Bool
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
+	let tag : MagazineFeedGroupTag
  }
 
  enum NewsUI2.Keys {
@@ -16011,24 +19673,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case tag  
  }
 
- class NewsUI2.TopOfFeedEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TopOfFeedEventHandlerType {
-
-	// Properties
-	var delegate : TopOfFeedEventHandlerTypeDelegate // +0x10 (0x10)
-	let interactor : TopOfFeedInteractorType // +0x20 (0x10)
-	let router : TopOfFeedRouterType // +0x30 (0x28)
-
-	// Swift methods
- }
-
- class NewsUI2.SavedHeadlineModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let headlineModel : HeadlineModel // +0x10 (0x8)
-
-	// Swift methods
- }
-
  class NewsUI2.AnalyticsChannelDataFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AnalyticsChannelDataFactoryType {
 
 	// Properties
@@ -16043,44 +19687,46 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
+	let resolver : È_	 // +0x8 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x30 (0x8)
+	let tracker : 9P	 // +0x30 (0x8)
 	let layoutOptionsProvider : PluginLayoutOptionsProvider // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x566110  @objc ChannelIssuesPluginFactory.createPluginWithIdentifier:usingConfig: <stripped>
-	0x566200  @objc ChannelIssuesPluginFactory.init <stripped>
-	0x566260  @objc ChannelIssuesPluginFactory..cxx_destruct <stripped>
+	0x6f2c50  @objc ChannelIssuesPluginFactory.createPluginWithIdentifier:usingConfig: <stripped>
+	0x6f2d40  @objc ChannelIssuesPluginFactory.init <stripped>
+	0x6f2da0  @objc ChannelIssuesPluginFactory..cxx_destruct <stripped>
 
 	// Swift methods
-	0x565870  class func ChannelIssuesPluginFactory.__allocating_init(resolver:tracker:layoutOptionsProvider:) // init 
+	0x6f23b0  class func ChannelIssuesPluginFactory.__allocating_init(resolver:tracker:layoutOptionsProvider:) // init 
+ }
+
+ class NewsUI2.TagFeedEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TagFeedEventHandlerType {
+
+	// Properties
+	var delegate : TagFeedEventHandlerTypeDelegate // +0x10 (0x10)
+	let interactor : TagFeedInteractorType // +0x20 (0x10)
+	let router : TagFeedRouterType // +0x30 (0x28)
+	let tracker : TagFeedTrackerType // +0x58 (0x28)
+
+	// Swift methods
  }
 
  class NewsUI2.TodayAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x569b70  @objc TodayAssembly.init <stripped>
- }
-
- struct NewsUI2.TopVideosPrewarmBlueprintModifier {
-
-	// Properties
-	let models : TopVideosHeadlineModel // +0x0
-	let groupTitle : String // +0x8
-	let groupSubtitle : String? // +0x18
+	0x6f7890  @objc TodayAssembly.init <stripped>
  }
 
  class NewsUI2.TodayBlueprintLayoutBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedLayoutSolver : À¿ // +0x10 (0x8)
+	let feedLayoutSolver : WX	 // +0x10 (0x8)
 	let assetManager : FCAssetManager // +0x18 (0x8)
 
 	// Swift methods
  }
 
- class NewsUI2.SpecialEventsWebEmbedViewController {
  enum NewsUI2.AutomationTestDataLocator {
 
 	// Properties
@@ -16092,9 +19738,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let testDataLoader : 7∆ // +0x10 (0x8)
+	let testDataLoader : °	 // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paidBundleConfigurationManager : è$ // +0x18 (0x28)
+	let paidBundleConfigurationManager : ì	 // +0x18 (0x28)
 
 	// Swift methods
  }
@@ -16110,8 +19756,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let purchaseController : FCPurchaseController
 
 	// ObjC -> Swift bridged methods
-	0x574dc0  @objc SubscriptionService.init <stripped>
-	0x574e20  @objc SubscriptionService..cxx_destruct <stripped>
+	0x6fe510  @objc SubscriptionService.init <stripped>
+	0x6fe570  @objc SubscriptionService..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -16148,7 +19794,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let title : String // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleSize : A // +0x10
+	let titleSize : õ_	 // +0x10
 	let titleColor : UIColor? // +0x18
 	let subtitle : String? // +0x20
 	let tagModel : MagazineFeedTagModel // +0x30
@@ -16178,27 +19824,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutOptions : -	
+	let layoutOptions : ón	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let topPadding : A
+	let topPadding : õ_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bottomPadding : A
+	let bottomPadding : õ_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let columnOptions : y
+	let columnOptions : wü
 	let variantOption : MagazineFeedGroupTitleViewVariantOption
- }
-
- class NewsUI2.MoreVideosBlueprintLayoutBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let headlineLayoutAttributesProvider : HeadlineViewLayoutAttributesProviderType // +0x10 (0x28)
-	let feedLayoutOptionsFactory : FeedLayoutOptionsFactory // +0x38 (0x8)
-	let headlineViewModelFactory : HeadlineViewModelFactoryType // +0x40 (0x28)
-	let forYouTitleViewLayoutAttributesFactory : ForYouTitleViewLayoutAttributesFactoryType // +0x68 (0x28)
-	let forYouTitleViewPropertiesFactory : ForYouTitleViewPropertiesFactory // +0x90 (0x8)
-	let forYouTitleViewStyleFactory : ForYouTitleViewStyleFactory // +0x98 (0x8)
-
-	// Swift methods
  }
 
  enum NewsUI2.MagazineCategoriesLayoutSectionDescriptor {
@@ -16217,19 +19850,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- class NewsUI2.TopVideosEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TopVideosEventHandlerType {
+ class NewsUI2.AudioNextTrackAutoPrewarmer : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var delegate : TopVideosEventHandlerTypeDelegate // +0x10 (0x10)
-	let interactor : TopVideosInteractorType // +0x20 (0x10)
-	let router : TopVideosRouterType // +0x30 (0x28)
-	var channelID : String? // +0x58 (0x10)
+	let audioDataManager : AudioDataManagerType // +0x8 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let articleAudioPrewarmer : o$	 // +0x30 (0x28)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x58 (0x8)
+	var prewarming : AudioFeedTrack // +0x60 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x709900  @objc AudioNextTrackAutoPrewarmer.init <stripped>
+	0x709960  @objc AudioNextTrackAutoPrewarmer..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  enum NewsUI2.FeedViewPresentationReason { }
 
+ class NewsUI2.TagFeedInteractor {
  enum NewsUI2.Theme {
 
 	// Properties
@@ -16243,10 +19882,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	var delegate : EmailSignupInteractorTypeDelegate // +0x10 (0x10)
-	let dataManager : EmailSignupDataManagerType // +0x20 (0x10)
-	let cloudContext : FCCloudContext // +0x30 (0x8)
-	let analyticTracker : AnalyticTracker // +0x38 (0x8)
-	var appearDate : NSDate // +0x40 (0x8)
+	let model : EmailSignupModel // +0x20 (0x80)
+	let newsletterManager : FCNewsletterManager // +0xa0 (0x8)
+	let signupDetectionManager : EmailSignupDetectionManagerType // +0xa8 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0xb8 (0x8)
+	var interacted : Bool // +0xc0 (0x1)
 
 	// Swift methods
  }
@@ -16259,42 +19900,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- class NewsUI2.SearchMoreViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
-
-	// Properties
-	let styler : SearchMoreStylerType // +0x8 (0x28)
-	let eventHandler : SearchMoreEventHandlerType // +0x30 (0x10)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController : /ˇ // +0x40 (0x8)
-	var searchContentType : SearchContentType // +0x48 (0x8)
-	var channelStreamingResults : FCStreamingResults<FCTagProviding>? // +0x50 (0x8)
-	var topicStreamingResults : FCStreamingResults<FCTagProviding>? // +0x58 (0x8)
-	var articleStreamingResults : FCArticleStreamingResults<FCArticleSearchResult>? // +0x60 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x5860d0  @objc SearchMoreViewController.initWithCoder: <stripped>
-	0x586150  @objc SearchMoreViewController.initWithNibName:bundle: <stripped>
-	0x5861b0  @objc SearchMoreViewController..cxx_destruct <stripped>
-
-	// Swift methods
- }
-
  class NewsUI2.MainViewController {
- class NewsUI2.SearchMoreDataManagerFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreDataManagerFactoryType {
-
-	// Properties
-	let searchMoreServiceFactory : SearchMoreServiceFactoryType // +0x10 (0x28)
-	let tagService : TagServiceType // +0x38 (0x10)
-	let notificationManager : TSNotificationManagerType // +0x48 (0x8)
-
-	// Swift methods
- }
-
  struct NewsUI2.FollowingManageFamilySharingModifier {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let familyStatus : ?Ü
+	let familyStatus : Ì±
 	let isBundleSubscriber : Bool
 	let familySharingSetupEnabled : Bool
  }
@@ -16305,24 +19916,65 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case invalidBlueprint  
  }
 
- enum NewsUI2.BridgedArticleAccess { }
+ enum NewsUI2.AudioFeedGroup {
 
- class NewsUI2.NewsActivitySerializer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-	// Swift methods
+	// Properties
+	case dailyBriefing : AudioDailyBriefingFeedGroup
+	case editorialHero : AudioEditorialHeroFeedGroup
+	case suggestions : AudioSuggestionsFeedGroup
+	case playlist : AudioPlaylistFeedGroup
+	case recentlyPlayed : AudioRecentlyPlayedFeedGroup
+	case paywall : AudioFeedPaywallFeedGroup
  }
+
+ enum NewsUI2.BridgedArticleAccess { }
 
  class NewsUI2.UserNotificationsAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x591ba0  @objc UserNotificationsAssembly.init <stripped>
+	0x723560  @objc UserNotificationsAssembly.init <stripped>
 
 	// Swift methods
+	0x721190  func <stripped> // method 
  }
 
  class NewsUI2.HeadlineViewTextViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
  }
 
+ class NewsUI2.Snapshot : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let layoutAttributes : Pair // +0x10 (0x8)
+	let onScreenItems : Pair // +0x18 (0x8)
+
+	// Swift methods
+ }
+
+ struct NewsUI2.Pair {
+
+	// Properties
+	let first : A
+	let second : B
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case noLayoutAttributes : CGRect
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case noElements : =∂	
+ }
+
  class NewsUI2.StubHeadlineLikedStatusProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
+ class NewsUI2.AudioAutoNextTrackHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let itemReachedEndSignal : M-	 // +0x10 (0x8)
+
 	// Swift methods
  }
 
@@ -16330,7 +19982,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedLayoutSolver : À¿ // +0x10 (0x8)
+	let feedLayoutSolver : WX	 // +0x10 (0x8)
 	let groupTitleViewLayoutAttributesFactory : ChannelIssuesGroupTitleViewLayoutAttributesFactoryType // +0x18 (0x28)
 
 	// Swift methods
@@ -16339,18 +19991,44 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.RecommendedIssuesMagazineFeedGroupEmitter {
 
 	// Properties
-	let config : RecommendedIssuesMagazineFeedGroupConfig // +0x0
-	let knobs : RecommendedIssuesMagazineFeedGroupKnobs // +0x78
-	let subscriptionController : FCSubscriptionController // +0xb0
-	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0xb8
-	let offlineIssueList : FCOfflineIssueList // +0xc0
-	let issueModelFactory : IssueModelFactoryType // +0xc8
+	let config : RecommendedIssuesMagazineFeedGroupConfig
+	let knobs : RecommendedIssuesMagazineFeedGroupKnobs
+	let subscriptionController : FCSubscriptionController
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType
+	let offlineIssueList : FCOfflineIssueList
+	let issueModelFactory : IssueModelFactoryType
+	let name : String
+ }
+
+ class NewsUI2.TagFeedPoolService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let context : FCCloudContext // +0x10 (0x8)
+	let appConfigManager : FCCoreConfigurationManager // +0x18 (0x8)
+
+	// Swift methods
+ }
+
+ enum NewsUI2.Errors {
+
+	// Properties
+	case appConfigFetchFailed  
+	case missingAppConfigData  
+	case feedHeadlineFetchFailed  
  }
 
  class NewsUI2.StubBestOfBundleMagazineFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let config : BestOfBundleMagazineFeedGroupConfig // +0x10 (0x88)
+	let config : BestOfBundleMagazineFeedGroupConfig // +0x0 (0x0)
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioFeedPlacardRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioFeedPlacardRendererType {
+
+	// Properties
+	let styler : AudioFeedPlacardStylerType // +0x10 (0x28)
 
 	// Swift methods
  }
@@ -16358,15 +20036,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsUI2.ArticleListMagazineFeedGroup {
 
 	// Properties
-	let identifier : String // +0x0
-	let groupTitle : String // +0x10
-	let groupTitleColor : UIColor? // +0x20
-	let groupSubtitle : String? // +0x28
-	let headlines : [FCHeadlineProviding] // +0x38
-	let paidVisibility : FeedGroupPaidVisibility // +0x40
-	let paidVisibilityInForYou : FeedGroupPaidVisibility // +0x41
-	let rankMultiplier : Double // +0x48
-	let allowDuplicatesAcrossGroups : Bool // +0x50
+	let identifier : String
+	let groupTitle : String
+	let groupTitleColor : UIColor?
+	let groupSubtitle : String?
+	let headlines : [FCHeadlineProviding]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let rankMultiplier : Double
+	let allowDuplicatesAcrossGroups : Bool
  }
 
  enum NewsUI2.TodayModel {
@@ -16375,6 +20055,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case gap : TodayGapLocation
 	case headline : Contextual
 	case webEmbed : Contextual
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case plugin : K4	
+	case audioTrack : Contextual
  }
 
  struct NewsUI2.Contextual {
@@ -16382,7 +20065,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let model : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let context : Ø
+	let context : …x	
 	let style : Style
 	let namespace : String?
  }
@@ -16390,7 +20073,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum NewsUI2.TodayGapLocation {
 
 	// Properties
-	case cursor : FeedLocation
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case cursor : ØÅ	
 	case topOfFeed  
  }
 
@@ -16401,6 +20085,46 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let groupBackgroundColor : UIColor? // +0x8
  }
 
+ class NewsUI2.NewsAssetURLSchemeHandler : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	let task : WKURLSchemeTask // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let assetFetchService : ÒW // +0x10 (0x28)
+	let resourceIdentifier : String // +0x38 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var cancelHandler : %ö // +0x48 (0x28)
+
+	// ObjC -> Swift bridged methods
+	0x739160  @objc NewsAssetURLSchemeHandler.task <stripped>
+	0x739710  @objc NewsAssetURLSchemeHandler.start <stripped>
+	0x739820  @objc NewsAssetURLSchemeHandler.cancel <stripped>
+	0x739850  @objc NewsAssetURLSchemeHandler.finish <stripped>
+	0x739a00  @objc NewsAssetURLSchemeHandler.init <stripped>
+	0x739a60  @objc NewsAssetURLSchemeHandler..cxx_destruct <stripped>
+
+	// Swift methods
+	0x739190  func <stripped> // method 
+	0x739740  func <stripped> // method 
+ }
+
+ enum NewsUI2.NewsAssetURLSchemeHandlerError {
+
+	// Properties
+	case badResponse  
+	case invalidURL  
+	case missingData  
+ }
+
+ class NewsUI2.WebEmbedInteractor : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WebEmbedInteractorType {
+
+	// Properties
+	var delegate : WebEmbedInteractorTypeDelegate // +0x10 (0x10)
+	let dataManager : WebEmbedDataManagerType // +0x20 (0x10)
+
+	// Swift methods
+ }
+
  enum NewsUI2.FollowingDislikedModel {
 
 	// Properties
@@ -16408,98 +20132,73 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case topic : FollowingTagModel
  }
 
+ class NewsUI2.SearchMoreTagsRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreTagsRouterType {
+
+	// Properties
+	var controller : weak UIViewController? // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : È_	 // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x40 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x48 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.HistoryFeedBlueprintViewSupplementaryViewProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
  struct NewsUI2.CategoriesMagazineFeedGroupEmitter {
 
 	// Properties
-	let config : CategoriesMagazineFeedGroupConfig // +0x0
-	let knobs : CategoriesMagazineFeedGroupKnobs // +0x60
-	let magazineCategoryService : MagazineCategoryServiceType // +0x68
-	let tagService : TagServiceType // +0x90
+	let config : CategoriesMagazineFeedGroupConfig
+	let knobs : CategoriesMagazineFeedGroupKnobs
+	let magazineCategoryService : MagazineCategoryServiceType
+	let tagService : TagServiceType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueService : Ÿπ // +0xa0
+	let issueService : „	
+	let name : String
  }
 
  struct NewsUI2.FeaturedIssueArticleMagazineFeedGroupEmitter {
 
 	// Properties
-	let config : FeaturedIssueArticleMagazineFeedGroupConfig // +0x0
-	let knobs : FeaturedIssueArticleMagazineFeedGroupKnobs // +0xa8
-	let diversityPenalty : Double // +0xd8
+	let config : FeaturedIssueArticleMagazineFeedGroupConfig
+	let knobs : FeaturedIssueArticleMagazineFeedGroupKnobs
+	let diversityPenalty : Double
+	let name : String
  }
 
- enum NewsUI2.TopVideosLayoutModel {
+ class NewsUI2.MagazineFeedDataManager : NSObject /usr/lib/libobjc.A.dylib, MagazineFeedDataManagerType {
 
 	// Properties
-	case headline : TopVideosHeadlineModel
- }
-
- enum NewsUI2.TopVideoLayoutAttributes {
-
-	// Properties
-	case videoOnTop : HeadlineViewVideoOnTopLayoutAttributes
- }
-
- class NewsUI2.MagazineFeedDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineFeedDataManagerType {
-
-	// Properties
-	var delegate : MagazineFeedDataManagerTypeDelegate // +0x10 (0x10)
-	let feedServiceConfigFetcher : MagazineFeedServiceConfigFetcherType // +0x20 (0x28)
-	let feedService : MagazineFeedServiceType // +0x48 (0x28)
-	let myMagazinesModule : MyMagazinesModuleType // +0x70 (0x28)
-	let categoriesModule : TSMagazineCategoriesModuleType // +0x98 (0x8)
-	let paywallModule : MagazineFeedPaywallModuleType // +0xa0 (0x28)
-	let accessQueue : OS_dispatch_queue // +0xc8 (0x8)
-	let dataPrewarmer : MagazineFeedDataPrewarmerType // +0xd0 (0x28)
+	var delegate : MagazineFeedDataManagerTypeDelegate // +0x8 (0x10)
+	let feedServiceConfigFetcher : MagazineFeedServiceConfigFetcherType // +0x18 (0x28)
+	let feedService : MagazineFeedServiceType // +0x40 (0x28)
+	let myMagazinesModule : MyMagazinesModuleType // +0x68 (0x28)
+	let categoriesModule : TSMagazineCategoriesModuleType // +0x90 (0x8)
+	let paywallModule : MagazineFeedPaywallModuleType // +0x98 (0x28)
+	let accessQueue : OS_dispatch_queue // +0xc0 (0x8)
+	let dataPrewarmer : MagazineFeedDataPrewarmerType // +0xc8 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pluginManager : ì£ // +0xf8 (0x8)
+	let pluginManager : É0	 // +0xf0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lastRefreshDate : ùÇ // +0x100 (0x8)
-	let tagService : TagServiceType // +0x108 (0x10)
-	let notificationManager : TSNotificationManagerType // +0x118 (0x8)
+	let lastRefreshDate : ™ // +0xf8 (0x8)
+	let tagService : TagServiceType // +0x100 (0x10)
+	let notificationPrompter : TSNotificationManagerType // +0x110 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bundlePurchasePrewarmer : sx // +0x120 (0x10)
-	let subscriptionService : SubscriptionServiceType // +0x130 (0x10)
-
-	// Swift methods
- }
-
- struct NewsUI2.FeedCursor: FeedCursorType {
-
-	// Properties
-	let totalGroupCount : Int
-	let activeEmitters : FeedGroupEmitter
-	let slottedEmitters : FeedGroupEmitter
-	let emittedGroups : FeedPoolType
-	let skippedSlotCount : Int
+	let bundlePurchasePrewarmer : A	 // +0x118 (0x10)
+	let subscriptionService : SubscriptionServiceType // +0x128 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let emitterCursors : String
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedPool : aÄ
-	let feedGroupKnobs : B
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedContext : Ø
-	let feedJournal : FeedJournal
-	let cachePolicy : FeedCachePolicy
- }
+	var _persistedConfigurationDate : ˝î // +0x138 (0x8)
+	let readingHistory : FCReadingHistory // +0x140 (0x8)
+	let readingList : FCReadingList // +0x148 (0x8)
 
- class NewsUI2.TopVideosStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TopVideosStylerType {
-
-	// Properties
-	let baseStyler : BaseStylerType // +0x10 (0x28)
-
-	// Swift methods
- }
-
- enum NewsUI2.TopVideosSectionDescriptor {
-
-	// Properties
-	case forYou : ForYouTitleViewModel
- }
-
- class NewsUI2.SearchMoreStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreStylerType {
-
-	// Properties
-	let baseStyler : BaseStylerType // +0x10 (0x28)
+	// ObjC -> Swift bridged methods
+	0x744760  @objc MagazineFeedDataManager.init <stripped>
+	0x7447c0  @objc MagazineFeedDataManager..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -16509,6 +20208,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let style : ThemeStyle
 	let backgroundColor : UIColor
+	let secondaryBackgroundColor : UIColor
+	let tertiaryBackgroundColor : UIColor
 	let foregroundColor : UIColor
 	let keyColor : UIColor
 	let headerSecondaryForegroundColor : UIColor
@@ -16517,23 +20218,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let separatorColor : UIColor
 	let paletteLightGrayColor : UIColor
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sectionGradientDescriptor : Ìã
+	let sectionGradientDescriptor : =◊
 	let defaultShineColor : UIColor
 	let mastheadSubheadingColor : UIColor
 	let mastheadFullBleedHeadingColor : UIColor
 	let mastheadFullBleedSubheadingColor : UIColor
+	let mastheadFullBleedSubheadingAlternateColor : UIColor
 	let accessoryColor : UIColor
  }
 
  enum NewsUI2.FeedViewCellHost { }
 
- struct NewsUI2.HistoryChangeHeadlineModifier {
+ struct NewsUI2.AlertErrorFollowing { }
+
+ struct NewsUI2.HeadlineViewVideoOnTopLayoutAttributes {
 
 	// Properties
-	let historyChanges : HistoryDataManagerChange // +0x0
+	var frame : CGRect // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let screenScale : õ_	 // +0x20
+	let videoThumbnailImageViewFrame : CGRect // +0x28
+	let playButtonFrame : CGRect // +0x48
+	let textViewLayoutAttributes : HeadlineViewPositionComposedAttributes // +0x68
+	let footerViewLayoutAttributes : HeadlineViewPositionComposedAttributes // +0x110
+	let offensiveViewLayoutAttributes : OffensiveViewLayoutAttributes // +0x1d0
  }
-
- struct NewsUI2.AlertErrorFollowing { }
 
  enum NewsUI2.VideoOnTopViewType {
 
@@ -16543,17 +20252,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case accessibilitySize : HeadlineViewTheme
  }
 
- struct NewsUI2.HeadlineViewVideoOnTopLayoutAttributes {
+ struct NewsUI2.ArticleListTagFeedGroupConfig {
 
 	// Properties
-	var frame : CGRect // +0x0
+	let identifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let screenScale : A // +0x20
-	let videoThumbnailImageViewFrame : CGRect // +0x28
-	let playButtonFrame : CGRect // +0x48
-	let textViewLayoutAttributes : HeadlineViewPositionComposedAttributes // +0x68
-	let footerViewLayoutAttributes : HeadlineViewPositionComposedAttributes // +0x110
-	let offensiveViewLayoutAttributes : OffensiveViewLayoutAttributes // +0x1d0
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+	let kind : TagFeedGroupKind
+ }
+
+ enum NewsUI2.CodingKeys {
+
+	// Properties
+	case identifier  
+	case paidVisibility  
+	case position  
+	case kind  
  }
 
  enum NewsUI2.HeadlineViewLayoutAttributes {
@@ -16570,6 +20286,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var frame : CGRect // +0x0
 	let separatorFrame : CGRect // +0x20
+ }
+
+ class NewsUI2.SearchMoreArticlesTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreArticlesTrackerType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : 9P	 // +0x10 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioProxyCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var playbackConductor : AudioPlaybackConductor // +0x10 (0x8)
+	let dataManager : AudioDataManagerType // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let playNowIgnoringPlaylistSlot : πL	 // +0x40 (0x8)
+	let audioPlaybackTracker : AudioPlaybackTrackerType // +0x48 (0x28)
+
+	// Swift methods
  }
 
  class NewsUI2.MyMagazinesSectionHeaderSeparatorViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MyMagazinesSectionHeaderSeparatorViewRendererType {
@@ -16613,6 +20350,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case headlinesMissingFromPool  
  }
 
+ enum NewsUI2.SavedFeedLayoutSectionDescriptor {
+
+	// Properties
+	case articleList  
+ }
+
  class NewsUI2.FollowingDislikedDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingDislikedDataManagerType {
 
 	// Properties
@@ -16629,29 +20372,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let pluginLayoutOptionsProvider : PluginLayoutOptionsProvider // +0x0
  }
 
- struct NewsUI2.FeedGroupEmitterCursor {
-
-	// Properties
-	let priorGroups : FeedPoolType
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pool : aÄ
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cursor : Å}
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let context : Ø
-	let cachePolicy : FeedCachePolicy
- }
-
- class NewsUI2.TopOfFeedModule : NSObject /usr/lib/libobjc.A.dylib {
+ class NewsUI2.NewsAudioListeningProgressProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +˛ // +0x8 (0x28)
-
-	// ObjC -> Swift bridged methods
-	0x5c82e0  @objc TopOfFeedModule.createViewController <stripped>
-	0x5c8370  @objc TopOfFeedModule.init <stripped>
-	0x5c83d0  @objc TopOfFeedModule..cxx_destruct <stripped>
+	let articleListeningProgressManager : Á$	 // +0x10 (0x28)
+	let readingHistory : FCReadingHistory // +0x38 (0x8)
 
 	// Swift methods
  }
@@ -16666,7 +20392,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsUI2.ActivityAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x5c90c0  @objc ActivityAssembly.init <stripped>
+	0x759ac0  @objc ActivityAssembly.init <stripped>
  }
 
  class NewsUI2.FollowingSettingsButtonViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -16674,7 +20400,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let styler : FollowingSettingsButtonViewStylerType // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cache : m- // +0x38 (0x8)
+	var cache : { // +0x38 (0x8)
 
 	// Swift methods
  }
@@ -16684,9 +20410,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let buttonFrame : CGRect // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : A // +0x20
+	let height : õ_	 // +0x20
 	let separatorInsets : UIEdgeInsets // +0x28
 	let shouldLayoutForLargeText : Bool // +0x48
+ }
+
+ class NewsUI2.SearchMoreArticlesEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SearchMoreArticlesEventHandlerType {
+
+	// Properties
+	var delegate : SearchMoreArticlesEventHandlerTypeDelegate // +0x10 (0x10)
+	let interactor : SearchMoreArticlesInteractorType // +0x20 (0x10)
+	let router : SearchMoreArticlesRouterType // +0x30 (0x28)
+	let tracker : SearchMoreArticlesTrackerType // +0x58 (0x28)
+
+	// Swift methods
  }
 
  class NewsUI2.FamilySetupURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -16695,27 +20432,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let patterns :  empty-list  // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigator : & // +0x0 (0x0)
+	let navigator : =e	 // +0x18 (0x8)
 
 	// Swift methods
  }
 
- class NewsUI2.HistoryDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HistoryDataManagerType {
+ class NewsUI2.SavedFeedDataManager : NSObject /usr/lib/libobjc.A.dylib, SavedFeedDataManagerType {
 
 	// Properties
-	var delegate : HistoryDataManagerDelegate // +0x10 (0x10)
-	let historyService : HistoryServiceType // +0x20 (0x28)
-	let savedService : SavedServiceType // +0x48 (0x28)
+	var delegate : SavedFeedDataManagerTypeDelegate // +0x8 (0x10)
+	let readingList : FCReadingList // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineService : ±≠	 // +0x20 (0x28)
+	let accessQueue : OS_dispatch_queue // +0x48 (0x8)
+	let chunkSize : Int // +0x50 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x75c6d0  @objc SavedFeedDataManager.init <stripped>
+	0x75c730  @objc SavedFeedDataManager..cxx_destruct <stripped>
 
 	// Swift methods
- }
-
- enum NewsUI2.HistoryDataManagerChange {
-
-	// Properties
-	case added : HistoryHeadlineModel
-	case removed : HistoryHeadlineModel
-	case changed : HistoryHeadlineModel
  }
 
  class NewsUI2.LocalDraftsDeviceManager : NSObject /usr/lib/libobjc.A.dylib {
@@ -16725,10 +20461,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : weak TSLocalDraftsDelegate? // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5cbe20  @objc LocalDraftsDeviceManager.delegate <stripped>
-	0x5cbea0  @objc LocalDraftsDeviceManager.setDelegate: <stripped>
-	0x5cc110  @objc LocalDraftsDeviceManager.init <stripped>
-	0x5cc160  @objc LocalDraftsDeviceManager..cxx_destruct <stripped>
+	0x75cf10  @objc LocalDraftsDeviceManager.delegate <stripped>
+	0x75cf90  @objc LocalDraftsDeviceManager.setDelegate: <stripped>
+	0x75d200  @objc LocalDraftsDeviceManager.init <stripped>
+	0x75d250  @objc LocalDraftsDeviceManager..cxx_destruct <stripped>
  }
 
  struct NewsUI2.DeviceInfoData {
@@ -16792,34 +20528,129 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case completion  
  }
 
+ class NewsUI2.ArticleURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let patterns :  empty-list  // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigator : =e	 // +0x18 (0x8)
+	let articleContextFactory : ArticleContextFactory // +0x20 (0x8)
+	let audioPlaybackOptionsPresenter : AudioPlaybackOptionsAlertPresenterType // +0x28 (0x28)
+
+	// Swift methods
+ }
+
+ class NewsUI2.AudioFeedTitleView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	let titleLabel : UILabel // +0x8 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x761b30  @objc AudioFeedTitleView.initWithFrame: <stripped>
+	0x761b60  @objc AudioFeedTitleView.initWithCoder: <stripped>
+	0x761bb0  @objc AudioFeedTitleView..cxx_destruct <stripped>
+ }
+
  enum NewsUI2.MyMagazinesLayoutModel {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case feedItem : ı≤
+	case feedItem : G\	
  }
 
- class NewsUI2.NewsActivityManager : NSObject /usr/lib/libobjc.A.dylib {
+ struct NewsUI2.LocalNewsTodayFeedGroupConfig {
+
+	// Properties
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedFormatPackages : ´	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ó	
+	let channels : Channel
+	let groupSubtitle : String?
+	let minNewsVersion : String?
+	let maxNewsVersion : String?
+	let availableInForYou : Bool
+	let availableInMagazineFeed : Bool
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibility : Îç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paidVisibilityInForYou : Îç	
+	let allowDuplicateArticlesAcrossGroups : Bool
+	let minNumberOfArticlesPerSection : Int
+	let maxNumberOfArticlesPerSection : Int
+	let minNumberOfHeroArticles : Int
+	let maxNumberOfHeroArticles : Int
+	let minNumberOfSections : Int
+	let maxNumberOfSections : Int
+	let softMaxPaidArticlesForFreeUsersSmall : Int?
+	let softMaxPaidArticlesForFreeUsersLarge : Int?
+	let softMinPaidArticlesForFreeUsersSmall : Int?
+	let softMinPaidArticlesForFreeUsersLarge : Int?
+ }
+
+ enum NewsUI2.Keys {
+
+	// Properties
+	case identifier  
+	case type  
+	case feedFormatPackages  
+	case slots  
+	case channels  
+	case groupSubtitle  
+	case availableInForYou  
+	case availableInMagazineFeed  
+	case paidVisibility  
+	case paidVisibilityInForYou  
+	case allowDuplicatesAcrossGroups  
+	case minNewsVersion  
+	case maxNewsVersion  
+	case minNumberOfArticlesPerSection  
+	case maxNumberOfArticlesPerSection  
+	case minNumberOfHeroArticles  
+	case maxNumberOfHeroArticles  
+	case minNumberOfSections  
+	case maxNumberOfSections  
+	case softMaxPaidArticlesForFreeUsersSmall  
+	case softMaxPaidArticlesForFreeUsersLarge  
+	case softMinPaidArticlesForFreeUsersSmall  
+	case softMinPaidArticlesForFreeUsersLarge  
+ }
+
+ struct NewsUI2.Channel {
+
+	// Properties
+	let identifier : String // +0x0
+ }
+
+ enum NewsUI2.Keys {
+
+	// Properties
+	case identifier  
+ }
+
+ struct NewsUI2.SavedFeedExpandBlueprintModifier {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var newsUserActivityManager : Áw // +0x8 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x5ceea0  @objc NewsActivityManager.init <stripped>
-	0x5cef60  @objc NewsActivityManager.registerCurrentActivity: <stripped>
-	0x5ceff0  @objc NewsActivityManager.deregisterActivity: <stripped>
-	0x5cf0c0  @objc NewsActivityManager..cxx_destruct <stripped>
+	let feedContext : …x	
+	let expandResult : SavedFeedExpandResult
+	let headlineModelFactory : HeadlineModelFactoryType
  }
 
- class NewsUI2.LocalRegionManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ enum NewsUI2.Errors {
 
 	// Properties
-	let locationManager : TSLocationDetectionManagerType // +0x10 (0x8)
-	let localAreasManager : FCLocalAreasManager // +0x18 (0x8)
+	case invalidIdentifier : String
+	case sectionNotFound  
+ }
 
-	// ObjC -> Swift bridged methods
-	0x5cf460  @objc LocalRegionManager.fetchRegions: <stripped>
+ class NewsUI2.AudioFeedPlacardLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioFeedPlacardLayoutAttributesFactoryType {
+
+	// Properties
+	let styler : AudioFeedPlacardStylerType // +0x10 (0x28)
+	let margins : UIEdgeInsets // +0x38 (0x20)
 
 	// Swift methods
  }
@@ -16827,12 +20658,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsUI2.StubNewIssueMagazineFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let config : NewIssueMagazineFeedGroupConfig // +0x10 (0x88)
+	let config : NewIssueMagazineFeedGroupConfig // +0x0 (0x0)
 
 	// Swift methods
  }
 
- class NewsUI2.NewspaperGroupPersonalizer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, NewspaperGroupPersonalizerType {
+ class NewsUI2.ChannelSectionsGroupPersonalizer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ChannelSectionsGroupPersonalizerType {
 
 	// Properties
 	let maxVisibleArticlesPerSection : Int // +0x10 (0x8)
@@ -16850,39 +20681,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case noSections  
  }
 
- enum NewsUI2.SavedLayoutModel {
-
-	// Properties
-	case headline : SavedHeadlineModel
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case spinner :  first-element-marker 
- }
-
- enum NewsUI2.SavedHeadlineLayoutAttributes {
-
-	// Properties
-	case imageOnSide : HeadlineViewImageOnSideLayoutAttributes
-	case noImage : HeadlineViewNoImageLayoutAttributes
-	case wrappedImageOnSide : HeadlineViewWrappedImageOnSideLayoutAttributes
- }
-
  class NewsUI2.IssueCoordinator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var delegate : p // +0x10 (0x10)
+	var delegate : Cî // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : YÒ // +0x20 (0x8)
+	let tracker : 9P	 // +0x20 (0x8)
 	let sessionManager : AAViewingSessionManagerType // +0x28 (0x8)
 	let channelDataFactory : AnalyticsChannelDataFactoryType // +0x30 (0x28)
-
-	// Swift methods
- }
-
- class NewsUI2.SpecialEventsEmbedViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SpecialEventsEmbedViewLayoutAttributesFactoryType {
-
-	// Properties
-	let styler : SpecialEventsEmbedViewStylerType // +0x10 (0x28)
 
 	// Swift methods
  }
@@ -16890,6 +20697,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsUI2.FollowingNotificationsInteractor {
  class NewsUI2.AlertNoStorage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
+ }
+
+ class NewsUI2.SearchMoreArticlesAssembly : NSObject /usr/lib/libobjc.A.dylib {
+	// ObjC -> Swift bridged methods
+	0x772860  @objc SearchMoreArticlesAssembly.init <stripped>
  }
 
  class NewsUI2.FollowingNotificationsDisabledViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingNotificationsDisabledViewStylerType {
@@ -16902,7 +20714,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : MainInteractorTypeDelegate // +0x10 (0x10)
 	let dataManager : MainDataManagerType // +0x20 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let followingSelection : œ‘ // +0x30 (0x8)
+	let followingSelection : 31	 // +0x30 (0x8)
+
+	// Swift methods
+ }
+
+ class NewsUI2.SearchMoreTagsBlueprintLayoutBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let tagViewLayoutAttributesFactory : TagViewLayoutAttributesFactoryType // +0x10 (0x28)
+	let spinnerLayoutAttributesFactory : SpinnerFooterViewLayoutAttributesFactoryType // +0x38 (0x28)
 
 	// Swift methods
  }
@@ -16919,13 +20740,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let magazineActivityNavigator : MagazineActivityNavigatorType // +0x18 (0x28)
 
 	// Swift methods
- }
-
- enum NewsUI2.TopVideoAnalyticEvent {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case cellExposure : Å
  }
 
  struct NewsUI2.MagazineFeedUpdateIssueBlueprintModifier {
@@ -16962,7 +20776,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case remove : +Ü
+	case remove : ¨
 	case keep  
  }
 
@@ -16972,14 +20786,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : FollowingDislikedStylerType // +0x8 (0x28)
 	let eventHandler : FollowingDislikedEventHandlerType // +0x30 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController : u´ // +0x40 (0x8)
+	let blueprintViewController : ≠ÿ // +0x40 (0x8)
 	let headerView : FollowingTableHeaderView // +0x48 (0x8)
 	var initialFollowingTags : FollowingTagModel // +0x50 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5e74c0  @objc FollowingDislikedViewController.initWithCoder: <stripped>
-	0x5e74e0  @objc FollowingDislikedViewController.initWithNibName:bundle: <stripped>
-	0x5e7540  @objc FollowingDislikedViewController..cxx_destruct <stripped>
+	0x779800  @objc FollowingDislikedViewController.initWithCoder: <stripped>
+	0x779820  @objc FollowingDislikedViewController.initWithNibName:bundle: <stripped>
+	0x779880  @objc FollowingDislikedViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -16992,7 +20806,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsUI2.ChannelIssuesAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x5ec310  @objc ChannelIssuesAssembly.init <stripped>
+	0x77e6d0  @objc ChannelIssuesAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -17015,32 +20829,42 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  enum __C.FCFeedPersonalizationConfigurationSet { }
 
+ enum __C.NTPBAppSessionStart_NotificationType { }
+
+ enum __C.NTPBAppSessionStart_SessionStartMethod { }
+
  struct __C.ActivityType {
 
 	// Properties
 	var _rawValue : NSString
  }
 
- enum __C.FCOnboardingVersionNumber { }
-
  enum __C.FCForYouBridgedFeedGroupType { }
+
+ enum __C.TimeControlStatus { }
 
  struct __C.UIEdgeInsets {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : A
+	var top : õ_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : A
+	var left : õ_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : A
+	var bottom : õ_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : A
+	var right : õ_	
  }
 
- enum __C.FCPaywallType { }
+ struct __C.FCArticleDownloadOptions {
 
- enum __C.FCSpecialEventsOperationResultType { }
+	// Properties
+	let rawValue : Int
+ }
+
+ enum __C.FCNewsletterSubscription { }
+
+ enum __C.FCPaywallType { }
 
  enum __C.ComparisonResult { }
 
@@ -17048,9 +20872,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : A
+	var width : õ_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : A
+	var height : õ_	
  }
 
  enum __C.UIBackgroundFetchResult { }
@@ -17062,6 +20886,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  struct __C.LaunchOptionsKey {
+
+	// Properties
+	var _rawValue : NSString
+ }
+
+ struct __C.Key {
 
 	// Properties
 	var _rawValue : NSString
@@ -17084,10 +20914,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : 	U
+	let rawValue : +≈	
  }
 
  struct __C.Identifier {
+
+	// Properties
+	var _rawValue : NSString
+ }
+
+ struct __C.NSKeyValueChangeKey {
 
 	// Properties
 	var _rawValue : NSString
@@ -17099,20 +20935,47 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let rawValue : Int
  }
 
- enum __C.FCOfflineIssueSource { }
-
- class __C.CGColor {
- struct __C.AnimationOptions {
+ struct __C.FCArticleHistoryFeature {
 
 	// Properties
 	let rawValue : UInt
  }
 
+ enum __C.FCOfflineIssueSource { }
+
+ struct __C.UIRectCorner {
+
+	// Properties
+	let rawValue : UInt
+ }
+
+ enum __C.CGBlendMode { }
+
+ enum __C.Status { }
+
  struct __C.UIAccessibilityTraits {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : ;U
+	let rawValue : o≈	
+ }
+
+ struct __C.CMTime {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value : W≈	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var timescale : I≈	
+	var flags : CMTimeFlags
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var epoch : W≈	
+ }
+
+ struct __C.UNNotificationPresentationOptions {
+
+	// Properties
+	let rawValue : UInt
  }
 
  struct __C.NSStringDrawingOptions {
@@ -17127,21 +20990,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let rawValue : UInt
  }
 
- struct __C.Key {
-
-	// Properties
-	var _rawValue : NSString
- }
-
- enum __C.FCMagazineFeedPaywallType { }
-
  struct __C.CGPoint {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : A
+	var x : õ_	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : A
+	var y : õ_	
  }
 
  enum __C.Style { }
@@ -17152,9 +21007,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var rawValue : UInt
  }
 
+ struct __C.CMTimeFlags {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : +≈	
+ }
+
  struct __C._NSRange {
 
 	// Properties
 	var location : Int
 	var length : Int
  }
+
+ enum __C.FCFeedPaywallSubtype { }

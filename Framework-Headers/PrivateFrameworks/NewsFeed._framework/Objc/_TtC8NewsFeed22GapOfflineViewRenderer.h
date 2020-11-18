@@ -6,11 +6,8 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE;
-
 @interface _TtC8NewsFeed22GapOfflineViewRenderer : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *traitCollection;
 }
 
 @end

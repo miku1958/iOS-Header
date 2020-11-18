@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)fieldWithNumber:(unsigned int)arg1;
 - (id)initWithClass:(Class)arg1 file:(id)arg2 fields:(id)arg3 storageSize:(unsigned int)arg4 wireFormat:(BOOL)arg5;
 - (id)oneofWithName:(id)arg1;
+- (void)setupContainingMessageClass:(Class)arg1;
 - (void)setupContainingMessageClassName:(const char *)arg1;
 - (void)setupExtensionRanges:(const struct GPBExtensionRange *)arg1 count:(int)arg2;
 - (void)setupExtraTextInfo:(const char *)arg1;

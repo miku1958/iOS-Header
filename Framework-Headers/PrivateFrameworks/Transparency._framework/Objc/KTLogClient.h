@@ -14,6 +14,7 @@
     NSURL *_queryURI;
     NSURL *_consistencyProofURI;
     NSURL *_publicKeysURI;
+    NSURL *_revisionLogProofURI;
     double _expirationTime;
 }
 
@@ -22,6 +23,7 @@
 @property double expirationTime; // @synthesize expirationTime=_expirationTime;
 @property (strong) NSURL *publicKeysURI; // @synthesize publicKeysURI=_publicKeysURI;
 @property (strong) NSURL *queryURI; // @synthesize queryURI=_queryURI;
+@property (strong) NSURL *revisionLogProofURI; // @synthesize revisionLogProofURI=_revisionLogProofURI;
 
 + (id)configBagRequest;
 + (id)configBagURL;
@@ -35,8 +37,10 @@
 - (BOOL)configureWithDisk:(id *)arg1;
 - (id)copyConfigurationBag:(id *)arg1;
 - (void)downloadConsistencyProof:(id)arg1 uuid:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)downloadMessage:(id)arg1 uri:(id)arg2 uuid:(id)arg3 application:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)downloadPublicKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)downloadQuery:(id)arg1 uuid:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)downloadRevisionLogInclusionProof:(id)arg1 uuid:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchPublicKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchQuery:(id)arg1 uuid:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)handleQueryResponse:(id)arg1 fetchError:(id)arg2 application:(id)arg3 error:(id *)arg4 completionHandler:(CDUnknownBlockType)arg5;

@@ -10,8 +10,10 @@
 {
 }
 
++ (id)OSVersionComponent:(unsigned long long)arg1 osVersion:(id)arg2;
 + (void)_cleanupAllAssetsOfType:(id)arg1;
 + (id)_gestaltValueForKey:(struct __CFString *)arg1;
++ (BOOL)_updateIsPreCRelease:(id)arg1;
 + (id)assetDownloadOptionsForDocumentation;
 + (id)assetDownloadOptionsFromMetadata:(id)arg1 descriptor:(id)arg2 priority:(int)arg3 forBrain:(BOOL)arg4;
 + (void)cleanupAllSoftwareUpdateAndRelatedAssets;
@@ -25,6 +27,7 @@
 + (id)getInstalledDocumentationAssetFromSoftwareUpdateAssetIfExists:(id)arg1;
 + (id)getLocalDefaultSoftwareUpdateAssetIfExists;
 + (id)getLocalDefaultSoftwareUpdateAssetIfExistsWithReleaseDate:(id *)arg1;
++ (id)minorOSVersion:(id)arg1;
 + (void)purgeMSUUpdate:(CDUnknownBlockType)arg1;
 + (id)queryMetaDataOfType:(id)arg1 WithFilter:(id)arg2 installedOnly:(BOOL)arg3 error:(id *)arg4;
 + (long long)requestCatalogDownload:(id)arg1;

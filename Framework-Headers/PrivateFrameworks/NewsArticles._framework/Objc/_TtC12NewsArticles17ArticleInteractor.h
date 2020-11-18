@@ -17,6 +17,7 @@
     MISSING_TYPE *dataManager;
     MISSING_TYPE *readingListObserver;
     MISSING_TYPE *paywallFactory;
+    MISSING_TYPE *previewManager;
     MISSING_TYPE *eventManager;
 }
 

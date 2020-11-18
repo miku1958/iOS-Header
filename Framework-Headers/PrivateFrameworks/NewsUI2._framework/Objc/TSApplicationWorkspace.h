@@ -10,6 +10,7 @@
 {
 }
 
++ (void)openAppleAccountLoginSettings;
 + (void)openFamilySharingSetupSettings;
 + (void)openNewsSystemNotificationSettings;
 

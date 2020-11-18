@@ -219,7 +219,6 @@
 - (void)presentPileOffscreen;
 - (void)presentSpendingSummaryForPassUniqueIdentifier:(id)arg1 type:(unsigned long long)arg2 unit:(unsigned long long)arg3 animated:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)presentSubcredentialInvitationWithIdentifier:(id)arg1 remoteDeviceInvitationIdentifier:(id)arg2 animated:(BOOL)arg3;
-- (BOOL)presentSubcredentialPairingFlowIfPossibleWithAppIdentifier:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)presentSubcredentialPairingFlowIfPossibleWithIssuer:(id)arg1 password:(id)arg2 animated:(BOOL)arg3;
 - (void)presentSubcredentialPairingFlowWithConfig:(id)arg1 flowType:(long long)arg2 animated:(BOOL)arg3;
 - (void)presentTransactionDetailsForTransactionWithIdentifier:(id)arg1;

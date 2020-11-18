@@ -12,14 +12,11 @@ __attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed31DebugFormatCanvasViewController : UIViewController
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *key;
-    MISSING_TYPE *factory;
-    MISSING_TYPE *fontManager;
+    MISSING_TYPE *contentView;
     MISSING_TYPE *columnSystem;
-    MISSING_TYPE *scrollView;
     MISSING_TYPE *$__lazy_storage_$_columnView;
     MISSING_TYPE *viewportMonitor;
-    MISSING_TYPE *fontDownloadPromise;
+    MISSING_TYPE *editor;
 }
 
 - (void).cxx_destruct;

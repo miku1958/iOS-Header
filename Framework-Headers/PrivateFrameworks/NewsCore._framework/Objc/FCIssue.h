@@ -10,7 +10,7 @@
 #import <NewsCore/FCIssueAccessCheckable-Protocol.h>
 #import <NewsCore/NSCopying-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, FCAssetHandle, FCColor, FCInterestToken, NSArray, NSDate, NSString, NTPBIssueRecord;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCAssetHandle, FCColor, FCInterestToken, NSArray, NSDate, NSString, NTPBIssueRecord;
 @protocol FCChannelProviding;
 
 @interface FCIssue : NSObject <FCFeedPersonalizingItem, FCIssueAccessCheckable, NSCopying>
@@ -60,6 +60,7 @@
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
 @property (readonly, nonatomic) double globalUserFeedback;
 @property (readonly, nonatomic) unsigned long long halfLife;
+@property (readonly, nonatomic) BOOL hasAudioTrack;
 @property (readonly, nonatomic) BOOL hasGlobalUserFeedback;
 @property (readonly, nonatomic) BOOL hasVideo;
 @property (readonly) unsigned long long hash;
@@ -82,11 +83,14 @@
 @property (readonly, copy, nonatomic) NSString *notificationDescription; // @synthesize notificationDescription=_notificationDescription;
 @property (readonly, nonatomic, getter=isPaid) BOOL paid;
 @property (readonly, nonatomic, getter=isPaid) BOOL paid; // @synthesize paid=_paid;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt;
 @property (readonly, copy, nonatomic) NSDate *publicationDate; // @synthesize publicationDate=_publicationDate;
 @property (readonly, copy, nonatomic) NSDate *publishDate;
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *publisherCohorts;
 @property (readonly, copy, nonatomic) NSString *publisherID;
 @property (readonly, copy, nonatomic) id<FCChannelProviding> sourceChannel; // @synthesize sourceChannel=_sourceChannel;
+@property (readonly, copy, nonatomic) NSString *sourceChannelID;
 @property (readonly, copy, nonatomic) NSString *sourceFeedID;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
@@ -101,6 +105,7 @@
 - (id)init;
 - (id)initWithData:(id)arg1 sourceChannel:(id)arg2 assetManager:(id)arg3;
 - (id)initWithIdentifier:(id)arg1 type:(long long)arg2 title:(id)arg3 publicationDate:(id)arg4 coverDate:(id)arg5 metadataJSONAssetHandle:(id)arg6 coverImageAssetHandle:(id)arg7 coverImageAspectRatio:(double)arg8 coverImagePrimaryColor:(id)arg9 layeredCoverJSON:(id)arg10 layeredCoverAspectRatio:(double)arg11 layeredCoverPrimaryColor:(id)arg12 isCurrent:(BOOL)arg13 isDraft:(BOOL)arg14 isPaid:(BOOL)arg15 minimumNewsVersion:(long long)arg16 allArticleIDs:(id)arg17 coverArticleID:(id)arg18 allowedStorefrontIDs:(id)arg19 blockedStorefrontIDs:(id)arg20 topicTagIDs:(id)arg21 sourceChannel:(id)arg22 notificationDescription:(id)arg23 issueDescription:(id)arg24;
+- (id)initWithIssue:(id)arg1 overrides:(id)arg2;
 - (id)initWithIssueRecord:(id)arg1 assetManager:(id)arg2 interestToken:(id)arg3 sourceChannel:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 

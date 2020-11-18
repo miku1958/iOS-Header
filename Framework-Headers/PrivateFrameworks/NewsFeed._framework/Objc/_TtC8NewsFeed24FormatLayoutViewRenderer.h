@@ -15,10 +15,11 @@
     MISSING_TYPE *textNodeRenderer;
     MISSING_TYPE *imageNodeRenderer;
     MISSING_TYPE *buttonNodeRenderer;
+    MISSING_TYPE *stateViewNodeRenderer;
+    MISSING_TYPE *customNodeRenderer;
     MISSING_TYPE *webEmbedNodeRenderer;
     MISSING_TYPE *webEmbedViewControllerReuseManager;
     MISSING_TYPE *rendererTool;
-    MISSING_TYPE *traitCollection;
     MISSING_TYPE *behaviorRenderer;
 }
 

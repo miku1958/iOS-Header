@@ -23,6 +23,7 @@
 @property (readonly, nonatomic, getter=isPullRequest) BOOL pullRequest;
 @property (readonly, nonatomic, getter=isRequestedByRemote) BOOL requestedByRemote;
 
++ (BOOL)shouldOverrideCycleTrackingSymptomsForBackwardsCompatibilty;
 - (void).cxx_destruct;
 - (id)_intervalForSecondsSinceDaysAgo:(unsigned long long)arg1;
 - (id)_syncPredicate;

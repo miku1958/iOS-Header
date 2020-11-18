@@ -11,6 +11,7 @@
 
 @interface PKSubcredentialProvisioningOperationContext : NSObject
 {
+    BOOL _hasAcceptedInvitation;
     NSObject<OS_dispatch_queue> *_operationQueue;
     NSURL *_passURL;
     PKAppletSubcredential *_addedCredential;
@@ -20,6 +21,7 @@
 }
 
 @property (strong, nonatomic) PKAppletSubcredential *addedCredential; // @synthesize addedCredential=_addedCredential;
+@property (nonatomic) BOOL hasAcceptedInvitation; // @synthesize hasAcceptedInvitation=_hasAcceptedInvitation;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property (copy, nonatomic) NSURL *passURL; // @synthesize passURL=_passURL;
 @property (strong, nonatomic) PKAppletSubcredentialEncryptedRequest *registrationData; // @synthesize registrationData=_registrationData;

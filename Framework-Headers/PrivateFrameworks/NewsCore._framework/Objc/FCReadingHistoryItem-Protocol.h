@@ -23,11 +23,17 @@
 @property (readonly, nonatomic) BOOL hasArticleBeenMarkedOffensive;
 @property (readonly, nonatomic) BOOL hasArticleBeenRead;
 @property (readonly, nonatomic) BOOL hasArticleBeenSeen;
+@property (readonly, nonatomic) BOOL hasArticleCompletedListening;
 @property (readonly, copy, nonatomic) NSString *identifier;
+@property (readonly, copy, nonatomic) NSDate *lastListenedAt;
 @property (readonly, copy, nonatomic) NSDate *lastVisitedAt;
+@property (readonly, nonatomic) double listeningProgress;
+@property (readonly, copy, nonatomic) NSDate *listeningProgressSavedAt;
 @property (readonly, nonatomic) long long maxVersionRead;
 @property (readonly, nonatomic) long long maxVersionSeen;
 @property (readonly, nonatomic) long long readCount;
+@property (readonly, copy, nonatomic) NSString *readingPosition;
+@property (readonly, copy, nonatomic) NSDate *readingPositionSavedAt;
 @property (readonly, copy, nonatomic) NSString *sourceChannelTagID;
 
 @end

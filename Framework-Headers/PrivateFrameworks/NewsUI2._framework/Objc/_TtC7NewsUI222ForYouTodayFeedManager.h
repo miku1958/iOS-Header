@@ -10,10 +10,12 @@
 
 @interface _TtC7NewsUI222ForYouTodayFeedManager : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *configurationManager;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *feedGroupEmitterFactory;
     MISSING_TYPE *emitterQueue;
     MISSING_TYPE *store;
+    MISSING_TYPE *paidAccessChecker;
 }
 
 - (void)fetchGroupsWithGroupConfigs:(id)arg1 forYouConfig:(id)arg2 precedingArticleIDs:(id)arg3 prefetchedHeadlinesByID:(id)arg4 assetManager:(id)arg5 completion:(CDUnknownBlockType)arg6;

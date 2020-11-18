@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
+    MISSING_TYPE *blueprintReadableContentGuide;
     MISSING_TYPE *headerView;
     MISSING_TYPE *disabledViewProvider;
     MISSING_TYPE *followingNotificationsPrewarm;

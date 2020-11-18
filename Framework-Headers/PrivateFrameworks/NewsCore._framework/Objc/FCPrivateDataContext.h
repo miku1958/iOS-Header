@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCPrivateDataContext-Protocol.h>
 
-@class FCIssueReadingHistory, FCNetworkBehaviorMonitor, FCPersonalizationData, FCPrivateChannelMembershipController, FCReadingHistory, FCReadingList, FCSubscriptionList, FCTagSettings, FCUserInfo, NSString;
+@class FCAudioPlaylist, FCIssueReadingHistory, FCNetworkBehaviorMonitor, FCPersonalizationData, FCPrivateChannelMembershipController, FCReadingHistory, FCReadingList, FCSubscriptionList, FCTagSettings, FCUserInfo, NSString;
 @protocol FCContentContext, FCPrivateDataContextInternal, FCPushNotificationHandling;
 
 @interface FCPrivateDataContext : NSObject <FCPrivateDataContext>
@@ -19,6 +19,7 @@
     FCPrivateChannelMembershipController *_privateChannelMembershipController;
     FCReadingHistory *_readingHistory;
     FCReadingList *_readingList;
+    FCAudioPlaylist *_audioPlaylist;
     FCSubscriptionList *_subscriptionList;
     FCUserInfo *_userInfo;
     NSString *_privateDataDirectory;
@@ -29,6 +30,7 @@
     id<FCContentContext> _contentContext;
 }
 
+@property (readonly, nonatomic) FCAudioPlaylist *audioPlaylist; // @synthesize audioPlaylist=_audioPlaylist;
 @property (strong, nonatomic) id<FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

@@ -6,18 +6,22 @@
 
 #import <UIKit/UIView.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSString;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI27TagView : UIView
 {
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *imageView;
     MISSING_TYPE *subtitleLabel;
-    MISSING_TYPE *notificationSwitch;
-    MISSING_TYPE *likeButton;
-    MISSING_TYPE *dislikeButton;
+    MISSING_TYPE *badgeView;
+    MISSING_TYPE *_notificationSwitch;
+    MISSING_TYPE *_likeButton;
+    MISSING_TYPE *_dislikeButton;
+    MISSING_TYPE *isEditing;
+    MISSING_TYPE *keyCommandBlocks;
 }
+
+@property (nonatomic, readonly) NSString *title;
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;

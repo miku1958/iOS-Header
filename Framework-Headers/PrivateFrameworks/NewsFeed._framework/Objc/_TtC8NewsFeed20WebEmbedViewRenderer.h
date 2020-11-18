@@ -11,6 +11,7 @@
 @interface _TtC8NewsFeed20WebEmbedViewRenderer : _TtCs12_SwiftObject
 {
     MISSING_TYPE *rendererTool;
+    MISSING_TYPE *reuseProtector;
 }
 
 @end

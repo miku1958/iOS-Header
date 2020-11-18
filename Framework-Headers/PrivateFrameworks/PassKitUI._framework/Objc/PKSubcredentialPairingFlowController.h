@@ -9,11 +9,10 @@
 #import <PassKitUI/PKSubcredentialPairingFlowControllerProtocol-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_queue, PKPaymentSetupViewControllerDelegate, PKSubcredentialProvisioningFlowControllerDelegate;
+@protocol PKPaymentSetupViewControllerDelegate, PKSubcredentialProvisioningFlowControllerDelegate;
 
 @interface PKSubcredentialPairingFlowController : NSObject <PKSubcredentialPairingFlowControllerProtocol>
 {
-    NSObject<OS_dispatch_queue> *_queue;
     id<PKSubcredentialProvisioningFlowControllerDelegate> _delegate;
     id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
 }
@@ -31,7 +30,7 @@
 - (void).cxx_destruct;
 - (id)alertForOperation:(id)arg1 withError:(id)arg2 retryHandler:(CDUnknownBlockType)arg3 cancelationHandler:(CDUnknownBlockType)arg4;
 - (void)canProvisionOnRemoteDeviceWithContext:(id)arg1 sharingRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)initWithDelegate:(id)arg1 queue:(id)arg2;
+- (id)initWithDelegate:(id)arg1;
 - (id)localDeviceProvisioningViewModelForOperation:(id)arg1;
 - (id)localizedIssuerNameForProvisioningOperation:(id)arg1;
 - (id)nextQueuedProvisioningViewControllerFromProvisioningOperation:(id)arg1;

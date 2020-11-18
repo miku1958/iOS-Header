@@ -14,6 +14,7 @@
 {
     BOOL _passwordManuallyEntered;
     BOOL _shouldRequestInvitation;
+    BOOL _declineRelatedInvitations;
     PKAddCarKeyPassConfiguration *_configuration;
     PKEntitlementWhitelist *_appEntitlementWhitelist;
     PKAppletSubcredential *_credentialToShare;
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) PKEntitlementWhitelist *appEntitlementWhitelist; // @synthesize appEntitlementWhitelist=_appEntitlementWhitelist;
 @property (strong, nonatomic) PKAddCarKeyPassConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (strong, nonatomic) PKAppletSubcredential *credentialToShare; // @synthesize credentialToShare=_credentialToShare;
+@property (nonatomic) BOOL declineRelatedInvitations; // @synthesize declineRelatedInvitations=_declineRelatedInvitations;
 @property (nonatomic) BOOL passwordManuallyEntered; // @synthesize passwordManuallyEntered=_passwordManuallyEntered;
 @property (strong, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
 @property (strong, nonatomic) PKAppletSubcredentialSharingInvitation *remoteDeviceInvitation; // @synthesize remoteDeviceInvitation=_remoteDeviceInvitation;

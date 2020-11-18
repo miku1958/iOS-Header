@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) unsigned int capabilities;
 
 - (void)cleanupActiveRequests;
+- (void)clearHistoryBuffer;
 - (void)deregisterClient;
 - (BOOL)processClientRequest:(NSDictionary *)arg1 error:(id *)arg2;
 - (void)registerClient;

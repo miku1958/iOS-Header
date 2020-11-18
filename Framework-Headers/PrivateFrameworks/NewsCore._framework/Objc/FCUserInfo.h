@@ -26,6 +26,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *editorialArticleVersion;
+@property (nonatomic) BOOL endOfAudioTrackNotificationsEnabled;
 @property (copy, nonatomic) NSString *feldsparID;
 @property (nonatomic) BOOL hasShownProgressivePersonalizationWelcomeBrick;
 @property (readonly) unsigned long long hash;
@@ -35,8 +36,10 @@
 @property (copy, nonatomic) NSNumber *monthlyALaCarteSubscriptionMeteredCount;
 @property (copy, nonatomic) NSNumber *monthlyBundleSubscriptionMeteredCount;
 @property (nonatomic) BOOL newIssueNotificationsEnabled;
+@property (copy, nonatomic) NSDate *newsletterSignupLastSeenDate;
 @property (readonly, copy, nonatomic) NSString *notificationsUserID;
 @property (copy, nonatomic) NSNumber *onboardingVersionNumber;
+@property (copy, nonatomic) NSDate *personalizedNewsletterSignupLastSeenDate;
 @property (readonly, nonatomic) unsigned long long progressivePersonalization;
 @property (strong, nonatomic) NSDictionary *readOnlyUserInfo; // @synthesize readOnlyUserInfo=_readOnlyUserInfo;
 @property (readonly, nonatomic) BOOL shouldShowDefaultForYou;

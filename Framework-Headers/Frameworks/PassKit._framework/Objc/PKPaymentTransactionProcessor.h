@@ -8,8 +8,8 @@
 
 #import <PassKitCore/CLLocationManagerDelegate-Protocol.h>
 
-@class CLGeocoder, CLLocationManager, NSMutableArray, NSMutableSet, NSString, PKMerchantCategoryCodeMap, PKUsageNotificationServer;
-@protocol OS_dispatch_source, PKPaymentTransactionProcessorDelegate;
+@class CLGeocoder, CLLocationManager, NSHashTable, NSMutableArray, NSMutableSet, NSString, PKMerchantCategoryCodeMap, PKUsageNotificationServer;
+@protocol OS_dispatch_source;
 
 @interface PKPaymentTransactionProcessor : NSObject <CLLocationManagerDelegate>
 {
@@ -27,13 +27,13 @@
     BOOL _active;
     BOOL _processingMerchantCleanupItems;
     PKMerchantCategoryCodeMap *_categoryCodeMap;
-    id<PKPaymentTransactionProcessorDelegate> _delegate;
+    struct os_unfair_lock_s _observersLock;
+    NSHashTable *_observers;
     PKUsageNotificationServer *_usageNotificationServer;
 }
 
 @property (readonly, nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<PKPaymentTransactionProcessorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -43,6 +43,7 @@
 - (void)_abortUpdatingLocationForAllBackgroundLocationUpdateItems;
 - (void)_abortUpdatingLocationForAllLocationUpdateItems;
 - (void)_abortUpdatingLocationForLocationUpdateItem:(id)arg1;
+- (void)_accessObserversWithHandler:(CDUnknownBlockType)arg1;
 - (void)_beginMerchantCleanupIfPossible;
 - (void)_beginProcessingPaymentTransaction:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3 skipLocation:(BOOL)arg4;
 - (void)_beginReverseGeocodingIfPossible;
@@ -66,10 +67,13 @@
 - (void)_stopUpdatingLocationIfPossible;
 - (void)_updateActiveState;
 - (void)_updateLocation:(id)arg1 forLocationUpdateItem:(id)arg2 andMarkAsProcessed:(BOOL)arg3;
+- (void)_updateObserversForPaymentTransactionUpdated:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
 - (id)init;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)processPaymentTransaction:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
+- (void)registerObserver:(id)arg1;
+- (void)unregisterObserver:(id)arg1;
 
 @end
 

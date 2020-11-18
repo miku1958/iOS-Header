@@ -43,12 +43,14 @@
 - (void)_delegate_signOutViewControllerDidCancel;
 - (void)_delegate_signOutViewControllerDidCompleteWithDataclassActions:(id)arg1;
 - (void)_dismissAdditionalInformation:(id)arg1;
+- (id)_messageText;
 - (id)_nextBarButtonItem;
 - (void)_nextButtonSelected:(id)arg1;
 - (id)_signOutFooterText;
 - (id)_tableFooterView;
 - (id)_tableHeaderView;
 - (id)_tableView;
+- (id)_titleText;
 - (void)_updateConstraintsForTraitCollection:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (double)heightForFooterInTableView:(id)arg1;

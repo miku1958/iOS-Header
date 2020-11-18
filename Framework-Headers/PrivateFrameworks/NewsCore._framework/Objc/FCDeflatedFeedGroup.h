@@ -9,29 +9,25 @@
 #import <NewsCore/FCFeedElement-Protocol.h>
 #import <NewsCore/FCFeedGroupOutlining-Protocol.h>
 
-@class FCColor, FCColorGradient, FCFeedEdition, FCSharedStringIndex, NSArray, NSDate, NSString, NTPBDiscoverMoreVideosInfo, NTPBFeedViewportGroup;
+@class FCColor, FCFeedEdition, FCSharedStringIndex, NSArray, NSDate, NSString, NTPBFeedViewportGroup;
 @protocol FCCardStyleProviding, FCForYouBridgedFeedGroup;
 
 @interface FCDeflatedFeedGroup : NSObject <FCFeedElement, FCFeedGroupOutlining>
 {
     NSArray *_headlines;
-    NSArray *_videoPlaylistHeadlines;
     NTPBFeedViewportGroup *_pbGroup;
     FCSharedStringIndex *_sharedStrings;
 }
 
-@property (readonly, copy, nonatomic) FCColorGradient *backgroundGradient;
 @property (readonly, copy, nonatomic) NSString *backingTagID;
 @property (readonly, nonatomic) id<FCForYouBridgedFeedGroup> bridgedGroup;
 @property (readonly, copy, nonatomic) id<FCCardStyleProviding> cardStyle;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, copy, nonatomic) NSString *ctaText;
 @property (readonly, copy, nonatomic) id<FCCardStyleProviding> darkCardStyle;
-@property (readonly, copy, nonatomic) FCColorGradient *darkStyleBackgroundGradient;
 @property (readonly, copy, nonatomic) FCColor *darkStyleTitleColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy, nonatomic) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo;
 @property (readonly, copy, nonatomic) FCFeedEdition *edition;
 @property (readonly, copy, nonatomic) NSString *eyebrowText;
 @property (readonly, nonatomic) long long feedElementType;
@@ -50,7 +46,6 @@
 @property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, copy, nonatomic) FCColor *titleColor;
 @property (readonly, nonatomic) BOOL usesPlaceholderHeadlines;
-@property (readonly, copy, nonatomic) NSArray *videoPlaylistHeadlines; // @synthesize videoPlaylistHeadlines=_videoPlaylistHeadlines;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

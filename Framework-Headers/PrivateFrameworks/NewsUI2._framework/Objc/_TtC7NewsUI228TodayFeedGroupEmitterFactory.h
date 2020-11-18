@@ -11,7 +11,19 @@
 @interface _TtC7NewsUI228TodayFeedGroupEmitterFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *newspaperGroupService;
+    MISSING_TYPE *localNewsGroupService;
     MISSING_TYPE *formatService;
+    MISSING_TYPE *audioHeadlineConverter;
+    MISSING_TYPE *headlineService;
+    MISSING_TYPE *audioConfigurationManager;
+    MISSING_TYPE *topicClusterService;
+    MISSING_TYPE *topicColorProvider;
+    MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *magazineFeedService;
+    MISSING_TYPE *personalizationService;
+    MISSING_TYPE *subscriptionController;
+    MISSING_TYPE *readingHistory;
+    MISSING_TYPE *paidAccessChecker;
 }
 
 @end

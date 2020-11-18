@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCAppleAccount-Protocol.h>
 
-@class ACAccount, ACAccountStore, NSArray, NSString;
+@class ACAccount, ACAccountStore, NFPromise, NSArray, NSHashTable, NSString;
 
 @interface FCAppleAccount : NSObject <FCAppleAccount>
 {
@@ -20,11 +20,14 @@
     NSString *_userStoreFrontID;
     NSString *_contentStoreFrontID;
     NSString *_overrideContentStoreFrontID;
+    NFPromise *_base64GSTokenPromise;
+    NSHashTable *_observers;
 }
 
 @property (copy, nonatomic) NSString *DSID; // @synthesize DSID=_DSID;
 @property (readonly, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (readonly, nonatomic) ACAccount *activeiTunesAccount;
+@property (strong, nonatomic) NFPromise *base64GSTokenPromise; // @synthesize base64GSTokenPromise=_base64GSTokenPromise;
 @property (copy, nonatomic) NSString *contentStoreFrontID; // @synthesize contentStoreFrontID=_contentStoreFrontID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -32,6 +35,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong) ACAccount *iTunesAccount; // @synthesize iTunesAccount=_iTunesAccount;
 @property (readonly, nonatomic) BOOL isContentStoreFrontSupported;
+@property (readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (copy, nonatomic) NSString *overrideContentStoreFrontID; // @synthesize overrideContentStoreFrontID=_overrideContentStoreFrontID;
 @property (strong) ACAccount *primaryAccount; // @synthesize primaryAccount=_primaryAccount;
 @property (readonly, nonatomic) NSString *primaryLanguageCode;
@@ -47,19 +51,27 @@
 + (id)sharedAccount;
 - (void).cxx_destruct;
 - (void)_accountStoreDidChange;
+- (void)_handleAccountChangeWithOldPrimaryAccount:(id)arg1 oldiTunesAccount:(id)arg2;
 - (void)_reloadAccountsFromAccountStore;
 - (void)_setStoreFrontDependentPropertiesWithStoreFrontLockingEnabled:(BOOL)arg1;
+- (void)addObserver:(id)arg1;
 - (void)checkAllDevicesRunningMinimumiOSVersion:(CDStruct_912cb5d2)arg1 macOSVersion:(CDStruct_912cb5d2)arg2 orInactiveForTimeInterval:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)checkAlliOSDevicesRunningMinimumOSVersion:(CDStruct_912cb5d2)arg1 orInactiveForTimeInterval:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)currentStoreFrontID;
+- (id)getGSToken;
+- (void)getGSTokenWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)getNewGSTokenPromise;
 - (id)iCloudAccountDSID;
 - (id)iTunesAccountDSID;
 - (id)iTunesAccountName;
 - (id)init;
+- (void)invalidateGSTokenCache;
 - (BOOL)isPrimaryAccountEmailAddress;
 - (BOOL)isUserSignedIntoiTunes;
 - (void)loadStoreFrontWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)notifyObserversOfAccountChange;
 - (void)reloadiTunesAccount;
+- (void)removeObserver:(id)arg1;
 - (void)t_startOverridingContentStoreFrontID:(id)arg1;
 - (void)t_stopOverridingContentStoreFrontID;
 

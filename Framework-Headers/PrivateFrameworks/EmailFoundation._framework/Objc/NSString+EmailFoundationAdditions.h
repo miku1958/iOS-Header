@@ -43,6 +43,7 @@
 - (BOOL)ef_isUnsignedIntegerString;
 - (BOOL)ef_isWebAddress;
 - (const void *)ef_lossyDefaultCStringBytes;
+- (id)ef_pathByReplacingRelativePathWithFolderName:(id)arg1;
 - (id)ef_quotedWordComponentsForLanguages:(id)arg1;
 - (id)ef_sanitizedFileName;
 - (const char *)ef_sqliteAllocatedStringWithHexFromUTF8;

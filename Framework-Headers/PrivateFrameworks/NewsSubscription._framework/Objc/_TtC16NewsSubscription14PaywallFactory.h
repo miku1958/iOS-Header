@@ -12,13 +12,14 @@
 {
     MISSING_TYPE *resolver;
     MISSING_TYPE *purchaseProvider;
-    MISSING_TYPE *paywallTypeProvider;
+    MISSING_TYPE *articlePaywallTypeProvider;
+    MISSING_TYPE *feedPaywallTypeProvider;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *configurationManager;
-    MISSING_TYPE *deferredHardPaywallLayoutAttributesFactory;
-    MISSING_TYPE *softPaywallLayoutAttributesFactory;
     MISSING_TYPE *bundlePurchasePrewarmer;
     MISSING_TYPE *tracker;
+    MISSING_TYPE *bundlePaywallViewModelFactory;
+    MISSING_TYPE *alacartePaywallViewModelFactory;
 }
 
 @end

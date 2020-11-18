@@ -90,7 +90,7 @@
 - (void)dealloc;
 - (void)handleAccessoryConfigured:(id)arg1;
 - (void)handleAccessoryIsNotConfiguredError;
-- (void)handleAccessoryUnreachable:(id)arg1;
+- (void)handleAccessoryUnconfigured:(id)arg1;
 - (void)handleCameraProfileSettingsDidWriteToAccessory:(id)arg1;
 - (void)handleCharacteristicValueUpdated:(id)arg1;
 - (void)handleCharacteristicsUpdated:(id)arg1;

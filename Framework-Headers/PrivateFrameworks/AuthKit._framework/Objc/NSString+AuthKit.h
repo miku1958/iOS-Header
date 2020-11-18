@@ -10,6 +10,7 @@
 + (id)ak_base64EncodedJsonFromObject:(id)arg1;
 - (id)ak_SHA256;
 - (id)ak_SHA256String;
+- (BOOL)ak_isEmailAddress;
 - (id)ak_truncatedCopy;
 - (id)ak_urlEncoded;
 @end

@@ -17,6 +17,7 @@
 - (id)_accessibilityCustomActionGroupIdentifier;
 - (BOOL)_accessibilityElementVisibilityAffectsLayout;
 - (BOOL)_accessibilityIsNotFirstElement;
+- (id)_accessibilityNativeFocusPreferredElement;
 - (id)_accessibilityPreferredScrollActions;
 - (BOOL)_accessibilityRetainsCustomRotorActionSetting;
 - (id)_accessibilityScrollStatus;

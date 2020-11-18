@@ -61,7 +61,6 @@
 + (id)ts_safari;
 + (id)ts_sidebarLeft;
 + (id)ts_squareAndArrowUp;
-+ (id)ts_systemCloseButton;
 + (id)ts_textFormatSize;
 + (id)ts_trash;
 + (id)ts_xmark;

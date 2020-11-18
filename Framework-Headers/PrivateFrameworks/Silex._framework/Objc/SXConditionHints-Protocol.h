@@ -8,6 +8,7 @@
 
 @protocol SXConditionHints <NSObject>
 
+@property (readonly, nonatomic) BOOL configurationKey;
 @property (readonly, nonatomic) BOOL horizontalSizeClass;
 @property (readonly, nonatomic) BOOL maxColumns;
 @property (readonly, nonatomic) BOOL maxContentSizeCategory;
@@ -19,6 +20,7 @@
 @property (readonly, nonatomic) BOOL minSpecVersion;
 @property (readonly, nonatomic) BOOL minViewportAspectRatio;
 @property (readonly, nonatomic) BOOL minViewportWidth;
+@property (readonly, nonatomic) BOOL newsletter;
 @property (readonly, nonatomic) BOOL platform;
 @property (readonly, nonatomic) BOOL preferredColorScheme;
 @property (readonly, nonatomic) BOOL subscriptionStatus;

@@ -7,21 +7,18 @@
 #import <NewsCore/FCFeedElement-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCColor, FCColorGradient, FCFeedEdition, NSArray, NSDate, NSString, NTPBDiscoverMoreVideosInfo;
+@class FCColor, FCFeedEdition, NSArray, NSDate, NSString;
 @protocol FCCardStyleProviding, FCForYouBridgedFeedGroup;
 
 @protocol FCFeedGroupOutlining <NSObject, FCFeedElement>
 
-@property (readonly, copy, nonatomic) FCColorGradient *backgroundGradient;
 @property (readonly, copy, nonatomic) NSString *backingTagID;
 @property (readonly, nonatomic) id<FCForYouBridgedFeedGroup> bridgedGroup;
 @property (readonly, copy, nonatomic) id<FCCardStyleProviding> cardStyle;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, copy, nonatomic) NSString *ctaText;
 @property (readonly, copy, nonatomic) id<FCCardStyleProviding> darkCardStyle;
-@property (readonly, copy, nonatomic) FCColorGradient *darkStyleBackgroundGradient;
 @property (readonly, copy, nonatomic) FCColor *darkStyleTitleColor;
-@property (readonly, copy, nonatomic) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo;
 @property (readonly, copy, nonatomic) FCFeedEdition *edition;
 @property (readonly, copy, nonatomic) NSString *eyebrowText;
 @property (readonly, nonatomic) long long groupType;
@@ -35,7 +32,6 @@
 @property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, copy, nonatomic) FCColor *titleColor;
 @property (readonly, nonatomic) BOOL usesPlaceholderHeadlines;
-@property (readonly, copy, nonatomic) NSArray *videoPlaylistHeadlines;
 
 @end
 

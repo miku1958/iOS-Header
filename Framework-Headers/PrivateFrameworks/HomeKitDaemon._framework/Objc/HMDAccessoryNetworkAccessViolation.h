@@ -16,6 +16,7 @@
     NSDate *_lastResetDate;
 }
 
+@property (readonly, getter=hasCurrentViolation) BOOL currentViolation;
 @property (readonly) NSDate *lastResetDate; // @synthesize lastResetDate=_lastResetDate;
 @property (readonly) NSDate *lastViolationDate; // @synthesize lastViolationDate=_lastViolationDate;
 

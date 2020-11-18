@@ -79,17 +79,19 @@
     BOOL _determinedHasVideoPodcasts;
     unsigned char _originalCellNetworkFlags;
     unsigned char _originalWiFiNetworkFlags;
+    struct os_unfair_lock_s __MLCoreStorageLock;
     id __MLCoreStorage;
-    NSObject<OS_dispatch_queue> *_accessQueue;
     ICUserIdentity *_userIdentity;
     long long _libraryChangeObservers;
     _MPActiveUserChangeMonitor *_activeUserChangeMonitor;
+    struct os_unfair_lock_s *__MLCoreStorageLockPointer;
 }
 
 @property (strong, nonatomic, setter=_setMLCoreStorage:) id _MLCoreStorage; // @synthesize _MLCoreStorage=__MLCoreStorage;
+@property (readonly, nonatomic) struct os_unfair_lock_s _MLCoreStorageLock; // @synthesize _MLCoreStorageLock=__MLCoreStorageLock;
+@property (readonly, nonatomic) struct os_unfair_lock_s *_MLCoreStorageLockPointer; // @synthesize _MLCoreStorageLockPointer=__MLCoreStorageLockPointer;
 @property (readonly, nonatomic) shared_ptr_0f3dbfb3 _MediaLibrary_coreLibrary;
 @property (readonly, nonatomic) NSString *_syncValidity;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
 @property (strong, nonatomic) _MPActiveUserChangeMonitor *activeUserChangeMonitor; // @synthesize activeUserChangeMonitor=_activeUserChangeMonitor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

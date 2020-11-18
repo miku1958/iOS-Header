@@ -10,7 +10,8 @@
 
 @interface _TtC7NewsUI220IssueDownloadService : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *cloudContext;
+    MISSING_TYPE *contentContext;
+    MISSING_TYPE *flintHelper;
     MISSING_TYPE *layeredMediaAssetHandlesProvider;
     MISSING_TYPE *highPriorityDownloadQueue;
 }

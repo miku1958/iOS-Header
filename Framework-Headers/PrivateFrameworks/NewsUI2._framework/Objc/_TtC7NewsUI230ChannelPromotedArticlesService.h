@@ -10,7 +10,6 @@
 
 @interface _TtC7NewsUI230ChannelPromotedArticlesService : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *tagService;
     MISSING_TYPE *headlineService;
 }
 

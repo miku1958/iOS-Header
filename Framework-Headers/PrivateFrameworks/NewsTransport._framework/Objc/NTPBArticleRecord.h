@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, NSData, NSMutableArray, NSString, NTPBDate, NTPBRecordBase;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSData, NSMutableArray, NSString, NTPBDate, NTPBRecordBase;
 
 @interface NTPBArticleRecord : PBCodable <NSCopying>
 {
@@ -48,7 +48,15 @@
     NSMutableArray *_linkedArticleIDs;
     NSMutableArray *_linkedIssueIDs;
     NSMutableArray *_moreFromPublisherArticleIDs;
+    NSString *_narrativeTrackFullURL;
+    NSString *_narrativeTrackMetadata;
+    NSString *_narrativeTrackSampleURL;
+    NSString *_narrativeTrackTextRanges;
     NSString *_parentIssueID;
+    COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVector;
+    COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVectorAlt;
+    NSString *_personalizationVectorAltFullURL;
+    NSString *_personalizationVectorFullURL;
     NSString *_primaryAudience;
     NTPBDate *_publishDate;
     NSMutableArray *_publisherSpecifiedArticleIds;
@@ -154,7 +162,15 @@
 @property (nonatomic) BOOL hasIsSponsored;
 @property (readonly, nonatomic) BOOL hasLanguage;
 @property (nonatomic) BOOL hasMinimumNewsVersion;
+@property (readonly, nonatomic) BOOL hasNarrativeTrackFullURL;
+@property (readonly, nonatomic) BOOL hasNarrativeTrackMetadata;
+@property (readonly, nonatomic) BOOL hasNarrativeTrackSampleURL;
+@property (readonly, nonatomic) BOOL hasNarrativeTrackTextRanges;
 @property (readonly, nonatomic) BOOL hasParentIssueID;
+@property (readonly, nonatomic) BOOL hasPersonalizationVector;
+@property (readonly, nonatomic) BOOL hasPersonalizationVectorAlt;
+@property (readonly, nonatomic) BOOL hasPersonalizationVectorAltFullURL;
+@property (readonly, nonatomic) BOOL hasPersonalizationVectorFullURL;
 @property (readonly, nonatomic) BOOL hasPrimaryAudience;
 @property (readonly, nonatomic) BOOL hasPublishDate;
 @property (nonatomic) BOOL hasPublisherArticleVersion;
@@ -207,7 +223,15 @@
 @property (strong, nonatomic) NSMutableArray *linkedIssueIDs; // @synthesize linkedIssueIDs=_linkedIssueIDs;
 @property (nonatomic) long long minimumNewsVersion; // @synthesize minimumNewsVersion=_minimumNewsVersion;
 @property (strong, nonatomic) NSMutableArray *moreFromPublisherArticleIDs; // @synthesize moreFromPublisherArticleIDs=_moreFromPublisherArticleIDs;
+@property (strong, nonatomic) NSString *narrativeTrackFullURL; // @synthesize narrativeTrackFullURL=_narrativeTrackFullURL;
+@property (strong, nonatomic) NSString *narrativeTrackMetadata; // @synthesize narrativeTrackMetadata=_narrativeTrackMetadata;
+@property (strong, nonatomic) NSString *narrativeTrackSampleURL; // @synthesize narrativeTrackSampleURL=_narrativeTrackSampleURL;
+@property (strong, nonatomic) NSString *narrativeTrackTextRanges; // @synthesize narrativeTrackTextRanges=_narrativeTrackTextRanges;
 @property (strong, nonatomic) NSString *parentIssueID; // @synthesize parentIssueID=_parentIssueID;
+@property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector; // @synthesize personalizationVector=_personalizationVector;
+@property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt; // @synthesize personalizationVectorAlt=_personalizationVectorAlt;
+@property (strong, nonatomic) NSString *personalizationVectorAltFullURL; // @synthesize personalizationVectorAltFullURL=_personalizationVectorAltFullURL;
+@property (strong, nonatomic) NSString *personalizationVectorFullURL; // @synthesize personalizationVectorFullURL=_personalizationVectorFullURL;
 @property (strong, nonatomic) NSString *primaryAudience; // @synthesize primaryAudience=_primaryAudience;
 @property (strong, nonatomic) NTPBDate *publishDate; // @synthesize publishDate=_publishDate;
 @property (nonatomic) long long publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;

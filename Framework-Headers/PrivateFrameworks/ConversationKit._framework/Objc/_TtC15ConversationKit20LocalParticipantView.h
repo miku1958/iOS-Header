@@ -11,6 +11,7 @@
 @interface _TtC15ConversationKit20LocalParticipantView : UIView
 {
     MISSING_TYPE *participantView;
+    MISSING_TYPE *delegate;
     MISSING_TYPE *isInRoster;
 }
 

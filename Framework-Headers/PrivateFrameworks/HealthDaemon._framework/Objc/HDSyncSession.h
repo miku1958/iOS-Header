@@ -31,6 +31,7 @@
 @property (readonly, copy, nonatomic) HDSyncPredicate *syncPredicate;
 @property (readonly, nonatomic) id<HDSyncStore> syncStore; // @synthesize syncStore=_syncStore;
 
++ (BOOL)shouldOverrideCycleTrackingSymptomsForBackwardsCompatibilty;
 - (void).cxx_destruct;
 - (id)description;
 - (id)excludedSyncStores;

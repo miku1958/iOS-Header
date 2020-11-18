@@ -14,6 +14,7 @@
 {
     NSString *_articleID;
     NSString *_displayDateString;
+    NTPBTodaySectionConfigArticle *_paidArticle;
     NSString *_storyType;
     NSString *_title;
 }
@@ -22,8 +23,10 @@
 @property (strong, nonatomic) NSString *displayDateString; // @synthesize displayDateString=_displayDateString;
 @property (readonly, nonatomic) BOOL hasArticleID;
 @property (readonly, nonatomic) BOOL hasDisplayDateString;
+@property (readonly, nonatomic) BOOL hasPaidArticle;
 @property (readonly, nonatomic) BOOL hasStoryType;
 @property (readonly, nonatomic) BOOL hasTitle;
+@property (strong, nonatomic) NTPBTodaySectionConfigArticle *paidArticle; // @synthesize paidArticle=_paidArticle;
 @property (strong, nonatomic) NSString *storyType; // @synthesize storyType=_storyType;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 

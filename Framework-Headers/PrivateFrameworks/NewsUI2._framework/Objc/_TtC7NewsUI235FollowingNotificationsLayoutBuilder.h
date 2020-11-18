@@ -11,7 +11,8 @@
 @interface _TtC7NewsUI235FollowingNotificationsLayoutBuilder : _TtCs12_SwiftObject
 {
     MISSING_TYPE *titleViewLayoutAttributesFactory;
-    MISSING_TYPE *followingRowViewLayoutAttributesFactory;
+    MISSING_TYPE *footerViewLayoutAttributesFactory;
+    MISSING_TYPE *tagViewLayoutAttributesFactory;
 }
 
 @end

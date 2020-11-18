@@ -87,6 +87,8 @@
 @property (nonatomic, readonly) BOOL isEventAllDay;
 @property (nonatomic, readonly) BOOL isStandAloneBrand;
 @property (nonatomic, readonly) BOOL isTransitDisplayFeature;
+@property (nonatomic, readonly) NSString *iso3166CountryCode;
+@property (nonatomic, readonly) NSString *iso3166SubdivisionCode;
 @property (nonatomic, readonly) NSArray *linkedServices;
 @property (nonatomic, readonly) NSString *mapsCategoryId;
 @property (nonatomic, readonly) GEOMessageLink *messageLink;
@@ -282,6 +284,8 @@
 - (NSString *)weatherDisplayName;
 
 @optional
+- (NSString *)_iso3166CountryCode;
+- (NSString *)_iso3166SubdivisionCode;
 - (id<GEOMapItem>)_mapItemBySettingIsTransitDisplayFeature:(BOOL)arg1;
 @end
 

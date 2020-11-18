@@ -6,11 +6,10 @@
 
 #import <PassKitCore/PKApplyWebServiceRequest.h>
 
-@class NSArray, NSDecimalNumber, NSString, NSURL;
+@class NSArray, NSString, NSURL, PKPaymentInstallmentConfiguration;
 
 @interface PKApplyWebServiceApplyRequest : PKApplyWebServiceRequest
 {
-    BOOL _isInstallment;
     NSString *_applicationIdentifier;
     unsigned long long _featureIdentifier;
     NSArray *_certificates;
@@ -18,8 +17,7 @@
     NSString *_coreIDVNextStepToken;
     NSString *_previousContextIdentifier;
     NSString *_actionIdentifier;
-    NSDecimalNumber *_installmentAmount;
-    NSString *_installmentCurrencyCode;
+    PKPaymentInstallmentConfiguration *_installmentConfiguration;
 }
 
 @property (copy, nonatomic) NSString *actionIdentifier; // @synthesize actionIdentifier=_actionIdentifier;
@@ -28,9 +26,7 @@
 @property (copy, nonatomic) NSArray *certificates; // @synthesize certificates=_certificates;
 @property (copy, nonatomic) NSString *coreIDVNextStepToken; // @synthesize coreIDVNextStepToken=_coreIDVNextStepToken;
 @property (nonatomic) unsigned long long featureIdentifier; // @synthesize featureIdentifier=_featureIdentifier;
-@property (strong, nonatomic) NSDecimalNumber *installmentAmount; // @synthesize installmentAmount=_installmentAmount;
-@property (copy, nonatomic) NSString *installmentCurrencyCode; // @synthesize installmentCurrencyCode=_installmentCurrencyCode;
-@property (nonatomic) BOOL isInstallment; // @synthesize isInstallment=_isInstallment;
+@property (strong, nonatomic) PKPaymentInstallmentConfiguration *installmentConfiguration; // @synthesize installmentConfiguration=_installmentConfiguration;
 @property (copy, nonatomic) NSString *previousContextIdentifier; // @synthesize previousContextIdentifier=_previousContextIdentifier;
 
 + (BOOL)supportsSecureCoding;

@@ -11,7 +11,7 @@
 @interface _TtC5TeaUI9ImageView : UIView
 {
     MISSING_TYPE *imageView;
-    MISSING_TYPE *identifier;
+    MISSING_TYPE *loadingIdentifier;
     MISSING_TYPE *_backgroundColor;
 }
 

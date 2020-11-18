@@ -35,6 +35,7 @@
 - (void)downloadRemoteAssetsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)hasEncryptedDeviceSpecificItemWithRelativePath:(id)arg1;
 - (id)initWithFileURL:(id)arg1 queue:(id)arg2;
 - (id)itemWithRelativePath:(id)arg1;
 - (id)pendingRemoteAssetsItems;

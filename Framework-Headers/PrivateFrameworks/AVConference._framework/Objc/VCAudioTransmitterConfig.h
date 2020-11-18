@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
     BOOL _sendActiveVoiceOnly;
     BOOL _currentDTXEnable;
     unsigned char _mediaControlInfoVersion;
+    unsigned int _qualityIndex;
     BOOL _alwaysOnAudioRedundancyEnabled;
     BOOL _cellularAllowRedLowBitratesEnabled;
     BOOL _wifiAllowRedLowBitratesEnabled;
@@ -72,6 +73,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL needsPacketThread; // @synthesize needsPacketThread=_needsPacketThread;
 @property (nonatomic) int operatingMode; // @synthesize operatingMode=_operatingMode;
 @property (nonatomic) unsigned char packetsPerBundle; // @synthesize packetsPerBundle=_packetsPerBundle;
+@property (nonatomic) unsigned int qualityIndex; // @synthesize qualityIndex=_qualityIndex;
 @property (nonatomic, getter=isRedEnabled) BOOL redEnabled; // @synthesize redEnabled=_redEnabled;
 @property (nonatomic) unsigned int redMaxDelay20ms; // @synthesize redMaxDelay20ms=_redMaxDelay20ms;
 @property (nonatomic) unsigned int redNumPayloads; // @synthesize redNumPayloads=_redNumPayloads;

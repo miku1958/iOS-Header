@@ -27,16 +27,14 @@
 
 + (id)delegateInfoForFamilyMembers:(id)arg1;
 - (void).cxx_destruct;
-- (id)adultsInFamily;
 - (id)appleIDsOfExistingDelegates:(id)arg1;
 - (id)cardDAVAccounts;
-- (id)collectDelegatesForAccount:(id)arg1;
-- (id)collectExpiredDelgatesForAccount:(id)arg1;
+- (id)collectDelegatesForAccount:(id)arg1 error:(id *)arg2;
 - (id)familyMembersPromise;
+- (BOOL)fetchGuardianStatus:(BOOL *)arg1 account:(id)arg2 error:(id *)arg3;
 - (id)init;
-- (BOOL)isGuardianAccount:(id)arg1;
-- (id)nonParentsInFamily;
-- (void)retryFamilyCircleFetch;
+- (id)nonParentsInFamilyReturningError:(id *)arg1;
+- (void)resetFamilyCirclePromise;
 
 @end
 

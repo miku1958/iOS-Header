@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) NSString *message;
 @property (nonatomic, readonly) NSString *title;
 
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithBlockedReason:(unsigned long long)arg1;
 - (id)initWithType:(long long)arg1;

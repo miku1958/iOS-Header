@@ -28,6 +28,9 @@
     BOOL _isHidden;
     BOOL _isRealTimeTrackingEnabled;
     BOOL _isArticleReadCountReportingEnabled;
+    BOOL _isInternal;
+    BOOL _isSandbox;
+    BOOL _isLocal;
     NSString *_identifier;
     NSString *_versionKey;
     NSString *_name;
@@ -56,7 +59,6 @@
     FCAssetHandle *_logoImageAssetHandle;
     FCAssetHandle *_coverImageAssetHandle;
     FCAssetHandle *_feedNavImageAssetHandle;
-    NSString *_coverArticleListID;
     FCTextInfo *_headlineTitleTextInfo;
     FCTextInfo *_headlineExcerptTextInfo;
     FCTextInfo *_headlineBylineTextInfo;
@@ -86,6 +88,7 @@
     FCSectionSupergroupKnobs *_supergroupKnobs;
     NSString *_pptFeedIDOverride;
     FCInterestToken *_tagInterestToken;
+    unsigned long long _userFacingTagTypeOverride;
     NTPBFeedConfiguration *_feedConfiguration;
     NSArray *_sectionFeedConfigurations;
     NSString *_backgroundColorHexString;
@@ -123,7 +126,6 @@
 @property (readonly, nonatomic) NSArray *blockedStorefrontIDs; // @synthesize blockedStorefrontIDs=_blockedStorefrontIDs;
 @property (readonly, nonatomic) FCTagBanner *compactBannerImage; // @synthesize compactBannerImage=_compactBannerImage;
 @property (readonly, nonatomic) long long contentProvider; // @synthesize contentProvider=_contentProvider;
-@property (readonly, copy, nonatomic) NSString *coverArticleListID; // @synthesize coverArticleListID=_coverArticleListID;
 @property (readonly, nonatomic) FCAssetHandle *coverImageAssetHandle; // @synthesize coverImageAssetHandle=_coverImageAssetHandle;
 @property (readonly, copy, nonatomic) NSArray *currentIssueIDs; // @synthesize currentIssueIDs=_currentIssueIDs;
 @property (readonly, nonatomic) FCColor *darkStyleBackgroundColor;
@@ -160,9 +162,12 @@
 @property (readonly, nonatomic) BOOL isDeprecated; // @synthesize isDeprecated=_isDeprecated;
 @property (readonly, nonatomic) BOOL isExplicitContent; // @synthesize isExplicitContent=_isExplicitContent;
 @property (readonly, nonatomic) BOOL isHidden; // @synthesize isHidden=_isHidden;
+@property (readonly, nonatomic) BOOL isInternal; // @synthesize isInternal=_isInternal;
+@property (readonly, nonatomic) BOOL isLocal; // @synthesize isLocal=_isLocal;
 @property (readonly, nonatomic) BOOL isNotificationEnabled; // @synthesize isNotificationEnabled=_isNotificationEnabled;
 @property (readonly, nonatomic) BOOL isPublic; // @synthesize isPublic=_isPublic;
 @property (readonly, nonatomic) BOOL isRealTimeTrackingEnabled; // @synthesize isRealTimeTrackingEnabled=_isRealTimeTrackingEnabled;
+@property (readonly, nonatomic) BOOL isSandbox; // @synthesize isSandbox=_isSandbox;
 @property (readonly, nonatomic) BOOL isSubscribable;
 @property (readonly, nonatomic) BOOL isWhite;
 @property (readonly, nonatomic) BOOL isWhitelisted;
@@ -218,6 +223,8 @@
 @property (readonly, nonatomic) FCInterestToken *tagRecordInterestToken; // @synthesize tagRecordInterestToken=_tagRecordInterestToken;
 @property (readonly, nonatomic) unsigned long long tagType; // @synthesize tagType=_tagType;
 @property (readonly, copy, nonatomic) id<FCFeedTheming> theme;
+@property (readonly, nonatomic) unsigned long long userFacingTagType;
+@property (nonatomic) unsigned long long userFacingTagTypeOverride; // @synthesize userFacingTagTypeOverride=_userFacingTagTypeOverride;
 @property (readonly, copy, nonatomic) NSString *versionKey; // @synthesize versionKey=_versionKey;
 
 - (void).cxx_destruct;

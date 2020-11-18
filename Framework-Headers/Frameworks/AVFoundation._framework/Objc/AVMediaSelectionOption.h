@@ -38,7 +38,8 @@
 - (BOOL)_isAuxiliaryContent;
 - (BOOL)_isDesignatedDefault;
 - (BOOL)_isMainProgramContent;
-- (id)_preferredMetadataTitleAccordingToPreferredLanguages:(id)arg1 fallingBackToMatchingEmptyLocale:(BOOL)arg2;
+- (id)_languageDisplayNameFromMetadataAccordingToPreferredLanguages:(id)arg1 fallingBackToMatchingEmptyLocale:(BOOL)arg2;
+- (id)_preferredMetadataTitleAccordingToPreferredLanguages:(id)arg1 fallingBackToMatchingEmptyLocale:(BOOL)arg2 excludeM3U8Metadata:(BOOL)arg3;
 - (BOOL)_representsNilSelection;
 - (id)_taggedMediaCharacteristics;
 - (id)_title;

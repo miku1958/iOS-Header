@@ -12,18 +12,21 @@
 {
     BOOL _disabled;
     NSDictionary *_distributions;
+    NSString *_tag;
     NSString *_lastModified;
 }
 
 @property (nonatomic) BOOL disabled; // @synthesize disabled=_disabled;
 @property (strong, nonatomic) NSDictionary *distributions; // @synthesize distributions=_distributions;
 @property (strong, nonatomic) NSString *lastModified; // @synthesize lastModified=_lastModified;
+@property (strong, nonatomic) NSString *tag; // @synthesize tag=_tag;
 
 + (id)dateToLastModified:(id)arg1;
-+ (BOOL)write:(id)arg1 date:(id)arg2 disabled:(BOOL)arg3 toURL:(id)arg4 keyId:(unsigned long long)arg5 multipart:(BOOL)arg6;
++ (BOOL)write:(id)arg1 tag:(id)arg2 date:(id)arg3 disabled:(BOOL)arg4 toURL:(id)arg5 keyId:(unsigned long long)arg6 multipart:(BOOL)arg7;
 - (void).cxx_destruct;
+- (id)getPublicationId;
 - (id)init;
-- (id)initWithDistributions:(id)arg1 lastModified:(id)arg2 disabled:(BOOL)arg3;
+- (id)initWithDistributions:(id)arg1 tag:(id)arg2 lastModified:(id)arg3 disabled:(BOOL)arg4;
 
 @end
 

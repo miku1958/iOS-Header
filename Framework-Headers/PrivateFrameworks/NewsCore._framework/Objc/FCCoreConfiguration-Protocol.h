@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) NSArray *aLaCartePaidSubscriptionGroupWhitelistedChannelIDs;
 @property (readonly, nonatomic) long long appConfigRefreshRate;
 @property (readonly, nonatomic) long long articleRapidUpdatesTimeout;
+@property (readonly, nonatomic) NSString *audioConfigRecordID;
 @property (readonly, nonatomic) NSString *breakingNewsChannelID;
 @property (readonly, nonatomic) NSString *briefingsTagID;
 @property (readonly, nonatomic) NSNumber *currentTreatment;
@@ -35,7 +36,6 @@
 @property (readonly, nonatomic) NSString *forYouRecordConfigID;
 @property (readonly, copy, nonatomic) FCVideoGroupsConfig *forYouVideoGroupsConfig;
 @property (readonly, nonatomic) NSArray *hiddenFeedIDs;
-@property (readonly, nonatomic) BOOL isSpecialEventsMicaAnimationDisabled;
 @property (readonly, nonatomic) NSString *magazinesConfigRecordID;
 @property (readonly, nonatomic) long long maxRetriesForDroppedFeeds;
 @property (readonly, nonatomic) long long maximumNumberOfExpiredPaidSubscriptionGroups;
@@ -48,7 +48,6 @@
 @property (readonly, nonatomic) long long minimumDurationBetweenTrendingGroupsWeekday;
 @property (readonly, nonatomic) long long minimumDurationBetweenTrendingGroupsWeekend;
 @property (readonly, nonatomic) double minimumTrendingUnseenRatio;
-@property (readonly, nonatomic) NSString *moreVideosChannelID;
 @property (readonly, nonatomic) long long notificationEnabledChannelsRefreshFrequency;
 @property (readonly, nonatomic) FCNotificationsConfiguration *notificationsConfig;
 @property (readonly, nonatomic) long long optionalTopStoriesRefreshRate;
@@ -59,6 +58,7 @@
 @property (readonly, nonatomic, getter=isPrivateDataEncryptionMigrationDesired) BOOL privateDataEncryptionMigrationDesired;
 @property (readonly, nonatomic) BOOL privateDataEncryptionMigrationRequiresAllDevicesRunningTigris;
 @property (readonly, nonatomic, getter=isPrivateDataMigrationCleanupEnabled) BOOL privateDataMigrationCleanupEnabled;
+@property (readonly, nonatomic) BOOL recordBothPersonalizationVectors;
 @property (readonly, nonatomic) long long savedArticlesCutoffTime;
 @property (readonly, nonatomic) long long savedArticlesMaximumCountCellular;
 @property (readonly, nonatomic) long long savedArticlesMaximumCountWiFi;
@@ -69,14 +69,11 @@
 @property (readonly, nonatomic) long long singleTopicFeedMinFeedItemsPerRequest;
 @property (readonly, nonatomic) NSString *spotlightChannelID;
 @property (readonly, nonatomic) long long subscriptionsGlobalMeteredCount;
-@property (readonly, nonatomic) long long subscriptionsGracePeriodForTokenVerificationSeconds;
-@property (readonly, nonatomic) long long subscriptionsPlacardGlobalMaximumPerDay;
-@property (readonly, nonatomic) long long subscriptionsPlacardPublisherFrequencyInSeconds;
 @property (readonly, nonatomic) NSString *todayFeedKnobs;
 @property (readonly, nonatomic) FCTopStoriesConfiguration *topStoriesConfig;
-@property (readonly, nonatomic) NSString *topVideosChannelID;
 @property (readonly, nonatomic) NSString *trendingTagID;
 @property (readonly, nonatomic) long long trendingTopicsRefreshRate;
+@property (readonly, nonatomic) BOOL usePersonalizationVectorAlt;
 @property (readonly, nonatomic) BOOL useSecureConnectionForAssets;
 
 - (NSDictionary *)analyticsEnvelopeContentTypeConfigsForEnvironment:(unsigned long long)arg1;

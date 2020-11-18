@@ -33,6 +33,7 @@
 - (id)supportsInStoreDemoModeCapability;
 - (id)supportsNightShiftCapability;
 - (id)supportsPSDeveloperSettingsCapability;
+- (id)supportsPSExposureNotificationsCapability;
 - (id)supportsPSTTYCapability;
 - (id)supportsRaiseToWakeCapability;
 

@@ -9,17 +9,19 @@
 #import <NetworkExtension/NSCopying-Protocol.h>
 #import <NetworkExtension/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface NEAOVPNException : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_serviceName;
     NSString *_bundleIdentifier;
+    NSArray *_limitToProtocols;
     long long _action;
 }
 
 @property long long action; // @synthesize action=_action;
 @property (copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (copy) NSArray *limitToProtocols; // @synthesize limitToProtocols=_limitToProtocols;
 @property (copy) NSString *serviceName; // @synthesize serviceName=_serviceName;
 
 + (BOOL)supportsSecureCoding;
@@ -29,6 +31,7 @@
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isLimitedToUDP;
 
 @end
 

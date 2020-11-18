@@ -33,6 +33,7 @@
 @property (copy, nonatomic) CDUnknownBlockType workBlock; // @synthesize workBlock=_workBlock;
 
 - (void).cxx_destruct;
+- (id)executeWithCallbackQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)executeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithTarget:(id)arg1 selector:(SEL)arg2;

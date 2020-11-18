@@ -8,12 +8,14 @@
 
 #import <SilexWeb/WKNavigationDelegate-Protocol.h>
 #import <SilexWeb/WKUIDelegate-Protocol.h>
+#import <SilexWeb/_WKFullscreenDelegate-Protocol.h>
 
 @class NSString, SWLoader, WKWebView;
-@protocol SWContentRuleManager, SWDatastoreSynchronizationManager, SWDocumentStateReporting, SWErrorReporting, SWLogger, SWMessageHandlerManager, SWNavigationManager, SWProcessTerminationManager, SWReachabilityProvider, SWScriptsManager, SWSessionManager, SWSetupManager, SWTimeoutManager;
+@protocol SWContentRuleManager, SWDatastoreSynchronizationManager, SWDocumentStateReporting, SWErrorReporting, SWLogger, SWMessageHandlerManager, SWNavigationManager, SWProcessTerminationManager, SWReachabilityProvider, SWScriptsManager, SWSessionManager, SWSetupManager, SWTimeoutManager, SWURLSchemeHandlerManager;
 
-@interface SWViewController : UIViewController <WKNavigationDelegate, WKUIDelegate>
+@interface SWViewController : UIViewController <WKNavigationDelegate, WKUIDelegate, _WKFullscreenDelegate>
 {
+    BOOL _isWebViewPresentingInFullScreen;
     id<SWScriptsManager> _scriptsManager;
     id<SWMessageHandlerManager> _messageHandlerManager;
     id<SWNavigationManager> _navigationManager;
@@ -29,8 +31,10 @@
     SWLoader *_loader;
     id<SWSessionManager> _sessionManager;
     id<SWDatastoreSynchronizationManager> _datastoreSynchronizationManager;
+    id<SWURLSchemeHandlerManager> _URLSchemeHandlerManager;
 }
 
+@property (readonly, nonatomic) id<SWURLSchemeHandlerManager> URLSchemeHandlerManager; // @synthesize URLSchemeHandlerManager=_URLSchemeHandlerManager;
 @property (nonatomic) BOOL allowsRemoteInspection;
 @property (readonly, nonatomic) id<SWContentRuleManager> contentRuleManager; // @synthesize contentRuleManager=_contentRuleManager;
 @property (readonly, nonatomic) id<SWDatastoreSynchronizationManager> datastoreSynchronizationManager; // @synthesize datastoreSynchronizationManager=_datastoreSynchronizationManager;
@@ -39,6 +43,7 @@
 @property (readonly, nonatomic) id<SWDocumentStateReporting> documentStateReporter; // @synthesize documentStateReporter=_documentStateReporter;
 @property (readonly, nonatomic) id<SWErrorReporting> errorReporter; // @synthesize errorReporter=_errorReporter;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isWebViewPresentingInFullScreen; // @synthesize isWebViewPresentingInFullScreen=_isWebViewPresentingInFullScreen;
 @property (strong, nonatomic) SWLoader *loader; // @synthesize loader=_loader;
 @property (readonly, nonatomic) id<SWLogger> logger; // @synthesize logger=_logger;
 @property (readonly, nonatomic) id<SWMessageHandlerManager> messageHandlerManager; // @synthesize messageHandlerManager=_messageHandlerManager;
@@ -53,7 +58,10 @@
 @property (readonly, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 
 - (void).cxx_destruct;
-- (id)initWithWebView:(id)arg1 setupManager:(id)arg2 scriptsManager:(id)arg3 messageHandlerManager:(id)arg4 navigationManager:(id)arg5 errorReporter:(id)arg6 documentStateReporter:(id)arg7 timeoutManager:(id)arg8 terminationManager:(id)arg9 contentRuleManager:(id)arg10 reachabilityProvider:(id)arg11 logger:(id)arg12 sessionManager:(id)arg13 datastoreSynchronizationManager:(id)arg14;
+- (void)_webViewDidEnterElementFullscreen:(id)arg1;
+- (void)_webViewDidExitElementFullscreen:(id)arg1;
+- (id)accessibilityElements;
+- (id)initWithWebView:(id)arg1 setupManager:(id)arg2 scriptsManager:(id)arg3 messageHandlerManager:(id)arg4 navigationManager:(id)arg5 errorReporter:(id)arg6 documentStateReporter:(id)arg7 timeoutManager:(id)arg8 terminationManager:(id)arg9 contentRuleManager:(id)arg10 reachabilityProvider:(id)arg11 logger:(id)arg12 sessionManager:(id)arg13 datastoreSynchronizationManager:(id)arg14 URLSchemeHandlerManager:(id)arg15;
 - (void)initiateLoadingWithLoader:(id)arg1;
 - (void)loadHTMLString:(id)arg1 baseURL:(id)arg2;
 - (void)loadURL:(id)arg1;

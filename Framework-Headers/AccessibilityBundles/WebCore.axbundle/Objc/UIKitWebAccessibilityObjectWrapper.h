@@ -178,6 +178,7 @@
 - (BOOL)_axWebKitSupportsARIAPressed;
 - (id)_axWebKitTrueLinkParent;
 - (void)_destroyFocusLayer;
+- (void)_enqueueReorderingNotification:(id)arg1;
 - (id)_focusGroupDescriptor;
 - (BOOL)_isCheckBox;
 - (BOOL)_isIBooks;
@@ -189,7 +190,6 @@
 - (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (void)_repostFocusChangeNotification;
 - (void)_repostWebNotificaton:(id)arg1;
-- (void)_repostWebSelectionChange;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 - (void)_updateFocusLayerFrame;
 - (BOOL)accessibilityActivate;

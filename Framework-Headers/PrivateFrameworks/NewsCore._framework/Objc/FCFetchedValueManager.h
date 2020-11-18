@@ -7,36 +7,30 @@
 #import <objc/NSObject.h>
 
 #import <NewsCore/FCBoostableOperationThrottlerDelegate-Protocol.h>
+#import <NewsCore/FCFetchedValueManager-Protocol.h>
 #import <NewsCore/FCFetchedValueManagerObserving-Protocol.h>
 
-@class FCBoostableOperationThrottler, FCFetchedValueDescriptor, NFUnfairLock, NSError, NSHashTable, NSString;
+@class FCBoostableOperationThrottler, FCFetchedValueDescriptor, FCFetchedValueObservable, NSString;
 @protocol NFCopying;
 
-@interface FCFetchedValueManager : NSObject <FCFetchedValueManagerObserving, FCBoostableOperationThrottlerDelegate>
+@interface FCFetchedValueManager : NSObject <FCFetchedValueManagerObserving, FCBoostableOperationThrottlerDelegate, FCFetchedValueManager>
 {
-    id<NFCopying> _value;
     FCFetchedValueDescriptor *_descriptor;
     FCBoostableOperationThrottler *_operationThrottler;
-    NSHashTable *_observers;
-    NFUnfairLock *_lock;
-    NSError *_error;
+    FCFetchedValueObservable *_observable;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) FCFetchedValueDescriptor *descriptor; // @synthesize descriptor=_descriptor;
-@property (copy, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NFUnfairLock *lock; // @synthesize lock=_lock;
-@property (readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property (readonly, nonatomic) FCFetchedValueObservable *observable; // @synthesize observable=_observable;
 @property (readonly, nonatomic) FCBoostableOperationThrottler *operationThrottler; // @synthesize operationThrottler=_operationThrottler;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) id<NFCopying> value; // @synthesize value=_value;
+@property (readonly, nonatomic) id<NFCopying> value;
 
 - (void).cxx_destruct;
 - (unsigned long long)_cachePolicyForOptions:(unsigned long long)arg1;
-- (void)_handleError:(id)arg1;
-- (void)_handleValue:(id)arg1;
 - (unsigned long long)_optionsForCachePolicy:(unsigned long long)arg1;
 - (id)_updateDependentManagersPromiseWithQualityOfService:(long long)arg1;
 - (void)addObserver:(id)arg1;

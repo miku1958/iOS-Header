@@ -33,11 +33,24 @@
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) FCPaywallVisualSpecConfiguration *visualSpecConfig; // @synthesize visualSpecConfig=_visualSpecConfig;
 
++ (id)defaultArticleDeferredHardPaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultArticleHardPaywallWithLandingPageArticleID:(id)arg1;
++ (id)defaultArticleSharedDeferredHardPaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultArticleSharedHardPaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultArticleSharedSoftPaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultArticleSoftPaywallWithLandingPageArticleID:(id)arg1;
++ (id)defaultAudioArticleDeferredHardPaywallWithLandingPageArticleID:(id)arg1;
++ (id)defaultAudioArticleHardPaywallWithLandingPageArticleID:(id)arg1;
++ (id)defaultAudioArticleSharedDeferredHardPaywallWithLandingPageArticleID:(id)arg1;
++ (id)defaultAudioArticleSharedHardPaywallWithLandingPageArticleID:(id)arg1;
++ (id)defaultAudioArticleSharedSoftPaywallWithLandingPageArticleID:(id)arg1;
++ (id)defaultAudioArticleSoftPaywallWithLandingPageArticleID:(id)arg1;
++ (id)defaultAudioFeedSoftPaywallLargePaywallWithLandingPageArticleID:(id)arg1;
++ (id)defaultAudioFeedSoftPaywallSmallPaywallWithLandingPageArticleID:(id)arg1;
++ (id)defaultAudioPaywallDescription;
++ (id)defaultAudioPaywallTitle;
 + (id)defaultChannelSoftPaywallWithLandingPageArticleID:(id)arg1;
++ (id)defaultDeferredPaywallTopOffsetConfiguration;
 + (id)defaultMagazineFeedSoftPaywallLargePaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultMagazineFeedSoftPaywallMediumPaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultMagazineFeedSoftPaywallSmallPaywallWithLandingPageArticleID:(id)arg1;

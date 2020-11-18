@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NTPBAdCtaEngagement, NTPBAdEngagement, NTPBAdExposureIneligible, NTPBAdExposureOpportunity, NTPBAdImpression, NTPBAlreadySubscriberSignIn, NTPBAnfComponentExposure, NTPBAppSessionEnd, NTPBAppSessionEndWatch, NTPBAppSessionResign, NTPBAppSessionResume, NTPBAppSessionStart, NTPBAppSessionStartWatch, NTPBAppleIdSignInResult, NTPBArticleEngagement, NTPBArticleFeedback, NTPBArticleHostViewExposure, NTPBArticleLikeDislike, NTPBArticleScroll, NTPBArticleScrollNotw, NTPBArticleSessionResign, NTPBArticleSessionResume, NTPBArticleViewNotw, NTPBArticleViewWatch, NTPBBackgroundSubscriptionValidation, NTPBBundleIdMappingMiss, NTPBBundleSubscriberInfo, NTPBChannelMuteUnmute, NTPBComscoreEventSend, NTPBCoverArticleWidgetExposure, NTPBCoverArticleWidgetView, NTPBDiscoverMoreInterstitialExposure, NTPBEmailOptInInvite, NTPBEndOfArticleExposure, NTPBExternalAnalyticsEventSend, NTPBFeedCellExposure, NTPBFeedCellHostViewExposure, NTPBFeedEngagementMenuExposure, NTPBFeedSubscribeUnsubscribe, NTPBFeedViewExposure, NTPBGroupViewExposure, NTPBInAppWebEmbedExposure, NTPBIssueDownload, NTPBIssueExposure, NTPBIssueTocView, NTPBLinkTap, NTPBLinkTapArticle, NTPBLocalNotificationReceived, NTPBLocalNotificationReturn, NTPBMediaEngage, NTPBMediaEngageComplete, NTPBMediaExposure, NTPBMediaView, NTPBNoUserAction, NTPBNotificationSettingsScreenView, NTPBNotificationSubscribeUnsubscribe, NTPBOptInButtonExposure, NTPBPDFPageView, NTPBPaidSubscriptionConversionPointExposure, NTPBPaidSubscriptionResult, NTPBPaidSubscriptionSheetIapFail, NTPBPaidSubscriptionSheetView, NTPBPaywallButtonTap, NTPBPullToRefresh, NTPBReadingListAddRemove, NTPBReadingListShow, NTPBRecommendationBrickExposure, NTPBReportConcernSubmission, NTPBRestorePaidSubscription, NTPBSearchBegin, NTPBSearchExecute, NTPBSearchResultSelect, NTPBSearchViewExposure, NTPBShareInformationScreenView, NTPBShareResult, NTPBShareSheetExposure, NTPBShareSheetIapFail, NTPBSubscriptionDetectionScreenView, NTPBSuggestionsFeedback, NTPBTocCardDrag, NTPBTocCellExposure, NTPBTocExposure, NTPBTocHandleTap, NTPBTocReorder, NTPBTocToggleTap, NTPBTodayWidgetExposure, NTPBTodayWidgetHeadlineExposure, NTPBTodayWidgetSession, NTPBTopOfFeedModuleExposure, NTPBUrlMappingMiss, NTPBUserIgnoreFavoritesSuggestion, NTPBUserOnboardingBegin, NTPBUserOnboardingChannelPickerComplete, NTPBUserOnboardingResult, NTPBUserOnboardingResume, NTPBUserOnboardingScreenView, NTPBWebAccessScreenView, NTPBWidgetEngagement;
+@class NTPBAdCtaEngagement, NTPBAdEngagement, NTPBAdExposureIneligible, NTPBAdExposureOpportunity, NTPBAdImpression, NTPBAlreadySubscriberSignIn, NTPBAnfComponentExposure, NTPBAppSessionEnd, NTPBAppSessionEndWatch, NTPBAppSessionResign, NTPBAppSessionResume, NTPBAppSessionStart, NTPBAppSessionStartWatch, NTPBAppleIdSignInResult, NTPBArticleEngagement, NTPBArticleFeedback, NTPBArticleHostViewExposure, NTPBArticleLikeDislike, NTPBArticleScroll, NTPBArticleScrollNotw, NTPBArticleSessionResign, NTPBArticleSessionResume, NTPBArticleViewNotw, NTPBArticleViewWatch, NTPBAudioEngage, NTPBAudioEngagementCompleted, NTPBBackgroundSubscriptionValidation, NTPBBundleIdMappingMiss, NTPBBundleSubscriberInfo, NTPBChannelMuteUnmute, NTPBComscoreEventSend, NTPBCoverArticleWidgetExposure, NTPBCoverArticleWidgetView, NTPBDiscoverMoreInterstitialExposure, NTPBEmailOptInInvite, NTPBEndOfArticleExposure, NTPBExternalAnalyticsEventSend, NTPBFeedCellExposure, NTPBFeedCellHostViewExposure, NTPBFeedEngagementMenuExposure, NTPBFeedSubscribeUnsubscribe, NTPBFeedViewExposure, NTPBGroupViewExposure, NTPBInAppWebEmbedExposure, NTPBIssueDownload, NTPBIssueExposure, NTPBIssueTocView, NTPBLinkTap, NTPBLinkTapArticle, NTPBLocalNotificationReceived, NTPBLocalNotificationReturn, NTPBMediaEngage, NTPBMediaEngageComplete, NTPBMediaExposure, NTPBMediaView, NTPBNoUserAction, NTPBNotificationSettingsScreenView, NTPBNotificationSubscribeUnsubscribe, NTPBOptInButtonExposure, NTPBPDFPageView, NTPBPaidSubscriptionConversionPointExposure, NTPBPaidSubscriptionResult, NTPBPaidSubscriptionSheetIapFail, NTPBPaidSubscriptionSheetView, NTPBPaywallButtonTap, NTPBPullToRefresh, NTPBReadingListAddRemove, NTPBReadingListShow, NTPBRecommendationBrickExposure, NTPBReportConcernSubmission, NTPBRestorePaidSubscription, NTPBSearchBegin, NTPBSearchExecute, NTPBSearchResultSelect, NTPBSearchViewExposure, NTPBShareInformationScreenView, NTPBShareResult, NTPBShareSheetExposure, NTPBShareSheetIapFail, NTPBSubscriptionDetectionScreenView, NTPBSuggestionsFeedback, NTPBTocCardDrag, NTPBTocCellExposure, NTPBTocExposure, NTPBTocHandleTap, NTPBTocReorder, NTPBTocToggleTap, NTPBTodayWidgetExposure, NTPBTodayWidgetHeadlineExposure, NTPBTodayWidgetSession, NTPBTopOfFeedModuleExposure, NTPBUrlMappingMiss, NTPBUserIgnoreFavoritesSuggestion, NTPBUserOnboardingBegin, NTPBUserOnboardingChannelPickerComplete, NTPBUserOnboardingResult, NTPBUserOnboardingResume, NTPBUserOnboardingScreenView, NTPBWebAccessScreenView, NTPBWidgetEngagement;
 
 @interface NTPBEventObject : PBCodable <NSCopying>
 {
@@ -36,6 +36,8 @@
     NTPBArticleSessionResume *_articleSessionResume;
     NTPBArticleViewNotw *_articleViewNotw;
     NTPBArticleViewWatch *_articleViewWatch;
+    NTPBAudioEngage *_audioEngage;
+    NTPBAudioEngagementCompleted *_audioEngagementCompleted;
     NTPBBackgroundSubscriptionValidation *_backgroundSubscriptionValidation;
     NTPBBundleIdMappingMiss *_bundleIdMappingMiss;
     NTPBBundleSubscriberInfo *_bundleSubscriberInfo;
@@ -136,6 +138,8 @@
 @property (strong, nonatomic) NTPBArticleSessionResume *articleSessionResume; // @synthesize articleSessionResume=_articleSessionResume;
 @property (strong, nonatomic) NTPBArticleViewNotw *articleViewNotw; // @synthesize articleViewNotw=_articleViewNotw;
 @property (strong, nonatomic) NTPBArticleViewWatch *articleViewWatch; // @synthesize articleViewWatch=_articleViewWatch;
+@property (strong, nonatomic) NTPBAudioEngage *audioEngage; // @synthesize audioEngage=_audioEngage;
+@property (strong, nonatomic) NTPBAudioEngagementCompleted *audioEngagementCompleted; // @synthesize audioEngagementCompleted=_audioEngagementCompleted;
 @property (strong, nonatomic) NTPBBackgroundSubscriptionValidation *backgroundSubscriptionValidation; // @synthesize backgroundSubscriptionValidation=_backgroundSubscriptionValidation;
 @property (strong, nonatomic) NTPBBundleIdMappingMiss *bundleIdMappingMiss; // @synthesize bundleIdMappingMiss=_bundleIdMappingMiss;
 @property (strong, nonatomic) NTPBBundleSubscriberInfo *bundleSubscriberInfo; // @synthesize bundleSubscriberInfo=_bundleSubscriberInfo;
@@ -177,6 +181,8 @@
 @property (readonly, nonatomic) BOOL hasArticleSessionResume;
 @property (readonly, nonatomic) BOOL hasArticleViewNotw;
 @property (readonly, nonatomic) BOOL hasArticleViewWatch;
+@property (readonly, nonatomic) BOOL hasAudioEngage;
+@property (readonly, nonatomic) BOOL hasAudioEngagementCompleted;
 @property (readonly, nonatomic) BOOL hasBackgroundSubscriptionValidation;
 @property (readonly, nonatomic) BOOL hasBundleIdMappingMiss;
 @property (readonly, nonatomic) BOOL hasBundleSubscriberInfo;

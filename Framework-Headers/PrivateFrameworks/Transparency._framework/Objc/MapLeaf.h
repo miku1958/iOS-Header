@@ -8,7 +8,7 @@
 
 #import <Transparency/TransparencyVerifiable-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSObject;
 
 @interface MapLeaf : GPBMessage <TransparencyVerifiable>
 {
@@ -16,10 +16,11 @@
 
 @property (strong, nonatomic) NSMutableArray *accountsArray; // @dynamic accountsArray;
 @property (readonly, nonatomic) unsigned long long accountsArray_Count; // @dynamic accountsArray_Count;
+@property (strong) NSObject *verifier; // @dynamic verifier;
 
 + (id)descriptor;
 - (id)recordForAccountId:(id)arg1 deviceIdVRFOutput:(id)arg2 appVersion:(unsigned long long)arg3 clientDataVRFoutput:(id)arg4;
-- (BOOL)verifyWithError:(id *)arg1;
+- (unsigned long long)verifyWithError:(id *)arg1;
 
 @end
 

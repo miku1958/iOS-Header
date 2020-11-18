@@ -22,7 +22,7 @@
 @property (strong) TransparencyVRFVerifier *verifier;
 
 + (id)descriptor;
-- (BOOL)verifyWithError:(id *)arg1;
+- (unsigned long long)verifyWithError:(id *)arg1;
 
 @end
 

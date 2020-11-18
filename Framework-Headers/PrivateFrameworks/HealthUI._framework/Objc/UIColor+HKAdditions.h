@@ -100,6 +100,7 @@
 + (id)hk_sleepInBedColor;
 + (id)hk_sleepKeyColor;
 + (id)hk_sourceIconTintColor;
++ (id)hk_symptomsKeyColor;
 + (id)hk_unknownCategoryClinicalKeyColor;
 + (id)hk_vitalsClinicalKeyColor;
 + (id)hk_vitalsKeyColor;

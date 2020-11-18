@@ -638,6 +638,7 @@
 - (void)sendUnsecureMessage:(id)arg1 target:(id)arg2 userID:(id)arg3 responseQueue:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
 - (void)sendUserAdded:(id)arg1 destination:(id)arg2 toHome:(id)arg3;
 - (void)sendUserRemoved:(id)arg1 fromHome:(id)arg2 pairingUsername:(id)arg3 pushToCloud:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)setHomekitAssistantConfigurationNumEntities;
 - (void)setHomekitLastSyncedAssistantConfigurationVersion:(unsigned long long)arg1;
 - (BOOL)setLocalPairingIdentity:(id)arg1 error:(id *)arg2;
 - (void)setMediaAccessoriesPresent:(BOOL)arg1 homePodsPresent:(BOOL)arg2 inOwnedHomes:(BOOL)arg3;

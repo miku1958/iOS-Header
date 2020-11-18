@@ -34,6 +34,7 @@
 @property (strong, nonatomic) NSString *name; // @dynamic name;
 @property (strong, nonatomic) NSNumber *networkClientIdentifier; // @dynamic networkClientIdentifier;
 @property (strong, nonatomic) NSNumber *networkClientLAN; // @dynamic networkClientLAN;
+@property (strong, nonatomic) NSString *networkClientProfileFingerprint; // @dynamic networkClientProfileFingerprint;
 @property (strong, nonatomic) NSString *networkRouterUUID; // @dynamic networkRouterUUID;
 @property (strong, nonatomic) NSString *primaryProfileVersion; // @dynamic primaryProfileVersion;
 @property (strong, nonatomic) NSString *productData; // @dynamic productData;

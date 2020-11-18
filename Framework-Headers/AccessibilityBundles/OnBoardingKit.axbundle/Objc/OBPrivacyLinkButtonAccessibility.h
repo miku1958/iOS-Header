@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)accessibilityActivate;
+- (id)accessibilityLabel;
 
 @end
 

@@ -27,6 +27,7 @@
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores *_scores;
     NSString *_sourceChannelID;
     NSMutableArray *_topicIDs;
+    BOOL _hasAudioTrack;
     BOOL _hasThumbnail;
     BOOL _hasVideo;
     BOOL _isBundlePaid;
@@ -44,6 +45,7 @@
         unsigned int order:1;
         unsigned int publishDateMilliseconds:1;
         unsigned int publisherArticleVersion:1;
+        unsigned int hasAudioTrack:1;
         unsigned int hasThumbnail:1;
         unsigned int hasVideo:1;
         unsigned int isBundlePaid:1;
@@ -63,12 +65,14 @@
 @property (strong, nonatomic) NSString *feedID; // @synthesize feedID=_feedID;
 @property (nonatomic) double globalUserFeedback; // @synthesize globalUserFeedback=_globalUserFeedback;
 @property (readonly, nonatomic) BOOL hasArticleID;
+@property (nonatomic) BOOL hasAudioTrack; // @synthesize hasAudioTrack=_hasAudioTrack;
 @property (nonatomic) BOOL hasBodyTextLength;
 @property (readonly, nonatomic) BOOL hasClusterID;
 @property (nonatomic) BOOL hasContentType;
 @property (nonatomic) BOOL hasFeedHalfLifeMilliseconds;
 @property (readonly, nonatomic) BOOL hasFeedID;
 @property (nonatomic) BOOL hasGlobalUserFeedback;
+@property (nonatomic) BOOL hasHasAudioTrack;
 @property (nonatomic) BOOL hasHasThumbnail;
 @property (nonatomic) BOOL hasHasVideo;
 @property (nonatomic) BOOL hasIsBundlePaid;

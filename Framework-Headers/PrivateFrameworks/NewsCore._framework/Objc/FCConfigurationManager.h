@@ -22,6 +22,7 @@
     RCConfigurationManager *_remoteConfigurationManager;
     FCContextConfiguration *_contextConfiguration;
     id<FCFeldsparIDProvider> _feldsparIDProvider;
+    NSString *_appShortVersionString;
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_appConfigFetchQueue;
     FCAsyncSerialQueue *_remoteConfigManagerSerialQueue;
@@ -39,6 +40,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *appConfigFetchQueue; // @synthesize appConfigFetchQueue=_appConfigFetchQueue;
 @property (strong, nonatomic) NSHashTable *appConfigObservers; // @synthesize appConfigObservers=_appConfigObservers;
 @property (readonly, nonatomic) id<FCNewsAppConfiguration> appConfiguration;
+@property (readonly, copy, nonatomic) NSString *appShortVersionString; // @synthesize appShortVersionString=_appShortVersionString;
 @property (nonatomic) BOOL attemptedAppConfigFetch; // @synthesize attemptedAppConfigFetch=_attemptedAppConfigFetch;
 @property (strong, nonatomic) NSDictionary *cachedWidgetConfigurationDict; // @synthesize cachedWidgetConfigurationDict=_cachedWidgetConfigurationDict;
 @property (readonly, nonatomic) id<FCCoreConfiguration> configuration;
@@ -74,6 +76,7 @@
 - (void)_configurationDidChangeSignificantConfigChange:(BOOL)arg1;
 - (id)_configurationSettingsWithRequestInfos:(id)arg1 feldsparID:(id)arg2 storefrontID:(id)arg3 contextConfiguration:(id)arg4 useBackgroundRefreshRate:(BOOL)arg5;
 - (unsigned long long)_configurationSourceForSourceName:(id)arg1;
+- (id)_deviceInfo;
 - (void)_fetchAppConfigurationIfNeededWithCompletionQueue:(id)arg1 forceRefresh:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fetchRemoteAppWidgetConfigurationIfNeededUseBackgroundRefreshRate:(BOOL)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fetchRemoteMagazinesConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -100,6 +103,7 @@
 - (id)init;
 - (id)initForTesting;
 - (id)initWithContextConfiguration:(id)arg1 contentHostDirectoryFileURL:(id)arg2 feldsparIDProvider:(id)arg3;
+- (id)initWithContextConfiguration:(id)arg1 contentHostDirectoryFileURL:(id)arg2 feldsparIDProvider:(id)arg3 appShortVersionString:(id)arg4;
 - (void)refreshAppConfigurationIfNeededWithCompletionQueue:(id)arg1 refreshCompletion:(CDUnknownBlockType)arg2;
 - (void)removeAppConfigObserver:(id)arg1;
 - (void)removeObserver:(id)arg1;

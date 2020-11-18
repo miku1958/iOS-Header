@@ -7,6 +7,10 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (Bridge)
+
+@property (nonatomic, readonly) UIColor *tu_dynamicLegibleForeground;
+@property (nonatomic, readonly) UIColor *tu_legibleForeground;
+
 + (id)ts_activityIndicatorColor;
 + (id)ts_dynamicColor:(id)arg1 withDarkStyleVariant:(id)arg2;
 + (id)ts_systemDarkTealColor;

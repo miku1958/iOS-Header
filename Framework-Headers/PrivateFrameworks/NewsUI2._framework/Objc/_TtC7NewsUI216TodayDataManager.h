@@ -4,17 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI216TodayDataManager : _TtCs12_SwiftObject
+__attribute__((visibility("hidden")))
+@interface _TtC7NewsUI216TodayDataManager : NSObject
 {
+    MISSING_TYPE *delegate;
     MISSING_TYPE *feedService;
     MISSING_TYPE *feedServiceConfigFetcher;
     MISSING_TYPE *paidBundleConfiguration;
     MISSING_TYPE *accessQueue;
+    MISSING_TYPE *pluginManager;
+    MISSING_TYPE *pluginFactory;
+    MISSING_TYPE *readingHistory;
+    MISSING_TYPE *readingList;
 }
+
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 
