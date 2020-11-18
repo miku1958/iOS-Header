@@ -15,12 +15,14 @@
     _UIButtonBar *_rightBar;
     double _margin;
     double _minimumInterItemSpace;
+    double _minimumInterGroupSpace;
     _UIButtonBarButtonVisualProvider *_visualProvider;
 }
 
 @property (copy, nonatomic) NSArray *centerBarButtonGroups;
 @property (copy, nonatomic) NSArray *leadingBarButtonGroups;
 @property (nonatomic) double margin; // @synthesize margin=_margin;
+@property (nonatomic) double minimumInterGroupSpace; // @synthesize minimumInterGroupSpace=_minimumInterGroupSpace;
 @property (nonatomic) double minimumInterItemSpace; // @synthesize minimumInterItemSpace=_minimumInterItemSpace;
 @property (copy, nonatomic) NSArray *trailingBarButtonGroups;
 @property (copy, nonatomic) _UIButtonBarButtonVisualProvider *visualProvider; // @synthesize visualProvider=_visualProvider;

@@ -7,7 +7,7 @@
 #import <UIKit/_UIBackdropViewSettings.h>
 
 __attribute__((visibility("hidden")))
-@interface _UIBackdropViewSettingsATVAccessoryLighten : _UIBackdropViewSettings
+@interface _UIBackdropViewSettingsATVAccessoryLight : _UIBackdropViewSettings
 {
 }
 

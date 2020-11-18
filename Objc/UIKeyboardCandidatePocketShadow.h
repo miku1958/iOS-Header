@@ -11,14 +11,13 @@ __attribute__((visibility("hidden")))
 {
     BOOL _shadowFadesToBottom;
     BOOL _drawsShadow;
-    double _shadowHeightGrowthFactor;
 }
 
 @property (nonatomic) BOOL drawsShadow; // @synthesize drawsShadow=_drawsShadow;
 @property (nonatomic) BOOL shadowFadesToBottom; // @synthesize shadowFadesToBottom=_shadowFadesToBottom;
-@property (nonatomic) double shadowHeightGrowthFactor; // @synthesize shadowHeightGrowthFactor=_shadowHeightGrowthFactor;
 
-+ (double)width;
++ (id)leftShadowImage;
++ (double)widthWithShadow:(BOOL)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

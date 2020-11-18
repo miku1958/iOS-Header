@@ -48,6 +48,7 @@
 + (id)newAssetNamed:(id)arg1 fromBundle:(id)arg2;
 + (id)sharedRuntimeAssetMap;
 + (id)sharedRuntimeCatalog;
++ (BOOL)validStackImageData:(id)arg1;
 + (BOOL)validStackImageFile:(id)arg1;
 - (id)_assetForName:(id)arg1 shouldCreateWhenNotPresent:(BOOL)arg2;
 - (id)_assetFromMapForName:(id)arg1;
@@ -76,6 +77,7 @@
 - (id)initWithName:(id)arg1 inBundle:(id)arg2 idiom:(long long)arg3;
 - (id)initWithURL:(id)arg1 idiom:(long long)arg2 error:(id *)arg3;
 - (id)stackImageWithContentsOfFile:(id)arg1 forTraitCollection:(id)arg2;
+- (id)stackImageWithData:(id)arg1 forTraitCollection:(id)arg2;
 
 @end
 

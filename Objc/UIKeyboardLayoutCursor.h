@@ -6,7 +6,7 @@
 
 #import <UIKit/UIKeyboardLayoutStar.h>
 
-@class NSArray, UIKBTree, UILexicon, UIView;
+@class NSArray, UIAlertController, UIKBTree, UILexicon, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardLayoutCursor : UIKeyboardLayoutStar
@@ -21,9 +21,13 @@ __attribute__((visibility("hidden")))
     UILexicon *_recentInputs;
     BOOL _disableTouchInput;
     BOOL _suppressOperations;
+    UIKBTree *_cachedMultitapKeyplane;
+    BOOL _cachedCanMultitap;
+    UIAlertController *_recentInputsAlert;
 }
 
 @property (readonly, nonatomic) UIKBTree *currentKey;
+@property (strong, nonatomic) UIAlertController *recentInputsAlert; // @synthesize recentInputsAlert=_recentInputsAlert;
 
 + (id)carKeyboardNameForKeyboard:(id)arg1 screenTraits:(id)arg2;
 + (struct CGSize)keyboardSizeForInputMode:(id)arg1 screenTraits:(id)arg2 keyboardType:(long long)arg3;
@@ -41,13 +45,17 @@ __attribute__((visibility("hidden")))
 - (int)activeStateForKey:(id)arg1;
 - (id)cacheTokenForKeyplane:(id)arg1;
 - (BOOL)canHandleEvent:(id)arg1;
+- (BOOL)canMultitap;
 - (void)clearVariantStateForKey:(id)arg1;
 - (void)configureChildCollectionViewCellsIfNeeded;
 - (unsigned long long)cursorLocation;
 - (void)deactivateKey:(id)arg1;
 - (void)dealloc;
 - (long long)defaultSelectedVariantIndexForKey:(id)arg1 withActions:(unsigned long long)arg2;
+- (void)didSelectRecentInputString:(id)arg1;
+- (unsigned long long)downActionFlagsForKey:(id)arg1;
 - (int)enabledStateForKey:(id)arg1;
+- (void)endMultitapForKey:(id)arg1;
 - (void)flushKeyCache:(id)arg1;
 - (BOOL)handleLinearDirectionalInput:(int)arg1;
 - (void)handleVariantDeleteIfNecessaryForKey:(id)arg1;
@@ -58,7 +66,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isKeyplaneDisabledWithName:(id)arg1;
 - (id)keyHitTestInSameRowAsCenter:(struct CGPoint)arg1 size:(struct CGSize)arg2;
 - (id)keyViewAnimator;
-- (id)keyplaneKeyForCurrentKeyplane;
 - (void)longPressAction;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
@@ -78,11 +85,14 @@ __attribute__((visibility("hidden")))
 - (void)setRecentInputs:(id)arg1;
 - (void)setSelectedKeyIndex:(long long)arg1;
 - (BOOL)shouldAddHandRestRecognizer;
+- (BOOL)shouldAllowCurrentKeyplaneReload;
 - (BOOL)shouldMatchCaseForDomainKeys;
 - (BOOL)shouldMergeKey:(id)arg1;
 - (BOOL)shouldPreventInputManagerHitTestingForKey:(id)arg1;
 - (BOOL)shouldRetestKey:(id)arg1 withKeyplane:(id)arg2;
+- (BOOL)shouldToggleKeyplaneWithName:(id)arg1;
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;
+- (void)showRecentInputsAlert;
 - (int)stateForCandidateListKey:(id)arg1;
 - (int)stateForKeyplaneSwitchKey:(id)arg1;
 - (BOOL)supportsEmoji;
@@ -91,7 +101,6 @@ __attribute__((visibility("hidden")))
 - (long long)targetKeyIndexAtOffset:(struct CGPoint)arg1 fromKey:(id)arg2;
 - (void)updateKeyplaneSwitchEdgeBiases;
 - (void)updateRecentInputsKeyIfNecessary;
-- (void)updateSelectionForCurrentKeyplane;
 - (void)updateStatesForGridSelection;
 - (BOOL)usesAutoShift;
 - (unsigned long long)variantCountForKey:(id)arg1;

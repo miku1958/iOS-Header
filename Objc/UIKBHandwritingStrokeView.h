@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (void)displayAggregateInvalidRect;
 - (void)drawRect:(struct CGRect)arg1;
 - (struct CGRect)handwritingPointToRect:(struct)arg1;
-- (struct CGPath *)pathForTrapezoidForFirstPoint:(struct)arg1 secondPoint:(struct)arg2;
 - (void)redrawStrokesInRect:(struct CGRect)arg1;
 - (void)updateInkColor;
 

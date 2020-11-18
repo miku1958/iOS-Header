@@ -8,13 +8,14 @@
 
 #import <UIKit/_UIFocusScrollAnimator-Protocol.h>
 
-@class CADisplayLink, NSMutableSet, NSString, UIScreen;
+@class CADisplayLink, NSMapTable, NSString, UIScreen, _UIFocusEngineScrollViewOffsets;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusDisplayLinkScrollAnimator : NSObject <_UIFocusScrollAnimator>
 {
     UIScreen *_screen;
-    NSMutableSet *_scrollViews;
+    _UIFocusEngineScrollViewOffsets *_singleScrollViewEntry;
+    NSMapTable *_scrollViews;
     CADisplayLink *_displayLink;
     double _defaultConvergenceRate;
 }
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_entryForScrollView:(id)arg1 createIfNeeded:(BOOL)arg2;
 - (void)_heartbeat:(id)arg1;
+- (void)_processEntry:(id)arg1 timeDelta:(long long)arg2 completed:(id)arg3;
 - (void)_updateDisplayLinkConfiguration;
 - (void)cancelPeekAdjustmentForScrollView:(id)arg1 performRollback:(BOOL)arg2;
 - (void)cancelScrollingForScrollView:(id)arg1;
@@ -37,6 +39,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isAnimatingScrollView:(id)arg1;
 - (void)setPeekOffsetAdjustment:(struct CGPoint)arg1 forScrollView:(id)arg2;
 - (void)setTargetContentOffset:(struct CGPoint)arg1 forScrollView:(id)arg2 convergenceRate:(double)arg3 completion:(CDUnknownBlockType)arg4;
+- (struct CGPoint)targetContentOffsetForScrollView:(id)arg1;
+- (struct CGPoint)velocityToScrollFromOffset:(struct CGPoint)arg1 toOffset:(struct CGPoint)arg2;
 
 @end
 

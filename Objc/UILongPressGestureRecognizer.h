@@ -33,12 +33,14 @@
     unsigned int _cancelPastAllowableMovement:1;
     unsigned int _allowsDynamicTouchesList:1;
     BOOL _requiresQuietImpulse;
+    BOOL _requiresQuietImpulseForCurrentTouchSequence;
     long long _buttonType;
 }
 
 @property (nonatomic, setter=_setButtonType:) long long _buttonType; // @synthesize _buttonType;
 @property (readonly, nonatomic) struct CGPoint _centroidScreen;
 @property (nonatomic, setter=_setRequiresQuietImpulse:) BOOL _requiresQuietImpulse; // @synthesize _requiresQuietImpulse;
+@property (nonatomic, setter=_setRequiresQuietImpulseForCurrentTouchSequence:) BOOL _requiresQuietImpulseForCurrentTouchSequence; // @synthesize _requiresQuietImpulseForCurrentTouchSequence;
 @property (nonatomic) double allowableMovement; // @synthesize allowableMovement=_allowableMovement;
 @property (nonatomic) BOOL cancelPastAllowableMovement;
 @property (readonly, nonatomic) struct CGPoint centroid;
@@ -70,6 +72,7 @@
 - (struct CGPoint)_startPointInView:(id)arg1;
 - (void)_startTapFinishedTimer;
 - (double)_touchSloppinessFactor;
+- (BOOL)_touchesMayBeRecognizedByForcePreviewingRevealGestureRecognizerWhichShouldDelayTimer:(id)arg1;
 - (struct CGPoint)_translationInView:(id)arg1;
 - (BOOL)activeTouchesExceedAllowableSeparation;
 - (BOOL)canPreventGestureRecognizer:(id)arg1;

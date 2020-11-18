@@ -10,7 +10,7 @@
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKit/_UIScrollToTopView-Protocol.h>
 
-@class NSArray, NSISVariable, NSString, UIImageView, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIScrollViewPinchGestureRecognizer, UISwipeGestureRecognizer, _UIStaticScrollBar;
+@class NSArray, NSISVariable, NSString, UIGestureRecognizer, UIImageView, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIScrollViewDirectionalPressGestureRecognizer, UIScrollViewPinchGestureRecognizer, UISwipeGestureRecognizer, _UIStaticScrollBar;
 @protocol UIScrollViewDelegate, _UIScrollViewLayoutObserver;
 
 @interface UIScrollView : UIView <UIGestureRecognizerDelegate, _UIScrollToTopView, NSCoding>
@@ -51,6 +51,7 @@
     id _pan;
     id _swipe;
     id _touchDelayGestureRecognizer;
+    UIScrollViewDirectionalPressGestureRecognizer *_directionalPressGestureRecognizer;
     UISwipeGestureRecognizer *_lowFidelitySwipeGestureRecognizers[4];
     UIScrollView *_draggingChildScrollView;
     struct CGPoint _parentAdjustment;
@@ -70,6 +71,7 @@
     struct CGPoint _pagingOrigin;
     struct UIOffset _firstPageOffset;
     id<_UIScrollViewLayoutObserver> _layoutObserver;
+    struct UIEdgeInsets _gradientMaskInsets;
     struct {
         unsigned int tracking:1;
         unsigned int dragging:1;
@@ -107,6 +109,7 @@
         unsigned int lastVerticalDirection:1;
         unsigned int dontScrollToTop:1;
         unsigned int scrollingToTop:1;
+        unsigned int scrollingDirectionalPress:1;
         unsigned int singleFingerPan:1;
         unsigned int autoscrolling:1;
         unsigned int automaticContentOffsetAdjustmentDisabled:1;
@@ -139,6 +142,7 @@
         unsigned int adjustsTargetsOnContentOffsetChanges:1;
         unsigned int forwardsTouchesUpResponderChain:1;
         unsigned int firstResponderKeyboardAvoidanceDisabled:1;
+        unsigned int hasGradientMaskView:1;
         unsigned int interruptingDeceleration:1;
         unsigned int delegateScrollViewAdjustedCentroid:1;
     } _scrollViewFlags;
@@ -173,6 +177,7 @@
 @property (weak, nonatomic) id<UIScrollViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDirectionalLockEnabled) BOOL directionalLockEnabled;
+@property (readonly, nonatomic) UIGestureRecognizer *directionalPressGestureRecognizer; // @synthesize directionalPressGestureRecognizer=_directionalPressGestureRecognizer;
 @property (readonly, nonatomic, getter=isDragging) BOOL dragging;
 @property (nonatomic, getter=_isFirstResponderKeyboardAvoidanceEnabled, setter=_setFirstResponderKeyboardAvoidanceEnabled:) BOOL firstResponderKeyboardAvoidanceEnabled;
 @property (nonatomic, getter=_forwardsTouchesUpResponderChain, setter=_setForwardsTouchesUpResponderChain:) BOOL forwardsTouchesUpResponderChain;
@@ -262,6 +267,7 @@
 - (BOOL)_evaluateWantsConstrainedContentSize;
 - (struct UIOffset)_firstPageOffset;
 - (void)_flashScrollIndicatorsPersistingPreviousFlashes:(BOOL)arg1;
+- (struct CGPoint)_focusTargetOffset;
 - (void)_focusedView:(id)arg1 isMinX:(BOOL *)arg2 isMaxX:(BOOL *)arg3 isMinY:(BOOL *)arg4 isMaxY:(BOOL *)arg5;
 - (void)_forceDelegateScrollViewDidZoom:(BOOL)arg1;
 - (BOOL)_forwardsToParentScroller;
@@ -270,8 +276,11 @@
 - (void)_gestureRecognizerFailed:(id)arg1;
 - (BOOL)_getBouncingDecelerationOffset:(double *)arg1 forTimeInterval:(double)arg2 lastUpdateOffset:(double)arg3 min:(double)arg4 max:(double)arg5 decelerationFactor:(double)arg6 decelerationLnFactor:(double)arg7 velocity:(double *)arg8;
 - (id)_getDelegateZoomView;
+- (void)_getGradientMaskBounds:(out struct CGRect *)arg1 startInsets:(out struct UIEdgeInsets *)arg2 endInsets:(out struct UIEdgeInsets *)arg3 intensities:(out struct UIEdgeInsets *)arg4;
 - (BOOL)_getPagingDecelerationOffset:(struct CGPoint *)arg1 forTimeInterval:(double)arg2;
 - (void)_getStandardDecelerationOffset:(double *)arg1 forTimeInterval:(double)arg2 min:(double)arg3 max:(double)arg4 decelerationFactor:(double)arg5 decelerationLnFactor:(double)arg6 velocity:(double *)arg7;
+- (struct UIEdgeInsets)_gradientMaskInsets;
+- (void)_handleDirectionalPress:(id)arg1;
 - (void)_handleLowFidelitySwipe:(id)arg1;
 - (void)_handleSwipe:(id)arg1;
 - (void)_hideScrollIndicators;
@@ -295,6 +304,7 @@
 - (struct CGSize)_nsis_contentSize;
 - (struct UIOffset)_offsetForCenterOfPossibleZoomView:(id)arg1 withIncomingBoundsSize:(struct CGSize)arg2;
 - (double)_offsetForRubberBandOffset:(double)arg1 maxOffset:(double)arg2 minOffset:(double)arg3 range:(double)arg4;
+- (struct CGPoint)_offsetToScrollToForArrowPressType:(long long)arg1;
 - (void)_old_updateAutomaticContentSizeConstraintsIfNecessaryWithContentSize:(struct CGSize)arg1;
 - (struct CGPoint)_originalOffsetForAnimatedSetContentOffset;
 - (BOOL)_ownsAnimationForKey:(id)arg1 ofView:(id)arg2;
@@ -353,9 +363,11 @@
 - (void)_setContentOffsetRoundingEnabled:(BOOL)arg1;
 - (void)_setContentScrollInset:(struct UIEdgeInsets)arg1;
 - (void)_setFirstPageOffset:(struct UIOffset)arg1;
+- (void)_setGradientMaskInsets:(struct UIEdgeInsets)arg1;
 - (void)_setIgnoreLinkedOnChecks:(BOOL)arg1;
 - (void)_setInterpageSpacing:(struct CGSize)arg1;
 - (void)_setLayoutObserver:(id)arg1;
+- (void)_setMaskView:(id)arg1;
 - (void)_setPagingFriction:(double)arg1;
 - (void)_setPagingOrigin:(struct CGPoint)arg1;
 - (void)_setShowsBackgroundShadow:(BOOL)arg1;
@@ -399,6 +411,7 @@
 - (BOOL)_transfersScrollToContainer;
 - (void)_updateContentFitDisableScrolling;
 - (void)_updateForChangedScrollRelatedInsets;
+- (void)_updateGradientMaskView;
 - (void)_updatePagingGesture;
 - (void)_updatePanGesture;
 - (void)_updatePanGestureConfiguration;
@@ -409,6 +422,7 @@
 - (void)_updateUsesStaticScrollBar;
 - (void)_updateZoomGestureRecognizersEnabled;
 - (BOOL)_usesLowFidelityPanning;
+- (struct CGPoint)_velocityForAnimatedScrollFromOffset:(struct CGPoint)arg1 toOffset:(struct CGPoint)arg2;
 - (double)_verticalVelocity;
 - (BOOL)_viewIsInsideNavigationController;
 - (void)_webCustomViewWillBeRemovedFromSuperview;

@@ -33,11 +33,13 @@
     UIVisualEffect *_finalEffect;
     BOOL __adaptsToInterfaceStyle;
     NSString *_groupName;
+    double _cornerRadius;
     UIVisualEffect *_effect;
     UIVisualEffect *_overrideEffect;
 }
 
 @property (nonatomic, setter=_setAdaptsToInterfaceStyle:) BOOL _adaptsToInterfaceStyle; // @synthesize _adaptsToInterfaceStyle=__adaptsToInterfaceStyle;
+@property (nonatomic, setter=_setCornerRadius:) double _cornerRadius; // @synthesize _cornerRadius;
 @property (copy, nonatomic, setter=_setGroupName:) NSString *_groupName; // @synthesize _groupName;
 @property (readonly, nonatomic) UIVisualEffect *_trueEffect;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
@@ -50,6 +52,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_applyCornerRadiusToSubviews;
 - (void)_applyGroupNameToSubviews;
 - (void)_commonInit;
 - (void)_configureForCurrentEffect;

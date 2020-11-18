@@ -6,25 +6,31 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSMutableArray, UIImage, UIView;
+#import <UIKit/NSCopying-Protocol.h>
+
+@class NSArray, NSMutableArray, UIImage, UIView, _UIFocusRegionMapSnapshotRequest;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusRegionMapSnapshot : NSObject
+@interface _UIFocusRegionMapSnapshot : NSObject <NSCopying>
 {
     BOOL _isFocusedRectEmpty;
     BOOL _didSetRegionClipFrame;
     struct CGRect _regionClipFrame;
     BOOL _committed;
+    BOOL _privateSnaphot;
     BOOL _clipToSnapshotRect;
     UIImage *_visualRepresentation;
+    _UIFocusRegionMapSnapshotRequest *_request;
     UIView *_rootView;
     NSArray *_sortedFocusContainerGuideMapEntries;
     NSMutableArray *_detectedFocusableViewMapEntries;
     NSMutableArray *_detectedFocusableGuideMapEntries;
     NSMutableArray *_detectedFocusContainerGuideMapEntries;
+    NSMutableArray *_retainedPromiseRegions;
     unsigned long long _focusHeading;
     UIView *_focusableRegionAncestorView;
     NSArray *_finalFocusableRegionMapEntries;
+    struct CGPoint _visualRepresentationScreenCenter;
     struct CGRect _mapEntriesFrame;
     struct CGRect _snapshottedRect;
     struct CGRect _focusedRect;
@@ -42,26 +48,35 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) UIView *focusableRegionAncestorView; // @synthesize focusableRegionAncestorView=_focusableRegionAncestorView;
 @property (nonatomic) struct CGRect focusedRect; // @synthesize focusedRect=_focusedRect;
 @property (readonly, nonatomic) struct CGRect mapEntriesFrame; // @synthesize mapEntriesFrame=_mapEntriesFrame;
+@property (nonatomic, getter=isPrivateSnapshot) BOOL privateSnaphot; // @synthesize privateSnaphot=_privateSnaphot;
+@property (readonly, copy, nonatomic) _UIFocusRegionMapSnapshotRequest *request; // @synthesize request=_request;
+@property (strong, nonatomic) NSMutableArray *retainedPromiseRegions; // @synthesize retainedPromiseRegions=_retainedPromiseRegions;
 @property (readonly, weak, nonatomic) UIView *rootView; // @synthesize rootView=_rootView;
 @property (readonly, nonatomic) struct CGRect snapshottedRect; // @synthesize snapshottedRect=_snapshottedRect;
 @property (copy, nonatomic) NSArray *sortedFocusContainerGuideMapEntries; // @synthesize sortedFocusContainerGuideMapEntries=_sortedFocusContainerGuideMapEntries;
 @property (readonly, nonatomic) UIImage *visualRepresentation; // @synthesize visualRepresentation=_visualRepresentation;
 @property (nonatomic) struct CGRect visualRepresentationMinimumArea; // @synthesize visualRepresentationMinimumArea=_visualRepresentationMinimumArea;
+@property (nonatomic) struct CGPoint visualRepresentationScreenCenter; // @synthesize visualRepresentationScreenCenter=_visualRepresentationScreenCenter;
 
++ (id)combinedVisualRepresentationForSnapshots:(id)arg1 scaleFactor:(double)arg2;
 - (void).cxx_destruct;
-- (void)_addFocusContainerGuide:(id)arg1;
-- (void)_addFocusableRegion:(id)arg1 isFocusGuide:(BOOL)arg2;
-- (struct CGRect)_clippedRegionFrame:(struct CGRect)arg1;
+- (void)_addFocusContainerGuide:(id)arg1 withFrame:(struct CGRect)arg2;
+- (void)_addFocusableRegion:(id)arg1 isFocusGuide:(BOOL)arg2 withFrame:(struct CGRect)arg3;
+- (struct CGRect)_clippedRegionFrame:(struct CGRect)arg1 isFocusGuide:(BOOL)arg2;
 - (void)_commit;
+- (void)_didChooseFocusCandidateRegion:(id)arg1;
 - (id)_finalFocusableRegionMapEntriesFromMapEntries:(id)arg1;
 - (id)_finalFocusableRegionMapEntriesFromViewMapEntries:(id)arg1 guideMapEntries:(id)arg2;
-- (id)_initWithRootView:(id)arg1 snapshotRect:(struct CGRect)arg2;
-- (void)_occludeFocusInRegion:(id)arg1;
+- (id)_initWithRequest:(id)arg1;
+- (void)_occludeFocusInFrame:(struct CGRect)arg1;
 - (void)_punchHoleInMap:(id)arg1 atFrame:(struct CGRect)arg2;
+- (id)_snapshotByFulfillingPromiseFocusRegionEntry:(id)arg1;
 - (id)_sortedEligibleFocusContainerGuidesInArray:(id)arg1;
+- (void)_updateFinalFocusableRegionMapEntries;
+- (void)_updateSortedFocusContainerGuideMapEntries;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugQuickLookObject;
 - (id)focusableRegionMapEntriesLimitedByFocusContainerGuide:(id)arg1;
-- (id)init;
 - (id)visualRepresentationWithMinimumArea:(struct CGRect)arg1;
 
 @end

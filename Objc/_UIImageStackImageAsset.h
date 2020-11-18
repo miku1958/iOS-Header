@@ -6,19 +6,22 @@
 
 #import <UIKit/UIImageAsset.h>
 
-@class CUICatalog;
+@class CUICatalog, NSData;
 
 __attribute__((visibility("hidden")))
 @interface _UIImageStackImageAsset : UIImageAsset
 {
     CUICatalog *_catalog;
+    NSData *_stackData;
 }
 
 @property (strong, nonatomic) CUICatalog *catalog; // @synthesize catalog=_catalog;
+@property (copy, nonatomic) NSData *stackData; // @synthesize stackData=_stackData;
 
 - (void).cxx_destruct;
 - (id)imageWithTraitCollection:(id)arg1;
 - (id)initWithContentsOfFile:(id)arg1;
+- (id)initWithData:(id)arg1;
 
 @end
 

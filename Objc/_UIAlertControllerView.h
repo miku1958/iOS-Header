@@ -278,7 +278,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)message;
 - (id)preferredAction;
-- (id)preferredFocusedItem;
+- (id)preferredFocusedView;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;

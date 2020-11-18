@@ -21,7 +21,9 @@
     long long m_orientation;
     long long m_idiom;
     BOOL m_hasExplicitOrientation;
+    BOOL m_disableTouchInput;
     NSMutableDictionary *m_focusGuides;
+    struct UIEdgeInsets m_unfocusedFocusGuideOutsets;
     BOOL _hasImpendingCursorLocation;
     unsigned long long _impendingCursorLocation;
 }
@@ -61,6 +63,7 @@
 - (void)_changeToKeyplane:(id)arg1;
 - (void)_deactivateForBackgrounding;
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
+- (BOOL)_disableTouchInput;
 - (long long)_focusedSound;
 - (id)_getAutocorrection;
 - (id)_getCurrentKeyboardName;
@@ -148,6 +151,8 @@
 - (void)setOrientation:(long long)arg1;
 - (void)setReturnKeyEnabled:(BOOL)arg1;
 - (void)setShowPredictionBar:(BOOL)arg1;
+- (void)setUnfocusedFocusGuideOutsets:(struct UIEdgeInsets)arg1;
+- (void)setUnfocusedFocusGuideOutsets:(struct UIEdgeInsets)arg1 fromView:(id)arg2;
 - (void)setupKeyFocusGuides;
 - (BOOL)shouldChangeFocusedItem:(id)arg1 heading:(unsigned long long)arg2;
 - (BOOL)shouldSaveMinimizationState;
@@ -160,6 +165,8 @@
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (struct UIEdgeInsets)unfocusedFocusGuideOutsets;
+- (void)updateFocusMarginsUpToView:(id)arg1;
 - (void)updateKeyFocusGuides;
 - (void)updateLayout;
 - (void)willMoveToWindow:(id)arg1;

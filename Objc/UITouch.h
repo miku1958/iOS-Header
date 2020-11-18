@@ -8,7 +8,7 @@
 
 #import <UIKit/_UIResponderForwardable-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, UIResponder, UIView, UIWindow;
+@class NSArray, NSMutableArray, NSNumber, NSString, UIResponder, UIView, UIWindow;
 @protocol _UITouchPhaseChangeDelegate;
 
 @interface UITouch : NSObject <_UIResponderForwardable>
@@ -25,6 +25,8 @@
     NSMutableArray *_forwardingRecord;
     struct CGPoint _locationInWindow;
     struct CGPoint _previousLocationInWindow;
+    struct CGPoint _preciseLocationInWindow;
+    struct CGPoint _precisePreviousLocationInWindow;
     double _previousPressure;
     unsigned char _pathIndex;
     unsigned char _pathIdentity;
@@ -37,16 +39,23 @@
         unsigned int _isDelayed:1;
         unsigned int _sentTouchesEnded:1;
         unsigned int _abandonForwardingRecord:1;
+        unsigned int _deliversUpdatesInTouchesMovedIsValid:1;
+        unsigned int _deliversUpdatesInTouchesMoved:1;
+        unsigned int _isPredictedTouch:1;
     } _touchFlags;
     BOOL _eaten;
     BOOL _needsForceUpdate;
+    BOOL _hasForceUpdate;
     long long _forceCorrelationToken;
     double _maximumPossiblePressure;
     unsigned long long _senderID;
     struct __IOHIDEvent *_hidEvent;
+    double _altitudeAngle;
     long long _type;
     id<_UITouchPhaseChangeDelegate> __phaseChangeDelegate;
     UIWindow *__windowServerHitTestWindow;
+    double _azimuthAngleInCADisplay;
+    double _azimuthAngleInWindow;
     struct CGSize _displacement;
 }
 
@@ -55,7 +64,9 @@
 @property (nonatomic, setter=_setEdgeType:) long long _edgeType; // @synthesize _edgeType;
 @property (nonatomic, setter=_setForceCorrelationToken:) long long _forceCorrelationToken; // @synthesize _forceCorrelationToken;
 @property (nonatomic, setter=_setForwardablePhase:) long long _forwardablePhase;
+@property (nonatomic, setter=_setHasForceUpdate:) BOOL _hasForceUpdate; // @synthesize _hasForceUpdate;
 @property (nonatomic, setter=_setHidEvent:) struct __IOHIDEvent *_hidEvent; // @synthesize _hidEvent;
+@property (nonatomic, setter=_setIsPredictedTouch:) BOOL _isPredictedTouch;
 @property (nonatomic, setter=_setMaximumPossiblePressure:) double _maximumPossiblePressure; // @synthesize _maximumPossiblePressure;
 @property (nonatomic, setter=_setNeedsForceUpdate:) BOOL _needsForceUpdate; // @synthesize _needsForceUpdate;
 @property (nonatomic, setter=_setPathIdentity:) unsigned char _pathIdentity; // @synthesize _pathIdentity;
@@ -66,8 +77,15 @@
 @property (nonatomic, setter=_setSenderID:) unsigned long long _senderID; // @synthesize _senderID;
 @property (readonly, nonatomic) double _unclampedForce;
 @property (strong, nonatomic, setter=_setWindowServerHitTestWindow:) UIWindow *_windowServerHitTestWindow; // @synthesize _windowServerHitTestWindow=__windowServerHitTestWindow;
+@property (nonatomic) double altitudeAngle; // @synthesize altitudeAngle=_altitudeAngle;
+@property (readonly, nonatomic) double azimuthAngle;
+@property (nonatomic, setter=_setAzimuthAngleInCADisplay:) double azimuthAngleInCADisplay; // @synthesize azimuthAngleInCADisplay=_azimuthAngleInCADisplay;
+@property (readonly, nonatomic) double azimuthAngleInWindow; // @synthesize azimuthAngleInWindow=_azimuthAngleInWindow;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) long long estimatedProperties;
+@property (readonly, nonatomic) long long estimatedPropertiesExpectingUpdates;
+@property (readonly, nonatomic) NSNumber *estimationUpdateIndex;
 @property (readonly, nonatomic) double force;
 @property (readonly, copy, nonatomic) NSArray *gestureRecognizers;
 @property (readonly) unsigned long long hash;
@@ -93,6 +111,7 @@
 @property (readonly, nonatomic) UIWindow *window;
 
 + (id)_createTouchesWithGSEvent:(struct __GSEvent *)arg1 phase:(long long)arg2 view:(id)arg3;
++ (void)_setShouldReverseAltitudeAngleSense:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)_abandonForwardingRecord;
 - (void)_addGestureRecognizer:(id)arg1;
@@ -100,6 +119,7 @@
 - (id)_clone;
 - (void)_clonePropertiesToTouch:(id)arg1;
 - (long long)_compareIndex:(id)arg1;
+- (void)_computeAzimuthAngleInWindow;
 - (double)_distanceFrom:(id)arg1 inView:(id)arg2;
 - (BOOL)_edgeForceActive;
 - (BOOL)_edgeForcePending;
@@ -118,20 +138,28 @@
 - (struct CGPoint)_previousLocationInWindow:(id)arg1;
 - (void)_removeGestureRecognizer:(id)arg1;
 - (SEL)_responderSelectorForPhase:(long long)arg1;
+- (void)_setAltitudeAngle:(double)arg1;
 - (void)_setIsFirstTouchForView:(BOOL)arg1;
+- (void)_setLocation:(struct CGPoint)arg1 preciseLocation:(struct CGPoint)arg2 inWindowResetPreviousLocation:(BOOL)arg3;
 - (void)_setLocationInWindow:(struct CGPoint)arg1 resetPrevious:(BOOL)arg2;
 - (void)_setPressure:(double)arg1 resetPrevious:(BOOL)arg2;
 - (void)_setPreviousTouch:(id)arg1;
 - (void)_setType:(long long)arg1;
+- (BOOL)_shouldDeliverTouchForTouchesMoved;
 - (double)_standardForceAmount;
 - (BOOL)_supportsForce;
 - (void)_updateMovementMagnitudeForLocation:(struct CGPoint)arg1;
 - (void)_updateMovementMagnitudeFromLocation:(struct CGPoint)arg1 toLocation:(struct CGPoint)arg2;
+- (void)_updateWithChildEvent:(struct __IOHIDEvent *)arg1;
 - (BOOL)_wantsForwardingFromResponder:(id)arg1 toNextResponder:(id)arg2 withEvent:(id)arg3;
+- (double)azimuthAngleInView:(id)arg1;
+- (struct CGVector)azimuthUnitVectorInView:(id)arg1;
 - (void)dealloc;
 - (long long)info;
 - (BOOL)isDelayed;
 - (struct CGPoint)locationInView:(id)arg1;
+- (struct CGPoint)preciseLocationInView:(id)arg1;
+- (struct CGPoint)precisePreviousLocationInView:(id)arg1;
 - (struct CGPoint)previousLocationInView:(id)arg1;
 - (void)setIsDelayed:(BOOL)arg1;
 

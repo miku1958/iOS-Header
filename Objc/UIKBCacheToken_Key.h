@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     CDUnion_2c5a7b77 _style;
     NSString *_cacheDisplayString;
+    NSString *_cacheSecondaryDisplayString;
     int _displayTypeHint;
     int _displayRowHint;
     struct CGSize _size;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)_initWithKey:(id)arg1 style:(CDStruct_961fb75c)arg2 displayInsets:(struct UIEdgeInsets)arg3;
 - (id)_stringWithAdditionalValues:(CDUnknownBlockType)arg1;
 - (void)annotateWithBool:(BOOL)arg1;
+- (void)annotateWithInt:(int)arg1;
 - (void)dealloc;
 - (int)displayHint;
 - (BOOL)hasKey;

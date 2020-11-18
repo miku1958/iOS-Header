@@ -29,6 +29,8 @@ __attribute__((visibility("hidden")))
 
 + (id)viewWithRemoteViewController:(id)arg1 viewControllerOperatorProxy:(id)arg2 textEffectsOperatorProxy:(id)arg3;
 - (void).cxx_destruct;
+- (id)_childFocusRegions;
+- (id)_childFocusRegionsInRect:(struct CGRect)arg1;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
 - (long long)_interfaceOrientationForScene:(id)arg1;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)_scrollToTopFromTouchAtScreenLocation:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)_updateSceneGeometries:(id)arg1 forOrientation:(long long)arg2;
 - (void)_updateTextEffectsGeometries:(struct CGRect)arg1;
+- (BOOL)canBecomeFocused;
 - (void)dealloc;
 - (BOOL)isScrollEnabled;
 - (void)updateIntrinsicContentSize:(struct CGSize)arg1;

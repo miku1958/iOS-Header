@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct CGRect finalFrameForContainerView; // @synthesize finalFrameForContainerView;
+@property (readonly, nonatomic) BOOL forceObeyNavigationBarInsets;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double resultsControllerContentOffset;
 @property (readonly, nonatomic) BOOL resultsUnderlapsSearchBar;

@@ -116,6 +116,7 @@
 - (id)_tintColorArchivingKey;
 - (void)_updateDividerImageForSegmentAtIndex:(unsigned long long)arg1;
 - (void)_updateOptionsBackground;
+- (void)_updateTitleTextAttributes;
 - (BOOL)_usesNewAnimations;
 - (void)addSegmentWithTitle:(id)arg1;
 - (struct UIEdgeInsets)alignmentRectInsets;
@@ -128,7 +129,7 @@
 - (struct UIOffset)contentPositionAdjustmentForSegmentType:(long long)arg1 barMetrics:(long long)arg2;
 - (int)controlSize;
 - (void)dealloc;
-- (void)didUpdateFocusFromView:(id)arg1;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)dividerImageForLeftSegmentState:(unsigned long long)arg1 rightSegmentState:(unsigned long long)arg2 barMetrics:(long long)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (struct CGRect)frame;

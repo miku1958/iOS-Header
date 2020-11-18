@@ -11,7 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (double)_row4ControlSegmentWidth;
+- (double)_row4ControlSegmentWidthLeft;
+- (double)_row4ControlSegmentWidthRight;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (id)biuKeyImageName;
 - (id)boldKeyImageName;

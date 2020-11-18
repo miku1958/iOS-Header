@@ -8,7 +8,7 @@
 
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSString, UIBarButtonItem, UIFocusContainerGuide, UIGestureRecognizer, UIPopoverController, UIResponder, UISnapshotView, UITraitCollection, UIView;
+@class NSArray, NSString, UIBarButtonItem, UIFocusContainerGuide, UIGestureRecognizer, UIPopoverController, UIResponder, UISnapshotView, UITapGestureRecognizer, UITraitCollection, UIView;
 @protocol UISplitViewControllerDelegate;
 
 @interface UISplitViewController : UIViewController <UIGestureRecognizerDelegate>
@@ -36,6 +36,7 @@
     BOOL _presentsInFadingPopover;
     BOOL _presentsWithGesture;
     UIGestureRecognizer *_popoverPresentationGestureRecognizer;
+    UITapGestureRecognizer *_menuGestureRecognizer;
     long long _preferredDisplayMode;
     long long _effectiveTargetDisplayMode;
     long long _pendingDisplayModeChangeCount;
@@ -255,6 +256,7 @@
 - (id)displayModeButtonItem;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (float)leftColumnWidth;

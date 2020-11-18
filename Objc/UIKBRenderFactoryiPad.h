@@ -15,7 +15,8 @@ __attribute__((visibility("hidden")))
 - (void)_customizePopupTraits:(id)arg1 forKey:(id)arg2 onKeyplane:(id)arg3;
 - (void)_customizeSymbolStyle:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
 - (void)_customizeTraits:(id)arg1 forPopupForKey:(id)arg2 withRenderConfig:(id)arg3 keycapsFontName:(id)arg4;
-- (double)_row4ControlSegmentWidth;
+- (double)_row4ControlSegmentWidthLeft;
+- (double)_row4ControlSegmentWidthRight;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (double)bottomRowDefaultFontSize;
 - (double)cornerRadiusForKey:(id)arg1;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (double)fontSizeAdjustmentForNonAlphanumericKeycaps;
 - (id)globalEmojiKeyImageName;
 - (id)globalKeyImageName;
+- (BOOL)iPadFudgeLayout;
 - (struct CGRect)insetFrame:(struct CGRect)arg1 forKey:(id)arg2;
 - (double)internationalKeyFontSize;
 - (struct CGPoint)internationalKeyOffset;
@@ -71,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (double)spaceKeyFontSize;
 - (double)stringKeyFontSize;
 - (struct CGPoint)stringKeyOffset;
+- (BOOL)supportsInputTraits:(id)arg1 forKeyplane:(id)arg2;
 - (double)symbolFrameInset;
 - (id)thinKeycapsFontName;
 - (struct UIEdgeInsets)variantDisplayFrameInsets;

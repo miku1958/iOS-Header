@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)focusedView;
 - (void)focusedViewDidChange;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (id)preferredFocusedView;
 - (void)setHighlighted:(BOOL)arg1;
 

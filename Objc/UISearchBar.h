@@ -65,7 +65,6 @@
         unsigned int centerPlaceholder:1;
         unsigned int searchFieldLeftViewMode:2;
         unsigned int cancelButtonWantsLetterpress:1;
-        unsigned int disableFocus:1;
     } _searchBarFlags;
     BOOL __forceCenteredPlaceholderLayout;
     BOOL __transplanting;
@@ -184,6 +183,7 @@
 - (void)_effectiveBarTintColorDidChange:(BOOL)arg1;
 - (id)_glyphAndTextColor:(BOOL)arg1;
 - (BOOL)_hasCustomAutolayoutNeighborSpacing;
+- (BOOL)_hasDarkUIAppearance;
 - (void)_identifyBarContainer;
 - (id)_imageForSearchBarIcon:(long long)arg1 state:(unsigned long long)arg2;
 - (id)_imageForSearchBarIcon:(long long)arg1 state:(unsigned long long)arg2 customImage:(BOOL *)arg3;
@@ -261,7 +261,6 @@
 - (BOOL)becomeFirstResponder;
 - (void)bringSubviewToFront:(id)arg1;
 - (BOOL)canBecomeFirstResponder;
-- (BOOL)canBecomeFocused;
 - (BOOL)canResignFirstResponder;
 - (id)cancelButton;
 - (BOOL)centerPlaceholder;
@@ -271,6 +270,7 @@
 - (void)dealloc;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)drawsBackground;
 - (BOOL)drawsBackgroundInPalette;
 - (void)encodeWithCoder:(id)arg1;

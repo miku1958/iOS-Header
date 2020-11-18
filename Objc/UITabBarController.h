@@ -10,7 +10,7 @@
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKit/UITabBarDelegate-Protocol.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSString, UIGestureRecognizer, UIMoreNavigationController, UINavigationController, UITabBar, UITapGestureRecognizer, UIView;
+@class NSArray, NSMapTable, NSMutableArray, NSString, UIFocusContainerGuide, UIGestureRecognizer, UIMoreNavigationController, UINavigationController, UITabBar, UITapGestureRecognizer, UIView;
 @protocol UITabBarControllerDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning;
 
 @interface UITabBarController : UIViewController <UIGestureRecognizerDelegate, UITabBarDelegate, NSCoding>
@@ -32,6 +32,7 @@
     UITapGestureRecognizer *_nudgeRightGestureRecognizer;
     UITapGestureRecognizer *_selectGestureRecognizer;
     UIGestureRecognizer *_touchDetectionGestureRecognizer;
+    UIFocusContainerGuide *_contentFocusContainerGuide;
     NSMapTable *_rememberedFocusedViews;
     struct {
         unsigned int isShowingMoreItem:1;
@@ -79,6 +80,8 @@
 - (void).cxx_destruct;
 - (void)__viewWillLayoutSubviews;
 - (id)_additionalViewControllersToCheckForUserActivity;
+- (struct CGRect)_adjustContentViewFrameForOffscreenFocus:(struct CGRect)arg1 viewController:(id)arg2;
+- (struct CGRect)_adjustTabBarFrameForOffscreenFocus:(struct CGRect)arg1 barPosition:(long long)arg2;
 - (id)_allContainedViewControllers;
 - (BOOL)_allowSelectionWithinMoreList;
 - (BOOL)_allowsAutorotation;
@@ -88,6 +91,7 @@
 - (id)_customAnimatorForFromViewController:(id)arg1 toViewController:(id)arg2;
 - (id)_customInteractionControllerForAnimator:(id)arg1;
 - (id)_deepestUnambiguousResponder;
+- (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)_doAllViewControllersSupportInterfaceOrientation:(long long)arg1;
 - (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(BOOL *)arg2;
 - (unsigned long long)_effectiveMaxItems;
@@ -106,6 +110,7 @@
 - (BOOL)_isTabBarFocused;
 - (void)_layoutContainerView;
 - (void)_layoutViewController:(id)arg1;
+- (id)_overridingDestinationEnvironmentForFocusUpdateInContext:(id)arg1;
 - (void)_performBackGesture:(id)arg1;
 - (void)_performFocusGesture:(unsigned long long)arg1;
 - (void)_performLeftGesture:(id)arg1;
@@ -130,9 +135,12 @@
 - (void)_setSelectedViewControllerNeedsLayout;
 - (void)_setTabBarPosition:(long long)arg1;
 - (void)_setTabBarVisualAltitude;
+- (void)_setUpFocusContainerGuides;
 - (void)_setViewControllers:(id)arg1 animated:(BOOL)arg2;
+- (BOOL)_shouldAdjustContentViewFrameForOffscreenFocus:(id)arg1 adjustedTabBarFrame:(struct CGRect)arg2;
 - (BOOL)_shouldPersistViewWhenCoding;
 - (BOOL)_shouldSynthesizeSupportedOrientations;
+- (BOOL)_shouldUpdateFocusInContext:(id)arg1 position:(long long)arg2 heading:(unsigned long long)arg3;
 - (BOOL)_shouldUseOnePartRotation;
 - (void)_showBarWithTransition:(int)arg1 isExplicit:(BOOL)arg2;
 - (void)_tabBarItemClicked:(id)arg1;
@@ -142,6 +150,7 @@
 - (void)_updateGestureRecognizersForIdiom:(long long)arg1;
 - (void)_updateLayoutForStatusBarAndInterfaceOrientation;
 - (void)_updateLayoutForTraitCollection:(id)arg1;
+- (void)_updateOffscreenStatus:(BOOL)arg1;
 - (id)_viewControllerForSelectAtIndex:(unsigned long long)arg1;
 - (id)_viewControllerForTabBarItem:(id)arg1;
 - (id)_viewControllersInTabBar;
@@ -187,6 +196,7 @@
 - (void)setView:(id)arg1;
 - (void)setViewControllers:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
+- (BOOL)shouldUpdateFocusInContext:(id)arg1;
 - (void)showBarWithTransition:(int)arg1;
 - (BOOL)showsEditButtonOnLeft;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
@@ -201,6 +211,7 @@
 - (void)transitionFromViewController:(id)arg1 toViewController:(id)arg2;
 - (void)transitionFromViewController:(id)arg1 toViewController:(id)arg2 transition:(int)arg3 shouldSetSelected:(BOOL)arg4;
 - (void)transitionViewDidComplete:(id)arg1 fromView:(id)arg2 toView:(id)arg3;
+- (void)transitionViewDidStart:(id)arg1;
 - (void)unwindForSegue:(id)arg1 towardsViewController:(id)arg2;
 - (void)updateTabBarItemForViewController:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

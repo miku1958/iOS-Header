@@ -20,12 +20,14 @@ __attribute__((visibility("hidden")))
     NSLayoutDimension *_flexibleSpaceGuide;
     NSLayoutYAxisAnchor *_popoverGuideTopAnchor;
     NSLayoutDimension *_groupSizeGuide;
+    NSLayoutDimension *_groupSpacingGuide;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSLayoutDimension *flexibleSpaceGuide; // @synthesize flexibleSpaceGuide=_flexibleSpaceGuide;
 @property (strong, nonatomic) NSLayoutDimension *groupSizeGuide; // @synthesize groupSizeGuide=_groupSizeGuide;
+@property (strong, nonatomic) NSLayoutDimension *groupSpacingGuide; // @synthesize groupSpacingGuide=_groupSpacingGuide;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSLayoutDimension *minimumSpaceGuide; // @synthesize minimumSpaceGuide=_minimumSpaceGuide;
 @property (strong, nonatomic) NSLayoutYAxisAnchor *popoverGuideTopAnchor; // @synthesize popoverGuideTopAnchor=_popoverGuideTopAnchor;

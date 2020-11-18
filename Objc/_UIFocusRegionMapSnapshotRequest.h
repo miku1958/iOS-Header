@@ -6,10 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
+#import <UIKit/NSCopying-Protocol.h>
+
 @class UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusRegionMapSnapshotRequest : NSObject
+@interface _UIFocusRegionMapSnapshotRequest : NSObject <NSCopying>
 {
     BOOL _includeFocusGuides;
     BOOL _includeFocusContainerGuides;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 
 + (id)requestWithRootView:(id)arg1;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithRootView:(id)arg1;
 - (id)takeSnapshot;
 

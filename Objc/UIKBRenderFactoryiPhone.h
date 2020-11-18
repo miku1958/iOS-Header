@@ -16,7 +16,8 @@ __attribute__((visibility("hidden")))
 - (void)_customizeSymbolStyle:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
 - (BOOL)_popupMenuStyleForKey:(id)arg1;
 - (BOOL)_popupStyleForKey:(id)arg1;
-- (double)_row4ControlSegmentWidth;
+- (double)_row4ControlSegmentWidthLeft;
+- (double)_row4ControlSegmentWidthRight;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (id)activeControlKeyTraits;
 - (double)assistKeyFontSize;

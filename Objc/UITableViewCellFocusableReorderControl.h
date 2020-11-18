@@ -6,16 +6,24 @@
 
 #import <UIKit/UITableViewCellReorderControl.h>
 
-@class UIPanGestureRecognizer, UITapGestureRecognizer;
+#import <UIKit/_UIFloatingContentViewDelegate-Protocol.h>
+
+@class NSString, UIPanGestureRecognizer, UITapGestureRecognizer, _UIFloatingContentView;
 
 __attribute__((visibility("hidden")))
-@interface UITableViewCellFocusableReorderControl : UITableViewCellReorderControl
+@interface UITableViewCellFocusableReorderControl : UITableViewCellReorderControl <_UIFloatingContentViewDelegate>
 {
+    _UIFloatingContentView *_floatingContentView;
     UIPanGestureRecognizer *_panRecognizer;
     UITapGestureRecognizer *_upArrowButtonRecognizer;
     UITapGestureRecognizer *_downArrowButtonRecognizer;
     BOOL _cellHasReorderingAppearance;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_arrowButton:(long long)arg1;
@@ -25,13 +33,19 @@ __attribute__((visibility("hidden")))
 - (void)_panRecognizer:(id)arg1;
 - (BOOL)_shouldHandlePressEvent:(id)arg1;
 - (void)_upArrowButton:(id)arg1;
+- (void)_updateFocusedFloatingContentView:(BOOL)arg1;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (void)floatingContentView:(id)arg1 didFinishTransitioningToState:(unsigned long long)arg2;
+- (void)floatingContentView:(id)arg1 isTransitioningFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (id)initWithTableViewCell:(id)arg1;
+- (void)layoutSubviews;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
+- (BOOL)shouldUpdateFocusInContext:(id)arg1;
 - (BOOL)wantsMaskingWhileAnimatingDisabled;
 
 @end

@@ -17,11 +17,13 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_minimumSize;
     NSLayoutConstraint *_equalSize;
     BOOL _flexible;
-    BOOL _groupSpacer;
+    long long _spacerType;
 }
 
-+ (double)minimumLayoutWidthForSpacerBetweenLayout:(id)arg1 andLayout:(id)arg2 givenMinimumSpaceWidth:(double)arg3;
+@property (readonly, nonatomic) long long spacerType; // @synthesize spacerType=_spacerType;
+
 + (id)spacerForLayoutMetrics:(id)arg1 betweenLayout:(id)arg2 andLayout:(id)arg3;
++ (long long)typeOfSpacerBetweenLayout:(id)arg1 andLayout:(id)arg2;
 - (void).cxx_destruct;
 - (void)_addConstraintsToActivate:(id)arg1 toDeactivate:(id)arg2;
 - (void)_addLayoutViews:(id)arg1;

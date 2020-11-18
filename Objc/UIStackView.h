@@ -18,10 +18,8 @@
     BOOL _viewForFirstBaselineLayoutDidChange;
     BOOL _viewForLastBaselineLayoutDidChange;
     BOOL _layoutMarginsRelativeArrangement;
-    NSMutableArray *__mutableArrangedSubviews;
 }
 
-@property (strong, nonatomic) NSMutableArray *_mutableArrangedSubviews; // @synthesize _mutableArrangedSubviews=__mutableArrangedSubviews;
 @property (nonatomic) long long alignment;
 @property (readonly, copy, nonatomic) NSArray *arrangedSubviews;
 @property (nonatomic) long long axis;
@@ -50,6 +48,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)insertArrangedSubview:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)removeArrangedSubview:(id)arg1;
+- (void)setArrangedSubviews:(id)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setOpaque:(BOOL)arg1;
 - (void)updateConstraints;

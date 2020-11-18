@@ -9,10 +9,12 @@
 @interface UISaveToCameraRollActivity : UIActivity
 {
     long long _imageCount;
+    long long _livePhotoCount;
     long long _videoCount;
 }
 
 @property (nonatomic) long long imageCount; // @synthesize imageCount=_imageCount;
+@property (nonatomic) long long livePhotoCount; // @synthesize livePhotoCount=_livePhotoCount;
 @property (nonatomic) long long videoCount; // @synthesize videoCount=_videoCount;
 
 - (id)_activityImage;

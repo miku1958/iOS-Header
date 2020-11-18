@@ -138,9 +138,12 @@ __attribute__((visibility("hidden")))
 + (struct CGSize)keyboardSizeForInputMode:(id)arg1 screenTraits:(id)arg2 keyboardType:(long long)arg3;
 + (id)keyboardWithName:(id)arg1 screenTraits:(id)arg2;
 + (id)sharedRivenKeyplaneGenerator;
+- (id)_appendingSecondaryStringToVariantsTop:(id)arg1 secondaryString:(id)arg2 withDirection:(id)arg3;
 - (void)_autoSplit:(id)arg1;
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
 - (id)_keyplaneVariantsKeyForString:(id)arg1;
+- (BOOL)_stringContainsCurrencyCharacters:(id)arg1;
+- (id)_variantsByAppendingDualStringKey:(id)arg1 toVariants:(id)arg2;
 - (void)accessibilitySensitivityChanged;
 - (id)activationIndicatorView;
 - (id)activeMultitapCompleteKey;
@@ -200,6 +203,7 @@ __attribute__((visibility("hidden")))
 - (void)downActionShiftWithKey:(id)arg1;
 - (struct CGSize)dragGestureSize;
 - (BOOL)edgeSwipeGestureEnabled;
+- (void)endMultitapForKey:(id)arg1;
 - (void)fadeMenu:(id)arg1 forKey:(id)arg2;
 - (void)fadeMenu:(id)arg1 forKey:(id)arg2 withDelay:(double)arg3;
 - (void)fadeWithInvocation:(id)arg1;
@@ -217,6 +221,7 @@ __attribute__((visibility("hidden")))
 - (id)generateInfoForTouch:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (BOOL)globeKeyDisplaysAsEmojiKey;
 - (void)handleDelayedCentroidUpdate;
 - (void)handleDismissFlickView;
 - (void)handleDismissFlickView:(id)arg1;
@@ -238,10 +243,12 @@ __attribute__((visibility("hidden")))
 - (id)infoForTouchUUID:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initialKeyplaneNameWithKBStarName:(id)arg1;
+- (id)inputModeToMergeCapsLockKey;
 - (void)installGestureRecognizers;
 - (double)interpretPinchSeparationValues;
 - (void)interpretTouchesForSplit;
 - (BOOL)isAlphabeticPlane;
+- (BOOL)isEmojiKeyplane;
 - (BOOL)isLongPressedKey:(id)arg1;
 - (BOOL)isShiftKeyBeingHeld;
 - (BOOL)isShiftKeyPlaneChooser;
@@ -307,6 +314,7 @@ __attribute__((visibility("hidden")))
 - (void)setLongPressAction:(SEL)arg1 forKey:(id)arg2;
 - (void)setMultitapReverseKeyState;
 - (void)setPasscodeOutlineAlpha:(double)arg1;
+- (void)setPercentSignKeysForCurrentLocaleOnKeyplane:(id)arg1;
 - (void)setReturnKeyEnabled:(BOOL)arg1 withDisplayName:(id)arg2 withType:(int)arg3;
 - (void)setSplit:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSplitProgress:(double)arg1;
@@ -316,6 +324,7 @@ __attribute__((visibility("hidden")))
 - (void)setToInitialKeyplane;
 - (void)setTwoFingerTapTimestamp:(double)arg1;
 - (BOOL)shouldAddHandRestRecognizer;
+- (BOOL)shouldAllowCurrentKeyplaneReload;
 - (BOOL)shouldAllowSelectionGestures:(BOOL)arg1 atPoint:(struct CGPoint)arg2 toBegin:(BOOL)arg3;
 - (BOOL)shouldCommitPrecedingTouchesForTouchDownWithActions:(unsigned long long)arg1;
 - (BOOL)shouldHitTestKey:(id)arg1;
@@ -342,7 +351,6 @@ __attribute__((visibility("hidden")))
 - (id)splitNameForKeyplane:(id)arg1;
 - (id)splitNameForKeyplaneName:(id)arg1;
 - (int)stateForCandidateListKey:(id)arg1;
-- (int)stateForCapslockKey:(id)arg1;
 - (int)stateForDictationKey:(id)arg1;
 - (int)stateForKey:(id)arg1;
 - (int)stateForKeyplaneSwitchKey:(id)arg1;
@@ -371,6 +379,7 @@ __attribute__((visibility("hidden")))
 - (void)updateBackgroundCorners;
 - (void)updateBackgroundIfNeeded;
 - (void)updateCachedKeyplaneKeycaps;
+- (void)updateCurrencySymbolForKey:(id)arg1 withCurrencyString:(id)arg2;
 - (void)updateGlobeKeyDisplayString;
 - (void)updateKeyCentroids;
 - (void)updateKeyboardForKeyplane:(id)arg1;

@@ -8,13 +8,14 @@
 
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, UILongPressGestureRecognizer, UIView;
+@class NSString, UILongPressGestureRecognizer, UIView, _UIFloatingContentView;
 
 @interface UICollectionViewCell : UICollectionReusableView <UIGestureRecognizerDelegate>
 {
     UIView *_contentView;
     UIView *_backgroundView;
     UIView *_selectedBackgroundView;
+    _UIFloatingContentView *_focusedFloatingContentView;
     UILongPressGestureRecognizer *_menuGesture;
     id _selectionSegueTemplate;
     id _highlightingSupport;
@@ -49,6 +50,7 @@
 - (void)_descendent:(id)arg1 willMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)_encodableSubviews;
+- (void)_ensureFocusedFloatingContentView;
 - (BOOL)_forwardsSystemLayoutFittingSizeToContentView:(id)arg1;
 - (BOOL)_gestureRecognizerShouldBegin:(id)arg1;
 - (void)_handleMenuGesture:(id)arg1;
@@ -66,6 +68,8 @@
 - (BOOL)_shouldSaveOpaqueStateForView:(id)arg1;
 - (void)_teardownHighlightingSupportIfReady;
 - (void)_updateBackgroundView;
+- (void)_updateFocusedFloatingContentControlStateAnimated:(BOOL)arg1;
+- (void)_updateFocusedFloatingContentControlStateInContext:(id)arg1 withAnimationCoordinator:(id)arg2 animated:(BOOL)arg3;
 - (void)_updateHighlightColorsForAnimationHalfwayPoint;
 - (void)_updateHighlightColorsForView:(id)arg1 highlight:(BOOL)arg2;
 - (BOOL)canBecomeFocused;

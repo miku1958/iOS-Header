@@ -18,5 +18,7 @@
 - (BOOL)isAnimatingScrollView:(UIScrollView *)arg1;
 - (void)setPeekOffsetAdjustment:(struct CGPoint)arg1 forScrollView:(UIScrollView *)arg2;
 - (void)setTargetContentOffset:(struct CGPoint)arg1 forScrollView:(UIScrollView *)arg2 convergenceRate:(double)arg3 completion:(void (^)(BOOL))arg4;
+- (struct CGPoint)targetContentOffsetForScrollView:(UIScrollView *)arg1;
+- (struct CGPoint)velocityToScrollFromOffset:(struct CGPoint)arg1 toOffset:(struct CGPoint)arg2;
 @end
 

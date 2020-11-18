@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, UIColor, UIImage, UITraitCollection;
+@class NSArray, UIColor, UIImage, UILayoutGuide, UITraitCollection, _UIStackedImageContainerView;
 
 @interface UIImageView : UIView
 {
@@ -15,20 +15,26 @@
     UITraitCollection *_lastResolvedTraitCollection;
     BOOL _templateSettingsAreInvalid;
     BOOL _edgeInsetsForEffectsAreValid;
+    BOOL _adjustsImageWhenAncestorFocused;
     BOOL __animatesContents;
+    UILayoutGuide *_focusedFrameGuide;
 }
 
 @property (nonatomic, setter=_setAnimatesContents:) BOOL _animatesContents; // @synthesize _animatesContents=__animatesContents;
 @property (nonatomic, setter=_setDefaultRenderingMode:) long long _defaultRenderingMode;
 @property (readonly, nonatomic) struct UIEdgeInsets _edgeInsetsForEffects;
 @property (nonatomic, setter=_setEdgeInsetsForEffectsAreValid:) BOOL _edgeInsetsForEffectsAreValid; // @synthesize _edgeInsetsForEffectsAreValid;
+@property (readonly, nonatomic) _UIStackedImageContainerView *_layeredImageContainer;
+@property (nonatomic, setter=_setLayeredImageCornerRadius:) double _layeredImageCornerRadius;
 @property (nonatomic, setter=_setMasksTemplateImages:) BOOL _masksTemplateImages;
 @property (nonatomic, setter=_setTemplateImageRenderingEffects:) unsigned long long _templateImageRenderingEffects;
 @property (readonly, nonatomic) BOOL _templateSettingsAreInvalid; // @synthesize _templateSettingsAreInvalid;
+@property (nonatomic) BOOL adjustsImageWhenAncestorFocused; // @synthesize adjustsImageWhenAncestorFocused=_adjustsImageWhenAncestorFocused;
 @property (nonatomic) double animationDuration;
 @property (copy, nonatomic) NSArray *animationImages;
 @property (nonatomic) long long animationRepeatCount;
 @property (nonatomic) int drawMode;
+@property (readonly) UILayoutGuide *focusedFrameGuide; // @synthesize focusedFrameGuide=_focusedFrameGuide;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
 @property (copy, nonatomic) NSArray *highlightedAnimationImages;
 @property (strong, nonatomic) UIImage *highlightedImage;
@@ -63,6 +69,7 @@
 - (void)_resolveImageForTrait:(id)arg1;
 - (void)_setDecompressingImage:(id)arg1 forType:(unsigned long long)arg2;
 - (BOOL)_setImageViewContents:(id)arg1;
+- (void)_setLayeredImageContainer:(id)arg1;
 - (void)_setViewGeometry:(struct CGRect)arg1 forMetric:(int)arg2;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (BOOL)_shouldDrawImage:(id)arg1;
@@ -70,6 +77,7 @@
 - (void)_teardownLayeredImage;
 - (void)_templateSettingsDidChange;
 - (void)_updateImageViewForOldImage:(id)arg1 newImage:(id)arg2;
+- (void)_updateLayeredImageIsFocusedWithFocusedView:(id)arg1 focusAnimationCoordinator:(id)arg2;
 - (void)_updateMasking;
 - (void)_updatePretiledImageCacheForImage:(id)arg1;
 - (void)_updateState;

@@ -191,6 +191,7 @@
 - (void)_addRotationViewController:(id)arg1;
 - (void)_addTintView:(id)arg1;
 - (void)_adjustSizeClassesAndResizeWindowToFrame:(struct CGRect)arg1;
+- (double)_adjustedWindowLevelFromLevel:(double)arg1;
 - (BOOL)_alwaysGetsContexts;
 - (id)_appearanceContainer;
 - (BOOL)_appearsInLoupe;
@@ -260,6 +261,7 @@
 - (void)_finishedFullRotation:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)_finishedFullRotation:(id)arg1 finished:(id)arg2 context:(id)arg3 skipNotification:(BOOL)arg4;
 - (id)_firstResponder;
+- (id)_focusResponder;
 - (id)_focusedView;
 - (void)_focusedViewDidChange:(id)arg1;
 - (void)_forceTwoPartRotationAnimation:(BOOL)arg1;

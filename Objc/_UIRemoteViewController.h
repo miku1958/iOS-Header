@@ -94,7 +94,6 @@
 - (void)__presentActionSheetFromYCoordinate:(double)arg1 withTitle:(id)arg2 buttonTitles:(id)arg3 cancelButtonIndex:(long long)arg4 destructiveButtonIndex:(long long)arg5 style:(long long)arg6;
 - (void)__sendNotificationName:(id)arg1 userInfo:(id)arg2;
 - (void)__setInterdictServiceViewTouches:(BOOL)arg1;
-- (void)__setServiceMaxFrameSize:(struct CGSize)arg1;
 - (void)__setSupportedInterfaceOrientations:(id)arg1;
 - (void)__setViewServiceIsDisplayingPopover:(BOOL)arg1;
 - (BOOL)__shouldRemoteViewControllerFenceOperations;
@@ -122,7 +121,6 @@
 - (void)_awakeWithConnectionInfo:(id)arg1;
 - (id)_cancelTouchesForCurrentEventInHostedContent;
 - (id)_clientDeferralProperties;
-- (void)_configureSizeViewConstraintsForWindow:(id)arg1 interfaceOrientation:(long long)arg2;
 - (BOOL)_customizesForPresentationInPopover;
 - (void)_didResignContentViewControllerOfPopover:(id)arg1;
 - (void)_didRotateFromInterfaceOrientation:(long long)arg1 forwardToChildControllers:(BOOL)arg2 skipSelf:(BOOL)arg3;

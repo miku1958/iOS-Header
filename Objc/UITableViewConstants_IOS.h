@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL useOffWhiteEtchedLook;
 
 + (id)sharedConstants;
+- (double)_defaultMarginWidthForTableView:(id)arg1 canUseLayoutMargins:(BOOL)arg2;
 - (double)defaultAlphaForReorderingCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultBackgroundColorForCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultBackgroundColorForTableViewStyle:(long long)arg1;
@@ -46,6 +47,8 @@ __attribute__((visibility("hidden")))
 - (id)defaultFooterFontForView:(id)arg1 inTableView:(id)arg2;
 - (id)defaultFooterTextColorForTableViewStyle:(long long)arg1;
 - (id)defaultFooterTextColorForView:(id)arg1 inTableView:(id)arg2;
+- (double)defaultGroupedFooterHeightForTableView:(id)arg1;
+- (double)defaultGroupedHeaderHeightForTableView:(id)arg1;
 - (id)defaultHeaderBackgroundColorForView:(id)arg1 inTableView:(id)arg2;
 - (id)defaultHeaderFontForTableViewStyle:(long long)arg1;
 - (id)defaultHeaderFontForView:(id)arg1 inTableView:(id)arg2;
@@ -68,11 +71,14 @@ __attribute__((visibility("hidden")))
 - (id)defaultReorderControlImageForCell:(id)arg1 inTableView:(id)arg2;
 - (struct CGSize)defaultReorderControlSizeForCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultRowHeightForTableView:(id)arg1;
+- (double)defaultRowHeightForTableView:(id)arg1 cellStyle:(long long)arg2;
+- (double)defaultSectionContentMarginWidthForTableView:(id)arg1;
 - (double)defaultSectionFooterHeightForTableView:(id)arg1;
 - (double)defaultSectionHeaderHeightForTableView:(id)arg1;
 - (id)defaultSelectionTintColorForCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultSeparatorColorForTableViewStyle:(long long)arg1;
 - (long long)defaultSeparatorStyleForTableViewStyle:(long long)arg1;
+- (double)defaultSpaceBetweenEditAndReorderControlsForCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultTextColorForCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultTextLabelFontForCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultTextLabelFontSizeForCell:(id)arg1 inTableView:(id)arg2;

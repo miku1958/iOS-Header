@@ -13,12 +13,13 @@
 #import <UIKit/UIPopoverControllerDelegate-Protocol.h>
 #import <UIKit/UITextInput-Protocol.h>
 #import <UIKit/UITextInputTraits_Private-Protocol.h>
+#import <UIKit/_UIFloatingContentViewDelegate-Protocol.h>
 #import <UIKit/_UILayoutBaselineUpdating-Protocol.h>
 
-@class NSAttributedString, NSDictionary, NSLayoutConstraint, NSString, UIButton, UIColor, UIFont, UIImage, UIImageView, UILabel, UITapGestureRecognizer, UITextFieldAtomBackgroundView, UITextFieldBackgroundView, UITextFieldBorderView, UITextFieldLabel, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, UIViewController, _UIBaselineLayoutStrut, _UICascadingTextStorage;
+@class NSAttributedString, NSDictionary, NSLayoutConstraint, NSString, UIButton, UIColor, UIFont, UIImage, UIImageView, UILabel, UISystemInputViewController, UITapGestureRecognizer, UITextFieldAtomBackgroundView, UITextFieldBackgroundView, UITextFieldBorderView, UITextFieldLabel, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, UIVisualEffectView, _UIBaselineLayoutStrut, _UICascadingTextStorage, _UIDetachedFieldEditorBackgroundView, _UIFloatingContentView;
 @protocol UITextFieldDelegate, UITextInputDelegate, UITextInputTokenizer;
 
-@interface UITextField : UIControl <UIKeyboardInput, _UILayoutBaselineUpdating, UIGestureRecognizerDelegate, UIKeyInputPrivate, UITextInputTraits_Private, UIPopoverControllerDelegate, UITextInput, NSCoding>
+@interface UITextField : UIControl <UIKeyboardInput, _UILayoutBaselineUpdating, _UIFloatingContentViewDelegate, UIGestureRecognizerDelegate, UIKeyInputPrivate, UITextInputTraits_Private, UIPopoverControllerDelegate, UITextInput, NSCoding>
 {
     _UICascadingTextStorage *_textStorage;
     long long _borderStyle;
@@ -46,6 +47,10 @@
     UITextFieldBorderView *_backgroundView;
     UITextFieldBorderView *_disabledBackgroundView;
     UITextFieldBackgroundView *_systemBackgroundView;
+    _UIFloatingContentView *_floatingContentView;
+    UIVisualEffectView *_contentBackdropView;
+    _UIDetachedFieldEditorBackgroundView *_fieldEditorBackgroundView;
+    UIVisualEffectView *_fieldEditorEffectView;
     UITextFieldLabel *_displayLabel;
     UITextFieldLabel *_placeholderLabel;
     UITextFieldLabel *_suffixLabel;
@@ -57,7 +62,7 @@
     UITapGestureRecognizer *_selectGestureRecognizer;
     UIView *_inputView;
     UIView *_inputAccessoryView;
-    UIViewController *_systemInputViewController;
+    UISystemInputViewController *_systemInputViewController;
     UITextFieldAtomBackgroundView *_atomBackgroundView;
     struct {
         unsigned int verticallyCenterText:1;
@@ -186,6 +191,7 @@
 - (double)_baselineLayoutConstraintConstantForBounds:(struct CGRect)arg1;
 - (struct CGRect)_baselineLeftViewRectForBounds:(struct CGRect)arg1;
 - (void)_becomeFirstResponder;
+- (long long)_blurEffectStyleForAppearance;
 - (BOOL)_blurEnabled;
 - (BOOL)_canDrawContent;
 - (void)_clearBackgroundViews;
@@ -211,6 +217,7 @@
 - (id)_fieldEditor;
 - (BOOL)_fieldEditorAttached;
 - (BOOL)_finishResignFirstResponder;
+- (id)_floatingContentView;
 - (struct CGRect)_frameForLabel:(id)arg1 inTextRect:(struct CGRect)arg2;
 - (BOOL)_hasContent;
 - (BOOL)_hasSuffixField;
@@ -318,11 +325,14 @@
 - (void)_updateBackgroundViewsAnimated:(BOOL)arg1;
 - (void)_updateBaselineInformationDependentOnBounds;
 - (void)_updateButtons;
+- (void)_updateContentBackdropView;
+- (void)_updateFieldEditorBackgroundViewLayout:(BOOL)arg1;
 - (void)_updateForPasscodeAppearance;
 - (void)_updateForTintColor;
 - (void)_updateLabel;
 - (void)_updatePlaceholderPosition;
 - (void)_updateSuffix:(id)arg1;
+- (void)_updateTextColorForFocusedState;
 - (void)_updateTextLabel;
 - (BOOL)_useGesturesForEditableContent;
 - (BOOL)_wantsBaselineUpdatingFollowingConstraintsPass;
@@ -395,6 +405,7 @@
 - (void)finishedSettingPlaceholder;
 - (void)finishedSettingTextOrAttributedText;
 - (struct CGRect)firstRectForRange:(id)arg1;
+- (void)floatingContentView:(id)arg1 isTransitioningFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (struct CGRect)frameForDictationResultPlaceholder:(id)arg1;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;

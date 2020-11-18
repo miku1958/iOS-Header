@@ -41,6 +41,7 @@
         unsigned int focusedItemHighlightShouldBeVisible:1;
         unsigned int hasVibrantLabels:1;
         unsigned int blurDisabled:1;
+        unsigned int pendingFocusAction:1;
     } _tabBarFlags;
     NSArray *_buttonItems;
     struct __CFArray *_hiddenItems;
@@ -89,6 +90,7 @@
 @property (nonatomic) id<UITabBarDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=_focusedItemHighlightShouldBeVisible, setter=_setFocusedItemHightlightShouldBeVisible:) BOOL focusedItemHighlightShouldBeVisible;
+@property (readonly, nonatomic, getter=_focusedTabBarItem) UITabBarItem *focusedTabBarItem;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=_isHiddenAwaitingFocus, setter=_setHiddenAwaitingFocus:) BOOL hiddenAwaitingFocus;
 @property (nonatomic) long long itemPositioning; // @synthesize itemPositioning=_itemPositioning;
@@ -96,6 +98,7 @@
 @property (nonatomic) double itemWidth; // @synthesize itemWidth=_itemDimension;
 @property (copy, nonatomic) NSArray *items;
 @property (nonatomic, getter=isLocked) BOOL locked;
+@property (nonatomic, getter=_pendingFocusAction, setter=_setPendingFocusAction:) BOOL pendingFocusAction;
 @property (nonatomic, getter=_preferredFocusHeading, setter=_setPreferredFocusHeading:) unsigned long long preferredFocusHeading; // @synthesize preferredFocusHeading=_preferredFocusHeading;
 @property (strong, nonatomic) UIColor *selectedImageTintColor;
 @property (nonatomic) UITabBarItem *selectedItem;

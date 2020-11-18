@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)_keyboard;
 - (id)_keyboardForThisViewController;
 - (id)_systemViewControllerForInputMode:(id)arg1;
+- (void)assertCurrentInputModeIfNecessary;
 - (id)childCompatibilityController;
 - (void)dealloc;
 - (void)didFinishTranslation;

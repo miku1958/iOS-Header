@@ -8,10 +8,11 @@
 
 #import <UIKit/NSCoding-Protocol.h>
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKit/_UIFloatingContentViewDelegate-Protocol.h>
 
-@class NSArray, NSAttributedString, NSString, UIColor, UIFont, UIImage, UIImageView, UILabel, UITapGestureRecognizer, UIView, _UIButtonMaskAnimationView;
+@class NSArray, NSAttributedString, NSString, UIColor, UIFont, UIImage, UIImageView, UILabel, UITapGestureRecognizer, UIView, UIVisualEffectView, _UIButtonMaskAnimationView, _UIFloatingContentView;
 
-@interface UIButton : UIControl <UIGestureRecognizerDelegate, NSCoding>
+@interface UIButton : UIControl <UIGestureRecognizerDelegate, _UIFloatingContentViewDelegate, NSCoding>
 {
     unsigned long long _externalFlatEdge;
     struct __CFDictionary *_contentLookup;
@@ -19,6 +20,8 @@
     struct UIEdgeInsets _titleEdgeInsets;
     struct UIEdgeInsets _imageEdgeInsets;
     UIImageView *_backgroundView;
+    _UIFloatingContentView *_floatingContentView;
+    UIVisualEffectView *_contentBackdropView;
     UIImageView *_imageView;
     UILabel *_titleView;
     BOOL _initialized;
@@ -105,12 +108,14 @@
 - (id)_backgroundForState:(unsigned long long)arg1 usesBackgroundForNormalState:(BOOL *)arg2;
 - (id)_backgroundView;
 - (void)_beginTitleAnimation;
+- (BOOL)_blurEnabled;
 - (id)_borderColorForState:(unsigned long long)arg1;
 - (double)_borderWidthForState:(unsigned long long)arg1 bounds:(struct CGRect)arg2;
 - (long long)_buttonType;
 - (BOOL)_canHaveTitle;
 - (struct CGRect)_clippedHighlightBounds;
 - (struct UIEdgeInsets)_combinedContentPaddingInsets;
+- (id)_contentBackdropView;
 - (id)_contentForState:(unsigned long long)arg1;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedWidth;
@@ -131,6 +136,7 @@
 - (id)_externalTitleColorForState:(unsigned long long)arg1;
 - (id)_externalUnfocusedBorderColor;
 - (id)_fadeOutAnimationWithKeyPath:(id)arg1;
+- (id)_floatingContentView;
 - (id)_font;
 - (BOOL)_hasCustomAutolayoutNeighborSpacing;
 - (BOOL)_hasDrawingStyle;
@@ -155,6 +161,7 @@
 - (BOOL)_isModernButton;
 - (BOOL)_isTitleFrozen;
 - (void)_layoutBackgroundImageView;
+- (void)_layoutContentBackdropView;
 - (id)_layoutDebuggingTitle;
 - (void)_layoutImageView;
 - (void)_layoutTitleView;
@@ -177,6 +184,7 @@
 - (void)_sendSetNeedsLayoutToSuperviewOnTitleAnimationCompletionIfNecessary;
 - (void)_setAttributedTitle:(id)arg1 forStates:(unsigned long long)arg2;
 - (void)_setBackground:(id)arg1 forStates:(unsigned long long)arg2;
+- (void)_setBlurEnabled:(BOOL)arg1;
 - (void)_setButtonType:(long long)arg1;
 - (void)_setContent:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_setContentHuggingPriorities:(struct CGSize)arg1;
@@ -196,6 +204,7 @@
 - (void)_setTitleColor:(id)arg1 forStates:(unsigned long long)arg2;
 - (void)_setTitleFrozen:(BOOL)arg1;
 - (void)_setTitleShadowOffset:(struct CGSize)arg1;
+- (void)_setVisualEffectViewEnabled:(BOOL)arg1 backgroundColor:(id)arg2;
 - (id)_setupBackgroundView;
 - (void)_setupDrawingStyleForState:(unsigned long long)arg1;
 - (void)_setupImageView;
@@ -204,6 +213,7 @@
 - (void)_setupTitleViewRequestingLayout:(BOOL)arg1;
 - (id)_shadowColorForState:(unsigned long long)arg1;
 - (BOOL)_shouldDefaultToTemplatesForImageViewBackground:(BOOL)arg1;
+- (BOOL)_shouldHaveFloatingAppearance;
 - (BOOL)_shouldUpdatePressedness;
 - (void)_takeContentFromArchivableContent:(id)arg1;
 - (BOOL)_textNeedsCompositingModeWhenSelected;
@@ -217,11 +227,14 @@
 - (id)_transitionAnimationWithKeyPath:(id)arg1;
 - (void)_uninstallSelectGestureRecognizer;
 - (void)_updateBackgroundImageView;
+- (void)_updateContentBackdropView;
 - (void)_updateEffectsForImageView:(id)arg1 background:(BOOL)arg2;
 - (void)_updateImageView;
 - (void)_updateMaskState;
 - (void)_updateSelectionViewForState:(unsigned long long)arg1;
 - (void)_updateTitleView;
+- (BOOL)_visualEffectViewEnabled;
+- (BOOL)_wantsContentBackdropView;
 - (void)_willMoveToWindow:(id)arg1;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (id)attributedTitleForState:(unsigned long long)arg1;
@@ -235,6 +248,7 @@
 - (void)dealloc;
 - (unsigned long long)defaultAccessibilityTraits;
 - (void)encodeWithCoder:(id)arg1;
+- (void)floatingContentView:(id)arg1 isTransitioningFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (id)font;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)image;

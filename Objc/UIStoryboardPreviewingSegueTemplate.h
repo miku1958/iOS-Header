@@ -7,7 +7,7 @@
 #import <UIKit/UIStoryboardSegueTemplate.h>
 
 __attribute__((visibility("hidden")))
-@interface UIStoryboardForceTouchPreviewSegueTemplate : UIStoryboardSegueTemplate
+@interface UIStoryboardPreviewingSegueTemplate : UIStoryboardSegueTemplate
 {
 }
 

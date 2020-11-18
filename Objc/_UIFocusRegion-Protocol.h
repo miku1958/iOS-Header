@@ -11,6 +11,7 @@
 
 @protocol _UIFocusRegion <NSObject>
 - (NSArray *)_childFocusRegions;
+- (NSArray *)_childFocusRegionsInRect:(struct CGRect)arg1;
 - (UIView *)_focusDebugOverlayParentView;
 - (BOOL)_focusRegionCanBecomeFocused;
 - (struct CGRect)_focusRegionFrame;
@@ -18,6 +19,8 @@
 - (BOOL)_focusRegionIsEligibleForFocus;
 - (id<UIFocusContainer>)_focusRegionItem;
 - (UIView *)_focusRegionView;
+- (UIView *)_fulfillPromisedFocusRegion;
+- (BOOL)_isPromiseFocusRegion;
 - (BOOL)_isTransparentFocusRegion;
 @end
 

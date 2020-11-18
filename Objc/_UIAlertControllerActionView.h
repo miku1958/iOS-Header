@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
     UIImageView *imageView;
     UIImageView *checkView;
     UIView<UIAlertControllerBackgroundView> *backgroundView;
-    NSMutableArray *backgroundConstraints;
     NSMutableArray *havingDescriptiveLabelConstraints;
     NSMutableArray *notHavingDescriptiveLabelConstraints;
     NSLayoutConstraint *_descriptiveLabelWidthConstraint;
@@ -106,6 +105,7 @@ __attribute__((visibility("hidden")))
 - (void)focusedViewDidChange;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesChanged:(id)arg1 withEvent:(id)arg2;

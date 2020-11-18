@@ -6,16 +6,26 @@
 
 #import <UIKit/_UISearchPresentationController.h>
 
+@class UIVisualEffectView;
+
 __attribute__((visibility("hidden")))
 @interface _UISearchATVPresentationController : _UISearchPresentationController
 {
+    UIVisualEffectView *_blurView;
 }
 
+@property (strong, nonatomic) UIVisualEffectView *blurView; // @synthesize blurView=_blurView;
+
+- (void).cxx_destruct;
 - (id)_presentationControllerForTraitCollection:(id)arg1;
 - (id)_presentedViewControllerForSizeClassPair:(CDStruct_d58201db)arg1;
 - (id)adaptivePresentationController;
 - (long long)adaptivePresentationStyle;
+- (id)backgroundObscuringView;
+- (BOOL)backgroundObscuringViewShouldObeyPresentationContextBounds;
 - (struct CGRect)finalFrameForContainerView;
+- (BOOL)forceObeyNavigationBarInsets;
+- (void)hideBackgroundObscuringView;
 - (double)resultsControllerContentOffset;
 - (BOOL)resultsUnderlapsSearchBar;
 - (BOOL)searchBarCanContainScopeBar;
@@ -23,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)searchBarToBecomeTopAttached;
 - (void)setContentVisible:(BOOL)arg1;
 - (BOOL)shouldAccountForStatusBar;
+- (void)showBackgroundObscuringView;
 - (double)statusBarAdjustment;
 
 @end

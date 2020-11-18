@@ -311,6 +311,7 @@
 @property (weak, nonatomic) id<UITableViewDataSource> dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic, getter=_defaultMarginWidth) double defaultMarginWidth;
+@property (readonly, nonatomic, getter=_defaultSectionContentMarginWidth) double defaultSectionContentMarginWidth;
 @property (weak, nonatomic) id<UITableViewDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEditing) BOOL editing;
@@ -406,7 +407,7 @@
 - (void)_cellDidShowSelectedBackground:(id)arg1;
 - (id)_cellReuseMapForType:(int)arg1;
 - (BOOL)_cellsSelfSize;
-- (id)_childFocusRegions;
+- (id)_childFocusRegionsInRect:(struct CGRect)arg1;
 - (id)_classMapForType:(int)arg1;
 - (double)_classicHeightForFooterInSection:(long long)arg1;
 - (double)_classicHeightForHeaderInSection:(long long)arg1;
@@ -495,15 +496,15 @@
 - (double)_externalIndexWidth;
 - (void)_finishedAnimatingCellReorder:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)_finishedRemovingRemovalButtonForTableCell:(id)arg1;
-- (BOOL)_focusedCellContainedInRowsAtIndexPaths:(id)arg1;
-- (BOOL)_focusedCellContainedInSections:(id)arg1;
 - (void)_focusedView:(id)arg1 isMinX:(BOOL *)arg2 isMaxX:(BOOL *)arg3 isMinY:(BOOL *)arg4 isMaxY:(BOOL *)arg5;
 - (double)_footerMarginWidth;
 - (double)_footerRightMarginWidth;
 - (struct CGRect)_frameForWrapper;
+- (id)_fulfillPromisedFocusRegionForCell:(id)arg1;
 - (BOOL)_gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (BOOL)_gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (BOOL)_gestureRecognizerShouldBegin:(id)arg1;
+- (void)_getGradientMaskBounds:(out struct CGRect *)arg1 startInsets:(out struct UIEdgeInsets *)arg2 endInsets:(out struct UIEdgeInsets *)arg3 intensities:(out struct UIEdgeInsets *)arg4;
 - (long long)_globalReorderingRow;
 - (void)_handleNudgeInDirection:(long long)arg1;
 - (void)_handleSwipeDelete:(id)arg1;
@@ -631,6 +632,7 @@
 - (void)_setBackgroundColor:(id)arg1 animated:(BOOL)arg2;
 - (void)_setBottomPadding:(double)arg1;
 - (void)_setCellsSelfSize:(BOOL)arg1;
+- (void)_setDefaultGradientMaskInsets;
 - (void)_setDefaultLayoutMargins:(struct UIEdgeInsets)arg1;
 - (void)_setDisplaysCellContentStringsOnTapAndHold:(BOOL)arg1;
 - (void)_setDrawsSeparatorAtTopOfSections:(BOOL)arg1;

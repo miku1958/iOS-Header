@@ -9,10 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactory_Candidates : UIKBRenderFactory
 {
-    BOOL _isUCBStyle;
+    BOOL _shouldUseKeyboardBackground;
 }
 
-@property (nonatomic) BOOL isUCBStyle; // @synthesize isUCBStyle=_isUCBStyle;
+@property (nonatomic) BOOL shouldUseKeyboardBackground; // @synthesize shouldUseKeyboardBackground=_shouldUseKeyboardBackground;
 
 - (id)controlKeyBackgroundColorName;
 - (id)controlKeyDividerColorName;

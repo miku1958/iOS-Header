@@ -4,22 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIGestureRecognizer.h>
+#import <UIKit/_UITouchesObservingGestureRecognizer.h>
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewInteractionTouchObservingGestureRecognizer : UIGestureRecognizer
+@interface _UIPreviewInteractionTouchObservingGestureRecognizer : _UITouchesObservingGestureRecognizer
 {
 }
-
-- (BOOL)_acceptsFailureRequirements;
-- (BOOL)_affectedByGesture:(id)arg1;
-- (BOOL)canBePreventedByGestureRecognizer:(id)arg1;
-- (BOOL)canPreventGestureRecognizer:(id)arg1;
-- (void)reset;
-- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
-- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 
 @end
 

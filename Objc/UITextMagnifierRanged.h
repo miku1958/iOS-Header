@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedRangedMagnifier;
 - (void)beginMagnifyingTarget:(id)arg1 text:(id)arg2 magnificationPoint:(struct CGPoint)arg3 offset:(struct CGPoint)arg4 animated:(BOOL)arg5;
 - (struct CGRect)caretRectClosestToPoint:(struct CGPoint)arg1;
+- (struct CGRect)caretRectClosestToPoint:(struct CGPoint)arg1 withinSelection:(BOOL)arg2;
 - (struct CGPoint)clipPoint:(struct CGPoint)arg1 inRect:(struct CGRect)arg2;
 - (int)horizontalMovement;
 - (int)horizontalMovementAtTime:(double)arg1;

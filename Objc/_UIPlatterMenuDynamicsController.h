@@ -14,6 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIPlatterMenuDynamicsController : NSObject <_UIPlatterMenuPanningTransformerDelegate>
 {
+    BOOL _isCurrentlyUnderDirectManipulation;
     id<_UIPlatterMenuDynamicsControllerDelegate> _delegate;
     UIView *_containerView;
     UIView *_platterView;
@@ -29,7 +30,8 @@ __attribute__((visibility("hidden")))
     UIAttachmentBehavior *_platterMenuAttachmentBehavior;
     UIAttachmentBehavior *_gestureAttachmentBehavior;
     _UIPlatterMenuSnapBehavior *_platterSnapBehavior;
-    _UIPlatterMenuSnapBehavior *_menuSnapBehavior;
+    _UIPlatterMenuSnapBehavior *_menuPresentedSnapBehavior;
+    _UIPlatterMenuSnapBehavior *_menuDismissedSnapBehavior;
     UIDynamicItemBehavior *_noRotationBehavior;
     UIAttachmentBehavior *_menuVerticalLockAttachment;
     UICollisionBehavior *_platterMenuCollisionBounds;
@@ -50,9 +52,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIAttachmentBehavior *gestureAttachmentBehavior; // @synthesize gestureAttachmentBehavior=_gestureAttachmentBehavior;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGPoint initialTouchPoint; // @synthesize initialTouchPoint=_initialTouchPoint;
+@property (nonatomic) BOOL isCurrentlyUnderDirectManipulation; // @synthesize isCurrentlyUnderDirectManipulation=_isCurrentlyUnderDirectManipulation;
 @property (nonatomic) double leadingSwipeEdgeMultiplier; // @synthesize leadingSwipeEdgeMultiplier=_leadingSwipeEdgeMultiplier;
+@property (strong, nonatomic) _UIPlatterMenuSnapBehavior *menuDismissedSnapBehavior; // @synthesize menuDismissedSnapBehavior=_menuDismissedSnapBehavior;
 @property (strong, nonatomic) UIDynamicItemBehavior *menuItemBehavior; // @synthesize menuItemBehavior=_menuItemBehavior;
-@property (strong, nonatomic) _UIPlatterMenuSnapBehavior *menuSnapBehavior; // @synthesize menuSnapBehavior=_menuSnapBehavior;
+@property (strong, nonatomic) _UIPlatterMenuSnapBehavior *menuPresentedSnapBehavior; // @synthesize menuPresentedSnapBehavior=_menuPresentedSnapBehavior;
 @property (strong, nonatomic) UIAttachmentBehavior *menuVerticalLockAttachment; // @synthesize menuVerticalLockAttachment=_menuVerticalLockAttachment;
 @property (weak, nonatomic) UIView *menuView; // @synthesize menuView=_menuView;
 @property (strong, nonatomic) UIDynamicItemBehavior *noRotationBehavior; // @synthesize noRotationBehavior=_noRotationBehavior;
@@ -79,7 +83,7 @@ __attribute__((visibility("hidden")))
 - (long long)_stateForPosition:(struct CGPoint)arg1 offset:(struct CGVector)arg2 velocity:(struct CGVector)arg3;
 - (void)_updateSwipeEdgeMultipliersIfNeededForTouchPosition:(struct CGPoint)arg1;
 - (void)addBehaviorIfNotPresent:(id)arg1;
-- (void)beginTransitionWithAnimatorUsingBehaviors:(id)arg1 observedItems:(id)arg2 stateIfCompleted:(long long)arg3 underDirectManipulation:(BOOL)arg4;
+- (void)beginTransitionWithAnimatorUsingBehaviors:(id)arg1 observedItems:(id)arg2 stateIfCompleted:(long long)arg3;
 - (struct CGPoint)centerForCurrentPlatterPosition;
 - (struct CGPoint)centerForMenuPresentedRelativeToCurrentPlatter;
 - (void)dealloc;

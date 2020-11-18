@@ -10,7 +10,7 @@
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKit/UIScrollViewDelegate-Protocol.h>
 
-@class NSIndexPath, NSString, NSTimer, UIColor, UIControl, UIFocusGuide, UIImage, UIImageView, UILabel, UILongPressGestureRecognizer, UITableView, UITableViewCellDeleteConfirmationView, UITapGestureRecognizer, UITextField, UIVisualEffect, _UITableViewCellOldEditingData, _UITableViewCellSeparatorView;
+@class NSIndexPath, NSString, NSTimer, UIColor, UIControl, UIFocusGuide, UIImage, UIImageView, UILabel, UILongPressGestureRecognizer, UIStoryboardPreviewingSegueTemplateStorage, UITableView, UITableViewCellDeleteConfirmationView, UITapGestureRecognizer, UITextField, UIVisualEffect, _UIFloatingContentView, _UITableViewCellOldEditingData, _UITableViewCellSeparatorView;
 @protocol UITableViewConstants;
 
 @interface UITableViewCell : UIView <UIScrollViewDelegate, NSCoding, UIGestureRecognizerDelegate>
@@ -26,6 +26,8 @@
     long long _indentationLevel;
     double _indentationWidth;
     NSString *_reuseIdentifier;
+    _UIFloatingContentView *_floatingContentView;
+    long long _lineBreakModeBeforeFocus;
     UIView *_contentView;
     UIImageView *_imageView;
     UILabel *_textLabel;
@@ -49,6 +51,7 @@
     id _highlightingSupport;
     id _selectionSegueTemplate;
     id _accessoryActionSegueTemplate;
+    UIStoryboardPreviewingSegueTemplateStorage *_accessoryActionPreviewingSegueTemplateStorage;
     UIControl *_accessoryView;
     UIControl *_editingAccessoryView;
     UIView *_customAccessoryView;
@@ -102,6 +105,7 @@
         unsigned int shouldIndentWhileEditing:1;
         unsigned int fontSet:1;
         unsigned int usingDefaultSelectedBackgroundView:1;
+        unsigned int usingDefaultBackgroundView:1;
         unsigned int wasSwiped:1;
         unsigned int highlighted:1;
         unsigned int separatorDirty:1;
@@ -133,8 +137,9 @@
         unsigned int needsHeightCalculation:1;
         unsigned int reordering:1;
         unsigned int doesNotOverrideDidUpdateFocus:1;
+        unsigned int hasEditingFocusGuides:1;
+        unsigned int focusStyle:3;
     } _tableCellFlags;
-    long long _focusStyle;
 }
 
 @property (nonatomic) long long accessoryType;
@@ -149,7 +154,7 @@
 @property (nonatomic) long long editingAccessoryType;
 @property (strong, nonatomic) UIView *editingAccessoryView;
 @property (readonly, nonatomic) long long editingStyle;
-@property (nonatomic) long long focusStyle; // @synthesize focusStyle=_focusStyle;
+@property (nonatomic) long long focusStyle;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
 @property (readonly, nonatomic) UIImageView *imageView;
@@ -176,6 +181,7 @@
 - (id)_accessoryTintColor;
 - (id)_accessoryView:(BOOL)arg1;
 - (void)_actionButtonPushed:(id)arg1;
+- (void)_addSubview:(id)arg1 positioned:(long long)arg2 relativeTo:(id)arg3;
 - (BOOL)_allowsReorderingWhenNotEditing;
 - (void)_animateFloatingSeparatorForInsertion:(BOOL)arg1 withRowAnimation:(long long)arg2;
 - (void)_animateInnerShadowForInsertion:(BOOL)arg1 withRowAnimation:(long long)arg2;
@@ -228,6 +234,7 @@
 - (double)_editingButtonOffset;
 - (id)_encodableSubviews;
 - (void)_endSwiping:(BOOL)arg1;
+- (void)_ensureFocusedFloatingContentView;
 - (void)_finishTransitioningToReorderingAppearance:(BOOL)arg1;
 - (void)_finishedFadingGrabber:(id)arg1 finished:(BOOL)arg2;
 - (BOOL)_gestureRecognizerShouldBegin:(id)arg1;
@@ -254,6 +261,7 @@
 - (BOOL)_isReorderable;
 - (BOOL)_isUsingOldStyleMultiselection;
 - (id)_layoutDebuggingTitle;
+- (void)_layoutFloatingContentView;
 - (void)_layoutSubviewsAnimated:(BOOL)arg1;
 - (void)_longPressGestureRecognized:(id)arg1;
 - (double)_marginWidth;
@@ -268,12 +276,14 @@
 - (void)_populateArchivedSubviews:(id)arg1;
 - (id)_preferredConfigurationForFocusAnimation:(long long)arg1 inContext:(id)arg2;
 - (void)_prepareToEnterReuseQueue;
+- (id)_previewingSegueTemplateStorageForLocation:(struct CGPoint)arg1 inView:(id)arg2;
 - (void)_releaseDetailTextLabel;
 - (void)_releaseRemoveControl;
 - (void)_releaseReorderingControl;
 - (void)_releaseTextLabel;
 - (id)_removeControl;
 - (void)_removeFloatingSeparator;
+- (void)_removeFocusedFloatingContentView;
 - (void)_removeInnerShadow;
 - (void)_removeRemoveControl;
 - (id)_reorderControlImage;
@@ -340,6 +350,7 @@
 - (void)_setTableBackgroundCGColor:(struct CGColor *)arg1 withSystemColorName:(id)arg2;
 - (void)_setTableView:(id)arg1;
 - (void)_setTarget:(id)arg1;
+- (void)_setupBackgroundView;
 - (void)_setupMenuGesture;
 - (void)_setupSelectedBackgroundView;
 - (void)_setupTableViewCellCommon;
@@ -352,6 +363,7 @@
 - (void)_showReorderControl;
 - (BOOL)_showSeparatorAtTopOfSection;
 - (void)_startToEditTextField;
+- (id)_subviewsForFloatingContentView;
 - (void)_swipeAccessoryButtonPushed;
 - (void)_swipeDeleteButtonPushed;
 - (id)_swipeToDeleteConfirmationView;
@@ -373,6 +385,8 @@
 - (void)_updateAndCacheBackgroundColorForHighlightIgnoringSelection:(BOOL)arg1;
 - (void)_updateCellMaskViewsForView:(id)arg1 backdropView:(id)arg2;
 - (void)_updateContentClip;
+- (void)_updateFloatingContentControlStateAnimated:(BOOL)arg1;
+- (void)_updateFloatingContentControlStateInContext:(id)arg1 withAnimationCoordinator:(id)arg2 animated:(BOOL)arg3;
 - (void)_updateFullWidthSwipeDeletionView;
 - (void)_updateHighlightColors;
 - (void)_updateHighlightColorsForAnimationHalfwayPoint;
@@ -386,11 +400,13 @@
 - (void)_willBeDeleted;
 - (void)_willTransitionToState:(unsigned long long)arg1;
 - (SEL)accessoryAction;
+- (id)accessoryActionPreviewingSegueTemplateStorage;
 - (id)accessoryActionSegueTemplate;
 - (struct CGRect)accessoryRectForBounds:(struct CGRect)arg1 accessoryView:(id)arg2 isCustom:(BOOL)arg3;
 - (id)backgroundColor;
 - (struct CGRect)backgroundRectForBounds:(struct CGRect)arg1;
 - (id)bottomShadowColor;
+- (void)bringSubviewToFront:(id)arg1;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canBecomeFocused;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
@@ -453,9 +469,11 @@
 - (float)selectionPercent;
 - (id)selectionSegueTemplate;
 - (id)selectionTintColor;
+- (void)sendSubviewToBack:(id)arg1;
 - (id)separatorColor;
 - (long long)separatorStyle;
 - (void)setAccessoryAction:(SEL)arg1;
+- (void)setAccessoryActionPreviewingSegueTemplateStorage:(id)arg1;
 - (void)setAccessoryActionSegueTemplate:(id)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setBottomShadowColor:(id)arg1;

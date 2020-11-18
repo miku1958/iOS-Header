@@ -22,12 +22,14 @@ __attribute__((visibility("hidden")))
     unsigned int _directionalLockEnabled:1;
     unsigned int _transfersTrackingFromParentScrollView:1;
     unsigned int _asksScrollViewForTouchCentroidAdjustment:1;
+    double _translationScaleFactor;
 }
 
 @property (nonatomic) BOOL asksScrollViewForTouchCentroidAdjustment;
 @property (readonly, nonatomic, getter=_caughtDeceleratingScrollView) BOOL caughtDeceleratingScrollView;
 @property (nonatomic, getter=isDirectionalLockEnabled) BOOL directionalLockEnabled;
 @property (weak, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
+@property (nonatomic) double translationScaleFactor; // @synthesize translationScaleFactor=_translationScaleFactor;
 
 - (void).cxx_destruct;
 - (struct CGPoint)_adjustSceneReferenceLocation:(struct CGPoint)arg1;

@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)setCandidateViewExtended:(BOOL)arg1;
 - (void)setCandidatesToExtendedViewFromCollapsedView:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (BOOL)shouldUseKeyboardBackground:(id)arg1;
 - (void)updatePageControlStatus;
 - (void)willMoveToSuperview:(id)arg1;
 

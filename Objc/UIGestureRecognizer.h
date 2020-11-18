@@ -17,6 +17,7 @@
 {
     NSMutableArray *_targets;
     NSMutableArray *_delayedTouches;
+    NSMutableArray *_delayedPresses;
     UIView *_view;
     UITouchesEvent *_updateEvent;
     UIPressesEvent *_updateButtonEvent;
@@ -25,6 +26,8 @@
     NSMutableSet *_friends;
     long long _state;
     long long _allowedTouchTypes;
+    long long _initialTouchType;
+    NSMutableSet *_internalActiveTouches;
     _UIForceLevelClassifier *_forceClassifier;
     long long _requiredPreviewForceState;
     _UIGestureRecognizerFailureRequirement *_forceFailureRequirement;
@@ -39,6 +42,7 @@
         unsigned int delegateCanBePrevented:1;
         unsigned int delegateShouldRecognizeSimultaneously:1;
         unsigned int delegateShouldReceiveTouch:1;
+        unsigned int delegateShouldReceivePress:1;
         unsigned int delegateShouldRequireFailure:1;
         unsigned int delegateShouldBeRequiredToFail:1;
         unsigned int delegateFailed:1;
@@ -69,6 +73,8 @@
         unsigned int willBeginAfterSatisfyingFailureRequirements:1;
         unsigned int requiresSystemGesturesToFail:1;
         unsigned int acceptsFailureRequirements:1;
+        unsigned int requiresExclusiveTouchType:1;
+        unsigned int initialTouchTypeIsValid:1;
     } _gestureFlags;
     NSMutableSet *_failureRequirements;
     NSMutableSet *_failureDependents;
@@ -92,7 +98,9 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIView *view;
 
++ (BOOL)_pressesBeganWasDelayedForPress:(id)arg1;
 + (BOOL)_shouldDefaultToTouches;
++ (BOOL)_shouldSupportStylusTouches;
 + (BOOL)_shouldUseLinearForceLevelClassifier;
 + (BOOL)_touchesBeganWasDelayedForTouch:(id)arg1;
 - (void).cxx_destruct;
@@ -112,11 +120,15 @@
 - (id)_briefDescription;
 - (void)_cancelRecognition;
 - (struct CGPoint)_centroidOfTouches:(id)arg1 excludingEnded:(BOOL)arg2;
+- (void)_clearDelayedPresses;
 - (void)_clearDelayedTouches;
 - (void)_clearReferencesToRelatedGesture:(id)arg1;
 - (void)_clearUpdateTimer;
 - (void)_connectInterfaceBuilderEventConnection:(id)arg1;
 - (long long)_currentForceLevel;
+- (void)_delayPress:(id)arg1 forEvent:(id)arg2;
+- (void)_delayPressesForEvent:(id)arg1 inPhase:(long long)arg2;
+- (void)_delayPressesForEventIfNeeded:(id)arg1;
 - (void)_delayTouch:(id)arg1 forEvent:(id)arg2;
 - (void)_delayTouchesForEvent:(id)arg1 inPhase:(long long)arg2;
 - (void)_delayTouchesForEventIfNeeded:(id)arg1;
@@ -130,19 +142,23 @@
 - (long long)_depthFirstViewCompare:(id)arg1;
 - (void)_detach;
 - (double)_distanceBetweenTouches:(id)arg1;
+- (void)_enqueueDelayedPressToSend:(id)arg1;
+- (void)_enqueueDelayedPressesToSend;
 - (void)_enqueueDelayedTouchToSend:(id)arg1;
 - (void)_enqueueDelayedTouchesToSend;
 - (void)_exclude;
 - (long long)_exclusiveDirectionalPressAxis;
-- (void)_failureRequirement:(id)arg1 requiredFailureRequirement:(id)arg2 completedWithEvent:(id)arg3;
+- (void)_failureRequirement:(id)arg1 requiredFailureRequirement:(id)arg2 completedWithEvent:(id)arg3 pressesEvent:(id)arg4;
 - (id)_forceLevelClassifier;
 - (void)_forceLevelClassifier:(id)arg1 currentForceLevelDidChange:(long long)arg2;
 - (unsigned long long)_forcePressCount;
 - (BOOL)_forceRequirementSatisfied;
 - (id)_gestureRecognizerForFailureRequirement:(id)arg1;
 - (BOOL)_hasTargets;
+- (BOOL)_inForceCapableEnvironment;
 - (id)_installedFailureRequirements;
 - (void)_invalidate;
+- (void)_invalidateInitialTouchType;
 - (BOOL)_isDirty;
 - (BOOL)_isExcludedByGesture:(id)arg1;
 - (BOOL)_isFailureRequirementEnabled:(id)arg1;
@@ -151,6 +167,7 @@
 - (void)_physicalButtonsBegan:(id)arg1 withEvent:(id)arg2;
 - (void)_physicalButtonsCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)_physicalButtonsEnded:(id)arg1 withEvent:(id)arg2;
+- (void)_pressWasCancelled:(id)arg1;
 - (void)_queueForResetIfFinished;
 - (id)_relationshipFailureRequirement;
 - (void)_removeFailureDependent:(id)arg1;
@@ -165,6 +182,7 @@
 - (void)_setAcceptsFailureRequiments:(BOOL)arg1;
 - (void)_setDirty;
 - (void)_setForceLevelClassifier:(id)arg1;
+- (void)_setInitialTouchType:(long long)arg1;
 - (void)_setRequiredForceLevel:(long long)arg1;
 - (void)_setRequiresSystemGesturesToFail:(BOOL)arg1;
 - (BOOL)_shouldBeRequiredToFailByGestureRecognizer:(id)arg1;
@@ -210,8 +228,10 @@
 - (void)requireGestureRecognizerToFail:(id)arg1;
 - (void)requireOtherGestureToFail:(id)arg1;
 - (long long)requiredPreviewForceState;
+- (BOOL)requiresExclusiveTouchType;
 - (void)reset;
 - (void)setRequiredPreviewForceState:(long long)arg1;
+- (void)setRequiresExclusiveTouchType:(BOOL)arg1;
 - (void)setState:(long long)arg1;
 - (void)setView:(id)arg1;
 - (BOOL)shouldBeRequiredToFailByGestureRecognizer:(id)arg1;
